@@ -107,7 +107,7 @@ void Task_IntroMovie_BlendFadeEffect(SysTask *task, void *pVoid) {
 
 // ---------------------------
 
-void IntroMovie_StartBgScroll_VBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, enum GFBgLayer bgId, fx16 xChange, fx16 yChange, int duration) {
+void IntroMovie_StartBgScroll_VBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, enum GFBgLayer bgId, s16 xChange, s16 yChange, int duration) {
     IntroMovieBgScrollAnim *obj = &data[IntroMovie_BgLayerToScrollEffectSlot(bgId)];
     if (obj->active) {
         GF_ASSERT(FALSE);
@@ -115,8 +115,8 @@ void IntroMovie_StartBgScroll_VBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim 
     }
 
     if (duration == 0) {
-        fx32 x = xChange + Bg_GetXpos(bgConfig, bgId);
-        fx32 y = yChange + Bg_GetYpos(bgConfig, bgId);
+        int x = xChange + Bg_GetXpos(bgConfig, bgId);
+        int y = yChange + Bg_GetYpos(bgConfig, bgId);
         BgSetPosTextAndCommit(bgConfig, bgId, BG_POS_OP_SET_X, x);
         BgSetPosTextAndCommit(bgConfig, bgId, BG_POS_OP_SET_Y, y);
         return;
@@ -135,7 +135,7 @@ void IntroMovie_StartBgScroll_VBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim 
     obj->task = SysTask_CreateOnVBlankQueue(Task_IntroMovie_BgScroll_VBlank, obj, 0);
 }
 
-void IntroMovie_StartBgScroll_NotVBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, enum GFBgLayer bgId, fx16 xChange, fx16 yChange, int duration) {
+void IntroMovie_StartBgScroll_NotVBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, enum GFBgLayer bgId, s16 xChange, s16 yChange, int duration) {
     IntroMovieBgScrollAnim *obj = &data[IntroMovie_BgLayerToScrollEffectSlot(bgId)];
     if (obj->active) {
         GF_ASSERT(FALSE);
@@ -143,8 +143,8 @@ void IntroMovie_StartBgScroll_NotVBlank(BgConfig *bgConfig, IntroMovieBgScrollAn
     }
 
     if (duration == 0) {
-        fx32 x = xChange + Bg_GetXpos(bgConfig, bgId);
-        fx32 y = yChange + Bg_GetYpos(bgConfig, bgId);
+        int x = xChange + Bg_GetXpos(bgConfig, bgId);
+        int y = yChange + Bg_GetYpos(bgConfig, bgId);
         BgSetPosTextAndCommit(bgConfig, bgId, BG_POS_OP_SET_X, x);
         BgSetPosTextAndCommit(bgConfig, bgId, BG_POS_OP_SET_Y, y);
         return;
@@ -165,8 +165,8 @@ void IntroMovie_StartBgScroll_NotVBlank(BgConfig *bgConfig, IntroMovieBgScrollAn
 
 void Task_IntroMovie_BgScroll_VBlank(SysTask *task, void *pVoid) {
     IntroMovieBgScrollAnim *data = (IntroMovieBgScrollAnim *)pVoid;
-    fx32 x;
-    fx32 y;
+    int x;
+    int y;
 
     if (data->duration < 0) {
         x = data->xChange + Bg_GetXpos(data->bgConfig, data->bgId);
@@ -190,8 +190,8 @@ void Task_IntroMovie_BgScroll_VBlank(SysTask *task, void *pVoid) {
 
 void Task_IntroMovie_BgScroll_NotVBlank(SysTask *task, void *pVoid) {
     IntroMovieBgScrollAnim *data = (IntroMovieBgScrollAnim *)pVoid;
-    fx32 x;
-    fx32 y;
+    int x;
+    int y;
 
     if (data->duration < 0) {
         x = data->xChange + Bg_GetXpos(data->bgConfig, data->bgId);

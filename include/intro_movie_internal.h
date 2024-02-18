@@ -102,7 +102,7 @@ typedef struct IntroMovieScene5Data {
     u8 needFreeGfx;
 } IntroMovieScene5Data;
 
-typedef struct IntroMovieSub_46C_000 {
+typedef struct IntroMovieBgBlendAnim {
     u8 counter;
     u8 duration;
     u8 ev;
@@ -122,10 +122,10 @@ typedef struct IntroMovieBgScrollAnim {
     u8 counter;
     u8 finished;
     SysTask *task;
-    fx16 xChange;
-    fx16 yChange;
-    fx16 xOrig;
-    fx16 yOrig;
+    s16 xChange;
+    s16 yChange;
+    s16 xOrig;
+    s16 yOrig;
 } IntroMovieBgScrollAnim;
 
 typedef struct IntroMovieBgWindowAnimParam {
@@ -163,7 +163,7 @@ typedef struct IntroMovieBgLinearAnims {
     IntroMovieBgWindowAnim window[2];
 } IntroMovieBgLinearAnims;
 
-typedef struct IntroMovieSub_614 {
+typedef struct IntroMovieCircleWipeEffect {
     int active;
     int whichScreen;
     SysTask *task;
@@ -183,7 +183,7 @@ typedef struct IntroMovieOvyData {
     SpriteList *spriteList;
     GF_G2dRenderer spriteRenderer;
     _2DGfxResMan *spriteResManagers[4];
-    u32 unk_14C;
+    u32 savedLCRngSeed;
     IntroMovieScene1Data scene1Data;
     IntroMovieScene2Data scene2Data;
     IntroMovieScene3Data scene3Data;
@@ -210,8 +210,8 @@ void IntroMovie_StartSpriteAnimAndMakeVisible(Sprite *sprite, BOOL active);
 void IntroMovie_BuildSpriteResourcesHeaderAndTemplate(int resId, IntroMovieOvyData *data, int priority, NNS_G2D_VRAM_TYPE whichScreen, SpriteTemplate *template, SpriteResourcesHeader *header);
 void IntroMovie_RendererSetSurfaceCoords(IntroMovieOvyData *data, int mainx, int mainy, int subx, int suby);
 void IntroMovie_StartBlendFadeEffect(IntroMovieBgBlendAnim *data, int plane1, int plane2, u8 duration, int direction, int screen);
-void IntroMovie_StartBgScroll_VBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, enum GFBgLayer bgId, fx16 xChange, fx16 yChange, int duration);
-void IntroMovie_StartBgScroll_NotVBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, enum GFBgLayer bgId, fx16 xChange, fx16 yChange, int duration);
+void IntroMovie_StartBgScroll_VBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, enum GFBgLayer bgId, s16 xChange, s16 yChange, int duration);
+void IntroMovie_StartBgScroll_NotVBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, enum GFBgLayer bgId, s16 xChange, s16 yChange, int duration);
 BOOL IntroMovie_WaitBgScrollAnim(IntroMovieBgScrollAnim *data, enum GFBgLayer bgId);
 void IntroMovie_CancelBgScrollAnim(IntroMovieBgScrollAnim *data, enum GFBgLayer bgId);
 IntroMovieBgWindowAnim *IntroMovie_StartWindowPanEffect(IntroMovieBgWindowAnim *data, int duration, int whichScreen, const IntroMovieBgWindowAnimParam *param);

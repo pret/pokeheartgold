@@ -59,7 +59,7 @@ BOOL IntroMovie_Init(OVY_MANAGER *man, int *state) {
     data->skipAllowed = FALSE;
     gSystem.screensFlipped = TRUE;
     GfGfx_SwapDisplay();
-    data->unk_14C = GetLCRNGSeed();
+    data->savedLCRngSeed = GetLCRNGSeed();
     SetLCRNGSeed(0);
     data->bgConfig = BgConfig_Alloc(data->heapID);
     ov60_021E6E14();
@@ -148,7 +148,7 @@ BOOL IntroMovie_Exit(OVY_MANAGER *man, int *state) {
     GX_SetVisibleWnd(0);
     GXS_SetVisibleWnd(0);
     sub_0200FB70();
-    SetLCRNGSeed(data->unk_14C);
+    SetLCRNGSeed(data->savedLCRngSeed);
     OverlayManager_FreeData(man);
     DestroyHeap(HEAP_ID_INTRO_MOVIE);
     RegisterMainOverlay(FS_OVERLAY_ID(intro_title), &gApplication_TitleScreen);
