@@ -40,7 +40,7 @@ void Options_SetButtonModeOnMain(SaveData* saveData, u32 buttonMode) {
     }
 }
 
-u16 Options_GetTextSpeed(Options* options) {
+u32 Options_GetTextSpeed(Options* options) {
     return options->textSpeed;
 }
 
@@ -49,7 +49,7 @@ void Options_SetTextSpeed(Options* options, u32 textSpeed) {
 }
 
 u8 Options_GetTextFrameDelay(Options* options) {
-    u16 textSpeed = Options_GetTextSpeed(options);
+    u32 textSpeed = Options_GetTextSpeed(options);
 
     if (textSpeed == 0) {
         return 8;
@@ -62,7 +62,7 @@ u8 Options_GetTextFrameDelay(Options* options) {
     return 1;
 }
 
-u16 Options_GetSoundMethod(Options* options) {
+u32 Options_GetSoundMethod(Options* options) {
     return options->soundMethod;
 }
 
@@ -70,7 +70,7 @@ void Options_SetSoundMethod(Options* options, u32 soundMethod) {
     options->soundMethod = soundMethod;
 }
 
-u16 Options_GetBattleScene(Options* options) {
+u32 Options_GetBattleScene(Options* options) {
     return options->battleScene;
 }
 
@@ -78,7 +78,7 @@ void Options_SetBattleScene(Options* options, u32 battleScene) {
     options->battleScene = battleScene;
 }
 
-u16 Options_GetBattleStyle(Options* options) {
+u32 Options_GetBattleStyle(Options* options) {
     return options->battleStyle;
 }
 
@@ -86,7 +86,7 @@ void Options_SetBattleStyle(Options* options, u32 battleStyle) {
     options->battleStyle = battleStyle;
 }
 
-u16 Options_GetButtonMode(Options* options) {
+u32 Options_GetButtonMode(Options* options) {
     return options->buttonMode;
 }
 
@@ -94,7 +94,7 @@ void Options_SetButtonMode(Options* options, u32 buttonMode) {
     options->buttonMode = buttonMode;
 }
 
-u16 Options_GetFrame(Options* options) {
+u32 Options_GetFrame(Options* options) {
     return options->frame;
 }
 

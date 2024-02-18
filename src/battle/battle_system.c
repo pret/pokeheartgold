@@ -748,7 +748,7 @@ BOOL BattleSystem_AreBattleAnimationsOn(BattleSystem *bsys) {
     return (Options_GetBattleScene(bsys->options) == 0);
 }
 
-u16 BattleSystem_GetFrame(BattleSystem *bsys) {
+u32 BattleSystem_GetFrame(BattleSystem *bsys) {
     return Options_GetFrame(bsys->options);
 }
 
@@ -759,7 +759,7 @@ u8 BattleSystem_GetTextFrameDelay(BattleSystem *bsys) {
     return Options_GetTextFrameDelay(bsys->options);
 }
 
-u16 BattleSystem_GetBattleStyle(BattleSystem *bsys) {
+u32 BattleSystem_GetBattleStyle(BattleSystem *bsys) {
     return Options_GetBattleStyle(bsys->options);
 }
 
