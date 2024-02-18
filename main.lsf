@@ -299,7 +299,7 @@ Static main
 	Object asm/unk_02091564.o
 	Object asm/unk_020915B0.o
 	Object asm/unk_02091664.o
-	Object src/field_blackthorn_tutors.o
+	Object src/move_relearner.o
 	Object asm/unk_02091880.o
 	Object asm/unk_02091CDC.o
 	Object asm/unk_020921A4.o
@@ -801,10 +801,10 @@ Overlay OVY_53
     After main
     Object asm/overlay_53.o
 }
-Overlay OVY_54
+Overlay options_app
 {
     After main
-    Object asm/overlay_54.o
+    Object src/options_app.o
 }
 Overlay OVY_55
 {
