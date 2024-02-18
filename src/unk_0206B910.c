@@ -109,7 +109,7 @@ static BOOL sub_0206B984(TaskManager *taskManager) {
         for (i = 0; i < partyCount; i++) {
             r6->mons[i] = Party_GetMonByIndex(r6->party, i);
         }
-        for (; i < 6; i++) {
+        for (; i < PARTY_SIZE; i++) {
             r6->mons[i] = NULL;
         }
         r7->state = 1;
