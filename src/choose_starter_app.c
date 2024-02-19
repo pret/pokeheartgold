@@ -616,7 +616,7 @@ static void createOamManager(HeapID heapId) {
             HEAP_ID_DEFAULT
         };
         baseTrans.heapId = heapId;
-        sub_020215C0(&baseTrans, 0x200010, 0x10);
+        sub_020215C0(&baseTrans, GX_OBJVRAMMODE_CHAR_1D_128K, GX_OBJVRAMMODE_CHAR_1D_32K);
     }
     sub_02022588(3, heapId);
     sub_020216C8();

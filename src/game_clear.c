@@ -118,7 +118,7 @@ BOOL sub_0205298C(TaskManager *taskman) {
         break;
     case 4:
         BeginNormalPaletteFade(0, 1, 1, RGB_WHITE, 8, 1, HEAP_ID_32);
-        reg_G2_BLDCNT = 0;
+        G2_BlendNone();
         ++(*state);
         break;
     case 5:

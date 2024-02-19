@@ -1195,8 +1195,8 @@ static void OptionsApp_SetupSpriteRenderer(OptionsApp_Data *data) {
         .unk0 = 9,
         .unk4 = 0x400,
         .unk8 = 0x400,
-        .unkC = 0x10,
-        .unk10 = 0x10,
+        .charModeMain = GX_OBJVRAMMODE_CHAR_1D_32K,
+        .charModeSub = GX_OBJVRAMMODE_CHAR_1D_32K,
     };
     sub_0200CF70(data->spriteRenderer, &unk1, &unk2, 32);
     sub_0200CFF4(data->spriteRenderer, data->spriteGfxHandler, 9);

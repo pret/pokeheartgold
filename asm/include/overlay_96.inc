@@ -66,7 +66,7 @@
 .public AddPlttResObjFromNarc
 .public AddCellOrAnimResObjFromNarc
 .public sub_0200A740
-.public sub_0200A810
+.public _2DGfxResObj_GetCharDataPtr
 .public sub_0200ADA4
 .public sub_0200AEB0
 .public sub_0200AF00
