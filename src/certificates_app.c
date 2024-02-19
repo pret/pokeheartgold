@@ -60,8 +60,8 @@ static const Unk122_021E92D0 ov78_021E67F0 = {
     .unk0 = 0,
     .unk4 = 0x20000,
     .unk8 = 0x4000,
-    .unkC = 0x10,
-    .unk10 = 0x10,
+    .charModeMain = GX_OBJVRAMMODE_CHAR_1D_32K,
+    .charModeSub = GX_OBJVRAMMODE_CHAR_1D_32K,
 };
 
 static const SpriteResourceCountsListUnion ov78_021E6804 = {
@@ -626,8 +626,8 @@ static void ov78_021E636C(CertificatesApp_Data *data) {
     {
         NARC *narc = NARC_New(NARC_a_1_6_2, data->heapId);
 
-        SpriteRenderer_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, narc, 65, FALSE, 2, 3, 0);
-        SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 66, FALSE, 3, 0);
+        SpriteRenderer_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, narc, 65, FALSE, 2, NNS_G2D_VRAM_TYPE_MAX, 0);
+        SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 66, FALSE, NNS_G2D_VRAM_TYPE_MAX, 0);
         SpriteRenderer_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, 67, FALSE, 0);
         SpriteRenderer_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc, 68, FALSE, 0);
 
@@ -637,13 +637,13 @@ static void ov78_021E636C(CertificatesApp_Data *data) {
     {
         NARC *narc = NARC_New(NARC_a_1_2_6, data->heapId);
 
-        SpriteRenderer_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, narc, 18, FALSE, 1, 3, 1);
-        SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 19, FALSE, 3, 1);
+        SpriteRenderer_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, narc, 18, FALSE, 1, NNS_G2D_VRAM_TYPE_MAX, 1);
+        SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 19, FALSE, NNS_G2D_VRAM_TYPE_MAX, 1);
         SpriteRenderer_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, 20, FALSE, 1);
         SpriteRenderer_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc, 21, FALSE, 1);
 
-        SpriteRenderer_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, narc, 18, FALSE, 1, 3, 2);
-        SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 19 + (data->unk58 * 3), FALSE, 3, 2);
+        SpriteRenderer_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, narc, 18, FALSE, 1, NNS_G2D_VRAM_TYPE_MAX, 2);
+        SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 19 + (data->unk58 * 3), FALSE, NNS_G2D_VRAM_TYPE_MAX, 2);
         SpriteRenderer_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, 20 + (data->unk58 * 3), FALSE, 2);
         SpriteRenderer_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc, 21 + (data->unk58 * 3), FALSE, 2);
 

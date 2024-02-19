@@ -73,6 +73,7 @@ usage () {
     echo "  START, END    Start and end virtual addresses to diff"
     echo ""
     echo "Options:"
+    echo "  -S            SoulSilver diff. Requires baserom.soulsilver.nds (default: HeartGold)"
     echo "  -7            Diff the ARM7 module (default: ARM9)"
     echo "  -a AUTOLOAD   Diff the indicated autoload module (default: static module)"
     echo "  -m OVERLAY    Diff the indicated overlay module (default: static module)"
@@ -82,6 +83,7 @@ usage () {
     echo "  -F FSDIR      Filesystem path on the home system"
     echo "  -t            Force THUMB instructions (default: ARM)"
     echo "  -h            Show this message and exit"
+    echo "  -c            Clear caches and exit"
 }
 
 while [[ $# -gt 0 ]]; do
@@ -89,6 +91,10 @@ while [[ $# -gt 0 ]]; do
   case $key in
   -h)
     usage
+    exit 0
+    ;;
+  -c)
+    rm -rf "${MYDIR}"/.bins "${MYDIR}"/.files "${MYDIR}"/ntrextractfile "${MYDIR}"/ntruncompbw
     exit 0
     ;;
   -7)
@@ -128,6 +134,11 @@ while [[ $# -gt 0 ]]; do
   -d)
     builddir="$2"
     shift 2
+    ;;
+  -S)
+    baserom="${baserom:-baserom.soulsilver.nds}"
+    builddir="${builddir:-build/soulsilver.us}"
+    shift
     ;;
   -*)
     usage

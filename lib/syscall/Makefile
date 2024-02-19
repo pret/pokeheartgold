@@ -15,7 +15,7 @@ LIB            := $(BUILD_DIR)/libsyscall.a
 INSTALL_PREFIX ?= $(WORK_DIR)/lib/ARM9-TS
 INSTALL_LIBDIR := $(INSTALL_PREFIX)/lib
 
-all: 
+all:
 	$(MAKE) patch_mwasmarm
 	$(MAKE) $(LIB)
 
@@ -29,6 +29,6 @@ install: all
 	cp $(LIB) $(INSTALL_LIBDIR)/
 
 tidy:
-	$(RM) -r $(BUILD_DIR)
+	$(RM) -r build
 
 clean: tidy

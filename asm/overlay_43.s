@@ -5127,7 +5127,7 @@ ov43_0222C714: ; 0x0222C714
 	add r4, r0, #0
 	add r0, #0xf8
 	ldr r0, [r0]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _0222C728
 	mov r0, #1

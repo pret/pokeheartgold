@@ -31,8 +31,8 @@ const Unk122_021E92D0 ov122_021E92D0 = {
     0x00000000,
     0x00020000,
     0x00004000,
-    0x00000010,
-    0x00000010,
+    GX_OBJVRAMMODE_CHAR_1D_32K,
+    GX_OBJVRAMMODE_CHAR_1D_32K,
 };
 
 const SpriteResourceCountsListUnion ov122_021E92E4 = { 2, 2, 2, 2, 0, 0 };

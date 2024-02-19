@@ -411,6 +411,7 @@ $(eval $(call arc_strip_name,files/poketool/personal/wotbl.narc,files/a/0/3/3))
 $(eval $(call arc_strip_name,files/poketool/personal/evo.narc,files/a/0/3/4))
 $(eval $(call arc_strip_name,files/fielddata/encountdata/g_enc_data.narc,files/a/0/3/7))
 $(eval $(call arc_strip_name,files/fielddata/mapmatrix/map_matrix.narc,files/a/0/4/1))
+$(eval $(call arc_strip_name,files/demo/title/titledemo.narc,files/a/0/4/6))
 $(eval $(call arc_strip_name,files/poketool/trainer/trdata.narc,files/a/0/5/5))
 $(eval $(call arc_strip_name,files/poketool/trainer/trpoke.narc,files/a/0/5/6))
 $(eval $(call arc_strip_name,files/poketool/trmsg/trtbl.narc,files/a/0/5/7))
@@ -440,6 +441,7 @@ $(eval $(call arc_strip_name,files/resource/eng/pms_aikotoba/pms_aikotoba.narc,f
 $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_data_gira.narc,files/a/2/1/4))
 $(eval $(call arc_strip_name,files/fielddata/sodateya/kowaza_list.narc,files/a/2/2/9))
 $(eval $(call arc_strip_name,files/a/2/5/2.$(buildname),files/a/2/5/2))
+$(eval $(call arc_strip_name,files/demo/opening/gs_opening.narc,files/a/2/6/2))
 $(eval $(call arc_strip_name,files/application/voltorb_flip.narc,files/a/2/6/4))
 
 $(DIFF_ARCS):
@@ -465,6 +467,7 @@ include files/fielddata/script/scr_seq.mk
 # and serves to enforce build order.
 $(SCRIPT_BINS): $(FIRST_MSG_H_GEN)
 
+include files/graphic/font.mk
 include files/fielddata/eventdata/zone_event.mk
 include files/data/sound/sound_data.mk
 include files/data/gs_areawindow.mk
@@ -487,6 +490,8 @@ include files/application/record/record.mk
 include files/application/voltorb_flip.mk
 include files/application/annon/puzzle_gra.mk
 include files/data/resdat.mk
+include files/demo/title/titledemo.mk
+include files/demo/opening/gs_opening.mk
 
 $(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
 

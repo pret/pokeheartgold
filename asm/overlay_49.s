@@ -7886,7 +7886,7 @@ _0225C1E4:
 	mov r3, #0
 	bl AddPlttResObjFromNarc
 	str r0, [r6, #0x70]
-	bl sub_0200A828
+	bl _2DGfxResObj_GetPlttDataPtr
 	bl ov49_0225C368
 	ldr r0, [r6, #0x70]
 	bl sub_0200B00C

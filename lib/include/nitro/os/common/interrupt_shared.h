@@ -14,6 +14,7 @@
 #define NITRO_OS_INTERRUPT_SHARED_H
 
 #include <nitro/types.h>
+#include <nitro/hw/io_reg.h>
 
 typedef u32 OSIrqMask;
 
@@ -45,5 +46,9 @@ typedef struct
     u32 enable;
     void* arg;
 } OSIrqCallbackInfo;
+
+static inline OSIrqMask OS_GetRequestIrqMask(void) {
+    return reg_OS_IF;
+}
 
 #endif //NITRO_OS_INTERRUPT_SHARED_H

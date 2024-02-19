@@ -13,6 +13,7 @@ a/0/3/3
 a/0/3/4
 a/0/3/7
 a/0/4/1
+a/0/4/6
 a/0/5/5
 a/0/5/6
 a/0/5/7
@@ -42,6 +43,7 @@ a/2/1/2
 a/2/1/4
 a/2/2/9
 a/2/5/2
+a/2/6/2
 a/2/6/4
 msgdata/msg.narc
 fielddata/eventdata/zone_event.narc
@@ -58,3 +60,4 @@ data/mushi/mushi_*.bin
 fielddata/tsurepoke/tp_param.narc
 data/resdat.narc
 application/annon/puzzle_gra.narc
+demo/opening/gs_opening.narc

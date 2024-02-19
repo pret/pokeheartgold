@@ -29,8 +29,8 @@ foreach(SRC IN LISTS C_SOURCES_GAME C_SOURCES_LIBS)
 endforeach()
 
 add_executable(PokeHeartGold ${SOURCES})
-target_include_directories(PokeHeartGold PRIVATE include files lib/include lib/include/cw lib/include/nitro lib/include/nnsys lib/include/nitro/os include/library)
-target_compile_definitions(PokeHeartGold PUBLIC PUBLIC __CLION_IDE__ SDK_ARM9 SDK_CW SDK_CODE_ARM _NITRO __arm PLATFORM_INTRINSIC_FUNCTION_BIT_CLZ32=__builtin_clz wchar_t=__WCHAR_TYPE__)
+target_include_directories(PokeHeartGold PUBLIC include files ${CMAKE_SOURCE_DIR}/lib/include ${CMAKE_SOURCE_DIR}/lib/include/cw ${CMAKE_SOURCE_DIR}/lib/include/nitro ${CMAKE_SOURCE_DIR}/lib/include/nnsys ${CMAKE_SOURCE_DIR}/lib/include/nitro/os include/library)
+target_compile_definitions(PokeHeartGold PUBLIC __CLION_IDE__ SDK_ARM9 SDK_CW SDK_CODE_ARM _NITRO __arm PLATFORM_INTRINSIC_FUNCTION_BIT_CLZ32=__builtin_clz wchar_t=__WCHAR_TYPE__)
 target_compile_options(PokeHeartGold PRIVATE -Wimplicit -Wno-endif-labels -fms-extensions -nostdinc -Wno-builtin-declaration-mismatch -Wno-implicit-int -Wno-multichar -Wno-address-of-packed-member -mcpu=arm946e-s)
 target_compile_features(PokeHeartGold PRIVATE c_std_99 cxx_std_98)
 

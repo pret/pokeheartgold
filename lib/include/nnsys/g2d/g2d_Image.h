@@ -1,6 +1,9 @@
 #ifndef NNSYS_G2D_G2D_IMAGE_H_
 #define NNSYS_G2D_G2D_IMAGE_H_
 
+#include <nitro.h>
+#include <nnsys/g2d/fmt/g2d_Character_data.h>
+
 typedef enum NNS_G2D_VRAM_TYPE {
     NNS_G2D_VRAM_TYPE_3DMAIN = 0,
     NNS_G2D_VRAM_TYPE_2DMAIN = 1,
