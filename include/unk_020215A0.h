@@ -40,7 +40,7 @@ NNSG2dImageProxy *sub_02021910(int resId);
 NNSG2dImageProxy *sub_02021934(int resId, u32 size);
 NNSG2dImageProxy *sub_020219B8(NNSG2dImageProxy *proxyIn);
 void sub_02021A50(const NNSG2dImageProxy *proxy);
-BOOL sub_02021AC8(u32 a0, int a1, NNS_G2D_VRAM_TYPE a2, UnkStruct_02021AC8 *a3);
+BOOL sub_02021AC8(u32 a0, int a1, NNS_G2D_VRAM_TYPE vram, UnkStruct_02021AC8 *a3);
 void sub_02021B5C(UnkStruct_02021AC8 *a0);
 UnkStruct_021D21F4 *sub_02021BD0(void);
 void sub_02021BEC(UnkStruct_021D21F4 *a0);
