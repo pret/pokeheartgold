@@ -35,6 +35,7 @@ typedef struct NNSG2dImagePaletteProxy {
     NNSG2dVRamLocation vramLocation;
 } NNSG2dImagePaletteProxy;  // size: 0x14
 
+void NNS_G2dInitImageProxy(NNSG2dImageProxy* pImg);
 void NNS_G2dLoadPaletteEx(const NNSG2dPaletteData* pSrcData, const NNSG2dPaletteCompressInfo* pCmpInfo, u32 addr, NNS_G2D_VRAM_TYPE type, NNSG2dImagePaletteProxy* pPltProxy);
 void NNS_G2dLoadPalette(const NNSG2dPaletteData* pSrcData, u32 addr, NNS_G2D_VRAM_TYPE type, NNSG2dImagePaletteProxy* pPltProxy);
 void NNS_G2dLoadImage1DMapping(const NNSG2dCharacterData* pSrcData, u32 baseAddr, NNS_G2D_VRAM_TYPE type, NNSG2dImageProxy* pImgProxy);
