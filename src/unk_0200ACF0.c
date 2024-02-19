@@ -9,7 +9,7 @@ BOOL sub_0200ACF0(_2DGfxResObj *obj) {
 
     UnkStruct_02021758 sp00;
     sp00.charData = _2DGfxResObj_GetCharDataPtr(obj);
-    sp00.dest = _2DGfxResObj_GetLoadAddress(obj);
+    sp00.vram = _2DGfxResObj_GetVRamType(obj);
     sp00.id = _2DGfxResObj_GetResID(obj);
     sp00.unk_0C = FALSE;
     return sub_02021758(&sp00);
@@ -30,7 +30,7 @@ BOOL sub_0200AD64(_2DGfxResObj *obj) {
 
     UnkStruct_02021758 sp00;
     sp00.charData = _2DGfxResObj_GetCharDataPtr(obj);
-    sp00.dest = _2DGfxResObj_GetLoadAddress(obj);
+    sp00.vram = _2DGfxResObj_GetVRamType(obj);
     sp00.id = _2DGfxResObj_GetResID(obj);
     sp00.unk_0C = FALSE;
     return sub_020217B0(&sp00);
@@ -42,7 +42,7 @@ BOOL sub_0200ADA4(_2DGfxResObj *obj) {
 
     UnkStruct_02021758 sp00;
     sp00.charData = _2DGfxResObj_GetCharDataPtr(obj);
-    sp00.dest = _2DGfxResObj_GetLoadAddress(obj);
+    sp00.vram = _2DGfxResObj_GetVRamType(obj);
     sp00.id = _2DGfxResObj_GetResID(obj);
     sp00.unk_0C = TRUE;
     return sub_02021758(&sp00);
@@ -63,7 +63,7 @@ BOOL sub_0200AE18(_2DGfxResObj *obj) {
 
     UnkStruct_02021758 sp00;
     sp00.charData = _2DGfxResObj_GetCharDataPtr(obj);
-    sp00.dest = _2DGfxResObj_GetLoadAddress(obj);
+    sp00.vram = _2DGfxResObj_GetVRamType(obj);
     sp00.id = _2DGfxResObj_GetResID(obj);
     sp00.unk_0C = TRUE;
     return sub_020217B0(&sp00);
@@ -141,7 +141,7 @@ BOOL sub_0200AF94(_2DGfxResObj *plttResObj) {
 
     UnkStruct_02022660 sp00;
     sp00.plttData = _2DGfxResObj_GetPlttDataPtr(plttResObj);
-    sp00.dest = _2DGfxResObj_GetLoadAddress(plttResObj);
+    sp00.vram = _2DGfxResObj_GetVRamType(plttResObj);
     sp00.id = _2DGfxResObj_GetResID(plttResObj);
     sp00.plttNum = _2DGfxResObj_GetPlttNum(plttResObj);
     return sub_02022660(&sp00);
@@ -162,7 +162,7 @@ BOOL sub_0200B00C(_2DGfxResObj *plttResObj) {
 
     UnkStruct_02022660 sp00;
     sp00.plttData = _2DGfxResObj_GetPlttDataPtr(plttResObj);
-    sp00.dest = _2DGfxResObj_GetLoadAddress(plttResObj);
+    sp00.vram = _2DGfxResObj_GetVRamType(plttResObj);
     sp00.id = _2DGfxResObj_GetResID(plttResObj);
     sp00.plttNum = _2DGfxResObj_GetPlttNum(plttResObj);
     return sub_020226A4(&sp00);

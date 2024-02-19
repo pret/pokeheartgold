@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_UNK_020215A0_H
 
 #include "heap.h"
+#include <nnsys.h>
 
 typedef struct UnkStruct_020215A0 {
     int unk_00;
@@ -12,7 +13,7 @@ typedef struct UnkStruct_020215A0 {
 
 typedef struct UnkStruct_02021758 {
     NNSG2dCharacterData *charData;
-    u32 dest;
+    NNS_G2D_VRAM_TYPE vram;
     int id;
     BOOL unk_0C;
 } UnkStruct_02021758;
@@ -39,7 +40,7 @@ NNSG2dImageProxy *sub_02021910(int resId);
 NNSG2dImageProxy *sub_02021934(int resId, u32 size);
 NNSG2dImageProxy *sub_020219B8(NNSG2dImageProxy *proxyIn);
 void sub_02021A50(const NNSG2dImageProxy *proxy);
-BOOL sub_02021AC8(u32 a0, int a1, int a2, UnkStruct_02021AC8 *a3);
+BOOL sub_02021AC8(u32 a0, int a1, NNS_G2D_VRAM_TYPE a2, UnkStruct_02021AC8 *a3);
 void sub_02021B5C(UnkStruct_02021AC8 *a0);
 UnkStruct_021D21F4 *sub_02021BD0(void);
 void sub_02021BEC(UnkStruct_021D21F4 *a0);

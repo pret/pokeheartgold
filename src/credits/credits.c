@@ -498,9 +498,9 @@ static void FreeOamAndObjResMgrs(CreditsAppWork *work) {
 
 static void ov76_021E6170(CreditsAppWork *work) {
     work->_2dGfxResObj[GF_GFX_RES_TYPE_CHAR] =
-        AddCharResObjFromNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], NARC_a_2_6_3, 1, TRUE, 1, 3, HEAP_ID_CREDITS);
+        AddCharResObjFromNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], NARC_a_2_6_3, 1, TRUE, 1, NNS_G2D_VRAM_TYPE_BOTH, HEAP_ID_CREDITS);
     work->_2dGfxResObj[GF_GFX_RES_TYPE_PLTT] =
-        AddPlttResObjFromNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], NARC_a_2_6_3, 0, FALSE, 1, 3, 7, HEAP_ID_CREDITS);
+        AddPlttResObjFromNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], NARC_a_2_6_3, 0, FALSE, 1, NNS_G2D_VRAM_TYPE_BOTH, 7, HEAP_ID_CREDITS);
     work->_2dGfxResObj[GF_GFX_RES_TYPE_CELL] =
         AddCellOrAnimResObjFromNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_CELL], NARC_a_2_6_3, 2, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_CREDITS);
     work->_2dGfxResObj[GF_GFX_RES_TYPE_ANIM] =
@@ -513,9 +513,9 @@ static void ov76_021E6170(CreditsAppWork *work) {
 
     for (u8 i = 0; i < UNIQUE_SPRITES_PER_CUTSCENE; i++) {
         work->cutsceneRsrs[i].charResObj =
-            AddCharResObjFromOpenNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], *narc, 20, TRUE, i + 2, 1, HEAP_ID_CREDITS);
+            AddCharResObjFromOpenNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], *narc, 20, TRUE, i + 2, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_CREDITS);
         work->cutsceneRsrs[i].plttResObj =
-            AddPlttResObjFromOpenNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], *narc, 149, FALSE, i + 2, 1, 1, HEAP_ID_CREDITS);
+            AddPlttResObjFromOpenNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], *narc, 149, FALSE, i + 2, NNS_G2D_VRAM_TYPE_2DMAIN, 1, HEAP_ID_CREDITS);
     }
 
     sub_0200ACF0(work->_2dGfxResObj[GF_GFX_RES_TYPE_CHAR]);
@@ -547,7 +547,7 @@ static void InitSprites(CreditsAppWork *work) {
     u8 yIdx;
 
     SceneWork *ptr = &work->sceneWork;
-    InitDancingSpriteResources(1, work, 1, NNS_G2D_VRAM_TYPE_MAX, &tmpl, &header);
+    InitDancingSpriteResources(1, work, 1, NNS_G2D_VRAM_TYPE_BOTH, &tmpl, &header);
 
     // Dancing Pokémon that start on top screen
     for (u8 i = 0; i < MONS_PER_SCREEN; i++) {

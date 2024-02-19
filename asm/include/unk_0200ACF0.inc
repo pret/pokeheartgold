@@ -6,7 +6,7 @@
 .public _2DGfxResObj_GetPlttDataPtr
 .public _2DGfxResObj_GetCellDataPtr
 .public _2DGfxResObj_GetResType
-.public _2DGfxResObj_GetLoadAddress
+.public _2DGfxResObj_GetVRamType
 .public _2DGfxResObj_GetPlttNum
 .public sub_0200AA9C
 .public sub_0200ACF0

@@ -119,7 +119,7 @@ static const UnkTemplate_0200D748 ov78_021E68B4 = {
     .animation = 0,
     .spritePriority = 1,
     .pal = 3,
-    .vram = NNS_G2D_VRAM_TYPE_MAX,
+    .vram = NNS_G2D_VRAM_TYPE_BOTH,
     .resIdList = { 2, 2, 2, 2, 0, 0 },
     .bgPriority = 0,
     .vramTransfer = 0,
@@ -132,7 +132,7 @@ static const UnkTemplate_0200D748 ov78_021E6880 = {
     .animation = 0,
     .spritePriority = 0,
     .pal = 0xFFFF,
-    .vram = NNS_G2D_VRAM_TYPE_MAX,
+    .vram = NNS_G2D_VRAM_TYPE_BOTH,
     .resIdList = {},
     .bgPriority = 0,
     .vramTransfer = 0,
@@ -145,7 +145,7 @@ static const UnkTemplate_0200D748 ov78_021E68E8 = {
     .animation = 0,
     .spritePriority = 0,
     .pal = 2,
-    .vram = NNS_G2D_VRAM_TYPE_MAX,
+    .vram = NNS_G2D_VRAM_TYPE_BOTH,
     .resIdList = { 1, 1, 1, 1, 0, 0 },
     .bgPriority = 0,
     .vramTransfer = 0,
@@ -626,8 +626,8 @@ static void ov78_021E636C(CertificatesApp_Data *data) {
     {
         NARC *narc = NARC_New(NARC_a_1_6_2, data->heapId);
 
-        SpriteRenderer_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, narc, 65, FALSE, 2, NNS_G2D_VRAM_TYPE_MAX, 0);
-        SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 66, FALSE, NNS_G2D_VRAM_TYPE_MAX, 0);
+        SpriteRenderer_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, narc, 65, FALSE, 2, NNS_G2D_VRAM_TYPE_BOTH, 0);
+        SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 66, FALSE, NNS_G2D_VRAM_TYPE_BOTH, 0);
         SpriteRenderer_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, 67, FALSE, 0);
         SpriteRenderer_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc, 68, FALSE, 0);
 
@@ -637,13 +637,13 @@ static void ov78_021E636C(CertificatesApp_Data *data) {
     {
         NARC *narc = NARC_New(NARC_a_1_2_6, data->heapId);
 
-        SpriteRenderer_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, narc, 18, FALSE, 1, NNS_G2D_VRAM_TYPE_MAX, 1);
-        SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 19, FALSE, NNS_G2D_VRAM_TYPE_MAX, 1);
+        SpriteRenderer_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, narc, 18, FALSE, 1, NNS_G2D_VRAM_TYPE_BOTH, 1);
+        SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 19, FALSE, NNS_G2D_VRAM_TYPE_BOTH, 1);
         SpriteRenderer_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, 20, FALSE, 1);
         SpriteRenderer_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc, 21, FALSE, 1);
 
-        SpriteRenderer_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, narc, 18, FALSE, 1, NNS_G2D_VRAM_TYPE_MAX, 2);
-        SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 19 + (data->unk58 * 3), FALSE, NNS_G2D_VRAM_TYPE_MAX, 2);
+        SpriteRenderer_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, narc, 18, FALSE, 1, NNS_G2D_VRAM_TYPE_BOTH, 2);
+        SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 19 + (data->unk58 * 3), FALSE, NNS_G2D_VRAM_TYPE_BOTH, 2);
         SpriteRenderer_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, 20 + (data->unk58 * 3), FALSE, 2);
         SpriteRenderer_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc, 21 + (data->unk58 * 3), FALSE, 2);
 
@@ -670,7 +670,7 @@ static void ov78_021E652C(CertificatesApp_Data *data) {
 }
 
 static void ov78_021E656C(Sprite *sprite, void *unkBuffer, u32 unkBufferSize, u32 srcOffset) {
-    GF_ASSERT(Sprite_GetVramType(sprite) == NNS_G2D_VRAM_TYPE_MAX);
+    GF_ASSERT(Sprite_GetVramType(sprite) == NNS_G2D_VRAM_TYPE_BOTH);
 
     DC_FlushRange(unkBuffer, unkBufferSize);
 

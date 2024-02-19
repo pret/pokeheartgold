@@ -5,7 +5,7 @@
 
 typedef struct UnkStruct_02022660 {
     NNSG2dPaletteData *plttData;
-    u32 dest;
+    NNS_G2D_VRAM_TYPE vram;
     int plttNum;
     int id;
 } UnkStruct_02022660;

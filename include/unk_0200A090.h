@@ -6,12 +6,12 @@
 
 struct CharResExtraData {
     NNSG2dCharacterData *charData;
-    int vram;
+    NNS_G2D_VRAM_TYPE vram;
 };
 
 struct PlttResExtraData {
-    NNSG2dPaletteData  *plttData;
-    int vram;
+    NNSG2dPaletteData *plttData;
+    NNS_G2D_VRAM_TYPE vram;
     int pltt_num;
 };
 
@@ -90,15 +90,15 @@ typedef struct _2DGfxResObjList {
 struct _2DGfxResMan *Create2DGfxResObjMan(int num, GfGfxResType type, HeapID heapId);
 void Destroy2DGfxResObjMan(struct _2DGfxResMan *mgr);
 struct _2DGfxResObj *Add2DGfxResObjFromHeader(struct _2DGfxResMan *mgr, const struct _2DGfxResHeader *header, int idx, HeapID heapId);
-struct _2DGfxResObj *AddCharResObjFromNarc(struct _2DGfxResMan *mgr, NarcId narcId, int fileId, BOOL compressed, int id, int vram, HeapID heapId);
-struct _2DGfxResObj *AddPlttResObjFromNarc(struct _2DGfxResMan *mgr, NarcId narcId, int fileId, BOOL compressed, int id, int vram, int pltt_num, HeapID heapId);
+struct _2DGfxResObj *AddCharResObjFromNarc(struct _2DGfxResMan *mgr, NarcId narcId, int fileId, BOOL compressed, int id, NNS_G2D_VRAM_TYPE vram, HeapID heapId);
+struct _2DGfxResObj *AddPlttResObjFromNarc(struct _2DGfxResMan *mgr, NarcId narcId, int fileId, BOOL compressed, int id, NNS_G2D_VRAM_TYPE vram, int pltt_num, HeapID heapId);
 struct _2DGfxResObj *AddCellOrAnimResObjFromNarc(struct _2DGfxResMan *mgr, NarcId narcId, int fileId, BOOL compressed, int id, GfGfxResType type, HeapID heapId);
 void ReplaceCharResObjFromNarc(struct _2DGfxResMan *mgr, struct _2DGfxResObj *obj, NarcId narcId, int fileId, BOOL compressed, HeapID heapId);
 void ReplacePlttResObjFromNarc(struct _2DGfxResMan *mgr, struct _2DGfxResObj *obj, NarcId narcId, int fileId, BOOL compressed, HeapID heapId);
-struct _2DGfxResObj *AddCharResObjFromOpenNarc(struct _2DGfxResMan *mgr, NARC *narc, int fileId, BOOL compressed, int id, int vram, HeapID heapId);
-struct _2DGfxResObj *AddCharResObjFromOpenNarcWithAtEndFlag(struct _2DGfxResMan *mgr, NARC *narc, int fileId, BOOL compressed, int id, int vram, HeapID heapId, BOOL atEnd);
-struct _2DGfxResObj *AddPlttResObjFromOpenNarc(struct _2DGfxResMan *mgr, NARC *narc, int fileId, BOOL compressed, int id, int vram, int pltt_num, HeapID heapId);
-struct _2DGfxResObj *AddPlttResObjFromOpenNarcWithAtEndFlag(struct _2DGfxResMan *mgr, NARC *narc, int fileId, BOOL compressed, int id, int vram, int pltt_num, HeapID heapId, BOOL atEnd);
+struct _2DGfxResObj *AddCharResObjFromOpenNarc(struct _2DGfxResMan *mgr, NARC *narc, int fileId, BOOL compressed, int id, NNS_G2D_VRAM_TYPE vram, HeapID heapId);
+struct _2DGfxResObj *AddCharResObjFromOpenNarcWithAtEndFlag(struct _2DGfxResMan *mgr, NARC *narc, int fileId, BOOL compressed, int id, NNS_G2D_VRAM_TYPE vram, HeapID heapId, BOOL atEnd);
+struct _2DGfxResObj *AddPlttResObjFromOpenNarc(struct _2DGfxResMan *mgr, NARC *narc, int fileId, BOOL compressed, int id, NNS_G2D_VRAM_TYPE vram, int pltt_num, HeapID heapId);
+struct _2DGfxResObj *AddPlttResObjFromOpenNarcWithAtEndFlag(struct _2DGfxResMan *mgr, NARC *narc, int fileId, BOOL compressed, int id, NNS_G2D_VRAM_TYPE vram, int pltt_num, HeapID heapId, BOOL atEnd);
 struct _2DGfxResObj *AddCellOrAnimResObjFromOpenNarc(struct _2DGfxResMan *resMan, NARC *narc, int fileId, BOOL compressed, int id, GfGfxResType type, HeapID heapId);
 void ReplaceCharResObjFromOpenNarc(struct _2DGfxResMan *mgr, struct _2DGfxResObj *obj, NARC *narc, int fileId, BOOL compressed, HeapID heapId);
 void ReplacePlttResObjFromOpenNarc(struct _2DGfxResMan *mgr, struct _2DGfxResObj *obj, NARC *narc, int fileId, BOOL compressed, HeapID heapId);
@@ -117,7 +117,7 @@ NNSG2dAnimBankData *_2DGfxResObj_GetAnimDataPtr(struct _2DGfxResObj *obj);
 NNSG2dMultiCellDataBank *_2DGfxResObj_GetMultiCellDataPtr(struct _2DGfxResObj *obj);
 NNSG2dAnimBankData *_2DGfxResObj_GetMultiAnimDataPtr(struct _2DGfxResObj *obj);
 GfGfxResType _2DGfxResObj_GetResType(struct _2DGfxResObj *obj);
-int _2DGfxResObj_GetLoadAddress(struct _2DGfxResObj *obj);
+NNS_G2D_VRAM_TYPE _2DGfxResObj_GetVRamType(struct _2DGfxResObj *obj);
 int _2DGfxResObj_GetPlttNum(struct _2DGfxResObj *obj);
 u32 sub_0200A8FC(void);
 struct _2DGfxResHeader *sub_0200A900(struct _2DGfxResHeader *headers, int num);
@@ -129,6 +129,6 @@ int sub_0200A9B0(struct _2DGfxResHeader *header, int idx);
 BOOL sub_0200A9DC(struct _2DGfxResHeader *header, int idx);
 int sub_0200AA08(struct _2DGfxResHeader *header, int idx);
 int sub_0200AA3C(struct _2DGfxResHeader *header, int idx);
-void sub_0200AA9C(struct _2DGfxResObj *obj, GfGfxResType type, int vram, int pltt_num, HeapID heapId);
+void sub_0200AA9C(struct _2DGfxResObj *obj, GfGfxResType type, NNS_G2D_VRAM_TYPE vram, int pltt_num, HeapID heapId);
 
 #endif //POKEHEARTGOLD_UNK_0200A090_H
