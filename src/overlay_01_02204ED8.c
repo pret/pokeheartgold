@@ -1,7 +1,7 @@
 #include "global.h"
 #include "assert.h"
 #include "encounter.h"
-#include "field_follow_poke.h"
+#include "follow_mon.h"
 #include "field_map_object.h"
 #include "fieldmap.h"
 #include "filesystem.h"
@@ -180,8 +180,8 @@ static s8 ov01_02205074(u8 a0, u8 a1, u32 trainerId) {
 static void ov01_022050F8(FieldSystem *fieldSystem, u32 *x, u32 *y) {
     int inFrontX, inFrontY;
     PlayerAvatar_GetCoordsInFront(fieldSystem->playerAvatar, &inFrontX, &inFrontY);
-    if (FollowingPokemon_IsActive(fieldSystem)) {
-        LocalMapObject *object = FollowingPokemon_GetMapObject(fieldSystem);
+    if (FollowMon_IsActive(fieldSystem)) {
+        LocalMapObject *object = FollowMon_GetMapObject(fieldSystem);
         u32 followingMonX = MapObject_GetCurrentX(object);
         u32 followingMonY = MapObject_GetCurrentY(object);
         if (inFrontX == followingMonX && inFrontY == followingMonY) {
