@@ -95,7 +95,7 @@ struct _2DGfxResObj *AddCellOrAnimResObjFromNarc(struct _2DGfxResMan *mgr, NarcI
     //GF_ASSERT(mgr->type == type);
     ret = sub_0200AA70(mgr);
     GF_ASSERT(ret != NULL);
-    Add2DGfxResObjFromNarc(mgr, ret, narcId, fileId, compressed, id, NNS_G2D_VRAM_TYPE_3DMAIN, 0, type, heapId, FALSE);
+    Add2DGfxResObjFromNarc(mgr, ret, narcId, fileId, compressed, id, NNS_G2D_VRAM_TYPE_NEITHER, 0, type, heapId, FALSE);
     mgr->num++;
     return ret;
 }
@@ -178,7 +178,7 @@ struct _2DGfxResObj *AddCellOrAnimResObjFromOpenNarc(struct _2DGfxResMan *resMan
     //GF_ASSERT(mgr->type == type);
     ret = sub_0200AA70(resMan);
     GF_ASSERT(ret != NULL);
-    Add2DGfxResObjFromOpenNarc(resMan, ret, narc, fileId, compressed, id, NNS_G2D_VRAM_TYPE_3DMAIN, 0, type, heapId, FALSE);
+    Add2DGfxResObjFromOpenNarc(resMan, ret, narc, fileId, compressed, id, NNS_G2D_VRAM_TYPE_NEITHER, 0, type, heapId, FALSE);
     resMan->num++;
     return ret;
 }
@@ -351,7 +351,7 @@ NNS_G2D_VRAM_TYPE _2DGfxResObj_GetVRamType(struct _2DGfxResObj *obj) {
         struct PlttResExtraData *res = getResObjExtra(obj);
         return res->vram;
     } else {
-        return NNS_G2D_VRAM_TYPE_3DMAIN;
+        return NNS_G2D_VRAM_TYPE_NEITHER;
     }
 }
 

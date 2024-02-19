@@ -24,15 +24,16 @@ struct UnkStruct_021D21F4 {
     int unk_08;
     int unk_0C;
     int unk_10;
-    u8 filler_14[8];
-    u32 unk_1C;
-    u32 unk_20;
+    u32 unk_14;
+    u32 unk_18;
+    int unk_1C;
+    int unk_20;
     int unk_24;
     int unk_28;
     u32 unk_2C;
     u32 unk_30;
-    u32 unk_34;
-    u32 unk_38;
+    u8 *unk_34;
+    u8 *unk_38;
 } *_021D21F4;
 
 BOOL sub_0202180C(int resId);
@@ -53,22 +54,26 @@ void sub_02021EC0(NNS_G2D_VRAM_TYPE a0, u32 a1, u32 a2, u32 a3, u32 a4);
 void sub_02021F28(UnkStruct_021D21F4_sub *a0);
 void sub_02021F54(UnkStruct_021D21F4_sub *a0, NNS_G2D_VRAM_TYPE a1);
 void sub_02021FB0(UnkStruct_021D21F4_sub *a0);
+void sub_02021FDC(UnkStruct_021D21F4_sub *a0, NNS_G2D_VRAM_TYPE);
 UnkStruct_021D21F4_sub *sub_02022024(void);
 void sub_02022060(void);
-void sub_020221D0(int a0, int a1, int HeapID);
-void sub_02022238(u32 a0);
-void sub_02022278(u32 a0);
-void sub_02022290(int a0, int a1, int a2);
-int sub_020222EC(int a0, u32 a1);
+void sub_020221D0(u32 a0, u32 a1, HeapID heapID);
+void sub_020221B4(void);
+void sub_02022238(u8 *a0);
+u32 sub_02022260(u8 *a0);
+void sub_02022278(u8 *a0);
+void sub_02022290(u32 a0, u32 a1, u8 *a2);
+u32 sub_020222EC(u32 a0, u8 *a1);
+void sub_02022374(u32 a0, u32 a1, u8 *a2);
 void sub_020223C4(UnkStruct_021D21F4_sub *a0);
 int sub_02022448(GXOBJVRamModeChar mode);
+int sub_02022488(int a0, int a1, int a2);
+u32 sub_020224A8(int a0, int a1);
 int sub_020224B8(int a0, int a1);
-int sub_020224A8(int a0, int a1);
 BOOL sub_020224C0(u32 size, NNS_G2D_VRAM_TYPE a1, u32 *a2, u32 *a3);
-void sub_02022510(u32 size, int a1);
-void sub_0202256C(int a0, int a1, int a2, int *a3, int *a4);
-void sub_02022374(int a0, int a1, u32 a2);
-int sub_02022488(u32 a0, int a1, int a2);
+void sub_02022510(u32 size, NNS_G2D_VRAM_TYPE a1);
+void sub_02022560(int a0, u32 *a1, u8 *a2);
+void sub_0202256C(u32 a0, u32 a1, u32 a2, int *a3, int *a4);
 
 void sub_020215A0(UnkStruct_020215A0 *template) {
     sub_020215C0(template, GX_GetOBJVRamModeChar(), GXS_GetOBJVRamModeChar());
@@ -340,13 +345,13 @@ BOOL sub_02021AC8(u32 a0, int a1, NNS_G2D_VRAM_TYPE a2, UnkStruct_02021AC8 *a3) 
 void sub_02021B5C(UnkStruct_02021AC8 *a0) {
     if (a0->unk_0A != 0) {
         if (a0->unk_08 & 1) {
-            int r5 = sub_020224A8(a0->unk_00, _021D21F4->unk_2C);
-            int r0 = sub_020224A8(a0->unk_04 - _021D21F4->unk_1C, _021D21F4->unk_2C);
+            u32 r5 = sub_020224A8(a0->unk_00, _021D21F4->unk_2C);
+            u32 r0 = sub_020224A8(a0->unk_04 - _021D21F4->unk_1C, _021D21F4->unk_2C);
             sub_02022374(r0, r5, _021D21F4->unk_34);
         }
         if (a0->unk_08 & 2) {
-            int r5 = sub_020224A8(a0->unk_00, _021D21F4->unk_30);
-            int r0 = sub_020224A8(a0->unk_04 - _021D21F4->unk_20, _021D21F4->unk_30);
+            u32 r5 = sub_020224A8(a0->unk_00, _021D21F4->unk_30);
+            u32 r0 = sub_020224A8(a0->unk_04 - _021D21F4->unk_20, _021D21F4->unk_30);
             sub_02022374(r0, r5, _021D21F4->unk_38);
         }
     }
@@ -366,7 +371,7 @@ void sub_02021BEC(UnkStruct_021D21F4 *a0) {
 
 void sub_02021C08(UnkStruct_021D21F4_sub *a0) {
     a0->unk_00 = NULL;
-    a0->unk_04 = NNS_G2D_VRAM_TYPE_3DMAIN;
+    a0->unk_04 = NNS_G2D_VRAM_TYPE_NEITHER;
     a0->unk_08 = 0;
     a0->unk_0C = -1;
     a0->unk_34 = 0;
@@ -483,7 +488,7 @@ void sub_02021DD0(UnkStruct_021D21F4_sub *a0, int a1, int a2) {
 BOOL sub_02021DE4(int a0, u32 *a1, u32 *a2, u32 a3, u32 *a4, u32 *a5) {
     if (a0 & NNS_G2D_VRAM_TYPE_2DMAIN) {
         *a4 = sub_02022488(a3, _021D21F4->unk_2C, 1);
-        int r0 = sub_020224A8(*a4, _021D21F4->unk_2C);
+        u32 r0 = sub_020224A8(*a4, _021D21F4->unk_2C);
         *a1 = sub_020222EC(r0, _021D21F4->unk_34);
         if (*a1 == -1) {
             GF_ASSERT(FALSE);
@@ -493,7 +498,7 @@ BOOL sub_02021DE4(int a0, u32 *a1, u32 *a2, u32 a3, u32 *a4, u32 *a5) {
     }
     if (a0 & NNS_G2D_VRAM_TYPE_2DSUB) {
         *a5 = sub_02022488(a3, _021D21F4->unk_30, 1);
-        int r0 = sub_020224A8(*a5, _021D21F4->unk_30);
+        u32 r0 = sub_020224A8(*a5, _021D21F4->unk_30);
         *a2 = sub_020222EC(r0, _021D21F4->unk_38);
         if (*a2 == -1) {
             GF_ASSERT(FALSE);
@@ -515,13 +520,13 @@ void sub_02021E90(UnkStruct_021D21F4_sub *a0, u32 a1, u32 a2) {
 
 void sub_02021EC0(NNS_G2D_VRAM_TYPE a0, u32 a1, u32 a2, u32 a3, u32 a4) {
     if (a0 & NNS_G2D_VRAM_TYPE_2DMAIN) {
-        int r7 = sub_020224A8(a3, _021D21F4->unk_2C);
-        int r0 = sub_020224A8(a1, _021D21F4->unk_2C);
+        u32 r7 = sub_020224A8(a3, _021D21F4->unk_2C);
+        u32 r0 = sub_020224A8(a1, _021D21F4->unk_2C);
         sub_02022290(r0, r7, _021D21F4->unk_34);
     }
     if (a0 & NNS_G2D_VRAM_TYPE_2DSUB) {
-        int r7 = sub_020224A8(a4, _021D21F4->unk_30);
-        int r0 = sub_020224A8(a2, _021D21F4->unk_30);
+        u32 r7 = sub_020224A8(a4, _021D21F4->unk_30);
+        u32 r0 = sub_020224A8(a2, _021D21F4->unk_30);
         sub_02022290(r0, r7, _021D21F4->unk_38);
     }
 }
@@ -555,5 +560,305 @@ void sub_02021F54(UnkStruct_021D21F4_sub *a0, NNS_G2D_VRAM_TYPE a1) {
         GX_GetOBJVRamModeChar();
     } else {
         GXS_GetOBJVRamModeChar();
+    }
+}
+
+void sub_02021FB0(UnkStruct_021D21F4_sub *a0) {
+    NNS_G2dInitImageProxy(&a0->unk_10);
+    if (a0->unk_04 != NNS_G2D_VRAM_TYPE_BOTH) {
+        sub_02021FDC(a0, a0->unk_04);
+    } else {
+        sub_02021FDC(a0, NNS_G2D_VRAM_TYPE_2DMAIN);
+        sub_02021FDC(a0, NNS_G2D_VRAM_TYPE_2DSUB);
+    }
+}
+
+void sub_02021FDC(UnkStruct_021D21F4_sub *a0, NNS_G2D_VRAM_TYPE a1) {
+    int r0 = a0->unk_40 ? sub_02021DA8(a0, a1) : a1;
+    u32 r1;
+    if (a1 == NNS_G2D_VRAM_TYPE_2DMAIN) {
+        r1 = a0->unk_34;
+        GX_GetOBJVRamModeChar();
+    } else {
+        r1 = a0->unk_38;
+        GXS_GetOBJVRamModeChar();
+    }
+    NNS_G2dLoadImageVramTransfer(a0->unk_00, r1, a1, &a0->unk_10);
+    if (a1 == NNS_G2D_VRAM_TYPE_2DMAIN) {
+        GX_GetOBJVRamModeChar();
+    } else {
+        GXS_GetOBJVRamModeChar();
+    }
+}
+
+UnkStruct_021D21F4_sub *sub_02022024(void) {
+    for (int i = 0; i < _021D21F4->unk_04; ++i) {
+        if (_021D21F4->unk_00[i].unk_3C == 0) {
+            return &_021D21F4->unk_00[i];
+        }
+    }
+
+    return NULL;
+}
+
+void sub_02022060(void) {
+    switch (GX_GetBankForOBJ()) {
+    case GX_VRAM_OBJ_NONE:
+        _021D21F4->unk_14 = 0;
+        break;
+    case GX_VRAM_OBJ_16_F:
+    case GX_VRAM_OBJ_16_G:
+        _021D21F4->unk_14 = 16 * 1024;
+        break;
+    case GX_VRAM_OBJ_32_FG:
+        _021D21F4->unk_14 = 32 * 1024;
+        break;
+    case GX_VRAM_OBJ_64_E:
+        _021D21F4->unk_14 = 64 * 1024;
+        break;
+    case GX_VRAM_OBJ_80_EF:
+    case GX_VRAM_OBJ_80_EG:
+        _021D21F4->unk_14 = 80 * 1024;
+        break;
+    case GX_VRAM_OBJ_96_EFG:
+        _021D21F4->unk_14 = 96 * 1024;
+        break;
+    case GX_VRAM_OBJ_128_A:
+    case GX_VRAM_OBJ_128_B:
+        _021D21F4->unk_14 = 128 * 1024;
+        break;
+    case GX_VRAM_OBJ_256_AB:
+        _021D21F4->unk_14 = 256 * 1024;
+        break;
+    default:
+        _021D21F4->unk_14 = 0;
+        break;
+    }
+
+    switch (GX_GetBankForSubOBJ()) {
+    case GX_VRAM_SUB_OBJ_NONE:
+        _021D21F4->unk_18 = 0;
+        break;
+    case GX_VRAM_SUB_OBJ_16_I:
+        _021D21F4->unk_18 = 16 * 1024;
+        break;
+    case GX_VRAM_SUB_OBJ_128_D:
+        _021D21F4->unk_18 = 128 * 1024;
+        break;
+    default:
+        _021D21F4->unk_18 = 0;
+        break;
+    }
+
+    int r0 = sub_020224B8(_021D21F4->unk_24, _021D21F4->unk_2C);
+    _021D21F4->unk_1C = _021D21F4->unk_14 - r0;
+    r0 = sub_020224B8(_021D21F4->unk_28, _021D21F4->unk_30);
+    _021D21F4->unk_20 = _021D21F4->unk_18 - r0;
+    GF_ASSERT(_021D21F4->unk_1C >= 0 && _021D21F4->unk_20 >= 0);
+    GF_ASSERT(_021D21F4->unk_1C >= 0 && _021D21F4->unk_20 >= 0);  // they wanted to be doubly sure
+}
+
+void sub_020221B4(void) {
+    sub_02022278(_021D21F4->unk_34);
+    sub_02022278(_021D21F4->unk_38);
+}
+
+void sub_020221D0(u32 a0, u32 a1, HeapID heapID) {
+    _021D21F4->unk_24 = a0;
+    _021D21F4->unk_28 = a1;
+    if (_021D21F4->unk_34 != NULL) {
+        FreeToHeap(_021D21F4->unk_34);
+    }
+    if (_021D21F4->unk_38 != NULL) {
+        FreeToHeap(_021D21F4->unk_38);
+    }
+    if (_021D21F4->unk_24 != 0) {
+        _021D21F4->unk_34 = AllocFromHeap(heapID, a0 / 8);
+    }
+    if (_021D21F4->unk_28 != 0) {
+        _021D21F4->unk_38 = AllocFromHeap(heapID, a1 / 8);
+    }
+    sub_020221B4();
+}
+
+void sub_02022238(u8 *a0) {
+    if (a0 != NULL) {
+        if (a0 == _021D21F4->unk_34) {
+            _021D21F4->unk_24 = 0;
+            FreeToHeap(a0);
+        } else {
+            _021D21F4->unk_28 = 0;
+            FreeToHeap(a0);
+        }
+    }
+}
+
+u32 sub_02022260(u8 *a0) {
+    if (a0 == _021D21F4->unk_34) {
+        return _021D21F4->unk_24;
+    } else {
+        return _021D21F4->unk_28;
+    }
+}
+
+void sub_02022278(u8 *a0) {
+    if (a0 != NULL) {
+        memset(a0, 0, sub_02022260(a0) / 8);
+    }
+}
+
+void sub_02022290(u32 a0, u32 a1, u8 *a2) {
+    if (a2 != NULL) {
+        u32 r7 = sub_02022260(a2);
+        u32 r6 = a0 + a1;
+        for (int i = a0; i < r6; ++i) {
+            if (i >= r7) {
+                break;
+            }
+            u32 sp4;
+            u8 sp0;
+            sub_02022560(i, &sp4, &sp0);
+            GF_ASSERT(!(a2[sp4] & (1 << sp0)));
+            u8 mask = 1 << sp0;
+            a2[sp4] |= mask;
+        }
+    }
+}
+
+u32 sub_020222EC(u32 a0, u8 *a1) {
+    if (a1 != NULL) {
+        u32 sp4 = sub_02022260(a1);
+        for (int i = 0; i < sp4; ++i) {
+            u32 spC;
+            u8 sp8;
+            sub_02022560(i, &spC, &sp8);
+            u8 mask = 1 << sp8;
+            int j = 0;
+            while ((a1[spC] & mask) == 0 && j <= a0) {
+                int num = i + j;
+                sub_02022560(num, &spC, &sp8);
+                mask = 1 << sp8;
+                if (num >= sp4) {
+                    return -1;
+                }
+                ++j;
+            }
+            if (j > a0) {
+                return i;
+            }
+            i += j;
+        }
+    }
+    return -1;
+}
+
+void sub_02022374(u32 a0, u32 a1, u8 *a2) {
+    if (a2 != NULL) {
+        u32 r6 = a0 + a1;
+        for (int i = a0; i < r6; ++i) {
+            u32 sp4;
+            u8 sp0;
+            sub_02022560(i, &sp4, &sp0);
+            GF_ASSERT(a2[sp4] & (1 << sp0));
+            u8 mask = (1 << sp0) ^ 0xFF;
+            a2[sp4] &= mask;
+        }
+    }
+}
+
+void sub_020223C4(UnkStruct_021D21F4_sub *a0) {
+    if (a0->unk_04 & NNS_G2D_VRAM_TYPE_2DMAIN) {
+        u32 loc = NNS_G2dGetImageLocation(&a0->unk_10, NNS_G2D_VRAM_TYPE_2DMAIN);
+        u32 r5 = sub_020224A8(loc - _021D21F4->unk_1C, _021D21F4->unk_2C);
+        u32 r1 = sub_020224A8(a0->unk_4C, _021D21F4->unk_2C);
+        sub_02022374(r5, r1, _021D21F4->unk_34);
+    }
+    if (a0->unk_04 & NNS_G2D_VRAM_TYPE_2DSUB) {
+        u32 loc = NNS_G2dGetImageLocation(&a0->unk_10, NNS_G2D_VRAM_TYPE_2DSUB);
+        u32 r5 = sub_020224A8(loc - _021D21F4->unk_20, _021D21F4->unk_30);
+        u32 r1 = sub_020224A8(a0->unk_50, _021D21F4->unk_30);
+        sub_02022374(r5, r1, _021D21F4->unk_38);
+    }
+    a0->unk_48 = 0;
+}
+
+int sub_02022448(GXOBJVRamModeChar mode) {
+    switch (mode) {
+    case GX_OBJVRAMMODE_CHAR_1D_32K:
+        return 1;
+    case GX_OBJVRAMMODE_CHAR_1D_64K:
+        return 2;
+    case GX_OBJVRAMMODE_CHAR_1D_128K:
+        return 4;
+    case GX_OBJVRAMMODE_CHAR_1D_256K:
+        return 8;
+    default:
+        return 1;
+    }
+}
+
+int sub_02022488(int a0, int a1, int a2) {
+    a1 *= 32;
+    if (a0 % a1) {
+        a0 -= (a0 % a1);
+        if (a2 == 1) {
+            a0 += a1;
+        }
+    }
+    return a0;
+}
+
+u32 sub_020224A8(int a0, int a1) {
+    return a0 / 32 / a1;
+}
+
+int sub_020224B8(int a0, int a1) {
+    return a0 * a1 * 32;
+}
+
+BOOL sub_020224C0(u32 size, NNS_G2D_VRAM_TYPE a1, u32 *a2, u32 *a3) {
+    BOOL result = TRUE;
+    if (a1 & NNS_G2D_VRAM_TYPE_2DMAIN) {
+        if (_021D21F4->unk_0C + size > _021D21F4->unk_1C) {
+            GF_ASSERT(FALSE);
+            result = FALSE;
+        } else {
+            *a2 = _021D21F4->unk_0C;
+        }
+    }
+    if (a1 & NNS_G2D_VRAM_TYPE_2DSUB) {
+        if (_021D21F4->unk_10 + size > _021D21F4->unk_20) {
+            GF_ASSERT(FALSE);
+            result = FALSE;
+        } else {
+            *a3 = _021D21F4->unk_10;
+        }
+    }
+    return result;
+}
+
+void sub_02022510(u32 size, NNS_G2D_VRAM_TYPE a1) {
+    if (a1 & NNS_G2D_VRAM_TYPE_2DMAIN) {
+        _021D21F4->unk_0C += size;
+        _021D21F4->unk_0C = sub_02022488(_021D21F4->unk_0C, _021D21F4->unk_2C, 1);
+    }
+    if (a1 & NNS_G2D_VRAM_TYPE_2DSUB) {
+        _021D21F4->unk_10 += size;
+        _021D21F4->unk_10 = sub_02022488(_021D21F4->unk_10, _021D21F4->unk_30, 1);
+    }
+}
+
+void sub_02022560(int a0, u32 *a1, u8 *a2) {
+    *a1 = a0 >> 3;
+    *a2 = a0 & 7;
+}
+
+void sub_0202256C(u32 a0, u32 a1, u32 a2, int *a3, int *a4) {
+    *a3 = a1 - a0;
+    if (*a3 < 0) {
+        *a4 = a2 + *a3;
+        *a3 = 0;
+    } else {
+        *a4 = a2;
     }
 }
