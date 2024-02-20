@@ -16,7 +16,7 @@ Static main
 	Object src/string_util.o
 	Object asm/render_text.o
 	Object src/font.o
-	Object asm/palette.o
+	Object src/palette.o
 	Object src/sound.o
 	Object src/sound_radio_sys.o
 	Object asm/unk_02004A44.o
@@ -245,7 +245,7 @@ Static main
 	Object src/field_follow_poke.o
 	Object asm/unk_0206A360.o
 	Object asm/field_take_photo.o
-	Object asm/unk_0206B910.o
+	Object src/unk_0206B910.o
 	Object src/alph_checks.o
 	Object src/get_egg.o
 	Object src/unk_0206D494.o
@@ -299,7 +299,7 @@ Static main
 	Object asm/unk_02091564.o
 	Object asm/unk_020915B0.o
 	Object asm/unk_02091664.o
-	Object src/field_blackthorn_tutors.o
+	Object src/move_relearner.o
 	Object asm/unk_02091880.o
 	Object asm/unk_02091CDC.o
 	Object asm/unk_020921A4.o
@@ -801,10 +801,10 @@ Overlay OVY_53
     After main
     Object asm/overlay_53.o
 }
-Overlay OVY_54
+Overlay options_app
 {
     After main
-    Object asm/overlay_54.o
+    Object src/options_app.o
 }
 Overlay OVY_55
 {

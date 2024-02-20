@@ -247,9 +247,9 @@
 .public SignBackOfTrainerCardApp_OvyInit
 .public SignBackOfTrainerCardApp_OvyExec
 .public SignBackOfTrainerCardApp_OvyExit
-.public ov54_021E5900
-.public ov54_021E5A10
-.public ov54_021E5B3C
+.public OptionsApp_Init
+.public OptionsApp_Main
+.public OptionsApp_Exit
 .public ov55_UnkApp_Init
 .public ov55_UnkApp_Main
 .public ov55_UnkApp_Exit

@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_02003DE8
+.public BlendPalette
 .public NARC_New
 .public NARC_Delete
 .public GfGfxLoader_LoadCharDataFromOpenNarc

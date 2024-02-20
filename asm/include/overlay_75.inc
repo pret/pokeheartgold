@@ -9,7 +9,7 @@
 .public sub_02002B8C
 .public FontID_String_GetWidth
 .public LoadFontPal1
-.public sub_02003DE8
+.public BlendPalette
 .public sub_02004EC4
 .public PlaySE
 .public UnloadOverlayByID

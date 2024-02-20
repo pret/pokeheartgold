@@ -1681,7 +1681,7 @@ _02234DDC:
 	add r1, r4, #0
 	lsl r2, r2, #0xc
 	add r3, r7, #0
-	bl sub_02003DE8
+	bl BlendPalette
 	mov r1, #2
 	add r0, r4, #0
 	lsl r1, r1, #0xc

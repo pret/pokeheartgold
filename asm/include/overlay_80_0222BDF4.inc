@@ -19,8 +19,8 @@
 .public sub_02002B8C
 .public FontID_String_GetWidth
 .public PaletteData_LoadNarc
-.public sub_02003D5C
-.public sub_02003E5C
+.public PaletteData_FillPaletteInBuffer
+.public PaletteData_BlendPalette
 .public sub_02004EC4
 .public PlaySE
 .public NARC_New

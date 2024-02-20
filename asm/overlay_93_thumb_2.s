@@ -2107,7 +2107,7 @@ _02260C14:
 	ldr r0, [r0]
 	add r2, r1, #0
 	lsr r3, r3, #0x10
-	bl sub_02003DBC
+	bl PaletteData_GetBufferColorAtIndex
 	strh r0, [r5]
 	add r4, r4, #1
 	add r5, r5, #2
@@ -2253,7 +2253,7 @@ _02260D32:
 	mov r1, #3
 	mov r2, #1
 	lsr r3, r3, #0x10
-	bl sub_02003DBC
+	bl PaletteData_GetBufferColorAtIndex
 	strh r0, [r5]
 	add r6, r6, #1
 	add r4, r4, #1
@@ -2397,7 +2397,7 @@ _02260E46:
 	mov r1, #3
 	mov r2, #1
 	lsr r3, r3, #0x10
-	bl sub_02003DBC
+	bl PaletteData_GetBufferColorAtIndex
 	strh r0, [r4]
 	ldr r0, [sp, #0x10]
 	add r7, r7, #2

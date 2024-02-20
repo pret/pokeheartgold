@@ -15,7 +15,7 @@
 .public FontID_String_GetWidth
 .public LoadFontPal1
 .public FontID_String_GetCenterAlignmentX
-.public sub_02003DE8
+.public BlendPalette
 .public GF_GetCurrentPlayingBGM
 .public sub_02004AD8
 .public sub_02004EC4

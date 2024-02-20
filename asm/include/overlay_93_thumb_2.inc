@@ -3,7 +3,7 @@
 .public FontID_String_GetWidthMultiline
 .public PaletteData_GetUnfadedBuf
 .public PaletteData_GetFadedBuf
-.public sub_02003DBC
+.public PaletteData_GetBufferColorAtIndex
 .public PlaySE
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData

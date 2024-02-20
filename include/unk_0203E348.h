@@ -8,7 +8,7 @@
 #include "bag.h"
 #include "mail.h"
 #include "fashion_case.h"
-#include "field_blackthorn_tutors.h"
+#include "move_relearner.h"
 #include "credits/credits.h"
 
 struct UseMailWork;
@@ -155,7 +155,7 @@ void *sub_0203F984(FieldSystem *fieldSystem);
 void *sub_0203F844(FieldSystem *fieldSystem, u16 a1);
 void *sub_0203E460(FieldSystem *fieldSystem, u8 a1);
 u16 sub_0203E4CC(void *a0);
-void sub_0203F9C4(FieldSystem *fieldSystem, struct MoveRelearner *moveRelearner);
+void sub_0203F9C4(FieldSystem *fieldSystem, MoveRelearner *moveRelearner);
 
 static inline void InitUnkStructScrCmd408(struct UnkStruct_ScrCmd408 *data, u16 a1, u16 a2, ScriptContext *ctx) {
     MI_CpuClear8(data, sizeof(struct UnkStruct_ScrCmd408));
