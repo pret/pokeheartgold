@@ -99,7 +99,7 @@ u8 sub_02091054(u32 idx) {
     return _02105F04[idx].unk0;
 }
 
-u8 sub_0209106C(u32 idx) {
+u8 sub_0209106C(u8 idx) {
     GF_ASSERT(idx < NELEMS(_02105F04));
     return _02105F04[idx].unk1;
 }
