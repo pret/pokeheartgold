@@ -7161,7 +7161,7 @@ ov72_0223B088: ; 0x0223B088
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	beq _0223B09A
 	mov r0, #0

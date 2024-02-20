@@ -1949,8 +1949,8 @@ static void ov122_021E8068(void) {
     GfGfx_DisableEngineAPlanes();
     GfGfx_DisableEngineBPlanes();
 
-    reg_GX_DISPCNT &= 0xffffe0ff;
-    reg_GXS_DB_DISPCNT &= 0xffffe0ff;
+    GX_SetVisiblePlane(0);
+    GXS_SetVisiblePlane(0);
 }
 
 static void ov122_021E8094(OVY_MANAGER *man) {
@@ -1958,7 +1958,7 @@ static void ov122_021E8094(OVY_MANAGER *man) {
     GF_ASSERT(args != NULL);
 
     Main_SetVBlankIntrCB(NULL, NULL);
-    reg_GX_POWCNT &= 0xffff7fff;
+    GX_SetDispSelect(GX_DISP_SELECT_SUB_MAIN);
 
     ov122_021E8068();
     SetGXBanks();

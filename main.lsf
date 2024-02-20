@@ -30,7 +30,7 @@ Static main
 	Object asm/unk_02007FD8.o
 	Object src/unk_02009D48.o
 	Object src/unk_0200A090.o
-	Object asm/unk_0200ACF0.o
+	Object src/unk_0200ACF0.o
 	Object asm/unk_0200B150.o
 	Object src/brightness.o
 	Object src/msgdata.o
@@ -75,7 +75,7 @@ Static main
 	Object src/ascii_util.o
 	Object asm/unk_02020B8C.o
 	Object asm/unk_020210A0.o
-	Object asm/unk_020215A0.o
+	Object src/unk_020215A0.o
 	Object asm/unk_02022588.o
 	Object src/gf_gfx_planes.o
 	Object src/camera.o
@@ -831,10 +831,17 @@ Overlay OVY_59
     After OVY_58
     Object asm/overlay_59.o
 }
-Overlay OVY_60
+Overlay intro_title
 {
     After main
-    Object asm/overlay_60.o
+	Object src/title_screen.o
+	Object src/intro_movie.o
+	Object src/intro_movie_scenes_lib.o
+	Object src/intro_movie_scene_1.o
+	Object src/intro_movie_scene_2.o
+	Object src/intro_movie_scene_3.o
+	Object src/intro_movie_scene_4.o
+	Object src/intro_movie_scene_5.o
 }
 Overlay OVY_61
 {

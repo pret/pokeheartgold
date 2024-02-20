@@ -1,6 +1,8 @@
 #ifndef NNSYS_G2D_FMT_G2D_CHARACTER_DATA_H_
 #define NNSYS_G2D_FMT_G2D_CHARACTER_DATA_H_
 
+#include <nitro.h>
+
 typedef enum NNSG2dCharacterDataMapingType {
     NNS_G2D_CHARACTERMAPING_1D_32,
     NNS_G2D_CHARACTERMAPING_1D_64,

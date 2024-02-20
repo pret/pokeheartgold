@@ -1,6 +1,8 @@
 #ifndef NITRO_GX_GX_VRAMCNT_H_
 #define NITRO_GX_GX_VRAMCNT_H_
 
+#include <nitro/os.h>
+
 typedef enum {
     GX_VRAM_A = OS_VRAM_BANK_ID_A,// VRAM-A
     GX_VRAM_B = OS_VRAM_BANK_ID_B,// VRAM-B

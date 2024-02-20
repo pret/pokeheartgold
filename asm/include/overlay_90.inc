@@ -129,7 +129,7 @@
 .public Sprite_SetPriority
 .public Sprite_SetPalOffset
 .public sub_02024AA8
-.public Sprite_IsCellAnimationFinished
+.public Sprite_IsCellAnimationRunning
 .public GF_AssertFail
 .public String_New
 .public String_Delete

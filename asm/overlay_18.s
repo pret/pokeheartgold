@@ -39158,16 +39158,16 @@ ov18_021F9310: ; 0x021F9310
 	add r4, r1, #0
 	add r7, r2, #0
 	add r6, r3, #0
-	bl sub_0200A7FC
+	bl _2DGfxResObj_GetResID
 	str r0, [sp, #0x2c]
 	ldr r0, [r5, #4]
-	bl sub_0200A7FC
+	bl _2DGfxResObj_GetResID
 	str r0, [sp, #0x30]
 	ldr r0, [r5, #8]
-	bl sub_0200A7FC
+	bl _2DGfxResObj_GetResID
 	str r0, [sp, #0x34]
 	ldr r0, [r5, #0xc]
-	bl sub_0200A7FC
+	bl _2DGfxResObj_GetResID
 	str r0, [sp]
 	mov r0, #0
 	mvn r0, r0
@@ -39243,22 +39243,22 @@ ov18_021F9370: ; 0x021F9370
 	mov r0, #0x87
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200A7FC
+	bl _2DGfxResObj_GetResID
 	add r4, r0, #0
 	mov r0, #0x83
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200A7FC
+	bl _2DGfxResObj_GetResID
 	add r6, r0, #0
 	mov r0, #0x89
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200A7FC
+	bl _2DGfxResObj_GetResID
 	add r7, r0, #0
 	mov r0, #0x8a
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200A7FC
+	bl _2DGfxResObj_GetResID
 	str r0, [sp]
 	mov r0, #0
 	mvn r0, r0

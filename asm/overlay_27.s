@@ -5298,7 +5298,7 @@ ov27_0225C994: ; 0x0225C994
 	mov r0, #0xe2
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _0225C9C6
 	mov r0, #0xe2
@@ -5690,7 +5690,7 @@ ov27_0225CC90: ; 0x0225CC90
 	mov r0, #0xe2
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _0225CCB8
 	mov r0, #0xe2

@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_SPL_EMITTER_H
 #define POKEHEARTGOLD_SPL_EMITTER_H
 
+#include <nitro.h>
 #include "spl_particle.h"
 #include "spl_resource.h"
 

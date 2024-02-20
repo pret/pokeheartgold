@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_VRAM_TRANSFER_MANAGER_H
 #define POKEHEARTGOLD_VRAM_TRANSFER_MANAGER_H
 
+#include "global.h"
+
 typedef struct {
     u32 nMax;
     u32 nCur;

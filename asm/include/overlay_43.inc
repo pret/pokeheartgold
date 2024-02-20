@@ -140,7 +140,7 @@
 .public Sprite_GetAnimCtrlCurrentFrame
 .public Sprite_SetPriority
 .public Sprite_SetDrawPriority
-.public Sprite_IsCellAnimationFinished
+.public Sprite_IsCellAnimationRunning
 .public TouchscreenHitbox_FindHitboxAtTouchNew
 .public System_GetTouchNew
 .public GF_AssertFail
