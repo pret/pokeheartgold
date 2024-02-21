@@ -169,12 +169,12 @@
 .public memset
 .public _s32_div_f
 .public gGameVersion
-.public _0210820C
-.public _02108278
+.public gApplication_DeleteSave
+.public gApplication_MainMenu
 .public FX_SinCosTable_
 .public NNS_GfdDefaultFuncAllocTexVram
 .public NNS_GfdDefaultFuncAllocPlttVram
 .public gSystem
-.public ov60_021EAFE0
-.public ov60_021EB030
-.public ov62_021E68CC
+.public gApplication_TitleScreen
+.public gApplication_IntroMovie
+.public gApplication_MicTest

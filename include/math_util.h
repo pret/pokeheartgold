@@ -36,10 +36,13 @@ static inline u16 LCRandRange(const u16 maximum) {
     }
 }
 
-static inline void SetVecFx32(VecFx32 *dest, fx32 x, fx32 y, fx32 z) {
-    dest->x = x;
-    dest->y = y;
-    dest->z = z;
+#define SetVec(dest, vecx, vecy, vecz) { \
+    (dest).x = (vecx);             \
+    (dest).y = (vecy);             \
+    (dest).z = (vecz);             \
 }
+
+#define SetVecFx16(dest, x, y, z) SetVec(dest, x, y, z)
+#define SetVecFx32(dest, x, y, z) SetVec(dest, x, y, z)
 
 #endif //POKEHEARTGOLD_MATH_UTIL_H

@@ -24,7 +24,7 @@
 FS_EXTERN_OVERLAY(OVY_60);
 FS_EXTERN_OVERLAY(OVY_36);
 
-extern const OVY_MGR_TEMPLATE ov60_021EB030;
+extern const OVY_MGR_TEMPLATE gApplication_IntroMovie;
 extern const OVY_MGR_TEMPLATE ov36_App_MainMenu_SelectOption_Continue;
 
 struct UnkStruct_02111868 {
@@ -72,7 +72,7 @@ void NitroMain(void) {
         switch (OS_GetResetParameter()) {
         case 0:
             _02111868.unk_10.unk_04 = 0;
-            RegisterMainOverlay(FS_OVERLAY_ID(OVY_60), &ov60_021EB030);
+            RegisterMainOverlay(FS_OVERLAY_ID(OVY_60), &gApplication_IntroMovie);
             break;
         case 1:
             sub_0200FBF4(0, 0);
