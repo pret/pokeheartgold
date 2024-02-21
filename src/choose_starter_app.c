@@ -553,7 +553,7 @@ BOOL ChooseStarterApplication_OvyExit(OVY_MANAGER *ovy, int *state) {
     Destroy2DGfxResObjMan(work->monSpriteData.cellResMan);
     Destroy2DGfxResObjMan(work->monSpriteData.animResMan);
     OamManager_Free();
-    sub_0202168C();
+    ObjCharTransfer_Destroy();
     sub_02022608();
     freeWindow(work->winTop);
     freeWindow(work->winBottom);
@@ -616,7 +616,7 @@ static void createOamManager(HeapID heapId) {
             HEAP_ID_DEFAULT
         };
         baseTrans.heapId = heapId;
-        sub_020215C0(&baseTrans, GX_OBJVRAMMODE_CHAR_1D_128K, GX_OBJVRAMMODE_CHAR_1D_32K);
+        ObjCharTransfer_InitEx(&baseTrans, GX_OBJVRAMMODE_CHAR_1D_128K, GX_OBJVRAMMODE_CHAR_1D_32K);
     }
     sub_02022588(3, heapId);
     sub_020216C8();

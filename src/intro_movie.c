@@ -180,7 +180,7 @@ void ov60_021E6E40(IntroMovieOvyData *data) {
     GXS_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_32K);
 
     UnkStruct_020215A0 sp14 = {10, 0, 0, HEAP_ID_INTRO_MOVIE};
-    sub_020215A0(&sp14);
+    ObjCharTransfer_Init(&sp14);
     sub_02022588(10, HEAP_ID_INTRO_MOVIE);
     sub_020216C8();
     sub_02022638();
@@ -192,6 +192,6 @@ void ov60_021E6E40(IntroMovieOvyData *data) {
 void ov60_021E6EC0(IntroMovieOvyData *data) {
     SpriteList_Delete(data->spriteList);
     OamManager_Free();
-    sub_0202168C();
+    ObjCharTransfer_Destroy();
     sub_02022608();
 }

@@ -1755,7 +1755,7 @@ _0221CCE4:
 	ldr r0, [r6, r0]
 	bl SpriteList_Delete
 	bl OamManager_Free
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2558,7 +2558,7 @@ ov65_0221D3B8: ; 0x0221D3B8
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_020215A0
+	bl ObjCharTransfer_Init
 	mov r0, #0x14
 	mov r1, #0x1a
 	bl sub_02022588

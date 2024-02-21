@@ -38668,7 +38668,7 @@ ov18_021F8F28: ; 0x021F8F28
 	str r0, [sp, #0xc]
 	add r0, r2, #0
 	mov r2, #0x10
-	bl sub_020215C0
+	bl ObjCharTransfer_InitEx
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -38678,10 +38678,10 @@ _021F8F54: .word 0x00100010
 
 	thumb_func_start ov18_021F8F58
 ov18_021F8F58: ; 0x021F8F58
-	ldr r3, _021F8F5C ; =sub_0202168C
+	ldr r3, _021F8F5C ; =ObjCharTransfer_Destroy
 	bx r3
 	.balign 4, 0
-_021F8F5C: .word sub_0202168C
+_021F8F5C: .word ObjCharTransfer_Destroy
 	thumb_func_end ov18_021F8F58
 
 	thumb_func_start ov18_021F8F60

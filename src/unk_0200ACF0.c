@@ -7,7 +7,7 @@ BOOL sub_0200ACF0(_2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
     GF_ASSERT(_2DGfxResObj_GetResType(obj) == GF_GFX_RES_TYPE_CHAR);
 
-    UnkStruct_02021758 sp00;
+    ObjCharTransferTaskTemplate sp00;
     sp00.charData = _2DGfxResObj_GetCharDataPtr(obj);
     sp00.vram = _2DGfxResObj_GetVRamType(obj);
     sp00.id = _2DGfxResObj_GetResID(obj);
@@ -28,7 +28,7 @@ BOOL sub_0200AD64(_2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
     GF_ASSERT(_2DGfxResObj_GetResType(obj) == GF_GFX_RES_TYPE_CHAR);
 
-    UnkStruct_02021758 sp00;
+    ObjCharTransferTaskTemplate sp00;
     sp00.charData = _2DGfxResObj_GetCharDataPtr(obj);
     sp00.vram = _2DGfxResObj_GetVRamType(obj);
     sp00.id = _2DGfxResObj_GetResID(obj);
@@ -40,7 +40,7 @@ BOOL sub_0200ADA4(_2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
     GF_ASSERT(_2DGfxResObj_GetResType(obj) == GF_GFX_RES_TYPE_CHAR);
 
-    UnkStruct_02021758 sp00;
+    ObjCharTransferTaskTemplate sp00;
     sp00.charData = _2DGfxResObj_GetCharDataPtr(obj);
     sp00.vram = _2DGfxResObj_GetVRamType(obj);
     sp00.id = _2DGfxResObj_GetResID(obj);
@@ -61,7 +61,7 @@ BOOL sub_0200AE18(_2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
     GF_ASSERT(_2DGfxResObj_GetResType(obj) == GF_GFX_RES_TYPE_CHAR);
 
-    UnkStruct_02021758 sp00;
+    ObjCharTransferTaskTemplate sp00;
     sp00.charData = _2DGfxResObj_GetCharDataPtr(obj);
     sp00.vram = _2DGfxResObj_GetVRamType(obj);
     sp00.id = _2DGfxResObj_GetResID(obj);

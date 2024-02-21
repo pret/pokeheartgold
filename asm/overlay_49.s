@@ -4323,7 +4323,7 @@ _0225A636:
 	ldr r0, _0225A7B4 ; =ov49_02269744
 	ldr r2, _0225A7B8 ; =0x00100010
 	mov r1, #0x10
-	bl sub_020215C0
+	bl ObjCharTransfer_InitEx
 	mov r0, #0x18
 	add r1, r6, #0
 	bl sub_02022588
@@ -4449,7 +4449,7 @@ _0225A80E:
 	blt _0225A80E
 	ldr r0, [r6, #4]
 	bl SpriteList_Delete
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	bl OamManager_Free
 	mov r0, #0x51

@@ -152,8 +152,8 @@
 .public GF_RunVramTransferTasks
 .public sub_02021148
 .public sub_02021238
-.public sub_020215C0
-.public sub_0202168C
+.public ObjCharTransfer_InitEx
+.public ObjCharTransfer_Destroy
 .public sub_020216C8
 .public sub_02021AC8
 .public sub_02021B5C

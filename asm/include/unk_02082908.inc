@@ -91,8 +91,8 @@
 .public AddTextPrinterParameterized
 .public AddTextPrinterParameterizedWithColor
 .public GF_RunVramTransferTasks
-.public sub_020215A0
-.public sub_0202168C
+.public ObjCharTransfer_Init
+.public ObjCharTransfer_Destroy
 .public sub_020216C8
 .public sub_02022588
 .public sub_02022608

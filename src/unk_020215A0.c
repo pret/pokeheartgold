@@ -2,10 +2,10 @@
 #include "unk_020215A0.h"
 #include "vram_transfer_manager.h"
 
-typedef struct UnkStruct_021D21F4_sub {
+typedef struct ObjCharTransferTask {
     NNSG2dCharacterData *charData;
     NNS_G2D_VRAM_TYPE vram;
-    u8 unk_08;
+    u8 isTransferred;
     int resId;
     NNSG2dImageProxy imageProxy;
     u32 baseAddrMain;
@@ -14,12 +14,12 @@ typedef struct UnkStruct_021D21F4_sub {
     int unk_40;
     BOOL unk_44;
     int unk_48;
-    u32 unk_4C;
-    u32 unk_50;
-} UnkStruct_021D21F4_sub;
+    u32 sizeMain;
+    u32 sizeSub;
+} ObjCharTransferTask;
 
-struct UnkStruct_021D21F4 {
-    UnkStruct_021D21F4_sub *unk_00;
+struct ObjCharTransferTasksManager {
+    ObjCharTransferTask *tasks;
     int max;
     int num;
     int offsetMain;
@@ -34,28 +34,28 @@ struct UnkStruct_021D21F4 {
     u32 unk_30;
     u8 *unk_34;
     u8 *unk_38;
-} *_021D21F4;
+} *sObjCharTransferTasksManager;
 
-BOOL sub_0202180C(int resId);
+BOOL ObjCharTransfer_TaskExistsByID(int resId);
 void sub_020218D4(void);
-void sub_02021C08(UnkStruct_021D21F4_sub *a0);
-BOOL sub_02021C2C(const UnkStruct_02021758 *a0, UnkStruct_021D21F4_sub *a1);
-BOOL sub_02021C9C(UnkStruct_021D21F4_sub *a0);
-UnkStruct_021D21F4_sub *sub_02021C50(const NNSG2dImageProxy *proxyIn);
-BOOL sub_02021CCC(UnkStruct_021D21F4_sub *a0);
-BOOL sub_02021D00(UnkStruct_021D21F4_sub *a0);
-void sub_02021D58(UnkStruct_021D21F4_sub *a0);
-UnkStruct_021D21F4_sub *sub_02021D70(int resId);
-GXOBJVRamModeChar sub_02021DA8(UnkStruct_021D21F4_sub *a0, NNS_G2D_VRAM_TYPE vram);
-void sub_02021DD0(UnkStruct_021D21F4_sub *a0, u32 offsetMain, u32 offsetSub);
-BOOL sub_02021DE4(int a0, u32 *a1, u32 *a2, u32 a3, u32 *a4, u32 *a5);  // a0 should be NNS_G2D_VRAM_TYPE but needs to be int in order to match
-void sub_02021E90(UnkStruct_021D21F4_sub *a0, u32 a1, u32 a2);
-void sub_02021EC0(NNS_G2D_VRAM_TYPE vram, u32 a1, u32 a2, u32 a3, u32 a4);
-void sub_02021F28(UnkStruct_021D21F4_sub *a0);
-void sub_02021F54(UnkStruct_021D21F4_sub *a0, NNS_G2D_VRAM_TYPE vram);
-void sub_02021FB0(UnkStruct_021D21F4_sub *a0);
-void sub_02021FDC(UnkStruct_021D21F4_sub *a0, NNS_G2D_VRAM_TYPE vram);
-UnkStruct_021D21F4_sub *sub_02022024(void);
+void ObjCharTransferTask_Reset(ObjCharTransferTask *a0);
+BOOL ObjCharTransferTask_InitFromTemplate(const ObjCharTransferTaskTemplate *a0, ObjCharTransferTask *a1);
+BOOL sub_02021C9C(ObjCharTransferTask *a0);
+ObjCharTransferTask *ObjCharTransfer_GetTaskByImageProxy(const NNSG2dImageProxy *proxyIn);
+BOOL sub_02021CCC(ObjCharTransferTask *a0);
+BOOL sub_02021D00(ObjCharTransferTask *a0);
+void sub_02021D58(ObjCharTransferTask *a0);
+ObjCharTransferTask *ObjCharTransfer_GetTaskByID(int resId);
+GXOBJVRamModeChar ObjCharTransferTask_SetMappingTypeFromHW(ObjCharTransferTask *a0, NNS_G2D_VRAM_TYPE vram);
+void ObjCharTransferTask_SetBaseAddrs(ObjCharTransferTask *a0, u32 offsetMain, u32 offsetSub);
+BOOL sub_02021DE4(int vram, u32 *pOffsetMain, u32 *pOffsetSub, u32 size, u32 *a4, u32 *a5);  // a0 should be NNS_G2D_VRAM_TYPE but needs to be int in order to match
+void sub_02021E90(ObjCharTransferTask *a0, u32 a1, u32 a2);
+void sub_02021EC0(NNS_G2D_VRAM_TYPE vram, u32 offsetMain, u32 offsetSub, u32 a3, u32 a4);
+void sub_02021F28(ObjCharTransferTask *a0);
+void sub_02021F54(ObjCharTransferTask *a0, NNS_G2D_VRAM_TYPE vram);
+void sub_02021FB0(ObjCharTransferTask *a0);
+void sub_02021FDC(ObjCharTransferTask *a0, NNS_G2D_VRAM_TYPE vram);
+ObjCharTransferTask *ObjCharTransfer_GetFreeTask(void);
 void sub_02022060(void);
 void sub_020221D0(u32 a0, u32 a1, HeapID heapID);
 void sub_020221B4(void);
@@ -65,100 +65,100 @@ void sub_02022278(u8 *a0);
 void sub_02022290(u32 a0, u32 a1, u8 *a2);
 u32 sub_020222EC(u32 a0, u8 *a1);
 void sub_02022374(u32 a0, u32 a1, u8 *a2);
-void sub_020223C4(UnkStruct_021D21F4_sub *a0);
+void sub_020223C4(ObjCharTransferTask *a0);
 int sub_02022448(GXOBJVRamModeChar mode);
 int sub_02022488(int a0, int a1, int a2);
 u32 sub_020224A8(int a0, int a1);
 int sub_020224B8(int a0, int a1);
-BOOL sub_020224C0(u32 size, NNS_G2D_VRAM_TYPE vram, u32 *a2, u32 *a3);
-void sub_02022510(u32 size, NNS_G2D_VRAM_TYPE vram);
+BOOL ObjCharTransfer_TryGetDestVramOffsets(u32 size, NNS_G2D_VRAM_TYPE vram, u32 *pOffsetMain, u32 *pOffsetSub);
+void ObjCharTransfer_ReserveVramSpace(u32 size, NNS_G2D_VRAM_TYPE vram);
 void sub_02022560(int a0, u32 *a1, u8 *a2);
 void sub_0202256C(u32 a0, u32 a1, u32 a2, int *a3, int *a4);
 
-void sub_020215A0(UnkStruct_020215A0 *template) {
-    sub_020215C0(template, GX_GetOBJVRamModeChar(), GXS_GetOBJVRamModeChar());
+void ObjCharTransfer_Init(UnkStruct_020215A0 *template) {
+    ObjCharTransfer_InitEx(template, GX_GetOBJVRamModeChar(), GXS_GetOBJVRamModeChar());
 }
 
-void sub_020215C0(UnkStruct_020215A0 *template, GXOBJVRamModeChar modeMain, GXOBJVRamModeChar modeSub) {
-    if (_021D21F4 == NULL) {
-        _021D21F4 = AllocFromHeap(template->heapId, sizeof(struct UnkStruct_021D21F4));
-        MI_CpuClear32(_021D21F4, sizeof(struct UnkStruct_021D21F4));
-        _021D21F4->max = template->unk_00;
-        _021D21F4->unk_00 = (UnkStruct_021D21F4_sub *)AllocFromHeap(template->heapId, sizeof(UnkStruct_021D21F4_sub) * _021D21F4->max);
+void ObjCharTransfer_InitEx(UnkStruct_020215A0 *template, GXOBJVRamModeChar modeMain, GXOBJVRamModeChar modeSub) {
+    if (sObjCharTransferTasksManager == NULL) {
+        sObjCharTransferTasksManager = AllocFromHeap(template->heapId, sizeof(struct ObjCharTransferTasksManager));
+        MI_CpuClear32(sObjCharTransferTasksManager, sizeof(struct ObjCharTransferTasksManager));
+        sObjCharTransferTasksManager->max = template->unk_00;
+        sObjCharTransferTasksManager->tasks = (ObjCharTransferTask *)AllocFromHeap(template->heapId, sizeof(ObjCharTransferTask) * sObjCharTransferTasksManager->max);
         for (int i = 0; i < template->unk_00; ++i) {
-            sub_02021C08(&_021D21F4->unk_00[i]);
+            ObjCharTransferTask_Reset(&sObjCharTransferTasksManager->tasks[i]);
         }
-        _021D21F4->unk_2C = sub_02022448(modeMain);
-        _021D21F4->unk_30 = sub_02022448(modeSub);
+        sObjCharTransferTasksManager->unk_2C = sub_02022448(modeMain);
+        sObjCharTransferTasksManager->unk_30 = sub_02022448(modeSub);
         GX_SetOBJVRamModeChar(modeMain);
         GXS_SetOBJVRamModeChar(modeSub);
-        int r4 = sub_020224A8(template->unk_04, _021D21F4->unk_2C);
-        int r0 = sub_020224A8(template->unk_08, _021D21F4->unk_30);
+        int r4 = sub_020224A8(template->unk_04, sObjCharTransferTasksManager->unk_2C);
+        int r0 = sub_020224A8(template->unk_08, sObjCharTransferTasksManager->unk_30);
         sub_020221D0(r4, r0, template->heapId);
     }
 }
 
-void sub_0202168C(void) {
-    if (_021D21F4 != NULL) {
-        sub_02022238(_021D21F4->unk_34);
-        sub_02022238(_021D21F4->unk_38);
+void ObjCharTransfer_Destroy(void) {
+    if (sObjCharTransferTasksManager != NULL) {
+        sub_02022238(sObjCharTransferTasksManager->unk_34);
+        sub_02022238(sObjCharTransferTasksManager->unk_38);
         sub_020218D4();
-        FreeToHeap(_021D21F4->unk_00);
-        FreeToHeap(_021D21F4);
-        _021D21F4 = NULL;
+        FreeToHeap(sObjCharTransferTasksManager->tasks);
+        FreeToHeap(sObjCharTransferTasksManager);
+        sObjCharTransferTasksManager = NULL;
     }
 }
 
 void sub_020216C8(void) {
-    _021D21F4->offsetMain = 0;
-    _021D21F4->offsetSub = 0;
-    sub_02022278(_021D21F4->unk_34);
-    sub_02022278(_021D21F4->unk_38);
+    sObjCharTransferTasksManager->offsetMain = 0;
+    sObjCharTransferTasksManager->offsetSub = 0;
+    sub_02022278(sObjCharTransferTasksManager->unk_34);
+    sub_02022278(sObjCharTransferTasksManager->unk_38);
     sub_02022060();
 }
 
-void sub_020216F4(u32 a0, u32 a1, u32 a2) {
-    int sp8;
+void sub_020216F4(u32 offset, u32 size, NNS_G2D_VRAM_TYPE vram) {
+    int newOffset;
     int sp4;
-    if (a2 == 1) {
-        sub_0202256C(_021D21F4->unk_1C, a0, a1, &sp8, &sp4);
+    if (vram == NNS_G2D_VRAM_TYPE_2DMAIN) {
+        sub_0202256C(sObjCharTransferTasksManager->unk_1C, offset, size, &newOffset, &sp4);
         if (sp4 > 0) {
-            sub_02021EC0(NNS_G2D_VRAM_TYPE_2DMAIN, sp8, 0, sp4, 0);
+            sub_02021EC0(NNS_G2D_VRAM_TYPE_2DMAIN, newOffset, 0, sp4, 0);
         }
     } else {
-        sub_0202256C(_021D21F4->unk_20, a0, a1, &sp8, &sp4);
+        sub_0202256C(sObjCharTransferTasksManager->unk_20, offset, size, &newOffset, &sp4);
         if (sp4 > 0) {
-            sub_02021EC0(NNS_G2D_VRAM_TYPE_2DSUB, 0, sp8, 0, sp4);
+            sub_02021EC0(NNS_G2D_VRAM_TYPE_2DSUB, 0, newOffset, 0, sp4);
         }
     }
 }
 
-BOOL sub_02021758(const UnkStruct_02021758 *a0) {
-    GF_ASSERT(sub_0202180C(a0->id) != 1);
-    UnkStruct_021D21F4_sub *sub = sub_02022024();
+BOOL sub_02021758(const ObjCharTransferTaskTemplate *a0) {
+    GF_ASSERT(ObjCharTransfer_TaskExistsByID(a0->id) != 1);
+    ObjCharTransferTask *sub = ObjCharTransfer_GetFreeTask();
     if (sub == NULL) {
         GF_ASSERT(FALSE);
         return FALSE;
     }
-    if (!sub_02021C2C(a0, sub)) {
+    if (!ObjCharTransferTask_InitFromTemplate(a0, sub)) {
         return FALSE;
     }
     if (!sub_02021C9C(sub)) {
         sub_02021884(sub->resId);
         return FALSE;
     }
-    ++_021D21F4->num;
+    ++sObjCharTransferTasksManager->num;
     return TRUE;
 }
 
-BOOL sub_020217B0(const UnkStruct_02021758 *a0) {
-    GF_ASSERT(sub_0202180C(a0->id) != 1);
-    UnkStruct_021D21F4_sub *sub = sub_02022024();
+BOOL sub_020217B0(const ObjCharTransferTaskTemplate *a0) {
+    GF_ASSERT(ObjCharTransfer_TaskExistsByID(a0->id) != 1);
+    ObjCharTransferTask *sub = ObjCharTransfer_GetFreeTask();
     if (sub == NULL) {
         GF_ASSERT(FALSE);
         return FALSE;
     }
-    if (!sub_02021C2C(a0, sub)) {
+    if (!ObjCharTransferTask_InitFromTemplate(a0, sub)) {
         return FALSE;
     }
     sub->unk_40 = 1;
@@ -166,13 +166,13 @@ BOOL sub_020217B0(const UnkStruct_02021758 *a0) {
         sub_02021884(sub->resId);
         return FALSE;
     }
-    ++_021D21F4->num;
+    ++sObjCharTransferTasksManager->num;
     return TRUE;
 }
 
-BOOL sub_0202180C(int resId) {
-    for (int i = 0; i < _021D21F4->max; ++i) {
-        if (resId == _021D21F4->unk_00[i].resId) {
+BOOL ObjCharTransfer_TaskExistsByID(int resId) {
+    for (int i = 0; i < sObjCharTransferTasksManager->max; ++i) {
+        if (resId == sObjCharTransferTasksManager->tasks[i].resId) {
             return TRUE;
         }
     }
@@ -182,7 +182,7 @@ BOOL sub_0202180C(int resId) {
 
 void sub_0202183C(int id, NNSG2dCharacterData *charData) {
     GF_ASSERT(charData != NULL);
-    UnkStruct_021D21F4_sub *sub = sub_02021D70(id);
+    ObjCharTransferTask *sub = ObjCharTransfer_GetTaskByID(id);
     GF_ASSERT(sub != NULL);
     sub->charData = charData;
     if (sub->vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
@@ -194,10 +194,10 @@ void sub_0202183C(int id, NNSG2dCharacterData *charData) {
 }
 
 void sub_02021884(int resId) {
-    UnkStruct_021D21F4_sub *sub;
+    ObjCharTransferTask *sub;
     BOOL r5 = TRUE;
     do {
-        sub = sub_02021D70(resId);
+        sub = ObjCharTransfer_GetTaskByID(resId);
         GF_ASSERT(sub != NULL);
         if (sub->unk_3C == 4) {
             sub_02021A50(&sub->imageProxy);
@@ -207,21 +207,21 @@ void sub_02021884(int resId) {
     } while (r5);
     if (sub->unk_3C != 0) {
         sub_02021D58(sub);
-        --_021D21F4->num;
+        --sObjCharTransferTasksManager->num;
     }
 }
 
 void sub_020218D4(void) {
-    for (int i = 0; i < _021D21F4->max; ++i) {
-        if (_021D21F4->unk_00[i].unk_3C != 0) {
-            sub_02021D58(&_021D21F4->unk_00[i]);
-            --_021D21F4->num;
+    for (int i = 0; i < sObjCharTransferTasksManager->max; ++i) {
+        if (sObjCharTransferTasksManager->tasks[i].unk_3C != 0) {
+            sub_02021D58(&sObjCharTransferTasksManager->tasks[i]);
+            --sObjCharTransferTasksManager->num;
         }
     }
 }
 
 NNSG2dImageProxy *sub_02021910(int resId) {
-    UnkStruct_021D21F4_sub *sub = sub_02021D70(resId);
+    ObjCharTransferTask *sub = ObjCharTransfer_GetTaskByID(resId);
     GF_ASSERT(sub != NULL);
     if (sub->unk_3C == 0) {
         return NULL;
@@ -231,110 +231,110 @@ NNSG2dImageProxy *sub_02021910(int resId) {
 }
 
 NNSG2dImageProxy *sub_02021934(int resId, u32 size) {
-    UnkStruct_021D21F4_sub *sub = sub_02021D70(resId);
+    ObjCharTransferTask *sub = ObjCharTransfer_GetTaskByID(resId);
     GF_ASSERT(sub != NULL);
     if (sub->unk_3C == 0) {
         return NULL;
     }
-    u32 sp14;
-    u32 sp10;
+    u32 offsetMain;
+    u32 offsetSub;
     u32 spC;
     u32 sp8;
-    sub_02021DE4(sub->vram, &sp14, &sp10, size, &spC, &sp8);
+    sub_02021DE4(sub->vram, &offsetMain, &offsetSub, size, &spC, &sp8);
     if (sub->unk_3C == 3) {
         return NULL;
     }
     sub->unk_3C = 3;
-    sub_02021E90(sub, sp14, sp10);
+    sub_02021E90(sub, offsetMain, offsetSub);
     sub->unk_48 = 1;
-    sub->unk_4C = spC;
-    sub->unk_50 = sp8;
+    sub->sizeMain = spC;
+    sub->sizeSub = sp8;
     sub_02021FB0(sub);
-    sub_02021EC0(sub->vram, sp14, sp10, spC, sp8);
+    sub_02021EC0(sub->vram, offsetMain, offsetSub, spC, sp8);
 
     return &sub->imageProxy;
 }
 
 NNSG2dImageProxy *sub_020219B8(NNSG2dImageProxy *proxyIn) {
-    UnkStruct_021D21F4_sub *sub;
-    UnkStruct_021D21F4_sub *sub2;
-    u32 sp14;
-    u32 sp10;
+    ObjCharTransferTask *task;
+    ObjCharTransferTask *copiedTask;
+    u32 offsetMain;
+    u32 offsetSub;
     u32 spC;
     u32 sp8;
-    u32 r2;
+    u32 size;
 
-    sub = sub_02021C50(proxyIn);
-    GF_ASSERT(sub != NULL);
-    sub2 = sub_02022024();
-    GF_ASSERT(sub2 != NULL);
-    if (sub->unk_3C != 3) {
+    task = ObjCharTransfer_GetTaskByImageProxy(proxyIn);
+    GF_ASSERT(task != NULL);
+    copiedTask = ObjCharTransfer_GetFreeTask();
+    GF_ASSERT(copiedTask != NULL);
+    if (task->unk_3C != 3) {
         return NULL;
     }
-    *sub2 = *sub;
-    sub2->unk_3C = 4;
-    if (sub2->vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
-        r2 = sub2->unk_4C;
+    *copiedTask = *task;
+    copiedTask->unk_3C = 4;
+    if (copiedTask->vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
+        size = copiedTask->sizeMain;
     } else {
-        r2 = sub2->unk_50;
+        size = copiedTask->sizeSub;
     }
 
-    sub_02021DE4(sub2->vram, &sp14, &sp10, r2, &spC, &sp8);
-    sub_02021E90(sub2, sp14, sp10);
-    sub2->unk_48 = 1;
-    sub2->unk_4C = spC;
-    sub2->unk_50 = sp8;
-    sub_02021FB0(sub2);
-    sub_02021EC0(sub2->vram, sp14, sp10, spC, sp8);
+    sub_02021DE4(copiedTask->vram, &offsetMain, &offsetSub, size, &spC, &sp8);
+    sub_02021E90(copiedTask, offsetMain, offsetSub);
+    copiedTask->unk_48 = 1;
+    copiedTask->sizeMain = spC;
+    copiedTask->sizeSub = sp8;
+    sub_02021FB0(copiedTask);
+    sub_02021EC0(copiedTask->vram, offsetMain, offsetSub, spC, sp8);
 
-    return &sub2->imageProxy;
+    return &copiedTask->imageProxy;
 }
 
 void sub_02021A50(const NNSG2dImageProxy *proxy) {
     int i;
-    for (i = 0; i < _021D21F4->max; ++i) {
-        if ((_021D21F4->unk_00[i].unk_3C == 3 || _021D21F4->unk_00[i].unk_3C == 4) && &_021D21F4->unk_00[i].imageProxy == proxy)  {
+    for (i = 0; i < sObjCharTransferTasksManager->max; ++i) {
+        if ((sObjCharTransferTasksManager->tasks[i].unk_3C == 3 || sObjCharTransferTasksManager->tasks[i].unk_3C == 4) && &sObjCharTransferTasksManager->tasks[i].imageProxy == proxy)  {
             break;
         }
     }
-    if (i < _021D21F4->max) {
-        sub_020223C4(&_021D21F4->unk_00[i]);
-        if (_021D21F4->unk_00[i].unk_3C == 3) {
-            _021D21F4->unk_00[i].unk_3C = 2;
+    if (i < sObjCharTransferTasksManager->max) {
+        sub_020223C4(&sObjCharTransferTasksManager->tasks[i]);
+        if (sObjCharTransferTasksManager->tasks[i].unk_3C == 3) {
+            sObjCharTransferTasksManager->tasks[i].unk_3C = 2;
         } else {
-            _021D21F4->unk_00[i].unk_3C = 0;
-            sub_02021C08(&_021D21F4->unk_00[i]);
+            sObjCharTransferTasksManager->tasks[i].unk_3C = 0;
+            ObjCharTransferTask_Reset(&sObjCharTransferTasksManager->tasks[i]);
         }
     }
 }
 
-BOOL sub_02021AC8(u32 a0, int a1, NNS_G2D_VRAM_TYPE vram, UnkStruct_02021AC8 *a3) {
-    u32 sp14;
-    u32 sp10;
-    u32 spC;
-    u32 sp8;
+BOOL sub_02021AC8(u32 size, BOOL a1, NNS_G2D_VRAM_TYPE vram, UnkStruct_02021AC8 *a3) {
+    u32 offsetMain;
+    u32 offsetSub;
+    u32 sizeMain;
+    u32 sizeSub;
     BOOL ret;
 
     if (a1 == 0) {
-        ret = sub_020224C0(a0, vram, &sp14, &sp10);
+        ret = ObjCharTransfer_TryGetDestVramOffsets(size, vram, &offsetMain, &offsetSub);
         if (ret) {
-            sub_02022510(a0, vram);
-            a3->unk_08 = vram;
-            a3->unk_00 = a0;
-            a3->unk_04 = vram == 1 ? sp14 : sp10;
+            ObjCharTransfer_ReserveVramSpace(size, vram);
+            a3->vram = vram;
+            a3->size = size;
+            a3->offset = vram == NNS_G2D_VRAM_TYPE_2DMAIN ? offsetMain : offsetSub;
             a3->unk_0A = 0;
         }
     } else {
-        ret = sub_02021DE4(vram, &sp14, &sp10, a0, &spC, &sp8);
+        ret = sub_02021DE4(vram, &offsetMain, &offsetSub, size, &sizeMain, &sizeSub);
         if (ret) {
-            sub_02021EC0(vram, sp14, sp10, spC, sp8);
-            a3->unk_08 = vram;
-            if (vram == 1) {
-                a3->unk_00 = spC;
-                a3->unk_04 = sp14 + _021D21F4->unk_1C;
+            sub_02021EC0(vram, offsetMain, offsetSub, sizeMain, sizeSub);
+            a3->vram = vram;
+            if (vram == NNS_G2D_VRAM_TYPE_2DMAIN) {
+                a3->size = sizeMain;
+                a3->offset = offsetMain + sObjCharTransferTasksManager->unk_1C;
             } else {
-                a3->unk_00 = sp8;
-                a3->unk_04 = sp10 + _021D21F4->unk_20;
+                a3->size = sizeSub;
+                a3->offset = offsetSub + sObjCharTransferTasksManager->unk_20;
             }
             a3->unk_0A = 1;
         }
@@ -344,35 +344,35 @@ BOOL sub_02021AC8(u32 a0, int a1, NNS_G2D_VRAM_TYPE vram, UnkStruct_02021AC8 *a3
 
 void sub_02021B5C(UnkStruct_02021AC8 *a0) {
     if (a0->unk_0A != 0) {
-        if (a0->unk_08 & 1) {
-            u32 r5 = sub_020224A8(a0->unk_00, _021D21F4->unk_2C);
-            u32 r0 = sub_020224A8(a0->unk_04 - _021D21F4->unk_1C, _021D21F4->unk_2C);
-            sub_02022374(r0, r5, _021D21F4->unk_34);
+        if (a0->vram & 1) {
+            u32 r5 = sub_020224A8(a0->size, sObjCharTransferTasksManager->unk_2C);
+            u32 r0 = sub_020224A8(a0->offset - sObjCharTransferTasksManager->unk_1C, sObjCharTransferTasksManager->unk_2C);
+            sub_02022374(r0, r5, sObjCharTransferTasksManager->unk_34);
         }
-        if (a0->unk_08 & 2) {
-            u32 r5 = sub_020224A8(a0->unk_00, _021D21F4->unk_30);
-            u32 r0 = sub_020224A8(a0->unk_04 - _021D21F4->unk_20, _021D21F4->unk_30);
-            sub_02022374(r0, r5, _021D21F4->unk_38);
+        if (a0->vram & 2) {
+            u32 r5 = sub_020224A8(a0->size, sObjCharTransferTasksManager->unk_30);
+            u32 r0 = sub_020224A8(a0->offset - sObjCharTransferTasksManager->unk_20, sObjCharTransferTasksManager->unk_30);
+            sub_02022374(r0, r5, sObjCharTransferTasksManager->unk_38);
         }
     }
 }
 
-UnkStruct_021D21F4 *sub_02021BD0(void) {
-    GF_ASSERT(_021D21F4 != NULL);
-    UnkStruct_021D21F4 *ret = _021D21F4;
-    _021D21F4 = NULL;
+ObjCharTransferTasksManager *sub_02021BD0(void) {
+    GF_ASSERT(sObjCharTransferTasksManager != NULL);
+    ObjCharTransferTasksManager *ret = sObjCharTransferTasksManager;
+    sObjCharTransferTasksManager = NULL;
     return ret;
 }
 
-void sub_02021BEC(UnkStruct_021D21F4 *a0) {
-    GF_ASSERT(_021D21F4 == NULL);
-    _021D21F4 = a0;
+void sub_02021BEC(ObjCharTransferTasksManager *a0) {
+    GF_ASSERT(sObjCharTransferTasksManager == NULL);
+    sObjCharTransferTasksManager = a0;
 }
 
-void sub_02021C08(UnkStruct_021D21F4_sub *a0) {
+void ObjCharTransferTask_Reset(ObjCharTransferTask *a0) {
     a0->charData = NULL;
     a0->vram = NNS_G2D_VRAM_TYPE_NEITHER;
-    a0->unk_08 = 0;
+    a0->isTransferred = FALSE;
     a0->resId = -1;
     a0->baseAddrMain = 0;
     a0->baseAddrSub = 0;
@@ -381,40 +381,40 @@ void sub_02021C08(UnkStruct_021D21F4_sub *a0) {
     NNS_G2dInitImageProxy(&a0->imageProxy);
 }
 
-BOOL sub_02021C2C(const UnkStruct_02021758 *a0, UnkStruct_021D21F4_sub *a1) {
-    a1->charData = a0->charData;
-    a1->resId = a0->id;
-    a1->vram = a0->vram;
-    a1->unk_08 = a1->charData->characterFmt >> 8;
-    a1->unk_44 = a0->unk_0C;
-    a1->unk_48 = 0;
-    a1->unk_4C = 0;
-    a1->unk_50 = 0;
+BOOL ObjCharTransferTask_InitFromTemplate(const ObjCharTransferTaskTemplate *template, ObjCharTransferTask *task) {
+    task->charData = template->charData;
+    task->resId = template->id;
+    task->vram = template->vram;
+    task->isTransferred = task->charData->characterFmt >> NNS_G2D_VRAMTRANSFERDATA_FLAG_SHIFT;
+    task->unk_44 = template->unk_0C;
+    task->unk_48 = 0;
+    task->sizeMain = 0;
+    task->sizeSub = 0;
     return TRUE;
 }
 
-UnkStruct_021D21F4_sub *sub_02021C50(const NNSG2dImageProxy *proxyIn) {
+ObjCharTransferTask *ObjCharTransfer_GetTaskByImageProxy(const NNSG2dImageProxy *proxyIn) {
     int i;
 
-    for (i = 0; i < _021D21F4->max; ++i) {
-        if (_021D21F4->unk_00[i].unk_3C != 0 && &_021D21F4->unk_00[i].imageProxy == proxyIn) {
+    for (i = 0; i < sObjCharTransferTasksManager->max; ++i) {
+        if (sObjCharTransferTasksManager->tasks[i].unk_3C != 0 && &sObjCharTransferTasksManager->tasks[i].imageProxy == proxyIn) {
             break;
         }
     }
-    if (i >= _021D21F4->max) {
+    if (i >= sObjCharTransferTasksManager->max) {
         return NULL;
     }
 
-    return &_021D21F4->unk_00[i];
+    return &sObjCharTransferTasksManager->tasks[i];
 }
 
-BOOL sub_02021C9C(UnkStruct_021D21F4_sub *a0) {
+BOOL sub_02021C9C(ObjCharTransferTask *a0) {
     BOOL ret = TRUE;
-    if (a0->unk_08 != 0) {
+    if (a0->isTransferred) {
         a0->unk_3C = 2;
     } else {
         a0->unk_3C = 1;
-        if (a0->unk_44 == 0) {
+        if (!a0->unk_44) {
             ret = sub_02021CCC(a0);
         } else {
             ret = sub_02021D00(a0);
@@ -423,115 +423,115 @@ BOOL sub_02021C9C(UnkStruct_021D21F4_sub *a0) {
     return ret;
 }
 
-BOOL sub_02021CCC(UnkStruct_021D21F4_sub *a0) {
+BOOL sub_02021CCC(ObjCharTransferTask *a0) {
     u32 offsetMain;
     u32 offsetSub;
-    BOOL ret = sub_020224C0(a0->charData->szByte, a0->vram, &offsetMain, &offsetSub);
+    BOOL ret = ObjCharTransfer_TryGetDestVramOffsets(a0->charData->szByte, a0->vram, &offsetMain, &offsetSub);
     if (ret) {
-        sub_02021DD0(a0, offsetMain, offsetSub);
-        sub_02022510(a0->charData->szByte, a0->vram);
+        ObjCharTransferTask_SetBaseAddrs(a0, offsetMain, offsetSub);
+        ObjCharTransfer_ReserveVramSpace(a0->charData->szByte, a0->vram);
     }
     return ret;
 }
 
-BOOL sub_02021D00(UnkStruct_021D21F4_sub *a0) {
-    u32 sp14;
-    u32 sp10;
-    u32 spC;
-    u32 sp8;
-    if (!sub_02021DE4(a0->vram, &sp14, &sp10, a0->charData->szByte, &spC, &sp8)) {
+BOOL sub_02021D00(ObjCharTransferTask *a0) {
+    u32 offsetMain;
+    u32 offsetSub;
+    u32 sizeMain;
+    u32 sizeSub;
+    if (!sub_02021DE4(a0->vram, &offsetMain, &offsetSub, a0->charData->szByte, &sizeMain, &sizeSub)) {
         return FALSE;
     }
-    sub_02021E90(a0, sp14, sp10);
+    sub_02021E90(a0, offsetMain, offsetSub);
     a0->unk_48 = 1;
-    a0->unk_4C = spC;
-    a0->unk_50 = sp8;
+    a0->sizeMain = sizeMain;
+    a0->sizeSub = sizeSub;
     sub_02021F28(a0);
-    sub_02021EC0(a0->vram, sp14, sp10, spC, sp8);
+    sub_02021EC0(a0->vram, offsetMain, offsetSub, sizeMain, sizeSub);
     return TRUE;
 }
 
-void sub_02021D58(UnkStruct_021D21F4_sub *a0) {
+void sub_02021D58(ObjCharTransferTask *a0) {
     if (a0->unk_48) {
         sub_020223C4(a0);
     }
-    sub_02021C08(a0);
+    ObjCharTransferTask_Reset(a0);
 }
 
-UnkStruct_021D21F4_sub *sub_02021D70(int resId) {
-    for (int i = 0; i < _021D21F4->max; ++i) {
-        if (_021D21F4->unk_00[i].resId == resId) {
-            return &_021D21F4->unk_00[i];
+ObjCharTransferTask *ObjCharTransfer_GetTaskByID(int resId) {
+    for (int i = 0; i < sObjCharTransferTasksManager->max; ++i) {
+        if (sObjCharTransferTasksManager->tasks[i].resId == resId) {
+            return &sObjCharTransferTasksManager->tasks[i];
         }
     }
 
     return NULL;
 }
 
-GXOBJVRamModeChar sub_02021DA8(UnkStruct_021D21F4_sub *a0, NNS_G2D_VRAM_TYPE vram) {
+GXOBJVRamModeChar ObjCharTransferTask_SetMappingTypeFromHW(ObjCharTransferTask *task, NNS_G2D_VRAM_TYPE vram) {
     if (vram == NNS_G2D_VRAM_TYPE_2DMAIN) {
-        a0->charData->mapingType = GX_GetOBJVRamModeChar();
+        task->charData->mapingType = GX_GetOBJVRamModeChar();
     } else {
-        a0->charData->mapingType = GXS_GetOBJVRamModeChar();
+        task->charData->mapingType = GXS_GetOBJVRamModeChar();
     }
-    return a0->charData->mapingType;
+    return task->charData->mapingType;
 }
 
-void sub_02021DD0(UnkStruct_021D21F4_sub *a0, u32 offsetMain, u32 offsetSub) {
-    a0->baseAddrMain = offsetMain;
-    a0->baseAddrSub = offsetSub;
-    if (a0->unk_08 == 0) {
-        sub_02021F28(a0);
+void ObjCharTransferTask_SetBaseAddrs(ObjCharTransferTask *task, u32 offsetMain, u32 offsetSub) {
+    task->baseAddrMain = offsetMain;
+    task->baseAddrSub = offsetSub;
+    if (!task->isTransferred) {
+        sub_02021F28(task);
     }
 }
 
 BOOL sub_02021DE4(int a0, u32 *a1, u32 *a2, u32 a3, u32 *a4, u32 *a5) {
     if (a0 & NNS_G2D_VRAM_TYPE_2DMAIN) {
-        *a4 = sub_02022488(a3, _021D21F4->unk_2C, 1);
-        u32 r0 = sub_020224A8(*a4, _021D21F4->unk_2C);
-        *a1 = sub_020222EC(r0, _021D21F4->unk_34);
+        *a4 = sub_02022488(a3, sObjCharTransferTasksManager->unk_2C, 1);
+        u32 r0 = sub_020224A8(*a4, sObjCharTransferTasksManager->unk_2C);
+        *a1 = sub_020222EC(r0, sObjCharTransferTasksManager->unk_34);
         if (*a1 == -1) {
             GF_ASSERT(FALSE);
             return FALSE;
         }
-        *a1 = sub_020224B8(*a1, _021D21F4->unk_2C);
+        *a1 = sub_020224B8(*a1, sObjCharTransferTasksManager->unk_2C);
     }
     if (a0 & NNS_G2D_VRAM_TYPE_2DSUB) {
-        *a5 = sub_02022488(a3, _021D21F4->unk_30, 1);
-        u32 r0 = sub_020224A8(*a5, _021D21F4->unk_30);
-        *a2 = sub_020222EC(r0, _021D21F4->unk_38);
+        *a5 = sub_02022488(a3, sObjCharTransferTasksManager->unk_30, 1);
+        u32 r0 = sub_020224A8(*a5, sObjCharTransferTasksManager->unk_30);
+        *a2 = sub_020222EC(r0, sObjCharTransferTasksManager->unk_38);
         if (*a2 == -1) {
             GF_ASSERT(FALSE);
             return FALSE;
         }
-        *a2 = sub_020224B8(*a2, _021D21F4->unk_30);
+        *a2 = sub_020224B8(*a2, sObjCharTransferTasksManager->unk_30);
     }
     return TRUE;
 }
 
-void sub_02021E90(UnkStruct_021D21F4_sub *a0, u32 a1, u32 a2) {
+void sub_02021E90(ObjCharTransferTask *a0, u32 a1, u32 a2) {
     if (a0->vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
-        a0->baseAddrMain = a1 + _021D21F4->unk_1C;
+        a0->baseAddrMain = a1 + sObjCharTransferTasksManager->unk_1C;
     }
     if (a0->vram & NNS_G2D_VRAM_TYPE_2DSUB) {
-        a0->baseAddrSub = a2 + _021D21F4->unk_20;
+        a0->baseAddrSub = a2 + sObjCharTransferTasksManager->unk_20;
     }
 }
 
-void sub_02021EC0(NNS_G2D_VRAM_TYPE vram, u32 a1, u32 a2, u32 a3, u32 a4) {
+void sub_02021EC0(NNS_G2D_VRAM_TYPE vram, u32 offsetMain, u32 offsetSub, u32 sizeMain, u32 sizeSub) {
     if (vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
-        u32 r7 = sub_020224A8(a3, _021D21F4->unk_2C);
-        u32 r0 = sub_020224A8(a1, _021D21F4->unk_2C);
-        sub_02022290(r0, r7, _021D21F4->unk_34);
+        u32 r7 = sub_020224A8(sizeMain, sObjCharTransferTasksManager->unk_2C);
+        u32 r0 = sub_020224A8(offsetMain, sObjCharTransferTasksManager->unk_2C);
+        sub_02022290(r0, r7, sObjCharTransferTasksManager->unk_34);
     }
     if (vram & NNS_G2D_VRAM_TYPE_2DSUB) {
-        u32 r7 = sub_020224A8(a4, _021D21F4->unk_30);
-        u32 r0 = sub_020224A8(a2, _021D21F4->unk_30);
-        sub_02022290(r0, r7, _021D21F4->unk_38);
+        u32 r7 = sub_020224A8(sizeSub, sObjCharTransferTasksManager->unk_30);
+        u32 r0 = sub_020224A8(offsetSub, sObjCharTransferTasksManager->unk_30);
+        sub_02022290(r0, r7, sObjCharTransferTasksManager->unk_38);
     }
 }
 
-void sub_02021F28(UnkStruct_021D21F4_sub *a0) {
+void sub_02021F28(ObjCharTransferTask *a0) {
     NNS_G2dInitImageProxy(&a0->imageProxy);
     if (a0->vram != NNS_G2D_VRAM_TYPE_BOTH) {
         sub_02021F54(a0, a0->vram);
@@ -541,8 +541,8 @@ void sub_02021F28(UnkStruct_021D21F4_sub *a0) {
     }
 }
 
-void sub_02021F54(UnkStruct_021D21F4_sub *a0, NNS_G2D_VRAM_TYPE vram) {
-    int mappingType = a0->unk_40 ? sub_02021DA8(a0, vram) : vram;
+void sub_02021F54(ObjCharTransferTask *a0, NNS_G2D_VRAM_TYPE vram) {
+    int mappingType = a0->unk_40 ? ObjCharTransferTask_SetMappingTypeFromHW(a0, vram) : vram;
     u32 baseAddr;
     if (vram == NNS_G2D_VRAM_TYPE_2DMAIN) {
         baseAddr = a0->baseAddrMain;
@@ -563,7 +563,7 @@ void sub_02021F54(UnkStruct_021D21F4_sub *a0, NNS_G2D_VRAM_TYPE vram) {
     }
 }
 
-void sub_02021FB0(UnkStruct_021D21F4_sub *a0) {
+void sub_02021FB0(ObjCharTransferTask *a0) {
     NNS_G2dInitImageProxy(&a0->imageProxy);
     if (a0->vram != NNS_G2D_VRAM_TYPE_BOTH) {
         sub_02021FDC(a0, a0->vram);
@@ -573,8 +573,8 @@ void sub_02021FB0(UnkStruct_021D21F4_sub *a0) {
     }
 }
 
-void sub_02021FDC(UnkStruct_021D21F4_sub *a0, NNS_G2D_VRAM_TYPE vram) {
-    int r0 = a0->unk_40 ? sub_02021DA8(a0, vram) : vram;
+void sub_02021FDC(ObjCharTransferTask *a0, NNS_G2D_VRAM_TYPE vram) {
+    int r0 = a0->unk_40 ? ObjCharTransferTask_SetMappingTypeFromHW(a0, vram) : vram;
     u32 baseAddr;
     if (vram == NNS_G2D_VRAM_TYPE_2DMAIN) {
         baseAddr = a0->baseAddrMain;
@@ -591,10 +591,10 @@ void sub_02021FDC(UnkStruct_021D21F4_sub *a0, NNS_G2D_VRAM_TYPE vram) {
     }
 }
 
-UnkStruct_021D21F4_sub *sub_02022024(void) {
-    for (int i = 0; i < _021D21F4->max; ++i) {
-        if (_021D21F4->unk_00[i].unk_3C == 0) {
-            return &_021D21F4->unk_00[i];
+ObjCharTransferTask *ObjCharTransfer_GetFreeTask(void) {
+    for (int i = 0; i < sObjCharTransferTasksManager->max; ++i) {
+        if (sObjCharTransferTasksManager->tasks[i].unk_3C == 0) {
+            return &sObjCharTransferTasksManager->tasks[i];
         }
     }
 
@@ -604,100 +604,100 @@ UnkStruct_021D21F4_sub *sub_02022024(void) {
 void sub_02022060(void) {
     switch (GX_GetBankForOBJ()) {
     case GX_VRAM_OBJ_NONE:
-        _021D21F4->unk_14 = 0;
+        sObjCharTransferTasksManager->unk_14 = 0;
         break;
     case GX_VRAM_OBJ_16_F:
     case GX_VRAM_OBJ_16_G:
-        _021D21F4->unk_14 = 16 * 1024;
+        sObjCharTransferTasksManager->unk_14 = 16 * 1024;
         break;
     case GX_VRAM_OBJ_32_FG:
-        _021D21F4->unk_14 = 32 * 1024;
+        sObjCharTransferTasksManager->unk_14 = 32 * 1024;
         break;
     case GX_VRAM_OBJ_64_E:
-        _021D21F4->unk_14 = 64 * 1024;
+        sObjCharTransferTasksManager->unk_14 = 64 * 1024;
         break;
     case GX_VRAM_OBJ_80_EF:
     case GX_VRAM_OBJ_80_EG:
-        _021D21F4->unk_14 = 80 * 1024;
+        sObjCharTransferTasksManager->unk_14 = 80 * 1024;
         break;
     case GX_VRAM_OBJ_96_EFG:
-        _021D21F4->unk_14 = 96 * 1024;
+        sObjCharTransferTasksManager->unk_14 = 96 * 1024;
         break;
     case GX_VRAM_OBJ_128_A:
     case GX_VRAM_OBJ_128_B:
-        _021D21F4->unk_14 = 128 * 1024;
+        sObjCharTransferTasksManager->unk_14 = 128 * 1024;
         break;
     case GX_VRAM_OBJ_256_AB:
-        _021D21F4->unk_14 = 256 * 1024;
+        sObjCharTransferTasksManager->unk_14 = 256 * 1024;
         break;
     default:
-        _021D21F4->unk_14 = 0;
+        sObjCharTransferTasksManager->unk_14 = 0;
         break;
     }
 
     switch (GX_GetBankForSubOBJ()) {
     case GX_VRAM_SUB_OBJ_NONE:
-        _021D21F4->unk_18 = 0;
+        sObjCharTransferTasksManager->unk_18 = 0;
         break;
     case GX_VRAM_SUB_OBJ_16_I:
-        _021D21F4->unk_18 = 16 * 1024;
+        sObjCharTransferTasksManager->unk_18 = 16 * 1024;
         break;
     case GX_VRAM_SUB_OBJ_128_D:
-        _021D21F4->unk_18 = 128 * 1024;
+        sObjCharTransferTasksManager->unk_18 = 128 * 1024;
         break;
     default:
-        _021D21F4->unk_18 = 0;
+        sObjCharTransferTasksManager->unk_18 = 0;
         break;
     }
 
-    int r0 = sub_020224B8(_021D21F4->unk_24, _021D21F4->unk_2C);
-    _021D21F4->unk_1C = _021D21F4->unk_14 - r0;
-    r0 = sub_020224B8(_021D21F4->unk_28, _021D21F4->unk_30);
-    _021D21F4->unk_20 = _021D21F4->unk_18 - r0;
-    GF_ASSERT(_021D21F4->unk_1C >= 0 && _021D21F4->unk_20 >= 0);
-    GF_ASSERT(_021D21F4->unk_1C >= 0 && _021D21F4->unk_20 >= 0);  // they wanted to be doubly sure
+    int r0 = sub_020224B8(sObjCharTransferTasksManager->unk_24, sObjCharTransferTasksManager->unk_2C);
+    sObjCharTransferTasksManager->unk_1C = sObjCharTransferTasksManager->unk_14 - r0;
+    r0 = sub_020224B8(sObjCharTransferTasksManager->unk_28, sObjCharTransferTasksManager->unk_30);
+    sObjCharTransferTasksManager->unk_20 = sObjCharTransferTasksManager->unk_18 - r0;
+    GF_ASSERT(sObjCharTransferTasksManager->unk_1C >= 0 && sObjCharTransferTasksManager->unk_20 >= 0);
+    GF_ASSERT(sObjCharTransferTasksManager->unk_1C >= 0 && sObjCharTransferTasksManager->unk_20 >= 0);  // they wanted to be doubly sure
 }
 
 void sub_020221B4(void) {
-    sub_02022278(_021D21F4->unk_34);
-    sub_02022278(_021D21F4->unk_38);
+    sub_02022278(sObjCharTransferTasksManager->unk_34);
+    sub_02022278(sObjCharTransferTasksManager->unk_38);
 }
 
 void sub_020221D0(u32 a0, u32 a1, HeapID heapID) {
-    _021D21F4->unk_24 = a0;
-    _021D21F4->unk_28 = a1;
-    if (_021D21F4->unk_34 != NULL) {
-        FreeToHeap(_021D21F4->unk_34);
+    sObjCharTransferTasksManager->unk_24 = a0;
+    sObjCharTransferTasksManager->unk_28 = a1;
+    if (sObjCharTransferTasksManager->unk_34 != NULL) {
+        FreeToHeap(sObjCharTransferTasksManager->unk_34);
     }
-    if (_021D21F4->unk_38 != NULL) {
-        FreeToHeap(_021D21F4->unk_38);
+    if (sObjCharTransferTasksManager->unk_38 != NULL) {
+        FreeToHeap(sObjCharTransferTasksManager->unk_38);
     }
-    if (_021D21F4->unk_24 != 0) {
-        _021D21F4->unk_34 = AllocFromHeap(heapID, a0 / 8);
+    if (sObjCharTransferTasksManager->unk_24 != 0) {
+        sObjCharTransferTasksManager->unk_34 = AllocFromHeap(heapID, a0 / 8);
     }
-    if (_021D21F4->unk_28 != 0) {
-        _021D21F4->unk_38 = AllocFromHeap(heapID, a1 / 8);
+    if (sObjCharTransferTasksManager->unk_28 != 0) {
+        sObjCharTransferTasksManager->unk_38 = AllocFromHeap(heapID, a1 / 8);
     }
     sub_020221B4();
 }
 
 void sub_02022238(u8 *a0) {
     if (a0 != NULL) {
-        if (a0 == _021D21F4->unk_34) {
-            _021D21F4->unk_24 = 0;
+        if (a0 == sObjCharTransferTasksManager->unk_34) {
+            sObjCharTransferTasksManager->unk_24 = 0;
             FreeToHeap(a0);
         } else {
-            _021D21F4->unk_28 = 0;
+            sObjCharTransferTasksManager->unk_28 = 0;
             FreeToHeap(a0);
         }
     }
 }
 
 u32 sub_02022260(u8 *a0) {
-    if (a0 == _021D21F4->unk_34) {
-        return _021D21F4->unk_24;
+    if (a0 == sObjCharTransferTasksManager->unk_34) {
+        return sObjCharTransferTasksManager->unk_24;
     } else {
-        return _021D21F4->unk_28;
+        return sObjCharTransferTasksManager->unk_28;
     }
 }
 
@@ -766,18 +766,18 @@ void sub_02022374(u32 a0, u32 a1, u8 *a2) {
     }
 }
 
-void sub_020223C4(UnkStruct_021D21F4_sub *a0) {
+void sub_020223C4(ObjCharTransferTask *a0) {
     if (a0->vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
         u32 loc = NNS_G2dGetImageLocation(&a0->imageProxy, NNS_G2D_VRAM_TYPE_2DMAIN);
-        u32 r5 = sub_020224A8(loc - _021D21F4->unk_1C, _021D21F4->unk_2C);
-        u32 r1 = sub_020224A8(a0->unk_4C, _021D21F4->unk_2C);
-        sub_02022374(r5, r1, _021D21F4->unk_34);
+        u32 r5 = sub_020224A8(loc - sObjCharTransferTasksManager->unk_1C, sObjCharTransferTasksManager->unk_2C);
+        u32 r1 = sub_020224A8(a0->sizeMain, sObjCharTransferTasksManager->unk_2C);
+        sub_02022374(r5, r1, sObjCharTransferTasksManager->unk_34);
     }
     if (a0->vram & NNS_G2D_VRAM_TYPE_2DSUB) {
         u32 loc = NNS_G2dGetImageLocation(&a0->imageProxy, NNS_G2D_VRAM_TYPE_2DSUB);
-        u32 r5 = sub_020224A8(loc - _021D21F4->unk_20, _021D21F4->unk_30);
-        u32 r1 = sub_020224A8(a0->unk_50, _021D21F4->unk_30);
-        sub_02022374(r5, r1, _021D21F4->unk_38);
+        u32 r5 = sub_020224A8(loc - sObjCharTransferTasksManager->unk_20, sObjCharTransferTasksManager->unk_30);
+        u32 r1 = sub_020224A8(a0->sizeSub, sObjCharTransferTasksManager->unk_30);
+        sub_02022374(r5, r1, sObjCharTransferTasksManager->unk_38);
     }
     a0->unk_48 = 0;
 }
@@ -816,35 +816,35 @@ int sub_020224B8(int a0, int a1) {
     return a0 * a1 * 32;
 }
 
-BOOL sub_020224C0(u32 size, NNS_G2D_VRAM_TYPE vram, u32 *pOffsetMain, u32 *pOffsetSub) {
+BOOL ObjCharTransfer_TryGetDestVramOffsets(u32 size, NNS_G2D_VRAM_TYPE vram, u32 *pOffsetMain, u32 *pOffsetSub) {
     BOOL result = TRUE;
     if (vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
-        if (_021D21F4->offsetMain + size > _021D21F4->unk_1C) {
+        if (sObjCharTransferTasksManager->offsetMain + size > sObjCharTransferTasksManager->unk_1C) {
             GF_ASSERT(FALSE);
             result = FALSE;
         } else {
-            *pOffsetMain = _021D21F4->offsetMain;
+            *pOffsetMain = sObjCharTransferTasksManager->offsetMain;
         }
     }
     if (vram & NNS_G2D_VRAM_TYPE_2DSUB) {
-        if (_021D21F4->offsetSub + size > _021D21F4->unk_20) {
+        if (sObjCharTransferTasksManager->offsetSub + size > sObjCharTransferTasksManager->unk_20) {
             GF_ASSERT(FALSE);
             result = FALSE;
         } else {
-            *pOffsetSub = _021D21F4->offsetSub;
+            *pOffsetSub = sObjCharTransferTasksManager->offsetSub;
         }
     }
     return result;
 }
 
-void sub_02022510(u32 size, NNS_G2D_VRAM_TYPE vram) {
+void ObjCharTransfer_ReserveVramSpace(u32 size, NNS_G2D_VRAM_TYPE vram) {
     if (vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
-        _021D21F4->offsetMain += size;
-        _021D21F4->offsetMain = sub_02022488(_021D21F4->offsetMain, _021D21F4->unk_2C, 1);
+        sObjCharTransferTasksManager->offsetMain += size;
+        sObjCharTransferTasksManager->offsetMain = sub_02022488(sObjCharTransferTasksManager->offsetMain, sObjCharTransferTasksManager->unk_2C, 1);
     }
     if (vram & NNS_G2D_VRAM_TYPE_2DSUB) {
-        _021D21F4->offsetSub += size;
-        _021D21F4->offsetSub = sub_02022488(_021D21F4->offsetSub, _021D21F4->unk_30, 1);
+        sObjCharTransferTasksManager->offsetSub += size;
+        sObjCharTransferTasksManager->offsetSub = sub_02022488(sObjCharTransferTasksManager->offsetSub, sObjCharTransferTasksManager->unk_30, 1);
     }
 }
 
@@ -853,12 +853,12 @@ void sub_02022560(int a0, u32 *a1, u8 *a2) {
     *a2 = a0 & 7;
 }
 
-void sub_0202256C(u32 a0, u32 a1, u32 a2, int *a3, int *a4) {
-    *a3 = a1 - a0;
-    if (*a3 < 0) {
-        *a4 = a2 + *a3;
-        *a3 = 0;
+void sub_0202256C(u32 baseOffset, u32 curOffset, u32 size, int *distance, int *a4) {
+    *distance = curOffset - baseOffset;
+    if (*distance < 0) {
+        *a4 = size + *distance;
+        *distance = 0;
     } else {
-        *a4 = a2;
+        *a4 = size;
     }
 }

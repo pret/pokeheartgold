@@ -65,7 +65,7 @@ BOOL sub_0200CF70(SpriteRenderer* renderer, const Unk122_021E92FC* a1, const Unk
     sp14.unk_04 = a2->unk4;
     sp14.unk_08 = a2->unk8;
     sp14.heapId = renderer->heapId;
-    sub_020215C0(&sp14, a2->charModeMain, a2->charModeSub);
+    ObjCharTransfer_InitEx(&sp14, a2->charModeMain, a2->charModeSub);
     sub_02022588(a3, renderer->heapId);
     NNS_G2dInitOamManagerModule();
     if (renderer->hasOamManager == TRUE) {
@@ -127,7 +127,7 @@ static void SpriteGfxHandler_DestroyResObjsAndMans(SpriteGfxHandler* gfxHandler)
 
 static void DeinitSpriteRenderer(SpriteRenderer* renderer) {
     sub_0202067C(renderer->cellTransferState);
-    sub_0202168C();
+    ObjCharTransfer_Destroy();
     sub_02022608();
     if (renderer->hasOamManager == TRUE) {
         OamManager_Free();

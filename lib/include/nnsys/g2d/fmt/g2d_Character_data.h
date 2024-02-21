@@ -3,6 +3,11 @@
 
 #include <nitro.h>
 
+#define NNS_G2D_CHARACTER_FMT_MASK              0xFF    // 8 bit
+#define NNS_G2D_VRAMTRANSFERDATA_FLAG_MASK      0x1     // 1 bit
+#define NNS_G2D_CHARACTER_FMT_SHIFT             0
+#define NNS_G2D_VRAMTRANSFERDATA_FLAG_SHIFT     8
+
 typedef enum NNSG2dCharacterDataMapingType {
     NNS_G2D_CHARACTERMAPING_1D_32,
     NNS_G2D_CHARACTERMAPING_1D_64,

@@ -3659,7 +3659,7 @@ ov102_021E9198: ; 0x021E9198
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_020215A0
+	bl ObjCharTransfer_Init
 	bl sub_020216C8
 	add sp, #0x10
 	pop {r4, pc}
@@ -3669,10 +3669,10 @@ _021E91B8: .word ov102_021EC698
 
 	thumb_func_start ov102_021E91BC
 ov102_021E91BC: ; 0x021E91BC
-	ldr r3, _021E91C0 ; =sub_0202168C
+	ldr r3, _021E91C0 ; =ObjCharTransfer_Destroy
 	bx r3
 	.balign 4, 0
-_021E91C0: .word sub_0202168C
+_021E91C0: .word ObjCharTransfer_Destroy
 	thumb_func_end ov102_021E91BC
 
 	thumb_func_start ov102_021E91C4

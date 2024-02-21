@@ -1046,7 +1046,7 @@ ov01_021E61E0: ; 0x021E61E0
 	mov r1, #0x10
 	add r0, r2, #0
 	add r2, r1, #0
-	bl sub_020215C0
+	bl ObjCharTransfer_InitEx
 	mov r0, #0x14
 	mov r1, #4
 	bl sub_02022588
@@ -1061,7 +1061,7 @@ _021E6210: .word ov01_022062DC
 	thumb_func_start ov01_021E6214
 ov01_021E6214: ; 0x021E6214
 	push {r3, lr}
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	pop {r3, pc}
 	thumb_func_end ov01_021E6214

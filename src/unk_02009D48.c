@@ -139,23 +139,23 @@ void G2dRenderer_SetSubSurfaceCoords(struct GF_G2dRenderer *a0, fx32 x, fx32 y) 
     sub_02025C88(&a0->renderSurface[1], &rect);
 }
 
-void sub_02009FE8(u32 a0, GXOBJVRamModeChar mode) {
+void sub_02009FE8(NNS_G2D_VRAM_TYPE vram, GXOBJVRamModeChar mode) {
     switch (mode) {
     case GX_OBJVRAMMODE_CHAR_1D_32K:
         if (GX_GetBankForOBJ() == GX_VRAM_OBJ_16_G || GX_GetBankForOBJ() == GX_VRAM_OBJ_16_F) {
-            sub_020216F4(0x3E00, 0x200, a0);
+            sub_020216F4(0x3E00, 0x200, vram);
         } else {
-            sub_020216F4(0x7E00, 0x200, a0);
+            sub_020216F4(0x7E00, 0x200, vram);
         }
         break;
     case GX_OBJVRAMMODE_CHAR_1D_64K:
-        sub_020216F4(0xFE00, 0x200, a0);
+        sub_020216F4(0xFE00, 0x200, vram);
         break;
     case GX_OBJVRAMMODE_CHAR_1D_128K:
         if (GX_GetBankForOBJ() == GX_VRAM_OBJ_80_EF || GX_GetBankForOBJ() == GX_VRAM_OBJ_80_EG) {
-            sub_020216F4(0x13E00, 0x200, a0);
+            sub_020216F4(0x13E00, 0x200, vram);
         } else {
-            sub_020216F4(0x1FE00, 0x200, a0);
+            sub_020216F4(0x1FE00, 0x200, vram);
         }
         break;
     default:

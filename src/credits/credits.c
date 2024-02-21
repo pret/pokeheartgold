@@ -470,7 +470,7 @@ static void CreateOamAndObjResMgrs(CreditsAppWork *work) {
     GX_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_128K);
     GXS_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_128K);
     temp = ov76_021E6EA0;
-    sub_020215A0(&temp);
+    ObjCharTransfer_Init(&temp);
     sub_02022588(0xd, HEAP_ID_CREDITS);
     sub_020216C8();
     sub_02022638();
@@ -492,7 +492,7 @@ static void FreeOamAndObjResMgrs(CreditsAppWork *work) {
     }
     SpriteList_Delete(work->spriteList);
     OamManager_Free();
-    sub_0202168C();
+    ObjCharTransfer_Destroy();
     sub_02022608();
 }
 

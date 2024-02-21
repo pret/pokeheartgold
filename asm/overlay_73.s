@@ -334,7 +334,7 @@ _021E5BD8:
 	ldr r0, [r6, #0x50]
 	bl SpriteList_Delete
 	bl OamManager_Free
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	add r0, r6, #0
 	bl ov73_021E6400
@@ -881,7 +881,7 @@ ov73_021E6060: ; 0x021E6060
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_020215A0
+	bl ObjCharTransfer_Init
 	mov r0, #0x14
 	mov r1, #0x32
 	bl sub_02022588
@@ -5145,7 +5145,7 @@ ov73_021E8168: ; 0x021E8168
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_020215A0
+	bl ObjCharTransfer_Init
 	mov r0, #0x14
 	mov r1, #0x96
 	bl sub_02022588
@@ -5554,7 +5554,7 @@ _021E8496:
 	mov r1, #0
 	str r1, [r6, r0]
 	bl OamManager_Free
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

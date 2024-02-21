@@ -605,7 +605,7 @@ static void BattleArcadeGameBoard_InitObjects(GAME_BOARD_WORK *work) {
     work->button = BattleArcadeObject_Create(&work->unk3E8, 0, 0, 0, 2, 128, 96, 0, 0, 1);
 
     if (sub_02037474()) {
-        sub_02009FE8(1, GX_OBJVRAMMODE_CHAR_1D_32K);
+        sub_02009FE8(NNS_G2D_VRAM_TYPE_2DMAIN, GX_OBJVRAMMODE_CHAR_1D_32K);
         sub_0200A080(1);
         sub_0203A880();
     }
@@ -1292,7 +1292,7 @@ static void ov84_0223F418(GAME_BOARD_SUB_3E8 *work) {
 
     SpriteList_Delete(work->spriteList);
     OamManager_Free();
-    sub_0202168C();
+    ObjCharTransfer_Destroy();
     sub_02022608();
 }
 
@@ -1300,7 +1300,7 @@ extern UnkStruct_020215A0 ov84_0223F9E8;
 
 static void ov84_0223F480(void) {
     UnkStruct_020215A0 var = ov84_0223F9E8;
-    sub_020215C0(&var, GX_OBJVRAMMODE_CHAR_1D_32K, GX_OBJVRAMMODE_CHAR_1D_32K);
+    ObjCharTransfer_InitEx(&var, GX_OBJVRAMMODE_CHAR_1D_32K, GX_OBJVRAMMODE_CHAR_1D_32K);
     sub_02022588(14, HEAP_ID_GAME_BOARD);
     sub_020216C8();
     sub_02022638();
