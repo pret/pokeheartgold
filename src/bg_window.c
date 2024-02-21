@@ -934,7 +934,7 @@ void BG_FillCharDataRange(BgConfig *bgConfig, enum GFBgLayer bgId, u32 fillValue
     FreeToHeap(buffer);
 }
 
-void BG_LoadPlttData(u32 location, const void *plttData, u32 size, enum GFPalSlotOffset offset) {
+void BG_LoadPlttData(u32 location, const void *plttData, u32 size, u32 offset) {
     DC_FlushRange(plttData, size);
     if (location < GF_PAL_LOCATION_SUB_BG) {
         GX_LoadBGPltt(plttData, offset, size);
@@ -944,7 +944,7 @@ void BG_LoadPlttData(u32 location, const void *plttData, u32 size, enum GFPalSlo
     GXS_LoadBGPltt(plttData, offset, size);
 }
 
-void BG_LoadBlankPltt(u32 location, u32 size, enum GFPalSlotOffset offset, HeapID heapId) {
+void BG_LoadBlankPltt(u32 location, u32 size, u32 offset, HeapID heapId) {
     void *plttData = AllocFromHeapAtEnd(heapId, size);
     memset(plttData, 0, size);
     DC_FlushRange(plttData, size);

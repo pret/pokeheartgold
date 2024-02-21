@@ -7,7 +7,7 @@
 #include "system.h"
 #include "vram_transfer_manager.h"
 #include "unk_02037C94.h"
-#include "unk_02004A44.h"
+#include "sound_02004A44.h"
 #include "unk_020379A0.h"
 #include "unk_020755E8.h"
 #include "unk_02026E84.h"
