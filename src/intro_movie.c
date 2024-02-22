@@ -20,10 +20,10 @@
 BOOL IntroMovie_Init(OVY_MANAGER *man, int *state);
 BOOL IntroMovie_Main(OVY_MANAGER *man, int *state);
 BOOL IntroMovie_Exit(OVY_MANAGER *man, int *state);
-void ov60_021E6E14(void);
-void ov60_021E6E34(IntroMovieOvyData *data);
-void ov60_021E6E40(IntroMovieOvyData *data);
-void ov60_021E6EC0(IntroMovieOvyData *data);
+void IntroMovie_SetGraphicsBanks(void);
+void IntroMovie_HandleSpriteUpdates(IntroMovieOvyData *data);
+void IntroMovie_InitSpriteGraphicsHW(IntroMovieOvyData *data);
+void IntroMovie_TeardownSpritesManager(IntroMovieOvyData *data);
 
 const OVY_MGR_TEMPLATE gApplication_IntroMovie = {IntroMovie_Init, IntroMovie_Main, IntroMovie_Exit, FS_OVERLAY_ID_NONE};
 
@@ -62,8 +62,8 @@ BOOL IntroMovie_Init(OVY_MANAGER *man, int *state) {
     data->savedLCRngSeed = GetLCRNGSeed();
     SetLCRNGSeed(0);
     data->bgConfig = BgConfig_Alloc(data->heapID);
-    ov60_021E6E14();
-    ov60_021E6E40(data);
+    IntroMovie_SetGraphicsBanks();
+    IntroMovie_InitSpriteGraphicsHW(data);
     return TRUE;
 }
 
@@ -104,7 +104,7 @@ BOOL IntroMovie_Main(OVY_MANAGER *man, int *state) {
         return TRUE;
     }
 
-    ov60_021E6E34(data);
+    IntroMovie_HandleSpriteUpdates(data);
     ++data->totalFrameCount;
     return FALSE;
 }
@@ -115,7 +115,7 @@ BOOL IntroMovie_Exit(OVY_MANAGER *man, int *state) {
     IntroMovieOvyData *data = OverlayManager_GetData(man);
     sub_0200FBF4(PM_LCD_TOP, RGB_WHITE);
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_WHITE);
-    ov60_021E6EC0(data);
+    IntroMovie_TeardownSpritesManager(data);
     FreeToHeap(data->bgConfig);
     if (data->bgAnimCnt.blend[0].task != NULL) {
         SysTask_Destroy(data->bgAnimCnt.blend[0].task);
@@ -155,7 +155,7 @@ BOOL IntroMovie_Exit(OVY_MANAGER *man, int *state) {
     return TRUE;
 }
 
-void ov60_021E6E14(void) {
+void IntroMovie_SetGraphicsBanks(void) {
     GraphicsBanks banks = {
         GX_VRAM_BG_128_B,
         GX_VRAM_BGEXTPLTT_NONE,
@@ -171,11 +171,11 @@ void ov60_021E6E14(void) {
     GfGfx_SetBanks(&banks);
 }
 
-void ov60_021E6E34(IntroMovieOvyData *data) {
+void IntroMovie_HandleSpriteUpdates(IntroMovieOvyData *data) {
     sub_0202457C(data->spriteList);
 }
 
-void ov60_021E6E40(IntroMovieOvyData *data) {
+void IntroMovie_InitSpriteGraphicsHW(IntroMovieOvyData *data) {
     GX_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_32K);
     GXS_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_32K);
 
@@ -189,7 +189,7 @@ void ov60_021E6E40(IntroMovieOvyData *data) {
     data->spriteList = G2dRenderer_Init(20, &data->spriteRenderer, HEAP_ID_INTRO_MOVIE);
 }
 
-void ov60_021E6EC0(IntroMovieOvyData *data) {
+void IntroMovie_TeardownSpritesManager(IntroMovieOvyData *data) {
     SpriteList_Delete(data->spriteList);
     OamManager_Free();
     sub_0202168C();
