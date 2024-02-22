@@ -5,7 +5,7 @@
 _000:
     ResetAllStatChanges 
     // All stat changes were eliminated!
-    PrintMessage msg_00000197_00817, TAG_NONE
+    PrintMessage msg_0197_00817, TAG_NONE
     Wait 
     WaitButtonABTime 30
     End 

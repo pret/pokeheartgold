@@ -4,7 +4,7 @@
 
 _000:
     // {0}’s rage is building!
-    PrintMessage msg_00000197_00363, TAG_NICKNAME, BTLSCR_DEFENDER
+    PrintMessage msg_0197_00363, TAG_NICKNAME, BATTLER_CATEGORY_DEFENDER
     Wait 
     WaitButtonABTime 30
     End 

@@ -4,8 +4,8 @@
 
 _000:
     // But it failed!
-    PrintMessage msg_00000197_00796, TAG_NONE
+    PrintMessage msg_0197_00796, TAG_NONE
     Wait 
     WaitButtonABTime 30
-    UpdateVar OPCODE_FLAG_ON, BTLVAR_MOVE_STATUS_FLAGS, MOVE_STATUS_NO_MORE_WORK
+    UpdateVar OPCODE_FLAG_ON, BSCRIPT_VAR_MOVE_STATUS_FLAGS, MOVE_STATUS_NO_MORE_WORK
     End 

@@ -4,5 +4,5 @@
 
 _000:
     // {0} vanished instantly!
-    BufferMessage msg_00000197_01082, TAG_NICKNAME, BTLSCR_ATTACKER
+    BufferMessage msg_0197_01082, TAG_NICKNAME, BATTLER_CATEGORY_ATTACKER
     GoToEffectScript 

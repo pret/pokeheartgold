@@ -4,5 +4,5 @@
 
 _000:
     // {0} burrowed its way under the ground!
-    BufferMessage msg_00000197_00226, TAG_NICKNAME, BTLSCR_ATTACKER
+    BufferMessage msg_0197_00226, TAG_NICKNAME, BATTLER_CATEGORY_ATTACKER
     GoToEffectScript 

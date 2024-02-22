@@ -3,11 +3,11 @@
     .data
 
 _000:
-    TrainerSlideIn BTLSCR_ENEMY, BATTLER_TYPE_SOLO_ENEMY
+    TrainerSlideIn BATTLER_CATEGORY_ENEMY, BATTLER_TYPE_SOLO_ENEMY
     Wait 
-    PrintBufferedTrainerMessage BTLSCR_ENEMY
+    PrintBufferedTrainerMessage BATTLER_CATEGORY_ENEMY
     Wait 
     WaitButtonABTime 60
-    TrainerSlideOut BTLSCR_ENEMY
+    TrainerSlideOut BATTLER_CATEGORY_ENEMY
     Wait 
     End 

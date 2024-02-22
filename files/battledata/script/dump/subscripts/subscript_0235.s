@@ -3,9 +3,9 @@
     .data
 
 _000:
-    UpdateVar OPCODE_FLAG_OFF, BTLVAR_FIELD_CONDITIONS, FIELD_CONDITION_SANDSTORM_TEMP
+    UpdateVar OPCODE_FLAG_OFF, BSCRIPT_VAR_FIELD_CONDITION, FIELD_CONDITION_SANDSTORM
     // The sandstorm subsided.
-    PrintMessage msg_00000197_00806, TAG_NONE
+    PrintMessage msg_0197_00806, TAG_NONE
     Wait 
     WaitButtonABTime 30
     End 

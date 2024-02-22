@@ -4,5 +4,5 @@
 
 _000:
     // {0} absorbed light!
-    BufferMessage msg_00000197_00214, TAG_NICKNAME, BTLSCR_ATTACKER
+    BufferMessage msg_0197_00214, TAG_NICKNAME, BATTLER_CATEGORY_ATTACKER
     GoToEffectScript 

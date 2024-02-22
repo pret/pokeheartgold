@@ -4,5 +4,5 @@
 
 _000:
     // {0} foresaw an attack!
-    BufferMessage msg_00000197_00472, TAG_NICKNAME, BTLSCR_ATTACKER
+    BufferMessage msg_0197_00472, TAG_NICKNAME, BATTLER_CATEGORY_ATTACKER
     GoToEffectScript 

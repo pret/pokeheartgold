@@ -197,80 +197,80 @@ class SideEffectType(Enum):
     SIDE_EFFECT_TYPE_DISOBEDIENCE = auto()
 
 class BattleContextStatus(IntFlag):
-    SYSCTL_SKIP_ATTACK_MESSAGE     = 1
-    SYSCTL_CHECK_LOOP_ONLY_ONCE    = auto()
-    SYSCTL_HIT_DURING_FLY          = auto()
-    SYSCTL_HIT_DURING_DIG          = auto()
-    SYSCTL_HIT_DURING_DIVE         = auto()
-    SYSCTL_FIRST_OF_MULTI_TURN     = auto()
-    SYSCTL_SKIP_SPRITE_BLINK       = auto()
-    SYSCTL_TRY_SYNCHRONIZE_STATUS  = auto()
-    SYSCTL_BATON_PASS              = auto()
-    SYSCTL_LAST_OF_MULTI_TURN      = auto()
-    SYSCTL_NONSTANDARD_ACC_CHECK   = auto()
-    SYSCTL_IGNORE_TYPE_CHECKS      = auto()
-    SYSCTL_CRASH_DAMAGE            = auto()
-    SYSCTL_MOVE_HIT                = auto()
-    SYSCTL_PLAYED_MOVE_ANIMATION   = auto()
-    SYSCTL_IGNORE_IMMUNITIES       = auto()
-    SYSCTL_MULTI_HIT_SKIP_MESSAGE  = auto()
-    SYSCTL_FAIL_STAT_STAGE_CHANGE  = auto()
-    SYSCTL_MESSAGE_AFTER_MISS      = auto()
-    SYSCTL_HIT_DURING_SHADOW_FORCE = auto()
-    SYSCTL_REUSE_LAST_MOVE         = auto()
-    SYSCTL_TURN_OFF_MESSAGES       = auto()
-    SYSCTL_APPLY_SECONDARY_EFFECT  = auto()
-    SYSCTL_APPLY_MOLD_BREAKER      = auto()
-    SYSCTL_BATTLER_0_FAINTED       = auto()
-    SYSCTL_BATTLER_1_FAINTED       = auto()
-    SYSCTL_BATTLER_2_FAINTED       = auto()
-    SYSCTL_BATTLER_3_FAINTED       = auto()
-    SYSCTL_BATTLER_0_BOOMED        = auto()
-    SYSCTL_BATTLER_1_BOOMED        = auto()
-    SYSCTL_BATTLER_2_BOOMED        = auto()
-    SYSCTL_BATTLER_3_BOOMED        = auto()
+    BATTLE_STATUS_NO_ATTACK_MESSAGE     = 1
+    BATTLE_STATUS_CHECK_LOOP_ONLY_ONCE    = auto()
+    BATTLE_STATUS_HIT_FLY          = auto()
+    BATTLE_STATUS_HIT_DIG          = auto()
+    BATTLE_STATUS_HIT_DIVE         = auto()
+    BATTLE_STATUS_CHARGE_TURN     = auto()
+    BATTLE_STATUS_NO_BLINK       = auto()
+    BATTLE_STATUS_SYNCRONIZE  = auto()
+    BATTLE_STATUS_BATON_PASS              = auto()
+    BATTLE_STATUS_CHARGE_MOVE_HIT      = auto()
+    BATTLE_STATUS_FLAT_HIT_RATE   = auto()
+    BATTLE_STATUS_IGNORE_TYPE_EFFECTIVENESS      = auto()
+    BATTLE_STATUS_CRASH_DAMAGE            = auto()
+    BATTLE_STATUS_MOVE_SUCCESSFUL                = auto()
+    BATTLE_STATUS_MOVE_ANIMATIONS_OFF   = auto()
+    BATTLE_STATUS_IGNORE_TYPE_IMMUNITY       = auto()
+    BATTLE_STATUS_MULTI_HIT_IGNORE_MESSAGE  = auto()
+    BATTLE_STATUS_FAIL_STAT_STAGE_CHANGE  = auto()
+    BATTLE_STATUS_MISS_MESSAGE      = auto()
+    BATTLE_STATUS_SHADOW_FORCE = auto()
+    BATTLE_STATUS_NO_MOVE_SET         = auto()
+    BATTLE_STATUS_MESSAGES_OFF       = auto()
+    BATTLE_STATUS_SECONDARY_EFFECT  = auto()
+    BATTLE_STATUS_MOLD_BREAKER      = auto()
+    BATTLE_STATUS_BATTLER_0_FAINTED       = auto()
+    BATTLE_STATUS_BATTLER_1_FAINTED       = auto()
+    BATTLE_STATUS_BATTLER_2_FAINTED       = auto()
+    BATTLE_STATUS_BATTLER_3_FAINTED       = auto()
+    BATTLE_STATUS_BATTLER_0_BOOMED        = auto()
+    BATTLE_STATUS_BATTLER_1_BOOMED        = auto()
+    BATTLE_STATUS_BATTLER_2_BOOMED        = auto()
+    BATTLE_STATUS_BATTLER_3_BOOMED        = auto()
 
-    SYSCTL_MON_FAINTED             = SYSCTL_BATTLER_0_FAINTED | SYSCTL_BATTLER_1_FAINTED | SYSCTL_BATTLER_2_FAINTED | SYSCTL_BATTLER_3_FAINTED
-    SYSCTL_MON_SELFDESTRUCTED      = SYSCTL_BATTLER_0_BOOMED | SYSCTL_BATTLER_1_BOOMED | SYSCTL_BATTLER_2_BOOMED | SYSCTL_BATTLER_3_BOOMED
+    BATTLE_STATUS_FAINTED             = BATTLE_STATUS_BATTLER_0_FAINTED | BATTLE_STATUS_BATTLER_1_FAINTED | BATTLE_STATUS_BATTLER_2_FAINTED | BATTLE_STATUS_BATTLER_3_FAINTED
+    BATTLE_STATUS_SELFDESTRUCTED      = BATTLE_STATUS_BATTLER_0_BOOMED | BATTLE_STATUS_BATTLER_1_BOOMED | BATTLE_STATUS_BATTLER_2_BOOMED | BATTLE_STATUS_BATTLER_3_BOOMED
 
 class BattleContextStatus2(IntFlag):
-    SYSCTL_NO_EXPERIENCE_GIVEN     = 1
-    SYSCTL_UPDATE_STAT_STAGES      = auto()
-    SYSCTL_ATTACK_MESSAGE_SHOWN    = auto()
-    SYSCTL_MAGIC_COAT_REFLECTED    = auto()
-    SYSCTL_UTURN_ACTIVE            = auto()
-    SYSCTL_FIRST_DAMAGE_MSG_SHOWN  = auto()
-    SYSCTL_MOVE_SUCCEEDED          = auto()
-    SYSCTL_STAT_STAGE_CHANGE_SHOWN = auto()
-    SYSCTL_RECOVER_HP_VISUAL       = auto()
-    SYSCTL_FORM_CHANGE             = (1 << 26)
-    SYSCTL_RECALC_MON_STATS        = auto()
-    SYSCTL_PAYOUT_EXP_MON_0        = auto()
-    SYSCTL_PAYOUT_EXP_MON_1        = auto()
-    SYSCTL_PAYOUT_EXP_MON_2        = auto()
-    SYSCTL_PAYOUT_EXP_MON_3        = auto()
+    BATTLE_STATUS2_NO_EXP_GAINED     = 1
+    BATTLE_STATUS2_UPDATE_STAT_STAGES      = auto()
+    BATTLE_STATUS2_DISPLAY_ATTACK_MESSAGE    = auto()
+    BATTLE_STATUS2_MAGIC_COAT    = auto()
+    BATTLE_STATUS2_UTURN            = auto()
+    BATTLE_STATUS2_FIRST_DAMAGE_MESSAGE  = auto()
+    BATTLE_STATUS2_MOVE_SUCCEEDED          = auto()
+    BATTLE_STATUS2_STAT_STAGE_CHANGE_SHOWN = auto()
+    BATTLE_STATUS2_RECOVER_HP_VISUAL       = auto()
+    BATTLE_STATUS2_FORM_CHANGE             = (1 << 26)
+    BATTLE_STATUS2_RECALC_MON_STATS        = auto()
+    BATTLE_STATUS2_EXP_GAIN_MON_0        = auto()
+    BATTLE_STATUS2_EXP_GAIN_MON_1        = auto()
+    BATTLE_STATUS2_EXP_GAIN_MON_2        = auto()
+    BATTLE_STATUS2_EXP_GAIN_MON_3        = auto()
 
-    SYSCTL_PAYOUT_EXP = SYSCTL_PAYOUT_EXP_MON_0 | SYSCTL_PAYOUT_EXP_MON_1 | SYSCTL_PAYOUT_EXP_MON_2 | SYSCTL_PAYOUT_EXP_MON_3
+    BATTLE_STATUS2_EXP_GAIN = BATTLE_STATUS2_EXP_GAIN_MON_0 | BATTLE_STATUS2_EXP_GAIN_MON_1 | BATTLE_STATUS2_EXP_GAIN_MON_2 | BATTLE_STATUS2_EXP_GAIN_MON_3
 
 class BattleSystemStatus(IntFlag):
-    BATTLE_STATUS_FIRST_BATTLE = 1
-    BATTLE_STATUS_HONEY_TREE   = auto()
-    BATTLE_STATUS_NO_RUNNING   = auto()
-    BATTLE_STATUS_LEGENDARY    = auto()
-    BATTLE_STATUS_RECORDING    = auto()
-    BATTLE_STATUS_RECORDED     = auto()
-    BATTLE_STATUS_GIRATINA     = auto()
-    BATTLE_STATUS_DISTORTION   = auto()
+    BATTLE_SPECIAL_FIRST_RIVAL = 1
+    BATTLE_SPECIAL_HONEY_TREE   = auto()
+    BATTLE_SPECIAL_NO_RUNNING   = auto()
+    BATTLE_SPECIAL_LEGENDARY    = auto()
+    BATTLE_SPECIAL_RECORDING    = auto()
+    BATTLE_SPECIAL_RECORDED     = auto()
+    BATTLE_SPECIAL_GIRATINA     = auto()
+    BATTLE_SPECIAL_DISTORTION_WORLD   = auto()
 
 class FieldConditions(IntFlag):
-    FIELD_CONDITION_RAINING_TEMP   = 1
-    FIELD_CONDITION_RAINING_PERM   = auto()
-    FIELD_CONDITION_SANDSTORM_TEMP = auto()
-    FIELD_CONDITION_SANDSTORM_PERM = auto()
-    FIELD_CONDITION_SUNNY_TEMP     = auto()
-    FIELD_CONDITION_SUNNY_PERM     = auto()
-    FIELD_CONDITION_HAILING_TEMP   = auto()
-    FIELD_CONDITION_HAILING_PERM   = auto()
+    FIELD_CONDITION_RAIN   = 1
+    FIELD_CONDITION_RAIN_PERMANENT   = auto()
+    FIELD_CONDITION_SANDSTORM = auto()
+    FIELD_CONDITION_SANDSTORM_PERMANENT = auto()
+    FIELD_CONDITION_SUN     = auto()
+    FIELD_CONDITION_SUN_PERMANENT     = auto()
+    FIELD_CONDITION_HAIL   = auto()
+    FIELD_CONDITION_HAIL_PERMANENT   = auto()
     FIELD_CONDITION_MON_0_UPROAR   = auto()
     FIELD_CONDITION_MON_1_UPROAR   = auto()
     FIELD_CONDITION_MON_2_UPROAR   = auto()
@@ -278,16 +278,16 @@ class FieldConditions(IntFlag):
     FIELD_CONDITION_GRAVITY_0      = auto()
     FIELD_CONDITION_GRAVITY_1      = auto()
     FIELD_CONDITION_GRAVITY_2      = auto()
-    FIELD_CONDITION_DEEP_FOG       = auto()
+    FIELD_CONDITION_FOG       = auto()
     FIELD_CONDITION_TRICK_ROOM_0   = auto()
     FIELD_CONDITION_TRICK_ROOM_1   = auto()
     FIELD_CONDITION_TRICK_ROOM_2   = auto()
 
-    FIELD_CONDITION_RAINING = FIELD_CONDITION_RAINING_TEMP | FIELD_CONDITION_RAINING_PERM
-    FIELD_CONDITION_SANDSTORM = FIELD_CONDITION_SANDSTORM_TEMP | FIELD_CONDITION_SANDSTORM_PERM
-    FIELD_CONDITION_SUNNY = FIELD_CONDITION_SUNNY_TEMP | FIELD_CONDITION_SUNNY_PERM
-    FIELD_CONDITION_HAILING = FIELD_CONDITION_HAILING_TEMP | FIELD_CONDITION_HAILING_PERM
-    FIELD_CONDITION_WEATHER = FIELD_CONDITION_RAINING | FIELD_CONDITION_SANDSTORM | FIELD_CONDITION_SUNNY | FIELD_CONDITION_HAILING | FIELD_CONDITION_DEEP_FOG
+    FIELD_CONDITION_RAIN_ALL = FIELD_CONDITION_RAIN | FIELD_CONDITION_RAIN_PERMANENT
+    FIELD_CONDITION_SANDSTORM_ALL = FIELD_CONDITION_SANDSTORM | FIELD_CONDITION_SANDSTORM_PERMANENT
+    FIELD_CONDITION_SUN_ALL = FIELD_CONDITION_SUN | FIELD_CONDITION_SUN_PERMANENT
+    FIELD_CONDITION_HAIL_ALL = FIELD_CONDITION_HAIL | FIELD_CONDITION_HAIL_PERMANENT
+    FIELD_CONDITION_WEATHER = FIELD_CONDITION_RAIN_ALL | FIELD_CONDITION_SANDSTORM_ALL | FIELD_CONDITION_SUN_ALL | FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_FOG
     FIELD_CONDITION_UPROAR = FIELD_CONDITION_MON_0_UPROAR | FIELD_CONDITION_MON_1_UPROAR | FIELD_CONDITION_MON_2_UPROAR | FIELD_CONDITION_MON_3_UPROAR
     FIELD_CONDITION_GRAVITY = FIELD_CONDITION_GRAVITY_0 | FIELD_CONDITION_GRAVITY_1 | FIELD_CONDITION_GRAVITY_2
     FIELD_CONDITION_GRAVITY_INIT = FIELD_CONDITION_GRAVITY_0 | FIELD_CONDITION_GRAVITY_2
@@ -298,7 +298,7 @@ class MoveStatus(IntFlag):
     MOVE_STATUS_MISSED              = 1
     MOVE_STATUS_SUPER_EFFECTIVE     = auto()
     MOVE_STATUS_NOT_VERY_EFFECTIVE  = auto()
-    MOVE_STATUS_INEFFECTIVE         = auto()
+    MOVE_STATUS_NO_EFFECT         = auto()
     MOVE_STATUS_CRITICAL_HIT        = auto()
     MOVE_STATUS_ONE_HIT_KO          = auto()
     MOVE_STATUS_FAILED              = auto()
@@ -306,89 +306,89 @@ class MoveStatus(IntFlag):
     MOVE_STATUS_ENDURED_ITEM        = auto()
     MOVE_STATUS_NO_PP               = auto()
     MOVE_STATUS_BYPASSED_ACCURACY   = auto()
-    MOVE_STATUS_LEVITATED           = auto()
+    MOVE_STATUS_LEVITATE_IMMUNE           = auto()
     MOVE_STATUS_ONE_HIT_KO_FAILED   = auto()
     MOVE_STATUS_SPLASH              = auto()
     MOVE_STATUS_MULTI_HIT_DISRUPTED = auto()
     MOVE_STATUS_PROTECTED           = auto()
     MOVE_STATUS_SEMI_INVULNERABLE   = auto()
     MOVE_STATUS_LOST_FOCUS          = auto()
-    MOVE_STATUS_WONDER_GUARD        = auto()
+    MOVE_STATUS_WONDER_GUARD_IMMUNE        = auto()
     MOVE_STATUS_STURDY              = auto()
-    MOVE_STATUS_MAGNET_RISE         = auto()
+    MOVE_STATUS_MAGNET_RISE_IMMUNE         = auto()
     MOVE_STATUS_NO_MORE_WORK        = (1 << 31)
 
     MOVE_STATUS_DID_NOT_HIT = MOVE_STATUS_MISSED \
-                            | MOVE_STATUS_INEFFECTIVE \
+                            | MOVE_STATUS_NO_EFFECT \
                             | MOVE_STATUS_FAILED \
-                            | MOVE_STATUS_LEVITATED \
+                            | MOVE_STATUS_LEVITATE_IMMUNE \
                             | MOVE_STATUS_ONE_HIT_KO_FAILED \
                             | MOVE_STATUS_MULTI_HIT_DISRUPTED \
                             | MOVE_STATUS_PROTECTED \
                             | MOVE_STATUS_SEMI_INVULNERABLE \
                             | MOVE_STATUS_LOST_FOCUS \
-                            | MOVE_STATUS_WONDER_GUARD \
+                            | MOVE_STATUS_WONDER_GUARD_IMMUNE \
                             | MOVE_STATUS_STURDY \
-                            | MOVE_STATUS_MAGNET_RISE
+                            | MOVE_STATUS_MAGNET_RISE_IMMUNE
 
 class MoveEffect(IntFlag):
-    MOVE_EFFECT_NONE                   = 0
-    MOVE_EFFECT_LEECH_SEED_RECIPIENT_0 = auto()
-    MOVE_EFFECT_LEECH_SEED_RECIPIENT_1 = auto()
-    MOVE_EFFECT_LEECH_SEED             = auto()
-    MOVE_EFFECT_LOCK_ON_0              = auto()
-    MOVE_EFFECT_LOCK_ON_1              = auto()
-    MOVE_EFFECT_PERISH_SONG            = auto()
-    MOVE_EFFECT_AIRBORNE               = auto()
-    MOVE_EFFECT_UNDERGROUND            = auto()
-    MOVE_EFFECT_MINIMIZE               = auto()
-    MOVE_EFFECT_CHARGE                 = auto()
-    MOVE_EFFECT_INGRAIN                = auto()
-    MOVE_EFFECT_YAWN_0                 = auto()
-    MOVE_EFFECT_YAWN_1                 = auto()
-    MOVE_EFFECT_IMPRISON               = auto()
-    MOVE_EFFECT_GRUDGE                 = auto()
-    MOVE_EFFECT_NO_CRITICAL            = auto()
-    MOVE_EFFECT_MUD_SPORT              = auto()
-    MOVE_EFFECT_WATER_SPORT            = auto()
-    MOVE_EFFECT_UNDERWATER             = auto()
-    MOVE_EFFECT_UNUSED_19              = auto()
-    MOVE_EFFECT_UNUSED_20              = auto()
-    MOVE_EFFECT_ABILITY_SUPPRESSED     = auto()
-    MOVE_EFFECT_MIRACLE_EYE            = auto()
-    MOVE_EFFECT_POWER_TRICK            = auto()
-    MOVE_EFFECT_AQUA_RING              = auto()
-    MOVE_EFFECT_HEAL_BLOCK             = auto()
-    MOVE_EFFECT_EMBARGO                = auto()
-    MOVE_EFFECT_MAGNET_RISE            = auto()
-    MOVE_EFFECT_CAMOUFLAGE             = auto()
-    MOVE_EFFECT_SHADOW_FORCE           = auto()
-    MOVE_EFFECT_IMPRISONED             = auto()
-    MOVE_EFFECT_UNUSED_31              = auto()
+    MOVE_EFFECT_FLAG_NONE                   = 0
+    MOVE_EFFECT_FLAG_LEECH_SEED_RECIPIENT_0 = auto()
+    MOVE_EFFECT_FLAG_LEECH_SEED_RECIPIENT_1 = auto()
+    MOVE_EFFECT_FLAG_LEECH_SEED             = auto()
+    MOVE_EFFECT_FLAG_LOCK_ON_0              = auto()
+    MOVE_EFFECT_FLAG_LOCK_ON_1              = auto()
+    MOVE_EFFECT_FLAG_PERISH_SONG            = auto()
+    MOVE_EFFECT_FLAG_FLY               = auto()
+    MOVE_EFFECT_FLAG_DIG            = auto()
+    MOVE_EFFECT_FLAG_MINIMIZE               = auto()
+    MOVE_EFFECT_FLAG_CHARGE                 = auto()
+    MOVE_EFFECT_FLAG_INGRAIN                = auto()
+    MOVE_EFFECT_FLAG_YAWN_0                 = auto()
+    MOVE_EFFECT_FLAG_YAWN_1                 = auto()
+    MOVE_EFFECT_FLAG_IMPRISON               = auto()
+    MOVE_EFFECT_FLAG_GRUDGE                 = auto()
+    MOVE_EFFECT_FLAG_NO_CRITICAL            = auto()
+    MOVE_EFFECT_FLAG_MUD_SPORT              = auto()
+    MOVE_EFFECT_FLAG_WATER_SPORT            = auto()
+    MOVE_EFFECT_FLAG_DIVE             = auto()
+    MOVE_EFFECT_FLAG_UNUSED_19              = auto()
+    MOVE_EFFECT_FLAG_UNUSED_20              = auto()
+    MOVE_EFFECT_FLAG_ABILITY_SUPPRESSED     = auto()
+    MOVE_EFFECT_FLAG_MIRACLE_EYE            = auto()
+    MOVE_EFFECT_FLAG_POWER_TRICK            = auto()
+    MOVE_EFFECT_FLAG_AQUA_RING              = auto()
+    MOVE_EFFECT_FLAG_HEAL_BLOCK             = auto()
+    MOVE_EFFECT_FLAG_EMBARGO                = auto()
+    MOVE_EFFECT_FLAG_MAGNET_RISE            = auto()
+    MOVE_EFFECT_FLAG_CAMOUFLAGE             = auto()
+    MOVE_EFFECT_FLAG_PHANTOM_FORCE           = auto()
+    MOVE_EFFECT_FLAG_IMPRISONED             = auto()
+    MOVE_EFFECT_FLAG_UNUSED_31              = auto()
 
-    MOVE_EFFECT_LEECH_SEED_RECIPIENT = MOVE_EFFECT_LEECH_SEED_RECIPIENT_0 | MOVE_EFFECT_LEECH_SEED_RECIPIENT_1
-    MOVE_EFFECT_LOCK_ON = MOVE_EFFECT_LOCK_ON_0 | MOVE_EFFECT_LOCK_ON_1
-    MOVE_EFFECT_YAWN = MOVE_EFFECT_YAWN_0 | MOVE_EFFECT_YAWN_1
+    MOVE_EFFECT_FLAG_LEECH_SEED_RECIPIENT = MOVE_EFFECT_FLAG_LEECH_SEED_RECIPIENT_0 | MOVE_EFFECT_FLAG_LEECH_SEED_RECIPIENT_1
+    MOVE_EFFECT_FLAG_LOCK_ON = MOVE_EFFECT_FLAG_LOCK_ON_0 | MOVE_EFFECT_FLAG_LOCK_ON_1
+    MOVE_EFFECT_FLAG_YAWN = MOVE_EFFECT_FLAG_YAWN_0 | MOVE_EFFECT_FLAG_YAWN_1
 
-    MOVE_EFFECT_SEMI_INVULNERABLE = MOVE_EFFECT_AIRBORNE \
-                                  | MOVE_EFFECT_UNDERGROUND \
-                                  | MOVE_EFFECT_UNDERWATER \
-                                  | MOVE_EFFECT_SHADOW_FORCE
-    MOVE_EFFECT_BATON_PASSED = MOVE_EFFECT_LEECH_SEED_RECIPIENT \
-                             | MOVE_EFFECT_LEECH_SEED \
-                             | MOVE_EFFECT_LOCK_ON \
-                             | MOVE_EFFECT_PERISH_SONG \
-                             | MOVE_EFFECT_INGRAIN \
-                             | MOVE_EFFECT_MUD_SPORT \
-                             | MOVE_EFFECT_WATER_SPORT \
-                             | MOVE_EFFECT_NO_CRITICAL \
-                             | MOVE_EFFECT_POWER_TRICK \
-                             | MOVE_EFFECT_AQUA_RING \
-                             | MOVE_EFFECT_ABILITY_SUPPRESSED \
-                             | MOVE_EFFECT_EMBARGO \
-                             | MOVE_EFFECT_HEAL_BLOCK \
-                             | MOVE_EFFECT_MAGNET_RISE
-    MOVE_EFFECT_NO_WEATHER_DAMAGE = MOVE_EFFECT_UNDERGROUND | MOVE_EFFECT_UNDERWATER
+    MOVE_EFFECT_FLAG_SEMI_INVULNERABLE = MOVE_EFFECT_FLAG_FLY \
+                                  | MOVE_EFFECT_FLAG_DIG \
+                                  | MOVE_EFFECT_FLAG_DIVE \
+                                  | MOVE_EFFECT_FLAG_PHANTOM_FORCE
+    MOVE_EFFECT_FLAG_BATON_PASSED = MOVE_EFFECT_FLAG_LEECH_SEED_RECIPIENT \
+                             | MOVE_EFFECT_FLAG_LEECH_SEED \
+                             | MOVE_EFFECT_FLAG_LOCK_ON \
+                             | MOVE_EFFECT_FLAG_PERISH_SONG \
+                             | MOVE_EFFECT_FLAG_INGRAIN \
+                             | MOVE_EFFECT_FLAG_MUD_SPORT \
+                             | MOVE_EFFECT_FLAG_WATER_SPORT \
+                             | MOVE_EFFECT_FLAG_NO_CRITICAL \
+                             | MOVE_EFFECT_FLAG_POWER_TRICK \
+                             | MOVE_EFFECT_FLAG_AQUA_RING \
+                             | MOVE_EFFECT_FLAG_ABILITY_SUPPRESSED \
+                             | MOVE_EFFECT_FLAG_EMBARGO \
+                             | MOVE_EFFECT_FLAG_HEAL_BLOCK \
+                             | MOVE_EFFECT_FLAG_MAGNET_RISE
+    MOVE_EFFECT_FLAG_NO_WEATHER_DAMAGE = MOVE_EFFECT_FLAG_DIG | MOVE_EFFECT_FLAG_DIVE
 
 class Move(Enum):
     MOVE_NONE          = 0
@@ -868,7 +868,7 @@ class SideConditions(IntFlag):
     SIDE_CONDITION_FUTURE_SIGHT  = auto()
     SIDE_CONDITION_WISH          = auto()
     SIDE_CONDITION_MIST          = auto()
-    SIDE_CONDITION_STEALTH_ROCK  = auto()
+    SIDE_CONDITION_STEALTH_ROCKS  = auto()
     SIDE_CONDITION_TAILWIND_0    = auto()
     SIDE_CONDITION_TAILWIND_1    = auto()
     SIDE_CONDITION_TOXIC_SPIKES  = auto()
@@ -912,111 +912,111 @@ class PokemonType(Enum):
     TYPE_DARK     = auto()
 
 class PokemonStatus(IntFlag):
-    MON_CONDITION_NONE            = 0
-    MON_CONDITION_SLEEP_0         = auto()
-    MON_CONDITION_SLEEP_1         = auto()
-    MON_CONDITION_SLEEP_2         = auto()
-    MON_CONDITION_POISON          = auto()
-    MON_CONDITION_BURN            = auto()
-    MON_CONDITION_FREEZE          = auto()
-    MON_CONDITION_PARALYSIS       = auto()
-    MON_CONDITION_TOXIC           = auto()
-    MON_CONDITION_TOXIC_COUNTER_0 = auto()
-    MON_CONDITION_TOXIC_COUNTER_1 = auto()
-    MON_CONDITION_TOXIC_COUNTER_2 = auto()
-    MON_CONDITION_TOXIC_COUNTER_3 = auto()
-    MON_CONDITION_UNUSED_12       = auto()
-    MON_CONDITION_UNUSED_13       = auto()
-    MON_CONDITION_UNUSED_14       = auto()
-    MON_CONDITION_UNUSED_15       = auto()
-    MON_CONDITION_UNUSED_16       = auto()
-    MON_CONDITION_UNUSED_17       = auto()
-    MON_CONDITION_UNUSED_18       = auto()
-    MON_CONDITION_UNUSED_19       = auto()
-    MON_CONDITION_UNUSED_20       = auto()
-    MON_CONDITION_UNUSED_21       = auto()
-    MON_CONDITION_UNUSED_22       = auto()
-    MON_CONDITION_UNUSED_23       = auto()
-    MON_CONDITION_UNUSED_24       = auto()
-    MON_CONDITION_UNUSED_25       = auto()
-    MON_CONDITION_UNUSED_26       = auto()
-    MON_CONDITION_UNUSED_27       = auto()
-    MON_CONDITION_UNUSED_28       = auto()
-    MON_CONDITION_UNUSED_29       = auto()
-    MON_CONDITION_UNUSED_30       = auto()
-    MON_CONDITION_UNUSED_31       = auto()
+    STATUS_NONE            = 0
+    STATUS_SLEEP_0         = auto()
+    STATUS_SLEEP_1         = auto()
+    STATUS_SLEEP_2         = auto()
+    STATUS_POISON          = auto()
+    STATUS_BURN            = auto()
+    STATUS_FREEZE          = auto()
+    STATUS_PARALYSIS       = auto()
+    STATUS_BAD_POISON           = auto()
+    STATUS_BAD_POISON_COUNTER_0 = auto()
+    STATUS_BAD_POISON_COUNTER_1 = auto()
+    STATUS_BAD_POISON_COUNTER_2 = auto()
+    STATUS_BAD_POISON_COUNTER_3 = auto()
+    STATUS_UNUSED_12       = auto()
+    STATUS_UNUSED_13       = auto()
+    STATUS_UNUSED_14       = auto()
+    STATUS_UNUSED_15       = auto()
+    STATUS_UNUSED_16       = auto()
+    STATUS_UNUSED_17       = auto()
+    STATUS_UNUSED_18       = auto()
+    STATUS_UNUSED_19       = auto()
+    STATUS_UNUSED_20       = auto()
+    STATUS_UNUSED_21       = auto()
+    STATUS_UNUSED_22       = auto()
+    STATUS_UNUSED_23       = auto()
+    STATUS_UNUSED_24       = auto()
+    STATUS_UNUSED_25       = auto()
+    STATUS_UNUSED_26       = auto()
+    STATUS_UNUSED_27       = auto()
+    STATUS_UNUSED_28       = auto()
+    STATUS_UNUSED_29       = auto()
+    STATUS_UNUSED_30       = auto()
+    STATUS_UNUSED_31       = auto()
 
-    MON_CONDITION_SLEEP = MON_CONDITION_SLEEP_0 | MON_CONDITION_SLEEP_1 | MON_CONDITION_SLEEP_2
-    MON_CONDITION_TOXIC_COUNTER = MON_CONDITION_TOXIC_COUNTER_0 | MON_CONDITION_TOXIC_COUNTER_1 | MON_CONDITION_TOXIC_COUNTER_2 | MON_CONDITION_TOXIC_COUNTER_3
-    MON_CONDITION_ANY_POISON = MON_CONDITION_POISON | MON_CONDITION_TOXIC | MON_CONDITION_TOXIC_COUNTER
-    MON_CONDITION_ANY = MON_CONDITION_SLEEP | MON_CONDITION_POISON | MON_CONDITION_BURN | MON_CONDITION_FREEZE | MON_CONDITION_PARALYSIS | MON_CONDITION_TOXIC
+    STATUS_SLEEP = STATUS_SLEEP_0 | STATUS_SLEEP_1 | STATUS_SLEEP_2
+    STATUS_POISON_COUNT = STATUS_BAD_POISON_COUNTER_0 | STATUS_BAD_POISON_COUNTER_1 | STATUS_BAD_POISON_COUNTER_2 | STATUS_BAD_POISON_COUNTER_3
+    STATUS_POISON_ALL = STATUS_POISON | STATUS_BAD_POISON | STATUS_POISON_COUNT
+    STATUS_ALL = STATUS_SLEEP | STATUS_POISON | STATUS_BURN | STATUS_FREEZE | STATUS_PARALYSIS | STATUS_BAD_POISON
 
-    MON_CONDITION_UNUSED_SLOTS = MON_CONDITION_UNUSED_12 \
-                               | MON_CONDITION_UNUSED_13 \
-                               | MON_CONDITION_UNUSED_14 \
-                               | MON_CONDITION_UNUSED_15 \
-                               | MON_CONDITION_UNUSED_16 \
-                               | MON_CONDITION_UNUSED_17 \
-                               | MON_CONDITION_UNUSED_18 \
-                               | MON_CONDITION_UNUSED_19 \
-                               | MON_CONDITION_UNUSED_20 \
-                               | MON_CONDITION_UNUSED_21 \
-                               | MON_CONDITION_UNUSED_22 \
-                               | MON_CONDITION_UNUSED_23 \
-                               | MON_CONDITION_UNUSED_24 \
-                               | MON_CONDITION_UNUSED_25 \
-                               | MON_CONDITION_UNUSED_26 \
-                               | MON_CONDITION_UNUSED_27 \
-                               | MON_CONDITION_UNUSED_28 \
-                               | MON_CONDITION_UNUSED_29 \
-                               | MON_CONDITION_UNUSED_30 \
-                               | MON_CONDITION_UNUSED_31
+    STATUS_UNUSED_SLOTS = STATUS_UNUSED_12 \
+                               | STATUS_UNUSED_13 \
+                               | STATUS_UNUSED_14 \
+                               | STATUS_UNUSED_15 \
+                               | STATUS_UNUSED_16 \
+                               | STATUS_UNUSED_17 \
+                               | STATUS_UNUSED_18 \
+                               | STATUS_UNUSED_19 \
+                               | STATUS_UNUSED_20 \
+                               | STATUS_UNUSED_21 \
+                               | STATUS_UNUSED_22 \
+                               | STATUS_UNUSED_23 \
+                               | STATUS_UNUSED_24 \
+                               | STATUS_UNUSED_25 \
+                               | STATUS_UNUSED_26 \
+                               | STATUS_UNUSED_27 \
+                               | STATUS_UNUSED_28 \
+                               | STATUS_UNUSED_29 \
+                               | STATUS_UNUSED_30 \
+                               | STATUS_UNUSED_31
 
-    MON_CONDITION_NOT_SLEEP = MON_CONDITION_BURN | MON_CONDITION_FREEZE | MON_CONDITION_PARALYSIS | MON_CONDITION_ANY_POISON | MON_CONDITION_UNUSED_SLOTS
-    MON_CONDITION_CAN_SYNCHRONIZE = MON_CONDITION_POISON | MON_CONDITION_BURN | MON_CONDITION_PARALYSIS
-    MON_CONDITION_FACADE_BOOST = MON_CONDITION_TOXIC | MON_CONDITION_POISON | MON_CONDITION_BURN | MON_CONDITION_PARALYSIS
+    STATUS_NOT_SLEEP = STATUS_BURN | STATUS_FREEZE | STATUS_PARALYSIS | STATUS_POISON_ALL | STATUS_UNUSED_SLOTS
+    STATUS_CAN_SYNCHRONIZE = STATUS_POISON | STATUS_BURN | STATUS_PARALYSIS
+    STATUS_FACADE_BOOST = STATUS_BAD_POISON | STATUS_POISON | STATUS_BURN | STATUS_PARALYSIS
 
 class PokemonVolatileStatus(IntFlag):
-    VOLATILE_CONDITION_NONE          = 0
-    VOLATILE_CONDITION_CONFUSION_0   = auto()
-    VOLATILE_CONDITION_CONFUSION_1   = auto()
-    VOLATILE_CONDITION_CONFUSION_2   = auto()
-    VOLATILE_CONDITION_FLINCH        = auto()
-    VOLATILE_CONDITION_UPROAR_0      = auto()
-    VOLATILE_CONDITION_UPROAR_1      = auto()
-    VOLATILE_CONDITION_UPROAR_2      = auto()
-    VOLATILE_CONDITION_UNUSED_7      = auto()
-    VOLATILE_CONDITION_BIDE_0        = auto()
-    VOLATILE_CONDITION_BIDE_1        = auto()
-    VOLATILE_CONDITION_THRASH_0      = auto()
-    VOLATILE_CONDITION_THRASH_1      = auto()
-    VOLATILE_CONDITION_MOVE_LOCKED   = auto()
-    VOLATILE_CONDITION_BIND_0        = auto()
-    VOLATILE_CONDITION_BIND_1        = auto()
-    VOLATILE_CONDITION_BIND_2        = auto()
-    VOLATILE_CONDITION_MON_0_ATTRACT = auto()
-    VOLATILE_CONDITION_MON_1_ATTRACT = auto()
-    VOLATILE_CONDITION_MON_2_ATTRACT = auto()
-    VOLATILE_CONDITION_MON_3_ATTRACT = auto()
-    VOLATILE_CONDITION_FOCUS_ENERGY  = auto()
-    VOLATILE_CONDITION_TRANSFORM     = auto()
-    VOLATILE_CONDITION_RECHARGING    = auto()
-    VOLATILE_CONDITION_RAGE          = auto()
-    VOLATILE_CONDITION_SUBSTITUTE    = auto()
-    VOLATILE_CONDITION_DESTINY_BOND  = auto()
-    VOLATILE_CONDITION_MEAN_LOOK     = auto()
-    VOLATILE_CONDITION_NIGHTMARE     = auto()
-    VOLATILE_CONDITION_CURSE         = auto()
-    VOLATILE_CONDITION_FORESIGHT     = auto()
-    VOLATILE_CONDITION_DEFENSE_CURL  = auto()
-    VOLATILE_CONDITION_TORMENT       = auto()
+    STATUS2_NONE          = 0
+    STATUS2_CONFUSION_0   = auto()
+    STATUS2_CONFUSION_1   = auto()
+    STATUS2_CONFUSION_2   = auto()
+    STATUS2_FLINCH        = auto()
+    STATUS2_UPROAR_0      = auto()
+    STATUS2_UPROAR_1      = auto()
+    STATUS2_UPROAR_2      = auto()
+    STATUS2_UNUSED_7      = auto()
+    STATUS2_BIDE_0        = auto()
+    STATUS2_BIDE_1        = auto()
+    STATUS2_THRASH_0      = auto()
+    STATUS2_THRASH_1      = auto()
+    STATUS2_LOCKED_INTO_MOVE   = auto()
+    STATUS2_BIND_0        = auto()
+    STATUS2_BIND_1        = auto()
+    STATUS2_BIND_2        = auto()
+    STATUS2_MON_0_ATTRACT = auto()
+    STATUS2_MON_1_ATTRACT = auto()
+    STATUS2_MON_2_ATTRACT = auto()
+    STATUS2_MON_3_ATTRACT = auto()
+    STATUS2_FOCUS_ENERGY  = auto()
+    STATUS2_TRANSFORM     = auto()
+    STATUS2_RECHARGE    = auto()
+    STATUS2_RAGE          = auto()
+    STATUS2_SUBSTITUTE    = auto()
+    STATUS2_DESTINY_BOND  = auto()
+    STATUS2_MEAN_LOOK     = auto()
+    STATUS2_NIGHTMARE     = auto()
+    STATUS2_CURSE         = auto()
+    STATUS2_FORESIGHT     = auto()
+    STATUS2_DEFENSE_CURL  = auto()
+    STATUS2_TORMENT       = auto()
 
-    VOLATILE_CONDITION_CONFUSION = VOLATILE_CONDITION_CONFUSION_0 | VOLATILE_CONDITION_CONFUSION_1 | VOLATILE_CONDITION_CONFUSION_2
-    VOLATILE_CONDITION_UPROAR = VOLATILE_CONDITION_UPROAR_0 | VOLATILE_CONDITION_UPROAR_1 | VOLATILE_CONDITION_UPROAR_2
-    VOLATILE_CONDITION_BIDE = VOLATILE_CONDITION_BIDE_0 | VOLATILE_CONDITION_BIDE_1
-    VOLATILE_CONDITION_THRASH = VOLATILE_CONDITION_THRASH_0 | VOLATILE_CONDITION_THRASH_1
-    VOLATILE_CONDITION_BIND = VOLATILE_CONDITION_BIND_0 | VOLATILE_CONDITION_BIND_1 | VOLATILE_CONDITION_BIND_2
-    VOLATILE_CONDITION_ATTRACT = VOLATILE_CONDITION_MON_0_ATTRACT | VOLATILE_CONDITION_MON_1_ATTRACT | VOLATILE_CONDITION_MON_2_ATTRACT | VOLATILE_CONDITION_MON_3_ATTRACT
+    STATUS2_CONFUSION = STATUS2_CONFUSION_0 | STATUS2_CONFUSION_1 | STATUS2_CONFUSION_2
+    STATUS2_UPROAR = STATUS2_UPROAR_0 | STATUS2_UPROAR_1 | STATUS2_UPROAR_2
+    STATUS2_BIDE = STATUS2_BIDE_0 | STATUS2_BIDE_1
+    STATUS2_RAMPAGE = STATUS2_THRASH_0 | STATUS2_THRASH_1
+    STATUS2_BIND = STATUS2_BIND_0 | STATUS2_BIND_1 | STATUS2_BIND_2
+    STATUS2_ATTRACT = STATUS2_MON_0_ATTRACT | STATUS2_MON_1_ATTRACT | STATUS2_MON_2_ATTRACT | STATUS2_MON_3_ATTRACT
 
 class Ability(Enum):
     ABILITY_NONE          = 0
@@ -1157,9 +1157,9 @@ class BattleResult(IntFlag):
     BATTLE_RESULT_ENEMY_FLED = BATTLE_RESULT_CAPTURED_MON | BATTLE_RESULT_LOSE
 
 class Gender(Enum):
-    GENDER_MALE     = 0
-    GENDER_FEMALE   = auto()
-    GENDER_NONE     = auto()
+    MON_MALE     = 0
+    MON_FEMALE   = auto()
+    MON_GENDERLESS     = auto()
 
 class Item(Enum):
     ITEM_NONE         = 0

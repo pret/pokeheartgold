@@ -4,7 +4,7 @@
 
 _000:
     // Gravity returned to normal!
-    PrintMessage msg_00000197_01004, TAG_NONE
+    PrintMessage msg_0197_01004, TAG_NONE
     Wait 
     WaitButtonABTime 30
     End 

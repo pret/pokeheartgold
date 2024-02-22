@@ -14,38 +14,38 @@ class Label():
         return f'Label(addr={self.addr})'
 
 VARIABLE_VALUE_MAP = {
-    Variable.BTLVAR_AFTER_MOVE_MESSAGE_TYPE: varvals.AfterMoveMessageType,
-    Variable.BTLVAR_ATTACKER: varvals.BattleSlot,
-    Variable.BTLVAR_ATTACKER_SELF_TURN_STATUS_FLAGS: varvals.SelfTurnStatus,
-    Variable.BTLVAR_BATTLE_CTX_STATUS: varvals.BattleContextStatus,
-    Variable.BTLVAR_BATTLE_CTX_STATUS_2: varvals.BattleContextStatus2,
-    Variable.BTLVAR_BATTLE_SYS_STATUS: varvals.BattleSystemStatus,
-    Variable.BTLVAR_BATTLE_TYPE: varvals.BattleType,
-    Variable.BTLVAR_CURRENT_MOVE: varvals.Move,
-    Variable.BTLVAR_DEFENDER: varvals.BattleSlot,
-    Variable.BTLVAR_FAINTED_MON: varvals.BattleSlot,
-    Variable.BTLVAR_FIELD_CONDITIONS: varvals.FieldConditions,
-    Variable.BTLVAR_MOVE_STATUS_FLAGS: varvals.MoveStatus,
-    Variable.BTLVAR_MOVE_TEMP: varvals.Move,
-    Variable.BTLVAR_MOVE_TYPE: varvals.PokemonType,
-    Variable.BTLVAR_MSG_ABILITY_TEMP: varvals.Ability,
-    Variable.BTLVAR_MSG_MOVE_TEMP: varvals.Move,
-    Variable.BTLVAR_RESULT_MASK: varvals.BattleResult,
-    Variable.BTLVAR_SIDE_CONDITIONS_ATTACKER: varvals.SideConditions,
-    Variable.BTLVAR_SIDE_CONDITIONS_DEFENDER: varvals.SideConditions,
-    Variable.BTLVAR_SIDE_CONDITIONS_EFFECT_MON: varvals.SideConditions,
-    Variable.BTLVAR_SIDE_EFFECT_MON_SELF_TURN_STATUS_FLAGS: varvals.SelfTurnStatus,
-    Variable.BTLVAR_SIDE_EFFECT_PARAM: varvals.EffectSubScript,
-    Variable.BTLVAR_SIDE_EFFECT_TYPE: varvals.SideEffectType,
+    Variable.BSCRIPT_VAR_AFTER_MOVE_MESSAGE_TYPE: varvals.AfterMoveMessageType,
+    Variable.BSCRIPT_VAR_BATTLER_ATTACKER: varvals.BattleSlot,
+    Variable.BSCRIPT_VAR_ATTACKER_SELF_TURN_STATUS_FLAGS: varvals.SelfTurnStatus,
+    Variable.BSCRIPT_VAR_BATTLE_STATUS: varvals.BattleContextStatus,
+    Variable.BSCRIPT_VAR_BATTLE_STATUS_2: varvals.BattleContextStatus2,
+    Variable.BSCRIPT_VAR_BATTLE_SYS_STATUS: varvals.BattleSystemStatus,
+    Variable.BSCRIPT_VAR_BATTLE_TYPE: varvals.BattleType,
+    Variable.BSCRIPT_VAR_MOVE_NO_CUR: varvals.Move,
+    Variable.BSCRIPT_VAR_BATTLER_TARGET: varvals.BattleSlot,
+    Variable.BSCRIPT_VAR_BATTLER_FAINTED: varvals.BattleSlot,
+    Variable.BSCRIPT_VAR_FIELD_CONDITION: varvals.FieldConditions,
+    Variable.BSCRIPT_VAR_MOVE_STATUS_FLAGS: varvals.MoveStatus,
+    Variable.BSCRIPT_VAR_MOVE_NO_TEMP: varvals.Move,
+    Variable.BSCRIPT_VAR_MOVE_TYPE: varvals.PokemonType,
+    Variable.BSCRIPT_VAR_MSG_ABILITY_TEMP: varvals.Ability,
+    Variable.BSCRIPT_VAR_MSG_MOVE_TEMP: varvals.Move,
+    Variable.BSCRIPT_VAR_BATTLE_OUTCOME: varvals.BattleResult,
+    Variable.BSCRIPT_VAR_SIDE_CONDITION_ATTACKER: varvals.SideConditions,
+    Variable.BSCRIPT_VAR_SIDE_CONDITION_TARGET: varvals.SideConditions,
+    Variable.BSCRIPT_VAR_SIDE_CONDITION_STAT_CHANGE: varvals.SideConditions,
+    Variable.BSCRIPT_VAR_SIDE_EFFECT_MON_SELF_TURN_STATUS_FLAGS: varvals.SelfTurnStatus,
+    Variable.BSCRIPT_VAR_SIDE_EFFECT_PARAM: varvals.EffectSubScript,
+    Variable.BSCRIPT_VAR_SIDE_EFFECT_TYPE: varvals.SideEffectType,
     
-    MonParam.BATTLEMON_ABILITY: varvals.Ability,
-    MonParam.BATTLEMON_GENDER: varvals.Gender,
-    MonParam.BATTLEMON_HELD_ITEM: varvals.Item,
-    MonParam.BATTLEMON_MOVE_EFFECTS_MASK: varvals.MoveEffect,
-    MonParam.BATTLEMON_STATUS: varvals.PokemonStatus,
-    MonParam.BATTLEMON_TYPE_1: varvals.PokemonType,
-    MonParam.BATTLEMON_TYPE_2: varvals.PokemonType,
-    MonParam.BATTLEMON_VOLATILE_STATUS: varvals.PokemonVolatileStatus,
+    MonParam.BMON_DATA_ABILITY: varvals.Ability,
+    MonParam.BMON_DATA_GENDER: varvals.Gender,
+    MonParam.BMON_DATA_HELD_ITEM: varvals.Item,
+    MonParam.BMON_DATA_MOVE_EFFECT: varvals.MoveEffect,
+    MonParam.BMON_DATA_STATUS: varvals.PokemonStatus,
+    MonParam.BMON_DATA_TYPE_1: varvals.PokemonType,
+    MonParam.BMON_DATA_TYPE_2: varvals.PokemonType,
+    MonParam.BMON_DATA_STATUS2: varvals.PokemonVolatileStatus,
 }
 
 class VariableValue():
@@ -65,11 +65,11 @@ class VariableValue():
         match self.param:
             case _ if self.param in VARIABLE_VALUE_MAP:
                 return VARIABLE_VALUE_MAP[self.param](self.value).name
-            case Variable.BTLVAR_SIDE_EFFECT_FLAGS_DIRECT | Variable.BTLVAR_SIDE_EFFECT_FLAGS_INDIRECT | Variable.BTLVAR_SIDE_EFFECT_FLAGS_ABILITY:
+            case Variable.BSCRIPT_VAR_SIDE_EFFECT_FLAGS_DIRECT | Variable.BSCRIPT_VAR_SIDE_EFFECT_FLAGS_INDIRECT | Variable.BSCRIPT_VAR_SIDE_EFFECT_FLAGS_ABILITY:
                 flags = varvals.MoveSideEffectFlags(self.value & varvals.MoveSideEffectFlags.MOVE_SIDE_EFFECT_FLAGS)
                 target = varvals.EffectSubScript(self.value & varvals.MoveSideEffectFlags.MOVE_SIDE_EFFECT_SUBSCRIPT)
                 return f'{flags.name}|{target.name}'
-            case Variable.BTLVAR_CALC_TEMP: # this can be anything, so keep it in hex format for now
+            case Variable.BSCRIPT_VAR_CALC_TEMP: # this can be anything, so keep it in hex format for now
                 return f'0x{self.value:08X}'
             case _: # all others are just standard numbers
                 return str(_sint(self.value, 32))

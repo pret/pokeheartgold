@@ -4,8 +4,8 @@
 
 _000:
     // {0} must recharge!
-    PrintMessage msg_00000197_00360, TAG_NICKNAME, BTLSCR_ATTACKER
+    PrintMessage msg_0197_00360, TAG_NICKNAME, BATTLER_CATEGORY_ATTACKER
     Wait 
     WaitButtonABTime 30
-    UnlockMoveChoice BTLSCR_ATTACKER
+    UnlockMoveChoice BATTLER_CATEGORY_ATTACKER
     End 

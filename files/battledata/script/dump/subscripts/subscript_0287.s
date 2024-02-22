@@ -3,6 +3,6 @@
     .data
 
 _000:
-    ToggleVanish BTLSCR_MSG_TEMP, FALSE
+    ToggleVanish BATTLER_CATEGORY_MSG_TEMP, FALSE
     Wait 
     End 

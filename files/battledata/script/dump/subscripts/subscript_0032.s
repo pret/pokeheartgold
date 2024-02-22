@@ -4,10 +4,10 @@
 
 _000:
     // {0} is paralyzed! It can’t move!
-    PrintMessage msg_00000197_00130, TAG_NICKNAME, BTLSCR_ATTACKER
+    PrintMessage msg_0197_00130, TAG_NICKNAME, BATTLER_CATEGORY_ATTACKER
     Wait 
     WaitButtonABTime 30
-    PlayBattleAnimation BTLSCR_ATTACKER, BATTLE_ANIMATION_PARALYZED
+    PlayBattleAnimation BATTLER_CATEGORY_ATTACKER, BATTLE_ANIMATION_PARALYZED
     Wait 
-    UnlockMoveChoice BTLSCR_ATTACKER
+    UnlockMoveChoice BATTLER_CATEGORY_ATTACKER
     End 

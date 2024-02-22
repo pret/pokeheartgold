@@ -4,5 +4,5 @@
 
 _000:
     // {0} became trapped by swirling magma!
-    BufferMessage msg_00000197_01247, TAG_NICKNAME, BTLSCR_DEFENDER
+    BufferMessage msg_0197_01247, TAG_NICKNAME, BATTLER_CATEGORY_DEFENDER
     GoToEffectScript 

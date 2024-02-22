@@ -8,6 +8,6 @@ _000:
     WaitButtonABTime 15
     PrintBufferedMessage 
     Wait 
-    PlayMoveAnimation BTLSCR_ATTACKER
+    PlayMoveAnimation BATTLER_CATEGORY_ATTACKER
     Wait 
     End 

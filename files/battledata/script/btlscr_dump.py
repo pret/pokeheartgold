@@ -18,7 +18,7 @@ from consts import (
     HGSS_COMMANDS
 )
 
-TAGS_1_PARAM = set(map(MessageTag, range(MessageTag.TAG_NONE_SIDE_CONSCIOUS.value, MessageTag.TAG_NICKNAME_NICKNAME.value)))
+TAGS_1_PARAM = set(map(MessageTag, range(MessageTag.TAG_NONE_SIDE.value, MessageTag.TAG_NICKNAME_NICKNAME.value)))
 TAGS_2_PARAMS = set(map(MessageTag, range(MessageTag.TAG_NICKNAME_NICKNAME.value, MessageTag.TAG_NICKNAME_NICKNAME_MOVE.value)))
 TAGS_3_PARAMS = set(map(MessageTag, range(MessageTag.TAG_NICKNAME_NICKNAME_MOVE.value, MessageTag.TAG_NICKNAME_ABILITY_NICKNAME_MOVE.value)))
 TAGS_4_PARAMS = set(map(MessageTag, range(MessageTag.TAG_NICKNAME_ABILITY_NICKNAME_MOVE.value, MessageTag.TAG_TRCLASS_TRNAME_NICKNAME_TRCLASS_TRNAME_NICKNAME.value)))
@@ -52,7 +52,7 @@ def format(param: any, chunks: Iterable, labels: dict, i: int, label_offset: int
             gmm_bank_parts = gmm_bank.split('_')
             gmm_bank_prefix = '_'.join([
                 *gmm_bank_parts[:-1],
-                f'{int(gmm_bank_parts[-1]):08}'
+                f'{int(gmm_bank_parts[-1]):04}'
             ])
             params.append(f'{gmm_bank_prefix}_{param.id:05}')
         case Enum():
@@ -62,7 +62,6 @@ def format(param: any, chunks: Iterable, labels: dict, i: int, label_offset: int
             labels[i + param.addr + label_offset + 1] = label
             params.append(label)
         case VariableValue():
-            print(f'{param.param} -> {param.value}')
             params.append(param.name())
             params.append(param.value_s())
         case bool():
@@ -147,7 +146,6 @@ def dumps(scr: bytes, cmd: list[Command], txt_root: XML.Element, gmm_bank: str) 
     for command, params in pairwise(parsed):
         if i in labels:
             lines.append(f'\n{labels[i]}:')
-        print(command)
         match command:
             case 'PrintMessage' | 'PrintGlobalMessage' | 'BufferMessage':
                 lines.append(f'    // {format_txt_string(params[0], txt_root)}')

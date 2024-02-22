@@ -4,5 +4,5 @@
 
 _000:
     // {0} was trapped by Sand Tomb!
-    BufferMessage msg_00000197_00245, TAG_NICKNAME, BTLSCR_DEFENDER
+    BufferMessage msg_0197_00245, TAG_NICKNAME, BATTLER_CATEGORY_DEFENDER
     GoToEffectScript 

@@ -6,7 +6,7 @@ _000:
     TryEncore _010
     Call BATTLE_SUBSCRIPT_ATTACK_MESSAGE_AND_ANIMATION
     // {0} received an encore!
-    PrintMessage msg_00000197_00372, TAG_NICKNAME, BTLSCR_DEFENDER
+    PrintMessage msg_0197_00372, TAG_NICKNAME, BATTLER_CATEGORY_DEFENDER
     Wait 
     WaitButtonABTime 30
 

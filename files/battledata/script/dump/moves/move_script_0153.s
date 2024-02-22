@@ -3,5 +3,5 @@
     .data
 
 _000:
-    IncrementGameStat BTLSCR_ATTACKER, BATTLER_TYPE_SOLO_PLAYER, 80
+    IncrementGameStat BATTLER_CATEGORY_ATTACKER, BATTLER_TYPE_SOLO_PLAYER, 80
     GoToEffectScript 

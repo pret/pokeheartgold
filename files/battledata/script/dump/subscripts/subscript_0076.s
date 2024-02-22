@@ -5,6 +5,6 @@
 _000:
     PrintAttackMessage 
     Wait 
-    PlayMoveAnimation BTLSCR_ATTACKER
+    PlayMoveAnimation BATTLER_CATEGORY_ATTACKER
     Wait 
     End 

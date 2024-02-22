@@ -7,7 +7,7 @@ _000:
     Wait 
     WaitButtonABTime 30
     // But there was no PP left for the move!
-    PrintMessage msg_00000197_00824, TAG_NONE
+    PrintMessage msg_0197_00824, TAG_NONE
     Wait 
     WaitButtonABTime 30
     End 
