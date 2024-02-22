@@ -217,21 +217,21 @@ typedef enum Terrain {
 #define MOVE_STATUS_CRITICAL_HIT            (1 << 4)
 #define MOVE_STATUS_ONE_HIT_KO              (1 << 5)
 #define MOVE_STATUS_FAILED                  (1 << 6)
-#define MOVE_STATUS_ENDURED                       (1 << 7)
-#define MOVE_STATUS_ENDURED_ITEM                       (1 << 8)
+#define MOVE_STATUS_ENDURED                 (1 << 7)
+#define MOVE_STATUS_ENDURED_ITEM            (1 << 8)
 #define MOVE_STATUS_NO_PP                   (1 << 9)
-#define MOVE_STATUS_BYPASSED_ACCURACY                      (1 << 10)
+#define MOVE_STATUS_BYPASSED_ACCURACY       (1 << 10)
 #define MOVE_STATUS_LEVITATE_IMMUNE         (1 << 11)
-#define MOVE_STATUS_ONE_HIT_KO_FAILED                      (1 << 12)
-#define MOVE_STATUS_SPLASH                      (1 << 13)
-#define MOVE_STATUS_MULTI_HIT_DISRUPTED                      (1 << 14)
+#define MOVE_STATUS_ONE_HIT_KO_FAILED       (1 << 12)
+#define MOVE_STATUS_SPLASH                  (1 << 13)
+#define MOVE_STATUS_MULTI_HIT_DISRUPTED     (1 << 14)
 #define MOVE_STATUS_PROTECTED               (1 << 15)
-#define MOVE_STATUS_SEMI_INVULNERABLE                      (1 << 16)
-#define MOVE_STATUS_LOST_FOCUS                      (1 << 17)
+#define MOVE_STATUS_SEMI_INVULNERABLE       (1 << 16)
+#define MOVE_STATUS_LOST_FOCUS              (1 << 17)
 #define MOVE_STATUS_WONDER_GUARD_IMMUNE     (1 << 18) 
-#define MOVE_STATUS_STURDY                      (1 << 19)
+#define MOVE_STATUS_STURDY                  (1 << 19)
 #define MOVE_STATUS_MAGNET_RISE_IMMUNE      (1 << 20)
-#define MOVE_STATUS_NO_MORE_WORK                      (1 << 31)
+#define MOVE_STATUS_NO_MORE_WORK            (1 << 31)
 
 #define MOVE_STATUS_ANY_EFFECTIVE           (MOVE_STATUS_SUPER_EFFECTIVE | MOVE_STATUS_NOT_VERY_EFFECTIVE)
 
@@ -283,12 +283,12 @@ typedef enum Terrain {
 #define SIDE_CONDITION_LUCKY_CHANT_SHIFT    12
 
 //Side Condition Enums
-#define SIDE_COND_REFLECT_TURNS       0
-#define SIDE_COND_LIGHT_SCREEN_TURNS  1
-#define SIDE_COND_MIST_TURNS          2
-#define SIDE_COND_SAFEGUARD_TURNS     3
-#define SIDE_COND_SPIKES_LAYERS       4
-#define SIDE_COND_TOXIC_SPIKES_LAYERS 5
+#define SIDE_COND_REFLECT_TURNS         0
+#define SIDE_COND_LIGHT_SCREEN_TURNS    1
+#define SIDE_COND_MIST_TURNS            2
+#define SIDE_COND_SAFEGUARD_TURNS       3
+#define SIDE_COND_SPIKES_LAYERS         4
+#define SIDE_COND_TOXIC_SPIKES_LAYERS   5
 
 //Status
 #define STATUS_NONE                         0
@@ -357,10 +357,10 @@ typedef enum Terrain {
 #define STATUS2_BATON_PASSABLE              (STATUS2_CONFUSION | STATUS2_FOCUS_ENERGY | STATUS2_SUBSTITUTE | STATUS2_MEAN_LOOK | STATUS2_CURSE)
 
 //Self Turns Flags
-#define SELF_TURN_FLAG_CLEAR        0
-#define SELF_TURN_FLAG_PLUCK_BERRY        (1 << 1)
-#define SELF_TURN_FLAG_INFATUATED        (1 << 2)
-#define SELF_TURN_FLAG_SUBSTITUTE_HIT        (1 << 3)
+#define SELF_TURN_FLAG_CLEAR                 0
+#define SELF_TURN_FLAG_PLUCK_BERRY          (1 << 1)
+#define SELF_TURN_FLAG_INFATUATED           (1 << 2)
+#define SELF_TURN_FLAG_SUBSTITUTE_HIT       (1 << 3)
 
 //Struggle Checks
 #define STRUGGLE_CHECK_NO_MOVES             (1 << 0)

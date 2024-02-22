@@ -66,7 +66,7 @@ int BattleSystem_GetMaxBattlers(BattleSystem *bsys) {
 }
 
 Party *BattleSystem_GetParty(BattleSystem *bsys, int battlerId) {
-    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_INGAME_PARTNER) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_TAG) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
         return bsys->trainerParty[battlerId];
     } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
         return bsys->trainerParty[battlerId & 1];
@@ -76,7 +76,7 @@ Party *BattleSystem_GetParty(BattleSystem *bsys, int battlerId) {
 }
 
 int BattleSystem_GetPartySize(BattleSystem *bsys, int battlerId) {
-    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_INGAME_PARTNER) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_TAG) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
         return Party_GetCount(bsys->trainerParty[battlerId]);
     } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
         return Party_GetCount(bsys->trainerParty[battlerId & 1]);
@@ -86,7 +86,7 @@ int BattleSystem_GetPartySize(BattleSystem *bsys, int battlerId) {
 }
 
 Pokemon *BattleSystem_GetPartyMon(BattleSystem *bsys, int battlerId, int index) {
-    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_INGAME_PARTNER) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_TAG) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
         return Party_GetMonByIndex(bsys->trainerParty[battlerId], index);
     } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
         return Party_GetMonByIndex(bsys->trainerParty[battlerId & 1], index);
@@ -196,7 +196,7 @@ String *BattleSystem_GetMessageBuffer(BattleSystem *bsys) {
 }
 
 u16 BattleSystem_GetTrainerIndex(BattleSystem *bsys, int battlerId) {
-    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_INGAME_PARTNER) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_TAG) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
         return bsys->trainerId[battlerId];
     } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
         return bsys->trainerId[battlerId & 1];
@@ -206,7 +206,7 @@ u16 BattleSystem_GetTrainerIndex(BattleSystem *bsys, int battlerId) {
 }
 
 Trainer *BattleSystem_GetTrainer(BattleSystem *bsys, int battlerId) {
-    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_INGAME_PARTNER) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_TAG) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
         return &bsys->trainers[battlerId];
     } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
         return &bsys->trainers[battlerId & 1];
@@ -216,7 +216,7 @@ Trainer *BattleSystem_GetTrainer(BattleSystem *bsys, int battlerId) {
 }
 
 PlayerProfile *BattleSystem_GetPlayerProfile(BattleSystem *bsys, int battlerId) {
-    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_INGAME_PARTNER) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_TAG) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
         return bsys->playerProfile[battlerId];
     } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
         return bsys->playerProfile[battlerId & 1];
@@ -338,7 +338,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
     int index2;
     int friendship;
     
-    if (BattleSystem_GetBattleType(bsys) == (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TRAINER) || ((BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_INGAME_PARTNER) && !(ov12_0223AB0C(bsys, battlerId) & 1))) {
+    if (BattleSystem_GetBattleType(bsys) == (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TRAINER) || ((BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_TAG) && !(ov12_0223AB0C(bsys, battlerId) & 1))) {
         index2 = ov12_022581D4(bsys, ctx, 2, BattleSystem_GetBattlerIdPartner(bsys, battlerId));
         if (index2 == selectedMonIndex) {
             battlerId = BattleSystem_GetBattlerIdPartner(bsys, battlerId);
@@ -436,8 +436,8 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
     if (GetItemAttr(item, ITEMATTR_INF_HEAL, HEAP_ID_BATTLE)) {
         if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
             data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL);
-            if (data & STATUS2_ATTRACT_ALL) {
-                data &= ~STATUS2_ATTRACT_ALL;
+            if (data & STATUS2_ATTRACT) {
+                data &= ~STATUS2_ATTRACT;
                 SetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, &data);
                 ret = TRUE;
             }
@@ -525,8 +525,8 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
         if (GetMonData(mon, MON_DATA_MOVE1PP + movePos, NULL) != GetMonData(mon, MON_DATA_MOVE1MAXPP + movePos, NULL)) {
             AddMonData(mon, MON_DATA_MOVE1PP + movePos, data);
             if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-                if (!(GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL) & STATUS2_TRANSFORMED) && !(GetBattlerVar(ctx, battlerId, BMON_DATA_MIMICED_MOVE, NULL) & MaskOfFlagNo(movePos))) {
-                    AddBattlerVar(ctx, battlerId, BMON_DATA_MOVE1PP + movePos, data);
+                if (!(GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL) & STATUS2_TRANSFORM) && !(GetBattlerVar(ctx, battlerId, BMON_DATA_MIMICED_MOVE, NULL) & MaskOfFlagNo(movePos))) {
+                    AddBattlerVar(ctx, battlerId, BMON_DATA_CUR_PP_1 + movePos, data);
                 }
             }
             ret = TRUE;
@@ -539,8 +539,8 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
             if (GetMonData(mon, MON_DATA_MOVE1PP + movePos, NULL) != GetMonData(mon, MON_DATA_MOVE1MAXPP + movePos, NULL)) {
                 AddMonData(mon, MON_DATA_MOVE1PP + movePos, data);
                 if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-                    if (!(GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL) & STATUS2_TRANSFORMED) && !(GetBattlerVar(ctx, battlerId, BMON_DATA_MIMICED_MOVE, NULL) & MaskOfFlagNo(movePos))) {
-                        AddBattlerVar(ctx, battlerId, BMON_DATA_MOVE1PP + movePos, data);
+                    if (!(GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL) & STATUS2_TRANSFORM) && !(GetBattlerVar(ctx, battlerId, BMON_DATA_MIMICED_MOVE, NULL) & MaskOfFlagNo(movePos))) {
+                        AddBattlerVar(ctx, battlerId, BMON_DATA_CUR_PP_1 + movePos, data);
                     }
                 }
                 ret = TRUE;
@@ -768,7 +768,7 @@ void *ov12_0223B750(BattleSystem *bsys) {
 }
 
 SOUND_CHATOT *BattleSystem_GetChatotVoice(BattleSystem *bsys, int battlerId) {
-    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_INGAME_PARTNER) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_TAG) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
         return bsys->chatotVoice[battlerId];
     } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
         return bsys->chatotVoice[battlerId & 1];
@@ -1239,7 +1239,7 @@ void ov12_0223C0C4(BattleSystem *bsys) {
 
 u8 BattleSystem_GetChatotVoiceParam(BattleSystem *bsys, int battlerId) {
     if ((bsys->battleType & BATTLE_TYPE_MULTI) ||
-        ((bsys->battleType & BATTLE_TYPE_INGAME_PARTNER) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+        ((bsys->battleType & BATTLE_TYPE_TAG) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
         return bsys->chatotVoiceParam[battlerId];
     } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
         return bsys->chatotVoiceParam[battlerId & 1];
