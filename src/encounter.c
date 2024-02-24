@@ -703,7 +703,7 @@ void SetupAndStartTrainerBattle(TaskManager *taskManager, u32 opponentTrainer1, 
 
     if (opponentTrainer2 != 0 && opponentTrainer1 != opponentTrainer2) {
         if (followerTrainerNum == 0) {
-            battleType = (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_INGAME_PARTNER);
+            battleType = (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TAG);
         } else {
             battleType = (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI);
         }
@@ -875,7 +875,7 @@ static void sub_02051660(FieldSystem *fieldSystem, BattleSetup *setup) {
                 GameStats_AddSpecial(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK11);
             }
         }
-    } else if ((battleType & BATTLE_TYPE_TRAINER) || (battleType & BATTLE_TYPE_INGAME_PARTNER)) {
+    } else if ((battleType & BATTLE_TYPE_TRAINER) || (battleType & BATTLE_TYPE_TAG)) {
         if (winFlag == BATTLE_OUTCOME_WIN) {
             GameStats_AddSpecial(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK12);
         }

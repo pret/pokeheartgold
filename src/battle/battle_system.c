@@ -742,7 +742,7 @@ Options *BattleSystem_GetOptions(BattleSystem *bsys) {
 }
 
 BOOL BattleSystem_AreBattleAnimationsOn(BattleSystem *bsys) {
-    if ((bsys->battleType & BATTLE_TYPE_LINK) && !(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED)) {
+    if ((bsys->battleType & BATTLE_TYPE_LINK) && !(bsys->battleSpecial & BATTLE_SPECIAL_RECORDING)) {
         return TRUE;
     }
     return (Options_GetBattleScene(bsys->options) == 0);
@@ -753,7 +753,7 @@ u16 BattleSystem_GetFrame(BattleSystem *bsys) {
 }
 
 u8 BattleSystem_GetTextFrameDelay(BattleSystem *bsys) {
-    if ((bsys->battleType & BATTLE_TYPE_LINK) && !(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED)) {
+    if ((bsys->battleType & BATTLE_TYPE_LINK) && !(bsys->battleSpecial & BATTLE_SPECIAL_RECORDING)) {
         return 1;
     }
     return Options_GetTextFrameDelay(bsys->options);
@@ -951,14 +951,14 @@ int ov12_0223BB1C(BattleSystem *bsys) {
 }
 
 void BattleSystem_GameStatIncrement(BattleSystem *bsys, int id) {
-    if (bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) {
+    if (bsys->battleSpecial & BATTLE_SPECIAL_RECORDING) {
         return;
     }
     GameStats_Inc(bsys->gameStats, id);
 }
 
 void ov12_0223BB44(BattleSystem *bsys) {
-    if (bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) {
+    if (bsys->battleSpecial & BATTLE_SPECIAL_RECORDING) {
         return;
     }
     GameStats_AddSpecial(bsys->gameStats, GAME_STAT_UNK21);
@@ -1120,7 +1120,7 @@ void BattleSystem_SetRandTemp(BattleSystem *bsys, u32 temp) {
 }
 
 void ov12_0223BDDC(BattleSystem *bsys, int battlerId, u8 data) {
-    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) && bsys->unk245C[battlerId] < 1024) {
+    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDING) && bsys->unk245C[battlerId] < 1024) {
         sub_02030260(battlerId, bsys->unk245C[battlerId], data);
         bsys->unk245C[battlerId]++;
     }
@@ -1129,11 +1129,11 @@ void ov12_0223BDDC(BattleSystem *bsys, int battlerId, u8 data) {
 BOOL ov12_0223BE0C(BattleSystem *bsys, int battlerId, u8 *data) {
     BOOL ret;
     *data = 0xFF;
-    if ((bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) && (bsys->unk245C[battlerId] < 1024)) {
+    if ((bsys->battleSpecial & BATTLE_SPECIAL_RECORDING) && (bsys->unk245C[battlerId] < 1024)) {
         *data = sub_0203027C(battlerId, bsys->unk245C[battlerId]);
         bsys->unk245C[battlerId]++;
         ret = FALSE;
-    } else if ((bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) && bsys->unk245C[battlerId] >= 1024) {
+    } else if ((bsys->battleSpecial & BATTLE_SPECIAL_RECORDING) && bsys->unk245C[battlerId] >= 1024) {
         ret = TRUE;
     }
     return ret;
@@ -1206,7 +1206,7 @@ BOOL BattleSystem_IsRecordingPaused(BattleSystem *bsys) {
 }
 
 void ov12_0223BFFC(BattleSystem *bsys, u32 flag) {
-    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) || 
+    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDING) || 
         bsys->isRecordingPaused ||
         ov12_022581D4(bsys, bsys->ctx, 13, 0) == 44 ||
         ov12_022581D4(bsys, bsys->ctx, 14, 0) == 44) {
@@ -1221,7 +1221,7 @@ void ov12_0223BFFC(BattleSystem *bsys, u32 flag) {
 }
 
 BOOL ov12_0223C080(BattleSystem *bsys) {
-    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) || 
+    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDING) || 
         bsys->isRecordingPaused ||
         ov12_022581D4(bsys, bsys->ctx, 13, 0) == 44 ||
         ov12_022581D4(bsys, bsys->ctx, 14, 0) == 44) {
@@ -1231,7 +1231,7 @@ BOOL ov12_0223C080(BattleSystem *bsys) {
 }
 
 void ov12_0223C0C4(BattleSystem *bsys) {
-    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) || bsys->unk247C) {
+    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDING) || bsys->unk247C) {
         return;
     }
     bsys->unk247C = ov12_0226BEC4(bsys);
