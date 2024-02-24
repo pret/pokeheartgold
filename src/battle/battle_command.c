@@ -72,6 +72,7 @@ BOOL BtlCmd_PokemonEncounter(BattleSystem *bsys, BattleContext *ctx) {
     case BATTLER_CATEGORY_PLAYER:
         break;
     case BATTLER_CATEGORY_ENEMY:
+    {
         OpponentData *opponentData;
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSystem_GetOpponentData(bsys, battlerId);

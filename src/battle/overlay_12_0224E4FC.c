@@ -4993,7 +4993,6 @@ BOOL TryEatOpponentBerry(BattleSystem *bsys, BattleContext *ctx, int battlerId) 
         }
         ret = TRUE;
         break;
-    }
     case STEAL_EFFECT_RANDOM_UP: //starf berry
     {
         int stat;
