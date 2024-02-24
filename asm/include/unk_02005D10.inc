@@ -83,11 +83,11 @@
 .public sub_02006D04
 .public sub_02006DB8
 .public sub_02006E3C
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public AllocFromHeap
 .public FreeToHeap
-.public sub_0201F988
+.public SysTask_GetData
 .public GF_AssertFail
 .public NNS_SndPlayerStopSeq
 .public NNS_SndPlayerStopSeqBySeqNo

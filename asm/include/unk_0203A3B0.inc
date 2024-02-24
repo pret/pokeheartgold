@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_0200E374
-.public DestroySysTask
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public sub_0201A3F8
 .public AllocFromHeapAtEnd
 .public FreeToHeap

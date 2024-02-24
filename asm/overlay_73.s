@@ -154,7 +154,7 @@ _021E5A54:
 	ldr r0, _021E5AB4 ; =ov73_021E5C74
 	add r1, r4, #0
 	mov r2, #5
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	str r0, [r4, #0x20]
 	add r0, r6, #0
 	bl NARC_Delete
@@ -311,7 +311,7 @@ ov73_021E5BAC: ; 0x021E5BAC
 	bl OverlayManager_GetData
 	add r6, r0, #0
 	ldr r0, [r6, #0x20]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
@@ -5697,7 +5697,7 @@ ov73_021E85DC: ; 0x021E85DC
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E85F6
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, _021E8620 ; =0x00000F98
 	mov r1, #0
 	str r1, [r4, r0]
@@ -6036,7 +6036,7 @@ _021E88B6:
 	str r0, [sp]
 	add r0, r5, #0
 	mov r2, #1
-	bl sub_02003DE8
+	bl BlendPalette
 	add r7, r7, #1
 	add r4, r4, #2
 	add r6, r6, #2
@@ -6092,7 +6092,7 @@ _021E8902:
 	ldr r0, _021E895C ; =ov73_021E8960
 	add r1, r1, r2
 	mov r2, #0x14
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	ldr r2, _021E894C ; =0x00000F98
 	ldr r1, [sp, #0x10]
 	str r0, [r1, r2]

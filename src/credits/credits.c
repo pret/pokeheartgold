@@ -11,7 +11,7 @@
 #include "unk_0200A090.h"
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
-#include "unk_0200E320.h"
+#include "sys_task_api.h"
 #include "unk_0200FA24.h"
 #include "unk_020215A0.h"
 #include "unk_02022588.h"
@@ -274,6 +274,7 @@ BOOL CreditsApp_OvyExit(OVY_MANAGER *man, int *state) {
         *state += 1;
         break;
     case 1:
+    {
         PageWork *ptr = &work->pageWork;
         RemoveWindow(&ptr->window);
         DestroyMsgData(ptr->msgData);
@@ -286,6 +287,7 @@ BOOL CreditsApp_OvyExit(OVY_MANAGER *man, int *state) {
         FreePageSysTasks(work);
         *state += 1;
         break;
+    }
     case 2:
         NARC_Delete(work->cutsceneWork.narc);
         ov76_021E62B4(work);
@@ -654,16 +656,16 @@ static void InitCutsceneSpriteResources(u8 idx, CreditsAppWork *work, u8 sprtRes
 
 static void SetPageSysTasks(CreditsAppWork *work) {
     PageWork *ptr = &work->pageWork;
-    ptr->pageDisplayWork.sysTask = sub_0200E33C(TogglePageDisplayCB, &ptr->pageDisplayWork, 0);
-    work->pageWork.scrFlipWork.sysTask = sub_0200E33C(FlipScreensCB, &work->pageWork.scrFlipWork, 1);
+    ptr->pageDisplayWork.sysTask = SysTask_CreateOnVBlankQueue(TogglePageDisplayCB, &ptr->pageDisplayWork, 0);
+    work->pageWork.scrFlipWork.sysTask = SysTask_CreateOnVBlankQueue(FlipScreensCB, &work->pageWork.scrFlipWork, 1);
 }
 
 static void FreePageSysTasks(CreditsAppWork *work) {
     PageWork *ptr = &work->pageWork;
-    DestroySysTask(ptr->pageDisplayWork.sysTask);
+    SysTask_Destroy(ptr->pageDisplayWork.sysTask);
     ptr->pageDisplayWork.sysTask = NULL;
 
-    DestroySysTask(work->pageWork.scrFlipWork.sysTask);
+    SysTask_Destroy(work->pageWork.scrFlipWork.sysTask);
     work->pageWork.scrFlipWork.sysTask = NULL;
 }
 

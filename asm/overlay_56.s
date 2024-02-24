@@ -138,7 +138,7 @@ ov56_021E5D08: ; 0x021E5D08
 	add r2, #0x22
 	lsl r2, r2, #0x10
 	lsr r2, r2, #0x10
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #0
 	strb r0, [r4, #0x15]
 	strb r0, [r4, #0x14]
@@ -894,7 +894,7 @@ _021E62A2:
 	ldr r0, [r4, #0x30]
 	ldr r2, _021E63B8 ; =0x0000FFFF
 	sub r3, r1, #6
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	b _021E639A
 _021E62DE:
 	add r0, #0xb4
@@ -904,7 +904,7 @@ _021E62DE:
 	bl sub_0200D020
 _021E62EA:
 	ldr r0, [r4, #0x30]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	beq _021E639A
 	add sp, #0xc
@@ -938,11 +938,11 @@ _021E631C:
 	ldr r0, [r4, #0x30]
 	ldr r2, _021E63B8 ; =0x0000FFFF
 	sub r3, r1, #6
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	b _021E639A
 _021E6334:
 	ldr r0, [r4, #0x30]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	beq _021E6350
 	add r4, #0xb4
@@ -1011,7 +1011,7 @@ ov56_021E63C0: ; 0x021E63C0
 	ldr r0, [r4, #0x30]
 	cmp r0, #0
 	beq _021E63CE
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 _021E63CE:
 	add r0, r4, #0
 	add r0, #0xb0
@@ -1043,7 +1043,7 @@ ov56_021E63FC: ; 0x021E63FC
 	ldr r1, [r4, #0x30]
 	cmp r1, #0
 	bne _021E6410
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #8
 	pop {r4, pc}
 _021E6410:
@@ -1073,7 +1073,7 @@ _021E642E:
 	add r2, #0x22
 	lsl r2, r2, #0x10
 	lsr r2, r2, #0x10
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	ldrb r0, [r4, #0x15]
 	ldrb r1, [r4, #0x14]
 	cmp r0, #0
@@ -1512,7 +1512,7 @@ _021E6768:
 	ldr r0, [r5, #0x30]
 	add r2, r1, #0
 	mov r3, #0x70
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #0x10
 	str r0, [sp]
 	mov r2, #0
@@ -1520,12 +1520,12 @@ _021E6768:
 	ldr r0, [r5, #0x30]
 	mov r1, #2
 	mov r3, #0x30
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	ldr r0, [r5, #0x30]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	ldr r0, [r5, #0x30]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	add r0, r6, #0
 	bl FreeToHeap
 	ldr r1, [sp, #0x20]
@@ -1634,7 +1634,7 @@ _021E6768:
 	ldr r0, _021E6920 ; =ov56_021E63FC
 	add r1, r5, #0
 	strb r2, [r5, #0x15]
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r0, _021E6924 ; =ov56_021E5D40
 	str r0, [r5, #0x34]
 	ldr r0, _021E6928 ; =ov56_021E5D34

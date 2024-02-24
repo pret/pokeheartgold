@@ -7,7 +7,7 @@
 .public FontID_Release
 .public FontID_String_GetWidth
 .public LoadFontPal1
-.public sub_02003DE8
+.public BlendPalette
 .public sub_02004EC4
 .public PlaySE
 .public StopSE
@@ -66,8 +66,8 @@
 .public MessagePrinter_Delete
 .public sub_0200CDAC
 .public PrintUIntOnWindow
-.public sub_0200E33C
-.public DestroySysTask
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
 .public sub_0200E5D4
@@ -134,7 +134,7 @@
 .public FillWindowPixelBuffer
 .public FillWindowPixelRect
 .public DoScheduledBgGpuUpdates
-.public sub_0201F988
+.public SysTask_GetData
 .public LCRandom
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized

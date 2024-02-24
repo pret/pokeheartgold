@@ -15,7 +15,7 @@
 #include "unk_0200B150.h"
 #include "unk_02018380.h"
 #include "unk_02035900.h"
-#include "unk_0201F79C.h"
+#include "sys_task.h"
 #include "communication_error.h"
 #include "math_util.h"
 #include "unk_020210A0.h"
@@ -24,7 +24,7 @@
 FS_EXTERN_OVERLAY(OVY_60);
 FS_EXTERN_OVERLAY(OVY_36);
 
-extern const OVY_MGR_TEMPLATE ov60_021EB030;
+extern const OVY_MGR_TEMPLATE gApplication_IntroMovie;
 extern const OVY_MGR_TEMPLATE ov36_App_MainMenu_SelectOption_Continue;
 
 struct UnkStruct_02111868 {
@@ -72,7 +72,7 @@ void NitroMain(void) {
         switch (OS_GetResetParameter()) {
         case 0:
             _02111868.unk_10.unk_04 = 0;
-            RegisterMainOverlay(FS_OVERLAY_ID(OVY_60), &ov60_021EB030);
+            RegisterMainOverlay(FS_OVERLAY_ID(OVY_60), &gApplication_IntroMovie);
             break;
         case 1:
             sub_0200FBF4(0, 0);
@@ -86,7 +86,7 @@ void NitroMain(void) {
         }
     }
     gSystem.unk70 = 1;
-    gSystem.unk30 = 0;
+    gSystem.frameCounter = 0;
     InitializeMainRNG();
     ScreenBrightnessData_InitAll();
     sub_02018380();
@@ -106,9 +106,9 @@ void NitroMain(void) {
             OS_GetTick();
             Main_RunOverlayManager();
             OS_GetTick();
-            sub_0201F880(gSystem.unk18);
-            sub_0201F880(gSystem.unk24);
-            if (!gSystem.unk30) {
+            SysTaskQueue_RunTasks(gSystem.mainTaskQueue);
+            SysTaskQueue_RunTasks(gSystem.printTaskQueue);
+            if (!gSystem.frameCounter) {
                 OS_WaitIrq(TRUE, OS_IE_VBLANK);
                 gSystem.vblankCounter++;
             }
@@ -116,17 +116,17 @@ void NitroMain(void) {
         GF_RTC_UpdateOnFrame();
         sub_020183B0();
         sub_02026E60();
-        sub_0201F880(gSystem.unk24);
+        SysTaskQueue_RunTasks(gSystem.printTaskQueue);
         OS_WaitIrq(TRUE, OS_IE_VBLANK);
         gSystem.vblankCounter++;
-        gSystem.unk30 = 0;
+        gSystem.frameCounter = 0;
         DoAllScreenBrightnessTransitionStep();
         HandleFadeUpdateFrame();
         if (gSystem.vBlankIntr != NULL) {
             gSystem.vBlankIntr(gSystem.vBlankIntrArg);
         }
         DoSoundUpdateFrame();
-        sub_0201F880(gSystem.unk20);
+        SysTaskQueue_RunTasks(gSystem.vwaitTaskQueue);
     }
 }
 
@@ -169,7 +169,7 @@ static void sub_02000F14(void) {
     sub_02036144();
     OS_WaitIrq(TRUE, OS_IE_VBLANK);
     gSystem.vblankCounter++;
-    gSystem.unk30 = 0;
+    gSystem.frameCounter = 0;
     if (gSystem.vBlankIntr != NULL) {
         gSystem.vBlankIntr(gSystem.vBlankIntrArg);
     }

@@ -23,10 +23,10 @@
 .public sub_0200AEB0
 .public sub_0200B00C
 .public sub_0200B0A8
-.public CreateSysTask
-.public sub_0200E33C
-.public sub_0200E374
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public sub_02014AD8
 .public sub_02014B08
 .public sub_02014B9C
@@ -59,7 +59,7 @@
 .public GetBgTilemapBuffer
 .public FillWindowPixelRect
 .public ScheduleBgTilemapBufferTransfer
-.public sub_0201F988
+.public SysTask_GetData
 .public GfGfx_SetBanks
 .public GfGfx_EngineATogglePlanes
 .public Camera_SetPerspectiveClippingPlane

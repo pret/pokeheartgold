@@ -60,9 +60,9 @@
 .public BufferIntegerAsString
 .public BufferMonthNameAbbr
 .public StringExpandPlaceholders
-.public CreateSysTask
-.public sub_0200E33C
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
 .public sub_0200E5D4
@@ -410,7 +410,7 @@
 .public ov00_021ED444
 .public ov36_App_MainMenu_SelectOption_Continue
 .public ov36_App_MainMenu_SelectOption_NewGame
-.public ov60_021EAFE0
+.public gApplication_TitleScreen
 .public CRYPTO_RC4Encrypt
 .public CRYPTO_VerifySignature
 .public CRYPTO_SetAllocator

@@ -9,10 +9,10 @@
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
 .public PaletteData_LoadNarc
-.public sub_02003370
-.public sub_0200398C
-.public sub_02003B44
-.public sub_02003B50
+.public PaletteData_BeginPaletteFade
+.public PaletteData_PushTransparentBuffers
+.public PaletteData_GetSelectedBuffersBitmask
+.public PaletteData_SetAutoTransparent
 .public sub_02005D10
 .public StopBGM
 .public PlaySE
@@ -75,8 +75,8 @@
 .public sub_0200DCA0
 .public UnkImageStruct_SetSpriteVisibleFlag
 .public UnkImageStruct_SetSpritePositionXY
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public sub_0200E398
 .public sub_0200E3D8
 .public sub_0200E640
@@ -122,9 +122,9 @@
 .public String_New
 .public String_Delete
 .public sub_02026E50
-.public sub_02026E84
+.public GetMainBgPlttAddr
 .public sub_02026E8C
-.public sub_02026E94
+.public GetSubBgPlttAddr
 .public sub_02026E9C
 .public GF_3DVramMan_Delete
 .public Pokedex_SetMonCaughtFlag

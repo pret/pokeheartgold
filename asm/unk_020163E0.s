@@ -16,7 +16,7 @@ sub_020163E0: ; 0x020163E0
 	mov r2, #0
 	bl CreateSysTaskAndEnvironment
 	str r0, [sp, #4]
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	cmp r5, #0
 	beq _02016424
@@ -40,13 +40,13 @@ _02016414:
 _02016424:
 	cmp r6, #0
 	bne _02016434
-	bl sub_02026E84
+	bl GetMainBgPlttAddr
 	str r0, [sp]
 	ldr r0, _02016494 ; =sub_020165A4
 	str r0, [r4, #4]
 	b _0201643E
 _02016434:
-	bl sub_02026E94
+	bl GetSubBgPlttAddr
 	str r0, [sp]
 	ldr r0, _02016498 ; =sub_020165BC
 	str r0, [r4, #4]

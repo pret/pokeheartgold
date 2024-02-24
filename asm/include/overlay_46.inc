@@ -3,7 +3,7 @@
 .public LoadFontPal0
 .public LoadFontPal1
 .public FontID_String_GetCenterAlignmentX
-.public sub_02003DE8
+.public BlendPalette
 .public sub_02004EC4
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
@@ -21,8 +21,8 @@
 .public MessageFormat_Delete
 .public BufferIntegerAsString
 .public StringExpandPlaceholders
-.public sub_0200E33C
-.public DestroySysTask
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
 .public sub_0200E5D4

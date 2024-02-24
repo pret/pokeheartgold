@@ -9,7 +9,7 @@
 .public sub_02002B8C
 .public FontID_String_GetWidth
 .public LoadFontPal1
-.public sub_02003DE8
+.public BlendPalette
 .public sub_02004EC4
 .public PlaySE
 .public UnloadOverlayByID
@@ -37,8 +37,8 @@
 .public BufferPlayersName
 .public BufferIntegerAsString
 .public StringExpandPlaceholders
-.public sub_0200E33C
-.public DestroySysTask
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
 .public sub_0200E5D4
@@ -185,7 +185,7 @@
 .public ov44_0222A4B4
 .public ov44_0222A60C
 .public ov44_0222A758
-.public ov60_021EAFE0
+.public gApplication_TitleScreen
 .public ov70_022378C0
 .public ov70_022378DC
 .public ov70_02237F2C

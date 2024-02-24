@@ -107,6 +107,7 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct* unkPtr) {
         }
         break;
     case 9:
+    {
         String* str = NewString_ReadMsgData(unkPtr->msgData, msg_0300_00188); //" changed Form!"
         BufferBoxMonNickname(unkPtr->unk7c4, 0, Mon_GetBoxMon(mon));
         StringExpandPlaceholders(unkPtr->unk7c4, unkPtr->unk7c8, str);
@@ -114,6 +115,7 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct* unkPtr) {
         sub_0207DAEC(unkPtr, -1, 1);
         work->state++;
         break;
+    }
     case 10:
         if (TextPrinterCheckActive(unkPtr->unkc64) == 0) {
             _DestroyLocalWork(unkPtr);

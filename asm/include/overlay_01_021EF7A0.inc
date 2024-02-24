@@ -4,8 +4,8 @@
 .public GfGfxLoader_GetPlttData
 .public NewMsgDataFromNarc
 .public DestroyMsgData
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public AllocFromHeap
 .public FreeToHeap
 .public BgSetPosTextAndCommit

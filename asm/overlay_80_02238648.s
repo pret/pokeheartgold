@@ -82,7 +82,7 @@ _022386D4:
 	bl PaletteData_Init
 	str r0, [r4, #4]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r2, #2
 	ldr r0, [r4, #4]
 	mov r1, #0
@@ -137,21 +137,21 @@ _022386D4:
 	ldr r0, _0223883C ; =ov80_02238AB0
 	ldr r2, _02238840 ; =0x0000EA60
 	add r1, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	add r1, r4, #0
 	add r1, #0x94
 	str r0, [r1]
 	ldr r0, _02238844 ; =ov80_02238ABC
 	ldr r2, _02238848 ; =0x0000EE48
 	add r1, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	add r1, r4, #0
 	add r1, #0x98
 	str r0, [r1]
 	ldr r0, _0223884C ; =ov80_02238AC8
 	ldr r2, _02238850 ; =0x00013880
 	add r1, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	add r1, r4, #0
 	add r1, #0x9c
 	str r0, [r1]
@@ -188,7 +188,7 @@ _022386D4:
 	ldr r0, _02238858 ; =ov80_02238AAC
 	add r1, r4, #0
 	mov r2, #0xa
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	add r1, r4, #0
 	add r1, #0xa0
 	str r0, [r1]
@@ -278,19 +278,19 @@ ov80_0223885C: ; 0x0223885C
 	add r0, r4, #0
 	add r0, #0x94
 	ldr r0, [r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	add r0, #0x98
 	ldr r0, [r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	add r0, #0xa0
 	ldr r0, [r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [r4, #0xc]
 	bl ov80_0223937C
 	bl sub_02021238
@@ -456,7 +456,7 @@ ov80_02238A7C: ; 0x02238A7C
 	bl GF_RunVramTransferTasks
 	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #4]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r4]
 	bl DoScheduledBgGpuUpdates
 	ldr r3, _02238AA4 ; =0x027E0000
@@ -1043,7 +1043,7 @@ ov80_02238F10: ; 0x02238F10
 	mov r1, #0
 	mov r2, #0xb0
 	mov r3, #0x20
-	bl sub_020032A4
+	bl PaletteData_LoadPaletteSlotFromHardware
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x65
@@ -1057,7 +1057,7 @@ ov80_02238F10: ; 0x02238F10
 	mov r1, #0
 	mov r2, #0xc0
 	mov r3, #0x20
-	bl sub_020032A4
+	bl PaletteData_LoadPaletteSlotFromHardware
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -1298,7 +1298,7 @@ _02239198:
 	ldr r0, [r5, #4]
 	mov r2, #2
 	add r3, r1, #0
-	bl sub_02003D5C
+	bl PaletteData_FillPaletteInBuffer
 	add r0, r4, #0
 	mov r1, #6
 	bl ov80_0222ACA0

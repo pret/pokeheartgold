@@ -131,6 +131,5 @@ int Battler_GetRandomOpposingBattlerId(BattleSystem *bsys, BattleContext *ctx, i
 u32 CalcMoneyLoss(Party *party, PlayerProfile *profile);
 int ov12_02251D28(BattleSystem *bsys, BattleContext *ctx, int moveNo, int moveType, int battlerIdAttacker, int battlerIdTarget, int dmg, u32 *statusFlag);
 void ov12_02252D14(BattleSystem *bsys, BattleContext *ctx);
-void ov12_0225859C(BattleContext *ctx, u8 battlerId);
 
 #endif

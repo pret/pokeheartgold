@@ -42,8 +42,8 @@
 .public UnkImageStruct_SetSpritePriority
 .public UnkImageStruct_SetSpritePositionXY
 .public sub_0200E0C0
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_0200FBDC
@@ -68,7 +68,7 @@
 .public ClearWindowTilemapAndCopyToVram
 .public FillWindowPixelBuffer
 .public DoScheduledBgGpuUpdates
-.public sub_0201F988
+.public SysTask_GetData
 .public GF_SinDegNoWrap
 .public LCRandom
 .public AddTextPrinterParameterizedWithColor
@@ -92,5 +92,5 @@
 .public _ll_mul
 .public _s32_div_f
 .public gSystem
-.public ov60_021EAFE0
-.public ov62_021E68CC
+.public gApplication_TitleScreen
+.public gApplication_MicTest

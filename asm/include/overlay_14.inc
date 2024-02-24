@@ -11,10 +11,10 @@
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
 .public PaletteData_LoadNarc
-.public sub_020032A4
-.public sub_02003370
-.public sub_0200398C
-.public sub_02003B44
+.public PaletteData_LoadPaletteSlotFromHardware
+.public PaletteData_BeginPaletteFade
+.public PaletteData_PushTransparentBuffers
+.public PaletteData_GetSelectedBuffersBitmask
 .public PlaySE
 .public UnloadOverlayByID
 .public HandleLoadOverlay
@@ -87,8 +87,8 @@
 .public sub_0200E0CC
 .public sub_0200E0FC
 .public sub_0200E2B0
-.public sub_0200E33C
-.public DestroySysTask
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx2
 .public sub_0200E948
 .public ClearFrameAndWindow2

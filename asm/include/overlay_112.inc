@@ -105,8 +105,8 @@
 .public UnkImageStruct_GetSpritePositionXY
 .public sub_0200DF98
 .public sub_0200E0FC
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public WaitingIcon_New
@@ -348,5 +348,5 @@
 .public _s32_div_f
 .public _u32_div_f
 .public gSystem
-.public ov60_021EAFE0
+.public gApplication_TitleScreen
 .public ov112_App_MainMenu_SelectOption_ConnectToPokewalker

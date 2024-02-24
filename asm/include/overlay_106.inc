@@ -39,8 +39,8 @@
 .public UnkImageStruct_SetSpriteVisibleFlag
 .public UnkImageStruct_SetSpritePriority
 .public UnkImageStruct_SetSpritePositionXY
-.public sub_0200E374
-.public DestroySysTask
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_020145B4
@@ -63,7 +63,7 @@
 .public Draw3dModel
 .public sub_0201F590
 .public sub_0201F63C
-.public sub_0201F988
+.public SysTask_GetData
 .public GfGfx_SetBanks
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_EngineASetPlanes

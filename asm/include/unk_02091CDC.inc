@@ -51,5 +51,5 @@
 .public Save_DeleteAllData
 .public OS_ResetSystem
 .public memset
-.public _0210820C
+.public gApplication_DeleteSave
 .public gSystem

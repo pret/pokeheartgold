@@ -23,7 +23,7 @@ ov31_0225D520: ; 0x0225D520
 	mov r3, #8
 	bl CreateSysTaskAndEnvironment
 	add r5, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	str r5, [r4, #8]
 	mov r1, #0
@@ -236,7 +236,7 @@ ov31_0225D710: ; 0x0225D710
 	add r6, r1, #0
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	mov r0, #0
 	bl sub_02002B8C

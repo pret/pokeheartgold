@@ -831,7 +831,7 @@ sub_0200FF88: ; 0x0200FF88
 	ldr r0, _0200FFB0 ; =sub_0200FFD8
 	lsl r2, r2, #0xa
 	str r7, [r1, #0xc]
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0200FFB0: .word sub_0200FFD8
@@ -851,7 +851,7 @@ sub_0200FFB4: ; 0x0200FFB4
 	ldr r0, _0200FFD4 ; =sub_0200FFF8
 	lsl r2, r2, #0xa
 	str r4, [r1, #4]
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0200FFD4: .word sub_0200FFF8
@@ -868,7 +868,7 @@ sub_0200FFD8: ; 0x0200FFD8
 	ldr r3, [r4, #0xc]
 	bl sub_0200FEE4
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r3, r4, r5, pc}
@@ -883,7 +883,7 @@ sub_0200FFF8: ; 0x0200FFF8
 	ldr r1, [r4, #4]
 	bl sub_0200FF5C
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r3, r4, r5, pc}
@@ -943,7 +943,7 @@ sub_02010050: ; 0x02010050
 	mov r1, #0
 	bl SetMasterBrightness
 	add r0, r4, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, pc}
 	thumb_func_end sub_02010050
 
@@ -967,7 +967,7 @@ _0201007A:
 	mov r2, #1
 	ldr r0, _02010090 ; =sub_02010050
 	lsl r2, r2, #0xa
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 _0201008A:
 	pop {r3, pc}
 	.balign 4, 0

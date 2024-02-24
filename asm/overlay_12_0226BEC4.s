@@ -20,7 +20,7 @@ ov12_0226BEC4: ; 0x0226BEC4
 	add r1, r4, #0
 	lsl r2, r2, #2
 	str r5, [r4]
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r3, r4, r5, pc}
 	nop
 _0226BEEC: .word ov12_0226BF04
@@ -30,10 +30,10 @@ _0226BEEC: .word ov12_0226BF04
 ov12_0226BEF0: ; 0x0226BEF0
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	bl FreeToHeap
 	add r0, r4, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, pc}
 	thumb_func_end ov12_0226BEF0
 

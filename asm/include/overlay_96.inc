@@ -7,7 +7,7 @@
 .public FontID_Alloc
 .public FontID_Release
 .public LoadFontPal0
-.public sub_02003F04
+.public TintPalette_GrayScale
 .public GF_GetCurrentPlayingBGM
 .public sub_02004AD8
 .public sub_02004EC4
@@ -134,9 +134,9 @@
 .public sub_0200DF98
 .public sub_0200E024
 .public sub_0200E2B0
-.public CreateSysTask
-.public sub_0200E374
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2

@@ -224,6 +224,7 @@ static void ListMenuDrawCursor(struct ListMenu *list) {
 static void ListMenuErasePrintedCursor(struct ListMenu *list, u16 itemsAbove) {
     switch (list->template.cursorKind) {
     case 0:
+    {
         u8 yMultiplier = (u8)(GetFontAttribute(list->template.fontId, 1) + list->template.itemVerticalPadding);
         u8 width  = 7;
         u8 height = 16;
@@ -234,6 +235,7 @@ static void ListMenuErasePrintedCursor(struct ListMenu *list, u16 itemsAbove) {
                             width,
                             height);
         break;
+    }
     case 1:
     case 2: // leftover
     case 3: // leftover

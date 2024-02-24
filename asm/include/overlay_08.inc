@@ -7,8 +7,8 @@
 .public PaletteData_LoadPalette
 .public PaletteData_LoadNarc
 .public PaletteData_GetUnfadedBuf
-.public sub_02003370
-.public sub_02003B44
+.public PaletteData_BeginPaletteFade
+.public PaletteData_GetSelectedBuffersBitmask
 .public PlaySE
 .public CreateSysTaskAndEnvironment
 .public DestroySysTaskAndEnvironment
@@ -90,7 +90,7 @@
 .public GetWindowWidth
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
-.public sub_0201F988
+.public SysTask_GetData
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized
 .public AddTextPrinterParameterizedWithColor

@@ -5,7 +5,7 @@
 #include "battle/battle_cursor.h"
 #include "battle/battle_finger.h"
 #include "bg_window.h"
-#include "unk_0200E320.h"
+#include "sys_task_api.h"
 
 typedef struct BattleInputMainScreen {
     u8 battlerType;

@@ -434,17 +434,95 @@ static const GraphicsModes sGraphicsMode = {
     GX_BG0_AS_2D,
 };
 
-static const BgTemplate sBgTemplate5 = {0, 0, GF_BG_BUF_SIZE_256x256_4BPP, 0x0000, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, 30, 0, 0, 2, 0, 0, 0};
+static const BgTemplate sBgTemplate5 = {
+    0, 0,
+    GF_BG_BUF_SIZE_256x256_4BPP,
+    0x000,
+    GF_BG_SCR_SIZE_256x256,
+    GX_BG_COLORMODE_16,
+    GX_BG_SCRBASE_0xf000,
+    GX_BG_CHARBASE_0x00000,
+    GX_BG_EXTPLTT_01,
+    2,
+    GX_BG_AREAOVER_XLU,
+    0,
+    FALSE
+};
 
-static const BgTemplate sBgTemplate1 = {0, 0, GF_BG_BUF_SIZE_256x256_4BPP, 0x0000, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, 31, 4, 0, 1, 0, 0, 0};
+static const BgTemplate sBgTemplate1 = {
+    0, 0,
+    GF_BG_BUF_SIZE_256x256_4BPP,
+    0x000,
+    GF_BG_SCR_SIZE_256x256,
+    GX_BG_COLORMODE_16,
+    GX_BG_SCRBASE_0xf800,
+    GX_BG_CHARBASE_0x10000,
+    GX_BG_EXTPLTT_01,
+    1,
+    GX_BG_AREAOVER_XLU,
+    0,
+    FALSE
+};
 
-static const BgTemplate sBgTemplate6 = {0, 0, GF_BG_BUF_SIZE_256x256_4BPP, 0x0000, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, 29, 0, 0, 3, 0, 0, 0};
+static const BgTemplate sBgTemplate6 = {
+    0, 0,
+    GF_BG_BUF_SIZE_256x256_4BPP,
+    0x000,
+    GF_BG_SCR_SIZE_256x256,
+    GX_BG_COLORMODE_16,
+    GX_BG_SCRBASE_0xe800,
+    GX_BG_CHARBASE_0x00000,
+    GX_BG_EXTPLTT_01,
+    3,
+    GX_BG_AREAOVER_XLU,
+    0,
+    FALSE
+};
 
-static const BgTemplate sBgTemplate2 = {0, 0, GF_BG_BUF_SIZE_256x256_4BPP, 0x0000, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, 30, 0, 0, 2, 0, 0, 0};
+static const BgTemplate sBgTemplate2 = {
+    0, 0,
+    GF_BG_BUF_SIZE_256x256_4BPP,
+    0x000,
+    GF_BG_SCR_SIZE_256x256,
+    GX_BG_COLORMODE_16,
+    GX_BG_SCRBASE_0xf000,
+    GX_BG_CHARBASE_0x00000,
+    GX_BG_EXTPLTT_01,
+    2,
+    GX_BG_AREAOVER_XLU,
+    0,
+    FALSE
+};
 
-static const BgTemplate sBgTemplate3 = {0, 0, GF_BG_BUF_SIZE_256x256_4BPP, 0x0000, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, 29, 0, 0, 3, 0, 0, 0};
+static const BgTemplate sBgTemplate3 = {
+    0, 0,
+    GF_BG_BUF_SIZE_256x256_4BPP,
+    0x000,
+    GF_BG_SCR_SIZE_256x256,
+    GX_BG_COLORMODE_16,
+    GX_BG_SCRBASE_0xe800,
+    GX_BG_CHARBASE_0x00000,
+    GX_BG_EXTPLTT_01,
+    3,
+    GX_BG_AREAOVER_XLU,
+    0,
+    FALSE
+};
 
-static const BgTemplate sBgTemplate4 = {0, 0, GF_BG_BUF_SIZE_256x256_4BPP, 0x0000, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, 31, 4, 0, 0, 0, 0, 0};
+static const BgTemplate sBgTemplate4 = {
+    0, 0,
+    GF_BG_BUF_SIZE_256x256_4BPP,
+    0x000,
+    GF_BG_SCR_SIZE_256x256,
+    GX_BG_COLORMODE_16,
+    GX_BG_SCRBASE_0xf800,
+    GX_BG_CHARBASE_0x10000,
+    GX_BG_EXTPLTT_01,
+    0,
+    GX_BG_AREAOVER_XLU,
+    0,
+    FALSE
+};
 
 static const WindowTemplate sWindowTemplates[3] = {
     {2, 26, 21, 6,  3, 3, 0x3EE},
@@ -849,12 +927,15 @@ static int AlphPuzzleMainSeq_RotateTile_impl(AlphPuzzleData *data) {
         data->subState++;
         break;
     case 1:
-        u16 temp = data->sceneTimer++;
-        sub_02024818(data->selectedTile->sprite, (u16)((u16)(temp << 0xb) + (data->selectedTile->rotation << 0xe)));
+    {
+        u16 rotationOffset = (data->sceneTimer++) * 0x800;
+        u16 rotation = data->selectedTile->rotation * 0x4000 + rotationOffset;
+        sub_02024818(data->selectedTile->sprite, rotation);
         if (data->sceneTimer >= 8) {
             data->subState++;
         }
         break;
+    }
     case 2:
         data->selectedTile->rotation = (data->selectedTile->rotation + 1) % 4;
 
@@ -886,12 +967,14 @@ static int AlphPuzzleMainSeq_Quit_impl(AlphPuzzleData *data) {
         }
         break;
     case 2:
+    {
         AlphPuzzleStates ret = AlphPuzzle_Quit_HandleYesNoPrompt(data);
         if (ret != ALPH_PUZZLE_STATE_QUIT) {
             data->subState = 0;
             return ret;
         }
         break;
+    }
     }
     return ALPH_PUZZLE_STATE_QUIT;
 }
@@ -903,13 +986,13 @@ static int AlphPuzzleMainSeq_Clear_impl(AlphPuzzleData *data) {
         data->subState++;
         break;
     case 1:
-        sub_02003E5C(data->palette, 2, 0x2b, 5, data->sceneTimer, 0x7FFF);
+        PaletteData_BlendPalette(data->palette, PLTTBUF_MAIN_OBJ, 0x2b, 5, data->sceneTimer, 0x7FFF);
         if (data->sceneTimer++ >= 15) {
             data->subState++;
         }
         break;
     case 2:
-        sub_02003E5C(data->palette, 2, 0x2b, 5, data->sceneTimer, 0x7FFF);
+        PaletteData_BlendPalette(data->palette, PLTTBUF_MAIN_OBJ, 0x2b, 5, data->sceneTimer, 0x7FFF);
         if (data->sceneTimer-- == 0) {
             data->subState++;
         }
@@ -927,7 +1010,7 @@ static int AlphPuzzleMainSeq_Clear_impl(AlphPuzzleData *data) {
 static void AlphPuzzle_VBlankCB(void *dat) {
     AlphPuzzleData *data = dat;
     if (data->palette) {
-        sub_0200398C(data->palette);
+        PaletteData_PushTransparentBuffers(data->palette);
     }
     if (data->spriteRenderer) {
         thunk_OamManager_ApplyAndResetBuffers();
@@ -1022,13 +1105,13 @@ static void AlphPuzzle_LoadBackgroundGraphics(AlphPuzzleData *data) {
     NARC *narc = NARC_New(NARC_application_annon_puzzle_gra, data->heapId);
     data->palette = PaletteData_Init(data->heapId);
 
-    PaletteData_AllocBuffers(data->palette, 0, 256, data->heapId);
-    PaletteData_AllocBuffers(data->palette, 1, 256, data->heapId);
-    PaletteData_AllocBuffers(data->palette, 2, 256, data->heapId);
+    PaletteData_AllocBuffers(data->palette, PLTTBUF_MAIN_BG, 256, data->heapId);
+    PaletteData_AllocBuffers(data->palette, PLTTBUF_SUB_BG, 256, data->heapId);
+    PaletteData_AllocBuffers(data->palette, PLTTBUF_MAIN_OBJ, 256, data->heapId);
 
-    sub_02003220(data->palette, narc, NARC_puzzle_gra_puzzle_gra_00000010_NCLR, data->heapId, 0, 256, 0, 0);
-    sub_02003220(data->palette, narc, NARC_puzzle_gra_puzzle_gra_00000010_NCLR, data->heapId, 1, 256, 0, 0);
-    sub_02003220(data->palette, narc, NARC_puzzle_gra_puzzle_gra_00000000_NCLR, data->heapId, 2, 256, 0, 0);
+    PaletteData_LoadFromOpenNarc(data->palette, narc, NARC_puzzle_gra_puzzle_gra_00000010_NCLR, data->heapId, PLTTBUF_MAIN_BG, 256, 0, 0);
+    PaletteData_LoadFromOpenNarc(data->palette, narc, NARC_puzzle_gra_puzzle_gra_00000010_NCLR, data->heapId, PLTTBUF_SUB_BG, 256, 0, 0);
+    PaletteData_LoadFromOpenNarc(data->palette, narc, NARC_puzzle_gra_puzzle_gra_00000000_NCLR, data->heapId, PLTTBUF_MAIN_OBJ, 256, 0, 0);
 
     GfGfxLoader_LoadCharDataFromOpenNarc(narc, NARC_puzzle_gra_puzzle_gra_00000011_NCGR, data->bgConfig, GF_BG_LYR_SUB_3, 0, 0, 0, data->heapId);
     GfGfxLoader_LoadScrnDataFromOpenNarc(narc, NARC_puzzle_gra_puzzle_gra_00000014_NSCR, data->bgConfig, GF_BG_LYR_SUB_3, 0, 0, 0, data->heapId);
@@ -1040,19 +1123,19 @@ static void AlphPuzzle_LoadBackgroundGraphics(AlphPuzzleData *data) {
 
     NARC_Delete(narc);
 
-    PaletteData_LoadNarc(data->palette, NARC_a_0_3_8, data->frame + 26, data->heapId, 0, 32, 80);
-    PaletteData_LoadNarc(data->palette, NARC_graphic_font, 8, data->heapId, 0, 32, 64);
+    PaletteData_LoadNarc(data->palette, NARC_a_0_3_8, data->frame + 26, data->heapId, PLTTBUF_MAIN_BG, 32, 80);
+    PaletteData_LoadNarc(data->palette, NARC_graphic_font, 8, data->heapId, PLTTBUF_MAIN_BG, 32, 64);
 
     LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_MAIN_0, 1, 5, data->frame, data->heapId);
-    sub_02003B50(data->palette, 1);
-    sub_0200398C(data->palette);
+    PaletteData_SetAutoTransparent(data->palette, TRUE);
+    PaletteData_PushTransparentBuffers(data->palette);
 }
 
 static void AlphPuzzle_FreeBackgroundGraphics(AlphPuzzleData *data) {
     FreeToHeap(data->screenDataAlloc);
-    PaletteData_FreeBuffers(data->palette, 2);
-    PaletteData_FreeBuffers(data->palette, 1);
-    PaletteData_FreeBuffers(data->palette, 0);
+    PaletteData_FreeBuffers(data->palette, PLTTBUF_MAIN_OBJ);
+    PaletteData_FreeBuffers(data->palette, PLTTBUF_SUB_BG);
+    PaletteData_FreeBuffers(data->palette, PLTTBUF_MAIN_BG);
     PaletteData_Free(data->palette);
 }
 
@@ -1312,7 +1395,7 @@ static void AlphPuzzle_CreateQuitTask(AlphPuzzleData *data) {
     AlphPuzzleQuitTaskData *unkStruct = AllocFromHeapAtEnd(data->heapId, sizeof(AlphPuzzleQuitTaskData));
     MI_CpuFill8(unkStruct, 0, sizeof(AlphPuzzleQuitTaskData));
     unkStruct->data = data;
-    CreateSysTask(Task_AlphPuzzle_WaitDropCursorAnimOnQuit, unkStruct, 0);
+    SysTask_CreateOnMainQueue(Task_AlphPuzzle_WaitDropCursorAnimOnQuit, unkStruct, 0);
     AlphPuzzle_ToggleDropCursorSprite(data, 1);
     data->quitTaskActive = 1;
 }
@@ -1324,6 +1407,6 @@ static void Task_AlphPuzzle_WaitDropCursorAnimOnQuit(SysTask *task, void *_data)
         data->data->quitTaskActive = 0;
         MI_CpuFill8(data, 0, sizeof(AlphPuzzleQuitTaskData));
         FreeToHeap(data);
-        DestroySysTask(task);
+        SysTask_Destroy(task);
     }
 }

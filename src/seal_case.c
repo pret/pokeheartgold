@@ -32,7 +32,7 @@ SEAL *CapsuleGetSealI(CAPSULE *capsule, int i) {
     return &capsule->seals[i];
 }
 
-u8 SealOnCapsuleGetID(const SEAL *seal) {
+u32 SealOnCapsuleGetID(const SEAL *seal) {
     return seal->kind;
 }
 

@@ -7,8 +7,8 @@
 .public NARC_AllocAndReadWholeMember
 .public NARC_ReadWholeMember
 .public GfGfxLoader_LoadFromNarc
-.public sub_0200E374
-.public DestroySysTask
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
 .public FreeToHeap

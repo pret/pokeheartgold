@@ -26,7 +26,8 @@ BACK_REL   := $(shell $(REALPATH) --relative-to $(BUILD_DIR) $(CURDIR))
 # Recursive wildcard function
 rwildcard=$(foreach d,$(wildcard $(1:=/*)),$(call rwildcard,$d,$2) $(filter $(subst *,%,$2),$d))
 
-TOOLSDIR     := $(WORK_DIR)/tools
+TOOLSDIR     := $(PROJECT_ROOT)/tools
+TOOLSREL     := $(BACK_REL)/tools
 
 include $(WORK_DIR)/platform.mk
 include $(WORK_DIR)/binutils.mk
@@ -34,7 +35,7 @@ include $(WORK_DIR)/binutils.mk
 # NitroSDK tools
 MWCC          = $(TOOLSDIR)/mwccarm/$(MWCCVER)/mwccarm.exe
 MWAS          = $(TOOLSDIR)/mwccarm/$(MWCCVER)/mwasmarm.exe
-MWLD          = $(BACK_REL)/$(TOOLSDIR)/mwccarm/$(MWCCVER)/mwldarm.exe
+MWLD          = $(TOOLSDIR)/mwccarm/$(MWCCVER)/mwldarm.exe
 MAKEROM      := $(TOOLSDIR)/bin/makerom.exe
 MAKELCF      := $(TOOLSDIR)/bin/makelcf.exe
 MAKEBNR      := $(TOOLSDIR)/bin/makebanner.exe
@@ -225,7 +226,7 @@ CRT0_OBJ := lib/asm/crt0.o
 $(SBIN): build/%.sbin: build/%.elf
 ifeq ($(SBIN),$(BUILD_DIR)/main.sbin)
 # Overlay 123 is encrypted in the retail ROM, so we need to reencrypt it after building it
-	cd $(BUILD_DIR) && ../../$(MOD123ENCRY) encry main OVY_123_enc.sbin 123 && mv OVY_123_enc.sbin OVY_123.sbin
+	cd $(BUILD_DIR) && $(MOD123ENCRY) encry main OVY_123_enc.sbin 123 && mv OVY_123_enc.sbin OVY_123.sbin
 endif
 ifeq ($(COMPARE),1)
 	$(SHA1SUM) --quiet -c $*.sha1

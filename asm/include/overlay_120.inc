@@ -3,9 +3,9 @@
 .public GfGfxLoader_GXLoadPalFromOpenNarc
 .public GfGfxLoader_GetScrnDataFromOpenNarc
 .public GfGfxLoader_LoadFromOpenNarc
-.public CreateSysTask
-.public sub_0200E33C
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_Destroy
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_0200FC20

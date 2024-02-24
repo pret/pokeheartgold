@@ -222,8 +222,8 @@ void BG_LoadScreenTilemapData(BgConfig *bgConfig, u8 bgId, const void *data, u32
 void BG_LoadCharTilesData(BgConfig *bgConfig, u8 bgId, const void *data, u32 size, u32 tileStart);
 void BG_ClearCharDataRange(u8 bgId, u32 size, u32 offset, HeapID heapId);
 void BG_FillCharDataRange(BgConfig *bgConfig, enum GFBgLayer bgId, u32 fillValue, u32 ntiles, u32 offset);
-void BG_LoadPlttData(u32 location, const void *plttData, u32 size, enum GFPalSlotOffset offset);
-void BG_LoadBlankPltt(u32 location, u32 size, enum GFPalSlotOffset offset, HeapID heapId);
+void BG_LoadPlttData(u32 location, const void *plttData, u32 size, u32 offset);
+void BG_LoadBlankPltt(u32 location, u32 size, u32 offset, HeapID heapId);
 void BG_SetMaskColor(u8 bgId, u16 value);
 void LoadRectToBgTilemapRect(BgConfig *bgConfig, u8 bgId, const void *buffer, u8 destX, u8 destY, u8 width, u8 height);
 void CopyToBgTilemapRect(BgConfig *bgConfig, u8 bgId, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const void *buffer, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight);

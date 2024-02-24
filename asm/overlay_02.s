@@ -889,7 +889,7 @@ _0224623A:
 	ldr r0, _022462D4 ; =ov02_022462DC
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	mov r2, #0
 	str r0, [r4, #0xc]
 	add r0, r5, #0
@@ -902,7 +902,7 @@ _0224623A:
 	b _022462C0
 _02246276:
 	ldr r0, [r4, #0xc]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldrh r0, [r4, #0x12]
 	add r0, r0, #1
 	strh r0, [r4, #0x12]
@@ -7490,7 +7490,7 @@ ov02_02249458: ; 0x02249458
 	ldr r0, _022494B8 ; =ov02_02249584
 	add r1, r4, #0
 	mov r2, #0x86
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r3, r4, r5, r6, r7, pc}
 _02249490:
 	cmp r5, #2
@@ -7503,13 +7503,13 @@ _02249490:
 	ldr r0, _022494BC ; =ov02_022499B8
 	add r1, r4, #0
 	mov r2, #0x86
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r3, r4, r5, r6, r7, pc}
 _022494AC:
 	ldr r0, _022494C0 ; =ov02_02249984
 	add r1, r4, #0
 	mov r2, #0x86
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _022494B8: .word ov02_02249584
@@ -7567,7 +7567,7 @@ ov02_022494C4: ; 0x022494C4
 	ldr r0, _02249538 ; =ov02_022499B8
 	add r1, r4, #0
 	mov r2, #0x86
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -7577,7 +7577,7 @@ _02249538: .word ov02_022499B8
 	thumb_func_start ov02_0224953C
 ov02_0224953C: ; 0x0224953C
 	push {r3, lr}
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r0, [r0, #4]
 	pop {r3, pc}
 	.balign 4, 0
@@ -7587,10 +7587,10 @@ ov02_0224953C: ; 0x0224953C
 ov02_02249548: ; 0x02249548
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	bl ov02_0224957C
 	add r0, r4, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, pc}
 	thumb_func_end ov02_02249548
 
@@ -8684,7 +8684,7 @@ ov02_02249CF0: ; 0x02249CF0
 	ldr r0, _02249D14 ; =ov02_02249D5C
 	add r1, r4, #0
 	mov r2, #0x80
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	mov r1, #0x22
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -8706,7 +8706,7 @@ ov02_02249D18: ; 0x02249D18
 	ldr r0, _02249D3C ; =ov02_02249E58
 	add r1, r4, #0
 	mov r2, #0x80
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	mov r1, #0x22
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -8724,7 +8724,7 @@ ov02_02249D40: ; 0x02249D40
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _02249D5A
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0x22
 	mov r1, #0
 	lsl r0, r0, #4
@@ -8794,7 +8794,7 @@ _02249DBE:
 	str r1, [r6, r0]
 	ldr r0, _02249DD4 ; =ov02_02249DD8
 	add r1, r6, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 _02249DD2:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -8866,7 +8866,7 @@ _02249E48:
 	lsl r0, r0, #2
 	str r1, [r6, r0]
 	ldr r0, [sp]
-	bl DestroySysTask
+	bl SysTask_Destroy
 _02249E56:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov02_02249DD8
@@ -8889,7 +8889,7 @@ ov02_02249E58: ; 0x02249E58
 	ldr r0, _02249E8C ; =ov02_02249E90
 	add r1, r4, #0
 	mov r2, #0x80
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	mov r0, #0x21
 	lsl r0, r0, #4
 	ldr r1, [r4, r0]
@@ -8922,7 +8922,7 @@ ov02_02249E90: ; 0x02249E90
 	lsl r0, r0, #2
 	str r1, [r4, r0]
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _02249EBE:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov02_02249E90
@@ -9969,7 +9969,7 @@ _0224A6BA:
 	ldr r0, _0224A6CC ; =ov02_0224A700
 	add r1, r4, #0
 	mov r2, #0x81
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	mov r1, #0x89
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -9992,7 +9992,7 @@ _0224A6E2:
 	mov r0, #0x89
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -11765,7 +11765,7 @@ ov02_0224B418: ; 0x0224B418
 	ldr r0, _0224B438 ; =ov02_0224B45C
 	mov r2, #0x86
 	str r5, [r1, #0x14]
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0224B438: .word ov02_0224B45C
@@ -11774,7 +11774,7 @@ _0224B438: .word ov02_0224B45C
 	thumb_func_start ov02_0224B43C
 ov02_0224B43C: ; 0x0224B43C
 	push {r3, lr}
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r0, [r0, #4]
 	pop {r3, pc}
 	.balign 4, 0
@@ -11784,10 +11784,10 @@ ov02_0224B43C: ; 0x0224B43C
 ov02_0224B448: ; 0x0224B448
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	bl FreeToHeap
 	add r0, r4, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, pc}
 	thumb_func_end ov02_0224B448
 
@@ -17659,7 +17659,7 @@ _0224E04A:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0224E068:
 	pop {r3, r4, r5, pc}
 	nop
@@ -17697,7 +17697,7 @@ _0224E08C:
 	mov r2, #0
 	add r1, r6, #0
 	strh r2, [r5]
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0224E0B4: .word ov02_02253A1C
@@ -25089,7 +25089,7 @@ ov02_022518F8: ; 0x022518F8
 	ldr r0, _022519A8 ; =ov02_02251BA8
 	add r1, r5, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r1, _022519AC ; =0x000004A8
 	str r0, [r5, r1]
 	add sp, #0x14
@@ -25213,7 +25213,7 @@ _022519D4:
 	ldr r0, _02251B08 ; =ov02_02251BC4
 	ldr r1, [sp, #0x10]
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r2, _02251B0C ; =0x000004A8
 	ldr r1, [sp, #0x10]
 	str r0, [r1, r2]
@@ -25271,7 +25271,7 @@ ov02_02251B14: ; 0x02251B14
 	add r4, r0, #0
 	ldr r0, _02251B48 ; =0x000004A8
 	ldr r0, [r4, r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, _02251B48 ; =0x000004A8
 	mov r1, #0
 	str r1, [r4, r0]
@@ -26760,7 +26760,7 @@ ov02_022526C8: ; 0x022526C8
 	ldr r0, _022526E8 ; =ov02_022526FC
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	mov r0, #0
 	strb r0, [r4, #2]
 	pop {r4, pc}
@@ -26827,7 +26827,7 @@ _02252746:
 	mov r0, #1
 	strb r0, [r4, #2]
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0225275A:
 	add sp, #0xc
 	pop {r4, r5, pc}
@@ -26869,7 +26869,7 @@ ov02_02252764: ; 0x02252764
 	strh r1, [r0]
 	ldr r0, _022527AC ; =ov02_0225286C
 	add r1, r5, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _022527AC: .word ov02_0225286C
@@ -26979,7 +26979,7 @@ ov02_0225286C: ; 0x0225286C
 	mov r0, #1
 	strb r0, [r4, #3]
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _02252886:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov02_0225286C

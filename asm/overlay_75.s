@@ -1,7 +1,7 @@
 	.include "asm/macros.inc"
 	.include "overlay_75.inc"
 	.include "global.inc"
-	.public ov60_021EAFE0
+	.public gApplication_TitleScreen
 
 	.text
 
@@ -226,13 +226,13 @@ ov75_02246B00: ; 0x02246B00
 	mov r0, #0x59
 	bl DestroyHeap
 	ldr r0, _02246B40 ; =FS_OVERLAY_ID(OVY_60)
-	ldr r1, _02246B44 ; =ov60_021EAFE0
+	ldr r1, _02246B44 ; =gApplication_TitleScreen
 	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02246B40: .word FS_OVERLAY_ID(OVY_60)
-_02246B44: .word ov60_021EAFE0
+_02246B44: .word gApplication_TitleScreen
 	thumb_func_end ov75_02246B00
 
 	thumb_func_start ov75_02246B48
@@ -1064,7 +1064,7 @@ ov75_02247180: ; 0x02247180
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _022471A4
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xec
@@ -1559,7 +1559,7 @@ _022475EA:
 	str r0, [sp]
 	add r0, r5, #0
 	mov r2, #1
-	bl sub_02003DE8
+	bl BlendPalette
 	add r7, r7, #1
 	add r6, r6, #2
 	add r4, r4, #2
@@ -1616,7 +1616,7 @@ _02247636:
 	ldr r0, _022476E4 ; =ov75_022476E8
 	add r1, #0xec
 	mov r2, #0x14
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	ldr r1, [sp, #0x10]
 	add r1, #0xec
 	str r0, [r1]

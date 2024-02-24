@@ -26,7 +26,7 @@ ov33_0225D520: ; 0x0225D520
 	mov r3, #8
 	bl CreateSysTaskAndEnvironment
 	add r7, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	ldr r0, [sp]
 	str r6, [r4]
@@ -69,7 +69,7 @@ ov33_0225D5A8: ; 0x0225D5A8
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r0, r5, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	bl ov33_0225D820
 	ldr r0, [r4]

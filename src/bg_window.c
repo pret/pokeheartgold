@@ -285,6 +285,7 @@ void SetBgControlParam(BgConfig *config, u8 bgId, enum GFBgCntSet attr, u8 value
 
     switch (bgId) {
         case GF_BG_LYR_MAIN_0:
+        {
             GXBg01Control bg0cnt = G2_GetBG0Control();
             if (attr == GF_BG_CNT_SET_SCREEN_BASE) {
                 bg0cnt.screenBase = value;
@@ -296,7 +297,9 @@ void SetBgControlParam(BgConfig *config, u8 bgId, enum GFBgCntSet attr, u8 value
 
             G2_SetBG0Control((GXBGScrSizeText)bg0cnt.screenSize, (GXBGColorMode)config->bgs[bgId].colorMode, (GXBGScrBase)bg0cnt.screenBase, (GXBGCharBase)bg0cnt.charBase, (GXBGExtPltt)bg0cnt.bgExtPltt);
             break;
+        }
         case GF_BG_LYR_MAIN_1:
+        {
             GXBg01Control bg1cnt = G2_GetBG1Control();
             if (attr == GF_BG_CNT_SET_SCREEN_BASE) {
                 bg1cnt.screenBase = value;
@@ -308,10 +311,12 @@ void SetBgControlParam(BgConfig *config, u8 bgId, enum GFBgCntSet attr, u8 value
 
             G2_SetBG1Control((GXBGScrSizeText)bg1cnt.screenSize, (GXBGColorMode)config->bgs[bgId].colorMode, (GXBGScrBase)bg1cnt.screenBase, (GXBGCharBase)bg1cnt.charBase, (GXBGExtPltt)bg1cnt.bgExtPltt);
             break;
+        }
         case GF_BG_LYR_MAIN_2:
             switch (config->bgs[bgId].mode) {
                 default:
                 case GF_BG_TYPE_TEXT:
+                {
                     GXBg23ControlText bg2cnt_tx = G2_GetBG2ControlText();
                     if (attr == GF_BG_CNT_SET_SCREEN_BASE) {
                         bg2cnt_tx.screenBase = value;
@@ -323,7 +328,9 @@ void SetBgControlParam(BgConfig *config, u8 bgId, enum GFBgCntSet attr, u8 value
 
                     G2_SetBG2ControlText((GXBGScrSizeText)bg2cnt_tx.screenSize, (GXBGColorMode)config->bgs[bgId].colorMode, (GXBGScrBase)bg2cnt_tx.screenBase, (GXBGCharBase)bg2cnt_tx.charBase);
                     break;
+                }
                 case GF_BG_TYPE_AFFINE:
+                {
                     GXBg23ControlAffine bg2cnt_aff = G2_GetBG2ControlAffine();
                     if (attr == GF_BG_CNT_SET_SCREEN_BASE) {
                         bg2cnt_aff.screenBase = value;
@@ -335,7 +342,9 @@ void SetBgControlParam(BgConfig *config, u8 bgId, enum GFBgCntSet attr, u8 value
 
                     G2_SetBG2ControlAffine((GXBGScrSizeAffine)bg2cnt_aff.screenSize, (GXBGAreaOver)bg2cnt_aff.areaOver, (GXBGScrBase)bg2cnt_aff.screenBase, (GXBGCharBase)bg2cnt_aff.charBase);
                     break;
+                }
                 case GF_BG_TYPE_256x16PLTT:
+                {
                     GXBg23Control256x16Pltt bg2cnt_256x16pltt = G2_GetBG2Control256x16Pltt();
                     if (attr == GF_BG_CNT_SET_SCREEN_BASE) {
                         bg2cnt_256x16pltt.screenBase = value;
@@ -347,12 +356,14 @@ void SetBgControlParam(BgConfig *config, u8 bgId, enum GFBgCntSet attr, u8 value
 
                     G2_SetBG2Control256x16Pltt((GXBGScrSize256x16Pltt)bg2cnt_256x16pltt.screenSize, (GXBGAreaOver)bg2cnt_256x16pltt.areaOver, (GXBGScrBase)bg2cnt_256x16pltt.screenBase, (GXBGCharBase)bg2cnt_256x16pltt.charBase);
                     break;
+                }
             }
             break;
         case GF_BG_LYR_MAIN_3:
             switch (config->bgs[bgId].mode) {
                 default:
                 case GF_BG_TYPE_TEXT:
+                {
                     GXBg23ControlText bg3cnt_tx = G2_GetBG3ControlText();
                     if (attr == GF_BG_CNT_SET_SCREEN_BASE) {
                         bg3cnt_tx.screenBase = value;
@@ -364,7 +375,9 @@ void SetBgControlParam(BgConfig *config, u8 bgId, enum GFBgCntSet attr, u8 value
 
                     G2_SetBG3ControlText((GXBGScrSizeText)bg3cnt_tx.screenSize, (GXBGColorMode)config->bgs[bgId].colorMode, (GXBGScrBase)bg3cnt_tx.screenBase, (GXBGCharBase)bg3cnt_tx.charBase);
                     break;
+                }
                 case GF_BG_TYPE_AFFINE:
+                {
                     GXBg23ControlAffine bg3cnt_aff = G2_GetBG3ControlAffine();
                     if (attr == GF_BG_CNT_SET_SCREEN_BASE) {
                         bg3cnt_aff.screenBase = value;
@@ -376,7 +389,9 @@ void SetBgControlParam(BgConfig *config, u8 bgId, enum GFBgCntSet attr, u8 value
 
                     G2_SetBG3ControlAffine((GXBGScrSizeAffine)bg3cnt_aff.screenSize, (GXBGAreaOver)bg3cnt_aff.areaOver, (GXBGScrBase)bg3cnt_aff.screenBase, (GXBGCharBase)bg3cnt_aff.charBase);
                     break;
+                }
                 case GF_BG_TYPE_256x16PLTT:
+                {
                     GXBg23Control256x16Pltt bg3cnt_256x16pltt = G2_GetBG3Control256x16Pltt();
                     if (attr == GF_BG_CNT_SET_SCREEN_BASE) {
                         bg3cnt_256x16pltt.screenBase = value;
@@ -388,9 +403,11 @@ void SetBgControlParam(BgConfig *config, u8 bgId, enum GFBgCntSet attr, u8 value
 
                     G2_SetBG3Control256x16Pltt((GXBGScrSize256x16Pltt)bg3cnt_256x16pltt.screenSize, (GXBGAreaOver)bg3cnt_256x16pltt.areaOver, (GXBGScrBase)bg3cnt_256x16pltt.screenBase, (GXBGCharBase)bg3cnt_256x16pltt.charBase);
                     break;
+                }
             }
             break;
         case GF_BG_LYR_SUB_0:
+        {
             GXBg01Control bg0cntsub = G2S_GetBG0Control();
             if (attr == GF_BG_CNT_SET_SCREEN_BASE) {
                 bg0cntsub.screenBase = value;
@@ -402,7 +419,9 @@ void SetBgControlParam(BgConfig *config, u8 bgId, enum GFBgCntSet attr, u8 value
 
             G2S_SetBG0Control((GXBGScrSizeText)bg0cntsub.screenSize, (GXBGColorMode)config->bgs[bgId].colorMode, (GXBGScrBase)bg0cntsub.screenBase, (GXBGCharBase)bg0cntsub.charBase, (GXBGExtPltt)bg0cntsub.bgExtPltt);
             break;
+        }
         case GF_BG_LYR_SUB_1:
+        {
             GXBg01Control bg1cntsub = G2S_GetBG1Control();
             if (attr == GF_BG_CNT_SET_SCREEN_BASE) {
                 bg1cntsub.screenBase = value;
@@ -414,10 +433,12 @@ void SetBgControlParam(BgConfig *config, u8 bgId, enum GFBgCntSet attr, u8 value
 
             G2S_SetBG1Control((GXBGScrSizeText)bg1cntsub.screenSize, (GXBGColorMode)config->bgs[bgId].colorMode, (GXBGScrBase)bg1cntsub.screenBase, (GXBGCharBase)bg1cntsub.charBase, (GXBGExtPltt)bg1cntsub.bgExtPltt);
             break;
+        }
         case GF_BG_LYR_SUB_2:
             switch (config->bgs[bgId].mode) {
                 default:
                 case GF_BG_TYPE_TEXT:
+                {
                     GXBg23ControlText bg2cntsub_tx = G2S_GetBG2ControlText();
                     if (attr == GF_BG_CNT_SET_SCREEN_BASE) {
                         bg2cntsub_tx.screenBase = value;
@@ -429,7 +450,9 @@ void SetBgControlParam(BgConfig *config, u8 bgId, enum GFBgCntSet attr, u8 value
 
                     G2S_SetBG2ControlText((GXBGScrSizeText)bg2cntsub_tx.screenSize, (GXBGColorMode)config->bgs[bgId].colorMode, (GXBGScrBase)bg2cntsub_tx.screenBase, (GXBGCharBase)bg2cntsub_tx.charBase);
                     break;
+                }
                 case GF_BG_TYPE_AFFINE:
+                {
                     GXBg23ControlAffine bg2cntsub_aff = G2S_GetBG2ControlAffine();
                     if (attr == GF_BG_CNT_SET_SCREEN_BASE) {
                         bg2cntsub_aff.screenBase = value;
@@ -441,7 +464,9 @@ void SetBgControlParam(BgConfig *config, u8 bgId, enum GFBgCntSet attr, u8 value
 
                     G2S_SetBG2ControlAffine((GXBGScrSizeAffine)bg2cntsub_aff.screenSize, (GXBGAreaOver)bg2cntsub_aff.areaOver, (GXBGScrBase)bg2cntsub_aff.screenBase, (GXBGCharBase)bg2cntsub_aff.charBase);
                     break;
+                }
                 case GF_BG_TYPE_256x16PLTT:
+                {
                     GXBg23Control256x16Pltt bg2cntsub_256x16pltt = G2S_GetBG2Control256x16Pltt();
                     if (attr == GF_BG_CNT_SET_SCREEN_BASE) {
                         bg2cntsub_256x16pltt.screenBase = value;
@@ -453,12 +478,14 @@ void SetBgControlParam(BgConfig *config, u8 bgId, enum GFBgCntSet attr, u8 value
 
                     G2S_SetBG2Control256x16Pltt((GXBGScrSize256x16Pltt)bg2cntsub_256x16pltt.screenSize, (GXBGAreaOver)bg2cntsub_256x16pltt.areaOver, (GXBGScrBase)bg2cntsub_256x16pltt.screenBase, (GXBGCharBase)bg2cntsub_256x16pltt.charBase);
                     break;
+                }
             }
             break;
         case GF_BG_LYR_SUB_3:
             switch (config->bgs[bgId].mode) {
                 default:
                 case GF_BG_TYPE_TEXT:
+                {
                     GXBg23ControlText bg3cntsub_tx = G2S_GetBG3ControlText();
                     if (attr == GF_BG_CNT_SET_SCREEN_BASE) {
                         bg3cntsub_tx.screenBase = value;
@@ -470,7 +497,9 @@ void SetBgControlParam(BgConfig *config, u8 bgId, enum GFBgCntSet attr, u8 value
 
                     G2S_SetBG3ControlText((GXBGScrSizeText)bg3cntsub_tx.screenSize, (GXBGColorMode)config->bgs[bgId].colorMode, (GXBGScrBase)bg3cntsub_tx.screenBase, (GXBGCharBase)bg3cntsub_tx.charBase);
                     break;
+                }
                 case GF_BG_TYPE_AFFINE:
+                {
                     GXBg23ControlAffine bg3cntsub_aff = G2S_GetBG3ControlAffine();
                     if (attr == GF_BG_CNT_SET_SCREEN_BASE) {
                         bg3cntsub_aff.screenBase = value;
@@ -482,7 +511,9 @@ void SetBgControlParam(BgConfig *config, u8 bgId, enum GFBgCntSet attr, u8 value
 
                     G2S_SetBG3ControlAffine((GXBGScrSizeAffine)bg3cntsub_aff.screenSize, (GXBGAreaOver)bg3cntsub_aff.areaOver, (GXBGScrBase)bg3cntsub_aff.screenBase, (GXBGCharBase)bg3cntsub_aff.charBase);
                     break;
+                }
                 case GF_BG_TYPE_256x16PLTT:
+                {
                     GXBg23Control256x16Pltt bg3cntsub_256x16pltt = G2S_GetBG3Control256x16Pltt();
                     if (attr == GF_BG_CNT_SET_SCREEN_BASE) {
                         bg3cntsub_256x16pltt.screenBase = value;
@@ -494,6 +525,7 @@ void SetBgControlParam(BgConfig *config, u8 bgId, enum GFBgCntSet attr, u8 value
 
                     G2S_SetBG3Control256x16Pltt((GXBGScrSize256x16Pltt)bg3cntsub_256x16pltt.screenSize, (GXBGAreaOver)bg3cntsub_256x16pltt.areaOver, (GXBGScrBase)bg3cntsub_256x16pltt.screenBase, (GXBGCharBase)bg3cntsub_256x16pltt.charBase);
                     break;
+                }
             }
             break;
     }
@@ -778,7 +810,7 @@ void BgCopyOrUncompressTilemapBufferRangeToVram(BgConfig *bgConfig, u8 bgId, con
             LoadBgVramScr(bgId, tilemapBuffer, bgConfig->bgs[bgId].baseTile * 2, bgConfig->bgs[bgId].bufferSize);
             return;
         }
-        
+
         u32 uncompSize = MI_GetUncompressedSize(buffer);
         void *ptr = AllocFromHeapAtEnd(bgConfig->heapId, uncompSize);
         CopyOrUncompressTilemapData(buffer, ptr, bufferSize);
@@ -902,7 +934,7 @@ void BG_FillCharDataRange(BgConfig *bgConfig, enum GFBgLayer bgId, u32 fillValue
     FreeToHeap(buffer);
 }
 
-void BG_LoadPlttData(u32 location, const void *plttData, u32 size, enum GFPalSlotOffset offset) {
+void BG_LoadPlttData(u32 location, const void *plttData, u32 size, u32 offset) {
     DC_FlushRange(plttData, size);
     if (location < GF_PAL_LOCATION_SUB_BG) {
         GX_LoadBGPltt(plttData, offset, size);
@@ -912,7 +944,7 @@ void BG_LoadPlttData(u32 location, const void *plttData, u32 size, enum GFPalSlo
     GXS_LoadBGPltt(plttData, offset, size);
 }
 
-void BG_LoadBlankPltt(u32 location, u32 size, enum GFPalSlotOffset offset, HeapID heapId) {
+void BG_LoadBlankPltt(u32 location, u32 size, u32 offset, HeapID heapId) {
     void *plttData = AllocFromHeapAtEnd(heapId, size);
     memset(plttData, 0, size);
     DC_FlushRange(plttData, size);
@@ -1041,7 +1073,7 @@ void CopyRectToBgTilemapRect(BgConfig *bgConfig, u8 bgId, u8 destX, u8 destY, u8
 
 static void CopyToBgTilemapRectText(Background *bg, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const u16 *buffer, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight, u8 mode) {
     u16 *tilemapBuffer = bg->tilemapBuffer;
-    
+
     if (tilemapBuffer == NULL) {
         return;
     }
@@ -1535,7 +1567,7 @@ BOOL WindowIsInUse(const Window *window) {
     if (window->bgConfig == NULL || window->bgId == 0xFF || window->pixelBuffer == NULL) {
         return FALSE;
     }
-    
+
     return TRUE;
 }
 
@@ -1663,7 +1695,7 @@ static void PutWindowTilemap_AffineMode(Window *window) {
     if (window->bgConfig->bgs[window->bgId].tilemapBuffer == NULL) {
         return;
     }
-    
+
     tilemapWidth = sTilemapWidthByBufferSize[window->bgConfig->bgs[window->bgId].size];
 
     tilemap = window->bgConfig->bgs[window->bgId].tilemapBuffer + window->tilemapTop * tilemapWidth + window->tilemapLeft;

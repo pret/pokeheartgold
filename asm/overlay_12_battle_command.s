@@ -663,7 +663,7 @@ _0224692C:
 	add r0, r5, #0
 	mov r1, #0xf
 	mov r3, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r1, #0
 	ldr r0, [sp, #0x24]
 	mov r2, #0x10
@@ -705,7 +705,7 @@ _02246950:
 	add r0, r5, #0
 	mov r1, #0xf
 	mov r3, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r1, #0
 	ldr r0, [sp, #0x24]
 	mov r2, #0x10
@@ -731,7 +731,7 @@ _022469B0:
 	add r0, r5, #0
 	mov r1, #5
 	mov r3, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r1, #0
 	ldr r0, [sp, #0x24]
 	mov r2, #0x10
@@ -787,7 +787,7 @@ _02246A18:
 	add r0, r5, #0
 	mov r1, #5
 	mov r3, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r1, #0
 	ldr r0, [sp, #0x24]
 	str r1, [sp]
@@ -802,7 +802,7 @@ _02246A18:
 	pop {r3, r4, r5, r6, r7, pc}
 _02246A66:
 	add r0, r5, #0
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	beq _02246A72
 _02246A70:
@@ -900,7 +900,7 @@ _02246B26:
 	add r0, r5, #0
 	mov r1, #0xf
 	mov r3, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r1, #0
 	ldr r0, [sp, #0x24]
 	mov r2, #0x10
@@ -918,7 +918,7 @@ _02246B62:
 	add r0, r5, #0
 	mov r1, #5
 	mov r3, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	add sp, #0x158
 	pop {r3, r4, r5, r6, r7, pc}
 _02246B7A:
@@ -970,14 +970,14 @@ _02246BC4:
 	add r0, r5, #0
 	mov r1, #5
 	mov r3, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x11
 	add sp, #0x158
 	str r0, [r4, #0x28]
 	pop {r3, r4, r5, r6, r7, pc}
 _02246BF4:
 	add r0, r5, #0
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	beq _02246C00
 _02246BFE:
@@ -1027,7 +1027,7 @@ _02246C00:
 	add r0, r5, #0
 	mov r1, #5
 	mov r3, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r2, #0
 	ldr r0, [sp, #0x24]
 	mov r1, #0x10
@@ -1040,7 +1040,7 @@ _02246C00:
 	pop {r3, r4, r5, r6, r7, pc}
 _02246C84:
 	add r0, r5, #0
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _02246D4C
 	mov r0, #0x12
@@ -1051,7 +1051,7 @@ _02246C84:
 	bl sub_0201649C
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	add sp, #0x158
 	pop {r3, r4, r5, r6, r7, pc}
 _02246CAA:
@@ -1111,7 +1111,7 @@ _02246D0A:
 	add r0, r5, #0
 	mov r1, #0xf
 	mov r3, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r1, #0
 	ldr r0, [sp, #0x24]
 	mov r2, #0x10
@@ -1124,7 +1124,7 @@ _02246D0A:
 	pop {r3, r4, r5, r6, r7, pc}
 _02246D42:
 	add r0, r5, #0
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	beq _02246D4E
 _02246D4C:
@@ -1262,7 +1262,7 @@ _02246E5C:
 	pop {r3, r4, r5, r6, r7, pc}
 _02246E78:
 	add r0, r5, #0
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	beq _02246E84
 _02246E82:
@@ -1350,7 +1350,7 @@ _02246F14:
 	add r0, r5, #0
 	mov r1, #0xf
 	mov r3, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r1, #0
 	ldr r0, [sp, #0x24]
 	mov r2, #0x10
@@ -1490,7 +1490,7 @@ _02247074:
 	add r0, r5, #0
 	mov r1, #0xf
 	mov r3, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r1, #0
 	ldr r0, [sp, #0x24]
 	mov r2, #0x10
@@ -1582,7 +1582,7 @@ _02247116:
 	add r0, r4, #0
 	bl FreeToHeap
 	ldr r0, [sp, #0x10]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #0x158
 	pop {r3, r4, r5, r6, r7, pc}
 _02247146:
@@ -1653,12 +1653,12 @@ _022471AC:
 	add r0, r4, #0
 	bl FreeToHeap
 	ldr r0, [sp, #0x10]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #0x158
 	pop {r3, r4, r5, r6, r7, pc}
 _022471DC:
 	add r0, r5, #0
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _02247216
 	ldr r0, [r4, #0x40]
@@ -1681,7 +1681,7 @@ _022471F8:
 	add r0, r4, #0
 	bl FreeToHeap
 	ldr r0, [sp, #0x10]
-	bl DestroySysTask
+	bl SysTask_Destroy
 _02247216:
 	add sp, #0x158
 	pop {r3, r4, r5, r6, r7, pc}

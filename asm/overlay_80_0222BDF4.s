@@ -1365,7 +1365,7 @@ _0222C7E4:
 	ldr r0, _0222C7F4 ; =ov80_0222EEC8
 	ldr r2, _0222C7F8 ; =0x0000EAC4
 	add r1, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r5, #0x38]
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -3075,7 +3075,7 @@ _0222D440:
 	mov r2, #2
 	ldr r0, [r0, #4]
 	add r3, r1, #0
-	bl sub_02003D5C
+	bl PaletteData_FillPaletteInBuffer
 	ldr r0, [r4, #0x28]
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -3209,7 +3209,7 @@ _0222D55C:
 	mov r2, #2
 	ldr r0, [r0, #4]
 	add r3, r1, #0
-	bl sub_02003D5C
+	bl PaletteData_FillPaletteInBuffer
 	ldr r0, [r4, #0x28]
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -3509,7 +3509,7 @@ _0222D7DC:
 	add r0, r7, #0
 	bl FreeToHeap
 	ldr r0, [sp, #8]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
 _0222D7F6:
@@ -3820,7 +3820,7 @@ _0222D9D6:
 	ldr r0, _0222DAA8 ; =ov80_0222D644
 	add r1, r5, #0
 	lsl r2, r2, #0xc
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r0, [r5, #4]
 	add r0, r0, #1
 	str r0, [r5, #4]
@@ -3999,7 +3999,7 @@ _0222DB70:
 	ldr r0, _0222DC10 ; =ov80_0222D644
 	add r1, r5, #0
 	lsl r2, r2, #0xc
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r0, [r5, #4]
 	add r0, r0, #1
 	str r0, [r5, #4]
@@ -4144,7 +4144,7 @@ ov80_0222DC70: ; 0x0222DC70
 	mov r2, #2
 	ldr r0, [r0, #4]
 	add r3, r1, #0
-	bl sub_02003D5C
+	bl PaletteData_FillPaletteInBuffer
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -4326,7 +4326,7 @@ ov80_0222DE1C: ; 0x0222DE1C
 	beq _0222DE3E
 	bl GF_AssertFail
 	ldr r0, [r5]
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0222DE3E:
 	add r0, r4, #0
 	bl ov80_0222BE10
@@ -4352,7 +4352,7 @@ _0222DE3E:
 	ldr r2, _0222DE88 ; =0x00011170
 	add r1, r5, #0
 	strb r4, [r5, #0xa]
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -4405,7 +4405,7 @@ ov80_0222DEB8: ; 0x0222DEB8
 	beq _0222DEDA
 	bl GF_AssertFail
 	ldr r0, [r4]
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0222DEDA:
 	add r0, r4, #0
 	mov r1, #0
@@ -4433,7 +4433,7 @@ _0222DEDA:
 	ldr r0, _0222DF28 ; =ov80_0222F53C
 	add r1, r4, #0
 	lsl r2, r2, #2
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -5414,7 +5414,7 @@ _0222E60E:
 	ldr r0, _0222E68C ; =ov80_0222E7C8
 	add r1, r5, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r5, #4]
 	add sp, #0x14
 	pop {r4, r5, pc}
@@ -5733,7 +5733,7 @@ _0222E8BE:
 	bl DestroyMsgData
 _0222E8E4:
 	ldr r0, [r6, #4]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r6, #0
 	bl FreeToHeap
 	mov r0, #0
@@ -5932,7 +5932,7 @@ _0222EA22:
 	ldr r0, _0222EA70 ; =ov80_0222EC90
 	add r1, r5, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r5, #4]
 	add sp, #0x14
 	pop {r4, r5, pc}
@@ -6404,7 +6404,7 @@ _0222EDD6:
 	bl DestroyMsgData
 _0222EDFC:
 	ldr r0, [r6, #4]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r6, #0
 	bl FreeToHeap
 	mov r0, #0
@@ -6634,7 +6634,7 @@ _0222EF9A:
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r7, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0222EFC2:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -6865,7 +6865,7 @@ _0222F0DA:
 	ldr r0, [sp, #0x2c]
 	lsr r2, r2, #0x10
 	mov r3, #0x10
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 _0222F1AE:
 	ldr r0, [sp, #0x28]
 	bl FreeToHeap
@@ -7305,7 +7305,7 @@ ov80_0222F4F0: ; 0x0222F4F0
 	ldrsb r1, [r4, r1]
 	cmp r1, #0
 	bge _0222F528
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0xc
@@ -7388,7 +7388,7 @@ _0222F5A6:
 	str r0, [r2]
 _0222F5B0:
 	add r0, r7, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0xc

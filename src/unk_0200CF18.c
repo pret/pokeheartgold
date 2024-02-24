@@ -364,18 +364,18 @@ s8 SpriteRenderer_LoadPlttResObjFromOpenNarc(SpriteRenderer* renderer, SpriteGfx
     return -1;
 }
 
-u8 sub_0200D644(PaletteData* plttData, u32 bufferId, SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int pltt_num, int vram, int resId) {
+u8 sub_0200D644(PaletteData* plttData, PaletteBufferId bufferId, SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int pltt_num, int vram, int resId) {
     int ret = SpriteRenderer_LoadPlttResObjFromNarcId(renderer, gfxHandler, narcId, fileId, compressed, pltt_num, vram, resId);
     if (ret != -1) {
-        sub_020032A4(plttData, bufferId, ret * 16, pltt_num * 32);
+        PaletteData_LoadPaletteSlotFromHardware(plttData, bufferId, ret * 16, pltt_num * 32);
     }
     return ret;
 }
 
-u8 sub_0200D68C(PaletteData* plttData, u32 bufferId, SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, int pltt_num, int vram, int resId) {
+u8 sub_0200D68C(PaletteData* plttData, PaletteBufferId bufferId, SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, int pltt_num, int vram, int resId) {
     int ret = SpriteRenderer_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, narc, fileId, compressed, pltt_num, vram, resId);
     if (ret != -1) {
-        sub_020032A4(plttData, bufferId, ret * 16, pltt_num * 32);
+        PaletteData_LoadPaletteSlotFromHardware(plttData, bufferId, ret * 16, pltt_num * 32);
     }
     return ret;
 }

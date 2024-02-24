@@ -259,14 +259,14 @@ ov12_02237F18: ; 0x02237F18
 	add r7, r0, #0
 	bl sub_02026E8C
 	add r5, r0, #0
-	bl sub_02026E84
+	bl GetMainBgPlttAddr
 	add r1, r0, #0
 	mov r0, #0
 	add r2, r5, #0
 	bl MIi_CpuClear16
 	bl sub_02026E9C
 	add r5, r0, #0
-	bl sub_02026E94
+	bl GetSubBgPlttAddr
 	add r1, r0, #0
 	mov r0, #0
 	add r2, r5, #0
@@ -292,7 +292,7 @@ ov12_02237F18: ; 0x02237F18
 	bl PaletteData_Init
 	str r0, [r4, #0x28]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r2, #2
 	ldr r0, [r4, #0x28]
 	mov r1, #0
@@ -550,7 +550,7 @@ _02237FD8:
 	ldr r3, [r6, r3]
 	lsl r3, r3, #0x10
 	lsr r3, r3, #0x10
-	bl sub_02003D5C
+	bl PaletteData_FillPaletteInBuffer
 	mov r0, #0xc0
 	str r0, [sp]
 	add r0, #0x40
@@ -567,7 +567,7 @@ _02237FD8:
 	mov r2, #2
 	lsl r3, r3, #0x10
 	lsr r3, r3, #0x10
-	bl sub_02003D5C
+	bl PaletteData_FillPaletteInBuffer
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0xdf
@@ -584,7 +584,7 @@ _02237FD8:
 	add r2, r1, #0
 	lsl r3, r3, #0x10
 	lsr r3, r3, #0x10
-	bl sub_02003D5C
+	bl PaletteData_FillPaletteInBuffer
 	mov r1, #0
 	mov r0, #0xa0
 	str r0, [sp]
@@ -593,7 +593,7 @@ _02237FD8:
 	ldr r0, [r4, #0x28]
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_02003D5C
+	bl PaletteData_FillPaletteInBuffer
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0xff
@@ -601,7 +601,7 @@ _02237FD8:
 	ldr r0, [r4, #0x28]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_02003D5C
+	bl PaletteData_FillPaletteInBuffer
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0xff
@@ -609,7 +609,7 @@ _02237FD8:
 	ldr r0, [r4, #0x28]
 	ldr r3, _02238334 ; =0x0000FFFF
 	mov r1, #3
-	bl sub_02003D5C
+	bl PaletteData_FillPaletteInBuffer
 	ldr r0, [r4, #0x28]
 	mov r1, #0
 	mov r2, #0xb
@@ -624,18 +624,18 @@ _02237FD8:
 	ldr r0, _02238338 ; =ov12_02239810
 	ldr r2, _0223833C ; =0x0000EA60
 	add r1, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #0x1c]
 	ldr r0, _02238340 ; =ov12_02239854
 	ldr r2, _02238344 ; =0x0000C350
 	add r1, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #0x20]
 	mov r2, #0x4b
 	ldr r0, _02238348 ; =ov12_0223998C
 	add r1, r4, #0
 	lsl r2, r2, #4
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	str r0, [r4, #0x24]
 	mov r1, #0x32
 	ldr r0, _0223834C ; =0x00002438
@@ -1130,9 +1130,9 @@ _022386C0:
 	ldr r0, [r4, r0]
 	bl MessagePrinter_Delete
 	ldr r0, [r4, #0x1c]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [r4, #0x20]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	bl sub_02021238
 	ldr r0, [r4]
 	bl ov12_022396E8
@@ -3170,7 +3170,7 @@ _02239798:
 	bl GF_RunVramTransferTasks
 	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #0x28]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r4, #4]
 	bl DoScheduledBgGpuUpdates
 	ldr r3, _022397DC ; =0x027E0000
@@ -3196,7 +3196,7 @@ ov12_022397E4: ; 0x022397E4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #4]
 	bl DoScheduledBgGpuUpdates
@@ -3410,7 +3410,7 @@ ov12_0223998C: ; 0x0223998C
 	cmp r0, #0
 	bne _022399B4
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _022399B4:
 	pop {r3, r4, r5, pc}
 	nop
@@ -3453,7 +3453,7 @@ ov12_022399D4: ; 0x022399D4
 	bl PaletteData_Init
 	str r0, [r5, #0xc]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r2, #2
 	ldr r0, [r5, #0xc]
 	mov r1, #0
@@ -3468,7 +3468,7 @@ ov12_022399D4: ; 0x022399D4
 	ldr r0, [r5, #0xc]
 	mov r2, #2
 	add r3, r1, #0
-	bl sub_02003D5C
+	bl PaletteData_FillPaletteInBuffer
 	mov r0, #5
 	bl BgConfig_Alloc
 	str r0, [r5, #4]
@@ -3593,7 +3593,7 @@ _02239A46:
 	ldr r0, [r5, #0xc]
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_02003D5C
+	bl PaletteData_FillPaletteInBuffer
 	bl GfGfx_BothDispOn
 	mov r0, #0x10
 	mov r1, #1
@@ -3664,7 +3664,7 @@ _02239A46:
 	ldr r0, [r5, #0xc]
 	ldr r2, _02239C20 ; =0x0000FFFF
 	mov r1, #5
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, [r5, #8]
 	mov r1, #1
 	bl WaitingIcon_New
@@ -3755,7 +3755,7 @@ _02239C96:
 	b _0223A06C
 _02239CAC:
 	ldr r0, [r4, #0xc]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _02239D5A
 	ldr r0, _02239F2C ; =0x00001021
@@ -4192,7 +4192,7 @@ _0223A008:
 	ldr r0, [r4, #0xc]
 	ldr r2, _0223A07C ; =0x0000FFFF
 	mov r1, #5
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	b _0223A06C
 _0223A038:
 	add r0, r1, #2
@@ -4209,7 +4209,7 @@ _0223A038:
 	b _0223A06C
 _0223A052:
 	ldr r0, [r4, #0xc]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _0223A06C
 	ldr r0, _0223A084 ; =0x00001024

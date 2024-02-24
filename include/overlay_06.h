@@ -6,7 +6,7 @@
 #include "palette.h"
 
 const u16 *ov06_0221BA00(int param_1);
-void ov06_0221BA1C(PaletteData *palData, int param_2, int unused, int param_4, u32 param_5);
+void ov06_0221BA1C(PaletteData *palData, int param_2, int unused, PaletteBufferId param_4, u32 param_5);
 ParticleSystem *ov06_0221BA40(HeapID heapId);
 ParticleSystem *ov06_0221BA88(HeapID heapId);
 void ov06_0221BAD8(ParticleSystem *param_1);

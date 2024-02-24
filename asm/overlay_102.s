@@ -3581,7 +3581,7 @@ ov102_021E909C: ; 0x021E909C
 	ldr r0, _021E913C ; =ov102_021E93DC
 	add r1, r4, #0
 	mov r2, #2
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4]
 	ldr r0, _021E9140 ; =ov102_021E93E0
 	add r1, r4, #0
@@ -3624,16 +3624,16 @@ _021E915C:
 	ldr r0, [r5, #8]
 	cmp r0, #0
 	beq _021E9166
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021E9166:
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
 	blt _021E915C
 	ldr r0, [r6]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [r6, #4]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	bl OamManager_Free
 	ldr r0, [r6, #0x24]
 	bl SpriteList_Delete
@@ -3924,10 +3924,10 @@ _021E938C:
 
 	thumb_func_start ov102_021E93D4
 ov102_021E93D4: ; 0x021E93D4
-	ldr r3, _021E93D8 ; =sub_0200E33C
+	ldr r3, _021E93D8 ; =SysTask_CreateOnVBlankQueue
 	bx r3
 	.balign 4, 0
-_021E93D8: .word sub_0200E33C
+_021E93D8: .word SysTask_CreateOnVBlankQueue
 	thumb_func_end ov102_021E93D4
 
 	thumb_func_start ov102_021E93DC
@@ -3987,7 +3987,7 @@ _021E9434:
 	ldr r0, [r0, r2]
 	mov r2, #1
 	str r4, [r1, #0x10]
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	lsl r1, r4, #2
 	add r1, r5, r1
 	str r0, [r1, #8]
@@ -4034,7 +4034,7 @@ _021E9484:
 	ldr r0, [r5, #8]
 	cmp r0, #0
 	beq _021E9498
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r0, [r0, #0xc]
 	cmp r0, r6
 	bne _021E9498
@@ -4058,7 +4058,7 @@ ov102_021E94A4: ; 0x021E94A4
 	lsl r0, r0, #2
 	add r0, r1, r0
 	ldr r0, [r0, #8]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [r4, #0x10]
 	ldr r1, [r4]
 	lsl r0, r0, #2
@@ -8330,7 +8330,7 @@ _021EB602:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021EB620:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -8354,7 +8354,7 @@ ov102_021EB624: ; 0x021EB624
 	ldr r0, _021EB650 ; =ov102_021EB5B8
 	mov r2, #1
 	strh r4, [r1, #0xa]
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r5, #0x64]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -10067,7 +10067,7 @@ _021EC314:
 	cmp r0, #0
 	bne _021EC32E
 	ldr r0, [r4, #0x1c]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldrh r0, [r4, #0x1a]
 	add r0, r0, #1
 	strh r0, [r4, #0x1a]
@@ -10157,7 +10157,7 @@ ov102_021EC3AC: ; 0x021EC3AC
 	cmp r0, #0
 	bne _021EC3D0
 	ldr r0, [r4, #0x1c]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [r4, #0x18]
 	add r0, r0, #1
 	str r0, [r4, #0x18]
@@ -10249,7 +10249,7 @@ ov102_021EC450: ; 0x021EC450
 	cmp r0, #0
 	bne _021EC474
 	ldr r0, [r4, #0x1c]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [r4, #0x18]
 	add r0, r0, #1
 	str r0, [r4, #0x18]

@@ -2,7 +2,7 @@
 	.include "asm/macros.inc"
 	.include "overlay_112.inc"
 	.include "global.inc"
-	.public ov60_021EAFE0
+	.public gApplication_TitleScreen
 
 	.text
 
@@ -4186,13 +4186,13 @@ ov112_021E7910: ; 0x021E7910
 	mov r0, #0x10
 	bl sub_0201A738
 	ldr r0, _021E7954 ; =FS_OVERLAY_ID(OVY_60)
-	ldr r1, _021E7958 ; =ov60_021EAFE0
+	ldr r1, _021E7958 ; =gApplication_TitleScreen
 	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
 _021E7954: .word FS_OVERLAY_ID(OVY_60)
-_021E7958: .word ov60_021EAFE0
+_021E7958: .word gApplication_TitleScreen
 	thumb_func_end ov112_021E7910
 
 	thumb_func_start ov112_021E795C
@@ -14791,7 +14791,7 @@ ov112_021ED0D0: ; 0x021ED0D0
 	ldr r0, _021ED134 ; =ov112_021ED13C
 	add r1, r4, #0
 	mov r2, #2
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r1, _021ED138 ; =0x0001F2D8
 	str r0, [r4, r1]
 	add sp, #4
@@ -14835,7 +14835,7 @@ _021ED154:
 	cmp r0, #0x1f
 	bne _021ED176
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021ED176:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -14856,7 +14856,7 @@ ov112_021ED180: ; 0x021ED180
 	cmp r4, r3
 	bls _021ED19A
 	strh r3, [r1, r2]
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021ED19A:
 	pop {r4, pc}
 	.balign 4, 0
@@ -15022,7 +15022,7 @@ ov112_021ED2F4: ; 0x021ED2F4
 	ldr r0, _021ED30C ; =ov112_021ED180
 	add r1, r4, #0
 	mov r2, #2
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r1, _021ED310 ; =0x0001F2DC
 	str r0, [r4, r1]
 	pop {r4, pc}

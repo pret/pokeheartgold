@@ -20,7 +20,7 @@ _0221BE2E:
 	ldr r3, [r5, #0xc]
 	mov r2, #0
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r2, _0221BE8C ; =0x00002090
 	add r4, r0, #0
 	mov r1, #0
@@ -386,7 +386,7 @@ _0221C106:
 	ldr r0, [r5, r0]
 	ldr r2, _0221C148 ; =0x0000FFFF
 	sub r3, #0x12
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	add r0, r4, #0
 	add sp, #0xc
 	pop {r4, r5, pc}
@@ -404,7 +404,7 @@ ov08_0221C14C: ; 0x0221C14C
 	mov r0, #0x7a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	beq _0221C162
 	mov r0, #1
@@ -1983,7 +1983,7 @@ ov08_0221CD64: ; 0x0221CD64
 	add r3, r1, #0
 	ldr r2, _0221CD8C ; =0x0000FFFF
 	sub r3, #0x12
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x1a
 	add sp, #0xc
 	pop {pc}
@@ -1999,7 +1999,7 @@ ov08_0221CD90: ; 0x0221CD90
 	add r4, r1, #0
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	beq _0221CDA8
 	mov r0, #0
@@ -12721,7 +12721,7 @@ ov08_022225D4: ; 0x022225D4
 	ldr r3, [r5, #0xc]
 	mov r2, #0x64
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r2, _02222668 ; =0x0000115C
 	add r4, r0, #0
 	mov r1, #0
@@ -12987,7 +12987,7 @@ _022227F0:
 	ldr r0, [r4, #8]
 	ldr r2, _0222283C ; =0x0000FFFF
 	sub r3, #0x12
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, [r4]
 	ldr r0, [r0, #0x14]
 	cmp r0, #1
@@ -13011,7 +13011,7 @@ ov08_02222840: ; 0x02222840
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #8]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	beq _02222852
 	mov r0, #1
@@ -13752,7 +13752,7 @@ ov08_02222E04: ; 0x02222E04
 	ldr r0, [r0, #8]
 	ldr r2, _02222E28 ; =0x0000FFFF
 	sub r3, #0x12
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0xe
 	add sp, #0xc
 	pop {pc}
@@ -13766,7 +13766,7 @@ ov08_02222E2C: ; 0x02222E2C
 	add r5, r1, #0
 	add r7, r0, #0
 	ldr r0, [r5, #8]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	beq _02222E40
 	mov r0, #0
@@ -13835,7 +13835,7 @@ ov08_02222EC4: ; 0x02222EC4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #8]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	beq _02222ED6
 	mov r0, #0xc

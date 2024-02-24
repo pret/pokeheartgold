@@ -3,7 +3,7 @@
 .public FontID_String_GetWidth
 .public LoadFontPal1
 .public FontID_String_GetWidthMultiline
-.public sub_02003DE8
+.public BlendPalette
 .public PlaySE
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData

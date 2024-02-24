@@ -5,7 +5,7 @@
 	.include "asm/macros.inc"
 	.include "overlay_74_thumb.inc"
 	.include "global.inc"
-	.public ov60_021EAFE0
+	.public gApplication_TitleScreen
 	.public sub_020342C0
 
 	.text
@@ -3538,7 +3538,7 @@ _02228C0C:
 	pop {r3, pc}
 _02228C1A:
 	ldr r0, _02228C58 ; =FS_OVERLAY_ID(OVY_60)
-	ldr r1, _02228C5C ; =ov60_021EAFE0
+	ldr r1, _02228C5C ; =gApplication_TitleScreen
 	bl RegisterMainOverlay
 _02228C22:
 	pop {r3, pc}
@@ -3557,7 +3557,7 @@ _02228C4C: .word ov112_App_MainMenu_SelectOption_ConnectToPokewalker
 _02228C50: .word FS_OVERLAY_ID(OVY_75)
 _02228C54: .word ov75_App_MainMenu_SelectOption_WiiMessageSettings
 _02228C58: .word FS_OVERLAY_ID(OVY_60)
-_02228C5C: .word ov60_021EAFE0
+_02228C5C: .word gApplication_TitleScreen
 	thumb_func_end ov74_MainMenu_QueueSelectedApp
 
 	thumb_func_start ov74_MainMenu_AppExit
@@ -4509,7 +4509,7 @@ ov74_02229450: ; 0x02229450
 	mov r0, #0x59
 	bl DestroyHeap
 	ldr r0, _02229474 ; =FS_OVERLAY_ID(OVY_60)
-	ldr r1, _02229478 ; =ov60_021EAFE0
+	ldr r1, _02229478 ; =gApplication_TitleScreen
 	bl RegisterMainOverlay
 	add r0, r4, #0
 	bl OverlayManager_FreeData
@@ -4519,7 +4519,7 @@ ov74_02229450: ; 0x02229450
 	pop {r4, pc}
 	nop
 _02229474: .word FS_OVERLAY_ID(OVY_60)
-_02229478: .word ov60_021EAFE0
+_02229478: .word gApplication_TitleScreen
 	thumb_func_end ov74_02229450
 
 	thumb_func_start ov74_0222947C
@@ -5386,7 +5386,7 @@ ov74_02229B68: ; 0x02229B68
 	strh r1, [r0, #0x24]
 	ldr r0, _02229BBC ; =ov74_02229CB8
 	mov r1, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r1, _02229BB8 ; =ov74_0223D0A4
 	ldr r2, [r1]
 	str r0, [r2, #0x1c]
@@ -5552,7 +5552,7 @@ ov74_02229CB8: ; 0x02229CB8
 	ldr r2, [r1]
 	cmp r2, #0
 	bne _02229CC8
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, pc}
 _02229CC8:
 	ldr r1, [r2, #0x20]
@@ -8463,7 +8463,7 @@ _0222B34C:
 	add r0, r5, #0
 	add r0, #0xd0
 	ldr r0, [r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0222B36A:
 	add r4, r4, #1
 	add r5, #0x4c
@@ -8486,7 +8486,7 @@ _0222B37E:
 	ldr r0, _0222B3A0 ; =0x00001854
 	str r6, [r5, r0]
 	ldr r0, [r5, r7]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r4, r4, #1
 	add r5, #0x4c
 	cmp r4, #0x50
@@ -8753,7 +8753,7 @@ _0222B5A0:
 	ldr r0, _0222B5F4 ; =ov74_0222BA48
 	ldr r1, [sp]
 	mov r2, #6
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	add r1, r5, #0
 	add r1, #0xd0
 	str r0, [r1]
@@ -8933,7 +8933,7 @@ _0222B6AC:
 	ldr r0, _0222B75C ; =ov74_0222BA48
 	add r1, r7, #0
 	mov r2, #6
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	add r1, r5, #0
 	add r1, #0xd0
 	str r0, [r1]
@@ -9155,7 +9155,7 @@ _0222B8C0:
 	ldr r0, _0222B948 ; =ov74_0222BA48
 	add r1, r6, #0
 	mov r2, #6
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r1, _0222B94C ; =0x00001890
 	add r4, r4, #1
 	str r0, [r5, r1]
@@ -10358,7 +10358,7 @@ _0222C2BC:
 	mov r2, #0
 	ldr r1, [r4, r1]
 	str r2, [r1]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r3, r4, r5, r6, r7, pc}
@@ -10638,7 +10638,7 @@ _0222C4CE:
 	ldr r0, _0222C668 ; =ov74_0222C04C
 	add r1, r6, #0
 	mov r2, #5
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	b _0222C548
 _0222C53A:
 	ldr r0, [r4]
@@ -11633,7 +11633,7 @@ ov74_0222CD94: ; 0x0222CD94
 	cmp r0, #0
 	bne _0222CDB2
 	ldr r0, _0222CDF8 ; =FS_OVERLAY_ID(OVY_60)
-	ldr r1, _0222CDFC ; =ov60_021EAFE0
+	ldr r1, _0222CDFC ; =gApplication_TitleScreen
 	bl RegisterMainOverlay
 	b _0222CDCC
 _0222CDB2:
@@ -11669,7 +11669,7 @@ _0222CDEC:
 	pop {r3, r4, r5, pc}
 	nop
 _0222CDF8: .word FS_OVERLAY_ID(OVY_60)
-_0222CDFC: .word ov60_021EAFE0
+_0222CDFC: .word gApplication_TitleScreen
 _0222CE00: .word FS_OVERLAY_ID(OVY_74)
 _0222CE04: .word _0223B410
 _0222CE08: .word _0223B420
@@ -13805,7 +13805,7 @@ _0222DEBE:
 	ldr r0, _0222DEEC ; =ov74_0222DE68
 	add r1, r4, #0
 	lsl r2, r2, #0xa
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	ldr r1, _0222DEE8 ; =0x00000C04
 	str r0, [r4, r1]
 _0222DED6:
@@ -13837,7 +13837,7 @@ _0222DF04:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0222DF10
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0222DF10:
 	mov r0, #3
 	mov r1, #0
@@ -16703,7 +16703,7 @@ _0222F656:
 	ldr r0, _0222F684 ; =ov74_0222F600
 	add r1, r4, #0
 	lsl r2, r2, #0xa
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	ldr r1, _0222F680 ; =0x00000C04
 	str r0, [r4, r1]
 _0222F66E:
@@ -16735,7 +16735,7 @@ _0222F69C:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0222F6A8
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0222F6A8:
 	mov r0, #3
 	mov r1, #0
@@ -25330,7 +25330,7 @@ ov74_022338D4: ; 0x022338D4
 	ldr r0, [r4, #0x20]
 	bl FreeToHeap
 	ldr r0, _0223391C ; =FS_OVERLAY_ID(OVY_60)
-	ldr r1, _02233920 ; =ov60_021EAFE0
+	ldr r1, _02233920 ; =gApplication_TitleScreen
 	bl RegisterMainOverlay
 	add r0, r5, #0
 	bl OverlayManager_FreeData
@@ -25344,7 +25344,7 @@ ov74_022338D4: ; 0x022338D4
 _02233914: .word 0x00012608
 _02233918: .word 0x0001260C
 _0223391C: .word FS_OVERLAY_ID(OVY_60)
-_02233920: .word ov60_021EAFE0
+_02233920: .word gApplication_TitleScreen
 	thumb_func_end ov74_022338D4
 
 	thumb_func_start PmAgbCartridgeHasFlash

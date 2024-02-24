@@ -18,7 +18,7 @@
 #include "trainer_data.h"
 #include "filesystem.h"
 #include "unk_02023694.h"
-#include "unk_0200E320.h"
+#include "sys_task_api.h"
 #include "unk_0200CF18.h"
 #include "constants/battle.h"
 #include "constants/moves.h"
