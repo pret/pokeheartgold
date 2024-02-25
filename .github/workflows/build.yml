@@ -41,8 +41,8 @@ jobs:
         run: |
           mkdir -p ~/download
           cd ~/download
-          wget https://cdn.discordapp.com/attachments/698589325620936736/845499146982129684/mwccarm.zip
-          wget https://cdn.discordapp.com/attachments/698589325620936736/722822401963851797/NitroSDK-3_2-060901.7z
+          wget https://github.com/pret/pokeheartgold/raw/workflows/assets/mwccarm.zip
+          wget https://github.com/pret/pokeheartgold/raw/workflows/assets/NitroSDK-3_2-060901.7z
           unzip mwccarm.zip
           mv mwccarm $GITHUB_WORKSPACE/tools
           7z x NitroSDK-3_2-060901.7z
