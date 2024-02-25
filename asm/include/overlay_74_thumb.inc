@@ -410,7 +410,7 @@
 .public ov00_021ED444
 .public ov36_App_MainMenu_SelectOption_Continue
 .public ov36_App_MainMenu_SelectOption_NewGame
-.public ov60_021EAFE0
+.public gApplication_TitleScreen
 .public CRYPTO_RC4Encrypt
 .public CRYPTO_VerifySignature
 .public CRYPTO_SetAllocator

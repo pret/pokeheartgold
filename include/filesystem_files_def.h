@@ -51,7 +51,7 @@ typedef enum NarcId
     NARC_a_0_4_3                                            =  43,
     NARC_a_0_4_4                                            =  44,
     NARC_a_0_4_5                                            =  45,
-    NARC_a_0_4_6                                            =  46,
+    NARC_demo_title_titledemo                               =  46,
     NARC_a_0_4_7                                            =  47,
     NARC_a_0_4_8                                            =  48,
     NARC_a_0_4_9                                            =  49,
