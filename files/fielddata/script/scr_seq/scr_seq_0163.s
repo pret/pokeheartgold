@@ -11,8 +11,8 @@
 scr_seq_0163_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	follow_poke_face_player
-	follow_poke_interact
+	follow_mon_face_player
+	follow_mon_interact
 	goto _00F0
 
 _0016:

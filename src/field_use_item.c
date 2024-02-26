@@ -5,7 +5,7 @@
 #include "unk_0203DB6C.h"
 #include "unk_0203DFA4.h"
 #include "unk_02078E30.h"
-#include "field_follow_poke.h"
+#include "follow_mon.h"
 #include "field_map_object.h"
 #include "save_arrays.h"
 #include "sound_radio.h"
@@ -262,14 +262,14 @@ static BOOL Task_MountOrDismountBicycle(TaskManager *taskManager) {
 
     switch (*state_p) {
     case 0:
-        if (FollowingPokemon_IsActive(fieldSystem)) {
-            if (MapObject_IsMovementPaused(FollowingPokemon_GetMapObject(fieldSystem))) {
+        if (FollowMon_IsActive(fieldSystem)) {
+            if (MapObject_IsMovementPaused(FollowMon_GetMapObject(fieldSystem))) {
                 if (PlayerAvatar_GetState(fieldSystem->playerAvatar) == PLAYER_STATE_CYCLING) {
                     r6 = 0x30;
                 } else {
                     r6 = 0x38;
                 }
-                sub_0205FC94(FollowingPokemon_GetMapObject(fieldSystem), r6);
+                sub_0205FC94(FollowMon_GetMapObject(fieldSystem), r6);
                 (*state_p)++;
             }
         } else {
@@ -286,9 +286,9 @@ static BOOL Task_MountOrDismountBicycle(TaskManager *taskManager) {
                 FieldSystem_PlayOrFadeToNewMusicId(fieldSystem, FieldSystem_GetOverriddenMusicId(fieldSystem, fieldSystem->location->mapId), 1);
             }
             ov01_02205790(fieldSystem, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
-            if (FollowingPokemon_IsActive(fieldSystem)) {
-                sub_02069E84(FollowingPokemon_GetMapObject(fieldSystem), 1);
-                sub_02069DC8(FollowingPokemon_GetMapObject(fieldSystem), TRUE);
+            if (FollowMon_IsActive(fieldSystem)) {
+                sub_02069E84(FollowMon_GetMapObject(fieldSystem), 1);
+                sub_02069DC8(FollowMon_GetMapObject(fieldSystem), TRUE);
             }
         } else {
             if (SndRadio_GetSeqNo() == 0) {
@@ -299,8 +299,8 @@ static BOOL Task_MountOrDismountBicycle(TaskManager *taskManager) {
             Field_PlayerAvatar_OrrTransitionFlags(fieldSystem->playerAvatar, 2);
             Field_PlayerAvatar_ApplyTransitionFlags(fieldSystem->playerAvatar);
             ov01_02205D68(fieldSystem);
-            if (FollowingPokemon_IsActive(fieldSystem)) {
-                sub_02069E84(FollowingPokemon_GetMapObject(fieldSystem), FALSE);
+            if (FollowMon_IsActive(fieldSystem)) {
+                sub_02069E84(FollowMon_GetMapObject(fieldSystem), FALSE);
             }
         }
         (*state_p)++;

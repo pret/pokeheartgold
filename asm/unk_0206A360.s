@@ -516,18 +516,18 @@ _0206A74A:
 	cmp r0, #0
 	beq _0206A790
 	add r0, r5, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _0206A782
 	add r0, r5, #0
 	mov r1, #1
 	bl ov01_02205790
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	mov r1, #0x30
 	bl sub_0205FC94
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	mov r1, #1
 	bl sub_02069DC8
 _0206A782:

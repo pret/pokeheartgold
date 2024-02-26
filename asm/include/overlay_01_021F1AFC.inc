@@ -87,10 +87,10 @@
 .public MapObject_ClearHeldMovementIfActive
 .public sub_0206234C
 .public CheckFlag99A
-.public FollowingPokemon_GetMapObject
+.public FollowMon_GetMapObject
 .public sub_02069DC8
-.public FollowingPokemon_IsActive
-.public FieldSystemUnkSub108_AddMonMood
+.public FollowMon_IsActive
+.public FieldSystem_UnkSub108_AddMonMood
 .public GetMonData
 .public Party_GetMonByIndex
 .public SaveArray_Party_Get
