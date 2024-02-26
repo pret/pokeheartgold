@@ -86,7 +86,7 @@ _021FCF20:
 	cmp r1, r0
 	bne _021FCF46
 	add r0, r6, #0
-	bl sub_02069FB0
+	bl FollowMon_IsVisible
 	cmp r0, #0
 	beq _021FCF46
 	ldr r0, [sp]
@@ -135,7 +135,7 @@ _021FCF80:
 	ldr r0, [r6, r0]
 	mov r1, #1
 	mov r5, #2
-	bl FieldSystemUnkSub108_AddMonMood
+	bl FieldSystem_UnkSub108_AddMonMood
 	b _021FCF9E
 _021FCF9C:
 	mov r5, #1
@@ -311,7 +311,7 @@ ov01_021FD064: ; 0x021FD064
 	mov r2, #0
 	bl ov01_021FD190
 	add r0, r6, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	add r1, sp, #8
 	bl MapObject_GetPositionVec
 	add r0, r4, #0

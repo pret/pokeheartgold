@@ -143,10 +143,10 @@
 .public Save_VarsFlags_GetVar404B
 .public Save_VarsFlags_SetVar404B
 .public FieldSystem_IsSaveGymmickTypeEqualTo
-.public FollowingPokemon_GetMapObject
-.public FollowingPokemon_IsActive
-.public sub_02069FB0
-.public FieldSystemUnkSub108_MoveMoodTowardsNeutral
+.public FollowMon_GetMapObject
+.public FollowMon_IsActive
+.public FollowMon_IsVisible
+.public FieldSystem_UnkSub108_MoveMoodTowardsNeutral
 .public HandleDaycareStep
 .public FieldSystem_BugContest_Get
 .public MonApplyFriendshipMod

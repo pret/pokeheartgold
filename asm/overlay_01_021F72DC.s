@@ -329,7 +329,7 @@ _021F7522:
 _021F7524:
 	add r0, r5, #0
 	bl MapObject_GetManager
-	bl MapObjectManager_GetFieldSysPtr
+	bl MapObjectManager_GetFieldSystemPtr
 	str r0, [sp, #0x10]
 	ldr r0, [r0, #0xc]
 	bl SaveArray_Party_Get
@@ -351,7 +351,7 @@ _021F7524:
 	ldr r2, [sp, #8]
 	add r0, r7, #0
 	lsr r1, r1, #0x10
-	bl FollowingPokemon_GetSpriteID
+	bl FollowMon_GetSpriteID
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0xc]
 	bl MonIsShiny
@@ -365,7 +365,7 @@ _021F7524:
 	ldr r3, [sp, #4]
 	add r0, r5, #0
 	add r1, r7, #0
-	bl FollowPokeMapObjectSetParams
+	bl FollowMon_SetObjectParams
 	ldr r1, [sp, #0x14]
 	add r0, r5, #0
 	bl MapObject_SetGfxID
@@ -454,7 +454,7 @@ _021F7636:
 	ldr r0, [r0, r1]
 	ldr r1, [sp, #0xc]
 	lsr r2, r2, #0x10
-	bl FieldSystemUnkSub108_Set
+	bl FieldSystem_UnkSub108_Set
 _021F7654:
 	add r0, r5, #0
 	bl ov01_021FA2D4

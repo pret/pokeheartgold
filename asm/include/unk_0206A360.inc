@@ -29,9 +29,9 @@
 .public sub_0205FC94
 .public MapObject_AreBitsSetForMovementScriptInit
 .public MapObject_SetHeldMovement
-.public FollowingPokemon_GetMapObject
+.public FollowMon_GetMapObject
 .public sub_02069DC8
-.public FollowingPokemon_IsActive
+.public FollowMon_IsActive
 .public sub_0206A360
 .public sub_0206A388
 .public G2x_SetBlendAlpha_

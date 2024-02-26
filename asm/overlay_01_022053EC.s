@@ -544,11 +544,11 @@ ov01_02205790: ; 0x02205790
 	sub sp, #0xc
 	add r5, r0, #0
 	add r4, r1, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _022057BE
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetMapObject
@@ -567,7 +567,7 @@ _022057BE:
 	thumb_func_start ov01_022057C4
 ov01_022057C4: ; 0x022057C4
 	push {r3, lr}
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	bl MapObject_CheckVisible
 	pop {r3, pc}
 	thumb_func_end ov01_022057C4
@@ -575,7 +575,7 @@ ov01_022057C4: ; 0x022057C4
 	thumb_func_start ov01_022057D0
 ov01_022057D0: ; 0x022057D0
 	push {r3, lr}
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	bl sub_020659B8
 	pop {r3, pc}
 	thumb_func_end ov01_022057D0
@@ -834,7 +834,7 @@ ov01_022059AC: ; 0x022059AC
 	add r2, r6, #0
 	str r0, [sp]
 	ldr r0, [r5, #0x3c]
-	bl sub_020699F8
+	bl FollowMon_InitMapObject
 	add r1, r5, #0
 	add r1, #0xfa
 	add r0, r5, #0
@@ -849,10 +849,10 @@ _02205A02:
 	add r0, r5, #0
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl FollowPokeObj_GetSpecies
+	bl FollowMon_GetSpecies
 	ldr r1, [r5, #0x20]
 	ldr r1, [r1]
-	bl GetFollowPokePermissionBySpeciesAndMap
+	bl FollowMon_GetPermissionBySpeciesAndMap
 	cmp r0, #0
 	bne _02205A2A
 	add r0, r5, #0
@@ -877,11 +877,11 @@ ov01_02205A34: ; 0x02205A34
 	sub sp, #0xc
 	add r4, r0, #0
 	add r5, r1, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _02205A5C
 	add r0, r4, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	add r4, r0, #0
 	add r1, sp, #0
 	bl MapObject_GetPositionVec
@@ -904,7 +904,7 @@ ov01_02205A60: ; 0x02205A60
 	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	add r0, r5, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	bne _02205A80
 	mov r0, #1
@@ -1015,7 +1015,7 @@ _02205B3A: ; jump table
 	.short _02205CD0 - _02205B3A - 2 ; case 7
 _02205B4A:
 	add r0, r5, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	bne _02205B60
 	add r0, r4, #0
@@ -1035,14 +1035,14 @@ _02205B60:
 	pop {r4, r5, r6, pc}
 _02205B76:
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	bl MapObject_UnpauseMovement
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
 _02205B86:
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _02205BD2
@@ -1058,7 +1058,7 @@ _02205BA0:
 	str r1, [sp, #0x10]
 	str r0, [sp, #0x14]
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	add r5, r0, #0
 	bl MapObject_IsMovementPaused
 	cmp r0, #0
@@ -1083,7 +1083,7 @@ _02205BD4:
 	b _02205CDA
 _02205BDC:
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	add r5, r0, #0
 	bl MapObject_IsMovementPaused
 	cmp r0, #0
@@ -1117,7 +1117,7 @@ _02205C14:
 	sub r1, r1, #1
 	bne _02205C14
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	add r6, r0, #0
 	mov r5, #2
 	ldr r0, [r4, #0x44]
@@ -1163,7 +1163,7 @@ _02205C38:
 	b _02205CDA
 _02205C7E:
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	mov r1, #3
 	bl ov01_0220329C
 	ldrb r0, [r4]
@@ -1228,11 +1228,11 @@ ov01_02205CF0: ; 0x02205CF0
 	bl MapObject_GetCurrentY
 	add r7, r0, #0
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	bl MapObject_GetCurrentY
 	ldr r1, [sp]
 	cmp r6, r1
@@ -1276,7 +1276,7 @@ _02205D60:
 ov01_02205D68: ; 0x02205D68
 	push {r4, lr}
 	add r4, r0, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	bne _02205D78
 	mov r0, #0
@@ -1339,14 +1339,14 @@ _02205DE2: ; jump table
 	.short _02205EC6 - _02205DE2 - 2 ; case 4
 _02205DEC:
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	bl MapObject_UnpauseMovement
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 _02205DFC:
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _02205ED2
@@ -1356,7 +1356,7 @@ _02205DFC:
 	b _02205ED2
 _02205E12:
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	str r0, [sp]
 	bl MapObject_GetGfxID
 	bl ov01_02206088
@@ -1421,7 +1421,7 @@ _02205E5A:
 	add r0, r5, #0
 	bl sub_0206A054
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	mov r1, #0
 	bl sub_02069E28
 	ldr r0, [r4]
@@ -1666,7 +1666,7 @@ ov01_0220609C: ; 0x0220609C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _022060B4
 	add r5, #0xe4
@@ -1684,7 +1684,7 @@ ov01_022060B8: ; 0x022060B8
 	add r6, r0, #0
 	add r5, r1, #0
 	add r7, r2, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	bne _022060CC
 	mov r0, #0
@@ -1751,7 +1751,7 @@ _0220613A: ; jump table
 	.short _02206250 - _0220613A - 2 ; case 3
 _02206142:
 	add r0, r6, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	bl MapObject_GetGfxID
 	bl ov01_02206088
 	add r7, r0, #0
@@ -1890,7 +1890,7 @@ _02206264: .word 0xFFFF0000
 ov01_02206268: ; 0x02206268
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_02069FB0
+	bl FollowMon_IsVisible
 	cmp r0, #0
 	bne _02206278
 	mov r0, #0
