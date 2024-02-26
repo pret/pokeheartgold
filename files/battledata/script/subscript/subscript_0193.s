@@ -1,0 +1,12 @@
+    .include "macros/btlcmd.inc"
+
+    .data
+
+_000:
+    UpdateVar OPCODE_FLAG_ON, BSCRIPT_VAR_BATTLE_STATUS, BATTLE_STATUS_NO_BLINK
+    Call BATTLE_SUBSCRIPT_UPDATE_HP
+    // {2} was hurt by {0}’s {1}!
+    PrintMessage msg_0197_01099, TAG_NICKNAME_ABILITY_NICKNAME, BATTLER_CATEGORY_DEFENDER, BATTLER_CATEGORY_DEFENDER, BATTLER_CATEGORY_ATTACKER
+    Wait 
+    WaitButtonABTime 30
+    End 
