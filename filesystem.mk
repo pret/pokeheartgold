@@ -464,16 +464,17 @@ endif
 
 include files/msgdata/msg.mk
 include files/fielddata/script/scr_seq.mk
-include files/battledata/script/effect_seq.mk
-include files/battledata/script/move_seq.mk
-include files/battledata/script/subscript.mk
-
-# This rule must come after the above includes
-# and serves to enforce build order.
 $(SCRIPT_BINS): $(FIRST_MSG_H_GEN)
+
+include files/battledata/script/effect_seq.mk
 $(EFFECT_SCRIPT_BINS): $(FIRST_MSG_H_GEN)
+
+include files/battledata/script/move_seq.mk
 $(MOVE_SCRIPT_BINS): $(FIRST_MSG_H_GEN)
+
+include files/battledata/script/subscript.mk
 $(SUBSCRIPT_BINS): $(FIRST_MSG_H_GEN)
+
 
 include files/fielddata/eventdata/zone_event.mk
 include files/data/sound/sound_data.mk
