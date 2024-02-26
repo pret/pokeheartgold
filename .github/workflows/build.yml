@@ -52,12 +52,10 @@ jobs:
           mv NitroSDK-3_2-060901/include/nitro/specfiles/mwldarm.response.template $GITHUB_WORKSPACE/
         working-directory: ~
 
-      - name: Set Swap Space
+      - name: Build HeartGold
         uses: pierotofy/set-swap-space@master
         with:
           swap-size-gb: 10
-
-      - name: Build HeartGold
         env:
           GAME_VERSION: HEARTGOLD
           GAME_LANGUAGE: ENGLISH
