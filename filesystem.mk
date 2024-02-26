@@ -473,7 +473,7 @@ include files/battledata/script/move_seq.mk
 $(MOVE_SCRIPT_BINS): $(FIRST_MSG_H_GEN)
 
 include files/battledata/script/subscript.mk
-$(SUBSCRIPT_BINS): $(FIRST_MSG_H_GEN)
+$(BTL_SUBSCRIPT_SCRIPT_BINS): $(FIRST_MSG_H_GEN)
 
 
 include files/fielddata/eventdata/zone_event.mk
