@@ -40,8 +40,8 @@
 .public MapObject_SetHeldMovement
 .public MapObject_IsMovementPaused
 .public MapObject_ClearHeldMovementIfActive
-.public FollowingPokemon_GetMapObject
-.public FollowingPokemon_IsActive
+.public FollowMon_GetMapObject
+.public FollowMon_IsActive
 .public NNSi_G3dModifyMatFlag
 .public MI_CpuFill8
 .public ov01_021E636C

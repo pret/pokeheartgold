@@ -3,7 +3,7 @@
 #include "bg_window.h"
 #include "constants/mmodel.h"
 #include "certificates_app.h"
-#include "field_follow_poke.h"
+#include "follow_mon.h"
 #include "font.h"
 #include "gf_gfx_loader.h"
 #include "msgdata.h"
