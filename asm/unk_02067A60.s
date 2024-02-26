@@ -316,7 +316,7 @@ _02067C8E:
 	b _02067DE4
 _02067CAE:
 	add r0, r5, #0
-	bl sub_02069FB0
+	bl FollowMon_IsVisible
 	cmp r0, #0
 	beq _02067CE8
 	add r0, r5, #0
@@ -329,7 +329,7 @@ _02067CAE:
 	ldr r0, [r5, r0]
 	mov r1, #1
 	mov r6, #2
-	bl FieldSystemUnkSub108_AddMonMood
+	bl FieldSystem_UnkSub108_AddMonMood
 	b _02067CD6
 _02067CD4:
 	mov r6, #1

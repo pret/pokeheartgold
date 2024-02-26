@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_CONSTANTS_MMODEL_H
 #define POKEHEARTGOLD_CONSTANTS_MMODEL_H
 
-#include "constants/follow_poke_idx.h"
+#include "constants/follow_mon_idx.h"
 
 #define MMODEL_BABYBOY1                            0
 #define MMODEL_BABYGIRL1                           1
