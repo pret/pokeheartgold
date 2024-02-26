@@ -80,8 +80,6 @@ void _2DGfxResMan_FreeObj(struct _2DGfxRawResMan *resourceMgr, struct _2DGfxRawR
     --resourceMgr->num;
 }
 
-// -----------------------------------------
-
 void _2DGfxResMan_FreeAllObjs(struct _2DGfxRawResMan *resourceMgr) {
     int i;
 
