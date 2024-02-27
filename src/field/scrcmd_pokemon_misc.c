@@ -2,7 +2,7 @@
 #include "bag.h"
 #include "bug_contest.h"
 #include "fieldmap.h"
-#include "field_map_object.h"
+#include "map_object.h"
 #include "launch_application.h"
 #include "friend_group.h"
 #include "gf_gfx_loader.h"

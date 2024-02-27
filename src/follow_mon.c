@@ -2,7 +2,7 @@
 #include "map_object_manager.h"
 #include "save_follow_mon.h"
 #include "script_pokemon_util.h"
-#include "field_map_object.h"
+#include "map_object.h"
 #include "map_header.h"
 #include "follow_mon.h"
 #include "constants/scrcmd.h"

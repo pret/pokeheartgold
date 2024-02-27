@@ -20328,7 +20328,7 @@ ov02_0224F4BC: ; 0x0224F4BC
 	bl GetPlayerYCoord
 	str r0, [sp]
 	ldr r0, [r4, #0x3c]
-	bl MapObjectManager_GetCount
+	bl MapObjectManager_GetObjectCount
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x3c]
 	bl MapObjectManager_GetObjects

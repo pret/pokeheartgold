@@ -1,7 +1,7 @@
 #include "global.h"
 #include "assert.h"
 #include "save_vars_flags.h"
-#include "field_map_object.h"
+#include "map_object.h"
 #include "field_player_avatar.h"
 #include "field_system.h"
 #include "field_warp_tasks.h"
@@ -132,7 +132,7 @@ static LocalMapObject *sub_0206D590(LocalMapObject *object) {
 
 static LocalMapObject *sub_0206D614(MapObjectManager *manager, u32 x, u32 a2, u32 y) {
     LocalMapObject *object = MapObjectManager_GetObjects(manager);
-    u32 count = MapObjectManager_GetCount(manager);
+    u32 count = MapObjectManager_GetObjectCount(manager);
     do {
         if (MapObject_GetFlagsMask(object, MAPOBJECTFLAG_ACTIVE)
                 && !MapObject_GetFlagsMask(object, MAPOBJECTFLAG_UNK18)) {

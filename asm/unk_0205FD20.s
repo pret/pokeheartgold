@@ -1868,7 +1868,7 @@ sub_02060BFC: ; 0x02060BFC
 	bl sub_0205F1AC
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl MapObjectManager_GetCount
+	bl MapObjectManager_GetObjectCount
 	str r0, [sp, #4]
 _02060C1C:
 	ldr r0, [sp, #8]
@@ -1951,7 +1951,7 @@ sub_02060CA8: ; 0x02060CA8
 	bl sub_0205F1AC
 	str r0, [sp, #4]
 	add r0, r7, #0
-	bl MapObjectManager_GetCount
+	bl MapObjectManager_GetObjectCount
 	add r7, r0, #0
 _02060CC8:
 	ldr r0, [sp, #4]

@@ -22,7 +22,7 @@
 #include "render_text.h"
 #include "field_player_avatar.h"
 #include "unk_02062108.h"
-#include "field_map_object.h"
+#include "map_object.h"
 #include "follow_mon.h"
 #include "save_follow_mon.h"
 #include "map_events.h"

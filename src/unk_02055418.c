@@ -19,7 +19,7 @@
 #include "overlay_01.h"
 #include "apricorn_tree.h"
 #include "gf_3d_render.h"
-#include "field_map_object.h"
+#include "map_object.h"
 
 void FieldSystem_StartBugContestTimer(FieldSystem* fieldSystem) {
     RTCDate date;

@@ -1,6 +1,6 @@
 #include "script.h"
 #include "field_move.h"
-#include "field_map_object.h"
+#include "map_object.h"
 #include "alph_checks.h"
 #include "field_player_avatar.h"
 #include "launch_application.h"

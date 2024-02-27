@@ -1,6 +1,6 @@
 #include "scrcmd.h"
 #include "bag.h"
-#include "field_map_object.h"
+#include "map_object.h"
 #include "get_egg.h"
 #include "party.h"
 #include "player_data.h"

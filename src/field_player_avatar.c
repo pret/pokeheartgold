@@ -1,7 +1,7 @@
 #include "global.h"
 #include "field_player_avatar.h"
 #include "assert.h"
-#include "field_map_object.h"
+#include "map_object.h"
 #include "heap.h"
 #include "overlay_00_thumb.h"
 #include "overlay_01.h"

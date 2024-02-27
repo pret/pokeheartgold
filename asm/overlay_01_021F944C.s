@@ -493,7 +493,7 @@ ov01_021F97BC: ; 0x021F97BC
 	add r7, r0, #0
 	add r5, r1, #0
 	add r6, r2, #0
-	bl MapObjectManager_GetCount
+	bl MapObjectManager_GetObjectCount
 	add r4, r0, #0
 	add r0, r7, #0
 	bl sub_0205F1AC
