@@ -114,7 +114,7 @@
 .public sub_0206234C
 .public sub_02062390
 .public FieldSystem_IsSaveGymmickTypeEqualTo
-.public FollowingPokemon_IsActive
+.public FollowMon_IsActive
 .public sub_0206D494
 .public Field_PlayerAvatar_ApplyTransitionFlags
 .public ov01_021F2EDC

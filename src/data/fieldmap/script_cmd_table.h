@@ -600,7 +600,7 @@ BOOL ScrCmd_597(ScriptContext *ctx);
 BOOL ScrCmd_598(ScriptContext *ctx);
 BOOL ScrCmd_599(ScriptContext *ctx);
 BOOL ScrCmd_600(ScriptContext *ctx);
-BOOL ScrCmd_FollowPokeFacePlayer(ScriptContext *ctx);
+BOOL ScrCmd_FollowMonFacePlayer(ScriptContext *ctx);
 BOOL ScrCmd_ToggleFollowingPokemonMovement(ScriptContext *ctx);
 BOOL ScrCmd_WaitFollowingPokemonMovement(ScriptContext *ctx);
 BOOL ScrCmd_FollowingPokemonMovement(ScriptContext *ctx);
@@ -710,7 +710,7 @@ BOOL ScrCmd_CheckMonSeen(ScriptContext *ctx);
 BOOL ScrCmd_708(ScriptContext *ctx);
 BOOL ScrCmd_709(ScriptContext *ctx);
 BOOL ScrCmd_710(ScriptContext *ctx);
-BOOL ScrCmd_FollowPokeInteract(ScriptContext *ctx);
+BOOL ScrCmd_FollowMonInteract(ScriptContext *ctx);
 BOOL ScrCmd_712(ScriptContext *ctx);
 BOOL ScrCmd_AlphPuzzle(ScriptContext *ctx);
 BOOL ScrCmd_OpenAlphHiddenRoom(ScriptContext *ctx);
@@ -782,7 +782,7 @@ BOOL ScrCmd_RadioMusicIsPlaying(ScriptContext *ctx);
 BOOL ScrCmd_CasinoGame(ScriptContext *ctx);
 BOOL ScrCmd_KenyaCheckPartyOrMailbox(ScriptContext *ctx);
 BOOL ScrCmd_MartSell(ScriptContext *ctx);
-BOOL ScrCmd_SetFollowPokeInhibitState(ScriptContext *ctx);
+BOOL ScrCmd_SetFollowMonInhibitState(ScriptContext *ctx);
 BOOL ScrCmd_ScriptOverlayCmd(ScriptContext *ctx);
 BOOL ScrCmd_BugContestAction(ScriptContext *ctx);
 BOOL ScrCmd_BufferBugContestWinner(ScriptContext *ctx);
@@ -1455,7 +1455,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_598,
     ScrCmd_599,
     ScrCmd_600,
-    ScrCmd_FollowPokeFacePlayer,
+    ScrCmd_FollowMonFacePlayer,
     ScrCmd_ToggleFollowingPokemonMovement,
     ScrCmd_WaitFollowingPokemonMovement,
     ScrCmd_FollowingPokemonMovement,
@@ -1565,7 +1565,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_708,
     ScrCmd_709,
     ScrCmd_710,
-    ScrCmd_FollowPokeInteract,
+    ScrCmd_FollowMonInteract,
     ScrCmd_712,
     ScrCmd_AlphPuzzle,
     ScrCmd_OpenAlphHiddenRoom,
@@ -1637,7 +1637,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_CasinoGame,
     ScrCmd_KenyaCheckPartyOrMailbox,
     ScrCmd_MartSell,
-    ScrCmd_SetFollowPokeInhibitState,
+    ScrCmd_SetFollowMonInhibitState,
     ScrCmd_ScriptOverlayCmd,
     ScrCmd_BugContestAction,
     ScrCmd_BufferBugContestWinner,

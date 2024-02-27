@@ -645,7 +645,7 @@ _022036C0:
 	pop {r3, r4, r5, r6, r7, pc}
 _022036C4:
 	ldr r0, [r5, #0x24]
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	add r6, r0, #0
 	ldr r0, [r5, #0x24]
 	ldr r0, [r0, #0x3c]
@@ -725,7 +725,7 @@ _0220373E:
 	cmp r0, #0
 	beq _022037A2
 	ldr r0, [r5, #0x24]
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	ldr r3, [r5, #0x10]
 	ldr r2, [r5, #0x44]
 	add r4, r3, #0
@@ -890,7 +890,7 @@ _022038B4:
 	pop {r4, r5, r6, r7, pc}
 _022038C6:
 	ldr r0, [r5, #0x24]
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	add r6, r0, #0
 	ldr r0, [r5, #0x24]
 	ldr r0, [r0, #0x3c]
@@ -955,7 +955,7 @@ _0220391C:
 	cmp r0, #0
 	beq _0220397E
 	ldr r0, [r5, #0x24]
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	ldr r2, [r5, #0x44]
 	ldr r1, [r5, #0x10]
 	lsl r2, r2, #0xc

@@ -36,7 +36,7 @@
 #define SAVE_EASY_CHAT           30
 #define SAVE_UNK_31              31
 #define SAVE_UNK_32              32
-#define SAVE_FOLLOW_POKE         33
+#define SAVE_FOLLOW_MON          33
 #define SAVE_POKEGEAR            34
 #define SAVE_SAFARI_ZONE         35
 #define SAVE_PHOTO_ALBUM         36

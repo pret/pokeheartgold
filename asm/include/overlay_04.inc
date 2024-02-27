@@ -58,8 +58,8 @@
 .public MapObject_AreBitsSetForMovementScriptInit
 .public MapObject_SetHeldMovement
 .public MapObject_ClearHeldMovement
-.public FollowingPokemon_GetMapObject
-.public FollowingPokemon_IsActive
+.public FollowMon_GetMapObject
+.public FollowMon_IsActive
 .public NNS_G3dMdlSetMdlFogEnableFlagAll
 .public VEC_Add
 .public VEC_DotProduct
