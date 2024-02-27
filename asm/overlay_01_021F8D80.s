@@ -661,7 +661,7 @@ _021F9212:
 	add r0, r5, #0
 	bl FldObjSys_OpenMModelNarc
 	add r0, r5, #0
-	bl MapObjectManager_GetCount
+	bl MapObjectManager_GetObjectCount
 	str r0, [sp, #0x14]
 	add r0, r5, #0
 	bl MapObjectManager_GetHeapID

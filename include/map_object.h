@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_FIELD_MAP_OBJECT_H
-#define POKEHEARTGOLD_FIELD_MAP_OBJECT_H
+#ifndef POKEHEARTGOLD_MAP_OBJECT_H
+#define POKEHEARTGOLD_MAP_OBJECT_H
 
 #include "script.h"
 
@@ -154,9 +154,9 @@ typedef enum MapObjectFlagBits {
 struct MapObjectInitArgs;
 
 // FIXME: Some of these declarations are static and don't belong in here.
-MapObjectManager *sub_0205E0BC(FieldSystem *fieldSystem, int num, HeapID heapId);
-void MapObjectManager_Delete(MapObjectManager *man);
-void sub_0205E104(MapObjectManager* manager, u32 a1, u32 a2, u32 num_object_events, ObjectEvent* object_events);
+MapObjectManager *MapObjectManager_Init(FieldSystem *fieldSystem, u32 objectCount, HeapID heapId);
+void MapObjectManager_Delete(MapObjectManager *manager);
+void sub_0205E104(MapObjectManager *manager, u32 unused, u32 a2, u32 objectCount, ObjectEvent* objectEvents);
 MapObjectManager* MapObjectManager_New(u32 count);
 LocalMapObject* sub_0205E1D0(MapObjectManager* manager, ObjectEvent* object_events, u32 map_no);
 LocalMapObject *CreateSpecialFieldObject(MapObjectManager *objectMan, u32 x, u32 z, u32 direction, u32 sprite, u32 movement, u32 mapNo);
@@ -206,8 +206,8 @@ BOOL sub_0205F0F8(LocalMapObject* object, u32 gfx_id, u32 id, u32 a3);
 void sub_0205F12C(SysTask* task, LocalMapObject* object);
 void sub_0205F148(LocalMapObject* object);
 MapObjectManager* sub_0205F160(MapObjectManager* manager);
-void MapObjectManager_SetCount(MapObjectManager*, u32);
-u32 MapObjectManager_GetCount(MapObjectManager*);
+void MapObjectManager_SetObjectCount(MapObjectManager*, u32);
+u32 MapObjectManager_GetObjectCount(MapObjectManager*);
 void sub_0205F16C(MapObjectManager* manager);
 void sub_0205F174(MapObjectManager* manager);
 void MapObjectManager_SetFlagsBits(MapObjectManager* manager, u32 bits);
@@ -222,7 +222,7 @@ const LocalMapObject* MapObjectManager_GetConstObjects(MapObjectManager*);
 LocalMapObject* MapObjectManager_GetObjects(MapObjectManager*);
 void sub_0205F1C4(LocalMapObject** objects);
 void sub_0205F1D0(LocalMapObject** objects);
-void MapObjectManager_SetFieldSysPtr(MapObjectManager*, FieldSystem*);
+void MapObjectManager_SetFieldSystemPtr(MapObjectManager*, FieldSystem*);
 FieldSystem* MapObjectManager_GetFieldSystemPtr(MapObjectManager*);
 void FldObjSys_SetMModelNarc(MapObjectManager* manager, NARC* mmodel_narc);
 NARC* FldObjSys_GetMModelNarc(MapObjectManager* manager);
@@ -442,4 +442,4 @@ void sub_0205FCBC(LocalMapObject* object);
 void sub_0205FCC0(LocalMapObject* object);
 void sub_0205FCD4(LocalMapObject* object);
 
-#endif //POKEHEARTGOLD_FIELD_MAP_OBJECT_H
+#endif //POKEHEARTGOLD_MAP_OBJECT_H

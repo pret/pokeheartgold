@@ -1,6 +1,6 @@
 #include "global.h"
 #include "field_player_avatar.h"
-#include "field_map_object.h"
+#include "map_object.h"
 #include "filesystem.h"
 #include "heap.h"
 #include "sys_task_api.h"
@@ -11,55 +11,41 @@ static void sub_0205E954(LocalMapObject* object);
 static void sub_0205ED18(LocalMapObject* object);
 static void sub_0205EF8C(LocalMapObject* object);
 
-MapObjectManager* sub_0205E0BC(FieldSystem* fieldSystem, int object_count, HeapID heapId) {
-    MapObjectManager* ret = MapObjectManager_New(object_count);
-    MapObjectManager_SetFieldSysPtr(ret, fieldSystem);
-    MapObjectManager_SetCount(ret, object_count);
+MapObjectManager *MapObjectManager_Init(FieldSystem *fieldSystem, u32 objectCount, HeapID heapId) {
+    MapObjectManager *ret = MapObjectManager_New(objectCount);
+    MapObjectManager_SetFieldSystemPtr(ret, fieldSystem);
+    MapObjectManager_SetObjectCount(ret, objectCount);
     MapObjectManager_SetHeapID(ret, heapId);
 
     return ret;
 }
 
-void MapObjectManager_Delete(MapObjectManager* manager) {
+void MapObjectManager_Delete(MapObjectManager *manager) {
     FreeToHeapExplicit(HEAP_ID_FIELD, MapObjectManager_GetObjects(manager));
     FreeToHeapExplicit(HEAP_ID_FIELD, manager);
 }
 
-extern void ov01_021F9FB0(MapObjectManager* manager, void*);
+extern void ov01_021F9FB0(MapObjectManager *manager, void *);
 
-void sub_0205E104(MapObjectManager* manager, u32 a1, u32 a2, u32 num_object_events, ObjectEvent* object_events) {
-    u32 count = MapObjectManager_GetCount(manager);
-    LocalMapObject* objects = MapObjectManager_GetObjects(manager);
+void sub_0205E104(MapObjectManager *manager, u32 unused, u32 a2, u32 objectCount, ObjectEvent *objectEvents) {
+    u32 count = MapObjectManager_GetObjectCount(manager);
+    LocalMapObject *objects = MapObjectManager_GetObjects(manager);
 
-    // FIXME(tgsm): Obviously this is a for-loop, and it will match on Compiler Explorer that way,
-    //              but it *will not* match here for some reason.
-    //              https://ce.athq.de/z/nzvnEP
-    if (count != 0) {
-        do {
-            if (MapObject_IsInUse(objects) != TRUE) {
-                goto next;
-            }
-
-            switch (sub_0205ED90(objects, a2, num_object_events, object_events)) {
+    for (; count != 0; count--) {
+        if (MapObject_IsInUse(objects) == TRUE) {
+            switch (sub_0205ED90(objects, a2, objectCount, objectEvents)) {
                 case 0:
-                    if (a2 == sub_0205F254(objects)) {
-                        goto next;
+                    if (sub_0205F254(objects) != a2 && !MapObject_TestFlagsBits(objects, MAPOBJECTFLAG_UNK10)) {
+                        MapObject_Remove(objects);
                     }
+                    break;
 
-                    if (MapObject_TestFlagsBits(objects, MAPOBJECTFLAG_UNK10) != FALSE) {
-                        goto next;
-                    }
-
-                    MapObject_Remove(objects);
                 case 1:
                 case 2:
-                    goto next;
-            }
-
-        next:
-            objects++;
-            count--;
-        } while (count != 0);
+                    break;
+                
+        }
+        objects++;
     }
 
     ov01_021F9FB0(manager, sub_0205F1A0(manager));
@@ -205,7 +191,7 @@ void sub_0205E420(LocalMapObject* object) {
 
 void MapObjectManager_RemoveAllActiveObjects(MapObjectManager* manager) {
     int i = 0;
-    int count = MapObjectManager_GetCount(manager);
+    int count = MapObjectManager_GetObjectCount(manager);
     LocalMapObject* objects = MapObjectManager_GetObjects(manager);
     LocalMapObject* object = objects;
     do {
@@ -222,7 +208,7 @@ void sub_0205E4C8(MapObjectManager* manager) {
     GF_ASSERT(sub_0205F5D4(manager) == TRUE);
 
     int i = 0;
-    int count = MapObjectManager_GetCount(manager);
+    int count = MapObjectManager_GetObjectCount(manager);
     LocalMapObject* objects = MapObjectManager_GetObjects(manager);
 
     do {
@@ -242,7 +228,7 @@ void sub_0205E520(MapObjectManager* manager) {
     GF_ASSERT(sub_0205F5D4(manager) == TRUE);
 
     int i = 0;
-    int count = MapObjectManager_GetCount(manager);
+    int count = MapObjectManager_GetObjectCount(manager);
     LocalMapObject* objects = MapObjectManager_GetObjects(manager);
     LocalMapObject* object = objects;
     do {
@@ -266,7 +252,7 @@ void sub_0205E580(MapObjectManager* manager) {
     GF_ASSERT(sub_0205F5D4(manager) == TRUE);
 
     int i = 0;
-    int count = MapObjectManager_GetCount(manager);
+    int count = MapObjectManager_GetObjectCount(manager);
     LocalMapObject* objects = MapObjectManager_GetObjects(manager);
     LocalMapObject* object = objects;
     do {
@@ -488,7 +474,7 @@ void sub_0205EA08(struct MapObjectInitArgs* args) {
 
 LocalMapObject* MapObjectManager_GetFirstInactiveObject(MapObjectManager* manager) {
     int i = 0;
-    int count = MapObjectManager_GetCount(manager);
+    int count = MapObjectManager_GetObjectCount(manager);
     LocalMapObject* object = MapObjectManager_GetObjects(manager);
 
     do {
@@ -645,7 +631,7 @@ LocalMapObject* sub_0205EE10(MapObjectManager* manager, u32 object_id, u32 objec
 LocalMapObject* GetMapObjectByID(MapObjectManager* manager, u32 id) {
     GF_ASSERT(manager != NULL);
 
-    int count = MapObjectManager_GetCount(manager);
+    int count = MapObjectManager_GetObjectCount(manager);
     LocalMapObject* objects = (LocalMapObject*)MapObjectManager_GetConstObjects(manager);
     LocalMapObject* object = objects;
     do {
@@ -664,7 +650,7 @@ LocalMapObject* GetMapObjectByID(MapObjectManager* manager, u32 id) {
 }
 
 LocalMapObject* sub_0205EEB4(MapObjectManager* manager, u32 movement) {
-    int count = MapObjectManager_GetCount(manager);
+    int count = MapObjectManager_GetObjectCount(manager);
     LocalMapObject* objects = (LocalMapObject*)MapObjectManager_GetConstObjects(manager);
 
     do {
@@ -680,7 +666,7 @@ LocalMapObject* sub_0205EEB4(MapObjectManager* manager, u32 movement) {
 }
 
 BOOL sub_0205EEF4(MapObjectManager* manager, LocalMapObject** object_dest, int* index, u32 bits) {
-    int count = MapObjectManager_GetCount(manager);
+    int count = MapObjectManager_GetObjectCount(manager);
     if (*index >= count) {
         return FALSE;
     }
@@ -836,11 +822,11 @@ MapObjectManager* sub_0205F160(MapObjectManager* manager) {
     return manager;
 }
 
-void MapObjectManager_SetCount(MapObjectManager* manager, u32 count) {
+void MapObjectManager_SetObjectCount(MapObjectManager* manager, u32 count) {
     manager->object_count = count;
 }
 
-u32 MapObjectManager_GetCount(MapObjectManager* manager) {
+u32 MapObjectManager_GetObjectCount(MapObjectManager* manager) {
     return manager->object_count;
 }
 
@@ -900,7 +886,7 @@ void sub_0205F1D0(LocalMapObject** objects) {
     (*objects)++;
 }
 
-void MapObjectManager_SetFieldSysPtr(MapObjectManager* manager, FieldSystem* fieldSystem) {
+void MapObjectManager_SetFieldSystemPtr(MapObjectManager* manager, FieldSystem* fieldSystem) {
     manager->fieldSystem = fieldSystem;
 }
 
@@ -1313,7 +1299,7 @@ void sub_0205F568(MapObjectManager* manager) {
 }
 
 void MapObjectManager_PauseAllMovement(MapObjectManager* manager) {
-    u32 count = MapObjectManager_GetCount(manager);
+    u32 count = MapObjectManager_GetObjectCount(manager);
     LocalMapObject* objects = MapObjectManager_GetObjects(manager);
     LocalMapObject* object = objects;
     do {
@@ -1327,7 +1313,7 @@ void MapObjectManager_PauseAllMovement(MapObjectManager* manager) {
 }
 
 void MapObjectManager_UnpauseAllMovement(MapObjectManager* manager) {
-    u32 count = MapObjectManager_GetCount(manager);
+    u32 count = MapObjectManager_GetObjectCount(manager);
     LocalMapObject* objects = MapObjectManager_GetObjects(manager);
     LocalMapObject* object = objects;
     do {
@@ -1889,7 +1875,7 @@ UnkLMOCallbackStruct2* sub_0205FB38(u32 gfx_id) {
 }
 
 LocalMapObject* sub_0205FB58(MapObjectManager* manager, u32 x, u32 y, BOOL a3) {
-    u32 count = MapObjectManager_GetCount(manager);
+    u32 count = MapObjectManager_GetObjectCount(manager);
     LocalMapObject* objects = MapObjectManager_GetObjects(manager);
 
     LocalMapObject* object = objects;

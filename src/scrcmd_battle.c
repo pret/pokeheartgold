@@ -9,7 +9,7 @@
 #include "blackout.h"
 #include "battle/battle_setup.h"
 #include "script_pokemon_util.h"
-#include "field_map_object.h"
+#include "map_object.h"
 #include "sound_02004A44.h"
 
 BOOL ScrCmd_GetTrainerPathToPlayer(ScriptContext *ctx) {

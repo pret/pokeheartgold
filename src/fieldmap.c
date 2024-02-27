@@ -5,7 +5,7 @@
 #include "save_vars_flags.h"
 #include "map_events.h"
 #include "task.h"
-#include "field_map_object.h"
+#include "map_object.h"
 #include "constants/std_script.h"
 #include "fielddata/script/scr_seq.naix"
 #include "msgdata/msg.naix"

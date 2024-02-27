@@ -1,4 +1,4 @@
-#include "field_map_object.h"
+#include "map_object.h"
 #include "overlay_01_021F1AFC.h"
 #include "overlay_01_021F944C.h"
 #include "overlay_01_apricorn_tree_anim.h"
