@@ -44,6 +44,7 @@ void sub_0205E104(MapObjectManager *manager, u32 unused, u32 a2, u32 objectCount
                 case 2:
                     break;
                 
+            }
         }
         objects++;
     }
