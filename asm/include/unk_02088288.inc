@@ -194,8 +194,8 @@
 .public G2x_SetBlendAlpha_
 .public memset
 .public _s32_div_f
-.public gOvyTemplate_Battle
+.public gOverlayTemplate_Battle
 .public gNatureStatMods
-.public gOvyTemplate_PokemonSummary
+.public gOverlayTemplate_PokemonSummary
 .public gSystem
 .public OS_IRQTable

@@ -29,9 +29,9 @@ static const OVY_MGR_TEMPLATE ov16_02201B68 = {
 };
 
 static const OVY_MGR_TEMPLATE ov16_02201B78 = {
-    .init = Bag_OvyInit,
-    .exec = Bag_OvyExec,
-    .exit = Bag_OvyExit,
+    .init = Bag_Init,
+    .exec = Bag_Main,
+    .exit = Bag_Exit,
     .ovy_id = FS_OVERLAY_ID(OVY_15),
 };
 
@@ -67,7 +67,7 @@ static BOOL ov16_02201948(OVY_MANAGER **manager) {
     return FALSE;
 }
 
-BOOL BerryPots_OvyInit(OVY_MANAGER *manager, int *state) {
+BOOL BerryPots_Init(OVY_MANAGER *manager, int *state) {
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_17), OVY_LOAD_ASYNC);
     ov17_02201BC0();
 
@@ -82,7 +82,7 @@ BOOL BerryPots_OvyInit(OVY_MANAGER *manager, int *state) {
     return TRUE;
 }
 
-BOOL BerryPots_OvyExec(OVY_MANAGER *manager, int *state) {
+BOOL BerryPots_Main(OVY_MANAGER *manager, int *state) {
     UnkStruct_ov16_0220196C *unk = OverlayManager_GetData(manager);
 
     switch (*state) {
@@ -105,7 +105,7 @@ BOOL BerryPots_OvyExec(OVY_MANAGER *manager, int *state) {
     return FALSE;
 }
 
-BOOL BerryPots_OvyExit(OVY_MANAGER *manager, int *state) {
+BOOL BerryPots_Exit(OVY_MANAGER *manager, int *state) {
     UnkStruct_ov16_0220196C *unk = OverlayManager_GetData(manager);
     ov17_02201BC0();
 

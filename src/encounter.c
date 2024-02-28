@@ -67,7 +67,7 @@ static BOOL Task_StartBattle(TaskManager *taskManager) {
 
     switch (*state) {
         case 0:
-            LaunchBattleApp(fieldSystem, battleSetup);
+            Battle_LaunchApp(fieldSystem, battleSetup);
             sub_0203E354();
             (*state)++;
             break;

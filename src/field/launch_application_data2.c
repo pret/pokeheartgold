@@ -93,85 +93,89 @@ FS_EXTERN_OVERLAY(OVY_113);
 FS_EXTERN_OVERLAY(OVY_121);
 
 // _020FA444 is not referenced so the linker deadstrips it.
-// TODO: We can force the linker to include this symbol with -force_active.
+//
+// SOLUTIONS:
+//  - [Proper] Create a new dummy routine that receives _020FA444's data as
+//    const (see `MATH_CalcCRC16CCITT()` in math_util.c).
+//  - Force the linker to include the symbol with -force_active.
 #ifdef NONMATCHING
 const OVY_MGR_TEMPLATE _020FA1C4 =
     { sub_020192D0, sub_0201935C, sub_02019490, FS_OVERLAY_ID(OVY_39) };
 const OVY_MGR_TEMPLATE _020FA1D4 =
     { ov105_021E5900, ov105_021E59DC, ov105_021E5B14, FS_OVERLAY_ID(OVY_105) };
-const OVY_MGR_TEMPLATE sOvyTemplate_MoveRelearner =
-    { MoveRelearner_OvyInit, MoveRelearner_OvyExec, MoveRelearner_OvyExit, FS_OVERLAY_ID(OVY_68) };
-const OVY_MGR_TEMPLATE sOvyTemplate_Credits =
-    { Credits_OvyInit, Credits_OvyExec, Credits_OvyExit, FS_OVERLAY_ID(credits) };
-const OVY_MGR_TEMPLATE sOvyTemplate_HallOfFameCongrats =
-    { HallOfFameCongrats_OvyInit, HallOfFameCongrats_OvyExec, HallOfFameCongrats_OvyExit, FS_OVERLAY_ID(OVY_64) };
-const OVY_MGR_TEMPLATE _020FA214 =
-    { ov63_0221BE20, ov63_0221BF88, ov63_0221BF28, FS_OVERLAY_ID(OVY_63) };
-const OVY_MGR_TEMPLATE sOvyTemplate_GeonetGlobe =
-    { GeonetGlobe_OvyInit, GeonetGlobe_OvyExec, GeonetGlobe_OvyExit, FS_OVERLAY_ID(OVY_69) };
-const OVY_MGR_TEMPLATE sOvyTemplate_VoltorbFlip =
-    { VoltorbFlip_OvyInit, VoltorbFlip_OvyExec, VoltorbFlip_OvyExit, FS_OVERLAY_ID(voltorb_flip) };
-const OVY_MGR_TEMPLATE sOvyTemplate_PokeathlonCourse =
-    { PokeathlonCourse_OvyInit, PokeathlonCourse_OvyExec, PokeathlonCourse_OvyExit, FS_OVERLAY_ID(OVY_96) };
-const OVY_MGR_TEMPLATE sOvyTemplate_TrainerCardSignature =
-    { TrainerCardSignature_OvyInit, TrainerCardSignature_OvyExec, TrainerCardSignature_OvyExit, FS_OVERLAY_ID(trainer_card_signature) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_MoveRelearner =
+    { MoveRelearner_Init, MoveRelearner_Main, MoveRelearner_Exit, FS_OVERLAY_ID(OVY_68) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_Credits =
+    { Credits_Init, Credits_Main, Credits_Exit, FS_OVERLAY_ID(credits) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_HallOfFameShowcase =
+    { HallOfFameShowcase_Init, HallOfFameShowcase_Main, HallOfFameShowcase_Exit, FS_OVERLAY_ID(OVY_64) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_RegisterHallOfFame =
+    { RegisterHallOfFame_Init, RegisterHallOfFame_Main, RegisterHallOfFame_Exit, FS_OVERLAY_ID(OVY_63) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_GeonetGlobe =
+    { GeonetGlobe_Init, GeonetGlobe_Main, GeonetGlobe_Exit, FS_OVERLAY_ID(OVY_69) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_VoltorbFlip =
+    { VoltorbFlip_Init, VoltorbFlip_Main, VoltorbFlip_Exit, FS_OVERLAY_ID(voltorb_flip) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_PokeathlonCourse =
+    { PokeathlonCourse_Init, PokeathlonCourse_Main, PokeathlonCourse_Exit, FS_OVERLAY_ID(OVY_96) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_TrainerCardSignature =
+    { TrainerCardSignature_Init, TrainerCardSignature_Main, TrainerCardSignature_Exit, FS_OVERLAY_ID(trainer_card_signature) };
 const OVY_MGR_TEMPLATE _020FA264 =
     { ov70_02238430, ov70_022385C0, ov70_022386F4, FS_OVERLAY_ID(OVY_70) };
-const OVY_MGR_TEMPLATE sOvyTemplate_ChooseStarter =
-    { ChooseStarter_OvyInit, ChooseStarter_OvyExec, ChooseStarter_OvyExit, FS_OVERLAY_ID(OVY_61) };
-const OVY_MGR_TEMPLATE sOvyTemplate_Pokedex =
-    { Pokedex_OvyInit, Pokedex_OvyExec, Pokedex_OvyExit, FS_OVERLAY_ID(OVY_18) };
-const OVY_MGR_TEMPLATE sOvyTemplate_TrainerCard =
-    { TrainerCard_OvyInit, TrainerCard_OvyExec, TrainerCard_OvyExit, FS_OVERLAY_ID(trainer_card) };
-const OVY_MGR_TEMPLATE sOvyTemplate_PalPad =
-    { PalPad_OvyInit, PalPad_OvyExec, PalPad_OvyExit, FS_OVERLAY_ID(OVY_43) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_ChooseStarter =
+    { ChooseStarter_Init, ChooseStarter_Main, ChooseStarter_Exit, FS_OVERLAY_ID(OVY_61) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_Pokedex =
+    { Pokedex_Init, Pokedex_Main, Pokedex_Exit, FS_OVERLAY_ID(OVY_18) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_TrainerCard =
+    { TrainerCard_Init, TrainerCard_Main, TrainerCard_Exit, FS_OVERLAY_ID(trainer_card) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_PalPad =
+    { PalPad_Init, PalPad_Main, PalPad_Exit, FS_OVERLAY_ID(OVY_43) };
 const OVY_MGR_TEMPLATE _020FA2B4 =
     { ov73_021E5900, ov73_021E5AB8, ov73_021E5BAC, FS_OVERLAY_ID(OVY_73) };
 const OVY_MGR_TEMPLATE _020FA2C4 =
     { ov37_021E5900, ov37_021E5A84, ov37_021E5B94, FS_OVERLAY_ID(OVY_37) };
-const OVY_MGR_TEMPLATE sOvyTemplate_TradeSequence =
-    { TradeSequence_OvyInit, TradeSequence_OvyExec, TradeSequence_OvyExit, FS_OVERLAY_ID(OVY_71) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_TradeSequence =
+    { TradeSequence_Init, TradeSequence_Main, TradeSequence_Exit, FS_OVERLAY_ID(OVY_71) };
 const OVY_MGR_TEMPLATE _020FA2E4 =
     { ov67_021E5900, ov67_021E5984, ov67_021E5968, FS_OVERLAY_ID(OVY_67) };
 const OVY_MGR_TEMPLATE _020FA2F4 =
     { ov103_021EC940, ov103_021EC988, ov103_021EC9A4, FS_OVERLAY_ID(OVY_103) };
-const OVY_MGR_TEMPLATE sOvyTemplate_Certificates =
-    { Certificates_OvyInit, Certificates_OvyExec, Certificates_OvyExit, FS_OVERLAY_ID(certificates_app) };
-const OVY_MGR_TEMPLATE sOvyTemplate_PokeathlonMedals =
-    { PokeathlonMedals_OvyInit, PokeathlonMedals_OvyExec, PokeathlonMedals_OvyExit, FS_OVERLAY_ID(OVY_99) };
-const OVY_MGR_TEMPLATE sOvyTemplate_PokeathlonEventRecord =
-    { PokeathlonEventRecord_OvyInit, PokeathlonEventRecord_OvyExec, PokeathlonEventRecord_OvyExit, FS_OVERLAY_ID(OVY_99) };
-const OVY_MGR_TEMPLATE sOvyTemplate_NintendoWifiConnect =
-    { NintendoWifiConnect_OvyInit, NintendoWifiConnect_OvyExec, NintendoWifiConnect_OvyExit, FS_OVERLAY_ID(OVY_72) };
-const OVY_MGR_TEMPLATE sOvyTemplate_PokeathlonCourseRecord =
-    { PokeathlonCourseRecord_OvyInit, PokeathlonCourseRecord_OvyExec, PokeathlonCourseRecord_OvyExit, FS_OVERLAY_ID(OVY_99) };
-const OVY_MGR_TEMPLATE sOvyTemplate_OptionsMenu =
-    { OptionsMenu_OvyInit, OptionsMenu_OvyExec, OptionsMenu_OvyExit, FS_OVERLAY_ID(options_app) };
-const OVY_MGR_TEMPLATE sOvyTemplate_BugContestSwapMon =
-    { BugContestSwapMon_OvyInit, BugContestSwapMon_OvyExec, BugContestSwapMon_OvyExit, FS_OVERLAY_ID(OVY_111) };
-const OVY_MGR_TEMPLATE sOvyTemplate_ApricornBox =
-    { ApricornBox_OvyInit, ApricornBox_OvyExec, ApricornBox_OvyExit, FS_OVERLAY_ID(OVY_58) };
-const OVY_MGR_TEMPLATE sOvyTemplate_BerryPots =
-    { BerryPots_OvyInit, BerryPots_OvyExec, BerryPots_OvyExit, FS_OVERLAY_ID(OVY_16) };
-const OVY_MGR_TEMPLATE gOvyTemplate_UnownReport =
-    { UnownReport_OvyInit, UnownReport_OvyExec, UnownReport_OvyExit, FS_OVERLAY_ID(OVY_113) };
-const OVY_MGR_TEMPLATE sOvyTemplate_AlphPuzzle =
-    { AlphPuzzle_OvyInit, AlphPuzzle_OvyExec, AlphPuzzle_OvyExit, FS_OVERLAY_ID(OVY_110) };
-const OVY_MGR_TEMPLATE sOvyTemplate_PhotoAlbum =
-    { PhotoAlbum_OvyInit, PhotoAlbum_OvyExec, PhotoAlbum_OvyExit, FS_OVERLAY_ID(OVY_109) };
-const OVY_MGR_TEMPLATE sOvyTemplate_SafariDecoration =
-    { SafariDecoration_OvyInit, SafariDecoration_OvyExec, SafariDecoration_OvyExit, FS_OVERLAY_ID(OVY_108) };
-const OVY_MGR_TEMPLATE sOvyTemplate_SafariAreaCustomizer =
-    { SafariAreaCustomizer_OvyInit, SafariAreaCustomizer_OvyExec, SafariAreaCustomizer_OvyExit, FS_OVERLAY_ID(OVY_108) };
-const OVY_MGR_TEMPLATE sOvyTemplate_TownMap =
-    { TownMap_OvyInit, TownMap_OvyExec, TownMap_OvyExit, FS_OVERLAY_ID(OVY_101) };
-const OVY_MGR_TEMPLATE sOvyTemplate_Phone =
-    { Phone_OvyInit, Phone_OvyExec, Phone_OvyExit, FS_OVERLAY_ID(OVY_100) };
-const OVY_MGR_TEMPLATE sOvyTemplate_EasyChat =
-    { EasyChat_OvyInit, EasyChat_OvyExec, EasyChat_OvyExit, FS_OVERLAY_ID(OVY_102) };
-const OVY_MGR_TEMPLATE sOvyTemplate_PCBox =
-    { PCBox_OvyInit, PCBox_OvyExec, PCBox_OvyExit, FS_OVERLAY_ID(OVY_14) };
-const OVY_MGR_TEMPLATE sOvyTemplate_PokeathlonUnkApp =
+const OVY_MGR_TEMPLATE sOverlayTemplate_Certificates =
+    { Certificates_Init, Certificates_Main, Certificates_Exit, FS_OVERLAY_ID(certificates_app) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_PokeathlonMedals =
+    { PokeathlonMedals_Init, PokeathlonMedals_Main, PokeathlonMedals_Exit, FS_OVERLAY_ID(OVY_99) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_PokeathlonEventRecord =
+    { PokeathlonEventRecord_Init, PokeathlonEventRecord_Main, PokeathlonEventRecord_Exit, FS_OVERLAY_ID(OVY_99) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_NintendoWifiConnect =
+    { NintendoWfc_Init, NintendoWfc_Main, NintendoWfc_Exit, FS_OVERLAY_ID(OVY_72) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_PokeathlonCourseRecord =
+    { PokeathlonCourseRecord_Init, PokeathlonCourseRecord_Main, PokeathlonCourseRecord_Exit, FS_OVERLAY_ID(OVY_99) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_OptionsMenu =
+    { OptionsMenu_Init, OptionsMenu_Main, OptionsMenu_Exit, FS_OVERLAY_ID(options_app) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_BugContestSwapMon =
+    { BugContestSwapMon_Init, BugContestSwapMon_Main, BugContestSwapMon_Exit, FS_OVERLAY_ID(OVY_111) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_ApricornBox =
+    { ApricornBox_Init, ApricornBox_Main, ApricornBox_Exit, FS_OVERLAY_ID(OVY_58) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_BerryPots =
+    { BerryPots_Init, BerryPots_Main, BerryPots_Exit, FS_OVERLAY_ID(OVY_16) };
+const OVY_MGR_TEMPLATE gOverlayTemplate_UnownReport =
+    { UnownReport_Init, UnownReport_Main, UnownReport_Exit, FS_OVERLAY_ID(OVY_113) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_AlphPuzzle =
+    { AlphPuzzle_Init, AlphPuzzle_Main, AlphPuzzle_Exit, FS_OVERLAY_ID(OVY_110) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_PhotoAlbum =
+    { PhotoAlbum_Init, PhotoAlbum_Main, PhotoAlbum_Exit, FS_OVERLAY_ID(OVY_109) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_SafariDecoration =
+    { SafariDecoration_Init, SafariDecoration_Main, SafariDecoration_Exit, FS_OVERLAY_ID(OVY_108) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_SafariAreaCustomizer =
+    { SafariAreaCustomizer_Init, SafariAreaCustomizer_Main, SafariAreaCustomizer_Exit, FS_OVERLAY_ID(OVY_108) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_TownMap =
+    { TownMap_Init, TownMap_Main, TownMap_Exit, FS_OVERLAY_ID(OVY_101) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_Phone =
+    { Phone_Init, Phone_Main, Phone_Exit, FS_OVERLAY_ID(OVY_100) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_EasyChat =
+    { EasyChat_Init, EasyChat_Main, EasyChat_Exit, FS_OVERLAY_ID(OVY_102) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_PCBox =
+    { PCBox_Init, PCBox_Main, PCBox_Exit, FS_OVERLAY_ID(OVY_14) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_PokeathlonUnkApp =
     { ov99_021E677C, ov99_021E6888, ov99_021E6840, FS_OVERLAY_ID(OVY_99) };
 const OVY_MGR_TEMPLATE _020FA434 =
     { ov55_UnkApp_Init, ov55_UnkApp_Main, ov55_UnkApp_Exit, FS_OVERLAY_ID(OVY_55) };
@@ -179,22 +183,22 @@ const OVY_MGR_TEMPLATE _020FA444 =
     { ov73_021E7E4C, ov73_021E7FB8, ov73_021E808C, FS_OVERLAY_ID(OVY_72) };
 const OVY_MGR_TEMPLATE _020FA454 =
     { ov104_021E5900, ov104_021E59E4, ov104_021E5B14, FS_OVERLAY_ID(OVY_104) };
-const OVY_MGR_TEMPLATE sOvyTemplate_Bag =
-    { Bag_OvyInit, Bag_OvyExec, Bag_OvyExit, FS_OVERLAY_ID(OVY_15) };
-const OVY_MGR_TEMPLATE sOvyTemplate_LegendaryCinematic =
-    { LegendaryCinematic_OvyInit, LegendaryCinematic_OvyExec, LegendaryCinematic_OvyExit, FS_OVERLAY_ID(OVY_106) };
-const OVY_MGR_TEMPLATE gOvyTemplate_Battle =
-    { Battle_OvyInit, Battle_OvyExec, Battle_OvyExit, FS_OVERLAY_ID(OVY_12) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_Bag =
+    { Bag_Init, Bag_Main, Bag_Exit, FS_OVERLAY_ID(OVY_15) };
+const OVY_MGR_TEMPLATE sOverlayTemplate_LegendaryCinematic =
+    { LegendaryCinematic_Init, LegendaryCinematic_Main, LegendaryCinematic_Exit, FS_OVERLAY_ID(OVY_106) };
+const OVY_MGR_TEMPLATE gOverlayTemplate_Battle =
+    { Battle_Init, Battle_Main, Battle_Exit, FS_OVERLAY_ID(OVY_12) };
 const OVY_MGR_TEMPLATE _020FA494 =
     { ov121_021E5900, ov121_021E590C, ov121_021E59BC, FS_OVERLAY_ID(OVY_121) };
 
 const u8 *sPockets = NULL;
-OVY_MGR_TEMPLATE sOvyTemplate_ScratchOffCards =
-    { ScratchOffCards_OvyInit, ScratchOffCards_OvyExec, ScratchOffCards_OvyExit, FS_OVERLAY_ID(OVY_87) };
-OVY_MGR_TEMPLATE sOvyTemplate_WirelessTradeSelectMon =
-    { WirelessTradeSelectMon_OvyInit, WirelessTradeSelectMon_OvyExec, WirelessTradeSelectMon_OvyExit, FS_OVERLAY_ID(OVY_65) };
-OVY_MGR_TEMPLATE sOvyTemplate_AccessoryPortrait =
-    { AccessoryPortrait_OvyInit, AccessoryPortrait_OvyExec, AccessoryPortrait_OvyExit, FS_OVERLAY_ID(OVY_41) };
+OVY_MGR_TEMPLATE sOverlayTemplate_ScratchOffCards =
+    { ScratchOffCards_Init, ScratchOffCards_Main, ScratchOffCards_Exit, FS_OVERLAY_ID(OVY_87) };
+OVY_MGR_TEMPLATE sOverlayTemplate_WirelessTradeSelectMon =
+    { WirelessTradeSelectMon_Init, WirelessTradeSelectMon_Main, WirelessTradeSelectMon_Exit, FS_OVERLAY_ID(OVY_65) };
+OVY_MGR_TEMPLATE sOverlayTemplate_AccessoryPortrait =
+    { AccessoryPortrait_Init, AccessoryPortrait_Main, AccessoryPortrait_Exit, FS_OVERLAY_ID(OVY_41) };
 OVY_MGR_TEMPLATE _0210F9AC =
     { ov41_02246DE0, ov41_02246F08, ov41_02247150, FS_OVERLAY_ID(OVY_41) };
 OVY_MGR_TEMPLATE _0210F9BC =

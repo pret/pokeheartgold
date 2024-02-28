@@ -145,6 +145,6 @@
 .public memset
 .public _s32_div_f
 .public _u32_div_f
-.public ScratchOffCards_OvyInit
-.public ScratchOffCards_OvyExec
-.public ScratchOffCards_OvyExit
+.public ScratchOffCards_Init
+.public ScratchOffCards_Main
+.public ScratchOffCards_Exit

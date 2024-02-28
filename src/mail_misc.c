@@ -11,7 +11,7 @@
 #include "constants/mail.h"
 #include "constants/pokemon.h"
 
-EasyChatArgs *CreateEasyChatArgs(u8 a0, u8 a1, SaveData *saveData, u32 *a3, HeapID heapId) {
+EasyChatArgs *EasyChat_CreateArgs(u8 a0, u8 a1, SaveData *saveData, u32 *a3, HeapID heapId) {
     EasyChatArgs *ptr = AllocFromHeap(heapId, sizeof(EasyChatArgs));
     ptr->unk0 = a0;
     ptr->unk1 = a1;
@@ -34,7 +34,7 @@ EasyChatArgs *CreateEasyChatArgs(u8 a0, u8 a1, SaveData *saveData, u32 *a3, Heap
     return ptr;
 }
 
-void FreeEasyChatArgs(EasyChatArgs *args) {
+void EasyChat_FreeArgs(EasyChatArgs *args) {
     FreeToHeap(args);
 }
 

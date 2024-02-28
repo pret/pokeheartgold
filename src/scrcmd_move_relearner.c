@@ -8,8 +8,8 @@ BOOL ScrNative_WaitApplication(ScriptContext *ctx);
 // Triggered for move deleter
 BOOL ScrCmd_394(ScriptContext *ctx) {
     u16 var0 = ScriptGetVar(ctx);
-    PokemonSummaryArgs **runningAppData = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //*could* be MoveRelearnerArgs, not sure
-    *runningAppData = LaunchLearnForgetMoveApp(HEAP_ID_32, ctx->fieldSystem, var0, 0);
+    PokemonSummaryArgs **runningAppData = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    *runningAppData = LearnForgetMove_LaunchApp(HEAP_ID_32, ctx->fieldSystem, var0, 0);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
@@ -51,7 +51,7 @@ static void StartMoveRelearner(ScriptContext *ctx, int type, Pokemon *mon, u16 *
     moveRelearner->eligibleMoves = eligibleMoves;
     moveRelearner->type = type;
 
-    LaunchMoveRelearnerApp(ctx->fieldSystem, moveRelearner);
+    MoveRelearner_LaunchApp(ctx->fieldSystem, moveRelearner);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     FreeToHeap(eligibleMoves);
 }

@@ -10,7 +10,7 @@
 .public sub_020398C8
 .public sub_0203A05C
 .public FieldSystem_LaunchApplication
-.public Task_WirelessTrade
+.public CallTask_WirelessTrade
 .public Save_VarsFlags_Get
 .public TaskManager_Call
 .public FieldSystem_ApplicationIsRunning
@@ -27,7 +27,7 @@
 .public OS_ResetSystem
 .public MI_CpuFill8
 .public memset
-.public gOvyTemplate_Battle
+.public gOverlayTemplate_Battle
 .public gNatureStatMods
 .public ov13_0221BA00
 .public ov44_0222A4B4

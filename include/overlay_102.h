@@ -3,8 +3,8 @@
 
 #include "overlay_manager.h"
 
-BOOL EasyChat_OvyInit(OVY_MANAGER *man, int *state);
-BOOL EasyChat_OvyExec(OVY_MANAGER *man, int *state);
-BOOL EasyChat_OvyExit(OVY_MANAGER *man, int *state);
+BOOL EasyChat_Init(OVY_MANAGER *man, int *state);
+BOOL EasyChat_Main(OVY_MANAGER *man, int *state);
+BOOL EasyChat_Exit(OVY_MANAGER *man, int *state);
 
 #endif //POKEHEARTGOLD_OVY_102_H

@@ -125,6 +125,6 @@
 .public MI_CpuCopy8
 .public _s32_div_f
 .public gSystem
-.public PhotoAlbum_OvyInit
-.public PhotoAlbum_OvyExec
-.public PhotoAlbum_OvyExit
+.public PhotoAlbum_Init
+.public PhotoAlbum_Main
+.public PhotoAlbum_Exit

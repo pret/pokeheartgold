@@ -177,7 +177,7 @@
 .public GetUnionRoomAvatarAttrBySprite
 .public Save_VarsFlags_FlypointFlagAction
 .public sub_02070D84
-.public CreateNamingScreenArgs
+.public NamingScreen_CreateArgs
 .public sub_0208311C
 .public sub_02085400
 .public sub_02085438
@@ -201,6 +201,6 @@
 .public ov42_02227274
 .public ov42_022272BC
 .public ov42_0222740C
-.public PalPad_OvyInit
-.public PalPad_OvyExec
-.public PalPad_OvyExit
+.public PalPad_Init
+.public PalPad_Main
+.public PalPad_Exit

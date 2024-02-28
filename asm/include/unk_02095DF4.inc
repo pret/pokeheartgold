@@ -4,7 +4,7 @@
 .public FreeToHeap
 .public sub_0203E30C
 .public FieldSystem_GetSaveData
-.public LaunchPokeathlonCourseApp
+.public PokeathlonCourse_LaunchApp
 .public TaskManager_Call
 .public FieldSystem_ApplicationIsRunning
 .public sub_020505C0

@@ -19,7 +19,7 @@ BOOL sub_02097754(TaskManager *taskManager) {
 
     switch (env->unknown_0) {
     case 0:
-        env->unknown_8 = LaunchSafariDecorationApp(fieldSystem);
+        env->unknown_8 = SafariDecoration_LaunchApp(fieldSystem);
         env->unknown_0++;
         break;
     case 1:

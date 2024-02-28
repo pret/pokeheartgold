@@ -55,7 +55,7 @@
 .public G2x_SetBlendAlpha_
 .public MIi_CpuClear32
 .public memset
-.public gOvyTemplate_Battle
+.public gOverlayTemplate_Battle
 .public gNatureStatMods
 .public _02102620
 .public gSystem

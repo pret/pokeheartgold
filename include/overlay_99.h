@@ -31,17 +31,17 @@ typedef struct Unk0203EFA0 {
     PlayerProfile *profile;
 } Unk0203EFA0;
 
-BOOL PokeathlonMedals_OvyInit(OVY_MANAGER *man, int *state);
-BOOL PokeathlonMedals_OvyExec(OVY_MANAGER *man, int *state);
-BOOL PokeathlonMedals_OvyExit(OVY_MANAGER *man, int *state);
+BOOL PokeathlonMedals_Init(OVY_MANAGER *man, int *state);
+BOOL PokeathlonMedals_Main(OVY_MANAGER *man, int *state);
+BOOL PokeathlonMedals_Exit(OVY_MANAGER *man, int *state);
 
-BOOL PokeathlonEventRecord_OvyInit(OVY_MANAGER *man, int *state);
-BOOL PokeathlonEventRecord_OvyExec(OVY_MANAGER *man, int *state);
-BOOL PokeathlonEventRecord_OvyExit(OVY_MANAGER *man, int *state);
+BOOL PokeathlonEventRecord_Init(OVY_MANAGER *man, int *state);
+BOOL PokeathlonEventRecord_Main(OVY_MANAGER *man, int *state);
+BOOL PokeathlonEventRecord_Exit(OVY_MANAGER *man, int *state);
 
-BOOL PokeathlonCourseRecord_OvyInit(OVY_MANAGER *man, int *state);
-BOOL PokeathlonCourseRecord_OvyExec(OVY_MANAGER *man, int *state);
-BOOL PokeathlonCourseRecord_OvyExit(OVY_MANAGER *man, int *state);
+BOOL PokeathlonCourseRecord_Init(OVY_MANAGER *man, int *state);
+BOOL PokeathlonCourseRecord_Main(OVY_MANAGER *man, int *state);
+BOOL PokeathlonCourseRecord_Exit(OVY_MANAGER *man, int *state);
 
 BOOL ov99_021E677C(OVY_MANAGER *man, int *state);
 BOOL ov99_021E6888(OVY_MANAGER *man, int *state);

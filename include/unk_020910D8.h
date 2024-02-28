@@ -13,6 +13,6 @@ typedef struct Unk02091240 {
     u16 unkC;
 } Unk02091240;
 
-void Task_HatchEggInParty(TaskManager *taskman, Unk02091240 *a1);
+void CallTask_HatchEggInParty(TaskManager *taskman, Unk02091240 *a1);
 
 #endif //POKEHEARTGOLD_UNK_020910D8_H

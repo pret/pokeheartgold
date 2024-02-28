@@ -13,8 +13,8 @@ typedef struct BugContestSwapMonArgs {
     Pokemon *unk10;
 } BugContestSwapMonArgs;
 
-BOOL BugContestSwapMon_OvyInit(OVY_MANAGER *man, int *state);
-BOOL BugContestSwapMon_OvyExec(OVY_MANAGER *man, int *state);
-BOOL BugContestSwapMon_OvyExit(OVY_MANAGER *man, int *state);
+BOOL BugContestSwapMon_Init(OVY_MANAGER *man, int *state);
+BOOL BugContestSwapMon_Main(OVY_MANAGER *man, int *state);
+BOOL BugContestSwapMon_Exit(OVY_MANAGER *man, int *state);
 
 #endif //POKEHEARTGOLD_OVY_111_H

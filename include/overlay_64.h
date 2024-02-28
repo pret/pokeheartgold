@@ -3,8 +3,8 @@
 
 #include "overlay_manager.h"
 
-BOOL HallOfFameCongrats_OvyInit(OVY_MANAGER *man, int *state);
-BOOL HallOfFameCongrats_OvyExec(OVY_MANAGER *man, int *state);
-BOOL HallOfFameCongrats_OvyExit(OVY_MANAGER *man, int *state);
+BOOL HallOfFameShowcase_Init(OVY_MANAGER *man, int *state);
+BOOL HallOfFameShowcase_Main(OVY_MANAGER *man, int *state);
+BOOL HallOfFameShowcase_Exit(OVY_MANAGER *man, int *state);
 
 #endif //POKEHEARTGOLD_OVY_64_H

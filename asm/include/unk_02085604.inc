@@ -41,6 +41,6 @@
 .public NNS_G2dGetUnpackedPaletteData
 .public _s32_div_f
 .public _u32_div_f
-.public gOvyTemplate_Battle
+.public gOverlayTemplate_Battle
 .public gNatureStatMods
 .public gSystem

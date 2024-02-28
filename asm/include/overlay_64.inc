@@ -116,6 +116,6 @@
 .public DC_FlushRange
 .public MI_CpuFill8
 .public gSystem
-.public HallOfFameCongrats_OvyInit
-.public HallOfFameCongrats_OvyExit
-.public HallOfFameCongrats_OvyExec
+.public HallOfFameShowcase_Init
+.public HallOfFameShowcase_Exit
+.public HallOfFameShowcase_Main

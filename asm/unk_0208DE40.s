@@ -8,7 +8,7 @@
 	.include "unk_0208DE40.inc"
 	.include "global.inc"
 
-	.public gOvyTemplate_Battle
+	.public gOverlayTemplate_Battle
 	.public gNatureStatMods
 
 	.text

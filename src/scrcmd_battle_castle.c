@@ -217,7 +217,7 @@ static u32 sub_0204FC78(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID
         partyMenu->unk_36_0 = 2;
         partyMenu->unk_36_4 = 2;
     }
-    FieldSystem_LaunchApplication(fieldSystem, &gOvyTemplate_PartyMenu, partyMenu);
+    FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, partyMenu);
     *(a0->unk0c) = partyMenu;
     return 1;
 }
@@ -257,7 +257,7 @@ static u32 sub_0204FDA0(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID
     unk->isFlag982Set = sub_0208828C(saveData);
     sub_02089D40((void*)unk, unk_020FC3A4);
     sub_0208AD34((void*)unk, Save_PlayerData_GetProfileAddr(saveData));
-    FieldSystem_LaunchApplication(fieldSystem, &gOvyTemplate_PokemonSummary, unk);
+    FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PokemonSummary, unk);
     *(a0->unk0c) = unk;
     return 3;
 }

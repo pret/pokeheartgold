@@ -415,7 +415,7 @@ static BOOL Task_BugContest_PromptSwapPokemon(TaskManager *taskManager) {
         case 0:
         {
             u32 noPokemonCaught = contest->caught_poke == SPECIES_NONE;
-            unkStruct->unk08 = LaunchBugContestSwapMonApp(fieldSystem, unkStruct->newlyCaughtMon, contest->mon, noPokemonCaught);
+            unkStruct->unk08 = BugContestSwapMon_LaunchApp(fieldSystem, unkStruct->newlyCaughtMon, contest->mon, noPokemonCaught);
             (*state)++;
             break;
         }

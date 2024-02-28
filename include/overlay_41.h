@@ -10,9 +10,9 @@ typedef struct FashionAppData {
     int unk_8;
 } FashionAppData;
 
-BOOL AccessoryPortrait_OvyInit(OVY_MANAGER *man, int *state);
-BOOL AccessoryPortrait_OvyExec(OVY_MANAGER *man, int *state);
-BOOL AccessoryPortrait_OvyExit(OVY_MANAGER *man, int *state);
+BOOL AccessoryPortrait_Init(OVY_MANAGER *man, int *state);
+BOOL AccessoryPortrait_Main(OVY_MANAGER *man, int *state);
+BOOL AccessoryPortrait_Exit(OVY_MANAGER *man, int *state);
 
 BOOL ov41_02246DE0(OVY_MANAGER *man, int *state);
 BOOL ov41_02246F08(OVY_MANAGER *man, int *state);

@@ -162,7 +162,7 @@
 .public G3X_SetClearColor
 .public MI_CpuFill8
 .public memset
-.public gOvyTemplate_PokemonSummary
-.public MoveRelearner_OvyInit
-.public MoveRelearner_OvyExec
-.public MoveRelearner_OvyExit
+.public gOverlayTemplate_PokemonSummary
+.public MoveRelearner_Init
+.public MoveRelearner_Main
+.public MoveRelearner_Exit

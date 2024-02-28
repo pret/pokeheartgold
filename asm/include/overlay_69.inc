@@ -116,6 +116,6 @@
 .public gGameLanguage
 .public FX_SinCosTable_
 .public gSystem
-.public GeonetGlobe_OvyInit
-.public GeonetGlobe_OvyExec
-.public GeonetGlobe_OvyExit
+.public GeonetGlobe_Init
+.public GeonetGlobe_Main
+.public GeonetGlobe_Exit

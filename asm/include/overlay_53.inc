@@ -130,7 +130,7 @@
 .public Save_Misc_Get
 .public Save_Misc_RivalName_Set
 .public Options_GetTextFrameDelay
-.public CreateNamingScreenArgs
+.public NamingScreen_CreateArgs
 .public sub_0208311C
 .public G2x_SetBlendAlpha_
 .public G2x_SetBlendBrightness_
@@ -140,6 +140,6 @@
 .public _02102610
 .public gSystem
 .public ov36_App_InitGameState_AfterOakSpeech
-.public ov53_OakSpeech_OvyInit
-.public ov53_OakSpeech_OvyExec
-.public ov53_OakSpeech_OvyExit
+.public ov53_OakSpeech_Init
+.public ov53_OakSpeech_Main
+.public ov53_OakSpeech_Exit

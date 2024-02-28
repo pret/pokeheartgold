@@ -224,7 +224,7 @@
 .public _s32_div_f
 .public _u32_div_f
 .public gSystem
-.public Bag_OvyInit
-.public Bag_OvyExec
-.public Bag_OvyExit
+.public Bag_Init
+.public Bag_Main
+.public Bag_Exit
 .public ov15_022008B8

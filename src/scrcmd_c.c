@@ -1594,14 +1594,14 @@ BOOL ScrCmd_136(ScriptContext *ctx) {
 
 BOOL ScrCmd_PartySelectUI(ScriptContext *ctx) {
     PartyMenuArgs **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *partyMenu = LaunchPartyMenuApp_Unk2(HEAP_ID_32, ctx->fieldSystem);
+    *partyMenu = PartyMenu_LaunchApp_Unk2(HEAP_ID_32, ctx->fieldSystem);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
 
 BOOL ScrCmd_566(ScriptContext *ctx) { //todo: trade screen
     PartyMenuArgs **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *partyMenu = LaunchPartyMenuApp_Unk3(HEAP_ID_32, ctx->fieldSystem);
+    *partyMenu = PartyMenu_LaunchApp_Unk3(HEAP_ID_32, ctx->fieldSystem);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
@@ -1720,9 +1720,9 @@ BOOL ScrCmd_PokemonSummaryScreen(ScriptContext *ctx) {
     u16 r7 = ScriptGetVar(ctx);
     u16 r3 = ScriptGetVar(ctx);
     if (onlySkillsPanel == 1) {
-        *p_work = LaunchLearnForgetMoveApp(HEAP_ID_32, ctx->fieldSystem, r7, r3);
+        *p_work = LearnForgetMove_LaunchApp(HEAP_ID_32, ctx->fieldSystem, r7, r3);
     } else {
-        *p_work = LaunchPokemonSummaryApp(HEAP_ID_32, ctx->fieldSystem, r7, r3);
+        *p_work = PokemonSummary_LaunchApp(HEAP_ID_32, ctx->fieldSystem, r7, r3);
     }
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
@@ -1925,7 +1925,7 @@ BOOL ScrCmd_155(ScriptContext *ctx) {
         return TRUE;
     } else {
         *r6 = 0;
-        LaunchAccessoryPortraitApp(ctx->fieldSystem, *fashionAppData);
+        AccessoryPortrait_LaunchApp(ctx->fieldSystem, *fashionAppData);
         SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
         return TRUE;
     }
@@ -1950,7 +1950,7 @@ BOOL ScrCmd_256(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_450(ScriptContext *ctx) {
-    LaunchGeonetGlobeApp(ctx->fieldSystem);
+    GeonetGlobe_LaunchApp(ctx->fieldSystem);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
@@ -1962,7 +1962,7 @@ BOOL ScrCmd_156(ScriptContext *ctx) {
 
 BOOL ScrCmd_TownMap(ScriptContext *ctx) {
     PokegearArgs **p_townMap = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *p_townMap = LaunchPokegearTownMapApp(ctx->fieldSystem, 1);
+    *p_townMap = PokegearTownMap_LaunchApp(ctx->fieldSystem, 1);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
@@ -1970,8 +1970,8 @@ BOOL ScrCmd_TownMap(ScriptContext *ctx) {
 BOOL ScrCmd_408(ScriptContext *ctx) {
     u16 r7 = ScriptGetVar(ctx);
     u16 sp0 = ScriptGetVar(ctx);
-    UnkStruct_ScrCmd408 **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *p_work = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct UnkStruct_ScrCmd408));
+    UnkOv67Args **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    *p_work = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct UnkOv67Args));
     InitUnkStructScrCmd408(*p_work, r7, sp0, ctx);
     sub_0203F0A8(ctx->fieldSystem, *p_work);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
@@ -1983,7 +1983,7 @@ BOOL ScrCmd_158(ScriptContext *ctx) { //todo: PC box screen
 
     p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     *p_work = PCBoxAppData_New(ctx);
-    LaunchPCBoxApp(ctx->fieldSystem, *p_work);
+    PCBox_LaunchApp(ctx->fieldSystem, *p_work);
     SetupNativeScript(ctx, sub_020429A0);
     return TRUE;
 }
@@ -2000,7 +2000,7 @@ BOOL ScrCmd_160(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_161(ScriptContext *ctx) {
-    Task_WirelessTrade(ctx->fieldSystem->taskman);
+    CallTask_WirelessTrade(ctx->fieldSystem->taskman);
     return TRUE;
 }
 
@@ -2019,7 +2019,7 @@ BOOL ScrCmd_HOF_Credits(ScriptContext *ctx) {
 
 BOOL ScrCmd_164(ScriptContext *ctx) {
     HallOfFame **hof = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //todo: hall of fame data
-    *hof = LaunchHallOfFameCongratsApp(ctx->fieldSystem);
+    *hof = HallOfFameShowcase_LaunchApp(ctx->fieldSystem);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
@@ -2062,10 +2062,10 @@ BOOL ScrCmd_ChooseStarter(ScriptContext *ctx) {
 
 BOOL ScrCmd_333(ScriptContext *ctx) { //todo: bag select screen
     void **p_work;
-    u8 r4 = ScriptReadByte(ctx) != 0 ? 1 : 0;
+    u8 pocketType = ScriptReadByte(ctx) != 0 ? POCKET_TYPE_BERRIES : POCKET_TYPE_ITEMS;
     p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     GF_ASSERT(*p_work == NULL);
-    *p_work = LaunchBagApp_WithPocket(ctx->fieldSystem, r4);
+    *p_work = Bag_LaunchApp_WithPocket(ctx->fieldSystem, pocketType);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
@@ -2082,10 +2082,10 @@ BOOL ScrCmd_334(ScriptContext *ctx) { //todo: bag select screen result
 
 BOOL ScrCmd_370(ScriptContext *ctx) { //unknown? possibly daycare select screen??
     void **p_work;
-    u8 r4 = ScriptReadByte(ctx) != 0 ? 1 : 0;
+    u8 pocketType = ScriptReadByte(ctx) != 0 ? POCKET_TYPE_BERRIES : POCKET_TYPE_ITEMS;
     p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     GF_ASSERT(*p_work == NULL);
-    *p_work = LaunchBagApp_WithPocket(ctx->fieldSystem, r4);
+    *p_work = Bag_LaunchApp_WithPocket(ctx->fieldSystem, pocketType);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
@@ -2598,7 +2598,7 @@ BOOL ScrCmd_CatchingTutorial(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_252(ScriptContext *ctx) {
-    LaunchTrainerCardSignatureApp(ctx->fieldSystem);
+    TrainerCardSignature_LaunchApp(ctx->fieldSystem);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
@@ -3322,7 +3322,7 @@ BOOL ScrCmd_CheckNationalDexComplete(ScriptContext *ctx) {
 BOOL ScrCmd_ShowCertificate(ScriptContext *ctx) {
     CertificatesArgs **args = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     u16 certificateId = ScriptGetVar(ctx);
-    *args = LaunchCertificatesApp(ctx->fieldSystem, HEAP_ID_32, certificateId);
+    *args = Certificates_LaunchApp(ctx->fieldSystem, HEAP_ID_32, certificateId);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
@@ -3949,7 +3949,7 @@ BOOL ScrCmd_550(ScriptContext *ctx) {
 BOOL ScrCmd_551(ScriptContext *ctx) {
     u16 r6 = ScriptGetVar(ctx);
     PartyMenuArgs **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *p_work = LaunchPartyMenuApp_Unk4(HEAP_ID_32, ctx->fieldSystem, r6);
+    *p_work = PartyMenu_LaunchApp_Unk4(HEAP_ID_32, ctx->fieldSystem, r6);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
@@ -4179,7 +4179,7 @@ BOOL ScrCmd_631(ScriptContext *ctx) {
 
 BOOL ScrCmd_ScratchOffCard(ScriptContext *ctx) {
     ScratchOffCardsArgs **scratchCardData = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *scratchCardData = LaunchScratchOffCardsApp(ctx->fieldSystem, HEAP_ID_32);
+    *scratchCardData = ScratchOffCards_LaunchApp(ctx->fieldSystem, HEAP_ID_32);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
@@ -4661,7 +4661,7 @@ BOOL ScrCmd_SetPhoneCall(ScriptContext *ctx) {
 
 BOOL ScrCmd_RunPhoneCall(ScriptContext *ctx) {
     void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *p_work = LaunchPokegearPhoneApp(ctx->fieldSystem);
+    *p_work = PokegearPhone_LaunchApp(ctx->fieldSystem);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
@@ -4803,17 +4803,17 @@ BOOL ScrCmd_712(ScriptContext *ctx) {
     u8 action = ScriptReadByte(ctx);
     switch (action) {
     case 1:
-        *p_work = LaunchPokeathlonMedalsApp(ctx->fieldSystem);
+        *p_work = PokeathlonMedals_LaunchApp(ctx->fieldSystem);
         break;
     case 2:
-        *p_work = LaunchPokeathlonEventRecordApp(ctx->fieldSystem);
+        *p_work = PokeathlonEventRecord_LaunchApp(ctx->fieldSystem);
         break;
     case 3:
-        *p_work = LaunchPokeathlonUnkApp(ctx->fieldSystem);
+        *p_work = PokeathlonUnk_LaunchApp(ctx->fieldSystem);
         break;
     default:
     case 0:
-        *p_work = LaunchPokeathlonCourseRecordApp(ctx->fieldSystem);
+        *p_work = PokeathlonCourseRecord_LaunchApp(ctx->fieldSystem);
         break;
     }
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);

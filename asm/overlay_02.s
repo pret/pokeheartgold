@@ -18275,8 +18275,8 @@ _0224E4E6:
 	pop {r3, pc}
 	thumb_func_end ov02_0224E4DC
 
-	thumb_func_start CreateSafariDecorationArgs
-CreateSafariDecorationArgs: ; 0x0224E4EC
+	thumb_func_start SafariDecoration_CreateArgs
+SafariDecoration_CreateArgs: ; 0x0224E4EC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x2c
 	add r5, r0, #0
@@ -18438,7 +18438,7 @@ _0224E638:
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end CreateSafariDecorationArgs
+	thumb_func_end SafariDecoration_CreateArgs
 
 	thumb_func_start ov02_0224E640
 ov02_0224E640: ; 0x0224E640

@@ -2,70 +2,6 @@
 	.include "launch_application.inc"
 	.include "global.inc"
 
-	.public Battle_OvyInit
-	.public Battle_OvyExec
-	.public Battle_OvyExit
-	.public _020FA0B0
-
-	.public _020FA17C
-	.public _020FA190
-	.public sOvyTemplate_Bag
-	.public sAllPockets
-	.public sItemPocket
-	.public sPockets
-	.public sBerryPocket
-	.public _020FA1B0
-	.public _020FA1A8
-	.public sOvyTemplate_PCBox
-	.public sOvyTemplate_EasyChat
-	.public sOvyTemplate_EasyChat
-	.public sOvyTemplate_Phone
-	.public sOvyTemplate_TownMap
-	.public sOvyTemplate_SafariAreaCustomizer
-	.public sOvyTemplate_SafariDecoration
-	.public sOvyTemplate_PhotoAlbum
-	.public sOvyTemplate_AlphPuzzle
-	.public gOvyTemplate_UnownReport
-	.public sOvyTemplate_BerryPots
-	.public sOvyTemplate_ApricornBox
-	.public sOvyTemplate_BugContestSwapMon
-	.public sOvyTemplate_OptionsMenu
-	.public sOvyTemplate_PokeathlonCourseRecord
-	.public sOvyTemplate_PokeathlonMedals
-	.public sOvyTemplate_PokeathlonEventRecord
-	.public sOvyTemplate_PokeathlonUnkApp
-	.public _020FA434
-	.public _020FA2F4
-	.public _020FA2E4
-	.public _0210F9AC
-	.public sOvyTemplate_AccessoryPortrait
-	.public sOvyTemplate_WirelessTradeSelectMon
-	.public sOvyTemplate_TradeSequence
-	.public _020FA2C4
-	.public _020FA2B4
-	.public sOvyTemplate_PalPad
-	.public sOvyTemplate_TrainerCard
-	.public sOvyTemplate_Pokedex
-    .public sOvyTemplate_ChooseStarter
-    .public sOvyTemplate_TrainerCardSignature
-    .public _020FA264
-    .public sOvyTemplate_NintendoWifiConnect
-    .public sOvyTemplate_GeonetGlobe
-    .public _020FA214
-    .public sOvyTemplate_HallOfFameCongrats
-    .public sOvyTemplate_Credits
-    .public sOvyTemplate_MoveRelearner
-    .public sOvyTemplate_VoltorbFlip
-    .public sOvyTemplate_Certificates
-    .public _0210F9BC
-    .public sOvyTemplate_ScratchOffCards
-    .public _020FA1C4
-    .public sOvyTemplate_PokeathlonCourse
-    .public _020FA454
-    .public _020FA1D4
-    .public sOvyTemplate_LegendaryCinematic
-    .public _020FA494
-
 #ifndef NONMATCHING
 	.rodata
 
@@ -73,79 +9,79 @@ _020FA1C4:
 	.word sub_020192D0, sub_0201935C, sub_02019490, FS_OVERLAY_ID(OVY_39)
 _020FA1D4:
 	.word ov105_021E5900, ov105_021E59DC, ov105_021E5B14, FS_OVERLAY_ID(OVY_105)
-sOvyTemplate_MoveRelearner:
-	.word MoveRelearner_OvyInit, MoveRelearner_OvyExec, MoveRelearner_OvyExit, FS_OVERLAY_ID(OVY_68)
-sOvyTemplate_Credits:
-	.word Credits_OvyInit, Credits_OvyExec, Credits_OvyExit, FS_OVERLAY_ID(credits)
-sOvyTemplate_HallOfFameCongrats:
-	.word HallOfFameCongrats_OvyInit, HallOfFameCongrats_OvyExec, HallOfFameCongrats_OvyExit, FS_OVERLAY_ID(OVY_64)
-_020FA214:
-	.word ov63_0221BE20, ov63_0221BF88, ov63_0221BF28, FS_OVERLAY_ID(OVY_63)
-sOvyTemplate_GeonetGlobe:
-	.word GeonetGlobe_OvyInit, GeonetGlobe_OvyExec, GeonetGlobe_OvyExit, FS_OVERLAY_ID(OVY_69)
-sOvyTemplate_VoltorbFlip:
-	.word VoltorbFlip_OvyInit, VoltorbFlip_OvyExec, VoltorbFlip_OvyExit, FS_OVERLAY_ID(voltorb_flip)
-sOvyTemplate_PokeathlonCourse:
-	.word PokeathlonCourse_OvyInit, PokeathlonCourse_OvyExec, PokeathlonCourse_OvyExit, FS_OVERLAY_ID(OVY_96)
-sOvyTemplate_TrainerCardSignature:
-	.word TrainerCardSignature_OvyInit, TrainerCardSignature_OvyExec, TrainerCardSignature_OvyExit, FS_OVERLAY_ID(trainer_card_signature)
+sOverlayTemplate_MoveRelearner:
+	.word MoveRelearner_Init, MoveRelearner_Main, MoveRelearner_Exit, FS_OVERLAY_ID(OVY_68)
+sOverlayTemplate_Credits:
+	.word Credits_Init, Credits_Main, Credits_Exit, FS_OVERLAY_ID(credits)
+sOverlayTemplate_HallOfFameShowcase:
+	.word HallOfFameShowcase_Init, HallOfFameShowcase_Main, HallOfFameShowcase_Exit, FS_OVERLAY_ID(OVY_64)
+sOverlayTemplate_RegisterHallOfFame:
+	.word RegisterHallOfFame_Init, RegisterHallOfFame_Main, RegisterHallOfFame_Exit, FS_OVERLAY_ID(OVY_63)
+sOverlayTemplate_GeonetGlobe:
+	.word GeonetGlobe_Init, GeonetGlobe_Main, GeonetGlobe_Exit, FS_OVERLAY_ID(OVY_69)
+sOverlayTemplate_VoltorbFlip:
+	.word VoltorbFlip_Init, VoltorbFlip_Main, VoltorbFlip_Exit, FS_OVERLAY_ID(voltorb_flip)
+sOverlayTemplate_PokeathlonCourse:
+	.word PokeathlonCourse_Init, PokeathlonCourse_Main, PokeathlonCourse_Exit, FS_OVERLAY_ID(OVY_96)
+sOverlayTemplate_TrainerCardSignature:
+	.word TrainerCardSignature_Init, TrainerCardSignature_Main, TrainerCardSignature_Exit, FS_OVERLAY_ID(trainer_card_signature)
 _020FA264:
 	.word ov70_02238430, ov70_022385C0, ov70_022386F4, FS_OVERLAY_ID(OVY_70)
-sOvyTemplate_ChooseStarter:
-	.word ChooseStarter_OvyInit, ChooseStarter_OvyExec, ChooseStarter_OvyExit, FS_OVERLAY_ID(OVY_61)
-sOvyTemplate_Pokedex:
-	.word Pokedex_OvyInit, Pokedex_OvyExec, Pokedex_OvyExit, FS_OVERLAY_ID(OVY_18)
-sOvyTemplate_TrainerCard:
-	.word TrainerCard_OvyInit, TrainerCard_OvyExec, TrainerCard_OvyExit, FS_OVERLAY_ID(trainer_card)
-sOvyTemplate_PalPad:
-	.word PalPad_OvyInit, PalPad_OvyExec, PalPad_OvyExit, FS_OVERLAY_ID(OVY_43)
+sOverlayTemplate_ChooseStarter:
+	.word ChooseStarter_Init, ChooseStarter_Main, ChooseStarter_Exit, FS_OVERLAY_ID(OVY_61)
+sOverlayTemplate_Pokedex:
+	.word Pokedex_Init, Pokedex_Main, Pokedex_Exit, FS_OVERLAY_ID(OVY_18)
+sOverlayTemplate_TrainerCard:
+	.word TrainerCard_Init, TrainerCard_Main, TrainerCard_Exit, FS_OVERLAY_ID(trainer_card)
+sOverlayTemplate_PalPad:
+	.word PalPad_Init, PalPad_Main, PalPad_Exit, FS_OVERLAY_ID(OVY_43)
 _020FA2B4:
 	.word ov73_021E5900, ov73_021E5AB8, ov73_021E5BAC, FS_OVERLAY_ID(OVY_73)
 _020FA2C4:
 	.word ov37_021E5900, ov37_021E5A84, ov37_021E5B94, FS_OVERLAY_ID(OVY_37)
-sOvyTemplate_TradeSequence:
-	.word TradeSequence_OvyInit, TradeSequence_OvyExec, TradeSequence_OvyExit, FS_OVERLAY_ID(OVY_71)
+sOverlayTemplate_TradeSequence:
+	.word TradeSequence_Init, TradeSequence_Main, TradeSequence_Exit, FS_OVERLAY_ID(OVY_71)
 _020FA2E4:
 	.word ov67_021E5900, ov67_021E5984, ov67_021E5968, FS_OVERLAY_ID(OVY_67)
 _020FA2F4:
 	.word ov103_021EC940, ov103_021EC988, ov103_021EC9A4, FS_OVERLAY_ID(OVY_103)
-sOvyTemplate_Certificates:
-	.word Certificates_OvyInit, Certificates_OvyExec, Certificates_OvyExit, FS_OVERLAY_ID(certificates_app)
-sOvyTemplate_PokeathlonMedals:
-	.word PokeathlonMedals_OvyInit, PokeathlonMedals_OvyExec, PokeathlonMedals_OvyExit, FS_OVERLAY_ID(OVY_99)
-sOvyTemplate_PokeathlonEventRecord:
-	.word PokeathlonEventRecord_OvyInit, PokeathlonEventRecord_OvyExec, PokeathlonEventRecord_OvyExit, FS_OVERLAY_ID(OVY_99)
-sOvyTemplate_NintendoWifiConnect:
-	.word NintendoWifiConnect_OvyInit, NintendoWifiConnect_OvyExec, NintendoWifiConnect_OvyExit, FS_OVERLAY_ID(OVY_72)
-sOvyTemplate_PokeathlonCourseRecord:
-	.word PokeathlonCourseRecord_OvyInit, PokeathlonCourseRecord_OvyExec, PokeathlonCourseRecord_OvyExit, FS_OVERLAY_ID(OVY_99)
-sOvyTemplate_OptionsMenu:
-	.word OptionsMenu_OvyInit, OptionsMenu_OvyExec, OptionsMenu_OvyExit, FS_OVERLAY_ID(options_app)
-sOvyTemplate_BugContestSwapMon:
-	.word BugContestSwapMon_OvyInit, BugContestSwapMon_OvyExec, BugContestSwapMon_OvyExit, FS_OVERLAY_ID(OVY_111)
-sOvyTemplate_ApricornBox:
-	.word ApricornBox_OvyInit, ApricornBox_OvyExec, ApricornBox_OvyExit, FS_OVERLAY_ID(OVY_58)
-sOvyTemplate_BerryPots:
-	.word BerryPots_OvyInit, BerryPots_OvyExec, BerryPots_OvyExit, FS_OVERLAY_ID(OVY_16)
-gOvyTemplate_UnownReport:
-	.word UnownReport_OvyInit, UnownReport_OvyExec, UnownReport_OvyExit, FS_OVERLAY_ID(OVY_113)
-sOvyTemplate_AlphPuzzle:
-	.word AlphPuzzle_OvyInit, AlphPuzzle_OvyExec, AlphPuzzle_OvyExit, FS_OVERLAY_ID(OVY_110)
-sOvyTemplate_PhotoAlbum:
-	.word PhotoAlbum_OvyInit, PhotoAlbum_OvyExec, PhotoAlbum_OvyExit, FS_OVERLAY_ID(OVY_109)
-sOvyTemplate_SafariDecoration:
-	.word SafariDecoration_OvyInit, SafariDecoration_OvyExec, SafariDecoration_OvyExit, FS_OVERLAY_ID(OVY_108)
-sOvyTemplate_SafariAreaCustomizer:
-	.word SafariAreaCustomizer_OvyInit, SafariAreaCustomizer_OvyExec, SafariAreaCustomizer_OvyExit, FS_OVERLAY_ID(OVY_108)
-sOvyTemplate_TownMap:
-	.word TownMap_OvyInit, TownMap_OvyExec, TownMap_OvyExit, FS_OVERLAY_ID(OVY_101)
-sOvyTemplate_Phone:
-	.word Phone_OvyInit, Phone_OvyExec, Phone_OvyExit, FS_OVERLAY_ID(OVY_100)
-sOvyTemplate_EasyChat:
-	.word EasyChat_OvyInit, EasyChat_OvyExec, EasyChat_OvyExit, FS_OVERLAY_ID(OVY_102)
-sOvyTemplate_PCBox:
-	.word PCBox_OvyInit, PCBox_OvyExec, PCBox_OvyExit, FS_OVERLAY_ID(OVY_14)
-sOvyTemplate_PokeathlonUnkApp:
+sOverlayTemplate_Certificates:
+	.word Certificates_Init, Certificates_Main, Certificates_Exit, FS_OVERLAY_ID(certificates_app)
+sOverlayTemplate_PokeathlonMedals:
+	.word PokeathlonMedals_Init, PokeathlonMedals_Main, PokeathlonMedals_Exit, FS_OVERLAY_ID(OVY_99)
+sOverlayTemplate_PokeathlonEventRecord:
+	.word PokeathlonEventRecord_Init, PokeathlonEventRecord_Main, PokeathlonEventRecord_Exit, FS_OVERLAY_ID(OVY_99)
+sOverlayTemplate_NintendoWifiConnect:
+	.word NintendoWfc_Init, NintendoWfc_Main, NintendoWfc_Exit, FS_OVERLAY_ID(OVY_72)
+sOverlayTemplate_PokeathlonCourseRecord:
+	.word PokeathlonCourseRecord_Init, PokeathlonCourseRecord_Main, PokeathlonCourseRecord_Exit, FS_OVERLAY_ID(OVY_99)
+sOverlayTemplate_OptionsMenu:
+	.word OptionsMenu_Init, OptionsMenu_Main, OptionsMenu_Exit, FS_OVERLAY_ID(options_app)
+sOverlayTemplate_BugContestSwapMon:
+	.word BugContestSwapMon_Init, BugContestSwapMon_Main, BugContestSwapMon_Exit, FS_OVERLAY_ID(OVY_111)
+sOverlayTemplate_ApricornBox:
+	.word ApricornBox_Init, ApricornBox_Main, ApricornBox_Exit, FS_OVERLAY_ID(OVY_58)
+sOverlayTemplate_BerryPots:
+	.word BerryPots_Init, BerryPots_Main, BerryPots_Exit, FS_OVERLAY_ID(OVY_16)
+gOverlayTemplate_UnownReport:
+	.word UnownReport_Init, UnownReport_Main, UnownReport_Exit, FS_OVERLAY_ID(OVY_113)
+sOverlayTemplate_AlphPuzzle:
+	.word AlphPuzzle_Init, AlphPuzzle_Main, AlphPuzzle_Exit, FS_OVERLAY_ID(OVY_110)
+sOverlayTemplate_PhotoAlbum:
+	.word PhotoAlbum_Init, PhotoAlbum_Main, PhotoAlbum_Exit, FS_OVERLAY_ID(OVY_109)
+sOverlayTemplate_SafariDecoration:
+	.word SafariDecoration_Init, SafariDecoration_Main, SafariDecoration_Exit, FS_OVERLAY_ID(OVY_108)
+sOverlayTemplate_SafariAreaCustomizer:
+	.word SafariAreaCustomizer_Init, SafariAreaCustomizer_Main, SafariAreaCustomizer_Exit, FS_OVERLAY_ID(OVY_108)
+sOverlayTemplate_TownMap:
+	.word TownMap_Init, TownMap_Main, TownMap_Exit, FS_OVERLAY_ID(OVY_101)
+sOverlayTemplate_Phone:
+	.word Phone_Init, Phone_Main, Phone_Exit, FS_OVERLAY_ID(OVY_100)
+sOverlayTemplate_EasyChat:
+	.word EasyChat_Init, EasyChat_Main, EasyChat_Exit, FS_OVERLAY_ID(OVY_102)
+sOverlayTemplate_PCBox:
+	.word PCBox_Init, PCBox_Main, PCBox_Exit, FS_OVERLAY_ID(OVY_14)
+sOverlayTemplate_PokeathlonUnkApp:
 	.word ov99_021E677C, ov99_021E6888, ov99_021E6840, FS_OVERLAY_ID(OVY_99)
 _020FA434:
 	.word ov55_UnkApp_Init, ov55_UnkApp_Main, ov55_UnkApp_Exit, FS_OVERLAY_ID(OVY_55)
@@ -153,13 +89,13 @@ _020FA444:
 	.word ov73_021E7E4C, ov73_021E7FB8, ov73_021E808C, FS_OVERLAY_ID(OVY_72)
 _020FA454:
 	.word ov104_021E5900, ov104_021E59E4, ov104_021E5B14, FS_OVERLAY_ID(OVY_104)
-sOvyTemplate_Bag:
-	.word Bag_OvyInit, Bag_OvyExec, Bag_OvyExit, FS_OVERLAY_ID(OVY_15)
-sOvyTemplate_LegendaryCinematic:
-	.word LegendaryCinematic_OvyInit, LegendaryCinematic_OvyExec, LegendaryCinematic_OvyExit, FS_OVERLAY_ID(OVY_106)
-	.public gOvyTemplate_Battle
-gOvyTemplate_Battle:
-	.word Battle_OvyInit, Battle_OvyExec, Battle_OvyExit, FS_OVERLAY_ID(OVY_12)
+sOverlayTemplate_Bag:
+	.word Bag_Init, Bag_Main, Bag_Exit, FS_OVERLAY_ID(OVY_15)
+sOverlayTemplate_LegendaryCinematic:
+	.word LegendaryCinematic_Init, LegendaryCinematic_Main, LegendaryCinematic_Exit, FS_OVERLAY_ID(OVY_106)
+	.public gOverlayTemplate_Battle
+gOverlayTemplate_Battle:
+	.word Battle_Init, Battle_Main, Battle_Exit, FS_OVERLAY_ID(OVY_12)
 _020FA494:
 	.word ov121_021E5900, ov121_021E590C, ov121_021E59BC, FS_OVERLAY_ID(OVY_121)
 
@@ -167,12 +103,12 @@ _020FA494:
 
 sPockets:
 	.word 0x00000000
-sOvyTemplate_ScratchOffCards:
-	.word ScratchOffCards_OvyInit, ScratchOffCards_OvyExec, ScratchOffCards_OvyExit, FS_OVERLAY_ID(OVY_87)
-sOvyTemplate_WirelessTradeSelectMon:
-	.word WirelessTradeSelectMon_OvyInit, WirelessTradeSelectMon_OvyExec, WirelessTradeSelectMon_OvyExit, FS_OVERLAY_ID(OVY_65)
-sOvyTemplate_AccessoryPortrait:
-	.word AccessoryPortrait_OvyInit, AccessoryPortrait_OvyExec, AccessoryPortrait_OvyExit, FS_OVERLAY_ID(OVY_41)
+sOverlayTemplate_ScratchOffCards:
+	.word ScratchOffCards_Init, ScratchOffCards_Main, ScratchOffCards_Exit, FS_OVERLAY_ID(OVY_87)
+sOverlayTemplate_WirelessTradeSelectMon:
+	.word WirelessTradeSelectMon_Init, WirelessTradeSelectMon_Main, WirelessTradeSelectMon_Exit, FS_OVERLAY_ID(OVY_65)
+sOverlayTemplate_AccessoryPortrait:
+	.word AccessoryPortrait_Init, AccessoryPortrait_Main, AccessoryPortrait_Exit, FS_OVERLAY_ID(OVY_41)
 _0210F9AC:
 	.word ov41_02246DE0, ov41_02246F08, ov41_02247150, FS_OVERLAY_ID(OVY_41)
 _0210F9BC:

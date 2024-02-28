@@ -10,8 +10,8 @@ typedef struct OptionsMenuArgs {
     u32 *unk8;
 } OptionsMenuArgs;
 
-BOOL OptionsMenu_OvyInit(OVY_MANAGER *man, int *state);
-BOOL OptionsMenu_OvyExec(OVY_MANAGER *man, int *state);
-BOOL OptionsMenu_OvyExit(OVY_MANAGER *man, int *state);
+BOOL OptionsMenu_Init(OVY_MANAGER *man, int *state);
+BOOL OptionsMenu_Main(OVY_MANAGER *man, int *state);
+BOOL OptionsMenu_Exit(OVY_MANAGER *man, int *state);
 
 #endif //POKEHEARTGOLD_OVY_54_H

@@ -6,9 +6,9 @@
 .public OverlayManager_GetArgs
 .public CreateHeap
 .public DestroyHeap
-.public LegendaryCinematic_OvyInit
-.public LegendaryCinematic_OvyExec
-.public LegendaryCinematic_OvyExit
+.public LegendaryCinematic_Init
+.public LegendaryCinematic_Main
+.public LegendaryCinematic_Exit
 .public MI_CpuFill8
 .public ScriptCinematic_HoOh
 .public ScriptCinematic_Lugia

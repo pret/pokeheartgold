@@ -36,8 +36,8 @@ typedef struct {
     void *unk10;
 } TrainerCardAppState;
 
-BOOL TrainerCard_OvyInit(OVY_MANAGER *man, int *state);
-BOOL TrainerCard_OvyExec(OVY_MANAGER *man, int *state);
-BOOL TrainerCard_OvyExit(OVY_MANAGER *man, int *state);
+BOOL TrainerCard_Init(OVY_MANAGER *man, int *state);
+BOOL TrainerCard_Main(OVY_MANAGER *man, int *state);
+BOOL TrainerCard_Exit(OVY_MANAGER *man, int *state);
 
 #endif //POKEHEARTGOLD_OVERLAY_TRAINER_CARD_H

@@ -32,10 +32,10 @@
 .public _fmul
 .public _fsub
 .public _s32_div_f
-.public gOvyTemplate_PartyMenu
-.public ApricornBox_OvyInit
-.public ApricornBox_OvyExec
-.public ApricornBox_OvyExit
+.public gOverlayTemplate_PartyMenu
+.public ApricornBox_Init
+.public ApricornBox_Main
+.public ApricornBox_Exit
 .public ov58_022379C0
 .public ov59_02237D40
 .public ov59_02237DA8

@@ -161,7 +161,7 @@
 .public sub_0207CAA0
 .public sub_0207CAA4
 .public sub_0207CAA8
-.public CreateNamingScreenArgs
+.public NamingScreen_CreateArgs
 .public sub_0208311C
 .public HealParty
 .public sub_02096808
@@ -179,7 +179,7 @@
 .public memset
 .public _s32_div_f
 .public _u32_div_f
-.public gOvyTemplate_Battle
+.public gOverlayTemplate_Battle
 .public _02102610
 .public gSystem
 .public ov00_021E6EBC

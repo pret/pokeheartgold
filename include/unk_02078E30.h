@@ -30,7 +30,7 @@ typedef struct PartyMenuArgs {
     u8 filler_38[0xC];
 } PartyMenuArgs;
 
-extern const OVY_MGR_TEMPLATE gOvyTemplate_PartyMenu;
+extern const OVY_MGR_TEMPLATE gOverlayTemplate_PartyMenu;
 
 void sub_0207991C(PartyMenuStruct *unkPtr, int a1);
 u32 sub_0207CA9C(void);

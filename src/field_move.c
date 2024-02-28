@@ -247,7 +247,7 @@ static void FieldMoveMenuUse_Fly(struct FieldMoveUseData *useData, const struct 
     struct FlyTaskStruct *flyEnv = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct FlyTaskStruct));
     flyEnv->partySlot = useData->partySlot;
     env->unk_0384 = flyEnv;
-    env->atexit_TaskEnv = LaunchPokegearTownMapApp(fieldSystem, 0);
+    env->atexit_TaskEnv = PokegearTownMap_LaunchApp(fieldSystem, 0);
     sub_0203C8F0(env, Task_UseFlyInField);
 }
 

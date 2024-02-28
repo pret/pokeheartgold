@@ -62,7 +62,7 @@ static BOOL CreateStarter(TaskManager *taskManager) {
                 }
             }
         }
-        LaunchChooseStarterApp(fieldSystem, env->args);
+        ChooseStarter_LaunchApp(fieldSystem, env->args);
         sub_0203E30C();
         env->state = 2;
         break;

@@ -116,6 +116,6 @@
 .public MI_CpuFill8
 .public _s32_div_f
 .public gSystem
-.public UnownReport_OvyInit
-.public UnownReport_OvyExec
-.public UnownReport_OvyExit
+.public UnownReport_Init
+.public UnownReport_Main
+.public UnownReport_Exit

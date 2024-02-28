@@ -10,8 +10,8 @@ typedef struct PCBoxArgs {
     int unk8;
 } PCBoxArgs;
 
-BOOL PCBox_OvyInit(OVY_MANAGER *man, int *state);
-BOOL PCBox_OvyExec(OVY_MANAGER *man, int *state);
-BOOL PCBox_OvyExit(OVY_MANAGER *man, int *state);
+BOOL PCBox_Init(OVY_MANAGER *man, int *state);
+BOOL PCBox_Main(OVY_MANAGER *man, int *state);
+BOOL PCBox_Exit(OVY_MANAGER *man, int *state);
 
 #endif //POKEHEARTGOLD_OVY_14_H

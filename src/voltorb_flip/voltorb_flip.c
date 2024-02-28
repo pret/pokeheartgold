@@ -2031,7 +2031,7 @@ static void FreeOverlayData(OVY_MANAGER *man) {
     DestroyHeap(HEAP_ID_VOLTORB_FLIP);
 }
 
-BOOL VoltorbFlip_OvyInit(OVY_MANAGER *man, int *state) {
+BOOL VoltorbFlip_Init(OVY_MANAGER *man, int *state) {
     switch (*state) {
     case 0:
         ov122_021E8094(man);
@@ -2055,7 +2055,7 @@ BOOL VoltorbFlip_OvyInit(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL VoltorbFlip_OvyExit(OVY_MANAGER *man, int *state) {
+BOOL VoltorbFlip_Exit(OVY_MANAGER *man, int *state) {
     VoltorbFlipAppWork *work = OverlayManager_GetData(man);
     switch (*state) {
     case 0:
@@ -2075,7 +2075,7 @@ BOOL VoltorbFlip_OvyExit(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL VoltorbFlip_OvyExec(OVY_MANAGER *man, int *state) {
+BOOL VoltorbFlip_Main(OVY_MANAGER *man, int *state) {
     VoltorbFlipAppWork *work = OverlayManager_GetData(man);
     if (RunWorkflowEngine(work->workflow)) {
         return TRUE;

@@ -12,6 +12,6 @@
 .public sub_020881C0
 .public sub_0208820C
 .public _u32_div_f
-.public gOvyTemplate_Battle
+.public gOverlayTemplate_Battle
 .public gNatureStatMods
 .public gSystem

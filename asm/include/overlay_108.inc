@@ -230,9 +230,9 @@
 .public NNS_GfdDefaultFuncFreeTexVram
 .public NNS_GfdDefaultFuncFreePlttVram
 .public gSystem
-.public SafariAreaCustomizer_OvyInit
-.public SafariAreaCustomizer_OvyExit
-.public SafariAreaCustomizer_OvyExec
-.public SafariDecoration_OvyInit
-.public SafariDecoration_OvyExit
-.public SafariDecoration_OvyExec
+.public SafariAreaCustomizer_Init
+.public SafariAreaCustomizer_Exit
+.public SafariAreaCustomizer_Main
+.public SafariDecoration_Init
+.public SafariDecoration_Exit
+.public SafariDecoration_Main

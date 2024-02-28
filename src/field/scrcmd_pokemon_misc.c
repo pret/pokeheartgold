@@ -871,7 +871,7 @@ BOOL ScrCmd_GetTotalApricornCount(ScriptContext *ctx) {
 //Related to Kurt- canceling
 BOOL ScrCmd_739(ScriptContext *ctx) { //todo: rename structs and find out stuff
     ApricornBoxArgs **unkPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *unkPtr = LaunchApricornBoxApp(ctx->fieldSystem, 2);
+    *unkPtr = ApricornBox_LaunchApp(ctx->fieldSystem, 2);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
@@ -1221,7 +1221,7 @@ BOOL ScrCmd_CasinoGame(ScriptContext *ctx) {
     u8 city = ScriptReadByte(ctx); //1 = celadon; 0 = goldenrod
     VoltorbFlipArgs **unkPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //VoltorbFlipAppData
 
-    *unkPtr = LaunchVoltorbFlipApp(ctx->fieldSystem, SlotLuckiness(ctx->fieldSystem->saveData, machineId, city)); //this is messy, very very messy
+    *unkPtr = VoltorbFlip_LaunchApp(ctx->fieldSystem, SlotLuckiness(ctx->fieldSystem->saveData, machineId, city)); //this is messy, very very messy
 
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;

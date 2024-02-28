@@ -43,8 +43,8 @@ typedef struct UseMailArgs {
     u32 *unk1C;
 } UseMailArgs;
 
-EasyChatArgs *CreateEasyChatArgs(u8 a0, u8 a1, SaveData *saveData, u32 *a3, HeapID heapId);
-void FreeEasyChatArgs(EasyChatArgs *a0);
+EasyChatArgs *EasyChat_CreateArgs(u8 a0, u8 a1, SaveData *saveData, u32 *a3, HeapID heapId);
+void EasyChat_FreeArgs(EasyChatArgs *a0);
 void sub_02090D14(EasyChatArgs *a0, u16 a1);
 void sub_02090D18(EasyChatArgs *a0, u16 a1, u16 a2);
 void sub_02090D20(EasyChatArgs *a0, MAIL_MESSAGE *mailMessage);

@@ -118,6 +118,6 @@
 .public MIi_CpuClearFast
 .public memset
 .public gSystem
-.public TrainerCardSignature_OvyInit
-.public TrainerCardSignature_OvyExec
-.public TrainerCardSignature_OvyExit
+.public TrainerCardSignature_Init
+.public TrainerCardSignature_Main
+.public TrainerCardSignature_Exit

@@ -165,4 +165,4 @@ _02067A5C: .word Task_NPCTrade
 
 	.balign 4, 0
 _020FE79C:
-	.word TradeSequence_OvyInit, TradeSequence_OvyExec, TradeSequence_OvyExit, FS_OVERLAY_ID(OVY_71)
+	.word TradeSequence_Init, TradeSequence_Main, TradeSequence_Exit, FS_OVERLAY_ID(OVY_71)

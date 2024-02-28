@@ -74,6 +74,6 @@
 .public UseItemOnPokemon
 .public UseItemOnMonInParty
 .public ApplyMonMoodModifier
-.public gOvyTemplate_Battle
+.public gOverlayTemplate_Battle
 .public gNatureStatMods
 .public gSystem

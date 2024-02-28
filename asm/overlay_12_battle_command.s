@@ -1157,7 +1157,7 @@ _02246D4E:
 	mov r1, #1
 	add r2, r5, #0
 	mov r3, #0xa
-	bl CreateNamingScreenArgs
+	bl NamingScreen_CreateArgs
 	add r5, r0, #0
 	str r5, [r4, #0x54]
 	ldr r0, [r4]

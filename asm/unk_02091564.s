@@ -95,7 +95,7 @@ sub_020915AC: ; 0x020915AC
 
 	.public gApplication_OakSpeech
 gApplication_OakSpeech:
-	.word ov53_OakSpeech_OvyInit, ov53_OakSpeech_OvyExec, ov53_OakSpeech_OvyExit, FS_OVERLAY_ID(OVY_53)
+	.word ov53_OakSpeech_Init, ov53_OakSpeech_Main, ov53_OakSpeech_Exit, FS_OVERLAY_ID(OVY_53)
 
 _02106078:
 	.word sub_020576C0, sub_02057798, 0

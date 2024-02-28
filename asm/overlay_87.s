@@ -4,8 +4,8 @@
 
 	.text
 
-	thumb_func_start ScratchOffCards_OvyInit
-ScratchOffCards_OvyInit: ; 0x021E5900
+	thumb_func_start ScratchOffCards_Init
+ScratchOffCards_Init: ; 0x021E5900
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r7, r1, #0
@@ -85,10 +85,10 @@ _021E5980:
 	nop
 _021E59AC: .word 0x000099FC
 _021E59B0: .word 0x0000039D
-	thumb_func_end ScratchOffCards_OvyInit
+	thumb_func_end ScratchOffCards_Init
 
-	thumb_func_start ScratchOffCards_OvyExec
-ScratchOffCards_OvyExec: ; 0x021E59B4
+	thumb_func_start ScratchOffCards_Main
+ScratchOffCards_Main: ; 0x021E59B4
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	bl OverlayManager_GetData
@@ -213,10 +213,10 @@ _021E5AB2:
 	bl sub_0202457C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScratchOffCards_OvyExec
+	thumb_func_end ScratchOffCards_Main
 
-	thumb_func_start ScratchOffCards_OvyExit
-ScratchOffCards_OvyExit: ; 0x021E5AC0
+	thumb_func_start ScratchOffCards_Exit
+ScratchOffCards_Exit: ; 0x021E5AC0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -240,7 +240,7 @@ ScratchOffCards_OvyExit: ; 0x021E5AC0
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScratchOffCards_OvyExit
+	thumb_func_end ScratchOffCards_Exit
 
 	thumb_func_start ov87_021E5AFC
 ov87_021E5AFC: ; 0x021E5AFC

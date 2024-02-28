@@ -77,7 +77,7 @@
 .public FieldSystem_LaunchApplication
 .public sub_0203E2F4
 .public FieldSystem_GetSaveData
-.public LaunchTrainerCardApp
+.public TrainerCard_LaunchApp
 .public FieldSystem_CreateTask
 .public FieldSystem_TaskIsRunning
 .public FieldSystem_ApplicationIsRunning
@@ -145,7 +145,7 @@
 .public sub_02091574
 .public MI_CpuFill8
 .public MI_CpuCopy8
-.public gOvyTemplate_PartyMenu
-.public gOvyTemplate_PokemonSummary
+.public gOverlayTemplate_PartyMenu
+.public gOverlayTemplate_PokemonSummary
 .public gSystem
 .public ov01_021E636C

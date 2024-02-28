@@ -5,8 +5,8 @@
 
 typedef struct PokedexArgs PokedexArgs;
 
-BOOL Pokedex_OvyInit(OVY_MANAGER *man, int *state);
-BOOL Pokedex_OvyExec(OVY_MANAGER *man, int *state);
-BOOL Pokedex_OvyExit(OVY_MANAGER *man, int *state);
+BOOL Pokedex_Init(OVY_MANAGER *man, int *state);
+BOOL Pokedex_Main(OVY_MANAGER *man, int *state);
+BOOL Pokedex_Exit(OVY_MANAGER *man, int *state);
 
 #endif //POKEHEARTGOLD_OVY_18_H

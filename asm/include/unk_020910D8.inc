@@ -16,10 +16,10 @@
 .public sub_0206D328
 .public GetMonData
 .public SetMonData
-.public CreateNamingScreenArgs
+.public NamingScreen_CreateArgs
 .public sub_0208311C
 .public MonSetTrainerMemo
-.public Task_HatchEggInParty
+.public CallTask_HatchEggInParty
 .public sub_02093134
 .public _02102610
 .public ov95_021E6D70

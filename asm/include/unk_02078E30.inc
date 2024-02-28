@@ -215,9 +215,9 @@
 .public G3X_SetClearColor
 .public memcpy
 .public memset
-.public gOvyTemplate_Battle
+.public gOverlayTemplate_Battle
 .public gNatureStatMods
-.public gOvyTemplate_PartyMenu
+.public gOverlayTemplate_PartyMenu
 .public gSystem
 .public OS_IRQTable
 .public PartyMenu_InitIconFormChangeData

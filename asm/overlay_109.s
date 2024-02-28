@@ -4,8 +4,8 @@
 
 	.text
 
-	thumb_func_start PhotoAlbum_OvyInit
-PhotoAlbum_OvyInit: ; 0x021E5900
+	thumb_func_start PhotoAlbum_Init
+PhotoAlbum_Init: ; 0x021E5900
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	ldr r1, [r5]
@@ -53,10 +53,10 @@ _021E5954:
 _021E5964:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end PhotoAlbum_OvyInit
+	thumb_func_end PhotoAlbum_Init
 
-	thumb_func_start PhotoAlbum_OvyExec
-PhotoAlbum_OvyExec: ; 0x021E5968
+	thumb_func_start PhotoAlbum_Main
+PhotoAlbum_Main: ; 0x021E5968
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -126,10 +126,10 @@ _021E59E4:
 	bl sub_0200D020
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end PhotoAlbum_OvyExec
+	thumb_func_end PhotoAlbum_Main
 
-	thumb_func_start PhotoAlbum_OvyExit
-PhotoAlbum_OvyExit: ; 0x021E59F0
+	thumb_func_start PhotoAlbum_Exit
+PhotoAlbum_Exit: ; 0x021E59F0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -149,7 +149,7 @@ _021E5A06:
 	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end PhotoAlbum_OvyExit
+	thumb_func_end PhotoAlbum_Exit
 
 	thumb_func_start ov109_021E5A20
 ov109_021E5A20: ; 0x021E5A20

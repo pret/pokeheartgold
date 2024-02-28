@@ -35,7 +35,7 @@
 
 typedef struct {
     BOOL gameCleared;
-    HOFCongratsArgs hofCongratsArgs;
+    RegisterHallOfFameArgs hofCongratsArgs;
     CreditsArgs creditsArgs;
     BgConfig *bgConfig;
     Window window;
@@ -157,7 +157,7 @@ static BOOL Task_GameClear(TaskManager *taskman) {
     switch (*state) {
     case 0:
         if (!env->vsTrainerRed) {
-            LaunchHOFCongratsApp(fieldSystem, &env->hofCongratsArgs);
+            RegisterHallOfFame_LaunchApp(fieldSystem, &env->hofCongratsArgs);
             ++(*state);
             break;
         }
@@ -238,7 +238,7 @@ static BOOL Task_GameClear(TaskManager *taskman) {
         if (IsPaletteFadeFinished()) {
             GameClearSave_Free(fieldSystem, env);
             Sound_SetMasterVolume(127);
-            LaunchCreditsApp(fieldSystem, &env->creditsArgs);
+            Credits_LaunchApp(fieldSystem, &env->creditsArgs);
             ++(*state);
         }
         break;

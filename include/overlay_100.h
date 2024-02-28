@@ -3,8 +3,8 @@
 
 #include "overlay_manager.h"
 
-BOOL Phone_OvyInit(OVY_MANAGER *man, int *state);
-BOOL Phone_OvyExec(OVY_MANAGER *man, int *state);
-BOOL Phone_OvyExit(OVY_MANAGER *man, int *state);
+BOOL Phone_Init(OVY_MANAGER *man, int *state);
+BOOL Phone_Main(OVY_MANAGER *man, int *state);
+BOOL Phone_Exit(OVY_MANAGER *man, int *state);
 
 #endif //POKEHEARTGOLD_OVY_100_H

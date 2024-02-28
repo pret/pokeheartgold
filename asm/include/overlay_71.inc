@@ -183,6 +183,6 @@
 .public FX_SinCosTable_
 .public NNS_GfdDefaultFuncAllocTexVram
 .public NNS_GfdDefaultFuncAllocPlttVram
-.public TradeSequence_OvyInit
-.public TradeSequence_OvyExit
-.public TradeSequence_OvyExec
+.public TradeSequence_Init
+.public TradeSequence_Exit
+.public TradeSequence_Main

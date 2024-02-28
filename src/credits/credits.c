@@ -207,7 +207,7 @@ static void LoadCutsceneSpriteGfx(CutsceneWork *a0, int a1);
 static void InitCutsceneSprites(CreditsAppWork *work);
 static void FreeCutsceneSprites(CreditsAppWork *work);
 
-BOOL Credits_OvyInit(OVY_MANAGER *man, int *state) {
+BOOL Credits_Init(OVY_MANAGER *man, int *state) {
     CreditsAppWork *work;
 
     switch (*state) {
@@ -265,7 +265,7 @@ BOOL Credits_OvyInit(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL Credits_OvyExit(OVY_MANAGER *man, int *state) {
+BOOL Credits_Exit(OVY_MANAGER *man, int *state) {
     CreditsAppWork *work = OverlayManager_GetData(man);
 
     switch (*state) {
@@ -302,7 +302,7 @@ BOOL Credits_OvyExit(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL Credits_OvyExec(OVY_MANAGER *man, int *state) {
+BOOL Credits_Main(OVY_MANAGER *man, int *state) {
     CreditsAppWork *work = OverlayManager_GetData(man);
     GF_ASSERT(work->timer < 0xffffffff);
 

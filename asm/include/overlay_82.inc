@@ -156,7 +156,7 @@
 .public DC_FlushRange
 .public MI_CpuFill8
 .public memset
-.public gOvyTemplate_PokemonSummary
+.public gOverlayTemplate_PokemonSummary
 .public gSystem
 .public ov80_0222A7CC
 .public ov80_02237920

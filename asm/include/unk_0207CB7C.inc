@@ -101,6 +101,6 @@
 .public RatioToInt
 .public sub_020880B0
 .public G2x_SetBlendBrightness_
-.public gOvyTemplate_Battle
+.public gOverlayTemplate_Battle
 .public gNatureStatMods
 .public gSystem

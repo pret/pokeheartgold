@@ -98,7 +98,7 @@
 .public Party_GetMonByIndex
 .public Pokedex_IsNatDexEnabled
 .public GetItemAttr
-.public CreateNamingScreenArgs
+.public NamingScreen_CreateArgs
 .public sub_0208311C
 .public ApplyMonMoodModifier
 .public _s32_div_f

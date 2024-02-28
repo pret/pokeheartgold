@@ -8,7 +8,7 @@
 	.include "unk_02078834.inc"
 	.include "global.inc"
 
-	.public gOvyTemplate_Battle
+	.public gOverlayTemplate_Battle
 	.public gNatureStatMods
 
 	.text
@@ -229,7 +229,7 @@ _020789B2:
 	b _02078B20
 _020789B8:
 	add r0, r6, #0
-	bl Task_WirelessTrade
+	bl CallTask_WirelessTrade
 	ldr r0, [r4, #4]
 	add r0, r0, #1
 	str r0, [r4, #4]

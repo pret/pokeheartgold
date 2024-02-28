@@ -15,8 +15,8 @@ typedef struct LegendaryCinematicArgs {
     u16 unk4E;
 } LegendaryCinematicArgs;
 
-BOOL LegendaryCinematic_OvyInit(OVY_MANAGER *man, int *state);
-BOOL LegendaryCinematic_OvyExec(OVY_MANAGER *man, int *state);
-BOOL LegendaryCinematic_OvyExit(OVY_MANAGER *man, int *state);
+BOOL LegendaryCinematic_Init(OVY_MANAGER *man, int *state);
+BOOL LegendaryCinematic_Main(OVY_MANAGER *man, int *state);
+BOOL LegendaryCinematic_Exit(OVY_MANAGER *man, int *state);
 
 #endif //POKEHEARTGOLD_UNK_02097B78_H
