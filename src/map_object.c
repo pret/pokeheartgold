@@ -6,6 +6,8 @@
 #include "sys_task_api.h"
 #include "unk_0205FD20.h"
 
+static MapObjectManager *MapObjectManager_New(u32 objectCount);
+
 static void sub_0205E934(LocalMapObject* object);
 static void sub_0205E954(LocalMapObject* object);
 static void sub_0205ED18(LocalMapObject* object);
@@ -52,17 +54,15 @@ void sub_0205E104(MapObjectManager *manager, u32 unused, u32 a2, u32 objectCount
     ov01_021F9FB0(manager, sub_0205F1A0(manager));
 }
 
-MapObjectManager* MapObjectManager_New(u32 object_count) {
-    LocalMapObject* objects;
-    MapObjectManager* manager;
-
-    manager = AllocFromHeap((HeapID)11, sizeof(MapObjectManager));
+static MapObjectManager *MapObjectManager_New(u32 objectCount) {
+    LocalMapObject *objects;
+    MapObjectManager *manager = AllocFromHeap(HEAP_ID_FIELD, sizeof(MapObjectManager));
     GF_ASSERT(manager != NULL);
     memset(manager, 0, sizeof(MapObjectManager));
 
-    objects = AllocFromHeap((HeapID)11, object_count * sizeof(LocalMapObject));
+    objects = AllocFromHeap(HEAP_ID_FIELD, objectCount * sizeof(LocalMapObject));
     GF_ASSERT(objects != NULL);
-    memset(objects, 0, object_count * sizeof(LocalMapObject));
+    memset(objects, 0, objectCount * sizeof(LocalMapObject));
 
     MapObjectManager_SetObjects(manager, objects);
 

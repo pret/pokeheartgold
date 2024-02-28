@@ -157,7 +157,6 @@ struct MapObjectInitArgs;
 MapObjectManager *MapObjectManager_Init(FieldSystem *fieldSystem, u32 objectCount, HeapID heapId);
 void MapObjectManager_Delete(MapObjectManager *manager);
 void sub_0205E104(MapObjectManager *manager, u32 unused, u32 a2, u32 objectCount, ObjectEvent* objectEvents);
-MapObjectManager* MapObjectManager_New(u32 count);
 LocalMapObject* sub_0205E1D0(MapObjectManager* manager, ObjectEvent* object_events, u32 map_no);
 LocalMapObject *CreateSpecialFieldObject(MapObjectManager *objectMan, u32 x, u32 z, u32 direction, u32 sprite, u32 movement, u32 mapNo);
 LocalMapObject *CreateSpecialFieldObjectEx(MapObjectManager *mapObjectManager, u32 x, u32 y, u32 direction, u32 a4, u32 a5, u32 mapNo, u32 a7, u32 a8, u32 spriteId);
