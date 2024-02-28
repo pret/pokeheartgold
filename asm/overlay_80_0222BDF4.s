@@ -3075,7 +3075,7 @@ _0222D440:
 	mov r2, #2
 	ldr r0, [r0, #4]
 	add r3, r1, #0
-	bl sub_02003D5C
+	bl PaletteData_FillPaletteInBuffer
 	ldr r0, [r4, #0x28]
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -3209,7 +3209,7 @@ _0222D55C:
 	mov r2, #2
 	ldr r0, [r0, #4]
 	add r3, r1, #0
-	bl sub_02003D5C
+	bl PaletteData_FillPaletteInBuffer
 	ldr r0, [r4, #0x28]
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -4144,7 +4144,7 @@ ov80_0222DC70: ; 0x0222DC70
 	mov r2, #2
 	ldr r0, [r0, #4]
 	add r3, r1, #0
-	bl sub_02003D5C
+	bl PaletteData_FillPaletteInBuffer
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -6865,7 +6865,7 @@ _0222F0DA:
 	ldr r0, [sp, #0x2c]
 	lsr r2, r2, #0x10
 	mov r3, #0x10
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 _0222F1AE:
 	ldr r0, [sp, #0x28]
 	bl FreeToHeap

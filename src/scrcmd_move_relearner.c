@@ -1,7 +1,7 @@
 #include "scrcmd.h"
-#include "field_blackthorn_tutors.h"
-#include "field/launch_application.h"
+#include "move_relearner.h"
 #include "unk_02088288.h"
+#include "field/launch_application.h"
 
 BOOL ScrNative_WaitApplication(ScriptContext *ctx);
 
@@ -34,8 +34,8 @@ BOOL ScrCmd_466(ScriptContext *ctx) {
     u16 slot = ScriptGetVar(ctx);
     Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
     Pokemon *mon = Party_GetMonByIndex(party, slot);
-    u16 *eligibleMoves = GetEligibleLevelUpMoves(mon, HEAP_ID_32);
-    *retPtr = sub_0209186C(eligibleMoves);
+    u16 *eligibleMoves = MoveRelearner_GetEligibleLevelUpMoves(mon, HEAP_ID_32);
+    *retPtr = MoveRelearner_IsValidMove(eligibleMoves);
     FreeToHeap(eligibleMoves);
     return FALSE;
 }
@@ -59,8 +59,8 @@ static void StartMoveRelearner(ScriptContext *ctx, int type, Pokemon *mon, u16 *
 BOOL ScrCmd_MoveRelearner(ScriptContext *ctx) {
     u16 slot = ScriptGetVar(ctx);
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), slot);
-    u16 *eligibleMoves = GetEligibleLevelUpMoves(mon, HEAP_ID_32);
-    StartMoveRelearner(ctx, MOVE_RELEARNER_RELEARN, mon, eligibleMoves);
+    u16 *eligibleMoves = MoveRelearner_GetEligibleLevelUpMoves(mon, HEAP_ID_32);
+    StartMoveRelearner(ctx, 1, mon, eligibleMoves);
     return TRUE;
 }
 

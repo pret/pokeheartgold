@@ -992,7 +992,7 @@ _0205D2FC:
 	add r0, r4, #0
 	bl MapObject_GetFieldSysPtr
 	add r5, r0, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _0205D33C
 	add r0, r4, #0

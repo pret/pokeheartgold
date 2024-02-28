@@ -47,7 +47,7 @@ u8 sub_02070438(u16 species, u8 form);
 u8 sub_02070854(BoxPokemon *boxMon, u8 whichFacing, BOOL a2);
 u8 sub_02070A64(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);
 u8 sub_020708D8(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);
-void sub_02070D3C(s32 trainer_class, s32 a1, s32 a2, struct UnkStruct_02070D3C *a3);
+void sub_02070D3C(s32 trainer_class, s32 a1, BOOL a2, struct UnkStruct_02070D3C *a3);
 int TrainerClassToBackpicID(int trainer_class, int a1);
 void LoadMonEvolutionTable(u16 species, struct Evolution *evoTable);
 BOOL MonHasMove(Pokemon *mon, u16 move_id);
@@ -2693,40 +2693,40 @@ static const int _020FF50C[] = {
     0, 1, 1, 2, 0, 3
 };
 
-struct UnkImageStruct *sub_02070C24(SpriteRenderer *r6, SpriteGfxHandler *sp18, void *sp1C, int sp20, int sp88, int trainerClass, int sp90, int sp94, int r5, HeapID heapId) {
-    struct UnkTemplate_0200D748 sp3C;
-    struct UnkImageStruct *ret_r4;
-    NARC *narc_r4;
-    struct UnkStruct_02070D3C sp24;
-    int r7;
+struct UnkImageStruct *sub_02070C24(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, PaletteData *plttData, int x, int y, int trainerClass, int battlerPosition, BOOL isLink, int resTag, HeapID heapId) {
+    struct UnkTemplate_0200D748 spriteResourcesTemplate;
+    struct UnkImageStruct *object;
+    NARC *narc;
+    struct UnkStruct_02070D3C fileIDs;
+    int plttNum;
 
-    r7 = 1;
-    sub_02070D3C(trainerClass, sp90, sp94, &sp24);
+    plttNum = 1;
+    sub_02070D3C(trainerClass, battlerPosition, isLink, &fileIDs);
     if (trainerClass == TRAINERCLASS_CASTLE_VALET) {
-        r7 = 2;
+        plttNum = 2;
     }
-    narc_r4 = NARC_New(sp24.narcId, heapId);
-    SpriteRenderer_LoadCharResObjFromOpenNarc(r6, sp18, narc_r4, sp24.ncgr_id, FALSE, 1, r5 + 0x4E2F);
-    sub_0200D68C(sp1C, 2, r6, sp18, narc_r4, sp24.nclr_id, FALSE, r7, 1, r5 + 0x4E2A);
-    SpriteRenderer_LoadCellResObjFromOpenNarc(r6, sp18, narc_r4, sp24.ncer_id, FALSE, r5 + 0x4E27);
-    SpriteRenderer_LoadAnimResObjFromOpenNarc(r6, sp18, narc_r4, sp24.nanr_id, FALSE, r5 + 0x4E27);
-    NARC_Delete(narc_r4);
-    sp3C = _020FF588;
-    sp3C.resIdList[GF_GFX_RES_TYPE_CHAR] = r5 + 0x4E2F;
-    sp3C.resIdList[GF_GFX_RES_TYPE_PLTT] = r5 + 0x4E2A;
-    sp3C.resIdList[GF_GFX_RES_TYPE_CELL] = r5 + 0x4E27;
-    sp3C.resIdList[GF_GFX_RES_TYPE_ANIM] = r5 + 0x4E27;
-    sp3C.spritePriority = _020FF50C[r5];
-    ret_r4 = SpriteRenderer_LoadResourcesAndCreateSprite(r6, sp18, &sp3C);
-    sub_02024AA8(ret_r4->sprite, 0);
-    UnkImageStruct_SetSpritePositionXY(ret_r4, sp20, sp88);
-    UnkImageStruct_TickSpriteAnimation1Frame(ret_r4);
-    UnkImageStruct_SetSpriteAnimActiveFlag(ret_r4, 1);
-    return ret_r4;
+    narc = NARC_New(fileIDs.narcId, heapId);
+    SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, fileIDs.ncgr_id, FALSE, 1, resTag + 0x4E2F);
+    sub_0200D68C(plttData, PLTTBUF_MAIN_OBJ, renderer, gfxHandler, narc, fileIDs.nclr_id, FALSE, plttNum, 1, resTag + 0x4E2A);
+    SpriteRenderer_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, fileIDs.ncer_id, FALSE, resTag + 0x4E27);
+    SpriteRenderer_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc, fileIDs.nanr_id, FALSE, resTag + 0x4E27);
+    NARC_Delete(narc);
+    spriteResourcesTemplate = _020FF588;
+    spriteResourcesTemplate.resIdList[GF_GFX_RES_TYPE_CHAR] = resTag + 0x4E2F;
+    spriteResourcesTemplate.resIdList[GF_GFX_RES_TYPE_PLTT] = resTag + 0x4E2A;
+    spriteResourcesTemplate.resIdList[GF_GFX_RES_TYPE_CELL] = resTag + 0x4E27;
+    spriteResourcesTemplate.resIdList[GF_GFX_RES_TYPE_ANIM] = resTag + 0x4E27;
+    spriteResourcesTemplate.spritePriority = _020FF50C[resTag];
+    object = SpriteRenderer_LoadResourcesAndCreateSprite(renderer, gfxHandler, &spriteResourcesTemplate);
+    sub_02024AA8(object->sprite, 0);
+    UnkImageStruct_SetSpritePositionXY(object, x, y);
+    UnkImageStruct_TickSpriteAnimation1Frame(object);
+    UnkImageStruct_SetSpriteAnimActiveFlag(object, 1);
+    return object;
 }
 
-void sub_02070D3C(s32 trainer_class, s32 a1, s32 a2, struct UnkStruct_02070D3C *a3) {
-    if (a1 == 2) {
+void sub_02070D3C(s32 trainer_class, s32 battlerPosition, BOOL isLink, struct UnkStruct_02070D3C *a3) {
+    if (battlerPosition == 2) {
         a3->narcId = NARC_a_0_5_8;
         a3->ncgr_id = trainer_class * 5 + 0;
         a3->nclr_id = trainer_class * 5 + 1;
@@ -2735,7 +2735,7 @@ void sub_02070D3C(s32 trainer_class, s32 a1, s32 a2, struct UnkStruct_02070D3C *
         a3->ncbr_id = trainer_class * 5 + 4;
     } else {
         a3->narcId = NARC_a_0_0_6;
-        trainer_class = TrainerClassToBackpicID(trainer_class, a2);
+        trainer_class = TrainerClassToBackpicID(trainer_class, isLink);
         a3->ncgr_id = trainer_class * 5 + 0;
         a3->nclr_id = trainer_class * 5 + 1;
         a3->ncer_id = trainer_class * 5 + 2;
@@ -2744,8 +2744,8 @@ void sub_02070D3C(s32 trainer_class, s32 a1, s32 a2, struct UnkStruct_02070D3C *
     }
 }
 
-void sub_02070D84(s32 trainer_class, s32 a1, struct UnkStruct_02070D3C *a2) {
-    sub_02070D3C(trainer_class, a1, 0, a2);
+void sub_02070D84(s32 trainer_class, s32 battlerSide, struct UnkStruct_02070D3C *a2) {
+    sub_02070D3C(trainer_class, battlerSide, FALSE, a2);
 }
 
 u32 sub_02070D90(void) {
@@ -3042,26 +3042,26 @@ u16 GetEggSpecies(u16 species) {
 
 void InitBoxMonMoveset(BoxPokemon *boxMon) {
     BOOL decry;
-    u16 * wotbl;
+    u16 *levelUpLearnset;
     int i;
     u16 species;
     u32 form;
     u8 level;
     u16 move;
-    wotbl = AllocFromHeap(HEAP_ID_DEFAULT, 22 * sizeof(u16));
+    levelUpLearnset = AllocFromHeap(HEAP_ID_DEFAULT, MAX_LEARNED_MOVES * sizeof(u16));
     decry = AcquireBoxMonLock(boxMon);
     species = (u16)GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
     form = GetBoxMonData(boxMon, MON_DATA_FORM, NULL);
     level = (u8)CalcBoxMonLevel(boxMon);
-    LoadWotbl_HandleAlternateForm(species, (int)form, wotbl);
-    for (i = 0; wotbl[i] != WOTBL_END; i++) {
-        if ((wotbl[i] & WOTBL_LEVEL_MASK) > (level << WOTBL_LEVEL_SHIFT))
+    LoadLevelUpLearnset_HandleAlternateForm(species, (int)form, levelUpLearnset);
+    for (i = 0; levelUpLearnset[i] != LEVEL_UP_LEARNSET_END; i++) {
+        if ((levelUpLearnset[i] & LEVEL_UP_LEARNSET_LEVEL_MASK) > (level << LEVEL_UP_LEARNSET_LEVEL_SHIFT))
             break;
-        move = WOTBL_MOVE(wotbl[i]);
+        move = LEVEL_UP_LEARNSET_MOVE(levelUpLearnset[i]);
         if (TryAppendBoxMonMove(boxMon, move) == MOVE_APPEND_FULL)
             DeleteBoxMonFirstMoveAndAppend(boxMon, move);
     }
-    FreeToHeap(wotbl);
+    FreeToHeap(levelUpLearnset);
     ReleaseBoxMonLock(boxMon, decry);
 }
 
@@ -3147,29 +3147,29 @@ void BoxMonSetMoveInSlot(BoxPokemon *boxMon, u16 move, u8 slot) {
 
 u32 MonTryLearnMoveOnLevelUp(Pokemon *mon, int * last_i, u16 * sp0) {
     u32 ret = 0;
-    u16 * wotbl = AllocFromHeap(HEAP_ID_DEFAULT, 22 * sizeof(u16));
+    u16 *levelUpLearnset = AllocFromHeap(HEAP_ID_DEFAULT, MAX_LEARNED_MOVES * sizeof(u16));
     u16 species = (u16)GetMonData(mon, MON_DATA_SPECIES, NULL);
     u32 form = GetMonData(mon, MON_DATA_FORM, NULL);
     u8 level = (u8)GetMonData(mon, MON_DATA_LEVEL, NULL);
-    LoadWotbl_HandleAlternateForm(species, (int)form, wotbl);
+    LoadLevelUpLearnset_HandleAlternateForm(species, (int)form, levelUpLearnset);
 
-    if (wotbl[*last_i] == WOTBL_END) {
-        FreeToHeap(wotbl);
+    if (levelUpLearnset[*last_i] == LEVEL_UP_LEARNSET_END) {
+        FreeToHeap(levelUpLearnset);
         return 0;
     }
-    while ((wotbl[*last_i] & WOTBL_LEVEL_MASK) != (level << WOTBL_LEVEL_SHIFT)) {
+    while ((levelUpLearnset[*last_i] & LEVEL_UP_LEARNSET_LEVEL_MASK) != (level << LEVEL_UP_LEARNSET_LEVEL_SHIFT)) {
         (*last_i)++;
-        if (wotbl[*last_i] == WOTBL_END) {
-            FreeToHeap(wotbl);
+        if (levelUpLearnset[*last_i] == LEVEL_UP_LEARNSET_END) {
+            FreeToHeap(levelUpLearnset);
             return 0;
         }
     }
-    if ((wotbl[*last_i] & WOTBL_LEVEL_MASK) == (level << WOTBL_LEVEL_SHIFT)) {
-        *sp0 = WOTBL_MOVE(wotbl[*last_i]);
+    if ((levelUpLearnset[*last_i] & LEVEL_UP_LEARNSET_LEVEL_MASK) == (level << LEVEL_UP_LEARNSET_LEVEL_SHIFT)) {
+        *sp0 = LEVEL_UP_LEARNSET_MOVE(levelUpLearnset[*last_i]);
         (*last_i)++;
         ret = TryAppendMonMove(mon, *sp0);
     }
-    FreeToHeap(wotbl);
+    FreeToHeap(levelUpLearnset);
     return ret;
 }
 
@@ -3304,12 +3304,12 @@ s8 GetFlavorPreferenceFromPID(u32 personality, int flavor) {
 
 int Species_LoadLearnsetTable(u32 species, u32 form, u16 * dest) {
     int i;
-    u16 * wotbl = AllocFromHeap(HEAP_ID_DEFAULT, 22 * sizeof(u16));
-    LoadWotbl_HandleAlternateForm(species, (int)form, wotbl);
-    for (i = 0; wotbl[i] != WOTBL_END; i++) {
-        dest[i] = WOTBL_MOVE(wotbl[i]);
+    u16 *levelUpLearnset = AllocFromHeap(HEAP_ID_DEFAULT, MAX_LEARNED_MOVES * sizeof(u16));
+    LoadLevelUpLearnset_HandleAlternateForm(species, (int)form, levelUpLearnset);
+    for (i = 0; levelUpLearnset[i] != LEVEL_UP_LEARNSET_END; i++) {
+        dest[i] = LEVEL_UP_LEARNSET_MOVE(levelUpLearnset[i]);
     }
-    FreeToHeap(wotbl);
+    FreeToHeap(levelUpLearnset);
     return i;
 }
 
@@ -3670,8 +3670,8 @@ BOOL Mon_UpdateRotomForm(Pokemon *mon, int form, int defaultSlot) {
     return TRUE;
 }
 
-void LoadWotbl_HandleAlternateForm(int species, int form, u16 * wotbl) {
-    ReadWholeNarcMemberByIdPair(wotbl, NARC_poketool_personal_wotbl, ResolveMonForm(species, form));
+void LoadLevelUpLearnset_HandleAlternateForm(int species, int form, u16 *levelUpLearnset) {
+    ReadWholeNarcMemberByIdPair(levelUpLearnset, NARC_poketool_personal_wotbl, ResolveMonForm(species, form));
 }
 
 void sub_02071FDC(SOUND_CHATOT *r6, u32 r5, u16 r4, s32 unused, s32 sp18, u32 sp1C, u32 sp20, u32 sp24) {
@@ -4133,11 +4133,11 @@ BOOL BoxmonBelongsToPlayer(BoxPokemon *boxMon, PlayerProfile * profile, HeapID h
     return ret;
 }
 
-int TrainerClassToBackpicID(int trainerClass, int a1) {
+int TrainerClassToBackpicID(int trainerClass, BOOL isLink) {
     switch (trainerClass) {
     case TRAINERCLASS_PKMN_TRAINER_ETHAN:
     case TRAINERCLASS_PKMN_TRAINER_LYRA:
-        if (a1) {
+        if (isLink) {
             return trainerClass - TRAINERCLASS_PKMN_TRAINER_ETHAN + TRAINER_BACKPIC_ETHAN_2;
         } else {
             return trainerClass - TRAINERCLASS_PKMN_TRAINER_ETHAN + TRAINER_BACKPIC_ETHAN;

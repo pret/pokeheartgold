@@ -4,9 +4,9 @@
 .public PaletteData_Free
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
-.public sub_02003220
-.public sub_0200398C
-.public sub_02003E5C
+.public PaletteData_LoadFromOpenNarc
+.public PaletteData_PushTransparentBuffers
+.public PaletteData_BlendPalette
 .public sub_02004B10
 .public sub_02004EC4
 .public PlaySE

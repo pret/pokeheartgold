@@ -2362,7 +2362,7 @@ ov87_021E6C04: ; 0x021E6C04
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E6C1C
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 _021E6C1C:
 	ldr r0, [r4, #0x58]
 	bl DoScheduledBgGpuUpdates

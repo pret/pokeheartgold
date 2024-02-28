@@ -985,7 +985,7 @@ _02233E50:
 	add r3, r1, #0
 	ldr r0, [r0, #4]
 	add r3, #0xfe
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	b _02233F12
 _02233E68:
 	ldr r0, [r7]
@@ -1004,7 +1004,7 @@ _02233E68:
 	ldr r0, [r0, #4]
 	lsr r2, r2, #0x10
 	mov r3, #0x10
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	b _02233F12
 _02233E92:
 	add r0, r4, #0

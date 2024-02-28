@@ -75,11 +75,11 @@ BOOL Field_AppExec(OVY_MANAGER *man, int *unused) {
     return FALSE;
 }
 
-extern OVY_MGR_TEMPLATE ov60_021EAFE0;
+extern OVY_MGR_TEMPLATE gApplication_TitleScreen;
 
 BOOL Field_AppExit(OVY_MANAGER *man, int *unused) {
     FieldSystem_Delete(man);
-    RegisterMainOverlay(FS_OVERLAY_ID(OVY_60), &ov60_021EAFE0);
+    RegisterMainOverlay(FS_OVERLAY_ID(OVY_60), &gApplication_TitleScreen);
     return TRUE;
 }
 

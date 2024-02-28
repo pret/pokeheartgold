@@ -30,7 +30,7 @@
 #include "unk_0200FA24.h"
 #include "unk_02005D10.h"
 #include "unk_0202CA24.h"
-#include "field_follow_poke.h"
+#include "follow_mon.h"
 #include "get_egg.h"
 #include "map_section.h"
 #include "map_header.h"
@@ -975,8 +975,8 @@ static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectManager, u8 unkA
     u32 spriteId;
     u32  size;
 
-    spriteId = FollowingPokemon_GetSpriteID(species, form, gender) << 1;
-    size = GetFollowPokeSizeParamBySpecies(species)*3 + unkA;
+    spriteId = FollowMon_GetSpriteID(species, form, gender) << 1;
+    size = FollowMon_GetSizeParamBySpecies(species)*3 + unkA;
 
     mapObj = CreateSpecialFieldObjectEx(mapObjectManager, x, y, DIR_SOUTH, size + 0x19f, 0, mapId, 0, 0, spriteId);
 

@@ -590,13 +590,13 @@ ov81_0223E234: ; 0x0223E234
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	beq _0223E260
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0200374C
+	bl PaletteData_ScheduleFadeTaskEndIfNoSelectedBuffers
 	ldr r0, _0223E308 ; =0x00000478
 	mov r1, #0xff
 	str r1, [r4, r0]
@@ -2065,13 +2065,13 @@ _0223EE64:
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	beq _0223EE8C
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0200374C
+	bl PaletteData_ScheduleFadeTaskEndIfNoSelectedBuffers
 	ldr r0, _0223EF54 ; =0x00000478
 	mov r1, #0xff
 	str r1, [r4, r0]
@@ -2935,13 +2935,13 @@ _0223F598:
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	beq _0223F5C0
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0200374C
+	bl PaletteData_ScheduleFadeTaskEndIfNoSelectedBuffers
 	ldr r0, _0223F67C ; =0x00000478
 	mov r1, #0xff
 	str r1, [r4, r0]
@@ -4436,7 +4436,7 @@ ov81_022401C8: ; 0x022401C8
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _022401EA
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 _022401EA:
 	ldr r0, [r4, #0x4c]
 	bl DoScheduledBgGpuUpdates
@@ -8942,7 +8942,7 @@ ov81_02242500: ; 0x02242500
 	mov r1, #2
 	mov r2, #0
 	lsl r3, r1, #8
-	bl sub_020032A4
+	bl PaletteData_LoadPaletteSlotFromHardware
 	pop {r3, pc}
 	thumb_func_end ov81_02242500
 
@@ -8960,7 +8960,7 @@ ov81_02242514: ; 0x02242514
 	ldr r1, [r4, r1]
 	cmp r1, #0xff
 	beq _02242580
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _02242580
 	ldr r0, _02242584 ; =0x00000478
@@ -8979,7 +8979,7 @@ ov81_02242514: ; 0x02242514
 	ldr r0, [r4, r0]
 	mov r2, #8
 	mov r3, #2
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	b _02242576
 _0224255A:
 	mov r0, #0x10
@@ -8994,7 +8994,7 @@ _0224255A:
 	ldr r0, [r4, r0]
 	mov r2, #8
 	mov r3, #2
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 _02242576:
 	ldr r1, _02242584 ; =0x00000478
 	mov r0, #1

@@ -2235,7 +2235,7 @@ _022598D0:
 	add r1, r4, #4
 	mov r2, #1
 	lsr r3, r3, #0x18
-	bl sub_02003DE8
+	bl BlendPalette
 	add r0, r4, #4
 	mov r1, #2
 	bl DC_FlushRange

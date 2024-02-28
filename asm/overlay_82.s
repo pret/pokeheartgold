@@ -1806,7 +1806,7 @@ ov82_0223EC0C: ; 0x0223EC0C
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0223EC24
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 _0223EC24:
 	ldr r0, [r4, #0x48]
 	bl DoScheduledBgGpuUpdates

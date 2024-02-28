@@ -3788,7 +3788,7 @@
       "args": []
     },
     {
-      "name": "follow_poke_face_player",
+      "name": "follow_mon_face_player",
       "args": []
     },
     {
@@ -4498,7 +4498,7 @@
       "args": []
     },
     {
-      "name": "follow_poke_interact",
+      "name": "follow_mon_interact",
       "args": []
     },
     {
@@ -4911,7 +4911,7 @@
       "args": []
     },
     {
-      "name": "set_follow_poke_inhibit_state",
+      "name": "set_follow_mon_inhibit_state",
       "args": [
         1
       ]

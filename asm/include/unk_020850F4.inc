@@ -4,8 +4,8 @@
 .public PaletteData_Free
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
-.public sub_0200398C
-.public sub_02003B50
+.public PaletteData_PushTransparentBuffers
+.public PaletteData_SetAutoTransparent
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
 .public OverlayManager_FreeData

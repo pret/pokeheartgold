@@ -19819,7 +19819,7 @@ _021EEDB6:
 _021EEDB8:
 	add r0, r5, r0
 	mov r1, #0x20
-	bl sub_02003F04
+	bl TintPalette_GrayScale
 _021EEDC0:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -22667,7 +22667,7 @@ _021F04C6:
 	mov r1, #0x10
 	add r0, r5, r0
 	add r0, #0x68
-	bl sub_02003F04
+	bl TintPalette_GrayScale
 	ldr r0, [sp, #0x28]
 	add r4, r4, #1
 	add r0, #0x10
@@ -101791,7 +101791,7 @@ _022175A0:
 	bl MI_CpuCopy8
 	add r0, r5, #0
 	mov r1, #0x10
-	bl sub_02003F04
+	bl TintPalette_GrayScale
 	add r7, r7, #1
 	add r6, r6, #1
 	add r4, #0x40

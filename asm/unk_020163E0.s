@@ -40,13 +40,13 @@ _02016414:
 _02016424:
 	cmp r6, #0
 	bne _02016434
-	bl sub_02026E84
+	bl GetMainBgPlttAddr
 	str r0, [sp]
 	ldr r0, _02016494 ; =sub_020165A4
 	str r0, [r4, #4]
 	b _0201643E
 _02016434:
-	bl sub_02026E94
+	bl GetSubBgPlttAddr
 	str r0, [sp]
 	ldr r0, _02016498 ; =sub_020165BC
 	str r0, [r4, #4]

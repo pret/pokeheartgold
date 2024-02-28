@@ -7,8 +7,8 @@
 #include "pokemon.h"
 
 extern void ov01_021F9048(LocalMapObject* map_object);
-extern void FollowPokeMapObjectSetParams(LocalMapObject *mapObject, u16 species, u8 form, BOOL shiny);
-extern u32 FollowingPokemon_GetSpriteID(int species, u16 form, u32 gender);
+extern void FollowMon_SetObjectParams(LocalMapObject *mapObject, u16 species, u8 form, BOOL shiny);
+extern u32 FollowMon_GetSpriteID(int species, u16 form, u32 gender);
 
 static LocalMapObject* CreateDaycareMonSpriteInternal(MapObjectManager* object_man, u8 dc_mon_idx, u16 species, u8 form, u32 gender, u32 direction, u32 x, u32 y, u32 map_no, BOOL shiny);
 
@@ -179,7 +179,7 @@ BOOL ScrCmd_UpdateDaycareMonObjects(ScriptContext* ctx) {
 }
 
 static LocalMapObject* CreateDaycareMonSpriteInternal(MapObjectManager* object_man, u8 dc_mon_idx, u16 species, u8 form, u32 gender, u32 direction, u32 x, u32 y, u32 map_no, BOOL shiny) {
-    u32 sprite_id = FollowingPokemon_GetSpriteID(species, form, gender);
+    u32 sprite_id = FollowMon_GetSpriteID(species, form, gender);
     LocalMapObject* lmo = CreateSpecialFieldObject(object_man, x, y, direction, sprite_id, 11, map_no);
     GF_ASSERT(lmo != NULL);
 
@@ -188,7 +188,7 @@ static LocalMapObject* CreateDaycareMonSpriteInternal(MapObjectManager* object_m
     MapObject_SetFlagID(lmo, 0);
     MapObject_SetScript(lmo, 0);
     MapObject_SetParam(lmo, 0, 2);
-    FollowPokeMapObjectSetParams(lmo, species, (u32)form, shiny);
+    FollowMon_SetObjectParams(lmo, species, (u32)form, shiny);
     MapObject_SetXRange(lmo, -1);
     MapObject_SetYRange(lmo, -1);
     MapObject_SetFlagsBits(lmo, MAPOBJECTFLAG_UNK2);

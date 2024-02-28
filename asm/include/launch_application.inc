@@ -248,8 +248,8 @@
 .public TrainerCardSignature_OvyExec
 .public TrainerCardSignature_OvyExit
 .public OptionsMenu_OvyInit
-.public OptionsMenu_OvyExit
 .public OptionsMenu_OvyExec
+.public OptionsMenu_OvyExit
 .public ov55_UnkApp_Init
 .public ov55_UnkApp_Main
 .public ov55_UnkApp_Exit

@@ -60,7 +60,7 @@ FS_EXTERN_OVERLAY(OVY_37);
 FS_EXTERN_OVERLAY(OVY_39);
 FS_EXTERN_OVERLAY(OVY_41);
 FS_EXTERN_OVERLAY(OVY_43);
-FS_EXTERN_OVERLAY(OVY_54);
+FS_EXTERN_OVERLAY(options_app);
 FS_EXTERN_OVERLAY(OVY_55);
 FS_EXTERN_OVERLAY(OVY_58);
 FS_EXTERN_OVERLAY(OVY_61);
@@ -146,7 +146,7 @@ const OVY_MGR_TEMPLATE sOvyTemplate_NintendoWifiConnect =
 const OVY_MGR_TEMPLATE sOvyTemplate_PokeathlonCourseRecord =
     { PokeathlonCourseRecord_OvyInit, PokeathlonCourseRecord_OvyExec, PokeathlonCourseRecord_OvyExit, FS_OVERLAY_ID(OVY_99) };
 const OVY_MGR_TEMPLATE sOvyTemplate_OptionsMenu =
-    { OptionsMenu_OvyInit, OptionsMenu_OvyExec, OptionsMenu_OvyExit, FS_OVERLAY_ID(OVY_54) };
+    { OptionsMenu_OvyInit, OptionsMenu_OvyExec, OptionsMenu_OvyExit, FS_OVERLAY_ID(options_app) };
 const OVY_MGR_TEMPLATE sOvyTemplate_BugContestSwapMon =
     { BugContestSwapMon_OvyInit, BugContestSwapMon_OvyExec, BugContestSwapMon_OvyExit, FS_OVERLAY_ID(OVY_111) };
 const OVY_MGR_TEMPLATE sOvyTemplate_ApricornBox =

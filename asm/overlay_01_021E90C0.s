@@ -243,7 +243,7 @@ _021E926A:
 	add r5, r0, #0
 	bl MapObject_SetHeldMovement
 	add r0, r6, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _021E92A8
 	add r0, r6, #0
@@ -274,11 +274,11 @@ _021E92B0:
 	cmp r0, #1
 	bne _021E934C
 	add r0, r6, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _021E92EE
 	add r0, r6, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	add r7, r0, #0
 	bl MapObject_IsMovementPaused
 	cmp r0, #1
@@ -1196,7 +1196,7 @@ _021E9A00:
 	add r1, r5, #0
 	bl MapObject_SetHeldMovement
 	add r0, r6, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _021E9A34
 	add r0, r7, #0

@@ -9,7 +9,7 @@
 .public PaletteData_Free
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
-.public sub_0200398C
+.public PaletteData_PushTransparentBuffers
 .public sub_02004EC4
 .public PlaySE
 .public StopSE

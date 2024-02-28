@@ -109,7 +109,7 @@ _021E59C6:
 	bl ov14_021E5A14
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x18]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x14]
 	bl DoScheduledBgGpuUpdates
@@ -11585,7 +11585,7 @@ ov14_021EB18C: ; 0x021EB18C
 	add r4, r0, #0
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x18]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _021EB1A0
 	ldr r0, [r4, #0x30]
@@ -16490,7 +16490,7 @@ ov14_021ED9AC: ; 0x021ED9AC
 	ldr r0, [r0, #0x18]
 	add r2, r1, #0
 	lsl r3, r3, #8
-	bl sub_020032A4
+	bl PaletteData_LoadPaletteSlotFromHardware
 	mov r3, #0
 	mov r2, #3
 	str r3, [sp]
@@ -16502,7 +16502,7 @@ ov14_021ED9AC: ; 0x021ED9AC
 	ldr r0, [r4, #0x34]
 	lsl r2, r2, #0xe
 	ldr r0, [r0, #0x18]
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x46
 	str r0, [r4, #0x30]
 	mov r0, #3
@@ -16528,7 +16528,7 @@ ov14_021ED9EC: ; 0x021ED9EC
 	ldr r0, [r0, #0x18]
 	mov r1, #1
 	lsl r2, r2, #0xe
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x42
 	str r0, [r4, #0x30]
 	mov r0, #3

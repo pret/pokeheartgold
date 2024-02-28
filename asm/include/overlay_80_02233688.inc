@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_02003E5C
+.public PaletteData_BlendPalette
 .public BufferPlayersName
 .public BufferFrontierOpponentName
 .public sub_02015494

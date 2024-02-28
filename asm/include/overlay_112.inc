@@ -348,5 +348,5 @@
 .public _s32_div_f
 .public _u32_div_f
 .public gSystem
-.public ov60_021EAFE0
+.public gApplication_TitleScreen
 .public ov112_App_MainMenu_SelectOption_ConnectToPokewalker

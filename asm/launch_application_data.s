@@ -120,7 +120,7 @@ sOvyTemplate_NintendoWifiConnect:
 sOvyTemplate_PokeathlonCourseRecord:
 	.word PokeathlonCourseRecord_OvyInit, PokeathlonCourseRecord_OvyExec, PokeathlonCourseRecord_OvyExit, FS_OVERLAY_ID(OVY_99)
 sOvyTemplate_OptionsMenu:
-	.word OptionsMenu_OvyInit, OptionsMenu_OvyExec, OptionsMenu_OvyExit, FS_OVERLAY_ID(OVY_54)
+	.word OptionsMenu_OvyInit, OptionsMenu_OvyExec, OptionsMenu_OvyExit, FS_OVERLAY_ID(options_app)
 sOvyTemplate_BugContestSwapMon:
 	.word BugContestSwapMon_OvyInit, BugContestSwapMon_OvyExec, BugContestSwapMon_OvyExit, FS_OVERLAY_ID(OVY_111)
 sOvyTemplate_ApricornBox:

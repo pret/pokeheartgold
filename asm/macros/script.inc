@@ -3399,7 +3399,7 @@
 	.short 600
 	.endm
 
-	.macro follow_poke_face_player
+	.macro follow_mon_face_player
 	.short 601
 	.endm
 
@@ -4022,7 +4022,7 @@
 	.short 710
 	.endm
 
-	.macro follow_poke_interact
+	.macro follow_mon_interact
 	.short 711
 	.endm
 
@@ -4391,7 +4391,7 @@
 	.short 782
 	.endm
 
-	.macro set_follow_poke_inhibit_state arg0
+	.macro set_follow_mon_inhibit_state arg0
 	.short 783
 	.byte \arg0
 	.endm

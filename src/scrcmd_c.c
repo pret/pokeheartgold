@@ -23,9 +23,8 @@
 #include "field_player_avatar.h"
 #include "unk_02062108.h"
 #include "field_map_object.h"
-#include "field_follow_poke.h"
-#include "field/launch_application.h"
-#include "save_follow_poke.h"
+#include "follow_mon.h"
+#include "save_follow_mon.h"
 #include "map_events.h"
 #include "unk_0205FD20.h"
 #include "unk_02054648.h"
@@ -93,6 +92,7 @@
 #include "unk_02097BE0.h"
 #include "sound_02004A44.h"
 #include "unk_020290B4.h"
+#include "field/launch_application.h"
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0202.h"
 #include "constants/accessories.h"
@@ -1247,7 +1247,7 @@ void _RunObjectEventMovement(SysTask *task, struct ObjectMovementTaskEnv *env) {
     }
 }
 
-BOOL _WaitFollowPokePaused(ScriptContext *ctx);
+BOOL _WaitFollowMonPaused(ScriptContext *ctx);
 
 BOOL ScrCmd_LockAll(ScriptContext *ctx) {
     LocalMapObject **p_lastInteracted;
@@ -1257,10 +1257,10 @@ BOOL ScrCmd_LockAll(ScriptContext *ctx) {
     p_lastInteracted = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_LAST_INTERACTED);
     if (*p_lastInteracted == NULL) {
         MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
-        followingPoke = FollowingPokemon_GetMapObject(fieldSystem);
-        if (FollowingPokemon_IsActive(fieldSystem) && MapObject_IsSingleMovementActive(followingPoke)) {
+        followingPoke = FollowMon_GetMapObject(fieldSystem);
+        if (FollowMon_IsActive(fieldSystem) && MapObject_IsSingleMovementActive(followingPoke)) {
             MapObject_UnpauseMovement(followingPoke);
-            SetupNativeScript(ctx, _WaitFollowPokePaused);
+            SetupNativeScript(ctx, _WaitFollowMonPaused);
             return TRUE;
         }
     } else {
@@ -1328,8 +1328,8 @@ static BOOL _WaitMovementPauseBeforeMsg(ScriptContext *ctx) {
     return _AllMovementPauseWaitsFinish();
 }
 
-BOOL _WaitFollowPokePaused(ScriptContext *ctx) {
-    LocalMapObject *tsurePoke = FollowingPokemon_GetMapObject(ctx->fieldSystem);
+BOOL _WaitFollowMonPaused(ScriptContext *ctx) {
+    LocalMapObject *tsurePoke = FollowMon_GetMapObject(ctx->fieldSystem);
     if (MapObject_IsSingleMovementActive(tsurePoke) == FALSE) {
         MapObject_PauseMovement(tsurePoke);
         return TRUE;
@@ -1360,7 +1360,7 @@ BOOL ScrCmd_LockLastTalked(ScriptContext *ctx) {
         MapObject_UnpauseMovement(*p_lastInteracted);
     }
 
-    if (unk != NULL && FollowingPokemon_IsActive(fieldSystem) && MapObject_IsSingleMovementActive(unk) == FALSE) {
+    if (unk != NULL && FollowMon_IsActive(fieldSystem) && MapObject_IsSingleMovementActive(unk) == FALSE) {
         _SetMovementPauseWaitFlag(2);
         MapObject_UnpauseMovement(unk);
     }
@@ -4435,9 +4435,9 @@ BOOL ScrCmd_598(ScriptContext *ctx) {
     LocalMapObject *obj1, *obj2;
     if (mode == 1) {
         obj1 = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
-        obj2 = FollowingPokemon_GetMapObject(fieldSystem);
+        obj2 = FollowMon_GetMapObject(fieldSystem);
     } else if (mode == 2) {
-        obj1 = FollowingPokemon_GetMapObject(fieldSystem);
+        obj1 = FollowMon_GetMapObject(fieldSystem);
         obj2 = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
     } else {
         GF_ASSERT(0);
@@ -4460,10 +4460,10 @@ BOOL ScrCmd_600(ScriptContext *ctx) {
     }
 }
 
-BOOL ScrCmd_FollowPokeFacePlayer(ScriptContext *ctx) {
+BOOL ScrCmd_FollowMonFacePlayer(ScriptContext *ctx) {
     BOOL doFace = TRUE;
-    if (FollowingPokemon_IsActive(ctx->fieldSystem)) {
-        if (ov01_022055DC(FollowingPokemon_GetMapObject(ctx->fieldSystem))) {
+    if (FollowMon_IsActive(ctx->fieldSystem)) {
+        if (ov01_022055DC(FollowMon_GetMapObject(ctx->fieldSystem))) {
             LocalMapObject *myObject = PlayerAvatar_GetMapObject(FieldSystem_GetPlayerAvatar(ctx->fieldSystem));
             int facingDirection = PlayerAvatar_GetFacingDirection(FieldSystem_GetPlayerAvatar(ctx->fieldSystem));
             int playerX = MapObject_GetCurrentX(myObject);
@@ -4487,11 +4487,11 @@ BOOL ScrCmd_FollowPokeFacePlayer(ScriptContext *ctx) {
 
 BOOL ScrCmd_ToggleFollowingPokemonMovement(ScriptContext *ctx) {
     u16 mode = ScriptReadHalfword(ctx);
-    if (FollowingPokemon_IsActive(ctx->fieldSystem)) {
+    if (FollowMon_IsActive(ctx->fieldSystem)) {
         if (mode) {
-            MapObject_PauseMovement(FollowingPokemon_GetMapObject(ctx->fieldSystem));
+            MapObject_PauseMovement(FollowMon_GetMapObject(ctx->fieldSystem));
         } else {
-            MapObject_UnpauseMovement(FollowingPokemon_GetMapObject(ctx->fieldSystem));
+            MapObject_UnpauseMovement(FollowMon_GetMapObject(ctx->fieldSystem));
         }
     }
     return FALSE;
@@ -4500,7 +4500,7 @@ BOOL ScrCmd_ToggleFollowingPokemonMovement(ScriptContext *ctx) {
 static BOOL NativeScript_WaitFollowingPokemonMovement(ScriptContext *ctx);
 
 BOOL ScrCmd_WaitFollowingPokemonMovement(ScriptContext *ctx) {
-    if (FollowingPokemon_IsActive(ctx->fieldSystem)) {
+    if (FollowMon_IsActive(ctx->fieldSystem)) {
         SetupNativeScript(ctx, NativeScript_WaitFollowingPokemonMovement);
     }
     return TRUE;
@@ -4508,14 +4508,14 @@ BOOL ScrCmd_WaitFollowingPokemonMovement(ScriptContext *ctx) {
 
 BOOL ScrCmd_FollowingPokemonMovement(ScriptContext *ctx) {
     u16 movement = ScriptReadHalfword(ctx);
-    if (FollowingPokemon_IsActive(ctx->fieldSystem)) {
+    if (FollowMon_IsActive(ctx->fieldSystem)) {
         sub_0205FC94(GetMapObjectByID(ctx->fieldSystem->mapObjectManager, obj_partner_poke), movement);
     }
     return TRUE;
 }
 
 static BOOL NativeScript_WaitFollowingPokemonMovement(ScriptContext *ctx) {
-    if (MapObject_IsMovementPaused(FollowingPokemon_GetMapObject(ctx->fieldSystem))) {
+    if (MapObject_IsMovementPaused(FollowMon_GetMapObject(ctx->fieldSystem))) {
         return TRUE;
     } else {
         return FALSE;
@@ -4525,7 +4525,7 @@ static BOOL NativeScript_WaitFollowingPokemonMovement(ScriptContext *ctx) {
 BOOL ScrCmd_605(ScriptContext *ctx) {
     u8 r6 = ScriptReadByte(ctx);
     u8 r4 = ScriptReadByte(ctx);
-    if (FollowingPokemon_IsActive(ctx->fieldSystem)) {
+    if (FollowMon_IsActive(ctx->fieldSystem)) {
         LocalMapObject *playerObj = PlayerAvatar_GetMapObject(ctx->fieldSystem->playerAvatar);
         LocalMapObject *tsurePokeObj = GetMapObjectByID(ctx->fieldSystem->mapObjectManager, obj_partner_poke);
         ov01_02205720(playerObj, tsurePokeObj, r6, r4);
@@ -4534,9 +4534,9 @@ BOOL ScrCmd_605(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_606(ScriptContext *ctx) {
-    if (FollowingPokemon_IsActive(ctx->fieldSystem)) {
-        LocalMapObject *object = FollowingPokemon_GetMapObject(ctx->fieldSystem);
-        if (GetFollowPokePermissionBySpeciesAndMap(FollowPokeObj_GetSpecies(object), ctx->fieldSystem->location->mapId)) {
+    if (FollowMon_IsActive(ctx->fieldSystem)) {
+        LocalMapObject *object = FollowMon_GetMapObject(ctx->fieldSystem);
+        if (FollowMon_GetPermissionBySpeciesAndMap(FollowMon_GetSpecies(object), ctx->fieldSystem->location->mapId)) {
             sub_02069E84(object, 1);
             sub_02069DEC(object, TRUE);
             ov01_02205790(ctx->fieldSystem, 1);
@@ -4546,9 +4546,9 @@ BOOL ScrCmd_606(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_607(ScriptContext *ctx) {
-    if (FollowingPokemon_IsActive(ctx->fieldSystem)) {
-        LocalMapObject *object = FollowingPokemon_GetMapObject(ctx->fieldSystem);
-        if (GetFollowPokePermissionBySpeciesAndMap(FollowPokeObj_GetSpecies(object), ctx->fieldSystem->location->mapId)) {
+    if (FollowMon_IsActive(ctx->fieldSystem)) {
+        LocalMapObject *object = FollowMon_GetMapObject(ctx->fieldSystem);
+        if (FollowMon_GetPermissionBySpeciesAndMap(FollowMon_GetSpecies(object), ctx->fieldSystem->location->mapId)) {
             ov01_02205790(ctx->fieldSystem, 1);
         }
     }
@@ -4556,7 +4556,7 @@ BOOL ScrCmd_607(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_608(ScriptContext *ctx) {
-    if (FollowingPokemon_IsActive(ctx->fieldSystem)) {
+    if (FollowMon_IsActive(ctx->fieldSystem)) {
         LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectManager, obj_partner_poke);
         ov01_02205784(object);
     }
@@ -4564,7 +4564,7 @@ BOOL ScrCmd_608(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_609(ScriptContext *ctx) {
-    if (FollowingPokemon_IsActive(ctx->fieldSystem)) {
+    if (FollowMon_IsActive(ctx->fieldSystem)) {
         LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectManager, obj_partner_poke);
         sub_020659CC(object);
     }
@@ -4793,8 +4793,8 @@ BOOL ScrCmd_622(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_FollowPokeInteract(ScriptContext *ctx) {
-    FieldSystem_FollowPokeInteract(ctx->fieldSystem);
+BOOL ScrCmd_FollowMonInteract(ScriptContext *ctx) {
+    FieldSystem_FollowMonInteract(ctx->fieldSystem);
     return TRUE;
 }
 
@@ -4875,7 +4875,7 @@ BOOL ScrCmd_728(ScriptContext *ctx) {
 
 BOOL ScrCmd_729(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    if (FollowingPokemon_IsActive(ctx->fieldSystem)) {
+    if (FollowMon_IsActive(ctx->fieldSystem)) {
         *p_ret = TRUE;
     } else {
         *p_ret = FALSE;
@@ -4885,7 +4885,7 @@ BOOL ScrCmd_729(ScriptContext *ctx) {
 
 BOOL ScrCmd_730(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    if (!FollowingPokemon_IsActive(ctx->fieldSystem)) {
+    if (!FollowMon_IsActive(ctx->fieldSystem)) {
         *p_ret = TRUE;
     } else if (ov01_022057C4(ctx->fieldSystem)) {
         *p_ret = TRUE;
@@ -4902,7 +4902,7 @@ BOOL ScrCmd_731(ScriptContext *ctx) {
 
 BOOL ScrCmd_732(ScriptContext *ctx) {
     s8 mood = ScriptReadByte(ctx);
-    FieldSystemUnkSub108_AddMonMood(ctx->fieldSystem->unk108, mood);
+    FieldSystem_UnkSub108_AddMonMood(ctx->fieldSystem->unk108, mood);
     return FALSE;
 }
 
@@ -5231,8 +5231,8 @@ BOOL ScrCmd_769(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_SetFollowPokeInhibitState(ScriptContext *ctx) {
-    SavFollowPoke_SetInhibitFlagState(Save_FollowPoke_Get(ctx->fieldSystem->saveData), ScriptReadByte(ctx));
+BOOL ScrCmd_SetFollowMonInhibitState(ScriptContext *ctx) {
+    Save_FollowMon_SetInhibitFlagState(Save_FollowMon_Get(ctx->fieldSystem->saveData), ScriptReadByte(ctx));
     return FALSE;
 }
 

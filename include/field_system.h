@@ -72,12 +72,12 @@ typedef struct Location {
     int direction;
 } Location;
 
-struct FieldSystemUnk108 {
+typedef struct FieldSystemUnk108 {
     u32 personality;
     u16 species;
     u16 isRegistered;
     Pokemon *mon;
-};
+} FieldSystemUnk108;
 
 struct FieldSystemUnkSub0 {
     OVY_MANAGER *unk0;
@@ -162,7 +162,7 @@ struct FieldSystem {
     u8 filler_D3[0x11];
     FollowMon followMon; // A4
     u8 unk104[4];
-    struct FieldSystemUnk108 *unk108;
+    FieldSystemUnk108 *unk108;
     u32 unk_10C;
     u8 unk_110;
     u8 unk_111[3];

@@ -7,7 +7,7 @@
 #include "system.h"
 #include "vram_transfer_manager.h"
 #include "unk_02037C94.h"
-#include "unk_02004A44.h"
+#include "sound_02004A44.h"
 #include "unk_020379A0.h"
 #include "unk_020755E8.h"
 #include "unk_02026E84.h"
@@ -210,7 +210,7 @@ void ov12_02237BB8(BattleSystem *bsys) {
     ov12_0223BBF0(bsys, 0);
 
     int size = sub_02026E9C();
-    void *data = sub_02026E94();
+    void *data = GetSubBgPlttAddr();
     MIi_CpuClear16(0, data, size);
 
     NARC *unkNarcA = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);
