@@ -1,7 +1,7 @@
 #include "scrcmd.h"
 #include "move_relearner.h"
 #include "unk_02088288.h"
-#include "field/launch_application.h"
+#include "launch_application.h"
 
 BOOL ScrNative_WaitApplication(ScriptContext *ctx);
 

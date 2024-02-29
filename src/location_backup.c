@@ -1,6 +1,6 @@
 #include "global.h"
 #include "field_system.h"
-#include "field/location_backup.h"
+#include "location_backup.h"
 #include "save_local_field_data.h"
 #include "constants/maps.h"
 

@@ -26,7 +26,7 @@
 #include "unk_020210A0.h"
 #include "yes_no_prompt.h"
 #include "unk_0200B150.h"
-#include "field/launch_application.h"
+#include "launch_application.h"
 #include "data/resdat.naix"
 
 struct UnkStruct_ov17_02203E88 {

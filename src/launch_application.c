@@ -5,8 +5,8 @@
 #include "choose_starter_app.h"
 #include "fashion_case.h"
 #include "field_system.h"
-#include "field/launch_application.h"
-#include "field/launch_application_data.h"
+#include "launch_application.h"
+#include "launch_application_data.h"
 #include "friend_group.h"
 #include "frontier_data.h"
 #include "game_stats.h"
@@ -221,22 +221,22 @@ extern u8 _020FA0B0[];
 static PartyMenuArgs *PartyMenu_CreateArgs(HeapID heapId, FieldSystem *fieldSystem, int a2, int a3);
 static BOOL Task_OpenPartyMenuThenMoveSelect(TaskManager *taskman);
 static BOOL sub_0203E878(TaskManager *taskman);
-static void _PokegearPhone_LaunchApp(FieldSystem *fieldSystem, PokegearArgs *args);
-static void _PokegearTownMap_LaunchApp(FieldSystem *fieldSystem, PokegearArgs *args);
-static void _SafariAreaCustomizer_LaunchApp(FieldSystem *fieldSystem, SafariAreaCustomizerArgs *args);
-static void _SafariDecoration_LaunchApp(FieldSystem *fieldSystem, SafariDecorationArgs *args);
-static void _PhotoAlbum_LaunchApp(FieldSystem *fieldSystem, PhotoAlbumArgs *args);
-static void FieldSystem_LaunchApplication_AlphPuzzle(FieldSystem *fieldSystem, AlphPuzzleArgs *args);
-static void _UnownReport_LaunchApp(FieldSystem *fieldSystem, UnownReportArgs *args);
-static void _BerryPots_LaunchApp(FieldSystem *fieldSystem, BerryPotsArgs *args);
-static void _ApricornBox_LaunchApp(FieldSystem *fieldSystem, ApricornBoxArgs *args);
-static void _BugContestSwapMon_LaunchApp(FieldSystem *fieldSystem, BugContestSwapMonArgs *args);
-static void _OptionsMenu_LaunchApp(FieldSystem *fieldSystem, OptionsMenuArgs *args);
+static void PokegearPhone_LaunchApp_Impl(FieldSystem *fieldSystem, PokegearArgs *args);
+static void PokegearTownMap_LaunchApp_Impl(FieldSystem *fieldSystem, PokegearArgs *args);
+static void SafariAreaCustomizer_LaunchApp_Impl(FieldSystem *fieldSystem, SafariAreaCustomizerArgs *args);
+static void SafariDecoration_LaunchApp_Impl(FieldSystem *fieldSystem, SafariDecorationArgs *args);
+static void PhotoAlbum_LaunchApp_Impl(FieldSystem *fieldSystem, PhotoAlbumArgs *args);
+static void AlphPuzzle_LaunchApp_Impl(FieldSystem *fieldSystem, AlphPuzzleArgs *args);
+static void UnownReport_LaunchApp_Impl(FieldSystem *fieldSystem, UnownReportArgs *args);
+static void BerryPots_LaunchApp_Impl(FieldSystem *fieldSystem, BerryPotsArgs *args);
+static void ApricornBox_LaunchApp_Impl(FieldSystem *fieldSystem, ApricornBoxArgs *args);
+static void BugContestSwapMon_LaunchApp_Impl(FieldSystem *fieldSystem, BugContestSwapMonArgs *args);
+static void OptionsMenu_LaunchApp_Impl(FieldSystem *fieldSystem, OptionsMenuArgs *args);
 static BOOL sub_0203EE54(SaveData *saveData);
-static void _PokeathlonCourseRecord_LaunchApp(FieldSystem *fieldSystem, PokeathlonCourseRecordArgs *args);
-static void _PokeathlonMedals_LaunchApp(FieldSystem *fieldSystem, PokeathlonMedalsArgs *args);
-static void _PokeathlonEventRecord_LaunchApp(FieldSystem *fieldSystem, PokeathlonEventRecordArgs *args);
-static void _PokeathlonUnk_LaunchApp(FieldSystem *fieldSystem, Unk0203EFA0 *args);
+static void PokeathlonCourseRecord_LaunchApp_Impl(FieldSystem *fieldSystem, PokeathlonCourseRecordArgs *args);
+static void PokeathlonMedals_LaunchApp_Impl(FieldSystem *fieldSystem, PokeathlonMedalsArgs *args);
+static void PokeathlonEventRecord_LaunchApp_Impl(FieldSystem *fieldSystem, PokeathlonEventRecordArgs *args);
+static void PokeathlonUnk_LaunchApp_Impl(FieldSystem *fieldSystem, Unk0203EFA0 *args);
 static void sub_0203EFD4(FieldSystem *fieldSystem, UseMailArgs *args);
 static Unk0203F0D0 *sub_0203F0D0(HeapID heapId, SaveData *saveData, int slot, int *a3, int a4);
 static BOOL sub_0203F134(TaskManager *taskman);
@@ -244,7 +244,7 @@ static BOOL sub_0203F1E8(FieldSystem *fieldSystem, Unk0203F0D0 *args);
 static void InitWirelessTradeSelectMonArgs(WirelessTradeSelectMonArgs *a0, FieldSystem *fieldSystem);
 static void WirelessTradeSelectMon_FreeArgs(WirelessTradeSelectMonArgs *a0);
 static BOOL Task_WirelessTrade(TaskManager *taskman);
-static BOOL _Task_NamingScreen(TaskManager *taskman);
+static BOOL Task_NamingScreen(TaskManager *taskman);
 static void SetName(TaskManager *taskman);
 
 BOOL Battle_Init(OVY_MANAGER *man, int *state) {
@@ -569,12 +569,12 @@ void EasyChat_LaunchApp(FieldSystem *fieldSystem, EasyChatArgs *args) {
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_EasyChat, args);
 }
 
-static void _PokegearPhone_LaunchApp(FieldSystem *fieldSystem, PokegearArgs *args) {
+static void PokegearPhone_LaunchApp_Impl(FieldSystem *fieldSystem, PokegearArgs *args) {
     OVY_MGR_TEMPLATE template = sOverlayTemplate_Phone;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
 
-static void _PokegearTownMap_LaunchApp(FieldSystem *fieldSystem, PokegearArgs *args) {
+static void PokegearTownMap_LaunchApp_Impl(FieldSystem *fieldSystem, PokegearArgs *args) {
     OVY_MGR_TEMPLATE template = sOverlayTemplate_TownMap;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -583,7 +583,7 @@ PokegearArgs *PokegearPhone_LaunchApp(FieldSystem *fieldSystem) {
     PokegearArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(PokegearArgs));
     MI_CpuFill8(args, 0, sizeof(PokegearArgs));
     sub_02092D80(fieldSystem, args);
-    _PokegearPhone_LaunchApp(fieldSystem, args);
+    PokegearPhone_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
 
@@ -592,11 +592,11 @@ PokegearArgs *PokegearTownMap_LaunchApp(FieldSystem *fieldSystem, int kind) {
     MI_CpuFill8(args, 0, sizeof(PokegearArgs));
     sub_02092D8C(fieldSystem, args);
     args->kind = kind;
-    _PokegearTownMap_LaunchApp(fieldSystem, args);
+    PokegearTownMap_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
 
-static void _SafariAreaCustomizer_LaunchApp(FieldSystem *fieldSystem, SafariAreaCustomizerArgs *args) {
+static void SafariAreaCustomizer_LaunchApp_Impl(FieldSystem *fieldSystem, SafariAreaCustomizerArgs *args) {
     OVY_MGR_TEMPLATE template = sOverlayTemplate_SafariAreaCustomizer;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -606,22 +606,22 @@ SafariAreaCustomizerArgs *SafariAreaCustomizer_LaunchApp(FieldSystem *fieldSyste
     MI_CpuFill8(args, 0, sizeof(SafariAreaCustomizerArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
     args->unk4 = &fieldSystem->unk_10C;
-    _SafariAreaCustomizer_LaunchApp(fieldSystem, args);
+    SafariAreaCustomizer_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
 
-static void _SafariDecoration_LaunchApp(FieldSystem *fieldSystem, SafariDecorationArgs *args) {
+static void SafariDecoration_LaunchApp_Impl(FieldSystem *fieldSystem, SafariDecorationArgs *args) {
     OVY_MGR_TEMPLATE template = sOverlayTemplate_SafariDecoration;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
 
 SafariDecorationArgs *SafariDecoration_LaunchApp(FieldSystem *fieldSystem) {
     SafariDecorationArgs *args = SafariDecoration_CreateArgs(fieldSystem, HEAP_ID_FIELD);
-    _SafariDecoration_LaunchApp(fieldSystem, args);
+    SafariDecoration_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
 
-static void _PhotoAlbum_LaunchApp(FieldSystem *fieldSystem, PhotoAlbumArgs *args) {
+static void PhotoAlbum_LaunchApp_Impl(FieldSystem *fieldSystem, PhotoAlbumArgs *args) {
     OVY_MGR_TEMPLATE template = sOverlayTemplate_PhotoAlbum;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -632,26 +632,26 @@ PhotoAlbumArgs *PhotoAlbum_LaunchApp(FieldSystem *fieldSystem, int a1, int a2) {
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
     args->unk8 = &fieldSystem->unk_10C;
     args->unk2 = a2;
-    _PhotoAlbum_LaunchApp(fieldSystem, args);
+    PhotoAlbum_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
 
-static void FieldSystem_LaunchApplication_AlphPuzzle(FieldSystem *fieldSystem, AlphPuzzleArgs *args) {
+static void AlphPuzzle_LaunchApp_Impl(FieldSystem *fieldSystem, AlphPuzzleArgs *args) {
     OVY_MGR_TEMPLATE template = sOverlayTemplate_AlphPuzzle;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
 
-AlphPuzzleArgs *FieldSystem_CreateApplication_AlphPuzzle(FieldSystem *fieldSystem, u8 puzzle) {
+AlphPuzzleArgs *AlphPuzzle_LaunchApp(FieldSystem *fieldSystem, u8 puzzle) {
     AlphPuzzleArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(AlphPuzzleArgs));
     MI_CpuFill8(args, 0, sizeof(AlphPuzzleArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
     args->fieldSystemUnk10Cpointer = &fieldSystem->unk_10C;
     args->puzzle = puzzle;
-    FieldSystem_LaunchApplication_AlphPuzzle(fieldSystem, args);
+    AlphPuzzle_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
 
-static void _UnownReport_LaunchApp(FieldSystem *fieldSystem, UnownReportArgs *args) {
+static void UnownReport_LaunchApp_Impl(FieldSystem *fieldSystem, UnownReportArgs *args) {
     OVY_MGR_TEMPLATE template = gOverlayTemplate_UnownReport;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -661,11 +661,11 @@ UnownReportArgs *UnownReport_LaunchApp(FieldSystem *fieldSystem) {
     MI_CpuFill8(args, 0, sizeof(UnownReportArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
     args->unk0 = &fieldSystem->unk_10C;
-    _UnownReport_LaunchApp(fieldSystem, args);
+    UnownReport_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
 
-static void _BerryPots_LaunchApp(FieldSystem *fieldSystem, BerryPotsArgs *args) {
+static void BerryPots_LaunchApp_Impl(FieldSystem *fieldSystem, BerryPotsArgs *args) {
     OVY_MGR_TEMPLATE template = sOverlayTemplate_BerryPots;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -676,11 +676,11 @@ BerryPotsArgs *BerryPots_LaunchApp(FieldSystem *fieldSystem) {
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
     args->unk4 = &fieldSystem->unk_10C;
     args->cursor = fieldSystem->unk94;
-    _BerryPots_LaunchApp(fieldSystem, args);
+    BerryPots_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
 
-static void _ApricornBox_LaunchApp(FieldSystem *fieldSystem, ApricornBoxArgs *args) {
+static void ApricornBox_LaunchApp_Impl(FieldSystem *fieldSystem, ApricornBoxArgs *args) {
     OVY_MGR_TEMPLATE template = sOverlayTemplate_ApricornBox;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -696,7 +696,7 @@ ApricornBoxArgs *ApricornBox_LaunchApp(FieldSystem *fieldSystem, int a1) {
     } else {
         args->unk0 = a1;
     }
-    _ApricornBox_LaunchApp(fieldSystem, args);
+    ApricornBox_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
 
@@ -709,11 +709,11 @@ ApricornBoxArgs *sub_0203ED80(FieldSystem *fieldSystem, u32 a1, u16 *a2) {
     args->unk0 = 3;
     args->unkC = a1;
     args->unk8 = a2;
-    _ApricornBox_LaunchApp(fieldSystem, args);
+    ApricornBox_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
 
-static void _BugContestSwapMon_LaunchApp(FieldSystem *fieldSystem, BugContestSwapMonArgs *args) {
+static void BugContestSwapMon_LaunchApp_Impl(FieldSystem *fieldSystem, BugContestSwapMonArgs *args) {
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_BugContestSwapMon, args);
 }
 
@@ -724,11 +724,11 @@ BugContestSwapMonArgs *BugContestSwapMon_LaunchApp(FieldSystem *fieldSystem, Pok
     args->currentMon = currentMon;
     args->noPokemonCaught = noPokemonCaught;
     args->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
-    _BugContestSwapMon_LaunchApp(fieldSystem, args);
+    BugContestSwapMon_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
 
-static void _OptionsMenu_LaunchApp(FieldSystem *fieldSystem, OptionsMenuArgs *args) {
+static void OptionsMenu_LaunchApp_Impl(FieldSystem *fieldSystem, OptionsMenuArgs *args) {
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_OptionsMenu, args);
 }
 
@@ -736,7 +736,7 @@ OptionsMenuArgs *OptionsMenu_LaunchApp(FieldSystem *fieldSystem) {
     OptionsMenuArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(OptionsMenuArgs));
     args->options = Save_PlayerData_GetOptionsAddr(FieldSystem_GetSaveData(fieldSystem));
     args->unk8 = &fieldSystem->unk_10C;
-    _OptionsMenu_LaunchApp(fieldSystem, args);
+    OptionsMenu_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
 
@@ -746,7 +746,7 @@ static BOOL sub_0203EE54(SaveData *saveData) {
            Save_VarsFlags_CheckFlagInArray(Save_VarsFlags_Get(saveData), FLAG_UNK_0F1);
 }
 
-static void _PokeathlonCourseRecord_LaunchApp(FieldSystem *fieldSystem, PokeathlonCourseRecordArgs *args) {
+static void PokeathlonCourseRecord_LaunchApp_Impl(FieldSystem *fieldSystem, PokeathlonCourseRecordArgs *args) {
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_PokeathlonCourseRecord, args);
 }
 
@@ -756,11 +756,11 @@ PokeathlonCourseRecordArgs *PokeathlonCourseRecord_LaunchApp(FieldSystem *fieldS
     POKEATHLON_SAV *pokeathlon = Save_Pokeathlon_Get(saveData);
     args->pokeathlon = sub_02031974(pokeathlon);
     args->unk4 = sub_0203EE54(saveData);
-    _PokeathlonCourseRecord_LaunchApp(fieldSystem, args);
+    PokeathlonCourseRecord_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
 
-static void _PokeathlonMedals_LaunchApp(FieldSystem *fieldSystem, PokeathlonMedalsArgs *args) {
+static void PokeathlonMedals_LaunchApp_Impl(FieldSystem *fieldSystem, PokeathlonMedalsArgs *args) {
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_PokeathlonMedals, args);
 }
 
@@ -773,11 +773,11 @@ PokeathlonMedalsArgs *PokeathlonMedals_LaunchApp(FieldSystem *fieldSystem) {
     args->unk4 = sub_02031978(pokeathlonSave);
     args->natDexEnabled = Pokedex_GetNatDexFlag(pokedex);
     args->unkC = sub_0203EE54(saveData);
-    _PokeathlonMedals_LaunchApp(fieldSystem, args);
+    PokeathlonMedals_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
 
-static void _PokeathlonEventRecord_LaunchApp(FieldSystem *fieldSystem, PokeathlonEventRecordArgs *args) {
+static void PokeathlonEventRecord_LaunchApp_Impl(FieldSystem *fieldSystem, PokeathlonEventRecordArgs *args) {
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_PokeathlonEventRecord, args);
 }
 
@@ -790,11 +790,11 @@ PokeathlonEventRecordArgs *PokeathlonEventRecord_LaunchApp(FieldSystem *fieldSys
     args->profile = Save_PlayerData_GetProfileAddr(saveData);
     args->unk10 = sub_0203EE54(saveData);
     args->unk8 = sub_02031990(pokeathlonSave);
-    _PokeathlonEventRecord_LaunchApp(fieldSystem, args);
+    PokeathlonEventRecord_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
 
-static void _PokeathlonUnk_LaunchApp(FieldSystem *fieldSystem, Unk0203EFA0 *args) {
+static void PokeathlonUnk_LaunchApp_Impl(FieldSystem *fieldSystem, Unk0203EFA0 *args) {
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_PokeathlonUnkApp, args);
 }
 
@@ -804,7 +804,7 @@ Unk0203EFA0 *PokeathlonUnk_LaunchApp(FieldSystem *fieldSystem) {
     PlayerProfile *profile = Save_PlayerData_GetProfileAddr(saveData);
     args->pokeathlon = Save_Pokeathlon_Get(saveData);
     args->profile = profile;
-    _PokeathlonUnk_LaunchApp(fieldSystem, args);
+    PokeathlonUnk_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
 
@@ -897,18 +897,8 @@ static BOOL sub_0203F134(TaskManager *taskman) {
 }
 
 void sub_0203F198(TaskManager *taskman, u16 *ret, SaveData *saveData, u16 a3, u16 a4) {
-    u32 size;
-    u8 *ptr;
-
     Unk0203F134 *data = AllocFromHeap(HEAP_ID_32, sizeof(Unk0203F134));
-
-    ptr = (u8 *)data;
-    size = sizeof(Unk0203F134);
-    while (size) {
-        *ptr = 0;
-        ptr++;
-        size--;
-    }
+    memset(data, 0, sizeof(Unk0203F134));
     data->unkC = sub_0203F0D0(HEAP_ID_32, saveData, a3, &data->unk8, a4);
     data->unk4 = ret;
     TaskManager_Call(taskman, sub_0203F134, data);
@@ -1088,7 +1078,7 @@ void sub_0203F570(FieldSystem *fieldSystem, SaveData *args) {
     FieldSystem_LaunchApplication(fieldSystem, &_02102830, fieldSystem);
 }
 
-static BOOL _Task_NamingScreen(TaskManager *taskman) {
+static BOOL Task_NamingScreen(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     NamingScreenData *data = TaskManager_GetEnvironment(taskman);
     switch (data->state) {
@@ -1165,7 +1155,7 @@ static void SetName(TaskManager *taskman) {
     }
 }
 
-void Task_NamingScreen(TaskManager *taskman, NameScreenType type, int species, int maxLen, int partyIdx, const u16 *defaultStr, u16 *retVar) {
+void CallTask_NamingScreen(TaskManager *taskman, NameScreenType type, int species, int maxLen, int partyIdx, const u16 *defaultStr, u16 *retVar) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     NamingScreenData *data = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(NamingScreenData));
     data->state = 0;
@@ -1198,7 +1188,7 @@ void Task_NamingScreen(TaskManager *taskman, NameScreenType type, int species, i
         }
         break;
     }
-    TaskManager_Call(taskman, _Task_NamingScreen, data);
+    TaskManager_Call(taskman, Task_NamingScreen, data);
 }
 
 void TrainerCard_LaunchApp(FieldSystem *fieldSystem, TrainerCardAppArgs *args) {

@@ -92,7 +92,7 @@
 #include "unk_02097BE0.h"
 #include "sound_02004A44.h"
 #include "unk_020290B4.h"
-#include "field/launch_application.h"
+#include "launch_application.h"
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0202.h"
 #include "constants/accessories.h"
@@ -2092,13 +2092,13 @@ BOOL ScrCmd_370(ScriptContext *ctx) { //unknown? possibly daycare select screen?
 
 BOOL ScrCmd_NamePlayer(ScriptContext *ctx) {
     u16 *p_var = ScriptGetVarPointer(ctx);
-    Task_NamingScreen(ctx->taskman, NAME_SCREEN_PLAYER, 0, PLAYER_NAME_LENGTH, 0, NULL, p_var);
+    CallTask_NamingScreen(ctx->taskman, NAME_SCREEN_PLAYER, 0, PLAYER_NAME_LENGTH, 0, NULL, p_var);
     return TRUE;
 }
 
 BOOL ScrCmd_NameRival(ScriptContext *ctx) {
     u16 *p_var = ScriptGetVarPointer(ctx);
-    Task_NamingScreen(ctx->taskman, NAME_SCREEN_RIVAL, 0, PLAYER_NAME_LENGTH, 0, NULL, p_var);
+    CallTask_NamingScreen(ctx->taskman, NAME_SCREEN_RIVAL, 0, PLAYER_NAME_LENGTH, 0, NULL, p_var);
     return TRUE;
 }
 
@@ -2123,7 +2123,7 @@ BOOL ScrCmd_NicknameInput(ScriptContext *ctx) {
     GetMonData(mon, MON_DATA_NICKNAME, nickname);
     var_ret = ScriptGetVarPointer(ctx);
     species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    Task_NamingScreen(ctx->taskman, NAME_SCREEN_POKEMON, species, POKEMON_NAME_LENGTH, partyPos, nickname, var_ret);
+    CallTask_NamingScreen(ctx->taskman, NAME_SCREEN_POKEMON, species, POKEMON_NAME_LENGTH, partyPos, nickname, var_ret);
     return TRUE;
 }
 
@@ -4826,7 +4826,7 @@ BOOL ScrCmd_AlphPuzzle(ScriptContext *ctx) { //this just loads a different puzzl
     if (puzzle > 4) {
         puzzle = 0;
     }
-    *p_work = FieldSystem_CreateApplication_AlphPuzzle(ctx->fieldSystem, puzzle);
+    *p_work = AlphPuzzle_LaunchApp(ctx->fieldSystem, puzzle);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }

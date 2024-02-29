@@ -1,5 +1,5 @@
 #include "global.h"
-#include "field/launch_application_data.h"
+#include "launch_application_data.h"
 #include "constants/items.h"
 
 const u8 sItemPocket[] = { POCKET_ITEMS, 0xFF, 0x00, 0x00 };

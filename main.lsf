@@ -160,10 +160,10 @@ Static main
 	Object asm/unk_0203BC10.o
 	Object asm/unk_0203DB6C.o
 	Object src/field_system.o
-	Object src/field/location_backup.o
-	Object src/field/launch_application.o
-	Object src/field/launch_application_data1.o
-	Object src/field/launch_application_data2.o
+	Object src/location_backup.o
+	Object src/launch_application.o
+	Object src/launch_application_data1.o
+	Object src/launch_application_data2.o
 	Object asm/launch_application_data.o
 	Object src/script.o
 	Object src/fieldmap.o

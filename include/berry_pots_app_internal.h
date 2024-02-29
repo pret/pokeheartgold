@@ -3,7 +3,7 @@
 #include "unk_02023694.h"
 #include "game_stats.h"
 #include "overlay_16.h"
-#include "field/launch_application.h"
+#include "launch_application.h"
 
 enum BerryPotsApp_022036FC_Action {
     BERRY_POTS_APP_022036FC_ACTION_0,

@@ -1,7 +1,7 @@
 #include "task.h"
 #include "unk_0200FA24.h"
 #include "field_system.h"
-#include "field/launch_application.h"
+#include "launch_application.h"
 #include "update_dex_received.h"
 #include "map_header.h"
 #include "pokedex.h"

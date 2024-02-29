@@ -22,7 +22,7 @@
 #include "unk_0206B910.h"
 #include "unk_02078E30.h"
 #include "unk_02091054.h"
-#include "field/launch_application.h"
+#include "launch_application.h"
 
 FS_EXTERN_OVERLAY(OVY_57);
 

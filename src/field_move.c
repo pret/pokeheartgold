@@ -3,7 +3,7 @@
 #include "field_map_object.h"
 #include "alph_checks.h"
 #include "field_player_avatar.h"
-#include "field/launch_application.h"
+#include "launch_application.h"
 #include "unk_0203DB6C.h"
 #include "unk_02054648.h"
 #include "unk_0205CB48.h"

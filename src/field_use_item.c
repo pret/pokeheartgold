@@ -7,7 +7,7 @@
 #include "unk_02078E30.h"
 #include "follow_mon.h"
 #include "field_map_object.h"
-#include "field/launch_application.h"
+#include "launch_application.h"
 #include "save_arrays.h"
 #include "sound_radio.h"
 #include "sound_02004A44.h"

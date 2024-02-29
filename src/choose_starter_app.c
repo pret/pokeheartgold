@@ -1,7 +1,7 @@
 #include "global.h"
 #include "camera.h"
 #include "camera_translation.h"
-#include "field/launch_application.h"
+#include "launch_application.h"
 #include "unk_0200FA24.h"
 #include "system.h"
 #include "text.h"

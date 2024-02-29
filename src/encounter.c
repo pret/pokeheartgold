@@ -5,7 +5,7 @@
 #include "field_map_object.h"
 #include "field_system.h"
 #include "field_warp_tasks.h"
-#include "field/launch_application.h"
+#include "launch_application.h"
 #include "game_clear.h"
 #include "game_stats.h"
 #include "overlay_02.h"

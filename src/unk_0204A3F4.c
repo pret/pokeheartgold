@@ -1,7 +1,7 @@
 #include "global.h"
 #include "assert.h"
 #include "field_player_avatar.h"
-#include "field/launch_application.h"
+#include "launch_application.h"
 #include "frontier_data.h"
 #include "game_stats.h"
 #include "heap.h"

@@ -1,6 +1,6 @@
 #include "scrcmd.h"
 #include "fieldmap.h"
-#include "field/launch_application.h"
+#include "launch_application.h"
 #include "friend_group.h"
 #include "unk_0202C730.h"
 #include "math_util.h"
@@ -51,7 +51,7 @@ BOOL ScrCmd_465(ScriptContext *ctx) {
     {
         u16 *r5 = sub_0202C7E0(group, 0, 0);
         u16 *retPtr = ScriptGetVarPointer(ctx);
-        Task_NamingScreen(ctx->taskman, NAME_SCREEN_GROUP, 0, PLAYER_NAME_LENGTH, 0, r5, retPtr);
+        CallTask_NamingScreen(ctx->taskman, NAME_SCREEN_GROUP, 0, PLAYER_NAME_LENGTH, 0, r5, retPtr);
         return TRUE;
     }
     case 5:

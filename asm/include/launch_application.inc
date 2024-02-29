@@ -91,7 +91,7 @@
 .public SafariAreaCustomizer_LaunchApp
 .public SafariDecoration_LaunchApp
 .public PhotoAlbum_LaunchApp
-.public FieldSystem_CreateApplication_AlphPuzzle
+.public AlphPuzzle_LaunchApp
 .public UnownReport_LaunchApp
 .public BerryPots_LaunchApp
 .public ApricornBox_LaunchApp
@@ -114,7 +114,7 @@
 .public sub_0203F4F8
 .public PalPad_LaunchApp
 .public sub_0203F570
-.public Task_NamingScreen
+.public CallTask_NamingScreen
 .public TrainerCard_LaunchApp
 .public Pokedex_LaunchApp
 .public ChooseStarter_LaunchApp

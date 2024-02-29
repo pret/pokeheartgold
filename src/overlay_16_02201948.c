@@ -2,7 +2,7 @@
 #include "constants/items.h"
 #include "bag_cursor.h"
 #include "berry_pots_app.h"
-#include "field/launch_application.h"
+#include "launch_application.h"
 #include "overlay_15.h"
 #include "overlay_16.h"
 
