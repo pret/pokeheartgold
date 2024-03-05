@@ -134,21 +134,21 @@ struct ChooseStarterAnm {
 };
 
 struct StarterChooseMonObjResPtrs {
-    struct _2DGfxResObj *charResObj;
-    struct _2DGfxResObj *plttResObj;
-    struct _2DGfxResObj *cellResObj;
-    struct _2DGfxResObj *animResObj;
-    struct _2DGfxResObj *multiCellResObj;
-    struct _2DGfxResObj *multiCellAnmResObj;
+    GF_2DGfxResObj *charResObj;
+    GF_2DGfxResObj *plttResObj;
+    GF_2DGfxResObj *cellResObj;
+    GF_2DGfxResObj *animResObj;
+    GF_2DGfxResObj *multiCellResObj;
+    GF_2DGfxResObj *multiCellAnmResObj;
 };
 
 struct StarterChooseMonSpriteData {
-    struct _2DGfxResMan *charResMan;
-    struct _2DGfxResMan *plttResMan;
-    struct _2DGfxResMan *cellResMan;
-    struct _2DGfxResMan *animResMan;
-    struct _2DGfxResMan *multiCellResMan; //unused
-    struct _2DGfxResMan *multiCellAnmResMan; //unused
+    GF_2DGfxResMan *charResMan;
+    GF_2DGfxResMan *plttResMan;
+    GF_2DGfxResMan *cellResMan;
+    GF_2DGfxResMan *animResMan;
+    GF_2DGfxResMan *multiCellResMan; //unused
+    GF_2DGfxResMan *multiCellAnmResMan; //unused
     struct StarterChooseMonObjResPtrs objs[3];
     void *charDatas[3];
     void *plttDatas[3];
@@ -238,7 +238,7 @@ static int getInput(struct ChooseStarterAppWork *work);
 static int getRotateDirection(int a0, u8 a1, int a2);
 static int getTappedBallId(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 radius);
 static void createMonSprites(struct ChooseStarterAppWork *work);
-static void loadOneMonObj(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx);
+static void loadOneMonObj(GF_2DGfxResMan *charResMan, GF_2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx);
 static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData, u8 idx, HeapID heapId);
 static void setAllButSelectedMonSpritesInvisible(struct ChooseStarterAppWork *work);
 static void setAllMonSpritesInvisible(struct StarterChooseMonSpriteData *a0);
@@ -1199,9 +1199,9 @@ static void createMonSprites(struct ChooseStarterAppWork *work) {
     NARC_Delete(narc);
 }
 
-static void loadOneMonObj(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx) {
-    struct _2DGfxResObj *charResObj = Get2DGfxResObjById(charResMan, idx);
-    struct _2DGfxResObj *plttResObj = Get2DGfxResObjById(plttResMan, idx);
+static void loadOneMonObj(GF_2DGfxResMan *charResMan, GF_2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx) {
+    GF_2DGfxResObj *charResObj = Get2DGfxResObjById(charResMan, idx);
+    GF_2DGfxResObj *plttResObj = Get2DGfxResObjById(plttResMan, idx);
     NNSG2dImageProxy *charProxy;
     const NNSG2dImagePaletteProxy *plttProxy;
     u32 imageloc;

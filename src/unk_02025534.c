@@ -3,27 +3,27 @@
 #include "system.h"
 #include "gf_3d_render.h"
 
-static struct _2DGfxRawResObj *_2DGfxResMan_FindNextFreeObjSlot(struct _2DGfxRawResMan *resourceMgr);
-static void _2DGfxResObj_Init(struct _2DGfxRawResObj *resourceObj);
-static void _3DGfxResMan_FreeObj(struct _3DGfxRawResMan *man, struct _3DGfxRawResObj *obj);
-static int Get3DGfxRawResObjId(struct _3DGfxRawResObj *obj);
-static struct _3DGfxRawResObj *_3DGfxResMan_FindNextFreeObjSlot(const struct _3DGfxRawResMan *man);
-static void _3DGfxResObj_Init(struct _3DGfxRawResObj *obj);
-static NNSG3dResTex *_3DGfxResObj_GetTex_Internal(struct _3DGfxRawResObj *obj);
-static NNSG3dResTex *_3DGfxResObj_GetTex_MaybeFromSecondaryHeader(struct _3DGfxRawResObj *obj);
+static GF_2DGfxRawResObj *_2DGfxResMan_FindNextFreeObjSlot(GF_2DGfxRawResMan *resourceMgr);
+static void _2DGfxResObj_Init(GF_2DGfxRawResObj *resourceObj);
+static void _3DGfxResMan_FreeObj(GF_3DGfxRawResMan *man, GF_3DGfxRawResObj *obj);
+static int Get3DGfxRawResObjId(GF_3DGfxRawResObj *obj);
+static GF_3DGfxRawResObj *_3DGfxResMan_FindNextFreeObjSlot(const GF_3DGfxRawResMan *man);
+static void _3DGfxResObj_Init(GF_3DGfxRawResObj *obj);
+static NNSG3dResTex *_3DGfxResObj_GetTex_Internal(GF_3DGfxRawResObj *obj);
+static NNSG3dResTex *_3DGfxResObj_GetTex_MaybeFromSecondaryHeader(GF_3DGfxRawResObj *obj);
 static void ResTexAllocVramAndGetKeys(NNSG3dResTex *tex, NNSG3dTexKey *texKey, NNSG3dTexKey *tex4x4Key, NNSG3dPlttKey *plttKey);
-static void ResTexLoad(NNSG3dResTex *tex, struct _3DGfxRawResObj *obj);
+static void ResTexLoad(NNSG3dResTex *tex, GF_3DGfxRawResObj *obj);
 static void ResTexSetKeys(NNSG3dResTex *tex, NNSG3dTexKey texKey, NNSG3dTexKey tex4x4Key, NNSG3dPlttKey plttKey);
 static void ResTexReleaseKeys(NNSG3dResTex *tex);
 static void *ResFileHeaderCopyWithoutTex(const NNSG3dResFileHeader *header, HeapID heapId);
 static u32 ResFileHeaderGetSizeWithoutTex(const NNSG3dResFileHeader *header);
 
-struct _2DGfxRawResMan *Create2DGfxResMan(int num, HeapID heapId) {
-    struct _2DGfxRawResMan *ret = AllocFromHeap(heapId, sizeof(struct _2DGfxRawResMan));
+GF_2DGfxRawResMan *Create2DGfxResMan(int num, HeapID heapId) {
+    GF_2DGfxRawResMan *ret = AllocFromHeap(heapId, sizeof(GF_2DGfxRawResMan));
     int i;
 
     GF_ASSERT(ret != NULL);
-    ret->vals = AllocFromHeap(heapId, num * sizeof(struct _2DGfxRawResObj));
+    ret->vals = AllocFromHeap(heapId, num * sizeof(GF_2DGfxRawResObj));
     GF_ASSERT(ret->vals != NULL);
     for (i = 0; i < num; i++) {
         _2DGfxResObj_Init(&ret->vals[i]);
@@ -33,21 +33,21 @@ struct _2DGfxRawResMan *Create2DGfxResMan(int num, HeapID heapId) {
     return ret;
 }
 
-void Destroy2DGfxResMan(struct _2DGfxRawResMan *resourceMgr) {
+void Destroy2DGfxResMan(GF_2DGfxRawResMan *resourceMgr) {
     GF_ASSERT(resourceMgr != NULL);
     _2DGfxResMan_FreeAllObjs(resourceMgr);
     FreeToHeap(resourceMgr->vals);
     FreeToHeap(resourceMgr);
 }
 
-BOOL _2DGfxResMan_DoesNotHaveObjWithId(struct _2DGfxRawResMan *resourceMgr, int id) {
+BOOL _2DGfxResMan_DoesNotHaveObjWithId(GF_2DGfxRawResMan *resourceMgr, int id) {
     GF_ASSERT(resourceMgr != NULL);
     return _2DGfxResMan_GetObjById(resourceMgr, id) == NULL;
 }
 
-struct _2DGfxRawResObj *_2DGfxResMan_AllocObj(struct _2DGfxRawResMan *resourceMgr, void *resource, int id) {
+GF_2DGfxRawResObj *_2DGfxResMan_AllocObj(GF_2DGfxRawResMan *resourceMgr, void *resource, int id) {
     GF_ASSERT(resourceMgr != NULL);
-    struct _2DGfxRawResObj *obj = _2DGfxResMan_FindNextFreeObjSlot(resourceMgr);
+    GF_2DGfxRawResObj *obj = _2DGfxResMan_FindNextFreeObjSlot(resourceMgr);
     GF_ASSERT(obj != NULL);
     GF_ASSERT(_2DGfxResMan_DoesNotHaveObjWithId(resourceMgr, id) == TRUE);
     obj->data = resource;
@@ -56,10 +56,10 @@ struct _2DGfxRawResObj *_2DGfxResMan_AllocObj(struct _2DGfxRawResMan *resourceMg
     return obj;
 }
 
-struct _2DGfxRawResObj *_2DGfxResMan_ReadAndAllocObj(struct _2DGfxRawResMan *resourceMgr, const char *name, int id, HeapID heapId) {
+GF_2DGfxRawResObj *_2DGfxResMan_ReadAndAllocObj(GF_2DGfxRawResMan *resourceMgr, const char *name, int id, HeapID heapId) {
     GF_ASSERT(resourceMgr != NULL);
     GF_ASSERT(name != NULL);
-    struct _2DGfxRawResObj *obj = _2DGfxResMan_FindNextFreeObjSlot(resourceMgr);
+    GF_2DGfxRawResObj *obj = _2DGfxResMan_FindNextFreeObjSlot(resourceMgr);
     GF_ASSERT(obj != NULL);
     GF_ASSERT(_2DGfxResMan_DoesNotHaveObjWithId(resourceMgr, id) == TRUE);
     obj->data = Sys_AllocAndReadFile(heapId, name);
@@ -69,7 +69,7 @@ struct _2DGfxRawResObj *_2DGfxResMan_ReadAndAllocObj(struct _2DGfxRawResMan *res
     return obj;
 }
 
-void _2DGfxResMan_FreeObj(struct _2DGfxRawResMan *resourceMgr, struct _2DGfxRawResObj *obj) {
+void _2DGfxResMan_FreeObj(GF_2DGfxRawResMan *resourceMgr, GF_2DGfxRawResObj *obj) {
     GF_ASSERT(resourceMgr != NULL);
     GF_ASSERT(obj != NULL);
     if (obj->data != NULL) {
@@ -80,7 +80,7 @@ void _2DGfxResMan_FreeObj(struct _2DGfxRawResMan *resourceMgr, struct _2DGfxRawR
     --resourceMgr->num;
 }
 
-void _2DGfxResMan_FreeAllObjs(struct _2DGfxRawResMan *resourceMgr) {
+void _2DGfxResMan_FreeAllObjs(GF_2DGfxRawResMan *resourceMgr) {
     int i;
 
     GF_ASSERT(resourceMgr != NULL);
@@ -92,7 +92,7 @@ void _2DGfxResMan_FreeAllObjs(struct _2DGfxRawResMan *resourceMgr) {
     }
 }
 
-struct _2DGfxRawResObj *_2DGfxResMan_GetObjById(struct _2DGfxRawResMan *resourceMgr, int id) {
+GF_2DGfxRawResObj *_2DGfxResMan_GetObjById(GF_2DGfxRawResMan *resourceMgr, int id) {
     int i;
 
     GF_ASSERT(resourceMgr != NULL);
@@ -105,12 +105,12 @@ struct _2DGfxRawResObj *_2DGfxResMan_GetObjById(struct _2DGfxRawResMan *resource
     return NULL;
 }
 
-void *_2DGfxResObj_GetData(struct _2DGfxRawResObj *obj) {
+void *_2DGfxResObj_GetData(GF_2DGfxRawResObj *obj) {
     GF_ASSERT(obj != NULL);
     return obj->data;
 }
 
-void _2DGfxResObj_ReplaceData(struct _2DGfxRawResObj *obj, void *newPtr) {
+void _2DGfxResObj_ReplaceData(GF_2DGfxRawResObj *obj, void *newPtr) {
     GF_ASSERT(obj != NULL);
     if (obj->data != NULL) {
         FreeToHeap(obj->data);
@@ -118,12 +118,12 @@ void _2DGfxResObj_ReplaceData(struct _2DGfxRawResObj *obj, void *newPtr) {
     obj->data = newPtr;
 }
 
-int Get2DGfxRawResObjId(struct _2DGfxRawResObj *obj) {
+int Get2DGfxRawResObjId(GF_2DGfxRawResObj *obj) {
     GF_ASSERT(obj != NULL);
     return obj->id;
 }
 
-static struct _2DGfxRawResObj *_2DGfxResMan_FindNextFreeObjSlot(struct _2DGfxRawResMan *resourceMgr) {
+static GF_2DGfxRawResObj *_2DGfxResMan_FindNextFreeObjSlot(GF_2DGfxRawResMan *resourceMgr) {
     int i;
 
     GF_ASSERT(resourceMgr != NULL);
@@ -136,7 +136,7 @@ static struct _2DGfxRawResObj *_2DGfxResMan_FindNextFreeObjSlot(struct _2DGfxRaw
     return NULL;
 }
 
-static void _2DGfxResObj_Init(struct _2DGfxRawResObj *obj) {
+static void _2DGfxResObj_Init(GF_2DGfxRawResObj *obj) {
     GF_ASSERT(obj != NULL);
     obj->id = -1;
     obj->data = NULL;
@@ -144,17 +144,17 @@ static void _2DGfxResObj_Init(struct _2DGfxRawResObj *obj) {
 
 // -----------------------------------------
 
-struct _3DGfxRawResMan *Create3DGfxResMan(int num, HeapID heapId) {
-    struct _3DGfxRawResMan *ret = AllocFromHeap(heapId, sizeof(struct _3DGfxRawResMan));
+GF_3DGfxRawResMan *Create3DGfxResMan(int num, HeapID heapId) {
+    GF_3DGfxRawResMan *ret = AllocFromHeap(heapId, sizeof(GF_3DGfxRawResMan));
     ret->man = Create2DGfxResMan(num, heapId);
-    ret->objs = AllocFromHeap(heapId, num * sizeof(struct _3DGfxRawResObj));
+    ret->objs = AllocFromHeap(heapId, num * sizeof(GF_3DGfxRawResObj));
     for (int i = 0; i < num; ++i) {
         _3DGfxResObj_Init(&ret->objs[i]);
     }
     return ret;
 }
 
-void Destroy3DGfxResMan(struct _3DGfxRawResMan *man) {
+void Destroy3DGfxResMan(GF_3DGfxRawResMan *man) {
     GF_ASSERT(man != NULL);
     _3DGfxResMan_FreeAllObjs(man);
     Destroy2DGfxResMan(man->man);
@@ -162,13 +162,13 @@ void Destroy3DGfxResMan(struct _3DGfxRawResMan *man) {
     FreeToHeap(man);
 }
 
-BOOL _3DGfxResMan_DoesNotHaveObjWithId(struct _3DGfxRawResMan *man, int id) {
+BOOL _3DGfxResMan_DoesNotHaveObjWithId(GF_3DGfxRawResMan *man, int id) {
     GF_ASSERT(man != NULL);
     return _2DGfxResMan_DoesNotHaveObjWithId(man->man, id);
 }
 
-struct _3DGfxRawResObj *_3DGfxResMan_AllocObj(struct _3DGfxRawResMan *man, void *resource, int id, BOOL shouldCopyWithoutTex, HeapID heapId) {
-    struct _3DGfxRawResObj *ret;
+GF_3DGfxRawResObj *_3DGfxResMan_AllocObj(GF_3DGfxRawResMan *man, void *resource, int id, BOOL shouldCopyWithoutTex, HeapID heapId) {
+    GF_3DGfxRawResObj *ret;
     void *newResource;
     GF_ASSERT(man != NULL);
     ret = _3DGfxResMan_FindNextFreeObjSlot(man);
@@ -184,13 +184,13 @@ struct _3DGfxRawResObj *_3DGfxResMan_AllocObj(struct _3DGfxRawResMan *man, void 
     return ret;
 }
 
-struct _3DGfxRawResObj *_3DGfxResMan_AllocObjAndKeys(struct _3DGfxRawResMan *man, void *resource, int id, BOOL shouldCopyWithoutTex, HeapID heapId) {
-    struct _3DGfxRawResObj *ret = _3DGfxResMan_AllocObj(man, resource, id, shouldCopyWithoutTex, heapId);
+GF_3DGfxRawResObj *_3DGfxResMan_AllocObjAndKeys(GF_3DGfxRawResMan *man, void *resource, int id, BOOL shouldCopyWithoutTex, HeapID heapId) {
+    GF_3DGfxRawResObj *ret = _3DGfxResMan_AllocObj(man, resource, id, shouldCopyWithoutTex, heapId);
     _3DGfxResObj_AllocVramAndGetKeys(ret);
     return ret;
 }
 
-static void _3DGfxResMan_FreeObj(struct _3DGfxRawResMan *man, struct _3DGfxRawResObj *obj) {
+static void _3DGfxResMan_FreeObj(GF_3DGfxRawResMan *man, GF_3DGfxRawResObj *obj) {
     GF_ASSERT(man != NULL);
     GF_ASSERT(obj != NULL);
     if (obj->headerNeedsLoad == TRUE && obj->hasLoadedFromHeader == FALSE) {
@@ -212,12 +212,12 @@ static void _3DGfxResMan_FreeObj(struct _3DGfxRawResMan *man, struct _3DGfxRawRe
     _3DGfxResObj_Init(obj);
 }
 
-void _3DGfxResMan_FreeObjById(struct _3DGfxRawResMan *man, int id) {
+void _3DGfxResMan_FreeObjById(GF_3DGfxRawResMan *man, int id) {
     GF_ASSERT(man != NULL);
     _3DGfxResMan_FreeObj(man, _3DGfxResMan_GetObjById(man, id));
 }
 
-void _3DGfxResMan_FreeAllObjs(struct _3DGfxRawResMan *man) {
+void _3DGfxResMan_FreeAllObjs(GF_3DGfxRawResMan *man) {
     int i;
 
     GF_ASSERT(man != NULL);
@@ -230,7 +230,7 @@ void _3DGfxResMan_FreeAllObjs(struct _3DGfxRawResMan *man) {
     }
 }
 
-struct _3DGfxRawResObj *_3DGfxResMan_GetObjById(struct _3DGfxRawResMan *man, int id) {
+GF_3DGfxRawResObj *_3DGfxResMan_GetObjById(GF_3DGfxRawResMan *man, int id) {
     int i;
     int idTemp;
 
@@ -248,17 +248,17 @@ struct _3DGfxRawResObj *_3DGfxResMan_GetObjById(struct _3DGfxRawResMan *man, int
     return NULL;
 }
 
-static int Get3DGfxRawResObjId(struct _3DGfxRawResObj *obj) {
+static int Get3DGfxRawResObjId(GF_3DGfxRawResObj *obj) {
     GF_ASSERT(obj != NULL);
     return Get2DGfxRawResObjId(obj->obj);
 }
 
-NNSG3dResTex *_3DGfxResObj_GetTex(struct _3DGfxRawResObj *obj) {
+NNSG3dResTex *_3DGfxResObj_GetTex(GF_3DGfxRawResObj *obj) {
     GF_ASSERT(obj != NULL);
     return _3DGfxResObj_GetTex_Internal(obj);
 }
 
-void _3DGfxResObj_LoadTex(struct _3DGfxRawResObj *obj) {
+void _3DGfxResObj_LoadTex(GF_3DGfxRawResObj *obj) {
     GF_ASSERT(obj != NULL);
     GF_ASSERT(!obj->hasLoadedFromHeader);
     if (obj->plttKey == 0) {
@@ -268,12 +268,12 @@ void _3DGfxResObj_LoadTex(struct _3DGfxRawResObj *obj) {
     ResTexLoad(_3DGfxResObj_GetTex_MaybeFromSecondaryHeader(obj), obj);
 }
 
-void _3DGfxResMan_LoadObjTexById(struct _3DGfxRawResMan *man, int id) {
+void _3DGfxResMan_LoadObjTexById(GF_3DGfxRawResMan *man, int id) {
     GF_ASSERT(man != NULL);
     _3DGfxResObj_LoadTex(_3DGfxResMan_GetObjById(man, id));
 }
 
-void _3DGfxResObj_FreeVramAndSecondaryHeader(struct _3DGfxRawResObj *obj) {
+void _3DGfxResObj_FreeVramAndSecondaryHeader(GF_3DGfxRawResObj *obj) {
     GF_ASSERT(obj != NULL);
     if (!obj->headerNeedsLoad) {
         GF_ASSERT(FALSE);
@@ -290,12 +290,12 @@ void _3DGfxResObj_FreeVramAndSecondaryHeader(struct _3DGfxRawResObj *obj) {
     obj->hasLoadedFromHeader = TRUE;
 }
 
-void _3DGfxResMan_FreeObjVramAndSecondaryHeaderById(struct _3DGfxRawResMan *obj, int id) {
+void _3DGfxResMan_FreeObjVramAndSecondaryHeaderById(GF_3DGfxRawResMan *obj, int id) {
     GF_ASSERT(obj != NULL);
     _3DGfxResObj_FreeVramAndSecondaryHeader(_3DGfxResMan_GetObjById(obj, id));
 }
 
-void _3DGfxResObj_AllocVramAndGetKeys(struct _3DGfxRawResObj *obj) {
+void _3DGfxResObj_AllocVramAndGetKeys(GF_3DGfxRawResObj *obj) {
     GF_ASSERT(obj != NULL);
     GF_ASSERT(!obj->hasLoadedFromHeader);
     if (obj->plttKey != 0) {
@@ -305,17 +305,17 @@ void _3DGfxResObj_AllocVramAndGetKeys(struct _3DGfxRawResObj *obj) {
     ResTexAllocVramAndGetKeys(_3DGfxResObj_GetTex_MaybeFromSecondaryHeader(obj), &obj->texKey, &obj->tex4x4Key, &obj->plttKey);
 }
 
-NNSG3dTexKey _3DGfxResObj_GetTexKey(struct _3DGfxRawResObj *obj) {
+NNSG3dTexKey _3DGfxResObj_GetTexKey(GF_3DGfxRawResObj *obj) {
     GF_ASSERT(obj != NULL);
     return obj->texKey;
 }
 
-NNSG3dTexKey _3DGfxResObj_GetTex4x4Key(struct _3DGfxRawResObj *obj) {
+NNSG3dTexKey _3DGfxResObj_GetTex4x4Key(GF_3DGfxRawResObj *obj) {
     GF_ASSERT(obj != NULL);
     return obj->tex4x4Key;
 }
 
-NNSG3dPlttKey _3DGfxResObj_GetPlttKey(struct _3DGfxRawResObj *obj) {
+NNSG3dPlttKey _3DGfxResObj_GetPlttKey(GF_3DGfxRawResObj *obj) {
     GF_ASSERT(obj != NULL);
     return obj->plttKey;
 }
@@ -324,7 +324,7 @@ u32 G3dResFileHeader_GetSizeWithoutTex(const NNSG3dResFileHeader *header) {
     return ResFileHeaderGetSizeWithoutTex(header);
 }
 
-static struct _3DGfxRawResObj *_3DGfxResMan_FindNextFreeObjSlot(const struct _3DGfxRawResMan *obj) {
+static GF_3DGfxRawResObj *_3DGfxResMan_FindNextFreeObjSlot(const GF_3DGfxRawResMan *obj) {
     for (int i = 0; i < obj->man->max; ++i) {
         if (obj->objs[i].obj == NULL) {
             return &obj->objs[i];
@@ -334,7 +334,7 @@ static struct _3DGfxRawResObj *_3DGfxResMan_FindNextFreeObjSlot(const struct _3D
     return NULL;
 }
 
-static void _3DGfxResObj_Init(struct _3DGfxRawResObj *obj) {
+static void _3DGfxResObj_Init(GF_3DGfxRawResObj *obj) {
     obj->obj = NULL;
     obj->texKey = 0;
     obj->tex4x4Key = 0;
@@ -344,11 +344,11 @@ static void _3DGfxResObj_Init(struct _3DGfxRawResObj *obj) {
     obj->hasLoadedFromHeader = FALSE;  // BUG: should be headerNeedsLoad?
 }
 
-static NNSG3dResTex *_3DGfxResObj_GetTex_Internal(struct _3DGfxRawResObj *obj) {
+static NNSG3dResTex *_3DGfxResObj_GetTex_Internal(GF_3DGfxRawResObj *obj) {
     return NNS_G3dGetTex(_2DGfxResObj_GetData(obj->obj));
 }
 
-static NNSG3dResTex *_3DGfxResObj_GetTex_MaybeFromSecondaryHeader(struct _3DGfxRawResObj *obj) {
+static NNSG3dResTex *_3DGfxResObj_GetTex_MaybeFromSecondaryHeader(GF_3DGfxRawResObj *obj) {
     return NNS_G3dGetTex(!obj->headerNeedsLoad ? _2DGfxResObj_GetData(obj->obj) : obj->resFileHeader);
 }
 
@@ -372,7 +372,7 @@ static void ResTexAllocVramAndGetKeys(NNSG3dResTex *tex, NNSG3dTexKey *texKey, N
     }
 }
 
-static void ResTexLoad(NNSG3dResTex *tex, struct _3DGfxRawResObj *obj) {
+static void ResTexLoad(NNSG3dResTex *tex, GF_3DGfxRawResObj *obj) {
     ResTexSetKeys(tex, obj->texKey, obj->tex4x4Key, obj->plttKey);
     DC_FlushRange(tex, tex->header.size);
     GF3dRender_LoadTexture(tex, TRUE);
