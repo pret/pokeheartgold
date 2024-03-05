@@ -179,7 +179,7 @@ _021E5A50:
 	add r1, r0, #0
 	bl sub_02023738
 	mov r0, #4
-	bl Simple3DVramManager_Init
+	bl GF3dRender_InitSimpleManager
 	bl ov01_021E61E0
 	bl ov01_021E6178
 	bl GfGfx_SwapDisplay
@@ -580,7 +580,7 @@ _021E5E12:
 	bl ov01_021E6214
 	bl sub_02023778
 	bl GF_DestroyVramTransferManager
-	bl Simple3DVramManager_Delete
+	bl GF3dRender_DeleteSimpleManager
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #4]
 	bl ov01_021E6734

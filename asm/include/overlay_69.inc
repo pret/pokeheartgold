@@ -59,10 +59,10 @@
 .public RemoveWindow
 .public CopyWindowToVram
 .public FillWindowPixelRect
-.public G3dRenderObjInit_FromHeader
-.public Draw3dModel
-.public Simple3DVramManager_Init
-.public Simple3DVramManager_Delete
+.public GF3dRender_InitObjFromHeader
+.public GF3dRender_DrawModel
+.public GF3dRender_InitSimpleManager
+.public GF3dRender_DeleteSimpleManager
 .public GF_DegreeToSinCosIdxNoWrap
 .public ResetAllTextPrinters
 .public TextPrinterCheckActive

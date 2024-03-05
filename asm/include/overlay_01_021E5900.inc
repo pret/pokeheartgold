@@ -25,8 +25,8 @@
 .public BG_ClearCharDataRange
 .public BgClearTilemapBufferAndCommit
 .public DoScheduledBgGpuUpdates
-.public Simple3DVramManager_Init
-.public Simple3DVramManager_Delete
+.public GF3dRender_InitSimpleManager
+.public GF3dRender_DeleteSimpleManager
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks

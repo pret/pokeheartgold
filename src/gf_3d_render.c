@@ -1,5 +1,5 @@
 #include "global.h"
-#include "unk_0201F4C4.h"
+#include "gf_3d_render.h"
 #include "gf_3d_vramman.h"
 #include "gf_gfx_planes.h"
 
@@ -10,7 +10,7 @@ static void initializeSimple3DVramManager(void);
 
 static void getFirstMdlFromSet(NNSG3dResMdl **ppMdl, NNSG3dResFileHeader **ppHeader) {
     NNSG3dResTex *tex = NNS_G3dGetTex(*ppHeader);
-    if (tex != NULL && !G3dResTexIsLoaded(tex)) {
+    if (tex != NULL && !GF3dRender_ResTexIsLoaded(tex)) {
         DC_FlushRange(*ppHeader, (*ppHeader)->fileSize);
         NNS_G3dResDefaultSetup(*ppHeader);
     }
@@ -19,17 +19,17 @@ static void getFirstMdlFromSet(NNSG3dResMdl **ppMdl, NNSG3dResFileHeader **ppHea
     *ppMdl = NNS_G3dGetMdlByIdx(mdlSet, 0);
 }
 
-void G3dRenderObjInit_FromHeader(NNSG3dRenderObj *obj, NNSG3dResMdl **p_mdl, NNSG3dResFileHeader **p_header) {
+void GF3dRender_InitObjFromHeader(NNSG3dRenderObj *obj, NNSG3dResMdl **p_mdl, NNSG3dResFileHeader **p_header) {
     getFirstMdlFromSet(p_mdl, p_header);
     GF_ASSERT(p_mdl != NULL);
     NNS_G3dRenderObjInit(obj, *p_mdl);
 }
 
-BOOL G3dResTexIsLoaded(NNSG3dResTex *tex) {
+BOOL GF3dRender_ResTexIsLoaded(NNSG3dResTex *tex) {
     return (tex->texInfo.flag & NNS_G3D_RESTEX_LOADED) || (tex->tex4x4Info.flag & NNS_G3D_RESTEX_LOADED);
 }
 
-void Draw3dModel(NNSG3dRenderObj *obj, const VecFx32 *translation, const MtxFx33 *rotation, const VecFx32 *scale) {
+void GF3dRender_DrawModel(NNSG3dRenderObj *obj, const VecFx32 *translation, const MtxFx33 *rotation, const VecFx32 *scale) {
     NNS_G3dGlbSetBaseTrans(translation);
     NNS_G3dGlbSetBaseRot(rotation);
     NNS_G3dGlbSetBaseScale(scale);
@@ -37,7 +37,7 @@ void Draw3dModel(NNSG3dRenderObj *obj, const VecFx32 *translation, const MtxFx33
     NNS_G3dDraw(obj);
 }
 
-void Simple3DVramManager_Init(HeapID heapID) {
+void GF3dRender_InitSimpleManager(HeapID heapID) {
     sSimple3DVramManager = GF_3DVramMan_Create(heapID, 0, 2, 0, 4, initializeSimple3DVramManager);
 }
 
@@ -50,15 +50,15 @@ static void initializeSimple3DVramManager(void) {
     G3X_AlphaBlend(TRUE);
     G3X_EdgeMarking(FALSE);
     G3X_SetFog(FALSE, GX_FOGBLEND_COLOR_ALPHA, GX_FOGSLOPE_0x8000, 0);
-    G3X_SetClearColor(RGB_BLACK, 0, 0x7FFF, 0x3F, FALSE);
+    G3X_SetClearColor(RGB_BLACK, 0, GF_GX_CLEARCOLORDEPTH_MAX, 0x3F, FALSE);
     G3_ViewPort(0, 0, 255, 191);
 }
 
-void Simple3DVramManager_Delete(void) {
+void GF3dRender_DeleteSimpleManager(void) {
     GF_3DVramMan_Delete(sSimple3DVramManager);
 }
 
-BOOL Bind3dModelSet(NNSG3dResFileHeader *hdr, const NNSG3dResTex *tex) {
+BOOL GF3dRender_BindModelSet(NNSG3dResFileHeader *hdr, const NNSG3dResTex *tex) {
     NNSG3dResMdlSet *mdlSet = NNS_G3dGetMdlSet(hdr);
     if (tex != NULL) {
         NNS_G3dBindMdlSet(mdlSet, tex);
@@ -68,7 +68,7 @@ BOOL Bind3dModelSet(NNSG3dResFileHeader *hdr, const NNSG3dResTex *tex) {
     return FALSE;
 }
 
-BOOL AllocAndLoad3dTexResources(NNSG3dResTex *tex) {
+BOOL GF3dRender_AllocAndLoadTexResources(NNSG3dResTex *tex) {
     if (tex == NULL) {
         return FALSE;
     }
@@ -135,16 +135,16 @@ BOOL AllocAndLoad3dTexResources(NNSG3dResTex *tex) {
         NNS_G3dTexSetTexKey(tex, texKey, tex4x4Key);
         NNS_G3dPlttSetPlttKey(tex, plttKey);
         DC_FlushRange(tex, tex->header.size);
-        Call_NNS_G3dTexLoad(tex, TRUE);
-        Call_NNS_G3dPlttLoad(tex, TRUE);
+        GF3dRender_LoadTexture(tex, TRUE);
+        GF3dRender_LoadPalette(tex, TRUE);
     }
     return TRUE;
 }
 
 // temporary routines
-void Call_NNS_G3dTexLoad(NNSG3dResTex *pTex, BOOL exec_begin_end) {
+void GF3dRender_LoadTexture(NNSG3dResTex *pTex, BOOL exec_begin_end) {
     NNS_G3dTexLoad(pTex, exec_begin_end);
 }
-void Call_NNS_G3dPlttLoad(NNSG3dResTex *pTex, BOOL exec_begin_end) {
+void GF3dRender_LoadPalette(NNSG3dResTex *pTex, BOOL exec_begin_end) {
     NNS_G3dPlttLoad(pTex, exec_begin_end);
 }

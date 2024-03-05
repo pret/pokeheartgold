@@ -143,8 +143,8 @@
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
-.public Bind3dModelSet
-.public AllocAndLoad3dTexResources
+.public GF3dRender_BindModelSet
+.public GF3dRender_AllocAndLoadTexResources
 .public sub_0201F990
 .public GF_SinDegNoWrap
 .public GF_DegreeToSinCosIdx

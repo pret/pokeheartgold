@@ -18,7 +18,7 @@
 #include "unk_020215A0.h"
 #include "unk_02022588.h"
 #include "unk_02026E30.h"
-#include "unk_0201F4C4.h"
+#include "gf_3d_render.h"
 #include "unk_02009D48.h"
 #include "render_window.h"
 #include "touchscreen.h"
@@ -634,7 +634,7 @@ static void init3dEngine(struct ChooseStarterAppWork *work) {
         work->edgeColorTable[i] = GX_RGB(4, 4, 4);
     }
     G3X_SetEdgeColorTable(work->edgeColorTable);
-    G3X_SetClearColor(GX_RGB(31, 31, 16), 0, 0x7FFF, 0x3F, FALSE);
+    G3X_SetClearColor(GX_RGB(31, 31, 16), 0, GF_GX_CLEARCOLORDEPTH_MAX, 0x3F, FALSE);
     NNS_G3dGlbLightVector(GX_LIGHTID_0, 0, -FX16_ONE, 0);
     NNS_G3dGlbLightColor(GX_LIGHTID_0, RGB_WHITE);
     NNS_G3dGlbMaterialColorDiffAmb(RGB_WHITE, RGB_WHITE, FALSE);
@@ -668,7 +668,7 @@ static void updateBaseAndBallsRotation(struct ChooseStarterAppWork *work) {
             MTX_Identity33(&rotMtx);
             MTX_RotY33(&tmpMtx, FX_SinIdx(rnd->yRotAngle), FX_CosIdx(rnd->yRotAngle));
             MTX_Concat33(&tmpMtx, &rotMtx, &rotMtx);
-            Draw3dModel(&rnd->obj, &rnd->translVec, &rotMtx, &scaleVec);
+            GF3dRender_DrawModel(&rnd->obj, &rnd->translVec, &rotMtx, &scaleVec);
         }
     }
 
@@ -839,11 +839,11 @@ static void load3dModelResourceFromNarc(struct ChooseStarter3dRes *res, int file
     res->mdlSet = NNS_G3dGetMdlSet(res->header);
     res->mdl = NNS_G3dGetMdlByIdx(res->mdlSet, 0);
     res->tex = NNS_G3dGetTex(res->header);
-    AllocAndLoad3dTexResources(res->tex);
+    GF3dRender_AllocAndLoadTexResources(res->tex);
 }
 
 static void init3dModelRender(struct ChooseStarterRnd *rnd, struct ChooseStarter3dRes *res) {
-    Bind3dModelSet(res->header, res->tex);
+    GF3dRender_BindModelSet(res->header, res->tex);
     NNS_G3dRenderObjInit(&rnd->obj, res->mdl);
 }
 

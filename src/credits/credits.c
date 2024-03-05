@@ -17,7 +17,6 @@
 #include "unk_02022588.h"
 #include "unk_02023694.h"
 #include "bg_window.h"
-#include "constants/rgb.h"
 #include "constants/sndseq.h"
 #include "credits/credits.h"
 

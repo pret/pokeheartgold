@@ -1,7 +1,7 @@
 #include "global.h"
 #include "unk_02025534.h"
 #include "system.h"
-#include "unk_0201F4C4.h"
+#include "gf_3d_render.h"
 
 static struct _2DGfxRawResObj *_2DGfxResMan_FindNextFreeObjSlot(struct _2DGfxRawResMan *resourceMgr);
 static void _2DGfxResObj_Init(struct _2DGfxRawResObj *resourceObj);
@@ -375,8 +375,8 @@ static void ResTexAllocVramAndGetKeys(NNSG3dResTex *tex, NNSG3dTexKey *texKey, N
 static void ResTexLoad(NNSG3dResTex *tex, struct _3DGfxRawResObj *obj) {
     ResTexSetKeys(tex, obj->texKey, obj->tex4x4Key, obj->plttKey);
     DC_FlushRange(tex, tex->header.size);
-    Call_NNS_G3dTexLoad(tex, TRUE);
-    Call_NNS_G3dPlttLoad(tex, TRUE);
+    GF3dRender_LoadTexture(tex, TRUE);
+    GF3dRender_LoadPalette(tex, TRUE);
 }
 
 static void ResTexSetKeys(NNSG3dResTex *tex, NNSG3dTexKey texKey, NNSG3dTexKey tex4x4Key, NNSG3dPlttKey plttKey) {

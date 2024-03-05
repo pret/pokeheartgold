@@ -59,10 +59,10 @@
 .public BG_SetMaskColor
 .public BgClearTilemapBufferAndCommit
 .public DoScheduledBgGpuUpdates
-.public G3dRenderObjInit_FromHeader
-.public Draw3dModel
-.public Simple3DVramManager_Init
-.public Simple3DVramManager_Delete
+.public GF3dRender_InitObjFromHeader
+.public GF3dRender_DrawModel
+.public GF3dRender_InitSimpleManager
+.public GF3dRender_DeleteSimpleManager
 .public SysTask_GetData
 .public GfGfx_SetBanks
 .public GfGfx_EngineATogglePlanes

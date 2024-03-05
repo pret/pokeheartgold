@@ -76,7 +76,7 @@ _021E5960:
 	ldr r0, [r5]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl Simple3DVramManager_Init
+	bl GF3dRender_InitSimpleManager
 	ldr r0, [r5]
 	bl BgConfig_Alloc
 	ldr r1, _021E5A24 ; =0x0000C010
@@ -904,7 +904,7 @@ ov69_021E6080: ; 0x021E6080
 	ldr r0, _021E60EC ; =0x0000C080
 	ldr r0, [r4, r0]
 	bl MessageFormat_Delete
-	bl Simple3DVramManager_Delete
+	bl GF3dRender_DeleteSimpleManager
 	ldr r0, _021E60F0 ; =0x0000C010
 	ldr r0, [r4, r0]
 	bl FreeToHeap
@@ -2612,7 +2612,7 @@ ov69_021E6E88: ; 0x021E6E88
 	add r0, r5, r0
 	add r1, r5, r1
 	add r2, r5, r2
-	bl G3dRenderObjInit_FromHeader
+	bl GF3dRender_InitObjFromHeader
 	ldr r2, [r5]
 	add r0, r4, #0
 	mov r1, #1
@@ -2626,7 +2626,7 @@ ov69_021E6E88: ; 0x021E6E88
 	add r0, r5, r0
 	add r1, r5, r1
 	add r2, r5, r2
-	bl G3dRenderObjInit_FromHeader
+	bl GF3dRender_InitObjFromHeader
 	ldr r2, [r5]
 	add r0, r4, #0
 	mov r1, #2
@@ -2640,7 +2640,7 @@ ov69_021E6E88: ; 0x021E6E88
 	add r0, r5, r0
 	add r1, r5, r1
 	add r2, r5, r2
-	bl G3dRenderObjInit_FromHeader
+	bl GF3dRender_InitObjFromHeader
 	ldr r2, [r5]
 	add r0, r4, #0
 	mov r1, #3
@@ -2653,7 +2653,7 @@ ov69_021E6E88: ; 0x021E6E88
 	add r0, r5, r0
 	add r1, r5, r1
 	add r2, r5, r2
-	bl G3dRenderObjInit_FromHeader
+	bl GF3dRender_InitObjFromHeader
 	ldr r2, [r5]
 	add r0, r4, #0
 	mov r1, #4
@@ -2666,7 +2666,7 @@ ov69_021E6E88: ; 0x021E6E88
 	add r0, r5, r0
 	add r1, r5, r1
 	add r2, r5, r2
-	bl G3dRenderObjInit_FromHeader
+	bl GF3dRender_InitObjFromHeader
 	pop {r3, r4, r5, pc}
 	nop
 _021E6F2C: .word 0x0000C0DC
@@ -3354,7 +3354,7 @@ _021E7446:
 	add r0, r5, r0
 	add r2, sp, #0x4c
 	add r3, r5, r3
-	bl Draw3dModel
+	bl GF3dRender_DrawModel
 	ldr r4, _021E750C ; =ov69_021E7794
 	add r3, sp, #0x28
 	mov r2, #4
@@ -3373,7 +3373,7 @@ _021E7470:
 	add r3, #0xa0
 	add r1, r5, r1
 	add r3, r5, r3
-	bl Draw3dModel
+	bl GF3dRender_DrawModel
 	ldr r4, _021E7514 ; =ov69_021E774C
 	add r3, sp, #4
 	mov r2, #4
@@ -3412,7 +3412,7 @@ _021E74B6:
 	add r2, sp, #4
 	add r1, r5, r1
 	add r3, r5, r3
-	bl Draw3dModel
+	bl GF3dRender_DrawModel
 _021E74DE:
 	ldr r0, [r5, #0xc]
 	add r7, r7, #1

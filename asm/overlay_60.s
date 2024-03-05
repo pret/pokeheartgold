@@ -5836,7 +5836,7 @@ _021E99DE:
 	add r0, r0, r7
 	add r1, sp, #0x28
 	add r2, r2, r7
-	bl G3dRenderObjInit_FromHeader
+	bl GF3dRender_InitObjFromHeader
 	ldr r0, [sp, #0xc]
 	add r0, r0, r7
 	add r0, #0xd8
@@ -6052,7 +6052,7 @@ _021E9BCC:
 	add r1, sp, #0
 	add r2, sp, #0x18
 	add r3, sp, #0xc
-	bl Draw3dModel
+	bl GF3dRender_DrawModel
 	mov r0, #0
 	mov r1, #1
 	bl sub_02026E50

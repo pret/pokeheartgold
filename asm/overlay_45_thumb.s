@@ -15182,7 +15182,7 @@ _02230A24:
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
 	ldr r1, [r4, #0xc]
-	bl Bind3dModelSet
+	bl GF3dRender_BindModelSet
 	ldr r0, [r4, #8]
 	mov r1, #0x14
 	bl NNS_G3dMdlSetMdlPolygonIDAll

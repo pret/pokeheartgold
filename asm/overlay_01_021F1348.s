@@ -1086,7 +1086,7 @@ ov01_021F1A48: ; 0x021F1A48
 	bl NNS_G3dGetTex
 	cmp r0, #0
 	beq _021F1A78
-	bl G3dResTexIsLoaded
+	bl GF3dRender_ResTexIsLoaded
 	cmp r0, #0
 	bne _021F1A78
 	ldr r0, [r4]

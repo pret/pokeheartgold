@@ -10,7 +10,7 @@
 #include "sound.h"
 #include "unk_020921A4.h"
 #include "unk_02091CDC.h"
-#include "unk_0201F4C4.h"
+#include "gf_3d_render.h"
 #include "unk_02026E30.h"
 #include "camera.h"
 #include "unk_02020B8C.h"
@@ -300,7 +300,7 @@ static void TitleScreen_Load3DObjects(TitleScreenAnimObject *animObj, int texFil
     GF_ExpHeap_FndInitAllocator(&animObj->allocator, heapID, 4);
     void *pAnim;
     animObj->resFileHeader = AllocAndReadWholeNarcMemberByIdPair(NARC_demo_title_titledemo, texFileId, heapID);
-    G3dRenderObjInit_FromHeader(&animObj->renderObj, &animObj->resModel, &animObj->resFileHeader);
+    GF3dRender_InitObjFromHeader(&animObj->renderObj, &animObj->resModel, &animObj->resFileHeader);
     NNSG3dResTex *tex = NNS_G3dGetTex(animObj->resFileHeader);
 
     if (nsbcaId > 0) {
@@ -390,7 +390,7 @@ static void TitleScreenAnimObjs_Run(TitleScreenAnimObject *animObj) {
         Thunk_G3X_Reset();
         Camera_PushLookAtToNNSGlb();
         sub_02020D2C(&mtx, &animObj->rotationVec);
-        Draw3dModel(&animObj->renderObj, &animObj->translation, &mtx, &animObj->scale);
+        GF3dRender_DrawModel(&animObj->renderObj, &animObj->translation, &mtx, &animObj->scale);
         switch (animObj->subState) {
         case TITLESCREEN_MODELSUB_STOP:
             TitleScreen_AdvanceAnimObjsFrame(animObj->_3dAnmObjs, 0);

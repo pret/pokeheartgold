@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public Draw3dModel
+.public GF3dRender_DrawModel
 .public Camera_GetLookAtCamPos
 .public sub_0205F09C
 .public MapObject_GetPositionVec
