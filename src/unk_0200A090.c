@@ -21,7 +21,7 @@ static void *sub_0200ACA4(NARC *narc, int fileId, BOOL compressed, HeapID heapId
 
 GF_2DGfxResMan *Create2DGfxResObjMan(int num, GfGfxResType type, HeapID heapId) {
     GF_2DGfxResMan *ret = AllocFromHeap(heapId, sizeof(GF_2DGfxResMan));
-    ret->resourceMgr = Create2DGfxResMan(num, heapId);
+    ret->resourceMgr = GF2dGfxRawResMan_Create(num, heapId);
     ret->objects = AllocFromHeap(heapId, num * sizeof(GF_2DGfxResObj));
     memset(ret->objects, 0, num * sizeof(GF_2DGfxResObj));
     ret->max = num;
@@ -35,7 +35,7 @@ void Destroy2DGfxResObjMan(GF_2DGfxResMan *mgr) {
     GF_ASSERT(mgr->resourceMgr != NULL);
     GF_ASSERT(mgr->objects != NULL);
     destroyAllObjects(mgr);
-    Destroy2DGfxResMan(mgr->resourceMgr);
+    GF2dGfxRawResObj_Destroy(mgr->resourceMgr);
     mgr->resourceMgr = NULL;
     FreeToHeap(mgr->objects);
     mgr->objects = NULL;
@@ -248,20 +248,20 @@ void Delete2DGfxResObjList(GF_2DGfxResObjList *list) {
 
 BOOL GF2DGfxResObjExistsById(GF_2DGfxResMan *mgr, int a1) {
     GF_ASSERT(mgr != NULL);
-    return _2DGfxResMan_DoesNotHaveObjWithId(mgr->resourceMgr, a1);
+    return GF2dGfxRawResMan_DoesNotHaveObjWithId(mgr->resourceMgr, a1);
 }
 
 void sub_0200A740(GF_2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
     destroyResObjExtra(obj);
-    _2DGfxResObj_ReplaceData(obj->resource, NULL);
+    GF2dGfxRawResObj_ReplaceData(obj->resource, NULL);
 }
 
 void DestroySingle2DGfxResObj(GF_2DGfxResMan *a0, GF_2DGfxResObj *a1) {
     GF_ASSERT(a0 != NULL);
     GF_ASSERT(a0->objects != NULL);
     destroyResObjExtra(a1);
-    _2DGfxResMan_FreeObj(a0->resourceMgr, a1->resource);
+    GF2dGfxRawResMan_FreeObj(a0->resourceMgr, a1->resource);
     a1->resource = NULL;
     a0->num--;
 }
@@ -472,7 +472,7 @@ static GF_2DGfxResObj *sub_0200AA70(GF_2DGfxResMan *mgr) {
 }
 
 void sub_0200AA9C(GF_2DGfxResObj *obj, GfGfxResType type, int vram, int pltt_num, HeapID heapId) {
-    void *resource = _2DGfxResObj_GetData(obj->resource);
+    void *resource = GF2dGfxRawResObj_GetData(obj->resource);
     switch (type) {
     case GF_GFX_RES_TYPE_CHAR:
         obj->extra = GetResourceExtraCharData(resource, vram, heapId);
@@ -548,21 +548,21 @@ static void *getResObjExtra(GF_2DGfxResObj *obj) {
 }
 
 static void Add2DGfxResObjFromFile(GF_2DGfxResMan *mgr, GF_2DGfxResObj *obj, char *name, int id, int vram, int pltt_num, GfGfxResType type, HeapID heapId) {
-    obj->resource = _2DGfxResMan_ReadAndAllocObj(mgr->resourceMgr, name, id, heapId);
+    obj->resource = GF2dGfxRawResMan_ReadAndAllocObj(mgr->resourceMgr, name, id, heapId);
     obj->type = type;
     sub_0200AA9C(obj, type, vram, pltt_num, heapId);
 }
 
 static void Add2DGfxResObjFromNarc(GF_2DGfxResMan *mgr, GF_2DGfxResObj *obj, NarcId narcId, int fileId, BOOL compressed, int id, int vram, int pltt_num, GfGfxResType type, HeapID heapId, BOOL atEnd) {
     void *res = GfGfxLoader_LoadFromNarc(narcId, fileId, compressed, heapId, atEnd);
-    obj->resource = _2DGfxResMan_AllocObj(mgr->resourceMgr, res, id);
+    obj->resource = GF2dGfxRawResMan_AllocObj(mgr->resourceMgr, res, id);
     obj->type = type;
     sub_0200AA9C(obj, type, vram, pltt_num, heapId);
 }
 
 static void Add2DGfxResObjFromOpenNarc(GF_2DGfxResMan *mgr, GF_2DGfxResObj *obj, NARC *narc, int fileId, BOOL compressed, int id, int vram, int pltt_num, GfGfxResType type, HeapID heapId, BOOL atEnd) {
     void *res = sub_0200ACA4(narc, fileId, compressed, heapId, atEnd);
-    obj->resource = _2DGfxResMan_AllocObj(mgr->resourceMgr, res, id);
+    obj->resource = GF2dGfxRawResMan_AllocObj(mgr->resourceMgr, res, id);
     obj->type = type;
     sub_0200AA9C(obj, type, vram, pltt_num, heapId);
 }
