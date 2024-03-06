@@ -1648,7 +1648,7 @@ _02063E9C:
 	str r0, [r4]
 	ldr r1, [r4]
 	add r0, r5, #0
-	bl MapObject_SetGfxID
+	bl MapObject_SetGfxId
 	add r1, r4, #0
 	ldr r2, [r4]
 	add r0, r5, #0
@@ -1673,7 +1673,7 @@ _02063ECC:
 	str r0, [r4]
 	ldr r1, [r4]
 	add r0, r5, #0
-	bl MapObject_SetGfxID
+	bl MapObject_SetGfxId
 	ldr r1, [r4]
 	ldr r0, _02063FE0 ; =0x0000FFFF
 	cmp r1, r0

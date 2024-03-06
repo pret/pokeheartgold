@@ -475,7 +475,7 @@ BOOL ScrCmd_CheckFlag(ScriptContext* ctx) {
     FieldSystem* fieldSystem = ctx->fieldSystem;
     u16 flag_to_check = ScriptReadHalfword(ctx);
 
-    ctx->comparisonResult = FieldSystem_FlagGet(fieldSystem, flag_to_check);
+    ctx->comparisonResult = FieldSystem_FlagCheck(fieldSystem, flag_to_check);
 
     return FALSE;
 }
@@ -485,7 +485,7 @@ BOOL ScrCmd_CheckFlagVar(ScriptContext* ctx) {
     u16* flag_in_var_to_check = ScriptGetVarPointer(ctx);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
 
-    *ret_ptr = FieldSystem_FlagGet(fieldSystem, *flag_in_var_to_check);
+    *ret_ptr = FieldSystem_FlagCheck(fieldSystem, *flag_in_var_to_check);
 
     return FALSE;
 }
@@ -1409,7 +1409,7 @@ BOOL ScrCmd_ShowPerson(ScriptContext *ctx) {
     u16 objectId = ScriptGetVar(ctx);
     u32 nobjs = Field_GetNumObjectEvents(fieldSystem);
     const ObjectEvent *objectEvents = Field_GetObjectEvents(fieldSystem);
-    GF_ASSERT(CreateMapObjectFromTemplate(fieldSystem->mapObjectManager, objectId, nobjs, fieldSystem->location->mapId, objectEvents));
+    GF_ASSERT(MapObject_CreateFromObjectEventWithId(fieldSystem->mapObjectManager, objectId, nobjs, fieldSystem->location->mapId, objectEvents));
     return FALSE;
 }
 
@@ -1430,7 +1430,7 @@ BOOL ScrCmd_102(ScriptContext *ctx) {
     u16 y = ScriptGetVar(ctx);
     LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_CAMERA_TARGET);
     VecFx32 *pos;
-    *p_cameraObj = CreateSpecialFieldObject(ctx->fieldSystem->mapObjectManager, x, y, 0, SPRITE_CAMERA_FOCUS, 0, ctx->fieldSystem->location->mapId);
+    *p_cameraObj = MapObject_Create(ctx->fieldSystem->mapObjectManager, x, y, 0, SPRITE_CAMERA_FOCUS, 0, ctx->fieldSystem->location->mapId);
     sub_02061070(*p_cameraObj);
     MapObject_SetVisible(*p_cameraObj, TRUE);
     MapObject_ClearFlag18(*p_cameraObj, FALSE);
@@ -1454,7 +1454,7 @@ BOOL ScrCmd_678(ScriptContext *ctx) {
     u16 x = ScriptGetVar(ctx);
     u16 y = ScriptGetVar(ctx);
     LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_CAMERA_TARGET);
-    *p_cameraObj = CreateSpecialFieldObject(ctx->fieldSystem->mapObjectManager, x, y, 0, SPRITE_CAMERA_FOCUS, 0, ctx->fieldSystem->location->mapId);
+    *p_cameraObj = MapObject_Create(ctx->fieldSystem->mapObjectManager, x, y, 0, SPRITE_CAMERA_FOCUS, 0, ctx->fieldSystem->location->mapId);
     sub_02061070(*p_cameraObj);
     MapObject_SetVisible(*p_cameraObj, TRUE);
     MapObject_ClearFlag18(*p_cameraObj, FALSE);
@@ -4767,9 +4767,9 @@ BOOL ScrCmd_621(ScriptContext *ctx) {
     int n, i;
 
     int partyCount = Party_GetCount(SaveArray_Party_Get(fieldSystem->saveData));
-    if (FieldSystem_FlagGet(fieldSystem, FLAG_GOT_TM51_FROM_FALKNER)) {
+    if (FieldSystem_FlagCheck(fieldSystem, FLAG_GOT_TM51_FROM_FALKNER)) {
         n = 0;
-    } else if (FieldSystem_FlagGet(fieldSystem, FLAG_MET_PASSERBY_BOY)) {
+    } else if (FieldSystem_FlagCheck(fieldSystem, FLAG_MET_PASSERBY_BOY)) {
         n = 1;
     } else if (partyCount > 0) {
         n = 2;

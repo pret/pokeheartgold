@@ -53,7 +53,7 @@
 .public sub_0205C78C
 .public sub_0205C790
 .public PlayerAvatar_GetSpriteByStateAndGender
-.public CreateSpecialFieldObject
+.public MapObject_Create
 .public sub_0205E38C
 .public MapObject_Remove
 .public sub_0205E420

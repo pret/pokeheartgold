@@ -27,7 +27,7 @@
 .public sub_0205EEF4
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
-.public MapObject_SetGfxID
+.public MapObject_SetGfxId
 .public MapObject_GetMovement
 .public MapObject_GetType
 .public MapObject_GetScript

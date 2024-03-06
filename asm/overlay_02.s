@@ -20434,7 +20434,7 @@ _0224F5A4:
 	bl HiddenItemScriptNoToFlagId
 	add r1, r0, #0
 	ldr r0, [sp]
-	bl FieldSystem_FlagGet
+	bl FieldSystem_FlagCheck
 	cmp r0, #0
 	bne _0224F5BE
 	add r4, r4, #1

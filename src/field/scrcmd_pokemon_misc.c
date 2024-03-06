@@ -978,7 +978,7 @@ static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectManager, u8 unkA
     spriteId = FollowMon_GetSpriteID(species, form, gender) << 1;
     size = FollowMon_GetSizeParamBySpecies(species)*3 + unkA;
 
-    mapObj = CreateSpecialFieldObjectEx(mapObjectManager, x, y, DIR_SOUTH, size + 0x19f, 0, mapId, 0, 0, spriteId);
+    mapObj = MapObject_CreateWithParams(mapObjectManager, x, y, DIR_SOUTH, size + 0x19f, 0, mapId, 0, 0, spriteId);
 
     if (!mapObj) {
         GF_AssertFail();
