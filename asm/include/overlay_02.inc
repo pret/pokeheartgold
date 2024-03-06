@@ -204,7 +204,7 @@
 .public FieldSystem_GetSaveData
 .public StartMapSceneScript
 .public QueueScript
-.public FieldSystem_FlagGet
+.public FieldSystem_FlagCheck
 .public HiddenItemScriptNoToFlagId
 .public Save_VarsFlags_Get
 .public Save_VarsFlags_CheckFlagInArray

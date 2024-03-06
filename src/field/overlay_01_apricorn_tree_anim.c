@@ -180,7 +180,7 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
 }
 
 static LocalMapObject *CreateJumpingApricornObj(MapObjectManager *taskman, u32 sprite, u32 x, u32 z) {
-    LocalMapObject *obj = CreateSpecialFieldObject(taskman, x, z, 0, sprite, 0, 1);
+    LocalMapObject *obj = MapObject_Create(taskman, x, z, 0, sprite, 0, 1);
     GF_ASSERT(obj != NULL);
 
     MapObject_SetID(obj, obj_apricorn);

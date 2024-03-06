@@ -160,7 +160,7 @@ PlayerAvatar* sub_0205C408(MapObjectManager* man, PlayerSaveData* playerSaveData
     int state = sub_0205C7EC(playerSaveData);
     sub_0205C500(avatar, state, gender, playerSaveData);
     LocalMapObject* mapObj = sub_0205C640(man);
-    MapObject_SetGfxID(mapObj, PlayerAvatar_GetSpriteByStateAndGender(state, gender));
+    MapObject_SetGfxId(mapObj, PlayerAvatar_GetSpriteByStateAndGender(state, gender));
     MapObject_SetFlagsBits(mapObj, MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_UNK10);
     MapObject_ClearFlagsBits(mapObj, MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7);
     MapObject_SetFlag29(mapObj, TRUE);
@@ -216,7 +216,7 @@ void sub_0205C500(PlayerAvatar* avatar, int state, u32 gender, PlayerSaveData* p
 }
 
 void CreatePlayerAvatarMapObject(PlayerAvatar* avatar, MapObjectManager* man, u32 sprite, u32 direction, u32 x, u32 y) {
-    LocalMapObject* mapObj = CreateSpecialFieldObject(man, x, y, direction, sprite, 1, 1);
+    LocalMapObject* mapObj = MapObject_Create(man, x, y, direction, sprite, 1, 1);
     if (!mapObj) {
         GF_ASSERT(FALSE);
     }

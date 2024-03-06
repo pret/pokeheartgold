@@ -180,7 +180,7 @@ BOOL ScrCmd_UpdateDaycareMonObjects(ScriptContext* ctx) {
 
 static LocalMapObject* CreateDaycareMonSpriteInternal(MapObjectManager* object_man, u8 dc_mon_idx, u16 species, u8 form, u32 gender, u32 direction, u32 x, u32 y, u32 map_no, BOOL shiny) {
     u32 sprite_id = FollowMon_GetSpriteID(species, form, gender);
-    LocalMapObject* lmo = CreateSpecialFieldObject(object_man, x, y, direction, sprite_id, 11, map_no);
+    LocalMapObject* lmo = MapObject_Create(object_man, x, y, direction, sprite_id, 11, map_no);
     GF_ASSERT(lmo != NULL);
 
     MapObject_SetID(lmo, obj_daycare_poke_1 + dc_mon_idx);
