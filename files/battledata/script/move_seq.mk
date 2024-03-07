@@ -26,5 +26,4 @@ endif
 
 $(MOVE_SCRIPT_NARC): $(MOVE_SCRIPT_BINS)
 
-# Once this has been reversed, uncomment the below
 FS_CLEAN_TARGETS += $(MOVE_SCRIPT_NARC) $(MOVE_SCRIPT_BINS) $(MOVE_SCRIPT_OBJS) $(MOVE_SCRIPT_DEPS)

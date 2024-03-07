@@ -116,16 +116,16 @@ typedef enum Terrain {
 #define BATTLE_OUTCOME_FOE_FLED             6
 
 //Battle Result
-#define BATTLE_IN_PROGRESS      0
-#define BATTLE_RESULT_WIN       (1 << 0)
-#define BATTLE_RESULT_LOSE      (1 << 1)
+#define BATTLE_IN_PROGRESS               0
+#define BATTLE_RESULT_WIN               (1 << 0)
+#define BATTLE_RESULT_LOSE              (1 << 1)
 #define BATTLE_RESULT_CAPTURED_MON      (1 << 2)
-#define BATTLE_RESULT_TRY_FLEE_WAIT      (1 << 6)
-#define BATTLE_RESULT_TRY_FLEE      (1 << 7)
+#define BATTLE_RESULT_TRY_FLEE_WAIT     (1 << 6)
+#define BATTLE_RESULT_TRY_FLEE          (1 << 7)
 
-#define BATTLE_RESULT_DRAW      (BATTLE_RESULT_WIN | BATTLE_RESULT_LOSE)
-#define BATTLE_RESULT_PLAYER_FLED      (BATTLE_RESULT_CAPTURED_MON | BATTLE_RESULT_WIN)
-#define BATTLE_RESULT_ENEMY_FLED      (BATTLE_RESULT_CAPTURED_MON | BATTLE_RESULT_LOSE)
+#define BATTLE_RESULT_DRAW              (BATTLE_RESULT_WIN | BATTLE_RESULT_LOSE)
+#define BATTLE_RESULT_PLAYER_FLED       (BATTLE_RESULT_CAPTURED_MON | BATTLE_RESULT_WIN)
+#define BATTLE_RESULT_ENEMY_FLED        (BATTLE_RESULT_CAPTURED_MON | BATTLE_RESULT_LOSE)
 
 //Battle Type
 #define BATTLE_TYPE_NONE                     0
@@ -166,7 +166,7 @@ typedef enum Terrain {
 #define MOVE_EFFECT_FLAG_PERISH_SONG             (1 << 5)
 #define MOVE_EFFECT_FLAG_FLY                     (1 << 6)
 #define MOVE_EFFECT_FLAG_DIG                     (1 << 7)
-#define MOVE_EFFECT_FLAG_MINIMIZE                       (1 << 8)
+#define MOVE_EFFECT_FLAG_MINIMIZE                (1 << 8)
 #define MOVE_EFFECT_FLAG_CHARGE                  (1 << 9)
 #define MOVE_EFFECT_FLAG_INGRAIN                 (1 << 10)
 #define MOVE_EFFECT_FLAG_YAWN                    (3 << 11)
@@ -350,6 +350,7 @@ typedef enum Terrain {
 #define STATUS2_ATTRACT                     (STATUS2_ATTRACT_BATTLER1 | STATUS2_ATTRACT_BATTLER2 | STATUS2_ATTRACT_BATTLER3 | STATUS2_ATTRACT_BATTLER4)
 
 #define STATUS2_UPROAR_SHIFT                4
+#define STATUS2_BIDE_SHIFT                  8
 #define STATUS2_RAMPAGE_SHIFT               10
 #define STATUS2_BINDING_SHIFT               13
 #define STATUS2_ATTRACT_SHIFT               16    
@@ -418,22 +419,22 @@ typedef enum Terrain {
 #define BMON_DATA_TYPE_2                    28
 #define BMON_DATA_GENDER                    29
 #define BMON_DATA_IS_SHINY                  30
-#define BMON_DATA_CUR_PP_1                   31
-#define BMON_DATA_CUR_PP_2                   32
-#define BMON_DATA_CUR_PP_3                   33
-#define BMON_DATA_CUR_PP_4                   34
-#define BMON_DATA_PP_UPS_1                35
-#define BMON_DATA_PP_UPS_2                36
-#define BMON_DATA_PP_UPS_3                37
-#define BMON_DATA_PP_UPS_4                38
-#define BMON_DATA_MAX_PP_1                39
-#define BMON_DATA_MAX_PP_2                40
-#define BMON_DATA_MAX_PP_3                41
-#define BMON_DATA_MAX_PP_4                42
+#define BMON_DATA_CUR_PP_1                  31
+#define BMON_DATA_CUR_PP_2                  32
+#define BMON_DATA_CUR_PP_3                  33
+#define BMON_DATA_CUR_PP_4                  34
+#define BMON_DATA_PP_UPS_1                  35
+#define BMON_DATA_PP_UPS_2                  36
+#define BMON_DATA_PP_UPS_3                  37
+#define BMON_DATA_PP_UPS_4                  38
+#define BMON_DATA_MAX_PP_1                  39
+#define BMON_DATA_MAX_PP_2                  40
+#define BMON_DATA_MAX_PP_3                  41
+#define BMON_DATA_MAX_PP_4                  42
 #define BMON_DATA_LEVEL                     43
 #define BMON_DATA_FRIENDSHIP                44
 #define BMON_DATA_NICKNAME                  45
-#define BMON_DATA_NICKNAME_STRBUF                 46 //this gets the nickname in a slightly different way
+#define BMON_DATA_NICKNAME_STRBUF           46
 #define BMON_DATA_HP                        47
 #define BMON_DATA_MAXHP                     48
 #define BMON_DATA_OT_NAME                   49
@@ -443,15 +444,15 @@ typedef enum Terrain {
 #define BMON_DATA_STATUS2                   53
 #define BMON_DATA_OT_ID                     54 
 #define BMON_DATA_HELD_ITEM                 55
-#define BMON_DATA_TIMES_DAMAGED                        56
+#define BMON_DATA_TIMES_DAMAGED             56
 #define BMON_DATA_MSG_FLAG                  57
 #define BMON_DATA_OT_GENDER                 58
 #define BMON_DATA_MOVE_EFFECT               59
 #define BMON_DATA_MOVE_EFFECT_TEMP          60
 #define BMON_DATA_DISABLED_TURNS            61
 #define BMON_DATA_ENCORED_TURNS             62
-#define BMON_DATA_CHARGED_TURNS                63
-#define BMON_DATA_TAUNTED_TURNS               64
+#define BMON_DATA_CHARGED_TURNS             63
+#define BMON_DATA_TAUNTED_TURNS             64
 #define BMON_DATA_PROTECT_SUCCESS_COUNT     65
 #define BMON_DATA_PERISH_SONG_TURNS         66
 #define BMON_DATA_ROLLOUT_TURNS             67
@@ -459,18 +460,18 @@ typedef enum Terrain {
 #define BMON_DATA_STOCKPILE_COUNT           69
 #define BMON_DATA_STOCKPILE_DEF_BOOSTS      70
 #define BMON_DATA_STOCKPILE_SPDEF_BOOSTS    71
-#define BMON_DATA_TRUANT               72
-#define BMON_DATA_FLASH_FIRE         73
-#define BMON_DATA_LOCK_ON_TARGET         74
+#define BMON_DATA_TRUANT                    72
+#define BMON_DATA_FLASH_FIRE                73
+#define BMON_DATA_LOCK_ON_TARGET            74
 #define BMON_DATA_MIMICED_MOVE              75
-#define BMON_DATA_BIND_TARGET            76 
-#define BMON_DATA_MEAN_LOOK_TARGET         77
+#define BMON_DATA_BIND_TARGET               76 
+#define BMON_DATA_MEAN_LOOK_TARGET          77
 #define BMON_DATA_LAST_RESORT_COUNT         78
 #define BMON_DATA_MAGNET_RISE_TURNS         79
-#define BMON_DATA_HEAL_BLOCK_TURNS                80
-#define BMON_DATA_EMBARGO_TURNS                        81
-#define BMON_DATA_CAN_UNBURDEN          82
-#define BMON_DATA_METRONOME_TURNS                 83
+#define BMON_DATA_HEAL_BLOCK_TURNS          80
+#define BMON_DATA_EMBARGO_TURNS             81
+#define BMON_DATA_CAN_UNBURDEN              82
+#define BMON_DATA_METRONOME_TURNS           83
 #define BMON_DATA_MICLE_BERRY_FLAG          84
 #define BMON_DATA_CUSTAP_FLAG               85
 #define BMON_DATA_QUICK_CLAW_FLAG           86
@@ -518,6 +519,7 @@ typedef enum Terrain {
 #define BATTLE_STATUS_SELFDESTRUCTED                (15 << 28)
 
 #define BATTLE_STATUS_FAINTED_SHIFT                 24
+#define BATTLE_STATUS_SELFDESTRUCTED_SHIFT          28
 
 //Battle Status 2
 #define BATTLE_STATUS2_NO_EXP_GAINED                (1 << 0)
@@ -529,6 +531,7 @@ typedef enum Terrain {
 #define BATTLE_STATUS2_MOVE_SUCCEEDED               (1 << 6)
 #define BATTLE_STATUS2_STAT_STAGE_CHANGE_SHOWN      (1 << 7)
 #define BATTLE_STATUS2_RECOVER_HP_VISUAL            (1 << 8)
+#define BATTLE_STATUS2_20                           (1 << 20)
 #define BATTLE_STATUS2_FORM_CHANGE                  (1 << 26)
 #define BATTLE_STATUS2_RECALC_MON_STATS             (1 << 27)
 #define BATTLE_STATUS2_EXP_GAIN                     (15 << 28)

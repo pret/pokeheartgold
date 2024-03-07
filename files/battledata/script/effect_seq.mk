@@ -26,5 +26,4 @@ endif
 
 $(EFFECT_SCRIPT_NARC): $(EFFECT_SCRIPT_BINS)
 
-# Once this has been reversed, uncomment the below
 FS_CLEAN_TARGETS += $(EFFECT_SCRIPT_NARC) $(EFFECT_SCRIPT_BINS) $(EFFECT_SCRIPT_OBJS) $(EFFECT_SCRIPT_DEPS)

@@ -422,6 +422,12 @@
 #define BASE_TMHM_3 31
 #define BASE_TMHM_4 32
 
+//Forms used in asm files
+#define SHAYMIN_LAND            0
+#define SHAYMIN_SKY             1
+#define SHAYMIN_FORM_MAX        2
+
+
 #ifndef PM_ASM
 typedef enum {
     EGG = 0,
@@ -492,10 +498,6 @@ typedef enum {
     ROTOM_FAN = 4,
     ROTOM_MOW = 5,
     ROTOM_FORM_MAX = 6,
-
-    SHAYMIN_LAND = 0,
-    SHAYMIN_SKY = 1,
-    SHAYMIN_FORM_MAX = 2,
 
     SHELLOS_WEST = 0,
     SHELLOS_EAST = 1,

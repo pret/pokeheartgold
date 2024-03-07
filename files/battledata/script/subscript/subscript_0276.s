@@ -6,7 +6,7 @@ _000:
     CalcExpGain _005
     StartGetExpTask 
     WaitGetExpTask 
-    Dummy2A 4294967292
+    Dummy2A U32_MAX
 
 _005:
     End 

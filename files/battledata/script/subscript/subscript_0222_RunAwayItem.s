@@ -8,7 +8,7 @@ _000:
     Wait 
     PlayBattleAnimation BATTLER_CATEGORY_PLAYER, BATTLE_ANIMATION_ITEM_ESCAPE
     Wait 
-    PlaySound BATTLER_CATEGORY_ATTACKER, 1791
+    PlaySound BATTLER_CATEGORY_ATTACKER, SEQ_SE_DP_NIGERU2
     // Got away safely!
     PrintMessage msg_0197_00781, TAG_NONE
     Wait 

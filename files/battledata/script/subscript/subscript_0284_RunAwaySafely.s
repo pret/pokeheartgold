@@ -3,7 +3,7 @@
     .data
 
 _000:
-    PlaySound BATTLER_CATEGORY_ATTACKER, 1791
+    PlaySound BATTLER_CATEGORY_ATTACKER, SEQ_SE_DP_NIGERU2
     // Got away safely!
     PrintMessage msg_0197_00781, TAG_NONE
     Wait 

@@ -150,7 +150,7 @@ typedef struct MoveFailFlags {
     u32 unk0_5:1;
     u32 flinch:1;
     u32 confusion:1;
-    u32 unk0_8:1;
+    u32 gravity:1;
     u32 healBlock:1;
     u32 unused:21;
 } MoveFailFlags;

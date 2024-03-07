@@ -338,7 +338,7 @@ int GetBattlerVar(BattleContext *ctx, int battlerId, u32 id, void *data) {
     case BMON_DATA_PP_UPS_2:
     case BMON_DATA_PP_UPS_3:
     case BMON_DATA_PP_UPS_4:
-        {    
+        {
             int index = id - BMON_DATA_PP_UPS_1; //see above
             return mon->movePP[index];
         }
@@ -590,7 +590,7 @@ void SetBattlerVar(BattleContext *ctx, int battlerId, u32 id, void *data) {
     case BMON_DATA_PP_UPS_2:
     case BMON_DATA_PP_UPS_3:
     case BMON_DATA_PP_UPS_4:
-        {    
+        {
             int index = id - BMON_DATA_PP_UPS_1;
             mon->movePP[index] = *data8;
         }
@@ -857,7 +857,7 @@ void BattleMon_AddVar(BattleMon *mon, u32 varId, int data) {
     case BMON_DATA_PP_UPS_2:
     case BMON_DATA_PP_UPS_3:
     case BMON_DATA_PP_UPS_4:
-        {    
+        {
             int index = varId - BMON_DATA_PP_UPS_1;
             mon->movePP[index] += data;
         }
@@ -1177,7 +1177,7 @@ u8 CheckSortSpeed(BattleSystem *bsys, BattleContext *ctx, int battlerId1, int ba
     if (heldItem2 == HOLD_EFFECT_SPEED_DOWN) {
         loweredPriority2 = 1;
     }
- 
+
     ctx->effectiveSpeed[battlerId1] = speed1;
     ctx->effectiveSpeed[battlerId2] = speed2;
 
@@ -1326,7 +1326,7 @@ BOOL ov12_02250490(BattleSystem *bsys, BattleContext *ctx, int *out) {
         }
     } else if (ctx->unk_2174 & (1 << 28)) {
         *out = GetMoveStatusChangeScript(ctx, 2, ctx->unk_2174);
-        ctx->unk_2174 = 0; 
+        ctx->unk_2174 = 0;
         if (ctx->battleMons[ctx->battlerIdStatChange].hp) {
             ret = TRUE;
         }
@@ -1814,7 +1814,7 @@ void InitSwitchWork(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
     maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     BattleSystem_GetBattleType(bsys);
     ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_40;
-    
+
     if (!(ctx->battleStatus & BATTLE_STATUS_BATON_PASS)) {
         for (i = 0; i < maxBattlers; i++) {
             if ((ctx->battleMons[i].status2 & STATUS2_MEAN_LOOK) && (ctx->battleMons[i].unk88.battlerIdMeanLook == battlerId)) {
@@ -2459,7 +2459,7 @@ BOOL ov12_02252218(BattleContext *ctx, int battlerId) {
         ctx->moveFail[battlerId].disabled ||
         ctx->moveFail[battlerId].unk0_5 ||
         ctx->moveFail[battlerId].flinch ||
-        ctx->moveFail[battlerId].unk0_8 ||
+        ctx->moveFail[battlerId].gravity ||
         ctx->moveFail[battlerId].confusion) {
         return TRUE;
     }
@@ -2496,7 +2496,7 @@ int CreateNicknameTag(BattleContext *ctx, int battlerId) {
 
 u16 GetBattlerSelectedMove(BattleContext *ctx, int battlerId) {
     u16 moveNo = 0;
-    
+
     if (ctx->playerActions[battlerId].inputSelection == BATTLE_INPUT_FIGHT && ctx->playerActions[battlerId].unk8) {
         moveNo = ctx->battleMons[battlerId].moves[ctx->playerActions[battlerId].unk8 - 1];
     }

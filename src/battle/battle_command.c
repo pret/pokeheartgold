@@ -25,6 +25,7 @@
 #include "constants/items.h"
 #include "constants/message_tags.h"
 #include "constants/moves.h"
+#include "constants/opcode.h"
 #include "constants/pokemon.h"
 #include "constants/sndseq.h"
 #include "msgdata/msg/msg_0197.h"
@@ -1471,52 +1472,52 @@ BOOL BtlCmd_UpdateVar(BattleSystem *bsys, BattleContext *ctx) {
     int *var = BattleScriptGetVarPointer(bsys, ctx, varId);
 
     switch (operator) {
-    case 7:
+    case OPCODE_SET:
         *var = val;
         break;
-    case 8:
+    case OPCODE_ADD:
         *var += val;
         break;
-    case 9:
+    case OPCODE_SUB:
         *var -= val;
         break;
-    case 10:
+    case OPCODE_FLAG_ON:
         *var |= val;
         break;
-    case 11:
+    case OPCODE_FLAG_OFF:
         *var &= (val ^ ~0);
         break;
-    case 12:
+    case OPCODE_MUL:
         *var *= val;
         break;
-    case 13:
+    case OPCODE_DIV:
         *var /= val;
         break;
-    case 14:
+    case OPCODE_LEFT_SHIFT:
         *var <<= val;
         break;
-    case 15:
+    case OPCODE_RIGHT_SHIFT:
     {
         u32 uvar = *var;
         *var = uvar >> val;
         break;
     }
-    case 16:
+    case OPCODE_FLAG_INDEX:
         *var = MaskOfFlagNo(val);
         break;
-    case 17:
+    case OPCODE_GET:
         GF_ASSERT(FALSE);
         break;
-    case 18:
+    case OPCODE_SUB_TO_ZERO:
         *var -= val;
         if (*var < 0) {
             *var = 0;
         }
         break;
-    case 19:
+    case OPCODE_BITWISE_XOR:
         *var ^= val;
         break;
-    case 20:
+    case OPCODE_BITWISE_AND:
         *var &= val;
         break;
     default:
