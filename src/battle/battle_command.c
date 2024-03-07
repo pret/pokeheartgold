@@ -1030,37 +1030,37 @@ BOOL BtlCmd_CompareVarToValue(BattleSystem *bsys, BattleContext *ctx) {
     int *var = BattleScriptGetVarPointer(bsys, ctx, varId);
 
     switch (operator) {
-    case 0:
+    case OPCODE_EQU:
         if (*var != cmp) {
             adrs = 0;
         }
         break;
-    case 1:
+    case OPCODE_NEQ:
         if (*var == cmp) {
             adrs = 0;
         }
         break;
-    case 2:
+    case OPCODE_GT:
         if (*var <= cmp) {
             adrs = 0;
         }
         break;
-    case 3:
+    case OPCODE_LTE:
         if (*var > cmp) {
             adrs = 0;
         }
         break;
-    case 4:
+    case OPCODE_FLAG_SET:
         if (!(*var & cmp)) {
             adrs = 0;
         }
         break;
-    case 5:
+    case OPCODE_FLAG_NOT:
         if (*var & cmp) {
             adrs = 0;
         }
         break;
-    case 6:
+    case OPCODE_AND:
         if ((*var & cmp) != cmp) {
             adrs = 0;
         }
