@@ -21664,7 +21664,7 @@ ov02_0224FE70: ; 0x0224FE70
 	bne _0224FEFC
 _0224FE9E:
 	add r0, r4, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystemPtr
 	ldr r1, _0224FF00 ; =0x0000087C
 	add r6, r0, #0
 	ldrb r1, [r5, r1]

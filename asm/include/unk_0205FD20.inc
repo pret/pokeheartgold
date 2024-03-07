@@ -35,7 +35,7 @@
 .public MapObject_GetFlagsWord
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
-.public MapObject_GetFlagsMask
+.public MapObject_GetFlagsBits
 .public MapObject_TestFlagsBits
 .public MapObject_GetID
 .public MapObject_GetGfxID
@@ -52,7 +52,7 @@
 .public sub_0205F514
 .public sub_0205F51C
 .public sub_0205F524
-.public MapObject_GetFieldSysPtr
+.public MapObject_GetFieldSystemPtr
 .public sub_0205F5E8
 .public sub_0205F610
 .public MapObject_IsSingleMovementActive

@@ -2095,7 +2095,7 @@ ov01_021FA2D4: ; 0x021FA2D4
 	push {r3, lr}
 	mov r1, #1
 	lsl r1, r1, #0x16
-	bl MapObject_GetFlagsMask
+	bl MapObject_GetFlagsBits
 	cmp r0, #0
 	beq _021FA2E6
 	mov r0, #1

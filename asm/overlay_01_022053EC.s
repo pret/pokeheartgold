@@ -422,7 +422,7 @@ ov01_022056C4: ; 0x022056C4
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	add r5, r1, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystemPtr
 	add r7, r0, #0
 	add r0, r6, #0
 	bl MapObject_GetCurrentX

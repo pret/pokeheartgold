@@ -645,7 +645,7 @@ BOOL ScrCmd_699(ScriptContext *ctx) {
 
     height = vec.y;
 
-    while (sub_0205EEF4(mapObjectManager, &curObj, &unkVar, 1) == TRUE) {
+    while (sub_0205EEF4(mapObjectManager, &curObj, &unkVar, MAPOBJECTFLAG_ACTIVE) == TRUE) {
         if (curObj == playerObj) continue;
         MapObject_SetFlagsBits(curObj, MAPOBJECTFLAG_UNK13);
         if (MapObject_TestFlagsBits(curObj, MAPOBJECTFLAG_UNK12) == TRUE) {
@@ -958,7 +958,7 @@ BOOL ScrCmd_CreatePokeathlonFriendshipRoomStatues(ScriptContext *ctx) {
         LocalMapObject *mapObj = GetMapObjectByID(fieldSystem->mapObjectManager, 0xf6 + i);
 
         if (mapObj) {
-            DeleteMapObject(mapObj);
+            MapObject_Delete(mapObj);
         }
 
         species = unkPtr->friendshipRoomStatues[i].species;
@@ -993,7 +993,7 @@ static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectManager, u8 unkA
     MapObject_SetXRange(mapObj, -1);
     MapObject_SetYRange(mapObj, -1);
     MapObject_SetFlagsBits(mapObj, MAPOBJECTFLAG_UNK30);
-    MapObject_ClearFlagsBits(mapObj, 0);
+    MapObject_ClearFlagsBits(mapObj, MAPOBJECTFLAG_INACTIVE);
     MapObject_SetFlag29(mapObj, FALSE);
 
     return mapObj;

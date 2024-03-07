@@ -22,7 +22,7 @@
 .public FldObjSys_GetMModelNarc
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
-.public MapObject_GetFlagsMask
+.public MapObject_GetFlagsBits
 .public MapObject_TestFlagsBits
 .public MapObject_GetGfxID
 .public MapObject_SetFacingDirection

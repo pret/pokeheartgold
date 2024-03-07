@@ -1420,7 +1420,7 @@ BOOL ScrCmd_HidePerson(ScriptContext *ctx) {
     if (object == NULL) {
         GF_ASSERT(0);
     } else {
-        DeleteMapObject(object);
+        MapObject_Delete(object);
     }
     return FALSE;
 }

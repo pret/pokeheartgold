@@ -12,7 +12,7 @@
 .public MapObject_GetID
 .public sub_0205F254
 .public MapObject_GetGfxID
-.public MapObject_GetFieldSysPtr
+.public MapObject_GetFieldSystemPtr
 .public MapObject_CheckFlag26
 .public MapObject_GetPositionVec
 .public MapObject_GetFacingVec

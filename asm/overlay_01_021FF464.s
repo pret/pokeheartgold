@@ -103,7 +103,7 @@ ov01_021FF4FC: ; 0x021FF4FC
 	bl ov01_021F146C
 	add r4, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystemPtr
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	mov r1, #0xa

@@ -740,7 +740,7 @@ ov01_021F92A0: ; 0x021F92A0
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0xe
-	bl MapObject_GetFlagsMask
+	bl MapObject_GetFlagsBits
 	cmp r0, #0
 	beq _021F92DA
 	add r0, r4, #0
@@ -840,7 +840,7 @@ _021F935E:
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #8
-	bl MapObject_GetFlagsMask
+	bl MapObject_GetFlagsBits
 	cmp r0, #0
 	beq _021F9370
 	mov r0, #1
