@@ -4852,7 +4852,7 @@ BOOL ScrCmd_Cinematic(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_727(ScriptContext *ctx) {
+BOOL ScrCmd_GetFollowPokePartyIndex(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = GetIdxOfFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(ctx->fieldSystem->saveData));
     return FALSE;

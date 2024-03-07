@@ -4598,7 +4598,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_727",
+      "name": "get_follow_poke_party_index",
       "args": [
         "var"
       ]

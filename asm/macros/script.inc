@@ -4110,7 +4110,7 @@
 	.short 726
 	.endm
 
-	.macro scrcmd_727 arg0
+	.macro get_follow_poke_party_index arg0
 	.short 727
 	.short \arg0
 	.endm

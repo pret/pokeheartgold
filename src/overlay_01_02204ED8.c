@@ -1,4 +1,5 @@
 #include "global.h"
+#include "headbutt_encounter.h"
 #include "assert.h"
 #include "encounter.h"
 #include "follow_mon.h"
@@ -16,22 +17,10 @@
 #include "unk_0205CB48.h"
 #include "unk_0205FD20.h"
 
-typedef struct UnkStruct_02204EFC {
-    u16 unk00;
-    u16 unk02;
-    void *unk04;
-    u8 filler08[20];
-    void *unk1c;
-    u8 filler20[20];
-    void *unk34;
-    u8 filler38[20];
-    s16 unk4c[][2];
-} UnkStruct_02204EFC;
-
-static BOOL ov01_02204EFC(TaskManager*);
-static s8 ov01_02204FE0(u16, u16, u32, u32, u32, s16[][2]);
-static s8 ov01_02205074(u8, u8, u32);
-static void ov01_022050F8(FieldSystem*, u32*, u32*);
+static BOOL ov01_02204EFC(TaskManager *taskManager);
+static s8 ov01_02204FE0(u16 uncommonTableLength, u16 rareTableLength, u32 trainerId, u32 x, u32 y, s16 treeCoords[][2]);
+static s8 ov01_02205074(u8 tableIndex, u8 whichTable, u32 trainerId);
+static void GetCoordsOfFacingTree(FieldSystem *fieldSystem, u32 *x, u32 *y);
 
 const s8 ov01_02209634[] = {
     0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0,
@@ -97,29 +86,29 @@ void ov01_02204ED8(FieldSystem *fieldSystem, u16 *varPointer) {
 }
 
 static BOOL ov01_02204EFC(TaskManager *taskManager) {
-    UnkStruct_02204EFC *unk4;
+    HeadbuttEncounterData *unk4;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     u16 **didHeadbuttStartBattle = TaskManager_GetEnvironment(taskManager);
-    unk4 = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_a_2_5_2, fieldSystem->location->mapId, HEAP_ID_FIELD);
-    if (unk4->unk00 != 0 || unk4->unk02 != 0) {
+    unk4 = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_arc_headbutt, fieldSystem->location->mapId, HEAP_ID_FIELD);
+    if (unk4->numUncommon != 0 || unk4->numRare != 0) {
         BattleSetup *setup;
         u32 x;
         u32 y;
-        ov01_022050F8(fieldSystem, &x, &y);
+        GetCoordsOfFacingTree(fieldSystem, &x, &y);
         u32 trainerId = PlayerProfile_GetTrainerID(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
-        s32 unk0 = ov01_02204FE0(unk4->unk00, unk4->unk02, trainerId, x, y, unk4->unk4c);
+        s32 unk0 = ov01_02204FE0(unk4->numUncommon, unk4->numRare, trainerId, x, y, unk4->treeCoords);
         if (unk0 == -1) {
             FreeToHeap(unk4);
             FreeToHeap(didHeadbuttStartBattle);
             return TRUE;
         }
-        void *unk2;
+        HeadbuttSlot *unk2;
         if (unk0 == 0) {
-            unk2 = &unk4->unk04;
+            unk2 = unk4->common;
         } else if (unk0 == 1) {
-            unk2 = &unk4->unk1c;
+            unk2 = unk4->uncommon;
         } else if (unk0 == 2) {
-            unk2 = &unk4->unk34;
+            unk2 = unk4->rare;
         } else {
             GF_ASSERT(FALSE);
             FreeToHeap(unk4);
@@ -139,45 +128,45 @@ static BOOL ov01_02204EFC(TaskManager *taskManager) {
     return TRUE;
 }
 
-static s8 ov01_02204FE0(u16 a0, u16 a1, u32 trainerId, u32 x, u32 y, s16 a5[][2]) {
+static s8 ov01_02204FE0(u16 uncommonTableLength, u16 rareTableLength, u32 trainerId, u32 x, u32 y, s16 treeCoords[][2]) {
     u16 i;
-    u16 j = a0 * 6;
-    u16 unkC = a1 * 6;
+    u16 j = uncommonTableLength * 6;
+    u16 unkC = rareTableLength * 6;
     for (i = 0; i < j; i++) {
-        if (x == a5[i][0] && y == a5[i][1]) {
-            return ov01_02205074(i / 6, a0, trainerId);
+        if (x == treeCoords[i][0] && y == treeCoords[i][1]) {
+            return ov01_02205074(i / 6, uncommonTableLength, trainerId);
         }
     }
     s32 unk5 = j + unkC;
     for (; j < unk5; j++) {
-        if (x == a5[j][0] && y == a5[j][1]) {
+        if (x == treeCoords[j][0] && y == treeCoords[j][1]) {
             return 2;
         }
     }
     return -1;
 }
 
-static s8 ov01_02205074(u8 a0, u8 a1, u32 trainerId) {
-    s8 unk7 = -1;
-    u8 unk4 = trainerId % 10;
-    if (a1 >= 5) {
-        u8 unk1 = a0 % 5;
-        unk7 = ov01_0220969A[unk4][unk1];
-    } else if (a1 == 4) {
-        unk7 = ov01_02209672[unk4][a0];
-    } else if (a1 == 3) {
-        unk7 = ov01_02209654[unk4][a0];
-    } else if (a1 == 2) {
-        unk7 = ov01_02209640[unk4][a0];
-    } else if (a1 == 1) {
-        unk7 = ov01_02209634[unk4];
+static s8 ov01_02205074(u8 tableIndex, u8 whichTable, u32 trainerId) {
+    s8 ret = -1;
+    u8 trainerIdLastDigit = trainerId % 10;
+    if (whichTable >= 5) {
+        u8 unk1 = tableIndex % 5;
+        ret = ov01_0220969A[trainerIdLastDigit][unk1];
+    } else if (whichTable == 4) {
+        ret = ov01_02209672[trainerIdLastDigit][tableIndex];
+    } else if (whichTable == 3) {
+        ret = ov01_02209654[trainerIdLastDigit][tableIndex];
+    } else if (whichTable == 2) {
+        ret = ov01_02209640[trainerIdLastDigit][tableIndex];
+    } else if (whichTable == 1) {
+        ret = ov01_02209634[trainerIdLastDigit];
     } else {
         GF_ASSERT(FALSE);
     }
-    return unk7;
+    return ret;
 }
 
-static void ov01_022050F8(FieldSystem *fieldSystem, u32 *x, u32 *y) {
+static void GetCoordsOfFacingTree(FieldSystem *fieldSystem, u32 *x, u32 *y) {
     int inFrontX, inFrontY;
     PlayerAvatar_GetCoordsInFront(fieldSystem->playerAvatar, &inFrontX, &inFrontY);
     if (FollowMon_IsActive(fieldSystem)) {

@@ -4,9 +4,11 @@
 
 #include <map>
 
+#include <vector>
 #include <string>
 #include <sstream>
-using std::string; using std::to_string;
+using std::string;
+using std::to_string;
 
 #include "inja.hpp"
 using namespace inja;
@@ -24,14 +26,49 @@ string get_custom_var(string key)
     return customVars[key];
 }
 
+const string usage = "USAGE: jsonproc [-DKEY[=VALUE] ...] <json-filepath> <template-filepath> <output-filepath>\n";
+const string detail = "\n"
+"  <json-filepath>    Path to the JSON file to process\n"
+"  <template-filepath>\n"
+"                     Path to the INJA template to process\n"
+"  <output-filepath>  Path to the file to generate\n"
+"  -DKEY[=VALUE]      Optional: Set a custom variable to the indicated value. If value is not set, defaults to 1.\n";
+
 int main(int argc, char *argv[])
 {
-    if (argc != 4)
-        FATAL_ERROR("USAGE: jsonproc <json-filepath> <template-filepath> <output-filepath>\n");
+    std::vector<string> args (argv + 1, argv + argc);
+    string jsonfilepath, templateFilepath, outputFilepath;
 
-    string jsonfilepath = argv[1];
-    string templateFilepath = argv[2];
-    string outputFilepath = argv[3];
+    for (auto it = args.begin(); it != args.end(); ++it) {
+        if (it->substr(0, 2) == "-D") {
+            string define = it->substr(2);
+            if (define.empty()) {
+                define = *++it;
+            }
+            string::size_type eqpos = define.find('=');
+            string value = "1";
+            if (eqpos != string::npos) {
+                value = define.substr(eqpos + 1);
+                define = define.substr(0, eqpos);
+            }
+            customVars[define] = value;
+        } else if (*it == "-h" || *it == "--help") {
+            std::cout << usage << detail;
+            return 0;
+        } else if (jsonfilepath.empty()) {
+            jsonfilepath = *it;
+        } else if (templateFilepath.empty()) {
+            templateFilepath = *it;
+        } else if (outputFilepath.empty()) {
+            outputFilepath = *it;
+        } else {
+            FATAL_ERROR("%s", usage.c_str());
+        }
+    }
+
+    if (jsonfilepath.empty() || templateFilepath.empty() || outputFilepath.empty()) {
+        FATAL_ERROR("%s", usage.c_str());
+    }
 
     Environment env;
 
@@ -196,6 +233,11 @@ int main(int argc, char *argv[])
         }
         *ptr = 0;
         return string{buf};
+    });
+
+    env.add_void_callback("error", 1, [](Arguments& args) {
+        std::cerr << "UserError: " << args.at(0)->get<std::string>() << "\n";
+        std::exit(1);
     });
 
     try

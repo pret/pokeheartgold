@@ -1,0 +1,93 @@
+{{ doNotModifyHeader }}
+
+#include "constants/maps.h"
+#include "constants/species.h"
+
+    .section .rodata
+{% for table in tables %}
+gHeadbuttMons_{{table.Map}}:
+    .short {{length(table.UncommonTrees)}}
+    .short {{length(table.RareTrees)}}
+
+    {% if length(table.UncommonTrees) != 0 %}
+    {% if length(table.CommonMons) != 0 %}
+    {% for mon in table.CommonMons %}
+    {% if existsIn(mon, "species") %}
+    .short {{mon.species}}
+    {% else if getVar("HEARTGOLD") == "1" %}
+    .short {{mon.speciesGold}}
+    {% else if getVar("SOULSILVER") == "1" %}
+    .short {{mon.speciesSilver}}
+    {% else %}
+    {{error("Must pass -DHEARTGOLD or -DSOULSILVER")}}
+    {% endif %}
+    .byte {{mon.minLevel}}
+    .byte {{mon.maxLevel}}
+    {% endfor %}
+    {% else %}
+    {% for i in range(6) %}
+    .short SPECIES_NONE
+    .byte 0
+    .byte 0
+    {% endfor %}
+    {% endif %}
+
+    {% if length(table.UncommonMons) != 0 %}
+    {% for mon in table.UncommonMons %}
+    {% if existsIn(mon, "species") %}
+    .short {{mon.species}}
+    {% else if getVar("HEARTGOLD") == "1" %}
+    .short {{mon.speciesGold}}
+    {% else if getVar("SOULSILVER") == "1" %}
+    .short {{mon.speciesSilver}}
+    {% else %}
+    {{error("Must pass -DHEARTGOLD or -DSOULSILVER")}}
+    {% endif %}
+    .byte {{mon.minLevel}}
+    .byte {{mon.maxLevel}}
+    {% endfor %}
+    {% else %}
+    {% for i in range(6) %}
+    .short SPECIES_NONE
+    .byte 0
+    .byte 0
+    {% endfor %}
+    {% endif %}
+
+    {% if length(table.RareMons) != 0 %}
+    {% for mon in table.RareMons %}
+    {% if existsIn(mon, "species") %}
+    .short {{mon.species}}
+    {% else if getVar("HEARTGOLD") == "1" %}
+    .short {{mon.speciesGold}}
+    {% else if getVar("SOULSILVER") == "1" %}
+    .short {{mon.speciesSilver}}
+    {% else %}
+    {{error("Must pass -DHEARTGOLD or -DSOULSILVER")}}
+    {% endif %}
+    .byte {{mon.minLevel}}
+    .byte {{mon.maxLevel}}
+    {% endfor %}
+    {% else %}
+    {% for i in range(6) %}
+    .short SPECIES_NONE
+    .byte 0
+    .byte 0
+    {% endfor %}
+    {% endif %}
+
+    {% for tree in table.UncommonTrees %}
+    {% for pos in tree %}
+    .short {{pos.x}}, {{pos.y}}
+    {% endfor %}
+    {% endfor %}
+
+    {% for tree in table.RareTrees %}
+    {% for pos in tree %}
+    .short {{pos.x}}, {{pos.y}}
+    {% endfor %}
+    {% endfor %}
+    {% endif %}
+
+    .size gHeadbuttMons_{{table.Map}},.-gHeadbuttMons_{{table.Map}}
+{% endfor %}
