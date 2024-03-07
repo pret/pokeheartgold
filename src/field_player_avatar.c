@@ -161,8 +161,8 @@ PlayerAvatar* sub_0205C408(MapObjectManager* man, PlayerSaveData* playerSaveData
     sub_0205C500(avatar, state, gender, playerSaveData);
     LocalMapObject* mapObj = sub_0205C640(man);
     MapObject_SetGfxId(mapObj, PlayerAvatar_GetSpriteByStateAndGender(state, gender));
-    MapObject_SetFlagsBits(mapObj, MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_UNK10);
-    MapObject_ClearFlagsBits(mapObj, MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7);
+    MapObject_SetFlagsBits(mapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_UNK10));
+    MapObject_ClearFlagsBits(mapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7));
     MapObject_SetFlag29(mapObj, TRUE);
     sub_0205C6D8(avatar, mapObj);
     return avatar;
@@ -229,8 +229,8 @@ void CreatePlayerAvatarMapObject(PlayerAvatar* avatar, MapObjectManager* man, u3
     MapObject_SetParam(mapObj, 0, 2);
     MapObject_SetXRange(mapObj, -1);
     MapObject_SetYRange(mapObj, -1);
-    MapObject_SetFlagsBits(mapObj, MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_UNK10);
-    MapObject_ClearFlagsBits(mapObj, MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7);
+    MapObject_SetFlagsBits(mapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_UNK10));
+    MapObject_ClearFlagsBits(mapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7));
     MapObject_SetFlag29(mapObj, TRUE);
     sub_0205C6D8(avatar, mapObj);
 }

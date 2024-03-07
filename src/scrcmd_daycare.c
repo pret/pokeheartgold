@@ -159,7 +159,7 @@ BOOL ScrCmd_UpdateDaycareMonObjects(ScriptContext* ctx) {
     for (s32 dc_mon_idx = 0, y = 5, x = 8; dc_mon_idx < 2; dc_mon_idx++, y += 4, x += 2) {
         LocalMapObject* mon_map_object = GetMapObjectByID(fieldSystem->mapObjectManager, obj_daycare_poke_1 + dc_mon_idx);
         if (mon_map_object) {
-            DeleteMapObject(mon_map_object);
+            MapObject_Delete(mon_map_object);
         }
 
         BoxPokemon *boxMon = DaycareMon_GetBoxMon(Save_Daycare_GetMonX(daycare, dc_mon_idx));
@@ -192,7 +192,7 @@ static LocalMapObject* CreateDaycareMonSpriteInternal(MapObjectManager* object_m
     MapObject_SetXRange(lmo, -1);
     MapObject_SetYRange(lmo, -1);
     MapObject_SetFlagsBits(lmo, MAPOBJECTFLAG_UNK2);
-    MapObject_ClearFlagsBits(lmo, 0);
+    MapObject_ClearFlagsBits(lmo, MAPOBJECTFLAG_INACTIVE);
     MapObject_SetFlag29(lmo, TRUE);
     ov01_021F9048(lmo);
 

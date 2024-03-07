@@ -240,7 +240,7 @@ _02063456:
 	add r0, r2, r1
 	str r0, [sp, #0x10]
 	add r0, r5, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystemPtr
 	add r6, r0, #0
 	add r0, r5, #0
 	bl MapObject_CheckFlag29
@@ -1626,7 +1626,7 @@ sub_02063E70: ; 0x02063E70
 	bl sub_0205F40C
 	add r4, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystemPtr
 	add r1, r5, #0
 	bl sub_02055780
 	add r6, r0, #0
@@ -1640,7 +1640,7 @@ _02063E9C:
 	cmp r0, #0
 	bne _02063ECC
 	add r0, r5, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystemPtr
 	add r1, r5, #0
 	bl FieldSystem_ApricornTree_TryGetApricorn
 	add r1, r6, #0
@@ -1665,7 +1665,7 @@ _02063ECC:
 	add r1, #8
 	bl ov01_021F95CC
 	add r0, r5, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystemPtr
 	add r1, r5, #0
 	bl FieldSystem_ApricornTree_TryGetApricorn
 	add r1, r6, #0

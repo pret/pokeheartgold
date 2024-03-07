@@ -144,7 +144,7 @@ _021F1BF6:
 	add r0, r5, #0
 	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystemPtr
 	mov r0, #1
 	mov r1, #0
 	str r0, [sp]
@@ -636,14 +636,14 @@ _021F1F96:
 	cmp r1, r0
 	bne _021F1FF4
 	add r0, r5, #0
-	bl MapObject_GetFlagID
+	bl MapObject_GetFlagId
 	add r1, r0, #0
 	lsl r1, r1, #0x10
 	add r0, r7, #0
 	lsr r1, r1, #0x10
 	bl FieldSystem_FlagSet
 	add r0, r5, #0
-	bl DeleteMapObject
+	bl MapObject_Delete
 	mov r1, #0xa
 	add r2, r6, #0
 	mul r2, r1
