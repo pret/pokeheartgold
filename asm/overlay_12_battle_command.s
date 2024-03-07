@@ -4561,12 +4561,12 @@ sPrizeMoneyTbl: ; 0x0226C4C4
 
 sBattleScriptCommandTable: ; 0x0226C6C8
 	.word BtlCmd_PlayEncounterAnimation
-	.word BtlCmd_PokemonEncounter
+	.word BtlCmd_SetPokemonEncounter
 	.word BtlCmd_PokemonSlideIn
 	.word BtlCmd_PokemonSendOut
 	.word BtlCmd_RecallPokemon ;5
 	.word BtlCmd_DeletePokemon
-	.word BtlCmd_TrainerEncounter
+	.word BtlCmd_SetTrainerEncounter
 	.word BtlCmd_ThrowPokeball
 	.word BtlCmd_TrainerSlideOut
 	.word BtlCmd_TrainerSlideIn ;10
@@ -4574,79 +4574,79 @@ sBattleScriptCommandTable: ; 0x0226C6C8
 	.word BtlCmd_HealthbarSlideIn
 	.word BtlCmd_HealthbarSlideInDelay
 	.word BtlCmd_HealthbarSlideOut
-	.word BtlCmd_WaitForMessage ;15
-	.word BtlCmd_DamageCalc
-	.word BtlCmd_DamageCalcRaw
+	.word BtlCmd_Wait ;15
+	.word BtlCmd_CalcDamage
+	.word BtlCmd_CalcDamageRaw
 	.word BtlCmd_PrintAttackMessage
 	.word BtlCmd_PrintMessage
-	.word BtlCmd_PrintMessage2 ;20
+	.word BtlCmd_PrintGlobalMessage ;20
 	.word BtlCmd_PrintBufferedMessage
 	.word BtlCmd_BufferMessage
-	.word BtlCmd_BufferMessageSide
+	.word BtlCmd_BufferLocalMessage
 	.word BtlCmd_PlayMoveAnimation
-	.word BtlCmd_PlayMoveAnimation2 ;25
-	.word BtlCmd_MonFlicker
-	.word BtlCmd_HealthbarDataUpdate
-	.word BtlCmd_HealthbarUpdate
+	.word BtlCmd_PlayMoveAnimationOnMons ;25
+	.word BtlCmd_FlickerMon
+	.word BtlCmd_UpdateHealthbarValue
+	.word BtlCmd_UpdateHealthbar
 	.word BtlCmd_TryFaintMon
 	.word BtlCmd_PlayFaintAnimation
-	.word BtlCmd_Wait
-	.word BtlCmd_PlaySE
-	.word BtlCmd_If
-	.word BtlCmd_IfMonStat
+	.word BtlCmd_WaitButtonABTime
+	.word BtlCmd_PlaySound
+	.word BtlCmd_CompareVarToValue
+	.word BtlCmd_CompareMonDataToValue
 	.word BtlCmd_FadeOutBattle
-	.word BtlCmd_JumpToSubSeq
-	.word BtlCmd_JumpToCurMoveEffectScript
-	.word BtlCmd_JumpToEffectScript
-	.word BtlCmd_CritCalc
-	.word BtlCmd_ShouldGetExp
-	.word BtlCmd_InitGetExp
-	.word BtlCmd_GetExp
-	.word BtlCmd_GetExpLoop
+	.word BtlCmd_GoToSubscript
+	.word BtlCmd_GoToEffectScript
+	.word BtlCmd_GoToMoveScript
+	.word BtlCmd_CalcCrit
+	.word BtlCmd_CalcExpGain
+	.word BtlCmd_StartGetExpTask
+	.word BtlCmd_WaitGetExpTask
+	.word BtlCmd_WaitGetExpTaskLoop
 	.word BtlCmd_ShowParty
-	.word BtlCmd_WaitForMonSelection
-	.word BtlCmd_SwitchInDataUpdate
-	.word BtlCmd_JumpIfCantSwitch
-	.word BtlCmd_InitGetPokemon
-	.word BtlCmd_GetPokemon
+	.word BtlCmd_WaitMonSelection
+	.word BtlCmd_SwitchAndUpdateMon
+	.word BtlCmd_GoToIfAnySwitches
+	.word BtlCmd_StartCatchMonTask
+	.word BtlCmd_WaitCatchMonTask
 	.word BtlCmd_SetMultiHit
-	.word BtlCmd_ChangeVar
-	.word BtlCmd_BufferStatChangeMsg
-	.word BtlCmd_ChangeMonDataVar
-	.word BtlCmd_53
+	.word BtlCmd_UpdateVar
+	.word BtlCmd_ChangeStatStage
+	.word BtlCmd_UpdateMonData
+	.word BtlCmd_ClearVolatileStatus
 	.word BtlCmd_ToggleVanish
 	.word BtlCmd_CheckAbility
 	.word BtlCmd_Random
-	.word BtlCmd_ChangeVar2
-	.word BtlCmd_ChangeMonDataByVar
+	.word BtlCmd_UpdateVar2
+	.word BtlCmd_UpdateMonDataFromVar
 	.word BtlCmd_Goto
-	.word BtlCmd_GotoSubscript
-	.word BtlCmd_GotoSubscriptVar
-	.word BtlCmd_SetMoveToMirrorMove
+	.word BtlCmd_Call
+	.word BtlCmd_CallFromVar
+	.word BtlCmd_SetMirrorMove
 	.word BtlCmd_ResetAllStatChanges
-	.word BtlCmd_64
-	.word BtlCmd_65
+	.word BtlCmd_LockMoveChoice
+	.word BtlCmd_UnlockMoveChoice
 	.word BtlCmd_SetHealthbarStatus
 	.word BtlCmd_PrintTrainerMessage
-	.word BtlCmd_CalcPrizeMoney
-	.word BtlCmd_SetStatus2Effect
-	.word BtlCmd_CopyStatus2Effect
-	.word BtlCmd_SetStatus2EffectVar
-	.word BtlCmd_ReturnMessage
-	.word BtlCmd_SendOutMessage
-	.word BtlCmd_EncounterMessage
-	.word BtlCmd_FirstSendOutMessage
-	.word BtlCmd_TrainerMessageVar
+	.word BtlCmd_PayPrizeMoney
+	.word BtlCmd_PlayBattleAnimation
+	.word BtlCmd_PlayBattleAnimationOnMons
+	.word BtlCmd_PlayBattleAnimationFromVar
+	.word BtlCmd_PrintRecallMessage
+	.word BtlCmd_PrintSendOutMessage
+	.word BtlCmd_PrintEncounterMessage
+	.word BtlCmd_PrintFirstSendOutMessage
+	.word BtlCmd_PrintBufferedTrainerMessage
 	.word BtlCmd_TryConversion
-	.word BtlCmd_Compare
-	.word BtlCmd_IfMonStatVar
-	.word BtlCmd_PayDay
+	.word BtlCmd_CompareVarToVar
+	.word BtlCmd_CompareMonDataToVar
+	.word BtlCmd_AddPayDayMoney
 	.word BtlCmd_TryLightScreen
 	.word BtlCmd_TryReflect
 	.word BtlCmd_TryMist
-	.word BtlCmd_TryOHKO
-	.word BtlCmd_SetDamageDivide
-	.word BtlCmd_SetDamageDivideVar
+	.word BtlCmd_TryOHKOMove
+	.word BtlCmd_DivideVarByValue
+	.word BtlCmd_DivideVarByVar
 	.word BtlCmd_TryMimic
 	.word BtlCmd_Metronome
 	.word BtlCmd_TryDisable
@@ -4656,64 +4656,64 @@ sBattleScriptCommandTable: ; 0x0226C6C8
 	.word BtlCmd_TryConversion2
 	.word BtlCmd_TrySketch
 	.word BtlCmd_TrySleepTalk
-	.word BtlCmd_FlailDamageCalc
+	.word BtlCmd_CalcFlailPower
 	.word BtlCmd_TrySpite
-	.word BtlCmd_HealBell
-	.word BtlCmd_TryThief
-	.word BtlCmd_TryProtect
+	.word BtlCmd_TryPartyStatusRefresh
+	.word BtlCmd_TryStealItem
+	.word BtlCmd_TryProtection
 	.word BtlCmd_TrySubstitute
 	.word BtlCmd_TryWhirlwind
 	.word BtlCmd_Transform
 	.word BtlCmd_TrySpikes
 	.word BtlCmd_CheckSpikes
 	.word BtlCmd_TryPerishSong
-	.word BtlCmd_SetTurnOrderBySpeed
-	.word BtlCmd_JumpIfValidBattlerVar
-	.word BtlCmd_WeatherDamageCalc
-	.word BtlCmd_RolloutDamageCalc
-	.word BtlCmd_FuryCutterDamageCalc
+	.word BtlCmd_GetTurnOrderBySpeed
+	.word BtlCmd_GoToIfValidMon
+	.word BtlCmd_EndOfTurnWeatherEffect
+	.word BtlCmd_CalcRolloutPower
+	.word BtlCmd_CalcFuryCutterPower
 	.word BtlCmd_TryAttract
 	.word BtlCmd_TrySafeguard
 	.word BtlCmd_Present
-	.word BtlCmd_MagnitudeDamageCalc
-	.word BtlCmd_TrySwitchMon
+	.word BtlCmd_CalcMagnitudePower
+	.word BtlCmd_TryReplaceFaintedMon
 	.word BtlCmd_RapidSpin
-	.word BtlCmd_ChangeWeatherBasedHPRecovery
-	.word BtlCmd_HiddenPowerDamageCalc
-	.word BtlCmd_PsychUp
+	.word BtlCmd_WeatherHPRecovery
+	.word BtlCmd_CalcHiddenPowerParams
+	.word BtlCmd_CopyStatStages
 	.word BtlCmd_TryFutureSight
-	.word BtlCmd_CheckHitRate
+	.word BtlCmd_CheckMoveHit
 	.word BtlCmd_TryTeleport
-	.word BtlCmd_BeatUpDamageCalc
+	.word BtlCmd_BeatUp
 	.word BtlCmd_FollowMe
 	.word BtlCmd_TryHelpingHand
-	.word BtlCmd_TryTrick
+	.word BtlCmd_TrySwapItems
 	.word BtlCmd_TryWish
 	.word BtlCmd_TryAssist
 	.word BtlCmd_TrySetMagicCoat
 	.word BtlCmd_MagicCoat
-	.word BtlCmd_RevengeDamageCalc
+	.word BtlCmd_CalcRevengeDamageMul
 	.word BtlCmd_TryBreakScreens
 	.word BtlCmd_TryYawn
 	.word BtlCmd_TryKnockOff
-	.word BtlCmd_EruptionDamageCalc
+	.word BtlCmd_CalcHPFalloffPower
 	.word BtlCmd_TryImprison
 	.word BtlCmd_TryGrudge
 	.word BtlCmd_TrySnatch
-	.word BtlCmd_LowKickDamageCalc
-	.word BtlCmd_WeatherBallDamageCalc
+	.word BtlCmd_CalcWeightBasedPower
+	.word BtlCmd_CalcWeatherBallParams
 	.word BtlCmd_TryPursuit
-	.word BtlCmd_TypeEffectivenessCheck
-	.word BtlCmd_PokemonEncounter44
-	.word BtlCmd_PokemonEncounter45
-	.word BtlCmd_GyroBallDamageCalc
-	.word BtlCmd_MetalBurstDamageCalc
-	.word BtlCmd_PaybackDamageCalc
-	.word BtlCmd_TrumpCardDamageCalc
-	.word BtlCmd_WringOutDamageCalc
+	.word BtlCmd_ApplyTypeEffectiveness
+	.word BtlCmd_SetPokemonEncounter44
+	.word BtlCmd_SetPokemonEncounter45
+	.word BtlCmd_CalcGyroBallPower
+	.word BtlCmd_TryMetalBurst
+	.word BtlCmd_CalcPaybackPower
+	.word BtlCmd_CalcTrumpCardPower
+	.word BtlCmd_CalcWringOutPower
 	.word BtlCmd_TryMeFirst
 	.word BtlCmd_TryCopycat
-	.word BtlCmd_PunishmentDamageCalc
+	.word BtlCmd_CalcPunishmentPower
 	.word BtlCmd_TrySuckerPunch
 	.word BtlCmd_CheckSideCondition
 	.word BtlCmd_TryFeint
@@ -4721,66 +4721,66 @@ sBattleScriptCommandTable: ; 0x0226C6C8
 	.word BtlCmd_TryLastResort
 	.word BtlCmd_TryToxicSpikes
 	.word BtlCmd_CheckToxicSpikes
-	.word BtlCmd_CheckMoldBreaker
-	.word BtlCmd_CheckTeammates
-	.word BtlCmd_Pickup
+	.word BtlCmd_CheckIgnorableAbility
+	.word BtlCmd_IfSameSide
+	.word BtlCmd_GenerateEndOfBattleItem
 	.word BtlCmd_TrickRoom
-	.word BtlCmd_CheckMoveFinished
-	.word BtlCmd_CheckItemEffect
+	.word BtlCmd_IfMovedThisTurn
+	.word BtlCmd_CheckItemHoldEffect
 	.word BtlCmd_GetItemHoldEffect
-	.word BtlCmd_GetItemModifier
+	.word BtlCmd_GetItemEffectParam
 	.word BtlCmd_TryCamouflage
-	.word BtlCmd_NaturePower
-	.word BtlCmd_SecretPower
-	.word BtlCmd_TryNaturalGift
+	.word BtlCmd_GetTerrainMove
+	.word BtlCmd_GetTerrainSecondaryEffect
+	.word BtlCmd_CalcNaturalGiftParams
 	.word BtlCmd_TryPluck
 	.word BtlCmd_TryFling
-	.word BtlCmd_YesNoBox
-	.word BtlCmd_YesNoBoxWait
-	.word BtlCmd_MonList
-	.word BtlCmd_MonListWait
-	.word BtlCmd_SetBattleResults
+	.word BtlCmd_YesNoMenu
+	.word BtlCmd_WaitYesNoResult
+	.word BtlCmd_ChoosePokemonMenu
+	.word BtlCmd_WaitPokemonMenuResult
+	.word BtlCmd_SetLinkBattleResult
 	.word BtlCmd_CheckStealthRock
 	.word BtlCmd_CheckEffectActivation
 	.word BtlCmd_CheckChatterActivation
-	.word BtlCmd_GetMoveParam
-	.word BtlCmd_Mosaic
+	.word BtlCmd_GetCurrentMoveData
+	.word BtlCmd_SetMosaic
 	.word BtlCmd_ChangeForm
 	.word BtlCmd_SetBattleBackground
-	.word BtlCmd_RecoverStatus
-	.word BtlCmd_TryRun
-	.word BtlCmd_InitStartBallGauge
-	.word BtlCmd_DeleteStartBallGauge
-	.word BtlCmd_InitBallGauge
-	.word BtlCmd_DeleteBallGauge
-	.word BtlCmd_LoadBallGfx
-	.word BtlCmd_DeleteBallGfx
+	.word BtlCmd_UseBagItem
+	.word BtlCmd_TryEscape
+	.word BtlCmd_ShowBattleStartPartyGauge
+	.word BtlCmd_HideBattleStartPartyGauge
+	.word BtlCmd_ShowPartyGauge
+	.word BtlCmd_HidePartyGauge
+	.word BtlCmd_LoadPartyGaugeGraphics
+	.word BtlCmd_FreePartyGaugeGraphics
 	.word BtlCmd_IncrementGameStat
-	.word BtlCmd_196
-	.word BtlCmd_CheckAbilityEffectOnHit
-	.word BtlCmd_198
-	.word BtlCmd_199
+	.word BtlCmd_RestoreSprite
+	.word BtlCmd_TriggerAbilityOnHit
+	.word BtlCmd_SpriteToOAM
+	.word BtlCmd_OAMToSprite
 	.word BtlCmd_CheckWhiteout
-	.word BtlCmd_TryAcupressure
+	.word BtlCmd_BoostRandomStatBy2
 	.word BtlCmd_RemoveItem
 	.word BtlCmd_TryRecycle
-	.word BtlCmd_CheckItemEffectOnHit
-	.word BtlCmd_BattleResultMessage
-	.word BtlCmd_RunAwayMessage
-	.word BtlCmd_ForefitMessage
+	.word BtlCmd_CheckItemHoldEffectOnHit
+	.word BtlCmd_PrintBattleResultMessage
+	.word BtlCmd_PrintEscapeMessage
+	.word BtlCmd_PrintForfeitMessage
 	.word BtlCmd_CheckHoldOnWith1HP
-	.word BtlCmd_TryNaturalCure
+	.word BtlCmd_TryRestoreStatusOnSwitch
 	.word BtlCmd_CheckSubstitute
-	.word BtlCmd_CheckCloudNine
-	.word BtlCmd_211
-	.word BtlCmd_CheckItemEffectOnUTurn
-	.word BtlCmd_SwapToSubstituteSprite
-	.word BtlCmd_PlayMoveSE
-	.word BtlCmd_PlaySong
-	.word BtlCmd_CheckSafariEncounterDone
-	.word BtlCmd_WaitWithoutInterrupt
+	.word BtlCmd_CheckIgnoreWeather
+	.word BtlCmd_SetRandomTarget
+	.word BtlCmd_CheckItemHoldEffectOnUTurn
+	.word BtlCmd_RefreshSprite
+	.word BtlCmd_PlayMoveHitSound
+	.word BtlCmd_PlayBGM
+	.word BtlCmd_CheckSafariGameDone
+	.word BtlCmd_WaitTime
 	.word BtlCmd_CheckCurMoveIsType
-	.word BtlCmd_GetMonDataFromNarc
+	.word BtlCmd_LoadArchivedMonData
 	.word BtlCmd_RefreshMonData
 	.word BtlCmd_222
 	.word BtlCmd_223
