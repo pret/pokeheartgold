@@ -10,7 +10,6 @@ gHeadbuttMons_{{table.Map}}:
     .short {{length(table.RareTrees)}}
 
     {% if length(table.UncommonTrees) != 0 %}
-    {% if length(table.CommonMons) != 0 %}
     {% for mon in table.CommonMons %}
     {% if isObject(mon.species) %}
     #ifdef HEARTGOLD
@@ -24,15 +23,12 @@ gHeadbuttMons_{{table.Map}}:
     .byte {{mon.minLevel}}
     .byte {{mon.maxLevel}}
     {% endfor %}
-    {% else %}
-    {% for i in range(6) %}
+    {% for i in range(6 - length(table.CommonMons)) %}
     .short SPECIES_NONE
     .byte 0
     .byte 0
     {% endfor %}
-    {% endif %}
 
-    {% if length(table.UncommonMons) != 0 %}
     {% for mon in table.UncommonMons %}
     {% if isObject(mon.species) %}
     #ifdef HEARTGOLD
@@ -46,15 +42,12 @@ gHeadbuttMons_{{table.Map}}:
     .byte {{mon.minLevel}}
     .byte {{mon.maxLevel}}
     {% endfor %}
-    {% else %}
-    {% for i in range(6) %}
+    {% for i in range(6 - length(table.UncommonMons)) %}
     .short SPECIES_NONE
     .byte 0
     .byte 0
     {% endfor %}
-    {% endif %}
 
-    {% if length(table.RareMons) != 0 %}
     {% for mon in table.RareMons %}
     {% if isObject(mon.species) %}
     #ifdef HEARTGOLD
@@ -68,23 +61,27 @@ gHeadbuttMons_{{table.Map}}:
     .byte {{mon.minLevel}}
     .byte {{mon.maxLevel}}
     {% endfor %}
-    {% else %}
-    {% for i in range(6) %}
+    {% for i in range(6 - length(table.RareMons)) %}
     .short SPECIES_NONE
     .byte 0
     .byte 0
     {% endfor %}
-    {% endif %}
 
     {% for tree in table.UncommonTrees %}
     {% for pos in tree %}
     .short {{pos.x}}, {{pos.y}}
+    {% endfor %}
+    {% for i in range(6 - length(tree) )%}
+    .short -1, -1
     {% endfor %}
     {% endfor %}
 
     {% for tree in table.RareTrees %}
     {% for pos in tree %}
     .short {{pos.x}}, {{pos.y}}
+    {% endfor %}
+    {% for i in range(6 - length(tree) )%}
+    .short -1, -1
     {% endfor %}
     {% endfor %}
     {% endif %}
