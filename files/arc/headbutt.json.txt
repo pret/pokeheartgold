@@ -6,10 +6,10 @@
     .section .rodata
 {% for table in tables %}
 gHeadbuttMons_{{table.Map}}:
-    .short {{length(table.RareTrees)}}
+    .short {{length(table.Trees)}}
     .short {{length(table.SecretTrees)}}
 
-    {% if length(table.RareTrees) != 0 %}
+    {% if length(table.Trees) != 0 %}
     {% for mon in table.CommonMons %}
     {% if isObject(mon.species) %}
     #ifdef HEARTGOLD
@@ -67,7 +67,7 @@ gHeadbuttMons_{{table.Map}}:
     .byte 0
     {% endfor %}
 
-    {% for tree in table.RareTrees %}
+    {% for tree in table.Trees %}
     {% for pos in tree %}
     .short {{pos.x}}, {{pos.y}}
     {% endfor %}

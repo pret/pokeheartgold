@@ -8,11 +8,11 @@ typedef struct HeadbuttSlot {
 } HeadbuttSlot;
 
 typedef struct HeadbuttEncounterData {
-    u16 numUncommon;
-    u16 numRare;
+    u16 numRegularTrees;
+    u16 numSecretTrees;
     HeadbuttSlot common[6];
-    HeadbuttSlot uncommon[6];
     HeadbuttSlot rare[6];
+    HeadbuttSlot secret[6];
     s16 treeCoords[][2];
 } HeadbuttEncounterData;
 

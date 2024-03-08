@@ -18,8 +18,8 @@
 #include "unk_0205FD20.h"
 
 static BOOL Task_TryHeadbuttEncounter(TaskManager *taskManager);
-static s8 Headbutt_GetTreeTypeFromTable(u16 uncommonTableLength, u16 rareTableLength, u32 trainerId, u32 x, u32 y, s16 treeCoords[][2]);
-static s8 Headbutt_IsUncommonTree(u8 whichTree, u8 numTrees, u32 trainerId);
+static s8 Headbutt_GetTreeTypeFromTable(u16 numRegularTrees, u16 numSecretTrees, u32 trainerId, u32 x, u32 y, s16 treeCoords[][2]);
+static s8 Headbutt_GetTreeType_Regular(u8 whichTree, u8 numTrees, u32 trainerId);
 static void GetCoordsOfFacingTree(FieldSystem *fieldSystem, u32 *x, u32 *y);
 
 enum TreeType {
@@ -29,7 +29,7 @@ enum TreeType {
     TREETYPE_NONE = -1
 };
 
-const s8 sUncommonLUT_1[][1] = {
+const s8 sRareTreeLUT_1[][1] = {
     {TREETYPE_COMMON},
     {TREETYPE_RARE},
     {TREETYPE_COMMON},
@@ -44,7 +44,7 @@ const s8 sUncommonLUT_1[][1] = {
     {TREETYPE_COMMON},
 };
 
-const s8 sUncommonLUT_2[][2] = {
+const s8 sRareTreeLUT_2[][2] = {
     {TREETYPE_COMMON, TREETYPE_RARE},
     {TREETYPE_RARE, TREETYPE_COMMON},
     {TREETYPE_COMMON, TREETYPE_RARE},
@@ -57,7 +57,7 @@ const s8 sUncommonLUT_2[][2] = {
     {TREETYPE_RARE, TREETYPE_COMMON},
 };
 
-const s8 sUncommonLUT_3[][3] = {
+const s8 sRareTreeLUT_3[][3] = {
     { TREETYPE_COMMON,  TREETYPE_RARE, TREETYPE_NONE},
     { TREETYPE_COMMON, TREETYPE_NONE,  TREETYPE_RARE},
     { TREETYPE_RARE,  TREETYPE_COMMON, TREETYPE_NONE},
@@ -70,7 +70,7 @@ const s8 sUncommonLUT_3[][3] = {
     { TREETYPE_RARE, TREETYPE_NONE,  TREETYPE_COMMON},
 };
 
-const s8 sUncommonLUT_4[][4] = {
+const s8 sRareTreeLUT_4[][4] = {
     {TREETYPE_NONE,  TREETYPE_COMMON,  TREETYPE_COMMON,  TREETYPE_RARE},
     { TREETYPE_RARE, TREETYPE_NONE,  TREETYPE_COMMON,  TREETYPE_COMMON},
     { TREETYPE_RARE,  TREETYPE_RARE, TREETYPE_NONE,  TREETYPE_COMMON},
@@ -83,7 +83,7 @@ const s8 sUncommonLUT_4[][4] = {
     { TREETYPE_COMMON,  TREETYPE_RARE,  TREETYPE_COMMON,  TREETYPE_RARE},
 };
 
-const s8 sUncommonLUT_5Plus[][5] = {
+const s8 sRareTreeLUT_5Plus[][5] = {
     {TREETYPE_NONE,  TREETYPE_COMMON,  TREETYPE_COMMON,  TREETYPE_RARE,  TREETYPE_RARE},
     { TREETYPE_RARE, TREETYPE_NONE,  TREETYPE_COMMON,  TREETYPE_COMMON,  TREETYPE_RARE},
     { TREETYPE_RARE,  TREETYPE_RARE, TREETYPE_NONE,  TREETYPE_COMMON,  TREETYPE_COMMON},
@@ -112,13 +112,13 @@ static BOOL Task_TryHeadbuttEncounter(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     TaskData_TryHeadbuttEncounter *didHeadbuttStartBattle = TaskManager_GetEnvironment(taskManager);
     headbuttTable = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_arc_headbutt, fieldSystem->location->mapId, HEAP_ID_FIELD);
-    if (headbuttTable->numUncommon != 0 || headbuttTable->numRare != 0) {
+    if (headbuttTable->numRegularTrees != 0 || headbuttTable->numSecretTrees != 0) {
         BattleSetup *setup;
         u32 x;
         u32 y;
         GetCoordsOfFacingTree(fieldSystem, &x, &y);
         u32 trainerId = PlayerProfile_GetTrainerID(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
-        enum TreeType treeType = (enum TreeType)Headbutt_GetTreeTypeFromTable(headbuttTable->numUncommon, headbuttTable->numRare, trainerId, x, y, headbuttTable->treeCoords);
+        enum TreeType treeType = (enum TreeType)Headbutt_GetTreeTypeFromTable(headbuttTable->numRegularTrees, headbuttTable->numSecretTrees, trainerId, x, y, headbuttTable->treeCoords);
         if (treeType == TREETYPE_NONE) {
             FreeToHeap(headbuttTable);
             FreeToHeap(didHeadbuttStartBattle);
@@ -128,9 +128,9 @@ static BOOL Task_TryHeadbuttEncounter(TaskManager *taskManager) {
         if (treeType == TREETYPE_COMMON) {
             headbuttEncounterSlots = headbuttTable->common;
         } else if (treeType == TREETYPE_RARE) {
-            headbuttEncounterSlots = headbuttTable->uncommon;
-        } else if (treeType == TREETYPE_SECRET) {
             headbuttEncounterSlots = headbuttTable->rare;
+        } else if (treeType == TREETYPE_SECRET) {
+            headbuttEncounterSlots = headbuttTable->secret;
         } else {
             GF_ASSERT(FALSE);
             FreeToHeap(headbuttTable);
@@ -150,19 +150,19 @@ static BOOL Task_TryHeadbuttEncounter(TaskManager *taskManager) {
     return TRUE;
 }
 
-static s8 Headbutt_GetTreeTypeFromTable(u16 uncommonTableLength, u16 rareTableLength, u32 trainerId, u32 x, u32 y, s16 treeCoords[][2]) {
+static s8 Headbutt_GetTreeTypeFromTable(u16 numRegularTrees, u16 numSecretTrees, u32 trainerId, u32 x, u32 y, s16 treeCoords[][2]) {
     // Based on your trainer ID and the tree you're facing, choose which encounter table applies
     // Not all trees are headbuttable, this is determined by trainer ID
     u16 i;
-    u16 numCoordsUncommon = uncommonTableLength * 6;
-    u16 numCoordsRare = rareTableLength * 6;
-    for (i = 0; i < numCoordsUncommon; i++) {
+    u16 numCoordsRegular = numRegularTrees * 6;
+    u16 numCoordsSecret = numSecretTrees * 6;
+    for (i = 0; i < numCoordsRegular; i++) {
         if (x == treeCoords[i][0] && y == treeCoords[i][1]) {
-            return Headbutt_IsUncommonTree(i / 6, uncommonTableLength, trainerId);
+            return Headbutt_GetTreeType_Regular(i / 6, numRegularTrees, trainerId);
         }
     }
     // Check whether the facing tree is in the rare table
-    for (i = numCoordsUncommon; i < numCoordsUncommon + numCoordsRare; i++) {
+    for (i = numCoordsRegular; i < numCoordsRegular + numCoordsSecret; i++) {
         if (x == treeCoords[i][0] && y == treeCoords[i][1]) {
             return TREETYPE_SECRET;
         }
@@ -170,20 +170,20 @@ static s8 Headbutt_GetTreeTypeFromTable(u16 uncommonTableLength, u16 rareTableLe
     return TREETYPE_NONE;
 }
 
-static s8 Headbutt_IsUncommonTree(u8 whichTree, u8 numTrees, u32 trainerId) {
+static s8 Headbutt_GetTreeType_Regular(u8 whichTree, u8 numTrees, u32 trainerId) {
     s8 ret = TREETYPE_NONE;
     u8 trainerIdLastDigit = trainerId % 10;
     if (numTrees >= 5) {
         u8 column = whichTree % 5;
-        ret = sUncommonLUT_5Plus[trainerIdLastDigit][column];
+        ret = sRareTreeLUT_5Plus[trainerIdLastDigit][column];
     } else if (numTrees == 4) {
-        ret = sUncommonLUT_4[trainerIdLastDigit][whichTree];
+        ret = sRareTreeLUT_4[trainerIdLastDigit][whichTree];
     } else if (numTrees == 3) {
-        ret = sUncommonLUT_3[trainerIdLastDigit][whichTree];
+        ret = sRareTreeLUT_3[trainerIdLastDigit][whichTree];
     } else if (numTrees == 2) {
-        ret = sUncommonLUT_2[trainerIdLastDigit][whichTree];
+        ret = sRareTreeLUT_2[trainerIdLastDigit][whichTree];
     } else if (numTrees == 1) {
-        ret = sUncommonLUT_1[trainerIdLastDigit][0];
+        ret = sRareTreeLUT_1[trainerIdLastDigit][0];
     } else {
         // numTrees == 0 --> unreachable
         GF_ASSERT(FALSE);
@@ -208,7 +208,7 @@ static void GetCoordsOfFacingTree(FieldSystem *fieldSystem, u32 *x, u32 *y) {
     *y = inFrontY;
 }
 
-//
+// ------------------------
 
 BOOL ScrCmd_795(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
