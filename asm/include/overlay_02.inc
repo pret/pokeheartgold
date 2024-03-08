@@ -213,7 +213,7 @@
 .public TaskManager_GetEnvironment
 .public TaskManager_GetStatePtr
 .public sub_02050B08
-.public FieldSystem_StartHeadbuttBattle
+.public FieldSystem_StartForcedWildBattle
 .public BattleSetup_New
 .public BattleSetup_New_SafariZone
 .public BattleSetup_New_BugContest

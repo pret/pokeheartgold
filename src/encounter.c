@@ -331,7 +331,7 @@ void sub_02050B08(FieldSystem *fieldSystem, BattleSetup *setup) {
     }
 }
 
-void FieldSystem_StartHeadbuttBattle(FieldSystem *fieldSystem, TaskManager *taskManager, BattleSetup *setup) {
+void FieldSystem_StartForcedWildBattle(FieldSystem *fieldSystem, TaskManager *taskManager, BattleSetup *setup) {
     SaveVarsFlags *flags = Save_VarsFlags_Get(fieldSystem->saveData);
     s32 effect = BattleSetup_GetWildTransitionEffect(setup);
     s32 bgm = BattleSetup_GetWildBattleMusic(setup);
