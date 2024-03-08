@@ -12,14 +12,14 @@ gHeadbuttMons_{{table.Map}}:
     {% if length(table.UncommonTrees) != 0 %}
     {% if length(table.CommonMons) != 0 %}
     {% for mon in table.CommonMons %}
-    {% if existsIn(mon, "species") %}
-    .short {{mon.species}}
-    {% else if getVar("HEARTGOLD") == "1" %}
-    .short {{mon.speciesGold}}
-    {% else if getVar("SOULSILVER") == "1" %}
-    .short {{mon.speciesSilver}}
+    {% if isObject(mon.species) %}
+    #ifdef HEARTGOLD
+    .short {{mon.species.gold}}
+    #else
+    .short {{mon.species.silver}}
+    #endif
     {% else %}
-    {{error("Must pass -DHEARTGOLD or -DSOULSILVER")}}
+    .short {{mon.species}}
     {% endif %}
     .byte {{mon.minLevel}}
     .byte {{mon.maxLevel}}
@@ -34,14 +34,14 @@ gHeadbuttMons_{{table.Map}}:
 
     {% if length(table.UncommonMons) != 0 %}
     {% for mon in table.UncommonMons %}
-    {% if existsIn(mon, "species") %}
-    .short {{mon.species}}
-    {% else if getVar("HEARTGOLD") == "1" %}
-    .short {{mon.speciesGold}}
-    {% else if getVar("SOULSILVER") == "1" %}
-    .short {{mon.speciesSilver}}
+    {% if isObject(mon.species) %}
+    #ifdef HEARTGOLD
+    .short {{mon.species.gold}}
+    #else
+    .short {{mon.species.silver}}
+    #endif
     {% else %}
-    {{error("Must pass -DHEARTGOLD or -DSOULSILVER")}}
+    .short {{mon.species}}
     {% endif %}
     .byte {{mon.minLevel}}
     .byte {{mon.maxLevel}}
@@ -56,14 +56,14 @@ gHeadbuttMons_{{table.Map}}:
 
     {% if length(table.RareMons) != 0 %}
     {% for mon in table.RareMons %}
-    {% if existsIn(mon, "species") %}
-    .short {{mon.species}}
-    {% else if getVar("HEARTGOLD") == "1" %}
-    .short {{mon.speciesGold}}
-    {% else if getVar("SOULSILVER") == "1" %}
-    .short {{mon.speciesSilver}}
+    {% if isObject(mon.species) %}
+    #ifdef HEARTGOLD
+    .short {{mon.species.gold}}
+    #else
+    .short {{mon.species.silver}}
+    #endif
     {% else %}
-    {{error("Must pass -DHEARTGOLD or -DSOULSILVER")}}
+    .short {{mon.species}}
     {% endif %}
     .byte {{mon.minLevel}}
     .byte {{mon.maxLevel}}

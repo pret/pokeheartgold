@@ -113,14 +113,18 @@
                     "maxLevel": 6
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 5,
                     "maxLevel": 6
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 5,
                     "maxLevel": 6
                 },
@@ -706,14 +710,18 @@
                     "maxLevel": 7
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 5,
                     "maxLevel": 7
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 5,
                     "maxLevel": 7
                 },
@@ -2872,14 +2880,18 @@
                     "maxLevel": 23
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 22,
                     "maxLevel": 23
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 22,
                     "maxLevel": 23
                 },
@@ -3205,14 +3217,18 @@
                     "maxLevel": 23
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 22,
                     "maxLevel": 23
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 22,
                     "maxLevel": 23
                 },
@@ -3668,14 +3684,18 @@
                     "maxLevel": 27
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 26,
                     "maxLevel": 27
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 26,
                     "maxLevel": 27
                 },
@@ -3819,14 +3839,18 @@
                     "maxLevel": 23
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 21,
                     "maxLevel": 23
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 21,
                     "maxLevel": 23
                 },
@@ -4517,14 +4541,18 @@
                     "maxLevel": 27
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 26,
                     "maxLevel": 27
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 26,
                     "maxLevel": 27
                 },
@@ -4700,14 +4728,18 @@
                     "maxLevel": 7
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 5,
                     "maxLevel": 7
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 5,
                     "maxLevel": 7
                 },
@@ -5456,14 +5488,18 @@
                     "maxLevel": 32
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 31,
                     "maxLevel": 32
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 31,
                     "maxLevel": 32
                 },
@@ -5971,14 +6007,18 @@
                     "maxLevel": 32
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 31,
                     "maxLevel": 32
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 31,
                     "maxLevel": 32
                 },
@@ -6947,14 +6987,18 @@
                     "maxLevel": 5
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 4,
                     "maxLevel": 5
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 4,
                     "maxLevel": 5
                 },
@@ -7930,14 +7974,18 @@
                     "maxLevel": 5
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 4,
                     "maxLevel": 5
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 4,
                     "maxLevel": 5
                 },
@@ -8783,14 +8831,18 @@
                     "maxLevel": 6
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 5,
                     "maxLevel": 6
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 5,
                     "maxLevel": 6
                 },
@@ -10402,14 +10454,18 @@
                     "maxLevel": 12
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 11,
                     "maxLevel": 12
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 11,
                     "maxLevel": 12
                 },
@@ -10865,14 +10921,18 @@
                     "maxLevel": 14
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 13,
                     "maxLevel": 14
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 13,
                     "maxLevel": 14
                 },
@@ -11302,14 +11362,18 @@
                     "maxLevel": 7
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 6,
                     "maxLevel": 7
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 6,
                     "maxLevel": 7
                 },
@@ -12051,14 +12115,18 @@
                     "maxLevel": 17
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 15,
                     "maxLevel": 17
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 15,
                     "maxLevel": 17
                 },
@@ -12462,14 +12530,18 @@
                     "maxLevel": 16
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 15,
                     "maxLevel": 16
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 15,
                     "maxLevel": 16
                 },
@@ -12931,14 +13003,18 @@
                     "maxLevel": 17
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 16,
                     "maxLevel": 17
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 16,
                     "maxLevel": 17
                 },
@@ -14841,14 +14917,18 @@
                     "maxLevel": 6
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 5,
                     "maxLevel": 6
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 5,
                     "maxLevel": 6
                 },
@@ -15356,14 +15436,18 @@
                     "maxLevel": 7
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 5,
                     "maxLevel": 7
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 5,
                     "maxLevel": 7
                 },
@@ -18243,14 +18327,18 @@
                     "maxLevel": 23
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 21,
                     "maxLevel": 23
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 21,
                     "maxLevel": 23
                 },
@@ -18840,14 +18928,18 @@
                     "maxLevel": 5
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 4,
                     "maxLevel": 5
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 4,
                     "maxLevel": 5
                 },
@@ -19247,14 +19339,18 @@
                     "maxLevel": 5
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 4,
                     "maxLevel": 5
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 4,
                     "maxLevel": 5
                 },
@@ -20936,14 +21032,18 @@
                     "maxLevel": 17
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 15,
                     "maxLevel": 17
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 15,
                     "maxLevel": 17
                 },
@@ -22385,14 +22485,18 @@
                     "maxLevel": 26
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 24,
                     "maxLevel": 26
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 24,
                     "maxLevel": 26
                 },
@@ -22584,14 +22688,18 @@
                     "maxLevel": 15
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 13,
                     "maxLevel": 15
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 13,
                     "maxLevel": 15
                 },
@@ -23519,14 +23627,18 @@
                     "maxLevel": 5
                 },
                 {
-                    "speciesGold": "SPECIES_CATERPIE",
-                    "speciesSilver": "SPECIES_WEEDLE",
+                    "species": {
+                        "gold": "SPECIES_CATERPIE",
+                        "silver": "SPECIES_WEEDLE"
+                    },
                     "minLevel": 3,
                     "maxLevel": 5
                 },
                 {
-                    "speciesGold": "SPECIES_CATERPIE",
-                    "speciesSilver": "SPECIES_WEEDLE",
+                    "species": {
+                        "gold": "SPECIES_CATERPIE",
+                        "silver": "SPECIES_WEEDLE"
+                    },
                     "minLevel": 3,
                     "maxLevel": 5
                 },
@@ -23536,14 +23648,18 @@
                     "maxLevel": 5
                 },
                 {
-                    "speciesGold": "SPECIES_METAPOD",
-                    "speciesSilver": "SPECIES_KAKUNA",
+                    "species": {
+                        "gold": "SPECIES_METAPOD",
+                        "silver": "SPECIES_KAKUNA"
+                    },
                     "minLevel": 3,
                     "maxLevel": 5
                 },
                 {
-                    "speciesGold": "SPECIES_METAPOD",
-                    "speciesSilver": "SPECIES_KAKUNA",
+                    "species": {
+                        "gold": "SPECIES_METAPOD",
+                        "silver": "SPECIES_KAKUNA"
+                    },
                     "minLevel": 3,
                     "maxLevel": 5
                 }
@@ -23570,14 +23686,18 @@
                     "maxLevel": 8
                 },
                 {
-                    "speciesGold": "SPECIES_BUTTERFREE",
-                    "speciesSilver": "SPECIES_BEEDRILL",
+                    "species": {
+                        "gold": "SPECIES_BUTTERFREE",
+                        "silver": "SPECIES_BEEDRILL"
+                    },
                     "minLevel": 6,
                     "maxLevel": 8
                 },
                 {
-                    "speciesGold": "SPECIES_BUTTERFREE",
-                    "speciesSilver": "SPECIES_BEEDRILL",
+                    "species": {
+                        "gold": "SPECIES_BUTTERFREE",
+                        "silver": "SPECIES_BEEDRILL"
+                    },
                     "minLevel": 6,
                     "maxLevel": 8
                 }
@@ -25284,20 +25404,26 @@
                     "maxLevel": 4
                 },
                 {
-                    "speciesGold": "SPECIES_SEEDOT",
-                    "speciesSilver": "SPECIES_SHROOMISH",
+                    "species": {
+                        "gold": "SPECIES_SEEDOT",
+                        "silver": "SPECIES_SHROOMISH"
+                    },
                     "minLevel": 3,
                     "maxLevel": 4
                 },
                 {
-                    "speciesGold": "SPECIES_SEEDOT",
-                    "speciesSilver": "SPECIES_SHROOMISH",
+                    "species": {
+                        "gold": "SPECIES_SEEDOT",
+                        "silver": "SPECIES_SHROOMISH"
+                    },
                     "minLevel": 3,
                     "maxLevel": 4
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 3,
                     "maxLevel": 4
                 },
@@ -25307,8 +25433,10 @@
                     "maxLevel": 4
                 },
                 {
-                    "speciesGold": "SPECIES_SHROOMISH",
-                    "speciesSilver": "SPECIES_SEEDOT",
+                    "species": {
+                        "gold": "SPECIES_SHROOMISH",
+                        "silver": "SPECIES_SEEDOT"
+                    },
                     "minLevel": 3,
                     "maxLevel": 4
                 }
@@ -25320,20 +25448,26 @@
                     "maxLevel": 7
                 },
                 {
-                    "speciesGold": "SPECIES_SEEDOT",
-                    "speciesSilver": "SPECIES_SHROOMISH",
+                    "species": {
+                        "gold": "SPECIES_SEEDOT",
+                        "silver": "SPECIES_SHROOMISH"
+                    },
                     "minLevel": 5,
                     "maxLevel": 7
                 },
                 {
-                    "speciesGold": "SPECIES_SEEDOT",
-                    "speciesSilver": "SPECIES_SHROOMISH",
+                    "species": {
+                        "gold": "SPECIES_SEEDOT",
+                        "silver": "SPECIES_SHROOMISH"
+                    },
                     "minLevel": 5,
                     "maxLevel": 7
                 },
                 {
-                    "speciesGold": "SPECIES_ARIADOS",
-                    "speciesSilver": "SPECIES_LEDIAN",
+                    "species": {
+                        "gold": "SPECIES_ARIADOS",
+                        "silver": "SPECIES_LEDIAN"
+                    },
                     "minLevel": 5,
                     "maxLevel": 7
                 },
@@ -25343,8 +25477,10 @@
                     "maxLevel": 7
                 },
                 {
-                    "speciesGold": "SPECIES_SHROOMISH",
-                    "speciesSilver": "SPECIES_SEEDOT",
+                    "species": {
+                        "gold": "SPECIES_SHROOMISH",
+                        "silver": "SPECIES_SEEDOT"
+                    },
                     "minLevel": 5,
                     "maxLevel": 7
                 }
@@ -26043,14 +26179,18 @@
                     "maxLevel": 18
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 17,
                     "maxLevel": 18
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 17,
                     "maxLevel": 18
                 },
@@ -26072,20 +26212,26 @@
             ],
             "RareMons": [
                 {
-                    "speciesGold": "SPECIES_METAPOD",
-                    "speciesSilver": "SPECIES_KAKUNA",
+                    "species": {
+                        "gold": "SPECIES_METAPOD",
+                        "silver": "SPECIES_KAKUNA"
+                    },
                     "minLevel": 25,
                     "maxLevel": 28
                 },
                 {
-                    "speciesGold": "SPECIES_BUTTERFREE",
-                    "speciesSilver": "SPECIES_BEEDRILL",
+                    "species": {
+                        "gold": "SPECIES_BUTTERFREE",
+                        "silver": "SPECIES_BEEDRILL"
+                    },
                     "minLevel": 25,
                     "maxLevel": 28
                 },
                 {
-                    "speciesGold": "SPECIES_BUTTERFREE",
-                    "speciesSilver": "SPECIES_BEEDRILL",
+                    "species": {
+                        "gold": "SPECIES_BUTTERFREE",
+                        "silver": "SPECIES_BEEDRILL"
+                    },
                     "minLevel": 25,
                     "maxLevel": 28
                 },
@@ -26515,14 +26661,18 @@
                     "maxLevel": 18
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 17,
                     "maxLevel": 18
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 17,
                     "maxLevel": 18
                 },
@@ -26912,14 +27062,18 @@
                     "maxLevel": 19
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 17,
                     "maxLevel": 19
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 17,
                     "maxLevel": 19
                 },
@@ -29339,14 +29493,18 @@
                     "maxLevel": 7
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 5,
                     "maxLevel": 7
                 },
                 {
-                    "speciesGold": "SPECIES_SPINARAK",
-                    "speciesSilver": "SPECIES_LEDYBA",
+                    "species": {
+                        "gold": "SPECIES_SPINARAK",
+                        "silver": "SPECIES_LEDYBA"
+                    },
                     "minLevel": 5,
                     "maxLevel": 7
                 },
