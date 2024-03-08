@@ -753,7 +753,7 @@ BOOL ScrCmd_MenuInit(ScriptContext *ctx);
 BOOL ScrCmd_MenuItemAdd(ScriptContext *ctx);
 BOOL ScrCmd_MenuExec(ScriptContext *ctx);
 BOOL ScrCmd_RockSmashItemCheck(ScriptContext *ctx);
-BOOL ScrCmd_754(ScriptContext *ctx);
+BOOL ScrCmd_TryHeadbuttEncounter(ScriptContext *ctx);
 BOOL ScrCmd_755(ScriptContext *ctx);
 BOOL ScrCmd_756(ScriptContext *ctx);
 BOOL ScrCmd_757(ScriptContext *ctx);
@@ -1608,7 +1608,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_MenuItemAdd,
     ScrCmd_MenuExec,
     ScrCmd_RockSmashItemCheck,
-    ScrCmd_754,
+    ScrCmd_TryHeadbuttEncounter,
     ScrCmd_755,
     ScrCmd_756,
     ScrCmd_757,

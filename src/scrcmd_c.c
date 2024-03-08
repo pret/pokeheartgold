@@ -5142,9 +5142,9 @@ BOOL ScrCmd_RockSmashItemCheck(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_754(ScriptContext *ctx) {
+BOOL ScrCmd_TryHeadbuttEncounter(ScriptContext *ctx) {
     u16 *r1 = ScriptGetVarPointer(ctx);
-    ov01_02204ED8(ctx->fieldSystem, r1);
+    FieldSystem_TryHeadbuttEncounter(ctx->fieldSystem, r1);
     return TRUE;
 }
 

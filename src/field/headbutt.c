@@ -1,0 +1,233 @@
+#include "global.h"
+#include "field/headbutt.h"
+#include "assert.h"
+#include "encounter.h"
+#include "follow_mon.h"
+#include "field_map_object.h"
+#include "fieldmap.h"
+#include "filesystem.h"
+#include "heap.h"
+#include "overlay_01_021EDAFC.h"
+#include "overlay_01_02204ED8.h"
+#include "overlay_02.h"
+#include "player_data.h"
+#include "scrcmd.h"
+#include "script.h"
+#include "task.h"
+#include "unk_0205CB48.h"
+#include "unk_0205FD20.h"
+
+static BOOL Task_TryHeadbuttEncounter(TaskManager *taskManager);
+static s8 Headbutt_GetTreeTypeFromTable(u16 uncommonTableLength, u16 rareTableLength, u32 trainerId, u32 x, u32 y, s16 treeCoords[][2]);
+static s8 Headbutt_IsUncommonTree(u8 whichTree, u8 numTrees, u32 trainerId);
+static void GetCoordsOfFacingTree(FieldSystem *fieldSystem, u32 *x, u32 *y);
+
+enum TreeType {
+    TREETYPE_COMMON,
+    TREETYPE_UNCOMMON,
+    TREETYPE_RARE,
+    TREETYPE_NONE = -1
+};
+
+const s8 sUncommonLUT_1[][1] = {
+    {TREETYPE_COMMON},
+    {TREETYPE_UNCOMMON},
+    {TREETYPE_COMMON},
+    {TREETYPE_UNCOMMON},
+    {TREETYPE_COMMON},
+    {TREETYPE_UNCOMMON},
+    {TREETYPE_COMMON},
+    {TREETYPE_UNCOMMON},
+    {TREETYPE_COMMON},
+    {TREETYPE_UNCOMMON},
+    {TREETYPE_COMMON},
+    {TREETYPE_COMMON},
+};
+
+const s8 sUncommonLUT_2[][2] = {
+    {TREETYPE_COMMON, TREETYPE_UNCOMMON},
+    {TREETYPE_UNCOMMON, TREETYPE_COMMON},
+    {TREETYPE_COMMON, TREETYPE_UNCOMMON},
+    {TREETYPE_UNCOMMON, TREETYPE_COMMON},
+    {TREETYPE_COMMON, TREETYPE_UNCOMMON},
+    {TREETYPE_UNCOMMON, TREETYPE_COMMON},
+    {TREETYPE_COMMON, TREETYPE_UNCOMMON},
+    {TREETYPE_UNCOMMON, TREETYPE_COMMON},
+    {TREETYPE_COMMON, TREETYPE_UNCOMMON},
+    {TREETYPE_UNCOMMON, TREETYPE_COMMON},
+};
+
+const s8 sUncommonLUT_3[][3] = {
+    { TREETYPE_COMMON,  TREETYPE_UNCOMMON, TREETYPE_NONE},
+    { TREETYPE_COMMON, TREETYPE_NONE,  TREETYPE_UNCOMMON},
+    { TREETYPE_UNCOMMON,  TREETYPE_COMMON, TREETYPE_NONE},
+    { TREETYPE_UNCOMMON, TREETYPE_NONE,  TREETYPE_COMMON},
+    {TREETYPE_NONE,  TREETYPE_COMMON,  TREETYPE_UNCOMMON},
+    {TREETYPE_NONE,  TREETYPE_UNCOMMON,  TREETYPE_COMMON},
+    { TREETYPE_COMMON,  TREETYPE_UNCOMMON, TREETYPE_NONE},
+    { TREETYPE_COMMON, TREETYPE_NONE,  TREETYPE_UNCOMMON},
+    { TREETYPE_UNCOMMON,  TREETYPE_COMMON, TREETYPE_NONE},
+    { TREETYPE_UNCOMMON, TREETYPE_NONE,  TREETYPE_COMMON},
+};
+
+const s8 sUncommonLUT_4[][4] = {
+    {TREETYPE_NONE,  TREETYPE_COMMON,  TREETYPE_COMMON,  TREETYPE_UNCOMMON},
+    { TREETYPE_UNCOMMON, TREETYPE_NONE,  TREETYPE_COMMON,  TREETYPE_COMMON},
+    { TREETYPE_UNCOMMON,  TREETYPE_UNCOMMON, TREETYPE_NONE,  TREETYPE_COMMON},
+    { TREETYPE_COMMON,  TREETYPE_UNCOMMON,  TREETYPE_UNCOMMON, TREETYPE_NONE},
+    { TREETYPE_COMMON,  TREETYPE_COMMON,  TREETYPE_UNCOMMON,  TREETYPE_UNCOMMON},
+    {TREETYPE_NONE,  TREETYPE_COMMON,  TREETYPE_UNCOMMON,  TREETYPE_COMMON},
+    { TREETYPE_UNCOMMON, TREETYPE_NONE,  TREETYPE_COMMON,  TREETYPE_UNCOMMON},
+    { TREETYPE_COMMON,  TREETYPE_UNCOMMON, TREETYPE_NONE,  TREETYPE_COMMON},
+    { TREETYPE_UNCOMMON,  TREETYPE_COMMON,  TREETYPE_UNCOMMON, TREETYPE_NONE},
+    { TREETYPE_COMMON,  TREETYPE_UNCOMMON,  TREETYPE_COMMON,  TREETYPE_UNCOMMON},
+};
+
+const s8 sUncommonLUT_5Plus[][5] = {
+    {TREETYPE_NONE,  TREETYPE_COMMON,  TREETYPE_COMMON,  TREETYPE_UNCOMMON,  TREETYPE_UNCOMMON},
+    { TREETYPE_UNCOMMON, TREETYPE_NONE,  TREETYPE_COMMON,  TREETYPE_COMMON,  TREETYPE_UNCOMMON},
+    { TREETYPE_UNCOMMON,  TREETYPE_UNCOMMON, TREETYPE_NONE,  TREETYPE_COMMON,  TREETYPE_COMMON},
+    { TREETYPE_COMMON,  TREETYPE_UNCOMMON,  TREETYPE_UNCOMMON, TREETYPE_NONE,  TREETYPE_COMMON},
+    { TREETYPE_COMMON,  TREETYPE_COMMON,  TREETYPE_UNCOMMON,  TREETYPE_UNCOMMON, TREETYPE_NONE},
+    {TREETYPE_NONE,  TREETYPE_COMMON,  TREETYPE_UNCOMMON,  TREETYPE_COMMON,  TREETYPE_UNCOMMON},
+    { TREETYPE_UNCOMMON, TREETYPE_NONE,  TREETYPE_COMMON,  TREETYPE_UNCOMMON,  TREETYPE_COMMON},
+    { TREETYPE_COMMON,  TREETYPE_UNCOMMON, TREETYPE_NONE,  TREETYPE_COMMON,  TREETYPE_UNCOMMON},
+    { TREETYPE_UNCOMMON,  TREETYPE_COMMON,  TREETYPE_UNCOMMON, TREETYPE_NONE,  TREETYPE_COMMON},
+    { TREETYPE_COMMON,  TREETYPE_UNCOMMON,  TREETYPE_COMMON,  TREETYPE_UNCOMMON, TREETYPE_NONE},
+};
+
+typedef struct TaskData_TryHeadbuttEncounter {
+    u16 *resultPtr;
+} TaskData_TryHeadbuttEncounter;
+
+void FieldSystem_TryHeadbuttEncounter(FieldSystem *fieldSystem, u16 *varPointer) {
+    TaskData_TryHeadbuttEncounter *didHeadbuttStartBattle = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(didHeadbuttStartBattle));
+    didHeadbuttStartBattle->resultPtr = varPointer;
+    *varPointer = FALSE;
+    TaskManager_Call(fieldSystem->taskman, Task_TryHeadbuttEncounter, didHeadbuttStartBattle);
+}
+
+static BOOL Task_TryHeadbuttEncounter(TaskManager *taskManager) {
+    HeadbuttEncounterData *headbuttTable;
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    TaskData_TryHeadbuttEncounter *didHeadbuttStartBattle = TaskManager_GetEnvironment(taskManager);
+    headbuttTable = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_arc_headbutt, fieldSystem->location->mapId, HEAP_ID_FIELD);
+    if (headbuttTable->numUncommon != 0 || headbuttTable->numRare != 0) {
+        BattleSetup *setup;
+        u32 x;
+        u32 y;
+        GetCoordsOfFacingTree(fieldSystem, &x, &y);
+        u32 trainerId = PlayerProfile_GetTrainerID(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
+        enum TreeType treeType = (enum TreeType)Headbutt_GetTreeTypeFromTable(headbuttTable->numUncommon, headbuttTable->numRare, trainerId, x, y, headbuttTable->treeCoords);
+        if (treeType == TREETYPE_NONE) {
+            FreeToHeap(headbuttTable);
+            FreeToHeap(didHeadbuttStartBattle);
+            return TRUE;
+        }
+        HeadbuttSlot *headbuttEncounterSlots;
+        if (treeType == TREETYPE_COMMON) {
+            headbuttEncounterSlots = headbuttTable->common;
+        } else if (treeType == TREETYPE_UNCOMMON) {
+            headbuttEncounterSlots = headbuttTable->uncommon;
+        } else if (treeType == TREETYPE_RARE) {
+            headbuttEncounterSlots = headbuttTable->rare;
+        } else {
+            GF_ASSERT(FALSE);
+            FreeToHeap(headbuttTable);
+            FreeToHeap(didHeadbuttStartBattle);
+            return TRUE;
+        }
+        if (FieldSystem_ChooseHeadbuttEncounter(fieldSystem, &setup, headbuttEncounterSlots)) {
+            *didHeadbuttStartBattle->resultPtr = TRUE;
+            FreeToHeap(headbuttTable);
+            FreeToHeap(didHeadbuttStartBattle);
+            FieldSystem_StartHeadbuttBattle(fieldSystem, taskManager, setup);
+            return FALSE;
+        }
+    }
+    FreeToHeap(headbuttTable);
+    FreeToHeap(didHeadbuttStartBattle);
+    return TRUE;
+}
+
+static s8 Headbutt_GetTreeTypeFromTable(u16 uncommonTableLength, u16 rareTableLength, u32 trainerId, u32 x, u32 y, s16 treeCoords[][2]) {
+    // Based on your trainer ID and the tree you're facing, choose which encounter table applies
+    // Not all trees are headbuttable, this is determined by trainer ID
+    u16 i;
+    u16 numCoordsUncommon = uncommonTableLength * 6;
+    u16 numCoordsRare = rareTableLength * 6;
+    for (i = 0; i < numCoordsUncommon; i++) {
+        if (x == treeCoords[i][0] && y == treeCoords[i][1]) {
+            return Headbutt_IsUncommonTree(i / 6, uncommonTableLength, trainerId);
+        }
+    }
+    // Check whether the facing tree is in the rare table
+    for (i = numCoordsUncommon; i < numCoordsUncommon + numCoordsRare; i++) {
+        if (x == treeCoords[i][0] && y == treeCoords[i][1]) {
+            return TREETYPE_RARE;
+        }
+    }
+    return TREETYPE_NONE;
+}
+
+static s8 Headbutt_IsUncommonTree(u8 whichTree, u8 numTrees, u32 trainerId) {
+    s8 ret = TREETYPE_NONE;
+    u8 trainerIdLastDigit = trainerId % 10;
+    if (numTrees >= 5) {
+        u8 column = whichTree % 5;
+        ret = sUncommonLUT_5Plus[trainerIdLastDigit][column];
+    } else if (numTrees == 4) {
+        ret = sUncommonLUT_4[trainerIdLastDigit][whichTree];
+    } else if (numTrees == 3) {
+        ret = sUncommonLUT_3[trainerIdLastDigit][whichTree];
+    } else if (numTrees == 2) {
+        ret = sUncommonLUT_2[trainerIdLastDigit][whichTree];
+    } else if (numTrees == 1) {
+        ret = sUncommonLUT_1[trainerIdLastDigit][0];
+    } else {
+        // numTrees == 0 --> unreachable
+        GF_ASSERT(FALSE);
+    }
+    return ret;
+}
+
+static void GetCoordsOfFacingTree(FieldSystem *fieldSystem, u32 *x, u32 *y) {
+    int inFrontX, inFrontY;
+    PlayerAvatar_GetCoordsInFront(fieldSystem->playerAvatar, &inFrontX, &inFrontY);
+    if (FollowMon_IsActive(fieldSystem)) {
+        LocalMapObject *object = FollowMon_GetMapObject(fieldSystem);
+        u32 followingMonX = MapObject_GetCurrentX(object);
+        u32 followingMonY = MapObject_GetCurrentY(object);
+        if (inFrontX == followingMonX && inFrontY == followingMonY) {
+            u8 dir = MapObject_GetFacingDirection(object);
+            inFrontX = GetDeltaXByFacingDirection(dir) + followingMonX;
+            inFrontY = GetDeltaYByFacingDirection(dir) + followingMonY;
+        }
+    }
+    *x = inFrontX;
+    *y = inFrontY;
+}
+
+//
+
+BOOL ScrCmd_795(ScriptContext *ctx) {
+    FieldSystem *fieldSystem = ctx->fieldSystem;
+    u8 x = ScriptGetVar(ctx);
+    u8 y = ScriptGetVar(ctx);
+    Window **moneyBox = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MONEY_BOX);
+    *moneyBox = ov01_021EED60(ctx->fieldSystem, x, y);
+    return FALSE;
+}
+
+BOOL ScrCmd_796(ScriptContext *ctx) {
+    Window **moneyBox = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MONEY_BOX);
+    ov01_021EEE30(*moneyBox);
+    return FALSE;
+}
+
+// Unused
+BOOL ScrCmd_797(ScriptContext *ctx) {
+    Window **moneyBox = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MONEY_BOX);
+    ov01_021EEE44(ctx->fieldSystem, *moneyBox);
+    return FALSE;
+}

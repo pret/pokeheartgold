@@ -23564,7 +23564,7 @@ _021F2D62:
 	cmp r0, #0x60
 	bne _021F2D78
 	ldr r0, [r5, #0x28]
-	bl CheckFlag996
+	bl Save_VarsFlags_CheckBugContestFlag
 	cmp r0, #0
 	beq _021F2D78
 	mov r0, #0
@@ -23595,7 +23595,7 @@ ov101_021F2D90: ; 0x021F2D90
 	cmp r0, #0x60
 	bne _021F2DB0
 	ldr r0, [r5, #0x28]
-	bl CheckFlag996
+	bl Save_VarsFlags_CheckBugContestFlag
 	cmp r0, #0
 	beq _021F2DB0
 	mov r0, #0

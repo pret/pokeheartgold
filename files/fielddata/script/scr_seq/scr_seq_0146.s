@@ -856,7 +856,7 @@ _0BB4:
 	compare VAR_SPECIAL_x8005, 0
 	goto_if_eq _0BB4
 	releaseall
-	scrcmd_754 VAR_SPECIAL_RESULT
+	try_headbutt_encounter VAR_SPECIAL_RESULT
 	end
 
 scr_seq_0146_018:
@@ -920,7 +920,7 @@ _0CAA:
 	compare VAR_SPECIAL_x8005, 0
 	goto_if_eq _0CAA
 	releaseall
-	scrcmd_754 VAR_SPECIAL_RESULT
+	try_headbutt_encounter VAR_SPECIAL_RESULT
 	end
 
 _0CC5:

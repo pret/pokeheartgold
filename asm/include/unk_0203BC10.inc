@@ -105,7 +105,7 @@
 .public GetItemFieldUseFunc
 .public ItemCheckUseData_Init
 .public Save_VarsFlags_CheckSafariSysFlag
-.public CheckFlag996
+.public Save_VarsFlags_CheckBugContestFlag
 .public Save_VarsFlags_CheckPalParkSysFlag
 .public CheckGotStarter
 .public CheckGotPokegear

@@ -788,7 +788,7 @@ BOOL ScrCmd_MenuInit(ScriptContext* ctx);
 BOOL ScrCmd_MenuItemAdd(ScriptContext* ctx);
 BOOL ScrCmd_MenuExec(ScriptContext* ctx);
 BOOL ScrCmd_RockSmashItemCheck(ScriptContext* ctx);
-BOOL ScrCmd_754(ScriptContext* ctx);
+BOOL ScrCmd_TryHeadbuttEncounter(ScriptContext* ctx);
 BOOL ScrCmd_755(ScriptContext* ctx);
 BOOL ScrCmd_756(ScriptContext* ctx);
 BOOL ScrCmd_757(ScriptContext* ctx);

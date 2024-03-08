@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_HEADBUTT_ENCOUNTER_H
-#define POKEHEARTGOLD_HEADBUTT_ENCOUNTER_H
+#ifndef POKEHEARTGOLD_FIELD_HEADBUTT_H
+#define POKEHEARTGOLD_FIELD_HEADBUTT_H
 
 typedef struct HeadbuttSlot {
     u16 species;
@@ -16,4 +16,4 @@ typedef struct HeadbuttEncounterData {
     s16 treeCoords[][2];
 } HeadbuttEncounterData;
 
-#endif //POKEHEARTGOLD_HEADBUTT_ENCOUNTER_H
+#endif //POKEHEARTGOLD_FIELD_HEADBUTT_H

@@ -443,7 +443,7 @@ void sub_0205239C(BattleSetup* setup, FieldSystem* fieldSystem) {
     vars_flags = Save_VarsFlags_Get(fieldSystem->saveData);
     if (Save_VarsFlags_CheckSafariSysFlag(vars_flags)) {
         balls_ptr = LocalFieldData_GetSafariBallsCounter(Save_LocalFieldData_Get(fieldSystem->saveData));
-    } else if (CheckFlag996(vars_flags)) {
+    } else if (Save_VarsFlags_CheckBugContestFlag(vars_flags)) {
         balls_ptr = BugContest_GetSportBallsAddr(FieldSystem_BugContest_Get(fieldSystem));
     }
     if (balls_ptr != NULL) {

@@ -4259,7 +4259,7 @@
 	.short \arg2
 	.endm
 
-	.macro scrcmd_754 arg0
+	.macro try_headbutt_encounter arg0
 	.short 754
 	.short \arg0
 	.endm

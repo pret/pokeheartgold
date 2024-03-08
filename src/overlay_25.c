@@ -163,8 +163,8 @@ void TrainerHouse_StartBattle(FieldSystem *fieldSystem, u32 trainerNum) {
         setup = TrainerHouse_NewBattleSetup(fieldSystem, &trainerHouse->sets[trainerNum]);
     }
     fieldSystem->unkA0 = NULL;
-    u32 effect = sub_020517E8(setup);
-    u32 bgm = sub_020517FC(setup);
+    u32 effect = BattleSetup_GetWildTransitionEffect(setup);
+    u32 bgm = BattleSetup_GetWildBattleMusic(setup);
     u32 *winFlag = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_BATTLE_WIN_FLAG);
     CallTask_020509F0(fieldSystem->taskman, setup, effect, bgm, winFlag);
 }

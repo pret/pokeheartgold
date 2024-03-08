@@ -2358,7 +2358,7 @@ _02246DE0:
 	bl Save_VarsFlags_CheckSafariSysFlag
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x14]
-	bl CheckFlag996
+	bl Save_VarsFlags_CheckBugContestFlag
 	str r0, [sp, #8]
 	cmp r6, #0
 	bne _02246E18
@@ -2858,7 +2858,7 @@ _022471AC:
 	ldr r1, [sp, #8]
 	ldr r2, [sp, #0x1c]
 	add r0, r5, #0
-	bl sub_02050B90
+	bl FieldSystem_StartHeadbuttBattle
 	add sp, #0x9c
 	mov r0, #1
 	pop {r4, r5, r6, r7, pc}
@@ -2867,7 +2867,7 @@ _0224721A:
 	bl Save_VarsFlags_CheckSafariSysFlag
 	add r6, r0, #0
 	add r0, r7, #0
-	bl CheckFlag996
+	bl Save_VarsFlags_CheckBugContestFlag
 	add r7, r0, #0
 	ldr r0, [sp, #0xc]
 	cmp r0, #0
@@ -3014,7 +3014,7 @@ _0224734C:
 	ldr r1, [sp, #8]
 	ldr r2, [sp, #0x1c]
 	add r0, r5, #0
-	bl sub_02050B90
+	bl FieldSystem_StartHeadbuttBattle
 	b _02247360
 _0224735C:
 	bl GF_AssertFail
@@ -3031,8 +3031,8 @@ _02247360:
 	.balign 4, 0
 	thumb_func_end ov02_02247170
 
-	thumb_func_start ov02_02247374
-ov02_02247374: ; 0x02247374
+	thumb_func_start FieldSystem_ChooseHeadbuttEncounter
+FieldSystem_ChooseHeadbuttEncounter: ; 0x02247374
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0xa8
 	add r5, r0, #0
@@ -3117,7 +3117,7 @@ _0224741C:
 	add sp, #0xa8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov02_02247374
+	thumb_func_end FieldSystem_ChooseHeadbuttEncounter
 
 	thumb_func_start ov02_02247424
 ov02_02247424: ; 0x02247424
@@ -25988,7 +25988,7 @@ _022520B8:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0x1c]
-	bl CheckFlag996
+	bl Save_VarsFlags_CheckBugContestFlag
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x10]
