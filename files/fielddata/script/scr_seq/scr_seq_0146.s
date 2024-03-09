@@ -56,7 +56,7 @@ _009E:
 _00AD:
 	get_party_slot_with_move VAR_SPECIAL_RESULT, MOVE_CUT
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	scrcmd_727 VAR_SPECIAL_x8005
+	get_follow_poke_party_index VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_RESULT
 	npc_msg msg_0211_00001
 	closemsg
@@ -113,7 +113,7 @@ scr_seq_0146_007:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	npc_msg msg_0211_00001
 	closemsg
-	scrcmd_727 VAR_SPECIAL_x8004
+	get_follow_poke_party_index VAR_SPECIAL_x8004
 	get_player_state VAR_SPECIAL_RESULT
 	scrcmd_730 VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_RESULT, 2
@@ -207,7 +207,7 @@ _02E6:
 	bufferpartymonnick 0, VAR_SPECIAL_x8004
 	npc_msg msg_0211_00005
 	closemsg
-	scrcmd_727 VAR_SPECIAL_x8005
+	get_follow_poke_party_index VAR_SPECIAL_x8005
 	get_player_state VAR_SPECIAL_RESULT
 	scrcmd_730 VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_RESULT, 2
@@ -267,7 +267,7 @@ scr_seq_0146_008:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	npc_msg msg_0211_00005
 	closemsg
-	scrcmd_727 VAR_SPECIAL_x8004
+	get_follow_poke_party_index VAR_SPECIAL_x8004
 	get_player_state VAR_SPECIAL_RESULT
 	scrcmd_730 VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_RESULT, 2
@@ -376,7 +376,7 @@ _0573:
 	bufferpartymonnick 0, VAR_SPECIAL_RESULT
 	npc_msg msg_0211_00011
 	closemsg
-	scrcmd_727 VAR_SPECIAL_x8005
+	get_follow_poke_party_index VAR_SPECIAL_x8005
 	get_player_state VAR_SPECIAL_RESULT
 	scrcmd_730 VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_RESULT, 2
@@ -436,7 +436,7 @@ _0648:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	npc_msg msg_0211_00011
 	closemsg
-	scrcmd_727 VAR_SPECIAL_x8004
+	get_follow_poke_party_index VAR_SPECIAL_x8004
 	get_player_state VAR_SPECIAL_RESULT
 	scrcmd_730 VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_RESULT, 2
@@ -607,7 +607,7 @@ scr_seq_0146_013:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	npc_msg msg_0211_00028
 	closemsg
-	scrcmd_727 VAR_SPECIAL_x8005
+	get_follow_poke_party_index VAR_SPECIAL_x8005
 	get_player_state VAR_SPECIAL_RESULT
 	scrcmd_730 VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_RESULT, 2
@@ -798,7 +798,7 @@ _0AC2:
 _0AD1:
 	get_party_slot_with_move VAR_SPECIAL_RESULT, MOVE_HEADBUTT
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	scrcmd_727 VAR_SPECIAL_x8005
+	get_follow_poke_party_index VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_RESULT
 	npc_msg msg_0211_00033
 	closemsg
@@ -856,7 +856,7 @@ _0BB4:
 	compare VAR_SPECIAL_x8005, 0
 	goto_if_eq _0BB4
 	releaseall
-	scrcmd_754 VAR_SPECIAL_RESULT
+	try_headbutt_encounter VAR_SPECIAL_RESULT
 	end
 
 scr_seq_0146_018:
@@ -865,7 +865,7 @@ scr_seq_0146_018:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	npc_msg msg_0211_00033
 	closemsg
-	scrcmd_727 VAR_SPECIAL_x8004
+	get_follow_poke_party_index VAR_SPECIAL_x8004
 	get_player_state VAR_SPECIAL_RESULT
 	scrcmd_730 VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_RESULT, 2
@@ -920,7 +920,7 @@ _0CAA:
 	compare VAR_SPECIAL_x8005, 0
 	goto_if_eq _0CAA
 	releaseall
-	scrcmd_754 VAR_SPECIAL_RESULT
+	try_headbutt_encounter VAR_SPECIAL_RESULT
 	end
 
 _0CC5:

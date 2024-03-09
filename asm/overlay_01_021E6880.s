@@ -2231,7 +2231,7 @@ BugContestTimeoutCheck: ; 0x021E7A60
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl Save_VarsFlags_Get
-	bl CheckFlag996
+	bl Save_VarsFlags_CheckBugContestFlag
 	cmp r0, #0
 	bne _021E7A7C
 	mov r0, #0

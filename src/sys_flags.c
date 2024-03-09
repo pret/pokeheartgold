@@ -211,7 +211,7 @@ BOOL Save_VarsFlags_CheckSafariSysFlag(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_SYS_SAFARI);
 }
 
-BOOL CheckFlag996(SaveVarsFlags* state) {
+BOOL Save_VarsFlags_CheckBugContestFlag(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_UNK_996);
 }
 

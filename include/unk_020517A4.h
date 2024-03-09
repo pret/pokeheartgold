@@ -3,7 +3,7 @@
 
 #include "battle/battle_setup.h"
 
-int sub_020517E8(BattleSetup *setup);
-int sub_020517FC(BattleSetup *setup);
+int BattleSetup_GetWildTransitionEffect(BattleSetup *setup);
+int BattleSetup_GetWildBattleMusic(BattleSetup *setup);
 
 #endif

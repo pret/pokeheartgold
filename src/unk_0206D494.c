@@ -381,7 +381,7 @@ u16 *BugContest_GetSportBallsAddr(BugContest *contest) {
 
 void FieldSystem_IncrementBugContestTimer(FieldSystem *fieldSystem, int duration) {
     BugContest *contest = FieldSystem_BugContest_Get(fieldSystem);
-    if (contest && CheckFlag996(Save_VarsFlags_Get(fieldSystem->saveData))) {
+    if (contest && Save_VarsFlags_CheckBugContestFlag(Save_VarsFlags_Get(fieldSystem->saveData))) {
         contest->elapsed_time += duration;
     }
 }

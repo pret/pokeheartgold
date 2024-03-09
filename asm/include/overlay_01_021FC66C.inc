@@ -23,7 +23,7 @@
 .public GameStats_Inc
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnvironment
-.public sub_02050B90
+.public FieldSystem_StartForcedWildBattle
 .public BattleSetup_Delete
 .public GetFirstAliveMonInParty_CrashIfNone
 .public sub_0205B514

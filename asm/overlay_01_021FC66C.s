@@ -96,7 +96,7 @@ _021FC6E2:
 	ldr r2, [r5, #0x10]
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_02050B90
+	bl FieldSystem_StartForcedWildBattle
 	add r0, r5, #0
 	bl FreeToHeap
 	mov r0, #0

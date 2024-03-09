@@ -133,7 +133,7 @@
 .public Save_VarsFlags_CheckHaveFollower
 .public ClearFlag965
 .public Save_VarsFlags_CheckSafariSysFlag
-.public CheckFlag996
+.public Save_VarsFlags_CheckBugContestFlag
 .public Save_VarsFlags_CheckPalParkSysFlag
 .public StrengthFlagAction
 .public CheckDisabledCianwoodWaterfall

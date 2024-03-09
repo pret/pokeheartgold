@@ -118,7 +118,7 @@
 .public MapObject_GetScript
 .public sub_0205F330
 .public Save_VarsFlags_CheckSafariSysFlag
-.public CheckFlag996
+.public Save_VarsFlags_CheckBugContestFlag
 .public Save_VarsFlags_CheckPalParkSysFlag
 .public sub_02067584
 .public FieldSystem_BugContest_Get

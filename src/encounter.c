@@ -316,13 +316,13 @@ static void WildEncounter_Delete(WildEncounter *encounter) {
 
 void sub_02050B08(FieldSystem *fieldSystem, BattleSetup *setup) {
     SaveVarsFlags *flags = Save_VarsFlags_Get(fieldSystem->saveData);
-    s32 effect = sub_020517E8(setup);
-    s32 bgm = sub_020517FC(setup);
+    s32 effect = BattleSetup_GetWildTransitionEffect(setup);
+    s32 bgm = BattleSetup_GetWildBattleMusic(setup);
 
     if (Save_VarsFlags_CheckSafariSysFlag(flags)) {
         Encounter *encounter = Encounter_New(setup, effect, bgm, NULL);
         FieldSystem_CreateTask(fieldSystem, Task_SafariEncounter, encounter);
-    } else if (CheckFlag996(flags)) {
+    } else if (Save_VarsFlags_CheckBugContestFlag(flags)) {
         Encounter *encounter = Encounter_New(setup, effect, bgm, NULL);
         FieldSystem_CreateTask(fieldSystem, Task_BugContestEncounter, encounter);
     } else {
@@ -331,15 +331,15 @@ void sub_02050B08(FieldSystem *fieldSystem, BattleSetup *setup) {
     }
 }
 
-void sub_02050B90(FieldSystem *fieldSystem, TaskManager *taskManager, BattleSetup *setup) {
+void FieldSystem_StartForcedWildBattle(FieldSystem *fieldSystem, TaskManager *taskManager, BattleSetup *setup) {
     SaveVarsFlags *flags = Save_VarsFlags_Get(fieldSystem->saveData);
-    s32 effect = sub_020517E8(setup);
-    s32 bgm = sub_020517FC(setup);
+    s32 effect = BattleSetup_GetWildTransitionEffect(setup);
+    s32 bgm = BattleSetup_GetWildBattleMusic(setup);
 
     if (Save_VarsFlags_CheckSafariSysFlag(flags)) {
         Encounter *encounter = Encounter_New(setup, effect, bgm, NULL);
         TaskManager_Jump(taskManager, Task_SafariEncounter, encounter);
-    } else if (CheckFlag996(flags)) {
+    } else if (Save_VarsFlags_CheckBugContestFlag(flags)) {
         Encounter *encounter = Encounter_New(setup, effect, bgm, NULL);
         TaskManager_Jump(taskManager, Task_BugContestEncounter, encounter);
     } else {
@@ -554,7 +554,7 @@ void SetupAndStartWildBattle(TaskManager *taskManager, u16 species, u8 level, u3
 
     GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK8);
 
-    CallTask_StartEncounter(taskManager, setup, sub_020517E8(setup), sub_020517FC(setup), winFlag);
+    CallTask_StartEncounter(taskManager, setup, BattleSetup_GetWildTransitionEffect(setup), BattleSetup_GetWildBattleMusic(setup), winFlag);
 }
 
 void SetupAndStartFatefulWildBattle(TaskManager *taskManager, u16 species, u8 level, u32 *winFlag, BOOL canRun) {
@@ -574,7 +574,7 @@ void SetupAndStartFatefulWildBattle(TaskManager *taskManager, u16 species, u8 le
 
     GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK8);
 
-    CallTask_StartEncounter(taskManager, setup, sub_020517E8(setup), sub_020517FC(setup), winFlag);
+    CallTask_StartEncounter(taskManager, setup, BattleSetup_GetWildTransitionEffect(setup), BattleSetup_GetWildBattleMusic(setup), winFlag);
 }
 
 static BOOL Task_PalParkEncounter(TaskManager *taskManager) {
@@ -628,7 +628,7 @@ static BOOL Task_PalParkEncounter(TaskManager *taskManager) {
 }
 
 void sub_020511F8(FieldSystem *fieldSystem, BattleSetup *setup) {
-    Encounter *encounter = Encounter_New(setup, sub_020517E8(setup), sub_020517FC(setup), NULL);
+    Encounter *encounter = Encounter_New(setup, BattleSetup_GetWildTransitionEffect(setup), BattleSetup_GetWildBattleMusic(setup), NULL);
     FieldSystem_CreateTask(fieldSystem, Task_PalParkEncounter, encounter);
 }
 
@@ -643,7 +643,7 @@ void SetupAndStartFirstBattle(TaskManager *taskManager, u16 species, u8 level) {
 
     GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK8);
 
-    CallTask_StartEncounter(taskManager, setup, sub_020517E8(setup), sub_020517FC(setup), NULL);
+    CallTask_StartEncounter(taskManager, setup, BattleSetup_GetWildTransitionEffect(setup), BattleSetup_GetWildBattleMusic(setup), NULL);
 }
 
 static BOOL Task_TutorialBattle(TaskManager *taskManager) {
@@ -690,7 +690,7 @@ void SetupAndStartTutorialBattle(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
 
     setup = BattleSetup_New_Tutorial(HEAP_ID_FIELD, fieldSystem);
-    encounter = Encounter_New(setup, sub_020517E8(setup), sub_020517FC(setup), NULL);
+    encounter = Encounter_New(setup, BattleSetup_GetWildTransitionEffect(setup), BattleSetup_GetWildBattleMusic(setup), NULL);
 
     TaskManager_Call(taskManager, Task_TutorialBattle, encounter);
 }
@@ -734,7 +734,7 @@ void SetupAndStartTrainerBattle(TaskManager *taskManager, u32 opponentTrainer1, 
         }
     }
 
-    CallTask_StartEncounter(taskManager, setup, sub_020517E8(setup), sub_020517FC(setup), winFlag);
+    CallTask_StartEncounter(taskManager, setup, BattleSetup_GetWildTransitionEffect(setup), BattleSetup_GetWildBattleMusic(setup), winFlag);
 }
 
 void CallTask_020508B8(TaskManager *taskManager, void *param1, u32 battleType) {
@@ -746,7 +746,7 @@ void CallTask_020508B8(TaskManager *taskManager, void *param1, u32 battleType) {
 
     sub_020522F0(setup, fieldSystem, param1);
 
-    encounter = Encounter_New(setup, sub_020517E8(setup), sub_020517FC(setup), NULL);
+    encounter = Encounter_New(setup, BattleSetup_GetWildTransitionEffect(setup), BattleSetup_GetWildBattleMusic(setup), NULL);
     TaskManager_Call(taskManager, Task_020508B8, encounter);
 }
 
@@ -798,7 +798,7 @@ void CallTask_02050960(TaskManager *taskManager, s32 target, s32 maxLevel, u32 f
 
     setup->unk1B2 = mode;
 
-    encounter = Encounter_New(setup, sub_020517E8(setup), sub_020517FC(setup), NULL);
+    encounter = Encounter_New(setup, BattleSetup_GetWildTransitionEffect(setup), BattleSetup_GetWildBattleMusic(setup), NULL);
     encounter->unkC = target;
 
     TaskManager_Call(taskManager, Task_02050960, encounter);
@@ -834,7 +834,7 @@ void sub_02051598(FieldSystem *fieldSystem, void *param1, s32 battleType) {
 
     setup->unk1B2 = sub_02051474(fieldSystem->unkA4, battleType);
 
-    encounter = Encounter_New(setup, sub_020517E8(setup), sub_020517FC(setup), NULL);
+    encounter = Encounter_New(setup, BattleSetup_GetWildTransitionEffect(setup), BattleSetup_GetWildBattleMusic(setup), NULL);
 
     FieldSystem_CreateTask(fieldSystem, sub_02051540, encounter);
 }
@@ -849,7 +849,7 @@ void sub_020515FC(FieldSystem *fieldSystem, Party *party, s32 battleType) {
 
     setup->unk1B2 = sub_02051474(fieldSystem->unkA4, battleType);
 
-    encounter = Encounter_New(setup, sub_020517E8(setup), sub_020517FC(setup), NULL);
+    encounter = Encounter_New(setup, BattleSetup_GetWildTransitionEffect(setup), BattleSetup_GetWildBattleMusic(setup), NULL);
 
     FieldSystem_CreateTask(fieldSystem, sub_02051540, encounter);
 }

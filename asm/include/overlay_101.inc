@@ -258,7 +258,7 @@
 .public CheckGameClearFlag
 .public Save_VarsFlags_MomsSavingsFlagAction
 .public Save_VarsFlags_MomsSavingsFlagCheck
-.public CheckFlag996
+.public Save_VarsFlags_CheckBugContestFlag
 .public Save_VarsFlags_FlypointFlagAction
 .public Save_VarsFlags_IsInRocketTakeover
 .public Save_VarsFlags_GetVar4057
