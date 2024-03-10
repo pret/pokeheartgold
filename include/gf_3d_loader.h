@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_UNK_02025534_H
-#define POKEHEARTGOLD_UNK_02025534_H
+#ifndef POKEHEARTGOLD_GF_3D_LOADER_H
+#define POKEHEARTGOLD_GF_3D_LOADER_H
 
 #include "heap.h"
 
@@ -60,4 +60,4 @@ NNSG3dTexKey GF3dGfxRawResObj_GetTex4x4Key(GF_3DGfxRawResObj *obj);
 NNSG3dPlttKey GF3dGfxRawResObj_GetPlttKey(GF_3DGfxRawResObj *obj);
 u32 G3dResFileHeader_GetSizeWithoutTex(const NNSG3dResFileHeader *header);
 
-#endif // POKEHEARTGOLD_UNK_02025534_H
+#endif // POKEHEARTGOLD_GF_3D_LOADER_H

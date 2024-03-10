@@ -1,5 +1,5 @@
 #include "global.h"
-#include "unk_02025534.h"
+#include "gf_3d_loader.h"
 #include "system.h"
 #include "gf_3d_render.h"
 

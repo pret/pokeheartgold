@@ -2,7 +2,7 @@
 #define POKEHEARTGOLD_UNK_0200A090_H
 
 #include "filesystem.h"
-#include "unk_02025534.h"
+#include "gf_3d_loader.h"
 
 struct CharResExtraData {
     NNSG2dCharacterData *charData;
