@@ -390,11 +390,11 @@ _021E6B36:
 	ldr r0, [r4, #0x3c]
 	bl MapObjectManager_PauseAllMovement
 	add r0, r4, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _021E6B62
 	add r0, r4, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	bl MapObject_UnpauseMovement
 _021E6B62:
 	mov r0, #1
@@ -1816,13 +1816,13 @@ _021E7722:
 	bl ov01_021E790C
 _021E7732:
 	add r0, r5, #0
-	bl sub_02069FB0
+	bl FollowMon_IsVisible
 	cmp r0, #0
 	beq _021E7746
 	mov r0, #0x42
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl FieldSystemUnkSub108_MoveMoodTowardsNeutral
+	bl FieldSystem_UnkSub108_MoveMoodTowardsNeutral
 _021E7746:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}

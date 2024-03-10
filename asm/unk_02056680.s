@@ -129,7 +129,7 @@ _02056760:
 	add r0, r6, #0
 	bl MapObject_ClearHeldMovementIfActive
 	add r0, r5, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _02056792
 	ldr r0, [r5, #0x40]
@@ -312,18 +312,18 @@ _020568DE:
 	cmp r0, #0
 	beq _02056932
 	add r0, r5, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _0205691E
 	add r0, r5, #0
 	mov r1, #0
 	bl ov01_02205790
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	mov r1, #0x30
 	bl sub_0205FC94
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	mov r1, #1
 	bl sub_02069DC8
 _0205691E:
@@ -444,18 +444,18 @@ _020569FA:
 	cmp r0, #0
 	beq _02056A4E
 	add r0, r5, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _02056A3A
 	add r0, r5, #0
 	mov r1, #1
 	bl ov01_02205790
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	mov r1, #0x30
 	bl sub_0205FC94
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	mov r1, #1
 	bl sub_02069DC8
 _02056A3A:
@@ -629,11 +629,11 @@ _02056B70:
 	add r0, sp, #0x1c
 	bl Camera_OffsetLookAtPosAndTarget
 	add r0, r5, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _02056BC2
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	add r1, r4, #0
 	bl MapObject_ForceSetFacingDirection
 _02056BC2:

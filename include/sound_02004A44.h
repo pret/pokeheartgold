@@ -1,6 +1,9 @@
 #ifndef POKEHEARTGOLD_SOUND_02004A44_H
 #define POKEHEARTGOLD_SOUND_02004A44_H
 
+#include <nitro.h>
+#include <nnsys.h>
+
 typedef struct UnkStruct_02004A44_0 {
     NNSSndWaveOutHandle *unk00;
     NNSSndWaveFormat unk04;
@@ -43,5 +46,8 @@ BOOL sub_02005518(void);
 void sub_02004EC4(int a0, u16 a1, int a2);
 void GF_SetVolumeBySeqNo(u16 a0, u16 a1);
 void GF_SndHandleSetPlayerVolume(u32 a0, u32 a1);
+
+void sub_02004AD8(int a0);
+void sub_02005BEC(BOOL);
 
 #endif //POKEHEARTGOLD_SOUND_02004A44_H

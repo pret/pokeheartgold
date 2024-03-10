@@ -6,7 +6,7 @@
 #include "unk_02035900.h"
 #include "unk_02055418.h"
 #include "save_local_field_data.h"
-#include "field_follow_poke.h"
+#include "follow_mon.h"
 #include "unk_0205BB1C.h"
 #include "unk_02088288.h"
 #include "unk_0202CA24.h"
@@ -220,7 +220,7 @@ void sub_02051D18(BattleSetup* setup, FieldSystem* fieldSystem, SaveData* saveDa
         if (forceNite) {
             setup->timeOfDay = RTC_TIMEOFDAY_NITE;
         }
-        if (FollowingPokemon_IsActive(fieldSystem) && sub_02069FB0(fieldSystem)) {
+        if (FollowMon_IsActive(fieldSystem) && FollowMon_IsVisible(fieldSystem)) {
             setup->unk1CC[BATTLER_PLAYER] = Save_GetPartyLeadAlive(saveData);
         }
     } else {

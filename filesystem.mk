@@ -411,6 +411,7 @@ $(eval $(call arc_strip_name,files/poketool/personal/wotbl.narc,files/a/0/3/3))
 $(eval $(call arc_strip_name,files/poketool/personal/evo.narc,files/a/0/3/4))
 $(eval $(call arc_strip_name,files/fielddata/encountdata/g_enc_data.narc,files/a/0/3/7))
 $(eval $(call arc_strip_name,files/fielddata/mapmatrix/map_matrix.narc,files/a/0/4/1))
+$(eval $(call arc_strip_name,files/demo/title/titledemo.narc,files/a/0/4/6))
 $(eval $(call arc_strip_name,files/poketool/trainer/trdata.narc,files/a/0/5/5))
 $(eval $(call arc_strip_name,files/poketool/trainer/trpoke.narc,files/a/0/5/6))
 $(eval $(call arc_strip_name,files/poketool/trmsg/trtbl.narc,files/a/0/5/7))
@@ -489,6 +490,7 @@ include files/application/record/record.mk
 include files/application/voltorb_flip.mk
 include files/application/annon/puzzle_gra.mk
 include files/data/resdat.mk
+include files/demo/title/titledemo.mk
 
 $(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
 

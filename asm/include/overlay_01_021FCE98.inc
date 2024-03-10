@@ -10,9 +10,9 @@
 .public PlayerAvatar_GetState
 .public PlayerAvatar_GetGender
 .public MapObject_GetPositionVec
-.public FollowingPokemon_GetMapObject
-.public sub_02069FB0
-.public FieldSystemUnkSub108_AddMonMood
+.public FollowMon_GetMapObject
+.public FollowMon_IsVisible
+.public FieldSystem_UnkSub108_AddMonMood
 .public memset
 .public ov01_021FBCD8
 .public ov01_021FBDA8

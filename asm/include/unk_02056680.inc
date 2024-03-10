@@ -45,9 +45,9 @@
 .public MapObject_SetHeldMovement
 .public MapObject_IsMovementPaused
 .public MapObject_ClearHeldMovementIfActive
-.public FollowingPokemon_GetMapObject
+.public FollowMon_GetMapObject
 .public sub_02069DC8
-.public FollowingPokemon_IsActive
+.public FollowMon_IsActive
 .public VEC_Subtract
 .public ov01_021E636C
 .public ov01_021E90C0
