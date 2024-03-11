@@ -54,6 +54,7 @@ fielddata/encountdata/s_enc_data.narc
 data/gs_areawindow.narc
 itemtool/itemdata/item_icon.narc
 itemtool/itemdata/item_data.narc
+poketool/personal/personal.narc
 poketool/personal/evo.narc
 poketool/personal/growtbl.narc
 resource/eng/pms_aikotoba/pms_aikotoba.narc
