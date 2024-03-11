@@ -463,8 +463,7 @@ void HandlePngToNtrCommand(char *inputPath, char *outputPath, int argc, char **a
             if (options.colsPerChunk < 1)
                 FATAL_ERROR("columns per chunk must be positive.\n");
         }
-        else if (strcmp(option, "-mheight") == 0 || strcmp(option, "-rpc") == 0)
-        {
+        else if (strcmp(option, "-mheight") == 0 || strcmp(option, "-rpc") == 0) {
             if (i + 1 >= argc)
                 FATAL_ERROR("No rows per chunk value following \"%s\".\n", option);
 

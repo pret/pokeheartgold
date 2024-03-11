@@ -719,11 +719,9 @@ void ReadNtrPalette(char *path, struct Palette *palette, int bitdepth, int palIn
     bitdepth = bitdepth ? bitdepth : palette->bitDepth;
 
     size_t paletteSize = (paletteHeader[0x10]) | (paletteHeader[0x11] << 8) | (paletteHeader[0x12] << 16) | (paletteHeader[0x13] << 24);
-    if (palIndex == 0)
-    {
+    if (palIndex == 0) {
         palette->numColors = paletteSize / 2;
-    } else
-    {
+    } else {
         palette->numColors = bitdepth == 4 ? 16 : 256; //remove header and divide by 2
         --palIndex;
     }
