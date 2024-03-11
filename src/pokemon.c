@@ -1825,16 +1825,16 @@ int GetPersonalAttr(const BASE_STATS *baseStats, BaseStat attr) {
         ret = baseStats->flip;
         break;
     case BASE_TMHM_1:
-        ret = (int)baseStats->unk1C;
+        ret = (int)baseStats->tmhm_1;
         break;
     case BASE_TMHM_2:
-        ret = (int)baseStats->unk20;
+        ret = (int)baseStats->tmhm_2;
         break;
     case BASE_TMHM_3:
-        ret = (int)baseStats->unk24;
+        ret = (int)baseStats->tmhm_3;
         break;
     case BASE_TMHM_4:
-        ret = (int)baseStats->unk28;
+        ret = (int)baseStats->tmhm_4;
         break;
     }
     return ret;
