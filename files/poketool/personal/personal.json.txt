@@ -1,0 +1,57 @@
+{{ doNotModifyHeader }}
+
+#include "global.h"
+#include "pokemon.h"
+#include "constants/pokemon.h"
+#include "constants/moves.h"
+#include "constants/abilities.h"
+#include "constants/items.h"
+
+u32 __size = sizeof(struct BaseStats);
+
+const struct BaseStats __data[] = {
+## for mon in baseStats
+	// {{ mon.species }}
+    {
+        // Stats
+        {{ mon.hp }},
+        {{ mon.atk }},
+        {{ mon.def }},
+        {{ mon.speed }},
+        {{ mon.spatk }},
+        {{ mon.spdef }},
+        // Types
+        { {{ mon.types.0 }}, {{ mon.types.1 }} },
+        {{ mon.catchRate }}, // Catch rate
+        {{ mon.expYield }}, // Experience yield
+        // EV yield
+        {{ mon.hp_yield }},
+        {{ mon.atk_yield }},
+        {{ mon.def_yield }},
+        {{ mon.speed_yield }},
+        {{ mon.spatk_yield }},
+        {{ mon.spdef_yield }},
+		0, // bit padding
+		// Items
+        {{ mon.items.0 }},
+        {{ mon.items.1 }},
+        GENDER_RATIO({{ mon.genderRatio }}), // Gender ratio
+        {{ mon.eggCycles }}, // Egg cycles
+        {{ mon.friendship }}, // Friendship
+        GROWTH_{{ mon.growthRate }}, // Growth rate
+        // Egg groups
+        { {{ mon.eggGroups.0 }}, {{ mon.eggGroups.1 }} },
+        // Abilities
+        { {{ mon.abilities.0 }}, {{ mon.abilities.1 }} },
+        {{ mon.greatMarshRate }}, // Great Marsh flee rate?
+        {{ mon.color }}, // Color
+        {{ mon.flip }}, // Flip
+		{0, 0}, // Padding
+		// TM/HM
+        {{ setVarInt("tms", 0) }}{% for i in range(32) %}{% if add(i, 1) in mon.tms %}{{ setBit("tms", i) }}{% endif %}{%endfor %}{{ getVarHex("tms") }},
+        {{ setVarInt("tms", 0) }}{% for i in range(32) %}{% if add(i, 33) in mon.tms %}{{ setBit("tms", i) }}{% endif %}{%endfor %}{{ getVarHex("tms") }},
+        {{ setVarInt("tms", 0) }}{% for i in range(28) %}{% if add(i, 65) in mon.tms %}{{ setBit("tms", i) }}{% endif %}{%endfor %}{% for i in range(4) %}{% if add(i, 1) in mon.hms %}{{ setBit("tms", add(i, 28)) }}{% endif %}{%endfor %}{{ getVarHex("tms") }},
+        {{ setVarInt("tms", 0) }}{% for i in range(4) %}{% if add(i, 5) in mon.hms %}{{ setBit("tms", i) }}{% endif %}{%endfor %}{{ getVarHex("tms") }},
+    },
+## endfor
+};
