@@ -1,0 +1,67 @@
+name: 'Build ROM'
+
+description: 'Builds the ROM image'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Update and Install Software
+      shell: bash
+      run: |
+        sudo apt update
+        sudo ACCEPT_EULA=Y apt -y --fix-missing --allow-downgrades upgrade
+        sudo apt -y --allow-downgrades install g++-10-multilib linux-libc-dev binutils-arm-none-eabi p7zip-full pkg-config libpugixml-dev ppa-purge
+        sudo ppa-purge -y ppa:ubuntu-toolchain-r/test
+        sudo dpkg --add-architecture i386
+        sudo mkdir -pm755 /etc/apt/keyrings
+        sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+        sudo add-apt-repository ppa:cybermax-dexter/sdl2-backport
+        sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/$(lsb_release -cs)/winehq-$(lsb_release -cs).sources
+        sudo apt update
+        sudo apt -y --allow-downgrades install --install-recommends winehq-stable
+
+    - name: Setup Repo
+      shell: bash
+      run: |
+        mkdir -p ~/download
+        cd ~/download
+        wget https://github.com/pret/pokeheartgold/raw/workflows/assets/mwccarm.zip
+        wget https://github.com/pret/pokeheartgold/raw/workflows/assets/NitroSDK-3_2-060901.7z
+        unzip mwccarm.zip
+        mv mwccarm $GITHUB_WORKSPACE/tools
+        7z x NitroSDK-3_2-060901.7z
+        mv NitroSDK-3_2-060901/tools/bin $GITHUB_WORKSPACE/tools
+        mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM7-TS.lcf.template $GITHUB_WORKSPACE/sub/
+        mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM9-TS.lcf.template $GITHUB_WORKSPACE/
+        mv NitroSDK-3_2-060901/include/nitro/specfiles/mwldarm.response.template $GITHUB_WORKSPACE/
+      working-directory: ~
+
+    - name: Build ROM
+      shell: bash
+      run: make -j${nproc}
+
+    - name: Post error archive
+      if: failure()
+      continue-on-error: true
+      shell: bash
+      run: find . -maxdepth 2 -type d \( -name build -or -name files \) -exec tar -czvhf failure.tar.gz {} +
+
+    - name: Post error upload
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: pokeheartgold-failure-${{ github.run_id }}
+        path: failure.tar.gz
+        retention-days: 1
+
+    - name: Zip build/
+      if: ${{ env.NONMATCHING == 0 }}
+      shell: bash
+      run: zip -r ${GAME_VERSION}_build.zip ${BUILD_OUT}
+
+    - name: Upload build/
+      if: ${{ env.NONMATCHING == 0 }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.GAME_VERSION }}-build
+        path: ${{ env.GAME_VERSION }}_build.zip
