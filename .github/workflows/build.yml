@@ -67,7 +67,6 @@ jobs:
     runs-on: ubuntu-22.04
     if: |
       always() &&
-      (github.event_name == 'push') &&
       contains(join(needs.*.result, ','), 'success')
     needs: [build-heartgold, build-soulsilver, build-nonmatching]
 
@@ -87,8 +86,8 @@ jobs:
 
       - name: Unzip build/ artifacts
         run: |
-          unzip HEARTGOLD_build.zip build/heartgold.us/
-          unzip SOULSILVER_build.zip build/soulsilver.us/
+          unzip HEARTGOLD_build.zip
+          unzip SOULSILVER_build.zip
 
       - name: Webhook
         run: |
@@ -110,6 +109,7 @@ jobs:
           echo "XMAP_COMMIT_MSG=$( git log --format=%s ${GITHUB_SHA} )" >> $GITHUB_ENV
 
       - name: Update xMAP
+        if: ${{ github.event_name == 'push' }}
         uses: EndBug/add-and-commit@v9
         with:
           cwd: "./xmap"
