@@ -84,10 +84,16 @@ jobs:
         with:
           name: SOULSILVER-build
 
+      - name: Download sub build/ artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: HEARTGOLD-sub-build
+
       - name: Unzip build/ artifacts
         run: |
           unzip HEARTGOLD_build.zip
           unzip SOULSILVER_build.zip
+          unzip HEARTGOLD_sub_build.zip
 
       - name: Webhook
         run: |
