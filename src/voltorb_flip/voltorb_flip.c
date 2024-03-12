@@ -1716,6 +1716,22 @@ static void ov122_021E7B94(VoltorbFlipAppWork *work) {
 
 // decomp.me: https://decomp.me/scratch/w6ui6
 #ifdef NONMATCHING
+static void ov122_021E7BD4(VoltorbFlipAppWork *work) {
+    GF_ASSERT(work->narc != 0);
+
+    SpriteRenderer *var1 = work->unk144;
+    SpriteGfxHandler *var2 = work->unk148;
+
+    SpriteRenderer_LoadPlttResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000010_bin, 0, 5, 1, 0);
+    SpriteRenderer_LoadCharResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000011_bin, 1, 1, 0);
+    SpriteRenderer_LoadCellResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000012_bin, 1, 0);
+    SpriteRenderer_LoadAnimResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000013_bin, 1, 0);
+
+    SpriteRenderer_LoadPlttResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000014_bin, 0, 1, 2, 1);
+    SpriteRenderer_LoadCharResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000015_bin, 1, 2, 1);
+    SpriteRenderer_LoadCellResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000016_bin, 1, 1);
+    SpriteRenderer_LoadAnimResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000017_bin, 1, 1);
+}
 #else
 asm void ov122_021E7BD4(VoltorbFlipAppWork *work) {
 	push {r3, r4, r5, r6, r7, lr}

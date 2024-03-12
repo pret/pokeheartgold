@@ -27,6 +27,7 @@ jobs:
           GAME_VERSION: HEARTGOLD
           GAME_LANGUAGE: ENGLISH
           GAME_REVISION: 0
+          NONMATCHING: 0
           COMPARE: 1
           BUILD_OUT: build/heartgold.us/
         uses: ./.github/workflows/build-rom
@@ -43,6 +44,7 @@ jobs:
           GAME_VERSION: SOULSILVER
           GAME_LANGUAGE: ENGLISH
           GAME_REVISION: 0
+          NONMATCHING: 0
           COMPARE: 1
           BUILD_OUT: build/soulsilver.us/
         uses: ./.github/workflows/build-rom
@@ -74,7 +76,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Download HeartGold build/ artifacts
+      - name: Download HeartGold build artifacts
         uses: actions/download-artifact@v4
         with:
           name: HEARTGOLD-build
@@ -84,16 +86,18 @@ jobs:
         with:
           name: SOULSILVER-build
 
-      - name: Download sub build/ artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: HEARTGOLD-sub-build
-
-      - name: Unzip build/ artifacts
+      - name: Extract build artifacts
         run: |
-          unzip HEARTGOLD_build.zip
-          unzip SOULSILVER_build.zip
-          unzip HEARTGOLD_sub_build.zip
+          mkdir HEARTGOLD_build/
+          mkdir SOULSILVER_build/
+          mkdir -p build/heartgold.us/
+          mkdir -p build/soulsilver.us/
+          mkdir -p sub/build/
+          tar -xzvhf HEARTGOLD_build.tar.gz -C HEARTGOLD_build/
+          tar -xzvhf SOULSILVER_build.tar.gz -C SOULSILVER_build/
+          cp -r HEARTGOLD_build/build/heartgold.us/ build/
+          cp -r SOULSILVER_build/build/soulsilver.us/ build/
+          cp -r HEARTGOLD_build/sub/build/ sub/
 
       - name: Webhook
         run: |

@@ -40,34 +40,16 @@ runs:
       shell: bash
       run: make -j${nproc}
 
-    - name: Zip build and files
-      if: ${{ env.NONMATCHING == 0 }}
+    - name: Archive build artifacts
+      if: ${{ always() && env.NONMATCHING == 0 }}
       shell: bash
       run: |
-        zip -r ${GAME_VERSION}_build.zip ${BUILD_OUT}
-        zip -r ${GAME_VERSION}_sub_build.zip sub/build/
-        zip -r ${GAME_VERSION}_files.zip files/
+        find . -maxdepth 2 -type d \( -name build -or -name files \) -exec tar -czvhf ${GAME_VERSION}_build.tar.gz {} +
 
-    - name: Upload build/
-      if: ${{ env.NONMATCHING == 0 }}
+    - name: Upload build artifacts
+      if: ${{ always() && env.NONMATCHING == 0 }}
       uses: actions/upload-artifact@v4
       with:
         name: ${{ env.GAME_VERSION }}-build
-        path: ${{ env.GAME_VERSION }}_build.zip
-        retention-days: 1
-
-    - name: Upload sub build/
-      if: ${{ env.NONMATCHING == 0 }}
-      uses: actions/upload-artifact@v4
-      with:
-        name: ${{ env.GAME_VERSION }}-sub-build
-        path: ${{ env.GAME_VERSION }}_sub_build.zip
-        retention-days: 1
-
-    - name: Upload files/
-      if: ${{ env.NONMATCHING == 0 }}
-      uses: actions/upload-artifact@v4
-      with:
-        name: ${{ env.GAME_VERSION }}-files
-        path: ${{ env.GAME_VERSION }}_files.zip
+        path: ${{ env.GAME_VERSION }}_build.tar.gz
         retention-days: 1
