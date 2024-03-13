@@ -115,7 +115,7 @@
 .public FillWindowPixelBuffer
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
-.public AllocAndLoad3dTexResources
+.public GF3dRender_AllocAndLoadTexResources
 .public AddTextPrinterParameterizedWithColor
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager

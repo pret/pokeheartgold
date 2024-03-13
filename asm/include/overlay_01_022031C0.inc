@@ -19,7 +19,7 @@
 .public sub_02068D98
 .public sub_02068DA8
 .public sub_02068DB8
-.public FollowingPokemon_GetMapObject
+.public FollowMon_GetMapObject
 .public sub_02069DC8
 .public _s32_div_f
 .public ov01_021F1430

@@ -1,4 +1,4 @@
-// Copyright (c) 2018 huderlem, 2021-2023 red031000
+// Copyright (c) 2018 huderlem, 2021-2024 red031000
 
 #ifndef OPTIONS_H
 #define OPTIONS_H
@@ -11,23 +11,23 @@ struct GbaToPngOptions {
     int bitDepth;
     bool hasTransparency;
     int width;
-    int metatileWidth;
-    int metatileHeight;
+    int colsPerChunk;
+    int rowsPerChunk;
     int palIndex;
 };
 
 struct PngToGbaOptions {
     int numTiles;
     int bitDepth;
-    int metatileWidth;
-    int metatileHeight;
+    int colsPerChunk;
+    int rowsPerChunk;
 };
 
 struct PngToNtrOptions {
     int numTiles;
     int bitDepth;
-    int metatileWidth;
-    int metatileHeight;
+    int colsPerChunk;
+    int rowsPerChunk;
     bool clobberSize;
     bool byteOrder;
     bool version101;
@@ -44,8 +44,8 @@ struct NtrToPngOptions {
     int bitDepth;
     bool hasTransparency;
     int width;
-    int metatileWidth;
-    int metatileHeight;
+    int colsPerChunk;
+    int rowsPerChunk;
     int palIndex;
     bool scanFrontToBack;
     bool handleEmpty;

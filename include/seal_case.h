@@ -112,7 +112,7 @@ void SealCase_SetCapsuleI(SealCase *sealCase, const CAPSULE *src, int i);
 SEAL *CapsuleGetSealI(CAPSULE *capsule, int i);
 
 /*
- * u8 SealOnCapsuleGetID(const SEAL *seal)
+ * u32 SealOnCapsuleGetID(const SEAL *seal)
  * u8 SealOnCapsuleGetX(const SEAL *seal)
  * u8 SealOnCapsuleGetY(const SEAL *seal)
  *
@@ -122,7 +122,7 @@ SEAL *CapsuleGetSealI(CAPSULE *capsule, int i);
  *
  * @returns: The requested attribute
  */
-u8 SealOnCapsuleGetID(const SEAL *seal);
+u32 SealOnCapsuleGetID(const SEAL *seal);
 u8 SealOnCapsuleGetX(const SEAL *seal);
 u8 SealOnCapsuleGetY(const SEAL *seal);
 

@@ -2,6 +2,7 @@
 #define NITRO_GX_GXCOMMON_H_
 
 #ifndef SDK_ASM
+#include <nitro/types.h>
 typedef u16 GXRgb;
 #endif
 

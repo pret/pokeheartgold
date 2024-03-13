@@ -34,10 +34,10 @@ typedef struct BaseStats {
     /* 0x19 */ u8 color:7;
     u8 flip:1;
     u8 padding_1A[2];
-    /* 0x1C */ u32 unk1C;
-    /* 0x20 */ u32 unk20;
-    /* 0x24 */ u32 unk24;
-    /* 0x28 */ u32 unk28;
+    /* 0x1C */ u32 tmhm_1;
+    /* 0x20 */ u32 tmhm_2;
+    /* 0x24 */ u32 tmhm_3;
+    /* 0x28 */ u32 tmhm_4;
 } BASE_STATS;
 
 // Structs

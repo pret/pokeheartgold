@@ -4920,7 +4920,7 @@ ov93_0225EC98: ; 0x0225EC98
 	str r0, [r5]
 	bl NNS_G3dGetTex
 	str r0, [r5, #4]
-	bl AllocAndLoad3dTexResources
+	bl GF3dRender_AllocAndLoadTexResources
 	ldr r6, [r5, #4]
 	ldrh r0, [r6, #0x30]
 	ldr r7, [r6, #0x38]

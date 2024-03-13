@@ -64,7 +64,7 @@ Static main
 	Object src/system.o
 	Object src/heap.o
 	Object src/bg_window.o
-	Object src/unk_0201F4C4.o
+	Object src/gf_3d_render.o
 	Object src/sys_task.o
 	Object asm/unk_0201F990.o
 	Object src/string_control_code.o
@@ -241,10 +241,10 @@ Static main
 	Object asm/unk_02069528.o
 	Object asm/unk_02069660.o
 	Object asm/unk_0206979C.o
-	Object src/field_follow_poke.o
+	Object src/follow_mon.o
 	Object asm/unk_0206A360.o
 	Object asm/field_take_photo.o
-	Object asm/unk_0206B910.o
+	Object src/unk_0206B910.o
 	Object src/alph_checks.o
 	Object src/get_egg.o
 	Object src/unk_0206D494.o

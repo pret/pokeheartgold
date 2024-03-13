@@ -333,7 +333,7 @@ _021FC8B2:
 	cmp r0, #0
 	beq _021FC8D4
 	ldr r0, [r5, #0x20]
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	mov r1, #0
 	mov r2, #1
 	bl ov01_02200540
@@ -837,7 +837,7 @@ ov01_021FCC2C: ; 0x021FCC2C
 	pop {r4, pc}
 _021FCC40:
 	ldr r0, [r4, #0x20]
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _021FCC6E
 	ldr r0, [r4, #0x20]
@@ -903,14 +903,14 @@ ov01_021FCCB0: ; 0x021FCCB0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x20]
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _021FCD24
 	mov r0, #0x42
 	ldr r1, [r4, #0x20]
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl FieldSystemUnkSub108_GetMonMood
+	bl FieldSystem_UnkSub108_GetMonMood
 	mov r1, #9
 	mvn r1, r1
 	cmp r0, r1

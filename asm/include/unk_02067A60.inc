@@ -52,8 +52,8 @@
 .public sub_02067BE8
 .public sub_02067BF8
 .public sub_02067C30
-.public sub_02069FB0
-.public FieldSystemUnkSub108_AddMonMood
+.public FollowMon_IsVisible
+.public FieldSystem_UnkSub108_AddMonMood
 .public GetMonData
 .public SaveArray_Party_Get
 .public MIi_CpuClearFast

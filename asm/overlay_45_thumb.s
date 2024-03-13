@@ -14468,15 +14468,15 @@ _022304D0:
 _022304E2:
 	mov r0, #1
 	add r1, r7, #0
-	bl Create2DGfxResMan
+	bl GF2dGfxRawResMan_Create
 	str r0, [r4]
 	mov r0, #2
 	add r1, r7, #0
-	bl Create2DGfxResMan
+	bl GF2dGfxRawResMan_Create
 	str r0, [r4, #4]
 	mov r0, #0x14
 	add r1, r7, #0
-	bl Create3DGfxResMan
+	bl GF3dGfxRawResMan_Create
 	str r0, [r4, #8]
 	mov r0, #1
 	add r1, r7, #0
@@ -14504,7 +14504,7 @@ _022304E2:
 	ldr r0, [r4]
 	add r1, r5, #0
 	mov r2, #0x7f
-	bl _2DGfxResMan_AllocObj
+	bl GF2dGfxRawResMan_AllocObj
 	add r0, r5, #0
 	bl ov45_0222D740
 	add r0, r5, #0
@@ -14548,7 +14548,7 @@ _02230582:
 	add r1, r0, #0
 	ldrh r2, [r5]
 	ldr r0, [r4, #4]
-	bl _2DGfxResMan_AllocObj
+	bl GF2dGfxRawResMan_AllocObj
 	add r6, r6, #1
 	add r5, r5, #2
 	cmp r6, #2
@@ -14595,15 +14595,15 @@ _022305CA:
 	ldr r0, [r4, #8]
 	lsl r2, r2, #0x11
 	lsr r2, r2, #0x11
-	bl _3DGfxResMan_AllocObj
+	bl GF3dGfxRawResMan_AllocObj
 	str r0, [sp, #0x1c]
 	cmp r6, #1
 	bne _02230608
-	bl _3DGfxResObj_AllocVramAndGetKeys
+	bl GF3dGfxRawResObj_AllocVramAndGetKeys
 	ldr r0, [sp, #0x1c]
-	bl _3DGfxResObj_LoadTex
+	bl GF3dGfxRawResObj_LoadTex
 	ldr r0, [sp, #0x1c]
-	bl _3DGfxResObj_FreeVramAndSecondaryHeader
+	bl GF3dGfxRawResObj_FreeVramAndSecondaryHeader
 _02230608:
 	add r7, r7, #1
 	add r5, r5, #4
@@ -14634,20 +14634,20 @@ ov45_02230638: ; 0x02230638
 	add r0, #0x18
 	bl ov45_02230A44
 	ldr r0, [r4, #8]
-	bl _3DGfxResMan_FreeAllObjs
+	bl GF3dGfxRawResMan_FreeAllObjs
 	ldr r0, [r4]
-	bl _2DGfxResMan_FreeAllObjs
+	bl GF2dGfxRawResMan_FreeAllObjs
 	ldr r0, [r4, #4]
-	bl _2DGfxResMan_FreeAllObjs
+	bl GF2dGfxRawResMan_FreeAllObjs
 	ldr r0, [r4, #0xc]
 	bl sub_02023874
 	bl sub_02023778
 	ldr r0, [r4, #8]
-	bl Destroy3DGfxResMan
+	bl GF3dGfxRawResMan_Destroy
 	ldr r0, [r4]
-	bl Destroy2DGfxResMan
+	bl GF2dGfxRawResObj_Destroy
 	ldr r0, [r4, #4]
-	bl Destroy2DGfxResMan
+	bl GF2dGfxRawResObj_Destroy
 	ldr r0, [r4, #0x10]
 	bl FreeToHeap
 	add r0, r4, #0
@@ -14765,16 +14765,16 @@ ov45_0223070C: ; 0x0223070C
 	add r6, r0, #0
 	ldr r0, [r5]
 	mov r1, #0x7f
-	bl _2DGfxResMan_GetObjById
-	bl _2DGfxResObj_GetData
+	bl GF2dGfxRawResMan_GetObjById
+	bl GF2dGfxRawResObj_GetData
 	ldrh r1, [r6, #2]
 	str r0, [sp, #0x14]
 	ldr r0, [r5, #8]
 	lsl r1, r1, #0x11
 	lsr r1, r1, #0x11
-	bl _3DGfxResMan_GetObjById
+	bl GF3dGfxRawResMan_GetObjById
 	str r0, [sp, #0x18]
-	bl _3DGfxResObj_GetTex
+	bl GF3dGfxRawResObj_GetTex
 	str r0, [sp, #0x10]
 	ldrh r0, [r6, #2]
 	lsl r0, r0, #0x10
@@ -14788,8 +14788,8 @@ _02230770:
 	lsl r1, r1, #2
 _02230774:
 	ldr r0, [r5, #4]
-	bl _2DGfxResMan_GetObjById
-	bl _2DGfxResObj_GetData
+	bl GF2dGfxRawResMan_GetObjById
+	bl GF2dGfxRawResObj_GetData
 	add r1, sp, #0x40
 	bl sub_02026E18
 	ldrh r0, [r6, #2]
@@ -14807,13 +14807,13 @@ _02230774:
 	b _022307CE
 _022307A0:
 	ldr r0, [sp, #0x18]
-	bl _3DGfxResObj_GetTexKey
+	bl GF3dGfxRawResObj_GetTexKey
 	add r6, r0, #0
 	ldr r0, [sp, #0x18]
-	bl _3DGfxResObj_GetTex4x4Key
+	bl GF3dGfxRawResObj_GetTex4x4Key
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #0x18]
-	bl _3DGfxResObj_GetPlttKey
+	bl GF3dGfxRawResObj_GetPlttKey
 	add r1, sp, #0x40
 	str r1, [sp]
 	ldr r1, [sp, #0x1c]
@@ -15182,7 +15182,7 @@ _02230A24:
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
 	ldr r1, [r4, #0xc]
-	bl Bind3dModelSet
+	bl GF3dRender_BindModelSet
 	ldr r0, [r4, #8]
 	mov r1, #0x14
 	bl NNS_G3dMdlSetMdlPolygonIDAll

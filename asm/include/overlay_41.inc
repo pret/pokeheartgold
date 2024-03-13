@@ -177,10 +177,10 @@
 .public System_GetTouchNew
 .public TouchscreenHitbox_PointIsIn
 .public GF_AssertFail
-.public Create2DGfxResMan
-.public Destroy2DGfxResMan
-.public _2DGfxResMan_DoesNotHaveObjWithId
-.public _2DGfxResMan_AllocObj
+.public GF2dGfxRawResMan_Create
+.public GF2dGfxRawResObj_Destroy
+.public GF2dGfxRawResMan_DoesNotHaveObjWithId
+.public GF2dGfxRawResMan_AllocObj
 .public String_New
 .public String_Delete
 .public TouchHitboxController_Create

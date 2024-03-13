@@ -5,12 +5,12 @@
 #include "save_vars_flags.h"
 #include "sys_vars.h"
 #include "sys_flags.h"
-#include "save_follow_poke.h"
+#include "save_follow_mon.h"
 #include "unk_02054E00.h"
 #include "unk_0206793C.h"
 #include "unk_0203BA5C.h"
 #include "field_map_object.h"
-#include "field_follow_poke.h"
+#include "follow_mon.h"
 #include "unk_02056D7C.h"
 #include "field_system_rtc_weather.h"
 #include "task.h"
@@ -211,7 +211,7 @@ void sub_02053038(FieldSystem *fieldSystem, BOOL isConnection) {
     fieldSystem->unk7E = 0;
     fieldSystem->unk7C = 0;
     fieldSystem->unk78 = 0;
-    SavFollowPoke_SetInhibitFlagState(Save_FollowPoke_Get(fieldSystem->saveData), FALSE);
+    Save_FollowMon_SetInhibitFlagState(Save_FollowMon_Get(fieldSystem->saveData), FALSE);
     ClearFlag99A(Save_VarsFlags_Get(fieldSystem->saveData));
 }
 
@@ -227,7 +227,7 @@ static void sub_0205316C(FieldSystem *fieldSystem) {
         gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
         playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData));
         fieldSystem->playerAvatar = sub_0205C390(fieldSystem->mapObjectManager, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, playerSaveData->unk4, gender, 2, playerSaveData);
-        sub_020699F8(fieldSystem->mapObjectManager, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, fieldSystem->location->mapId);
+        FollowMon_InitMapObject(fieldSystem->mapObjectManager, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, fieldSystem->location->mapId);
         Field_InitMapObjectsFromZoneEventData(fieldSystem);
         sub_0205F55C(fieldSystem->mapObjectManager);
     }
@@ -253,7 +253,7 @@ static void sub_0205323C(FieldSystem *fieldSystem) {
     playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData));
     gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
     fieldSystem->playerAvatar = sub_0205C408(fieldSystem->mapObjectManager, playerSaveData, gender);
-    sub_02069B74(fieldSystem->mapObjectManager, fieldSystem->location->mapId);
+    FollowMon_ChangeMon(fieldSystem->mapObjectManager, fieldSystem->location->mapId);
     sub_0205F55C(fieldSystem->mapObjectManager);
 }
 
@@ -818,15 +818,15 @@ static BOOL sub_02053CCC(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     struct UnkTaskEnv_02053CCC *env = TaskManager_GetEnvironment(taskManager);
     Location *location = &env->location;
-    struct LocalMapObject *follow_poke_obj;
+    struct LocalMapObject *follow_mon_obj;
 
     switch (env->unk0) {
     case 0:
         env->unk1C = 0;
-        if (FollowingPokemon_IsActive(fieldSystem)
+        if (FollowMon_IsActive(fieldSystem)
          && !ov01_022057C4(fieldSystem)
          && PlayerAvatar_GetState(fieldSystem->playerAvatar) != 1) {
-            env->unk1C = ov01_0220329C(FollowingPokemon_GetMapObject(fieldSystem), 1);
+            env->unk1C = ov01_0220329C(FollowMon_GetMapObject(fieldSystem), 1);
         }
         env->unk0++;
         break;
@@ -858,10 +858,10 @@ static BOOL sub_02053CCC(TaskManager *taskManager) {
     case 5:
         env->unk4 = 0;
         ov01_021F35C4(fieldSystem, 0, &env->unk4);
-        if (FollowingPokemon_IsActive(fieldSystem)) {
-            follow_poke_obj = FollowingPokemon_GetMapObject(fieldSystem);
-            if (GetFollowPokePermissionBySpeciesAndMap(FollowPokeObj_GetSpecies(follow_poke_obj), location->mapId)) {
-                sub_02069E84(follow_poke_obj, 1);
+        if (FollowMon_IsActive(fieldSystem)) {
+            follow_mon_obj = FollowMon_GetMapObject(fieldSystem);
+            if (FollowMon_GetPermissionBySpeciesAndMap(FollowMon_GetSpecies(follow_mon_obj), location->mapId)) {
+                sub_02069E84(follow_mon_obj, 1);
                 ov01_02205790(fieldSystem, 1);
             }
         }

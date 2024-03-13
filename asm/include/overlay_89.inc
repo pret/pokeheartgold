@@ -125,7 +125,7 @@
 .public FillWindowPixelBuffer
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
-.public Bind3dModelSet
+.public GF3dRender_BindModelSet
 .public GF_SinDegFX32
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized

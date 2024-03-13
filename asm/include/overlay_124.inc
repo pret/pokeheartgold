@@ -8,7 +8,7 @@
 .public Field_AllocateMapEvents
 .public LocalFieldData_GetCurrentPosition
 .public Save_LocalFieldData_Get
-.public FieldSystemUnkSub108_Alloc
+.public FieldSystem_UnkSub108_Alloc
 .public BagCursor_New
 .public sub_02092BB8
 .public GearPhoneRingManager_New

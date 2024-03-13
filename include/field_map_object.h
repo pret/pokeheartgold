@@ -223,7 +223,7 @@ LocalMapObject* MapObjectManager_GetObjects(MapObjectManager*);
 void sub_0205F1C4(LocalMapObject** objects);
 void sub_0205F1D0(LocalMapObject** objects);
 void MapObjectManager_SetFieldSysPtr(MapObjectManager*, FieldSystem*);
-FieldSystem* MapObjectManager_GetFieldSysPtr(MapObjectManager*);
+FieldSystem* MapObjectManager_GetFieldSystemPtr(MapObjectManager*);
 void FldObjSys_SetMModelNarc(MapObjectManager* manager, NARC* mmodel_narc);
 NARC* FldObjSys_GetMModelNarc(MapObjectManager* manager);
 void MapObject_SetFlagsWord(LocalMapObject* object, u32 bits);
