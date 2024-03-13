@@ -92,7 +92,9 @@ GF_2DGfxResObj *AddPlttResObjFromNarc(GF_2DGfxResMan *mgr, NarcId narcId, int fi
 GF_2DGfxResObj *AddCellOrAnimResObjFromNarc(GF_2DGfxResMan *mgr, NarcId narcId, int fileId, BOOL compressed, int id, GfGfxResType type, HeapID heapId) {
     GF_2DGfxResObj *ret;
     GF_ASSERT(mgr != NULL);
-    //GF_ASSERT(mgr->type == type);
+#ifdef UBFIX
+    GF_ASSERT(mgr->type == type);
+#endif  //UBFIX
     ret = sub_0200AA70(mgr);
     GF_ASSERT(ret != NULL);
     Add2DGfxResObjFromNarc(mgr, ret, narcId, fileId, compressed, id, 0, 0, type, heapId, FALSE);
@@ -175,7 +177,9 @@ GF_2DGfxResObj *AddPlttResObjFromOpenNarcWithAtEndFlag(GF_2DGfxResMan *mgr, NARC
 GF_2DGfxResObj *AddCellOrAnimResObjFromOpenNarc(GF_2DGfxResMan *resMan, NARC *narc, int fileId, BOOL compressed, int id, GfGfxResType type, HeapID heapId) {
     GF_2DGfxResObj *ret;
     GF_ASSERT(resMan != NULL);
-    //GF_ASSERT(mgr->type == type);
+#ifdef UBFIX
+    GF_ASSERT(mgr->type == type);
+#endif //UBFIX
     ret = sub_0200AA70(resMan);
     GF_ASSERT(ret != NULL);
     Add2DGfxResObjFromOpenNarc(resMan, ret, narc, fileId, compressed, id, 0, 0, type, heapId, FALSE);

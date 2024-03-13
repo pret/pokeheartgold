@@ -145,6 +145,7 @@ BOOL GF3dRender_AllocAndLoadTexResources(NNSG3dResTex *tex) {
 void GF3dRender_LoadTexture(NNSG3dResTex *pTex, BOOL exec_begin_end) {
     NNS_G3dTexLoad(pTex, exec_begin_end);
 }
+
 void GF3dRender_LoadPalette(NNSG3dResTex *pTex, BOOL exec_begin_end) {
     NNS_G3dPlttLoad(pTex, exec_begin_end);
 }
