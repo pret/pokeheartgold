@@ -1328,9 +1328,9 @@ static void ov84_0223F5E4(GAME_BOARD_SUB_3E8 *work, Party *playerParty, Party *o
     u32 i;
     Pokemon *playerMon;
     Pokemon *opponentMon;
-    NARC *narc = NARC_New(NARC_a_0_2_0, HEAP_ID_GAME_BOARD);
+    NARC *narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_GAME_BOARD);
 
-    work->resourceObj[3][1] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_a_0_2_0, sub_02074490(), FALSE, 3, 1, 3, HEAP_ID_GAME_BOARD);
+    work->resourceObj[3][1] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_poketool_icongra_poke_icon, sub_02074490(), FALSE, 3, 1, 3, HEAP_ID_GAME_BOARD);
     work->resourceObj[3][2] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[2], narc, sub_02074498(), FALSE, 3, GF_GFX_RES_TYPE_CELL, HEAP_ID_GAME_BOARD);
     work->resourceObj[3][3] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[3], narc, sub_020744A4(), FALSE, 3, GF_GFX_RES_TYPE_ANIM, HEAP_ID_GAME_BOARD);
 
