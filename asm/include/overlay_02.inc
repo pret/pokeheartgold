@@ -204,7 +204,7 @@
 .public FieldSystem_GetSaveData
 .public StartMapSceneScript
 .public QueueScript
-.public FieldSystem_FlagGet
+.public FieldSystem_FlagCheck
 .public HiddenItemScriptNoToFlagId
 .public Save_VarsFlags_Get
 .public Save_VarsFlags_CheckFlagInArray
@@ -253,7 +253,7 @@
 .public sub_0205E38C
 .public sub_0205E420
 .public GetMapObjectByID
-.public MapObjectManager_GetCount
+.public MapObjectManager_GetObjectCount
 .public MapObjectManager_GetObjects
 .public sub_0205F1D0
 .public MapObject_GetID
@@ -263,7 +263,7 @@
 .public sub_0205F328
 .public MapObject_GetManager
 .public sub_0205F484
-.public MapObject_GetFieldSysPtr
+.public MapObject_GetFieldSystemPtr
 .public MapObject_IsInUse
 .public MapObject_SetVisible
 .public MapObject_PauseMovement

@@ -9,7 +9,7 @@
 .public sub_0205DE98
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
-.public MapObject_GetFlagsMask
+.public MapObject_GetFlagsBits
 .public MapObject_GetMovement
 .public MapObject_GetType
 .public MapObject_GetInitialFacing
@@ -24,7 +24,7 @@
 .public sub_0205F328
 .public sub_0205F370
 .public sub_0205F394
-.public MapObject_GetFieldSysPtr
+.public MapObject_GetFieldSystemPtr
 .public MapObject_SingleMovementSetActive
 .public MapObject_SingleMovementSetInactive
 .public MapObject_ClearFlag3

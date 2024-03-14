@@ -493,7 +493,7 @@ ov01_021F97BC: ; 0x021F97BC
 	add r7, r0, #0
 	add r5, r1, #0
 	add r6, r2, #0
-	bl MapObjectManager_GetCount
+	bl MapObjectManager_GetObjectCount
 	add r4, r0, #0
 	add r0, r7, #0
 	bl sub_0205F1AC
@@ -2095,7 +2095,7 @@ ov01_021FA2D4: ; 0x021FA2D4
 	push {r3, lr}
 	mov r1, #1
 	lsl r1, r1, #0x16
-	bl MapObject_GetFlagsMask
+	bl MapObject_GetFlagsBits
 	cmp r0, #0
 	beq _021FA2E6
 	mov r0, #1

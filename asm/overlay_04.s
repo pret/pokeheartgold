@@ -2133,7 +2133,7 @@ ov04_02254F44: ; 0x02254F44
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x3c]
-	bl MapObjectManager_GetCount
+	bl MapObjectManager_GetObjectCount
 	add r5, r0, #0
 	ldr r0, [r4, #0x3c]
 	bl MapObjectManager_GetObjects

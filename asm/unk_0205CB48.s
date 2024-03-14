@@ -718,7 +718,7 @@ sub_0205D0A8: ; 0x0205D0A8
 	cmp r7, #0
 	beq _0205D10A
 	add r0, r4, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystemPtr
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #1
@@ -884,7 +884,7 @@ sub_0205D240: ; 0x0205D240
 	add r5, r1, #0
 	bl PlayerAvatar_GetMapObject
 	add r4, r0, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystemPtr
 	add r6, r0, #0
 	add r0, r4, #0
 	add r1, sp, #0xc
@@ -990,7 +990,7 @@ _0205D2FC:
 	add r2, r7, #0
 	bl sub_0205DA1C
 	add r0, r4, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystemPtr
 	add r5, r0, #0
 	bl FollowMon_IsActive
 	cmp r0, #0
@@ -1247,7 +1247,7 @@ _0205D4DE:
 	tst r0, r4
 	bne _0205D536
 	add r0, r5, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystemPtr
 	mov r1, #7
 	str r0, [sp, #8]
 	bl FieldSystem_IsSaveGymmickTypeEqualTo
@@ -1358,7 +1358,7 @@ _0205D5CE:
 	cmp r0, #0
 	bne _0205D60C
 	add r0, r5, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystemPtr
 	add r4, r0, #0
 	add r0, r5, #0
 	bl MapObject_GetPrevX
@@ -2018,7 +2018,7 @@ sub_0205DAA8: ; 0x0205DAA8
 	orr r4, r0
 _0205DAFC:
 	add r0, r5, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystemPtr
 	ldr r2, [sp, #0x14]
 	add r1, sp, #0x18
 	str r1, [sp]
@@ -2082,7 +2082,7 @@ sub_0205DB68: ; 0x0205DB68
 	cmp r4, r0
 	beq _0205DBF0
 	add r0, r5, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystemPtr
 	str r0, [sp]
 	add r0, r5, #0
 	bl MapObject_GetCurrentX
@@ -2152,7 +2152,7 @@ sub_0205DBF4: ; 0x0205DBF4
 	cmp r4, r0
 	beq _0205DC9C
 	add r0, r5, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystemPtr
 	add r7, r0, #0
 	add r0, r5, #0
 	bl MapObject_GetCurrentX
@@ -2238,7 +2238,7 @@ sub_0205DCA0: ; 0x0205DCA0
 	cmp r4, r0
 	beq _0205DCF6
 	add r0, r5, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystemPtr
 	str r0, [sp]
 	add r0, r5, #0
 	bl MapObject_GetCurrentX
@@ -2285,7 +2285,7 @@ sub_0205DCFC: ; 0x0205DCFC
 	cmp r0, #1
 	bne _0205DD8E
 	add r0, r5, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystemPtr
 	str r0, [sp]
 	add r0, r5, #0
 	bl MapObject_GetCurrentX
@@ -2755,7 +2755,7 @@ PlayerAvatar_GetCoordsInFront: ; 0x0205E02C
 sub_0205E048: ; 0x0205E048
 	push {r3, r4, r5, lr}
 	bl PlayerAvatar_GetMapObject
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystemPtr
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Save_GameStats_Get

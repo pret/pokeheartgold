@@ -12,7 +12,7 @@
 .public sub_02023F30
 .public sub_02023F40
 .public GF_AssertFail
-.public MapObjectManager_GetCount
+.public MapObjectManager_GetObjectCount
 .public MapObjectManager_SetFlagsBits
 .public MapObjectManager_ClearFlagsBits
 .public MapObjectManager_GetFlagsBitsMask
@@ -22,7 +22,7 @@
 .public FldObjSys_GetMModelNarc
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
-.public MapObject_GetFlagsMask
+.public MapObject_GetFlagsBits
 .public MapObject_TestFlagsBits
 .public MapObject_GetGfxID
 .public MapObject_SetFacingDirection

@@ -2,7 +2,7 @@
 #include "map_object_manager.h"
 #include "save_follow_mon.h"
 #include "script_pokemon_util.h"
-#include "field_map_object.h"
+#include "map_object.h"
 #include "map_header.h"
 #include "follow_mon.h"
 #include "constants/scrcmd.h"
@@ -1589,7 +1589,7 @@ void FollowMon_ChangeMon(MapObjectManager *mapObjectManager, u32 mapno) {
 
                 FieldSystem_SetFollowerPokeParam(fieldSystem, species, form, shiny, gender);
                 FollowMon_SetObjectParams(followPokeObj, species, form, shiny);
-                MapObject_SetGfxID(fieldSystem->followMon.mapObject, FollowMon_GetSpriteID(species, form, gender));
+                MapObject_SetGfxId(fieldSystem->followMon.mapObject, FollowMon_GetSpriteID(species, form, gender));
                 playerState = PlayerAvatar_GetState(fieldSystem->playerAvatar);
 
                 if (playerState == PLAYER_STATE_WALKING || playerState == PLAYER_STATE_ROCKET) {
@@ -1623,7 +1623,7 @@ void FollowMon_ChangeMon(MapObjectManager *mapObjectManager, u32 mapno) {
 
                 FieldSystem_SetFollowerPokeParam(fieldSystem, species, form, shiny, gender);
                 FollowMon_SetObjectParams(followPokeObj, species, form, shiny);
-                MapObject_SetGfxID(followPokeObj, FollowMon_GetSpriteID(species, form, gender));
+                MapObject_SetGfxId(followPokeObj, FollowMon_GetSpriteID(species, form, gender));
 
                 fieldSystem->followMon.mapObject = followPokeObj;
                 fieldSystem->followMon.active = TRUE;
@@ -1894,7 +1894,7 @@ static void FollowMon_SetObjectForm(LocalMapObject *mapObject, int species, u8 f
 }
 
 static LocalMapObject *FollowMon_CreateMapObject(MapObjectManager *mapObjectManager, int species, u16 form, int gender, int direction, int x, int y, int shiny) {
-    LocalMapObject *mapObject = CreateSpecialFieldObject(mapObjectManager, x, y, direction, FollowMon_GetSpriteID(species, form, gender), 0x30, MAP_NOTHING);
+    LocalMapObject *mapObject = MapObject_Create(mapObjectManager, x, y, direction, FollowMon_GetSpriteID(species, form, gender), 0x30, MAP_NOTHING);
 
     GF_ASSERT(mapObject != NULL);
     MapObject_SetID(mapObject, obj_partner_poke);
@@ -1905,8 +1905,8 @@ static LocalMapObject *FollowMon_CreateMapObject(MapObjectManager *mapObjectMana
     FollowMon_SetObjectParams(mapObject, species, form, shiny);
     MapObject_SetXRange(mapObject, -1);
     MapObject_SetYRange(mapObject, -1);
-    MapObject_SetFlagsBits(mapObject, MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_UNK10);
-    MapObject_ClearFlagsBits(mapObject, MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7);
+    MapObject_SetFlagsBits(mapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_UNK10));
+    MapObject_ClearFlagsBits(mapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7));
     MapObject_SetFlag29(mapObject, TRUE);
     sub_02069DC8(mapObject, TRUE);
 

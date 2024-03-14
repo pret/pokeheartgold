@@ -28,7 +28,7 @@
 .public sub_02025AAC
 .public sub_02025ABC
 .public sub_02026E18
-.public MapObject_GetFieldSysPtr
+.public MapObject_GetFieldSystemPtr
 .public sub_020689C8
 .public sub_020689F8
 .public sub_02068B0C

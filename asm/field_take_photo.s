@@ -993,7 +993,7 @@ sub_0206AF08: ; 0x0206AF08
 	add r1, r3, #0
 	ldr r2, [sp, #0x18]
 	add r3, r4, #0
-	bl CreateSpecialFieldObject
+	bl MapObject_Create
 	add r4, r0, #0
 	bne _0206AF2A
 	bl GF_AssertFail

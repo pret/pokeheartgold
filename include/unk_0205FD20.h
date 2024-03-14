@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_UNK_0205FD20_H
 #define POKEHEARTGOLD_UNK_0205FD20_H
 
-#include "field_map_object.h"
+#include "map_object.h"
 #include "task.h"
 
 void sub_02061070(LocalMapObject *object);

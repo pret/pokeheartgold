@@ -27,7 +27,7 @@
 .public sub_0205EEF4
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
-.public MapObject_SetGfxID
+.public MapObject_SetGfxId
 .public MapObject_GetMovement
 .public MapObject_GetType
 .public MapObject_GetScript
@@ -46,7 +46,7 @@
 .public sub_0205F40C
 .public sub_0205F484
 .public MapObject_IncMovementStep
-.public MapObject_GetFieldSysPtr
+.public MapObject_GetFieldSystemPtr
 .public MapObject_IsSingleMovementActive
 .public MapObject_CheckVisible
 .public MapObject_UnpauseMovement

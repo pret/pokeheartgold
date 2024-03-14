@@ -47,7 +47,7 @@
 .public sub_0205E420
 .public sub_0205EEF4
 .public sub_0205F09C
-.public MapObjectManager_GetCount
+.public MapObjectManager_GetObjectCount
 .public MapObjectManager_GetHeapID
 .public sub_0205F1A0
 .public sub_0205F1AC
@@ -55,7 +55,7 @@
 .public FldObjSys_GetMModelNarc
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
-.public MapObject_GetFlagsMask
+.public MapObject_GetFlagsBits
 .public MapObject_TestFlagsBits
 .public MapObject_GetID
 .public MapObject_GetGfxID

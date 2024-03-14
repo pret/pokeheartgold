@@ -20327,7 +20327,7 @@ ov02_0224F4BC: ; 0x0224F4BC
 	bl GetPlayerYCoord
 	str r0, [sp]
 	ldr r0, [r4, #0x3c]
-	bl MapObjectManager_GetCount
+	bl MapObjectManager_GetObjectCount
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x3c]
 	bl MapObjectManager_GetObjects
@@ -20433,7 +20433,7 @@ _0224F5A4:
 	bl HiddenItemScriptNoToFlagId
 	add r1, r0, #0
 	ldr r0, [sp]
-	bl FieldSystem_FlagGet
+	bl FieldSystem_FlagCheck
 	cmp r0, #0
 	bne _0224F5BE
 	add r4, r4, #1
@@ -21663,7 +21663,7 @@ ov02_0224FE70: ; 0x0224FE70
 	bne _0224FEFC
 _0224FE9E:
 	add r0, r4, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystemPtr
 	ldr r1, _0224FF00 ; =0x0000087C
 	add r6, r0, #0
 	ldrb r1, [r5, r1]

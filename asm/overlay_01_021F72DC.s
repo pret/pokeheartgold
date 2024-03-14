@@ -368,7 +368,7 @@ _021F7524:
 	bl FollowMon_SetObjectParams
 	ldr r1, [sp, #0x14]
 	add r0, r5, #0
-	bl MapObject_SetGfxID
+	bl MapObject_SetGfxId
 	add r0, r5, #0
 	bl sub_0205FCD4
 	add r0, r5, #0
