@@ -96,8 +96,8 @@
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
-.public sub_0201F51C
-.public Draw3dModel
+.public GF3dRender_InitObjFromHeader
+.public GF3dRender_DrawModel
 .public GetLCRNGSeed
 .public SetLCRNGSeed
 .public AddTextPrinterParameterizedWithColorAndSpacing

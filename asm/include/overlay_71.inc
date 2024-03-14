@@ -83,9 +83,9 @@
 .public CopyWindowToVram
 .public CopyWindowPixelsToVram_TextMode
 .public FillWindowPixelBuffer
-.public Draw3dModel
-.public Bind3dModelSet
-.public AllocAndLoad3dTexResources
+.public GF3dRender_DrawModel
+.public GF3dRender_BindModelSet
+.public GF3dRender_AllocAndLoadTexResources
 .public SysTask_SetFunc
 .public SysTask_GetData
 .public sub_0201F990

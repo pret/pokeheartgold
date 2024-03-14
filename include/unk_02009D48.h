@@ -44,8 +44,8 @@ struct SpriteListParam {
     HeapID heapId;
 };
 
-void CreateSpriteResourcesHeader(SpriteResourcesHeader *hdr, int charId, int plttId, int cellId, int cellAnmId, int multiCellId, int multiCellAnmId, int transfer, int priority, struct _2DGfxResMan *charMan, struct _2DGfxResMan *plttMan, struct _2DGfxResMan *cellMan, struct _2DGfxResMan *cellAnmMan, struct _2DGfxResMan *multiCellMan, struct _2DGfxResMan *multiCellAnmMan);
-SpriteResourceHeaderList *SpriteResourceHeaderList_Create(const struct ResdatNarcEntry *resdatNarcEntry, HeapID heapId, struct _2DGfxResMan *charMan, struct _2DGfxResMan *plttMan, struct _2DGfxResMan *cellMan, struct _2DGfxResMan *animMan, struct _2DGfxResMan *mcelMan, struct _2DGfxResMan *manmMan);
+void CreateSpriteResourcesHeader(SpriteResourcesHeader *hdr, int charId, int plttId, int cellId, int cellAnmId, int multiCellId, int multiCellAnmId, int transfer, int priority, GF_2DGfxResMan *charMan, GF_2DGfxResMan *plttMan, GF_2DGfxResMan *cellMan, GF_2DGfxResMan *cellAnmMan, GF_2DGfxResMan *multiCellMan, GF_2DGfxResMan *multiCellAnmMan);
+SpriteResourceHeaderList *SpriteResourceHeaderList_Create(const struct ResdatNarcEntry *resdatNarcEntry, HeapID heapId, GF_2DGfxResMan *charMan, GF_2DGfxResMan *plttMan, GF_2DGfxResMan *cellMan, GF_2DGfxResMan *animMan, GF_2DGfxResMan *mcelMan, GF_2DGfxResMan *manmMan);
 void SpriteResourceHeaderList_Destroy(SpriteResourceHeaderList *list);
 SpriteList *G2dRenderer_Init(int a0, GF_G2dRenderer *renderer, HeapID heapId);
 void G2dRenderer_SetMainSurfaceCoords(GF_G2dRenderer *renderer, fx32 x, fx32 y);

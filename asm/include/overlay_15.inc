@@ -113,10 +113,10 @@
 .public GetWindowWidth
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
-.public sub_0201F51C
-.public Draw3dModel
-.public sub_0201F590
-.public sub_0201F63C
+.public GF3dRender_InitObjFromHeader
+.public GF3dRender_DrawModel
+.public GF3dRender_InitSimpleManager
+.public GF3dRender_DeleteSimpleManager
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized
 .public AddTextPrinterParameterizedWithColor

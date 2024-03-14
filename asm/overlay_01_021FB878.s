@@ -335,7 +335,7 @@ _021FBAB2:
 _021FBAB8:
 	ldr r0, _021FBCA8 ; =0x000008A4
 	ldr r0, [r5, r0]
-	bl AllocAndLoad3dTexResources
+	bl GF3dRender_AllocAndLoadTexResources
 	cmp r0, #0
 	bne _021FBAC8
 	bl GF_AssertFail
@@ -349,7 +349,7 @@ _021FBAC8:
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _021FBAF6
-	bl AllocAndLoad3dTexResources
+	bl GF3dRender_AllocAndLoadTexResources
 	cmp r0, #0
 	bne _021FBAE8
 	bl GF_AssertFail
@@ -421,7 +421,7 @@ _021FBB4C:
 	ldr r1, _021FBCAC ; =0x000008A8
 	ldr r0, [r7, #4]
 	ldr r1, [r5, r1]
-	bl Bind3dModelSet
+	bl GF3dRender_BindModelSet
 	cmp r0, #0
 	bne _021FBB7C
 	bl GF_AssertFail
@@ -500,14 +500,14 @@ _021FBBEC:
 	bl NNS_G3dGetTex
 	add r4, r0, #0
 	beq _021FBC2C
-	bl AllocAndLoad3dTexResources
+	bl GF3dRender_AllocAndLoadTexResources
 	cmp r0, #0
 	bne _021FBC1C
 	bl GF_AssertFail
 _021FBC1C:
 	ldr r0, [r5, #4]
 	add r1, r4, #0
-	bl Bind3dModelSet
+	bl GF3dRender_BindModelSet
 	cmp r0, #0
 	bne _021FBC2C
 	bl GF_AssertFail
@@ -686,10 +686,10 @@ ov01_021FBD8C: ; 0x021FBD8C
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl AllocAndLoad3dTexResources
+	bl GF3dRender_AllocAndLoadTexResources
 	ldr r0, [r4]
 	ldr r1, [r4, #0xc]
-	bl Bind3dModelSet
+	bl GF3dRender_BindModelSet
 	add r0, r5, #0
 	bl SysTask_Destroy
 	pop {r3, r4, r5, pc}
@@ -1029,7 +1029,7 @@ ov01_021FBF68: ; 0x021FBF68
 	add r1, #0x54
 	add r2, sp, #0x24
 	add r3, r4, #0
-	bl Draw3dModel
+	bl GF3dRender_DrawModel
 _021FBFFC:
 	add sp, #0x48
 	pop {r4, pc}

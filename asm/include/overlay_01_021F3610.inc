@@ -4,7 +4,7 @@
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
 .public FreeToHeap
-.public Draw3dModel
+.public GF3dRender_DrawModel
 .public sub_0201F990
 .public sub_02020D2C
 .public GF_AssertFail
