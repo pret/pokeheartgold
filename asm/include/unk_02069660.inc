@@ -4,7 +4,7 @@
 .public SysTask_CreateOnVBlankQueue
 .public SysTask_Destroy
 .public FreeToHeap
-.public AllocAndLoad3dTexResources
+.public GF3dRender_AllocAndLoadTexResources
 .public GF_AssertFail
 .public sub_020696C4
 .public sub_02069714

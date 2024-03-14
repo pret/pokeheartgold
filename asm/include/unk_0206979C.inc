@@ -3,7 +3,7 @@
 .public GfGfxLoader_LoadFromOpenNarc
 .public FreeToHeap
 .public GF_ExpHeap_FndInitAllocator
-.public Draw3dModel
+.public GF3dRender_DrawModel
 .public sub_02020DA4
 .public GF_AssertFail
 .public sub_020697DC
