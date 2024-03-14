@@ -17,5 +17,4 @@ fi
 
 make -C ${GITHUB_WORKSPACE}/.github/calcrom
 output=$(${GITHUB_WORKSPACE}/.github/calcrom/calcrom -d ${GITHUB_WORKSPACE} -9 "" -7 sub heartgold.us soulsilver.us | sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g')
-echo $output
 curl -d "{\"username\": \"$CALCROM_DISCORD_WEBHOOK_USERNAME\", \"avatar_url\": \"$CALCROM_DISCORD_WEBHOOK_AVATAR_URL\", \"content\":\"\`\`\`$build_name progress:\\n$output\`\`\`\"}" -H "Content-Type: application/json" -X POST $url
