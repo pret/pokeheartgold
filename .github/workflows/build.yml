@@ -69,6 +69,7 @@ jobs:
     runs-on: ubuntu-22.04
     if: |
       always() &&
+      (github.event_name == 'push') &&
       contains(join(needs.*.result, ','), 'success')
     needs: [build-heartgold, build-soulsilver, build-nonmatching]
 
@@ -119,7 +120,6 @@ jobs:
           echo "XMAP_COMMIT_MSG=$( git log --format=%s ${GITHUB_SHA} )" >> $GITHUB_ENV
 
       - name: Update xMAP
-        if: ${{ github.event_name == 'push' }}
         uses: EndBug/add-and-commit@v9
         with:
           cwd: "./xmap"
