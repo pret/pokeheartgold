@@ -44,7 +44,7 @@ runs:
       if: ${{ always() && env.NONMATCHING == 0 }}
       shell: bash
       run: |
-        find . -maxdepth 2 -type d \( -name build -or -name files \) -exec tar -czvhf ${GAME_VERSION}_build.tar.gz {} +
+        find . -maxdepth 2 -type d \( -name build -or -name files \) -exec tar -czhf ${GAME_VERSION}_build.tar.gz {} +
 
     - name: Upload build artifacts
       if: ${{ always() && env.NONMATCHING == 0 }}
