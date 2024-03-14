@@ -250,47 +250,48 @@ void sub_0205E520(MapObjectManager *manager) {
     } while (i < count);
 }
 
-void sub_0205E580(MapObjectManager* manager) {
+//exactly the same as above, except it checks if object id is 0xFF
+void sub_0205E580(MapObjectManager *manager) {
     GF_ASSERT(sub_0205F5D4(manager) == TRUE);
 
-    int i = 0;
-    int count = MapObjectManager_GetObjectCount(manager);
-    LocalMapObject* objects = MapObjectManager_GetObjects(manager);
-    LocalMapObject* object = objects;
+    s32 i = 0;
+    s32 count = MapObjectManager_GetObjectCount(manager);
+    LocalMapObject *objects = MapObjectManager_GetObjects(manager);
+
     do {
-        if (MapObject_IsInUse(object) == TRUE && MapObject_GetID(object) == 0xFF) {
-            if (MapObject_CheckFlag14(object) == TRUE) {
-                sub_0205F4C0(object);
+        if (MapObject_IsInUse(objects) == TRUE && MapObject_GetID(objects) == 0xFF) { //todo: const (is this invalid ID? or just max?)
+            if (MapObject_CheckFlag14(objects) == TRUE) {
+                sub_0205F4C0(objects);
             } else {
-                sub_0205EFB4(object);
+                sub_0205EFB4(objects);
             }
 
-            sub_0205EF48(object);
-            sub_020611DC(object);
+            sub_0205EF48(objects);
+            sub_020611DC(objects);
 
             return;
         }
 
         i++;
-        object++;
+        objects++;
     } while (i < count);
 }
 
-void FieldSystem_SyncMapObjectsToSaveEx(FieldSystem* fieldSystem, MapObjectManager* manager, SavedMapObject* list, int count) {
-    int index = 0;
-    LocalMapObject* local_object;
-    SavedMapObject* saved_object = list;
-    while (sub_0205EEF4(manager, &local_object, &index, MAPOBJECTFLAG_ACTIVE)) {
-        sub_0205E680(fieldSystem, local_object, saved_object);
+void FieldSystem_SyncMapObjectsToSaveEx(FieldSystem *fieldSystem, MapObjectManager *manager, SavedMapObject *savedObjects, s32 count) {
+    s32 index = 0;
+    LocalMapObject *object;
+
+    while (sub_0205EEF4(manager, &object, &index, MAPOBJECTFLAG_ACTIVE)) { //MapObjectManager_GetNextActiveObject? this is an iterator however
+        sub_0205E680(fieldSystem, object, savedObjects); //SavedMapObject_InitFromLocalMapIObject?
 
         count--;
-        saved_object++;
+        savedObjects++;
 
         GF_ASSERT(count > 0);
     }
 
     if (count != 0) {
-        memset(saved_object, 0, count * sizeof(SavedMapObject));
+        memset(savedObjects, 0, count * sizeof(SavedMapObject));
     }
 }
 
