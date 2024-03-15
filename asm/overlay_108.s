@@ -6853,10 +6853,10 @@ _021E8F4E:
 	str r0, [r5, #0xc]
 	cmp r0, #0
 	beq _021E8F68
-	bl AllocAndLoad3dTexResources
+	bl GF3dRender_AllocAndLoadTexResources
 	ldr r0, [r5]
 	ldr r1, [r5, #0xc]
-	bl Bind3dModelSet
+	bl GF3dRender_BindModelSet
 _021E8F68:
 	add r0, r5, #0
 	ldr r1, [r5, #8]
@@ -7122,7 +7122,7 @@ _021E916C:
 	add r1, sp, #0xc
 	add r2, sp, #0x18
 	add r3, sp, #0
-	bl Draw3dModel
+	bl GF3dRender_DrawModel
 	add sp, #0x3c
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0

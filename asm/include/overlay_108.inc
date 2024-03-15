@@ -139,9 +139,9 @@
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public DoesPixelAtScreenXYMatchPtrVal
-.public Draw3dModel
-.public Bind3dModelSet
-.public AllocAndLoad3dTexResources
+.public GF3dRender_DrawModel
+.public GF3dRender_BindModelSet
+.public GF3dRender_AllocAndLoadTexResources
 .public AddTextPrinterParameterizedWithColor
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager

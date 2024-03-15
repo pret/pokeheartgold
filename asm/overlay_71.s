@@ -1646,7 +1646,7 @@ _022475AC:
 	add r1, #0x68
 	add r2, sp, #0x2c
 	add r3, r4, #0
-	bl Draw3dModel
+	bl GF3dRender_DrawModel
 	add sp, #0x50
 	pop {r4, pc}
 	.balign 4, 0
@@ -1756,10 +1756,10 @@ _02247676:
 	ldr r0, [r5]
 	bl NNS_G3dGetTex
 	str r0, [r5, #0x60]
-	bl AllocAndLoad3dTexResources
+	bl GF3dRender_AllocAndLoadTexResources
 	ldr r0, [r5]
 	ldr r1, [r5, #0x60]
-	bl Bind3dModelSet
+	bl GF3dRender_BindModelSet
 	ldr r1, [r5, #0x5c]
 	add r0, r5, #4
 	bl NNS_G3dRenderObjInit

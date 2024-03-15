@@ -468,7 +468,7 @@ _020239B0:
 	add r0, #0x30
 	add r1, r4, #0
 	add r3, #0xc
-	bl Draw3dModel
+	bl GF3dRender_DrawModel
 	add r0, r4, #0
 	bl sub_0202441C
 _020239C4:

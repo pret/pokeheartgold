@@ -489,7 +489,7 @@ ov01_021E8378: ; 0x021E8378
 	ldr r1, [sp, #0x30]
 	add r6, r2, #0
 	add r7, r3, #0
-	bl _2DGfxResObjExistsById
+	bl GF2DGfxResObjExistsById
 	cmp r0, #0
 	bne _021E839C
 	bl GF_AssertFail
@@ -574,7 +574,7 @@ ov01_021E8418: ; 0x021E8418
 	ldr r1, [sp, #0x24]
 	add r6, r2, #0
 	add r7, r3, #0
-	bl _2DGfxResObjExistsById
+	bl GF2DGfxResObjExistsById
 	cmp r0, #0
 	bne _021E843C
 	bl GF_AssertFail
@@ -660,7 +660,7 @@ ov01_021E84B0: ; 0x021E84B0
 	ldr r1, [sp, #0x2c]
 	str r2, [sp, #0xc]
 	str r3, [sp, #0x10]
-	bl _2DGfxResObjExistsById
+	bl GF2DGfxResObjExistsById
 	cmp r0, #0
 	bne _021E84DA
 	bl GF_AssertFail
@@ -756,7 +756,7 @@ _021E857E:
 	mvn r2, r2
 	cmp r1, r2
 	beq _021E8596
-	bl _2DGfxResObjExistsById
+	bl GF2DGfxResObjExistsById
 	cmp r0, #0
 	bne _021E8596
 	mov r0, #0
@@ -771,7 +771,7 @@ _021E8596:
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl _2DGfxResObjExistsById
+	bl GF2DGfxResObjExistsById
 	cmp r0, #0
 	bne _021E85B4
 	mov r0, #0

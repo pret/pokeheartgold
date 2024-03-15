@@ -143,8 +143,8 @@
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
-.public Bind3dModelSet
-.public AllocAndLoad3dTexResources
+.public GF3dRender_BindModelSet
+.public GF3dRender_AllocAndLoadTexResources
 .public sub_0201F990
 .public GF_SinDegNoWrap
 .public GF_DegreeToSinCosIdx
@@ -187,7 +187,7 @@
 .public sub_02024AA8
 .public sub_02024B1C
 .public GF_AssertFail
-.public sub_02025ACC
+.public G3dResFileHeader_GetSizeWithoutTex
 .public String_New
 .public String_Delete
 .public String_Copy
