@@ -6,12 +6,12 @@
 #include "overlay_manager.h"
 #include "save.h"
 
-typedef struct Unk0203FC14 {
+typedef struct UnkStruct_0203FC14 {
     FieldSystem *fieldSystem;
     SaveData *saveData;
     int unk8;
     u8 unkC;
-} Unk0203FC14;
+} UnkStruct_0203FC14;
 
 void *sub_02019BA4(const void *, const void *, const void *, void *, int, u8, HeapID);
 void sub_02019BDC(void *);

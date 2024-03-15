@@ -5,16 +5,16 @@
 
 #define HEAP_ID_TRAINER_CARD        ((HeapID)94)
 
-typedef struct Unk0203F7C2 {
+typedef struct UnkStruct_0203F7C2 {
     int *unk0;
     SaveData *saveData;
     int unk8;
     BOOL gameCleared;
-} Unk0203F7C2;
+} UnkStruct_0203F7C2;
 
 typedef struct TrainerCardAppArgs {
     u8 unk0[0x66c];
-    Unk0203F7C2 unk66C;
+    UnkStruct_0203F7C2 unk66C;
 } TrainerCardAppArgs;
 
 typedef struct {

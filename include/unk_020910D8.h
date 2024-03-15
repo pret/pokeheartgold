@@ -6,13 +6,13 @@
 #include "pokemon.h"
 #include "task.h"
 
-typedef struct Unk02091240 {
+typedef struct UnkStruct_02091240 {
     Pokemon *mon;
     Options *options;
     PlayerProfile *profile;
     u16 unkC;
-} Unk02091240;
+} UnkStruct_02091240;
 
-void CallTask_HatchEggInParty(TaskManager *taskman, Unk02091240 *a1);
+void CallTask_HatchEggInParty(TaskManager *taskman, UnkStruct_02091240 *a1);
 
 #endif //POKEHEARTGOLD_UNK_020910D8_H

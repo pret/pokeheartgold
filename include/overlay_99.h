@@ -26,10 +26,10 @@ typedef struct PokeathlonCourseRecordArgs {
     BOOL unk4;
 } PokeathlonCourseRecordArgs;
 
-typedef struct Unk0203EFA0 {
+typedef struct UnkStruct_0203EFA0 {
     POKEATHLON_SAV *pokeathlon;
     PlayerProfile *profile;
-} Unk0203EFA0;
+} UnkStruct_0203EFA0;
 
 BOOL PokeathlonMedals_Init(OVY_MANAGER *man, int *state);
 BOOL PokeathlonMedals_Main(OVY_MANAGER *man, int *state);

@@ -7,13 +7,13 @@
 #include "save.h"
 #include "script.h"
 
-typedef struct Unk0203F4F8 {
+typedef struct UnkStruct_0203F4F8 {
     SaveData *saveData;
     struct UnkStruct_0205AC88 *unk4;
     Options *options;
     GAME_STATS *gameStats;
     u32 *unk10;
-} Unk0203F4F8;
+} UnkStruct_0203F4F8;
 
 BOOL ov73_021E5900(OVY_MANAGER *man, int *state);
 BOOL ov73_021E5AB8(OVY_MANAGER *man, int *state);

@@ -77,17 +77,17 @@ struct UnkStruct_ScrCmd627 {
     u8 filler_21[0x7];
 };
 
-typedef struct Unk0203E600 {
+typedef struct UnkStruct_0203E600 {
     u8 unk0[0x14];
     u8 unk14;
     u8 unk15;
     u8 unk16;
-} Unk0203E600;
+} UnkStruct_0203E600;
 
-typedef struct Unk0203E8C8 {
+typedef struct UnkStruct_0203E8C8 {
     u16 unk0;
     u16 unk2;
-} Unk0203E8C8;
+} UnkStruct_0203E8C8;
 
 static inline void InitUnkStructScrCmd408(UnkOv67Args *data, u16 a1, u16 a2, ScriptContext *ctx) {
     MI_CpuClear8(data, sizeof(UnkOv67Args));
@@ -119,8 +119,8 @@ void sub_0203F570(FieldSystem *fieldSystem, SaveData *saveData);
 SafariDecorationArgs* SafariDecoration_LaunchApp(FieldSystem *fieldSystem);
 void GeonetGlobe_LaunchApp(FieldSystem *fieldSystem);
 void ChooseStarter_LaunchApp(FieldSystem *fieldSystem, ChooseStarterArgs *args);
-u16 sub_0203E864(Unk0203E600 *a0);
-u16 sub_0203E600(Unk0203E600 *a0);
+u16 sub_0203E864(UnkStruct_0203E600 *a0);
+u16 sub_0203E600(UnkStruct_0203E600 *a0);
 PokemonSummaryArgs *LearnForgetMove_LaunchApp(HeapID heapId, FieldSystem *fieldSystem, u8 a2, u16 a3);
 ApricornBoxArgs *sub_0203ED80(FieldSystem *fieldSystem, u32 a1, u16 *a2);
 BugContestSwapMonArgs *BugContestSwapMon_LaunchApp(FieldSystem *fieldSystem, Pokemon *a1, Pokemon *a2, BOOL a3);
@@ -131,7 +131,7 @@ void sub_0203F0A8(FieldSystem *fieldSystem, UnkOv67Args *unk);
 void PCBox_LaunchApp(FieldSystem *fieldSystem, PCBoxArgs *pcBoxData);
 void CallTask_WirelessTrade(TaskManager *taskManager);
 void sub_0203F4C8(FieldSystem *fieldSystem);
-Unk0203F4F8 *sub_0203F4F8(FieldSystem *fieldSystem);
+UnkStruct_0203F4F8 *sub_0203F4F8(FieldSystem *fieldSystem);
 HallOfFame *HallOfFameShowcase_LaunchApp(FieldSystem *fieldSystem);
 void sub_0203F844(FieldSystem *fieldSystem, u16 a1);
 BagView *Bag_LaunchApp_WithPocket(FieldSystem *fieldSystem, u8 pocketType);
@@ -156,23 +156,23 @@ NintendoWifiConnectArgs *NintendoWifiConnection_LaunchApp(FieldSystem *a0, u16 a
 void PokeathlonCourse_LaunchApp(FieldSystem *fieldSystem, PokeathlonCourseArgs *args);
 void sub_0203FC68(FieldSystem *fieldSystem, void *args);
 void sub_0203FC90(FieldSystem *fieldSystem, void *args);
-LegendaryCinematicArgs *LegendaryCinematic_LaunchApp(FieldSystem *a0, Unk0203FCC4 *a1, u16 a2, u16 a3, HeapID a4);
+LegendaryCinematicArgs *LegendaryCinematic_LaunchApp(FieldSystem *a0, UnkStruct_0203FCC4 *a1, u16 a2, u16 a3, HeapID a4);
 void sub_0203FD08(FieldSystem *fieldSystem, void *args);
 PartyMenuArgs *PartyMenu_LaunchApp_Unk1(FieldSystem *fieldSystem, int a1, u8 a2);
 void CallTask_NamingScreen(TaskManager *taskManager, NameScreenType type, int species, int maxLen, int initPos, const u16 *defaultStr, u16 *retVar);
-void sub_0203E960(TaskManager *a0, int a1, Unk0203E8C8 *a2, u16 *a3, u16 *a4);
+void sub_0203E960(TaskManager *a0, int a1, UnkStruct_0203E8C8 *a2, u16 *a3, u16 *a4);
 void TrainerCardSignature_LaunchApp(FieldSystem *fieldSystem);
 void HatchEggInParty(FieldSystem *fieldSystem);
-Unk0203F074 *sub_0203F074(FieldSystem *fieldSystem, HeapID heapId);
+UnkStruct_0203F074 *sub_0203F074(FieldSystem *fieldSystem, HeapID heapId);
 CertificatesArgs *Certificates_LaunchApp(FieldSystem *fieldSystem, HeapID heapId, u16 certificateId);
 PartyMenuArgs *PartyMenu_LaunchApp_Unk4(HeapID heapId, FieldSystem *fieldSystem, u16 a2);
-Unk0203FAB4 *sub_0203FAB4(FieldSystem *fieldSystem, u8 a1, u8 a2, u16 a3, HeapID heapId);
+UnkStruct_0203FAB4 *sub_0203FAB4(FieldSystem *fieldSystem, u8 a1, u8 a2, u16 a3, HeapID heapId);
 ScratchOffCardsArgs *ScratchOffCards_LaunchApp(FieldSystem *fieldSystem, HeapID heapId);
 void sub_0203FC14(FieldSystem *fieldSystem, u16 a1, u16 a2);
 PokegearArgs *PokegearPhone_LaunchApp(FieldSystem *fieldSystem);
 PokeathlonMedalsArgs *PokeathlonMedals_LaunchApp(FieldSystem *fieldSystem);
 PokeathlonEventRecordArgs *PokeathlonEventRecord_LaunchApp(FieldSystem *fieldSystem);
-Unk0203EFA0 *PokeathlonUnk_LaunchApp(FieldSystem *fieldSystem);
+UnkStruct_0203EFA0 *PokeathlonUnk_LaunchApp(FieldSystem *fieldSystem);
 PokeathlonCourseRecordArgs *PokeathlonCourseRecord_LaunchApp(FieldSystem *fieldSystem);
 AlphPuzzleArgs *AlphPuzzle_LaunchApp(FieldSystem *fieldSystem, u8 puzzle);
 void RegisterHallOfFame_LaunchApp(FieldSystem *fieldSystem, RegisterHallOfFameArgs *args);
