@@ -69,7 +69,7 @@
 #define BATTLE_SUBSCRIPT_RECHARGE_TURN                     64
 #define BATTLE_SUBSCRIPT_RECHARGING                        65
 #define BATTLE_SUBSCRIPT_SET_RAGE_FLAG                     66
-#define BATTLE_SUSBEQ_MIMIC                                67
+#define BATTLE_SUBSCRIPT_MIMIC                             67
 #define BATTLE_SUBSCRIPT_LEECH_SEED_START                  68
 #define BATTLE_SUBSCRIPT_LEECH_SEED_EFFECT                 69
 #define BATTLE_SUBSCRIPT_DISABLE_START                     70
@@ -94,7 +94,7 @@
 #define BATTLE_SUBSCRIPT_TRY_SUBSTITUTE                    89
 #define BATTLE_SUBSCRIPT_HIT_SUBSTITUTE                    90
 #define BATTLE_SUBSCRIPT_FORCE_TARGET_TO_SWITCH_OR_FLEE    91
-#define BATTLE_SUSBEQ_TRANSFORM_INTO_TARGET                92
+#define BATTLE_SUBSCRIPT_TRANSFORM_INTO_TARGET             92
 #define BATTLE_SUBSCRIPT_NIGHTMARE_START                   93
 #define BATTLE_SUBSCRIPT_NIGHTMARE_EFFECT                  94
 #define BATTLE_SUBSCRIPT_MINIMIZE                          95
@@ -496,28 +496,28 @@
 #define TRAINER_MESSAGE_WIN     100
 
 //Yes No Boxes
-#define YES_NO_BASIC 0
-#define YES_NO_FORGET_MOVE 1
-#define YES_NO_GIVE_UP_ON_MOVE 2
-#define YES_NO_NEXT_MON 3
-#define YES_NO_CHANGE_MON 4
-#define YES_NO_GIVE_NICKNAME 5
+#define YES_NO_BASIC            0
+#define YES_NO_FORGET_MOVE      1
+#define YES_NO_GIVE_UP_ON_MOVE  2
+#define YES_NO_NEXT_MON         3
+#define YES_NO_CHANGE_MON       4
+#define YES_NO_GIVE_NICKNAME    5
 
 //Turn Flags
-#define TURN_FLAG_STRUGGLING    0
+#define TURN_FLAG_STRUGGLING        0
 #define TURN_FLAG_PP_DECREMENTED    1
-#define TURN_FLAG_PROTECTING    2
-#define TURN_FLAG_HELPING_HAND    3
-#define TURN_FLAG_MAGIC_COAT    4
-#define TURN_FLAG_SNATCHING    5
-#define TURN_FLAG_ROOSTING    6
+#define TURN_FLAG_PROTECTING        2
+#define TURN_FLAG_HELPING_HAND      3
+#define TURN_FLAG_MAGIC_COAT        4
+#define TURN_FLAG_SNATCHING         5
+#define TURN_FLAG_ROOSTING          6
 
 //Safari Throw
-#define BTLSCR_THROW_POKE_BALL 0
-#define BTLSCR_THROW_SAFARI_BALL 1
-#define BTLSCR_THROW_SAFARI_ROCK 2
-#define BTLSCR_THROW_SAFARI_BAIT 3
-#define BTLSCR_THROW_PARK_BALL 4
-#define BTLSCR_THROW_SPORT_BALL 5
+#define BTLSCR_THROW_POKE_BALL      0
+#define BTLSCR_THROW_SAFARI_BALL    1
+#define BTLSCR_THROW_SAFARI_ROCK    2
+#define BTLSCR_THROW_SAFARI_BAIT    3
+#define BTLSCR_THROW_PARK_BALL      4
+#define BTLSCR_THROW_SPORT_BALL     5
 
 #endif //POKEHEARTGOLD_CONSTANTS_BATTLE_SUBSCRIPT_H

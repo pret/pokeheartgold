@@ -179,7 +179,7 @@ typedef struct UnkBattlemonSub {
     u32 embargoFlag:3;
     u32 knockOffFlag:1; //unclear whether true mean knocked off or not knocked off based on current information on its usage
     u32 metronomeTurns:4; //refers to the item, not the move
-    u32 micleBerry:1; 
+    u32 micleBerryFlag:1; 
     u32 custapBerryFlag:1;
     u32 quickClawFlag:1; 
     u32 meFirstFlag:1;

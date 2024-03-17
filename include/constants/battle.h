@@ -195,7 +195,7 @@ typedef enum Terrain {
 #define MOVE_EFFECT_FLAG_HIDE_SUBSTITUTE         (MOVE_EFFECT_FLAG_FLY | MOVE_EFFECT_FLAG_DIG | MOVE_EFFECT_FLAG_DIVE | MOVE_EFFECT_FLAG_PHANTOM_FORCE)
 #define MOVE_EFFECT_FLAG_SEMI_INVULNERABLE       (MOVE_EFFECT_FLAG_FLY | MOVE_EFFECT_FLAG_DIG | MOVE_EFFECT_FLAG_DIVE | MOVE_EFFECT_FLAG_PHANTOM_FORCE)
 
-#define MOVE_EFFECT_FLAG_LOCK_ON_SHIFT          3
+#define MOVE_EFFECT_FLAG_LOCK_ON_SHIFT           3
 #define MOVE_EFFECT_FLAG_YAWN_SHIFT             11
 
 //Move side effects
@@ -262,7 +262,7 @@ typedef enum Terrain {
 #define FIELD_CONDITION_WEATHER_CASTFORM    (FIELD_CONDITION_RAIN_ALL | FIELD_CONDITION_SUN_ALL | FIELD_CONDITION_HAIL_ALL)
 #define FIELD_CONDITION_WEATHER             (FIELD_CONDITION_RAIN_ALL | FIELD_CONDITION_SANDSTORM_ALL | FIELD_CONDITION_SUN_ALL | FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_FOG)
 
-#define FIELD_CONDITION_UPROAR_SHIFT        8
+#define FIELD_CONDITION_UPROAR_SHIFT         8
 #define FIELD_CONDITION_GRAVITY_SHIFT       12
 #define FIELD_CONDITION_TRICK_ROOM_SHIFT    16
     
@@ -279,7 +279,7 @@ typedef enum Terrain {
 #define SIDE_CONDITION_TOXIC_SPIKES         (1 << 10)
 #define SIDE_CONDITION_LUCKY_CHANT          (7 << 12)
 
-#define SIDE_CONDITION_TAILWIND_SHIFT       8
+#define SIDE_CONDITION_TAILWIND_SHIFT        8
 #define SIDE_CONDITION_LUCKY_CHANT_SHIFT    12
 
 //Side Condition Enums
@@ -291,7 +291,7 @@ typedef enum Terrain {
 #define SIDE_COND_TOXIC_SPIKES_LAYERS   5
 
 //Status
-#define STATUS_NONE                         0
+#define STATUS_NONE                          0
 #define STATUS_SLEEP_0                      (1 << 0)
 #define STATUS_SLEEP_1                      (1 << 1)
 #define STATUS_SLEEP_2                      (1 << 2)
@@ -349,8 +349,8 @@ typedef enum Terrain {
 #define STATUS2_BIDE                        (STATUS2_BIDE_0 | STATUS2_BIDE_1)
 #define STATUS2_ATTRACT                     (STATUS2_ATTRACT_BATTLER1 | STATUS2_ATTRACT_BATTLER2 | STATUS2_ATTRACT_BATTLER3 | STATUS2_ATTRACT_BATTLER4)
 
-#define STATUS2_UPROAR_SHIFT                4
-#define STATUS2_BIDE_SHIFT                  8
+#define STATUS2_UPROAR_SHIFT                 4
+#define STATUS2_BIDE_SHIFT                   8
 #define STATUS2_RAMPAGE_SHIFT               10
 #define STATUS2_BINDING_SHIFT               13
 #define STATUS2_ATTRACT_SHIFT               16    

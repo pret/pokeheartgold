@@ -451,7 +451,7 @@ int GetBattlerVar(BattleContext *ctx, int battlerId, u32 id, void *data) {
     case BMON_DATA_METRONOME_TURNS: //refers to the actual item, not the move
         return mon->unk88.metronomeTurns;
     case BMON_DATA_MICLE_BERRY_FLAG:
-        return mon->unk88.micleBerry;
+        return mon->unk88.micleBerryFlag;
     case BMON_DATA_CUSTAP_FLAG:
         return mon->unk88.custapBerryFlag;
     case BMON_DATA_QUICK_CLAW_FLAG:
@@ -729,7 +729,7 @@ void SetBattlerVar(BattleContext *ctx, int battlerId, u32 id, void *data) {
         mon->unk88.metronomeTurns = *data8;
         break;
     case BMON_DATA_MICLE_BERRY_FLAG:
-        mon->unk88.micleBerry = *data8;
+        mon->unk88.micleBerryFlag = *data8;
         break;
     case BMON_DATA_CUSTAP_FLAG:
         mon->unk88.custapBerryFlag = *data8;
@@ -6549,7 +6549,7 @@ static const int sMoveStatusChangeScripts[145] = {
     BATTLE_SUBSCRIPT_REFLECT,
     BATTLE_SUBSCRIPT_MIST, 
     BATTLE_SUBSCRIPT_FOCUS_ENERGY, 
-    BATTLE_SUSBEQ_MIMIC, 
+    BATTLE_SUBSCRIPT_MIMIC, 
     BATTLE_SUBSCRIPT_LEECH_SEED_START,
     BATTLE_SUBSCRIPT_DISABLE_START, 
     BATTLE_SUBSCRIPT_ENCORE_START, 
@@ -6564,7 +6564,7 @@ static const int sMoveStatusChangeScripts[145] = {
     BATTLE_SUBSCRIPT_HEAL_BELL, 
     BATTLE_SUBSCRIPT_TRY_SUBSTITUTE,
     BATTLE_SUBSCRIPT_FORCE_TARGET_TO_SWITCH_OR_FLEE, 
-    BATTLE_SUSBEQ_TRANSFORM_INTO_TARGET, 
+    BATTLE_SUBSCRIPT_TRANSFORM_INTO_TARGET, 
     BATTLE_SUBSCRIPT_MINIMIZE, 
     BATTLE_SUBSCRIPT_CURSE_NORMAL,
     BATTLE_SUBSCRIPT_CURSE_GHOST, 

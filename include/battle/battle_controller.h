@@ -71,7 +71,6 @@ void ov12_02262F40(BattleSystem *bsys, BattleContext *ctx, int battlerId);
 void ov12_02262FFC(BattleSystem *bsys, BattleContext *ctx, int a2, int battlerId);
 void ov12_02263138(BattleSystem *bsys, BattleContext *ctx, int battlerId);
 void ov12_02263E18(BattleSystem *bsys, int battlerId);
-void ov12_0224E414(BattleSystem *bsys, BattleContext *ctx);
 void ov12_02263564(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32 a3);
 void ov12_0226399C(BattleSystem *bsys, int battlerId);
 void ov12_02263A1C(BattleSystem *bsys, BattleContext *ctx, int battlerId);
