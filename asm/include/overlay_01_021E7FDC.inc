@@ -15,7 +15,7 @@
 .public LoadAll2DGfxResObjsFromHeader
 .public Create2DGfxResObjList
 .public Delete2DGfxResObjList
-.public _2DGfxResObjExistsById
+.public GF2DGfxResObjExistsById
 .public sub_0200A8FC
 .public sub_0200A900
 .public sub_0200A908

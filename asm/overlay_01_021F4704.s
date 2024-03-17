@@ -2473,7 +2473,7 @@ _021F59A8:
 	add r0, r1, r0
 	add r1, sp, #0x38
 	add r2, sp, #8
-	bl Draw3dModel
+	bl GF3dRender_DrawModel
 _021F59C6:
 	ldr r4, [r4, r6]
 	ldr r0, _021F59F4 ; =0x00000864
@@ -4299,13 +4299,13 @@ _021F66B6:
 	ldr r0, [r4, #0x14]
 	cmp r0, #0
 	beq _021F66CE
-	bl sub_0201F53C
+	bl GF3dRender_ResTexIsLoaded
 	cmp r0, #1
 	bne _021F66CE
 	ldr r0, [r4, #0x10]
 	ldr r1, [r4, #0x14]
 	ldr r0, [r0]
-	bl Bind3dModelSet
+	bl GF3dRender_BindModelSet
 _021F66CE:
 	mov r0, #3
 	strb r0, [r4, #0x18]
@@ -4436,12 +4436,12 @@ ov01_021F67B4: ; 0x021F67B4
 	ldr r0, [sp, #0x10]
 	cmp r0, #0
 	beq _021F67DE
-	bl sub_0201F53C
+	bl GF3dRender_ResTexIsLoaded
 	cmp r0, #1
 	bne _021F67DE
 	ldr r0, [r4]
 	ldr r1, [sp, #0x10]
-	bl Bind3dModelSet
+	bl GF3dRender_BindModelSet
 	cmp r0, #0
 	bne _021F67DE
 	bl GF_AssertFail

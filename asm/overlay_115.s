@@ -2246,7 +2246,7 @@ _0226021C:
 	bl ov01_021F0EAC
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 _02260242:
 	mov r0, #0
 	add sp, #0x44

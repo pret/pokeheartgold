@@ -115,7 +115,7 @@
 .public FillWindowPixelBuffer
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
-.public AllocAndLoad3dTexResources
+.public GF3dRender_AllocAndLoadTexResources
 .public AddTextPrinterParameterizedWithColor
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
@@ -141,7 +141,7 @@
 .public String_New
 .public String_Delete
 .public Thunk_G3X_Reset
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
 .public PlayerProfile_GetPlayerName_NewString

@@ -274,7 +274,7 @@ _021E5AC8:
 	add r0, r4, #0
 	add r1, #0x54
 	add r2, #0x58
-	bl sub_0201F51C
+	bl GF3dRender_InitObjFromHeader
 	ldr r0, [r4, #0x58]
 	bl NNS_G3dGetTex
 	str r0, [sp, #0x1c]
@@ -493,7 +493,7 @@ _021E5C96:
 	add r1, sp, #4
 	add r2, sp, #0x1c
 	add r3, sp, #0x10
-	bl Draw3dModel
+	bl GF3dRender_DrawModel
 	mov r0, #0xff
 	ldr r1, [sp]
 	lsl r0, r0, #2
@@ -505,7 +505,7 @@ _021E5C96:
 _021E5CBA:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	add sp, #0x40
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -618,7 +618,7 @@ ov106_021E5D70: ; 0x021E5D70
 	bl Camera_New
 	str r0, [r4, #0x18]
 	mov r0, #0x99
-	bl sub_0201F590
+	bl GF3dRender_InitSimpleManager
 	ldr r2, _021E5DF0 ; =0x04000060
 	ldr r0, _021E5DF4 ; =0xFFFFCFFF
 	ldrh r1, [r2]
@@ -675,7 +675,7 @@ _021E5DF8: .word 0x00007FFF
 ov106_021E5DFC: ; 0x021E5DFC
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0201F63C
+	bl GF3dRender_DeleteSimpleManager
 	ldr r0, [r4, #0x18]
 	bl Camera_Delete
 	pop {r4, pc}

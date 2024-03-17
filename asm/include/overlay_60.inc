@@ -96,8 +96,8 @@
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
-.public sub_0201F51C
-.public Draw3dModel
+.public GF3dRender_InitObjFromHeader
+.public GF3dRender_DrawModel
 .public GetLCRNGSeed
 .public SetLCRNGSeed
 .public AddTextPrinterParameterizedWithColorAndSpacing
@@ -142,7 +142,7 @@
 .public String_New
 .public String_Delete
 .public Thunk_G3X_Reset
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
 .public NNS_G2dInitOamManagerModule

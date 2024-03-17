@@ -125,7 +125,7 @@
 .public FillWindowPixelBuffer
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
-.public Bind3dModelSet
+.public GF3dRender_BindModelSet
 .public GF_SinDegFX32
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized
@@ -174,7 +174,7 @@
 .public String_New
 .public String_Delete
 .public Thunk_G3X_Reset
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
 .public Save_PlayerData_GetOptionsAddr

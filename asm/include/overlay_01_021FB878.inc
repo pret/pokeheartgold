@@ -13,9 +13,9 @@
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public ReallocFromHeap
-.public Draw3dModel
-.public Bind3dModelSet
-.public AllocAndLoad3dTexResources
+.public GF3dRender_DrawModel
+.public GF3dRender_BindModelSet
+.public GF3dRender_AllocAndLoadTexResources
 .public GF_AssertFail
 .public NNS_G3dAnmObjInit
 .public NNS_G3dRenderObjInit
