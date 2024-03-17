@@ -127,7 +127,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public GF_3DVramMan_InitFrameTexVramManager
 .public GF_3DVramMan_InitFramePlttVramManager
 .public Options_GetFrame

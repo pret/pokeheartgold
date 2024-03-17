@@ -196,7 +196,7 @@
 .public TouchHitboxController_Destroy
 .public TouchHitboxController_IsTriggered
 .public Thunk_G3X_Reset
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
 .public Save_PlayerData_GetProfileAddr

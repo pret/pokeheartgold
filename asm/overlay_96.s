@@ -34560,7 +34560,7 @@ ov96_021F637C: ; 0x021F637C
 	bl ov96_021F61C8
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	pop {r4, pc}
 	thumb_func_end ov96_021F637C
 

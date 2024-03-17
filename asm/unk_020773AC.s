@@ -175,7 +175,7 @@ _020774F6:
 	bl sub_02015460
 	mov r0, #1
 	mov r1, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	pop {r3, pc}
 	thumb_func_end sub_020774E0
 

@@ -193,7 +193,7 @@ static s32 _RunParticleSystem(void) {
         Thunk_G3X_Reset();
     }
     sub_02015460();
-    sub_02026E50(1, 0);
+    RequestSwap3DBuffers(GX_SORTMODE_MANUAL, GX_BUFFERMODE_Z);
     return val;
 }
 

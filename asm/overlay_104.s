@@ -248,7 +248,7 @@ _021E5AC2:
 	bl GF3dRender_DrawModel
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	add r0, r7, #0
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
