@@ -25,6 +25,7 @@
 #include "constants/items.h"
 #include "constants/message_tags.h"
 #include "constants/moves.h"
+#include "constants/move_effects.h"
 #include "constants/opcode.h"
 #include "constants/pokemon.h"
 #include "constants/sndseq.h"
@@ -3110,12 +3111,12 @@ BOOL BtlCmd_TryProtection(BattleSystem *bsys, BattleContext *ctx) {
     }
 
     if (sProtectSuccessChance[ctx->battleMons[ctx->battlerIdAttacker].unk88.protectSuccessTurns] >= (u32) BattleSystem_Random(bsys) && flag) {
-        if (ctx->trainerAIData.moveData[ctx->moveNoCur].effect == 111) {
+        if (ctx->trainerAIData.moveData[ctx->moveNoCur].effect == MOVE_EFFECT_PROTECT) {
             ctx->turnData[ctx->battlerIdAttacker].protectFlag = TRUE;
             ctx->buffMsg.id = msg_0197_00282;
         }
-        if (ctx->trainerAIData.moveData[ctx->moveNoCur].effect == 116) {
-            ctx->turnData[ctx->battlerIdAttacker].unk0_9 = TRUE;
+        if (ctx->trainerAIData.moveData[ctx->moveNoCur].effect == MOVE_EFFECT_SURVIVE_WITH_1_HP) {
+            ctx->turnData[ctx->battlerIdAttacker].endureFlag = TRUE;
             ctx->buffMsg.id = msg_0197_00442;
 
         }
@@ -4228,7 +4229,7 @@ BOOL BtlCmd_TryPursuit(BattleSystem *bsys, BattleContext *ctx) {
             }
             if (moveNo) {
                 moveIndex = BattleMon_GetMoveIndex(&ctx->battleMons[battlerId], moveNo);
-                if (ctx->trainerAIData.moveData[moveNo].effect == 128 && ctx->battleMons[battlerId].movePPCur[moveIndex]) {
+                if (ctx->trainerAIData.moveData[moveNo].effect == MOVE_EFFECT_HIT_BEFORE_SWITCH && ctx->battleMons[battlerId].movePPCur[moveIndex]) {
                     ctx->battleMons[battlerId].movePPCur[moveIndex]--;
                     if (GetBattlerAbility(ctx, ctx->battlerIdSwitch) == ABILITY_PRESSURE && ctx->battleMons[battlerId].movePPCur[moveIndex]) {
                         ctx->battleMons[battlerId].movePPCur[moveIndex]--;
