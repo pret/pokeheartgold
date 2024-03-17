@@ -282,7 +282,7 @@
 .public CopyU16ArrayToString
 .public String_cstr
 .public Thunk_G3X_Reset
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_sizeof

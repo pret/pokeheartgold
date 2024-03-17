@@ -8,6 +8,8 @@
 #ifndef NITRO_HW_IO_REG_SHARED_H_
 #define NITRO_HW_IO_REG_SHARED_H_
 
+#include <nitro/types.h>
+
 #define HW_REG_BASE                0x04000000
 
 #define REG_TM0CNT_L_OFFSET        0x100

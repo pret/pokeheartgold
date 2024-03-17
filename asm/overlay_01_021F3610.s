@@ -648,7 +648,7 @@ _021F3AB8:
 	ldr r0, [r5, #0x10]
 	add r2, sp, #0x18
 	add r3, #0x2c
-	bl Draw3dModel
+	bl GF3dRender_DrawModel
 	b _021F3AEE
 _021F3ADA:
 	str r4, [sp]
@@ -986,7 +986,7 @@ _021F3CF2:
 	add r1, #0x14
 	add r2, r7, #0
 	add r3, r5, #0
-	bl Draw3dModel
+	bl GF3dRender_DrawModel
 	b _021F3D24
 _021F3D0C:
 	str r6, [sp]

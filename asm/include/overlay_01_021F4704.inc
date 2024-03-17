@@ -11,9 +11,9 @@
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
 .public FreeToHeap
-.public sub_0201F53C
-.public Draw3dModel
-.public Bind3dModelSet
+.public GF3dRender_ResTexIsLoaded
+.public GF3dRender_DrawModel
+.public GF3dRender_BindModelSet
 .public SysTask_GetData
 .public GF_AssertFail
 .public Save_PlayerData_GetProfileAddr
