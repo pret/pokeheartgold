@@ -5,7 +5,7 @@
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
-#include "unk_0201F4C4.h"
+#include "gf_3d_render.h"
 #include "unk_020215A0.h"
 #include "unk_02022588.h"
 #include "demo/opening/gs_opening.naix"
@@ -169,7 +169,7 @@ void IntroMovie_Scene3_Init(IntroMovieOvyData *data, IntroMovieScene3Data *scene
     IntroMovie_RendererSetSurfaceCoords(data, 0, 0, 0, 512);
     IntroMovie_Scene3_LoadOBJGraphics(data, sceneData);
     IntroMovie_Scene3_CreateSprites(data, sceneData);
-    sceneData->_3dVramMan = GF_3DVramMan_Create(HEAP_ID_INTRO_MOVIE, 0, 1, 0, 4, IntroMovie_Scene3_3DVRamManInit);
+    sceneData->gf3dVramMan = GF_3DVramMan_Create(HEAP_ID_INTRO_MOVIE, 0, 1, 0, 4, IntroMovie_Scene3_3DVRamManInit);
     IntroMovie_Scene3_Load3dGfxData(sceneData);
     IntroMovie_Scene3_Show2DGfx(sceneData, bgConfig);
     sceneData->needFreeGfx = 1;
@@ -466,7 +466,7 @@ void IntroMovie_Scene3_Exit(IntroMovieOvyData *data, IntroMovieScene3Data *scene
             }
             FreeToHeap(sceneData->mapRender[i].resFileHeader);
         }
-        GF_3DVramMan_Delete(sceneData->_3dVramMan);
+        GF_3DVramMan_Delete(sceneData->gf3dVramMan);
         for (i = 0; i < 4; ++i) {
             FreeToHeap(sceneData->rivalGraphicSectionsRawData[i]);
         }
@@ -607,7 +607,7 @@ void IntroMovie_Scene3_LoadBGGraphics(BgConfig *bgConfig, IntroMovieScene3Data *
 
 void IntroMovie_Scene3_LoadOBJGraphics(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData) {
     IntroMovie_CreateSpriteResourceManagers(data, sIntroMovieScene3SpriteResCounts);
-    _2DGfxResMan **resMen = IntroMovie_GetSpriteResourceManagersArray(data);
+    GF_2DGfxResMan **resMen = IntroMovie_GetSpriteResourceManagersArray(data);
 
     sceneData->spriteResObjs[0][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(resMen[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000066_NCGR_lz, TRUE, 2, 2, HEAP_ID_INTRO_MOVIE);
     sceneData->spriteResObjs[0][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(resMen[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000065_NCLR, FALSE, 2, 2, 1, HEAP_ID_INTRO_MOVIE);
@@ -681,7 +681,7 @@ void IntroMovie_Scene3_Load3dGfxData(IntroMovieScene3Data *sceneData) {
     for (i = 0; i < 3; ++i) {
         NNSG3dResMdl *pMdl;
         sceneData->mapRender[i].resFileHeader = NARC_AllocAndReadWholeMember(narc, sMap3dResHeaderFileIds[i], HEAP_ID_INTRO_MOVIE);
-        sub_0201F51C(&sceneData->mapRender[i].renderObj, &pMdl, &sceneData->mapRender[i].resFileHeader);
+        GF3dRender_InitObjFromHeader(&sceneData->mapRender[i].renderObj, &pMdl, &sceneData->mapRender[i].resFileHeader);
         NNSG3dResTex *resTex = NNS_G3dGetTex(sceneData->mapRender[i].resFileHeader);
         NNS_G3dMdlUseGlbDiff(pMdl);
         NNS_G3dMdlUseGlbAmb(pMdl);
@@ -737,8 +737,8 @@ void IntroMovie_Scene3_Animate3DMap(IntroMovieScene3Data *sceneData) {
                 sceneData->mapRender[whichMap_u8].animObjs[i]->frame = frame;
             }
         }
-        Draw3dModel(&sceneData->mapRender[whichMap_u8].renderObj, &zeros, &iden33, &ones);
-        sub_02026E50(0, 1);
+        GF3dRender_DrawModel(&sceneData->mapRender[whichMap_u8].renderObj, &zeros, &iden33, &ones);
+        RequestSwap3DBuffers(GX_SORTMODE_AUTO, GX_BUFFERMODE_W);
     }
 }
 

@@ -4,7 +4,7 @@
 .public AllocFromHeap
 .public FreeToHeap
 .public GF_ExpHeap_FndInitAllocator
-.public Draw3dModel
+.public GF3dRender_DrawModel
 .public sub_0202068C
 .public sub_020206C8
 .public sub_020206E0

@@ -25,7 +25,7 @@ typedef enum NarcId
     NARC_itemtool_itemdata_item_data                        =  17,
     NARC_itemtool_itemdata_item_icon                        =  18,
     NARC_a_0_1_9                                            =  19,
-    NARC_a_0_2_0                                            =  20,
+    NARC_poketool_icongra_poke_icon                         =  20,
     NARC_a_0_2_1                                            =  21,
     NARC_a_0_2_2                                            =  22,
     NARC_a_0_2_3                                            =  23,

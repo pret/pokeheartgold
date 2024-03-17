@@ -83,7 +83,7 @@
 .public GfGfx_EngineBTogglePlanes
 .public GfGfx_BothDispOn
 .public GF_AssertFail
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
 .public Save_PlayerData_GetProfileAddr

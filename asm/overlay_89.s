@@ -898,7 +898,7 @@ ov89_02258FF4: ; 0x02258FF4
 	bl sub_0200D03C
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	pop {r4, pc}
 	thumb_func_end ov89_02258FF4
 
@@ -4086,7 +4086,7 @@ _0225A934:
 _0225A942:
 	ldr r0, [r5]
 	ldr r1, [r5, #0xc]
-	bl Bind3dModelSet
+	bl GF3dRender_BindModelSet
 _0225A94A:
 	mov r0, #1
 	add sp, #0xc

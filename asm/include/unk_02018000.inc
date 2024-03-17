@@ -27,9 +27,9 @@
 .public sub_020182E0
 .public sub_020182EC
 .public FreeToHeap
-.public Draw3dModel
-.public Bind3dModelSet
-.public AllocAndLoad3dTexResources
+.public GF3dRender_DrawModel
+.public GF3dRender_BindModelSet
+.public GF3dRender_AllocAndLoadTexResources
 .public GF_AssertFail
 .public NNS_G3dAnmObjInit
 .public NNS_G3dRenderObjInit

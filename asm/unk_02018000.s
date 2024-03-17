@@ -26,10 +26,10 @@ sub_0201804C: ; 0x0201804C
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl AllocAndLoad3dTexResources
+	bl GF3dRender_AllocAndLoadTexResources
 	ldr r0, [r4]
 	ldr r1, [r4, #0xc]
-	bl Bind3dModelSet
+	bl GF3dRender_BindModelSet
 	add r0, r5, #0
 	bl SysTask_Destroy
 	pop {r3, r4, r5, pc}
@@ -340,7 +340,7 @@ sub_020181EC: ; 0x020181EC
 	add r1, #0x54
 	add r2, sp, #0x24
 	add r3, r4, #0
-	bl Draw3dModel
+	bl GF3dRender_DrawModel
 _02018280:
 	add sp, #0x48
 	pop {r4, pc}
@@ -359,7 +359,7 @@ sub_02018288: ; 0x02018288
 	add r3, r0, #0
 	add r1, #0x54
 	add r3, #0x60
-	bl Draw3dModel
+	bl GF3dRender_DrawModel
 _0201829E:
 	pop {r3, pc}
 	thumb_func_end sub_02018288

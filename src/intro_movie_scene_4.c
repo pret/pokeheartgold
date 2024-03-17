@@ -446,7 +446,7 @@ void IntroMovie_Scene4_LoadSpriteGfx(IntroMovieOvyData *data, IntroMovieScene4Da
     };
     int sp18[3] = {1, 2, 3};  // _021EB5F8
     u8 i;
-    _2DGfxResMan **resMen;
+    GF_2DGfxResMan **resMen;
 
     IntroMovie_CreateSpriteResourceManagers(data, sIntroMovieScene4SpriteResCounts);
     resMen = IntroMovie_GetSpriteResourceManagersArray(data);
@@ -553,7 +553,7 @@ void IntroMovie_Scene4_3DMain(void) {
     Thunk_G3X_Reset();
     sub_0201543C();
     sub_02015460();
-    sub_02026E50(1, 0);
+    RequestSwap3DBuffers(GX_SORTMODE_MANUAL, GX_BUFFERMODE_Z);
 }
 
 void IntroMovie_Scene4_StartParticleEmitters(IntroMovieScene4Data *sceneData, int whichStarter) {

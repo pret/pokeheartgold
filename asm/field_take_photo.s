@@ -42,11 +42,11 @@ FieldSystem_TakePhoto: ; 0x0206A798
 	ldr r0, [r0]
 	strh r0, [r4, #0x36]
 	add r0, r5, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _0206A7FE
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	add r1, r4, #0
 	add r7, r0, #0
 	add r1, #0xcc
@@ -954,7 +954,7 @@ sub_0206AEC0: ; 0x0206AEC0
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r3, #0
-	bl FollowingPokemon_GetSpriteID
+	bl FollowMon_GetSpriteID
 	add r1, r0, #0
 	ldr r0, [sp, #0x20]
 	ldr r2, [sp, #0x18]
@@ -973,7 +973,7 @@ sub_0206AEC0: ; 0x0206AEC0
 	add r0, r4, #0
 	add r1, r5, #0
 	lsr r2, r2, #0x18
-	bl FollowPokeMapObjectSetParams
+	bl FollowMon_SetObjectParams
 	add r0, r4, #0
 	add sp, #8
 	pop {r4, r5, r6, pc}
@@ -2049,7 +2049,7 @@ _0206B794:
 	b _0206B824
 _0206B7A0:
 	add r0, r5, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _0206B814
 	ldr r0, [r5, #0x40]
@@ -2057,7 +2057,7 @@ _0206B7A0:
 	cmp r0, #1
 	beq _0206B814
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetMapObject

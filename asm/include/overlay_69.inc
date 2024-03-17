@@ -59,10 +59,10 @@
 .public RemoveWindow
 .public CopyWindowToVram
 .public FillWindowPixelRect
-.public sub_0201F51C
-.public Draw3dModel
-.public sub_0201F590
-.public sub_0201F63C
+.public GF3dRender_InitObjFromHeader
+.public GF3dRender_DrawModel
+.public GF3dRender_InitSimpleManager
+.public GF3dRender_DeleteSimpleManager
 .public GF_DegreeToSinCosIdxNoWrap
 .public ResetAllTextPrinters
 .public TextPrinterCheckActive
@@ -87,7 +87,7 @@
 .public String_New
 .public String_Delete
 .public Thunk_G3X_Reset
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay
 .public Options_GetFrame

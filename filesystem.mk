@@ -443,6 +443,7 @@ $(eval $(call arc_strip_name,files/fielddata/sodateya/kowaza_list.narc,files/a/2
 $(eval $(call arc_strip_name,files/a/2/5/2.$(buildname),files/a/2/5/2))
 $(eval $(call arc_strip_name,files/demo/opening/gs_opening.narc,files/a/2/6/2))
 $(eval $(call arc_strip_name,files/application/voltorb_flip.narc,files/a/2/6/4))
+$(eval $(call arc_strip_name,files/poketool/icongra/poke_icon/poke_icon.narc,files/a/0/2/0))
 
 $(DIFF_ARCS):
 	cp $< $@
@@ -473,6 +474,7 @@ include files/data/sound/sound_data.mk
 include files/data/gs_areawindow.mk
 include files/fielddata/encountdata/gs_enc_data.mk
 include files/itemtool/itemdata/item_data.mk
+include files/poketool/icongra/poke_icon/poke_icon.mk
 include files/poketool/personal/evo.mk
 include files/poketool/personal/growtbl.mk
 include files/poketool/pokegra/otherpoke.mk
@@ -492,6 +494,7 @@ include files/application/annon/puzzle_gra.mk
 include files/data/resdat.mk
 include files/demo/title/titledemo.mk
 include files/demo/opening/gs_opening.mk
+include files/poketool/personal/personal.mk
 
 $(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
 

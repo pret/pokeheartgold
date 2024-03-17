@@ -25,7 +25,7 @@ void IntroMovie_DestroySpriteResourceManagers(IntroMovieOvyData *data) {
     }
 }
 
-_2DGfxResMan **IntroMovie_GetSpriteResourceManagersArray(IntroMovieOvyData *data) {
+GF_2DGfxResMan **IntroMovie_GetSpriteResourceManagersArray(IntroMovieOvyData *data) {
     return data->spriteResManagers;
 }
 

@@ -40,9 +40,9 @@
 .public MapObject_AreBitsSetForMovementScriptInit
 .public MapObject_ClearHeldMovementIfActive
 .public sub_02068B48
-.public FollowingPokemon_GetMapObject
-.public FollowingPokemon_IsActive
-.public FieldSystemUnkSub108_GetMonMood
+.public FollowMon_GetMapObject
+.public FollowMon_IsActive
+.public FieldSystem_UnkSub108_GetMonMood
 .public GetMonData
 .public SaveArray_Party_Get
 .public FieldSystem_GetGearPhoneRingManager

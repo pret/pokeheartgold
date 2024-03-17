@@ -51,7 +51,7 @@ void NitroMain(void) {
     InitKeypadAndTouchpad();
     sub_0201A4B0(0);
     PM_GetBackLight(&gBacklightTop, NULL);
-    sub_02026E30();
+    Init3DBufferSwapRequestState();
     GF_InitRTCWork();
     Main_ResetOverlayManager();
     FontWork_Init();
@@ -115,7 +115,7 @@ void NitroMain(void) {
         }
         GF_RTC_UpdateOnFrame();
         sub_020183B0();
-        sub_02026E60();
+        Handle3DBufferSwapRequest();
         SysTaskQueue_RunTasks(gSystem.printTaskQueue);
         OS_WaitIrq(TRUE, OS_IE_VBLANK);
         gSystem.vblankCounter++;

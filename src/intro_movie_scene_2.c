@@ -299,7 +299,7 @@ void IntroMovie_Scene2_LoadBgGfx(BgConfig *bgConfig) {
 
 void IntroMovie_Scene2_LoadSpriteGfx(IntroMovieOvyData *data, IntroMovieScene2Data *sceneData) {
     IntroMovie_CreateSpriteResourceManagers(data, sIntroMovieScene2SpriteResCounts);
-    _2DGfxResMan **resMen = IntroMovie_GetSpriteResourceManagersArray(data);
+    GF_2DGfxResMan **resMen = IntroMovie_GetSpriteResourceManagersArray(data);
     sceneData->spriteGfxRes[0][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(resMen[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000078_NCGR_lz, TRUE, 0, 3, HEAP_ID_INTRO_MOVIE);
     sceneData->spriteGfxRes[0][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(resMen[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000077_NCLR, FALSE, 0, 3, 1, HEAP_ID_INTRO_MOVIE);
     sceneData->spriteGfxRes[0][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(resMen[GF_GFX_RES_TYPE_CELL], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000080_NCER_lz, TRUE, 0, GF_GFX_RES_TYPE_CELL, HEAP_ID_INTRO_MOVIE);

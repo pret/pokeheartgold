@@ -1,6 +1,7 @@
 #ifndef NITRO_GX_G3X_H_
 #define NITRO_GX_G3X_H_
 
+#include <nitro/types.h>
 #include <nitro/hw/io_reg.h>
 #include <nitro/gx/gxcommon.h>
 

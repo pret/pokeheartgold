@@ -18,7 +18,7 @@
 #include "unk_020215A0.h"
 #include "unk_02022588.h"
 #include "unk_02026E30.h"
-#include "unk_0201F4C4.h"
+#include "gf_3d_render.h"
 #include "unk_02009D48.h"
 #include "render_window.h"
 #include "touchscreen.h"
@@ -134,21 +134,21 @@ struct ChooseStarterAnm {
 };
 
 struct StarterChooseMonObjResPtrs {
-    struct _2DGfxResObj *charResObj;
-    struct _2DGfxResObj *plttResObj;
-    struct _2DGfxResObj *cellResObj;
-    struct _2DGfxResObj *animResObj;
-    struct _2DGfxResObj *multiCellResObj;
-    struct _2DGfxResObj *multiCellAnmResObj;
+    GF_2DGfxResObj *charResObj;
+    GF_2DGfxResObj *plttResObj;
+    GF_2DGfxResObj *cellResObj;
+    GF_2DGfxResObj *animResObj;
+    GF_2DGfxResObj *multiCellResObj;
+    GF_2DGfxResObj *multiCellAnmResObj;
 };
 
 struct StarterChooseMonSpriteData {
-    struct _2DGfxResMan *charResMan;
-    struct _2DGfxResMan *plttResMan;
-    struct _2DGfxResMan *cellResMan;
-    struct _2DGfxResMan *animResMan;
-    struct _2DGfxResMan *multiCellResMan; //unused
-    struct _2DGfxResMan *multiCellAnmResMan; //unused
+    GF_2DGfxResMan *charResMan;
+    GF_2DGfxResMan *plttResMan;
+    GF_2DGfxResMan *cellResMan;
+    GF_2DGfxResMan *animResMan;
+    GF_2DGfxResMan *multiCellResMan; //unused
+    GF_2DGfxResMan *multiCellAnmResMan; //unused
     struct StarterChooseMonObjResPtrs objs[3];
     void *charDatas[3];
     void *plttDatas[3];
@@ -238,7 +238,7 @@ static int getInput(struct ChooseStarterAppWork *work);
 static int getRotateDirection(int a0, u8 a1, int a2);
 static int getTappedBallId(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 radius);
 static void createMonSprites(struct ChooseStarterAppWork *work);
-static void loadOneMonObj(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx);
+static void loadOneMonObj(GF_2DGfxResMan *charResMan, GF_2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx);
 static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData, u8 idx, HeapID heapId);
 static void setAllButSelectedMonSpritesInvisible(struct ChooseStarterAppWork *work);
 static void setAllMonSpritesInvisible(struct StarterChooseMonSpriteData *a0);
@@ -634,7 +634,7 @@ static void init3dEngine(struct ChooseStarterAppWork *work) {
         work->edgeColorTable[i] = GX_RGB(4, 4, 4);
     }
     G3X_SetEdgeColorTable(work->edgeColorTable);
-    G3X_SetClearColor(GX_RGB(31, 31, 16), 0, 0x7FFF, 0x3F, FALSE);
+    G3X_SetClearColor(GX_RGB(31, 31, 16), 0, GF_GX_CLEARCOLORDEPTH_MAX, 0x3F, FALSE);
     NNS_G3dGlbLightVector(GX_LIGHTID_0, 0, -FX16_ONE, 0);
     NNS_G3dGlbLightColor(GX_LIGHTID_0, RGB_WHITE);
     NNS_G3dGlbMaterialColorDiffAmb(RGB_WHITE, RGB_WHITE, FALSE);
@@ -648,7 +648,7 @@ static void update3dObjectsMain(struct ChooseStarterAppWork *work) {
     Camera_PushLookAtToNNSGlb();
     updateBaseAndBallsRotation(work);
     NNS_G3dGePopMtx(1);
-    sub_02026E50(0, 0);
+    RequestSwap3DBuffers(GX_SORTMODE_AUTO, GX_BUFFERMODE_Z);
 }
 
 static inline void id_roty_mtx33(MtxFx33 *mtx, u16 index) {
@@ -668,7 +668,7 @@ static void updateBaseAndBallsRotation(struct ChooseStarterAppWork *work) {
             MTX_Identity33(&rotMtx);
             MTX_RotY33(&tmpMtx, FX_SinIdx(rnd->yRotAngle), FX_CosIdx(rnd->yRotAngle));
             MTX_Concat33(&tmpMtx, &rotMtx, &rotMtx);
-            Draw3dModel(&rnd->obj, &rnd->translVec, &rotMtx, &scaleVec);
+            GF3dRender_DrawModel(&rnd->obj, &rnd->translVec, &rotMtx, &scaleVec);
         }
     }
 
@@ -839,11 +839,11 @@ static void load3dModelResourceFromNarc(struct ChooseStarter3dRes *res, int file
     res->mdlSet = NNS_G3dGetMdlSet(res->header);
     res->mdl = NNS_G3dGetMdlByIdx(res->mdlSet, 0);
     res->tex = NNS_G3dGetTex(res->header);
-    AllocAndLoad3dTexResources(res->tex);
+    GF3dRender_AllocAndLoadTexResources(res->tex);
 }
 
 static void init3dModelRender(struct ChooseStarterRnd *rnd, struct ChooseStarter3dRes *res) {
-    Bind3dModelSet(res->header, res->tex);
+    GF3dRender_BindModelSet(res->header, res->tex);
     NNS_G3dRenderObjInit(&rnd->obj, res->mdl);
 }
 
@@ -1199,9 +1199,9 @@ static void createMonSprites(struct ChooseStarterAppWork *work) {
     NARC_Delete(narc);
 }
 
-static void loadOneMonObj(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx) {
-    struct _2DGfxResObj *charResObj = Get2DGfxResObjById(charResMan, idx);
-    struct _2DGfxResObj *plttResObj = Get2DGfxResObjById(plttResMan, idx);
+static void loadOneMonObj(GF_2DGfxResMan *charResMan, GF_2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx) {
+    GF_2DGfxResObj *charResObj = Get2DGfxResObjById(charResMan, idx);
+    GF_2DGfxResObj *plttResObj = Get2DGfxResObjById(plttResMan, idx);
     NNSG2dImageProxy *charProxy;
     const NNSG2dImagePaletteProxy *plttProxy;
     u32 imageloc;

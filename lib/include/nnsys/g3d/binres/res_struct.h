@@ -1,8 +1,8 @@
 #ifndef NNSYS_G3D_BINRES_RES_STRUCT_H_
 #define NNSYS_G3D_BINRES_RES_STRUCT_H_
 
-#include <nitro/fx/fx.h>
-#include <nnsys/gfd.h>
+#include <nitro.h>
+#include <nnsys/gfd/VramManager/gfd_TexVramMan_Types.h>
 
 typedef struct NNSG3dResDataBlockHeader_ {
     union {
@@ -29,6 +29,10 @@ typedef enum {
     NNS_G3D_MATFLAG_EFFECTMTX        = 0x2000
 } NNSG3dMatFlag;
 
+typedef enum {
+    NNS_G3D_RESTEX_LOADED = 1
+} NNSG3dResTexFlag;
+
 typedef struct NNSG3dResTexInfo_ {
     NNSGfdTexKey vramKey;
     u16 sizeTex;
@@ -47,6 +51,12 @@ typedef struct NNSG3dResTex4x4Info_ {
     u32 ofsTex;
     u32 ofsTexPlttIdx;
 } NNSG3dResTex4x4Info;
+
+typedef enum {
+    NNS_G3D_RESPLTT_LOADED   = 0x0001,
+    NNS_G3D_RESPLTT_USEPLTT4 = 0x8000
+} NNSG3dResPlttFlag;
+
 
 typedef struct NNSG3dResPlttInfo_ {
     NNSGfdTexKey vramKey;
