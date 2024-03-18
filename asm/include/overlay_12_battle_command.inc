@@ -300,8 +300,8 @@
 .public BtlCmd_CalcWeatherBallParams
 .public BtlCmd_TryPursuit
 .public BtlCmd_ApplyTypeEffectiveness
-.public BtlCmd_SetPokemonEncounter44
-.public BtlCmd_SetPokemonEncounter45
+.public BtlCmd_IfTurnFlag
+.public BtlCmd_SetTurnFlag
 .public BtlCmd_CalcGyroBallPower
 .public BtlCmd_TryMetalBurst
 .public BtlCmd_CalcPaybackPower

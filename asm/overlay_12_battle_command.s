@@ -4704,8 +4704,8 @@ sBattleScriptCommandTable: ; 0x0226C6C8
 	.word BtlCmd_CalcWeatherBallParams
 	.word BtlCmd_TryPursuit
 	.word BtlCmd_ApplyTypeEffectiveness
-	.word BtlCmd_SetPokemonEncounter44
-	.word BtlCmd_SetPokemonEncounter45
+	.word BtlCmd_IfTurnFlag
+	.word BtlCmd_SetTurnFlag
 	.word BtlCmd_CalcGyroBallPower
 	.word BtlCmd_TryMetalBurst
 	.word BtlCmd_CalcPaybackPower
