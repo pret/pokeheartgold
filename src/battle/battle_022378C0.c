@@ -44,9 +44,8 @@ BOOL Battle_Run(OVY_MANAGER *man, int *state) {
 
     switch (*state) {
     case BSTATE_INIT:
-        CreateHeap(HEAP_ID_3, HEAP_ID_BATTLE, 0xB0000);
-
-        if ((setup->battleType & BATTLE_TYPE_LINK) && !(setup->battleSpecial & BATTLE_SPECIAL_RECORDED)) {
+        CreateHeap(HEAP_ID_3, HEAP_ID_BATTLE, 0xB0000);     
+        if ((setup->battleType & BATTLE_TYPE_LINK) && !(setup->battleSpecial & BATTLE_SPECIAL_RECORDING)) {
             *state = BSTATE_LINK_INIT;
         } else {
             *state = BSTATE_UNK_A_INIT;

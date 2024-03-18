@@ -302,7 +302,7 @@
 #define MON_DATA_TOUGH_RIBBON_ULTRA             141
 #define MON_DATA_TOUGH_RIBBON_MASTER            142
 #define MON_DATA_SINNOH_RIBBON_143              143
-#define MON_DATA_OT_NAME                        144 // ???
+#define MON_DATA_OT_NAME                        144
 #define MON_DATA_OT_NAME_2                      145
 #define MON_DATA_EGG_MET_YEAR                   146
 #define MON_DATA_EGG_MET_MONTH                  147
@@ -388,43 +388,46 @@
 #define FRIENDSHIP_TIER_NUM               3
 #define FRIENDSHIP_MAX                  255
 
-#ifndef PM_ASM
-typedef enum BaseStat {
-    BASE_HP = 0,
-    BASE_ATK,
-    BASE_DEF,
-    BASE_SPEED,
-    BASE_SPATK,
-    BASE_SPDEF, //5
-    BASE_TYPE1,
-    BASE_TYPE2,
-    BASE_CATCH_RATE,
-    BASE_EXP_YIELD,
-    BASE_HP_YIELD, //10
-    BASE_ATK_YIELD,
-    BASE_DEF_YIELD,
-    BASE_SPEED_YIELD,
-    BASE_SPATK_YIELD,
-    BASE_SPDEF_YIELD,
-    BASE_ITEM_1,
-    BASE_ITEM_2,
-    BASE_GENDER_RATIO,
-    BASE_EGG_CYCLES,
-    BASE_FRIENDSHIP,
-    BASE_GROWTH_RATE,
-    BASE_EGG_GROUP_1,
-    BASE_EGG_GROUP_2,
-    BASE_ABILITY_1,
-    BASE_ABILITY_2,
-    BASE_GREAT_MARSH_RATE,
-    BASE_COLOR,
-    BASE_FLIP,
-    BASE_TMHM_1,
-    BASE_TMHM_2,
-    BASE_TMHM_3,
-    BASE_TMHM_4,
-} BaseStat;
+#define BASE_HP                 0
+#define BASE_ATK                1
+#define BASE_DEF                2
+#define BASE_SPEED              3
+#define BASE_SPATK              4
+#define BASE_SPDEF              5
+#define BASE_TYPE1              6
+#define BASE_TYPE2              7
+#define BASE_CATCH_RATE         8
+#define BASE_EXP_YIELD          9
+#define BASE_HP_YIELD          10
+#define BASE_ATK_YIELD         11
+#define BASE_DEF_YIELD         12
+#define BASE_SPEED_YIELD       13
+#define BASE_SPATK_YIELD       14
+#define BASE_SPDEF_YIELD       15
+#define BASE_ITEM_1            16
+#define BASE_ITEM_2            17
+#define BASE_GENDER_RATIO      18
+#define BASE_EGG_CYCLES        19
+#define BASE_FRIENDSHIP        20
+#define BASE_GROWTH_RATE       21
+#define BASE_EGG_GROUP_1       22
+#define BASE_EGG_GROUP_2       23
+#define BASE_ABILITY_1         24
+#define BASE_ABILITY_2         25
+#define BASE_GREAT_MARSH_RATE  26
+#define BASE_COLOR             27
+#define BASE_FLIP              28
+#define BASE_TMHM_1            29
+#define BASE_TMHM_2            30
+#define BASE_TMHM_3            31
+#define BASE_TMHM_4            32
 
+//Forms used in asm files
+#define SHAYMIN_LAND            0
+#define SHAYMIN_SKY             1
+#define SHAYMIN_FORM_MAX        2
+
+#ifndef PM_ASM
 typedef enum {
     EGG = 0,
     EVENT = 0,
@@ -494,10 +497,6 @@ typedef enum {
     ROTOM_FAN = 4,
     ROTOM_MOW = 5,
     ROTOM_FORM_MAX = 6,
-
-    SHAYMIN_LAND = 0,
-    SHAYMIN_SKY = 1,
-    SHAYMIN_FORM_MAX = 2,
 
     SHELLOS_WEST = 0,
     SHELLOS_EAST = 1,

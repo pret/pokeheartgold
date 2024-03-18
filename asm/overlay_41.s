@@ -509,7 +509,7 @@ _02246234:
 _02246240:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	add r0, r4, #0
 	bl ov41_02246B5C
 	pop {r4, pc}
@@ -12462,7 +12462,7 @@ AccessoryPortrait_Main: ; 0x0224BACC
 	bl ov41_0224B554
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	add r5, #0x14
 	add r0, r5, #0
 	bl ov41_022466C8

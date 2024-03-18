@@ -2084,7 +2084,7 @@ ov85_021E67F4: ; 0x021E67F4
 	bl ov85_021E782C
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	ldr r0, _021E6850 ; =0x00000D98
 	ldr r0, [r4, r0]
 	bl sub_0200D020

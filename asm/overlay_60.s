@@ -6055,7 +6055,7 @@ _021E9BCC:
 	bl GF3dRender_DrawModel
 	mov r0, #0
 	mov r1, #1
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 _021E9BEC:
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
@@ -7580,7 +7580,7 @@ ov60_021EA8B0: ; 0x021EA8B0
 	bl sub_02015460
 	mov r0, #1
 	mov r1, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	pop {r3, pc}
 	thumb_func_end ov60_021EA8B0
 

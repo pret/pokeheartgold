@@ -89,7 +89,7 @@ Static main
 	Object src/pm_string.o
 	Object asm/unk_02026C44.o
 	Object asm/unk_02026DE0.o
-	Object asm/unk_02026E30.o
+	Object src/unk_02026E30.o
 	Object asm/unk_02026E84.o
 	Object src/gf_3d_vramman.o
 	Object asm/unk_02027010.o
@@ -115,7 +115,7 @@ Static main
 	Object src/seal_case.o
 	Object src/igt.o
 	Object src/sav_chatot.o
-	Object asm/unk_0202CF1C.o
+	Object asm/game_stats.o
 	Object asm/unk_0202D230.o
 	Object src/save_special_ribbons.o
 	Object src/roamer.o
@@ -576,7 +576,6 @@ Overlay OVY_12
     Object src/battle/battle_command.o
     Object asm/overlay_12_battle_command.o
     Object src/battle/battle_controller_player.o
-    Object asm/overlay_12_battle_controller_player.o
     Object src/battle/overlay_12_0224E4FC.o
     Object asm/overlay_12_battle_controller_opponent.o
     Object src/battle/battle_02261FD4.o

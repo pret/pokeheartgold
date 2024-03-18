@@ -22,7 +22,7 @@
 .public Camera_SetPerspectiveClippingPlane
 .public GF_AssertFail
 .public Thunk_G3X_Reset
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public GF_3DVramMan_Create
 .public sub_020773AC
 .public sub_020773D4

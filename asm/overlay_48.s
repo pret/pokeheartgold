@@ -1091,7 +1091,7 @@ ov48_02259050: ; 0x02259050
 	bl ov48_022594D0
 	mov r0, #0
 	mov r1, #1
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	pop {r4, pc}
 	nop
 _0225908C: .word 0x0000C3CC

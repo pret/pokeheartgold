@@ -1433,7 +1433,7 @@ _0225D18C:
 	bl sub_0200D03C
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	ldr r1, [r4, #0x2c]
 	mov r0, #0x75
 	bl sub_020399FC
