@@ -14,16 +14,16 @@ enum IntroScene5State {
     INTRO_SCENE5_WAIT_FADE_OUT,
 };
 
-void IntroMovie_Scene5_VBlankCB(void *pVoid);
-void IntroMovie_Scene5_Init(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData);
-BOOL IntroMovie_Scene5_Main(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData, int totalFrames);
-void IntroMovie_Scene5_Exit(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData);
-void IntroMovie_Scene5_InitBgs(IntroMovieOvyData *data);
-void InroMovie_Scene5_LoadBgGfx(BgConfig *bgConfig, IntroMovieScene5Data *sceneData);
-void IntroMovie_Scene5_EnableBgLayers(IntroMovieScene5Data *sceneData, BgConfig *bgConfig);
-void IntroMovie_Scene5_LoadSpriteGfx(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData);
-void IntroMovie_Scene5_DestroySprites(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData);
-void IntroMovie_Scene5_CreateSprites(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData);
+static void IntroMovie_Scene5_VBlankCB(void *pVoid);
+static void IntroMovie_Scene5_Init(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData);
+static BOOL IntroMovie_Scene5_Main(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData, int totalFrames);
+static void IntroMovie_Scene5_Exit(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData);
+static void IntroMovie_Scene5_InitBgs(IntroMovieOvyData *data);
+static void InroMovie_Scene5_LoadBgGfx(BgConfig *bgConfig, IntroMovieScene5Data *sceneData);
+static void IntroMovie_Scene5_EnableBgLayers(IntroMovieScene5Data *sceneData, BgConfig *bgConfig);
+static void IntroMovie_Scene5_LoadSpriteGfx(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData);
+static void IntroMovie_Scene5_DestroySprites(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData);
+static void IntroMovie_Scene5_CreateSprites(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData);
 
 BOOL IntroMovie_Scene5(IntroMovieOvyData *data, void *pVoid) {
     IntroMovieScene5Data *sceneData = (IntroMovieScene5Data *)pVoid;
@@ -50,14 +50,14 @@ BOOL IntroMovie_Scene5(IntroMovieOvyData *data, void *pVoid) {
     return FALSE;
 }
 
-void IntroMovie_Scene5_VBlankCB(void *pVoid) {
+static void IntroMovie_Scene5_VBlankCB(void *pVoid) {
     IntroMovieOvyData *data = (IntroMovieOvyData *)pVoid;
 
     DoScheduledBgGpuUpdates(IntroMovie_GetBgConfig(data));
     OamManager_ApplyAndResetBuffers();
 }
 
-void IntroMovie_Scene5_Init(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData) {
+static void IntroMovie_Scene5_Init(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     gSystem.screensFlipped = TRUE;
     GfGfx_SwapDisplay();
@@ -80,7 +80,7 @@ void IntroMovie_Scene5_Init(IntroMovieOvyData *data, IntroMovieScene5Data *scene
 #define BG_SCROLL_SPEED  0x40
 #endif
 
-BOOL IntroMovie_Scene5_Main(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData, int totalFrames) {
+static BOOL IntroMovie_Scene5_Main(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData, int totalFrames) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     IntroMovieBgLinearAnims *animCnt = IntroMovie_GetBgLinearAnimsController(data);
     u8 stepTimer = IntroMovie_GetSceneStepTimer(data);
@@ -119,7 +119,7 @@ BOOL IntroMovie_Scene5_Main(IntroMovieOvyData *data, IntroMovieScene5Data *scene
 
 #undef BG_SCROLL_SPEED
 
-void IntroMovie_Scene5_Exit(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData) {
+static void IntroMovie_Scene5_Exit(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     Main_SetVBlankIntrCB(NULL, NULL);
     if (sceneData->needFreeGfx) {
@@ -132,7 +132,7 @@ void IntroMovie_Scene5_Exit(IntroMovieOvyData *data, IntroMovieScene5Data *scene
     }
 }
 
-void IntroMovie_Scene5_InitBgs(IntroMovieOvyData *data) {
+static void IntroMovie_Scene5_InitBgs(IntroMovieOvyData *data) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
 
     {
@@ -214,7 +214,7 @@ void IntroMovie_Scene5_InitBgs(IntroMovieOvyData *data) {
     }
 }
 
-void InroMovie_Scene5_LoadBgGfx(BgConfig *bgConfig, IntroMovieScene5Data *sceneData) {
+static void InroMovie_Scene5_LoadBgGfx(BgConfig *bgConfig, IntroMovieScene5Data *sceneData) {
     GfGfxLoader_LoadCharData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000059_NCGR_lz, bgConfig, GF_BG_LYR_SUB_1, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
     GfGfxLoader_LoadCharData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000060_NCGR_lz, bgConfig, GF_BG_LYR_MAIN_1, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
     GfGfxLoader_LoadScrnData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000063_NSCR_lz, bgConfig, GF_BG_LYR_SUB_1, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
@@ -227,13 +227,13 @@ void InroMovie_Scene5_LoadBgGfx(BgConfig *bgConfig, IntroMovieScene5Data *sceneD
     GfGfx_BothDispOn();
 }
 
-void IntroMovie_Scene5_EnableBgLayers(IntroMovieScene5Data *sceneData, BgConfig *bgConfig) {
+static void IntroMovie_Scene5_EnableBgLayers(IntroMovieScene5Data *sceneData, BgConfig *bgConfig) {
     BgSetPosTextAndCommit(bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, 0xA0);
     BgSetPosTextAndCommit(bgConfig, GF_BG_LYR_SUB_2, BG_POS_OP_SET_Y, 0xA0);
 }
 
-void IntroMovie_Scene5_LoadSpriteGfx(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData) {}
+static void IntroMovie_Scene5_LoadSpriteGfx(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData) {}
 
-void IntroMovie_Scene5_DestroySprites(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData) {}
+static void IntroMovie_Scene5_DestroySprites(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData) {}
 
-void IntroMovie_Scene5_CreateSprites(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData) {}
+static void IntroMovie_Scene5_CreateSprites(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData) {}
