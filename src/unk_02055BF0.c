@@ -23,6 +23,7 @@
 #include "overlay_01_021FB4C0.h"
 #include "overlay_01_022053EC.h"
 #include "overlay_01_021F4704.h"
+#include "overlay_01_021F1AFC.h"
 #include "unk_02055244.h"
 #include "constants/sndseq.h"
 
