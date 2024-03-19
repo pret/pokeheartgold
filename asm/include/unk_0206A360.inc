@@ -32,8 +32,8 @@
 .public FollowMon_GetMapObject
 .public sub_02069DC8
 .public FollowMon_IsActive
-.public sub_0206A360
-.public sub_0206A388
+.public MapPreviewImage_GetIndex
+.public MapPreviewImage_BeginShowImage
 .public G2x_SetBlendAlpha_
 .public gSystem
 .public NNS_G3dGlb
