@@ -17,6 +17,12 @@
 #include "unk_02022588.h"
 #include "unk_02023694.h"
 
+enum IntroMovieOverlayState {
+    INTRO_MOVIE_INIT,
+    INTRO_MOVIE_RUN,
+    INTRO_MOVIE_DONE
+};
+
 BOOL IntroMovie_Init(OVY_MANAGER *man, int *state);
 BOOL IntroMovie_Main(OVY_MANAGER *man, int *state);
 BOOL IntroMovie_Exit(OVY_MANAGER *man, int *state);
@@ -77,12 +83,12 @@ BOOL IntroMovie_Main(OVY_MANAGER *man, int *state) {
     }
 
     switch (*state) {
-    case 0:
+    case INTRO_MOVIE_INIT:
         data->scene1Data.skipAllowedPtr = &data->skipAllowed;
         sub_02004EC4(2, SEQ_GS_TITLE, 1);
         ++(*state);
         break;
-    case 1:
+    case INTRO_MOVIE_RUN:
         if (sIntroMovieSceneFuncs[data->sceneNumber](data, IntroMovie_GetSceneDataPtr(data))) {
             ++data->sceneNumber;
             data->sceneStep = 0;
@@ -94,7 +100,7 @@ BOOL IntroMovie_Main(OVY_MANAGER *man, int *state) {
             ++data->sceneTimer;
         }
         break;
-    case 2:
+    case INTRO_MOVIE_DONE:
         return TRUE;
     default:
         GF_ASSERT(FALSE);

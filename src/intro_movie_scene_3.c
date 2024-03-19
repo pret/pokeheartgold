@@ -132,16 +132,16 @@ BOOL IntroMovie_Scene3(IntroMovieOvyData *data, void *pVoid) {
     }
 
     switch (sceneData->state) {
-    case 0:
+    case INTRO_MOVIE_SCENE_INIT:
         IntroMovie_Scene3_Init(data, sceneData);
         ++sceneData->state;
         break;
-    case 1:
+    case INTRO_MOVIE_SCENE_RUN:
         if (IntroMovie_Scene3_Main(data, sceneData, IntroMovie_GetTotalFrameCount(data))) {
             ++sceneData->state;
         }
         break;
-    case 2:
+    case INTRO_MOVIE_SCENE_CLEANUP:
         IntroMovie_Scene3_Exit(data, sceneData);
         return TRUE;
     }
@@ -186,9 +186,9 @@ void IntroMovie_Scene3_Show2DGfx(IntroMovieScene3Data *sceneData, BgConfig *bgCo
 
 BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData, int totalFrames) {
     u8 stepTimer;
-    BgConfig *bgConfig = IntroMovie_GetBgConfig(data);  // r7
-    IntroMovieBgLinearAnims *bgAnimCnt = IntroMovie_GetBgLinearAnimsController(data);  // r4
-    stepTimer = IntroMovie_GetSceneStepTimer(data);  // sp10
+    BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
+    IntroMovieBgLinearAnims *bgAnimCnt = IntroMovie_GetBgLinearAnimsController(data);
+    stepTimer = IntroMovie_GetSceneStepTimer(data);
     IntroMovie_Scene3_Animate3DMap(sceneData);
     switch (IntroMovie_GetSceneStep(data)) {
     case 0:  // Show New Bark

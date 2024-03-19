@@ -42,7 +42,7 @@ static inline void G2_SetWndOutsidePlane(int wnd, BOOL effect) {
     tmp = ((reg_G2_WINOUT & ~REG_G2_WINOUT_WINOUT_MASK) | ((u32)wnd << REG_G2_WINOUT_WINOUT_SHIFT));
 
     if (effect) {
-        tmp |= (0x20 << REG_G2_WINOUT_WINOUT_SHIFT);    // EFCT
+        tmp |= (0x20 << REG_G2_WINOUT_WINOUT_SHIFT);
     }
 
     reg_G2_WINOUT = (u16)tmp;
@@ -134,7 +134,7 @@ static inline void G2_SetWnd0InsidePlane(int wnd, BOOL effect) {
     tmp = ((reg_G2_WININ & ~REG_G2_WININ_WIN0IN_MASK) | ((u32)wnd << REG_G2_WININ_WIN0IN_SHIFT));
 
     if (effect) {
-        tmp |= (0x20 << REG_G2_WININ_WIN0IN_SHIFT);     // EFCT
+        tmp |= (0x20 << REG_G2_WININ_WIN0IN_SHIFT);
     }
 
     reg_G2_WININ = (u16)tmp;
@@ -146,7 +146,7 @@ static inline void G2_SetWnd1InsidePlane(int wnd, BOOL effect) {
     tmp = ((reg_G2_WININ & ~REG_G2_WININ_WIN1IN_MASK) | ((u32)wnd << REG_G2_WININ_WIN1IN_SHIFT));
 
     if (effect) {
-        tmp |= (0x20 << REG_G2_WININ_WIN1IN_SHIFT);     // EFCT
+        tmp |= (0x20 << REG_G2_WININ_WIN1IN_SHIFT);
     }
 
     reg_G2_WININ = (u16)tmp;
@@ -159,7 +159,7 @@ static inline void G2S_SetWnd0InsidePlane(int wnd, BOOL effect) {
            ((u32)wnd << REG_G2S_DB_WININ_WIN0IN_SHIFT));
 
     if (effect) {
-        tmp |= (0x20 << REG_G2S_DB_WININ_WIN0IN_SHIFT); // EFCT
+        tmp |= (0x20 << REG_G2S_DB_WININ_WIN0IN_SHIFT);
     }
 
     reg_G2S_DB_WININ = (u16)tmp;
@@ -171,7 +171,7 @@ static inline void G2S_SetWnd1InsidePlane(int wnd, BOOL effect) {
     tmp = ((reg_G2S_DB_WININ & ~REG_G2S_DB_WININ_WIN1IN_MASK) | ((u32)wnd << REG_G2S_DB_WININ_WIN1IN_SHIFT));
 
     if (effect) {
-        tmp |= (0x20 << REG_G2S_DB_WININ_WIN1IN_SHIFT);     // EFCT
+        tmp |= (0x20 << REG_G2S_DB_WININ_WIN1IN_SHIFT);
     }
 
     reg_G2S_DB_WININ = (u16)tmp;
@@ -184,7 +184,7 @@ static inline void G2S_SetWndOutsidePlane(int wnd, BOOL effect) {
            ((u32)wnd << REG_G2S_DB_WINOUT_WINOUT_SHIFT));
 
     if (effect) {
-        tmp |= (0x20 << REG_G2S_DB_WINOUT_WINOUT_SHIFT);        // EFCT
+        tmp |= (0x20 << REG_G2S_DB_WINOUT_WINOUT_SHIFT);
     }
 
     reg_G2S_DB_WINOUT = (u16)tmp;

@@ -11,6 +11,17 @@
 #include "unk_02022588.h"
 #include "demo/opening/gs_opening.naix"
 
+enum IntroScene2State {
+    INTRO_SCENE2_START_FLYIN,
+    INTRO_SCENE2_FLYIN,
+    INTRO_SCENE2_START_SLOW_PAN_ETHAN,
+    INTRO_SCENE2_SLOW_PAN_ETHAN,
+    INTRO_SCENE2_FAST_PAN_TO_LYRA,
+    INTRO_SCENE2_SLOW_PAN_LYRA,
+    INTRO_SCENE2_CIRCLE_WIPE_OUT,
+    INTRO_SCENE2_END,
+};
+
 void IntroMovie_Scene2_VBlankCB(void *pVoid);
 void IntroMovie_Scene2_Init(IntroMovieOvyData *data, IntroMovieScene2Data *sceneData);
 BOOL IntroMovie_Scene2_Main(IntroMovieOvyData *data, IntroMovieScene2Data *sceneData, int a2);
@@ -48,16 +59,16 @@ BOOL IntroMovie_Scene2(IntroMovieOvyData *data, void *pVoid) {
     }
 
     switch (sceneData->state) {
-    case 0:
+    case INTRO_MOVIE_SCENE_INIT:
         IntroMovie_Scene2_Init(data, sceneData);
         ++sceneData->state;
         break;
-    case 1:
+    case INTRO_MOVIE_SCENE_RUN:
         if (IntroMovie_Scene2_Main(data, sceneData, IntroMovie_GetTotalFrameCount(data))) {
             ++sceneData->state;
         }
         break;
-    case 2:
+    case INTRO_MOVIE_SCENE_CLEANUP:
         IntroMovie_Scene2_Exit(data, sceneData);
         return TRUE;
     }
@@ -103,12 +114,12 @@ BOOL IntroMovie_Scene2_Main(IntroMovieOvyData *data, IntroMovieScene2Data *scene
     IntroMovieBgLinearAnims *bgAnimCnt = IntroMovie_GetBgLinearAnimsController(data);
     u8 stepTimer = IntroMovie_GetSceneStepTimer(data);
     switch (IntroMovie_GetSceneStep(data)) {
-    case 0:
+    case INTRO_SCENE2_START_FLYIN:
         BeginNormalPaletteFade(0, 1, 1, RGB_WHITE, 3, 1, HEAP_ID_INTRO_MOVIE);
         sceneData->flowerIndex = 0;
         IntroMovie_AdvanceSceneStep(data);
         break;
-    case 1:
+    case INTRO_SCENE2_FLYIN:
         if (sceneData->flowerIndex < NELEMS(sIntroMovie_Scene2_FlowerSpriteAppearTiming) && sIntroMovie_Scene2_FlowerSpriteAppearTiming[sceneData->flowerIndex] == stepTimer) {
             IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->flowerSprites[sceneData->flowerIndex], TRUE);
             ++sceneData->flowerIndex;
@@ -122,7 +133,7 @@ BOOL IntroMovie_Scene2_Main(IntroMovieOvyData *data, IntroMovieScene2Data *scene
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 2:
+    case INTRO_SCENE2_START_SLOW_PAN_ETHAN:
         if (IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_MAIN_1) && IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_MAIN_0) && IntroMovie_Scene2_WaitSpritePanEffect(sceneData, 0) && IntroMovie_Scene2_WaitSpritePanEffect(sceneData, 1) && IsPaletteFadeFinished()) {
             IntroMovie_StartBgScroll_NotVBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_MAIN_1, 0x20, 0, 0x5A);
             IntroMovie_StartBgScroll_NotVBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_MAIN_0, 0x20, 0, 0x5A);
@@ -131,7 +142,7 @@ BOOL IntroMovie_Scene2_Main(IntroMovieOvyData *data, IntroMovieScene2Data *scene
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 3:
+    case INTRO_SCENE2_SLOW_PAN_ETHAN:
         if (IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_MAIN_1) && IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_MAIN_0) && IntroMovie_Scene2_WaitSpritePanEffect(sceneData, 0) && IntroMovie_Scene2_WaitSpritePanEffect(sceneData, 1)) {
             IntroMovie_StartBgScroll_NotVBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_MAIN_1, 0x40, 0, 7);
             IntroMovie_StartBgScroll_NotVBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_MAIN_0, 0x40, 0, 7);
@@ -140,7 +151,7 @@ BOOL IntroMovie_Scene2_Main(IntroMovieOvyData *data, IntroMovieScene2Data *scene
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 4:
+    case INTRO_SCENE2_FAST_PAN_TO_LYRA:
         if (IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_MAIN_1) && IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_MAIN_0) && IntroMovie_Scene2_WaitSpritePanEffect(sceneData, 0) && IntroMovie_Scene2_WaitSpritePanEffect(sceneData, 1)) {
             IntroMovie_StartBgScroll_NotVBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_MAIN_1, 0x20, 0, 0x42);
             IntroMovie_StartBgScroll_NotVBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_MAIN_0, 0x20, 0, 0x42);
@@ -149,7 +160,7 @@ BOOL IntroMovie_Scene2_Main(IntroMovieOvyData *data, IntroMovieScene2Data *scene
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 5:
+    case INTRO_SCENE2_SLOW_PAN_LYRA:
         if (IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_MAIN_1) && IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_MAIN_0) && IntroMovie_Scene2_WaitSpritePanEffect(sceneData, 0) && IntroMovie_Scene2_WaitSpritePanEffect(sceneData, 1)) {
             IntroMovie_StartBgScroll_NotVBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_MAIN_1, 0, -0x80, 10);
             IntroMovie_StartBgScroll_NotVBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_MAIN_0, 0, -0x40, 5);
@@ -158,13 +169,13 @@ BOOL IntroMovie_Scene2_Main(IntroMovieOvyData *data, IntroMovieScene2Data *scene
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 6:
+    case INTRO_SCENE2_CIRCLE_WIPE_OUT:
         if (IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_MAIN_1) && IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_MAIN_0) && IntroMovie_Scene2_WaitSpritePanEffect(sceneData, 0) && IntroMovie_Scene2_WaitSpritePanEffect(sceneData, 1)) {
             IntroMovie_BeginCircleWipeEffect(data, 1, 1, 8);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 7:
+    case INTRO_SCENE2_END:
         if (IntroMovie_WaitCircleWipeEffect(data)) {
             return TRUE;
         }
@@ -213,72 +224,68 @@ void IntroMovie_Scene2_InitBgs(IntroMovieOvyData *data) {
 
     {
         BgTemplate bgTemplate = {
-            0, 0,
-            GF_BG_BUF_SIZE_256x256_4BPP,
-            0,
-            GF_BG_SCR_SIZE_256x256,
-            GX_BG_COLORMODE_16,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0
+            .x = 0, .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0x0000,
+            .charBase = GX_BG_CHARBASE_0x04000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 0,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = FALSE
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_0, &bgTemplate, GX_BGMODE_0);
     }
 
     {
         BgTemplate bgTemplate = {
-            0, 0,
-            GF_BG_BUF_SIZE_256x256_4BPP,
-            0,
-            GF_BG_SCR_SIZE_256x256,
-            GX_BG_COLORMODE_16,
-            0,
-            2,
-            0,
-            0,
-            0,
-            0,
-            0
+            .x = 0, .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0x0000,
+            .charBase = GX_BG_CHARBASE_0x08000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 0,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = FALSE
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_0, &bgTemplate, GX_BGMODE_0);
     }
 
     {
         BgTemplate bgTemplate = {
-            0, 0,
-            GF_BG_BUF_SIZE_512x512_4BPP,
-            0,
-            GF_BG_SCR_SIZE_512x512,
-            GX_BG_COLORMODE_16,
-            1,
-            2,
-            0,
-            1,
-            0,
-            0,
-            0
+            .x = 0, .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_512x512_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_512x512,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0x0800,
+            .charBase = GX_BG_CHARBASE_0x08000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 1,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = FALSE
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_1, &bgTemplate, GX_BGMODE_0);
     }
 
     {
         BgTemplate bgTemplate = {
-            0, 0,
-            GF_BG_BUF_SIZE_256x256_4BPP,
-            0,
-            GF_BG_SCR_SIZE_256x256,
-            GX_BG_COLORMODE_16,
-            5,
-            2,
-            0,
-            2,
-            0,
-            0,
-            0
+            .x = 0, .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0x2800,
+            .charBase = GX_BG_CHARBASE_0x08000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 2,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = FALSE
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_2, &bgTemplate, GX_BGMODE_0);
     }

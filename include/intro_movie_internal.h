@@ -8,6 +8,12 @@
 #include "unk_02023694.h"
 #include "unk_02014DA0.h"
 
+enum IntroMovieSceneState {
+    INTRO_MOVIE_SCENE_INIT,
+    INTRO_MOVIE_SCENE_RUN,
+    INTRO_MOVIE_SCENE_CLEANUP,
+};
+
 typedef struct IntroMovieScene1Data {
     u8 state;
     u8 needFreeGfx;
