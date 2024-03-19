@@ -67,8 +67,6 @@ void IntroMovie_RendererSetSurfaceCoords(IntroMovieOvyData *data, int mainx, int
     G2dRenderer_SetMainSurfaceCoords(&data->spriteRenderer, mainx * FX32_ONE, mainy * FX32_ONE);
 }
 
-// ---------------------------
-
 void IntroMovie_StartBlendFadeEffect(IntroMovieBgBlendAnim *data, int plane1, int plane2, u8 duration, int direction, int screen) {
     data->counter = 0;
     data->ev = 0;
@@ -104,8 +102,6 @@ void Task_IntroMovie_BlendFadeEffect(SysTask *task, void *pVoid) {
         G2S_SetBlendAlpha(data->plane1, data->plane2, ev, 31 - ev);
     }
 }
-
-// ---------------------------
 
 void IntroMovie_StartBgScroll_VBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, enum GFBgLayer bgId, s16 xChange, s16 yChange, int duration) {
     IntroMovieBgScrollAnim *obj = &data[IntroMovie_BgLayerToScrollEffectSlot(bgId)];
@@ -269,8 +265,6 @@ int IntroMovie_BgLayerToScrollEffectSlot(enum GFBgLayer bgId) {
     return ret;
 }
 
-// ---------------------------
-
 IntroMovieBgWindowAnim *IntroMovie_StartWindowPanEffect(IntroMovieBgWindowAnim *data, int duration, int whichScreen, const IntroMovieBgWindowAnimParam *param) {
     IntroMovie_WindowsOn_SetInsideOutsidePlanes(param->winIn, param->winOut, param->topScreenEffect, param->bottomScreenEffect, whichScreen);
     if (duration <= 0) {
@@ -361,7 +355,6 @@ void IntroMovie_SetBgWindowsPosition(int x1, int y1, int x2, int y2, int whichSc
     }
 }
 
-// ---------------------------
 
 BgConfig *IntroMovie_GetBgConfig(IntroMovieOvyData *data) {
     return data->bgConfig;
