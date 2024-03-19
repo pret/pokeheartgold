@@ -6,6 +6,14 @@
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
 
+enum IntroScene5State {
+    INTRO_SCENE5_WIPE_IN,
+    INTRO_SCENE5_WAIT_WIPE,
+    INTRO_SCENE5_BEGIN_BG_SCROLL,
+    INTRO_SCENE5_WAIT_BG_SCROLL,
+    INTRO_SCENE5_WAIT_FADE_OUT,
+};
+
 void IntroMovie_Scene5_VBlankCB(void *pVoid);
 void IntroMovie_Scene5_Init(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData);
 BOOL IntroMovie_Scene5_Main(IntroMovieOvyData *data, IntroMovieScene5Data *sceneData, int totalFrames);
@@ -25,16 +33,16 @@ BOOL IntroMovie_Scene5(IntroMovieOvyData *data, void *pVoid) {
     }
 
     switch (sceneData->state) {
-    case 0:
+    case INTRO_MOVIE_SCENE_INIT:
         IntroMovie_Scene5_Init(data, sceneData);
         ++sceneData->state;
         break;
-    case 1:
+    case INTRO_MOVIE_SCENE_RUN:
         if (IntroMovie_Scene5_Main(data, sceneData, IntroMovie_GetTotalFrameCount(data))) {
             ++sceneData->state;
         }
         break;
-    case 2:
+    case INTRO_MOVIE_SCENE_CLEANUP:
         IntroMovie_Scene5_Exit(data, sceneData);
         return TRUE;
     }
@@ -77,29 +85,29 @@ BOOL IntroMovie_Scene5_Main(IntroMovieOvyData *data, IntroMovieScene5Data *scene
     IntroMovieBgLinearAnims *animCnt = IntroMovie_GetBgLinearAnimsController(data);
     u8 stepTimer = IntroMovie_GetSceneStepTimer(data);
     switch (IntroMovie_GetSceneStep(data)) {
-    case 0:
+    case INTRO_SCENE5_WIPE_IN:
         BeginNormalPaletteFade(1, 9, 5, RGB_BLACK, 18, 1, HEAP_ID_INTRO_MOVIE);
         IntroMovie_AdvanceSceneStep(data);
         break;
-    case 1:
+    case INTRO_SCENE5_WAIT_WIPE:
         if (IsPaletteFadeFinished()) {
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 2:
+    case INTRO_SCENE5_BEGIN_BG_SCROLL:
         IntroMovie_StartBgScroll_VBlank(bgConfig, animCnt->scroll, GF_BG_LYR_MAIN_1, 0, -0x40, 73);
         IntroMovie_StartBgScroll_VBlank(bgConfig, animCnt->scroll, GF_BG_LYR_MAIN_2, 0, BG_SCROLL_SPEED, 73);
         IntroMovie_StartBgScroll_VBlank(bgConfig, animCnt->scroll, GF_BG_LYR_SUB_1, 0, BG_SCROLL_SPEED, 73);
         IntroMovie_StartBgScroll_VBlank(bgConfig, animCnt->scroll, GF_BG_LYR_SUB_2, 0, BG_SCROLL_SPEED, 73);
         IntroMovie_AdvanceSceneStep(data);
         break;
-    case 3:
+    case INTRO_SCENE5_WAIT_BG_SCROLL:
         if (stepTimer >= 20) {
             BeginNormalPaletteFade(0, 0, 0, RGB_WHITE, 50, 1, HEAP_ID_INTRO_MOVIE);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 4:
+    case INTRO_SCENE5_WAIT_FADE_OUT:
         if (IsPaletteFadeFinished()) {
             return TRUE;
         }
@@ -139,72 +147,68 @@ void IntroMovie_Scene5_InitBgs(IntroMovieOvyData *data) {
 
     {
         BgTemplate bgTemplate = {
-            0, 0,
-            GF_BG_BUF_SIZE_256x256_4BPP,
-            0,
-            GF_BG_SCR_SIZE_256x256,
-            GX_BG_COLORMODE_16,
-            0,
-            1,
-            0,
-            1,
-            0,
-            0,
-            0,
+            .x = 0, .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0x0000,
+            .charBase = GX_BG_CHARBASE_0x04000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 1,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = FALSE,
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_1, &bgTemplate, 0);
     }
 
     {
         BgTemplate bgTemplate = {
-            0, 0,
-            GF_BG_BUF_SIZE_256x512_4BPP,
-            0,
-            GF_BG_SCR_SIZE_256x512,
-            GX_BG_COLORMODE_16,
-            1,
-            1,
-            0,
-            2,
-            0,
-            0,
-            0,
+            .x = 0, .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x512_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x512,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0x0800,
+            .charBase = GX_BG_CHARBASE_0x04000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 2,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = FALSE,
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_2, &bgTemplate, 0);
     }
 
     {
         BgTemplate bgTemplate = {
-            0, 0,
-            GF_BG_BUF_SIZE_256x256_4BPP,
-            0,
-            GF_BG_SCR_SIZE_256x256,
-            GX_BG_COLORMODE_16,
-            0,
-            1,
-            0,
-            1,
-            0,
-            0,
-            0,
+            .x = 0, .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0x0000,
+            .charBase = GX_BG_CHARBASE_0x04000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 1,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = FALSE,
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_1, &bgTemplate, 0);
     }
 
     {
         BgTemplate bgTemplate = {
-            0, 0,
-            GF_BG_BUF_SIZE_256x512_4BPP,
-            0,
-            GF_BG_SCR_SIZE_256x512,
-            GX_BG_COLORMODE_16,
-            1,
-            1,
-            0,
-            2,
-            0,
-            0,
-            0,
+            .x = 0, .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x512_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x512,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0x0800,
+            .charBase = GX_BG_CHARBASE_0x04000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 2,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = FALSE,
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_2, &bgTemplate, 0);
     }

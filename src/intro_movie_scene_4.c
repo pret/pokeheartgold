@@ -12,6 +12,30 @@
 #include "unk_02022588.h"
 #include "unk_02026E30.h"
 
+enum IntroScene4State {
+    INTRO_SCENE4_FADE_IN,
+    INTRO_SCENE4_WAIT_FADE_IN,
+    INTRO_SCENE4_SLIDE_IN_PLAYERS,
+    INTRO_SCENE4_WAIT_SLIDE_IN_PLAYERS,
+    INTRO_SCENE4_HOLD_PLAYERS_GFX,
+    INTRO_SCENE4_SLIDE_OUT_PLAYERS,
+    INTRO_SCENE4_WAIT_SLIDE_OUT_PLAYERS,
+    INTRO_SCENE4_APPEAR_CHIKORITA,
+    INTRO_SCENE4_START_GRASS_PARTICLES,
+    INTRO_SCENE4_RUN_GRASS_PARTICLES,
+    INTRO_SCENE4_FINISH_CHIKORITA,
+    INTRO_SCENE4_APPEAR_CYNDAQUIL,
+    INTRO_SCENE4_START_FIRE_PARTICLES,
+    INTRO_SCENE4_RUN_FIRE_PARTICLES,
+    INTRO_SCENE4_FINISH_CYNDAQUIL,
+    INTRO_SCENE4_APPEAR_TOTODILE,
+    INTRO_SCENE4_START_WATER_PARTICLES,
+    INTRO_SCENE4_RUN_WATER_PARTICLES,
+    INTRO_SCENE4_FINISH_TOTODILE,
+    INTRO_SCENE4_SPARKLE,
+    INTRO_SCENE4_WAIT_SPARKLE,
+};
+
 void IntroMovie_Scene4_VBlankCB(void *pVoid);
 void IntroMovie_Scene4_Init(IntroMovieOvyData *data, IntroMovieScene4Data *sceneData);
 BOOL IntroMovie_Scene4_Main(IntroMovieOvyData *data, IntroMovieScene4Data *sceneData, int totalFrames);
@@ -47,16 +71,16 @@ BOOL IntroMovie_Scene4(IntroMovieOvyData *data, void *pVoid) {
     }
 
     switch (sceneData->state) {
-    case 0:
+    case INTRO_MOVIE_SCENE_INIT:
         IntroMovie_Scene4_Init(data, sceneData);
         ++sceneData->state;
         break;
-    case 1:
+    case INTRO_MOVIE_SCENE_RUN:
         if (IntroMovie_Scene4_Main(data, sceneData, IntroMovie_GetTotalFrameCount(data))) {
             ++sceneData->state;
         }
         break;
-    case 2:
+    case INTRO_MOVIE_SCENE_CLEANUP:
         IntroMovie_Scene4_Exit(data, sceneData);
         return TRUE;
     }
@@ -102,24 +126,24 @@ BOOL IntroMovie_Scene4_Main(IntroMovieOvyData *data, IntroMovieScene4Data *scene
     IntroMovieBgLinearAnims *animCnt = IntroMovie_GetBgLinearAnimsController(data);
     u8 stepTimer = IntroMovie_GetSceneStepTimer(data);
     switch (IntroMovie_GetSceneStep(data)) {
-    case 0:
+    case INTRO_SCENE4_FADE_IN:
         BeginNormalPaletteFade(0, 9, 9, RGB_BLACK, 10, 1, HEAP_ID_INTRO_MOVIE);
         IntroMovie_AdvanceSceneStep(data);
         break;
-    case 1:
+    case INTRO_SCENE4_WAIT_FADE_IN:
         if (IsPaletteFadeFinished()) {
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 2: {
-        IntroMovieBgWindowAnimParam sp94 = {  // 021EB73C
+    case INTRO_SCENE4_SLIDE_IN_PLAYERS: {
+        IntroMovieBgWindowAnimParam sp94 = {
             255, 0, 255, 192,
             0, 0, 255, 192,
             30, 28, 1, 1
         };
         IntroMovie_StartWindowPanEffect(animCnt->window, 10, PM_LCD_TOP, &sp94);
 
-        IntroMovieBgWindowAnimParam sp68 = {  // 021EB768
+        IntroMovieBgWindowAnimParam sp68 = {
             0, 0, 0, 192,
             0, 0, 255, 192,
             30, 28, 1, 1
@@ -135,25 +159,25 @@ BOOL IntroMovie_Scene4_Main(IntroMovieOvyData *data, IntroMovieScene4Data *scene
         IntroMovie_AdvanceSceneStep(data);
         break;
     }
-    case 3:
+    case INTRO_SCENE4_WAIT_SLIDE_IN_PLAYERS:
         if (IntroMovie_WaitBgScrollAnim(animCnt->scroll, GF_BG_LYR_SUB_1) && IntroMovie_WaitBgScrollAnim(animCnt->scroll, GF_BG_LYR_MAIN_1)) {
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 4:
+    case INTRO_SCENE4_HOLD_PLAYERS_GFX:
         if (stepTimer > 25) {
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 5: {
-        IntroMovieBgWindowAnimParam sp3C = {  // 021EB794
+    case INTRO_SCENE4_SLIDE_OUT_PLAYERS: {
+        IntroMovieBgWindowAnimParam sp3C = {
             0, 0, 255, 192,
             0, 0, 0, 192,
             30, 28, 1, 1
         };
         IntroMovie_StartWindowPanEffect(animCnt->window, 10, PM_LCD_TOP, &sp3C);
 
-        IntroMovieBgWindowAnimParam sp10 = {  // 021EB710
+        IntroMovieBgWindowAnimParam sp10 = {
             0, 0, 255, 192,
             255, 0, 255, 192,
             30, 28, 1, 1
@@ -165,7 +189,7 @@ BOOL IntroMovie_Scene4_Main(IntroMovieOvyData *data, IntroMovieScene4Data *scene
         IntroMovie_AdvanceSceneStep(data);
         break;
     }
-    case 6:
+    case INTRO_SCENE4_WAIT_SLIDE_OUT_PLAYERS:
         if (IntroMovie_WaitBgScrollAnim(animCnt->scroll, GF_BG_LYR_SUB_1) && IntroMovie_WaitBgScrollAnim(animCnt->scroll, GF_BG_LYR_MAIN_1)) {
             IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->hand1Sprite, FALSE);
             IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->hand2Sprite, FALSE);
@@ -176,55 +200,55 @@ BOOL IntroMovie_Scene4_Main(IntroMovieOvyData *data, IntroMovieScene4Data *scene
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 7:
+    case INTRO_SCENE4_APPEAR_CHIKORITA:
         IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->starterSprites[0], TRUE);
         IntroMovie_AdvanceSceneStep(data);
         break;
-    case 8:
+    case INTRO_SCENE4_START_GRASS_PARTICLES:
         IntroMovie_Scene4_StartParticleEmitters(sceneData, 0);
         IntroMovie_AdvanceSceneStep(data);
         break;
-    case 9:
+    case INTRO_SCENE4_RUN_GRASS_PARTICLES:
         if (!sub_020154B0(sceneData->particleSystem)) {
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 10:
+    case INTRO_SCENE4_FINISH_CHIKORITA:
         IntroMovie_Scene4_FlipScreensAtNextVBlank(sceneData, 0);
         IntroMovie_AdvanceSceneStep(data);
         break;
-    case 11:
+    case INTRO_SCENE4_APPEAR_CYNDAQUIL:
         IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->starterSprites[1], TRUE);
         IntroMovie_AdvanceSceneStep(data);
         break;
-    case 12:
+    case INTRO_SCENE4_START_FIRE_PARTICLES:
         IntroMovie_Scene4_StartParticleEmitters(sceneData, 1);
         IntroMovie_AdvanceSceneStep(data);
         break;
-    case 13:
+    case INTRO_SCENE4_RUN_FIRE_PARTICLES:
         if (!sub_020154B0(sceneData->particleSystem)) {
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 14:
+    case INTRO_SCENE4_FINISH_CYNDAQUIL:
         IntroMovie_Scene4_FlipScreensAtNextVBlank(sceneData, 1);
         IntroMovie_AdvanceSceneStep(data);
         break;
-    case 15:
+    case INTRO_SCENE4_APPEAR_TOTODILE:
         IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->starterSprites[2], TRUE);
         IntroMovie_AdvanceSceneStep(data);
         break;
-    case 16:
+    case INTRO_SCENE4_START_WATER_PARTICLES:
         IntroMovie_Scene4_StartParticleEmitters(sceneData, 2);
         IntroMovie_AdvanceSceneStep(data);
         break;
-    case 17:
+    case INTRO_SCENE4_RUN_WATER_PARTICLES:
         if (!sub_020154B0(sceneData->particleSystem)) {
             BeginNormalPaletteFade(0, 8, 8, RGB_BLACK, 26, 1, HEAP_ID_INTRO_MOVIE);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 18:
+    case INTRO_SCENE4_FINISH_TOTODILE:
         if (IsPaletteFadeFinished()) {
             GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);
             GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
@@ -237,12 +261,12 @@ BOOL IntroMovie_Scene4_Main(IntroMovieOvyData *data, IntroMovieScene4Data *scene
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 19:
+    case INTRO_SCENE4_SPARKLE:
         SetMasterBrightnessNeutral(PM_LCD_TOP);
         IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->sparklesSprite, TRUE);
         IntroMovie_AdvanceSceneStep(data);
         break;
-    case 20:
+    case INTRO_SCENE4_WAIT_SPARKLE:
         if (!Sprite_IsCellAnimationRunning(sceneData->sparklesSprite)) {
             return TRUE;
         }
@@ -280,121 +304,115 @@ void IntroMovie_Scene4_InitBgs(IntroMovieOvyData *data) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
 
     {
-        GraphicsModes spA8 = {  // 021EB634
+        GraphicsModes graphicsModes = {
             GX_DISPMODE_GRAPHICS,
             GX_BGMODE_0,
             GX_BGMODE_0,
             GX_BG0_AS_3D,
         };
-        SetBothScreensModesAndDisable(&spA8);
+        SetBothScreensModesAndDisable(&graphicsModes);
     }
 
     {
-        BgTemplate sp8C = {  // 021EB644
-            0, 0,
-            GF_BG_BUF_SIZE_256x256_4BPP,
-            0,
-            GF_BG_SCR_SIZE_256x256,
-            GX_BG_COLORMODE_16,
-            0,
-            1,
-            0,
-            1,
-            0,
-            0,
-            0
+        BgTemplate bgTemplate = {
+            .x = 0, .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0x0000,
+            .charBase = GX_BG_CHARBASE_0x04000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 1,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = FALSE
         };
-        InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_1, &sp8C, 0);
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_1, &bgTemplate, 0);
     }
 
     {
-        BgTemplate sp70 = {  // 021EB660
-            0, 0,
-            GF_BG_BUF_SIZE_256x256_4BPP,
-            0,
-            GF_BG_SCR_SIZE_256x256,
-            GX_BG_COLORMODE_16,
-            1,
-            1,
-            0,
-            2,
-            0,
-            0,
-            0
+        BgTemplate bgTemplate = {
+            .x = 0, .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0x0800,
+            .charBase = GX_BG_CHARBASE_0x04000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 2,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = FALSE
         };
-        InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_2, &sp70, 0);
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_2, &bgTemplate, 0);
     }
 
     {
-        BgTemplate sp54 = {  // 021EB67C
-            0, 0,
-            GF_BG_BUF_SIZE_256x256_4BPP,
-            0,
-            GF_BG_SCR_SIZE_256x256,
-            GX_BG_COLORMODE_16,
-            2,
-            1,
-            0,
-            3,
-            0,
-            0,
-            0
+        BgTemplate bgTemplate = {
+            .x = 0, .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0x1000,
+            .charBase = GX_BG_CHARBASE_0x04000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 3,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = FALSE
         };
-        InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_3, &sp54, 0);
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_3, &bgTemplate, 0);
     }
 
     {
-        BgTemplate sp38 = {  // 021EB698
-            0, 0,
-            GF_BG_BUF_SIZE_256x256_4BPP,
-            0,
-            GF_BG_SCR_SIZE_256x256,
-            GX_BG_COLORMODE_16,
-            0,
-            1,
-            0,
-            1,
-            0,
-            0,
-            0
+        BgTemplate bgTemplate = {
+            .x = 0, .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0x0000,
+            .charBase = GX_BG_CHARBASE_0x04000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 1,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = FALSE
         };
-        InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_1, &sp38, 0);
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_1, &bgTemplate, 0);
     }
 
     {
-        BgTemplate sp1C = {  // 021EB6B4
-            0, 0,
-            GF_BG_BUF_SIZE_256x256_4BPP,
-            0,
-            GF_BG_SCR_SIZE_256x256,
-            GX_BG_COLORMODE_16,
-            1,
-            1,
-            0,
-            2,
-            0,
-            0,
-            0
+        BgTemplate bgTemplate = {
+            .x = 0, .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0x0800,
+            .charBase = GX_BG_CHARBASE_0x04000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 2,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = FALSE
         };
-        InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_2, &sp1C, 0);
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_2, &bgTemplate, 0);
     }
 
     {
-        BgTemplate sp00 = {  // 021EB6D0
-            0, 0,
-            GF_BG_BUF_SIZE_256x256_4BPP,
-            0,
-            GF_BG_SCR_SIZE_256x256,
-            GX_BG_COLORMODE_16,
-            2,
-            1,
-            0,
-            3,
-            0,
-            0,
-            0
+        BgTemplate bgTemplate = {
+            .x = 0, .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0x1000,
+            .charBase = GX_BG_CHARBASE_0x04000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 3,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = FALSE
         };
-        InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_3, &sp00, 0);
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_3, &bgTemplate, 0);
     }
 }
 
@@ -424,27 +442,27 @@ void IntroMovie_Scene4_EnableBgLayers(IntroMovieOvyData *data, BgConfig *bgConfi
 }
 
 void IntroMovie_Scene4_LoadSpriteGfx(IntroMovieOvyData *data, IntroMovieScene4Data *sceneData) {
-    int sp48[3] = {  // _021EB610
+    int monSpritePltt[3] = {
         NARC_gs_opening_gs_opening_00000085_NCLR,
         NARC_gs_opening_gs_opening_00000093_NCLR,
         NARC_gs_opening_gs_opening_00000089_NCLR,
     };
-    int sp3C[3] = {  // _021EB5EC
+    int monSpriteChar[3] = {
         NARC_gs_opening_gs_opening_00000086_NCGR_lz,
         NARC_gs_opening_gs_opening_00000094_NCGR_lz,
         NARC_gs_opening_gs_opening_00000090_NCGR_lz,
     };
-    int sp30[3] = {  // _021EB604
+    int monSpriteAnim[3] = {
         NARC_gs_opening_gs_opening_00000087_NANR_lz,
         NARC_gs_opening_gs_opening_00000095_NANR_lz,
         NARC_gs_opening_gs_opening_00000091_NANR_lz,
     };
-    int sp24[3] = {  // _021EB628
+    int monSpriteCell[3] = {
         NARC_gs_opening_gs_opening_00000088_NCER_lz,
         NARC_gs_opening_gs_opening_00000096_NCER_lz,
         NARC_gs_opening_gs_opening_00000092_NCER_lz,
     };
-    int sp18[3] = {1, 2, 3};  // _021EB5F8
+    int sp18[3] = {1, 2, 3};
     u8 i;
     GF_2DGfxResMan **resMen;
 
@@ -457,10 +475,10 @@ void IntroMovie_Scene4_LoadSpriteGfx(IntroMovieOvyData *data, IntroMovieScene4Da
 
     for (i = 0; i < 3; ++i) {
         s32 id = sp18[i];
-        sceneData->spriteResObjs[i + 1][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(resMen[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, sp3C[i], TRUE, id, 1, HEAP_ID_INTRO_MOVIE);
-        sceneData->spriteResObjs[i + 1][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(resMen[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, sp48[i], FALSE, id, 1, 1, HEAP_ID_INTRO_MOVIE);
-        sceneData->spriteResObjs[i + 1][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(resMen[GF_GFX_RES_TYPE_CELL], NARC_demo_opening_gs_opening, sp24[i], TRUE, id, GF_GFX_RES_TYPE_CELL, HEAP_ID_INTRO_MOVIE);
-        sceneData->spriteResObjs[i + 1][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromNarc(resMen[GF_GFX_RES_TYPE_ANIM], NARC_demo_opening_gs_opening, sp30[i], TRUE, id, GF_GFX_RES_TYPE_ANIM, HEAP_ID_INTRO_MOVIE);
+        sceneData->spriteResObjs[i + 1][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(resMen[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, monSpriteChar[i], TRUE, id, 1, HEAP_ID_INTRO_MOVIE);
+        sceneData->spriteResObjs[i + 1][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(resMen[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, monSpritePltt[i], FALSE, id, 1, 1, HEAP_ID_INTRO_MOVIE);
+        sceneData->spriteResObjs[i + 1][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(resMen[GF_GFX_RES_TYPE_CELL], NARC_demo_opening_gs_opening, monSpriteCell[i], TRUE, id, GF_GFX_RES_TYPE_CELL, HEAP_ID_INTRO_MOVIE);
+        sceneData->spriteResObjs[i + 1][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromNarc(resMen[GF_GFX_RES_TYPE_ANIM], NARC_demo_opening_gs_opening, monSpriteAnim[i], TRUE, id, GF_GFX_RES_TYPE_ANIM, HEAP_ID_INTRO_MOVIE);
     }
 
     for (i = 0; i < 4; ++i) {
@@ -489,7 +507,7 @@ void IntroMovie_Scene4_DestroySprites(IntroMovieOvyData *data, IntroMovieScene4D
 void IntroMovie_Scene4_CreateSprites(IntroMovieOvyData *data, IntroMovieScene4Data *sceneData) {
     SpriteResourcesHeader header;
     SpriteTemplate template;
-    int sp08[3] = {1, 2, 3};  // 021EB61C
+    int monSpriteResIds[3] = {1, 2, 3};
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(0, data, 0, NNS_G2D_VRAM_TYPE_2DSUB, &template, &header);
     template.position.x = FX32_ONE * 128;
@@ -516,7 +534,7 @@ void IntroMovie_Scene4_CreateSprites(IntroMovieOvyData *data, IntroMovieScene4Da
     Set2dSpriteAnimSeqNo(sceneData->sparklesSprite, 2);
 
     for (u8 i = 0; i < 3; ++i) {
-        IntroMovie_BuildSpriteResourcesHeaderAndTemplate(sp08[i], data, 0, NNS_G2D_VRAM_TYPE_2DMAIN, &template, &header);
+        IntroMovie_BuildSpriteResourcesHeaderAndTemplate(monSpriteResIds[i], data, 0, NNS_G2D_VRAM_TYPE_2DMAIN, &template, &header);
         template.position.x = FX32_ONE * 128;
         template.position.y = FX32_ONE * 96;
         sceneData->starterSprites[i] = CreateSprite(&template);
