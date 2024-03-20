@@ -12,7 +12,7 @@ BOOL ov12_0224EC74(BattleContext *ctx);
 void ov12_0224ECC4(BattleContext *ctx, int id, int battlerId, int index);
 void ov12_0224ED00(BattleContext *ctx, int id, int battlerId, int index);
 BOOL Link_QueueNotEmpty(BattleContext *ctx);
-void ov12_0224EDC0(BattleContext *ctx, int battlerId);
+void BattleBuffer_Clear(BattleContext *ctx, int battlerId);
 int GetBattlerVar(BattleContext *ctx, int battlerId, u32 varId, void *data);
 void SetBattlerVar(BattleContext *ctx, int battlerId, u32 varId, void *data);
 void AddBattlerVar(BattleContext *ctx, int battlerId, u32 varId, int data);
@@ -67,11 +67,11 @@ BOOL BattleContext_CheckMoveUnuseableInGravity(BattleSystem *bsys, BattleContext
 BOOL BattleContext_CheckMoveHealBlocked(BattleSystem *bsys, BattleContext *ctx, int battlerId, int moveNo);
 void ov12_02252E30(BattleSystem *bsys, BattleContext *ctx);
 int GetBattlerLearnedMoveCount(BattleSystem *bsys, BattleContext *ctx, int battlerId);
-int ov12_02252EC8(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget);
+int BattleContext_CheckMoveImmunityFromAbility(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget);
 BOOL ov12_02253068(BattleSystem *bsys, BattleContext *ctx, int battlerId);
 int DamageDivide(int num, int denom);
 int TryAbilityOnEntry(BattleSystem *bsys, BattleContext *ctx);
-int ov12_02253DA0(BattleSystem *bsys, BattleContext *ctx, int battlerId);
+int Battler_GetRandomOpposingBattlerId(BattleSystem *bsys, BattleContext *ctx, int battlerId);
 BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BattleContext *ctx, int *script);
 BOOL CheckStatusHealAbility(BattleSystem *bsys, BattleContext *ctx, int battlerId, int flag);
 BOOL CheckStatusHealSwitch(BattleContext *ctx, int ability, int status);
@@ -98,7 +98,7 @@ void ov12_02256694(BattleSystem *bsys, BattleContext *ctx);
 int ov12_02256748(BattleContext *ctx, int battlerId, int battlerType, BOOL encounter);
 BOOL Battler_CanSelectAction(BattleContext *ctx, int battlerId);
 void ov12_022567D4(BattleSystem *bsys, BattleContext *ctx, Pokemon *mon);
-u8 ov12_0225682C(BattleContext *ctx, int battlerId);
+u8 BattleBuffer_GetNext(BattleContext *ctx, int battlerId);
 BOOL BattlerCheckSubstitute(BattleContext *ctx, int battlerId);
 BOOL ov12_02256854(BattleSystem *bsys, BattleContext *ctx);
 BOOL ov12_022568B0(BattleSystem *bsys, Pokemon *mon);
@@ -113,11 +113,11 @@ BOOL CheckLegalMetronomeMove(BattleSystem *bsys, BattleContext *ctx, int battler
 BOOL IsMoveEncored(BattleContext *ctx, u16 moveNo);
 s32 GetItemVar(BattleContext *ctx, u16 itemNo, u16 var);
 int ov12_02257E98(BattleSystem *bsys, BattleContext *ctx, int side);
-void ov12_02257EC0(BattleSystem *bsys, BattleContext *ctx);
+void SortExecutionOrderBySpeed(BattleSystem *bsys, BattleContext *ctx);
 BOOL CheckStatusEffectsSubstitute(BattleContext *bsys, int battlerId, int status);
 BOOL CheckItemEffectOnUTurn(BattleSystem *bsys, BattleContext *ctx, int *script);
 void CheckIgnorePressure(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget);
-BOOL ov12_022581BC(BattleSystem *bsys, BattleContext *ctx);
+BOOL BattleController_TryEmitExitRecording(BattleSystem *bsys, BattleContext *ctx);
 int ov12_022581D4(BattleSystem *bsys, BattleContext *ctx, int var, int battlerId);
 void ov12_022582B8(BattleSystem *bsys, BattleContext *ctx, int var, int battlerId, int data);
 
@@ -127,7 +127,7 @@ BOOL ov12_02251C74(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarge
 //The following functions haven't been decompiled as of now, and are in fact in different files
 void Link_CheckTimeout(BattleContext *ctx);
 BOOL CheckLegalMeFirstMove(BattleContext *ctx, u16 move);
-int ov12_02253DA0(BattleSystem *bsys, BattleContext *ctx, int battlerId);
+int Battler_GetRandomOpposingBattlerId(BattleSystem *bsys, BattleContext *ctx, int battlerId);
 u32 CalcMoneyLoss(Party *party, PlayerProfile *profile);
 int ov12_02251D28(BattleSystem *bsys, BattleContext *ctx, int moveNo, int moveType, int battlerIdAttacker, int battlerIdTarget, int dmg, u32 *statusFlag);
 void ov12_02252D14(BattleSystem *bsys, BattleContext *ctx);

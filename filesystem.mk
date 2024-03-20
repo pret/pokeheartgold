@@ -396,6 +396,8 @@ DIFF_ARCS += $(2)
 FILES_NEEDED_FOR_COMPILE = $(subst $(2),$(1),$(FILES_NEEDED_FOR_COMPILE))
 endef
 
+$(eval $(call arc_strip_name,files/battledata/script/move_script.narc,files/a/0/0/0))
+$(eval $(call arc_strip_name,files/battledata/script/subscript.narc,files/a/0/0/1))
 $(eval $(call arc_strip_name,files/poketool/personal/personal.narc,files/a/0/0/2))
 $(eval $(call arc_strip_name,files/poketool/personal/growtbl.narc,files/a/0/0/3))
 $(eval $(call arc_strip_name,files/poketool/pokegra/pokegra.narc,files/a/0/0/4))
@@ -406,6 +408,7 @@ $(eval $(call arc_strip_name,files/graphic/font.narc,files/a/0/1/6))
 $(eval $(call arc_strip_name,files/itemtool/itemdata/item_data.narc,files/a/0/1/7))
 $(eval $(call arc_strip_name,files/itemtool/itemdata/item_icon.narc,files/a/0/1/8))
 $(eval $(call arc_strip_name,files/msgdata/msg.narc,files/a/0/2/7))
+$(eval $(call arc_strip_name,files/battledata/script/effect_script.narc,files/a/0/3/0))
 $(eval $(call arc_strip_name,files/fielddata/eventdata/zone_event.narc,files/a/0/3/2))
 $(eval $(call arc_strip_name,files/poketool/personal/wotbl.narc,files/a/0/3/3))
 $(eval $(call arc_strip_name,files/poketool/personal/evo.narc,files/a/0/3/4))
@@ -463,12 +466,18 @@ endif
 
 include files/msgdata/msg.mk
 include files/fielddata/script/scr_seq.mk
-
-# This rule must come after the above includes
-# and serves to enforce build order.
 $(SCRIPT_BINS): $(FIRST_MSG_H_GEN)
 
 include files/graphic/font.mk
+include files/battledata/script/effect_seq.mk
+$(EFFECT_SCRIPT_BINS): $(FIRST_MSG_H_GEN)
+
+include files/battledata/script/move_seq.mk
+$(MOVE_SCRIPT_BINS): $(FIRST_MSG_H_GEN)
+
+include files/battledata/script/subscript.mk
+$(BTL_SUBSCRIPT_SCRIPT_BINS): $(FIRST_MSG_H_GEN)
+
 include files/fielddata/eventdata/zone_event.mk
 include files/data/sound/sound_data.mk
 include files/data/gs_areawindow.mk

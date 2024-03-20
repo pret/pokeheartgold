@@ -1152,7 +1152,7 @@ _0223872E:
 	ldr r0, [r4, r0]
 	bl sub_0202067C
 	add r0, r4, #0
-	bl ov12_0223BFEC
+	bl BattleSystem_IsRecordingPaused
 	cmp r0, #0
 	beq _02238748
 	mov r0, #0x7f

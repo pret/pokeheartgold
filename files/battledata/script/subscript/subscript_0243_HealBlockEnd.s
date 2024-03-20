@@ -1,0 +1,12 @@
+    .include "macros/btlcmd.inc"
+
+    .data
+
+_000:
+    UpdateVar OPCODE_SET, BSCRIPT_VAR_MSG_MOVE_TEMP, MOVE_HEAL_BLOCK
+    // {0}’s {1} wore off!
+    PrintMessage msg_0197_01060, TAG_NICKNAME_MOVE, BATTLER_CATEGORY_MSG_TEMP, BATTLER_CATEGORY_MSG_TEMP
+    Wait 
+    WaitButtonABTime 30
+    UpdateMonData OPCODE_FLAG_OFF, BATTLER_CATEGORY_MSG_TEMP, BMON_DATA_MOVE_EFFECT, MOVE_EFFECT_FLAG_HEAL_BLOCK
+    End 

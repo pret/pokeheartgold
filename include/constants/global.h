@@ -13,4 +13,7 @@
 
 #define PARTY_SIZE 6
 
+#define S16_MAX                 32767
+#define U32_MAX                 4294967292
+
 #endif //POKEHEARTGOLD_CONSTANTS_GLOBAL_H

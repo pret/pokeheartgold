@@ -136,7 +136,7 @@ static BOOL Task_StartEncounter(TaskManager *taskManager) { //todo: better name
             break;
         case 3:
             sub_02050724(encounter->setup, fieldSystem);
-            if (encounter->setup->battleType == BATTLE_TYPE_NONE || encounter->setup->battleType == BATTLE_TYPE_8 || encounter->setup->battleType == (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_6)) {
+            if (encounter->setup->battleType == BATTLE_TYPE_NONE || encounter->setup->battleType == BATTLE_TYPE_ROAMER || encounter->setup->battleType == (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) {
                 sub_02093070(fieldSystem);
                 sub_020930C4(fieldSystem);
             }
@@ -702,9 +702,9 @@ void SetupAndStartTrainerBattle(TaskManager *taskManager, u32 opponentTrainer1, 
 
     if (opponentTrainer2 != 0 && opponentTrainer1 != opponentTrainer2) {
         if (followerTrainerNum == 0) {
-            battleType = (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_INGAME_PARTNER);
+            battleType = (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TAG);
         } else {
-            battleType = (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_6);
+            battleType = (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI);
         }
     } else if (opponentTrainer1 == opponentTrainer2) {
         battleType = (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES);
@@ -782,7 +782,7 @@ void CallTask_02050960(TaskManager *taskManager, s32 target, s32 maxLevel, u32 f
         setup = BattleSetup_New(HEAP_ID_FIELD, (BATTLE_TYPE_LINK | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TRAINER));
         mode = 7;
     } else {
-        setup = BattleSetup_New(HEAP_ID_FIELD, (BATTLE_TYPE_TOWER | BATTLE_TYPE_MULTI | BATTLE_TYPE_LINK | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TRAINER));
+        setup = BattleSetup_New(HEAP_ID_FIELD, (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_MULTI | BATTLE_TYPE_LINK | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TRAINER));
 
         //these don't seem right
         setup->trainerId[BATTLER_ENEMY] = TRAINER_RIVAL_SILVER;
@@ -859,11 +859,11 @@ static void sub_02051660(FieldSystem *fieldSystem, BattleSetup *setup) {
     u32 battleType = setup->battleType;
     u32 winFlag = setup->winFlag;
 
-    if (battleType & BATTLE_TYPE_LINK || battleType & BATTLE_TYPE_TOWER) {
+    if (battleType & BATTLE_TYPE_LINK || battleType & BATTLE_TYPE_FRONTIER) {
         return;
     }
 
-    if (battleType == BATTLE_TYPE_NONE || battleType == BATTLE_TYPE_8 || battleType == (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_6)) {
+    if (battleType == BATTLE_TYPE_NONE || battleType == BATTLE_TYPE_ROAMER || battleType == (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) {
         if (winFlag == BATTLE_OUTCOME_WIN) {
             GameStats_AddSpecial(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK9);
         } else if (winFlag == BATTLE_OUTCOME_MON_CAUGHT) {
@@ -874,7 +874,7 @@ static void sub_02051660(FieldSystem *fieldSystem, BattleSetup *setup) {
                 GameStats_AddSpecial(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK11);
             }
         }
-    } else if ((battleType & BATTLE_TYPE_TRAINER) || (battleType & BATTLE_TYPE_INGAME_PARTNER)) {
+    } else if ((battleType & BATTLE_TYPE_TRAINER) || (battleType & BATTLE_TYPE_TAG)) {
         if (winFlag == BATTLE_OUTCOME_WIN) {
             GameStats_AddSpecial(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK12);
         }

@@ -1,0 +1,25 @@
+    .include "macros/btlcmd.inc"
+
+    .data
+
+_000:
+    PrintAttackMessage 
+    Wait 
+    WaitButtonABTime 15
+    CompareMonDataToValue OPCODE_EQU, BATTLER_CATEGORY_DEFENDER, BMON_DATA_STAT_CHANGE_SPEED, 12, _032
+    PlayBattleAnimation BATTLER_CATEGORY_DEFENDER, BATTLE_ANIMATION_STAT_BOOST
+    Wait 
+    UpdateMonData OPCODE_ADD, BATTLER_CATEGORY_DEFENDER, BMON_DATA_STAT_CHANGE_SPEED, 1
+    UpdateVar OPCODE_SET, BSCRIPT_VAR_MESSAGE, 3
+    // {0}’s {1} raised its {2}!
+    PrintMessage msg_0197_00622, TAG_NICKNAME_ABILITY_STAT, BATTLER_CATEGORY_DEFENDER, BATTLER_CATEGORY_DEFENDER, BATTLER_CATEGORY_MSG_TEMP
+    Wait 
+    WaitButtonABTime 30
+    End 
+
+_032:
+    // {0}’s {1} made {2} useless!
+    PrintMessage msg_0197_00638, TAG_NICKNAME_ABILITY_MOVE, BATTLER_CATEGORY_DEFENDER, BATTLER_CATEGORY_DEFENDER, BATTLER_CATEGORY_ATTACKER
+    Wait 
+    WaitButtonABTime 30
+    End 
