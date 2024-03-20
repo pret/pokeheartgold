@@ -29,7 +29,7 @@ enum TreeType {
     TREETYPE_NONE = -1
 };
 
-const s8 sRareTreeLUT_1[][1] = {
+static const s8 sRareTreeLUT_1[][1] = {
     {TREETYPE_COMMON},
     {TREETYPE_RARE},
     {TREETYPE_COMMON},
@@ -44,7 +44,7 @@ const s8 sRareTreeLUT_1[][1] = {
     {TREETYPE_COMMON},
 };
 
-const s8 sRareTreeLUT_2[][2] = {
+static const s8 sRareTreeLUT_2[][2] = {
     {TREETYPE_COMMON, TREETYPE_RARE},
     {TREETYPE_RARE, TREETYPE_COMMON},
     {TREETYPE_COMMON, TREETYPE_RARE},
@@ -57,7 +57,7 @@ const s8 sRareTreeLUT_2[][2] = {
     {TREETYPE_RARE, TREETYPE_COMMON},
 };
 
-const s8 sRareTreeLUT_3[][3] = {
+static const s8 sRareTreeLUT_3[][3] = {
     { TREETYPE_COMMON,  TREETYPE_RARE, TREETYPE_NONE},
     { TREETYPE_COMMON, TREETYPE_NONE,  TREETYPE_RARE},
     { TREETYPE_RARE,  TREETYPE_COMMON, TREETYPE_NONE},
@@ -70,7 +70,7 @@ const s8 sRareTreeLUT_3[][3] = {
     { TREETYPE_RARE, TREETYPE_NONE,  TREETYPE_COMMON},
 };
 
-const s8 sRareTreeLUT_4[][4] = {
+static const s8 sRareTreeLUT_4[][4] = {
     {TREETYPE_NONE,  TREETYPE_COMMON,  TREETYPE_COMMON,  TREETYPE_RARE},
     { TREETYPE_RARE, TREETYPE_NONE,  TREETYPE_COMMON,  TREETYPE_COMMON},
     { TREETYPE_RARE,  TREETYPE_RARE, TREETYPE_NONE,  TREETYPE_COMMON},
@@ -83,7 +83,7 @@ const s8 sRareTreeLUT_4[][4] = {
     { TREETYPE_COMMON,  TREETYPE_RARE,  TREETYPE_COMMON,  TREETYPE_RARE},
 };
 
-const s8 sRareTreeLUT_5Plus[][5] = {
+static const s8 sRareTreeLUT_5Plus[][5] = {
     {TREETYPE_NONE,  TREETYPE_COMMON,  TREETYPE_COMMON,  TREETYPE_RARE,  TREETYPE_RARE},
     { TREETYPE_RARE, TREETYPE_NONE,  TREETYPE_COMMON,  TREETYPE_COMMON,  TREETYPE_RARE},
     { TREETYPE_RARE,  TREETYPE_RARE, TREETYPE_NONE,  TREETYPE_COMMON,  TREETYPE_COMMON},
@@ -208,7 +208,9 @@ static void GetCoordsOfFacingTree(FieldSystem *fieldSystem, u32 *x, u32 *y) {
     *y = inFrontY;
 }
 
-// ------------------------
+// ---------------------------------------------------------------- //
+// Not related to headbutt, should these be a separate file object? //
+// ---------------------------------------------------------------- //
 
 BOOL ScrCmd_795(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
