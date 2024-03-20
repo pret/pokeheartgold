@@ -152,7 +152,7 @@ done
 
 # Build C utils on demand
 make -C "${MYDIR}" --no-print-directory "$mktgt"
-if [ "$mktgt" -eq "clean" ]; then
+if [ "$mktgt" = "clean" ]; then
   rm -rf "${MYDIR}"/.bins "${MYDIR}"/.files
   exit 0
 fi
