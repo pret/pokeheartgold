@@ -5,7 +5,7 @@
 #include "battle_setup.h"
 #include "overlay_manager.h"
 
-BOOL Battle_Main(OVY_MANAGER *man, int *state);
+BOOL Battle_Run(OVY_MANAGER *man, int *state);
 void ov12_02237B0C(BattleSystem *bsys);
 void ov12_02237B6C(BattleSystem *bsys);
 void ov12_02237BB8(BattleSystem *bsys);

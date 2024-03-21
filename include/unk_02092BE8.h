@@ -8,8 +8,8 @@
 #include "gear_phone.h"
 #include "sys_task_api.h"
 
-typedef struct UnkPokegearstruct_2c{
-    u8 unk00;
+typedef struct PokegearArgs{
+    u8 kind;
     u8 unk01; //One of the variables inside FieldSystem with offset 0x110 (currently unk_10C[1];)
     u16 mapMusicID; //0x02 (surf-overriden)
     u8 unk04; //related to unk_var2 from UnkFieldSystemSub_114
@@ -25,7 +25,7 @@ typedef struct UnkPokegearstruct_2c{
     u8 matrixYCoord; //0x23
     SaveData* saveData; //0x24
     void *unk28; //Pointer to a Field System variable at offset 0x10C (currently unk_10C[0];)
-} Unk_PokegearSTRUCT_2C;
+} PokegearArgs;
 
 typedef struct UnkPokegearstruct_14{
     s16 y;
@@ -38,8 +38,8 @@ typedef struct UnkPokegearstruct_14{
     u8 padding_09[3];
 } Unk_PokegearSTRUCT_14;
 
-void sub_02092D80(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr);
-void sub_02092D8C(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr);
+void sub_02092D80(FieldSystem* sys, PokegearArgs* ptr);
+void sub_02092D8C(FieldSystem* sys, PokegearArgs* ptr);
 GearPhoneRingManager* GearPhoneRingManager_New(HeapID heapId, FieldSystem* sys);
 void sub_02092DD8(GearPhoneRingManager * ptr);
 GearPhoneRingManager* FieldSystem_GetGearPhoneRingManager(FieldSystem* sys);

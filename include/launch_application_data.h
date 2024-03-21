@@ -1,0 +1,65 @@
+#ifndef POKEHEARTGOLD_FIELD_LAUNCH_APPLICATION_DATA_H
+#define POKEHEARTGOLD_FIELD_LAUNCH_APPLICATION_DATA_H
+
+#include "field_system.h"
+#include "overlay_manager.h"
+
+extern const u8 sItemPocket[];
+extern const u8 sBerryPocket[];
+extern const u8 _020FA1A8[];
+extern const u8 _020FA1B0[];
+extern const u8 sAllPockets[];
+extern const OVY_MGR_TEMPLATE _020FA494;
+extern const OVY_MGR_TEMPLATE gOverlayTemplate_Battle;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_LegendaryCinematic;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_Bag;
+extern const OVY_MGR_TEMPLATE _020FA454;
+extern const OVY_MGR_TEMPLATE _020FA444;
+extern const OVY_MGR_TEMPLATE _020FA434;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_PokeathlonUnkApp;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_PCBox;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_EasyChat;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_Phone;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_TownMap;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_SafariAreaCustomizer;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_SafariDecoration;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_PhotoAlbum;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_AlphPuzzle;
+extern const OVY_MGR_TEMPLATE gOverlayTemplate_UnownReport;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_BerryPots;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_ApricornBox;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_BugContestSwapMon;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_OptionsMenu;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_PokeathlonCourseRecord;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_NintendoWifiConnect;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_PokeathlonEventRecord;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_PokeathlonMedals;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_Certificates;
+extern const OVY_MGR_TEMPLATE _020FA2F4;
+extern const OVY_MGR_TEMPLATE _020FA2E4;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_TradeSequence;
+extern const OVY_MGR_TEMPLATE _020FA2C4;
+extern const OVY_MGR_TEMPLATE _020FA2B4;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_PalPad;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_TrainerCard;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_Pokedex;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_ChooseStarter;
+extern const OVY_MGR_TEMPLATE _020FA264;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_TrainerCardSignature;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_PokeathlonCourse;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_VoltorbFlip;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_GeonetGlobe;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_RegisterHallOfFame;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_HallOfFameShowcase;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_Credits;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_MoveRelearner;
+extern const OVY_MGR_TEMPLATE _020FA1D4;
+extern const OVY_MGR_TEMPLATE _020FA1C4;
+extern const u8 *sPockets;
+extern OVY_MGR_TEMPLATE sOverlayTemplate_ScratchOffCards;
+extern OVY_MGR_TEMPLATE sOverlayTemplate_WirelessTradeSelectMon;
+extern OVY_MGR_TEMPLATE sOverlayTemplate_AccessoryPortrait;
+extern OVY_MGR_TEMPLATE _0210F9AC;
+extern OVY_MGR_TEMPLATE _0210F9BC;
+
+#endif //POKEHEARTGOLD_FIELD_LAUNCH_APPLICATION_DATA_H

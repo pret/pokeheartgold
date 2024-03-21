@@ -40,7 +40,7 @@
 .public LoadOVY38
 .public UnloadOVY38
 .public MI_CpuFill8
-.public _020FA484
+.public gOverlayTemplate_Battle
 .public gNatureStatMods
 .public _02102830
 .public _021028B4

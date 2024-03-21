@@ -116,6 +116,6 @@
 .public gGameLanguage
 .public FX_SinCosTable_
 .public gSystem
-.public ov69_021E5900
-.public ov69_021E5A34
-.public ov69_021E6080
+.public GeonetGlobe_Init
+.public GeonetGlobe_Main
+.public GeonetGlobe_Exit

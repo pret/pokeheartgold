@@ -230,9 +230,9 @@
 .public NNS_GfdDefaultFuncFreeTexVram
 .public NNS_GfdDefaultFuncFreePlttVram
 .public gSystem
-.public ov108_021E5900
-.public ov108_021E5948
-.public ov108_021E5978
-.public ov108_021E8850
-.public ov108_021E88C4
-.public ov108_021E8904
+.public SafariAreaCustomizer_Init
+.public SafariAreaCustomizer_Exit
+.public SafariAreaCustomizer_Main
+.public SafariDecoration_Init
+.public SafariDecoration_Exit
+.public SafariDecoration_Main

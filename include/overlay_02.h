@@ -2,13 +2,14 @@
 #define POKEHEARTGOLD_OVERLAY_02_H
 
 #include "battle/battle_setup.h"
+#include "heap.h"
 #include "script.h"
 #include "sys_task.h"
 #include "unk_0203BC10.h"
 
 struct FieldLongWarpTaskData;
 
-typedef struct UnkStruct_Ov02_0224E4EC {
+typedef struct SafariDecorationArgs {
     SaveData *saveData;
     void *unk04; // points to fieldSystem->unk_10C
     u8 unk08;
@@ -33,7 +34,7 @@ typedef struct UnkStruct_Ov02_0224E4EC {
     u8 unk1B;
     u16 unk1C; // known from what's decompiled
     u8 *unk20; // points to fieldSystem->unk_111
-} UnkStruct_Ov02_0224E4EC;
+} SafariDecorationArgs;
 
 SysTask *ov02_0224B418(FieldSystem *fieldSystem, int gender);
 BOOL ov02_0224B43C(SysTask *unk);
@@ -103,5 +104,6 @@ void ov02_02246714(TaskManager *man, u32 a1, u32 a2, u32 a3, u32 a4);
 void ov02_022469B4(TaskManager *man, LocalMapObject *obj1, LocalMapObject *obj2);
 void OpenAlphHiddenRoom(TaskManager *man, u32 a1);
 int GetRadioMusicPlayingSeq(void);
+SafariDecorationArgs *SafariDecoration_CreateArgs(FieldSystem *fieldSystem, HeapID heapId);
 
 #endif //POKEHEARTGOLD_OVERLAY_02_H

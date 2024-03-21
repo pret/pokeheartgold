@@ -203,7 +203,7 @@
 .public GXS_LoadOBJ
 .public DC_FlushRange
 .public memset
-.public _02103A1C
+.public gOverlayTemplate_PokemonSummary
 .public ov80_0222A7CC
 .public ov80_02236DD4
 .public ov80_02237254

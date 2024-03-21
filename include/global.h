@@ -21,8 +21,4 @@ typedef struct {
     int z;
 } Vec32;
 
-#ifndef __MWERKS__
-#define NONMATCHING
-#endif //__MWERKS__
-
 #endif //POKEHEARTGOLD_GLOBAL_H

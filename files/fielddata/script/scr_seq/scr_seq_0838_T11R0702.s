@@ -359,7 +359,7 @@ _058A:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	closemsg
-	choose_move_ui 1, VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
+	pokemon_summary_screen 1, VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	get_move_selection 1, VAR_SPECIAL_x8002
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK

@@ -9,8 +9,8 @@
 
 	.text
 
-	thumb_func_start sub_02097B78
-sub_02097B78: ; 0x02097B78
+	thumb_func_start LegendaryCinematic_Init
+LegendaryCinematic_Init: ; 0x02097B78
 	push {r3, r4, r5, lr}
 	mov r2, #2
 	add r5, r0, #0
@@ -33,10 +33,10 @@ sub_02097B78: ; 0x02097B78
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02097BA8: .word 0x0000041C
-	thumb_func_end sub_02097B78
+	thumb_func_end LegendaryCinematic_Init
 
-	thumb_func_start sub_02097BAC
-sub_02097BAC: ; 0x02097BAC
+	thumb_func_start LegendaryCinematic_Main
+LegendaryCinematic_Main: ; 0x02097BAC
 	push {r3, lr}
 	bl OverlayManager_GetData
 	ldr r1, [r0]
@@ -55,17 +55,17 @@ _02097BC8:
 	pop {r3, pc}
 	.balign 4, 0
 _02097BCC: .word _02108F38
-	thumb_func_end sub_02097BAC
+	thumb_func_end LegendaryCinematic_Main
 
-	thumb_func_start sub_02097BD0
-sub_02097BD0: ; 0x02097BD0
+	thumb_func_start LegendaryCinematic_Exit
+LegendaryCinematic_Exit: ; 0x02097BD0
 	push {r3, lr}
 	bl OverlayManager_FreeData
 	mov r0, #0x99
 	bl DestroyHeap
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02097BD0
+	thumb_func_end LegendaryCinematic_Exit
 
 	.rodata
 

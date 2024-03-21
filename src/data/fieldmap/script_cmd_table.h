@@ -351,7 +351,7 @@ BOOL ScrCmd_WaitButtonOrDelay(ScriptContext *ctx);
 BOOL ScrCmd_PartySelectUI(ScriptContext *ctx);
 BOOL ScrCmd_350(ScriptContext *ctx);
 BOOL ScrCmd_PartySelect(ScriptContext *ctx);
-BOOL ScrCmd_ChooseMoveUI(ScriptContext *ctx);
+BOOL ScrCmd_PokemonSummaryScreen(ScriptContext *ctx);
 BOOL ScrCmd_GetMoveSelection(ScriptContext *ctx);
 BOOL ScrCmd_GetPartyMonSpecies(ScriptContext *ctx);
 BOOL ScrCmd_PartymonIsMine(ScriptContext *ctx);
@@ -466,8 +466,8 @@ BOOL ScrCmd_EnableMassOutbreaks(ScriptContext *ctx);
 BOOL ScrCmd_CreateRoamer(ScriptContext *ctx);
 BOOL ScrCmd_465(ScriptContext *ctx);
 BOOL ScrCmd_466(ScriptContext *ctx);
-BOOL ScrCmd_MoveRelearnerInit(ScriptContext *ctx);
-BOOL ScrCmd_MoveTutorInit(ScriptContext *ctx);
+BOOL ScrCmd_MoveRelearner(ScriptContext *ctx);
+BOOL ScrCmd_MoveTutor(ScriptContext *ctx);
 BOOL ScrCmd_MoveRelearnerGetResult(ScriptContext *ctx);
 BOOL ScrCmd_LoadNPCTrade(ScriptContext *ctx);
 BOOL ScrCmd_GetOfferedSpecies(ScriptContext *ctx);
@@ -1206,7 +1206,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_PartySelectUI,
     ScrCmd_350,
     ScrCmd_PartySelect,
-    ScrCmd_ChooseMoveUI,
+    ScrCmd_PokemonSummaryScreen,
     ScrCmd_GetMoveSelection,
     ScrCmd_GetPartyMonSpecies,
     ScrCmd_PartymonIsMine,
@@ -1321,8 +1321,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_CreateRoamer,
     ScrCmd_465,
     ScrCmd_466,
-    ScrCmd_MoveRelearnerInit,
-    ScrCmd_MoveTutorInit,
+    ScrCmd_MoveRelearner,
+    ScrCmd_MoveTutor,
     ScrCmd_MoveRelearnerGetResult,
     ScrCmd_LoadNPCTrade,
     ScrCmd_GetOfferedSpecies,

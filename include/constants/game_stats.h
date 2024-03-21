@@ -30,5 +30,6 @@
 #define GAME_STAT_UNK97               97
 #define GAME_STAT_UNK98               98
 #define GAME_STAT_UNK100             100
+#define GAME_STAT_UNK114             114
 
 #endif //POKEHEARTGOLD_CONSTANTS_GAME_STATS_H

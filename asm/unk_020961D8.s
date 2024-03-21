@@ -32,7 +32,7 @@ sub_020961D8: ; 0x020961D8
 	mov r0, #2
 	mov r1, #0
 	add r3, r5, r3
-	bl sub_02090C94
+	bl EasyChat_CreateArgs
 	str r0, [r4, #0x10]
 	ldr r0, [r5, #0xc]
 	bl Save_Misc_Get
@@ -64,7 +64,7 @@ sub_02096248: ; 0x02096248
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
-	bl sub_02090D0C
+	bl EasyChat_FreeArgs
 	ldr r0, [r4, #4]
 	bl MessageFormat_Delete
 	add r0, r4, #0
@@ -101,7 +101,7 @@ _02096284:
 	bl sub_02090D34
 	ldr r0, [r4]
 	ldr r1, [r4, #0x10]
-	bl sub_0203EA24
+	bl EasyChat_LaunchApp
 	mov r0, #1
 	str r0, [r4, #0x18]
 	b _02096314
