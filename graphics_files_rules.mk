@@ -30,4 +30,4 @@ $(PADDED_LZ_FILES): LZ_FLAGS += -A4
 	$(GFX) $< $@ $(GFX_FLAGS)
 
 %.lz: %
-	$(WINE) $(NTRCOMP) $(LZ_FLAGS) -o $@ $<
+	$(NTRCOMP) $(LZ_FLAGS) -o $@ $<
