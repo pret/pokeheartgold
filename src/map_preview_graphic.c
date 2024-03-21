@@ -758,7 +758,7 @@ static int sub_0206A694(UnkStruct_0206A388 *unk, FieldSystem *fsys);
 
 u8 MapPreviewGraphic_GetIndex(u32 mapId) {
     u8 ret = -1;
-    for (int i = 0; i < 25; i++) {
+    for (int i = 0; i < (int) NELEMS(sMapPreviewGraphicData); i++) {
         if (sMapPreviewGraphicData[i].mapId == mapId) {
             ret = i;
             break;
