@@ -4,8 +4,8 @@
 
 	.text
 
-	thumb_func_start ov68_021E5900
-ov68_021E5900: ; 0x021E5900
+	thumb_func_start MoveRelearner_Init
+MoveRelearner_Init: ; 0x021E5900
 	push {r3, r4, r5, lr}
 	mov r2, #9
 	add r5, r0, #0
@@ -50,10 +50,10 @@ ov68_021E5900: ; 0x021E5900
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E5964: .word ov68_021E5B6C
-	thumb_func_end ov68_021E5900
+	thumb_func_end MoveRelearner_Init
 
-	thumb_func_start ov68_021E5968
-ov68_021E5968: ; 0x021E5968
+	thumb_func_start MoveRelearner_Main
+MoveRelearner_Main: ; 0x021E5968
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -160,10 +160,10 @@ _021E5A22:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov68_021E5968
+	thumb_func_end MoveRelearner_Main
 
-	thumb_func_start ov68_021E5A3C
-ov68_021E5A3C: ; 0x021E5A3C
+	thumb_func_start MoveRelearner_Exit
+MoveRelearner_Exit: ; 0x021E5A3C
 	push {r4, lr}
 	add r4, r0, #0
 	bl OverlayManager_GetData
@@ -174,7 +174,7 @@ ov68_021E5A3C: ; 0x021E5A3C
 	bl DestroyHeap
 	mov r0, #1
 	pop {r4, pc}
-	thumb_func_end ov68_021E5A3C
+	thumb_func_end MoveRelearner_Exit
 
 	thumb_func_start ov68_021E5A58
 ov68_021E5A58: ; 0x021E5A58
@@ -3534,7 +3534,7 @@ ov68_021E74D8: ; 0x021E74D8
 	bl sub_02089D40
 	mov r1, #0x17
 	lsl r1, r1, #4
-	ldr r0, _021E7564 ; =_02103A1C
+	ldr r0, _021E7564 ; =gOverlayTemplate_PokemonSummary
 	add r1, r4, r1
 	mov r2, #0x42
 	bl OverlayManager_New
@@ -3546,7 +3546,7 @@ ov68_021E74D8: ; 0x021E74D8
 	pop {r3, r4, pc}
 	.balign 4, 0
 _021E7560: .word _021E7BE8
-_021E7564: .word _02103A1C
+_021E7564: .word gOverlayTemplate_PokemonSummary
 	thumb_func_end ov68_021E74D8
 
 	thumb_func_start ov68_021E7568

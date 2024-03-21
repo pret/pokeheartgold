@@ -125,6 +125,6 @@
 .public MI_CpuCopy8
 .public _s32_div_f
 .public gSystem
-.public ov109_021E5900
-.public ov109_021E5968
-.public ov109_021E59F0
+.public PhotoAlbum_Init
+.public PhotoAlbum_Main
+.public PhotoAlbum_Exit

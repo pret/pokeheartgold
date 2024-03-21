@@ -25,8 +25,8 @@
 .public MIi_CpuClearFast
 .public MI_CpuFill8
 .public MI_CpuCopy8
-.public _0210159C
-.public _02103A1C
+.public gOverlayTemplate_PartyMenu
+.public gOverlayTemplate_PokemonSummary
 .public ov80_02235FC8
 .public ov80_02235FEC
 .public ov80_02235FF8

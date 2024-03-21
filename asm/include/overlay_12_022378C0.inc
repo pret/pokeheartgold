@@ -189,7 +189,7 @@
 .public ov06_0221BAF0
 .public ov07_0221BEDC
 .public ov07_0221BFE0
-.public Battle_Main
+.public Battle_Run
 .public ov12_02237B0C
 .public ov12_02237B6C
 .public ov12_02237BB8

@@ -258,6 +258,6 @@
 .public ov41_0224B57C
 .public ov41_0224B5C8
 .public ov41_0224B5D0
-.public ov41_0224BA10
-.public ov41_0224BACC
-.public ov41_0224BBA4
+.public AccessoryPortrait_Init
+.public AccessoryPortrait_Main
+.public AccessoryPortrait_Exit

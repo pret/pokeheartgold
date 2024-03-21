@@ -5,6 +5,7 @@
 #include "field_map_object.h"
 #include "field_system.h"
 #include "field_warp_tasks.h"
+#include "launch_application.h"
 #include "game_clear.h"
 #include "game_stats.h"
 #include "overlay_02.h"
@@ -17,7 +18,6 @@
 #include "sound_02004A44.h"
 #include "sys_flags.h"
 #include "unk_020517A4.h"
-#include "unk_0203E348.h"
 #include "unk_02087E70.h"
 #include "unk_020551B8.h"
 #include "unk_02055244.h"
@@ -67,7 +67,7 @@ static BOOL Task_StartBattle(TaskManager *taskManager) {
 
     switch (*state) {
         case 0:
-            sub_0203E3C4(fieldSystem, battleSetup);
+            Battle_LaunchApp(fieldSystem, battleSetup);
             sub_0203E354();
             (*state)++;
             break;

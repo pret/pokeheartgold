@@ -2,13 +2,13 @@
 #include "move_relearner.h"
 #include "pokemon.h"
 
-MoveRelearner *MoveRelearner_New(HeapID heapId) {
-    MoveRelearner *ret = AllocFromHeap(heapId, sizeof(MoveRelearner));
-    memset(ret, 0, sizeof(MoveRelearner));
+MoveRelearnerArgs *MoveRelearner_New(HeapID heapId) {
+    MoveRelearnerArgs *ret = AllocFromHeap(heapId, sizeof(MoveRelearnerArgs));
+    memset(ret, 0, sizeof(MoveRelearnerArgs));
     return ret;
 }
 
-void MoveRelearner_Delete(MoveRelearner *moveRelearner) {
+void MoveRelearner_Delete(MoveRelearnerArgs *moveRelearner) {
     FreeToHeap(moveRelearner);
 }
 

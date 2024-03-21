@@ -162,7 +162,7 @@
 .public G3X_SetClearColor
 .public MI_CpuFill8
 .public memset
-.public _02103A1C
-.public ov68_021E5900
-.public ov68_021E5968
-.public ov68_021E5A3C
+.public gOverlayTemplate_PokemonSummary
+.public MoveRelearner_Init
+.public MoveRelearner_Main
+.public MoveRelearner_Exit

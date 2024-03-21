@@ -14,7 +14,7 @@
 .public sub_02091570
 .public sub_02091590
 .public MATH_CountPopulation
-.public _020FA484
+.public gOverlayTemplate_Battle
 .public gNatureStatMods
 .public ov73_021E6B98
 .public ov73_021E705C

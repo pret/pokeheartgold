@@ -8,7 +8,7 @@
 	.include "unk_02087A78.inc"
 	.include "global.inc"
 
-	.public _020FA484
+	.public gOverlayTemplate_Battle
 	.public _021028B4
 	.public _021028C4
 	.public gNatureStatMods
@@ -392,7 +392,7 @@ _02087D3C:
 	mov r2, #1
 	bl sub_02004EC4
 _02087D46:
-	ldr r0, _02087E0C ; =_020FA484
+	ldr r0, _02087E0C ; =gOverlayTemplate_Battle
 	ldr r1, [r5, #0x10]
 	add r2, r4, #0
 	bl OverlayManager_New
@@ -476,7 +476,7 @@ _02087DFC: .word FS_OVERLAY_ID(OVY_40)
 _02087E00: .word 0x00000874
 _02087E04: .word 0x0000047B
 _02087E08: .word 0x0000045D
-_02087E0C: .word _020FA484
+_02087E0C: .word gOverlayTemplate_Battle
 	thumb_func_end sub_02087C38
 
 	thumb_func_start sub_02087E10

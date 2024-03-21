@@ -3,7 +3,7 @@
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public GF_AssertFail
-.public sub_0203FCB8
+.public LegendaryCinematic_LaunchApp
 .public TaskManager_Call
 .public FieldSystem_ApplicationIsRunning
 .public TaskManager_GetFieldSystem

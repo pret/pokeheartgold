@@ -6,16 +6,16 @@
 #include "player_data.h"
 #include "save.h"
 
-typedef struct VoltorbFlipAppArgs {
+typedef struct VoltorbFlipArgs {
     Options *options;
     u16 *coins;
     u32 *unk8;
     PlayerProfile *profile;
     SaveData *saveData;
-} VoltorbFlipAppArgs;
+} VoltorbFlipArgs;
 
-BOOL VoltorbFlipApp_OvyInit(OVY_MANAGER *man, int *state);
-BOOL VoltorbFlipApp_OvyExit(OVY_MANAGER *man, int *state);
-BOOL VoltorbFlipApp_OvyExec(OVY_MANAGER *man, int *state);
+BOOL VoltorbFlip_Init(OVY_MANAGER *man, int *state);
+BOOL VoltorbFlip_Exit(OVY_MANAGER *man, int *state);
+BOOL VoltorbFlip_Main(OVY_MANAGER *man, int *state);
 
 #endif //POKEHEARTGOLD_VOLTORB_FLIP_H

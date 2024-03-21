@@ -193,6 +193,6 @@
 .public FX_SinCosTable_
 .public gSystem
 .public MI_SendGXCommand
-.public ov63_0221BE20
-.public ov63_0221BF28
-.public ov63_0221BF88
+.public RegisterHallOfFame_Init
+.public RegisterHallOfFame_Exit
+.public RegisterHallOfFame_Main

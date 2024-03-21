@@ -1826,7 +1826,7 @@ ov80_0222CB54: ; 0x0222CB54
 	add r2, r1, #0
 	mov r3, #8
 	str r1, [sp, #4]
-	bl sub_020830D8
+	bl NamingScreen_CreateArgs
 	add r2, r0, #0
 	ldr r0, _0222CB8C ; =ov80_0222CB94
 	ldr r1, _0222CB90 ; =_02102610
@@ -2176,7 +2176,7 @@ ov80_0222CD94: ; 0x0222CD94
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [r5]
-	ldr r1, _0222CDF0 ; =_020FA484
+	ldr r1, _0222CDF0 ; =gOverlayTemplate_Battle
 	ldr r0, [r0]
 	add r2, r6, #0
 	mov r3, #1
@@ -2186,7 +2186,7 @@ ov80_0222CD94: ; 0x0222CD94
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0222CDEC: .word 0x0000045D
-_0222CDF0: .word _020FA484
+_0222CDF0: .word gOverlayTemplate_Battle
 	thumb_func_end ov80_0222CD94
 
 	thumb_func_start ov80_0222CDF4

@@ -4,8 +4,8 @@
 
 	.text
 
-	thumb_func_start ov64_021E5900
-ov64_021E5900: ; 0x021E5900
+	thumb_func_start HallOfFameShowcase_Init
+HallOfFameShowcase_Init: ; 0x021E5900
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r0, #0
@@ -82,10 +82,10 @@ _021E59B8: .word 0x04001050
 _021E59BC: .word 0x04000304
 _021E59C0: .word 0xFFFF7FFF
 _021E59C4: .word ov64_021E5A88
-	thumb_func_end ov64_021E5900
+	thumb_func_end HallOfFameShowcase_Init
 
-	thumb_func_start ov64_021E59C8
-ov64_021E59C8: ; 0x021E59C8
+	thumb_func_start HallOfFameShowcase_Exit
+HallOfFameShowcase_Exit: ; 0x021E59C8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -115,10 +115,10 @@ ov64_021E59C8: ; 0x021E59C8
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov64_021E59C8
+	thumb_func_end HallOfFameShowcase_Exit
 
-	thumb_func_start ov64_021E5A18
-ov64_021E5A18: ; 0x021E5A18
+	thumb_func_start HallOfFameShowcase_Main
+HallOfFameShowcase_Main: ; 0x021E5A18
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -174,7 +174,7 @@ _021E5A74:
 	bl sub_0200D020
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov64_021E5A18
+	thumb_func_end HallOfFameShowcase_Main
 
 	thumb_func_start ov64_021E5A88
 ov64_021E5A88: ; 0x021E5A88

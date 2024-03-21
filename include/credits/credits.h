@@ -13,7 +13,7 @@
 typedef struct {
     int gender;
     BOOL gameCleared;
-} CreditsAppArgs;
+} CreditsArgs;
 
 typedef struct {
     u8 unk0;
@@ -22,8 +22,8 @@ typedef struct {
     u8 unk3;
 } UnkOv021E60F6;
 
-BOOL CreditsApp_OvyInit(OVY_MANAGER *man, int *state);
-BOOL CreditsApp_OvyExit(OVY_MANAGER *man, int *state);
-BOOL CreditsApp_OvyExec(OVY_MANAGER *man, int *state);
+BOOL Credits_Init(OVY_MANAGER *man, int *state);
+BOOL Credits_Exit(OVY_MANAGER *man, int *state);
+BOOL Credits_Main(OVY_MANAGER *man, int *state);
 
 #endif //POKEHEARTGOLD_CREDITS_CREDITS_H

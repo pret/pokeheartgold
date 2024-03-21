@@ -2,15 +2,12 @@
 #include "constants/items.h"
 #include "bag_cursor.h"
 #include "berry_pots_app.h"
+#include "launch_application.h"
+#include "overlay_15.h"
 #include "overlay_16.h"
-#include "unk_0203E348.h"
 
 FS_EXTERN_OVERLAY(OVY_15);
 FS_EXTERN_OVERLAY(OVY_17);
-
-extern BOOL ov15_BagApp_Init(OVY_MANAGER*, int*);
-extern BOOL ov15_BagApp_Exec(OVY_MANAGER*, int*);
-extern BOOL ov15_BagApp_Exit(OVY_MANAGER*, int*);
 
 extern BOOL BerryPotsApp_Initialize(OVY_MANAGER*, int*);
 extern BOOL BerryPotsApp_Run(OVY_MANAGER*, int*);
@@ -32,9 +29,9 @@ static const OVY_MGR_TEMPLATE ov16_02201B68 = {
 };
 
 static const OVY_MGR_TEMPLATE ov16_02201B78 = {
-    .init = ov15_BagApp_Init,
-    .exec = ov15_BagApp_Exec,
-    .exit = ov15_BagApp_Exit,
+    .init = Bag_Init,
+    .exec = Bag_Main,
+    .exit = Bag_Exit,
     .ovy_id = FS_OVERLAY_ID(OVY_15),
 };
 
@@ -70,7 +67,7 @@ static BOOL ov16_02201948(OVY_MANAGER **manager) {
     return FALSE;
 }
 
-BOOL ov16_0220196C(OVY_MANAGER *manager, int *state) {
+BOOL BerryPots_Init(OVY_MANAGER *manager, int *state) {
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_17), OVY_LOAD_ASYNC);
     ov17_02201BC0();
 
@@ -85,7 +82,7 @@ BOOL ov16_0220196C(OVY_MANAGER *manager, int *state) {
     return TRUE;
 }
 
-BOOL ov16_022019B8(OVY_MANAGER *manager, int *state) {
+BOOL BerryPots_Main(OVY_MANAGER *manager, int *state) {
     UnkStruct_ov16_0220196C *unk = OverlayManager_GetData(manager);
 
     switch (*state) {
@@ -108,7 +105,7 @@ BOOL ov16_022019B8(OVY_MANAGER *manager, int *state) {
     return FALSE;
 }
 
-BOOL ov16_02201A04(OVY_MANAGER *manager, int *state) {
+BOOL BerryPots_Exit(OVY_MANAGER *manager, int *state) {
     UnkStruct_ov16_0220196C *unk = OverlayManager_GetData(manager);
     ov17_02201BC0();
 

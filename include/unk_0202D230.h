@@ -1,8 +1,9 @@
 #ifndef POKEHEARTGOLD_UNK_0202D230_H
 #define POKEHEARTGOLD_UNK_0202D230_H
 
-#include "save.h"
 #include "frontier_data.h"
+#include "pokemon_types_def.h"
+#include "save.h"
 
 void sub_0202D234(u32 a0);
 u32 sub_0202D284(u32 a0, u32 a1, void *a2);
@@ -22,5 +23,6 @@ u32 sub_0202D7B8(u32 a0);
 void sub_0202D8D0(u32 a0, u8 *a1);
 u32 sub_0202D908(SaveData *saveData);
 u32 sub_0202D928(SaveData *saveData);
+MAIL_MESSAGE *sub_0202D660(SaveData *saveData, u8 a1);
 
 #endif //POKEHEARTGOLD_UNK_0202D230_H

@@ -43,5 +43,5 @@
 .public _fflt
 .public _fmul
 .public _fsub
-.public _020FA484
+.public gOverlayTemplate_Battle
 .public gNatureStatMods

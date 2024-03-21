@@ -4,8 +4,8 @@
 
 	.text
 
-	thumb_func_start ov113_021E5900
-ov113_021E5900: ; 0x021E5900
+	thumb_func_start UnownReport_Init
+UnownReport_Init: ; 0x021E5900
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	ldr r1, [r5]
@@ -53,10 +53,10 @@ _021E5954:
 _021E5964:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov113_021E5900
+	thumb_func_end UnownReport_Init
 
-	thumb_func_start ov113_021E5968
-ov113_021E5968: ; 0x021E5968
+	thumb_func_start UnownReport_Main
+UnownReport_Main: ; 0x021E5968
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -105,10 +105,10 @@ _021E59B2:
 	bl sub_0200D020
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov113_021E5968
+	thumb_func_end UnownReport_Main
 
-	thumb_func_start ov113_021E59C8
-ov113_021E59C8: ; 0x021E59C8
+	thumb_func_start UnownReport_Exit
+UnownReport_Exit: ; 0x021E59C8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -128,7 +128,7 @@ _021E59DE:
 	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov113_021E59C8
+	thumb_func_end UnownReport_Exit
 
 	thumb_func_start ov113_021E59F8
 ov113_021E59F8: ; 0x021E59F8
