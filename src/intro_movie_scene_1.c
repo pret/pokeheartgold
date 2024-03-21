@@ -26,23 +26,23 @@ enum IntroScene1State {
 // Copyright, Gamefreak logo, and sunrise
 
 static void IntroMovie_Scene1_VBlankCB(void *pVoid);
-static void IntroMovie_Scene1_Init(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData);
-static BOOL IntroMovie_Scene1_Main(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData, int a2);
-static void IntroMovie_Scene1_Exit(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData);
-static void IntroMovie_Scene1_InitBgs(IntroMovieOvyData *data);
+static void IntroMovie_Scene1_Init(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData);
+static BOOL IntroMovie_Scene1_Main(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData, int a2);
+static void IntroMovie_Scene1_Exit(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData);
+static void IntroMovie_Scene1_InitBgs(IntroMovieOverlayData *data);
 static void IntroMovie_Scene1_LoadBgGfx(BgConfig *bgConfig);
-static void IntroMovie_Scene1_SetBrightnessAndBgMaskColor(IntroMovieOvyData *data);
-static void IntroMovie_Scene1_LoadSpriteGfx(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData);
-static void IntroMovie_Scene1_DestroySpritesAndObjectGfx(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData);
-static void IntroMovie_Scene1_CreateSprites(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData);
+static void IntroMovie_Scene1_SetBrightnessAndBgMaskColor(IntroMovieOverlayData *data);
+static void IntroMovie_Scene1_LoadSpriteGfx(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData);
+static void IntroMovie_Scene1_DestroySpritesAndObjectGfx(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData);
+static void IntroMovie_Scene1_CreateSprites(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData);
 
 static const u8 sIntroMovieScene1SpriteResCounts[4] = {1, 1, 1, 1};
 
-BOOL IntroMovie_Scene1(IntroMovieOvyData *data, void *pVoid) {
+BOOL IntroMovie_Scene1(IntroMovieOverlayData *data, void *pVoid) {
     IntroMovieScene1Data *sceneData = (IntroMovieScene1Data *)pVoid;
 
     if (IntroMovie_GetIntroSkippedFlag(data)) {
-        sceneData->state = 2;
+        sceneData->state = INTRO_MOVIE_SCENE_EXIT;
     }
 
     switch (sceneData->state) {
@@ -55,7 +55,7 @@ BOOL IntroMovie_Scene1(IntroMovieOvyData *data, void *pVoid) {
             ++sceneData->state;
         }
         break;
-    case INTRO_MOVIE_SCENE_CLEANUP:
+    case INTRO_MOVIE_SCENE_EXIT:
         IntroMovie_Scene1_Exit(data, sceneData);
         return TRUE;
     }
@@ -64,13 +64,13 @@ BOOL IntroMovie_Scene1(IntroMovieOvyData *data, void *pVoid) {
 }
 
 static void IntroMovie_Scene1_VBlankCB(void *pVoid) {
-    IntroMovieOvyData *data = (IntroMovieOvyData *)pVoid;
+    IntroMovieOverlayData *data = (IntroMovieOverlayData *)pVoid;
 
     DoScheduledBgGpuUpdates(IntroMovie_GetBgConfig(data));
     OamManager_ApplyAndResetBuffers();
 }
 
-static void IntroMovie_Scene1_Init(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData) {
+static void IntroMovie_Scene1_Init(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     sub_020216C8();
     sub_02022638();
@@ -83,16 +83,16 @@ static void IntroMovie_Scene1_Init(IntroMovieOvyData *data, IntroMovieScene1Data
     IntroMovie_Scene1_LoadSpriteGfx(data, sceneData);
     IntroMovie_Scene1_CreateSprites(data, sceneData);
     IntroMovie_Scene1_SetBrightnessAndBgMaskColor(data);
-    sceneData->needFreeGfx = 1;
+    sceneData->needFreeGfx = TRUE;
 }
 
-static BOOL IntroMovie_Scene1_Main(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData, int totalFrames) {
+static BOOL IntroMovie_Scene1_Main(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData, int totalFrames) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     IntroMovieBgLinearAnims *bgAnimCnt = IntroMovie_GetBgLinearAnimsController(data);
     u8 timer = IntroMovie_GetSceneStepTimer(data);
     switch (IntroMovie_GetSceneStep(data)) {
     case INTRO_SCENE1_APPEAR_COPYRIGHT:  // Copyright appear
-        BgSetPosTextAndCommit(bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_SET_Y, 0x80);
+        BgSetPosTextAndCommit(bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_SET_Y, 128);
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
         GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
         IntroMovie_AdvanceSceneStep(data);
@@ -132,8 +132,8 @@ static BOOL IntroMovie_Scene1_Main(IntroMovieOvyData *data, IntroMovieScene1Data
         break;
     case INTRO_SCENE1_WAIT_START_BG_SCROLL:  // Start scrolling background
         if (timer >= 1) {
-            IntroMovie_StartBlendFadeEffect(&bgAnimCnt->blend[0], 1, 0x1E, 0x50, 1, 1);
-            IntroMovie_StartBlendFadeEffect(&bgAnimCnt->blend[1], 2, 0x1E, 0x50, 1, 0);
+            IntroMovie_StartBlendFadeEffect(&bgAnimCnt->blend[0], 1, 0x1E, 80, 1, 1);
+            IntroMovie_StartBlendFadeEffect(&bgAnimCnt->blend[1], 2, 0x1E, 80, 1, 0);
             IntroMovie_StartBgScroll_VBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_MAIN_1, 0, -0x20, 0xF0);
             IntroMovie_StartBgScroll_VBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_MAIN_2, 0, -0x10, 0xF0);
             IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->sunSprite, TRUE);
@@ -166,7 +166,7 @@ static BOOL IntroMovie_Scene1_Main(IntroMovieOvyData *data, IntroMovieScene1Data
     return FALSE;
 }
 
-static void IntroMovie_Scene1_Exit(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData) {
+static void IntroMovie_Scene1_Exit(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     Main_SetVBlankIntrCB(NULL, NULL);
     if (sceneData->needFreeGfx) {
@@ -183,7 +183,7 @@ static void IntroMovie_Scene1_Exit(IntroMovieOvyData *data, IntroMovieScene1Data
     }
 }
 
-static void IntroMovie_Scene1_InitBgs(IntroMovieOvyData *data) {
+static void IntroMovie_Scene1_InitBgs(IntroMovieOverlayData *data) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
 
     {
@@ -381,14 +381,14 @@ static void IntroMovie_Scene1_LoadBgGfx(BgConfig *bgConfig) {
     GfGfx_BothDispOn();
 }
 
-static void IntroMovie_Scene1_SetBrightnessAndBgMaskColor(IntroMovieOvyData *data) {
+static void IntroMovie_Scene1_SetBrightnessAndBgMaskColor(IntroMovieOverlayData *data) {
     BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB_BLACK);
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB_BLACK);
     SetMasterBrightnessNeutral(PM_LCD_BOTTOM);
     SetMasterBrightnessNeutral(PM_LCD_TOP);
 }
 
-static void IntroMovie_Scene1_LoadSpriteGfx(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData) {
+static void IntroMovie_Scene1_LoadSpriteGfx(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData) {
     IntroMovie_CreateSpriteResourceManagers(data, sIntroMovieScene1SpriteResCounts);
     GF_2DGfxResMan **ppMgr = IntroMovie_GetSpriteResourceManagersArray(data);
     sceneData->charResObj = AddCharResObjFromNarc(ppMgr[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_BIRD_CHARRES, TRUE, 1, 1, HEAP_ID_INTRO_MOVIE);
@@ -400,7 +400,7 @@ static void IntroMovie_Scene1_LoadSpriteGfx(IntroMovieOvyData *data, IntroMovieS
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
-static void IntroMovie_Scene1_DestroySpritesAndObjectGfx(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData) {
+static void IntroMovie_Scene1_DestroySpritesAndObjectGfx(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData) {
     Sprite_Delete(sceneData->sunSprite);
     Sprite_Delete(sceneData->birdSprite);
     sub_0200AEB0(sceneData->charResObj);
@@ -408,7 +408,7 @@ static void IntroMovie_Scene1_DestroySpritesAndObjectGfx(IntroMovieOvyData *data
     IntroMovie_DestroySpriteResourceManagers(data);
 }
 
-static void IntroMovie_Scene1_CreateSprites(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData) {
+static void IntroMovie_Scene1_CreateSprites(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData) {
     SpriteResourcesHeader spriteResourcesHeader;
     SpriteTemplate spriteTemplate;
 
