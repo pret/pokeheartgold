@@ -4,8 +4,8 @@
 #include "field_system.h"
 #include "save.h"
 
-void LocationData_BackUp(Location *data);
-void LocationData_Restore(Location *data);
-void Save_CurrentLocation_BackUp(SaveData *saveData);
+void Location_SetToPlayerRoom(Location *data);
+void Location_SetToOutsidePlayerHome(Location *data);
+void Save_SetPositionToPlayerRoom(SaveData *saveData);
 
 #endif //POKEHEARTGOLD_FIELD_LOCATION_BACKUP_H

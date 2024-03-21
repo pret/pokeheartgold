@@ -7,8 +7,8 @@
 
 	.text
 
-	thumb_func_start ov53_OakSpeech_Init
-ov53_OakSpeech_Init: ; 0x021E5900
+	thumb_func_start OakSpeech_Init
+OakSpeech_Init: ; 0x021E5900
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	mov r2, #1
@@ -74,10 +74,10 @@ ov53_OakSpeech_Init: ; 0x021E5900
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov53_OakSpeech_Init
+	thumb_func_end OakSpeech_Init
 
-	thumb_func_start ov53_OakSpeech_Main
-ov53_OakSpeech_Main: ; 0x021E5994
+	thumb_func_start OakSpeech_Main
+OakSpeech_Main: ; 0x021E5994
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r5, r1, #0
@@ -269,10 +269,10 @@ _021E5B34:
 _021E5B3C: .word 0xFFFFE0FF
 _021E5B40: .word 0x04001000
 _021E5B44: .word ov53_021E5BCC
-	thumb_func_end ov53_OakSpeech_Main
+	thumb_func_end OakSpeech_Main
 
-	thumb_func_start ov53_OakSpeech_Exit
-ov53_OakSpeech_Exit: ; 0x021E5B48
+	thumb_func_start OakSpeech_Exit
+OakSpeech_Exit: ; 0x021E5B48
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	bl OverlayManager_GetData
@@ -323,7 +323,7 @@ ov53_OakSpeech_Exit: ; 0x021E5B48
 	nop
 _021E5BC4: .word FS_OVERLAY_ID(OVY_36)
 _021E5BC8: .word ov36_App_InitGameState_AfterOakSpeech
-	thumb_func_end ov53_OakSpeech_Exit
+	thumb_func_end OakSpeech_Exit
 
 	thumb_func_start ov53_021E5BCC
 ov53_021E5BCC: ; 0x021E5BCC

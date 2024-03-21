@@ -870,18 +870,18 @@ BOOL ScrCmd_GetTotalApricornCount(ScriptContext *ctx) {
 
 //Related to Kurt- canceling
 BOOL ScrCmd_739(ScriptContext *ctx) { //todo: rename structs and find out stuff
-    ApricornBoxArgs **unkPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *unkPtr = ApricornBox_LaunchApp(ctx->fieldSystem, 2);
+    ApricornBoxArgs **args = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    *args = ApricornBox_LaunchApp(ctx->fieldSystem, 2);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
 
 //Related to aprijuice stand- canceling
 BOOL ScrCmd_740(ScriptContext *ctx) {
-    ApricornBoxArgs **unkPtrA = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    ApricornBoxArgs **args = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     u32 unkVar = ScriptGetVar(ctx);
     u16 *unkPtrB = ScriptGetVarPointer(ctx);
-    *unkPtrA = sub_0203ED80(ctx->fieldSystem, unkVar, unkPtrB);
+    *args = sub_0203ED80(ctx->fieldSystem, unkVar, unkPtrB);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
@@ -1219,9 +1219,9 @@ static u32 SlotLuckiness(SaveData *saveData, u8 machineId, u8 city) {
 BOOL ScrCmd_CasinoGame(ScriptContext *ctx) {
     u8 machineId = ScriptReadByte(ctx);
     u8 city = ScriptReadByte(ctx); //1 = celadon; 0 = goldenrod
-    VoltorbFlipArgs **unkPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //VoltorbFlipAppData
+    VoltorbFlipArgs **args = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
 
-    *unkPtr = VoltorbFlip_LaunchApp(ctx->fieldSystem, SlotLuckiness(ctx->fieldSystem->saveData, machineId, city)); //this is messy, very very messy
+    *args = VoltorbFlip_LaunchApp(ctx->fieldSystem, SlotLuckiness(ctx->fieldSystem->saveData, machineId, city)); //this is messy, very very messy
 
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;

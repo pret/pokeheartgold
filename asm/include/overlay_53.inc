@@ -140,6 +140,6 @@
 .public _02102610
 .public gSystem
 .public ov36_App_InitGameState_AfterOakSpeech
-.public ov53_OakSpeech_Init
-.public ov53_OakSpeech_Main
-.public ov53_OakSpeech_Exit
+.public OakSpeech_Init
+.public OakSpeech_Main
+.public OakSpeech_Exit

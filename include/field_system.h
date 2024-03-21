@@ -144,7 +144,7 @@ struct FieldSystem {
     struct UnkStruct_02059E1C *unk80;
     struct UnkStruct_0205AC88 *unk84;
     u8 filler_88[0xC];
-    BagCursor *unk94;
+    BagCursor *bagCursor;
     u8 filler_98[0x4];
     void *unk9C;
     UnkStruct_Fsys_A0 *unkA0;

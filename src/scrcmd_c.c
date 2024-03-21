@@ -4160,7 +4160,7 @@ BOOL ScrCmd_627(ScriptContext *ctx) {
     work->unk_20 = r6;
     work->saveData = ctx->fieldSystem->saveData;
     work->mapId = ctx->fieldSystem->location->mapId;
-    work->unk_0C = ctx->fieldSystem->unk94;
+    work->unk_0C = ctx->fieldSystem->bagCursor;
     work->unk_1C = ctx->fieldSystem->unkB0;
     CallApplicationAsTask(ctx->taskman, &_02108584, work);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);

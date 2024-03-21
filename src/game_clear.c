@@ -283,8 +283,8 @@ void CallTask_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
         FieldSystem_SetGameClearTime(fieldSystem);
     }
     SaveArray_Party_Get(fieldSystem->saveData);
-    LocationData_BackUp(dynamicWarp);
-    LocationData_Restore(spawnWarp);
+    Location_SetToPlayerRoom(dynamicWarp);
+    Location_SetToOutsidePlayerHome(spawnWarp);
     SetFlag966(varsFlags);
     SetGameClearFlag(varsFlags);
     PlayerProfile_SetGameClearFlag(profile);

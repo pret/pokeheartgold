@@ -126,7 +126,7 @@ void Bag_LaunchApp(FieldSystem *fieldSystem, BagView *args) {
 
 BagView *sub_0203E3FC(FieldSystem *fieldSystem, TaskManager *taskman) {
     BagView *bagView = Bag_CreateView(Save_Bag_Get(fieldSystem->saveData), sAllPockets, HEAP_ID_FIELD);
-    sub_0207789C(bagView, fieldSystem->saveData, 0, fieldSystem->unk94, &fieldSystem->unk_10C);
+    sub_0207789C(bagView, fieldSystem->saveData, 0, fieldSystem->bagCursor, &fieldSystem->unk_10C);
     sub_020778E8(bagView, fieldSystem->unk70);
     if (PlayerAvatar_GetState(fieldSystem->playerAvatar) == PLAYER_STATE_CYCLING) {
         sub_020778C8(bagView);
@@ -150,7 +150,7 @@ BagView *Bag_LaunchApp_WithPocket(FieldSystem *fieldSystem, u8 pocketType) {
     }
 
     BagView *bagView = Bag_CreateView(bag, sPockets, HEAP_ID_32);
-    sub_0207789C(bagView, fieldSystem->saveData, 3, fieldSystem->unk94, &fieldSystem->unk_10C);
+    sub_0207789C(bagView, fieldSystem->saveData, 3, fieldSystem->bagCursor, &fieldSystem->unk_10C);
     Bag_LaunchApp(fieldSystem, bagView);
     return bagView;
 }
@@ -527,7 +527,7 @@ BerryPotsArgs *BerryPots_LaunchApp(FieldSystem *fieldSystem) {
     MI_CpuFill8(args, 0, sizeof(BerryPotsArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
     args->unk4 = &fieldSystem->unk_10C;
-    args->cursor = fieldSystem->unk94;
+    args->cursor = fieldSystem->bagCursor;
     BerryPots_LaunchApp_Impl(fieldSystem, args);
     return args;
 }

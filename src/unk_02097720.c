@@ -19,13 +19,13 @@ BOOL sub_02097754(TaskManager *taskManager) {
 
     switch (env->unknown_0) {
     case 0:
-        env->unknown_8 = SafariDecoration_LaunchApp(fieldSystem);
+        env->safariDecorationArgs = SafariDecoration_LaunchApp(fieldSystem);
         env->unknown_0++;
         break;
     case 1:
         if (FieldSystem_ApplicationIsRunning(fieldSystem) == FALSE) {
-            *env->unknown_4 = env->unknown_8->unk1C;
-            FreeToHeap(env->unknown_8);
+            *env->unknown_4 = env->safariDecorationArgs->unk1C;
+            FreeToHeap(env->safariDecorationArgs);
             env->unknown_0++;
         }
         break;

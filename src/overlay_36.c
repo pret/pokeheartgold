@@ -245,7 +245,7 @@ static void Continue_LoadSaveData_HandleError(HeapID heapId, SaveData* saveData)
 static void NewGame_InitSaveData(HeapID heapId, SaveData* saveData) {
 #pragma unused(heapId)
     Save_InitDynamicRegion(saveData);
-    Save_CurrentLocation_BackUp(saveData);
+    Save_SetPositionToPlayerRoom(saveData);
 
     PlayerProfile_SetMoney(Save_PlayerData_GetProfileAddr(saveData), 3000);
 

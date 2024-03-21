@@ -39,6 +39,6 @@
 .public sub_020915A4
 .public _02102610
 .public gApplication_OakSpeech
-.public ov53_OakSpeech_Init
-.public ov53_OakSpeech_Main
-.public ov53_OakSpeech_Exit
+.public OakSpeech_Init
+.public OakSpeech_Main
+.public OakSpeech_Exit

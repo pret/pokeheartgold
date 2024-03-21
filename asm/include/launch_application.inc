@@ -62,9 +62,6 @@
 .public Save_LocalFieldData_Get
 .public FieldSystem_LaunchApplication
 .public FieldSystem_GetSaveData
-.public LocationData_BackUp
-.public LocationData_Restore
-.public Save_CurrentLocation_BackUp
 .public Battle_LaunchApp
 .public Bag_LaunchApp
 .public sub_0203E3FC
@@ -364,8 +361,6 @@
 .public Battle_Init
 .public Battle_Main
 .public Battle_Exit
-.public _020FA17C
-.public _020FA190
 .public sOverlayTemplate_Bag
 .public sAllPockets
 .public sItemPocket

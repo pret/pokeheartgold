@@ -4,7 +4,7 @@
 #include "save_local_field_data.h"
 #include "constants/maps.h"
 
-static const Location _020FA17C = {
+static const Location sLocation_PlayerRoom = {
     .mapId     = MAP_T20R0202,
     .warpId    = 0xFFFFFFFF,
     .x         = 0x00000006,
@@ -12,7 +12,7 @@ static const Location _020FA17C = {
     .direction = 0x00000001,
 };
 
-static const Location _020FA190 = {
+static const Location sLocation_OutsidePlayerHome = {
     .mapId     = MAP_T20,
     .warpId    = 0xFFFFFFFF,
     .x         = 0x000002B7,
@@ -20,17 +20,17 @@ static const Location _020FA190 = {
     .direction = 0x00000001,
 };
 
-void LocationData_BackUp(Location *location) {
-    const Location *src = &_020FA17C;
-    *location = *src;
+void Location_SetToPlayerRoom(Location *dest) {
+    const Location *src = &sLocation_PlayerRoom;
+    *dest = *src;
 }
 
-void LocationData_Restore(Location *location) {
-    const Location *src = &_020FA190;
-    *location = *src;
+void Location_SetToOutsidePlayerHome(Location *dest) {
+    const Location *src = &sLocation_OutsidePlayerHome;
+    *dest = *src;
 }
 
-void Save_CurrentLocation_BackUp(SaveData *saveData) {
+void Save_SetPositionToPlayerRoom(SaveData *saveData) {
     Location *position = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(saveData));
-    LocationData_BackUp(position);
+    Location_SetToPlayerRoom(position);
 }

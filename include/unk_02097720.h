@@ -7,7 +7,7 @@
 typedef struct UnkStruct_02097720 {
     u32 unknown_0;
     u16* unknown_4;
-    SafariDecorationArgs* unknown_8;
+    SafariDecorationArgs* safariDecorationArgs;
 } UnkStruct_02097720;
 
 void sub_02097720(TaskManager* taskManager, u16* unknownPtr);
