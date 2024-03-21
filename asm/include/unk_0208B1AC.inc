@@ -86,5 +86,5 @@
 .public MI_CpuFill8
 .public _s32_div_f
 .public _u32_div_f
-.public _020FA484
+.public gOverlayTemplate_Battle
 .public gNatureStatMods

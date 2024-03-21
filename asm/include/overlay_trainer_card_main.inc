@@ -143,6 +143,6 @@
 .public memset
 .public _s32_div_f
 .public gSystem
-.public TrainerCardMainApp_OvyInit
-.public TrainerCardMainApp_OvyExec
-.public TrainerCardMainApp_OvyExit
+.public TrainerCardMainApp_Init
+.public TrainerCardMainApp_Main
+.public TrainerCardMainApp_Exit

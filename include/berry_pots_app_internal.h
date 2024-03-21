@@ -3,7 +3,7 @@
 #include "unk_02023694.h"
 #include "game_stats.h"
 #include "overlay_16.h"
-#include "unk_0203E348.h"
+#include "launch_application.h"
 
 enum BerryPotsApp_022036FC_Action {
     BERRY_POTS_APP_022036FC_ACTION_0,
@@ -24,6 +24,22 @@ enum BerryPotsApp_022036FC_Action {
     BERRY_POTS_APP_022036FC_ACTION_15,
     BERRY_POTS_APP_022036FC_ACTION_16,
 };
+
+typedef struct BerryPotsAppArgs_UnkSub4 {
+    u8 unk0[4];
+    u32 *unk4;
+    u8 unk8[4];
+    SaveData *savedata;
+} BerryPotsAppArgs_UnkSub4;
+
+typedef struct BerryPotsAppArgs {
+    u8 unk0[4];
+    BerryPotsAppArgs_UnkSub4 *unk4;
+    u8 unk8[0xC];
+    u8 unk14;
+    u8 unk15;
+    u16 itemId;
+} BerryPotsAppArgs;
 
 typedef struct BerryPotsAppData_UnkSub20 {
     u8 berryId;

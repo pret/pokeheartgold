@@ -291,7 +291,7 @@ ov80_02235624: ; 0x02235624
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5]
-	ldr r1, _02235670 ; =_020FA484
+	ldr r1, _02235670 ; =gOverlayTemplate_Battle
 	ldr r0, [r0]
 	add r2, r6, #0
 	bl sub_02096820
@@ -300,7 +300,7 @@ ov80_02235624: ; 0x02235624
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
 _0223566C: .word 0x0000045D
-_02235670: .word _020FA484
+_02235670: .word gOverlayTemplate_Battle
 	thumb_func_end ov80_02235624
 
 	thumb_func_start ov80_02235674

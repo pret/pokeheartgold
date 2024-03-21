@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_FIELD_SYSTEM_H
 #define POKEHEARTGOLD_FIELD_SYSTEM_H
 
+#include "bag_cursor.h"
 #include "bug_contest_internal.h"
 #include "gear_phone.h"
 #include "map_events_internal.h"
@@ -143,7 +144,7 @@ struct FieldSystem {
     struct UnkStruct_02059E1C *unk80;
     struct UnkStruct_0205AC88 *unk84;
     u8 filler_88[0xC];
-    void *unk94;
+    BagCursor *bagCursor;
     u8 filler_98[0x4];
     void *unk9C;
     UnkStruct_Fsys_A0 *unkA0;

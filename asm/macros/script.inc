@@ -1991,7 +1991,7 @@
 	.short \arg0
 	.endm
 
-	.macro choose_move_ui arg0, arg1, arg2
+	.macro pokemon_summary_screen arg0, arg1, arg2
 	.short 352
 	.byte \arg0
 	.short \arg1

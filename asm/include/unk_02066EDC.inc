@@ -28,7 +28,7 @@
 .public sub_02037C44
 .public sub_0203A05C
 .public FieldSystem_LaunchApplication
-.public sub_0203F8EC
+.public NintendoWifiConnection_LaunchApp
 .public GetVarPointer
 .public sub_0204B610
 .public sub_0204B66C
@@ -59,5 +59,5 @@
 .public sub_0208AD34
 .public MI_CpuFill8
 .public MI_CpuCopy8
-.public _0210159C
-.public _02103A1C
+.public gOverlayTemplate_PartyMenu
+.public gOverlayTemplate_PokemonSummary

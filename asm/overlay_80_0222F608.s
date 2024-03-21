@@ -151,7 +151,7 @@ ov80_0222F708: ; 0x0222F708
 	str r2, [r4, r0]
 	str r3, [sp]
 	ldr r0, [r5]
-	ldr r1, _0222F748 ; =_020FA484
+	ldr r1, _0222F748 ; =gOverlayTemplate_Battle
 	ldr r0, [r0]
 	bl sub_02096820
 	mov r0, #1
@@ -159,7 +159,7 @@ ov80_0222F708: ; 0x0222F708
 	pop {r3, r4, r5, r6, pc}
 	nop
 _0222F744: .word 0x000004FC
-_0222F748: .word _020FA484
+_0222F748: .word gOverlayTemplate_Battle
 	thumb_func_end ov80_0222F708
 
 	thumb_func_start ov80_0222F74C

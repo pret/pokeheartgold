@@ -1,20 +1,22 @@
 #include "scrcmd.h"
-#include "unk_0203E348.h"
 #include "move_relearner.h"
+#include "unk_02088288.h"
+#include "launch_application.h"
 
 BOOL ScrNative_WaitApplication(ScriptContext *ctx);
 
+// Triggered for move deleter
 BOOL ScrCmd_394(ScriptContext *ctx) {
     u16 var0 = ScriptGetVar(ctx);
-    void **runningAppData = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //*could* be MoveRelearner, not sure
-    *runningAppData = sub_0203E7F4(HEAP_ID_32, ctx->fieldSystem, var0, 0);
+    PokemonSummaryArgs **runningAppData = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    *runningAppData = LearnForgetMove_LaunchApp(HEAP_ID_32, ctx->fieldSystem, var0, 0);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
 
 BOOL ScrCmd_395(ScriptContext *ctx) {
     u16 *retPtr = ScriptGetVarPointer(ctx);
-    void **runningAppData = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //*could* be MoveRelearner, not sure
+    void **runningAppData = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //*could* be MoveRelearnerArgs, not sure
     GF_ASSERT(*runningAppData != NULL);
 
     *retPtr = sub_0203E864(*runningAppData);
@@ -38,45 +40,45 @@ BOOL ScrCmd_466(ScriptContext *ctx) {
     return FALSE;
 }
 
-static void CreateMoveRelearner(ScriptContext *ctx, int a1, Pokemon *mon, u16 *eligibleMoves) {
-    MoveRelearner **moveRelearnerPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    MoveRelearner *moveRelearner = MoveRelearner_New(HEAP_ID_32);
+static void StartMoveRelearner(ScriptContext *ctx, int type, Pokemon *mon, u16 *eligibleMoves) {
+    MoveRelearnerArgs **moveRelearnerPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    MoveRelearnerArgs *moveRelearner = MoveRelearner_New(HEAP_ID_32);
     *moveRelearnerPtr = moveRelearner;
 
     moveRelearner->mon = mon;
     moveRelearner->profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
     moveRelearner->options = Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->saveData);
     moveRelearner->eligibleMoves = eligibleMoves;
-    moveRelearner->unk_19 = a1;
+    moveRelearner->type = type;
 
-    sub_0203F9C4(ctx->fieldSystem, moveRelearner);
+    MoveRelearner_LaunchApp(ctx->fieldSystem, moveRelearner);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     FreeToHeap(eligibleMoves);
 }
 
-BOOL ScrCmd_MoveRelearnerInit(ScriptContext *ctx) {
+BOOL ScrCmd_MoveRelearner(ScriptContext *ctx) {
     u16 slot = ScriptGetVar(ctx);
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), slot);
     u16 *eligibleMoves = MoveRelearner_GetEligibleLevelUpMoves(mon, HEAP_ID_32);
-    CreateMoveRelearner(ctx, 1, mon, eligibleMoves);
+    StartMoveRelearner(ctx, 1, mon, eligibleMoves);
     return TRUE;
 }
 
-BOOL ScrCmd_MoveTutorInit(ScriptContext *ctx) {
+BOOL ScrCmd_MoveTutor(ScriptContext *ctx) {
     u16 slot = ScriptGetVar(ctx);
     u16 move = ScriptGetVar(ctx);
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), slot);
     u16 *eligibleMoves = AllocFromHeap(HEAP_ID_32, 2 * sizeof(u16));
     eligibleMoves[0] = move;
     eligibleMoves[1] = 0xffff;
-    CreateMoveRelearner(ctx, 0, mon, eligibleMoves);
+    StartMoveRelearner(ctx, MOVE_RELEARNER_TUTOR, mon, eligibleMoves);
     return TRUE;
 }
 
 BOOL ScrCmd_MoveRelearnerGetResult(ScriptContext *ctx) {
     u16 *retPtr = ScriptGetVarPointer(ctx);
-    MoveRelearner **moveRelearnerPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    MoveRelearner *moveRelearner = *moveRelearnerPtr;
+    MoveRelearnerArgs **moveRelearnerPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    MoveRelearnerArgs *moveRelearner = *moveRelearnerPtr;
     GF_ASSERT(moveRelearner != NULL);
 
     if (moveRelearner->padding_1A[0] == 0) {

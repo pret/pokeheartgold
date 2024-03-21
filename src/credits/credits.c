@@ -154,7 +154,7 @@ typedef struct {
     BgConfig *bgConfig;
     u32 timer;
     int musicBoxWaitTimer;
-    CreditsAppArgs *args;
+    CreditsArgs *args;
     BOOL skipCredits;
     SpriteList *spriteList;
     GF_G2dRenderer g2dRender;
@@ -206,7 +206,7 @@ static void LoadCutsceneSpriteGfx(CutsceneWork *a0, int a1);
 static void InitCutsceneSprites(CreditsAppWork *work);
 static void FreeCutsceneSprites(CreditsAppWork *work);
 
-BOOL CreditsApp_OvyInit(OVY_MANAGER *man, int *state) {
+BOOL Credits_Init(OVY_MANAGER *man, int *state) {
     CreditsAppWork *work;
 
     switch (*state) {
@@ -264,7 +264,7 @@ BOOL CreditsApp_OvyInit(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL CreditsApp_OvyExit(OVY_MANAGER *man, int *state) {
+BOOL Credits_Exit(OVY_MANAGER *man, int *state) {
     CreditsAppWork *work = OverlayManager_GetData(man);
 
     switch (*state) {
@@ -301,7 +301,7 @@ BOOL CreditsApp_OvyExit(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL CreditsApp_OvyExec(OVY_MANAGER *man, int *state) {
+BOOL Credits_Main(OVY_MANAGER *man, int *state) {
     CreditsAppWork *work = OverlayManager_GetData(man);
     GF_ASSERT(work->timer < 0xffffffff);
 

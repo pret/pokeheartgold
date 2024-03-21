@@ -91,7 +91,7 @@ _02095E72:
 	strb r1, [r0, #0xf]
 	ldr r1, [r4, #4]
 	add r0, r5, #0
-	bl FieldSystem_LaunchPokeathlonCourseApplication
+	bl PokeathlonCourse_LaunchApp
 	bl sub_0203E30C
 	mov r0, #1
 	str r0, [r4]

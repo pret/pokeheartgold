@@ -393,14 +393,14 @@ _02236290:
 	str r1, [r0, #0x20]
 	str r3, [sp]
 	add r5, #0xa8
-	ldr r1, _022362B4 ; =_0210159C
+	ldr r1, _022362B4 ; =gOverlayTemplate_PartyMenu
 	ldr r2, [r5]
 	add r0, r6, #0
 	bl sub_02096820
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	nop
-_022362B4: .word _0210159C
+_022362B4: .word gOverlayTemplate_PartyMenu
 	thumb_func_end ov80_0223608C
 
 	thumb_func_start ov80_022362B8
@@ -565,14 +565,14 @@ ov80_02236330: ; 0x02236330
 	mov r3, #0
 	str r3, [sp]
 	add r4, #0xac
-	ldr r1, _02236418 ; =_02103A1C
+	ldr r1, _02236418 ; =gOverlayTemplate_PokemonSummary
 	ldr r2, [r4]
 	add r0, r5, #0
 	bl sub_02096820
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02236414: .word ov80_0223C040
-_02236418: .word _02103A1C
+_02236418: .word gOverlayTemplate_PokemonSummary
 	thumb_func_end ov80_02236330
 
 	thumb_func_start ov80_0223641C

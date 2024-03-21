@@ -5,6 +5,13 @@
 #include "save_misc_data.h"
 #include "overlay_manager.h"
 
+typedef struct BerryPotsArgs {
+    void *unk0;
+    u32 *unk4;
+    BagCursor *cursor;
+    SaveData *saveData;
+} BerryPotsArgs;
+
 typedef struct UnkStruct_ov16_022014A0 {
     u8 defaultGrowthTimeInHours;
     u8 defaultDrainRate;
@@ -35,8 +42,8 @@ u32 ItemIdToMulchId(u16 itemId);
 u16 GetTotalBerryQuantity(Bag *bag, HeapID heapId);
 u16 GetTotalMulchQuantity(Bag *bag, HeapID heapId);
 
-BOOL ov16_0220196C(OVY_MANAGER *manager, int *state);
-BOOL ov16_022019B8(OVY_MANAGER *manager, int *state);
-BOOL ov16_02201A04(OVY_MANAGER *manager, int *state);
+BOOL BerryPots_Init(OVY_MANAGER *manager, int *state);
+BOOL BerryPots_Main(OVY_MANAGER *manager, int *state);
+BOOL BerryPots_Exit(OVY_MANAGER *manager, int *state);
 
 #endif

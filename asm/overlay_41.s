@@ -12370,8 +12370,8 @@ _0224B9D0:
 	.balign 4, 0
 	thumb_func_end ov41_0224B958
 
-	thumb_func_start ov41_0224BA10
-ov41_0224BA10: ; 0x0224BA10
+	thumb_func_start AccessoryPortrait_Init
+AccessoryPortrait_Init: ; 0x0224BA10
 	push {r3, r4, r5, lr}
 	sub sp, #0x10
 	mov r2, #2
@@ -12447,10 +12447,10 @@ ov41_0224BA10: ; 0x0224BA10
 	nop
 _0224BAC4: .word ov41_0224BBF0
 _0224BAC8: .word gSystem + 0x60
-	thumb_func_end ov41_0224BA10
+	thumb_func_end AccessoryPortrait_Init
 
-	thumb_func_start ov41_0224BACC
-ov41_0224BACC: ; 0x0224BACC
+	thumb_func_start AccessoryPortrait_Main
+AccessoryPortrait_Main: ; 0x0224BACC
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r1, #0
@@ -12555,10 +12555,10 @@ _0224BB96:
 	.balign 4, 0
 _0224BB9C: .word gSystem
 _0224BBA0: .word 0x000005DD
-	thumb_func_end ov41_0224BACC
+	thumb_func_end AccessoryPortrait_Main
 
-	thumb_func_start ov41_0224BBA4
-ov41_0224BBA4: ; 0x0224BBA4
+	thumb_func_start AccessoryPortrait_Exit
+AccessoryPortrait_Exit: ; 0x0224BBA4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -12586,7 +12586,7 @@ ov41_0224BBA4: ; 0x0224BBA4
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov41_0224BBA4
+	thumb_func_end AccessoryPortrait_Exit
 
 	thumb_func_start ov41_0224BBF0
 ov41_0224BBF0: ; 0x0224BBF0
