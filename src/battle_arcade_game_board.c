@@ -5,7 +5,7 @@
 #include "gf_gfx_loader.h"
 #include "gf_gfx_planes.h"
 #include "math_util.h"
-#include "overlay_80.h"
+#include "frontier/overlay_80.h"
 #include "palette.h"
 #include "party.h"
 #include "system.h"
@@ -75,10 +75,10 @@ static void ov84_0223F2B4(GAME_BOARD_SUB_3E8 *work, Party *playerParty, Party *o
 static Sprite *ov84_0223F374(GAME_BOARD_SUB_3E8 *work, u32 chara, u32 pal, u32 cell, u32 anim, u32 prio, int bgPrio, u8 display);
 static void ov84_0223F418(GAME_BOARD_SUB_3E8 *work);
 static void ov84_0223F480(void);
-static void ov84_0223F4B4(GAME_BOARD_SUB_3E8 *work);
+static void GameBoard_LoadEventGraphics(GAME_BOARD_SUB_3E8 *work);
 static void ov84_0223F538(GAME_BOARD_SUB_3E8 *work);
 static void ov84_0223F5E4(GAME_BOARD_SUB_3E8 *work, Party *playerParty, Party *opponentParty, u8 type);
-static void ov84_0223F714(GAME_BOARD_SUB_3E8 *work);
+static void GameBoard_LoadButtonGraphics(GAME_BOARD_SUB_3E8 *work);
 static BATTLE_ARCADE_OBJECT *BattleArcadeObject_Create(GAME_BOARD_SUB_3E8 *work, u32 chara, u32 pal, u32 cell, u32 anim, u16 x, u16 y, u32 priority, int bgPrio, u8 display);
 static void *BattleArcadeObj_Delete(BATTLE_ARCADE_OBJECT *obj);
 static void BattleArcadeObj_SetVisible(BATTLE_ARCADE_OBJECT *obj, int flag);
@@ -1222,8 +1222,8 @@ static void ov84_0223F2B4(GAME_BOARD_SUB_3E8 *work, Party *playerParty, Party *o
         work->resourceMan[i] = Create2DGfxResObjMan(ov84_0223F9E4[i], (GfGfxResType)i, HEAP_ID_GAME_BOARD);
     }
 
-    ov84_0223F714(work);
-    ov84_0223F4B4(work);
+    GameBoard_LoadButtonGraphics(work);
+    GameBoard_LoadEventGraphics(work);
     ov84_0223F538(work);
     ov84_0223F5E4(work, playerParty, opponentParty, type);
 
@@ -1306,7 +1306,7 @@ static void ov84_0223F480(void) {
     sub_02022638();
 }
 
-static void ov84_0223F4B4(GAME_BOARD_SUB_3E8 *work) {
+static void GameBoard_LoadEventGraphics(GAME_BOARD_SUB_3E8 *work) {
     work->resourceObj[1][0] = AddCharResObjFromNarc(work->resourceMan[0], NARC_a_1_8_4, 18, TRUE, 1, 1, HEAP_ID_GAME_BOARD);
     work->resourceObj[1][1] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_a_1_8_4, 56, FALSE, 1, 1, 8, HEAP_ID_GAME_BOARD);
     work->resourceObj[1][2] = AddCellOrAnimResObjFromNarc(work->resourceMan[2], NARC_a_1_8_4, 20, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_GAME_BOARD);
@@ -1355,7 +1355,7 @@ static void ov84_0223F5E4(GAME_BOARD_SUB_3E8 *work, Party *playerParty, Party *o
     NARC_Delete(narc);
 }
 
-static void ov84_0223F714(GAME_BOARD_SUB_3E8 *work) {
+static void GameBoard_LoadButtonGraphics(GAME_BOARD_SUB_3E8 *work) {
     work->resourceObj[0][0] = AddCharResObjFromNarc(work->resourceMan[0], NARC_a_1_8_4, 21, TRUE, 0, 2, HEAP_ID_GAME_BOARD);
     work->resourceObj[0][1] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_a_1_8_4, 57, FALSE, 0, 2, 2, HEAP_ID_GAME_BOARD);
     work->resourceObj[0][2] = AddCellOrAnimResObjFromNarc(work->resourceMan[2], NARC_a_1_8_4, 23, TRUE, 0, GF_GFX_RES_TYPE_CELL, HEAP_ID_GAME_BOARD);

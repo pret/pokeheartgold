@@ -14,7 +14,6 @@
 
 #define ARCADE_ENEMY_POKEMON_MAX    4
 
-
 typedef struct GAME_BOARD_ARGS {
     SaveData *saveData;
     u8 type;
