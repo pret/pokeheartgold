@@ -11,6 +11,7 @@
 #include "overlay_01_021F1AFC.h"
 #include "overlay_01.h"
 #include "constants/maps.h"
+#include "constants/movements.h"
 #include "fielddata/graphic/preview_graphic/preview_graphic.naix"
 
 typedef struct MapPreviewGraphicData {
@@ -39,10 +40,10 @@ typedef struct UnkStruct_0206A388 {
     u16 index;
     u16 fadeOutTimer;
     u16 unk1A;
-    u32 bg2Prioirty;
-    u32 bg0Prioirty;
-    u32 bg1Prioirty;
-    u32 bg3Prioirty;
+    u32 bg2Priority;
+    u32 bg0Priority;
+    u32 bg1Priority;
+    u32 bg3Priority;
     int timeIndex;
     int unk30;
     UnkStateMachineSubstruct_0206A388 unk34;
@@ -820,10 +821,10 @@ static BOOL Task_MapPreviewGraphic_ShowImage(TaskManager *man) {
     switch (unk->state) {
     case PG_STATE_INIT:
         unk->bgColorMode = GetBgColorMode(unk->bgConfig, 2);
-        unk->bg2Prioirty = GetBgPriority(unk->bgConfig, GF_BG_LYR_MAIN_2);
-        unk->bg0Prioirty = GetBgPriority(unk->bgConfig, GF_BG_LYR_MAIN_0);
-        unk->bg1Prioirty = GetBgPriority(unk->bgConfig, GF_BG_LYR_MAIN_1);
-        unk->bg3Prioirty = GetBgPriority(unk->bgConfig, GF_BG_LYR_MAIN_3);
+        unk->bg2Priority = GetBgPriority(unk->bgConfig, GF_BG_LYR_MAIN_2);
+        unk->bg0Priority = GetBgPriority(unk->bgConfig, GF_BG_LYR_MAIN_0);
+        unk->bg1Priority = GetBgPriority(unk->bgConfig, GF_BG_LYR_MAIN_1);
+        unk->bg3Priority = GetBgPriority(unk->bgConfig, GF_BG_LYR_MAIN_3);
         SetBgControlParam(unk->bgConfig, 2, GF_BG_CNT_SET_COLOR_MODE, 1);
         SetBgPriority(GF_BG_LYR_MAIN_3, 0);
         SetBgPriority(GF_BG_LYR_MAIN_2, 1);
@@ -848,7 +849,6 @@ static BOOL Task_MapPreviewGraphic_ShowImage(TaskManager *man) {
         if (++unk->displayTimer > 60) {
             unk->fadeOutTimer = 0;
             unk->state++;
-            
         }
         break;
     case PG_STATE_FADE_OUT:
@@ -862,10 +862,10 @@ static BOOL Task_MapPreviewGraphic_ShowImage(TaskManager *man) {
         if (sub_0206A694(unk, fsys) && unk->fadeOutTimer >= 16) {
             ToggleBgLayer(2, GF_PLANE_TOGGLE_OFF);
             SetBgControlParam(unk->bgConfig, 2, GF_BG_CNT_SET_COLOR_MODE, unk->bgColorMode);
-            SetBgPriority(GF_BG_LYR_MAIN_2, (u8) unk->bg2Prioirty);
-            SetBgPriority(GF_BG_LYR_MAIN_0, (u8) unk->bg0Prioirty);
-            SetBgPriority(GF_BG_LYR_MAIN_1, (u8) unk->bg1Prioirty);
-            SetBgPriority(GF_BG_LYR_MAIN_3, (u8) unk->bg3Prioirty);
+            SetBgPriority(GF_BG_LYR_MAIN_2, (u8) unk->bg2Priority);
+            SetBgPriority(GF_BG_LYR_MAIN_0, (u8) unk->bg0Priority);
+            SetBgPriority(GF_BG_LYR_MAIN_1, (u8) unk->bg1Priority);
+            SetBgPriority(GF_BG_LYR_MAIN_3, (u8) unk->bg3Priority);
             reg_G2_BLDCNT = 0;
             BG_ClearCharDataRange(2, 0x20, 0, unk->heapId);
             BgClearTilemapBufferAndCommit(unk->bgConfig, 2);
@@ -897,10 +897,10 @@ static int sub_0206A694(UnkStruct_0206A388 *unk, FieldSystem *fsys) {
     }
 
     UnkStateMachineSubstruct_0206A388 *unkSub = &unk->unk34; //required to match
-    
+
     switch (unk->unk34.state) {
     case 0:
-        PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(fsys->playerAvatar, 0);
+        PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(fsys->playerAvatar, FALSE);
         unkSub->state++;
         break;
     case 1:
@@ -916,14 +916,14 @@ static int sub_0206A694(UnkStruct_0206A388 *unk, FieldSystem *fsys) {
         }
         break;
     case 2:
-        Field_PlayerAvatar_OrrTransitionFlags(fsys->playerAvatar, 1);
+        Field_PlayerAvatar_OrrTransitionFlags(fsys->playerAvatar, PLAYER_TRANSITION_WALKING);
         Field_PlayerAvatar_ApplyTransitionFlags(fsys->playerAvatar);
         unkSub->state++;
         break;
     case 3:
         player = PlayerAvatar_GetMapObject(fsys->playerAvatar);
         if (MapObject_AreBitsSetForMovementScriptInit(player)) {
-            MapObject_SetHeldMovement(player, 1);
+            MapObject_SetHeldMovement(player, MOVEMENT_FACE_DOWN);
             unkSub->state++;
         }
         break;
@@ -932,8 +932,8 @@ static int sub_0206A694(UnkStruct_0206A388 *unk, FieldSystem *fsys) {
         if (MapObject_AreBitsSetForMovementScriptInit(player)) {
             if (FollowMon_IsActive(fsys)) {
                 ov01_02205790(fsys, 1);
-                sub_0205FC94(FollowMon_GetMapObject(fsys), 0x30);
-                sub_02069DC8(FollowMon_GetMapObject(fsys), 1);
+                sub_0205FC94(FollowMon_GetMapObject(fsys), MOVEMENT_WALK_UNK_48);
+                sub_02069DC8(FollowMon_GetMapObject(fsys), TRUE);
             }
             unkSub->state++;
         }
