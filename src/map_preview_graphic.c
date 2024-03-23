@@ -55,24 +55,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000000_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000001_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000002_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_dark_cave_r45_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_dark_cave_r45_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_dark_cave_r45_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000003_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000004_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000005_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_dark_cave_r45_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_dark_cave_r45_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_dark_cave_r45_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000003_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000004_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000005_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_dark_cave_r45_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_dark_cave_r45_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_dark_cave_r45_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000006_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000007_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000008_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_dark_cave_r45_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_dark_cave_r45_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_dark_cave_r45_night_NSCR_lz
             }
         },
         .unused3C = 0
@@ -83,24 +83,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000009_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000010_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000011_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_dark_cave_r31_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_dark_cave_r31_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_dark_cave_r31_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000012_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000013_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000014_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_dark_cave_r31_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_dark_cave_r31_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_dark_cave_r31_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000012_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000013_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000014_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_dark_cave_r31_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_dark_cave_r31_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_dark_cave_r31_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000015_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000016_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000017_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_dark_cave_r31_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_dark_cave_r31_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_dark_cave_r31_night_NSCR_lz
             }
         },
         .unused3C = 0
@@ -111,24 +111,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000018_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000019_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000020_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_sprout_tower_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_sprout_tower_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_sprout_tower_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000021_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000022_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000023_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_sprout_tower_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_sprout_tower_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_sprout_tower_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000021_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000022_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000023_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_sprout_tower_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_sprout_tower_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_sprout_tower_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000024_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000025_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000026_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_sprout_tower_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_sprout_tower_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_sprout_tower_night_NSCR_lz
             }
         },
         .unused3C = 1
@@ -139,24 +139,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000027_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000028_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000029_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000030_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000031_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000032_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000030_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000031_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000032_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000033_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000034_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000035_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_night_NSCR_lz
             }
         },
         .unused3C = 2
@@ -167,24 +167,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000027_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000028_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000029_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000030_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000031_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000032_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000030_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000031_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000032_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000033_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000034_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000035_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_ruins_of_alph_night_NSCR_lz
             }
         },
         .unused3C = 2
@@ -195,24 +195,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000036_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000037_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000038_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_union_cave_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_union_cave_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_union_cave_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000039_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000040_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000041_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_union_cave_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_union_cave_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_union_cave_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000039_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000040_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000041_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_union_cave_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_union_cave_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_union_cave_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000042_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000043_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000044_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_union_cave_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_union_cave_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_union_cave_night_NSCR_lz
             }
         },
         .unused3C = 3
@@ -223,24 +223,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000045_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000046_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000047_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_slowpoke_well_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_slowpoke_well_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_slowpoke_well_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000048_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000049_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000050_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_slowpoke_well_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_slowpoke_well_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_slowpoke_well_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000048_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000049_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000050_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_slowpoke_well_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_slowpoke_well_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_slowpoke_well_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000051_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000052_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000053_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_slowpoke_well_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_slowpoke_well_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_slowpoke_well_night_NSCR_lz
             }
         },
         .unused3C = 4
@@ -251,24 +251,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000054_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000055_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000056_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_ilex_forest_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_ilex_forest_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_ilex_forest_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000057_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000058_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000059_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_ilex_forest_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_ilex_forest_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_ilex_forest_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000060_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000061_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000062_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_ilex_forest_evening_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_ilex_forest_evening_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_ilex_forest_evening_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000063_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000064_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000065_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_ilex_forest_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_ilex_forest_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_ilex_forest_night_NSCR_lz
             }
         },
         .unused3C = 5
@@ -279,24 +279,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000066_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000067_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000068_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_national_park_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_national_park_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_national_park_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000069_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000070_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000071_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_national_park_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_national_park_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_national_park_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000072_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000073_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000074_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_national_park_evening_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_national_park_evening_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_national_park_evening_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000075_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000076_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000077_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_national_park_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_national_park_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_national_park_night_NSCR_lz
             }
         },
         .unused3C = 6
@@ -307,24 +307,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000078_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000079_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000080_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_burned_tower_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_burned_tower_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_burned_tower_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000081_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000082_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000083_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_burned_tower_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_burned_tower_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_burned_tower_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000084_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000085_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000086_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_burned_tower_evening_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_burned_tower_evening_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_burned_tower_evening_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000087_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000088_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000089_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_burned_tower_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_burned_tower_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_burned_tower_night_NSCR_lz
             }
         },
         .unused3C = 7
@@ -335,24 +335,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000090_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000091_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000092_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_bell_tower_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_bell_tower_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_bell_tower_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000093_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000094_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000095_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_bell_tower_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_bell_tower_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_bell_tower_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000096_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000097_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000098_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_bell_tower_evening_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_bell_tower_evening_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_bell_tower_evening_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000099_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000100_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000101_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_bell_tower_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_bell_tower_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_bell_tower_night_NSCR_lz
             }
         },
         .unused3C = 8
@@ -363,24 +363,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000102_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000103_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000104_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_whirl_islands_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_whirl_islands_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_whirl_islands_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000105_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000106_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000107_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_whirl_islands_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_whirl_islands_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_whirl_islands_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000105_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000106_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000107_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_whirl_islands_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_whirl_islands_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_whirl_islands_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000108_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000109_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000110_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_whirl_islands_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_whirl_islands_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_whirl_islands_night_NSCR_lz
             }
         },
         .unused3C = 9
@@ -391,24 +391,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000111_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000112_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000113_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_mt_mortar_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_mt_mortar_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_mt_mortar_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000114_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000115_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000116_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_mt_mortar_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_mt_mortar_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_mt_mortar_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000117_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000118_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000119_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_mt_mortar_evening_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_mt_mortar_evening_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_mt_mortar_evening_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000120_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000121_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000122_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_mt_mortar_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_mt_mortar_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_mt_mortar_night_NSCR_lz
             }
         },
         .unused3C = 11
@@ -419,24 +419,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000123_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000124_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000125_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_ice_path_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_ice_path_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_ice_path_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000126_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000127_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000128_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_ice_path_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_ice_path_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_ice_path_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000126_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000127_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000128_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_ice_path_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_ice_path_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_ice_path_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000129_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000130_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000131_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_ice_path_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_ice_path_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_ice_path_night_NSCR_lz
             }
         },
         .unused3C = 12
@@ -447,24 +447,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000132_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000133_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000134_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_dragons_den_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_dragons_den_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_dragons_den_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000135_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000136_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000137_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_dragons_den_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_dragons_den_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_dragons_den_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000135_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000136_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000137_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_dragons_den_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_dragons_den_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_dragons_den_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000138_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000139_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000140_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_dragons_den_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_dragons_den_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_dragons_den_night_NSCR_lz
             }
         },
         .unused3C = 13
@@ -475,24 +475,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000141_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000142_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000143_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_tohjo_falls_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_tohjo_falls_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_tohjo_falls_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000144_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000145_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000146_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_tohjo_falls_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_tohjo_falls_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_tohjo_falls_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000144_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000145_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000146_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_tohjo_falls_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_tohjo_falls_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_tohjo_falls_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000147_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000148_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000149_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_tohjo_falls_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_tohjo_falls_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_tohjo_falls_night_NSCR_lz
             }
         },
         .unused3C = 14
@@ -503,24 +503,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000150_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000151_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000152_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_victory_road_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_victory_road_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_victory_road_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000153_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000154_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000155_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_victory_road_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_victory_road_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_victory_road_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000153_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000154_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000155_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_victory_road_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_victory_road_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_victory_road_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000156_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000157_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000158_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_victory_road_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_victory_road_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_victory_road_night_NSCR_lz
             }
         },
         .unused3C = 15
@@ -531,24 +531,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000150_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000151_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000152_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_victory_road_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_victory_road_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_victory_road_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000153_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000154_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000155_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_victory_road_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_victory_road_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_victory_road_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000153_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000154_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000155_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_victory_road_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_victory_road_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_victory_road_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000156_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000157_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000158_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_victory_road_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_victory_road_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_victory_road_night_NSCR_lz
             }
         },
         .unused3C = 15
@@ -559,24 +559,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000159_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000160_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000161_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_viridian_forest_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_viridian_forest_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_viridian_forest_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000162_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000163_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000164_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_viridian_forest_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_viridian_forest_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_viridian_forest_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000165_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000166_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000167_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_viridian_forest_evening_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_viridian_forest_evening_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_viridian_forest_evening_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000168_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000169_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000170_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_viridian_forest_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_viridian_forest_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_viridian_forest_night_NSCR_lz
             }
         },
         .unused3C = 16
@@ -587,24 +587,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000171_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000172_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000173_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_diglett_cave_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_diglett_cave_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_diglett_cave_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000174_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000175_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000176_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_diglett_cave_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_diglett_cave_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_diglett_cave_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000174_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000175_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000176_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_diglett_cave_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_diglett_cave_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_diglett_cave_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000177_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000178_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000179_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_diglett_cave_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_diglett_cave_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_diglett_cave_night_NSCR_lz
             }
         },
         .unused3C = 17
@@ -615,24 +615,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000180_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000181_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000182_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_rock_tunnel_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_rock_tunnel_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_rock_tunnel_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000183_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000184_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000185_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_rock_tunnel_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_rock_tunnel_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_rock_tunnel_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000183_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000184_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000185_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_rock_tunnel_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_rock_tunnel_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_rock_tunnel_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000186_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000187_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000188_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_rock_tunnel_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_rock_tunnel_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_rock_tunnel_night_NSCR_lz
             }
         },
         .unused3C = 18
@@ -643,24 +643,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000189_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000190_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000191_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_mt_moon_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_mt_moon_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_mt_moon_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000192_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000193_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000194_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_mt_moon_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_mt_moon_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_mt_moon_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000195_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000196_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000197_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_mt_moon_evening_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_mt_moon_evening_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_mt_moon_evening_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000198_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000199_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000200_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_mt_moon_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_mt_moon_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_mt_moon_night_NSCR_lz
             }
         },
         .unused3C = 20
@@ -671,24 +671,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000201_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000202_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000203_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_seafoam_islands_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_seafoam_islands_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_seafoam_islands_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000204_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000205_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000206_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_seafoam_islands_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_seafoam_islands_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_seafoam_islands_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000204_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000205_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000206_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_seafoam_islands_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_seafoam_islands_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_seafoam_islands_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000207_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000208_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000209_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_seafoam_islands_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_seafoam_islands_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_seafoam_islands_night_NSCR_lz
             }
         },
         .unused3C = 21
@@ -699,24 +699,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000210_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000211_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000212_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_mt_silver_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_mt_silver_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_mt_silver_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000213_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000214_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000215_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_mt_silver_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_mt_silver_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_mt_silver_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000213_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000214_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000215_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_mt_silver_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_mt_silver_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_mt_silver_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000216_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000217_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000218_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_mt_silver_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_mt_silver_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_mt_silver_night_NSCR_lz
             }
         },
         .unused3C = 22
@@ -727,24 +727,24 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         .unused4 = 0,
         .files = {
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000219_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000220_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000221_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_cerulean_cave_morning_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_cerulean_cave_morning_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_cerulean_cave_morning_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000222_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000223_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000224_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_cerulean_cave_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_cerulean_cave_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_cerulean_cave_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000222_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000223_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000224_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_cerulean_cave_day_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_cerulean_cave_day_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_cerulean_cave_day_NSCR_lz
             },
             {
-                .palNo = NARC_preview_graphic_preview_graphic_00000225_NCLR,
-                .charNo = NARC_preview_graphic_preview_graphic_00000226_NCGR_lz,
-                .scrnNo = NARC_preview_graphic_preview_graphic_00000227_NSCR_lz
+                .palNo = NARC_preview_graphic_preview_graphic_cerulean_cave_night_NCLR,
+                .charNo = NARC_preview_graphic_preview_graphic_cerulean_cave_night_NCGR_lz,
+                .scrnNo = NARC_preview_graphic_preview_graphic_cerulean_cave_night_NSCR_lz
             }
         },
         .unused3C = 23
