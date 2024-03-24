@@ -1,7 +1,7 @@
-PREVIEW_GRAPHIC_DIR := files/fielddata/graphic/preview_graphic/preview_graphic
+PREVIEW_GRAPHIC_DIR  := files/fielddata/graphic/preview_graphic/preview_graphic
 PREVIEW_GRAPHIC_NARC := $(PREVIEW_GRAPHIC_DIR).narc
 
-PREVIEW_GRAPHIC_PNG	 := $(wildcard $(PREVIEW_GRAPHIC_DIR)/*.png)
+PREVIEW_GRAPHIC_PNG  := $(wildcard $(PREVIEW_GRAPHIC_DIR)/*.png)
 PREVIEW_GRAPHIC_NSCR := $(wildcard $(PREVIEW_GRAPHIC_DIR)/*.NSCR)
 
 PREVIEW_GRAPHIC_NCGR 	:= $(PREVIEW_GRAPHIC_PNG:%.png=%.NCGR)
