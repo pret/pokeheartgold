@@ -197,7 +197,7 @@
 .public ov80_0222AB90
 .public ov80_0222AC3C
 .public ov80_0222AC4C
-.public ov80_0222AC58
+.public FrontierScriptReadHalf
 .public ov80_0222AC70
 .public ov80_0222BDF4
 .public ov80_0222BE10

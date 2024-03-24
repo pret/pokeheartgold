@@ -8,7 +8,7 @@
 .public PlayFanfare
 .public IsFanfarePlaying
 .public ov80_0222AB84
-.public ov80_0222AC58
+.public FrontierScriptReadHalf
 .public ov80_0222BE10
 .public ov80_02235390
 .public ov80_022353A0

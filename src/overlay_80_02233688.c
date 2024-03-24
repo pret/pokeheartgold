@@ -4,6 +4,7 @@
 #include "frontier/overlay_80_022340E8.h"
 #include "unk_020965A4.h"
 
+//Alloc
 BOOL ov80_02233688(FrontierContext *ctx) {
     u32 spC = ov80_0222BE10(ctx); //these look suspiciously like reading data from scripts
     u32 r4 = ov80_0222BE10(ctx);
@@ -19,6 +20,7 @@ BOOL ov80_02233688(FrontierContext *ctx) {
     return FALSE;
 }
 
+//Init
 BOOL ov80_022336EC(FrontierContext  *ctx) {
     u32 arg1 = ov80_0222BE10(ctx);
     u32 arg0 = sub_02096810(ctx->unk0->unk0);
@@ -26,6 +28,7 @@ BOOL ov80_022336EC(FrontierContext  *ctx) {
     return FALSE;
 }
 
+//free
 BOOL ov80_02233708(FrontierContext *ctx) {
     ov80_02234520(sub_02096810(ctx->unk0->unk0));
     return FALSE;

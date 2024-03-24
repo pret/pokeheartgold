@@ -8,7 +8,7 @@
 ov80_0222BDF4: ; 0x0222BDF4
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov80_0222BE24
@@ -24,7 +24,7 @@ _0222BE0C:
 ov80_0222BE10: ; 0x0222BE10
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov80_0222BE9C
@@ -190,10 +190,10 @@ ov80_0222BF00: ; 0x0222BF00
 ov80_0222BF28: ; 0x0222BF28
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
@@ -238,7 +238,7 @@ ov80_0222BF7C: ; 0x0222BF7C
 	bl ov80_0222BDF4
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -314,7 +314,7 @@ ov80_0222BFF8: ; 0x0222BFF8
 	bl ov80_0222BE10
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov80_0222BFE4
@@ -453,7 +453,7 @@ ov80_0222C0EC: ; 0x0222C0EC
 	push {r4, lr}
 	sub sp, #8
 	add r4, r0, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r2, r0, #0
 	mov r3, #0
 	add r0, sp, #4
@@ -479,7 +479,7 @@ ov80_0222C11C: ; 0x0222C11C
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	mov r3, #0
 	add r1, r4, #0
 	str r3, [sp]
@@ -503,7 +503,7 @@ ov80_0222C14C: ; 0x0222C14C
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r2, r0, #0
 	mov r0, #0
 	add r1, r4, #0
@@ -556,16 +556,16 @@ ov80_0222C1A8: ; 0x0222C1A8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	str r4, [sp]
 	add r3, r0, #0
 	str r6, [sp, #4]
@@ -630,7 +630,7 @@ ov80_0222C214: ; 0x0222C214
 	add r1, r2, #1
 	str r1, [r5, #0x1c]
 	ldrb r6, [r2]
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	str r0, [sp, #0x18]
 	ldr r1, [sp, #0x18]
 	add r0, r5, #0
@@ -677,7 +677,7 @@ ov80_0222C270: ; 0x0222C270
 	add r1, r2, #1
 	str r1, [r5, #0x1c]
 	ldrb r6, [r2]
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	str r0, [sp, #0x18]
 	ldr r1, [sp, #0x18]
 	add r0, r5, #0
@@ -710,10 +710,10 @@ ov80_0222C2D0: ; 0x0222C2D0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r4, [r5]
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r3, r0, #0
 	ldr r0, [r4, #0x60]
 	add r1, r6, #0
@@ -729,13 +729,13 @@ ov80_0222C2F4: ; 0x0222C2F4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r4, [r5]
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r3, r0, #0
 	ldr r0, [r4, #0x60]
 	add r1, r6, #0
@@ -810,7 +810,7 @@ ov80_0222C368: ; 0x0222C368
 	add r1, r2, #1
 	str r1, [r5, #0x1c]
 	ldrb r6, [r2]
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	str r0, [sp, #0x18]
 	ldr r1, [sp, #0x18]
 	add r0, r5, #0
@@ -857,7 +857,7 @@ ov80_0222C3C4: ; 0x0222C3C4
 	add r1, r2, #1
 	str r1, [r5, #0x1c]
 	ldrb r6, [r2]
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	str r0, [sp, #0x18]
 	ldr r1, [sp, #0x18]
 	add r0, r5, #0
@@ -890,13 +890,13 @@ ov80_0222C424: ; 0x0222C424
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r4, [r5]
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r3, r0, #0
 	ldr r0, [r4, #0x60]
 	add r1, r6, #0
@@ -944,7 +944,7 @@ ov80_0222C47C: ; 0x0222C47C
 	bl ov80_0222AB34
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	ldr r1, [r5, #0x1c]
 	add r7, r0, #0
 	add r0, r1, #1
@@ -1168,11 +1168,11 @@ _0222C632:
 	ldrb r0, [r1]
 	strb r0, [r6, #0xa]
 	add r0, r5, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	sub r0, #8
 	strh r0, [r6, #6]
 	add r0, r5, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	sub r0, #0x10
 	strh r0, [r6, #8]
 	ldr r0, [r4]
@@ -1871,7 +1871,7 @@ ov80_0222CBB4: ; 0x0222CBB4
 	sub sp, #8
 	add r5, r0, #0
 	ldr r4, [r5]
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	str r0, [sp, #4]
 	add r0, r5, #0
 	bl ov80_0222BE10
@@ -2547,7 +2547,7 @@ ov80_0222D084: ; 0x0222D084
 	bl ov80_0222BE10
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	ldr r1, [r5, #0x1c]
 	str r0, [sp, #8]
 	add r0, r1, #1
@@ -2913,7 +2913,7 @@ ov80_0222D328: ; 0x0222D328
 ov80_0222D334: ; 0x0222D334
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ov80_0222BE10
@@ -2934,7 +2934,7 @@ ov80_0222D334: ; 0x0222D334
 ov80_0222D360: ; 0x0222D360
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ov80_0222BDF4
@@ -4473,7 +4473,7 @@ _0222DF52:
 	thumb_func_start ov80_0222DF58
 ov80_0222DF58: ; 0x0222DF58
 	push {r3, lr}
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -4497,12 +4497,12 @@ ov80_0222DF64: ; 0x0222DF64
 	bl ov80_0222BE10
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	str r0, [sp, #0x1c]
 	add r0, r5, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r0, r5, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	ldr r0, [r5]
 	ldr r0, [r0]
 	bl sub_02096808
@@ -4536,7 +4536,7 @@ ov80_0222DFD4: ; 0x0222DFD4
 	bl ov80_0222AB34
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov80_0222F1D0
@@ -4554,7 +4554,7 @@ ov80_0222DFF4: ; 0x0222DFF4
 	bl ov80_0222AB34
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r1, sp, #0x10
 	add r6, r0, #0
 	add r0, r4, #0
@@ -4615,7 +4615,7 @@ _0222E074:
 ov80_0222E078: ; 0x0222E078
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -4633,7 +4633,7 @@ ov80_0222E078: ; 0x0222E078
 ov80_0222E09C: ; 0x0222E09C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ov80_0222BE10
@@ -4654,7 +4654,7 @@ ov80_0222E09C: ; 0x0222E09C
 ov80_0222E0C8: ; 0x0222E0C8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]

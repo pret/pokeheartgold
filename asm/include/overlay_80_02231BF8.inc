@@ -30,7 +30,7 @@
 .public ov80_0222A52C
 .public ov80_0222AB34
 .public ov80_0222AB84
-.public ov80_0222AC58
+.public FrontierScriptReadHalf
 .public ov80_0222BDF4
 .public ov80_0222BE10
 .public ov80_0222BE24

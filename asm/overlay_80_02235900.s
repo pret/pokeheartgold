@@ -65,7 +65,7 @@ ov80_02235934: ; 0x02235934
 ov80_02235970: ; 0x02235970
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r1, r4, #0
 	add r1, #0x78
 	strh r0, [r1]
@@ -104,7 +104,7 @@ _022359AE:
 ov80_022359B4: ; 0x022359B4
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r1, r4, #0
 	add r1, #0x78
 	strh r0, [r1]

@@ -588,7 +588,7 @@ ov80_02230FF0: ; 0x02230FF0
 ov80_02231020: ; 0x02231020
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r1, r4, #0
 	add r1, #0x78
 	strh r0, [r1]
