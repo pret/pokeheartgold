@@ -39,7 +39,7 @@ MWLD          = $(TOOLSDIR)/mwccarm/$(MWCCVER)/mwldarm.exe
 MAKEROM      := $(TOOLSDIR)/bin/makerom.exe
 MAKELCF      := $(TOOLSDIR)/bin/makelcf.exe
 MAKEBNR      := $(TOOLSDIR)/bin/makebanner.exe
-NTRCOMP      := $(TOOLSDIR)/bin/ntrcomp.exe
+NTRCOMP      := $(WINE) $(TOOLSDIR)/bin/ntrcomp.exe
 
 export LM_LICENSE_FILE := $(TOOLSDIR)/mwccarm/license.dat
 
