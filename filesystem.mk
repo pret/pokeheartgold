@@ -432,6 +432,7 @@ $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_enc_$(
 $(eval $(call arc_strip_name,files/fielddata/encountdata/s_enc_data.narc,files/a/1/3/6))
 $(eval $(call arc_strip_name,files/poketool/johtozukan.narc,files/a/1/3/8))
 $(eval $(call arc_strip_name,files/fielddata/tsurepoke/tp_param.narc,files/a/1/4/1))
+$(eval $(call arc_strip_name,files/fielddata/graphic/preview_graphic/preview_graphic.narc,files/a/1/5/0))
 $(eval $(call arc_strip_name,files/system/touch_subwindow.narc,files/a/1/5/2))
 $(eval $(call arc_strip_name,files/data/gs_areawindow.narc,files/a/1/6/3))
 $(eval $(call arc_strip_name,files/poketool/personal/performance.narc,files/a/1/6/9))
@@ -502,6 +503,7 @@ include files/application/annon/puzzle_gra.mk
 include files/data/resdat.mk
 include files/demo/title/titledemo.mk
 include files/poketool/personal/personal.mk
+include files/fielddata/graphic/preview_graphic/preview_graphic.mk
 
 $(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
 

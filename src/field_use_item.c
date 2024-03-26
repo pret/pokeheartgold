@@ -32,6 +32,7 @@
 #include "msgdata/msg/msg_0010.h"
 #include "script.h"
 #include "msgdata/msg.naix"
+#include "overlay_01_021F1AFC.h"
 
 struct ItemUseFuncDat {
     ItemMenuUseFunc menu;

@@ -15,7 +15,7 @@ _020:
     GoTo _033
 
 _031:
-    GetCurrentMoveData MOVEATTRIBUTE_TYPE
+    GetCurrentMoveData MOVE_ATTRIBUTE_TYPE
 
 _033:
     GetItemHoldEffect BATTLER_CATEGORY_MSG_TEMP, BSCRIPT_VAR_TEMP_DATA

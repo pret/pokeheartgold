@@ -4270,7 +4270,7 @@ BOOL BtlCmd_ApplyTypeEffectiveness(BattleSystem *bsys, BattleContext *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_SetPokemonEncounter44(BattleSystem *bsys, BattleContext *ctx) {
+BOOL BtlCmd_IfTurnFlag(BattleSystem *bsys, BattleContext *ctx) {
     int ret = FALSE;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -4327,7 +4327,7 @@ BOOL BtlCmd_SetPokemonEncounter44(BattleSystem *bsys, BattleContext *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_SetPokemonEncounter45(BattleSystem *bsys, BattleContext *ctx) {
+BOOL BtlCmd_SetTurnFlag(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
