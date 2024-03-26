@@ -8,13 +8,13 @@
 ov80_0222F608: ; 0x0222F608
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -38,7 +38,7 @@ ov80_0222F608: ; 0x0222F608
 ov80_0222F648: ; 0x0222F648
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -299,7 +299,7 @@ ov80_0222F830: ; 0x0222F830
 	str r1, [r6, #0x1c]
 	ldrb r1, [r2]
 	str r1, [sp, #0x1c]
-	bl ov80_0222BDF4
+	bl FrontierScript_ReadVarPtr
 	str r0, [sp, #0x18]
 	ldr r0, [r6]
 	ldr r0, [r0]
@@ -809,7 +809,7 @@ _0222FC26:
 ov80_0222FC34: ; 0x0222FC34
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl ov80_0222BDF4
+	bl FrontierScript_ReadVarPtr
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -825,13 +825,13 @@ ov80_0222FC34: ; 0x0222FC34
 ov80_0222FC50: ; 0x0222FC50
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov80_0222BDF4
+	bl FrontierScript_ReadVarPtr
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -848,7 +848,7 @@ ov80_0222FC50: ; 0x0222FC50
 ov80_0222FC80: ; 0x0222FC80
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r1, r4, #0
 	add r1, #0x78
 	strh r0, [r1]

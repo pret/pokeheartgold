@@ -7,7 +7,7 @@
 	thumb_func_start ov80_02235438
 ov80_02235438: ; 0x02235438
 	push {r3, lr}
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
 	bl StopBGM
@@ -24,13 +24,13 @@ ov80_0223544C: ; 0x0223544C
 	bl sub_02096808
 	add r5, r0, #0
 	add r0, r7, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r6, r0, #0
 	add r0, r7, #0
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	str r0, [sp]
 	add r0, r7, #0
-	bl ov80_0222BDF4
+	bl FrontierScript_ReadVarPtr
 	add r4, r0, #0
 	ldr r0, [r7]
 	ldr r0, [r0]
@@ -312,7 +312,7 @@ ov80_02235674: ; 0x02235674
 	bl sub_02096810
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov80_0222BDF4
+	bl FrontierScript_ReadVarPtr
 	add r6, r0, #0
 	mov r0, #0x8d
 	lsl r0, r0, #4
@@ -339,13 +339,13 @@ ov80_022356AC: ; 0x022356AC
 	ldr r0, [r0]
 	bl sub_02096808
 	add r0, r4, #0
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	add r7, r0, #0
 	add r0, r4, #0
-	bl ov80_0222BDF4
+	bl FrontierScript_ReadVarPtr
 	add r5, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0]
@@ -384,10 +384,10 @@ _0223570C: .word 0x0000083E
 ov80_02235710: ; 0x02235710
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r1, r5, #0
 	add r1, #0x78
 	strh r4, [r1]
