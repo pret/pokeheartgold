@@ -1880,7 +1880,7 @@ ov96_021E661C: ; 0x021E661C
 _021E662C:
 	sub r0, #0xc
 	ldr r0, [r5, r0]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _021E6664
 	ldr r0, _021E6668 ; =0x00000728
@@ -11362,7 +11362,7 @@ ov96_021EAD78: ; 0x021EAD78
 	push {r3, lr}
 	ldr r0, [r0]
 	bl ov96_021E8BAC
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov96_021EAD78
@@ -12477,11 +12477,11 @@ _021EB578: .word TryChange2dSpriteAnimSeqNo
 
 	thumb_func_start ov96_021EB57C
 ov96_021EB57C: ; 0x021EB57C
-	ldr r3, _021EB584 ; =Sprite_IsCellAnimationFinished
+	ldr r3, _021EB584 ; =Sprite_IsCellAnimationRunning
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_021EB584: .word Sprite_IsCellAnimationFinished
+_021EB584: .word Sprite_IsCellAnimationRunning
 	thumb_func_end ov96_021EB57C
 
 	thumb_func_start ov96_021EB588

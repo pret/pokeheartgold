@@ -2,6 +2,7 @@
 #define NITRO_GX_G3IMM_H_
 
 #include <nitro/hw/io_reg.h>
+#include <nitro/gx/gxcommon.h>
 #include <nitro/gx/g3.h>
 
 typedef enum {

@@ -766,12 +766,12 @@ _021E5EC0: .word 0x00070F00
 
 	thumb_func_start ov113_021E5EC4
 ov113_021E5EC4: ; 0x021E5EC4
-	ldr r3, _021E5ECC ; =Sprite_IsCellAnimationFinished
+	ldr r3, _021E5ECC ; =Sprite_IsCellAnimationRunning
 	add r0, #0xb8
 	ldr r0, [r0]
 	bx r3
 	.balign 4, 0
-_021E5ECC: .word Sprite_IsCellAnimationFinished
+_021E5ECC: .word Sprite_IsCellAnimationRunning
 	thumb_func_end ov113_021E5EC4
 
 	thumb_func_start ov113_021E5ED0

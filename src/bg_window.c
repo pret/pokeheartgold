@@ -4,7 +4,7 @@
 
 static u8 TranslateGFBgModePairToGXScreenSize(enum GFBgScreenSize size, enum GFBgType type);
 static void GetBgScreenDimensions(u32 screenSize, u8 *widthPtr, u8 *heightPtr);
-static void Bg_SetPosText(Background *bg, enum BgPosAdjustOp op, fx32 value);
+static void Bg_SetPosText(Background *bg, enum BgPosAdjustOp op, int value);
 static void BgAffineReset(BgConfig *bgConfig, u8 bgId);
 static void CopyOrUncompressTilemapData(const void *src, void *dest, u32 size);
 static void LoadBgVramScr(u8 bgId, const void *data, u32 offset, u32 size);
@@ -18,7 +18,7 @@ static void FillBgTilemapRectText(Background *bg, u16 fillValue, u8 x, u8 y, u8 
 static void FillBgTilemapRectAffine(Background *bg, u8 fillValue, u8 x, u8 y, u8 width, u8 height);
 static void BgClearTilemapBufferAndSchedule(BgConfig *bgConfig, u8 bgId);
 static void Convert4bppTo8bppInternal(u8 *src4bpp, u32 size, u8 *dest8bpp, u8 paletteNum);
-static fx32 GetBgVOffset(BgConfig *bgConfig, u8 bgId);
+static int GetBgVOffset(BgConfig *bgConfig, u8 bgId);
 static u16 GetBgRotation(BgConfig *bgConfig, u8 bgId);
 static void BlitBitmapRect8Bit(const Bitmap *src, const Bitmap *dest, u16 srcX, u16 srcY, u16 destX, u16 destY, u16 width, u16 height, u16 colorKey);
 static void FillBitmapRect4bit(const Bitmap *surface, u16 x, u16 y, u16 width, u16 height, u8 fillValue);
@@ -39,7 +39,7 @@ static void ScrollWindow4bpp(Window *window, u8 direction, u8 y, u8 fillValue);
 static void ScrollWindow8bpp(Window *window, u8 direction, u8 y, u8 fillValue);
 static void BgConfig_HandleScheduledBufferTransfers(BgConfig *bgConfig);
 static void BgConfig_HandleScheduledScrolls(BgConfig *bgConfig);
-static void Bg_SetAffineScale(Background *bg, enum BgPosAdjustOp op, fx32 value);
+static void Bg_SetAffineScale(Background *bg, enum BgPosAdjustOp op, int value);
 static void ApplyFlipFlagsToTile(BgConfig *bgConfig, u8 flags, u8 *tile);
 
 static const u8 sTilemapWidthByBufferSize[] = {
@@ -667,7 +667,7 @@ void ToggleBgLayer(u8 bgId, GFPlaneToggle toggle) {
     }
 }
 
-void BgSetPosTextAndCommit(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustOp op, fx32 val) {
+void BgSetPosTextAndCommit(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustOp op, int val) {
     Bg_SetPosText(&bgConfig->bgs[bgId], op, val);
 
     u32 x = (u32)bgConfig->bgs[bgId].hOffset;
@@ -717,20 +717,20 @@ void BgSetPosTextAndCommit(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustOp op, f
     }
 }
 
-fx32 Bg_GetXpos(const BgConfig *bgConfig, enum GFBgLayer bgId) {
+int Bg_GetXpos(const BgConfig *bgConfig, GFBgLayer bgId) {
     return bgConfig->bgs[bgId].hOffset;
 }
 
-fx32 Bg_GetYpos(const BgConfig *bgConfig, enum GFBgLayer bgId) {
+int Bg_GetYpos(const BgConfig *bgConfig, GFBgLayer bgId) {
     return bgConfig->bgs[bgId].vOffset;
 }
 
-void Bg_SetTextDimAndAffineParams(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustOp op, fx32 value, MtxFx22 *mtx, fx32 centerX, fx32 centerY) {
+void Bg_SetTextDimAndAffineParams(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustOp op, int value, MtxFx22 *mtx, int centerX, int centerY) {
     Bg_SetPosText(&bgConfig->bgs[bgId], op, value);
     SetBgAffine(bgConfig, bgId, mtx, centerX, centerY);
 }
 
-static void Bg_SetPosText(Background *bg, enum BgPosAdjustOp op, fx32 value) {
+static void Bg_SetPosText(Background *bg, enum BgPosAdjustOp op, int value) {
     switch (op) {
         case BG_POS_OP_SET_X:
             bg->hOffset = value;
@@ -753,7 +753,7 @@ static void Bg_SetPosText(Background *bg, enum BgPosAdjustOp op, fx32 value) {
     }
 }
 
-void SetBgAffine(BgConfig *bgConfig, u8 bgId, MtxFx22 *mtx, fx32 centerX, fx32 centerY) {
+void SetBgAffine(BgConfig *bgConfig, u8 bgId, MtxFx22 *mtx, int centerX, int centerY) {
     switch (bgId) {
         case GF_BG_LYR_MAIN_0:
             break;
@@ -915,7 +915,7 @@ void BG_ClearCharDataRange(u8 bgId, u32 size, u32 offset, HeapID heapId) {
     FreeToHeapExplicit(heapId, buffer);
 }
 
-void BG_FillCharDataRange(BgConfig *bgConfig, enum GFBgLayer bgId, u32 fillValue, u32 ntiles, u32 offset) {
+void BG_FillCharDataRange(BgConfig *bgConfig, GFBgLayer bgId, u32 fillValue, u32 ntiles, u32 offset) {
     void *buffer;
     u32 size = ntiles * bgConfig->bgs[bgId].tileSize;
     u32 value = fillValue;
@@ -1323,11 +1323,11 @@ void *GetBgTilemapBuffer(BgConfig *bgConfig, u8 bgId) {
     return bgConfig->bgs[bgId].tilemapBuffer;
 }
 
-fx32 GetBgHOffset(BgConfig *bgConfig, u8 bgId) {
+int GetBgHOffset(BgConfig *bgConfig, u8 bgId) {
     return bgConfig->bgs[bgId].hOffset;
 }
 
-static fx32 GetBgVOffset(BgConfig *bgConfig, u8 bgId) {
+static int GetBgVOffset(BgConfig *bgConfig, u8 bgId) {
     return bgConfig->bgs[bgId].vOffset;
 }
 
@@ -2277,17 +2277,17 @@ static void BgConfig_HandleScheduledScrolls(BgConfig *bgConfig) {
     }
 }
 
-void ScheduleSetBgPosText(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustOp op, fx32 value) {
+void ScheduleSetBgPosText(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustOp op, int value) {
     Bg_SetPosText(&bgConfig->bgs[bgId], op, value);
     bgConfig->scrollScheduled |= 1 << bgId;
 }
 
-void ScheduleSetBgAffineScale(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustOp op, fx32 value) {
+void ScheduleSetBgAffineScale(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustOp op, int value) {
     Bg_SetAffineScale(&bgConfig->bgs[bgId], op, value);
     bgConfig->scrollScheduled |= 1 << bgId;
 }
 
-static void Bg_SetAffineScale(Background *bg, enum BgPosAdjustOp op, fx32 value) {
+static void Bg_SetAffineScale(Background *bg, enum BgPosAdjustOp op, int value) {
     switch (op) {
         case BG_POS_OP_SET_XSCALE:
             bg->xScale = value;

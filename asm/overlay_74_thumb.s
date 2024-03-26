@@ -3537,7 +3537,7 @@ _02228C0C:
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228C1A:
-	ldr r0, _02228C58 ; =FS_OVERLAY_ID(OVY_60)
+	ldr r0, _02228C58 ; =FS_OVERLAY_ID(intro_title)
 	ldr r1, _02228C5C ; =gApplication_TitleScreen
 	bl RegisterMainOverlay
 _02228C22:
@@ -3556,7 +3556,7 @@ _02228C48: .word FS_OVERLAY_ID(OVY_112)
 _02228C4C: .word ov112_App_MainMenu_SelectOption_ConnectToPokewalker
 _02228C50: .word FS_OVERLAY_ID(OVY_75)
 _02228C54: .word ov75_App_MainMenu_SelectOption_WiiMessageSettings
-_02228C58: .word FS_OVERLAY_ID(OVY_60)
+_02228C58: .word FS_OVERLAY_ID(intro_title)
 _02228C5C: .word gApplication_TitleScreen
 	thumb_func_end ov74_MainMenu_QueueSelectedApp
 
@@ -4508,7 +4508,7 @@ ov74_02229450: ; 0x02229450
 	add r4, r0, #0
 	mov r0, #0x59
 	bl DestroyHeap
-	ldr r0, _02229474 ; =FS_OVERLAY_ID(OVY_60)
+	ldr r0, _02229474 ; =FS_OVERLAY_ID(intro_title)
 	ldr r1, _02229478 ; =gApplication_TitleScreen
 	bl RegisterMainOverlay
 	add r0, r4, #0
@@ -4518,7 +4518,7 @@ ov74_02229450: ; 0x02229450
 	mov r0, #1
 	pop {r4, pc}
 	nop
-_02229474: .word FS_OVERLAY_ID(OVY_60)
+_02229474: .word FS_OVERLAY_ID(intro_title)
 _02229478: .word gApplication_TitleScreen
 	thumb_func_end ov74_02229450
 
@@ -11632,7 +11632,7 @@ ov74_0222CD94: ; 0x0222CD94
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	bne _0222CDB2
-	ldr r0, _0222CDF8 ; =FS_OVERLAY_ID(OVY_60)
+	ldr r0, _0222CDF8 ; =FS_OVERLAY_ID(intro_title)
 	ldr r1, _0222CDFC ; =gApplication_TitleScreen
 	bl RegisterMainOverlay
 	b _0222CDCC
@@ -11668,7 +11668,7 @@ _0222CDEC:
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_0222CDF8: .word FS_OVERLAY_ID(OVY_60)
+_0222CDF8: .word FS_OVERLAY_ID(intro_title)
 _0222CDFC: .word gApplication_TitleScreen
 _0222CE00: .word FS_OVERLAY_ID(OVY_74)
 _0222CE04: .word _0223B410
@@ -25329,7 +25329,7 @@ ov74_022338D4: ; 0x022338D4
 	bl String_Delete
 	ldr r0, [r4, #0x20]
 	bl FreeToHeap
-	ldr r0, _0223391C ; =FS_OVERLAY_ID(OVY_60)
+	ldr r0, _0223391C ; =FS_OVERLAY_ID(intro_title)
 	ldr r1, _02233920 ; =gApplication_TitleScreen
 	bl RegisterMainOverlay
 	add r0, r5, #0
@@ -25343,7 +25343,7 @@ ov74_022338D4: ; 0x022338D4
 	nop
 _02233914: .word 0x00012608
 _02233918: .word 0x0001260C
-_0223391C: .word FS_OVERLAY_ID(OVY_60)
+_0223391C: .word FS_OVERLAY_ID(intro_title)
 _02233920: .word gApplication_TitleScreen
 	thumb_func_end ov74_022338D4
 

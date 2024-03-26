@@ -267,7 +267,7 @@
 .public sub_02024B20
 .public sub_02024B34
 .public Sprite_GetVramType
-.public Sprite_IsCellAnimationFinished
+.public Sprite_IsCellAnimationRunning
 .public sub_02024B78
 .public sub_02024CB8
 .public TouchscreenHitbox_FindRectAtTouchNew

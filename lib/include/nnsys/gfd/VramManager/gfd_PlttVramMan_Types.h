@@ -16,7 +16,7 @@ extern NNSGfdFuncAllocPlttVram NNS_GfdDefaultFuncAllocPlttVram;
 extern NNSGfdFuncFreePlttVram NNS_GfdDefaultFuncFreePlttVram;
 
 static inline NNSGfdPlttKey NNS_GfdAllocPlttVram(u32 szByte, BOOL is4pltt, u32 opt) {
-    return (*NNS_GfdDefaultFuncAllocPlttVram)( szByte, is4pltt, opt );
+    return (*NNS_GfdDefaultFuncAllocPlttVram)(szByte, is4pltt, opt);
 }
 
 static inline int NNS_GfdFreePlttVram(NNSGfdPlttKey plttKey) {

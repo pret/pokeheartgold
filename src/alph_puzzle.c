@@ -1402,7 +1402,7 @@ static void AlphPuzzle_CreateQuitTask(AlphPuzzleData *data) {
 
 static void Task_AlphPuzzle_WaitDropCursorAnimOnQuit(SysTask *task, void *_data) {
     AlphPuzzleQuitTaskData *data = _data;
-    if (!Sprite_IsCellAnimationFinished(data->data->sprites[ALPH_SPRITE_INDEX_DROP_CURSOR])) {
+    if (!Sprite_IsCellAnimationRunning(data->data->sprites[ALPH_SPRITE_INDEX_DROP_CURSOR])) {
         AlphPuzzle_ToggleDropCursorSprite(data->data, 0);
         data->data->quitTaskActive = 0;
         MI_CpuFill8(data, 0, sizeof(AlphPuzzleQuitTaskData));

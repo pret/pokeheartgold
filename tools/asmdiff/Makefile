@@ -7,11 +7,13 @@ endif
 
 programs := ntrextractfile ntruncompbw
 
+.PHONY: all clean
+
 all: $(programs)
 	@:
 
 clean:
-	$(RM) $(programs)
+	@$(RM) $(programs)
 
 %: %.c
 	$(CC) $(CFLAGS) -o $@ $<

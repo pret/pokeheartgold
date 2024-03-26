@@ -19,9 +19,6 @@ DEFAULT_ARM9BUILDDIR=build/heartgold.us
 DEFAULT_ARM7BUILDDIR=sub/build
 DEFAULT_FSDIR=files
 
-# Build C utils on demand
-make -C "${MYDIR}" --no-print-directory
-
 # getword FILE OFFSET
 getword() {
   od -j "$2" -N 4 -A n -t u "$1" | awk '{$1=$1};1'
@@ -73,6 +70,7 @@ usage () {
     echo "  START, END    Start and end virtual addresses to diff"
     echo ""
     echo "Options:"
+    echo "  -S            SoulSilver diff. Requires baserom.soulsilver.nds (default: HeartGold)"
     echo "  -7            Diff the ARM7 module (default: ARM9)"
     echo "  -a AUTOLOAD   Diff the indicated autoload module (default: static module)"
     echo "  -m OVERLAY    Diff the indicated overlay module (default: static module)"
@@ -82,52 +80,63 @@ usage () {
     echo "  -F FSDIR      Filesystem path on the home system"
     echo "  -t            Force THUMB instructions (default: ARM)"
     echo "  -h            Show this message and exit"
+    echo "  -c            Clear caches and exit"
 }
 
+mktgt=all
 while [[ $# -gt 0 ]]; do
   key="$1"
   case $key in
-  -h)
+  -h|--help)
     usage
     exit 0
     ;;
-  -7)
+  -c|--clean)
+    mktgt=clean
+    shift
+    ;;
+  -7|--arm7)
     proc=armv4t
     builddir=${builddir:-$DEFAULT_ARM7BUILDDIR}
     shift
     ;;
-  -a)
+  -a|--autoload)
     [[ -n $autoload ]] && { echo "can only do one autoload at a time" >&2; exit 1; }
     mode=autoload
     autoload="$2"
     shift 2
     ;;
-  -m)
+  -m|--overlay)
     [[ -n $overlay ]] && { echo "can only do one overlay at a time" >&2; exit 1; }
     mode=overlay
     overlay="$2"
     shift 2
     ;;
-  -r)
+  -r|--rom)
     baserom="$2"
     shift 2
     ;;
-  -t)
+  -t|--thumb)
     thumb=-Mforce-thumb
     shift
     ;;
-  -f)
+  -f|--file)
     mode="file"
     filepath="$2"
     shift 2
     ;;
-  -F)
+  -F|--files-dir)
     fsdir="$2"
     shift 2
     ;;
-  -d)
+  -d|--build-dir)
     builddir="$2"
     shift 2
+    ;;
+  -S|--soulsilver)
+    baserom="${baserom:-baserom.soulsilver.nds}"
+    builddir="${builddir:-build/soulsilver.us}"
+    shift
     ;;
   -*)
     usage
@@ -140,6 +149,13 @@ while [[ $# -gt 0 ]]; do
     ;;
   esac
 done
+
+# Build C utils on demand
+make -C "${MYDIR}" --no-print-directory "$mktgt"
+if [ "$mktgt" = "clean" ]; then
+  rm -rf "${MYDIR}"/.bins "${MYDIR}"/.files
+  exit 0
+fi
 
 set -- "${POSITIONAL[@]}"
 

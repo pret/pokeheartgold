@@ -3743,7 +3743,7 @@ _021E771C:
 _021E775E:
 	add r0, #0xec
 	ldr r0, [r0]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _021E77AC
 	mov r2, #5
@@ -5435,7 +5435,7 @@ ov53_021E84D4: ; 0x021E84D4
 	bl GF_AssertFail
 _021E84E6:
 	ldr r0, [r4, #0x10]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _021E84F4
 	mov r0, #1

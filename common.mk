@@ -203,6 +203,7 @@ $(TOOLDIRS):
 
 clean-tools:
 	$(foreach tool,$(TOOLDIRS),$(MAKE) -C $(tool) clean;)
+	$(TOOLSDIR)/asmdiff/asmdiff.sh -c
 
 $(LCF): $(LSF) $(LCF_TEMPLATE)
 	$(WINE) $(MAKELCF) $(MAKELCF_FLAGS) $^ $@

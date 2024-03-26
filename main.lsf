@@ -833,11 +833,17 @@ Overlay OVY_59
     After OVY_58
     Object asm/overlay_59.o
 }
-Overlay OVY_60
+Overlay intro_title
 {
     After main
 	Object src/title_screen.o
-    Object asm/overlay_60.o
+	Object src/intro_movie.o
+	Object src/intro_movie_scenes_lib.o
+	Object src/intro_movie_scene_1.o
+	Object src/intro_movie_scene_2.o
+	Object src/intro_movie_scene_3.o
+	Object src/intro_movie_scene_4.o
+	Object src/intro_movie_scene_5.o
 }
 Overlay OVY_61
 {

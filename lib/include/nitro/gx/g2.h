@@ -3,7 +3,7 @@
 
 #include <nitro/types.h>
 #include <nitro/fx/fx.h>
-#include <nitro/hw/common/io_reg.h>
+#include <nitro/hw/io_reg.h>
 
 void G2x_SetBGyAffine_(u32 addr, const MtxFx22 *mtx, fx32 a, fx32 b, fx32 c, fx32 d);
 void G2x_SetBlendAlpha_(u32 addr, int plane1, int plane2, int ev1, int ev2);
@@ -42,7 +42,7 @@ static inline void G2_SetWndOutsidePlane(int wnd, BOOL effect) {
     tmp = ((reg_G2_WINOUT & ~REG_G2_WINOUT_WINOUT_MASK) | ((u32)wnd << REG_G2_WINOUT_WINOUT_SHIFT));
 
     if (effect) {
-        tmp |= (0x20 << REG_G2_WINOUT_WINOUT_SHIFT);    // EFCT
+        tmp |= (0x20 << REG_G2_WINOUT_WINOUT_SHIFT);
     }
 
     reg_G2_WINOUT = (u16)tmp;
@@ -126,6 +126,105 @@ static inline void G2_SetBlendBrightness(fx32 plane, fx32 brightness) { //plane 
 
 static inline void G2S_SetBlendBrightness(fx32 plane, fx32 brightness) { //plane should be GXBlendPlaneMask but it doesn't match
     G2x_SetBlendBrightness_(&reg_G2S_DB_BLDCNT, plane, brightness);
+}
+
+static inline void G2_SetWnd0InsidePlane(int wnd, BOOL effect) {
+    u32 tmp;
+
+    tmp = ((reg_G2_WININ & ~REG_G2_WININ_WIN0IN_MASK) | ((u32)wnd << REG_G2_WININ_WIN0IN_SHIFT));
+
+    if (effect) {
+        tmp |= (0x20 << REG_G2_WININ_WIN0IN_SHIFT);
+    }
+
+    reg_G2_WININ = (u16)tmp;
+}
+
+static inline void G2_SetWnd1InsidePlane(int wnd, BOOL effect) {
+    u32 tmp;
+
+    tmp = ((reg_G2_WININ & ~REG_G2_WININ_WIN1IN_MASK) | ((u32)wnd << REG_G2_WININ_WIN1IN_SHIFT));
+
+    if (effect) {
+        tmp |= (0x20 << REG_G2_WININ_WIN1IN_SHIFT);
+    }
+
+    reg_G2_WININ = (u16)tmp;
+}
+
+static inline void G2S_SetWnd0InsidePlane(int wnd, BOOL effect) {
+    u32 tmp;
+
+    tmp = ((reg_G2S_DB_WININ & ~REG_G2S_DB_WININ_WIN0IN_MASK) |
+           ((u32)wnd << REG_G2S_DB_WININ_WIN0IN_SHIFT));
+
+    if (effect) {
+        tmp |= (0x20 << REG_G2S_DB_WININ_WIN0IN_SHIFT);
+    }
+
+    reg_G2S_DB_WININ = (u16)tmp;
+}
+
+static inline void G2S_SetWnd1InsidePlane(int wnd, BOOL effect) {
+    u32 tmp;
+
+    tmp = ((reg_G2S_DB_WININ & ~REG_G2S_DB_WININ_WIN1IN_MASK) | ((u32)wnd << REG_G2S_DB_WININ_WIN1IN_SHIFT));
+
+    if (effect) {
+        tmp |= (0x20 << REG_G2S_DB_WININ_WIN1IN_SHIFT);
+    }
+
+    reg_G2S_DB_WININ = (u16)tmp;
+}
+
+static inline void G2S_SetWndOutsidePlane(int wnd, BOOL effect) {
+    u32 tmp;
+
+    tmp = ((reg_G2S_DB_WINOUT & ~REG_G2S_DB_WINOUT_WINOUT_MASK) |
+           ((u32)wnd << REG_G2S_DB_WINOUT_WINOUT_SHIFT));
+
+    if (effect) {
+        tmp |= (0x20 << REG_G2S_DB_WINOUT_WINOUT_SHIFT);
+    }
+
+    reg_G2S_DB_WINOUT = (u16)tmp;
+}
+static inline void G2_SetWnd0Position(int x1, int y1, int x2, int y2) {
+    // Note that the addresses of reg_G2_WIN0H and reg_G2_WIN0V are separate.
+    reg_G2_WIN0H = (u16)(((x1 << REG_G2_WIN0H_LEFTX_SHIFT) & REG_G2_WIN0H_LEFTX_MASK) |
+                         ((x2 << REG_G2_WIN0H_RIGHTX_SHIFT) & REG_G2_WIN0H_RIGHTX_MASK));
+
+    reg_G2_WIN0V = (u16)(((y1 << REG_G2_WIN0V_UPY_SHIFT) & REG_G2_WIN0V_UPY_MASK) |
+                         ((y2 << REG_G2_WIN0V_DOWNY_SHIFT) & REG_G2_WIN0V_DOWNY_MASK));
+}
+
+static inline void G2_SetWnd1Position(int x1, int y1, int x2, int y2) {
+    // Note that the addresses of reg_G2_WIN1H and reg_G2_WIN1V are separate.
+    reg_G2_WIN1H = (u16)(((x1 << REG_G2_WIN1H_LEFTX_SHIFT) & REG_G2_WIN1H_LEFTX_MASK) |
+                         ((x2 << REG_G2_WIN1H_RIGHTX_SHIFT) & REG_G2_WIN1H_RIGHTX_MASK));
+
+    reg_G2_WIN1V = (u16)(((y1 << REG_G2_WIN1V_UPY_SHIFT) & REG_G2_WIN1V_UPY_MASK) |
+                         ((y2 << REG_G2_WIN1V_DOWNY_SHIFT) & REG_G2_WIN1V_DOWNY_MASK));
+}
+
+static inline void G2S_SetWnd0Position(int x1, int y1, int x2, int y2) {
+    // Note that the addresses of reg_G2S_DB_WIN0H and reg_G2S_DB_WIN0V are separate.
+    reg_G2S_DB_WIN0H = (u16)(((x1 << REG_G2S_DB_WIN0H_LEFTX_SHIFT) & REG_G2S_DB_WIN0H_LEFTX_MASK) |
+                             ((x2 << REG_G2S_DB_WIN0H_RIGHTX_SHIFT) &
+                              REG_G2S_DB_WIN0H_RIGHTX_MASK));
+
+    reg_G2S_DB_WIN0V = (u16)(((y1 << REG_G2S_DB_WIN0V_UPY_SHIFT) & REG_G2S_DB_WIN0V_UPY_MASK) |
+                             ((y2 << REG_G2S_DB_WIN0V_DOWNY_SHIFT) & REG_G2S_DB_WIN0V_DOWNY_MASK));
+}
+
+static inline void G2S_SetWnd1Position(int x1, int y1, int x2, int y2) {
+    // Note that the addresses of reg_G2S_DB_WIN1H and reg_G2S_DB_WIN1V are separate.
+    reg_G2S_DB_WIN1H = (u16)(((x1 << REG_G2S_DB_WIN1H_LEFTX_SHIFT) & REG_G2S_DB_WIN1H_LEFTX_MASK) |
+                             ((x2 << REG_G2S_DB_WIN1H_RIGHTX_SHIFT) &
+                              REG_G2S_DB_WIN1H_RIGHTX_MASK));
+
+    reg_G2S_DB_WIN1V = (u16)(((y1 << REG_G2S_DB_WIN1V_UPY_SHIFT) & REG_G2S_DB_WIN1V_UPY_MASK) |
+                             ((y2 << REG_G2S_DB_WIN1V_DOWNY_SHIFT) & REG_G2S_DB_WIN1V_DOWNY_MASK));
 }
 
 //The g2 and g2_oam headers contain a lot of inline functions and enums that may want to be ported over at some point

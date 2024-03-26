@@ -114,13 +114,13 @@ ov62_021E59C0: ; 0x021E59C0
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	bl DestroyHeap
-	ldr r0, _021E5A14 ; =FS_OVERLAY_ID(OVY_60)
+	ldr r0, _021E5A14 ; =FS_OVERLAY_ID(intro_title)
 	ldr r1, _021E5A18 ; =gApplication_TitleScreen
 	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_021E5A14: .word FS_OVERLAY_ID(OVY_60)
+_021E5A14: .word FS_OVERLAY_ID(intro_title)
 _021E5A18: .word gApplication_TitleScreen
 	thumb_func_end ov62_021E59C0
 
