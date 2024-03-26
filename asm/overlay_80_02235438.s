@@ -27,10 +27,10 @@ ov80_0223544C: ; 0x0223544C
 	bl FrontierScriptReadHalf
 	add r6, r0, #0
 	add r0, r7, #0
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	str r0, [sp]
 	add r0, r7, #0
-	bl ov80_0222BDF4
+	bl FrontierScript_ReadVarPtr
 	add r4, r0, #0
 	ldr r0, [r7]
 	ldr r0, [r0]
@@ -312,7 +312,7 @@ ov80_02235674: ; 0x02235674
 	bl sub_02096810
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov80_0222BDF4
+	bl FrontierScript_ReadVarPtr
 	add r6, r0, #0
 	mov r0, #0x8d
 	lsl r0, r0, #4
@@ -339,13 +339,13 @@ ov80_022356AC: ; 0x022356AC
 	ldr r0, [r0]
 	bl sub_02096808
 	add r0, r4, #0
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	add r7, r0, #0
 	add r0, r4, #0
-	bl ov80_0222BDF4
+	bl FrontierScript_ReadVarPtr
 	add r5, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0]

@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_OVERLAY_80_H
-#define POKEHEARTGOLD_OVERLAY_80_H
+#ifndef POKEHEARTGOLD_OVERLAY_80_0222BDF4_H
+#define POKEHEARTGOLD_OVERLAY_80_0222BDF4_H
 
 typedef struct FrontierContextSub_0 {
     void *unk0;
@@ -7,9 +7,9 @@ typedef struct FrontierContextSub_0 {
 
 typedef struct FrontierContext {
     FrontierContextSub_0 *unk0;
-} FrontierContext; //this *might* be FrontierContext, currently unsure
+} FrontierContext;
 
-u32 ov80_0222BDF4(FrontierContext *a0);
-u32 ov80_0222BE10(FrontierContext *a0);
+u32 FrontierScript_ReadVarPtr(FrontierContext *a0);
+u32 FrontierScript_ReadVar(FrontierContext *a0);
 
 #endif

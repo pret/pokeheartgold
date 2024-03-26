@@ -8,8 +8,9 @@ BOOL ov80_02233688(FrontierContext *ctx);
 BOOL ov80_022336EC(FrontierContext  *ctx);
 BOOL ov80_02233708(FrontierContext *ctx);
 BOOL ov80_0223371C(FrontierContext *ctx);
+BOOL ov80_02233770(FrontierContext *ctx);
 
 //static functions not yet decompiled
-void ov80_02233944(GAME_BOARD_ARGS *args, u32 a1);
+void ov80_02233944(GAME_BOARD_ARGS *args, void *a1);
 
 #endif

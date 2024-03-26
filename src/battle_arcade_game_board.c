@@ -6,6 +6,7 @@
 #include "gf_gfx_planes.h"
 #include "math_util.h"
 #include "frontier/overlay_80.h"
+#include "frontier/overlay_80_02238034.h"
 #include "palette.h"
 #include "party.h"
 #include "system.h"
