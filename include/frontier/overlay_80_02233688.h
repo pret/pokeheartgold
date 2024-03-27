@@ -12,6 +12,6 @@ BOOL ov80_02233770(FrontierContext *ctx);
 BOOL FrtCmd_ArcadeStartBattle(FrontierContext *ctx);
 
 //static functions not yet decompiled
-void ov80_02233944(GAME_BOARD_ARGS *args, void *a1);
+void GameBoardArgs_Set(GAME_BOARD_ARGS *args, void *a1);
 
 #endif

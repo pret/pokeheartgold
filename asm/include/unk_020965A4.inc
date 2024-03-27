@@ -13,9 +13,9 @@
 .public GF_AssertFail
 .public sub_02096808
 .public sub_0209680C
-.public sub_02096810
-.public sub_02096818
-.public sub_02096820
+.public FrontierSystem_GetData
+.public FrontierSystem_SetData
+.public FrontierSystem_LaunchApplication
 .public sub_0209684C
 .public sub_02096854
 .public sub_02096864

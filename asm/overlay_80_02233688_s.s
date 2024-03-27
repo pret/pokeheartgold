@@ -4,10 +4,10 @@
 
     .text
 
-    .public ov80_02233944
+    .public GameBoardArgs_Set
 
-	thumb_func_start ov80_02233944
-ov80_02233944: ; 0x02233944
+	thumb_func_start GameBoardArgs_Set
+GameBoardArgs_Set: ; 0x02233944
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r1, #0
 	add r4, r0, #0
@@ -109,7 +109,7 @@ _02233A16:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02233A18: .word 0x00000A78
-	thumb_func_end ov80_02233944
+	thumb_func_end GameBoardArgs_Set
 
 	thumb_func_start ov80_02233A1C
 ov80_02233A1C: ; 0x02233A1C
@@ -128,7 +128,7 @@ ov80_02233A30: ; 0x02233A30
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl FrontierSystem_GetData
 	bl ov80_022347E4
 	mov r0, #0
 	pop {r3, pc}
@@ -140,7 +140,7 @@ ov80_02233A44: ; 0x02233A44
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl FrontierSystem_GetData
 	bl ov80_022347EC
 	mov r0, #0
 	pop {r3, pc}
@@ -170,7 +170,7 @@ ov80_02233A58: ; 0x02233A58
 	add r5, r0, #0
 	ldr r0, [r7]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl FrontierSystem_GetData
 	add r4, r0, #0
 	ldr r0, [r7]
 	ldr r0, [r0]
@@ -845,7 +845,7 @@ ov80_02233FBC: ; 0x02233FBC
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl FrontierSystem_GetData
 	ldr r0, [r0, #0x28]
 	strh r0, [r4]
 	mov r0, #0
@@ -867,7 +867,7 @@ ov80_02233FD8: ; 0x02233FD8
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl FrontierSystem_GetData
 	add r1, r6, #0
 	add r2, r7, #0
 	bl ov80_02234E50
@@ -903,7 +903,7 @@ ov80_02234028: ; 0x02234028
 	bl ov80_0222BE9C
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl FrontierSystem_GetData
 	ldr r1, _02234054 ; =0x00000A7C
 	ldrb r2, [r0, r1]
 	cmp r2, #2
@@ -932,7 +932,7 @@ ov80_02234058: ; 0x02234058
 	ldr r0, [r5]
 	ldrb r4, [r1]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl FrontierSystem_GetData
 	add r2, r0, #0
 	bne _0223407C
 	mov r0, #0
@@ -956,7 +956,7 @@ ov80_02234094: ; 0x02234094
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl FrontierSystem_GetData
 	ldrb r1, [r0, #0x13]
 	bl ov80_02234E98
 	mov r0, #1
@@ -982,7 +982,7 @@ ov80_022340A8: ; 0x022340A8
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl FrontierSystem_GetData
 	ldr r3, [sp, #4]
 	add r1, r6, #0
 	add r2, r7, #0

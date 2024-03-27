@@ -16,9 +16,9 @@
 .public Party_GetMonByIndex
 .public SaveArray_Party_Get
 .public sub_02096808
-.public sub_02096810
-.public sub_02096818
-.public sub_02096820
+.public FrontierSystem_GetData
+.public FrontierSystem_SetData
+.public FrontierSystem_LaunchApplication
 .public sub_02096910
 .public OS_ResetSystem
 .public MI_CpuFill8

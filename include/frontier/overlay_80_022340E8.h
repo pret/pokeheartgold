@@ -3,7 +3,7 @@
 
 #include "save.h"
 
-typedef struct UnkStruct_02233770 {
+typedef struct ArcadeScriptData {
     u32 unk0[2];
     u32 unk8;
     BattleSetup *battleSetup;
@@ -28,12 +28,12 @@ typedef struct UnkStruct_02233770 {
     u32 unkC4[4];
     u32 unkD4[4];
     u32 unkE4[4];
-} UnkStruct_02233770;
+} ArcadeScriptData;
 
-u32 ov80_022340E8(SaveData *saveData, u32 a1, u8 a2, u32 a3, u32 a4, u32 a5, u32 a6);
-void ov80_0223437C(void *a0, u32 a1);
-void ov80_02234520(void *a0);
-u8 ov80_02234848(UnkStruct_02233770 *a0, Party *a1, Party *a2, int a3);
+u32 BattleArcadeData_Alloc(SaveData *saveData, u32 a1, u8 a2, u32 a3, u32 a4, u32 a5, u32 a6);
+void BattleArcadeData_Init(void *a0, u32 a1);
+void BattleArcadeData_Free(void *a0);
+u8 BattleArcade_GetWonBattlePoints(ArcadeScriptData *a0, Party *a1, Party *a2, int a3);
 void ov80_02235364(Party *a0, Party *a1, int a2, int a3);
 int ov80_02237D8C(u8 a0);
 

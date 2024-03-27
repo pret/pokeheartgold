@@ -25,9 +25,9 @@
 .public Party_GetMonByIndex
 .public SaveArray_Party_Get
 .public sub_02096808
-.public sub_02096810
-.public sub_02096818
-.public sub_02096820
+.public FrontierSystem_GetData
+.public FrontierSystem_SetData
+.public FrontierSystem_LaunchApplication
 .public sub_02096910
 .public OS_ResetSystem
 .public MI_CpuFill8
@@ -61,9 +61,9 @@
 .public ov80_02234058
 .public ov80_02234094
 .public ov80_022340A8
-.public ov80_022340E8
-.public ov80_0223437C
-.public ov80_02234520
+.public BattleArcadeData_Alloc
+.public BattleArcadeData_Init
+.public BattleArcadeData_Free
 .public ov80_02234550
 .public ov80_02234588
 .public ov80_02234764
@@ -74,7 +74,7 @@
 .public ov80_022347C4
 .public ov80_022347E4
 .public ov80_022347EC
-.public ov80_02234848
+.public BattleArcade_GetWonBattlePoints
 .public ov80_02234968
 .public ov80_02234A38
 .public ov80_02234A74
@@ -92,7 +92,7 @@
 .public ov80_02237D8C
 .public BattleArcade_GetMonCount
 .public BattleArcade_GetOpponentMonCount
-.public ov80_02238150
+.public BattleArcade_NewBattleSetup
 .public BattleArcade_MultiplayerCheck
 .public ov80_022383C0
 .public ov80_02238430

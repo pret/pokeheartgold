@@ -36,7 +36,7 @@ ov80_02230B8C: ; 0x02230B8C
 	add r1, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096818
+	bl FrontierSystem_SetData
 	mov r0, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -51,7 +51,7 @@ ov80_02230BE0: ; 0x02230BE0
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl FrontierSystem_GetData
 	add r1, r4, #0
 	bl ov80_022313C0
 	mov r0, #0
@@ -63,7 +63,7 @@ ov80_02230BFC: ; 0x02230BFC
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl FrontierSystem_GetData
 	bl ov80_022314A0
 	mov r0, #0
 	pop {r3, pc}
@@ -80,7 +80,7 @@ ov80_02230C10: ; 0x02230C10
 	add r7, r0, #0
 	ldr r0, [r6]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl FrontierSystem_GetData
 	add r4, r0, #0
 	mov r0, #0xb
 	mov r1, #0x20
@@ -154,7 +154,7 @@ _02230CB8:
 	add r2, r5, #0
 	ldr r0, [r0]
 	mov r3, #0
-	bl sub_02096820
+	bl FrontierSystem_LaunchApplication
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -171,7 +171,7 @@ ov80_02230CE8: ; 0x02230CE8
 	push {r3, r4, r5, lr}
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl FrontierSystem_GetData
 	add r4, r0, #0
 	mov r0, #7
 	lsl r0, r0, #8
@@ -196,7 +196,7 @@ ov80_02230D0C: ; 0x02230D0C
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl FrontierSystem_GetData
 	add r1, r6, #0
 	add r4, r0, #0
 	bl ov80_022375D0
@@ -214,7 +214,7 @@ ov80_02230D0C: ; 0x02230D0C
 	ldr r1, _02230D58 ; =gOverlayTemplate_Battle
 	ldr r0, [r0]
 	add r2, r6, #0
-	bl sub_02096820
+	bl FrontierSystem_LaunchApplication
 	mov r0, #1
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
@@ -257,7 +257,7 @@ ov80_02230D70: ; 0x02230D70
 	str r0, [sp, #4]
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl FrontierSystem_GetData
 	add r4, r0, #0
 	cmp r7, #0x26
 	bls _02230DA8
@@ -553,7 +553,7 @@ ov80_02230FD4: ; 0x02230FD4
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl FrontierSystem_GetData
 	ldr r0, [r0, #0x14]
 	strh r0, [r4]
 	mov r0, #0
@@ -575,7 +575,7 @@ ov80_02230FF0: ; 0x02230FF0
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl FrontierSystem_GetData
 	add r1, r6, #0
 	add r2, r7, #0
 	bl ov80_02231844
@@ -611,7 +611,7 @@ ov80_02231040: ; 0x02231040
 	bl ov80_0222BE9C
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl FrontierSystem_GetData
 	mov r1, #0xd9
 	lsl r1, r1, #4
 	ldrb r2, [r0, r1]
@@ -639,7 +639,7 @@ ov80_0223106C: ; 0x0223106C
 	ldr r0, [r5]
 	ldrb r4, [r1]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl FrontierSystem_GetData
 	add r2, r0, #0
 	bne _02231090
 	mov r0, #0
@@ -664,7 +664,7 @@ ov80_022310A4: ; 0x022310A4
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl FrontierSystem_GetData
 	add r1, r4, #0
 	bl ov80_0223151C
 	mov r0, #1

@@ -16,20 +16,20 @@ BOOL FrtCmd_ArcadeAlloc(FrontierContext *ctx) {
 
     UnkStruct_02096808 *unk = sub_02096808(ctx->unk0->unk0);
 
-    sub_02096818(ctx->unk0->unk0, ov80_022340E8(unk->saveData, spC, r4, sp10, r6, r7, sp14));
+    FrontierSystem_SetData(ctx->unk0->unk0, BattleArcadeData_Alloc(unk->saveData, spC, r4, sp10, r6, r7, sp14));
 
     return FALSE;
 }
 
 BOOL FrtCmd_ArcadeInit(FrontierContext  *ctx) {
     u32 arg1 = FrontierScript_ReadVar(ctx);
-    void *arg0 = sub_02096810(ctx->unk0->unk0);
-    ov80_0223437C(arg0, arg1);
+    void *arg0 = FrontierSystem_GetData(ctx->unk0->unk0);
+    BattleArcadeData_Init(arg0, arg1);
     return FALSE;
 }
 
 BOOL FrtCmd_ArcadeFree(FrontierContext *ctx) {
-    ov80_02234520(sub_02096810(ctx->unk0->unk0));
+    BattleArcadeData_Free(FrontierSystem_GetData(ctx->unk0->unk0));
     return FALSE;
 }
 
@@ -38,12 +38,12 @@ extern void ov80_02233A1C(void);
 
 BOOL ov80_0223371C(FrontierContext *ctx) {
     UnkStruct_02096808 *unk0 = sub_02096808(ctx->unk0->unk0);
-    void *unk1 = sub_02096810(ctx->unk0->unk0);
+    void *unk1 = FrontierSystem_GetData(ctx->unk0->unk0);
     GAME_BOARD_ARGS *args = AllocFromHeap(HEAP_ID_FIELD, sizeof(GAME_BOARD_ARGS));
     MI_CpuFill8(args, 0, sizeof(GAME_BOARD_ARGS));
     args->saveData = unk0->saveData;
-    ov80_02233944(args, unk1);
-    sub_02096820(ctx->unk0->unk0, &ov80_0223BE78, args, 0, ov80_02233A1C);
+    GameBoardArgs_Set(args, unk1);
+    FrontierSystem_LaunchApplication(ctx->unk0->unk0, &ov80_0223BE78, args, 0, ov80_02233A1C);
 
     return TRUE;
 }
@@ -53,10 +53,10 @@ BOOL ov80_02233770(FrontierContext *ctx) {
     Pokemon *mon;
     int i, index1, index2, partyCnt, data;
     
-    UnkStruct_02233770 *unkPtr = sub_02096810(ctx->unk0->unk0);
+    ArcadeScriptData *unkPtr = FrontierSystem_GetData(ctx->unk0->unk0);
     BattleSetup *setup = unkPtr->battleSetup;
     
-    unkPtr->unk1D = ov80_02234848(unkPtr, setup->party[0], unkPtr->battleSetup->party[2], setup->unk1B4);
+    unkPtr->unk1D = BattleArcade_GetWonBattlePoints(unkPtr, setup->party[0], unkPtr->battleSetup->party[2], setup->unk1B4);
 
     unkPtr->unk28 = IsBattleResultWin(setup->winFlag);
 
@@ -115,12 +115,12 @@ BOOL ov80_02233770(FrontierContext *ctx) {
 
 BOOL FrtCmd_ArcadeStartBattle(FrontierContext *ctx) {
     UnkStruct_02096808 *unkPtr = sub_02096808(ctx->unk0->unk0);
-    UnkStruct_02233770 *arg0 = sub_02096810(ctx->unk0->unk0);
-    BattleSetup *setup = ov80_02238150(arg0, unkPtr);
+    ArcadeScriptData *arg0 = FrontierSystem_GetData(ctx->unk0->unk0);
+    BattleSetup *setup = BattleArcade_NewBattleSetup(arg0, unkPtr);
 
     arg0->battleSetup = setup;
     
-    sub_02096820(ctx->unk0->unk0, &gOverlayTemplate_Battle, setup, 0, NULL);
+    FrontierSystem_LaunchApplication(ctx->unk0->unk0, &gOverlayTemplate_Battle, setup, 0, NULL);
 
     return TRUE;
 }

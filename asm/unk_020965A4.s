@@ -327,24 +327,24 @@ sub_0209680C: ; 0x0209680C
 	bx lr
 	thumb_func_end sub_0209680C
 
-	thumb_func_start sub_02096810
-sub_02096810: ; 0x02096810
+	thumb_func_start FrontierSystem_GetData
+FrontierSystem_GetData: ; 0x02096810
 	ldr r0, [r0]
 	ldr r0, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_02096810
+	thumb_func_end FrontierSystem_GetData
 
-	thumb_func_start sub_02096818
-sub_02096818: ; 0x02096818
+	thumb_func_start FrontierSystem_SetData
+FrontierSystem_SetData: ; 0x02096818
 	ldr r0, [r0]
 	str r1, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_02096818
+	thumb_func_end FrontierSystem_SetData
 
-	thumb_func_start sub_02096820
-sub_02096820: ; 0x02096820
+	thumb_func_start FrontierSystem_LaunchApplication
+FrontierSystem_LaunchApplication: ; 0x02096820
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #4]
@@ -366,7 +366,7 @@ _02096834:
 	str r0, [r5, #0xc]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02096820
+	thumb_func_end FrontierSystem_LaunchApplication
 
 	thumb_func_start sub_0209684C
 sub_0209684C: ; 0x0209684C

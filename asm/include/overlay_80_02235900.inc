@@ -19,8 +19,8 @@
 .public SaveArray_Party_Get
 .public HealParty
 .public sub_02096808
-.public sub_02096810
-.public sub_02096818
+.public FrontierSystem_GetData
+.public FrontierSystem_SetData
 .public sub_02096910
 .public sub_02096998
 .public ov80_0222A840
