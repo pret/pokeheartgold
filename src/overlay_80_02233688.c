@@ -14,7 +14,7 @@ BOOL FrtCmd_ArcadeAlloc(FrontierContext *ctx) {
     u32 r7 = FrontierScript_ReadVar(ctx);
     u32 sp14 = FrontierScript_ReadVarPtr(ctx);
 
-    UnkStruct_02096808 *unk = sub_02096808(ctx->unk0->unk0);
+    FrontierLaunchParam *unk = Frontier_GetLaunchParam(ctx->unk0->unk0);
 
     Frontier_SetData(ctx->unk0->unk0, BattleArcadeData_Alloc(unk->saveData, spC, r4, sp10, r6, r7, sp14));
 
@@ -37,7 +37,7 @@ extern OVY_MGR_TEMPLATE ov80_0223BE78;
 extern void ov80_02233A1C(void);
 
 BOOL ov80_0223371C(FrontierContext *ctx) {
-    UnkStruct_02096808 *unk0 = sub_02096808(ctx->unk0->unk0);
+    FrontierLaunchParam *unk0 = Frontier_GetLaunchParam(ctx->unk0->unk0);
     void *unk1 = Frontier_GetData(ctx->unk0->unk0);
     GAME_BOARD_ARGS *args = AllocFromHeap(HEAP_ID_FIELD, sizeof(GAME_BOARD_ARGS));
     MI_CpuFill8(args, 0, sizeof(GAME_BOARD_ARGS));
@@ -114,7 +114,7 @@ BOOL ov80_02233770(FrontierContext *ctx) {
 }
 
 BOOL FrtCmd_ArcadeStartBattle(FrontierContext *ctx) {
-    UnkStruct_02096808 *unkPtr = sub_02096808(ctx->unk0->unk0);
+    FrontierLaunchParam *unkPtr = Frontier_GetLaunchParam(ctx->unk0->unk0);
     ArcadeScriptData *arg0 = Frontier_GetData(ctx->unk0->unk0);
     BattleSetup *setup = BattleArcade_NewBattleSetup(arg0, unkPtr);
 

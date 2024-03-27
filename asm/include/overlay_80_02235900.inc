@@ -18,7 +18,7 @@
 .public sub_0205C268
 .public SaveArray_Party_Get
 .public HealParty
-.public sub_02096808
+.public Frontier_GetLaunchParam
 .public Frontier_GetData
 .public Frontier_SetData
 .public sub_02096910

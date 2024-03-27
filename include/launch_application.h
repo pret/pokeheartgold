@@ -65,18 +65,6 @@ struct UnkStruct_ScrCmd230 {
     u8 unk_30[6];
 };
 
-struct UnkStruct_ScrCmd627 {
-    void *unk_0;
-    Options *options;
-    SaveData *saveData;
-    void *unk_0C;
-    u8 filler_10[0x8];
-    u32 mapId;
-    void *unk_1C;
-    u8 unk_20;
-    u8 filler_21[0x7];
-};
-
 typedef struct UnkStruct_0203E600 {
     u8 unk0[0x14];
     u8 unk14;

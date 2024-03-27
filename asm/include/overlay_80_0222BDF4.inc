@@ -164,7 +164,7 @@
 .public NamingScreen_CreateArgs
 .public sub_0208311C
 .public HealParty
-.public sub_02096808
+.public Frontier_GetLaunchParam
 .public sub_0209680C
 .public Frontier_GetData
 .public Frontier_SetData

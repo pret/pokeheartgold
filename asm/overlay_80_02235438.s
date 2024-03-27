@@ -21,7 +21,7 @@ ov80_0223544C: ; 0x0223544C
 	add r7, r0, #0
 	ldr r0, [r7]
 	ldr r0, [r0]
-	bl sub_02096808
+	bl Frontier_GetLaunchParam
 	add r5, r0, #0
 	add r0, r7, #0
 	bl FrontierScriptReadHalf
@@ -226,7 +226,7 @@ ov80_022355D0: ; 0x022355D0
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096808
+	bl Frontier_GetLaunchParam
 	ldr r1, [r5, #0x1c]
 	add r0, r1, #1
 	str r0, [r5, #0x1c]
@@ -272,7 +272,7 @@ ov80_02235624: ; 0x02235624
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096808
+	bl Frontier_GetLaunchParam
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -337,7 +337,7 @@ ov80_022356AC: ; 0x022356AC
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_02096808
+	bl Frontier_GetLaunchParam
 	add r0, r4, #0
 	bl FrontierScript_ReadVar
 	add r6, r0, #0
@@ -409,7 +409,7 @@ ov80_0223573C: ; 0x0223573C
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096808
+	bl Frontier_GetLaunchParam
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]

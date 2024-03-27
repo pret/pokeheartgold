@@ -101,6 +101,7 @@
 #include "constants/trainers.h"
 #include "render_window.h"
 #include "overlay_01_021F1AFC.h"
+#include "frontier/frontier.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
 FS_EXTERN_OVERLAY(npc_trade);
@@ -4147,23 +4148,23 @@ BOOL ScrCmd_595(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_627(ScriptContext *ctx) {
-    struct UnkStruct_ScrCmd627 **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    struct FrontierLaunchParam **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     u8 r6 = ScriptReadByte(ctx);
-    struct UnkStruct_ScrCmd627 *work = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct UnkStruct_ScrCmd627));
-    MI_CpuClear8(work, sizeof(struct UnkStruct_ScrCmd627));
+    struct FrontierLaunchParam *work = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FrontierLaunchParam));
+    MI_CpuClear8(work, sizeof(FrontierLaunchParam));
     *p_work = work;
     if (r6 == 5 || r6 == 6) {
-        work->unk_0 = ctx->fieldSystem->unkA0;
+        work->unk0 = ctx->fieldSystem->unkA0;
     } else {
-        work->unk_0 = NULL;
+        work->unk0 = NULL;
     }
     work->options = Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->saveData);
-    work->unk_20 = r6;
+    work->unk20 = r6;
     work->saveData = ctx->fieldSystem->saveData;
     work->mapId = ctx->fieldSystem->location->mapId;
-    work->unk_0C = ctx->fieldSystem->bagCursor;
-    work->unk_1C = ctx->fieldSystem->unkB0;
-    CallApplicationAsTask(ctx->taskman, &_02108584, work);
+    work->bagCursor = ctx->fieldSystem->bagCursor;
+    work->unk1C = ctx->fieldSystem->unkB0;
+    CallApplicationAsTask(ctx->taskman, &gOverlayTemplate_Frontier, work);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }

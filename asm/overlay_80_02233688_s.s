@@ -174,7 +174,7 @@ ov80_02233A58: ; 0x02233A58
 	add r4, r0, #0
 	ldr r0, [r7]
 	ldr r0, [r0]
-	bl sub_02096808
+	bl Frontier_GetLaunchParam
 	str r0, [sp, #0x24]
 	ldr r0, [r7]
 	bl ov80_0222AB34
@@ -925,7 +925,7 @@ ov80_02234058: ; 0x02234058
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096808
+	bl Frontier_GetLaunchParam
 	ldr r1, [r5, #0x1c]
 	add r0, r1, #1
 	str r0, [r5, #0x1c]

@@ -2,18 +2,25 @@
 #define POKEHEARTGOLD_FRONTIER_H
 
 #include "overlay_manager.h"
+#include "bag_cursor.h"
 
-typedef struct UnkStruct_02096808 {
-    u32 unk0;
-    u32 unk4;
+typedef struct FrontierLaunchParam {
+    void *unk0;
+    Options *options;
     SaveData *saveData;
-} UnkStruct_02096808;
+    BagCursor *bagCursor;
+    u8 unk10[0x8];
+    u32 mapId;
+    void *unk1C;
+    u8 unk20;
+    u8 unk21[0x7];
+} FrontierLaunchParam;
 
-extern const OVY_MGR_TEMPLATE _02108584;
+extern const OVY_MGR_TEMPLATE gOverlayTemplate_Frontier;
 
 typedef void (UnkFuncPtr_020965A4)(void); //almost certainly wrong
 
-UnkStruct_02096808 *sub_02096808(void *a0);
+FrontierLaunchParam *Frontier_GetLaunchParam(void *a0);
 void Frontier_SetData(void *a0, u32 a1);
 void *Frontier_GetData(void *a0);
 void Frontier_LaunchApplication(void *a0, const OVY_MGR_TEMPLATE *ovyTemp, void *args, u32 a3, UnkFuncPtr_020965A4 func);

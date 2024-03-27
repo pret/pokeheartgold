@@ -91,7 +91,7 @@
 .public sub_0203A880
 .public sub_0203A914
 .public sub_02055198
-.public sub_02096808
+.public Frontier_GetLaunchParam
 .public sub_02096864
 .public sub_02096868
 .public sub_0209686C

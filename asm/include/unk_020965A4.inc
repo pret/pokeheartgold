@@ -11,7 +11,7 @@
 .public OverlayManager_Run
 .public FreeToHeap
 .public GF_AssertFail
-.public sub_02096808
+.public Frontier_GetLaunchParam
 .public sub_0209680C
 .public Frontier_GetData
 .public Frontier_SetData
@@ -24,7 +24,7 @@
 .public sub_02096878
 .public sub_02096884
 .public MI_CpuFill8
-.public _02108584
+.public gOverlayTemplate_Frontier
 .public FrontierSystem_Create
 .public FrontierSystem_Main
 .public ov80_0222A920

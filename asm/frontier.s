@@ -9,8 +9,8 @@
 
 	.text
 
-	thumb_func_start sub_020965A4
-sub_020965A4: ; 0x020965A4
+	thumb_func_start Frontier_Init
+Frontier_Init: ; 0x020965A4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl Frontier_LoadOverlays
@@ -51,10 +51,10 @@ _020965DC:
 	pop {r3, r4, r5, pc}
 	nop
 _02096604: .word 0x00000A54
-	thumb_func_end sub_020965A4
+	thumb_func_end Frontier_Init
 
-	thumb_func_start sub_02096608
-sub_02096608: ; 0x02096608
+	thumb_func_start Frontier_Main
+Frontier_Main: ; 0x02096608
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	bl OverlayManager_GetData
@@ -205,10 +205,10 @@ _02096734:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02096738: .word 0x0000FFFF
-	thumb_func_end sub_02096608
+	thumb_func_end Frontier_Main
 
-	thumb_func_start sub_0209673C
-sub_0209673C: ; 0x0209673C
+	thumb_func_start Frontier_Exit
+Frontier_Exit: ; 0x0209673C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -222,7 +222,7 @@ sub_0209673C: ; 0x0209673C
 	bl Frontier_UnloadOverlays
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0209673C
+	thumb_func_end Frontier_Exit
 
 	thumb_func_start Frontier_CreateMap
 Frontier_CreateMap: ; 0x02096760
@@ -315,11 +315,11 @@ _02096800: .word FS_OVERLAY_ID(OVY_81)
 _02096804: .word FS_OVERLAY_ID(OVY_42)
 	thumb_func_end Frontier_UnloadOverlays
 
-	thumb_func_start sub_02096808
-sub_02096808: ; 0x02096808
+	thumb_func_start Frontier_GetLaunchParam
+Frontier_GetLaunchParam: ; 0x02096808
 	ldr r0, [r0]
 	bx lr
-	thumb_func_end sub_02096808
+	thumb_func_end Frontier_GetLaunchParam
 
 	thumb_func_start sub_0209680C
 sub_0209680C: ; 0x0209680C
@@ -445,6 +445,6 @@ _020968AC: .word 0x0000FFFF
 
 	.rodata
 
-	.public _02108584
-_02108584:
-	.word sub_020965A4, sub_02096608, sub_0209673C, 0xFFFFFFFF
+	.public gOverlayTemplate_Frontier
+gOverlayTemplate_Frontier:
+	.word Frontier_Init, Frontier_Main, Frontier_Exit, 0xFFFFFFFF

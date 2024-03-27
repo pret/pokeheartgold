@@ -18,7 +18,7 @@ ov80_0222F608: ; 0x0222F608
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096808
+	bl Frontier_GetLaunchParam
 	lsl r2, r4, #0x18
 	lsl r3, r6, #0x18
 	ldr r0, [r0, #8]
@@ -67,7 +67,7 @@ ov80_0222F678: ; 0x0222F678
 	add r6, r0, #0
 	ldr r0, [r6]
 	ldr r0, [r0]
-	bl sub_02096808
+	bl Frontier_GetLaunchParam
 	add r7, r0, #0
 	ldr r0, [r6]
 	ldr r0, [r0]
@@ -137,7 +137,7 @@ ov80_0222F708: ; 0x0222F708
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096808
+	bl Frontier_GetLaunchParam
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -168,7 +168,7 @@ ov80_0222F74C: ; 0x0222F74C
 	add r6, r0, #0
 	ldr r0, [r6]
 	ldr r0, [r0]
-	bl sub_02096808
+	bl Frontier_GetLaunchParam
 	add r7, r0, #0
 	ldr r0, [r6]
 	ldr r0, [r0]
@@ -893,7 +893,7 @@ ov80_0222FCD0: ; 0x0222FCD0
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096808
+	bl Frontier_GetLaunchParam
 	ldr r1, [r5, #0x1c]
 	add r0, r1, #1
 	str r0, [r5, #0x1c]

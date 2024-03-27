@@ -18,7 +18,7 @@
 .public Party_GetMonByIndex
 .public Party_SafeCopyMonToSlot_ResetUnkSub
 .public SaveArray_Party_Get
-.public sub_02096808
+.public Frontier_GetLaunchParam
 .public Frontier_GetData
 .public Frontier_SetData
 .public Frontier_LaunchApplication
