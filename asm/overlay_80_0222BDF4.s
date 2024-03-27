@@ -7742,7 +7742,7 @@ ov80_0223BE6C: ; 0x0223BE6C
 	.byte 0x00, 0xF0, 0xFF, 0xFF
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
-ov80_0223BE78: ; 0x0223BE78
+gOverlayTemplate_BattleArcadeGameBoard: ; 0x0223BE78
 	.word BattleArcadeGameBoard_InitOverlay
 	.word BattleArcadeGameBoard_Main
 	.word ov84_0223DFF0

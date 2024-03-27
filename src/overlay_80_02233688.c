@@ -6,6 +6,8 @@
 #include "frontier/frontier.h"
 #include "launch_application_data.h"
 
+static void GameBoardArgs_Set(GAME_BOARD_ARGS *args, ArcadeContext *data);
+
 BOOL FrtCmd_ArcadeAlloc(FrontierContext *ctx) {
     u32 spC = FrontierScript_ReadVar(ctx);
     u32 r4 = FrontierScript_ReadVar(ctx);
@@ -14,9 +16,9 @@ BOOL FrtCmd_ArcadeAlloc(FrontierContext *ctx) {
     u32 r7 = FrontierScript_ReadVar(ctx);
     u32 sp14 = FrontierScript_ReadVarPtr(ctx);
 
-    FrontierLaunchParam *unk = Frontier_GetLaunchParam(ctx->unk0->unk0);
+    FrontierLaunchParam *param = Frontier_GetLaunchParam(ctx->unk0->unk0);
 
-    Frontier_SetData(ctx->unk0->unk0, BattleArcadeData_Alloc(unk->saveData, spC, r4, sp10, r6, r7, sp14));
+    Frontier_SetData(ctx->unk0->unk0, BattleArcadeData_Alloc(param->saveData, spC, r4, sp10, r6, r7, sp14));
 
     return FALSE;
 }
@@ -33,17 +35,17 @@ BOOL FrtCmd_ArcadeFree(FrontierContext *ctx) {
     return FALSE;
 }
 
-extern OVY_MGR_TEMPLATE ov80_0223BE78;
+extern OVY_MGR_TEMPLATE gOverlayTemplate_BattleArcadeGameBoard;
 extern void ov80_02233A1C(void);
 
 BOOL ov80_0223371C(FrontierContext *ctx) {
-    FrontierLaunchParam *unk0 = Frontier_GetLaunchParam(ctx->unk0->unk0);
-    void *unk1 = Frontier_GetData(ctx->unk0->unk0);
+    FrontierLaunchParam *param = Frontier_GetLaunchParam(ctx->unk0->unk0);
+    ArcadeContext *data = Frontier_GetData(ctx->unk0->unk0);
     GAME_BOARD_ARGS *args = AllocFromHeap(HEAP_ID_FIELD, sizeof(GAME_BOARD_ARGS));
     MI_CpuFill8(args, 0, sizeof(GAME_BOARD_ARGS));
-    args->saveData = unk0->saveData;
-    GameBoardArgs_Set(args, unk1);
-    Frontier_LaunchApplication(ctx->unk0->unk0, &ov80_0223BE78, args, 0, ov80_02233A1C);
+    args->saveData = param->saveData;
+    GameBoardArgs_Set(args, data);
+    Frontier_LaunchApplication(ctx->unk0->unk0, &gOverlayTemplate_BattleArcadeGameBoard, args, 0, ov80_02233A1C);
 
     return TRUE;
 }
@@ -53,14 +55,14 @@ BOOL ov80_02233770(FrontierContext *ctx) {
     Pokemon *mon;
     int i, index1, index2, partyCnt, data;
     
-    ArcadeScriptData *unkPtr = Frontier_GetData(ctx->unk0->unk0);
-    BattleSetup *setup = unkPtr->battleSetup;
+    ArcadeContext *arcadeData = Frontier_GetData(ctx->unk0->unk0);
+    BattleSetup *setup = arcadeData->battleSetup;
     
-    unkPtr->unk1D = BattleArcade_GetWonBattlePoints(unkPtr, setup->party[0], unkPtr->battleSetup->party[2], setup->unk1B4);
+    arcadeData->bpGain = BattleArcade_GetWonBattlePoints(arcadeData, setup->party[0], arcadeData->battleSetup->party[2], setup->unk1B4);
 
-    unkPtr->unk28 = IsBattleResultWin(setup->winFlag);
+    arcadeData->isBattleWin = IsBattleResultWin(setup->winFlag);
 
-    if (unkPtr->unk13 == 0x1b) {
+    if (arcadeData->unk13 == 0x1b) {
         index1 = 1;
         index2 = 3;
     } else {
@@ -68,20 +70,20 @@ BOOL ov80_02233770(FrontierContext *ctx) {
         index2 = 2;
     }
 
-    ov80_02235364(setup->party[index1], unkPtr->party, 0, 0);
-    ov80_02235364(setup->party[index1], unkPtr->party, 1, 1);
+    ov80_02235364(setup->party[index1], arcadeData->playerParty, 0, 0);
+    ov80_02235364(setup->party[index1], arcadeData->playerParty, 1, 1);
     
-    if (ov80_02237D8C(unkPtr->unk10) == 0) {
-        ov80_02235364(setup->party[index1], unkPtr->party, 2, 2);
+    if (ov80_02237D8C(arcadeData->unk10) == 0) {
+        ov80_02235364(setup->party[index1], arcadeData->playerParty, 2, 2);
     } else {
-        ov80_02235364(setup->party[index2], unkPtr->party, 0, 2);
-        ov80_02235364(setup->party[index2], unkPtr->party, 1, 3);
+        ov80_02235364(setup->party[index2], arcadeData->playerParty, 0, 2);
+        ov80_02235364(setup->party[index2], arcadeData->playerParty, 1, 3);
     }
 
-    if (unkPtr->unk13 == 0x11) {
-        monCnt = BattleArcade_GetMonCount(unkPtr->unk10, 1);
+    if (arcadeData->unk13 == 0x11) {
+        monCnt = BattleArcade_GetMonCount(arcadeData->unk10, 1);
         for (i = 0; i < monCnt; i++) {
-            mon = Party_GetMonByIndex(unkPtr->party, i);
+            mon = Party_GetMonByIndex(arcadeData->playerParty, i);
             u32 level = GetMonData(mon, MON_DATA_LEVEL, 0);
             u32 species = GetMonData(mon, MON_DATA_SPECIES, 0);
             u32 exp = GetMonExpBySpeciesAndLevel(species, level - 3);
@@ -90,21 +92,21 @@ BOOL ov80_02233770(FrontierContext *ctx) {
         }
     }
     
-    partyCnt = Party_GetCount(unkPtr->party);
+    partyCnt = Party_GetCount(arcadeData->playerParty);
     for (i = 0; i < partyCnt; i++) {
-        mon = Party_GetMonByIndex(unkPtr->party, i);
-        data = unkPtr->unk94[i];
+        mon = Party_GetMonByIndex(arcadeData->playerParty, i);
+        data = arcadeData->savedHp[i];
         SetMonData(mon, MON_DATA_MAXHP, &data);
         SetMonData(mon, MON_DATA_HP, &data);
-        data = unkPtr->unkA4[i];
+        data = arcadeData->savedAtk[i];
         SetMonData(mon, MON_DATA_ATK, &data);
-        data = unkPtr->unkB4[i];
+        data = arcadeData->savedDef[i];
         SetMonData(mon, MON_DATA_DEF, &data);
-        data = unkPtr->unkC4[i];
+        data = arcadeData->savedSpd[i];
         SetMonData(mon, MON_DATA_SPEED, &data);
-        data = unkPtr->unkD4[i];
+        data = arcadeData->savedSpAtk[i];
         SetMonData(mon, MON_DATA_SPATK, &data);
-        data = unkPtr->unkE4[i];
+        data = arcadeData->savedSpDef[i];
         SetMonData(mon, MON_DATA_SPDEF, &data);
     }
     
@@ -114,14 +116,49 @@ BOOL ov80_02233770(FrontierContext *ctx) {
 }
 
 BOOL FrtCmd_ArcadeStartBattle(FrontierContext *ctx) {
-    FrontierLaunchParam *unkPtr = Frontier_GetLaunchParam(ctx->unk0->unk0);
-    ArcadeScriptData *arg0 = Frontier_GetData(ctx->unk0->unk0);
-    BattleSetup *setup = BattleArcade_NewBattleSetup(arg0, unkPtr);
+    FrontierLaunchParam *param = Frontier_GetLaunchParam(ctx->unk0->unk0);
+    ArcadeContext *arcadeData = Frontier_GetData(ctx->unk0->unk0);
+    BattleSetup *setup = BattleArcade_NewBattleSetup(arcadeData, param);
 
-    arg0->battleSetup = setup;
+    arcadeData->battleSetup = setup;
     
     Frontier_LaunchApplication(ctx->unk0->unk0, &gOverlayTemplate_Battle, setup, 0, NULL);
 
     return TRUE;
 }
 
+static void GameBoardArgs_Set(GAME_BOARD_ARGS *args, ArcadeContext *data) {
+    args->type = data->unk10;
+    args->unk1E = ov80_02238498(data);
+    
+    args->unk14 = &data->unk20;
+    args->unk10 = &data->unk13;
+    args->bpGain = data->bpGain;
+    
+    args->winstreak = data->winstreak;
+    args->multiWinstreak = data->multiWinstreak;
+
+    args->cursorSpeed = &data->cursorSpeed;
+    args->playerParty = data->playerParty;
+    args->opponentParty = data->opponentParty;
+    args->work = data;
+
+    data->weather = 0;
+    args->weather = &data->weather;
+    args->randomFlag = data->randomFlag;
+    data->randomFlag = 0;
+    data->unk1F = 0;
+
+    int partyCnt = Party_GetCount(data->playerParty);
+
+    for (int i = 0; i < partyCnt; i++) {
+        Pokemon *mon = Party_GetMonByIndex(data->playerParty, i);
+
+        data->savedHp[i] = GetMonData(mon, MON_DATA_MAXHP, NULL);
+        data->savedAtk[i] = GetMonData(mon, MON_DATA_ATK, NULL);
+        data->savedDef[i] = GetMonData(mon, MON_DATA_DEF, NULL);
+        data->savedSpd[i] = GetMonData(mon, MON_DATA_SPEED, NULL);
+        data->savedSpAtk[i] = GetMonData(mon, MON_DATA_SPATK, NULL);
+        data->savedSpDef[i] = GetMonData(mon, MON_DATA_SPDEF, NULL);
+    }
+}

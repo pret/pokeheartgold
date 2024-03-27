@@ -356,7 +356,7 @@
 .public ov80_0223BE54
 .public ov80_0223BE60
 .public ov80_0223BE6C
-.public ov80_0223BE78
+.public gOverlayTemplate_BattleArcadeGameBoard
 .public ov80_0223BE88
 .public ov80_0223BE90
 .public ov80_0223BE98
@@ -413,7 +413,7 @@
 .public ov80_0223BE54
 .public ov80_0223BE60
 .public ov80_0223BE6C
-.public ov80_0223BE78
+.public gOverlayTemplate_BattleArcadeGameBoard
 .public ov80_0223BE88
 .public ov80_0223BE90
 .public ov80_0223BE98

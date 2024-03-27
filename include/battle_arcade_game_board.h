@@ -19,7 +19,7 @@ typedef struct GAME_BOARD_ARGS {
     u8 type;
     u8 level;
     u8 unk6;
-    u8 unk7;
+    u8 bpGain;
     int *weather;
     u8 *cursorSpeed;
     u8 *unk10;

@@ -101,6 +101,6 @@
 .public ov80_02239938
 .public ov80_02239A60
 .public ov80_0223BE6C
-.public ov80_0223BE78
+.public gOverlayTemplate_BattleArcadeGameBoard
 .public ov80_0223BE6C
-.public ov80_0223BE78
+.public gOverlayTemplate_BattleArcadeGameBoard
