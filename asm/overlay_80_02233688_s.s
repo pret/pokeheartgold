@@ -6,36 +6,6 @@
 
     .public ov80_02233944
 
-	thumb_func_start ov80_02233908
-ov80_02233908: ; 0x02233908
-	push {r3, r4, r5, r6, lr}
-	sub sp, #4
-	add r5, r0, #0
-	ldr r0, [r5]
-	ldr r0, [r0]
-	bl sub_02096808
-	add r6, r0, #0
-	ldr r0, [r5]
-	ldr r0, [r0]
-	bl sub_02096810
-	add r1, r6, #0
-	add r4, r0, #0
-	bl ov80_02238150
-	add r2, r0, #0
-	str r2, [r4, #0xc]
-	mov r3, #0
-	str r3, [sp]
-	ldr r0, [r5]
-	ldr r1, _02233940 ; =gOverlayTemplate_Battle
-	ldr r0, [r0]
-	bl sub_02096820
-	mov r0, #1
-	add sp, #4
-	pop {r3, r4, r5, r6, pc}
-	.balign 4, 0
-_02233940: .word gOverlayTemplate_Battle
-	thumb_func_end ov80_02233908
-
 	thumb_func_start ov80_02233944
 ov80_02233944: ; 0x02233944
 	push {r3, r4, r5, r6, r7, lr}

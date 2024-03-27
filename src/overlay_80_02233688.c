@@ -4,9 +4,9 @@
 #include "frontier/overlay_80_022340E8.h"
 #include "frontier/overlay_80_02238034.h"
 #include "unk_020965A4.h"
+#include "launch_application_data.h"
 
-//Alloc
-BOOL ov80_02233688(FrontierContext *ctx) {
+BOOL FrtCmd_ArcadeAlloc(FrontierContext *ctx) {
     u32 spC = FrontierScript_ReadVar(ctx);
     u32 r4 = FrontierScript_ReadVar(ctx);
     u32 sp10 = FrontierScript_ReadVar(ctx);
@@ -21,16 +21,14 @@ BOOL ov80_02233688(FrontierContext *ctx) {
     return FALSE;
 }
 
-//Init
-BOOL ov80_022336EC(FrontierContext  *ctx) {
+BOOL FrtCmd_ArcadeInit(FrontierContext  *ctx) {
     u32 arg1 = FrontierScript_ReadVar(ctx);
     void *arg0 = sub_02096810(ctx->unk0->unk0);
     ov80_0223437C(arg0, arg1);
     return FALSE;
 }
 
-//free
-BOOL ov80_02233708(FrontierContext *ctx) {
+BOOL FrtCmd_ArcadeFree(FrontierContext *ctx) {
     ov80_02234520(sub_02096810(ctx->unk0->unk0));
     return FALSE;
 }
@@ -114,3 +112,16 @@ BOOL ov80_02233770(FrontierContext *ctx) {
     
     return FALSE;
 }
+
+BOOL FrtCmd_ArcadeStartBattle(FrontierContext *ctx) {
+    UnkStruct_02096808 *unkPtr = sub_02096808(ctx->unk0->unk0);
+    UnkStruct_02233770 *arg0 = sub_02096810(ctx->unk0->unk0);
+    BattleSetup *setup = ov80_02238150(arg0, unkPtr);
+
+    arg0->battleSetup = setup;
+    
+    sub_02096820(ctx->unk0->unk0, &gOverlayTemplate_Battle, setup, 0, NULL);
+
+    return TRUE;
+}
+

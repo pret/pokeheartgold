@@ -7644,11 +7644,11 @@ ov80_0223BA04: ; 0x0223BA04
 	.word ov80_02235F80
 	.word ov80_02235FB4
 	.word ov80_0222E120
-	.word ov80_02233688
-	.word ov80_022336EC
-	.word ov80_02233708
+	.word FrtCmd_ArcadeAlloc
+	.word FrtCmd_ArcadeInit
+	.word FrtCmd_ArcadeFree
 	.word ov80_02233770
-	.word ov80_02233908
+	.word FrtCmd_ArcadeStartBattle
 	.word ov80_02233A30
 	.word ov80_02233A44
 	.word ov80_02233A58

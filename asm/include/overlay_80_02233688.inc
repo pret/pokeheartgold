@@ -46,12 +46,12 @@
 .public ov80_0222F33C
 .public ov80_0222F3CC
 .public ov80_0222F44C
-.public ov80_02233688
-.public ov80_022336EC
-.public ov80_02233708
+.public FrtCmd_ArcadeAlloc
+.public FrtCmd_ArcadeInit
+.public FrtCmd_ArcadeFree
 .public ov80_0223371C
 .public ov80_02233770
-.public ov80_02233908
+.public FrtCmd_ArcadeStartBattle
 .public ov80_02233A30
 .public ov80_02233A44
 .public ov80_02233A58
