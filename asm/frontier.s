@@ -38,13 +38,13 @@ _020965DC:
 	add r2, #0x20
 	ldrb r2, [r2]
 	mov r1, #0xb
-	bl ov80_0222A84C
+	bl FrontierSystem_Create
 	str r0, [r4, #0x14]
 	ldr r1, [r4]
 	mov r2, #0
 	add r1, #0x20
 	ldrb r1, [r1]
-	bl ov80_0222A958
+	bl FrontierSystem_AddTask
 	add r0, r4, #0
 	bl Frontier_CreateMap
 	mov r0, #1
@@ -102,7 +102,7 @@ _02096648:
 	b _02096734
 _0209665A:
 	ldr r0, [r4, #0x14]
-	bl ov80_0222A8B8
+	bl FrontierSystem_Main
 	ldr r0, [r4, #4]
 	cmp r0, #0
 	beq _02096734
@@ -185,13 +185,13 @@ _020966FA:
 	add r2, #0x20
 	ldrb r2, [r2]
 	mov r1, #0xb
-	bl ov80_0222A84C
+	bl FrontierSystem_Create
 	str r0, [r4, #0x14]
 	ldr r1, [r4]
 	ldrh r2, [r4, #0x20]
 	add r1, #0x20
 	ldrb r1, [r1]
-	bl ov80_0222A958
+	bl FrontierSystem_AddTask
 	ldr r0, [r4, #0x14]
 	add r1, r6, #0
 	bl ov80_0222AAF8

@@ -148,7 +148,7 @@ _022386D4:
 	add r1, r4, #0
 	add r1, #0x98
 	str r0, [r1]
-	ldr r0, _0223884C ; =ov80_02238AC8
+	ldr r0, _0223884C ; =FrontierMap_Update
 	ldr r2, _02238850 ; =0x00013880
 	add r1, r4, #0
 	bl SysTask_CreateOnMainQueue
@@ -182,7 +182,7 @@ _022386D4:
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B8C
-	ldr r0, _02238854 ; =ov80_02238A7C
+	ldr r0, _02238854 ; =FrontierMap_VBlank
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
 	ldr r0, _02238858 ; =ov80_02238AAC
@@ -212,9 +212,9 @@ _0223883C: .word ov80_02238AB0
 _02238840: .word 0x0000EA60
 _02238844: .word ov80_02238ABC
 _02238848: .word 0x0000EE48
-_0223884C: .word ov80_02238AC8
+_0223884C: .word FrontierMap_Update
 _02238850: .word 0x00013880
-_02238854: .word ov80_02238A7C
+_02238854: .word FrontierMap_VBlank
 _02238858: .word ov80_02238AAC
 	thumb_func_end FrontierMap_Init
 
@@ -449,8 +449,8 @@ _02238A66:
 _02238A78: .word 0x0000FFFF
 	thumb_func_end ov80_02238A18
 
-	thumb_func_start ov80_02238A7C
-ov80_02238A7C: ; 0x02238A7C
+	thumb_func_start FrontierMap_VBlank
+FrontierMap_VBlank: ; 0x02238A7C
 	push {r4, lr}
 	add r4, r0, #0
 	bl GF_RunVramTransferTasks
@@ -469,7 +469,7 @@ ov80_02238A7C: ; 0x02238A7C
 	nop
 _02238AA4: .word 0x027E0000
 _02238AA8: .word 0x00003FF8
-	thumb_func_end ov80_02238A7C
+	thumb_func_end FrontierMap_VBlank
 
 	thumb_func_start ov80_02238AAC
 ov80_02238AAC: ; 0x02238AAC
@@ -495,8 +495,8 @@ ov80_02238ABC: ; 0x02238ABC
 _02238AC4: .word ov80_02238C78
 	thumb_func_end ov80_02238ABC
 
-	thumb_func_start ov80_02238AC8
-ov80_02238AC8: ; 0x02238AC8
+	thumb_func_start FrontierMap_Update
+FrontierMap_Update: ; 0x02238AC8
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r1, #0
 	ldr r0, [r7, #8]
@@ -510,7 +510,7 @@ ov80_02238AC8: ; 0x02238AC8
 	bl ov42_02229358
 _02238AE2:
 	add r0, r7, #0
-	bl ov80_02238B28
+	bl FrontierMap_Scroll
 	ldr r0, [r7, #0x20]
 	bl ov42_022290DC
 	ldr r4, [r7, #0x6c]
@@ -539,10 +539,10 @@ _02238B04:
 	bl RequestSwap3DBuffers
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov80_02238AC8
+	thumb_func_end FrontierMap_Update
 
-	thumb_func_start ov80_02238B28
-ov80_02238B28: ; 0x02238B28
+	thumb_func_start FrontierMap_Scroll
+FrontierMap_Scroll: ; 0x02238B28
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #8]
@@ -583,7 +583,7 @@ _02238B74:
 	bl ov80_02238B7C
 _02238B7A:
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov80_02238B28
+	thumb_func_end FrontierMap_Scroll
 
 	thumb_func_start ov80_02238B7C
 ov80_02238B7C: ; 0x02238B7C

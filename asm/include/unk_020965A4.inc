@@ -25,10 +25,10 @@
 .public sub_02096884
 .public MI_CpuFill8
 .public _02108584
-.public ov80_0222A84C
-.public ov80_0222A8B8
+.public FrontierSystem_Create
+.public FrontierSystem_Main
 .public ov80_0222A920
-.public ov80_0222A958
+.public FrontierSystem_AddTask
 .public ov80_0222AA7C
 .public ov80_0222AAD8
 .public ov80_0222AAF8

@@ -3,7 +3,7 @@
 #include "frontier/overlay_80_02233688.h"
 #include "frontier/overlay_80_022340E8.h"
 #include "frontier/overlay_80_02238034.h"
-#include "unk_020965A4.h"
+#include "frontier/frontier.h"
 #include "launch_application_data.h"
 
 BOOL FrtCmd_ArcadeAlloc(FrontierContext *ctx) {

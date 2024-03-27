@@ -4,8 +4,8 @@
 
     .text
 
-	thumb_func_start ov80_0222A84C
-ov80_0222A84C: ; 0x0222A84C
+	thumb_func_start FrontierSystem_Create
+FrontierSystem_Create: ; 0x0222A84C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r7, r0, #0
@@ -49,14 +49,14 @@ ov80_0222A84C: ; 0x0222A84C
 	add r0, r4, #0
 	lsr r1, r1, #0x10
 	add r3, r2, #0
-	bl ov80_0222AA3C
+	bl FrontierSystem_deadstripped_0222AA3C
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov80_0222A84C
+	thumb_func_end FrontierSystem_Create
 
-	thumb_func_start ov80_0222A8B8
-ov80_0222A8B8: ; 0x0222A8B8
+	thumb_func_start FrontierSystem_Main
+FrontierSystem_Main: ; 0x0222A8B8
 	push {r3, r4, r5, r6, r7, lr}
 	mov r1, #0x51
 	str r0, [sp]
@@ -111,7 +111,7 @@ _0222A91A:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov80_0222A8B8
+	thumb_func_end FrontierSystem_Main
 
 	thumb_func_start ov80_0222A920
 ov80_0222A920: ; 0x0222A920
@@ -139,8 +139,8 @@ _0222A930:
 	.balign 4, 0
 	thumb_func_end ov80_0222A920
 
-	thumb_func_start ov80_0222A958
-ov80_0222A958: ; 0x0222A958
+	thumb_func_start FrontierSystem_AddTask
+FrontierSystem_AddTask: ; 0x0222A958
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x34]
@@ -201,7 +201,7 @@ _0222A9B2:
 _0222A9D0: .word ov80_0223B9CC
 _0222A9D4: .word ov80_0223BA04
 _0222A9D8: .word 0x0000FFFF
-	thumb_func_end ov80_0222A958
+	thumb_func_end FrontierSystem_AddTask
 
 	thumb_func_start ov80_0222A9DC
 ov80_0222A9DC: ; 0x0222A9DC
@@ -259,11 +259,11 @@ _0222AA32:
 	.balign 4, 0
 	thumb_func_end ov80_0222AA0C
 
-	thumb_func_start ov80_0222AA3C
-ov80_0222AA3C: ; 0x0222AA3C
+	thumb_func_start FrontierSystem_deadstripped_0222AA3C
+FrontierSystem_deadstripped_0222AA3C: ; 0x0222AA3C
 	bx lr
 	.balign 4, 0
-	thumb_func_end ov80_0222AA3C
+	thumb_func_end FrontierSystem_deadstripped_0222AA3C
 
 	thumb_func_start ov80_0222AA40
 ov80_0222AA40: ; 0x0222AA40

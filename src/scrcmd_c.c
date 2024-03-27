@@ -80,7 +80,7 @@
 #include "unk_0202C034.h"
 #include "unk_0203A3B0.h"
 #include "unk_02067A80.h"
-#include "unk_020965A4.h"
+#include "frontier/frontier.h"
 #include "unk_02056680.h"
 #include "trainer_memo.h"
 #include "daycare.h"
