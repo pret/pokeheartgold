@@ -147,8 +147,8 @@
 .public ov80_0222ACA0
 .public ov80_0222AD9C
 .public ov80_0222ADB4
-.public ov80_02238648
-.public ov80_0223885C
+.public FrontierMap_Init
+.public FrontierMap_Free
 .public ov80_022389C4
 .public ov80_02238A18
 .public ov80_0223947C

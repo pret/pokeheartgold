@@ -21,8 +21,8 @@
 .public BattleSetup_Delete
 .public IsBattleResultWin
 .public sub_02096808
-.public FrontierSystem_GetData
-.public FrontierSystem_LaunchApplication
+.public Frontier_GetData
+.public Frontier_LaunchApplication
 .public MI_CpuFill8
 .public gOverlayTemplate_Battle
 .public ov80_0222AB84

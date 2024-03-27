@@ -13,9 +13,9 @@
 .public GF_AssertFail
 .public sub_02096808
 .public sub_0209680C
-.public FrontierSystem_GetData
-.public FrontierSystem_SetData
-.public FrontierSystem_LaunchApplication
+.public Frontier_GetData
+.public Frontier_SetData
+.public Frontier_LaunchApplication
 .public sub_0209684C
 .public sub_02096854
 .public sub_02096864
@@ -32,7 +32,7 @@
 .public ov80_0222AA7C
 .public ov80_0222AAD8
 .public ov80_0222AAF8
-.public ov80_02238648
-.public ov80_0223885C
+.public FrontierMap_Init
+.public FrontierMap_Free
 .public ov80_022389C4
 .public ov80_02238A18

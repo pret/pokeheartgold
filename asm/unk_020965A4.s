@@ -13,7 +13,7 @@
 sub_020965A4: ; 0x020965A4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_020967BC
+	bl Frontier_LoadOverlays
 	ldr r1, _02096604 ; =0x00000A54
 	add r0, r5, #0
 	mov r2, #0xb
@@ -46,7 +46,7 @@ _020965DC:
 	ldrb r1, [r1]
 	bl ov80_0222A958
 	add r0, r4, #0
-	bl sub_02096760
+	bl Frontier_CreateMap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -116,8 +116,8 @@ _02096670:
 	ldr r0, [r4, #0x18]
 	bl ov80_022389C4
 	add r0, r4, #0
-	bl sub_02096770
-	bl sub_020967E4
+	bl Frontier_FreeMap
+	bl Frontier_UnloadOverlays
 	mov r0, #4
 	str r0, [r5]
 	b _02096734
@@ -128,7 +128,7 @@ _02096686:
 	bne _02096734
 	ldr r0, [r4, #4]
 	bl OverlayManager_Delete
-	bl sub_020967BC
+	bl Frontier_LoadOverlays
 	ldr r1, [r4, #0xc]
 	cmp r1, #0
 	beq _020966A4
@@ -148,21 +148,21 @@ _020966B4:
 	str r0, [r4, #0xc]
 	str r0, [r4, #8]
 	add r0, r4, #0
-	bl sub_02096760
+	bl Frontier_CreateMap
 	ldr r0, [r4, #0x18]
 	bl ov80_02238A18
 	mov r0, #1
 	str r0, [r5]
 	b _02096734
 _020966CE:
-	bl sub_02096770
+	bl Frontier_FreeMap
 	add r0, r4, #0
 	bl sub_02096780
 	mov r0, #6
 	str r0, [r5]
 	b _02096734
 _020966DE:
-	bl sub_02096760
+	bl Frontier_CreateMap
 	ldrh r1, [r4, #0x20]
 	ldr r0, _02096738 ; =0x0000FFFF
 	cmp r1, r0
@@ -216,35 +216,35 @@ sub_0209673C: ; 0x0209673C
 	ldr r0, [r4, #0x14]
 	bl ov80_0222A920
 	add r0, r4, #0
-	bl sub_02096770
+	bl Frontier_FreeMap
 	add r0, r5, #0
 	bl OverlayManager_FreeData
-	bl sub_020967E4
+	bl Frontier_UnloadOverlays
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0209673C
 
-	thumb_func_start sub_02096760
-sub_02096760: ; 0x02096760
+	thumb_func_start Frontier_CreateMap
+Frontier_CreateMap: ; 0x02096760
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov80_02238648
+	bl FrontierMap_Init
 	str r0, [r4, #0x18]
 	mov r0, #1
 	strb r0, [r4, #0x1d]
 	pop {r4, pc}
-	thumb_func_end sub_02096760
+	thumb_func_end Frontier_CreateMap
 
-	thumb_func_start sub_02096770
-sub_02096770: ; 0x02096770
+	thumb_func_start Frontier_FreeMap
+Frontier_FreeMap: ; 0x02096770
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
-	bl ov80_0223885C
+	bl FrontierMap_Free
 	mov r0, #0
 	strb r0, [r4, #0x1d]
 	pop {r4, pc}
-	thumb_func_end sub_02096770
+	thumb_func_end Frontier_FreeMap
 
 	thumb_func_start sub_02096780
 sub_02096780: ; 0x02096780
@@ -280,8 +280,8 @@ _020967A6:
 _020967B8: .word 0x0000FFFF
 	thumb_func_end sub_02096780
 
-	thumb_func_start sub_020967BC
-sub_020967BC: ; 0x020967BC
+	thumb_func_start Frontier_LoadOverlays
+Frontier_LoadOverlays: ; 0x020967BC
 	push {r3, lr}
 	ldr r0, _020967D8 ; =FS_OVERLAY_ID(OVY_80)
 	mov r1, #2
@@ -297,10 +297,10 @@ sub_020967BC: ; 0x020967BC
 _020967D8: .word FS_OVERLAY_ID(OVY_80)
 _020967DC: .word FS_OVERLAY_ID(OVY_81)
 _020967E0: .word FS_OVERLAY_ID(OVY_42)
-	thumb_func_end sub_020967BC
+	thumb_func_end Frontier_LoadOverlays
 
-	thumb_func_start sub_020967E4
-sub_020967E4: ; 0x020967E4
+	thumb_func_start Frontier_UnloadOverlays
+Frontier_UnloadOverlays: ; 0x020967E4
 	push {r3, lr}
 	ldr r0, _020967FC ; =FS_OVERLAY_ID(OVY_80)
 	bl UnloadOverlayByID
@@ -313,7 +313,7 @@ sub_020967E4: ; 0x020967E4
 _020967FC: .word FS_OVERLAY_ID(OVY_80)
 _02096800: .word FS_OVERLAY_ID(OVY_81)
 _02096804: .word FS_OVERLAY_ID(OVY_42)
-	thumb_func_end sub_020967E4
+	thumb_func_end Frontier_UnloadOverlays
 
 	thumb_func_start sub_02096808
 sub_02096808: ; 0x02096808
@@ -327,24 +327,24 @@ sub_0209680C: ; 0x0209680C
 	bx lr
 	thumb_func_end sub_0209680C
 
-	thumb_func_start FrontierSystem_GetData
-FrontierSystem_GetData: ; 0x02096810
+	thumb_func_start Frontier_GetData
+Frontier_GetData: ; 0x02096810
 	ldr r0, [r0]
 	ldr r0, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end FrontierSystem_GetData
+	thumb_func_end Frontier_GetData
 
-	thumb_func_start FrontierSystem_SetData
-FrontierSystem_SetData: ; 0x02096818
+	thumb_func_start Frontier_SetData
+Frontier_SetData: ; 0x02096818
 	ldr r0, [r0]
 	str r1, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end FrontierSystem_SetData
+	thumb_func_end Frontier_SetData
 
-	thumb_func_start FrontierSystem_LaunchApplication
-FrontierSystem_LaunchApplication: ; 0x02096820
+	thumb_func_start Frontier_LaunchApplication
+Frontier_LaunchApplication: ; 0x02096820
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #4]
@@ -366,7 +366,7 @@ _02096834:
 	str r0, [r5, #0xc]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end FrontierSystem_LaunchApplication
+	thumb_func_end Frontier_LaunchApplication
 
 	thumb_func_start sub_0209684C
 sub_0209684C: ; 0x0209684C

@@ -166,9 +166,9 @@
 .public HealParty
 .public sub_02096808
 .public sub_0209680C
-.public FrontierSystem_GetData
-.public FrontierSystem_SetData
-.public FrontierSystem_LaunchApplication
+.public Frontier_GetData
+.public Frontier_SetData
+.public Frontier_LaunchApplication
 .public sub_0209684C
 .public sub_02096854
 .public sub_02096BF8

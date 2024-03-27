@@ -1834,7 +1834,7 @@ ov80_0222CB54: ; 0x0222CB54
 	ldr r0, [r4]
 	mov r3, #0
 	ldr r0, [r0]
-	bl FrontierSystem_LaunchApplication
+	bl Frontier_LaunchApplication
 	mov r0, #1
 	add sp, #8
 	pop {r4, pc}
@@ -2180,7 +2180,7 @@ ov80_0222CD94: ; 0x0222CD94
 	ldr r0, [r0]
 	add r2, r6, #0
 	mov r3, #1
-	bl FrontierSystem_LaunchApplication
+	bl Frontier_LaunchApplication
 	mov r0, #1
 	add sp, #8
 	pop {r4, r5, r6, pc}
@@ -4118,7 +4118,7 @@ ov80_0222DC70: ; 0x0222DC70
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl FrontierSystem_GetData
+	bl Frontier_GetData
 	str r0, [r4, #0x14]
 	mov r0, #0
 	str r0, [r4, #4]
@@ -4132,7 +4132,7 @@ ov80_0222DC70: ; 0x0222DC70
 	ldr r0, [r5]
 	add r1, r4, #0
 	ldr r0, [r0]
-	bl FrontierSystem_SetData
+	bl Frontier_SetData
 	ldr r1, _0222DCEC ; =ov80_0222DCF0
 	add r0, r5, #0
 	bl ov80_0222AB84
@@ -4159,7 +4159,7 @@ ov80_0222DCF0: ; 0x0222DCF0
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl FrontierSystem_GetData
+	bl Frontier_GetData
 	add r4, r0, #0
 	ldr r1, [r4, #8]
 	lsl r2, r1, #2
@@ -4177,7 +4177,7 @@ ov80_0222DCF0: ; 0x0222DCF0
 	ldr r0, [r5]
 	ldr r1, [r4, #0x14]
 	ldr r0, [r0]
-	bl FrontierSystem_SetData
+	bl Frontier_SetData
 	add r0, r4, #0
 	bl FreeToHeap
 _0222DD2C:
@@ -4782,7 +4782,7 @@ _0222E1B8:
 	bne _0222E210
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl FrontierSystem_GetData
+	bl Frontier_GetData
 	add r6, r0, #0
 	beq _0222E210
 	add r0, #0x6f
