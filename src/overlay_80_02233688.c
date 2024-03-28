@@ -7,6 +7,7 @@
 #include "launch_application_data.h"
 
 static void GameBoardArgs_Set(GAME_BOARD_ARGS *args, ArcadeContext *data);
+static void ov80_02233A1C(void *data);
 
 BOOL FrtCmd_ArcadeAlloc(FrontierContext *ctx) {
     u32 spC = FrontierScript_ReadVar(ctx);
@@ -36,7 +37,6 @@ BOOL FrtCmd_ArcadeFree(FrontierContext *ctx) {
 }
 
 extern OVY_MGR_TEMPLATE gOverlayTemplate_BattleArcadeGameBoard;
-extern void ov80_02233A1C(void);
 
 BOOL ov80_0223371C(FrontierContext *ctx) {
     FrontierLaunchParam *param = Frontier_GetLaunchParam(ctx->unk0->unk0);
@@ -161,4 +161,16 @@ static void GameBoardArgs_Set(GAME_BOARD_ARGS *args, ArcadeContext *data) {
         data->savedSpAtk[i] = GetMonData(mon, MON_DATA_SPATK, NULL);
         data->savedSpDef[i] = GetMonData(mon, MON_DATA_SPDEF, NULL);
     }
+}
+
+static void ov80_02233A1C(void *data) {
+    GAME_BOARD_ARGS *args = data;
+    ov80_02234550(args->work, args);
+    FreeToHeap(args);
+}
+
+BOOL FrtCmd_ArcadeSetPartyBeforeBattle(FrontierContext *ctx) {
+    ArcadeContext *arcadeCtx = Frontier_GetData(ctx->unk0->unk0);
+    BattleArcade_SetPartyBeforeBattle(arcadeCtx);
+    return FALSE;
 }

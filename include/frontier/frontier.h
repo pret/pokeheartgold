@@ -18,7 +18,7 @@ typedef struct FrontierLaunchParam {
 
 extern const OVY_MGR_TEMPLATE gOverlayTemplate_Frontier;
 
-typedef void (UnkFuncPtr_020965A4)(void); //almost certainly wrong
+typedef void (UnkFuncPtr_020965A4)(void *);
 
 FrontierLaunchParam *Frontier_GetLaunchParam(void *a0);
 void Frontier_SetData(void *a0, u32 a1);

@@ -4,44 +4,20 @@
 
     .text
 
-	thumb_func_start ov80_02233A1C
-ov80_02233A1C: ; 0x02233A1C
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, [r4, #0x3c]
-	add r1, r4, #0
-	bl ov80_02234550
-	add r0, r4, #0
-	bl FreeToHeap
-	pop {r4, pc}
-	thumb_func_end ov80_02233A1C
-
-	thumb_func_start ov80_02233A30
-ov80_02233A30: ; 0x02233A30
+	thumb_func_start FrtCmd_ArcadeSetPartyAfterBattle
+FrtCmd_ArcadeSetPartyAfterBattle: ; 0x02233A44
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0]
 	bl Frontier_GetData
-	bl ov80_022347E4
+	bl BattleArcade_SetPartyAfterBattle
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov80_02233A30
+	thumb_func_end FrtCmd_ArcadeSetPartyAfterBattle
 
-	thumb_func_start ov80_02233A44
-ov80_02233A44: ; 0x02233A44
-	push {r3, lr}
-	ldr r0, [r0]
-	ldr r0, [r0]
-	bl Frontier_GetData
-	bl ov80_022347EC
-	mov r0, #0
-	pop {r3, pc}
-	.balign 4, 0
-	thumb_func_end ov80_02233A44
-
-	thumb_func_start ov80_02233A58
-ov80_02233A58: ; 0x02233A58
+	thumb_func_start FrtCmd_ArcadeAction
+FrtCmd_ArcadeAction: ; 0x02233A58
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x44
 	add r7, r0, #0
@@ -645,7 +621,7 @@ _02233F12:
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02233F18: .word 0x00000A7C
-	thumb_func_end ov80_02233A58
+	thumb_func_end FrtCmd_ArcadeAction
 
 	thumb_func_start ov80_02233F1C
 ov80_02233F1C: ; 0x02233F1C
@@ -730,8 +706,8 @@ _02233FB4: .word ov80_0223BE6C
 _02233FB8: .word 0x00000A7A
 	thumb_func_end ov80_02233F40
 
-	thumb_func_start ov80_02233FBC
-ov80_02233FBC: ; 0x02233FBC
+	thumb_func_start FrtCmd_ArcadeGetBattleResult
+FrtCmd_ArcadeGetBattleResult: ; 0x02233FBC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl FrontierScript_ReadVarPtr
@@ -744,10 +720,10 @@ ov80_02233FBC: ; 0x02233FBC
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov80_02233FBC
+	thumb_func_end FrtCmd_ArcadeGetBattleResult
 
-	thumb_func_start ov80_02233FD8
-ov80_02233FD8: ; 0x02233FD8
+	thumb_func_start FrtCmd_ArcadeSendBuffer
+FrtCmd_ArcadeSendBuffer: ; 0x02233FD8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl FrontierScript_ReadVar
@@ -767,10 +743,10 @@ ov80_02233FD8: ; 0x02233FD8
 	strh r0, [r4]
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov80_02233FD8
+	thumb_func_end FrtCmd_ArcadeSendBuffer
 
-	thumb_func_start ov80_02234008
-ov80_02234008: ; 0x02234008
+	thumb_func_start FrtCmd_ArcadeReceiveBuffer
+FrtCmd_ArcadeReceiveBuffer: ; 0x02234008
 	push {r4, lr}
 	add r4, r0, #0
 	bl FrontierScriptReadHalf
@@ -784,7 +760,7 @@ ov80_02234008: ; 0x02234008
 	pop {r4, pc}
 	nop
 _02234024: .word ov80_02234028
-	thumb_func_end ov80_02234008
+	thumb_func_end FrtCmd_ArcadeReceiveBuffer
 
 	thumb_func_start ov80_02234028
 ov80_02234028: ; 0x02234028
@@ -812,8 +788,8 @@ _0223404E:
 _02234054: .word 0x00000A7C
 	thumb_func_end ov80_02234028
 
-	thumb_func_start ov80_02234058
-ov80_02234058: ; 0x02234058
+	thumb_func_start FrtCmd_ArcadePrintMsg
+FrtCmd_ArcadePrintMsg: ; 0x02234058
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -842,10 +818,10 @@ _0223407C:
 	bl ov80_0222F44C
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov80_02234058
+	thumb_func_end FrtCmd_ArcadePrintMsg
 
-	thumb_func_start ov80_02234094
-ov80_02234094: ; 0x02234094
+	thumb_func_start FrtCmd_ArcadeSetEvent
+FrtCmd_ArcadeSetEvent: ; 0x02234094
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0]
@@ -854,7 +830,7 @@ ov80_02234094: ; 0x02234094
 	bl ov80_02234E98
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end ov80_02234094
+	thumb_func_end FrtCmd_ArcadeSetEvent
 
 	thumb_func_start ov80_022340A8
 ov80_022340A8: ; 0x022340A8

@@ -7649,15 +7649,15 @@ ov80_0223BA04: ; 0x0223BA04
 	.word FrtCmd_ArcadeFree
 	.word ov80_02233770
 	.word FrtCmd_ArcadeStartBattle
-	.word ov80_02233A30
-	.word ov80_02233A44
-	.word ov80_02233A58
-	.word ov80_02233FBC
-	.word ov80_02233FD8
-	.word ov80_02234008
+	.word FrtCmd_ArcadeSetPartyBeforeBattle
+	.word FrtCmd_ArcadeSetPartyAfterBattle
+	.word FrtCmd_ArcadeAction
+	.word FrtCmd_ArcadeGetBattleResult
+	.word FrtCmd_ArcadeSendBuffer
+	.word FrtCmd_ArcadeReceiveBuffer
 	.word ov80_0223371C
-	.word ov80_02234058
-	.word ov80_02234094
+	.word FrtCmd_ArcadePrintMsg
+	.word FrtCmd_ArcadeSetEvent
 	.word ov80_022340A8
 	.word ov80_022310C0
 	.word ov80_0222E144

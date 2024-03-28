@@ -10,5 +10,6 @@ BOOL FrtCmd_ArcadeFree(FrontierContext *ctx);
 BOOL ov80_0223371C(FrontierContext *ctx);
 BOOL ov80_02233770(FrontierContext *ctx);
 BOOL FrtCmd_ArcadeStartBattle(FrontierContext *ctx);
+BOOL FrtCmd_ArcadeSetPartyBeforeBattle(FrontierContext *ctx);
 
 #endif

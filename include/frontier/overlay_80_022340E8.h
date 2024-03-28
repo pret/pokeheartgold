@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_OVERLAY_80_022340E8
 
 #include "save.h"
+#include "battle_arcade_game_board.h"
 
 typedef struct ArcadeContext {
     u32 unk0[2];
@@ -39,8 +40,10 @@ typedef struct ArcadeContext {
 u32 BattleArcadeData_Alloc(SaveData *saveData, u32 a1, u8 a2, u32 a3, u32 a4, u32 a5, u32 a6);
 void BattleArcadeData_Init(void *a0, u32 a1);
 void BattleArcadeData_Free(void *a0);
-u8 BattleArcade_GetWonBattlePoints(ArcadeContext *a0, Party *a1, Party *a2, int a3);
+u8 BattleArcade_GetWonBattlePoints(ArcadeContext *ctx, Party *playerParty, Party *opponentParty, int a3);
 void ov80_02235364(Party *a0, Party *a1, int a2, int a3);
 int ov80_02237D8C(u8 a0);
+void ov80_02234550(void *a0, GAME_BOARD_ARGS *args);
+void BattleArcade_SetPartyBeforeBattle(ArcadeContext *ctx);
 
 #endif

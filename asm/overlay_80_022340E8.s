@@ -880,16 +880,16 @@ _022347D6:
 _022347E0: .word ov80_02234588
 	thumb_func_end ov80_022347C4
 
-	thumb_func_start ov80_022347E4
-ov80_022347E4: ; 0x022347E4
+	thumb_func_start BattleArcade_SetPartyBeforeBattle
+BattleArcade_SetPartyBeforeBattle: ; 0x022347E4
 	ldr r3, _022347E8 ; =ov80_022383C0
 	bx r3
 	.balign 4, 0
 _022347E8: .word ov80_022383C0
-	thumb_func_end ov80_022347E4
+	thumb_func_end BattleArcade_SetPartyBeforeBattle
 
-	thumb_func_start ov80_022347EC
-ov80_022347EC: ; 0x022347EC
+	thumb_func_start BattleArcade_SetPartyAfterBattle
+BattleArcade_SetPartyAfterBattle: ; 0x022347EC
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	add r5, r0, #0
@@ -932,7 +932,7 @@ ov80_022347EC: ; 0x022347EC
 	bl ov80_022383C0
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov80_022347EC
+	thumb_func_end BattleArcade_SetPartyAfterBattle
 
 	thumb_func_start BattleArcade_GetWonBattlePoints
 BattleArcade_GetWonBattlePoints: ; 0x02234848

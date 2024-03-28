@@ -78,8 +78,8 @@
 .public ov80_022347A8
 .public ov80_022347B8
 .public ov80_022347C4
-.public ov80_022347E4
-.public ov80_022347EC
+.public BattleArcade_SetPartyBeforeBattle
+.public BattleArcade_SetPartyAfterBattle
 .public BattleArcade_GetWonBattlePoints
 .public ov80_02234968
 .public ov80_02234A38
