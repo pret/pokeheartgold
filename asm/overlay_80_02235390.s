@@ -7,7 +7,7 @@
 	thumb_func_start ov80_02235390
 ov80_02235390: ; 0x02235390
 	push {r3, lr}
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	bl PlaySE
 	mov r0, #0
 	pop {r3, pc}
@@ -17,7 +17,7 @@ ov80_02235390: ; 0x02235390
 	thumb_func_start ov80_022353A0
 ov80_022353A0: ; 0x022353A0
 	push {r3, lr}
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	mov r1, #0
 	bl StopSE
 	mov r0, #0
@@ -28,7 +28,7 @@ ov80_022353A0: ; 0x022353A0
 ov80_022353B0: ; 0x022353B0
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	add r1, r4, #0
 	add r1, #0x78
 	strh r0, [r1]
@@ -60,7 +60,7 @@ _022353E2:
 	thumb_func_start ov80_022353E8
 ov80_022353E8: ; 0x022353E8
 	push {r3, lr}
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	bl PlayFanfare
 	mov r0, #0
 	pop {r3, pc}
@@ -95,7 +95,7 @@ _02235416:
 	thumb_func_start ov80_0223541C
 ov80_0223541C: ; 0x0223541C
 	push {r4, lr}
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r4, r0, #0
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10

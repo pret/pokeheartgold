@@ -18,10 +18,10 @@
 .public Party_GetMonByIndex
 .public Party_SafeCopyMonToSlot_ResetUnkSub
 .public SaveArray_Party_Get
-.public sub_02096808
-.public sub_02096810
-.public sub_02096818
-.public sub_02096820
+.public Frontier_GetLaunchParam
+.public Frontier_GetData
+.public Frontier_SetData
+.public Frontier_LaunchApplication
 .public sub_02096910
 .public OS_ResetSystem
 .public MI_CpuFill8
@@ -30,9 +30,9 @@
 .public ov80_0222A52C
 .public ov80_0222AB34
 .public ov80_0222AB84
-.public ov80_0222AC58
-.public ov80_0222BDF4
-.public ov80_0222BE10
+.public FrontierScriptReadHalf
+.public FrontierScript_ReadVarPtr
+.public FrontierScript_ReadVar
 .public ov80_0222BE24
 .public ov80_0222BE9C
 .public ov80_0222F44C

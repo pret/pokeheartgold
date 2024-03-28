@@ -8,5 +8,5 @@
 .public ov80_0222AB98
 .public ov80_0222AC3C
 .public ov80_0222AC4C
-.public ov80_0222AC58
+.public FrontierScriptReadHalf
 .public ov80_0222AC70

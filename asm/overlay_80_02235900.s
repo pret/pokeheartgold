@@ -10,13 +10,13 @@ ov80_02235900: ; 0x02235900
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_02096808
+	bl Frontier_GetLaunchParam
 	ldr r0, [r0, #8]
 	bl ov80_02235FC8
 	add r1, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_02096818
+	bl Frontier_SetData
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end ov80_02235900
@@ -26,7 +26,7 @@ ov80_02235920: ; 0x02235920
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl Frontier_GetData
 	bl ov80_02235FEC
 	mov r0, #0
 	pop {r3, pc}
@@ -37,20 +37,20 @@ ov80_02235920: ; 0x02235920
 ov80_02235934: ; 0x02235934
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	str r0, [sp]
 	add r0, r5, #0
-	bl ov80_0222BDF4
+	bl FrontierScript_ReadVarPtr
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl Frontier_GetData
 	ldr r3, [sp]
 	add r1, r6, #0
 	add r2, r7, #0
@@ -65,7 +65,7 @@ ov80_02235934: ; 0x02235934
 ov80_02235970: ; 0x02235970
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r1, r4, #0
 	add r1, #0x78
 	strh r0, [r1]
@@ -83,7 +83,7 @@ ov80_02235990: ; 0x02235990
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl Frontier_GetData
 	add r1, r0, #0
 	add r1, #0x6f
 	ldrb r1, [r1]
@@ -104,7 +104,7 @@ _022359AE:
 ov80_022359B4: ; 0x022359B4
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov80_0222AC58
+	bl FrontierScriptReadHalf
 	add r1, r4, #0
 	add r1, #0x78
 	strh r0, [r1]
@@ -123,7 +123,7 @@ ov80_022359D4: ; 0x022359D4
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl Frontier_GetData
 	add r1, r0, #0
 	add r1, #0x6f
 	ldrb r1, [r1]
@@ -156,14 +156,14 @@ _02235A0E:
 ov80_02235A14: ; 0x02235A14
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov80_0222BDF4
+	bl FrontierScript_ReadVarPtr
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl Frontier_GetData
 	add r0, #0x6e
 	ldrb r0, [r0]
 	cmp r6, r0
@@ -183,20 +183,20 @@ _02235A3C:
 ov80_02235A44: ; 0x02235A44
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	add r0, r5, #0
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov80_0222BDF4
+	bl FrontierScript_ReadVarPtr
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl Frontier_GetData
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096808
+	bl Frontier_GetLaunchParam
 	ldr r1, [r0, #0x24]
 	add r0, r4, #0
 	add r0, #0x98
@@ -217,14 +217,14 @@ ov80_02235A44: ; 0x02235A44
 ov80_02235A8C: ; 0x02235A8C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl ov80_0222BDF4
+	bl FrontierScript_ReadVarPtr
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov80_0222BDF4
+	bl FrontierScript_ReadVarPtr
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl Frontier_GetData
 	add r5, r0, #0
 	add r0, #0xa8
 	ldr r1, [r0]
@@ -280,11 +280,11 @@ _02235AF2:
 ov80_02235B04: ; 0x02235B04
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl ov80_0222BDF4
+	bl FrontierScript_ReadVarPtr
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl Frontier_GetData
 	add r0, #0x59
 	ldrb r0, [r0]
 	strh r0, [r4]
@@ -306,15 +306,15 @@ ov80_02235B20: ; 0x02235B20
 	ldrb r6, [r2]
 	add r1, r1, #1
 	str r1, [r7, #0x1c]
-	bl ov80_0222BDF4
+	bl FrontierScript_ReadVarPtr
 	add r5, r0, #0
 	ldr r0, [r7]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl Frontier_GetData
 	add r4, r0, #0
 	ldr r0, [r7]
 	ldr r0, [r0]
-	bl sub_02096808
+	bl Frontier_GetLaunchParam
 	add r7, r0, #0
 	ldr r0, [sp]
 	cmp r0, #0xd
@@ -717,11 +717,11 @@ ov80_02235E84: ; 0x02235E84
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096808
+	bl Frontier_GetLaunchParam
 	add r7, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl Frontier_GetData
 	add r6, r0, #0
 	add r4, r6, #0
 	add r3, sp, #0
@@ -743,7 +743,7 @@ _02235EA4:
 	ldr r0, [r5]
 	add r1, r4, #0
 	ldr r0, [r0]
-	bl sub_02096818
+	bl Frontier_SetData
 	ldrb r0, [r4, #0xf]
 	cmp r0, #6
 	bne _02235ED8
@@ -823,11 +823,11 @@ _02235F60: .word 0x000008D4
 ov80_02235F64: ; 0x02235F64
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl ov80_0222BDF4
+	bl FrontierScript_ReadVarPtr
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl Frontier_GetData
 	bl sub_02096998
 	strh r0, [r4]
 	mov r0, #1
@@ -850,7 +850,7 @@ ov80_02235F90: ; 0x02235F90
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl Frontier_GetData
 	ldr r1, _02235FB0 ; =0x000008D4
 	ldrb r2, [r0, r1]
 	cmp r2, #2
@@ -871,7 +871,7 @@ ov80_02235FB4: ; 0x02235FB4
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl sub_02096810
+	bl Frontier_GetData
 	bl sub_0204AA2C
 	mov r0, #0
 	pop {r3, pc}
