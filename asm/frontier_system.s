@@ -405,12 +405,12 @@ ov80_0222AB2C: ; 0x0222AB2C
 	bx lr
 	thumb_func_end ov80_0222AB2C
 
-	thumb_func_start ov80_0222AB34
-ov80_0222AB34: ; 0x0222AB34
+	thumb_func_start FrontierSystem_GetFrontierMap
+FrontierSystem_GetFrontierMap: ; 0x0222AB34
 	ldr r3, _0222AB3C ; =sub_0209680C
 	ldr r0, [r0]
 	bx r3
 	nop
 _0222AB3C: .word sub_0209680C
-	thumb_func_end ov80_0222AB34
+	thumb_func_end FrontierSystem_GetFrontierMap
     

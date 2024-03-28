@@ -35,7 +35,7 @@
 .public ov42_02229248
 .public ov80_0222A474
 .public ov80_0222A52C
-.public ov80_0222AB34
+.public FrontierSystem_GetFrontierMap
 .public ov80_0222AB84
 .public FrontierScriptReadHalf
 .public FrontierScript_ReadVarPtr

@@ -941,7 +941,7 @@ ov80_0222C47C: ; 0x0222C47C
 	add r5, r0, #0
 	ldr r4, [r5]
 	add r0, r4, #0
-	bl ov80_0222AB34
+	bl FrontierSystem_GetFrontierMap
 	add r6, r0, #0
 	add r0, r5, #0
 	bl FrontierScriptReadHalf
@@ -4127,7 +4127,7 @@ ov80_0222DC70: ; 0x0222DC70
 	ldrh r0, [r0]
 	str r0, [r4, #8]
 	ldr r0, [r5]
-	bl ov80_0222AB34
+	bl FrontierSystem_GetFrontierMap
 	str r0, [r4]
 	ldr r0, [r5]
 	add r1, r4, #0
@@ -4485,7 +4485,7 @@ ov80_0222DF64: ; 0x0222DF64
 	sub sp, #0x20
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl ov80_0222AB34
+	bl FrontierSystem_GetFrontierMap
 	add r7, r0, #0
 	add r0, r5, #0
 	bl FrontierScript_ReadVar
@@ -4533,7 +4533,7 @@ ov80_0222DFD4: ; 0x0222DFD4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl ov80_0222AB34
+	bl FrontierSystem_GetFrontierMap
 	add r4, r0, #0
 	add r0, r5, #0
 	bl FrontierScriptReadHalf
@@ -4551,7 +4551,7 @@ ov80_0222DFF4: ; 0x0222DFF4
 	sub sp, #0x14
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl ov80_0222AB34
+	bl FrontierSystem_GetFrontierMap
 	add r4, r0, #0
 	add r0, r5, #0
 	bl FrontierScriptReadHalf
@@ -4896,7 +4896,7 @@ ov80_0222E268: ; 0x0222E268
 	cmp r4, #0
 	bne _0222E2A2
 	add r0, r5, #0
-	bl ov80_0222AB34
+	bl FrontierSystem_GetFrontierMap
 	ldr r0, [r0, #8]
 	bl Frontier_GetLaunchParam
 	ldr r0, [r0, #4]
@@ -4924,7 +4924,7 @@ ov80_0222E2B8: ; 0x0222E2B8
 	push {r3, r4, lr}
 	sub sp, #0x14
 	add r4, r0, #0
-	bl ov80_0222AB34
+	bl FrontierSystem_GetFrontierMap
 	add r1, r4, #0
 	add r1, #0x5a
 	ldrb r1, [r1]
@@ -5319,7 +5319,7 @@ ov80_0222E5B0: ; 0x0222E5B0
 	sub sp, #0x14
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl ov80_0222AB34
+	bl FrontierSystem_GetFrontierMap
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ov80_0222E714
@@ -5796,7 +5796,7 @@ ov80_0222E948: ; 0x0222E948
 	sub sp, #0x14
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl ov80_0222AB34
+	bl FrontierSystem_GetFrontierMap
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ov80_0222EB14

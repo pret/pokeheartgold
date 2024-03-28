@@ -306,7 +306,7 @@ ov80_0222F830: ; 0x0222F830
 	bl Frontier_GetData
 	add r4, r0, #0
 	ldr r0, [r6]
-	bl ov80_0222AB34
+	bl FrontierSystem_GetFrontierMap
 	str r0, [sp, #0x20]
 	cmp r7, #0x29
 	bhi _0222F8F2
@@ -634,7 +634,7 @@ _0222FAB2:
 	b _0222FBE6
 _0222FAD6:
 	ldr r0, [r6]
-	bl ov80_0222AB34
+	bl FrontierSystem_GetFrontierMap
 	add r1, r0, #0
 	ldr r0, _0222FC00 ; =ov80_0222FC08
 	mov r2, #5

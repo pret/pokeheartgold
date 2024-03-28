@@ -685,7 +685,7 @@ _02232130:
 _02232136:
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0]
-	bl ov80_0222AB34
+	bl FrontierSystem_GetFrontierMap
 	ldr r0, [r0]
 	add r1, r4, #0
 	mov r2, #3
