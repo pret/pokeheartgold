@@ -4,8 +4,8 @@
 
 	.text
 
-	thumb_func_start ov99_021E5900
-ov99_021E5900: ; 0x021E5900
+	thumb_func_start PokeathlonCourseRecord_Init
+PokeathlonCourseRecord_Init: ; 0x021E5900
 	push {r4, r5, lr}
 	sub sp, #0x1c
 	add r4, r0, #0
@@ -110,10 +110,10 @@ _021E59F4: .word 0x0000013A
 _021E59F8: .word ov99_021E96D8
 _021E59FC: .word ov99_021E95A4
 _021E5A00: .word ov99_021E6250
-	thumb_func_end ov99_021E5900
+	thumb_func_end PokeathlonCourseRecord_Init
 
-	thumb_func_start ov99_021E5A04
-ov99_021E5A04: ; 0x021E5A04
+	thumb_func_start PokeathlonCourseRecord_Exit
+PokeathlonCourseRecord_Exit: ; 0x021E5A04
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -133,10 +133,10 @@ ov99_021E5A04: ; 0x021E5A04
 	pop {r3, r4, r5, pc}
 	nop
 _021E5A34: .word FS_OVERLAY_ID(OVY_98)
-	thumb_func_end ov99_021E5A04
+	thumb_func_end PokeathlonCourseRecord_Exit
 
-	thumb_func_start ov99_021E5A38
-ov99_021E5A38: ; 0x021E5A38
+	thumb_func_start PokeathlonCourseRecord_Main
+PokeathlonCourseRecord_Main: ; 0x021E5A38
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r1, #0
@@ -270,7 +270,7 @@ _021E5B40:
 	.balign 4, 0
 _021E5B4C: .word 0x000005DC
 _021E5B50: .word _021EA5C0
-	thumb_func_end ov99_021E5A38
+	thumb_func_end PokeathlonCourseRecord_Main
 
 	thumb_func_start ov99_021E5B54
 ov99_021E5B54: ; 0x021E5B54
@@ -3986,8 +3986,8 @@ _021E7810: .word 0x00000414
 _021E7814: .word 0x00000444
 	thumb_func_end ov99_021E77D8
 
-	thumb_func_start ov99_021E7818
-ov99_021E7818: ; 0x021E7818
+	thumb_func_start PokeathlonMedals_Init
+PokeathlonMedals_Init: ; 0x021E7818
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, _021E78E0 ; =FS_OVERLAY_ID(OVY_98)
@@ -4070,10 +4070,10 @@ _021E78E0: .word FS_OVERLAY_ID(OVY_98)
 _021E78E4: .word 0x0000013A
 _021E78E8: .word ov99_021E9FDC
 _021E78EC: .word ov99_021E7A54
-	thumb_func_end ov99_021E7818
+	thumb_func_end PokeathlonMedals_Init
 
-	thumb_func_start ov99_021E78F0
-ov99_021E78F0: ; 0x021E78F0
+	thumb_func_start PokeathlonMedals_Exit
+PokeathlonMedals_Exit: ; 0x021E78F0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -4109,10 +4109,10 @@ ov99_021E78F0: ; 0x021E78F0
 	.balign 4, 0
 _021E7944: .word 0x00000404
 _021E7948: .word FS_OVERLAY_ID(OVY_98)
-	thumb_func_end ov99_021E78F0
+	thumb_func_end PokeathlonMedals_Exit
 
-	thumb_func_start ov99_021E794C
-ov99_021E794C: ; 0x021E794C
+	thumb_func_start PokeathlonMedals_Main
+PokeathlonMedals_Main: ; 0x021E794C
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r1, #0
@@ -4240,7 +4240,7 @@ _021E7A44: .word 0xEFFFFFFF
 _021E7A48: .word 0x000005DC
 _021E7A4C: .word _021EA5D8
 _021E7A50: .word 0x00000404
-	thumb_func_end ov99_021E794C
+	thumb_func_end PokeathlonMedals_Main
 
 	thumb_func_start ov99_021E7A54
 ov99_021E7A54: ; 0x021E7A54
@@ -5356,8 +5356,8 @@ _021E82FA:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov99_021E82E4
 
-	thumb_func_start ov99_021E8304
-ov99_021E8304: ; 0x021E8304
+	thumb_func_start PokeathlonEventRecord_Init
+PokeathlonEventRecord_Init: ; 0x021E8304
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, _021E839C ; =FS_OVERLAY_ID(OVY_98)
@@ -5421,10 +5421,10 @@ _021E839C: .word FS_OVERLAY_ID(OVY_98)
 _021E83A0: .word 0x0000013A
 _021E83A4: .word ov99_021EA45C
 _021E83A8: .word ov99_021E856C
-	thumb_func_end ov99_021E8304
+	thumb_func_end PokeathlonEventRecord_Init
 
-	thumb_func_start ov99_021E83AC
-ov99_021E83AC: ; 0x021E83AC
+	thumb_func_start PokeathlonEventRecord_Exit
+PokeathlonEventRecord_Exit: ; 0x021E83AC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -5452,10 +5452,10 @@ ov99_021E83AC: ; 0x021E83AC
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E83F0: .word FS_OVERLAY_ID(OVY_98)
-	thumb_func_end ov99_021E83AC
+	thumb_func_end PokeathlonEventRecord_Exit
 
-	thumb_func_start ov99_021E83F4
-ov99_021E83F4: ; 0x021E83F4
+	thumb_func_start PokeathlonEventRecord_Main
+PokeathlonEventRecord_Main: ; 0x021E83F4
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r1, #0
@@ -5576,7 +5576,7 @@ _021E84D6:
 	nop
 _021E84E4: .word 0x000005DC
 _021E84E8: .word _021EA5E4
-	thumb_func_end ov99_021E83F4
+	thumb_func_end PokeathlonEventRecord_Main
 
 	thumb_func_start ov99_021E84EC
 ov99_021E84EC: ; 0x021E84EC

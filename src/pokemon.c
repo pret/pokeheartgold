@@ -870,7 +870,7 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void * dest) {
         if (blockA->species == SPECIES_ARCEUS && blockA->ability == ABILITY_MULTITYPE) {
             ret = (u32)GetArceusTypeByHeldItemEffect((u16) GetItemAttr(blockA->heldItem, ITEMATTR_HOLD_EFFECT, HEAP_ID_DEFAULT));
         } else {
-            ret = (u32)GetMonBaseStat_HandleAlternateForm(blockA->species, blockB->alternateForm, (enum BaseStat)(attr - MON_DATA_TYPE_1 + BASE_TYPE1));
+            ret = (u32)GetMonBaseStat_HandleAlternateForm(blockA->species, blockB->alternateForm, (int)(attr - MON_DATA_TYPE_1 + BASE_TYPE1));
         }
         break;
     case MON_DATA_SPECIES_NAME:
@@ -1733,7 +1733,7 @@ BASE_STATS *AllocAndLoadMonPersonal(int species, HeapID heapId) {
     return ret;
 }
 
-int GetPersonalAttr(const BASE_STATS *baseStats, BaseStat attr) {
+int GetPersonalAttr(const BASE_STATS *baseStats, int attr) {
     int ret;
     GF_ASSERT(baseStats != NULL);
     switch (attr) {
@@ -1825,16 +1825,16 @@ int GetPersonalAttr(const BASE_STATS *baseStats, BaseStat attr) {
         ret = baseStats->flip;
         break;
     case BASE_TMHM_1:
-        ret = (int)baseStats->unk1C;
+        ret = (int)baseStats->tmhm_1;
         break;
     case BASE_TMHM_2:
-        ret = (int)baseStats->unk20;
+        ret = (int)baseStats->tmhm_2;
         break;
     case BASE_TMHM_3:
-        ret = (int)baseStats->unk24;
+        ret = (int)baseStats->tmhm_3;
         break;
     case BASE_TMHM_4:
-        ret = (int)baseStats->unk28;
+        ret = (int)baseStats->tmhm_4;
         break;
     }
     return ret;
@@ -1845,7 +1845,7 @@ void FreeMonPersonal(BASE_STATS * personal) {
     FreeToHeap(personal);
 }
 
-int GetMonBaseStat_HandleAlternateForm(int species, int form, BaseStat attr) {
+int GetMonBaseStat_HandleAlternateForm(int species, int form, int attr) {
     int ret;
     BASE_STATS * personal = AllocAndLoadMonPersonal(ResolveMonForm(species, form), HEAP_ID_DEFAULT);
     ret = GetPersonalAttr(personal, attr);
@@ -1853,7 +1853,7 @@ int GetMonBaseStat_HandleAlternateForm(int species, int form, BaseStat attr) {
     return ret;
 }
 
-int GetMonBaseStat(int species, BaseStat attr) {
+int GetMonBaseStat(int species, int attr) {
     int ret;
     BASE_STATS * personal = AllocAndLoadMonPersonal(species, HEAP_ID_DEFAULT);
     ret = GetPersonalAttr(personal, attr);
@@ -1861,7 +1861,7 @@ int GetMonBaseStat(int species, BaseStat attr) {
     return ret;
 }
 
-int GetMonBaseStatEx_HandleAlternateForm(NARC *narc, int species, int form, BaseStat attr) {
+int GetMonBaseStatEx_HandleAlternateForm(NARC *narc, int species, int form, int attr) {
     int resolved = ResolveMonForm(species, form);
     int ret;
     BASE_STATS *buf = AllocFromHeap(HEAP_ID_DEFAULT, sizeof(BASE_STATS));
@@ -3471,7 +3471,7 @@ u32 GetArceusTypeByHeldItemEffect(u16 heldEffect) {
         return TYPE_GRASS;
     case HOLD_EFFECT_ARCEUS_ICE:
         return TYPE_ICE;
-    case HOLD_EFFECT_ARCEUS_FIGHT:
+    case HOLD_EFFECT_ARCEUS_FIGHTING:
         return TYPE_FIGHTING;
     case HOLD_EFFECT_ARCEUS_POISON:
         return TYPE_POISON;
@@ -3783,7 +3783,7 @@ BOOL GetBoxMonTMHMCompat(BoxPokemon *boxMon, u8 tmhm) {
 
 BOOL GetTMHMCompatBySpeciesAndForm(u16 species, u32 form, u8 tmhm) {
     u32 mask;
-    enum BaseStat baseStat;
+    int baseStat;
     if (species == SPECIES_EGG) {
         return FALSE;
     }

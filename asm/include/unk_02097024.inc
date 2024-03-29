@@ -7,9 +7,9 @@
 .public Save_GameStats_Get
 .public sub_020398D4
 .public FieldSystem_LaunchApplication
-.public sub_0203E4EC
-.public sub_0203E740
-.public sub_0203E76C
+.public PokemonSummary_LearnForget_LaunchApp
+.public PartyMenu_LaunchApp_Unk5
+.public PokemonSummary_CreateArgs
 .public FieldSystem_ApplicationIsRunning
 .public sub_02096C88
 .public sub_02096CC8

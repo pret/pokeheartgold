@@ -11,7 +11,7 @@
 .public sub_0208F7E0
 .public MIi_CpuCopyFast
 .public memcpy
-.public _020FA484
+.public gOverlayTemplate_Battle
 .public gNatureStatMods
 .public ov65_0221DE24
 .public ov65_0221DE64

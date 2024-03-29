@@ -157,7 +157,7 @@ void FieldSystem_Delete(OVY_MANAGER *man) {
     FieldSystem *fieldSystem = OverlayManager_GetData(man);
     MapMatrix_Free(fieldSystem->mapMatrix);
     Field_FreeMapEvents(fieldSystem);
-    FreeToHeap(fieldSystem->unk94);
+    FreeToHeap(fieldSystem->bagCursor);
     sub_02092BD0(fieldSystem->unkA8);
     sub_02092DD8(fieldSystem->unk114);
     FreeToHeap(fieldSystem->unk0);

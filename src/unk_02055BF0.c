@@ -13,7 +13,7 @@
 #include "unk_02054E00.h"
 #include "unk_020552A4.h"
 #include "camera.h"
-#include "unk_0206A360.h"
+#include "map_preview_graphic.h"
 #include "unk_02005D10.h"
 #include "unk_02062108.h"
 #include "unk_02054648.h"
@@ -23,6 +23,7 @@
 #include "overlay_01_021FB4C0.h"
 #include "overlay_01_022053EC.h"
 #include "overlay_01_021F4704.h"
+#include "overlay_01_021F1AFC.h"
 #include "unk_02055244.h"
 #include "constants/sndseq.h"
 
@@ -191,14 +192,14 @@ BOOL sub_02055DBC(TaskManager *man) {
         if(GF_SndGetFadeTimer() == 0) {
             sub_02055110(fieldSystem, env->location.mapId, 1);
             if(!MapHeader_IsCave(env->destinationMapID)) { //this has gotta be for the pre-entering images right?
-                int index = sub_0206A360(env->location.mapId); //this gets the index of the location in the list of maps that have map icons
+                int index = MapPreviewGraphic_GetIndex(env->location.mapId); //this gets the index of the location in the list of maps that have map icons
                 if (index != 255) {
                     int parity = 0;
                     if (env->transitionNo == 8) {
                         parity = 1;
                     }
                     TIMEOFDAY time = GF_RTC_GetTimeOfDay();
-                    sub_0206A388(man, index, time, parity); //this should set the specific map icon based on time?
+                    MapPreviewGraphic_BeginShowImage(man, index, time, parity); //this should set the specific map icon based on time?
                     env->state++;
                     ov01_021EFAF8(fieldSystem); //<= this func specifically gets and displays the area's icon and text
                     break;

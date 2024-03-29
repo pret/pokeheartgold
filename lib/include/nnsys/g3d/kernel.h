@@ -1,6 +1,13 @@
 #ifndef NNSYS_G3D_KERNEL_H_
 #define NNSYS_G3D_KERNEL_H_
 
+#include <nitro.h>
+#include <nnsys/g3d/config.h>
+#include <nnsys/g3d/binres/res_struct.h>
+
+typedef u32 NNSG3dTexKey;    // compatible with NNSGfdTexKey
+typedef u32 NNSG3dPlttKey;   // compatible with NNSGfdPlttKey
+
 typedef struct NNSG3dAnmObj_ {
     fx32 frame;
     fx32 ratio;
@@ -51,4 +58,16 @@ void NNS_G3dRenderObjAddAnmObj(NNSG3dRenderObj* pRenderObj, NNSG3dAnmObj* pAnmOb
 void NNS_G3dRenderObjRemoveAnmObj(NNSG3dRenderObj* pRenderObj, NNSG3dAnmObj* pAnmObj);
 void NNS_G3dRenderObjInit(NNSG3dRenderObj* pRenderObj, NNSG3dResMdl* pResMdl);
 void NNS_G3dAnmObjInit(NNSG3dAnmObj* pAnmObj, void* pResAnm, const NNSG3dResMdl* pResMdl, const NNSG3dResTex* pResTex);
+BOOL NNS_G3dBindMdlSet(NNSG3dResMdlSet* pMdlSet, const NNSG3dResTex* pTex);
+u32 NNS_G3dTexGetRequiredSize(const NNSG3dResTex* pTex);
+u32 NNS_G3dTex4x4GetRequiredSize(const NNSG3dResTex* pTex);
+void NNS_G3dTexSetTexKey(NNSG3dResTex* pTex, NNSG3dTexKey texKey, NNSG3dTexKey tex4x4Key);
+void NNS_G3dTexLoad(NNSG3dResTex* pTex, BOOL exec_begin_end);
+void NNS_G3dTexReleaseTexKey(NNSG3dResTex* pTex, NNSG3dTexKey* texKey, NNSG3dTexKey* tex4x4Key);
+
+u32 NNS_G3dPlttGetRequiredSize(const NNSG3dResTex* pTex);
+void NNS_G3dPlttSetPlttKey(NNSG3dResTex* pTex, NNSG3dPlttKey plttKey);
+void NNS_G3dPlttLoad(NNSG3dResTex* pTex, BOOL exec_begin_end);
+NNSG3dPlttKey NNS_G3dPlttReleasePlttKey(NNSG3dResTex* pTex);
+
 #endif //NNSYS_G3D_KERNEL_H_

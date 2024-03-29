@@ -472,6 +472,20 @@
 
 #define NUM_MOVES   MOVE_SHADOW_FORCE
 
+//Move Attributes
+#define MOVE_ATTRIBUTE_EFFECT            0
+#define MOVE_ATTRIBUTE_CLASS             1
+#define MOVE_ATTRIBUTE_POWER             2
+#define MOVE_ATTRIBUTE_TYPE              3
+#define MOVE_ATTRIBUTE_ACCURACY          4
+#define MOVE_ATTRIBUTE_PP                5
+#define MOVE_ATTRIBUTE_EFFECT_CHANCE     6
+#define MOVE_ATTRIBUTE_RANGE             7
+#define MOVE_ATTRIBUTE_PRIORTY           8
+#define MOVE_ATTRIBUTE_FLAGS             9
+#define MOVE_ATTRIBUTE_CONTEST_EFFECT   10
+#define MOVE_ATTRIBUTE_CONTEST_TYPE     11
+
 #define CATEGORY_PHYSICAL 0
 #define CATEGORY_SPECIAL  1
 #define CATEGORY_STATUS   2

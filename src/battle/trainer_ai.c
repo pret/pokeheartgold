@@ -33,7 +33,7 @@ void ov10_0221BE20(BattleSystem *bsys, BattleContext *ctx, u8 battlerId, u8 a3) 
 
     ctx->trainerAIData.unk98 = 0;
 
-    if (bsys->battleType & BATTLE_TYPE_8) {
+    if (bsys->battleType & BATTLE_TYPE_ROAMER) {
         ctx->trainerAIData.aiFlags = AI_29;
     } else {
         ctx->trainerAIData.aiFlags = bsys->trainers[battlerId].data.aiFlags;
@@ -50,7 +50,7 @@ u8 ov10_0221BEF4(BattleSystem *bsys, u8 battlerId) {
     
     if (!(ctx->trainerAIData.unk10 & 0x10)) {
         ctx->trainerAIData.battlerIdAttacker = battlerId;
-        ctx->trainerAIData.battlerIdTarget = ov12_02253DA0(bsys, ctx, battlerId);
+        ctx->trainerAIData.battlerIdTarget = Battler_GetRandomOpposingBattlerId(bsys, ctx, battlerId);
         
         ov10_0221BE20(bsys, ctx, ctx->trainerAIData.battlerIdAttacker, 15);
     }

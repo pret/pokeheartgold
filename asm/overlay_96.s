@@ -4,8 +4,8 @@
 
 	.text
 
-	thumb_func_start PokeathlonCourseApplication_OvyInit
-PokeathlonCourseApplication_OvyInit: ; 0x021E5900
+	thumb_func_start PokeathlonCourse_Init
+PokeathlonCourse_Init: ; 0x021E5900
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0x14
 	mov r2, #0x72
@@ -144,10 +144,10 @@ _021E5A30: .word 0x0000072A
 _021E5A34: .word ov96_0221A984
 _021E5A38: .word 0x000003CA
 _021E5A3C: .word 0x00000614
-	thumb_func_end PokeathlonCourseApplication_OvyInit
+	thumb_func_end PokeathlonCourse_Init
 
-	thumb_func_start PokeathlonCourseApplication_OvyExec
-PokeathlonCourseApplication_OvyExec: ; 0x021E5A40
+	thumb_func_start PokeathlonCourse_Main
+PokeathlonCourse_Main: ; 0x021E5A40
 	push {r3, r4, r5, lr}
 	bl OverlayManager_GetData
 	add r5, r0, #0
@@ -311,10 +311,10 @@ _021E5B78: .word 0x00000D2C
 _021E5B7C: .word 0x00000708
 _021E5B80: .word 0x0000EA5F
 _021E5B84: .word 0x00000D28
-	thumb_func_end PokeathlonCourseApplication_OvyExec
+	thumb_func_end PokeathlonCourse_Main
 
-	thumb_func_start PokeathlonCourseApplication_OvyExit
-PokeathlonCourseApplication_OvyExit: ; 0x021E5B88
+	thumb_func_start PokeathlonCourse_Exit
+PokeathlonCourse_Exit: ; 0x021E5B88
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -378,7 +378,7 @@ _021E5C1C: .word 0x00000D24
 _021E5C20: .word 0x0000EA5F
 _021E5C24: .word 0x00000614
 _021E5C28: .word 0x000005DC
-	thumb_func_end PokeathlonCourseApplication_OvyExit
+	thumb_func_end PokeathlonCourse_Exit
 
 	thumb_func_start ov96_021E5C2C
 ov96_021E5C2C: ; 0x021E5C2C
@@ -34560,7 +34560,7 @@ ov96_021F637C: ; 0x021F637C
 	bl ov96_021F61C8
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	pop {r4, pc}
 	thumb_func_end ov96_021F637C
 

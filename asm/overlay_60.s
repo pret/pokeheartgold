@@ -5836,7 +5836,7 @@ _021E99DE:
 	add r0, r0, r7
 	add r1, sp, #0x28
 	add r2, r2, r7
-	bl sub_0201F51C
+	bl GF3dRender_InitObjFromHeader
 	ldr r0, [sp, #0xc]
 	add r0, r0, r7
 	add r0, #0xd8
@@ -6052,10 +6052,10 @@ _021E9BCC:
 	add r1, sp, #0
 	add r2, sp, #0x18
 	add r3, sp, #0xc
-	bl Draw3dModel
+	bl GF3dRender_DrawModel
 	mov r0, #0
 	mov r1, #1
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 _021E9BEC:
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
@@ -7580,7 +7580,7 @@ ov60_021EA8B0: ; 0x021EA8B0
 	bl sub_02015460
 	mov r0, #1
 	mov r1, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	pop {r3, pc}
 	thumb_func_end ov60_021EA8B0
 

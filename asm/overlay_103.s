@@ -2537,7 +2537,7 @@ ov103_021EDC68: ; 0x021EDC68
 ov103_021EDCC8: ; 0x021EDCC8
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _021EDCDC ; =_0210159C
+	ldr r0, _021EDCDC ; =gOverlayTemplate_PartyMenu
 	ldr r1, [r4, #0x14]
 	mov r2, #0x9c
 	bl OverlayManager_New
@@ -2545,7 +2545,7 @@ ov103_021EDCC8: ; 0x021EDCC8
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-_021EDCDC: .word _0210159C
+_021EDCDC: .word gOverlayTemplate_PartyMenu
 	thumb_func_end ov103_021EDCC8
 
 	thumb_func_start ov103_021EDCE0

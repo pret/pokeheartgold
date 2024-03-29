@@ -64,7 +64,7 @@ Static main
 	Object src/system.o
 	Object src/heap.o
 	Object src/bg_window.o
-	Object asm/unk_0201F4C4.o
+	Object src/gf_3d_render.o
 	Object src/sys_task.o
 	Object asm/unk_0201F990.o
 	Object src/string_control_code.o
@@ -84,13 +84,12 @@ Static main
 	Object src/timer3.o
 	Object src/error_handling.o
 	Object src/unk_02025534.o
-	Object asm/unk_02025534_s.o
 	Object asm/unk_02025C44.o
 	Object src/font_data.o
 	Object src/pm_string.o
 	Object asm/unk_02026C44.o
 	Object asm/unk_02026DE0.o
-	Object asm/unk_02026E30.o
+	Object src/unk_02026E30.o
 	Object asm/unk_02026E84.o
 	Object src/gf_3d_vramman.o
 	Object asm/unk_02027010.o
@@ -116,7 +115,7 @@ Static main
 	Object src/seal_case.o
 	Object src/igt.o
 	Object src/sav_chatot.o
-	Object asm/unk_0202CF1C.o
+	Object asm/game_stats.o
 	Object asm/unk_0202D230.o
 	Object src/save_special_ribbons.o
 	Object src/roamer.o
@@ -160,7 +159,11 @@ Static main
 	Object asm/unk_0203BC10.o
 	Object asm/unk_0203DB6C.o
 	Object src/field_system.o
-	Object asm/unk_0203E348.o
+	Object src/location_backup.o
+	Object src/launch_application.o
+	Object src/launch_application_data1.o
+	Object src/launch_application_data2.o
+	Object asm/launch_application_data.o
 	Object src/script.o
 	Object src/fieldmap.o
 	Object src/scrcmd_c.o
@@ -243,7 +246,7 @@ Static main
 	Object asm/unk_02069660.o
 	Object asm/unk_0206979C.o
 	Object src/follow_mon.o
-	Object asm/unk_0206A360.o
+	Object src/map_preview_graphic.o
 	Object asm/field_take_photo.o
 	Object src/unk_0206B910.o
 	Object src/alph_checks.o
@@ -573,7 +576,6 @@ Overlay OVY_12
     Object src/battle/battle_command.o
     Object asm/overlay_12_battle_command.o
     Object src/battle/battle_controller_player.o
-    Object asm/overlay_12_battle_controller_player.o
     Object src/battle/overlay_12_0224E4FC.o
     Object asm/overlay_12_battle_controller_opponent.o
     Object src/battle/battle_02261FD4.o

@@ -19,8 +19,17 @@
 #define GAME_STAT_BADGE_GET           22
 #define GAME_STAT_UNK26               26
 #define GAME_STAT_UNK30               30
+#define GAME_STAT_UNK42               42
 #define GAME_STAT_UNK46               46
 #define GAME_STAT_BATTLE_POINTS       69
 #define GAME_STAT_UNK70               70
+#define GAME_STAT_UNK77               77
+#define GAME_STAT_UNK79               79
+#define GAME_STAT_UNK80               80
+#define GAME_STAT_UNK96               96
+#define GAME_STAT_UNK97               97
+#define GAME_STAT_UNK98               98
+#define GAME_STAT_UNK100             100
+#define GAME_STAT_UNK114             114
 
 #endif //POKEHEARTGOLD_CONSTANTS_GAME_STATS_H

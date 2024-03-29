@@ -271,7 +271,7 @@
 .public Bag_TakeItem
 .public Bag_CreateView
 .public Save_Bag_Get
-.public sub_020830D8
+.public NamingScreen_CreateArgs
 .public sub_0208311C
 .public sub_02088288
 .public sub_0208828C
@@ -293,9 +293,9 @@
 .public _s32_div_f
 .public _u32_div_f
 .public _02102610
-.public _02103A1C
+.public gOverlayTemplate_PokemonSummary
 .public gSystem
-.public ov14_021E5900
-.public ov14_021E596C
-.public ov14_021E5988
+.public PCBox_Init
+.public PCBox_Main
+.public PCBox_Exit
 .public ov15_022008B8

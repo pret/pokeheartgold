@@ -1437,7 +1437,7 @@ ov12_02262B80: ; 0x02262B80
 	ldr r0, [sp, #4]
 	bl BattleSystem_GetBattleContext
 	ldr r1, [sp, #0xc]
-	bl ov12_0224EDC0
+	bl BattleBuffer_Clear
 	mov r5, #0
 	ldr r0, [sp, #4]
 	add r4, r5, #0
@@ -1907,7 +1907,7 @@ ov12_02262F40: ; 0x02262F40
 	str r1, [sp, #8]
 	bl BattleSystem_GetBattleContext
 	ldr r1, [sp, #0xc]
-	bl ov12_0224EDC0
+	bl BattleBuffer_Clear
 	mov r0, #0xf
 	add r2, sp, #0x14
 	strb r0, [r2]
@@ -2002,7 +2002,7 @@ ov12_02262FFC: ; 0x02262FFC
 	add r1, r3, #0
 	add r4, r2, #0
 	str r3, [sp, #0xc]
-	bl ov12_0224EDC0
+	bl BattleBuffer_Clear
 	ldr r0, [sp, #4]
 	bl BattleSystem_GetBattleType
 	mov r2, #0x10
@@ -2168,7 +2168,7 @@ ov12_02263138: ; 0x02263138
 	add r0, r1, #0
 	add r1, r2, #0
 	str r2, [sp, #0xc]
-	bl ov12_0224EDC0
+	bl BattleBuffer_Clear
 	add r6, sp, #0x10
 	mov r1, #0x11
 	add r0, sp, #0x10
@@ -2388,7 +2388,7 @@ BattleController_EmitShowMonList: ; 0x022632DC
 	add r1, r2, #0
 	str r2, [sp, #0xc]
 	add r4, r3, #0
-	bl ov12_0224EDC0
+	bl BattleBuffer_Clear
 	mov r0, #0x12
 	add r1, sp, #0x10
 	strb r0, [r1]
@@ -2471,7 +2471,7 @@ BattleController_EmitDrawYesNoBox: ; 0x0226337C
 	add r0, r1, #0
 	add r1, r5, #0
 	add r4, r3, #0
-	bl ov12_0224EDC0
+	bl BattleBuffer_Clear
 	mov r1, #0x13
 	add r0, sp, #4
 	strb r1, [r0]
@@ -3309,7 +3309,7 @@ ov12_022639B8: ; 0x022639B8
 	add r5, r0, #0
 	bl BattleSystem_GetBattleContext
 	add r1, r4, #0
-	bl ov12_0224EDC0
+	bl BattleBuffer_Clear
 	mov r1, #0x25
 	add r0, sp, #4
 	strb r1, [r0]
@@ -3745,7 +3745,7 @@ ov12_02263D14: ; 0x02263D14
 	add r6, r3, #0
 	bl BattleSystem_GetBattleContext
 	add r1, r5, #0
-	bl ov12_0224EDC0
+	bl BattleBuffer_Clear
 	mov r1, #0x2b
 	add r0, sp, #4
 	strb r1, [r0]
@@ -4535,8 +4535,8 @@ _022642D6:
 _022642EC: .word 0x0000240C
 	thumb_func_end BattleController_EmitSetBattleResults
 
-	thumb_func_start ov12_022642F0
-ov12_022642F0: ; 0x022642F0
+	thumb_func_start BattleController_EmitBlankMessage
+BattleController_EmitBlankMessage: ; 0x022642F0
 	push {r3, lr}
 	sub sp, #8
 	mov r1, #0x42
@@ -4550,7 +4550,7 @@ ov12_022642F0: ; 0x022642F0
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov12_022642F0
+	thumb_func_end BattleController_EmitBlankMessage
 
 	thumb_func_start ov12_0226430C
 ov12_0226430C: ; 0x0226430C

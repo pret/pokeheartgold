@@ -90,7 +90,7 @@ _02066F64:
 	lsr r2, r0, #0x18
 	cmp r2, #6
 	blo _02066F64
-	ldr r1, _02066F8C ; =_0210159C
+	ldr r1, _02066F8C ; =gOverlayTemplate_PartyMenu
 	add r0, r6, #0
 	add r2, r4, #0
 	bl FieldSystem_LaunchApplication
@@ -99,7 +99,7 @@ _02066F64:
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02066F8C: .word _0210159C
+_02066F8C: .word gOverlayTemplate_PartyMenu
 	thumb_func_end sub_02066EDC
 
 	thumb_func_start sub_02066F90
@@ -206,7 +206,7 @@ sub_02066FEC: ; 0x02066FEC
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0208AD34
-	ldr r1, _02067084 ; =_02103A1C
+	ldr r1, _02067084 ; =gOverlayTemplate_PokemonSummary
 	add r0, r7, #0
 	add r2, r4, #0
 	bl FieldSystem_LaunchApplication
@@ -216,7 +216,7 @@ sub_02066FEC: ; 0x02066FEC
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02067080: .word _020FE4B0
-_02067084: .word _02103A1C
+_02067084: .word gOverlayTemplate_PokemonSummary
 	thumb_func_end sub_02066FEC
 
 	thumb_func_start sub_02067088
@@ -347,7 +347,7 @@ sub_02067164: ; 0x02067164
 	ldrh r1, [r4, #0x12]
 	ldrh r2, [r4, #0x14]
 	add r0, r5, #0
-	bl sub_0203F8EC
+	bl NintendoWifiConnection_LaunchApp
 	str r0, [r4, #8]
 	mov r0, #1
 	pop {r3, r4, r5, pc}

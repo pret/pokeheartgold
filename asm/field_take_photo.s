@@ -276,7 +276,7 @@ sub_0206A9A0: ; 0x0206A9A0
 	add r4, r2, #0
 	ldrb r2, [r4, #0xa]
 	mov r1, #0
-	bl sub_0203EBA4
+	bl PhotoAlbum_LaunchApp
 	add r4, #0xb4
 	str r0, [r4]
 	mov r0, #1

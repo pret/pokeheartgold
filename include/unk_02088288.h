@@ -1,28 +1,33 @@
 #ifndef POKEHEARTGOLD_UNK_02088288_H
 #define POKEHEARTGOLD_UNK_02088288_H
 
+#include "options.h"
+#include "pokemon_types_def.h"
 #include "save_special_ribbons.h"
 
-extern struct OVY_MGR_TEMPLATE _02103A1C;
+extern struct OVY_MGR_TEMPLATE gOverlayTemplate_PokemonSummary;
 
-typedef struct UnkStruct_0204F448 {
+typedef struct PokemonSummaryArgs {
     Party *party;
     Options *options;
-    u8 filler08[9];
+    u8 unk8[0x8];
+    u8 unk10;
     u8 unk11;
     u8 unk12;
     u8 partyCount;
     u8 unk14;
-    u8 filler15[2];
+    u8 unk15[0x3];
     u16 unk18;
-    BOOL isNatDexEnabled;
-    SaveSpecialRibbons* ribbons;
-    u8 filler24[8];
-    u32 unk2C;
-    u8 filler30[4];
+    u8 unk1A[0x2];
+    BOOL natDexEnabled;
+    SaveSpecialRibbons *ribbons;
+    u8 unk24[0x4];
+    int unk28;
+    int unk2C;
+    u32 *unk30;
     BOOL isFlag982Set;
-    u8 filler38[4];
-} UnkStruct_0204F448;
+    u8 unk38[0x4];
+} PokemonSummaryArgs;
 
 u32 sub_02088288(SaveData*);
 BOOL sub_0208828C(SaveData*);

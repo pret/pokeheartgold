@@ -32,7 +32,7 @@ typedef struct HallOfFame
     HOFTEAM parties[NUM_HOF_RECORDS];
     u32 next_record;
     u32 num_total;
-} HALL_OF_FAME;
+} HallOfFame;
 
 typedef struct HofDisplayMon
 {
@@ -47,12 +47,12 @@ typedef struct HofDisplayMon
 } SHOW_HOFMON;
 
 u32 Save_HOF_sizeof(void);
-void Save_HOF_Init(HALL_OF_FAME *hof);
-void Save_HOF_RecordParty(HALL_OF_FAME *hof, Party *party, RTCDate *date);
-u32 Save_HOF_GetNumRecords(const HALL_OF_FAME *hallOfFame);
-int Save_HOF_TranslateRecordIdx(const HALL_OF_FAME *hallOfFame, int num);
-u32 Save_HOF_RecordCountMons(HALL_OF_FAME *hallOfFame, int num);
-void Save_HOF_GetMonStatsByIndexPair(HALL_OF_FAME *hallOfFame, int teamNum, int monNum, SHOW_HOFMON *dest);
-void Save_HOF_GetClearDate(HALL_OF_FAME * hof, int num, RTCDate * dest);
+void Save_HOF_Init(HallOfFame *hof);
+void Save_HOF_RecordParty(HallOfFame *hof, Party *party, RTCDate *date);
+u32 Save_HOF_GetNumRecords(const HallOfFame *hallOfFame);
+int Save_HOF_TranslateRecordIdx(const HallOfFame *hallOfFame, int num);
+u32 Save_HOF_RecordCountMons(HallOfFame *hallOfFame, int num);
+void Save_HOF_GetMonStatsByIndexPair(HallOfFame *hallOfFame, int teamNum, int monNum, SHOW_HOFMON *dest);
+void Save_HOF_GetClearDate(HallOfFame * hof, int num, RTCDate * dest);
 
 #endif //POKEHEARTGOLD_HALL_OF_FAME_H

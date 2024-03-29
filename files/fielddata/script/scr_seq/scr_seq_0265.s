@@ -246,7 +246,7 @@ _02CB:
 	scrcmd_552 VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02F4
-	choose_move_ui 0, VAR_SPECIAL_x8000, 0
+	pokemon_summary_screen 0, VAR_SPECIAL_x8000, 0
 	get_move_selection 0, VAR_SPECIAL_RESULT
 	goto _02CB
 

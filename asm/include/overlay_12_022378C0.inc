@@ -111,7 +111,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public GetMainBgPlttAddr
 .public sub_02026E8C
 .public GetSubBgPlttAddr
@@ -189,7 +189,7 @@
 .public ov06_0221BAF0
 .public ov07_0221BEDC
 .public ov07_0221BFE0
-.public Battle_Main
+.public Battle_Run
 .public ov12_02237B0C
 .public ov12_02237B6C
 .public ov12_02237BB8
@@ -225,7 +225,7 @@
 .public BattleSystem_SetCriticalHpMusicDelay
 .public ov12_0223BFC0
 .public ov12_0223BFCC
-.public ov12_0223BFEC
+.public BattleSystem_IsRecordingPaused
 .public BattleContext_New
 .public BattleContext_Main
 .public BattleContext_Delete

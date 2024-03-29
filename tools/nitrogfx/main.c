@@ -1,4 +1,4 @@
-// Copyright (c) 2015 YamaArashi, 2021-2023 red031000
+// Copyright (c) 2015 YamaArashi, 2021-2024 red031000
 
 #include <ctype.h>
 #include <stdio.h>
@@ -37,7 +37,7 @@ void ConvertGbaToPng(char *inputPath, char *outputPath, struct GbaToPngOptions *
         image.hasPalette = false;
     }
 
-    ReadImage(inputPath, options->width, options->bitDepth, options->metatileWidth, options->metatileHeight, &image, !image.hasPalette);
+    ReadImage(inputPath, options->width, options->bitDepth, options->colsPerChunk, options->rowsPerChunk, &image, !image.hasPalette);
 
     image.hasTransparency = options->hasTransparency;
 
@@ -82,7 +82,7 @@ void ConvertNtrToPng(char *inputPath, char *outputPath, struct NtrToPngOptions *
         image.hasPalette = false;
     }
 
-    uint32_t key = ReadNtrImage(inputPath, options->width, 0, options->metatileWidth, options->metatileHeight, &image, !image.hasPalette, options->scanFrontToBack);
+    uint32_t key = ReadNtrImage(inputPath, options->width, 0, options->colsPerChunk, options->rowsPerChunk, &image, !image.hasPalette, options->scanFrontToBack);
 
     if (key)
     {
@@ -111,7 +111,7 @@ void ConvertPngToGba(char *inputPath, char *outputPath, struct PngToGbaOptions *
 
     ReadPng(inputPath, &image);
 
-    WriteImage(outputPath, options->numTiles, options->bitDepth, options->metatileWidth, options->metatileHeight, &image, !image.hasPalette);
+    WriteImage(outputPath, options->numTiles, options->bitDepth, options->colsPerChunk, options->rowsPerChunk, &image, !image.hasPalette);
 
     FreeImage(&image);
 }
@@ -160,7 +160,7 @@ void ConvertPngToNtr(char *inputPath, char *outputPath, struct PngToNtrOptions *
         free(string);
     }
 
-    WriteNtrImage(outputPath, options->numTiles, image.bitDepth, options->metatileWidth, options->metatileHeight,
+    WriteNtrImage(outputPath, options->numTiles, image.bitDepth, options->colsPerChunk, options->rowsPerChunk,
                   &image, !image.hasPalette, options->clobberSize, options->byteOrder, options->version101,
                   options->sopc, options->vramTransfer, options->scanMode, options->mappingType, key, options->wrongSize);
 
@@ -172,14 +172,14 @@ void HandleGbaToPngCommand(char *inputPath, char *outputPath, int argc, char **a
     char *inputFileExtension = GetFileExtension(inputPath);
     struct GbaToPngOptions options;
     options.paletteFilePath = NULL;
-    if (isdigit(inputFileExtension[0]))
+    if (isdigit((unsigned char)inputFileExtension[0]))
         options.bitDepth = inputFileExtension[0] - '0';
     else
         options.bitDepth = 4;
     options.hasTransparency = false;
     options.width = 1;
-    options.metatileWidth = 1;
-    options.metatileHeight = 1;
+    options.colsPerChunk = 1;
+    options.rowsPerChunk = 1;
 
     for (int i = 3; i < argc; i++)
     {
@@ -211,31 +211,31 @@ void HandleGbaToPngCommand(char *inputPath, char *outputPath, int argc, char **a
             if (options.width < 1)
                 FATAL_ERROR("Width must be positive.\n");
         }
-        else if (strcmp(option, "-mwidth") == 0)
+        else if (strcmp(option, "-mwidth") == 0 || strcmp(option, "-cpc") == 0)
         {
             if (i + 1 >= argc)
-                FATAL_ERROR("No metatile width value following \"-mwidth\".\n");
+                FATAL_ERROR("No columns per chunk value following \"%s\".\n", option);
 
             i++;
 
-            if (!ParseNumber(argv[i], NULL, 10, &options.metatileWidth))
-                FATAL_ERROR("Failed to parse metatile width.\n");
+            if (!ParseNumber(argv[i], NULL, 10, &options.colsPerChunk))
+                FATAL_ERROR("Failed to parse columns per chunk.\n");
 
-            if (options.metatileWidth < 1)
-                FATAL_ERROR("metatile width must be positive.\n");
+            if (options.colsPerChunk < 1)
+                FATAL_ERROR("columns per chunk must be positive.\n");
         }
-        else if (strcmp(option, "-mheight") == 0)
+        else if (strcmp(option, "-mheight") == 0 || strcmp(option, "-rpc") == 0)
         {
             if (i + 1 >= argc)
-                FATAL_ERROR("No metatile height value following \"-mheight\".\n");
+                FATAL_ERROR("No rows per chunk value following \"%s\".\n", option);
 
             i++;
 
-            if (!ParseNumber(argv[i], NULL, 10, &options.metatileHeight))
-                FATAL_ERROR("Failed to parse metatile height.\n");
+            if (!ParseNumber(argv[i], NULL, 10, &options.rowsPerChunk))
+                FATAL_ERROR("Failed to parse rows per chunk.\n");
 
-            if (options.metatileHeight < 1)
-                FATAL_ERROR("metatile height must be positive.\n");
+            if (options.rowsPerChunk < 1)
+                FATAL_ERROR("rows per chunk must be positive.\n");
         }
         else
         {
@@ -243,8 +243,8 @@ void HandleGbaToPngCommand(char *inputPath, char *outputPath, int argc, char **a
         }
     }
 
-    if (options.metatileWidth > options.width)
-        options.width = options.metatileWidth;
+    if (options.colsPerChunk > options.width)
+        options.width = options.colsPerChunk;
 
     ConvertGbaToPng(inputPath, outputPath, &options);
 }
@@ -255,8 +255,8 @@ void HandleNtrToPngCommand(char *inputPath, char *outputPath, int argc, char **a
     options.paletteFilePath = NULL;
     options.hasTransparency = false;
     options.width = 0;
-    options.metatileWidth = 1;
-    options.metatileHeight = 1;
+    options.colsPerChunk = 1;
+    options.rowsPerChunk = 1;
     options.palIndex = 1;
     options.scanFrontToBack = false;
     options.handleEmpty = false;
@@ -288,7 +288,7 @@ void HandleNtrToPngCommand(char *inputPath, char *outputPath, int argc, char **a
             if (!ParseNumber(argv[i], NULL, 10, &options.palIndex))
                 FATAL_ERROR("Failed to parse palette index.\n");
 
-            if (options.width < 1)
+            if (options.palIndex < 1)
                 FATAL_ERROR("Palette index must be positive.\n");
         }
         else if (strcmp(option, "-width") == 0)
@@ -304,31 +304,31 @@ void HandleNtrToPngCommand(char *inputPath, char *outputPath, int argc, char **a
             if (options.width < 1)
                 FATAL_ERROR("Width must be positive.\n");
         }
-        else if (strcmp(option, "-mwidth") == 0)
+        else if (strcmp(option, "-mwidth") == 0 || strcmp(option, "-cpc") == 0)
         {
             if (i + 1 >= argc)
-                FATAL_ERROR("No metatile width value following \"-mwidth\".\n");
+                FATAL_ERROR("No columns per chunk value following \"%s\".\n", option);
 
             i++;
 
-            if (!ParseNumber(argv[i], NULL, 10, &options.metatileWidth))
-                FATAL_ERROR("Failed to parse metatile width.\n");
+            if (!ParseNumber(argv[i], NULL, 10, &options.colsPerChunk))
+                FATAL_ERROR("Failed to parse columns per chunk.\n");
 
-            if (options.metatileWidth < 1)
-                FATAL_ERROR("metatile width must be positive.\n");
+            if (options.colsPerChunk < 1)
+                FATAL_ERROR("columns per chunk must be positive.\n");
         }
-        else if (strcmp(option, "-mheight") == 0)
+        else if (strcmp(option, "-mheight") == 0 || strcmp(option, "-rpc") == 0)
         {
             if (i + 1 >= argc)
-                FATAL_ERROR("No metatile height value following \"-mheight\".\n");
+                FATAL_ERROR("No rows per chunk value following \"%s\".\n", option);
 
             i++;
 
-            if (!ParseNumber(argv[i], NULL, 10, &options.metatileHeight))
-                FATAL_ERROR("Failed to parse metatile height.\n");
+            if (!ParseNumber(argv[i], NULL, 10, &options.rowsPerChunk))
+                FATAL_ERROR("Failed to parse rows per chunk.\n");
 
-            if (options.metatileHeight < 1)
-                FATAL_ERROR("metatile height must be positive.\n");
+            if (options.rowsPerChunk < 1)
+                FATAL_ERROR("rows per chunk must be positive.\n");
         }
         else if (strcmp(option, "-scanfronttoback") == 0)
         {
@@ -344,8 +344,8 @@ void HandleNtrToPngCommand(char *inputPath, char *outputPath, int argc, char **a
         }
     }
 
-    if (options.width != 0 && options.metatileWidth > options.width)
-        options.width = options.metatileWidth;
+    if (options.width != 0 && options.colsPerChunk > options.width)
+        options.width = options.colsPerChunk;
 
     ConvertNtrToPng(inputPath, outputPath, &options);
 }
@@ -361,8 +361,8 @@ void HandlePngToGbaCommand(char *inputPath, char *outputPath, int argc, char **a
     struct PngToGbaOptions options;
     options.numTiles = 0;
     options.bitDepth = bitDepth;
-    options.metatileWidth = 1;
-    options.metatileHeight = 1;
+    options.colsPerChunk = 1;
+    options.rowsPerChunk = 1;
 
     for (int i = 3; i < argc; i++)
     {
@@ -381,31 +381,31 @@ void HandlePngToGbaCommand(char *inputPath, char *outputPath, int argc, char **a
             if (options.numTiles < 1)
                 FATAL_ERROR("Number of tiles must be positive.\n");
         }
-        else if (strcmp(option, "-mwidth") == 0)
+        else if (strcmp(option, "-mwidth") == 0 || strcmp(option, "-cpc") == 0)
         {
             if (i + 1 >= argc)
-                FATAL_ERROR("No metatile width value following \"-mwidth\".\n");
+                FATAL_ERROR("No columns per chunk value following \"%s\".\n", option);
 
             i++;
 
-            if (!ParseNumber(argv[i], NULL, 10, &options.metatileWidth))
-                FATAL_ERROR("Failed to parse metatile width.\n");
+            if (!ParseNumber(argv[i], NULL, 10, &options.colsPerChunk))
+                FATAL_ERROR("Failed to parse columns per chunk.\n");
 
-            if (options.metatileWidth < 1)
-                FATAL_ERROR("metatile width must be positive.\n");
+            if (options.colsPerChunk < 1)
+                FATAL_ERROR("columns per chunk must be positive.\n");
         }
-        else if (strcmp(option, "-mheight") == 0)
+        else if (strcmp(option, "-mheight") == 0 || strcmp(option, "-rpc") == 0)
         {
             if (i + 1 >= argc)
-                FATAL_ERROR("No metatile height value following \"-mheight\".\n");
+                FATAL_ERROR("No rows per chunk value following \"%s\".\n", option);
 
             i++;
 
-            if (!ParseNumber(argv[i], NULL, 10, &options.metatileHeight))
-                FATAL_ERROR("Failed to parse metatile height.\n");
+            if (!ParseNumber(argv[i], NULL, 10, &options.rowsPerChunk))
+                FATAL_ERROR("Failed to parse rows per chunk.\n");
 
-            if (options.metatileHeight < 1)
-                FATAL_ERROR("metatile height must be positive.\n");
+            if (options.rowsPerChunk < 1)
+                FATAL_ERROR("rows per chunk must be positive.\n");
         }
         else
         {
@@ -421,8 +421,8 @@ void HandlePngToNtrCommand(char *inputPath, char *outputPath, int argc, char **a
     struct PngToNtrOptions options;
     options.numTiles = 0;
     options.bitDepth = 4;
-    options.metatileWidth = 1;
-    options.metatileHeight = 1;
+    options.colsPerChunk = 1;
+    options.rowsPerChunk = 1;
     options.wrongSize = false;
     options.clobberSize = false;
     options.byteOrder = true;
@@ -450,31 +450,30 @@ void HandlePngToNtrCommand(char *inputPath, char *outputPath, int argc, char **a
             if (options.numTiles < 1)
                 FATAL_ERROR("Number of tiles must be positive.\n");
         }
-        else if (strcmp(option, "-mwidth") == 0)
+        else if (strcmp(option, "-mwidth") == 0 || strcmp(option, "-cpc") == 0)
         {
             if (i + 1 >= argc)
-                FATAL_ERROR("No metatile width value following \"-mwidth\".\n");
+                FATAL_ERROR("No columns per chunk value following \"%s\".\n", option);
 
             i++;
 
-            if (!ParseNumber(argv[i], NULL, 10, &options.metatileWidth))
-                FATAL_ERROR("Failed to parse metatile width.\n");
+            if (!ParseNumber(argv[i], NULL, 10, &options.colsPerChunk))
+                FATAL_ERROR("Failed to parse columns per chunk.\n");
 
-            if (options.metatileWidth < 1)
-                FATAL_ERROR("metatile width must be positive.\n");
+            if (options.colsPerChunk < 1)
+                FATAL_ERROR("columns per chunk must be positive.\n");
         }
-        else if (strcmp(option, "-mheight") == 0)
-        {
+        else if (strcmp(option, "-mheight") == 0 || strcmp(option, "-rpc") == 0) {
             if (i + 1 >= argc)
-                FATAL_ERROR("No metatile height value following \"-mheight\".\n");
+                FATAL_ERROR("No rows per chunk value following \"%s\".\n", option);
 
             i++;
 
-            if (!ParseNumber(argv[i], NULL, 10, &options.metatileHeight))
-                FATAL_ERROR("Failed to parse metatile height.\n");
+            if (!ParseNumber(argv[i], NULL, 10, &options.rowsPerChunk))
+                FATAL_ERROR("Failed to parse rows per chunk.\n");
 
-            if (options.metatileHeight < 1)
-                FATAL_ERROR("metatile height must be positive.\n");
+            if (options.rowsPerChunk < 1)
+                FATAL_ERROR("rows per chunk must be positive.\n");
         }
         else if (strcmp(option, "-bitdepth") == 0)
         {
@@ -609,7 +608,8 @@ void HandlePngToNtrPaletteCommand(char *inputPath, char *outputPath, int argc, c
             if (compNum > 255)
                 FATAL_ERROR("Compression value must be 255 or below.\n");
         }
-        else if (strcmp(option, "-pcmp") == 0) {
+        else if (strcmp(option, "-pcmp") == 0)
+        {
             pcmp = true;
         }
         else
@@ -764,7 +764,8 @@ void HandleJascToNtrPaletteCommand(char *inputPath, char *outputPath, int argc, 
         {
             nopad = true;
         }
-        else if (strcmp(option, "-pcmp") == 0) {
+        else if (strcmp(option, "-pcmp") == 0)
+        {
             pcmp = true;
         }
         else

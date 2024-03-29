@@ -1817,7 +1817,7 @@ _0203C9E6:
 _0203C9F4:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0203F7F4
+	bl Pokedex_LaunchApp
 	mov r1, #0xe
 	ldr r0, [sp]
 	lsl r1, r1, #6
@@ -1890,7 +1890,7 @@ sub_0203CA68: ; 0x0203CA68
 	add r0, r5, #0
 	add r1, r4, r1
 	mov r2, #0
-	bl sub_0203E550
+	bl PartyMenu_LaunchApp_Unk1
 	mov r1, #0xe
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -2016,7 +2016,7 @@ _0203CB1A:
 	bl sub_0208AD34
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_0203E4EC
+	bl PokemonSummary_LearnForget_LaunchApp
 	mov r0, #0xe
 	lsl r0, r0, #6
 	str r7, [r4, r0]
@@ -2071,7 +2071,7 @@ _0203CBA8:
 	bl sub_0208AD34
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_0203E4EC
+	bl PokemonSummary_LearnForget_LaunchApp
 	mov r0, #0xb
 	mov r1, #4
 	bl AllocFromHeap
@@ -2135,7 +2135,7 @@ _0203CC3E:
 	bl sub_0208AD34
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_0203E4EC
+	bl PokemonSummary_LearnForget_LaunchApp
 	mov r0, #0xb
 	mov r1, #4
 	bl AllocFromHeap
@@ -2258,7 +2258,7 @@ _0203CD68:
 	lsl r1, r1, #6
 	ldr r1, [r4, r1]
 	add r0, r5, #0
-	bl sub_0203E3D4
+	bl Bag_LaunchApp
 	ldr r1, _0203CEF0 ; =sub_0203CFC0
 	add r0, r4, #0
 	bl sub_0203C8F0
@@ -2601,7 +2601,7 @@ _0203D066:
 	bl sub_02077904
 	strh r0, [r5, #0x28]
 	ldr r0, [sp, #8]
-	ldr r1, _0203D19C ; =_0210159C
+	ldr r1, _0203D19C ; =gOverlayTemplate_PartyMenu
 	add r2, r5, #0
 	bl FieldSystem_LaunchApplication
 	mov r0, #0xe
@@ -2698,7 +2698,7 @@ _0203D166:
 	add r0, #0x24
 	strb r1, [r0]
 	ldr r0, [sp, #8]
-	ldr r1, _0203D19C ; =_0210159C
+	ldr r1, _0203D19C ; =gOverlayTemplate_PartyMenu
 	add r2, r5, #0
 	bl FieldSystem_LaunchApplication
 	mov r0, #0xe
@@ -2720,7 +2720,7 @@ _0203D190:
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0203D19C: .word _0210159C
+_0203D19C: .word gOverlayTemplate_PartyMenu
 _0203D1A0: .word sub_0203CA9C
 _0203D1A4: .word sub_0203D830
 	thumb_func_end sub_0203CFC0
@@ -2769,7 +2769,7 @@ sub_0203D1CC: ; 0x0203D1CC
 	bl sub_02068FC8
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_0203F7B0
+	bl TrainerCard_LaunchApp
 	mov r0, #0xd5
 	ldr r1, _0203D214 ; =sub_0203D218
 	lsl r0, r0, #2
@@ -2948,7 +2948,7 @@ sub_0203D33C: ; 0x0203D33C
 	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203EE24
+	bl OptionsMenu_LaunchApp
 	mov r1, #0xe
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -3020,7 +3020,7 @@ sub_0203D3B8: ; 0x0203D3B8
 	mov r0, #2
 	mov r1, #0
 	add r3, r5, r3
-	bl sub_02090C94
+	bl EasyChat_CreateArgs
 	mov r1, #0xe
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -3036,7 +3036,7 @@ sub_0203D3B8: ; 0x0203D3B8
 	lsl r1, r1, #6
 	ldr r1, [r4, r1]
 	add r0, r5, #0
-	bl sub_0203EA24
+	bl EasyChat_LaunchApp
 	mov r0, #0xd5
 	ldr r1, _0203D414 ; =sub_0203D418
 	lsl r0, r0, #2
@@ -3090,7 +3090,7 @@ _0203D46A:
 	mov r0, #0xe
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_02090D0C
+	bl EasyChat_FreeArgs
 	add r0, r4, #0
 	bl sub_020505C0
 	add r4, #0x84
@@ -3185,7 +3185,7 @@ sub_0203D524: ; 0x0203D524
 	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	add r0, r5, #0
-	bl PhoneUI_New
+	bl PokegearPhone_LaunchApp
 	mov r1, #0xe
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -3293,7 +3293,7 @@ _0203D604:
 	add r0, r0, r1
 	str r0, [r5, #0x20]
 	ldr r0, [sp]
-	ldr r1, _0203D65C ; =_0210159C
+	ldr r1, _0203D65C ; =gOverlayTemplate_PartyMenu
 	add r2, r5, #0
 	bl FieldSystem_LaunchApplication
 	mov r0, #0xe1
@@ -3313,7 +3313,7 @@ _0203D634:
 	ldrb r2, [r6, #0x14]
 	ldr r0, [sp]
 	add r1, r4, r1
-	bl sub_0203E550
+	bl PartyMenu_LaunchApp_Unk1
 	mov r1, #0xe
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -3326,7 +3326,7 @@ _0203D650:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0203D65C: .word _0210159C
+_0203D65C: .word gOverlayTemplate_PartyMenu
 _0203D660: .word sub_0203CA9C
 	thumb_func_end sub_0203D580
 
@@ -3478,7 +3478,7 @@ Task_UseFlyInField: ; 0x0203D758
 	add r0, r7, #0
 	add r1, r4, r1
 	lsr r2, r2, #0x18
-	bl sub_0203E550
+	bl PartyMenu_LaunchApp_Unk1
 	mov r1, #0xe
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -3602,7 +3602,7 @@ _0203D886:
 	ldrb r2, [r6, #2]
 	add r0, r5, #0
 	add r1, r4, r1
-	bl sub_0203E550
+	bl PartyMenu_LaunchApp_Unk1
 	mov r1, #0xe
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -3631,7 +3631,7 @@ _0203D8C4:
 	ldrb r2, [r6, #2]
 	add r0, r5, #0
 	add r1, r4, r1
-	bl sub_0203E550
+	bl PartyMenu_LaunchApp_Unk1
 	mov r1, #0xe
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -3716,7 +3716,7 @@ sub_0203D940: ; 0x0203D940
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	bl sub_02090F90
-	ldr r1, _0203D9AC ; =_0210159C
+	ldr r1, _0203D9AC ; =gOverlayTemplate_PartyMenu
 	add r0, r7, #0
 	add r2, r4, #0
 	bl FieldSystem_LaunchApplication
@@ -3728,7 +3728,7 @@ sub_0203D940: ; 0x0203D940
 	bl sub_0203C8F0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0203D9AC: .word _0210159C
+_0203D9AC: .word gOverlayTemplate_PartyMenu
 _0203D9B0: .word sub_0203CA9C
 	thumb_func_end sub_0203D940
 

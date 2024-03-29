@@ -3,6 +3,7 @@
 #include "constants/easy_chat.h"
 #include "constants/mail.h"
 #include "constants/species.h"
+#include "location_backup.h"
 #include "friend_group.h"
 #include "heap.h"
 #include "mail.h"
@@ -23,7 +24,6 @@
 #include "unk_02018380.h"
 #include "unk_0202C730.h"
 #include "unk_02066EDC.h"
-#include "unk_0203E348.h"
 #include "field_system.h"
 #include "msgdata/msg/msg_0445.h"
 #include "msgdata/msg/msg_0292.h"
@@ -245,7 +245,7 @@ static void Continue_LoadSaveData_HandleError(HeapID heapId, SaveData* saveData)
 static void NewGame_InitSaveData(HeapID heapId, SaveData* saveData) {
 #pragma unused(heapId)
     Save_InitDynamicRegion(saveData);
-    Save_CurrentLocation_BackUp(saveData);
+    Save_SetPositionToPlayerRoom(saveData);
 
     PlayerProfile_SetMoney(Save_PlayerData_GetProfileAddr(saveData), 3000);
 

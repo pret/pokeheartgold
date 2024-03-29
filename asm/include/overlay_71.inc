@@ -83,9 +83,9 @@
 .public CopyWindowToVram
 .public CopyWindowPixelsToVram_TextMode
 .public FillWindowPixelBuffer
-.public Draw3dModel
-.public Bind3dModelSet
-.public AllocAndLoad3dTexResources
+.public GF3dRender_DrawModel
+.public GF3dRender_BindModelSet
+.public GF3dRender_AllocAndLoadTexResources
 .public SysTask_SetFunc
 .public SysTask_GetData
 .public sub_0201F990
@@ -127,7 +127,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public GF_3DVramMan_InitFrameTexVramManager
 .public GF_3DVramMan_InitFramePlttVramManager
 .public Options_GetFrame
@@ -183,6 +183,6 @@
 .public FX_SinCosTable_
 .public NNS_GfdDefaultFuncAllocTexVram
 .public NNS_GfdDefaultFuncAllocPlttVram
-.public ov71_02246960
-.public ov71_02246B58
-.public ov71_02246BB8
+.public TradeSequence_Init
+.public TradeSequence_Exit
+.public TradeSequence_Main

@@ -1,0 +1,109 @@
+{
+	"labelEnabled":	true,
+	"sequenceCount":	6,
+	"frameCount":	12,
+	"sequences":	[{
+			"frameCount":	1,
+			"loopStartFrame":	0,
+			"animationElement":	0,
+			"animationType":	1,
+			"playbackMode":	1,
+			"frameData":	[{
+					"frameDelay":	1,
+					"resultId":	0
+				}]
+		}, {
+			"frameCount":	2,
+			"loopStartFrame":	0,
+			"animationElement":	0,
+			"animationType":	1,
+			"playbackMode":	2,
+			"frameData":	[{
+					"frameDelay":	4,
+					"resultId":	0
+				}, {
+					"frameDelay":	4,
+					"resultId":	1
+				}]
+		}, {
+			"frameCount":	2,
+			"loopStartFrame":	0,
+			"animationElement":	0,
+			"animationType":	1,
+			"playbackMode":	2,
+			"frameData":	[{
+					"frameDelay":	6,
+					"resultId":	0
+				}, {
+					"frameDelay":	6,
+					"resultId":	1
+				}]
+		}, {
+			"frameCount":	2,
+			"loopStartFrame":	0,
+			"animationElement":	0,
+			"animationType":	1,
+			"playbackMode":	2,
+			"frameData":	[{
+					"frameDelay":	12,
+					"resultId":	0
+				}, {
+					"frameDelay":	12,
+					"resultId":	1
+				}]
+		}, {
+			"frameCount":	2,
+			"loopStartFrame":	0,
+			"animationElement":	0,
+			"animationType":	1,
+			"playbackMode":	2,
+			"frameData":	[{
+					"frameDelay":	20,
+					"resultId":	0
+				}, {
+					"frameDelay":	20,
+					"resultId":	1
+				}]
+		}, {
+			"frameCount":	3,
+			"loopStartFrame":	0,
+			"animationElement":	2,
+			"animationType":	1,
+			"playbackMode":	2,
+			"frameData":	[{
+					"frameDelay":	32,
+					"resultId":	2
+				}, {
+					"frameDelay":	2,
+					"resultId":	3
+				}, {
+					"frameDelay":	2,
+					"resultId":	4
+				}]
+		}],
+	"animationResults":	[{
+			"resultType":	0,
+			"index":	0
+		}, {
+			"resultType":	0,
+			"index":	1
+		}, {
+			"resultType":	2,
+			"index":	0,
+			"positionX":	0,
+			"positionY":	0
+		}, {
+			"resultType":	2,
+			"index":	0,
+			"positionX":	1,
+			"positionY":	0
+		}, {
+			"resultType":	2,
+			"index":	0,
+			"positionX":	-1,
+			"positionY":	0
+		}],
+	"resultCount":	5,
+	"labels":	["CellAnime0", "CellAnime1", "CellAnime2", "CellAnime3", "CellAnime4", "CellAnime5"],
+	"labelCount":	6
+}
