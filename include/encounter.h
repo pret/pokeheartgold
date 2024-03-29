@@ -23,7 +23,7 @@ typedef struct WildEncounter {
 
 void CallTask_020509F0(TaskManager *taskManager, BattleSetup *battleSetup, s32 effect, s32 bgm, u32 *winFlag);
 void sub_02050B08(FieldSystem *fieldSystem, BattleSetup *setup);
-void sub_02050B90(FieldSystem *fieldSystem, TaskManager *taskManager, BattleSetup *setup);
+void FieldSystem_StartForcedWildBattle(FieldSystem *fieldSystem, TaskManager *taskManager, BattleSetup *setup);
 void SetupAndStartWildBattle(TaskManager *taskManager, u16 species, u8 level, u32 *winFlag, BOOL canFlee, BOOL shiny);
 void SetupAndStartFatefulWildBattle(TaskManager *taskManager, u16 species, u8 level, u32 *winFlag, BOOL canRun);
 void sub_020511F8(FieldSystem *fieldSystem, BattleSetup *setup);
