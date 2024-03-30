@@ -514,7 +514,7 @@ Overlay field
     Object asm/overlay_01_02204004.o
     Object src/field/overlay_01_apricorn_tree_anim.o
     Object src/field/overlay_01_rock_smash_item.o
-    Object src/overlay_01_02204ED8.o
+    Object src/field/headbutt.o
     Object asm/overlay_01_022051EC.o
     Object asm/overlay_01_022053EC.o
 }

@@ -1,0 +1,90 @@
+{{ doNotModifyHeader }}
+
+#include "constants/maps.h"
+#include "constants/species.h"
+
+    .section .rodata
+{% for table in tables %}
+gHeadbuttMons_{{table.Map}}:
+    .short {{length(table.Trees)}}
+    .short {{length(table.SecretTrees)}}
+
+    {% if length(table.Trees) != 0 %}
+    {% for mon in table.CommonMons %}
+    {% if isObject(mon.species) %}
+    #ifdef HEARTGOLD
+    .short {{mon.species.gold}}
+    #else
+    .short {{mon.species.silver}}
+    #endif
+    {% else %}
+    .short {{mon.species}}
+    {% endif %}
+    .byte {{mon.minLevel}}
+    .byte {{mon.maxLevel}}
+    {% endfor %}
+    {% for i in range(6 - length(table.CommonMons)) %}
+    .short SPECIES_NONE
+    .byte 0
+    .byte 0
+    {% endfor %}
+
+    {% for mon in table.RareMons %}
+    {% if isObject(mon.species) %}
+    #ifdef HEARTGOLD
+    .short {{mon.species.gold}}
+    #else
+    .short {{mon.species.silver}}
+    #endif
+    {% else %}
+    .short {{mon.species}}
+    {% endif %}
+    .byte {{mon.minLevel}}
+    .byte {{mon.maxLevel}}
+    {% endfor %}
+    {% for i in range(6 - length(table.RareMons)) %}
+    .short SPECIES_NONE
+    .byte 0
+    .byte 0
+    {% endfor %}
+
+    {% for mon in table.SecretMons %}
+    {% if isObject(mon.species) %}
+    #ifdef HEARTGOLD
+    .short {{mon.species.gold}}
+    #else
+    .short {{mon.species.silver}}
+    #endif
+    {% else %}
+    .short {{mon.species}}
+    {% endif %}
+    .byte {{mon.minLevel}}
+    .byte {{mon.maxLevel}}
+    {% endfor %}
+    {% for i in range(6 - length(table.SecretMons)) %}
+    .short SPECIES_NONE
+    .byte 0
+    .byte 0
+    {% endfor %}
+
+    {% for tree in table.Trees %}
+    {% for pos in tree %}
+    .short {{pos.x}}, {{pos.y}}
+    {% endfor %}
+    {% for i in range(6 - length(tree) )%}
+    .short -1, -1
+    {% endfor %}
+    {% endfor %}
+
+    {% for tree in table.SecretTrees %}
+    {% for pos in tree %}
+    .short {{pos.x}}, {{pos.y}}
+    {% endfor %}
+    {% for i in range(6 - length(tree) )%}
+    .short -1, -1
+    {% endfor %}
+    {% endfor %}
+    {% endif %}
+
+    .size gHeadbuttMons_{{table.Map}},.-gHeadbuttMons_{{table.Map}}
+{% endfor %}
