@@ -852,6 +852,7 @@ Overlay OVY_62
 Overlay OVY_63
 {
     After OVY_6
+    Object src/register_hall_of_fame.o
     Object asm/overlay_63.o
 }
 Overlay OVY_64
