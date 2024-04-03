@@ -4,75 +4,6 @@
 
 	.text
 
-	thumb_func_start RegisterHallOfFame_Exit
-RegisterHallOfFame_Exit: ; 0x0221BF28
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	bl OverlayManager_GetData
-	add r4, r0, #0
-	bl ov63_0221C118
-	add r0, r4, #0
-	bl ov63_0221C05C
-	add r0, r4, #0
-	add r0, #0x98
-	ldr r0, [r0]
-	bl NARC_Delete
-	add r0, r4, #0
-	add r0, #0x94
-	ldr r0, [r0]
-	bl NARC_Delete
-	add r0, r4, #0
-	add r0, #0x8c
-	ldr r0, [r0]
-	bl String_Delete
-	add r0, r4, #0
-	add r0, #0x90
-	ldr r0, [r0]
-	bl String_Delete
-	add r0, r4, #0
-	add r0, #0x88
-	ldr r0, [r0]
-	bl MessageFormat_Delete
-	add r4, #0x84
-	ldr r0, [r4]
-	bl DestroyMsgData
-	add r0, r5, #0
-	bl OverlayManager_FreeData
-	mov r0, #0x3e
-	bl DestroyHeap
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end RegisterHallOfFame_Exit
-
-	thumb_func_start RegisterHallOfFame_Main
-RegisterHallOfFame_Main: ; 0x0221BF88
-	push {r4, lr}
-	bl OverlayManager_GetData
-	ldr r1, _0221BFB4 ; =0x0001304C
-	add r4, r0, #0
-	ldr r1, [r4, r1]
-	lsl r2, r1, #2
-	ldr r1, _0221BFB8 ; =ov63_0221FD18
-	ldr r1, [r1, r2]
-	blx r1
-	ldr r1, _0221BFB4 ; =0x0001304C
-	str r0, [r4, r1]
-	ldr r0, [r4, r1]
-	cmp r0, #8
-	bne _0221BFAA
-	mov r0, #1
-	pop {r4, pc}
-_0221BFAA:
-	add r0, r4, #0
-	bl ov63_0221C14C
-	mov r0, #0
-	pop {r4, pc}
-	.balign 4, 0
-_0221BFB4: .word 0x0001304C
-_0221BFB8: .word ov63_0221FD18
-	thumb_func_end RegisterHallOfFame_Main
-
 	thumb_func_start ov63_0221BFBC
 ov63_0221BFBC: ; 0x0221BFBC
 	ldr r3, _0221BFC4 ; =GfGfx_SetBanks
@@ -7376,6 +7307,7 @@ ov63_0221FCF8: ; 0x0221FCF8
 	.byte 0x9F, 0x23, 0x00, 0x00, 0xFF, 0x33, 0x00, 0x00, 0xFF, 0x43, 0x00, 0x00, 0x9F, 0x23, 0x00, 0x00
 	.byte 0xFF, 0x33, 0x00, 0x00, 0xFF, 0x33, 0x00, 0x00
 
+	.public ov63_0221FD18
 ov63_0221FD18: ; 0x0221FD18
 	.word ov63_0221C1F8
 	.word ov63_0221C214
