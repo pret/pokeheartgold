@@ -3,94 +3,9 @@
 	.include "global.inc"
 
 	.text
-
-	thumb_func_start ov63_0221BFBC
-ov63_0221BFBC: ; 0x0221BFBC
-	ldr r3, _0221BFC4 ; =GfGfx_SetBanks
-	ldr r0, _0221BFC8 ; =ov63_0221FD58
-	bx r3
-	nop
-_0221BFC4: .word GfGfx_SetBanks
-_0221BFC8: .word ov63_0221FD58
-	thumb_func_end ov63_0221BFBC
-
-	thumb_func_start ov63_0221BFCC
-ov63_0221BFCC: ; 0x0221BFCC
-	push {r4, lr}
-	add r4, r1, #0
-	ldr r1, [r4, #8]
-	cmp r1, #0
-	beq _0221BFE2
-	add r0, r4, #0
-	blx r1
-	cmp r0, #0
-	bne _0221BFE2
-	mov r0, #0
-	str r0, [r4, #8]
-_0221BFE2:
-	ldr r0, [r4, #0x10]
-	bl DoScheduledBgGpuUpdates
-	add r4, #0xa0
-	ldr r0, [r4]
-	bl sub_0200D020
-	bl thunk_OamManager_ApplyAndResetBuffers
-	ldr r3, _0221C004 ; =0x027E0000
-	ldr r1, _0221C008 ; =0x00003FF8
-	mov r0, #1
-	ldr r2, [r3, r1]
-	orr r0, r2
-	str r0, [r3, r1]
-	pop {r4, pc}
-	nop
-_0221C004: .word 0x027E0000
-_0221C008: .word 0x00003FF8
-	thumb_func_end ov63_0221BFCC
-
-	thumb_func_start ov63_0221C00C
-ov63_0221C00C: ; 0x0221C00C
-	push {r4, r5, r6, lr}
-	add r6, r2, #0
-	add r4, r1, #0
-	add r5, r0, #0
-	add r1, r6, #0
-	bl DC_FlushRange
-	add r0, r5, #0
-	add r1, r4, #0
-	add r2, r6, #0
-	bl GX_LoadOBJ
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end ov63_0221C00C
-
-	thumb_func_start ov63_0221C028
-ov63_0221C028: ; 0x0221C028
-	push {r4, r5, r6, lr}
-	add r6, r2, #0
-	add r4, r1, #0
-	add r5, r0, #0
-	add r1, r6, #0
-	bl DC_FlushRange
-	add r0, r5, #0
-	add r1, r4, #0
-	add r2, r6, #0
-	bl GX_LoadOBJPltt
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end ov63_0221C028
-
-	thumb_func_start ov63_0221C044
-ov63_0221C044: ; 0x0221C044
-	push {r4, lr}
-	add r4, r0, #0
-	mov r0, #0x3e
-	bl BgConfig_Alloc
-	str r0, [r4, #0x10]
-	mov r0, #4
-	mov r1, #0
-	bl BG_SetMaskColor
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end ov63_0221C044
+	.extern ov63_0221BFCC
+	.extern ov63_0221C00C
+	.extern ov63_0221C028
 
 	thumb_func_start ov63_0221C05C
 ov63_0221C05C: ; 0x0221C05C
@@ -7323,6 +7238,7 @@ ov63_0221FD38: ; 0x0221FD38
 	.byte 0x08, 0x7D, 0x00, 0x00, 0xE6, 0x7F, 0x00, 0x00, 0xFF, 0x03, 0x00, 0x00, 0xE9, 0x03, 0x00, 0x00
 	.byte 0x5F, 0x02, 0x00, 0x00, 0x16, 0x7C, 0x00, 0x00
 
+	.public ov63_0221FD58
 ov63_0221FD58: ; 0x0221FD58
 	.byte 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

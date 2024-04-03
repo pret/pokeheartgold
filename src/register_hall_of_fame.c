@@ -11,22 +11,32 @@
 #include "system.h"
 #include "constants/sndseq.h"
 #include "msgdata/msg.naix"
+#include "unk_0200CF18.h"
 
 typedef struct RegisterHallOfFameData {
     RegisterHallOfFameArgs *args;
-    u8 filler_00004[0x80];
+    u8 filler_00004[0x4];
+    BOOL (*unk_00008)(struct RegisterHallOfFameData *);
+    u8 filler_0000C[0x4];
+    BgConfig *bgConfig; // 00010
+    u8 filler_00014[0x70];
     MsgData *msgData; // 00084
     MessageFormat *msgFormat; // 00088
     String *unk_0008C;
     String *unk_00090;
     NARC *unk_00094;
     NARC *unk_00098;
-    u8 filler_0009C[0x12FB0];
+    u8 filler_0009C[0x4];
+    SpriteGfxHandler *unk_000A0;
+    u8 filler_000A4[0x12FA8];
     int unk_1304C;
     u8 filler_13050[0x1C];
 } RegisterHallOfFameData;
 
 void ov63_0221BFBC(void);
+void ov63_0221BFCC(SysTask *task, void *taskData);
+void ov63_0221C00C(const void *pSrc, u32 offset, u32 size);
+void ov63_0221C028(const void *pSrc, u32 offset, u32 size);
 void ov63_0221C044(RegisterHallOfFameData *data);
 void ov63_0221C05C(RegisterHallOfFameData *data);
 void ov63_0221C068(RegisterHallOfFameData *data);
@@ -35,6 +45,7 @@ void ov63_0221C14C(RegisterHallOfFameData *data);
 void ov63_0221E114(RegisterHallOfFameData *data);
 
 extern int (*ov63_0221FD18[])(RegisterHallOfFameData *data);
+extern const GraphicsBanks ov63_0221FD58;
 
 BOOL RegisterHallOfFame_Init(OVY_MANAGER *man, int *state) {
     Main_SetVBlankIntrCB(NULL, NULL);
@@ -88,4 +99,34 @@ BOOL RegisterHallOfFame_Main(OVY_MANAGER *man, int *state) {
     }
     ov63_0221C14C(data);
     return FALSE;
+}
+
+void ov63_0221BFBC(void) {
+    GfGfx_SetBanks(&ov63_0221FD58);
+}
+
+void ov63_0221BFCC(SysTask *task, void *taskData) {
+    RegisterHallOfFameData *data = (RegisterHallOfFameData *)taskData;
+    if (data->unk_00008 != NULL && !data->unk_00008(data)) {
+        data->unk_00008 = NULL;
+    }
+    DoScheduledBgGpuUpdates(data->bgConfig);
+    sub_0200D020(data->unk_000A0);
+    thunk_OamManager_ApplyAndResetBuffers();
+    OS_SetIrqCheckFlag(OS_IE_V_BLANK);
+}
+
+void ov63_0221C00C(const void *pSrc, u32 offset, u32 size) {
+    DC_FlushRange(pSrc, size);
+    GX_LoadOBJ(pSrc, offset, size);
+}
+
+void ov63_0221C028(const void *pSrc, u32 offset, u32 size) {
+    DC_FlushRange(pSrc, size);
+    GX_LoadOBJPltt(pSrc, offset, size);
+}
+
+void ov63_0221C044(RegisterHallOfFameData *data) {
+    data->bgConfig = BgConfig_Alloc(HEAP_ID_REGISTER_HALL_OF_FAME);
+    BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB_BLACK);
 }
