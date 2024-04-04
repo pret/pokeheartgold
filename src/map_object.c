@@ -11,7 +11,7 @@ extern BOOL sub_02061248(FieldSystem *fieldSystem, VecFx32 *, BOOL);
 
 static MapObjectManager *MapObjectManager_New(u32 objectCount);
 static LocalMapObject *MapObject_CreateFromObjectEvent(MapObjectManager *manager, ObjectEvent *objectEvent, u32 mapNo);
-void SavedMapObject_InitFromLocalMapObject(FieldSystem *fieldSystem, LocalMapObject *localObject, SavedMapObject *savedObject);
+static void SavedMapObject_InitFromLocalMapObject(FieldSystem *fieldSystem, LocalMapObject *localObject, SavedMapObject *savedObject);
 
 static void sub_0205E934(LocalMapObject *object);
 static void sub_0205E954(LocalMapObject *object);
