@@ -1,3 +1,4 @@
+#include "camera.h"
 #include "global.h"
 #include "bg_window.h"
 #include "font.h"
@@ -27,6 +28,10 @@ typedef enum RegisterHallOfFameScene {
     REGHOF_SCENE_MAX,
 } RegisterHallOfFameScene;
 
+typedef struct RegisterHofMon {
+    u8 filler_0000[0x328C];
+} RegisterHofMon;
+
 typedef struct RegisterHallOfFameData {
     RegisterHallOfFameArgs *args;
     SysTask *vblankTask;
@@ -34,7 +39,12 @@ typedef struct RegisterHallOfFameData {
     u16 unk_0000C;
     u16 unk_0000E;
     BgConfig *bgConfig; // 00010
-    u8 filler_00014[0x70];
+    Window unk_00014[2];
+    Window unk_00034;
+    Window unk_00044;
+    Window unk_00054;
+    Window unk_00064;
+    Window unk_00074;
     MsgData *msgData; // 00084
     MessageFormat *msgFormat; // 00088
     String *unk_0008C;
@@ -44,16 +54,28 @@ typedef struct RegisterHallOfFameData {
     SpriteRenderer *spriteRenderer;  // 0009C
     SpriteGfxHandler *spriteGfxHandler;  // 000A0
     UnkImageStruct *unk_000A4[15];
-    u8 filler_000E0[0x12F68];
+    Camera *unk_000E0;
+    VecFx32 unk_000E4;
+    VecFx16 unk_000F0;
+    int unk_000F8;
+    int unk_000FC;
+    RegisterHofMon unk_00100[PARTY_SIZE];
     int unk_13048;
     RegisterHallOfFameScene currentScene;
     RegisterHallOfFameScene nextScene;
     u16 unk_13054;
     u16 unk_13056;
-    u8 filler_13058[0x8];
+    int unk_13058;
+    int unk_1305C;
     u32 unk_13060_0:1;
     u32 unk_13060_1:1;
-    u8 filler_13064[0x8];
+    u32 unk_13060_2:1;
+    u32 unk_13060_3:1;
+    u32 unk_13060_5:1;
+    u32 unk_13060_6:1;
+    int unk_13064;
+    u16 unk_13068;
+    u16 unk_1306A;
 } RegisterHallOfFameData;
 
 void ov63_0221BFBC(void);
@@ -86,8 +108,8 @@ void ov63_0221CD68(RegisterHallOfFameData *data);
 void ov63_0221CE7C(RegisterHallOfFameData *data);
 void ov63_0221D21C(RegisterHallOfFameData *data);
 void ov63_0221D344(RegisterHallOfFameData *data);
-BOOL ov63_0221D55C(RegisterHallOfFameData *data);
-BOOL ov63_0221DB38(RegisterHallOfFameData *data);
+BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data);
+BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data);
 void ov63_0221E114(RegisterHallOfFameData *data);
 void ov63_0221E450(RegisterHallOfFameData *data, int a1, int a2, int a3, int a4);
 
@@ -141,7 +163,7 @@ BOOL RegisterHallOfFame_Exit(OVY_MANAGER *man, int *state) {
 BOOL RegisterHallOfFame_Main(OVY_MANAGER *man, int *state) {
     RegisterHallOfFameData *data = OverlayManager_GetData(man);
     data->currentScene = sSceneFuncs[data->currentScene](data);
-    if (data->currentScene == 8) {
+    if (data->currentScene == REGHOF_SCENE_MAX) {
         return TRUE;
     }
     ov63_0221C14C(data);
@@ -284,9 +306,9 @@ RegisterHallOfFameScene RegisterHallOfFame_Scene3(RegisterHallOfFameData *data) 
     case 1:
         ++data->unk_13054;
         if ((data->unk_13056 & 1) == 0) {
-            ov63_0221C1E4(data, ov63_0221D55C, REGHOF_SCENE_3);
+            ov63_0221C1E4(data, RegisterHallOfFame_ShowMon_LeftSide, REGHOF_SCENE_3);
         } else {
-            ov63_0221C1E4(data, ov63_0221DB38, REGHOF_SCENE_3);
+            ov63_0221C1E4(data, RegisterHallOfFame_ShowMon_RightSide, REGHOF_SCENE_3);
         }
         break;
     case 2:

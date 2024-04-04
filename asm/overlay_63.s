@@ -2172,8 +2172,8 @@ _0221D554: .word 0x00000152
 _0221D558: .word 0x00000159
 	thumb_func_end ov63_0221D344
 
-	thumb_func_start ov63_0221D55C
-ov63_0221D55C: ; 0x0221D55C
+	thumb_func_start RegisterHallOfFame_ShowMon_LeftSide
+RegisterHallOfFame_ShowMon_LeftSide: ; 0x0221D55C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldrh r1, [r4, #0xe]
@@ -2866,10 +2866,10 @@ _0221DB28: .word 0x47AE147B
 _0221DB2C: .word 0x3FB47AE1
 _0221DB30: .word 0x9999999A
 _0221DB34: .word 0x3FA99999
-	thumb_func_end ov63_0221D55C
+	thumb_func_end RegisterHallOfFame_ShowMon_LeftSide
 
-	thumb_func_start ov63_0221DB38
-ov63_0221DB38: ; 0x0221DB38
+	thumb_func_start RegisterHallOfFame_ShowMon_RightSide
+RegisterHallOfFame_ShowMon_RightSide: ; 0x0221DB38
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldrh r1, [r4, #0xe]
@@ -3562,7 +3562,7 @@ _0221E104: .word 0x47AE147B
 _0221E108: .word 0x3FB47AE1
 _0221E10C: .word 0x9999999A
 _0221E110: .word 0x3FA99999
-	thumb_func_end ov63_0221DB38
+	thumb_func_end RegisterHallOfFame_ShowMon_RightSide
 
 	thumb_func_start ov63_0221E114
 ov63_0221E114: ; 0x0221E114
