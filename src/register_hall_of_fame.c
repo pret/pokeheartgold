@@ -13,6 +13,7 @@
 #include "system.h"
 #include "constants/sndseq.h"
 #include "msgdata/msg.naix"
+#include "unk_02005D10.h"
 #include "unk_0200CF18.h"
 #include "unk_0200FA24.h"
 
@@ -32,9 +33,13 @@ typedef struct RegisterHofMon {
     u8 filler_0000[0x328C];
 } RegisterHofMon;
 
+typedef struct RegisterHofSpotlight {} RegisterHofSpotlight;
+
+typedef struct RegisterHofConfettiEmitter {} RegisterHofConfettiEmitter;
+
 typedef struct RegisterHallOfFameData {
-    RegisterHallOfFameArgs *args;
-    SysTask *vblankTask;
+    RegisterHallOfFameArgs *args;  // 00000
+    SysTask *vblankTask;  // 00004
     BOOL (*unk_00008)(struct RegisterHallOfFameData *);
     u16 unk_0000C;
     u16 unk_0000E;
@@ -53,16 +58,20 @@ typedef struct RegisterHallOfFameData {
     NARC *unk_00098;
     SpriteRenderer *spriteRenderer;  // 0009C
     SpriteGfxHandler *spriteGfxHandler;  // 000A0
-    UnkImageStruct *unk_000A4[15];
+    UnkImageStruct *unk_000A4[6];
+    UnkImageStruct *unk_000BC[6];
+    UnkImageStruct *unk_000D4;
+    UnkImageStruct *unk_000D8;
+    UnkImageStruct *unk_000DC;
     Camera *unk_000E0;
     VecFx32 unk_000E4;
     VecFx16 unk_000F0;
-    int unk_000F8;
-    int unk_000FC;
+    SysTask *unk_000F8;
+    SysTask *unk_000FC;
     RegisterHofMon unk_00100[PARTY_SIZE];
-    int unk_13048;
-    RegisterHallOfFameScene currentScene;
-    RegisterHallOfFameScene nextScene;
+    u32 unk_13048;
+    RegisterHallOfFameScene currentScene;  // 1304C
+    RegisterHallOfFameScene nextScene;  // 13050
     u16 unk_13054;
     u16 unk_13056;
     int unk_13058;
@@ -71,8 +80,8 @@ typedef struct RegisterHallOfFameData {
     u32 unk_13060_1:1;
     u32 unk_13060_2:1;
     u32 unk_13060_3:1;
+    u32 unk_13060_4:1;
     u32 unk_13060_5:1;
-    u32 unk_13060_6:1;
     int unk_13064;
     u16 unk_13068;
     u16 unk_1306A;
@@ -102,6 +111,7 @@ RegisterHallOfFameScene RegisterHallOfFame_Scene5(RegisterHallOfFameData *data);
 RegisterHallOfFameScene RegisterHallOfFame_Scene6(RegisterHallOfFameData *data);
 RegisterHallOfFameScene RegisterHallOfFame_Scene7(RegisterHallOfFameData *data);
 void ov63_0221CC78(RegisterHallOfFameData *data);
+void ov63_0221C9E0(RegisterHallOfFameData *data, int a1, int a2);
 void ov63_0221CD40(RegisterHallOfFameData *data);
 void ov63_0221CDF8(RegisterHallOfFameData *data);
 void ov63_0221CD68(RegisterHallOfFameData *data);
@@ -112,6 +122,26 @@ BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data);
 BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data);
 void ov63_0221E114(RegisterHallOfFameData *data);
 void ov63_0221E450(RegisterHallOfFameData *data, int a1, int a2, int a3, int a4);
+BOOL ov63_0221E5A0(RegisterHallOfFameData *data);
+void ov63_0221E8AC(RegisterHallOfFameData *data);
+void ov63_0221E8D4(RegisterHallOfFameData *data);
+void ov63_0221E8FC(SysTask *task, void *taskData);
+void ov63_0221E940(RegisterHallOfFameData *data);
+void ov63_0221E9FC(RegisterHallOfFameData *data);
+void ov63_0221EA24(RegisterHallOfFameData *data);
+void ov63_0221EAA8(RegisterHallOfFameData *data);
+void ov63_0221EC04(RegisterHallOfFameData *data);
+void ov63_0221EC1C(RegisterHallOfFameData *data);
+void ov63_0221EFD8(RegisterHallOfFameData *data);
+void ov63_0221F088(RegisterHallOfFameData *data);
+void ov63_0221F1C4(RegisterHallOfFameData *data);
+SysTask *ov63_0221F238(RegisterHallOfFameData *data);
+void ov63_0221F324(SysTask *task, int a1, fx32 a2);
+void ov63_0221F5B4(SysTask *task);
+BOOL ov63_0221F600(RegisterHallOfFameData *data);
+SysTask *ov63_0221F614(RegisterHallOfFameData *data);
+void ov63_0221F7DC(SysTask *task);
+void ov63_0221F7C4(SysTask *task);
 
 extern RegisterHallOfFameScene (*const sSceneFuncs[])(RegisterHallOfFameData *data);  // 0221FD18
 extern const GraphicsBanks ov63_0221FD58;
@@ -345,4 +375,93 @@ RegisterHallOfFameScene RegisterHallOfFame_Scene4(RegisterHallOfFameData *data) 
     ov63_0221CE7C(data);
     ov63_0221CD40(data);
     return REGHOF_SCENE_5;
+}
+
+RegisterHallOfFameScene RegisterHallOfFame_Scene5(RegisterHallOfFameData *data) {
+    data->unk_13056 = 0;
+    data->unk_13054 = 0;
+    ov63_0221E940(data);
+    ov63_0221EA24(data);
+    ov63_0221EAA8(data);
+    ov63_0221EC1C(data);
+    ov63_0221F088(data);
+    data->vblankTask = SysTask_CreateOnVBlankQueue(ov63_0221E8FC, data, 4);
+    return ov63_0221C188(data, REGHOF_SCENE_6);
+}
+
+RegisterHallOfFameScene RegisterHallOfFame_Scene6(RegisterHallOfFameData *data) {
+    switch (data->unk_13054) {
+    case 0:
+        ++data->unk_13054;
+        ov63_0221C1E4(data, ov63_0221E5A0, REGHOF_SCENE_6);
+        break;
+    case 1:
+        if (data->unk_00008 == NULL) {
+            ++data->unk_13054;
+        }
+        if (data->unk_13060_2 == TRUE) {
+            data->unk_000F8 = ov63_0221F238(data);
+            ov63_0221F324(data->unk_000F8, -2925, FX32_CONST(20));
+            ov63_0221F324(data->unk_000F8, -1757, FX32_CONST(60));
+            ov63_0221F324(data->unk_000F8, -586, FX32_CONST(40));
+            ov63_0221F324(data->unk_000F8, 586, FX32_CONST(140));
+            ov63_0221F324(data->unk_000F8, 1757, FX32_CONST(120));
+            ov63_0221F324(data->unk_000F8, 2925, FX32_CONST(160));
+            data->unk_000FC = ov63_0221F614(data);
+            ov63_0221F7DC(data->unk_000FC);
+            GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_ON);
+            GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_ON);
+            GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_ON);
+            UnkImageStruct_SetSpriteVisibleFlag(data->unk_000D4, TRUE);
+            UnkImageStruct_SetSpriteVisibleFlag(data->unk_000D8, TRUE);
+            for (int i = 0; i < data->unk_13048; ++i) {
+                ov63_0221C9E0(data, i, i);
+                sub_0200E024(data->unk_000A4[i], 1.0f, 1.0f);
+                UnkImageStruct_SetSpriteVisibleFlag(data->unk_000BC[i], TRUE);
+                sub_0200E0FC(data->unk_000A4[i], GX_OAM_MODE_NORMAL);
+                sub_0200E0FC(data->unk_000BC[i], GX_OAM_MODE_XLU);
+            }
+            data->unk_13060_2 = FALSE;
+        }
+        if (data->unk_13060_3 == TRUE) {
+            ov63_0221E8AC(data);
+            PlaySE(SEQ_SE_GS_DENDOUIRI_FLASH);
+            PlaySE(SEQ_SE_GS_DENDOUIRI_KANSEI);
+            data->unk_13060_3 = FALSE;
+        }
+        if (data->unk_13060_4 == TRUE) {
+            ov63_0221E8D4(data);
+            data->unk_13060_4 = FALSE;
+        }
+        break;
+    case 2:
+        data->unk_13054 = 0;
+        return REGHOF_SCENE_7;
+    }
+
+    return REGHOF_SCENE_6;
+}
+
+RegisterHallOfFameScene RegisterHallOfFame_Scene7(RegisterHallOfFameData *data) {
+    switch (data->unk_13054) {
+    case 0:
+        SysTask_Destroy(data->vblankTask);
+        ov63_0221F7C4(data->unk_000FC);
+        ov63_0221F5B4(data->unk_000F8);
+        ++data->unk_13054;
+        break;
+    case 1:
+        if (ov63_0221F600(data) == TRUE) {
+            ++data->unk_13054;
+        }
+        break;
+    case 2:
+        ov63_0221F1C4(data);
+        ov63_0221EFD8(data);
+        ov63_0221EC04(data);
+        ov63_0221E9FC(data);
+        return REGHOF_SCENE_MAX;
+    }
+
+    return REGHOF_SCENE_7;
 }
