@@ -263,7 +263,7 @@ void PlayerAvatar_SetFacingDirection(PlayerAvatar* avatar, int direction) {
 }
 
 u32 PlayerAvatar_GetNextFacing(PlayerAvatar* avatar) {
-    return MapObject_GetNextFacing(PlayerAvatar_GetMapObject(avatar));
+    return MapObject_GetNextFacingDirection(PlayerAvatar_GetMapObject(avatar));
 }
 
 int GetPlayerXCoord(PlayerAvatar* avatar) {

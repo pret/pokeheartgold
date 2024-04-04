@@ -701,7 +701,7 @@ sub_0205D0A8: ; 0x0205D0A8
 	add r5, r0, #0
 	bl PlayerAvatar_GetMapObject
 	add r4, r0, #0
-	bl MapObject_GetNextFacing
+	bl MapObject_GetNextFacingDirection
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
@@ -1745,7 +1745,7 @@ _0205D8C0:
 	tst r0, r4
 	beq _0205D8F2
 	add r0, r7, #0
-	bl MapObject_GetNextFacing
+	bl MapObject_GetNextFacingDirection
 	add r4, r0, #0
 	mov r1, #0
 	bl sub_0206234C

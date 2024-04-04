@@ -12,11 +12,11 @@
 .public MapObject_GetFlagsBits
 .public MapObject_GetMovement
 .public MapObject_GetType
-.public MapObject_GetInitialFacing
+.public MapObject_GetInitialFacingDirection
 .public MapObject_SetFacingDirection
 .public MapObject_GetFacingDirection
 .public MapObject_SetNextFacing
-.public MapObject_GetNextFacing
+.public MapObject_GetNextFacingDirection
 .public MapObject_SetOrQueueFacing
 .public MapObject_GetParam
 .public MapObject_GetXRange

@@ -56,8 +56,8 @@
 .public MapObject_GetID
 .public sub_0205F254
 .public MapObject_GetGfxID
-.public MapObject_GetFlagId
-.public MapObject_GetNextFacing
+.public MapObject_GetFlagID
+.public MapObject_GetNextFacingDirection
 .public MapObject_GetManager
 .public sub_0205F484
 .public sub_0205F504
