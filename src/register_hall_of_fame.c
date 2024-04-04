@@ -15,6 +15,18 @@
 #include "unk_0200CF18.h"
 #include "unk_0200FA24.h"
 
+typedef enum RegisterHallOfFameScene {
+    REGHOF_SCENE_0,
+    REGHOF_SCENE_1,
+    REGHOF_SCENE_2,
+    REGHOF_SCENE_3,
+    REGHOF_SCENE_4,
+    REGHOF_SCENE_5,
+    REGHOF_SCENE_6,
+    REGHOF_SCENE_7,
+    REGHOF_SCENE_MAX,
+} RegisterHallOfFameScene;
+
 typedef struct RegisterHallOfFameData {
     RegisterHallOfFameArgs *args;
     SysTask *vblankTask;
@@ -34,8 +46,8 @@ typedef struct RegisterHallOfFameData {
     UnkImageStruct *unk_000A4[15];
     u8 filler_000E0[0x12F68];
     int unk_13048;
-    int unk_1304C;
-    int unk_13050;
+    RegisterHallOfFameScene currentScene;
+    RegisterHallOfFameScene nextScene;
     u16 unk_13054;
     u16 unk_13056;
     u8 filler_13058[0x8];
@@ -52,21 +64,21 @@ void ov63_0221C044(RegisterHallOfFameData *data);
 void ov63_0221C05C(RegisterHallOfFameData *data);
 void ov63_0221C068(RegisterHallOfFameData *data);
 void ov63_0221C118(RegisterHallOfFameData *data);
-void ov63_0221C134(RegisterHallOfFameData *data, u32 a1);
+void ov63_0221C134(RegisterHallOfFameData *data, u32 whichPic);
 void ov63_0221C14C(RegisterHallOfFameData *data);
 void ov63_0221C14C(RegisterHallOfFameData *data);
-void ov63_0221C16C(RegisterHallOfFameData *data, u32 a1, int a2);
-int ov63_0221C188(RegisterHallOfFameData *data, int a1);
-int ov63_0221C1B4(RegisterHallOfFameData *data, int a1);
-BOOL ov63_0221C1E4(RegisterHallOfFameData *data, BOOL (*a1)(RegisterHallOfFameData *), int a2);
-int ov63_0221C1F8(RegisterHallOfFameData *data);
-int ov63_0221C214(RegisterHallOfFameData *data);
-int ov63_0221C228(RegisterHallOfFameData *data);
-int ov63_0221C264(RegisterHallOfFameData *data);
-int ov63_0221C368(RegisterHallOfFameData *data);
-int ov63_0221C384(RegisterHallOfFameData *data);
-int ov63_0221C3CC(RegisterHallOfFameData *data);
-int ov63_0221C5A0(RegisterHallOfFameData *data);
+void ov63_0221C16C(RegisterHallOfFameData *data, u32 whichPic, int animSeqNo);
+RegisterHallOfFameScene ov63_0221C188(RegisterHallOfFameData *data, RegisterHallOfFameScene nextScene);
+RegisterHallOfFameScene ov63_0221C1B4(RegisterHallOfFameData *data, RegisterHallOfFameScene nextScene);
+BOOL ov63_0221C1E4(RegisterHallOfFameData *data, BOOL (*a1)(RegisterHallOfFameData *), RegisterHallOfFameScene nextScene);
+RegisterHallOfFameScene RegisterHallOfFame_Scene0(RegisterHallOfFameData *data);
+RegisterHallOfFameScene RegisterHallOfFame_Scene1(RegisterHallOfFameData *data);
+RegisterHallOfFameScene RegisterHallOfFame_Scene2(RegisterHallOfFameData *data);
+RegisterHallOfFameScene RegisterHallOfFame_Scene3(RegisterHallOfFameData *data);
+RegisterHallOfFameScene RegisterHallOfFame_Scene4(RegisterHallOfFameData *data);
+RegisterHallOfFameScene RegisterHallOfFame_Scene5(RegisterHallOfFameData *data);
+RegisterHallOfFameScene RegisterHallOfFame_Scene6(RegisterHallOfFameData *data);
+RegisterHallOfFameScene RegisterHallOfFame_Scene7(RegisterHallOfFameData *data);
 void ov63_0221CC78(RegisterHallOfFameData *data);
 void ov63_0221CD40(RegisterHallOfFameData *data);
 void ov63_0221CDF8(RegisterHallOfFameData *data);
@@ -79,7 +91,7 @@ BOOL ov63_0221DB38(RegisterHallOfFameData *data);
 void ov63_0221E114(RegisterHallOfFameData *data);
 void ov63_0221E450(RegisterHallOfFameData *data, int a1, int a2, int a3, int a4);
 
-extern int (*const ov63_0221FD18[])(RegisterHallOfFameData *data);
+extern RegisterHallOfFameScene (*const sSceneFuncs[])(RegisterHallOfFameData *data);  // 0221FD18
 extern const GraphicsBanks ov63_0221FD58;
 
 BOOL RegisterHallOfFame_Init(OVY_MANAGER *man, int *state) {
@@ -107,7 +119,7 @@ BOOL RegisterHallOfFame_Init(OVY_MANAGER *man, int *state) {
     sub_02004EC4(8, SEQ_GS_E_DENDOUIRI, 1);
     sub_02004EC4(71, 0, 0);
     LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0x1E0, HEAP_ID_REGISTER_HALL_OF_FAME);
-    data->unk_1304C = 2;
+    data->currentScene = REGHOF_SCENE_2;
     return TRUE;
 }
 
@@ -128,8 +140,8 @@ BOOL RegisterHallOfFame_Exit(OVY_MANAGER *man, int *state) {
 
 BOOL RegisterHallOfFame_Main(OVY_MANAGER *man, int *state) {
     RegisterHallOfFameData *data = OverlayManager_GetData(man);
-    data->unk_1304C = ov63_0221FD18[data->unk_1304C](data);
-    if (data->unk_1304C == 8) {
+    data->currentScene = sSceneFuncs[data->currentScene](data);
+    if (data->currentScene == 8) {
         return TRUE;
     }
     ov63_0221C14C(data);
@@ -197,10 +209,10 @@ void ov63_0221C118(RegisterHallOfFameData *data) {
     SpriteRenderer_Delete(data->spriteRenderer);
 }
 
-void ov63_0221C134(RegisterHallOfFameData *data, u32 a1) {
-    if (data->unk_000A4[a1] != NULL) {
-        sub_0200D9DC(data->unk_000A4[a1]);
-        data->unk_000A4[a1] = NULL;
+void ov63_0221C134(RegisterHallOfFameData *data, u32 whichPic) {
+    if (data->unk_000A4[whichPic] != NULL) {
+        sub_0200D9DC(data->unk_000A4[whichPic]);
+        data->unk_000A4[whichPic] = NULL;
     }
 }
 
@@ -212,58 +224,58 @@ void ov63_0221C14C(RegisterHallOfFameData *data) {
     }
 }
 
-void ov63_0221C16C(RegisterHallOfFameData *data, u32 a1, int a2) {
-    UnkImageStruct_SetSpriteAnimCtrlCurrentFrame(data->unk_000A4[a1], 0);
-    UnkImageStruct_SetSpriteAnimSeqNo(data->unk_000A4[a1], a2);
+void ov63_0221C16C(RegisterHallOfFameData *data, u32 whichPic, int animSeqNo) {
+    UnkImageStruct_SetSpriteAnimCtrlCurrentFrame(data->unk_000A4[whichPic], 0);
+    UnkImageStruct_SetSpriteAnimSeqNo(data->unk_000A4[whichPic], animSeqNo);
 }
 
-int ov63_0221C188(RegisterHallOfFameData *data, int a1) {
+RegisterHallOfFameScene ov63_0221C188(RegisterHallOfFameData *data, RegisterHallOfFameScene nextScene) {
     BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, HEAP_ID_REGISTER_HALL_OF_FAME);
-    data->unk_13050 = a1;
-    return 0;
+    data->nextScene = nextScene;
+    return REGHOF_SCENE_0;
 }
 
-int ov63_0221C1B4(RegisterHallOfFameData *data, int a1) {
+RegisterHallOfFameScene ov63_0221C1B4(RegisterHallOfFameData *data, RegisterHallOfFameScene nextScene) {
     BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_REGISTER_HALL_OF_FAME);
-    data->unk_13050 = a1;
-    return 0;
+    data->nextScene = nextScene;
+    return REGHOF_SCENE_0;
 }
 
-BOOL ov63_0221C1E4(RegisterHallOfFameData *data, BOOL (*a1)(RegisterHallOfFameData *), int a2) {
-    data->unk_13050 = a2;
+BOOL ov63_0221C1E4(RegisterHallOfFameData *data, BOOL (*a1)(RegisterHallOfFameData *), RegisterHallOfFameScene nextScene) {
+    data->nextScene = nextScene;
     data->unk_0000C = 0;
     data->unk_0000E = 0;
     data->unk_00008 = a1;
     return TRUE;
 }
 
-int ov63_0221C1F8(RegisterHallOfFameData *data) {
+RegisterHallOfFameScene RegisterHallOfFame_Scene0(RegisterHallOfFameData *data) {
     if (IsPaletteFadeFinished() == TRUE) {
-        return data->unk_13050;
+        return data->nextScene;
     } else {
-        return 0;
+        return REGHOF_SCENE_0;
     }
 }
 
-int ov63_0221C214(RegisterHallOfFameData *data) {
+RegisterHallOfFameScene RegisterHallOfFame_Scene1(RegisterHallOfFameData *data) {
     if (data->unk_00008 == NULL) {
-        return data->unk_13050;
+        return data->nextScene;
     } else {
-        return 1;
+        return REGHOF_SCENE_1;
     }
 }
 
-int ov63_0221C228(RegisterHallOfFameData *data) {
+RegisterHallOfFameScene RegisterHallOfFame_Scene2(RegisterHallOfFameData *data) {
     ov63_0221CC78(data);
     ov63_0221CDF8(data);
     ov63_0221CD68(data);
     data->unk_13054 = 0;
     data->unk_13056 = 0;
     data->vblankTask = SysTask_CreateOnVBlankQueue(ov63_0221BFCC, data, 0);
-    return ov63_0221C188(data, 3);
+    return ov63_0221C188(data, REGHOF_SCENE_3);
 }
 
-int ov63_0221C264(RegisterHallOfFameData *data) {
+RegisterHallOfFameScene RegisterHallOfFame_Scene3(RegisterHallOfFameData *data) {
     switch (data->unk_13054) {
     case 0:
         ov63_0221D344(data);
@@ -272,9 +284,9 @@ int ov63_0221C264(RegisterHallOfFameData *data) {
     case 1:
         ++data->unk_13054;
         if ((data->unk_13056 & 1) == 0) {
-            ov63_0221C1E4(data, ov63_0221D55C, 3);
+            ov63_0221C1E4(data, ov63_0221D55C, REGHOF_SCENE_3);
         } else {
-            ov63_0221C1E4(data, ov63_0221DB38, 3);
+            ov63_0221C1E4(data, ov63_0221DB38, REGHOF_SCENE_3);
         }
         break;
     case 2:
@@ -301,14 +313,14 @@ int ov63_0221C264(RegisterHallOfFameData *data) {
         }
         break;
     case 4:
-        return ov63_0221C1B4(data, 4);
+        return ov63_0221C1B4(data, REGHOF_SCENE_4);
     }
-    return 3;
+    return REGHOF_SCENE_3;
 }
 
-int ov63_0221C368(RegisterHallOfFameData *data) {
+RegisterHallOfFameScene RegisterHallOfFame_Scene4(RegisterHallOfFameData *data) {
     SysTask_Destroy(data->vblankTask);
     ov63_0221CE7C(data);
     ov63_0221CD40(data);
-    return 5;
+    return REGHOF_SCENE_5;
 }

@@ -12,14 +12,14 @@
 	.extern ov63_0221C188
 	.extern ov63_0221C1B4
 	.extern ov63_0221C1E4
-	.extern ov63_0221C1F8
-	.extern ov63_0221C214
-	.extern ov63_0221C228
-	.extern ov63_0221C264
-	.extern ov63_0221C368
+	.extern RegisterHallOfFame_Scene0
+	.extern RegisterHallOfFame_Scene1
+	.extern RegisterHallOfFame_Scene2
+	.extern RegisterHallOfFame_Scene3
+	.extern RegisterHallOfFame_Scene4
 
-	thumb_func_start ov63_0221C384
-ov63_0221C384: ; 0x0221C384
+	thumb_func_start RegisterHallOfFame_Scene5
+RegisterHallOfFame_Scene5: ; 0x0221C384
 	push {r4, lr}
 	ldr r1, _0221C3C4 ; =0x00013056
 	add r4, r0, #0
@@ -48,10 +48,10 @@ ov63_0221C384: ; 0x0221C384
 	.balign 4, 0
 _0221C3C4: .word 0x00013056
 _0221C3C8: .word ov63_0221E8FC
-	thumb_func_end ov63_0221C384
+	thumb_func_end RegisterHallOfFame_Scene5
 
-	thumb_func_start ov63_0221C3CC
-ov63_0221C3CC: ; 0x0221C3CC
+	thumb_func_start RegisterHallOfFame_Scene6
+RegisterHallOfFame_Scene6: ; 0x0221C3CC
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r1, _0221C570 ; =0x00013054
 	add r5, r0, #0
@@ -261,10 +261,10 @@ _0221C590: .word 0x00000B6D
 _0221C594: .word 0x00013048
 _0221C598: .word 0x00000919
 _0221C59C: .word 0x0000091A
-	thumb_func_end ov63_0221C3CC
+	thumb_func_end RegisterHallOfFame_Scene6
 
-	thumb_func_start ov63_0221C5A0
-ov63_0221C5A0: ; 0x0221C5A0
+	thumb_func_start RegisterHallOfFame_Scene7
+RegisterHallOfFame_Scene7: ; 0x0221C5A0
 	push {r4, lr}
 	ldr r1, _0221C60C ; =0x00013054
 	add r4, r0, #0
@@ -316,7 +316,7 @@ _0221C606:
 	pop {r4, pc}
 	nop
 _0221C60C: .word 0x00013054
-	thumb_func_end ov63_0221C5A0
+	thumb_func_end RegisterHallOfFame_Scene7
 
 	thumb_func_start ov63_0221C610
 ov63_0221C610: ; 0x0221C610
@@ -6804,16 +6804,16 @@ ov63_0221FCF8: ; 0x0221FCF8
 	.byte 0x9F, 0x23, 0x00, 0x00, 0xFF, 0x33, 0x00, 0x00, 0xFF, 0x43, 0x00, 0x00, 0x9F, 0x23, 0x00, 0x00
 	.byte 0xFF, 0x33, 0x00, 0x00, 0xFF, 0x33, 0x00, 0x00
 
-	.public ov63_0221FD18
-ov63_0221FD18: ; 0x0221FD18
-	.word ov63_0221C1F8
-	.word ov63_0221C214
-	.word ov63_0221C228
-	.word ov63_0221C264
-	.word ov63_0221C368
-	.word ov63_0221C384
-	.word ov63_0221C3CC
-	.word ov63_0221C5A0
+	.public sSceneFuncs
+sSceneFuncs: ; 0x0221FD18
+	.word RegisterHallOfFame_Scene0
+	.word RegisterHallOfFame_Scene1
+	.word RegisterHallOfFame_Scene2
+	.word RegisterHallOfFame_Scene3
+	.word RegisterHallOfFame_Scene4
+	.word RegisterHallOfFame_Scene5
+	.word RegisterHallOfFame_Scene6
+	.word RegisterHallOfFame_Scene7
 
 ov63_0221FD38: ; 0x0221FD38
 	.byte 0x90, 0x57, 0x00, 0x00, 0x1F, 0x76, 0x00, 0x00
