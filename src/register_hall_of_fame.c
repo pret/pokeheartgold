@@ -19,6 +19,7 @@
 #include "unk_02005D10.h"
 #include "unk_0200CF18.h"
 #include "unk_0200FA24.h"
+#include "unk_02013FDC.h"
 #include "unk_02026E84.h"
 
 typedef enum RegisterHallOfFameScene {
@@ -34,8 +35,15 @@ typedef enum RegisterHallOfFameScene {
 } RegisterHallOfFameScene;
 
 typedef struct RegisterHofMon {
-    BoxPokemon *boxmon;
-    u8 filler_0004[0x68];
+    Pokemon *mon;
+    u8 unk_0004;
+    u8 unk_0005;
+    u8 filler_0006[0x6];
+    u16 unk_000C;
+    u8 filler_000E[0x2];
+    u8 unk_0010;
+    u8 unk_0011;
+    u8 filler_0012[0x5A];
     u16 unk_006C[3200];
     u16 unk_196C[3200];
     u16 unk_326C[16];
@@ -136,6 +144,9 @@ void ov63_0221C99C(RegisterHallOfFameData *data, int a1, int a2);
 void ov63_0221C9E0(RegisterHallOfFameData *data, int a1, int a2);
 void ov63_0221CC78(RegisterHallOfFameData *data);
 void ov63_0221C9E0(RegisterHallOfFameData *data, int a1, int a2);
+void ov63_0221CA1C(RegisterHallOfFameData *data, RegisterHofMon *mon);
+void ov63_0221CB48(RegisterHallOfFameData *data);
+void ov63_0221CB94(RegisterHallOfFameData *data, RegisterHofMon *hofMon, int a2);
 void ov63_0221CD40(RegisterHallOfFameData *data);
 void ov63_0221CDF8(RegisterHallOfFameData *data);
 void ov63_0221CD68(RegisterHallOfFameData *data);
@@ -145,6 +156,7 @@ void ov63_0221D344(RegisterHallOfFameData *data);
 BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data);
 BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data);
 void ov63_0221E114(RegisterHallOfFameData *data);
+int ov63_0221E404(u16 a0, u8 a1, u8 a2);
 void ov63_0221E450(RegisterHallOfFameData *data, int a1, int a2, int a3, int a4);
 BOOL ov63_0221E5A0(RegisterHallOfFameData *data);
 void ov63_0221E8AC(RegisterHallOfFameData *data);
@@ -522,16 +534,16 @@ void ov63_0221C610(UnkImageStruct *unkImageStruct, const UnkStruct_0221C610 *a1,
 
 void ov63_0221C6FC(RegisterHallOfFameData *data) {
     NARC *narc = NARC_New(NARC_a_0_0_8, HEAP_ID_REGISTER_HALL_OF_FAME);
-    SpriteRenderer_LoadCharResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 76, FALSE, GF_BG_LYR_MAIN_1, 55512);
+    SpriteRenderer_LoadCharResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 76, FALSE, NNS_G2D_VRAM_TYPE_2DMAIN, 55512);
     SpriteRenderer_LoadCellResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 77, FALSE, 55512);
     SpriteRenderer_LoadAnimResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 78, FALSE, 55512);
-    SpriteRenderer_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, GF_BG_LYR_MAIN_1, 55512);
-    SpriteRenderer_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, GF_BG_LYR_MAIN_1, 55513);
-    SpriteRenderer_LoadCharResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 76, FALSE, GF_BG_LYR_MAIN_1, 55513);
+    SpriteRenderer_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 55512);
+    SpriteRenderer_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 55513);
+    SpriteRenderer_LoadCharResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 76, FALSE, NNS_G2D_VRAM_TYPE_2DMAIN, 55513);
     SpriteRenderer_LoadCellResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 77, FALSE, 55513);
     SpriteRenderer_LoadAnimResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 78, FALSE, 55513);
-    SpriteRenderer_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, GF_BG_LYR_MAIN_1, 55514);
-    SpriteRenderer_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, GF_BG_LYR_MAIN_1, 55515);
+    SpriteRenderer_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 55514);
+    SpriteRenderer_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 55515);
     NARC_Delete(narc);
 }
 
@@ -548,11 +560,11 @@ void ov63_0221C85C(RegisterHallOfFameData *data) {
     SpriteGfxHandler_UnloadAnimObjById(data->spriteGfxHandler, 55513);
 }
 
-void ov63_0221C8E8(RegisterHallOfFameData *data, RegisterHofMon *mon, u8 whichFacing, int a3) {
+void ov63_0221C8E8(RegisterHallOfFameData *data, RegisterHofMon *hofMon, u8 whichFacing, int a3) {
     SomeDrawPokemonStruct sp8;
-    GetPokemonSpriteCharAndPlttNarcIds(&sp8, mon->boxmon, whichFacing);
+    GetPokemonSpriteCharAndPlttNarcIds(&sp8, hofMon->mon, whichFacing);
     ov63_0221C00C(
-        whichFacing == 2 ? mon->unk_006C : mon->unk_196C,
+        whichFacing == 2 ? hofMon->unk_006C : hofMon->unk_196C,
         NNS_G2dGetImageLocation(sub_02024B1C(data->unk_000A4[a3]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN),
         3200
     );
@@ -598,4 +610,115 @@ void ov63_0221C9E0(RegisterHallOfFameData *data, int a1, int a2) {
     RegisterHofMon *mon = &data->unk_00100[a1];
 
     ov63_0221C028(mon->unk_326C, dest, 0x20);
+}
+
+void ov63_0221CA1C(RegisterHallOfFameData *data, RegisterHofMon *mon) {
+    if (mon->unk_0005) {
+        SpriteRenderer_LoadCharResObjFromOpenNarc(
+            data->spriteRenderer,
+            data->spriteGfxHandler,
+            data->unk_00094,
+            12,
+            TRUE,
+            NNS_G2D_VRAM_TYPE_2DMAIN,
+            55518
+        );
+        SpriteRenderer_LoadCellResObjFromOpenNarc(
+            data->spriteRenderer,
+            data->spriteGfxHandler,
+            data->unk_00094,
+            13,
+            TRUE,
+            55514
+        );
+        SpriteRenderer_LoadAnimResObjFromOpenNarc(
+            data->spriteRenderer,
+            data->spriteGfxHandler,
+            data->unk_00094,
+            14,
+            TRUE,
+            55514
+        );
+    } else {
+        SpriteRenderer_LoadCharResObjFromOpenNarc(
+            data->spriteRenderer,
+            data->spriteGfxHandler,
+            data->unk_00094,
+            9,
+            TRUE,
+            NNS_G2D_VRAM_TYPE_2DMAIN,
+            55518
+        );
+        SpriteRenderer_LoadCellResObjFromOpenNarc(
+            data->spriteRenderer,
+            data->spriteGfxHandler,
+            data->unk_00094,
+            10,
+            TRUE,
+            55514
+        );
+        SpriteRenderer_LoadAnimResObjFromOpenNarc(
+            data->spriteRenderer,
+            data->spriteGfxHandler,
+            data->unk_00094,
+            11,
+            TRUE,
+            55514
+        );
+    }
+    SpriteRenderer_LoadPlttResObjFromOpenNarc(
+        data->spriteRenderer,
+        data->spriteGfxHandler,
+        data->unk_00094,
+        15,
+        FALSE,
+        1,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        55518
+    );
+    SpriteRenderer_LoadPlttResObjFromOpenNarc(
+        data->spriteRenderer,
+        data->spriteGfxHandler,
+        data->unk_00094,
+        15,
+        FALSE,
+        1,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        55519
+    );
+}
+
+void ov63_0221CB48(RegisterHallOfFameData *data) {
+    SpriteGfxHandler_UnloadPlttObjById(data->spriteGfxHandler, 55518);
+    SpriteGfxHandler_UnloadPlttObjById(data->spriteGfxHandler, 55519);
+    SpriteGfxHandler_UnloadCharObjById(data->spriteGfxHandler, 55518);
+    SpriteGfxHandler_UnloadCellObjById(data->spriteGfxHandler, 55514);
+    SpriteGfxHandler_UnloadAnimObjById(data->spriteGfxHandler, 55514);
+}
+
+void ov63_0221CB94(RegisterHallOfFameData *data, RegisterHofMon *hofMon, int a2) {
+    NNSG3dResTex *resTex;
+    void *fileData;
+    const void *sp18;
+    u32 sp14 = NNS_G2dGetImageLocation(sub_02024B1C(data->unk_000A4[a2]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
+    int sp10 = hofMon->unk_0005 ? 8 : 4;
+    u32 size = 32 * sp10 * sp10;
+    int fileno = ov63_0221E404(hofMon->unk_000C, hofMon->unk_0010, hofMon->unk_0011);
+    fileData = AllocAndReadWholeNarcMemberByIdPair(NARC_data_mmodel_mmodel, fileno, HEAP_ID_REGISTER_HALL_OF_FAME);
+    resTex = NNS_G3dGetTex(fileData);
+    sp18 = NNS_G3dGetTexData(resTex);
+    void *buffer = AllocFromHeap(HEAP_ID_REGISTER_HALL_OF_FAME, size);
+    for (u8 i = 0; i < 8; ++i) {
+        sub_020145B4((const u8 *)sp18 + size * i, sp10, 0, 0, sp10, sp10, buffer);
+        ov63_0221C00C(buffer, sp14 + size * i, size);
+    }
+    FreeToHeap(buffer);
+
+    u32 plttLoc = NNS_G2dGetImagePaletteLocation(sub_02024B34(data->unk_000A4[a2]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
+    const void *loadPos = NNS_G3dGetPlttData(resTex);
+    if (MonIsShiny(hofMon->mon) == TRUE) {
+        loadPos = (const u8 *)loadPos + 0x20;
+    }
+    ov63_0221C028(loadPos, plttLoc, 0x20);
+    FreeToHeap(fileData);
 }
