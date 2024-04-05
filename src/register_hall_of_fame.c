@@ -38,7 +38,7 @@ typedef struct RegisterHofMon {
     u8 filler_0004[0x68];
     u16 unk_006C[3200];
     u16 unk_196C[3200];
-    u8 filler_326C[0x20];
+    u16 unk_326C[16];
 } RegisterHofMon;
 
 typedef struct RegisterHofSpotlight {} RegisterHofSpotlight;
@@ -132,6 +132,8 @@ void ov63_0221C6FC(RegisterHallOfFameData *data);
 void ov63_0221C85C(RegisterHallOfFameData *data);
 void ov63_0221C8E8(RegisterHallOfFameData *data, RegisterHofMon *mon, u8 whichFacing, int a3);
 void ov63_0221C954(RegisterHallOfFameData *data, int a1, int a2);
+void ov63_0221C99C(RegisterHallOfFameData *data, int a1, int a2);
+void ov63_0221C9E0(RegisterHallOfFameData *data, int a1, int a2);
 void ov63_0221CC78(RegisterHallOfFameData *data);
 void ov63_0221C9E0(RegisterHallOfFameData *data, int a1, int a2);
 void ov63_0221CD40(RegisterHallOfFameData *data);
@@ -583,8 +585,17 @@ void ov63_0221C954(RegisterHallOfFameData *data, int a1, int a2) {
     ov63_0221C028(pltt, dest, 0x20);
 }
 
-// void ov63_0221C99C(RegisterHallOfFameData *data, int a1, int a2) {
-//     u32 dest = NNS_G2dGetImagePaletteLocation(sub_02024B34(data->unk_000A4[a2]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
-//     void *src = GetMainObjPlttAddr();
+void ov63_0221C99C(RegisterHallOfFameData *data, int a1, int a2) {
+    u32 dest = NNS_G2dGetImagePaletteLocation(sub_02024B34(data->unk_000A4[a2]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
+    u16 *src = GetMainObjPlttAddr();
+    RegisterHofMon *mon = &data->unk_00100[a1];
 
-// }
+    MI_CpuCopy8(src + (dest / 2), mon->unk_326C, 0x20);
+}
+
+void ov63_0221C9E0(RegisterHallOfFameData *data, int a1, int a2) {
+    u32 dest = NNS_G2dGetImagePaletteLocation(sub_02024B34(data->unk_000A4[a2]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
+    RegisterHofMon *mon = &data->unk_00100[a1];
+
+    ov63_0221C028(mon->unk_326C, dest, 0x20);
+}

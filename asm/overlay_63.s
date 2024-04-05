@@ -25,70 +25,8 @@
 	.extern ov63_0221C85C
 	.extern ov63_0221C8E8
 	.extern ov63_0221C954
-
-	thumb_func_start ov63_0221C99C
-ov63_0221C99C: ; 0x0221C99C
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	lsl r0, r2, #2
-	add r0, r5, r0
-	add r0, #0xa4
-	ldr r0, [r0]
-	add r4, r1, #0
-	ldr r0, [r0]
-	bl sub_02024B34
-	mov r1, #1
-	bl NNS_G2dGetImagePaletteLocation
-	add r6, r0, #0
-	bl GetMainObjPlttAddr
-	mov r1, #1
-	bic r6, r1
-	mov r1, #1
-	lsl r1, r1, #8
-	add r3, r5, r1
-	ldr r1, _0221C9DC ; =0x0000328C
-	add r2, r4, #0
-	mul r2, r1
-	add r2, r3, r2
-	sub r1, #0x20
-	add r1, r2, r1
-	add r0, r0, r6
-	mov r2, #0x20
-	bl MI_CpuCopy8
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-_0221C9DC: .word 0x0000328C
-	thumb_func_end ov63_0221C99C
-
-	thumb_func_start ov63_0221C9E0
-ov63_0221C9E0: ; 0x0221C9E0
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	lsl r0, r2, #2
-	add r0, r5, r0
-	add r0, #0xa4
-	ldr r0, [r0]
-	add r4, r1, #0
-	ldr r0, [r0]
-	bl sub_02024B34
-	mov r1, #1
-	bl NNS_G2dGetImagePaletteLocation
-	add r1, r0, #0
-	mov r0, #1
-	lsl r0, r0, #8
-	add r3, r5, r0
-	ldr r0, _0221CA18 ; =0x0000328C
-	add r2, r4, #0
-	mul r2, r0
-	add r2, r3, r2
-	sub r0, #0x20
-	add r0, r2, r0
-	mov r2, #0x20
-	bl ov63_0221C028
-	pop {r3, r4, r5, pc}
-	nop
-_0221CA18: .word 0x0000328C
-	thumb_func_end ov63_0221C9E0
+	.extern ov63_0221C99C
+	.extern ov63_0221C9E0
 
 	thumb_func_start ov63_0221CA1C
 ov63_0221CA1C: ; 0x0221CA1C
