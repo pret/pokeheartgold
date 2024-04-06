@@ -19,7 +19,7 @@ static void DeinitSpriteRenderer(SpriteRenderer* renderer);
 static void MyRemoveSpriteGfxHandler(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler);
 static BOOL sub_0200D124(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const u16* a2, int a3, int a4);
 static Sprite* MyCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, int a2, s16 x, s16 y, s16 z, u16 animSeqNo, int rotation, int a8, NNS_G2D_VRAM_TYPE whichScreen, int a10, int a11, int a12, int a13);
-static UnkImageStruct* MyLoadResourcesAndCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, UnkTemplate_0200D748* unkTemplate, fx32 yOffset);
+static UnkImageStruct* MyLoadResourcesAndCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const UnkTemplate_0200D748* unkTemplate, fx32 yOffset);
 static BOOL MyLoadCellOrAnim_NarcId(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, GfGfxResType a6, int resId);
 static BOOL MyLoadCellOrAnim_OpenNarc(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, GfGfxResType a6, int resId);
 static BOOL MyInsertResObjIntoList(GF_2DGfxResObjList* list, GF_2DGfxResObj* obj);
@@ -396,15 +396,15 @@ BOOL SpriteRenderer_LoadAnimResObjFromOpenNarc(SpriteRenderer* renderer, SpriteG
     return MyLoadCellOrAnim_OpenNarc(renderer, gfxHandler, narc, fileId, compressed, GF_GFX_RES_TYPE_ANIM, resId);
 }
 
-UnkImageStruct* SpriteRenderer_LoadResourcesAndCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, UnkTemplate_0200D748* template) {
+UnkImageStruct* SpriteRenderer_LoadResourcesAndCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const UnkTemplate_0200D748* template) {
     return MyLoadResourcesAndCreateSprite(renderer, gfxHandler, template, FX32_CONST(GX_LCD_SIZE_Y));
 }
 
-UnkImageStruct* SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, UnkTemplate_0200D748* template, fx32 yOffset) {
+UnkImageStruct* SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const UnkTemplate_0200D748* template, fx32 yOffset) {
     return MyLoadResourcesAndCreateSprite(renderer, gfxHandler, template, yOffset);
 }
 
-static UnkImageStruct* MyLoadResourcesAndCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, UnkTemplate_0200D748* unkTemplate, fx32 yOffset) {
+static UnkImageStruct* MyLoadResourcesAndCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const UnkTemplate_0200D748* unkTemplate, fx32 yOffset) {
     int i;
     int paletteOffset;
     UnkImageStruct* ret = AllocFromHeap(renderer->heapId, sizeof(UnkImageStruct));

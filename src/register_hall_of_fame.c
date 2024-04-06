@@ -42,10 +42,13 @@ typedef struct RegisterHofMon {
     u8 unk_0005;
     u8 filler_0006[0x6];
     u16 unk_000C;
-    u8 filler_000E[0x2];
+    u16 unk_000E;
     u8 unk_0010;
     u8 unk_0011;
-    u8 filler_0012[0x5A];
+    u8 unk_0012;
+    u8 unk_0013;
+    u32 unk_0014;
+    u8 filler_0018[0x54];
     u16 unk_006C[3200];
     u16 unk_196C[3200];
     u16 unk_326C[16];
@@ -143,6 +146,11 @@ void ov63_0221CA1C(RegisterHallOfFameData *data, RegisterHofMon *mon);
 void ov63_0221CB48(RegisterHallOfFameData *data);
 void ov63_0221CB94(RegisterHallOfFameData *data, RegisterHofMon *hofMon, int a2);
 void ov63_0221CC78(RegisterHallOfFameData *data);
+void ov63_0221CE94(RegisterHallOfFameData *data, u16 a1, int a2);
+void ov63_0221D20C(RegisterHallOfFameData *data, int a1);
+void ov63_0221D21C(RegisterHallOfFameData *data);
+void ov63_0221D240(RegisterHallOfFameData *data, int a1);
+void ov63_0221D2F8(RegisterHallOfFameData *data, RegisterHofMon *mon);
 void ov63_0221CD40(RegisterHallOfFameData *data);
 void ov63_0221CD68(RegisterHallOfFameData *data);
 void ov63_0221CDF8(RegisterHallOfFameData *data);
@@ -152,6 +160,7 @@ void ov63_0221D344(RegisterHallOfFameData *data);
 BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data);
 BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data);
 void ov63_0221E114(RegisterHallOfFameData *data);
+int ov63_0221E310(RegisterHallOfFameData *data, Pokemon *pokemon, PlayerProfile *profile);
 int ov63_0221E404(u16 a0, u8 a1, u8 a2);
 void ov63_0221E450(RegisterHallOfFameData *data, int a1, int a2, int a3, int a4);
 BOOL ov63_0221E5A0(RegisterHallOfFameData *data);
@@ -181,6 +190,7 @@ extern const u16 ov63_0221FC98[16];
 extern RegisterHallOfFameScene (*const sSceneFuncs[])(RegisterHallOfFameData *data);  // 0221FD18
 extern const GraphicsBanks ov63_0221FD58;
 extern const WindowTemplate ov63_0221FD80[7];
+extern const UnkTemplate_0200D748 ov63_0221FF68[6];
 
 BOOL RegisterHallOfFame_Init(OVY_MANAGER *man, int *state) {
     Main_SetVBlankIntrCB(NULL, NULL);
@@ -784,4 +794,168 @@ void ov63_0221CE7C(RegisterHallOfFameData *data) {
     for (int i = 0; i < 7u; ++i) {
         RemoveWindow(&data->unk_00014[i]);
     }
+}
+
+void ov63_0221CE94(RegisterHallOfFameData *data, u16 a1, int a2) {
+    Window *windows = &data->unk_00014[a2];
+    RegisterHofMon *hofMon = &data->unk_00100[a1];
+    Pokemon *mon = hofMon->mon;
+    BoxPokemon *boxmon = Mon_GetBoxMon(mon);
+
+    FillWindowPixelBuffer(&windows[0], 0);
+    ReadMsgDataIntoString(data->msgData, msg_0180_00004, data->unk_0008C);
+    BufferBoxMonNickname(data->msgFormat, 0, boxmon);
+    StringExpandPlaceholders(data->msgFormat, data->unk_00090, data->unk_0008C);
+    AddTextPrinterParameterizedWithColor(&windows[0], 0, data->unk_00090, 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    CopyWindowPixelsToVram_TextMode(&windows[0]);
+
+    FillWindowPixelBuffer(&windows[1], 0);
+    if (hofMon->unk_0011 == 2 || hofMon->unk_0012 == 0) {
+        ReadMsgDataIntoString(data->msgData, msg_0180_00003, data->unk_0008C);
+    } else if (hofMon->unk_0011 == 0) {
+        ReadMsgDataIntoString(data->msgData, msg_0180_00001, data->unk_0008C);
+    } else if (hofMon->unk_0011 == 1) {
+        ReadMsgDataIntoString(data->msgData, msg_0180_00002, data->unk_0008C);
+    } else {
+        ReadMsgDataIntoString(data->msgData, msg_0180_00003, data->unk_0008C);
+    }
+    BufferBoxMonSpeciesName(data->msgFormat, 0, boxmon);
+    StringExpandPlaceholders(data->msgFormat, data->unk_00090, data->unk_0008C);
+    AddTextPrinterParameterizedWithColor(&windows[1], 0, data->unk_00090, 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+
+    ReadMsgDataIntoString(data->msgData, msg_0180_00005, data->unk_0008C);
+    BufferIntegerAsString(data->msgFormat, 0, hofMon->unk_000E, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    StringExpandPlaceholders(data->msgFormat, data->unk_00090, data->unk_0008C);
+    AddTextPrinterParameterizedWithColor(&windows[1], 0, data->unk_00090, 2, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    CopyWindowPixelsToVram_TextMode(&windows[1]);
+
+    FillWindowPixelBuffer(&windows[2], 0);
+    ReadMsgDataIntoString(data->msgData, msg_0180_00006, data->unk_0008C);
+    BufferBoxMonOTName(data->msgFormat, 0, boxmon);
+    StringExpandPlaceholders(data->msgFormat, data->unk_00090, data->unk_0008C);
+    AddTextPrinterParameterizedWithColor(&windows[2], 0, data->unk_00090, 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+
+    switch (ov63_0221E310(data, mon, data->args->profile)) {
+    case 0:
+        ReadMsgDataIntoString(data->msgData, msg_0180_00007, data->unk_0008C);
+        BufferLandmarkName(data->msgFormat, 0, hofMon->unk_0014);
+        StringExpandPlaceholders(data->msgFormat, data->unk_00090, data->unk_0008C);
+        break;
+    case 1:
+        ReadMsgDataIntoString(data->msgData, msg_0180_00008, data->unk_0008C);
+        BufferLandmarkName(data->msgFormat, 0, hofMon->unk_0014);
+        StringExpandPlaceholders(data->msgFormat, data->unk_00090, data->unk_0008C);
+        break;
+    case 2:
+        ReadMsgDataIntoString(data->msgData, msg_0180_00009, data->unk_00090);
+        break;
+    case 3:
+        ReadMsgDataIntoString(data->msgData, msg_0180_00010, data->unk_00090);
+        break;
+    case 4:
+        ReadMsgDataIntoString(data->msgData, msg_0180_00011, data->unk_00090);
+        break;
+    case 5:
+        ReadMsgDataIntoString(data->msgData, msg_0180_00014, data->unk_00090);
+        break;
+    case 6:
+        ReadMsgDataIntoString(data->msgData, msg_0180_00012, data->unk_00090);
+        break;
+    case 7:
+        ReadMsgDataIntoString(data->msgData, msg_0180_00013, data->unk_00090);
+        break;
+    case 8:
+    case 9:
+        ReadMsgDataIntoString(data->msgData, msg_0180_00015, data->unk_0008C);
+        BufferLandmarkName(data->msgFormat, 0, hofMon->unk_0014);
+        StringExpandPlaceholders(data->msgFormat, data->unk_00090, data->unk_0008C);
+        break;
+    }
+    AddTextPrinterParameterizedWithColor(&windows[2], 0, data->unk_00090, 2, 24, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    CopyWindowPixelsToVram_TextMode(&windows[2]);
+}
+
+void ov63_0221D20C(RegisterHallOfFameData *data, int a1) {
+    ov63_0221D240(data, a1);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
+}
+
+void ov63_0221D21C(RegisterHallOfFameData *data) {
+    for (u32 i = 0; i < 15u; ++i) {
+        ov63_0221C134(data, i);
+    }
+    ov63_0221CB48(data);
+    ov63_0221C85C(data);
+}
+
+void ov63_0221D240(RegisterHallOfFameData *data, int a1) {
+    RegisterHofMon *hofMon = &data->unk_00100[a1];
+    ov63_0221C6FC(data);
+    ov63_0221CA1C(data, hofMon);
+    for (int i = 0; i <= 5u; ++i) {
+        data->unk_000A4[i] = SpriteRenderer_LoadResourcesAndCreateSprite(data->spriteRenderer, data->spriteGfxHandler, &ov63_0221FF68[i]);
+    }
+    ov63_0221C8E8(data, hofMon, 2, 0);
+    ov63_0221C8E8(data, hofMon, 0, 2);
+    ov63_0221CB94(data, hofMon, 4);
+    if (hofMon->unk_000C == 98 || hofMon->unk_000C == 99) {
+        ov63_0221C16C(data, 4, 2);
+        ov63_0221C16C(data, 5, 2);
+    }
+    ov63_0221C954(data, 1, 0);
+    ov63_0221C954(data, 3, 0);
+    ov63_0221C954(data, 5, 0);
+}
+
+void ov63_0221D2F8(RegisterHallOfFameData *data, RegisterHofMon *mon) {
+    if (mon->unk_0005) {
+        UnkImageStruct_AddSpritePositionXY(data->unk_000A4[4], -32, -32);
+        UnkImageStruct_AddSpritePositionXY(data->unk_000A4[5], -32, -32);
+    } else {
+        UnkImageStruct_AddSpritePositionXY(data->unk_000A4[4], -16, -16);
+        UnkImageStruct_AddSpritePositionXY(data->unk_000A4[5], -16, -16);
+    }
+}
+
+void ov63_0221D344(RegisterHallOfFameData *data) {
+    RegisterHofMon *hofMon = &data->unk_00100[data->unk_13056];
+
+    ov63_0221D20C(data, data->unk_13056);
+    BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_MAIN_0);
+    ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_SET_X, 0);
+    ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_SET_Y, 0);
+    if ((data->unk_13056 & 1) == 0) {
+        ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_1, BG_POS_OP_SET_X, 0);
+        ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_1, BG_POS_OP_SET_Y, 0);
+        ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, 0);
+        ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, 0);
+        ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_X, 0);
+        ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_Y, 0);
+        UnkImageStruct_SetSpritePositionXY(data->unk_000A4[0], 256, -40);
+        UnkImageStruct_SetSpritePositionXY(data->unk_000A4[1], 296, -80);
+        UnkImageStruct_SetSpritePositionXY(data->unk_000A4[2], 288, 152 + hofMon->unk_0013);
+        UnkImageStruct_SetSpritePositionXY(data->unk_000A4[3], 296, 152 + hofMon->unk_0013);
+        UnkImageStruct_SetSpritePositionXY(data->unk_000A4[4], -82, -2);
+        UnkImageStruct_SetSpritePositionXY(data->unk_000A4[5], -89, -3);
+        ov63_0221CE94(data, data->unk_13056, 1);
+    } else {
+        ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_1, BG_POS_OP_SET_X, 0);
+        ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_1, BG_POS_OP_SET_Y, 256);
+        ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, -184);
+        ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, 0);
+        ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_X, 256);
+        ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_Y, 0);
+        UnkImageStruct_SetSpritePositionXY(data->unk_000A4[0], 0, -40);
+        UnkImageStruct_SetSpritePositionXY(data->unk_000A4[1], -40, -80);
+        UnkImageStruct_SetSpritePositionXY(data->unk_000A4[2], -80, 152 + hofMon->unk_0013);
+        UnkImageStruct_SetSpritePositionXY(data->unk_000A4[3], -92, 152 + hofMon->unk_0013);
+        UnkImageStruct_SetSpritePositionXY(data->unk_000A4[4], 338, -2);
+        UnkImageStruct_SetSpritePositionXY(data->unk_000A4[5], 345, -3);
+        ov63_0221CE94(data, data->unk_13056, 4);
+    }
+    sub_0200DF98(data->unk_000A4[0], 2);
+    sub_0200DF98(data->unk_000A4[1], 2);
+    sub_0200E024(data->unk_000A4[1], 1.5, 1.5);
+    ov63_0221D2F8(data, hofMon);
+    ScheduleBgTilemapBufferTransfer(data->bgConfig, GF_BG_LYR_MAIN_0);
 }

@@ -109,8 +109,8 @@ BOOL SpriteRenderer_LoadCellResObjFromNarcId(SpriteRenderer* renderer, SpriteGfx
 BOOL SpriteRenderer_LoadCellResObjFromOpenNarc(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, int resId);
 BOOL SpriteRenderer_LoadAnimResObjFromNarcId(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int resId);
 BOOL SpriteRenderer_LoadAnimResObjFromOpenNarc(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, int resId);
-UnkImageStruct* SpriteRenderer_LoadResourcesAndCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, UnkTemplate_0200D748* unkTemplate);
-UnkImageStruct* SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, UnkTemplate_0200D748* unkTemplate, fx32 yOffset);
+UnkImageStruct* SpriteRenderer_LoadResourcesAndCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const UnkTemplate_0200D748* unkTemplate);
+UnkImageStruct* SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const UnkTemplate_0200D748* unkTemplate, fx32 yOffset);
 NNSG2dImagePaletteProxy* sub_0200D934(SpriteGfxHandler* gfxHandler, int id);
 int sub_0200D944(SpriteGfxHandler* gfxHandler, int id, int vram);
 BOOL SpriteGfxHandler_UnloadCharObjById(SpriteGfxHandler* gfxHandler, u32 character);
