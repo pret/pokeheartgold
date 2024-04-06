@@ -1156,3 +1156,200 @@ BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
 
     return TRUE;
 }
+
+// Lord help me with this, just under 700 lines of asm
+BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
+    switch (data->unk_0000E) {
+    case 0:
+        if (data->unk_0000C == 10) {
+            u8 r5 = data->unk_00100[data->unk_13056].unk_0013;
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_1, BG_POS_OP_SET_X, 72);
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, -256);
+            UnkImageStruct_SetSpritePositionXY(data->unk_000A4[2], 160, r5 + 152);
+            UnkImageStruct_SetSpritePositionXY(data->unk_000A4[3], 158, r5 + 152);
+            data->unk_0000C = 0;
+            ++data->unk_0000E;
+        } else {
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_1, BG_POS_OP_ADD_X, 7);
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SUB_X, 7);
+            UnkImageStruct_AddSpritePositionXY(data->unk_000A4[2], 24, 0);
+            UnkImageStruct_AddSpritePositionXY(data->unk_000A4[3], 25, 0);
+            ++data->unk_0000C;
+        }
+        break;
+    case 1:
+        data->unk_13060_1 = TRUE;
+        ++data->unk_0000E;
+        break;
+    case 2:
+        if (data->unk_0000C == 50) {
+            data->unk_0000C = 0;
+            ++data->unk_0000E;
+        } else {
+            ++data->unk_0000C;
+        }
+        break;
+    case 3:
+        if (data->unk_0000C == 6) {
+            UnkImageStruct_SetSpritePositionXY(data->unk_000A4[4], 224, 40);
+            UnkImageStruct_SetSpritePositionXY(data->unk_000A4[5], 225, 39);
+            ov63_0221D2F8(data, &data->unk_00100[data->unk_13056]);
+            data->unk_0000C = 0;
+            ++data->unk_0000E;
+        } else {
+            UnkImageStruct_AddSpritePositionXY(data->unk_000A4[4], -19, 7);
+            UnkImageStruct_AddSpritePositionXY(data->unk_000A4[5], -20, 7);
+            ++data->unk_0000C;
+        }
+        break;
+    case 4:
+        if (data->unk_00100[data->unk_13056].unk_000C == 98 || data->unk_00100[data->unk_13056].unk_000C == 99) {
+            ov63_0221C16C(data, 4, 3);
+            ov63_0221C16C(data, 5, 3);
+        } else {
+            ov63_0221C16C(data, 4, 1);
+            ov63_0221C16C(data, 5, 1);
+        }
+        ++data->unk_0000E;
+        break;
+    case 5:
+        if (data->unk_0000C == 20) {
+            data->unk_0000C = 0;
+            ++data->unk_0000E;
+        } else {
+            ++data->unk_0000C;
+        }
+        break;
+    case 6:
+        ScheduleWindowCopyToVram(&data->unk_00014[0]);
+        ++data->unk_0000E;
+        break;
+    case 7:
+        if (data->unk_0000C == 60) {
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, 272);
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, 256);
+            UnkImageStruct_SetSpritePriority(data->unk_000A4[2], 2);
+            UnkImageStruct_SetSpritePriority(data->unk_000A4[3], 2);
+            data->unk_0000C = 0;
+            ++data->unk_0000E;
+        } else {
+            ++data->unk_0000C;
+        }
+        break;
+    case 8:
+        if (data->unk_0000C == 8) {
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, 144);
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, 192);
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_Y, 256);
+            UnkImageStruct_SetSpritePositionXY(data->unk_000A4[0], 168, 88);
+            UnkImageStruct_SetSpritePositionXY(data->unk_000A4[1], 152, 72);
+            data->unk_0000C = 0;
+            ++data->unk_0000E;
+        } else {
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SUB_X, 16);
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SUB_Y, 8);
+            UnkImageStruct_AddSpritePositionXY(data->unk_000A4[0], 21, 16);
+            UnkImageStruct_AddSpritePositionXY(data->unk_000A4[1], 24, 19);
+            ++data->unk_0000C;
+        }
+        break;
+    case 9:
+        ScheduleWindowCopyToVram(&data->unk_00014[4]);
+        ov63_0221C954(data, 2, 0);
+        ov63_0221C954(data, 4, 0);
+        ov63_0221C954(data, 3, 2);
+        ov63_0221C954(data, 5, 2);
+        ++data->unk_0000E;
+        break;
+    case 10:
+        if (data->unk_0000C == 40) {
+            data->unk_0000C = 0;
+            ++data->unk_0000E;
+        } else {
+            ++data->unk_0000C;
+        }
+        break;
+    case 11:
+        ScheduleWindowCopyToVram(&data->unk_00014[5]);
+        data->unk_13060_0 = TRUE;
+        ++data->unk_0000E;
+        break;
+    case 12:
+        if (data->unk_0000C == 20) {
+            data->unk_0000C = 0;
+            ++data->unk_0000E;
+        } else {
+            ++data->unk_0000C;
+        }
+        break;
+    case 13:
+        ScheduleWindowCopyToVram(&data->unk_00014[6]);
+        ++data->unk_0000E;
+        break;
+    case 14:
+        if (data->unk_0000C == 240) {
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, -256);
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, 0);
+            UnkImageStruct_SetSpritePriority(data->unk_000A4[0], 3);
+            UnkImageStruct_SetSpritePriority(data->unk_000A4[1], 3);
+            UnkImageStruct_SetSpritePriority(data->unk_000A4[2], 3);
+            UnkImageStruct_SetSpritePriority(data->unk_000A4[3], 3);
+            UnkImageStruct_SetSpritePriority(data->unk_000A4[4], 3);
+            UnkImageStruct_SetSpritePriority(data->unk_000A4[5], 3);
+            data->unk_13058 = 1.0f;
+            data->unk_1305C = 1.5f;
+            data->unk_0000C = 0;
+            ++data->unk_0000E;
+        } else {
+            ++data->unk_0000C;
+        }
+        break;
+    case 15:
+        if (data->unk_0000C == 10) {
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_SET_X, 80);
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_SET_Y, -200);
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_1, BG_POS_OP_SET_X, 0);
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, -184);
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_X, 196);
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_Y, 226);
+            UnkImageStruct_SetSpritePositionXY(data->unk_000A4[2], 260, 252);
+            UnkImageStruct_SetSpritePositionXY(data->unk_000A4[3], 192, 192);
+            UnkImageStruct_SetSpritePositionXY(data->unk_000A4[4], 164, -30);
+            UnkImageStruct_SetSpritePositionXY(data->unk_000A4[5], 165, -31);
+            UnkImageStruct_SetSpritePositionXY(data->unk_000A4[0], 208, 128);
+            UnkImageStruct_SetSpritePositionXY(data->unk_000A4[1], 192, 112);
+            sub_0200E024(data->unk_000A4[0], 1.8f, 1.8f);
+            sub_0200E024(data->unk_000A4[1], 2.0f, 2.0f);
+            data->unk_0000C = 0;
+            ++data->unk_0000E;
+        } else {
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_ADD_X, 8);
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_ADD_Y, 20);
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_1, BG_POS_OP_SUB_X, 7);
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_ADD_X, 7);
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SUB_X, 6);
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SUB_Y, 3);
+            UnkImageStruct_AddSpritePositionXY(data->unk_000A4[2], -10, 10);
+            UnkImageStruct_AddSpritePositionXY(data->unk_000A4[3], -10, 10);
+            UnkImageStruct_AddSpritePositionXY(data->unk_000A4[4], 6, -7);
+            UnkImageStruct_AddSpritePositionXY(data->unk_000A4[5], 6, -7);
+            UnkImageStruct_AddSpritePositionXY(data->unk_000A4[0], 4, 4);
+            UnkImageStruct_AddSpritePositionXY(data->unk_000A4[1], 4, 4);
+            data->unk_13058 += 0.08;
+            data->unk_1305C += 0.05;
+            sub_0200E024(data->unk_000A4[0], data->unk_13058, data->unk_13058);
+            sub_0200E024(data->unk_000A4[1], data->unk_1305C, data->unk_1305C);
+            ++data->unk_0000C;
+        }
+        break;
+    case 16:
+        if (data->unk_0000C == 60) {
+            return FALSE;
+        } else {
+            ++data->unk_0000C;
+        }
+        break;
+    }
+
+    return TRUE;
+}
