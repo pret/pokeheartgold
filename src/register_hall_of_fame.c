@@ -7,6 +7,7 @@
 #include "font.h"
 #include "gf_gfx_planes.h"
 #include "heap.h"
+#include "math_util.h"
 #include "msgdata.h"
 #include "message_format.h"
 #include "overlay_manager.h"
@@ -18,6 +19,7 @@
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0180.h"
 #include "text.h"
+#include "touchscreen.h"
 #include "unk_02005D10.h"
 #include "unk_0200CF18.h"
 #include "unk_0200FA24.h"
@@ -81,11 +83,7 @@ typedef struct RegisterHallOfFameData {
     NARC *unk_00098;
     SpriteRenderer *spriteRenderer;  // 0009C
     SpriteGfxHandler *spriteGfxHandler;  // 000A0
-    UnkImageStruct *unk_000A4[6];
-    UnkImageStruct *unk_000BC[6];
-    UnkImageStruct *unk_000D4;
-    UnkImageStruct *unk_000D8;
-    UnkImageStruct *unk_000DC;
+    UnkImageStruct *unk_000A4[15];
     Camera *unk_000E0;
     VecFx32 unk_000E4;
     VecFx16 unk_000F0;
@@ -105,6 +103,7 @@ typedef struct RegisterHallOfFameData {
     u32 unk_13060_3:1;
     u32 unk_13060_4:1;
     u32 unk_13060_5:1;
+    u32 unk_13060_6:1;
     int unk_13064;
     u16 unk_13068;
     u16 unk_1306A;
@@ -199,6 +198,7 @@ extern const u16 ov63_0221FC98[16];
 extern RegisterHallOfFameScene (*const sSceneFuncs[])(RegisterHallOfFameData *data);  // 0221FD18
 extern const GraphicsBanks ov63_0221FD58;
 extern const WindowTemplate ov63_0221FD80[7];
+extern const UnkStruct_0221C610 ov63_0221FDB8[27];
 extern const UnkTemplate_0200D748 ov63_0221FF68[6];
 
 BOOL RegisterHallOfFame_Init(OVY_MANAGER *man, int *state) {
@@ -467,14 +467,14 @@ RegisterHallOfFameScene RegisterHallOfFame_Scene6(RegisterHallOfFameData *data) 
             GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_ON);
             GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_ON);
             GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_ON);
-            UnkImageStruct_SetSpriteVisibleFlag(data->unk_000D4, TRUE);
-            UnkImageStruct_SetSpriteVisibleFlag(data->unk_000D8, TRUE);
+            UnkImageStruct_SetSpriteVisibleFlag(data->unk_000A4[12], TRUE);
+            UnkImageStruct_SetSpriteVisibleFlag(data->unk_000A4[13], TRUE);
             for (int i = 0; i < data->unk_13048; ++i) {
                 ov63_0221C9E0(data, i, i);
                 sub_0200E024(data->unk_000A4[i], 1.0f, 1.0f);
-                UnkImageStruct_SetSpriteVisibleFlag(data->unk_000BC[i], TRUE);
+                UnkImageStruct_SetSpriteVisibleFlag(data->unk_000A4[6 + i], TRUE);
                 sub_0200E0FC(data->unk_000A4[i], GX_OAM_MODE_NORMAL);
-                sub_0200E0FC(data->unk_000BC[i], GX_OAM_MODE_XLU);
+                sub_0200E0FC(data->unk_000A4[6 + i], GX_OAM_MODE_XLU);
             }
             data->unk_13060_2 = FALSE;
         }
@@ -1529,4 +1529,119 @@ void ov63_0221E55C(RegisterHallOfFameData *data, u16 a1, u16 a2) {
         u32 ev = (0x100000u / a1 * a2) / 0x10000u;
         G2_SetBlendAlpha(4, 28, ev, 16 - ev);
     }
+}
+
+BOOL ov63_0221E5A0(RegisterHallOfFameData *data) {
+    if (data->unk_13060_5 == TRUE) {
+        ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SUB_X, 2);
+    }
+    if (data->unk_13060_6 == TRUE) {
+        if (data->unk_1306A == data->unk_13068) {
+            s16 x = LCRandom() % 224 + 16;
+            s16 y = LCRandom() % 64 + 16;
+            UnkImageStruct_SetSpritePositionXY(data->unk_000A4[14], x, y);
+            ov63_0221C16C(data, 14, 0);
+            data->unk_13068 = LCRandom() % 255 + 28;
+            data->unk_1306A = 0;
+        } else {
+            ++data->unk_1306A;
+        }
+    }
+
+    switch (data->unk_0000E) {
+    case 0:
+        if (data->unk_0000C == 20) {
+            data->unk_0000C = 0;
+            ++data->unk_0000E;
+        } else {
+            ++data->unk_0000C;
+        }
+        break;
+    case 1:
+        ov63_0221C610(data->unk_000A4[data->unk_13056], &ov63_0221FDB8[data->unk_13056], 6, data->unk_0000C);
+        if (data->unk_0000C == 6) {
+            sub_0200DF98(data->unk_000A4[data->unk_13056], 1);
+            ++data->unk_13056;
+            data->unk_0000C = 0;
+            if (data->unk_13056 == 6) {
+                data->unk_13056 = 0;
+                ++data->unk_0000E;
+            }
+        } else {
+            ++data->unk_0000C;
+        }
+        break;
+    case 2:
+        if (data->unk_0000C == 32) {
+            data->unk_0000C = 0;
+            ++data->unk_0000E;
+        } else {
+            ++data->unk_0000C;
+        }
+        break;
+    case 3:
+        data->unk_13064 = 40;
+        data->unk_13060_3 = TRUE;
+        data->unk_13060_2 = TRUE;
+        data->unk_13060_5 = TRUE;
+        data->unk_13060_6 = TRUE;
+        UnkImageStruct_SetSpriteVisibleFlag(data->unk_000A4[14], TRUE);
+        ++data->unk_0000E;
+        break;
+    case 4:
+        ov63_0221E55C(data, 80, data->unk_0000C);
+        for (int i = 0; i < data->unk_13048; ++i) {
+            ov63_0221C610(data->unk_000A4[6 + i], &(ov63_0221FDB8 + 6)[i], 80, data->unk_0000C);
+        }
+        ov63_0221C610(data->unk_000A4[13], &ov63_0221FDB8[12], 80, data->unk_0000C);
+        if (data->unk_0000C == 80) {
+            data->unk_0000C = 0;
+            ++data->unk_0000E;
+        } else {
+            ++data->unk_0000C;
+        }
+        break;
+    case 5:
+        if (IsPaletteFadeFinished() == TRUE) {
+            if ((gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B)) || System_GetTouchNew() == TRUE) {
+                data->unk_13064 = 15;
+                data->unk_13060_3 = TRUE;
+                ++data->unk_0000E;
+            }
+        }
+        break;
+    case 6:
+        ov63_0221E55C(data, 60, data->unk_0000C);
+        if (data->unk_0000C == 30) {
+            if (IsPaletteFadeFinished() == TRUE) {
+                data->unk_13064 = 15;
+                data->unk_13060_4 = TRUE;
+                ++data->unk_0000E;
+            }
+        } else {
+            ++data->unk_0000C;
+        }
+        // fallthrough
+    case 7:
+        for (int i = 0; i < data->unk_13048; ++i) {
+            ov63_0221C610(data->unk_000A4[i], &(ov63_0221FDB8 + 13)[i], 60, data->unk_0000C);
+            ov63_0221C610(data->unk_000A4[6 + i], &(ov63_0221FDB8 + 20)[i], 60, data->unk_0000C);
+        }
+        ov63_0221C610(data->unk_000A4[12], &ov63_0221FDB8[19], 60, data->unk_0000C);
+        ov63_0221C610(data->unk_000A4[13], &ov63_0221FDB8[26], 60, data->unk_0000C);
+        if (data->unk_0000E == 7) {
+            if (data->unk_0000C == 60) {
+                if (IsPaletteFadeFinished() == TRUE) {
+                    data->unk_0000C = 0;
+                    data->unk_0000E = 0;
+                    return FALSE;
+                }
+            } else {
+                ++data->unk_0000C;
+            }
+        }
+        break;
+    }
+
+    return TRUE;
 }
