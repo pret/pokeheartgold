@@ -1,6 +1,6 @@
-#include <stdlib.h>
-#include "gf_gfx_loader.h"
 #include "global.h"
+#include "follow_mon.h"
+#include "gf_gfx_loader.h"
 #include "register_hall_of_fame.h"
 #include "camera.h"
 #include "bg_window.h"
@@ -23,6 +23,10 @@
 #include "unk_0200FA24.h"
 #include "unk_02013FDC.h"
 #include "unk_02026E84.h"
+#include "unk_0206D494.h"
+#include "unk_02007FD8.h"
+#include "constants/map_sections.h"
+#include "data/mmodel/mmodel.naix"
 
 typedef enum RegisterHallOfFameScene {
     REGHOF_SCENE_0,
@@ -38,19 +42,22 @@ typedef enum RegisterHallOfFameScene {
 
 typedef struct RegisterHofMon {
     Pokemon *mon;
-    u8 unk_0004;
-    u8 unk_0005;
-    u8 filler_0006[0x6];
-    u16 unk_000C;
-    u16 unk_000E;
-    u8 unk_0010;
-    u8 unk_0011;
-    u8 unk_0012;
+    u8 tsure_param[4];
+    u32 personality;
+    u16 species;
+    u16 level;
+    u8 form;
+    u8 gender;
+    u8 printGender;
     u8 unk_0013;
-    u32 unk_0014;
-    u8 filler_0018[0x54];
-    u16 unk_006C[3200];
-    u16 unk_196C[3200];
+    u32 metLocation;
+    int partyIndex;
+    struct UnkStruct_02072914_sub_sub unk_001C[10];
+    struct UnkStruct_02072914_sub_sub unk_0044[10];
+    u16 unk_006C[1600];
+    u16 unk_0CEC[1600];
+    u16 unk_196C[1600];
+    u16 unk_25EC[1600];
     u16 unk_326C[16];
 } RegisterHofMon;
 
@@ -161,8 +168,10 @@ BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data);
 BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data);
 void ov63_0221E114(RegisterHallOfFameData *data);
 int ov63_0221E310(RegisterHallOfFameData *data, Pokemon *pokemon, PlayerProfile *profile);
-int ov63_0221E404(u16 a0, u8 a1, u8 a2);
+int ov63_0221E404(int a0, u8 a1, u8 a2);
 void ov63_0221E450(RegisterHallOfFameData *data, int a1, int a2, int a3, int a4);
+void ov63_0221E4E0(SysTask *task, void *taskData);
+void ov63_0221E55C(RegisterHallOfFameData *data, u16 a1, u16 a2);
 BOOL ov63_0221E5A0(RegisterHallOfFameData *data);
 void ov63_0221E8AC(RegisterHallOfFameData *data);
 void ov63_0221E8D4(RegisterHallOfFameData *data);
@@ -620,7 +629,7 @@ void ov63_0221C9E0(RegisterHallOfFameData *data, int a1, int a2) {
 }
 
 void ov63_0221CA1C(RegisterHallOfFameData *data, RegisterHofMon *mon) {
-    if (mon->unk_0005) {
+    if (mon->tsure_param[1]) {
         SpriteRenderer_LoadCharResObjFromOpenNarc(
             data->spriteRenderer,
             data->spriteGfxHandler,
@@ -708,9 +717,9 @@ void ov63_0221CB94(RegisterHallOfFameData *data, RegisterHofMon *hofMon, int a2)
     void *fileData;
     const void *sp18;
     u32 sp14 = NNS_G2dGetImageLocation(sub_02024B1C(data->unk_000A4[a2]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
-    int sp10 = hofMon->unk_0005 ? 8 : 4;
+    int sp10 = hofMon->tsure_param[1] ? 8 : 4;
     u32 size = 32 * sp10 * sp10;
-    int fileno = ov63_0221E404(hofMon->unk_000C, hofMon->unk_0010, hofMon->unk_0011);
+    int fileno = ov63_0221E404(hofMon->species, hofMon->form, hofMon->gender);
     fileData = AllocAndReadWholeNarcMemberByIdPair(NARC_data_mmodel_mmodel, fileno, HEAP_ID_REGISTER_HALL_OF_FAME);
     resTex = NNS_G3dGetTex(fileData);
     sp18 = NNS_G3dGetTexData(resTex);
@@ -810,11 +819,11 @@ void ov63_0221CE94(RegisterHallOfFameData *data, u16 a1, int a2) {
     CopyWindowPixelsToVram_TextMode(&windows[0]);
 
     FillWindowPixelBuffer(&windows[1], 0);
-    if (hofMon->unk_0011 == 2 || hofMon->unk_0012 == 0) {
+    if (hofMon->gender == 2 || hofMon->printGender == 0) {
         ReadMsgDataIntoString(data->msgData, msg_0180_00003, data->unk_0008C);
-    } else if (hofMon->unk_0011 == 0) {
+    } else if (hofMon->gender == 0) {
         ReadMsgDataIntoString(data->msgData, msg_0180_00001, data->unk_0008C);
-    } else if (hofMon->unk_0011 == 1) {
+    } else if (hofMon->gender == 1) {
         ReadMsgDataIntoString(data->msgData, msg_0180_00002, data->unk_0008C);
     } else {
         ReadMsgDataIntoString(data->msgData, msg_0180_00003, data->unk_0008C);
@@ -824,7 +833,7 @@ void ov63_0221CE94(RegisterHallOfFameData *data, u16 a1, int a2) {
     AddTextPrinterParameterizedWithColor(&windows[1], 0, data->unk_00090, 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
 
     ReadMsgDataIntoString(data->msgData, msg_0180_00005, data->unk_0008C);
-    BufferIntegerAsString(data->msgFormat, 0, hofMon->unk_000E, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    BufferIntegerAsString(data->msgFormat, 0, hofMon->level, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
     StringExpandPlaceholders(data->msgFormat, data->unk_00090, data->unk_0008C);
     AddTextPrinterParameterizedWithColor(&windows[1], 0, data->unk_00090, 2, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
     CopyWindowPixelsToVram_TextMode(&windows[1]);
@@ -838,12 +847,12 @@ void ov63_0221CE94(RegisterHallOfFameData *data, u16 a1, int a2) {
     switch (ov63_0221E310(data, mon, data->args->profile)) {
     case 0:
         ReadMsgDataIntoString(data->msgData, msg_0180_00007, data->unk_0008C);
-        BufferLandmarkName(data->msgFormat, 0, hofMon->unk_0014);
+        BufferLandmarkName(data->msgFormat, 0, hofMon->metLocation);
         StringExpandPlaceholders(data->msgFormat, data->unk_00090, data->unk_0008C);
         break;
     case 1:
         ReadMsgDataIntoString(data->msgData, msg_0180_00008, data->unk_0008C);
-        BufferLandmarkName(data->msgFormat, 0, hofMon->unk_0014);
+        BufferLandmarkName(data->msgFormat, 0, hofMon->metLocation);
         StringExpandPlaceholders(data->msgFormat, data->unk_00090, data->unk_0008C);
         break;
     case 2:
@@ -867,7 +876,7 @@ void ov63_0221CE94(RegisterHallOfFameData *data, u16 a1, int a2) {
     case 8:
     case 9:
         ReadMsgDataIntoString(data->msgData, msg_0180_00015, data->unk_0008C);
-        BufferLandmarkName(data->msgFormat, 0, hofMon->unk_0014);
+        BufferLandmarkName(data->msgFormat, 0, hofMon->metLocation);
         StringExpandPlaceholders(data->msgFormat, data->unk_00090, data->unk_0008C);
         break;
     }
@@ -898,7 +907,7 @@ void ov63_0221D240(RegisterHallOfFameData *data, int a1) {
     ov63_0221C8E8(data, hofMon, 2, 0);
     ov63_0221C8E8(data, hofMon, 0, 2);
     ov63_0221CB94(data, hofMon, 4);
-    if (hofMon->unk_000C == 98 || hofMon->unk_000C == 99) {
+    if (hofMon->species == SPECIES_KRABBY || hofMon->species == SPECIES_KINGLER) {
         ov63_0221C16C(data, 4, 2);
         ov63_0221C16C(data, 5, 2);
     }
@@ -908,7 +917,7 @@ void ov63_0221D240(RegisterHallOfFameData *data, int a1) {
 }
 
 void ov63_0221D2F8(RegisterHallOfFameData *data, RegisterHofMon *mon) {
-    if (mon->unk_0005) {
+    if (mon->tsure_param[1]) {
         UnkImageStruct_AddSpritePositionXY(data->unk_000A4[4], -32, -32);
         UnkImageStruct_AddSpritePositionXY(data->unk_000A4[5], -32, -32);
     } else {
@@ -1006,7 +1015,7 @@ BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
         }
         break;
     case 4:
-        if (data->unk_00100[data->unk_13056].unk_000C == 98 || data->unk_00100[data->unk_13056].unk_000C == 99) {
+        if (data->unk_00100[data->unk_13056].species == SPECIES_KRABBY || data->unk_00100[data->unk_13056].species == SPECIES_KINGLER) {
             ov63_0221C16C(data, 4, 3);
             ov63_0221C16C(data, 5, 3);
         } else {
@@ -1203,7 +1212,7 @@ BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
         }
         break;
     case 4:
-        if (data->unk_00100[data->unk_13056].unk_000C == 98 || data->unk_00100[data->unk_13056].unk_000C == 99) {
+        if (data->unk_00100[data->unk_13056].species == 98 || data->unk_00100[data->unk_13056].species == 99) {
             ov63_0221C16C(data, 4, 3);
             ov63_0221C16C(data, 5, 3);
         } else {
@@ -1352,4 +1361,172 @@ BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
     }
 
     return TRUE;
+}
+
+void ov63_0221E114(RegisterHallOfFameData *data) {
+    extern const UnkStruct_02014494 ov63_0221FC38[2];
+
+    u32 i;
+    SomeDrawPokemonStruct sp40;
+    UnkStruct_02014494 sp20[2];
+    {
+        struct tmp {
+            u32 _[2 * sizeof(UnkStruct_02014494) / sizeof(u32)];
+        };
+        *(struct tmp *)sp20 = *(const struct tmp *)ov63_0221FC38;
+    }
+    NARC *narc = NARC_New(NARC_a_1_8_0, HEAP_ID_REGISTER_HALL_OF_FAME);
+    BOOL encry;
+    Pokemon *pokemon;
+    RegisterHofMon *hofMon;
+
+    for (i = 0; i < Party_GetCount(data->args->party); ++i) {
+        pokemon = Party_GetMonByIndex(data->args->party, i);
+        encry = AcquireMonLock(pokemon);
+        if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
+            hofMon = &data->unk_00100[data->unk_13048];
+            hofMon->mon = pokemon;
+            hofMon->species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+            hofMon->personality = GetMonData(pokemon, MON_DATA_PERSONALITY, NULL);
+            hofMon->form = GetMonData(pokemon, MON_DATA_FORM, NULL);
+            hofMon->gender = GetMonData(pokemon, MON_DATA_GENDER, NULL);
+            hofMon->unk_0013 = sub_020708D8(hofMon->species, hofMon->gender, 0, hofMon->form, hofMon->personality) + 8;
+            hofMon->metLocation = GetMonData(pokemon, MON_DATA_MET_LOCATION, NULL);
+            hofMon->level = GetMonData(pokemon, MON_DATA_LEVEL, NULL);
+            hofMon->partyIndex = i;
+            if (hofMon->species == SPECIES_NIDORAN_F || hofMon->species == SPECIES_NIDORAN_M) {
+                hofMon->printGender = FALSE;
+            } else {
+                hofMon->printGender = TRUE;
+            }
+            ReadWholeNarcMemberByIdPair(hofMon->tsure_param, NARC_fielddata_tsurepoke_tp_param, SpeciesToOverworldModelIndexOffset(hofMon->species));
+            GetPokemonSpriteCharAndPlttNarcIds(&sp40, pokemon, 2);
+            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[0], hofMon->unk_006C, hofMon->personality, 1, 2, hofMon->species);
+            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[1], hofMon->unk_0CEC, hofMon->personality, 1, 2, hofMon->species);
+            GetPokemonSpriteCharAndPlttNarcIds(&sp40, pokemon, 0);
+            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[0], hofMon->unk_196C, hofMon->personality, 1, 0, hofMon->species);
+            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[1], hofMon->unk_25EC, hofMon->personality, 1, 0, hofMon->species);
+            sub_02072914(narc, hofMon->unk_001C, hofMon->species, 1);
+            sub_02072914(narc, hofMon->unk_0044, hofMon->species, 0);
+            ++data->unk_13048;
+        }
+        ReleaseMonLock(pokemon, encry);
+    }
+    NARC_Delete(narc);
+}
+
+int ov63_0221E310(RegisterHallOfFameData *data, Pokemon *pokemon, PlayerProfile *profile) {
+    BOOL encry = AcquireMonLock(pokemon);
+    int ret;
+    int version = GetMonData(pokemon, MON_DATA_GAME_VERSION, NULL);
+    if (version == VERSION_SAPPHIRE || version == VERSION_RUBY || version == VERSION_EMERALD) {
+        ret = 4;
+    } else if (version == VERSION_FIRE_RED || version == VERSION_LEAF_GREEN) {
+        ret = 3;
+    } else if (version == VERSION_GAMECUBE) {
+        ret = 6;
+    } else if (version == VERSION_DIAMOND || version == VERSION_PEARL || version == VERSION_PLATINUM) {
+        ret = 5;
+    } else if (GetMonData(pokemon, MON_DATA_FATEFUL_ENCOUNTER, NULL)) {
+        ret = 7;
+    } else if (MonIsInGameTradePoke(pokemon, NPC_TRADE_SHUCKIE_SHUCKLE) == TRUE) {
+        ret = 8;
+    } else if (MonIsInGameTradePoke(pokemon, NPC_TRADE_KENYA_SPEAROW) == TRUE) {
+        ret = 9;
+    } else if (PlayerProfile_GetTrainerID(profile) != GetMonData(pokemon, MON_DATA_OTID, NULL)) {
+        ret = 2;
+    } else {
+        PlayerName_FlatToString(profile, data->unk_0008C);
+        GetMonData(pokemon, MON_DATA_OT_NAME_2, data->unk_00090);
+        if (String_Compare(data->unk_0008C, data->unk_00090)) {
+            ret = 2;
+        } else if (GetMonData(pokemon, MON_DATA_MET_LOCATION, NULL) >= METLOC_DAY_CARE_COUPLE) {
+            ret = 7;
+        } else if (GetMonData(pokemon, MON_DATA_EGG_MET_MONTH, NULL) == 0) {
+            ret = 0;
+        } else {
+            ret = 1;
+        }
+    }
+    ReleaseMonLock(pokemon, encry);
+    return ret;
+}
+
+int ov63_0221E404(int species, u8 form, u8 gender) {
+    int ret;
+
+    if (species <= 0 || species > SPECIES_ARCEUS) {
+        ret = NARC_mmodel_mmodel_00000001_bin;
+    } else {
+        ret = SpeciesToOverworldModelIndexOffset(species) + NARC_mmodel_mmodel_00000297_bin;
+        if (OverworldModelLookupHasFemaleForm(species)) {
+            if (gender == MON_FEMALE) {
+                ++ret;
+            }
+        } else {
+            if (form > OverworldModelLookupFormCount(species)) {
+                form = 0;
+            }
+            ret += form;
+        }
+    }
+    return ret;
+}
+
+typedef struct UnkStruct_ov63_0221E450 {
+    RegisterHofMon *hofMon;
+    UnkStruct_02009264 unk_04;
+    NARC *unk_18;
+    u16 *unk_1C;
+    u32 unk_20;
+    u16 unk_24;
+    int unk_28;
+} UnkStruct_ov63_0221E450;
+
+void ov63_0221E450(RegisterHallOfFameData *data, int a1, int a2, int a3, int a4) {
+    UnkStruct_ov63_0221E450 *r4 = AllocFromHeap(HEAP_ID_REGISTER_HALL_OF_FAME, sizeof(UnkStruct_ov63_0221E450));
+    r4->hofMon = &data->unk_00100[a1];
+    r4->unk_28 = a3;
+    r4->unk_18 = data->unk_00098;
+    r4->unk_20 = NNS_G2dGetImageLocation(sub_02024B1C(data->unk_000A4[a2]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
+    if (a4 == 2) {
+        r4->unk_1C = r4->hofMon->unk_006C;
+        r4->unk_24 = 1;
+        sub_02009264(&r4->unk_04, r4->hofMon->unk_001C);
+    } else {
+        r4->unk_1C = r4->hofMon->unk_196C;
+        r4->unk_24 = 0;
+        sub_02009264(&r4->unk_04, r4->hofMon->unk_0044);
+    }
+    SysTask_CreateOnMainQueue(ov63_0221E4E0, r4, 0);
+}
+
+void ov63_0221E4E0(SysTask *task, void *taskData) {
+    u8 sp4;
+    UnkStruct_ov63_0221E450 *r4 = (UnkStruct_ov63_0221E450 *)taskData;
+    if (r4->unk_28 == 1) {
+        sub_020729A4(r4->unk_18, &sp4, r4->hofMon->species, r4->unk_24);
+        if (r4->hofMon->species == SPECIES_CHATOT) {
+            sub_02006EA0(NULL, 0, 100, 0, sp4);
+        } else {
+            sub_020062E0(r4->hofMon->species, sp4, r4->hofMon->form);
+        }
+        r4->unk_28 = 0;
+    }
+    int r0 = sub_02009284(&r4->unk_04);
+    if (r0 >= 0) {
+        ov63_0221C00C(&((u8 *)r4->unk_1C)[3200 * r0], r4->unk_20, 3200);
+    } else {
+        FreeToHeap(r4);
+        SysTask_Destroy(task);
+    }
+}
+
+void ov63_0221E55C(RegisterHallOfFameData *data, u16 a1, u16 a2) {
+    if (a1 == a2) {
+        G2_SetBlendAlpha(0, 28, 0, 0);
+    } else {
+        u32 ev = (0x100000u / a1 * a2) / 0x10000u;
+        G2_SetBlendAlpha(4, 28, ev, 16 - ev);
+    }
 }

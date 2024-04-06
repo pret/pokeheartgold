@@ -5,6 +5,7 @@
 #include <nitro/code16.h>
 #include <nnsys.h>
 
+#include <stdlib.h>
 #include <string.h>
 #include <stddef.h>
 
