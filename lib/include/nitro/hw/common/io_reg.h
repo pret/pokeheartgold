@@ -1271,4 +1271,9 @@
     ((u32)(tb) << REG_G3X_GXSTAT_TB_SHIFT))
 #endif
 
+// reg_G3_MTX_MODE
+#define REG_G3_MTX_MODE_M_SHIFT                            0
+#define REG_G3_MTX_MODE_M_SIZE                             2
+#define REG_G3_MTX_MODE_M_MASK                             0x00000003
+
 #endif //NITRO_HW_IO_REG_SHARED_H_

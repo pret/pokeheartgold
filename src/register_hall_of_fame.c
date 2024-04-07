@@ -132,7 +132,26 @@ typedef struct RegisterHofSpotlightChildTaskData {
     u8 filler_832[0x6];
 } RegisterHofSpotlightChildTaskData;
 
-typedef struct RegisterHofConfettiEmitterTaskData {} RegisterHofConfettiEmitterTaskData;
+typedef struct RegHofConfettiSubstruct {
+    u32 unk_00;
+    u8 filler_04[0x4];
+    VecFx16 unk_08[4];
+    VecFx16 unk_20;
+    VecFx16 unk_26;
+    MtxFx44 unk_2C;
+    u32 unk_6C;
+} RegHofConfettiSubstruct;
+
+typedef struct RegisterHofConfettiEmitterTaskData {
+    u32 unk_0000;
+    u32 unk_0004;
+    RegHofConfettiSubstruct unk_0008[48];
+    GXDLInfo unk_1508;
+    u8 unk_151C[0x7800];
+    u32 unk_8D1C;
+    u32 unk_8D20;
+    u8 filler_8D24[0x40];
+} RegisterHofConfettiEmitterTaskData;
 
 typedef struct UnkStruct_0221C610 {
     s16 unk_00;
@@ -221,17 +240,20 @@ void ov63_0221F580(SysTask *task);
 void ov63_0221F5B4(SysTask *task);
 BOOL ov63_0221F600(RegisterHallOfFameData *data);
 SysTask *ov63_0221F614(RegisterHallOfFameData *data);
+void ov63_0221F7EC(SysTask *task, void *taskData);
 void ov63_0221F7DC(SysTask *task);
 void ov63_0221F7C4(SysTask *task);
 void ov63_0221FAA0(SysTask *task);
 
 extern const s16 ov63_0221FAE4[6];
 extern const WindowTemplate ov63_0221FB20[2];
+extern const VecFx16 ov63_0221FB44[4];
 extern const u16 ov63_0221FC58[16];
 extern const u16 ov63_0221FC78[16];
 extern const u16 ov63_0221FC98[16];
 extern const int ov63_0221FCF8[8];
 extern RegisterHallOfFameScene (*const sSceneFuncs[8])(RegisterHallOfFameData *data);  // 0221FD18
+extern const int ov63_0221FD38[8];
 extern const GraphicsBanks ov63_0221FD58;
 extern const WindowTemplate ov63_0221FD80[7];
 extern const UnkStruct_0221C610 ov63_0221FDB8[27];
@@ -333,7 +355,7 @@ void ov63_0221C068(RegisterHallOfFameData *data) {
     data->spriteRenderer = SpriteRenderer_Create(HEAP_ID_REGISTER_HALL_OF_FAME);
     data->spriteGfxHandler = SpriteRenderer_CreateGfxHandler(data->spriteRenderer);
 
-    { 
+    {
         extern const Unk122_021E92FC ov63_0221FCB8;
         Unk122_021E92FC sp2C = ov63_0221FCB8;
 
@@ -1829,7 +1851,7 @@ void ov63_0221EC1C(RegisterHallOfFameData *data) {
     sub_0200DF98(data->unk_000A4[13], 1);
     UnkImageStruct_SetSpriteVisibleFlag(data->unk_000A4[12], FALSE);
     UnkImageStruct_SetSpriteVisibleFlag(data->unk_000A4[13], FALSE);
-    
+
     if (PlayerProfile_GetTrainerGender(data->args->profile) == TRAINER_FEMALE) {
         sub_02070D84(TRAINERCLASS_PKMN_TRAINER_LYRA, 2, &sp2C);
     } else {
@@ -1996,7 +2018,7 @@ void ov63_0221F3F4(SysTask *task, void *taskData) {
 
         SetVec(child->unk_826, cosVal - FX32_CONST(0.140625), sinVal, 0);
         SetVec(child->unk_82C, cosVal + FX32_CONST(0.140625), sinVal, 0);
-        
+
         G3B_PolygonAttr(&child->unk_000->unk_000, 0, GX_POLYGONMODE_MODULATE, GX_CULL_BACK, child->unk_814, 0x10, 0);
         G3B_Begin(&child->unk_000->unk_000, GX_BEGIN_QUADS);
         G3B_Color(&child->unk_000->unk_000, child->unk_810);
@@ -2009,4 +2031,71 @@ void ov63_0221F3F4(SysTask *task, void *taskData) {
         --sNumSpotlightTasks;
         SysTask_Destroy(task);
     }
+}
+
+void ov63_0221F580(SysTask *task) {
+    if (task != NULL) {
+        RegisterHofSpotlightTaskData *spotlight = (RegisterHofSpotlightTaskData *)SysTask_GetData(task);
+
+        G3_PushMtx();
+        MI_SendGXCommand(3, spotlight->unk_014, spotlight->unk_814);
+        G3_PopMtx(1);
+    }
+}
+
+void ov63_0221F5B4(SysTask *task) {
+    sSpotlightsActive = FALSE;
+    if (task != NULL) {
+        RegisterHofSpotlightTaskData *spotlight = (RegisterHofSpotlightTaskData *)SysTask_GetData(task);
+
+        for (int i = 0; i < spotlight->unk_83C; ++i) {
+            FreeToHeap(SysTask_GetData(spotlight->unk_818[i]));
+        }
+        FreeToHeap(spotlight);
+    }
+}
+
+BOOL ov63_0221F600(RegisterHallOfFameData *data) {
+    return sNumSpotlightTasks == 0;
+}
+
+SysTask *ov63_0221F614(RegisterHallOfFameData *data) {
+    RegisterHofConfettiEmitterTaskData *confetti = AllocFromHeap(HEAP_ID_REGISTER_HALL_OF_FAME, sizeof(RegisterHofConfettiEmitterTaskData));
+    int i;
+    int j;
+    u32 rand;
+    u32 sp1C;
+
+    rand = LCRandom();
+    SetLCRNGSeed(13716);
+
+    for (i = 0, sp1C = 0; i < 48; ++i) {
+        confetti->unk_0008[i].unk_00 = ov63_0221FD38[sp1C];
+        ++sp1C;
+        if (sp1C >= 8) {
+            sp1C = 0;
+        }
+        fx16 sp8 = (LCRandom() % FX32_CONST(2)) - FX32_ONE;
+        fx16 sp4 = (LCRandom() % FX32_CONST(2)) + FX32_ONE;
+        fx16 sp0 = (LCRandom() % FX32_CONST(0.16015625)) - FX32_CONST(0.080078125);
+
+        for (j = 0; j < 4; ++j) {
+            SetVec(confetti->unk_0008[i].unk_08[j], sp8 + ov63_0221FB44[j].x, sp4 + ov63_0221FB44[j].y, sp0 + ov63_0221FB44[j].z);
+            SetVec(confetti->unk_0008[i].unk_20, 0, 0, 0);
+            SetVec(confetti->unk_0008[i].unk_26, (LCRandom() % FX32_CONST(0.125)) + FX32_CONST(0.125), (LCRandom() % FX32_CONST(0.125)) + FX32_CONST(0.125), (LCRandom() % FX32_CONST(0.125)) + FX32_CONST(0.125));
+            MTX_Identity44(&confetti->unk_0008[i].unk_2C);
+        }
+
+        j = LCRandom() & 7;
+        while (j--) {
+            VEC_Fx16Add(&confetti->unk_0008[i].unk_20, &confetti->unk_0008[i].unk_26, &confetti->unk_0008[i].unk_20);
+        }
+    }
+
+    SetLCRNGSeed(rand);
+    confetti->unk_0000 = 0;
+    confetti->unk_0004 = 0;
+    confetti->unk_8D20 = 0;
+    G3_MtxMode(GX_MTXMODE_POSITION_VECTOR);
+    return SysTask_CreateOnMainQueue(ov63_0221F7EC, confetti, 0);
 }
