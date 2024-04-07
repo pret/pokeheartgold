@@ -184,6 +184,7 @@ void ov63_0221EC1C(RegisterHallOfFameData *data);
 void ov63_0221EFD8(RegisterHallOfFameData *data);
 void ov63_0221F088(RegisterHallOfFameData *data);
 void ov63_0221F1C4(RegisterHallOfFameData *data);
+void ov63_0221F1D0(RegisterHallOfFameData *data);
 SysTask *ov63_0221F238(RegisterHallOfFameData *data);
 void ov63_0221F324(SysTask *task, int a1, fx32 a2);
 void ov63_0221F5B4(SysTask *task);
@@ -192,6 +193,7 @@ SysTask *ov63_0221F614(RegisterHallOfFameData *data);
 void ov63_0221F7DC(SysTask *task);
 void ov63_0221F7C4(SysTask *task);
 
+extern const WindowTemplate ov63_0221FB20[2];
 extern const u16 ov63_0221FC58[16];
 extern const u16 ov63_0221FC78[16];
 extern const u16 ov63_0221FC98[16];
@@ -1644,4 +1646,98 @@ BOOL ov63_0221E5A0(RegisterHallOfFameData *data) {
     }
 
     return TRUE;
+}
+
+void ov63_0221E8AC(RegisterHallOfFameData *data) {
+    BeginNormalPaletteFade(3, 1, 1, RGB_WHITE, data->unk_13064, 1, HEAP_ID_REGISTER_HALL_OF_FAME);
+}
+
+void ov63_0221E8D4(RegisterHallOfFameData *data) {
+    BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, data->unk_13064, 1, HEAP_ID_REGISTER_HALL_OF_FAME);
+}
+
+void ov63_0221E8FC(SysTask *task, void *taskData) {
+    RegisterHallOfFameData *data = (RegisterHallOfFameData *)taskData;
+    if (data->unk_00008 != NULL && !data->unk_00008(data)) {
+        data->unk_00008 = NULL;
+    }
+    ov63_0221F1D0(data);
+    DoScheduledBgGpuUpdates(data->bgConfig);
+    sub_0200D020(data->spriteGfxHandler);
+    thunk_OamManager_ApplyAndResetBuffers();
+    OS_SetIrqCheckFlag(OS_IE_V_BLANK);
+}
+
+void ov63_0221E940(RegisterHallOfFameData *data) {
+    {
+        extern const GraphicsModes ov63_0221FB00;
+        GraphicsModes graphicsModes = ov63_0221FB00;
+        SetBothScreensModesAndDisable(&graphicsModes);
+    }
+
+    {
+        extern const BgTemplate ov63_0221FBE4;
+        BgTemplate bgTemplate = ov63_0221FBE4;
+        InitBgFromTemplate(data->bgConfig, GF_BG_LYR_MAIN_1, &bgTemplate, GF_BG_TYPE_TEXT);
+        BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_MAIN_1);
+        BG_ClearCharDataRange(GF_BG_LYR_MAIN_1, 0x20, 0, HEAP_ID_REGISTER_HALL_OF_FAME);
+    }
+
+    {
+        extern const BgTemplate ov63_0221FC00;
+        BgTemplate bgTemplate = ov63_0221FC00;
+        InitBgFromTemplate(data->bgConfig, GF_BG_LYR_MAIN_2, &bgTemplate, GF_BG_TYPE_TEXT);
+    }
+
+    {
+        extern const BgTemplate ov63_0221FB90;
+        BgTemplate bgTemplate = ov63_0221FB90;
+        InitBgFromTemplate(data->bgConfig, GF_BG_LYR_MAIN_3, &bgTemplate, GF_BG_TYPE_TEXT);
+    }
+
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_OFF);
+}
+
+void ov63_0221E9FC(RegisterHallOfFameData *data) {
+    FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_MAIN_3);
+    FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_MAIN_2);
+    FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_MAIN_1);
+    FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_MAIN_0);
+}
+
+void ov63_0221EA24(RegisterHallOfFameData *data) {
+    GfGfxLoader_LoadScrnDataFromOpenNarc(data->unk_00094, 5, data->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_REGISTER_HALL_OF_FAME);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(data->unk_00094, 6, data->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_REGISTER_HALL_OF_FAME);
+    GfGfxLoader_LoadCharDataFromOpenNarc(data->unk_00094, 7, data->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_REGISTER_HALL_OF_FAME);
+    GfGfxLoader_GXLoadPalFromOpenNarc(data->unk_00094, 8, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0x20, HEAP_ID_REGISTER_HALL_OF_FAME);
+    BG_SetMaskColor(GF_BG_LYR_MAIN_1, RGB_BLACK);
+}
+
+void ov63_0221EAA8(RegisterHallOfFameData *data) {
+    for (int i = 0; i < 2u; ++i) {
+        AddWindow(data->bgConfig, &data->unk_00014[i], &ov63_0221FB20[i]);
+    }
+
+    FillWindowPixelBuffer(&data->unk_00014[0], 1);
+    ReadMsgDataIntoString(data->msgData, msg_0180_00016, data->unk_0008C);
+    AddTextPrinterParameterizedWithColor(&data->unk_00014[0], 0, data->unk_0008C, 128 - FontID_String_GetWidth(0, data->unk_0008C, 0) / 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    CopyWindowToVram(&data->unk_00014[0]);
+
+    FillWindowPixelBuffer(&data->unk_00014[1], 1);
+    ReadMsgDataIntoString(data->msgData, msg_0180_00017, data->unk_00090);
+    BufferPlayersName(data->msgFormat, 0, data->args->profile);
+    BufferIntegerAsString(data->msgFormat, 1, PlayerProfile_GetTrainerID_VisibleHalf(data->args->profile), 5, PRINTING_MODE_LEADING_ZEROS, TRUE);
+    BufferIntegerAsString(data->msgFormat, 2, GetIGTHours(data->args->igt), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    BufferIntegerAsString(data->msgFormat, 3, GetIGTMinutes(data->args->igt), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
+    StringExpandPlaceholders(data->msgFormat, data->unk_0008C, data->unk_00090);
+    AddTextPrinterParameterizedWithColor(&data->unk_00014[1], 0, data->unk_0008C, 128 - FontID_String_GetWidth(0, data->unk_0008C, 0) / 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    CopyWindowToVram(&data->unk_00014[1]);
+}
+
+void ov63_0221EC04(RegisterHallOfFameData *data) {
+    for (int i = 0; i < 2u; ++i) {
+        RemoveWindow(&data->unk_00014[i]);
+    }
 }
