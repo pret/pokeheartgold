@@ -1,3 +1,4 @@
+#include "gf_3d_vramman.h"
 #include "global.h"
 #include "follow_mon.h"
 #include "gf_gfx_loader.h"
@@ -86,7 +87,7 @@ typedef struct RegisterHallOfFameData {
     UnkImageStruct *unk_000A4[15];
     Camera *unk_000E0;
     VecFx32 unk_000E4;
-    VecFx16 unk_000F0;
+    CameraAngle unk_000F0;
     SysTask *unk_000F8;
     SysTask *unk_000FC;
     RegisterHofMon unk_00100[PARTY_SIZE];
@@ -183,15 +184,18 @@ void ov63_0221EC04(RegisterHallOfFameData *data);
 void ov63_0221EC1C(RegisterHallOfFameData *data);
 void ov63_0221EFD8(RegisterHallOfFameData *data);
 void ov63_0221F088(RegisterHallOfFameData *data);
+void ov63_0221F130(RegisterHallOfFameData *data);
 void ov63_0221F1C4(RegisterHallOfFameData *data);
 void ov63_0221F1D0(RegisterHallOfFameData *data);
 SysTask *ov63_0221F238(RegisterHallOfFameData *data);
 void ov63_0221F324(SysTask *task, int a1, fx32 a2);
+void ov63_0221F580(SysTask *task);
 void ov63_0221F5B4(SysTask *task);
 BOOL ov63_0221F600(RegisterHallOfFameData *data);
 SysTask *ov63_0221F614(RegisterHallOfFameData *data);
 void ov63_0221F7DC(SysTask *task);
 void ov63_0221F7C4(SysTask *task);
+void ov63_0221FAA0(SysTask *task);
 
 extern const WindowTemplate ov63_0221FB20[2];
 extern const u16 ov63_0221FC58[16];
@@ -1809,4 +1813,73 @@ void ov63_0221EC1C(RegisterHallOfFameData *data) {
     UnkImageStruct_SetSpriteVisibleFlag(data->unk_000A4[14], FALSE);
     ov63_0221C954(data, 13, 0);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
+}
+
+void ov63_0221EFD8(RegisterHallOfFameData *data) {
+    u32 i;
+    int tag;
+
+    for (i = 0; i < 15; ++i) {
+        ov63_0221C134(data, i);
+    }
+    SpriteGfxHandler_UnloadPlttObjById(data->spriteGfxHandler, 55522);
+    SpriteGfxHandler_UnloadCharObjById(data->spriteGfxHandler, 55520);
+    SpriteGfxHandler_UnloadCellObjById(data->spriteGfxHandler, 55515);
+    SpriteGfxHandler_UnloadAnimObjById(data->spriteGfxHandler, 55515);
+    SpriteGfxHandler_UnloadPlttObjById(data->spriteGfxHandler, 55520);
+    SpriteGfxHandler_UnloadCharObjById(data->spriteGfxHandler, 55519);
+    for (i = 0; i < 6; ++i) {
+        tag = 55512 + i;
+        SpriteGfxHandler_UnloadPlttObjById(data->spriteGfxHandler, tag);
+        SpriteGfxHandler_UnloadCharObjById(data->spriteGfxHandler, tag);
+    }
+    SpriteGfxHandler_UnloadCellObjById(data->spriteGfxHandler, 55514);
+    SpriteGfxHandler_UnloadAnimObjById(data->spriteGfxHandler, 55514);
+}
+
+void ov63_0221F088(RegisterHallOfFameData *data) {
+    NNS_G3dInit();
+    G3X_InitMtxStack();
+    G3X_SetShading(GX_SHADING_TOON);
+    G3X_AntiAlias(TRUE);
+    G3X_AlphaTest(FALSE, 0);
+    G3X_AlphaBlend(TRUE);
+    G3X_SetClearColor(RGB_BLACK, 0, 0x7FFF, 0x3F, FALSE);
+    G3_SwapBuffers(GX_SORTMODE_AUTO, GX_BUFFERMODE_W);
+    G3_ViewPort(0, 0, 255, 191);
+    GF_3DVramMan_InitFrameTexVramManager(1, TRUE);
+    GF_3DVramMan_InitFramePlttVramManager(0x4000, TRUE);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
+    G2_SetBG0Priority(1);
+    G2_SetBlendAlpha(0, 28, 0, 0);
+    ov63_0221F130(data);
+}
+
+void ov63_0221F130(RegisterHallOfFameData *data) {
+    data->unk_000E0 = Camera_New(HEAP_ID_REGISTER_HALL_OF_FAME);
+    SetVec(data->unk_000E4, 0, 0, 0);
+    SetVec(data->unk_000F0, 0, 0, 0);
+    Camera_Init_FromTargetDistanceAndAngle(&data->unk_000E4, FX32_CONST(5), &data->unk_000F0, 0xFA4, 0, TRUE, data->unk_000E0);
+    VecFx32 spC;
+    SetVec(spC, 0, FX32_ONE, 0);
+    Camera_SetLookAtCamUp(&spC, data->unk_000E0);
+    Camera_SetStaticPtr(data->unk_000E0);
+    Camera_SetPerspectiveClippingPlane(FX32_ONE, FX32_CONST(500), data->unk_000E0);
+}
+
+void ov63_0221F1C4(RegisterHallOfFameData *data) {
+    Camera_Delete(data->unk_000E0);
+}
+
+void ov63_0221F1D0(RegisterHallOfFameData *data) {
+    if (!G3X_IsGeometryBusy()) {
+        G3X_Reset();
+        NNS_G3dGePushMtx();
+        ov63_0221F580(data->unk_000F8);
+        NNS_G3dGePopMtx(1);
+        NNS_G3dGePushMtx();
+        ov63_0221FAA0(data->unk_000FC);
+        NNS_G3dGePopMtx(1);
+        G3_SwapBuffers(GX_SORTMODE_MANUAL, GX_BUFFERMODE_Z);
+    }
 }

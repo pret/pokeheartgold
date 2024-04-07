@@ -1204,4 +1204,71 @@
     ((u32)(tme) << REG_G3X_DISP3DCNT_TME_SHIFT))
 #endif
 
+/* GXSTAT */
+
+#define REG_G3X_GXSTAT_FI_SHIFT                            30
+#define REG_G3X_GXSTAT_FI_SIZE                             2
+#define REG_G3X_GXSTAT_FI_MASK                             0xc0000000
+
+#define REG_G3X_GXSTAT_B_SHIFT                             27
+#define REG_G3X_GXSTAT_B_SIZE                              1
+#define REG_G3X_GXSTAT_B_MASK                              0x08000000
+
+#define REG_G3X_GXSTAT_E_SHIFT                             26
+#define REG_G3X_GXSTAT_E_SIZE                              1
+#define REG_G3X_GXSTAT_E_MASK                              0x04000000
+
+#define REG_G3X_GXSTAT_H_SHIFT                             25
+#define REG_G3X_GXSTAT_H_SIZE                              1
+#define REG_G3X_GXSTAT_H_MASK                              0x02000000
+
+#define REG_G3X_GXSTAT_F_SHIFT                             24
+#define REG_G3X_GXSTAT_F_SIZE                              1
+#define REG_G3X_GXSTAT_F_MASK                              0x01000000
+
+#define REG_G3X_GXSTAT_FIFOCNT_SHIFT                       16
+#define REG_G3X_GXSTAT_FIFOCNT_SIZE                        8
+#define REG_G3X_GXSTAT_FIFOCNT_MASK                        0x00ff0000
+
+#define REG_G3X_GXSTAT_SE_SHIFT                            15
+#define REG_G3X_GXSTAT_SE_SIZE                             1
+#define REG_G3X_GXSTAT_SE_MASK                             0x00008000
+
+#define REG_G3X_GXSTAT_SB_SHIFT                            14
+#define REG_G3X_GXSTAT_SB_SIZE                             1
+#define REG_G3X_GXSTAT_SB_MASK                             0x00004000
+
+#define REG_G3X_GXSTAT_PJ_SHIFT                            13
+#define REG_G3X_GXSTAT_PJ_SIZE                             1
+#define REG_G3X_GXSTAT_PJ_MASK                             0x00002000
+
+#define REG_G3X_GXSTAT_PV_SHIFT                            8
+#define REG_G3X_GXSTAT_PV_SIZE                             5
+#define REG_G3X_GXSTAT_PV_MASK                             0x00001f00
+
+#define REG_G3X_GXSTAT_TR_SHIFT                            1
+#define REG_G3X_GXSTAT_TR_SIZE                             1
+#define REG_G3X_GXSTAT_TR_MASK                             0x00000002
+
+#define REG_G3X_GXSTAT_TB_SHIFT                            0
+#define REG_G3X_GXSTAT_TB_SIZE                             1
+#define REG_G3X_GXSTAT_TB_MASK                             0x00000001
+
+#ifndef SDK_ASM
+#define REG_G3X_GXSTAT_FIELD( fi, b, e, h, f, fifocnt, se, sb, pj, pv, tr, tb ) \
+    (u32)( \
+    ((u32)(fi) << REG_G3X_GXSTAT_FI_SHIFT) | \
+    ((u32)(b) << REG_G3X_GXSTAT_B_SHIFT) | \
+    ((u32)(e) << REG_G3X_GXSTAT_E_SHIFT) | \
+    ((u32)(h) << REG_G3X_GXSTAT_H_SHIFT) | \
+    ((u32)(f) << REG_G3X_GXSTAT_F_SHIFT) | \
+    ((u32)(fifocnt) << REG_G3X_GXSTAT_FIFOCNT_SHIFT) | \
+    ((u32)(se) << REG_G3X_GXSTAT_SE_SHIFT) | \
+    ((u32)(sb) << REG_G3X_GXSTAT_SB_SHIFT) | \
+    ((u32)(pj) << REG_G3X_GXSTAT_PJ_SHIFT) | \
+    ((u32)(pv) << REG_G3X_GXSTAT_PV_SHIFT) | \
+    ((u32)(tr) << REG_G3X_GXSTAT_TR_SHIFT) | \
+    ((u32)(tb) << REG_G3X_GXSTAT_TB_SHIFT))
+#endif
+
 #endif //NITRO_HW_IO_REG_SHARED_H_
