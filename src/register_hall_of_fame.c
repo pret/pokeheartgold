@@ -64,10 +64,6 @@ typedef struct RegisterHofMon {
     u16 unk_326C[16];
 } RegisterHofMon;
 
-typedef struct RegisterHofSpotlight {} RegisterHofSpotlight;
-
-typedef struct RegisterHofConfettiEmitter {} RegisterHofConfettiEmitter;
-
 typedef struct RegisterHallOfFameData {
     RegisterHallOfFameArgs *args;  // 00000
     SysTask *vblankTask;  // 00004
@@ -109,6 +105,32 @@ typedef struct RegisterHallOfFameData {
     u16 unk_13068;
     u16 unk_1306A;
 } RegisterHallOfFameData;
+
+typedef struct RegisterHofSpotlightTaskData {
+    GXDLInfo unk_000;
+    u8 unk_014[0x800];
+    u32 unk_814;
+    SysTask *unk_818[8];
+    SysTask *unk_838;
+    int unk_83C;
+    RegisterHallOfFameData *unk_840;
+} RegisterHofSpotlightTaskData;
+
+typedef struct RegisterHofSpotlightChildTaskData {
+    RegisterHofSpotlightTaskData *unk_000;
+    u8 filler_004[0x800];
+    int unk_804;
+    int unk_808;
+    int unk_80C;
+    int unk_810;
+    int unk_814;
+    u16 unk_818;
+    VecFx16 unk_81A;
+    VecFx16 unk_820;
+    u8 filler_826[0x12];
+} RegisterHofSpotlightChildTaskData;
+
+typedef struct RegisterHofConfettiEmitterTaskData {} RegisterHofConfettiEmitterTaskData;
 
 typedef struct UnkStruct_0221C610 {
     s16 unk_00;
@@ -188,7 +210,11 @@ void ov63_0221F130(RegisterHallOfFameData *data);
 void ov63_0221F1C4(RegisterHallOfFameData *data);
 void ov63_0221F1D0(RegisterHallOfFameData *data);
 SysTask *ov63_0221F238(RegisterHallOfFameData *data);
+void ov63_0221F294(SysTask *task, void *taskData);
+void ov63_0221F2E8(SysTask *task, void *taskData);
 void ov63_0221F324(SysTask *task, int a1, fx32 a2);
+SysTask *ov63_0221F368(RegisterHofSpotlightTaskData *spotlight, int a1, fx32 a2, int a3);
+void ov63_0221F3F4(SysTask *task, void *taskData);
 void ov63_0221F580(SysTask *task);
 void ov63_0221F5B4(SysTask *task);
 BOOL ov63_0221F600(RegisterHallOfFameData *data);
@@ -197,16 +223,21 @@ void ov63_0221F7DC(SysTask *task);
 void ov63_0221F7C4(SysTask *task);
 void ov63_0221FAA0(SysTask *task);
 
+extern const s16 ov63_0221FAE4[6];
 extern const WindowTemplate ov63_0221FB20[2];
 extern const u16 ov63_0221FC58[16];
 extern const u16 ov63_0221FC78[16];
 extern const u16 ov63_0221FC98[16];
-extern RegisterHallOfFameScene (*const sSceneFuncs[])(RegisterHallOfFameData *data);  // 0221FD18
+extern const int ov63_0221FCF8[8];
+extern RegisterHallOfFameScene (*const sSceneFuncs[8])(RegisterHallOfFameData *data);  // 0221FD18
 extern const GraphicsBanks ov63_0221FD58;
 extern const WindowTemplate ov63_0221FD80[7];
 extern const UnkStruct_0221C610 ov63_0221FDB8[27];
 extern const UnkTemplate_0200D748 ov63_0221FF68[6];
 extern const UnkTemplate_0200D748 ov63_022200A0[15];
+
+extern BOOL _022203C0;
+extern int _022203E0;
 
 BOOL RegisterHallOfFame_Init(OVY_MANAGER *man, int *state) {
     Main_SetVBlankIntrCB(NULL, NULL);
@@ -1882,4 +1913,62 @@ void ov63_0221F1D0(RegisterHallOfFameData *data) {
         NNS_G3dGePopMtx(1);
         G3_SwapBuffers(GX_SORTMODE_MANUAL, GX_BUFFERMODE_Z);
     }
+}
+
+SysTask *ov63_0221F238(RegisterHallOfFameData *data) {
+    RegisterHofSpotlightTaskData *spotlight = AllocFromHeap(HEAP_ID_REGISTER_HALL_OF_FAME, sizeof(RegisterHofSpotlightTaskData));
+    _022203C0 = TRUE;
+    _022203E0 = 2;
+    spotlight->unk_83C = 0;
+    spotlight->unk_838 = SysTask_CreateOnVBlankQueue(ov63_0221F2E8, spotlight, 3);
+    spotlight->unk_840 = data;
+    return SysTask_CreateOnVBlankQueue(ov63_0221F294, spotlight, 1);
+}
+
+void ov63_0221F294(SysTask *task, void *taskData) {
+    RegisterHofSpotlightTaskData *spotlight = (RegisterHofSpotlightTaskData *)taskData;
+
+    if (_022203C0) {
+        G3_BeginMakeDL(&spotlight->unk_000, spotlight->unk_014, sizeof(spotlight->unk_014));
+        G3B_MaterialColorDiffAmb(&spotlight->unk_000, RGB_WHITE, GX_RGB(16, 16, 16), FALSE);
+        G3B_MaterialColorSpecEmi(&spotlight->unk_000, GX_RGB(16, 16, 16), RGB_BLACK, FALSE);
+    } else {
+        --_022203E0;
+        SysTask_Destroy(task);
+    }
+}
+
+void ov63_0221F2E8(SysTask *task, void *taskData) {
+    RegisterHofSpotlightTaskData *spotlight = (RegisterHofSpotlightTaskData *)taskData;
+
+    if (_022203C0) {
+        spotlight->unk_814 = G3_EndMakeDL(&spotlight->unk_000);
+        DC_FlushRange(spotlight->unk_014, spotlight->unk_814);
+    } else {
+        --_022203E0;
+        SysTask_Destroy(task);
+    }
+}
+
+void ov63_0221F324(SysTask *task, int a1, fx32 a2) {
+    RegisterHofSpotlightTaskData *spotlight = (RegisterHofSpotlightTaskData *)SysTask_GetData(task);
+    if (spotlight->unk_83C < 8) {
+        spotlight->unk_818[spotlight->unk_83C] = ov63_0221F368(spotlight, a1, a2, spotlight->unk_83C);
+        ++_022203E0;
+        ++spotlight->unk_83C;
+    }
+}
+
+SysTask *ov63_0221F368(RegisterHofSpotlightTaskData *spotlight, int a1, fx32 a2, int a3) {
+    RegisterHofSpotlightChildTaskData *child = AllocFromHeap(HEAP_ID_REGISTER_HALL_OF_FAME, sizeof(RegisterHofSpotlightChildTaskData));
+    child->unk_000 = spotlight;
+    child->unk_818 = a1;
+    child->unk_810 = ov63_0221FCF8[a3];
+    child->unk_804 = 0;
+    child->unk_808 = a2;
+    child->unk_80C = 2 * ov63_0221FAE4[a3];  // UB warning: can index past end of array
+    child->unk_814 = a3;
+    SetVec(child->unk_81A, a1 - 80, FX16_CONST(-1), 0);
+    SetVec(child->unk_820, a1 + 80, FX16_CONST(-1), 0);
+    return SysTask_CreateOnVBlankQueue(ov63_0221F3F4, child, 2);
 }

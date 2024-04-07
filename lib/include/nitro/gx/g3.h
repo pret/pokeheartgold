@@ -1,6 +1,8 @@
 #ifndef NITRO_GX_G3_H_
 #define NITRO_GX_G3_H_
 
+#include <nitro/types.h>
+
 #define G3OP_NOP                0x00
 
 #define G3OP_MTX_MODE           0x10
@@ -148,5 +150,16 @@ typedef enum {
 } GXMtxMode;
 
 #define GX_PACK_VIEWPORT_PARAM(x1, y1, x2, y2)  ((u32)((x1) | ((y1) << 8) | ((x2) << 16) | ((y2) << 24)))
+
+typedef struct {
+    u8 *curr_cmd;
+    u32 *curr_param;
+    u32 *bottom;
+    u32 length;
+    BOOL param0_cmd_flg;
+} GXDLInfo;
+
+void G3_BeginMakeDL(GXDLInfo *info, void *ptr, u32 length);
+u32 G3_EndMakeDL(GXDLInfo *info);
 
 #endif //NITRO_GX_G3_H_

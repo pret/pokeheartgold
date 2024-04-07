@@ -35,217 +35,6 @@
 	.extern ov63_0221D2F8
 	.extern ov63_0221E55C
 
-	thumb_func_start ov63_0221F238
-ov63_0221F238: ; 0x0221F238
-	push {r3, r4, r5, lr}
-	ldr r1, _0221F278 ; =0x00000844
-	add r5, r0, #0
-	mov r0, #0x3e
-	bl AllocFromHeap
-	add r4, r0, #0
-	ldr r0, _0221F27C ; =_022203C0
-	mov r1, #1
-	str r1, [r0]
-	ldr r0, _0221F280 ; =_022203E0
-	mov r1, #2
-	str r1, [r0]
-	ldr r0, _0221F284 ; =0x0000083C
-	mov r1, #0
-	str r1, [r4, r0]
-	ldr r0, _0221F288 ; =ov63_0221F2E8
-	add r1, r4, #0
-	mov r2, #3
-	bl SysTask_CreateOnVBlankQueue
-	ldr r1, _0221F28C ; =0x00000838
-	mov r2, #1
-	str r0, [r4, r1]
-	add r1, #8
-	str r5, [r4, r1]
-	ldr r0, _0221F290 ; =ov63_0221F294
-	add r1, r4, #0
-	bl SysTask_CreateOnVBlankQueue
-	pop {r3, r4, r5, pc}
-	nop
-_0221F278: .word 0x00000844
-_0221F27C: .word _022203C0
-_0221F280: .word _022203E0
-_0221F284: .word 0x0000083C
-_0221F288: .word ov63_0221F2E8
-_0221F28C: .word 0x00000838
-_0221F290: .word ov63_0221F294
-	thumb_func_end ov63_0221F238
-
-	thumb_func_start ov63_0221F294
-ov63_0221F294: ; 0x0221F294
-	push {r4, lr}
-	add r4, r1, #0
-	ldr r1, _0221F2D8 ; =_022203C0
-	ldr r1, [r1]
-	cmp r1, #0
-	beq _0221F2C8
-	add r1, r4, #0
-	mov r2, #2
-	add r0, r4, #0
-	add r1, #0x14
-	lsl r2, r2, #0xa
-	bl G3_BeginMakeDL
-	ldr r1, _0221F2DC ; =0x00007FFF
-	ldr r2, _0221F2E0 ; =0x00004210
-	add r0, r4, #0
-	mov r3, #0
-	bl G3B_MaterialColorDiffAmb
-	mov r2, #0
-	ldr r1, _0221F2E0 ; =0x00004210
-	add r0, r4, #0
-	add r3, r2, #0
-	bl G3B_MaterialColorSpecEmi
-	pop {r4, pc}
-_0221F2C8:
-	ldr r1, _0221F2E4 ; =_022203E0
-	ldr r2, [r1]
-	sub r2, r2, #1
-	str r2, [r1]
-	bl SysTask_Destroy
-	pop {r4, pc}
-	nop
-_0221F2D8: .word _022203C0
-_0221F2DC: .word 0x00007FFF
-_0221F2E0: .word 0x00004210
-_0221F2E4: .word _022203E0
-	thumb_func_end ov63_0221F294
-
-	thumb_func_start ov63_0221F2E8
-ov63_0221F2E8: ; 0x0221F2E8
-	push {r4, lr}
-	add r4, r1, #0
-	ldr r1, _0221F318 ; =_022203C0
-	ldr r1, [r1]
-	cmp r1, #0
-	beq _0221F30A
-	add r0, r4, #0
-	bl G3_EndMakeDL
-	ldr r1, _0221F31C ; =0x00000814
-	str r0, [r4, r1]
-	add r0, r4, #0
-	ldr r1, [r4, r1]
-	add r0, #0x14
-	bl DC_FlushRange
-	pop {r4, pc}
-_0221F30A:
-	ldr r1, _0221F320 ; =_022203E0
-	ldr r2, [r1]
-	sub r2, r2, #1
-	str r2, [r1]
-	bl SysTask_Destroy
-	pop {r4, pc}
-	.balign 4, 0
-_0221F318: .word _022203C0
-_0221F31C: .word 0x00000814
-_0221F320: .word _022203E0
-	thumb_func_end ov63_0221F2E8
-
-	thumb_func_start ov63_0221F324
-ov63_0221F324: ; 0x0221F324
-	push {r4, r5, r6, lr}
-	add r5, r1, #0
-	add r6, r2, #0
-	bl SysTask_GetData
-	ldr r1, _0221F360 ; =0x0000083C
-	add r4, r0, #0
-	ldr r3, [r4, r1]
-	cmp r3, #8
-	bge _0221F35C
-	add r1, r5, #0
-	add r2, r6, #0
-	bl ov63_0221F368
-	ldr r2, _0221F360 ; =0x0000083C
-	ldr r1, [r4, r2]
-	lsl r1, r1, #2
-	add r3, r4, r1
-	add r1, r2, #0
-	sub r1, #0x24
-	str r0, [r3, r1]
-	ldr r0, _0221F364 ; =_022203E0
-	ldr r1, [r0]
-	add r1, r1, #1
-	str r1, [r0]
-	ldr r0, [r4, r2]
-	add r0, r0, #1
-	str r0, [r4, r2]
-_0221F35C:
-	pop {r4, r5, r6, pc}
-	nop
-_0221F360: .word 0x0000083C
-_0221F364: .word _022203E0
-	thumb_func_end ov63_0221F324
-
-	thumb_func_start ov63_0221F368
-ov63_0221F368: ; 0x0221F368
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r6, r0, #0
-	ldr r1, _0221F3DC ; =0x00000838
-	mov r0, #0x3e
-	add r7, r2, #0
-	add r4, r3, #0
-	bl AllocFromHeap
-	add r1, r0, #0
-	str r6, [r1]
-	ldr r0, _0221F3E0 ; =0x00000818
-	ldr r2, _0221F3E4 ; =ov63_0221FCF8
-	lsl r3, r4, #2
-	ldr r3, [r2, r3]
-	add r2, r0, #0
-	strh r5, [r1, r0]
-	sub r2, #8
-	str r3, [r1, r2]
-	add r2, r0, #0
-	mov r3, #0
-	sub r2, #0x14
-	str r3, [r1, r2]
-	add r2, r0, #0
-	sub r2, #0x10
-	str r7, [r1, r2]
-	ldr r2, _0221F3E8 ; =_0221FAE4
-	lsl r6, r4, #1
-	ldrsh r2, [r2, r6]
-	lsl r6, r2, #1
-	add r2, r0, #0
-	sub r2, #0xc
-	str r6, [r1, r2]
-	sub r2, r0, #4
-	str r4, [r1, r2]
-	add r4, r5, #0
-	sub r4, #0x50
-	add r2, r0, #2
-	strh r4, [r1, r2]
-	ldr r2, _0221F3EC ; =0xFFFFF000
-	add r4, r0, #4
-	strh r2, [r1, r4]
-	add r4, r0, #6
-	strh r3, [r1, r4]
-	add r4, r0, #0
-	add r5, #0x50
-	add r4, #8
-	strh r5, [r1, r4]
-	add r4, r0, #0
-	add r4, #0xa
-	strh r2, [r1, r4]
-	add r0, #0xc
-	strh r3, [r1, r0]
-	ldr r0, _0221F3F0 ; =ov63_0221F3F4
-	mov r2, #2
-	bl SysTask_CreateOnVBlankQueue
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_0221F3DC: .word 0x00000838
-_0221F3E0: .word 0x00000818
-_0221F3E4: .word ov63_0221FCF8
-_0221F3E8: .word _0221FAE4
-_0221F3EC: .word 0xFFFFF000
-_0221F3F0: .word ov63_0221F3F4
-	thumb_func_end ov63_0221F368
-
 	thumb_func_start ov63_0221F3F4
 ov63_0221F3F4: ; 0x0221F3F4
 	push {r4, r5, r6, r7, lr}
@@ -1092,7 +881,8 @@ _0221FAE0: .word 0x04000448
 
 	.rodata
 
-_0221FAE4:
+	.public ov63_0221FAE4
+ov63_0221FAE4:
 	.byte 0x00, 0x0C, 0x00, 0x0B, 0x00, 0x0A, 0x00, 0x0C, 0x00, 0x0B, 0x00, 0x0A
 
 	.public ov63_0221FAF0
@@ -1196,6 +986,7 @@ ov63_0221FCB8: ; 0x0221FCB8
 	.byte 0x0A, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x0A, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00
 
+	.public ov63_0221FCF8
 ov63_0221FCF8: ; 0x0221FCF8
 	.byte 0xFF, 0x33, 0x00, 0x00, 0xFF, 0x43, 0x00, 0x00
 	.byte 0x9F, 0x23, 0x00, 0x00, 0xFF, 0x33, 0x00, 0x00, 0xFF, 0x43, 0x00, 0x00, 0x9F, 0x23, 0x00, 0x00
@@ -1364,11 +1155,13 @@ ov63_02220378: ; 0x02220378
 
 	.data
 
+	.public _022203C0
 _022203C0:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
 	.bss
 
+	.public _022203E0
 _022203E0:
 	.space 0x20
