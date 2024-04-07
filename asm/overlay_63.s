@@ -35,192 +35,6 @@
 	.extern ov63_0221D2F8
 	.extern ov63_0221E55C
 
-	thumb_func_start ov63_0221F3F4
-ov63_0221F3F4: ; 0x0221F3F4
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0xc
-	add r5, r1, #0
-	ldr r1, _0221F564 ; =_022203C0
-	ldr r1, [r1]
-	cmp r1, #0
-	bne _0221F404
-	b _0221F552
-_0221F404:
-	ldr r0, _0221F568 ; =0x00000808
-	add r1, r0, #4
-	ldr r2, [r5, r0]
-	ldr r1, [r5, r1]
-	add r1, r2, r1
-	str r1, [r5, r0]
-	add r1, r0, #4
-	ldr r1, [r5, r1]
-	ldr r2, [r5, r0]
-	cmp r1, #0
-	ble _0221F432
-	mov r1, #0xaa
-	lsl r1, r1, #0xc
-	cmp r2, r1
-	blt _0221F448
-	add r1, r0, #4
-	ldr r2, [r5, r1]
-	mov r1, #0
-	mvn r1, r1
-	mul r1, r2
-	add r0, r0, #4
-	str r1, [r5, r0]
-	b _0221F448
-_0221F432:
-	mov r1, #0xa
-	lsl r1, r1, #0xc
-	cmp r2, r1
-	bgt _0221F448
-	add r1, r0, #4
-	ldr r2, [r5, r1]
-	mov r1, #0
-	mvn r1, r1
-	mul r1, r2
-	add r0, r0, #4
-	str r1, [r5, r0]
-_0221F448:
-	ldr r0, _0221F568 ; =0x00000808
-	ldr r0, [r5, r0]
-	asr r6, r0, #0xc
-	lsl r0, r6, #0x10
-	lsr r0, r0, #0x10
-	bl GF_CosDegNoWrap
-	mov r2, #0xa
-	asr r1, r0, #0x1f
-	lsl r2, r2, #0xa
-	mov r3, #0
-	bl _ll_mul
-	ldr r3, _0221F56C ; =0x00000818
-	mov r4, #0
-	ldrsh r2, [r5, r3]
-	sub r3, #0x18
-	add r3, r0, r3
-	adc r1, r4
-	lsl r0, r1, #0x14
-	lsr r1, r3, #0xc
-	orr r1, r0
-	lsl r0, r6, #0x10
-	lsr r0, r0, #0x10
-	add r4, r2, r1
-	bl GF_SinDegNoWrap
-	mov r2, #0xa
-	asr r1, r0, #0x1f
-	lsl r2, r2, #0xa
-	mov r3, #0
-	bl _ll_mul
-	mov r2, #2
-	mov r3, #0
-	lsl r2, r2, #0xa
-	add r6, r0, r2
-	adc r1, r3
-	lsl r0, r1, #0x14
-	lsr r1, r6, #0xc
-	orr r1, r0
-	lsl r0, r2, #1
-	mov r7, #9
-	sub r6, r1, r0
-	lsl r7, r7, #6
-	add r0, r2, #0
-	sub r1, r4, r7
-	add r0, #0x26
-	strh r1, [r5, r0]
-	lsl r0, r6, #0x10
-	add r1, r2, #0
-	asr r0, r0, #0x10
-	add r1, #0x28
-	strh r0, [r5, r1]
-	add r1, r2, #0
-	add r1, #0x2a
-	strh r3, [r5, r1]
-	add r1, r2, #0
-	add r4, r4, r7
-	add r1, #0x2c
-	strh r4, [r5, r1]
-	add r1, r2, #0
-	add r1, #0x2e
-	strh r0, [r5, r1]
-	add r0, r2, #0
-	add r0, #0x30
-	add r2, #0x14
-	strh r3, [r5, r0]
-	ldr r0, [r5, r2]
-	add r1, r3, #0
-	str r0, [sp]
-	mov r0, #0x10
-	str r0, [sp, #4]
-	str r3, [sp, #8]
-	add r2, r3, #0
-	ldr r0, [r5]
-	mov r3, #2
-	bl G3B_PolygonAttr
-	ldr r0, [r5]
-	mov r1, #1
-	bl G3B_Begin
-	mov r1, #0x81
-	lsl r1, r1, #4
-	ldr r1, [r5, r1]
-	ldr r0, [r5]
-	lsl r1, r1, #0x10
-	lsr r1, r1, #0x10
-	bl G3B_Color
-	ldr r3, _0221F570 ; =0x0000081A
-	ldr r0, [r5]
-	add r2, r3, #2
-	ldrsh r1, [r5, r3]
-	add r3, r3, #4
-	ldrsh r2, [r5, r2]
-	ldrsh r3, [r5, r3]
-	bl G3B_Vtx
-	mov r3, #0x82
-	lsl r3, r3, #4
-	add r2, r3, #2
-	ldrsh r1, [r5, r3]
-	add r3, r3, #4
-	ldrsh r2, [r5, r2]
-	ldrsh r3, [r5, r3]
-	ldr r0, [r5]
-	bl G3B_Vtx
-	ldr r3, _0221F574 ; =0x0000082C
-	ldr r0, [r5]
-	add r2, r3, #2
-	ldrsh r1, [r5, r3]
-	add r3, r3, #4
-	ldrsh r2, [r5, r2]
-	ldrsh r3, [r5, r3]
-	bl G3B_Vtx
-	ldr r3, _0221F578 ; =0x00000826
-	ldr r0, [r5]
-	add r2, r3, #2
-	ldrsh r1, [r5, r3]
-	add r3, r3, #4
-	ldrsh r2, [r5, r2]
-	ldrsh r3, [r5, r3]
-	bl G3B_Vtx
-	ldr r0, [r5]
-	bl G3B_End
-	add sp, #0xc
-	pop {r4, r5, r6, r7, pc}
-_0221F552:
-	ldr r1, _0221F57C ; =_022203E0
-	ldr r2, [r1]
-	sub r2, r2, #1
-	str r2, [r1]
-	bl SysTask_Destroy
-	add sp, #0xc
-	pop {r4, r5, r6, r7, pc}
-	nop
-_0221F564: .word _022203C0
-_0221F568: .word 0x00000808
-_0221F56C: .word 0x00000818
-_0221F570: .word 0x0000081A
-_0221F574: .word 0x0000082C
-_0221F578: .word 0x00000826
-_0221F57C: .word _022203E0
-	thumb_func_end ov63_0221F3F4
-
 	thumb_func_start ov63_0221F580
 ov63_0221F580: ; 0x0221F580
 	push {r3, lr}
@@ -251,7 +65,7 @@ _0221F5B0: .word 0x04000448
 	thumb_func_start ov63_0221F5B4
 ov63_0221F5B4: ; 0x0221F5B4
 	push {r3, r4, r5, r6, r7, lr}
-	ldr r1, _0221F5F4 ; =_022203C0
+	ldr r1, _0221F5F4 ; =sSpotlightsActive
 	mov r2, #0
 	str r2, [r1]
 	cmp r0, #0
@@ -281,14 +95,14 @@ _0221F5EA:
 _0221F5F0:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0221F5F4: .word _022203C0
+_0221F5F4: .word sSpotlightsActive
 _0221F5F8: .word 0x0000083C
 _0221F5FC: .word 0x00000818
 	thumb_func_end ov63_0221F5B4
 
 	thumb_func_start ov63_0221F600
 ov63_0221F600: ; 0x0221F600
-	ldr r0, _0221F610 ; =_022203E0
+	ldr r0, _0221F610 ; =sNumSpotlightTasks
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0221F60C
@@ -298,7 +112,7 @@ _0221F60C:
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-_0221F610: .word _022203E0
+_0221F610: .word sNumSpotlightTasks
 	thumb_func_end ov63_0221F600
 
 	thumb_func_start ov63_0221F614
@@ -1155,13 +969,12 @@ ov63_02220378: ; 0x02220378
 
 	.data
 
-	.public _022203C0
-_022203C0:
-	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.public sSpotlightsActive
+sSpotlightsActive:
+	.word 1
 
 	.bss
 
-	.public _022203E0
-_022203E0:
-	.space 0x20
+	.public sNumSpotlightTasks
+sNumSpotlightTasks:
+	.space 4

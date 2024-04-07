@@ -120,14 +120,16 @@ typedef struct RegisterHofSpotlightChildTaskData {
     RegisterHofSpotlightTaskData *unk_000;
     u8 filler_004[0x800];
     int unk_804;
-    int unk_808;
-    int unk_80C;
+    fx32 unk_808;
+    fx32 unk_80C;
     int unk_810;
     int unk_814;
-    u16 unk_818;
+    fx16 unk_818;
     VecFx16 unk_81A;
     VecFx16 unk_820;
-    u8 filler_826[0x12];
+    VecFx16 unk_826;
+    VecFx16 unk_82C;
+    u8 filler_832[0x6];
 } RegisterHofSpotlightChildTaskData;
 
 typedef struct RegisterHofConfettiEmitterTaskData {} RegisterHofConfettiEmitterTaskData;
@@ -236,8 +238,8 @@ extern const UnkStruct_0221C610 ov63_0221FDB8[27];
 extern const UnkTemplate_0200D748 ov63_0221FF68[6];
 extern const UnkTemplate_0200D748 ov63_022200A0[15];
 
-extern BOOL _022203C0;
-extern int _022203E0;
+extern BOOL sSpotlightsActive;
+extern int sNumSpotlightTasks;
 
 BOOL RegisterHallOfFame_Init(OVY_MANAGER *man, int *state) {
     Main_SetVBlankIntrCB(NULL, NULL);
@@ -1917,8 +1919,8 @@ void ov63_0221F1D0(RegisterHallOfFameData *data) {
 
 SysTask *ov63_0221F238(RegisterHallOfFameData *data) {
     RegisterHofSpotlightTaskData *spotlight = AllocFromHeap(HEAP_ID_REGISTER_HALL_OF_FAME, sizeof(RegisterHofSpotlightTaskData));
-    _022203C0 = TRUE;
-    _022203E0 = 2;
+    sSpotlightsActive = TRUE;
+    sNumSpotlightTasks = 2;
     spotlight->unk_83C = 0;
     spotlight->unk_838 = SysTask_CreateOnVBlankQueue(ov63_0221F2E8, spotlight, 3);
     spotlight->unk_840 = data;
@@ -1928,12 +1930,12 @@ SysTask *ov63_0221F238(RegisterHallOfFameData *data) {
 void ov63_0221F294(SysTask *task, void *taskData) {
     RegisterHofSpotlightTaskData *spotlight = (RegisterHofSpotlightTaskData *)taskData;
 
-    if (_022203C0) {
+    if (sSpotlightsActive) {
         G3_BeginMakeDL(&spotlight->unk_000, spotlight->unk_014, sizeof(spotlight->unk_014));
         G3B_MaterialColorDiffAmb(&spotlight->unk_000, RGB_WHITE, GX_RGB(16, 16, 16), FALSE);
         G3B_MaterialColorSpecEmi(&spotlight->unk_000, GX_RGB(16, 16, 16), RGB_BLACK, FALSE);
     } else {
-        --_022203E0;
+        --sNumSpotlightTasks;
         SysTask_Destroy(task);
     }
 }
@@ -1941,11 +1943,11 @@ void ov63_0221F294(SysTask *task, void *taskData) {
 void ov63_0221F2E8(SysTask *task, void *taskData) {
     RegisterHofSpotlightTaskData *spotlight = (RegisterHofSpotlightTaskData *)taskData;
 
-    if (_022203C0) {
+    if (sSpotlightsActive) {
         spotlight->unk_814 = G3_EndMakeDL(&spotlight->unk_000);
         DC_FlushRange(spotlight->unk_014, spotlight->unk_814);
     } else {
-        --_022203E0;
+        --sNumSpotlightTasks;
         SysTask_Destroy(task);
     }
 }
@@ -1954,7 +1956,7 @@ void ov63_0221F324(SysTask *task, int a1, fx32 a2) {
     RegisterHofSpotlightTaskData *spotlight = (RegisterHofSpotlightTaskData *)SysTask_GetData(task);
     if (spotlight->unk_83C < 8) {
         spotlight->unk_818[spotlight->unk_83C] = ov63_0221F368(spotlight, a1, a2, spotlight->unk_83C);
-        ++_022203E0;
+        ++sNumSpotlightTasks;
         ++spotlight->unk_83C;
     }
 }
@@ -1971,4 +1973,40 @@ SysTask *ov63_0221F368(RegisterHofSpotlightTaskData *spotlight, int a1, fx32 a2,
     SetVec(child->unk_81A, a1 - 80, FX16_CONST(-1), 0);
     SetVec(child->unk_820, a1 + 80, FX16_CONST(-1), 0);
     return SysTask_CreateOnVBlankQueue(ov63_0221F3F4, child, 2);
+}
+
+void ov63_0221F3F4(SysTask *task, void *taskData) {
+    RegisterHofSpotlightChildTaskData *child = (RegisterHofSpotlightChildTaskData *)taskData;
+
+    if (sSpotlightsActive) {
+        child->unk_808 += child->unk_80C;
+        if (child->unk_80C > 0) {
+            if (child->unk_808 >= FX32_CONST(170)) {
+                child->unk_80C *= -1;
+            }
+        } else {
+            if (child->unk_808 <= FX32_CONST(10)) {
+                child->unk_80C *= -1;
+            }
+        }
+
+        s32 r6 = child->unk_808 >> FX32_SHIFT;
+        fx32 cosVal = child->unk_818 + FX_Mul(GF_CosDegNoWrap(r6), FX32_CONST(2.5));
+        fx32 sinVal = -FX32_ONE + FX_Mul(GF_SinDegNoWrap(r6), FX32_CONST(2.5));
+
+        SetVec(child->unk_826, cosVal - FX32_CONST(0.140625), sinVal, 0);
+        SetVec(child->unk_82C, cosVal + FX32_CONST(0.140625), sinVal, 0);
+        
+        G3B_PolygonAttr(&child->unk_000->unk_000, 0, GX_POLYGONMODE_MODULATE, GX_CULL_BACK, child->unk_814, 0x10, 0);
+        G3B_Begin(&child->unk_000->unk_000, GX_BEGIN_QUADS);
+        G3B_Color(&child->unk_000->unk_000, child->unk_810);
+        G3B_Vtx(&child->unk_000->unk_000, child->unk_81A.x, child->unk_81A.y, child->unk_81A.z);
+        G3B_Vtx(&child->unk_000->unk_000, child->unk_820.x, child->unk_820.y, child->unk_820.z);
+        G3B_Vtx(&child->unk_000->unk_000, child->unk_82C.x, child->unk_82C.y, child->unk_82C.z);
+        G3B_Vtx(&child->unk_000->unk_000, child->unk_826.x, child->unk_826.y, child->unk_826.z);
+        G3B_End(&child->unk_000->unk_000);
+    } else {
+        --sNumSpotlightTasks;
+        SysTask_Destroy(task);
+    }
 }
