@@ -202,6 +202,7 @@ extern const GraphicsBanks ov63_0221FD58;
 extern const WindowTemplate ov63_0221FD80[7];
 extern const UnkStruct_0221C610 ov63_0221FDB8[27];
 extern const UnkTemplate_0200D748 ov63_0221FF68[6];
+extern const UnkTemplate_0200D748 ov63_022200A0[15];
 
 BOOL RegisterHallOfFame_Init(OVY_MANAGER *man, int *state) {
     Main_SetVBlankIntrCB(NULL, NULL);
@@ -1366,14 +1367,14 @@ BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
 }
 
 void ov63_0221E114(RegisterHallOfFameData *data) {
-    extern const UnkStruct_02014494 ov63_0221FC38[2];
+    extern const UnkStruct_02014E30 ov63_0221FC38[2];
 
     u32 i;
     SomeDrawPokemonStruct sp40;
-    UnkStruct_02014494 sp20[2];
+    UnkStruct_02014E30 sp20[2];
     {
         struct tmp {
-            u32 _[2 * sizeof(UnkStruct_02014494) / sizeof(u32)];
+            UnkStruct_02014E30 _[2];
         };
         *(struct tmp *)sp20 = *(const struct tmp *)ov63_0221FC38;
     }
@@ -1740,4 +1741,72 @@ void ov63_0221EC04(RegisterHallOfFameData *data) {
     for (int i = 0; i < 2u; ++i) {
         RemoveWindow(&data->unk_00014[i]);
     }
+}
+
+void ov63_0221EC1C(RegisterHallOfFameData *data) {
+    extern const UnkStruct_02014E30 ov63_0221FAF0;
+
+    struct UnkStruct_02070D3C sp2C;
+    UnkStruct_02014E30 sp1C = ov63_0221FAF0;
+    NARC *narc = NARC_New(NARC_a_0_0_8, HEAP_ID_REGISTER_HALL_OF_FAME);
+    u32 i;
+    int tag;
+    void *r4;
+
+    SpriteRenderer_LoadCellResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 77, FALSE, 55512);
+    SpriteRenderer_LoadAnimResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 78, FALSE, 55512);
+    for (i = 0; i < 6; ++i) {
+        tag = 55512 + i;
+        SpriteRenderer_LoadCharResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 76, FALSE, NNS_G2D_VRAM_TYPE_2DMAIN, tag);
+        SpriteRenderer_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, tag);
+    }
+    SpriteRenderer_LoadCharResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 76, FALSE, NNS_G2D_VRAM_TYPE_2DMAIN, 55519);
+    SpriteRenderer_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 55520);
+    SpriteRenderer_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 55521);
+    NARC_Delete(narc);
+
+    SpriteRenderer_LoadCellResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, data->unk_00094, 17, TRUE, 55515);
+    SpriteRenderer_LoadAnimResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, data->unk_00094, 18, TRUE, 55515);
+    SpriteRenderer_LoadCharResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, data->unk_00094, 16, TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, 55520);
+    SpriteRenderer_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, data->unk_00094, 19, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 55522);
+
+    for (i = 0; i < 6; ++i) {
+        data->unk_000A4[i] = SpriteRenderer_LoadResourcesAndCreateSprite(data->spriteRenderer, data->spriteGfxHandler, &ov63_022200A0[i]);
+        data->unk_000A4[6 + i] = SpriteRenderer_LoadResourcesAndCreateSprite(data->spriteRenderer, data->spriteGfxHandler, &ov63_022200A0[i + 6]);
+        if (i < data->unk_13048) {
+            ov63_0221C8E8(data, &data->unk_00100[i], 2, i);
+        } else {
+            UnkImageStruct_SetSpriteVisibleFlag(data->unk_000A4[i], FALSE);
+        }
+        ov63_0221C99C(data, i, i);
+        ov63_0221C954(data, i, 1);
+        sub_0200DF98(data->unk_000A4[i], 1);
+        sub_0200E024(data->unk_000A4[i], 1.0f, 1.0f);
+        sub_0200E0FC(data->unk_000A4[i], GX_OAM_MODE_NORMAL);
+        sub_0200E0FC(data->unk_000A4[6 + i], GX_OAM_MODE_XLU);
+        UnkImageStruct_SetSpriteVisibleFlag(data->unk_000A4[6 + i], FALSE);
+    }
+    data->unk_000A4[12] = SpriteRenderer_LoadResourcesAndCreateSprite(data->spriteRenderer, data->spriteGfxHandler, &ov63_022200A0[12]);
+    data->unk_000A4[13] = SpriteRenderer_LoadResourcesAndCreateSprite(data->spriteRenderer, data->spriteGfxHandler, &ov63_022200A0[13]);
+    sub_0200DF98(data->unk_000A4[12], 1);
+    sub_0200DF98(data->unk_000A4[13], 1);
+    UnkImageStruct_SetSpriteVisibleFlag(data->unk_000A4[12], FALSE);
+    UnkImageStruct_SetSpriteVisibleFlag(data->unk_000A4[13], FALSE);
+    
+    if (PlayerProfile_GetTrainerGender(data->args->profile) == TRAINER_FEMALE) {
+        sub_02070D84(TRAINERCLASS_PKMN_TRAINER_LYRA, 2, &sp2C);
+    } else {
+        sub_02070D84(TRAINERCLASS_PKMN_TRAINER_ETHAN, 2, &sp2C);
+    }
+    r4 = AllocFromHeap(HEAP_ID_REGISTER_HALL_OF_FAME, 0x1900);
+    sub_020143E0(sp2C.narcId, sp2C.ncbr_id, HEAP_ID_REGISTER_HALL_OF_FAME, &sp1C, r4);
+    ov63_0221C00C(r4, NNS_G2dGetImageLocation(sub_02024B1C(data->unk_000A4[12]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN), 3200);
+    FreeToHeap(r4);
+
+    GfGfxLoader_GXLoadPal(sp2C.narcId, sp2C.nclr_id, GF_PAL_LOCATION_MAIN_OBJ, (enum GFPalSlotOffset)NNS_G2dGetImagePaletteLocation(sub_02024B34(data->unk_000A4[12]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN), 0x20, HEAP_ID_REGISTER_HALL_OF_FAME);
+
+    data->unk_000A4[14] = SpriteRenderer_LoadResourcesAndCreateSprite(data->spriteRenderer, data->spriteGfxHandler, &ov63_022200A0[14]);
+    UnkImageStruct_SetSpriteVisibleFlag(data->unk_000A4[14], FALSE);
+    ov63_0221C954(data, 13, 0);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
