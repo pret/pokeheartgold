@@ -6,6 +6,9 @@
 typedef struct FrontierMap {
     u32 unk0;
     PaletteData *paletteData;
+    u32 unk8;
+    u32 unkC;
+    u32 unk10;
 } FrontierMap;
 
 typedef struct UnkStruct_02239938 {

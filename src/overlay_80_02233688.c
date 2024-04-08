@@ -4,14 +4,21 @@
 #include "frontier/overlay_80_022340E8.h"
 #include "frontier/overlay_80_02238034.h"
 #include "frontier/overlay_80_02229EE0.h"
+#include "frontier/overlay_80_02239960.h"
+#include "frontier/overlay_80_0222AB40.h"
 #include "frontier/frontier.h"
 #include "launch_application_data.h"
 #include "unk_02096910.h"
 #include "unk_02034354.h"
+#include "unk_02014DA0.h"
 #include "overlay_42.h"
+#include "library/spl_emitter.h"
 
 static void GameBoardArgs_Set(GAME_BOARD_ARGS *args, ArcadeContext *data);
 static void ov80_02233A1C(void *data);
+static void ov80_02233F1C(FrontierContext *ctx, ArcadeContext *arcadeCtx, u32 a2);
+static void ov80_02233F40(struct SPLEmitter *emitter);
+static BOOL ov80_02234028(FrontierContext *ctx);
 
 BOOL FrtCmd_ArcadeAlloc(FrontierContext *ctx) {
     u32 spC = FrontierScript_ReadVar(ctx);
@@ -422,3 +429,98 @@ BOOL FrtCmd_ArcadeAction(FrontierContext *ctx) {
 
     return FALSE;
 }
+
+static void ov80_02233F1C(FrontierContext *ctx, ArcadeContext *arcadeCtx, u32 a2) {
+    FrontierMap *map = FrontierSystem_GetFrontierMap(ctx->frontierSystem);
+    sub_02015494(ov80_02239A60(map->unk10, 0), a2, ov80_02233F40, arcadeCtx);
+}
+
+extern const VecFx32 ov80_0223BE6C; //{-1, 0, 0}
+static void ov80_02233F40(struct SPLEmitter *emitter) {
+	VecFx16 axis;
+    ArcadeContext *ctx = sub_02015504();
+    const VecFx32 pos = ov80_0223BE6C;
+    
+    if (ctx->unkA7A == 1) {
+        sub_02015538(emitter, &axis);
+        
+        axis.x *= -1;
+
+        SPL_SetEmitterAxis(emitter, &axis);
+
+        SPL_SetEmitterPosition(emitter, &pos);
+    }
+}
+
+BOOL FrtCmd_ArcadeGetBattleResult(FrontierContext *ctx) {
+    u16 *var = FrontierScript_ReadVarPtr(ctx);
+    
+    ArcadeContext *arcadeCtx = Frontier_GetData(ctx->frontierSystem->unk0);
+    
+    *var = arcadeCtx->isBattleWin;
+
+    return FALSE;
+}
+
+BOOL FrtCmd_ArcadeSendBuffer(FrontierContext *ctx) {
+    u32 unk0 = FrontierScript_ReadVar(ctx);
+    u32 unk1 = FrontierScript_ReadVar(ctx);
+    u16 *ret = FrontierScript_ReadVarPtr(ctx);
+
+    ArcadeContext *arcadeContxt = Frontier_GetData(ctx->frontierSystem->unk0);
+
+    *ret = ov80_02234E50(arcadeContxt, unk0, unk1);
+
+    return TRUE;
+}
+
+BOOL FrtCmd_ArcadeReceiveBuffer(FrontierContext *ctx) {
+    ctx->unk78[0] = FrontierScriptReadHalf(ctx);
+    ov80_0222AB84(ctx, ov80_02234028);
+    return TRUE;
+}
+
+static BOOL ov80_02234028(FrontierContext *ctx) {
+    ov80_0222BE9C(ctx, ctx->unk78[0]);
+    ArcadeContext *arcadeCtx = Frontier_GetData(ctx->frontierSystem->unk0);
+
+    if (arcadeCtx->unkA7C >= 2) {
+        arcadeCtx->unkA7C = 0;
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+BOOL FrtCmd_ArcadePrintMsg(FrontierContext *ctx) {
+    FrontierLaunchParam *param = Frontier_GetLaunchParam(ctx->frontierSystem->unk0);
+    u8 index = FrontierScript_ReadShort(ctx);
+    ArcadeContext *arcadeCtx = Frontier_GetData(ctx->frontierSystem->unk0);
+
+    if(arcadeCtx == NULL) {
+        return FALSE;
+    }
+
+    u16 *msg = arcadeCtx->unkF4[index].unk18;
+
+    ov80_0222F44C(ctx, msg);
+
+    return TRUE;
+}
+
+BOOL FrtCmd_ArcadeSetEvent(FrontierContext *ctx) {
+    ArcadeContext *arcadeCtx = Frontier_GetData(ctx->frontierSystem->unk0);
+    ov80_02234E98(arcadeCtx, arcadeCtx->unk13);
+    return TRUE;
+}
+
+BOOL ov80_022340A8(FrontierContext *ctx) {
+    FrontierMap *map = FrontierSystem_GetFrontierMap(ctx->frontierSystem);
+    u32 var0 = FrontierScript_ReadVar(ctx);
+    u32 var1 = FrontierScript_ReadVar(ctx);
+    u32 var2 = FrontierScript_ReadVar(ctx);
+    ArcadeContext *arcadeCtx = Frontier_GetData(ctx->frontierSystem->unk0);
+    ov80_02234D04(arcadeCtx, map, var0, var1, var2);
+    return FALSE;
+}
+

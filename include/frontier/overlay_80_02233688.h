@@ -14,8 +14,11 @@ BOOL FrtCmd_ArcadeStartBattle(FrontierContext *ctx);
 BOOL FrtCmd_ArcadeSetPartyBeforeBattle(FrontierContext *ctx);
 BOOL FrtCmd_ArcadeSetPartyAfterBattle(FrontierContext *ctx);
 BOOL FrtCmd_ArcadeAction(FrontierContext *ctx);
-
-//static functions to be decompiled later
-void ov80_02233F1C(FrontierContext *ctx, ArcadeContext *arcadeCtx, u32 a2);
+BOOL FrtCmd_ArcadeGetBattleResult(FrontierContext *ctx);
+BOOL FrtCmd_ArcadeSendBuffer(FrontierContext *ctx);
+BOOL FrtCmd_ArcadeReceiveBuffer(FrontierContext *ctx);
+BOOL FrtCmd_ArcadePrintMsg(FrontierContext *ctx);
+BOOL FrtCmd_ArcadeSetEvent(FrontierContext *ctx);
+BOOL ov80_022340A8(FrontierContext *ctx);
 
 #endif

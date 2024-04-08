@@ -2,7 +2,9 @@
 #define POKEHEARTGOLD_OVERLAY_80_02229EE0
 
 typedef struct FrontierTrainerData {
-    u8 unk0[0x110];
+    u8 unk0[0x18];
+    u16 unk18[4];
+    u8 unk1C[0xF0];
 } FrontierTrainerData;
 
 void ov80_0222A474(FrontierTrainerData *a0, u16 a1, u32 a2, u32 a3);

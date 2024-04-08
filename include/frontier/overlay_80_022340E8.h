@@ -86,5 +86,8 @@ void ov80_02234B7C(ArcadeContext *ctx, FrontierMap *map, u32 a2, u32 a3);
 void ov80_02234BB4(ArcadeContext *ctx, FrontierMap *map, u32 a2, u32 a3);
 void ov80_02234DC4(u32 a0, u32 a1);
 u32 ov80_02235324(ArcadeContext *ctx);
+u16 ov80_02234E50(ArcadeContext *ctx, u32 a1, u32 a2);
+void ov80_02234E98(ArcadeContext *ctx, u8 a1);
+void ov80_02234D04(ArcadeContext *ctx, FrontierMap *map, u32 a0, u32 a1, u32 a2);
 
 #endif
