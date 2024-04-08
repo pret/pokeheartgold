@@ -803,7 +803,7 @@ static void HandleCutscenes(CreditsAppWork *work) {
         if (work->timer == cutsceneSprites->sprite[i].activateTime) {
             ActivateSprite(cutsceneSprites->sprite[i].sprite);
         }
-        if (Sprite_IsCellAnimationFinished(cutsceneSprites->sprite[i].sprite) == 0) {
+        if (Sprite_IsCellAnimationRunning(cutsceneSprites->sprite[i].sprite) == 0) {
             count++;
         }
     }

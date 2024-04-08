@@ -8,7 +8,8 @@ $(PPARK_NARC): %.narc: $(PPARK_JSON) $(PPARK_TEMPLATE)
 	$(JSONPROC) $^ $*.c
 	$(WINE) $(MWCC) $(MWCFLAGS) -c -o $*.o $*.c
 	$(O2NARC) $*.o $@ -n
+	@$(RM) $*.o $*.c
 
 $(PPARK_JSON): | $(WORK_DIR)/include/global.h
 
-FS_CLEAN_TARGETS += $(PPARK_NARC)
+FS_CLEAN_TARGETS += $(PPARK_NARC) $(PPARK_NARC:%.narc=%.c) $(PPARK_NARC:%.narc=%.o)

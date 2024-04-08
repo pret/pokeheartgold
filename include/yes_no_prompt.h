@@ -4,7 +4,7 @@
 #include "heap.h"
 #include "bg_window.h"
 #include "palette.h"
-#include "unk_02026C44.h"
+#include "touch_hitbox_controller.h"
 
 typedef enum YesNoResponse {
     YESNORESPONSE_WAIT = 0,

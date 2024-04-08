@@ -669,7 +669,7 @@ void sub_0200DC8C(UnkImageStruct* unk, fx32 frame) {
 }
 
 BOOL sub_0200DC98(Sprite* sprite) {
-    return Sprite_IsCellAnimationFinished(sprite);
+    return Sprite_IsCellAnimationRunning(sprite);
 }
 
 BOOL sub_0200DCA0(UnkImageStruct* unk) {

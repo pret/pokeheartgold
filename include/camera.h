@@ -40,6 +40,14 @@ typedef struct CameraPerspective {
     fx32 far;
 } CameraPerspective;
 
+typedef struct CameraParam {
+    fx32 distance;
+    CameraAngle angle;
+    u8 perspectiveType;
+    u16 perspective;
+    BOOL setReference;
+} CameraParam;
+
 typedef struct CameraLookAt {
     VecFx32 camPos;
     VecFx32 camTarget;
@@ -73,7 +81,7 @@ void Camera_SetLookAtCamUp(VecFx32 *camUp, Camera *camera);
 void Camera_SetFixedTarget(VecFx32 *target, Camera *camera);
 void Camera_ClearFixedTarget(Camera *camera);
 void Camera_SetPerspectiveClippingPlane(fx32 near, fx32 far, Camera *camera);
-void Camera_Init_FromTargetDistanceAndAngle(VecFx32 *target, fx32 distance, CameraAngle *angle, u16 perspectiveAngle, u8 perspectiveType, BOOL setReference, Camera *camera);
+void Camera_Init_FromTargetDistanceAndAngle(VecFx32 *target, fx32 distance, const CameraAngle *angle, u16 perspectiveAngle, u8 perspectiveType, BOOL setReference, Camera *camera);
 void Camera_Init_FromPosDistanceAndAngle(VecFx32 *pos, fx32 distance, CameraAngle *angle, u16 perspectiveAngle, u8 perspectiveType, Camera *camera);
 void Camera_Init_FromTargetAndPos(const VecFx32 *target, const VecFx32 *pos, u16 perspectiveAngle, u8 perspectiveType, BOOL setReference, Camera *camera);
 void Camera_ApplyPerspectiveType(u8 perspectiveType, Camera *camera);

@@ -5138,11 +5138,11 @@ _021E80B0: .word sub_02024B38
 
 	thumb_func_start ov87_021E80B4
 ov87_021E80B4: ; 0x021E80B4
-	ldr r3, _021E80BC ; =Sprite_IsCellAnimationFinished
+	ldr r3, _021E80BC ; =Sprite_IsCellAnimationRunning
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_021E80BC: .word Sprite_IsCellAnimationFinished
+_021E80BC: .word Sprite_IsCellAnimationRunning
 	thumb_func_end ov87_021E80B4
 
 	thumb_func_start ov87_021E80C0

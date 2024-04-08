@@ -14,5 +14,6 @@
 #include <nnsys/g3d/gecom.h>
 #include <nnsys/g3d/gecom_inline.h>
 #include <nnsys/g3d/mem.h>
+#include <nnsys/g3d/model_inline.h>
 
 #endif //NNSYS_G3D_H_
