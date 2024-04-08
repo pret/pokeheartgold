@@ -4859,7 +4859,7 @@ BOOL ScrCmd_Cinematic(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_727(ScriptContext *ctx) {
+BOOL ScrCmd_GetFollowPokePartyIndex(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = GetIdxOfFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(ctx->fieldSystem->saveData));
     return FALSE;
@@ -5149,9 +5149,9 @@ BOOL ScrCmd_RockSmashItemCheck(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_754(ScriptContext *ctx) {
+BOOL ScrCmd_TryHeadbuttEncounter(ScriptContext *ctx) {
     u16 *r1 = ScriptGetVarPointer(ctx);
-    ov01_02204ED8(ctx->fieldSystem, r1);
+    FieldSystem_TryHeadbuttEncounter(ctx->fieldSystem, r1);
     return TRUE;
 }
 

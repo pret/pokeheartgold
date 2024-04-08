@@ -3718,7 +3718,7 @@ _0225BD6A:
 	pop {r3, r4, r5, pc}
 _0225BD78:
 	add r0, r5, #0
-	bl CheckFlag996
+	bl Save_VarsFlags_CheckBugContestFlag
 	cmp r0, #0
 	beq _0225BD86
 	mov r0, #2

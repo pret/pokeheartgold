@@ -1,3 +1,5 @@
+{{ doNotModifyHeader }}
+
 #include "global.h"
 #include "pal_park.h"
 
