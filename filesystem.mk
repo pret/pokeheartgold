@@ -445,6 +445,7 @@ $(eval $(call arc_strip_name,files/resource/eng/pms_aikotoba/pms_aikotoba.narc,f
 $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_data_gira.narc,files/a/2/1/4))
 $(eval $(call arc_strip_name,files/fielddata/sodateya/kowaza_list.narc,files/a/2/2/9))
 $(eval $(call arc_strip_name,files/arc/headbutt.$(buildname).narc,files/a/2/5/2))
+$(eval $(call arc_strip_name,files/demo/opening/gs_opening.narc,files/a/2/6/2))
 $(eval $(call arc_strip_name,files/application/voltorb_flip.narc,files/a/2/6/4))
 $(eval $(call arc_strip_name,files/poketool/icongra/poke_icon/poke_icon.narc,files/a/0/2/0))
 
@@ -468,6 +469,7 @@ include files/msgdata/msg.mk
 include files/fielddata/script/scr_seq.mk
 $(SCRIPT_BINS): $(FIRST_MSG_H_GEN)
 
+include files/graphic/font.mk
 include files/battledata/script/effect_seq.mk
 $(EFFECT_SCRIPT_BINS): $(FIRST_MSG_H_GEN)
 
@@ -476,7 +478,6 @@ $(MOVE_SCRIPT_BINS): $(FIRST_MSG_H_GEN)
 
 include files/battledata/script/subscript.mk
 $(BTL_SUBSCRIPT_SCRIPT_BINS): $(FIRST_MSG_H_GEN)
-
 
 include files/fielddata/eventdata/zone_event.mk
 include files/data/sound/sound_data.mk
@@ -502,6 +503,7 @@ include files/application/voltorb_flip.mk
 include files/application/annon/puzzle_gra.mk
 include files/data/resdat.mk
 include files/demo/title/titledemo.mk
+include files/demo/opening/gs_opening.mk
 include files/arc/headbutt.mk
 include files/poketool/personal/personal.mk
 include files/fielddata/graphic/preview_graphic/preview_graphic.mk

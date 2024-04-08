@@ -193,7 +193,7 @@ void Camera_SetPerspectiveClippingPlane(fx32 near, fx32 far, Camera *camera) {
     Camera_ApplyPerspectiveType(camera->perspectiveType, camera);
 }
 
-void Camera_Init_FromTargetDistanceAndAngle(VecFx32 *target, fx32 distance, CameraAngle *angle, u16 perspectiveAngle, u8 perspectiveType, BOOL setReference, Camera *camera) {
+void Camera_Init_FromTargetDistanceAndAngle(VecFx32 *target, fx32 distance, const CameraAngle *angle, u16 perspectiveAngle, u8 perspectiveType, BOOL setReference, Camera *camera) {
     Camera_InitInternal(perspectiveAngle, camera);
     camera->lookAt.camTarget = *target;
     camera->distance = distance;
@@ -202,7 +202,7 @@ void Camera_Init_FromTargetDistanceAndAngle(VecFx32 *target, fx32 distance, Came
     Camera_ApplyPerspectiveType(perspectiveType, camera);
     if (!setReference) {
         return;
-    }        
+    }
     camera->curTarget = target;
     camera->lastTarget = *target;
     camera->enableOffsetX = TRUE;

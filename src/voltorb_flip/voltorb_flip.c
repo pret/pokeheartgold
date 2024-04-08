@@ -1657,7 +1657,7 @@ static void ov122_021E7928(VoltorbFlipAppWork *work) {
     for (int i = 0; i < 6; i++) {
         InitBgFromTemplate(work->bgConfig, ov122_021E9270[i], &temp2.unk0[i], 0);
         BgClearTilemapBufferAndCommit(work->bgConfig, ov122_021E9270[i]);
-        BG_FillCharDataRange(work->bgConfig, (enum GFBgLayer)ov122_021E9270[i], 0, 1, 0);
+        BG_FillCharDataRange(work->bgConfig, (GFBgLayer)ov122_021E9270[i], 0, 1, 0);
         ToggleBgLayer(ov122_021E9270[i], GF_PLANE_TOGGLE_ON);
     }
 }
