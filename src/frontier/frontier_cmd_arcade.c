@@ -1,6 +1,6 @@
 #include "global.h"
 #include "battle/battle_setup.h"
-#include "frontier/overlay_80_02233688.h"
+#include "frontier/frontier_cmd_arcade.h"
 #include "frontier/overlay_80_022340E8.h"
 #include "frontier/overlay_80_02238034.h"
 #include "frontier/overlay_80_02229EE0.h"
