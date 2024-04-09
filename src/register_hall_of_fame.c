@@ -1236,29 +1236,29 @@ static void ov63_0221CB94(RegisterHallOfFameData *data, RegisterHofMon *hofMon, 
 
 static void ov63_0221CC78(RegisterHallOfFameData *data) {
     {
-                GraphicsModes graphicsModes = ov63_0221FB10;
+        GraphicsModes graphicsModes = ov63_0221FB10;
         SetBothScreensModesAndDisable(&graphicsModes);
     }
 
     {
-                BgTemplate bgTemplate = ov63_0221FBAC;
+        BgTemplate bgTemplate = ov63_0221FBAC;
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_MAIN_0, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_MAIN_0);
         BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 0x20, 0x0000, HEAP_ID_REGISTER_HALL_OF_FAME);
     }
 
     {
-                BgTemplate bgTemplate = ov63_0221FBC8;
+        BgTemplate bgTemplate = ov63_0221FBC8;
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_MAIN_1, &bgTemplate, GF_BG_TYPE_TEXT);
     }
 
     {
-                BgTemplate bgTemplate = ov63_0221FB74;
+        BgTemplate bgTemplate = ov63_0221FB74;
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_MAIN_2, &bgTemplate, GF_BG_TYPE_TEXT);
     }
 
     {
-                BgTemplate bgTemplate = ov63_0221FC1C;
+        BgTemplate bgTemplate = ov63_0221FC1C;
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_MAIN_3, &bgTemplate, GF_BG_TYPE_TEXT);
     }
 }
