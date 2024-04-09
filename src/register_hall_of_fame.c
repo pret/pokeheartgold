@@ -32,14 +32,14 @@
 #include "data/mmodel/mmodel.naix"
 
 typedef enum RegisterHallOfFameScene {
-    REGHOF_SCENE_0,
-    REGHOF_SCENE_1,
-    REGHOF_SCENE_2,
-    REGHOF_SCENE_3,
-    REGHOF_SCENE_4,
-    REGHOF_SCENE_5,
-    REGHOF_SCENE_6,
-    REGHOF_SCENE_7,
+    REGHOF_SCENE_WAIT_FADE,
+    REGHOF_SCENE_WAIT_SUBPROC,
+    REGHOF_SCENE_INDIV_MONS_INIT,
+    REGHOF_SCENE_INDIV_MONS_MAIN,
+    REGHOF_SCENE_INDIV_MONS_EXIT,
+    REGHOF_SCENE_WHOLE_PARTY_INIT,
+    REGHOF_SCENE_WHOLE_PARTY_MAIN,
+    REGHOF_SCENE_WHOLE_PARTY_EXIT,
     REGHOF_SCENE_MAX,
 } RegisterHallOfFameScene;
 
@@ -71,19 +71,19 @@ typedef struct RegisterHallOfFameData {
     u16 subprocCounter;
     u16 subprocStage;
     BgConfig *bgConfig; // 00010
-    Window unk_00014[7];
+    Window windows[7];
     MsgData *msgData; // 00084
     MessageFormat *msgFormat; // 00088
-    String *unk_0008C;
-    String *unk_00090;
+    String *strbuf1;
+    String *strbuf2;
     NARC *unk_00094;
     NARC *unk_00098;
     SpriteRenderer *spriteRenderer;  // 0009C
     SpriteGfxHandler *spriteGfxHandler;  // 000A0
     UnkImageStruct *monPics[15];
-    Camera *unk_000E0;
-    VecFx32 unk_000E4;
-    CameraAngle unk_000F0;
+    Camera *camera;
+    VecFx32 cameraTarget;
+    CameraAngle cameraAngle;
     SysTask *spotlightsTask;
     SysTask *confettiTask;
     RegisterHofMon mons[PARTY_SIZE];
@@ -173,14 +173,14 @@ static void ov63_0221C16C(RegisterHallOfFameData *data, u32 whichPic, int animSe
 static RegisterHallOfFameScene RegisterHallOfFame_FadeFromBlack(RegisterHallOfFameData *data, RegisterHallOfFameScene nextScene);
 static RegisterHallOfFameScene RegisterHallOfFame_FadeToBlack(RegisterHallOfFameData *data, RegisterHallOfFameScene nextScene);
 static BOOL RegisterHallOfFame_SetupSubproc(RegisterHallOfFameData *data, BOOL (*callback)(RegisterHallOfFameData *), RegisterHallOfFameScene nextScene);
-static RegisterHallOfFameScene RegisterHallOfFame_Scene0(RegisterHallOfFameData *data);
-static RegisterHallOfFameScene RegisterHallOfFame_Scene1(RegisterHallOfFameData *data);
-static RegisterHallOfFameScene RegisterHallOfFame_Scene2(RegisterHallOfFameData *data);
-static RegisterHallOfFameScene RegisterHallOfFame_Scene3(RegisterHallOfFameData *data);
-static RegisterHallOfFameScene RegisterHallOfFame_Scene4(RegisterHallOfFameData *data);
-static RegisterHallOfFameScene RegisterHallOfFame_Scene5(RegisterHallOfFameData *data);
-static RegisterHallOfFameScene RegisterHallOfFame_Scene6(RegisterHallOfFameData *data);
-static RegisterHallOfFameScene RegisterHallOfFame_Scene7(RegisterHallOfFameData *data);
+static RegisterHallOfFameScene RegisterHallOfFame_WaitFade(RegisterHallOfFameData *data);
+static RegisterHallOfFameScene RegisterHallOfFame_WaitSubproc(RegisterHallOfFameData *data);
+static RegisterHallOfFameScene RegisterHallOfFame_IndivMonsInit(RegisterHallOfFameData *data);
+static RegisterHallOfFameScene RegisterHallOfFame_IndivMonsMain(RegisterHallOfFameData *data);
+static RegisterHallOfFameScene RegisterHallOfFame_IndivMonsExit(RegisterHallOfFameData *data);
+static RegisterHallOfFameScene RegisterHallOfFame_WholePartyInit(RegisterHallOfFameData *data);
+static RegisterHallOfFameScene RegisterHallOfFame_WholePartyMain(RegisterHallOfFameData *data);
+static RegisterHallOfFameScene RegisterHallOfFame_WholePartyExit(RegisterHallOfFameData *data);
 static void RegisterHallOfFame_MonSpritePosScaleAnimStep(UnkImageStruct *unkImageStruct, const RegHOFSpritePosScaleAnimParam *param, u32 duration, u32 step);
 static void ov63_0221C6FC(RegisterHallOfFameData *data);
 static void ov63_0221C85C(RegisterHallOfFameData *data);
@@ -191,18 +191,18 @@ static void ov63_0221C9E0(RegisterHallOfFameData *data, int a1, int a2);
 static void ov63_0221CA1C(RegisterHallOfFameData *data, RegisterHofMon *mon);
 static void ov63_0221CB48(RegisterHallOfFameData *data);
 static void ov63_0221CB94(RegisterHallOfFameData *data, RegisterHofMon *hofMon, int a2);
-static void ov63_0221CC78(RegisterHallOfFameData *data);
+static void RegisterHallOfFame_IndivMons_InitBgLayers(RegisterHallOfFameData *data);
 static void ov63_0221CE94(RegisterHallOfFameData *data, u16 a1, int a2);
 static void ov63_0221D20C(RegisterHallOfFameData *data, int a1);
 static void ov63_0221D21C(RegisterHallOfFameData *data);
 static void ov63_0221D240(RegisterHallOfFameData *data, int a1);
 static void ov63_0221D2F8(RegisterHallOfFameData *data, RegisterHofMon *mon);
 static void ov63_0221CD40(RegisterHallOfFameData *data);
-static void ov63_0221CD68(RegisterHallOfFameData *data);
-static void ov63_0221CDF8(RegisterHallOfFameData *data);
+static void RegisterHallOfFames_IndivMons_LoadBgGfx(RegisterHallOfFameData *data);
+static void RegisterHallOfFame_IndivMons_PrintHeader(RegisterHallOfFameData *data);
 static void ov63_0221CE7C(RegisterHallOfFameData *data);
 static void ov63_0221D21C(RegisterHallOfFameData *data);
-static void ov63_0221D344(RegisterHallOfFameData *data);
+static void RegisterHallOfFame_IndivMons_ResetBgAndSpritePos(RegisterHallOfFameData *data);
 static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data);
 static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data);
 static void ov63_0221E114(RegisterHallOfFameData *data);
@@ -221,25 +221,25 @@ static void ov63_0221EA24(RegisterHallOfFameData *data);
 static void ov63_0221EAA8(RegisterHallOfFameData *data);
 static void ov63_0221EC04(RegisterHallOfFameData *data);
 static void ov63_0221EC1C(RegisterHallOfFameData *data);
-static void ov63_0221EFD8(RegisterHallOfFameData *data);
-static void ov63_0221F088(RegisterHallOfFameData *data);
-static void ov63_0221F130(RegisterHallOfFameData *data);
-static void ov63_0221F1C4(RegisterHallOfFameData *data);
-static void ov63_0221F1D0(RegisterHallOfFameData *data);
+static void RegisterHallOfFame_AfterWholePartyView_UnloadSpriteRes(RegisterHallOfFameData *data);
+static void RegisterHallOfFame_G3Init(RegisterHallOfFameData *data);
+static void RegisterHallOfFame_CreateCamera(RegisterHallOfFameData *data);
+static void RegisterHallOfFame_DeleteCamera(RegisterHallOfFameData *data);
+static void RegisterHallOfFame_G3Commit(RegisterHallOfFameData *data);
 static SysTask *RegisterHallOfFame_CreateSpotlightController(RegisterHallOfFameData *data);
-static void ov63_0221F294(SysTask *task, void *taskData);
+static void Task_RegisterHallOfFame_Spotlights_BeginMakeDL(SysTask *task, void *taskData);
 static void Task_RegisterHallOfFame_Spotlights_EndMakeDL(SysTask *task, void *taskData);
 static void RegisterHallOfFame_AddSpotlight(SysTask *task, int xOffset, fx32 angle);
 static SysTask *RegisterHallOfFame_CreateSpotlightTaskEx(RegisterHofSpotlightTaskData *spotlight, int xOffset, fx32 angle, int index);
-static void ov63_0221F3F4(SysTask *task, void *taskData);
-static void ov63_0221F580(SysTask *task);
-static void ov63_0221F5B4(SysTask *task);
-static BOOL ov63_0221F600(RegisterHallOfFameData *data);
-static SysTask *ov63_0221F614(RegisterHallOfFameData *data);
-static void ov63_0221F7C4(SysTask *task);
-static void ov63_0221F7DC(SysTask *task);
-static void ov63_0221F7EC(SysTask *task, void *taskData);
-static void ov63_0221FAA0(SysTask *task);
+static void Task_RegisterHallOfFame_SpotlightInstance(SysTask *task, void *taskData);
+static void RegisterHallOfFame_SpotlightsTask_G3Commit(SysTask *task);
+static void RegisterHallOfFame_DestroySpotlightsTask(SysTask *task);
+static BOOL RegisterHallOfFame_AreAllSpotlightsFinished(RegisterHallOfFameData *data);
+static SysTask *RegisterHallOfFame_CreateConfettiTask(RegisterHallOfFameData *data);
+static void RegisterHallOfFame_EndConfetti(SysTask *task);
+static void RegisterHallOfFame_StartConfetti(SysTask *task);
+static void Task_RegisterHallOfFame_Confetti(SysTask *task, void *taskData);
+static void RegisterHallOfFame_ConfettiTask_G3Commit(SysTask *task);
 
 static BOOL sSpotlightsActive = TRUE;
 static int sNumSpotlightTasks;
@@ -514,14 +514,14 @@ static const int sSpotlightColors[8] = {
 };  // ov63_0221FCF8
 
 static RegisterHallOfFameScene (*const sSceneFuncs[8])(RegisterHallOfFameData *data) = {
-    RegisterHallOfFame_Scene0,
-    RegisterHallOfFame_Scene1,
-    RegisterHallOfFame_Scene2,
-    RegisterHallOfFame_Scene3,
-    RegisterHallOfFame_Scene4,
-    RegisterHallOfFame_Scene5,
-    RegisterHallOfFame_Scene6,
-    RegisterHallOfFame_Scene7,
+    RegisterHallOfFame_WaitFade,
+    RegisterHallOfFame_WaitSubproc,
+    RegisterHallOfFame_IndivMonsInit,
+    RegisterHallOfFame_IndivMonsMain,
+    RegisterHallOfFame_IndivMonsExit,
+    RegisterHallOfFame_WholePartyInit,
+    RegisterHallOfFame_WholePartyMain,
+    RegisterHallOfFame_WholePartyExit,
 };  // 0221FD18
 
 static const int ov63_0221FD38[8] = {
@@ -706,8 +706,8 @@ BOOL RegisterHallOfFame_Init(OVY_MANAGER *man, int *state) {
     data->args = OverlayManager_GetArgs(man);
     data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0180_bin, HEAP_ID_REGISTER_HALL_OF_FAME);
     data->msgFormat = MessageFormat_New(HEAP_ID_REGISTER_HALL_OF_FAME);
-    data->unk_0008C = String_New(500, HEAP_ID_REGISTER_HALL_OF_FAME);
-    data->unk_00090 = String_New(500, HEAP_ID_REGISTER_HALL_OF_FAME);
+    data->strbuf1 = String_New(500, HEAP_ID_REGISTER_HALL_OF_FAME);
+    data->strbuf2 = String_New(500, HEAP_ID_REGISTER_HALL_OF_FAME);
     data->unk_00094 = NARC_New(NARC_a_1_0_1, HEAP_ID_REGISTER_HALL_OF_FAME);
     data->unk_00098 = NARC_New(NARC_a_1_8_0, HEAP_ID_REGISTER_HALL_OF_FAME);
     ov63_0221E114(data);
@@ -717,7 +717,7 @@ BOOL RegisterHallOfFame_Init(OVY_MANAGER *man, int *state) {
     sub_02004EC4(8, SEQ_GS_E_DENDOUIRI, 1);
     sub_02004EC4(71, 0, 0);
     LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0x1E0, HEAP_ID_REGISTER_HALL_OF_FAME);
-    data->currentScene = REGHOF_SCENE_2;
+    data->currentScene = REGHOF_SCENE_INDIV_MONS_INIT;
     return TRUE;
 }
 
@@ -727,8 +727,8 @@ BOOL RegisterHallOfFame_Exit(OVY_MANAGER *man, int *state) {
     ov63_0221C05C(data);
     NARC_Delete(data->unk_00098);
     NARC_Delete(data->unk_00094);
-    String_Delete(data->unk_0008C);
-    String_Delete(data->unk_00090);
+    String_Delete(data->strbuf1);
+    String_Delete(data->strbuf2);
     MessageFormat_Delete(data->msgFormat);
     DestroyMsgData(data->msgData);
     OverlayManager_FreeData(man);
@@ -829,13 +829,13 @@ static void ov63_0221C16C(RegisterHallOfFameData *data, u32 whichPic, int animSe
 static RegisterHallOfFameScene RegisterHallOfFame_FadeFromBlack(RegisterHallOfFameData *data, RegisterHallOfFameScene nextScene) {
     BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, HEAP_ID_REGISTER_HALL_OF_FAME);
     data->nextScene = nextScene;
-    return REGHOF_SCENE_0;
+    return REGHOF_SCENE_WAIT_FADE;
 }
 
 static RegisterHallOfFameScene RegisterHallOfFame_FadeToBlack(RegisterHallOfFameData *data, RegisterHallOfFameScene nextScene) {
     BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_REGISTER_HALL_OF_FAME);
     data->nextScene = nextScene;
-    return REGHOF_SCENE_0;
+    return REGHOF_SCENE_WAIT_FADE;
 }
 
 static BOOL RegisterHallOfFame_SetupSubproc(RegisterHallOfFameData *data, BOOL (*callback)(RegisterHallOfFameData *), RegisterHallOfFameScene nextScene) {
@@ -846,44 +846,44 @@ static BOOL RegisterHallOfFame_SetupSubproc(RegisterHallOfFameData *data, BOOL (
     return TRUE;
 }
 
-static RegisterHallOfFameScene RegisterHallOfFame_Scene0(RegisterHallOfFameData *data) {
+static RegisterHallOfFameScene RegisterHallOfFame_WaitFade(RegisterHallOfFameData *data) {
     if (IsPaletteFadeFinished() == TRUE) {
         return data->nextScene;
     } else {
-        return REGHOF_SCENE_0;
+        return REGHOF_SCENE_WAIT_FADE;
     }
 }
 
-static RegisterHallOfFameScene RegisterHallOfFame_Scene1(RegisterHallOfFameData *data) {
+static RegisterHallOfFameScene RegisterHallOfFame_WaitSubproc(RegisterHallOfFameData *data) {
     if (data->subprocCallback == NULL) {
         return data->nextScene;
     } else {
-        return REGHOF_SCENE_1;
+        return REGHOF_SCENE_WAIT_SUBPROC;
     }
 }
 
-static RegisterHallOfFameScene RegisterHallOfFame_Scene2(RegisterHallOfFameData *data) {
-    ov63_0221CC78(data);
-    ov63_0221CDF8(data);
-    ov63_0221CD68(data);
+static RegisterHallOfFameScene RegisterHallOfFame_IndivMonsInit(RegisterHallOfFameData *data) {
+    RegisterHallOfFame_IndivMons_InitBgLayers(data);
+    RegisterHallOfFame_IndivMons_PrintHeader(data);
+    RegisterHallOfFames_IndivMons_LoadBgGfx(data);
     data->sceneSubstep = 0;
     data->curMonIndex = 0;
     data->vblankTask = SysTask_CreateOnVBlankQueue(VBlankTask_RegisterHallOfFame_IndividualMonsCongrats, data, 0);
-    return RegisterHallOfFame_FadeFromBlack(data, REGHOF_SCENE_3);
+    return RegisterHallOfFame_FadeFromBlack(data, REGHOF_SCENE_INDIV_MONS_MAIN);
 }
 
-static RegisterHallOfFameScene RegisterHallOfFame_Scene3(RegisterHallOfFameData *data) {
+static RegisterHallOfFameScene RegisterHallOfFame_IndivMonsMain(RegisterHallOfFameData *data) {
     switch (data->sceneSubstep) {
     case 0:
-        ov63_0221D344(data);
+        RegisterHallOfFame_IndivMons_ResetBgAndSpritePos(data);
         ++data->sceneSubstep;
         break;
     case 1:
         ++data->sceneSubstep;
         if ((data->curMonIndex & 1) == 0) {
-            RegisterHallOfFame_SetupSubproc(data, RegisterHallOfFame_ShowMon_LeftSide, REGHOF_SCENE_3);
+            RegisterHallOfFame_SetupSubproc(data, RegisterHallOfFame_ShowMon_LeftSide, REGHOF_SCENE_INDIV_MONS_MAIN);
         } else {
-            RegisterHallOfFame_SetupSubproc(data, RegisterHallOfFame_ShowMon_RightSide, REGHOF_SCENE_3);
+            RegisterHallOfFame_SetupSubproc(data, RegisterHallOfFame_ShowMon_RightSide, REGHOF_SCENE_INDIV_MONS_MAIN);
         }
         break;
     case 2:
@@ -910,35 +910,35 @@ static RegisterHallOfFameScene RegisterHallOfFame_Scene3(RegisterHallOfFameData 
         }
         break;
     case 4:
-        return RegisterHallOfFame_FadeToBlack(data, REGHOF_SCENE_4);
+        return RegisterHallOfFame_FadeToBlack(data, REGHOF_SCENE_INDIV_MONS_EXIT);
     }
-    return REGHOF_SCENE_3;
+    return REGHOF_SCENE_INDIV_MONS_MAIN;
 }
 
-static RegisterHallOfFameScene RegisterHallOfFame_Scene4(RegisterHallOfFameData *data) {
+static RegisterHallOfFameScene RegisterHallOfFame_IndivMonsExit(RegisterHallOfFameData *data) {
     SysTask_Destroy(data->vblankTask);
     ov63_0221CE7C(data);
     ov63_0221CD40(data);
-    return REGHOF_SCENE_5;
+    return REGHOF_SCENE_WHOLE_PARTY_INIT;
 }
 
-static RegisterHallOfFameScene RegisterHallOfFame_Scene5(RegisterHallOfFameData *data) {
+static RegisterHallOfFameScene RegisterHallOfFame_WholePartyInit(RegisterHallOfFameData *data) {
     data->curMonIndex = 0;
     data->sceneSubstep = 0;
     ov63_0221E940(data);
     ov63_0221EA24(data);
     ov63_0221EAA8(data);
     ov63_0221EC1C(data);
-    ov63_0221F088(data);
+    RegisterHallOfFame_G3Init(data);
     data->vblankTask = SysTask_CreateOnVBlankQueue(VBlankTask_RegisterHallOfFame_WholePartyCongrats, data, 4);
-    return RegisterHallOfFame_FadeFromBlack(data, REGHOF_SCENE_6);
+    return RegisterHallOfFame_FadeFromBlack(data, REGHOF_SCENE_WHOLE_PARTY_MAIN);
 }
 
-static RegisterHallOfFameScene RegisterHallOfFame_Scene6(RegisterHallOfFameData *data) {
+static RegisterHallOfFameScene RegisterHallOfFame_WholePartyMain(RegisterHallOfFameData *data) {
     switch (data->sceneSubstep) {
     case 0:
         ++data->sceneSubstep;
-        RegisterHallOfFame_SetupSubproc(data, ov63_0221E5A0, REGHOF_SCENE_6);
+        RegisterHallOfFame_SetupSubproc(data, ov63_0221E5A0, REGHOF_SCENE_WHOLE_PARTY_MAIN);
         break;
     case 1:
         if (data->subprocCallback == NULL) {
@@ -952,8 +952,8 @@ static RegisterHallOfFameScene RegisterHallOfFame_Scene6(RegisterHallOfFameData 
             RegisterHallOfFame_AddSpotlight(data->spotlightsTask, 586, FX32_CONST(140));
             RegisterHallOfFame_AddSpotlight(data->spotlightsTask, 1757, FX32_CONST(120));
             RegisterHallOfFame_AddSpotlight(data->spotlightsTask, 2925, FX32_CONST(160));
-            data->confettiTask = ov63_0221F614(data);
-            ov63_0221F7DC(data->confettiTask);
+            data->confettiTask = RegisterHallOfFame_CreateConfettiTask(data);
+            RegisterHallOfFame_StartConfetti(data->confettiTask);
             GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_ON);
             GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_ON);
             GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_ON);
@@ -981,34 +981,34 @@ static RegisterHallOfFameScene RegisterHallOfFame_Scene6(RegisterHallOfFameData 
         break;
     case 2:
         data->sceneSubstep = 0;
-        return REGHOF_SCENE_7;
+        return REGHOF_SCENE_WHOLE_PARTY_EXIT;
     }
 
-    return REGHOF_SCENE_6;
+    return REGHOF_SCENE_WHOLE_PARTY_MAIN;
 }
 
-static RegisterHallOfFameScene RegisterHallOfFame_Scene7(RegisterHallOfFameData *data) {
+static RegisterHallOfFameScene RegisterHallOfFame_WholePartyExit(RegisterHallOfFameData *data) {
     switch (data->sceneSubstep) {
     case 0:
         SysTask_Destroy(data->vblankTask);
-        ov63_0221F7C4(data->confettiTask);
-        ov63_0221F5B4(data->spotlightsTask);
+        RegisterHallOfFame_EndConfetti(data->confettiTask);
+        RegisterHallOfFame_DestroySpotlightsTask(data->spotlightsTask);
         ++data->sceneSubstep;
         break;
     case 1:
-        if (ov63_0221F600(data) == TRUE) {
+        if (RegisterHallOfFame_AreAllSpotlightsFinished(data) == TRUE) {
             ++data->sceneSubstep;
         }
         break;
     case 2:
-        ov63_0221F1C4(data);
-        ov63_0221EFD8(data);
+        RegisterHallOfFame_DeleteCamera(data);
+        RegisterHallOfFame_AfterWholePartyView_UnloadSpriteRes(data);
         ov63_0221EC04(data);
         ov63_0221E9FC(data);
         return REGHOF_SCENE_MAX;
     }
 
-    return REGHOF_SCENE_7;
+    return REGHOF_SCENE_WHOLE_PARTY_EXIT;
 }
 
 static void RegisterHallOfFame_MonSpritePosScaleAnimStep(UnkImageStruct *unkImageStruct, const RegHOFSpritePosScaleAnimParam *param, u32 duration, u32 step) {
@@ -1234,7 +1234,7 @@ static void ov63_0221CB94(RegisterHallOfFameData *data, RegisterHofMon *hofMon, 
     FreeToHeap(fileData);
 }
 
-static void ov63_0221CC78(RegisterHallOfFameData *data) {
+static void RegisterHallOfFame_IndivMons_InitBgLayers(RegisterHallOfFameData *data) {
     {
         GraphicsModes graphicsModes = ov63_0221FB10;
         SetBothScreensModesAndDisable(&graphicsModes);
@@ -1270,7 +1270,7 @@ static void ov63_0221CD40(RegisterHallOfFameData *data) {
     FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_MAIN_0);
 }
 
-static void ov63_0221CD68(RegisterHallOfFameData *data) {
+static void RegisterHallOfFames_IndivMons_LoadBgGfx(RegisterHallOfFameData *data) {
     GfGfxLoader_LoadScrnDataFromOpenNarc(data->unk_00094, 0, data->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, TRUE, HEAP_ID_REGISTER_HALL_OF_FAME);
     GfGfxLoader_LoadScrnDataFromOpenNarc(data->unk_00094, 1, data->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_REGISTER_HALL_OF_FAME);
     GfGfxLoader_LoadScrnDataFromOpenNarc(data->unk_00094, 2, data->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_REGISTER_HALL_OF_FAME);
@@ -1278,99 +1278,99 @@ static void ov63_0221CD68(RegisterHallOfFameData *data) {
     GfGfxLoader_GXLoadPalFromOpenNarc(data->unk_00094, 4, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0x20, HEAP_ID_REGISTER_HALL_OF_FAME);
 }
 
-static void ov63_0221CDF8(RegisterHallOfFameData *data) {
+static void RegisterHallOfFame_IndivMons_PrintHeader(RegisterHallOfFameData *data) {
     for (int i = 0; i < 7u; ++i) {
-        AddWindow(data->bgConfig, &data->unk_00014[i], &ov63_0221FD80[i]);
+        AddWindow(data->bgConfig, &data->windows[i], &ov63_0221FD80[i]);
     }
 
-    FillWindowPixelBuffer(&data->unk_00014[0], 0);
-    ReadMsgDataIntoString(data->msgData, msg_0180_00000, data->unk_0008C);  // The Hall of Fame!
-    AddTextPrinterParameterizedWithColor(&data->unk_00014[0], 0, data->unk_0008C, 128 - FontID_String_GetWidth(0, data->unk_0008C, 0) / 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
-    CopyWindowPixelsToVram_TextMode(&data->unk_00014[0]);
+    FillWindowPixelBuffer(&data->windows[0], 0);
+    ReadMsgDataIntoString(data->msgData, msg_0180_00000, data->strbuf1);  // The Hall of Fame!
+    AddTextPrinterParameterizedWithColor(&data->windows[0], 0, data->strbuf1, 128 - FontID_String_GetWidth(0, data->strbuf1, 0) / 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    CopyWindowPixelsToVram_TextMode(&data->windows[0]);
 }
 
 static void ov63_0221CE7C(RegisterHallOfFameData *data) {
     for (int i = 0; i < 7u; ++i) {
-        RemoveWindow(&data->unk_00014[i]);
+        RemoveWindow(&data->windows[i]);
     }
 }
 
 static void ov63_0221CE94(RegisterHallOfFameData *data, u16 a1, int a2) {
-    Window *windows = &data->unk_00014[a2];
+    Window *windows = &data->windows[a2];
     RegisterHofMon *hofMon = &data->mons[a1];
     Pokemon *mon = hofMon->mon;
     BoxPokemon *boxmon = Mon_GetBoxMon(mon);
 
     FillWindowPixelBuffer(&windows[0], 0);
-    ReadMsgDataIntoString(data->msgData, msg_0180_00004, data->unk_0008C);
+    ReadMsgDataIntoString(data->msgData, msg_0180_00004, data->strbuf1);
     BufferBoxMonNickname(data->msgFormat, 0, boxmon);
-    StringExpandPlaceholders(data->msgFormat, data->unk_00090, data->unk_0008C);
-    AddTextPrinterParameterizedWithColor(&windows[0], 0, data->unk_00090, 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    StringExpandPlaceholders(data->msgFormat, data->strbuf2, data->strbuf1);
+    AddTextPrinterParameterizedWithColor(&windows[0], 0, data->strbuf2, 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
     CopyWindowPixelsToVram_TextMode(&windows[0]);
 
     FillWindowPixelBuffer(&windows[1], 0);
     if (hofMon->gender == 2 || hofMon->printGender == 0) {
-        ReadMsgDataIntoString(data->msgData, msg_0180_00003, data->unk_0008C);
+        ReadMsgDataIntoString(data->msgData, msg_0180_00003, data->strbuf1);
     } else if (hofMon->gender == 0) {
-        ReadMsgDataIntoString(data->msgData, msg_0180_00001, data->unk_0008C);
+        ReadMsgDataIntoString(data->msgData, msg_0180_00001, data->strbuf1);
     } else if (hofMon->gender == 1) {
-        ReadMsgDataIntoString(data->msgData, msg_0180_00002, data->unk_0008C);
+        ReadMsgDataIntoString(data->msgData, msg_0180_00002, data->strbuf1);
     } else {
-        ReadMsgDataIntoString(data->msgData, msg_0180_00003, data->unk_0008C);
+        ReadMsgDataIntoString(data->msgData, msg_0180_00003, data->strbuf1);
     }
     BufferBoxMonSpeciesName(data->msgFormat, 0, boxmon);
-    StringExpandPlaceholders(data->msgFormat, data->unk_00090, data->unk_0008C);
-    AddTextPrinterParameterizedWithColor(&windows[1], 0, data->unk_00090, 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    StringExpandPlaceholders(data->msgFormat, data->strbuf2, data->strbuf1);
+    AddTextPrinterParameterizedWithColor(&windows[1], 0, data->strbuf2, 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
 
-    ReadMsgDataIntoString(data->msgData, msg_0180_00005, data->unk_0008C);
+    ReadMsgDataIntoString(data->msgData, msg_0180_00005, data->strbuf1);
     BufferIntegerAsString(data->msgFormat, 0, hofMon->level, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
-    StringExpandPlaceholders(data->msgFormat, data->unk_00090, data->unk_0008C);
-    AddTextPrinterParameterizedWithColor(&windows[1], 0, data->unk_00090, 2, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    StringExpandPlaceholders(data->msgFormat, data->strbuf2, data->strbuf1);
+    AddTextPrinterParameterizedWithColor(&windows[1], 0, data->strbuf2, 2, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
     CopyWindowPixelsToVram_TextMode(&windows[1]);
 
     FillWindowPixelBuffer(&windows[2], 0);
-    ReadMsgDataIntoString(data->msgData, msg_0180_00006, data->unk_0008C);
+    ReadMsgDataIntoString(data->msgData, msg_0180_00006, data->strbuf1);
     BufferBoxMonOTName(data->msgFormat, 0, boxmon);
-    StringExpandPlaceholders(data->msgFormat, data->unk_00090, data->unk_0008C);
-    AddTextPrinterParameterizedWithColor(&windows[2], 0, data->unk_00090, 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    StringExpandPlaceholders(data->msgFormat, data->strbuf2, data->strbuf1);
+    AddTextPrinterParameterizedWithColor(&windows[2], 0, data->strbuf2, 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
 
     switch (ov63_0221E310(data, mon, data->args->profile)) {
     case 0:
-        ReadMsgDataIntoString(data->msgData, msg_0180_00007, data->unk_0008C);
+        ReadMsgDataIntoString(data->msgData, msg_0180_00007, data->strbuf1);
         BufferLandmarkName(data->msgFormat, 0, hofMon->metLocation);
-        StringExpandPlaceholders(data->msgFormat, data->unk_00090, data->unk_0008C);
+        StringExpandPlaceholders(data->msgFormat, data->strbuf2, data->strbuf1);
         break;
     case 1:
-        ReadMsgDataIntoString(data->msgData, msg_0180_00008, data->unk_0008C);
+        ReadMsgDataIntoString(data->msgData, msg_0180_00008, data->strbuf1);
         BufferLandmarkName(data->msgFormat, 0, hofMon->metLocation);
-        StringExpandPlaceholders(data->msgFormat, data->unk_00090, data->unk_0008C);
+        StringExpandPlaceholders(data->msgFormat, data->strbuf2, data->strbuf1);
         break;
     case 2:
-        ReadMsgDataIntoString(data->msgData, msg_0180_00009, data->unk_00090);
+        ReadMsgDataIntoString(data->msgData, msg_0180_00009, data->strbuf2);
         break;
     case 3:
-        ReadMsgDataIntoString(data->msgData, msg_0180_00010, data->unk_00090);
+        ReadMsgDataIntoString(data->msgData, msg_0180_00010, data->strbuf2);
         break;
     case 4:
-        ReadMsgDataIntoString(data->msgData, msg_0180_00011, data->unk_00090);
+        ReadMsgDataIntoString(data->msgData, msg_0180_00011, data->strbuf2);
         break;
     case 5:
-        ReadMsgDataIntoString(data->msgData, msg_0180_00014, data->unk_00090);
+        ReadMsgDataIntoString(data->msgData, msg_0180_00014, data->strbuf2);
         break;
     case 6:
-        ReadMsgDataIntoString(data->msgData, msg_0180_00012, data->unk_00090);
+        ReadMsgDataIntoString(data->msgData, msg_0180_00012, data->strbuf2);
         break;
     case 7:
-        ReadMsgDataIntoString(data->msgData, msg_0180_00013, data->unk_00090);
+        ReadMsgDataIntoString(data->msgData, msg_0180_00013, data->strbuf2);
         break;
     case 8:
     case 9:
-        ReadMsgDataIntoString(data->msgData, msg_0180_00015, data->unk_0008C);
+        ReadMsgDataIntoString(data->msgData, msg_0180_00015, data->strbuf1);
         BufferLandmarkName(data->msgFormat, 0, hofMon->metLocation);
-        StringExpandPlaceholders(data->msgFormat, data->unk_00090, data->unk_0008C);
+        StringExpandPlaceholders(data->msgFormat, data->strbuf2, data->strbuf1);
         break;
     }
-    AddTextPrinterParameterizedWithColor(&windows[2], 0, data->unk_00090, 2, 24, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&windows[2], 0, data->strbuf2, 2, 24, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
     CopyWindowPixelsToVram_TextMode(&windows[2]);
 }
 
@@ -1416,7 +1416,7 @@ static void ov63_0221D2F8(RegisterHallOfFameData *data, RegisterHofMon *mon) {
     }
 }
 
-static void ov63_0221D344(RegisterHallOfFameData *data) {
+static void RegisterHallOfFame_IndivMons_ResetBgAndSpritePos(RegisterHallOfFameData *data) {
     RegisterHofMon *hofMon = &data->mons[data->curMonIndex];
 
     ov63_0221D20C(data, data->curMonIndex);
@@ -1523,7 +1523,7 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
         }
         break;
     case 6:
-        ScheduleWindowCopyToVram(&data->unk_00014[0]);
+        ScheduleWindowCopyToVram(&data->windows[0]);
         ++data->subprocStage;
         break;
     case 7:
@@ -1556,7 +1556,7 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
         }
         break;
     case 9:
-        ScheduleWindowCopyToVram(&data->unk_00014[1]);
+        ScheduleWindowCopyToVram(&data->windows[1]);
         ov63_0221C954(data, 2, 0);
         ov63_0221C954(data, 4, 0);
         ov63_0221C954(data, 3, 2);
@@ -1572,7 +1572,7 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
         }
         break;
     case 11:
-        ScheduleWindowCopyToVram(&data->unk_00014[2]);
+        ScheduleWindowCopyToVram(&data->windows[2]);
         data->unk_13060_0 = TRUE;
         ++data->subprocStage;
         break;
@@ -1585,7 +1585,7 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
         }
         break;
     case 13:
-        ScheduleWindowCopyToVram(&data->unk_00014[3]);
+        ScheduleWindowCopyToVram(&data->windows[3]);
         ++data->subprocStage;
         break;
     case 14:
@@ -1720,7 +1720,7 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
         }
         break;
     case 6:
-        ScheduleWindowCopyToVram(&data->unk_00014[0]);
+        ScheduleWindowCopyToVram(&data->windows[0]);
         ++data->subprocStage;
         break;
     case 7:
@@ -1753,7 +1753,7 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
         }
         break;
     case 9:
-        ScheduleWindowCopyToVram(&data->unk_00014[4]);
+        ScheduleWindowCopyToVram(&data->windows[4]);
         ov63_0221C954(data, 2, 0);
         ov63_0221C954(data, 4, 0);
         ov63_0221C954(data, 3, 2);
@@ -1769,7 +1769,7 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
         }
         break;
     case 11:
-        ScheduleWindowCopyToVram(&data->unk_00014[5]);
+        ScheduleWindowCopyToVram(&data->windows[5]);
         data->unk_13060_0 = TRUE;
         ++data->subprocStage;
         break;
@@ -1782,7 +1782,7 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
         }
         break;
     case 13:
-        ScheduleWindowCopyToVram(&data->unk_00014[6]);
+        ScheduleWindowCopyToVram(&data->windows[6]);
         ++data->subprocStage;
         break;
     case 14:
@@ -1925,9 +1925,9 @@ static int ov63_0221E310(RegisterHallOfFameData *data, Pokemon *pokemon, PlayerP
     } else if (PlayerProfile_GetTrainerID(profile) != GetMonData(pokemon, MON_DATA_OTID, NULL)) {
         ret = 2;
     } else {
-        PlayerName_FlatToString(profile, data->unk_0008C);
-        GetMonData(pokemon, MON_DATA_OT_NAME_2, data->unk_00090);
-        if (String_Compare(data->unk_0008C, data->unk_00090)) {
+        PlayerName_FlatToString(profile, data->strbuf1);
+        GetMonData(pokemon, MON_DATA_OT_NAME_2, data->strbuf2);
+        if (String_Compare(data->strbuf1, data->strbuf2)) {
             ret = 2;
         } else if (GetMonData(pokemon, MON_DATA_MET_LOCATION, NULL) >= METLOC_DAY_CARE_COUPLE) {
             ret = 7;
@@ -1965,7 +1965,7 @@ static int ov63_0221E404(int species, u8 form, u8 gender) {
 typedef struct UnkStruct_ov63_0221E450 {
     RegisterHofMon *hofMon;
     UnkStruct_02009264 unk_04;
-    NARC *unk_18;
+    NARC *narc;
     u16 *unk_1C;
     u32 unk_20;
     u16 unk_24;
@@ -1976,7 +1976,7 @@ static void ov63_0221E450(RegisterHallOfFameData *data, int a1, int a2, int a3, 
     UnkStruct_ov63_0221E450 *r4 = AllocFromHeap(HEAP_ID_REGISTER_HALL_OF_FAME, sizeof(UnkStruct_ov63_0221E450));
     r4->hofMon = &data->mons[a1];
     r4->unk_28 = a3;
-    r4->unk_18 = data->unk_00098;
+    r4->narc = data->unk_00098;
     r4->unk_20 = NNS_G2dGetImageLocation(sub_02024B1C(data->monPics[a2]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
     if (a4 == 2) {
         r4->unk_1C = r4->hofMon->unk_006C;
@@ -1994,7 +1994,7 @@ static void ov63_0221E4E0(SysTask *task, void *taskData) {
     u8 sp4;
     UnkStruct_ov63_0221E450 *r4 = (UnkStruct_ov63_0221E450 *)taskData;
     if (r4->unk_28 == 1) {
-        sub_020729A4(r4->unk_18, &sp4, r4->hofMon->species, r4->unk_24);
+        sub_020729A4(r4->narc, &sp4, r4->hofMon->species, r4->unk_24);
         if (r4->hofMon->species == SPECIES_CHATOT) {
             sub_02006EA0(NULL, 0, 100, 0, sp4);
         } else {
@@ -2148,7 +2148,7 @@ static void VBlankTask_RegisterHallOfFame_WholePartyCongrats(SysTask *task, void
     if (data->subprocCallback != NULL && !data->subprocCallback(data)) {
         data->subprocCallback = NULL;
     }
-    ov63_0221F1D0(data);
+    RegisterHallOfFame_G3Commit(data);
     DoScheduledBgGpuUpdates(data->bgConfig);
     sub_0200D020(data->spriteGfxHandler);
     thunk_OamManager_ApplyAndResetBuffers();
@@ -2200,28 +2200,28 @@ static void ov63_0221EA24(RegisterHallOfFameData *data) {
 
 static void ov63_0221EAA8(RegisterHallOfFameData *data) {
     for (int i = 0; i < 2u; ++i) {
-        AddWindow(data->bgConfig, &data->unk_00014[i], &ov63_0221FB20[i]);
+        AddWindow(data->bgConfig, &data->windows[i], &ov63_0221FB20[i]);
     }
 
-    FillWindowPixelBuffer(&data->unk_00014[0], 1);
-    ReadMsgDataIntoString(data->msgData, msg_0180_00016, data->unk_0008C);
-    AddTextPrinterParameterizedWithColor(&data->unk_00014[0], 0, data->unk_0008C, 128 - FontID_String_GetWidth(0, data->unk_0008C, 0) / 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
-    CopyWindowToVram(&data->unk_00014[0]);
+    FillWindowPixelBuffer(&data->windows[0], 1);
+    ReadMsgDataIntoString(data->msgData, msg_0180_00016, data->strbuf1);
+    AddTextPrinterParameterizedWithColor(&data->windows[0], 0, data->strbuf1, 128 - FontID_String_GetWidth(0, data->strbuf1, 0) / 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    CopyWindowToVram(&data->windows[0]);
 
-    FillWindowPixelBuffer(&data->unk_00014[1], 1);
-    ReadMsgDataIntoString(data->msgData, msg_0180_00017, data->unk_00090);
+    FillWindowPixelBuffer(&data->windows[1], 1);
+    ReadMsgDataIntoString(data->msgData, msg_0180_00017, data->strbuf2);
     BufferPlayersName(data->msgFormat, 0, data->args->profile);
     BufferIntegerAsString(data->msgFormat, 1, PlayerProfile_GetTrainerID_VisibleHalf(data->args->profile), 5, PRINTING_MODE_LEADING_ZEROS, TRUE);
     BufferIntegerAsString(data->msgFormat, 2, GetIGTHours(data->args->igt), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
     BufferIntegerAsString(data->msgFormat, 3, GetIGTMinutes(data->args->igt), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
-    StringExpandPlaceholders(data->msgFormat, data->unk_0008C, data->unk_00090);
-    AddTextPrinterParameterizedWithColor(&data->unk_00014[1], 0, data->unk_0008C, 128 - FontID_String_GetWidth(0, data->unk_0008C, 0) / 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
-    CopyWindowToVram(&data->unk_00014[1]);
+    StringExpandPlaceholders(data->msgFormat, data->strbuf1, data->strbuf2);
+    AddTextPrinterParameterizedWithColor(&data->windows[1], 0, data->strbuf1, 128 - FontID_String_GetWidth(0, data->strbuf1, 0) / 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    CopyWindowToVram(&data->windows[1]);
 }
 
 static void ov63_0221EC04(RegisterHallOfFameData *data) {
     for (int i = 0; i < 2u; ++i) {
-        RemoveWindow(&data->unk_00014[i]);
+        RemoveWindow(&data->windows[i]);
     }
 }
 
@@ -2292,7 +2292,7 @@ static void ov63_0221EC1C(RegisterHallOfFameData *data) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
-static void ov63_0221EFD8(RegisterHallOfFameData *data) {
+static void RegisterHallOfFame_AfterWholePartyView_UnloadSpriteRes(RegisterHallOfFameData *data) {
     u32 i;
     int tag;
 
@@ -2314,7 +2314,7 @@ static void ov63_0221EFD8(RegisterHallOfFameData *data) {
     SpriteGfxHandler_UnloadAnimObjById(data->spriteGfxHandler, 55514);
 }
 
-static void ov63_0221F088(RegisterHallOfFameData *data) {
+static void RegisterHallOfFame_G3Init(RegisterHallOfFameData *data) {
     NNS_G3dInit();
     G3X_InitMtxStack();
     G3X_SetShading(GX_SHADING_TOON);
@@ -2329,33 +2329,33 @@ static void ov63_0221F088(RegisterHallOfFameData *data) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
     G2_SetBG0Priority(1);
     G2_SetBlendAlpha(0, 28, 0, 0);
-    ov63_0221F130(data);
+    RegisterHallOfFame_CreateCamera(data);
 }
 
-static void ov63_0221F130(RegisterHallOfFameData *data) {
-    data->unk_000E0 = Camera_New(HEAP_ID_REGISTER_HALL_OF_FAME);
-    SetVec(data->unk_000E4, 0, 0, 0);
-    SetVec(data->unk_000F0, 0, 0, 0);
-    Camera_Init_FromTargetDistanceAndAngle(&data->unk_000E4, FX32_CONST(5), &data->unk_000F0, 0xFA4, 0, TRUE, data->unk_000E0);
-    VecFx32 spC;
-    SetVec(spC, 0, FX32_ONE, 0);
-    Camera_SetLookAtCamUp(&spC, data->unk_000E0);
-    Camera_SetStaticPtr(data->unk_000E0);
-    Camera_SetPerspectiveClippingPlane(FX32_ONE, FX32_CONST(500), data->unk_000E0);
+static void RegisterHallOfFame_CreateCamera(RegisterHallOfFameData *data) {
+    data->camera = Camera_New(HEAP_ID_REGISTER_HALL_OF_FAME);
+    SetVec(data->cameraTarget, 0, 0, 0);
+    SetVec(data->cameraAngle, 0, 0, 0);
+    Camera_Init_FromTargetDistanceAndAngle(&data->cameraTarget, FX32_CONST(5), &data->cameraAngle, 0xFA4, 0, TRUE, data->camera);
+    VecFx32 camUp;
+    SetVec(camUp, 0, FX32_ONE, 0);
+    Camera_SetLookAtCamUp(&camUp, data->camera);
+    Camera_SetStaticPtr(data->camera);
+    Camera_SetPerspectiveClippingPlane(FX32_ONE, FX32_CONST(500), data->camera);
 }
 
-static void ov63_0221F1C4(RegisterHallOfFameData *data) {
-    Camera_Delete(data->unk_000E0);
+static void RegisterHallOfFame_DeleteCamera(RegisterHallOfFameData *data) {
+    Camera_Delete(data->camera);
 }
 
-static void ov63_0221F1D0(RegisterHallOfFameData *data) {
+static void RegisterHallOfFame_G3Commit(RegisterHallOfFameData *data) {
     if (!G3X_IsGeometryBusy()) {
         G3X_Reset();
         NNS_G3dGePushMtx();
-        ov63_0221F580(data->spotlightsTask);
+        RegisterHallOfFame_SpotlightsTask_G3Commit(data->spotlightsTask);
         NNS_G3dGePopMtx(1);
         NNS_G3dGePushMtx();
-        ov63_0221FAA0(data->confettiTask);
+        RegisterHallOfFame_ConfettiTask_G3Commit(data->confettiTask);
         NNS_G3dGePopMtx(1);
         G3_SwapBuffers(GX_SORTMODE_MANUAL, GX_BUFFERMODE_Z);
     }
@@ -2368,10 +2368,10 @@ static SysTask *RegisterHallOfFame_CreateSpotlightController(RegisterHallOfFameD
     spotlight->numSpotlights = 0;
     spotlight->endMakeDLTask = SysTask_CreateOnVBlankQueue(Task_RegisterHallOfFame_Spotlights_EndMakeDL, spotlight, 3);
     spotlight->parent = data;
-    return SysTask_CreateOnVBlankQueue(ov63_0221F294, spotlight, 1);
+    return SysTask_CreateOnVBlankQueue(Task_RegisterHallOfFame_Spotlights_BeginMakeDL, spotlight, 1);
 }
 
-static void ov63_0221F294(SysTask *task, void *taskData) {
+static void Task_RegisterHallOfFame_Spotlights_BeginMakeDL(SysTask *task, void *taskData) {
     RegisterHofSpotlightTaskData *spotlight = (RegisterHofSpotlightTaskData *)taskData;
 
     if (sSpotlightsActive) {
@@ -2416,10 +2416,10 @@ static SysTask *RegisterHallOfFame_CreateSpotlightTaskEx(RegisterHofSpotlightTas
     child->unk_814 = index;
     SetVec(child->vertices[0], xOffset - 80, FX16_CONST(-1), 0);
     SetVec(child->vertices[1], xOffset + 80, FX16_CONST(-1), 0);
-    return SysTask_CreateOnVBlankQueue(ov63_0221F3F4, child, 2);
+    return SysTask_CreateOnVBlankQueue(Task_RegisterHallOfFame_SpotlightInstance, child, 2);
 }
 
-static void ov63_0221F3F4(SysTask *task, void *taskData) {
+static void Task_RegisterHallOfFame_SpotlightInstance(SysTask *task, void *taskData) {
     RegisterHofSpotlightChildTaskData *child = (RegisterHofSpotlightChildTaskData *)taskData;
 
     if (sSpotlightsActive) {
@@ -2455,7 +2455,7 @@ static void ov63_0221F3F4(SysTask *task, void *taskData) {
     }
 }
 
-static void ov63_0221F580(SysTask *task) {
+static void RegisterHallOfFame_SpotlightsTask_G3Commit(SysTask *task) {
     if (task != NULL) {
         RegisterHofSpotlightTaskData *spotlight = (RegisterHofSpotlightTaskData *)SysTask_GetData(task);
 
@@ -2465,7 +2465,7 @@ static void ov63_0221F580(SysTask *task) {
     }
 }
 
-static void ov63_0221F5B4(SysTask *task) {
+static void RegisterHallOfFame_DestroySpotlightsTask(SysTask *task) {
     sSpotlightsActive = FALSE;
     if (task != NULL) {
         RegisterHofSpotlightTaskData *spotlight = (RegisterHofSpotlightTaskData *)SysTask_GetData(task);
@@ -2477,11 +2477,11 @@ static void ov63_0221F5B4(SysTask *task) {
     }
 }
 
-static BOOL ov63_0221F600(RegisterHallOfFameData *data) {
+static BOOL RegisterHallOfFame_AreAllSpotlightsFinished(RegisterHallOfFameData *data) {
     return sNumSpotlightTasks == 0;
 }
 
-static SysTask *ov63_0221F614(RegisterHallOfFameData *data) {
+static SysTask *RegisterHallOfFame_CreateConfettiTask(RegisterHallOfFameData *data) {
     RegisterHofConfettiEmitterTaskData *confetti = AllocFromHeap(HEAP_ID_REGISTER_HALL_OF_FAME, sizeof(RegisterHofConfettiEmitterTaskData));
     int i;
     int j;
@@ -2519,98 +2519,81 @@ static SysTask *ov63_0221F614(RegisterHallOfFameData *data) {
     confetti->requestPushGxCommand = FALSE;
     confetti->unk_8D20 = FALSE;
     G3_MtxMode(GX_MTXMODE_POSITION_VECTOR);
-    return SysTask_CreateOnMainQueue(ov63_0221F7EC, confetti, 0);
+    return SysTask_CreateOnMainQueue(Task_RegisterHallOfFame_Confetti, confetti, 0);
 }
 
- void ov63_0221F7C4(SysTask *task) {
-    if (task != NULL) {
-        FreeToHeap(SysTask_GetData(task));
-        SysTask_Destroy(task);
-    }
- }
+static void RegisterHallOfFame_EndConfetti(SysTask *task) {
+   if (task != NULL) {
+       FreeToHeap(SysTask_GetData(task));
+       SysTask_Destroy(task);
+   }
+}
 
- void ov63_0221F7DC(SysTask *task) {
-    if (task != NULL) {
-        RegisterHofConfettiEmitterTaskData *confetti = (RegisterHofConfettiEmitterTaskData *)SysTask_GetData(task);
+static void RegisterHallOfFame_StartConfetti(SysTask *task) {
+   if (task != NULL) {
+       RegisterHofConfettiEmitterTaskData *confetti = (RegisterHofConfettiEmitterTaskData *)SysTask_GetData(task);
+       confetti->active = TRUE;
+   }
+}
 
-        confetti->active = TRUE;
-    }
- }
+static void Task_RegisterHallOfFame_Confetti(SysTask *task, void *taskData) {
+   MtxFx44 sp28;
+   VecFx16 sp20;
+   RegisterHofConfettiEmitterTaskData *confetti = (RegisterHofConfettiEmitterTaskData *)taskData;
+   if (confetti->active) {
+       G3_BeginMakeDL(&confetti->gxDlInfo, confetti->gxCommand, sizeof(confetti->gxCommand));
+       G3B_PolygonAttr(&confetti->gxDlInfo, GX_LIGHTID_3, GX_POLYGONMODE_MODULATE, GX_CULL_NONE, 0x3F, 0x1F, 0);
+       G3B_MaterialColorDiffAmb(&confetti->gxDlInfo, RGB(20, 20, 20), RGB_BLACK, FALSE);
+       for (int i = 0; i < 48; ++i) {
+           confetti->particles[i].unk_08[3].y -= 85;
+           if (confetti->particles[i].unk_08[3].y <= -FX16_ONE) {
+               confetti->particles[i].unk_08[3].y = confetti->particles[i].unk_08[3].y + 2 *FX16_ONE;
+           }
+           confetti->particles[i].unk_08[0].y = confetti->particles[i].unk_08[3].y - FX16_CONST(0.1);
+           confetti->particles[i].unk_08[1].y = confetti->particles[i].unk_08[0].y;
+           confetti->particles[i].unk_08[2].y = confetti->particles[i].unk_08[3].y;
+           VEC_Fx16Add(&confetti->particles[i].unk_20, &confetti->particles[i].unk_26, &confetti->particles[i].unk_20);
+           MTX_Identity44(&confetti->particles[i].unk_2C);
+           MTX_TransApply44(&confetti->particles[i].unk_2C, &confetti->particles[i].unk_2C, confetti->particles[i].unk_08[0].x, confetti->particles[i].unk_08[0].y, confetti->particles[i].unk_08[0].z);
+           G3B_LightColor(&confetti->gxDlInfo, GX_LIGHTID_0, RGB(11, 11, 11));           G3B_LightColor(&confetti->gxDlInfo, GX_LIGHTID_1, confetti->particles[i].unk_00);           SetVec(sp20, 0, FX16_ONE - 1, -FX16_ONE + 1);
+           VEC_Fx16Normalize(&sp20, &sp20);
+           G3B_LightVector(&confetti->gxDlInfo, GX_LIGHTID_0, sp20.x, sp20.y, sp20.z);
+           SetVec(sp20, 0, -FX16_ONE + 1, FX16_ONE - 1);
+           VEC_Fx16Normalize(&sp20, &sp20);
+           G3B_LightVector(&confetti->gxDlInfo, GX_LIGHTID_1, sp20.x, sp20.y, sp20.z);
+           MTX_RotX44(&sp28, FX_SinIdx((u16)confetti->particles[i].unk_20.x), FX_CosIdx((u16)confetti->particles[i].unk_20.x));
+           MTX_Concat44(&sp28, &confetti->particles[i].unk_2C, &confetti->particles[i].unk_2C);
+           MTX_RotY44(&sp28, FX_SinIdx((u16)confetti->particles[i].unk_20.y), FX_CosIdx((u16)confetti->particles[i].unk_20.y));
+           MTX_Concat44(&sp28, &confetti->particles[i].unk_2C, &confetti->particles[i].unk_2C);
+           MTX_RotZ44(&sp28, FX_SinIdx((u16)confetti->particles[i].unk_20.z), FX_CosIdx((u16)confetti->particles[i].unk_20.z));
+           MTX_Concat44(&sp28, &confetti->particles[i].unk_2C, &confetti->particles[i].unk_2C);
+           G3B_MaterialColorSpecEmi(&confetti->gxDlInfo, RGB_WHITE, confetti->particles[i].unk_00, FALSE);
+           G3B_PushMtx(&confetti->gxDlInfo);
+           G3B_LoadMtx44(&confetti->gxDlInfo, &confetti->particles[i].unk_2C);
+           G3B_Begin(&confetti->gxDlInfo, GX_BEGIN_QUADS);
+           G3B_Normal(&confetti->gxDlInfo, 0, 0, -FX16_ONE + 1);
+           G3B_Vtx(&confetti->gxDlInfo, -FX16_CONST(0.038), -FX16_CONST(0.05), 0);
+           G3B_Vtx(&confetti->gxDlInfo, FX16_CONST(0.038), -FX16_CONST(0.05), 0);
+           G3B_Vtx(&confetti->gxDlInfo, FX16_CONST(0.038), FX16_CONST(0.05), 0);
+           G3B_Vtx(&confetti->gxDlInfo, -FX16_CONST(0.038), FX16_CONST(0.05), 0);
+           G3B_End(&confetti->gxDlInfo);
+           G3B_PopMtx(&confetti->gxDlInfo, 1);
+       }
+       confetti->gxCommandLength = G3_EndMakeDL(&confetti->gxDlInfo);
+       DC_FlushRange(confetti->gxCommand, confetti->gxCommandLength);
+       GF_ASSERT(confetti->gxCommandLength < sizeof(confetti->gxCommand));
+       confetti->requestPushGxCommand = TRUE;
+   }
+}
 
- void ov63_0221F7EC(SysTask *task, void *taskData) {
-    MtxFx44 sp28;
-    VecFx16 sp20;
-
-    RegisterHofConfettiEmitterTaskData *confetti = (RegisterHofConfettiEmitterTaskData *)taskData;
-
-    if (confetti->active) {
-        G3_BeginMakeDL(&confetti->gxDlInfo, confetti->gxCommand, sizeof(confetti->gxCommand));
-        G3B_PolygonAttr(&confetti->gxDlInfo, GX_LIGHTID_3, GX_POLYGONMODE_MODULATE, GX_CULL_NONE, 0x3F, 0x1F, 0);
-        G3B_MaterialColorDiffAmb(&confetti->gxDlInfo, RGB(20, 20, 20), RGB_BLACK, FALSE);
-
-        for (int i = 0; i < 48; ++i) {
-            // sp1C: i
-            // sp18: sub->unk_20
-            // sp14: sub->unk_26
-            // sp10: sub->unk_20
-            // spC:  sub->unk_2C
-            confetti->particles[i].unk_08[3].y -= 85;
-            if (confetti->particles[i].unk_08[3].y <= -FX16_ONE) {
-                confetti->particles[i].unk_08[3].y = confetti->particles[i].unk_08[3].y + 2 *FX16_ONE;
-            }
-            confetti->particles[i].unk_08[0].y = confetti->particles[i].unk_08[3].y - FX16_CONST(0.1);
-            confetti->particles[i].unk_08[1].y = confetti->particles[i].unk_08[0].y;
-            confetti->particles[i].unk_08[2].y = confetti->particles[i].unk_08[3].y;
-            VEC_Fx16Add(&confetti->particles[i].unk_20, &confetti->particles[i].unk_26, &confetti->particles[i].unk_20);
-            MTX_Identity44(&confetti->particles[i].unk_2C);
-            MTX_TransApply44(&confetti->particles[i].unk_2C, &confetti->particles[i].unk_2C, confetti->particles[i].unk_08[0].x, confetti->particles[i].unk_08[0].y, confetti->particles[i].unk_08[0].z);
-            G3B_LightColor(&confetti->gxDlInfo, GX_LIGHTID_0, RGB(11, 11, 11));
-            G3B_LightColor(&confetti->gxDlInfo, GX_LIGHTID_1, confetti->particles[i].unk_00);
-
-            SetVec(sp20, 0, FX16_ONE - 1, -FX16_ONE + 1);
-            VEC_Fx16Normalize(&sp20, &sp20);
-            G3B_LightVector(&confetti->gxDlInfo, GX_LIGHTID_0, sp20.x, sp20.y, sp20.z);
-
-            SetVec(sp20, 0, -FX16_ONE + 1, FX16_ONE - 1);
-            VEC_Fx16Normalize(&sp20, &sp20);
-            G3B_LightVector(&confetti->gxDlInfo, GX_LIGHTID_1, sp20.x, sp20.y, sp20.z);
-
-            MTX_RotX44(&sp28, FX_SinIdx((u16)confetti->particles[i].unk_20.x), FX_CosIdx((u16)confetti->particles[i].unk_20.x));
-            MTX_Concat44(&sp28, &confetti->particles[i].unk_2C, &confetti->particles[i].unk_2C);
-
-            MTX_RotY44(&sp28, FX_SinIdx((u16)confetti->particles[i].unk_20.y), FX_CosIdx((u16)confetti->particles[i].unk_20.y));
-            MTX_Concat44(&sp28, &confetti->particles[i].unk_2C, &confetti->particles[i].unk_2C);
-
-            MTX_RotZ44(&sp28, FX_SinIdx((u16)confetti->particles[i].unk_20.z), FX_CosIdx((u16)confetti->particles[i].unk_20.z));
-            MTX_Concat44(&sp28, &confetti->particles[i].unk_2C, &confetti->particles[i].unk_2C);
-
-            G3B_MaterialColorSpecEmi(&confetti->gxDlInfo, RGB_WHITE, confetti->particles[i].unk_00, FALSE);
-            G3B_PushMtx(&confetti->gxDlInfo);
-            G3B_LoadMtx44(&confetti->gxDlInfo, &confetti->particles[i].unk_2C);
-            G3B_Begin(&confetti->gxDlInfo, GX_BEGIN_QUADS);
-            G3B_Normal(&confetti->gxDlInfo, 0, 0, -FX16_ONE + 1);
-            G3B_Vtx(&confetti->gxDlInfo, -FX16_CONST(0.038), -FX16_CONST(0.05), 0);
-            G3B_Vtx(&confetti->gxDlInfo, FX16_CONST(0.038), -FX16_CONST(0.05), 0);
-            G3B_Vtx(&confetti->gxDlInfo, FX16_CONST(0.038), FX16_CONST(0.05), 0);
-            G3B_Vtx(&confetti->gxDlInfo, -FX16_CONST(0.038), FX16_CONST(0.05), 0);
-            G3B_End(&confetti->gxDlInfo);
-            G3B_PopMtx(&confetti->gxDlInfo, 1);
-        }
-        confetti->gxCommandLength = G3_EndMakeDL(&confetti->gxDlInfo);
-        DC_FlushRange(confetti->gxCommand, confetti->gxCommandLength);
-        GF_ASSERT(confetti->gxCommandLength < sizeof(confetti->gxCommand));
-        confetti->requestPushGxCommand = TRUE;
-    }
- }
-
- void ov63_0221FAA0(SysTask *task) {
-    if (task != NULL) {
-        RegisterHofConfettiEmitterTaskData *confetti = (RegisterHofConfettiEmitterTaskData *)SysTask_GetData(task);
-        if (confetti->requestPushGxCommand) {
-            G3_PushMtx();
-            MI_SendGXCommand(3, confetti->gxCommand, confetti->gxCommandLength);
-            G3_PopMtx(1);
-            confetti->requestPushGxCommand = FALSE;
-        }
-    }
- }
+static void RegisterHallOfFame_ConfettiTask_G3Commit(SysTask *task) {
+   if (task != NULL) {
+       RegisterHofConfettiEmitterTaskData *confetti = (RegisterHofConfettiEmitterTaskData *)SysTask_GetData(task);
+       if (confetti->requestPushGxCommand) {
+           G3_PushMtx();
+           MI_SendGXCommand(3, confetti->gxCommand, confetti->gxCommandLength);
+           G3_PopMtx(1);
+           confetti->requestPushGxCommand = FALSE;
+       }
+   }
+}
