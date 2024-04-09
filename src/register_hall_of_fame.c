@@ -1858,12 +1858,7 @@ static void ov63_0221E114(RegisterHallOfFameData *data) {
     u32 i;
     SomeDrawPokemonStruct sp40;
     UnkStruct_02014E30 sp20[2];
-    {
-        struct tmp {
-            UnkStruct_02014E30 _[2];
-        };
-        *(struct tmp *)sp20 = *(const struct tmp *)ov63_0221FC38;
-    }
+    ARRAY_ASSIGN(sp20, ov63_0221FC38);
     NARC *narc = NARC_New(NARC_a_1_8_0, HEAP_ID_REGISTER_HALL_OF_FAME);
     BOOL encry;
     Pokemon *pokemon;
