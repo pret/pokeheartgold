@@ -2196,7 +2196,7 @@ _021E6D9E:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _021E6DAC
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 _021E6DAC:
 	add r4, r4, #1
 	add r5, r5, #4

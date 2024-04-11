@@ -54,7 +54,7 @@
 .public SpriteRenderer_RemoveGfxHandler
 .public SpriteRenderer_Delete
 .public sub_0200D2A4
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public thunk_Set2dSpriteAnimActiveFlag
 .public UnkImageStruct_SetSpriteAnimActiveFlag
 .public UnkImageStruct_ResetSpriteAnimCtrlState

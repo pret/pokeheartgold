@@ -834,7 +834,7 @@ ov64_021E6010: ; 0x021E6010
 	ldr r0, [r4, r5]
 	cmp r0, #0
 	beq _021E6028
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0
 	str r0, [r4, r5]
 _021E6028:

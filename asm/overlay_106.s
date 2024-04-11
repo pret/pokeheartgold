@@ -1722,7 +1722,7 @@ ov106_021E6634: ; 0x021E6634
 	ldr r0, [r4, r5]
 	cmp r0, #0
 	beq _021E664A
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0
 	str r0, [r4, r5]
 _021E664A:

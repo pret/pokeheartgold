@@ -10,7 +10,7 @@
 .public SpriteGfxHandler_UnloadPlttObjById
 .public SpriteGfxHandler_UnloadCellObjById
 .public SpriteGfxHandler_UnloadAnimObjById
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public GF_AssertFail
 .public sub_02077678
 .public sub_02077690

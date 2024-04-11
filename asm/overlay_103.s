@@ -3024,7 +3024,7 @@ ov103_021EE078: ; 0x021EE078
 	ldr r0, [r4, r5]
 	cmp r0, #0
 	beq _021EE090
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0
 	str r0, [r4, r5]
 _021EE090:

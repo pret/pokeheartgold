@@ -861,7 +861,7 @@ _02258E8C:
 	ldr r0, [r4, #0x18]
 	cmp r0, #0
 	beq _02258E96
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 _02258E96:
 	add r0, r4, #0
 	bl ov12_02262014
@@ -9559,7 +9559,7 @@ _0225D2E6:
 	add r5, r0, #0
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x18]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4, #4]
 	mov r1, #0
 	str r1, [r0, #0x18]
@@ -9759,7 +9759,7 @@ _0225D49C:
 	add r5, r0, #0
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x18]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4, #4]
 	mov r1, #0
 	str r1, [r0, #0x18]
@@ -9991,7 +9991,7 @@ _0225D694:
 	add r4, r0, #0
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r5, #4]
 	mov r1, #0
 	str r1, [r0, #0x18]
@@ -10154,7 +10154,7 @@ _0225D7F2:
 	add r4, r0, #0
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r5, #4]
 	mov r1, #0
 	str r1, [r0, #0x18]
@@ -10279,7 +10279,7 @@ _0225D90E:
 	add r4, r0, #0
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r5, #4]
 	mov r1, #0
 	str r1, [r0, #0x18]

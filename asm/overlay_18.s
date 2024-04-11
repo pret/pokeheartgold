@@ -22671,7 +22671,7 @@ ov18_021F10E8: ; 0x021F10E8
 	ldr r0, [r4, r5]
 	cmp r0, #0
 	beq _021F1100
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0
 	str r0, [r4, r5]
 _021F1100:

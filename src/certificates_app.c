@@ -612,7 +612,7 @@ static void CertificatesApp_FreeSpriteRenderer(CertificatesApp_Data *data) {
 
     for (int i = 0; i < (int)NELEMS(data->unk4C); i++) {
         GF_ASSERT(data->unk4C[i] != NULL);
-        sub_0200D9DC(data->unk4C[i]);
+        UnkImageStruct_Delete(data->unk4C[i]);
     }
 
     SpriteRenderer_UnloadResourcesAndRemoveGfxHandler(renderer, gfxHandler);

@@ -58,7 +58,7 @@
 .public SpriteGfxHandler_UnloadCharObjById
 .public SpriteGfxHandler_UnloadPlttObjById
 .public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public TickSpriteAnimation1Frame
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public UnkImageStruct_TickSpriteAnimationNFrames

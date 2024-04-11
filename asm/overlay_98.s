@@ -119,7 +119,7 @@ _0221E69E:
 	ldr r0, [r5]
 	cmp r0, #0
 	beq _0221E6AC
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0
 	str r0, [r5]
 _0221E6AC:

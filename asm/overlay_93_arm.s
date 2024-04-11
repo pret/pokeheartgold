@@ -962,10 +962,10 @@ _0225FBE0: .word ov93_02262C07
 
 	arm_func_start ov93_0225FBE4
 ov93_0225FBE4: ; 0x0225FBE4
-	ldr ip, _0225FBEC ; =sub_0200D9DC
+	ldr ip, _0225FBEC ; =UnkImageStruct_Delete
 	bx ip
 	.balign 4, 0
-_0225FBEC: .word sub_0200D9DC
+_0225FBEC: .word UnkImageStruct_Delete
 	arm_func_end ov93_0225FBE4
 
 	.rodata

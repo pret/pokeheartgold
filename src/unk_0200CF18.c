@@ -525,7 +525,7 @@ void SpriteRenderer_UnloadResourcesAndRemoveGfxHandler(SpriteRenderer* renderer,
     MyRemoveSpriteGfxHandler(renderer, gfxHandler);
 }
 
-void sub_0200D9DC(UnkImageStruct* unk) {
+void UnkImageStruct_Delete(UnkImageStruct* unk) {
     if (unk->vramTransfer) {
         sub_0200AF80(unk->spriteResourcesHeader->imageProxy);
     }

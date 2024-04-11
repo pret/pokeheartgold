@@ -263,7 +263,7 @@ _0207578C:
 	add r0, r5, #0
 	add r0, #0xb4
 	ldr r0, [r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r0, r4, #0
 	add r1, r6, #0
 	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler

@@ -6896,7 +6896,7 @@ ov80_0222F1D0: ; 0x0222F1D0
 	add r4, #0x80
 	lsl r7, r0, #2
 	ldr r0, [r4, r7]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0
 	str r0, [r4, r7]
 	ldr r0, [r5, #0x38]
@@ -7061,7 +7061,7 @@ ov80_0222F324: ; 0x0222F324
 	add r1, r2, r1
 	bl SpriteGfxHandler_UnloadCharObjById
 	add r0, r4, #0
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	pop {r4, pc}
 	thumb_func_end ov80_0222F324
 
@@ -7190,11 +7190,11 @@ _0222F43C: .word ov80_0223BD4C
 
 	thumb_func_start ov80_0222F440
 ov80_0222F440: ; 0x0222F440
-	ldr r3, _0222F448 ; =sub_0200D9DC
+	ldr r3, _0222F448 ; =UnkImageStruct_Delete
 	add r0, r1, #0
 	bx r3
 	nop
-_0222F448: .word sub_0200D9DC
+_0222F448: .word UnkImageStruct_Delete
 	thumb_func_end ov80_0222F440
 
 	thumb_func_start ov80_0222F44C

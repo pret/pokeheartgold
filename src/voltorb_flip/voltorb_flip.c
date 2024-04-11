@@ -1888,7 +1888,7 @@ static void ov122_021E7D6C(VoltorbFlipAppWork *work) {
 
 static void ov122_021E7F48(VoltorbFlipAppWork *work) {
     for (int i = 0; i < 13; i++) {
-        sub_0200D9DC(work->unk14C[i]);
+        UnkImageStruct_Delete(work->unk14C[i]);
     }
 }
 

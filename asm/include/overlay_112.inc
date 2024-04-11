@@ -86,7 +86,7 @@
 .public SpriteRenderer_LoadResourcesAndCreateSprite
 .public SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 .public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public UnkImageStruct_TryChangeSpriteAnimSeqNo
 .public UnkImageStruct_GetSpriteCurrentAnimSeqNo

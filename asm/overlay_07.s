@@ -3969,7 +3969,7 @@ ov07_0221DAA0: ; 0x0221DAA0
 	ldr r0, [r6, r4]
 	cmp r0, #0
 	beq _0221DAC2
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 _0221DAC2:
 	mov r0, #0x15
 	mov r2, #0
@@ -8806,7 +8806,7 @@ _0221FE10:
 	ldr r1, [r4, #0x14]
 	bl SpriteGfxHandler_UnloadPlttObjById
 	ldr r0, [r4, #0x24]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 _0221FE2C:
 	add r6, r6, #1
 	add r4, r4, #4
@@ -8834,7 +8834,7 @@ _0221FE44:
 	ldr r1, [r4, #0x14]
 	bl SpriteGfxHandler_UnloadPlttObjById
 	ldr r0, [r4, #0x24]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 _0221FE60:
 	add r6, r6, #1
 	add r4, r4, #4
@@ -15915,7 +15915,7 @@ _0222315E:
 _022231A4:
 	ldr r0, [r5, #0x10]
 	ldr r4, [r5, #4]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r4, #0
@@ -17480,7 +17480,7 @@ _02223DD6:
 	b _02223DFE
 _02223DE8:
 	ldr r0, [r4, #0x14]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4]
 	add r1, r5, #0
 	bl ov07_0221C448
@@ -22707,7 +22707,7 @@ ov07_02226804: ; 0x02226804
 	cmp r0, #0
 	ldr r0, [r4, #0x1c]
 	bne _0222682A
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4, #4]
 	add r1, r5, #0
 	bl ov07_0221C448
@@ -22904,7 +22904,7 @@ _02226998:
 	b _022269BE
 _022269A8:
 	ldr r0, [r4, #0x1c]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4, #4]
 	add r1, r5, #0
 	bl ov07_0221C448
@@ -22996,7 +22996,7 @@ ov07_02226A68: ; 0x02226A68
 	cmp r0, #0
 	ldr r0, [r4, #0x1c]
 	bne _02226A8E
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4, #4]
 	add r1, r5, #0
 	bl ov07_0221C448
@@ -23204,7 +23204,7 @@ _02226BF8:
 	b _02226C36
 _02226C1E:
 	ldr r0, [r4, #0x1c]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4, #4]
 	add r1, r5, #0
 	bl ov07_0221C448
@@ -24288,7 +24288,7 @@ _02227482:
 	add r7, r5, #0
 _02227494:
 	ldr r0, [r6, #0x14]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4, #8]
 	add r1, r7, #0
 	add r6, r6, #4
@@ -27951,7 +27951,7 @@ ov07_0222928C: ; 0x0222928C
 	cmp r0, #0
 	bne _022292B8
 	ldr r0, [r4, #0x38]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4, #0x14]
 	add r1, r5, #0
 	bl ov07_0221C448
@@ -28355,9 +28355,9 @@ _022295EE:
 	b _0222961A
 _022295FC:
 	ldr r0, [r4, #0x44]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4, #0x48]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4, #0x1c]
 	add r1, r5, #0
 	bl ov07_0221C448
@@ -28986,7 +28986,7 @@ _02229B1C:
 	add r7, r6, #0
 _02229B2E:
 	ldr r0, [r5, #0x30]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4, #0x10]
 	add r1, r7, #0
 	add r5, #0x4c
@@ -29342,7 +29342,7 @@ _02229DFA:
 	add r4, r5, #0
 _02229E04:
 	ldr r0, [r4, #0x14]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldrb r0, [r5, #5]
 	add r6, r6, #1
 	add r4, r4, #4
@@ -29787,7 +29787,7 @@ _0222A17C:
 	add r5, r4, #0
 _0222A186:
 	ldr r0, [r5, #0x18]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldrb r0, [r4, #8]
 	add r6, r6, #1
 	add r5, r5, #4
@@ -30277,7 +30277,7 @@ _0222A54E:
 	add r5, r4, #0
 _0222A558:
 	ldr r0, [r5, #0x24]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldrb r0, [r4, #2]
 	add r6, r6, #1
 	add r5, #0x40
@@ -30756,7 +30756,7 @@ _0222A948:
 	mov r5, #0
 _0222A95A:
 	ldr r0, [r4, #0x28]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #4
@@ -31130,7 +31130,7 @@ _0222AC5A:
 	add r4, r5, #0
 _0222AC64:
 	ldr r0, [r4, #0x2c]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #4
@@ -31891,7 +31891,7 @@ _0222B2E0:
 	mov r5, #0
 _0222B2F2:
 	ldr r0, [r4, #0x30]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #8
@@ -33701,11 +33701,11 @@ _0222C1A4:
 
 	thumb_func_start ov07_0222C1FC
 ov07_0222C1FC: ; 0x0222C1FC
-	ldr r3, _0222C204 ; =sub_0200D9DC
+	ldr r3, _0222C204 ; =UnkImageStruct_Delete
 	ldr r0, [r0]
 	bx r3
 	nop
-_0222C204: .word sub_0200D9DC
+_0222C204: .word UnkImageStruct_Delete
 	thumb_func_end ov07_0222C1FC
 
 	thumb_func_start ov07_0222C208
@@ -34047,7 +34047,7 @@ _0222C488:
 	cmp r6, #2
 	blt _0222C488
 	ldr r0, [r4, #0xc]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4]
 	add r1, r7, #0
 	bl ov07_0221C448
@@ -35832,7 +35832,7 @@ _0222D392:
 	b _0222D3B2
 _0222D39A:
 	ldr r0, [r4, #0x10]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4]
 	add r1, r5, #0
 	bl ov07_0221C448
@@ -36045,11 +36045,11 @@ _0222D568: .word 0xBF800000
 
 	thumb_func_start ov07_0222D56C
 ov07_0222D56C: ; 0x0222D56C
-	ldr r3, _0222D574 ; =sub_0200D9DC
+	ldr r3, _0222D574 ; =UnkImageStruct_Delete
 	ldr r0, [r0]
 	bx r3
 	nop
-_0222D574: .word sub_0200D9DC
+_0222D574: .word UnkImageStruct_Delete
 	thumb_func_end ov07_0222D56C
 
 	thumb_func_start ov07_0222D578
@@ -36544,7 +36544,7 @@ _0222D92E:
 	b _0222D966
 _0222D94E:
 	ldr r0, [r4, #0x48]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4]
 	add r1, r5, #0
 	bl ov07_0221C448
@@ -37001,7 +37001,7 @@ _0222DCEA:
 	b _0222DD18
 _0222DD02:
 	ldr r0, [r4, #0x3c]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4]
 	add r1, r5, #0
 	bl ov07_0221C448
@@ -37370,7 +37370,7 @@ _0222DFE6:
 	b _0222E010
 _0222DFF8:
 	ldr r0, [r4, #0x14]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4]
 	add r1, r5, #0
 	bl ov07_0221C448
@@ -37727,7 +37727,7 @@ _0222E2B2:
 	b _0222E2DC
 _0222E2C4:
 	ldr r0, [r4, #0x24]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4]
 	add r1, r5, #0
 	bl ov07_0221C448
@@ -38662,7 +38662,7 @@ _0222EA08:
 	b _0222EA3C
 _0222EA24:
 	ldr r0, [r4, #0x14]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4]
 	add r1, r5, #0
 	bl ov07_0221C448
@@ -39488,7 +39488,7 @@ _0222F086:
 	add r4, r6, #0
 _0222F08A:
 	ldr r0, [r4, #0x48]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #6
@@ -39829,7 +39829,7 @@ _0222F34E:
 	b _0222F36E
 _0222F356:
 	ldr r0, [r4, #0x5c]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4]
 	add r1, r5, #0
 	bl ov07_0221C448
@@ -40762,7 +40762,7 @@ _0222FAFA:
 	add r5, r4, #0
 _0222FAFE:
 	ldr r0, [r5, #0x3c]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #3
@@ -41114,7 +41114,7 @@ _0222FDD6:
 	add r5, r4, #0
 _0222FDDA:
 	ldr r0, [r5, #0x18]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #6
@@ -41438,7 +41438,7 @@ ov07_02230058: ; 0x02230058
 	add r5, r6, #0
 _0223006C:
 	ldr r0, [r5, #0x18]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0xf
@@ -42210,7 +42210,7 @@ _022306A0:
 	b _022306CC
 _022306B4:
 	ldr r0, [r4, #0x10]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4]
 	add r1, r5, #0
 	bl ov07_0221C448
@@ -42549,7 +42549,7 @@ ov07_02230960: ; 0x02230960
 	cmp r0, #0
 	bne _0223098A
 	ldr r0, [r4, #0x2c]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	ldr r0, [r4]
@@ -42590,7 +42590,7 @@ ov07_02230994: ; 0x02230994
 	add r0, r5, #0
 	mov r1, #1
 	bl ov07_0221C4C0
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	b _022309EE
 _022309D8:
 	add r0, r5, #0
@@ -42600,7 +42600,7 @@ _022309D8:
 	add r0, r5, #0
 	mov r1, #0
 	bl ov07_0221C4C0
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 _022309EE:
 	add r0, r5, #0
 	add r1, r6, #0
@@ -43223,7 +43223,7 @@ _02230EE2:
 	add r5, r4, #0
 _02230EE6:
 	ldr r0, [r5, #0x14]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #2
@@ -43449,7 +43449,7 @@ _022310A0:
 	b _022310D4
 _022310BC:
 	ldr r0, [r4, #0x10]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4]
 	add r1, r5, #0
 	bl ov07_0221C448
@@ -43676,7 +43676,7 @@ _02231278:
 	add r4, r1, #0
 _0223127C:
 	ldr r0, [r4, #0xc]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #6
@@ -43900,7 +43900,7 @@ _0223143A:
 	add r5, r4, #0
 _0223143E:
 	ldr r0, [r5, #0x18]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #6
@@ -49659,7 +49659,7 @@ _02233ED6:
 	ldr r1, [r4, #0x2c]
 	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	ldr r0, [r4, #0x30]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r0, r4, #0
 	add r0, #0xcc
 	ldr r0, [r0]

@@ -411,7 +411,7 @@ _02264B3A:
 	ldr r0, [r4, #4]
 	cmp r0, #0
 	beq _02264B48
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0
 	str r0, [r4, #4]
 _02264B48:
@@ -426,7 +426,7 @@ ov12_02264B4C: ; 0x02264B4C
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	beq _02264B5E
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0
 	str r0, [r4, #8]
 _02264B5E:

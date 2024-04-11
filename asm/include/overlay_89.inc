@@ -59,7 +59,7 @@
 .public SpriteRenderer_LoadResourcesAndCreateSprite
 .public sub_0200D934
 .public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public TickSpriteAnimation1Frame
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public sub_0200DCA0

@@ -46,7 +46,7 @@
 .public SpriteRenderer_LoadAnimResObjFromOpenNarc
 .public SpriteRenderer_LoadResourcesAndCreateSprite
 .public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public Sprite_SetPositionXY
 .public Sprite_GetPositionXY
 .public Sprite_AddPositionXY

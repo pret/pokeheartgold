@@ -8805,7 +8805,7 @@ ov112_021EA1F8: ; 0x021EA1F8
 	add r5, r7, #0
 _021EA202:
 	ldr r0, [r5, r6]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0xd9
@@ -24085,7 +24085,7 @@ _021F1A16:
 	bl GF_AssertFail
 _021F1A20:
 	ldr r0, [r5, #0x70]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0xa
@@ -24822,7 +24822,7 @@ _021F1FDA:
 	add r0, r5, #0
 	add r0, #0xa0
 	ldr r0, [r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2
@@ -24830,7 +24830,7 @@ _021F1FDA:
 	add r0, r6, #0
 	add r0, #0xa8
 	ldr r0, [r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r7, r7, #1
 	add r6, #0x14
 	cmp r7, #2

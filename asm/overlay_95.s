@@ -1094,11 +1094,11 @@ ov95_021E6184: ; 0x021E6184
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x74]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4, #0x78]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4, #0x7c]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	pop {r4, pc}
 	thumb_func_end ov95_021E6184
 
@@ -3369,11 +3369,11 @@ _021E7400: .word ov95_021E782C
 
 	thumb_func_start ov95_021E7404
 ov95_021E7404: ; 0x021E7404
-	ldr r3, _021E740C ; =sub_0200D9DC
+	ldr r3, _021E740C ; =UnkImageStruct_Delete
 	ldr r0, [r0, #0x10]
 	bx r3
 	nop
-_021E740C: .word sub_0200D9DC
+_021E740C: .word UnkImageStruct_Delete
 	thumb_func_end ov95_021E7404
 
 	thumb_func_start ov95_021E7410

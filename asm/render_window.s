@@ -2260,7 +2260,7 @@ _0200F564:
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r0, r4, #0
 	bl ov01_021E86F4
 	add r0, r5, #0
