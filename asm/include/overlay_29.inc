@@ -20,7 +20,7 @@
 .public AddPlttResObjFromOpenNarc
 .public AddCellOrAnimResObjFromOpenNarc
 .public sub_0200A740
-.public _2DGfxResObj_GetResID
+.public GF2DGfxResObj_GetResID
 .public sub_0200ADA4
 .public sub_0200AEB0
 .public sub_0200B00C

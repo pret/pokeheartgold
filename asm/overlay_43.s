@@ -4,8 +4,8 @@
 
 	.text
 
-	thumb_func_start ov43_02229EE0
-ov43_02229EE0: ; 0x02229EE0
+	thumb_func_start PalPad_Init
+PalPad_Init: ; 0x02229EE0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, _02229FA4 ; =FS_OVERLAY_ID(OVY_42)
@@ -94,10 +94,10 @@ _02229FA4: .word FS_OVERLAY_ID(OVY_42)
 _02229FA8: .word 0x000005A4
 _02229FAC: .word 0x00000408
 _02229FB0: .word ov43_0222A148
-	thumb_func_end ov43_02229EE0
+	thumb_func_end PalPad_Init
 
-	thumb_func_start ov43_02229FB4
-ov43_02229FB4: ; 0x02229FB4
+	thumb_func_start PalPad_Main
+PalPad_Main: ; 0x02229FB4
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r1, #0
@@ -225,10 +225,10 @@ _0222A098:
 	.balign 4, 0
 _0222A0A4: .word 0x00000408
 _0222A0A8: .word 0x0000021D
-	thumb_func_end ov43_02229FB4
+	thumb_func_end PalPad_Main
 
-	thumb_func_start ov43_0222A0AC
-ov43_0222A0AC: ; 0x0222A0AC
+	thumb_func_start PalPad_Exit
+PalPad_Exit: ; 0x0222A0AC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -293,7 +293,7 @@ ov43_0222A0AC: ; 0x0222A0AC
 	.balign 4, 0
 _0222A140: .word 0x00000408
 _0222A144: .word FS_OVERLAY_ID(OVY_42)
-	thumb_func_end ov43_0222A0AC
+	thumb_func_end PalPad_Exit
 
 	thumb_func_start ov43_0222A148
 ov43_0222A148: ; 0x0222A148
@@ -5956,7 +5956,7 @@ ov43_0222CD44: ; 0x0222CD44
 	str r2, [sp, #4]
 	add r0, r4, #0
 	add r3, r1, #0
-	bl sub_020830D8
+	bl NamingScreen_CreateArgs
 	add r4, r0, #0
 	ldr r0, [r5, #0x64]
 	cmp r0, #1

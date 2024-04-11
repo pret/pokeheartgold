@@ -48,10 +48,10 @@ static void ov84_0223E958(BgConfig *config);
 static void BattleArcade_VBlank(void *work);
 static void BattleArcade_SetVramBanks(void);
 static void ov84_0223E9E4(BgConfig *config) ;
-static void ov84_0223EAAC(GAME_BOARD_WORK *work, enum GFBgLayer layer);
-static void ov84_0223EB08(GAME_BOARD_WORK *work, enum GFBgLayer layer);
+static void ov84_0223EAAC(GAME_BOARD_WORK *work, GFBgLayer layer);
+static void ov84_0223EB08(GAME_BOARD_WORK *work, GFBgLayer layer);
 static void ov84_0223EB44(void);
-static void ov84_0223EB78(GAME_BOARD_WORK *work, enum GFBgLayer layer);
+static void ov84_0223EB78(GAME_BOARD_WORK *work, GFBgLayer layer);
 static void BattleArcadeGameBoard_SetState(GAME_BOARD_WORK *work, int *state, int a2);
 static void ov84_0223EBE8(GAME_BOARD_WORK *work, int key);
 static void BattleArcadeGameBoard_SetCursorPos(GAME_BOARD_WORK *work, u8 cursorPos);
@@ -687,7 +687,7 @@ static void ov84_0223E9E4(BgConfig *config) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);
 }
 
-static void ov84_0223EAAC(GAME_BOARD_WORK *work, enum GFBgLayer layer) {
+static void ov84_0223EAAC(GAME_BOARD_WORK *work, GFBgLayer layer) {
     u32 var;
 
     GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, 124, work->bgConfig, layer, 0, 0, 1, HEAP_ID_GAME_BOARD);
@@ -701,7 +701,7 @@ static void ov84_0223EAAC(GAME_BOARD_WORK *work, enum GFBgLayer layer) {
     GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, var, work->bgConfig, layer, 0, 0, 1, HEAP_ID_GAME_BOARD);
 }
 
-static void ov84_0223EB08(GAME_BOARD_WORK *work, enum GFBgLayer layer) {
+static void ov84_0223EB08(GAME_BOARD_WORK *work, GFBgLayer layer) {
     u32 var;
 
     if (BattleArcade_MultiplayerCheck(work->type) == FALSE) {
@@ -725,7 +725,7 @@ static void ov84_0223EB44(void) {
     FreeToHeap(buffer);
 }
 
-static void ov84_0223EB78(GAME_BOARD_WORK *work, enum GFBgLayer layer) {
+static void ov84_0223EB78(GAME_BOARD_WORK *work, GFBgLayer layer) {
     GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, 126, work->bgConfig, layer, 0, 0, TRUE, HEAP_ID_GAME_BOARD);
     GfGfxLoader_GXLoadPalFromOpenNarc(work->narc, 187, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_0_OFFSET, 0x40, HEAP_ID_GAME_BOARD);
     GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, 125, work->bgConfig, layer, 0, 0, TRUE, HEAP_ID_GAME_BOARD);
@@ -1328,9 +1328,9 @@ static void ov84_0223F5E4(GAME_BOARD_SUB_3E8 *work, Party *playerParty, Party *o
     u32 i;
     Pokemon *playerMon;
     Pokemon *opponentMon;
-    NARC *narc = NARC_New(NARC_a_0_2_0, HEAP_ID_GAME_BOARD);
+    NARC *narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_GAME_BOARD);
 
-    work->resourceObj[3][1] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_a_0_2_0, sub_02074490(), FALSE, 3, 1, 3, HEAP_ID_GAME_BOARD);
+    work->resourceObj[3][1] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_poketool_icongra_poke_icon, sub_02074490(), FALSE, 3, 1, 3, HEAP_ID_GAME_BOARD);
     work->resourceObj[3][2] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[2], narc, sub_02074498(), FALSE, 3, GF_GFX_RES_TYPE_CELL, HEAP_ID_GAME_BOARD);
     work->resourceObj[3][3] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[3], narc, sub_020744A4(), FALSE, 3, GF_GFX_RES_TYPE_ANIM, HEAP_ID_GAME_BOARD);
 

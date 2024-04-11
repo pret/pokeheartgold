@@ -10,6 +10,6 @@
 .public sub_02078DD8
 .public sub_02078E28
 .public memset
-.public _020FA484
+.public gOverlayTemplate_Battle
 .public gNatureStatMods
 .public ov00_021E6D60

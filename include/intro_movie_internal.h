@@ -8,16 +8,22 @@
 #include "unk_02023694.h"
 #include "unk_02014DA0.h"
 
+enum IntroMovieSceneState {
+    INTRO_MOVIE_SCENE_INIT,
+    INTRO_MOVIE_SCENE_RUN,
+    INTRO_MOVIE_SCENE_EXIT,
+};
+
 typedef struct IntroMovieScene1Data {
     u8 state;
     u8 needFreeGfx;
     u8 *skipAllowedPtr;
-    _2DGfxResObj *charResObj;
-    _2DGfxResObj *plttResObj;
-    _2DGfxResObj *cellResObj;
-    _2DGfxResObj *animResObj;
+    GF_2DGfxResObj *charResObj;
+    GF_2DGfxResObj *plttResObj;
+    GF_2DGfxResObj *cellResObj;
+    GF_2DGfxResObj *animResObj;
     Sprite *sunSprite;
-    void *birdSprite;
+    Sprite *birdSprite;
 } IntroMovieScene1Data;
 
 typedef struct IntroMovieScene2SpritePanController {
@@ -40,7 +46,7 @@ typedef struct IntroMovieScene2Data {
     u8 needFreeGfx;
     u8 unk_002;
     u8 flowerIndex;
-    _2DGfxResObj *spriteGfxRes[2][4];
+    GF_2DGfxResObj *spriteGfxRes[2][4];
     Sprite *ethanSprite0;
     Sprite *lyraSprite0;
     Sprite *ethanSprite1;
@@ -69,14 +75,14 @@ typedef struct IntroMovieScene3Data {
     NNSG2dScreenData *rivalGraphicSectionsScrnData[4];
     NNSG2dScreenData *rivalGraphicWholeScrnData;
     NNSG2dScreenData *beastGraphicScrnData[3];
-    _2DGfxResObj *spriteResObjs[2][4];
+    GF_2DGfxResObj *spriteResObjs[2][4];
     Sprite *silverSilhouetteSprite;
     Sprite *eusineSprite;
     Sprite *unownSprites[3];
     u8 filler_078[0x8];  // unused
     Camera *camera;
     IntroMovieScene3MapRender mapRender[3];
-    GF3DVramMan *_3dVramMan;
+    GF3DVramMan *gf3dVramMan;
     NNSFndAllocator allocator;
     int whichMap;
 } IntroMovieScene3Data; // size: 0x1D4
@@ -85,7 +91,7 @@ typedef struct IntroMovieScene4Data {
     u8 state;
     u8 needFreeGfx;
     u8 filler_002[2];
-    _2DGfxResObj *spriteResObjs[4][4];
+    GF_2DGfxResObj *spriteResObjs[4][4];
     Sprite *hand1Sprite;
     Sprite *hand2Sprite;
     Sprite *sparklesSprite;
@@ -117,7 +123,7 @@ typedef struct IntroMovieBgBlendAnim {
 typedef struct IntroMovieBgScrollAnim {
     BgConfig *bgConfig;
     BOOL active;
-    enum GFBgLayer bgId;
+    GFBgLayer bgId;
     s16 duration;
     u8 counter;
     u8 finished;
@@ -182,7 +188,7 @@ typedef struct IntroMovieOvyData {
     BgConfig *bgConfig;
     SpriteList *spriteList;
     GF_G2dRenderer spriteRenderer;
-    _2DGfxResMan *spriteResManagers[4];
+    GF_2DGfxResMan *spriteResManagers[4];
     u32 savedLCRngSeed;
     IntroMovieScene1Data scene1Data;
     IntroMovieScene2Data scene2Data;
@@ -195,39 +201,39 @@ typedef struct IntroMovieOvyData {
     u8 sceneStep;
     u8 sceneTimer;
     u8 sceneNumber;
-} IntroMovieOvyData; // size: 0x62C
+} IntroMovieOverlayData; // size: 0x62C
 
-BOOL IntroMovie_Scene1(IntroMovieOvyData *data, void *pVoid);
-BOOL IntroMovie_Scene2(IntroMovieOvyData *data, void *pVoid);
-BOOL IntroMovie_Scene3(IntroMovieOvyData *data, void *pVoid);
-BOOL IntroMovie_Scene4(IntroMovieOvyData *data, void *pVoid);
-BOOL IntroMovie_Scene5(IntroMovieOvyData *data, void *pVoid);
+BOOL IntroMovie_Scene1(IntroMovieOverlayData *data, void *pVoid);
+BOOL IntroMovie_Scene2(IntroMovieOverlayData *data, void *pVoid);
+BOOL IntroMovie_Scene3(IntroMovieOverlayData *data, void *pVoid);
+BOOL IntroMovie_Scene4(IntroMovieOverlayData *data, void *pVoid);
+BOOL IntroMovie_Scene5(IntroMovieOverlayData *data, void *pVoid);
 
-void IntroMovie_CreateSpriteResourceManagers(IntroMovieOvyData *data, const u8 *counts);
-void IntroMovie_DestroySpriteResourceManagers(IntroMovieOvyData *data);
-_2DGfxResMan **IntroMovie_GetSpriteResourceManagersArray(IntroMovieOvyData *data);
+void IntroMovie_CreateSpriteResourceManagers(IntroMovieOverlayData *data, const u8 *counts);
+void IntroMovie_DestroySpriteResourceManagers(IntroMovieOverlayData *data);
+GF_2DGfxResMan **IntroMovie_GetSpriteResourceManagersArray(IntroMovieOverlayData *data);
 void IntroMovie_StartSpriteAnimAndMakeVisible(Sprite *sprite, BOOL active);
-void IntroMovie_BuildSpriteResourcesHeaderAndTemplate(int resId, IntroMovieOvyData *data, int priority, NNS_G2D_VRAM_TYPE whichScreen, SpriteTemplate *template, SpriteResourcesHeader *header);
-void IntroMovie_RendererSetSurfaceCoords(IntroMovieOvyData *data, int mainx, int mainy, int subx, int suby);
+void IntroMovie_BuildSpriteResourcesHeaderAndTemplate(int resId, IntroMovieOverlayData *data, int priority, NNS_G2D_VRAM_TYPE vram, SpriteTemplate *template, SpriteResourcesHeader *header);
+void IntroMovie_RendererSetSurfaceCoords(IntroMovieOverlayData *data, int mainx, int mainy, int subx, int suby);
 void IntroMovie_StartBlendFadeEffect(IntroMovieBgBlendAnim *data, int plane1, int plane2, u8 duration, int direction, int screen);
-void IntroMovie_StartBgScroll_VBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, enum GFBgLayer bgId, s16 xChange, s16 yChange, int duration);
-void IntroMovie_StartBgScroll_NotVBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, enum GFBgLayer bgId, s16 xChange, s16 yChange, int duration);
-BOOL IntroMovie_WaitBgScrollAnim(IntroMovieBgScrollAnim *data, enum GFBgLayer bgId);
-void IntroMovie_CancelBgScrollAnim(IntroMovieBgScrollAnim *data, enum GFBgLayer bgId);
+void IntroMovie_StartBgScroll_VBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, GFBgLayer bgId, s16 xChange, s16 yChange, int duration);
+void IntroMovie_StartBgScroll_NotVBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, GFBgLayer bgId, s16 xChange, s16 yChange, int duration);
+BOOL IntroMovie_WaitBgScrollAnim(IntroMovieBgScrollAnim *data, GFBgLayer bgId);
+void IntroMovie_CancelBgScrollAnim(IntroMovieBgScrollAnim *data, GFBgLayer bgId);
 IntroMovieBgWindowAnim *IntroMovie_StartWindowPanEffect(IntroMovieBgWindowAnim *data, int duration, int whichScreen, const IntroMovieBgWindowAnimParam *param);
 BOOL IntroMovie_WaitWindowPanEffect(IntroMovieBgWindowAnim *data, int whichScreen);
 void IntroMovie_WindowsOn_SetInsideOutsidePlanes(int winIn, int winOut, u8 topScreenEffect, u8 bottomSCreenEffect, int whichScreen);
 void IntroMovie_SetBgWindowsPosition(int x1, int y1, int x2, int y2, int whichScreen);
-BgConfig *IntroMovie_GetBgConfig(IntroMovieOvyData *data);
-IntroMovieBgLinearAnims *IntroMovie_GetBgLinearAnimsController(IntroMovieOvyData *data);
-BOOL IntroMovie_GetIntroSkippedFlag(IntroMovieOvyData *data);
-int IntroMovie_GetTotalFrameCount(IntroMovieOvyData *data);
-void IntroMovie_InitBgAnimGxState(IntroMovieOvyData *data);
-void IntroMovie_BeginCircleWipeEffect(IntroMovieOvyData *data, int kind, BOOL isTopScreen, int duration);
-BOOL IntroMovie_WaitCircleWipeEffect(IntroMovieOvyData *data);
-void *IntroMovie_GetSceneDataPtr(IntroMovieOvyData *data);
-void IntroMovie_AdvanceSceneStep(IntroMovieOvyData *data);
-u8 IntroMovie_GetSceneStep(IntroMovieOvyData *data);
-u8 IntroMovie_GetSceneStepTimer(IntroMovieOvyData *data);
+BgConfig *IntroMovie_GetBgConfig(IntroMovieOverlayData *data);
+IntroMovieBgLinearAnims *IntroMovie_GetBgLinearAnimsController(IntroMovieOverlayData *data);
+BOOL IntroMovie_GetIntroSkippedFlag(IntroMovieOverlayData *data);
+int IntroMovie_GetTotalFrameCount(IntroMovieOverlayData *data);
+void IntroMovie_InitBgAnimGxState(IntroMovieOverlayData *data);
+void IntroMovie_BeginCircleWipeEffect(IntroMovieOverlayData *data, int kind, BOOL isTopScreen, int duration);
+BOOL IntroMovie_WaitCircleWipeEffect(IntroMovieOverlayData *data);
+void *IntroMovie_GetSceneDataPtr(IntroMovieOverlayData *data);
+void IntroMovie_AdvanceSceneStep(IntroMovieOverlayData *data);
+u8 IntroMovie_GetSceneStep(IntroMovieOverlayData *data);
+u8 IntroMovie_GetSceneStepTimer(IntroMovieOverlayData *data);
 
 #endif //POKEHEARTGOLD_INTRO_MOVIE_INTERNAL

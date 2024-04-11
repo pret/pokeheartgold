@@ -51,7 +51,7 @@ ov49_02258830: ; 0x02258830
 	add r4, r0, #0
 	bl NNS_G3dGetTex
 	add r6, r0, #0
-	bl AllocAndLoad3dTexResources
+	bl GF3dRender_AllocAndLoadTexResources
 	add r0, r6, #0
 	add r1, sp, #0xc
 	add r2, sp, #8
@@ -60,7 +60,7 @@ ov49_02258830: ; 0x02258830
 	bl NNS_G3dPlttReleasePlttKey
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_02025ACC
+	bl G3dResFileHeader_GetSizeWithoutTex
 	add r6, r0, #0
 	add r0, r7, #0
 	add r1, r6, #0
@@ -4713,7 +4713,7 @@ ov49_0225AA2C: ; 0x0225AA2C
 	bl ov49_02265398
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	add r4, #0x3c
 	add r0, r4, #0
 	bl ov49_0225A7C0
@@ -7886,7 +7886,7 @@ _0225C1E4:
 	mov r3, #0
 	bl AddPlttResObjFromNarc
 	str r0, [r6, #0x70]
-	bl _2DGfxResObj_GetPlttDataPtr
+	bl GF2DGfxResObj_GetPlttDataPtr
 	bl ov49_0225C368
 	ldr r0, [r6, #0x70]
 	bl sub_0200B00C
@@ -10533,7 +10533,7 @@ _0225D55E:
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
 	ldr r1, [r4, #0xc]
-	bl Bind3dModelSet
+	bl GF3dRender_BindModelSet
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov49_0225D528

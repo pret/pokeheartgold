@@ -5,28 +5,55 @@
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
-#include "unk_0201F4C4.h"
+#include "gf_3d_render.h"
 #include "unk_020215A0.h"
 #include "unk_02022588.h"
 #include "demo/opening/gs_opening.naix"
 #include "unk_02026E30.h"
 
-void IntroMovie_Scene3_VBlankCB(void *pVoid);
-void IntroMovie_Scene3_Init(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData);
-void IntroMovie_Scene3_Show2DGfx(IntroMovieScene3Data *sceneData, BgConfig *bgConfig);
-BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData, int totalFrames);
-void IntroMovie_Scene3_Exit(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData);
-void IntroMovie_Scene3_InitBGLayers(IntroMovieOvyData *data);
-void IntroMovie_Scene3_LoadBGGraphics(BgConfig *bgConfig, IntroMovieScene3Data *sceneData);
-void IntroMovie_Scene3_LoadOBJGraphics(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData);
-void IntroMovie_Scene3_UnloadOBJGraphics(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData);
-void IntroMovie_Scene3_CreateSprites(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData);
-void IntroMovie_Scene3_Load3dGfxData(IntroMovieScene3Data *sceneData);
-void IntroMovie_Scene3_Animate3DMap(IntroMovieScene3Data *sceneData);
-void IntroMovie_Scene3_3DVRamManInit(void);
-void IntroMovie_Scene3_SetMapLightingAndColorParams(u8 a0);
+enum IntroScene3State {
+    INTRO_SCENE3_LOAD_NEWBARK,
+    INTRO_SCENE3_SHOW_NEWBARK,
+    INTRO_SCENE3_LOAD_GOLDENROD,
+    INTRO_SCENE3_SHOW_GOLDENROD,
+    INTRO_SCENE3_LOAD_ECRUTEAK,
+    INTRO_SCENE3_WAIT_ECRUTEAK,
+    INTRO_SCENE3_END_3DRENDER,
+    INTRO_SCENE3_APPEAR_RIVAL,
+    INTRO_SCENE3_WAIT_APPEAR_RIVAL,
+    INTRO_SCENE3_DRAMATIC_RIVAL_PANELS,
+    INTRO_SCENE3_REMOVE_RIVAL_PANEL_BORDERS,
+    INTRO_SCENE3_CINEMATIC_ASPECT_RIVAL,
+    INTRO_SCENE3_APPEAR_ENTEI,
+    INTRO_SCENE3_APPEAR_RAIKOU,
+    INTRO_SCENE3_LOAD_ROCKETS,
+    INTRO_SCENE3_NARROW_WINDOWS,
+    INTRO_SCENE3_WAIT_NARROW,
+    INTRO_SCENE3_SPRITES_VISIBLE,
+    INTRO_SCENE3_WAIT_ENTEI_EXIT,
+    INTRO_SCENE3_UNOWN_RAIKOU_EXIT,
+    INTRO_SCENE3_LOAD_ROCKET_SCRNDATA,
+    INTRO_SCENE3_UNOWN_SUICUNE_EXIT,
+    INTRO_SCENE3_EXPAND_ROCKET_VIEWPORT,
+    INTRO_SCENE3_WAIT_ADMINS,
+};
 
-const u8 sIntroMovieScene3SpriteResCounts[4] = {2, 2, 2, 2};
+static void IntroMovie_Scene3_VBlankCB(void *pVoid);
+static void IntroMovie_Scene3_Init(IntroMovieOverlayData *data, IntroMovieScene3Data *sceneData);
+static void IntroMovie_Scene3_Show2DGfx(IntroMovieScene3Data *sceneData, BgConfig *bgConfig);
+static BOOL IntroMovie_Scene3_Main(IntroMovieOverlayData *data, IntroMovieScene3Data *sceneData, int totalFrames);
+static void IntroMovie_Scene3_Exit(IntroMovieOverlayData *data, IntroMovieScene3Data *sceneData);
+static void IntroMovie_Scene3_InitBGLayers(IntroMovieOverlayData *data);
+static void IntroMovie_Scene3_LoadBGGraphics(BgConfig *bgConfig, IntroMovieScene3Data *sceneData);
+static void IntroMovie_Scene3_LoadOBJGraphics(IntroMovieOverlayData *data, IntroMovieScene3Data *sceneData);
+static void IntroMovie_Scene3_UnloadOBJGraphics(IntroMovieOverlayData *data, IntroMovieScene3Data *sceneData);
+static void IntroMovie_Scene3_CreateSprites(IntroMovieOverlayData *data, IntroMovieScene3Data *sceneData);
+static void IntroMovie_Scene3_Load3dGfxData(IntroMovieScene3Data *sceneData);
+static void IntroMovie_Scene3_Animate3DMap(IntroMovieScene3Data *sceneData);
+static void IntroMovie_Scene3_3DVRamManInit(void);
+static void IntroMovie_Scene3_SetMapLightingAndColorParams(u8 a0);
+
+static const u8 sIntroMovieScene3SpriteResCounts[4] = {2, 2, 2, 2};
 
 static const int sMap3dResHeaderFileIds[3] = {
     NARC_gs_opening_gs_opening_00000103_NSBMD,
@@ -124,24 +151,24 @@ static const GXRgb sMaterialEmission[3] = {
     RGB(8, 8, 7),
 };
 
-BOOL IntroMovie_Scene3(IntroMovieOvyData *data, void *pVoid) {
+BOOL IntroMovie_Scene3(IntroMovieOverlayData *data, void *pVoid) {
     IntroMovieScene3Data *sceneData = (IntroMovieScene3Data *)pVoid;
 
     if (IntroMovie_GetIntroSkippedFlag(data)) {
-        sceneData->state = 2;
+        sceneData->state = INTRO_MOVIE_SCENE_EXIT;
     }
 
     switch (sceneData->state) {
-    case 0:
+    case INTRO_MOVIE_SCENE_INIT:
         IntroMovie_Scene3_Init(data, sceneData);
         ++sceneData->state;
         break;
-    case 1:
+    case INTRO_MOVIE_SCENE_RUN:
         if (IntroMovie_Scene3_Main(data, sceneData, IntroMovie_GetTotalFrameCount(data))) {
             ++sceneData->state;
         }
         break;
-    case 2:
+    case INTRO_MOVIE_SCENE_EXIT:
         IntroMovie_Scene3_Exit(data, sceneData);
         return TRUE;
     }
@@ -149,14 +176,14 @@ BOOL IntroMovie_Scene3(IntroMovieOvyData *data, void *pVoid) {
     return FALSE;
 }
 
-void IntroMovie_Scene3_VBlankCB(void *pVoid) {
-    IntroMovieOvyData *data = (IntroMovieOvyData *)pVoid;
+static void IntroMovie_Scene3_VBlankCB(void *pVoid) {
+    IntroMovieOverlayData *data = (IntroMovieOverlayData *)pVoid;
 
     DoScheduledBgGpuUpdates(IntroMovie_GetBgConfig(data));
     OamManager_ApplyAndResetBuffers();
 }
 
-void IntroMovie_Scene3_Init(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData) {
+static void IntroMovie_Scene3_Init(IntroMovieOverlayData *data, IntroMovieScene3Data *sceneData) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     sub_020216C8();
     sub_02022638();
@@ -169,13 +196,13 @@ void IntroMovie_Scene3_Init(IntroMovieOvyData *data, IntroMovieScene3Data *scene
     IntroMovie_RendererSetSurfaceCoords(data, 0, 0, 0, 512);
     IntroMovie_Scene3_LoadOBJGraphics(data, sceneData);
     IntroMovie_Scene3_CreateSprites(data, sceneData);
-    sceneData->_3dVramMan = GF_3DVramMan_Create(HEAP_ID_INTRO_MOVIE, 0, 1, 0, 4, IntroMovie_Scene3_3DVRamManInit);
+    sceneData->gf3dVramMan = GF_3DVramMan_Create(HEAP_ID_INTRO_MOVIE, 0, 1, 0, 4, IntroMovie_Scene3_3DVRamManInit);
     IntroMovie_Scene3_Load3dGfxData(sceneData);
     IntroMovie_Scene3_Show2DGfx(sceneData, bgConfig);
-    sceneData->needFreeGfx = 1;
+    sceneData->needFreeGfx = TRUE;
 }
 
-void IntroMovie_Scene3_Show2DGfx(IntroMovieScene3Data *sceneData, BgConfig *bgConfig) {
+static void IntroMovie_Scene3_Show2DGfx(IntroMovieScene3Data *sceneData, BgConfig *bgConfig) {
     IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->silverSilhouetteSprite, TRUE);
     GfGfx_EngineBTogglePlanes((GXPlaneMask)(GX_PLANEMASK_BG1 | GX_PLANEMASK_BG2), GF_PLANE_TOGGLE_OFF);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
@@ -184,25 +211,25 @@ void IntroMovie_Scene3_Show2DGfx(IntroMovieScene3Data *sceneData, BgConfig *bgCo
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
 }
 
-BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData, int totalFrames) {
+static BOOL IntroMovie_Scene3_Main(IntroMovieOverlayData *data, IntroMovieScene3Data *sceneData, int totalFrames) {
     u8 stepTimer;
-    BgConfig *bgConfig = IntroMovie_GetBgConfig(data);  // r7
-    IntroMovieBgLinearAnims *bgAnimCnt = IntroMovie_GetBgLinearAnimsController(data);  // r4
-    stepTimer = IntroMovie_GetSceneStepTimer(data);  // sp10
+    BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
+    IntroMovieBgLinearAnims *bgAnimCnt = IntroMovie_GetBgLinearAnimsController(data);
+    stepTimer = IntroMovie_GetSceneStepTimer(data);
     IntroMovie_Scene3_Animate3DMap(sceneData);
     switch (IntroMovie_GetSceneStep(data)) {
-    case 0:  // Show New Bark
+    case INTRO_SCENE3_LOAD_NEWBARK:
         IntroMovie_Scene3_SetMapLightingAndColorParams(sceneData->whichMap);
         IntroMovie_BeginCircleWipeEffect(data, 0, TRUE, 8);
         IntroMovie_AdvanceSceneStep(data);
         break;
-    case 1:  // Wait New Bark
+    case INTRO_SCENE3_SHOW_NEWBARK:
         if (stepTimer > 40) {
             IntroMovie_BeginCircleWipeEffect(data, 3, TRUE, 8);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 2:  // Load Goldenrod
+    case INTRO_SCENE3_LOAD_GOLDENROD:
         if (IntroMovie_WaitCircleWipeEffect(data)) {
             IntroMovie_BeginCircleWipeEffect(data, 2, TRUE, 8);
             sceneData->whichMap = 1;
@@ -210,13 +237,13 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 3:  // Wait Goldenrod
+    case INTRO_SCENE3_SHOW_GOLDENROD:
         if (stepTimer > 46) {
             IntroMovie_BeginCircleWipeEffect(data, 3, TRUE, 8);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 4:  // Load Ecruteak
+    case INTRO_SCENE3_LOAD_ECRUTEAK:
         if (IntroMovie_WaitCircleWipeEffect(data)) {
             IntroMovie_BeginCircleWipeEffect(data, 2, TRUE, 8);
             sceneData->whichMap = 2;
@@ -224,28 +251,28 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 5:  // Wait Ecruteak
+    case INTRO_SCENE3_WAIT_ECRUTEAK:
         if (stepTimer > 98) {
             IntroMovie_BeginCircleWipeEffect(data, 3, TRUE, 8);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 6:  // End map render portion
+    case INTRO_SCENE3_END_3DRENDER:
         if (IntroMovie_WaitCircleWipeEffect(data)) {
             sceneData->whichMap = 0xFFFF;
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 7:  // uhhh
+    case INTRO_SCENE3_APPEAR_RIVAL:
         IntroMovie_BeginCircleWipeEffect(data, 2, FALSE, 8);
         IntroMovie_AdvanceSceneStep(data);
         break;
-    case 8:  // appear rival
+    case INTRO_SCENE3_WAIT_APPEAR_RIVAL:
         if (IntroMovie_WaitCircleWipeEffect(data)) {
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 9: {  // Rival bg effects
+    case INTRO_SCENE3_DRAMATIC_RIVAL_PANELS: {  // Rival bg effects
         int silver_bg_appear_frame_delays[3] = {56, 73, 92};
 
         if (stepTimer >= silver_bg_appear_frame_delays[sceneData->silverBgAppearCounter]) {
@@ -259,7 +286,7 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
         }
         break;
     }
-    case 10:  // Remove borders
+    case INTRO_SCENE3_REMOVE_RIVAL_PANEL_BORDERS:
         if (stepTimer >= 10) {
             GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);
             BG_LoadScreenTilemapData(bgConfig, GF_BG_LYR_SUB_0, sceneData->rivalGraphicWholeScrnData->rawData, sceneData->rivalGraphicWholeScrnData->szByte);
@@ -267,55 +294,55 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 11:  // Dramatic window shrink, replace with doggo
+    case INTRO_SCENE3_CINEMATIC_ASPECT_RIVAL:
         if (stepTimer == 5) {
-            IntroMovieBgWindowAnimParam _021EB3C8 = {
+            IntroMovieBgWindowAnimParam windowPan_narrowY = {
                 0x00, 0x00, 0xFF, 0xC0,
                 0x00, 0x40, 0xFF, 0x80,
                 0x1F, 0x10, 1, 1
             };
-            IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 5, 0, &_021EB3C8);
+            IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 5, 0, &windowPan_narrowY);
         }
         if (stepTimer >= 44) {
-            IntroMovieBgWindowAnimParam _021EB3F4 = {
+            IntroMovieBgWindowAnimParam windowPan_widenLeftToRight = {
                 0x00, 0x40, 0x01, 0x80,
                 0x00, 0x40, 0xFF, 0x80,
                 0x1F, 0x10, 1, 1
             };
-            IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 7, 0, &_021EB3F4);
+            IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 7, 0, &windowPan_widenLeftToRight);
             GXS_SetVisibleWnd(1);
             IntroMovie_StartBgScroll_VBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_SUB_0, -256, 0, 7);
             GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 12:  // Show Entei
+    case INTRO_SCENE3_APPEAR_ENTEI:
         if (IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_SUB_0)) {
-            IntroMovieBgWindowAnimParam _021EB420 = {
+            IntroMovieBgWindowAnimParam windowPan_widenRightToLeft = {
                 0xFE, 0x00, 0xFF, 0x80,
                 0x00, 0x00, 0xFF, 0x80,
                 0x1F, 0x11, 1, 1
             };
-            IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 7, 0, &_021EB420);
+            IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 7, 0, &windowPan_widenRightToLeft);
             IntroMovie_StartBgScroll_VBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_SUB_1, 256, 0, 7);
             GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_ON);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 13:  // Show Raikou
+    case INTRO_SCENE3_APPEAR_RAIKOU:
         if (IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_SUB_1)) {
-            IntroMovieBgWindowAnimParam _021EB44C = {
+            IntroMovieBgWindowAnimParam windowPan_widenLeftToRight = {
                 0x00, 0x00, 0x01, 0xC0,
                 0x00, 0x00, 0xFF, 0xC0,
                 0x1F, 0x13, 1, 1
             };
-            IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 1, 0, &_021EB44C);
+            IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 1, 0, &windowPan_widenLeftToRight);
             IntroMovie_StartBgScroll_VBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_SUB_2, -256, 0, 1);
             GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_ON);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 14:  // Load Rockets gfx for later
+    case INTRO_SCENE3_LOAD_ROCKETS:
         if (IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_SUB_2)) {
             GX_SetVisibleWnd(0);
             GXS_SetVisibleWnd(0);
@@ -323,79 +350,79 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 15:  // Narrow windows
+    case INTRO_SCENE3_NARROW_WINDOWS:
         if (stepTimer >= 42) {
-            IntroMovieBgWindowAnimParam _021EB478 = {
+            IntroMovieBgWindowAnimParam windowPan_narrowX = {
                 0x00, 0x00, 0xFF, 0xC0,
                 0x46, 0x00, 0xB9, 0xC0,
                 0x1F, 0x10, 1, 1
             };
-            IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 3, 0, &_021EB478);
+            IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 3, 0, &windowPan_narrowX);
             GXS_SetVisibleWnd(1);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 16:  // Wait window narrow effect
+    case INTRO_SCENE3_WAIT_NARROW:
         if (IntroMovie_WaitWindowPanEffect(bgAnimCnt->window, 0)) {
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 17:  // Sprite anims
+    case INTRO_SCENE3_SPRITES_VISIBLE:
         if (stepTimer == 56) {  // Eusine appear
             IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->eusineSprite, TRUE);
         }
-        if (stepTimer == 145) {  // Unowns appear
+        if (stepTimer == 145) {  // Unown slide
             IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->unownSprites[0], TRUE);
         }
-        if (stepTimer >= 145) {  // ???
-            IntroMovieBgWindowAnimParam _021EB4A4 = {
+        if (stepTimer >= 145) {  // Entei slide out
+            IntroMovieBgWindowAnimParam windowPan_narrowLeftToRight = {
                 0x46, 0x00, 0xB9, 0xC0,
                 0xB9, 0x00, 0xB9, 0xC0,
                 0x1F, 0x10, 1, 1
             };
-            IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 10, 0, &_021EB4A4);
+            IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 10, 0, &windowPan_narrowLeftToRight);
             G2S_SetWnd1Position(0x46, 0x40, 0xb9, 0xc0);
             G2S_SetWnd1InsidePlane(0x1D, TRUE);
             IntroMovie_StartBgScroll_VBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_SUB_1, -116, 0, 10);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 18:  // ???
+    case INTRO_SCENE3_WAIT_ENTEI_EXIT:
         if (IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_SUB_1)) {
             GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
-            IntroMovieBgWindowAnimParam _021EB4D0 = {
+            IntroMovieBgWindowAnimParam windowPan_nop = {
                 0x46, 0x40, 0xB9, 0xC0,
                 0x46, 0x40, 0xB9, 0xC0,
                 0x1F, 0x10, 1, 1
             };
-            IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 0, 0, &_021EB4D0);
+            IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 0, 0, &windowPan_nop);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 19:  // Entei disappear
+    case INTRO_SCENE3_UNOWN_RAIKOU_EXIT:
         IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->unownSprites[1], TRUE);
         if (stepTimer >= 10) {
-            IntroMovieBgWindowAnimParam _021EB4FC = {
+            IntroMovieBgWindowAnimParam windowPan_narrowLeftToRight = {
                 0x46, 0x40, 0xB9, 0xC0,
                 0xB9, 0x40, 0xB9, 0xC0,
                 0x1F, 0x10, 1, 1
             };
-            IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 10, 0, &_021EB4FC);
+            IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 10, 0, &windowPan_narrowLeftToRight);
             G2S_SetWnd1Position(0x46, 0x40, 0xB9, 0x80);
             G2S_SetWnd1InsidePlane(0x19, TRUE);
             IntroMovie_StartBgScroll_VBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_SUB_2, -116, 0, 10);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 20:  // Raikou disappear
+    case INTRO_SCENE3_LOAD_ROCKET_SCRNDATA:
         if (IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_SUB_1) && IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_SUB_2)) {
             GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
-            IntroMovieBgWindowAnimParam _021EB528 = {
+            IntroMovieBgWindowAnimParam windowPan_nop = {
                 0x46, 0x40, 0xB9, 0x80,
                 0x46, 0x40, 0xB9, 0x80,
                 0x1F, 0x10, 1, 1
             };
-            IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 0, 0, &_021EB528);
+            IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 0, 0, &windowPan_nop);
             BG_LoadScreenTilemapData(bgConfig, GF_BG_LYR_SUB_1, sceneData->beastGraphicScrnData[0]->rawData, sceneData->beastGraphicScrnData[0]->szByte);
             BG_LoadScreenTilemapData(bgConfig, GF_BG_LYR_SUB_2, sceneData->beastGraphicScrnData[1]->rawData, sceneData->beastGraphicScrnData[1]->szByte);
             BG_LoadScreenTilemapData(bgConfig, GF_BG_LYR_SUB_3, sceneData->beastGraphicScrnData[2]->rawData, sceneData->beastGraphicScrnData[2]->szByte);
@@ -413,37 +440,37 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 21:  // Suicune disappear
+    case INTRO_SCENE3_UNOWN_SUICUNE_EXIT:
         IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->unownSprites[2], TRUE);
         if (stepTimer >= 30) {
-            IntroMovieBgWindowAnimParam _021EB370 = {
+            IntroMovieBgWindowAnimParam windowPan_narrowRightToLeft = {
                 0x46, 0x40, 0xB9, 0x80,
                 0x46, 0x40, 0x46, 0x80,
                 0x1F, 0x10, 1, 1
             };
-            IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 10, 0, &_021EB370);
+            IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 10, 0, &windowPan_narrowRightToLeft);
             G2S_SetWnd1Position(0x46, 0x40, 0xB9, 0x80);
             G2S_SetWnd1InsidePlane(0x1E, TRUE);
             IntroMovie_StartBgScroll_VBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_SUB_0, 0x74, 0, 10);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 22:  // Admins widen
+    case INTRO_SCENE3_EXPAND_ROCKET_VIEWPORT:
         if (IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_SUB_0)) {
             GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);
-            IntroMovieBgWindowAnimParam _021EB39C = {
+            IntroMovieBgWindowAnimParam windowPan_expandFromCenter = {
                 0x46, 0x40, 0xB9, 0x80,
                 0x00, 0x00, 0xFF, 0xC0,
                 0x1F, 0x10, 1, 1
             };
-            IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 253, 0, &_021EB39C);
+            IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 253, 0, &windowPan_expandFromCenter);
             IntroMovie_StartBgScroll_VBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_SUB_1, 0, -0x30, 254);
             IntroMovie_StartBgScroll_VBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_SUB_2, 0, -0x20, 254);
             IntroMovie_StartBgScroll_VBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_SUB_3, 0, -0x08, 254);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 23:  // End
+    case INTRO_SCENE3_WAIT_ADMINS:
         if (IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_SUB_1)) {
             return TRUE;
         }
@@ -452,7 +479,7 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
     return FALSE;
 }
 
-void IntroMovie_Scene3_Exit(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData) {
+static void IntroMovie_Scene3_Exit(IntroMovieOverlayData *data, IntroMovieScene3Data *sceneData) {
     u8 i, j;
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     Main_SetVBlankIntrCB(NULL, NULL);
@@ -466,7 +493,7 @@ void IntroMovie_Scene3_Exit(IntroMovieOvyData *data, IntroMovieScene3Data *scene
             }
             FreeToHeap(sceneData->mapRender[i].resFileHeader);
         }
-        GF_3DVramMan_Delete(sceneData->_3dVramMan);
+        GF_3DVramMan_Delete(sceneData->gf3dVramMan);
         for (i = 0; i < 4; ++i) {
             FreeToHeap(sceneData->rivalGraphicSectionsRawData[i]);
         }
@@ -483,11 +510,10 @@ void IntroMovie_Scene3_Exit(IntroMovieOvyData *data, IntroMovieScene3Data *scene
     }
 }
 
-void IntroMovie_Scene3_InitBGLayers(IntroMovieOvyData *data) {
+static void IntroMovie_Scene3_InitBGLayers(IntroMovieOverlayData *data) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
 
     {
-        // _021EB268
         GraphicsModes graphicsModes = {
             GX_DISPMODE_GRAPHICS,
             GX_BGMODE_0,
@@ -497,80 +523,72 @@ void IntroMovie_Scene3_InitBGLayers(IntroMovieOvyData *data) {
         SetBothScreensModesAndDisable(&graphicsModes);
     }
     {
-        // _021EB2DC
         BgTemplate bgTemplate = {
-            0, 0,
-            GF_BG_BUF_SIZE_256x256_4BPP,
-            0,
-            GF_BG_SCR_SIZE_256x256,
-            GX_BG_COLORMODE_16,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0
+            .x = 0, .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0x0000,
+            .charBase = GX_BG_CHARBASE_0x04000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 0,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = FALSE
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_0, &bgTemplate, 0);
     }
     {
-        // _021EB2F8
         BgTemplate bgTemplate = {
-            0, 0,
-            GF_BG_BUF_SIZE_256x256_4BPP,
-            0,
-            GF_BG_SCR_SIZE_256x256,
-            GX_BG_COLORMODE_16,
-            01,
-            1,
-            0,
-            1,
-            0,
-            0,
-            0
+            .x = 0, .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0x0800,
+            .charBase = GX_BG_CHARBASE_0x04000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 1,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = FALSE
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_1, &bgTemplate, 0);
     }
     {
-        // _021EB314
         BgTemplate bgTemplate = {
-            0, 0,
-            GF_BG_BUF_SIZE_256x256_4BPP,
-            0,
-            GF_BG_SCR_SIZE_256x256,
-            GX_BG_COLORMODE_16,
-            2,
-            1,
-            0,
-            2,
-            0,
-            0,
-            0
+            .x = 0, .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0x1000,
+            .charBase = GX_BG_CHARBASE_0x04000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 2,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = FALSE
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_2, &bgTemplate, 0);
     }
     {
-        // _021EB330
         BgTemplate bgTemplate = {
-            0, 0,
-            GF_BG_BUF_SIZE_256x256_4BPP,
-            0,
-            GF_BG_SCR_SIZE_256x256,
-            GX_BG_COLORMODE_16,
-            3,
-            1,
-            0,
-            3,
-            0,
-            0,
-            0
+            .x = 0, .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0x1800,
+            .charBase = GX_BG_CHARBASE_0x04000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 3,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = FALSE
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_3, &bgTemplate, 0);
     }
 }
 
-void IntroMovie_Scene3_LoadBGGraphics(BgConfig *bgConfig, IntroMovieScene3Data *sceneData) {
+static void IntroMovie_Scene3_LoadBGGraphics(BgConfig *bgConfig, IntroMovieScene3Data *sceneData) {
     int rival_section_nscr[4] = {
         NARC_gs_opening_gs_opening_00000042_NSCR_lz,
         NARC_gs_opening_gs_opening_00000043_NSCR_lz,
@@ -605,9 +623,9 @@ void IntroMovie_Scene3_LoadBGGraphics(BgConfig *bgConfig, IntroMovieScene3Data *
     GfGfx_BothDispOn();
 }
 
-void IntroMovie_Scene3_LoadOBJGraphics(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData) {
+static void IntroMovie_Scene3_LoadOBJGraphics(IntroMovieOverlayData *data, IntroMovieScene3Data *sceneData) {
     IntroMovie_CreateSpriteResourceManagers(data, sIntroMovieScene3SpriteResCounts);
-    _2DGfxResMan **resMen = IntroMovie_GetSpriteResourceManagersArray(data);
+    GF_2DGfxResMan **resMen = IntroMovie_GetSpriteResourceManagersArray(data);
 
     sceneData->spriteResObjs[0][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(resMen[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000066_NCGR_lz, TRUE, 2, 2, HEAP_ID_INTRO_MOVIE);
     sceneData->spriteResObjs[0][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(resMen[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000065_NCLR, FALSE, 2, 2, 1, HEAP_ID_INTRO_MOVIE);
@@ -627,7 +645,7 @@ void IntroMovie_Scene3_LoadOBJGraphics(IntroMovieOvyData *data, IntroMovieScene3
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
-void IntroMovie_Scene3_UnloadOBJGraphics(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData) {
+static void IntroMovie_Scene3_UnloadOBJGraphics(IntroMovieOverlayData *data, IntroMovieScene3Data *sceneData) {
     Sprite_Delete(sceneData->silverSilhouetteSprite);
     Sprite_Delete(sceneData->eusineSprite);
     Sprite_Delete(sceneData->unownSprites[0]);
@@ -641,11 +659,11 @@ void IntroMovie_Scene3_UnloadOBJGraphics(IntroMovieOvyData *data, IntroMovieScen
     IntroMovie_DestroySpriteResourceManagers(data);
 }
 
-void IntroMovie_Scene3_CreateSprites(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData) {
+static void IntroMovie_Scene3_CreateSprites(IntroMovieOverlayData *data, IntroMovieScene3Data *sceneData) {
     SpriteResourcesHeader header;
     SpriteTemplate template;
-    int unown_sprite_y_coords[3] = {544, 672, 608};
-    int unown_sprite_anim_seq_nos[3] = {1, 2, 3};
+    int unownSpriteYcoords[3] = {544, 672, 608};
+    int unownSpriteAnimSeqNos[3] = {1, 2, 3};
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(2, data, 0, NNS_G2D_VRAM_TYPE_2DSUB, &template, &header);
     template.position.x = 128 * FX32_ONE;
@@ -666,22 +684,22 @@ void IntroMovie_Scene3_CreateSprites(IntroMovieOvyData *data, IntroMovieScene3Da
     for (int i = 0; i < 3; ++i) {
         IntroMovie_BuildSpriteResourcesHeaderAndTemplate(3, data, 0, NNS_G2D_VRAM_TYPE_2DSUB, &template, &header);
         template.position.x = 128 * FX32_ONE;
-        template.position.y = unown_sprite_y_coords[i] * FX32_ONE;
+        template.position.y = unownSpriteYcoords[i] * FX32_ONE;
         sceneData->unownSprites[i] = CreateSprite(&template);
         Set2dSpriteAnimActiveFlag(sceneData->unownSprites[i], FALSE);
         Set2dSpriteVisibleFlag(sceneData->unownSprites[i], FALSE);
-        Set2dSpriteAnimSeqNo(sceneData->unownSprites[i], unown_sprite_anim_seq_nos[i]);
+        Set2dSpriteAnimSeqNo(sceneData->unownSprites[i], unownSpriteAnimSeqNos[i]);
     }
 }
 
-void IntroMovie_Scene3_Load3dGfxData(IntroMovieScene3Data *sceneData) {
+static void IntroMovie_Scene3_Load3dGfxData(IntroMovieScene3Data *sceneData) {
     u8 j, i;
     NARC *narc = NARC_New(NARC_demo_opening_gs_opening, HEAP_ID_INTRO_MOVIE);
     GF_ExpHeap_FndInitAllocator(&sceneData->allocator, HEAP_ID_INTRO_MOVIE, 4);
     for (i = 0; i < 3; ++i) {
         NNSG3dResMdl *pMdl;
         sceneData->mapRender[i].resFileHeader = NARC_AllocAndReadWholeMember(narc, sMap3dResHeaderFileIds[i], HEAP_ID_INTRO_MOVIE);
-        sub_0201F51C(&sceneData->mapRender[i].renderObj, &pMdl, &sceneData->mapRender[i].resFileHeader);
+        GF3dRender_InitObjFromHeader(&sceneData->mapRender[i].renderObj, &pMdl, &sceneData->mapRender[i].resFileHeader);
         NNSG3dResTex *resTex = NNS_G3dGetTex(sceneData->mapRender[i].resFileHeader);
         NNS_G3dMdlUseGlbDiff(pMdl);
         NNS_G3dMdlUseGlbAmb(pMdl);
@@ -716,7 +734,7 @@ void IntroMovie_Scene3_Load3dGfxData(IntroMovieScene3Data *sceneData) {
     NNS_G3dGlbPolygonAttr(5, GX_POLYGONMODE_MODULATE, GX_CULL_BACK, 0, 0x1F, 0x8000);
 }
 
-void IntroMovie_Scene3_Animate3DMap(IntroMovieScene3Data *sceneData) {
+static void IntroMovie_Scene3_Animate3DMap(IntroMovieScene3Data *sceneData) {
     u8 i, whichMap_u8;
     MtxFx33 iden33 = {
         FX32_ONE,        0,        0,
@@ -737,12 +755,12 @@ void IntroMovie_Scene3_Animate3DMap(IntroMovieScene3Data *sceneData) {
                 sceneData->mapRender[whichMap_u8].animObjs[i]->frame = frame;
             }
         }
-        Draw3dModel(&sceneData->mapRender[whichMap_u8].renderObj, &zeros, &iden33, &ones);
-        sub_02026E50(0, 1);
+        GF3dRender_DrawModel(&sceneData->mapRender[whichMap_u8].renderObj, &zeros, &iden33, &ones);
+        RequestSwap3DBuffers(GX_SORTMODE_AUTO, GX_BUFFERMODE_W);
     }
 }
 
-void IntroMovie_Scene3_3DVRamManInit(void) {
+static void IntroMovie_Scene3_3DVRamManInit(void) {
     G2_SetBG0Priority(0);
     G3X_SetShading(GX_SHADING_TOON);
     G3X_AntiAlias(TRUE);
@@ -755,7 +773,7 @@ void IntroMovie_Scene3_3DVRamManInit(void) {
     G3_ViewPort(0, 0, 255, 191);
 }
 
-void IntroMovie_Scene3_SetMapLightingAndColorParams(u8 mapIdx) {
+static void IntroMovie_Scene3_SetMapLightingAndColorParams(u8 mapIdx) {
     for (u8 i = 0; i < 4; ++i) {
         NNS_G3dGlbLightVector((GXLightId)i, sLightVectors[mapIdx][i].x, sLightVectors[mapIdx][i].y, sLightVectors[mapIdx][i].z);
         NNS_G3dGlbLightColor((GXLightId)i, sLightColors[mapIdx][i]);

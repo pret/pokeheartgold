@@ -8,7 +8,7 @@
 	.include "unk_02078E30.inc"
 	.include "global.inc"
 
-	.public _020FA484
+	.public gOverlayTemplate_Battle
 	.public gNatureStatMods
 
 	.text
@@ -7846,8 +7846,8 @@ _02101554:
 	.short 0x0010, 0x006E, 0x0010, 0x000C
 	.short 0x009E, 0x0070, 0x0090, 0x006E
 
-	.public _0210159C
-_0210159C:
+	.public gOverlayTemplate_PartyMenu
+gOverlayTemplate_PartyMenu:
 	.word sub_02078E30, sub_02079034, sub_020795E0, 0xFFFFFFFF
 
 	.data

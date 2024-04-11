@@ -2,13 +2,15 @@
 #define POKEHEARTGOLD_OVERLAY_02_H
 
 #include "battle/battle_setup.h"
+#include "heap.h"
 #include "script.h"
 #include "sys_task.h"
 #include "unk_0203BC10.h"
+#include "field/headbutt.h"
 
 struct FieldLongWarpTaskData;
 
-typedef struct UnkStruct_Ov02_0224E4EC {
+typedef struct SafariDecorationArgs {
     SaveData *saveData;
     void *unk04; // points to fieldSystem->unk_10C
     u8 unk08;
@@ -33,7 +35,7 @@ typedef struct UnkStruct_Ov02_0224E4EC {
     u8 unk1B;
     u16 unk1C; // known from what's decompiled
     u8 *unk20; // points to fieldSystem->unk_111
-} UnkStruct_Ov02_0224E4EC;
+} SafariDecorationArgs;
 
 SysTask *ov02_0224B418(FieldSystem *fieldSystem, int gender);
 BOOL ov02_0224B43C(SysTask *unk);
@@ -68,7 +70,7 @@ void ov02_0224CDB0(FieldSystem *fieldSystem, u8 a1);
 void ov02_0224E074(FieldSystem *fieldSystem, u16 *p_ret, int a2, HeapID heapId);
 void ov02_0224E0BC(LocalMapObject *obj1, LocalMapObject *obj2, TaskManager *taskManager);
 void ov02_02251EB8(GearPhoneRingManager *phoneRingManager, u8 a1, u8 a2, u8 a3, u8 a4, u8 a5);
-void FieldSystem_FollowPokeInteract(FieldSystem *fieldSystem);
+void FieldSystem_FollowMonInteract(FieldSystem *fieldSystem);
 BOOL ov02_02250780(FieldSystem *fieldSystem, u8 a1);
 void ov02_022507B4(FieldSystem *fieldSystem, u8 a1);
 void ov02_022508B4(FieldSystem *fieldSystem);
@@ -97,11 +99,12 @@ BOOL ov02_02253188(SaveData *saveData);
 int ov02_022531B4(SaveData *saveData);
 BOOL ov02_022470A0(FieldSystem *fieldSystem, BattleSetup **setupPtr);
 void ov02_BattleExit_HandleRoamerAction(FieldSystem *fieldSystem, BattleSetup *setup);
-BOOL ov02_02247374(FieldSystem *fieldSystem, BattleSetup **setup, void *arg2);
+BOOL FieldSystem_ChooseHeadbuttEncounter(FieldSystem *fieldSystem, BattleSetup **setup, const HeadbuttSlot *headbuttSlots);
 void ov02_02247F30(FieldSystem *fieldSystem, u16 mon, u8 level, BOOL shiny, BattleSetup *setup);
 void ov02_02246714(TaskManager *man, u32 a1, u32 a2, u32 a3, u32 a4);
 void ov02_022469B4(TaskManager *man, LocalMapObject *obj1, LocalMapObject *obj2);
 void OpenAlphHiddenRoom(TaskManager *man, u32 a1);
 int GetRadioMusicPlayingSeq(void);
+SafariDecorationArgs *SafariDecoration_CreateArgs(FieldSystem *fieldSystem, HeapID heapId);
 
 #endif //POKEHEARTGOLD_OVERLAY_02_H

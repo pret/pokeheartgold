@@ -72,7 +72,7 @@ sub_02058AEC: ; 0x02058AEC
 	ldr r1, _02058B7C ; =_020FC7CC
 	add r0, r4, #0
 	bl sub_02089D40
-	ldr r1, _02058B80 ; =_02103A1C
+	ldr r1, _02058B80 ; =gOverlayTemplate_PokemonSummary
 	add r0, r6, #0
 	add r2, r4, #0
 	bl FieldSystem_LaunchApplication
@@ -81,7 +81,7 @@ sub_02058AEC: ; 0x02058AEC
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02058B7C: .word _020FC7CC
-_02058B80: .word _02103A1C
+_02058B80: .word gOverlayTemplate_PokemonSummary
 	thumb_func_end sub_02058AEC
 
 	thumb_func_start sub_02058B84
@@ -201,13 +201,13 @@ _02058C5C:
 	cmp r2, #6
 	blt _02058C5C
 	ldr r0, [r5, #0x24]
-	ldr r1, _02058C7C ; =_0210159C
+	ldr r1, _02058C7C ; =gOverlayTemplate_PartyMenu
 	add r2, r4, #0
 	bl FieldSystem_LaunchApplication
 	str r4, [r5, #4]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02058C7C: .word _0210159C
+_02058C7C: .word gOverlayTemplate_PartyMenu
 	thumb_func_end sub_02058B84
 
 	thumb_func_start sub_02058C80
@@ -2305,7 +2305,7 @@ _02059CCC:
 	add r1, r4, #0
 	add r0, r5, #0
 	add r1, #0x2c
-	bl sub_0203F7B0
+	bl TrainerCard_LaunchApp
 	ldr r0, [r4, #0x28]
 	add r0, r0, #1
 	str r0, [r4, #0x28]

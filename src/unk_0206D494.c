@@ -6,11 +6,13 @@
 #include "field_system.h"
 #include "field_warp_tasks.h"
 #include "fieldmap.h"
+#include "launch_application.h"
 #include "gf_gfx_loader.h"
 #include "gymmick.h"
 #include "heap.h"
 #include "metatile_behavior.h"
 #include "msgdata.h"
+#include "overlay_111.h"
 #include "npc_trade.h"
 #include "player_data.h"
 #include "pm_string.h"
@@ -23,7 +25,6 @@
 #include "sys_flags.h"
 #include "task.h"
 #include "unk_02005D10.h"
-#include "unk_0203E348.h"
 #include "unk_02054648.h"
 #include "unk_0205FD20.h"
 #include "unk_02062108.h"
@@ -40,8 +41,8 @@ typedef struct UnkStruct_0206D494 {
 
 typedef struct UnkStruct_0206DB94 {
     u8 filler00[4];
-    Pokemon *unk04;
-    UnkStruct_0203EDDC *unk08;
+    Pokemon *newlyCaughtMon;
+    BugContestSwapMonArgs *unk08;
 } UnkStruct_0206DB94;
 
 static BOOL sub_0206D4E4(TaskManager *taskManager);
@@ -381,7 +382,7 @@ u16 *BugContest_GetSportBallsAddr(BugContest *contest) {
 
 void FieldSystem_IncrementBugContestTimer(FieldSystem *fieldSystem, int duration) {
     BugContest *contest = FieldSystem_BugContest_Get(fieldSystem);
-    if (contest && CheckFlag996(Save_VarsFlags_Get(fieldSystem->saveData))) {
+    if (contest && Save_VarsFlags_CheckBugContestFlag(Save_VarsFlags_Get(fieldSystem->saveData))) {
         contest->elapsed_time += duration;
     }
 }
@@ -401,7 +402,7 @@ void BugContest_WarpToJudging(TaskManager *taskManager, FieldSystem *fieldSystem
 void BugContest_PromptSwapPokemon(TaskManager *taskManager, Pokemon *mon) {
     UnkStruct_0206DB94 *unkStruct = AllocFromHeapAtEnd(HEAP_ID_3, sizeof(UnkStruct_0206DB94));
     MI_CpuFill8(unkStruct, 0, sizeof(UnkStruct_0206DB94));
-    unkStruct->unk04 = mon;
+    unkStruct->newlyCaughtMon = mon;
     TaskManager_Call(taskManager, Task_BugContest_PromptSwapPokemon, unkStruct);
 }
 
@@ -414,14 +415,14 @@ static BOOL Task_BugContest_PromptSwapPokemon(TaskManager *taskManager) {
         case 0:
         {
             u32 noPokemonCaught = contest->caught_poke == SPECIES_NONE;
-            unkStruct->unk08 = sub_0203EDDC(fieldSystem, unkStruct->unk04, contest->mon, noPokemonCaught);
+            unkStruct->unk08 = BugContestSwapMon_LaunchApp(fieldSystem, unkStruct->newlyCaughtMon, contest->mon, noPokemonCaught);
             (*state)++;
             break;
         }
         case 1:
             if (FieldSystem_ApplicationIsRunning(fieldSystem) == FALSE) {
                 if (unkStruct->unk08->unk10 != contest->mon) {
-                    CopyPokemonToPokemon(unkStruct->unk04, contest->mon);
+                    CopyPokemonToPokemon(unkStruct->newlyCaughtMon, contest->mon);
                 }
                 if (!contest->caught_poke) {
                     contest->caught_poke = TRUE;

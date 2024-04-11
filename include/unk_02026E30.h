@@ -1,9 +1,9 @@
 #ifndef POKEHEARTGOLD_UNK_02026E30_H
 #define POKEHEARTGOLD_UNK_02026E30_H
 
-void sub_02026E30(void);
+void Init3DBufferSwapRequestState(void);
 void Thunk_G3X_Reset(void);
-void sub_02026E60(void);
-void sub_02026E50(int, int);
+void RequestSwap3DBuffers(GXSortMode sortMode, GXBufferMode bufferMode);
+void Handle3DBufferSwapRequest(void);
 
 #endif //POKEHEARTGOLD_UNK_02026E30_H

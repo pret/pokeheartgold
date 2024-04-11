@@ -12470,8 +12470,8 @@ _021ED7E4:
 	bx lr
 	thumb_func_end ov101_021ED7D8
 
-	thumb_func_start ov101_TownMap_OvyInit
-ov101_TownMap_OvyInit: ; 0x021ED7F8
+	thumb_func_start TownMap_Init
+TownMap_Init: ; 0x021ED7F8
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl OverlayManager_GetArgs
@@ -12549,10 +12549,10 @@ _021ED8A4: .word FS_OVERLAY_ID(OVY_100)
 _021ED8A8: .word FS_OVERLAY_ID(OVY_26)
 _021ED8AC: .word 0x000009F4
 _021ED8B0: .word ov101_021F7372
-	thumb_func_end ov101_TownMap_OvyInit
+	thumb_func_end TownMap_Init
 
-	thumb_func_start ov101_TownMap_OvyExec
-ov101_TownMap_OvyExec: ; 0x021ED8B4
+	thumb_func_start TownMap_Main
+TownMap_Main: ; 0x021ED8B4
 	push {r4, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -12611,10 +12611,10 @@ _021ED91E:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov101_TownMap_OvyExec
+	thumb_func_end TownMap_Main
 
-	thumb_func_start ov101_TownMap_OvyExit
-ov101_TownMap_OvyExit: ; 0x021ED924
+	thumb_func_start TownMap_Exit
+TownMap_Exit: ; 0x021ED924
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -12651,7 +12651,7 @@ _021ED948:
 	nop
 _021ED978: .word FS_OVERLAY_ID(OVY_26)
 _021ED97C: .word FS_OVERLAY_ID(OVY_100)
-	thumb_func_end ov101_TownMap_OvyExit
+	thumb_func_end TownMap_Exit
 
 	thumb_func_start ov101_021ED980
 ov101_021ED980: ; 0x021ED980
@@ -23564,7 +23564,7 @@ _021F2D62:
 	cmp r0, #0x60
 	bne _021F2D78
 	ldr r0, [r5, #0x28]
-	bl CheckFlag996
+	bl Save_VarsFlags_CheckBugContestFlag
 	cmp r0, #0
 	beq _021F2D78
 	mov r0, #0
@@ -23595,7 +23595,7 @@ ov101_021F2D90: ; 0x021F2D90
 	cmp r0, #0x60
 	bne _021F2DB0
 	ldr r0, [r5, #0x28]
-	bl CheckFlag996
+	bl Save_VarsFlags_CheckBugContestFlag
 	cmp r0, #0
 	beq _021F2DB0
 	mov r0, #0

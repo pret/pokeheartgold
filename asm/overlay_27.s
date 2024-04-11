@@ -1934,7 +1934,7 @@ _0225AEFA:
 	mov r0, #0
 	str r0, [sp, #0x1c]
 	mov r0, #3
-	mov r6, #0x14 ; NARC_a_0_2_0
+	mov r6, #0x14 ; NARC_poketool_icongra_poke_icon
 	str r0, [sp, #0x18]
 	bl sub_02074490
 	str r0, [sp, #0x20]
@@ -3718,7 +3718,7 @@ _0225BD6A:
 	pop {r3, r4, r5, pc}
 _0225BD78:
 	add r0, r5, #0
-	bl CheckFlag996
+	bl Save_VarsFlags_CheckBugContestFlag
 	cmp r0, #0
 	beq _0225BD86
 	mov r0, #2

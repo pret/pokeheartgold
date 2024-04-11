@@ -92,7 +92,7 @@ typedef struct AlphPuzzleData {
     int unkState;
     u16 subState;
     u16 sceneTimer;
-    UnkAlphSub_10 *args;
+    AlphPuzzleArgs *args;
     BgConfig *bgConfig;
     u8 unk18;
     u8 puzzleIndex;
@@ -559,7 +559,7 @@ static const u32 sQuitButtonTextColors[3] = {
     MAKE_TEXT_COLOR(5, 6, 0),
 };
 
-BOOL ov110_AlphPuzzle_OvyInit(OVY_MANAGER *man, int *state) {
+BOOL AlphPuzzle_Init(OVY_MANAGER *man, int *state) {
     switch (*state) {
     case 0:
         AlphPuzzle_ScreenOff();
@@ -581,7 +581,7 @@ BOOL ov110_AlphPuzzle_OvyInit(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL ov110_AlphPuzzle_OvyExec(OVY_MANAGER *man, int *state) {
+BOOL AlphPuzzle_Main(OVY_MANAGER *man, int *state) {
     AlphPuzzleData *data = OverlayManager_GetData(man);
     switch (*state) {
     case ALPH_PUZZLE_STATE_FADE_IN:
@@ -615,7 +615,7 @@ BOOL ov110_AlphPuzzle_OvyExec(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL ov110_AlphPuzzle_OvyExit(OVY_MANAGER *man, int *state) {
+BOOL AlphPuzzle_Exit(OVY_MANAGER *man, int *state) {
     AlphPuzzleData *data = OverlayManager_GetData(man);
     if (!AlphPuzzle_OverlayExitStep(data)) {
         return FALSE;
@@ -642,16 +642,16 @@ static void AlphPuzzle_ScreenOff(void) {
 
 static void AlphPuzzle_InitTextOptionsAndPuzzleIndex(AlphPuzzleData *data) {
     data->menuIgnoreTouchFlag = sub_020183F0(data->args->fieldSystemUnk10Cpointer);
-    Options *options = Save_PlayerData_GetOptionsAddr(data->args->savedata);
+    Options *options = Save_PlayerData_GetOptionsAddr(data->args->saveData);
     data->textFrameDelay = Options_GetTextFrameDelay(options);
     data->frame = Options_GetFrame(options);
-    data->puzzleIndex = data->args->puzzleIndex;
+    data->puzzleIndex = data->args->puzzle;
 }
 
 static void AlphPuzzle_Finish(AlphPuzzleData *data) {
     sub_02018410(data->args->fieldSystemUnk10Cpointer, data->menuIgnoreTouchFlag);
     if (data->puzzleSolved) {
-        Save_VarsFlags_SetAlphPuzzleFlag(Save_VarsFlags_Get(data->args->savedata), data->puzzleIndex);
+        Save_VarsFlags_SetAlphPuzzleFlag(Save_VarsFlags_Get(data->args->saveData), data->puzzleIndex);
     }
 }
 

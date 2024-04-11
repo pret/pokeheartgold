@@ -25,22 +25,11 @@ typedef struct UnkStruct_ov55_021E5B08 {
 typedef struct UnkStruct_ov55_021E5924 {
     HeapID heapId;
     u8 unk4[0x4];
-    Unk02090C94 *unk8;
+    EasyChatArgs *unk8;
     OVY_MANAGER *unkC;
     UnkStruct_ov55_021E5B08 *unk10;
     MAIL_MESSAGE unk14;
 } UnkStruct_ov55_021E5924;
-
-typedef struct UnkArgs_ov55 {
-    u16 unk0;
-    u32 unk4;
-    u8 unk8[0x7];
-    u8 mailType;
-    SaveData *saveData;
-    Mail *mail;
-    u8 unk18[4];
-    u32 *unk1C;
-} UnkArgs_ov55;
 
 BOOL ov55_UnkApp_Init(OVY_MANAGER *manager, int *state);
 BOOL ov55_UnkApp_Main(OVY_MANAGER *manager, int *state);

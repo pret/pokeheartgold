@@ -4,8 +4,8 @@
 
 	.text
 
-	thumb_func_start ov111_021E5900
-ov111_021E5900: ; 0x021E5900
+	thumb_func_start BugContestSwapMon_Init
+BugContestSwapMon_Init: ; 0x021E5900
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r1, #0
@@ -54,10 +54,10 @@ _021E595A:
 	mov r0, #0
 	add sp, #0xc
 	pop {r3, r4, pc}
-	thumb_func_end ov111_021E5900
+	thumb_func_end BugContestSwapMon_Init
 
-	thumb_func_start ov111_021E5960
-ov111_021E5960: ; 0x021E5960
+	thumb_func_start BugContestSwapMon_Exit
+BugContestSwapMon_Exit: ; 0x021E5960
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r1, #0
@@ -101,10 +101,10 @@ _021E59B0:
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov111_021E5960
+	thumb_func_end BugContestSwapMon_Exit
 
-	thumb_func_start ov111_021E59B8
-ov111_021E59B8: ; 0x021E59B8
+	thumb_func_start BugContestSwapMon_Main
+BugContestSwapMon_Main: ; 0x021E59B8
 	push {r4, lr}
 	bl OverlayManager_GetData
 	add r4, r0, #0
@@ -126,7 +126,7 @@ _021E59DA:
 	pop {r4, pc}
 	nop
 _021E59E0: .word _021E6D40
-	thumb_func_end ov111_021E59B8
+	thumb_func_end BugContestSwapMon_Main
 
 	thumb_func_start ov111_021E59E4
 ov111_021E59E4: ; 0x021E59E4

@@ -4,8 +4,8 @@
 
 	.text
 
-	thumb_func_start ov69_021E5900
-ov69_021E5900: ; 0x021E5900
+	thumb_func_start GeonetGlobe_Init
+GeonetGlobe_Init: ; 0x021E5900
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	mov r0, #0
@@ -76,7 +76,7 @@ _021E5960:
 	ldr r0, [r5]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0201F590
+	bl GF3dRender_InitSimpleManager
 	ldr r0, [r5]
 	bl BgConfig_Alloc
 	ldr r1, _021E5A24 ; =0x0000C010
@@ -125,10 +125,10 @@ _021E5A24: .word 0x0000C010
 _021E5A28: .word 0x0000C080
 _021E5A2C: .word 0x0000C2DC
 _021E5A30: .word gSystem + 0x60
-	thumb_func_end ov69_021E5900
+	thumb_func_end GeonetGlobe_Init
 
-	thumb_func_start ov69_021E5A34
-ov69_021E5A34: ; 0x021E5A34
+	thumb_func_start GeonetGlobe_Main
+GeonetGlobe_Main: ; 0x021E5A34
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	add r5, r1, #0
@@ -877,10 +877,10 @@ _021E6070: .word 0x000005D9
 _021E6074: .word 0x0000C2FC
 _021E6078: .word 0x0000C2F8
 _021E607C: .word 0x0000C070
-	thumb_func_end ov69_021E5A34
+	thumb_func_end GeonetGlobe_Main
 
-	thumb_func_start ov69_021E6080
-ov69_021E6080: ; 0x021E6080
+	thumb_func_start GeonetGlobe_Exit
+GeonetGlobe_Exit: ; 0x021E6080
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	bl OverlayManager_GetData
@@ -904,7 +904,7 @@ ov69_021E6080: ; 0x021E6080
 	ldr r0, _021E60EC ; =0x0000C080
 	ldr r0, [r4, r0]
 	bl MessageFormat_Delete
-	bl sub_0201F63C
+	bl GF3dRender_DeleteSimpleManager
 	ldr r0, _021E60F0 ; =0x0000C010
 	ldr r0, [r4, r0]
 	bl FreeToHeap
@@ -925,7 +925,7 @@ _021E60E8: .word 0x0000C2DC
 _021E60EC: .word 0x0000C080
 _021E60F0: .word 0x0000C010
 _021E60F4: .word gSystem + 0x60
-	thumb_func_end ov69_021E6080
+	thumb_func_end GeonetGlobe_Exit
 
 	thumb_func_start ov69_021E60F8
 ov69_021E60F8: ; 0x021E60F8
@@ -2612,7 +2612,7 @@ ov69_021E6E88: ; 0x021E6E88
 	add r0, r5, r0
 	add r1, r5, r1
 	add r2, r5, r2
-	bl sub_0201F51C
+	bl GF3dRender_InitObjFromHeader
 	ldr r2, [r5]
 	add r0, r4, #0
 	mov r1, #1
@@ -2626,7 +2626,7 @@ ov69_021E6E88: ; 0x021E6E88
 	add r0, r5, r0
 	add r1, r5, r1
 	add r2, r5, r2
-	bl sub_0201F51C
+	bl GF3dRender_InitObjFromHeader
 	ldr r2, [r5]
 	add r0, r4, #0
 	mov r1, #2
@@ -2640,7 +2640,7 @@ ov69_021E6E88: ; 0x021E6E88
 	add r0, r5, r0
 	add r1, r5, r1
 	add r2, r5, r2
-	bl sub_0201F51C
+	bl GF3dRender_InitObjFromHeader
 	ldr r2, [r5]
 	add r0, r4, #0
 	mov r1, #3
@@ -2653,7 +2653,7 @@ ov69_021E6E88: ; 0x021E6E88
 	add r0, r5, r0
 	add r1, r5, r1
 	add r2, r5, r2
-	bl sub_0201F51C
+	bl GF3dRender_InitObjFromHeader
 	ldr r2, [r5]
 	add r0, r4, #0
 	mov r1, #4
@@ -2666,7 +2666,7 @@ ov69_021E6E88: ; 0x021E6E88
 	add r0, r5, r0
 	add r1, r5, r1
 	add r2, r5, r2
-	bl sub_0201F51C
+	bl GF3dRender_InitObjFromHeader
 	pop {r3, r4, r5, pc}
 	nop
 _021E6F2C: .word 0x0000C0DC
@@ -3334,7 +3334,7 @@ _021E7414:
 	bl Thunk_G3X_Reset
 	mov r0, #0
 	mov r1, #1
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	ldr r0, _021E74FC ; =0x0000C2F8
 	mov r1, #0
 	add sp, #0x70
@@ -3354,7 +3354,7 @@ _021E7446:
 	add r0, r5, r0
 	add r2, sp, #0x4c
 	add r3, r5, r3
-	bl Draw3dModel
+	bl GF3dRender_DrawModel
 	ldr r4, _021E750C ; =ov69_021E7794
 	add r3, sp, #0x28
 	mov r2, #4
@@ -3373,7 +3373,7 @@ _021E7470:
 	add r3, #0xa0
 	add r1, r5, r1
 	add r3, r5, r3
-	bl Draw3dModel
+	bl GF3dRender_DrawModel
 	ldr r4, _021E7514 ; =ov69_021E774C
 	add r3, sp, #4
 	mov r2, #4
@@ -3412,7 +3412,7 @@ _021E74B6:
 	add r2, sp, #4
 	add r1, r5, r1
 	add r3, r5, r3
-	bl Draw3dModel
+	bl GF3dRender_DrawModel
 _021E74DE:
 	ldr r0, [r5, #0xc]
 	add r7, r7, #1
@@ -3423,7 +3423,7 @@ _021E74DE:
 _021E74EA:
 	mov r0, #0
 	mov r1, #1
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 _021E74F2:
 	add sp, #0x70
 	pop {r3, r4, r5, r6, r7, pc}

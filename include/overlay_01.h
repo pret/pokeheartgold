@@ -29,8 +29,6 @@ typedef struct UnkStruct_field_021F4360 {
 
 void ov01_021E636C(int a0);
 void ov01_021EFAF8(FieldSystem *fieldSystem);
-void Field_PlayerAvatar_OrrTransitionFlags(PlayerAvatar *avatar, int a1);
-void Field_PlayerAvatar_ApplyTransitionFlags(PlayerAvatar *avatar);
 void ov01_021F35C4(FieldSystem *fieldSystem, int a1, int *a2);
 u32 GetHoneySweetScentWorkSize(void);
 BOOL Task_HoneyOrSweetScent(TaskManager *taskManager);

@@ -654,7 +654,7 @@ _020694E4:
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #8
-	bl sub_0203F7B0
+	bl TrainerCard_LaunchApp
 	mov r0, #0xb
 	str r0, [r5]
 	b _0206951C

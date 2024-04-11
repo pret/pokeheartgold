@@ -61,7 +61,7 @@ _0091:
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _00ED
-	set_follow_poke_inhibit_state 1
+	set_follow_mon_inhibit_state 1
 	setvar VAR_UNK_412E, 5
 	callstd std_prompt_save
 	copyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
@@ -81,7 +81,7 @@ _0091:
 	end
 
 _00ED:
-	set_follow_poke_inhibit_state 0
+	set_follow_mon_inhibit_state 0
 	npc_msg msg_0458_T02R0302_00003
 	closemsg
 	toggle_following_pokemon_movement 0
@@ -114,7 +114,7 @@ scr_seq_T02R0302_001:
 	closemsg
 	apply_movement obj_player, _0184
 	wait_movement
-	set_follow_poke_inhibit_state 0
+	set_follow_mon_inhibit_state 0
 	scrcmd_606
 	scrcmd_109 253, 48
 	setvar VAR_UNK_412E, 3

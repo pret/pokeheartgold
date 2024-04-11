@@ -509,7 +509,7 @@ _02246234:
 _02246240:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	add r0, r4, #0
 	bl ov41_02246B5C
 	pop {r4, pc}
@@ -749,7 +749,7 @@ ov41_022463DC: ; 0x022463DC
 	ldr r0, [r4, #0x34]
 	add r6, r1, #0
 	add r5, r2, #0
-	bl sub_020255C4
+	bl GF2dGfxRawResMan_AllocObj
 	ldr r1, [r4, #0x38]
 	lsl r5, r5, #2
 	add r0, r6, #0
@@ -1602,7 +1602,7 @@ ov41_02246A50: ; 0x02246A50
 	add r4, r0, #0
 	mov r0, #0x77
 	mov r1, #0xe
-	bl Create2DGfxResMan
+	bl GF2dGfxRawResMan_Create
 	mov r1, #0x77
 	str r0, [r4, #0x34]
 	mov r0, #0xe
@@ -1626,7 +1626,7 @@ ov41_02246A7C: ; 0x02246A7C
 	ldr r0, [r4, #0x38]
 	bl FreeToHeap
 	ldr r0, [r4, #0x34]
-	bl Destroy2DGfxResMan
+	bl GF2dGfxRawResObj_Destroy
 	mov r0, #0
 	str r0, [r4, #0x3c]
 	pop {r4, pc}
@@ -1783,7 +1783,7 @@ _02246B92:
 	ldr r0, [r7, #0x14]
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_020255C4
+	bl GF2dGfxRawResMan_AllocObj
 	ldr r1, [r7, #8]
 	add r0, r4, #0
 	add r1, r1, #4
@@ -1846,7 +1846,7 @@ _02246BFA:
 	ldr r0, [r4, #0x14]
 	ldr r1, [sp, #0xc]
 	ldr r2, [sp, #4]
-	bl sub_020255C4
+	bl GF2dGfxRawResMan_AllocObj
 	ldr r1, [sp, #4]
 	mov r0, #0xc
 	add r7, r1, #0
@@ -2002,7 +2002,7 @@ ov41_02246D54: ; 0x02246D54
 	bl memset
 	add r0, r4, #0
 	add r1, r7, #0
-	bl Create2DGfxResMan
+	bl GF2dGfxRawResMan_Create
 	str r0, [r5, #0x10]
 	str r4, [r5, #4]
 	mov r0, #0xc
@@ -2017,7 +2017,7 @@ ov41_02246D54: ; 0x02246D54
 	bl memset
 	add r0, r6, #0
 	add r1, r7, #0
-	bl Create2DGfxResMan
+	bl GF2dGfxRawResMan_Create
 	str r0, [r5, #0x14]
 	str r6, [r5, #0xc]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2031,14 +2031,14 @@ ov41_02246DA8: ; 0x02246DA8
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
 	beq _02246DBA
-	bl Destroy2DGfxResMan
+	bl GF2dGfxRawResObj_Destroy
 	mov r0, #0
 	str r0, [r4, #0x10]
 _02246DBA:
 	ldr r0, [r4, #0x14]
 	cmp r0, #0
 	beq _02246DC8
-	bl Destroy2DGfxResMan
+	bl GF2dGfxRawResObj_Destroy
 	mov r0, #0
 	str r0, [r4, #0x14]
 _02246DC8:
@@ -11141,16 +11141,16 @@ ov41_0224B0B8: ; 0x0224B0B8
 	add r4, r1, #0
 	add r7, r2, #0
 	add r6, r3, #0
-	bl _2DGfxResObj_GetResID
+	bl GF2DGfxResObj_GetResID
 	str r0, [sp, #0x2c]
 	ldr r0, [r5, #4]
-	bl _2DGfxResObj_GetResID
+	bl GF2DGfxResObj_GetResID
 	str r0, [sp, #0x30]
 	ldr r0, [r5, #8]
-	bl _2DGfxResObj_GetResID
+	bl GF2DGfxResObj_GetResID
 	str r0, [sp, #0x34]
 	ldr r0, [r5, #0xc]
-	bl _2DGfxResObj_GetResID
+	bl GF2DGfxResObj_GetResID
 	str r0, [sp]
 	mov r0, #0
 	mvn r0, r0
@@ -12300,7 +12300,7 @@ _0224B972:
 	add r5, r0, #0
 	ldr r0, [r4, #0x10]
 	add r1, r5, #0
-	bl sub_020255A0
+	bl GF2dGfxRawResMan_DoesNotHaveObjWithId
 	cmp r0, #1
 	bne _0224B9BE
 	mov r0, #1
@@ -12317,7 +12317,7 @@ _0224B972:
 	ldr r0, [r4, #0x10]
 	add r1, r7, #0
 	add r2, r5, #0
-	bl sub_020255C4
+	bl GF2dGfxRawResMan_AllocObj
 	ldr r1, [r4]
 	lsl r5, r5, #3
 	add r1, r1, r5
@@ -12353,7 +12353,7 @@ _0224B9D0:
 	ldr r0, [r4, #0x14]
 	add r1, r5, #0
 	mov r2, #0
-	bl sub_020255C4
+	bl GF2dGfxRawResMan_AllocObj
 	ldr r1, [r4, #8]
 	add r0, r5, #0
 	add r1, r1, #4
@@ -12370,8 +12370,8 @@ _0224B9D0:
 	.balign 4, 0
 	thumb_func_end ov41_0224B958
 
-	thumb_func_start ov41_0224BA10
-ov41_0224BA10: ; 0x0224BA10
+	thumb_func_start AccessoryPortrait_Init
+AccessoryPortrait_Init: ; 0x0224BA10
 	push {r3, r4, r5, lr}
 	sub sp, #0x10
 	mov r2, #2
@@ -12447,10 +12447,10 @@ ov41_0224BA10: ; 0x0224BA10
 	nop
 _0224BAC4: .word ov41_0224BBF0
 _0224BAC8: .word gSystem + 0x60
-	thumb_func_end ov41_0224BA10
+	thumb_func_end AccessoryPortrait_Init
 
-	thumb_func_start ov41_0224BACC
-ov41_0224BACC: ; 0x0224BACC
+	thumb_func_start AccessoryPortrait_Main
+AccessoryPortrait_Main: ; 0x0224BACC
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r1, #0
@@ -12462,7 +12462,7 @@ ov41_0224BACC: ; 0x0224BACC
 	bl ov41_0224B554
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	add r5, #0x14
 	add r0, r5, #0
 	bl ov41_022466C8
@@ -12555,10 +12555,10 @@ _0224BB96:
 	.balign 4, 0
 _0224BB9C: .word gSystem
 _0224BBA0: .word 0x000005DD
-	thumb_func_end ov41_0224BACC
+	thumb_func_end AccessoryPortrait_Main
 
-	thumb_func_start ov41_0224BBA4
-ov41_0224BBA4: ; 0x0224BBA4
+	thumb_func_start AccessoryPortrait_Exit
+AccessoryPortrait_Exit: ; 0x0224BBA4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -12586,7 +12586,7 @@ ov41_0224BBA4: ; 0x0224BBA4
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov41_0224BBA4
+	thumb_func_end AccessoryPortrait_Exit
 
 	thumb_func_start ov41_0224BBF0
 ov41_0224BBF0: ; 0x0224BBF0

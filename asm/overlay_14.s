@@ -5,8 +5,8 @@
 
 	.text
 
-	thumb_func_start ov14_021E5900
-ov14_021E5900: ; 0x021E5900
+	thumb_func_start PCBox_Init
+PCBox_Init: ; 0x021E5900
 	push {r3, r4, r5, lr}
 	mov r2, #1
 	add r5, r0, #0
@@ -52,10 +52,10 @@ ov14_021E5900: ; 0x021E5900
 	str r0, [r4, #0x30]
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov14_021E5900
+	thumb_func_end PCBox_Init
 
-	thumb_func_start ov14_021E596C
-ov14_021E596C: ; 0x021E596C
+	thumb_func_start PCBox_Main
+PCBox_Main: ; 0x021E596C
 	push {r4, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -69,10 +69,10 @@ _021E5982:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov14_021E596C
+	thumb_func_end PCBox_Main
 
-	thumb_func_start ov14_021E5988
-ov14_021E5988: ; 0x021E5988
+	thumb_func_start PCBox_Exit
+PCBox_Exit: ; 0x021E5988
 	push {r4, lr}
 	add r4, r0, #0
 	bl OverlayManager_GetData
@@ -87,7 +87,7 @@ ov14_021E5988: ; 0x021E5988
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov14_021E5988
+	thumb_func_end PCBox_Exit
 
 	thumb_func_start ov14_021E59AC
 ov14_021E59AC: ; 0x021E59AC
@@ -6585,14 +6585,14 @@ _021E8A06:
 	ldr r0, [r0, #4]
 	mov r2, #9
 	str r0, [r4, #0x30]
-	ldr r0, _021E8A78 ; =_02103A1C
+	ldr r0, _021E8A78 ; =gOverlayTemplate_PokemonSummary
 	bl OverlayManager_New
 	str r0, [r5, #0x14]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E8A74: .word ov14_021F7D0C
-_021E8A78: .word _02103A1C
+_021E8A78: .word gOverlayTemplate_PokemonSummary
 	thumb_func_end ov14_021E89B8
 
 	thumb_func_start ov14_021E8A7C
@@ -6708,7 +6708,7 @@ ov14_021E8B3C: ; 0x021E8B3C
 	mov r3, #8
 	str r0, [sp, #4]
 	mov r0, #9
-	bl sub_020830D8
+	bl NamingScreen_CreateArgs
 	str r0, [r4, #0x18]
 	add r1, r4, #0
 	add r1, #0x25

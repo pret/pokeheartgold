@@ -46,7 +46,7 @@
 .public BattleSystem_CheckMonCaught
 .public ov12_0224ECC4
 .public ov12_0224ED00
-.public ov12_0224EDC0
+.public BattleBuffer_Clear
 .public GetBattlerVar
 .public GetBattlerStatusCondition
 .public StruggleCheck
@@ -128,7 +128,7 @@
 .public BattleController_EmitPlayMoveSE
 .public BattleController_EmitPlaySong
 .public BattleController_EmitSetBattleResults
-.public ov12_022642F0
+.public BattleController_EmitBlankMessage
 .public ov12_0226430C
 .public ov12_02264334
 .public ov12_022643C8

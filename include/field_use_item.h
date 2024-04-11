@@ -6,6 +6,7 @@
 #include "bag.h"
 #include "mail.h"
 #include "bag_view.h"
+#include "unk_0202E41C.h"
 #include "unk_0203BC10.h"
 
 #define USE_ITEM_TASK_MENU               0
@@ -58,7 +59,7 @@ struct UseItemInPartyTaskEnv {
     Bag *bag;
     MAILBOX *mailbox;
     Options *options;
-    struct UnkStruct_0202E474 *unk10;
+    UnkStruct_0202E474 *unk10;
     u32 unk14;
     void *unk18;
     FieldSystem *fieldSystem;

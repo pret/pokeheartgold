@@ -21,7 +21,7 @@
 #include "safari_zone.h"
 #include "pokewalker.h"
 #include "photo_album.h"
-#include "save_follow_poke.h"
+#include "save_follow_mon.h"
 #include "save_trainer_card.h"
 #include "save_pokegear.h"
 #include "save_local_field_data.h"
@@ -214,10 +214,10 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
         (SAVESIZEFN)sub_020318C8,
         (SAVEINITFN)sub_020318CC
     }, {
-        SAVE_FOLLOW_POKE,
+        SAVE_FOLLOW_MON,
         0,
-        (SAVESIZEFN)Save_FollowPoke_sizeof,
-        (SAVEINITFN)Save_FollowPoke_Init
+        (SAVESIZEFN)Save_FollowMon_sizeof,
+        (SAVEINITFN)Save_FollowMon_Init
     }, {
         SAVE_POKEGEAR,
         0,
@@ -262,7 +262,7 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
 };
 const int gNumSaveChunkHeaders = NELEMS(gSaveChunkHeaders);
 
-struct UnkStruct_0202E474 *sub_020270C4(SaveData *saveData) { //Save_SafariZone_Get? conflicts with other one
+UnkStruct_0202E474 *sub_020270C4(SaveData *saveData) { //Save_SafariZone_Get? conflicts with other one
     SaveSubstruct_AssertCRC(SAVE_UNK_23);
     return SaveArray_Get(saveData, SAVE_UNK_23);
 }
@@ -294,11 +294,11 @@ const struct ExtraSaveChunkHeader gExtraSaveChunkHeaders[] = {
 
 const int gNumExtraSaveChunkHeaders = NELEMS(gExtraSaveChunkHeaders);
 
-HALL_OF_FAME *LoadHallOfFame(SaveData *saveData, HeapID heapId, int *ret_p) {
+HallOfFame *LoadHallOfFame(SaveData *saveData, HeapID heapId, int *ret_p) {
     return ReadExtraSaveChunk(saveData, heapId, 0, ret_p);
 }
 
-int SaveHallOfFame(SaveData *saveData, HALL_OF_FAME *hallOfFame) {
+int SaveHallOfFame(SaveData *saveData, HallOfFame *hallOfFame) {
     return WriteExtraSaveChunk(saveData, 0, hallOfFame);
 }
 
