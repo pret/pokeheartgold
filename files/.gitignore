@@ -1,3 +1,5 @@
+a/0/0/0
+a/0/0/1
 a/0/0/2
 a/0/0/3
 a/0/0/4
@@ -7,7 +9,9 @@ a/0/1/2
 a/0/1/6
 a/0/1/7
 a/0/1/8
+a/0/2/0
 a/0/2/7
+a/0/3/0
 a/0/3/2
 a/0/3/3
 a/0/3/4
@@ -31,6 +35,7 @@ a/1/3/3
 a/1/3/6
 a/1/3/8
 a/1/4/1
+a/1/5/0
 a/1/5/2
 a/1/6/3
 a/1/6/9
@@ -52,6 +57,7 @@ fielddata/encountdata/s_enc_data.narc
 data/gs_areawindow.narc
 itemtool/itemdata/item_icon.narc
 itemtool/itemdata/item_data.narc
+poketool/personal/personal.narc
 poketool/personal/evo.narc
 poketool/personal/growtbl.narc
 resource/eng/pms_aikotoba/pms_aikotoba.narc

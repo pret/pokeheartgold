@@ -31,6 +31,7 @@ build-cmake-*
 *.4bpp
 *.lz
 *.gbapal
+*.NCLR
 
 # For asmdiff
 */baserom.*
@@ -101,3 +102,4 @@ diff.txt
 # clangd
 .cache
 compile_commands.json
+/pyscripts/

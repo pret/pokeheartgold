@@ -48,8 +48,8 @@ typedef struct TitleScreenAnimData {
     VecFx32 cameraPosEnd;
     VecFx32 cameraTargetStart;
     VecFx32 cameraTargetEnd;
-    VecFx16 light0vec;
-    VecFx16 light1vec;
+    VecFx16 light0Vec;
+    VecFx16 light1Vec;
     int unk_1E8;
     fx32 cameraSpeed;
     int cameraScene;

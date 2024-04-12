@@ -6,7 +6,7 @@ typedef enum {
     GF_PLANE_TOGGLE_ON,
 } GFPlaneToggle;
 
-enum GFBgLayer {
+typedef enum GFBgLayer {
     GF_BG_LYR_MAIN_0 = 0,
     GF_BG_LYR_MAIN_1,
     GF_BG_LYR_MAIN_2,
@@ -31,7 +31,7 @@ enum GFBgLayer {
     GF_BG_LYR_SUB_3_F = 1 << (GF_BG_LYR_SUB_3 - GF_BG_LYR_SUB_FIRST),
 
     GF_BG_LYR_UNALLOC = 0xFF,
-};
+} GFBgLayer;
 
 typedef struct GraphicsBanks {
     GXVRamBG bg;

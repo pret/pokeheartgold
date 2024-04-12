@@ -2358,7 +2358,7 @@ _02246DE0:
 	bl Save_VarsFlags_CheckSafariSysFlag
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x14]
-	bl CheckFlag996
+	bl Save_VarsFlags_CheckBugContestFlag
 	str r0, [sp, #8]
 	cmp r6, #0
 	bne _02246E18
@@ -2858,7 +2858,7 @@ _022471AC:
 	ldr r1, [sp, #8]
 	ldr r2, [sp, #0x1c]
 	add r0, r5, #0
-	bl sub_02050B90
+	bl FieldSystem_StartForcedWildBattle
 	add sp, #0x9c
 	mov r0, #1
 	pop {r4, r5, r6, r7, pc}
@@ -2867,7 +2867,7 @@ _0224721A:
 	bl Save_VarsFlags_CheckSafariSysFlag
 	add r6, r0, #0
 	add r0, r7, #0
-	bl CheckFlag996
+	bl Save_VarsFlags_CheckBugContestFlag
 	add r7, r0, #0
 	ldr r0, [sp, #0xc]
 	cmp r0, #0
@@ -3014,7 +3014,7 @@ _0224734C:
 	ldr r1, [sp, #8]
 	ldr r2, [sp, #0x1c]
 	add r0, r5, #0
-	bl sub_02050B90
+	bl FieldSystem_StartForcedWildBattle
 	b _02247360
 _0224735C:
 	bl GF_AssertFail
@@ -3031,8 +3031,8 @@ _02247360:
 	.balign 4, 0
 	thumb_func_end ov02_02247170
 
-	thumb_func_start ov02_02247374
-ov02_02247374: ; 0x02247374
+	thumb_func_start FieldSystem_ChooseHeadbuttEncounter
+FieldSystem_ChooseHeadbuttEncounter: ; 0x02247374
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0xa8
 	add r5, r0, #0
@@ -3117,7 +3117,7 @@ _0224741C:
 	add sp, #0xa8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov02_02247374
+	thumb_func_end FieldSystem_ChooseHeadbuttEncounter
 
 	thumb_func_start ov02_02247424
 ov02_02247424: ; 0x02247424
@@ -3548,8 +3548,8 @@ _0224771A:
 	.balign 4, 0
 	thumb_func_end ov02_0224768C
 
-	thumb_func_start ov02_02247720
-ov02_02247720: ; 0x02247720
+	thumb_func_start EncounterSlot_WildMonSlotRoll_Surfing
+EncounterSlot_WildMonSlotRoll_Surfing: ; 0x02247720
 	push {r3, lr}
 	bl LCRandom
 	mov r1, #0x64
@@ -3586,10 +3586,10 @@ _0224775E:
 	mov r0, #4
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov02_02247720
+	thumb_func_end EncounterSlot_WildMonSlotRoll_Surfing
 
-	thumb_func_start ov02_02247764
-ov02_02247764: ; 0x02247764
+	thumb_func_start EncounterSlot_WildMonSlotRoll_Fishing
+EncounterSlot_WildMonSlotRoll_Fishing: ; 0x02247764
 	push {r3, lr}
 	bl LCRandom
 	mov r1, #0x64
@@ -3620,10 +3620,10 @@ _02247790:
 _02247798:
 	mov r0, #4
 	pop {r3, pc}
-	thumb_func_end ov02_02247764
+	thumb_func_end EncounterSlot_WildMonSlotRoll_Fishing
 
-	thumb_func_start ov02_0224779C
-ov02_0224779C: ; 0x0224779C
+	thumb_func_start EncounterSlot_WildMonSlotRoll_RockSmash
+EncounterSlot_WildMonSlotRoll_RockSmash: ; 0x0224779C
 	push {r3, lr}
 	bl LCRandom
 	mov r1, #0x64
@@ -3642,10 +3642,11 @@ _022477BA:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	pop {r3, pc}
-	thumb_func_end ov02_0224779C
+	thumb_func_end EncounterSlot_WildMonSlotRoll_RockSmash
 
-	thumb_func_start ov02_022477C0
-ov02_022477C0: ; 0x022477C0
+	; 50-15-15-10-5-5
+	thumb_func_start EncounterSlot_WildMonSlotRoll_Headbutt
+EncounterSlot_WildMonSlotRoll_Headbutt: ; 0x022477C0
 	push {r3, lr}
 	bl LCRandom
 	mov r1, #0x64
@@ -3681,7 +3682,7 @@ _022477F4:
 _022477FC:
 	mov r0, #5
 	pop {r3, pc}
-	thumb_func_end ov02_022477C0
+	thumb_func_end EncounterSlot_WildMonSlotRoll_Headbutt
 
 	thumb_func_start ApplyLeadMonHeldItemEffectToEncounterRate
 ApplyLeadMonHeldItemEffectToEncounterRate: ; 0x02247800
@@ -3773,8 +3774,8 @@ _02247890:
 	pop {r4, pc}
 	thumb_func_end ov02_02247854
 
-	thumb_func_start ov02_022478A4
-ov02_022478A4: ; 0x022478A4
+	thumb_func_start EncounterSlot_WildMonLevelRoll
+EncounterSlot_WildMonLevelRoll: ; 0x022478A4
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r1, #0
 	ldrh r2, [r0, #6]
@@ -3831,7 +3832,7 @@ _02247908:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov02_022478A4
+	thumb_func_end EncounterSlot_WildMonLevelRoll
 
 	thumb_func_start ov02_02247910
 ov02_02247910: ; 0x02247910
@@ -4159,7 +4160,7 @@ _02247B96:
 	add r1, r5, #0
 	add r2, r4, #0
 	mov r3, #0xc
-	bl ov02_02248150
+	bl EncounterSlot_AbilityInfluenceOnSlotChoiceCheck
 	cmp r0, #0
 	bne _02247BD4
 	mov r0, #0xd
@@ -4172,7 +4173,7 @@ _02247B96:
 	add r1, r5, #0
 	add r2, r4, #0
 	mov r3, #0xc
-	bl ov02_02248150
+	bl EncounterSlot_AbilityInfluenceOnSlotChoiceCheck
 	cmp r0, #0
 	bne _02247BD4
 	bl ov02_0224768C
@@ -4204,7 +4205,7 @@ _02247BF4:
 	add r1, r5, #0
 	add r2, r4, #0
 	mov r3, #2
-	bl ov02_02248150
+	bl EncounterSlot_AbilityInfluenceOnSlotChoiceCheck
 	cmp r0, #0
 	bne _02247C32
 	mov r0, #0xd
@@ -4217,10 +4218,10 @@ _02247BF4:
 	add r1, r5, #0
 	add r2, r4, #0
 	mov r3, #2
-	bl ov02_02248150
+	bl EncounterSlot_AbilityInfluenceOnSlotChoiceCheck
 	cmp r0, #0
 	bne _02247C32
-	bl ov02_0224779C
+	bl EncounterSlot_WildMonSlotRoll_RockSmash
 	add r1, sp, #0x10
 	strb r0, [r1]
 _02247C32:
@@ -4229,7 +4230,7 @@ _02247C32:
 	add r1, r5, #0
 	lsl r0, r0, #3
 	add r0, r4, r0
-	bl ov02_022478A4
+	bl EncounterSlot_WildMonLevelRoll
 	add r7, r0, #0
 	b _02247D3A
 _02247C44:
@@ -4242,7 +4243,7 @@ _02247C44:
 	add r1, r5, #0
 	add r2, r4, #0
 	mov r3, #5
-	bl ov02_02248150
+	bl EncounterSlot_AbilityInfluenceOnSlotChoiceCheck
 	cmp r0, #0
 	bne _02247C82
 	mov r0, #0xd
@@ -4255,10 +4256,10 @@ _02247C44:
 	add r1, r5, #0
 	add r2, r4, #0
 	mov r3, #5
-	bl ov02_02248150
+	bl EncounterSlot_AbilityInfluenceOnSlotChoiceCheck
 	cmp r0, #0
 	bne _02247C82
-	bl ov02_02247720
+	bl EncounterSlot_WildMonSlotRoll_Surfing
 	add r1, sp, #0x10
 	strb r0, [r1]
 _02247C82:
@@ -4267,7 +4268,7 @@ _02247C82:
 	add r1, r5, #0
 	lsl r0, r0, #3
 	add r0, r4, r0
-	bl ov02_022478A4
+	bl EncounterSlot_WildMonLevelRoll
 	add r7, r0, #0
 	b _02247D3A
 _02247C94:
@@ -4280,7 +4281,7 @@ _02247C94:
 	add r1, r5, #0
 	add r2, r4, #0
 	mov r3, #5
-	bl ov02_02248150
+	bl EncounterSlot_AbilityInfluenceOnSlotChoiceCheck
 	cmp r0, #0
 	bne _02247CD4
 	mov r0, #0xd
@@ -4293,11 +4294,11 @@ _02247C94:
 	add r1, r5, #0
 	add r2, r4, #0
 	mov r3, #5
-	bl ov02_02248150
+	bl EncounterSlot_AbilityInfluenceOnSlotChoiceCheck
 	cmp r0, #0
 	bne _02247CD4
 	ldr r0, [sp, #0xc]
-	bl ov02_02247764
+	bl EncounterSlot_WildMonSlotRoll_Fishing
 	add r1, sp, #0x10
 	strb r0, [r1]
 _02247CD4:
@@ -4306,7 +4307,7 @@ _02247CD4:
 	add r1, r5, #0
 	lsl r0, r0, #3
 	add r0, r4, r0
-	bl ov02_022478A4
+	bl EncounterSlot_WildMonLevelRoll
 	add r7, r0, #0
 	b _02247D3A
 _02247CE6:
@@ -4319,7 +4320,7 @@ _02247CE6:
 	add r1, r5, #0
 	add r2, r4, #0
 	mov r3, #6
-	bl ov02_02248150
+	bl EncounterSlot_AbilityInfluenceOnSlotChoiceCheck  ; (leadMon, a2, encounterSlots, 6, TYPE_STEEL, ABILITY_MAGNET_PULL, &slot)
 	cmp r0, #0
 	bne _02247D24
 	mov r0, #0xd
@@ -4332,10 +4333,10 @@ _02247CE6:
 	add r1, r5, #0
 	add r2, r4, #0
 	mov r3, #6
-	bl ov02_02248150
+	bl EncounterSlot_AbilityInfluenceOnSlotChoiceCheck  ; (leadMon, a2, encounterSlots, 6, TYPE_ELECTRIC, ABILITY_STATIC, &slot)
 	cmp r0, #0
 	bne _02247D24
-	bl ov02_022477C0
+	bl EncounterSlot_WildMonSlotRoll_Headbutt
 	add r1, sp, #0x10
 	strb r0, [r1]
 _02247D24:
@@ -4344,7 +4345,7 @@ _02247D24:
 	add r1, r5, #0
 	lsl r0, r0, #3
 	add r0, r4, r0
-	bl ov02_022478A4
+	bl EncounterSlot_WildMonLevelRoll
 	add r7, r0, #0
 	b _02247D3A
 _02247D36:
@@ -4473,7 +4474,7 @@ _02247E16:
 	add r1, r5, #0
 	add r2, r4, #0
 	mov r3, #0xa
-	bl ov02_02248150
+	bl EncounterSlot_AbilityInfluenceOnSlotChoiceCheck
 	cmp r0, #0
 	bne _02247E50
 	mov r0, #0xd
@@ -4486,7 +4487,7 @@ _02247E16:
 	add r1, r5, #0
 	add r2, r4, #0
 	mov r3, #0xa
-	bl ov02_02248150
+	bl EncounterSlot_AbilityInfluenceOnSlotChoiceCheck
 _02247E50:
 	cmp r0, #0
 	bne _02247E62
@@ -4765,7 +4766,7 @@ _02248058:
 	pop {r3, r4, r5, pc}
 _02248060:
 	add r0, r5, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _0224808A
 	ldr r0, [r5, #0xc]
@@ -4900,8 +4901,8 @@ _02248138:
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov02_022480C0
 
-	thumb_func_start ov02_02248150
-ov02_02248150: ; 0x02248150
+	thumb_func_start EncounterSlot_AbilityInfluenceOnSlotChoiceCheck
+EncounterSlot_AbilityInfluenceOnSlotChoiceCheck: ; 0x02248150
 	push {r3, r4, r5, lr}
 	ldrb r0, [r1, #0xd]
 	add r5, r2, #0
@@ -4933,7 +4934,7 @@ ov02_02248150: ; 0x02248150
 _0224818C:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov02_02248150
+	thumb_func_end EncounterSlot_AbilityInfluenceOnSlotChoiceCheck
 
 	thumb_func_start ov02_02248190
 ov02_02248190: ; 0x02248190
@@ -7496,7 +7497,7 @@ _02249490:
 	cmp r5, #2
 	bne _022494AC
 	ldr r0, [sp]
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	mov r1, #0x83
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -13305,7 +13306,7 @@ CreateFieldEscapeRopeTaskEnv: ; 0x0224BFD8
 	b _0224C01A
 _0224C006:
 	add r0, r5, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _0224C016
 	mov r0, #1
@@ -13835,7 +13836,7 @@ _0224C3F8:
 	ldr r0, [r6, r0]
 	mov r1, #1
 	mov r4, #2
-	bl FieldSystemUnkSub108_AddMonMood
+	bl FieldSystem_UnkSub108_AddMonMood
 	b _0224C420
 _0224C41E:
 	mov r4, #1
@@ -14058,7 +14059,7 @@ _0224C5A4:
 	ldr r0, [r6, r0]
 	mov r1, #1
 	mov r4, #2
-	bl FieldSystemUnkSub108_AddMonMood
+	bl FieldSystem_UnkSub108_AddMonMood
 	b _0224C5CC
 _0224C5CA:
 	mov r4, #1
@@ -17508,7 +17509,7 @@ ov02_0224DF1C: ; 0x0224DF1C
 	beq _0224DFC6
 	sub r0, #0x22
 	ldr r0, [r4, r0]
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	add r1, sp, #0
 	bl MapObject_GetPositionVec
 	mov r5, #0
@@ -17763,7 +17764,7 @@ _0224E114: ; jump table
 	.short _0224E1F6 - _0224E114 - 2 ; case 5
 _0224E120:
 	add r0, r6, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	bl MapObject_UnpauseMovement
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -17778,7 +17779,7 @@ _0224E130:
 	cmp r0, #0
 	beq _0224E21E
 	add r0, r6, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	bl MapObject_PauseMovement
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -18275,8 +18276,8 @@ _0224E4E6:
 	pop {r3, pc}
 	thumb_func_end ov02_0224E4DC
 
-	thumb_func_start ov02_0224E4EC
-ov02_0224E4EC: ; 0x0224E4EC
+	thumb_func_start SafariDecoration_CreateArgs
+SafariDecoration_CreateArgs: ; 0x0224E4EC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x2c
 	add r5, r0, #0
@@ -18438,7 +18439,7 @@ _0224E638:
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov02_0224E4EC
+	thumb_func_end SafariDecoration_CreateArgs
 
 	thumb_func_start ov02_0224E640
 ov02_0224E640: ; 0x0224E640
@@ -19616,17 +19617,17 @@ _0224EF78:
 	.balign 4, 0
 	thumb_func_end ov02_0224EF6C
 
-	thumb_func_start FieldSystem_FollowPokeInteract
-FieldSystem_FollowPokeInteract: ; 0x0224EF80
+	thumb_func_start FieldSystem_FollowMonInteract
+FieldSystem_FollowMonInteract: ; 0x0224EF80
 	ldr r3, _0224EF8C ; =TaskManager_Call
 	ldr r0, [r0, #0x10]
-	ldr r1, _0224EF90 ; =Task_FollowPokeInteract
+	ldr r1, _0224EF90 ; =Task_FollowMonInteract
 	mov r2, #0
 	bx r3
 	nop
 _0224EF8C: .word TaskManager_Call
-_0224EF90: .word Task_FollowPokeInteract
-	thumb_func_end FieldSystem_FollowPokeInteract
+_0224EF90: .word Task_FollowMonInteract
+	thumb_func_end FieldSystem_FollowMonInteract
 
 	thumb_func_start ov02_0224EF94
 ov02_0224EF94: ; 0x0224EF94
@@ -20482,11 +20483,11 @@ ov02_0224F5FC: ; 0x0224F5FC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	bl MapObject_GetCurrentY
 	add r2, r0, #0
 	add r0, r5, #0
@@ -20574,7 +20575,7 @@ ov02_0224F698: ; 0x0224F698
 	mov r1, #0x42
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl FieldSystemUnkSub108_GetMonMood
+	bl FieldSystem_UnkSub108_GetMonMood
 	strb r0, [r4, #0x15]
 	pop {r4, pc}
 	.balign 4, 0
@@ -21061,7 +21062,7 @@ _0224F9E8:
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl FollowPoke_TryPrintInteractionMessage
+	bl FollowMon_TryPrintInteractionMessage
 	cmp r0, #0
 	beq _0224FA06
 	add r5, #0xe4
@@ -21280,8 +21281,8 @@ _0224FB92:
 _0224FB98: .word 0x00000882
 	thumb_func_end ov02_0224FB54
 
-	thumb_func_start FollowPoke_TryPrintInteractionMessage
-FollowPoke_TryPrintInteractionMessage: ; 0x0224FB9C
+	thumb_func_start FollowMon_TryPrintInteractionMessage
+FollowMon_TryPrintInteractionMessage: ; 0x0224FB9C
 	push {r4, r5, r6, lr}
 	add r6, r2, #0
 	add r5, r0, #0
@@ -21303,7 +21304,7 @@ FollowPoke_TryPrintInteractionMessage: ; 0x0224FB9C
 	add r0, r5, #0
 	mov r2, #0xb
 	sub r3, r3, #1
-	bl FollowPoke_ExpandInteractionMessage
+	bl FollowMon_ExpandInteractionMessage
 	ldr r0, [r5, #0xc]
 	bl Save_PlayerData_GetOptionsAddr
 	add r6, r0, #0
@@ -21331,7 +21332,7 @@ _0224FC00:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0224FC04: .word 0x0000086E
-	thumb_func_end FollowPoke_TryPrintInteractionMessage
+	thumb_func_end FollowMon_TryPrintInteractionMessage
 
 	thumb_func_start ov02_0224FC08
 ov02_0224FC08: ; 0x0224FC08
@@ -21400,8 +21401,8 @@ _0224FC82:
 _0224FC88: .word 0x0000086D
 	thumb_func_end ov02_0224FC74
 
-	thumb_func_start FollowPoke_ExpandInteractionMessage
-FollowPoke_ExpandInteractionMessage: ; 0x0224FC8C
+	thumb_func_start FollowMon_ExpandInteractionMessage
+FollowMon_ExpandInteractionMessage: ; 0x0224FC8C
 	push {r3, r4, r5, r6, r7, lr}
 	str r1, [sp]
 	mov r1, #0x1b
@@ -21419,7 +21420,7 @@ FollowPoke_ExpandInteractionMessage: ; 0x0224FC8C
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
-	bl FollowPoke_PlaceholdersSet
+	bl FollowMon_PlaceholdersSet
 	add r0, r5, #0
 	add r1, r7, #0
 	bl NewString_ReadMsgData
@@ -21436,7 +21437,7 @@ FollowPoke_ExpandInteractionMessage: ; 0x0224FC8C
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end FollowPoke_ExpandInteractionMessage
+	thumb_func_end FollowMon_ExpandInteractionMessage
 
 	thumb_func_start ov02_0224FCE0
 ov02_0224FCE0: ; 0x0224FCE0
@@ -21546,7 +21547,7 @@ _0224FDBC:
 	cmp r0, #0
 	beq _0224FDDC
 	add r0, r4, #0
-	bl FollowPokeObj_GetSpecies
+	bl FollowMon_GetSpecies
 	cmp r0, #0x32
 	beq _0224FDDC
 	cmp r0, #0x33
@@ -21982,8 +21983,8 @@ _02250108: .word 0x00000868
 _0225010C: .word 0x0000087C
 	thumb_func_end ov02_02250004
 
-	thumb_func_start Task_FollowPokeInteract
-Task_FollowPokeInteract: ; 0x02250110
+	thumb_func_start Task_FollowMonInteract
+Task_FollowMonInteract: ; 0x02250110
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl TaskManager_GetFieldSystem
@@ -22420,10 +22421,10 @@ _02250490: .word SEQ_ME_ACCE
 _02250494: .word 0x00000817
 _02250498: .word 0x0000086E
 _0225049C: .word gSystem
-	thumb_func_end Task_FollowPokeInteract
+	thumb_func_end Task_FollowMonInteract
 
-	thumb_func_start FollowPoke_PlaceholdersSet
-FollowPoke_PlaceholdersSet: ; 0x022504A0
+	thumb_func_start FollowMon_PlaceholdersSet
+FollowMon_PlaceholdersSet: ; 0x022504A0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
@@ -22463,7 +22464,7 @@ FollowPoke_PlaceholdersSet: ; 0x022504A0
 	mov r1, #4
 	bl BufferItemName
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end FollowPoke_PlaceholdersSet
+	thumb_func_end FollowMon_PlaceholdersSet
 
 	thumb_func_start ov02_02250504
 ov02_02250504: ; 0x02250504
@@ -22476,7 +22477,7 @@ ov02_02250504: ; 0x02250504
 	mov r0, #0x42
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl FieldSystemUnkSub108_GetMonMood
+	bl FieldSystem_UnkSub108_GetMonMood
 	mov r1, #0x12
 	str r0, [sp]
 	lsl r1, r1, #4
@@ -22503,7 +22504,7 @@ _02250542:
 	lsl r1, r1, #0x18
 	ldr r0, [r5, r0]
 	asr r1, r1, #0x18
-	bl FieldSystemUnkSub108_SetMonMood
+	bl FieldSystem_UnkSub108_SetMonMood
 	add r0, r4, #0
 	mov r1, #9
 	mov r2, #0
@@ -22867,7 +22868,7 @@ ov02_022507B4: ; 0x022507B4
 	add r0, #0xe4
 	ldr r0, [r0]
 	add r4, r1, #0
-	bl FollowPokeObj_GetSpecies
+	bl FollowMon_GetSpecies
 	sub r0, #0x32
 	cmp r0, #1
 	bls _022507E0
@@ -22924,7 +22925,7 @@ _0225081E:
 	str r0, [r4]
 _0225082E:
 	add r0, r6, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _022508AA
@@ -25988,7 +25989,7 @@ _022520B8:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0x1c]
-	bl CheckFlag996
+	bl Save_VarsFlags_CheckBugContestFlag
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x10]
@@ -26316,7 +26317,7 @@ ov02_02252334: ; 0x02252334
 	pop {r4, r5, r6, pc}
 _0225234A:
 	add r0, r5, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _022523B0
 	add r0, r5, #0
@@ -26415,7 +26416,7 @@ _02252400: ; jump table
 	.short _022524EE - _02252400 - 2 ; case 4
 _0225240A:
 	add r0, r4, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	bl MapObject_UnpauseMovement
 	ldr r0, [r4, #0x10]
 	ldr r1, _0225252C ; =ov01_02205A60
@@ -26427,11 +26428,11 @@ _0225240A:
 	b _02252524
 _02252426:
 	add r0, r4, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	add r1, sp, #0
 	bl MapObject_GetPositionVec
 	add r0, r4, #0
-	bl sub_02069FB0
+	bl FollowMon_IsVisible
 	cmp r0, #0
 	beq _0225244A
 	ldr r0, [r4, #0x44]
@@ -26454,7 +26455,7 @@ _0225244E:
 	ldrb r3, [r4]
 	ldr r0, [r0]
 	lsl r1, r1, #2
-	bl FollowPokeMapObjectSetParams
+	bl FollowMon_SetObjectParams
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -26539,7 +26540,7 @@ _0225250A:
 	add r0, r6, #0
 	bl FreeToHeap
 	add r0, r4, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	bl MapObject_PauseMovement
 	add sp, #0xc
 	mov r0, #1
@@ -26626,7 +26627,7 @@ _022525B4:
 	add r0, r4, #0
 	bl ov02_02252898
 	ldr r0, [r4, #8]
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	mov r1, #1
 	bl sub_02069DC8
 	mov r0, #4
@@ -26647,7 +26648,7 @@ _022525EA:
 	cmp r0, #0
 	beq _02252698
 	ldr r0, [r4, #8]
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	bl sub_0205F484
 	add r0, r4, #0
 	mov r1, #1
@@ -27078,7 +27079,7 @@ _02252912:
 	bl ov02_022529A0
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #8]
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	add r1, sp, #0x10
 	bl MapObject_GetPositionVec
 	ldr r0, [sp, #8]
@@ -27640,7 +27641,7 @@ _02252D5A:
 	bl ov02_02252E80
 	ldr r0, [sp, #8]
 	ldr r0, [r0]
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	add r1, sp, #0x34
 	bl MapObject_GetPositionVec
 	ldr r4, [sp, #8]
@@ -28064,7 +28065,7 @@ _022530AE:
 	mov r2, #0
 	bl ov02_02252E80
 	ldr r0, [r7]
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	add r1, sp, #0x14
 	bl MapObject_GetPositionVec
 	add r0, r7, #0

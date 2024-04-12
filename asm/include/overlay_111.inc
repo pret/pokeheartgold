@@ -117,6 +117,6 @@
 .public DC_FlushRange
 .public MI_CpuFill8
 .public gSystem
-.public ov111_021E5900
-.public ov111_021E5960
-.public ov111_021E59B8
+.public BugContestSwapMon_Init
+.public BugContestSwapMon_Main
+.public BugContestSwapMon_Exit

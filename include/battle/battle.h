@@ -79,7 +79,7 @@ typedef struct TurnData {
     u32 snatchFlag:1;
     u32 roostFlag:1;
     u32 runFlag:2; //1 - Fled using item, 2 - Fled using ability
-    u32 unk0_9:1;
+    u32 endureFlag:1;
     u32 unk0_A:22;
     int physicalDamage[4];
     int battlerIdPhysicalDamage;
@@ -98,7 +98,7 @@ typedef struct SelfTurnData {
     u32 stormDrainFlag:1;
     u32 moldBreakerFlag:1;
     u32 trickRoomFlag:1;
-    u32 unk0_5:1;
+    u32 endureItemFlag:1;
     u32 rolloutCount:3;
     u32 unk0_9:23;
     int physicalDamage;
@@ -131,7 +131,7 @@ typedef struct TrainerAIData {
     u8 unk99[2];
     u8 battlerIdAttacker;
     u8 battlerIdTarget;
-    u8 unk9D[2];
+    u8 useItem[2];
     u8 unk9F[2];
     u16 unkA0[2];
     u8 unkA4[4];
@@ -146,11 +146,11 @@ typedef struct MoveFailFlags {
     u32 noEffect:1;
     u32 imprison:1;
     u32 infatuation:1;
-    u32 asleep:1;
+    u32 disabled:1;
     u32 unk0_5:1;
     u32 flinch:1;
     u32 confusion:1;
-    u32 unk0_8:1;
+    u32 gravity:1;
     u32 healBlock:1;
     u32 unused:21;
 } MoveFailFlags;
@@ -179,7 +179,7 @@ typedef struct UnkBattlemonSub {
     u32 embargoFlag:3;
     u32 knockOffFlag:1; //unclear whether true mean knocked off or not knocked off based on current information on its usage
     u32 metronomeTurns:4; //refers to the item, not the move
-    u32 unk4_2B:1; //might be related to choice band/specs
+    u32 micleBerryFlag:1; 
     u32 custapBerryFlag:1;
     u32 quickClawFlag:1; 
     u32 meFirstFlag:1;
@@ -241,7 +241,7 @@ typedef struct BattleMon {
     u8 level;
     u8 friendship;
     u16 nickname[POKEMON_NAME_LENGTH + 1];
-    int hp;
+    s32 hp;
     u32 maxHp;
     u16 otName[PLAYER_NAME_LENGTH + 1];
     u32 exp;
@@ -265,6 +265,13 @@ typedef struct PokemonStats {
     u32 stats[6];
 } PokemonStats;
 
+typedef struct PlayerActions {
+    ControllerCommand command;
+    u32 unk4;
+    u32 unk8;
+    u32 inputSelection;
+} PlayerActions;
+
 typedef struct BattleContext {
     u8 unk_0[4];
     u8 unk_4[4];
@@ -276,8 +283,8 @@ typedef struct BattleContext {
     int updateMonConditionData;
     int stateUpdateFieldConditionExtra;
     int updateFieldConditionExtraData;
-    int unk_28;
-    int unk_2C;
+    int stateBeforeTurn;
+    int beforeTurnData;
     int unk_30;
     int unk_34;
     int unk_38;
@@ -315,12 +322,12 @@ typedef struct BattleContext {
     NarcId unk_BC[4];
     int unk_CC[4];
     int unk_DC[4];
-    int unk_EC;
+    int executionIndex;
     int unk_F0;
     BattleMessage buffMsg;
     int battlerIdTemp;
-    int unk_11C;
-    int unk_120;
+    int battlerIdLeechSeedRecv;
+    int battlerIdLeechSeeded;
     int moveTemp;
     int itemTemp;
     int abilityTemp;
@@ -348,7 +355,7 @@ typedef struct BattleContext {
     u32 battleStatus;
     u32 battleStatus2;
     int damage;
-    int hitDamage;
+    int hitDamage; //amount of damage dealt on hit, ie ignoring overkill damage
     int criticalCnt;
     int criticalMultiplier;
     int movePower;
@@ -372,12 +379,12 @@ typedef struct BattleContext {
     u8 selectedMonIndex[4];
     u8 unk_21A0[4];
     u8 unk_21A4[4];
-    u32 unk_21A8[4][4];
-    u8 unk_21E8[4];
-    u8 turnOrder[4];
-    u32 unk_21F0[4];
-    u8 unk_2200[4][4][16];
-    u8 unk_2300[4][256];
+    PlayerActions playerActions[4];
+    u8 executionOrder[4]; //accounts for running, items, etc used in battler slots
+    u8 turnOrder[4]; //by pokemon speed, accounting for trick room
+    u32 effectiveSpeed[4];
+    u8 linkBuffer[4][4][16];
+    u8 battleBuffer[4][256];
     int battleScriptBuffer[400];
     BattleMon battleMons[4];
     u32 moveNoTemp;
@@ -401,7 +408,7 @@ typedef struct BattleContext {
     int unk_30E4[4];
     int unk_30F4[4];
     int unk_3104;
-    u8 unk_3108;
+    u8 switchInFlag;
     u8 levelUpMons;
     u16 unk_310A;
     u16 unk_310C[4];
@@ -615,7 +622,7 @@ struct BattleSystem {
     u16 unk2454[4];
     u16 unk245C[4];
     int unk2464[4];
-    u32 unk2474_0:1, 
+    u32 isRecordingPaused:1, 
         unk2474_1:1, 
         unk2474_2:1, 
         unk2474_3:1,

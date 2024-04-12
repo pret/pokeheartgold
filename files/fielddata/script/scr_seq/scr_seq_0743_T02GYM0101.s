@@ -111,7 +111,7 @@ scr_seq_T02GYM0101_001:
 	goto_if_eq _0186
 	npc_msg msg_0454_T02GYM0101_00006
 	scrcmd_600
-	set_follow_poke_inhibit_state 1
+	set_follow_mon_inhibit_state 1
 	scrcmd_607
 	scrcmd_109 253, 56
 	setvar VAR_UNK_4127, 1
@@ -235,7 +235,7 @@ _037B:
 	wait_movement
 _037D:
 	scrcmd_600
-	set_follow_poke_inhibit_state 1
+	set_follow_mon_inhibit_state 1
 	scrcmd_607
 	scrcmd_109 253, 56
 	setvar VAR_UNK_4127, 1

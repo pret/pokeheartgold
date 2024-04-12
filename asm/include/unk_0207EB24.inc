@@ -61,5 +61,5 @@
 .public GX_LoadOBJ
 .public GXS_LoadOBJ
 .public DC_FlushRange
-.public _020FA484
+.public gOverlayTemplate_Battle
 .public gNatureStatMods

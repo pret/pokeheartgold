@@ -1,6 +1,6 @@
 #include "global.h"
 #include "encounter.h"
-#include "field_follow_poke.h"
+#include "follow_mon.h"
 #include "filesystem.h"
 #include "math_util.h"
 #include "overlay_01_022001E4.h"
@@ -109,7 +109,7 @@ static BOOL Task_RockSmashItemCheck(TaskManager *taskman) {
         *env->itemFound = FALSE;
         *env->item = ITEM_NONE;
         FreeToHeap(env);
-        sub_02050B90(fieldSystem, taskman, setup);
+        FieldSystem_StartForcedWildBattle(fieldSystem, taskman, setup);
         return FALSE;
     }
 
@@ -181,7 +181,7 @@ static BOOL Task_GetRockSmashItem(TaskManager *taskman) {
     switch (*state_p) {
     case 0:
         if (env->followMonKnowsHM) {
-            obj = FollowingPokemon_GetMapObject(fieldSystem);
+            obj = FollowMon_GetMapObject(fieldSystem);
         } else {
             obj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
         }

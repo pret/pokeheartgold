@@ -1,0 +1,46 @@
+    .include "macros/btlcmd.inc"
+
+    .data
+
+_000:
+    ChangeStatStage _041, _059, _060
+    CompareVarToValue OPCODE_NEQ, BSCRIPT_VAR_SIDE_EFFECT_TYPE, SIDE_EFFECT_TYPE_DIRECT, _010
+    PrintAttackMessage 
+    Wait 
+
+_010:
+    CompareVarToValue OPCODE_NEQ, BSCRIPT_VAR_SIDE_EFFECT_TYPE, SIDE_EFFECT_TYPE_DIRECT, _018
+    PlayMoveAnimation BATTLER_CATEGORY_ATTACKER
+    Wait 
+
+_018:
+    CompareVarToValue OPCODE_FLAG_SET, BSCRIPT_VAR_BATTLE_STATUS_2, BATTLE_STATUS2_UPDATE_STAT_STAGES, _036
+    PlayBattleAnimationFromVar BATTLER_CATEGORY_SIDE_EFFECT_MON, BSCRIPT_VAR_TEMP_DATA
+    Wait 
+    CompareVarToValue OPCODE_FLAG_NOT, BSCRIPT_VAR_BATTLE_STATUS_2, BATTLE_STATUS2_STAT_STAGE_CHANGE_SHOWN, _036
+    UpdateVar OPCODE_FLAG_ON, BSCRIPT_VAR_BATTLE_STATUS_2, BATTLE_STATUS2_UPDATE_STAT_STAGES
+
+_036:
+    PrintBufferedMessage 
+    Wait 
+    WaitButtonABTime 30
+    End 
+
+_041:
+    CompareVarToValue OPCODE_NEQ, BSCRIPT_VAR_SIDE_EFFECT_TYPE, SIDE_EFFECT_TYPE_DIRECT, _048
+    PrintAttackMessage 
+    Wait 
+
+_048:
+    CompareVarToValue OPCODE_FLAG_SET, BSCRIPT_VAR_BATTLE_STATUS, BATTLE_STATUS_MESSAGES_OFF, _059
+    WaitButtonABTime 30
+    PrintBufferedMessage 
+    Wait 
+    WaitButtonABTime 30
+
+_059:
+    End 
+
+_060:
+    UpdateVar OPCODE_FLAG_ON, BSCRIPT_VAR_MOVE_STATUS_FLAGS, MOVE_STATUS_FAILED
+    End 

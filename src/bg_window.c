@@ -717,11 +717,11 @@ void BgSetPosTextAndCommit(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustOp op, i
     }
 }
 
-int Bg_GetXpos(const BgConfig *bgConfig, enum GFBgLayer bgId) {
+int Bg_GetXpos(const BgConfig *bgConfig, GFBgLayer bgId) {
     return bgConfig->bgs[bgId].hOffset;
 }
 
-int Bg_GetYpos(const BgConfig *bgConfig, enum GFBgLayer bgId) {
+int Bg_GetYpos(const BgConfig *bgConfig, GFBgLayer bgId) {
     return bgConfig->bgs[bgId].vOffset;
 }
 
@@ -915,7 +915,7 @@ void BG_ClearCharDataRange(u8 bgId, u32 size, u32 offset, HeapID heapId) {
     FreeToHeapExplicit(heapId, buffer);
 }
 
-void BG_FillCharDataRange(BgConfig *bgConfig, enum GFBgLayer bgId, u32 fillValue, u32 ntiles, u32 offset) {
+void BG_FillCharDataRange(BgConfig *bgConfig, GFBgLayer bgId, u32 fillValue, u32 ntiles, u32 offset) {
     void *buffer;
     u32 size = ntiles * bgConfig->bgs[bgId].tileSize;
     u32 value = fillValue;

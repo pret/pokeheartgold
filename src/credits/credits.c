@@ -17,7 +17,6 @@
 #include "unk_02022588.h"
 #include "unk_02023694.h"
 #include "bg_window.h"
-#include "constants/rgb.h"
 #include "constants/sndseq.h"
 #include "credits/credits.h"
 
@@ -60,10 +59,10 @@ typedef enum {
 } PageDisplayState;
 
 typedef struct {
-    _2DGfxResObj *charResObj;
-    _2DGfxResObj *plttResObj;
-    _2DGfxResObj *cellResObj;
-    _2DGfxResObj *cellAnmResObj;
+    GF_2DGfxResObj *charResObj;
+    GF_2DGfxResObj *plttResObj;
+    GF_2DGfxResObj *cellResObj;
+    GF_2DGfxResObj *cellAnmResObj;
 } CutsceneResources;
 
 typedef struct {
@@ -155,12 +154,12 @@ typedef struct {
     BgConfig *bgConfig;
     u32 timer;
     int musicBoxWaitTimer;
-    CreditsAppArgs *args;
+    CreditsArgs *args;
     BOOL skipCredits;
     SpriteList *spriteList;
     GF_G2dRenderer g2dRender;
-    _2DGfxResMan *_2dGfxResMan[4];
-    _2DGfxResObj *_2dGfxResObj[4];
+    GF_2DGfxResMan *gf2dGfxResMan[4];
+    GF_2DGfxResObj *gf2dGfxResObj[4];
     CutsceneResources cutsceneRsrs[UNIQUE_SPRITES_PER_CUTSCENE];
     SceneWork sceneWork;
     PageWork pageWork;
@@ -207,7 +206,7 @@ static void LoadCutsceneSpriteGfx(CutsceneWork *a0, int a1);
 static void InitCutsceneSprites(CreditsAppWork *work);
 static void FreeCutsceneSprites(CreditsAppWork *work);
 
-BOOL CreditsApp_OvyInit(OVY_MANAGER *man, int *state) {
+BOOL Credits_Init(OVY_MANAGER *man, int *state) {
     CreditsAppWork *work;
 
     switch (*state) {
@@ -265,7 +264,7 @@ BOOL CreditsApp_OvyInit(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL CreditsApp_OvyExit(OVY_MANAGER *man, int *state) {
+BOOL Credits_Exit(OVY_MANAGER *man, int *state) {
     CreditsAppWork *work = OverlayManager_GetData(man);
 
     switch (*state) {
@@ -302,7 +301,7 @@ BOOL CreditsApp_OvyExit(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL CreditsApp_OvyExec(OVY_MANAGER *man, int *state) {
+BOOL Credits_Main(OVY_MANAGER *man, int *state) {
     CreditsAppWork *work = OverlayManager_GetData(man);
     GF_ASSERT(work->timer < 0xffffffff);
 
@@ -482,13 +481,13 @@ static void CreateOamAndObjResMgrs(CreditsAppWork *work) {
     u8 *ptr =  (u8 *)&temp2;
 
     for (u8 i = GF_GFX_RES_TYPE_CHAR; i < GF_GFX_RES_TYPE_ANIM + 1; i++) {
-        work->_2dGfxResMan[i] = Create2DGfxResObjMan(ptr[i], (GfGfxResType)i, HEAP_ID_CREDITS);
+        work->gf2dGfxResMan[i] = Create2DGfxResObjMan(ptr[i], (GfGfxResType)i, HEAP_ID_CREDITS);
     }
 }
 
 static void FreeOamAndObjResMgrs(CreditsAppWork *work) {
     for (u8 i = GF_GFX_RES_TYPE_CHAR; i < GF_GFX_RES_TYPE_ANIM + 1; i++) {
-        Destroy2DGfxResObjMan(work->_2dGfxResMan[i]);
+        Destroy2DGfxResObjMan(work->gf2dGfxResMan[i]);
     }
     SpriteList_Delete(work->spriteList);
     OamManager_Free();
@@ -497,14 +496,14 @@ static void FreeOamAndObjResMgrs(CreditsAppWork *work) {
 }
 
 static void ov76_021E6170(CreditsAppWork *work) {
-    work->_2dGfxResObj[GF_GFX_RES_TYPE_CHAR] =
-        AddCharResObjFromNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], NARC_a_2_6_3, 1, TRUE, 1, NNS_G2D_VRAM_TYPE_BOTH, HEAP_ID_CREDITS);
-    work->_2dGfxResObj[GF_GFX_RES_TYPE_PLTT] =
-        AddPlttResObjFromNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], NARC_a_2_6_3, 0, FALSE, 1, NNS_G2D_VRAM_TYPE_BOTH, 7, HEAP_ID_CREDITS);
-    work->_2dGfxResObj[GF_GFX_RES_TYPE_CELL] =
-        AddCellOrAnimResObjFromNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_CELL], NARC_a_2_6_3, 2, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_CREDITS);
-    work->_2dGfxResObj[GF_GFX_RES_TYPE_ANIM] =
-        AddCellOrAnimResObjFromNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_ANIM], NARC_a_2_6_3, 3, TRUE, 1, GF_GFX_RES_TYPE_ANIM, HEAP_ID_CREDITS);
+    work->gf2dGfxResObj[GF_GFX_RES_TYPE_CHAR] =
+        AddCharResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CHAR], NARC_a_2_6_3, 1, TRUE, 1, NNS_G2D_VRAM_TYPE_BOTH, HEAP_ID_CREDITS);
+    work->gf2dGfxResObj[GF_GFX_RES_TYPE_PLTT] =
+        AddPlttResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_PLTT], NARC_a_2_6_3, 0, FALSE, 1, NNS_G2D_VRAM_TYPE_BOTH, 7, HEAP_ID_CREDITS);
+    work->gf2dGfxResObj[GF_GFX_RES_TYPE_CELL] =
+        AddCellOrAnimResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CELL], NARC_a_2_6_3, 2, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_CREDITS);
+    work->gf2dGfxResObj[GF_GFX_RES_TYPE_ANIM] =
+        AddCellOrAnimResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_ANIM], NARC_a_2_6_3, 3, TRUE, 1, GF_GFX_RES_TYPE_ANIM, HEAP_ID_CREDITS);
     work->cutsceneWork.narc = NARC_New(NARC_a_2_6_3, HEAP_ID_CREDITS);
 
     CutsceneWork *cutsceneWork = &work->cutsceneWork;
@@ -513,13 +512,13 @@ static void ov76_021E6170(CreditsAppWork *work) {
 
     for (u8 i = 0; i < UNIQUE_SPRITES_PER_CUTSCENE; i++) {
         work->cutsceneRsrs[i].charResObj =
-            AddCharResObjFromOpenNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], *narc, 20, TRUE, i + 2, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_CREDITS);
+            AddCharResObjFromOpenNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CHAR], *narc, 20, TRUE, i + 2, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_CREDITS);
         work->cutsceneRsrs[i].plttResObj =
-            AddPlttResObjFromOpenNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], *narc, 149, FALSE, i + 2, NNS_G2D_VRAM_TYPE_2DMAIN, 1, HEAP_ID_CREDITS);
+            AddPlttResObjFromOpenNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_PLTT], *narc, 149, FALSE, i + 2, NNS_G2D_VRAM_TYPE_2DMAIN, 1, HEAP_ID_CREDITS);
     }
 
-    sub_0200ACF0(work->_2dGfxResObj[GF_GFX_RES_TYPE_CHAR]);
-    sub_0200AF94(work->_2dGfxResObj[GF_GFX_RES_TYPE_PLTT]);
+    sub_0200ACF0(work->gf2dGfxResObj[GF_GFX_RES_TYPE_CHAR]);
+    sub_0200AF94(work->gf2dGfxResObj[GF_GFX_RES_TYPE_PLTT]);
 
     for (u8 i = 0; i < UNIQUE_SPRITES_PER_CUTSCENE; i++) {
         sub_0200ACF0(work->cutsceneRsrs[i].charResObj);
@@ -531,8 +530,8 @@ static void ov76_021E6170(CreditsAppWork *work) {
 }
 
 static void ov76_021E62B4(CreditsAppWork *work) {
-    sub_0200AEB0(work->_2dGfxResObj[GF_GFX_RES_TYPE_CHAR]);
-    sub_0200B0A8(work->_2dGfxResObj[GF_GFX_RES_TYPE_PLTT]);
+    sub_0200AEB0(work->gf2dGfxResObj[GF_GFX_RES_TYPE_CHAR]);
+    sub_0200B0A8(work->gf2dGfxResObj[GF_GFX_RES_TYPE_PLTT]);
 
     for (u8 i = 0; i < 6; i++) {
         sub_0200AEB0(work->cutsceneRsrs[i].charResObj);
@@ -607,10 +606,10 @@ static void InitSprites(CreditsAppWork *work) {
 static void InitDancingSpriteResources(int idx, CreditsAppWork *work, int sprtResPriority, NNS_G2D_VRAM_TYPE whichScreen, SpriteTemplate *tmpl, SpriteResourcesHeader *header) {
     CreateSpriteResourcesHeader(
         header, idx, idx, idx, idx, -1, -1, FALSE, sprtResPriority,
-        work->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR],
-        work->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT],
-        work->_2dGfxResMan[GF_GFX_RES_TYPE_CELL],
-        work->_2dGfxResMan[GF_GFX_RES_TYPE_ANIM],
+        work->gf2dGfxResMan[GF_GFX_RES_TYPE_CHAR],
+        work->gf2dGfxResMan[GF_GFX_RES_TYPE_PLTT],
+        work->gf2dGfxResMan[GF_GFX_RES_TYPE_CELL],
+        work->gf2dGfxResMan[GF_GFX_RES_TYPE_ANIM],
         NULL, NULL);
 
     tmpl->spriteList = work->spriteList;
@@ -936,8 +935,8 @@ static void LoadPage(PageWork *ptr) {
 static void LoadCutsceneSpriteResources(CreditsAppWork *work) {
     CutsceneWork *cutsceneWork = &work->cutsceneWork;
     for (u8 i = 0; i < UNIQUE_SPRITES_PER_CUTSCENE; i++) {
-        _2DGfxResObj *charResObj = work->cutsceneRsrs[i].charResObj;
-        _2DGfxResObj *plttResObj = work->cutsceneRsrs[i].plttResObj;
+        GF_2DGfxResObj *charResObj = work->cutsceneRsrs[i].charResObj;
+        GF_2DGfxResObj *plttResObj = work->cutsceneRsrs[i].plttResObj;
         NNSG2dImageProxy *imageProxy = sub_0200AF00(charResObj);
         NNSG2dImagePaletteProxy *plttProxy = sub_0200B0F8(plttResObj, imageProxy);
 

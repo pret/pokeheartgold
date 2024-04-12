@@ -167,7 +167,7 @@
 .public MI_CpuFill8
 .public MI_CpuCopy8
 .public _s32_div_f
-.public _0210159C
+.public gOverlayTemplate_PartyMenu
 .public gSystem
 .public ov55_UnkApp_Init
 .public ov55_UnkApp_Main

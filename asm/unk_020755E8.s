@@ -933,7 +933,7 @@ sub_02075D08: ; 0x02075D08
 	bl sub_020774E0
 	mov r0, #1
 	mov r1, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 _02075D2C:
 	add r4, #0x67
 	ldrb r0, [r4]
@@ -3580,12 +3580,12 @@ _02077390: .word 0x000005E6
 sub_02077394: ; 0x02077394
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _020773A8 ; =_02103A1C
+	ldr r0, _020773A8 ; =gOverlayTemplate_PokemonSummary
 	ldr r1, [r4, #0x3c]
 	ldr r2, [r4, #0x5c]
 	bl OverlayManager_New
 	str r0, [r4, #0x38]
 	pop {r4, pc}
 	nop
-_020773A8: .word _02103A1C
+_020773A8: .word gOverlayTemplate_PokemonSummary
 	thumb_func_end sub_02077394

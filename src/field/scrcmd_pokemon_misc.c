@@ -3,6 +3,7 @@
 #include "bug_contest.h"
 #include "fieldmap.h"
 #include "field_map_object.h"
+#include "launch_application.h"
 #include "friend_group.h"
 #include "gf_gfx_loader.h"
 #include "photo_album.h"
@@ -13,12 +14,12 @@
 #include "overlay_01_021E6880.h"
 #include "overlay_02.h"
 #include "overlay_03.h"
+#include "overlay_58.h"
 #include "unk_02031904.h"
 #include "scrcmd.h"
 #include "unk_0206D494.h"
 #include "unk_02031AF0.h"
 #include "unk_02031B0C.h"
-#include "unk_0203E348.h"
 #include "unk_02031904.h"
 #include "unk_02030A98.h"
 #include "unk_0205BFF0.h"
@@ -29,7 +30,7 @@
 #include "unk_0200FA24.h"
 #include "unk_02005D10.h"
 #include "unk_0202CA24.h"
-#include "field_follow_poke.h"
+#include "follow_mon.h"
 #include "get_egg.h"
 #include "map_section.h"
 #include "map_header.h"
@@ -869,18 +870,18 @@ BOOL ScrCmd_GetTotalApricornCount(ScriptContext *ctx) {
 
 //Related to Kurt- canceling
 BOOL ScrCmd_739(ScriptContext *ctx) { //todo: rename structs and find out stuff
-    struct ApricornBoxWork **unkPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *unkPtr = CreateApricornBoxWork(ctx->fieldSystem, 2);
+    ApricornBoxArgs **args = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    *args = ApricornBox_LaunchApp(ctx->fieldSystem, 2);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
 
 //Related to aprijuice stand- canceling
 BOOL ScrCmd_740(ScriptContext *ctx) {
-    u32 **unkPtrA = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    ApricornBoxArgs **args = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     u32 unkVar = ScriptGetVar(ctx);
     u16 *unkPtrB = ScriptGetVarPointer(ctx);
-    *unkPtrA = sub_0203ED80(ctx->fieldSystem, unkVar, unkPtrB);
+    *args = sub_0203ED80(ctx->fieldSystem, unkVar, unkPtrB);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
@@ -974,8 +975,8 @@ static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectManager, u8 unkA
     u32 spriteId;
     u32  size;
 
-    spriteId = FollowingPokemon_GetSpriteID(species, form, gender) << 1;
-    size = GetFollowPokeSizeParamBySpecies(species)*3 + unkA;
+    spriteId = FollowMon_GetSpriteID(species, form, gender) << 1;
+    size = FollowMon_GetSizeParamBySpecies(species)*3 + unkA;
 
     mapObj = CreateSpecialFieldObjectEx(mapObjectManager, x, y, DIR_SOUTH, size + 0x19f, 0, mapId, 0, 0, spriteId);
 
@@ -1218,9 +1219,9 @@ static u32 SlotLuckiness(SaveData *saveData, u8 machineId, u8 city) {
 BOOL ScrCmd_CasinoGame(ScriptContext *ctx) {
     u8 machineId = ScriptReadByte(ctx);
     u8 city = ScriptReadByte(ctx); //1 = celadon; 0 = goldenrod
-    u32 **unkPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //VoltorbFlipAppData
+    VoltorbFlipArgs **args = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
 
-    *unkPtr = LaunchVoltorbFlipApp(ctx->fieldSystem, SlotLuckiness(ctx->fieldSystem->saveData, machineId, city)); //this is messy, very very messy
+    *args = VoltorbFlip_LaunchApp(ctx->fieldSystem, SlotLuckiness(ctx->fieldSystem->saveData, machineId, city)); //this is messy, very very messy
 
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;

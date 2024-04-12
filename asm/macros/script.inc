@@ -1991,7 +1991,7 @@
 	.short \arg0
 	.endm
 
-	.macro choose_move_ui arg0, arg1, arg2
+	.macro pokemon_summary_screen arg0, arg1, arg2
 	.short 352
 	.byte \arg0
 	.short \arg1
@@ -3399,7 +3399,7 @@
 	.short 600
 	.endm
 
-	.macro follow_poke_face_player
+	.macro follow_mon_face_player
 	.short 601
 	.endm
 
@@ -4022,7 +4022,7 @@
 	.short 710
 	.endm
 
-	.macro follow_poke_interact
+	.macro follow_mon_interact
 	.short 711
 	.endm
 
@@ -4110,7 +4110,7 @@
 	.short 726
 	.endm
 
-	.macro scrcmd_727 arg0
+	.macro get_follow_poke_party_index arg0
 	.short 727
 	.short \arg0
 	.endm
@@ -4259,7 +4259,7 @@
 	.short \arg2
 	.endm
 
-	.macro scrcmd_754 arg0
+	.macro try_headbutt_encounter arg0
 	.short 754
 	.short \arg0
 	.endm
@@ -4391,7 +4391,7 @@
 	.short 782
 	.endm
 
-	.macro set_follow_poke_inhibit_state arg0
+	.macro set_follow_mon_inhibit_state arg0
 	.short 783
 	.byte \arg0
 	.endm

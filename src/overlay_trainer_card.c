@@ -32,7 +32,7 @@ static BOOL isSubprocFinished(OVY_MANAGER **man) {
     return FALSE;
 }
 
-BOOL TrainerCardApp_OvyInit(OVY_MANAGER *man, int *state) {
+BOOL TrainerCard_Init(OVY_MANAGER *man, int *state) {
     void *ptr = OverlayManager_GetArgs(man);
     CreateHeap(HEAP_ID_3, HEAP_ID_TRAINER_CARD, 0x1000);
 
@@ -45,7 +45,7 @@ BOOL TrainerCardApp_OvyInit(OVY_MANAGER *man, int *state) {
     return TRUE;
 }
 
-BOOL TrainerCardApp_OvyExec(OVY_MANAGER *man, int *state) {
+BOOL TrainerCard_Main(OVY_MANAGER *man, int *state) {
     TrainerCardAppState *data = OverlayManager_GetData(man);
     switch (*state) {
     case TRAINERCARD_RUN_INIT:
@@ -67,7 +67,7 @@ BOOL TrainerCardApp_OvyExec(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL TrainerCardApp_OvyExit(OVY_MANAGER *man, int *state) {
+BOOL TrainerCard_Exit(OVY_MANAGER *man, int *state) {
     TrainerCardAppState *data = OverlayManager_GetData(man);
     MI_CpuClear8(data, sizeof(TrainerCardAppState));
     OverlayManager_FreeData(man);
@@ -78,9 +78,9 @@ BOOL TrainerCardApp_OvyExit(OVY_MANAGER *man, int *state) {
 
 static int TCardAppRunStep_Init(TrainerCardAppState *work) {
     static const OVY_MGR_TEMPLATE template = {
-        TrainerCardMainApp_OvyInit,
-        TrainerCardMainApp_OvyExec,
-        TrainerCardMainApp_OvyExit,
+        TrainerCardMainApp_Init,
+        TrainerCardMainApp_Main,
+        TrainerCardMainApp_Exit,
         FS_OVERLAY_ID(trainer_card_main)
     };
 
@@ -100,9 +100,9 @@ static int TCardAppRunStep_Exec(TrainerCardAppState *work) {
 
 static int TCardAppRunStep_SignatureInit(TrainerCardAppState *work) {
     const OVY_MGR_TEMPLATE template = {
-        SignBackOfTrainerCardApp_OvyInit,
-        SignBackOfTrainerCardApp_OvyExec,
-        SignBackOfTrainerCardApp_OvyExit,
+        TrainerCardSignature_Init,
+        TrainerCardSignature_Main,
+        TrainerCardSignature_Exit,
         FS_OVERLAY_ID(trainer_card_signature)
     };
     work->ov_mgr = OverlayManager_New(&template, work->parentData->saveData, work->heapId);

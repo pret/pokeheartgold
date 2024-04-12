@@ -43,7 +43,7 @@ typedef struct BagView {
     u8 unk75;
     u16 unk76_0:1;
     u16 unk76_1:15;
-    u32 unk78;
+    u32 *unk78;
 } BagView; // size: 0x7C
 
 /*
@@ -66,7 +66,7 @@ BagView *BagView_New(u8 heapId);
  */
 u32 BagView_sizeof(void);
 void sub_02077894(BagView *bagView, u8 a1);
-void sub_0207789C(BagView *bagView, SaveData *save, u8 a2, BagCursor *cursor, u32 a4);
+void sub_0207789C(BagView *bagView, SaveData *save, u8 a2, BagCursor *cursor, u32 *a4);
 
 /*
  * void BagView_SetItem(BagView *bagView, ItemSlot *slots, u8 pocketId, u8 position)

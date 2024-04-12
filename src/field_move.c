@@ -3,6 +3,7 @@
 #include "field_map_object.h"
 #include "alph_checks.h"
 #include "field_player_avatar.h"
+#include "launch_application.h"
 #include "unk_0203DB6C.h"
 #include "unk_02054648.h"
 #include "unk_0205CB48.h"
@@ -13,7 +14,6 @@
 #include "unk_0203BC10.h"
 #include "map_header.h"
 #include "sys_flags.h"
-#include "pokegear.h"
 #include "constants/sprites.h"
 #include "constants/std_script.h"
 #include "constants/badge.h"
@@ -247,7 +247,7 @@ static void FieldMoveMenuUse_Fly(struct FieldMoveUseData *useData, const struct 
     struct FlyTaskStruct *flyEnv = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct FlyTaskStruct));
     flyEnv->partySlot = useData->partySlot;
     env->unk_0384 = flyEnv;
-    env->atexit_TaskEnv = TownMap_New(fieldSystem, 0);
+    env->atexit_TaskEnv = PokegearTownMap_LaunchApp(fieldSystem, 0);
     sub_0203C8F0(env, Task_UseFlyInField);
 }
 

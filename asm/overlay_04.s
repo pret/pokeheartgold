@@ -1157,14 +1157,14 @@ _02254744: ; jump table
 	.short _02254C44 - _02254744 - 2 ; case 9
 _02254758:
 	add r0, r5, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	ldr r0, [r5, #0x40]
 	beq _0225479C
 	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	str r0, [sp, #0x28]
 	ldrb r0, [r4, #0x19]
 	cmp r0, #0
@@ -1204,11 +1204,11 @@ _022547BA:
 	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
 	add r0, r5, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _022547FE
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	add r5, r0, #0
 	add r0, r7, #0
 	bl MapObject_AreBitsSetForMovementScriptInit
@@ -1550,7 +1550,7 @@ _02254A22:
 	add r1, sp, #0x68
 	bl MapObject_SetPositionVec
 	add r0, r5, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	bne _02254AA6
 	b _02254C9E
@@ -1576,7 +1576,7 @@ _02254AA6:
 	add r0, r1, r0
 	str r0, [sp, #0x58]
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	add r1, sp, #0x50
 	bl MapObject_SetPositionVec
 	add sp, #0x98
@@ -1604,11 +1604,11 @@ _02254AE0:
 	mov r1, #0x4a
 	bl MapObject_SetHeldMovement
 	add r0, r5, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _02254B52
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	ldr r1, [r4, #0x28]
 	add r7, r0, #0
 	ldrh r1, [r1]
@@ -1702,11 +1702,11 @@ _02254BD4:
 	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
 	add r0, r5, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _02254C22
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	add r5, r0, #0
 	ldrb r0, [r4, #0x19]
 	cmp r0, #0
@@ -1749,11 +1749,11 @@ _02254C44:
 	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
 	add r0, r5, #0
-	bl FollowingPokemon_IsActive
+	bl FollowMon_IsActive
 	cmp r0, #0
 	beq _02254C88
 	add r0, r5, #0
-	bl FollowingPokemon_GetMapObject
+	bl FollowMon_GetMapObject
 	add r4, r0, #0
 	add r0, r7, #0
 	bl MapObject_AreBitsSetForMovementScriptInit

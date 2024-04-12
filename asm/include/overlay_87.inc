@@ -145,6 +145,6 @@
 .public memset
 .public _s32_div_f
 .public _u32_div_f
-.public ov87_021E5900
-.public ov87_021E59B4
-.public ov87_021E5AC0
+.public ScratchOffCards_Init
+.public ScratchOffCards_Main
+.public ScratchOffCards_Exit

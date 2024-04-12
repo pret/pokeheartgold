@@ -46,9 +46,9 @@ typedef struct SpriteRenderer {
 typedef struct SpriteGfxHandler {
     SpriteList* spriteList;
     SpriteResourceHeaderList* spriteHeaderList; // 4
-    struct _2DGfxResHeader* _2dGfxResHeader; // 8
-    struct _2DGfxResMan* _2dGfxResMan[GF_GFX_RES_TYPE_MAX]; // C
-    struct _2DGfxResObjList* _2dGfxResObjList[GF_GFX_RES_TYPE_MAX]; // 24
+    GF_2DGfxResHeader* _2dGfxResHeader; // 8
+    GF_2DGfxResMan* _2dGfxResMan[GF_GFX_RES_TYPE_MAX]; // C
+    GF_2DGfxResObjList* _2dGfxResObjList[GF_GFX_RES_TYPE_MAX]; // 24
     int numGfxResObjects[GF_GFX_RES_TYPE_MAX];
     int numGfxResObjectTypes;
 } SpriteGfxHandler; // size: 0x58

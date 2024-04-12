@@ -245,10 +245,10 @@ _021E5AC2:
 	add r1, sp, #0
 	add r2, sp, #0x18
 	add r3, sp, #0xc
-	bl Draw3dModel
+	bl GF3dRender_DrawModel
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	add r0, r7, #0
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
@@ -305,7 +305,7 @@ _021E5B36:
 	bl Camera_Delete
 	ldr r0, [sp]
 	bl OverlayManager_FreeData
-	bl sub_0201F63C
+	bl GF3dRender_DeleteSimpleManager
 	mov r0, #0x95
 	bl DestroyHeap
 	mov r0, #1
@@ -335,7 +335,7 @@ ov104_021E5B88: ; 0x021E5B88
 	str r0, [r2]
 	bl ov104_021E5CA8
 	mov r0, #0x95
-	bl sub_0201F590
+	bl GF3dRender_InitSimpleManager
 	ldr r2, _021E5BE0 ; =0x04000060
 	ldr r0, _021E5BE4 ; =0xFFFFCFFF
 	ldrh r1, [r2]
@@ -585,7 +585,7 @@ _021E5D76:
 	add r0, r5, #0
 	add r1, #0x54
 	add r2, #0x58
-	bl sub_0201F51C
+	bl GF3dRender_InitObjFromHeader
 	ldr r0, [sp]
 	add r0, r0, r4
 	ldr r0, [r0, #0x5c]

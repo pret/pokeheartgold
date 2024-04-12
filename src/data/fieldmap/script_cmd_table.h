@@ -351,7 +351,7 @@ BOOL ScrCmd_WaitButtonOrDelay(ScriptContext *ctx);
 BOOL ScrCmd_PartySelectUI(ScriptContext *ctx);
 BOOL ScrCmd_350(ScriptContext *ctx);
 BOOL ScrCmd_PartySelect(ScriptContext *ctx);
-BOOL ScrCmd_ChooseMoveUI(ScriptContext *ctx);
+BOOL ScrCmd_PokemonSummaryScreen(ScriptContext *ctx);
 BOOL ScrCmd_GetMoveSelection(ScriptContext *ctx);
 BOOL ScrCmd_GetPartyMonSpecies(ScriptContext *ctx);
 BOOL ScrCmd_PartymonIsMine(ScriptContext *ctx);
@@ -466,8 +466,8 @@ BOOL ScrCmd_EnableMassOutbreaks(ScriptContext *ctx);
 BOOL ScrCmd_CreateRoamer(ScriptContext *ctx);
 BOOL ScrCmd_465(ScriptContext *ctx);
 BOOL ScrCmd_466(ScriptContext *ctx);
-BOOL ScrCmd_MoveRelearnerInit(ScriptContext *ctx);
-BOOL ScrCmd_MoveTutorInit(ScriptContext *ctx);
+BOOL ScrCmd_MoveRelearner(ScriptContext *ctx);
+BOOL ScrCmd_MoveTutor(ScriptContext *ctx);
 BOOL ScrCmd_MoveRelearnerGetResult(ScriptContext *ctx);
 BOOL ScrCmd_LoadNPCTrade(ScriptContext *ctx);
 BOOL ScrCmd_GetOfferedSpecies(ScriptContext *ctx);
@@ -600,7 +600,7 @@ BOOL ScrCmd_597(ScriptContext *ctx);
 BOOL ScrCmd_598(ScriptContext *ctx);
 BOOL ScrCmd_599(ScriptContext *ctx);
 BOOL ScrCmd_600(ScriptContext *ctx);
-BOOL ScrCmd_FollowPokeFacePlayer(ScriptContext *ctx);
+BOOL ScrCmd_FollowMonFacePlayer(ScriptContext *ctx);
 BOOL ScrCmd_ToggleFollowingPokemonMovement(ScriptContext *ctx);
 BOOL ScrCmd_WaitFollowingPokemonMovement(ScriptContext *ctx);
 BOOL ScrCmd_FollowingPokemonMovement(ScriptContext *ctx);
@@ -710,7 +710,7 @@ BOOL ScrCmd_CheckMonSeen(ScriptContext *ctx);
 BOOL ScrCmd_708(ScriptContext *ctx);
 BOOL ScrCmd_709(ScriptContext *ctx);
 BOOL ScrCmd_710(ScriptContext *ctx);
-BOOL ScrCmd_FollowPokeInteract(ScriptContext *ctx);
+BOOL ScrCmd_FollowMonInteract(ScriptContext *ctx);
 BOOL ScrCmd_712(ScriptContext *ctx);
 BOOL ScrCmd_AlphPuzzle(ScriptContext *ctx);
 BOOL ScrCmd_OpenAlphHiddenRoom(ScriptContext *ctx);
@@ -726,7 +726,7 @@ BOOL ScrCmd_723(ScriptContext *ctx);
 BOOL ScrCmd_724(ScriptContext *ctx);
 BOOL ScrCmd_725(ScriptContext *ctx);
 BOOL ScrCmd_726(ScriptContext *ctx);
-BOOL ScrCmd_727(ScriptContext *ctx);
+BOOL ScrCmd_GetFollowPokePartyIndex(ScriptContext *ctx);
 BOOL ScrCmd_728(ScriptContext *ctx);
 BOOL ScrCmd_729(ScriptContext *ctx);
 BOOL ScrCmd_730(ScriptContext *ctx);
@@ -753,7 +753,7 @@ BOOL ScrCmd_MenuInit(ScriptContext *ctx);
 BOOL ScrCmd_MenuItemAdd(ScriptContext *ctx);
 BOOL ScrCmd_MenuExec(ScriptContext *ctx);
 BOOL ScrCmd_RockSmashItemCheck(ScriptContext *ctx);
-BOOL ScrCmd_754(ScriptContext *ctx);
+BOOL ScrCmd_TryHeadbuttEncounter(ScriptContext *ctx);
 BOOL ScrCmd_755(ScriptContext *ctx);
 BOOL ScrCmd_756(ScriptContext *ctx);
 BOOL ScrCmd_757(ScriptContext *ctx);
@@ -782,7 +782,7 @@ BOOL ScrCmd_RadioMusicIsPlaying(ScriptContext *ctx);
 BOOL ScrCmd_CasinoGame(ScriptContext *ctx);
 BOOL ScrCmd_KenyaCheckPartyOrMailbox(ScriptContext *ctx);
 BOOL ScrCmd_MartSell(ScriptContext *ctx);
-BOOL ScrCmd_SetFollowPokeInhibitState(ScriptContext *ctx);
+BOOL ScrCmd_SetFollowMonInhibitState(ScriptContext *ctx);
 BOOL ScrCmd_ScriptOverlayCmd(ScriptContext *ctx);
 BOOL ScrCmd_BugContestAction(ScriptContext *ctx);
 BOOL ScrCmd_BufferBugContestWinner(ScriptContext *ctx);
@@ -1206,7 +1206,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_PartySelectUI,
     ScrCmd_350,
     ScrCmd_PartySelect,
-    ScrCmd_ChooseMoveUI,
+    ScrCmd_PokemonSummaryScreen,
     ScrCmd_GetMoveSelection,
     ScrCmd_GetPartyMonSpecies,
     ScrCmd_PartymonIsMine,
@@ -1321,8 +1321,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_CreateRoamer,
     ScrCmd_465,
     ScrCmd_466,
-    ScrCmd_MoveRelearnerInit,
-    ScrCmd_MoveTutorInit,
+    ScrCmd_MoveRelearner,
+    ScrCmd_MoveTutor,
     ScrCmd_MoveRelearnerGetResult,
     ScrCmd_LoadNPCTrade,
     ScrCmd_GetOfferedSpecies,
@@ -1455,7 +1455,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_598,
     ScrCmd_599,
     ScrCmd_600,
-    ScrCmd_FollowPokeFacePlayer,
+    ScrCmd_FollowMonFacePlayer,
     ScrCmd_ToggleFollowingPokemonMovement,
     ScrCmd_WaitFollowingPokemonMovement,
     ScrCmd_FollowingPokemonMovement,
@@ -1565,7 +1565,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_708,
     ScrCmd_709,
     ScrCmd_710,
-    ScrCmd_FollowPokeInteract,
+    ScrCmd_FollowMonInteract,
     ScrCmd_712,
     ScrCmd_AlphPuzzle,
     ScrCmd_OpenAlphHiddenRoom,
@@ -1581,7 +1581,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_724,
     ScrCmd_725,
     ScrCmd_726,
-    ScrCmd_727,
+    ScrCmd_GetFollowPokePartyIndex,
     ScrCmd_728,
     ScrCmd_729,
     ScrCmd_730,
@@ -1608,7 +1608,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_MenuItemAdd,
     ScrCmd_MenuExec,
     ScrCmd_RockSmashItemCheck,
-    ScrCmd_754,
+    ScrCmd_TryHeadbuttEncounter,
     ScrCmd_755,
     ScrCmd_756,
     ScrCmd_757,
@@ -1637,7 +1637,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_CasinoGame,
     ScrCmd_KenyaCheckPartyOrMailbox,
     ScrCmd_MartSell,
-    ScrCmd_SetFollowPokeInhibitState,
+    ScrCmd_SetFollowMonInhibitState,
     ScrCmd_ScriptOverlayCmd,
     ScrCmd_BugContestAction,
     ScrCmd_BufferBugContestWinner,

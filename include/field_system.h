@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_FIELD_SYSTEM_H
 #define POKEHEARTGOLD_FIELD_SYSTEM_H
 
+#include "bag_cursor.h"
 #include "bug_contest_internal.h"
 #include "gear_phone.h"
 #include "map_events_internal.h"
@@ -71,12 +72,12 @@ typedef struct Location {
     int direction;
 } Location;
 
-struct FieldSystemUnk108 {
+typedef struct FieldSystemUnk108 {
     u32 personality;
     u16 species;
     u16 isRegistered;
     Pokemon *mon;
-};
+} FieldSystemUnk108;
 
 struct FieldSystemUnkSub0 {
     OVY_MANAGER *unk0;
@@ -143,7 +144,7 @@ struct FieldSystem {
     struct UnkStruct_02059E1C *unk80;
     struct UnkStruct_0205AC88 *unk84;
     u8 filler_88[0xC];
-    void *unk94;
+    BagCursor *bagCursor;
     u8 filler_98[0x4];
     void *unk9C;
     UnkStruct_Fsys_A0 *unkA0;
@@ -161,7 +162,7 @@ struct FieldSystem {
     u8 filler_D3[0x11];
     FollowMon followMon; // A4
     u8 unk104[4];
-    struct FieldSystemUnk108 *unk108;
+    FieldSystemUnk108 *unk108;
     u32 unk_10C;
     u8 unk_110;
     u8 unk_111[3];

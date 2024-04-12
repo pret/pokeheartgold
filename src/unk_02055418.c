@@ -18,7 +18,7 @@
 #include "unk_0206D494.h"
 #include "overlay_01.h"
 #include "apricorn_tree.h"
-#include "unk_0201F4C4.h"
+#include "gf_3d_render.h"
 #include "field_map_object.h"
 
 void FieldSystem_StartBugContestTimer(FieldSystem* fieldSystem) {
@@ -157,7 +157,7 @@ void sub_020556C8(FieldSystem *fieldSystem, UnkStruct_020556FC *unkPtrB) {
     void* unkB = fieldSystem->unk_44;
     unkPtrB->unk5c = AllocFromHeap(unkPtrB->heapID, ov01_021F149C(unkB, 31));
     ov01_021F14A8(unkB, 31, unkPtrB->unk5c);
-    sub_0201F51C(&unkPtrB->unk4, &unkPtrB->unk58, &unkPtrB->unk5c);
+    GF3dRender_InitObjFromHeader(&unkPtrB->unk4, &unkPtrB->unk58, &unkPtrB->unk5c);
 }
 
 void sub_020556FC(struct UnkStruct_020556FC *unkPtr) {

@@ -1,3 +1,5 @@
 ppark.narc
+headbutt.*.narc
 *.o
 *.c
+*.s

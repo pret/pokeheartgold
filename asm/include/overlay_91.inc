@@ -157,7 +157,7 @@
 .public String_Delete
 .public String16_FormatInteger
 .public Thunk_G3X_Reset
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
 .public PlayerName_FlatToString

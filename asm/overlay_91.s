@@ -6732,7 +6732,7 @@ ov91_0225F7A8: ; 0x0225F7A8
 	bl NNS_G3dGeBufferOP_N
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	ldr r0, [r4, #0x1c]
 	bl sub_0202457C
 	add sp, #0xc

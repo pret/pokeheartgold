@@ -19,6 +19,10 @@ static inline NNSGfdPlttKey NNS_GfdAllocPlttVram(u32 szByte, BOOL is4pltt, u32 o
     return (*NNS_GfdDefaultFuncAllocPlttVram)(szByte, is4pltt, opt);
 }
 
+static inline int NNS_GfdFreePlttVram(NNSGfdPlttKey plttKey) {
+    return (*NNS_GfdDefaultFuncFreePlttVram)(plttKey);
+}
+
 static inline u32 NNS_GfdGetPlttKeyAddr(NNSGfdPlttKey plttKey) {
     return (u32)((0x0000FFFF & plttKey) << NNS_GFD_PLTTKEY_ADDR_SHIFT);
 }

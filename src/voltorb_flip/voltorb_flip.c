@@ -1657,7 +1657,7 @@ static void ov122_021E7928(VoltorbFlipAppWork *work) {
     for (int i = 0; i < 6; i++) {
         InitBgFromTemplate(work->bgConfig, ov122_021E9270[i], &temp2.unk0[i], 0);
         BgClearTilemapBufferAndCommit(work->bgConfig, ov122_021E9270[i]);
-        BG_FillCharDataRange(work->bgConfig, (enum GFBgLayer)ov122_021E9270[i], 0, 1, 0);
+        BG_FillCharDataRange(work->bgConfig, (GFBgLayer)ov122_021E9270[i], 0, 1, 0);
         ToggleBgLayer(ov122_021E9270[i], GF_PLANE_TOGGLE_ON);
     }
 }
@@ -1954,7 +1954,7 @@ static void ov122_021E8068(void) {
 }
 
 static void ov122_021E8094(OVY_MANAGER *man) {
-    VoltorbFlipAppArgs *args = OverlayManager_GetArgs(man);
+    VoltorbFlipArgs *args = OverlayManager_GetArgs(man);
     GF_ASSERT(args != NULL);
 
     Main_SetVBlankIntrCB(NULL, NULL);
@@ -2031,7 +2031,7 @@ static void FreeOverlayData(OVY_MANAGER *man) {
     DestroyHeap(HEAP_ID_VOLTORB_FLIP);
 }
 
-BOOL VoltorbFlipApp_OvyInit(OVY_MANAGER *man, int *state) {
+BOOL VoltorbFlip_Init(OVY_MANAGER *man, int *state) {
     switch (*state) {
     case 0:
         ov122_021E8094(man);
@@ -2055,7 +2055,7 @@ BOOL VoltorbFlipApp_OvyInit(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL VoltorbFlipApp_OvyExit(OVY_MANAGER *man, int *state) {
+BOOL VoltorbFlip_Exit(OVY_MANAGER *man, int *state) {
     VoltorbFlipAppWork *work = OverlayManager_GetData(man);
     switch (*state) {
     case 0:
@@ -2075,7 +2075,7 @@ BOOL VoltorbFlipApp_OvyExit(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL VoltorbFlipApp_OvyExec(OVY_MANAGER *man, int *state) {
+BOOL VoltorbFlip_Main(OVY_MANAGER *man, int *state) {
     VoltorbFlipAppWork *work = OverlayManager_GetData(man);
     if (RunWorkflowEngine(work->workflow)) {
         return TRUE;

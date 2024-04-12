@@ -536,7 +536,7 @@ _02238B04:
 	bl ov80_02239A38
 	mov r0, #1
 	mov r1, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov80_02238AC8

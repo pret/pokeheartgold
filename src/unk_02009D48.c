@@ -7,13 +7,13 @@
 #include "unk_020215A0.h"
 #include "unk_02022588.h"
 
-void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, int plttId, int cellId, int cellAnmId, int multiCellId, int multiCellAnmId, int transfer, int priority, struct _2DGfxResMan *charMan, struct _2DGfxResMan *plttMan, struct _2DGfxResMan *cellMan, struct _2DGfxResMan *cellAnmMan, struct _2DGfxResMan *multiCellMan, struct _2DGfxResMan *multiCellAnmMan) {
-    struct _2DGfxResObj *charObj;
-    struct _2DGfxResObj *plttObj;
-    struct _2DGfxResObj *cellObj;
-    struct _2DGfxResObj *cellAnmObj = NULL;
-    struct _2DGfxResObj *multiCellObj = NULL;
-    struct _2DGfxResObj *multiCellAnmObj = NULL;
+void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, int plttId, int cellId, int cellAnmId, int multiCellId, int multiCellAnmId, int transfer, int priority, GF_2DGfxResMan *charMan, GF_2DGfxResMan *plttMan, GF_2DGfxResMan *cellMan, GF_2DGfxResMan *cellAnmMan, GF_2DGfxResMan *multiCellMan, GF_2DGfxResMan *multiCellAnmMan) {
+    GF_2DGfxResObj *charObj;
+    GF_2DGfxResObj *plttObj;
+    GF_2DGfxResObj *cellObj;
+    GF_2DGfxResObj *cellAnmObj = NULL;
+    GF_2DGfxResObj *multiCellObj = NULL;
+    GF_2DGfxResObj *multiCellAnmObj = NULL;
     NNSG2dImageProxy *proxy;
 
     GF_ASSERT(charMan != NULL);
@@ -46,7 +46,7 @@ void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, 
     if (transfer) {
         proxy = sub_0200AF24(charObj, cellObj);
         GF_ASSERT(proxy != NULL);
-        hdr->charData = _2DGfxResObj_GetCharDataPtr(charObj);
+        hdr->charData = GF2DGfxResObj_GetCharDataPtr(charObj);
     } else {
         proxy = sub_0200AF00(charObj);
         GF_ASSERT(proxy != NULL);
@@ -54,15 +54,15 @@ void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, 
     }
     hdr->plttProxy = sub_0200B0F8(plttObj, proxy);
     hdr->imageProxy = proxy;
-    hdr->cellData = _2DGfxResObj_GetCellDataPtr(cellObj);
+    hdr->cellData = GF2DGfxResObj_GetCellDataPtr(cellObj);
     if (cellAnmObj != NULL) {
-        hdr->cellAnim = _2DGfxResObj_GetAnimDataPtr(cellAnmObj);
+        hdr->cellAnim = GF2DGfxResObj_GetAnimDataPtr(cellAnmObj);
     } else {
         hdr->cellAnim = NULL;
     }
     if (multiCellObj != NULL) {
-        hdr->multiCellData = _2DGfxResObj_GetMultiCellDataPtr(multiCellObj);
-        hdr->multiCellAnim = _2DGfxResObj_GetMultiAnimDataPtr(multiCellAnmObj);
+        hdr->multiCellData = GF2DGfxResObj_GetMultiCellDataPtr(multiCellObj);
+        hdr->multiCellAnim = GF2DGfxResObj_GetMultiAnimDataPtr(multiCellAnmObj);
     } else {
         hdr->multiCellData = NULL;
         hdr->multiCellAnim = NULL;
@@ -71,7 +71,7 @@ void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, 
     hdr->priority = priority;
 }
 
-SpriteResourceHeaderList *SpriteResourceHeaderList_Create(const struct ResdatNarcEntry *resdatNarcEntry, HeapID heapId, struct _2DGfxResMan *charMan, struct _2DGfxResMan *plttMan, struct _2DGfxResMan *cellMan, struct _2DGfxResMan *animMan, struct _2DGfxResMan *mcelMan, struct _2DGfxResMan *manmMan) {
+SpriteResourceHeaderList *SpriteResourceHeaderList_Create(const struct ResdatNarcEntry *resdatNarcEntry, HeapID heapId, GF_2DGfxResMan *charMan, GF_2DGfxResMan *plttMan, GF_2DGfxResMan *cellMan, GF_2DGfxResMan *animMan, GF_2DGfxResMan *mcelMan, GF_2DGfxResMan *manmMan) {
     int i;
     int num = 0;
     SpriteResourceHeaderList *ret;

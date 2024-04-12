@@ -33,7 +33,7 @@
 .public Photo_Init
 .public sub_0203E33C
 .public FieldSystem_GetSaveData
-.public sub_0203EBA4
+.public PhotoAlbum_LaunchApp
 .public TaskManager_Call
 .public FieldSystem_ApplicationIsRunning
 .public TaskManager_GetFieldSystem
@@ -80,11 +80,11 @@
 .public MapObject_SetFacingVec
 .public sub_0205FBC0
 .public sub_02067A80
-.public FollowingPokemon_GetMapObject
-.public FollowingPokemon_GetSpriteID
+.public FollowMon_GetMapObject
+.public FollowMon_GetSpriteID
 .public sub_02069DC8
-.public FollowPokeMapObjectSetParams
-.public FollowingPokemon_IsActive
+.public FollowMon_SetObjectParams
+.public FollowMon_IsActive
 .public FieldSystem_TakePhoto
 .public sub_0206A860
 .public sub_0206A8C0

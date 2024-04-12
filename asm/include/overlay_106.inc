@@ -59,10 +59,10 @@
 .public BG_SetMaskColor
 .public BgClearTilemapBufferAndCommit
 .public DoScheduledBgGpuUpdates
-.public sub_0201F51C
-.public Draw3dModel
-.public sub_0201F590
-.public sub_0201F63C
+.public GF3dRender_InitObjFromHeader
+.public GF3dRender_DrawModel
+.public GF3dRender_InitSimpleManager
+.public GF3dRender_DeleteSimpleManager
 .public SysTask_GetData
 .public GfGfx_SetBanks
 .public GfGfx_EngineATogglePlanes
@@ -78,7 +78,7 @@
 .public sub_02024B34
 .public GF_AssertFail
 .public Thunk_G3X_Reset
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public SpeciesToOverworldModelIndexOffset
 .public OverworldModelLookupFormCount
 .public OverworldModelLookupHasFemaleForm

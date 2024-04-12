@@ -4,8 +4,8 @@
 
 	.text
 
-	thumb_func_start ov108_021E5900
-ov108_021E5900: ; 0x021E5900
+	thumb_func_start SafariAreaCustomizer_Init
+SafariAreaCustomizer_Init: ; 0x021E5900
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl OverlayManager_GetArgs
@@ -36,10 +36,10 @@ ov108_021E5900: ; 0x021E5900
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E5944: .word 0x000184EC
-	thumb_func_end ov108_021E5900
+	thumb_func_end SafariAreaCustomizer_Init
 
-	thumb_func_start ov108_021E5948
-ov108_021E5948: ; 0x021E5948
+	thumb_func_start SafariAreaCustomizer_Exit
+SafariAreaCustomizer_Exit: ; 0x021E5948
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -58,10 +58,10 @@ ov108_021E5948: ; 0x021E5948
 	pop {r4, r5, r6, pc}
 	nop
 _021E5974: .word 0x000184EC
-	thumb_func_end ov108_021E5948
+	thumb_func_end SafariAreaCustomizer_Exit
 
-	thumb_func_start ov108_021E5978
-ov108_021E5978: ; 0x021E5978
+	thumb_func_start SafariAreaCustomizer_Main
+SafariAreaCustomizer_Main: ; 0x021E5978
 	push {r4, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -118,7 +118,7 @@ _021E59DE:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov108_021E5978
+	thumb_func_end SafariAreaCustomizer_Main
 
 	thumb_func_start ov108_021E59E4
 ov108_021E59E4: ; 0x021E59E4
@@ -5961,8 +5961,8 @@ _021E8844:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov108_021E8758
 
-	thumb_func_start ov108_021E8850
-ov108_021E8850: ; 0x021E8850
+	thumb_func_start SafariDecoration_Init
+SafariDecoration_Init: ; 0x021E8850
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	ldr r1, [r5]
@@ -6015,10 +6015,10 @@ _021E88B0:
 _021E88C0:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov108_021E8850
+	thumb_func_end SafariDecoration_Init
 
-	thumb_func_start ov108_021E88C4
-ov108_021E88C4: ; 0x021E88C4
+	thumb_func_start SafariDecoration_Exit
+SafariDecoration_Exit: ; 0x021E88C4
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	bl OverlayManager_GetData
@@ -6045,10 +6045,10 @@ _021E88DA:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov108_021E88C4
+	thumb_func_end SafariDecoration_Exit
 
-	thumb_func_start ov108_021E8904
-ov108_021E8904: ; 0x021E8904
+	thumb_func_start SafariDecoration_Main
+SafariDecoration_Main: ; 0x021E8904
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -6099,7 +6099,7 @@ _021E894E:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov108_021E8904
+	thumb_func_end SafariDecoration_Main
 
 	thumb_func_start ov108_021E8968
 ov108_021E8968: ; 0x021E8968
@@ -6853,10 +6853,10 @@ _021E8F4E:
 	str r0, [r5, #0xc]
 	cmp r0, #0
 	beq _021E8F68
-	bl AllocAndLoad3dTexResources
+	bl GF3dRender_AllocAndLoadTexResources
 	ldr r0, [r5]
 	ldr r1, [r5, #0xc]
-	bl Bind3dModelSet
+	bl GF3dRender_BindModelSet
 _021E8F68:
 	add r0, r5, #0
 	ldr r1, [r5, #8]
@@ -7122,7 +7122,7 @@ _021E916C:
 	add r1, sp, #0xc
 	add r2, sp, #0x18
 	add r3, sp, #0
-	bl Draw3dModel
+	bl GF3dRender_DrawModel
 	add sp, #0x3c
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0

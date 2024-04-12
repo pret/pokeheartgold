@@ -155,7 +155,7 @@ _02097126:
 	bl sub_020398D4
 	ldr r0, [r4, #0x28]
 	ldr r1, [r4, #4]
-	bl sub_0203E740
+	bl PartyMenu_LaunchApp_Unk5
 	str r0, [r4, #0x2c]
 	ldr r0, [r4, #0x24]
 	mov r1, #1
@@ -189,14 +189,14 @@ sub_02097148: ; 0x02097148
 	ldr r0, [r5, #0x28]
 	mov r1, #3
 	mov r2, #0
-	bl sub_0203E76C
+	bl PokemonSummary_CreateArgs
 	str r0, [r5, #0x30]
 	str r4, [r5, #4]
 	ldr r0, [r5, #0x30]
 	strb r4, [r0, #0x14]
 	ldr r0, [r5, #0x28]
 	ldr r1, [r5, #0x30]
-	bl sub_0203E4EC
+	bl PokemonSummary_LearnForget_LaunchApp
 	mov r0, #3
 	str r0, [r5]
 	b _020971A4
@@ -231,7 +231,7 @@ sub_020971AC: ; 0x020971AC
 	bl FreeToHeap
 	ldr r0, [r4, #0x28]
 	ldr r1, [r4, #4]
-	bl sub_0203E740
+	bl PartyMenu_LaunchApp_Unk5
 	str r0, [r4, #0x2c]
 	mov r0, #2
 	str r0, [r4]

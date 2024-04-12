@@ -39,7 +39,7 @@
 .public String_New
 .public String_Delete
 .public Thunk_G3X_Reset
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetTrainerGender
 .public NNS_G2dGetImagePaletteLocation

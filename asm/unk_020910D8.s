@@ -12,8 +12,8 @@
 
 	.text
 
-	thumb_func_start sub_020910D8
-sub_020910D8: ; 0x020910D8
+	thumb_func_start Task_HatchEggInParty
+Task_HatchEggInParty: ; 0x020910D8
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r0, #0
@@ -122,7 +122,7 @@ _0209119A:
 	mov r1, #1
 	add r2, r7, #0
 	mov r3, #0xa
-	bl sub_020830D8
+	bl NamingScreen_CreateArgs
 	str r0, [r4, #8]
 	ldr r0, [r4, #0xc]
 	mov r1, #MON_DATA_GENDER
@@ -179,10 +179,10 @@ _02091232:
 	.balign 4, 0
 _02091238: .word _02106048
 _0209123C: .word _02102610
-	thumb_func_end sub_020910D8
+	thumb_func_end Task_HatchEggInParty
 
-	thumb_func_start sub_02091240
-sub_02091240: ; 0x02091240
+	thumb_func_start CallTask_HatchEggInParty
+CallTask_HatchEggInParty: ; 0x02091240
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -204,13 +204,13 @@ _02091256:
 	stmia r3!, {r0, r1}
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
-	ldr r1, _02091274 ; =sub_020910D8
+	ldr r1, _02091274 ; =Task_HatchEggInParty
 	add r0, r5, #0
 	bl TaskManager_Call
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02091274: .word sub_020910D8
-	thumb_func_end sub_02091240
+_02091274: .word Task_HatchEggInParty
+	thumb_func_end CallTask_HatchEggInParty
 
 	.rodata
 

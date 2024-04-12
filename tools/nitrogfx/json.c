@@ -1,4 +1,4 @@
-// Copyright (c) 2021-2023 red031000
+// Copyright (c) 2021-2024 red031000
 
 #include "global.h"
 #include "cJSON.h"
@@ -439,15 +439,13 @@ struct JsonToAnimationOptions *ParseNANRJson(char *path)
         cJSON *resultType = cJSON_GetObjectItemCaseSensitive(animationResult, "resultType");
         options->animationResults[i]->resultType = GetInt(resultType);
         switch (options->animationResults[i]->resultType) {
-            case 0:
-            { //index
+            case 0: { //index
                 cJSON *index = cJSON_GetObjectItemCaseSensitive(animationResult, "index");
                 options->animationResults[i]->index = GetInt(index);
                 break;
             }
 
-            case 1:
-            { //SRT
+            case 1: { //SRT
                 cJSON *index = cJSON_GetObjectItemCaseSensitive(animationResult, "index");
                 cJSON *rotation = cJSON_GetObjectItemCaseSensitive(animationResult, "rotation");
                 cJSON *scaleX = cJSON_GetObjectItemCaseSensitive(animationResult, "scaleX");
@@ -464,8 +462,7 @@ struct JsonToAnimationOptions *ParseNANRJson(char *path)
                 break;
             }
 
-            case 2:
-            { //T
+            case 2: { //T
                 cJSON *index = cJSON_GetObjectItemCaseSensitive(animationResult, "index");
                 //cJSON *rotation = cJSON_GetObjectItemCaseSensitive(animationResult, "rotation");
                 cJSON *positionX = cJSON_GetObjectItemCaseSensitive(animationResult, "positionX");

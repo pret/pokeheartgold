@@ -116,6 +116,6 @@
 .public DC_FlushRange
 .public MI_CpuFill8
 .public gSystem
-.public ov64_021E5900
-.public ov64_021E59C8
-.public ov64_021E5A18
+.public HallOfFameShowcase_Init
+.public HallOfFameShowcase_Exit
+.public HallOfFameShowcase_Main

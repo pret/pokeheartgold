@@ -160,7 +160,7 @@ _0241:
 	wait_fade
 	closemsg
 	scrcmd_117
-	choose_move_ui 1, VAR_SPECIAL_x8001, VAR_SPECIAL_x8003
+	pokemon_summary_screen 1, VAR_SPECIAL_x8001, VAR_SPECIAL_x8003
 	get_move_selection 1, VAR_SPECIAL_x8006
 	nop_var_490 VAR_SPECIAL_x8006
 	scrcmd_150

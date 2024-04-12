@@ -25,8 +25,8 @@
 .public BG_ClearCharDataRange
 .public BgClearTilemapBufferAndCommit
 .public DoScheduledBgGpuUpdates
-.public sub_0201F590
-.public sub_0201F63C
+.public GF3dRender_InitSimpleManager
+.public GF3dRender_DeleteSimpleManager
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks
@@ -48,7 +48,7 @@
 .public sub_02023910
 .public GF_AssertFail
 .public Thunk_G3X_Reset
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public Save_GetGymmickPtr
 .public Save_Gymmick_GetType
 .public MapMatrix_GetMapHeader

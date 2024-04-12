@@ -121,7 +121,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public GetMainBgPlttAddr
 .public sub_02026E8C
 .public GetSubBgPlttAddr
@@ -168,6 +168,6 @@
 .public MIi_CpuClear16
 .public MIi_CpuClear32
 .public MIi_CpuClearFast
-.public _02103A1C
+.public gOverlayTemplate_PokemonSummary
 .public gSystem
 .public OS_IRQTable
