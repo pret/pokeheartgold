@@ -590,16 +590,16 @@ ov28_0225D9BC: ; 0x0225D9BC
 	add r4, r1, #0
 	add r7, r2, #0
 	add r6, r3, #0
-	bl sub_0200A7FC
+	bl GF2DGfxResObj_GetResID
 	str r0, [sp, #0x2c]
 	ldr r0, [r5, #4]
-	bl sub_0200A7FC
+	bl GF2DGfxResObj_GetResID
 	str r0, [sp, #0x30]
 	ldr r0, [r5, #8]
-	bl sub_0200A7FC
+	bl GF2DGfxResObj_GetResID
 	str r0, [sp, #0x34]
 	ldr r0, [r5, #0xc]
-	bl sub_0200A7FC
+	bl GF2DGfxResObj_GetResID
 	str r0, [sp]
 	mov r0, #0
 	mvn r0, r0

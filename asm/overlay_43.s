@@ -1003,7 +1003,7 @@ ov43_0222A690: ; 0x0222A690
 	add r0, r2, #0
 	add r2, r1, #0
 	str r7, [sp, #0x38]
-	bl sub_020215C0
+	bl ObjCharTransfer_InitEx
 	mov r0, #0x40
 	add r1, r7, #0
 	bl sub_02022588
@@ -1193,7 +1193,7 @@ _0222A856:
 	blt _0222A856
 	ldr r0, [r7, #4]
 	bl SpriteList_Delete
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	bl OamManager_Free
 	bl GF_DestroyVramTransferManager

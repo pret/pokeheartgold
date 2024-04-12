@@ -13,6 +13,15 @@
 
 #define PARTY_SIZE 6
 
+// alias
+#ifndef PM_ASM
+// NNS_G2D_VRAM_TYPE_3DMAIN
+#define NNS_G2D_VRAM_TYPE_NEITHER   ((NNS_G2D_VRAM_TYPE)0)
+// NNS_G2D_VRAM_TYPE_MAX
+#define NNS_G2D_VRAM_TYPE_BOTH      ((NNS_G2D_VRAM_TYPE)(NNS_G2D_VRAM_TYPE_2DMAIN|NNS_G2D_VRAM_TYPE_2DSUB))
+#endif //PM_ASM
+
+// move this to msl header?
 #define S16_MAX                 32767
 #define U32_MAX                 4294967292
 

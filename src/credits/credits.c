@@ -466,10 +466,10 @@ static void CreateOamAndObjResMgrs(CreditsAppWork *work) {
     UnkStruct_020215A0 temp;
     UnkOv021E60F6 temp2;
 
-    reg_GX_DISPCNT = (reg_GX_DISPCNT & 0xffcfffef) | 0x00200010;
-    reg_GXS_DB_DISPCNT = (reg_GXS_DB_DISPCNT & 0xffcfffef) | 0x00200010;
+    GX_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_128K);
+    GXS_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_128K);
     temp = ov76_021E6EA0;
-    sub_020215A0(&temp);
+    ObjCharTransfer_Init(&temp);
     sub_02022588(0xd, HEAP_ID_CREDITS);
     sub_020216C8();
     sub_02022638();
@@ -491,15 +491,15 @@ static void FreeOamAndObjResMgrs(CreditsAppWork *work) {
     }
     SpriteList_Delete(work->spriteList);
     OamManager_Free();
-    sub_0202168C();
+    ObjCharTransfer_Destroy();
     sub_02022608();
 }
 
 static void ov76_021E6170(CreditsAppWork *work) {
     work->gf2dGfxResObj[GF_GFX_RES_TYPE_CHAR] =
-        AddCharResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CHAR], NARC_a_2_6_3, 1, TRUE, 1, 3, HEAP_ID_CREDITS);
+        AddCharResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CHAR], NARC_a_2_6_3, 1, TRUE, 1, NNS_G2D_VRAM_TYPE_BOTH, HEAP_ID_CREDITS);
     work->gf2dGfxResObj[GF_GFX_RES_TYPE_PLTT] =
-        AddPlttResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_PLTT], NARC_a_2_6_3, 0, FALSE, 1, 3, 7, HEAP_ID_CREDITS);
+        AddPlttResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_PLTT], NARC_a_2_6_3, 0, FALSE, 1, NNS_G2D_VRAM_TYPE_BOTH, 7, HEAP_ID_CREDITS);
     work->gf2dGfxResObj[GF_GFX_RES_TYPE_CELL] =
         AddCellOrAnimResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CELL], NARC_a_2_6_3, 2, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_CREDITS);
     work->gf2dGfxResObj[GF_GFX_RES_TYPE_ANIM] =
@@ -512,9 +512,9 @@ static void ov76_021E6170(CreditsAppWork *work) {
 
     for (u8 i = 0; i < UNIQUE_SPRITES_PER_CUTSCENE; i++) {
         work->cutsceneRsrs[i].charResObj =
-            AddCharResObjFromOpenNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CHAR], *narc, 20, TRUE, i + 2, 1, HEAP_ID_CREDITS);
+            AddCharResObjFromOpenNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CHAR], *narc, 20, TRUE, i + 2, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_CREDITS);
         work->cutsceneRsrs[i].plttResObj =
-            AddPlttResObjFromOpenNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_PLTT], *narc, 149, FALSE, i + 2, 1, 1, HEAP_ID_CREDITS);
+            AddPlttResObjFromOpenNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_PLTT], *narc, 149, FALSE, i + 2, NNS_G2D_VRAM_TYPE_2DMAIN, 1, HEAP_ID_CREDITS);
     }
 
     sub_0200ACF0(work->gf2dGfxResObj[GF_GFX_RES_TYPE_CHAR]);
@@ -546,7 +546,7 @@ static void InitSprites(CreditsAppWork *work) {
     u8 yIdx;
 
     SceneWork *ptr = &work->sceneWork;
-    InitDancingSpriteResources(1, work, 1, NNS_G2D_VRAM_TYPE_MAX, &tmpl, &header);
+    InitDancingSpriteResources(1, work, 1, NNS_G2D_VRAM_TYPE_BOTH, &tmpl, &header);
 
     // Dancing Pokémon that start on top screen
     for (u8 i = 0; i < MONS_PER_SCREEN; i++) {
@@ -847,16 +847,11 @@ static void DisplayWindow(CreditsAppWork *work) {
 }
 
 static void ov76_021E6944(PageDisplayWork *pageDisplay, BgConfig *bgConfig, BOOL hidden) {
-    u32 val;
-
     GF_ASSERT(pageDisplay->rendering == FALSE);
     GXS_SetVisibleWnd(3);
-    val = ((reg_G2S_DB_WININ & ~0x3f) | 0x1e);
-    reg_G2S_DB_WININ = val | 0x20;
-    val = ((reg_G2S_DB_WININ & 0xffffc0ff) | 0x1e00);
-    reg_G2S_DB_WININ = val | 0x2000;
-    val = ((reg_G2S_DB_WINOUT & ~0x3f) | 0x1c);
-    reg_G2S_DB_WINOUT = val | 0x20;
+    G2S_SetWnd0InsidePlane(30, TRUE);
+    G2S_SetWnd1InsidePlane(30, TRUE);
+    G2S_SetWndOutsidePlane(28, TRUE);
     pageDisplay->unk0 = 0;
     pageDisplay->rendering = TRUE;
     pageDisplay->hidden = hidden;
@@ -902,19 +897,13 @@ static void TogglePageDisplayCB(SysTask *task, void *taskData) {
 }
 
 static void ov76_021E6A34(int a0, int a1, int a2, int a3) {
-    u16 temp;
-
     if (a0 == 0 && a2 == 0xff) {
-        reg_G2S_DB_WIN1H = 1;
-        temp = ((a1 << 8) & 0xff00) | (u8)a3;
-        reg_G2S_DB_WIN1V = temp;
-        reg_G2S_DB_WIN0H = 0x0100;
-        reg_G2S_DB_WIN0V = temp;
+        G2S_SetWnd1Position(0, a1, 1, a3);
+        G2S_SetWnd0Position(1, a1, 0, a3);
         return;
     }
 
-    reg_G2S_DB_WIN0H = ((a0 << 8) & 0xff00) | (u8)a2;
-    reg_G2S_DB_WIN0V = (a1 << 8) & 0xff00 | (u8)a3;
+    G2S_SetWnd0Position(a0, a1, a2, a3);
 }
 
 static void LoadPage(PageWork *ptr) {

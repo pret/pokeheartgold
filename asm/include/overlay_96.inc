@@ -66,7 +66,7 @@
 .public AddPlttResObjFromNarc
 .public AddCellOrAnimResObjFromNarc
 .public sub_0200A740
-.public sub_0200A810
+.public GF2DGfxResObj_GetCharDataPtr
 .public sub_0200ADA4
 .public sub_0200AEB0
 .public sub_0200AF00
@@ -218,8 +218,8 @@
 .public sub_02020E80
 .public sub_02020EB0
 .public sub_02020F4C
-.public sub_020215C0
-.public sub_0202168C
+.public ObjCharTransfer_InitEx
+.public ObjCharTransfer_Destroy
 .public sub_020216C8
 .public sub_02021AC8
 .public sub_02021B5C

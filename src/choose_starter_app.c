@@ -553,7 +553,7 @@ BOOL ChooseStarter_Exit(OVY_MANAGER *ovy, int *state) {
     Destroy2DGfxResObjMan(work->monSpriteData.cellResMan);
     Destroy2DGfxResObjMan(work->monSpriteData.animResMan);
     OamManager_Free();
-    sub_0202168C();
+    ObjCharTransfer_Destroy();
     sub_02022608();
     freeWindow(work->winTop);
     freeWindow(work->winBottom);
@@ -616,7 +616,7 @@ static void createOamManager(HeapID heapId) {
             HEAP_ID_DEFAULT
         };
         baseTrans.heapId = heapId;
-        sub_020215C0(&baseTrans, 0x200010, 0x10);
+        ObjCharTransfer_InitEx(&baseTrans, GX_OBJVRAMMODE_CHAR_1D_128K, GX_OBJVRAMMODE_CHAR_1D_32K);
     }
     sub_02022588(3, heapId);
     sub_020216C8();
@@ -1177,8 +1177,8 @@ static void createMonSprites(struct ChooseStarterAppWork *work) {
     struct StarterChooseMonSpriteData *spriteData = &work->monSpriteData;
 
     for (i = 0; i < 3; i++) {
-        spriteData->objs[i].charResObj = AddCharResObjFromOpenNarc(spriteData->charResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000009_NCGR, FALSE, i, 2, work->heapId);
-        spriteData->objs[i].plttResObj = AddPlttResObjFromOpenNarc(spriteData->plttResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000006_NCLR, FALSE, i, 2, 1, work->heapId);
+        spriteData->objs[i].charResObj = AddCharResObjFromOpenNarc(spriteData->charResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000009_NCGR, FALSE, i, NNS_G2D_VRAM_TYPE_2DSUB, work->heapId);
+        spriteData->objs[i].plttResObj = AddPlttResObjFromOpenNarc(spriteData->plttResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000006_NCLR, FALSE, i, NNS_G2D_VRAM_TYPE_2DSUB, 1, work->heapId);
         spriteData->objs[i].cellResObj = AddCellOrAnimResObjFromOpenNarc(spriteData->cellResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000010_NCER, FALSE, i, GF_GFX_RES_TYPE_CELL, work->heapId);
         spriteData->objs[i].animResObj = AddCellOrAnimResObjFromOpenNarc(spriteData->animResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000016_NANR, FALSE, i, GF_GFX_RES_TYPE_ANIM, work->heapId);
         GetMonSpriteCharAndPlttNarcIdsEx(

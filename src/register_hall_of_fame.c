@@ -365,8 +365,8 @@ static const Unk122_021E92D0 ov63_0221FB30 = {
     0x400,
     0x10000,
     0x4000,
-    0x100010,
-    0x100010,
+    GX_OBJVRAMMODE_CHAR_1D_64K,
+    GX_OBJVRAMMODE_CHAR_1D_64K,
 };
 
 static const VecFx16 sConfettiCoords[4] = {

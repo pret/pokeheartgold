@@ -6,8 +6,8 @@ static void BattleCursor_Update(SysTask *task, void *data);
 
 void BattleCursor_LoadResources(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, PaletteData *plttData, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation) {
     NARC *narc = NARC_New(NARC_a_0_0_8, heapId);
-    sub_0200D68C(plttData, PLTTBUF_SUB_OBJ, renderer, gfxHandler, narc, 80, 0, 1, 2, pal);
-    SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 250, 1, 2, character);
+    sub_0200D68C(plttData, PLTTBUF_SUB_OBJ, renderer, gfxHandler, narc, 80, 0, 1, NNS_G2D_VRAM_TYPE_2DSUB, pal);
+    SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 250, 1, NNS_G2D_VRAM_TYPE_2DSUB, character);
     SpriteRenderer_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, 251, 1, cell);
     SpriteRenderer_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc, 252, 1, animation);
     NARC_Delete(narc);

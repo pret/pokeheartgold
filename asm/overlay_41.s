@@ -1648,7 +1648,7 @@ ov41_02246A94: ; 0x02246A94
 	mov r1, #0x10
 	add r0, r2, #0
 	add r2, r1, #0
-	bl sub_020215C0
+	bl ObjCharTransfer_InitEx
 	mov r0, #5
 	mov r1, #0xe
 	bl sub_02022588
@@ -1718,7 +1718,7 @@ _02246B40:
 	add r5, r5, #4
 	cmp r4, #4
 	blt _02246B40
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	bl OamManager_Free
 	pop {r3, r4, r5, pc}
@@ -11141,16 +11141,16 @@ ov41_0224B0B8: ; 0x0224B0B8
 	add r4, r1, #0
 	add r7, r2, #0
 	add r6, r3, #0
-	bl sub_0200A7FC
+	bl GF2DGfxResObj_GetResID
 	str r0, [sp, #0x2c]
 	ldr r0, [r5, #4]
-	bl sub_0200A7FC
+	bl GF2DGfxResObj_GetResID
 	str r0, [sp, #0x30]
 	ldr r0, [r5, #8]
-	bl sub_0200A7FC
+	bl GF2DGfxResObj_GetResID
 	str r0, [sp, #0x34]
 	ldr r0, [r5, #0xc]
-	bl sub_0200A7FC
+	bl GF2DGfxResObj_GetResID
 	str r0, [sp]
 	mov r0, #0
 	mvn r0, r0

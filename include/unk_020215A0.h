@@ -2,19 +2,47 @@
 #define POKEHEARTGOLD_UNK_020215A0_H
 
 #include "heap.h"
+#include <nnsys.h>
 
 typedef struct UnkStruct_020215A0 {
-    u32 unk_00;
+    int unk_00;
     u32 unk_04;
     u32 unk_08;
     HeapID heapId;
 } UnkStruct_020215A0;
 
-void sub_020215A0(UnkStruct_020215A0 *a0);
-void sub_020215C0(UnkStruct_020215A0 *a0, int a1, int a2);
-void sub_0202168C(void);
+typedef struct UnkStruct_02021758 {
+    NNSG2dCharacterData *charData;
+    NNS_G2D_VRAM_TYPE vram;
+    int id;
+    BOOL unk_0C;
+} ObjCharTransferTaskTemplate;
+
+typedef struct UnkStruct_02021AC8 {
+    u32 size;
+    u32 offset;
+    u16 vram;
+    u16 unk_0A;
+} UnkStruct_02021AC8;
+
+typedef struct ObjCharTransferTasksManager ObjCharTransferTasksManager;
+
+void ObjCharTransfer_Init(UnkStruct_020215A0 *template);
+void ObjCharTransfer_InitEx(UnkStruct_020215A0 *template, GXOBJVRamModeChar modeMain, GXOBJVRamModeChar modeSub);
+void ObjCharTransfer_Destroy(void);
 void sub_020216C8(void);
-void sub_020216F4(u32, u32, u32);
-void sub_02021884(u32);
+void sub_020216F4(u32 a0, u32 a1, NNS_G2D_VRAM_TYPE vram);
+BOOL sub_02021758(const ObjCharTransferTaskTemplate *a0);
+BOOL sub_020217B0(const ObjCharTransferTaskTemplate *a0);
+void sub_0202183C(int id, NNSG2dCharacterData *charData);
+void sub_02021884(int resId);
+NNSG2dImageProxy *sub_02021910(int resId);
+NNSG2dImageProxy *sub_02021934(int resId, u32 size);
+NNSG2dImageProxy *sub_020219B8(NNSG2dImageProxy *proxyIn);
+void sub_02021A50(const NNSG2dImageProxy *proxy);
+BOOL sub_02021AC8(u32 size, BOOL a1, NNS_G2D_VRAM_TYPE vram, UnkStruct_02021AC8 *a3);
+void sub_02021B5C(UnkStruct_02021AC8 *a0);
+ObjCharTransferTasksManager *sub_02021BD0(void);
+void sub_02021BEC(ObjCharTransferTasksManager *a0);
 
 #endif //POKEHEARTGOLD_UNK_020215A0_H

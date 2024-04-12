@@ -7009,7 +7009,7 @@ ov91_0225FA9C: ; 0x0225FA9C
 	add r0, r2, #0
 	add r2, r1, #0
 	str r6, [sp, #0x20]
-	bl sub_020215C0
+	bl ObjCharTransfer_InitEx
 	mov r0, #0x10
 	add r1, r6, #0
 	bl sub_02022588
@@ -7079,7 +7079,7 @@ _0225FB62:
 	add r5, r5, #4
 	cmp r4, #4
 	blt _0225FB62
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	bl OamManager_Free
 	pop {r4, r5, r6, pc}

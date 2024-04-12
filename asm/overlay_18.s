@@ -38668,7 +38668,7 @@ ov18_021F8F28: ; 0x021F8F28
 	str r0, [sp, #0xc]
 	add r0, r2, #0
 	mov r2, #0x10
-	bl sub_020215C0
+	bl ObjCharTransfer_InitEx
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -38678,10 +38678,10 @@ _021F8F54: .word 0x00100010
 
 	thumb_func_start ov18_021F8F58
 ov18_021F8F58: ; 0x021F8F58
-	ldr r3, _021F8F5C ; =sub_0202168C
+	ldr r3, _021F8F5C ; =ObjCharTransfer_Destroy
 	bx r3
 	.balign 4, 0
-_021F8F5C: .word sub_0202168C
+_021F8F5C: .word ObjCharTransfer_Destroy
 	thumb_func_end ov18_021F8F58
 
 	thumb_func_start ov18_021F8F60
@@ -39158,16 +39158,16 @@ ov18_021F9310: ; 0x021F9310
 	add r4, r1, #0
 	add r7, r2, #0
 	add r6, r3, #0
-	bl sub_0200A7FC
+	bl GF2DGfxResObj_GetResID
 	str r0, [sp, #0x2c]
 	ldr r0, [r5, #4]
-	bl sub_0200A7FC
+	bl GF2DGfxResObj_GetResID
 	str r0, [sp, #0x30]
 	ldr r0, [r5, #8]
-	bl sub_0200A7FC
+	bl GF2DGfxResObj_GetResID
 	str r0, [sp, #0x34]
 	ldr r0, [r5, #0xc]
-	bl sub_0200A7FC
+	bl GF2DGfxResObj_GetResID
 	str r0, [sp]
 	mov r0, #0
 	mvn r0, r0
@@ -39243,22 +39243,22 @@ ov18_021F9370: ; 0x021F9370
 	mov r0, #0x87
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200A7FC
+	bl GF2DGfxResObj_GetResID
 	add r4, r0, #0
 	mov r0, #0x83
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200A7FC
+	bl GF2DGfxResObj_GetResID
 	add r6, r0, #0
 	mov r0, #0x89
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200A7FC
+	bl GF2DGfxResObj_GetResID
 	add r7, r0, #0
 	mov r0, #0x8a
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200A7FC
+	bl GF2DGfxResObj_GetResID
 	str r0, [sp]
 	mov r0, #0
 	mvn r0, r0

@@ -7074,7 +7074,7 @@ _021E8CC2:
 	bl sub_0200B0F8
 	str r0, [sp, #0x28]
 	ldr r0, [r4]
-	bl sub_0200A810
+	bl GF2DGfxResObj_GetCharDataPtr
 	str r0, [sp, #0x20]
 	cmp r6, #3
 	bne _021E8D6C
@@ -7561,7 +7561,7 @@ ov96_021E9104: ; 0x021E9104
 	sub sp, #0xc
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0200A810
+	bl GF2DGfxResObj_GetCharDataPtr
 	ldrh r1, [r4, #0x18]
 	cmp r1, #0
 	beq _021E911A
@@ -7801,7 +7801,7 @@ ov96_021E92B0: ; 0x021E92B0
 	add r5, r1, #0
 	ldr r2, [sp, #0x10]
 	add r1, r3, #0
-	bl sub_020215C0
+	bl ObjCharTransfer_InitEx
 	add r0, r5, #0
 	add r1, r4, #0
 	bl sub_02022588
@@ -7814,7 +7814,7 @@ ov96_021E92B0: ; 0x021E92B0
 ov96_021E92D0: ; 0x021E92D0
 	push {r3, lr}
 	bl OamManager_Free
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	pop {r3, pc}
 	thumb_func_end ov96_021E92D0
@@ -23202,7 +23202,7 @@ ov96_021F095C: ; 0x021F095C
 	ldr r0, [r4, r0]
 	bl ov96_021E9C0C
 	bl OamManager_Free
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	mov r0, #0x77
 	lsl r0, r0, #4
@@ -32885,7 +32885,7 @@ _021F5598:
 	mov r0, #4
 	bl FontID_Release
 	bl OamManager_Free
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	mov r0, #0
 	add r1, r0, #0
@@ -47998,7 +47998,7 @@ ov96_021FCE10: ; 0x021FCE10
 	ldr r0, [r4, r0]
 	bl ov96_021E9C0C
 	bl OamManager_Free
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	mov r0, #0xf7
 	lsl r0, r0, #2
@@ -57764,7 +57764,7 @@ _02201BF0:
 	ldr r0, [r4, r0]
 	bl ov96_021E9C0C
 	bl OamManager_Free
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	ldr r0, _02201C80 ; =0x000005DC
 	ldr r0, [r4, r0]
@@ -63931,7 +63931,7 @@ ov96_02204E58: ; 0x02204E58
 	ldr r0, [r4, r0]
 	bl ov96_021E9C0C
 	bl OamManager_Free
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	mov r0, #0xdb
 	lsl r0, r0, #2
@@ -89539,7 +89539,7 @@ _0221172E:
 	ldr r0, [r4, r0]
 	bl ov96_021E9C0C
 	bl OamManager_Free
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	ldr r0, _022117BC ; =0x0000074C
 	ldr r0, [r4, r0]

@@ -18082,7 +18082,7 @@ _0224723A:
 	ldr r0, [r5]
 	bl SpriteList_Delete
 	bl OamManager_Free
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -18162,7 +18162,7 @@ ov83_022472DC: ; 0x022472DC
 	add r0, r2, #0
 	ldr r2, _02247310 ; =0x00100010
 	mov r1, #0x10
-	bl sub_020215C0
+	bl ObjCharTransfer_InitEx
 	mov r0, #0x20
 	mov r1, #0x6b
 	bl sub_02022588

@@ -1275,7 +1275,7 @@ ov90_022590CC: ; 0x022590CC
 	add r2, r1, #0
 	str r6, [sp, #0x1c]
 	str r4, [sp, #0x28]
-	bl sub_020215C0
+	bl ObjCharTransfer_InitEx
 	ldr r0, [sp, #0x18]
 	add r1, r4, #0
 	bl sub_02022588
@@ -1309,7 +1309,7 @@ ov90_02259158: ; 0x02259158
 	push {r3, lr}
 	ldr r0, [r0]
 	bl SpriteList_Delete
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	bl OamManager_Free
 	pop {r3, pc}

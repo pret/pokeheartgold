@@ -4170,7 +4170,7 @@ _021E7CF0:
 	ldr r0, [r5]
 	bl SpriteList_Delete
 	bl OamManager_Free
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	mov r2, #1
 	lsl r2, r2, #0x1a
@@ -4216,7 +4216,7 @@ ov51_021E7D68: ; 0x021E7D68
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_020215A0
+	bl ObjCharTransfer_Init
 	mov r0, #2
 	mov r1, #0x19
 	bl sub_02022588
