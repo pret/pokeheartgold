@@ -59,7 +59,7 @@ _00A7:
 	wait_fade
 	party_select_ui
 	get_party_selection VAR_SPECIAL_x8004
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	nop_var_490 VAR_SPECIAL_x8004

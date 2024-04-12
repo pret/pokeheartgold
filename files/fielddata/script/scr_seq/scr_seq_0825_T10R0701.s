@@ -82,7 +82,7 @@ _0133:
 	compare VAR_ROAMER_LATIOS_STATUS, 2
 	call_if_eq _028B
 	hof_credits 0
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

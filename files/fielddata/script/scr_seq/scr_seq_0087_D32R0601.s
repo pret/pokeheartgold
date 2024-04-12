@@ -149,7 +149,7 @@ _01FC:
 	goto_if_ne _022E
 	scrcmd_815 0
 _022E:
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_TEMP_x4002, 255
@@ -343,7 +343,7 @@ _050A:
 	scrcmd_627 15
 	compare VAR_UNK_4149, 2
 	call_if_eq _056B
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	scrcmd_682 1

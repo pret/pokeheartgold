@@ -110,7 +110,7 @@ _01A1:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_160
-	scrcmd_150
+	restore_overworld
 	call _0BDA
 	non_npc_msg msg_0738_UNION_00016
 	goto _00D2
@@ -138,7 +138,7 @@ _021B:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_161
-	scrcmd_150
+	restore_overworld
 	call _0BDA
 	goto _00D2
 	end
@@ -171,7 +171,7 @@ _02A6:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_350
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0738_UNION_00202
@@ -211,7 +211,7 @@ _0353:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_159
-	scrcmd_150
+	restore_overworld
 	call _0BDA
 	goto _0478
 	end
@@ -234,7 +234,7 @@ _03B3:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_162
-	scrcmd_150
+	restore_overworld
 	call _0BDA
 	goto _0478
 	end
@@ -263,7 +263,7 @@ _0435:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_629
-	scrcmd_150
+	restore_overworld
 	call _0BDA
 	goto _0478
 	end
@@ -316,7 +316,7 @@ _04AF:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_159
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	goto _0478
 	end
@@ -349,7 +349,7 @@ _0528:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_629
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	goto _0478
 	end
@@ -385,7 +385,7 @@ _05DB:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_162
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	goto _0478
 	end
@@ -564,7 +564,7 @@ _0863:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_160
-	scrcmd_150
+	restore_overworld
 	call _0BDA
 	goto _07E4
 	end
@@ -598,7 +598,7 @@ _08DB:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_161
-	scrcmd_150
+	restore_overworld
 	scrcmd_261 11
 	call _0BDA
 	goto _07E4
@@ -639,7 +639,7 @@ _0974:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_350
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0738_UNION_00202
@@ -688,7 +688,7 @@ _0A44:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_162
-	scrcmd_150
+	restore_overworld
 	call _0BDA
 	releaseall
 	end
@@ -716,7 +716,7 @@ _0AA2:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_629
-	scrcmd_150
+	restore_overworld
 	call _0BDA
 	releaseall
 	end
@@ -741,7 +741,7 @@ _0B11:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_159
-	scrcmd_150
+	restore_overworld
 	call _0BDA
 	releaseall
 	end

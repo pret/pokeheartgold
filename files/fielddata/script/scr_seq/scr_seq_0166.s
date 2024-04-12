@@ -565,7 +565,7 @@ _0837:
 	goto _0837
 
 _084F:
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_TEMP_x4002, 255
