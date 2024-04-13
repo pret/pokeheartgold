@@ -35,7 +35,7 @@
 .public AddTextPrinterParameterizedWithColorAndSpacing
 .public Set2dSpriteAnimActiveFlag
 .public Sprite_SetAnimCtrlCurrentFrame
-.public sub_02024B1C
+.public Sprite_GetImageProxy
 .public GF_AssertFail
 .public String_New
 .public String_Delete

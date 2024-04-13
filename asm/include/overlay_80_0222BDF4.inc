@@ -102,8 +102,8 @@
 .public AddTextPrinterParameterized
 .public sub_02022808
 .public sub_02024AA8
-.public sub_02024B1C
-.public sub_02024B34
+.public Sprite_GetImageProxy
+.public Sprite_GetPaletteProxy
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New

@@ -90,7 +90,7 @@
 .public sub_02021B5C
 .public Set2dSpriteAnimSeqNo
 .public sub_02024AA8
-.public sub_02024B1C
+.public Sprite_GetImageProxy
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public String_New

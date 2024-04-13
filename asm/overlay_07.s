@@ -3835,7 +3835,7 @@ _0221D9A0:
 	cmp r0, #0
 	beq _0221D9C2
 	ldr r0, [r7]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	add r1, r0, #0
 	mov r3, #0x32
 	ldr r1, [r1, #4]
@@ -3850,7 +3850,7 @@ _0221D9C2:
 	cmp r0, #0
 	beq _0221D9F8
 	ldr r0, [r7]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #1
 	bl sub_02022808
 	mov r1, #2
@@ -8735,7 +8735,7 @@ _0221FD98:
 	cmp r5, #0
 	beq _0221FDB2
 	ldr r0, [r6]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	add r1, r0, #0
 	mov r3, #0x32
 	ldr r1, [r1, #4]
@@ -8747,7 +8747,7 @@ _0221FDB2:
 	cmp r5, #0
 	beq _0221FDDC
 	ldr r0, [r6]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #1
 	bl sub_02022808
 	mov r1, #2
@@ -13385,7 +13385,7 @@ _02221FEC: .word ov07_0223646A
 ov07_02221FF0: ; 0x02221FF0
 	push {r3, lr}
 	ldr r0, [r0]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #1
 	bl sub_02022808
 	lsl r0, r0, #0x18
@@ -20796,7 +20796,7 @@ ov07_02225838: ; 0x02225838
 	bl ov07_022323FC
 	ldr r0, [r4, #0x28]
 	ldr r0, [r0]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #1
 	bl sub_02022808
 	add r7, r0, #0
@@ -25436,7 +25436,7 @@ _02227DBA:
 	bl UnkImageStruct_SetSpritePriority
 	ldr r0, [r4, #0x18]
 	ldr r0, [r0]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #1
 	bl sub_02022808
 	lsl r0, r0, #0x10
@@ -25464,7 +25464,7 @@ _02227DBA:
 	bl PaletteData_LoadNarc_CustomTint
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #1
 	bl sub_02022808
 	lsl r0, r0, #0x10
@@ -25529,7 +25529,7 @@ _02227EAA:
 	bl UnkImageStruct_SetSpritePriority
 	ldr r0, [r4, #0x18]
 	ldr r0, [r0]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #1
 	bl sub_02022808
 	lsl r0, r0, #0x10
@@ -25557,7 +25557,7 @@ _02227EAA:
 	bl PaletteData_LoadNarc_CustomTint
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #1
 	bl sub_02022808
 	lsl r0, r0, #0x10
@@ -26598,7 +26598,7 @@ ov07_02228750: ; 0x02228750
 	str r0, [sp, #0x18]
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #1
 	bl sub_02022808
 	add r6, r0, #0
@@ -31775,7 +31775,7 @@ ov07_0222B130: ; 0x0222B130
 	add r1, r1, #1
 	bl UnkImageStruct_SetSpritePriority
 	ldr r0, [r5]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #1
 	bl sub_02022808
 	add r6, r0, #0
@@ -31811,7 +31811,7 @@ ov07_0222B130: ; 0x0222B130
 	add r1, r1, #1
 	bl UnkImageStruct_SetSpritePriority
 	ldr r0, [r5]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #1
 	bl sub_02022808
 	add r6, r0, #0
@@ -32212,7 +32212,7 @@ _0222B584:
 	bl ov07_02222EF8
 	ldr r0, [r5, #0x24]
 	ldr r0, [r0]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #1
 	bl sub_02022808
 	add r4, r0, #0
@@ -32361,7 +32361,7 @@ _0222B6AC:
 	bl sub_0200E024
 	ldr r0, [r4, #0x1c]
 	ldr r0, [r0]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #1
 	bl sub_02022808
 	add r6, r0, #0
@@ -32389,7 +32389,7 @@ _0222B6AC:
 	str r0, [r4, #0x38]
 	ldr r0, [r4, #0x24]
 	ldr r0, [r0]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #1
 	bl sub_02022808
 	add r6, r0, #0
@@ -32487,7 +32487,7 @@ _0222B7DA:
 	lsr r1, r1, #0x18
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_020708D8
+	bl GetMonPicHeightBySpeciesGenderForme
 	add r2, r0, #0
 	add r5, sp, #0x24
 	mov r3, #0xa
@@ -50968,7 +50968,7 @@ _022347D4:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x18
-	bl sub_020708D8
+	bl GetMonPicHeightBySpeciesGenderForme
 	ldr r1, [r5]
 	lsl r1, r1, #2
 	add r1, r5, r1
@@ -51148,7 +51148,7 @@ _022349A0:
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x18
 	lsr r3, r3, #0x18
-	bl sub_020708D8
+	bl GetMonPicHeightBySpeciesGenderForme
 	ldr r1, [r5]
 	lsl r1, r1, #2
 	add r1, r5, r1

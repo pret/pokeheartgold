@@ -89,8 +89,8 @@
 .public GfGfx_EngineASetPlanes
 .public GfGfx_EngineBTogglePlanes
 .public GfGfx_EngineBSetPlanes
-.public sub_02024B1C
-.public sub_02024B34
+.public Sprite_GetImageProxy
+.public Sprite_GetPaletteProxy
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public String_New
 .public String_Delete
@@ -105,7 +105,7 @@
 .public GetGenderBySpeciesAndPersonality
 .public CalcShininessByOtIdAndPersonality
 .public GetMonSpriteCharAndPlttNarcIdsEx
-.public sub_020708D8
+.public GetMonPicHeightBySpeciesGenderForme
 .public sub_020729D8
 .public NNS_G2dGetImageLocation
 .public NNS_G2dGetImagePaletteLocation

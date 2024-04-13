@@ -1253,7 +1253,7 @@ ov111_021E62E0: ; 0x021E62E0
 	bl Sprite_GetVramType
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	add r1, r4, #0
 	bl NNS_G2dGetImageLocation
 	add r5, r0, #0

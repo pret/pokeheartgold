@@ -5226,7 +5226,7 @@ _02268B20:
 	ldr r0, _02268BAC ; =0x00000608
 	ldr r0, [r1, r0]
 	ldr r0, [r0]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	add r7, r0, #0
 	mov r0, #6
 	bl sub_0208805C

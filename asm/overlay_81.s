@@ -10143,7 +10143,7 @@ ov81_02242E14: ; 0x02242E14
 	add r6, r3, #0
 	add r5, r1, #0
 	add r4, r2, #0
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	add r1, r6, #0
 	bl NNS_G2dGetImageLocation
 	add r7, r0, #0

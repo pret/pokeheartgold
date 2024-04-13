@@ -18678,7 +18678,7 @@ _022476C0:
 	mov r6, #0x3d
 _022476EA:
 	ldr r0, [r5, #4]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	mov r1, #2
 	bl NNS_G2dGetImageLocation
 	mov r1, #0x32
@@ -18692,7 +18692,7 @@ _022476EA:
 	lsl r2, r2, #6
 	bl GXS_LoadOBJ
 	ldr r0, [r5, #4]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #2
 	bl NNS_G2dGetImagePaletteLocation
 	add r3, r0, #0

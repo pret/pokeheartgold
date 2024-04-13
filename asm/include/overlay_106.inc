@@ -74,8 +74,8 @@
 .public Camera_PushLookAtToNNSGlb
 .public Camera_SetPerspectiveClippingPlane
 .public Camera_Init_FromTargetDistanceAndAngle
-.public sub_02024B1C
-.public sub_02024B34
+.public Sprite_GetImageProxy
+.public Sprite_GetPaletteProxy
 .public GF_AssertFail
 .public Thunk_G3X_Reset
 .public RequestSwap3DBuffers

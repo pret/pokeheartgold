@@ -2179,7 +2179,7 @@ _021E69FA:
 	bl PaletteData_BeginPaletteFade
 	ldr r0, [r4, #0x78]
 	ldr r0, [r0]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #1
 	bl sub_02022808
 	add r5, r0, #0
@@ -2425,7 +2425,7 @@ _021E6BFA:
 	bl PaletteData_BeginPaletteFade
 	ldr r0, [r4, #0x78]
 	ldr r0, [r0]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #1
 	bl sub_02022808
 	add r5, r0, #0

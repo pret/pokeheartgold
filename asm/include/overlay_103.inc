@@ -123,7 +123,7 @@
 .public GfGfx_EngineASetPlanes
 .public GfGfx_EngineBTogglePlanes
 .public GfGfx_EngineBSetPlanes
-.public sub_02024B1C
+.public Sprite_GetImageProxy
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchNew
 .public String_New

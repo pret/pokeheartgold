@@ -23595,7 +23595,7 @@ _022374D0:
 	mov r2, #2
 	lsr r3, r3, #0x18
 	str r6, [sp]
-	bl sub_020708D8
+	bl GetMonPicHeightBySpeciesGenderForme
 	ldr r0, [sp, #0x20]
 	ldr r2, [sp, #0x1c]
 	str r0, [sp]

@@ -1894,7 +1894,7 @@ _021E6764:
 	ldr r0, [sp, #0x18]
 	ldr r0, [r0, #0x10]
 	ldr r0, [r0]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	mov r1, #1
 	bl NNS_G2dGetImageLocation
 	add r5, r0, #0
@@ -1934,7 +1934,7 @@ _021E67A6:
 	ldr r0, [sp, #0x18]
 	ldr r0, [r0, #0x10]
 	ldr r0, [r0]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #1
 	bl NNS_G2dGetImagePaletteLocation
 	add r1, r0, #0

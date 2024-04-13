@@ -18,7 +18,7 @@ static void SpriteGfxHandler_DestroyResObjsAndMans(SpriteGfxHandler* gfxHandler)
 static void DeinitSpriteRenderer(SpriteRenderer* renderer);
 static void MyRemoveSpriteGfxHandler(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler);
 static BOOL sub_0200D124(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const u16* a2, int a3, int a4);
-static Sprite* MyCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, int a2, s16 x, s16 y, s16 z, u16 animSeqNo, int rotation, int a8, NNS_G2D_VRAM_TYPE whichScreen, int a10, int a11, int a12, int a13);
+static Sprite* MyCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, int headerIndex, s16 x, s16 y, s16 z, u16 animSeqNo, int rotation, int palIndex, NNS_G2D_VRAM_TYPE whichScreen, int a10, int a11, int a12, int a13);
 static UnkImageStruct* MyLoadResourcesAndCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const UnkTemplate_0200D748* unkTemplate, fx32 yOffset);
 static BOOL MyLoadCellOrAnim_NarcId(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, GfGfxResType a6, int resId);
 static BOOL MyLoadCellOrAnim_OpenNarc(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, GfGfxResType a6, int resId);
@@ -239,7 +239,7 @@ Sprite* SpriteRenderer_CreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* 
     return MyCreateSprite(renderer, gfxHandler, a2->resourceSet, a2->x, a2->y, a2->x /* typo? */, a2->animSeqNo, a2->rotation, a2->unk_10, a2->whichScreen, a2->unk_18, a2->unk_1C, a2->unk_20, a2->unk_24);
 }
 
-static Sprite* MyCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, int headerIndex, s16 x, s16 y, s16 z, u16 animSeqNo, int priority, int a8, NNS_G2D_VRAM_TYPE whichScreen, int a10, int a11, int a12, int a13) {
+static Sprite* MyCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, int headerIndex, s16 x, s16 y, s16 z, u16 animSeqNo, int priority, int palIndex, NNS_G2D_VRAM_TYPE whichScreen, int a10, int a11, int a12, int a13) {
     Sprite* ret = NULL;
     SpriteTemplate template;
 
@@ -265,12 +265,12 @@ static Sprite* MyCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHan
         Set2dSpriteAnimSeqNo(ret, animSeqNo);
         switch (a10) {
         case 0:
-            Sprite_SetPalIndex(ret, a8);
+            Sprite_SetPalIndex(ret, palIndex);
             break;
         case 1:
             break;
         case 2:
-            sub_02024A48(ret, a8);
+            sub_02024A48(ret, palIndex);
             break;
         }
     }

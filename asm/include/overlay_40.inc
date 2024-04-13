@@ -254,7 +254,7 @@
 .public GetGenderBySpeciesAndPersonality
 .public CalcShininessByOtIdAndPersonality
 .public GetMonSpriteCharAndPlttNarcIdsEx
-.public sub_020708D8
+.public GetMonPicHeightBySpeciesGenderForme
 .public PCStorage_IsBonusWallpaperUnlocked
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx

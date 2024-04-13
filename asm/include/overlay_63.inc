@@ -109,8 +109,8 @@
 .public Camera_SetLookAtCamUp
 .public Camera_SetPerspectiveClippingPlane
 .public Camera_Init_FromTargetDistanceAndAngle
-.public sub_02024B1C
-.public sub_02024B34
+.public Sprite_GetImageProxy
+.public Sprite_GetPaletteProxy
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New
@@ -134,7 +134,7 @@
 .public GetMonData
 .public MonIsShiny
 .public GetPokemonSpriteCharAndPlttNarcIds
-.public sub_020708D8
+.public GetMonPicHeightBySpeciesGenderForme
 .public sub_02070D84
 .public Mon_GetBoxMon
 .public sub_02072914

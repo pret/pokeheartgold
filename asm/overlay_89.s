@@ -2182,7 +2182,7 @@ _02259AC6:
 	lsl r5, r5, #0x14
 _02259ACA:
 	ldr r0, [r6]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	add r6, r0, #0
 	ldr r0, [sp, #0x2c]
 	mov r2, #0x40

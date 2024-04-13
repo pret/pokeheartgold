@@ -99,6 +99,26 @@ typedef enum RegisterHallOfFamePicIdx_WholeParty {
     REGHOF_PIC_WHOLE_MON_SHADOW = 6,
 } RegisterHallOfFamePicIdx_WholeParty;
 
+typedef enum RegisterHallOfFame_IndivMonsScene_SubprocState {
+    REGHOF_INDIV_SUBPROC_FLY_IN_BACKPIC,
+    REGHOF_INDIV_SUBPROC_BACKPIC_CRY,
+    REGHOF_INDIV_SUBPROC_HOLD_BACKPIC,
+    REGHOF_INDIV_SUBPROC_FLY_IN_OVERWORLD_SPRITE,
+    REGHOF_INDIV_SUBPROC_ANIM_OVERWORLD_SPRITE,
+    REGHOF_INDIV_SUBPROC_HOLD_OVERWORLD_SPRITE,
+    REGHOF_INDIV_SUBPROC_SHOW_HEADER_WINDOW,
+    REGHOF_INDIV_SUBPROC_HOLD_HEADER_WINDOW,
+    REGHOF_INDIV_SUBPROC_FLY_IN_FRONTPIC,
+    REGHOF_INDIV_SUBPROC_SILHOUETTE_BACKPIC_OVERWORLD_SPRITES,
+    REGHOF_INDIV_SUBPROC_HOLD_FRONTPIC,
+    REGHOF_INDIV_SUBPROC_PRINT_MON_SPECIES_LEVEL_GENDER_AND_CRY,
+    REGHOF_INDIV_SUBPROC_HOLD_MON_SPECIES_LEVEL_GENDER,
+    REGHOF_INDIV_SUBPROC_PRINT_MON_CAUGHT_DETAIL,
+    REGHOF_INDIV_SUBPROC_HOLD_MON_CAUGHT_DETAIL,
+    REGHOF_INDIV_SUBPROC_FLY_OUT,
+    REGHOF_INDIV_SUBPROC_TAIL_DELAY,
+} RegisterHallOfFame_IndivMonsScene_SubprocState;
+
 typedef enum RegisterHallOfFame_WholePartyScene_SubprocState {
     REGHOF_WHOLE_SUBPROC_INITIAL_DELAY,
     REGHOF_WHOLE_SUBPROC_FLY_IN_MONS,
@@ -109,6 +129,19 @@ typedef enum RegisterHallOfFame_WholePartyScene_SubprocState {
     REGHOF_WHOLE_SUBPROC_SECOND_PHOTO_FLASH,
     REGHOF_WHOLE_SUBPROC_WAIT_FINAL_FADEOUT,
 } RegisterHallOfFame_WholePartyScene_SubprocState;
+
+typedef enum RegisterHallOfFame_MetLocationType {
+    REGHOF_METLOC_CAUGHT,
+    REGHOF_METLOC_HATCHED,
+    REGHOF_METLOC_TRADED,
+    REGHOF_METLOC_KANTO,
+    REGHOF_METLOC_HOENN,
+    REGHOF_METLOC_SINNOH,
+    REGHOF_METLOC_ORRE,
+    REGHOF_METLOC_FATEFUL,
+    REGHOF_METLOC_SHUCKIE,
+    REGHOF_METLOC_KENYA,
+} RegisterHallOfFame_MetLocationType;
 
 typedef struct RegisterHofMon {
     Pokemon *mon;
@@ -161,8 +194,8 @@ typedef struct RegisterHallOfFameData {
     u16 curMonIndex;
     f32 unk_13058;
     f32 unk_1305C;
-    u32 unk_13060_0:1;
-    u32 unk_13060_1:1;
+    u32 requestUnsilhouetteFrontpic:1;
+    u32 requestUnsilhouetteBackpic:1;
     u32 requestBeginSpotlightsAndConfetti:1;
     u32 requestPlayFlashKanseiSfx:1;
     u32 unk_13060_4:1;
@@ -273,7 +306,7 @@ static void RegisterHallOfFame_IndivMons_ResetBgAndSpritePos(RegisterHallOfFameD
 static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data);
 static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data);
 static void RegisterHallOfFame_GetPartyDetails(RegisterHallOfFameData *data);
-static int RegisterHallOfFame_GetMetLocationType(RegisterHallOfFameData *data, Pokemon *pokemon, PlayerProfile *profile);
+static RegisterHallOfFame_MetLocationType RegisterHallOfFame_GetMetLocationType(RegisterHallOfFameData *data, Pokemon *pokemon, PlayerProfile *profile);
 static int RegisterHallOfFame_GetMmodelBySpeciesFormGender(int species, u8 form, u8 gender);
 static void RegisterHallOfFame_CreateTask_IndivMonAnimAndCry(RegisterHallOfFameData *data, int monIdx, int picIdx, int needLoadFromNarc, int facing);
 static void Task_RegisterHallOfFame_IndivMonAnimAndCry(SysTask *task, void *taskData);
@@ -318,7 +351,7 @@ static const fx16 sSpotlightSpeeds[6] = {
     FX16_CONST(0.75),
     FX16_CONST(0.6875),
     FX16_CONST(0.625),
-};  // ov63_0221FAE4
+};
 
 static const GraphicsModes sGraphicsModes_IndivMons = {
     GX_DISPMODE_GRAPHICS,
@@ -578,7 +611,7 @@ static const int sSpotlightColors[8] = {
     RGB(31, 28, 8),
     RGB(31, 31, 12),
     RGB(31, 31, 12),
-};  // ov63_0221FCF8
+};
 
 static RegisterHallOfFameScene (*const sSceneFuncs[8])(RegisterHallOfFameData *data) = {
     RegisterHallOfFame_WaitFade,
@@ -589,7 +622,7 @@ static RegisterHallOfFameScene (*const sSceneFuncs[8])(RegisterHallOfFameData *d
     RegisterHallOfFame_WholePartyInit,
     RegisterHallOfFame_WholePartyMain,
     RegisterHallOfFame_WholePartyExit,
-};  // 0221FD18
+};
 
 static const int sConfettiColors[8] = {
     RGB(16, 28, 21),
@@ -1334,13 +1367,13 @@ static RegisterHallOfFameScene RegisterHallOfFame_IndivMonsMain(RegisterHallOfFa
         if (data->subprocCallback == NULL) {
             ++data->sceneSubstep;
         } else {
-            if (data->unk_13060_1 == TRUE) {
+            if (data->requestUnsilhouetteBackpic == TRUE) {
                 RegisterHallOfFame_CreateTask_IndivMonAnimAndCry(data, data->curMonIndex, REGHOF_PIC_INDIV_BACK, TRUE, 0);
-                data->unk_13060_1 = FALSE;
+                data->requestUnsilhouetteBackpic = FALSE;
             }
-            if (data->unk_13060_0 == TRUE) {
+            if (data->requestUnsilhouetteFrontpic == TRUE) {
                 RegisterHallOfFame_CreateTask_IndivMonAnimAndCry(data, data->curMonIndex, REGHOF_PIC_INDIV_FRONT, TRUE, 2);
-                data->unk_13060_0 = FALSE;
+                data->requestUnsilhouetteFrontpic = FALSE;
             }
         }
         break;
@@ -1516,14 +1549,14 @@ static void RegisterHallOfFame_IndivMonsScene_SetPicGfxAndPltt(RegisterHallOfFam
     GetPokemonSpriteCharAndPlttNarcIds(&drawMonStruct, hofMon->mon, whichFacing);
     RegisterHallOfFame_ReplaceSpriteChar(
         whichFacing == 2 ? hofMon->backspriteCharbuf : hofMon->frontspriteCharbuf,
-        NNS_G2dGetImageLocation(sub_02024B1C(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN),
+        NNS_G2dGetImageLocation(Sprite_GetImageProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN),
         3200
     );
     GfGfxLoader_GXLoadPal(
         (NarcId)drawMonStruct.narcID,
         drawMonStruct.palDataID,
         GF_PAL_LOCATION_MAIN_OBJ,
-        (enum GFPalSlotOffset)NNS_G2dGetImagePaletteLocation(sub_02024B34(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN),
+        (enum GFPalSlotOffset)NNS_G2dGetImagePaletteLocation(Sprite_GetPaletteProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN),
         0x20,
         HEAP_ID_REGISTER_HALL_OF_FAME
     );
@@ -1535,7 +1568,7 @@ int ov63_dummy_00(RegisterHallOfFameData *data) {
 }
 
 static void RegisterHallOfFame_SetSilhouettePalette(RegisterHallOfFameData *data, int picIdx, RegisterHallOfFameSilhouettePal pal) {
-    u32 dest = NNS_G2dGetImagePaletteLocation(sub_02024B34(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
+    u32 dest = NNS_G2dGetImagePaletteLocation(Sprite_GetPaletteProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
     const u16 *pltt;
 
     switch (pal) {
@@ -1554,7 +1587,7 @@ static void RegisterHallOfFame_SetSilhouettePalette(RegisterHallOfFameData *data
 }
 
 static void RegisterHallOfFame_BackupMonPicPalette(RegisterHallOfFameData *data, int monIdx, int picIdx) {
-    u32 dest = NNS_G2dGetImagePaletteLocation(sub_02024B34(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
+    u32 dest = NNS_G2dGetImagePaletteLocation(Sprite_GetPaletteProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
     u16 *base = GetMainObjPlttAddr();
     RegisterHofMon *mon = &data->mons[monIdx];
 
@@ -1562,7 +1595,7 @@ static void RegisterHallOfFame_BackupMonPicPalette(RegisterHallOfFameData *data,
 }
 
 static void RegisterHallOfFame_RestoreMonPicPalette(RegisterHallOfFameData *data, int monIdx, int picIdx) {
-    u32 dest = NNS_G2dGetImagePaletteLocation(sub_02024B34(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
+    u32 dest = NNS_G2dGetImagePaletteLocation(Sprite_GetPaletteProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
     RegisterHofMon *mon = &data->mons[monIdx];
 
     RegisterHallOfFame_ReplaceSpritePltt(mon->plttBak, dest, 0x20);
@@ -1656,7 +1689,7 @@ static void RegisterHallOfFame_IndivMonsScene_SetMon3dSpriteTex(RegisterHallOfFa
     NNSG3dResTex *resTex;
     void *fileData;
     const void *sp18;
-    u32 sp14 = NNS_G2dGetImageLocation(sub_02024B1C(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
+    u32 sp14 = NNS_G2dGetImageLocation(Sprite_GetImageProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
     int sp10 = hofMon->tsure_param[1] ? 8 : 4;
     u32 size = 32 * sp10 * sp10;
     int fileno = RegisterHallOfFame_GetMmodelBySpeciesFormGender(hofMon->species, hofMon->form, hofMon->gender);
@@ -1670,7 +1703,7 @@ static void RegisterHallOfFame_IndivMonsScene_SetMon3dSpriteTex(RegisterHallOfFa
     }
     FreeToHeap(buffer);
 
-    u32 plttLoc = NNS_G2dGetImagePaletteLocation(sub_02024B34(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
+    u32 plttLoc = NNS_G2dGetImagePaletteLocation(Sprite_GetPaletteProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
     const void *loadPos = NNS_G3dGetPlttData(resTex);
     if (MonIsShiny(hofMon->mon) == TRUE) {
         loadPos = (const u8 *)loadPos + 0x20;
@@ -1780,36 +1813,36 @@ static void RegisterHallOfFame_IndivMonsScene_PrintMonDetailsOnWindow(RegisterHa
     AddTextPrinterParameterizedWithColor(&windows[2], 0, data->strbuf2, 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
 
     switch (RegisterHallOfFame_GetMetLocationType(data, mon, data->args->profile)) {
-    case 0:
+    case REGHOF_METLOC_CAUGHT:
         ReadMsgDataIntoString(data->msgData, msg_0180_00007, data->strbuf1);
         BufferLandmarkName(data->msgFormat, 0, hofMon->metLocation);
         StringExpandPlaceholders(data->msgFormat, data->strbuf2, data->strbuf1);
         break;
-    case 1:
+    case REGHOF_METLOC_HATCHED:
         ReadMsgDataIntoString(data->msgData, msg_0180_00008, data->strbuf1);
         BufferLandmarkName(data->msgFormat, 0, hofMon->metLocation);
         StringExpandPlaceholders(data->msgFormat, data->strbuf2, data->strbuf1);
         break;
-    case 2:
+    case REGHOF_METLOC_TRADED:
         ReadMsgDataIntoString(data->msgData, msg_0180_00009, data->strbuf2);
         break;
-    case 3:
+    case REGHOF_METLOC_KANTO:
         ReadMsgDataIntoString(data->msgData, msg_0180_00010, data->strbuf2);
         break;
-    case 4:
+    case REGHOF_METLOC_HOENN:
         ReadMsgDataIntoString(data->msgData, msg_0180_00011, data->strbuf2);
         break;
-    case 5:
+    case REGHOF_METLOC_SINNOH:
         ReadMsgDataIntoString(data->msgData, msg_0180_00014, data->strbuf2);
         break;
-    case 6:
+    case REGHOF_METLOC_ORRE:
         ReadMsgDataIntoString(data->msgData, msg_0180_00012, data->strbuf2);
         break;
-    case 7:
+    case REGHOF_METLOC_FATEFUL:
         ReadMsgDataIntoString(data->msgData, msg_0180_00013, data->strbuf2);
         break;
-    case 8:
-    case 9:
+    case REGHOF_METLOC_SHUCKIE:
+    case REGHOF_METLOC_KENYA:
         ReadMsgDataIntoString(data->msgData, msg_0180_00015, data->strbuf1);
         BufferLandmarkName(data->msgFormat, 0, hofMon->metLocation);
         StringExpandPlaceholders(data->msgFormat, data->strbuf2, data->strbuf1);
@@ -1906,7 +1939,7 @@ static void RegisterHallOfFame_IndivMons_ResetBgAndSpritePos(RegisterHallOfFameD
 
 static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
     switch (data->subprocStage) {
-    case 0:
+    case REGHOF_INDIV_SUBPROC_FLY_IN_BACKPIC:
         if (data->subprocCounter == 10) {
             u8 yOffset = data->mons[data->curMonIndex].yOffset;
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_1, BG_POS_OP_SET_X, -72);
@@ -1923,11 +1956,11 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
             ++data->subprocCounter;
         }
         break;
-    case 1:
-        data->unk_13060_1 = TRUE;
+    case REGHOF_INDIV_SUBPROC_BACKPIC_CRY:
+        data->requestUnsilhouetteBackpic = TRUE;
         ++data->subprocStage;
         break;
-    case 2:
+    case REGHOF_INDIV_SUBPROC_HOLD_BACKPIC:
         if (data->subprocCounter == 50) {
             data->subprocCounter = 0;
             ++data->subprocStage;
@@ -1935,7 +1968,7 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
             ++data->subprocCounter;
         }
         break;
-    case 3:
+    case REGHOF_INDIV_SUBPROC_FLY_IN_OVERWORLD_SPRITE:
         if (data->subprocCounter == 6) {
             UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], 32, 40);
             UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], 31, 39);
@@ -1948,7 +1981,7 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
             ++data->subprocCounter;
         }
         break;
-    case 4:
+    case REGHOF_INDIV_SUBPROC_ANIM_OVERWORLD_SPRITE:
         if (data->mons[data->curMonIndex].species == SPECIES_KRABBY || data->mons[data->curMonIndex].species == SPECIES_KINGLER) {
             RegisterHallOfFame_StartPicAnimSeq(data, REGHOF_PIC_INDIV_OWSPRITE, 3);
             RegisterHallOfFame_StartPicAnimSeq(data, REGHOF_PIC_INDIV_OWSPRITE_SHADOW, 3);
@@ -1958,7 +1991,7 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
         }
         ++data->subprocStage;
         break;
-    case 5:
+    case REGHOF_INDIV_SUBPROC_HOLD_OVERWORLD_SPRITE:
         if (data->subprocCounter == 20) {
             data->subprocCounter = 0;
             ++data->subprocStage;
@@ -1966,11 +1999,11 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
             ++data->subprocCounter;
         }
         break;
-    case 6:
+    case REGHOF_INDIV_SUBPROC_SHOW_HEADER_WINDOW:
         ScheduleWindowCopyToVram(&data->windows[0]);
         ++data->subprocStage;
         break;
-    case 7:
+    case REGHOF_INDIV_SUBPROC_HOLD_HEADER_WINDOW:
         if (data->subprocCounter == 60) {
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, -16);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, 256);
@@ -1982,7 +2015,7 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
             ++data->subprocCounter;
         }
         break;
-    case 8:
+    case REGHOF_INDIV_SUBPROC_FLY_IN_FRONTPIC:
         if (data->subprocCounter == 8) {
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, 112);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, 192);
@@ -1999,7 +2032,7 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
             ++data->subprocCounter;
         }
         break;
-    case 9:
+    case REGHOF_INDIV_SUBPROC_SILHOUETTE_BACKPIC_OVERWORLD_SPRITES:
         ScheduleWindowCopyToVram(&data->windows[1]);
         RegisterHallOfFame_SetSilhouettePalette(data, 2, REGHOF_SILHOUETTE_PAL_BLACK);
         RegisterHallOfFame_SetSilhouettePalette(data, 4, REGHOF_SILHOUETTE_PAL_BLACK);
@@ -2007,7 +2040,7 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
         RegisterHallOfFame_SetSilhouettePalette(data, 5, REGHOF_SILHOUETTE_PAL_RED);
         ++data->subprocStage;
         break;
-    case 10:
+    case REGHOF_INDIV_SUBPROC_HOLD_FRONTPIC:
         if (data->subprocCounter == 40) {
             data->subprocCounter = 0;
             ++data->subprocStage;
@@ -2015,12 +2048,12 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
             ++data->subprocCounter;
         }
         break;
-    case 11:
+    case REGHOF_INDIV_SUBPROC_PRINT_MON_SPECIES_LEVEL_GENDER_AND_CRY:
         ScheduleWindowCopyToVram(&data->windows[2]);
-        data->unk_13060_0 = TRUE;
+        data->requestUnsilhouetteFrontpic = TRUE;
         ++data->subprocStage;
         break;
-    case 12:
+    case REGHOF_INDIV_SUBPROC_HOLD_MON_SPECIES_LEVEL_GENDER:
         if (data->subprocCounter == 20) {
             data->subprocCounter = 0;
             ++data->subprocStage;
@@ -2028,11 +2061,11 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
             ++data->subprocCounter;
         }
         break;
-    case 13:
+    case REGHOF_INDIV_SUBPROC_PRINT_MON_CAUGHT_DETAIL:
         ScheduleWindowCopyToVram(&data->windows[3]);
         ++data->subprocStage;
         break;
-    case 14:
+    case REGHOF_INDIV_SUBPROC_HOLD_MON_CAUGHT_DETAIL:
         if (data->subprocCounter == 240) {
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, 72);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, 0);
@@ -2050,7 +2083,7 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
             ++data->subprocCounter;
         }
         break;
-    case 15:
+    case REGHOF_INDIV_SUBPROC_FLY_OUT:
         if (data->subprocCounter == 10) {
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_SET_X, -80);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_SET_Y, -200);
@@ -2088,7 +2121,7 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
             ++data->subprocCounter;
         }
         break;
-    case 16:
+    case REGHOF_INDIV_SUBPROC_TAIL_DELAY:
         if (data->subprocCounter == 60) {
             return FALSE;
         } else {
@@ -2102,13 +2135,13 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
 
 static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
     switch (data->subprocStage) {
-    case 0:
+    case REGHOF_INDIV_SUBPROC_FLY_IN_BACKPIC:
         if (data->subprocCounter == 10) {
-            u8 r5 = data->mons[data->curMonIndex].yOffset;
+            u8 yOffset = data->mons[data->curMonIndex].yOffset;
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_1, BG_POS_OP_SET_X, 72);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, -256);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK], 160, r5 + 152);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 158, r5 + 152);
+            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK], 160, yOffset + 152);
+            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 158, yOffset + 152);
             data->subprocCounter = 0;
             ++data->subprocStage;
         } else {
@@ -2119,11 +2152,11 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
             ++data->subprocCounter;
         }
         break;
-    case 1:
-        data->unk_13060_1 = TRUE;
+    case REGHOF_INDIV_SUBPROC_BACKPIC_CRY:
+        data->requestUnsilhouetteBackpic = TRUE;
         ++data->subprocStage;
         break;
-    case 2:
+    case REGHOF_INDIV_SUBPROC_HOLD_BACKPIC:
         if (data->subprocCounter == 50) {
             data->subprocCounter = 0;
             ++data->subprocStage;
@@ -2131,7 +2164,7 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
             ++data->subprocCounter;
         }
         break;
-    case 3:
+    case REGHOF_INDIV_SUBPROC_FLY_IN_OVERWORLD_SPRITE:
         if (data->subprocCounter == 6) {
             UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], 224, 40);
             UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], 225, 39);
@@ -2144,7 +2177,7 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
             ++data->subprocCounter;
         }
         break;
-    case 4:
+    case REGHOF_INDIV_SUBPROC_ANIM_OVERWORLD_SPRITE:
         if (data->mons[data->curMonIndex].species == 98 || data->mons[data->curMonIndex].species == 99) {
             RegisterHallOfFame_StartPicAnimSeq(data, REGHOF_PIC_INDIV_OWSPRITE, 3);
             RegisterHallOfFame_StartPicAnimSeq(data, REGHOF_PIC_INDIV_OWSPRITE_SHADOW, 3);
@@ -2154,7 +2187,7 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
         }
         ++data->subprocStage;
         break;
-    case 5:
+    case REGHOF_INDIV_SUBPROC_HOLD_OVERWORLD_SPRITE:
         if (data->subprocCounter == 20) {
             data->subprocCounter = 0;
             ++data->subprocStage;
@@ -2162,11 +2195,11 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
             ++data->subprocCounter;
         }
         break;
-    case 6:
+    case REGHOF_INDIV_SUBPROC_SHOW_HEADER_WINDOW:
         ScheduleWindowCopyToVram(&data->windows[0]);
         ++data->subprocStage;
         break;
-    case 7:
+    case REGHOF_INDIV_SUBPROC_HOLD_HEADER_WINDOW:
         if (data->subprocCounter == 60) {
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, 272);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, 256);
@@ -2178,7 +2211,7 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
             ++data->subprocCounter;
         }
         break;
-    case 8:
+    case REGHOF_INDIV_SUBPROC_FLY_IN_FRONTPIC:
         if (data->subprocCounter == 8) {
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, 144);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, 192);
@@ -2195,7 +2228,7 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
             ++data->subprocCounter;
         }
         break;
-    case 9:
+    case REGHOF_INDIV_SUBPROC_SILHOUETTE_BACKPIC_OVERWORLD_SPRITES:
         ScheduleWindowCopyToVram(&data->windows[4]);
         RegisterHallOfFame_SetSilhouettePalette(data, 2, REGHOF_SILHOUETTE_PAL_BLACK);
         RegisterHallOfFame_SetSilhouettePalette(data, 4, REGHOF_SILHOUETTE_PAL_BLACK);
@@ -2203,7 +2236,7 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
         RegisterHallOfFame_SetSilhouettePalette(data, 5, REGHOF_SILHOUETTE_PAL_RED);
         ++data->subprocStage;
         break;
-    case 10:
+    case REGHOF_INDIV_SUBPROC_HOLD_FRONTPIC:
         if (data->subprocCounter == 40) {
             data->subprocCounter = 0;
             ++data->subprocStage;
@@ -2211,12 +2244,12 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
             ++data->subprocCounter;
         }
         break;
-    case 11:
+    case REGHOF_INDIV_SUBPROC_PRINT_MON_SPECIES_LEVEL_GENDER_AND_CRY:
         ScheduleWindowCopyToVram(&data->windows[5]);
-        data->unk_13060_0 = TRUE;
+        data->requestUnsilhouetteFrontpic = TRUE;
         ++data->subprocStage;
         break;
-    case 12:
+    case REGHOF_INDIV_SUBPROC_HOLD_MON_SPECIES_LEVEL_GENDER:
         if (data->subprocCounter == 20) {
             data->subprocCounter = 0;
             ++data->subprocStage;
@@ -2224,11 +2257,11 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
             ++data->subprocCounter;
         }
         break;
-    case 13:
+    case REGHOF_INDIV_SUBPROC_PRINT_MON_CAUGHT_DETAIL:
         ScheduleWindowCopyToVram(&data->windows[6]);
         ++data->subprocStage;
         break;
-    case 14:
+    case REGHOF_INDIV_SUBPROC_HOLD_MON_CAUGHT_DETAIL:
         if (data->subprocCounter == 240) {
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, -256);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, 0);
@@ -2246,7 +2279,7 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
             ++data->subprocCounter;
         }
         break;
-    case 15:
+    case REGHOF_INDIV_SUBPROC_FLY_OUT:
         if (data->subprocCounter == 10) {
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_SET_X, 80);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_SET_Y, -200);
@@ -2284,7 +2317,7 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
             ++data->subprocCounter;
         }
         break;
-    case 16:
+    case REGHOF_INDIV_SUBPROC_TAIL_DELAY:
         if (data->subprocCounter == 60) {
             return FALSE;
         } else {
@@ -2316,7 +2349,7 @@ static void RegisterHallOfFame_GetPartyDetails(RegisterHallOfFameData *data) {
             hofMon->personality = GetMonData(pokemon, MON_DATA_PERSONALITY, NULL);
             hofMon->form = GetMonData(pokemon, MON_DATA_FORM, NULL);
             hofMon->gender = GetMonData(pokemon, MON_DATA_GENDER, NULL);
-            hofMon->yOffset = sub_020708D8(hofMon->species, hofMon->gender, 0, hofMon->form, hofMon->personality) + 8;
+            hofMon->yOffset = GetMonPicHeightBySpeciesGenderForme(hofMon->species, hofMon->gender, 0, hofMon->form, hofMon->personality) + 8;
             hofMon->metLocation = GetMonData(pokemon, MON_DATA_MET_LOCATION, NULL);
             hofMon->level = GetMonData(pokemon, MON_DATA_LEVEL, NULL);
             hofMon->partyIndex = i;
@@ -2341,37 +2374,37 @@ static void RegisterHallOfFame_GetPartyDetails(RegisterHallOfFameData *data) {
     NARC_Delete(narc);
 }
 
-static int RegisterHallOfFame_GetMetLocationType(RegisterHallOfFameData *data, Pokemon *pokemon, PlayerProfile *profile) {
+static RegisterHallOfFame_MetLocationType RegisterHallOfFame_GetMetLocationType(RegisterHallOfFameData *data, Pokemon *pokemon, PlayerProfile *profile) {
     BOOL encry = AcquireMonLock(pokemon);
-    int ret;
+    RegisterHallOfFame_MetLocationType ret;
     int version = GetMonData(pokemon, MON_DATA_GAME_VERSION, NULL);
     if (version == VERSION_SAPPHIRE || version == VERSION_RUBY || version == VERSION_EMERALD) {
-        ret = 4;
+        ret = REGHOF_METLOC_HOENN;
     } else if (version == VERSION_FIRE_RED || version == VERSION_LEAF_GREEN) {
-        ret = 3;
+        ret = REGHOF_METLOC_KANTO;
     } else if (version == VERSION_GAMECUBE) {
-        ret = 6;
+        ret = REGHOF_METLOC_ORRE;
     } else if (version == VERSION_DIAMOND || version == VERSION_PEARL || version == VERSION_PLATINUM) {
-        ret = 5;
+        ret = REGHOF_METLOC_SINNOH;
     } else if (GetMonData(pokemon, MON_DATA_FATEFUL_ENCOUNTER, NULL)) {
-        ret = 7;
+        ret = REGHOF_METLOC_FATEFUL;
     } else if (MonIsInGameTradePoke(pokemon, NPC_TRADE_SHUCKIE_SHUCKLE) == TRUE) {
-        ret = 8;
+        ret = REGHOF_METLOC_SHUCKIE;
     } else if (MonIsInGameTradePoke(pokemon, NPC_TRADE_KENYA_SPEAROW) == TRUE) {
-        ret = 9;
+        ret = REGHOF_METLOC_KENYA;
     } else if (PlayerProfile_GetTrainerID(profile) != GetMonData(pokemon, MON_DATA_OTID, NULL)) {
-        ret = 2;
+        ret = REGHOF_METLOC_TRADED;
     } else {
         PlayerName_FlatToString(profile, data->strbuf1);
         GetMonData(pokemon, MON_DATA_OT_NAME_2, data->strbuf2);
         if (String_Compare(data->strbuf1, data->strbuf2)) {
-            ret = 2;
+            ret = REGHOF_METLOC_TRADED;
         } else if (GetMonData(pokemon, MON_DATA_MET_LOCATION, NULL) >= METLOC_DAY_CARE_COUPLE) {
-            ret = 7;
+            ret = REGHOF_METLOC_FATEFUL;
         } else if (GetMonData(pokemon, MON_DATA_EGG_MET_MONTH, NULL) == 0) {
-            ret = 0;
+            ret = REGHOF_METLOC_CAUGHT;
         } else {
-            ret = 1;
+            ret = REGHOF_METLOC_HATCHED;
         }
     }
     ReleaseMonLock(pokemon, encry);
@@ -2414,7 +2447,7 @@ static void RegisterHallOfFame_CreateTask_IndivMonAnimAndCry(RegisterHallOfFameD
     taskData->hofMon = &data->mons[monIdx];
     taskData->startCry = startCry;
     taskData->narc = data->narcA180;
-    taskData->imageLocation = NNS_G2dGetImageLocation(sub_02024B1C(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
+    taskData->imageLocation = NNS_G2dGetImageLocation(Sprite_GetImageProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
     if (facing == 2) {
         taskData->charbuf = taskData->hofMon->backspriteCharbuf;
         taskData->unk_24 = 1;
@@ -2555,7 +2588,7 @@ static BOOL RegisterHallOfFame_WholeMonsSceneSubproc(RegisterHallOfFameData *dat
         }
         RegisterHallOfFame_MonSpritePosScaleAnimStep(data->monPics[REGHOF_PIC_WHOLE_PLAYER], &sPicPosScaleAnimParams[19], 60, data->subprocCounter);
         RegisterHallOfFame_MonSpritePosScaleAnimStep(data->monPics[REGHOF_PIC_WHOLE_PLAYER_SHADOW], &sPicPosScaleAnimParams[26], 60, data->subprocCounter);
-        if (data->subprocStage == 7) {
+        if (data->subprocStage == REGHOF_WHOLE_SUBPROC_WAIT_FINAL_FADEOUT) {
             if (data->subprocCounter == 60) {
                 if (IsPaletteFadeFinished() == TRUE) {
                     data->subprocCounter = 0;
@@ -2718,10 +2751,10 @@ static void RegisterHallOfFame_WholePartyScene_CreateSprites(RegisterHallOfFameD
     }
     r4 = AllocFromHeap(HEAP_ID_REGISTER_HALL_OF_FAME, 0x1900);
     sub_020143E0(sp2C.narcId, sp2C.ncbr_id, HEAP_ID_REGISTER_HALL_OF_FAME, &sp1C, r4);
-    RegisterHallOfFame_ReplaceSpriteChar(r4, NNS_G2dGetImageLocation(sub_02024B1C(data->monPics[REGHOF_PIC_WHOLE_PLAYER]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN), 3200);
+    RegisterHallOfFame_ReplaceSpriteChar(r4, NNS_G2dGetImageLocation(Sprite_GetImageProxy(data->monPics[REGHOF_PIC_WHOLE_PLAYER]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN), 3200);
     FreeToHeap(r4);
 
-    GfGfxLoader_GXLoadPal(sp2C.narcId, sp2C.nclr_id, GF_PAL_LOCATION_MAIN_OBJ, (enum GFPalSlotOffset)NNS_G2dGetImagePaletteLocation(sub_02024B34(data->monPics[REGHOF_PIC_WHOLE_PLAYER]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN), 0x20, HEAP_ID_REGISTER_HALL_OF_FAME);
+    GfGfxLoader_GXLoadPal(sp2C.narcId, sp2C.nclr_id, GF_PAL_LOCATION_MAIN_OBJ, (enum GFPalSlotOffset)NNS_G2dGetImagePaletteLocation(Sprite_GetPaletteProxy(data->monPics[REGHOF_PIC_WHOLE_PLAYER]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN), 0x20, HEAP_ID_REGISTER_HALL_OF_FAME);
 
     data->monPics[REGHOF_PIC_WHOLE_TWINKLE] = SpriteRenderer_LoadResourcesAndCreateSprite(data->spriteRenderer, data->spriteGfxHandler, &sPicTemplates[20]);
     UnkImageStruct_SetSpriteVisibleFlag(data->monPics[REGHOF_PIC_WHOLE_TWINKLE], FALSE);

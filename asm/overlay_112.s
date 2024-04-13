@@ -24508,7 +24508,7 @@ ov112_021F1D70: ; 0x021F1D70
 	bl Sprite_GetVramType
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	add r1, r4, #0
 	bl NNS_G2dGetImageLocation
 	add r6, r0, #0
@@ -25054,7 +25054,7 @@ _021F21B8:
 	mov r1, #0x20
 	bl DC_FlushRange
 	ldr r0, [sp, #0x1c]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #1
 	bl NNS_G2dGetImagePaletteLocation
 	add r1, r0, #0

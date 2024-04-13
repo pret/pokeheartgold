@@ -171,8 +171,8 @@
 .public Sprite_SetPriority
 .public Sprite_SetPalIndex
 .public Sprite_SetDrawPriority
-.public sub_02024B1C
-.public sub_02024B34
+.public Sprite_GetImageProxy
+.public Sprite_GetPaletteProxy
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchNew
 .public GF_AssertFail

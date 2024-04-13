@@ -136,7 +136,7 @@
 .public GfGfx_EngineBTogglePlanes
 .public GfGfx_BothDispOn
 .public Camera_SetPerspectiveClippingPlane
-.public sub_02024B34
+.public Sprite_GetPaletteProxy
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public String_New

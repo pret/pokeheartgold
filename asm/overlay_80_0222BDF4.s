@@ -6823,7 +6823,7 @@ _0222F0DA:
 	ldrh r1, [r1, #0x36]
 	bl sub_02014494
 	ldr r0, [r6]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	add r7, r0, #0
 	ldr r0, [sp, #0x28]
 	mov r1, #4
@@ -6834,7 +6834,7 @@ _0222F0DA:
 	lsl r2, r2, #6
 	bl GX_LoadOBJ
 	ldr r0, [r6]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #1
 	bl sub_02022808
 	lsl r7, r0, #4

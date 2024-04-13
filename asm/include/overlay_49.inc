@@ -185,7 +185,7 @@
 .public Set2dSpriteAnimActiveFlag
 .public Set2dSpriteAnimSeqNo
 .public sub_02024AA8
-.public sub_02024B1C
+.public Sprite_GetImageProxy
 .public GF_AssertFail
 .public G3dResFileHeader_GetSizeWithoutTex
 .public String_New

@@ -150,8 +150,8 @@
 .public Camera_SetAnglePos
 .public Camera_GetAngle
 .public Camera_SetLookAtCamTarget
-.public sub_02024B1C
-.public sub_02024B34
+.public Sprite_GetImageProxy
+.public Sprite_GetPaletteProxy
 .public Sprite_IsCellAnimationRunning
 .public GF_AssertFail
 .public CapsuleGetSealI
@@ -160,7 +160,7 @@
 .public SealOnCapsuleGetY
 .public GetMonData
 .public GetMonSpriteCharAndPlttNarcIdsEx
-.public sub_020708D8
+.public GetMonPicHeightBySpeciesGenderForme
 .public sub_02071FDC
 .public sub_020729D8
 .public sub_020729FC

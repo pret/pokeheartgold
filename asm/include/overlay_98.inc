@@ -62,8 +62,8 @@
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_DisableEngineBPlanes
 .public GfGfx_EngineBTogglePlanes
-.public sub_02024B1C
-.public sub_02024B34
+.public Sprite_GetImageProxy
+.public Sprite_GetPaletteProxy
 .public Sprite_GetVramType
 .public TouchscreenHitbox_TouchNewIsIn
 .public GF_AssertFail

@@ -3287,7 +3287,7 @@ _021EE260:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	ldr r0, [r0]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	mov r1, #2
 	bl NNS_G2dGetImageLocation
 	str r0, [sp, #8]
