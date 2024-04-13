@@ -1688,18 +1688,18 @@ static void RegisterHallOfFame_IndivMonsScene_UnloadMonOverworldSprite(RegisterH
 static void RegisterHallOfFame_IndivMonsScene_SetMon3dSpriteTex(RegisterHallOfFameData *data, RegisterHofMon *hofMon, int picIdx) {
     NNSG3dResTex *resTex;
     void *fileData;
-    const void *sp18;
-    u32 sp14 = NNS_G2dGetImageLocation(Sprite_GetImageProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
-    int sp10 = hofMon->tsure_param[1] ? 8 : 4;
-    u32 size = 32 * sp10 * sp10;
+    const void *texData;
+    u32 imageLoc = NNS_G2dGetImageLocation(Sprite_GetImageProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
+    int spriteSquareDim = hofMon->tsure_param[1] ? 8 : 4;
+    u32 size = 32 * spriteSquareDim * spriteSquareDim;
     int fileno = RegisterHallOfFame_GetMmodelBySpeciesFormGender(hofMon->species, hofMon->form, hofMon->gender);
     fileData = AllocAndReadWholeNarcMemberByIdPair(NARC_data_mmodel_mmodel, fileno, HEAP_ID_REGISTER_HALL_OF_FAME);
     resTex = NNS_G3dGetTex(fileData);
-    sp18 = NNS_G3dGetTexData(resTex);
+    texData = NNS_G3dGetTexData(resTex);
     void *buffer = AllocFromHeap(HEAP_ID_REGISTER_HALL_OF_FAME, size);
     for (u8 i = 0; i < 8; ++i) {
-        sub_020145B4((const u8 *)sp18 + size * i, sp10, 0, 0, sp10, sp10, buffer);
-        RegisterHallOfFame_ReplaceSpriteChar(buffer, sp14 + size * i, size);
+        sub_020145B4((const u8 *)texData + size * i, spriteSquareDim, 0, 0, spriteSquareDim, spriteSquareDim, buffer);
+        RegisterHallOfFame_ReplaceSpriteChar(buffer, imageLoc + size * i, size);
     }
     FreeToHeap(buffer);
 
@@ -1757,7 +1757,7 @@ static void RegisterHallOfFames_IndivMons_LoadBgGfx(RegisterHallOfFameData *data
 }
 
 static void RegisterHallOfFame_IndivMonsScene_InitWindows(RegisterHallOfFameData *data) {
-    for (int i = 0; i < 7u; ++i) {
+    for (u32 i = 0; i < 7; ++i) {
         AddWindow(data->bgConfig, &data->windows[i], &sIndivMonsSceneWindowTemplates[i]);
     }
 
@@ -1768,7 +1768,7 @@ static void RegisterHallOfFame_IndivMonsScene_InitWindows(RegisterHallOfFameData
 }
 
 static void RegisterHallOfFame_IndivMonsScene_RemoveWindows(RegisterHallOfFameData *data) {
-    for (int i = 0; i < 7u; ++i) {
+    for (u32 i = 0; i < 7; ++i) {
         RemoveWindow(&data->windows[i]);
     }
 }
@@ -1858,7 +1858,7 @@ static void RegisterHallOfFame_IndivMonsScene_CreateMonSpriteAndEnableObjLayer(R
 }
 
 static void RegisterHallOfFame_IndivMonsScene_DeleteSprites(RegisterHallOfFameData *data) {
-    for (u32 i = 0; i < 15u; ++i) {
+    for (u32 i = 0; i < 15; ++i) {
         RegisterHallOfFame_DeletePicByIndex(data, i);
     }
     RegisterHallOfFame_IndivMonsScene_UnloadMonOverworldSprite(data);
@@ -2669,7 +2669,7 @@ static void RegisterHallOfFame_WholePartyScene_LoadBgGfx(RegisterHallOfFameData 
 }
 
 static void RegisterHallOfFame_WholePartyScene_InitWindows(RegisterHallOfFameData *data) {
-    for (int i = 0; i < 2u; ++i) {
+    for (u32 i = 0; i < 2; ++i) {
         AddWindow(data->bgConfig, &data->windows[i], &sWholePartySceneWindowTemplates[i]);
     }
 
@@ -2690,7 +2690,7 @@ static void RegisterHallOfFame_WholePartyScene_InitWindows(RegisterHallOfFameDat
 }
 
 static void RegisterHallOfFame_WholePartyScene_DeleteWindows(RegisterHallOfFameData *data) {
-    for (int i = 0; i < 2u; ++i) {
+    for (u32 i = 0; i < 2; ++i) {
         RemoveWindow(&data->windows[i]);
     }
 }

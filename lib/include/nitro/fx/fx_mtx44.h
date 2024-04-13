@@ -35,22 +35,18 @@ static inline void MTX_Identity44 (MtxFx44 * pDst) {
 }
 
 static inline void MTX_Copy44 (const MtxFx44 * pSrc, MtxFx44 * pDst) {
-
 	MI_Copy64B(pSrc, pDst);
 }
 
 static inline void MTX_Copy44To33 (const MtxFx44 * pSrc, MtxFx33 * pDst) {
-
 	MTX_Copy44To33_(pSrc, pDst);
 }
 
 static inline void MTX_Copy44To43 (const MtxFx44 * pSrc, MtxFx43 * pDst) {
-
 	MTX_Copy44To43_(pSrc, pDst);
 }
 
 static inline void MTX_Transpose44 (const MtxFx44 * pSrc, MtxFx44 * pDst) {
-
 	MTX_Transpose44_(pSrc, pDst);
 }
 
