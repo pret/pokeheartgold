@@ -90,8 +90,7 @@ void sub_0200AEB0(GF_2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(obj) == GF_GFX_RES_TYPE_CHAR);
 
-    int id = GF2DGfxResObj_GetResID(obj);
-    sub_02021884(id);
+    sub_02021884(GF2DGfxResObj_GetResID(obj));
 }
 
 void sub_0200AED4(GF_2DGfxResObjList *charResObjList) {
@@ -107,8 +106,7 @@ NNSG2dImageProxy *sub_0200AF00(GF_2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(obj) == GF_GFX_RES_TYPE_CHAR);
 
-    int id = GF2DGfxResObj_GetResID(obj);
-    return sub_02021910(id);
+    return sub_02021910(GF2DGfxResObj_GetResID(obj));
 }
 
 NNSG2dImageProxy *sub_0200AF24(GF_2DGfxResObj *charResObj, GF_2DGfxResObj *cellResObj) {
@@ -132,8 +130,6 @@ void sub_0200AF80(const NNSG2dImageProxy* imgProxy) {
     GF_ASSERT(imgProxy != NULL);
     sub_02021A50(imgProxy);
 }
-
-// ------------------
 
 BOOL sub_0200AF94(GF_2DGfxResObj *plttResObj) {
     GF_ASSERT(plttResObj != NULL);
@@ -188,8 +184,7 @@ void sub_0200B0A8(GF_2DGfxResObj *plttResObj) {
     GF_ASSERT(plttResObj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(plttResObj) == GF_GFX_RES_TYPE_PLTT);
 
-    int resID = GF2DGfxResObj_GetResID(plttResObj);
-    sub_02022744(resID);
+    sub_02022744(GF2DGfxResObj_GetResID(plttResObj));
 }
 
 void sub_0200B0CC(GF_2DGfxResObjList *plttResObjList) {
