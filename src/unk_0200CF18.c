@@ -60,12 +60,12 @@ BOOL sub_0200CF70(SpriteRenderer* renderer, const Unk122_021E92FC* a1, const Unk
     if (renderer == NULL) {
         return FALSE;
     }
-    struct UnkStruct_020215A0 sp14;
-    sp14.unk_00 = a2->unk0;
-    sp14.unk_04 = a2->unk4;
-    sp14.unk_08 = a2->unk8;
-    sp14.heapId = renderer->heapId;
-    ObjCharTransfer_InitEx(&sp14, a2->charModeMain, a2->charModeSub);
+    ObjCharTransferTemplate transferTemplate;
+    transferTemplate.maxTasks = a2->maxTasks;
+    transferTemplate.sizeMain = a2->sizeMain;
+    transferTemplate.sizeSub = a2->sizeSub;
+    transferTemplate.heapId = renderer->heapId;
+    ObjCharTransfer_InitEx(&transferTemplate, a2->charModeMain, a2->charModeSub);
     sub_02022588(a3, renderer->heapId);
     NNS_G2dInitOamManagerModule();
     if (renderer->hasOamManager == TRUE) {

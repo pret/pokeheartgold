@@ -609,7 +609,7 @@ static void createOamManager(HeapID heapId) {
     NNS_G2dInitOamManagerModule();
     OamManager_Create(0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20, heapId);
     {
-        struct UnkStruct_020215A0 baseTrans = {
+        ObjCharTransferTemplate baseTrans = {
             3,
             0,
             0x2800,

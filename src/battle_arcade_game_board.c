@@ -1296,10 +1296,10 @@ static void ov84_0223F418(GAME_BOARD_SUB_3E8 *work) {
     sub_02022608();
 }
 
-extern UnkStruct_020215A0 ov84_0223F9E8;
+extern ObjCharTransferTemplate ov84_0223F9E8;
 
 static void ov84_0223F480(void) {
-    UnkStruct_020215A0 var = ov84_0223F9E8;
+    ObjCharTransferTemplate var = ov84_0223F9E8;
     ObjCharTransfer_InitEx(&var, GX_OBJVRAMMODE_CHAR_1D_32K, GX_OBJVRAMMODE_CHAR_1D_32K);
     sub_02022588(14, HEAP_ID_GAME_BOARD);
     sub_020216C8();

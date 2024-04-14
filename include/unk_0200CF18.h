@@ -65,9 +65,9 @@ typedef struct Unk122_021E92FC {
 } Unk122_021E92FC;
 
 typedef struct Unk122_021E92D0 {
-    int unk0;
-    int unk4;
-    int unk8;
+    int maxTasks;
+    int sizeMain;
+    int sizeSub;
     GXOBJVRamModeChar charModeMain;
     GXOBJVRamModeChar charModeSub;
 } Unk122_021E92D0;

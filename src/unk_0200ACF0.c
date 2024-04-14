@@ -7,12 +7,12 @@ BOOL sub_0200ACF0(GF_2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(obj) == GF_GFX_RES_TYPE_CHAR);
 
-    ObjCharTransferTaskTemplate sp00;
-    sp00.charData = GF2DGfxResObj_GetCharDataPtr(obj);
-    sp00.vram = GF2DGfxResObj_GetLoadAddress(obj);
-    sp00.id = GF2DGfxResObj_GetResID(obj);
-    sp00.unk_0C = FALSE;
-    return sub_02021758(&sp00);
+    ObjCharTransferTaskTemplate template;
+    template.charData = GF2DGfxResObj_GetCharDataPtr(obj);
+    template.vram = GF2DGfxResObj_GetLoadAddress(obj);
+    template.id = GF2DGfxResObj_GetResID(obj);
+    template.unk_0C = FALSE;
+    return sub_02021758(&template);
 }
 
 void sub_0200AD30(GF_2DGfxResObjList *charResObjList) {
@@ -28,24 +28,24 @@ BOOL sub_0200AD64(GF_2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(obj) == GF_GFX_RES_TYPE_CHAR);
 
-    ObjCharTransferTaskTemplate sp00;
-    sp00.charData = GF2DGfxResObj_GetCharDataPtr(obj);
-    sp00.vram = GF2DGfxResObj_GetLoadAddress(obj);
-    sp00.id = GF2DGfxResObj_GetResID(obj);
-    sp00.unk_0C = FALSE;
-    return sub_020217B0(&sp00);
+    ObjCharTransferTaskTemplate template;
+    template.charData = GF2DGfxResObj_GetCharDataPtr(obj);
+    template.vram = GF2DGfxResObj_GetLoadAddress(obj);
+    template.id = GF2DGfxResObj_GetResID(obj);
+    template.unk_0C = FALSE;
+    return sub_020217B0(&template);
 }
 
 BOOL sub_0200ADA4(GF_2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(obj) == GF_GFX_RES_TYPE_CHAR);
 
-    ObjCharTransferTaskTemplate sp00;
-    sp00.charData = GF2DGfxResObj_GetCharDataPtr(obj);
-    sp00.vram = GF2DGfxResObj_GetLoadAddress(obj);
-    sp00.id = GF2DGfxResObj_GetResID(obj);
-    sp00.unk_0C = TRUE;
-    return sub_02021758(&sp00);
+    ObjCharTransferTaskTemplate template;
+    template.charData = GF2DGfxResObj_GetCharDataPtr(obj);
+    template.vram = GF2DGfxResObj_GetLoadAddress(obj);
+    template.id = GF2DGfxResObj_GetResID(obj);
+    template.unk_0C = TRUE;
+    return sub_02021758(&template);
 }
 
 void sub_0200ADE4(GF_2DGfxResObjList *charResObjList) {
@@ -61,12 +61,12 @@ BOOL sub_0200AE18(GF_2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(obj) == GF_GFX_RES_TYPE_CHAR);
 
-    ObjCharTransferTaskTemplate sp00;
-    sp00.charData = GF2DGfxResObj_GetCharDataPtr(obj);
-    sp00.vram = GF2DGfxResObj_GetLoadAddress(obj);
-    sp00.id = GF2DGfxResObj_GetResID(obj);
-    sp00.unk_0C = TRUE;
-    return sub_020217B0(&sp00);
+    ObjCharTransferTaskTemplate template;
+    template.charData = GF2DGfxResObj_GetCharDataPtr(obj);
+    template.vram = GF2DGfxResObj_GetLoadAddress(obj);
+    template.id = GF2DGfxResObj_GetResID(obj);
+    template.unk_0C = TRUE;
+    return sub_020217B0(&template);
 }
 
 void sub_0200AE58(GF_2DGfxResObjList *charResObjList) {
@@ -135,12 +135,12 @@ BOOL sub_0200AF94(GF_2DGfxResObj *plttResObj) {
     GF_ASSERT(plttResObj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(plttResObj) == GF_GFX_RES_TYPE_PLTT);
 
-    UnkStruct_02022660 sp00;
-    sp00.plttData = GF2DGfxResObj_GetPlttDataPtr(plttResObj);
-    sp00.vram = GF2DGfxResObj_GetLoadAddress(plttResObj);
-    sp00.id = GF2DGfxResObj_GetResID(plttResObj);
-    sp00.plttNum = GF2DGfxResObj_GetPlttNum(plttResObj);
-    return sub_02022660(&sp00);
+    UnkStruct_02022660 template;
+    template.plttData = GF2DGfxResObj_GetPlttDataPtr(plttResObj);
+    template.vram = GF2DGfxResObj_GetLoadAddress(plttResObj);
+    template.id = GF2DGfxResObj_GetResID(plttResObj);
+    template.plttNum = GF2DGfxResObj_GetPlttNum(plttResObj);
+    return sub_02022660(&template);
 }
 
 void sub_0200AFD8(GF_2DGfxResObjList *plttResObjList) {
@@ -156,12 +156,12 @@ BOOL sub_0200B00C(GF_2DGfxResObj *plttResObj) {
     GF_ASSERT(plttResObj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(plttResObj) == GF_GFX_RES_TYPE_PLTT);
 
-    UnkStruct_02022660 sp00;
-    sp00.plttData = GF2DGfxResObj_GetPlttDataPtr(plttResObj);
-    sp00.vram = GF2DGfxResObj_GetLoadAddress(plttResObj);
-    sp00.id = GF2DGfxResObj_GetResID(plttResObj);
-    sp00.plttNum = GF2DGfxResObj_GetPlttNum(plttResObj);
-    return sub_020226A4(&sp00);
+    UnkStruct_02022660 template;
+    template.plttData = GF2DGfxResObj_GetPlttDataPtr(plttResObj);
+    template.vram = GF2DGfxResObj_GetLoadAddress(plttResObj);
+    template.id = GF2DGfxResObj_GetResID(plttResObj);
+    template.plttNum = GF2DGfxResObj_GetPlttNum(plttResObj);
+    return sub_020226A4(&template);
 }
 
 void sub_0200B050(GF_2DGfxResObjList *plttResObjList) {

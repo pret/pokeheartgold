@@ -463,7 +463,7 @@ static void LoadBgGraphics(CreditsAppWork *work) {
 }
 
 static void CreateOamAndObjResMgrs(CreditsAppWork *work) {
-    UnkStruct_020215A0 temp;
+    ObjCharTransferTemplate temp;
     UnkOv021E60F6 temp2;
 
     GX_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_128K);

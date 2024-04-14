@@ -4,12 +4,12 @@
 #include "heap.h"
 #include <nnsys.h>
 
-typedef struct UnkStruct_020215A0 {
-    int unk_00;
-    u32 unk_04;
-    u32 unk_08;
+typedef struct ObjCharTransferTemplate {
+    int maxTasks;
+    u32 sizeMain;
+    u32 sizeSub;
     HeapID heapId;
-} UnkStruct_020215A0;
+} ObjCharTransferTemplate;
 
 typedef struct UnkStruct_02021758 {
     NNSG2dCharacterData *charData;
@@ -27,8 +27,8 @@ typedef struct UnkStruct_02021AC8 {
 
 typedef struct ObjCharTransferTasksManager ObjCharTransferTasksManager;
 
-void ObjCharTransfer_Init(UnkStruct_020215A0 *template);
-void ObjCharTransfer_InitEx(UnkStruct_020215A0 *template, GXOBJVRamModeChar modeMain, GXOBJVRamModeChar modeSub);
+void ObjCharTransfer_Init(ObjCharTransferTemplate *template);
+void ObjCharTransfer_InitEx(ObjCharTransferTemplate *template, GXOBJVRamModeChar modeMain, GXOBJVRamModeChar modeSub);
 void ObjCharTransfer_Destroy(void);
 void sub_020216C8(void);
 void sub_020216F4(u32 a0, u32 a1, NNS_G2D_VRAM_TYPE vram);

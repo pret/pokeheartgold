@@ -57,9 +57,9 @@ static const GraphicsModes ov78_021E67E0 = {
 };
 
 static const Unk122_021E92D0 ov78_021E67F0 = {
-    .unk0 = 0,
-    .unk4 = 0x20000,
-    .unk8 = 0x4000,
+    .maxTasks = 0,
+    .sizeMain = 0x20000,
+    .sizeSub = 0x4000,
     .charModeMain = GX_OBJVRAMMODE_CHAR_1D_32K,
     .charModeSub = GX_OBJVRAMMODE_CHAR_1D_32K,
 };
@@ -592,7 +592,7 @@ static void CertificatesApp_SetupSpriteRenderer(CertificatesApp_Data *data) {
 
     Unk122_021E92FC unkTemplate1 = ov78_021E6838;
     Unk122_021E92D0 unkTemplate2 = ov78_021E67F0;
-    unkTemplate2.unk0 = 0x20;
+    unkTemplate2.maxTasks = 0x20;
     sub_0200CF70(data->spriteRenderer, &unkTemplate1, &unkTemplate2, 0x20);
     sub_0200CFF4(data->spriteRenderer, data->spriteGfxHandler, 0x20);
 
