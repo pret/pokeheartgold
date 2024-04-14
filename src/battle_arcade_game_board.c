@@ -21,7 +21,7 @@
 #include "unk_02005D10.h"
 #include "touchscreen.h"
 #include "unk_02022588.h"
-#include "unk_020215A0.h"
+#include "obj_char_transfer.h"
 #include "unk_0200A090.h"
 #include "unk_02078E30.h"
 #include "vram_transfer_manager.h"

@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_UNK_020215A0_H
-#define POKEHEARTGOLD_UNK_020215A0_H
+#ifndef POKEHEARTGOLD_OBJ_CHAR_TRANSFER_H
+#define POKEHEARTGOLD_OBJ_CHAR_TRANSFER_H
 
 #include "heap.h"
 #include <nnsys.h>
@@ -45,4 +45,4 @@ void sub_02021B5C(UnkStruct_02021AC8 *a0);
 ObjCharTransferTasksManager *sub_02021BD0(void);
 void sub_02021BEC(ObjCharTransferTasksManager *a0);
 
-#endif //POKEHEARTGOLD_UNK_020215A0_H
+#endif //POKEHEARTGOLD_OBJ_CHAR_TRANSFER_H

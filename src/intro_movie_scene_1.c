@@ -4,7 +4,7 @@
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
-#include "unk_020215A0.h"
+#include "obj_char_transfer.h"
 #include "unk_02022588.h"
 #include "system.h"
 #include "demo/opening/gs_opening.naix"

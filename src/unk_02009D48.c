@@ -4,7 +4,7 @@
 #include "unk_02023694.h"
 #include "unk_02025C44.h"
 #include "unk_0200B150.h"
-#include "unk_020215A0.h"
+#include "obj_char_transfer.h"
 #include "unk_02022588.h"
 
 void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, int plttId, int cellId, int cellAnmId, int multiCellId, int multiCellAnmId, int transfer, int priority, GF_2DGfxResMan *charMan, GF_2DGfxResMan *plttMan, GF_2DGfxResMan *cellMan, GF_2DGfxResMan *cellAnmMan, GF_2DGfxResMan *multiCellMan, GF_2DGfxResMan *multiCellAnmMan) {

@@ -4,7 +4,7 @@
 #include "gf_gfx_loader.h"
 #include "palette.h"
 #include "unk_02009D48.h"
-#include "unk_020215A0.h"
+#include "obj_char_transfer.h"
 #include "unk_02022588.h"
 #include "unk_0200B150.h"
 #include "unk_0200CF18.h"

@@ -1,6 +1,6 @@
 #include "global.h"
 #include "unk_0200ACF0.h"
-#include "unk_020215A0.h"
+#include "obj_char_transfer.h"
 #include "unk_02022588.h"
 
 BOOL sub_0200ACF0(GF_2DGfxResObj *obj) {

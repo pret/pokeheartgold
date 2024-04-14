@@ -3,7 +3,7 @@
 
 #include "global.h"
 #include "gf_gfx_planes.h"
-#include "unk_020215A0.h"
+#include "obj_char_transfer.h"
 #include "bg_window.h"
 #include "credits/credits.h"
 
