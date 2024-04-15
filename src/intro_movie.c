@@ -13,7 +13,7 @@
 #include "title_screen.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
-#include "unk_020215A0.h"
+#include "obj_char_transfer.h"
 #include "unk_02022588.h"
 #include "unk_02023694.h"
 
@@ -185,7 +185,7 @@ static void IntroMovie_InitSpriteGraphicsHW(IntroMovieOverlayData *data) {
     GX_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_32K);
     GXS_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_32K);
 
-    UnkStruct_020215A0 sp14 = {10, 0, 0, HEAP_ID_INTRO_MOVIE};
+    ObjCharTransferTemplate sp14 = {10, 0, 0, HEAP_ID_INTRO_MOVIE};
     ObjCharTransfer_Init(&sp14);
     sub_02022588(10, HEAP_ID_INTRO_MOVIE);
     sub_020216C8();

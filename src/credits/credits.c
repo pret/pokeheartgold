@@ -13,7 +13,7 @@
 #include "unk_0200B150.h"
 #include "sys_task_api.h"
 #include "unk_0200FA24.h"
-#include "unk_020215A0.h"
+#include "obj_char_transfer.h"
 #include "unk_02022588.h"
 #include "unk_02023694.h"
 #include "bg_window.h"
@@ -463,7 +463,7 @@ static void LoadBgGraphics(CreditsAppWork *work) {
 }
 
 static void CreateOamAndObjResMgrs(CreditsAppWork *work) {
-    UnkStruct_020215A0 temp;
+    ObjCharTransferTemplate temp;
     UnkOv021E60F6 temp2;
 
     GX_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_128K);

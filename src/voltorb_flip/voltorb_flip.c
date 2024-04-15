@@ -1693,7 +1693,7 @@ static void ov122_021E7AEC(VoltorbFlipAppWork *work) {
     SpriteResourceCountsListUnion temp1 = ov122_021E92E4;
     Unk122_021E92FC temp2 = ov122_021E92FC;
     Unk122_021E92D0 temp3 = ov122_021E92D0;
-    temp3.unk0 = 0x80;
+    temp3.maxTasks = 0x80;
 
     work->unk144 = SpriteRenderer_Create(work->heapId);
     work->unk148 = SpriteRenderer_CreateGfxHandler(work->unk144);

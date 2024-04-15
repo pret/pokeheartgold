@@ -15,7 +15,7 @@
 #include "unk_02023694.h"
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
-#include "unk_020215A0.h"
+#include "obj_char_transfer.h"
 #include "unk_02022588.h"
 #include "unk_02026E30.h"
 #include "gf_3d_render.h"
@@ -609,7 +609,7 @@ static void createOamManager(HeapID heapId) {
     NNS_G2dInitOamManagerModule();
     OamManager_Create(0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20, heapId);
     {
-        struct UnkStruct_020215A0 baseTrans = {
+        ObjCharTransferTemplate baseTrans = {
             3,
             0,
             0x2800,
