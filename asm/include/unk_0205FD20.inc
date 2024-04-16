@@ -72,11 +72,11 @@
 .public MapObject_GetInitialX
 .public MapObject_GetInitialY
 .public MapObject_GetPrevX
-.public MapObject_SetPrevX
+.public MapObject_SetPreviousX
 .public MapObject_GetPrevHeight
-.public MapObject_SetPrevHeight
+.public MapObject_SetPreviousHeight
 .public MapObject_GetPrevY
-.public MapObject_SetPrevY
+.public MapObject_SetPreviousY
 .public MapObject_GetCurrentX
 .public MapObject_AddCurrentX
 .public MapObject_GetCurrentHeight

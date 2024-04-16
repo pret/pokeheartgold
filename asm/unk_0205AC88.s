@@ -673,7 +673,7 @@ _0205B16C:
 	bl sub_0205FC2C
 	add r0, r4, #0
 	mov r1, #1
-	bl MapObject_ForceSetFacingDirection
+	bl MapObject_SetFacingDirectionDirect
 	add r0, r4, #0
 	mov r1, #0x44
 	bl MapObject_SetHeldMovement
@@ -833,7 +833,7 @@ _0205B2C4:
 	bl sub_0205E3AC
 	add r0, r4, #0
 	mov r1, #1
-	bl MapObject_ForceSetFacingDirection
+	bl MapObject_SetFacingDirectionDirect
 	add r0, r4, #0
 	mov r1, #0x44
 	bl MapObject_SetHeldMovement

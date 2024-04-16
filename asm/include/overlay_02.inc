@@ -258,7 +258,7 @@
 .public sub_0205F1D0
 .public MapObject_GetID
 .public MapObject_GetGfxID
-.public MapObject_ForceSetFacingDirection
+.public MapObject_SetFacingDirectionDirect
 .public MapObject_GetFacingDirection
 .public sub_0205F328
 .public MapObject_GetManager

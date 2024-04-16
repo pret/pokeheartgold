@@ -152,7 +152,13 @@ typedef enum MapObjectFlagBits {
 
 #define MAP_OBJECT_GFX_ID_INVALID 0xFFFF
 
-struct MapObjectInitArgs;
+typedef struct MapObjectInitArgs {
+    u32 mapNo;
+    int objectEventCount;
+    int index;
+    MapObjectManager *manager;
+    ObjectEvent *objectEvents;
+} MapObjectInitArgs;
 
 // FIXME: Some of these declarations are static and don't belong in here.
 MapObjectManager *MapObjectManager_Init(FieldSystem *fieldSystem, u32 objectCount, HeapID heapId);
@@ -172,9 +178,7 @@ void sub_0205E520(MapObjectManager *manager);
 void sub_0205E580(MapObjectManager *manager);
 void FieldSystem_SyncMapObjectsToSaveEx(FieldSystem *fieldSystem, MapObjectManager *manager, SavedMapObject *savedObjects, s32 count);
 void MapObjectManager_RestoreFromSave(MapObjectManager *mapObjectManager, SavedMapObject *savedObjects, u32 objectCount);
-void sub_0205E7C4(LocalMapObject* local_object, SavedMapObject* saved_object);
-void sub_0205E8EC(MapObjectManager* manager, LocalMapObject* object);
-void InitMapObjectsFromEventTemplates(MapObjectManager* man, u32 mapId, u32 nObjs, ObjectEvent* dest);
+void MapObject_CreateFromMultipleObjectEvents(MapObjectManager *manager, u32 mapNo, u32 objectEventCount, ObjectEvent *objectEvents);
 void sub_0205EA08(struct MapObjectInitArgs* args);
 LocalMapObject* MapObjectManager_GetFirstInactiveObject(MapObjectManager*);
 LocalMapObject* sub_0205EA98(MapObjectManager*, u32, u32);
@@ -237,7 +241,7 @@ void MapObject_SetID(LocalMapObject *mapObject, u32 id);
 u32 MapObject_GetID(LocalMapObject *obj);
 void sub_0205F250(LocalMapObject* object, u32 a1);
 u32 sub_0205F254(LocalMapObject *obj);
-void MapObject_SetGfxId(LocalMapObject *mapObject, u32 spriteId);
+void MapObject_SetGfxID(LocalMapObject *mapObject, u32 spriteId);
 u32 MapObject_GetGfxID(LocalMapObject *mapObject);
 void MapObject_SetMovement(LocalMapObject* object, u32 movement);
 u32 MapObject_GetMovement(LocalMapObject *mapObject);
@@ -249,7 +253,7 @@ void MapObject_SetScript(LocalMapObject *mapObject, u32 script);
 u32 MapObject_GetScript(LocalMapObject *mapObject);
 void MapObject_SetInitialFacing(LocalMapObject* object, u32 initial_facing);
 u32 MapObject_GetInitialFacingDirection(LocalMapObject* object);
-void MapObject_ForceSetFacingDirection(LocalMapObject* object, u32 direction);
+void MapObject_SetFacingDirectionDirect(LocalMapObject* object, u32 direction);
 void MapObject_SetFacingDirection(LocalMapObject* object, u32 direction);
 u32 MapObject_GetFacingDirection(LocalMapObject *object);
 u32 MapObject_GetPreviousFacing(LocalMapObject* object);
@@ -330,9 +334,9 @@ u16 ObjectEvent_GetScript(ObjectEvent*);
 u16 ObjectEvent_GetParam(ObjectEvent*, int param);
 s16 ObjectEvent_GetXRange(ObjectEvent*);
 s16 ObjectEvent_GetYRange(ObjectEvent*);
-void MapObject_SetPrevY(LocalMapObject* object, u32 previous_y);
-void MapObject_SetPrevHeight(LocalMapObject* object, u32 previous_height);
-void MapObject_SetPrevX(LocalMapObject* object, u32 previous_x);
+void MapObject_SetPreviousY(LocalMapObject* object, u32 previous_y);
+void MapObject_SetPreviousHeight(LocalMapObject* object, u32 previous_height);
+void MapObject_SetPreviousX(LocalMapObject* object, u32 previous_x);
 u32 sub_0205F544(LocalMapObject* object);
 int MapObject_CheckFlag25(LocalMapObject* object);
 void MapObject_SetFlag25(LocalMapObject* object, BOOL set);

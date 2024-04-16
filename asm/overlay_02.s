@@ -21629,7 +21629,7 @@ ov02_0224FE40: ; 0x0224FE40
 	lsr r6, r0, #0x18
 	add r0, r4, #0
 	sub r1, r1, #1
-	bl MapObject_ForceSetFacingDirection
+	bl MapObject_SetFacingDirectionDirect
 	add r0, r7, #0
 	add r1, r4, #0
 	add r2, r6, #0
@@ -21967,7 +21967,7 @@ _022500AE:
 	add r0, #0xe4
 	ldrb r1, [r4, r1]
 	ldr r0, [r0]
-	bl MapObject_ForceSetFacingDirection
+	bl MapObject_SetFacingDirectionDirect
 	add r5, #0xe4
 	ldr r1, [r5]
 	add r0, r4, #0

@@ -368,7 +368,7 @@ _021F7524:
 	bl FollowMon_SetObjectParams
 	ldr r1, [sp, #0x14]
 	add r0, r5, #0
-	bl MapObject_SetGfxId
+	bl MapObject_SetGfxID
 	add r0, r5, #0
 	bl sub_0205FCD4
 	add r0, r5, #0
@@ -386,12 +386,12 @@ _021F7524:
 	add r0, r2, r0
 	str r0, [sp, #0x30]
 	add r0, r5, #0
-	bl MapObject_SetPrevX
+	bl MapObject_SetPreviousX
 	add r0, r5, #0
 	bl MapObject_GetCurrentHeight
 	add r1, r0, #0
 	add r0, r5, #0
-	bl MapObject_SetPrevHeight
+	bl MapObject_SetPreviousHeight
 	add r0, r5, #0
 	bl MapObject_GetCurrentY
 	add r1, r0, #0
@@ -401,7 +401,7 @@ _021F7524:
 	add r0, r2, r0
 	str r0, [sp, #0x38]
 	add r0, r5, #0
-	bl MapObject_SetPrevY
+	bl MapObject_SetPreviousY
 	add r0, r5, #0
 	add r1, sp, #0x30
 	bl MapObject_SetPositionVec
@@ -440,7 +440,7 @@ _021F761C:
 	bl FieldSystem_SetFollowerPokeParam
 	add r0, r5, #0
 	mov r1, #1
-	bl MapObject_ForceSetFacingDirection
+	bl MapObject_SetFacingDirectionDirect
 _021F7636:
 	mov r1, #0
 	ldr r0, [sp, #0xc]

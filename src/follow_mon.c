@@ -1589,7 +1589,7 @@ void FollowMon_ChangeMon(MapObjectManager *mapObjectManager, u32 mapno) {
 
                 FieldSystem_SetFollowerPokeParam(fieldSystem, species, form, shiny, gender);
                 FollowMon_SetObjectParams(followPokeObj, species, form, shiny);
-                MapObject_SetGfxId(fieldSystem->followMon.mapObject, FollowMon_GetSpriteID(species, form, gender));
+                MapObject_SetGfxID(fieldSystem->followMon.mapObject, FollowMon_GetSpriteID(species, form, gender));
                 playerState = PlayerAvatar_GetState(fieldSystem->playerAvatar);
 
                 if (playerState == PLAYER_STATE_WALKING || playerState == PLAYER_STATE_ROCKET) {
@@ -1623,7 +1623,7 @@ void FollowMon_ChangeMon(MapObjectManager *mapObjectManager, u32 mapno) {
 
                 FieldSystem_SetFollowerPokeParam(fieldSystem, species, form, shiny, gender);
                 FollowMon_SetObjectParams(followPokeObj, species, form, shiny);
-                MapObject_SetGfxId(followPokeObj, FollowMon_GetSpriteID(species, form, gender));
+                MapObject_SetGfxID(followPokeObj, FollowMon_GetSpriteID(species, form, gender));
 
                 fieldSystem->followMon.mapObject = followPokeObj;
                 fieldSystem->followMon.active = TRUE;

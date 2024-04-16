@@ -2288,17 +2288,17 @@ sub_02060F24: ; 0x02060F24
 	bl MapObject_GetCurrentX
 	add r1, r0, #0
 	add r0, r5, #0
-	bl MapObject_SetPrevX
+	bl MapObject_SetPreviousX
 	add r0, r5, #0
 	bl MapObject_GetCurrentHeight
 	add r1, r0, #0
 	add r0, r5, #0
-	bl MapObject_SetPrevHeight
+	bl MapObject_SetPreviousHeight
 	add r0, r5, #0
 	bl MapObject_GetCurrentY
 	add r1, r0, #0
 	add r0, r5, #0
-	bl MapObject_SetPrevY
+	bl MapObject_SetPreviousY
 	add r0, r4, #0
 	bl GetDeltaXByFacingDirection
 	add r1, r0, #0
@@ -2322,17 +2322,17 @@ sub_02060F78: ; 0x02060F78
 	bl MapObject_GetCurrentX
 	add r1, r0, #0
 	add r0, r4, #0
-	bl MapObject_SetPrevX
+	bl MapObject_SetPreviousX
 	add r0, r4, #0
 	bl MapObject_GetCurrentHeight
 	add r1, r0, #0
 	add r0, r4, #0
-	bl MapObject_SetPrevHeight
+	bl MapObject_SetPreviousHeight
 	add r0, r4, #0
 	bl MapObject_GetCurrentY
 	add r1, r0, #0
 	add r0, r4, #0
-	bl MapObject_SetPrevY
+	bl MapObject_SetPreviousY
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02060F78
@@ -2486,7 +2486,7 @@ _020610A2:
 	bl MapObject_GetCurrentHeight
 	add r1, r0, #0
 	add r0, r5, #0
-	bl MapObject_SetPrevHeight
+	bl MapObject_SetPreviousHeight
 	ldr r1, [sp, #0x10]
 	add r0, r5, #0
 	asr r2, r1, #3
