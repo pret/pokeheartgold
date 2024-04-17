@@ -44,5 +44,6 @@ BOOL sub_02021AC8(u32 size, BOOL a1, NNS_G2D_VRAM_TYPE vram, UnkStruct_02021AC8 
 void sub_02021B5C(UnkStruct_02021AC8 *a0);
 ObjCharTransferTasksManager *sub_02021BD0(void);
 void sub_02021BEC(ObjCharTransferTasksManager *a0);
+int ObjCharTransfer_GetBlockSizeFromMode(GXOBJVRamModeChar mode);
 
 #endif //POKEHEARTGOLD_OBJ_CHAR_TRANSFER_H
