@@ -126,7 +126,7 @@ NNSG2dImageProxy *sub_0200AF24(GF_2DGfxResObj *charResObj, GF_2DGfxResObj *cellR
     return ret;
 }
 
-void sub_0200AF80(const NNSG2dImageProxy* imgProxy) {
+void sub_0200AF80(const NNSG2dImageProxy *imgProxy) {
     GF_ASSERT(imgProxy != NULL);
     sub_02021A50(imgProxy);
 }
@@ -173,7 +173,7 @@ void sub_0200B050(GF_2DGfxResObjList *plttResObjList) {
     }
 }
 
-void sub_0200B084(GF_2DGfxResObj* plttResObj) {
+void sub_0200B084(GF_2DGfxResObj *plttResObj) {
     GF_ASSERT(plttResObj != NULL);
     int resID = GF2DGfxResObj_GetResID(plttResObj);
     NNSG2dPaletteData *plttData = GF2DGfxResObj_GetPlttDataPtr(plttResObj);
@@ -208,7 +208,7 @@ NNSG2dImagePaletteProxy *sub_0200B0F8(GF_2DGfxResObj *plttResObj, NNSG2dImagePro
     }
 }
 
-int sub_0200B12C(GF_2DGfxResObj* plttResObj, NNS_G2D_VRAM_TYPE vram) {
+int sub_0200B12C(GF_2DGfxResObj *plttResObj, NNS_G2D_VRAM_TYPE vram) {
     NNSG2dImagePaletteProxy *plttProxy = sub_0200B0F8(plttResObj, NULL);
     int location = NNS_G2dGetImagePaletteLocation(plttProxy, vram);
     if (location != -1) {
