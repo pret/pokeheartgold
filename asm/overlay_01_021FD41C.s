@@ -53,7 +53,7 @@ ov01_021FD458: ; 0x021FD458
 	ldr r0, [r4, #0x20]
 	bl ov01_021F1468
 	ldr r0, [r0, #0x3c]
-	bl MapObjectManager_GetHeapID
+	bl MapObjectManager_GetPriority
 	sub r2, r0, #1
 	ldr r0, _021FD478 ; =ov01_021FD4F4
 	add r1, r4, #0

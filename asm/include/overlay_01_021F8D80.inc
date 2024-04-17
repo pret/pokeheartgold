@@ -16,7 +16,7 @@
 .public MapObjectManager_SetFlagsBits
 .public MapObjectManager_ClearFlagsBits
 .public MapObjectManager_GetFlagsBitsMask
-.public MapObjectManager_GetHeapID
+.public MapObjectManager_GetPriority
 .public sub_0205F1A0
 .public FldObjSys_SetMModelNarc
 .public FldObjSys_GetMModelNarc

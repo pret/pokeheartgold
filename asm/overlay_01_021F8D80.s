@@ -664,7 +664,7 @@ _021F9212:
 	bl MapObjectManager_GetObjectCount
 	str r0, [sp, #0x14]
 	add r0, r5, #0
-	bl MapObjectManager_GetHeapID
+	bl MapObjectManager_GetPriority
 	sub r0, r0, #1
 	str r0, [sp, #0x10]
 	add r0, r5, #0

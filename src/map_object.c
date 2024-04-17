@@ -17,15 +17,19 @@ static void LocalMapObject_InitFromSavedMapObject(LocalMapObject *localObject, S
 static void sub_0205E8EC(MapObjectManager *manager, LocalMapObject *object);
 static void sub_0205E934(LocalMapObject *object);
 static void MapObject_ConvertXYToPositionVec(LocalMapObject *object);
+static void MapObject_CreateFromInitArgs(MapObjectInitArgs *args);
+static LocalMapObject *MapObjectManager_GetFirstInactiveObject(MapObjectManager *manager);
+static LocalMapObject *sub_0205EA98(MapObjectManager *manager, u32 id, u32 mapNo);
+static void sub_0205EAF0(MapObjectManager *manager, LocalMapObject *object);
 
 static void sub_0205ED18(LocalMapObject *object);
 static void sub_0205EF8C(LocalMapObject *object);
 
-MapObjectManager *MapObjectManager_Init(FieldSystem *fieldSystem, u32 objectCount, HeapID heapId) {
+MapObjectManager *MapObjectManager_Init(FieldSystem *fieldSystem, u32 objectCount, u32 priority) {
     MapObjectManager *ret = MapObjectManager_New(objectCount);
     MapObjectManager_SetFieldSystemPtr(ret, fieldSystem);
     MapObjectManager_SetObjectCount(ret, objectCount);
-    MapObjectManager_SetHeapID(ret, heapId);
+    MapObjectManager_SetPriority(ret, priority);
 
     return ret;
 }
@@ -442,48 +446,48 @@ void MapObject_CreateFromMultipleObjectEvents(MapObjectManager *manager, u32 map
     args->manager = manager;
     args->objectEvents = objectEventsCopy;
 
-    sub_0205EA08(args);
+    MapObject_CreateFromInitArgs(args);
 }
 
-void sub_0205EA08(struct MapObjectInitArgs* args) {
-    FieldSystem* fieldSystem = MapObjectManager_GetFieldSystemPtr(args->manager);
-    ObjectEvent* template = args->objectEvents;
+static void MapObject_CreateFromInitArgs(MapObjectInitArgs *args) {
+    FieldSystem *fieldSystem = MapObjectManager_GetFieldSystemPtr(args->manager);
+    ObjectEvent *objectEvents = args->objectEvents;
 
     do {
-        GF_ASSERT((ObjectEvent_ScriptIdIsUnset(template) != TRUE && FieldSystem_FlagCheck(fieldSystem, template->flag) != FALSE) ||
-                  MapObject_CreateFromObjectEvent(args->manager, template, args->mapNo) != NULL);
+        GF_ASSERT((ObjectEvent_ScriptIdIsUnset(objectEvents) != TRUE && FieldSystem_FlagCheck(fieldSystem, objectEvents->flag) != FALSE) ||
+                  MapObject_CreateFromObjectEvent(args->manager, objectEvents, args->mapNo) != NULL);
 
-        template++;
+        objectEvents++;
         args->index++;
     } while (args->index < args->objectEventCount);
 
-    FreeToHeapExplicit((HeapID)11, args->objectEvents);
-    FreeToHeapExplicit((HeapID)11, args);
+    FreeToHeapExplicit(HEAP_ID_FIELD, args->objectEvents);
+    FreeToHeapExplicit(HEAP_ID_FIELD, args);
 }
 
-LocalMapObject* MapObjectManager_GetFirstInactiveObject(MapObjectManager* manager) {
-    int i = 0;
-    int count = MapObjectManager_GetObjectCount(manager);
-    LocalMapObject* object = MapObjectManager_GetObjects(manager);
+static LocalMapObject *MapObjectManager_GetFirstInactiveObject(MapObjectManager *manager) {
+    s32 i = 0;
+    s32 count = MapObjectManager_GetObjectCount(manager);
+    LocalMapObject *objects = MapObjectManager_GetObjects(manager);
 
     do {
-        if (MapObject_GetFlagsBits(object, MAPOBJECTFLAG_ACTIVE) == 0) {
-            return object;
+        if (MapObject_GetFlagsBits(objects, MAPOBJECTFLAG_ACTIVE) == 0) {
+            return objects;
         }
 
         i++;
-        object++;
+        objects++;
     } while (i < count);
 
     return NULL;
 }
 
-LocalMapObject* sub_0205EA98(MapObjectManager* manager, u32 id, u32 map_no) {
-    int index = 0;
-    LocalMapObject* object;
+static LocalMapObject *sub_0205EA98(MapObjectManager *manager, u32 id, u32 mapNo) { //find corresponding LMO with ID and mapNo?
+    s32 index = 0;
+    LocalMapObject *object;
 
     while (sub_0205EEF4(manager, &object, &index, MAPOBJECTFLAG_ACTIVE) == TRUE) {
-        if (MapObject_CheckFlag25(object) == TRUE && id == MapObject_GetID(object) && map_no == sub_0205F544(object)) {
+        if (MapObject_CheckFlag25(object) == TRUE && MapObject_GetID(object) == id && sub_0205F544(object) == mapNo) {
             return object;
         }
     }
@@ -491,14 +495,14 @@ LocalMapObject* sub_0205EA98(MapObjectManager* manager, u32 id, u32 map_no) {
     return NULL;
 }
 
-void sub_0205EAF0(MapObjectManager* manager, LocalMapObject* object) {
-    u32 priority = MapObjectManager_GetHeapID(manager);
+static void sub_0205EAF0(MapObjectManager *manager, LocalMapObject *object) {
+    u32 priority = MapObjectManager_GetPriority(manager);
     u32 movement = MapObject_GetMovement(object);
     if (movement == 48 || movement == 50) {
         priority += 2;
     }
 
-    SysTask* task = SysTask_CreateOnMainQueue((SysTaskFunc)sub_0205F12C, object, priority);
+    SysTask *task = SysTask_CreateOnMainQueue((SysTaskFunc)sub_0205F12C, object, priority);
     GF_ASSERT(task != NULL);
 
     sub_0205F338(object, task);
@@ -839,12 +843,12 @@ u32 MapObjectManager_GetFlagsBitsMask(MapObjectManager* manager, u32 bits) {
     return manager->flags & bits;
 }
 
-void MapObjectManager_SetHeapID(MapObjectManager* manager, HeapID heapId) {
-    manager->heapId = heapId;
+void MapObjectManager_SetPriority(MapObjectManager* manager, u32 priority) {
+    manager->priority = priority;
 }
 
-HeapID MapObjectManager_GetHeapID(MapObjectManager* manager) {
-    return manager->heapId;
+u32 MapObjectManager_GetPriority(MapObjectManager* manager) {
+    return manager->priority;
 }
 
 void* sub_0205F1A0(MapObjectManager* manager) {
@@ -1270,8 +1274,8 @@ FieldSystem* MapObject_GetFieldSystemPtr(LocalMapObject* object) {
     return MapObjectManager_GetFieldSystemPtr(sub_0205F364(object));
 }
 
-void* sub_0205F538(LocalMapObject* object) {
-    return (void*)MapObjectManager_GetHeapID(MapObject_GetManager(object));
+void* sub_0205F538(LocalMapObject* object) { //TODO: this is not void
+    return (void*)MapObjectManager_GetPriority(MapObject_GetManager(object));
 }
 
 u32 sub_0205F544(LocalMapObject* object) {

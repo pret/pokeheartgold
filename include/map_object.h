@@ -34,7 +34,7 @@ struct MapObjectManager { //declared field_system.h
     u32 flags;
     u32 object_count;
     u32 unk8;
-    HeapID heapId;
+    u32 priority;
     u8 unk10[4];
     NARC* mmodel_narc;
     u8 unk18[4];
@@ -161,7 +161,7 @@ typedef struct MapObjectInitArgs {
 } MapObjectInitArgs;
 
 // FIXME: Some of these declarations are static and don't belong in here.
-MapObjectManager *MapObjectManager_Init(FieldSystem *fieldSystem, u32 objectCount, HeapID heapId);
+MapObjectManager *MapObjectManager_Init(FieldSystem *fieldSystem, u32 objectCount, u32 priority);
 void MapObjectManager_Delete(MapObjectManager *manager);
 void sub_0205E104(MapObjectManager *manager, u32 unused, u32 a2, u32 objectCount, ObjectEvent* objectEvents);
 LocalMapObject *MapObject_Create(MapObjectManager *manager, u32 x, u32 z, u32 direction, u32 sprite, u32 movement, u32 mapNo);
@@ -179,10 +179,6 @@ void sub_0205E580(MapObjectManager *manager);
 void FieldSystem_SyncMapObjectsToSaveEx(FieldSystem *fieldSystem, MapObjectManager *manager, SavedMapObject *savedObjects, s32 count);
 void MapObjectManager_RestoreFromSave(MapObjectManager *mapObjectManager, SavedMapObject *savedObjects, u32 objectCount);
 void MapObject_CreateFromMultipleObjectEvents(MapObjectManager *manager, u32 mapNo, u32 objectEventCount, ObjectEvent *objectEvents);
-void sub_0205EA08(struct MapObjectInitArgs* args);
-LocalMapObject* MapObjectManager_GetFirstInactiveObject(MapObjectManager*);
-LocalMapObject* sub_0205EA98(MapObjectManager*, u32, u32);
-void sub_0205EAF0(MapObjectManager* manager, LocalMapObject* object);
 void MapObject_InitFromObjectEvent(LocalMapObject* object, ObjectEvent* template, FieldSystem* fieldSystem);
 void MapObject_SetPositionVecFromTemplate(LocalMapObject* object, ObjectEvent* template);
 void sub_0205EC90(LocalMapObject* object, MapObjectManager* manager);
@@ -215,8 +211,8 @@ void sub_0205F174(MapObjectManager* manager);
 void MapObjectManager_SetFlagsBits(MapObjectManager* manager, u32 bits);
 void MapObjectManager_ClearFlagsBits(MapObjectManager* manager, u32 bits);
 u32 MapObjectManager_GetFlagsBitsMask(MapObjectManager* manager, u32 bits);
-void MapObjectManager_SetHeapID(MapObjectManager*, HeapID);
-HeapID MapObjectManager_GetHeapID(MapObjectManager* manager);
+void MapObjectManager_SetPriority(MapObjectManager* manager, u32 priority);
+u32 MapObjectManager_GetPriority(MapObjectManager* manager);
 void* sub_0205F1A0(MapObjectManager*);
 void MapObjectManager_SetObjects(MapObjectManager* manager, LocalMapObject* objects);
 LocalMapObject* sub_0205F1AC(MapObjectManager* manager);
