@@ -74,7 +74,6 @@ void ObjCharTransfer_ReserveTransferBlocks(u32 blockStart, u32 numBlocks, u8 *bu
 u32 ObjCharTransfer_FindAvailableTransferBlock(u32 numBlocksUsed, u8 *buffer);
 void ObjCharTransfer_ResetBlockTransferFlagsEx(u32 blockStart, u32 blockMax, u8 *buffer);
 void ObjCharTransferTask_ResetBlockTransferFlags(ObjCharTransferTask *task);
-int ObjCharTransfer_GetBlockSizeFromMode(GXOBJVRamModeChar mode);
 int ObjCharTransfer_AlignToBlock(int size, int blockSize, BOOL alignRight);
 u32 ObjCharTransfer_CalcBlockNumLimit(int size, int blockSize);
 int ObjCharTransfer_GetBlockMemOffset(int blockNum, int blockSize);

@@ -1038,7 +1038,7 @@ _02013C82:
 	add r7, r1, #0
 	and r7, r0
 	add r0, r7, #0
-	bl sub_02022448
+	bl ObjCharTransfer_GetBlockSizeFromMode
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x14]
 	ldr r4, [r0, #0xc]
@@ -1183,7 +1183,7 @@ _02013DA4:
 	add r5, r1, #0
 	and r5, r0
 	add r0, r5, #0
-	bl sub_02022448
+	bl ObjCharTransfer_GetBlockSizeFromMode
 	ldr r4, [r6, #0xc]
 	str r0, [sp, #0x14]
 	mov r3, #0
@@ -1263,7 +1263,7 @@ _02013E34:
 _02013E38:
 	ldr r0, _02013E70 ; =0x00300010
 	and r0, r1
-	bl sub_02022448
+	bl ObjCharTransfer_GetBlockSizeFromMode
 	ldr r2, [r4, #0xc]
 	mov r3, #0
 	cmp r2, r4

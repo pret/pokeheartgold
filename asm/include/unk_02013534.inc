@@ -27,7 +27,7 @@
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
 .public FreeToHeap
-.public sub_02022448
+.public ObjCharTransfer_GetBlockSizeFromMode
 .public sub_02024714
 .public Sprite_Delete
 .public Sprite_SetMatrix
