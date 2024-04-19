@@ -55,7 +55,7 @@
 .public MapObject_Delete
 .public MapObject_GetID
 .public sub_0205F254
-.public MapObject_GetGfxID
+.public MapObject_GetSpriteID
 .public MapObject_GetFlagID
 .public MapObject_GetNextFacingDirection
 .public MapObject_GetManager

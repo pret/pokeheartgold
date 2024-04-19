@@ -58,7 +58,7 @@
 .public MapObject_GetFlagsBits
 .public MapObject_TestFlagsBits
 .public MapObject_GetID
-.public MapObject_GetGfxID
+.public MapObject_GetSpriteID
 .public MapObject_GetManager
 .public sub_0205F484
 .public sub_0205F4C0

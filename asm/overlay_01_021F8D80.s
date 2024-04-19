@@ -144,7 +144,7 @@ ov01_021F8E70: ; 0x021F8E70
 	add r4, r2, #0
 	bl MapObject_GetFacingVec
 	add r0, r6, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	bl ov01_021FA298
 	cmp r0, #0xa
 	bne _021F8EDE
@@ -799,7 +799,7 @@ _021F9314:
 	thumb_func_start ov01_021F9318
 ov01_021F9318: ; 0x021F9318
 	push {r3, lr}
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	bl ov01_021F9324
 	pop {r3, pc}
 	thumb_func_end ov01_021F9318

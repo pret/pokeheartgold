@@ -38,7 +38,7 @@
 .public MapObject_GetFlagsBits
 .public MapObject_TestFlagsBits
 .public MapObject_GetID
-.public MapObject_GetGfxID
+.public MapObject_GetSpriteID
 .public MapObject_GetMovement
 .public MapObject_GetFacingDirection
 .public MapObject_GetXRange

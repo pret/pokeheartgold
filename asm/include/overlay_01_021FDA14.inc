@@ -17,7 +17,7 @@
 .public sub_0205F0A8
 .public MapObject_GetID
 .public sub_0205F254
-.public MapObject_GetGfxID
+.public MapObject_GetSpriteID
 .public MapObject_GetFacingDirection
 .public MapObject_GetManager
 .public MapObject_GetFieldSystemPtr

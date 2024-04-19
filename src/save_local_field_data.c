@@ -140,7 +140,7 @@ void FieldSystem_RestoreMapObjectsFromSave(FieldSystem *fieldSystem) {
         if (species != SPECIES_SHAYMIN) {
             GF_ASSERT(FALSE);
         } else if (form == SHAYMIN_LAND) {
-            follower->gfxId = SPRITE_FOLLOWER_MON_SHAYMIN;
+            follower->spriteId = SPRITE_FOLLOWER_MON_SHAYMIN;
         }
     }
     MapObjectManager_RestoreFromSave(fieldSystem->mapObjectManager, unk->subs, 64);

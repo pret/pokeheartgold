@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_T06R0601_gsgentleman",
-      "ovid": "SPRITE_GSGENTLEMAN",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSGENTLEMAN",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T06R0601_000 + 1",

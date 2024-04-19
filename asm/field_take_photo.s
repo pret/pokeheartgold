@@ -2126,7 +2126,7 @@ sub_0206B82C: ; 0x0206B82C
 	bl MapObject_GetManager
 	add r7, r0, #0
 	add r0, r4, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	str r0, [sp]
 	add r0, r4, #0
 	bl sub_0205E420

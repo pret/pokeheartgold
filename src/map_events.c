@@ -117,14 +117,14 @@ BOOL Field_SetEventDefaultDirection(FieldSystem *fieldSystem, int id, u16 dirn) 
     return FALSE;
 }
 
-BOOL Field_SetEventDefaultMovement(FieldSystem *fieldSystem, int id, u16 mvt) {
+BOOL Field_SetEventDefaultMovement(FieldSystem *fieldSystem, int id, u16 movement) {
     int i;
     ObjectEvent *objs = fieldSystem->mapEvents->object_events;
     u32 num_objs = fieldSystem->mapEvents->num_object_events;
 
     for (i = 0; i < num_objs; i++) {
         if (objs[i].id == id) {
-            objs[i].mvt = mvt;
+            objs[i].movement = movement;
             return TRUE;
         }
     }

@@ -257,7 +257,7 @@
 .public MapObjectManager_GetObjects
 .public sub_0205F1D0
 .public MapObject_GetID
-.public MapObject_GetGfxID
+.public MapObject_GetSpriteID
 .public MapObject_SetFacingDirectionDirect
 .public MapObject_GetFacingDirection
 .public sub_0205F328

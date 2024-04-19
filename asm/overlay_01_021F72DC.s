@@ -18,7 +18,7 @@
 ov01_021F72DC: ; 0x021F72DC
 	push {r4, lr}
 	add r4, r0, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	cmp r0, #0xf8
 	bgt _021F7356
 	bge _021F737E
@@ -368,7 +368,7 @@ _021F7524:
 	bl FollowMon_SetObjectParams
 	ldr r1, [sp, #0x14]
 	add r0, r5, #0
-	bl MapObject_SetGfxID
+	bl MapObject_SetSpriteID
 	add r0, r5, #0
 	bl sub_0205FCD4
 	add r0, r5, #0
@@ -485,7 +485,7 @@ _021F766C:
 	add r1, sp, #0x24
 	bl MapObject_GetFacingVec
 	add r0, r5, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	add r0, r5, #0
 	bl MapObject_GetFacingDirection
 	add r1, r0, #0
@@ -3376,7 +3376,7 @@ ov01_021F8CFC: ; 0x021F8CFC
 	bl sub_0205F3E8
 	add r4, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	add r1, sp, #0
 	bl ov01_021F8CC8
 	add r0, r5, #0
@@ -3431,7 +3431,7 @@ ov01_021F8D58: ; 0x021F8D58
 	bl sub_0205F40C
 	add r4, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	add r1, sp, #0
 	bl ov01_021F8CC8
 	add r0, r5, #0

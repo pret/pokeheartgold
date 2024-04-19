@@ -37,8 +37,8 @@
   "objects": [
     {
       "id": "obj_T07R0106_gsman1",
-      "ovid": "SPRITE_GSMAN1",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSMAN1",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0106_000 + 1",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_T07R0106_gsboy1",
-      "ovid": "SPRITE_GSBOY1",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSBOY1",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0106_001 + 1",

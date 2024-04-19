@@ -2182,7 +2182,7 @@ _02060E84:
 	cmp r0, #0
 	beq _02060EA0
 	add r0, r5, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	sub r0, #0xb2
 	cmp r0, #1
 	bhi _02060EA0

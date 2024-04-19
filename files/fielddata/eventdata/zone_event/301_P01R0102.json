@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_P01R0102_seaman_2",
-      "ovid": "SPRITE_SEAMAN_2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SEAMAN_2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_P01R0102_000 + 1",
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_P01R0102_seaman_2_2",
-      "ovid": "SPRITE_SEAMAN_2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SEAMAN_2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_P01R0102_003 + 1",
@@ -55,8 +55,8 @@
     },
     {
       "id": "obj_P01R0102_gswoman2",
-      "ovid": "SPRITE_GSWOMAN2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSWOMAN2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_P01R0102_004 + 1",
@@ -72,8 +72,8 @@
     },
     {
       "id": "obj_P01R0102_gsleader10",
-      "ovid": "SPRITE_GSLEADER10",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSLEADER10",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_UNK_2C9",
       "scr": "_EV_scr_seq_P01R0102_006 + 1",

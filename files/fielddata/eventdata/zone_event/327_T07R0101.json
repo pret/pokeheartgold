@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_T07R0101_gswoman6",
-      "ovid": "SPRITE_GSWOMAN6",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSWOMAN6",
+      "movement": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0101_000 + 1",
@@ -30,8 +30,8 @@
     },
     {
       "id": "obj_T07R0101_gsgentleman",
-      "ovid": "SPRITE_GSGENTLEMAN",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSGENTLEMAN",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0101_001 + 1",
@@ -47,8 +47,8 @@
     },
     {
       "id": "obj_T07R0101_gswoman3",
-      "ovid": "SPRITE_GSWOMAN3",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSWOMAN3",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0101_002 + 1",
@@ -64,8 +64,8 @@
     },
     {
       "id": "obj_T07R0101_delivery2",
-      "ovid": "SPRITE_DELIVERY2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_DELIVERY2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_MOM_GIFT_DELIVERYMAN",
       "scr": "std_moms_gift_deliveryman",
@@ -81,8 +81,8 @@
     },
     {
       "id": "obj_T07R0101_delivery",
-      "ovid": "SPRITE_DELIVERY",
-      "mvt": 0,
+      "sprite_id": "SPRITE_DELIVERY",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_MYSTERY_GIFT_DELIVERYMAN",
       "scr": "std_mystery_gift_deliveryman",

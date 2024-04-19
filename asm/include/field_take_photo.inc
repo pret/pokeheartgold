@@ -62,7 +62,7 @@
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
 .public MapObject_SetID
-.public MapObject_GetGfxID
+.public MapObject_GetSpriteID
 .public MapObject_SetType
 .public MapObject_SetFlagID
 .public MapObject_GetFacingDirection

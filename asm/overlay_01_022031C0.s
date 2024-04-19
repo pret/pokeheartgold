@@ -233,7 +233,7 @@ _02203374:
 	ldr r0, [r3]
 	str r0, [r2]
 	ldr r0, [r4, #0x30]
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x30]
 	bl MapObject_GetID
@@ -551,7 +551,7 @@ _022035F4:
 	ldr r0, [r3]
 	str r0, [r2]
 	ldr r0, [r4, #0x30]
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x30]
 	bl MapObject_GetID
@@ -827,7 +827,7 @@ _02203838:
 	ldr r0, [r3]
 	str r0, [r2]
 	ldr r0, [r4, #0x30]
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x30]
 	bl MapObject_GetID

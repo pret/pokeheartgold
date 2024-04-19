@@ -20355,7 +20355,7 @@ _0224F4FC:
 	ldr r1, [sp]
 	sub r4, r1, r0
 	ldr r0, [sp, #0x10]
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	cmp r0, #0x54
 	bne _0224F52C
 	mov r0, #1
@@ -26486,7 +26486,7 @@ _02252490:
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	add r7, r0, #0
 	add r0, r4, #0
 	add r0, #0xe4

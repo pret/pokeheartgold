@@ -114,7 +114,7 @@ BOOL sub_020416E4(ScriptContext *ctx);
 BOOL sub_02042C78(ScriptContext *ctx);
 BOOL ScrNative_WaitApplication(ScriptContext *ctx);
 LocalMapObject *sub_02041C70(FieldSystem *fieldSystem, u16 person);
-void _ScheduleObjectEventMovement(FieldSystem *fieldSystem, EventObjectMovementMan *mvtMan, MovementScriptCommand *a2);
+void _ScheduleObjectEventMovement(FieldSystem *fieldSystem, EventObjectMovementMan *movementMan, MovementScriptCommand *a2);
 void Script_SetMonSeenFlagBySpecies(FieldSystem *fieldSystem, u16 species);
 
 #include "data/fieldmap.h"
@@ -1126,8 +1126,8 @@ BOOL ScrCmd_ApplyMovement(ScriptContext *ctx) {
     u16 person = ScriptGetVar(ctx);
     u32 offset = ScriptReadWord(ctx);
     LocalMapObject *object = sub_02041C70(ctx->fieldSystem, person);
-    EventObjectMovementMan *mvtMan;
-    u8 *mvtCounter;
+    EventObjectMovementMan *movementMan;
+    u8 *movementCounter;
 
     if (object == NULL) {
         GF_ASSERT(person == obj_partner_poke);
@@ -1136,10 +1136,10 @@ BOOL ScrCmd_ApplyMovement(ScriptContext *ctx) {
     if (person == obj_partner_poke) {
         ov01_021F7704(object);
     }
-    mvtMan = EventObjectMovementMan_Create(object, (const MovementScriptCommand *)(ctx->script_ptr + offset));
-    mvtCounter = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_ACTIVE_MOVEMENT_COUNTER);
-    (*mvtCounter)++;
-    _ScheduleObjectEventMovement(ctx->fieldSystem, mvtMan, NULL);
+    movementMan = EventObjectMovementMan_Create(object, (const MovementScriptCommand *)(ctx->script_ptr + offset));
+    movementCounter = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_ACTIVE_MOVEMENT_COUNTER);
+    (*movementCounter)++;
+    _ScheduleObjectEventMovement(ctx->fieldSystem, movementMan, NULL);
     return FALSE;
 }
 
@@ -1151,8 +1151,8 @@ BOOL ScrCmd_563(ScriptContext *ctx) {
     int i;
     LocalMapObject *object = sub_02041C70(ctx->fieldSystem, person);
     MovementScriptCommand *cmd;
-    EventObjectMovementMan *mvtMan;
-    u8 *mvtCounter;
+    EventObjectMovementMan *movementMan;
+    u8 *movementCounter;
 
     GF_ASSERT(object != NULL);
     cmd = AllocFromHeap(HEAP_ID_4, 64 * sizeof(MovementScriptCommand));
@@ -1180,10 +1180,10 @@ BOOL ScrCmd_563(ScriptContext *ctx) {
     cmd[i].command = MOVEMENT_STEP_END;
     cmd[i].length = 0;
 
-    mvtMan = EventObjectMovementMan_Create(object, cmd);
-    mvtCounter = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_ACTIVE_MOVEMENT_COUNTER);
-    (*mvtCounter)++;
-    _ScheduleObjectEventMovement(ctx->fieldSystem, mvtMan, cmd);
+    movementMan = EventObjectMovementMan_Create(object, cmd);
+    movementCounter = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_ACTIVE_MOVEMENT_COUNTER);
+    (*movementCounter)++;
+    _ScheduleObjectEventMovement(ctx->fieldSystem, movementMan, cmd);
     return FALSE;
 }
 
@@ -1212,38 +1212,38 @@ static BOOL IsAllMovementFinished(ScriptContext *ctx) {
 
 struct ObjectMovementTaskEnv {
     SysTask *task;
-    EventObjectMovementMan *mvtMan;
+    EventObjectMovementMan *movementMan;
     struct MovementScriptCommand *cmd;
     FieldSystem *fieldSystem;
 };
 
 void _RunObjectEventMovement(SysTask *task, struct ObjectMovementTaskEnv *env);
 
-void _ScheduleObjectEventMovement(FieldSystem *fieldSystem, EventObjectMovementMan *mvtMan, MovementScriptCommand *a2) {
+void _ScheduleObjectEventMovement(FieldSystem *fieldSystem, EventObjectMovementMan *movementMan, MovementScriptCommand *a2) {
     struct ObjectMovementTaskEnv *env = AllocFromHeap(HEAP_ID_4, sizeof(struct ObjectMovementTaskEnv));
     if (env == NULL) {
         GF_ASSERT(0);
         return;
     }
     env->fieldSystem = fieldSystem;
-    env->mvtMan = mvtMan;
+    env->movementMan = movementMan;
     env->cmd = a2;
     env->task = SysTask_CreateOnMainQueue((SysTaskFunc)_RunObjectEventMovement, env, 0);
 }
 
 void _RunObjectEventMovement(SysTask *task, struct ObjectMovementTaskEnv *env) {
-    u8 *mvtCnt = FieldSysGetAttrAddr(env->fieldSystem, SCRIPTENV_ACTIVE_MOVEMENT_COUNTER);
-    if (EventObjectMovementMan_IsFinish(env->mvtMan) == TRUE) {
-        EventObjectMovementMan_Delete(env->mvtMan);
+    u8 *movementCnt = FieldSysGetAttrAddr(env->fieldSystem, SCRIPTENV_ACTIVE_MOVEMENT_COUNTER);
+    if (EventObjectMovementMan_IsFinish(env->movementMan) == TRUE) {
+        EventObjectMovementMan_Delete(env->movementMan);
         SysTask_Destroy(env->task);
         if (env->cmd != NULL) {
             FreeToHeap(env->cmd);
         }
         FreeToHeap(env);
-        if (*mvtCnt == 0) {
+        if (*movementCnt == 0) {
             GF_ASSERT(0);
         } else {
-            (*mvtCnt)--;
+            (*movementCnt)--;
         }
     }
 }

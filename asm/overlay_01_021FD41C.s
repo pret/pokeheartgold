@@ -397,7 +397,7 @@ ov01_021FD6C8: ; 0x021FD6C8
 	bl sub_02068D90
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #0x1c]
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	str r0, [r4]
 	ldr r0, [r4, #0x1c]
 	bl MapObject_GetID
@@ -493,7 +493,7 @@ ov01_021FD784: ; 0x021FD784
 	bl sub_02068D90
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #0x1c]
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	str r0, [r4]
 	ldr r0, [r4, #0x1c]
 	bl MapObject_GetID

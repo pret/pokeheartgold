@@ -153,7 +153,7 @@ ov01_021FF54C: ; 0x021FF54C
 	ldmia r3!, {r0, r1}
 	stmia r2!, {r0, r1}
 	ldr r0, [r4, #0x20]
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x20]
 	bl MapObject_GetID

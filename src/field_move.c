@@ -130,7 +130,7 @@ void FieldSystem_MakeFieldMoveCheckData(FieldSystem *fieldSystem, struct FieldMo
     FieldSystem_GetFacingObject(fieldSystem, &facingObject);
     checkData->facingObject = facingObject;
     if (facingObject != NULL) {
-        switch (MapObject_GetGfxID(facingObject)) {
+        switch (MapObject_GetSpriteID(facingObject)) {
         case SPRITE_ROCK:
             checkData->flag |= (1 << FIELD_MOVE_CHECK_ROCK_F);
             break;

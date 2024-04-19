@@ -21,6 +21,7 @@ static void MapObject_CreateFromInitArgs(MapObjectInitArgs *args);
 static LocalMapObject *MapObjectManager_GetFirstInactiveObject(MapObjectManager *manager);
 static LocalMapObject *sub_0205EA98(MapObjectManager *manager, u32 id, u32 mapNo);
 static void sub_0205EAF0(MapObjectManager *manager, LocalMapObject *object);
+static void MapObject_InitFromObjectEvent(LocalMapObject *object, ObjectEvent *objectEvent, FieldSystem *fieldSystem);
 
 static void sub_0205ED18(LocalMapObject *object);
 static void sub_0205EF8C(LocalMapObject *object);
@@ -94,7 +95,7 @@ static LocalMapObject *MapObject_CreateFromObjectEvent(MapObjectManager *manager
             return ret;
         }
     } else {
-        ret = sub_0205EE10(manager, objectId, ObjectEvent_GetFlagId_AssertScriptIdIsUnset(eventPtr));
+        ret = sub_0205EE10(manager, objectId, ObjectEvent_GetFlagID_AssertScriptIdIsUnset(eventPtr));
         if (ret != NULL) {
             sub_0205F058(ret, mapNo, eventPtr);
             return ret;
@@ -146,7 +147,7 @@ LocalMapObject *MapObject_CreateFromObjectEventWithId(MapObjectManager *manager,
     LocalMapObject *ret = NULL;
     ObjectEvent *objectEvent = ObjectEvent_GetById(id, objectEventCount, (ObjectEvent *)events);
     if (objectEvent != NULL) {
-        u32 flagId = ObjectEvent_GetFlagId(objectEvent);
+        u32 flagId = ObjectEvent_GetFlagID(objectEvent);
         FieldSystem* fieldSystem = MapObjectManager_GetFieldSystemPtr(manager);
         if (FieldSystem_FlagCheck(fieldSystem, (u16)flagId) == FALSE) {
             ret = MapObject_CreateFromObjectEvent(manager, objectEvent, mapNo);
@@ -157,7 +158,7 @@ LocalMapObject *MapObject_CreateFromObjectEventWithId(MapObjectManager *manager,
 }
 
 void sub_0205E38C(LocalMapObject *object, u32 sprite) {
-    MapObject_SetGfxID(object, sprite);
+    MapObject_SetSpriteID(object, sprite);
     sub_0205EF48(object);
     MapObject_ClearFlagsBits(object, MAPOBJECTFLAG_UNK14);
     sub_0205EFB4(object);
@@ -194,7 +195,7 @@ void sub_0205E420(LocalMapObject *object) {
         }
         MapObject_ClearFlagsBits(object, MAPOBJECTFLAG_UNK14);
     }
-    MapObject_SetGfxID(object, MAP_OBJECT_GFX_ID_INVALID);
+    MapObject_SetSpriteID(object, MAP_OBJECT_GFX_ID_INVALID);
     sub_0205F468(object, sub_0205FCC4);
     sub_0205F47C(object, sub_0205FCC8);
     sub_0205F490(object, sub_0205FCC8);
@@ -323,7 +324,7 @@ static void SavedMapObject_InitFromLocalMapObject(FieldSystem *fieldSystem, Loca
     savedObject->flags2 = MapObject_GetFlags2Word(localObject);
     savedObject->objId = MapObject_GetID(localObject);
     savedObject->unk10 = sub_0205F254(localObject);
-    savedObject->gfxId = MapObject_GetGfxID(localObject);
+    savedObject->spriteId = MapObject_GetSpriteID(localObject);
     savedObject->movement = MapObject_GetMovement(localObject);
     savedObject->type = MapObject_GetType(localObject);
     savedObject->flagId = MapObject_GetFlagID(localObject);
@@ -365,12 +366,12 @@ static void LocalMapObject_InitFromSavedMapObject(LocalMapObject *localObject, S
     MapObject_SetFlags2Word(localObject, savedObject->flags2);
     MapObject_SetID(localObject, savedObject->objId);
     sub_0205F250(localObject, savedObject->unk10);
-    MapObject_SetGfxID(localObject, savedObject->gfxId);
+    MapObject_SetSpriteID(localObject, savedObject->spriteId);
     MapObject_SetMovement(localObject, savedObject->movement);
     MapObject_SetType(localObject, savedObject->type);
     MapObject_SetFlagID(localObject, savedObject->flagId);
     MapObject_SetScript(localObject, savedObject->script);
-    MapObject_SetInitialFacing(localObject, savedObject->initialFacing);
+    MapObject_SetInitialFacingDirection(localObject, savedObject->initialFacing);
     MapObject_SetFacingDirectionDirect(localObject, savedObject->currentFacing);
     MapObject_SetNextFacing(localObject, savedObject->nextFacing);
     MapObject_SetParam(localObject, savedObject->param[0], 0);
@@ -508,24 +509,24 @@ static void sub_0205EAF0(MapObjectManager *manager, LocalMapObject *object) {
     sub_0205F338(object, task);
 }
 
-void MapObject_InitFromObjectEvent(LocalMapObject* object, ObjectEvent* template, FieldSystem* fieldSystem) {
-    MapObject_SetID(object, ObjectEvent_GetID(template));
-    MapObject_SetGfxID(object, ResolveObjectGfxId(fieldSystem, ObjectEvent_GetSprite(template)));
-    MapObject_SetMovement(object, ObjectEvent_GetMovement(template));
-    MapObject_SetType(object, ObjectEvent_GetType(template));
-    MapObject_SetFlagID(object, ObjectEvent_GetFlagId(template));
-    MapObject_SetScript(object, ObjectEvent_GetScript(template));
-    MapObject_SetInitialFacing(object, ObjectEvent_GetFacing(template));
-    MapObject_SetParam(object, ObjectEvent_GetParam(template, 0), 0);
-    MapObject_SetParam(object, ObjectEvent_GetParam(template, 1), 1);
-    MapObject_SetParam(object, ObjectEvent_GetParam(template, 2), 2);
-    MapObject_SetXRange(object, ObjectEvent_GetXRange(template));
-    MapObject_SetYRange(object, ObjectEvent_GetYRange(template));
+static void MapObject_InitFromObjectEvent(LocalMapObject *object, ObjectEvent *objectEvent, FieldSystem *fieldSystem) {
+    MapObject_SetID(object, ObjectEvent_GetID(objectEvent));
+    MapObject_SetSpriteID(object, FieldSystem_ResolveObjectSpriteID(fieldSystem, ObjectEvent_GetSpriteID(objectEvent)));
+    MapObject_SetMovement(object, ObjectEvent_GetMovement(objectEvent));
+    MapObject_SetType(object, ObjectEvent_GetType(objectEvent));
+    MapObject_SetFlagID(object, ObjectEvent_GetFlagID(objectEvent));
+    MapObject_SetScript(object, ObjectEvent_GetScript(objectEvent));
+    MapObject_SetInitialFacingDirection(object, ObjectEvent_GetInitialFacingDirection(objectEvent));
+    MapObject_SetParam(object, ObjectEvent_GetParam(objectEvent, 0), 0);
+    MapObject_SetParam(object, ObjectEvent_GetParam(objectEvent, 1), 1);
+    MapObject_SetParam(object, ObjectEvent_GetParam(objectEvent, 2), 2);
+    MapObject_SetXRange(object, ObjectEvent_GetXRange(objectEvent));
+    MapObject_SetYRange(object, ObjectEvent_GetYRange(objectEvent));
 
-    MapObject_SetPositionVecFromTemplate(object, template);
+    MapObject_SetPositionVecFromObjectEvent(object, objectEvent);
 }
 
-void MapObject_SetPositionVecFromTemplate(LocalMapObject* object, ObjectEvent* template) {
+void MapObject_SetPositionVecFromObjectEvent(LocalMapObject* object, ObjectEvent* template) {
     VecFx32 position_vec;
 
     u16 x = ObjectEvent_GetXCoord(template);
@@ -571,8 +572,8 @@ void sub_0205ECE0(LocalMapObject* object) {
 extern const UnkLMOCallbackStruct2 ov01_0220724C;
 
 static void sub_0205ED18(LocalMapObject* object) {
-    u32 gfx_id = MapObject_GetGfxID(object);
-    UnkLMOCallbackStruct2* unk = (gfx_id == 0x2000) ? (UnkLMOCallbackStruct2*)&ov01_0220724C : sub_0205FB38(gfx_id);
+    u32 spriteId = MapObject_GetSpriteID(object);
+    UnkLMOCallbackStruct2* unk = (spriteId == 0x2000) ? (UnkLMOCallbackStruct2*)&ov01_0220724C : sub_0205FB38(spriteId);
 
     sub_0205F468(object, sub_0205FB24(unk));
     sub_0205F47C(object, sub_0205FB28(unk));
@@ -592,7 +593,7 @@ u32 sub_0205ED90(LocalMapObject* object, u32 a1, u32 a2, ObjectEvent* templates)
         }
 
         if (ObjectEvent_ScriptIdIsUnset(templates) == TRUE) {
-            u16 flag_id = ObjectEvent_GetFlagId_AssertScriptIdIsUnset(templates);
+            u16 flag_id = ObjectEvent_GetFlagID_AssertScriptIdIsUnset(templates);
             if (MapObject_CheckFlag25(object) == TRUE) {
                 if (flag_id == sub_0205F544(object)) {
                     return 1;
@@ -696,7 +697,7 @@ void sub_0205EF6C(LocalMapObject* object) {
     // No-op
 }
 
-u32 ResolveObjectGfxId(FieldSystem* fieldSystem, int a1) {
+u32 FieldSystem_ResolveObjectSpriteID(FieldSystem* fieldSystem, int a1) {
     if (a1 >= 101 && a1 <= 117) {
         a1 = FieldSystem_VarGetObjectEventGraphicsId(fieldSystem, (u16)(a1 - 101));
     }
@@ -742,7 +743,7 @@ void sub_0205F014(LocalMapObject* object, ObjectEvent* template, u32 map_no) {
     MapObject_SetFlag25(object, FALSE);
     sub_0205F250(object, map_no);
     MapObject_SetScript(object, ObjectEvent_GetScript(template));
-    MapObject_SetFlagID(object, ObjectEvent_GetFlagId(template));
+    MapObject_SetFlagID(object, ObjectEvent_GetFlagID(template));
 }
 
 void sub_0205F058(LocalMapObject* object, u32 map_no, ObjectEvent* template) {
@@ -750,7 +751,7 @@ void sub_0205F058(LocalMapObject* object, u32 map_no, ObjectEvent* template) {
 
     MapObject_SetFlag25(object, TRUE);
     MapObject_SetScript(object, ObjectEvent_GetScript(template));
-    MapObject_SetFlagID(object, ObjectEvent_GetFlagId_AssertScriptIdIsUnset(template));
+    MapObject_SetFlagID(object, ObjectEvent_GetFlagID_AssertScriptIdIsUnset(template));
     sub_0205F250(object, map_no);
 }
 
@@ -780,13 +781,13 @@ BOOL sub_0205F0A8(LocalMapObject* object, u32 id, u32 a2) {
     return TRUE;
 }
 
-BOOL sub_0205F0F8(LocalMapObject* object, u32 gfx_id, u32 id, u32 a3) {
+BOOL sub_0205F0F8(LocalMapObject* object, u32 spriteId, u32 id, u32 a3) {
     if (!MapObject_TestFlagsBits(object, MAPOBJECTFLAG_ACTIVE)) {
         return FALSE;
     }
 
-    u32 object_gfx_id = MapObject_GetGfxID(object);
-    if (object_gfx_id != gfx_id) {
+    u32 object_spriteId = MapObject_GetSpriteID(object);
+    if (object_spriteId != spriteId) {
         return FALSE;
     }
 
@@ -948,12 +949,12 @@ u32 sub_0205F254(LocalMapObject* object) {
     return object->unkC;
 }
 
-void MapObject_SetGfxID(LocalMapObject* object, u32 gfx_id) {
-    object->gfxId = gfx_id;
+void MapObject_SetSpriteID(LocalMapObject* object, u32 spriteId) {
+    object->spriteId = spriteId;
 }
 
-u32 MapObject_GetGfxID(LocalMapObject* object) {
-    return object->gfxId;
+u32 MapObject_GetSpriteID(LocalMapObject* object) {
+    return object->spriteId;
 }
 
 void MapObject_SetMovement(LocalMapObject* object, u32 movement) {
@@ -988,7 +989,7 @@ u32 MapObject_GetScript(LocalMapObject* object) {
     return object->scriptId;
 }
 
-void MapObject_SetInitialFacing(LocalMapObject* object, u32 initial_facing) {
+void MapObject_SetInitialFacingDirection(LocalMapObject* object, u32 initial_facing) {
     object->initialFacing = initial_facing;
 }
 
@@ -1665,19 +1666,19 @@ u16 ObjectEvent_GetID(ObjectEvent* template) {
 }
 
 void ObjectEvent_SetSprite(ObjectEvent* template, u32 sprite) {
-    template->ovid = sprite;
+    template->spriteId = sprite;
 }
 
-u16 ObjectEvent_GetSprite(ObjectEvent* template) {
-    return template->ovid;
+u16 ObjectEvent_GetSpriteID(ObjectEvent* template) {
+    return template->spriteId;
 }
 
 void ObjectEvent_SetMovement(ObjectEvent* template, u32 movement) {
-    template->mvt = movement;
+    template->movement = movement;
 }
 
 u16 ObjectEvent_GetMovement(ObjectEvent* template) {
-    return template->mvt;
+    return template->movement;
 }
 
 void ObjectEvent_SetType(ObjectEvent* template, u16 type) {
@@ -1692,7 +1693,7 @@ void ObjectEvent_SetFlagId(ObjectEvent* template, u16 flag) {
     template->flag = flag;
 }
 
-u16 ObjectEvent_GetFlagId(ObjectEvent* template) {
+u16 ObjectEvent_GetFlagID(ObjectEvent* template) {
     return template->flag;
 }
 
@@ -1708,7 +1709,7 @@ void ObjectEvent_SetFacing(ObjectEvent* template, u32 direction) {
     template->dirn = direction;
 }
 
-s16 ObjectEvent_GetFacing(ObjectEvent* template) {
+s16 ObjectEvent_GetInitialFacingDirection(ObjectEvent* template) {
     return template->dirn;
 }
 
@@ -1803,9 +1804,9 @@ BOOL ObjectEvent_ScriptIdIsUnset(ObjectEvent* template) {
     return script == 0xFFFF;
 }
 
-u16 ObjectEvent_GetFlagId_AssertScriptIdIsUnset(ObjectEvent* template) {
+u16 ObjectEvent_GetFlagID_AssertScriptIdIsUnset(ObjectEvent* template) {
     GF_ASSERT(ObjectEvent_ScriptIdIsUnset(template) == TRUE);
-    return ObjectEvent_GetFlagId(template);
+    return ObjectEvent_GetFlagID(template);
 }
 
 extern UnkLMOCallbackStruct* _020FD1F4[57];
@@ -1855,11 +1856,11 @@ typedef struct ObjectEventGraphicsInfo {
     u16 unk4_10:6; // Unknown actual size
 } ObjectEventGraphicsInfo;
 
-extern ObjectEventGraphicsInfo* GetObjectEventGfxInfoPtr(u32 gfx_id);
+extern ObjectEventGraphicsInfo* GetObjectEventGfxInfoPtr(u32 spriteId);
 extern UnkLMOCallbackStruct2* ov01_02209A38[20];
 
-UnkLMOCallbackStruct2* sub_0205FB38(u32 gfx_id) {
-    ObjectEventGraphicsInfo* unk = GetObjectEventGfxInfoPtr(gfx_id);
+UnkLMOCallbackStruct2* sub_0205FB38(u32 spriteId) {
+    ObjectEventGraphicsInfo* unk = GetObjectEventGfxInfoPtr(spriteId);
     if (unk == NULL) {
         return NULL;
     }
@@ -1961,15 +1962,15 @@ void sub_0205FCD0(LocalMapObject* object) {
 }
 
 void sub_0205FCD4(LocalMapObject* object) {
-    u32 gfx_id = MapObject_GetGfxID(object);
-    UnkLMOCallbackStruct2* unk = (gfx_id == 0x2000) ? (UnkLMOCallbackStruct2*)&ov01_0220724C : sub_0205FB38(gfx_id);
+    u32 spriteId = MapObject_GetSpriteID(object);
+    UnkLMOCallbackStruct2* unk = (spriteId == 0x2000) ? (UnkLMOCallbackStruct2*)&ov01_0220724C : sub_0205FB38(spriteId);
     sub_0205F47C(object, sub_0205FB28(unk));
 }
 
 SavedMapObject* SaveMapObjects_SearchSpriteId(SavedMapObject* list, u32 num_objects, u16 sprite_id) {
     SavedMapObject* object = list;
     for (; num_objects > 0; object++, num_objects--) {
-        if ((object->flags & MAPOBJECTFLAG_ACTIVE) != 0 && object->gfxId == sprite_id) {
+        if ((object->flags & MAPOBJECTFLAG_ACTIVE) != 0 && object->spriteId == sprite_id) {
             return object;
         }
     }

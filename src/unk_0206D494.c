@@ -117,7 +117,7 @@ static LocalMapObject *sub_0206D590(LocalMapObject *object) {
     u32 dy = GetDeltaYByFacingDirection(direction);
     LocalMapObject *obj = sub_0206D614(manager, x + dx, height, y + dy);
     if (obj) {
-        if (MapObject_GetGfxID(obj) != SPRITE_ICE) {
+        if (MapObject_GetSpriteID(obj) != SPRITE_ICE) {
             return NULL;
         }
         u32 dir = MapObject_GetFacingDirection(obj);
@@ -170,7 +170,7 @@ static u32 sub_0206D688(UnkStruct_0206D494 *a0) {
                         GF_ASSERT(FALSE);
                         return TRUE;
                     }
-                    if (MapObject_GetGfxID(object) == SPRITE_ICE) {
+                    if (MapObject_GetSpriteID(object) == SPRITE_ICE) {
                         a0->unk04 = object;
                         MapObject_SetHeldMovement(a0->unk00, MOVEMENT_UNK_72);
                         a0->unk09 = 2;

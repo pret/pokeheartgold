@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_P01R0104_seaman_2",
-      "ovid": "SPRITE_SEAMAN_2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SEAMAN_2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_P01R0104_000 + 1",

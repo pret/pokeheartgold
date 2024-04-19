@@ -24,7 +24,7 @@
 .public MapObject_ClearFlagsBits
 .public MapObject_GetFlagsBits
 .public MapObject_TestFlagsBits
-.public MapObject_GetGfxID
+.public MapObject_GetSpriteID
 .public MapObject_SetFacingDirection
 .public MapObject_GetFacingDirection
 .public sub_0205F330

@@ -168,7 +168,7 @@ BOOL sub_02055708(FieldSystem* fieldSystem, LocalMapObject* mapObject) {
     if (mapObject == NULL) {
         return FALSE;
     }
-    u32 id = MapObject_GetGfxID(mapObject);
+    u32 id = MapObject_GetSpriteID(mapObject);
     if (id != SPRITE_BONGURI_R &&
         id != SPRITE_BONGURI_Y &&
         id != SPRITE_BONGURI_B &&

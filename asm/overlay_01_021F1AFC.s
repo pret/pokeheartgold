@@ -471,7 +471,7 @@ _021F1E64:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _021F1E74:
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	cmp r0, #0x54
 	beq _021F1E80
 	mov r0, #0
@@ -2606,7 +2606,7 @@ ov01_021F2EDC: ; 0x021F2EDC
 	cmp r0, #0
 	bne _021F2F22
 	add r0, r5, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	sub r0, #0xc4
 	cmp r0, #1
 	bls _021F2F22
@@ -2639,7 +2639,7 @@ ov01_021F2F24: ; 0x021F2F24
 	cmp r0, #0
 	bne _021F2F6C
 	add r0, r5, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	cmp r0, #0xc4
 	beq _021F2F4E
 	cmp r0, #0xc5
