@@ -8,11 +8,15 @@ struct FieldSystem;
 
 typedef struct UnkStruct_Overlay01_021E66E4_subC UnkStruct_Overlay01_021E66E4_subC;
 
+typedef void (*Ov01_021E66E4_subC_func)(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSystem *a1, void *a2);
+
 typedef struct UnkStruct_Overlay01_021E67BC_template {
     int taskPriority;
     u16 dataSize;
-    void (*initFunc)(UnkStruct_Overlay01_021E66E4_subC *a0, u32 a1, void *a2);
-    void (*destroyFunc)(UnkStruct_Overlay01_021E66E4_subC *a0, u32 a1, void *a2);
+    Ov01_021E66E4_subC_func initFunc;
+    Ov01_021E66E4_subC_func destroyFunc;
+    Ov01_021E66E4_subC_func unk_0C;
+    Ov01_021E66E4_subC_func unk_10;
 } UnkStruct_Overlay01_021E67BC_template;
 
 struct UnkStruct_Overlay01_021E66E4_subC {

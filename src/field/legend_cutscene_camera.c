@@ -40,7 +40,14 @@ void ov02_02250B44(FieldSystem *fieldSystem);
 BOOL ov02_02250B58(TaskManager *taskman);
 void ov02_02250BB0(LegendCutsceneCamera *cam);
 void ov02_02250BC4(UnkStruct_Overlay01_021E66E4_subC *a0, FieldSystem *a1, void *a2);
-void ov02_022510D4(UnkStruct_ov01_021FBE44 *a0, u32 a1, int a2);
+void ov02_02250EC0(UnkStruct_Overlay01_021E66E4_subC *a0, FieldSystem *fieldSystem, void *a2);
+void ov02_02250F1C(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSystem *a1, void *a2);
+void ov02_02250FE0(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSystem *a1, void *a2);
+void ov02_02251018(UnkStruct_ov02_02250BB0 *a0);
+void ov02_022510D4(UnkStruct_ov01_021FBE44 *a0, u32 a1, fx32 a2);
+BOOL ov02_022510FC(UnkStruct_ov01_021FBE44 *a0, u32 a1);
+void ov02_02251138(UnkStruct_ov01_021FBE44 *a0, u32 a1);
+void ov02_02251164(UnkStruct_ov02_02250BB0 *a0, int a1);
 void ov02_022511AC(HeapID heapId, FieldSystem *fieldSystem, UnkStruct_ov02_02250B80 *a2);
 BOOL ov02_022512AC(TaskManager *taskman);
 BOOL ov02_02251320(TaskManager *taskman);
@@ -119,9 +126,7 @@ void ov02_02250BB0(LegendCutsceneCamera *cam) {
 }
 
 void ov02_02250BC4(UnkStruct_Overlay01_021E66E4_subC *a0, FieldSystem *fieldSystem, void *a2) {
-    #pragma unused(a0)
     UnkStruct_ov02_02250BB0 *r5 = (UnkStruct_ov02_02250BB0 *)a2;
-    // sp8 = a1
     r5->unk_012 = fieldSystem->unk4->legendCutsceneCamera->gameVersion;
     GF_ExpHeap_FndInitAllocator(&r5->unk_000, HEAP_ID_4, 0x20);
     ov01_021FBCD8(&r5->unk_014, NARC_a_1_7_4, 18, HEAP_ID_4);
@@ -173,4 +178,113 @@ void ov02_02250BC4(UnkStruct_Overlay01_021E66E4_subC *a0, FieldSystem *fieldSyst
         r5->unk_4B4 = ov02_02253B64;
     }
     r5->unk_010 = 0;
+}
+
+void ov02_02250EC0(UnkStruct_Overlay01_021E66E4_subC *a0, FieldSystem *fieldSystem, void *a2) {
+    UnkStruct_ov02_02250BB0 *r4 = (UnkStruct_ov02_02250BB0 *)a2;
+    ov01_021FBE80(&r4->unk_044[2], &r4->unk_000);
+    ov01_021FBE80(&r4->unk_044[1], &r4->unk_000);
+    ov01_021FBE80(&r4->unk_044[0], &r4->unk_000);
+    ov01_021FBE80(&r4->unk_080[1], &r4->unk_000);
+    ov01_021FBE80(&r4->unk_080[0], &r4->unk_000);
+    ov01_021FBE80(&r4->unk_0A8[0], &r4->unk_000);
+    ov01_021FBDA8(&r4->unk_014);
+    ov01_021FBDA8(&r4->unk_024);
+    ov01_021FBDA8(&r4->unk_034);
+}
+
+void ov02_02250F1C(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSystem *a1, void *a2) {
+    UnkStruct_ov02_02250BB0 *r4 = (UnkStruct_ov02_02250BB0 *)a2;
+
+    switch (r4->unk_010) {
+    case 0:
+        break;
+    case 1:
+        ov01_021FC004(&r4->unk_0BC, 1);
+        r4->unk_010 = 2;
+        break;
+    case 2:
+        if (ov02_022510FC(r4->unk_044, 3)) {
+            ov02_02251018(r4);
+            r4->unk_010 = 3;
+        }
+        break;
+    case 3:
+        ov02_02251138(r4->unk_044, 3);
+        break;
+    case 4:
+        ov01_021FC004(&r4->unk_0BC, 0);
+        ov02_02251164(r4, 1);
+        ov02_022510D4(r4->unk_080, 2, 0);
+        ov02_022510D4(r4->unk_0A8, 1, 0);
+        r4->unk_010 = 5;
+        break;
+    case 5:
+        ov02_02251138(r4->unk_044, 3);
+        ov02_022510FC(r4->unk_0A8, 1);
+        if (ov02_022510FC(r4->unk_080, 2)) {
+            ov02_02251164(r4, 0);
+            ov01_021FC004(&r4->unk_0BC, 1);
+            r4->unk_010 = 3;
+        }
+        break;
+    }
+}
+
+void ov02_02250FE0(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSystem *a1, void *a2) {
+    UnkStruct_ov02_02250BB0 *r4 = (UnkStruct_ov02_02250BB0 *)a2;
+
+    ov01_021FBF68(&r4->unk_0BC);
+    ov01_021FBF68(&r4->unk_134);
+    for (u8 i = 0; i < 4; ++i) {
+        ov01_021FBF68(&r4->unk_1AC[i]);
+    }
+}
+
+void ov02_02251018(UnkStruct_ov02_02250BB0 *a0) {
+    ov01_021FBF5C(&a0->unk_0BC, &a0->unk_044[0]);
+    ov01_021FBF5C(&a0->unk_0BC, &a0->unk_044[1]);
+    ov01_021FBF5C(&a0->unk_0BC, &a0->unk_044[2]);
+    ov01_021FBE80(&a0->unk_044[2], &a0->unk_000);
+    ov01_021FBE80(&a0->unk_044[1], &a0->unk_000);
+    ov01_021FBE80(&a0->unk_044[0], &a0->unk_000);
+    ov01_021FBE44(&a0->unk_044[0], &a0->unk_014, NARC_a_1_7_4, 22, HEAP_ID_4, &a0->unk_000);
+    ov01_021FBE44(&a0->unk_044[1], &a0->unk_014, NARC_a_1_7_4, 23, HEAP_ID_4, &a0->unk_000);
+    ov01_021FBE44(&a0->unk_044[2], &a0->unk_014, NARC_a_1_7_4, 24, HEAP_ID_4, &a0->unk_000);
+    ov01_021FBF50(&a0->unk_0BC, &a0->unk_044[0]);
+    ov01_021FBF50(&a0->unk_0BC, &a0->unk_044[1]);
+    ov01_021FBF50(&a0->unk_0BC, &a0->unk_044[2]);
+    ov02_022510D4(a0->unk_044, 3, 0);
+}
+
+void ov02_022510D4(UnkStruct_ov01_021FBE44 *a0, u32 a1, fx32 a2) {
+    for (u8 i = 0; i < a1; ++i) {
+        ov01_021FBF20(&a0[i], a2);
+    }
+}
+
+BOOL ov02_022510FC(UnkStruct_ov01_021FBE44 *a0, u32 a1) {
+    u8 i, n = 0;
+    for (i = 0; i < a1; ++i) {
+        if (ov01_021FBEE4(&a0[i], FX32_ONE)) {
+            ++n;
+        }
+    }
+    return n == a1;
+}
+
+void ov02_02251138(UnkStruct_ov01_021FBE44 *a0, u32 a1) {
+    for (u8 i = 0; i < a1; ++i) {
+        ov01_021FBEAC(&a0[i], FX32_ONE);
+    }
+}
+
+void ov02_02251164(UnkStruct_ov02_02250BB0 *a0, int a1) {
+    u32 r5 = a0->unk_012 == 8 ? 2 : 4;
+    ov01_021FC004(&a0->unk_134, a1);
+    if (!a0->unk_011) {
+        for (u8 i = 0; i < r5; ++i) {
+            ov01_021FC004(&a0->unk_1AC[i], a1);
+        }
+    }
 }
