@@ -22,6 +22,8 @@ static LocalMapObject *MapObjectManager_GetFirstInactiveObject(MapObjectManager 
 static LocalMapObject *sub_0205EA98(MapObjectManager *manager, u32 id, u32 mapNo);
 static void sub_0205EAF0(MapObjectManager *manager, LocalMapObject *object);
 static void MapObject_InitFromObjectEvent(LocalMapObject *object, ObjectEvent *objectEvent, FieldSystem *fieldSystem);
+static void MapObject_SetPositionVecFromObjectEvent(LocalMapObject *object, ObjectEvent *objectEvent);
+static void sub_0205EC90(LocalMapObject *object, MapObjectManager *manager);
 
 static void sub_0205ED18(LocalMapObject *object);
 static void sub_0205EF8C(LocalMapObject *object);
@@ -373,7 +375,7 @@ static void LocalMapObject_InitFromSavedMapObject(LocalMapObject *localObject, S
     MapObject_SetScript(localObject, savedObject->script);
     MapObject_SetInitialFacingDirection(localObject, savedObject->initialFacing);
     MapObject_SetFacingDirectionDirect(localObject, savedObject->currentFacing);
-    MapObject_SetNextFacing(localObject, savedObject->nextFacing);
+    MapObject_SetNextFacingDirection(localObject, savedObject->nextFacing);
     MapObject_SetParam(localObject, savedObject->param[0], 0);
     MapObject_SetParam(localObject, savedObject->param[1], 1);
     MapObject_SetParam(localObject, savedObject->param[2], 2);
@@ -397,7 +399,7 @@ static void LocalMapObject_InitFromSavedMapObject(LocalMapObject *localObject, S
 static void sub_0205E8EC(MapObjectManager *manager, LocalMapObject *object) {
     sub_0205E934(object);
     MapObject_ConvertXYToPositionVec(object);
-    sub_0205F354(object, manager);
+    MapObject_SetManager(object, manager);
     sub_0205ECE0(object);
     MapObject_ClearHeldMovement(object);
     sub_0205EFB4(object);
@@ -526,38 +528,38 @@ static void MapObject_InitFromObjectEvent(LocalMapObject *object, ObjectEvent *o
     MapObject_SetPositionVecFromObjectEvent(object, objectEvent);
 }
 
-void MapObject_SetPositionVecFromObjectEvent(LocalMapObject* object, ObjectEvent* template) {
-    VecFx32 position_vec;
+static void MapObject_SetPositionVecFromObjectEvent(LocalMapObject *object, ObjectEvent *objectEvent) {
+    VecFx32 coords;
 
-    u16 x = ObjectEvent_GetXCoord(template);
-    position_vec.x = x * (16 * FX32_ONE) + (8 * FX32_ONE);
+    u16 x = ObjectEvent_GetXCoord(objectEvent);
+    coords.x = x * FX32_CONST(16) + FX32_CONST(8);
     MapObject_SetInitialX(object, x);
     MapObject_SetPreviousX(object, x);
     MapObject_SetCurrentX(object, x);
 
-    position_vec.y = ObjectEvent_GetHeight(template);
-    u32 height = (position_vec.y >> 3) / FX32_ONE;
+    coords.y = ObjectEvent_GetHeight(objectEvent);
+    u32 height = (coords.y >> 3) / FX32_ONE;
     MapObject_SetInitialHeight(object, height);
     MapObject_SetPreviousHeight(object, height);
     MapObject_SetCurrentHeight(object, height);
 
-    u16 y = ObjectEvent_GetYCoord(template);
-    position_vec.z = y * (16 * FX32_ONE) + (8 * FX32_ONE);
+    u16 y = ObjectEvent_GetYCoord(objectEvent);
+    coords.z = y * FX32_CONST(16) + FX32_CONST(8);
     MapObject_SetInitialY(object, y);
     MapObject_SetPreviousY(object, y);
     MapObject_SetCurrentY(object, y);
 
-    MapObject_SetPositionVec(object, &position_vec);
+    MapObject_SetPositionVec(object, &coords);
 }
 
-void sub_0205EC90(LocalMapObject* object, MapObjectManager* manager) {
+static void sub_0205EC90(LocalMapObject *object, MapObjectManager *manager) { //setup facing and flags? also sets manager?
     MapObject_SetFlagsBits(object, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK12 | MAPOBJECTFLAG_UNK11 | MAPOBJECTFLAG_ACTIVE));
     if (MapObject_ScriptIdIsFFFF(object) == TRUE) {
         MapObject_SetFlag25(object, TRUE);
     }
-    sub_0205F354(object, manager);
+    MapObject_SetManager(object, manager);
     MapObject_SetFacingDirectionDirect(object, MapObject_GetInitialFacingDirection(object));
-    MapObject_SetNextFacing(object, MapObject_GetInitialFacingDirection(object));
+    MapObject_SetNextFacingDirection(object, MapObject_GetInitialFacingDirection(object));
     MapObject_ClearHeldMovement(object);
 }
 
@@ -1017,7 +1019,7 @@ u32 MapObject_GetPreviousFacing(LocalMapObject* object) {
     return object->currentFacingBak;
 }
 
-void MapObject_SetNextFacing(LocalMapObject* object, u32 direction) {
+void MapObject_SetNextFacingDirection(LocalMapObject* object, u32 direction) {
     object->nextFacingBak = object->nextFacing;
     object->nextFacing = direction;
 }
@@ -1028,7 +1030,7 @@ u32 MapObject_GetNextFacingDirection(LocalMapObject* object) {
 
 void MapObject_SetOrQueueFacing(LocalMapObject* object, u32 direction) {
     MapObject_SetFacingDirection(object, direction);
-    MapObject_SetNextFacing(object, direction);
+    MapObject_SetNextFacingDirection(object, direction);
 }
 
 void MapObject_SetParam(LocalMapObject* object, u32 value, int param) {
@@ -1098,7 +1100,7 @@ void sub_0205F348(LocalMapObject* object) {
     SysTask_Destroy(sub_0205F340(object));
 }
 
-void sub_0205F354(LocalMapObject* object, MapObjectManager* manager) {
+void MapObject_SetManager(LocalMapObject* object, MapObjectManager* manager) {
     object->manager = manager;
 }
 

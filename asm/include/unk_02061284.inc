@@ -15,7 +15,7 @@
 .public MapObject_GetInitialFacingDirection
 .public MapObject_SetFacingDirection
 .public MapObject_GetFacingDirection
-.public MapObject_SetNextFacing
+.public MapObject_SetNextFacingDirection
 .public MapObject_GetNextFacingDirection
 .public MapObject_SetOrQueueFacing
 .public MapObject_GetParam

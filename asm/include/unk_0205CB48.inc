@@ -81,7 +81,7 @@
 .public MapObject_ClearFlagsBits
 .public MapObject_SetFacingDirection
 .public MapObject_GetFacingDirection
-.public MapObject_SetNextFacing
+.public MapObject_SetNextFacingDirection
 .public MapObject_GetNextFacingDirection
 .public sub_0205F328
 .public MapObject_GetMovementCommand

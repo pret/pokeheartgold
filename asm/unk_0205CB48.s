@@ -1279,7 +1279,7 @@ _0205D52E:
 _0205D536:
 	add r0, r5, #0
 	add r1, r7, #0
-	bl MapObject_SetNextFacing
+	bl MapObject_SetNextFacingDirection
 	mov r0, #1
 	str r0, [sp, #4]
 	b _0205D5CE
@@ -1344,7 +1344,7 @@ _0205D5B4:
 _0205D5C6:
 	add r0, r5, #0
 	add r1, r7, #0
-	bl MapObject_SetNextFacing
+	bl MapObject_SetNextFacingDirection
 _0205D5CE:
 	ldr r1, [sp]
 	add r0, r7, #0
@@ -1391,7 +1391,7 @@ sub_0205D610: ; 0x0205D610
 	bl sub_0205DA1C
 	add r0, r4, #0
 	add r1, r6, #0
-	bl MapObject_SetNextFacing
+	bl MapObject_SetNextFacingDirection
 	add r0, r5, #0
 	bl sub_0205C7B4
 	add r0, r5, #0
@@ -1736,7 +1736,7 @@ _0205D898:
 _0205D8B0:
 	add r0, r7, #0
 	add r1, r6, #0
-	bl MapObject_SetNextFacing
+	bl MapObject_SetNextFacingDirection
 	add r0, r5, #0
 	bl sub_0205C74C
 	b _0205D93A
@@ -1752,7 +1752,7 @@ _0205D8C0:
 	str r0, [sp]
 	add r0, r7, #0
 	add r1, r4, #0
-	bl MapObject_SetNextFacing
+	bl MapObject_SetNextFacingDirection
 	add r0, r5, #0
 	bl sub_0205C74C
 	mov r1, #0
@@ -1777,7 +1777,7 @@ _0205D8F2:
 _0205D90E:
 	add r0, r7, #0
 	add r1, r6, #0
-	bl MapObject_SetNextFacing
+	bl MapObject_SetNextFacingDirection
 	add r0, r5, #0
 	bl sub_0205C74C
 	b _0205D93A
@@ -1817,7 +1817,7 @@ sub_0205D948: ; 0x0205D948
 	bl sub_0205DA1C
 	add r0, r4, #0
 	add r1, r6, #0
-	bl MapObject_SetNextFacing
+	bl MapObject_SetNextFacingDirection
 	add r0, r5, #0
 	bl sub_0205C74C
 	pop {r4, r5, r6, pc}
@@ -1877,7 +1877,7 @@ _0205D9C4:
 _0205D9E4:
 	add r0, r7, #0
 	add r1, r6, #0
-	bl MapObject_SetNextFacing
+	bl MapObject_SetNextFacingDirection
 	add r0, r5, #0
 	bl sub_0205C74C
 	b _0205D9FE

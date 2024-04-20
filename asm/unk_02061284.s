@@ -1073,7 +1073,7 @@ sub_020619C0: ; 0x020619C0
 _020619DA:
 	add r0, r5, #0
 	add r1, r6, #0
-	bl MapObject_SetNextFacing
+	bl MapObject_SetNextFacingDirection
 	add r0, r5, #0
 	bl sub_02062050
 	cmp r0, #0
@@ -1118,7 +1118,7 @@ sub_020619FC: ; 0x020619FC
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl MapObject_SetNextFacing
+	bl MapObject_SetNextFacingDirection
 	add r0, r5, #0
 	bl sub_02062050
 	cmp r0, #0
@@ -1487,7 +1487,7 @@ _02061CB4:
 	ldr r5, [r7, r0]
 	add r0, r6, #0
 	add r1, r5, #0
-	bl MapObject_SetNextFacing
+	bl MapObject_SetNextFacingDirection
 	add r0, r6, #0
 	bl sub_02062050
 	cmp r0, #0
@@ -1510,7 +1510,7 @@ _02061CDC:
 	ldr r5, [r7, r0]
 	add r0, r6, #0
 	add r1, r5, #0
-	bl MapObject_SetNextFacing
+	bl MapObject_SetNextFacingDirection
 	add r0, r6, #0
 	bl sub_02062050
 	cmp r0, #0
