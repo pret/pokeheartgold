@@ -1,20 +1,55 @@
+#include "field_map_object.h"
 #include "global.h"
 #include "field/legend_cutscene_camera.h"
 #include "camera_translation.h"
 #include "field/overlay_01_021E66E4.h"
+#include "field/overlay_01_021FB878.h"
 #include "task.h"
 
 typedef struct UnkStruct_ov02_02250BB0 {
-    u8 filler_000[0x10];
+    NNSFndAllocator unk_000;
     u8 unk_010;
     u8 unk_011;
-    u8 filler_012[0x4A6];
+    u16 unk_012;
+    UnkStruct_ov01_021FBCD8 unk_014;
+    UnkStruct_ov01_021FBCD8 unk_024;
+    UnkStruct_ov01_021FBCD8 unk_034;
+    UnkStruct_ov01_021FBE44 unk_044[3];
+    UnkStruct_ov01_021FBE44 unk_080[2];
+    UnkStruct_ov01_021FBE44 unk_0A8[1];
+    UnkStruct_ov01_021FBF2C unk_0BC;
+    UnkStruct_ov01_021FBF2C unk_134;
+    UnkStruct_ov01_021FBF2C unk_1AC[4];
+    u8 filler_38C[0x120];
+    u32 unk_4AC;
+    const u16 *unk_4B0;
+    const VecFx32 *unk_4B4;
 } UnkStruct_ov02_02250BB0;  // size: 0x4B8
+
+typedef struct UnkStruct_ov02_02250B80 {
+    NNSFndAllocator unk_00;
+    UnkStruct_ov01_021FBCD8 unk_10;
+    UnkStruct_ov01_021FBE44 unk_20;
+    UnkStruct_ov01_021FBE44 unk_34;
+    UnkStruct_ov01_021FBE44 unk_48;
+    UnkStruct_ov01_021FBF2C unk_5C;
+    int unk_D4;
+} UnkStruct_ov02_02250B80;
 
 void ov02_02250B44(FieldSystem *fieldSystem);
 BOOL ov02_02250B58(TaskManager *taskman);
 void ov02_02250BB0(LegendCutsceneCamera *cam);
+void ov02_02250BC4(UnkStruct_Overlay01_021E66E4_subC *a0, FieldSystem *a1, void *a2);
+void ov02_022510D4(UnkStruct_ov01_021FBE44 *a0, u32 a1, int a2);
+void ov02_022511AC(HeapID heapId, FieldSystem *fieldSystem, UnkStruct_ov02_02250B80 *a2);
+BOOL ov02_022512AC(TaskManager *taskman);
 BOOL ov02_02251320(TaskManager *taskman);
+
+extern const UnkStruct_Overlay01_021E67BC_template ov02_02253B4C;
+extern const u16 ov02_02253BD0[];
+extern const u16 ov02_02253C20[];
+extern const VecFx32 ov02_02253B64[];
+extern const VecFx32 ov02_02253B94[];
 
 void ov02_02250A60(FieldSystem *fieldSystem) {
     LegendCutsceneCamera *cam;
@@ -70,4 +105,72 @@ BOOL ov02_02250B58(TaskManager *taskman) {
     }
 
     return FALSE;
+}
+
+void ov02_02250B80(FieldSystem *fieldSystem) {
+    UnkStruct_ov02_02250B80 *unk = AllocFromHeapAtEnd(HEAP_ID_4, sizeof(UnkStruct_ov02_02250B80));
+    unk->unk_D4 = 0;
+    ov02_022511AC(HEAP_ID_4, fieldSystem, unk);
+    TaskManager_Call(fieldSystem->taskman, ov02_022512AC, unk);
+}
+
+void ov02_02250BB0(LegendCutsceneCamera *cam) {
+    cam->unk_04 = ov01_021E67BC(cam->unk_00, &ov02_02253B4C);
+}
+
+void ov02_02250BC4(UnkStruct_Overlay01_021E66E4_subC *a0, FieldSystem *fieldSystem, void *a2) {
+    #pragma unused(a0)
+    UnkStruct_ov02_02250BB0 *r5 = (UnkStruct_ov02_02250BB0 *)a2;
+    // sp8 = a1
+    r5->unk_012 = fieldSystem->unk4->legendCutsceneCamera->gameVersion;
+    GF_ExpHeap_FndInitAllocator(&r5->unk_000, HEAP_ID_4, 0x20);
+    ov01_021FBCD8(&r5->unk_014, NARC_a_1_7_4, 18, HEAP_ID_4);
+    ov01_021FBCD8(&r5->unk_024, NARC_a_1_7_4, 25, HEAP_ID_4);
+    ov01_021FBCD8(&r5->unk_034, NARC_a_1_7_4, 32, HEAP_ID_4);
+    ov01_021FBE44(&r5->unk_044[0], &r5->unk_014, NARC_a_1_7_4, 19, HEAP_ID_4, &r5->unk_000);
+    ov01_021FBE44(&r5->unk_044[1], &r5->unk_014, NARC_a_1_7_4, 20, HEAP_ID_4, &r5->unk_000);
+    ov01_021FBE44(&r5->unk_044[2], &r5->unk_014, NARC_a_1_7_4, 21, HEAP_ID_4, &r5->unk_000);
+    ov01_021FBE44(&r5->unk_080[0], &r5->unk_024, NARC_a_1_7_4, 26, HEAP_ID_4, &r5->unk_000);
+    ov01_021FBE44(&r5->unk_080[1], &r5->unk_024, NARC_a_1_7_4, 27, HEAP_ID_4, &r5->unk_000);
+    ov01_021FBE44(&r5->unk_0A8[0], &r5->unk_034, NARC_a_1_7_4, 33, HEAP_ID_4, &r5->unk_000);
+    ov01_021FBF2C(&r5->unk_0BC, &r5->unk_014);
+    ov01_021FBF2C(&r5->unk_134, &r5->unk_024);
+    ov01_021FBF50(&r5->unk_0BC, &r5->unk_044[0]);
+    ov01_021FBF50(&r5->unk_0BC, &r5->unk_044[1]);
+    ov01_021FBF50(&r5->unk_0BC, &r5->unk_044[2]);
+    ov01_021FBF50(&r5->unk_134, &r5->unk_080[0]);
+    ov01_021FBF50(&r5->unk_134, &r5->unk_080[1]);
+    ov01_021FC004(&r5->unk_0BC, 0);
+    ov01_021FC004(&r5->unk_134, 0);
+    for (u8 i = 0; i < 4; ++i) {
+        ov01_021FBF2C(&r5->unk_1AC[i], &r5->unk_034);
+        ov01_021FBF50(&r5->unk_1AC[i], &r5->unk_0A8[0]);
+        ov01_021FC004(&r5->unk_1AC[i], 0);
+    }
+    ov02_022510D4(r5->unk_044, 3, 0);
+    ov02_022510D4(r5->unk_080, 2, 0);
+    ov02_022510D4(r5->unk_0A8, 1, 0);
+
+    VecFx32 pos;
+    MapObject_GetPositionVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &pos);
+    ov01_021FC00C(&r5->unk_0BC, pos.x, pos.y, pos.z);
+    ov01_021FC00C(&r5->unk_134, pos.x, pos.y, pos.z);
+    if (r5->unk_012 == 8) {
+        ov01_021FC00C(&r5->unk_1AC[0], pos.x + FX32_CONST(128), pos.y + FX32_CONST(32), pos.z - FX32_CONST(180));
+        ov01_021FC00C(&r5->unk_1AC[1], pos.x - FX32_CONST(128), pos.y + FX32_CONST(32), pos.z - FX32_CONST(180));
+        ov01_021FC00C(&r5->unk_1AC[2], 0, 0, 0);
+        ov01_021FC00C(&r5->unk_1AC[3], 0, 0, 0);
+        r5->unk_4AC = 0x131;
+        r5->unk_4B0 = ov02_02253C20;
+        r5->unk_4B4 = ov02_02253B94;
+    } else {
+        ov01_021FC00C(&r5->unk_1AC[0], pos.x + FX32_CONST(200), pos.y - FX32_CONST(73), pos.z + FX32_CONST(144));
+        ov01_021FC00C(&r5->unk_1AC[1], pos.x - FX32_CONST(198), pos.y - FX32_CONST(73), pos.z + FX32_CONST(144));
+        ov01_021FC00C(&r5->unk_1AC[2], pos.x + FX32_CONST(200), pos.y - FX32_CONST(73), pos.z - FX32_CONST(270));
+        ov01_021FC00C(&r5->unk_1AC[3], pos.x - FX32_CONST(198), pos.y - FX32_CONST(73), pos.z - FX32_CONST(270));
+        r5->unk_4AC = 0x130;
+        r5->unk_4B0 = ov02_02253BD0;
+        r5->unk_4B4 = ov02_02253B64;
+    }
+    r5->unk_010 = 0;
 }

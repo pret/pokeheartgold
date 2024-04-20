@@ -1,0 +1,30 @@
+#ifndef POKEHEARTGOLD_FIELD_OVERLAY_01_021FB878_H
+#define POKEHEARTGOLD_FIELD_OVERLAY_01_021FB878_H
+
+#include "filesystem_files_def.h"
+#include "heap.h"
+
+typedef struct UnkStruct_ov01_021FBCD8 {
+    u32 filler_00[4];
+} UnkStruct_ov01_021FBCD8;
+
+typedef struct UnkStruct_ov01_021FBE44 {
+    u32 filler_00[5];
+} UnkStruct_ov01_021FBE44;
+
+typedef struct UnkStruct_ov01_021FBF2C {
+    void *unk_00;
+    NNSG3dResMdlSet *unk_04;
+    NNSG3dResMdl *unk_08;
+    NNSG3dResTex *unk_0C;
+    u8 filler_10[0x68];
+} UnkStruct_ov01_021FBF2C;
+
+void ov01_021FBCD8(UnkStruct_ov01_021FBCD8 *a0, NarcId narcId, s32 fileId, HeapID heapId);
+void ov01_021FBE44(UnkStruct_ov01_021FBE44 *a0, UnkStruct_ov01_021FBCD8 *a1, NarcId narcId, s32 fileId, HeapID heapId, NNSFndAllocator *alloc);
+void ov01_021FBF2C(UnkStruct_ov01_021FBF2C *a0, UnkStruct_ov01_021FBCD8 *a1);
+void ov01_021FBF50(UnkStruct_ov01_021FBF2C *a0, UnkStruct_ov01_021FBE44 *a1);
+void ov01_021FC004(UnkStruct_ov01_021FBF2C *a0, int a1);
+void ov01_021FC00C(UnkStruct_ov01_021FBF2C *a0, fx32 x, fx32 y, fx32 z);
+
+#endif //POKEHEARTGOLD_FIELD_OVERLAY_01_021FB878_H

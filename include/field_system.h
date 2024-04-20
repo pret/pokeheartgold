@@ -102,7 +102,7 @@ struct FieldSystemUnkSub68 {
 };
 
 typedef struct LegendCutsceneCamera {
-    u32 unk_00;
+    UnkStruct_Overlay01_021E66E4 *unk_00;
     UnkStruct_Overlay01_021E66E4_subC *unk_04;
     GFCameraTranslationWrapper *unk_08;
     VecFx32 unk_0C;
@@ -112,7 +112,7 @@ typedef struct LegendCutsceneCamera {
 
 typedef struct FieldSystemUnkSub4 {
     u32 unk0;
-    u32 unk4;
+    UnkStruct_Overlay01_021E66E4 *unk4;
     u32 unk8;
     void *unk_0C; // weather related?
     u8 unk10[0x4];
