@@ -101,6 +101,7 @@
 #include "constants/trainers.h"
 #include "render_window.h"
 #include "overlay_01_021F1AFC.h"
+#include "field/legend_cutscene_camera.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
 FS_EXTERN_OVERLAY(npc_trade);

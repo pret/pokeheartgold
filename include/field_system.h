@@ -9,6 +9,8 @@
 #include "overlay_manager.h"
 #include "save_pokegear.h"
 #include "sys_task_api.h"
+#include "field/overlay_01_021E66E4.h"
+#include "camera_translation.h"
 #include "camera.h"
 #include "bg_window.h"
 #include "scrcmd_9.h"
@@ -99,6 +101,15 @@ struct FieldSystemUnkSub68 {
     u8 unk13_7:1;
 };
 
+typedef struct LegendCutsceneCamera {
+    u32 unk_00;
+    UnkStruct_Overlay01_021E66E4_subC *unk_04;
+    GFCameraTranslationWrapper *unk_08;
+    VecFx32 unk_0C;
+    VecFx32 unk_18;
+    int gameVersion;
+} LegendCutsceneCamera;  // size: 0x28
+
 typedef struct FieldSystemUnkSub4 {
     u32 unk0;
     u32 unk4;
@@ -108,6 +119,8 @@ typedef struct FieldSystemUnkSub4 {
     u32 unk14;
     u32 unk18;
     u32 unk1c;
+    u32 unk20;
+    LegendCutsceneCamera *legendCutsceneCamera;
 } FieldSystemUnkSub4;
 
 struct FieldSystem {
