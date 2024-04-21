@@ -1048,7 +1048,7 @@ _0206AF8E:
 	add r1, r4, #0
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0205EEF4
+	bl MapObjectManager_GetFirstObjectAndIndexWithFlag
 	cmp r0, #0
 	bne _0206AF8E
 	add sp, #8

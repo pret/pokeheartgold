@@ -27,6 +27,9 @@ static void MapObject_SetPositionVecFromObjectEvent(LocalMapObject *object, Obje
 static void sub_0205EC90(LocalMapObject *object, MapObjectManager *manager);
 static void sub_0205ECE0(LocalMapObject *object);
 static void sub_0205ED18(LocalMapObject *object);
+static void MapObject_Clear(LocalMapObject *object);
+static u32 sub_0205ED90(LocalMapObject *object, u32 flagId, u32 objectEventCount, ObjectEvent *objectEvents);
+static LocalMapObject *MapObjectManager_GetFirstObjectWithID(MapObjectManager *manager, u32 objectId, u32 flagId);
 
 static void sub_0205EF8C(LocalMapObject *object);
 
@@ -46,15 +49,15 @@ void MapObjectManager_Delete(MapObjectManager *manager) {
 
 extern void ov01_021F9FB0(MapObjectManager *manager, void *);
 
-void sub_0205E104(MapObjectManager *manager, u32 unused, u32 a2, u32 objectCount, ObjectEvent *objectEvents) {
+void sub_0205E104(MapObjectManager *manager, u32 unused, u32 flagId, u32 objectCount, ObjectEvent *objectEvents) {
     u32 count = MapObjectManager_GetObjectCount(manager);
     LocalMapObject *objects = MapObjectManager_GetObjects(manager);
 
     for (; count != 0; count--) {
         if (MapObject_IsInUse(objects) == TRUE) {
-            switch (sub_0205ED90(objects, a2, objectCount, objectEvents)) {
+            switch (sub_0205ED90(objects, flagId, objectCount, objectEvents)) {
                 case 0:
-                    if (sub_0205F254(objects) != a2 && !MapObject_TestFlagsBits(objects, MAPOBJECTFLAG_UNK10)) {
+                    if (sub_0205F254(objects) != flagId && !MapObject_TestFlagsBits(objects, MAPOBJECTFLAG_UNK10)) {
                         MapObject_Remove(objects);
                     }
                     break;
@@ -92,14 +95,14 @@ static LocalMapObject *MapObject_CreateFromObjectEvent(MapObjectManager *manager
     ObjectEvent *eventPtr = &event;
 
     u32 objectId = ObjectEvent_GetID(eventPtr);
-    if (!ObjectEvent_ScriptIdIsUnset(eventPtr)) {
+    if (!ObjectEvent_ScriptIDIsUnset(eventPtr)) {
         ret = sub_0205EA98(manager, objectId, mapNo);
         if (ret != NULL) {
             sub_0205F014(ret, eventPtr, mapNo);
             return ret;
         }
     } else {
-        ret = sub_0205EE10(manager, objectId, ObjectEvent_GetFlagID_AssertScriptIdIsUnset(eventPtr));
+        ret = MapObjectManager_GetFirstObjectWithID(manager, objectId, ObjectEvent_GetFlagID_AssertScriptIDIsUnset(eventPtr));
         if (ret != NULL) {
             sub_0205F058(ret, mapNo, eventPtr);
             return ret;
@@ -182,7 +185,7 @@ void MapObject_Remove(LocalMapObject *object) {
     sub_0205F444(object);
     sub_0205F348(object);
     sub_0205F174(sub_0205F364(object));
-    sub_0205ED80(object);
+    MapObject_Clear(object);
 }
 
 void MapObject_Delete(LocalMapObject *object) {
@@ -295,7 +298,7 @@ void FieldSystem_SyncMapObjectsToSaveEx(FieldSystem *fieldSystem, MapObjectManag
     s32 index = 0;
     LocalMapObject *object;
 
-    while (sub_0205EEF4(manager, &object, &index, MAPOBJECTFLAG_ACTIVE)) { //MapObjectManager_GetNextActiveObject? this is an iterator however
+    while (MapObjectManager_GetFirstObjectAndIndexWithFlag(manager, &object, &index, MAPOBJECTFLAG_ACTIVE)) { //MapObjectManager_GetNextActiveObject? this is an iterator however
         SavedMapObject_InitFromLocalMapObject(fieldSystem, object, savedObjects);
 
         count--;
@@ -459,7 +462,7 @@ static void MapObject_CreateFromInitArgs(MapObjectInitArgs *args) {
     ObjectEvent *objectEvents = args->objectEvents;
 
     do {
-        GF_ASSERT((ObjectEvent_ScriptIdIsUnset(objectEvents) != TRUE && FieldSystem_FlagCheck(fieldSystem, objectEvents->flag) != FALSE) ||
+        GF_ASSERT((ObjectEvent_ScriptIDIsUnset(objectEvents) != TRUE && FieldSystem_FlagCheck(fieldSystem, objectEvents->flag) != FALSE) ||
                   MapObject_CreateFromObjectEvent(args->manager, objectEvents, args->mapNo) != NULL);
 
         objectEvents++;
@@ -491,7 +494,7 @@ static LocalMapObject *sub_0205EA98(MapObjectManager *manager, u32 id, u32 mapNo
     s32 index = 0;
     LocalMapObject *object;
 
-    while (sub_0205EEF4(manager, &object, &index, MAPOBJECTFLAG_ACTIVE) == TRUE) {
+    while (MapObjectManager_GetFirstObjectAndIndexWithFlag(manager, &object, &index, MAPOBJECTFLAG_ACTIVE) == TRUE) {
         if (MapObject_CheckFlag25(object) == TRUE && MapObject_GetID(object) == id && sub_0205F544(object) == mapNo) {
             return object;
         }
@@ -585,26 +588,26 @@ static void sub_0205ED18(LocalMapObject *object) {
     sub_0205F4B8(object, sub_0205FB34(unk));
 }
 
-void sub_0205ED80(LocalMapObject* object) {
+static void MapObject_Clear(LocalMapObject *object) {
     memset(object, 0, sizeof(LocalMapObject));
 }
 
-u32 sub_0205ED90(LocalMapObject* object, u32 a1, u32 a2, ObjectEvent* templates) {
-    for (; a2 != 0; a2--, templates++) {
-        if (ObjectEvent_GetID(templates) != MapObject_GetID(object)) {
+static u32 sub_0205ED90(LocalMapObject *object, u32 flagId, u32 objectEventCount, ObjectEvent *objectEvents) {
+    for (; objectEventCount != 0; objectEventCount--, objectEvents++) {
+        if (ObjectEvent_GetID(objectEvents) != MapObject_GetID(object)) {
             continue;
         }
 
-        if (ObjectEvent_ScriptIdIsUnset(templates) == TRUE) {
-            u16 flag_id = ObjectEvent_GetFlagID_AssertScriptIdIsUnset(templates);
-            if (MapObject_CheckFlag25(object) == TRUE) {
-                if (flag_id == sub_0205F544(object)) {
+        if (ObjectEvent_ScriptIDIsUnset(objectEvents) == TRUE) {
+            u16 flagIdUnset = ObjectEvent_GetFlagID_AssertScriptIDIsUnset(objectEvents);
+            if (MapObject_CheckFlag25(object) == TRUE) { //this and the one below cannot be combined as it doesn't match
+                if (sub_0205F544(object) == flagIdUnset) {
                     return 1;
                 }
-            } else if (flag_id == sub_0205F254(object)) {
+            } else if (sub_0205F254(object) == flagIdUnset) {
                 return 2;
             }
-        } else if (MapObject_CheckFlag25(object) == TRUE && a1 == sub_0205F544(object)) {
+        } else if (MapObject_CheckFlag25(object) == TRUE && sub_0205F544(object) == flagId) {
             return 2;
         }
     }
@@ -612,12 +615,14 @@ u32 sub_0205ED90(LocalMapObject* object, u32 a1, u32 a2, ObjectEvent* templates)
     return 0;
 }
 
-LocalMapObject* sub_0205EE10(MapObjectManager* manager, u32 object_id, u32 object_flag_id) {
-    int index = 0;
-    LocalMapObject* object;
+//TODO: this also gets based on the second param, which is currently labelled as flagId, but is not
+//see the note attached to sub_0205F254
+static LocalMapObject *MapObjectManager_GetFirstObjectWithID(MapObjectManager *manager, u32 objectId, u32 flagId) {
+    s32 index = 0;
+    LocalMapObject *object;
 
-    while (sub_0205EEF4(manager, &object, &index, MAPOBJECTFLAG_ACTIVE) == TRUE) {
-        if (object_id == MapObject_GetID(object) && object_flag_id == sub_0205F254(object)) {
+    while (MapObjectManager_GetFirstObjectAndIndexWithFlag(manager, &object, &index, MAPOBJECTFLAG_ACTIVE) == TRUE) {
+        if (MapObject_GetID(object) == objectId && sub_0205F254(object) == flagId) {
             return object;
         }
     }
@@ -662,7 +667,7 @@ LocalMapObject* sub_0205EEB4(MapObjectManager* manager, u32 movement) {
     return NULL;
 }
 
-BOOL sub_0205EEF4(MapObjectManager* manager, LocalMapObject** object_dest, int* index, MapObjectFlagBits bits) {
+BOOL MapObjectManager_GetFirstObjectAndIndexWithFlag(MapObjectManager* manager, LocalMapObject** object_dest, int* index, MapObjectFlagBits bits) {
     int count = MapObjectManager_GetObjectCount(manager);
     if (*index >= count) {
         return FALSE;
@@ -750,11 +755,11 @@ void sub_0205F014(LocalMapObject* object, ObjectEvent* template, u32 map_no) {
 }
 
 void sub_0205F058(LocalMapObject* object, u32 map_no, ObjectEvent* template) {
-    GF_ASSERT(ObjectEvent_ScriptIdIsUnset(template) == TRUE);
+    GF_ASSERT(ObjectEvent_ScriptIDIsUnset(template) == TRUE);
 
     MapObject_SetFlag25(object, TRUE);
     MapObject_SetScript(object, ObjectEvent_GetScript(template));
-    MapObject_SetFlagID(object, ObjectEvent_GetFlagID_AssertScriptIdIsUnset(template));
+    MapObject_SetFlagID(object, ObjectEvent_GetFlagID_AssertScriptIDIsUnset(template));
     sub_0205F250(object, map_no);
 }
 
@@ -944,6 +949,17 @@ u32 MapObject_GetID(LocalMapObject* object) {
     return object->id;
 }
 
+/*
+ * Something is very wrong here. One of the variables is mislabelled or misnamed.
+ * Both of the following two functions access LMO's unkC, Initially I thought to
+ * rename unkC to objectEventFlags, as in MapObjectManager_GetFirstObjectWithID 
+ * sub_0205F254 is used to compare to OE's flags in MapObject_CreateFromObjectEvent.
+ * However, sub_0205F250 is often used (again in MapObject_CreateFromObjectEvent) for
+ * assignment of the mapNo to unkC, which of course conflicts with the other
+ * established uses for unkC. Someone with more understanding of this, potentially
+ * from binary land may do better than me at figuring out what is going on here
+ * - red031000
+ */
 void sub_0205F250(LocalMapObject* object, u32 a1) {
     object->unkC = a1;
 }
@@ -1791,7 +1807,7 @@ ObjectEvent* ObjectEvent_GetById(u16 id, int num_templates, ObjectEvent* templat
     int i = 0;
     ObjectEvent* template = templates;
     do {
-        if (!ObjectEvent_ScriptIdIsUnset(template) && id == ObjectEvent_GetID(template)) {
+        if (!ObjectEvent_ScriptIDIsUnset(template) && id == ObjectEvent_GetID(template)) {
             return templates + i;
         }
 
@@ -1802,13 +1818,13 @@ ObjectEvent* ObjectEvent_GetById(u16 id, int num_templates, ObjectEvent* templat
     return NULL;
 }
 
-BOOL ObjectEvent_ScriptIdIsUnset(ObjectEvent* template) {
+BOOL ObjectEvent_ScriptIDIsUnset(ObjectEvent* template) {
     u16 script = (u16)(u32)ObjectEvent_GetScript(template);
     return script == 0xFFFF;
 }
 
-u16 ObjectEvent_GetFlagID_AssertScriptIdIsUnset(ObjectEvent* template) {
-    GF_ASSERT(ObjectEvent_ScriptIdIsUnset(template) == TRUE);
+u16 ObjectEvent_GetFlagID_AssertScriptIDIsUnset(ObjectEvent* template) {
+    GF_ASSERT(ObjectEvent_ScriptIDIsUnset(template) == TRUE);
     return ObjectEvent_GetFlagID(template);
 }
 

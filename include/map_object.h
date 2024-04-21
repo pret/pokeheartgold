@@ -49,7 +49,7 @@ struct LocalMapObject { //declared field_system.h
     /*0x000*/ u32 flags;
     /*0x004*/ u32 flags2;
     /*0x008*/ int id;
-    /*0x00C*/ int unkC;
+    /*0x00C*/ int unkC; //some kind of flag ID
     /*0x010*/ int spriteId;
     /*0x014*/ int movement;
     /*0x018*/ int type;
@@ -163,7 +163,7 @@ typedef struct MapObjectInitArgs {
 // FIXME: Some of these declarations are static and don't belong in here.
 MapObjectManager *MapObjectManager_Init(FieldSystem *fieldSystem, u32 objectCount, u32 priority);
 void MapObjectManager_Delete(MapObjectManager *manager);
-void sub_0205E104(MapObjectManager *manager, u32 unused, u32 a2, u32 objectCount, ObjectEvent* objectEvents);
+void sub_0205E104(MapObjectManager *manager, u32 unused, u32 flagId, u32 objectCount, ObjectEvent* objectEvents);
 LocalMapObject *MapObject_Create(MapObjectManager *manager, u32 x, u32 z, u32 direction, u32 sprite, u32 movement, u32 mapNo);
 LocalMapObject *MapObject_CreateWithParams(MapObjectManager *manager, u32 x, u32 y, u32 direction, u32 sprite, u32 movement, u32 mapNo, u32 param0, u32 param1, u32 param2);
 LocalMapObject* MapObject_CreateFromObjectEventWithId(MapObjectManager *mapObjectManager, u16 objectId, u32 numObjects, u32 mapId, const ObjectEvent *templates);
@@ -179,12 +179,9 @@ void sub_0205E580(MapObjectManager *manager);
 void FieldSystem_SyncMapObjectsToSaveEx(FieldSystem *fieldSystem, MapObjectManager *manager, SavedMapObject *savedObjects, s32 count);
 void MapObjectManager_RestoreFromSave(MapObjectManager *mapObjectManager, SavedMapObject *savedObjects, u32 objectCount);
 void MapObject_CreateFromMultipleObjectEvents(MapObjectManager *manager, u32 mapNo, u32 objectEventCount, ObjectEvent *objectEvents);
-void sub_0205ED80(LocalMapObject* object);
-u32 sub_0205ED90(LocalMapObject*, u32, u32, ObjectEvent*);
-LocalMapObject* sub_0205EE10(MapObjectManager*, u32, u32);
 LocalMapObject *GetMapObjectByID(MapObjectManager *manager, u32 id);
 LocalMapObject *sub_0205EEB4(MapObjectManager *manager, u32 movement);
-BOOL sub_0205EEF4(MapObjectManager*, LocalMapObject**, int*, MapObjectFlagBits);
+BOOL MapObjectManager_GetFirstObjectAndIndexWithFlag(MapObjectManager*, LocalMapObject**, int*, MapObjectFlagBits);
 void sub_0205EF48(LocalMapObject* object);
 void sub_0205EF5C(LocalMapObject* object);
 void sub_0205EF6C(LocalMapObject* object);
@@ -285,8 +282,8 @@ void sub_0205FC2C(LocalMapObject *obj, u32 x, u32 height, u32 y, u32 direction);
 void MapObject_GetPositionVec(LocalMapObject *object, VecFx32 *dest);
 void MapObject_SetPositionVec(LocalMapObject *object, VecFx32 *src);
 u16 ObjectEvent_GetID(ObjectEvent*);
-u16 ObjectEvent_GetFlagID_AssertScriptIdIsUnset(ObjectEvent* template);
-BOOL ObjectEvent_ScriptIdIsUnset(ObjectEvent* template);
+u16 ObjectEvent_GetFlagID_AssertScriptIDIsUnset(ObjectEvent* template);
+BOOL ObjectEvent_ScriptIDIsUnset(ObjectEvent* template);
 BOOL MapObject_IsInUse(LocalMapObject* object);
 void ObjectEvent_SetId(ObjectEvent* template, u16);
 void ObjectEvent_SetSprite(ObjectEvent*, u32);
