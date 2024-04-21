@@ -8,8 +8,8 @@ static void ov12_0226BEB8(BattleFinger *finger);
 
 void BattleFinger_LoadResources(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, HeapID heapId, PaletteData *plttData, u32 character, u32 pal, u32 cell, u32 animation) {
     NARC *narc = NARC_New(NARC_a_1_6_4, heapId);
-    sub_0200D68C(plttData, PLTTBUF_SUB_OBJ, renderer, gfxHandler, narc, 1, 0, 1, 2, pal);
-    SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 0, 0, 2, character);
+    sub_0200D68C(plttData, PLTTBUF_SUB_OBJ, renderer, gfxHandler, narc, 1, 0, 1, NNS_G2D_VRAM_TYPE_2DSUB, pal);
+    SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 0, 0, NNS_G2D_VRAM_TYPE_2DSUB, character);
     SpriteRenderer_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, 2, 0, cell);
     SpriteRenderer_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc, 3, 0, animation);
     NARC_Delete(narc);

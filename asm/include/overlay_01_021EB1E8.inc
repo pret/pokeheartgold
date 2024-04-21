@@ -14,7 +14,7 @@
 .public AddCellOrAnimResObjFromOpenNarc
 .public sub_0200A740
 .public DestroySingle2DGfxResObj
-.public sub_0200A7FC
+.public GF2DGfxResObj_GetResID
 .public sub_0200A8FC
 .public sub_0200A900
 .public sub_0200A908

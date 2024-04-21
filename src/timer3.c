@@ -36,7 +36,7 @@ u64 sub_02025488(void) {
     bak_psr = OS_DisableInterrupts();
     count_lo = *(REGType16 *)((u32)(REG_TM0CNT_L_ADDR + 4 * OS_TIMER_3));
     count_hi = _021D2214 & 0x0000FFFFFFFFFFFFull;
-    if ((reg_OS_IF & OS_IE_TIMER3) && !(count_lo & 0x8000)) {
+    if ((OS_GetRequestIrqMask() & OS_IE_TIMER3) && !(count_lo & 0x8000)) {
         count_hi++;
     }
     OS_RestoreInterrupts(bak_psr);

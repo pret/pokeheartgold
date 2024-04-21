@@ -7074,7 +7074,7 @@ _021E8CC2:
 	bl sub_0200B0F8
 	str r0, [sp, #0x28]
 	ldr r0, [r4]
-	bl sub_0200A810
+	bl GF2DGfxResObj_GetCharDataPtr
 	str r0, [sp, #0x20]
 	cmp r6, #3
 	bne _021E8D6C
@@ -7561,7 +7561,7 @@ ov96_021E9104: ; 0x021E9104
 	sub sp, #0xc
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0200A810
+	bl GF2DGfxResObj_GetCharDataPtr
 	ldrh r1, [r4, #0x18]
 	cmp r1, #0
 	beq _021E911A

@@ -1009,7 +1009,7 @@ ov42_02227720: ; 0x02227720
 	bl AddPlttResObjFromOpenNarc
 	str r0, [r7, r4]
 	ldr r0, [r6, r4]
-	bl sub_0200A810
+	bl GF2DGfxResObj_GetCharDataPtr
 	mov r1, #6
 	ldr r2, [r0, #0x10]
 	lsl r1, r1, #0xa
@@ -1157,7 +1157,7 @@ ov42_02227874: ; 0x02227874
 	cmp r0, #2
 	bne _022278C8
 	ldr r0, [r6, r4]
-	bl sub_0200A810
+	bl GF2DGfxResObj_GetCharDataPtr
 	mov r1, #2
 	lsl r1, r1, #0xa
 	str r1, [r0, #0x10]
@@ -1166,7 +1166,7 @@ _022278C8:
 	cmp r0, #1
 	bne _022278D8
 	ldr r0, [r6, r4]
-	bl sub_0200A810
+	bl GF2DGfxResObj_GetCharDataPtr
 	mov r1, #5
 	lsl r1, r1, #0xa
 	str r1, [r0, #0x10]
@@ -1971,7 +1971,7 @@ ov42_02227E78: ; 0x02227E78
 	add r5, r0, #0
 	add r0, r6, #0
 	add r4, r2, #0
-	bl sub_0200A828
+	bl GF2DGfxResObj_GetPlttDataPtr
 	str r0, [sp, #4]
 	add r0, r6, #0
 	mov r1, #1

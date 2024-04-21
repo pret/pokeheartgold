@@ -50,7 +50,7 @@
 .public sub_0200A740
 .public DestroySingle2DGfxResObj
 .public Get2DGfxResObjById
-.public sub_0200A7FC
+.public GF2DGfxResObj_GetResID
 .public sub_0200ADA4
 .public sub_0200AEB0
 .public sub_0200B00C

@@ -14,8 +14,8 @@
 .public AddCellOrAnimResObjFromOpenNarc
 .public sub_0200A740
 .public DestroySingle2DGfxResObj
-.public sub_0200A810
-.public sub_0200A828
+.public GF2DGfxResObj_GetCharDataPtr
+.public GF2DGfxResObj_GetPlttDataPtr
 .public sub_0200AE18
 .public sub_0200AEB0
 .public sub_0200B00C

@@ -532,7 +532,7 @@ static const WindowTemplate sWindowTemplates[3] = {
 
 static const Unk122_021E92FC ov110_021E6EA4 = {0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20};
 
-static const Unk122_021E92D0 ov110_021E6DD0 = {5, 0, 0, 16, 16};
+static const Unk122_021E92D0 ov110_021E6DD0 = {5, 0, 0, GX_OBJVRAMMODE_CHAR_1D_32K, GX_OBJVRAMMODE_CHAR_1D_32K};
 
 static const u16 sResdatInfo[7] = {
     NARC_resdat_resdat_00000010_bin, // GF_GFX_RES_TYPE_CHAR
