@@ -119,13 +119,109 @@ void ov02_02251B4C(UnkStruct_ov02_02250BB0 *unk);
 void ov02_02251B70(UnkStruct_ov02_02250BB0 *unk);
 BOOL ov02_02251E44(TaskManager *taskman);
 
-extern const UnkStruct_Overlay01_021E67BC_template ov02_02253B4C;
-extern const CameraParam ov02_02253BD0[];
-extern const CameraParam ov02_02253C20[];
-extern const VecFx32 ov02_02253B64[];
-extern const VecFx32 ov02_02253B94[];
-extern const u8 ov02_02253B44[];
-extern const u8 ov02_02253B3C[];
+static const UnkStruct_Overlay01_021E67BC_template ov02_02253B4C = {
+    3,
+    sizeof(UnkStruct_ov02_02250BB0),
+    ov02_02250BC4,
+    ov02_02250EC0,
+    ov02_02250F1C,
+    ov02_02250FE0,
+};
+
+static const CameraParam ov02_02253BD0[] = {
+    {
+        .distance = FX32_CONST(666.922119148625),
+        .angle = { .x = 0xF562 },
+        .perspectiveType = 0,
+        .perspective = 0x5C1,
+        .setReference = FALSE,
+    }, {
+        .distance = FX32_CONST(666.922119148625),
+        .angle = { .x = 0xF562 },
+        .perspectiveType = 0,
+        .perspective = 0x5C1,
+        .setReference = FALSE,
+    }, {
+        .distance = FX32_CONST(666.922119148625),
+        .angle = { .x = 0xF762 },
+        .perspectiveType = 0,
+        .perspective = 0xCC1,
+        .setReference = FALSE,
+    }, {
+        .distance = FX32_CONST(666.922119148625),
+        .angle = { .x = 0xFBA2 },
+        .perspectiveType = 0,
+        .perspective = 0xCC1,
+        .setReference = FALSE,
+    },
+};
+
+static const CameraParam ov02_02253C20[] = {
+    {
+        .distance = FX32_CONST(666.922119148625),
+        .angle = { .x = 0xDFE2 },
+        .perspectiveType = 0,
+        .perspective = 0x5C1,
+        .setReference = FALSE,
+    }, {
+        .distance = FX32_CONST(666.922119148625),
+        .angle = { .x = 0xDFE2 },
+        .perspectiveType = 0,
+        .perspective = 0x5C1,
+        .setReference = FALSE,
+    }, {
+        .distance = FX32_CONST(666.922119148625),
+        .angle = { .x = 0xDEF2 },
+        .perspectiveType = 0,
+        .perspective = 0x5C1,
+        .setReference = FALSE,
+    }, {
+        .distance = FX32_CONST(666.922119148625),
+        .angle = { .x = 0xDEF2 },
+        .perspectiveType = 0,
+        .perspective = 0x5C1,
+        .setReference = FALSE,
+    }, {
+        .distance = FX32_CONST(666.922119148625),
+        .angle = { .x = 0xDEF2 },
+        .perspectiveType = 0,
+        .perspective = 0x5C1,
+        .setReference = FALSE,
+    },
+};
+
+static const VecFx32 ov02_02253B64[] = {
+    { -FX32_CONST(195), -FX32_CONST(148.605), -FX32_CONST(45.19165) },
+    { FX32_CONST(198), -FX32_CONST(148.605), -FX32_CONST(45.19165) },
+    { 0, -FX32_CONST(35.751708984375), -FX32_CONST(23.0476) },
+    { 0, FX32_CONST(495.6323), FX32_CONST(28.73) },
+};
+
+static const VecFx32 ov02_02253B94[] = {
+    { -FX32_CONST(127), 0, -FX32_CONST(208) },
+    { FX32_CONST(63), 0, -FX32_CONST(208) },
+    { 0, 0, -FX32_CONST(82) },
+    { 0, 0, -FX32_CONST(433) },
+    { 0, 0, -FX32_CONST(225) },
+};
+
+static const u8 ov02_02253B3C[] = {
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+};
+
+static const u8 ov02_02253B44[] = {
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+};
 
 void ov02_02250A60(FieldSystem *fieldSystem) {
     KimonoDanceCutsceneCamera *cam;
@@ -810,10 +906,9 @@ void ov02_02251CF0(FieldSystem *fieldSystem) {
     cam->clippingPlaneNear = Camera_GetPerspectiveClippingPlaneNear(fieldSystem->camera);
     cam->clippingPlaneFar = Camera_GetPerspectiveClippingPlaneFar(fieldSystem->camera);
 
-    //ov02_02253C20[4]
-    Camera_SetDistance(FX32_CONST(666.92212), fieldSystem->camera);
+    Camera_SetDistance(ov02_02253C20[4].distance, fieldSystem->camera);
     Camera_SetAnglePos(&ov02_02253C20[4].angle, fieldSystem->camera);
-    Camera_SetPerspectiveAngle(0x5C1, fieldSystem->camera);
+    Camera_SetPerspectiveAngle(ov02_02253C20[4].perspective, fieldSystem->camera);
     Camera_OffsetLookAtPosAndTarget(&ov02_02253B94[4], fieldSystem->camera);
     Camera_SetPerspectiveClippingPlane(FX32_CONST(150), FX32_CONST(1700), fieldSystem->camera);
 }
