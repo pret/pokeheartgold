@@ -101,15 +101,6 @@ struct FieldSystemUnkSub68 {
     u8 unk13_7:1;
 };
 
-typedef struct LegendCutsceneCamera {
-    UnkStruct_Overlay01_021E66E4 *unk_00;
-    UnkStruct_Overlay01_021E66E4_subC *unk_04;
-    GFCameraTranslationWrapper *unk_08;
-    VecFx32 unk_0C;
-    VecFx32 unk_18;
-    int gameVersion;
-} LegendCutsceneCamera;  // size: 0x28
-
 typedef struct FieldSystemUnkSub4 {
     u32 unk0;
     UnkStruct_Overlay01_021E66E4 *unk4;
@@ -120,7 +111,7 @@ typedef struct FieldSystemUnkSub4 {
     u32 unk18;
     u32 unk1c;
     u32 unk20;
-    LegendCutsceneCamera *legendCutsceneCamera;
+    void *legendCutsceneCamera;
 } FieldSystemUnkSub4;
 
 struct FieldSystem {
@@ -166,7 +157,8 @@ struct FieldSystem {
     u32 unkAC;
     void *unkB0;
     s64 unkB4;
-    u8 unkBC[8];
+    u8 unkBC[4];
+    void *unkC0;
     int unkC4;
     u8 filler_C8[0xA];
     u8 unkD2_0:6;
