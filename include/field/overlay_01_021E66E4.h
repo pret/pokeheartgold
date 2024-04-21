@@ -15,24 +15,24 @@ typedef struct UnkStruct_Overlay01_021E67BC_template {
     u16 dataSize;
     Ov01_021E66E4_subC_func initFunc;
     Ov01_021E66E4_subC_func destroyFunc;
-    Ov01_021E66E4_subC_func unk_0C;
-    Ov01_021E66E4_subC_func unk_10;
+    Ov01_021E66E4_subC_func buildFunc;
+    Ov01_021E66E4_subC_func renderFunc;
 } UnkStruct_Overlay01_021E67BC_template;
 
 struct UnkStruct_Overlay01_021E66E4_subC {
     BOOL inUse;
-    SysTask *unk_04;
-    SysTask *unk_08;
-    const UnkStruct_Overlay01_021E67BC_template *unk_0C;
-    void *unk_10;
+    SysTask *mainTask;
+    SysTask *g3dRenderTask;
+    const UnkStruct_Overlay01_021E67BC_template *param;
+    void *data;
 };
 
 typedef struct UnkStruct_Overlay01_021E66E4 {
-    u32 unk_00;
+    struct FieldSystem *fieldSystem;
     HeapID heapId;
-    int unk_08;
-    UnkStruct_Overlay01_021E66E4_subC *unk_0C;
-    SysTaskQueue *unk_10;
+    int max;
+    UnkStruct_Overlay01_021E66E4_subC *tasks;
+    SysTaskQueue *taskQueue;
 } UnkStruct_Overlay01_021E66E4;
 
 // @red031000: struct keyword is necessary because cannot double-typedef and cannot circular include
