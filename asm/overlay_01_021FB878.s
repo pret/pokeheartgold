@@ -924,8 +924,8 @@ ov01_021FBF28: ; 0x021FBF28
 	bx lr
 	thumb_func_end ov01_021FBF28
 
-	thumb_func_start ov01_021FBF2C
-ov01_021FBF2C: ; 0x021FBF2C
+	thumb_func_start Field3dObject_InitFromModel
+Field3dObject_InitFromModel: ; 0x021FBF2C
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	mov r1, #0
@@ -942,28 +942,28 @@ ov01_021FBF2C: ; 0x021FBF2C
 	str r0, [r4, #0x64]
 	str r0, [r4, #0x68]
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov01_021FBF2C
+	thumb_func_end Field3dObject_InitFromModel
 
-	thumb_func_start ov01_021FBF50
-ov01_021FBF50: ; 0x021FBF50
+	thumb_func_start Field3dObject_AddAnimation
+Field3dObject_AddAnimation: ; 0x021FBF50
 	ldr r3, _021FBF58 ; =NNS_G3dRenderObjAddAnmObj
 	ldr r1, [r1, #8]
 	bx r3
 	nop
 _021FBF58: .word NNS_G3dRenderObjAddAnmObj
-	thumb_func_end ov01_021FBF50
+	thumb_func_end Field3dObject_AddAnimation
 
-	thumb_func_start ov01_021FBF5C
-ov01_021FBF5C: ; 0x021FBF5C
+	thumb_func_start Field3dObject_RemoveAnimation
+Field3dObject_RemoveAnimation: ; 0x021FBF5C
 	ldr r3, _021FBF64 ; =NNS_G3dRenderObjRemoveAnmObj
 	ldr r1, [r1, #8]
 	bx r3
 	nop
 _021FBF64: .word NNS_G3dRenderObjRemoveAnmObj
-	thumb_func_end ov01_021FBF5C
+	thumb_func_end Field3dObject_RemoveAnimation
 
-	thumb_func_start ov01_021FBF68
-ov01_021FBF68: ; 0x021FBF68
+	thumb_func_start Field3dObj_Draw
+Field3dObj_Draw: ; 0x021FBF68
 	push {r4, lr}
 	sub sp, #0x48
 	add r4, r0, #0
@@ -1035,30 +1035,30 @@ _021FBFFC:
 	pop {r4, pc}
 	.balign 4, 0
 _021FC000: .word FX_SinCosTable_
-	thumb_func_end ov01_021FBF68
+	thumb_func_end Field3dObj_Draw
 
-	thumb_func_start ov01_021FC004
-ov01_021FC004: ; 0x021FC004
+	thumb_func_start Field3dObject_SetActiveFlag
+Field3dObject_SetActiveFlag: ; 0x021FC004
 	str r1, [r0, #0x6c]
 	bx lr
-	thumb_func_end ov01_021FC004
+	thumb_func_end Field3dObject_SetActiveFlag
 
-	thumb_func_start ov01_021FC008
-ov01_021FC008: ; 0x021FC008
+	thumb_func_start Field3dObject_GetActiveFlag
+Field3dObject_GetActiveFlag: ; 0x021FC008
 	ldr r0, [r0, #0x6c]
 	bx lr
-	thumb_func_end ov01_021FC008
+	thumb_func_end Field3dObject_GetActiveFlag
 
-	thumb_func_start Field3dObject_SetPos
-Field3dObject_SetPos: ; 0x021FC00C
+	thumb_func_start Field3dObj_SetPosEx
+Field3dObj_SetPosEx: ; 0x021FC00C
 	str r1, [r0, #0x54]
 	str r2, [r0, #0x58]
 	str r3, [r0, #0x5c]
 	bx lr
-	thumb_func_end Field3dObject_SetPos
+	thumb_func_end Field3dObj_SetPosEx
 
-	thumb_func_start ov01_021FC014
-ov01_021FC014: ; 0x021FC014
+	thumb_func_start Field3dObj_SetPos
+Field3dObj_SetPos: ; 0x021FC014
 	add r3, r1, #0
 	add r2, r0, #0
 	ldmia r3!, {r0, r1}
@@ -1067,17 +1067,17 @@ ov01_021FC014: ; 0x021FC014
 	ldr r0, [r3]
 	str r0, [r2]
 	bx lr
-	thumb_func_end ov01_021FC014
+	thumb_func_end Field3dObj_SetPos
 
-	thumb_func_start ov01_021FC024
-ov01_021FC024: ; 0x021FC024
+	thumb_func_start Field3dObject_SetXRotation
+Field3dObject_SetXRotation: ; 0x021FC024
 	lsl r2, r2, #1
 	add r0, r0, r2
 	add r0, #0x70
 	strh r1, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end ov01_021FC024
+	thumb_func_end Field3dObject_SetXRotation
 
 	thumb_func_start ov01_021FC030
 ov01_021FC030: ; 0x021FC030

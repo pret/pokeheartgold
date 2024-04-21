@@ -5,41 +5,41 @@
 #include "heap.h"
 
 typedef struct Field3dModel {
-    void *unk_00;
-    NNSG3dResMdlSet *unk_04;
-    NNSG3dResMdl *unk_08;
-    NNSG3dResTex *unk_0C;
+    void *dataRaw;
+    NNSG3dResMdlSet *modelSet;
+    NNSG3dResMdl *model;
+    NNSG3dResTex *texture;
 } Field3dModel;
 
 typedef struct Field3DModelAnimation {
-    void *unk_00;
-    void *unk_04;
-    NNSG3dAnmObj *unk_08;
-    int unk_0C;
-    BOOL unk_10;
+    void *fileDataRaw;
+    void *animRaw;
+    NNSG3dAnmObj *animObj;
+    int frame;
+    BOOL shouldRetainData;  // if FALSE, fileDataRaw is freed on unload
 } Field3DModelAnimation;
 
 typedef struct Field3dObject {
-    NNSG3dRenderObj unk_00;
-    VecFx32 unk_54;
-    VecFx32 unk_60;
-    BOOL unk_6C;
-    u16 unk_70[3];
-    u16 unk_76;
+    NNSG3dRenderObj renderObj;
+    VecFx32 matrix;
+    VecFx32 scale;
+    BOOL active;
+    u16 rotation[3];
+    u16 padding;
 } Field3dObject;
 
 void Field3dModel_LoadFromFilesystem(Field3dModel *model, NarcId narcId, s32 fileId, HeapID heapId);
 void Field3dModel_Unload(Field3dModel *model);
 void Field3dModelAnimation_LoadFromFilesystem(Field3DModelAnimation *anim, Field3dModel *model, NarcId narcId, s32 fileId, HeapID heapId, NNSFndAllocator *alloc);
-void Field3dModelAnimation_Unload(Field3DModelAnimation *anim, NNSFndAllocator *a1);
-BOOL Field3dModelAnimation_FrameAdvanceAndLoop(Field3DModelAnimation *anim, fx32 a1);
-BOOL Field3dModelAnimation_FrameAdvanceAndCheck(Field3DModelAnimation *anim, fx32 a1);
-void Field3dModelAnimation_FrameSet(Field3DModelAnimation *anim, fx32 a1);
-void ov01_021FBF2C(Field3dObject *object, Field3dModel *model);
-void ov01_021FBF50(Field3dObject *object, Field3DModelAnimation *anim);
-void ov01_021FBF5C(Field3dObject *object, Field3DModelAnimation *anim);
-void ov01_021FBF68(Field3dObject *object);
-void ov01_021FC004(Field3dObject *object, int a1);
-void Field3dObject_SetPos(Field3dObject *object, fx32 x, fx32 y, fx32 z);
+void Field3dModelAnimation_Unload(Field3DModelAnimation *anim, NNSFndAllocator *alloc);
+BOOL Field3dModelAnimation_FrameAdvanceAndLoop(Field3DModelAnimation *anim, fx32 ov01_021FC004);
+BOOL Field3dModelAnimation_FrameAdvanceAndCheck(Field3DModelAnimation *anim, fx32 framesBy);
+void Field3dModelAnimation_FrameSet(Field3DModelAnimation *anim, fx32 frame);
+void Field3dObject_InitFromModel(Field3dObject *object, Field3dModel *model);
+void Field3dObject_AddAnimation(Field3dObject *object, Field3DModelAnimation *anim);
+void Field3dObject_RemoveAnimation(Field3dObject *object, Field3DModelAnimation *anim);
+void Field3dObj_Draw(Field3dObject *object);
+void Field3dObject_SetActiveFlag(Field3dObject *object, BOOL active);
+void Field3dObj_SetPosEx(Field3dObject *object, fx32 x, fx32 y, fx32 z);
 
 #endif //POKEHEARTGOLD_FIELD_OVERLAY_01_021FB878_H

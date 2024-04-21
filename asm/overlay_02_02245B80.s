@@ -258,17 +258,17 @@ ov02_02245D18: ; 0x02245D18
 	add r1, r4, #0
 	add r0, #0x44
 	add r1, #0xc
-	bl ov01_021FBF2C
+	bl Field3dObject_InitFromModel
 	add r0, r4, #0
 	add r1, r4, #0
 	add r0, #0x44
 	add r1, #0x1c
-	bl ov01_021FBF50
+	bl Field3dObject_AddAnimation
 	add r0, r4, #0
 	add r1, r4, #0
 	add r0, #0x44
 	add r1, #0x30
-	bl ov01_021FBF50
+	bl Field3dObject_AddAnimation
 	add r0, r4, #0
 	mov r1, #0x22
 	mov r3, #0xa
@@ -276,11 +276,11 @@ ov02_02245D18: ; 0x02245D18
 	lsl r1, r1, #0xe
 	mov r2, #0
 	lsl r3, r3, #0x10
-	bl Field3dObject_SetPos
+	bl Field3dObj_SetPosEx
 	add r4, #0x44
 	add r0, r4, #0
 	mov r1, #1
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
@@ -292,7 +292,7 @@ ov02_02245DB0: ; 0x02245DB0
 	add r4, r0, #0
 	add r0, #0x44
 	mov r1, #0
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add r0, r4, #0
 	add r1, r4, #0
 	add r0, #0x30
@@ -325,7 +325,7 @@ ov02_02245DE0: ; 0x02245DE0
 	bl Field3dModelAnimation_FrameAdvanceAndLoop
 	add r4, #0x44
 	add r0, r4, #0
-	bl ov01_021FBF68
+	bl Field3dObj_Draw
 	pop {r4, pc}
 	thumb_func_end ov02_02245DE0
 
@@ -357,7 +357,7 @@ ov02_02245E04: ; 0x02245E04
 	add r0, r4, #0
 	add r0, #0x10
 	add r1, r4, #0
-	bl ov01_021FBF2C
+	bl Field3dObject_InitFromModel
 	ldrh r1, [r5]
 	ldrb r3, [r5, #3]
 	ldr r2, [r5, #4]
@@ -366,7 +366,7 @@ ov02_02245E04: ; 0x02245E04
 	add r0, r4, #0
 	add r0, #0x10
 	mov r1, #1
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add r0, r4, #0
 	mov r1, #1
 	add r0, #0x9e
@@ -382,7 +382,7 @@ ov02_02245E68: ; 0x02245E68
 	add r5, r0, #0
 	add r0, #0x10
 	mov r1, #0
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add r0, r5, #0
 	add r0, #0x9c
 	ldrb r0, [r0]
@@ -402,7 +402,7 @@ _02245E8E:
 	ldr r1, [r1]
 	add r0, r7, #0
 	add r1, r1, r4
-	bl ov01_021FBF5C
+	bl Field3dObject_RemoveAnimation
 	add r0, r5, #0
 	add r0, #0x88
 	ldr r0, [r0]
@@ -462,7 +462,7 @@ _02245F04:
 	ldr r1, [r1]
 	ldr r0, [sp, #0x10]
 	add r1, r1, r4
-	bl ov01_021FBF5C
+	bl Field3dObject_RemoveAnimation
 	add r0, r5, #0
 	add r0, #0x88
 	ldr r0, [r0]
@@ -543,7 +543,7 @@ _02245F8E:
 	ldr r1, [r1]
 	ldr r0, [sp, #0x1c]
 	add r1, r1, r4
-	bl ov01_021FBF50
+	bl Field3dObject_AddAnimation
 	add r0, r5, #0
 	add r0, #0x9c
 	ldrb r0, [r0]
@@ -607,7 +607,7 @@ _0224600C:
 _0224602E:
 	add r0, r5, #0
 	add r0, #0x10
-	bl ov01_021FBF68
+	bl Field3dObj_Draw
 	add r5, #0x9c
 	ldrb r0, [r5]
 	cmp r7, r0
@@ -667,7 +667,7 @@ _02246082:
 _022460A2:
 	add r5, #0x10
 	add r0, r5, #0
-	bl ov01_021FBF68
+	bl Field3dObj_Draw
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov02_02246048
 
@@ -746,7 +746,7 @@ _02246116:
 	ldr r2, [sp, #4]
 	ldr r3, [sp, #8]
 	add r0, #0x10
-	bl Field3dObject_SetPos
+	bl Field3dObj_SetPosEx
 	ldrh r1, [r4, #0x10]
 	mov r0, #0xc
 	add r2, r1, #0
@@ -866,7 +866,7 @@ _02246204:
 	ldr r2, [sp, #4]
 	ldr r3, [sp, #8]
 	add r0, #0x10
-	bl Field3dObject_SetPos
+	bl Field3dObj_SetPosEx
 	ldr r0, _022462CC ; =SEQ_SE_GS_STOPPERKAIJO
 	bl PlaySE
 	ldrh r0, [r4, #0x12]
@@ -12265,11 +12265,11 @@ ov02_0224B7CC: ; 0x0224B7CC
 	add r0, r4, r6
 	add r0, #0x24
 	add r1, sp, #0
-	bl ov01_021FC014
+	bl Field3dObj_SetPos
 	add r0, r4, r6
 	add r0, #0x24
 	mov r1, #0
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	mov r0, #1
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
@@ -12310,7 +12310,7 @@ _0224B832:
 	add r0, r4, r6
 	add r0, #0x24
 	mov r1, #1
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add r0, r4, r6
 	add r0, #0x9c
 	mov r1, #0
@@ -12348,11 +12348,11 @@ ov02_0224B87C: ; 0x0224B87C
 	mov r0, #0x93
 	ldr r1, [r1]
 	lsl r0, r0, #2
-	ldr r3, _0224B888 ; =ov01_021FBF68
+	ldr r3, _0224B888 ; =Field3dObj_Draw
 	add r0, r1, r0
 	bx r3
 	.balign 4, 0
-_0224B888: .word ov01_021FBF68
+_0224B888: .word Field3dObj_Draw
 	thumb_func_end ov02_0224B87C
 
 	thumb_func_start ov02_0224B88C
@@ -12379,7 +12379,7 @@ ov02_0224B88C: ; 0x0224B88C
 	add r1, r4, #0
 	add r0, #0x24
 	add r1, #0x14
-	bl ov01_021FBF2C
+	bl Field3dObject_InitFromModel
 	mov r0, #4
 	str r0, [sp]
 	add r0, r4, #0
@@ -12404,12 +12404,12 @@ ov02_0224B88C: ; 0x0224B88C
 	add r1, r4, #0
 	add r0, #0x24
 	add r1, #0x9c
-	bl ov01_021FBF50
+	bl Field3dObject_AddAnimation
 	add r0, r4, #0
 	add r4, #0xb0
 	add r0, #0x24
 	add r1, r4, #0
-	bl ov01_021FBF50
+	bl Field3dObject_AddAnimation
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
@@ -15419,7 +15419,7 @@ _0224D02C:
 	add r1, r1, r3
 	add r0, r7, #0
 	add r3, r4, r3
-	bl Field3dObject_SetPos
+	bl Field3dObj_SetPosEx
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov02_0224CFD8
@@ -15476,7 +15476,7 @@ _0224D094:
 	add r1, r1, r3
 	add r0, r7, #0
 	add r3, r4, r3
-	bl Field3dObject_SetPos
+	bl Field3dObj_SetPosEx
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov02_0224D044
@@ -15492,7 +15492,7 @@ ov02_0224D0AC: ; 0x0224D0AC
 	ldr r2, [sp, #4]
 	ldr r3, [sp, #8]
 	add r0, r4, #0
-	bl Field3dObject_SetPos
+	bl Field3dObj_SetPosEx
 	add sp, #0xc
 	pop {r3, r4, pc}
 	thumb_func_end ov02_0224D0AC
@@ -15518,7 +15518,7 @@ ov02_0224D0C8: ; 0x0224D0C8
 	add r1, r6, #0
 	add r0, r6, #0
 	add r1, #0x78
-	bl ov01_021FBF2C
+	bl Field3dObject_InitFromModel
 	add r0, r6, #0
 	add r0, #0xd8
 	str r4, [r0]
@@ -15546,7 +15546,7 @@ _0224D114:
 	bl Field3dModelAnimation_LoadFromFilesystem
 	add r0, r6, #0
 	add r1, r5, #0
-	bl ov01_021FBF50
+	bl Field3dObject_AddAnimation
 	add r0, r6, #0
 	add r0, #0xd8
 	ldr r0, [r0]
@@ -15652,10 +15652,10 @@ _0224D1D8:
 
 	thumb_func_start ov02_0224D1DC
 ov02_0224D1DC: ; 0x0224D1DC
-	ldr r3, _0224D1E0 ; =ov01_021FBF68
+	ldr r3, _0224D1E0 ; =Field3dObj_Draw
 	bx r3
 	.balign 4, 0
-_0224D1E0: .word ov01_021FBF68
+_0224D1E0: .word Field3dObj_Draw
 	thumb_func_end ov02_0224D1DC
 
 	thumb_func_start ov02_0224D1E4
@@ -15758,7 +15758,7 @@ _0224D29A:
 	bne _0224D2B8
 	add r0, r4, #0
 	mov r1, #0
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add r0, r4, #0
 	add r0, #0xec
 	ldr r0, [r0]
@@ -15927,7 +15927,7 @@ _0224D3C6:
 	bne _0224D3E4
 	add r0, r4, #0
 	mov r1, #0
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add r0, r4, #0
 	add r0, #0xec
 	ldr r0, [r0]
@@ -16110,7 +16110,7 @@ _0224D50A:
 	add r0, r4, #0
 	add r0, #0xdc
 	mov r1, #0
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	ldr r0, _0224D57C ; =SEQ_SE_DP_FW463
 	bl PlaySE
 	add r0, r7, #0
@@ -16129,10 +16129,10 @@ _0224D522:
 	add r0, r4, #0
 	add r0, #0xdc
 	mov r1, #1
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add r0, r4, #0
 	mov r1, #0
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add r1, r4, #0
 	ldr r0, [r5, #0x40]
 	add r1, #0xdc
@@ -16250,7 +16250,7 @@ ov02_0224D5B4: ; 0x0224D5B4
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #1
-	bl ov01_021FC024
+	bl Field3dObject_SetXRotation
 	ldr r0, _0224D644 ; =SEQ_SE_DP_FW463
 	bl PlaySE
 	mov r0, #0
@@ -16340,7 +16340,7 @@ _0224D6B0:
 	add r0, r7, #0
 	add r2, r2, r4
 	add r3, r3, r5
-	bl Field3dObject_SetPos
+	bl Field3dObj_SetPosEx
 	add r0, r7, #0
 	mov r4, #0
 	add r5, r7, #0
@@ -16359,7 +16359,7 @@ _0224D6D8:
 	blt _0224D6D8
 	add r0, r7, #0
 	mov r1, #1
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	ldr r0, _0224D6FC ; =SEQ_SE_DP_UG_023
 	bl PlaySE
 	add sp, #0xc
@@ -16397,7 +16397,7 @@ _0224D716:
 	add r0, #0xc8
 	str r1, [r0]
 	ldr r0, [sp]
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 _0224D73A:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov02_0224D700
@@ -16415,7 +16415,7 @@ ov02_0224D73C: ; 0x0224D73C
 	bl memset
 	ldr r1, [sp]
 	add r0, r7, #0
-	bl ov01_021FBF2C
+	bl Field3dObject_InitFromModel
 	add r4, r7, #0
 	mov r6, #0
 	add r4, #0x78
@@ -16427,7 +16427,7 @@ _0224D75E:
 	bl ov01_021FBE70
 	add r0, r7, #0
 	add r1, r4, #0
-	bl ov01_021FBF50
+	bl Field3dObject_AddAnimation
 	add r6, r6, #1
 	add r5, r5, #4
 	add r4, #0x14
@@ -16435,7 +16435,7 @@ _0224D75E:
 	blt _0224D75E
 	add r0, r7, #0
 	mov r1, #0
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov02_0224D73C
@@ -16726,7 +16726,7 @@ ov02_0224D98C: ; 0x0224D98C
 	add r5, #0x10
 _0224D994:
 	add r0, r5, #0
-	bl ov01_021FBF68
+	bl Field3dObj_Draw
 	add r4, r4, #1
 	add r5, #0xcc
 	cmp r4, #0x10
@@ -17069,7 +17069,7 @@ _0224DC1C:
 	bne _0224DC4C
 	add r0, r4, #0
 	mov r1, #0
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	ldr r0, _0224DC50 ; =0x00000113
 	ldrb r1, [r4, r0]
 	add r1, r1, #1
@@ -17303,7 +17303,7 @@ ov02_0224DDC8: ; 0x0224DDC8
 	add r5, #0x10
 _0224DDD0:
 	add r0, r5, #0
-	bl ov01_021FBF68
+	bl Field3dObj_Draw
 	add r4, r4, #1
 	add r5, #0xcc
 	cmp r4, #0x12
@@ -17362,7 +17362,7 @@ _0224DE26:
 	add r0, r7, #0
 	add r2, r2, r5
 	add r3, r3, r6
-	bl Field3dObject_SetPos
+	bl Field3dObj_SetPosEx
 	add r0, r7, #0
 	mov r4, #0
 	add r5, r7, #0
@@ -17381,7 +17381,7 @@ _0224DE46:
 	blt _0224DE46
 	add r0, r7, #0
 	mov r1, #1
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	ldr r0, _0224DE68 ; =SEQ_SE_DP_UG_023
 	bl PlaySE
 	pop {r3, r4, r5, r6, r7, pc}
@@ -17418,7 +17418,7 @@ _0224DE82:
 	add r0, #0xc8
 	str r1, [r0]
 	ldr r0, [sp]
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 _0224DEA6:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov02_0224DE6C
@@ -17436,7 +17436,7 @@ ov02_0224DEA8: ; 0x0224DEA8
 	bl memset
 	ldr r1, [sp]
 	add r0, r7, #0
-	bl ov01_021FBF2C
+	bl Field3dObject_InitFromModel
 	add r4, r7, #0
 	mov r6, #0
 	add r4, #0x78
@@ -17448,7 +17448,7 @@ _0224DECA:
 	bl ov01_021FBE70
 	add r0, r7, #0
 	add r1, r4, #0
-	bl ov01_021FBF50
+	bl Field3dObject_AddAnimation
 	add r6, r6, #1
 	add r5, r5, #4
 	add r4, #0x14
@@ -17456,7 +17456,7 @@ _0224DECA:
 	blt _0224DECA
 	add r0, r7, #0
 	mov r1, #0
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov02_0224DEA8

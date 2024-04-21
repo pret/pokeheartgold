@@ -37,11 +37,11 @@
 .public Field3dModelAnimation_Unload
 .public Field3dModelAnimation_FrameAdvanceAndCheck
 .public Field3dModelAnimation_FrameSet
-.public ov01_021FBF2C
-.public ov01_021FBF50
-.public ov01_021FBF68
-.public ov01_021FC004
-.public ov01_021FC014
+.public Field3dObject_InitFromModel
+.public Field3dObject_AddAnimation
+.public Field3dObj_Draw
+.public Field3dObject_SetActiveFlag
+.public Field3dObj_SetPos
 .public ov01_022031C0
 .public ov01_022031E8
 .public ov01_0220329C

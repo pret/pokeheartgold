@@ -20,11 +20,11 @@
 .public Field3dModelAnimation_Unload
 .public Field3dModelAnimation_FrameAdvanceAndCheck
 .public Field3dModelAnimation_FrameSet
-.public ov01_021FBF2C
-.public ov01_021FBF50
-.public ov01_021FBF68
-.public ov01_021FC004
-.public Field3dObject_SetPos
+.public Field3dObject_InitFromModel
+.public Field3dObject_AddAnimation
+.public Field3dObj_Draw
+.public Field3dObject_SetActiveFlag
+.public Field3dObj_SetPosEx
 .public GetHoneySweetScentWorkSize
 .public Task_HoneyOrSweetScent
 .public Task_UseSweetScentInField

@@ -227,7 +227,7 @@ _021FD032:
 _021FD046:
 	add r5, #0x5c
 	add r0, r5, #0
-	bl ov01_021FBF68
+	bl Field3dObj_Draw
 	b _021FD060
 _021FD050:
 	add r0, r5, #0
@@ -289,22 +289,22 @@ ov01_021FD064: ; 0x021FD064
 	add r1, r4, #0
 	add r0, #0x5c
 	add r1, #0x10
-	bl ov01_021FBF2C
+	bl Field3dObject_InitFromModel
 	add r0, r4, #0
 	add r1, r4, #0
 	add r0, #0x5c
 	add r1, #0x20
-	bl ov01_021FBF50
+	bl Field3dObject_AddAnimation
 	add r0, r4, #0
 	add r1, r4, #0
 	add r0, #0x5c
 	add r1, #0x34
-	bl ov01_021FBF50
+	bl Field3dObject_AddAnimation
 	add r0, r4, #0
 	add r1, r4, #0
 	add r0, #0x5c
 	add r1, #0x48
-	bl ov01_021FBF50
+	bl Field3dObject_AddAnimation
 	add r0, r4, #0
 	add r0, #0x20
 	mov r1, #3
@@ -319,11 +319,11 @@ ov01_021FD064: ; 0x021FD064
 	ldr r2, [sp, #0xc]
 	ldr r3, [sp, #0x10]
 	add r0, #0x5c
-	bl Field3dObject_SetPos
+	bl Field3dObj_SetPosEx
 	add r4, #0x5c
 	add r0, r4, #0
 	mov r1, #1
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0

@@ -309,19 +309,19 @@ static void ov02_02250BC4(UnkStruct_Overlay01_021E66E4_subC *a0, FieldSystem *fi
     Field3dModelAnimation_LoadFromFilesystem(&r5->unk_080[0], &r5->unk_024, NARC_a_1_7_4, 26, HEAP_ID_4, &r5->unk_000);
     Field3dModelAnimation_LoadFromFilesystem(&r5->unk_080[1], &r5->unk_024, NARC_a_1_7_4, 27, HEAP_ID_4, &r5->unk_000);
     Field3dModelAnimation_LoadFromFilesystem(&r5->unk_0A8[0], &r5->unk_034, NARC_a_1_7_4, 33, HEAP_ID_4, &r5->unk_000);
-    ov01_021FBF2C(&r5->unk_0BC, &r5->unk_014);
-    ov01_021FBF2C(&r5->unk_134, &r5->unk_024);
-    ov01_021FBF50(&r5->unk_0BC, &r5->unk_044[0]);
-    ov01_021FBF50(&r5->unk_0BC, &r5->unk_044[1]);
-    ov01_021FBF50(&r5->unk_0BC, &r5->unk_044[2]);
-    ov01_021FBF50(&r5->unk_134, &r5->unk_080[0]);
-    ov01_021FBF50(&r5->unk_134, &r5->unk_080[1]);
-    ov01_021FC004(&r5->unk_0BC, 0);
-    ov01_021FC004(&r5->unk_134, 0);
+    Field3dObject_InitFromModel(&r5->unk_0BC, &r5->unk_014);
+    Field3dObject_InitFromModel(&r5->unk_134, &r5->unk_024);
+    Field3dObject_AddAnimation(&r5->unk_0BC, &r5->unk_044[0]);
+    Field3dObject_AddAnimation(&r5->unk_0BC, &r5->unk_044[1]);
+    Field3dObject_AddAnimation(&r5->unk_0BC, &r5->unk_044[2]);
+    Field3dObject_AddAnimation(&r5->unk_134, &r5->unk_080[0]);
+    Field3dObject_AddAnimation(&r5->unk_134, &r5->unk_080[1]);
+    Field3dObject_SetActiveFlag(&r5->unk_0BC, FALSE);
+    Field3dObject_SetActiveFlag(&r5->unk_134, FALSE);
     for (u8 i = 0; i < 4; ++i) {
-        ov01_021FBF2C(&r5->unk_1AC[i], &r5->unk_034);
-        ov01_021FBF50(&r5->unk_1AC[i], &r5->unk_0A8[0]);
-        ov01_021FC004(&r5->unk_1AC[i], 0);
+        Field3dObject_InitFromModel(&r5->unk_1AC[i], &r5->unk_034);
+        Field3dObject_AddAnimation(&r5->unk_1AC[i], &r5->unk_0A8[0]);
+        Field3dObject_SetActiveFlag(&r5->unk_1AC[i], FALSE);
     }
     modelAnimListSetFrameIndex(r5->unk_044, 3, 0);
     modelAnimListSetFrameIndex(r5->unk_080, 2, 0);
@@ -329,21 +329,21 @@ static void ov02_02250BC4(UnkStruct_Overlay01_021E66E4_subC *a0, FieldSystem *fi
 
     VecFx32 pos;
     MapObject_GetPositionVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &pos);
-    Field3dObject_SetPos(&r5->unk_0BC, pos.x, pos.y, pos.z);
-    Field3dObject_SetPos(&r5->unk_134, pos.x, pos.y, pos.z);
+    Field3dObj_SetPosEx(&r5->unk_0BC, pos.x, pos.y, pos.z);
+    Field3dObj_SetPosEx(&r5->unk_134, pos.x, pos.y, pos.z);
     if (r5->gameVersion == VERSION_SOULSILVER) {
-        Field3dObject_SetPos(&r5->unk_1AC[0], pos.x + FX32_CONST(128), pos.y + FX32_CONST(32), pos.z - FX32_CONST(180));
-        Field3dObject_SetPos(&r5->unk_1AC[1], pos.x - FX32_CONST(128), pos.y + FX32_CONST(32), pos.z - FX32_CONST(180));
-        Field3dObject_SetPos(&r5->unk_1AC[2], 0, 0, 0);
-        Field3dObject_SetPos(&r5->unk_1AC[3], 0, 0, 0);
+        Field3dObj_SetPosEx(&r5->unk_1AC[0], pos.x + FX32_CONST(128), pos.y + FX32_CONST(32), pos.z - FX32_CONST(180));
+        Field3dObj_SetPosEx(&r5->unk_1AC[1], pos.x - FX32_CONST(128), pos.y + FX32_CONST(32), pos.z - FX32_CONST(180));
+        Field3dObj_SetPosEx(&r5->unk_1AC[2], 0, 0, 0);
+        Field3dObj_SetPosEx(&r5->unk_1AC[3], 0, 0, 0);
         r5->unk_4AC = 0x131;
         r5->cameraParam = sCameraParam_SoulSilver;
         r5->cameraOffset = sCameraOffset_SoulSilver;
     } else {
-        Field3dObject_SetPos(&r5->unk_1AC[0], pos.x + FX32_CONST(200), pos.y - FX32_CONST(73), pos.z + FX32_CONST(144));
-        Field3dObject_SetPos(&r5->unk_1AC[1], pos.x - FX32_CONST(198), pos.y - FX32_CONST(73), pos.z + FX32_CONST(144));
-        Field3dObject_SetPos(&r5->unk_1AC[2], pos.x + FX32_CONST(200), pos.y - FX32_CONST(73), pos.z - FX32_CONST(270));
-        Field3dObject_SetPos(&r5->unk_1AC[3], pos.x - FX32_CONST(198), pos.y - FX32_CONST(73), pos.z - FX32_CONST(270));
+        Field3dObj_SetPosEx(&r5->unk_1AC[0], pos.x + FX32_CONST(200), pos.y - FX32_CONST(73), pos.z + FX32_CONST(144));
+        Field3dObj_SetPosEx(&r5->unk_1AC[1], pos.x - FX32_CONST(198), pos.y - FX32_CONST(73), pos.z + FX32_CONST(144));
+        Field3dObj_SetPosEx(&r5->unk_1AC[2], pos.x + FX32_CONST(200), pos.y - FX32_CONST(73), pos.z - FX32_CONST(270));
+        Field3dObj_SetPosEx(&r5->unk_1AC[3], pos.x - FX32_CONST(198), pos.y - FX32_CONST(73), pos.z - FX32_CONST(270));
         r5->unk_4AC = 0x130;
         r5->cameraParam = sCameraParam_HeartGold;
         r5->cameraOffset = sCameraOffset_HeartGold;
@@ -371,7 +371,7 @@ static void ov02_02250F1C(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSys
     case 0:
         break;
     case 1:
-        ov01_021FC004(&r4->unk_0BC, 1);
+        Field3dObject_SetActiveFlag(&r4->unk_0BC, TRUE);
         r4->state = 2;
         break;
     case 2:
@@ -384,7 +384,7 @@ static void ov02_02250F1C(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSys
         modelAnimListAdvanceLooping(r4->unk_044, 3);
         break;
     case 4:
-        ov01_021FC004(&r4->unk_0BC, 0);
+        Field3dObject_SetActiveFlag(&r4->unk_0BC, FALSE);
         ov02_02251164(r4, 1);
         modelAnimListSetFrameIndex(r4->unk_080, 2, 0);
         modelAnimListSetFrameIndex(r4->unk_0A8, 1, 0);
@@ -395,7 +395,7 @@ static void ov02_02250F1C(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSys
         modelAnimListAdvanceNoLoop(r4->unk_0A8, 1);
         if (modelAnimListAdvanceNoLoop(r4->unk_080, 2)) {
             ov02_02251164(r4, 0);
-            ov01_021FC004(&r4->unk_0BC, 1);
+            Field3dObject_SetActiveFlag(&r4->unk_0BC, TRUE);
             r4->state = 3;
         }
         break;
@@ -405,26 +405,26 @@ static void ov02_02250F1C(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSys
 static void ov02_02250FE0(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSystem *a1, void *a2) {
     UnkStruct_ov02_02250BB0 *r4 = (UnkStruct_ov02_02250BB0 *)a2;
 
-    ov01_021FBF68(&r4->unk_0BC);
-    ov01_021FBF68(&r4->unk_134);
+    Field3dObj_Draw(&r4->unk_0BC);
+    Field3dObj_Draw(&r4->unk_134);
     for (u8 i = 0; i < 4; ++i) {
-        ov01_021FBF68(&r4->unk_1AC[i]);
+        Field3dObj_Draw(&r4->unk_1AC[i]);
     }
 }
 
 static void ov02_02251018(UnkStruct_ov02_02250BB0 *a0) {
-    ov01_021FBF5C(&a0->unk_0BC, &a0->unk_044[0]);
-    ov01_021FBF5C(&a0->unk_0BC, &a0->unk_044[1]);
-    ov01_021FBF5C(&a0->unk_0BC, &a0->unk_044[2]);
+    Field3dObject_RemoveAnimation(&a0->unk_0BC, &a0->unk_044[0]);
+    Field3dObject_RemoveAnimation(&a0->unk_0BC, &a0->unk_044[1]);
+    Field3dObject_RemoveAnimation(&a0->unk_0BC, &a0->unk_044[2]);
     Field3dModelAnimation_Unload(&a0->unk_044[2], &a0->unk_000);
     Field3dModelAnimation_Unload(&a0->unk_044[1], &a0->unk_000);
     Field3dModelAnimation_Unload(&a0->unk_044[0], &a0->unk_000);
     Field3dModelAnimation_LoadFromFilesystem(&a0->unk_044[0], &a0->unk_014, NARC_a_1_7_4, 22, HEAP_ID_4, &a0->unk_000);
     Field3dModelAnimation_LoadFromFilesystem(&a0->unk_044[1], &a0->unk_014, NARC_a_1_7_4, 23, HEAP_ID_4, &a0->unk_000);
     Field3dModelAnimation_LoadFromFilesystem(&a0->unk_044[2], &a0->unk_014, NARC_a_1_7_4, 24, HEAP_ID_4, &a0->unk_000);
-    ov01_021FBF50(&a0->unk_0BC, &a0->unk_044[0]);
-    ov01_021FBF50(&a0->unk_0BC, &a0->unk_044[1]);
-    ov01_021FBF50(&a0->unk_0BC, &a0->unk_044[2]);
+    Field3dObject_AddAnimation(&a0->unk_0BC, &a0->unk_044[0]);
+    Field3dObject_AddAnimation(&a0->unk_0BC, &a0->unk_044[1]);
+    Field3dObject_AddAnimation(&a0->unk_0BC, &a0->unk_044[2]);
     modelAnimListSetFrameIndex(a0->unk_044, 3, 0);
 }
 
@@ -452,10 +452,10 @@ static void modelAnimListAdvanceLooping(Field3DModelAnimation *animation, u32 nu
 
 static void ov02_02251164(UnkStruct_ov02_02250BB0 *a0, int a1) {
     u32 r5 = a0->gameVersion == VERSION_SOULSILVER ? 2 : 4;
-    ov01_021FC004(&a0->unk_134, a1);
+    Field3dObject_SetActiveFlag(&a0->unk_134, a1);
     if (!a0->unk_011) {
         for (u8 i = 0; i < r5; ++i) {
-            ov01_021FC004(&a0->unk_1AC[i], a1);
+            Field3dObject_SetActiveFlag(&a0->unk_1AC[i], a1);
         }
     }
 }
@@ -466,18 +466,18 @@ static void ov02_022511AC(HeapID heapId, FieldSystem *fieldSystem, UnkStruct_ov0
     Field3dModelAnimation_LoadFromFilesystem(&a2->unk_20[0], &a2->unk_10, NARC_a_1_7_4, 29, heapId, &a2->unk_00);
     Field3dModelAnimation_LoadFromFilesystem(&a2->unk_20[1], &a2->unk_10, NARC_a_1_7_4, 30, heapId, &a2->unk_00);
     Field3dModelAnimation_LoadFromFilesystem(&a2->unk_20[2], &a2->unk_10, NARC_a_1_7_4, 31, heapId, &a2->unk_00);
-    ov01_021FBF2C(&a2->unk_5C, &a2->unk_10);
-    ov01_021FBF50(&a2->unk_5C, &a2->unk_20[0]);
-    ov01_021FBF50(&a2->unk_5C, &a2->unk_20[1]);
-    ov01_021FBF50(&a2->unk_5C, &a2->unk_20[2]);
+    Field3dObject_InitFromModel(&a2->unk_5C, &a2->unk_10);
+    Field3dObject_AddAnimation(&a2->unk_5C, &a2->unk_20[0]);
+    Field3dObject_AddAnimation(&a2->unk_5C, &a2->unk_20[1]);
+    Field3dObject_AddAnimation(&a2->unk_5C, &a2->unk_20[2]);
     modelAnimListSetFrameIndex(a2->unk_20, 3, 0);
 
     VecFx32 pos;
     MapObject_GetPositionVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &pos);
     pos.y += FX32_CONST(100);
     pos.z -= FX32_CONST(350);
-    Field3dObject_SetPos(&a2->unk_5C, pos.x, pos.y, pos.z);
-    ov01_021FC004(&a2->unk_5C, 1);
+    Field3dObj_SetPosEx(&a2->unk_5C, pos.x, pos.y, pos.z);
+    Field3dObject_SetActiveFlag(&a2->unk_5C, TRUE);
 }
 
 static void ov02_02251280(UnkStruct_ov02_02250B80 *a0) {
@@ -500,7 +500,7 @@ static BOOL ov02_022512AC(TaskManager *taskman) {
         if (modelAnimListAdvanceNoLoop(unk->unk_20, 3)) {
             ++(*pState);
         }
-        ov01_021FBF68(&unk->unk_5C);
+        Field3dObj_Draw(&unk->unk_5C);
         break;
     case 1:
         ov02_02251280(unk);
@@ -653,11 +653,11 @@ static BOOL ov02_022515D0(TaskManager *taskman) {
         Field3dModelAnimation_LoadFromFilesystem(&unk->unk_2C[0], &unk->unk_1C, NARC_a_1_7_4, 35, HEAP_ID_4, &unk->unk_0C);
         Field3dModelAnimation_LoadFromFilesystem(&unk->unk_2C[1], &unk->unk_1C, NARC_a_1_7_4, 36, HEAP_ID_4, &unk->unk_0C);
         Field3dModelAnimation_LoadFromFilesystem(&unk->unk_2C[2], &unk->unk_1C, NARC_a_1_7_4, 37, HEAP_ID_4, &unk->unk_0C);
-        ov01_021FBF2C(&unk->unk_68, &unk->unk_1C);
-        ov01_021FBF50(&unk->unk_68, &unk->unk_2C[0]);
-        ov01_021FBF50(&unk->unk_68, &unk->unk_2C[1]);
-        ov01_021FBF50(&unk->unk_68, &unk->unk_2C[2]);
-        ov01_021FC004(&unk->unk_68, 0);
+        Field3dObject_InitFromModel(&unk->unk_68, &unk->unk_1C);
+        Field3dObject_AddAnimation(&unk->unk_68, &unk->unk_2C[0]);
+        Field3dObject_AddAnimation(&unk->unk_68, &unk->unk_2C[1]);
+        Field3dObject_AddAnimation(&unk->unk_68, &unk->unk_2C[2]);
+        Field3dObject_SetActiveFlag(&unk->unk_68, FALSE);
         modelAnimListSetFrameIndex(unk->unk_2C,3, 0);
     {
         VecFx32 sp2C;
@@ -668,7 +668,7 @@ static BOOL ov02_022515D0(TaskManager *taskman) {
         } else {
             sp2C.z -= FX32_CONST(280);
         }
-        Field3dObject_SetPos(&unk->unk_68, sp2C.x, sp2C.y, sp2C.z);
+        Field3dObj_SetPosEx(&unk->unk_68, sp2C.x, sp2C.y, sp2C.z);
     }
         ++(*pState);
         break;
@@ -727,7 +727,7 @@ static BOOL ov02_022515D0(TaskManager *taskman) {
     case 4:
         ++unk->unk_08;
         if (unk->unk_08 >= 50) {
-            ov01_021FC004(&unk->unk_68, 1);
+            Field3dObject_SetActiveFlag(&unk->unk_68, TRUE);
             PlayCry(species, 0);
             unk->unk_0A = 0;
             unk->unk_08 = 0;
@@ -744,7 +744,7 @@ static BOOL ov02_022515D0(TaskManager *taskman) {
             ++(*pState);
         }
     }
-        ov01_021FBF68(&unk->unk_68);
+        Field3dObj_Draw(&unk->unk_68);
         break;
     case 6:
         ++unk->unk_08;
@@ -781,15 +781,15 @@ static void ov02_022518F8(FieldSystem *fieldSystem) {
     Field3dModel_LoadFromFilesystem(&sub_38C->model, NARC_a_1_7_4, 38, HEAP_ID_4);
     Field3dModelAnimation_LoadFromFilesystem(&sub_38C->anims[0], &sub_38C->model, NARC_a_1_7_4, 39, HEAP_ID_4, &r5->unk_000);
     Field3dModelAnimation_LoadFromFilesystem(&sub_38C->anims[1], &sub_38C->model, NARC_a_1_7_4, 40, HEAP_ID_4, &r5->unk_000);
-    ov01_021FBF2C(&sub_38C->object, &sub_38C->model);
-    ov01_021FBF50(&sub_38C->object, &sub_38C->anims[0]);
-    ov01_021FBF50(&sub_38C->object, &sub_38C->anims[1]);
-    ov01_021FC004(&sub_38C->object, 1);
+    Field3dObject_InitFromModel(&sub_38C->object, &sub_38C->model);
+    Field3dObject_AddAnimation(&sub_38C->object, &sub_38C->anims[0]);
+    Field3dObject_AddAnimation(&sub_38C->object, &sub_38C->anims[1]);
+    Field3dObject_SetActiveFlag(&sub_38C->object, TRUE);
     modelAnimListSetFrameIndex(sub_38C->anims, 2, 0);
 
     VecFx32 sp8;
     MapObject_GetPositionVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &sp8);
-    Field3dObject_SetPos(&sub_38C->object, sp8.x, sp8.y, sp8.z);
+    Field3dObj_SetPosEx(&sub_38C->object, sp8.x, sp8.y, sp8.z);
     r5->unk_4A8 = SysTask_CreateOnMainQueue(ov02_02251BA8, r5, 0);
 }
 
@@ -857,7 +857,7 @@ static void ov02_02251BA8(SysTask *task, void *taskData) {
     UnkStruct_ov02_02250BB0 *unk = (UnkStruct_ov02_02250BB0 *)taskData;
     UnkStruct_ov02_02250BB0_sub38C *sub_38C = &unk->unk_38C;
     modelAnimListAdvanceLooping(sub_38C->anims, 2);
-    ov01_021FBF68(&sub_38C->object);
+    Field3dObj_Draw(&sub_38C->object);
 }
 
 static void ov02_02251BC4(SysTask *task, void *taskData) {

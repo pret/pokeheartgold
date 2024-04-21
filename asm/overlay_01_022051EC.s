@@ -81,17 +81,17 @@ ov01_02205218: ; 0x02205218
 	add r1, r4, #0
 	add r0, #0x4c
 	add r1, #0x14
-	bl ov01_021FBF2C
+	bl Field3dObject_InitFromModel
 	add r0, r4, #0
 	add r1, r4, #0
 	add r0, #0x4c
 	add r1, #0x24
-	bl ov01_021FBF50
+	bl Field3dObject_AddAnimation
 	add r0, r4, #0
 	add r1, r4, #0
 	add r0, #0x4c
 	add r1, #0x38
-	bl ov01_021FBF50
+	bl Field3dObject_AddAnimation
 	add r0, r4, #0
 	add r0, #0x24
 	mov r1, #2
@@ -100,7 +100,7 @@ ov01_02205218: ; 0x02205218
 	add r4, #0x4c
 	add r0, r4, #0
 	mov r1, #0
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add sp, #8
 	pop {r4, pc}
 	thumb_func_end ov01_02205218
@@ -175,7 +175,7 @@ ov01_02205300: ; 0x02205300
 	add r0, r4, #0
 	add r0, #0x4c
 	mov r1, #1
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add r0, r5, #0
 	add r1, sp, #0
 	bl sub_02068DB8
@@ -184,7 +184,7 @@ ov01_02205300: ; 0x02205300
 	ldr r2, [sp, #4]
 	ldr r3, [sp, #8]
 	add r0, r4, #0
-	bl Field3dObject_SetPos
+	bl Field3dObj_SetPosEx
 	mov r0, #SEQ_SE_GS_TUREARUKI>>4
 	lsl r0, r0, #4
 	bl PlaySE
@@ -203,12 +203,12 @@ ov01_02205350: ; 0x02205350
 	thumb_func_start ov01_02205354
 ov01_02205354: ; 0x02205354
 	ldr r0, [r1, #4]
-	ldr r3, _02205360 ; =ov01_021FC004
+	ldr r3, _02205360 ; =Field3dObject_SetActiveFlag
 	add r0, #0x4c
 	mov r1, #0
 	bx r3
 	nop
-_02205360: .word ov01_021FC004
+_02205360: .word Field3dObject_SetActiveFlag
 	thumb_func_end ov01_02205354
 
 	thumb_func_start ov01_02205364
@@ -227,7 +227,7 @@ ov01_02205364: ; 0x02205364
 _0220537C:
 	add r4, #0x4c
 	add r0, r4, #0
-	bl ov01_021FBF68
+	bl Field3dObj_Draw
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov01_02205364
