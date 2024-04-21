@@ -466,8 +466,8 @@ static void CreateOamAndObjResMgrs(CreditsAppWork *work) {
     UnkStruct_020215A0 temp;
     UnkOv021E60F6 temp2;
 
-    reg_GX_DISPCNT = (reg_GX_DISPCNT & 0xffcfffef) | 0x00200010;
-    reg_GXS_DB_DISPCNT = (reg_GXS_DB_DISPCNT & 0xffcfffef) | 0x00200010;
+    GX_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_128K);
+    GXS_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_128K);
     temp = ov76_021E6EA0;
     sub_020215A0(&temp);
     sub_02022588(0xd, HEAP_ID_CREDITS);
@@ -803,7 +803,7 @@ static void HandleCutscenes(CreditsAppWork *work) {
         if (work->timer == cutsceneSprites->sprite[i].activateTime) {
             ActivateSprite(cutsceneSprites->sprite[i].sprite);
         }
-        if (Sprite_IsCellAnimationFinished(cutsceneSprites->sprite[i].sprite) == 0) {
+        if (Sprite_IsCellAnimationRunning(cutsceneSprites->sprite[i].sprite) == 0) {
             count++;
         }
     }
@@ -847,16 +847,11 @@ static void DisplayWindow(CreditsAppWork *work) {
 }
 
 static void ov76_021E6944(PageDisplayWork *pageDisplay, BgConfig *bgConfig, BOOL hidden) {
-    u32 val;
-
     GF_ASSERT(pageDisplay->rendering == FALSE);
     GXS_SetVisibleWnd(3);
-    val = ((reg_G2S_DB_WININ & ~0x3f) | 0x1e);
-    reg_G2S_DB_WININ = val | 0x20;
-    val = ((reg_G2S_DB_WININ & 0xffffc0ff) | 0x1e00);
-    reg_G2S_DB_WININ = val | 0x2000;
-    val = ((reg_G2S_DB_WINOUT & ~0x3f) | 0x1c);
-    reg_G2S_DB_WINOUT = val | 0x20;
+    G2S_SetWnd0InsidePlane(30, TRUE);
+    G2S_SetWnd1InsidePlane(30, TRUE);
+    G2S_SetWndOutsidePlane(28, TRUE);
     pageDisplay->unk0 = 0;
     pageDisplay->rendering = TRUE;
     pageDisplay->hidden = hidden;
@@ -902,19 +897,13 @@ static void TogglePageDisplayCB(SysTask *task, void *taskData) {
 }
 
 static void ov76_021E6A34(int a0, int a1, int a2, int a3) {
-    u16 temp;
-
     if (a0 == 0 && a2 == 0xff) {
-        reg_G2S_DB_WIN1H = 1;
-        temp = ((a1 << 8) & 0xff00) | (u8)a3;
-        reg_G2S_DB_WIN1V = temp;
-        reg_G2S_DB_WIN0H = 0x0100;
-        reg_G2S_DB_WIN0V = temp;
+        G2S_SetWnd1Position(0, a1, 1, a3);
+        G2S_SetWnd0Position(1, a1, 0, a3);
         return;
     }
 
-    reg_G2S_DB_WIN0H = ((a0 << 8) & 0xff00) | (u8)a2;
-    reg_G2S_DB_WIN0V = (a1 << 8) & 0xff00 | (u8)a3;
+    G2S_SetWnd0Position(a0, a1, a2, a3);
 }
 
 static void LoadPage(PageWork *ptr) {

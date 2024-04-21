@@ -2,6 +2,9 @@ cmake_minimum_required (VERSION 3.15)
 set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
 set(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS "")
 set(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS "")
+# Override the default system to cross-compile for ARM processors
+set(CMAKE_SYSTEM_NAME Linux)
+set(CMAKE_SYSTEM_PROCESSOR ARM)
 project(PokeHeartGold)
 
 enable_language(ASM)

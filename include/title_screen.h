@@ -8,7 +8,7 @@
 #include "gf_3d_vramman.h"
 #include "overlay_manager.h"
 
-FS_EXTERN_OVERLAY(OVY_60);
+FS_EXTERN_OVERLAY(intro_title);
 
 typedef enum TitleScreenExitMode {
     TITLESCREEN_EXIT_UNSET,

@@ -46,7 +46,7 @@ void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, 
     if (transfer) {
         proxy = sub_0200AF24(charObj, cellObj);
         GF_ASSERT(proxy != NULL);
-        hdr->charData = sub_0200A810(charObj);
+        hdr->charData = GF2DGfxResObj_GetCharDataPtr(charObj);
     } else {
         proxy = sub_0200AF00(charObj);
         GF_ASSERT(proxy != NULL);
@@ -54,15 +54,15 @@ void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, 
     }
     hdr->plttProxy = sub_0200B0F8(plttObj, proxy);
     hdr->imageProxy = proxy;
-    hdr->cellData = sub_0200A840(cellObj);
+    hdr->cellData = GF2DGfxResObj_GetCellDataPtr(cellObj);
     if (cellAnmObj != NULL) {
-        hdr->cellAnim = sub_0200A858(cellAnmObj);
+        hdr->cellAnim = GF2DGfxResObj_GetAnimDataPtr(cellAnmObj);
     } else {
         hdr->cellAnim = NULL;
     }
     if (multiCellObj != NULL) {
-        hdr->multiCellData = sub_0200A870(multiCellObj);
-        hdr->multiCellAnim = sub_0200A888(multiCellAnmObj);
+        hdr->multiCellData = GF2DGfxResObj_GetMultiCellDataPtr(multiCellObj);
+        hdr->multiCellAnim = GF2DGfxResObj_GetMultiAnimDataPtr(multiCellAnmObj);
     } else {
         hdr->multiCellData = NULL;
         hdr->multiCellAnim = NULL;

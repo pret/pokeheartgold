@@ -109,8 +109,8 @@ void ReplaceCharResObjFromNarc(GF_2DGfxResMan *mgr, GF_2DGfxResObj *obj, NarcId 
     GF_ASSERT(mgr->type == GF_GFX_RES_TYPE_CHAR);
     GF_ASSERT(obj != NULL);
     GF_ASSERT(obj->type == GF_GFX_RES_TYPE_CHAR);
-    id = sub_0200A7FC(obj);
-    vram = sub_0200A8B0(obj);
+    id = GF2DGfxResObj_GetResID(obj);
+    vram = GF2DGfxResObj_GetLoadAddress(obj);
     DestroySingle2DGfxResObj(mgr, obj);
     Add2DGfxResObjFromNarc(mgr, obj, narcId, fileId, compressed, id, vram, 0, GF_GFX_RES_TYPE_CHAR, heapId, FALSE);
 }
@@ -123,9 +123,9 @@ void ReplacePlttResObjFromNarc(GF_2DGfxResMan *mgr, GF_2DGfxResObj *obj, NarcId 
     GF_ASSERT(mgr->type == GF_GFX_RES_TYPE_PLTT);
     GF_ASSERT(obj != NULL);
     GF_ASSERT(obj->type == GF_GFX_RES_TYPE_PLTT);
-    id = sub_0200A7FC(obj);
-    vram = sub_0200A8B0(obj);
-    pltt_num = sub_0200A8DC(obj);
+    id = GF2DGfxResObj_GetResID(obj);
+    vram = GF2DGfxResObj_GetLoadAddress(obj);
+    pltt_num = GF2DGfxResObj_GetPlttNum(obj);
     DestroySingle2DGfxResObj(mgr, obj);
     Add2DGfxResObjFromNarc(mgr, obj, narcId, fileId, compressed, id, vram, pltt_num, GF_GFX_RES_TYPE_PLTT, heapId, FALSE);
 }
@@ -194,8 +194,8 @@ void ReplaceCharResObjFromOpenNarc(GF_2DGfxResMan *mgr, GF_2DGfxResObj *obj, NAR
     GF_ASSERT(mgr->type == GF_GFX_RES_TYPE_CHAR);
     GF_ASSERT(obj != NULL);
     GF_ASSERT(obj->type == GF_GFX_RES_TYPE_CHAR);
-    id = sub_0200A7FC(obj);
-    vram = sub_0200A8B0(obj);
+    id = GF2DGfxResObj_GetResID(obj);
+    vram = GF2DGfxResObj_GetLoadAddress(obj);
     DestroySingle2DGfxResObj(mgr, obj);
     Add2DGfxResObjFromOpenNarc(mgr, obj, narc, fileId, compressed, id, vram, 0, GF_GFX_RES_TYPE_CHAR, heapId, FALSE);
 }
@@ -208,9 +208,9 @@ void ReplacePlttResObjFromOpenNarc(GF_2DGfxResMan *mgr, GF_2DGfxResObj *obj, NAR
     GF_ASSERT(mgr->type == GF_GFX_RES_TYPE_PLTT);
     GF_ASSERT(obj != NULL);
     GF_ASSERT(obj->type == GF_GFX_RES_TYPE_PLTT);
-    id = sub_0200A7FC(obj);
-    vram = sub_0200A8B0(obj);
-    pltt_num = sub_0200A8DC(obj);
+    id = GF2DGfxResObj_GetResID(obj);
+    vram = GF2DGfxResObj_GetLoadAddress(obj);
+    pltt_num = GF2DGfxResObj_GetPlttNum(obj);
     DestroySingle2DGfxResObj(mgr, obj);
     Add2DGfxResObjFromOpenNarc(mgr, obj, narc, fileId, compressed, id, vram, pltt_num, GF_GFX_RES_TYPE_PLTT, heapId, FALSE);
 }
@@ -294,59 +294,59 @@ GF_2DGfxResObj *Get2DGfxResObjById(GF_2DGfxResMan *mgr, int id) {
     return NULL;
 }
 
-int sub_0200A7FC(GF_2DGfxResObj *obj) {
+int GF2DGfxResObj_GetResID(GF_2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
     return Get2DGfxRawResObjId(obj->resource);
 }
 
-NNSG2dCharacterData *sub_0200A810(GF_2DGfxResObj *obj) {
+NNSG2dCharacterData *GF2DGfxResObj_GetCharDataPtr(GF_2DGfxResObj *obj) {
     struct CharResExtraData *res;
     GF_ASSERT(obj->type == GF_GFX_RES_TYPE_CHAR);
     res = getResObjExtra(obj);
     return res->charData;
 }
 
-NNSG2dPaletteData *sub_0200A828(GF_2DGfxResObj *obj) {
+NNSG2dPaletteData *GF2DGfxResObj_GetPlttDataPtr(GF_2DGfxResObj *obj) {
     struct PlttResExtraData *res;
     GF_ASSERT(obj->type == GF_GFX_RES_TYPE_PLTT);
     res = getResObjExtra(obj);
     return res->plttData;
 }
 
-NNSG2dCellDataBank *sub_0200A840(GF_2DGfxResObj *obj) {
+NNSG2dCellDataBank *GF2DGfxResObj_GetCellDataPtr(GF_2DGfxResObj *obj) {
     struct CellResExtraData *res;
     GF_ASSERT(obj->type == GF_GFX_RES_TYPE_CELL);
     res = getResObjExtra(obj);
     return res->cellDataBank;
 }
 
-NNSG2dAnimBankData *sub_0200A858(GF_2DGfxResObj *obj) {
+NNSG2dAnimBankData *GF2DGfxResObj_GetAnimDataPtr(GF_2DGfxResObj *obj) {
     struct AnimResExtraData *res;
     GF_ASSERT(obj->type == GF_GFX_RES_TYPE_ANIM);
     res = getResObjExtra(obj);
     return res->animBankData;
 }
 
-NNSG2dMultiCellDataBank *sub_0200A870(GF_2DGfxResObj *obj) {
+NNSG2dMultiCellDataBank *GF2DGfxResObj_GetMultiCellDataPtr(GF_2DGfxResObj *obj) {
     struct MulticellResExtraData *res;
     GF_ASSERT(obj->type == GF_GFX_RES_TYPE_MCEL);
     res = getResObjExtra(obj);
     return res->multiCellDataBank;
 }
 
-NNSG2dAnimBankData *sub_0200A888(GF_2DGfxResObj *obj) {
+NNSG2dAnimBankData *GF2DGfxResObj_GetMultiAnimDataPtr(GF_2DGfxResObj *obj) {
     struct MultianimResExtraData *res;
     GF_ASSERT(obj->type == GF_GFX_RES_TYPE_MANM);
     res = getResObjExtra(obj);
     return res->animBankData;
 }
 
-GfGfxResType sub_0200A8A0(GF_2DGfxResObj *obj) {
+GfGfxResType GF2DGfxResObj_GetResType(GF_2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
     return obj->type;
 }
 
-int sub_0200A8B0(GF_2DGfxResObj *obj) {
+int GF2DGfxResObj_GetLoadAddress(GF_2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
     if (obj->type == GF_GFX_RES_TYPE_CHAR) {
         struct CharResExtraData *res = getResObjExtra(obj);
@@ -359,7 +359,7 @@ int sub_0200A8B0(GF_2DGfxResObj *obj) {
     }
 }
 
-int sub_0200A8DC(GF_2DGfxResObj *obj) {
+int GF2DGfxResObj_GetPlttNum(GF_2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
     if (obj->type == GF_GFX_RES_TYPE_PLTT) {
         struct PlttResExtraData *res = getResObjExtra(obj);

@@ -152,7 +152,7 @@
 .public Camera_SetLookAtCamTarget
 .public sub_02024B1C
 .public sub_02024B34
-.public Sprite_IsCellAnimationFinished
+.public Sprite_IsCellAnimationRunning
 .public GF_AssertFail
 .public CapsuleGetSealI
 .public SealOnCapsuleGetID

@@ -1,8 +1,9 @@
 #include "global.h"
-#include "field_player_avatar.h"
 #include "map_object.h"
+#include "field_player_avatar.h"
 #include "filesystem.h"
 #include "heap.h"
+#include "constants/sprites.h"
 #include "sys_task_api.h"
 #include "unk_0205FD20.h"
 
@@ -24,8 +25,9 @@ static void sub_0205EAF0(MapObjectManager *manager, LocalMapObject *object);
 static void MapObject_InitFromObjectEvent(LocalMapObject *object, ObjectEvent *objectEvent, FieldSystem *fieldSystem);
 static void MapObject_SetPositionVecFromObjectEvent(LocalMapObject *object, ObjectEvent *objectEvent);
 static void sub_0205EC90(LocalMapObject *object, MapObjectManager *manager);
-
+static void sub_0205ECE0(LocalMapObject *object);
 static void sub_0205ED18(LocalMapObject *object);
+
 static void sub_0205EF8C(LocalMapObject *object);
 
 MapObjectManager *MapObjectManager_Init(FieldSystem *fieldSystem, u32 objectCount, u32 priority) {
@@ -563,9 +565,8 @@ static void sub_0205EC90(LocalMapObject *object, MapObjectManager *manager) { //
     MapObject_ClearHeldMovement(object);
 }
 
-void sub_0205ECE0(LocalMapObject* object) {
-    u32 movement = MapObject_GetMovement(object);
-    UnkLMOCallbackStruct* unk = sub_0205FB00(movement);
+static void sub_0205ECE0(LocalMapObject *object) {
+    UnkLMOCallbackStruct *unk = sub_0205FB00(MapObject_GetMovement(object));
     sub_0205F414(object, sub_0205FB18(unk));
     sub_0205F428(object, sub_0205FB1C(unk));
     sub_0205F43C(object, sub_0205FB20(unk));
@@ -573,9 +574,9 @@ void sub_0205ECE0(LocalMapObject* object) {
 
 extern const UnkLMOCallbackStruct2 ov01_0220724C;
 
-static void sub_0205ED18(LocalMapObject* object) {
+static void sub_0205ED18(LocalMapObject *object) {
     u32 spriteId = MapObject_GetSpriteID(object);
-    UnkLMOCallbackStruct2* unk = (spriteId == 0x2000) ? (UnkLMOCallbackStruct2*)&ov01_0220724C : sub_0205FB38(spriteId);
+    UnkLMOCallbackStruct2 *unk = (spriteId == SPRITE_CAMERA_FOCUS) ? (UnkLMOCallbackStruct2 *)&ov01_0220724C : sub_0205FB38(spriteId);
 
     sub_0205F468(object, sub_0205FB24(unk));
     sub_0205F47C(object, sub_0205FB28(unk));

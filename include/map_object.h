@@ -179,8 +179,6 @@ void sub_0205E580(MapObjectManager *manager);
 void FieldSystem_SyncMapObjectsToSaveEx(FieldSystem *fieldSystem, MapObjectManager *manager, SavedMapObject *savedObjects, s32 count);
 void MapObjectManager_RestoreFromSave(MapObjectManager *mapObjectManager, SavedMapObject *savedObjects, u32 objectCount);
 void MapObject_CreateFromMultipleObjectEvents(MapObjectManager *manager, u32 mapNo, u32 objectEventCount, ObjectEvent *objectEvents);
-void sub_0205EC90(LocalMapObject* object, MapObjectManager* manager);
-void sub_0205ECE0(LocalMapObject* object);
 void sub_0205ED80(LocalMapObject* object);
 u32 sub_0205ED90(LocalMapObject*, u32, u32, ObjectEvent*);
 LocalMapObject* sub_0205EE10(MapObjectManager*, u32, u32);

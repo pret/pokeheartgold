@@ -2740,7 +2740,7 @@ _02247E2A:
 	b _02247EC6
 _02247E50:
 	ldr r0, [r5, #0x40]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _02247EC6
 	ldr r0, [r5, #0x74]
@@ -5777,7 +5777,7 @@ _022495FA:
 	b _0224965C
 _02249624:
 	ldr r0, [r5, #0x20]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _0224965C
 	mov r0, #0x10
@@ -7267,7 +7267,7 @@ _0224A1E6:
 	b _0224A26A
 _0224A206:
 	ldr r0, [r5, #0x20]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _0224A26A
 	ldr r0, _0224A270 ; =0x000006AA

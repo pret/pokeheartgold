@@ -39,13 +39,14 @@ all:
 tidy:
 	@$(MAKE) -C lib/syscall tidy
 	@$(MAKE) -C sub tidy
-	$(RM) -r $(BUILD_DIR)
+	$(RM) -r build
 	$(RM) -r $(PROJECT_CLEAN_TARGETS)
 	$(RM) $(ROM)
 
 clean: tidy clean-filesystem clean-tools
 	@$(MAKE) -C lib/syscall clean
 	@$(MAKE) -C sub clean
+	$(RM) $(ICON_PNG:%.png=%.nbfp) $(ICON_PNG:%.png=%.nbfc)
 
 SBIN_LZ        := $(SBIN)_LZ
 .PHONY: main_lz
