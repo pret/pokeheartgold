@@ -2230,7 +2230,7 @@ ov01_021EC240: ; 0x021EC240
 	add r4, sp, #0x34
 _021EC250:
 	ldr r0, [r5]
-	bl sub_0200A7FC
+	bl GF2DGfxResObj_GetResID
 	add r6, r6, #1
 	add r5, r5, #4
 	stmia r4!, {r0}

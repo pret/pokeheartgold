@@ -1300,7 +1300,7 @@ extern UnkStruct_020215A0 ov84_0223F9E8;
 
 static void ov84_0223F480(void) {
     UnkStruct_020215A0 var = ov84_0223F9E8;
-    sub_020215C0(&var, 16, 16);
+    sub_020215C0(&var, GX_OBJVRAMMODE_CHAR_1D_32K, GX_OBJVRAMMODE_CHAR_1D_32K);
     sub_02022588(14, HEAP_ID_GAME_BOARD);
     sub_020216C8();
     sub_02022638();
