@@ -33,10 +33,10 @@
 .public ov01_021F771C
 .public ov01_021FBD38
 .public ov01_021FBDFC
-.public ov01_021FBE44
-.public ov01_021FBE80
-.public ov01_021FBEE4
-.public ov01_021FBF20
+.public Field3dModelAnimation_LoadFromFilesystem
+.public Field3dModelAnimation_Unload
+.public Field3dModelAnimation_FrameAdvanceAndCheck
+.public Field3dModelAnimation_FrameSet
 .public ov01_021FBF2C
 .public ov01_021FBF50
 .public ov01_021FBF68

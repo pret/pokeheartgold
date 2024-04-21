@@ -14,7 +14,7 @@
 typedef struct KimonoDanceCutsceneCamera {
     UnkStruct_Overlay01_021E66E4 *unk_00;
     UnkStruct_Overlay01_021E66E4_subC *unk_04;
-    GFCameraTranslationWrapper *unk_08;
+    GFCameraTranslationWrapper *translation;
     VecFx32 unk_0C;
     VecFx32 unk_18;
     int gameVersion;
@@ -28,55 +28,55 @@ typedef struct LugiaArrivesCutsceneCamera {
     u16 gameVersion;
     fx32 clippingPlaneNear;
     fx32 clippingPlaneFar;
-    GFCameraTranslationWrapper *unk_24;
+    GFCameraTranslationWrapper *translation;
 } LugiaArrivesCutsceneCamera;
 
 typedef struct UnkStruct_ov02_02250BB0_sub38C {
-    UnkStruct_ov01_021FBCD8 unk_00;
-    UnkStruct_ov01_021FBE44 unk_10[2];
-    UnkStruct_ov01_021FBF2C unk_38;
+    Field3dModel model;
+    Field3DModelAnimation anims[2];
+    Field3dObject object;
 } UnkStruct_ov02_02250BB0_sub38C;
 
 typedef struct UnkStruct_ov02_02250BB0_sub43C {
-    NNSG2dScreenData *unk_00[6];
-    NNSG2dScreenData *unk_18[6];
-    void *unk_30[6];
-    void *unk_48[6];
-    u8 unk_60;
-    u8 unk_61;
-    u8 unk_62;
-    u8 unk_63;
-    BgConfig *unk_64;
-    int unk_68;
+    NNSG2dScreenData *bg2ScrnData[6];
+    NNSG2dScreenData *bg3ScrnData[6];
+    void *bg2ScrnRaw[6];
+    void *bg3ScrnRaw[6];
+    u8 bg2X;
+    u8 bg3X;
+    u8 bgY;
+    u8 switchTilemapDelayTimer;
+    BgConfig *bgConfig;
+    int tilemapIndex;
 } UnkStruct_ov02_02250BB0_sub43C;
 
 typedef struct UnkStruct_ov02_02250BB0 {
     NNSFndAllocator unk_000;
-    u8 unk_010;
+    u8 state;
     u8 unk_011;
-    u16 unk_012;
-    UnkStruct_ov01_021FBCD8 unk_014;
-    UnkStruct_ov01_021FBCD8 unk_024;
-    UnkStruct_ov01_021FBCD8 unk_034;
-    UnkStruct_ov01_021FBE44 unk_044[3];
-    UnkStruct_ov01_021FBE44 unk_080[2];
-    UnkStruct_ov01_021FBE44 unk_0A8[1];
-    UnkStruct_ov01_021FBF2C unk_0BC;
-    UnkStruct_ov01_021FBF2C unk_134;
-    UnkStruct_ov01_021FBF2C unk_1AC[4];
+    u16 gameVersion;
+    Field3dModel unk_014;
+    Field3dModel unk_024;
+    Field3dModel unk_034;
+    Field3DModelAnimation unk_044[3];
+    Field3DModelAnimation unk_080[2];
+    Field3DModelAnimation unk_0A8[1];
+    Field3dObject unk_0BC;
+    Field3dObject unk_134;
+    Field3dObject unk_1AC[4];
     UnkStruct_ov02_02250BB0_sub38C unk_38C;
     UnkStruct_ov02_02250BB0_sub43C unk_43C;
     SysTask *unk_4A8;
     u32 unk_4AC;
-    const CameraParam *unk_4B0;
-    const VecFx32 *unk_4B4;
+    const CameraParam *cameraParam;
+    const VecFx32 *cameraOffset;
 } UnkStruct_ov02_02250BB0;  // size: 0x4B8
 
 typedef struct UnkStruct_ov02_02250B80 {
     NNSFndAllocator unk_00;
-    UnkStruct_ov01_021FBCD8 unk_10;
-    UnkStruct_ov01_021FBE44 unk_20[3];
-    UnkStruct_ov01_021FBF2C unk_5C;
+    Field3dModel unk_10;
+    Field3DModelAnimation unk_20[3];
+    Field3dObject unk_5C;
     int unk_D4;
 } UnkStruct_ov02_02250B80;
 
@@ -86,38 +86,38 @@ typedef struct UnkStruct_ov02_022515A4 {
     u16 unk_08;
     u16 unk_0A;
     NNSFndAllocator unk_0C;
-    UnkStruct_ov01_021FBCD8 unk_1C;
-    UnkStruct_ov01_021FBE44 unk_2C[3];
-    UnkStruct_ov01_021FBF2C unk_68;
+    Field3dModel unk_1C;
+    Field3DModelAnimation unk_2C[3];
+    Field3dObject unk_68;
     u16 gameVersion;
     u16 unk_E2;
 } UnkStruct_ov02_022515A4;
 
-void ov02_02250B44(FieldSystem *fieldSystem);
-BOOL ov02_02250B58(TaskManager *taskman);
-void ov02_02250BB0(KimonoDanceCutsceneCamera *cam);
-void ov02_02250BC4(UnkStruct_Overlay01_021E66E4_subC *a0, FieldSystem *a1, void *a2);
-void ov02_02250EC0(UnkStruct_Overlay01_021E66E4_subC *a0, FieldSystem *fieldSystem, void *a2);
-void ov02_02250F1C(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSystem *a1, void *a2);
-void ov02_02250FE0(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSystem *a1, void *a2);
-void ov02_02251018(UnkStruct_ov02_02250BB0 *a0);
-void ov02_022510D4(UnkStruct_ov01_021FBE44 *a0, u32 a1, fx32 a2);
-BOOL ov02_022510FC(UnkStruct_ov01_021FBE44 *a0, u32 a1);
-void ov02_02251138(UnkStruct_ov01_021FBE44 *a0, u32 a1);
-void ov02_02251164(UnkStruct_ov02_02250BB0 *a0, int a1);
-void ov02_022511AC(HeapID heapId, FieldSystem *fieldSystem, UnkStruct_ov02_02250B80 *a2);
-void ov02_02251280(UnkStruct_ov02_02250B80 *a0);
-BOOL ov02_022512AC(TaskManager *taskman);
-BOOL ov02_02251320(TaskManager *taskman);
-BOOL ov02_02251568(TaskManager *taskman);
-BOOL ov02_022515D0(TaskManager *taskman);
-void ov02_022518F8(FieldSystem *fieldSystem);
-void ov02_022519B0(FieldSystem *fieldSystem);
-void ov02_02251BA8(SysTask *task, void *taskData);
-void ov02_02251BC4(SysTask *task, void *taskData);
-void ov02_02251B4C(UnkStruct_ov02_02250BB0 *unk);
-void ov02_02251B70(UnkStruct_ov02_02250BB0 *unk);
-BOOL ov02_02251E44(TaskManager *taskman);
+static void ov02_02250B44(FieldSystem *fieldSystem);
+static BOOL ov02_02250B58(TaskManager *taskman);
+static void ov02_02250BB0(KimonoDanceCutsceneCamera *cam);
+static void ov02_02250BC4(UnkStruct_Overlay01_021E66E4_subC *a0, FieldSystem *a1, void *a2);
+static void ov02_02250EC0(UnkStruct_Overlay01_021E66E4_subC *a0, FieldSystem *fieldSystem, void *a2);
+static void ov02_02250F1C(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSystem *a1, void *a2);
+static void ov02_02250FE0(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSystem *a1, void *a2);
+static void ov02_02251018(UnkStruct_ov02_02250BB0 *a0);
+static void modelAnimListSetFrameIndex(Field3DModelAnimation *animation, u32 num, fx32 frame);
+static BOOL modelAnimListAdvanceNoLoop(Field3DModelAnimation *animation, u32 num);
+static void modelAnimListAdvanceLooping(Field3DModelAnimation *animation, u32 num);
+static void ov02_02251164(UnkStruct_ov02_02250BB0 *a0, int a1);
+static void ov02_022511AC(HeapID heapId, FieldSystem *fieldSystem, UnkStruct_ov02_02250B80 *a2);
+static void ov02_02251280(UnkStruct_ov02_02250B80 *a0);
+static BOOL ov02_022512AC(TaskManager *taskman);
+static BOOL ov02_02251320(TaskManager *taskman);
+static BOOL ov02_02251568(TaskManager *taskman);
+static BOOL ov02_022515D0(TaskManager *taskman);
+static void ov02_022518F8(FieldSystem *fieldSystem);
+static void ov02_022519B0(FieldSystem *fieldSystem);
+static void ov02_02251BA8(SysTask *task, void *taskData);
+static void ov02_02251BC4(SysTask *task, void *taskData);
+static void ov02_02251B4C(UnkStruct_ov02_02250BB0 *unk);
+static void ov02_02251B70(UnkStruct_ov02_02250BB0 *unk);
+static BOOL ov02_02251E44(TaskManager *taskman);
 
 static const UnkStruct_Overlay01_021E67BC_template ov02_02253B4C = {
     3,
@@ -128,7 +128,7 @@ static const UnkStruct_Overlay01_021E67BC_template ov02_02253B4C = {
     ov02_02250FE0,
 };
 
-static const CameraParam ov02_02253BD0[] = {
+static const CameraParam sCameraParam_HeartGold[] = {
     {
         .distance = FX32_CONST(666.922119148625),
         .angle = { .x = 0xF562 },
@@ -156,7 +156,7 @@ static const CameraParam ov02_02253BD0[] = {
     },
 };
 
-static const CameraParam ov02_02253C20[] = {
+static const CameraParam sCameraParam_SoulSilver[] = {
     {
         .distance = FX32_CONST(666.922119148625),
         .angle = { .x = 0xDFE2 },
@@ -190,14 +190,14 @@ static const CameraParam ov02_02253C20[] = {
     },
 };
 
-static const VecFx32 ov02_02253B64[] = {
+static const VecFx32 sCameraOffset_HeartGold[] = {
     { -FX32_CONST(195), -FX32_CONST(148.605), -FX32_CONST(45.19165) },
     { FX32_CONST(198), -FX32_CONST(148.605), -FX32_CONST(45.19165) },
     { 0, -FX32_CONST(35.751708984375), -FX32_CONST(23.0476) },
     { 0, FX32_CONST(495.6323), FX32_CONST(28.73) },
 };
 
-static const VecFx32 ov02_02253B94[] = {
+static const VecFx32 sCameraOffset_SoulSilver[] = {
     { -FX32_CONST(127), 0, -FX32_CONST(208) },
     { FX32_CONST(63), 0, -FX32_CONST(208) },
     { 0, 0, -FX32_CONST(82) },
@@ -205,7 +205,7 @@ static const VecFx32 ov02_02253B94[] = {
     { 0, 0, -FX32_CONST(225) },
 };
 
-static const u8 ov02_02253B3C[] = {
+static const u8 sBg3TilemapFileIDs[] = {
     47,
     48,
     49,
@@ -214,7 +214,7 @@ static const u8 ov02_02253B3C[] = {
     52,
 };
 
-static const u8 ov02_02253B44[] = {
+static const u8 sBg2TilemapFileIDs[] = {
     41,
     42,
     43,
@@ -229,7 +229,7 @@ void ov02_02250A60(FieldSystem *fieldSystem) {
     fieldSystem->unk4->legendCutsceneCamera = AllocFromHeapAtEnd(HEAP_ID_4, sizeof(KimonoDanceCutsceneCamera));
     cam = fieldSystem->unk4->legendCutsceneCamera;
 
-    cam->unk_08 = CreateCameraTranslationWrapper(HEAP_ID_4, fieldSystem->camera);
+    cam->translation = CreateCameraTranslationWrapper(HEAP_ID_4, fieldSystem->camera);
     cam->gameVersion = gGameVersion;
     cam->unk_0C = Camera_GetLookAtCamTarget(fieldSystem->camera);
     cam->unk_18 = Camera_GetLookAtCamPos(fieldSystem->camera);
@@ -239,7 +239,7 @@ void ov02_02250A60(FieldSystem *fieldSystem) {
 
 void ov02_02250AC8(FieldSystem *fieldSystem) {
     KimonoDanceCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
-    DeleteCameraTranslationWrapper(cam->unk_08);
+    DeleteCameraTranslationWrapper(cam->translation);
     FreeToHeap(fieldSystem->unk4->legendCutsceneCamera);
     fieldSystem->unk4->legendCutsceneCamera = NULL;
 }
@@ -247,13 +247,13 @@ void ov02_02250AC8(FieldSystem *fieldSystem) {
 void ov02_02250AE8(FieldSystem *fieldSystem) {
     KimonoDanceCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
     UnkStruct_ov02_02250BB0 *unk = (UnkStruct_ov02_02250BB0 *)ov01_021E687C(cam->unk_04);
-    unk->unk_010 = 1;
+    unk->state = 1;
 }
 
 void ov02_02250AFC(FieldSystem *fieldSystem, u8 a1) {
     KimonoDanceCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
     UnkStruct_ov02_02250BB0 *unk = (UnkStruct_ov02_02250BB0 *)ov01_021E687C(cam->unk_04);
-    if (unk->unk_010 != 3) {
+    if (unk->state != 3) {
         GF_ASSERT(FALSE);
         TaskManager_Call(fieldSystem->taskman, ov02_02250B58, NULL);
         return;
@@ -266,17 +266,17 @@ void ov02_02250B30(FieldSystem *fieldSystem) {
     TaskManager_Call(fieldSystem->taskman, ov02_02251320, NULL);
 }
 
-void ov02_02250B44(FieldSystem *fieldSystem) {
+static void ov02_02250B44(FieldSystem *fieldSystem) {
     KimonoDanceCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
     UnkStruct_ov02_02250BB0 *unk = (UnkStruct_ov02_02250BB0 *)ov01_021E687C(cam->unk_04);
-    unk->unk_010 = 4;
+    unk->state = 4;
 }
 
-BOOL ov02_02250B58(TaskManager *taskman) {
+static BOOL ov02_02250B58(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     KimonoDanceCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
     UnkStruct_ov02_02250BB0 *unk = (UnkStruct_ov02_02250BB0 *)ov01_021E687C(cam->unk_04);
-    if (unk->unk_010 == 3) {
+    if (unk->state == 3) {
         ov02_02250B44(fieldSystem);
         return TRUE;
     }
@@ -291,24 +291,24 @@ void ov02_02250B80(FieldSystem *fieldSystem) {
     TaskManager_Call(fieldSystem->taskman, ov02_022512AC, unk);
 }
 
-void ov02_02250BB0(KimonoDanceCutsceneCamera *cam) {
+static void ov02_02250BB0(KimonoDanceCutsceneCamera *cam) {
     cam->unk_04 = ov01_021E67BC(cam->unk_00, &ov02_02253B4C);
 }
 
-void ov02_02250BC4(UnkStruct_Overlay01_021E66E4_subC *a0, FieldSystem *fieldSystem, void *a2) {
+static void ov02_02250BC4(UnkStruct_Overlay01_021E66E4_subC *a0, FieldSystem *fieldSystem, void *a2) {
     UnkStruct_ov02_02250BB0 *r5 = (UnkStruct_ov02_02250BB0 *)a2;
     KimonoDanceCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
-    r5->unk_012 = cam->gameVersion;
+    r5->gameVersion = cam->gameVersion;
     GF_ExpHeap_FndInitAllocator(&r5->unk_000, HEAP_ID_4, 0x20);
-    ov01_021FBCD8(&r5->unk_014, NARC_a_1_7_4, 18, HEAP_ID_4);
-    ov01_021FBCD8(&r5->unk_024, NARC_a_1_7_4, 25, HEAP_ID_4);
-    ov01_021FBCD8(&r5->unk_034, NARC_a_1_7_4, 32, HEAP_ID_4);
-    ov01_021FBE44(&r5->unk_044[0], &r5->unk_014, NARC_a_1_7_4, 19, HEAP_ID_4, &r5->unk_000);
-    ov01_021FBE44(&r5->unk_044[1], &r5->unk_014, NARC_a_1_7_4, 20, HEAP_ID_4, &r5->unk_000);
-    ov01_021FBE44(&r5->unk_044[2], &r5->unk_014, NARC_a_1_7_4, 21, HEAP_ID_4, &r5->unk_000);
-    ov01_021FBE44(&r5->unk_080[0], &r5->unk_024, NARC_a_1_7_4, 26, HEAP_ID_4, &r5->unk_000);
-    ov01_021FBE44(&r5->unk_080[1], &r5->unk_024, NARC_a_1_7_4, 27, HEAP_ID_4, &r5->unk_000);
-    ov01_021FBE44(&r5->unk_0A8[0], &r5->unk_034, NARC_a_1_7_4, 33, HEAP_ID_4, &r5->unk_000);
+    Field3dModel_LoadFromFilesystem(&r5->unk_014, NARC_a_1_7_4, 18, HEAP_ID_4);
+    Field3dModel_LoadFromFilesystem(&r5->unk_024, NARC_a_1_7_4, 25, HEAP_ID_4);
+    Field3dModel_LoadFromFilesystem(&r5->unk_034, NARC_a_1_7_4, 32, HEAP_ID_4);
+    Field3dModelAnimation_LoadFromFilesystem(&r5->unk_044[0], &r5->unk_014, NARC_a_1_7_4, 19, HEAP_ID_4, &r5->unk_000);
+    Field3dModelAnimation_LoadFromFilesystem(&r5->unk_044[1], &r5->unk_014, NARC_a_1_7_4, 20, HEAP_ID_4, &r5->unk_000);
+    Field3dModelAnimation_LoadFromFilesystem(&r5->unk_044[2], &r5->unk_014, NARC_a_1_7_4, 21, HEAP_ID_4, &r5->unk_000);
+    Field3dModelAnimation_LoadFromFilesystem(&r5->unk_080[0], &r5->unk_024, NARC_a_1_7_4, 26, HEAP_ID_4, &r5->unk_000);
+    Field3dModelAnimation_LoadFromFilesystem(&r5->unk_080[1], &r5->unk_024, NARC_a_1_7_4, 27, HEAP_ID_4, &r5->unk_000);
+    Field3dModelAnimation_LoadFromFilesystem(&r5->unk_0A8[0], &r5->unk_034, NARC_a_1_7_4, 33, HEAP_ID_4, &r5->unk_000);
     ov01_021FBF2C(&r5->unk_0BC, &r5->unk_014);
     ov01_021FBF2C(&r5->unk_134, &r5->unk_024);
     ov01_021FBF50(&r5->unk_0BC, &r5->unk_044[0]);
@@ -323,86 +323,86 @@ void ov02_02250BC4(UnkStruct_Overlay01_021E66E4_subC *a0, FieldSystem *fieldSyst
         ov01_021FBF50(&r5->unk_1AC[i], &r5->unk_0A8[0]);
         ov01_021FC004(&r5->unk_1AC[i], 0);
     }
-    ov02_022510D4(r5->unk_044, 3, 0);
-    ov02_022510D4(r5->unk_080, 2, 0);
-    ov02_022510D4(r5->unk_0A8, 1, 0);
+    modelAnimListSetFrameIndex(r5->unk_044, 3, 0);
+    modelAnimListSetFrameIndex(r5->unk_080, 2, 0);
+    modelAnimListSetFrameIndex(r5->unk_0A8, 1, 0);
 
     VecFx32 pos;
     MapObject_GetPositionVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &pos);
-    ov01_021FC00C(&r5->unk_0BC, pos.x, pos.y, pos.z);
-    ov01_021FC00C(&r5->unk_134, pos.x, pos.y, pos.z);
-    if (r5->unk_012 == 8) {
-        ov01_021FC00C(&r5->unk_1AC[0], pos.x + FX32_CONST(128), pos.y + FX32_CONST(32), pos.z - FX32_CONST(180));
-        ov01_021FC00C(&r5->unk_1AC[1], pos.x - FX32_CONST(128), pos.y + FX32_CONST(32), pos.z - FX32_CONST(180));
-        ov01_021FC00C(&r5->unk_1AC[2], 0, 0, 0);
-        ov01_021FC00C(&r5->unk_1AC[3], 0, 0, 0);
+    Field3dObject_SetPos(&r5->unk_0BC, pos.x, pos.y, pos.z);
+    Field3dObject_SetPos(&r5->unk_134, pos.x, pos.y, pos.z);
+    if (r5->gameVersion == VERSION_SOULSILVER) {
+        Field3dObject_SetPos(&r5->unk_1AC[0], pos.x + FX32_CONST(128), pos.y + FX32_CONST(32), pos.z - FX32_CONST(180));
+        Field3dObject_SetPos(&r5->unk_1AC[1], pos.x - FX32_CONST(128), pos.y + FX32_CONST(32), pos.z - FX32_CONST(180));
+        Field3dObject_SetPos(&r5->unk_1AC[2], 0, 0, 0);
+        Field3dObject_SetPos(&r5->unk_1AC[3], 0, 0, 0);
         r5->unk_4AC = 0x131;
-        r5->unk_4B0 = ov02_02253C20;
-        r5->unk_4B4 = ov02_02253B94;
+        r5->cameraParam = sCameraParam_SoulSilver;
+        r5->cameraOffset = sCameraOffset_SoulSilver;
     } else {
-        ov01_021FC00C(&r5->unk_1AC[0], pos.x + FX32_CONST(200), pos.y - FX32_CONST(73), pos.z + FX32_CONST(144));
-        ov01_021FC00C(&r5->unk_1AC[1], pos.x - FX32_CONST(198), pos.y - FX32_CONST(73), pos.z + FX32_CONST(144));
-        ov01_021FC00C(&r5->unk_1AC[2], pos.x + FX32_CONST(200), pos.y - FX32_CONST(73), pos.z - FX32_CONST(270));
-        ov01_021FC00C(&r5->unk_1AC[3], pos.x - FX32_CONST(198), pos.y - FX32_CONST(73), pos.z - FX32_CONST(270));
+        Field3dObject_SetPos(&r5->unk_1AC[0], pos.x + FX32_CONST(200), pos.y - FX32_CONST(73), pos.z + FX32_CONST(144));
+        Field3dObject_SetPos(&r5->unk_1AC[1], pos.x - FX32_CONST(198), pos.y - FX32_CONST(73), pos.z + FX32_CONST(144));
+        Field3dObject_SetPos(&r5->unk_1AC[2], pos.x + FX32_CONST(200), pos.y - FX32_CONST(73), pos.z - FX32_CONST(270));
+        Field3dObject_SetPos(&r5->unk_1AC[3], pos.x - FX32_CONST(198), pos.y - FX32_CONST(73), pos.z - FX32_CONST(270));
         r5->unk_4AC = 0x130;
-        r5->unk_4B0 = ov02_02253BD0;
-        r5->unk_4B4 = ov02_02253B64;
+        r5->cameraParam = sCameraParam_HeartGold;
+        r5->cameraOffset = sCameraOffset_HeartGold;
     }
-    r5->unk_010 = 0;
+    r5->state = 0;
 }
 
-void ov02_02250EC0(UnkStruct_Overlay01_021E66E4_subC *a0, FieldSystem *fieldSystem, void *a2) {
+static void ov02_02250EC0(UnkStruct_Overlay01_021E66E4_subC *a0, FieldSystem *fieldSystem, void *a2) {
     UnkStruct_ov02_02250BB0 *r4 = (UnkStruct_ov02_02250BB0 *)a2;
-    ov01_021FBE80(&r4->unk_044[2], &r4->unk_000);
-    ov01_021FBE80(&r4->unk_044[1], &r4->unk_000);
-    ov01_021FBE80(&r4->unk_044[0], &r4->unk_000);
-    ov01_021FBE80(&r4->unk_080[1], &r4->unk_000);
-    ov01_021FBE80(&r4->unk_080[0], &r4->unk_000);
-    ov01_021FBE80(&r4->unk_0A8[0], &r4->unk_000);
-    ov01_021FBDA8(&r4->unk_014);
-    ov01_021FBDA8(&r4->unk_024);
-    ov01_021FBDA8(&r4->unk_034);
+    Field3dModelAnimation_Unload(&r4->unk_044[2], &r4->unk_000);
+    Field3dModelAnimation_Unload(&r4->unk_044[1], &r4->unk_000);
+    Field3dModelAnimation_Unload(&r4->unk_044[0], &r4->unk_000);
+    Field3dModelAnimation_Unload(&r4->unk_080[1], &r4->unk_000);
+    Field3dModelAnimation_Unload(&r4->unk_080[0], &r4->unk_000);
+    Field3dModelAnimation_Unload(&r4->unk_0A8[0], &r4->unk_000);
+    Field3dModel_Unload(&r4->unk_014);
+    Field3dModel_Unload(&r4->unk_024);
+    Field3dModel_Unload(&r4->unk_034);
 }
 
-void ov02_02250F1C(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSystem *a1, void *a2) {
+static void ov02_02250F1C(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSystem *a1, void *a2) {
     UnkStruct_ov02_02250BB0 *r4 = (UnkStruct_ov02_02250BB0 *)a2;
 
-    switch (r4->unk_010) {
+    switch (r4->state) {
     case 0:
         break;
     case 1:
         ov01_021FC004(&r4->unk_0BC, 1);
-        r4->unk_010 = 2;
+        r4->state = 2;
         break;
     case 2:
-        if (ov02_022510FC(r4->unk_044, 3)) {
+        if (modelAnimListAdvanceNoLoop(r4->unk_044, 3)) {
             ov02_02251018(r4);
-            r4->unk_010 = 3;
+            r4->state = 3;
         }
         break;
     case 3:
-        ov02_02251138(r4->unk_044, 3);
+        modelAnimListAdvanceLooping(r4->unk_044, 3);
         break;
     case 4:
         ov01_021FC004(&r4->unk_0BC, 0);
         ov02_02251164(r4, 1);
-        ov02_022510D4(r4->unk_080, 2, 0);
-        ov02_022510D4(r4->unk_0A8, 1, 0);
-        r4->unk_010 = 5;
+        modelAnimListSetFrameIndex(r4->unk_080, 2, 0);
+        modelAnimListSetFrameIndex(r4->unk_0A8, 1, 0);
+        r4->state = 5;
         break;
     case 5:
-        ov02_02251138(r4->unk_044, 3);
-        ov02_022510FC(r4->unk_0A8, 1);
-        if (ov02_022510FC(r4->unk_080, 2)) {
+        modelAnimListAdvanceLooping(r4->unk_044, 3);
+        modelAnimListAdvanceNoLoop(r4->unk_0A8, 1);
+        if (modelAnimListAdvanceNoLoop(r4->unk_080, 2)) {
             ov02_02251164(r4, 0);
             ov01_021FC004(&r4->unk_0BC, 1);
-            r4->unk_010 = 3;
+            r4->state = 3;
         }
         break;
     }
 }
 
-void ov02_02250FE0(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSystem *a1, void *a2) {
+static void ov02_02250FE0(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSystem *a1, void *a2) {
     UnkStruct_ov02_02250BB0 *r4 = (UnkStruct_ov02_02250BB0 *)a2;
 
     ov01_021FBF68(&r4->unk_0BC);
@@ -412,46 +412,46 @@ void ov02_02250FE0(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSystem *a1
     }
 }
 
-void ov02_02251018(UnkStruct_ov02_02250BB0 *a0) {
+static void ov02_02251018(UnkStruct_ov02_02250BB0 *a0) {
     ov01_021FBF5C(&a0->unk_0BC, &a0->unk_044[0]);
     ov01_021FBF5C(&a0->unk_0BC, &a0->unk_044[1]);
     ov01_021FBF5C(&a0->unk_0BC, &a0->unk_044[2]);
-    ov01_021FBE80(&a0->unk_044[2], &a0->unk_000);
-    ov01_021FBE80(&a0->unk_044[1], &a0->unk_000);
-    ov01_021FBE80(&a0->unk_044[0], &a0->unk_000);
-    ov01_021FBE44(&a0->unk_044[0], &a0->unk_014, NARC_a_1_7_4, 22, HEAP_ID_4, &a0->unk_000);
-    ov01_021FBE44(&a0->unk_044[1], &a0->unk_014, NARC_a_1_7_4, 23, HEAP_ID_4, &a0->unk_000);
-    ov01_021FBE44(&a0->unk_044[2], &a0->unk_014, NARC_a_1_7_4, 24, HEAP_ID_4, &a0->unk_000);
+    Field3dModelAnimation_Unload(&a0->unk_044[2], &a0->unk_000);
+    Field3dModelAnimation_Unload(&a0->unk_044[1], &a0->unk_000);
+    Field3dModelAnimation_Unload(&a0->unk_044[0], &a0->unk_000);
+    Field3dModelAnimation_LoadFromFilesystem(&a0->unk_044[0], &a0->unk_014, NARC_a_1_7_4, 22, HEAP_ID_4, &a0->unk_000);
+    Field3dModelAnimation_LoadFromFilesystem(&a0->unk_044[1], &a0->unk_014, NARC_a_1_7_4, 23, HEAP_ID_4, &a0->unk_000);
+    Field3dModelAnimation_LoadFromFilesystem(&a0->unk_044[2], &a0->unk_014, NARC_a_1_7_4, 24, HEAP_ID_4, &a0->unk_000);
     ov01_021FBF50(&a0->unk_0BC, &a0->unk_044[0]);
     ov01_021FBF50(&a0->unk_0BC, &a0->unk_044[1]);
     ov01_021FBF50(&a0->unk_0BC, &a0->unk_044[2]);
-    ov02_022510D4(a0->unk_044, 3, 0);
+    modelAnimListSetFrameIndex(a0->unk_044, 3, 0);
 }
 
-void ov02_022510D4(UnkStruct_ov01_021FBE44 *a0, u32 a1, fx32 a2) {
-    for (u8 i = 0; i < a1; ++i) {
-        ov01_021FBF20(&a0[i], a2);
+static void modelAnimListSetFrameIndex(Field3DModelAnimation *animation, u32 num, fx32 frame) {
+    for (u8 i = 0; i < num; ++i) {
+        Field3dModelAnimation_FrameSet(&animation[i], frame);
     }
 }
 
-BOOL ov02_022510FC(UnkStruct_ov01_021FBE44 *a0, u32 a1) {
+static BOOL modelAnimListAdvanceNoLoop(Field3DModelAnimation *animation, u32 num) {
     u8 i, n = 0;
-    for (i = 0; i < a1; ++i) {
-        if (ov01_021FBEE4(&a0[i], FX32_ONE)) {
+    for (i = 0; i < num; ++i) {
+        if (Field3dModelAnimation_FrameAdvanceAndCheck(&animation[i], FX32_ONE)) {
             ++n;
         }
     }
-    return n == a1;
+    return n == num;
 }
 
-void ov02_02251138(UnkStruct_ov01_021FBE44 *a0, u32 a1) {
-    for (u8 i = 0; i < a1; ++i) {
-        ov01_021FBEAC(&a0[i], FX32_ONE);
+static void modelAnimListAdvanceLooping(Field3DModelAnimation *animation, u32 num) {
+    for (u8 i = 0; i < num; ++i) {
+        Field3dModelAnimation_FrameAdvanceAndLoop(&animation[i], FX32_ONE);
     }
 }
 
-void ov02_02251164(UnkStruct_ov02_02250BB0 *a0, int a1) {
-    u32 r5 = a0->unk_012 == 8 ? 2 : 4;
+static void ov02_02251164(UnkStruct_ov02_02250BB0 *a0, int a1) {
+    u32 r5 = a0->gameVersion == VERSION_SOULSILVER ? 2 : 4;
     ov01_021FC004(&a0->unk_134, a1);
     if (!a0->unk_011) {
         for (u8 i = 0; i < r5; ++i) {
@@ -460,34 +460,34 @@ void ov02_02251164(UnkStruct_ov02_02250BB0 *a0, int a1) {
     }
 }
 
-void ov02_022511AC(HeapID heapId, FieldSystem *fieldSystem, UnkStruct_ov02_02250B80 *a2) {
+static void ov02_022511AC(HeapID heapId, FieldSystem *fieldSystem, UnkStruct_ov02_02250B80 *a2) {
     GF_ExpHeap_FndInitAllocator(&a2->unk_00, heapId, 0x20);
-    ov01_021FBCD8(&a2->unk_10, NARC_a_1_7_4, 28, heapId);
-    ov01_021FBE44(&a2->unk_20[0], &a2->unk_10, NARC_a_1_7_4, 29, heapId, &a2->unk_00);
-    ov01_021FBE44(&a2->unk_20[1], &a2->unk_10, NARC_a_1_7_4, 30, heapId, &a2->unk_00);
-    ov01_021FBE44(&a2->unk_20[2], &a2->unk_10, NARC_a_1_7_4, 31, heapId, &a2->unk_00);
+    Field3dModel_LoadFromFilesystem(&a2->unk_10, NARC_a_1_7_4, 28, heapId);
+    Field3dModelAnimation_LoadFromFilesystem(&a2->unk_20[0], &a2->unk_10, NARC_a_1_7_4, 29, heapId, &a2->unk_00);
+    Field3dModelAnimation_LoadFromFilesystem(&a2->unk_20[1], &a2->unk_10, NARC_a_1_7_4, 30, heapId, &a2->unk_00);
+    Field3dModelAnimation_LoadFromFilesystem(&a2->unk_20[2], &a2->unk_10, NARC_a_1_7_4, 31, heapId, &a2->unk_00);
     ov01_021FBF2C(&a2->unk_5C, &a2->unk_10);
     ov01_021FBF50(&a2->unk_5C, &a2->unk_20[0]);
     ov01_021FBF50(&a2->unk_5C, &a2->unk_20[1]);
     ov01_021FBF50(&a2->unk_5C, &a2->unk_20[2]);
-    ov02_022510D4(a2->unk_20, 3, 0);
+    modelAnimListSetFrameIndex(a2->unk_20, 3, 0);
 
     VecFx32 pos;
     MapObject_GetPositionVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &pos);
     pos.y += FX32_CONST(100);
     pos.z -= FX32_CONST(350);
-    ov01_021FC00C(&a2->unk_5C, pos.x, pos.y, pos.z);
+    Field3dObject_SetPos(&a2->unk_5C, pos.x, pos.y, pos.z);
     ov01_021FC004(&a2->unk_5C, 1);
 }
 
-void ov02_02251280(UnkStruct_ov02_02250B80 *a0) {
-    ov01_021FBE80(&a0->unk_20[2], &a0->unk_00);
-    ov01_021FBE80(&a0->unk_20[1], &a0->unk_00);
-    ov01_021FBE80(&a0->unk_20[0], &a0->unk_00);
-    ov01_021FBDA8(&a0->unk_10);
+static void ov02_02251280(UnkStruct_ov02_02250B80 *a0) {
+    Field3dModelAnimation_Unload(&a0->unk_20[2], &a0->unk_00);
+    Field3dModelAnimation_Unload(&a0->unk_20[1], &a0->unk_00);
+    Field3dModelAnimation_Unload(&a0->unk_20[0], &a0->unk_00);
+    Field3dModel_Unload(&a0->unk_10);
 }
 
-BOOL ov02_022512AC(TaskManager *taskman) {
+static BOOL ov02_022512AC(TaskManager *taskman) {
     UnkStruct_ov02_02250B80 *unk = (UnkStruct_ov02_02250B80 *)TaskManager_GetEnvironment(taskman);
     u32 *pState = TaskManager_GetStatePtr(taskman);
 
@@ -497,7 +497,7 @@ BOOL ov02_022512AC(TaskManager *taskman) {
         if (unk->unk_D4 == 2) {
             PlaySE(SEQ_SE_GS_RUGIA_MENOHIKARI);
         }
-        if (ov02_022510FC(unk->unk_20, 3)) {
+        if (modelAnimListAdvanceNoLoop(unk->unk_20, 3)) {
             ++(*pState);
         }
         ov01_021FBF68(&unk->unk_5C);
@@ -511,7 +511,7 @@ BOOL ov02_022512AC(TaskManager *taskman) {
     return FALSE;
 }
 
-BOOL ov02_02251320(TaskManager *taskman) {
+static BOOL ov02_02251320(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     u32 *pState = TaskManager_GetStatePtr(taskman);
     NNSG3dRenderObj *r7;
@@ -559,10 +559,10 @@ void ov02_02251424(FieldSystem *fieldSystem, u8 a1) {
 
     Camera_SetLookAtCamTarget(&cam->unk_0C, fieldSystem->camera);
     Camera_SetLookAtCamPos(&cam->unk_18, fieldSystem->camera);
-    Camera_SetDistance(r4->unk_4B0[a1].distance, fieldSystem->camera);
-    Camera_SetAnglePos(&r4->unk_4B0[a1].angle, fieldSystem->camera);
-    Camera_SetPerspectiveAngle(r4->unk_4B0[a1].perspective, fieldSystem->camera);
-    Camera_OffsetLookAtPosAndTarget(&r4->unk_4B4[a1], fieldSystem->camera);
+    Camera_SetDistance(r4->cameraParam[a1].distance, fieldSystem->camera);
+    Camera_SetAnglePos(&r4->cameraParam[a1].angle, fieldSystem->camera);
+    Camera_SetPerspectiveAngle(r4->cameraParam[a1].perspective, fieldSystem->camera);
+    Camera_OffsetLookAtPosAndTarget(&r4->cameraOffset[a1], fieldSystem->camera);
     Camera_SetPerspectiveClippingPlane(FX32_CONST(150), FX32_CONST(1700), fieldSystem->camera);
 
     Camera_GetLookAtCamTarget(fieldSystem->camera);
@@ -578,10 +578,10 @@ void ov02_022514C8(FieldSystem *fieldSystem, u8 a1) {
     CameraTranslationPathTemplate template;
     int whichPoint = a1 == 0 ? 0 : 3;
 
-    template.angleX = r6->unk_4B0[whichPoint].angle.x;
-    template.perspectiveAngle = r6->unk_4B0[whichPoint].perspective;
-    template.position = r6->unk_4B4[whichPoint];
-    template.distance = r6->unk_4B0[whichPoint].distance;
+    template.angleX = r6->cameraParam[whichPoint].angle.x;
+    template.perspectiveAngle = r6->cameraParam[whichPoint].perspective;
+    template.position = r6->cameraOffset[whichPoint];
+    template.distance = r6->cameraParam[whichPoint].distance;
     if (cam->gameVersion == VERSION_HEARTGOLD) {
         if (a1 == 0) {
             duration = 200;
@@ -595,17 +595,17 @@ void ov02_022514C8(FieldSystem *fieldSystem, u8 a1) {
             duration = 200;
         }
     }
-    SetCameraTranslationPath(cam->unk_08, &template, duration);
+    SetCameraTranslationPath(cam->translation, &template, duration);
 }
 
 void ov02_02251554(FieldSystem *fieldSystem) {
     TaskManager_Call(fieldSystem->taskman, ov02_02251568, NULL);
 }
 
-BOOL ov02_02251568(TaskManager *taskman) {
+static BOOL ov02_02251568(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     KimonoDanceCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
-    if (IsCameraTranslationFinished(cam->unk_08)) {
+    if (IsCameraTranslationFinished(cam->translation)) {
         Camera_GetLookAtCamTarget(fieldSystem->camera);
         Camera_GetCurrentTarget(fieldSystem->camera);
         Camera_GetAngle(fieldSystem->camera);
@@ -621,7 +621,7 @@ void ov02_022515A4(FieldSystem *fieldSystem) {
     TaskManager_Call(fieldSystem->taskman, ov02_022515D0, unk);
 }
 
-BOOL ov02_022515D0(TaskManager *taskman) {
+static BOOL ov02_022515D0(TaskManager *taskman) {
     int species;
     int spC;
     int flapSfx;
@@ -649,16 +649,16 @@ BOOL ov02_022515D0(TaskManager *taskman) {
     switch (*pState) {
     case 0:
         GF_ExpHeap_FndInitAllocator(&unk->unk_0C, HEAP_ID_4, 0x20);
-        ov01_021FBCD8(&unk->unk_1C, NARC_a_1_7_4, 34, HEAP_ID_4);
-        ov01_021FBE44(&unk->unk_2C[0], &unk->unk_1C, NARC_a_1_7_4, 35, HEAP_ID_4, &unk->unk_0C);
-        ov01_021FBE44(&unk->unk_2C[1], &unk->unk_1C, NARC_a_1_7_4, 36, HEAP_ID_4, &unk->unk_0C);
-        ov01_021FBE44(&unk->unk_2C[2], &unk->unk_1C, NARC_a_1_7_4, 37, HEAP_ID_4, &unk->unk_0C);
+        Field3dModel_LoadFromFilesystem(&unk->unk_1C, NARC_a_1_7_4, 34, HEAP_ID_4);
+        Field3dModelAnimation_LoadFromFilesystem(&unk->unk_2C[0], &unk->unk_1C, NARC_a_1_7_4, 35, HEAP_ID_4, &unk->unk_0C);
+        Field3dModelAnimation_LoadFromFilesystem(&unk->unk_2C[1], &unk->unk_1C, NARC_a_1_7_4, 36, HEAP_ID_4, &unk->unk_0C);
+        Field3dModelAnimation_LoadFromFilesystem(&unk->unk_2C[2], &unk->unk_1C, NARC_a_1_7_4, 37, HEAP_ID_4, &unk->unk_0C);
         ov01_021FBF2C(&unk->unk_68, &unk->unk_1C);
         ov01_021FBF50(&unk->unk_68, &unk->unk_2C[0]);
         ov01_021FBF50(&unk->unk_68, &unk->unk_2C[1]);
         ov01_021FBF50(&unk->unk_68, &unk->unk_2C[2]);
         ov01_021FC004(&unk->unk_68, 0);
-        ov02_022510D4(unk->unk_2C,3, 0);
+        modelAnimListSetFrameIndex(unk->unk_2C,3, 0);
     {
         VecFx32 sp2C;
         MapObject_GetPositionVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &sp2C);
@@ -668,7 +668,7 @@ BOOL ov02_022515D0(TaskManager *taskman) {
         } else {
             sp2C.z -= FX32_CONST(280);
         }
-        ov01_021FC00C(&unk->unk_68, sp2C.x, sp2C.y, sp2C.z);
+        Field3dObject_SetPos(&unk->unk_68, sp2C.x, sp2C.y, sp2C.z);
     }
         ++(*pState);
         break;
@@ -736,7 +736,7 @@ BOOL ov02_022515D0(TaskManager *taskman) {
         break;
     case 5:
     {
-        BOOL animDone = ov02_022510FC(unk->unk_2C, 3);
+        BOOL animDone = modelAnimListAdvanceNoLoop(unk->unk_2C, 3);
         ++unk->unk_0A;
         if (animDone && unk->unk_0A >= 65) {
             sub_0205F328(mapObject, 0);
@@ -753,10 +753,10 @@ BOOL ov02_022515D0(TaskManager *taskman) {
         }
         break;
     case 7:
-        ov01_021FBE80(&unk->unk_2C[2], &unk->unk_0C);
-        ov01_021FBE80(&unk->unk_2C[1], &unk->unk_0C);
-        ov01_021FBE80(&unk->unk_2C[0], &unk->unk_0C);
-        ov01_021FBDA8(&unk->unk_1C);
+        Field3dModelAnimation_Unload(&unk->unk_2C[2], &unk->unk_0C);
+        Field3dModelAnimation_Unload(&unk->unk_2C[1], &unk->unk_0C);
+        Field3dModelAnimation_Unload(&unk->unk_2C[0], &unk->unk_0C);
+        Field3dModel_Unload(&unk->unk_1C);
         FreeToHeap(unk);
         return TRUE;
     }
@@ -773,52 +773,52 @@ void ov02_022518E0(FieldSystem *fieldSystem) {
     }
 }
 
-void ov02_022518F8(FieldSystem *fieldSystem) {
+static void ov02_022518F8(FieldSystem *fieldSystem) {
     KimonoDanceCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
     UnkStruct_ov02_02250BB0 *r5 = (UnkStruct_ov02_02250BB0 *)ov01_021E687C(cam->unk_04);
     UnkStruct_ov02_02250BB0_sub38C *sub_38C = &r5->unk_38C;
 
-    ov01_021FBCD8(&sub_38C->unk_00, NARC_a_1_7_4, 38, HEAP_ID_4);
-    ov01_021FBE44(&sub_38C->unk_10[0], &sub_38C->unk_00, NARC_a_1_7_4, 39, HEAP_ID_4, &r5->unk_000);
-    ov01_021FBE44(&sub_38C->unk_10[1], &sub_38C->unk_00, NARC_a_1_7_4, 40, HEAP_ID_4, &r5->unk_000);
-    ov01_021FBF2C(&sub_38C->unk_38, &sub_38C->unk_00);
-    ov01_021FBF50(&sub_38C->unk_38, &sub_38C->unk_10[0]);
-    ov01_021FBF50(&sub_38C->unk_38, &sub_38C->unk_10[1]);
-    ov01_021FC004(&sub_38C->unk_38, 1);
-    ov02_022510D4(sub_38C->unk_10, 2, 0);
+    Field3dModel_LoadFromFilesystem(&sub_38C->model, NARC_a_1_7_4, 38, HEAP_ID_4);
+    Field3dModelAnimation_LoadFromFilesystem(&sub_38C->anims[0], &sub_38C->model, NARC_a_1_7_4, 39, HEAP_ID_4, &r5->unk_000);
+    Field3dModelAnimation_LoadFromFilesystem(&sub_38C->anims[1], &sub_38C->model, NARC_a_1_7_4, 40, HEAP_ID_4, &r5->unk_000);
+    ov01_021FBF2C(&sub_38C->object, &sub_38C->model);
+    ov01_021FBF50(&sub_38C->object, &sub_38C->anims[0]);
+    ov01_021FBF50(&sub_38C->object, &sub_38C->anims[1]);
+    ov01_021FC004(&sub_38C->object, 1);
+    modelAnimListSetFrameIndex(sub_38C->anims, 2, 0);
 
     VecFx32 sp8;
     MapObject_GetPositionVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &sp8);
-    ov01_021FC00C(&sub_38C->unk_38, sp8.x, sp8.y, sp8.z);
+    Field3dObject_SetPos(&sub_38C->object, sp8.x, sp8.y, sp8.z);
     r5->unk_4A8 = SysTask_CreateOnMainQueue(ov02_02251BA8, r5, 0);
 }
 
-void ov02_022519B0(FieldSystem *fieldSystem) {
+static void ov02_022519B0(FieldSystem *fieldSystem) {
     KimonoDanceCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
     UnkStruct_ov02_02250BB0 *sp10 = (UnkStruct_ov02_02250BB0 *)ov01_021E687C(cam->unk_04);
     UnkStruct_ov02_02250BB0_sub43C *sub_43C = &sp10->unk_43C;
 
-    sub_43C->unk_64 = fieldSystem->bgConfig;
+    sub_43C->bgConfig = fieldSystem->bgConfig;
 
     for (u8 i = 0; i < 6; ++i) {
-        sub_43C->unk_30[i] = GfGfxLoader_GetScrnData(NARC_a_1_7_4, ov02_02253B44[i], FALSE, &sub_43C->unk_00[i], HEAP_ID_4);
-        sub_43C->unk_48[i] = GfGfxLoader_GetScrnData(NARC_a_1_7_4, ov02_02253B3C[i], FALSE, &sub_43C->unk_18[i], HEAP_ID_4);
+        sub_43C->bg2ScrnRaw[i] = GfGfxLoader_GetScrnData(NARC_a_1_7_4, sBg2TilemapFileIDs[i], FALSE, &sub_43C->bg2ScrnData[i], HEAP_ID_4);
+        sub_43C->bg3ScrnRaw[i] = GfGfxLoader_GetScrnData(NARC_a_1_7_4, sBg3TilemapFileIDs[i], FALSE, &sub_43C->bg3ScrnData[i], HEAP_ID_4);
     }
 
-    BG_LoadScreenTilemapData(sub_43C->unk_64, GF_BG_LYR_MAIN_2, sub_43C->unk_00[0]->rawData, sub_43C->unk_00[0]->szByte);
-    BG_LoadScreenTilemapData(sub_43C->unk_64, GF_BG_LYR_MAIN_3, sub_43C->unk_18[0]->rawData, sub_43C->unk_18[0]->szByte);
-    BgTilemapRectChangePalette(sub_43C->unk_64, GF_BG_LYR_MAIN_2, 0, 0, 32, 32, 6);
-    BgTilemapRectChangePalette(sub_43C->unk_64, GF_BG_LYR_MAIN_3, 0, 0, 32, 32, 6);
-    GfGfxLoader_LoadCharData(NARC_a_1_7_4, 53, sub_43C->unk_64, GF_BG_LYR_MAIN_2, 0, 0, FALSE, HEAP_ID_4);
-    GfGfxLoader_LoadCharData(NARC_a_1_7_4, 53, sub_43C->unk_64, GF_BG_LYR_MAIN_3, 0, 0, FALSE, HEAP_ID_4);
+    BG_LoadScreenTilemapData(sub_43C->bgConfig, GF_BG_LYR_MAIN_2, sub_43C->bg2ScrnData[0]->rawData, sub_43C->bg2ScrnData[0]->szByte);
+    BG_LoadScreenTilemapData(sub_43C->bgConfig, GF_BG_LYR_MAIN_3, sub_43C->bg3ScrnData[0]->rawData, sub_43C->bg3ScrnData[0]->szByte);
+    BgTilemapRectChangePalette(sub_43C->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 32, 32, 6);
+    BgTilemapRectChangePalette(sub_43C->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 32, 32, 6);
+    GfGfxLoader_LoadCharData(NARC_a_1_7_4, 53, sub_43C->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, FALSE, HEAP_ID_4);
+    GfGfxLoader_LoadCharData(NARC_a_1_7_4, 53, sub_43C->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, HEAP_ID_4);
     GfGfxLoader_GXLoadPal(NARC_a_1_7_4, 54, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0xC0, 0x20, HEAP_ID_4);
     sp10->unk_4A8 = SysTask_CreateOnMainQueue(ov02_02251BC4, sp10, 0);
-    ScheduleBgTilemapBufferTransfer(sub_43C->unk_64, GF_BG_LYR_MAIN_2);
-    ScheduleBgTilemapBufferTransfer(sub_43C->unk_64, GF_BG_LYR_MAIN_3);
+    ScheduleBgTilemapBufferTransfer(sub_43C->bgConfig, GF_BG_LYR_MAIN_2);
+    ScheduleBgTilemapBufferTransfer(sub_43C->bgConfig, GF_BG_LYR_MAIN_3);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_ON);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_ON);
-    sub_43C->unk_63 = 0;
-    sub_43C->unk_68 = 0;
+    sub_43C->switchTilemapDelayTimer = 0;
+    sub_43C->tilemapIndex = 0;
     G2_SetBG2Priority(0);
     G2_SetBG3Priority(1);
     G2_SetBG0Priority(2);
@@ -836,55 +836,55 @@ void ov02_02251B14(FieldSystem *fieldSystem) {
     }
 }
 
-void ov02_02251B4C(UnkStruct_ov02_02250BB0 *unk) {
+static void ov02_02251B4C(UnkStruct_ov02_02250BB0 *unk) {
     UnkStruct_ov02_02250BB0_sub38C *sub_38C = &unk->unk_38C;
-    ov01_021FBE80(&sub_38C->unk_10[1], &unk->unk_000);
-    ov01_021FBE80(&sub_38C->unk_10[0], &unk->unk_000);
-    ov01_021FBDA8(&sub_38C->unk_00);
+    Field3dModelAnimation_Unload(&sub_38C->anims[1], &unk->unk_000);
+    Field3dModelAnimation_Unload(&sub_38C->anims[0], &unk->unk_000);
+    Field3dModel_Unload(&sub_38C->model);
 }
 
-void ov02_02251B70(UnkStruct_ov02_02250BB0 *unk) {
+static void ov02_02251B70(UnkStruct_ov02_02250BB0 *unk) {
     UnkStruct_ov02_02250BB0_sub43C *sub_43C = &unk->unk_43C;
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_OFF);
     for (u8 i = 0; i < 6; ++i) {
-        FreeToHeap(sub_43C->unk_30[i]);
-        FreeToHeap(sub_43C->unk_48[i]);
+        FreeToHeap(sub_43C->bg2ScrnRaw[i]);
+        FreeToHeap(sub_43C->bg3ScrnRaw[i]);
     }
 }
 
-void ov02_02251BA8(SysTask *task, void *taskData) {
+static void ov02_02251BA8(SysTask *task, void *taskData) {
     UnkStruct_ov02_02250BB0 *unk = (UnkStruct_ov02_02250BB0 *)taskData;
     UnkStruct_ov02_02250BB0_sub38C *sub_38C = &unk->unk_38C;
-    ov02_02251138(sub_38C->unk_10, 2);
-    ov01_021FBF68(&sub_38C->unk_38);
+    modelAnimListAdvanceLooping(sub_38C->anims, 2);
+    ov01_021FBF68(&sub_38C->object);
 }
 
-void ov02_02251BC4(SysTask *task, void *taskData) {
+static void ov02_02251BC4(SysTask *task, void *taskData) {
     UnkStruct_ov02_02250BB0 *unk = (UnkStruct_ov02_02250BB0 *)taskData;
     UnkStruct_ov02_02250BB0_sub43C *sub_43C = &unk->unk_43C;
 
-    ++sub_43C->unk_63;
-    if (sub_43C->unk_63 >= 6) {
-        sub_43C->unk_63 = 0;
-        ++sub_43C->unk_68;
-        if (sub_43C->unk_68 >= 6) {
-            sub_43C->unk_68 = 0;
+    ++sub_43C->switchTilemapDelayTimer;
+    if (sub_43C->switchTilemapDelayTimer >= 6) {
+        sub_43C->switchTilemapDelayTimer = 0;
+        ++sub_43C->tilemapIndex;
+        if (sub_43C->tilemapIndex >= 6) {
+            sub_43C->tilemapIndex = 0;
         }
-        CopyRectToBgTilemapRect(sub_43C->unk_64, GF_BG_LYR_MAIN_2, 0, 0, 32, 32, sub_43C->unk_00[sub_43C->unk_68]->rawData, 0, 0, 32, 32);
-        CopyRectToBgTilemapRect(sub_43C->unk_64, GF_BG_LYR_MAIN_3, 0, 0, 32, 32, sub_43C->unk_18[sub_43C->unk_68]->rawData, 0, 0, 32, 32);
-        BgTilemapRectChangePalette(sub_43C->unk_64, GF_BG_LYR_MAIN_2, 0, 0, 32, 32, 6);
-        BgTilemapRectChangePalette(sub_43C->unk_64, GF_BG_LYR_MAIN_3, 0, 0, 32, 32, 6);
-        ScheduleBgTilemapBufferTransfer(sub_43C->unk_64, GF_BG_LYR_MAIN_2);
-        ScheduleBgTilemapBufferTransfer(sub_43C->unk_64, GF_BG_LYR_MAIN_3);
+        CopyRectToBgTilemapRect(sub_43C->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 32, 32, sub_43C->bg2ScrnData[sub_43C->tilemapIndex]->rawData, 0, 0, 32, 32);
+        CopyRectToBgTilemapRect(sub_43C->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 32, 32, sub_43C->bg3ScrnData[sub_43C->tilemapIndex]->rawData, 0, 0, 32, 32);
+        BgTilemapRectChangePalette(sub_43C->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 32, 32, 6);
+        BgTilemapRectChangePalette(sub_43C->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 32, 32, 6);
+        ScheduleBgTilemapBufferTransfer(sub_43C->bgConfig, GF_BG_LYR_MAIN_2);
+        ScheduleBgTilemapBufferTransfer(sub_43C->bgConfig, GF_BG_LYR_MAIN_3);
     }
-    --sub_43C->unk_60;
-    ++sub_43C->unk_61;
-    --sub_43C->unk_62;
-    ScheduleSetBgPosText(sub_43C->unk_64, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, sub_43C->unk_60);
-    ScheduleSetBgPosText(sub_43C->unk_64, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, sub_43C->unk_62);
-    ScheduleSetBgPosText(sub_43C->unk_64, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_X, sub_43C->unk_61);
-    ScheduleSetBgPosText(sub_43C->unk_64, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_Y, sub_43C->unk_62);
+    --sub_43C->bg2X;
+    ++sub_43C->bg3X;
+    --sub_43C->bgY;
+    ScheduleSetBgPosText(sub_43C->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, sub_43C->bg2X);
+    ScheduleSetBgPosText(sub_43C->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, sub_43C->bgY);
+    ScheduleSetBgPosText(sub_43C->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_X, sub_43C->bg3X);
+    ScheduleSetBgPosText(sub_43C->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_Y, sub_43C->bgY);
 }
 
 void ov02_02251CF0(FieldSystem *fieldSystem) {
@@ -906,10 +906,10 @@ void ov02_02251CF0(FieldSystem *fieldSystem) {
     cam->clippingPlaneNear = Camera_GetPerspectiveClippingPlaneNear(fieldSystem->camera);
     cam->clippingPlaneFar = Camera_GetPerspectiveClippingPlaneFar(fieldSystem->camera);
 
-    Camera_SetDistance(ov02_02253C20[4].distance, fieldSystem->camera);
-    Camera_SetAnglePos(&ov02_02253C20[4].angle, fieldSystem->camera);
-    Camera_SetPerspectiveAngle(ov02_02253C20[4].perspective, fieldSystem->camera);
-    Camera_OffsetLookAtPosAndTarget(&ov02_02253B94[4], fieldSystem->camera);
+    Camera_SetDistance(sCameraParam_SoulSilver[4].distance, fieldSystem->camera);
+    Camera_SetAnglePos(&sCameraParam_SoulSilver[4].angle, fieldSystem->camera);
+    Camera_SetPerspectiveAngle(sCameraParam_SoulSilver[4].perspective, fieldSystem->camera);
+    Camera_OffsetLookAtPosAndTarget(&sCameraOffset_SoulSilver[4], fieldSystem->camera);
     Camera_SetPerspectiveClippingPlane(FX32_CONST(150), FX32_CONST(1700), fieldSystem->camera);
 }
 
@@ -928,19 +928,19 @@ void ov02_02251DE8(FieldSystem *fieldSystem) {
         return;
     }
 
-    cam->unk_24 = CreateCameraTranslationWrapper(HEAP_ID_4, fieldSystem->camera);
+    cam->translation = CreateCameraTranslationWrapper(HEAP_ID_4, fieldSystem->camera);
     template.angleX = cam->angle.x;
     template.perspectiveAngle = cam->perspectiveAngle;
     template.position = cam->targetDistanceVec;
     template.distance = cam->distance;
-    SetCameraTranslationPath(cam->unk_24, &template, 30);
+    SetCameraTranslationPath(cam->translation, &template, 30);
     TaskManager_Call(fieldSystem->taskman, ov02_02251E44, fieldSystem);
 }
 
-BOOL ov02_02251E44(TaskManager *taskman) {
+static BOOL ov02_02251E44(TaskManager *taskman) {
     FieldSystem *fieldSystem = (FieldSystem *)TaskManager_GetEnvironment(taskman);
     LugiaArrivesCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
-    GFCameraTranslationWrapper *trans = cam->unk_24;
+    GFCameraTranslationWrapper *trans = cam->translation;
 
     if (IsCameraTranslationFinished(trans)) {
         DeleteCameraTranslationWrapper(trans);

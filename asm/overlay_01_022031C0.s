@@ -89,7 +89,7 @@ ov01_022031F8: ; 0x022031F8
 	add r1, #0x2c
 	mov r2, #0x67
 	mov r3, #0xa4
-	bl ov01_021FBE44
+	bl Field3dModelAnimation_LoadFromFilesystem
 	mov r1, #0x4b
 	add r0, r4, #0
 	lsl r1, r1, #2
@@ -118,7 +118,7 @@ ov01_02203270: ; 0x02203270
 	lsl r0, r0, #2
 	add r0, r4, r0
 	add r1, r4, #4
-	bl ov01_021FBE80
+	bl Field3dModelAnimation_Unload
 	pop {r4, pc}
 	thumb_func_end ov01_02203270
 
@@ -363,7 +363,7 @@ _02203464:
 	lsl r0, r0, #2
 	add r0, r1, r0
 	mov r1, #0
-	bl ov01_021FBF20
+	bl Field3dModelAnimation_FrameSet
 	mov r0, #2
 	str r0, [r4]
 _02203498:
@@ -373,7 +373,7 @@ _02203498:
 	add r0, r1, r0
 	mov r1, #1
 	lsl r1, r1, #0xc
-	bl ov01_021FBEE4
+	bl Field3dModelAnimation_FrameAdvanceAndCheck
 	cmp r0, #0
 	beq _022034B2
 	add r0, r5, #0
@@ -481,7 +481,7 @@ _02203560:
 	lsl r0, r0, #2
 	add r0, r1, r0
 	mov r1, #0
-	bl ov01_021FBF20
+	bl Field3dModelAnimation_FrameSet
 	mov r0, #1
 	str r0, [r4]
 _02203586:
@@ -491,7 +491,7 @@ _02203586:
 	add r0, r1, r0
 	mov r1, #1
 	lsl r1, r1, #0xc
-	bl ov01_021FBEE4
+	bl Field3dModelAnimation_FrameAdvanceAndCheck
 	cmp r0, #0
 	beq _022035A0
 	add r0, r5, #0
