@@ -5156,12 +5156,12 @@ BOOL ScrCmd_TryHeadbuttEncounter(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_755(ScriptContext *ctx) {
-    ov02_02250A60(ctx->fieldSystem);
+    LegendCutscene_BeginKimonoDance(ctx->fieldSystem);
     return FALSE;
 }
 
 BOOL ScrCmd_756(ScriptContext *ctx) {
-    ov02_02250AC8(ctx->fieldSystem);
+    LegendCutscene_EndKimonoDance(ctx->fieldSystem);
     return FALSE;
 }
 

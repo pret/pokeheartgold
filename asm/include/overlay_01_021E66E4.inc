@@ -11,9 +11,9 @@
 .public GF_AssertFail
 .public sub_0203DF8C
 .public MIi_CpuClear32
-.public ov01_021E66E4
-.public ov01_021E6734
-.public ov01_021E6768
-.public ov01_021E67BC
-.public ov01_021E683C
-.public ov01_021E687C
+.public Field3dObjectTaskManager_Create
+.public Field3dObjectTaskManager_Delete
+.public Field3dObjectTaskManager_RunDrawTasks
+.public Field3dObjectTaskManager_CreateTask
+.public Field3dObjectTask_Delete
+.public Field3dObjectTask_GetData

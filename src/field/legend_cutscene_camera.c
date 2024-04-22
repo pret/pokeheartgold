@@ -12,11 +12,11 @@
 #include "fielddata/script/scr_seq/event_D17R0110.h"
 
 typedef struct KimonoDanceCutsceneCamera {
-    UnkStruct_Overlay01_021E66E4 *unk_00;
-    UnkStruct_Overlay01_021E66E4_subC *unk_04;
+    Field3dObjectTaskManager *field3dObjectTaskManager;
+    Field3dObjectTask *draw3dTask;
     GFCameraTranslationWrapper *translation;
-    VecFx32 unk_0C;
-    VecFx32 unk_18;
+    VecFx32 lookAtTarget;
+    VecFx32 lookAtPos;
     int gameVersion;
 } KimonoDanceCutsceneCamera;  // size: 0x28
 
@@ -31,13 +31,13 @@ typedef struct LugiaArrivesCutsceneCamera {
     GFCameraTranslationWrapper *translation;
 } LugiaArrivesCutsceneCamera;
 
-typedef struct UnkStruct_ov02_02250BB0_sub38C {
+typedef struct KimonoDanceCutscene3dObjectTaskData_SoulSilver {
     Field3dModel model;
     Field3DModelAnimation anims[2];
     Field3dObject object;
-} UnkStruct_ov02_02250BB0_sub38C;
+} KimonoDanceCutscene3dObjectTaskData_SoulSilver;
 
-typedef struct UnkStruct_ov02_02250BB0_sub43C {
+typedef struct KimonoDanceCutscene3dObjectTaskData_HeartGold {
     NNSG2dScreenData *bg2ScrnData[6];
     NNSG2dScreenData *bg3ScrnData[6];
     void *bg2ScrnRaw[6];
@@ -48,10 +48,10 @@ typedef struct UnkStruct_ov02_02250BB0_sub43C {
     u8 switchTilemapDelayTimer;
     BgConfig *bgConfig;
     int tilemapIndex;
-} UnkStruct_ov02_02250BB0_sub43C;
+} KimonoDanceCutscene3dObjectTaskData_HeartGold;
 
-typedef struct UnkStruct_ov02_02250BB0 {
-    NNSFndAllocator unk_000;
+typedef struct KimonoDanceCutscene3dObjectTaskData {
+    NNSFndAllocator allocator;
     u8 state;
     u8 unk_011;
     u16 gameVersion;
@@ -64,20 +64,20 @@ typedef struct UnkStruct_ov02_02250BB0 {
     Field3dObject unk_0BC;
     Field3dObject unk_134;
     Field3dObject unk_1AC[4];
-    UnkStruct_ov02_02250BB0_sub38C unk_38C;
-    UnkStruct_ov02_02250BB0_sub43C unk_43C;
+    KimonoDanceCutscene3dObjectTaskData_SoulSilver unk_38C;
+    KimonoDanceCutscene3dObjectTaskData_HeartGold unk_43C;
     SysTask *unk_4A8;
     u32 unk_4AC;
     const CameraParam *cameraParam;
     const VecFx32 *cameraOffset;
-} UnkStruct_ov02_02250BB0;  // size: 0x4B8
+} KimonoDanceCutscene3dObjectTaskData;  // size: 0x4B8
 
 typedef struct UnkStruct_ov02_02250B80 {
-    NNSFndAllocator unk_00;
-    Field3dModel unk_10;
-    Field3DModelAnimation unk_20[3];
-    Field3dObject unk_5C;
-    int unk_D4;
+    NNSFndAllocator allocator;
+    Field3dModel model;
+    Field3DModelAnimation anims[3];
+    Field3dObject object;
+    int eyeGlimmerDelayTimer;
 } UnkStruct_ov02_02250B80;
 
 typedef struct UnkStruct_ov02_022515A4 {
@@ -85,26 +85,26 @@ typedef struct UnkStruct_ov02_022515A4 {
     fx32 unk_04;
     u16 unk_08;
     u16 unk_0A;
-    NNSFndAllocator unk_0C;
-    Field3dModel unk_1C;
-    Field3DModelAnimation unk_2C[3];
-    Field3dObject unk_68;
+    NNSFndAllocator allocator;
+    Field3dModel model;
+    Field3DModelAnimation anims[3];
+    Field3dObject object;
     u16 gameVersion;
     u16 unk_E2;
 } UnkStruct_ov02_022515A4;
 
 static void ov02_02250B44(FieldSystem *fieldSystem);
 static BOOL ov02_02250B58(TaskManager *taskman);
-static void ov02_02250BB0(KimonoDanceCutsceneCamera *cam);
-static void ov02_02250BC4(UnkStruct_Overlay01_021E66E4_subC *a0, FieldSystem *a1, void *a2);
-static void ov02_02250EC0(UnkStruct_Overlay01_021E66E4_subC *a0, FieldSystem *fieldSystem, void *a2);
-static void ov02_02250F1C(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSystem *a1, void *a2);
-static void ov02_02250FE0(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSystem *a1, void *a2);
-static void ov02_02251018(UnkStruct_ov02_02250BB0 *a0);
+static void KimonoDanceCutscene_CreateField3dObjectTask(KimonoDanceCutsceneCamera *cam);
+static void Field3dObjectTaskInit_KimonoDanceCutscene(Field3dObjectTask *task, FieldSystem *fieldSystem, void *taskData);
+static void Field3dObjectTaskDestroy_KimonoDanceCutscene(Field3dObjectTask *task, FieldSystem *fieldSystem, void *taskData);
+static void Field3dObjectTaskUpdate_KimonoDanceCutscene(Field3dObjectTask *task, FieldSystem *fieldSystem, void *taskData);
+static void Field3dObjectTaskRender_KimonoDanceCutscene(Field3dObjectTask *task, FieldSystem *fieldSystem, void *taskData);
+static void ov02_02251018(KimonoDanceCutscene3dObjectTaskData *a0);
 static void modelAnimListSetFrameIndex(Field3DModelAnimation *animation, u32 num, fx32 frame);
 static BOOL modelAnimListAdvanceNoLoop(Field3DModelAnimation *animation, u32 num);
 static void modelAnimListAdvanceLooping(Field3DModelAnimation *animation, u32 num);
-static void ov02_02251164(UnkStruct_ov02_02250BB0 *a0, int a1);
+static void ov02_02251164(KimonoDanceCutscene3dObjectTaskData *a0, int a1);
 static void ov02_022511AC(HeapID heapId, FieldSystem *fieldSystem, UnkStruct_ov02_02250B80 *a2);
 static void ov02_02251280(UnkStruct_ov02_02250B80 *a0);
 static BOOL ov02_022512AC(TaskManager *taskman);
@@ -115,17 +115,17 @@ static void ov02_022518F8(FieldSystem *fieldSystem);
 static void ov02_022519B0(FieldSystem *fieldSystem);
 static void ov02_02251BA8(SysTask *task, void *taskData);
 static void ov02_02251BC4(SysTask *task, void *taskData);
-static void ov02_02251B4C(UnkStruct_ov02_02250BB0 *unk);
-static void ov02_02251B70(UnkStruct_ov02_02250BB0 *unk);
+static void ov02_02251B4C(KimonoDanceCutscene3dObjectTaskData *unk);
+static void ov02_02251B70(KimonoDanceCutscene3dObjectTaskData *unk);
 static BOOL ov02_02251E44(TaskManager *taskman);
 
-static const UnkStruct_Overlay01_021E67BC_template ov02_02253B4C = {
+static const Field3dObjectTaskTemplate sField3dObjectTaskTemplate_KimonoDanceCutscene = {
     3,
-    sizeof(UnkStruct_ov02_02250BB0),
-    ov02_02250BC4,
-    ov02_02250EC0,
-    ov02_02250F1C,
-    ov02_02250FE0,
+    sizeof(KimonoDanceCutscene3dObjectTaskData),
+    Field3dObjectTaskInit_KimonoDanceCutscene,
+    Field3dObjectTaskDestroy_KimonoDanceCutscene,
+    Field3dObjectTaskUpdate_KimonoDanceCutscene,
+    Field3dObjectTaskRender_KimonoDanceCutscene,
 };
 
 static const CameraParam sCameraParam_HeartGold[] = {
@@ -223,7 +223,7 @@ static const u8 sBg2TilemapFileIDs[] = {
     46,
 };
 
-void ov02_02250A60(FieldSystem *fieldSystem) {
+void LegendCutscene_BeginKimonoDance(FieldSystem *fieldSystem) {
     KimonoDanceCutsceneCamera *cam;
 
     fieldSystem->unk4->legendCutsceneCamera = AllocFromHeapAtEnd(HEAP_ID_4, sizeof(KimonoDanceCutsceneCamera));
@@ -231,13 +231,13 @@ void ov02_02250A60(FieldSystem *fieldSystem) {
 
     cam->translation = CreateCameraTranslationWrapper(HEAP_ID_4, fieldSystem->camera);
     cam->gameVersion = gGameVersion;
-    cam->unk_0C = Camera_GetLookAtCamTarget(fieldSystem->camera);
-    cam->unk_18 = Camera_GetLookAtCamPos(fieldSystem->camera);
-    cam->unk_00 = fieldSystem->unk4->unk4;
-    ov02_02250BB0(cam);
+    cam->lookAtTarget = Camera_GetLookAtCamTarget(fieldSystem->camera);
+    cam->lookAtPos = Camera_GetLookAtCamPos(fieldSystem->camera);
+    cam->field3dObjectTaskManager = fieldSystem->unk4->field3dObjectTaskManager;
+    KimonoDanceCutscene_CreateField3dObjectTask(cam);
 }
 
-void ov02_02250AC8(FieldSystem *fieldSystem) {
+void LegendCutscene_EndKimonoDance(FieldSystem *fieldSystem) {
     KimonoDanceCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
     DeleteCameraTranslationWrapper(cam->translation);
     FreeToHeap(fieldSystem->unk4->legendCutsceneCamera);
@@ -246,19 +246,19 @@ void ov02_02250AC8(FieldSystem *fieldSystem) {
 
 void ov02_02250AE8(FieldSystem *fieldSystem) {
     KimonoDanceCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
-    UnkStruct_ov02_02250BB0 *unk = (UnkStruct_ov02_02250BB0 *)ov01_021E687C(cam->unk_04);
-    unk->state = 1;
+    KimonoDanceCutscene3dObjectTaskData *draw3dTaskData = (KimonoDanceCutscene3dObjectTaskData *)Field3dObjectTask_GetData(cam->draw3dTask);
+    draw3dTaskData->state = 1;
 }
 
 void ov02_02250AFC(FieldSystem *fieldSystem, u8 a1) {
     KimonoDanceCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
-    UnkStruct_ov02_02250BB0 *unk = (UnkStruct_ov02_02250BB0 *)ov01_021E687C(cam->unk_04);
-    if (unk->state != 3) {
+    KimonoDanceCutscene3dObjectTaskData *draw3dTaskData = (KimonoDanceCutscene3dObjectTaskData *)Field3dObjectTask_GetData(cam->draw3dTask);
+    if (draw3dTaskData->state != 3) {
         GF_ASSERT(FALSE);
         TaskManager_Call(fieldSystem->taskman, ov02_02250B58, NULL);
         return;
     }
-    unk->unk_011 = a1;
+    draw3dTaskData->unk_011 = a1;
     ov02_02250B44(fieldSystem);
 }
 
@@ -268,14 +268,14 @@ void ov02_02250B30(FieldSystem *fieldSystem) {
 
 static void ov02_02250B44(FieldSystem *fieldSystem) {
     KimonoDanceCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
-    UnkStruct_ov02_02250BB0 *unk = (UnkStruct_ov02_02250BB0 *)ov01_021E687C(cam->unk_04);
+    KimonoDanceCutscene3dObjectTaskData *unk = (KimonoDanceCutscene3dObjectTaskData *)Field3dObjectTask_GetData(cam->draw3dTask);
     unk->state = 4;
 }
 
 static BOOL ov02_02250B58(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     KimonoDanceCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
-    UnkStruct_ov02_02250BB0 *unk = (UnkStruct_ov02_02250BB0 *)ov01_021E687C(cam->unk_04);
+    KimonoDanceCutscene3dObjectTaskData *unk = (KimonoDanceCutscene3dObjectTaskData *)Field3dObjectTask_GetData(cam->draw3dTask);
     if (unk->state == 3) {
         ov02_02250B44(fieldSystem);
         return TRUE;
@@ -286,86 +286,86 @@ static BOOL ov02_02250B58(TaskManager *taskman) {
 
 void ov02_02250B80(FieldSystem *fieldSystem) {
     UnkStruct_ov02_02250B80 *unk = AllocFromHeapAtEnd(HEAP_ID_4, sizeof(UnkStruct_ov02_02250B80));
-    unk->unk_D4 = 0;
+    unk->eyeGlimmerDelayTimer = 0;
     ov02_022511AC(HEAP_ID_4, fieldSystem, unk);
     TaskManager_Call(fieldSystem->taskman, ov02_022512AC, unk);
 }
 
-static void ov02_02250BB0(KimonoDanceCutsceneCamera *cam) {
-    cam->unk_04 = ov01_021E67BC(cam->unk_00, &ov02_02253B4C);
+static void KimonoDanceCutscene_CreateField3dObjectTask(KimonoDanceCutsceneCamera *cam) {
+    cam->draw3dTask = Field3dObjectTaskManager_CreateTask(cam->field3dObjectTaskManager, &sField3dObjectTaskTemplate_KimonoDanceCutscene);
 }
 
-static void ov02_02250BC4(UnkStruct_Overlay01_021E66E4_subC *a0, FieldSystem *fieldSystem, void *a2) {
-    UnkStruct_ov02_02250BB0 *r5 = (UnkStruct_ov02_02250BB0 *)a2;
+static void Field3dObjectTaskInit_KimonoDanceCutscene(Field3dObjectTask *task, FieldSystem *fieldSystem, void *taskData) {
+    KimonoDanceCutscene3dObjectTaskData *kimonoDanceObjData = (KimonoDanceCutscene3dObjectTaskData *)taskData;
     KimonoDanceCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
-    r5->gameVersion = cam->gameVersion;
-    GF_ExpHeap_FndInitAllocator(&r5->unk_000, HEAP_ID_4, 0x20);
-    Field3dModel_LoadFromFilesystem(&r5->unk_014, NARC_a_1_7_4, 18, HEAP_ID_4);
-    Field3dModel_LoadFromFilesystem(&r5->unk_024, NARC_a_1_7_4, 25, HEAP_ID_4);
-    Field3dModel_LoadFromFilesystem(&r5->unk_034, NARC_a_1_7_4, 32, HEAP_ID_4);
-    Field3dModelAnimation_LoadFromFilesystem(&r5->unk_044[0], &r5->unk_014, NARC_a_1_7_4, 19, HEAP_ID_4, &r5->unk_000);
-    Field3dModelAnimation_LoadFromFilesystem(&r5->unk_044[1], &r5->unk_014, NARC_a_1_7_4, 20, HEAP_ID_4, &r5->unk_000);
-    Field3dModelAnimation_LoadFromFilesystem(&r5->unk_044[2], &r5->unk_014, NARC_a_1_7_4, 21, HEAP_ID_4, &r5->unk_000);
-    Field3dModelAnimation_LoadFromFilesystem(&r5->unk_080[0], &r5->unk_024, NARC_a_1_7_4, 26, HEAP_ID_4, &r5->unk_000);
-    Field3dModelAnimation_LoadFromFilesystem(&r5->unk_080[1], &r5->unk_024, NARC_a_1_7_4, 27, HEAP_ID_4, &r5->unk_000);
-    Field3dModelAnimation_LoadFromFilesystem(&r5->unk_0A8[0], &r5->unk_034, NARC_a_1_7_4, 33, HEAP_ID_4, &r5->unk_000);
-    Field3dObject_InitFromModel(&r5->unk_0BC, &r5->unk_014);
-    Field3dObject_InitFromModel(&r5->unk_134, &r5->unk_024);
-    Field3dObject_AddAnimation(&r5->unk_0BC, &r5->unk_044[0]);
-    Field3dObject_AddAnimation(&r5->unk_0BC, &r5->unk_044[1]);
-    Field3dObject_AddAnimation(&r5->unk_0BC, &r5->unk_044[2]);
-    Field3dObject_AddAnimation(&r5->unk_134, &r5->unk_080[0]);
-    Field3dObject_AddAnimation(&r5->unk_134, &r5->unk_080[1]);
-    Field3dObject_SetActiveFlag(&r5->unk_0BC, FALSE);
-    Field3dObject_SetActiveFlag(&r5->unk_134, FALSE);
+    kimonoDanceObjData->gameVersion = cam->gameVersion;
+    GF_ExpHeap_FndInitAllocator(&kimonoDanceObjData->allocator, HEAP_ID_4, 0x20);
+    Field3dModel_LoadFromFilesystem(&kimonoDanceObjData->unk_014, NARC_a_1_7_4, 18, HEAP_ID_4);
+    Field3dModel_LoadFromFilesystem(&kimonoDanceObjData->unk_024, NARC_a_1_7_4, 25, HEAP_ID_4);
+    Field3dModel_LoadFromFilesystem(&kimonoDanceObjData->unk_034, NARC_a_1_7_4, 32, HEAP_ID_4);
+    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->unk_044[0], &kimonoDanceObjData->unk_014, NARC_a_1_7_4, 19, HEAP_ID_4, &kimonoDanceObjData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->unk_044[1], &kimonoDanceObjData->unk_014, NARC_a_1_7_4, 20, HEAP_ID_4, &kimonoDanceObjData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->unk_044[2], &kimonoDanceObjData->unk_014, NARC_a_1_7_4, 21, HEAP_ID_4, &kimonoDanceObjData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->unk_080[0], &kimonoDanceObjData->unk_024, NARC_a_1_7_4, 26, HEAP_ID_4, &kimonoDanceObjData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->unk_080[1], &kimonoDanceObjData->unk_024, NARC_a_1_7_4, 27, HEAP_ID_4, &kimonoDanceObjData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->unk_0A8[0], &kimonoDanceObjData->unk_034, NARC_a_1_7_4, 33, HEAP_ID_4, &kimonoDanceObjData->allocator);
+    Field3dObject_InitFromModel(&kimonoDanceObjData->unk_0BC, &kimonoDanceObjData->unk_014);
+    Field3dObject_InitFromModel(&kimonoDanceObjData->unk_134, &kimonoDanceObjData->unk_024);
+    Field3dObject_AddAnimation(&kimonoDanceObjData->unk_0BC, &kimonoDanceObjData->unk_044[0]);
+    Field3dObject_AddAnimation(&kimonoDanceObjData->unk_0BC, &kimonoDanceObjData->unk_044[1]);
+    Field3dObject_AddAnimation(&kimonoDanceObjData->unk_0BC, &kimonoDanceObjData->unk_044[2]);
+    Field3dObject_AddAnimation(&kimonoDanceObjData->unk_134, &kimonoDanceObjData->unk_080[0]);
+    Field3dObject_AddAnimation(&kimonoDanceObjData->unk_134, &kimonoDanceObjData->unk_080[1]);
+    Field3dObject_SetActiveFlag(&kimonoDanceObjData->unk_0BC, FALSE);
+    Field3dObject_SetActiveFlag(&kimonoDanceObjData->unk_134, FALSE);
     for (u8 i = 0; i < 4; ++i) {
-        Field3dObject_InitFromModel(&r5->unk_1AC[i], &r5->unk_034);
-        Field3dObject_AddAnimation(&r5->unk_1AC[i], &r5->unk_0A8[0]);
-        Field3dObject_SetActiveFlag(&r5->unk_1AC[i], FALSE);
+        Field3dObject_InitFromModel(&kimonoDanceObjData->unk_1AC[i], &kimonoDanceObjData->unk_034);
+        Field3dObject_AddAnimation(&kimonoDanceObjData->unk_1AC[i], &kimonoDanceObjData->unk_0A8[0]);
+        Field3dObject_SetActiveFlag(&kimonoDanceObjData->unk_1AC[i], FALSE);
     }
-    modelAnimListSetFrameIndex(r5->unk_044, 3, 0);
-    modelAnimListSetFrameIndex(r5->unk_080, 2, 0);
-    modelAnimListSetFrameIndex(r5->unk_0A8, 1, 0);
+    modelAnimListSetFrameIndex(kimonoDanceObjData->unk_044, 3, 0);
+    modelAnimListSetFrameIndex(kimonoDanceObjData->unk_080, 2, 0);
+    modelAnimListSetFrameIndex(kimonoDanceObjData->unk_0A8, 1, 0);
 
     VecFx32 pos;
     MapObject_GetPositionVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &pos);
-    Field3dObj_SetPosEx(&r5->unk_0BC, pos.x, pos.y, pos.z);
-    Field3dObj_SetPosEx(&r5->unk_134, pos.x, pos.y, pos.z);
-    if (r5->gameVersion == VERSION_SOULSILVER) {
-        Field3dObj_SetPosEx(&r5->unk_1AC[0], pos.x + FX32_CONST(128), pos.y + FX32_CONST(32), pos.z - FX32_CONST(180));
-        Field3dObj_SetPosEx(&r5->unk_1AC[1], pos.x - FX32_CONST(128), pos.y + FX32_CONST(32), pos.z - FX32_CONST(180));
-        Field3dObj_SetPosEx(&r5->unk_1AC[2], 0, 0, 0);
-        Field3dObj_SetPosEx(&r5->unk_1AC[3], 0, 0, 0);
-        r5->unk_4AC = 0x131;
-        r5->cameraParam = sCameraParam_SoulSilver;
-        r5->cameraOffset = sCameraOffset_SoulSilver;
+    Field3dObj_SetPosEx(&kimonoDanceObjData->unk_0BC, pos.x, pos.y, pos.z);
+    Field3dObj_SetPosEx(&kimonoDanceObjData->unk_134, pos.x, pos.y, pos.z);
+    if (kimonoDanceObjData->gameVersion == VERSION_SOULSILVER) {
+        Field3dObj_SetPosEx(&kimonoDanceObjData->unk_1AC[0], pos.x + FX32_CONST(128), pos.y + FX32_CONST(32), pos.z - FX32_CONST(180));
+        Field3dObj_SetPosEx(&kimonoDanceObjData->unk_1AC[1], pos.x - FX32_CONST(128), pos.y + FX32_CONST(32), pos.z - FX32_CONST(180));
+        Field3dObj_SetPosEx(&kimonoDanceObjData->unk_1AC[2], 0, 0, 0);
+        Field3dObj_SetPosEx(&kimonoDanceObjData->unk_1AC[3], 0, 0, 0);
+        kimonoDanceObjData->unk_4AC = 0x131;
+        kimonoDanceObjData->cameraParam = sCameraParam_SoulSilver;
+        kimonoDanceObjData->cameraOffset = sCameraOffset_SoulSilver;
     } else {
-        Field3dObj_SetPosEx(&r5->unk_1AC[0], pos.x + FX32_CONST(200), pos.y - FX32_CONST(73), pos.z + FX32_CONST(144));
-        Field3dObj_SetPosEx(&r5->unk_1AC[1], pos.x - FX32_CONST(198), pos.y - FX32_CONST(73), pos.z + FX32_CONST(144));
-        Field3dObj_SetPosEx(&r5->unk_1AC[2], pos.x + FX32_CONST(200), pos.y - FX32_CONST(73), pos.z - FX32_CONST(270));
-        Field3dObj_SetPosEx(&r5->unk_1AC[3], pos.x - FX32_CONST(198), pos.y - FX32_CONST(73), pos.z - FX32_CONST(270));
-        r5->unk_4AC = 0x130;
-        r5->cameraParam = sCameraParam_HeartGold;
-        r5->cameraOffset = sCameraOffset_HeartGold;
+        Field3dObj_SetPosEx(&kimonoDanceObjData->unk_1AC[0], pos.x + FX32_CONST(200), pos.y - FX32_CONST(73), pos.z + FX32_CONST(144));
+        Field3dObj_SetPosEx(&kimonoDanceObjData->unk_1AC[1], pos.x - FX32_CONST(198), pos.y - FX32_CONST(73), pos.z + FX32_CONST(144));
+        Field3dObj_SetPosEx(&kimonoDanceObjData->unk_1AC[2], pos.x + FX32_CONST(200), pos.y - FX32_CONST(73), pos.z - FX32_CONST(270));
+        Field3dObj_SetPosEx(&kimonoDanceObjData->unk_1AC[3], pos.x - FX32_CONST(198), pos.y - FX32_CONST(73), pos.z - FX32_CONST(270));
+        kimonoDanceObjData->unk_4AC = 0x130;
+        kimonoDanceObjData->cameraParam = sCameraParam_HeartGold;
+        kimonoDanceObjData->cameraOffset = sCameraOffset_HeartGold;
     }
-    r5->state = 0;
+    kimonoDanceObjData->state = 0;
 }
 
-static void ov02_02250EC0(UnkStruct_Overlay01_021E66E4_subC *a0, FieldSystem *fieldSystem, void *a2) {
-    UnkStruct_ov02_02250BB0 *r4 = (UnkStruct_ov02_02250BB0 *)a2;
-    Field3dModelAnimation_Unload(&r4->unk_044[2], &r4->unk_000);
-    Field3dModelAnimation_Unload(&r4->unk_044[1], &r4->unk_000);
-    Field3dModelAnimation_Unload(&r4->unk_044[0], &r4->unk_000);
-    Field3dModelAnimation_Unload(&r4->unk_080[1], &r4->unk_000);
-    Field3dModelAnimation_Unload(&r4->unk_080[0], &r4->unk_000);
-    Field3dModelAnimation_Unload(&r4->unk_0A8[0], &r4->unk_000);
+static void Field3dObjectTaskDestroy_KimonoDanceCutscene(Field3dObjectTask *a0, FieldSystem *fieldSystem, void *a2) {
+    KimonoDanceCutscene3dObjectTaskData *r4 = (KimonoDanceCutscene3dObjectTaskData *)a2;
+    Field3dModelAnimation_Unload(&r4->unk_044[2], &r4->allocator);
+    Field3dModelAnimation_Unload(&r4->unk_044[1], &r4->allocator);
+    Field3dModelAnimation_Unload(&r4->unk_044[0], &r4->allocator);
+    Field3dModelAnimation_Unload(&r4->unk_080[1], &r4->allocator);
+    Field3dModelAnimation_Unload(&r4->unk_080[0], &r4->allocator);
+    Field3dModelAnimation_Unload(&r4->unk_0A8[0], &r4->allocator);
     Field3dModel_Unload(&r4->unk_014);
     Field3dModel_Unload(&r4->unk_024);
     Field3dModel_Unload(&r4->unk_034);
 }
 
-static void ov02_02250F1C(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSystem *a1, void *a2) {
-    UnkStruct_ov02_02250BB0 *r4 = (UnkStruct_ov02_02250BB0 *)a2;
+static void Field3dObjectTaskUpdate_KimonoDanceCutscene(Field3dObjectTask *a0, struct FieldSystem *a1, void *a2) {
+    KimonoDanceCutscene3dObjectTaskData *r4 = (KimonoDanceCutscene3dObjectTaskData *)a2;
 
     switch (r4->state) {
     case 0:
@@ -402,8 +402,8 @@ static void ov02_02250F1C(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSys
     }
 }
 
-static void ov02_02250FE0(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSystem *a1, void *a2) {
-    UnkStruct_ov02_02250BB0 *r4 = (UnkStruct_ov02_02250BB0 *)a2;
+static void Field3dObjectTaskRender_KimonoDanceCutscene(Field3dObjectTask *a0, struct FieldSystem *a1, void *a2) {
+    KimonoDanceCutscene3dObjectTaskData *r4 = (KimonoDanceCutscene3dObjectTaskData *)a2;
 
     Field3dObj_Draw(&r4->unk_0BC);
     Field3dObj_Draw(&r4->unk_134);
@@ -412,16 +412,16 @@ static void ov02_02250FE0(UnkStruct_Overlay01_021E66E4_subC *a0, struct FieldSys
     }
 }
 
-static void ov02_02251018(UnkStruct_ov02_02250BB0 *a0) {
+static void ov02_02251018(KimonoDanceCutscene3dObjectTaskData *a0) {
     Field3dObject_RemoveAnimation(&a0->unk_0BC, &a0->unk_044[0]);
     Field3dObject_RemoveAnimation(&a0->unk_0BC, &a0->unk_044[1]);
     Field3dObject_RemoveAnimation(&a0->unk_0BC, &a0->unk_044[2]);
-    Field3dModelAnimation_Unload(&a0->unk_044[2], &a0->unk_000);
-    Field3dModelAnimation_Unload(&a0->unk_044[1], &a0->unk_000);
-    Field3dModelAnimation_Unload(&a0->unk_044[0], &a0->unk_000);
-    Field3dModelAnimation_LoadFromFilesystem(&a0->unk_044[0], &a0->unk_014, NARC_a_1_7_4, 22, HEAP_ID_4, &a0->unk_000);
-    Field3dModelAnimation_LoadFromFilesystem(&a0->unk_044[1], &a0->unk_014, NARC_a_1_7_4, 23, HEAP_ID_4, &a0->unk_000);
-    Field3dModelAnimation_LoadFromFilesystem(&a0->unk_044[2], &a0->unk_014, NARC_a_1_7_4, 24, HEAP_ID_4, &a0->unk_000);
+    Field3dModelAnimation_Unload(&a0->unk_044[2], &a0->allocator);
+    Field3dModelAnimation_Unload(&a0->unk_044[1], &a0->allocator);
+    Field3dModelAnimation_Unload(&a0->unk_044[0], &a0->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&a0->unk_044[0], &a0->unk_014, NARC_a_1_7_4, 22, HEAP_ID_4, &a0->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&a0->unk_044[1], &a0->unk_014, NARC_a_1_7_4, 23, HEAP_ID_4, &a0->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&a0->unk_044[2], &a0->unk_014, NARC_a_1_7_4, 24, HEAP_ID_4, &a0->allocator);
     Field3dObject_AddAnimation(&a0->unk_0BC, &a0->unk_044[0]);
     Field3dObject_AddAnimation(&a0->unk_0BC, &a0->unk_044[1]);
     Field3dObject_AddAnimation(&a0->unk_0BC, &a0->unk_044[2]);
@@ -450,7 +450,7 @@ static void modelAnimListAdvanceLooping(Field3DModelAnimation *animation, u32 nu
     }
 }
 
-static void ov02_02251164(UnkStruct_ov02_02250BB0 *a0, int a1) {
+static void ov02_02251164(KimonoDanceCutscene3dObjectTaskData *a0, int a1) {
     u32 r5 = a0->gameVersion == VERSION_SOULSILVER ? 2 : 4;
     Field3dObject_SetActiveFlag(&a0->unk_134, a1);
     if (!a0->unk_011) {
@@ -461,30 +461,30 @@ static void ov02_02251164(UnkStruct_ov02_02250BB0 *a0, int a1) {
 }
 
 static void ov02_022511AC(HeapID heapId, FieldSystem *fieldSystem, UnkStruct_ov02_02250B80 *a2) {
-    GF_ExpHeap_FndInitAllocator(&a2->unk_00, heapId, 0x20);
-    Field3dModel_LoadFromFilesystem(&a2->unk_10, NARC_a_1_7_4, 28, heapId);
-    Field3dModelAnimation_LoadFromFilesystem(&a2->unk_20[0], &a2->unk_10, NARC_a_1_7_4, 29, heapId, &a2->unk_00);
-    Field3dModelAnimation_LoadFromFilesystem(&a2->unk_20[1], &a2->unk_10, NARC_a_1_7_4, 30, heapId, &a2->unk_00);
-    Field3dModelAnimation_LoadFromFilesystem(&a2->unk_20[2], &a2->unk_10, NARC_a_1_7_4, 31, heapId, &a2->unk_00);
-    Field3dObject_InitFromModel(&a2->unk_5C, &a2->unk_10);
-    Field3dObject_AddAnimation(&a2->unk_5C, &a2->unk_20[0]);
-    Field3dObject_AddAnimation(&a2->unk_5C, &a2->unk_20[1]);
-    Field3dObject_AddAnimation(&a2->unk_5C, &a2->unk_20[2]);
-    modelAnimListSetFrameIndex(a2->unk_20, 3, 0);
+    GF_ExpHeap_FndInitAllocator(&a2->allocator, heapId, 0x20);
+    Field3dModel_LoadFromFilesystem(&a2->model, NARC_a_1_7_4, 28, heapId);
+    Field3dModelAnimation_LoadFromFilesystem(&a2->anims[0], &a2->model, NARC_a_1_7_4, 29, heapId, &a2->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&a2->anims[1], &a2->model, NARC_a_1_7_4, 30, heapId, &a2->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&a2->anims[2], &a2->model, NARC_a_1_7_4, 31, heapId, &a2->allocator);
+    Field3dObject_InitFromModel(&a2->object, &a2->model);
+    Field3dObject_AddAnimation(&a2->object, &a2->anims[0]);
+    Field3dObject_AddAnimation(&a2->object, &a2->anims[1]);
+    Field3dObject_AddAnimation(&a2->object, &a2->anims[2]);
+    modelAnimListSetFrameIndex(a2->anims, 3, 0);
 
     VecFx32 pos;
     MapObject_GetPositionVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &pos);
     pos.y += FX32_CONST(100);
     pos.z -= FX32_CONST(350);
-    Field3dObj_SetPosEx(&a2->unk_5C, pos.x, pos.y, pos.z);
-    Field3dObject_SetActiveFlag(&a2->unk_5C, TRUE);
+    Field3dObj_SetPosEx(&a2->object, pos.x, pos.y, pos.z);
+    Field3dObject_SetActiveFlag(&a2->object, TRUE);
 }
 
 static void ov02_02251280(UnkStruct_ov02_02250B80 *a0) {
-    Field3dModelAnimation_Unload(&a0->unk_20[2], &a0->unk_00);
-    Field3dModelAnimation_Unload(&a0->unk_20[1], &a0->unk_00);
-    Field3dModelAnimation_Unload(&a0->unk_20[0], &a0->unk_00);
-    Field3dModel_Unload(&a0->unk_10);
+    Field3dModelAnimation_Unload(&a0->anims[2], &a0->allocator);
+    Field3dModelAnimation_Unload(&a0->anims[1], &a0->allocator);
+    Field3dModelAnimation_Unload(&a0->anims[0], &a0->allocator);
+    Field3dModel_Unload(&a0->model);
 }
 
 static BOOL ov02_022512AC(TaskManager *taskman) {
@@ -493,14 +493,14 @@ static BOOL ov02_022512AC(TaskManager *taskman) {
 
     switch (*pState) {
     case 0:
-        ++unk->unk_D4;
-        if (unk->unk_D4 == 2) {
+        ++unk->eyeGlimmerDelayTimer;
+        if (unk->eyeGlimmerDelayTimer == 2) {
             PlaySE(SEQ_SE_GS_RUGIA_MENOHIKARI);
         }
-        if (modelAnimListAdvanceNoLoop(unk->unk_20, 3)) {
+        if (modelAnimListAdvanceNoLoop(unk->anims, 3)) {
             ++(*pState);
         }
-        Field3dObj_Draw(&unk->unk_5C);
+        Field3dObj_Draw(&unk->object);
         break;
     case 1:
         ov02_02251280(unk);
@@ -517,7 +517,7 @@ static BOOL ov02_02251320(TaskManager *taskman) {
     NNSG3dRenderObj *r7;
     u8 i;
     KimonoDanceCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
-    UnkStruct_ov02_02250BB0 *r5 = ov01_021E687C(cam->unk_04);
+    KimonoDanceCutscene3dObjectTaskData *r5 = Field3dObjectTask_GetData(cam->draw3dTask);
 
     switch (*pState) {
     case 0:
@@ -553,12 +553,12 @@ static BOOL ov02_02251320(TaskManager *taskman) {
 
 void ov02_02251424(FieldSystem *fieldSystem, u8 a1) {
     KimonoDanceCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
-    UnkStruct_ov02_02250BB0 *r4 = (UnkStruct_ov02_02250BB0 *)ov01_021E687C(cam->unk_04);
+    KimonoDanceCutscene3dObjectTaskData *r4 = (KimonoDanceCutscene3dObjectTaskData *)Field3dObjectTask_GetData(cam->draw3dTask);
 
     GF_ASSERT(a1 < 3);
 
-    Camera_SetLookAtCamTarget(&cam->unk_0C, fieldSystem->camera);
-    Camera_SetLookAtCamPos(&cam->unk_18, fieldSystem->camera);
+    Camera_SetLookAtCamTarget(&cam->lookAtTarget, fieldSystem->camera);
+    Camera_SetLookAtCamPos(&cam->lookAtPos, fieldSystem->camera);
     Camera_SetDistance(r4->cameraParam[a1].distance, fieldSystem->camera);
     Camera_SetAnglePos(&r4->cameraParam[a1].angle, fieldSystem->camera);
     Camera_SetPerspectiveAngle(r4->cameraParam[a1].perspective, fieldSystem->camera);
@@ -573,7 +573,7 @@ void ov02_02251424(FieldSystem *fieldSystem, u8 a1) {
 void ov02_022514C8(FieldSystem *fieldSystem, u8 a1) {
     int duration;
     KimonoDanceCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
-    UnkStruct_ov02_02250BB0 *r6 = (UnkStruct_ov02_02250BB0 *)ov01_021E687C(cam->unk_04);
+    KimonoDanceCutscene3dObjectTaskData *r6 = (KimonoDanceCutscene3dObjectTaskData *)Field3dObjectTask_GetData(cam->draw3dTask);
 
     CameraTranslationPathTemplate template;
     int whichPoint = a1 == 0 ? 0 : 3;
@@ -623,7 +623,7 @@ void ov02_022515A4(FieldSystem *fieldSystem) {
 
 static BOOL ov02_022515D0(TaskManager *taskman) {
     int species;
-    int spC;
+    int firstFlapDelay;
     int flapSfx;
     int mapObjectId;
     LocalMapObject *mapObject;
@@ -634,12 +634,12 @@ static BOOL ov02_022515D0(TaskManager *taskman) {
     if (unk->gameVersion == VERSION_SOULSILVER) {
         species = SPECIES_LUGIA;
         mapObjectId = obj_D40R0107_lug_obj01;
-        spC = 18;
+        firstFlapDelay = 18;
         flapSfx = SEQ_SE_GS_RUGIA_HABATAKI;
     } else {
         species = SPECIES_HO_OH;
         mapObjectId = obj_D17R0110_hou_obj01;
-        spC = 0;
+        firstFlapDelay = 0;
         flapSfx = SEQ_SE_GS_HOUOU_HABATAKI;
     }
 
@@ -648,17 +648,17 @@ static BOOL ov02_022515D0(TaskManager *taskman) {
 
     switch (*pState) {
     case 0:
-        GF_ExpHeap_FndInitAllocator(&unk->unk_0C, HEAP_ID_4, 0x20);
-        Field3dModel_LoadFromFilesystem(&unk->unk_1C, NARC_a_1_7_4, 34, HEAP_ID_4);
-        Field3dModelAnimation_LoadFromFilesystem(&unk->unk_2C[0], &unk->unk_1C, NARC_a_1_7_4, 35, HEAP_ID_4, &unk->unk_0C);
-        Field3dModelAnimation_LoadFromFilesystem(&unk->unk_2C[1], &unk->unk_1C, NARC_a_1_7_4, 36, HEAP_ID_4, &unk->unk_0C);
-        Field3dModelAnimation_LoadFromFilesystem(&unk->unk_2C[2], &unk->unk_1C, NARC_a_1_7_4, 37, HEAP_ID_4, &unk->unk_0C);
-        Field3dObject_InitFromModel(&unk->unk_68, &unk->unk_1C);
-        Field3dObject_AddAnimation(&unk->unk_68, &unk->unk_2C[0]);
-        Field3dObject_AddAnimation(&unk->unk_68, &unk->unk_2C[1]);
-        Field3dObject_AddAnimation(&unk->unk_68, &unk->unk_2C[2]);
-        Field3dObject_SetActiveFlag(&unk->unk_68, FALSE);
-        modelAnimListSetFrameIndex(unk->unk_2C,3, 0);
+        GF_ExpHeap_FndInitAllocator(&unk->allocator, HEAP_ID_4, 0x20);
+        Field3dModel_LoadFromFilesystem(&unk->model, NARC_a_1_7_4, 34, HEAP_ID_4);
+        Field3dModelAnimation_LoadFromFilesystem(&unk->anims[0], &unk->model, NARC_a_1_7_4, 35, HEAP_ID_4, &unk->allocator);
+        Field3dModelAnimation_LoadFromFilesystem(&unk->anims[1], &unk->model, NARC_a_1_7_4, 36, HEAP_ID_4, &unk->allocator);
+        Field3dModelAnimation_LoadFromFilesystem(&unk->anims[2], &unk->model, NARC_a_1_7_4, 37, HEAP_ID_4, &unk->allocator);
+        Field3dObject_InitFromModel(&unk->object, &unk->model);
+        Field3dObject_AddAnimation(&unk->object, &unk->anims[0]);
+        Field3dObject_AddAnimation(&unk->object, &unk->anims[1]);
+        Field3dObject_AddAnimation(&unk->object, &unk->anims[2]);
+        Field3dObject_SetActiveFlag(&unk->object, FALSE);
+        modelAnimListSetFrameIndex(unk->anims,3, 0);
     {
         VecFx32 sp2C;
         MapObject_GetPositionVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &sp2C);
@@ -668,7 +668,7 @@ static BOOL ov02_022515D0(TaskManager *taskman) {
         } else {
             sp2C.z -= FX32_CONST(280);
         }
-        Field3dObj_SetPosEx(&unk->unk_68, sp2C.x, sp2C.y, sp2C.z);
+        Field3dObj_SetPosEx(&unk->object, sp2C.x, sp2C.y, sp2C.z);
     }
         ++(*pState);
         break;
@@ -692,7 +692,7 @@ static BOOL ov02_022515D0(TaskManager *taskman) {
         break;
     case 2:
         ++unk->unk_08;
-        if (unk->unk_08 >= spC) {
+        if (unk->unk_08 >= firstFlapDelay) {
             if (unk->unk_E2 == 0) {
                 PlaySE(flapSfx);
                 unk->unk_E2 = 24;
@@ -727,7 +727,7 @@ static BOOL ov02_022515D0(TaskManager *taskman) {
     case 4:
         ++unk->unk_08;
         if (unk->unk_08 >= 50) {
-            Field3dObject_SetActiveFlag(&unk->unk_68, TRUE);
+            Field3dObject_SetActiveFlag(&unk->object, TRUE);
             PlayCry(species, 0);
             unk->unk_0A = 0;
             unk->unk_08 = 0;
@@ -736,7 +736,7 @@ static BOOL ov02_022515D0(TaskManager *taskman) {
         break;
     case 5:
     {
-        BOOL animDone = modelAnimListAdvanceNoLoop(unk->unk_2C, 3);
+        BOOL animDone = modelAnimListAdvanceNoLoop(unk->anims, 3);
         ++unk->unk_0A;
         if (animDone && unk->unk_0A >= 65) {
             sub_0205F328(mapObject, 0);
@@ -744,7 +744,7 @@ static BOOL ov02_022515D0(TaskManager *taskman) {
             ++(*pState);
         }
     }
-        Field3dObj_Draw(&unk->unk_68);
+        Field3dObj_Draw(&unk->object);
         break;
     case 6:
         ++unk->unk_08;
@@ -753,10 +753,10 @@ static BOOL ov02_022515D0(TaskManager *taskman) {
         }
         break;
     case 7:
-        Field3dModelAnimation_Unload(&unk->unk_2C[2], &unk->unk_0C);
-        Field3dModelAnimation_Unload(&unk->unk_2C[1], &unk->unk_0C);
-        Field3dModelAnimation_Unload(&unk->unk_2C[0], &unk->unk_0C);
-        Field3dModel_Unload(&unk->unk_1C);
+        Field3dModelAnimation_Unload(&unk->anims[2], &unk->allocator);
+        Field3dModelAnimation_Unload(&unk->anims[1], &unk->allocator);
+        Field3dModelAnimation_Unload(&unk->anims[0], &unk->allocator);
+        Field3dModel_Unload(&unk->model);
         FreeToHeap(unk);
         return TRUE;
     }
@@ -775,12 +775,12 @@ void ov02_022518E0(FieldSystem *fieldSystem) {
 
 static void ov02_022518F8(FieldSystem *fieldSystem) {
     KimonoDanceCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
-    UnkStruct_ov02_02250BB0 *r5 = (UnkStruct_ov02_02250BB0 *)ov01_021E687C(cam->unk_04);
-    UnkStruct_ov02_02250BB0_sub38C *sub_38C = &r5->unk_38C;
+    KimonoDanceCutscene3dObjectTaskData *r5 = (KimonoDanceCutscene3dObjectTaskData *)Field3dObjectTask_GetData(cam->draw3dTask);
+    KimonoDanceCutscene3dObjectTaskData_SoulSilver *sub_38C = &r5->unk_38C;
 
     Field3dModel_LoadFromFilesystem(&sub_38C->model, NARC_a_1_7_4, 38, HEAP_ID_4);
-    Field3dModelAnimation_LoadFromFilesystem(&sub_38C->anims[0], &sub_38C->model, NARC_a_1_7_4, 39, HEAP_ID_4, &r5->unk_000);
-    Field3dModelAnimation_LoadFromFilesystem(&sub_38C->anims[1], &sub_38C->model, NARC_a_1_7_4, 40, HEAP_ID_4, &r5->unk_000);
+    Field3dModelAnimation_LoadFromFilesystem(&sub_38C->anims[0], &sub_38C->model, NARC_a_1_7_4, 39, HEAP_ID_4, &r5->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&sub_38C->anims[1], &sub_38C->model, NARC_a_1_7_4, 40, HEAP_ID_4, &r5->allocator);
     Field3dObject_InitFromModel(&sub_38C->object, &sub_38C->model);
     Field3dObject_AddAnimation(&sub_38C->object, &sub_38C->anims[0]);
     Field3dObject_AddAnimation(&sub_38C->object, &sub_38C->anims[1]);
@@ -795,8 +795,8 @@ static void ov02_022518F8(FieldSystem *fieldSystem) {
 
 static void ov02_022519B0(FieldSystem *fieldSystem) {
     KimonoDanceCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
-    UnkStruct_ov02_02250BB0 *sp10 = (UnkStruct_ov02_02250BB0 *)ov01_021E687C(cam->unk_04);
-    UnkStruct_ov02_02250BB0_sub43C *sub_43C = &sp10->unk_43C;
+    KimonoDanceCutscene3dObjectTaskData *sp10 = (KimonoDanceCutscene3dObjectTaskData *)Field3dObjectTask_GetData(cam->draw3dTask);
+    KimonoDanceCutscene3dObjectTaskData_HeartGold *sub_43C = &sp10->unk_43C;
 
     sub_43C->bgConfig = fieldSystem->bgConfig;
 
@@ -826,7 +826,7 @@ static void ov02_022519B0(FieldSystem *fieldSystem) {
 
 void ov02_02251B14(FieldSystem *fieldSystem) {
     KimonoDanceCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
-    UnkStruct_ov02_02250BB0 *unk = (UnkStruct_ov02_02250BB0 *)ov01_021E687C(cam->unk_04);
+    KimonoDanceCutscene3dObjectTaskData *unk = (KimonoDanceCutscene3dObjectTaskData *)Field3dObjectTask_GetData(cam->draw3dTask);
     SysTask_Destroy(unk->unk_4A8);
     unk->unk_4A8 = NULL;
     if (cam->gameVersion == VERSION_SOULSILVER) {
@@ -836,15 +836,15 @@ void ov02_02251B14(FieldSystem *fieldSystem) {
     }
 }
 
-static void ov02_02251B4C(UnkStruct_ov02_02250BB0 *unk) {
-    UnkStruct_ov02_02250BB0_sub38C *sub_38C = &unk->unk_38C;
-    Field3dModelAnimation_Unload(&sub_38C->anims[1], &unk->unk_000);
-    Field3dModelAnimation_Unload(&sub_38C->anims[0], &unk->unk_000);
+static void ov02_02251B4C(KimonoDanceCutscene3dObjectTaskData *unk) {
+    KimonoDanceCutscene3dObjectTaskData_SoulSilver *sub_38C = &unk->unk_38C;
+    Field3dModelAnimation_Unload(&sub_38C->anims[1], &unk->allocator);
+    Field3dModelAnimation_Unload(&sub_38C->anims[0], &unk->allocator);
     Field3dModel_Unload(&sub_38C->model);
 }
 
-static void ov02_02251B70(UnkStruct_ov02_02250BB0 *unk) {
-    UnkStruct_ov02_02250BB0_sub43C *sub_43C = &unk->unk_43C;
+static void ov02_02251B70(KimonoDanceCutscene3dObjectTaskData *unk) {
+    KimonoDanceCutscene3dObjectTaskData_HeartGold *sub_43C = &unk->unk_43C;
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_OFF);
     for (u8 i = 0; i < 6; ++i) {
@@ -854,15 +854,15 @@ static void ov02_02251B70(UnkStruct_ov02_02250BB0 *unk) {
 }
 
 static void ov02_02251BA8(SysTask *task, void *taskData) {
-    UnkStruct_ov02_02250BB0 *unk = (UnkStruct_ov02_02250BB0 *)taskData;
-    UnkStruct_ov02_02250BB0_sub38C *sub_38C = &unk->unk_38C;
+    KimonoDanceCutscene3dObjectTaskData *unk = (KimonoDanceCutscene3dObjectTaskData *)taskData;
+    KimonoDanceCutscene3dObjectTaskData_SoulSilver *sub_38C = &unk->unk_38C;
     modelAnimListAdvanceLooping(sub_38C->anims, 2);
     Field3dObj_Draw(&sub_38C->object);
 }
 
 static void ov02_02251BC4(SysTask *task, void *taskData) {
-    UnkStruct_ov02_02250BB0 *unk = (UnkStruct_ov02_02250BB0 *)taskData;
-    UnkStruct_ov02_02250BB0_sub43C *sub_43C = &unk->unk_43C;
+    KimonoDanceCutscene3dObjectTaskData *unk = (KimonoDanceCutscene3dObjectTaskData *)taskData;
+    KimonoDanceCutscene3dObjectTaskData_HeartGold *sub_43C = &unk->unk_43C;
 
     ++sub_43C->switchTilemapDelayTimer;
     if (sub_43C->switchTilemapDelayTimer >= 6) {

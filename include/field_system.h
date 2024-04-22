@@ -103,7 +103,7 @@ struct FieldSystemUnkSub68 {
 
 typedef struct FieldSystemUnkSub4 {
     u32 unk0;
-    UnkStruct_Overlay01_021E66E4 *unk4;
+    Field3dObjectTaskManager *field3dObjectTaskManager;
     u32 unk8;
     void *unk_0C; // weather related?
     u8 unk10[0x4];

@@ -378,9 +378,9 @@
 .public gGameVersion
 .public FX_SinCosTable_
 .public gSystem
-.public ov01_021E67BC
-.public ov01_021E683C
-.public ov01_021E687C
+.public Field3dObjectTaskManager_CreateTask
+.public Field3dObjectTask_Delete
+.public Field3dObjectTask_GetData
 .public ov01_021E8970
 .public ov01_021E8A8C
 .public ov01_021E8B04
@@ -510,7 +510,7 @@
 .public ov02_022507B4
 .public ov02_022508B4
 .public ov02_02250A60
-.public ov02_02250AC8
+.public LegendCutscene_EndKimonoDance
 .public ov02_02250AE8
 .public ov02_02250AFC
 .public ov02_02250B30

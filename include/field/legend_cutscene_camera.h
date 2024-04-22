@@ -4,8 +4,8 @@
 #include "global.h"
 #include "field_system.h"
 
-void ov02_02250A60(FieldSystem *fieldSystem);
-void ov02_02250AC8(FieldSystem *fieldSystem);
+void LegendCutscene_BeginKimonoDance(FieldSystem *fieldSystem);
+void LegendCutscene_EndKimonoDance(FieldSystem *fieldSystem);
 void ov02_02250AE8(FieldSystem *fieldSystem);
 void ov02_02250AFC(FieldSystem *fieldSystem, u8 a1);
 void ov02_02250B30(FieldSystem *fieldSystem);

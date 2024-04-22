@@ -15782,39 +15782,39 @@ _0224D2C4: .word ov02_0224D1DC
 	thumb_func_start ov02_0224D2C8
 ov02_0224D2C8: ; 0x0224D2C8
 	ldr r0, [r0, #4]
-	ldr r3, _0224D2D4 ; =ov01_021E67BC
+	ldr r3, _0224D2D4 ; =Field3dObjectTaskManager_CreateTask
 	ldr r0, [r0, #4]
 	ldr r1, _0224D2D8 ; =ov02_02253974
 	bx r3
 	nop
-_0224D2D4: .word ov01_021E67BC
+_0224D2D4: .word Field3dObjectTaskManager_CreateTask
 _0224D2D8: .word ov02_02253974
 	thumb_func_end ov02_0224D2C8
 
 	thumb_func_start ov02_0224D2DC
 ov02_0224D2DC: ; 0x0224D2DC
 	ldr r0, [r0, #4]
-	ldr r3, _0224D2E8 ; =ov01_021E67BC
+	ldr r3, _0224D2E8 ; =Field3dObjectTaskManager_CreateTask
 	ldr r0, [r0, #4]
 	ldr r1, _0224D2EC ; =ov02_022539BC
 	bx r3
 	nop
-_0224D2E8: .word ov01_021E67BC
+_0224D2E8: .word Field3dObjectTaskManager_CreateTask
 _0224D2EC: .word ov02_022539BC
 	thumb_func_end ov02_0224D2DC
 
 	thumb_func_start ov02_0224D2F0
 ov02_0224D2F0: ; 0x0224D2F0
-	ldr r3, _0224D2F4 ; =ov01_021E683C
+	ldr r3, _0224D2F4 ; =Field3dObjectTask_Delete
 	bx r3
 	.balign 4, 0
-_0224D2F4: .word ov01_021E683C
+_0224D2F4: .word Field3dObjectTask_Delete
 	thumb_func_end ov02_0224D2F0
 
 	thumb_func_start ov02_0224D2F8
 ov02_0224D2F8: ; 0x0224D2F8
 	push {r3, lr}
-	bl ov01_021E687C
+	bl Field3dObjectTask_GetData
 	add r0, #0xec
 	ldr r0, [r0]
 	cmp r0, #1
@@ -15951,39 +15951,39 @@ _0224D3F0: .word ov02_0224D1DC
 	thumb_func_start ov02_0224D3F4
 ov02_0224D3F4: ; 0x0224D3F4
 	ldr r0, [r0, #4]
-	ldr r3, _0224D400 ; =ov01_021E67BC
+	ldr r3, _0224D400 ; =Field3dObjectTaskManager_CreateTask
 	ldr r0, [r0, #4]
 	ldr r1, _0224D404 ; =ov02_022538FC
 	bx r3
 	nop
-_0224D400: .word ov01_021E67BC
+_0224D400: .word Field3dObjectTaskManager_CreateTask
 _0224D404: .word ov02_022538FC
 	thumb_func_end ov02_0224D3F4
 
 	thumb_func_start ov02_0224D408
 ov02_0224D408: ; 0x0224D408
 	ldr r0, [r0, #4]
-	ldr r3, _0224D414 ; =ov01_021E67BC
+	ldr r3, _0224D414 ; =Field3dObjectTaskManager_CreateTask
 	ldr r0, [r0, #4]
 	ldr r1, _0224D418 ; =ov02_0225398C
 	bx r3
 	nop
-_0224D414: .word ov01_021E67BC
+_0224D414: .word Field3dObjectTaskManager_CreateTask
 _0224D418: .word ov02_0225398C
 	thumb_func_end ov02_0224D408
 
 	thumb_func_start ov02_0224D41C
 ov02_0224D41C: ; 0x0224D41C
-	ldr r3, _0224D420 ; =ov01_021E683C
+	ldr r3, _0224D420 ; =Field3dObjectTask_Delete
 	bx r3
 	.balign 4, 0
-_0224D420: .word ov01_021E683C
+_0224D420: .word Field3dObjectTask_Delete
 	thumb_func_end ov02_0224D41C
 
 	thumb_func_start ov02_0224D424
 ov02_0224D424: ; 0x0224D424
 	push {r3, lr}
-	bl ov01_021E687C
+	bl Field3dObjectTask_GetData
 	add r0, #0xec
 	ldr r0, [r0]
 	cmp r0, #1
@@ -16179,21 +16179,21 @@ _0224D586:
 	thumb_func_start ov02_0224D598
 ov02_0224D598: ; 0x0224D598
 	ldr r0, [r0, #4]
-	ldr r3, _0224D5A4 ; =ov01_021E67BC
+	ldr r3, _0224D5A4 ; =Field3dObjectTaskManager_CreateTask
 	ldr r0, [r0, #4]
 	ldr r1, _0224D5A8 ; =ov02_02253944
 	bx r3
 	nop
-_0224D5A4: .word ov01_021E67BC
+_0224D5A4: .word Field3dObjectTaskManager_CreateTask
 _0224D5A8: .word ov02_02253944
 	thumb_func_end ov02_0224D598
 
 	thumb_func_start ov02_0224D5AC
 ov02_0224D5AC: ; 0x0224D5AC
-	ldr r3, _0224D5B0 ; =ov01_021E683C
+	ldr r3, _0224D5B0 ; =Field3dObjectTask_Delete
 	bx r3
 	.balign 4, 0
-_0224D5B0: .word ov01_021E683C
+_0224D5B0: .word Field3dObjectTask_Delete
 	thumb_func_end ov02_0224D5AC
 
 	thumb_func_start ov02_0224D5B4
@@ -16300,21 +16300,21 @@ _0224D678: .word ov02_0224D1DC
 	thumb_func_start ov02_0224D67C
 ov02_0224D67C: ; 0x0224D67C
 	ldr r0, [r0, #4]
-	ldr r3, _0224D688 ; =ov01_021E67BC
+	ldr r3, _0224D688 ; =Field3dObjectTaskManager_CreateTask
 	ldr r0, [r0, #4]
 	ldr r1, _0224D68C ; =ov02_02253914
 	bx r3
 	nop
-_0224D688: .word ov01_021E67BC
+_0224D688: .word Field3dObjectTaskManager_CreateTask
 _0224D68C: .word ov02_02253914
 	thumb_func_end ov02_0224D67C
 
 	thumb_func_start ov02_0224D690
 ov02_0224D690: ; 0x0224D690
-	ldr r3, _0224D694 ; =ov01_021E683C
+	ldr r3, _0224D694 ; =Field3dObjectTask_Delete
 	bx r3
 	.balign 4, 0
-_0224D694: .word ov01_021E683C
+_0224D694: .word Field3dObjectTask_Delete
 	thumb_func_end ov02_0224D690
 
 	thumb_func_start ov02_0224D698
@@ -16737,21 +16737,21 @@ _0224D994:
 	thumb_func_start ov02_0224D9A4
 ov02_0224D9A4: ; 0x0224D9A4
 	ldr r0, [r0, #4]
-	ldr r3, _0224D9B0 ; =ov01_021E67BC
+	ldr r3, _0224D9B0 ; =Field3dObjectTaskManager_CreateTask
 	ldr r0, [r0, #4]
 	ldr r1, _0224D9B4 ; =ov02_0225395C
 	bx r3
 	nop
-_0224D9B0: .word ov01_021E67BC
+_0224D9B0: .word Field3dObjectTaskManager_CreateTask
 _0224D9B4: .word ov02_0225395C
 	thumb_func_end ov02_0224D9A4
 
 	thumb_func_start ov02_0224D9B8
 ov02_0224D9B8: ; 0x0224D9B8
-	ldr r3, _0224D9BC ; =ov01_021E683C
+	ldr r3, _0224D9BC ; =Field3dObjectTask_Delete
 	bx r3
 	.balign 4, 0
-_0224D9BC: .word ov01_021E683C
+_0224D9BC: .word Field3dObjectTask_Delete
 	thumb_func_end ov02_0224D9B8
 
 	thumb_func_start ov02_0224D9C0
@@ -17103,39 +17103,39 @@ _0224DC60: .word ov02_0224D1DC
 	thumb_func_start ov02_0224DC64
 ov02_0224DC64: ; 0x0224DC64
 	ldr r0, [r0, #4]
-	ldr r3, _0224DC70 ; =ov01_021E67BC
+	ldr r3, _0224DC70 ; =Field3dObjectTaskManager_CreateTask
 	ldr r0, [r0, #4]
 	ldr r1, _0224DC74 ; =ov02_022539A4
 	bx r3
 	nop
-_0224DC70: .word ov01_021E67BC
+_0224DC70: .word Field3dObjectTaskManager_CreateTask
 _0224DC74: .word ov02_022539A4
 	thumb_func_end ov02_0224DC64
 
 	thumb_func_start ov02_0224DC78
 ov02_0224DC78: ; 0x0224DC78
 	ldr r0, [r0, #4]
-	ldr r3, _0224DC84 ; =ov01_021E67BC
+	ldr r3, _0224DC84 ; =Field3dObjectTaskManager_CreateTask
 	ldr r0, [r0, #4]
 	ldr r1, _0224DC88 ; =ov02_0225392C
 	bx r3
 	nop
-_0224DC84: .word ov01_021E67BC
+_0224DC84: .word Field3dObjectTaskManager_CreateTask
 _0224DC88: .word ov02_0225392C
 	thumb_func_end ov02_0224DC78
 
 	thumb_func_start ov02_0224DC8C
 ov02_0224DC8C: ; 0x0224DC8C
-	ldr r3, _0224DC90 ; =ov01_021E683C
+	ldr r3, _0224DC90 ; =Field3dObjectTask_Delete
 	bx r3
 	.balign 4, 0
-_0224DC90: .word ov01_021E683C
+_0224DC90: .word Field3dObjectTask_Delete
 	thumb_func_end ov02_0224DC8C
 
 	thumb_func_start ov02_0224DC94
 ov02_0224DC94: ; 0x0224DC94
 	push {r3, lr}
-	bl ov01_021E687C
+	bl Field3dObjectTask_GetData
 	ldr r1, _0224DCAC ; =0x00000113
 	ldrb r0, [r0, r1]
 	cmp r0, #1
@@ -17314,33 +17314,33 @@ _0224DDD0:
 	thumb_func_start ov02_0224DDE0
 ov02_0224DDE0: ; 0x0224DDE0
 	ldr r0, [r0, #4]
-	ldr r3, _0224DDEC ; =ov01_021E67BC
+	ldr r3, _0224DDEC ; =Field3dObjectTaskManager_CreateTask
 	ldr r0, [r0, #4]
 	ldr r1, _0224DDF0 ; =ov02_022539D4
 	bx r3
 	nop
-_0224DDEC: .word ov01_021E67BC
+_0224DDEC: .word Field3dObjectTaskManager_CreateTask
 _0224DDF0: .word ov02_022539D4
 	thumb_func_end ov02_0224DDE0
 
 	thumb_func_start ov02_0224DDF4
 ov02_0224DDF4: ; 0x0224DDF4
 	ldr r0, [r0, #4]
-	ldr r3, _0224DE00 ; =ov01_021E67BC
+	ldr r3, _0224DE00 ; =Field3dObjectTaskManager_CreateTask
 	ldr r0, [r0, #4]
 	ldr r1, _0224DE04 ; =ov02_022539EC
 	bx r3
 	nop
-_0224DE00: .word ov01_021E67BC
+_0224DE00: .word Field3dObjectTaskManager_CreateTask
 _0224DE04: .word ov02_022539EC
 	thumb_func_end ov02_0224DDF4
 
 	thumb_func_start ov02_0224DE08
 ov02_0224DE08: ; 0x0224DE08
-	ldr r3, _0224DE0C ; =ov01_021E683C
+	ldr r3, _0224DE0C ; =Field3dObjectTask_Delete
 	bx r3
 	.balign 4, 0
-_0224DE0C: .word ov01_021E683C
+_0224DE0C: .word Field3dObjectTask_Delete
 	thumb_func_end ov02_0224DE08
 
 	thumb_func_start ov02_0224DE10
