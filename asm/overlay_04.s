@@ -507,7 +507,7 @@ _02254226:
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0x73
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	add r3, r0, #0
 	ldr r0, [r4, #0x54]
 	mov r1, #0
@@ -519,7 +519,7 @@ _02254226:
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0x74
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	add r3, r0, #0
 	ldr r0, [r4, #0x54]
 	mov r1, #0
@@ -531,7 +531,7 @@ _02254226:
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0x7a
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	add r3, r0, #0
 	ldr r0, [r4, #0x54]
 	mov r1, #0
@@ -543,7 +543,7 @@ _02254226:
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0x75
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	add r3, r0, #0
 	ldr r0, [r4, #0x54]
 	mov r1, #0
@@ -558,7 +558,7 @@ _0225429A:
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0x73
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	add r3, r0, #0
 	ldr r0, [r4, #0x54]
 	mov r1, #0
@@ -570,7 +570,7 @@ _0225429A:
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0x74
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	add r3, r0, #0
 	ldr r0, [r4, #0x54]
 	mov r1, #1
@@ -582,7 +582,7 @@ _0225429A:
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0x7a
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	add r3, r0, #0
 	ldr r0, [r4, #0x54]
 	mov r1, #0
@@ -594,7 +594,7 @@ _0225429A:
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0x75
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	add r3, r0, #0
 	ldr r0, [r4, #0x54]
 	mov r1, #1
@@ -609,7 +609,7 @@ _0225430E:
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0x73
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	add r3, r0, #0
 	ldr r0, [r4, #0x54]
 	mov r1, #1
@@ -621,7 +621,7 @@ _0225430E:
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0x74
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	add r3, r0, #0
 	ldr r0, [r4, #0x54]
 	mov r1, #0
@@ -633,7 +633,7 @@ _0225430E:
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0x7a
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	add r3, r0, #0
 	ldr r0, [r4, #0x54]
 	mov r1, #1
@@ -645,7 +645,7 @@ _0225430E:
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0x75
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	add r3, r0, #0
 	ldr r0, [r4, #0x54]
 	mov r1, #0
@@ -660,7 +660,7 @@ _02254382:
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0x73
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	add r3, r0, #0
 	ldr r0, [r4, #0x54]
 	mov r1, #1
@@ -672,7 +672,7 @@ _02254382:
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0x74
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	add r3, r0, #0
 	ldr r0, [r4, #0x54]
 	mov r1, #1
@@ -684,7 +684,7 @@ _02254382:
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0x7a
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	add r3, r0, #0
 	ldr r0, [r4, #0x54]
 	mov r1, #1
@@ -696,7 +696,7 @@ _02254382:
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0x75
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	add r3, r0, #0
 	ldr r0, [r4, #0x54]
 	mov r1, #1
@@ -742,13 +742,13 @@ FlipAzaleaGymSwitch: ; 0x02254404
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0x74
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	add r7, r0, #0
 	add r0, r5, #0
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0x75
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	str r0, [sp, #4]
 	ldr r0, [r5, #0x54]
 	add r1, r7, #0
@@ -810,13 +810,13 @@ _022544B6:
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0x73
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	add r7, r0, #0
 	add r0, r5, #0
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0x7a
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	str r0, [sp, #8]
 	ldr r0, [r5, #0x54]
 	add r1, r7, #0
@@ -4667,18 +4667,18 @@ ov04_02256278: ; 0x02256278
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0xad
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	add r6, r0, #0
 	add r0, r4, #0
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0xae
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	add r0, r4, #0
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0xaf
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x54]
 	mov r1, #0xad
@@ -4759,7 +4759,7 @@ ov04_02256304: ; 0x02256304
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0xc7
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	add r7, r0, #0
 	ldr r0, [r5, #0x54]
 	mov r1, #0xc7
@@ -4787,7 +4787,7 @@ _02256370:
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #0xc8
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	add r7, r0, #0
 	ldr r0, [r5, #0x54]
 	mov r1, #0xc8
@@ -5079,7 +5079,7 @@ _022565B2:
 	add r0, #0xc0
 	ldr r0, [r0]
 	ldr r1, [r4, #0x10]
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	str r0, [sp, #8]
 	ldr r0, [r6, #0x54]
 	ldr r1, [r4, #0x10]
@@ -5110,7 +5110,7 @@ _022565F2:
 	add r0, #0xc0
 	ldr r0, [r0]
 	ldr r1, [r4, #0x10]
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	str r0, [sp, #4]
 	ldr r0, [r6, #0x54]
 	ldr r1, [r4, #0x10]

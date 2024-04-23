@@ -4,4 +4,4 @@
 ^ov01_021E8B84:
 ^ov01_021E8B90:
 ^ov01_021EBABC:
-^ov01_022040D0:
+^Field3dObjectList_GetRenderObjectByID:

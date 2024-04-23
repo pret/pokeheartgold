@@ -34,7 +34,7 @@ scr_seq_0004_000:
 	end
 
 _0066:
-	scrcmd_375 obj_player
+	make_object_visible obj_player
 	end
 
 scr_seq_0004_012:

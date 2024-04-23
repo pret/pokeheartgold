@@ -115,7 +115,7 @@
 .public Field3dObject_SetActiveFlag
 .public Field3dObject_GetActiveFlag
 .public Field3dObj_SetPosEx
-.public ov01_022040D0
+.public Field3dObjectList_GetRenderObjectByID
 .public ov01_02205A34
 .public ov01_02205A60
 .public ov04_02253E20
