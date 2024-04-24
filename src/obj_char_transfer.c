@@ -6,8 +6,8 @@ typedef enum ObjCharTransferTaskState {
     OBJ_CHAR_TRANSFER_TASK_INIT,
     OBJ_CHAR_TRANSFER_TASK_1,
     OBJ_CHAR_TRANSFER_TASK_2,
-    OBJ_CHAR_TRANSFER_TASK_3,
-    OBJ_CHAR_TRANSFER_TASK_4,
+    OBJ_CHAR_TRANSFER_TASK_COPYABLE,
+    OBJ_CHAR_TRANSFER_TASK_COPY,
 } ObjCharTransferTaskState;
 
 typedef struct ObjCharTransferTask {
@@ -20,7 +20,7 @@ typedef struct ObjCharTransferTask {
     u32 baseAddrSub;
     u8 state;
     BOOL shouldUpdateMappingTypeFromHW;
-    BOOL unk_44;
+    BOOL transferFromTail;
     BOOL needResetBlockTransferFlags;
     u32 sizeMain;
     u32 sizeSub;
@@ -44,43 +44,43 @@ struct ObjCharTransferTasksManager {
     u8 *blockBufSub;
 } *sObjCharTransferTasksManager;
 
-BOOL ObjCharTransfer_TaskExistsByID(int resId);
-void sub_020218D4(void);
-void ObjCharTransferTask_Init(ObjCharTransferTask *task);
-BOOL ObjCharTransferTask_InitFromTemplate(const ObjCharTransferTaskTemplate *template, ObjCharTransferTask *task);
-BOOL sub_02021C9C(ObjCharTransferTask *task);
-ObjCharTransferTask *ObjCharTransfer_GetTaskByImageProxy(const NNSG2dImageProxy *proxyIn);
-BOOL sub_02021CCC(ObjCharTransferTask *task);
-BOOL sub_02021D00(ObjCharTransferTask *task);
-void sub_02021D58(ObjCharTransferTask *task);
-ObjCharTransferTask *ObjCharTransfer_GetTaskByID(int resId);
-GXOBJVRamModeChar ObjCharTransferTask_SetMappingTypeFromHW(ObjCharTransferTask *task, NNS_G2D_VRAM_TYPE vram);
-void ObjCharTransferTask_SetBaseAddrs(ObjCharTransferTask *task, u32 offsetMain, u32 offsetSub);
-BOOL sub_02021DE4(int vram, u32 *pOffsetMain, u32 *pOffsetSub, u32 size, u32 *freeSpaceMain, u32 *freeSpaceSub);  // a0 should be NNS_G2D_VRAM_TYPE but needs to be int in order to match
-void sub_02021E90(ObjCharTransferTask *task, u32 offsetMain, u32 offsetSub);
-void sub_02021EC0(NNS_G2D_VRAM_TYPE vram, u32 offsetMain, u32 offsetSub, u32 a3, u32 a4);
-void sub_02021F28(ObjCharTransferTask *task);
-void sub_02021F54(ObjCharTransferTask *task, NNS_G2D_VRAM_TYPE vram);
-void sub_02021FB0(ObjCharTransferTask *task);
-void sub_02021FDC(ObjCharTransferTask *task, NNS_G2D_VRAM_TYPE vram);
-ObjCharTransferTask *ObjCharTransfer_GetFreeTask(void);
-void ObjCharTransfer_GetVramCapacityByBank(void);
-void ObjCharTransfer_InitBlocksTransferBuffers(u32 numBlocksMain, u32 numBlocksSub, HeapID heapID);
-void sub_020221B4(void);
-void ObjCharTransfer_FreeBlockTransferBuffer(u8 *a0);
-u32 ObjCharTransfer_GetBlocksCountFromBufferPtr(u8 *buffer);
-void ObjCharTransfer_ClearBlockBuf(u8 *buffer);
-void ObjCharTransfer_ReserveTransferBlocks(u32 blockStart, u32 numBlocks, u8 *buffer);
-u32 ObjCharTransfer_FindAvailableTransferBlock(u32 numBlocksUsed, u8 *buffer);
-void ObjCharTransfer_ResetBlockTransferFlagsEx(u32 blockStart, u32 blockMax, u8 *buffer);
-void ObjCharTransferTask_ResetBlockTransferFlags(ObjCharTransferTask *task);
-int ObjCharTransfer_AlignToBlock(int size, int blockSize, BOOL alignRight);
-u32 ObjCharTransfer_CalcBlockNumLimit(int size, int blockSize);
-int ObjCharTransfer_GetBlockMemOffset(int blockNum, int blockSize);
-BOOL ObjCharTransfer_TryGetDestVramOffsets(u32 size, NNS_G2D_VRAM_TYPE vram, u32 *pOffsetMain, u32 *pOffsetSub);
-void ObjCharTransfer_ReserveVramSpace(u32 size, NNS_G2D_VRAM_TYPE vram);
-void ObjCharTransfer_BitPositionToByteAndBitIndexPair(int arrayBitIndex, u32 *byteIndex, u8 *bitIndex);
-void sub_0202256C(u32 a0, u32 a1, u32 a2, int *a3, int *a4);
+static BOOL ObjCharTransfer_TaskExistsByID(int resId);
+static void resetAllTransferTasks(void);
+static void ObjCharTransferTask_Init(ObjCharTransferTask *task);
+static BOOL ObjCharTransferTask_InitFromTemplate(const ObjCharTransferTaskTemplate *template, ObjCharTransferTask *task);
+static BOOL ObjCharTransferTask_ReserveAndTransfer(ObjCharTransferTask *task);
+static ObjCharTransferTask *ObjCharTransfer_GetTaskByImageProxy(const NNSG2dImageProxy *proxyIn);
+static BOOL ObjCharTransferTask_ReserveFromHead(ObjCharTransferTask *task);
+static BOOL ObjCharTransferTask_ReserveFromTail(ObjCharTransferTask *task);
+static void ObjCharTransferTask_Reset(ObjCharTransferTask *task);
+static ObjCharTransferTask *ObjCharTransfer_GetTaskByID(int resId);
+static GXOBJVRamModeChar ObjCharTransferTask_SetMappingTypeFromHW(ObjCharTransferTask *task, NNS_G2D_VRAM_TYPE vram);
+static void ObjCharTransferTask_SetBaseAddrs(ObjCharTransferTask *task, u32 offsetMain, u32 offsetSub);
+static BOOL getBlockNumAndFreeSpaceForTransfer(int vram, u32 *pOffsetMain, u32 *pOffsetSub, u32 size, u32 *freeSpaceMain, u32 *freeSpaceSub);  // a0 should be NNS_G2D_VRAM_TYPE but needs to be int in order to match
+static void ObjCharTransferTask_UpdateBaseAddrs(ObjCharTransferTask *task, u32 offsetMain, u32 offsetSub);
+static void reserveTransferBlocksByVramOffsetAndSize(NNS_G2D_VRAM_TYPE vram, u32 offsetMain, u32 offsetSub, u32 sizeMain, u32 sizeSub);
+static void ObjCharTransferTask_G2dLoadImageMapping(ObjCharTransferTask *task);
+static void ObjCharTransferTask_G2dLoadImageMappingByScreen(ObjCharTransferTask *task, NNS_G2D_VRAM_TYPE vram);
+static void ObjCharTransferTask_G2dLoadImageMappingVramTransfer(ObjCharTransferTask *task);
+static void ObjCharTransferTask_G2dLoadImageMappingVramTransferByScreen(ObjCharTransferTask *task, NNS_G2D_VRAM_TYPE vram);
+static ObjCharTransferTask *ObjCharTransfer_GetFreeTask(void);
+static void ObjCharTransfer_GetVramCapacityByBank(void);
+static void ObjCharTransfer_InitBlocksTransferBuffers(u32 numBlocksMain, u32 numBlocksSub, HeapID heapID);
+static void ObjCharTransfer_ClearBothScreensBlockBufs(void);
+static void ObjCharTransfer_FreeBlockTransferBuffer(u8 *a0);
+static u32 ObjCharTransfer_GetBlocksCountFromBufferPtr(u8 *buffer);
+static void ObjCharTransfer_ClearBlockBuf(u8 *buffer);
+static void ObjCharTransfer_ReserveTransferBlocks(u32 blockStart, u32 numBlocks, u8 *buffer);
+static u32 ObjCharTransfer_FindAvailableTransferBlock(u32 numBlocksUsed, u8 *buffer);
+static void ObjCharTransfer_ResetBlockTransferFlagsEx(u32 blockStart, u32 blockMax, u8 *buffer);
+static void ObjCharTransferTask_ResetBlockTransferFlags(ObjCharTransferTask *task);
+static int ObjCharTransfer_AlignToBlock(int size, int blockSize, BOOL alignRight);
+static u32 ObjCharTransfer_CalcBlockNumLimit(int size, int blockSize);
+static int ObjCharTransfer_GetBlockMemOffset(int blockNum, int blockSize);
+static BOOL ObjCharTransfer_TryGetDestVramOffsets(u32 size, NNS_G2D_VRAM_TYPE vram, u32 *pOffsetMain, u32 *pOffsetSub);
+static void ObjCharTransfer_ReserveVramSpace(u32 size, NNS_G2D_VRAM_TYPE vram);
+static void ObjCharTransfer_BitPositionToByteAndBitIndexPair(int arrayBitIndex, u32 *byteIndex, u8 *bitIndex);
+static void boundsFixOffsetAndSize(u32 baseOffset, u32 curOffset, u32 size, int *correctedOffset, int *correctedSize);
 
 void ObjCharTransfer_Init(ObjCharTransferTemplate *template) {
     ObjCharTransfer_InitEx(template, GX_GetOBJVRamModeChar(), GXS_GetOBJVRamModeChar());
@@ -109,14 +109,14 @@ void ObjCharTransfer_Destroy(void) {
     if (sObjCharTransferTasksManager != NULL) {
         ObjCharTransfer_FreeBlockTransferBuffer(sObjCharTransferTasksManager->blockBufMain);
         ObjCharTransfer_FreeBlockTransferBuffer(sObjCharTransferTasksManager->blockBufSub);
-        sub_020218D4();
+        resetAllTransferTasks();
         FreeToHeap(sObjCharTransferTasksManager->tasks);
         FreeToHeap(sObjCharTransferTasksManager);
         sObjCharTransferTasksManager = NULL;
     }
 }
 
-void sub_020216C8(void) {
+void ObjCharTransfer_ClearBuffers(void) {
     sObjCharTransferTasksManager->offsetMain = 0;
     sObjCharTransferTasksManager->offsetSub = 0;
     ObjCharTransfer_ClearBlockBuf(sObjCharTransferTasksManager->blockBufMain);
@@ -124,23 +124,23 @@ void sub_020216C8(void) {
     ObjCharTransfer_GetVramCapacityByBank();
 }
 
-void sub_020216F4(u32 offset, u32 size, NNS_G2D_VRAM_TYPE vram) {
+void ObjCharTransfer_SetReservedRegion(u32 offset, u32 size, NNS_G2D_VRAM_TYPE vram) {
     int newOffset;
-    int sp4;
+    int newSize;
     if (vram == NNS_G2D_VRAM_TYPE_2DMAIN) {
-        sub_0202256C(sObjCharTransferTasksManager->freeSizeMain, offset, size, &newOffset, &sp4);
-        if (sp4 > 0) {
-            sub_02021EC0(NNS_G2D_VRAM_TYPE_2DMAIN, newOffset, 0, sp4, 0);
+        boundsFixOffsetAndSize(sObjCharTransferTasksManager->freeSizeMain, offset, size, &newOffset, &newSize);
+        if (newSize > 0) {
+            reserveTransferBlocksByVramOffsetAndSize(NNS_G2D_VRAM_TYPE_2DMAIN, newOffset, 0, newSize, 0);
         }
     } else {
-        sub_0202256C(sObjCharTransferTasksManager->freeSizeSub, offset, size, &newOffset, &sp4);
-        if (sp4 > 0) {
-            sub_02021EC0(NNS_G2D_VRAM_TYPE_2DSUB, 0, newOffset, 0, sp4);
+        boundsFixOffsetAndSize(sObjCharTransferTasksManager->freeSizeSub, offset, size, &newOffset, &newSize);
+        if (newSize > 0) {
+            reserveTransferBlocksByVramOffsetAndSize(NNS_G2D_VRAM_TYPE_2DSUB, 0, newOffset, 0, newSize);
         }
     }
 }
 
-BOOL sub_02021758(const ObjCharTransferTaskTemplate *template) {
+BOOL ObjCharTransfer_CreateTaskAndDoTransferFromTemplate(const ObjCharTransferTaskTemplate *template) {
     GF_ASSERT(ObjCharTransfer_TaskExistsByID(template->id) != TRUE);
     ObjCharTransferTask *sub = ObjCharTransfer_GetFreeTask();
     if (sub == NULL) {
@@ -150,15 +150,15 @@ BOOL sub_02021758(const ObjCharTransferTaskTemplate *template) {
     if (!ObjCharTransferTask_InitFromTemplate(template, sub)) {
         return FALSE;
     }
-    if (!sub_02021C9C(sub)) {
-        sub_02021884(sub->resId);
+    if (!ObjCharTransferTask_ReserveAndTransfer(sub)) {
+        ObjCharTransfer_ResetTransferTasksByResID(sub->resId);
         return FALSE;
     }
     ++sObjCharTransferTasksManager->num;
     return TRUE;
 }
 
-BOOL sub_020217B0(const ObjCharTransferTaskTemplate *template) {
+BOOL ObjCharTransfer_CreateTaskAndDoTransferFromTemplate_UpdateMappingTypeFromHW(const ObjCharTransferTaskTemplate *template) {
     GF_ASSERT(ObjCharTransfer_TaskExistsByID(template->id) != TRUE);
     ObjCharTransferTask *sub = ObjCharTransfer_GetFreeTask();
     if (sub == NULL) {
@@ -169,15 +169,15 @@ BOOL sub_020217B0(const ObjCharTransferTaskTemplate *template) {
         return FALSE;
     }
     sub->shouldUpdateMappingTypeFromHW = TRUE;
-    if (!sub_02021C9C(sub)) {
-        sub_02021884(sub->resId);
+    if (!ObjCharTransferTask_ReserveAndTransfer(sub)) {
+        ObjCharTransfer_ResetTransferTasksByResID(sub->resId);
         return FALSE;
     }
     ++sObjCharTransferTasksManager->num;
     return TRUE;
 }
 
-BOOL ObjCharTransfer_TaskExistsByID(int resId) {
+static BOOL ObjCharTransfer_TaskExistsByID(int resId) {
     for (int i = 0; i < sObjCharTransferTasksManager->max; ++i) {
         if (resId == sObjCharTransferTasksManager->tasks[i].resId) {
             return TRUE;
@@ -187,7 +187,7 @@ BOOL ObjCharTransfer_TaskExistsByID(int resId) {
     return FALSE;
 }
 
-void sub_0202183C(int id, NNSG2dCharacterData *charData) {
+void ObjCharTransfer_ReplaceGraphicsFromChardataByResID(int id, NNSG2dCharacterData *charData) {
     GF_ASSERT(charData != NULL);
     ObjCharTransferTask *sub = ObjCharTransfer_GetTaskByID(id);
     GF_ASSERT(sub != NULL);
@@ -200,69 +200,69 @@ void sub_0202183C(int id, NNSG2dCharacterData *charData) {
     }
 }
 
-void sub_02021884(int resId) {
-    ObjCharTransferTask *sub;
-    BOOL r5 = TRUE;
+void ObjCharTransfer_ResetTransferTasksByResID(int resId) {
+    ObjCharTransferTask *task;
+    BOOL searchingCopies = TRUE;
     do {
-        sub = ObjCharTransfer_GetTaskByID(resId);
-        GF_ASSERT(sub != NULL);
-        if (sub->state == 4) {
-            sub_02021A50(&sub->imageProxy);
+        task = ObjCharTransfer_GetTaskByID(resId);
+        GF_ASSERT(task != NULL);
+        if (task->state == OBJ_CHAR_TRANSFER_TASK_COPY) {
+            ObjCharTransfer_DeleteTaskCopyByProxyPtr(&task->imageProxy);
         } else {
-            r5 = FALSE;
+            searchingCopies = FALSE;
         }
-    } while (r5);
-    if (sub->state != 0) {
-        sub_02021D58(sub);
+    } while (searchingCopies);
+    if (task->state != OBJ_CHAR_TRANSFER_TASK_INIT) {
+        ObjCharTransferTask_Reset(task);
         --sObjCharTransferTasksManager->num;
     }
 }
 
-void sub_020218D4(void) {
+static void resetAllTransferTasks(void) {
     for (int i = 0; i < sObjCharTransferTasksManager->max; ++i) {
-        if (sObjCharTransferTasksManager->tasks[i].state != 0) {
-            sub_02021D58(&sObjCharTransferTasksManager->tasks[i]);
+        if (sObjCharTransferTasksManager->tasks[i].state != OBJ_CHAR_TRANSFER_TASK_INIT) {
+            ObjCharTransferTask_Reset(&sObjCharTransferTasksManager->tasks[i]);
             --sObjCharTransferTasksManager->num;
         }
     }
 }
 
-NNSG2dImageProxy *sub_02021910(int resId) {
+NNSG2dImageProxy *ObjCharTransfer_GetProxyPtrByResID(int resId) {
     ObjCharTransferTask *sub = ObjCharTransfer_GetTaskByID(resId);
     GF_ASSERT(sub != NULL);
-    if (sub->state == 0) {
+    if (sub->state == OBJ_CHAR_TRANSFER_TASK_INIT) {
         return NULL;
     }
 
     return &sub->imageProxy;
 }
 
-NNSG2dImageProxy *sub_02021934(int resId, u32 size) {
+NNSG2dImageProxy *ObjCharTransfer_ResizeTaskByResID_GetProxyPtr(int resId, u32 size) {
     ObjCharTransferTask *task = ObjCharTransfer_GetTaskByID(resId);
     GF_ASSERT(task != NULL);
-    if (task->state == 0) {
+    if (task->state == OBJ_CHAR_TRANSFER_TASK_INIT) {
         return NULL;
     }
     u32 offsetMain;
     u32 offsetSub;
     u32 newSizeMain;
     u32 newSizeSub;
-    sub_02021DE4(task->vram, &offsetMain, &offsetSub, size, &newSizeMain, &newSizeSub);
-    if (task->state == 3) {
+    getBlockNumAndFreeSpaceForTransfer(task->vram, &offsetMain, &offsetSub, size, &newSizeMain, &newSizeSub);
+    if (task->state == OBJ_CHAR_TRANSFER_TASK_COPYABLE) {
         return NULL;
     }
-    task->state = 3;
-    sub_02021E90(task, offsetMain, offsetSub);
+    task->state = OBJ_CHAR_TRANSFER_TASK_COPYABLE;
+    ObjCharTransferTask_UpdateBaseAddrs(task, offsetMain, offsetSub);
     task->needResetBlockTransferFlags = TRUE;
     task->sizeMain = newSizeMain;
     task->sizeSub = newSizeSub;
-    sub_02021FB0(task);
-    sub_02021EC0(task->vram, offsetMain, offsetSub, newSizeMain, newSizeSub);
+    ObjCharTransferTask_G2dLoadImageMappingVramTransfer(task);
+    reserveTransferBlocksByVramOffsetAndSize(task->vram, offsetMain, offsetSub, newSizeMain, newSizeSub);
 
     return &task->imageProxy;
 }
 
-NNSG2dImageProxy *sub_020219B8(NNSG2dImageProxy *proxyIn) {
+NNSG2dImageProxy *ObjCharTransfer_CopyTransferTaskByProxyPtr(NNSG2dImageProxy *proxyIn) {
     ObjCharTransferTask *task;
     ObjCharTransferTask *copiedTask;
     u32 offsetMain;
@@ -275,41 +275,41 @@ NNSG2dImageProxy *sub_020219B8(NNSG2dImageProxy *proxyIn) {
     GF_ASSERT(task != NULL);
     copiedTask = ObjCharTransfer_GetFreeTask();
     GF_ASSERT(copiedTask != NULL);
-    if (task->state != 3) {
+    if (task->state != OBJ_CHAR_TRANSFER_TASK_COPYABLE) {
         return NULL;
     }
     *copiedTask = *task;
-    copiedTask->state = 4;
+    copiedTask->state = OBJ_CHAR_TRANSFER_TASK_COPY;
     if (copiedTask->vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
         size = copiedTask->sizeMain;
     } else {
         size = copiedTask->sizeSub;
     }
 
-    sub_02021DE4(copiedTask->vram, &offsetMain, &offsetSub, size, &newSizeMain, &newSizeSub);
-    sub_02021E90(copiedTask, offsetMain, offsetSub);
+    getBlockNumAndFreeSpaceForTransfer(copiedTask->vram, &offsetMain, &offsetSub, size, &newSizeMain, &newSizeSub);
+    ObjCharTransferTask_UpdateBaseAddrs(copiedTask, offsetMain, offsetSub);
     copiedTask->needResetBlockTransferFlags = TRUE;
     copiedTask->sizeMain = newSizeMain;
     copiedTask->sizeSub = newSizeSub;
-    sub_02021FB0(copiedTask);
-    sub_02021EC0(copiedTask->vram, offsetMain, offsetSub, newSizeMain, newSizeSub);
+    ObjCharTransferTask_G2dLoadImageMappingVramTransfer(copiedTask);
+    reserveTransferBlocksByVramOffsetAndSize(copiedTask->vram, offsetMain, offsetSub, newSizeMain, newSizeSub);
 
     return &copiedTask->imageProxy;
 }
 
-void sub_02021A50(const NNSG2dImageProxy *proxy) {
+void ObjCharTransfer_DeleteTaskCopyByProxyPtr(const NNSG2dImageProxy *proxy) {
     int i;
     for (i = 0; i < sObjCharTransferTasksManager->max; ++i) {
-        if ((sObjCharTransferTasksManager->tasks[i].state == 3 || sObjCharTransferTasksManager->tasks[i].state == 4) && &sObjCharTransferTasksManager->tasks[i].imageProxy == proxy)  {
+        if ((sObjCharTransferTasksManager->tasks[i].state == OBJ_CHAR_TRANSFER_TASK_COPYABLE || sObjCharTransferTasksManager->tasks[i].state == OBJ_CHAR_TRANSFER_TASK_COPY) && &sObjCharTransferTasksManager->tasks[i].imageProxy == proxy)  {
             break;
         }
     }
     if (i < sObjCharTransferTasksManager->max) {
         ObjCharTransferTask_ResetBlockTransferFlags(&sObjCharTransferTasksManager->tasks[i]);
-        if (sObjCharTransferTasksManager->tasks[i].state == 3) {
-            sObjCharTransferTasksManager->tasks[i].state = 2;
+        if (sObjCharTransferTasksManager->tasks[i].state == OBJ_CHAR_TRANSFER_TASK_COPYABLE) {
+            sObjCharTransferTasksManager->tasks[i].state = OBJ_CHAR_TRANSFER_TASK_2;
         } else {
-            sObjCharTransferTasksManager->tasks[i].state = 0;
+            sObjCharTransferTasksManager->tasks[i].state = OBJ_CHAR_TRANSFER_TASK_INIT;
             ObjCharTransferTask_Init(&sObjCharTransferTasksManager->tasks[i]);
         }
     }
@@ -322,19 +322,19 @@ BOOL sub_02021AC8(u32 size, BOOL a1, NNS_G2D_VRAM_TYPE vram, UnkStruct_02021AC8 
     u32 sizeSub;
     BOOL ret;
 
-    if (a1 == 0) {
+    if (!a1) {
         ret = ObjCharTransfer_TryGetDestVramOffsets(size, vram, &offsetMain, &offsetSub);
         if (ret) {
             ObjCharTransfer_ReserveVramSpace(size, vram);
             a3->vram = vram;
             a3->size = size;
             a3->offset = vram == NNS_G2D_VRAM_TYPE_2DMAIN ? offsetMain : offsetSub;
-            a3->unk_0A = 0;
+            a3->unk_0A = FALSE;
         }
     } else {
-        ret = sub_02021DE4(vram, &offsetMain, &offsetSub, size, &sizeMain, &sizeSub);
+        ret = getBlockNumAndFreeSpaceForTransfer(vram, &offsetMain, &offsetSub, size, &sizeMain, &sizeSub);
         if (ret) {
-            sub_02021EC0(vram, offsetMain, offsetSub, sizeMain, sizeSub);
+            reserveTransferBlocksByVramOffsetAndSize(vram, offsetMain, offsetSub, sizeMain, sizeSub);
             a3->vram = vram;
             if (vram == NNS_G2D_VRAM_TYPE_2DMAIN) {
                 a3->size = sizeMain;
@@ -343,14 +343,14 @@ BOOL sub_02021AC8(u32 size, BOOL a1, NNS_G2D_VRAM_TYPE vram, UnkStruct_02021AC8 
                 a3->size = sizeSub;
                 a3->offset = offsetSub + sObjCharTransferTasksManager->freeSizeSub;
             }
-            a3->unk_0A = 1;
+            a3->unk_0A = TRUE;
         }
     }
     return ret;
 }
 
 void sub_02021B5C(UnkStruct_02021AC8 *a0) {
-    if (a0->unk_0A != 0) {
+    if (a0->unk_0A) {
         if (a0->vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
             u32 blockMax = ObjCharTransfer_CalcBlockNumLimit(a0->size, sObjCharTransferTasksManager->blockSizeMain);
             u32 blockCur = ObjCharTransfer_CalcBlockNumLimit(a0->offset - sObjCharTransferTasksManager->freeSizeMain, sObjCharTransferTasksManager->blockSizeMain);
@@ -364,47 +364,47 @@ void sub_02021B5C(UnkStruct_02021AC8 *a0) {
     }
 }
 
-ObjCharTransferTasksManager *sub_02021BD0(void) {
+ObjCharTransferTasksManager *ObjCharTransfer_PopTaskManager(void) {
     GF_ASSERT(sObjCharTransferTasksManager != NULL);
     ObjCharTransferTasksManager *ret = sObjCharTransferTasksManager;
     sObjCharTransferTasksManager = NULL;
     return ret;
 }
 
-void sub_02021BEC(ObjCharTransferTasksManager *a0) {
+void ObjCharTransfer_PushTaskManager(ObjCharTransferTasksManager *taskManager) {
     GF_ASSERT(sObjCharTransferTasksManager == NULL);
-    sObjCharTransferTasksManager = a0;
+    sObjCharTransferTasksManager = taskManager;
 }
 
-void ObjCharTransferTask_Init(ObjCharTransferTask *task) {
+static void ObjCharTransferTask_Init(ObjCharTransferTask *task) {
     task->charData = NULL;
     task->vram = NNS_G2D_VRAM_TYPE_NEITHER;
     task->isTransferred = FALSE;
     task->resId = -1;
     task->baseAddrMain = 0;
     task->baseAddrSub = 0;
-    task->state = 0;
+    task->state = OBJ_CHAR_TRANSFER_TASK_INIT;
     task->shouldUpdateMappingTypeFromHW = FALSE;
     NNS_G2dInitImageProxy(&task->imageProxy);
 }
 
-BOOL ObjCharTransferTask_InitFromTemplate(const ObjCharTransferTaskTemplate *template, ObjCharTransferTask *task) {
+static BOOL ObjCharTransferTask_InitFromTemplate(const ObjCharTransferTaskTemplate *template, ObjCharTransferTask *task) {
     task->charData = template->charData;
     task->resId = template->id;
     task->vram = template->vram;
     task->isTransferred = task->charData->characterFmt >> NNS_G2D_VRAMTRANSFERDATA_FLAG_SHIFT;
-    task->unk_44 = template->unk_0C;
+    task->transferFromTail = template->atEnd;
     task->needResetBlockTransferFlags = FALSE;
     task->sizeMain = 0;
     task->sizeSub = 0;
     return TRUE;
 }
 
-ObjCharTransferTask *ObjCharTransfer_GetTaskByImageProxy(const NNSG2dImageProxy *proxyIn) {
+static ObjCharTransferTask *ObjCharTransfer_GetTaskByImageProxy(const NNSG2dImageProxy *proxyIn) {
     int i;
 
     for (i = 0; i < sObjCharTransferTasksManager->max; ++i) {
-        if (sObjCharTransferTasksManager->tasks[i].state != 0 && &sObjCharTransferTasksManager->tasks[i].imageProxy == proxyIn) {
+        if (sObjCharTransferTasksManager->tasks[i].state != OBJ_CHAR_TRANSFER_TASK_INIT && &sObjCharTransferTasksManager->tasks[i].imageProxy == proxyIn) {
             break;
         }
     }
@@ -415,22 +415,22 @@ ObjCharTransferTask *ObjCharTransfer_GetTaskByImageProxy(const NNSG2dImageProxy 
     return &sObjCharTransferTasksManager->tasks[i];
 }
 
-BOOL sub_02021C9C(ObjCharTransferTask *task) {
+static BOOL ObjCharTransferTask_ReserveAndTransfer(ObjCharTransferTask *task) {
     BOOL ret = TRUE;
     if (task->isTransferred) {
-        task->state = 2;
+        task->state = OBJ_CHAR_TRANSFER_TASK_2;
     } else {
-        task->state = 1;
-        if (!task->unk_44) {
-            ret = sub_02021CCC(task);
+        task->state = OBJ_CHAR_TRANSFER_TASK_1;
+        if (!task->transferFromTail) {
+            ret = ObjCharTransferTask_ReserveFromHead(task);
         } else {
-            ret = sub_02021D00(task);
+            ret = ObjCharTransferTask_ReserveFromTail(task);
         }
     }
     return ret;
 }
 
-BOOL sub_02021CCC(ObjCharTransferTask *task) {
+static BOOL ObjCharTransferTask_ReserveFromHead(ObjCharTransferTask *task) {
     u32 offsetMain;
     u32 offsetSub;
     BOOL ret = ObjCharTransfer_TryGetDestVramOffsets(task->charData->szByte, task->vram, &offsetMain, &offsetSub);
@@ -441,31 +441,31 @@ BOOL sub_02021CCC(ObjCharTransferTask *task) {
     return ret;
 }
 
-BOOL sub_02021D00(ObjCharTransferTask *task) {
+static BOOL ObjCharTransferTask_ReserveFromTail(ObjCharTransferTask *task) {
     u32 offsetMain;
     u32 offsetSub;
     u32 sizeMain;
     u32 sizeSub;
-    if (!sub_02021DE4(task->vram, &offsetMain, &offsetSub, task->charData->szByte, &sizeMain, &sizeSub)) {
+    if (!getBlockNumAndFreeSpaceForTransfer(task->vram, &offsetMain, &offsetSub, task->charData->szByte, &sizeMain, &sizeSub)) {
         return FALSE;
     }
-    sub_02021E90(task, offsetMain, offsetSub);
+    ObjCharTransferTask_UpdateBaseAddrs(task, offsetMain, offsetSub);
     task->needResetBlockTransferFlags = TRUE;
     task->sizeMain = sizeMain;
     task->sizeSub = sizeSub;
-    sub_02021F28(task);
-    sub_02021EC0(task->vram, offsetMain, offsetSub, sizeMain, sizeSub);
+    ObjCharTransferTask_G2dLoadImageMapping(task);
+    reserveTransferBlocksByVramOffsetAndSize(task->vram, offsetMain, offsetSub, sizeMain, sizeSub);
     return TRUE;
 }
 
-void sub_02021D58(ObjCharTransferTask *task) {
+static void ObjCharTransferTask_Reset(ObjCharTransferTask *task) {
     if (task->needResetBlockTransferFlags) {
         ObjCharTransferTask_ResetBlockTransferFlags(task);
     }
     ObjCharTransferTask_Init(task);
 }
 
-ObjCharTransferTask *ObjCharTransfer_GetTaskByID(int resId) {
+static ObjCharTransferTask *ObjCharTransfer_GetTaskByID(int resId) {
     for (int i = 0; i < sObjCharTransferTasksManager->max; ++i) {
         if (sObjCharTransferTasksManager->tasks[i].resId == resId) {
             return &sObjCharTransferTasksManager->tasks[i];
@@ -475,7 +475,7 @@ ObjCharTransferTask *ObjCharTransfer_GetTaskByID(int resId) {
     return NULL;
 }
 
-GXOBJVRamModeChar ObjCharTransferTask_SetMappingTypeFromHW(ObjCharTransferTask *task, NNS_G2D_VRAM_TYPE vram) {
+static GXOBJVRamModeChar ObjCharTransferTask_SetMappingTypeFromHW(ObjCharTransferTask *task, NNS_G2D_VRAM_TYPE vram) {
     if (vram == NNS_G2D_VRAM_TYPE_2DMAIN) {
         task->charData->mapingType = GX_GetOBJVRamModeChar();
     } else {
@@ -484,15 +484,15 @@ GXOBJVRamModeChar ObjCharTransferTask_SetMappingTypeFromHW(ObjCharTransferTask *
     return task->charData->mapingType;
 }
 
-void ObjCharTransferTask_SetBaseAddrs(ObjCharTransferTask *task, u32 offsetMain, u32 offsetSub) {
+static void ObjCharTransferTask_SetBaseAddrs(ObjCharTransferTask *task, u32 offsetMain, u32 offsetSub) {
     task->baseAddrMain = offsetMain;
     task->baseAddrSub = offsetSub;
     if (!task->isTransferred) {
-        sub_02021F28(task);
+        ObjCharTransferTask_G2dLoadImageMapping(task);
     }
 }
 
-BOOL sub_02021DE4(int vram, u32 *blockNumMain, u32 *blockNumSub, u32 size, u32 *freeSpaceMain, u32 *freeSpaceSub) {
+static BOOL getBlockNumAndFreeSpaceForTransfer(int vram, u32 *blockNumMain, u32 *blockNumSub, u32 size, u32 *freeSpaceMain, u32 *freeSpaceSub) {
     if (vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
         *freeSpaceMain = ObjCharTransfer_AlignToBlock(size, sObjCharTransferTasksManager->blockSizeMain, TRUE);
         u32 numBlocksUsed = ObjCharTransfer_CalcBlockNumLimit(*freeSpaceMain, sObjCharTransferTasksManager->blockSizeMain);
@@ -516,7 +516,7 @@ BOOL sub_02021DE4(int vram, u32 *blockNumMain, u32 *blockNumSub, u32 size, u32 *
     return TRUE;
 }
 
-void sub_02021E90(ObjCharTransferTask *task, u32 offsetMain, u32 offsetSub) {
+static void ObjCharTransferTask_UpdateBaseAddrs(ObjCharTransferTask *task, u32 offsetMain, u32 offsetSub) {
     if (task->vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
         task->baseAddrMain = offsetMain + sObjCharTransferTasksManager->freeSizeMain;
     }
@@ -525,30 +525,30 @@ void sub_02021E90(ObjCharTransferTask *task, u32 offsetMain, u32 offsetSub) {
     }
 }
 
-void sub_02021EC0(NNS_G2D_VRAM_TYPE vram, u32 offsetMain, u32 offsetSub, u32 sizeMain, u32 sizeSub) {
+static void reserveTransferBlocksByVramOffsetAndSize(NNS_G2D_VRAM_TYPE vram, u32 offsetMain, u32 offsetSub, u32 sizeMain, u32 sizeSub) {
     if (vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
-        u32 r7 = ObjCharTransfer_CalcBlockNumLimit(sizeMain, sObjCharTransferTasksManager->blockSizeMain);
-        u32 r0 = ObjCharTransfer_CalcBlockNumLimit(offsetMain, sObjCharTransferTasksManager->blockSizeMain);
-        ObjCharTransfer_ReserveTransferBlocks(r0, r7, sObjCharTransferTasksManager->blockBufMain);
+        u32 numBlocks = ObjCharTransfer_CalcBlockNumLimit(sizeMain, sObjCharTransferTasksManager->blockSizeMain);
+        u32 blockStart = ObjCharTransfer_CalcBlockNumLimit(offsetMain, sObjCharTransferTasksManager->blockSizeMain);
+        ObjCharTransfer_ReserveTransferBlocks(blockStart, numBlocks, sObjCharTransferTasksManager->blockBufMain);
     }
     if (vram & NNS_G2D_VRAM_TYPE_2DSUB) {
-        u32 r7 = ObjCharTransfer_CalcBlockNumLimit(sizeSub, sObjCharTransferTasksManager->blockSizeSub);
-        u32 r0 = ObjCharTransfer_CalcBlockNumLimit(offsetSub, sObjCharTransferTasksManager->blockSizeSub);
-        ObjCharTransfer_ReserveTransferBlocks(r0, r7, sObjCharTransferTasksManager->blockBufSub);
+        u32 numBlocks = ObjCharTransfer_CalcBlockNumLimit(sizeSub, sObjCharTransferTasksManager->blockSizeSub);
+        u32 blockStart = ObjCharTransfer_CalcBlockNumLimit(offsetSub, sObjCharTransferTasksManager->blockSizeSub);
+        ObjCharTransfer_ReserveTransferBlocks(blockStart, numBlocks, sObjCharTransferTasksManager->blockBufSub);
     }
 }
 
-void sub_02021F28(ObjCharTransferTask *task) {
+static void ObjCharTransferTask_G2dLoadImageMapping(ObjCharTransferTask *task) {
     NNS_G2dInitImageProxy(&task->imageProxy);
     if (task->vram != NNS_G2D_VRAM_TYPE_BOTH) {
-        sub_02021F54(task, task->vram);
+        ObjCharTransferTask_G2dLoadImageMappingByScreen(task, task->vram);
     } else {
-        sub_02021F54(task, NNS_G2D_VRAM_TYPE_2DMAIN);
-        sub_02021F54(task, NNS_G2D_VRAM_TYPE_2DSUB);
+        ObjCharTransferTask_G2dLoadImageMappingByScreen(task, NNS_G2D_VRAM_TYPE_2DMAIN);
+        ObjCharTransferTask_G2dLoadImageMappingByScreen(task, NNS_G2D_VRAM_TYPE_2DSUB);
     }
 }
 
-void sub_02021F54(ObjCharTransferTask *task, NNS_G2D_VRAM_TYPE vram) {
+static void ObjCharTransferTask_G2dLoadImageMappingByScreen(ObjCharTransferTask *task, NNS_G2D_VRAM_TYPE vram) {
     int mappingType = task->shouldUpdateMappingTypeFromHW ? ObjCharTransferTask_SetMappingTypeFromHW(task, vram) : vram;
     u32 baseAddr;
     if (vram == NNS_G2D_VRAM_TYPE_2DMAIN) {
@@ -570,17 +570,17 @@ void sub_02021F54(ObjCharTransferTask *task, NNS_G2D_VRAM_TYPE vram) {
     }
 }
 
-void sub_02021FB0(ObjCharTransferTask *task) {
+static void ObjCharTransferTask_G2dLoadImageMappingVramTransfer(ObjCharTransferTask *task) {
     NNS_G2dInitImageProxy(&task->imageProxy);
     if (task->vram != NNS_G2D_VRAM_TYPE_BOTH) {
-        sub_02021FDC(task, task->vram);
+        ObjCharTransferTask_G2dLoadImageMappingVramTransferByScreen(task, task->vram);
     } else {
-        sub_02021FDC(task, NNS_G2D_VRAM_TYPE_2DMAIN);
-        sub_02021FDC(task, NNS_G2D_VRAM_TYPE_2DSUB);
+        ObjCharTransferTask_G2dLoadImageMappingVramTransferByScreen(task, NNS_G2D_VRAM_TYPE_2DMAIN);
+        ObjCharTransferTask_G2dLoadImageMappingVramTransferByScreen(task, NNS_G2D_VRAM_TYPE_2DSUB);
     }
 }
 
-void sub_02021FDC(ObjCharTransferTask *task, NNS_G2D_VRAM_TYPE vram) {
+static void ObjCharTransferTask_G2dLoadImageMappingVramTransferByScreen(ObjCharTransferTask *task, NNS_G2D_VRAM_TYPE vram) {
     int mappingType = task->shouldUpdateMappingTypeFromHW ? ObjCharTransferTask_SetMappingTypeFromHW(task, vram) : vram;
     #pragma unused(mappingType)
     u32 baseAddr;
@@ -599,9 +599,9 @@ void sub_02021FDC(ObjCharTransferTask *task, NNS_G2D_VRAM_TYPE vram) {
     }
 }
 
-ObjCharTransferTask *ObjCharTransfer_GetFreeTask(void) {
+static ObjCharTransferTask *ObjCharTransfer_GetFreeTask(void) {
     for (int i = 0; i < sObjCharTransferTasksManager->max; ++i) {
-        if (sObjCharTransferTasksManager->tasks[i].state == 0) {
+        if (sObjCharTransferTasksManager->tasks[i].state == OBJ_CHAR_TRANSFER_TASK_INIT) {
             return &sObjCharTransferTasksManager->tasks[i];
         }
     }
@@ -609,7 +609,7 @@ ObjCharTransferTask *ObjCharTransfer_GetFreeTask(void) {
     return NULL;
 }
 
-void ObjCharTransfer_GetVramCapacityByBank(void) {
+static void ObjCharTransfer_GetVramCapacityByBank(void) {
     switch (GX_GetBankForOBJ()) {
     case GX_VRAM_OBJ_NONE:
         sObjCharTransferTasksManager->vramCapacityMain = 0;
@@ -666,12 +666,12 @@ void ObjCharTransfer_GetVramCapacityByBank(void) {
     GF_ASSERT(sObjCharTransferTasksManager->freeSizeMain >= 0 && sObjCharTransferTasksManager->freeSizeSub >= 0);  // they wanted to be doubly sure
 }
 
-void sub_020221B4(void) {
+static void ObjCharTransfer_ClearBothScreensBlockBufs(void) {
     ObjCharTransfer_ClearBlockBuf(sObjCharTransferTasksManager->blockBufMain);
     ObjCharTransfer_ClearBlockBuf(sObjCharTransferTasksManager->blockBufSub);
 }
 
-void ObjCharTransfer_InitBlocksTransferBuffers(u32 numBlocksMain, u32 numBlocksSub, HeapID heapID) {
+static void ObjCharTransfer_InitBlocksTransferBuffers(u32 numBlocksMain, u32 numBlocksSub, HeapID heapID) {
     sObjCharTransferTasksManager->numBlocksMain = numBlocksMain;
     sObjCharTransferTasksManager->numBlocksSub = numBlocksSub;
     if (sObjCharTransferTasksManager->blockBufMain != NULL) {
@@ -686,10 +686,10 @@ void ObjCharTransfer_InitBlocksTransferBuffers(u32 numBlocksMain, u32 numBlocksS
     if (sObjCharTransferTasksManager->numBlocksSub != 0) {
         sObjCharTransferTasksManager->blockBufSub = AllocFromHeap(heapID, numBlocksSub / 8);
     }
-    sub_020221B4();
+    ObjCharTransfer_ClearBothScreensBlockBufs();
 }
 
-void ObjCharTransfer_FreeBlockTransferBuffer(u8 *buffer) {
+static void ObjCharTransfer_FreeBlockTransferBuffer(u8 *buffer) {
     if (buffer != NULL) {
         if (buffer == sObjCharTransferTasksManager->blockBufMain) {
             sObjCharTransferTasksManager->numBlocksMain = 0;
@@ -701,7 +701,7 @@ void ObjCharTransfer_FreeBlockTransferBuffer(u8 *buffer) {
     }
 }
 
-u32 ObjCharTransfer_GetBlocksCountFromBufferPtr(u8 *buffer) {
+static u32 ObjCharTransfer_GetBlocksCountFromBufferPtr(u8 *buffer) {
     if (buffer == sObjCharTransferTasksManager->blockBufMain) {
         return sObjCharTransferTasksManager->numBlocksMain;
     } else {
@@ -709,13 +709,13 @@ u32 ObjCharTransfer_GetBlocksCountFromBufferPtr(u8 *buffer) {
     }
 }
 
-void ObjCharTransfer_ClearBlockBuf(u8 *buff) {
+static void ObjCharTransfer_ClearBlockBuf(u8 *buff) {
     if (buff != NULL) {
         memset(buff, 0, ObjCharTransfer_GetBlocksCountFromBufferPtr(buff) / 8);
     }
 }
 
-void ObjCharTransfer_ReserveTransferBlocks(u32 blockStart, u32 numBlocks, u8 *buffer) {
+static void ObjCharTransfer_ReserveTransferBlocks(u32 blockStart, u32 numBlocks, u8 *buffer) {
     if (buffer != NULL) {
         u32 blocksMax = ObjCharTransfer_GetBlocksCountFromBufferPtr(buffer);
         u32 blockEnd = blockStart + numBlocks;
@@ -733,7 +733,7 @@ void ObjCharTransfer_ReserveTransferBlocks(u32 blockStart, u32 numBlocks, u8 *bu
     }
 }
 
-u32 ObjCharTransfer_FindAvailableTransferBlock(u32 reserveSize, u8 *buffer) {
+static u32 ObjCharTransfer_FindAvailableTransferBlock(u32 reserveSize, u8 *buffer) {
     if (buffer != NULL) {
         u32 blocksMax = ObjCharTransfer_GetBlocksCountFromBufferPtr(buffer);
         for (int i = 0; i < blocksMax; ++i) {
@@ -760,7 +760,7 @@ u32 ObjCharTransfer_FindAvailableTransferBlock(u32 reserveSize, u8 *buffer) {
     return -1;
 }
 
-void ObjCharTransfer_ResetBlockTransferFlagsEx(u32 blockStart, u32 blockMax, u8 *buffer) {
+static void ObjCharTransfer_ResetBlockTransferFlagsEx(u32 blockStart, u32 blockMax, u8 *buffer) {
     if (buffer != NULL) {
         u32 blockEnd = blockStart + blockMax;
         for (int i = blockStart; i < blockEnd; ++i) {
@@ -774,7 +774,7 @@ void ObjCharTransfer_ResetBlockTransferFlagsEx(u32 blockStart, u32 blockMax, u8 
     }
 }
 
-void ObjCharTransferTask_ResetBlockTransferFlags(ObjCharTransferTask *task) {
+static void ObjCharTransferTask_ResetBlockTransferFlags(ObjCharTransferTask *task) {
     if (task->vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
         u32 loc = NNS_G2dGetImageLocation(&task->imageProxy, NNS_G2D_VRAM_TYPE_2DMAIN);
         u32 blockCur = ObjCharTransfer_CalcBlockNumLimit(loc - sObjCharTransferTasksManager->freeSizeMain, sObjCharTransferTasksManager->blockSizeMain);
@@ -805,7 +805,7 @@ int ObjCharTransfer_GetBlockSizeFromMode(GXOBJVRamModeChar mode) {
     }
 }
 
-int ObjCharTransfer_AlignToBlock(int size, int blockSize, BOOL alignRight) {
+static int ObjCharTransfer_AlignToBlock(int size, int blockSize, BOOL alignRight) {
     blockSize *= 32;
     if (size % blockSize) {
         size -= (size % blockSize);
@@ -816,15 +816,15 @@ int ObjCharTransfer_AlignToBlock(int size, int blockSize, BOOL alignRight) {
     return size;
 }
 
-u32 ObjCharTransfer_CalcBlockNumLimit(int size, int blockSize) {
+static u32 ObjCharTransfer_CalcBlockNumLimit(int size, int blockSize) {
     return size / 32 / blockSize;
 }
 
-int ObjCharTransfer_GetBlockMemOffset(int blockNum, int blockSize) {
+static int ObjCharTransfer_GetBlockMemOffset(int blockNum, int blockSize) {
     return blockNum * blockSize * 32;
 }
 
-BOOL ObjCharTransfer_TryGetDestVramOffsets(u32 size, NNS_G2D_VRAM_TYPE vram, u32 *pOffsetMain, u32 *pOffsetSub) {
+static BOOL ObjCharTransfer_TryGetDestVramOffsets(u32 size, NNS_G2D_VRAM_TYPE vram, u32 *pOffsetMain, u32 *pOffsetSub) {
     BOOL result = TRUE;
     if (vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
         if (sObjCharTransferTasksManager->offsetMain + size > sObjCharTransferTasksManager->freeSizeMain) {
@@ -845,7 +845,7 @@ BOOL ObjCharTransfer_TryGetDestVramOffsets(u32 size, NNS_G2D_VRAM_TYPE vram, u32
     return result;
 }
 
-void ObjCharTransfer_ReserveVramSpace(u32 size, NNS_G2D_VRAM_TYPE vram) {
+static void ObjCharTransfer_ReserveVramSpace(u32 size, NNS_G2D_VRAM_TYPE vram) {
     if (vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
         sObjCharTransferTasksManager->offsetMain += size;
         sObjCharTransferTasksManager->offsetMain = ObjCharTransfer_AlignToBlock(sObjCharTransferTasksManager->offsetMain, sObjCharTransferTasksManager->blockSizeMain, 1);
@@ -856,17 +856,17 @@ void ObjCharTransfer_ReserveVramSpace(u32 size, NNS_G2D_VRAM_TYPE vram) {
     }
 }
 
-void ObjCharTransfer_BitPositionToByteAndBitIndexPair(int arrayBitIndex, u32 *byteIndex, u8 *bitIndex) {
+static void ObjCharTransfer_BitPositionToByteAndBitIndexPair(int arrayBitIndex, u32 *byteIndex, u8 *bitIndex) {
     *byteIndex = arrayBitIndex >> 3;
     *bitIndex = arrayBitIndex & 7;
 }
 
-void sub_0202256C(u32 baseOffset, u32 curOffset, u32 size, int *distance, int *a4) {
-    *distance = curOffset - baseOffset;
-    if (*distance < 0) {
-        *a4 = size + *distance;
-        *distance = 0;
+static void boundsFixOffsetAndSize(u32 baseOffset, u32 curOffset, u32 size, int *correctedOffset, int *correctedSize) {
+    *correctedOffset = curOffset - baseOffset;
+    if (*correctedOffset < 0) {
+        *correctedSize = size + *correctedOffset;
+        *correctedOffset = 0;
     } else {
-        *a4 = size;
+        *correctedSize = size;
     }
 }

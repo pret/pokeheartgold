@@ -188,7 +188,7 @@ static void IntroMovie_InitSpriteGraphicsHW(IntroMovieOverlayData *data) {
     ObjCharTransferTemplate sp14 = {10, 0, 0, HEAP_ID_INTRO_MOVIE};
     ObjCharTransfer_Init(&sp14);
     sub_02022588(10, HEAP_ID_INTRO_MOVIE);
-    sub_020216C8();
+    ObjCharTransfer_ClearBuffers();
     sub_02022638();
     NNS_G2dInitOamManagerModule();
     OamManager_Create(0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20, HEAP_ID_INTRO_MOVIE);

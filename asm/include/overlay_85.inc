@@ -140,7 +140,7 @@
 .public sub_02021280
 .public ObjCharTransfer_Init
 .public ObjCharTransfer_Destroy
-.public sub_020216C8
+.public ObjCharTransfer_ClearBuffers
 .public sub_02022588
 .public sub_02022608
 .public sub_02022638

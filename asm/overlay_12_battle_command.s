@@ -851,7 +851,7 @@ _02246A72:
 	bl BattleSystem_GetPokedex
 	bl Pokedex_IsNatDexEnabled
 	str r0, [sp, #0xe0]
-	bl sub_02021BD0
+	bl ObjCharTransfer_PopTaskManager
 	str r0, [r4, #0x54]
 	add r0, sp, #0xd0
 	bl ov18_021F8974
@@ -958,7 +958,7 @@ _02246BC4:
 	ldr r0, [r4, #0x50]
 	bl ov18_021F89D0
 	ldr r0, [r4, #0x54]
-	bl sub_02021BEC
+	bl ObjCharTransfer_PushTaskManager
 	ldr r0, [r4]
 	bl ov12_02237D00
 	mov r0, #0x10
@@ -1307,7 +1307,7 @@ _02246E84:
 	ldr r0, [r4, #0x50]
 	bl ov18_021F89D0
 	ldr r0, [r4, #0x54]
-	bl sub_02021BEC
+	bl ObjCharTransfer_PushTaskManager
 	ldr r0, [r4]
 	bl ov12_02237D00
 _02246EEC:

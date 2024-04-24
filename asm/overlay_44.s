@@ -2266,7 +2266,7 @@ ov44_0222AFE8: ; 0x0222AFE8
 	mov r0, #0x14
 	mov r1, #0x35
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	ldr r1, _0222B02C ; =0x00200010
 	mov r0, #1
@@ -19331,7 +19331,7 @@ ov44_0223376C: ; 0x0223376C
 	mov r0, #4
 	add r1, r6, #0
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	ldr r1, _0223381C ; =0x00200010
 	mov r0, #1

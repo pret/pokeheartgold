@@ -4220,7 +4220,7 @@ ov51_021E7D68: ; 0x021E7D68
 	mov r0, #2
 	mov r1, #0x19
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	mov r0, #0x19
 	bl sub_0200B2E0

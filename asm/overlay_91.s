@@ -7013,7 +7013,7 @@ ov91_0225FA9C: ; 0x0225FA9C
 	mov r0, #0x10
 	add r1, r6, #0
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	ldr r1, _0225FB44 ; =0x00200010
 	mov r0, #1

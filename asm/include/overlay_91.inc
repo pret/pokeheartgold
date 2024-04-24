@@ -115,7 +115,7 @@
 .public sub_02021280
 .public ObjCharTransfer_InitEx
 .public ObjCharTransfer_Destroy
-.public sub_020216C8
+.public ObjCharTransfer_ClearBuffers
 .public sub_02021AC8
 .public sub_02021B5C
 .public sub_02022588

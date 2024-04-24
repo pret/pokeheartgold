@@ -1886,7 +1886,7 @@ ov48_02259688: ; 0x02259688
 	mov r0, #0x20
 	add r1, r6, #0
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	mov r0, #1
 	mov r1, #0x10

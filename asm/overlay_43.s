@@ -1007,7 +1007,7 @@ ov43_0222A690: ; 0x0222A690
 	mov r0, #0x40
 	add r1, r7, #0
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	add r1, r6, #0
 	mov r0, #0x40

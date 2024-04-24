@@ -11,8 +11,8 @@ BOOL sub_0200ACF0(GF_2DGfxResObj *obj) {
     template.charData = GF2DGfxResObj_GetCharDataPtr(obj);
     template.vram = GF2DGfxResObj_GetLoadAddress(obj);
     template.id = GF2DGfxResObj_GetResID(obj);
-    template.unk_0C = FALSE;
-    return sub_02021758(&template);
+    template.atEnd = FALSE;
+    return ObjCharTransfer_CreateTaskAndDoTransferFromTemplate(&template);
 }
 
 void sub_0200AD30(GF_2DGfxResObjList *charResObjList) {
@@ -32,8 +32,8 @@ BOOL sub_0200AD64(GF_2DGfxResObj *obj) {
     template.charData = GF2DGfxResObj_GetCharDataPtr(obj);
     template.vram = GF2DGfxResObj_GetLoadAddress(obj);
     template.id = GF2DGfxResObj_GetResID(obj);
-    template.unk_0C = FALSE;
-    return sub_020217B0(&template);
+    template.atEnd = FALSE;
+    return ObjCharTransfer_CreateTaskAndDoTransferFromTemplate_UpdateMappingTypeFromHW(&template);
 }
 
 BOOL sub_0200ADA4(GF_2DGfxResObj *obj) {
@@ -44,8 +44,8 @@ BOOL sub_0200ADA4(GF_2DGfxResObj *obj) {
     template.charData = GF2DGfxResObj_GetCharDataPtr(obj);
     template.vram = GF2DGfxResObj_GetLoadAddress(obj);
     template.id = GF2DGfxResObj_GetResID(obj);
-    template.unk_0C = TRUE;
-    return sub_02021758(&template);
+    template.atEnd = TRUE;
+    return ObjCharTransfer_CreateTaskAndDoTransferFromTemplate(&template);
 }
 
 void sub_0200ADE4(GF_2DGfxResObjList *charResObjList) {
@@ -65,8 +65,8 @@ BOOL sub_0200AE18(GF_2DGfxResObj *obj) {
     template.charData = GF2DGfxResObj_GetCharDataPtr(obj);
     template.vram = GF2DGfxResObj_GetLoadAddress(obj);
     template.id = GF2DGfxResObj_GetResID(obj);
-    template.unk_0C = TRUE;
-    return sub_020217B0(&template);
+    template.atEnd = TRUE;
+    return ObjCharTransfer_CreateTaskAndDoTransferFromTemplate_UpdateMappingTypeFromHW(&template);
 }
 
 void sub_0200AE58(GF_2DGfxResObjList *charResObjList) {
@@ -83,14 +83,14 @@ void sub_0200AE8C(GF_2DGfxResObj *obj) {
 
     int id = GF2DGfxResObj_GetResID(obj);
     NNSG2dCharacterData *charData = GF2DGfxResObj_GetCharDataPtr(obj);
-    sub_0202183C(id, charData);
+    ObjCharTransfer_ReplaceGraphicsFromChardataByResID(id, charData);
 }
 
 void sub_0200AEB0(GF_2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(obj) == GF_GFX_RES_TYPE_CHAR);
 
-    sub_02021884(GF2DGfxResObj_GetResID(obj));
+    ObjCharTransfer_ResetTransferTasksByResID(GF2DGfxResObj_GetResID(obj));
 }
 
 void sub_0200AED4(GF_2DGfxResObjList *charResObjList) {
@@ -106,7 +106,7 @@ NNSG2dImageProxy *sub_0200AF00(GF_2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(obj) == GF_GFX_RES_TYPE_CHAR);
 
-    return sub_02021910(GF2DGfxResObj_GetResID(obj));
+    return ObjCharTransfer_GetProxyPtrByResID(GF2DGfxResObj_GetResID(obj));
 }
 
 NNSG2dImageProxy *sub_0200AF24(GF_2DGfxResObj *charResObj, GF_2DGfxResObj *cellResObj) {
@@ -119,16 +119,16 @@ NNSG2dImageProxy *sub_0200AF24(GF_2DGfxResObj *charResObj, GF_2DGfxResObj *cellR
 
     int resID = GF2DGfxResObj_GetResID(charResObj);
     NNSG2dCellDataBank *cellData = GF2DGfxResObj_GetCellDataPtr(cellResObj);
-    ret = sub_02021934(resID, cellData->pVramTransferData->szByteMax);
+    ret = ObjCharTransfer_ResizeTaskByResID_GetProxyPtr(resID, cellData->pVramTransferData->szByteMax);
     if (ret == NULL) {
-        ret = sub_020219B8(sub_02021910(resID));
+        ret = ObjCharTransfer_CopyTransferTaskByProxyPtr(ObjCharTransfer_GetProxyPtrByResID(resID));
     }
     return ret;
 }
 
 void sub_0200AF80(const NNSG2dImageProxy *imgProxy) {
     GF_ASSERT(imgProxy != NULL);
-    sub_02021A50(imgProxy);
+    ObjCharTransfer_DeleteTaskCopyByProxyPtr(imgProxy);
 }
 
 BOOL sub_0200AF94(GF_2DGfxResObj *plttResObj) {

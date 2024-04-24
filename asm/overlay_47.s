@@ -484,7 +484,7 @@ ov47_02258BB4: ; 0x02258BB4
 	mov r0, #0x20
 	add r1, r6, #0
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	mov r0, #1
 	mov r1, #0x10

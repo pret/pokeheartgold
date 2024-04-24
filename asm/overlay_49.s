@@ -4327,7 +4327,7 @@ _0225A636:
 	mov r0, #0x18
 	add r1, r6, #0
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	mov r0, #1
 	mov r1, #0x10
@@ -8027,7 +8027,7 @@ ov49_0225C328: ; 0x0225C328
 	ldr r0, [r5, #0x68]
 	add r4, r1, #0
 	bl sub_02024B1C
-	bl sub_02021A50
+	bl ObjCharTransfer_DeleteTaskCopyByProxyPtr
 	ldr r0, [r5, #0x68]
 	bl Sprite_Delete
 	mov r0, #0

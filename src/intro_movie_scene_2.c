@@ -86,7 +86,7 @@ static void IntroMovie_Scene2_Init(IntroMovieOverlayData *data, IntroMovieScene2
     sub_0200FBF4(PM_LCD_TOP, RGB_WHITE);
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_WHITE);
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
-    sub_020216C8();
+    ObjCharTransfer_ClearBuffers();
     sub_02022638();
     gSystem.screensFlipped = FALSE;
     GfGfx_SwapDisplay();

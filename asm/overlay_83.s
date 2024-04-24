@@ -18166,7 +18166,7 @@ ov83_022472DC: ; 0x022472DC
 	mov r0, #0x20
 	mov r1, #0x6b
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	add sp, #0x10
 	pop {r4, pc}

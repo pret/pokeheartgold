@@ -719,7 +719,7 @@ ov52_021E86DC: ; 0x021E86DC
 	mov r0, #0x14
 	mov r1, #0x27
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	add sp, #0x10
 	pop {r4, pc}

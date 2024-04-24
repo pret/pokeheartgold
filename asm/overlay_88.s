@@ -591,7 +591,7 @@ ov88_02258C98: ; 0x02258C98
 	mov r0, #0x20
 	add r1, r6, #0
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	ldr r1, _02258D34 ; =0x00200010
 	mov r0, #1
