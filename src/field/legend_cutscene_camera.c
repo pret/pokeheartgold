@@ -12,7 +12,36 @@
 #include "fielddata/script/scr_seq/event_D17R0110.h"
 #include "demo/legend.naix"
 
-// TODO: state enums
+typedef enum ClearBellAnimationState {
+    CLEAR_BELL_ANIM_STATE_NUL,
+    CLEAR_BELL_ANIM_STATE_RISE_BEGIN,
+    CLEAR_BELL_ANIM_STATE_RISE_WAIT,
+    CLEAR_BELL_ANIM_STATE_IDLE_LOOP,
+    CLEAR_BELL_ANIM_STATE_SHIMMER_BEGIN,
+    CLEAR_BELL_ANIM_STATE_SHIMMER_WAIT,
+} ClearBellAnimationState;
+
+typedef enum LugiaEyeGlimmerTaskState {
+    LUGIA_EYE_GLIMMER_TASK_STATE_RUN,
+    LUGIA_EYE_GLIMMER_TASK_STATE_FINISH,
+} LugiaEyeGlimmerTaskState;
+
+typedef enum UnusedHoOhAnimTaskState {
+    UNUSED_HO_OH_ANIM_TASK_STATE_0,
+    UNUSED_HO_OH_ANIM_TASK_STATE_1,
+    UNUSED_HO_OH_ANIM_TASK_STATE_2,
+} UnusedHoOhAnimTaskState;
+
+typedef enum BirdFinalApproachTaskState {
+    BIRD_FINAL_APPROACH_TASK_STATE_INIT,
+    BIRD_FINAL_APPROACH_TASK_STATE_CORRECT_POS,
+    BIRD_FINAL_APPROACH_TASK_STATE_FLAP_DOWN,
+    BIRD_FINAL_APPROACH_TASK_STATE_DELAY__ALT_ANIM,
+    BIRD_FINAL_APPROACH_TASK_STATE_DELAY__CRY,
+    BIRD_FINAL_APPROACH_TASK_STATE_EXPANDING_CIRCLE_EFFECT,
+    BIRD_FINAL_APPROACH_TASK_STATE_WAIT_AFTER_ANIM,
+    BIRD_FINAL_APPROACH_TASK_STATE_FINISH,
+} BirdFinalApproachTaskState;
 
 typedef struct ClearBellCutsceneCamera {
     Field3dObjectTaskManager *field3dObjectTaskManager;
@@ -58,13 +87,13 @@ typedef struct ClearBellCutscene3dObjectTaskData {
     u8 state;
     u8 shimmerClearBellOnly;
     u16 gameVersion;
-    Field3dModel unk_014;
-    Field3dModel clearBellModel;
+    Field3dModel clearBellRisingModel;
+    Field3dModel clearBellShimmerModel;
     Field3dModel cornerBellModel;
-    Field3DModelAnimation unk_044[3];
-    Field3DModelAnimation clearBellAnims[2];
+    Field3DModelAnimation clearbellRisingAnims[3];
+    Field3DModelAnimation clearBellShimmerAnims[2];
     Field3DModelAnimation cornerBellAnims[1];
-    Field3dObject unk_0BC;
+    Field3dObject clearBellRisingObject;
     Field3dObject clearBellObject;
     Field3dObject cornerBellObjects[4];
     ClearBellCutscene3dObjectTaskData_SoulSilver wavesEffect;
@@ -86,7 +115,7 @@ typedef struct LegendCutsceneLugiaEyeGlimmerTaskData {
 typedef struct BirdFinalApproachTaskData {
     fx32 yDelta;
     fx32 yEnd;
-    u16 beforeFirstFlapDelayTimer;
+    u16 delayTimer;
     u16 animTimer;
     NNSFndAllocator allocator;
     Field3dModel model;
@@ -108,8 +137,8 @@ static void modelAnimListSetFrameIndex(Field3DModelAnimation *animation, u32 num
 static BOOL modelAnimListAdvanceNoLoop(Field3DModelAnimation *animation, u32 num);
 static void modelAnimListAdvanceLooping(Field3DModelAnimation *animation, u32 num);
 static void setBellsModelsActiveFlag(ClearBellCutscene3dObjectTaskData *taskData, int active);
-static void loadEyeGlimmer3dModel(HeapID heapId, FieldSystem *fieldSystem, LegendCutsceneLugiaEyeGlimmerTaskData *a2);
-static void unloadEyeGlimmer3dModel(LegendCutsceneLugiaEyeGlimmerTaskData *a0);
+static void loadEyeGlimmer3dModel(HeapID heapId, FieldSystem *fieldSystem, LegendCutsceneLugiaEyeGlimmerTaskData *taskData);
+static void unloadEyeGlimmer3dModel(LegendCutsceneLugiaEyeGlimmerTaskData *taskData);
 static BOOL Task_LugiaEyeGlimmer(TaskManager *taskman);
 static BOOL ov02_02251320(TaskManager *taskman);
 static BOOL Task_WaitCameraPan(TaskManager *taskman);
@@ -250,13 +279,13 @@ void LegendCutscene_EndClearBellAnim(FieldSystem *fieldSystem) {
 void LegendCutscene_ClearBellRiseFromBag(FieldSystem *fieldSystem) {
     ClearBellCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
     ClearBellCutscene3dObjectTaskData *draw3dTaskData = (ClearBellCutscene3dObjectTaskData *)Field3dObjectTask_GetData(cam->draw3dTask);
-    draw3dTaskData->state = 1;
+    draw3dTaskData->state = CLEAR_BELL_ANIM_STATE_RISE_BEGIN;
 }
 
 void LegendCutscene_ClearBellShimmer(FieldSystem *fieldSystem, u8 shimmerClearBellOnly) {
     ClearBellCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
     ClearBellCutscene3dObjectTaskData *draw3dTaskData = (ClearBellCutscene3dObjectTaskData *)Field3dObjectTask_GetData(cam->draw3dTask);
-    if (draw3dTaskData->state != 3) {
+    if (draw3dTaskData->state != CLEAR_BELL_ANIM_STATE_IDLE_LOOP) {
         GF_ASSERT(FALSE);
         TaskManager_Call(fieldSystem->taskman, Task_WaitShimmerEffectAndRestart, NULL);
         return;
@@ -273,14 +302,14 @@ void ov02_02250B30(FieldSystem *fieldSystem) {
 static void startBellShimmer(FieldSystem *fieldSystem) {
     ClearBellCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
     ClearBellCutscene3dObjectTaskData *taskData = (ClearBellCutscene3dObjectTaskData *)Field3dObjectTask_GetData(cam->draw3dTask);
-    taskData->state = 4;
+    taskData->state = CLEAR_BELL_ANIM_STATE_SHIMMER_BEGIN;
 }
 
 static BOOL Task_WaitShimmerEffectAndRestart(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     ClearBellCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
     ClearBellCutscene3dObjectTaskData *taskData = (ClearBellCutscene3dObjectTaskData *)Field3dObjectTask_GetData(cam->draw3dTask);
-    if (taskData->state == 3) {
+    if (taskData->state == CLEAR_BELL_ANIM_STATE_IDLE_LOOP) {
         startBellShimmer(fieldSystem);
         return TRUE;
     }
@@ -304,36 +333,36 @@ static void Field3dObjectTaskInit_ClearBellCutscene(Field3dObjectTask *task, Fie
     ClearBellCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
     kimonoDanceObjData->gameVersion = cam->gameVersion;
     GF_ExpHeap_FndInitAllocator(&kimonoDanceObjData->allocator, HEAP_ID_4, 0x20);
-    Field3dModel_LoadFromFilesystem(&kimonoDanceObjData->unk_014, NARC_demo_legend, NARC_legend_legend_00000018_NSBMD, HEAP_ID_4);
-    Field3dModel_LoadFromFilesystem(&kimonoDanceObjData->clearBellModel, NARC_demo_legend, NARC_legend_legend_00000025_NSBMD, HEAP_ID_4);
+    Field3dModel_LoadFromFilesystem(&kimonoDanceObjData->clearBellRisingModel, NARC_demo_legend, NARC_legend_legend_00000018_NSBMD, HEAP_ID_4);
+    Field3dModel_LoadFromFilesystem(&kimonoDanceObjData->clearBellShimmerModel, NARC_demo_legend, NARC_legend_legend_00000025_NSBMD, HEAP_ID_4);
     Field3dModel_LoadFromFilesystem(&kimonoDanceObjData->cornerBellModel, NARC_demo_legend, NARC_legend_legend_00000032_NSBMD, HEAP_ID_4);
-    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->unk_044[0], &kimonoDanceObjData->unk_014, NARC_demo_legend, NARC_legend_legend_00000019_NSBCA, HEAP_ID_4, &kimonoDanceObjData->allocator);
-    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->unk_044[1], &kimonoDanceObjData->unk_014, NARC_demo_legend, NARC_legend_legend_00000020_NSBTP, HEAP_ID_4, &kimonoDanceObjData->allocator);
-    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->unk_044[2], &kimonoDanceObjData->unk_014, NARC_demo_legend, NARC_legend_legend_00000021_NSBTA, HEAP_ID_4, &kimonoDanceObjData->allocator);
-    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->clearBellAnims[0], &kimonoDanceObjData->clearBellModel, NARC_demo_legend, NARC_legend_legend_00000026_NSBCA, HEAP_ID_4, &kimonoDanceObjData->allocator);
-    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->clearBellAnims[1], &kimonoDanceObjData->clearBellModel, NARC_demo_legend, NARC_legend_legend_00000027_NSBTA, HEAP_ID_4, &kimonoDanceObjData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->clearbellRisingAnims[0], &kimonoDanceObjData->clearBellRisingModel, NARC_demo_legend, NARC_legend_legend_00000019_NSBCA, HEAP_ID_4, &kimonoDanceObjData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->clearbellRisingAnims[1], &kimonoDanceObjData->clearBellRisingModel, NARC_demo_legend, NARC_legend_legend_00000020_NSBTP, HEAP_ID_4, &kimonoDanceObjData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->clearbellRisingAnims[2], &kimonoDanceObjData->clearBellRisingModel, NARC_demo_legend, NARC_legend_legend_00000021_NSBTA, HEAP_ID_4, &kimonoDanceObjData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->clearBellShimmerAnims[0], &kimonoDanceObjData->clearBellShimmerModel, NARC_demo_legend, NARC_legend_legend_00000026_NSBCA, HEAP_ID_4, &kimonoDanceObjData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->clearBellShimmerAnims[1], &kimonoDanceObjData->clearBellShimmerModel, NARC_demo_legend, NARC_legend_legend_00000027_NSBTA, HEAP_ID_4, &kimonoDanceObjData->allocator);
     Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->cornerBellAnims[0], &kimonoDanceObjData->cornerBellModel, NARC_demo_legend, NARC_legend_legend_00000033_NSBTA, HEAP_ID_4, &kimonoDanceObjData->allocator);
-    Field3dObject_InitFromModel(&kimonoDanceObjData->unk_0BC, &kimonoDanceObjData->unk_014);
-    Field3dObject_InitFromModel(&kimonoDanceObjData->clearBellObject, &kimonoDanceObjData->clearBellModel);
-    Field3dObject_AddAnimation(&kimonoDanceObjData->unk_0BC, &kimonoDanceObjData->unk_044[0]);
-    Field3dObject_AddAnimation(&kimonoDanceObjData->unk_0BC, &kimonoDanceObjData->unk_044[1]);
-    Field3dObject_AddAnimation(&kimonoDanceObjData->unk_0BC, &kimonoDanceObjData->unk_044[2]);
-    Field3dObject_AddAnimation(&kimonoDanceObjData->clearBellObject, &kimonoDanceObjData->clearBellAnims[0]);
-    Field3dObject_AddAnimation(&kimonoDanceObjData->clearBellObject, &kimonoDanceObjData->clearBellAnims[1]);
-    Field3dObject_SetActiveFlag(&kimonoDanceObjData->unk_0BC, FALSE);
+    Field3dObject_InitFromModel(&kimonoDanceObjData->clearBellRisingObject, &kimonoDanceObjData->clearBellRisingModel);
+    Field3dObject_InitFromModel(&kimonoDanceObjData->clearBellObject, &kimonoDanceObjData->clearBellShimmerModel);
+    Field3dObject_AddAnimation(&kimonoDanceObjData->clearBellRisingObject, &kimonoDanceObjData->clearbellRisingAnims[0]);
+    Field3dObject_AddAnimation(&kimonoDanceObjData->clearBellRisingObject, &kimonoDanceObjData->clearbellRisingAnims[1]);
+    Field3dObject_AddAnimation(&kimonoDanceObjData->clearBellRisingObject, &kimonoDanceObjData->clearbellRisingAnims[2]);
+    Field3dObject_AddAnimation(&kimonoDanceObjData->clearBellObject, &kimonoDanceObjData->clearBellShimmerAnims[0]);
+    Field3dObject_AddAnimation(&kimonoDanceObjData->clearBellObject, &kimonoDanceObjData->clearBellShimmerAnims[1]);
+    Field3dObject_SetActiveFlag(&kimonoDanceObjData->clearBellRisingObject, FALSE);
     Field3dObject_SetActiveFlag(&kimonoDanceObjData->clearBellObject, FALSE);
     for (u8 i = 0; i < 4; ++i) {
         Field3dObject_InitFromModel(&kimonoDanceObjData->cornerBellObjects[i], &kimonoDanceObjData->cornerBellModel);
         Field3dObject_AddAnimation(&kimonoDanceObjData->cornerBellObjects[i], &kimonoDanceObjData->cornerBellAnims[0]);
         Field3dObject_SetActiveFlag(&kimonoDanceObjData->cornerBellObjects[i], FALSE);
     }
-    modelAnimListSetFrameIndex(kimonoDanceObjData->unk_044, 3, 0);
-    modelAnimListSetFrameIndex(kimonoDanceObjData->clearBellAnims, 2, 0);
+    modelAnimListSetFrameIndex(kimonoDanceObjData->clearbellRisingAnims, 3, 0);
+    modelAnimListSetFrameIndex(kimonoDanceObjData->clearBellShimmerAnims, 2, 0);
     modelAnimListSetFrameIndex(kimonoDanceObjData->cornerBellAnims, 1, 0);
 
     VecFx32 pos;
     MapObject_GetPositionVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &pos);
-    Field3dObj_SetPosEx(&kimonoDanceObjData->unk_0BC, pos.x, pos.y, pos.z);
+    Field3dObj_SetPosEx(&kimonoDanceObjData->clearBellRisingObject, pos.x, pos.y, pos.z);
     Field3dObj_SetPosEx(&kimonoDanceObjData->clearBellObject, pos.x, pos.y, pos.z);
     if (kimonoDanceObjData->gameVersion == VERSION_SOULSILVER) {
         Field3dObj_SetPosEx(&kimonoDanceObjData->cornerBellObjects[0], pos.x + FX32_CONST(128), pos.y + FX32_CONST(32), pos.z - FX32_CONST(180));
@@ -352,19 +381,19 @@ static void Field3dObjectTaskInit_ClearBellCutscene(Field3dObjectTask *task, Fie
         kimonoDanceObjData->cameraParam = sCameraParam_HeartGold;
         kimonoDanceObjData->cameraOffset = sCameraOffset_HeartGold;
     }
-    kimonoDanceObjData->state = 0;
+    kimonoDanceObjData->state = CLEAR_BELL_ANIM_STATE_NUL;
 }
 
 static void Field3dObjectTaskDestroy_ClearBellCutscene(Field3dObjectTask *task, FieldSystem *fieldSystem, void *taskData) {
     ClearBellCutscene3dObjectTaskData *cutsceneData = (ClearBellCutscene3dObjectTaskData *)taskData;
-    Field3dModelAnimation_Unload(&cutsceneData->unk_044[2], &cutsceneData->allocator);
-    Field3dModelAnimation_Unload(&cutsceneData->unk_044[1], &cutsceneData->allocator);
-    Field3dModelAnimation_Unload(&cutsceneData->unk_044[0], &cutsceneData->allocator);
-    Field3dModelAnimation_Unload(&cutsceneData->clearBellAnims[1], &cutsceneData->allocator);
-    Field3dModelAnimation_Unload(&cutsceneData->clearBellAnims[0], &cutsceneData->allocator);
+    Field3dModelAnimation_Unload(&cutsceneData->clearbellRisingAnims[2], &cutsceneData->allocator);
+    Field3dModelAnimation_Unload(&cutsceneData->clearbellRisingAnims[1], &cutsceneData->allocator);
+    Field3dModelAnimation_Unload(&cutsceneData->clearbellRisingAnims[0], &cutsceneData->allocator);
+    Field3dModelAnimation_Unload(&cutsceneData->clearBellShimmerAnims[1], &cutsceneData->allocator);
+    Field3dModelAnimation_Unload(&cutsceneData->clearBellShimmerAnims[0], &cutsceneData->allocator);
     Field3dModelAnimation_Unload(&cutsceneData->cornerBellAnims[0], &cutsceneData->allocator);
-    Field3dModel_Unload(&cutsceneData->unk_014);
-    Field3dModel_Unload(&cutsceneData->clearBellModel);
+    Field3dModel_Unload(&cutsceneData->clearBellRisingModel);
+    Field3dModel_Unload(&cutsceneData->clearBellShimmerModel);
     Field3dModel_Unload(&cutsceneData->cornerBellModel);
 }
 
@@ -372,35 +401,35 @@ static void Field3dObjectTaskUpdate_ClearBellCutscene(Field3dObjectTask *task, s
     ClearBellCutscene3dObjectTaskData *cutsceneData = (ClearBellCutscene3dObjectTaskData *)taskData;
 
     switch (cutsceneData->state) {
-    case 0:
+    case CLEAR_BELL_ANIM_STATE_NUL:
         break;
-    case 1:
-        Field3dObject_SetActiveFlag(&cutsceneData->unk_0BC, TRUE);
-        cutsceneData->state = 2;
+    case CLEAR_BELL_ANIM_STATE_RISE_BEGIN:
+        Field3dObject_SetActiveFlag(&cutsceneData->clearBellRisingObject, TRUE);
+        cutsceneData->state = CLEAR_BELL_ANIM_STATE_RISE_WAIT;
         break;
-    case 2:
-        if (modelAnimListAdvanceNoLoop(cutsceneData->unk_044, 3)) {
+    case CLEAR_BELL_ANIM_STATE_RISE_WAIT:
+        if (modelAnimListAdvanceNoLoop(cutsceneData->clearbellRisingAnims, 3)) {
             bellShimmerReplaceGraphics(cutsceneData);
-            cutsceneData->state = 3;
+            cutsceneData->state = CLEAR_BELL_ANIM_STATE_IDLE_LOOP;
         }
         break;
-    case 3:
-        modelAnimListAdvanceLooping(cutsceneData->unk_044, 3);
+    case CLEAR_BELL_ANIM_STATE_IDLE_LOOP:
+        modelAnimListAdvanceLooping(cutsceneData->clearbellRisingAnims, 3);
         break;
-    case 4:
-        Field3dObject_SetActiveFlag(&cutsceneData->unk_0BC, FALSE);
-        setBellsModelsActiveFlag(cutsceneData, 1);
-        modelAnimListSetFrameIndex(cutsceneData->clearBellAnims, 2, 0);
+    case CLEAR_BELL_ANIM_STATE_SHIMMER_BEGIN:
+        Field3dObject_SetActiveFlag(&cutsceneData->clearBellRisingObject, FALSE);
+        setBellsModelsActiveFlag(cutsceneData, TRUE);
+        modelAnimListSetFrameIndex(cutsceneData->clearBellShimmerAnims, 2, 0);
         modelAnimListSetFrameIndex(cutsceneData->cornerBellAnims, 1, 0);
-        cutsceneData->state = 5;
+        cutsceneData->state = CLEAR_BELL_ANIM_STATE_SHIMMER_WAIT;
         break;
-    case 5:
-        modelAnimListAdvanceLooping(cutsceneData->unk_044, 3);
+    case CLEAR_BELL_ANIM_STATE_SHIMMER_WAIT:
+        modelAnimListAdvanceLooping(cutsceneData->clearbellRisingAnims, 3);
         modelAnimListAdvanceNoLoop(cutsceneData->cornerBellAnims, 1);
-        if (modelAnimListAdvanceNoLoop(cutsceneData->clearBellAnims, 2)) {
-            setBellsModelsActiveFlag(cutsceneData, 0);
-            Field3dObject_SetActiveFlag(&cutsceneData->unk_0BC, TRUE);
-            cutsceneData->state = 3;
+        if (modelAnimListAdvanceNoLoop(cutsceneData->clearBellShimmerAnims, 2)) {
+            setBellsModelsActiveFlag(cutsceneData, FALSE);
+            Field3dObject_SetActiveFlag(&cutsceneData->clearBellRisingObject, TRUE);
+            cutsceneData->state = CLEAR_BELL_ANIM_STATE_IDLE_LOOP;
         }
         break;
     }
@@ -409,7 +438,7 @@ static void Field3dObjectTaskUpdate_ClearBellCutscene(Field3dObjectTask *task, s
 static void Field3dObjectTaskRender_ClearBellCutscene(Field3dObjectTask *task, struct FieldSystem *fieldSystem, void *taskData) {
     ClearBellCutscene3dObjectTaskData *clearBell = (ClearBellCutscene3dObjectTaskData *)taskData;
 
-    Field3dObj_Draw(&clearBell->unk_0BC);
+    Field3dObj_Draw(&clearBell->clearBellRisingObject);
     Field3dObj_Draw(&clearBell->clearBellObject);
     for (u8 i = 0; i < 4; ++i) {
         Field3dObj_Draw(&clearBell->cornerBellObjects[i]);
@@ -417,19 +446,19 @@ static void Field3dObjectTaskRender_ClearBellCutscene(Field3dObjectTask *task, s
 }
 
 static void bellShimmerReplaceGraphics(ClearBellCutscene3dObjectTaskData *taskData) {
-    Field3dObject_RemoveAnimation(&taskData->unk_0BC, &taskData->unk_044[0]);
-    Field3dObject_RemoveAnimation(&taskData->unk_0BC, &taskData->unk_044[1]);
-    Field3dObject_RemoveAnimation(&taskData->unk_0BC, &taskData->unk_044[2]);
-    Field3dModelAnimation_Unload(&taskData->unk_044[2], &taskData->allocator);
-    Field3dModelAnimation_Unload(&taskData->unk_044[1], &taskData->allocator);
-    Field3dModelAnimation_Unload(&taskData->unk_044[0], &taskData->allocator);
-    Field3dModelAnimation_LoadFromFilesystem(&taskData->unk_044[0], &taskData->unk_014, NARC_demo_legend, NARC_legend_legend_00000022_NSBCA, HEAP_ID_4, &taskData->allocator);
-    Field3dModelAnimation_LoadFromFilesystem(&taskData->unk_044[1], &taskData->unk_014, NARC_demo_legend, NARC_legend_legend_00000023_NSBTP, HEAP_ID_4, &taskData->allocator);
-    Field3dModelAnimation_LoadFromFilesystem(&taskData->unk_044[2], &taskData->unk_014, NARC_demo_legend, NARC_legend_legend_00000024_NSBTA, HEAP_ID_4, &taskData->allocator);
-    Field3dObject_AddAnimation(&taskData->unk_0BC, &taskData->unk_044[0]);
-    Field3dObject_AddAnimation(&taskData->unk_0BC, &taskData->unk_044[1]);
-    Field3dObject_AddAnimation(&taskData->unk_0BC, &taskData->unk_044[2]);
-    modelAnimListSetFrameIndex(taskData->unk_044, 3, 0);
+    Field3dObject_RemoveAnimation(&taskData->clearBellRisingObject, &taskData->clearbellRisingAnims[0]);
+    Field3dObject_RemoveAnimation(&taskData->clearBellRisingObject, &taskData->clearbellRisingAnims[1]);
+    Field3dObject_RemoveAnimation(&taskData->clearBellRisingObject, &taskData->clearbellRisingAnims[2]);
+    Field3dModelAnimation_Unload(&taskData->clearbellRisingAnims[2], &taskData->allocator);
+    Field3dModelAnimation_Unload(&taskData->clearbellRisingAnims[1], &taskData->allocator);
+    Field3dModelAnimation_Unload(&taskData->clearbellRisingAnims[0], &taskData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&taskData->clearbellRisingAnims[0], &taskData->clearBellRisingModel, NARC_demo_legend, NARC_legend_legend_00000022_NSBCA, HEAP_ID_4, &taskData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&taskData->clearbellRisingAnims[1], &taskData->clearBellRisingModel, NARC_demo_legend, NARC_legend_legend_00000023_NSBTP, HEAP_ID_4, &taskData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&taskData->clearbellRisingAnims[2], &taskData->clearBellRisingModel, NARC_demo_legend, NARC_legend_legend_00000024_NSBTA, HEAP_ID_4, &taskData->allocator);
+    Field3dObject_AddAnimation(&taskData->clearBellRisingObject, &taskData->clearbellRisingAnims[0]);
+    Field3dObject_AddAnimation(&taskData->clearBellRisingObject, &taskData->clearbellRisingAnims[1]);
+    Field3dObject_AddAnimation(&taskData->clearBellRisingObject, &taskData->clearbellRisingAnims[2]);
+    modelAnimListSetFrameIndex(taskData->clearbellRisingAnims, 3, 0);
 }
 
 static void modelAnimListSetFrameIndex(Field3DModelAnimation *animation, u32 num, fx32 frame) {
@@ -464,31 +493,31 @@ static void setBellsModelsActiveFlag(ClearBellCutscene3dObjectTaskData *taskData
     }
 }
 
-static void loadEyeGlimmer3dModel(HeapID heapId, FieldSystem *fieldSystem, LegendCutsceneLugiaEyeGlimmerTaskData *a2) {
-    GF_ExpHeap_FndInitAllocator(&a2->allocator, heapId, 0x20);
-    Field3dModel_LoadFromFilesystem(&a2->model, NARC_demo_legend, NARC_legend_legend_00000028_NSBMD, heapId);
-    Field3dModelAnimation_LoadFromFilesystem(&a2->anims[0], &a2->model, NARC_demo_legend, NARC_legend_legend_00000029_NSBMA, heapId, &a2->allocator);
-    Field3dModelAnimation_LoadFromFilesystem(&a2->anims[1], &a2->model, NARC_demo_legend, NARC_legend_legend_00000030_NSBTP, heapId, &a2->allocator);
-    Field3dModelAnimation_LoadFromFilesystem(&a2->anims[2], &a2->model, NARC_demo_legend, NARC_legend_legend_00000031_NSBCA, heapId, &a2->allocator);
-    Field3dObject_InitFromModel(&a2->object, &a2->model);
-    Field3dObject_AddAnimation(&a2->object, &a2->anims[0]);
-    Field3dObject_AddAnimation(&a2->object, &a2->anims[1]);
-    Field3dObject_AddAnimation(&a2->object, &a2->anims[2]);
-    modelAnimListSetFrameIndex(a2->anims, 3, 0);
+static void loadEyeGlimmer3dModel(HeapID heapId, FieldSystem *fieldSystem, LegendCutsceneLugiaEyeGlimmerTaskData *taskData) {
+    GF_ExpHeap_FndInitAllocator(&taskData->allocator, heapId, 0x20);
+    Field3dModel_LoadFromFilesystem(&taskData->model, NARC_demo_legend, NARC_legend_legend_00000028_NSBMD, heapId);
+    Field3dModelAnimation_LoadFromFilesystem(&taskData->anims[0], &taskData->model, NARC_demo_legend, NARC_legend_legend_00000029_NSBMA, heapId, &taskData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&taskData->anims[1], &taskData->model, NARC_demo_legend, NARC_legend_legend_00000030_NSBTP, heapId, &taskData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&taskData->anims[2], &taskData->model, NARC_demo_legend, NARC_legend_legend_00000031_NSBCA, heapId, &taskData->allocator);
+    Field3dObject_InitFromModel(&taskData->object, &taskData->model);
+    Field3dObject_AddAnimation(&taskData->object, &taskData->anims[0]);
+    Field3dObject_AddAnimation(&taskData->object, &taskData->anims[1]);
+    Field3dObject_AddAnimation(&taskData->object, &taskData->anims[2]);
+    modelAnimListSetFrameIndex(taskData->anims, 3, 0);
 
     VecFx32 pos;
     MapObject_GetPositionVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &pos);
     pos.y += FX32_CONST(100);
     pos.z -= FX32_CONST(350);
-    Field3dObj_SetPosEx(&a2->object, pos.x, pos.y, pos.z);
-    Field3dObject_SetActiveFlag(&a2->object, TRUE);
+    Field3dObj_SetPosEx(&taskData->object, pos.x, pos.y, pos.z);
+    Field3dObject_SetActiveFlag(&taskData->object, TRUE);
 }
 
-static void unloadEyeGlimmer3dModel(LegendCutsceneLugiaEyeGlimmerTaskData *a0) {
-    Field3dModelAnimation_Unload(&a0->anims[2], &a0->allocator);
-    Field3dModelAnimation_Unload(&a0->anims[1], &a0->allocator);
-    Field3dModelAnimation_Unload(&a0->anims[0], &a0->allocator);
-    Field3dModel_Unload(&a0->model);
+static void unloadEyeGlimmer3dModel(LegendCutsceneLugiaEyeGlimmerTaskData *taskData) {
+    Field3dModelAnimation_Unload(&taskData->anims[2], &taskData->allocator);
+    Field3dModelAnimation_Unload(&taskData->anims[1], &taskData->allocator);
+    Field3dModelAnimation_Unload(&taskData->anims[0], &taskData->allocator);
+    Field3dModel_Unload(&taskData->model);
 }
 
 static BOOL Task_LugiaEyeGlimmer(TaskManager *taskman) {
@@ -496,7 +525,7 @@ static BOOL Task_LugiaEyeGlimmer(TaskManager *taskman) {
     u32 *pState = TaskManager_GetStatePtr(taskman);
 
     switch (*pState) {
-    case 0:
+    case LUGIA_EYE_GLIMMER_TASK_STATE_RUN:
         ++unk->eyeGlimmerDelayTimer;
         if (unk->eyeGlimmerDelayTimer == 2) {
             PlaySE(SEQ_SE_GS_RUGIA_MENOHIKARI);
@@ -506,7 +535,7 @@ static BOOL Task_LugiaEyeGlimmer(TaskManager *taskman) {
         }
         Field3dObj_Draw(&unk->object);
         break;
-    case 1:
+    case LUGIA_EYE_GLIMMER_TASK_STATE_FINISH:
         unloadEyeGlimmer3dModel(unk);
         FreeToHeap(unk);
         return TRUE;
@@ -526,19 +555,19 @@ static BOOL ov02_02251320(TaskManager *taskman) {
     ClearBellCutscene3dObjectTaskData *taskData = Field3dObjectTask_GetData(cam->draw3dTask);
 
     switch (*pState) {
-    case 0:
+    case UNUSED_HO_OH_ANIM_TASK_STATE_0:
         renderObj = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, taskData->birdModelNum);
         for (i = 0; i < 2; ++i) {
             ov01_021E8970(taskData->birdModelNum, i, 1, renderObj, fieldSystem->unk54);
         }
         for (i = 0; i < 2; ++i) {
-            void *r7 = ov01_021E8B04(taskData->birdModelNum, i, fieldSystem->unk54);
-            ov01_021E8B84(r7, 1);
-            ov01_021E8B6C(r7);
+            UnkStruct_ov01_021E8B04 *anim = ov01_021E8B04(taskData->birdModelNum, i, fieldSystem->unk54);
+            ov01_021E8B84(anim, 1);
+            ov01_021E8B6C(anim);
         }
-        *pState = 1;
+        *pState = UNUSED_HO_OH_ANIM_TASK_STATE_1;
         break;
-    case 1:
+    case UNUSED_HO_OH_ANIM_TASK_STATE_1:
         renderObj = Field3dObjectList_GetRenderObjectByID(fieldSystem->unkC0, taskData->birdModelNum);
         if (ov01_021E8B90(ov01_021E8B04(taskData->birdModelNum, 0, fieldSystem->unk54))) {
             for (i = 0; i < 2; ++i) {
@@ -547,10 +576,10 @@ static BOOL ov02_02251320(TaskManager *taskman) {
             for (i = 0; i < 2; ++i) {
                 ov01_021E8970(taskData->birdModelNum, i + 2, 1, renderObj, fieldSystem->unk54);
             }
-            *pState = 2;
+            *pState = UNUSED_HO_OH_ANIM_TASK_STATE_2;
         }
         break;
-    case 2:
+    case UNUSED_HO_OH_ANIM_TASK_STATE_2:
         return TRUE;
     }
 
@@ -576,26 +605,26 @@ void LegendCutscene_MoveCamera(FieldSystem *fieldSystem, u8 whichScene) {
     Camera_GetAngle(fieldSystem->camera);
 }
 
-void LegendCutscene_StartPanCameraTo(FieldSystem *fieldSystem, u8 a1) {
+void LegendCutscene_StartPanCameraTo(FieldSystem *fieldSystem, u8 destination) {
     int duration;
     ClearBellCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
     ClearBellCutscene3dObjectTaskData *taskData = (ClearBellCutscene3dObjectTaskData *)Field3dObjectTask_GetData(cam->draw3dTask);
 
     CameraTranslationPathTemplate template;
-    int whichPoint = a1 == 0 ? 0 : 3;
+    int whichPoint = destination == 0 ? 0 : 3;
 
     template.angleX = taskData->cameraParam[whichPoint].angle.x;
     template.perspectiveAngle = taskData->cameraParam[whichPoint].perspective;
     template.position = taskData->cameraOffset[whichPoint];
     template.distance = taskData->cameraParam[whichPoint].distance;
     if (cam->gameVersion == VERSION_HEARTGOLD) {
-        if (a1 == 0) {
+        if (destination == 0) {
             duration = 200;
         } else {
             duration = 20;
         }
     } else {
-        if (a1 == 0) {
+        if (destination == 0) {
             duration = 160;
         } else {
             duration = 200;
@@ -634,10 +663,10 @@ static BOOL Task_BirdFinalApproach(TaskManager *taskman) {
     int mapObjectId;
     LocalMapObject *mapObject;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
-    BirdFinalApproachTaskData *unk = (BirdFinalApproachTaskData *)TaskManager_GetEnvironment(taskman);
+    BirdFinalApproachTaskData *taskData = (BirdFinalApproachTaskData *)TaskManager_GetEnvironment(taskman);
     u32 *pState = TaskManager_GetStatePtr(taskman);
 
-    if (unk->gameVersion == VERSION_SOULSILVER) {
+    if (taskData->gameVersion == VERSION_SOULSILVER) {
         species = SPECIES_LUGIA;
         mapObjectId = obj_D40R0107_lug_obj01;
         firstFlapDelay = 18;
@@ -653,117 +682,117 @@ static BOOL Task_BirdFinalApproach(TaskManager *taskman) {
     GF_ASSERT(mapObject != NULL);
 
     switch (*pState) {
-    case 0:
-        GF_ExpHeap_FndInitAllocator(&unk->allocator, HEAP_ID_4, 0x20);
-        Field3dModel_LoadFromFilesystem(&unk->model, NARC_demo_legend, NARC_legend_legend_00000034_NSBMD, HEAP_ID_4);
-        Field3dModelAnimation_LoadFromFilesystem(&unk->anims[0], &unk->model, NARC_demo_legend, NARC_legend_legend_00000035_NSBCA, HEAP_ID_4, &unk->allocator);
-        Field3dModelAnimation_LoadFromFilesystem(&unk->anims[1], &unk->model, NARC_demo_legend, NARC_legend_legend_00000036_NSBMA, HEAP_ID_4, &unk->allocator);
-        Field3dModelAnimation_LoadFromFilesystem(&unk->anims[2], &unk->model, NARC_demo_legend, NARC_legend_legend_00000037_NSBTP, HEAP_ID_4, &unk->allocator);
-        Field3dObject_InitFromModel(&unk->object, &unk->model);
-        Field3dObject_AddAnimation(&unk->object, &unk->anims[0]);
-        Field3dObject_AddAnimation(&unk->object, &unk->anims[1]);
-        Field3dObject_AddAnimation(&unk->object, &unk->anims[2]);
-        Field3dObject_SetActiveFlag(&unk->object, FALSE);
-        modelAnimListSetFrameIndex(unk->anims,3, 0);
+    case BIRD_FINAL_APPROACH_TASK_STATE_INIT:
+        GF_ExpHeap_FndInitAllocator(&taskData->allocator, HEAP_ID_4, 0x20);
+        Field3dModel_LoadFromFilesystem(&taskData->model, NARC_demo_legend, NARC_legend_legend_00000034_NSBMD, HEAP_ID_4);
+        Field3dModelAnimation_LoadFromFilesystem(&taskData->anims[0], &taskData->model, NARC_demo_legend, NARC_legend_legend_00000035_NSBCA, HEAP_ID_4, &taskData->allocator);
+        Field3dModelAnimation_LoadFromFilesystem(&taskData->anims[1], &taskData->model, NARC_demo_legend, NARC_legend_legend_00000036_NSBMA, HEAP_ID_4, &taskData->allocator);
+        Field3dModelAnimation_LoadFromFilesystem(&taskData->anims[2], &taskData->model, NARC_demo_legend, NARC_legend_legend_00000037_NSBTP, HEAP_ID_4, &taskData->allocator);
+        Field3dObject_InitFromModel(&taskData->object, &taskData->model);
+        Field3dObject_AddAnimation(&taskData->object, &taskData->anims[0]);
+        Field3dObject_AddAnimation(&taskData->object, &taskData->anims[1]);
+        Field3dObject_AddAnimation(&taskData->object, &taskData->anims[2]);
+        Field3dObject_SetActiveFlag(&taskData->object, FALSE);
+        modelAnimListSetFrameIndex(taskData->anims,3, 0);
     {
         VecFx32 pos;
         MapObject_GetPositionVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &pos);
-        if (unk->gameVersion == VERSION_HEARTGOLD) {
+        if (taskData->gameVersion == VERSION_HEARTGOLD) {
             pos.y += FX32_CONST(40);
             pos.z -= FX32_CONST(16);
         } else {
             pos.z -= FX32_CONST(280);
         }
-        Field3dObj_SetPosEx(&unk->object, pos.x, pos.y, pos.z);
+        Field3dObj_SetPosEx(&taskData->object, pos.x, pos.y, pos.z);
     }
         ++(*pState);
         break;
-    case 1:
+    case BIRD_FINAL_APPROACH_TASK_STATE_CORRECT_POS:
     {
         VecFx32 pos;
         MapObject_GetPositionVec(mapObject, &pos);
-        unk->yEnd = pos.y;
-        if (unk->gameVersion == VERSION_HEARTGOLD) {
-            unk->yDelta = FX32_CONST(120);
+        taskData->yEnd = pos.y;
+        if (taskData->gameVersion == VERSION_HEARTGOLD) {
+            taskData->yDelta = FX32_CONST(120);
         } else {
-            unk->yDelta = FX32_CONST(160);
+            taskData->yDelta = FX32_CONST(160);
         }
-        pos.y += unk->yDelta;
+        pos.y += taskData->yDelta;
         MapObject_SetPositionVec(mapObject, &pos);
     }
         MapObject_SetVisible(mapObject, FALSE);
-        unk->beforeFirstFlapDelayTimer = 0;
-        unk->betweenFlapsDelayTimer = 0;
+        taskData->delayTimer = 0;
+        taskData->betweenFlapsDelayTimer = 0;
         ++(*pState);
         break;
-    case 2:
-        ++unk->beforeFirstFlapDelayTimer;
-        if (unk->beforeFirstFlapDelayTimer >= firstFlapDelay) {
-            if (unk->betweenFlapsDelayTimer == 0) {
+    case BIRD_FINAL_APPROACH_TASK_STATE_FLAP_DOWN:
+        ++taskData->delayTimer;
+        if (taskData->delayTimer >= firstFlapDelay) {
+            if (taskData->betweenFlapsDelayTimer == 0) {
                 PlaySE(flapSfx);
-                unk->betweenFlapsDelayTimer = 24;
+                taskData->betweenFlapsDelayTimer = 24;
             }
-            --unk->betweenFlapsDelayTimer;
+            --taskData->betweenFlapsDelayTimer;
         }
     {
         VecFx32 pos;
         BOOL snapped = FALSE;
         MapObject_GetPositionVec(mapObject, &pos);
-        unk->yDelta -= FX32_ONE;
-        if (unk->yDelta <= 0) {
-            unk->yDelta = 0;
+        taskData->yDelta -= FX32_ONE;
+        if (taskData->yDelta <= 0) {
+            taskData->yDelta = 0;
             snapped = TRUE;
         }
-        pos.y = unk->yEnd + unk->yDelta;
+        pos.y = taskData->yEnd + taskData->yDelta;
         MapObject_SetPositionVec(mapObject, &pos);
         if (snapped) {
-            unk->beforeFirstFlapDelayTimer = 0;
+            taskData->delayTimer = 0;
             ++(*pState);
         }
     }
         break;
-    case 3:
-        ++unk->beforeFirstFlapDelayTimer;
-        if (unk->beforeFirstFlapDelayTimer >= 60) {
+    case BIRD_FINAL_APPROACH_TASK_STATE_DELAY__ALT_ANIM:
+        ++taskData->delayTimer;
+        if (taskData->delayTimer >= 60) {
             sub_0205F328(mapObject, 1);
-            unk->beforeFirstFlapDelayTimer = 0;
+            taskData->delayTimer = 0;
             ++(*pState);
         }
         break;
-    case 4:
-        ++unk->beforeFirstFlapDelayTimer;
-        if (unk->beforeFirstFlapDelayTimer >= 50) {
-            Field3dObject_SetActiveFlag(&unk->object, TRUE);
+    case BIRD_FINAL_APPROACH_TASK_STATE_DELAY__CRY:
+        ++taskData->delayTimer;
+        if (taskData->delayTimer >= 50) {
+            Field3dObject_SetActiveFlag(&taskData->object, TRUE);
             PlayCry(species, 0);
-            unk->animTimer = 0;
-            unk->beforeFirstFlapDelayTimer = 0;
+            taskData->animTimer = 0;
+            taskData->delayTimer = 0;
             ++(*pState);
         }
         break;
-    case 5:
+    case BIRD_FINAL_APPROACH_TASK_STATE_EXPANDING_CIRCLE_EFFECT:
     {
-        BOOL animDone = modelAnimListAdvanceNoLoop(unk->anims, 3);
-        ++unk->animTimer;
-        if (animDone && unk->animTimer >= 65) {
+        BOOL animDone = modelAnimListAdvanceNoLoop(taskData->anims, 3);
+        ++taskData->animTimer;
+        if (animDone && taskData->animTimer >= 65) {
             sub_0205F328(mapObject, 0);
-            unk->beforeFirstFlapDelayTimer = 0;
+            taskData->delayTimer = 0;
             ++(*pState);
         }
     }
-        Field3dObj_Draw(&unk->object);
+        Field3dObj_Draw(&taskData->object);
         break;
-    case 6:
-        ++unk->beforeFirstFlapDelayTimer;
-        if (unk->beforeFirstFlapDelayTimer >= 30) {
+    case BIRD_FINAL_APPROACH_TASK_STATE_WAIT_AFTER_ANIM:
+        ++taskData->delayTimer;
+        if (taskData->delayTimer >= 30) {
             ++(*pState);
         }
         break;
-    case 7:
-        Field3dModelAnimation_Unload(&unk->anims[2], &unk->allocator);
-        Field3dModelAnimation_Unload(&unk->anims[1], &unk->allocator);
-        Field3dModelAnimation_Unload(&unk->anims[0], &unk->allocator);
-        Field3dModel_Unload(&unk->model);
-        FreeToHeap(unk);
+    case BIRD_FINAL_APPROACH_TASK_STATE_FINISH:
+        Field3dModelAnimation_Unload(&taskData->anims[2], &taskData->allocator);
+        Field3dModelAnimation_Unload(&taskData->anims[1], &taskData->allocator);
+        Field3dModelAnimation_Unload(&taskData->anims[0], &taskData->allocator);
+        Field3dModel_Unload(&taskData->model);
+        FreeToHeap(taskData);
         return TRUE;
     }
 
