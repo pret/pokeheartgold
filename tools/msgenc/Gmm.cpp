@@ -40,6 +40,7 @@ void GMM::WriteGmmHeader(const string &_filename) {
         switch (c) {
         case '/':
         case '.':
+        case '-':
             c = '_';
             break;
         default:
