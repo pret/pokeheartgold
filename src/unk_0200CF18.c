@@ -72,7 +72,7 @@ BOOL sub_0200CF70(SpriteRenderer* renderer, const Unk122_021E92FC* a1, const Unk
         OamManager_Create(a1->unk0, a1->unk4, a1->unk8, a1->unkC, a1->unk10, a1->unk14, a1->unk18, a1->unk1C, renderer->heapId);
     }
     renderer->cellTransferState = sub_02020654(0x20, renderer->heapId);
-    sub_020216C8();
+    ObjCharTransfer_ClearBuffers();
     sub_02022638();
     return TRUE;
 }
@@ -593,7 +593,7 @@ static BOOL MyUnloadCharById(GF_2DGfxResMan* manager, GF_2DGfxResObjList* list, 
         if (list->obj[i] != NULL) {
             u32 test_id = GF2DGfxResObj_GetResID(list->obj[i]);
             if (test_id == charId) {
-                sub_02021884(charId);
+                ObjCharTransfer_ResetTransferTasksByResID(charId);
                 DestroySingle2DGfxResObj(manager, list->obj[i]);
                 list->obj[i] = NULL;
                 --list->num;

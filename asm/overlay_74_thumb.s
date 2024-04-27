@@ -21710,7 +21710,7 @@ ov74_02231BC0: ; 0x02231BC0
 	mov r0, #0x14
 	mov r1, #0x4c
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	add sp, #0x10
 	pop {r4, pc}
@@ -29373,7 +29373,7 @@ ov74_0223563C: ; 0x0223563C
 	mov r0, #0x1e
 	ldr r1, [r1, #8]
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	add sp, #0x10
 	pop {r4, pc}

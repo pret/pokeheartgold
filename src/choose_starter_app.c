@@ -619,7 +619,7 @@ static void createOamManager(HeapID heapId) {
         ObjCharTransfer_InitEx(&baseTrans, GX_OBJVRAMMODE_CHAR_1D_128K, GX_OBJVRAMMODE_CHAR_1D_32K);
     }
     sub_02022588(3, heapId);
-    sub_020216C8();
+    ObjCharTransfer_ClearBuffers();
     sub_02022638();
 }
 

@@ -329,7 +329,7 @@ ov97_0221E834: ; 0x0221E834
 	mov r0, #0x14
 	mov r1, #0x5c
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	add sp, #0x10
 	pop {r4, pc}

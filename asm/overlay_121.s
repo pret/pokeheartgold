@@ -715,7 +715,7 @@ ov121_021E5EDC: ; 0x021E5EDC
 	mov r0, #1
 	mov r1, #0x9e
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	add sp, #0x10
 	pop {r4, pc}

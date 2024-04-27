@@ -61,8 +61,8 @@
 .public AddTextPrinterParameterizedWithColor
 .public sub_02021AC8
 .public sub_02021B5C
-.public sub_02021BD0
-.public sub_02021BEC
+.public ObjCharTransfer_PopTaskManager
+.public ObjCharTransfer_PushTaskManager
 .public sub_02024AA8
 .public System_GetTouchNew
 .public GF_AssertFail

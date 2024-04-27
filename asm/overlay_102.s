@@ -3660,7 +3660,7 @@ ov102_021E9198: ; 0x021E9198
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
 	bl ObjCharTransfer_Init
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0

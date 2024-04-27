@@ -1652,7 +1652,7 @@ ov41_02246A94: ; 0x02246A94
 	mov r0, #5
 	mov r1, #0xe
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
@@ -9439,7 +9439,7 @@ _0224A3EC:
 	add r1, r4, #0
 	bl ov41_0224639C
 	add r0, r4, #0
-	bl sub_02021884
+	bl ObjCharTransfer_ResetTransferTasksByResID
 	add r4, r4, #1
 	cmp r4, #5
 	blt _0224A3EC

@@ -185,7 +185,7 @@ static void IntroMovie_Scene3_VBlankCB(void *pVoid) {
 
 static void IntroMovie_Scene3_Init(IntroMovieOverlayData *data, IntroMovieScene3Data *sceneData) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
-    sub_020216C8();
+    ObjCharTransfer_ClearBuffers();
     sub_02022638();
     gSystem.screensFlipped = FALSE;
     GfGfx_SwapDisplay();

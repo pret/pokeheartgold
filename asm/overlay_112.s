@@ -18924,7 +18924,7 @@ ov112_021EF19C: ; 0x021EF19C
 	mov r0, #0x14
 	mov r1, #0x9a
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	add sp, #0x10
 	pop {r4, pc}

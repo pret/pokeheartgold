@@ -7805,7 +7805,7 @@ ov96_021E92B0: ; 0x021E92B0
 	add r0, r5, #0
 	add r1, r4, #0
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov96_021E92B0

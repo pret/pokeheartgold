@@ -885,7 +885,7 @@ ov73_021E6060: ; 0x021E6060
 	mov r0, #0x14
 	mov r1, #0x32
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	add sp, #0x10
 	pop {r4, pc}
@@ -5149,7 +5149,7 @@ ov73_021E8168: ; 0x021E8168
 	mov r0, #0x14
 	mov r1, #0x96
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	add sp, #0x10
 	pop {r4, pc}
