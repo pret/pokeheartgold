@@ -45,7 +45,6 @@ Static main
     Object asm/unk_02012DD8.o
     Object asm/unk_02013534.o
     Object src/unk_02013FDC.o
-    Object asm/unk_02013FDC_s.o
     Object src/gf_rtc.o
     Object src/list_menu_items.o
     Object asm/unk_02014A08.o

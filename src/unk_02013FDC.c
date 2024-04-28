@@ -3,12 +3,6 @@
 #include "unk_02007FD8.h"
 #include "constants/species.h"
 
-// decomp temp
-#ifdef static
-#undef static
-#endif
-#define static
-
 static void sub_02013FDC(const u8 *src, u8 *dest, int *pSrcOffset, int *pDestOffset, u32 destBlockSize, u32 srcBlockSize);
 static void sub_0201401C(NarcId narcId, s32 fileId, HeapID heapId, NNSG2dCharacterData **pCharData);
 static void sub_02014050(int x, int y, int width, int height, NNSG2dCharacterData *pCharData, void *dest);
@@ -18,12 +12,6 @@ static void *sub_02014178(NarcId narcId, s32 fileId, HeapID heapId, int x, int y
 static void sub_020142D4(int srcWidth, int srcHeight, int x, int y, int width, int height, int *pDstOffset, const void *src, void *dest);
 static void sub_02014350(int srcWidth, int srcHeight, const UnkStruct_02014E30 *template, int *pDstOffset, const void *src, void *dest);
 static void sub_02014374(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int width, int height, void *dest);
-
-extern const int _020F5F44[2];
-extern const UnkStruct_02014E30 _020F5F6C[6];
-extern const UnkStruct_02014E30 _020F5F4C;
-extern const UnkStruct_02014E30 _020F5FCC[6];
-extern const UnkStruct_02014E30 _020F5F5C;
 
 static void sub_02013FDC(const u8 *src, u8 *dest, int *pSrcOffset, int *pDestOffset, u32 destBlockSize, u32 srcBlockSize) {
     for (int i = 0; i < 8; ++i) {
@@ -69,8 +57,10 @@ static void sub_02014050(int x, int y, int width, int height, NNSG2dCharacterDat
 
 static BOOL sub_020140E8(int species) {
     // This function is held together with scotch tape and rubber bands.
-    int horribleArray[2];
-    ARRAY_ASSIGN(horribleArray, _020F5F44);  // { SPECIES_SPINDA, SPECIES_BAD_EGG }
+    int horribleArray[2] = {
+        SPECIES_SPINDA,
+        SPECIES_BAD_EGG,
+    };
     for (int i = 0; i < SPECIES_BAD_EGG; ++i) {
         int test = horribleArray[i];
         if (test == SPECIES_BAD_EGG) {
@@ -162,8 +152,14 @@ static void sub_02014350(int srcWidth, int srcHeight, const UnkStruct_02014E30 *
 }
 
 static void sub_02014374(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int width, int height, void *dest) {
-    UnkStruct_02014E30 sp1C[6];
-    ARRAY_ASSIGN(sp1C, _020F5F6C);
+    UnkStruct_02014E30 sp1C[6] = {
+        { 0, 0, 8, 8 },
+        { 8, 0, 2, 4 },
+        { 8, 4, 2, 4 },
+        { 0, 8, 4, 2 },
+        { 4, 8, 4, 2 },
+        { 8, 8, 2, 2 },
+    };
 
     int sp18 = 0;
     void *sp14 = sub_02014298(narcId, fileId, heapId, x, y, width, height);
@@ -178,7 +174,7 @@ void sub_020143E0(NarcId narcId, s32 fileId, HeapID heapId, UnkStruct_02014E30 *
 }
 
 void sub_02014400(NarcId narcId, s32 fileId, HeapID heapId, void *dest) {
-    UnkStruct_02014E30 sp4 = _020F5F4C;
+    UnkStruct_02014E30 sp4 = { 0, 0, 10, 10 };
     sub_020143E0(narcId, fileId, heapId, &sp4, dest);
 }
 
@@ -199,8 +195,14 @@ void *sub_02014450(NarcId narcId, s32 fileId, HeapID heapId) {
 }
 
 void sub_02014494(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int width, int height, void *dest, u32 pid, BOOL isAnimated, int whichFacing, int species) {
-    UnkStruct_02014E30 sp2C[6];
-    ARRAY_ASSIGN(sp2C, _020F5FCC);
+    UnkStruct_02014E30 sp2C[6] = {
+        { 0, 0, 8, 8 },
+        { 8, 0, 2, 4 },
+        { 8, 4, 2, 4 },
+        { 0, 8, 4, 2 },
+        { 4, 8, 4, 2 },
+        { 8, 8, 2, 2 },
+    };
 
     int sp28 = 0;
     void *sp24 = sub_02014178(narcId, fileId, heapId, x, y, width, height, pid, isAnimated, whichFacing, species);
@@ -215,7 +217,7 @@ void sub_02014510(NarcId narcId, s32 fileId, HeapID heapId, UnkStruct_02014E30 *
 }
 
 void sub_02014540(NarcId narcId, s32 fileId, HeapID heapId, void *dest, u32 personality, BOOL isAnimated, int whichFacing, int species) {
-    UnkStruct_02014E30 sp14 = _020F5F5C;
+    UnkStruct_02014E30 sp14 = { 0, 0, 10, 10 };
     sub_02014510(narcId, fileId, heapId, &sp14, dest, personality, isAnimated, whichFacing, species);
 }
 
