@@ -22,9 +22,11 @@ typedef struct {
     int z;
 } Vec32;
 
-#define ARRAY_ASSIGN(dest, src) {                         \
-    struct tmp { typeof(*(dest)) _[NELEMS(dest)]; };      \
+#define ARRAY_ASSIGN_EX(dest, src, as_type, count) {      \
+    struct tmp { as_type _[count]; };      \
     *(struct tmp *)&(dest) = *(const struct tmp *)&(src); \
 }
+
+#define ARRAY_ASSIGN(dest, src) ARRAY_ASSIGN_EX(dest, src, typeof(*(dest)), NELEMS(dest))
 
 #endif //POKEHEARTGOLD_GLOBAL_H

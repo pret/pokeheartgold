@@ -15,10 +15,15 @@ static void sub_02014050(int x, int y, int width, int height, NNSG2dCharacterDat
 static BOOL sub_020140E8(int species);
 static void sub_02014128(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int width, int height, void *dest, u32 pid, BOOL isAnimated, int whichFacing, int species);
 static void *sub_02014178(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int width, int height, u32 pid, BOOL isAnimated, int whichFacing, int species);
-static void sub_020142D4(int srcWidth, int a1, int x, int y, int width, int height, int *pDstOffset, const void *src, void *dest);
-static void sub_02014350(int srcWidth, int a1, const UnkStruct_02014E30 *template, int *pDstOffset, const void *src, void *dest);
+static void sub_020142D4(int srcWidth, int srcHeight, int x, int y, int width, int height, int *pDstOffset, const void *src, void *dest);
+static void sub_02014350(int srcWidth, int srcHeight, const UnkStruct_02014E30 *template, int *pDstOffset, const void *src, void *dest);
+static void sub_02014374(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int width, int height, void *dest);
 
 extern const int _020F5F44[2];
+extern const UnkStruct_02014E30 _020F5F6C[6];
+extern const UnkStruct_02014E30 _020F5F4C;
+extern const UnkStruct_02014E30 _020F5FCC[6];
+extern const UnkStruct_02014E30 _020F5F5C;
 
 static void sub_02013FDC(const u8 *src, u8 *dest, int *pSrcOffset, int *pDestOffset, u32 destBlockSize, u32 srcBlockSize) {
     for (int i = 0; i < 8; ++i) {
@@ -131,7 +136,7 @@ void *sub_02014298(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int w
     return ret;
 }
 
-static void sub_020142D4(int srcWidth, int a1, int x, int y, int width, int height, int *pDstOffset, const void *src, void *dest) {
+static void sub_020142D4(int srcWidth, int srcHeight, int x, int y, int width, int height, int *pDstOffset, const void *src, void *dest) {
     int j, i;
     const u8 *srcu8;
     u8 *dstu8;
@@ -152,6 +157,91 @@ static void sub_020142D4(int srcWidth, int a1, int x, int y, int width, int heig
     }
 }
 
-static void sub_02014350(int srcWidth, int a1, const UnkStruct_02014E30 *template, int *pDstOffset, const void *src, void *dest) {
-    sub_020142D4(srcWidth, a1, template->x, template->y, template->w, template->h, pDstOffset, src, dest);
+static void sub_02014350(int srcWidth, int srcHeight, const UnkStruct_02014E30 *template, int *pDstOffset, const void *src, void *dest) {
+    sub_020142D4(srcWidth, srcHeight, template->x, template->y, template->w, template->h, pDstOffset, src, dest);
+}
+
+static void sub_02014374(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int width, int height, void *dest) {
+    UnkStruct_02014E30 sp1C[6];
+    ARRAY_ASSIGN(sp1C, _020F5F6C);
+
+    int sp18 = 0;
+    void *sp14 = sub_02014298(narcId, fileId, heapId, x, y, width, height);
+    for (int i = 0; i < 6; ++i) {
+        sub_02014350(width, height, &sp1C[i], &sp18, sp14, dest);
+    }
+    FreeToHeap(sp14);
+}
+
+void sub_020143E0(NarcId narcId, s32 fileId, HeapID heapId, UnkStruct_02014E30 *a3, void *dest) {
+    sub_02014374(narcId, fileId, heapId, a3->x, a3->y, a3->w, a3->h, dest);
+}
+
+void sub_02014400(NarcId narcId, s32 fileId, HeapID heapId, void *dest) {
+    UnkStruct_02014E30 sp4 = _020F5F4C;
+    sub_020143E0(narcId, fileId, heapId, &sp4, dest);
+}
+
+void *sub_0201442C(NarcId narcId, s32 fileId, HeapID heapId) {
+    void *ret = AllocFromHeap(heapId, 3200);
+    sub_02014400(narcId, fileId, heapId, ret);
+    return ret;
+}
+
+void *sub_02014450(NarcId narcId, s32 fileId, HeapID heapId) {
+    void *ret = AllocFromHeap(heapId, 0x20);
+    void *pNclrFile = AllocAndReadWholeNarcMemberByIdPair(narcId, fileId, heapId);
+    NNSG2dPaletteData *pPlttData;
+    GF_ASSERT(NNS_G2dGetUnpackedPaletteData(pNclrFile, &pPlttData) == TRUE);
+    MI_CpuCopy16(pPlttData->pRawData, ret, 0x20);
+    FreeToHeap(pNclrFile);
+    return ret;
+}
+
+void sub_02014494(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int width, int height, void *dest, u32 pid, BOOL isAnimated, int whichFacing, int species) {
+    UnkStruct_02014E30 sp2C[6];
+    ARRAY_ASSIGN(sp2C, _020F5FCC);
+
+    int sp28 = 0;
+    void *sp24 = sub_02014178(narcId, fileId, heapId, x, y, width, height, pid, isAnimated, whichFacing, species);
+    for (int i = 0; i < 6; ++i) {
+        sub_02014350(width, height, &sp2C[i], &sp28, sp24, dest);
+    }
+    FreeToHeap(sp24);
+}
+
+void sub_02014510(NarcId narcId, s32 fileId, HeapID heapId, UnkStruct_02014E30 *a3, void *dest, u32 personality, BOOL isAnimated, int whichFacing, int species) {
+    sub_02014494(narcId, fileId, heapId, a3->x, a3->y, a3->w, a3->h, dest, personality, isAnimated, whichFacing, species);
+}
+
+void sub_02014540(NarcId narcId, s32 fileId, HeapID heapId, void *dest, u32 personality, BOOL isAnimated, int whichFacing, int species) {
+    UnkStruct_02014E30 sp14 = _020F5F5C;
+    sub_02014510(narcId, fileId, heapId, &sp14, dest, personality, isAnimated, whichFacing, species);
+}
+
+void *sub_0201457C(NarcId narcId, s32 fileId, HeapID heapId, u32 personality, BOOL isAnimated, int whichFacing, int species) {
+    void *ret = AllocFromHeap(heapId, 3200);
+    sub_02014540(narcId, fileId, heapId, ret, personality, isAnimated, whichFacing, species);
+    return ret;
+}
+
+void sub_020145B4(const void *texSrc, int texDim, int x, int y, int w, int h, void *dest) {
+    int srcOffset;
+    int dstOffset;
+    const u8 *srcu8;
+    u8 *dstu8;
+    int srcBlockSize;
+
+    srcu8 = texSrc;
+    dstu8 = dest;
+    srcBlockSize = texDim * 4;
+    srcOffset = 4 * x + y * srcBlockSize;
+    dstOffset = 0;
+
+    for (int i = y; i < y + h; ++i) {
+        for (int j = x; j < x + w; ++j) {
+            srcOffset = j * 4 + i * srcBlockSize * 8;
+            sub_02013FDC(srcu8, dstu8, &srcOffset, &dstOffset, 4, srcBlockSize);
+        }
+    }
 }
