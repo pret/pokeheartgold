@@ -32,7 +32,7 @@
 .public GetBattlerAbility
 .public GetBattlerLearnedMoveCount
 .public DamageDivide
-.public ov12_02253DA0
+.public Battler_GetRandomOpposingBattlerId
 .public GetBattlerHeldItemEffect
 .public GetNaturalGiftType
 .public GetHeldItemFlingPower

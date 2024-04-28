@@ -115,8 +115,8 @@
 .public sub_0203E354
 .public Save_VarsFlags_Get
 .public sub_0208820C
-.public sub_02090C94
-.public sub_02090D0C
+.public EasyChat_CreateArgs
+.public EasyChat_FreeArgs
 .public sub_02090D14
 .public sub_02090D48
 .public sub_02090D50
@@ -140,9 +140,9 @@
 .public ov100_021E5DC8
 .public ov100_021E5EB4
 .public ov100_021E5FDC
-.public ov100_Phone_OvyInit
-.public ov100_Phone_OvyExec
-.public ov100_Phone_OvyExit
+.public Phone_Init
+.public Phone_Main
+.public Phone_Exit
 .public ov100_021E65F4
 .public ov100_021E6914
 .public ov100_021E6950
@@ -176,6 +176,6 @@
 .public ov101_021F4480
 .public ov101_021F44BC
 .public ov101_021F452C
-.public ov102_021E7740
-.public ov102_021E77B8
-.public ov102_021E7868
+.public EasyChat_Init
+.public EasyChat_Main
+.public EasyChat_Exit

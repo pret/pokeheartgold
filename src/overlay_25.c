@@ -163,8 +163,8 @@ void TrainerHouse_StartBattle(FieldSystem *fieldSystem, u32 trainerNum) {
         setup = TrainerHouse_NewBattleSetup(fieldSystem, &trainerHouse->sets[trainerNum]);
     }
     fieldSystem->unkA0 = NULL;
-    u32 effect = sub_020517E8(setup);
-    u32 bgm = sub_020517FC(setup);
+    u32 effect = BattleSetup_GetWildTransitionEffect(setup);
+    u32 bgm = BattleSetup_GetWildBattleMusic(setup);
     u32 *winFlag = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_BATTLE_WIN_FLAG);
     CallTask_020509F0(fieldSystem->taskman, setup, effect, bgm, winFlag);
 }
@@ -226,10 +226,10 @@ BOOL ScrCmd_ShowTrainerHouseIntroMessage(ScriptContext *ctx) {
 
 static BattleSetup *TrainerHouse_NewBattleSetup(FieldSystem *fieldSystem, TrainerHouseSet *set) {
     s32 i;
-    BattleSetup *setup = BattleSetup_New(HEAP_ID_FIELD, BATTLE_TYPE_TRAINER | BATTLE_TYPE_TOWER | BATTLE_TYPE_13);
+    BattleSetup *setup = BattleSetup_New(HEAP_ID_FIELD, BATTLE_TYPE_TRAINER | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_13);
     SaveData *saveData = fieldSystem->saveData;
     Party *party = SaveArray_Party_Get(saveData);
-    sub_02051D18(setup, fieldSystem, saveData, fieldSystem->location->mapId, fieldSystem->unk94, fieldSystem->unkB0);
+    sub_02051D18(setup, fieldSystem, saveData, fieldSystem->location->mapId, fieldSystem->bagCursor, fieldSystem->unkB0);
     setup->battleBg = BATTLE_BG_BUILDING_1;
     setup->terrain = TERRAIN_BUILDING;
     Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD);

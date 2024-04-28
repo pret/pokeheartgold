@@ -41,7 +41,7 @@ _0225883E:
 	ldr r2, [sp, #0x18]
 	add r0, r7, #0
 	add r1, r5, #0
-	bl ov12_02253DA0
+	bl Battler_GetRandomOpposingBattlerId
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	ldr r1, [sp, #0x18]
@@ -19027,7 +19027,7 @@ ov12_02261EB8: ; 0x02261EB8
 	bl BattleSystem_GetBattleContext
 	add r1, r0, #0
 	add r0, r4, #0
-	bl ov12_022581BC
+	bl BattleController_TryEmitExitRecording
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov12_02261EB8
@@ -19042,7 +19042,7 @@ ov12_02261ED4: ; 0x02261ED4
 	bl BattleSystem_GetBattleContext
 	add r1, r0, #0
 	add r0, r4, #0
-	bl ov12_022581BC
+	bl BattleController_TryEmitExitRecording
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov12_02261ED4

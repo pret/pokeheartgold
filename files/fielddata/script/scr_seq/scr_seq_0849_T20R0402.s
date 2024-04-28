@@ -76,7 +76,7 @@ _00B1:
 
 _00E4:
 	buffer_players_name 0
-	scrcmd_727 VAR_SPECIAL_RESULT
+	get_follow_poke_party_index VAR_SPECIAL_RESULT
 	bufferpartymonnick 1, VAR_SPECIAL_RESULT
 	gender_msgbox msg_0549_T20R0402_00015, msg_0549_T20R0402_00016
 	closemsg

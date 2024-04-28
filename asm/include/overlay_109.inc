@@ -104,7 +104,7 @@
 .public Sprite_ResetAnimCtrlState
 .public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_SetPriority
-.public Sprite_IsCellAnimationFinished
+.public Sprite_IsCellAnimationRunning
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public String_New
 .public String_Delete
@@ -125,6 +125,6 @@
 .public MI_CpuCopy8
 .public _s32_div_f
 .public gSystem
-.public ov109_021E5900
-.public ov109_021E5968
-.public ov109_021E59F0
+.public PhotoAlbum_Init
+.public PhotoAlbum_Main
+.public PhotoAlbum_Exit

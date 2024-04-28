@@ -155,7 +155,7 @@
 .public sub_02024AA8
 .public sub_02024B1C
 .public sub_02024B34
-.public Sprite_IsCellAnimationFinished
+.public Sprite_IsCellAnimationRunning
 .public sub_02024B78
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchNew

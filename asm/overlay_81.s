@@ -2083,7 +2083,7 @@ _0223EE8C:
 	bl ov81_02240BB0
 	mov r1, #7
 	lsl r1, r1, #6
-	ldr r0, _0223EF58 ; =_02103A1C
+	ldr r0, _0223EF58 ; =gOverlayTemplate_PokemonSummary
 	ldr r1, [r4, r1]
 	mov r2, #0x64
 	bl OverlayManager_New
@@ -2173,7 +2173,7 @@ _0223EF48: .word 0x00000464
 _0223EF4C: .word 0x000005DC
 _0223EF50: .word 0x00000468
 _0223EF54: .word 0x00000478
-_0223EF58: .word _02103A1C
+_0223EF58: .word gOverlayTemplate_PokemonSummary
 	thumb_func_end ov81_0223ECE4
 
 	thumb_func_start ov81_0223EF5C
@@ -2953,7 +2953,7 @@ _0223F5C0:
 	bl ov81_02240BB0
 	mov r1, #7
 	lsl r1, r1, #6
-	ldr r0, _0223F680 ; =_02103A1C
+	ldr r0, _0223F680 ; =gOverlayTemplate_PokemonSummary
 	ldr r1, [r4, r1]
 	mov r2, #0x64
 	bl OverlayManager_New
@@ -3034,7 +3034,7 @@ _0223F670: .word 0x000005DC
 _0223F674: .word 0x00000468
 _0223F678: .word 0x00000474
 _0223F67C: .word 0x00000478
-_0223F680: .word _02103A1C
+_0223F680: .word gOverlayTemplate_PokemonSummary
 	thumb_func_end ov81_0223F38C
 
 	thumb_func_start ov81_0223F684
@@ -10097,11 +10097,11 @@ _02242DD4: .word Sprite_SetMatrix
 
 	thumb_func_start ov81_02242DD8
 ov81_02242DD8: ; 0x02242DD8
-	ldr r3, _02242DE0 ; =Sprite_IsCellAnimationFinished
+	ldr r3, _02242DE0 ; =Sprite_IsCellAnimationRunning
 	ldr r0, [r0, #8]
 	bx r3
 	nop
-_02242DE0: .word Sprite_IsCellAnimationFinished
+_02242DE0: .word Sprite_IsCellAnimationRunning
 	thumb_func_end ov81_02242DD8
 
 	thumb_func_start ov81_02242DE4

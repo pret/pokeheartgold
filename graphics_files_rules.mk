@@ -8,6 +8,7 @@ $(IR_NCLR_FILES): GFX_FLAGS = -ir
 $(4BPP_NCLR_FILES): GFX_FLAGS = -bitdepth 4
 $(8BPP_NSCR_FILES): GFX_FLAGS = -bitdepth 8
 $(8BPP_COMP10_NOPAD_NCLR_PNG_FILES): GFX_FLAGS = -bitdepth 8 -nopad -comp 10
+$(8BPP_NOPAD_NCLR_PNG_FILES): GFX_FLAGS = -bitdepth 8 -nopad
 $(8BPP_COMP10_NOPAD_NCLR_PAL_FILES): GFX_FLAGS = -bitdepth 8 -nopad -comp 10
 $(4BPP_NOPAD_PCMP_NCLR_FILES): GFX_FLAGS = -bitdepth 4 -nopad -pcmp
 

@@ -166,7 +166,7 @@
 .public String_New
 .public String_Delete
 .public Thunk_G3X_Reset
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public GF_3DVramMan_InitFrameTexVramManager
 .public GF_3DVramMan_InitFramePlttVramManager
 .public PlayerName_FlatToString

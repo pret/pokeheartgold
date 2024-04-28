@@ -396,6 +396,8 @@ DIFF_ARCS += $(2)
 FILES_NEEDED_FOR_COMPILE = $(subst $(2),$(1),$(FILES_NEEDED_FOR_COMPILE))
 endef
 
+$(eval $(call arc_strip_name,files/battledata/script/move_script.narc,files/a/0/0/0))
+$(eval $(call arc_strip_name,files/battledata/script/subscript.narc,files/a/0/0/1))
 $(eval $(call arc_strip_name,files/poketool/personal/personal.narc,files/a/0/0/2))
 $(eval $(call arc_strip_name,files/poketool/personal/growtbl.narc,files/a/0/0/3))
 $(eval $(call arc_strip_name,files/poketool/pokegra/pokegra.narc,files/a/0/0/4))
@@ -406,6 +408,7 @@ $(eval $(call arc_strip_name,files/graphic/font.narc,files/a/0/1/6))
 $(eval $(call arc_strip_name,files/itemtool/itemdata/item_data.narc,files/a/0/1/7))
 $(eval $(call arc_strip_name,files/itemtool/itemdata/item_icon.narc,files/a/0/1/8))
 $(eval $(call arc_strip_name,files/msgdata/msg.narc,files/a/0/2/7))
+$(eval $(call arc_strip_name,files/battledata/script/effect_script.narc,files/a/0/3/0))
 $(eval $(call arc_strip_name,files/fielddata/eventdata/zone_event.narc,files/a/0/3/2))
 $(eval $(call arc_strip_name,files/poketool/personal/wotbl.narc,files/a/0/3/3))
 $(eval $(call arc_strip_name,files/poketool/personal/evo.narc,files/a/0/3/4))
@@ -429,6 +432,7 @@ $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_enc_$(
 $(eval $(call arc_strip_name,files/fielddata/encountdata/s_enc_data.narc,files/a/1/3/6))
 $(eval $(call arc_strip_name,files/poketool/johtozukan.narc,files/a/1/3/8))
 $(eval $(call arc_strip_name,files/fielddata/tsurepoke/tp_param.narc,files/a/1/4/1))
+$(eval $(call arc_strip_name,files/fielddata/graphic/preview_graphic/preview_graphic.narc,files/a/1/5/0))
 $(eval $(call arc_strip_name,files/system/touch_subwindow.narc,files/a/1/5/2))
 $(eval $(call arc_strip_name,files/data/gs_areawindow.narc,files/a/1/6/3))
 $(eval $(call arc_strip_name,files/poketool/personal/performance.narc,files/a/1/6/9))
@@ -440,7 +444,8 @@ $(eval $(call arc_strip_name,files/pbr/dp_height_o.narc,files/a/1/9/5))
 $(eval $(call arc_strip_name,files/resource/eng/pms_aikotoba/pms_aikotoba.narc,files/a/2/1/2))
 $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_data_gira.narc,files/a/2/1/4))
 $(eval $(call arc_strip_name,files/fielddata/sodateya/kowaza_list.narc,files/a/2/2/9))
-$(eval $(call arc_strip_name,files/a/2/5/2.$(buildname),files/a/2/5/2))
+$(eval $(call arc_strip_name,files/arc/headbutt.$(buildname).narc,files/a/2/5/2))
+$(eval $(call arc_strip_name,files/demo/opening/gs_opening.narc,files/a/2/6/2))
 $(eval $(call arc_strip_name,files/application/voltorb_flip.narc,files/a/2/6/4))
 $(eval $(call arc_strip_name,files/poketool/icongra/poke_icon/poke_icon.narc,files/a/0/2/0))
 
@@ -462,10 +467,17 @@ endif
 
 include files/msgdata/msg.mk
 include files/fielddata/script/scr_seq.mk
-
-# This rule must come after the above includes
-# and serves to enforce build order.
 $(SCRIPT_BINS): $(FIRST_MSG_H_GEN)
+
+include files/graphic/font.mk
+include files/battledata/script/effect_seq.mk
+$(EFFECT_SCRIPT_BINS): $(FIRST_MSG_H_GEN)
+
+include files/battledata/script/move_seq.mk
+$(MOVE_SCRIPT_BINS): $(FIRST_MSG_H_GEN)
+
+include files/battledata/script/subscript.mk
+$(BTL_SUBSCRIPT_SCRIPT_BINS): $(FIRST_MSG_H_GEN)
 
 include files/fielddata/eventdata/zone_event.mk
 include files/data/sound/sound_data.mk
@@ -491,7 +503,10 @@ include files/application/voltorb_flip.mk
 include files/application/annon/puzzle_gra.mk
 include files/data/resdat.mk
 include files/demo/title/titledemo.mk
+include files/demo/opening/gs_opening.mk
+include files/arc/headbutt.mk
 include files/poketool/personal/personal.mk
+include files/fielddata/graphic/preview_graphic/preview_graphic.mk
 
 $(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
 

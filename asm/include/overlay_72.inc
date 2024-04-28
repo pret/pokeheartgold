@@ -107,7 +107,7 @@
 .public Set2dSpriteAnimActiveFlag
 .public Set2dSpriteAnimSeqNo
 .public Sprite_SetPriority
-.public Sprite_IsCellAnimationFinished
+.public Sprite_IsCellAnimationRunning
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public String_New
@@ -199,6 +199,6 @@
 .public ov72_02237C30
 .public ov72_02237CB0
 .public ov72_02237CF4
-.public ov72_02237E20
-.public ov72_02237F9C
-.public ov72_02238070
+.public NintendoWfc_Init
+.public NintendoWfc_Main
+.public NintendoWfc_Exit

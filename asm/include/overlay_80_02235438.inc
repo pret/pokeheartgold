@@ -24,7 +24,7 @@
 .public sub_02096810
 .public sub_02096820
 .public MI_CpuFill8
-.public _020FA484
+.public gOverlayTemplate_Battle
 .public ov80_0222AB84
 .public ov80_0222AC58
 .public ov80_0222BDF4

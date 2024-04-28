@@ -2134,7 +2134,7 @@
       ]
     },
     {
-      "name": "choose_move_ui",
+      "name": "pokemon_summary_screen",
       "args": [
         1,
         "var",
@@ -4598,7 +4598,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_727",
+      "name": "get_follow_poke_party_index",
       "args": [
         "var"
       ]
@@ -4767,7 +4767,7 @@
       ]
     },
     {
-      "name": "scrcmd_754",
+      "name": "try_headbutt_encounter",
       "args": [
         "var"
       ]

@@ -82,7 +82,7 @@
 .public Get2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
 .public Sprite_SetPriority
-.public Sprite_IsCellAnimationFinished
+.public Sprite_IsCellAnimationRunning
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public TouchscreenHitbox_TouchNewIsIn
 .public String_New
@@ -194,8 +194,8 @@
 .public G2x_SetBlendAlpha_
 .public memset
 .public _s32_div_f
-.public _020FA484
+.public gOverlayTemplate_Battle
 .public gNatureStatMods
-.public _02103A1C
+.public gOverlayTemplate_PokemonSummary
 .public gSystem
 .public OS_IRQTable

@@ -4713,7 +4713,7 @@ ov49_0225AA2C: ; 0x0225AA2C
 	bl ov49_02265398
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	add r4, #0x3c
 	add r0, r4, #0
 	bl ov49_0225A7C0
@@ -7886,7 +7886,7 @@ _0225C1E4:
 	mov r3, #0
 	bl AddPlttResObjFromNarc
 	str r0, [r6, #0x70]
-	bl sub_0200A828
+	bl GF2DGfxResObj_GetPlttDataPtr
 	bl ov49_0225C368
 	ldr r0, [r6, #0x70]
 	bl sub_0200B00C

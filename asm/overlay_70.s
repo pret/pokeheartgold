@@ -18996,7 +18996,7 @@ _02240F8E:
 _02240FA0:
 	ldr r0, _02240FF8 ; =0x00000EE4
 	ldr r0, [r5, r0]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _02240FF6
 	add r0, r4, #0
@@ -19116,7 +19116,7 @@ _0224107E:
 _02241090:
 	ldr r0, _022410E4 ; =0x00000EE4
 	ldr r0, [r5, r0]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _022410E0
 	add r0, r4, #0
@@ -19593,7 +19593,7 @@ ov70_022413AC: ; 0x022413AC
 	add r0, #0xbc
 	bl sub_0208AD34
 	add r1, r4, #0
-	ldr r0, _02241464 ; =_02103A1C
+	ldr r0, _02241464 ; =gOverlayTemplate_PokemonSummary
 	add r1, #0xbc
 	mov r2, #0x3d
 	bl OverlayManager_New
@@ -19608,7 +19608,7 @@ ov70_022413AC: ; 0x022413AC
 	pop {r4, pc}
 	.balign 4, 0
 _02241460: .word ov70_02245D48
-_02241464: .word _02103A1C
+_02241464: .word gOverlayTemplate_PokemonSummary
 	thumb_func_end ov70_022413AC
 
 	thumb_func_start ov70_02241468
@@ -27876,7 +27876,7 @@ ov70_02245D48: ; 0x02245D48
 	.byte 0x00, 0x01, 0x02, 0x03, 0x04, 0x00, 0x00, 0x00
 
 ov70_02245D50: ; 0x02245D50
-	.word ov71_02246960, ov71_02246BB8, ov71_02246B58, FS_OVERLAY_ID(OVY_71)
+	.word TradeSequence_Init, TradeSequence_Main, TradeSequence_Exit, FS_OVERLAY_ID(OVY_71)
 
 ov70_02245D60: ; 0x02245D60
 	.byte 0x04, 0x03, 0x04, 0x07, 0x04, 0x0B

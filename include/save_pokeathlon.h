@@ -28,5 +28,6 @@ typedef struct POKEATHLON_SAV POKEATHLON_SAV; //size: 0xB80
 BOOL sub_02031A78(POKEATHLON_SAV *pokeathlon, int idx);
 BOOL sub_02031AB8(POKEATHLON_SAV *pokeathlon, int idx);
 void sub_02031AE4(POKEATHLON_SAV *pokeathlon);
+POKEATHLON_SAV *sub_02031974(POKEATHLON_SAV *pokeathlon);
 
 #endif //POKEHEARTGOLD_SAVE_POKEATHLON_H

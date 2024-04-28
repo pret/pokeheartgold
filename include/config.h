@@ -43,6 +43,10 @@
 #error "Missing or unrecognized game language define"
 #endif
 
+#ifndef __MWERKS__
+#define NONMATCHING
+#endif //__MWERKS__
+
 #include "constants/bugfix.h"
 
 #endif //POKEHEARTGOLD_CONFIG_H

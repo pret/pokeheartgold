@@ -22,7 +22,7 @@
 .public sub_02096910
 .public OS_ResetSystem
 .public MI_CpuFill8
-.public _020FA484
+.public gOverlayTemplate_Battle
 .public ov80_0222A474
 .public ov80_0222AB84
 .public ov80_0222AC58

@@ -66,7 +66,7 @@
 .public AddPlttResObjFromNarc
 .public AddCellOrAnimResObjFromNarc
 .public sub_0200A740
-.public sub_0200A810
+.public GF2DGfxResObj_GetCharDataPtr
 .public sub_0200ADA4
 .public sub_0200AEB0
 .public sub_0200AF00
@@ -267,7 +267,7 @@
 .public sub_02024B20
 .public sub_02024B34
 .public Sprite_GetVramType
-.public Sprite_IsCellAnimationFinished
+.public Sprite_IsCellAnimationRunning
 .public sub_02024B78
 .public sub_02024CB8
 .public TouchscreenHitbox_FindRectAtTouchNew
@@ -282,7 +282,7 @@
 .public CopyU16ArrayToString
 .public String_cstr
 .public Thunk_G3X_Reset
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_sizeof
@@ -411,9 +411,9 @@
 .public _ddiv
 .public FX_SinCosTable_
 .public gSystem
-.public PokeathlonCourseApplication_OvyInit
-.public PokeathlonCourseApplication_OvyExec
-.public PokeathlonCourseApplication_OvyExit
+.public PokeathlonCourse_Init
+.public PokeathlonCourse_Main
+.public PokeathlonCourse_Exit
 .public ov97_0221E5C0
 .public ov97_0221E5D4
 .public ov97_0221E69C

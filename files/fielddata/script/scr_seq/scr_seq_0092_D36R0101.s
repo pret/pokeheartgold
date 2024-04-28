@@ -1133,7 +1133,7 @@ _0F99:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	choose_move_ui 1, VAR_SPECIAL_x8006, 29
+	pokemon_summary_screen 1, VAR_SPECIAL_x8006, 29
 	get_move_selection 1, VAR_SPECIAL_x8001
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK

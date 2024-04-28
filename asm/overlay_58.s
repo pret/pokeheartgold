@@ -25,8 +25,8 @@ _022378E0:
 	pop {r4, pc}
 	thumb_func_end ov58_022378C0
 
-	thumb_func_start ov58_022378E4
-ov58_022378E4: ; 0x022378E4
+	thumb_func_start ApricornBox_Init
+ApricornBox_Init: ; 0x022378E4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ov58_02237CCC
@@ -53,10 +53,10 @@ ov58_022378E4: ; 0x022378E4
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov58_022378E4
+	thumb_func_end ApricornBox_Init
 
-	thumb_func_start ov58_02237924
-ov58_02237924: ; 0x02237924
+	thumb_func_start ApricornBox_Main
+ApricornBox_Main: ; 0x02237924
 	push {r4, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -121,10 +121,10 @@ _02237996:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov58_02237924
+	thumb_func_end ApricornBox_Main
 
-	thumb_func_start ov58_0223799C
-ov58_0223799C: ; 0x0223799C
+	thumb_func_start ApricornBox_Exit
+ApricornBox_Exit: ; 0x0223799C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -138,7 +138,7 @@ ov58_0223799C: ; 0x0223799C
 	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov58_0223799C
+	thumb_func_end ApricornBox_Exit
 
 	thumb_func_start ov58_022379C0
 ov58_022379C0: ; 0x022379C0
@@ -462,7 +462,7 @@ ov58_02237BD4: ; 0x02237BD4
 	ldrb r1, [r5, #0x1c]
 	add r0, #0x26
 	strb r1, [r0]
-	ldr r0, _02237C48 ; =_0210159C
+	ldr r0, _02237C48 ; =gOverlayTemplate_PartyMenu
 	ldr r2, [r5]
 	add r1, r4, #0
 	bl OverlayManager_New
@@ -471,7 +471,7 @@ ov58_02237BD4: ; 0x02237BD4
 	mov r0, #4
 	pop {r3, r4, r5, pc}
 	nop
-_02237C48: .word _0210159C
+_02237C48: .word gOverlayTemplate_PartyMenu
 	thumb_func_end ov58_02237BD4
 
 	thumb_func_start ov58_02237C4C

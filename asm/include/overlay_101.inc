@@ -258,7 +258,7 @@
 .public CheckGameClearFlag
 .public Save_VarsFlags_MomsSavingsFlagAction
 .public Save_VarsFlags_MomsSavingsFlagCheck
-.public CheckFlag996
+.public Save_VarsFlags_CheckBugContestFlag
 .public Save_VarsFlags_FlypointFlagAction
 .public Save_VarsFlags_IsInRocketTakeover
 .public Save_VarsFlags_GetVar4057
@@ -330,9 +330,9 @@
 .public ov101_021E7740
 .public ov101_021E779C
 .public ov101_021E7834
-.public ov101_TownMap_OvyInit
-.public ov101_TownMap_OvyExec
-.public ov101_TownMap_OvyExit
+.public TownMap_Init
+.public TownMap_Main
+.public TownMap_Exit
 .public ov101_021EE8E8
 .public ov101_021EE924
 .public ov101_021EE9A4

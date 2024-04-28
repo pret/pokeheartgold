@@ -4185,13 +4185,13 @@ ov112_021E7910: ; 0x021E7910
 	bl DestroyHeap
 	mov r0, #0x10
 	bl sub_0201A738
-	ldr r0, _021E7954 ; =FS_OVERLAY_ID(OVY_60)
+	ldr r0, _021E7954 ; =FS_OVERLAY_ID(intro_title)
 	ldr r1, _021E7958 ; =gApplication_TitleScreen
 	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_021E7954: .word FS_OVERLAY_ID(OVY_60)
+_021E7954: .word FS_OVERLAY_ID(intro_title)
 _021E7958: .word gApplication_TitleScreen
 	thumb_func_end ov112_021E7910
 

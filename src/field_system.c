@@ -20,7 +20,7 @@
 #include "overlay_124.h"
 #include "constants/maps.h"
 
-FS_EXTERN_OVERLAY(OVY_60);
+FS_EXTERN_OVERLAY(intro_title);
 FS_EXTERN_OVERLAY(OVY_124);
 FS_EXTERN_OVERLAY(field);
 
@@ -79,7 +79,7 @@ extern OVY_MGR_TEMPLATE gApplication_TitleScreen;
 
 BOOL Field_AppExit(OVY_MANAGER *man, int *unused) {
     FieldSystem_Delete(man);
-    RegisterMainOverlay(FS_OVERLAY_ID(OVY_60), &gApplication_TitleScreen);
+    RegisterMainOverlay(FS_OVERLAY_ID(intro_title), &gApplication_TitleScreen);
     return TRUE;
 }
 
@@ -157,7 +157,7 @@ void FieldSystem_Delete(OVY_MANAGER *man) {
     FieldSystem *fieldSystem = OverlayManager_GetData(man);
     MapMatrix_Free(fieldSystem->mapMatrix);
     Field_FreeMapEvents(fieldSystem);
-    FreeToHeap(fieldSystem->unk94);
+    FreeToHeap(fieldSystem->bagCursor);
     sub_02092BD0(fieldSystem->unkA8);
     sub_02092DD8(fieldSystem->unk114);
     FreeToHeap(fieldSystem->unk0);

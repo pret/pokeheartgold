@@ -152,7 +152,7 @@
 .public Sprite_SetPalIndex
 .public sub_02024A48
 .public sub_02024B1C
-.public Sprite_IsCellAnimationFinished
+.public Sprite_IsCellAnimationRunning
 .public sub_02024B78
 .public GF_AssertFail
 .public String_New
@@ -203,7 +203,7 @@
 .public GXS_LoadOBJ
 .public DC_FlushRange
 .public memset
-.public _02103A1C
+.public gOverlayTemplate_PokemonSummary
 .public ov80_0222A7CC
 .public ov80_02236DD4
 .public ov80_02237254

@@ -1152,7 +1152,7 @@ _0223872E:
 	ldr r0, [r4, r0]
 	bl sub_0202067C
 	add r0, r4, #0
-	bl ov12_0223BFEC
+	bl BattleSystem_IsRecordingPaused
 	cmp r0, #0
 	beq _02238748
 	mov r0, #0x7f
@@ -3240,7 +3240,7 @@ _02239830:
 	bl sub_0200D03C
 	mov r0, #1
 	mov r1, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 _0223984E:
 	pop {r4, pc}
 	.balign 4, 0

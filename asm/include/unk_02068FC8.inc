@@ -28,7 +28,7 @@
 .public sub_0203107C
 .public sub_020310BC
 .public FieldSystem_GetSaveData
-.public sub_0203F7B0
+.public TrainerCard_LaunchApp
 .public Save_VarsFlags_Get
 .public Save_VarsFlags_CheckFlagInArray
 .public TaskManager_Call

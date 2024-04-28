@@ -3718,7 +3718,7 @@ _0225BD6A:
 	pop {r3, r4, r5, pc}
 _0225BD78:
 	add r0, r5, #0
-	bl CheckFlag996
+	bl Save_VarsFlags_CheckBugContestFlag
 	cmp r0, #0
 	beq _0225BD86
 	mov r0, #2
@@ -5298,7 +5298,7 @@ ov27_0225C994: ; 0x0225C994
 	mov r0, #0xe2
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _0225C9C6
 	mov r0, #0xe2
@@ -5690,7 +5690,7 @@ ov27_0225CC90: ; 0x0225CC90
 	mov r0, #0xe2
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _0225CCB8
 	mov r0, #0xe2

@@ -137,7 +137,7 @@ BattleSetup* BattleSetup_New_Tutorial(HeapID heapId, FieldSystem* fieldSystem) {
     }
     setup->unk1CC[BATTLER_PLAYER] = 0;
     setup->storagePC = SaveArray_PCStorage_Get(fieldSystem->saveData);
-    setup->unk_10C = fieldSystem->unk94;
+    setup->unk_10C = fieldSystem->bagCursor;
     setup->unk1B8 = NULL;
     setup->gameStats = Save_GameStats_Get(fieldSystem->saveData);
     setup->mapNumber = fieldSystem->location->mapId;
@@ -260,7 +260,7 @@ void sub_02051D18(BattleSetup* setup, FieldSystem* fieldSystem, SaveData* saveDa
 }
 
 void BattleSetup_InitFromFieldSystem(BattleSetup* setup, FieldSystem *fieldSystem) {
-    sub_02051D18(setup, fieldSystem, fieldSystem->saveData, fieldSystem->location->mapId, fieldSystem->unk94, fieldSystem->unkB0);
+    sub_02051D18(setup, fieldSystem, fieldSystem->saveData, fieldSystem->location->mapId, fieldSystem->bagCursor, fieldSystem->unkB0);
     BattleSetup_SetAllySideBattlersToPlayer(setup);
 }
 
@@ -302,7 +302,7 @@ void BattleSetup_InitForFixedLevelFacility(BattleSetup* setup, FieldSystem *fiel
     BattleSetup_SetChatotVoiceClip(setup, chatot, BATTLER_PLAYER);
     setup->storagePC = SaveArray_PCStorage_Get(fieldSystem->saveData);
     setup->timeOfDay = Field_GetTimeOfDay(fieldSystem);
-    setup->unk_10C = fieldSystem->unk94;
+    setup->unk_10C = fieldSystem->bagCursor;
     setup->unk1B8 = fieldSystem->unkB0;
     setup->unk_12C = sub_0202CA44(fieldSystem->saveData);
     setup->gameStats = Save_GameStats_Get(fieldSystem->saveData);
@@ -373,7 +373,7 @@ void sub_020520B0(BattleSetup* setup, FieldSystem *fieldSystem, Party *party, u8
     BattleSetup_SetChatotVoiceClip(setup, chatot, BATTLER_PLAYER);
     setup->storagePC = SaveArray_PCStorage_Get(fieldSystem->saveData);
     setup->timeOfDay = Field_GetTimeOfDay(fieldSystem);
-    setup->unk_10C = fieldSystem->unk94;
+    setup->unk_10C = fieldSystem->bagCursor;
     setup->unk1B8 = fieldSystem->unkB0;
     setup->unk_12C = sub_0202CA44(fieldSystem->saveData);
     setup->gameStats = Save_GameStats_Get(fieldSystem->saveData);
@@ -443,7 +443,7 @@ void sub_0205239C(BattleSetup* setup, FieldSystem* fieldSystem) {
     vars_flags = Save_VarsFlags_Get(fieldSystem->saveData);
     if (Save_VarsFlags_CheckSafariSysFlag(vars_flags)) {
         balls_ptr = LocalFieldData_GetSafariBallsCounter(Save_LocalFieldData_Get(fieldSystem->saveData));
-    } else if (CheckFlag996(vars_flags)) {
+    } else if (Save_VarsFlags_CheckBugContestFlag(vars_flags)) {
         balls_ptr = BugContest_GetSportBallsAddr(FieldSystem_BugContest_Get(fieldSystem));
     }
     if (balls_ptr != NULL) {

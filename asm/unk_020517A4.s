@@ -203,15 +203,15 @@ _020517DC:
 _020517E4: .word _020FC40A + 2
 	thumb_func_end BattleStartGetMusic
 
-	thumb_func_start sub_020517E8
-sub_020517E8: ; 0x020517E8
+	thumb_func_start BattleSetup_GetWildTransitionEffect
+BattleSetup_GetWildTransitionEffect: ; 0x020517E8
 	push {r4, lr}
 	add r4, r0, #0
 	bl BattleSetup_GetTransitionAndMusicParam
 	add r1, r4, #0
 	bl BattleStartGetTransition
 	pop {r4, pc}
-	thumb_func_end sub_020517E8
+	thumb_func_end BattleSetup_GetWildTransitionEffect
 
 	thumb_func_start sub_020517F8
 sub_020517F8: ; 0x020517F8
@@ -219,8 +219,8 @@ sub_020517F8: ; 0x020517F8
 	bx lr
 	thumb_func_end sub_020517F8
 
-	thumb_func_start sub_020517FC
-sub_020517FC: ; 0x020517FC
+	thumb_func_start BattleSetup_GetWildBattleMusic
+BattleSetup_GetWildBattleMusic: ; 0x020517FC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl BattleSetup_GetTransitionAndMusicParam
@@ -271,7 +271,7 @@ _0205185C:
 	.balign 4, 0
 _02051860: .word 0x0000045C
 _02051864: .word 0x00000467
-	thumb_func_end sub_020517FC
+	thumb_func_end BattleSetup_GetWildBattleMusic
 
 	thumb_func_start NPCTrainerGetBattleIntroAndMusicParam
 NPCTrainerGetBattleIntroAndMusicParam: ; 0x02051868

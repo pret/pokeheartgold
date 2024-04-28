@@ -3,8 +3,8 @@
 #include "berry_pots_app.h"
 #include "berry_pots_app_internal.h"
 #include "bag.h"
-#include "font.h"
 #include "game_stats.h"
+#include "font.h"
 #include "gf_gfx_loader.h"
 #include "gf_gfx_planes.h"
 #include "gf_rtc.h"
@@ -22,11 +22,11 @@
 #include "unk_020183F0.h"
 #include "touchscreen.h"
 #include "unk_02023694.h"
-#include "unk_0203E348.h"
 #include "vram_transfer_manager.h"
 #include "unk_020210A0.h"
 #include "yes_no_prompt.h"
 #include "unk_0200B150.h"
+#include "launch_application.h"
 #include "data/resdat.naix"
 
 struct UnkStruct_ov17_02203E88 {
@@ -107,7 +107,7 @@ static const GraphicsModes ov17_02203D88 = {
     GX_BG0_AS_2D,
 };
 static const Unk122_021E92D0 ov17_02203D98 = {
-    0x8, 0x10000, 0x4000, 0x10, 0x10,
+    0x8, 0x10000, 0x4000, GX_OBJVRAMMODE_CHAR_1D_32K, GX_OBJVRAMMODE_CHAR_1D_32K,
 };
 static const WindowTemplate ov17_02203DC4[3] = {
     {2, 25, 21, 6,  2, 9,  0x1A2},

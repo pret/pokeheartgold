@@ -2,6 +2,8 @@
 #include "save_vars_flags.h"
 #include "game_stats.h"
 #include "party.h"
+#include "launch_application.h"
+#include "location_backup.h"
 #include "game_clear.h"
 #include "hall_of_fame.h"
 #include "overlay_63.h"
@@ -15,7 +17,6 @@
 #include "sound_02004A44.h"
 #include "unk_02005D10.h"
 #include "unk_0200FA24.h"
-#include "unk_0203E348.h"
 #include "unk_02054E00.h"
 #include "unk_020552A4.h"
 #include "unk_02055418.h"
@@ -34,8 +35,8 @@
 
 typedef struct {
     BOOL gameCleared;
-    HOFCongratsAppArgs hofCongratsArgs;
-    CreditsAppArgs creditsArgs;
+    RegisterHallOfFameArgs hofCongratsArgs;
+    CreditsArgs creditsArgs;
     BgConfig *bgConfig;
     Window window;
     String *windowText;
@@ -118,7 +119,7 @@ BOOL sub_0205298C(TaskManager *taskman) {
         break;
     case 4:
         BeginNormalPaletteFade(0, 1, 1, RGB_WHITE, 8, 1, HEAP_ID_32);
-        reg_G2_BLDCNT = 0;
+        G2_BlendNone();
         ++(*state);
         break;
     case 5:
@@ -134,7 +135,7 @@ static void AddHallOfFameEntry(FieldSystem *fieldSystem, BOOL gameCleared) {
     int val;
     RTCDate date;
 
-    HALL_OF_FAME *hof = LoadHallOfFame(fieldSystem->saveData, HEAP_ID_FIELD, &val);
+    HallOfFame *hof = LoadHallOfFame(fieldSystem->saveData, HEAP_ID_FIELD, &val);
     if (val != 1 || !gameCleared) {
         Save_HOF_Init(hof);
     }
@@ -156,7 +157,7 @@ static BOOL Task_GameClear(TaskManager *taskman) {
     switch (*state) {
     case 0:
         if (!env->vsTrainerRed) {
-            LaunchHOFCongratsApp(fieldSystem, &env->hofCongratsArgs);
+            RegisterHallOfFame_LaunchApp(fieldSystem, &env->hofCongratsArgs);
             ++(*state);
             break;
         }
@@ -237,7 +238,7 @@ static BOOL Task_GameClear(TaskManager *taskman) {
         if (IsPaletteFadeFinished()) {
             GameClearSave_Free(fieldSystem, env);
             Sound_SetMasterVolume(127);
-            LaunchCreditsApp(fieldSystem, &env->creditsArgs);
+            Credits_LaunchApp(fieldSystem, &env->creditsArgs);
             ++(*state);
         }
         break;
@@ -282,8 +283,8 @@ void CallTask_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
         FieldSystem_SetGameClearTime(fieldSystem);
     }
     SaveArray_Party_Get(fieldSystem->saveData);
-    LocationData_BackUp(dynamicWarp);
-    LocationData_Restore(spawnWarp);
+    Location_SetToPlayerRoom(dynamicWarp);
+    Location_SetToOutsidePlayerHome(spawnWarp);
     SetFlag966(varsFlags);
     SetGameClearFlag(varsFlags);
     PlayerProfile_SetGameClearFlag(profile);

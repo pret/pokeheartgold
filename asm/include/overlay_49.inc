@@ -44,7 +44,7 @@
 .public AddCellOrAnimResObjFromOpenNarc
 .public sub_0200A740
 .public DestroySingle2DGfxResObj
-.public sub_0200A828
+.public GF2DGfxResObj_GetPlttDataPtr
 .public sub_0200ADA4
 .public sub_0200AEB0
 .public sub_0200B00C
@@ -196,7 +196,7 @@
 .public TouchHitboxController_Destroy
 .public TouchHitboxController_IsTriggered
 .public Thunk_G3X_Reset
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
 .public Save_PlayerData_GetProfileAddr

@@ -21,6 +21,7 @@
 #include "overlay_62.h"
 #include "text.h"
 #include "math_util.h"
+#include "intro_movie.h"
 #include "constants/species.h"
 #include "constants/sndseq.h"
 #include "msgdata/msg.naix"
@@ -100,8 +101,6 @@ static fx32 fx32_abs(fx32 x);
 static void TitleScreenAnim_GetCameraNextPosition(TitleScreenAnimData *animData);
 static void TitleScreenAnim_FadeInGameTitleLayer(TitleScreenAnimData *animData);
 
-extern const OVY_MGR_TEMPLATE gApplication_IntroMovie;
-
 const OVY_MGR_TEMPLATE gApplication_TitleScreen = {TitleScreen_Init, TitleScreen_Main, TitleScreen_Exit, FS_OVERLAY_ID_NONE};
 
 static BOOL TitleScreen_Init(OVY_MANAGER *man, int *state) {
@@ -114,10 +113,10 @@ static BOOL TitleScreen_Init(OVY_MANAGER *man, int *state) {
     GX_SetVisiblePlane(0);
     GXS_SetVisiblePlane(0);
     SetKeyRepeatTimers(4, 8);
-    CreateHeap(HEAP_ID_3, HEAP_ID_30, 0x50000);
-    TitleScreenOverlayData *data = OverlayManager_CreateAndGetData(man, sizeof(TitleScreenOverlayData), HEAP_ID_30);
+    CreateHeap(HEAP_ID_3, HEAP_ID_TITLE_SCREEN, 0x50000);
+    TitleScreenOverlayData *data = OverlayManager_CreateAndGetData(man, sizeof(TitleScreenOverlayData), HEAP_ID_TITLE_SCREEN);
     memset(data, 0, sizeof(TitleScreenOverlayData));
-    data->heapID = HEAP_ID_30;
+    data->heapID = HEAP_ID_TITLE_SCREEN;
     data->exitMode = TITLESCREEN_EXIT_UNSET;
     data->timer = 0;
     data->needMasterBrightnessNeutral = FALSE;
@@ -161,7 +160,7 @@ static BOOL TitleScreen_Main(OVY_MANAGER *man, int *state) {
                 GF_SndStartFadeOutBGM(0, 60);
                 PlayCry(TITLE_SCREEN_SPECIES, 0);
                 GF_SetVolumeBySeqNo(1, 48);
-                BeginNormalPaletteFade(0, 0, 0, RGB_WHITE, 5, 1, HEAP_ID_30);
+                BeginNormalPaletteFade(0, 0, 0, RGB_WHITE, 5, 1, HEAP_ID_TITLE_SCREEN);
                 *state = (int)TITLESCREEN_MAIN_PROCEED_FLASH;
             } else if ((gSystem.heldKeys & CLEAR_SAVE_KEY_COMBO) == CLEAR_SAVE_KEY_COMBO) {
                 data->exitMode = TITLESCREEN_EXIT_CLEARSAVE;
@@ -188,7 +187,7 @@ static BOOL TitleScreen_Main(OVY_MANAGER *man, int *state) {
         data->animData.enableStartInstructionFlash = FALSE;
         TitleScreenAnim_Run(&data->animData, data->bgConfig, data->heapID);
         if (IsPaletteFadeFinished()) {
-            BeginNormalPaletteFade(0, 1, 1, RGB_WHITE, 12, 1, HEAP_ID_30);
+            BeginNormalPaletteFade(0, 1, 1, RGB_WHITE, 12, 1, HEAP_ID_TITLE_SCREEN);
             *state = (int)TITLESCREEN_MAIN_PROCEED_FLASH_2;
         }
         if (GF_SndGetFadeTimer() == 0) {
@@ -249,7 +248,7 @@ static BOOL TitleScreen_Exit(OVY_MANAGER *man, int *state) {
         break;
     case TITLESCREEN_EXIT_TIMEOUT:
         sub_02004AD8(0);
-        RegisterMainOverlay(FS_OVERLAY_ID(OVY_60), &gApplication_IntroMovie);
+        RegisterMainOverlay(FS_OVERLAY_ID(intro_title), &gApplication_IntroMovie);
         break;
     case TITLESCREEN_EXIT_MIC_TEST:
         sub_02004AD8(0);
@@ -383,7 +382,7 @@ static void TitleScreenAnimObjs_Run(TitleScreenAnimObject *animObj) {
         break;
     case TITLESCREEN_MODEL_STOP:
         Thunk_G3X_Reset();
-        sub_02026E50(0, 1);
+        RequestSwap3DBuffers(GX_SORTMODE_AUTO, GX_BUFFERMODE_W);
         animObj->state = TITLESCREEN_MODEL_OFF;
         break;
     case TITLESCREEN_MODEL_RUN:
@@ -506,8 +505,8 @@ static BOOL TitleScreenAnim_InitObjectsAndCamera(TitleScreenAnimData *animData, 
     animData->sparkles.state = TITLESCREEN_MODEL_RUN;
     animData->gameTitleDelayTimer = 0;
     animData->gameTitleFadeInTimer = 0;
-    animData->plttData = PaletteData_Init(HEAP_ID_30);
-    PaletteData_AllocBuffers(animData->plttData, PLTTBUF_SUB_BG, 0x200, HEAP_ID_30);
+    animData->plttData = PaletteData_Init(HEAP_ID_TITLE_SCREEN);
+    PaletteData_AllocBuffers(animData->plttData, PLTTBUF_SUB_BG, 0x200, HEAP_ID_TITLE_SCREEN);
     PaletteData_LoadPaletteSlotFromHardware(animData->plttData, PLTTBUF_SUB_BG, 0, 0x200);
     animData->glowState = 0;
     return TRUE;
@@ -556,7 +555,7 @@ static BOOL TitleScreenAnim_Run(TitleScreenAnimData *animData, BgConfig *bgConfi
     }
     TitleScreenAnimObjs_Run(&animData->hooh_lugia);
     TitleScreenAnimObjs_Run(&animData->sparkles);
-    sub_02026E50(0, 1);
+    RequestSwap3DBuffers(GX_SORTMODE_AUTO, GX_BUFFERMODE_W);
     TitleScreenAnim_RunTopScreenGlow(animData);
     return ret;
 }

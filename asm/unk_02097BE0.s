@@ -169,7 +169,7 @@ _02097CFC:
 	ldr r2, [r1, #0x48]
 	ldr r3, [r1, #0x4c]
 	add r0, r5, #0
-	bl sub_0203FCB8
+	bl LegendaryCinematic_LaunchApp
 	str r0, [r4, #4]
 	ldr r0, [r4, #8]
 	add r0, r0, #1

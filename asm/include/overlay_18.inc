@@ -52,7 +52,7 @@
 .public AddCellOrAnimResObjFromOpenNarc
 .public sub_0200A740
 .public DestroySingle2DGfxResObj
-.public sub_0200A7FC
+.public GF2DGfxResObj_GetResID
 .public sub_0200ADA4
 .public sub_0200AEB0
 .public sub_0200B00C
@@ -284,9 +284,9 @@
 .public _u32_div_f
 .public FX_SinCosTable_
 .public gSystem
-.public ov18_021E5AA0
-.public ov18_021E5B64
-.public ov18_021E5B80
+.public Pokedex_Init
+.public Pokedex_Main
+.public Pokedex_Exit
 .public ov18_021F8974
 .public ov18_021F89C8
 .public ov18_021F89D0

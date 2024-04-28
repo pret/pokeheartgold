@@ -8,7 +8,7 @@
 	.include "unk_02082908.inc"
 	.include "global.inc"
 
-	.public _020FA484
+	.public gOverlayTemplate_Battle
 	.public gNatureStatMods
 
 	.bss
@@ -951,8 +951,8 @@ _020830D0: .word 0xFFFF1FFF
 _020830D4: .word gSystem + 0x60
 	thumb_func_end sub_02082EE8
 
-	thumb_func_start sub_020830D8
-sub_020830D8: ; 0x020830D8
+	thumb_func_start NamingScreen_CreateArgs
+NamingScreen_CreateArgs: ; 0x020830D8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	mov r1, #0x54
@@ -985,7 +985,7 @@ sub_020830D8: ; 0x020830D8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02083118: .word 0x0000FFFF
-	thumb_func_end sub_020830D8
+	thumb_func_end NamingScreen_CreateArgs
 
 	thumb_func_start sub_0208311C
 sub_0208311C: ; 0x0208311C
@@ -4877,7 +4877,7 @@ sub_02084FCC: ; 0x02084FCC
 	mov r0, #0xd3
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _02085038
 	mov r0, #0x56

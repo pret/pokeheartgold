@@ -213,7 +213,7 @@
 .public TaskManager_GetEnvironment
 .public TaskManager_GetStatePtr
 .public sub_02050B08
-.public sub_02050B90
+.public FieldSystem_StartForcedWildBattle
 .public BattleSetup_New
 .public BattleSetup_New_SafariZone
 .public BattleSetup_New_BugContest
@@ -284,7 +284,7 @@
 .public SetFlag99C
 .public Save_VarsFlags_CheckAlphPuzzleFlag
 .public Save_VarsFlags_CheckSafariSysFlag
-.public CheckFlag996
+.public Save_VarsFlags_CheckBugContestFlag
 .public Save_VarsFlags_GetFollowerTrainerNum
 .public sub_02066BE8
 .public Save_VarsFlags_IsInRocketTakeover
@@ -462,7 +462,7 @@
 .public ov02_02246F70
 .public ov02_022470A0
 .public ov02_02247170
-.public ov02_02247374
+.public FieldSystem_ChooseHeadbuttEncounter
 .public ov02_02247F30
 .public ov02_02247F9C
 .public ov02_02249458
@@ -500,7 +500,7 @@
 .public ov02_0224E35C
 .public ov02_0224E4CC
 .public ov02_0224E4DC
-.public ov02_0224E4EC
+.public SafariDecoration_CreateArgs
 .public ov02_0224E698
 .public ov02_0224E754
 .public FieldSystem_FollowMonInteract

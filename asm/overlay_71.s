@@ -4,8 +4,8 @@
 
 	.text
 
-	thumb_func_start ov71_02246960
-ov71_02246960: ; 0x02246960
+	thumb_func_start TradeSequence_Init
+TradeSequence_Init: ; 0x02246960
 	push {r4, r5, lr}
 	sub sp, #0x14
 	add r5, r0, #0
@@ -206,7 +206,7 @@ _02246B18: .word 0x00000152
 _02246B1C: .word 0xFFFFE0FF
 _02246B20: .word 0x04001000
 _02246B24: .word ov71_02246C48
-	thumb_func_end ov71_02246960
+	thumb_func_end TradeSequence_Init
 
 	thumb_func_start ov71_02246B28
 ov71_02246B28: ; 0x02246B28
@@ -234,8 +234,8 @@ _02246B52:
 	.balign 4, 0
 	thumb_func_end ov71_02246B28
 
-	thumb_func_start ov71_02246B58
-ov71_02246B58: ; 0x02246B58
+	thumb_func_start TradeSequence_Exit
+TradeSequence_Exit: ; 0x02246B58
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl OS_DisableInterrupts
@@ -270,10 +270,10 @@ ov71_02246B58: ; 0x02246B58
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov71_02246B58
+	thumb_func_end TradeSequence_Exit
 
-	thumb_func_start ov71_02246BB8
-ov71_02246BB8: ; 0x02246BB8
+	thumb_func_start TradeSequence_Main
+TradeSequence_Main: ; 0x02246BB8
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	bl OverlayManager_GetData
@@ -345,7 +345,7 @@ _02246C38: .word ov71_0224BBF8
 _02246C3C: .word ov71_0224BBEC
 _02246C40: .word ov71_0224BBF0
 _02246C44: .word ov71_0224BBF4
-	thumb_func_end ov71_02246BB8
+	thumb_func_end TradeSequence_Main
 
 	thumb_func_start ov71_02246C48
 ov71_02246C48: ; 0x02246C48
@@ -2231,7 +2231,7 @@ ov71_022479C8: ; 0x022479C8
 	bl ov71_022474CC
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -2740,7 +2740,7 @@ _02247E2A:
 	b _02247EC6
 _02247E50:
 	ldr r0, [r5, #0x40]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _02247EC6
 	ldr r0, [r5, #0x74]
@@ -3472,7 +3472,7 @@ ov71_022483E4: ; 0x022483E4
 	bl ov71_022474CC
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 _02248404:
 	pop {r4, pc}
 	.balign 4, 0
@@ -5671,7 +5671,7 @@ ov71_02249538: ; 0x02249538
 	bl ov71_022474CC
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 _02249554:
 	pop {r4, pc}
 	.balign 4, 0
@@ -5777,7 +5777,7 @@ _022495FA:
 	b _0224965C
 _02249624:
 	ldr r0, [r5, #0x20]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _0224965C
 	mov r0, #0x10
@@ -7267,7 +7267,7 @@ _0224A1E6:
 	b _0224A26A
 _0224A206:
 	ldr r0, [r5, #0x20]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _0224A26A
 	ldr r0, _0224A270 ; =0x000006AA
@@ -8115,7 +8115,7 @@ ov71_0224A8B0: ; 0x0224A8B0
 	bl ov71_022474CC
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 _0224A8CE:
 	ldr r0, [r4, #0xc]
 	cmp r0, #0
@@ -8269,7 +8269,7 @@ ov71_0224A9C4: ; 0x0224A9C4
 	bl ov71_022474CC
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 _0224A9F6:
 	pop {r4, pc}
 	thumb_func_end ov71_0224A9C4
@@ -9323,7 +9323,7 @@ ov71_0224B234: ; 0x0224B234
 _0224B272:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0

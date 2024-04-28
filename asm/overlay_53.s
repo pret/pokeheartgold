@@ -7,8 +7,8 @@
 
 	.text
 
-	thumb_func_start ov53_OakSpeech_OvyInit
-ov53_OakSpeech_OvyInit: ; 0x021E5900
+	thumb_func_start OakSpeech_Init
+OakSpeech_Init: ; 0x021E5900
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	mov r2, #1
@@ -45,7 +45,7 @@ ov53_OakSpeech_OvyInit: ; 0x021E5900
 	mov r0, #0x50
 	mov r3, #7
 	str r1, [sp, #4]
-	bl sub_020830D8
+	bl NamingScreen_CreateArgs
 	mov r1, #0x12
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -56,7 +56,7 @@ ov53_OakSpeech_OvyInit: ; 0x021E5900
 	mov r1, #3
 	mov r3, #7
 	str r2, [sp, #4]
-	bl sub_020830D8
+	bl NamingScreen_CreateArgs
 	mov r2, #0x49
 	lsl r2, r2, #2
 	add r1, r2, #0
@@ -74,10 +74,10 @@ ov53_OakSpeech_OvyInit: ; 0x021E5900
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov53_OakSpeech_OvyInit
+	thumb_func_end OakSpeech_Init
 
-	thumb_func_start ov53_OakSpeech_OvyExec
-ov53_OakSpeech_OvyExec: ; 0x021E5994
+	thumb_func_start OakSpeech_Main
+OakSpeech_Main: ; 0x021E5994
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r5, r1, #0
@@ -269,10 +269,10 @@ _021E5B34:
 _021E5B3C: .word 0xFFFFE0FF
 _021E5B40: .word 0x04001000
 _021E5B44: .word ov53_021E5BCC
-	thumb_func_end ov53_OakSpeech_OvyExec
+	thumb_func_end OakSpeech_Main
 
-	thumb_func_start ov53_OakSpeech_OvyExit
-ov53_OakSpeech_OvyExit: ; 0x021E5B48
+	thumb_func_start OakSpeech_Exit
+OakSpeech_Exit: ; 0x021E5B48
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	bl OverlayManager_GetData
@@ -323,7 +323,7 @@ ov53_OakSpeech_OvyExit: ; 0x021E5B48
 	nop
 _021E5BC4: .word FS_OVERLAY_ID(OVY_36)
 _021E5BC8: .word ov36_App_InitGameState_AfterOakSpeech
-	thumb_func_end ov53_OakSpeech_OvyExit
+	thumb_func_end OakSpeech_Exit
 
 	thumb_func_start ov53_021E5BCC
 ov53_021E5BCC: ; 0x021E5BCC
@@ -3743,7 +3743,7 @@ _021E771C:
 _021E775E:
 	add r0, #0xec
 	ldr r0, [r0]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _021E77AC
 	mov r2, #5
@@ -5435,7 +5435,7 @@ ov53_021E84D4: ; 0x021E84D4
 	bl GF_AssertFail
 _021E84E6:
 	ldr r0, [r4, #0x10]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _021E84F4
 	mov r0, #1

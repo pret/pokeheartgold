@@ -259,7 +259,7 @@ typedef enum NarcId
     NARC_a_2_4_9                                            = 251,
     NARC_a_2_5_0                                            = 252,
     NARC_a_2_5_1                                            = 253,
-    NARC_a_2_5_2                                            = 254,
+    NARC_arc_headbutt                                       = 254,
     NARC_a_2_5_3                                            = 255,
     NARC_a_2_5_4                                            = 256,
     NARC_a_2_5_5                                            = 257,
@@ -269,7 +269,7 @@ typedef enum NarcId
     NARC_a_2_5_9                                            = 261,
     NARC_a_2_6_0                                            = 262,
     NARC_a_2_6_1                                            = 263,
-    NARC_a_2_6_2                                            = 264,
+    NARC_demo_opening_gs_opening                            = 264,
     NARC_a_2_6_3                                            = 265,
     NARC_application_voltorb_flip                           = 266,
 } NarcId;

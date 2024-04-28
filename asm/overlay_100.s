@@ -1432,8 +1432,8 @@ _021E6428:
 	pop {r4, pc}
 	thumb_func_end ov100_021E6408
 
-	thumb_func_start ov100_Phone_OvyInit
-ov100_Phone_OvyInit: ; 0x021E642C
+	thumb_func_start Phone_Init
+Phone_Init: ; 0x021E642C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl OverlayManager_GetArgs
@@ -1545,10 +1545,10 @@ _021E64FC:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E651C: .word 0x0000FFFF
-	thumb_func_end ov100_Phone_OvyInit
+	thumb_func_end Phone_Init
 
-	thumb_func_start ov100_Phone_OvyExec
-ov100_Phone_OvyExec: ; 0x021E6520
+	thumb_func_start Phone_Main
+Phone_Main: ; 0x021E6520
 	push {r4, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -1629,10 +1629,10 @@ _021E65B4:
 _021E65B8:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ov100_Phone_OvyExec
+	thumb_func_end Phone_Main
 
-	thumb_func_start ov100_Phone_OvyExit
-ov100_Phone_OvyExit: ; 0x021E65BC
+	thumb_func_start Phone_Exit
+Phone_Exit: ; 0x021E65BC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -1654,7 +1654,7 @@ ov100_Phone_OvyExit: ; 0x021E65BC
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov100_Phone_OvyExit
+	thumb_func_end Phone_Exit
 
 	thumb_func_start ov100_021E65F4
 ov100_021E65F4: ; 0x021E65F4
@@ -1864,7 +1864,7 @@ _021E6750:
 	ldr r2, [r3, #0x24]
 	ldr r3, [r3, #0x28]
 	add r1, r0, #0
-	bl sub_02090C94
+	bl EasyChat_CreateArgs
 	str r0, [r4, #0x6c]
 	add r0, r4, #0
 	ldr r1, _021E678C ; =0x0000FFFF
@@ -1910,7 +1910,7 @@ _021E67A6:
 	strh r0, [r1]
 _021E67BC:
 	ldr r0, [r4, #0x6c]
-	bl sub_02090D0C
+	bl EasyChat_FreeArgs
 	add r0, r4, #0
 	mov r1, #1
 	add r0, #0x38
@@ -3733,7 +3733,7 @@ ov100_021E760C: ; 0x021E760C
 	.word ov101_021EE8E8, ov101_021EE924, ov101_021EE9A4, FS_OVERLAY_ID(OVY_101)
 
 ov100_021E761C: ; 0x021E761C
-	.word ov102_021E7740, ov102_021E77B8, ov102_021E7868, FS_OVERLAY_ID(OVY_102)
+	.word EasyChat_Init, EasyChat_Main, EasyChat_Exit, FS_OVERLAY_ID(OVY_102)
 
 ov100_021E762C: ; 0x021E762C
 	.word ov101_021E7740, ov101_021E779C, ov101_021E7834, FS_OVERLAY_ID(OVY_101)

@@ -231,11 +231,11 @@
 .public CheckAbilityActive
 .public CalculateTypeEffectiveness
 .public GetBattlerAbility
-.public ov12_02253DA0
+.public Battler_GetRandomOpposingBattlerId
 .public GetBattlerHeldItemEffect
 .public CalcMoveDamage
 .public GetItemVar
-.public ov12_022581BC
+.public BattleController_TryEmitExitRecording
 .public ov12_022581D4
 .public ov12_022582B8
 .public ov12_02258800

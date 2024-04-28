@@ -109,7 +109,7 @@ static BOOL Task_RockSmashItemCheck(TaskManager *taskman) {
         *env->itemFound = FALSE;
         *env->item = ITEM_NONE;
         FreeToHeap(env);
-        sub_02050B90(fieldSystem, taskman, setup);
+        FieldSystem_StartForcedWildBattle(fieldSystem, taskman, setup);
         return FALSE;
     }
 

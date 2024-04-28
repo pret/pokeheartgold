@@ -8,7 +8,7 @@
 	.include "unk_02088288.inc"
 	.include "global.inc"
 
-	.public _020FA484
+	.public gOverlayTemplate_Battle
 	.public gNatureStatMods
 
 	.text
@@ -27,8 +27,8 @@ sub_0208828C: ; 0x0208828C
 	pop {r3, pc}
 	thumb_func_end sub_0208828C
 
-	thumb_func_start sub_02088298
-sub_02088298: ; 0x02088298
+	thumb_func_start PokemonSummary_Init
+PokemonSummary_Init: ; 0x02088298
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	mov r0, #0
@@ -180,10 +180,10 @@ _02088414: .word 0x000007D8
 _02088418: .word 0x000007B8
 _0208841C: .word sub_020885DC
 _02088420: .word 0x04000304
-	thumb_func_end sub_02088298
+	thumb_func_end PokemonSummary_Init
 
-	thumb_func_start sub_02088424
-sub_02088424: ; 0x02088424
+	thumb_func_start PokemonSummary_Main
+PokemonSummary_Main: ; 0x02088424
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -345,10 +345,10 @@ _0208854A:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02088424
+	thumb_func_end PokemonSummary_Main
 
-	thumb_func_start sub_0208856C
-sub_0208856C: ; 0x0208856C
+	thumb_func_start PokemonSummary_Exit
+PokemonSummary_Exit: ; 0x0208856C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -389,7 +389,7 @@ sub_0208856C: ; 0x0208856C
 	.balign 4, 0
 _020885D4: .word 0x000007B8
 _020885D8: .word 0x04000050
-	thumb_func_end sub_0208856C
+	thumb_func_end PokemonSummary_Exit
 
 	thumb_func_start sub_020885DC
 sub_020885DC: ; 0x020885DC
@@ -2130,7 +2130,7 @@ sub_0208942C: ; 0x0208942C
 	add r4, r0, #0
 	ldr r0, _02089450 ; =0x00000504
 	ldr r0, [r4, r0]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _0208944A
 	mov r1, #8
@@ -2152,7 +2152,7 @@ sub_02089454: ; 0x02089454
 	add r4, r0, #0
 	ldr r0, _02089474 ; =0x00000508
 	ldr r0, [r4, r0]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _02089470
 	add r0, r4, #0
@@ -6001,6 +6001,6 @@ _021039E8:
 
 	; File boundary
 
-	.public _02103A1C
-_02103A1C:
-	.word sub_02088298, sub_02088424, sub_0208856C, 0xFFFFFFFF
+	.public gOverlayTemplate_PokemonSummary
+gOverlayTemplate_PokemonSummary:
+	.word PokemonSummary_Init, PokemonSummary_Main, PokemonSummary_Exit, 0xFFFFFFFF

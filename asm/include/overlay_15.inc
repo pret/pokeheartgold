@@ -144,7 +144,7 @@
 .public String_Delete
 .public String16_FormatInteger
 .public Thunk_G3X_Reset
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_GetTrainerGender
@@ -224,7 +224,7 @@
 .public _s32_div_f
 .public _u32_div_f
 .public gSystem
-.public ov15_BagApp_Init
-.public ov15_BagApp_Exec
-.public ov15_BagApp_Exit
+.public Bag_Init
+.public Bag_Main
+.public Bag_Exit
 .public ov15_022008B8

@@ -50,7 +50,7 @@
 .public sub_0200A740
 .public DestroySingle2DGfxResObj
 .public Get2DGfxResObjById
-.public sub_0200A7FC
+.public GF2DGfxResObj_GetResID
 .public sub_0200ADA4
 .public sub_0200AEB0
 .public sub_0200B00C
@@ -187,7 +187,7 @@
 .public TouchHitboxController_Destroy
 .public TouchHitboxController_IsTriggered
 .public Thunk_G3X_Reset
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public GF_3DVramMan_InitFrameTexVramManager
 .public GF_3DVramMan_InitFramePlttVramManager
 .public PlayerProfile_GetPlayerName_NewString
@@ -258,6 +258,6 @@
 .public ov41_0224B57C
 .public ov41_0224B5C8
 .public ov41_0224B5D0
-.public ov41_0224BA10
-.public ov41_0224BACC
-.public ov41_0224BBA4
+.public AccessoryPortrait_Init
+.public AccessoryPortrait_Main
+.public AccessoryPortrait_Exit

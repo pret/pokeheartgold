@@ -6,8 +6,9 @@ $(EVO_NARC): %.narc: $(EVO_JSON) $(EVO_TEMPLATE)
 	$(JSONPROC) $^ $*.c
 	$(WINE) $(MWCC) $(MWCFLAGS) -c -o $*.o $*.c
 	$(O2NARC) $*.o $@ -n -p 0x00
+	@$(RM) $*.o $*.c
 
 $(EVO_NARC): MWCFLAGS += -include global.h
 $(EVO_JSON): | $(WORK_DIR)/include/global.h
 
-FS_CLEAN_TARGETS += $(EVO_NARC)
+FS_CLEAN_TARGETS += $(EVO_NARC) $(EVO_NARC:%.narc=%.c) $(EVO_NARC:%.narc=%.o)

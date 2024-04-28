@@ -351,7 +351,7 @@ BOOL ScrCmd_WaitButtonOrDelay(ScriptContext *ctx);
 BOOL ScrCmd_PartySelectUI(ScriptContext *ctx);
 BOOL ScrCmd_350(ScriptContext *ctx);
 BOOL ScrCmd_PartySelect(ScriptContext *ctx);
-BOOL ScrCmd_ChooseMoveUI(ScriptContext *ctx);
+BOOL ScrCmd_PokemonSummaryScreen(ScriptContext *ctx);
 BOOL ScrCmd_GetMoveSelection(ScriptContext *ctx);
 BOOL ScrCmd_GetPartyMonSpecies(ScriptContext *ctx);
 BOOL ScrCmd_PartymonIsMine(ScriptContext *ctx);
@@ -466,8 +466,8 @@ BOOL ScrCmd_EnableMassOutbreaks(ScriptContext *ctx);
 BOOL ScrCmd_CreateRoamer(ScriptContext *ctx);
 BOOL ScrCmd_465(ScriptContext *ctx);
 BOOL ScrCmd_466(ScriptContext *ctx);
-BOOL ScrCmd_MoveRelearnerInit(ScriptContext *ctx);
-BOOL ScrCmd_MoveTutorInit(ScriptContext *ctx);
+BOOL ScrCmd_MoveRelearner(ScriptContext *ctx);
+BOOL ScrCmd_MoveTutor(ScriptContext *ctx);
 BOOL ScrCmd_MoveRelearnerGetResult(ScriptContext *ctx);
 BOOL ScrCmd_LoadNPCTrade(ScriptContext *ctx);
 BOOL ScrCmd_GetOfferedSpecies(ScriptContext *ctx);
@@ -726,7 +726,7 @@ BOOL ScrCmd_723(ScriptContext *ctx);
 BOOL ScrCmd_724(ScriptContext *ctx);
 BOOL ScrCmd_725(ScriptContext *ctx);
 BOOL ScrCmd_726(ScriptContext *ctx);
-BOOL ScrCmd_727(ScriptContext *ctx);
+BOOL ScrCmd_GetFollowPokePartyIndex(ScriptContext *ctx);
 BOOL ScrCmd_728(ScriptContext *ctx);
 BOOL ScrCmd_729(ScriptContext *ctx);
 BOOL ScrCmd_730(ScriptContext *ctx);
@@ -753,7 +753,7 @@ BOOL ScrCmd_MenuInit(ScriptContext *ctx);
 BOOL ScrCmd_MenuItemAdd(ScriptContext *ctx);
 BOOL ScrCmd_MenuExec(ScriptContext *ctx);
 BOOL ScrCmd_RockSmashItemCheck(ScriptContext *ctx);
-BOOL ScrCmd_754(ScriptContext *ctx);
+BOOL ScrCmd_TryHeadbuttEncounter(ScriptContext *ctx);
 BOOL ScrCmd_755(ScriptContext *ctx);
 BOOL ScrCmd_756(ScriptContext *ctx);
 BOOL ScrCmd_757(ScriptContext *ctx);
@@ -1206,7 +1206,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_PartySelectUI,
     ScrCmd_350,
     ScrCmd_PartySelect,
-    ScrCmd_ChooseMoveUI,
+    ScrCmd_PokemonSummaryScreen,
     ScrCmd_GetMoveSelection,
     ScrCmd_GetPartyMonSpecies,
     ScrCmd_PartymonIsMine,
@@ -1321,8 +1321,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_CreateRoamer,
     ScrCmd_465,
     ScrCmd_466,
-    ScrCmd_MoveRelearnerInit,
-    ScrCmd_MoveTutorInit,
+    ScrCmd_MoveRelearner,
+    ScrCmd_MoveTutor,
     ScrCmd_MoveRelearnerGetResult,
     ScrCmd_LoadNPCTrade,
     ScrCmd_GetOfferedSpecies,
@@ -1581,7 +1581,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_724,
     ScrCmd_725,
     ScrCmd_726,
-    ScrCmd_727,
+    ScrCmd_GetFollowPokePartyIndex,
     ScrCmd_728,
     ScrCmd_729,
     ScrCmd_730,
@@ -1608,7 +1608,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_MenuItemAdd,
     ScrCmd_MenuExec,
     ScrCmd_RockSmashItemCheck,
-    ScrCmd_754,
+    ScrCmd_TryHeadbuttEncounter,
     ScrCmd_755,
     ScrCmd_756,
     ScrCmd_757,

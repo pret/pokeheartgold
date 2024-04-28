@@ -88,7 +88,7 @@
 .public Sprite_TickCellOrMulticellAnimation
 .public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_SetPriority
-.public Sprite_IsCellAnimationFinished
+.public Sprite_IsCellAnimationRunning
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New
@@ -164,8 +164,8 @@
 .public sub_020398D4
 .public MapHeader_GetMapSec
 .public FieldSystem_GetSaveData
-.public sub_0203E3D4
-.public sub_0203EB08
+.public Bag_LaunchApp
+.public SafariAreaCustomizer_LaunchApp
 .public SetupNativeScript
 .public ScriptReadHalfword
 .public FieldSysGetAttrAddr

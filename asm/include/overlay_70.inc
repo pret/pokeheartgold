@@ -164,7 +164,7 @@
 .public Get2dSpriteCurrentAnimSeqNo
 .public Sprite_SetPriority
 .public Sprite_SetPalIndex
-.public Sprite_IsCellAnimationFinished
+.public Sprite_IsCellAnimationRunning
 .public sub_02024B78
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
@@ -303,7 +303,7 @@
 .public _s32_div_f
 .public _u32_div_f
 .public gGameLanguage
-.public _02103A1C
+.public gOverlayTemplate_PokemonSummary
 .public gSystem
 .public ov00_021E6A70
 .public ov00_021EC0FC
@@ -342,6 +342,6 @@
 .public ov70_022385C0
 .public ov70_022386F4
 .public _0223DD40
-.public ov71_02246960
-.public ov71_02246B58
-.public ov71_02246BB8
+.public TradeSequence_Init
+.public TradeSequence_Exit
+.public TradeSequence_Main

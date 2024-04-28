@@ -36,7 +36,7 @@ void ClearFlag975(SaveVarsFlags* state);
 void Save_VarsFlags_SetSafariSysFlag(SaveVarsFlags* state);
 void Save_VarsFlags_ClearSafariSysFlag(SaveVarsFlags* state);
 BOOL Save_VarsFlags_CheckSafariSysFlag(SaveVarsFlags* state);
-BOOL CheckFlag996(SaveVarsFlags* state);
+BOOL Save_VarsFlags_CheckBugContestFlag(SaveVarsFlags* state);
 void Save_VarsFlags_SetPalParkSysFlag(SaveVarsFlags* state);
 void Save_VarsFlags_ClearPalParkSysFlag(SaveVarsFlags* state);
 BOOL Save_VarsFlags_CheckPalParkSysFlag(SaveVarsFlags* state);

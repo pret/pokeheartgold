@@ -17,12 +17,12 @@
 #include "seal_case.h"
 #include "task.h"
 #include "unk_020379A0.h"
-#include "unk_0203E348.h"
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
 #include "unk_0206B910.h"
 #include "unk_02078E30.h"
 #include "unk_02091054.h"
+#include "launch_application.h"
 
 FS_EXTERN_OVERLAY(OVY_57);
 
@@ -41,7 +41,7 @@ typedef struct UnkStruct_0206B984 {
 typedef struct UnkStruct_0206B910 {
     u8 filler00[4];
     UnkStruct_0206B984 *unk04;
-    PartyMenuAppData *partyMenu;
+    PartyMenuArgs *partyMenu;
     SaveData *saveData;
     u32 state;
 } UnkStruct_0206B910;
@@ -85,8 +85,8 @@ void sub_0206B910(TaskManager *taskManager, SaveData *saveData) {
     r4->unk04->options = Save_PlayerData_GetOptionsAddr(saveData);
     r4->unk04->saveData = saveData;
     r4->unk04->unk2c = &fieldSystem->unk_10C;
-    r4->partyMenu = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuAppData));
-    memset(r4->partyMenu, 0, sizeof(PartyMenuAppData));
+    r4->partyMenu = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
+    memset(r4->partyMenu, 0, sizeof(PartyMenuArgs));
     TaskManager_Call(taskManager, sub_0206B984, r4);
 }
 
@@ -131,7 +131,7 @@ static BOOL sub_0206B984(TaskManager *taskManager) {
         }
         break;
     case 3:
-        PartyMenuAppData *partyMenu = r7->partyMenu;
+        PartyMenuArgs *partyMenu = r7->partyMenu;
         partyMenu->party = r6->party;
         partyMenu->bag = Save_Bag_Get(r7->saveData);
         partyMenu->mailbox = Save_Mailbox_Get(r7->saveData);
@@ -140,12 +140,12 @@ static BOOL sub_0206B984(TaskManager *taskManager) {
         partyMenu->unk_24 = 15;
         partyMenu->options = r6->options;
         partyMenu->fieldSystem = fieldSystem;
-        partyMenu->fieldSystem_unk_10C = &(fieldSystem->unk_10C);
-        CallApplicationAsTask(taskManager, &_0210159C, partyMenu);
+        partyMenu->unk20 = &(fieldSystem->unk_10C);
+        CallApplicationAsTask(taskManager, &gOverlayTemplate_PartyMenu, partyMenu);
         r7->state = 4;
         break;
     case 4: {
-        PartyMenuAppData *partyMenu = r7->partyMenu;
+        PartyMenuArgs *partyMenu = r7->partyMenu;
         u32 index = r7->unk04->unk30 + 1;
         if (partyMenu->unk_26 != 7) {
             Pokemon *mon = r7->unk04->mons[partyMenu->unk_26];

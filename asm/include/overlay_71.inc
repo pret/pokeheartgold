@@ -123,11 +123,11 @@
 .public Sprite_GetMatrixPtr
 .public Set2dSpriteAnimSeqNo
 .public Sprite_SetPriority
-.public Sprite_IsCellAnimationFinished
+.public Sprite_IsCellAnimationRunning
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public GF_3DVramMan_InitFrameTexVramManager
 .public GF_3DVramMan_InitFramePlttVramManager
 .public Options_GetFrame
@@ -183,6 +183,6 @@
 .public FX_SinCosTable_
 .public NNS_GfdDefaultFuncAllocTexVram
 .public NNS_GfdDefaultFuncAllocPlttVram
-.public ov71_02246960
-.public ov71_02246B58
-.public ov71_02246BB8
+.public TradeSequence_Init
+.public TradeSequence_Exit
+.public TradeSequence_Main
