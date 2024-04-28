@@ -2360,11 +2360,11 @@ static void RegisterHallOfFame_GetPartyDetails(RegisterHallOfFameData *data) {
             }
             ReadWholeNarcMemberByIdPair(hofMon->tsure_param, NARC_fielddata_tsurepoke_tp_param, SpeciesToOverworldModelIndexOffset(hofMon->species));
             GetPokemonSpriteCharAndPlttNarcIds(&sp40, pokemon, 2);
-            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[0], hofMon->backspriteCharbuf, hofMon->personality, 1, 2, hofMon->species);
-            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[1], hofMon->unk_0CEC, hofMon->personality, 1, 2, hofMon->species);
+            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[0], hofMon->backspriteCharbuf, hofMon->personality, TRUE, 2, hofMon->species);
+            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[1], hofMon->unk_0CEC, hofMon->personality, TRUE, 2, hofMon->species);
             GetPokemonSpriteCharAndPlttNarcIds(&sp40, pokemon, 0);
-            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[0], hofMon->frontspriteCharbuf, hofMon->personality, 1, 0, hofMon->species);
-            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[1], hofMon->unk_25EC, hofMon->personality, 1, 0, hofMon->species);
+            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[0], hofMon->frontspriteCharbuf, hofMon->personality, TRUE, 0, hofMon->species);
+            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[1], hofMon->unk_25EC, hofMon->personality, TRUE, 0, hofMon->species);
             sub_02072914(narc, hofMon->unk_001C, hofMon->species, 1);
             sub_02072914(narc, hofMon->unk_0044, hofMon->species, 0);
             ++data->numMons;
