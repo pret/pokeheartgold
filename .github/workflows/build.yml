@@ -49,7 +49,7 @@ jobs:
           BUILD_OUT: build/soulsilver.us/
         uses: ./.github/workflows/build-rom
 
-  build-nonmatching:
+  build-nonmatching-heartgold:
     runs-on: ubuntu-22.04
 
     steps:
@@ -65,13 +65,29 @@ jobs:
           COMPARE: 0
         uses: ./.github/workflows/build-rom
 
+  build-nonmatching-soulsilver:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Build ROM
+        env:
+          GAME_VERSION: SOULSILVER
+          GAME_LANGUAGE: ENGLISH
+          GAME_REVISION: 0
+          NONMATCHING: 1
+          COMPARE: 0
+        uses: ./.github/workflows/build-rom
+
   post-merge:
     runs-on: ubuntu-22.04
     if: |
       always() &&
       (github.event_name == 'push') &&
       contains(join(needs.*.result, ','), 'success')
-    needs: [build-heartgold, build-soulsilver, build-nonmatching]
+    needs: [build-heartgold, build-soulsilver, build-nonmatching-heartgold, build-nonmatching-soulsilver]
 
     steps:
       - name: Checkout Repo
