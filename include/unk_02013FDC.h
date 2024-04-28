@@ -4,12 +4,14 @@
 #include "filesystem.h"
 
 typedef struct UnkStruct_02014E30 {
-    u32 unk_0;
-    u32 unk_4;
-    u32 unk_8;
-    u32 unk_C;
+    int x;
+    int y;
+    int w;
+    int h;
 } UnkStruct_02014E30;
 
+void sub_020141C4(NarcId a0, s32 a1, HeapID a2, int sp8, int sp48, int sp4C, int sp50, void *sp54);
+void *sub_02014298(NarcId a0, s32 a1, HeapID a2, int a3, int a4, int a5, int a6);
 void *sub_0201442C(NarcId narcId, s32 fileId, HeapID heapId);
 void *sub_02014450(NarcId narcId, s32 fileId, HeapID heapId);
 // FIXME: Types are probably wrong.

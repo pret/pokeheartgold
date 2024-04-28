@@ -1564,7 +1564,7 @@ static void RegisterHallOfFame_IndivMonsScene_SetPicGfxAndPltt(RegisterHallOfFam
 
 int ov63_dummy_00(RegisterHallOfFameData *data);
 int ov63_dummy_00(RegisterHallOfFameData *data) {
-        return sDeadstrippedData_0221FCD8[data->curMonIndex].unk_0;
+        return sDeadstrippedData_0221FCD8[data->curMonIndex].x;
 }
 
 static void RegisterHallOfFame_SetSilhouettePalette(RegisterHallOfFameData *data, int picIdx, RegisterHallOfFameSilhouettePal pal) {
