@@ -2184,9 +2184,9 @@ void GetBoxmonSpriteCharAndPlttNarcIds(struct SomeDrawPokemonStruct *spC, BoxPok
 }
 
 void GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct * spC, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 personality) {
-    spC->unk6 = 0;
-    spC->unk8 = 0;
-    spC->unkC = 0;
+    spC->species = 0;
+    spC->isAnimated = 0;
+    spC->personality = 0;
     form = sub_02070438(species, form);
     switch (species) {
     case SPECIES_BURMY:
@@ -2268,11 +2268,11 @@ void GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct * spC, u16 sp
         spC->narcID = NARC_poketool_pokegra_pokegra;
         spC->charDataID = (u16)(species * 6 + whichFacing + (gender == MON_FEMALE ? 0 : 1));
         spC->palDataID = (u16)(shiny + (species * 6 + 4));
-        if (species == SPECIES_SPINDA && whichFacing == 2)
+        if (species == SPECIES_SPINDA && whichFacing == MON_PIC_FACING_FRONT)
         {
-            spC->unk6 = SPECIES_SPINDA;
-            spC->unk8 = 0;
-            spC->unkC = personality;
+            spC->species = SPECIES_SPINDA;
+            spC->isAnimated = 0;
+            spC->personality = personality;
         }
         break;
     }
@@ -2361,9 +2361,9 @@ void sub_02070560(struct SomeDrawPokemonStruct * spC, u16 species, u8 whichFacin
 }
 
 void DP_GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct * spC, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 personality) {
-    spC->unk6 = 0;
-    spC->unk8 = 0;
-    spC->unkC = 0;
+    spC->species = 0;
+    spC->isAnimated = 0;
+    spC->personality = 0;
     form = sub_02070438(species, form);
     switch (species) {
     case SPECIES_BURMY:
@@ -2459,11 +2459,11 @@ void DP_GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct * spC, u16
         break;
     default:
         sub_02070560(spC, species, whichFacing, gender, shiny);
-        if (species == SPECIES_SPINDA && whichFacing == 2)
+        if (species == SPECIES_SPINDA && whichFacing == MON_PIC_FACING_FRONT)
         {
-            spC->unk6 = SPECIES_SPINDA;
-            spC->unk8 = 0;
-            spC->unkC = personality;
+            spC->species = SPECIES_SPINDA;
+            spC->isAnimated = 0;
+            spC->personality = personality;
         }
         break;
     }

@@ -2,6 +2,7 @@
 #include "unk_02013FDC.h"
 #include "unk_02007FD8.h"
 #include "constants/species.h"
+#include "constants/pokemon.h"
 
 static void sub_02013FDC(const u8 *src, u8 *dest, int *pSrcOffset, int *pDestOffset, u32 destBlockSize, u32 srcBlockSize);
 static void sub_0201401C(NarcId narcId, s32 fileId, HeapID heapId, NNSG2dCharacterData **pCharData);
@@ -78,7 +79,7 @@ static void sub_02014128(NarcId narcId, s32 fileId, HeapID heapId, int x, int y,
     sub_0201401C(narcId, fileId, heapId, &ppCharData);
     sub_02009D28(ppCharData->pRawData, narcId);
     BOOL isSpinda = sub_020140E8(species);
-    if (whichFacing == 2 && isSpinda == TRUE) {
+    if (whichFacing == MON_PIC_FACING_FRONT && isSpinda == TRUE) {
         sub_02009B60(ppCharData->pRawData, pid, isAnimated);
     }
     sub_02014050(x, y, width, height, ppCharData, dest);

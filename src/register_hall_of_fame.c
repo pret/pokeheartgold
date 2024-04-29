@@ -157,10 +157,8 @@ typedef struct RegisterHofMon {
     int partyIndex;
     struct UnkStruct_02072914_sub_sub unk_001C[10];
     struct UnkStruct_02072914_sub_sub unk_0044[10];
-    u16 backspriteCharbuf[1600];
-    u16 unk_0CEC[1600];
-    u16 frontspriteCharbuf[1600];
-    u16 unk_25EC[1600];
+    u16 frontspriteCharbuf[2][1600];
+    u16 backspriteCharbuf[2][1600];
     u16 plttBak[16];
 } RegisterHofMon;
 
@@ -1548,7 +1546,7 @@ static void RegisterHallOfFame_IndivMonsScene_SetPicGfxAndPltt(RegisterHallOfFam
     SomeDrawPokemonStruct drawMonStruct;
     GetPokemonSpriteCharAndPlttNarcIds(&drawMonStruct, hofMon->mon, whichFacing);
     RegisterHallOfFame_ReplaceSpriteChar(
-        whichFacing == 2 ? hofMon->backspriteCharbuf : hofMon->frontspriteCharbuf,
+        whichFacing == MON_PIC_FACING_FRONT ? hofMon->frontspriteCharbuf : hofMon->backspriteCharbuf,
         NNS_G2dGetImageLocation(Sprite_GetImageProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN),
         3200
     );
@@ -2359,12 +2357,12 @@ static void RegisterHallOfFame_GetPartyDetails(RegisterHallOfFameData *data) {
                 hofMon->printGender = TRUE;
             }
             ReadWholeNarcMemberByIdPair(hofMon->tsure_param, NARC_fielddata_tsurepoke_tp_param, SpeciesToOverworldModelIndexOffset(hofMon->species));
-            GetPokemonSpriteCharAndPlttNarcIds(&sp40, pokemon, 2);
-            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[0], hofMon->backspriteCharbuf, hofMon->personality, TRUE, 2, hofMon->species);
-            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[1], hofMon->unk_0CEC, hofMon->personality, TRUE, 2, hofMon->species);
-            GetPokemonSpriteCharAndPlttNarcIds(&sp40, pokemon, 0);
-            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[0], hofMon->frontspriteCharbuf, hofMon->personality, TRUE, 0, hofMon->species);
-            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[1], hofMon->unk_25EC, hofMon->personality, TRUE, 0, hofMon->species);
+            GetPokemonSpriteCharAndPlttNarcIds(&sp40, pokemon, MON_PIC_FACING_FRONT);
+            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[0], hofMon->frontspriteCharbuf[0], hofMon->personality, TRUE, 2, hofMon->species);
+            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[1], hofMon->frontspriteCharbuf[1], hofMon->personality, TRUE, 2, hofMon->species);
+            GetPokemonSpriteCharAndPlttNarcIds(&sp40, pokemon, MON_PIC_FACING_BACK);
+            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[0], hofMon->backspriteCharbuf[0], hofMon->personality, TRUE, 0, hofMon->species);
+            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[1], hofMon->backspriteCharbuf[1], hofMon->personality, TRUE, 0, hofMon->species);
             sub_02072914(narc, hofMon->unk_001C, hofMon->species, 1);
             sub_02072914(narc, hofMon->unk_0044, hofMon->species, 0);
             ++data->numMons;
@@ -2436,7 +2434,7 @@ typedef struct RegisterHofTaskData_IndivMonAnimAndCry {
     RegisterHofMon *hofMon;
     UnkStruct_02009264 unk_04;
     NARC *narc;
-    u16 *charbuf;
+    u16 (*charbuf)[1600];
     u32 imageLocation;
     u16 unk_24;
     BOOL startCry;
@@ -2448,12 +2446,12 @@ static void RegisterHallOfFame_CreateTask_IndivMonAnimAndCry(RegisterHallOfFameD
     taskData->startCry = startCry;
     taskData->narc = data->narcA180;
     taskData->imageLocation = NNS_G2dGetImageLocation(Sprite_GetImageProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
-    if (facing == 2) {
-        taskData->charbuf = taskData->hofMon->backspriteCharbuf;
+    if (facing == MON_PIC_FACING_FRONT) {
+        taskData->charbuf = taskData->hofMon->frontspriteCharbuf;
         taskData->unk_24 = 1;
         sub_02009264(&taskData->unk_04, taskData->hofMon->unk_001C);
     } else {
-        taskData->charbuf = taskData->hofMon->frontspriteCharbuf;
+        taskData->charbuf = taskData->hofMon->backspriteCharbuf;
         taskData->unk_24 = 0;
         sub_02009264(&taskData->unk_04, taskData->hofMon->unk_0044);
     }
@@ -2474,7 +2472,7 @@ static void Task_RegisterHallOfFame_IndivMonAnimAndCry(SysTask *task, void *task
     }
     int r0 = sub_02009284(&showPic->unk_04);
     if (r0 >= 0) {
-        RegisterHallOfFame_ReplaceSpriteChar(&((u8 *)showPic->charbuf)[3200 * r0], showPic->imageLocation, 3200);
+        RegisterHallOfFame_ReplaceSpriteChar(showPic->charbuf[r0], showPic->imageLocation, 3200);
     } else {
         FreeToHeap(showPic);
         SysTask_Destroy(task);
