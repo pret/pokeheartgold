@@ -47,3 +47,23 @@ UnkStruct_02007FD4 *sub_02007FD4(HeapID heapId) {
     ret->unk_332 = 1;
     return ret;
 }
+
+// void sub_02008120(UnkStruct_02007FD4 *r5) {
+//     sub_020094FC(r5);
+//     sub_0200994C(r5);
+//     NNS_G3dGeFlushBuffer();
+//     G3_PushMtx();
+//     G3_TexImageParam(r5->unk_2B0.attr.fmt, GX_TEXGEN_TEXCOORD, r5->unk_2B0.attr.sizeS, r5->unk_2B0.attr.sizeT, GX_TEXREPEAT_NONE, GX_TEXFLIP_NONE, r5->unk_2B0.attr.plttUse, r5->unk_2EC);
+//     for (int i = 0; i < 4; ++i) {
+//         if (r5->unk_000[i].unk_00_00 && !r5->unk_000[i].unk_24.unk_30_00 && !r5->unk_000[i].unk_24.unk_30_0B) {
+//             if (r5->unk_000[i].unk_68 != NULL) {
+//                 r5->unk_000[i].unk_68(&r5->unk_000[i], &r5->unk_000[i].unk_24);
+//             }
+//             NNS_G3dGeFlushBuffer();
+//             if (r5->unk_333 != 1) {
+//                 G3_Identity();
+//             }
+//             sub_0200925C(&r5->unk_000[i]);
+//         }
+//     }
+// }

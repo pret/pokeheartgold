@@ -14,13 +14,28 @@ typedef struct UnkStruct_02009264 {
     struct UnkStruct_02072914_sub_sub *unk_10;
 } UnkStruct_02009264;
 
+typedef struct UnkStruct_02007FD4_sub_sub {
+    u8 filler_00[0x30];
+    u32 unk_30_00:1;
+    u32 unk_30_01:10;
+    u32 unk_30_0B:1;
+    u32 unk_30_0C:20;
+} UnkStruct_02007FD4_sub_sub;
+
 typedef struct UnkStruct_02007FD4_sub {
-    u8 filler_00[0xAC];
-} UnkStruct_02007FD4_sub;
+    u32 unk_00_00:1;
+    u32 unk_00_01:31;
+    u8 filler_04[0x20];
+    UnkStruct_02007FD4_sub_sub unk_24;
+    u8 filler_58[0x10];
+    void (*unk_68)(struct UnkStruct_02007FD4_sub *, UnkStruct_02007FD4_sub_sub *);
+    u8 filler_6C[64];
+} UnkStruct_02007FD4_sub; // size: 0xAC
 
 typedef struct UnkStruct_02007FD4 {
     UnkStruct_02007FD4_sub unk_000[4];
-    u8 unk_2B0[0x38];
+    NNSG2dImageProxy unk_2B0;
+    NNSG2dImagePaletteProxy unk_2D4;
     HeapID unk_2E8;
     int unk_2EC;
     int unk_2F0;
