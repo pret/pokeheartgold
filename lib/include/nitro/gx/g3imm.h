@@ -19,7 +19,15 @@ typedef enum {
 #define GX_PACK_POPMTX_PARAM(num)      ((u32) (num))
 #define GX_PACK_STOREMTX_PARAM(num)    ((u32) (num))
 #define GX_PACK_RESTOREMTX_PARAM(num)  ((u32) (num))
-
+#define GX_PACK_TEXIMAGE_PARAM(texFmt, texGen, s, t, repeat, flip, pltt0, addr) \
+    ((u32)(((addr) >> 3)                                    | \
+           ((texFmt) << REG_G3_TEXIMAGE_PARAM_TEXFMT_SHIFT) | \
+           ((texGen) << REG_G3_TEXIMAGE_PARAM_TGEN_SHIFT)   | \
+           ((s) << REG_G3_TEXIMAGE_PARAM_V_SIZE_SHIFT)      | \
+           ((t) << REG_G3_TEXIMAGE_PARAM_T_SIZE_SHIFT)      | \
+           ((repeat) << REG_G3_TEXIMAGE_PARAM_RS_SHIFT)     | \
+           ((flip) << REG_G3_TEXIMAGE_PARAM_FS_SHIFT)       | \
+           ((pltt0) << REG_G3_TEXIMAGE_PARAM_TR_SHIFT)))
 #define GX_PACK_SWAPBUFFERS_PARAM(am, zw) \
     ((u32) (((am) << REG_G3_SWAP_BUFFERS_XS_SHIFT) | \
             ((zw) << REG_G3_SWAP_BUFFERS_DP_SHIFT)))
@@ -42,6 +50,14 @@ static inline void G3_PushMtx() {
 
 static inline void G3_PopMtx(int num) {
 	reg_G3_MTX_POP = GX_PACK_POPMTX_PARAM(num);
+}
+
+static inline void G3_TexImageParam(GXTexFmt texFmt, GXTexGen texGen, GXTexSizeS s, GXTexSizeT t, GXTexRepeat repeat, GXTexFlip flip, GXTexPlttColor0 pltt0, u32 addr) {
+    reg_G3_TEXIMAGE_PARAM = GX_PACK_TEXIMAGE_PARAM(texFmt, texGen, s, t, repeat, flip, pltt0, addr);
+}
+
+static inline void G3_Identity() {
+    reg_G3_MTX_IDENTITY = 0;
 }
 
 #endif //NITRO_GX_G3IMM_H_
