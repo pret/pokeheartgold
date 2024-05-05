@@ -191,7 +191,7 @@ BOOL sub_020085DC(UnkStruct_02007FD4_sub *a0) {
     return a0->unk_58 != 0;
 }
 
-UnkStruct_02007FD4_sub *sub_020085EC(UnkStruct_02007FD4 *a0, SomeDrawPokemonStruct *a1, int a2, int a3, int a4, int a5, UnkStruct_02007FD4_sub84 *a6, UnkStruct_02007FD4_sub_func68 *a7) {
+UnkStruct_02007FD4_sub *sub_020085EC(UnkStruct_02007FD4 *a0, SomeDrawPokemonStruct *a1, int a2, int a3, int a4, int a5, UnkStruct_02007FD4_sub84 *a6, UnkStruct_02007FD4_sub_func68 a7) {
     int i;
     for (i = 0; i < 4; ++i) {
         if (!a0->unk_000[i].unk_00_00) {
@@ -200,4 +200,47 @@ UnkStruct_02007FD4_sub *sub_020085EC(UnkStruct_02007FD4 *a0, SomeDrawPokemonStru
     }
     GF_ASSERT(i != 4);
     return sub_02008634(a0, a1, a2, a3, a4, a5, i, a6, a7);
+}
+
+UnkStruct_02007FD4_sub *sub_02008634(UnkStruct_02007FD4 *a0, SomeDrawPokemonStruct *a1, int a2, int a3, int a4, int a5, int a6, UnkStruct_02007FD4_sub84 *a7, UnkStruct_02007FD4_sub_func68 a8) {
+    GF_ASSERT(!a0->unk_000[a6].unk_00_00);
+    MI_CpuClearFast(&a0->unk_000[a6], sizeof(UnkStruct_02007FD4_sub));
+    a0->unk_000[a6].unk_00_00 = TRUE;
+    a0->unk_000[a6].unk_00_07 = TRUE;
+    a0->unk_000[a6].unk_00_08 = TRUE;
+    a0->unk_000[a6].unk_00_01 = a5;
+    a0->unk_000[a6].unk_04 = *a1;
+    a0->unk_000[a6].unk_14 = *a1;
+    a0->unk_000[a6].unk_24.unk_00 = a2;
+    a0->unk_000[a6].unk_24.unk_02 = a3;
+    a0->unk_000[a6].unk_24.unk_04 = a4;
+    a0->unk_000[a6].unk_24.unk_10 = 0x100;
+    a0->unk_000[a6].unk_24.unk_12 = 0x100;
+    a0->unk_000[a6].unk_24.unk_30_02 = 31;
+    a0->unk_000[a6].unk_24.unk_2C_00 = 31;
+    a0->unk_000[a6].unk_24.unk_2C_05 = 31;
+    a0->unk_000[a6].unk_24.unk_2C_10 = 31;
+    a0->unk_000[a6].unk_24.unk_2C_15 = 16;
+    a0->unk_000[a6].unk_24.unk_2C_20 = 16;
+    a0->unk_000[a6].unk_24.unk_2C_25 = 16;
+    a0->unk_000[a6].unk_68 = a8;
+    a0->unk_000[a6].unk_6C.unk_4 = a2;
+    a0->unk_000[a6].unk_6C.unk_6 = a3;
+    a0->unk_000[a6].unk_6C.unk_0_2 = TRUE;
+    a0->unk_000[a6].unk_6C.unk_0_3 = TRUE;
+    a0->unk_000[a6].unk_6C.unk_0_4 = TRUE;
+    if (a7 != NULL) {
+        MI_CpuCopy8(a7, a0->unk_000[a6].unk_84, 10 * sizeof(UnkStruct_02007FD4_sub84));
+    }
+    return &a0->unk_000[a6];
+}
+
+void sub_02008780(UnkStruct_02007FD4_sub *a0) {
+    a0->unk_00_00 = FALSE;
+}
+
+void sub_0200878C(UnkStruct_02007FD4 *a0) {
+    for (int i = 0; i < 4; ++i) {
+        sub_02008780(&a0->unk_000[i]);
+    }
 }
