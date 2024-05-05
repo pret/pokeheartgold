@@ -160,3 +160,44 @@ void sub_02008120(UnkStruct_02007FD4 *r5) {
     }
     G3_PopMtx(1);
 }
+
+void sub_02008524(UnkStruct_02007FD4 *a0) {
+    FreeToHeap(a0->unk_2FC);
+    FreeToHeap(a0->unk_300);
+    FreeToHeap(a0->unk_304);
+    FreeToHeap(a0);
+}
+
+void sub_02008550(UnkStruct_02007FD4_sub *a0) {
+    a0->unk_59 = 0;
+    for (int i = 0; i < 10; ++i) {
+        a0->unk_5C[i] = 0;
+    }
+    if (a0->unk_84[a0->unk_59].unk_0 == -1) {
+        a0->unk_5B = 0;
+    } else {
+        a0->unk_58 = 1;
+        a0->unk_5B = a0->unk_84[a0->unk_59].unk_0;
+        a0->unk_5A = a0->unk_84[a0->unk_59].unk_1;
+        a0->unk_24.unk_08 = a0->unk_84[a0->unk_59].unk_2;
+    }
+}
+
+void sub_020085C8(UnkStruct_02007FD4_sub *a0, UnkStruct_02007FD4_sub84 *a1) {
+    MI_CpuCopy8(a1, a0->unk_84, sizeof(struct UnkStruct_02007FD4_sub84) * 10);
+}
+
+BOOL sub_020085DC(UnkStruct_02007FD4_sub *a0) {
+    return a0->unk_58 != 0;
+}
+
+UnkStruct_02007FD4_sub *sub_020085EC(UnkStruct_02007FD4 *a0, SomeDrawPokemonStruct *a1, int a2, int a3, int a4, int a5, UnkStruct_02007FD4_sub84 *a6, UnkStruct_02007FD4_sub_func68 *a7) {
+    int i;
+    for (i = 0; i < 4; ++i) {
+        if (!a0->unk_000[i].unk_00_00) {
+            break;
+        }
+    }
+    GF_ASSERT(i != 4);
+    return sub_02008634(a0, a1, a2, a3, a4, a5, i, a6, a7);
+}
