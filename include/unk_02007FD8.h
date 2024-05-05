@@ -83,8 +83,11 @@ typedef void (*UnkStruct_02007FD4_sub_func68)(struct UnkStruct_02007FD4_sub *, U
 typedef struct UnkStruct_02007FD4_sub {
     u32 unk_00_00:1;
     u32 unk_00_01:6;
-    u32 unk_00_07:25;
-    u8 filler_04[0x20];
+    u32 unk_00_07:1;
+    u32 unk_00_08:1;
+    u32 unk_00_09:23;
+    SomeDrawPokemonStruct unk_04;
+    SomeDrawPokemonStruct unk_14;
     UnkStruct_02007FD4_sub_sub unk_24;
     u8 unk_58;
     u8 unk_59;
@@ -128,8 +131,10 @@ void sub_02008524(UnkStruct_02007FD4 *r5);
 void sub_02008550(UnkStruct_02007FD4_sub *a0);
 void sub_020085C8(UnkStruct_02007FD4_sub *a0, UnkStruct_02007FD4_sub84 *a1);
 BOOL sub_020085DC(UnkStruct_02007FD4_sub *a0);
-UnkStruct_02007FD4_sub *sub_020085EC(UnkStruct_02007FD4 *a0, SomeDrawPokemonStruct *a1, int a2, int a3, int a4, int a5, UnkStruct_02007FD4_sub84 *a6, UnkStruct_02007FD4_sub_func68 *a7);
-UnkStruct_02007FD4_sub *sub_02008634(UnkStruct_02007FD4 *a0, SomeDrawPokemonStruct *a1, int a2, int a3, int a4, int a5, int a6, UnkStruct_02007FD4_sub84 *a7, UnkStruct_02007FD4_sub_func68 *a8);
+UnkStruct_02007FD4_sub *sub_020085EC(UnkStruct_02007FD4 *a0, SomeDrawPokemonStruct *a1, int a2, int a3, int a4, int a5, UnkStruct_02007FD4_sub84 *a6, UnkStruct_02007FD4_sub_func68 a7);
+UnkStruct_02007FD4_sub *sub_02008634(UnkStruct_02007FD4 *a0, SomeDrawPokemonStruct *a1, int a2, int a3, int a4, int a5, int a6, UnkStruct_02007FD4_sub84 *a7, UnkStruct_02007FD4_sub_func68 a8);
+void sub_02008780(UnkStruct_02007FD4_sub *a0);
+void sub_0200878C(UnkStruct_02007FD4 *a0);
 void sub_020087A4(u32 *a0, int a1, int dy);
 void sub_02009264(UnkStruct_02009264 *a0, struct UnkStruct_02072914_sub_sub *a1);
 int sub_02009284(UnkStruct_02009264 *a0);
