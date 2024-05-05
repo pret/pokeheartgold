@@ -15,21 +15,72 @@ typedef struct UnkStruct_02009264 {
 } UnkStruct_02009264;
 
 typedef struct UnkStruct_02007FD4_sub_sub {
-    u8 filler_00[0x30];
+    s16 unk_00;
+    s16 unk_02;
+    int unk_04;
+    s16 unk_08;
+    s16 unk_0A;
+    int unk_0C;
+    s16 unk_10;
+    s16 unk_12;
+    u16 unk_14;
+    u16 unk_16;
+    u16 unk_18;
+    u8 filler_1A[2];
+    s16 unk_1C;
+    s16 unk_1E;
+    u8 unk_20;
+    u8 unk_21;
+    u8 unk_22;
+    u8 unk_23;
+    u8 unk_24;
+    u8 unk_25;
+    u8 unk_26;
+    u8 unk_27;
+    u32 unk_28;
+    u32 unk_2C_00:5;
+    u32 unk_2C_05:5;
+    u32 unk_2C_10:5;
+    u32 unk_2C_15:5;
+    u32 unk_2C_20:5;
+    u32 unk_2C_25:5;
+    u32 unk_2C_30:2;
     u32 unk_30_00:1;
-    u32 unk_30_01:10;
+    u32 unk_30_01:1;
+    u32 unk_30_02:5;
+    u32 unk_30_07:4;
     u32 unk_30_0B:1;
     u32 unk_30_0C:20;
 } UnkStruct_02007FD4_sub_sub;
 
+typedef struct UnkStruct_02007FD4_sub6C {
+    u16 unk_0_0:2;
+    u16 unk_0_2:1;
+    u16 unk_0_3:1;
+    u16 unk_0_4:1;
+    u16 unk_0_5:2;
+    u16 unk_0_7:9;
+    s8 unk_2;
+    u8 unk_3;
+    s16 unk_4;
+    s16 unk_6;
+    s16 unk_8;
+    s16 unk_A;
+} UnkStruct_02007FD4_sub6C;
+
 typedef struct UnkStruct_02007FD4_sub {
     u32 unk_00_00:1;
-    u32 unk_00_01:31;
+    u32 unk_00_01:6;
+    u32 unk_00_07:25;
     u8 filler_04[0x20];
     UnkStruct_02007FD4_sub_sub unk_24;
-    u8 filler_58[0x10];
+    u8 filler_58[3];
+    u8 unk_5B;
+    u8 filler_5C[0xC];
     void (*unk_68)(struct UnkStruct_02007FD4_sub *, UnkStruct_02007FD4_sub_sub *);
-    u8 filler_6C[64];
+    UnkStruct_02007FD4_sub6C unk_6C;
+    UnkStruct_02007FD4_sub6C unk_78;
+    u8 filler_84[40];
 } UnkStruct_02007FD4_sub; // size: 0xAC
 
 typedef struct UnkStruct_02007FD4 {
@@ -53,10 +104,11 @@ typedef struct UnkStruct_02007FD4 {
     u8 unk_331;
     u8 unk_332;
     u8 unk_333;
-    u8 filler_334[4];
+    u32 unk_334;
 } UnkStruct_02007FD4;  // size: 0x338
 
 UnkStruct_02007FD4 *sub_02007FD4(HeapID heapId);
+void sub_02008120(UnkStruct_02007FD4 *r5);
 void sub_020087A4(u32 *a0, int a1, int dy);
 void sub_02009264(UnkStruct_02009264 *a0, struct UnkStruct_02072914_sub_sub *a1);
 int sub_02009284(UnkStruct_02009264 *a0);

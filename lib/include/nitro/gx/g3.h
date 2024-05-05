@@ -179,6 +179,25 @@ typedef enum {
 } GXBegin;
 
 typedef enum {
+    GX_LIGHTMASK_NONE = 0,
+    GX_LIGHTMASK_0 = 1,
+    GX_LIGHTMASK_1 = 2,
+    GX_LIGHTMASK_01 = 3,
+    GX_LIGHTMASK_2 = 4,
+    GX_LIGHTMASK_02 = 5,
+    GX_LIGHTMASK_12 = 6,
+    GX_LIGHTMASK_012 = 7,
+    GX_LIGHTMASK_3 = 8,
+    GX_LIGHTMASK_03 = 9,
+    GX_LIGHTMASK_13 = 10,
+    GX_LIGHTMASK_013 = 11,
+    GX_LIGHTMASK_23 = 12,
+    GX_LIGHTMASK_023 = 13,
+    GX_LIGHTMASK_123 = 14,
+    GX_LIGHTMASK_0123 = 15
+} GXLightMask;
+
+typedef enum {
 	GX_POLYGONMODE_MODULATE    = 0,
 	GX_POLYGONMODE_DECAL       = 1,
 	GX_POLYGONMODE_TOON        = 2,
@@ -211,6 +230,21 @@ typedef enum {
 #endif
 
 #define GX_PACK_VIEWPORT_PARAM(x1, y1, x2, y2)  ((u32)((x1) | ((y1) << 8) | ((x2) << 16) | ((y2) << 24)))
+#define GX_PACK_DIFFAMB_PARAM(diffuse, ambient, IsSetVtxColor)   \
+    ((u32)((diffuse)                                           | \
+           ((ambient) << REG_G3_DIF_AMB_AMBIENT_RED_SHIFT)     | \
+           (((IsSetVtxColor) != FALSE) << REG_G3_DIF_AMB_C_SHIFT)))
+#define GX_PACK_SPECEMI_PARAM(specular, emission, IsShininess)   \
+    ((u32)((specular)                                          | \
+           ((emission) << REG_G3_SPE_EMI_EMISSION_RED_SHIFT)   | \
+           (((IsShininess) != FALSE) << REG_G3_SPE_EMI_S_SHIFT)))
+#define GX_PACK_POLYGONATTR_PARAM(light, polyMode, cullMode, polygonID, alpha, misc) \
+    ((u32)(((light) << REG_G3_POLYGON_ATTR_LE_SHIFT)     | \
+           ((polyMode) << REG_G3_POLYGON_ATTR_PM_SHIFT)  | \
+           ((cullMode) << REG_G3_POLYGON_ATTR_BK_SHIFT)  | \
+           (misc)                                        | \
+           ((polygonID) << REG_G3_POLYGON_ATTR_ID_SHIFT) | \
+           ((alpha) << REG_G3_POLYGON_ATTR_ALPHA_SHIFT)))
 
 typedef struct {
     u8 *curr_cmd;
