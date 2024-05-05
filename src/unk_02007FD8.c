@@ -244,3 +244,422 @@ void sub_0200878C(UnkStruct_02007FD4 *a0) {
         sub_02008780(&a0->unk_000[i]);
     }
 }
+
+void sub_020087A4(UnkStruct_02007FD4_sub *a0, int a1, int a2) {
+    switch (a1) {
+    case 0:
+        a0->unk_24.unk_00 = a2;
+        break;
+    case 1:
+        a0->unk_24.unk_02 = a2;
+        break;
+    case 2:
+        a0->unk_24.unk_04 = a2;
+        break;
+    case 3:
+        a0->unk_24.unk_08 = a2;
+        break;
+    case 4:
+        a0->unk_24.unk_0A = a2;
+        break;
+    case 5:
+        a0->unk_24.unk_0C = a2;
+        break;
+    case 6:
+        a0->unk_24.unk_30_00 = a2;
+        break;
+    case 7:
+        a0->unk_24.unk_14 = a2;
+        break;
+    case 8:
+        a0->unk_24.unk_16 = a2;
+        break;
+    case 9:
+        a0->unk_24.unk_18 = a2;
+        break;
+    case 10:
+        a0->unk_24.unk_1C = a2;
+        break;
+    case 11:
+        a0->unk_24.unk_1E = a2;
+        break;
+    case 12:
+        a0->unk_24.unk_10 = a2;
+        break;
+    case 13:
+        a0->unk_24.unk_12 = a2;
+        break;
+    case 14:
+        a0->unk_24.unk_30_01 = a2;
+        break;
+    case 15:
+        a0->unk_24.unk_20 = a2;
+        break;
+    case 16:
+        a0->unk_24.unk_21 = a2;
+        break;
+    case 17:
+        a0->unk_24.unk_22 = a2;
+        break;
+    case 18:
+        a0->unk_24.unk_23 = a2;
+        break;
+    case 19:
+        a0->unk_6C.unk_4 = a2;
+        break;
+    case 20:
+        a0->unk_6C.unk_6 = a2;
+        break;
+    case 21:
+        a0->unk_6C.unk_8 = a2;
+        break;
+    case 22:
+        a0->unk_6C.unk_A = a2;
+        break;
+    case 23:
+        a0->unk_24.unk_30_02 = a2;
+        break;
+    case 24:
+        a0->unk_24.unk_2C_00 = a2;
+        break;
+    case 25:
+        a0->unk_24.unk_2C_05 = a2;
+        break;
+    case 26:
+        a0->unk_24.unk_2C_10 = a2;
+        break;
+    case 27:
+        a0->unk_24.unk_2C_15 = a2;
+        break;
+    case 28:
+        a0->unk_24.unk_2C_20 = a2;
+        break;
+    case 29:
+        a0->unk_24.unk_2C_25 = a2;
+        break;
+    case 30:
+        a0->unk_24.unk_30_0C = a2;
+        a0->unk_00_08 = TRUE;
+        break;
+    case 31:
+        a0->unk_24.unk_28 = a2;
+        a0->unk_00_08 = TRUE;
+        break;
+    case 32:
+        a0->unk_24.unk_24 = a2;
+        a0->unk_00_08 = TRUE;
+        break;
+    case 33:
+        a0->unk_24.unk_25 = a2;
+        a0->unk_00_08 = TRUE;
+        break;
+    case 34:
+        a0->unk_24.unk_26 = a2;
+        break;
+    case 35:
+        a0->unk_24.unk_30_09 = a2;
+        a0->unk_00_07 = TRUE;
+        break;
+    case 36:
+        a0->unk_24.unk_30_0A = a2;
+        a0->unk_00_07 = TRUE;
+        break;
+    case 37:
+        a0->unk_24.unk_30_0B = a2;
+        break;
+    case 38:
+        a0->unk_5B = a2;
+        break;
+    case 40:
+        a0->unk_24.unk_30_0D = a2;
+        a0->unk_00_07 = TRUE;
+        break;
+    case 41:
+        a0->unk_6C.unk_2 = a2;
+        break;
+    case 42:
+        a0->unk_6C.unk_0_0 = a2;
+        a0->unk_00_08 = TRUE;
+        break;
+    case 43:
+        a0->unk_6C.unk_0_2 = a2;
+        break;
+    case 44:
+        a0->unk_6C.unk_0_3 = a2;
+        break;
+    case 45:
+        a0->unk_6C.unk_0_4 = a2;
+        break;
+    case 46:
+        a0->unk_6C.unk_0_5 = a2;
+        break;
+    }
+}
+
+int sub_02008A78(UnkStruct_02007FD4_sub *a0, int a1) {
+    switch (a1) {
+    case 0:
+        return a0->unk_24.unk_00;
+    case 1:
+        return a0->unk_24.unk_02;
+    case 2:
+        return a0->unk_24.unk_04;
+    case 3:
+        return a0->unk_24.unk_08;
+    case 4:
+        return a0->unk_24.unk_0A;
+    case 5:
+        return a0->unk_24.unk_0C;
+    case 6:
+        return a0->unk_24.unk_30_00;
+    case 7:
+        return a0->unk_24.unk_14;
+    case 8:
+        return a0->unk_24.unk_16;
+    case 9:
+        return a0->unk_24.unk_18;
+    case 10:
+        return a0->unk_24.unk_1C;
+    case 11:
+        return a0->unk_24.unk_1E;
+    case 12:
+        return a0->unk_24.unk_10;
+    case 13:
+        return a0->unk_24.unk_12;
+    case 14:
+        return a0->unk_24.unk_30_01;
+    case 15:
+        return a0->unk_24.unk_20;
+    case 16:
+        return a0->unk_24.unk_21;
+    case 17:
+        return a0->unk_24.unk_22;
+    case 18:
+        return a0->unk_24.unk_23;
+    case 19:
+        return a0->unk_6C.unk_4;
+    case 20:
+        return a0->unk_6C.unk_6;
+    case 21:
+        return a0->unk_6C.unk_8;
+    case 22:
+        return a0->unk_6C.unk_A;
+    case 23:
+        return a0->unk_24.unk_30_02;
+    case 24:
+        return a0->unk_24.unk_2C_00;
+    case 25:
+        return a0->unk_24.unk_2C_05;
+    case 26:
+        return a0->unk_24.unk_2C_10;
+    case 27:
+        return a0->unk_24.unk_2C_15;
+    case 28:
+        return a0->unk_24.unk_2C_20;
+    case 29:
+        return a0->unk_24.unk_2C_25;
+    case 30:
+        return a0->unk_24.unk_30_0C;
+    case 31:
+        return a0->unk_24.unk_28;
+    case 32:
+        return a0->unk_24.unk_24;
+    case 33:
+        return a0->unk_24.unk_25;
+    case 34:
+        return a0->unk_24.unk_26;
+    case 35:
+        return a0->unk_24.unk_30_09;
+    case 36:
+        return a0->unk_24.unk_30_0A;
+    case 37:
+        return a0->unk_24.unk_30_0B;
+    case 38:
+        return a0->unk_5B;
+    case 40:
+        return a0->unk_24.unk_30_0D;
+    case 41:
+        return a0->unk_6C.unk_2;
+    case 42:
+        return a0->unk_6C.unk_0_0;
+    case 43:
+        return a0->unk_6C.unk_0_2;
+    case 44:
+        return a0->unk_6C.unk_0_3;
+    case 45:
+        return a0->unk_6C.unk_0_4;
+    case 46:
+        return a0->unk_6C.unk_0_5;
+    }
+
+    GF_ASSERT(FALSE);
+    return 0;
+}
+
+void sub_02008C2C(UnkStruct_02007FD4_sub *a0, int a1, int a2) {
+    switch (a1) {
+    case 0:
+        a0->unk_24.unk_00 += a2;
+        break;
+    case 1:
+        a0->unk_24.unk_02 += a2;
+        break;
+    case 2:
+        a0->unk_24.unk_04 += a2;
+        break;
+    case 3:
+        a0->unk_24.unk_08 += a2;
+        break;
+    case 4:
+        a0->unk_24.unk_0A += a2;
+        break;
+    case 5:
+        a0->unk_24.unk_0C += a2;
+        break;
+    case 6:
+        a0->unk_24.unk_30_00 += a2;
+        break;
+    case 7:
+        a0->unk_24.unk_14 += a2;
+        break;
+    case 8:
+        a0->unk_24.unk_16 += a2;
+        break;
+    case 9:
+        a0->unk_24.unk_18 += a2;
+        break;
+    case 10:
+        a0->unk_24.unk_1C += a2;
+        break;
+    case 11:
+        a0->unk_24.unk_1E += a2;
+        break;
+    case 12:
+        a0->unk_24.unk_10 += a2;
+        break;
+    case 13:
+        a0->unk_24.unk_12 += a2;
+        break;
+    case 14:
+        a0->unk_24.unk_30_01 += a2;
+        break;
+    case 15:
+        a0->unk_24.unk_20 += a2;
+        break;
+    case 16:
+        a0->unk_24.unk_21 += a2;
+        break;
+    case 17:
+        a0->unk_24.unk_22 += a2;
+        break;
+    case 18:
+        a0->unk_24.unk_23 += a2;
+        break;
+    case 19:
+        a0->unk_6C.unk_4 += a2;
+        break;
+    case 20:
+        a0->unk_6C.unk_6 += a2;
+        break;
+    case 21:
+        a0->unk_6C.unk_8 += a2;
+        break;
+    case 22:
+        a0->unk_6C.unk_A += a2;
+        break;
+    case 23:
+        a0->unk_24.unk_30_02 += a2;
+        break;
+    case 24:
+        a0->unk_24.unk_2C_00 += a2;
+        break;
+    case 25:
+        a0->unk_24.unk_2C_05 += a2;
+        break;
+    case 26:
+        a0->unk_24.unk_2C_10 += a2;
+        break;
+    case 27:
+        a0->unk_24.unk_2C_15 += a2;
+        break;
+    case 28:
+        a0->unk_24.unk_2C_20 += a2;
+        break;
+    case 29:
+        a0->unk_24.unk_2C_25 += a2;
+        break;
+    case 30:
+        a0->unk_24.unk_30_0C += a2;
+        a0->unk_00_08 = TRUE;
+        break;
+    case 31:
+        a0->unk_24.unk_28 += a2;
+        a0->unk_00_08 = TRUE;
+        break;
+    case 32:
+        a0->unk_24.unk_24 += a2;
+        a0->unk_00_08 = TRUE;
+        break;
+    case 33:
+        a0->unk_24.unk_25 += a2;
+        a0->unk_00_08 = TRUE;
+        break;
+    case 34:
+        a0->unk_24.unk_26 += a2;
+        break;
+    case 35:
+        a0->unk_24.unk_30_09 += a2;
+        a0->unk_00_07 = TRUE;
+        break;
+    case 36:
+        a0->unk_24.unk_30_0A += a2;
+        a0->unk_00_07 = TRUE;
+        break;
+    case 37:
+        a0->unk_24.unk_30_0B += a2;
+        break;
+    case 38:
+        a0->unk_5B += a2;
+        break;
+    case 40:
+        a0->unk_24.unk_30_0D += a2;
+        a0->unk_00_07 = TRUE;
+        break;
+    case 41:
+        a0->unk_6C.unk_2 += a2;
+        break;
+    case 42:
+        a0->unk_6C.unk_0_0 += a2;
+        a0->unk_00_08 = TRUE;
+        break;
+    case 43:
+        a0->unk_6C.unk_0_2 += a2;
+        break;
+    case 44:
+        a0->unk_6C.unk_0_3 += a2;
+        break;
+    case 45:
+        a0->unk_6C.unk_0_4 += a2;
+        break;
+    case 46:
+        a0->unk_6C.unk_0_5 += a2;
+        break;
+    }
+}
+
+void sub_0200908C(UnkStruct_02007FD4_sub *a0, int a1, int a2, int a3, int a4) {
+    a0->unk_24.unk_30_01 = TRUE;
+    a0->unk_24.unk_20 = a1;
+    a0->unk_24.unk_21 = a2;
+    a0->unk_24.unk_22 = a3;
+    a0->unk_24.unk_23 = a4;
+}
+
+void sub_020090B4(UnkStruct_02007FD4_sub *a0, int a1, int a2, int a3, int a4) {
+    a0->unk_24.unk_30_0C = TRUE;
+    a0->unk_24.unk_24 = a1;
+    a0->unk_24.unk_25 = a2;
+    a0->unk_24.unk_26 = 0;
+    a0->unk_24.unk_27 = a3;
+    a0->unk_24.unk_28 = a4;
+}

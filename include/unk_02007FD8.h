@@ -56,9 +56,14 @@ typedef struct UnkStruct_02007FD4_sub_sub {
     u32 unk_30_00:1;
     u32 unk_30_01:1;
     u32 unk_30_02:5;
-    u32 unk_30_07:4;
+    u32 unk_30_07:1;
+    u32 unk_30_08:1;
+    u32 unk_30_09:1;
+    u32 unk_30_0A:1;
     u32 unk_30_0B:1;
-    u32 unk_30_0C:20;
+    u32 unk_30_0C:1;
+    u32 unk_30_0D:4;
+    u32 unk_30_11:15;
 } UnkStruct_02007FD4_sub_sub;
 
 typedef struct UnkStruct_02007FD4_sub6C {
@@ -135,7 +140,11 @@ UnkStruct_02007FD4_sub *sub_020085EC(UnkStruct_02007FD4 *a0, SomeDrawPokemonStru
 UnkStruct_02007FD4_sub *sub_02008634(UnkStruct_02007FD4 *a0, SomeDrawPokemonStruct *a1, int a2, int a3, int a4, int a5, int a6, UnkStruct_02007FD4_sub84 *a7, UnkStruct_02007FD4_sub_func68 a8);
 void sub_02008780(UnkStruct_02007FD4_sub *a0);
 void sub_0200878C(UnkStruct_02007FD4 *a0);
-void sub_020087A4(u32 *a0, int a1, int dy);
+void sub_020087A4(UnkStruct_02007FD4_sub *a0, int a1, int a2);
+int sub_02008A78(UnkStruct_02007FD4_sub *a0, int a1);
+void sub_02008C2C(UnkStruct_02007FD4_sub *a0, int a1, int a2);
+void sub_0200908C(UnkStruct_02007FD4_sub *a0, int a1, int a2, int a3, int a4);
+void sub_020090B4(UnkStruct_02007FD4_sub *a0, int a1, int a2, int a3, int a4);
 void sub_02009264(UnkStruct_02009264 *a0, struct UnkStruct_02072914_sub_sub *a1);
 int sub_02009284(UnkStruct_02009264 *a0);
 void sub_02009B60(void *pRawData, u32 pid, BOOL isAnimated);
