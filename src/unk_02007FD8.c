@@ -4,6 +4,7 @@
 #include "poketool/pokegra/otherpoke.naix"
 
 void sub_02009CD0(void *pRawCharData);
+void sub_02009160(UnkStruct_02007FD4_sub *a0);
 void sub_020094FC(UnkStruct_02007FD4 *a0);
 void sub_0200994C(UnkStruct_02007FD4 *a0);
 void sub_0200925C(UnkStruct_02007FD4_sub *a0);
@@ -662,4 +663,57 @@ void sub_020090B4(UnkStruct_02007FD4_sub *a0, int a1, int a2, int a3, int a4) {
     a0->unk_24.unk_26 = 0;
     a0->unk_24.unk_27 = a3;
     a0->unk_24.unk_28 = a4;
+}
+
+void sub_020090E4(UnkStruct_02007FD4 *a0, int a1, int a2, int a3, int a4) {
+    for (int i = 0; i < 4; ++i) {
+        if (a0->unk_000[i].unk_00_00) {
+            a0->unk_000[i].unk_24.unk_30_0C = TRUE;
+            a0->unk_000[i].unk_24.unk_24 = a1;
+            a0->unk_000[i].unk_24.unk_25 = a2;
+            a0->unk_000[i].unk_24.unk_26 = 0;
+            a0->unk_000[i].unk_24.unk_27 = a3;
+            a0->unk_000[i].unk_24.unk_28 = a4;
+        }
+    }
+}
+
+BOOL sub_02009138(UnkStruct_02007FD4_sub *a0) {
+    return a0->unk_24.unk_30_0C == TRUE;
+}
+
+void sub_0200914C(UnkStruct_02007FD4_sub *a0, int a1) {
+    a0->unk_24.unk_0A = (40 - a1) - (((40 - a1) * a0->unk_24.unk_12) >> 8);
+}
+
+void sub_02009160(UnkStruct_02007FD4_sub *a0) {
+    if (a0->unk_58 != 0) {
+        if (a0->unk_5A == 0) {
+            ++a0->unk_59;
+            while (a0->unk_84[a0->unk_59].unk_0 < -1) {
+                ++a0->unk_5C[a0->unk_59];
+                if (a0->unk_84[a0->unk_59].unk_1 == a0->unk_5C[a0->unk_59] || a0->unk_84[a0->unk_59].unk_1 == 0) {
+                    a0->unk_5C[a0->unk_59] = 0;
+                    ++a0->unk_59;
+                } else {
+                    a0->unk_59 = -2 - a0->unk_84[a0->unk_59].unk_0;
+                }
+            }
+            if (a0->unk_59 >= 10 || a0->unk_84[a0->unk_59].unk_0 == -1) {
+                a0->unk_5B = 0;
+                a0->unk_58 = 0;
+                a0->unk_24.unk_08 = 0;
+            } else {
+                a0->unk_5B = a0->unk_84[a0->unk_59].unk_0;
+                a0->unk_5A = a0->unk_84[a0->unk_59].unk_1;
+                a0->unk_24.unk_08 = a0->unk_84[a0->unk_59].unk_2;
+            }
+        } else {
+            --a0->unk_5A;
+        }
+    }
+}
+
+void sub_0200925C(UnkStruct_02007FD4_sub *a0) {
+    sub_02009160(a0);
 }
