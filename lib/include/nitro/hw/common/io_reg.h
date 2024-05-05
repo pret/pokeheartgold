@@ -7,109 +7,109 @@
 #define NITRO_HW_IO_REG_SHARED_H_
 
 
-#define REG_GX_DISPSTAT_OFFSET (0x4)
-#define REG_GX_DISPSTAT_ADDR (HW_REG_BASE + REG_GX_DISPSTAT_OFFSET)
-#define reg_GX_DISPSTAT (*(REGType16v *)REG_GX_DISPSTAT_ADDR)  // =0x4000004
+#define REG_DISPSTAT_OFFSET 0x4
+#define REG_DISPSTAT_ADDR (HW_REG_BASE + REG_DISPSTAT_OFFSET)
+#define reg_GX_DISPSTAT (*(REGType16v *)REG_DISPSTAT_ADDR)  // =0x4000004
 
-#define REG_MI_DMA1SAD_OFFSET (0xBC)
-#define REG_MI_DMA1SAD_ADDR (HW_REG_BASE + REG_MI_DMA1SAD_OFFSET)
-#define reg_MI_DMA1SAD (*(REGType32v *)REG_MI_DMA1SAD_ADDR)  // =0x40000BC
+#define REG_DMA1SAD_OFFSET 0xBC
+#define REG_DMA1SAD_ADDR (HW_REG_BASE + REG_DMA1SAD_OFFSET)
+#define reg_MI_DMA1SAD (*(REGType32v *)REG_DMA1SAD_ADDR)  // =0x40000BC
 
-#define REG_MI_DMA2SAD_OFFSET (0xC8)
-#define REG_MI_DMA2SAD_ADDR (HW_REG_BASE + REG_MI_DMA2SAD_OFFSET)
-#define reg_MI_DMA2SAD (*(REGType32v *)REG_MI_DMA2SAD_ADDR)  // =0x40000C8
+#define REG_DMA2SAD_OFFSET 0xC8
+#define REG_DMA2SAD_ADDR (HW_REG_BASE + REG_DMA2SAD_OFFSET)
+#define reg_MI_DMA2SAD (*(REGType32v *)REG_DMA2SAD_ADDR)  // =0x40000C8
 
-#define REG_MI_DMA3SAD_OFFSET (0xD4)
-#define REG_MI_DMA3SAD_ADDR (HW_REG_BASE + REG_MI_DMA3SAD_OFFSET)
-#define reg_MI_DMA3SAD (*(REGType32v *)REG_MI_DMA3SAD_ADDR)  // =0x40000D4
+#define REG_DMA3SAD_OFFSET 0xD4
+#define REG_DMA3SAD_ADDR (HW_REG_BASE + REG_DMA3SAD_OFFSET)
+#define reg_MI_DMA3SAD (*(REGType32v *)REG_DMA3SAD_ADDR)  // =0x40000D4
 
-#define REG_MI_DMA3DAD_OFFSET (0xD8)
-#define REG_MI_DMA3DAD_ADDR (HW_REG_BASE + REG_MI_DMA3DAD_OFFSET)
-#define reg_MI_DMA3DAD (*(REGType32v *)REG_MI_DMA3DAD_ADDR)  // =0x40000D8
+#define REG_DMA3DAD_OFFSET 0xD8
+#define REG_DMA3DAD_ADDR (HW_REG_BASE + REG_DMA3DAD_OFFSET)
+#define reg_MI_DMA3DAD (*(REGType32v *)REG_DMA3DAD_ADDR)  // =0x40000D8
 
-#define REG_OS_TM0CNT_L_OFFSET (0x100)
-#define REG_OS_TM0CNT_L_ADDR (HW_REG_BASE + REG_OS_TM0CNT_L_OFFSET)
-#define reg_OS_TM0CNT_L (*(REGType16v *)REG_OS_TM0CNT_L_ADDR)  // =0x4000100
+#define REG_TM0CNT_L_OFFSET 0x100
+#define REG_TM0CNT_L_ADDR (HW_REG_BASE + REG_TM0CNT_L_OFFSET)
+#define reg_OS_TM0CNT_L (*(REGType16v *)REG_TM0CNT_L_ADDR)  // =0x4000100
 
-#define REG_OS_TM0CNT_H_OFFSET (0x102)
-#define REG_OS_TM0CNT_H_ADDR (HW_REG_BASE + REG_OS_TM0CNT_H_OFFSET)
-#define reg_OS_TM0CNT_H (*(REGType16v *)REG_OS_TM0CNT_H_ADDR)  // =0x4000102
+#define REG_TM0CNT_H_OFFSET 0x102
+#define REG_TM0CNT_H_ADDR (HW_REG_BASE + REG_TM0CNT_H_OFFSET)
+#define reg_OS_TM0CNT_H (*(REGType16v *)REG_TM0CNT_H_ADDR)  // =0x4000102
 
-#define REG_OS_TM1CNT_L_OFFSET (0x104)
-#define REG_OS_TM1CNT_L_ADDR (HW_REG_BASE + REG_OS_TM1CNT_L_OFFSET)
-#define reg_OS_TM1CNT_L (*(REGType16v *)REG_OS_TM1CNT_L_ADDR)  // =0x4000104
+#define REG_TM1CNT_L_OFFSET 0x104
+#define REG_TM1CNT_L_ADDR (HW_REG_BASE + REG_TM1CNT_L_OFFSET)
+#define reg_OS_TM1CNT_L (*(REGType16v *)REG_TM1CNT_L_ADDR)  // =0x4000104
 
-#define REG_OS_TM1CNT_H_OFFSET (0x106)
-#define REG_OS_TM1CNT_H_ADDR (HW_REG_BASE + REG_OS_TM1CNT_H_OFFSET)
-#define reg_OS_TM1CNT_H (*(REGType16v *)REG_OS_TM1CNT_H_ADDR)  // =0x4000106
+#define REG_TM1CNT_H_OFFSET 0x106
+#define REG_TM1CNT_H_ADDR (HW_REG_BASE + REG_TM1CNT_H_OFFSET)
+#define reg_OS_TM1CNT_H (*(REGType16v *)REG_TM1CNT_H_ADDR)  // =0x4000106
 
-#define REG_OS_TM2CNT_L_OFFSET (0x108)
-#define REG_OS_TM2CNT_L_ADDR (HW_REG_BASE + REG_OS_TM2CNT_L_OFFSET)
-#define reg_OS_TM2CNT_L (*(REGType16v *)REG_OS_TM2CNT_L_ADDR)  // =0x4000108
+#define REG_TM2CNT_L_OFFSET 0x108
+#define REG_TM2CNT_L_ADDR (HW_REG_BASE + REG_TM2CNT_L_OFFSET)
+#define reg_OS_TM2CNT_L (*(REGType16v *)REG_TM2CNT_L_ADDR)  // =0x4000108
 
-#define REG_OS_TM2CNT_H_OFFSET (0x10A)
-#define REG_OS_TM2CNT_H_ADDR (HW_REG_BASE + REG_OS_TM2CNT_H_OFFSET)
-#define reg_OS_TM2CNT_H (*(REGType16v *)REG_OS_TM2CNT_H_ADDR)  // =0x400010A
+#define REG_TM2CNT_H_OFFSET 0x10A
+#define REG_TM2CNT_H_ADDR (HW_REG_BASE + REG_TM2CNT_H_OFFSET)
+#define reg_OS_TM2CNT_H (*(REGType16v *)REG_TM2CNT_H_ADDR)  // =0x400010A
 
-#define REG_OS_TM3CNT_L_OFFSET (0x10C)
-#define REG_OS_TM3CNT_L_ADDR (HW_REG_BASE + REG_OS_TM3CNT_L_OFFSET)
-#define reg_OS_TM3CNT_L (*(REGType16v *)REG_OS_TM3CNT_L_ADDR)  // =0x400010C
+#define REG_TM3CNT_L_OFFSET 0x10C
+#define REG_TM3CNT_L_ADDR (HW_REG_BASE + REG_TM3CNT_L_OFFSET)
+#define reg_OS_TM3CNT_L (*(REGType16v *)REG_TM3CNT_L_ADDR)  // =0x400010C
 
-#define REG_OS_TM3CNT_H_OFFSET (0x10E)
-#define REG_OS_TM3CNT_H_ADDR (HW_REG_BASE + REG_OS_TM3CNT_H_OFFSET)
-#define reg_OS_TM3CNT_H (*(REGType16v *)REG_OS_TM3CNT_H_ADDR)  // =0x400010E
+#define REG_TM3CNT_H_OFFSET 0x10E
+#define REG_TM3CNT_H_ADDR (HW_REG_BASE + REG_TM3CNT_H_OFFSET)
+#define reg_OS_TM3CNT_H (*(REGType16v *)REG_TM3CNT_H_ADDR)  // =0x400010E
 
-#define REG_EXI_SIODATA32_OFFSET (0x120)
-#define REG_EXI_SIODATA32_ADDR (HW_REG_BASE + REG_EXI_SIODATA32_OFFSET)
-#define reg_EXI_SIODATA32 (*(REGType32v *)REG_EXI_SIODATA32_ADDR)  // =0x4000120
+#define REG_SIODATA32_OFFSET 0x120
+#define REG_SIODATA32_ADDR (HW_REG_BASE + REG_SIODATA32_OFFSET)
+#define reg_EXI_SIODATA32 (*(REGType32v *)REG_SIODATA32_ADDR)  // =0x4000120
 
-#define REG_EXI_SIOSEL_OFFSET (0x12C)
-#define REG_EXI_SIOSEL_ADDR (HW_REG_BASE + REG_EXI_SIOSEL_OFFSET)
-#define reg_EXI_SIOSEL (*(REGType16v *)REG_EXI_SIOSEL_ADDR)  // =0x400012C
+#define REG_SIOSEL_OFFSET 0x12C
+#define REG_SIOSEL_ADDR (HW_REG_BASE + REG_SIOSEL_OFFSET)
+#define reg_EXI_SIOSEL (*(REGType16v *)REG_SIOSEL_ADDR)  // =0x400012C
 
-#define REG_PAD_KEYCNT_OFFSET (0x132)
-#define REG_PAD_KEYCNT_ADDR (HW_REG_BASE + REG_PAD_KEYCNT_OFFSET)
-#define reg_PAD_KEYCNT (*(REGType16v *)REG_PAD_KEYCNT_ADDR)  // =0x4000132
+#define REG_KEYCNT_OFFSET 0x132
+#define REG_KEYCNT_ADDR (HW_REG_BASE + REG_KEYCNT_OFFSET)
+#define reg_PAD_KEYCNT (*(REGType16v *)REG_KEYCNT_ADDR)  // =0x4000132
 
-#define REG_PXI_SEND_FIFO_OFFSET (0x188)
-#define REG_PXI_SEND_FIFO_ADDR (HW_REG_BASE + REG_PXI_SEND_FIFO_OFFSET)
-#define reg_PXI_SEND_FIFO (*(REGType32v *)REG_PXI_SEND_FIFO_ADDR)  // =0x4000188
+#define REG_SEND_FIFO_OFFSET 0x188
+#define REG_SEND_FIFO_ADDR (HW_REG_BASE + REG_SEND_FIFO_OFFSET)
+#define reg_PXI_SEND_FIFO (*(REGType32v *)REG_SEND_FIFO_ADDR)  // =0x4000188
 
-#define REG_PXI_RECV_FIFO_OFFSET (0x100000)
-#define REG_PXI_RECV_FIFO_ADDR (HW_REG_BASE + REG_PXI_RECV_FIFO_OFFSET)
-#define reg_PXI_RECV_FIFO (*(REGType32v *)REG_PXI_RECV_FIFO_ADDR)  // =0x4100000
+#define REG_RECV_FIFO_OFFSET 0x100000
+#define REG_RECV_FIFO_ADDR (HW_REG_BASE + REG_RECV_FIFO_OFFSET)
+#define reg_PXI_RECV_FIFO (*(REGType32v *)REG_RECV_FIFO_ADDR)  // =0x4100000
 
-#define REG_MI_MCCNT0_OFFSET (0x1A0)
-#define REG_MI_MCCNT0_ADDR (HW_REG_BASE + REG_MI_MCCNT0_OFFSET)
-#define reg_MI_MCCNT0 (*(REGType16v *)REG_MI_MCCNT0_ADDR)  // =0x40001A0
+#define REG_MCCNT0_OFFSET 0x1A0
+#define REG_MCCNT0_ADDR (HW_REG_BASE + REG_MCCNT0_OFFSET)
+#define reg_MI_MCCNT0 (*(REGType16v *)REG_MCCNT0_ADDR)  // =0x40001A0
 
-#define REG_MI_MCD0_OFFSET (0x1A2)
-#define REG_MI_MCD0_ADDR (HW_REG_BASE + REG_MI_MCD0_OFFSET)
-#define reg_MI_MCD0 (*(REGType16v *)REG_MI_MCD0_ADDR)  // =0x40001A2
+#define REG_MCD0_OFFSET 0x1A2
+#define REG_MCD0_ADDR (HW_REG_BASE + REG_MCD0_OFFSET)
+#define reg_MI_MCD0 (*(REGType16v *)REG_MCD0_ADDR)  // =0x40001A2
 
-#define REG_MI_MCD1_OFFSET (0x100010)
-#define REG_MI_MCD1_ADDR (HW_REG_BASE + REG_MI_MCD1_OFFSET)
-#define reg_MI_MCD1 (*(REGType32v *)REG_MI_MCD1_ADDR)  // =0x4100010
+#define REG_MCD1_OFFSET 0x100010
+#define REG_MCD1_ADDR (HW_REG_BASE + REG_MCD1_OFFSET)
+#define reg_MI_MCD1 (*(REGType32v *)REG_MCD1_ADDR)  // =0x4100010
 
-#define REG_MI_MCCNT1_OFFSET (0x1A4)
-#define REG_MI_MCCNT1_ADDR (HW_REG_BASE + REG_MI_MCCNT1_OFFSET)
-#define reg_MI_MCCNT1 (*(REGType32v *)REG_MI_MCCNT1_ADDR)  // =0x40001A4
+#define REG_MCCNT1_OFFSET 0x1A4
+#define REG_MCCNT1_ADDR (HW_REG_BASE + REG_MCCNT1_OFFSET)
+#define reg_MI_MCCNT1 (*(REGType32v *)REG_MCCNT1_ADDR)  // =0x40001A4
 
-#define REG_MI_MCCMD0_OFFSET (0x1A8)
-#define REG_MI_MCCMD0_ADDR (HW_REG_BASE + REG_MI_MCCMD0_OFFSET)
-#define reg_MI_MCCMD0 (*(REGType32v *)REG_MI_MCCMD0_ADDR)  // =0x40001A8
+#define REG_MCCMD0_OFFSET 0x1A8
+#define REG_MCCMD0_ADDR (HW_REG_BASE + REG_MCCMD0_OFFSET)
+#define reg_MI_MCCMD0 (*(REGType32v *)REG_MCCMD0_ADDR)  // =0x40001A8
 
-#define REG_MI_MCCMD1_OFFSET (0x1AC)
-#define REG_MI_MCCMD1_ADDR (HW_REG_BASE + REG_MI_MCCMD1_OFFSET)
-#define reg_MI_MCCMD1 (*(REGType32v *)REG_MI_MCCMD1_ADDR)  // =0x40001AC
+#define REG_MCCMD1_OFFSET 0x1AC
+#define REG_MCCMD1_ADDR (HW_REG_BASE + REG_MCCMD1_OFFSET)
+#define reg_MI_MCCMD1 (*(REGType32v *)REG_MCCMD1_ADDR)  // =0x40001AC
 
-#define REG_OS_IME_OFFSET (0x208)
-#define REG_OS_IME_ADDR (HW_REG_BASE + REG_OS_IME_OFFSET)
-#define reg_OS_IME (*(REGType16v *)REG_OS_IME_ADDR)  // =0x4000208
+#define REG_IME_OFFSET 0x208
+#define REG_IME_ADDR (HW_REG_BASE + REG_IME_OFFSET)
+#define reg_OS_IME (*(REGType16v *)REG_IME_ADDR)  // =0x4000208
 
-#define REG_OS_PAUSE_OFFSET (0x300)
-#define REG_OS_PAUSE_ADDR (HW_REG_BASE + REG_OS_PAUSE_OFFSET)
-#define reg_OS_PAUSE (*(REGType16v *)REG_OS_PAUSE_ADDR)  // =0x4000300
+#define REG_PAUSE_OFFSET 0x300
+#define REG_PAUSE_ADDR (HW_REG_BASE + REG_PAUSE_OFFSET)
+#define reg_OS_PAUSE (*(REGType16v *)REG_PAUSE_ADDR)  // =0x4000300
 
 
 
@@ -145,13 +145,13 @@
 #ifndef SDK_ASM
 #define REG_GX_DISPSTAT_FIELD( vcounter, vqi, hbi, vbi, lyc, hblk, vblk ) \
     (u16)( \
-    ((u16)((dispstat) << REG_GX_DISPSTAT_VCOUNTER_SHIFT)) | \
-    ((u16)((dispstat) << REG_GX_DISPSTAT_VQI_SHIFT)) | \
-    ((u16)((dispstat) << REG_GX_DISPSTAT_HBI_SHIFT)) | \
-    ((u16)((dispstat) << REG_GX_DISPSTAT_VBI_SHIFT)) | \
-    ((u16)((dispstat) << REG_GX_DISPSTAT_LYC_SHIFT)) | \
-    ((u16)((dispstat) << REG_GX_DISPSTAT_HBLK_SHIFT)) | \
-    ((u16)((dispstat) << REG_GX_DISPSTAT_VBLK_SHIFT)) )
+    ((u16)((vcounter) << REG_GX_DISPSTAT_VCOUNTER_SHIFT)) | \
+    ((u16)((vqi) << REG_GX_DISPSTAT_VQI_SHIFT)) | \
+    ((u16)((hbi) << REG_GX_DISPSTAT_HBI_SHIFT)) | \
+    ((u16)((vbi) << REG_GX_DISPSTAT_VBI_SHIFT)) | \
+    ((u16)((lyc) << REG_GX_DISPSTAT_LYC_SHIFT)) | \
+    ((u16)((hblk) << REG_GX_DISPSTAT_HBLK_SHIFT)) | \
+    ((u16)((vblk) << REG_GX_DISPSTAT_VBLK_SHIFT)) )
 #endif //SDK_ASM
 
 #define REG_MI_DMA1SAD_DMASRC_SHIFT 0
@@ -161,7 +161,7 @@
 #ifndef SDK_ASM
 #define REG_MI_DMA1SAD_FIELD( dmasrc ) \
     (u32)( \
-    ((u32)((dma1sad) << REG_MI_DMA1SAD_DMASRC_SHIFT)) )
+    ((u32)((dmasrc) << REG_MI_DMA1SAD_DMASRC_SHIFT)) )
 #endif //SDK_ASM
 
 #define REG_MI_DMA2SAD_DMASRC_SHIFT 0
@@ -171,7 +171,7 @@
 #ifndef SDK_ASM
 #define REG_MI_DMA2SAD_FIELD( dmasrc ) \
     (u32)( \
-    ((u32)((dma2sad) << REG_MI_DMA2SAD_DMASRC_SHIFT)) )
+    ((u32)((dmasrc) << REG_MI_DMA2SAD_DMASRC_SHIFT)) )
 #endif //SDK_ASM
 
 #define REG_MI_DMA3SAD_DMASRC_SHIFT 0
@@ -181,7 +181,7 @@
 #ifndef SDK_ASM
 #define REG_MI_DMA3SAD_FIELD( dmasrc ) \
     (u32)( \
-    ((u32)((dma3sad) << REG_MI_DMA3SAD_DMASRC_SHIFT)) )
+    ((u32)((dmasrc) << REG_MI_DMA3SAD_DMASRC_SHIFT)) )
 #endif //SDK_ASM
 
 #define REG_MI_DMA3DAD_DMADEST_SHIFT 0
@@ -191,7 +191,7 @@
 #ifndef SDK_ASM
 #define REG_MI_DMA3DAD_FIELD( dmadest ) \
     (u32)( \
-    ((u32)((dma3dad) << REG_MI_DMA3DAD_DMADEST_SHIFT)) )
+    ((u32)((dmadest) << REG_MI_DMA3DAD_DMADEST_SHIFT)) )
 #endif //SDK_ASM
 
 #define REG_OS_TM0CNT_L_TIMER0CNT_SHIFT 0
@@ -201,7 +201,7 @@
 #ifndef SDK_ASM
 #define REG_OS_TM0CNT_L_FIELD( timer0cnt ) \
     (u16)( \
-    ((u16)((tm0cnt_l) << REG_OS_TM0CNT_L_TIMER0CNT_SHIFT)) )
+    ((u16)((timer0cnt) << REG_OS_TM0CNT_L_TIMER0CNT_SHIFT)) )
 #endif //SDK_ASM
 
 #define REG_OS_TM0CNT_H_E_SHIFT 7
@@ -219,9 +219,9 @@
 #ifndef SDK_ASM
 #define REG_OS_TM0CNT_H_FIELD( e, i, ps ) \
     (u16)( \
-    ((u16)((tm0cnt_h) << REG_OS_TM0CNT_H_E_SHIFT)) | \
-    ((u16)((tm0cnt_h) << REG_OS_TM0CNT_H_I_SHIFT)) | \
-    ((u16)((tm0cnt_h) << REG_OS_TM0CNT_H_PS_SHIFT)) )
+    ((u16)((e) << REG_OS_TM0CNT_H_E_SHIFT)) | \
+    ((u16)((i) << REG_OS_TM0CNT_H_I_SHIFT)) | \
+    ((u16)((ps) << REG_OS_TM0CNT_H_PS_SHIFT)) )
 #endif //SDK_ASM
 
 #define REG_OS_TM1CNT_L_TIMER1CNT_SHIFT 0
@@ -231,7 +231,7 @@
 #ifndef SDK_ASM
 #define REG_OS_TM1CNT_L_FIELD( timer1cnt ) \
     (u16)( \
-    ((u16)((tm1cnt_l) << REG_OS_TM1CNT_L_TIMER1CNT_SHIFT)) )
+    ((u16)((timer1cnt) << REG_OS_TM1CNT_L_TIMER1CNT_SHIFT)) )
 #endif //SDK_ASM
 
 #define REG_OS_TM1CNT_H_E_SHIFT 7
@@ -253,10 +253,10 @@
 #ifndef SDK_ASM
 #define REG_OS_TM1CNT_H_FIELD( e, i, ch, ps ) \
     (u16)( \
-    ((u16)((tm1cnt_h) << REG_OS_TM1CNT_H_E_SHIFT)) | \
-    ((u16)((tm1cnt_h) << REG_OS_TM1CNT_H_I_SHIFT)) | \
-    ((u16)((tm1cnt_h) << REG_OS_TM1CNT_H_CH_SHIFT)) | \
-    ((u16)((tm1cnt_h) << REG_OS_TM1CNT_H_PS_SHIFT)) )
+    ((u16)((e) << REG_OS_TM1CNT_H_E_SHIFT)) | \
+    ((u16)((i) << REG_OS_TM1CNT_H_I_SHIFT)) | \
+    ((u16)((ch) << REG_OS_TM1CNT_H_CH_SHIFT)) | \
+    ((u16)((ps) << REG_OS_TM1CNT_H_PS_SHIFT)) )
 #endif //SDK_ASM
 
 #define REG_OS_TM2CNT_L_TIMER2CNT_SHIFT 0
@@ -266,7 +266,7 @@
 #ifndef SDK_ASM
 #define REG_OS_TM2CNT_L_FIELD( timer2cnt ) \
     (u16)( \
-    ((u16)((tm2cnt_l) << REG_OS_TM2CNT_L_TIMER2CNT_SHIFT)) )
+    ((u16)((timer2cnt) << REG_OS_TM2CNT_L_TIMER2CNT_SHIFT)) )
 #endif //SDK_ASM
 
 #define REG_OS_TM2CNT_H_E_SHIFT 7
@@ -288,10 +288,10 @@
 #ifndef SDK_ASM
 #define REG_OS_TM2CNT_H_FIELD( e, i, ch, ps ) \
     (u16)( \
-    ((u16)((tm2cnt_h) << REG_OS_TM2CNT_H_E_SHIFT)) | \
-    ((u16)((tm2cnt_h) << REG_OS_TM2CNT_H_I_SHIFT)) | \
-    ((u16)((tm2cnt_h) << REG_OS_TM2CNT_H_CH_SHIFT)) | \
-    ((u16)((tm2cnt_h) << REG_OS_TM2CNT_H_PS_SHIFT)) )
+    ((u16)((e) << REG_OS_TM2CNT_H_E_SHIFT)) | \
+    ((u16)((i) << REG_OS_TM2CNT_H_I_SHIFT)) | \
+    ((u16)((ch) << REG_OS_TM2CNT_H_CH_SHIFT)) | \
+    ((u16)((ps) << REG_OS_TM2CNT_H_PS_SHIFT)) )
 #endif //SDK_ASM
 
 #define REG_OS_TM3CNT_L_TIMER2CNT_SHIFT 0
@@ -301,7 +301,7 @@
 #ifndef SDK_ASM
 #define REG_OS_TM3CNT_L_FIELD( timer2cnt ) \
     (u16)( \
-    ((u16)((tm3cnt_l) << REG_OS_TM3CNT_L_TIMER2CNT_SHIFT)) )
+    ((u16)((timer2cnt) << REG_OS_TM3CNT_L_TIMER2CNT_SHIFT)) )
 #endif //SDK_ASM
 
 #define REG_OS_TM3CNT_H_E_SHIFT 7
@@ -323,10 +323,10 @@
 #ifndef SDK_ASM
 #define REG_OS_TM3CNT_H_FIELD( e, i, ch, ps ) \
     (u16)( \
-    ((u16)((tm3cnt_h) << REG_OS_TM3CNT_H_E_SHIFT)) | \
-    ((u16)((tm3cnt_h) << REG_OS_TM3CNT_H_I_SHIFT)) | \
-    ((u16)((tm3cnt_h) << REG_OS_TM3CNT_H_CH_SHIFT)) | \
-    ((u16)((tm3cnt_h) << REG_OS_TM3CNT_H_PS_SHIFT)) )
+    ((u16)((e) << REG_OS_TM3CNT_H_E_SHIFT)) | \
+    ((u16)((i) << REG_OS_TM3CNT_H_I_SHIFT)) | \
+    ((u16)((ch) << REG_OS_TM3CNT_H_CH_SHIFT)) | \
+    ((u16)((ps) << REG_OS_TM3CNT_H_PS_SHIFT)) )
 #endif //SDK_ASM
 
 #define REG_EXI_SIODATA32_H_SHIFT 16
@@ -340,8 +340,8 @@
 #ifndef SDK_ASM
 #define REG_EXI_SIODATA32_FIELD( h, l ) \
     (u32)( \
-    ((u32)((siodata32) << REG_EXI_SIODATA32_H_SHIFT)) | \
-    ((u32)((siodata32) << REG_EXI_SIODATA32_L_SHIFT)) )
+    ((u32)((h) << REG_EXI_SIODATA32_H_SHIFT)) | \
+    ((u32)((l) << REG_EXI_SIODATA32_L_SHIFT)) )
 #endif //SDK_ASM
 
 #define REG_EXI_SIOSEL_SEL_SHIFT 0
@@ -351,7 +351,7 @@
 #ifndef SDK_ASM
 #define REG_EXI_SIOSEL_FIELD( sel ) \
     (u16)( \
-    ((u16)((siosel) << REG_EXI_SIOSEL_SEL_SHIFT)) )
+    ((u16)((sel) << REG_EXI_SIOSEL_SEL_SHIFT)) )
 #endif //SDK_ASM
 
 #define REG_PAD_KEYCNT_LOGIC_SHIFT 15
@@ -405,18 +405,18 @@
 #ifndef SDK_ASM
 #define REG_PAD_KEYCNT_FIELD( logic, intr, l, r, down, up, left, right, start, sel, b, a ) \
     (u16)( \
-    ((u16)((keycnt) << REG_PAD_KEYCNT_LOGIC_SHIFT)) | \
-    ((u16)((keycnt) << REG_PAD_KEYCNT_INTR_SHIFT)) | \
-    ((u16)((keycnt) << REG_PAD_KEYCNT_L_SHIFT)) | \
-    ((u16)((keycnt) << REG_PAD_KEYCNT_R_SHIFT)) | \
-    ((u16)((keycnt) << REG_PAD_KEYCNT_DOWN_SHIFT)) | \
-    ((u16)((keycnt) << REG_PAD_KEYCNT_UP_SHIFT)) | \
-    ((u16)((keycnt) << REG_PAD_KEYCNT_LEFT_SHIFT)) | \
-    ((u16)((keycnt) << REG_PAD_KEYCNT_RIGHT_SHIFT)) | \
-    ((u16)((keycnt) << REG_PAD_KEYCNT_START_SHIFT)) | \
-    ((u16)((keycnt) << REG_PAD_KEYCNT_SEL_SHIFT)) | \
-    ((u16)((keycnt) << REG_PAD_KEYCNT_B_SHIFT)) | \
-    ((u16)((keycnt) << REG_PAD_KEYCNT_A_SHIFT)) )
+    ((u16)((logic) << REG_PAD_KEYCNT_LOGIC_SHIFT)) | \
+    ((u16)((intr) << REG_PAD_KEYCNT_INTR_SHIFT)) | \
+    ((u16)((l) << REG_PAD_KEYCNT_L_SHIFT)) | \
+    ((u16)((r) << REG_PAD_KEYCNT_R_SHIFT)) | \
+    ((u16)((down) << REG_PAD_KEYCNT_DOWN_SHIFT)) | \
+    ((u16)((up) << REG_PAD_KEYCNT_UP_SHIFT)) | \
+    ((u16)((left) << REG_PAD_KEYCNT_LEFT_SHIFT)) | \
+    ((u16)((right) << REG_PAD_KEYCNT_RIGHT_SHIFT)) | \
+    ((u16)((start) << REG_PAD_KEYCNT_START_SHIFT)) | \
+    ((u16)((sel) << REG_PAD_KEYCNT_SEL_SHIFT)) | \
+    ((u16)((b) << REG_PAD_KEYCNT_B_SHIFT)) | \
+    ((u16)((a) << REG_PAD_KEYCNT_A_SHIFT)) )
 #endif //SDK_ASM
 
 #ifndef SDK_ASM
@@ -456,12 +456,12 @@
 #ifndef SDK_ASM
 #define REG_MI_MCCNT0_FIELD( e, i, sel, busy, mode, baudrate ) \
     (u16)( \
-    ((u16)((mccnt0) << REG_MI_MCCNT0_E_SHIFT)) | \
-    ((u16)((mccnt0) << REG_MI_MCCNT0_I_SHIFT)) | \
-    ((u16)((mccnt0) << REG_MI_MCCNT0_SEL_SHIFT)) | \
-    ((u16)((mccnt0) << REG_MI_MCCNT0_BUSY_SHIFT)) | \
-    ((u16)((mccnt0) << REG_MI_MCCNT0_MODE_SHIFT)) | \
-    ((u16)((mccnt0) << REG_MI_MCCNT0_BAUDRATE_SHIFT)) )
+    ((u16)((e) << REG_MI_MCCNT0_E_SHIFT)) | \
+    ((u16)((i) << REG_MI_MCCNT0_I_SHIFT)) | \
+    ((u16)((sel) << REG_MI_MCCNT0_SEL_SHIFT)) | \
+    ((u16)((busy) << REG_MI_MCCNT0_BUSY_SHIFT)) | \
+    ((u16)((mode) << REG_MI_MCCNT0_MODE_SHIFT)) | \
+    ((u16)((baudrate) << REG_MI_MCCNT0_BAUDRATE_SHIFT)) )
 #endif //SDK_ASM
 
 #define REG_MI_MCD0_DATA_SHIFT 0
@@ -471,7 +471,7 @@
 #ifndef SDK_ASM
 #define REG_MI_MCD0_FIELD( data ) \
     (u16)( \
-    ((u16)((mcd0) << REG_MI_MCD0_DATA_SHIFT)) )
+    ((u16)((data) << REG_MI_MCD0_DATA_SHIFT)) )
 #endif //SDK_ASM
 
 #ifndef SDK_ASM
@@ -510,13 +510,13 @@
 #ifndef SDK_ASM
 #define REG_MI_MCCNT1_FIELD( start, wr, ct, pc, rdy, l2, l1 ) \
     (u32)( \
-    ((u32)((mccnt1) << REG_MI_MCCNT1_START_SHIFT)) | \
-    ((u32)((mccnt1) << REG_MI_MCCNT1_WR_SHIFT)) | \
-    ((u32)((mccnt1) << REG_MI_MCCNT1_CT_SHIFT)) | \
-    ((u32)((mccnt1) << REG_MI_MCCNT1_PC_SHIFT)) | \
-    ((u32)((mccnt1) << REG_MI_MCCNT1_RDY_SHIFT)) | \
-    ((u32)((mccnt1) << REG_MI_MCCNT1_L2_SHIFT)) | \
-    ((u32)((mccnt1) << REG_MI_MCCNT1_L1_SHIFT)) )
+    ((u32)((start) << REG_MI_MCCNT1_START_SHIFT)) | \
+    ((u32)((wr) << REG_MI_MCCNT1_WR_SHIFT)) | \
+    ((u32)((ct) << REG_MI_MCCNT1_CT_SHIFT)) | \
+    ((u32)((pc) << REG_MI_MCCNT1_PC_SHIFT)) | \
+    ((u32)((rdy) << REG_MI_MCCNT1_RDY_SHIFT)) | \
+    ((u32)((l2) << REG_MI_MCCNT1_L2_SHIFT)) | \
+    ((u32)((l1) << REG_MI_MCCNT1_L1_SHIFT)) )
 #endif //SDK_ASM
 
 #define REG_MI_MCCMD0_CMD3_SHIFT 24
@@ -538,10 +538,10 @@
 #ifndef SDK_ASM
 #define REG_MI_MCCMD0_FIELD( cmd3, cmd2, cmd1, cmd0 ) \
     (u32)( \
-    ((u32)((mccmd0) << REG_MI_MCCMD0_CMD3_SHIFT)) | \
-    ((u32)((mccmd0) << REG_MI_MCCMD0_CMD2_SHIFT)) | \
-    ((u32)((mccmd0) << REG_MI_MCCMD0_CMD1_SHIFT)) | \
-    ((u32)((mccmd0) << REG_MI_MCCMD0_CMD0_SHIFT)) )
+    ((u32)((cmd3) << REG_MI_MCCMD0_CMD3_SHIFT)) | \
+    ((u32)((cmd2) << REG_MI_MCCMD0_CMD2_SHIFT)) | \
+    ((u32)((cmd1) << REG_MI_MCCMD0_CMD1_SHIFT)) | \
+    ((u32)((cmd0) << REG_MI_MCCMD0_CMD0_SHIFT)) )
 #endif //SDK_ASM
 
 #define REG_MI_MCCMD1_CMD7_SHIFT 24
@@ -563,10 +563,10 @@
 #ifndef SDK_ASM
 #define REG_MI_MCCMD1_FIELD( cmd7, cmd6, cmd5, cmd4 ) \
     (u32)( \
-    ((u32)((mccmd1) << REG_MI_MCCMD1_CMD7_SHIFT)) | \
-    ((u32)((mccmd1) << REG_MI_MCCMD1_CMD6_SHIFT)) | \
-    ((u32)((mccmd1) << REG_MI_MCCMD1_CMD5_SHIFT)) | \
-    ((u32)((mccmd1) << REG_MI_MCCMD1_CMD4_SHIFT)) )
+    ((u32)((cmd7) << REG_MI_MCCMD1_CMD7_SHIFT)) | \
+    ((u32)((cmd6) << REG_MI_MCCMD1_CMD6_SHIFT)) | \
+    ((u32)((cmd5) << REG_MI_MCCMD1_CMD5_SHIFT)) | \
+    ((u32)((cmd4) << REG_MI_MCCMD1_CMD4_SHIFT)) )
 #endif //SDK_ASM
 
 #define REG_OS_IME_IME_SHIFT 0
@@ -590,8 +590,8 @@
 #ifndef SDK_ASM
 #define REG_OS_PAUSE_FIELD( mod, chk ) \
     (u16)( \
-    ((u16)((pause) << REG_OS_PAUSE_MOD_SHIFT)) | \
-    ((u16)((pause) << REG_OS_PAUSE_CHK_SHIFT)) )
+    ((u16)((mod) << REG_OS_PAUSE_MOD_SHIFT)) | \
+    ((u16)((chk) << REG_OS_PAUSE_CHK_SHIFT)) )
 #endif //SDK_ASM
 
 #endif //NITRO_HW_IO_REG_SHARED_H_

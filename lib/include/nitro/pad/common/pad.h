@@ -2,7 +2,7 @@
 #define NITRO_PAD_PAD_H_
 
 #include <nitro/hw/mmap_shared.h>
-#include <nitro/hw/common/io_reg.h>
+#include <nitro/hw/io_reg.h>
 
 #define PAD_PLUS_KEY_MASK       0x00f0
 #define PAD_BUTTON_MASK         0x2f0f
