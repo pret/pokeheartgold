@@ -686,6 +686,32 @@ void sub_0200914C(UnkStruct_02007FD4_sub *a0, int a1) {
     a0->unk_24.unk_0A = (40 - a1) - (((40 - a1) * a0->unk_24.unk_12) >> 8);
 }
 
+static inline void sub_02009160_ex(u8 *a0, u8 *a1, u8 *a2, u8 *a3, u8 *a4, const UnkStruct_02007FD4_sub84 *a5) {
+    if (*a0 != 0) {
+        if (*a3 == 0) {
+            ++(*a2);
+            while (a5[*a2].unk_0 < -1) {
+                ++a4[*a2];
+                if (a5[*a2].unk_1 == a4[*a2] || a5[*a2].unk_1 == 0) {
+                    a4[*a2] = 0;
+                    ++a2;  // ++(*a2);
+                } else {
+                    *a2 = -2 - a5[*a2].unk_0;
+                }
+            }
+            if (a5[*a2].unk_0 == -1 || *a2 >= 10) {
+                *a1 = 0;
+                *a0 = 0;
+            } else {
+                *a1 = a5[*a2].unk_0;
+                *a3 = a5[*a2].unk_1;
+            }
+        } else {
+            --(*a3);
+        }
+    }
+}
+
 void sub_02009160(UnkStruct_02007FD4_sub *a0) {
     if (a0->unk_58 != 0) {
         if (a0->unk_5A == 0) {
@@ -716,4 +742,29 @@ void sub_02009160(UnkStruct_02007FD4_sub *a0) {
 
 void sub_0200925C(UnkStruct_02007FD4_sub *a0) {
     sub_02009160(a0);
+}
+
+void sub_02009264(UnkStruct_02009264 *a0, struct UnkStruct_02007FD4_sub84 *a1) {
+    a0->unk_0 = 1;
+    a0->unk_2 = 0;
+    a0->unk_1 = a1->unk_0;
+    a0->unk_3 = a1->unk_1;
+    a0->unk_10 = a1;
+    for (int i = 0; i < 10; ++i) {
+        a0->unk_4[i] = 0;
+    }
+}
+
+int sub_02009284(UnkStruct_02009264 *a0) {
+    if (a0->unk_0) {
+        sub_02009160_ex(&a0->unk_0, &a0->unk_1, &a0->unk_2, &a0->unk_3, a0->unk_4, a0->unk_10);
+        return a0->unk_1;
+    }
+
+    return -1;
+}
+
+void sub_02009324(UnkStruct_02007FD4_sub *a0) {
+    a0->unk_00_07 = TRUE;
+    a0->unk_00_08 = TRUE;
 }

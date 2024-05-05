@@ -2,7 +2,6 @@
 #define POKEHEARTGOLD_UNK_02007FD8_H
 
 #include "filesystem_files_def.h"
-#include "unk_02016EDC.h"
 #include "pokemon_types_def.h"
 #include "heap.h"
 
@@ -15,11 +14,11 @@ typedef struct UnkStruct_02007FD4_sub84 {
 
 typedef struct UnkStruct_02009264 {
     u8 unk_0;
-    s8 unk_1;
+    u8 unk_1;
     u8 unk_2;
     u8 unk_3;
     u8 unk_4[10];
-    struct UnkStruct_02072914_sub_sub *unk_10;
+    struct UnkStruct_02007FD4_sub84 *unk_10;
 } UnkStruct_02009264;
 
 typedef struct UnkStruct_02007FD4_sub_sub {
@@ -148,8 +147,9 @@ void sub_020090B4(UnkStruct_02007FD4_sub *a0, int a1, int a2, int a3, int a4);
 void sub_020090E4(UnkStruct_02007FD4 *a0, int a1, int a2, int a3, int a4);
 BOOL sub_02009138(UnkStruct_02007FD4_sub *a0);
 void sub_0200914C(UnkStruct_02007FD4_sub *a0, int a1);
-void sub_02009264(UnkStruct_02009264 *a0, struct UnkStruct_02072914_sub_sub *a1);
+void sub_02009264(UnkStruct_02009264 *a0, struct UnkStruct_02007FD4_sub84 *a1);
 int sub_02009284(UnkStruct_02009264 *a0);
+void sub_02009324(UnkStruct_02007FD4_sub *a0);
 void sub_02009B60(void *pRawData, u32 pid, BOOL isAnimated);
 void sub_02009D28(void *pRawData, NarcId narcId);
 
