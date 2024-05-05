@@ -193,7 +193,7 @@ BOOL SpeciesIsMythical(u16 species);
 BOOL MonCheckFrontierIneligibility(Pokemon *mon);
 BOOL BoxmonBelongsToPlayer(BoxPokemon *boxMon, PlayerProfile * profile, HeapID heapId);
 int TrainerClassToBackpicID(int trainerClass, BOOL a1);
-void sub_02072914(NARC *narc, struct UnkStruct_02072914_sub_sub *dest, u16 species, u16 a3);
+void sub_02072914(NARC *narc, struct UnkStruct_02007FD4_sub84 *dest, u16 species, u16 a3);
 void sub_0207294C(NARC *narc, void *a1, void *a2, u16 a3, int a4, int a5, int a6);
 void sub_020729A4(NARC *narc, u8 *ret, u16 a2, u16 a3);
 void sub_020729D8(NARC *narc, s8 *ret, u16 a2, u16 a3);

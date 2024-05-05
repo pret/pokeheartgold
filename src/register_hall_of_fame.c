@@ -155,8 +155,8 @@ typedef struct RegisterHofMon {
     u8 yOffset;
     u32 metLocation;
     int partyIndex;
-    struct UnkStruct_02072914_sub_sub unk_001C[10];
-    struct UnkStruct_02072914_sub_sub unk_0044[10];
+    struct UnkStruct_02007FD4_sub84 unk_001C[10];
+    struct UnkStruct_02007FD4_sub84 unk_0044[10];
     u16 frontspriteCharbuf[2][1600];
     u16 backspriteCharbuf[2][1600];
     u16 plttBak[16];
