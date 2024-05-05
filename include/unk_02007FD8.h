@@ -3,7 +3,15 @@
 
 #include "filesystem_files_def.h"
 #include "unk_02016EDC.h"
+#include "pokemon_types_def.h"
 #include "heap.h"
+
+typedef struct UnkStruct_02007FD4_sub84 {
+    s8 unk_0;
+    u8 unk_1;
+    s8 unk_2;
+    s8 unk_3;
+} UnkStruct_02007FD4_sub84;
 
 typedef struct UnkStruct_02009264 {
     u8 unk_0;
@@ -68,19 +76,26 @@ typedef struct UnkStruct_02007FD4_sub6C {
     s16 unk_A;
 } UnkStruct_02007FD4_sub6C;
 
+struct UnkStruct_02007FD4_sub;
+
+typedef void (*UnkStruct_02007FD4_sub_func68)(struct UnkStruct_02007FD4_sub *, UnkStruct_02007FD4_sub_sub *);
+
 typedef struct UnkStruct_02007FD4_sub {
     u32 unk_00_00:1;
     u32 unk_00_01:6;
     u32 unk_00_07:25;
     u8 filler_04[0x20];
     UnkStruct_02007FD4_sub_sub unk_24;
-    u8 filler_58[3];
+    u8 unk_58;
+    u8 unk_59;
+    u8 unk_5A;
     u8 unk_5B;
-    u8 filler_5C[0xC];
-    void (*unk_68)(struct UnkStruct_02007FD4_sub *, UnkStruct_02007FD4_sub_sub *);
+    u8 unk_5C[10];
+    u8 filler_66[2];
+    UnkStruct_02007FD4_sub_func68 unk_68;
     UnkStruct_02007FD4_sub6C unk_6C;
     UnkStruct_02007FD4_sub6C unk_78;
-    u8 filler_84[40];
+    UnkStruct_02007FD4_sub84 unk_84[10];
 } UnkStruct_02007FD4_sub; // size: 0xAC
 
 typedef struct UnkStruct_02007FD4 {
@@ -109,6 +124,12 @@ typedef struct UnkStruct_02007FD4 {
 
 UnkStruct_02007FD4 *sub_02007FD4(HeapID heapId);
 void sub_02008120(UnkStruct_02007FD4 *r5);
+void sub_02008524(UnkStruct_02007FD4 *r5);
+void sub_02008550(UnkStruct_02007FD4_sub *a0);
+void sub_020085C8(UnkStruct_02007FD4_sub *a0, UnkStruct_02007FD4_sub84 *a1);
+BOOL sub_020085DC(UnkStruct_02007FD4_sub *a0);
+UnkStruct_02007FD4_sub *sub_020085EC(UnkStruct_02007FD4 *a0, SomeDrawPokemonStruct *a1, int a2, int a3, int a4, int a5, UnkStruct_02007FD4_sub84 *a6, UnkStruct_02007FD4_sub_func68 *a7);
+UnkStruct_02007FD4_sub *sub_02008634(UnkStruct_02007FD4 *a0, SomeDrawPokemonStruct *a1, int a2, int a3, int a4, int a5, int a6, UnkStruct_02007FD4_sub84 *a7, UnkStruct_02007FD4_sub_func68 *a8);
 void sub_020087A4(u32 *a0, int a1, int dy);
 void sub_02009264(UnkStruct_02009264 *a0, struct UnkStruct_02072914_sub_sub *a1);
 int sub_02009284(UnkStruct_02009264 *a0);
