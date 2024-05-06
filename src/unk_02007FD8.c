@@ -36,9 +36,9 @@ UnkStruct_02007FD4 *sub_02007FD4(HeapID heapId) {
     u8 *pRawCharData;
     void *pNcgrFile = AllocAndReadWholeNarcMemberByIdPair(NARC_poketool_pokegra_otherpoke, NARC_otherpoke_259_NCGR, ret->unk_2E8);  // shadow.png
     NNS_G2dGetUnpackedCharacterData(pNcgrFile, &charData);
-    ret->unk_30C = charData->pixelFmt;
-    ret->unk_310 = charData->mapingType;
-    ret->unk_314 = charData->characterFmt;
+    ret->unk_308.pixelFmt = charData->pixelFmt;
+    ret->unk_308.mapingType = charData->mapingType;
+    ret->unk_308.characterFmt = charData->characterFmt;
     pRawCharData = charData->pRawData;
     sub_02009CD0(pRawCharData);
     MI_CpuFill8(ret->unk_2FC, *pRawCharData, 0x8000);
@@ -767,4 +767,66 @@ int sub_02009284(UnkStruct_02009264 *a0) {
 void sub_02009324(UnkStruct_02007FD4_sub *a0) {
     a0->unk_00_07 = TRUE;
     a0->unk_00_08 = TRUE;
+}
+
+void sub_02009334(UnkStruct_02007FD4_sub *a0) {
+    a0->unk_14 = a0->unk_04;
+    a0->unk_78 = a0->unk_6C;
+}
+
+void sub_02009390(UnkStruct_02007FD4_sub *a0) {
+    a0->unk_04 = a0->unk_14;
+    a0->unk_6C = a0->unk_78;
+    a0->unk_00_07 = TRUE;
+    a0->unk_00_08 = TRUE;
+}
+
+void sub_020093FC(UnkStruct_02007FD4 *a0, int a1, int a2) {
+    a0->unk_2EC = a1;
+    a0->unk_2F0 = a2;
+}
+
+void sub_02009408(UnkStruct_02007FD4 *a0, int a1, int a2) {
+    a0->unk_2F4 = a1;
+    a0->unk_2F8 = a2;
+}
+
+SomeDrawPokemonStruct *sub_02009414(UnkStruct_02007FD4_sub *a0) {
+    return &a0->unk_04;
+}
+
+void sub_02009418(UnkStruct_02007FD4 *a0) {
+    if (a0->unk_331) {
+        a0->unk_331 = 0;
+        NNS_G2dInitImageProxy(&a0->unk_2B0);
+        a0->unk_308.H = 0x20;
+        a0->unk_308.W = 0x20;
+        a0->unk_308.szByte = a0->unk_2F0;
+        a0->unk_308.pRawData = a0->unk_2FC;
+        NNS_G2dLoadImage2DMapping(&a0->unk_308, a0->unk_2EC, NNS_G2D_VRAM_TYPE_3DMAIN, &a0->unk_2B0);
+    }
+    if (a0->unk_332) {
+        a0->unk_332 = 0;
+        NNS_G2dInitImagePaletteProxy(&a0->unk_2D4);
+        a0->unk_320.szByte = a0->unk_2F8;
+        a0->unk_320.pRawData = a0->unk_300;
+        NNS_G2dLoadPalette(&a0->unk_320, a0->unk_2F4, NNS_G2D_VRAM_TYPE_3DMAIN, &a0->unk_2D4);
+    }
+}
+
+void sub_020094B0(UnkStruct_02007FD4 *a0, int a1) {
+    a0->unk_333 = a1;
+}
+
+BOOL sub_020094BC(UnkStruct_02007FD4_sub *a0) {
+    GF_ASSERT(a0 != NULL);
+    return !!a0->unk_00_00;
+}
+
+void sub_020094D8(UnkStruct_02007FD4 *a0, u32 a1) {
+    a0->unk_334 |= a1;
+}
+
+void sub_020094E4(UnkStruct_02007FD4 *a0, u32 a1) {
+    a0->unk_334 &= (a1 ^ -1u);
 }
