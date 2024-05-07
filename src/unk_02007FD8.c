@@ -1,13 +1,16 @@
 #include "filesystem.h"
 #include "global.h"
 #include "unk_02007FD8.h"
+#include "palette.h"
 #include "poketool/pokegra/otherpoke.naix"
 
 void sub_02009CD0(void *pRawCharData);
 void sub_02009160(UnkStruct_02007FD4_sub *a0);
 void sub_020094FC(UnkStruct_02007FD4 *a0);
-void sub_0200994C(UnkStruct_02007FD4 *a0);
 void sub_0200925C(UnkStruct_02007FD4_sub *a0);
+void sub_0200994C(UnkStruct_02007FD4 *a0);
+void sub_02009B48(UnkStruct_02007FD4_sub *a0, u8 *a1);
+u8 sub_02009B34(u8 a0);
 
 extern const int _020F5B04[4][2][4];
 extern const int _020F5988[4][4];
@@ -829,4 +832,160 @@ void sub_020094D8(UnkStruct_02007FD4 *a0, u32 a1) {
 
 void sub_020094E4(UnkStruct_02007FD4 *a0, u32 a1) {
     a0->unk_334 &= (a1 ^ -1u);
+}
+
+void sub_020094FC(UnkStruct_02007FD4 *a0) {
+    NNSG2dCharacterData *pCharData; // sp58
+    int i;  // sp54
+    int x;
+    int y;
+    u8 *sp50;
+    void *sp4C;
+    u8 sp48 = FALSE;
+    // a0->unk_000: sp44
+    // a0: r6
+    for (i = 0; i < 4; ++i) {
+        if (a0->unk_000[i].unk_00_00 && a0->unk_000[i].unk_00_07) {
+            a0->unk_000[i].unk_00_07 = FALSE;
+            sp48 = TRUE;
+            sp4C = AllocAndReadWholeNarcMemberByIdPair((NarcId)a0->unk_000[i].unk_04.narcID, a0->unk_000[i].unk_04.charDataID, a0->unk_2E8);
+            NNS_G2dGetUnpackedCharacterData(sp4C, &pCharData);
+            a0->unk_308.pixelFmt = pCharData->pixelFmt;
+            a0->unk_308.mapingType = pCharData->mapingType;
+            a0->unk_308.characterFmt = pCharData->characterFmt;
+            sp50 = pCharData->pRawData;
+            sub_02009D28(sp50, (NarcId)a0->unk_000[i].unk_04.narcID);
+            sub_02009B48(&a0->unk_000[i], sp50);
+            if (i == 3) {
+                for (y = 0; y < 80; ++y) {
+                    for (x = 0; x < 80; ++x) {
+                        if (x < 40) {
+                            if (a0->unk_000[i].unk_24.unk_30_09 && a0->unk_000[i].unk_24.unk_30_0A) {
+                                a0->unk_2FC[y * 128 + x + 80] = sub_02009B34(sp50[(79 - y) * 80 + (39 - x)]);
+                            } else if (a0->unk_000[i].unk_24.unk_30_09) {
+                                a0->unk_2FC[y * 128 + x + 80] = sub_02009B34(sp50[y * 80 + (39 - x)]);
+                            } else if (a0->unk_000[i].unk_24.unk_30_0A) {
+                                a0->unk_2FC[y * 128 + x + 80] = sp50[(79 - y) * 80 + x];
+                            } else if (a0->unk_000[i].unk_24.unk_30_0D != 0) {
+                                if (y % (a0->unk_000[i].unk_24.unk_30_0D * 2)) {
+                                    a0->unk_2FC[y * 128 + x + 80] = a0->unk_2FC[(y - 1) * 128 + x + 80];
+                                } else if (x % a0->unk_000[i].unk_24.unk_30_0D) {
+                                    a0->unk_2FC[y * 128 + x + 80] = a0->unk_2FC[y * 128 + (x - 1) + 80];
+                                } else {
+                                    a0->unk_2FC[y * 128 + x + 80] = (sp50[y * 80 + x] & 0xF) | ((sp50[y * 80 + x] & 0xF) << 4);
+                                }
+                            } else {
+                                a0->unk_2FC[y * 128 + x + 80] = sp50[y * 80 + x];
+                            }
+                        } else {
+                            if (a0->unk_000[i].unk_24.unk_30_09 && a0->unk_000[i].unk_24.unk_30_0A) {
+                                a0->unk_2FC[y * 128 + x + 10280] = sub_02009B34(sp50[(79 - y) * 80 + (79 - (x - 40))]);
+                            } else if (a0->unk_000[i].unk_24.unk_30_09) {
+                                a0->unk_2FC[y * 128 + x + 10280] = sub_02009B34(sp50[y * 80 + (79 - (x - 40))]);
+                            } else if (a0->unk_000[i].unk_24.unk_30_0A) {
+                                a0->unk_2FC[y * 128 + x + 10280] = sp50[(79 - y) * 80 + x];
+                            } else if (a0->unk_000[i].unk_24.unk_30_0D != 0) {
+                                if (y % (a0->unk_000[i].unk_24.unk_30_0D * 2)) {
+                                    a0->unk_2FC[y * 128 + x + 10280] = a0->unk_2FC[(y - 1) * 128 + x + 10280];
+                                } else if (x % a0->unk_000[i].unk_24.unk_30_0D) {
+                                    a0->unk_2FC[y * 128 + x + 10280] = a0->unk_2FC[y * 128 + (x - 1) + 10280];
+                                } else {
+                                    a0->unk_2FC[y * 128 + x + 10280] = (sp50[y * 80 + x] & 0xF) | ((sp50[y * 80 + x] & 0xF) << 4);
+                                }
+                            } else {
+                                a0->unk_2FC[y * 128 + x + 10280] = sp50[y * 80 + x];
+                            }
+                        }
+                    }
+                }
+            } else {
+                for (y = 0; y < 80; ++y) {
+                    for (x = 0; x < 80; ++x) {
+                        if (a0->unk_000[i].unk_24.unk_30_09 && a0->unk_000[i].unk_24.unk_30_0A) {
+                            if (x < 40) {
+                                a0->unk_2FC[y * 128 + x + 10240 * i] = sub_02009B34(sp50[(79 - y) * 80 + (39 - x)]);
+                            } else {
+                                a0->unk_2FC[y * 128 + x + 10240 * i] = sub_02009B34(sp50[(79 - y) * 80 + (79 - (x - 40))]);
+                            }
+                        } else if (a0->unk_000[i].unk_24.unk_30_09) {
+                            if (x < 40) {
+                                a0->unk_2FC[y * 128 + x + 10240 * i] = sub_02009B34(sp50[y * 80 + (39 - x)]);
+                            } else {
+                                a0->unk_2FC[y * 128 + x + 10240 * i] = sub_02009B34(sp50[y * 80 + (79 - (x - 40))]);
+                            }
+                        } else if (a0->unk_000[i].unk_24.unk_30_0A) {
+                            a0->unk_2FC[y * 128 + x + 10240 * i] = sp50[(79 - y) * 80 + x];
+                        } else if (a0->unk_000[i].unk_24.unk_30_0D != 0) {
+                            if (y % (a0->unk_000[i].unk_24.unk_30_0D * 2)) {
+                                a0->unk_2FC[y * 128 + x + 10240 * i] = a0->unk_2FC[(y - 1) * 128 + x + 10240 * i];
+                            } else if (x % a0->unk_000[i].unk_24.unk_30_0D) {
+                                a0->unk_2FC[y * 128 + x + 10240 * i] = a0->unk_2FC[y * 128 + (x - 1) + 10240 * i];
+                            } else {
+                                a0->unk_2FC[y * 128 + x + 10240 * i] = (sp50[y * 80 + x] & 0xF) | ((sp50[y * 80 + x] & 0xF) << 4);
+                            }
+                        } else {
+                            a0->unk_2FC[y * 128 + x + 10240 * i] = sp50[y * 80 + x];
+                        }
+                    }
+                }
+            }
+            FreeToHeap(sp4C);
+        }
+    }
+    a0->unk_331 = sp48;
+}
+
+void sub_0200994C(UnkStruct_02007FD4 *a0) {
+    NNSG2dPaletteData *sp18;
+    int i;
+    int x;
+    u16 *r1;
+    void *sp10;
+    u8 spC = FALSE;
+
+    for (i = 0; i < 4; ++i) {
+        if (a0->unk_000[i].unk_00_00 && a0->unk_000[i].unk_00_08) {
+            a0->unk_000[i].unk_00_08 = FALSE;
+            spC = TRUE;
+            sp10 = AllocAndReadWholeNarcMemberByIdPair((NarcId)a0->unk_000[i].unk_04.narcID, a0->unk_000[i].unk_04.palDataID, a0->unk_2E8);
+            NNS_G2dGetUnpackedPaletteData(sp10, &sp18);
+            a0->unk_320.fmt = sp18->fmt;
+            r1 = sp18->pRawData;
+            for (x = 0; x < 16; ++x) {
+                a0->unk_300[x + 16 * i] = r1[x];
+                a0->unk_304[x + 16 * i] = r1[x];
+            }
+            FreeToHeap(sp10);
+            if (a0->unk_000[i].unk_6C.unk_0_0 != 0) {
+                sp10 = AllocAndReadWholeNarcMemberByIdPair(NARC_poketool_pokegra_otherpoke, NARC_otherpoke_260_NCLR, a0->unk_2E8);
+                NNS_G2dGetUnpackedPaletteData(sp10, &sp18);
+                r1 = sp18->pRawData;
+                for (x = 0; x < 16; ++x) {
+                    a0->unk_300[x + 16 * (3 + a0->unk_000[i].unk_6C.unk_0_0)] = r1[x];
+                    a0->unk_304[x + 16 * (3 + a0->unk_000[i].unk_6C.unk_0_0)] = r1[x];
+                }
+                FreeToHeap(sp10);
+            }
+        }
+        if (a0->unk_000[i].unk_00_00 && a0->unk_000[i].unk_24.unk_30_0C) {
+            if (a0->unk_000[i].unk_24.unk_26 == 0) {
+                spC = TRUE;
+                a0->unk_000[i].unk_24.unk_26 = a0->unk_000[i].unk_24.unk_27;
+                BlendPalette(a0->unk_304 + 16 * i, a0->unk_300 + 16 * i, 16, a0->unk_000[i].unk_24.unk_24, a0->unk_000[i].unk_24.unk_28);
+                if (a0->unk_000[i].unk_6C.unk_0_0 != 0) {
+                    BlendPalette(a0->unk_304 + 16 * (3 + a0->unk_000[i].unk_6C.unk_0_0), a0->unk_300 + 16 * (3 + a0->unk_000[i].unk_6C.unk_0_0), 16, a0->unk_000[i].unk_24.unk_24, a0->unk_000[i].unk_24.unk_28);
+                }
+                if (a0->unk_000[i].unk_24.unk_24 == a0->unk_000[i].unk_24.unk_25) {
+                    a0->unk_000[i].unk_24.unk_30_0C = FALSE;
+                } else if (a0->unk_000[i].unk_24.unk_24 > a0->unk_000[i].unk_24.unk_25) {
+                    --a0->unk_000[i].unk_24.unk_24;
+                } else {
+                    ++a0->unk_000[i].unk_24.unk_24;
+                }
+            } else {
+                --a0->unk_000[i].unk_24.unk_26;
+            }
+        }
+    }
+    a0->unk_332 = spC;
 }
