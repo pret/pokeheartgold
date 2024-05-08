@@ -158,7 +158,7 @@ BOOL sub_020094BC(UnkStruct_02007FD4_sub *a0);
 void sub_020094D8(UnkStruct_02007FD4 *a0, u32 a1);
 void sub_020094E4(UnkStruct_02007FD4 *a0, u32 a1);
 void sub_020094FC(UnkStruct_02007FD4 *a0);
-void sub_02009B60(void *pRawData, u32 pid, BOOL isAnimated);
+void sub_02009B60(u8 *pRawData, u32 pid, BOOL isAnimated);
 void sub_02009D28(void *pRawData, NarcId narcId);
 
 #endif //POKEHEARTGOLD_UNK_02007FD8_H

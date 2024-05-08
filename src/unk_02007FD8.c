@@ -3,17 +3,21 @@
 #include "unk_02007FD8.h"
 #include "palette.h"
 #include "poketool/pokegra/otherpoke.naix"
+#include "constants/species.h"
 
-void sub_02009CD0(void *pRawCharData);
 void sub_02009160(UnkStruct_02007FD4_sub *a0);
 void sub_020094FC(UnkStruct_02007FD4 *a0);
 void sub_0200925C(UnkStruct_02007FD4_sub *a0);
 void sub_0200994C(UnkStruct_02007FD4 *a0);
-void sub_02009B48(UnkStruct_02007FD4_sub *a0, u8 *a1);
 u8 sub_02009B34(u8 a0);
+void sub_02009B48(UnkStruct_02007FD4_sub *a0, u8 *a1);
+u16 sub_02009CB0(u32 *p);
+void sub_02009CD0(u8 *pRawCharData);
+void sub_02009CF8(u8 *pRawCharData);
 
 extern const int _020F5B04[4][2][4];
 extern const int _020F5988[4][4];
+extern const u8 (*_0210F63C[4])[2];
 
 UnkStruct_02007FD4 *sub_02007FD4(HeapID heapId) {
     UnkStruct_02007FD4 *ret = AllocFromHeap(heapId, sizeof(UnkStruct_02007FD4));
@@ -988,4 +992,102 @@ void sub_0200994C(UnkStruct_02007FD4 *a0) {
         }
     }
     a0->unk_332 = spC;
+}
+
+u8 sub_02009B34(u8 a0) {
+    u8 ret = (a0 & 0xF0) >> 4;
+    ret |= (a0 & 0x0F) << 4;
+    return ret;
+}
+
+void sub_02009B48(UnkStruct_02007FD4_sub *a0, u8 *a1) {
+    if (a0->unk_04.species != SPECIES_NONE) {
+        sub_02009B60(a1, a0->unk_04.personality, TRUE);
+    }
+}
+
+void sub_02009B60(u8 *pRawData, u32 pid, BOOL isAnimated) {
+    const u8 (*r6)[2];
+    int i;
+    u8 r0;
+    u8 r2;
+    u8 r1;
+    int r2_2;
+    u32 lr = pid;
+    for (i = 0; i < 4; ++i) {
+        r6 = _0210F63C[i];
+        r1 = 0;
+        while (r6[r1][0] != 0xFF) {
+            r0 = r6[r1][0] + ((pid & 0x0F) - 8);
+            r2 = r6[r1][1] + (((pid & 0xF0) >> 4) - 8);
+            r2_2 = r0 / 2 + r2 * 80;
+            if (r0 & 1) {
+                if ((pRawData[r2_2] & 0xF0) >= 0x10 && (pRawData[r2_2] & 0xF0) <= 0x30) {
+                    pRawData[r2_2] += 0x50;
+                }
+            } else {
+                if ((pRawData[r2_2] & 0x0F) >= 0x01 && (pRawData[r2_2] & 0x0F) <= 0x03) {
+                    pRawData[r2_2] += 0x05;
+                }
+            }
+            ++r1;
+        }
+        pid >>= 8;
+    }
+    pid = lr;
+    if (isAnimated) {
+        for (i = 0; i < 4; ++i) {
+            r6 = _0210F63C[i];
+            r1 = 0;
+            while (r6[r1][0] != 0xFF) {
+                r0 = (r6[r1][0] - 14) + ((pid & 0x0F) - 8) + 80;
+                r2 = r6[r1][1] + (((pid & 0xF0) >> 4) - 8);
+                r2_2 = r0 / 2 + r2 * 80;
+                if (r0 & 1) {
+                    if ((pRawData[r2_2] & 0xF0) >= 0x10 && (pRawData[r2_2] & 0xF0) <= 0x30) {
+                        pRawData[r2_2] += 0x50;
+                    }
+                } else {
+                    if ((pRawData[r2_2] & 0x0F) >= 0x01 && (pRawData[r2_2] & 0x0F) <= 0x03) {
+                        pRawData[r2_2] += 0x05;
+                    }
+                }
+                ++r1;
+            }
+            pid >>= 8;
+        }
+    }
+}
+
+u16 sub_02009CB0(u32 *p) {
+    *p = *p * 1103515245 + 24691;
+    return *p / 65536;
+}
+
+void sub_02009CD0(u8 *pRawCharData) {
+    int i;
+    u16 *pCharData_asU16 = (u16 *)pRawCharData;
+    u32 seed = *pCharData_asU16;
+    for (i = 0; i < 3200; ++i) {
+        pCharData_asU16[i] ^= seed;
+        sub_02009CB0(&seed);
+    }
+}
+
+void sub_02009CF8(u8 *pRawCharData) {
+    int i;
+    u16 *pCharData_asU16 = (u16 *)pRawCharData;
+    u32 seed = pCharData_asU16[3199];
+    for (i = 3199; i > -1; --i) {
+        pCharData_asU16[i] ^= seed;
+        sub_02009CB0(&seed);
+    }
+}
+
+void sub_02009D28(void *pRawData, NarcId narcId) {
+    if (narcId == NARC_pbr_pokegra || narcId == NARC_pbr_otherpoke || narcId == NARC_a_0_5_8 || narcId == NARC_a_0_0_6) {
+        sub_02009CF8(pRawData);
+    } else {
+        sub_02009CD0(pRawData);
+    }
 }
