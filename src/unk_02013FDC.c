@@ -77,10 +77,10 @@ static BOOL sub_020140E8(int species) {
 static void sub_02014128(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int width, int height, void *dest, u32 pid, BOOL isAnimated, int whichFacing, int species) {
     NNSG2dCharacterData *ppCharData = NULL;
     sub_0201401C(narcId, fileId, heapId, &ppCharData);
-    sub_02009D28(ppCharData->pRawData, narcId);
+    UnscanPokepic(ppCharData->pRawData, narcId);
     BOOL isSpinda = sub_020140E8(species);
     if (whichFacing == MON_PIC_FACING_FRONT && isSpinda == TRUE) {
-        sub_02009B60(ppCharData->pRawData, pid, isAnimated);
+        RawChardata_PlaceSpindaSpots(ppCharData->pRawData, pid, isAnimated);
     }
     sub_02014050(x, y, width, height, ppCharData, dest);
 }
@@ -106,7 +106,7 @@ void sub_020141C4(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int wi
     GF_ASSERT(ppCharData->H >= y + height);
 
     srcu8 = ppCharData->pRawData;
-    sub_02009D28(srcu8, narcId);
+    UnscanPokepic(srcu8, narcId);
     dstu8 = dest;
     srcWidth = ppCharData->W * 4;
     srcOffset = x * 4 + y * srcWidth;

@@ -17,7 +17,7 @@ void ov12_02262014(OpponentData *data) {
         SysTask_Destroy(data->unk198);
         data->unk198 = NULL;
         data->unk19C = 0;
-        sub_020087A4(data->unk20, 4, 0);
+        Pokepic_SetAttr(data->unk20, 4, 0);
     }
 }
 
@@ -32,5 +32,5 @@ static void ov12_0226203C(SysTask *task, void *_data) {
 
     int dy = FX_Mul(GF_SinDegNoWrap(data->unk19C), FX32_CONST(1.5)) / FX32_ONE;
     
-    sub_020087A4(data->unk20, 4, dy);
+    Pokepic_SetAttr(data->unk20, 4, dy);
 }

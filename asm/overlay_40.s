@@ -48,7 +48,7 @@ ov40_0222B6E0: ; 0x0222B6E0
 	bl GF_3DVramMan_Create
 	str r0, [r4, #0x60]
 	mov r0, #0x6d
-	bl sub_02007FD4
+	bl PokepicManager_Create
 	str r0, [r4, #0x64]
 	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r4, #0x28]
@@ -376,7 +376,7 @@ _0222BA4A:
 	ldr r0, [r5, #0x60]
 	bl GF_3DVramMan_Delete
 	ldr r0, [r5, #0x64]
-	bl sub_02008524
+	bl PokepicManager_Delete
 	add r0, r5, #0
 	bl ov40_0223D600
 	mov r0, #0
@@ -8609,7 +8609,7 @@ ov40_0222FBBC: ; 0x0222FBBC
 	mov r1, #1
 	str r1, [r4, r0]
 	ldr r0, [r4, #0x64]
-	bl sub_02009418
+	bl PokepicManager_HandleLoadImgAndOrPltt
 	ldr r0, [r4, #0x1c]
 	bl sub_0200D020
 	bl thunk_OamManager_ApplyAndResetBuffers
@@ -23617,7 +23617,7 @@ _022374D0:
 	ldr r0, [r0, #0x64]
 	mov r2, #0x2a
 	mov r3, #0x5b
-	bl sub_020085EC
+	bl PokepicManager_CreatePokepic
 	mov r1, #0xcb
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -23643,7 +23643,7 @@ ov40_02237548: ; 0x02237548
 	cmp r0, #0
 	beq _02237562
 	mov r1, #6
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 _02237562:
 	pop {r3, pc}
 	thumb_func_end ov40_02237548
@@ -23659,7 +23659,7 @@ ov40_02237564: ; 0x02237564
 	ldr r0, [r1, r0]
 	cmp r0, #0
 	beq _0223757A
-	bl sub_02008780
+	bl Pokepic_Delete
 _0223757A:
 	pop {r3, pc}
 	thumb_func_end ov40_02237564

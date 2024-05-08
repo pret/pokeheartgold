@@ -39,8 +39,8 @@
 .public GfGfxLoader_GetCharDataFromOpenNarc
 .public GfGfxLoader_GetScrnDataFromOpenNarc
 .public GfGfxLoader_LoadFromOpenNarc
-.public sub_020085EC
-.public sub_020090B4
+.public PokepicManager_CreatePokepic
+.public Pokepic_StartPaletteFade
 .public sub_02009138
 .public CreateSpriteResourcesHeader
 .public G2dRenderer_Init

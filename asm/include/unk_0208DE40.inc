@@ -1,11 +1,11 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_02007FD4
+.public PokepicManager_Create
 .public sub_02008120
-.public sub_02008524
+.public PokepicManager_Delete
 .public sub_02008550
-.public sub_020085EC
-.public sub_020087A4
+.public PokepicManager_CreatePokepic
+.public Pokepic_SetAttr
 .public sub_02016F2C
 .public sub_02017088
 .public GfGfx_EngineATogglePlanes

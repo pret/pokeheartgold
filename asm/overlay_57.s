@@ -202,7 +202,7 @@ _022379D6:
 	bl ov57_02237CEC
 	bl ov57_02238BCC
 	mov r0, #0x34
-	bl sub_02007FD4
+	bl PokepicManager_Create
 	mov r1, #0x71
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -389,7 +389,7 @@ ov57_02237B20: ; 0x02237B20
 	mov r0, #0x71
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02008524
+	bl PokepicManager_Delete
 	mov r0, #0xa1
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -620,7 +620,7 @@ ov57_02237E38: ; 0x02237E38
 	mov r0, #0x71
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02009418
+	bl PokepicManager_HandleLoadImgAndOrPltt
 	bl thunk_OamManager_ApplyAndResetBuffers
 	add r0, r4, #0
 	add r0, #0xe8
@@ -8208,7 +8208,7 @@ ov57_0223B950: ; 0x0223B950
 	add r1, sp, #0x38
 	mov r2, #0xc0
 	add r3, r6, #0
-	bl sub_020085EC
+	bl PokepicManager_CreatePokepic
 	mov r1, #0x72
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -8270,13 +8270,13 @@ ov57_0223BA1C: ; 0x0223BA1C
 	ldr r0, [r4, r0]
 	mov r1, #0xc
 	mov r2, #0
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	mov r0, #0x72
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0xd
 	mov r2, #0
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov57_0223BA1C
@@ -8289,7 +8289,7 @@ ov57_0223BA40: ; 0x0223BA40
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0xc
-	bl sub_02008A78
+	bl Pokepic_GetAttr
 	mov r1, #1
 	lsl r1, r1, #8
 	cmp r0, r1
@@ -8300,7 +8300,7 @@ _0223BA5C:
 	add r1, #0xc8
 	ldr r0, [r4, r1]
 	mov r1, #0xc
-	bl sub_02008A78
+	bl Pokepic_GetAttr
 	mov r2, #1
 	lsl r2, r2, #8
 	cmp r0, r2
@@ -8309,14 +8309,14 @@ _0223BA5C:
 	add r0, #0xc8
 	ldr r0, [r4, r0]
 	mov r1, #0xc
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	mov r0, #0x72
 	lsl r0, r0, #2
 	mov r1, #0xd
 	add r2, r1, #0
 	ldr r0, [r4, r0]
 	add r2, #0xf3
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	mov r0, #0
 	pop {r4, pc}
 _0223BA8E:
@@ -8324,13 +8324,13 @@ _0223BA8E:
 	ldr r0, [r4, r2]
 	mov r1, #0xc
 	mov r2, #0x20
-	bl sub_02008C2C
+	bl Pokepic_AddAttr
 	mov r0, #0x72
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0xd
 	mov r2, #0x20
-	bl sub_02008C2C
+	bl Pokepic_AddAttr
 	mov r1, #0x72
 	lsl r1, r1, #2
 	ldr r0, [r4, r1]
@@ -8350,7 +8350,7 @@ ov57_0223BABC: ; 0x0223BABC
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0xc
-	bl sub_02008A78
+	bl Pokepic_GetAttr
 	cmp r0, #0
 	bne _0223BAD4
 	mov r0, #0
@@ -8360,7 +8360,7 @@ _0223BAD4:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0xc
-	bl sub_02008A78
+	bl Pokepic_GetAttr
 	cmp r0, #0
 	bgt _0223BB04
 	mov r0, #0x72
@@ -8368,13 +8368,13 @@ _0223BAD4:
 	ldr r0, [r4, r0]
 	mov r1, #0xc
 	mov r2, #0
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	mov r0, #0x72
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0xd
 	mov r2, #0
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	mov r0, #0
 	pop {r4, pc}
 _0223BB04:
@@ -8384,14 +8384,14 @@ _0223BB04:
 	add r2, r1, #0
 	ldr r0, [r4, r0]
 	sub r2, #0x2c
-	bl sub_02008C2C
+	bl Pokepic_AddAttr
 	mov r0, #0x72
 	lsl r0, r0, #2
 	mov r1, #0xd
 	add r2, r1, #0
 	ldr r0, [r4, r0]
 	sub r2, #0x2d
-	bl sub_02008C2C
+	bl Pokepic_AddAttr
 	mov r1, #0x72
 	lsl r1, r1, #2
 	ldr r0, [r4, r1]
@@ -8409,22 +8409,22 @@ ov57_0223BB38: ; 0x0223BB38
 	mov r1, #0x72
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	ldr r3, _0223BB48 ; =sub_020087A4
+	ldr r3, _0223BB48 ; =Pokepic_SetAttr
 	mov r1, #6
 	bx r3
 	nop
-_0223BB48: .word sub_020087A4
+_0223BB48: .word Pokepic_SetAttr
 	thumb_func_end ov57_0223BB38
 
 	thumb_func_start ov57_0223BB4C
 ov57_0223BB4C: ; 0x0223BB4C
 	mov r1, #0x72
 	lsl r1, r1, #2
-	ldr r3, _0223BB58 ; =sub_02008780
+	ldr r3, _0223BB58 ; =Pokepic_Delete
 	ldr r0, [r0, r1]
 	bx r3
 	nop
-_0223BB58: .word sub_02008780
+_0223BB58: .word Pokepic_Delete
 	thumb_func_end ov57_0223BB4C
 
 	thumb_func_start ov57_0223BB5C
