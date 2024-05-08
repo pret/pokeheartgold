@@ -28,7 +28,6 @@ Static main
     Object src/filesystem.o
     Object src/gf_gfx_loader.o
     Object src/unk_02007FD8.o
-    Object asm/unk_02007FD8_s.o
     Object src/unk_02009D48.o
     Object src/unk_0200A090.o
     Object src/unk_0200ACF0.o
