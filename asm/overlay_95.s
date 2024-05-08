@@ -271,7 +271,7 @@ ov95_021E5B24: ; 0x021E5B24
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x3c]
-	bl sub_02009418
+	bl PokepicManager_HandleLoadImgAndOrPltt
 	bl GF_RunVramTransferTasks
 	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #8]
@@ -1224,7 +1224,7 @@ ov95_021E623C: ; 0x021E623C
 	add r1, sp, #0x3c
 	mov r2, #0x80
 	add r3, r7, #0
-	bl sub_020085EC
+	bl PokepicManager_CreatePokepic
 	str r0, [r5, #0x70]
 	add sp, #0x4c
 	pop {r4, r5, r6, r7, pc}
@@ -1265,22 +1265,22 @@ ov95_021E62A4: ; 0x021E62A4
 
 	thumb_func_start ov95_021E62E4
 ov95_021E62E4: ; 0x021E62E4
-	ldr r3, _021E62EC ; =sub_02008780
+	ldr r3, _021E62EC ; =Pokepic_Delete
 	ldr r0, [r0, #0x70]
 	bx r3
 	nop
-_021E62EC: .word sub_02008780
+_021E62EC: .word Pokepic_Delete
 	thumb_func_end ov95_021E62E4
 
 	thumb_func_start ov95_021E62F0
 ov95_021E62F0: ; 0x021E62F0
-	ldr r3, _021E62FC ; =sub_020087A4
+	ldr r3, _021E62FC ; =Pokepic_SetAttr
 	add r2, r1, #0
 	ldr r0, [r0, #0x70]
 	mov r1, #6
 	bx r3
 	nop
-_021E62FC: .word sub_020087A4
+_021E62FC: .word Pokepic_SetAttr
 	thumb_func_end ov95_021E62F0
 
 	thumb_func_start ov95_021E6300
@@ -2203,7 +2203,7 @@ _021E69FA:
 	ldr r0, [r4, #0x70]
 	mov r2, #0x10
 	add r3, r1, #0
-	bl sub_020090B4
+	bl Pokepic_StartPaletteFade
 	ldr r0, [r4, #0x68]
 	add r0, r0, #1
 	str r0, [r4, #0x68]
@@ -2288,7 +2288,7 @@ _021E6AE8:
 	ldr r0, [r4, #0x70]
 	mov r1, #0x10
 	add r3, r2, #0
-	bl sub_020090B4
+	bl Pokepic_StartPaletteFade
 	mov r0, #0x10
 	str r0, [sp]
 	mov r3, #0
@@ -2449,7 +2449,7 @@ _021E6BFA:
 	ldr r0, [r4, #0x70]
 	mov r2, #0x10
 	add r3, r1, #0
-	bl sub_020090B4
+	bl Pokepic_StartPaletteFade
 	ldr r0, [r4, #0x68]
 	add r0, r0, #1
 	str r0, [r4, #0x68]
@@ -2534,7 +2534,7 @@ _021E6CE8:
 	ldr r0, [r4, #0x70]
 	mov r1, #0x10
 	add r3, r2, #0
-	bl sub_020090B4
+	bl Pokepic_StartPaletteFade
 	mov r0, #0x10
 	str r0, [sp]
 	mov r3, #0
@@ -2622,7 +2622,7 @@ ov95_021E6D70: ; 0x021E6D70
 	bl ov95_021E5954
 	str r0, [r4, #0x38]
 	mov r0, #0x46
-	bl sub_02007FD4
+	bl PokepicManager_Create
 	str r0, [r4, #0x3c]
 	mov r0, #0xb4
 	mov r1, #0x46
@@ -2819,7 +2819,7 @@ ov95_021E6F0C: ; 0x021E6F0C
 	bl FreeToHeap
 	bl GF_DestroyVramTransferManager
 	ldr r0, [r4, #0x3c]
-	bl sub_02008524
+	bl PokepicManager_Delete
 	ldr r0, [r4, #0x58]
 	bl sub_02016F2C
 	ldr r0, [r4, #0x40]

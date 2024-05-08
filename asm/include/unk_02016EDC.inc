@@ -1,10 +1,10 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public AllocAtEndAndReadWholeNarcMemberByIdPair
-.public sub_020087A4
-.public sub_02008A78
-.public sub_02008C2C
-.public sub_020090B4
+.public Pokepic_SetAttr
+.public Pokepic_GetAttr
+.public Pokepic_AddAttr
+.public Pokepic_StartPaletteFade
 .public sub_02009138
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy

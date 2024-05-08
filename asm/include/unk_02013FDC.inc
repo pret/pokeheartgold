@@ -1,8 +1,8 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public AllocAndReadWholeNarcMemberByIdPair
-.public sub_02009B60
-.public sub_02009D28
+.public RawChardata_PlaceSpindaSpots
+.public UnscanPokepic
 .public sub_020141C4
 .public sub_020143E0
 .public sub_02014400

@@ -1543,7 +1543,7 @@ static void RegisterHallOfFame_IndivMonsScene_UnloadSpriteGfx(RegisterHallOfFame
 }
 
 static void RegisterHallOfFame_IndivMonsScene_SetPicGfxAndPltt(RegisterHallOfFameData *data, RegisterHofMon *hofMon, u8 whichFacing, int picIdx) {
-    SomeDrawPokemonStruct drawMonStruct;
+    PokepicTemplate drawMonStruct;
     GetPokemonSpriteCharAndPlttNarcIds(&drawMonStruct, hofMon->mon, whichFacing);
     RegisterHallOfFame_ReplaceSpriteChar(
         whichFacing == MON_PIC_FACING_FRONT ? hofMon->frontspriteCharbuf : hofMon->backspriteCharbuf,
@@ -2329,7 +2329,7 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
 
 static void RegisterHallOfFame_GetPartyDetails(RegisterHallOfFameData *data) {
     u32 i;
-    SomeDrawPokemonStruct sp40;
+    PokepicTemplate sp40;
     UnkStruct_02014E30 sp20[2];
     ARRAY_ASSIGN(sp20, ov63_0221FC38);
     NARC *narc = NARC_New(NARC_a_1_8_0, HEAP_ID_REGISTER_HALL_OF_FAME);
