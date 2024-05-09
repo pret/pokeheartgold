@@ -3292,7 +3292,7 @@ ov68_021E734C: ; 0x021E734C
 	bl NNS_G3dGlbFlushP
 	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r4, #4]
-	bl sub_02008120
+	bl PokepicManager_DrawAll
 	ldr r0, _021E7384 ; =0x04000540
 	mov r1, #1
 	str r1, [r0]

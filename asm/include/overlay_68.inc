@@ -23,7 +23,7 @@
 .public NARC_Delete
 .public GfGfxLoader_GetScrnDataFromOpenNarc
 .public PokepicManager_Create
-.public sub_02008120
+.public PokepicManager_DrawAll
 .public PokepicManager_Delete
 .public PokepicManager_CreatePokepic
 .public Pokepic_SetAttr

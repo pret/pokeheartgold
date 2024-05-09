@@ -270,7 +270,7 @@ _02237B0C:
 	mov r0, #0x71
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02008120
+	bl PokepicManager_DrawAll
 	bl ov57_02238C0C
 	mov r0, #0
 	pop {r4, pc}
@@ -6598,7 +6598,7 @@ _0223AD38:
 	mov r0, #0x72
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_020085DC
+	bl Pokepic_IsAnimFinished
 	cmp r0, #0
 	beq _0223AD66
 _0223AD64:
@@ -8193,7 +8193,7 @@ ov57_0223B950: ; 0x0223B950
 	add r1, sp, #0x10
 	lsr r2, r2, #0x10
 	mov r3, #1
-	bl sub_02072914
+	bl NARC_ReadPokepicAnimScript
 	ldr r0, _0223B9C4 ; =0xFFFFFD80
 	add r6, #0x30
 	str r0, [sp]
@@ -8238,7 +8238,7 @@ ov57_0223B9C8: ; 0x0223B9C8
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02008550
+	bl Pokepic_StartAnim
 	mov r0, #2
 	str r0, [sp]
 	mov r0, #0

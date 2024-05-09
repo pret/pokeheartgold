@@ -1212,7 +1212,7 @@ ov95_021E623C: ; 0x021E623C
 	add r1, sp, #0x14
 	lsr r2, r2, #0x10
 	mov r3, #1
-	bl sub_02072914
+	bl NARC_ReadPokepicAnimScript
 	mov r1, #0
 	str r1, [sp]
 	add r7, #0x60
@@ -1247,7 +1247,7 @@ ov95_021E62A4: ; 0x021E62A4
 	bl GetMonNature
 	ldr r0, [r5, #0x70]
 	mov r1, #1
-	bl sub_02008550
+	bl Pokepic_StartAnim
 	mov r0, #2
 	str r0, [sp]
 	mov r0, #0
@@ -1522,7 +1522,7 @@ _021E64D4:
 	cmp r0, #1
 	bne _021E6586
 	ldr r0, [r4, #0x70]
-	bl sub_020085DC
+	bl Pokepic_IsAnimFinished
 	cmp r0, #0
 	bne _021E6586
 	add r0, r4, #0
@@ -1803,7 +1803,7 @@ _021E6726:
 	cmp r0, #1
 	bne _021E67D8
 	ldr r0, [r4, #0x70]
-	bl sub_020085DC
+	bl Pokepic_IsAnimFinished
 	cmp r0, #0
 	bne _021E67D8
 	add r0, r4, #0
@@ -2754,7 +2754,7 @@ _021E6EDC:
 	b _021E6F04
 _021E6EEC:
 	ldr r0, [r5, #0x3c]
-	bl sub_02008120
+	bl PokepicManager_DrawAll
 	bl ov95_021E5B58
 	b _021E6F04
 _021E6EF8:

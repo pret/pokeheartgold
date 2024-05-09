@@ -32,7 +32,7 @@
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadScrnData
 .public PokepicManager_Create
-.public sub_02008120
+.public PokepicManager_DrawAll
 .public PokepicManager_Delete
 .public PokepicManager_SetPlttBaseAddrAndSize
 .public PokepicManager_HandleLoadImgAndOrPltt

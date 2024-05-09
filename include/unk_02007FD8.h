@@ -5,41 +5,41 @@
 #include "pokemon_types_def.h"
 #include "heap.h"
 
-typedef struct UnkStruct_02007FD4_sub84 {
-    s8 unk_0;
-    u8 unk_1;
-    s8 unk_2;
+typedef struct PokepicAnimScript {
+    s8 next;
+    u8 duration;
+    s8 xOffset;
     s8 unk_3;
-} UnkStruct_02007FD4_sub84;
+} PokepicAnimScript;
 
-typedef struct UnkStruct_02009264 {
-    u8 unk_0;
-    u8 unk_1;
-    u8 unk_2;
-    u8 unk_3;
-    u8 unk_4[10];
-    struct UnkStruct_02007FD4_sub84 *unk_10;
-} UnkStruct_02009264;
+typedef struct PokepicAnim {
+    u8 active;
+    u8 whichAnimStep;
+    u8 whichAnim;
+    u8 stepDelay;
+    u8 loopTimers[10];
+    PokepicAnimScript *animScript;
+} PokepicAnim;
 
-typedef struct UnkStruct_02007FD4_sub_sub {
+typedef struct PokepicDrawParam {
     s16 xCenter;
     s16 yCenter;
     int zCenter;
     s16 xOffset;
     s16 yOffset;
     int zOffset;
-    s16 unk_10;
-    s16 unk_12;
+    s16 affineWidth;
+    s16 affineHeight;
     u16 rotX;
     u16 rotY;
     u16 rotZ;
     u16 unk_1A;
     s16 xPivot;
     s16 yPivot;
-    u8 unk_20;
-    u8 unk_21;
-    u8 unk_22;
-    u8 unk_23;
+    u8 xOffset2;
+    u8 yOffset2;
+    u8 width;
+    u8 height;
     u8 fadeCur;
     u8 fadeEnd;
     u8 fadeDelayCounter;
@@ -51,7 +51,7 @@ typedef struct UnkStruct_02007FD4_sub_sub {
     u32 ambientR:5;
     u32 ambientG:5;
     u32 ambientB:5;
-    u32 unk_2C_30:2;
+    u32 filler_2C_30:2;
     u32 hasVanished:1;
     u32 visible:1;
     u32 alpha:5;
@@ -62,47 +62,47 @@ typedef struct UnkStruct_02007FD4_sub_sub {
     u32 dontDraw:1;
     u32 fadeActive:1;
     u32 mosaic:4;
-    u32 unk_30_11:15;
-} UnkStruct_02007FD4_sub_sub;
+    u32 filler_30_11:15;
+} PokepicDrawParam;
 
-typedef struct UnkStruct_02007FD4_sub6C {
+typedef struct PokepicShadow {
     u16 palSlot:2;
-    u16 unk_0_2:1;
-    u16 unk_0_3:1;
-    u16 unk_0_4:1;
-    u16 unk_0_5:2;
-    u16 unk_0_7:9;
-    s8 unk_2;
-    u8 unk_3;
+    u16 shouldAdjustX:1;
+    u16 shouldAdjustY:1;
+    u16 isAffine:1;
+    u16 size:2;
+    u16 filler_0_7:9;
+    s8 height;
+    u8 filler_3[1];
     s16 x;
     s16 y;
-    s16 unk_8;
-    s16 unk_A;
-} UnkStruct_02007FD4_sub6C;
+    s16 xOffset;
+    s16 yOffset;
+} PokepicShadow;
 
 struct Pokepic;
 
-typedef void (*PokepicCallback)(struct Pokepic *, UnkStruct_02007FD4_sub_sub *);
+typedef void (*PokepicCallback)(struct Pokepic *, PokepicDrawParam *);
 
 typedef struct Pokepic {
     u32 active:1;
     u32 polygonId:6;
     u32 needReloadChar:1;
     u32 needReloadPltt:1;
-    u32 unk_00_09:23;
+    u32 filler_00_09:23;
     PokepicTemplate template;
     PokepicTemplate templateBak;
-    UnkStruct_02007FD4_sub_sub drawParam;
-    u8 unk_58;
-    u8 unk_59;
-    u8 unk_5A;
-    u8 unk_5B;
-    u8 unk_5C[10];
+    PokepicDrawParam drawParam;
+    u8 animActive;
+    u8 whichAnim;
+    u8 animStepDelay;
+    u8 whichAnimStep;
+    u8 animLoopTimers[10];
     u8 filler_66[2];
     PokepicCallback callback;
-    UnkStruct_02007FD4_sub6C shadow;
-    UnkStruct_02007FD4_sub6C shadowBak;
-    UnkStruct_02007FD4_sub84 unk_84[10];
+    PokepicShadow shadow;
+    PokepicShadow shadowBak;
+    PokepicAnimScript animScript[10];
 } Pokepic; // size: 0xAC
 
 typedef struct PokepicManager {
@@ -119,33 +119,33 @@ typedef struct PokepicManager {
     u16 *plttRawDataUnfaded;
     NNSG2dCharacterData charData;
     NNSG2dPaletteData plttData;
-    u8 unk_330;
+    u8 unread_330;
     u8 needLoadImage;
     u8 needLoadPltt;
-    u8 unk_333;
-    u32 unk_334;
+    u8 needG3Identity;
+    u32 flags;
 } PokepicManager;  // size: 0x338
 
 PokepicManager *PokepicManager_Create(HeapID heapId);
-void sub_02008120(PokepicManager *r5);
-void PokepicManager_Delete(PokepicManager *r5);
-void sub_02008550(Pokepic *pokepic);
-void sub_020085C8(Pokepic *pokepic, UnkStruct_02007FD4_sub84 *a1);
-BOOL sub_020085DC(Pokepic *pokepic);
-Pokepic *PokepicManager_CreatePokepic(PokepicManager *pokepicManager, PokepicTemplate *template, int x, int y, int z, int polygonId, UnkStruct_02007FD4_sub84 *a6, PokepicCallback callback);
-Pokepic *PokepicManager_CreatePokepicAt(PokepicManager *pokepicManager, PokepicTemplate *template, int x, int y, int z, int polygonId, int picIndex, UnkStruct_02007FD4_sub84 *a7, PokepicCallback callback);
+void PokepicManager_DrawAll(PokepicManager *pokepicManager);
+void PokepicManager_Delete(PokepicManager *pokepicManager);
+void Pokepic_StartAnim(Pokepic *pokepic);
+void Pokepic_SetAnimScript(Pokepic *pokepic, PokepicAnimScript *animScript);
+BOOL Pokepic_IsAnimFinished(Pokepic *pokepic);
+Pokepic *PokepicManager_CreatePokepic(PokepicManager *pokepicManager, PokepicTemplate *template, int x, int y, int z, int polygonId, PokepicAnimScript *animScript, PokepicCallback callback);
+Pokepic *PokepicManager_CreatePokepicAt(PokepicManager *pokepicManager, PokepicTemplate *template, int x, int y, int z, int polygonId, int picIndex, PokepicAnimScript *animScript, PokepicCallback callback);
 void Pokepic_Delete(Pokepic *pokepic);
 void PokepicManager_DeleteAllPics(PokepicManager *pokepicManager);
 void Pokepic_SetAttr(Pokepic *pokepic, int attr, int value);
 int Pokepic_GetAttr(Pokepic *pokepic, int attr);
 void Pokepic_AddAttr(Pokepic *pokepic, int attr, int addend);
-void sub_0200908C(Pokepic *pokepic, int a1, int a2, int a3, int a4);
+void Pokepic_SetVisible(Pokepic *pokepic, int x, int y, int width, int height);
 void Pokepic_StartPaletteFade(Pokepic *pokepic, int start, int end, int framesPer, int targetColor);
 void Pokepic_StartPaletteFadeAll(PokepicManager *pokepicManager, int start, int end, int framesPer, int targetColor);
 BOOL sub_02009138(Pokepic *pokepic);
-void sub_0200914C(Pokepic *pokepic, int a1);
-void sub_02009264(UnkStruct_02009264 *a0, struct UnkStruct_02007FD4_sub84 *a1);
-int sub_02009284(UnkStruct_02009264 *a0);
+void sub_0200914C(Pokepic *pokepic, int y);
+void PokepicAnim_Init(PokepicAnim *anim, PokepicAnimScript *animScript);
+int PokepicAnim_Exec(PokepicAnim *anim);
 void Pokepic_ScheduleReloadFromNarc(Pokepic *pokepic);
 void Pokepic_Push(Pokepic *pokepic);
 void Pokepic_Pop(Pokepic *pokepic);
@@ -157,7 +157,7 @@ void sub_020094B0(PokepicManager *pokepicManager, int a1);
 BOOL Pokepic_IsActive(Pokepic *pokepic);
 void sub_020094D8(PokepicManager *pokepicManager, u32 a1);
 void sub_020094E4(PokepicManager *pokepicManager, u32 a1);
-void sub_020094FC(PokepicManager *pokepicManager);
+void PokepicManager_BufferCharData(PokepicManager *pokepicManager);
 void RawChardata_PlaceSpindaSpots(u8 *pRawData, u32 pid, BOOL isAnimated);
 void UnscanPokepic(u8 *pRawData, NarcId narcId);
 

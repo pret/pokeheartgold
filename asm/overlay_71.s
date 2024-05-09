@@ -2221,7 +2221,7 @@ ov71_022479C8: ; 0x022479C8
 	ldr r0, [r4, #0xc]
 	bl PokepicManager_HandleLoadImgAndOrPltt
 	ldr r0, [r4, #0xc]
-	bl sub_02008120
+	bl PokepicManager_DrawAll
 	mov r2, #1
 	str r2, [sp]
 	mov r0, #0x12
@@ -2611,7 +2611,7 @@ _02247D04:
 	bne _02247D80
 	ldr r0, [r4, #0x10]
 	mov r1, #1
-	bl sub_02008550
+	bl Pokepic_StartAnim
 	ldr r0, [r4]
 	bl ov71_022473A8
 	add r2, r0, #0
@@ -2913,7 +2913,7 @@ ov71_02247F9C: ; 0x02247F9C
 	ldr r0, [r0]
 	add r1, #0x14
 	mov r3, #1
-	bl sub_02072914
+	bl NARC_ReadPokepicAnimScript
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #0
@@ -9310,7 +9310,7 @@ ov71_0224B234: ; 0x0224B234
 	ldr r0, [r4, #0x10]
 	bl PokepicManager_HandleLoadImgAndOrPltt
 	ldr r0, [r4, #0x10]
-	bl sub_02008120
+	bl PokepicManager_DrawAll
 	mov r2, #1
 	str r2, [sp]
 	mov r0, #0x12
@@ -9657,7 +9657,7 @@ _0224B504:
 	bl sub_020062E0
 	ldr r0, [r4, #0x14]
 	mov r1, #1
-	bl sub_02008550
+	bl Pokepic_StartAnim
 _0224B55A:
 	mov r0, #0
 	str r0, [r4, #8]
@@ -10004,7 +10004,7 @@ ov71_0224B7EC: ; 0x0224B7EC
 	ldr r0, [r0]
 	add r1, #0x18
 	mov r3, #1
-	bl sub_02072914
+	bl NARC_ReadPokepicAnimScript
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #0

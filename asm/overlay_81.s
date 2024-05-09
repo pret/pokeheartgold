@@ -9891,7 +9891,7 @@ ov81_02242C48: ; 0x02242C48
 	bl NNS_G3dGlbFlushP
 	bl NNS_G2dSetupSoftwareSpriteCamera
 	add r0, r4, #0
-	bl sub_02008120
+	bl PokepicManager_DrawAll
 	ldr r0, _02242C7C ; =0x04000540
 	mov r1, #1
 	str r1, [r0]

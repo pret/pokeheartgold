@@ -929,7 +929,7 @@ sub_02075D08: ; 0x02075D08
 	cmp r0, #0
 	bne _02075D2C
 	ldr r0, [r4, #0x18]
-	bl sub_02008120
+	bl PokepicManager_DrawAll
 	bl sub_020774E0
 	mov r0, #1
 	mov r1, #0
@@ -1330,13 +1330,13 @@ _02076038:
 	ldr r0, [r0]
 	add r1, sp, #0x68
 	mov r3, #1
-	bl sub_02072914
+	bl NARC_ReadPokepicAnimScript
 	ldr r0, [r4, #0x1c]
 	add r1, sp, #0x68
-	bl sub_020085C8
+	bl Pokepic_SetAnimScript
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
-	bl sub_02008550
+	bl Pokepic_StartAnim
 	add r0, r4, #0
 	add r1, r4, #0
 	add r0, #0x60
@@ -1387,7 +1387,7 @@ _020760CE:
 	cmp r0, #1
 	bne _02076132
 	ldr r0, [r4, #0x1c]
-	bl sub_020085DC
+	bl Pokepic_IsAnimFinished
 	cmp r0, #0
 	bne _02076132
 	ldr r0, [r4, #0x58]
@@ -1717,13 +1717,13 @@ _0207639A:
 	ldr r0, [r0]
 	add r1, sp, #0x40
 	mov r3, #1
-	bl sub_02072914
+	bl NARC_ReadPokepicAnimScript
 	ldr r0, [r4, #0x20]
 	add r1, sp, #0x40
-	bl sub_020085C8
+	bl Pokepic_SetAnimScript
 	ldr r0, [r4, #0x20]
 	mov r1, #0
-	bl sub_02008550
+	bl Pokepic_StartAnim
 	add r0, r4, #0
 	add r1, r4, #0
 	add r0, #0x62
@@ -1749,7 +1749,7 @@ _020763FC:
 	cmp r0, #1
 	bne _020764F4
 	ldr r0, [r4, #0x20]
-	bl sub_020085DC
+	bl Pokepic_IsAnimFinished
 	cmp r0, #0
 	bne _020764F4
 	add r2, r4, #0
@@ -2637,13 +2637,13 @@ _02076B56:
 	ldr r0, [r0]
 	add r1, sp, #0x18
 	mov r3, #1
-	bl sub_02072914
+	bl NARC_ReadPokepicAnimScript
 	ldr r0, [r4, #0x1c]
 	add r1, sp, #0x18
-	bl sub_020085C8
+	bl Pokepic_SetAnimScript
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
-	bl sub_02008550
+	bl Pokepic_StartAnim
 	add r0, r4, #0
 	add r1, r4, #0
 	add r0, #0x60
@@ -2669,7 +2669,7 @@ _02076BB8:
 	cmp r0, #1
 	bne _02076C76
 	ldr r0, [r4, #0x1c]
-	bl sub_020085DC
+	bl Pokepic_IsAnimFinished
 	cmp r0, #0
 	bne _02076C76
 	ldr r0, [r4, #0x28]

@@ -24,9 +24,9 @@
 .public GfGfxLoader_GetAnimBank
 .public GfGfxLoader_LoadFromNarc
 .public PokepicManager_Create
-.public sub_02008120
+.public PokepicManager_DrawAll
 .public PokepicManager_Delete
-.public sub_02008550
+.public Pokepic_StartAnim
 .public PokepicManager_CreatePokepic
 .public Pokepic_Delete
 .public Pokepic_SetAttr
@@ -140,7 +140,7 @@
 .public GetMonBaseStat_HandleAlternateForm
 .public GetBoxmonSpriteCharAndPlttNarcIds
 .public sub_02070854
-.public sub_02072914
+.public NARC_ReadPokepicAnimScript
 .public sub_020729A4
 .public NNS_G2dSetupSoftwareSpriteCamera
 .public NNS_G2dInitOamManagerModule

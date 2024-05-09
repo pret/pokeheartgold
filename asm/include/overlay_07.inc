@@ -32,7 +32,7 @@
 .public Pokepic_SetAttr
 .public Pokepic_GetAttr
 .public Pokepic_AddAttr
-.public sub_0200908C
+.public Pokepic_SetVisible
 .public Pokepic_StartPaletteFade
 .public sub_02009138
 .public Pokepic_ScheduleReloadFromNarc

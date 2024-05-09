@@ -931,7 +931,7 @@ _0222BF0A:
 _0222BF0E:
 	bl Thunk_G3X_Reset
 	ldr r0, [r4, #0x64]
-	bl sub_02008120
+	bl PokepicManager_DrawAll
 	mov r0, #1
 	mov r1, #0
 	bl RequestSwap3DBuffers

@@ -5,10 +5,10 @@
 #include "poketool/pokegra/otherpoke.naix"
 #include "constants/species.h"
 
-static void sub_02009160(Pokepic *pokepic);
-static void sub_020094FC(PokepicManager *pokepicManager);
-static void sub_0200925C(Pokepic *pokepic);
-static void sub_0200994C(PokepicManager *pokepicManager);
+static void Pokepic_RunAnimInternal(Pokepic *pokepic);
+static void Pokepic_RunAnim(Pokepic *pokepic);
+static void PokepicManager_BufferCharData(PokepicManager *pokepicManager);
+static void PokepicManager_BufferPlttData(PokepicManager *pokepicManager);
 static u8 swapNybbles(u8 val);
 static void Pokepic_MaybeAddSpindaSpots(Pokepic *pokepic, u8 *charData);
 static u16 lcrngUpdate(u32 *p);
@@ -267,7 +267,7 @@ static const u8 (*sSpindaSpotsCoordsPtrs[4])[2] = {
     sSpindaSpot4Coords,
 };
 
-static const int _020F5B04[4][2][4] = {
+static const int sPokepicUVParams[4][2][4] = {
     {
         {0x00, 0x00, 0x50, 0x50},
         {0x50, 0x00, 0xA0, 0x50},
@@ -286,7 +286,7 @@ static const int _020F5B04[4][2][4] = {
     },
 };
 
-static const int _020F5988[4][4] = {
+static const int sPokepicShadowUVParams[4][4] = {
     {0xA0, 0xA0, 0xE0, 0xB0},
     {0xA0, 0xA0, 0xE0, 0xB0},
     {0xA0, 0xB0, 0xE0, 0xC0},
@@ -297,7 +297,7 @@ PokepicManager *PokepicManager_Create(HeapID heapId) {
     PokepicManager *ret = AllocFromHeap(heapId, sizeof(PokepicManager));
     MI_CpuClearFast(ret, sizeof(PokepicManager));
     ret->heapId = heapId;
-    ret->unk_330 = 0;
+    ret->unread_330 = 0;
     ret->charBaseAddr = 0;
     ret->charSize = 0x8000;
     ret->plttBaseAddr = 0;
@@ -311,7 +311,7 @@ PokepicManager *PokepicManager_Create(HeapID heapId) {
         MI_CpuClearFast(&ret->pics[i], sizeof(Pokepic));
     }
     NNS_G2dSetupSoftwareSpriteCamera();
-    ret->unk_333 = FALSE;
+    ret->needG3Identity = FALSE;
 
     NNSG2dCharacterData *charData;
     u8 *pRawCharData;
@@ -336,7 +336,7 @@ PokepicManager *PokepicManager_Create(HeapID heapId) {
     return ret;
 }
 
-void sub_02008120(PokepicManager *pokepicManager) {
+void PokepicManager_DrawAll(PokepicManager *pokepicManager) {
     int i;
     int width;
     int height;
@@ -345,8 +345,8 @@ void sub_02008120(PokepicManager *pokepicManager) {
     int u1;
     int v1;
 
-    sub_020094FC(pokepicManager);
-    sub_0200994C(pokepicManager);
+    PokepicManager_BufferCharData(pokepicManager);
+    PokepicManager_BufferPlttData(pokepicManager);
     NNS_G3dGeFlushBuffer();
     G3_PushMtx();
     G3_TexImageParam(pokepicManager->imageProxy.attr.fmt, GX_TEXGEN_TEXCOORD, pokepicManager->imageProxy.attr.sizeS, pokepicManager->imageProxy.attr.sizeT, GX_TEXREPEAT_NONE, GX_TEXFLIP_NONE, pokepicManager->imageProxy.attr.plttUse, pokepicManager->charBaseAddr);
@@ -356,10 +356,10 @@ void sub_02008120(PokepicManager *pokepicManager) {
                 pokepicManager->pics[i].callback(&pokepicManager->pics[i], &pokepicManager->pics[i].drawParam);
             }
             NNS_G3dGeFlushBuffer();
-            if (pokepicManager->unk_333 != TRUE) {
+            if (pokepicManager->needG3Identity != TRUE) {
                 G3_Identity();
             }
-            sub_0200925C(&pokepicManager->pics[i]);
+            Pokepic_RunAnim(&pokepicManager->pics[i]);
             G3_TexPlttBase(pokepicManager->plttBaseAddr + 0x20 * i, pokepicManager->imageProxy.attr.fmt);
             G3_Translate((pokepicManager->pics[i].drawParam.xCenter + pokepicManager->pics[i].drawParam.xPivot) << FX32_SHIFT, (pokepicManager->pics[i].drawParam.yCenter + pokepicManager->pics[i].drawParam.yPivot) << FX32_SHIFT, (pokepicManager->pics[i].drawParam.zCenter) << FX32_SHIFT);
             G3_RotX(FX_SinIdx(pokepicManager->pics[i].drawParam.rotX), FX_CosIdx(pokepicManager->pics[i].drawParam.rotX));
@@ -370,31 +370,31 @@ void sub_02008120(PokepicManager *pokepicManager) {
             G3_MaterialColorSpecEmi(GX_RGB(16, 16, 16), RGB_BLACK, FALSE);
             G3_PolygonAttr(GX_LIGHTMASK_NONE, GX_POLYGONMODE_MODULATE, GX_CULL_NONE, pokepicManager->pics[i].polygonId, pokepicManager->pics[i].drawParam.alpha, 0);
             if (pokepicManager->pics[i].drawParam.visible) {
-                u0 = _020F5B04[i][pokepicManager->pics[i].unk_5B][0] + pokepicManager->pics[i].drawParam.unk_20;
-                u1 = _020F5B04[i][pokepicManager->pics[i].unk_5B][0] + pokepicManager->pics[i].drawParam.unk_20 + pokepicManager->pics[i].drawParam.unk_22;
-                v0 = _020F5B04[i][pokepicManager->pics[i].unk_5B][1] + pokepicManager->pics[i].drawParam.unk_21;
-                v1 = _020F5B04[i][pokepicManager->pics[i].unk_5B][1] + pokepicManager->pics[i].drawParam.unk_21 + pokepicManager->pics[i].drawParam.unk_23;
+                u0 = sPokepicUVParams[i][pokepicManager->pics[i].whichAnimStep][0] + pokepicManager->pics[i].drawParam.xOffset2;
+                u1 = sPokepicUVParams[i][pokepicManager->pics[i].whichAnimStep][0] + pokepicManager->pics[i].drawParam.xOffset2 + pokepicManager->pics[i].drawParam.width;
+                v0 = sPokepicUVParams[i][pokepicManager->pics[i].whichAnimStep][1] + pokepicManager->pics[i].drawParam.yOffset2;
+                v1 = sPokepicUVParams[i][pokepicManager->pics[i].whichAnimStep][1] + pokepicManager->pics[i].drawParam.yOffset2 + pokepicManager->pics[i].drawParam.height;
                 NNS_G2dDrawSpriteFast(
-                    pokepicManager->pics[i].drawParam.xCenter - 40 + pokepicManager->pics[i].drawParam.unk_20 + pokepicManager->pics[i].drawParam.xOffset,
-                    pokepicManager->pics[i].drawParam.yCenter - 40 + pokepicManager->pics[i].drawParam.unk_21 + pokepicManager->pics[i].drawParam.yOffset - pokepicManager->pics[i].shadow.unk_2,
+                    pokepicManager->pics[i].drawParam.xCenter - 40 + pokepicManager->pics[i].drawParam.xOffset2 + pokepicManager->pics[i].drawParam.xOffset,
+                    pokepicManager->pics[i].drawParam.yCenter - 40 + pokepicManager->pics[i].drawParam.yOffset2 + pokepicManager->pics[i].drawParam.yOffset - pokepicManager->pics[i].shadow.height,
                     pokepicManager->pics[i].drawParam.zCenter + pokepicManager->pics[i].drawParam.zOffset,
-                    pokepicManager->pics[i].drawParam.unk_22,
-                    pokepicManager->pics[i].drawParam.unk_23,
+                    pokepicManager->pics[i].drawParam.width,
+                    pokepicManager->pics[i].drawParam.height,
                     u0,
                     v0,
                     u1,
                     v1
                 );
             } else {
-                width = (80 * pokepicManager->pics[i].drawParam.unk_10) >> 8;
-                height = (80 * pokepicManager->pics[i].drawParam.unk_12) >> 8;
-                u0 = _020F5B04[i][pokepicManager->pics[i].unk_5B][0];
-                u1 = _020F5B04[i][pokepicManager->pics[i].unk_5B][2];
-                v0 = _020F5B04[i][pokepicManager->pics[i].unk_5B][1];
-                v1 = _020F5B04[i][pokepicManager->pics[i].unk_5B][3];
+                width = (80 * pokepicManager->pics[i].drawParam.affineWidth) >> 8;
+                height = (80 * pokepicManager->pics[i].drawParam.affineHeight) >> 8;
+                u0 = sPokepicUVParams[i][pokepicManager->pics[i].whichAnimStep][0];
+                u1 = sPokepicUVParams[i][pokepicManager->pics[i].whichAnimStep][2];
+                v0 = sPokepicUVParams[i][pokepicManager->pics[i].whichAnimStep][1];
+                v1 = sPokepicUVParams[i][pokepicManager->pics[i].whichAnimStep][3];
                 NNS_G2dDrawSpriteFast(
                     pokepicManager->pics[i].drawParam.xCenter - width / 2 + pokepicManager->pics[i].drawParam.xOffset,
-                    pokepicManager->pics[i].drawParam.yCenter - height / 2 + pokepicManager->pics[i].drawParam.yOffset - pokepicManager->pics[i].shadow.unk_2,
+                    pokepicManager->pics[i].drawParam.yCenter - height / 2 + pokepicManager->pics[i].drawParam.yOffset - pokepicManager->pics[i].shadow.height,
                     pokepicManager->pics[i].drawParam.zCenter + pokepicManager->pics[i].drawParam.zOffset,
                     width,
                     height,
@@ -404,28 +404,28 @@ void sub_02008120(PokepicManager *pokepicManager) {
                     v1
                 );
             }
-            if (pokepicManager->pics[i].shadow.palSlot != 0 && pokepicManager->pics[i].shadow.unk_0_5 != 0 && !pokepicManager->pics[i].drawParam.visible && !(pokepicManager->unk_334 & 1)) {
-                if (pokepicManager->unk_333 != TRUE) {
+            if (pokepicManager->pics[i].shadow.palSlot != 0 && pokepicManager->pics[i].shadow.size != 0 && !pokepicManager->pics[i].drawParam.visible && !(pokepicManager->flags & 1)) {
+                if (pokepicManager->needG3Identity != TRUE) {
                     G3_Identity();
                 }
                 G3_TexPlttBase(pokepicManager->plttBaseAddr + 0x20 * (3 + pokepicManager->pics[i].shadow.palSlot), pokepicManager->imageProxy.attr.fmt);
-                if (pokepicManager->pics[i].shadow.unk_0_4) {
-                    width = (64 * pokepicManager->pics[i].drawParam.unk_10) >> 8;
-                    height = (16 * pokepicManager->pics[i].drawParam.unk_12) >> 8;
+                if (pokepicManager->pics[i].shadow.isAffine) {
+                    width = (64 * pokepicManager->pics[i].drawParam.affineWidth) >> 8;
+                    height = (16 * pokepicManager->pics[i].drawParam.affineHeight) >> 8;
                 } else {
                     width = 64;
                     height = 16;
                 }
-                if (pokepicManager->pics[i].shadow.unk_0_2) {
-                    pokepicManager->pics[i].shadow.x = pokepicManager->pics[i].drawParam.xCenter + pokepicManager->pics[i].drawParam.xOffset + pokepicManager->pics[i].shadow.unk_8;
+                if (pokepicManager->pics[i].shadow.shouldAdjustX) {
+                    pokepicManager->pics[i].shadow.x = pokepicManager->pics[i].drawParam.xCenter + pokepicManager->pics[i].drawParam.xOffset + pokepicManager->pics[i].shadow.xOffset;
                 }
-                if (pokepicManager->pics[i].shadow.unk_0_3) {
-                    pokepicManager->pics[i].shadow.y = pokepicManager->pics[i].drawParam.yCenter + pokepicManager->pics[i].drawParam.yOffset + pokepicManager->pics[i].shadow.unk_A;
+                if (pokepicManager->pics[i].shadow.shouldAdjustY) {
+                    pokepicManager->pics[i].shadow.y = pokepicManager->pics[i].drawParam.yCenter + pokepicManager->pics[i].drawParam.yOffset + pokepicManager->pics[i].shadow.yOffset;
                 }
-                u0 = _020F5988[pokepicManager->pics[i].shadow.unk_0_5][0];
-                v0 = _020F5988[pokepicManager->pics[i].shadow.unk_0_5][1];
-                u1 = _020F5988[pokepicManager->pics[i].shadow.unk_0_5][2];
-                v1 = _020F5988[pokepicManager->pics[i].shadow.unk_0_5][3];
+                u0 = sPokepicShadowUVParams[pokepicManager->pics[i].shadow.size][0];
+                v0 = sPokepicShadowUVParams[pokepicManager->pics[i].shadow.size][1];
+                u1 = sPokepicShadowUVParams[pokepicManager->pics[i].shadow.size][2];
+                v1 = sPokepicShadowUVParams[pokepicManager->pics[i].shadow.size][3];
                 NNS_G2dDrawSpriteFast(
                     pokepicManager->pics[i].shadow.x - width / 2,
                     pokepicManager->pics[i].shadow.y - height / 2,
@@ -450,30 +450,30 @@ void PokepicManager_Delete(PokepicManager *pokepicManager) {
     FreeToHeap(pokepicManager);
 }
 
-void sub_02008550(Pokepic *pokepic) {
-    pokepic->unk_59 = 0;
+void Pokepic_StartAnim(Pokepic *pokepic) {
+    pokepic->whichAnim = 0;
     for (int i = 0; i < 10; ++i) {
-        pokepic->unk_5C[i] = 0;
+        pokepic->animLoopTimers[i] = 0;
     }
-    if (pokepic->unk_84[pokepic->unk_59].unk_0 == -1) {
-        pokepic->unk_5B = 0;
+    if (pokepic->animScript[pokepic->whichAnim].next == -1) {
+        pokepic->whichAnimStep = 0;
     } else {
-        pokepic->unk_58 = 1;
-        pokepic->unk_5B = pokepic->unk_84[pokepic->unk_59].unk_0;
-        pokepic->unk_5A = pokepic->unk_84[pokepic->unk_59].unk_1;
-        pokepic->drawParam.xOffset = pokepic->unk_84[pokepic->unk_59].unk_2;
+        pokepic->animActive = 1;
+        pokepic->whichAnimStep = pokepic->animScript[pokepic->whichAnim].next;
+        pokepic->animStepDelay = pokepic->animScript[pokepic->whichAnim].duration;
+        pokepic->drawParam.xOffset = pokepic->animScript[pokepic->whichAnim].xOffset;
     }
 }
 
-void sub_020085C8(Pokepic *pokepic, UnkStruct_02007FD4_sub84 *a1) {
-    MI_CpuCopy8(a1, pokepic->unk_84, sizeof(struct UnkStruct_02007FD4_sub84) * 10);
+void Pokepic_SetAnimScript(Pokepic *pokepic, PokepicAnimScript *animScript) {
+    MI_CpuCopy8(animScript, pokepic->animScript, sizeof(PokepicAnimScript) * 10);
 }
 
-BOOL sub_020085DC(Pokepic *pokepic) {
-    return pokepic->unk_58 != 0;
+BOOL Pokepic_IsAnimFinished(Pokepic *pokepic) {
+    return !!pokepic->animActive;
 }
 
-Pokepic *PokepicManager_CreatePokepic(PokepicManager *pokepicManager, PokepicTemplate *template, int x, int y, int z, int polygonId, UnkStruct_02007FD4_sub84 *a6, PokepicCallback callback) {
+Pokepic *PokepicManager_CreatePokepic(PokepicManager *pokepicManager, PokepicTemplate *template, int x, int y, int z, int polygonId, PokepicAnimScript *animScript, PokepicCallback callback) {
     int i;
     for (i = 0; i < 4; ++i) {
         if (!pokepicManager->pics[i].active) {
@@ -481,10 +481,10 @@ Pokepic *PokepicManager_CreatePokepic(PokepicManager *pokepicManager, PokepicTem
         }
     }
     GF_ASSERT(i != 4);
-    return PokepicManager_CreatePokepicAt(pokepicManager, template, x, y, z, polygonId, i, a6, callback);
+    return PokepicManager_CreatePokepicAt(pokepicManager, template, x, y, z, polygonId, i, animScript, callback);
 }
 
-Pokepic *PokepicManager_CreatePokepicAt(PokepicManager *pokepicManager, PokepicTemplate *template, int x, int y, int z, int polygonId, int picIndex, UnkStruct_02007FD4_sub84 *a7, PokepicCallback callback) {
+Pokepic *PokepicManager_CreatePokepicAt(PokepicManager *pokepicManager, PokepicTemplate *template, int x, int y, int z, int polygonId, int picIndex, PokepicAnimScript *animScript, PokepicCallback callback) {
     GF_ASSERT(!pokepicManager->pics[picIndex].active);
     MI_CpuClearFast(&pokepicManager->pics[picIndex], sizeof(Pokepic));
     pokepicManager->pics[picIndex].active = TRUE;
@@ -496,8 +496,8 @@ Pokepic *PokepicManager_CreatePokepicAt(PokepicManager *pokepicManager, PokepicT
     pokepicManager->pics[picIndex].drawParam.xCenter = x;
     pokepicManager->pics[picIndex].drawParam.yCenter = y;
     pokepicManager->pics[picIndex].drawParam.zCenter = z;
-    pokepicManager->pics[picIndex].drawParam.unk_10 = 0x100;
-    pokepicManager->pics[picIndex].drawParam.unk_12 = 0x100;
+    pokepicManager->pics[picIndex].drawParam.affineWidth = 0x100;
+    pokepicManager->pics[picIndex].drawParam.affineHeight = 0x100;
     pokepicManager->pics[picIndex].drawParam.alpha = 31;
     pokepicManager->pics[picIndex].drawParam.diffuseR = 31;
     pokepicManager->pics[picIndex].drawParam.diffuseG = 31;
@@ -508,11 +508,11 @@ Pokepic *PokepicManager_CreatePokepicAt(PokepicManager *pokepicManager, PokepicT
     pokepicManager->pics[picIndex].callback = callback;
     pokepicManager->pics[picIndex].shadow.x = x;
     pokepicManager->pics[picIndex].shadow.y = y;
-    pokepicManager->pics[picIndex].shadow.unk_0_2 = TRUE;
-    pokepicManager->pics[picIndex].shadow.unk_0_3 = TRUE;
-    pokepicManager->pics[picIndex].shadow.unk_0_4 = TRUE;
-    if (a7 != NULL) {
-        MI_CpuCopy8(a7, pokepicManager->pics[picIndex].unk_84, 10 * sizeof(UnkStruct_02007FD4_sub84));
+    pokepicManager->pics[picIndex].shadow.shouldAdjustX = TRUE;
+    pokepicManager->pics[picIndex].shadow.shouldAdjustY = TRUE;
+    pokepicManager->pics[picIndex].shadow.isAffine = TRUE;
+    if (animScript != NULL) {
+        MI_CpuCopy8(animScript, pokepicManager->pics[picIndex].animScript, 10 * sizeof(PokepicAnimScript));
     }
     return &pokepicManager->pics[picIndex];
 }
@@ -566,25 +566,25 @@ void Pokepic_SetAttr(Pokepic *pokepic, int attr, int value) {
         pokepic->drawParam.yPivot = value;
         break;
     case 12:
-        pokepic->drawParam.unk_10 = value;
+        pokepic->drawParam.affineWidth = value;
         break;
     case 13:
-        pokepic->drawParam.unk_12 = value;
+        pokepic->drawParam.affineHeight = value;
         break;
     case 14:
         pokepic->drawParam.visible = value;
         break;
     case 15:
-        pokepic->drawParam.unk_20 = value;
+        pokepic->drawParam.xOffset2 = value;
         break;
     case 16:
-        pokepic->drawParam.unk_21 = value;
+        pokepic->drawParam.yOffset2 = value;
         break;
     case 17:
-        pokepic->drawParam.unk_22 = value;
+        pokepic->drawParam.width = value;
         break;
     case 18:
-        pokepic->drawParam.unk_23 = value;
+        pokepic->drawParam.height = value;
         break;
     case 19:
         pokepic->shadow.x = value;
@@ -593,10 +593,10 @@ void Pokepic_SetAttr(Pokepic *pokepic, int attr, int value) {
         pokepic->shadow.y = value;
         break;
     case 21:
-        pokepic->shadow.unk_8 = value;
+        pokepic->shadow.xOffset = value;
         break;
     case 22:
-        pokepic->shadow.unk_A = value;
+        pokepic->shadow.yOffset = value;
         break;
     case 23:
         pokepic->drawParam.alpha = value;
@@ -650,30 +650,30 @@ void Pokepic_SetAttr(Pokepic *pokepic, int attr, int value) {
         pokepic->drawParam.dontDraw = value;
         break;
     case 38:
-        pokepic->unk_5B = value;
+        pokepic->whichAnimStep = value;
         break;
     case 40:
         pokepic->drawParam.mosaic = value;
         pokepic->needReloadChar = TRUE;
         break;
     case 41:
-        pokepic->shadow.unk_2 = value;
+        pokepic->shadow.height = value;
         break;
     case 42:
         pokepic->shadow.palSlot = value;
         pokepic->needReloadPltt = TRUE;
         break;
     case 43:
-        pokepic->shadow.unk_0_2 = value;
+        pokepic->shadow.shouldAdjustX = value;
         break;
     case 44:
-        pokepic->shadow.unk_0_3 = value;
+        pokepic->shadow.shouldAdjustY = value;
         break;
     case 45:
-        pokepic->shadow.unk_0_4 = value;
+        pokepic->shadow.isAffine = value;
         break;
     case 46:
-        pokepic->shadow.unk_0_5 = value;
+        pokepic->shadow.size = value;
         break;
     }
 }
@@ -705,27 +705,27 @@ int Pokepic_GetAttr(Pokepic *pokepic, int attr) {
     case 11:
         return pokepic->drawParam.yPivot;
     case 12:
-        return pokepic->drawParam.unk_10;
+        return pokepic->drawParam.affineWidth;
     case 13:
-        return pokepic->drawParam.unk_12;
+        return pokepic->drawParam.affineHeight;
     case 14:
         return pokepic->drawParam.visible;
     case 15:
-        return pokepic->drawParam.unk_20;
+        return pokepic->drawParam.xOffset2;
     case 16:
-        return pokepic->drawParam.unk_21;
+        return pokepic->drawParam.yOffset2;
     case 17:
-        return pokepic->drawParam.unk_22;
+        return pokepic->drawParam.width;
     case 18:
-        return pokepic->drawParam.unk_23;
+        return pokepic->drawParam.height;
     case 19:
         return pokepic->shadow.x;
     case 20:
         return pokepic->shadow.y;
     case 21:
-        return pokepic->shadow.unk_8;
+        return pokepic->shadow.xOffset;
     case 22:
-        return pokepic->shadow.unk_A;
+        return pokepic->shadow.yOffset;
     case 23:
         return pokepic->drawParam.alpha;
     case 24:
@@ -757,21 +757,21 @@ int Pokepic_GetAttr(Pokepic *pokepic, int attr) {
     case 37:
         return pokepic->drawParam.dontDraw;
     case 38:
-        return pokepic->unk_5B;
+        return pokepic->whichAnimStep;
     case 40:
         return pokepic->drawParam.mosaic;
     case 41:
-        return pokepic->shadow.unk_2;
+        return pokepic->shadow.height;
     case 42:
         return pokepic->shadow.palSlot;
     case 43:
-        return pokepic->shadow.unk_0_2;
+        return pokepic->shadow.shouldAdjustX;
     case 44:
-        return pokepic->shadow.unk_0_3;
+        return pokepic->shadow.shouldAdjustY;
     case 45:
-        return pokepic->shadow.unk_0_4;
+        return pokepic->shadow.isAffine;
     case 46:
-        return pokepic->shadow.unk_0_5;
+        return pokepic->shadow.size;
     }
 
     GF_ASSERT(FALSE);
@@ -817,25 +817,25 @@ void Pokepic_AddAttr(Pokepic *pokepic, int attr, int addend) {
         pokepic->drawParam.yPivot += addend;
         break;
     case 12:
-        pokepic->drawParam.unk_10 += addend;
+        pokepic->drawParam.affineWidth += addend;
         break;
     case 13:
-        pokepic->drawParam.unk_12 += addend;
+        pokepic->drawParam.affineHeight += addend;
         break;
     case 14:
         pokepic->drawParam.visible += addend;
         break;
     case 15:
-        pokepic->drawParam.unk_20 += addend;
+        pokepic->drawParam.xOffset2 += addend;
         break;
     case 16:
-        pokepic->drawParam.unk_21 += addend;
+        pokepic->drawParam.yOffset2 += addend;
         break;
     case 17:
-        pokepic->drawParam.unk_22 += addend;
+        pokepic->drawParam.width += addend;
         break;
     case 18:
-        pokepic->drawParam.unk_23 += addend;
+        pokepic->drawParam.height += addend;
         break;
     case 19:
         pokepic->shadow.x += addend;
@@ -844,10 +844,10 @@ void Pokepic_AddAttr(Pokepic *pokepic, int attr, int addend) {
         pokepic->shadow.y += addend;
         break;
     case 21:
-        pokepic->shadow.unk_8 += addend;
+        pokepic->shadow.xOffset += addend;
         break;
     case 22:
-        pokepic->shadow.unk_A += addend;
+        pokepic->shadow.yOffset += addend;
         break;
     case 23:
         pokepic->drawParam.alpha += addend;
@@ -901,40 +901,40 @@ void Pokepic_AddAttr(Pokepic *pokepic, int attr, int addend) {
         pokepic->drawParam.dontDraw += addend;
         break;
     case 38:
-        pokepic->unk_5B += addend;
+        pokepic->whichAnimStep += addend;
         break;
     case 40:
         pokepic->drawParam.mosaic += addend;
         pokepic->needReloadChar = TRUE;
         break;
     case 41:
-        pokepic->shadow.unk_2 += addend;
+        pokepic->shadow.height += addend;
         break;
     case 42:
         pokepic->shadow.palSlot += addend;
         pokepic->needReloadPltt = TRUE;
         break;
     case 43:
-        pokepic->shadow.unk_0_2 += addend;
+        pokepic->shadow.shouldAdjustX += addend;
         break;
     case 44:
-        pokepic->shadow.unk_0_3 += addend;
+        pokepic->shadow.shouldAdjustY += addend;
         break;
     case 45:
-        pokepic->shadow.unk_0_4 += addend;
+        pokepic->shadow.isAffine += addend;
         break;
     case 46:
-        pokepic->shadow.unk_0_5 += addend;
+        pokepic->shadow.size += addend;
         break;
     }
 }
 
-void sub_0200908C(Pokepic *pokepic, int a1, int a2, int a3, int a4) {
+void Pokepic_SetVisible(Pokepic *pokepic, int x, int y, int width, int height) {
     pokepic->drawParam.visible = TRUE;
-    pokepic->drawParam.unk_20 = a1;
-    pokepic->drawParam.unk_21 = a2;
-    pokepic->drawParam.unk_22 = a3;
-    pokepic->drawParam.unk_23 = a4;
+    pokepic->drawParam.xOffset2 = x;
+    pokepic->drawParam.yOffset2 = y;
+    pokepic->drawParam.width = width;
+    pokepic->drawParam.height = height;
 }
 
 void Pokepic_StartPaletteFade(Pokepic *pokepic, int start, int end, int framesPer, int targetColor) {
@@ -963,83 +963,83 @@ BOOL sub_02009138(Pokepic *pokepic) {
     return pokepic->drawParam.fadeActive == TRUE;
 }
 
-void sub_0200914C(Pokepic *pokepic, int a1) {
-    pokepic->drawParam.yOffset = (40 - a1) - (((40 - a1) * pokepic->drawParam.unk_12) >> 8);
+void sub_0200914C(Pokepic *pokepic, int y) {
+    pokepic->drawParam.yOffset = (40 - y) - (((40 - y) * pokepic->drawParam.affineHeight) >> 8);
 }
 
-static inline void sub_02009160_ex(u8 *a0, u8 *a1, u8 *a2, u8 *a3, u8 *a4, const UnkStruct_02007FD4_sub84 *a5) {
-    if (*a0 != 0) {
-        if (*a3 == 0) {
-            ++(*a2);
-            while (a5[*a2].unk_0 < -1) {
-                ++a4[*a2];
-                if (a5[*a2].unk_1 == a4[*a2] || a5[*a2].unk_1 == 0) {
-                    a4[*a2] = 0;
-                    ++a2;  // ++(*a2);
+static inline void runPokepicAnim(u8 *pActive, u8 *pWhichAnimStep, u8 *pWhichAnim, u8 *pStepDelay, u8 *pLoopTimers, const PokepicAnimScript *animScript) {
+    if (*pActive != 0) {
+        if (*pStepDelay == 0) {
+            ++(*pWhichAnim);
+            while (animScript[*pWhichAnim].next < -1) {
+                ++pLoopTimers[*pWhichAnim];
+                if (animScript[*pWhichAnim].duration == pLoopTimers[*pWhichAnim] || animScript[*pWhichAnim].duration == 0) {
+                    pLoopTimers[*pWhichAnim] = 0;
+                    ++pWhichAnim;  // ++(*a2);
                 } else {
-                    *a2 = -2 - a5[*a2].unk_0;
+                    *pWhichAnim = -2 - animScript[*pWhichAnim].next;
                 }
             }
-            if (a5[*a2].unk_0 == -1 || *a2 >= 10) {
-                *a1 = 0;
-                *a0 = 0;
+            if (animScript[*pWhichAnim].next == -1 || *pWhichAnim >= 10) {
+                *pWhichAnimStep = 0;
+                *pActive = 0;
             } else {
-                *a1 = a5[*a2].unk_0;
-                *a3 = a5[*a2].unk_1;
+                *pWhichAnimStep = animScript[*pWhichAnim].next;
+                *pStepDelay = animScript[*pWhichAnim].duration;
             }
         } else {
-            --(*a3);
+            --(*pStepDelay);
         }
     }
 }
 
-static void sub_02009160(Pokepic *pokepic) {
-    if (pokepic->unk_58 != 0) {
-        if (pokepic->unk_5A == 0) {
-            ++pokepic->unk_59;
-            while (pokepic->unk_84[pokepic->unk_59].unk_0 < -1) {
-                ++pokepic->unk_5C[pokepic->unk_59];
-                if (pokepic->unk_84[pokepic->unk_59].unk_1 == pokepic->unk_5C[pokepic->unk_59] || pokepic->unk_84[pokepic->unk_59].unk_1 == 0) {
-                    pokepic->unk_5C[pokepic->unk_59] = 0;
-                    ++pokepic->unk_59;
+static void Pokepic_RunAnimInternal(Pokepic *pokepic) {
+    if (pokepic->animActive != 0) {
+        if (pokepic->animStepDelay == 0) {
+            ++pokepic->whichAnim;
+            while (pokepic->animScript[pokepic->whichAnim].next < -1) {
+                ++pokepic->animLoopTimers[pokepic->whichAnim];
+                if (pokepic->animScript[pokepic->whichAnim].duration == pokepic->animLoopTimers[pokepic->whichAnim] || pokepic->animScript[pokepic->whichAnim].duration == 0) {
+                    pokepic->animLoopTimers[pokepic->whichAnim] = 0;
+                    ++pokepic->whichAnim;
                 } else {
-                    pokepic->unk_59 = -2 - pokepic->unk_84[pokepic->unk_59].unk_0;
+                    pokepic->whichAnim = -2 - pokepic->animScript[pokepic->whichAnim].next;
                 }
             }
-            if (pokepic->unk_59 >= 10 || pokepic->unk_84[pokepic->unk_59].unk_0 == -1) {
-                pokepic->unk_5B = 0;
-                pokepic->unk_58 = 0;
+            if (pokepic->whichAnim >= 10 || pokepic->animScript[pokepic->whichAnim].next == -1) {
+                pokepic->whichAnimStep = 0;
+                pokepic->animActive = 0;
                 pokepic->drawParam.xOffset = 0;
             } else {
-                pokepic->unk_5B = pokepic->unk_84[pokepic->unk_59].unk_0;
-                pokepic->unk_5A = pokepic->unk_84[pokepic->unk_59].unk_1;
-                pokepic->drawParam.xOffset = pokepic->unk_84[pokepic->unk_59].unk_2;
+                pokepic->whichAnimStep = pokepic->animScript[pokepic->whichAnim].next;
+                pokepic->animStepDelay = pokepic->animScript[pokepic->whichAnim].duration;
+                pokepic->drawParam.xOffset = pokepic->animScript[pokepic->whichAnim].xOffset;
             }
         } else {
-            --pokepic->unk_5A;
+            --pokepic->animStepDelay;
         }
     }
 }
 
-static void sub_0200925C(Pokepic *pokepic) {
-    sub_02009160(pokepic);
+static void Pokepic_RunAnim(Pokepic *pokepic) {
+    Pokepic_RunAnimInternal(pokepic);
 }
 
-void sub_02009264(UnkStruct_02009264 *a0, struct UnkStruct_02007FD4_sub84 *a1) {
-    a0->unk_0 = 1;
-    a0->unk_2 = 0;
-    a0->unk_1 = a1->unk_0;
-    a0->unk_3 = a1->unk_1;
-    a0->unk_10 = a1;
+void PokepicAnim_Init(PokepicAnim *anim, PokepicAnimScript *animScript) {
+    anim->active = 1;
+    anim->whichAnim = 0;
+    anim->whichAnimStep = animScript->next;
+    anim->stepDelay = animScript->duration;
+    anim->animScript = animScript;
     for (int i = 0; i < 10; ++i) {
-        a0->unk_4[i] = 0;
+        anim->loopTimers[i] = 0;
     }
 }
 
-int sub_02009284(UnkStruct_02009264 *a0) {
-    if (a0->unk_0) {
-        sub_02009160_ex(&a0->unk_0, &a0->unk_1, &a0->unk_2, &a0->unk_3, a0->unk_4, a0->unk_10);
-        return a0->unk_1;
+int PokepicAnim_Exec(PokepicAnim *anim) {
+    if (anim->active) {
+        runPokepicAnim(&anim->active, &anim->whichAnimStep, &anim->whichAnim, &anim->stepDelay, anim->loopTimers, anim->animScript);
+        return anim->whichAnimStep;
     }
 
     return -1;
@@ -1096,7 +1096,7 @@ void PokepicManager_HandleLoadImgAndOrPltt(PokepicManager *pokepicManager) {
 }
 
 void sub_020094B0(PokepicManager *pokepicManager, int a1) {
-    pokepicManager->unk_333 = a1;
+    pokepicManager->needG3Identity = a1;
 }
 
 BOOL Pokepic_IsActive(Pokepic *pokepic) {
@@ -1105,14 +1105,14 @@ BOOL Pokepic_IsActive(Pokepic *pokepic) {
 }
 
 void sub_020094D8(PokepicManager *pokepicManager, u32 a1) {
-    pokepicManager->unk_334 |= a1;
+    pokepicManager->flags |= a1;
 }
 
 void sub_020094E4(PokepicManager *pokepicManager, u32 a1) {
-    pokepicManager->unk_334 &= (a1 ^ -1u);
+    pokepicManager->flags &= (a1 ^ -1u);
 }
 
-static void sub_020094FC(PokepicManager *pokepicManager) {
+static void PokepicManager_BufferCharData(PokepicManager *pokepicManager) {
     NNSG2dCharacterData *pCharData;
     int i;
     int k;
@@ -1211,7 +1211,7 @@ static void sub_020094FC(PokepicManager *pokepicManager) {
     pokepicManager->needLoadImage = needCharUpdate;
 }
 
-static void sub_0200994C(PokepicManager *pokepicManager) {
+static void PokepicManager_BufferPlttData(PokepicManager *pokepicManager) {
     NNSG2dPaletteData *plttData;
     int i;
     int j;
