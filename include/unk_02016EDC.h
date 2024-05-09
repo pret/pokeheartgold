@@ -8,7 +8,7 @@ struct UnkStruct_02072914_sub {
     u8 unk_0;
     u8 unk_1;
     u8 unk_2;
-    UnkStruct_02007FD4_sub84 unk_3[10];
+    PokepicAnimScript unk_3[10];
 };
 
 struct UnkStruct_02072914 {

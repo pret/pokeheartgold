@@ -137,7 +137,7 @@
 .public GetMonPicHeightBySpeciesGenderForme
 .public sub_02070D84
 .public Mon_GetBoxMon
-.public sub_02072914
+.public NARC_ReadPokepicAnimScript
 .public sub_020729A4
 .public Party_GetCount
 .public Party_GetMonByIndex

@@ -505,7 +505,7 @@ _02246234:
 	cmp r0, #0
 	beq _02246240
 	ldr r0, [r4, #0x20]
-	bl sub_02008120
+	bl PokepicManager_DrawAll
 _02246240:
 	mov r0, #0
 	add r1, r0, #0
@@ -1077,7 +1077,7 @@ _02246644:
 	cmp r0, #0
 	beq _02246650
 	ldr r0, [r5, #0x20]
-	bl sub_02008120
+	bl PokepicManager_DrawAll
 _02246650:
 	ldr r0, _0224666C ; =0x04000448
 	mov r1, #1

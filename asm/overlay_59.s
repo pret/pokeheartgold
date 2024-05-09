@@ -9023,7 +9023,7 @@ ov59_0223C304: ; 0x0223C304
 	bl NNS_G3dGlbFlushP
 	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r4, #0xc]
-	bl sub_02008120
+	bl PokepicManager_DrawAll
 	bl sub_02015460
 	ldr r0, _0223C34C ; =0x04000540
 	mov r1, #1

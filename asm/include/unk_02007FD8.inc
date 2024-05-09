@@ -3,11 +3,11 @@
 .public BlendPalette
 .public AllocAndReadWholeNarcMemberByIdPair
 .public PokepicManager_Create
-.public sub_02008120
+.public PokepicManager_DrawAll
 .public PokepicManager_Delete
-.public sub_02008550
-.public sub_020085C8
-.public sub_020085DC
+.public Pokepic_StartAnim
+.public Pokepic_SetAnimScript
+.public Pokepic_IsAnimFinished
 .public PokepicManager_CreatePokepic
 .public PokepicManager_CreatePokepicAt
 .public Pokepic_Delete
@@ -15,7 +15,7 @@
 .public Pokepic_SetAttr
 .public Pokepic_GetAttr
 .public Pokepic_AddAttr
-.public sub_0200908C
+.public Pokepic_SetVisible
 .public Pokepic_StartPaletteFade
 .public Pokepic_StartPaletteFadeAll
 .public sub_02009138

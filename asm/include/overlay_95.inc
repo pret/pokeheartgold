@@ -30,10 +30,10 @@
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public PokepicManager_Create
-.public sub_02008120
+.public PokepicManager_DrawAll
 .public PokepicManager_Delete
-.public sub_02008550
-.public sub_020085DC
+.public Pokepic_StartAnim
+.public Pokepic_IsAnimFinished
 .public PokepicManager_CreatePokepic
 .public Pokepic_Delete
 .public Pokepic_SetAttr
@@ -154,7 +154,7 @@
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public sub_0207083C
 .public Mon_GetBoxMon
-.public sub_02072914
+.public NARC_ReadPokepicAnimScript
 .public sub_0207294C
 .public sub_020729A4
 .public NNS_G2dSetupSoftwareSpriteCamera

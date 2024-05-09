@@ -91,7 +91,7 @@ sub_0208DEDC: ; 0x0208DEDC
 	mov r0, #0x2a
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02008120
+	bl PokepicManager_DrawAll
 	ldr r0, _0208DEF8 ; =0x04000540
 	mov r1, #1
 	str r1, [r0]
@@ -657,7 +657,7 @@ _0208E3E4:
 	ldrh r2, [r4, r2]
 	ldr r0, [r4, r0]
 	mov r3, #1
-	bl sub_02072914
+	bl NARC_ReadPokepicAnimScript
 	mov r1, #0xb5
 	lsl r1, r1, #2
 	mov r2, #0
@@ -727,7 +727,7 @@ _0208E47C:
 	add r2, #0x50
 	ldr r0, [r4, r2]
 	mov r1, #1
-	bl sub_02008550
+	bl Pokepic_StartAnim
 	mov r3, #0xb5
 	lsl r3, r3, #2
 	mov r0, #2

@@ -28,7 +28,7 @@
 .public GfGfxLoader_GXLoadPalFromOpenNarc
 .public GfGfxLoader_LoadFromOpenNarc
 .public PokepicManager_Create
-.public sub_02008120
+.public PokepicManager_DrawAll
 .public PokepicManager_Delete
 .public PokepicManager_CreatePokepic
 .public Pokepic_Delete

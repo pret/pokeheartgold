@@ -3233,7 +3233,7 @@ _02239830:
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_02008120
+	bl PokepicManager_DrawAll
 	add r4, #0x94
 	ldr r0, [r4]
 	bl sub_0200D020

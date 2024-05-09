@@ -21063,7 +21063,7 @@ _02225A96:
 	ldr r1, [r4, #0x30]
 	ldr r2, [r4, #0x34]
 	ldr r3, [r4, #0x38]
-	bl sub_0200908C
+	bl Pokepic_SetVisible
 	ldr r0, [r4, #4]
 	ldr r1, _02225ADC ; =ov07_02225904
 	add r2, r4, #0
@@ -21305,7 +21305,7 @@ _02225C92:
 	ldr r0, [r4, #0x30]
 	ldr r2, [r4, #0x3c]
 	mov r3, #0x50
-	bl sub_0200908C
+	bl Pokepic_SetVisible
 	pop {r3, r4, r5, pc}
 _02225CA4:
 	ldr r0, [r4, #0x30]
@@ -21372,7 +21372,7 @@ ov07_02225CC4: ; 0x02225CC4
 	str r1, [sp]
 	ldr r0, [r4, #0x30]
 	ldr r2, [r4, #0x3c]
-	bl sub_0200908C
+	bl Pokepic_SetVisible
 	ldr r0, [r4, #4]
 	ldr r1, _02225DB8 ; =ov07_02225C50
 	add r2, r4, #0
@@ -21401,7 +21401,7 @@ _02225D46:
 	str r0, [sp]
 	ldr r0, [r4, #0x30]
 	add r2, r1, #0
-	bl sub_0200908C
+	bl Pokepic_SetVisible
 	ldr r0, [r4, #4]
 	ldr r1, _02225DBC ; =ov07_02225BC4
 	add r2, r4, #0
@@ -21424,7 +21424,7 @@ _02225D86:
 	ldr r0, [r4, #0x30]
 	add r2, r1, #0
 	mov r3, #0x50
-	bl sub_0200908C
+	bl Pokepic_SetVisible
 	ldr r0, [r4, #4]
 	ldr r1, _02225DC0 ; =ov07_02225B38
 	add r2, r4, #0
@@ -32826,7 +32826,7 @@ ov07_0222BADC: ; 0x0222BADC
 	mov r2, #0x50
 	sub r2, r2, r3
 	add r3, r4, #0
-	bl sub_0200908C
+	bl Pokepic_SetVisible
 	add sp, #4
 	pop {r3, r4, pc}
 	thumb_func_end ov07_0222BADC

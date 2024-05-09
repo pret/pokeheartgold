@@ -4189,11 +4189,11 @@ void RestoreBoxMonPP(BoxPokemon *boxMon) {
     ReleaseBoxMonLock(boxMon, decry);
 }
 
-void sub_02072914(NARC *narc, struct UnkStruct_02007FD4_sub84 *dest, u16 species, u16 a3) {
+void NARC_ReadPokepicAnimScript(NARC *narc, PokepicAnimScript *dest, u16 species, u16 a3) {
     struct UnkStruct_02072914 sp4;
     int r5 = (a3 & 1 ? 0 : 1);
     NARC_ReadFromMember(narc, 0, species * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &sp4);
-    MI_CpuCopy8(&sp4.unk0[r5].unk_3[0], dest, sizeof(struct UnkStruct_02007FD4_sub84) * 10);
+    MI_CpuCopy8(&sp4.unk0[r5].unk_3[0], dest, sizeof(PokepicAnimScript) * 10);
 }
 
 void sub_0207294C(NARC *narc, void *a1, void *a2, u16 a3, int a4, int a5, int a6) {
@@ -4207,10 +4207,10 @@ void sub_0207294C(NARC *narc, void *a1, void *a2, u16 a3, int a4, int a5, int a6
     sub_02016F40(a1, a2, &sp4, a6);
 }
 
-void sub_020729A4(NARC *narc, u8 *ret, u16 a2, u16 a3) {
+void sub_020729A4(NARC *narc, u8 *ret, u16 species, u16 isFrontpic) {
     struct UnkStruct_02072914 sp4;
-    int r5 = (a3 & 1 ? 0 : 1);
-    NARC_ReadFromMember(narc, 0, a2 * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &sp4);
+    int r5 = (isFrontpic & 1 ? 0 : 1);
+    NARC_ReadFromMember(narc, 0, species * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &sp4);
     *ret = sp4.unk0[r5].unk_0;
 }
 
