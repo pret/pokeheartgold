@@ -252,7 +252,7 @@
 .public sub_0205DE98
 .public sub_0205E38C
 .public sub_0205E420
-.public GetMapObjectByID
+.public MapObjectManager_GetFirstActiveObjectByID
 .public MapObjectManager_GetObjectCount
 .public MapObjectManager_GetObjects
 .public sub_0205F1D0

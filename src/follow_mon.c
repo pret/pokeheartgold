@@ -1576,7 +1576,7 @@ void FollowMon_ChangeMon(MapObjectManager *mapObjectManager, u32 mapno) {
         FieldSystem_UnkSub108_Set(fieldSystem->unk108, mon, species, GetMonData(mon, MON_DATA_PERSONALITY, NULL));
 
         if (FollowMon_GetPermissionBySpeciesAndMap(species, mapno)) {
-            followPokeObj = GetMapObjectByID(fieldSystem->mapObjectManager, obj_partner_poke);
+            followPokeObj = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, obj_partner_poke);
 
             if (followPokeObj == NULL) {
                 fieldSystem->followMon.unk15 = 1;
@@ -1614,7 +1614,7 @@ void FollowMon_ChangeMon(MapObjectManager *mapObjectManager, u32 mapno) {
                 MapObject_ClearFlag18(fieldSystem->followMon.mapObject, FALSE);
             }
         } else {
-            followPokeObj = GetMapObjectByID(fieldSystem->mapObjectManager, obj_partner_poke);
+            followPokeObj = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, obj_partner_poke);
 
             if (followPokeObj != NULL) {
                 form = GetMonData(mon, MON_DATA_FORM, NULL);

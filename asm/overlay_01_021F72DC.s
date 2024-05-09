@@ -553,7 +553,7 @@ ov01_021F7704: ; 0x021F7704
 ov01_021F771C: ; 0x021F771C
 	push {r3, lr}
 	mov r1, #0xfd
-	bl GetMapObjectByID
+	bl MapObjectManager_GetFirstActiveObjectByID
 	bl sub_0205F40C
 	ldr r0, [r0]
 	pop {r3, pc}

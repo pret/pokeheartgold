@@ -15371,7 +15371,7 @@ ov02_0224CFD8: ; 0x0224CFD8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r7, r2, #0
-	bl GetMapObjectByID
+	bl MapObjectManager_GetFirstActiveObjectByID
 	add r6, r0, #0
 	add r1, sp, #0
 	bl MapObject_GetPositionVec
@@ -24659,7 +24659,7 @@ _02251604:
 _02251610:
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0x3c]
-	bl GetMapObjectByID
+	bl MapObjectManager_GetFirstActiveObjectByID
 	add r6, r0, #0
 	bne _02251620
 	bl GF_AssertFail

@@ -630,33 +630,31 @@ static LocalMapObject *MapObjectManager_GetFirstObjectWithID(MapObjectManager *m
     return NULL;
 }
 
-LocalMapObject* GetMapObjectByID(MapObjectManager* manager, u32 id) {
+LocalMapObject *MapObjectManager_GetFirstActiveObjectByID(MapObjectManager *manager, u32 id) {
     GF_ASSERT(manager != NULL);
 
-    int count = MapObjectManager_GetObjectCount(manager);
-    LocalMapObject* objects = (LocalMapObject*)MapObjectManager_GetConstObjects(manager);
-    LocalMapObject* object = objects;
+    s32 count = MapObjectManager_GetObjectCount(manager);
+    LocalMapObject *objects = (LocalMapObject *)MapObjectManager_GetConstObjects(manager);
     do {
-        if (MapObject_TestFlagsBits(object, MAPOBJECTFLAG_ACTIVE) == TRUE &&
-            MapObject_CheckFlag25(object) == FALSE &&
-            id == MapObject_GetID(object))
+        if (MapObject_TestFlagsBits(objects, MAPOBJECTFLAG_ACTIVE) == TRUE &&
+            MapObject_CheckFlag25(objects) == FALSE && MapObject_GetID(objects) == id)
         {
-            return object;
+            return objects;
         }
 
         count--;
-        object++;
+        objects++;
     } while (count > 0);
 
     return NULL;
 }
 
-LocalMapObject* sub_0205EEB4(MapObjectManager* manager, u32 movement) {
-    int count = MapObjectManager_GetObjectCount(manager);
-    LocalMapObject* objects = (LocalMapObject*)MapObjectManager_GetConstObjects(manager);
+LocalMapObject *MapObjectManager_GetFirstActiveObjectWithMovement(MapObjectManager *manager, u32 movement) {
+    s32 count = MapObjectManager_GetObjectCount(manager);
+    LocalMapObject *objects = (LocalMapObject *)MapObjectManager_GetConstObjects(manager);
 
     do {
-        if (MapObject_TestFlagsBits(objects, MAPOBJECTFLAG_ACTIVE) == TRUE && movement == MapObject_GetMovement(objects)) {
+        if (MapObject_TestFlagsBits(objects, MAPOBJECTFLAG_ACTIVE) == TRUE && MapObject_GetMovement(objects) == movement) {
             return objects;
         }
 

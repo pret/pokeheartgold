@@ -9,7 +9,7 @@
 .public sub_02023F70
 .public GF_AssertFail
 .public GetFirstAliveMonInParty_CrashIfNone
-.public GetMapObjectByID
+.public MapObjectManager_GetFirstActiveObjectByID
 .public MapObjectManager_GetFieldSystemPtr
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits

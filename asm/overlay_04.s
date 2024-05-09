@@ -1863,7 +1863,7 @@ _02254D1E:
 _02254D38:
 	ldr r0, [r5, #0x3c]
 	add r1, r6, #2
-	bl GetMapObjectByID
+	bl MapObjectManager_GetFirstActiveObjectByID
 	add r1, sp, #8
 	bl MapObject_GetPositionVec
 	ldr r0, [r5, #0x54]
@@ -4977,27 +4977,27 @@ _022564DE:
 	ldr r0, [r6, #0x3c]
 	bne _02256502
 	mov r1, #3
-	bl GetMapObjectByID
+	bl MapObjectManager_GetFirstActiveObjectByID
 	str r0, [r4, #4]
 	ldr r0, [r6, #0x3c]
 	mov r1, #4
-	bl GetMapObjectByID
+	bl MapObjectManager_GetFirstActiveObjectByID
 	str r0, [r4, #8]
 	ldr r0, [r6, #0x3c]
 	mov r1, #5
-	bl GetMapObjectByID
+	bl MapObjectManager_GetFirstActiveObjectByID
 	b _0225651C
 _02256502:
 	mov r1, #0
-	bl GetMapObjectByID
+	bl MapObjectManager_GetFirstActiveObjectByID
 	str r0, [r4, #4]
 	ldr r0, [r6, #0x3c]
 	mov r1, #1
-	bl GetMapObjectByID
+	bl MapObjectManager_GetFirstActiveObjectByID
 	str r0, [r4, #8]
 	ldr r0, [r6, #0x3c]
 	mov r1, #2
-	bl GetMapObjectByID
+	bl MapObjectManager_GetFirstActiveObjectByID
 _0225651C:
 	str r0, [r4, #0xc]
 	mov r0, #0

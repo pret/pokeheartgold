@@ -29,7 +29,7 @@
 .public GetPlayerYCoord
 .public PlayerAvatar_GetMapObject
 .public sub_0205E3AC
-.public GetMapObjectByID
+.public MapObjectManager_GetFirstActiveObjectByID
 .public MapObject_SetFacingDirectionDirect
 .public MapObject_SetXRange
 .public MapObject_SetYRange

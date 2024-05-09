@@ -736,8 +736,8 @@ BOOL ScrCmd_775(ScriptContext *ctx) {
     u32 objIdA = ScriptGetVar(ctx);
     u32 objIdB = ScriptGetVar(ctx);
 
-    LocalMapObject *objA = GetMapObjectByID(ctx->fieldSystem->mapObjectManager, objIdA);
-    LocalMapObject *objB = GetMapObjectByID(ctx->fieldSystem->mapObjectManager, objIdB);
+    LocalMapObject *objA = MapObjectManager_GetFirstActiveObjectByID(ctx->fieldSystem->mapObjectManager, objIdA);
+    LocalMapObject *objB = MapObjectManager_GetFirstActiveObjectByID(ctx->fieldSystem->mapObjectManager, objIdB);
 
     ov02_022469B4(ctx->fieldSystem->taskman, objA, objB);
 
@@ -955,7 +955,7 @@ BOOL ScrCmd_CreatePokeathlonFriendshipRoomStatues(ScriptContext *ctx) {
     SavePokeathlonFriendshipRecords *unkPtr = sub_02031B00(fieldSystem->saveData);
 
     for (i = 0; i < 3; i++) {
-        LocalMapObject *mapObj = GetMapObjectByID(fieldSystem->mapObjectManager, 0xf6 + i);
+        LocalMapObject *mapObj = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, 0xf6 + i);
 
         if (mapObj) {
             MapObject_Delete(mapObj);
