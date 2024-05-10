@@ -1,7 +1,7 @@
 #include "battle/battle_02261FD4.h"
 #include "battle/battle_system.h"
 #include "math_util.h"
-#include "unk_02007FD8.h"
+#include "pokepic.h"
 
 static void ov12_0226203C(SysTask *task, void *_data);
 

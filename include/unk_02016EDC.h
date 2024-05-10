@@ -2,7 +2,7 @@
 #define POKEHEARTGOLD_UNK_02016EDC_H
 
 #include "global.h"
-#include "unk_02007FD8.h"
+#include "pokepic.h"
 
 struct UnkStruct_02072914_sub {
     u8 unk_0;

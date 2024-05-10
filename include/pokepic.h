@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_UNK_02007FD8_H
-#define POKEHEARTGOLD_UNK_02007FD8_H
+#ifndef POKEHEARTGOLD_POKEPIC_H
+#define POKEHEARTGOLD_POKEPIC_H
 
 #include "filesystem_files_def.h"
 #include "pokemon_types_def.h"
@@ -225,4 +225,4 @@ void RawChardata_PlaceSpindaSpots(u8 *pRawData, u32 pid, BOOL isAnimated);
 // Reverses the -scanXXX arguments passed to nitrogfx
 void UnscanPokepic(u8 *pRawData, NarcId narcId);
 
-#endif //POKEHEARTGOLD_UNK_02007FD8_H
+#endif //POKEHEARTGOLD_POKEPIC_H
