@@ -57,7 +57,7 @@
 .public sub_0205E38C
 .public MapObject_Remove
 .public sub_0205E420
-.public MapObjectManager_GetFirstObjectAndIndexWithFlag
+.public MapObjectManager_GetNextObjectWithFlagFromIndex
 .public sub_0205F1A0
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits

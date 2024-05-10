@@ -645,7 +645,7 @@ BOOL ScrCmd_699(ScriptContext *ctx) {
 
     height = vec.y;
 
-    while (MapObjectManager_GetFirstObjectAndIndexWithFlag(mapObjectManager, &curObj, &unkVar, MAPOBJECTFLAG_ACTIVE) == TRUE) {
+    while (MapObjectManager_GetNextObjectWithFlagFromIndex(mapObjectManager, &curObj, &unkVar, MAPOBJECTFLAG_ACTIVE) == TRUE) {
         if (curObj == playerObj) continue;
         MapObject_SetFlagsBits(curObj, MAPOBJECTFLAG_UNK13);
         if (MapObject_TestFlagsBits(curObj, MAPOBJECTFLAG_UNK12) == TRUE) {
@@ -675,7 +675,7 @@ BOOL ScrCmd_700(ScriptContext *ctx) {
 
     playerObj  = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
 
-    while (MapObjectManager_GetFirstObjectAndIndexWithFlag(mapObjectManager, &curObj, &index, MAPOBJECTFLAG_ACTIVE) == TRUE) {
+    while (MapObjectManager_GetNextObjectWithFlagFromIndex(mapObjectManager, &curObj, &index, MAPOBJECTFLAG_ACTIVE) == TRUE) {
         if (curObj == playerObj) continue;
         MapObject_ClearFlagsBits(curObj, MAPOBJECTFLAG_UNK13);
     }

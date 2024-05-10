@@ -1081,7 +1081,7 @@ _0206610C:
 	add r1, sp, #4
 	add r2, sp, #8
 	mov r3, #1
-	bl MapObjectManager_GetFirstObjectAndIndexWithFlag
+	bl MapObjectManager_GetNextObjectWithFlagFromIndex
 	cmp r0, #1
 	bne _02066148
 _0206611A:
@@ -1103,7 +1103,7 @@ _02066138:
 	add r1, sp, #4
 	add r2, sp, #8
 	mov r3, #1
-	bl MapObjectManager_GetFirstObjectAndIndexWithFlag
+	bl MapObjectManager_GetNextObjectWithFlagFromIndex
 	cmp r0, #1
 	beq _0206611A
 _02066148:
@@ -1133,7 +1133,7 @@ sub_02066150: ; 0x02066150
 	add r1, sp, #4
 	add r2, sp, #8
 	mov r3, #1
-	bl MapObjectManager_GetFirstObjectAndIndexWithFlag
+	bl MapObjectManager_GetNextObjectWithFlagFromIndex
 	cmp r0, #1
 	bne _020661C2
 _02066182:
@@ -1164,7 +1164,7 @@ _020661B2:
 	add r1, sp, #4
 	add r2, sp, #8
 	mov r3, #1
-	bl MapObjectManager_GetFirstObjectAndIndexWithFlag
+	bl MapObjectManager_GetNextObjectWithFlagFromIndex
 	cmp r0, #1
 	beq _02066182
 _020661C2:

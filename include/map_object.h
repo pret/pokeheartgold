@@ -181,12 +181,7 @@ void MapObjectManager_RestoreFromSave(MapObjectManager *mapObjectManager, SavedM
 void MapObject_CreateFromMultipleObjectEvents(MapObjectManager *manager, u32 mapNo, u32 objectEventCount, ObjectEvent *objectEvents);
 LocalMapObject *MapObjectManager_GetFirstActiveObjectByID(MapObjectManager *manager, u32 id);
 LocalMapObject *MapObjectManager_GetFirstActiveObjectWithMovement(MapObjectManager *manager, u32 movement);
-BOOL MapObjectManager_GetFirstObjectAndIndexWithFlag(MapObjectManager*, LocalMapObject**, int*, MapObjectFlagBits);
-void sub_0205EF48(LocalMapObject* object);
-void sub_0205EF5C(LocalMapObject* object);
-void sub_0205EF6C(LocalMapObject* object);
-u32 FieldSystem_ResolveObjectSpriteID(FieldSystem* fieldSystem, int a1);
-void sub_0205EFA4(LocalMapObject* object);
+BOOL MapObjectManager_GetNextObjectWithFlagFromIndex(MapObjectManager *manager, LocalMapObject **objectDest, s32 *index, MapObjectFlagBits flag);
 void sub_0205EFB4(LocalMapObject* object);
 BOOL MapObject_ScriptIdIsFFFF(LocalMapObject* object);
 void sub_0205F014(LocalMapObject* object, ObjectEvent* template, u32 map_no);

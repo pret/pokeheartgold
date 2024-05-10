@@ -238,7 +238,7 @@ void CreatePlayerAvatarMapObject(PlayerAvatar* avatar, MapObjectManager* man, u3
 LocalMapObject* sub_0205C600(MapObjectManager* man) {
     int y = 0;
     LocalMapObject* mapObj = 0;
-    while (MapObjectManager_GetFirstObjectAndIndexWithFlag(man, &mapObj, &y, MAPOBJECTFLAG_ACTIVE)) {
+    while (MapObjectManager_GetNextObjectWithFlagFromIndex(man, &mapObj, &y, MAPOBJECTFLAG_ACTIVE)) {
         if (MapObject_GetMovement(mapObj) == TRUE) {
             break;
         }

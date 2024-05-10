@@ -24,7 +24,7 @@
 .public GetPlayerXCoord
 .public GetPlayerYCoord
 .public PlayerAvatar_GetMapObject
-.public MapObjectManager_GetFirstObjectAndIndexWithFlag
+.public MapObjectManager_GetNextObjectWithFlagFromIndex
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
 .public MapObject_SetSpriteID
