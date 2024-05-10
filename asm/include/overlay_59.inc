@@ -24,7 +24,7 @@
 .public Pokepic_SetAttr
 .public Pokepic_AddAttr
 .public Pokepic_StartPaletteFade
-.public sub_02009138
+.public Pokepic_ResumePaletteFade
 .public PokepicManager_HandleLoadImgAndOrPltt
 .public sub_0200B2E0
 .public sub_0200B2E8

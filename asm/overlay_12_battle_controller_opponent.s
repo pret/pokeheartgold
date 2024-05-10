@@ -8642,7 +8642,7 @@ _0225CBA4:
 	pop {r4, r5, r6, pc}
 _0225CBB0:
 	ldr r0, [r4, #8]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _0225CC42
 	add r0, r4, #0
@@ -14853,7 +14853,7 @@ _0225FE1A:
 	ldr r0, [r4]
 	bl ov12_0223A8D4
 	mov r1, #1
-	bl sub_020094D8
+	bl PokepicManager_SetG3UpdateFlagsMask
 _0225FE30:
 	add r3, r4, #0
 	ldr r0, [r4]
@@ -14890,7 +14890,7 @@ _0225FE68:
 	ldr r0, [r4]
 	bl ov12_0223A8D4
 	mov r1, #1
-	bl sub_020094E4
+	bl PokepicManager_ResetG3UpdateFlagsMask
 _0225FE7E:
 	ldrh r0, [r4, #0x1e]
 	lsl r0, r0, #0x1f

@@ -38317,7 +38317,7 @@ ov18_021F8C48: ; 0x021F8C48
 	cmp r0, #0
 	bne _021F8C64
 	ldr r0, [r4, #0x20]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _021F8C64
 	mov r0, #1

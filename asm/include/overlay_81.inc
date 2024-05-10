@@ -41,7 +41,7 @@
 .public Pokepic_Delete
 .public Pokepic_SetAttr
 .public Pokepic_StartPaletteFadeAll
-.public sub_02009138
+.public Pokepic_ResumePaletteFade
 .public PokepicManager_HandleLoadImgAndOrPltt
 .public CreateSpriteResourcesHeader
 .public G2dRenderer_Init

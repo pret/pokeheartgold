@@ -37,7 +37,7 @@
 .public PokepicManager_SetCharBaseAddrAndSize
 .public PokepicManager_SetPlttBaseAddrAndSize
 .public PokepicManager_HandleLoadImgAndOrPltt
-.public sub_020094B0
+.public PokepicManager_SetNeedG3IdentityFlag
 .public UnscanPokepic
 .public CreateSpriteResourcesHeader
 .public G2dRenderer_Init

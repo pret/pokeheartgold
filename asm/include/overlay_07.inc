@@ -34,7 +34,7 @@
 .public Pokepic_AddAttr
 .public Pokepic_SetVisible
 .public Pokepic_StartPaletteFade
-.public sub_02009138
+.public Pokepic_ResumePaletteFade
 .public Pokepic_ScheduleReloadFromNarc
 .public Pokepic_Push
 .public Pokepic_Pop

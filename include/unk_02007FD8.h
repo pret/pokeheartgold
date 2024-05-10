@@ -126,39 +126,103 @@ typedef struct PokepicManager {
     u32 flags;
 } PokepicManager;  // size: 0x338
 
+// Allocates PokepicManager and auxiliary buffers
 PokepicManager *PokepicManager_Create(HeapID heapId);
+
+// Frame update pics
 void PokepicManager_DrawAll(PokepicManager *pokepicManager);
+
+// Releases buffers and the Manager itself to the heap
 void PokepicManager_Delete(PokepicManager *pokepicManager);
+
+// Sets Pokepic animation active
 void Pokepic_StartAnim(Pokepic *pokepic);
+
+// Copies the PokepicAnimScript to the Pokepic
 void Pokepic_SetAnimScript(Pokepic *pokepic, PokepicAnimScript *animScript);
+
+// Returns TRUE if the Pokepic animation is finished
 BOOL Pokepic_IsAnimFinished(Pokepic *pokepic);
+
+// Finds an empty Pokepic slot and creates a Pokepic there
 Pokepic *PokepicManager_CreatePokepic(PokepicManager *pokepicManager, PokepicTemplate *template, int x, int y, int z, int polygonId, PokepicAnimScript *animScript, PokepicCallback callback);
+
+// Initializes the Pokepic from arguments at the given position
 Pokepic *PokepicManager_CreatePokepicAt(PokepicManager *pokepicManager, PokepicTemplate *template, int x, int y, int z, int polygonId, int picIndex, PokepicAnimScript *animScript, PokepicCallback callback);
+
+// Sets the pic inactive
 void Pokepic_Delete(Pokepic *pokepic);
+
+// Sets all pics inactive
 void PokepicManager_DeleteAllPics(PokepicManager *pokepicManager);
+
+// Sets Pokepic attribute to value by index
 void Pokepic_SetAttr(Pokepic *pokepic, int attr, int value);
+
+// Returns the Pokepic attribute by index
 int Pokepic_GetAttr(Pokepic *pokepic, int attr);
+
+// Adds addend value to Pokepic attribute by index
 void Pokepic_AddAttr(Pokepic *pokepic, int attr, int addend);
+
+// Updates Pokepic dimensions and sets visible=TRUE
 void Pokepic_SetVisible(Pokepic *pokepic, int x, int y, int width, int height);
+
+// Starts palette fade for the specified Pokepic
 void Pokepic_StartPaletteFade(Pokepic *pokepic, int start, int end, int framesPer, int targetColor);
+
+// Starts palette fade for all pics managed by this manager
 void Pokepic_StartPaletteFadeAll(PokepicManager *pokepicManager, int start, int end, int framesPer, int targetColor);
-BOOL sub_02009138(Pokepic *pokepic);
+
+// Forces palette fade to resume if it had been paused
+BOOL Pokepic_ResumePaletteFade(Pokepic *pokepic);
+
+// The purpose of this routine is not clear
 void sub_0200914C(Pokepic *pokepic, int y);
+
+// Starts the PokepicAnim
 void PokepicAnim_Init(PokepicAnim *anim, PokepicAnimScript *animScript);
+
+// Runs one frame of the PokepicAnim, if active
 int PokepicAnim_Exec(PokepicAnim *anim);
+
+// Schedules pokepic load to VRAM
 void Pokepic_ScheduleReloadFromNarc(Pokepic *pokepic);
+
+// Backs up the pokepic draw data
 void Pokepic_Push(Pokepic *pokepic);
+
+// Restores the backed-up pokepic draw data and schedules load to VRAM
 void Pokepic_Pop(Pokepic *pokepic);
+
+// Sets the character load region for the PokepicManager
 void PokepicManager_SetCharBaseAddrAndSize(PokepicManager *pokepicManager, int addr, int size);
+
+// Sets the palette load region for the PokepicManager
 void PokepicManager_SetPlttBaseAddrAndSize(PokepicManager *pokepicManager, int addr, int size);
+
+// Returns a pointer to the Pokepic template
 PokepicTemplate *Pokepic_GetTemplate(Pokepic *pokepic);
+
+// Handles transfer of character and/or palette data from buffer if the corresponding request flags are set.
 void PokepicManager_HandleLoadImgAndOrPltt(PokepicManager *pokepicManager);
-void sub_020094B0(PokepicManager *pokepicManager, int a1);
+
+// If needG3Identity is TRUE, the GPU will receive Identity instructions for each pic and shadow to be drawn.
+void PokepicManager_SetNeedG3IdentityFlag(PokepicManager *pokepicManager, BOOL needG3Identity);
+
+// Returns TRUE if the Pokepic active flag is FALSE.
 BOOL Pokepic_IsActive(Pokepic *pokepic);
-void sub_020094D8(PokepicManager *pokepicManager, u32 a1);
-void sub_020094E4(PokepicManager *pokepicManager, u32 a1);
-void PokepicManager_BufferCharData(PokepicManager *pokepicManager);
+
+// Sets the specified bits of pokepicManager->flags. Only bit 0 appears to be used.
+void PokepicManager_SetG3UpdateFlagsMask(PokepicManager *pokepicManager, u32 mask);
+
+// Clears the specified bits of pokepicManager->flags. Only bit 0 appears to be used.
+void PokepicManager_ResetG3UpdateFlagsMask(PokepicManager *pokepicManager, u32 mask);
+
+// Updates the character data at pRawData with the Spinda spots based on PID. A second frame exists at x+=80 when isAnimated is TRUE.
 void RawChardata_PlaceSpindaSpots(u8 *pRawData, u32 pid, BOOL isAnimated);
+
+// Reverses the -scanXXX arguments passed to nitrogfx
 void UnscanPokepic(u8 *pRawData, NarcId narcId);
 
 #endif //POKEHEARTGOLD_UNK_02007FD8_H

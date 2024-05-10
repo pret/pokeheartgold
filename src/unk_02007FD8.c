@@ -959,7 +959,7 @@ void Pokepic_StartPaletteFadeAll(PokepicManager *pokepicManager, int start, int 
     }
 }
 
-BOOL sub_02009138(Pokepic *pokepic) {
+BOOL Pokepic_ResumePaletteFade(Pokepic *pokepic) {
     return pokepic->drawParam.fadeActive == TRUE;
 }
 
@@ -975,7 +975,7 @@ static inline void runPokepicAnim(u8 *pActive, u8 *pWhichAnimStep, u8 *pWhichAni
                 ++pLoopTimers[*pWhichAnim];
                 if (animScript[*pWhichAnim].duration == pLoopTimers[*pWhichAnim] || animScript[*pWhichAnim].duration == 0) {
                     pLoopTimers[*pWhichAnim] = 0;
-                    ++pWhichAnim;  // ++(*a2);
+                    ++pWhichAnim;  // ++(*pWhichAnim);
                 } else {
                     *pWhichAnim = -2 - animScript[*pWhichAnim].next;
                 }
@@ -1095,8 +1095,8 @@ void PokepicManager_HandleLoadImgAndOrPltt(PokepicManager *pokepicManager) {
     }
 }
 
-void sub_020094B0(PokepicManager *pokepicManager, int a1) {
-    pokepicManager->needG3Identity = a1;
+void PokepicManager_SetNeedG3IdentityFlag(PokepicManager *pokepicManager, BOOL needG3Identity) {
+    pokepicManager->needG3Identity = needG3Identity;
 }
 
 BOOL Pokepic_IsActive(Pokepic *pokepic) {
@@ -1104,12 +1104,12 @@ BOOL Pokepic_IsActive(Pokepic *pokepic) {
     return !!pokepic->active;
 }
 
-void sub_020094D8(PokepicManager *pokepicManager, u32 a1) {
-    pokepicManager->flags |= a1;
+void PokepicManager_SetG3UpdateFlagsMask(PokepicManager *pokepicManager, u32 mask) {
+    pokepicManager->flags |= mask;
 }
 
-void sub_020094E4(PokepicManager *pokepicManager, u32 a1) {
-    pokepicManager->flags &= (a1 ^ -1u);
+void PokepicManager_ResetG3UpdateFlagsMask(PokepicManager *pokepicManager, u32 mask) {
+    pokepicManager->flags &= (mask ^ -1u);
 }
 
 static void PokepicManager_BufferCharData(PokepicManager *pokepicManager) {
@@ -1118,20 +1118,23 @@ static void PokepicManager_BufferCharData(PokepicManager *pokepicManager) {
     int k;
     int j;
     u8 *pRawCharData;
-    void *sp4C;
+    void *ncgrFile;
     u8 needCharUpdate = FALSE;
     for (i = 0; i < 4; ++i) {
         if (pokepicManager->pics[i].active && pokepicManager->pics[i].needReloadChar) {
             pokepicManager->pics[i].needReloadChar = FALSE;
             needCharUpdate = TRUE;
-            sp4C = AllocAndReadWholeNarcMemberByIdPair((NarcId)pokepicManager->pics[i].template.narcID, pokepicManager->pics[i].template.charDataID, pokepicManager->heapId);
-            NNS_G2dGetUnpackedCharacterData(sp4C, &pCharData);
+            ncgrFile = AllocAndReadWholeNarcMemberByIdPair((NarcId)pokepicManager->pics[i].template.narcID, pokepicManager->pics[i].template.charDataID, pokepicManager->heapId);
+            NNS_G2dGetUnpackedCharacterData(ncgrFile, &pCharData);
             pokepicManager->charData.pixelFmt = pCharData->pixelFmt;
             pokepicManager->charData.mapingType = pCharData->mapingType;
             pokepicManager->charData.characterFmt = pCharData->characterFmt;
             pRawCharData = pCharData->pRawData;
             UnscanPokepic(pRawCharData, (NarcId)pokepicManager->pics[i].template.narcID);
             Pokepic_MaybeAddSpindaSpots(&pokepicManager->pics[i], pRawCharData);
+
+            // This loop is crazy. Admittedly, I cheated and used retsam to guide this.
+            // Please don't tell reddo, she'll have my balls chopped off too.
             if (i == 3) {
                 for (j = 0; j < 80; ++j) {
                     for (k = 0; k < 80; ++k) {
@@ -1205,7 +1208,7 @@ static void PokepicManager_BufferCharData(PokepicManager *pokepicManager) {
                     }
                 }
             }
-            FreeToHeap(sp4C);
+            FreeToHeap(ncgrFile);
         }
     }
     pokepicManager->needLoadImage = needCharUpdate;

@@ -5,7 +5,7 @@
 .public Pokepic_GetAttr
 .public Pokepic_AddAttr
 .public Pokepic_StartPaletteFade
-.public sub_02009138
+.public Pokepic_ResumePaletteFade
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public sub_02016EDC
