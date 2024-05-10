@@ -26,7 +26,7 @@ typedef struct ObjCharTransferTask {
     u32 sizeSub;
 } ObjCharTransferTask;
 
-typedef struct ObjCharTransferTasksManager {
+struct ObjCharTransferTasksManager {
     ObjCharTransferTask *tasks;
     int max;
     int num;
@@ -42,7 +42,7 @@ typedef struct ObjCharTransferTasksManager {
     u32 blockSizeSub;
     u8 *blockBufMain;
     u8 *blockBufSub;
-} ObjCharTransferTasksManager;
+};
 
 ObjCharTransferTasksManager *sObjCharTransferTasksManager;
 
