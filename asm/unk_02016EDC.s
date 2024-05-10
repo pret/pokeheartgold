@@ -407,7 +407,7 @@ _0201716A:
 	cmp r0, #0
 	beq _02017182
 	ldr r0, [r5]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _020171E4
 	ldr r0, _020171EC ; =0x000001CF
@@ -1752,7 +1752,7 @@ sub_02017B2C: ; 0x02017B2C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	beq _02017B42
 	ldr r0, _02017B44 ; =0x000001CF

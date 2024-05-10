@@ -18,7 +18,7 @@
 .public Pokepic_SetVisible
 .public Pokepic_StartPaletteFade
 .public Pokepic_StartPaletteFadeAll
-.public sub_02009138
+.public Pokepic_ResumePaletteFade
 .public sub_0200914C
 .public sub_02009264
 .public sub_02009284
@@ -29,10 +29,10 @@
 .public PokepicManager_SetPlttBaseAddrAndSize
 .public Pokepic_GetTemplate
 .public PokepicManager_HandleLoadImgAndOrPltt
-.public sub_020094B0
+.public PokepicManager_SetNeedG3IdentityFlag
 .public Pokepic_IsActive
-.public sub_020094D8
-.public sub_020094E4
+.public PokepicManager_SetG3UpdateFlagsMask
+.public PokepicManager_ResetG3UpdateFlagsMask
 .public RawChardata_PlaceSpindaSpots
 .public UnscanPokepic
 .public AllocFromHeap

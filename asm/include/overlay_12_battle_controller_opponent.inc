@@ -25,12 +25,12 @@
 .public Pokepic_SetVisible
 .public Pokepic_StartPaletteFade
 .public Pokepic_StartPaletteFadeAll
-.public sub_02009138
+.public Pokepic_ResumePaletteFade
 .public sub_0200914C
 .public Pokepic_ScheduleReloadFromNarc
 .public Pokepic_GetTemplate
-.public sub_020094D8
-.public sub_020094E4
+.public PokepicManager_SetG3UpdateFlagsMask
+.public PokepicManager_ResetG3UpdateFlagsMask
 .public StartBrightnessTransition
 .public IsBrightnessTransitionActive
 .public SpriteGfxHandler_UnloadCharObjById

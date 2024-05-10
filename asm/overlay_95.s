@@ -2253,7 +2253,7 @@ _021E6AA0:
 	cmp r5, #2
 	bne _021E6B64
 	ldr r0, [r4, #0x70]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _021E6B64
 	mov r0, #2
@@ -2317,7 +2317,7 @@ _021E6B34:
 	cmp r0, #0
 	bne _021E6B64
 	ldr r0, [r4, #0x70]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _021E6B64
 	ldr r0, [r4, #0x68]
@@ -2499,7 +2499,7 @@ _021E6CA0:
 	cmp r5, #2
 	bne _021E6D5A
 	ldr r0, [r4, #0x70]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _021E6D5A
 	add r0, r4, #0
@@ -2563,7 +2563,7 @@ _021E6D34:
 	cmp r0, #0
 	bne _021E6D5A
 	ldr r0, [r4, #0x70]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _021E6D5A
 	ldr r0, [r4, #0x68]

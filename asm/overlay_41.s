@@ -932,7 +932,7 @@ ov41_02246518: ; 0x02246518
 	bl ov41_02246CC0
 	ldr r0, [r5, #0x20]
 	mov r1, #1
-	bl sub_020094B0
+	bl PokepicManager_SetNeedG3IdentityFlag
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov41_02246C90

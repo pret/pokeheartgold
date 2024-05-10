@@ -38,7 +38,7 @@
 .public Pokepic_Delete
 .public Pokepic_SetAttr
 .public Pokepic_StartPaletteFade
-.public sub_02009138
+.public Pokepic_ResumePaletteFade
 .public PokepicManager_HandleLoadImgAndOrPltt
 .public NewMsgDataFromNarc
 .public DestroyMsgData

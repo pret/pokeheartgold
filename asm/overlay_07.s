@@ -17689,7 +17689,7 @@ _02223F80:
 	pop {r3, r4, r5, pc}
 _02223F98:
 	ldr r0, [r4, #4]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _02224004
 	ldr r0, [r4, #8]
@@ -17721,7 +17721,7 @@ _02223FBC:
 	pop {r3, r4, r5, pc}
 _02223FD4:
 	ldr r0, [r4, #4]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _02224004
 	ldr r0, [r4, #0xc]
@@ -24561,7 +24561,7 @@ _022276BA:
 	pop {r3, r4, r5, r6, pc}
 _022276D4:
 	ldr r0, [r4, #0x10]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _02227702
 	mov r0, #0x1f
@@ -24578,7 +24578,7 @@ _022276D4:
 	pop {r3, r4, r5, r6, pc}
 _022276F8:
 	ldr r0, [r4, #0x10]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	beq _02227704
 _02227702:
@@ -25658,7 +25658,7 @@ _02228010:
 	cmp r0, #0
 	bne _02228038
 	ldr r0, [r4, #8]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _02228038
 	ldrb r0, [r4, #1]
@@ -26166,7 +26166,7 @@ _02228436:
 	cmp r0, #0
 	bne _022284D0
 	ldr r0, [r4, #0x10]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _022284D0
 	ldrb r0, [r4]
@@ -26219,7 +26219,7 @@ _022284A4:
 	cmp r0, #0
 	bne _022284D0
 	ldr r0, [r4, #0x10]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _022284D0
 	ldrb r0, [r4]
@@ -35062,7 +35062,7 @@ _0222CCD8:
 	bl ov07_0222207C
 _0222CD12:
 	ldr r0, [r5, #8]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _0222CE0C
 	mov r2, #0
@@ -35125,7 +35125,7 @@ _0222CD60:
 	bl ov07_0222207C
 _0222CD9A:
 	ldr r0, [r5, #8]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _0222CE0C
 	mov r2, #0x38
@@ -37345,7 +37345,7 @@ _0222DFB0:
 	bl UnkImageStruct_SetSpriteVisibleFlag
 _0222DFC4:
 	ldr r0, [r4, #0x10]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _0222E010
 	ldr r0, [r4, #0xc]
@@ -37361,7 +37361,7 @@ _0222DFC4:
 	b _0222E010
 _0222DFE6:
 	ldr r0, [r4, #0x10]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _0222E010
 	ldr r0, [r4, #0xc]

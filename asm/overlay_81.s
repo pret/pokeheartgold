@@ -916,7 +916,7 @@ _0223E4E2:
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	ldrb r0, [r4, #0x19]
 	add r0, r0, #1
 	strb r0, [r4, #0x19]
@@ -3915,7 +3915,7 @@ _0223FDC2:
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	mov r0, #0xe
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
@@ -4153,7 +4153,7 @@ _0223FFAA:
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	ldrb r0, [r4, #0x19]
 	add r0, r0, #1
 	strb r0, [r4, #0x19]

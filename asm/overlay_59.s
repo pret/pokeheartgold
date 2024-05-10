@@ -8886,7 +8886,7 @@ _0223C1E8:
 _0223C202:
 	ldr r0, [r5, #0x78]
 	ldr r0, [r0, #0x20]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _0223C288
 	ldr r0, [r5, #0x78]
@@ -8931,7 +8931,7 @@ _0223C25C:
 	beq _0223C288
 	ldr r0, [r5, #0x78]
 	ldr r0, [r0, #0x20]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _0223C288
 	add r0, r5, #0

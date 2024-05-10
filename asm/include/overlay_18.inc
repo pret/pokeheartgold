@@ -41,7 +41,7 @@
 .public GfGfxLoader_LoadFromOpenNarc
 .public PokepicManager_CreatePokepic
 .public Pokepic_StartPaletteFade
-.public sub_02009138
+.public Pokepic_ResumePaletteFade
 .public CreateSpriteResourcesHeader
 .public G2dRenderer_Init
 .public G2dRenderer_SetSubSurfaceCoords
