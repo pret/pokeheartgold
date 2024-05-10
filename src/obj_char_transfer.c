@@ -26,7 +26,7 @@ typedef struct ObjCharTransferTask {
     u32 sizeSub;
 } ObjCharTransferTask;
 
-struct ObjCharTransferTasksManager {
+typedef struct ObjCharTransferTasksManager {
     ObjCharTransferTask *tasks;
     int max;
     int num;
@@ -42,7 +42,9 @@ struct ObjCharTransferTasksManager {
     u32 blockSizeSub;
     u8 *blockBufMain;
     u8 *blockBufSub;
-} *sObjCharTransferTasksManager;
+} ObjCharTransferTasksManager;
+
+ObjCharTransferTasksManager *sObjCharTransferTasksManager;
 
 static BOOL ObjCharTransfer_TaskExistsByID(int resId);
 static void resetAllTransferTasks(void);
@@ -67,7 +69,7 @@ static ObjCharTransferTask *ObjCharTransfer_GetFreeTask(void);
 static void ObjCharTransfer_GetVramCapacityByBank(void);
 static void ObjCharTransfer_InitBlocksTransferBuffers(u32 numBlocksMain, u32 numBlocksSub, HeapID heapID);
 static void ObjCharTransfer_ClearBothScreensBlockBufs(void);
-static void ObjCharTransfer_FreeBlockTransferBuffer(u8 *a0);
+static void ObjCharTransfer_FreeBlockTransferBuffer(u8 *buffer);
 static u32 ObjCharTransfer_GetBlocksCountFromBufferPtr(u8 *buffer);
 static void ObjCharTransfer_ClearBlockBuf(u8 *buffer);
 static void ObjCharTransfer_ReserveTransferBlocks(u32 blockStart, u32 numBlocks, u8 *buffer);
@@ -88,8 +90,8 @@ void ObjCharTransfer_Init(ObjCharTransferTemplate *template) {
 
 void ObjCharTransfer_InitEx(ObjCharTransferTemplate *template, GXOBJVRamModeChar modeMain, GXOBJVRamModeChar modeSub) {
     if (sObjCharTransferTasksManager == NULL) {
-        sObjCharTransferTasksManager = AllocFromHeap(template->heapId, sizeof(struct ObjCharTransferTasksManager));
-        MI_CpuClear32(sObjCharTransferTasksManager, sizeof(struct ObjCharTransferTasksManager));
+        sObjCharTransferTasksManager = AllocFromHeap(template->heapId, sizeof(ObjCharTransferTasksManager));
+        MI_CpuClear32(sObjCharTransferTasksManager, sizeof(ObjCharTransferTasksManager));
         sObjCharTransferTasksManager->max = template->maxTasks;
         sObjCharTransferTasksManager->tasks = (ObjCharTransferTask *)AllocFromHeap(template->heapId, sizeof(ObjCharTransferTask) * sObjCharTransferTasksManager->max);
         for (int i = 0; i < template->maxTasks; ++i) {
@@ -540,7 +542,7 @@ static void reserveTransferBlocksByVramOffsetAndSize(NNS_G2D_VRAM_TYPE vram, u32
 
 static void ObjCharTransferTask_G2dLoadImageMapping(ObjCharTransferTask *task) {
     NNS_G2dInitImageProxy(&task->imageProxy);
-    if (task->vram != NNS_G2D_VRAM_TYPE_BOTH) {
+    if (task->vram != NNS_G2D_VRAM_TYPE_2DBOTH) {
         ObjCharTransferTask_G2dLoadImageMappingByScreen(task, task->vram);
     } else {
         ObjCharTransferTask_G2dLoadImageMappingByScreen(task, NNS_G2D_VRAM_TYPE_2DMAIN);
@@ -572,7 +574,7 @@ static void ObjCharTransferTask_G2dLoadImageMappingByScreen(ObjCharTransferTask 
 
 static void ObjCharTransferTask_G2dLoadImageMappingVramTransfer(ObjCharTransferTask *task) {
     NNS_G2dInitImageProxy(&task->imageProxy);
-    if (task->vram != NNS_G2D_VRAM_TYPE_BOTH) {
+    if (task->vram != NNS_G2D_VRAM_TYPE_2DBOTH) {
         ObjCharTransferTask_G2dLoadImageMappingVramTransferByScreen(task, task->vram);
     } else {
         ObjCharTransferTask_G2dLoadImageMappingVramTransferByScreen(task, NNS_G2D_VRAM_TYPE_2DMAIN);
