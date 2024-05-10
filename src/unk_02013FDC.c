@@ -1,6 +1,6 @@
 #include "global.h"
 #include "unk_02013FDC.h"
-#include "unk_02007FD8.h"
+#include "pokepic.h"
 #include "constants/species.h"
 #include "constants/pokemon.h"
 

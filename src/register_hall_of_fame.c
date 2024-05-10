@@ -27,7 +27,7 @@
 #include "unk_02013FDC.h"
 #include "unk_02026E84.h"
 #include "unk_0206D494.h"
-#include "unk_02007FD8.h"
+#include "pokepic.h"
 #include "constants/map_sections.h"
 #include "data/mmodel/mmodel.naix"
 
