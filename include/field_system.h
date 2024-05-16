@@ -13,7 +13,9 @@
 #include "camera_translation.h"
 #include "camera.h"
 #include "bg_window.h"
+#include "sys_task.h"
 #include "scrcmd_9.h"
+#include "photo_types_def.h"
 
 typedef struct FieldSystem FieldSystem;
 typedef struct TaskManager TaskManager;
@@ -164,8 +166,11 @@ struct FieldSystem {
     u8 unkD2_0:6;
     u8 unkD2_6:1;
     u8 unkD2_7:1;
-    u8 filler_D3[0x11];
-    FollowMon followMon; // A4
+    u8 filler_D3[0x5];
+    SysTask *unk_D8;
+    FieldTakePhoto2 *unk_DC;
+    u8 filler_E0[4];
+    FollowMon followMon; // E4
     u8 unk104[4];
     FieldSystemUnk108 *unk108;
     u32 unk_10C;
