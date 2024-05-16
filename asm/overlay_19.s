@@ -4,133 +4,6 @@
 
 	.text
 
-	thumb_func_start ov19_022599F8
-ov19_022599F8: ; 0x022599F8
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	bl ov19_02259ABC
-	add r4, r0, #0
-	bne _02259A14
-	add r0, r5, #0
-	bl ov19_02259A94
-	add r4, r0, #0
-	bne _02259A18
-	mov r0, #0
-	str r0, [r5, #8]
-	b _02259A18
-_02259A14:
-	mov r0, #1
-	str r0, [r5, #8]
-_02259A18:
-	cmp r4, #1
-	beq _02259A26
-	cmp r4, #2
-	beq _02259A3A
-	cmp r4, #3
-	beq _02259A5C
-	b _02259A84
-_02259A26:
-	add r0, r5, #0
-	mov r1, #0
-	bl ov19_02259E20
-	ldr r0, _02259A8C ; =0x000005DD
-	bl PlaySE
-	mov r0, #1
-	str r0, [r5, #0xc]
-	b _02259A88
-_02259A3A:
-	mov r0, #0x75
-	lsl r0, r0, #2
-	ldrb r0, [r5, r0]
-	cmp r0, #0
-	bne _02259A48
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-_02259A48:
-	add r0, r5, #0
-	mov r1, #1
-	bl ov19_02259E20
-	ldr r0, _02259A90 ; =0x000005DC
-	bl PlaySE
-	mov r0, #2
-	str r0, [r5, #0xc]
-	b _02259A88
-_02259A5C:
-	mov r0, #0x75
-	lsl r0, r0, #2
-	ldrb r1, [r5, r0]
-	add r0, r0, #1
-	ldrb r0, [r5, r0]
-	sub r0, r0, #1
-	cmp r1, r0
-	blt _02259A70
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-_02259A70:
-	add r0, r5, #0
-	mov r1, #2
-	bl ov19_02259E20
-	ldr r0, _02259A90 ; =0x000005DC
-	bl PlaySE
-	mov r0, #3
-	str r0, [r5, #0xc]
-	b _02259A88
-_02259A84:
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-_02259A88:
-	add r0, r4, #0
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_02259A8C: .word 0x000005DD
-_02259A90: .word 0x000005DC
-	thumb_func_end ov19_022599F8
-
-	thumb_func_start ov19_02259A94
-ov19_02259A94: ; 0x02259A94
-	ldr r0, _02259AB8 ; =gSystem
-	ldr r2, [r0, #0x48]
-	mov r0, #3
-	add r1, r2, #0
-	tst r1, r0
-	beq _02259AA4
-	mov r0, #1
-	bx lr
-_02259AA4:
-	mov r1, #0x20
-	tst r1, r2
-	beq _02259AAE
-	mov r0, #2
-	bx lr
-_02259AAE:
-	mov r1, #0x10
-	tst r1, r2
-	bne _02259AB6
-	mov r0, #0
-_02259AB6:
-	bx lr
-	.balign 4, 0
-_02259AB8: .word gSystem
-	thumb_func_end ov19_02259A94
-
-	thumb_func_start ov19_02259ABC
-ov19_02259ABC: ; 0x02259ABC
-	push {r3, lr}
-	ldr r0, _02259AD4 ; =ov19_0225A05E
-	bl TouchscreenHitbox_FindRectAtTouchNew
-	mov r1, #0
-	mvn r1, r1
-	cmp r0, r1
-	bne _02259AD0
-	mov r0, #0
-	pop {r3, pc}
-_02259AD0:
-	add r0, r0, #1
-	pop {r3, pc}
-	.balign 4, 0
-_02259AD4: .word ov19_0225A05E
-	thumb_func_end ov19_02259ABC
-
 	thumb_func_start ov19_02259AD8
 ov19_02259AD8: ; 0x02259AD8
 	push {r4, r5, lr}
@@ -832,10 +705,14 @@ ov19_0225A04E: ; 0x0225A04E
 	.byte 0x05, 0x18
 	.byte 0x15, 0x08, 0x02, 0x01, 0xF0, 0x01, 0x05, 0x01, 0x08, 0x1C, 0x08, 0x0A, 0x10, 0x01
 
+	.global ov19_0225A05E
 ov19_0225A05E: ; 0x0225A05E
-	.byte 0xA2, 0xBC
-	.byte 0xC2, 0xFE, 0x18, 0x38, 0x50, 0x60, 0x18, 0x38, 0xA0, 0xB0, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0xA2, 0xBC, 0xC2, 0xFE
+	.byte 0x18, 0x38, 0x50, 0x60
+	.byte 0x18, 0x38, 0xA0, 0xB0
+	.byte 0xFF, 0x00, 0x00, 0x00
 
+	.balign 4, 0
 ov19_0225A070: ; 0x0225A070
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x0F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

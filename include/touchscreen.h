@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_TOUCHSCREEN_H
 #define POKEHEARTGOLD_TOUCHSCREEN_H
 
+#include <nitro.h>
+
 typedef union TouchscreenHitbox {
     struct {
         u8 top;
