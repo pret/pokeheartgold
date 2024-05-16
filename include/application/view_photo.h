@@ -1,0 +1,9 @@
+#ifndef GUARD_POKEHEARTGOLD_APPLICATION_VIEW_PHOTO_H
+#define GUARD_POKEHEARTGOLD_APPLICATION_VIEW_PHOTO_H
+
+#include "field_system.h"
+
+SysTask *ov19_022598C0(FieldSystem *fieldSystem);
+void ov19_02259918(FieldSystem *fieldSystem);
+
+#endif //GUARD_POKEHEARTGOLD_APPLICATION_VIEW_PHOTO_H

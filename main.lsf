@@ -628,6 +628,7 @@ Overlay OVY_18
 Overlay OVY_19
 {
     After OVY_3
+    Object src/application/view_photo.o
     Object asm/overlay_19.o
 }
 Overlay OVY_20
