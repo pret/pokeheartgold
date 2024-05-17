@@ -1,10 +1,15 @@
 #include "global.h"
 #include "application/view_photo.h"
+#include "font.h"
+#include "gf_gfx_loader.h"
+#include "msgdata/msg.naix"
 #include "system.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
 #include "unk_020183F0.h"
 #include "field_take_photo.h"
+#include "message_format.h"
+#include "field/ov01_021E7FDC.h"
 
 typedef enum ViewPhotoInputResponse {
     INPUT_NOTHING,
@@ -22,9 +27,16 @@ typedef struct ViewPhotoSysTaskData {
     FieldSystem *unk_014;
     BgConfig *unk_018;
     FieldTakePhoto2 *unk_01C;
-    u8 filler_020[0x3C];
-    SpriteList *unk_05C;
-    u8 filler_060[0x170];
+    u8 filler_020[4];
+    MsgData *unk_024;
+    MessageFormat *unk_028;
+    String *unk_02C;
+    String *unk_030;
+    String *unk_034[2];
+    Window unk_03C[2];
+    UnkStruct_ov01_021E7FDC unk_05C;
+    Sprite *unk_1C0[3];
+    u8 filler_1CC[4];
     UnkStruct_0206A8C0 unk_1D0;
 } ViewPhotoSysTaskData;
 
@@ -49,6 +61,9 @@ BOOL ov19_02259E44(ViewPhotoSysTaskData *viewPhoto);
 void ov19_02259F64(ViewPhotoSysTaskData *viewPhoto);
 
 extern const TouchscreenHitbox ov19_0225A05E[3];
+extern const WindowTemplate ov19_0225A04E[2];
+extern const u16 ov19_0225A040[];
+extern const SpriteTemplate_ov01_021E81F0 ov19_0225A0C4[3];
 
 SysTask *ov19_022598C0(FieldSystem *fieldSystem) {
     ViewPhotoSysTaskData *viewPhoto = AllocFromHeap(HEAP_ID_FIELD, sizeof(ViewPhotoSysTaskData));
@@ -91,7 +106,7 @@ void ov19_02259950(SysTask *task, void *taskData) {
         }
         break;
     }
-    sub_0202457C(viewPhoto->unk_05C);
+    sub_0202457C(viewPhoto->unk_05C.spriteList);
 }
 
 void ov19_022599AC(ViewPhotoSysTaskData *viewPhoto) {
@@ -169,4 +184,124 @@ ViewPhotoInputResponse ov19_02259ABC(ViewPhotoSysTaskData *viewPhoto) {
     }
 
     return (ViewPhotoInputResponse)(hitbox + 1);
+}
+
+void ov19_02259AD8(ViewPhotoSysTaskData *viewPhoto) {
+    GXS_SetGraphicsMode(GX_BGMODE_3);
+
+    {
+        extern const BgTemplate ov19_0225A070;
+        BgTemplate bgTemplate = ov19_0225A070;
+        InitBgFromTemplate(viewPhoto->unk_018, GF_BG_LYR_SUB_1, &bgTemplate, GF_BG_TYPE_TEXT);
+        BgClearTilemapBufferAndCommit(viewPhoto->unk_018, GF_BG_LYR_SUB_1);
+    }
+
+    {
+        extern const BgTemplate ov19_0225A08C;
+        BgTemplate bgTemplate = ov19_0225A08C;
+        InitBgFromTemplate(viewPhoto->unk_018, GF_BG_LYR_SUB_2, &bgTemplate, GF_BG_TYPE_TEXT);
+        BgClearTilemapBufferAndCommit(viewPhoto->unk_018, GF_BG_LYR_SUB_2);
+    }
+
+    {
+        extern const BgTemplate ov19_0225A0A8;
+        BgTemplate bgTemplate = ov19_0225A0A8;
+        InitBgFromTemplate(viewPhoto->unk_018, GF_BG_LYR_SUB_3, &bgTemplate, GF_BG_TYPE_256x16PLTT);
+        BgClearTilemapBufferAndCommit(viewPhoto->unk_018, GF_BG_LYR_SUB_3);
+    }
+
+    BG_ClearCharDataRange(GF_BG_LYR_SUB_1, 0x20, 0, viewPhoto->unk_000);
+    BG_ClearCharDataRange(GF_BG_LYR_SUB_3, 0x40, 0, viewPhoto->unk_000);
+    BgSetPosTextAndCommit(viewPhoto->unk_018, GF_BG_LYR_SUB_3, BG_POS_OP_SET_X, -4);
+}
+
+void ov19_02259B90(ViewPhotoSysTaskData *viewPhoto) {
+    BgSetPosTextAndCommit(viewPhoto->unk_018, GF_BG_LYR_SUB_3, BG_POS_OP_SET_X, 0);
+    FreeBgTilemapBuffer(viewPhoto->unk_018, GF_BG_LYR_SUB_3);
+    FreeBgTilemapBuffer(viewPhoto->unk_018, GF_BG_LYR_SUB_2);
+    FreeBgTilemapBuffer(viewPhoto->unk_018, GF_BG_LYR_SUB_1);
+    GXS_SetGraphicsMode(GX_BGMODE_0);
+}
+
+void ov19_02259BC0(ViewPhotoSysTaskData *viewPhoto) {
+    NARC *narc = NARC_New(NARC_a_1_7_1, viewPhoto->unk_000);
+    GfGfxLoader_GXLoadPalFromOpenNarc(narc, 4, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0, 0, viewPhoto->unk_000);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 11, viewPhoto->unk_018, GF_BG_LYR_SUB_2, 0, 0, FALSE, viewPhoto->unk_000);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 12, viewPhoto->unk_018, GF_BG_LYR_SUB_2, 0, 0, FALSE, viewPhoto->unk_000);
+
+    void *ncgrFile;
+    NNSG2dCharacterData *pCharData;
+    u8 r3;
+    ncgrFile = GfGfxLoader_GetCharDataFromOpenNarc(narc, 5, FALSE, &pCharData, viewPhoto->unk_000);
+    r3 = viewPhoto->unk_1D0.unk_0->unk_4_1 + 1;
+    BG_LoadCharTilesData(viewPhoto->unk_018, GF_BG_LYR_SUB_3, pCharData->pRawData + ((25 * r3 + 64) * 64), 0x640, 1);
+    FreeToHeap(ncgrFile);
+    NARC_Delete(narc);
+}
+
+void ov19_02259C64(ViewPhotoSysTaskData *viewPhoto) {
+}
+
+void ov19_02259C68(ViewPhotoSysTaskData *viewPhoto) {
+    FontID_Alloc(4, viewPhoto->unk_000);
+    viewPhoto->unk_024 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0000_bin, viewPhoto->unk_000);
+    viewPhoto->unk_028 = MessageFormat_New_Custom(6, 22, viewPhoto->unk_000);
+    viewPhoto->unk_02C = String_New(128, viewPhoto->unk_000);
+    viewPhoto->unk_030 = NewString_ReadMsgData(viewPhoto->unk_024, 0);
+    for (int i = 0; i < 2; ++i) {
+        viewPhoto->unk_034[i] = NewString_ReadMsgData(viewPhoto->unk_024, 10 + i);
+    }
+}
+
+void ov19_02259CBC(ViewPhotoSysTaskData *viewPhoto) {
+    for (int i = 0; i < 2; ++i) {
+        String_Delete(viewPhoto->unk_034[i]);
+    }
+    String_Delete(viewPhoto->unk_030);
+    String_Delete(viewPhoto->unk_02C);
+    MessageFormat_Delete(viewPhoto->unk_028);
+    DestroyMsgData(viewPhoto->unk_024);
+    FontID_Release(4);
+}
+
+void ov19_02259CF4(ViewPhotoSysTaskData *viewPhoto) {
+    for (int i = 0; i < 2; ++i) {
+        AddWindow(viewPhoto->unk_018, &viewPhoto->unk_03C[i], &ov19_0225A04E[i]);
+        FillWindowPixelBuffer(&viewPhoto->unk_03C[i], 0);
+    }
+}
+
+void ov19_02259D24(ViewPhotoSysTaskData *viewPhoto) {
+    for (int i = 0; i < 2; ++i) {
+        ClearWindowTilemapAndCopyToVram(&viewPhoto->unk_03C[i]);
+        RemoveWindow(&viewPhoto->unk_03C[i]);
+    }
+}
+
+void ov19_02259D44(ViewPhotoSysTaskData *viewPhoto) {
+    ov01_021E7FDC(&viewPhoto->unk_05C, ov19_0225A040, 3, viewPhoto->unk_000);
+    for (int i = 0; i < 3; ++i) {
+        viewPhoto->unk_1C0[i] = ov01_021E81F0(&viewPhoto->unk_05C, &ov19_0225A0C4[i]);
+        Set2dSpriteVisibleFlag(viewPhoto->unk_1C0[i], TRUE);
+        Set2dSpriteAnimActiveFlag(viewPhoto->unk_1C0[i], TRUE);
+    }
+    if (viewPhoto->unk_1D0.unk_4 == 0) {
+        Set2dSpriteAnimSeqNo(viewPhoto->unk_1C0[1], 2);
+    } else {
+        Set2dSpriteAnimSeqNo(viewPhoto->unk_1C0[1], 0);
+    }
+    if (viewPhoto->unk_1D0.unk_4 >= viewPhoto->unk_1D0.unk_5 - 1) {
+        Set2dSpriteAnimSeqNo(viewPhoto->unk_1C0[2], 5);
+    } else {
+        Set2dSpriteAnimSeqNo(viewPhoto->unk_1C0[2], 3);
+    }
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
+}
+
+void ov19_02259DF4(ViewPhotoSysTaskData *viewPhoto) {
+    for (int i = 0; i < 3; ++i) {
+        Sprite_Delete(viewPhoto->unk_1C0[i]);
+    }
+    ov01_021E8194(&viewPhoto->unk_05C);
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
 }

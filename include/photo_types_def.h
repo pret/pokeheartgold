@@ -38,6 +38,12 @@ typedef struct FieldTakePhoto {
     u8 unk_D8;
 } FieldTakePhoto;
 
+typedef struct FieldTakePhoto2_Sub0C {
+    u8 filler_0[4];
+    u8 unk_4_0:1;
+    u8 unk_4_1:7;
+} FieldTakePhoto2_Sub0C;
+
 typedef struct FieldTakePhoto2 {
     u8 filler_00[0x90];
     int unk_90;
@@ -50,7 +56,7 @@ typedef struct FieldTakePhoto2 {
 } FieldTakePhoto2;
 
 typedef struct UnkStruct_0206A8C0 {
-    void *unk_0;
+    FieldTakePhoto2_Sub0C *unk_0;
     u8 unk_4;
     u8 unk_5;
 } UnkStruct_0206A8C0;
