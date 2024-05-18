@@ -101,7 +101,7 @@ LocalMapObject* sub_0205E1D0(MapObjectManager* manager, ObjectEvent* object_even
             return ret;
         }
     }
-    
+
     ret = MapObjectManager_GetFirstInactiveObject(manager);
     if (ret == NULL) {
         return ret;

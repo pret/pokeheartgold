@@ -5,7 +5,8 @@
 #include "save.h"
 
 typedef struct PhotoAlbumArgs {
-    u8 unk0[0x2];
+    u8 unk0;
+    u8 unk1;
     u8 unk2;
     u8 unk3[0x2];
     u8 unk5;

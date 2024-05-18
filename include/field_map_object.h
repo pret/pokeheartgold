@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_FIELD_MAP_OBJECT_H
 #define POKEHEARTGOLD_FIELD_MAP_OBJECT_H
 
-#include "script.h"
+#include "field_types_def.h"
 
 typedef struct SavedMapObject {
     u32 unk0;
