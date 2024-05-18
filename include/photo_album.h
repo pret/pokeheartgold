@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_PHOTO_ALBUM_H
 
 #include "save.h"
+#include "camera.h"
 
 #define PHOTO_ALBUM_MAX       36
 
@@ -12,12 +13,21 @@ typedef struct PHOTO_MON {
     u8 gender:1;
 } PHOTO_MON;
 
+typedef struct PhotoCameraParam {
+    fx32 distance;
+    CameraAngle angle;
+    u16 perspectiveType;
+    u16 perspective;
+    int unk_10[2];
+    VecFx32 lookAt;
+} PhotoCameraParam;
+
 typedef struct PHOTO {
     u8 filler_0[4];
     u8 gender:1;
     u8 unk_4_1:7;
     u8 filler_5[2];
-    u8 is_init;
+    u8 numMons;
     u16 playerName[8];
     u16 leadMonNick[12];
     u8 unk_30;
@@ -31,7 +41,7 @@ typedef struct PHOTO {
     u16 unk_42;
     u16 unk_44;
     u16 unk_46;
-    u8 unk_48[0x24];
+    PhotoCameraParam unk_48;
     PHOTO_MON party[PARTY_SIZE];
 } PHOTO; // size: 0x84
 
