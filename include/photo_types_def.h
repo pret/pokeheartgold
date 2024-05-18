@@ -39,9 +39,19 @@ typedef struct FieldTakePhoto {
 } FieldTakePhoto;
 
 typedef struct FieldTakePhoto2_Sub0C {
-    u8 filler_0[4];
-    u8 unk_4_0:1;
-    u8 unk_4_1:7;
+    u8 filler_00[4];
+    u8 unk_04_0:1;
+    u8 unk_04_1:7;
+    u8 filler_05[0x13];
+    u16 unk_18[13];
+    u16 unk_32;
+    u8 filler_34;
+    u32 unk_38;
+    u8 filler_3C[0x30];
+    struct {
+        u16 species;
+        u8 filler_2[2];
+    } unk_6C[PARTY_SIZE];
 } FieldTakePhoto2_Sub0C;
 
 typedef struct FieldTakePhoto2 {

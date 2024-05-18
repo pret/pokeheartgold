@@ -4,12 +4,14 @@
 #include "gf_gfx_loader.h"
 #include "msgdata/msg.naix"
 #include "system.h"
+#include "text.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
 #include "unk_020183F0.h"
 #include "field_take_photo.h"
 #include "message_format.h"
 #include "field/ov01_021E7FDC.h"
+#include "unk_02068F84.h"
 
 typedef enum ViewPhotoInputResponse {
     INPUT_NOTHING,
@@ -36,7 +38,7 @@ typedef struct ViewPhotoSysTaskData {
     Window unk_03C[2];
     UnkStruct_ov01_021E7FDC unk_05C;
     Sprite *unk_1C0[3];
-    u8 filler_1CC[4];
+    u8 unk_1CC;
     UnkStruct_0206A8C0 unk_1D0;
 } ViewPhotoSysTaskData;
 
@@ -56,14 +58,18 @@ void ov19_02259CF4(ViewPhotoSysTaskData *viewPhoto);
 void ov19_02259D24(ViewPhotoSysTaskData *viewPhoto);
 void ov19_02259D44(ViewPhotoSysTaskData *viewPhoto);
 void ov19_02259DF4(ViewPhotoSysTaskData *viewPhoto);
-void ov19_02259E20(ViewPhotoSysTaskData *viewPhoto, int command);
+void ov19_02259E20(ViewPhotoSysTaskData *viewPhoto, int spriteNo);
 BOOL ov19_02259E44(ViewPhotoSysTaskData *viewPhoto);
+void ov19_02259E64(FieldTakePhoto2_Sub0C *a0, MessageFormat *msgFormat, String *strBuf, HeapID heapId, SaveData *saveData);
+void ov19_02259F0C(ViewPhotoSysTaskData *viewPhoto);
 void ov19_02259F64(ViewPhotoSysTaskData *viewPhoto);
+u8 ov19_0225A008(FieldTakePhoto2_Sub0C *a0);
 
 extern const TouchscreenHitbox ov19_0225A05E[3];
 extern const WindowTemplate ov19_0225A04E[2];
 extern const u16 ov19_0225A040[];
 extern const SpriteTemplate_ov01_021E81F0 ov19_0225A0C4[3];
+extern const u8 _0225A03C[3];
 
 SysTask *ov19_022598C0(FieldSystem *fieldSystem) {
     ViewPhotoSysTaskData *viewPhoto = AllocFromHeap(HEAP_ID_FIELD, sizeof(ViewPhotoSysTaskData));
@@ -233,7 +239,7 @@ void ov19_02259BC0(ViewPhotoSysTaskData *viewPhoto) {
     NNSG2dCharacterData *pCharData;
     u8 r3;
     ncgrFile = GfGfxLoader_GetCharDataFromOpenNarc(narc, 5, FALSE, &pCharData, viewPhoto->unk_000);
-    r3 = viewPhoto->unk_1D0.unk_0->unk_4_1 + 1;
+    r3 = viewPhoto->unk_1D0.unk_0->unk_04_1 + 1;
     BG_LoadCharTilesData(viewPhoto->unk_018, GF_BG_LYR_SUB_3, pCharData->pRawData + ((25 * r3 + 64) * 64), 0x640, 1);
     FreeToHeap(ncgrFile);
     NARC_Delete(narc);
@@ -304,4 +310,63 @@ void ov19_02259DF4(ViewPhotoSysTaskData *viewPhoto) {
     }
     ov01_021E8194(&viewPhoto->unk_05C);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
+}
+
+void ov19_02259E20(ViewPhotoSysTaskData *viewPhoto, int spriteNo) {
+    viewPhoto->unk_1CC = spriteNo;
+    Set2dSpriteAnimSeqNo(viewPhoto->unk_1C0[spriteNo], _0225A03C[spriteNo]);
+    Sprite_ResetAnimCtrlState(viewPhoto->unk_1C0[spriteNo]);
+}
+
+BOOL ov19_02259E44(ViewPhotoSysTaskData *viewPhoto) {
+    return !Sprite_IsCellAnimationRunning(viewPhoto->unk_1C0[viewPhoto->unk_1CC]);
+}
+
+void ov19_02259E64(FieldTakePhoto2_Sub0C *a0, MessageFormat *msgFormat, String *strBuf, HeapID heapId, SaveData *saveData) {
+    BufferPlayersName(msgFormat, 0, Save_PlayerData_GetProfileAddr(saveData));
+    sub_02068F98(a0->unk_32, heapId, strBuf);
+    BufferString(msgFormat, 1, strBuf, 2, 0, 2);
+    CopyU16ArrayToString(strBuf, a0->unk_18);
+    BufferString(msgFormat, 2, strBuf, 2, 0, 2);
+    u8 year = a0->unk_38 >> 24;
+    BufferIntegerAsString(msgFormat, 3, year + 2000, 4, PRINTING_MODE_LEADING_ZEROS, TRUE);
+    u8 month = a0->unk_38 >> 16;
+    BufferIntegerAsString(msgFormat, 4, month, 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
+    u8 day = a0->unk_38 >> 8;
+    BufferIntegerAsString(msgFormat, 5, day, 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
+}
+
+void ov19_02259F0C(ViewPhotoSysTaskData *viewPhoto) {
+    for (int i = 0; i < 5; ++i) {
+        for (int j = 0; j < 5; ++j) {
+            FillBgTilemapRect(viewPhoto->unk_018, GF_BG_LYR_SUB_3, 5 * i + j + 1, 13 + j, 2 + i, 1, 1, TILEMAP_COPY_SRC_FLAT);
+        }
+    }
+    ScheduleBgTilemapBufferTransfer(viewPhoto->unk_018, GF_BG_LYR_SUB_3);
+}
+
+void ov19_02259F64(ViewPhotoSysTaskData *viewPhoto) {
+    AddTextPrinterParameterizedWithColor(&viewPhoto->unk_03C[0], 4, viewPhoto->unk_030, (64 - FontID_String_GetWidth(4, viewPhoto->unk_030, 0)) / 2u, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 5, 0), NULL);
+    ScheduleWindowCopyToVram(&viewPhoto->unk_03C[0]);
+    ov19_02259E64(viewPhoto->unk_1D0.unk_0, viewPhoto->unk_028, viewPhoto->unk_02C, viewPhoto->unk_000, viewPhoto->unk_010);
+    u8 x = ov19_0225A008(viewPhoto->unk_1D0.unk_0);
+    if (x > 1) {
+        StringExpandPlaceholders(viewPhoto->unk_028, viewPhoto->unk_02C, viewPhoto->unk_034[1]);
+    } else {
+        StringExpandPlaceholders(viewPhoto->unk_028, viewPhoto->unk_02C, viewPhoto->unk_034[0]);
+    }
+    AddTextPrinterParameterizedWithColor(&viewPhoto->unk_03C[1], 0, viewPhoto->unk_02C, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 2, 0), NULL);
+    ScheduleWindowCopyToVram(&viewPhoto->unk_03C[1]);
+    ov19_02259F0C(viewPhoto);
+}
+
+u8 ov19_0225A008(FieldTakePhoto2_Sub0C *a0) {
+    u8 answer = 0;
+    for (u8 i = 0; i < PARTY_SIZE; ++i) {
+        int species = a0->unk_6C[i].species;
+        if (species > SPECIES_NONE && species <= SPECIES_ARCEUS) {
+            ++answer;
+        }
+    }
+    return answer;
 }
