@@ -12,7 +12,7 @@ typedef struct FieldTakePhoto {
     u8 unk_15;
     u8 unk_16;
     u8 unk_17;
-    u8 filler_18[0x18];
+    LocalMapObject *unk_18[6];
     u16 unk_30;
     u16 unk_32;
     u16 unk_34;

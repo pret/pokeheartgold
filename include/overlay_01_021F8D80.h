@@ -1,0 +1,8 @@
+#ifndef POKEHEARTGOLD_OVERLAY_01_021F8D80_H
+#define POKEHEARTGOLD_OVERLAY_01_021F8D80_H
+
+#include "field_system.h"
+
+void ov01_021F902C(int a0, LocalMapObject *a1);
+
+#endif //POKEHEARTGOLD_OVERLAY_01_021F8D80_H

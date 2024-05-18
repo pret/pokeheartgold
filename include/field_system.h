@@ -6,6 +6,7 @@
 #include "gear_phone.h"
 #include "map_events_internal.h"
 #include "map_matrix.h"
+#include "overlay_01_021EB1E8.h"
 #include "overlay_manager.h"
 #include "save_pokegear.h"
 #include "sys_task_api.h"
@@ -17,6 +18,7 @@
 #include "scrcmd_9.h"
 #include "photo_types_def.h"
 #include "field_types_def.h"
+#include "overlay_01_02204004.h"
 
 typedef struct FollowMon {
     LocalMapObject *mapObject;
@@ -101,7 +103,7 @@ typedef struct FieldSystemUnkSub4 {
     Field3dObjectTaskManager *field3dObjectTaskManager;
     u32 unk8;
     void *unk_0C; // weather related?
-    u8 unk10[0x4];
+    UnkStruct_ov01_021EB1E8 *unk10;
     u32 unk14;
     u32 unk18;
     u32 unk1c;
@@ -155,7 +157,8 @@ struct FieldSystem {
     u8 unkBC[4];
     void *unkC0;
     int unkC4;
-    u8 filler_C8[0xA];
+    FieldSystemUnkC8 *unk_C8;
+    u8 filler_CC[0x6];
     u8 unkD2_0:6;
     u8 unkD2_6:1;
     u8 unkD2_7:1;
