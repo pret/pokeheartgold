@@ -14,14 +14,7 @@
 #include "sys_task.h"
 #include "scrcmd_9.h"
 #include "photo_types_def.h"
-
-typedef struct FieldSystem FieldSystem;
-typedef struct TaskManager TaskManager;
-typedef struct FieldSystemUnkSub2C FieldSystemUnkSub2C;
-typedef struct LocalMapObject LocalMapObject;
-typedef struct FieldMapObject FieldMapObject;
-typedef struct PlayerAvatar PlayerAvatar;
-typedef struct MapObjectManager MapObjectManager;
+#include "field_types_def.h"
 
 typedef struct FollowMon {
     LocalMapObject *mapObject;
