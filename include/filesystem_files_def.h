@@ -261,7 +261,7 @@ typedef enum NarcId
     NARC_a_2_5_1                                            = 253,
     NARC_arc_headbutt                                       = 254,
     NARC_a_2_5_3                                            = 255,
-    NARC_a_2_5_4                                            = 256,
+    NARC_data_photo_data                                    = 256,
     NARC_a_2_5_5                                            = 257,
     NARC_a_2_5_6                                            = 258,
     NARC_a_2_5_7                                            = 259,

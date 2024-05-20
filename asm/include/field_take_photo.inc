@@ -10,8 +10,8 @@
 .public IsPaletteFadeFinished
 .public GF_RTC_CopyTime
 .public GF_RTC_CopyDate
-.public sub_020148F4
-.public sub_02014904
+.public GF_RTC_UnfreezeTime
+.public GF_RTC_SetAndFreezeTime
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public SetBgPriority
@@ -87,8 +87,8 @@
 .public FollowMon_IsActive
 .public FieldSystem_TakePhoto
 .public sub_0206A860
-.public sub_0206A8C0
-.public sub_0206A8DC
+.public FieldViewPhoto_GetAlbumScrollParam
+.public FieldViewPhoto_SetExitRequestedFlag
 .public GetMonData
 .public MonIsShiny
 .public Party_GetCount

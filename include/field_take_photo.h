@@ -7,7 +7,7 @@
 
 void FieldSystem_TakePhoto(FieldSystem *fieldSystem, u16 photo_id);
 void sub_0206A860(FieldSystem *fieldSystem);
-void sub_0206A8C0(FieldViewPhoto *a0, PhotoAlbumScroll *a1);
-void sub_0206A8DC(FieldViewPhoto *a0, int a1);
+void FieldViewPhoto_GetAlbumScrollParam(FieldViewPhoto *takePhoto, PhotoAlbumScroll *albumScroll);
+void FieldViewPhoto_SetPlayerInput(FieldViewPhoto *takePhoto, ViewPhotoInputResponse exitRequested);
 
 #endif //POKEHEARTGOLD_FIELD_TAKE_PHOTO_H

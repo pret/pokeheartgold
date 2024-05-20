@@ -14,13 +14,6 @@
 #include "field/ov01_021E7FDC.h"
 #include "unk_02068F84.h"
 
-typedef enum ViewPhotoInputResponse {
-    INPUT_NOTHING,
-    INPUT_END,
-    INPUT_PREV,
-    INPUT_NEXT,
-} ViewPhotoInputResponse;
-
 typedef struct ViewPhotoSysTaskData {
     HeapID heapId;
     int state;
@@ -140,9 +133,9 @@ SysTask *FieldSystem_CreateViewPhotoTask(FieldSystem *fieldSystem) {
     viewPhoto->fieldSystem = fieldSystem;
     viewPhoto->bgConfig = fieldSystem->bgConfig;
     viewPhoto->saveData = fieldSystem->saveData;
-    viewPhoto->parent = fieldSystem->unk_DC;
+    viewPhoto->parent = fieldSystem->viewPhotoTask;
     viewPhoto->lastInputWasTouch = sub_020183F0(&fieldSystem->unk_10C);
-    sub_0206A8C0(viewPhoto->parent, &viewPhoto->scrollData);
+    FieldViewPhoto_GetAlbumScrollParam(viewPhoto->parent, &viewPhoto->scrollData);
     return SysTask_CreateOnMainQueue(SysTask_ViewPhoto, viewPhoto, 1);
 }
 
@@ -164,13 +157,13 @@ static void SysTask_ViewPhoto(SysTask *task, void *taskData) {
         ++viewPhoto->state;
         return;
     case 1:
-        if (GX_GetMasterBrightness() == 0 && ViewPhotoSysTask_HandleInput(viewPhoto) != INPUT_NOTHING) {
+        if (GX_GetMasterBrightness() == 0 && ViewPhotoSysTask_HandleInput(viewPhoto) != VIEW_PHOTO_INPUT_NOTHING) {
             ++viewPhoto->state;
         }
         break;
     case 2:
         if (ViewPhotoSysTask_IsButtonAnimPlaying(viewPhoto)) {
-            sub_0206A8DC(viewPhoto->parent, viewPhoto->lastInput);
+            FieldViewPhoto_SetPlayerInput(viewPhoto->parent, viewPhoto->lastInput);
         }
         break;
     }
@@ -196,38 +189,38 @@ static void ViewPhotoSysTask_Teardown(ViewPhotoSysTaskData *viewPhoto) {
 
 static ViewPhotoInputResponse ViewPhotoSysTask_HandleInput(ViewPhotoSysTaskData *viewPhoto) {
     ViewPhotoInputResponse response = ViewPhotoSysTask_GetTouchInput(viewPhoto);
-    if (response == INPUT_NOTHING) {
+    if (response == VIEW_PHOTO_INPUT_NOTHING) {
         response = ViewPhotoSysTask_GetKeyInput(viewPhoto);
-        if (response == INPUT_NOTHING) {
+        if (response == VIEW_PHOTO_INPUT_NOTHING) {
             viewPhoto->lastInputWasTouch = FALSE;
         }
     } else {
         viewPhoto->lastInputWasTouch = TRUE;
     }
     switch (response) {
-    case INPUT_END:
+    case VIEW_PHOTO_INPUT_END:
         ViewPhotoSysTask_AnimateButtonSelect(viewPhoto, 0);
         PlaySE(SEQ_SE_DP_DECIDE);
-        viewPhoto->lastInput = INPUT_END;
+        viewPhoto->lastInput = VIEW_PHOTO_INPUT_END;
         break;
-    case INPUT_PREV:
+    case VIEW_PHOTO_INPUT_PREV:
         if (viewPhoto->scrollData.curPhoto == 0) {
-            return INPUT_NOTHING;
+            return VIEW_PHOTO_INPUT_NOTHING;
         }
         ViewPhotoSysTask_AnimateButtonSelect(viewPhoto, 1);
         PlaySE(SEQ_SE_DP_SELECT);
-        viewPhoto->lastInput = INPUT_PREV;
+        viewPhoto->lastInput = VIEW_PHOTO_INPUT_PREV;
         break;
-    case INPUT_NEXT:
+    case VIEW_PHOTO_INPUT_NEXT:
         if (viewPhoto->scrollData.curPhoto >= viewPhoto->scrollData.numPhotos - 1) {
-            return INPUT_NOTHING;
+            return VIEW_PHOTO_INPUT_NOTHING;
         }
         ViewPhotoSysTask_AnimateButtonSelect(viewPhoto, 2);
         PlaySE(SEQ_SE_DP_SELECT);
-        viewPhoto->lastInput = INPUT_NEXT;
+        viewPhoto->lastInput = VIEW_PHOTO_INPUT_NEXT;
         break;
     default:
-        return INPUT_NOTHING;
+        return VIEW_PHOTO_INPUT_NOTHING;
     }
 
     return response;
@@ -235,20 +228,20 @@ static ViewPhotoInputResponse ViewPhotoSysTask_HandleInput(ViewPhotoSysTaskData 
 
 static ViewPhotoInputResponse ViewPhotoSysTask_GetKeyInput(ViewPhotoSysTaskData *viewPhoto) {
     if (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B)) {
-        return INPUT_END;
+        return VIEW_PHOTO_INPUT_END;
     } else if (gSystem.newKeys & PAD_KEY_LEFT) {
-        return INPUT_PREV;
+        return VIEW_PHOTO_INPUT_PREV;
     } else if (gSystem.newKeys & PAD_KEY_RIGHT) {
-        return INPUT_NEXT;
+        return VIEW_PHOTO_INPUT_NEXT;
     } else {
-        return INPUT_NOTHING;
+        return VIEW_PHOTO_INPUT_NOTHING;
     }
 }
 
 static ViewPhotoInputResponse ViewPhotoSysTask_GetTouchInput(ViewPhotoSysTaskData *viewPhoto) {
     int hitbox = TouchscreenHitbox_FindRectAtTouchNew(ov19_0225A05E);
     if (hitbox == -1) {
-        return INPUT_NOTHING;
+        return VIEW_PHOTO_INPUT_NOTHING;
     }
 
     return (ViewPhotoInputResponse)(hitbox + 1);
