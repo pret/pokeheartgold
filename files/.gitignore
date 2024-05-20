@@ -48,6 +48,7 @@ a/2/1/2
 a/2/1/4
 a/2/2/9
 a/2/5/2
+a/2/5/4
 a/2/6/2
 a/2/6/4
 msgdata/msg.narc
@@ -67,3 +68,4 @@ fielddata/tsurepoke/tp_param.narc
 data/resdat.narc
 application/annon/puzzle_gra.narc
 demo/opening/gs_opening.narc
+data/photo_data.narc

@@ -146,7 +146,7 @@ void EasyChat_LaunchApp(FieldSystem *fieldSystem, EasyChatArgs *a1);
 void sub_0202D640(SaveData *saveData, int a1, MAIL_MESSAGE *a2);
 PokegearArgs *PokegearTownMap_LaunchApp(FieldSystem *fieldSystem, int kind);
 SafariAreaCustomizerArgs *SafariAreaCustomizer_LaunchApp(FieldSystem *fieldSystem);
-PhotoAlbumArgs *PhotoAlbum_LaunchApp(FieldSystem *fieldSystem, int a1, int a2);
+PhotoAlbumArgs *PhotoAlbum_LaunchApp(FieldSystem *fieldSystem, int unused, int initialCursorPos);
 OptionsMenuArgs *OptionsMenu_LaunchApp(FieldSystem *fieldSystem);
 UseMailArgs *sub_0203EFEC(FieldSystem *fieldSystem, u16 a1, u8 a2, u8 a3);
 UseMailArgs *sub_0203F050(FieldSystem *fieldSystem, Pokemon *mon, HeapID heapId);

@@ -54,8 +54,8 @@
 .public CopyU16ArrayToString
 .public Save_PlayerData_GetProfileAddr
 .public sub_02068F98
-.public sub_0206A8C0
-.public sub_0206A8DC
+.public FieldViewPhoto_GetAlbumScrollParam
+.public FieldViewPhoto_SetExitRequestedFlag
 .public GXS_SetGraphicsMode
 .public GXx_GetMasterBrightness_
 .public MI_CpuFill8

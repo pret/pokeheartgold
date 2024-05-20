@@ -151,7 +151,7 @@ struct FieldSystem {
     u8 unkD2_7:1;
     u8 filler_D3[0x5];
     SysTask *unk_D8;
-    FieldViewPhoto *unk_DC;
+    FieldViewPhoto *viewPhotoTask;
     u8 filler_E0[4];
     FollowMon followMon; // E4
     u8 unk104[4];

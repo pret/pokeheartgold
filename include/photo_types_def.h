@@ -6,12 +6,19 @@
 #include "photo_album.h"
 #include "field_types_def.h"
 
+typedef enum ViewPhotoInputResponse {
+    VIEW_PHOTO_INPUT_NOTHING,
+    VIEW_PHOTO_INPUT_END,
+    VIEW_PHOTO_INPUT_PREV,
+    VIEW_PHOTO_INPUT_NEXT,
+} ViewPhotoInputResponse;
+
 typedef struct FieldTakePhoto {
     Location locationBuf;
-    u8 unk_14;
+    u8 state;
     u8 unk_15;
     u8 unk_16;
-    u8 unk_17;
+    u8 curMon;
     LocalMapObject *mapObjects[6];
     u16 savedX;
     u16 savedZ;
@@ -28,21 +35,21 @@ typedef struct FieldTakePhoto {
 } FieldTakePhoto;
 
 typedef struct FieldViewPhoto {
-    int unk_00;
-    int unk_04;
-    u8 unk_08;
+    int state;
+    int substate;
+    u8 photoWasSelected;
     u8 unk_09;
-    u8 unk_0A;
-    u8 unk_0B;
+    u8 whichPhoto;
+    u8 numMons;
     PHOTO pPhoto;
-    int unk_90;
+    ViewPhotoInputResponse input;
     u16 x;
     u16 y;
-    u16 unk_98;
-    u16 unk_9A;
+    u16 savedDirection;
+    u16 savedMapId;
     LocalMapObject *mapObjects[6];
-    PhotoAlbumArgs *unk_B4;
-    PHOTO_ALBUM *unk_B8;
+    PhotoAlbumArgs *selectionFromAlbumApp;
+    PHOTO_ALBUM *photoAlbum;
 } FieldViewPhoto;
 
 typedef struct PhotoAlbumScroll {
