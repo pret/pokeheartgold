@@ -60,8 +60,8 @@
 .public GXx_GetMasterBrightness_
 .public MI_CpuFill8
 .public gSystem
-.public ov01_021E7FDC
-.public ov01_021E8194
+.public UnkFieldSpriteRenderer_ov01_021E7FDC_Init
+.public UnkFieldSpriteRenderer_ov01_021E7FDC_Release
 .public ov01_021E81F0
-.public ov19_022598C0
-.public ov19_02259918
+.public FieldSystem_CreateViewPhotoTask
+.public FieldSystem_DestroyViewPhotoTask

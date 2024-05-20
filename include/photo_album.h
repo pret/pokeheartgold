@@ -25,21 +25,20 @@ typedef struct PhotoCameraParam {
 typedef struct PHOTO {
     u8 filler_0[4];
     u8 gender:1;
-    u8 unk_4_1:7;
+    u8 iconId:7;
     u8 filler_5[2];
     u8 numMons;
     u16 playerName[8];
     u16 leadMonNick[12];
-    u8 unk_30;
-    u16 unk_32;
-    u16 unk_34;
-    u16 unk_36;
+    u8 avatarStateBak;
+    u16 mapId;
+    u16 x;
+    u16 y;
     u32 date;
     u16 hour;
     u16 min;
-    u16 unk_40;
-    u16 unk_42;
-    u16 unk_44;
+    u16 unk_40[2];
+    u16 subjectSpriteId;
     u16 unk_46;
     PhotoCameraParam unk_48;
     PHOTO_MON party[PARTY_SIZE];
