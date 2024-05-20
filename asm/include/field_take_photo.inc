@@ -43,7 +43,7 @@
 .public sub_02054EB0
 .public sub_0205525C
 .public CallTask_RestoreOverworld
-.public PalleteFadeUntilFinished
+.public PaletteFadeUntilFinished
 .public CallTask_FadeFromBlack
 .public PlayerAvatar_GetFacingDirection
 .public GetPlayerXCoord

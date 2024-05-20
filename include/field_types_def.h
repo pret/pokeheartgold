@@ -6,6 +6,14 @@
 #include "filesystem.h"
 #include "sys_task.h"
 
+typedef struct Location {
+    int mapId;
+    int warpId;
+    int x;
+    int y;
+    int direction;
+} Location;
+
 typedef struct FieldSystem FieldSystem;
 typedef struct TaskManager TaskManager;
 typedef struct FieldSystemUnkSub2C FieldSystemUnkSub2C;
