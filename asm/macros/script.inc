@@ -3475,12 +3475,12 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_616 arg0
+	.macro count_saved_photos arg0
 	.short 616
 	.short \arg0
 	.endm
 
-	.macro scrcmd_617
+	.macro open_photo_album
 	.short 617
 	.endm
 
@@ -3499,7 +3499,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_621
+	.macro place_starter_balls_in_elms_lab
 	.short 621
 	.endm
 

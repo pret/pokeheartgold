@@ -19,8 +19,8 @@ _02055256:
 	.balign 4, 0
 	thumb_func_end sub_02055244
 
-	thumb_func_start sub_0205525C
-sub_0205525C: ; 0x0205525C
+	thumb_func_start CallTask_LeaveOverworld
+CallTask_LeaveOverworld: ; 0x0205525C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl TaskManager_GetFieldSystem
@@ -40,7 +40,7 @@ _02055274:
 	pop {r3, r4, r5, pc}
 	nop
 _02055288: .word sub_02055244
-	thumb_func_end sub_0205525C
+	thumb_func_end CallTask_LeaveOverworld
 
 	thumb_func_start sub_0205528C
 sub_0205528C: ; 0x0205528C
@@ -184,7 +184,7 @@ _0205538A:
 	b _020553AA
 _02055398:
 	add r0, r5, #0
-	bl sub_0205525C
+	bl CallTask_LeaveOverworld
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]

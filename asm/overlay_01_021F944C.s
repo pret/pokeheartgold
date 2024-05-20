@@ -1605,7 +1605,7 @@ ov01_021F9FCC: ; 0x021F9FCC
 	add r2, sp, #4
 	mov r3, #1
 	add r6, r0, #0
-	bl sub_0205EEF4
+	bl MapObjectManager_IterObjects
 	cmp r0, #1
 	bne _021FA016
 	add r7, sp, #0
@@ -1628,7 +1628,7 @@ _021FA006:
 	add r1, r7, #0
 	add r2, sp, #4
 	mov r3, #1
-	bl sub_0205EEF4
+	bl MapObjectManager_IterObjects
 	cmp r0, #1
 	beq _021F9FEC
 _021FA016:
@@ -1650,7 +1650,7 @@ ov01_021FA01C: ; 0x021FA01C
 	add r2, sp, #4
 	mov r3, #1
 	add r7, r0, #0
-	bl sub_0205EEF4
+	bl MapObjectManager_IterObjects
 	cmp r0, #1
 	bne _021FA088
 _021FA03A:
@@ -1688,7 +1688,7 @@ _021FA078:
 	add r1, sp, #0
 	add r2, sp, #4
 	mov r3, #1
-	bl sub_0205EEF4
+	bl MapObjectManager_IterObjects
 	cmp r0, #1
 	beq _021FA03A
 _021FA088:
@@ -1712,7 +1712,7 @@ ov01_021FA094: ; 0x021FA094
 	add r2, sp, #4
 	mov r3, #1
 	add r7, r0, #0
-	bl sub_0205EEF4
+	bl MapObjectManager_IterObjects
 	cmp r0, #1
 	bne _021FA0FE
 _021FA0B2:
@@ -1749,7 +1749,7 @@ _021FA0EE:
 	add r1, sp, #0
 	add r2, sp, #4
 	mov r3, #1
-	bl sub_0205EEF4
+	bl MapObjectManager_IterObjects
 	cmp r0, #1
 	beq _021FA0B2
 _021FA0FE:

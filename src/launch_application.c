@@ -807,7 +807,7 @@ static BOOL Task_WirelessTrade(TaskManager *taskman) {
     switch (data->state) {
     case WIRELESS_TRADE_STATE_0:
         if (!sub_02039998()) {
-            sub_0205525C(taskman);
+            CallTask_LeaveOverworld(taskman);
         }
         data->state++;
         break;
@@ -935,7 +935,7 @@ static BOOL Task_NamingScreen(TaskManager *taskman) {
     NamingScreenData *data = TaskManager_GetEnvironment(taskman);
     switch (data->state) {
     case 0:
-        sub_0205525C(taskman);
+        CallTask_LeaveOverworld(taskman);
         data->state++;
         break;
     case 1:

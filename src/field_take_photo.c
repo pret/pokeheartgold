@@ -33,6 +33,41 @@ typedef enum FieldViewPhotoTaskState {
     VIEW_PHOTO_STATE_QUIT2,
 } FieldViewPhotoTaskState;
 
+typedef enum FieldTakePhotoTaskState {
+    TAKE_PHOTO_STATE_DUMMY_INIT,
+    TAKE_PHOTO_STATE_INIT_LEAVE_OVERWORLD,
+    TAKE_PHOTO_STATE_SAVE_PLAYER_STATE,
+    TAKE_PHOTO_STATE_INIT_RESTORE_OVERWORLD,
+    TAKE_PHOTO_STATE_POSITION_CAMERA,
+    TAKE_PHOTO_STATE_05,
+    TAKE_PHOTO_STATE_ADJUST_PLAYER_FACING_VEC,
+    TAKE_PHOTO_STATE_PARTY_PHOTO_PLACE_MON_ITER,
+    TAKE_PHOTO_STATE_PARTY_PHOTO_ADJUST_MON_OBJ_ITER,
+    TAKE_PHOTO_STATE_NPC_PHOTO_PLACE_NPC,
+    TAKE_PHOTO_STATE_NPC_PHOTO_ADJUST_NPC,
+    TAKE_PHOTO_STATE_NPC_PHOTO_PLACE_MON,
+    TAKE_PHOTO_STATE_NPC_PHOTO_ADJUST_MON,
+    TAKE_PHOTO_STATE_13,
+    TAKE_PHOTO_STATE_DRAW_CAMERA_GFX,
+    TAKE_PHOTO_STATE_SHUTTER,
+    TAKE_PHOTO_STATE_UNLOAD,
+    TAKE_PHOTO_STATE_RESTORE_PLAYER,
+    TAKE_PHOTO_STATE_RESUME_OVERWORLD_AFTER,
+    TAKE_PHOTO_STATE_ADJUST_FOLLOW_MON,
+    TAKE_PHOTO_STATE_EXIT,
+} FieldTakePhotoTaskState;
+
+typedef enum FieldTakePhotoShutterState {
+    TAKE_PHOTO_SHUTTER_STATE_INIT,
+    TAKE_PHOTO_SHUTTER_STATE_DELAY_BEFORE,
+    TAKE_PHOTO_SHUTTER_STATE_FADE_OUT,
+    TAKE_PHOTO_SHUTTER_STATE_EXPOSURE,
+    TAKE_PHOTO_SHUTTER_STATE_FADE_IN,
+    TAKE_PHOTO_SHUTTER_STATE_WAIT_FADE_IN,
+    TAKE_PHOTO_SHUTTER_STATE_6,
+    TAKE_PHOTO_SHUTTER_STATE_DELAY_AFTER,
+} FieldTakePhotoShutterState;
+
 typedef struct FieldTakePhoto3 {
     int state;
     u8 filler_4[4];
@@ -52,13 +87,13 @@ static BOOL FieldTask_DoViewPhoto(TaskManager *taskManager);
 static LocalMapObject *createPartymonMapObject(MapObjectManager *objectMan, u16 species, u16 form, int gender, int direction, int x, int y, BOOL shiny);
 static LocalMapObject *createSpecialMapObject(MapObjectManager *objectMan, int spriteId, int direction, int x, int y, int localId);
 static void sub_0206AF78(FieldSystem *fieldSystem, PHOTO *photo);
-static void sub_0206AFA4(FieldTakePhoto *takePhoto);
+static void FieldTakePhoto_RemoveAllMapObjects(FieldTakePhoto *takePhoto);
 static void setCameraParam(Camera *camera);
 static void Photo_InitFromArcData(PHOTO *photo, FieldSystem *fieldSystem, u8 iconId, int mapId, int x, int y, int a6, int a7, u16 a8, u16 subjectObjId);
 static BOOL FieldTask_TakePhoto(TaskManager *taskManager);
 static void sub_0206B82C(PlayerAvatar *playerAvatar, u8 state, u8 gender);
 static void sub_0206B880(FieldSystem *fieldSystem, PHOTO *photo);
-static void sub_0206B8AC(BgConfig *bgConfig, HeapID heapId);
+static void drawCameraGfx(BgConfig *bgConfig, HeapID heapId);
 
 typedef struct Coord2U16 {
     u16 x;
@@ -94,16 +129,16 @@ void FieldSystem_TakePhoto(FieldSystem *fieldSystem, u16 photo_id) {
     FieldTakePhoto *takePhoto = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldTakePhoto));
     MI_CpuFill8(takePhoto, 0, sizeof(FieldTakePhoto));
     takePhoto->state = 0;
-    takePhoto->unk_15 = 0;
+    takePhoto->positionMonDelayCounter = 0;
     takePhoto->curMon = 0;
     takePhoto->savedX = GetPlayerXCoord(fieldSystem->playerAvatar);
-    takePhoto->savedZ = GetPlayerYCoord(fieldSystem->playerAvatar);
+    takePhoto->savedY = GetPlayerYCoord(fieldSystem->playerAvatar);
     takePhoto->savedDirection = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
     takePhoto->savedMapId = fieldSystem->location->mapId;
     if (FollowMon_IsActive(fieldSystem)) {
         LocalMapObject *followMonObj = FollowMon_GetMapObject(fieldSystem);
-        MapObject_GetPositionVec(followMonObj, &takePhoto->unk_CC);
-        takePhoto->unk_D8 = MapObject_GetFacingDirection(followMonObj);
+        MapObject_GetPositionVec(followMonObj, &takePhoto->followMonPositionVecBak);
+        takePhoto->followMonFacingDirectionBak = MapObject_GetFacingDirection(followMonObj);
     }
     if (PhotoAlbum_GetIndexOfFirstEmptySlot(
                     Save_PhotoAlbum_Get(FieldSystem_GetSaveData(fieldSystem))) != 0xFF) {
@@ -115,7 +150,7 @@ void FieldSystem_TakePhoto(FieldSystem *fieldSystem, u16 photo_id) {
     }
 }
 
-void sub_0206A860(FieldSystem *fieldSystem) {
+void FieldSystem_ViewSavedPhotos(FieldSystem *fieldSystem) {
     FieldViewPhoto *photo = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldViewPhoto));
     MI_CpuFill8(photo, 0, sizeof(FieldViewPhoto));
     photo->x = GetPlayerXCoord(fieldSystem->playerAvatar);
@@ -145,12 +180,10 @@ static BOOL FieldTask_ViewPhoto(TaskManager *taskManager) {
         viewPhoto->state = ViewPhotoFieldTask_Init(fieldSystem, taskManager, viewPhoto);
         break;
     case VIEW_PHOTO_STATE_SELECT:
-        viewPhoto->state = ViewPhotoFieldTask_HandleAlbumSelection(
-                fieldSystem, taskManager, viewPhoto);
+        viewPhoto->state = ViewPhotoFieldTask_HandleAlbumSelection(fieldSystem, taskManager, viewPhoto);
         break;
     case VIEW_PHOTO_STATE_LOAD:
-        viewPhoto->state = ViewPhotoFieldTask_LoadPhotoAndBeginRender(
-                fieldSystem, taskManager, viewPhoto);
+        viewPhoto->state = ViewPhotoFieldTask_LoadPhotoAndBeginRender(fieldSystem, taskManager, viewPhoto);
         break;
     case VIEW_PHOTO_STATE_FADE_IN:
         viewPhoto->state = ViewPhotoFieldTask_FadeInToPhoto(fieldSystem, taskManager, viewPhoto);
@@ -159,15 +192,13 @@ static BOOL FieldTask_ViewPhoto(TaskManager *taskManager) {
         viewPhoto->state = ViewPhotoFieldTask_WaitInput(fieldSystem, taskManager, viewPhoto);
         break;
     case VIEW_PHOTO_STATE_FADE_OUT:
-        viewPhoto->state = ViewPhotoFieldTask_FadeOutFromPhoto(
-                fieldSystem, taskManager, viewPhoto);
+        viewPhoto->state = ViewPhotoFieldTask_FadeOutFromPhoto(fieldSystem, taskManager, viewPhoto);
         break;
     case VIEW_PHOTO_STATE_HANDLE_NEXT:
         viewPhoto->state = ViewPhotoFieldTask_Cleanup(fieldSystem, taskManager, viewPhoto);
         break;
     case VIEW_PHOTO_STATE_QUIT:
-        viewPhoto->state = ViewPhotoFieldTask_RestorePlayerOverworldPosition(
-                fieldSystem, taskManager, viewPhoto);
+        viewPhoto->state = ViewPhotoFieldTask_RestorePlayerOverworldPosition(fieldSystem, taskManager, viewPhoto);
         break;
     case VIEW_PHOTO_STATE_QUIT2:
         sub_02067A80(fieldSystem, 0);
@@ -206,7 +237,7 @@ static int ViewPhotoFieldTask_LoadPhotoAndBeginRender(FieldSystem *fieldSystem, 
     viewPhoto->numMons = viewPhoto->pPhoto.subjectSpriteId ? 2 : viewPhoto->pPhoto.numMons;
     viewPhoto->input = VIEW_PHOTO_INPUT_NOTHING;
     taskData->parent = viewPhoto;
-    viewPhoto->unk_09 = fieldSystem->unk70;
+    viewPhoto->fieldSystemUnk70Bak = fieldSystem->unk70;
     fieldSystem->unk70 = 5;
     fieldSystem->viewPhotoTask = viewPhoto;
     TaskManager_Call(fieldSystem->taskman, FieldTask_DoViewPhoto, taskData);
@@ -223,11 +254,11 @@ static int ViewPhotoFieldTask_Cleanup(FieldSystem *fieldSystem, TaskManager *tas
                 viewPhoto->mapObjects[i] = NULL;
             }
         }
-        sub_0205525C(taskManager);
+        CallTask_LeaveOverworld(taskManager);
         ++viewPhoto->substate;
         break;
     case 1:
-        fieldSystem->unk70 = viewPhoto->unk_09;
+        fieldSystem->unk70 = viewPhoto->fieldSystemUnk70Bak;
         fieldSystem->viewPhotoTask = NULL;
         viewPhoto->substate = 0;
         switch (viewPhoto->input) {
@@ -448,11 +479,11 @@ static void sub_0206AF78(FieldSystem *fieldSystem, PHOTO *photo) {
     int index = 0;
     LocalMapObject *curObj;
     PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
-    while (sub_0205EEF4(fieldSystem->mapObjectManager, &curObj, &index, MAPOBJECTFLAG_ACTIVE)) {
+    while (MapObjectManager_IterObjects(fieldSystem->mapObjectManager, &curObj, &index, MAPOBJECTFLAG_ACTIVE)) {
     }
 }
 
-static void sub_0206AFA4(FieldTakePhoto *takePhoto) {
+static void FieldTakePhoto_RemoveAllMapObjects(FieldTakePhoto *takePhoto) {
     for (int i = 0; i < takePhoto->numObjects; ++i) {
         if (takePhoto->mapObjects[i] != NULL) {
             MapObject_Remove(takePhoto->mapObjects[i]);
@@ -542,35 +573,35 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
     FieldTakePhoto *takePhoto = (FieldTakePhoto *)TaskManager_GetEnvironment(taskManager);
 
     switch (takePhoto->state) {
-    case 0:
-        takePhoto->state = 1;
+    case TAKE_PHOTO_STATE_DUMMY_INIT:
+        takePhoto->state = TAKE_PHOTO_STATE_INIT_LEAVE_OVERWORLD;
         break;
-    case 1:
+    case TAKE_PHOTO_STATE_INIT_LEAVE_OVERWORLD:
         sub_0203E33C(fieldSystem, 3);
-        sub_0205525C(taskManager);
-        takePhoto->state = 2;
+        CallTask_LeaveOverworld(taskManager);
+        takePhoto->state = TAKE_PHOTO_STATE_SAVE_PLAYER_STATE;
         break;
-    case 2:
+    case TAKE_PHOTO_STATE_SAVE_PLAYER_STATE:
         sub_02067A80(fieldSystem, 1);
         FieldTakePhoto_SetLocationBuf(takePhoto, DIR_SOUTH, takePhoto->pPhoto->y, takePhoto->pPhoto->x, takePhoto->pPhoto->mapId);
         sub_020537A8(taskManager, &takePhoto->locationBuf);
-        takePhoto->state = 3;
+        takePhoto->state = TAKE_PHOTO_STATE_INIT_RESTORE_OVERWORLD;
         break;
-    case 3:
+    case TAKE_PHOTO_STATE_INIT_RESTORE_OVERWORLD:
         CallTask_RestoreOverworld(taskManager);
-        takePhoto->state = 4;
+        takePhoto->state = TAKE_PHOTO_STATE_POSITION_CAMERA;
         break;
-    case 4:
+    case TAKE_PHOTO_STATE_POSITION_CAMERA:
         setCameraParam(fieldSystem->camera);
         sub_0206AF78(fieldSystem, takePhoto->pPhoto);
         sub_0206B880(fieldSystem, takePhoto->pPhoto);
-        takePhoto->state = 5;
+        takePhoto->state = TAKE_PHOTO_STATE_05;
         break;
-    case 5:
+    case TAKE_PHOTO_STATE_05:
         ov01_021F9FB0(fieldSystem->mapObjectManager, sub_0205F1A0(fieldSystem->mapObjectManager));
-        takePhoto->state = 6;
+        takePhoto->state = TAKE_PHOTO_STATE_ADJUST_PLAYER_FACING_VEC;
         break;
-    case 6:
+    case TAKE_PHOTO_STATE_ADJUST_PLAYER_FACING_VEC:
         u8 profileGender = PlayerProfile_GetTrainerGender(
                 Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem)));
         sub_0206B82C(fieldSystem->playerAvatar, takePhoto->pPhoto->avatarStateBak, profileGender);
@@ -583,14 +614,14 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
                     PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &facingVec);
         }
         if (takePhoto->pPhoto->subjectSpriteId) {
-            takePhoto->state = 9;
+            takePhoto->state = TAKE_PHOTO_STATE_NPC_PHOTO_PLACE_NPC;
             takePhoto->numObjects = 2;
         } else {
-            takePhoto->state = 7;
+            takePhoto->state = TAKE_PHOTO_STATE_PARTY_PHOTO_PLACE_MON_ITER;
             takePhoto->numObjects = takePhoto->pPhoto->numMons;
         }
         break;
-    case 7: {
+    case TAKE_PHOTO_STATE_PARTY_PHOTO_PLACE_MON_ITER: {
         PHOTO_MON *mon = &takePhoto->pPhoto->party[takePhoto->curMon];
         if (mon->species != SPECIES_NONE) {
             takePhoto->mapObjects[takePhoto->curMon] = createPartymonMapObject(
@@ -600,11 +631,11 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
             takePhoto->mapObjects[takePhoto->curMon] = NULL;
         }
         ++takePhoto->curMon;
-        takePhoto->state = 8;
+        takePhoto->state = TAKE_PHOTO_STATE_PARTY_PHOTO_ADJUST_MON_OBJ_ITER;
         break;
     }
-    case 8:
-        if (takePhoto->unk_15++ > 4) {
+    case TAKE_PHOTO_STATE_PARTY_PHOTO_ADJUST_MON_OBJ_ITER:
+        if (takePhoto->positionMonDelayCounter++ > 4) {
             LocalMapObject *mapObject = takePhoto->mapObjects[takePhoto->curMon - 1];
             if (mapObject != NULL) {
                 if (ov01_0220553C(mapObject)) {
@@ -616,34 +647,34 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
                 MapObject_SetFacingVec(mapObject, &facingVec);
                 sub_0205F484(mapObject);
             }
-            takePhoto->unk_15 = 0;
+            takePhoto->positionMonDelayCounter = 0;
             if (takePhoto->curMon >= takePhoto->pPhoto->numMons) {
-                takePhoto->unk_C8 = 0;
-                takePhoto->state = 13;
+                takePhoto->shutterDelayCounter = 0;
+                takePhoto->state = TAKE_PHOTO_STATE_13;
             } else {
-                takePhoto->state = 7;
+                takePhoto->state = TAKE_PHOTO_STATE_PARTY_PHOTO_PLACE_MON_ITER;
             }
         }
         break;
-    case 9:
+    case TAKE_PHOTO_STATE_NPC_PHOTO_PLACE_NPC:
         takePhoto->mapObjects[0] = createSpecialMapObject(
                 fieldSystem->mapObjectManager, takePhoto->pPhoto->subjectSpriteId,
                 DIR_SOUTH, takePhoto->pPhoto->x + 2, takePhoto->pPhoto->y,
                 obj_photo_subject);
-        takePhoto->state = 10;
+        takePhoto->state = TAKE_PHOTO_STATE_NPC_PHOTO_ADJUST_NPC;
         break;
-    case 10:
-        if (takePhoto->unk_15++ > 4) {
+    case TAKE_PHOTO_STATE_NPC_PHOTO_ADJUST_NPC:
+        if (takePhoto->positionMonDelayCounter++ > 4) {
             VecFx32 facingVec;
             MapObject_GetFacingVec(takePhoto->mapObjects[0], &facingVec);
             facingVec.y -= FX32_CONST(2);
             MapObject_SetFacingVec(takePhoto->mapObjects[0], &facingVec);
             sub_0205F484(takePhoto->mapObjects[0]);
-            takePhoto->unk_15 = 0;
-            takePhoto->state = 11;
+            takePhoto->positionMonDelayCounter = 0;
+            takePhoto->state = TAKE_PHOTO_STATE_NPC_PHOTO_PLACE_MON;
         }
         break;
-    case 11: {
+    case TAKE_PHOTO_STATE_NPC_PHOTO_PLACE_MON: {
         PHOTO_MON *mon = &takePhoto->pPhoto->party[takePhoto->curMon];
         if (mon->species != SPECIES_NONE) {
             takePhoto->mapObjects[1] = createPartymonMapObject(
@@ -653,11 +684,11 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
             GF_ASSERT(FALSE);
             takePhoto->mapObjects[1] = NULL;
         }
-        takePhoto->state = 12;
+        takePhoto->state = TAKE_PHOTO_STATE_NPC_PHOTO_ADJUST_MON;
         break;
     }
-    case 12:
-        if (takePhoto->unk_15++ > 4) {
+    case TAKE_PHOTO_STATE_NPC_PHOTO_ADJUST_MON:
+        if (takePhoto->positionMonDelayCounter++ > 4) {
             LocalMapObject *mapObject = takePhoto->mapObjects[1];
             if (mapObject != NULL) {
                 if (ov01_0220553C(mapObject)) {
@@ -669,101 +700,98 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
                 MapObject_SetFacingVec(mapObject, &facingVec);
                 sub_0205F484(mapObject);
             }
-            takePhoto->unk_15 = 0;
-            takePhoto->unk_C8 = 0;
-            takePhoto->state = 13;
+            takePhoto->positionMonDelayCounter = 0;
+            takePhoto->shutterDelayCounter = 0;
+            takePhoto->state = TAKE_PHOTO_STATE_13;
         }
         break;
-    case 13:
+    case TAKE_PHOTO_STATE_13:
         ov01_022043D8(fieldSystem->unk_C8);
         ov01_02204424(fieldSystem->unk_C8);
         ov01_021EB1E8(fieldSystem->unk4->unk10);
-        takePhoto->state = 14;
+        takePhoto->state = TAKE_PHOTO_STATE_DRAW_CAMERA_GFX;
         break;
-    case 14:
-        sub_0206B8AC(fieldSystem->bgConfig, HEAP_ID_4);
+    case TAKE_PHOTO_STATE_DRAW_CAMERA_GFX:
+        drawCameraGfx(fieldSystem->bgConfig, HEAP_ID_4);
         CallTask_FadeFromBlack(taskManager);
-        takePhoto->unk_CA = 0;
-        takePhoto->state = 15;
+        takePhoto->shutterState = 0;
+        takePhoto->state = TAKE_PHOTO_STATE_SHUTTER;
         break;
-    case 15:
-        switch (takePhoto->unk_CA) {
-        case 0:
+    case TAKE_PHOTO_STATE_SHUTTER:
+        switch (takePhoto->shutterState) {
+        case TAKE_PHOTO_SHUTTER_STATE_INIT:
             ov01_021FB514(fieldSystem->unk4->unk1c);
-            ++takePhoto->unk_CA;
+            ++takePhoto->shutterState;
             // fallthrough
-        case 1:
-            if (takePhoto->unk_C8++ >= 30) {
-                ++takePhoto->unk_CA;
-                takePhoto->unk_C8 = 0;
+        case TAKE_PHOTO_SHUTTER_STATE_DELAY_BEFORE:
+            if (takePhoto->shutterDelayCounter++ >= 30) {
+                ++takePhoto->shutterState;
+                takePhoto->shutterDelayCounter = 0;
             }
             break;
-        case 2:
+        case TAKE_PHOTO_SHUTTER_STATE_FADE_OUT:
             PlaySE(SEQ_SE_GS_SHUTTER);
             BeginNormalPaletteFade(3, 8, 0, RGB_BLACK, 6, 1, HEAP_ID_4);
-            ++takePhoto->unk_CA;
+            ++takePhoto->shutterState;
             break;
-        case 3:
+        case TAKE_PHOTO_SHUTTER_STATE_EXPOSURE:
             if (IsPaletteFadeFinished()) {
                 PHOTO_ALBUM *photoAlbum = Save_PhotoAlbum_Get(FieldSystem_GetSaveData(fieldSystem));
                 u8 photoIndex = PhotoAlbum_GetIndexOfFirstEmptySlot(photoAlbum);
                 RTCDate date;
                 GF_RTC_CopyDate(&date);
-                takePhoto->pPhoto->date = ((date.year & 0xFF) << 24) |
-                                                                    ((date.month & 0xFF) << 16) |
-                                                                    ((date.day & 0xFF) << 8) | date.week;
+                takePhoto->pPhoto->date = ((date.year & 0xFF) << 24) | ((date.month & 0xFF) << 16) | ((date.day & 0xFF) << 8) | date.week;
                 RTCTime time;
                 GF_RTC_CopyTime(&time);
                 takePhoto->pPhoto->hour = time.hour;
                 takePhoto->pPhoto->min = time.minute;
                 PhotoAlbum_SetPhotoAtIndex(photoAlbum, &takePhoto->photoBuf, photoIndex);
-                ++takePhoto->unk_CA;
+                ++takePhoto->shutterState;
             }
             break;
-        case 4:
+        case TAKE_PHOTO_SHUTTER_STATE_FADE_IN:
             BeginNormalPaletteFade(3, 9, 0, RGB_BLACK, 6, 1, HEAP_ID_4);
-            ++takePhoto->unk_CA;
+            ++takePhoto->shutterState;
             break;
-        case 5:
+        case TAKE_PHOTO_SHUTTER_STATE_WAIT_FADE_IN:
             if (IsPaletteFadeFinished()) {
-                ++takePhoto->unk_CA;
+                ++takePhoto->shutterState;
             }
             break;
-        case 6:
+        case TAKE_PHOTO_SHUTTER_STATE_6:
             ov01_021FB4F4(fieldSystem->unk4->unk1c);
-            ++takePhoto->unk_CA;
+            ++takePhoto->shutterState;
             break;
-        case 7:
-            if (takePhoto->unk_C8++ >= 30) {
+        case TAKE_PHOTO_SHUTTER_STATE_DELAY_AFTER:
+            if (takePhoto->shutterDelayCounter++ >= 30) {
                 PaletteFadeUntilFinished(taskManager);
-                takePhoto->state = 16;
+                takePhoto->state = TAKE_PHOTO_STATE_UNLOAD;
             }
             break;
         }
         break;
-    case 16:
+    case TAKE_PHOTO_STATE_UNLOAD:
         GF_RTC_UnfreezeTime();
-        sub_0206AFA4(takePhoto);
+        FieldTakePhoto_RemoveAllMapObjects(takePhoto);
         sub_0203E33C(fieldSystem, 0);
-        sub_0205525C(taskManager);
-        takePhoto->state = 17;
+        CallTask_LeaveOverworld(taskManager);
+        takePhoto->state = TAKE_PHOTO_STATE_RESTORE_PLAYER;
         break;
-    case 17:
+    case TAKE_PHOTO_STATE_RESTORE_PLAYER:
         sub_02067A80(fieldSystem, 0);
-        FieldTakePhoto_SetLocationBuf(takePhoto, takePhoto->savedDirection, takePhoto->savedZ, takePhoto->savedX, takePhoto->savedMapId);
+        FieldTakePhoto_SetLocationBuf(takePhoto, takePhoto->savedDirection, takePhoto->savedY, takePhoto->savedX, takePhoto->savedMapId);
         sub_020537A8(taskManager, &takePhoto->locationBuf);
-        takePhoto->state = 18;
+        takePhoto->state = TAKE_PHOTO_STATE_RESUME_OVERWORLD_AFTER;
         break;
-    case 18:
+    case TAKE_PHOTO_STATE_RESUME_OVERWORLD_AFTER:
         CallTask_RestoreOverworld(taskManager);
-        takePhoto->state = 19;
+        takePhoto->state = TAKE_PHOTO_STATE_ADJUST_FOLLOW_MON;
         break;
-    case 19:
-        if (FollowMon_IsActive(fieldSystem) &&
-                PlayerAvatar_GetState(fieldSystem->playerAvatar) != PLAYER_STATE_CYCLING) {
+    case TAKE_PHOTO_STATE_ADJUST_FOLLOW_MON:
+        if (FollowMon_IsActive(fieldSystem) && PlayerAvatar_GetState(fieldSystem->playerAvatar) != PLAYER_STATE_CYCLING) {
             LocalMapObject *followMon = FollowMon_GetMapObject(fieldSystem);
             LocalMapObject *playerObj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
-            sub_0205FBC0(followMon, &takePhoto->unk_CC, takePhoto->unk_D8);
+            sub_0205FBC0(followMon, &takePhoto->followMonPositionVecBak, takePhoto->followMonFacingDirectionBak);
 
             int playerX = MapObject_GetCurrentX(playerObj);
             int playerZ = MapObject_GetCurrentY(playerObj);
@@ -777,9 +805,9 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
             }
             sub_0205F484(followMon);
         }
-        takePhoto->state = 20;
+        takePhoto->state = TAKE_PHOTO_STATE_EXIT;
         break;
-    case 20:
+    case TAKE_PHOTO_STATE_EXIT:
         FreeToHeap(takePhoto);
         return TRUE;
     }
@@ -810,7 +838,7 @@ static void sub_0206B880(FieldSystem *fieldSystem, PHOTO *photo) {
     }
 }
 
-static void sub_0206B8AC(BgConfig *bgConfig, HeapID heapId) {
+static void drawCameraGfx(BgConfig *bgConfig, HeapID heapId) {
     GfGfxLoader_GXLoadPal(NARC_a_2_6_1, 0, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0, heapId);
     GfGfxLoader_LoadCharData(NARC_a_2_6_1, 1, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, heapId);
     GfGfxLoader_LoadScrnData(NARC_a_2_6_1, 2, bgConfig, GF_BG_LYR_MAIN_2, 0, 0x600, TRUE, heapId);

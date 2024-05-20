@@ -190,7 +190,7 @@ u32 sub_0205ED90(LocalMapObject*, u32, u32, ObjectEvent*);
 LocalMapObject* sub_0205EE10(MapObjectManager*, u32, u32);
 LocalMapObject *GetMapObjectByID(MapObjectManager *manager, u32 id);
 LocalMapObject *sub_0205EEB4(MapObjectManager *manager, u32 movement);
-BOOL sub_0205EEF4(MapObjectManager*, LocalMapObject**, int*, u32);
+BOOL MapObjectManager_IterObjects(MapObjectManager*, LocalMapObject**, int*, u32);
 void sub_0205EF48(LocalMapObject* object);
 void sub_0205EF5C(LocalMapObject* object);
 void sub_0205EF6C(LocalMapObject* object);
