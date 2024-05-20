@@ -45,7 +45,7 @@
 .public sub_0205BA70
 .public sub_0205E38C
 .public sub_0205E420
-.public sub_0205EEF4
+.public MapObjectManager_IterObjects
 .public sub_0205F09C
 .public MapObjectManager_GetCount
 .public MapObjectManager_GetHeapID

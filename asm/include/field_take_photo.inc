@@ -41,7 +41,7 @@
 .public sub_020537A8
 .public GetFirstAliveMonInParty_CrashIfNone
 .public sub_02054EB0
-.public sub_0205525C
+.public CallTask_LeaveOverworld
 .public CallTask_RestoreOverworld
 .public PaletteFadeUntilFinished
 .public CallTask_FadeFromBlack
@@ -57,7 +57,7 @@
 .public sub_0205E38C
 .public MapObject_Remove
 .public sub_0205E420
-.public sub_0205EEF4
+.public MapObjectManager_IterObjects
 .public sub_0205F1A0
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
@@ -86,7 +86,7 @@
 .public FollowMon_SetObjectParams
 .public FollowMon_IsActive
 .public FieldSystem_TakePhoto
-.public sub_0206A860
+.public FieldSystem_ViewSavedPhotos
 .public FieldViewPhoto_GetAlbumScrollParam
 .public FieldViewPhoto_SetExitRequestedFlag
 .public GetMonData

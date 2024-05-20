@@ -550,7 +550,7 @@ static BOOL Task_ScriptWarp(TaskManager *taskManager) {
     switch (env->state) {
     case 0:
         FieldSystem_BeginFadeOutMusic(fieldSystem, env->location.mapId);
-        sub_0205525C(taskManager);
+        CallTask_LeaveOverworld(taskManager);
         env->state++;
         break;
     case 1:
@@ -650,7 +650,7 @@ static BOOL sub_020539E8(TaskManager *taskManager) {
 
     switch (*state_p) {
     case 0:
-        sub_0205525C(taskManager);
+        CallTask_LeaveOverworld(taskManager);
         (*state_p)++;
         break;
     case 1:
@@ -766,7 +766,7 @@ static BOOL sub_02053BF8(TaskManager *taskManager) {
 
     switch (*state_p) {
     case 0:
-        sub_0205525C(taskManager);
+        CallTask_LeaveOverworld(taskManager);
         (*state_p)++;
         break;
     case 1:
@@ -839,7 +839,7 @@ static BOOL sub_02053CCC(TaskManager *taskManager) {
     case 2:
         if (env->unk4) {
             FieldSystem_BeginFadeOutMusic(fieldSystem, location->mapId);
-            sub_0205525C(taskManager);
+            CallTask_LeaveOverworld(taskManager);
             env->unk0++;
         }
         break;
@@ -907,7 +907,7 @@ static BOOL sub_02053E5C(TaskManager *taskManager) {
         break;
     case 1:
         if (env->unk4) {
-            sub_0205525C(taskManager);
+            CallTask_LeaveOverworld(taskManager);
             (*state_p)++;
         }
         break;
@@ -960,7 +960,7 @@ static BOOL sub_02053F70(TaskManager *taskManager) {
         (*state_p)++;
         break;
     case 1:
-        sub_0205525C(taskManager);
+        CallTask_LeaveOverworld(taskManager);
         (*state_p)++;
         break;
     case 2:

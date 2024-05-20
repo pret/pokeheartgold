@@ -127,7 +127,7 @@ struct FieldSystem {
     u32 unk60;
     int unk64;
     struct FieldSystemUnkSub68 *unk68;
-    u32 unk6C;
+    BOOL unk6C;
     int unk70;
     const struct UnkStruct_020FC5CC *unk74;
     u16 unk78;

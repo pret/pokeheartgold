@@ -170,7 +170,7 @@ BOOL sub_02055DBC(TaskManager *man) {
         env->state++;
         break;
     case 3:
-        sub_0205525C(man);
+        CallTask_LeaveOverworld(man);
         env->state++;
         break;
     case 4:

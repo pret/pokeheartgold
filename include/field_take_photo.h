@@ -6,7 +6,7 @@
 #include "photo_types_def.h"
 
 void FieldSystem_TakePhoto(FieldSystem *fieldSystem, u16 photo_id);
-void sub_0206A860(FieldSystem *fieldSystem);
+void FieldSystem_ViewSavedPhotos(FieldSystem *fieldSystem);
 void FieldViewPhoto_GetAlbumScrollParam(FieldViewPhoto *takePhoto, PhotoAlbumScroll *albumScroll);
 void FieldViewPhoto_SetPlayerInput(FieldViewPhoto *takePhoto, ViewPhotoInputResponse exitRequested);
 
