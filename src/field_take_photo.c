@@ -140,8 +140,7 @@ void FieldSystem_TakePhoto(FieldSystem *fieldSystem, u16 photo_id) {
         MapObject_GetPositionVec(followMonObj, &takePhoto->followMonPositionVecBak);
         takePhoto->followMonFacingDirectionBak = MapObject_GetFacingDirection(followMonObj);
     }
-    if (PhotoAlbum_GetIndexOfFirstEmptySlot(
-                    Save_PhotoAlbum_Get(FieldSystem_GetSaveData(fieldSystem))) != 0xFF) {
+    if (PhotoAlbum_GetIndexOfFirstEmptySlot(Save_PhotoAlbum_Get(FieldSystem_GetSaveData(fieldSystem))) != 0xFF) {
         PHOTO_DAT photoDat;
         ReadWholeNarcMemberByIdPair(&photoDat, NARC_data_photo_data, photo_id);
         Photo_InitFromArcData(&takePhoto->photoBuf, fieldSystem, photoDat.iconId, photoDat.mapId, photoDat.x, photoDat.y, photoDat.param[0], photoDat.param[1], photoDat.unk9, photoDat.subjectObjId);
@@ -352,17 +351,14 @@ static BOOL FieldTask_DoViewPhoto(TaskManager *taskManager) {
         sub_0206B880(fieldSystem, photo);
         NNS_G3dGlbSetViewPort(4, 3, 252, 188);
         {
-            u8 profileGender = PlayerProfile_GetTrainerGender(
-                    Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem)));
+            u8 profileGender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem)));
             sub_0206B82C(fieldSystem->playerAvatar, photo->avatarStateBak, profileGender);
         }
         {
             VecFx32 facingVec;
-            MapObject_GetFacingVec(
-                    PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &facingVec);
+            MapObject_GetFacingVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &facingVec);
             facingVec.y -= FX32_CONST(2);
-            MapObject_SetFacingVec(
-                    PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &facingVec);
+            MapObject_SetFacingVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &facingVec);
         }
         ++taskData->state;
         break;
@@ -380,8 +376,7 @@ static BOOL FieldTask_DoViewPhoto(TaskManager *taskManager) {
     case 4: {
         PHOTO_MON *mon = &photo->party[taskData->placeObjectCounter];
         if (mon->species != SPECIES_NONE) {
-            taskData->parent->mapObjects[taskData->placeObjectCounter] = createPartymonMapObject(
-                    fieldSystem->mapObjectManager, mon->species, mon->form, mon->gender, DIR_SOUTH, photo->x + sPhotoMonCoordOffsets[taskData->placeObjectCounter].x, photo->y + sPhotoMonCoordOffsets[taskData->placeObjectCounter].y, mon->shiny);
+            taskData->parent->mapObjects[taskData->placeObjectCounter] = createPartymonMapObject(fieldSystem->mapObjectManager, mon->species, mon->form, mon->gender, DIR_SOUTH, photo->x + sPhotoMonCoordOffsets[taskData->placeObjectCounter].x, photo->y + sPhotoMonCoordOffsets[taskData->placeObjectCounter].y, mon->shiny);
             sub_0205F47C(taskData->parent->mapObjects[taskData->placeObjectCounter], ov01_021F7918);
         } else {
             taskData->parent->mapObjects[taskData->placeObjectCounter] = NULL;
@@ -425,8 +420,7 @@ static BOOL FieldTask_DoViewPhoto(TaskManager *taskManager) {
     case 8: {
         PHOTO_MON *mon = &photo->party[0];
         if (mon->species != SPECIES_NONE) {
-            taskData->parent->mapObjects[1] = createPartymonMapObject(
-                    fieldSystem->mapObjectManager, mon->species, mon->form, mon->gender, DIR_SOUTH, photo->x + sSoloPhotoMonCoordOffsets.x, photo->y + sSoloPhotoMonCoordOffsets.y, mon->shiny);
+            taskData->parent->mapObjects[1] = createPartymonMapObject(fieldSystem->mapObjectManager, mon->species, mon->form, mon->gender, DIR_SOUTH, photo->x + sSoloPhotoMonCoordOffsets.x, photo->y + sSoloPhotoMonCoordOffsets.y, mon->shiny);
             sub_0205F47C(taskData->parent->mapObjects[1], ov01_021F7918);
         } else {
             taskData->parent->mapObjects[1] = NULL;
@@ -510,8 +504,7 @@ static void Photo_InitFromArcData(PHOTO *photo, FieldSystem *fieldSystem, u8 ico
 
     RTCDate date;
     GF_RTC_CopyDate(&date);
-    photo->date = ((date.year & 0xFF) << 24) | ((date.month & 0xFF) << 16) |
-                                ((date.day & 0xFF) << 8) | date.week;
+    photo->date = ((date.year & 0xFF) << 24) | ((date.month & 0xFF) << 16) | ((date.day & 0xFF) << 8) | date.week;
 
     partySize = Party_GetCount(party);
     CopyU16StringArray(photo->playerName, PlayerProfile_GetNamePtr(profile));
@@ -602,19 +595,15 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
         takePhoto->state = TAKE_PHOTO_STATE_ADJUST_PLAYER_FACING_VEC;
         break;
     case TAKE_PHOTO_STATE_ADJUST_PLAYER_FACING_VEC:
-        u8 profileGender = PlayerProfile_GetTrainerGender(
-                Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem)));
+        u8 profileGender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem)));
         sub_0206B82C(fieldSystem->playerAvatar, takePhoto->pPhoto->avatarStateBak, profileGender);
         {
             VecFx32 facingVec;
-            MapObject_GetFacingVec(
-                    PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &facingVec);
+            MapObject_GetFacingVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &facingVec);
             facingVec.y -= FX32_CONST(2);
-            MapObject_SetFacingVec(
-                    PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &facingVec);
+            MapObject_SetFacingVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &facingVec);
         }
-        if (takePhoto->pPhoto->subjectSpriteId) {
-            takePhoto->state = TAKE_PHOTO_STATE_NPC_PHOTO_PLACE_NPC;
+        if (takePhoto->pPhoto->subjectSpriteId) {takePhoto->state = TAKE_PHOTO_STATE_NPC_PHOTO_PLACE_NPC;
             takePhoto->numObjects = 2;
         } else {
             takePhoto->state = TAKE_PHOTO_STATE_PARTY_PHOTO_PLACE_MON_ITER;
@@ -624,8 +613,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
     case TAKE_PHOTO_STATE_PARTY_PHOTO_PLACE_MON_ITER: {
         PHOTO_MON *mon = &takePhoto->pPhoto->party[takePhoto->curMon];
         if (mon->species != SPECIES_NONE) {
-            takePhoto->mapObjects[takePhoto->curMon] = createPartymonMapObject(
-                    fieldSystem->mapObjectManager, mon->species, mon->form, mon->gender, DIR_SOUTH, takePhoto->pPhoto->x + sPhotoMonCoordOffsets[takePhoto->curMon].x, takePhoto->pPhoto->y + sPhotoMonCoordOffsets[takePhoto->curMon].y, mon->shiny);
+            takePhoto->mapObjects[takePhoto->curMon] = createPartymonMapObject(fieldSystem->mapObjectManager, mon->species, mon->form, mon->gender, DIR_SOUTH, takePhoto->pPhoto->x + sPhotoMonCoordOffsets[takePhoto->curMon].x, takePhoto->pPhoto->y + sPhotoMonCoordOffsets[takePhoto->curMon].y, mon->shiny);
             sub_0205F47C(takePhoto->mapObjects[takePhoto->curMon], ov01_021F7918);
         } else {
             takePhoto->mapObjects[takePhoto->curMon] = NULL;
@@ -657,10 +645,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
         }
         break;
     case TAKE_PHOTO_STATE_NPC_PHOTO_PLACE_NPC:
-        takePhoto->mapObjects[0] = createSpecialMapObject(
-                fieldSystem->mapObjectManager, takePhoto->pPhoto->subjectSpriteId,
-                DIR_SOUTH, takePhoto->pPhoto->x + 2, takePhoto->pPhoto->y,
-                obj_photo_subject);
+        takePhoto->mapObjects[0] = createSpecialMapObject(fieldSystem->mapObjectManager, takePhoto->pPhoto->subjectSpriteId, DIR_SOUTH, takePhoto->pPhoto->x + 2, takePhoto->pPhoto->y, obj_photo_subject);
         takePhoto->state = TAKE_PHOTO_STATE_NPC_PHOTO_ADJUST_NPC;
         break;
     case TAKE_PHOTO_STATE_NPC_PHOTO_ADJUST_NPC:
@@ -677,8 +662,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
     case TAKE_PHOTO_STATE_NPC_PHOTO_PLACE_MON: {
         PHOTO_MON *mon = &takePhoto->pPhoto->party[takePhoto->curMon];
         if (mon->species != SPECIES_NONE) {
-            takePhoto->mapObjects[1] = createPartymonMapObject(
-                    fieldSystem->mapObjectManager, mon->species, mon->form, mon->gender, DIR_SOUTH, takePhoto->pPhoto->x + sSoloPhotoMonCoordOffsets.x, takePhoto->pPhoto->y + sSoloPhotoMonCoordOffsets.y, mon->shiny);
+            takePhoto->mapObjects[1] = createPartymonMapObject(fieldSystem->mapObjectManager, mon->species, mon->form, mon->gender, DIR_SOUTH, takePhoto->pPhoto->x + sSoloPhotoMonCoordOffsets.x, takePhoto->pPhoto->y + sSoloPhotoMonCoordOffsets.y, mon->shiny);
             sub_0205F47C(takePhoto->mapObjects[1], ov01_021F7918);
         } else {
             GF_ASSERT(FALSE);
