@@ -3,9 +3,11 @@
 #include "field_take_photo.h"
 #include "follow_mon.h"
 #include "launch_application.h"
+#include "overlay_01_021FB4C0.h"
 #include "photo_album.h"
 #include "script_pokemon_util.h"
 #include "task.h"
+#include "unk_02005D10.h"
 #include "unk_0200FA24.h"
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
@@ -14,6 +16,7 @@
 #include "overlay_01_021F72DC.h"
 #include "overlay_01_021F8D80.h"
 #include "overlay_01_022053EC.h"
+#include "constants/scrcmd.h"
 
 typedef struct FieldTakePhoto3 {
     int unk_0;
@@ -41,13 +44,14 @@ void sub_0206B014(PHOTO *photo, FieldSystem *fieldSystem, u8 a2, int a3, int a4,
 BOOL sub_0206B270(TaskManager *taskManager);
 void sub_0206B82C(PlayerAvatar *playerAvatar, u8 a1, u8 gender);
 void sub_0206B880(FieldSystem *fieldSystem, PHOTO *photo);
+void sub_0206B8AC(BgConfig *bgConfig, HeapID heapId);
 
 typedef struct Coord2U16 {
     u16 x;
     u16 y;
 } Coord2U16;
 
-const Coord2U16 sLugiaPhotoMonCoordOffsets = {  1, -1 };
+const Coord2U16 sSoloPhotoMonCoordOffsets = {  1, -1 };
 const Coord2U16 sPhotoMonCoordOffsets[] = {
     {  2,  0 },
     {  1, -1 },
@@ -325,7 +329,7 @@ BOOL sub_0206ABB0(TaskManager *taskManager) {
     {
         PHOTO_MON *mon = &photo->party[taskData->unk_C];
         if (mon->species != SPECIES_NONE) {
-            taskData->unk_8->unk_9C[taskData->unk_C] = sub_0206AEC0(fieldSystem->mapObjectManager, mon->species, mon->form, mon->gender, 1, photo->unk_34 + sPhotoMonCoordOffsets[taskData->unk_C].x, photo->unk_36 + sPhotoMonCoordOffsets[taskData->unk_C].y, mon->shiny);
+            taskData->unk_8->unk_9C[taskData->unk_C] = sub_0206AEC0(fieldSystem->mapObjectManager, mon->species, mon->form, mon->gender, DIR_SOUTH, photo->unk_34 + sPhotoMonCoordOffsets[taskData->unk_C].x, photo->unk_36 + sPhotoMonCoordOffsets[taskData->unk_C].y, mon->shiny);
             sub_0205F47C(taskData->unk_8->unk_9C[taskData->unk_C], ov01_021F7918);
         } else {
             taskData->unk_8->unk_9C[taskData->unk_C] = NULL;
@@ -355,7 +359,7 @@ BOOL sub_0206ABB0(TaskManager *taskManager) {
         break;
     }
     case 6:
-        taskData->unk_8->unk_9C[0] = sub_0206AF08(fieldSystem->mapObjectManager, photo->unk_44, 1, photo->unk_34 + 2, photo->unk_36, 249);
+        taskData->unk_8->unk_9C[0] = sub_0206AF08(fieldSystem->mapObjectManager, photo->unk_44, 1, photo->unk_34 + 2, photo->unk_36, obj_photo_subject);
         taskData->unk_0 = 7;
         break;
     case 7:
@@ -372,7 +376,7 @@ BOOL sub_0206ABB0(TaskManager *taskManager) {
     {
         PHOTO_MON *mon = &photo->party[0];
         if (mon->species != SPECIES_NONE) {
-            taskData->unk_8->unk_9C[1] = sub_0206AEC0(fieldSystem->mapObjectManager, mon->species, mon->form, mon->gender, 1, photo->unk_34 + sLugiaPhotoMonCoordOffsets.x, photo->unk_36 + sLugiaPhotoMonCoordOffsets.y, mon->shiny);
+            taskData->unk_8->unk_9C[1] = sub_0206AEC0(fieldSystem->mapObjectManager, mon->species, mon->form, mon->gender, DIR_SOUTH, photo->unk_34 + sSoloPhotoMonCoordOffsets.x, photo->unk_36 + sSoloPhotoMonCoordOffsets.y, mon->shiny);
             sub_0205F47C(taskData->unk_8->unk_9C[1], ov01_021F7918);
         } else {
             taskData->unk_8->unk_9C[1] = NULL;
@@ -505,4 +509,254 @@ void sub_0206B014(PHOTO *photo, FieldSystem *fieldSystem, u8 a2, int a3, int a4,
             photo->party[i].gender = 0;
         }
     }
+}
+
+static inline void sub_0206B270_sub(
+        FieldTakePhoto *takePhoto,
+        int direction,
+        int y,
+        int x,
+        int mapId
+) {
+    InitLocation(&takePhoto->unk_00, mapId, -1, x, y, direction);
+}
+
+BOOL sub_0206B270(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    FieldTakePhoto *takePhoto = (FieldTakePhoto *)TaskManager_GetEnvironment(taskManager);
+
+    switch (takePhoto->unk_14) {
+    case 0:
+        takePhoto->unk_14 = 1;
+        break;
+    case 1:
+        sub_0203E33C(fieldSystem, 3);
+        sub_0205525C(taskManager);
+        takePhoto->unk_14 = 2;
+        break;
+    case 2:
+        sub_02067A80(fieldSystem, 1);
+        sub_0206B270_sub(takePhoto, DIR_SOUTH, takePhoto->unk_40->unk_36, takePhoto->unk_40->unk_34, takePhoto->unk_40->unk_32);
+        sub_020537A8(taskManager, &takePhoto->unk_00);
+        takePhoto->unk_14 = 3;
+        break;
+    case 3:
+        CallTask_RestoreOverworld(taskManager);
+        takePhoto->unk_14 = 4;
+        break;
+    case 4:
+        sub_0206AFD0(fieldSystem->camera);
+        sub_0206AF78(fieldSystem, takePhoto->unk_40);
+        sub_0206B880(fieldSystem, takePhoto->unk_40);
+        takePhoto->unk_14 = 5;
+        break;
+    case 5:
+        ov01_021F9FB0(fieldSystem->mapObjectManager, sub_0205F1A0(fieldSystem->mapObjectManager));
+        takePhoto->unk_14 = 6;
+        break;
+    case 6:
+        u8 profileGender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem)));
+        sub_0206B82C(fieldSystem->playerAvatar, takePhoto->unk_40->unk_30, profileGender);
+        {
+        VecFx32 facingVec;
+        MapObject_GetFacingVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &facingVec);
+        facingVec.y -= FX32_CONST(2);
+        MapObject_SetFacingVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &facingVec);
+        }
+        if (takePhoto->unk_40->unk_44) {
+            takePhoto->unk_14 = 9;
+            takePhoto->unk_CB = 2;
+        } else {
+            takePhoto->unk_14 = 7;
+            takePhoto->unk_CB = takePhoto->unk_40->numMons;
+        }
+        break;
+    case 7:
+    {
+        PHOTO_MON *mon = &takePhoto->unk_40->party[takePhoto->unk_17];
+        if (mon->species != SPECIES_NONE) {
+            takePhoto->unk_18[takePhoto->unk_17] = sub_0206AEC0(fieldSystem->mapObjectManager, mon->species, mon->form, mon->gender, DIR_SOUTH, takePhoto->unk_40->unk_34 + sPhotoMonCoordOffsets[takePhoto->unk_17].x, takePhoto->unk_40->unk_36 + sPhotoMonCoordOffsets[takePhoto->unk_17].y, mon->shiny);
+            sub_0205F47C(takePhoto->unk_18[takePhoto->unk_17], ov01_021F7918);
+        } else {
+            takePhoto->unk_18[takePhoto->unk_17] = NULL;
+        }
+        ++takePhoto->unk_17;
+        takePhoto->unk_14 = 8;
+        break;
+    }
+    case 8:
+        if (takePhoto->unk_15++ > 4) {
+            LocalMapObject *mapObject = takePhoto->unk_18[takePhoto->unk_17 - 1];
+            if (mapObject != NULL) {
+                if (ov01_0220553C(mapObject)) {
+                    ov01_021F902C(1, mapObject);
+                }
+                VecFx32 facingVec;
+                MapObject_GetFacingVec(mapObject, &facingVec);
+                facingVec.y -= FX32_CONST(2);
+                MapObject_SetFacingVec(mapObject, &facingVec);
+                sub_0205F484(mapObject);
+            }
+            takePhoto->unk_15 = 0;
+            if (takePhoto->unk_17 >= takePhoto->unk_40->numMons) {
+                takePhoto->unk_C8 = 0;
+                takePhoto->unk_14 = 13;
+            } else {
+                takePhoto->unk_14 = 7;
+            }
+        }
+        break;
+    case 9:
+        takePhoto->unk_18[0] = sub_0206AF08(fieldSystem->mapObjectManager, takePhoto->unk_40->unk_44, DIR_SOUTH, takePhoto->unk_40->unk_34 + 2, takePhoto->unk_40->unk_36, obj_photo_subject);
+        takePhoto->unk_14 = 10;
+        break;
+    case 10:
+        if (takePhoto->unk_15++ > 4) {
+            VecFx32 facingVec;
+            MapObject_GetFacingVec(takePhoto->unk_18[0], &facingVec);
+            facingVec.y -= FX32_CONST(2);
+            MapObject_SetFacingVec(takePhoto->unk_18[0], &facingVec);
+            sub_0205F484(takePhoto->unk_18[0]);
+            takePhoto->unk_15 = 0;
+            takePhoto->unk_14 = 11;
+        }
+        break;
+    case 11: {
+        PHOTO_MON *mon = &takePhoto->unk_40->party[takePhoto->unk_17];
+        if (mon->species != SPECIES_NONE) {
+            takePhoto->unk_18[1] = sub_0206AEC0(fieldSystem->mapObjectManager, mon->species, mon->form, mon->gender, DIR_SOUTH, takePhoto->unk_40->unk_34 + sSoloPhotoMonCoordOffsets.x, takePhoto->unk_40->unk_36 + sSoloPhotoMonCoordOffsets.y, mon->shiny);
+            sub_0205F47C(takePhoto->unk_18[1], ov01_021F7918);
+        } else {
+            GF_ASSERT(FALSE);
+            takePhoto->unk_18[1] = NULL;
+        }
+        takePhoto->unk_14 = 12;
+        break;
+    }
+    case 12:
+        if (takePhoto->unk_15++ > 4) {
+            LocalMapObject *mapObject = takePhoto->unk_18[1];
+            if (mapObject != NULL) {
+                if (ov01_0220553C(mapObject)) {
+                    ov01_021F902C(1, mapObject);
+                }
+                VecFx32 facingVec;
+                MapObject_GetFacingVec(mapObject, &facingVec);
+                facingVec.y -= FX32_CONST(2);
+                MapObject_SetFacingVec(mapObject, &facingVec);
+                sub_0205F484(mapObject);
+            }
+            takePhoto->unk_15 = 0;
+            takePhoto->unk_C8 = 0;
+            takePhoto->unk_14 = 13;
+        }
+        break;
+    case 13:
+        ov01_022043D8(fieldSystem->unk_C8);
+        ov01_02204424(fieldSystem->unk_C8);
+        ov01_021EB1E8(fieldSystem->unk4->unk10);
+        takePhoto->unk_14 = 14;
+        break;
+    case 14:
+        sub_0206B8AC(fieldSystem->bgConfig, HEAP_ID_4);
+        CallTask_FadeFromBlack(taskManager);
+        takePhoto->unk_CA = 0;
+        takePhoto->unk_14 = 15;
+        break;
+    case 15:
+        switch (takePhoto->unk_CA) {
+        case 0:
+            ov01_021FB514(fieldSystem->unk4->unk1c);
+            ++takePhoto->unk_CA;
+            // fallthrough
+        case 1:
+            if (takePhoto->unk_C8++ >= 30) {
+                ++takePhoto->unk_CA;
+                takePhoto->unk_C8 = 0;
+            }
+            break;
+        case 2:
+            PlaySE(SEQ_SE_GS_SHUTTER);
+            BeginNormalPaletteFade(3, 8, 0, RGB_BLACK, 6, 1, HEAP_ID_4);
+            ++takePhoto->unk_CA;
+            break;
+        case 3:
+            if (IsPaletteFadeFinished()) {
+                PHOTO_ALBUM *photoAlbum = Save_PhotoAlbum_Get(FieldSystem_GetSaveData(fieldSystem));
+                u8 photoIndex = PhotoAlbum_GetIndexOfFirstEmptySlot(photoAlbum);
+                RTCDate date;
+                GF_RTC_CopyDate(&date);
+                takePhoto->unk_40->date = ((date.year & 0xFF) << 24) | ((date.month & 0xFF) << 16) | ((date.day & 0xFF) << 8) | date.week;
+                RTCTime time;
+                GF_RTC_CopyTime(&time);
+                takePhoto->unk_40->hour = time.hour;
+                takePhoto->unk_40->min = time.minute;
+                PhotoAlbum_SetPhotoAtIndex(photoAlbum, &takePhoto->unk_44, photoIndex);
+                ++takePhoto->unk_CA;
+            }
+            break;
+        case 4:
+            BeginNormalPaletteFade(3, 9, 0, RGB_BLACK, 6, 1, HEAP_ID_4);
+            ++takePhoto->unk_CA;
+            break;
+        case 5:
+            if (IsPaletteFadeFinished()) {
+                ++takePhoto->unk_CA;
+            }
+            break;
+        case 6:
+            ov01_021FB4F4(fieldSystem->unk4->unk1c);
+            ++takePhoto->unk_CA;
+            break;
+        case 7:
+            if (takePhoto->unk_C8++ >= 30) {
+                PaletteFadeUntilFinished(taskManager);
+                takePhoto->unk_14 = 16;
+            }
+            break;
+        }
+        break;
+    case 16:
+        sub_020148F4();
+        sub_0206AFA4(takePhoto);
+        sub_0203E33C(fieldSystem, 0);
+        sub_0205525C(taskManager);
+        takePhoto->unk_14 = 17;
+        break;
+    case 17:
+        sub_02067A80(fieldSystem, 0);
+        sub_0206B270_sub(takePhoto, takePhoto->unk_34, takePhoto->unk_32, takePhoto->unk_30, takePhoto->unk_36);
+        sub_020537A8(taskManager, &takePhoto->unk_00);
+        takePhoto->unk_14 = 18;
+        break;
+    case 18:
+        CallTask_RestoreOverworld(taskManager);
+        takePhoto->unk_14 = 19;
+        break;
+    case 19:
+        if (FollowMon_IsActive(fieldSystem) && PlayerAvatar_GetState(fieldSystem->playerAvatar) != PLAYER_STATE_CYCLING) {
+            LocalMapObject *followMon = FollowMon_GetMapObject(fieldSystem);
+            LocalMapObject *playerObj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
+            sub_0205FBC0(followMon, &takePhoto->unk_CC, takePhoto->unk_D8);
+
+            int playerX = MapObject_GetCurrentX(playerObj);
+            int playerZ = MapObject_GetCurrentY(playerObj);
+            int followX = MapObject_GetCurrentX(followMon);
+            int followZ = MapObject_GetCurrentY(followMon);
+
+            if (playerX == followX && playerZ == followZ) {
+                sub_02069DC8(followMon, TRUE);
+            } else {
+                sub_02069DC8(followMon, FALSE);
+            }
+            sub_0205F484(followMon);
+        }
+        takePhoto->unk_14 = 20;
+        break;
+    case 20:
+        FreeToHeap(takePhoto);
+        return TRUE;
+    }
+
+    return FALSE;
 }

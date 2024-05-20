@@ -519,7 +519,7 @@ static BOOL sub_02053740(TaskManager *taskManager) {
     return FALSE;
 }
 
-void sub_020537A8(TaskManager *taskManager, Location *location) {
+void sub_020537A8(TaskManager *taskManager, const Location *location) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     struct ErrorContinueEnv *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct ErrorContinueEnv));
     if (sub_0203DF7C(fieldSystem)) {
@@ -956,7 +956,7 @@ static BOOL sub_02053F70(TaskManager *taskManager) {
     switch (*state_p) {
     case 0:
         FieldSystem_BeginFadeOutMusic(fieldSystem, location->mapId);
-        PalleteFadeUntilFinished(taskManager);
+        PaletteFadeUntilFinished(taskManager);
         (*state_p)++;
         break;
     case 1:

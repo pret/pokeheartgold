@@ -61,14 +61,6 @@ typedef struct GearPhoneRingManager {
     } gearRing;
 } GearPhoneRingManager; //size: 0x48
 
-typedef struct Location {
-    int mapId;
-    int warpId;
-    int x;
-    int y;
-    int direction;
-} Location;
-
 typedef struct FieldSystemUnk108 {
     u32 personality;
     u16 species;

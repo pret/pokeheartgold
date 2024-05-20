@@ -7,7 +7,7 @@
 #include "field_types_def.h"
 
 typedef struct FieldTakePhoto {
-    u8 filler_00[0x14];
+    Location unk_00;
     u8 unk_14;
     u8 unk_15;
     u8 unk_16;

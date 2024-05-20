@@ -8,7 +8,7 @@
 .public TaskManager_GetEnvironment
 .public sub_0205525C
 .public CallTask_RestoreOverworld
-.public PalleteFadeUntilFinished
+.public PaletteFadeUntilFinished
 .public CallTask_FadeFromBlack
 .public CallTask_NPCTrade
 .public AllocMonZeroed
