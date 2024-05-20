@@ -248,7 +248,6 @@ Static main
     Object src/follow_mon.o
     Object src/map_preview_graphic.o
     Object src/field_take_photo.o
-    Object asm/field_take_photo_s.o
     Object src/unk_0206B910.o
     Object src/alph_checks.o
     Object src/get_egg.o

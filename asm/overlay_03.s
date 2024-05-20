@@ -8500,7 +8500,7 @@ ov03_022581BC: ; 0x022581BC
 	add r0, #0x94
 	mov r2, #0x13
 	mov r3, #0xb
-	bl ov01_021E7FDC
+	bl UnkFieldSpriteRenderer_ov01_021E7FDC_Init
 	add r0, r7, #0
 	str r0, [sp]
 	add r0, #0x94
@@ -8604,7 +8604,7 @@ _02258296:
 	blo _02258296
 	ldr r0, [sp]
 	add r0, #0x94
-	bl ov01_021E8194
+	bl UnkFieldSpriteRenderer_ov01_021E7FDC_Release
 	ldr r0, [sp]
 	mov r1, #0
 	add r0, #0x94

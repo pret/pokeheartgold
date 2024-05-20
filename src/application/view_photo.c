@@ -23,13 +23,13 @@ typedef enum ViewPhotoInputResponse {
 
 typedef struct ViewPhotoSysTaskData {
     HeapID heapId;
-    int unk_004;
-    int unk_008;
+    int state;
+    int lastInputWasTouch;
     ViewPhotoInputResponse lastInput;
     SaveData *saveData;
     FieldSystem *fieldSystem;
     BgConfig *bgConfig;
-    FieldTakePhoto2 *unk_01C;
+    FieldViewPhoto *parent;
     u8 filler_020[4];
     MsgData *msgData;
     MessageFormat *msgFormat;
@@ -37,34 +37,34 @@ typedef struct ViewPhotoSysTaskData {
     String *exitMsg;
     String *photoDescStringTemplates[2];
     Window windows[2];
-    UnkStruct_ov01_021E7FDC unk_05C;
+    UnkStruct_ov01_021E7FDC spriteRender;
     Sprite *sprites[3];
-    u8 unk_1CC;
-    UnkStruct_0206A8C0 unk_1D0;
+    u8 animSpriteNo;
+    PhotoAlbumScroll scrollData;
 } ViewPhotoSysTaskData;
 
-static void ov19_02259950(SysTask *task, void *taskData);
-static void ov19_022599AC(ViewPhotoSysTaskData *viewPhoto);
-static void ov19_022599D4(ViewPhotoSysTaskData *viewPhoto);
-static ViewPhotoInputResponse ov19_022599F8(ViewPhotoSysTaskData *viewPhoto);
-static ViewPhotoInputResponse ov19_02259A94(ViewPhotoSysTaskData *viewPhoto);
-static ViewPhotoInputResponse ov19_02259ABC(ViewPhotoSysTaskData *viewPhoto);
-static void ov19_02259AD8(ViewPhotoSysTaskData *viewPhoto);
-static void ov19_02259B90(ViewPhotoSysTaskData *viewPhoto);
-static void ov19_02259BC0(ViewPhotoSysTaskData *viewPhoto);
-static void ov19_02259C64(ViewPhotoSysTaskData *viewPhoto);
-static void ov19_02259C68(ViewPhotoSysTaskData *viewPhoto);
-static void ov19_02259CBC(ViewPhotoSysTaskData *viewPhoto);
-static void ov19_02259CF4(ViewPhotoSysTaskData *viewPhoto);
-static void ov19_02259D24(ViewPhotoSysTaskData *viewPhoto);
-static void ov19_02259D44(ViewPhotoSysTaskData *viewPhoto);
-static void ov19_02259DF4(ViewPhotoSysTaskData *viewPhoto);
-static void ov19_02259E20(ViewPhotoSysTaskData *viewPhoto, int spriteNo);
-static BOOL ov19_02259E44(ViewPhotoSysTaskData *viewPhoto);
-static void ov19_02259E64(PHOTO *a0, MessageFormat *msgFormat, String *strBuf, HeapID heapId, SaveData *saveData);
-static void ov19_02259F0C(ViewPhotoSysTaskData *viewPhoto);
-static void ov19_02259F64(ViewPhotoSysTaskData *viewPhoto);
-static u8 ov19_0225A008(PHOTO *a0);
+static void SysTask_ViewPhoto(SysTask *task, void *taskData);
+static void ViewPhotoSysTask_Setup(ViewPhotoSysTaskData *viewPhoto);
+static void ViewPhotoSysTask_Teardown(ViewPhotoSysTaskData *viewPhoto);
+static ViewPhotoInputResponse ViewPhotoSysTask_HandleInput(ViewPhotoSysTaskData *viewPhoto);
+static ViewPhotoInputResponse ViewPhotoSysTask_GetKeyInput(ViewPhotoSysTaskData *viewPhoto);
+static ViewPhotoInputResponse ViewPhotoSysTask_GetTouchInput(ViewPhotoSysTaskData *viewPhoto);
+static void ViewPhotoSysTask_InitBgLayers(ViewPhotoSysTaskData *viewPhoto);
+static void ViewPhotoSysTask_ReleaseBgLayers(ViewPhotoSysTaskData *viewPhoto);
+static void ViewPhotoSysTask_LoadBgGraphics(ViewPhotoSysTaskData *viewPhoto);
+static void ViewPhotoSysTask_UnloadBgGraphics(ViewPhotoSysTaskData *viewPhoto);
+static void ViewPhotoSysTask_InitMessages(ViewPhotoSysTaskData *viewPhoto);
+static void ViewPhotoSysTask_ReleaseMessages(ViewPhotoSysTaskData *viewPhoto);
+static void ViewPhotoSysTask_InitWindows(ViewPhotoSysTaskData *viewPhoto);
+static void ViewPhotoSysTask_ReleaseWindows(ViewPhotoSysTaskData *viewPhoto);
+static void ViewPhotoSysTask_CreateSprites(ViewPhotoSysTaskData *viewPhoto);
+static void ViewPhotoSysTask_DeleteSprites(ViewPhotoSysTaskData *viewPhoto);
+static void ViewPhotoSysTask_AnimateButtonSelect(ViewPhotoSysTaskData *viewPhoto, int spriteNo);
+static BOOL ViewPhotoSysTask_IsButtonAnimPlaying(ViewPhotoSysTaskData *viewPhoto);
+static void formatPhotoFlavorText(PHOTO *a0, MessageFormat *msgFormat, String *strBuf, HeapID heapId, SaveData *saveData);
+static void ViewPhotoSysTask_DrawLyr3Icon(ViewPhotoSysTaskData *viewPhoto);
+static void ViewPhotoSysTask_PrintTextOnWindows(ViewPhotoSysTaskData *viewPhoto);
+static u8 Photo_CountValidMons(PHOTO *a0);
 
 static const WindowTemplate ov19_0225A04E[2] = {
     {
@@ -133,96 +133,96 @@ static const SpriteTemplate_ov01_021E81F0 ov19_0225A0C4[3] = {
 
 static const u8 _0225A03C[3] = {9, 1, 4};
 
-SysTask *ov19_022598C0(FieldSystem *fieldSystem) {
+SysTask *FieldSystem_CreateViewPhotoTask(FieldSystem *fieldSystem) {
     ViewPhotoSysTaskData *viewPhoto = AllocFromHeap(HEAP_ID_FIELD, sizeof(ViewPhotoSysTaskData));
     MI_CpuClear8(viewPhoto, sizeof(ViewPhotoSysTaskData));
     viewPhoto->heapId = HEAP_ID_FIELD;
     viewPhoto->fieldSystem = fieldSystem;
     viewPhoto->bgConfig = fieldSystem->bgConfig;
     viewPhoto->saveData = fieldSystem->saveData;
-    viewPhoto->unk_01C = fieldSystem->unk_DC;
-    viewPhoto->unk_008 = sub_020183F0(&fieldSystem->unk_10C);
-    sub_0206A8C0(viewPhoto->unk_01C, &viewPhoto->unk_1D0);
-    return SysTask_CreateOnMainQueue(ov19_02259950, viewPhoto, 1);
+    viewPhoto->parent = fieldSystem->unk_DC;
+    viewPhoto->lastInputWasTouch = sub_020183F0(&fieldSystem->unk_10C);
+    sub_0206A8C0(viewPhoto->parent, &viewPhoto->scrollData);
+    return SysTask_CreateOnMainQueue(SysTask_ViewPhoto, viewPhoto, 1);
 }
 
-void ov19_02259918(FieldSystem *fieldSystem) {
+void FieldSystem_DestroyViewPhotoTask(FieldSystem *fieldSystem) {
     ViewPhotoSysTaskData *viewPhoto = (ViewPhotoSysTaskData *)SysTask_GetData(fieldSystem->unk_D8);
 
-    sub_02018410(&fieldSystem->unk_10C, viewPhoto->unk_008);
-    ov19_022599D4(viewPhoto);
+    sub_02018410(&fieldSystem->unk_10C, viewPhoto->lastInputWasTouch);
+    ViewPhotoSysTask_Teardown(viewPhoto);
     FreeToHeap(viewPhoto);
     SysTask_Destroy(fieldSystem->unk_D8);
     fieldSystem->unk_D8 = NULL;
 }
 
-static void ov19_02259950(SysTask *task, void *taskData) {
+static void SysTask_ViewPhoto(SysTask *task, void *taskData) {
     ViewPhotoSysTaskData *viewPhoto = (ViewPhotoSysTaskData *)taskData;
-    switch (viewPhoto->unk_004) {
+    switch (viewPhoto->state) {
     case 0:
-        ov19_022599AC(viewPhoto);
-        ++viewPhoto->unk_004;
+        ViewPhotoSysTask_Setup(viewPhoto);
+        ++viewPhoto->state;
         return;
     case 1:
-        if (GX_GetMasterBrightness() == 0 && ov19_022599F8(viewPhoto) != INPUT_NOTHING) {
-            ++viewPhoto->unk_004;
+        if (GX_GetMasterBrightness() == 0 && ViewPhotoSysTask_HandleInput(viewPhoto) != INPUT_NOTHING) {
+            ++viewPhoto->state;
         }
         break;
     case 2:
-        if (ov19_02259E44(viewPhoto)) {
-            sub_0206A8DC(viewPhoto->unk_01C, viewPhoto->lastInput);
+        if (ViewPhotoSysTask_IsButtonAnimPlaying(viewPhoto)) {
+            sub_0206A8DC(viewPhoto->parent, viewPhoto->lastInput);
         }
         break;
     }
-    sub_0202457C(viewPhoto->unk_05C.spriteList);
+    sub_0202457C(viewPhoto->spriteRender.spriteList);
 }
 
-static void ov19_022599AC(ViewPhotoSysTaskData *viewPhoto) {
-    ov19_02259AD8(viewPhoto);
-    ov19_02259BC0(viewPhoto);
-    ov19_02259C68(viewPhoto);
-    ov19_02259CF4(viewPhoto);
-    ov19_02259D44(viewPhoto);
-    ov19_02259F64(viewPhoto);
+static void ViewPhotoSysTask_Setup(ViewPhotoSysTaskData *viewPhoto) {
+    ViewPhotoSysTask_InitBgLayers(viewPhoto);
+    ViewPhotoSysTask_LoadBgGraphics(viewPhoto);
+    ViewPhotoSysTask_InitMessages(viewPhoto);
+    ViewPhotoSysTask_InitWindows(viewPhoto);
+    ViewPhotoSysTask_CreateSprites(viewPhoto);
+    ViewPhotoSysTask_PrintTextOnWindows(viewPhoto);
 }
 
-static void ov19_022599D4(ViewPhotoSysTaskData *viewPhoto) {
-    ov19_02259DF4(viewPhoto);
-    ov19_02259D24(viewPhoto);
-    ov19_02259CBC(viewPhoto);
-    ov19_02259C64(viewPhoto);
-    ov19_02259B90(viewPhoto);
+static void ViewPhotoSysTask_Teardown(ViewPhotoSysTaskData *viewPhoto) {
+    ViewPhotoSysTask_DeleteSprites(viewPhoto);
+    ViewPhotoSysTask_ReleaseWindows(viewPhoto);
+    ViewPhotoSysTask_ReleaseMessages(viewPhoto);
+    ViewPhotoSysTask_UnloadBgGraphics(viewPhoto);
+    ViewPhotoSysTask_ReleaseBgLayers(viewPhoto);
 }
 
-static ViewPhotoInputResponse ov19_022599F8(ViewPhotoSysTaskData *viewPhoto) {
-    ViewPhotoInputResponse response = ov19_02259ABC(viewPhoto);
+static ViewPhotoInputResponse ViewPhotoSysTask_HandleInput(ViewPhotoSysTaskData *viewPhoto) {
+    ViewPhotoInputResponse response = ViewPhotoSysTask_GetTouchInput(viewPhoto);
     if (response == INPUT_NOTHING) {
-        response = ov19_02259A94(viewPhoto);
+        response = ViewPhotoSysTask_GetKeyInput(viewPhoto);
         if (response == INPUT_NOTHING) {
-            viewPhoto->unk_008 = FALSE;
+            viewPhoto->lastInputWasTouch = FALSE;
         }
     } else {
-        viewPhoto->unk_008 = TRUE;
+        viewPhoto->lastInputWasTouch = TRUE;
     }
     switch (response) {
     case INPUT_END:
-        ov19_02259E20(viewPhoto, 0);
+        ViewPhotoSysTask_AnimateButtonSelect(viewPhoto, 0);
         PlaySE(SEQ_SE_DP_DECIDE);
         viewPhoto->lastInput = INPUT_END;
         break;
     case INPUT_PREV:
-        if (viewPhoto->unk_1D0.unk_4 == 0) {
+        if (viewPhoto->scrollData.curPhoto == 0) {
             return INPUT_NOTHING;
         }
-        ov19_02259E20(viewPhoto, 1);
+        ViewPhotoSysTask_AnimateButtonSelect(viewPhoto, 1);
         PlaySE(SEQ_SE_DP_SELECT);
         viewPhoto->lastInput = INPUT_PREV;
         break;
     case INPUT_NEXT:
-        if (viewPhoto->unk_1D0.unk_4 >= viewPhoto->unk_1D0.unk_5 - 1) {
+        if (viewPhoto->scrollData.curPhoto >= viewPhoto->scrollData.numPhotos - 1) {
             return INPUT_NOTHING;
         }
-        ov19_02259E20(viewPhoto, 2);
+        ViewPhotoSysTask_AnimateButtonSelect(viewPhoto, 2);
         PlaySE(SEQ_SE_DP_SELECT);
         viewPhoto->lastInput = INPUT_NEXT;
         break;
@@ -233,7 +233,7 @@ static ViewPhotoInputResponse ov19_022599F8(ViewPhotoSysTaskData *viewPhoto) {
     return response;
 }
 
-static ViewPhotoInputResponse ov19_02259A94(ViewPhotoSysTaskData *viewPhoto) {
+static ViewPhotoInputResponse ViewPhotoSysTask_GetKeyInput(ViewPhotoSysTaskData *viewPhoto) {
     if (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B)) {
         return INPUT_END;
     } else if (gSystem.newKeys & PAD_KEY_LEFT) {
@@ -245,7 +245,7 @@ static ViewPhotoInputResponse ov19_02259A94(ViewPhotoSysTaskData *viewPhoto) {
     }
 }
 
-static ViewPhotoInputResponse ov19_02259ABC(ViewPhotoSysTaskData *viewPhoto) {
+static ViewPhotoInputResponse ViewPhotoSysTask_GetTouchInput(ViewPhotoSysTaskData *viewPhoto) {
     int hitbox = TouchscreenHitbox_FindRectAtTouchNew(ov19_0225A05E);
     if (hitbox == -1) {
         return INPUT_NOTHING;
@@ -254,7 +254,7 @@ static ViewPhotoInputResponse ov19_02259ABC(ViewPhotoSysTaskData *viewPhoto) {
     return (ViewPhotoInputResponse)(hitbox + 1);
 }
 
-static void ov19_02259AD8(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_InitBgLayers(ViewPhotoSysTaskData *viewPhoto) {
     GXS_SetGraphicsMode(GX_BGMODE_3);
 
     {
@@ -319,7 +319,7 @@ static void ov19_02259AD8(ViewPhotoSysTaskData *viewPhoto) {
     BgSetPosTextAndCommit(viewPhoto->bgConfig, GF_BG_LYR_SUB_3, BG_POS_OP_SET_X, -4);
 }
 
-static void ov19_02259B90(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_ReleaseBgLayers(ViewPhotoSysTaskData *viewPhoto) {
     BgSetPosTextAndCommit(viewPhoto->bgConfig, GF_BG_LYR_SUB_3, BG_POS_OP_SET_X, 0);
     FreeBgTilemapBuffer(viewPhoto->bgConfig, GF_BG_LYR_SUB_3);
     FreeBgTilemapBuffer(viewPhoto->bgConfig, GF_BG_LYR_SUB_2);
@@ -327,7 +327,7 @@ static void ov19_02259B90(ViewPhotoSysTaskData *viewPhoto) {
     GXS_SetGraphicsMode(GX_BGMODE_0);
 }
 
-static void ov19_02259BC0(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_LoadBgGraphics(ViewPhotoSysTaskData *viewPhoto) {
     NARC *narc = NARC_New(NARC_a_1_7_1, viewPhoto->heapId);
     GfGfxLoader_GXLoadPalFromOpenNarc(narc, 4, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0, 0, viewPhoto->heapId);
     GfGfxLoader_LoadCharDataFromOpenNarc(narc, 11, viewPhoto->bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, viewPhoto->heapId);
@@ -337,16 +337,16 @@ static void ov19_02259BC0(ViewPhotoSysTaskData *viewPhoto) {
     NNSG2dCharacterData *pCharData;
     u8 r3;
     ncgrFile = GfGfxLoader_GetCharDataFromOpenNarc(narc, 5, FALSE, &pCharData, viewPhoto->heapId);
-    r3 = viewPhoto->unk_1D0.unk_0->unk_4_1 + 1;
+    r3 = viewPhoto->scrollData.photo->iconId + 1;
     BG_LoadCharTilesData(viewPhoto->bgConfig, GF_BG_LYR_SUB_3, pCharData->pRawData + ((25 * r3 + 64) * 64), 0x640, 1);
     FreeToHeap(ncgrFile);
     NARC_Delete(narc);
 }
 
-static void ov19_02259C64(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_UnloadBgGraphics(ViewPhotoSysTaskData *viewPhoto) {
 }
 
-static void ov19_02259C68(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_InitMessages(ViewPhotoSysTaskData *viewPhoto) {
     FontID_Alloc(4, viewPhoto->heapId);
     viewPhoto->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0000_bin, viewPhoto->heapId);
     viewPhoto->msgFormat = MessageFormat_New_Custom(6, 22, viewPhoto->heapId);
@@ -357,7 +357,7 @@ static void ov19_02259C68(ViewPhotoSysTaskData *viewPhoto) {
     }
 }
 
-static void ov19_02259CBC(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_ReleaseMessages(ViewPhotoSysTaskData *viewPhoto) {
     for (int i = 0; i < 2; ++i) {
         String_Delete(viewPhoto->photoDescStringTemplates[i]);
     }
@@ -368,33 +368,33 @@ static void ov19_02259CBC(ViewPhotoSysTaskData *viewPhoto) {
     FontID_Release(4);
 }
 
-static void ov19_02259CF4(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_InitWindows(ViewPhotoSysTaskData *viewPhoto) {
     for (int i = 0; i < 2; ++i) {
         AddWindow(viewPhoto->bgConfig, &viewPhoto->windows[i], &ov19_0225A04E[i]);
         FillWindowPixelBuffer(&viewPhoto->windows[i], 0);
     }
 }
 
-static void ov19_02259D24(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_ReleaseWindows(ViewPhotoSysTaskData *viewPhoto) {
     for (int i = 0; i < 2; ++i) {
         ClearWindowTilemapAndCopyToVram(&viewPhoto->windows[i]);
         RemoveWindow(&viewPhoto->windows[i]);
     }
 }
 
-static void ov19_02259D44(ViewPhotoSysTaskData *viewPhoto) {
-    ov01_021E7FDC(&viewPhoto->unk_05C, ov19_0225A040, 3, viewPhoto->heapId);
+static void ViewPhotoSysTask_CreateSprites(ViewPhotoSysTaskData *viewPhoto) {
+    UnkFieldSpriteRenderer_ov01_021E7FDC_Init(&viewPhoto->spriteRender, ov19_0225A040, 3, viewPhoto->heapId);
     for (int i = 0; i < 3; ++i) {
-        viewPhoto->sprites[i] = ov01_021E81F0(&viewPhoto->unk_05C, &ov19_0225A0C4[i]);
+        viewPhoto->sprites[i] = ov01_021E81F0(&viewPhoto->spriteRender, &ov19_0225A0C4[i]);
         Set2dSpriteVisibleFlag(viewPhoto->sprites[i], TRUE);
         Set2dSpriteAnimActiveFlag(viewPhoto->sprites[i], TRUE);
     }
-    if (viewPhoto->unk_1D0.unk_4 == 0) {
+    if (viewPhoto->scrollData.curPhoto == 0) {
         Set2dSpriteAnimSeqNo(viewPhoto->sprites[1], 2);
     } else {
         Set2dSpriteAnimSeqNo(viewPhoto->sprites[1], 0);
     }
-    if (viewPhoto->unk_1D0.unk_4 >= viewPhoto->unk_1D0.unk_5 - 1) {
+    if (viewPhoto->scrollData.curPhoto >= viewPhoto->scrollData.numPhotos - 1) {
         Set2dSpriteAnimSeqNo(viewPhoto->sprites[2], 5);
     } else {
         Set2dSpriteAnimSeqNo(viewPhoto->sprites[2], 3);
@@ -402,39 +402,39 @@ static void ov19_02259D44(ViewPhotoSysTaskData *viewPhoto) {
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
-static void ov19_02259DF4(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_DeleteSprites(ViewPhotoSysTaskData *viewPhoto) {
     for (int i = 0; i < 3; ++i) {
         Sprite_Delete(viewPhoto->sprites[i]);
     }
-    ov01_021E8194(&viewPhoto->unk_05C);
+    UnkFieldSpriteRenderer_ov01_021E7FDC_Release(&viewPhoto->spriteRender);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
 }
 
-static void ov19_02259E20(ViewPhotoSysTaskData *viewPhoto, int spriteNo) {
-    viewPhoto->unk_1CC = spriteNo;
+static void ViewPhotoSysTask_AnimateButtonSelect(ViewPhotoSysTaskData *viewPhoto, int spriteNo) {
+    viewPhoto->animSpriteNo = spriteNo;
     Set2dSpriteAnimSeqNo(viewPhoto->sprites[spriteNo], _0225A03C[spriteNo]);
     Sprite_ResetAnimCtrlState(viewPhoto->sprites[spriteNo]);
 }
 
-static BOOL ov19_02259E44(ViewPhotoSysTaskData *viewPhoto) {
-    return !Sprite_IsCellAnimationRunning(viewPhoto->sprites[viewPhoto->unk_1CC]);
+static BOOL ViewPhotoSysTask_IsButtonAnimPlaying(ViewPhotoSysTaskData *viewPhoto) {
+    return !Sprite_IsCellAnimationRunning(viewPhoto->sprites[viewPhoto->animSpriteNo]);
 }
 
-static void ov19_02259E64(PHOTO *a0, MessageFormat *msgFormat, String *strBuf, HeapID heapId, SaveData *saveData) {
+static void formatPhotoFlavorText(PHOTO *photo, MessageFormat *msgFormat, String *strBuf, HeapID heapId, SaveData *saveData) {
     BufferPlayersName(msgFormat, 0, Save_PlayerData_GetProfileAddr(saveData));
-    sub_02068F98(a0->unk_32, heapId, strBuf);
+    sub_02068F98(photo->mapId, heapId, strBuf);
     BufferString(msgFormat, 1, strBuf, 2, 0, 2);
-    CopyU16ArrayToString(strBuf, a0->leadMonNick);
+    CopyU16ArrayToString(strBuf, photo->leadMonNick);
     BufferString(msgFormat, 2, strBuf, 2, 0, 2);
-    u8 year = a0->date >> 24;
+    u8 year = photo->date >> 24;
     BufferIntegerAsString(msgFormat, 3, year + 2000, 4, PRINTING_MODE_LEADING_ZEROS, TRUE);
-    u8 month = a0->date >> 16;
+    u8 month = photo->date >> 16;
     BufferIntegerAsString(msgFormat, 4, month, 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
-    u8 day = a0->date >> 8;
+    u8 day = photo->date >> 8;
     BufferIntegerAsString(msgFormat, 5, day, 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
 }
 
-static void ov19_02259F0C(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_DrawLyr3Icon(ViewPhotoSysTaskData *viewPhoto) {
     for (int i = 0; i < 5; ++i) {
         for (int j = 0; j < 5; ++j) {
             FillBgTilemapRect(viewPhoto->bgConfig, GF_BG_LYR_SUB_3, 5 * i + j + 1, 13 + j, 2 + i, 1, 1, TILEMAP_COPY_SRC_FLAT);
@@ -443,13 +443,13 @@ static void ov19_02259F0C(ViewPhotoSysTaskData *viewPhoto) {
     ScheduleBgTilemapBufferTransfer(viewPhoto->bgConfig, GF_BG_LYR_SUB_3);
 }
 
-static void ov19_02259F64(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_PrintTextOnWindows(ViewPhotoSysTaskData *viewPhoto) {
     // EXIT (print centered)
     AddTextPrinterParameterizedWithColor(&viewPhoto->windows[0], 4, viewPhoto->exitMsg, (64 - FontID_String_GetWidth(4, viewPhoto->exitMsg, 0)) / 2u, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 5, 0), NULL);
     ScheduleWindowCopyToVram(&viewPhoto->windows[0]);
 
-    ov19_02259E64(viewPhoto->unk_1D0.unk_0, viewPhoto->msgFormat, viewPhoto->strBuf, viewPhoto->heapId, viewPhoto->saveData);
-    u8 numPokemon = ov19_0225A008(viewPhoto->unk_1D0.unk_0);
+    formatPhotoFlavorText(viewPhoto->scrollData.photo, viewPhoto->msgFormat, viewPhoto->strBuf, viewPhoto->heapId, viewPhoto->saveData);
+    u8 numPokemon = Photo_CountValidMons(viewPhoto->scrollData.photo);
     if (numPokemon > 1) {
         StringExpandPlaceholders(viewPhoto->msgFormat, viewPhoto->strBuf, viewPhoto->photoDescStringTemplates[1]);
     } else {
@@ -457,13 +457,13 @@ static void ov19_02259F64(ViewPhotoSysTaskData *viewPhoto) {
     }
     AddTextPrinterParameterizedWithColor(&viewPhoto->windows[1], 0, viewPhoto->strBuf, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 2, 0), NULL);
     ScheduleWindowCopyToVram(&viewPhoto->windows[1]);
-    ov19_02259F0C(viewPhoto);
+    ViewPhotoSysTask_DrawLyr3Icon(viewPhoto);
 }
 
-static u8 ov19_0225A008(PHOTO *a0) {
+static u8 Photo_CountValidMons(PHOTO *photo) {
     u8 answer = 0;
     for (u8 i = 0; i < PARTY_SIZE; ++i) {
-        int species = a0->party[i].species;
+        int species = photo->party[i].species;
         if (species > SPECIES_NONE && species <= SPECIES_ARCEUS) {
             ++answer;
         }

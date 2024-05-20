@@ -7,48 +7,48 @@
 #include "field_types_def.h"
 
 typedef struct FieldTakePhoto {
-    Location unk_00;
+    Location locationBuf;
     u8 unk_14;
     u8 unk_15;
     u8 unk_16;
     u8 unk_17;
-    LocalMapObject *unk_18[6];
-    u16 unk_30;
-    u16 unk_32;
-    u16 unk_34;
-    u16 unk_36;
+    LocalMapObject *mapObjects[6];
+    u16 savedX;
+    u16 savedZ;
+    u16 savedDirection;
+    u16 savedMapId;
     u8 filler_38[0x8];
-    PHOTO *unk_40;
-    PHOTO unk_44;
+    PHOTO *pPhoto;
+    PHOTO photoBuf;
     u16 unk_C8;
     u8 unk_CA;
-    u8 unk_CB;
+    u8 numObjects;
     VecFx32 unk_CC;
     u8 unk_D8;
 } FieldTakePhoto;
 
-typedef struct FieldTakePhoto2 {
+typedef struct FieldViewPhoto {
     int unk_00;
     int unk_04;
     u8 unk_08;
     u8 unk_09;
     u8 unk_0A;
     u8 unk_0B;
-    PHOTO unk_0C;
+    PHOTO pPhoto;
     int unk_90;
-    u16 unk_94;
-    u16 unk_96;
+    u16 x;
+    u16 y;
     u16 unk_98;
     u16 unk_9A;
-    LocalMapObject *unk_9C[6];
+    LocalMapObject *mapObjects[6];
     PhotoAlbumArgs *unk_B4;
     PHOTO_ALBUM *unk_B8;
-} FieldTakePhoto2;
+} FieldViewPhoto;
 
-typedef struct UnkStruct_0206A8C0 {
-    PHOTO *unk_0;
-    u8 unk_4;
-    u8 unk_5;
-} UnkStruct_0206A8C0;
+typedef struct PhotoAlbumScroll {
+    PHOTO *photo;
+    u8 curPhoto;
+    u8 numPhotos;
+} PhotoAlbumScroll;
 
 #endif //GUARD_POKEHEARTGOLD_PHOTO_TYPES_DEF_H

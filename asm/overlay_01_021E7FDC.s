@@ -14,8 +14,8 @@
 
 	.text
 
-	thumb_func_start ov01_021E7FDC
-ov01_021E7FDC: ; 0x021E7FDC
+	thumb_func_start UnkFieldSpriteRenderer_ov01_021E7FDC_Init
+UnkFieldSpriteRenderer_ov01_021E7FDC_Init: ; 0x021E7FDC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x30
 	add r5, r0, #0
@@ -221,10 +221,10 @@ _021E811A:
 	.balign 4, 0
 _021E818C: .word 0x00000162
 _021E8190: .word 0x0000FFFF
-	thumb_func_end ov01_021E7FDC
+	thumb_func_end UnkFieldSpriteRenderer_ov01_021E7FDC_Init
 
-	thumb_func_start ov01_021E8194
-ov01_021E8194: ; 0x021E8194
+	thumb_func_start UnkFieldSpriteRenderer_ov01_021E7FDC_Release
+UnkFieldSpriteRenderer_ov01_021E7FDC_Release: ; 0x021E8194
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -267,7 +267,7 @@ _021E81CE:
 _021E81EC:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021E8194
+	thumb_func_end UnkFieldSpriteRenderer_ov01_021E7FDC_Release
 
 	thumb_func_start ov01_021E81F0
 ov01_021E81F0: ; 0x021E81F0

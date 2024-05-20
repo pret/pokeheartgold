@@ -3,7 +3,7 @@
 
 #include "field_system.h"
 
-SysTask *ov19_022598C0(FieldSystem *fieldSystem);
-void ov19_02259918(FieldSystem *fieldSystem);
+SysTask *FieldSystem_CreateViewPhotoTask(FieldSystem *fieldSystem);
+void FieldSystem_DestroyViewPhotoTask(FieldSystem *fieldSystem);
 
 #endif //GUARD_POKEHEARTGOLD_APPLICATION_VIEW_PHOTO_H

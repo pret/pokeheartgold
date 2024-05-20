@@ -27,8 +27,8 @@ typedef struct SpriteTemplate_ov01_021E81F0 {
     u8 filler_1C[0xC];
 } SpriteTemplate_ov01_021E81F0;
 
-void ov01_021E7FDC(UnkStruct_ov01_021E7FDC *a0, const u16 *a1, int a2, HeapID a3);
-void ov01_021E8194(UnkStruct_ov01_021E7FDC *a0);
+void UnkFieldSpriteRenderer_ov01_021E7FDC_Init(UnkStruct_ov01_021E7FDC *a0, const u16 *a1, int a2, HeapID a3);
+void UnkFieldSpriteRenderer_ov01_021E7FDC_Release(UnkStruct_ov01_021E7FDC *a0);
 Sprite *ov01_021E81F0(UnkStruct_ov01_021E7FDC *a0, const SpriteTemplate_ov01_021E81F0 *a1);
 
 #endif //POKEHEARTGOLD_FIELD_OV01_021E7FDC_H

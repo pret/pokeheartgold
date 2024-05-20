@@ -7,7 +7,7 @@
 
 void FieldSystem_TakePhoto(FieldSystem *fieldSystem, u16 photo_id);
 void sub_0206A860(FieldSystem *fieldSystem);
-void sub_0206A8C0(FieldTakePhoto2 *a0, UnkStruct_0206A8C0 *a1);
-void sub_0206A8DC(FieldTakePhoto2 *a0, int a1);
+void sub_0206A8C0(FieldViewPhoto *a0, PhotoAlbumScroll *a1);
+void sub_0206A8DC(FieldViewPhoto *a0, int a1);
 
 #endif //POKEHEARTGOLD_FIELD_TAKE_PHOTO_H
