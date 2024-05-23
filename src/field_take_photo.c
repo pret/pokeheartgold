@@ -20,6 +20,7 @@
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
 #include "unk_02067A80.h"
+#include "graphic/camera_viewfinder.naix"
 
 typedef enum FieldViewPhotoTaskState {
     VIEW_PHOTO_STATE_INIT,
@@ -823,9 +824,9 @@ static void sub_0206B880(FieldSystem *fieldSystem, PHOTO *photo) {
 }
 
 static void drawCameraGfx(BgConfig *bgConfig, HeapID heapId) {
-    GfGfxLoader_GXLoadPal(NARC_a_2_6_1, 0, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0, heapId);
-    GfGfxLoader_LoadCharData(NARC_a_2_6_1, 1, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, heapId);
-    GfGfxLoader_LoadScrnData(NARC_a_2_6_1, 2, bgConfig, GF_BG_LYR_MAIN_2, 0, 0x600, TRUE, heapId);
+    GfGfxLoader_GXLoadPal(NARC_graphic_camera_viewfinder, NARC_camera_viewfinder_camera_viewfinder_NCLR, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0, heapId);
+    GfGfxLoader_LoadCharData(NARC_graphic_camera_viewfinder, NARC_camera_viewfinder_camera_viewfinder_NCGR_lz, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, heapId);
+    GfGfxLoader_LoadScrnData(NARC_graphic_camera_viewfinder, NARC_camera_viewfinder_camera_viewfinder_NSCR_lz, bgConfig, GF_BG_LYR_MAIN_2, 0, 0x600, TRUE, heapId);
     BgCommitTilemapBufferToVram(bgConfig, GF_BG_LYR_MAIN_2);
     SetBgPriority(GF_BG_LYR_MAIN_2, 0);
 }
