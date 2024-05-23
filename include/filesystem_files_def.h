@@ -268,7 +268,7 @@ typedef enum NarcId
     NARC_a_2_5_8                                            = 260,
     NARC_a_2_5_9                                            = 261,
     NARC_a_2_6_0                                            = 262,
-    NARC_a_2_6_1                                            = 263,
+    NARC_graphic_camera_viewfinder                          = 263,
     NARC_demo_opening_gs_opening                            = 264,
     NARC_a_2_6_3                                            = 265,
     NARC_application_voltorb_flip                           = 266,
