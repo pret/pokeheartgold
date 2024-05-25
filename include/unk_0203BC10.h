@@ -3,6 +3,17 @@
 
 #include "task.h"
 
+typedef enum StartMenuIcon {
+    START_MENU_ICON_POKEDEX,
+    START_MENU_ICOM_POKEMON,
+    START_MENU_ICON_BAG,
+    START_MENU_ICON_POKEGEAR,
+    START_MENU_ICON_TRAINER_CARD,
+    START_MENU_ICON_SAVE,
+    START_MENU_ICON_OPTIONS,
+    START_MENU_ICON_RUNNING_SHOES,
+} StartMenuIcon;
+
 struct BagViewAppWork {
     int unk_0000;
     u8 filler_0004[0x22];
@@ -30,6 +41,7 @@ void sub_0203BC28(FieldSystem *fieldSystem);
 void sub_0203BCDC(FieldSystem *fieldSystem);
 void sub_0203BD20(FieldSystem *fieldSystem);
 void sub_0203BD64(FieldSystem *fieldSystem);
+BOOL sub_0203C3CC(FieldSystem *fieldSystem, int a1);
 void sub_0203C8F0(struct BagViewAppWork *env, TaskFunc func);
 BOOL sub_0203CA9C(TaskManager *taskManager);
 BOOL sub_0203D718(TaskManager *taskManager);
