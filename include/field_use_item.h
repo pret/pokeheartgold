@@ -13,7 +13,7 @@
 #define USE_ITEM_TASK_FIELD              1
 #define USE_ITEM_TASK_CHECK              2
 
-struct ItemCheckUseData {
+typedef struct ItemCheckUseData {
     u32 mapId;
     int playerState;
     u16 haveFollower:1;
@@ -22,7 +22,7 @@ struct ItemCheckUseData {
     u16 standingTile;
     PlayerAvatar *playerAvatar;
     FieldSystem *fieldSystem;
-};
+} ItemCheckUseData;
 
 struct AlphItemUseData {
     int scriptNo;

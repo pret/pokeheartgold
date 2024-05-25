@@ -19,12 +19,12 @@ struct FieldMoveUseData {
     u16 fieldMoveIdx;
 };
 
-struct FieldMoveCheckData {
+typedef struct FieldMoveCheckData {
     u32 mapId;
     FieldSystem *fieldSystem;
     LocalMapObject *facingObject;
     u16 flag;
-};
+} FieldMoveCheckData;
 
 #define FIELD_MOVE_FUNC_USE      0
 #define FIELD_MOVE_FUNC_CHECK    1
