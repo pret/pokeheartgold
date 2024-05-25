@@ -25,6 +25,11 @@ struct FlyTaskStruct {
     u32 partySlot;
 };
 
+BOOL sub_0203BC10(FieldSystem *fieldSystem);
+void sub_0203BC28(FieldSystem *fieldSystem);
+void sub_0203BCDC(FieldSystem *fieldSystem);
+void sub_0203BD20(FieldSystem *fieldSystem);
+void sub_0203BD64(FieldSystem *fieldSystem);
 void sub_0203C8F0(struct BagViewAppWork *env, TaskFunc func);
 BOOL sub_0203CA9C(TaskManager *taskManager);
 BOOL sub_0203D718(TaskManager *taskManager);

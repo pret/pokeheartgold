@@ -6,6 +6,7 @@
 #include "map_events.h"
 #include "task.h"
 #include "field_map_object.h"
+#include "unk_0203BC10.h"
 #include "constants/std_script.h"
 #include "fielddata/script/scr_seq.naix"
 #include "msgdata/msg.naix"
