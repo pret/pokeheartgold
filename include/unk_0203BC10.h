@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_UNK_0203BC10_H
 #define POKEHEARTGOLD_UNK_0203BC10_H
 
+#include "field_use_item.h"
+#include "party_menu.h"
 #include "task.h"
 
 typedef enum StartMenuIcon {
@@ -14,17 +16,33 @@ typedef enum StartMenuIcon {
     START_MENU_ICON_RUNNING_SHOES,
 } StartMenuIcon;
 
-struct BagViewAppWork {
-    int unk_0000;
-    u8 filler_0004[0x22];
+typedef struct StartMenuTaskData {
+    int unk_000;
+    u8 filler_004[0x1C];
+    BOOL unk_020;
+    u16 unk_024;
     u16 state; // 26
-    u8 filler_0028[0x32C];
+    int unk_028;
+    u32 unk_02C;
+    u8 unk_030[10];
+    u8 unk_03A[10];
+    u8 filler_044[0x190];
+    SpriteList *unk_1D4;
+    GF_G2dRenderer unk_1D8;
+    GF_2DGfxResMan *unk_300[4];
+    GF_2DGfxResObj *unk_310[4];
+    SpriteResourcesHeader unk_320;
+    Sprite *unk_344;
+    u8 filler_348[0x4];
+    u32 unk_34C;
+    BOOL unk_350;
     TaskFunc atexit_TaskFunc; // 354
-    u8 filler_0358[0x18];
-    u32 unk_0370[4];
+    ItemCheckUseData unk_358;
+    FieldMoveCheckData unk_370;
     void *atexit_TaskEnv; // 380
-    void *unk_0384;
-};
+    void *unk_384;
+    u8 filler_unk_388[4];
+} StartMenuTaskData;
 
 struct UnkStruct_0203D818 {
     u16 itemId;
@@ -42,7 +60,7 @@ void sub_0203BCDC(FieldSystem *fieldSystem);
 void sub_0203BD20(FieldSystem *fieldSystem);
 void sub_0203BD64(FieldSystem *fieldSystem);
 BOOL sub_0203C3CC(FieldSystem *fieldSystem, int a1);
-void sub_0203C8F0(struct BagViewAppWork *env, TaskFunc func);
+void sub_0203C8F0(StartMenuTaskData *env, TaskFunc func);
 BOOL sub_0203CA9C(TaskManager *taskManager);
 BOOL sub_0203D718(TaskManager *taskManager);
 struct UnkStruct_0203D818 *sub_0203D818(u16 itemId, u8 a1, u8 a2);

@@ -63,33 +63,7 @@ typedef struct StartMenuAction {
 #define STARTMENUTASKFUNC_CANCEL     ((TaskFunc)-2)
 #define STARTMENUTASKFUNC_NONE    ((TaskFunc)-1)
 
-typedef struct UnkStruct_0203BE34 {
-    u8 filler_000[0x20];
-    BOOL unk_020;
-    u16 unk_024;
-    u16 unk_026;
-    int unk_028;
-    u32 unk_02C;
-    u8 unk_030[10];
-    u8 unk_03A[10];
-    u8 filler_044[0x190];
-    SpriteList *unk_1D4;
-    GF_G2dRenderer unk_1D8;
-    GF_2DGfxResMan *unk_300[4];
-    GF_2DGfxResObj *unk_310[4];
-    SpriteResourcesHeader unk_320;
-    Sprite *unk_344;
-    u8 filler_348[0x4];
-    u32 unk_34C;
-    BOOL unk_350;
-    TaskFunc unk_354;
-    ItemCheckUseData unk_358;
-    FieldMoveCheckData unk_370;
-    void *unk_380;
-    u8 filler_384[0x8];
-} UnkStruct_0203BE34;  // size: 0x38C
-
-UnkStruct_0203BE34 *sub_0203BE34(void);
+StartMenuTaskData *sub_0203BE34(void);
 u32 sub_0203BE60(FieldSystem *fieldSystem);
 u32 sub_0203BECC(FieldSystem *fieldSystem);
 u32 sub_0203BED0(FieldSystem *fieldSystem);
@@ -100,22 +74,33 @@ u32 sub_0203BEE8(FieldSystem *fieldSystem);
 BOOL sub_0203BEF0(TaskManager *taskManager);
 void sub_0203C14C(TaskManager *taskManager);
 void sub_0203C1FC(u8 *a0, u8 *a1, u32 *a2, u8 a3, vu32 a4);
-u32 sub_0203C220(UnkStruct_0203BE34 *startMenu, u8 *a1, u8 *a2);
-void sub_0203C38C(UnkStruct_0203BE34 *startMenu, FieldSystem *fieldSystem);
+u32 sub_0203C220(StartMenuTaskData *startMenu, u8 *a1, u8 *a2);
+void sub_0203C38C(StartMenuTaskData *startMenu, FieldSystem *fieldSystem);
 BOOL sub_0203C3B8(FieldSystem *fieldSystem, int a1);
 void sub_0203C460(FieldSystem *fieldSystem);
 BOOL sub_0203C47C(TaskManager *taskManager);
-BOOL sub_0203C508(TaskManager *taskManager, FieldSystem *fieldSystem, UnkStruct_0203BE34 *startMenu);
-BOOL sub_0203C5A4(TaskManager *taskManager, FieldSystem *fieldSystem, UnkStruct_0203BE34 *startMenu);
-void sub_0203C69C(UnkStruct_0203BE34 *startMenu, FieldSystem *fieldSystem);
-void sub_0203C6C8(UnkStruct_0203BE34 *startMenu, u8 *a1, u32 a2, u8 gender);
-void sub_0203C830(UnkStruct_0203BE34 *startMenu);
+BOOL sub_0203C508(TaskManager *taskManager, FieldSystem *fieldSystem, StartMenuTaskData *startMenu);
+BOOL sub_0203C5A4(TaskManager *taskManager, FieldSystem *fieldSystem, StartMenuTaskData *startMenu);
+void sub_0203C69C(StartMenuTaskData *startMenu, FieldSystem *fieldSystem);
+void sub_0203C6C8(StartMenuTaskData *startMenu, u8 *a1, u32 a2, u8 gender);
+void sub_0203C830(StartMenuTaskData *startMenu);
 void sub_0203C870(TaskManager *taskManager);
 void sub_0203C8B0(TaskManager *taskManager);
+BOOL sub_0203C8FC(TaskManager *taskManager);
+BOOL sub_0203C920(TaskManager *taskManager);
+BOOL sub_0203CA44(TaskManager *taskManager);
+BOOL sub_0203CF0C(TaskManager *taskManager);
+BOOL sub_0203D1A8(TaskManager *taskManager);
+BOOL sub_0203D244(TaskManager *taskManager);
 void sub_0203D264(TaskManager *taskManager);
 void sub_0203D288(TaskManager *taskManager);
+BOOL sub_0203D2CC(TaskManager *taskManager);
 void sub_0203D2EC(TaskManager *taskManager);
 void sub_0203D304(TaskManager *taskManager);
+BOOL sub_0203D318(TaskManager *taskManager);
+BOOL sub_0203D394(TaskManager *taskManager);
+BOOL sub_0203D488(TaskManager *taskManager);
+BOOL sub_0203D500(TaskManager *taskManager);
 void sub_0203D9E8(TaskManager *taskManager);
 void sub_0203DAE4(TaskManager *taskManager);
 
@@ -127,7 +112,7 @@ BOOL sub_0203BC10(FieldSystem *fieldSystem) {
 }
 
 void sub_0203BC28(FieldSystem *fieldSystem) {
-    UnkStruct_0203BE34 *r4 = sub_0203BE34();
+    StartMenuTaskData *r4 = sub_0203BE34();
     if (Save_VarsFlags_CheckSafariSysFlag(Save_VarsFlags_Get(fieldSystem->saveData)) == TRUE) {
         r4->unk_34C = sub_0203BECC(fieldSystem);
     } else if (Save_VarsFlags_CheckBugContestFlag(Save_VarsFlags_Get(fieldSystem->saveData)) == TRUE) {
@@ -147,7 +132,7 @@ void sub_0203BC28(FieldSystem *fieldSystem) {
 }
 
 void sub_0203BCDC(FieldSystem *fieldSystem) {
-    UnkStruct_0203BE34 *r4 = sub_0203BE34();
+    StartMenuTaskData *r4 = sub_0203BE34();
     r4->unk_34C = sub_0203BEE0(fieldSystem);
     r4->unk_350 = TRUE;
     if (sub_0205CF60(fieldSystem->playerAvatar) == TRUE) {
@@ -157,7 +142,7 @@ void sub_0203BCDC(FieldSystem *fieldSystem) {
 }
 
 void sub_0203BD20(FieldSystem *fieldSystem) {
-    UnkStruct_0203BE34 *r4 = sub_0203BE34();
+    StartMenuTaskData *r4 = sub_0203BE34();
     r4->unk_34C = sub_0203BEE8(fieldSystem);
     r4->unk_350 = FALSE;
     if (sub_0205CF60(fieldSystem->playerAvatar) == TRUE) {
@@ -168,7 +153,7 @@ void sub_0203BD20(FieldSystem *fieldSystem) {
 
 void sub_0203BD64(FieldSystem *fieldSystem) {
     PlaySE(SEQ_SE_DP_WIN_OPEN);
-    UnkStruct_0203BE34 *r4 = sub_0203BE34();
+    StartMenuTaskData *r4 = sub_0203BE34();
     r4->unk_350 = FALSE;
     if (Save_VarsFlags_CheckSafariSysFlag(Save_VarsFlags_Get(fieldSystem->saveData)) == TRUE) {
         r4->unk_34C = sub_0203BECC(fieldSystem);
@@ -189,12 +174,12 @@ void sub_0203BD64(FieldSystem *fieldSystem) {
     TaskManager_Jump(fieldSystem->taskman, sub_0203BEF0, r4);
 }
 
-UnkStruct_0203BE34 *sub_0203BE34(void) {
-    UnkStruct_0203BE34 *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0203BE34));
-    MI_CpuClearFast(ret, sizeof(UnkStruct_0203BE34));
-    ret->unk_026 = 0;
+StartMenuTaskData *sub_0203BE34(void) {
+    StartMenuTaskData *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(StartMenuTaskData));
+    MI_CpuClearFast(ret, sizeof(StartMenuTaskData));
+    ret->state = 0;
     ret->unk_024 = 0;
-    ret->unk_380 = NULL;
+    ret->atexit_TaskEnv = NULL;
     return ret;
 }
 
@@ -245,14 +230,14 @@ u32 sub_0203BEE8(FieldSystem *fieldSystem) {
 
 BOOL sub_0203BEF0(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    UnkStruct_0203BE34 *env = (UnkStruct_0203BE34 *)TaskManager_GetEnvironment(taskManager);
+    StartMenuTaskData *env = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
-    switch (env->unk_026) {
+    switch (env->state) {
     case 0:
         MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
         if (ov01_021F6B00(fieldSystem)) {
             ov01_021F6A9C(fieldSystem, 0, NULL);
-            env->unk_026 = 2;
+            env->state = 2;
             break;
         }
         // fallthrough
@@ -261,7 +246,7 @@ BOOL sub_0203BEF0(TaskManager *taskManager) {
         FieldSystem_MakeFieldMoveCheckData(fieldSystem, &env->unk_370);
         sub_0203C14C(taskManager);
         fieldSystem->unkD2_0 = 1;
-        env->unk_026 = 3;
+        env->state = 3;
         break;
     case 2:
         if (ov01_021F6B10(fieldSystem) == 6) {
@@ -270,7 +255,7 @@ BOOL sub_0203BEF0(TaskManager *taskManager) {
         } else if (ov01_021F6B10(fieldSystem) == 1) {
             ItemCheckUseData_Init(fieldSystem, &env->unk_358);
             FieldSystem_MakeFieldMoveCheckData(fieldSystem, &env->unk_370);
-            env->unk_026 = 3;
+            env->state = 3;
         }
         break;
     case 3:
@@ -302,13 +287,13 @@ BOOL sub_0203BEF0(TaskManager *taskManager) {
             sub_0203C14C(taskManager);
             fieldSystem->unkD2_0 = 1;
             ov01_021E636C(1);
-            env->unk_026 = 17;
+            env->state = 17;
         }
         break;
     case 10:
         if (sub_020505C8(fieldSystem)) {
             ov01_021E636C(1);
-            env->unk_026 = 11;
+            env->state = 11;
         }
         break;
     case 11:
@@ -323,17 +308,17 @@ BOOL sub_0203BEF0(TaskManager *taskManager) {
         if (sub_020505C8(fieldSystem)) {
             MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
             ov01_021E636C(1);
-            env->unk_026 = 13;
+            env->state = 13;
         }
         break;
     case 13:
         if (IsPaletteFadeFinished()) {
-            TaskManager_Jump(taskManager, env->unk_354, env->unk_380);
+            TaskManager_Jump(taskManager, env->atexit_TaskFunc, env->atexit_TaskEnv);
             FreeToHeap(env);
         }
         break;
     case 14:
-        env->unk_354(taskManager);
+        env->atexit_TaskFunc(taskManager);
         break;
     case 18:
         FreeToHeap(env);
@@ -349,7 +334,7 @@ BOOL sub_0203BEF0(TaskManager *taskManager) {
         return TRUE;
     case 17:
         if (IsPaletteFadeFinished()) {
-            env->unk_026 = 3;
+            env->state = 3;
         }
         break;
     case 19:
@@ -367,7 +352,7 @@ BOOL sub_0203BEF0(TaskManager *taskManager) {
 
 void sub_0203C14C(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    UnkStruct_0203BE34 *env = (UnkStruct_0203BE34 *)TaskManager_GetEnvironment(taskManager);
+    StartMenuTaskData *env = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     u32 r6 = sub_0203C220(env, env->unk_030, env->unk_03A);
     env->unk_02C = r6;
@@ -393,7 +378,7 @@ void sub_0203C1FC(u8 *a0, u8 *a1, u32 *a2, u8 a3, vu32 a4) {
     ++(*a2);
 }
 
-u32 sub_0203C220(UnkStruct_0203BE34 *startMenu, u8 *a1, u8 *a2) {
+u32 sub_0203C220(StartMenuTaskData *startMenu, u8 *a1, u8 *a2) {
     u32 sp4 = 0;
 
     if (!(startMenu->unk_34C & (1 << START_MENU_ICON_INHIBIT_8))) {
@@ -435,7 +420,7 @@ u32 sub_0203C220(UnkStruct_0203BE34 *startMenu, u8 *a1, u8 *a2) {
     return sp4;
 }
 
-void sub_0203C38C(UnkStruct_0203BE34 *startMenu, FieldSystem *fieldSystem) {
+void sub_0203C38C(StartMenuTaskData *startMenu, FieldSystem *fieldSystem) {
     sub_0203C830(startMenu);
     FillBgTilemapRect(fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 0, 0x20, 0x18, 0);
     startMenu->unk_020 = FALSE;
@@ -476,7 +461,7 @@ void sub_0203C460(FieldSystem *fieldSystem) {
 
 BOOL sub_0203C47C(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    UnkStruct_0203BE34 *env = (UnkStruct_0203BE34 *)TaskManager_GetEnvironment(taskManager);
+    StartMenuTaskData *env = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     if (!ov01_021F6B00(fieldSystem) && ov01_021F6B10(fieldSystem) == TRUE) {
         if (gSystem.newKeys & PAD_BUTTON_A) {
@@ -488,7 +473,7 @@ BOOL sub_0203C47C(TaskManager *taskManager) {
             if (fieldSystem->unkD0 == 0) {
                 if (gSystem.newKeys & (PAD_BUTTON_B | PAD_BUTTON_X)) {
                     PlaySE(SEQ_SE_GS_GEARCANCEL);
-                    env->unk_026 = 16;
+                    env->state = 16;
                 }
             } else {
                 if (!sub_0203C5A4(taskManager, fieldSystem, env)) {
@@ -501,13 +486,13 @@ BOOL sub_0203C47C(TaskManager *taskManager) {
     return TRUE;
 }
 
-BOOL sub_0203C508(TaskManager *taskManager, FieldSystem *fieldSystem, UnkStruct_0203BE34 *startMenu) {
+BOOL sub_0203C508(TaskManager *taskManager, FieldSystem *fieldSystem, StartMenuTaskData *startMenu) {
     if (fieldSystem->unkD3 < startMenu->unk_02C) {
         PlaySE(SEQ_SE_DP_SELECT);
         sub_02018410(&fieldSystem->unk_10C, 0);
         startMenu->unk_028 = fieldSystem->unkD3;
         if (_020FA0F4[startMenu->unk_03A[startMenu->unk_028]].func == STARTMENUTASKFUNC_CANCEL) {
-            startMenu->unk_026 = 16;
+            startMenu->state = 16;
         } else if (_020FA0F4[startMenu->unk_03A[startMenu->unk_028]].func != STARTMENUTASKFUNC_NONE) {
             if (sub_0203C3B8(fieldSystem, startMenu->unk_03A[startMenu->unk_028])) {
                 TaskFunc func = _020FA0F4[startMenu->unk_03A[startMenu->unk_028]].func;
@@ -523,14 +508,14 @@ BOOL sub_0203C508(TaskManager *taskManager, FieldSystem *fieldSystem, UnkStruct_
     return TRUE;
 }
 
-BOOL sub_0203C5A4(TaskManager *taskManager, FieldSystem *fieldSystem, UnkStruct_0203BE34 *startMenu) {
+BOOL sub_0203C5A4(TaskManager *taskManager, FieldSystem *fieldSystem, StartMenuTaskData *startMenu) {
     if (fieldSystem->unkD0 != 0) {
         sub_02018410(&fieldSystem->unk_10C, 1);
     }
     switch (fieldSystem->unkD0) {
     case 1:
         PlaySE(SEQ_SE_GS_GEARCANCEL);
-        startMenu->unk_026 = 16;
+        startMenu->state = 16;
         fieldSystem->unkD0 = 0;
         break;
     case 2:
@@ -547,7 +532,7 @@ BOOL sub_0203C5A4(TaskManager *taskManager, FieldSystem *fieldSystem, UnkStruct_
             PlaySE(SEQ_SE_DP_SELECT);
             startMenu->unk_028 = fieldSystem->unkD3;
             if (_020FA0F4[startMenu->unk_03A[startMenu->unk_028]].func == STARTMENUTASKFUNC_CANCEL) {
-                startMenu->unk_026 = 16;
+                startMenu->state = 16;
                 fieldSystem->unkD0 = 0;
             } else if (_020FA0F4[startMenu->unk_03A[startMenu->unk_028]].func != STARTMENUTASKFUNC_NONE) {
                 if (sub_0203C3B8(fieldSystem, startMenu->unk_03A[startMenu->unk_028])) {
@@ -567,7 +552,7 @@ BOOL sub_0203C5A4(TaskManager *taskManager, FieldSystem *fieldSystem, UnkStruct_
     return TRUE;
 }
 
-void sub_0203C69C(UnkStruct_0203BE34 *startMenu, FieldSystem *fieldSystem) {
+void sub_0203C69C(StartMenuTaskData *startMenu, FieldSystem *fieldSystem) {
     if (sub_02035650() && startMenu->unk_350) {
         sub_0205AD0C(fieldSystem->unk84);
         sub_02037FF0();
@@ -575,7 +560,7 @@ void sub_0203C69C(UnkStruct_0203BE34 *startMenu, FieldSystem *fieldSystem) {
     }
 }
 
-void sub_0203C6C8(UnkStruct_0203BE34 *startMenu, u8 *a1, u32 a2, u8 gender) {
+void sub_0203C6C8(StartMenuTaskData *startMenu, u8 *a1, u32 a2, u8 gender) {
     startMenu->unk_1D4 = G2dRenderer_Init(1, &startMenu->unk_1D8, HEAP_ID_FIELD);
     for (int i = 0; i < 4; ++i) {
         startMenu->unk_300[i] = Create2DGfxResObjMan(1, (GfGfxResType)i, HEAP_ID_FIELD);
@@ -608,11 +593,49 @@ void sub_0203C6C8(UnkStruct_0203BE34 *startMenu, u8 *a1, u32 a2, u8 gender) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
-void sub_0203C830(UnkStruct_0203BE34 *startMenu) {
+void sub_0203C830(StartMenuTaskData *startMenu) {
     sub_0200AEB0(startMenu->unk_310[GF_GFX_RES_TYPE_CHAR]);
     sub_0200B0A8(startMenu->unk_310[GF_GFX_RES_TYPE_PLTT]);
     for (u16 i = 0; i < 4; ++i) {
         Destroy2DGfxResObjMan(startMenu->unk_300[i]);
     }
     SpriteList_Delete(startMenu->unk_1D4);
+}
+
+void sub_0203C870(TaskManager *taskManager) {
+    if (IsPaletteFadeFinished()) {
+        FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+        StartMenuTaskData *env = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+        sub_0203C38C(env, fieldSystem);
+        fieldSystem->unkD2_0 = 0;
+        env->atexit_TaskFunc(taskManager);
+        env->state = 5;
+    }
+}
+
+void sub_0203C8B0(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *env = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    if (!FieldSystem_ApplicationIsRunning(fieldSystem)) {
+        env->atexit_TaskFunc(taskManager);
+        if (env->state == 15 && sub_020183F0(&fieldSystem->unk_10C) == TRUE) {
+            env->state = 10;
+        }
+    }
+}
+
+void sub_0203C8F0(StartMenuTaskData *env, TaskFunc func) {
+    env->atexit_TaskFunc = func;
+    env->state = 5;
+}
+
+BOOL sub_0203C8FC(TaskManager *taskManager) {
+    StartMenuTaskData *env = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    ov01_021E636C(0);
+    env->atexit_TaskFunc = sub_0203C920;
+    env->state = 4;
+    return TRUE;
 }

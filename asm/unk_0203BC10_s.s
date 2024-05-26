@@ -5,6 +5,17 @@
 
 	.rodata
 
+	.extern sub_0203C8FC
+	.extern sub_0203CA44
+	.extern sub_0203CF0C
+	.extern sub_0203D1A8
+	.extern sub_0203D244
+	.extern sub_0203D318
+	.extern sub_0203D394
+	.extern sub_0203D488
+	.extern sub_0203D500
+	.extern sub_0203D2CC
+
 _020FA0AC:
 	.byte 0x01, 0x04, 0x00, 0x00
 	.public _020FA0B0
@@ -49,101 +60,6 @@ _020FA0F4:
 	.extern sub_0203C38C
 	.extern sub_0203C3B8
 	.extern sub_0203C460
-
-	thumb_func_start sub_0203C870
-sub_0203C870: ; 0x0203C870
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	bl IsPaletteFadeFinished
-	cmp r0, #0
-	beq _0203C8AE
-	add r0, r5, #0
-	bl TaskManager_GetFieldSystem
-	add r6, r0, #0
-	add r0, r5, #0
-	bl TaskManager_GetEnvironment
-	add r1, r6, #0
-	add r4, r0, #0
-	bl sub_0203C38C
-	add r0, r6, #0
-	add r0, #0xd2
-	ldrb r1, [r0]
-	mov r0, #0x3f
-	add r6, #0xd2
-	bic r1, r0
-	strb r1, [r6]
-	mov r1, #0xd5
-	lsl r1, r1, #2
-	ldr r1, [r4, r1]
-	add r0, r5, #0
-	blx r1
-	mov r0, #5
-	strh r0, [r4, #0x26]
-_0203C8AE:
-	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0203C870
-
-	thumb_func_start sub_0203C8B0
-sub_0203C8B0: ; 0x0203C8B0
-	push {r4, r5, r6, lr}
-	add r6, r0, #0
-	bl TaskManager_GetFieldSystem
-	add r5, r0, #0
-	add r0, r6, #0
-	bl TaskManager_GetEnvironment
-	add r4, r0, #0
-	add r0, r5, #0
-	bl FieldSystem_ApplicationIsRunning
-	cmp r0, #0
-	bne _0203C8EE
-	mov r1, #0xd5
-	lsl r1, r1, #2
-	ldr r1, [r4, r1]
-	add r0, r6, #0
-	blx r1
-	ldrh r0, [r4, #0x26]
-	cmp r0, #0xf
-	bne _0203C8EE
-	mov r0, #0x43
-	lsl r0, r0, #2
-	add r0, r5, r0
-	bl sub_020183F0
-	cmp r0, #1
-	bne _0203C8EE
-	mov r0, #0xa
-	strh r0, [r4, #0x26]
-_0203C8EE:
-	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0203C8B0
-
-	thumb_func_start sub_0203C8F0
-sub_0203C8F0: ; 0x0203C8F0
-	mov r2, #0xd5
-	lsl r2, r2, #2
-	str r1, [r0, r2]
-	mov r1, #5
-	strh r1, [r0, #0x26]
-	bx lr
-	thumb_func_end sub_0203C8F0
-
-	thumb_func_start sub_0203C8FC
-sub_0203C8FC: ; 0x0203C8FC
-	push {r4, lr}
-	bl TaskManager_GetEnvironment
-	add r4, r0, #0
-	mov r0, #0
-	bl ov01_021E636C
-	mov r0, #0xd5
-	ldr r1, _0203C91C ; =sub_0203C920
-	lsl r0, r0, #2
-	str r1, [r4, r0]
-	mov r0, #4
-	strh r0, [r4, #0x26]
-	mov r0, #1
-	pop {r4, pc}
-	nop
-_0203C91C: .word sub_0203C920
-	thumb_func_end sub_0203C8FC
 
 	thumb_func_start sub_0203C920
 sub_0203C920: ; 0x0203C920

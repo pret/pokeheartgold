@@ -7,7 +7,6 @@
 #include "mail.h"
 #include "bag_view.h"
 #include "unk_0202E41C.h"
-#include "unk_0203BC10.h"
 
 #define USE_ITEM_TASK_MENU               0
 #define USE_ITEM_TASK_FIELD              1
