@@ -13,11 +13,18 @@
 #include "sys_flags.h"
 #include "system.h"
 #include "unk_02005D10.h"
+#include "unk_0200ACF0.h"
 #include "unk_0200FA24.h"
+#include "unk_020183F0.h"
+#include "unk_02034B0C.h"
+#include "unk_02037C94.h"
+#include "unk_0205A44C.h"
+#include "unk_0205AC88.h"
 #include "unk_0205CB48.h"
 #include "unk_02066EDC.h"
 #include "constants/start_menu_icons.h"
 #include "unk_02092BE8.h"
+#include "overlay_01_021F6830.h"
 
 typedef enum StartMenuIconInternal {
     START_MENU_ICON_INTERNAL_POKEDEX,
@@ -48,18 +55,31 @@ typedef enum StartMenuIconInhibit {
     START_MENU_ICON_INHIBIT_POKEGEAR,
 } StartMenuIconInhibit;
 
+typedef struct StartMenuAction {
+    int ident;
+    TaskFunc func;
+} StartMenuAction;
+
+#define STARTMENUTASKFUNC_CANCEL     ((TaskFunc)-2)
+#define STARTMENUTASKFUNC_NONE    ((TaskFunc)-1)
+
 typedef struct UnkStruct_0203BE34 {
     u8 filler_000[0x20];
     BOOL unk_020;
     u16 unk_024;
     u16 unk_026;
-    u8 filler_028[0x4];
+    int unk_028;
     u32 unk_02C;
     u8 unk_030[10];
     u8 unk_03A[10];
     u8 filler_044[0x190];
     SpriteList *unk_1D4;
-    u8 filler_1D8[0x174];
+    GF_G2dRenderer unk_1D8;
+    GF_2DGfxResMan *unk_300[4];
+    GF_2DGfxResObj *unk_310[4];
+    SpriteResourcesHeader unk_320;
+    Sprite *unk_344;
+    u8 filler_348[0x4];
     u32 unk_34C;
     BOOL unk_350;
     TaskFunc unk_354;
@@ -100,6 +120,7 @@ void sub_0203D9E8(TaskManager *taskManager);
 void sub_0203DAE4(TaskManager *taskManager);
 
 extern const int _020FA0C4[];
+extern const StartMenuAction _020FA0F4[];
 
 BOOL sub_0203BC10(FieldSystem *fieldSystem) {
     return MapHeader_GetMapSec(fieldSystem->location->mapId) != MAPSEC_MYSTERY_ZONE;
@@ -478,4 +499,120 @@ BOOL sub_0203C47C(TaskManager *taskManager) {
         }
     }
     return TRUE;
+}
+
+BOOL sub_0203C508(TaskManager *taskManager, FieldSystem *fieldSystem, UnkStruct_0203BE34 *startMenu) {
+    if (fieldSystem->unkD3 < startMenu->unk_02C) {
+        PlaySE(SEQ_SE_DP_SELECT);
+        sub_02018410(&fieldSystem->unk_10C, 0);
+        startMenu->unk_028 = fieldSystem->unkD3;
+        if (_020FA0F4[startMenu->unk_03A[startMenu->unk_028]].func == STARTMENUTASKFUNC_CANCEL) {
+            startMenu->unk_026 = 16;
+        } else if (_020FA0F4[startMenu->unk_03A[startMenu->unk_028]].func != STARTMENUTASKFUNC_NONE) {
+            if (sub_0203C3B8(fieldSystem, startMenu->unk_03A[startMenu->unk_028])) {
+                TaskFunc func = _020FA0F4[startMenu->unk_03A[startMenu->unk_028]].func;
+                sub_0203DF64(fieldSystem, 0);
+                ov01_021F6B50(fieldSystem);
+                fieldSystem->unkD0 = 0;
+                fieldSystem->unkE0 = startMenu->unk_03A[startMenu->unk_028];
+                return func(taskManager);
+            }
+        }
+    }
+
+    return TRUE;
+}
+
+BOOL sub_0203C5A4(TaskManager *taskManager, FieldSystem *fieldSystem, UnkStruct_0203BE34 *startMenu) {
+    if (fieldSystem->unkD0 != 0) {
+        sub_02018410(&fieldSystem->unk_10C, 1);
+    }
+    switch (fieldSystem->unkD0) {
+    case 1:
+        PlaySE(SEQ_SE_GS_GEARCANCEL);
+        startMenu->unk_026 = 16;
+        fieldSystem->unkD0 = 0;
+        break;
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+    case 10:
+        fieldSystem->unkD3 = fieldSystem->unkD0 - 2;
+        if (fieldSystem->unkD3 < startMenu->unk_02C) {
+            PlaySE(SEQ_SE_DP_SELECT);
+            startMenu->unk_028 = fieldSystem->unkD3;
+            if (_020FA0F4[startMenu->unk_03A[startMenu->unk_028]].func == STARTMENUTASKFUNC_CANCEL) {
+                startMenu->unk_026 = 16;
+                fieldSystem->unkD0 = 0;
+            } else if (_020FA0F4[startMenu->unk_03A[startMenu->unk_028]].func != STARTMENUTASKFUNC_NONE) {
+                if (sub_0203C3B8(fieldSystem, startMenu->unk_03A[startMenu->unk_028])) {
+                    TaskFunc func = _020FA0F4[startMenu->unk_03A[startMenu->unk_028]].func;
+                    fieldSystem->unkD0 = 0;
+                    sub_0203DF64(fieldSystem, 1);
+                    ov01_021F6B50(fieldSystem);
+                    fieldSystem->unkE0 = startMenu->unk_03A[startMenu->unk_028];
+                    return func(taskManager);
+                } else {
+                    fieldSystem->unkD0 = 0;
+                }
+            }
+        }
+        break;
+    }
+    return TRUE;
+}
+
+void sub_0203C69C(UnkStruct_0203BE34 *startMenu, FieldSystem *fieldSystem) {
+    if (sub_02035650() && startMenu->unk_350) {
+        sub_0205AD0C(fieldSystem->unk84);
+        sub_02037FF0();
+        sub_0205A904(0);
+    }
+}
+
+void sub_0203C6C8(UnkStruct_0203BE34 *startMenu, u8 *a1, u32 a2, u8 gender) {
+    startMenu->unk_1D4 = G2dRenderer_Init(1, &startMenu->unk_1D8, HEAP_ID_FIELD);
+    for (int i = 0; i < 4; ++i) {
+        startMenu->unk_300[i] = Create2DGfxResObjMan(1, (GfGfxResType)i, HEAP_ID_FIELD);
+    }
+    startMenu->unk_310[GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(startMenu->unk_300[GF_GFX_RES_TYPE_CHAR], NARC_a_0_1_4, 64, TRUE, 0, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_FIELD);
+    startMenu->unk_310[GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(startMenu->unk_300[GF_GFX_RES_TYPE_PLTT], NARC_a_0_1_4, 61, FALSE, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, HEAP_ID_FIELD);
+    startMenu->unk_310[GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(startMenu->unk_300[GF_GFX_RES_TYPE_CELL], NARC_a_0_1_4, 62, TRUE, 0, GF_GFX_RES_TYPE_CELL, HEAP_ID_FIELD);
+    startMenu->unk_310[GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromNarc(startMenu->unk_300[GF_GFX_RES_TYPE_ANIM], NARC_a_0_1_4, 63, TRUE, 0, GF_GFX_RES_TYPE_ANIM, HEAP_ID_FIELD);
+    sub_0200ADA4(startMenu->unk_310[GF_GFX_RES_TYPE_CHAR]);
+    sub_0200B00C(startMenu->unk_310[GF_GFX_RES_TYPE_PLTT]);
+    sub_0200A740(startMenu->unk_310[GF_GFX_RES_TYPE_PLTT]);
+    CreateSpriteResourcesHeader(&startMenu->unk_320, 0, 0, 0, 0, -1, -1, 0, 0, startMenu->unk_300[GF_GFX_RES_TYPE_CHAR], startMenu->unk_300[GF_GFX_RES_TYPE_PLTT], startMenu->unk_300[GF_GFX_RES_TYPE_CELL], startMenu->unk_300[GF_GFX_RES_TYPE_ANIM], NULL, NULL);
+
+    SpriteTemplate spriteTemplate;
+    spriteTemplate.spriteList = startMenu->unk_1D4;
+    spriteTemplate.header = &startMenu->unk_320;
+    spriteTemplate.position.z = 0;
+    spriteTemplate.scale.x = FX32_ONE;
+    spriteTemplate.scale.y = FX32_ONE;
+    spriteTemplate.scale.z = FX32_ONE;
+    spriteTemplate.rotation = 0;
+    spriteTemplate.priority = 0;
+    spriteTemplate.whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN;
+    spriteTemplate.heapId = HEAP_ID_FIELD;
+    spriteTemplate.header = &startMenu->unk_320;  // second assign is necessary to match
+    spriteTemplate.position.x = FX32_CONST(100);
+    spriteTemplate.position.y = FX32_CONST(144);
+    startMenu->unk_344 = CreateSprite(&spriteTemplate);
+    Set2dSpriteAnimActiveFlag(startMenu->unk_344, TRUE);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
+}
+
+void sub_0203C830(UnkStruct_0203BE34 *startMenu) {
+    sub_0200AEB0(startMenu->unk_310[GF_GFX_RES_TYPE_CHAR]);
+    sub_0200B0A8(startMenu->unk_310[GF_GFX_RES_TYPE_PLTT]);
+    for (u16 i = 0; i < 4; ++i) {
+        Destroy2DGfxResObjMan(startMenu->unk_300[i]);
+    }
+    SpriteList_Delete(startMenu->unk_1D4);
 }
