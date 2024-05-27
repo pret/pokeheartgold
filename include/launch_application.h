@@ -158,7 +158,7 @@ void sub_0203FC68(FieldSystem *fieldSystem, void *args);
 void sub_0203FC90(FieldSystem *fieldSystem, void *args);
 LegendaryCinematicArgs *LegendaryCinematic_LaunchApp(FieldSystem *a0, UnkStruct_0203FCC4 *a1, u16 a2, u16 a3, HeapID a4);
 void sub_0203FD08(FieldSystem *fieldSystem, void *args);
-PartyMenuArgs *PartyMenu_LaunchApp_Unk1(FieldSystem *fieldSystem, int a1, u8 a2);
+PartyMenuArgs *PartyMenu_LaunchApp_Unk1(FieldSystem *fieldSystem, FieldMoveCheckData *a1, u8 a2);
 void CallTask_NamingScreen(TaskManager *taskManager, NameScreenType type, int species, int maxLen, int initPos, const u16 *defaultStr, u16 *retVar);
 void sub_0203E960(TaskManager *a0, int a1, UnkStruct_0203E8C8 *a2, u16 *a3, u16 *a4);
 void TrainerCardSignature_LaunchApp(FieldSystem *fieldSystem);

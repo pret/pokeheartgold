@@ -5,9 +5,11 @@
 #include "gf_gfx_loader.h"
 #include "global.h"
 #include "unk_0203BC10.h"
+#include "launch_application.h"
 #include "map_header.h"
 #include "constants/map_sections.h"
 #include "overlay_01.h"
+#include "pokedex.h"
 #include "save_local_field_data.h"
 #include "save_vars_flags.h"
 #include "sys_flags.h"
@@ -88,7 +90,9 @@ void sub_0203C870(TaskManager *taskManager);
 void sub_0203C8B0(TaskManager *taskManager);
 BOOL sub_0203C8FC(TaskManager *taskManager);
 BOOL sub_0203C920(TaskManager *taskManager);
+BOOL sub_0203CA14(TaskManager *taskManager);
 BOOL sub_0203CA44(TaskManager *taskManager);
+BOOL sub_0203CA68(TaskManager *taskManager);
 BOOL sub_0203CF0C(TaskManager *taskManager);
 BOOL sub_0203D1A8(TaskManager *taskManager);
 BOOL sub_0203D244(TaskManager *taskManager);
@@ -638,4 +642,72 @@ BOOL sub_0203C8FC(TaskManager *taskManager) {
     env->atexit_TaskFunc = sub_0203C920;
     env->state = 4;
     return TRUE;
+}
+
+BOOL sub_0203C920(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *env = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    LocalFieldData *localFieldData = Save_LocalFieldData_Get(fieldSystem->saveData);
+    Location *position = LocalFieldData_GetCurrentPosition(localFieldData);
+    Location *specialSpawnWarp = LocalFieldData_GetSpecialSpawnWarpPtr(localFieldData);
+    PokedexArgs *r5 = AllocFromHeap(HEAP_ID_FIELD, sizeof(PokedexArgs));
+    MI_CpuClear8(r5, sizeof(PokedexArgs));
+    r5->pokedex = Save_Pokedex_Get(fieldSystem->saveData);
+    r5->playerProfile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+    r5->unk_08 = fieldSystem->unkA8;
+    r5->unk_0C = &fieldSystem->unk_10C;
+    int x = GetPlayerXCoord(fieldSystem->playerAvatar);
+    int y = GetPlayerYCoord(fieldSystem->playerAvatar);
+    r5->mapMatrixId = MapMatrix_GetMapHeader(fieldSystem->mapMatrix, x / 32, y / 32);
+    r5->mapId = position->mapId;
+    if (MapHeader_MapIsOnMainMatrix(r5->mapMatrixId)) {
+        r5->x = x;
+        r5->y = y;
+    } else {
+        s16 wmX;
+        s16 wmY;
+        MapHeader_GetWorldMapCoords(r5->mapMatrixId, &wmX, &wmY);
+        if (wmX == 0 && wmY == 0) {
+            r5->x = specialSpawnWarp->x;
+            r5->y = specialSpawnWarp->y;
+        } else {
+            r5->x = wmX * 32;
+            r5->y = wmY * 32;
+        }
+    }
+    Pokedex_LaunchApp(fieldSystem, r5);
+    env->atexit_TaskEnv = r5;
+    env->atexit_TaskFunc = sub_0203CA14;
+    return FALSE;
+}
+
+BOOL sub_0203CA14(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *env = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    sub_020505C0(fieldSystem);
+    if (env->atexit_TaskEnv != NULL) {
+        FreeToHeapExplicit(HEAP_ID_FIELD, env->atexit_TaskEnv);
+    }
+    env->state = 15;
+    return FALSE;
+}
+
+BOOL sub_0203CA44(TaskManager *taskManager) {
+    StartMenuTaskData *env = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    ov01_021E636C(0);
+    env->atexit_TaskFunc = sub_0203CA68;
+    env->state = 4;
+    return TRUE;
+}
+
+BOOL sub_0203CA68(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *env = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    env->atexit_TaskEnv = PartyMenu_LaunchApp_Unk1(fieldSystem, &env->unk_370, 0);
+    env->atexit_TaskFunc = sub_0203CA9C;
+    return FALSE;
 }

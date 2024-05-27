@@ -4,6 +4,7 @@
 #include "bag.h"
 #include "mail.h"
 #include "overlay_94.h"
+#include "party_menu.h"
 #include "unk_0202E41C.h"
 
 typedef struct PartyMenuArgs {
@@ -13,7 +14,7 @@ typedef struct PartyMenuArgs {
     Options *options;
     UnkStruct_0202E474 *unk10;
     int unk_14;
-    int unk_18;
+    FieldMoveCheckData *unk_18;
     FieldSystem *fieldSystem;
     u32 *unk20;
     u8 unk_24;

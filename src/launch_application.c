@@ -179,7 +179,7 @@ static PartyMenuArgs *PartyMenu_CreateArgs(HeapID heapId, FieldSystem *fieldSyst
     return partyMenu;
 }
 
-PartyMenuArgs *PartyMenu_LaunchApp_Unk1(FieldSystem *fieldSystem, int a1, u8 a2) {
+PartyMenuArgs *PartyMenu_LaunchApp_Unk1(FieldSystem *fieldSystem, FieldMoveCheckData *a1, u8 a2) {
     PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELD, fieldSystem, 0, 0);
     args->unk_18 = a1;
     args->unk_26 = a2;
@@ -1189,7 +1189,7 @@ PartyMenuArgs *PartyMenu_LaunchApp_Gracidea(FieldSystem *fieldSystem, HeapID hea
     args->mailbox = Save_Mailbox_Get(fieldSystem->saveData);
     args->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     args->unk10 = sub_020270C4(fieldSystem->saveData);
-    args->unk_18 = 0;
+    args->unk_18 = NULL;
     args->unk_25 = 0;
     args->unk_24 = 5;
     args->unk28 = itemId;
