@@ -160,12 +160,12 @@ void sub_02090E5C(EasyChatArgs *args, u32 a1) {
     sub_02018410(args->unk24, a1);
 }
 
-UseMailArgs *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 a3, HeapID heapId) {
+UseMailArgs *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 mailType, HeapID heapId) {
     MAILBOX *mailbox = Save_Mailbox_Get(saveData);
     UseMailArgs *ptr = AllocFromHeapAtEnd(heapId, sizeof(UseMailArgs));
     MI_CpuFill8(ptr, 0, sizeof(UseMailArgs));
 
-    ptr->mailType = a3;
+    ptr->mailType = mailType;
     ptr->partyIdx = partyIdx;
     ptr->mailbox = mailbox;
     ptr->unk0 = 1;

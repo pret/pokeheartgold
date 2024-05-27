@@ -134,9 +134,9 @@ static BOOL Task_StartMenu_HandleReturn_Pokedex(TaskManager *taskManager);
 static BOOL Task_StartMenu_HandleSelection_Pokemon(TaskManager *taskManager);
 static BOOL Task_StartMenu_Pokemon(TaskManager *taskManager);
 static BOOL Task_StartMenu_HandleSelection_Bag(TaskManager *taskManager);
-static BOOL sub_0203CF30(TaskManager *taskManager);
+static BOOL Task_StartMenu_Bag(TaskManager *taskManager);
 static void sub_0203CF74(PartyMenuArgs *partyMenuArgs, FieldSystem *fieldSystem, StartMenuTaskData *startMenu);
-static BOOL sub_0203CFC0(TaskManager *taskManager);
+static BOOL Task_StartMenu_HandleReturn(TaskManager *taskManager);
 static BOOL Task_StartMenu_HandleSelection_TrainerCard(TaskManager *taskManager);
 static BOOL sub_0203D1CC(TaskManager *taskManager);
 static BOOL sub_0203D218(TaskManager *taskManager);
@@ -959,7 +959,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         startMenu->atexit_TaskEnv = Bag_CreateView(bag, sPockets, HEAP_ID_FIELD);
         sub_0207789C(startMenu->atexit_TaskEnv, fieldSystem->saveData, 1, fieldSystem->bagCursor, &fieldSystem->unk_10C);
         Bag_LaunchApp(fieldSystem, startMenu->atexit_TaskEnv);
-        StartMenu_SetChildProcReturnTaskFunc(startMenu, sub_0203CFC0);
+        StartMenu_SetChildProcReturnTaskFunc(startMenu, Task_StartMenu_HandleReturn);
         break;
     }
     case 8: {
@@ -1008,7 +1008,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
     }
     case 10:
         startMenu->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &startMenu->itemCheckUseData);
-        StartMenu_SetChildProcReturnTaskFunc(startMenu, sub_0203CFC0);
+        StartMenu_SetChildProcReturnTaskFunc(startMenu, Task_StartMenu_HandleReturn);
         break;
     default:
         if (partyMenuArgs->unk_24 == 5 || partyMenuArgs->unk_24 == 6 || partyMenuArgs->unk_24 == 7 || partyMenuArgs->unk_24 == 16 || partyMenuArgs->unk_24 == 8) {
@@ -1018,10 +1018,10 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
             } else {
                 sub_020778E0(startMenu->atexit_TaskEnv, partyMenuArgs->partySlot);
             }
-            StartMenu_SetChildProcReturnTaskFunc(startMenu, sub_0203CFC0);
+            StartMenu_SetChildProcReturnTaskFunc(startMenu, Task_StartMenu_HandleReturn);
         } else if (partyMenuArgs->unk_24 == 9) {
             startMenu->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &startMenu->itemCheckUseData);
-            StartMenu_SetChildProcReturnTaskFunc(startMenu, sub_0203CFC0);
+            StartMenu_SetChildProcReturnTaskFunc(startMenu, Task_StartMenu_HandleReturn);
         } else {
             sub_020505C0(fieldSystem);
             startMenu->state = START_MENU_STATE_RETURN;
@@ -1036,18 +1036,18 @@ static BOOL Task_StartMenu_HandleSelection_Bag(TaskManager *taskManager) {
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     ov01_021E636C(0);
-    startMenu->atexit_TaskFunc = sub_0203CF30;
+    startMenu->atexit_TaskFunc = Task_StartMenu_Bag;
     startMenu->state = START_MENU_STATE_WAIT_FADE;
     return TRUE;
 }
 
-static BOOL sub_0203CF30(TaskManager *taskManager) {
+static BOOL Task_StartMenu_Bag(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     startMenu->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &startMenu->itemCheckUseData);
     sub_020778E0(startMenu->atexit_TaskEnv, 0);
-    startMenu->atexit_TaskFunc = sub_0203CFC0;
+    startMenu->atexit_TaskFunc = Task_StartMenu_HandleReturn;
     ov01_021F4440(fieldSystem);
     return FALSE;
 }
@@ -1058,13 +1058,13 @@ static void sub_0203CF74(PartyMenuArgs *partyMenuArgs, FieldSystem *fieldSystem,
     partyMenuArgs->bag = Save_Bag_Get(fieldSystem->saveData);
     partyMenuArgs->mailbox = Save_Mailbox_Get(fieldSystem->saveData);
     partyMenuArgs->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
-    partyMenuArgs->unk_18 = &startMenu->fieldMoveCheckData;
+    partyMenuArgs->fieldMoveCheckData = &startMenu->fieldMoveCheckData;
     partyMenuArgs->unk_25 = 0;
     partyMenuArgs->fieldSystem = fieldSystem;
     partyMenuArgs->unk20 = &fieldSystem->unk_10C;
 }
 
-static BOOL sub_0203CFC0(TaskManager *taskManager) {
+static BOOL Task_StartMenu_HandleReturn(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1395,7 +1395,7 @@ static BOOL sub_0203D6C8(TaskManager *taskManager) {
     BagCursor_Field_PocketSetPosition(fieldSystem->bagCursor, POCKET_BERRIES, 0, 0);
     FreeToHeapExplicit(HEAP_ID_FIELD, startMenu->atexit_TaskEnv);
     startMenu->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &startMenu->itemCheckUseData);
-    StartMenu_SetChildProcReturnTaskFunc(startMenu, sub_0203CFC0);
+    StartMenu_SetChildProcReturnTaskFunc(startMenu, Task_StartMenu_HandleReturn);
     return FALSE;
 }
 
@@ -1405,7 +1405,7 @@ BOOL sub_0203D718(TaskManager *taskManager) {
 
     FreeToHeapExplicit(HEAP_ID_FIELD, startMenu->atexit_TaskEnv);
     startMenu->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &startMenu->itemCheckUseData);
-    StartMenu_SetChildProcReturnTaskFunc(startMenu, sub_0203CFC0);
+    StartMenu_SetChildProcReturnTaskFunc(startMenu, Task_StartMenu_HandleReturn);
     return FALSE;
 }
 
@@ -1433,11 +1433,11 @@ BOOL Task_UseFlyInField(TaskManager *taskManager) {
     return FALSE;
 }
 
-struct UnkStruct_0203D818 *sub_0203D818(u16 itemId, u8 a1, u8 a2) {
+struct UnkStruct_0203D818 *sub_0203D818(u16 itemId, u8 kind, u8 partySlot) {
     struct UnkStruct_0203D818 *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct UnkStruct_0203D818));
     ret->itemId = itemId;
-    ret->unk2 = a2;
-    ret->unk3 = a1;
+    ret->partySlot = partySlot;
+    ret->kind = kind;
     return ret;
 }
 
@@ -1446,15 +1446,15 @@ BOOL sub_0203D830(TaskManager *taskManager) {
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     struct UnkStruct_0203D818 *unk = startMenu->atexit_TaskEnv2;
-    switch (unk->unk3) {
+    switch (unk->kind) {
     case 3:
         sub_02090F90(startMenu->atexit_TaskEnv);
         startMenu->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &startMenu->itemCheckUseData);
-        StartMenu_SetChildProcReturnTaskFunc(startMenu, sub_0203CFC0);
+        StartMenu_SetChildProcReturnTaskFunc(startMenu, Task_StartMenu_HandleReturn);
         break;
     case 2:
         sub_02090F90(startMenu->atexit_TaskEnv);
-        startMenu->atexit_TaskEnv = PartyMenu_LaunchApp_Unk1(fieldSystem, &startMenu->fieldMoveCheckData, unk->unk2);
+        startMenu->atexit_TaskEnv = PartyMenu_LaunchApp_Unk1(fieldSystem, &startMenu->fieldMoveCheckData, unk->partySlot);
         StartMenu_SetChildProcReturnTaskFunc(startMenu, Task_StartMenu_HandleReturn_Pokemon);
         break;
     case 0:
@@ -1462,7 +1462,7 @@ BOOL sub_0203D830(TaskManager *taskManager) {
             sub_0203D940(fieldSystem, startMenu, 12);
         } else {
             sub_02090F90(startMenu->atexit_TaskEnv);
-            startMenu->atexit_TaskEnv = PartyMenu_LaunchApp_Unk1(fieldSystem, &startMenu->fieldMoveCheckData, unk->unk2);
+            startMenu->atexit_TaskEnv = PartyMenu_LaunchApp_Unk1(fieldSystem, &startMenu->fieldMoveCheckData, unk->partySlot);
             StartMenu_SetChildProcReturnTaskFunc(startMenu, Task_StartMenu_HandleReturn_Pokemon);
         }
         break;
@@ -1472,7 +1472,7 @@ BOOL sub_0203D830(TaskManager *taskManager) {
         } else {
             sub_02090F90(startMenu->atexit_TaskEnv);
         startMenu->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &startMenu->itemCheckUseData);
-        StartMenu_SetChildProcReturnTaskFunc(startMenu, sub_0203CFC0);
+        StartMenu_SetChildProcReturnTaskFunc(startMenu, Task_StartMenu_HandleReturn);
         }
         break;
     }
@@ -1485,9 +1485,9 @@ static void sub_0203D940(FieldSystem *fieldSystem, StartMenuTaskData *startMenu,
     PartyMenuArgs *partyMenuArgs = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
     sub_0203CF74(partyMenuArgs, fieldSystem, startMenu);
     partyMenuArgs->itemId = unk->itemId;
-    partyMenuArgs->partySlot = unk->unk2;
+    partyMenuArgs->partySlot = unk->partySlot;
     partyMenuArgs->unk_24 = a2;
-    sub_02090F70(startMenu->atexit_TaskEnv, Party_GetMonByIndex(partyMenuArgs->party, unk->unk2));
+    sub_02090F70(startMenu->atexit_TaskEnv, Party_GetMonByIndex(partyMenuArgs->party, unk->partySlot));
     sub_02090F90(startMenu->atexit_TaskEnv);
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, partyMenuArgs);
     startMenu->atexit_TaskEnv = partyMenuArgs;
@@ -1499,7 +1499,7 @@ BOOL sub_0203D9B4(TaskManager *taskManager) {
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     startMenu->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &startMenu->itemCheckUseData);
-    StartMenu_SetChildProcReturnTaskFunc(startMenu, sub_0203CFC0);
+    StartMenu_SetChildProcReturnTaskFunc(startMenu, Task_StartMenu_HandleReturn);
     return FALSE;
 }
 
@@ -1541,6 +1541,6 @@ static void Task_StartMenu_WaitEvolution(TaskManager *taskManager) {
         int *unk = startMenu->atexit_TaskEnv2;
         sub_020778E0(startMenu->atexit_TaskEnv, *unk);
         FreeToHeap(startMenu->atexit_TaskEnv2);
-        StartMenu_SetChildProcReturnTaskFunc(startMenu, sub_0203CFC0);
+        StartMenu_SetChildProcReturnTaskFunc(startMenu, Task_StartMenu_HandleReturn);
     }
 }

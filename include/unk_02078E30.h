@@ -14,7 +14,7 @@ typedef struct PartyMenuArgs {
     Options *options;
     UnkStruct_0202E474 *unk10;
     int unk_14;
-    FieldMoveCheckData *unk_18;
+    FieldMoveCheckData *fieldMoveCheckData;
     FieldSystem *fieldSystem;
     BOOL *unk20;
     u8 unk_24;

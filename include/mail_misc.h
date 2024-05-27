@@ -67,7 +67,7 @@ BOOL sub_02090DC0(EasyChatArgs *args, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2);
 void sub_02090E04(EasyChatArgs *args, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2);
 int sub_02090E44(EasyChatArgs *args);
 void sub_02090E5C(EasyChatArgs *args, u32 a1);
-UseMailArgs *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 a3, HeapID heapId);
+UseMailArgs *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 mailType, HeapID heapId);
 UseMailArgs *sub_02090EC0(SaveData *saveData, int n, u16 i, HeapID heapId);
 UseMailArgs *sub_02090F00(SaveData *saveData, Pokemon *mon, HeapID heapId);
 UseMailArgs *sub_02090F38(SaveData *saveData, u8 mailType, HeapID heapId);

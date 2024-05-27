@@ -46,8 +46,8 @@ typedef struct StartMenuTaskData {
 
 struct UnkStruct_0203D818 {
     u16 itemId;
-    u8 unk2;
-    u8 unk3;
+    u8 partySlot;
+    u8 kind;
 };
 
 struct FlyTaskStruct {
@@ -64,7 +64,7 @@ void StartMenu_SetChildProcReturnTaskFunc(StartMenuTaskData *env, TaskFunc func)
 BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager);
 BOOL sub_0203D718(TaskManager *taskManager);
 BOOL Task_UseFlyInField(TaskManager *taskManager);
-struct UnkStruct_0203D818 *sub_0203D818(u16 itemId, u8 a1, u8 a2);
+struct UnkStruct_0203D818 *sub_0203D818(u16 itemId, u8 kind, u8 partySlot);
 BOOL sub_0203D830(TaskManager *taskManager);
 BOOL sub_0203D9B4(TaskManager *taskManager);
 

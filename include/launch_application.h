@@ -148,7 +148,7 @@ PokegearArgs *PokegearTownMap_LaunchApp(FieldSystem *fieldSystem, int kind);
 SafariAreaCustomizerArgs *SafariAreaCustomizer_LaunchApp(FieldSystem *fieldSystem);
 PhotoAlbumArgs *PhotoAlbum_LaunchApp(FieldSystem *fieldSystem, int unused, int initialCursorPos);
 OptionsMenuArgs *OptionsMenu_LaunchApp(FieldSystem *fieldSystem);
-UseMailArgs *sub_0203EFEC(FieldSystem *fieldSystem, u16 a1, u8 a2, u8 a3, HeapID heapId);
+UseMailArgs *sub_0203EFEC(FieldSystem *fieldSystem, u16 a1, u8 partyIdx, u8 mailType, HeapID heapId);
 UseMailArgs *sub_0203F050(FieldSystem *fieldSystem, Pokemon *mon, HeapID heapId);
 void TrainerCard_LaunchApp(FieldSystem *fieldSystem, TrainerCardAppArgs *a1);
 int Pokedex_LaunchApp(FieldSystem *fieldSystem, PokedexArgs *a1);
