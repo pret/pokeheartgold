@@ -7,6 +7,7 @@
 #include "script.h"
 #include "gear_phone.h"
 #include "sys_task_api.h"
+#include "field_types_def.h"
 
 typedef struct PokegearArgs{
     u8 kind;

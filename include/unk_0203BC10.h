@@ -63,10 +63,10 @@ BOOL sub_0203C3CC(FieldSystem *fieldSystem, int a1);
 void sub_0203C8F0(StartMenuTaskData *env, TaskFunc func);
 BOOL sub_0203CA9C(TaskManager *taskManager);
 BOOL sub_0203D718(TaskManager *taskManager);
+BOOL Task_UseFlyInField(TaskManager *taskManager);
 struct UnkStruct_0203D818 *sub_0203D818(u16 itemId, u8 a1, u8 a2);
 BOOL sub_0203D830(TaskManager *taskManager);
 BOOL sub_0203D9B4(TaskManager *taskManager);
-BOOL Task_UseFlyInField(TaskManager *taskManager);
 
 extern const u8 _020FA0B0[];
 

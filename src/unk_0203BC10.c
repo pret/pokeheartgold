@@ -15,6 +15,7 @@
 #include "pokedex_util.h"
 #include "save_local_field_data.h"
 #include "save_vars_flags.h"
+#include "sound_02004A44.h"
 #include "sys_flags.h"
 #include "system.h"
 #include "unk_02005D10.h"
@@ -23,11 +24,13 @@
 #include "unk_020183F0.h"
 #include "unk_02034B0C.h"
 #include "unk_02037C94.h"
+#include "unk_02054E00.h"
 #include "unk_0205A44C.h"
 #include "unk_0205AC88.h"
 #include "unk_0205CB48.h"
 #include "unk_02066EDC.h"
 #include "constants/start_menu_icons.h"
+#include "unk_020755E8.h"
 #include "unk_02092BE8.h"
 #include "overlay_01_021F6830.h"
 #include "unk_02068FC8.h"
@@ -131,6 +134,7 @@ BOOL sub_0203D550(TaskManager *taskManager);
 BOOL sub_0203D580(TaskManager *taskManager);
 void sub_0203D664(TaskManager *taskManager, int a1);
 BOOL sub_0203D6C8(TaskManager *taskManager);
+void sub_0203D940(FieldSystem *fieldSystem, StartMenuTaskData *startMenu, u8 a2);
 void sub_0203D9E8(TaskManager *taskManager);
 void sub_0203DAE4(TaskManager *taskManager);
 
@@ -1318,4 +1322,116 @@ BOOL Task_UseFlyInField(TaskManager *taskManager) {
         startMenu->state = 12;
     }
     return FALSE;
+}
+
+struct UnkStruct_0203D818 *sub_0203D818(u16 itemId, u8 a1, u8 a2) {
+    struct UnkStruct_0203D818 *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct UnkStruct_0203D818));
+    ret->itemId = itemId;
+    ret->unk2 = a2;
+    ret->unk3 = a1;
+    return ret;
+}
+
+BOOL sub_0203D830(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    struct UnkStruct_0203D818 *unk = startMenu->unk_384;
+    switch (unk->unk3) {
+    case 3:
+        sub_02090F90(startMenu->atexit_TaskEnv);
+        startMenu->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &startMenu->unk_358);
+        sub_0203C8F0(startMenu, sub_0203CFC0);
+        break;
+    case 2:
+        sub_02090F90(startMenu->atexit_TaskEnv);
+        startMenu->atexit_TaskEnv = PartyMenu_LaunchApp_Unk1(fieldSystem, &startMenu->unk_370, unk->unk2);
+        sub_0203C8F0(startMenu, sub_0203CA9C);
+        break;
+    case 0:
+        if (sub_02090F6C(startMenu->atexit_TaskEnv) == TRUE) {
+            sub_0203D940(fieldSystem, startMenu, 12);
+        } else {
+            sub_02090F90(startMenu->atexit_TaskEnv);
+            startMenu->atexit_TaskEnv = PartyMenu_LaunchApp_Unk1(fieldSystem, &startMenu->unk_370, unk->unk2);
+            sub_0203C8F0(startMenu, sub_0203CA9C);
+        }
+        break;
+    case 1:
+        if (sub_02090F6C(startMenu->atexit_TaskEnv) == TRUE) {
+            sub_0203D940(fieldSystem, startMenu, 11);
+        } else {
+            sub_02090F90(startMenu->atexit_TaskEnv);
+        startMenu->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &startMenu->unk_358);
+        sub_0203C8F0(startMenu, sub_0203CFC0);
+        }
+        break;
+    }
+    FreeToHeap(startMenu->unk_384);
+    return FALSE;
+}
+
+void sub_0203D940(FieldSystem *fieldSystem, StartMenuTaskData *startMenu, u8 a2) {
+    struct UnkStruct_0203D818 *unk = startMenu->unk_384;
+    PartyMenuArgs *partyMenuArgs = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
+    sub_0203CF74(partyMenuArgs, fieldSystem, startMenu);
+    partyMenuArgs->itemId = unk->itemId;
+    partyMenuArgs->unk_26 = unk->unk2;
+    partyMenuArgs->unk_24 = a2;
+    sub_02090F70(startMenu->atexit_TaskEnv, Party_GetMonByIndex(partyMenuArgs->party, unk->unk2));
+    sub_02090F90(startMenu->atexit_TaskEnv);
+    FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, partyMenuArgs);
+    startMenu->atexit_TaskEnv = partyMenuArgs;
+    sub_0203C8F0(startMenu, sub_0203CA9C);
+}
+
+BOOL sub_0203D9B4(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    startMenu->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &startMenu->unk_358);
+    sub_0203C8F0(startMenu, sub_0203CFC0);
+    return FALSE;
+}
+
+void sub_0203D9E8(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    UnkStruct_0203CA9C_Case8 *unk = startMenu->atexit_TaskEnv;
+    Sound_Stop();
+    CreateHeap(HEAP_ID_3, HEAP_ID_EVOLUTION, 0x30000);
+
+    Party *party = SaveArray_Party_Get(fieldSystem->saveData);
+    Pokemon *pokemon = Party_GetMonByIndex(party, unk->unk_0);
+    EvolutionTaskData *evolution;
+    if (unk->unk_1 == 0) {  // explicit equality is required to match
+        evolution = sub_02075A7C(party, pokemon, unk->unk_4, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData), sub_02088288(fieldSystem->saveData), Save_Pokedex_Get(fieldSystem->saveData), Save_Bag_Get(fieldSystem->saveData), Save_GameStats_Get(fieldSystem->saveData), unk->unk_8, TRUE, HEAP_ID_EVOLUTION);
+    } else {
+        evolution = sub_02075A7C(party, pokemon, unk->unk_4, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData), sub_02088288(fieldSystem->saveData), Save_Pokedex_Get(fieldSystem->saveData), Save_Bag_Get(fieldSystem->saveData), Save_GameStats_Get(fieldSystem->saveData), unk->unk_8, FALSE, HEAP_ID_EVOLUTION);
+    }
+    int *newEnv = AllocFromHeap(HEAP_ID_FIELD, sizeof(int));
+    *newEnv = unk->unk_0;
+    startMenu->unk_384 = newEnv;
+    FreeToHeap(startMenu->atexit_TaskEnv);
+    startMenu->atexit_TaskEnv = evolution;
+    startMenu->state = 9;
+}
+
+void sub_0203DAE4(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    if (sub_02075D3C(startMenu->atexit_TaskEnv) == TRUE) {
+        sub_02075D4C(startMenu->atexit_TaskEnv);
+        DestroyHeap(HEAP_ID_EVOLUTION);
+        StopBGM(SEQ_GS_SHINKA, 0);
+        sub_02004AD8(0);
+        sub_02055164(fieldSystem, fieldSystem->location->mapId);
+        startMenu->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &startMenu->unk_358);
+        int *unk = startMenu->unk_384;
+        sub_020778E0(startMenu->atexit_TaskEnv, *unk);
+        FreeToHeap(startMenu->unk_384);
+        sub_0203C8F0(startMenu, sub_0203CFC0);
+    }
 }

@@ -101,7 +101,7 @@ typedef struct TradeSequenceArgs {
     TradeSequenceBackground bgType;
     int unk10;
     Options *options;
-    void *unk18;
+    EvolutionTaskData *unk18;
     u8 unk1C[0x4];
 } TradeSequenceArgs;
 
