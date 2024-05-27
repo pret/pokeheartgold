@@ -1,3 +1,4 @@
+#include "bag_view.h"
 #include "constants/sndseq.h"
 #include "field_map_object.h"
 #include "field_move.h"
@@ -10,6 +11,7 @@
 #include "constants/map_sections.h"
 #include "overlay_01.h"
 #include "pokedex.h"
+#include "pokedex_util.h"
 #include "save_local_field_data.h"
 #include "save_vars_flags.h"
 #include "sys_flags.h"
@@ -62,6 +64,14 @@ typedef struct StartMenuAction {
     TaskFunc func;
 } StartMenuAction;
 
+typedef struct UnkStruct_0203CA9C_Case8 {
+    u8 unk_0;
+    u8 unk_1;
+    u16 unk_2;
+    u16 unk_4;
+    int unk_8;
+} UnkStruct_0203CA9C_Case8;
+
 #define STARTMENUTASKFUNC_CANCEL     ((TaskFunc)-2)
 #define STARTMENUTASKFUNC_NONE    ((TaskFunc)-1)
 
@@ -94,6 +104,7 @@ BOOL sub_0203CA14(TaskManager *taskManager);
 BOOL sub_0203CA44(TaskManager *taskManager);
 BOOL sub_0203CA68(TaskManager *taskManager);
 BOOL sub_0203CF0C(TaskManager *taskManager);
+BOOL sub_0203CFC0(TaskManager *taskManager);
 BOOL sub_0203D1A8(TaskManager *taskManager);
 BOOL sub_0203D244(TaskManager *taskManager);
 void sub_0203D264(TaskManager *taskManager);
@@ -105,11 +116,15 @@ BOOL sub_0203D318(TaskManager *taskManager);
 BOOL sub_0203D394(TaskManager *taskManager);
 BOOL sub_0203D488(TaskManager *taskManager);
 BOOL sub_0203D500(TaskManager *taskManager);
+BOOL sub_0203D580(TaskManager *taskManager);
 void sub_0203D9E8(TaskManager *taskManager);
 void sub_0203DAE4(TaskManager *taskManager);
 
 extern const int _020FA0C4[];
 extern const StartMenuAction _020FA0F4[];
+extern const u8 _020FA0AC[];
+extern const u8 _020FA0B0[];
+extern const u8 _020FA0B8[];
 
 BOOL sub_0203BC10(FieldSystem *fieldSystem) {
     return MapHeader_GetMapSec(fieldSystem->location->mapId) != MAPSEC_MYSTERY_ZONE;
@@ -709,5 +724,183 @@ BOOL sub_0203CA68(TaskManager *taskManager) {
 
     env->atexit_TaskEnv = PartyMenu_LaunchApp_Unk1(fieldSystem, &env->unk_370, 0);
     env->atexit_TaskFunc = sub_0203CA9C;
+    return FALSE;
+}
+
+BOOL sub_0203CA9C(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *env = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    PartyMenuArgs *r6 = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
+    memcpy(r6, env->atexit_TaskEnv, sizeof(PartyMenuArgs));
+    FreeToHeap(env->atexit_TaskEnv);
+
+    switch (r6->unk_27) {
+    case 1: {
+        PokemonSummaryArgs *r7 = AllocFromHeap(HEAP_ID_FIELD, sizeof(PokemonSummaryArgs));
+        r7->party = SaveArray_Party_Get(fieldSystem->saveData);
+        r7->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
+        r7->unk11 = 1;
+        r7->unk14 = r6->unk_26;
+        r7->partyCount = Party_GetCount(r7->party);
+        r7->unk18 = 0;
+        r7->unk12 = 0;
+        r7->ribbons = Save_SpecialRibbons_Get(fieldSystem->saveData);
+        r7->natDexEnabled = SaveArray_IsNatDexEnabled(fieldSystem->saveData);
+        r7->unk2C = sub_02088288(fieldSystem->saveData);
+        r7->unk28 = 0;
+        r7->unk30 = &fieldSystem->unk_10C;
+        r7->isFlag982Set = sub_0208828C(fieldSystem->saveData);
+        sub_02089D40(r7, _020FA0B0);
+        sub_0208AD34(r7, Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
+        PokemonSummary_LearnForget_LaunchApp(fieldSystem, r7);
+        env->atexit_TaskEnv = r7;
+        sub_0203C8F0(env, sub_0203D580);
+        break;
+    }
+    case 4: {
+        PokemonSummaryArgs *r7 = AllocFromHeap(HEAP_ID_FIELD, sizeof(PokemonSummaryArgs));
+        r7->party = SaveArray_Party_Get(fieldSystem->saveData);
+        r7->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
+        r7->unk11 = 1;
+        r7->unk14 = r6->unk_26;
+        r7->partyCount = 1;
+        r7->unk18 = r6->unk2A;
+        r7->unk12 = 2;
+        r7->natDexEnabled = SaveArray_IsNatDexEnabled(fieldSystem->saveData);
+        r7->unk2C = sub_02088288(fieldSystem->saveData);
+        r7->unk28 = 0;
+        r7->unk30 = &fieldSystem->unk_10C;
+        r7->isFlag982Set = sub_0208828C(fieldSystem->saveData);
+        sub_02089D40(r7, _020FA0AC);
+        sub_0208AD34(r7, Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
+        PokemonSummary_LearnForget_LaunchApp(fieldSystem, r7);
+        u16 *unk = AllocFromHeap(HEAP_ID_FIELD, 2 * sizeof(u16));
+        unk[0] = r6->unk28;
+        unk[1] = 0;
+        env->unk_384 = unk;
+        env->atexit_TaskEnv = r7;
+        sub_0203C8F0(env, sub_0203D580);
+        break;
+    }
+    case 5: {
+        PokemonSummaryArgs *r7 = AllocFromHeap(HEAP_ID_FIELD, sizeof(PokemonSummaryArgs));
+        r7->party = SaveArray_Party_Get(fieldSystem->saveData);
+        r7->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
+        r7->unk11 = 1;
+        r7->unk14 = r6->unk_26;
+        r7->partyCount = 1;
+        r7->unk18 = r6->unk2A;
+        r7->unk12 = 2;
+        r7->natDexEnabled = SaveArray_IsNatDexEnabled(fieldSystem->saveData);
+        r7->unk2C = sub_02088288(fieldSystem->saveData);
+        r7->unk28 = 0;
+        r7->unk30 = &fieldSystem->unk_10C;
+        r7->isFlag982Set = sub_0208828C(fieldSystem->saveData);
+        sub_02089D40(r7, _020FA0AC);
+        sub_0208AD34(r7, Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
+        PokemonSummary_LearnForget_LaunchApp(fieldSystem, r7);
+        u16 *unk = AllocFromHeap(HEAP_ID_FIELD, 2 * sizeof(u16));
+        unk[0] = 0;
+        unk[1] = r6->unk_38;
+        env->unk_384 = unk;
+        env->atexit_TaskEnv = r7;
+        sub_0203C8F0(env, sub_0203D580);
+        break;
+    }
+    case 6:
+        env->atexit_TaskEnv = sub_0203EFEC(fieldSystem, 2, r6->unk_26, ItemToMailId(r6->unk28), HEAP_ID_FIELD);
+        if (r6->unk_24 == 10) {
+            env->unk_384 = sub_0203D818(r6->unk28, 0, r6->unk_26);
+        } else {
+            env->unk_384 = sub_0203D818(r6->unk28, 1, r6->unk_26);
+        }
+        sub_0203C8F0(env, sub_0203D830);
+        break;
+    case 7:
+        env->atexit_TaskEnv = sub_0203F050(fieldSystem, Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), r6->unk_26), HEAP_ID_FIELD);
+        env->unk_384 = sub_0203D818(r6->unk28, 2, r6->unk_26);
+        sub_0203C8F0(env, sub_0203D830);
+        break;
+    case 3: {
+        int *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(int));
+        *unk = r6->unk_26;
+        env->unk_384 = unk;
+        Bag *bag = Save_Bag_Get(fieldSystem->saveData);
+        PlayerProfile *playerProfile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+        (void)playerProfile;
+        env->atexit_TaskEnv = Bag_CreateView(bag, _020FA0B8, HEAP_ID_FIELD);
+        sub_0207789C(env->atexit_TaskEnv, fieldSystem->saveData, 1, fieldSystem->bagCursor, &fieldSystem->unk_10C);
+        Bag_LaunchApp(fieldSystem, env->atexit_TaskEnv);
+        sub_0203C8F0(env, sub_0203CFC0);
+        break;
+    }
+    case 8: {
+        UnkStruct_0203CA9C_Case8 *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0203CA9C_Case8));
+        unk->unk_2 = r6->unk28;
+        unk->unk_1 = 3;
+        unk->unk_0 = r6->unk_26;
+        unk->unk_4 = r6->unk_3C;
+        unk->unk_8 = r6->unk_40;
+        env->atexit_TaskEnv = unk;
+        env->state = 8;
+        break;
+    }
+    case 9: {
+        UnkStruct_0203CA9C_Case8 *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0203CA9C_Case8));
+        unk->unk_2 = MapHeader_GetMapEvolutionMethod(fieldSystem->location->mapId);
+        unk->unk_1 = 0;
+        unk->unk_0 = r6->unk_26;
+        unk->unk_4 = r6->unk_3C;
+        unk->unk_8 = r6->unk_40;
+        env->atexit_TaskEnv = unk;
+        env->state = 8;
+        break;
+    }
+    case 11:
+    case 12:
+    case 13:
+    case 14:
+    case 15:
+    case 16:
+    case 17:
+    case 18:
+    case 19:
+    case 20:
+    case 21:
+    case 22:
+    case 23:
+    case 24: {
+        FieldMoveUseData sp4;
+
+        sp4.fieldMoveIdx = r6->unk_27 - 11;
+        sp4.partySlot = r6->unk_26;
+        sp4.taskManager = taskManager;
+        ((FieldMoveUseFunc)PartyMenu_GetFieldMoveFunc(FIELD_MOVE_FUNC_USE, sp4.fieldMoveIdx))(&sp4, &env->unk_370);
+        break;
+    }
+    case 10:
+        env->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &env->unk_358);
+        sub_0203C8F0(env, sub_0203CFC0);
+        break;
+    default:
+        if (r6->unk_24 == 5 || r6->unk_24 == 6 || r6->unk_24 == 7 || r6->unk_24 == 16 || r6->unk_24 == 8) {
+            env->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &env->unk_358);
+            if (r6->unk_26 >= 6) {
+                sub_020778E0(env->atexit_TaskEnv, 0);
+            } else {
+                sub_020778E0(env->atexit_TaskEnv, r6->unk_26);
+            }
+            sub_0203C8F0(env, sub_0203CFC0);
+        } else if (r6->unk_24 == 9) {
+            env->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &env->unk_358);
+            sub_0203C8F0(env, sub_0203CFC0);
+        } else {
+            sub_020505C0(fieldSystem);
+            env->state = 15;
+        }
+        break;
+    }
+    FreeToHeap(r6);
     return FALSE;
 }

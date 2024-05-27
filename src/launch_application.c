@@ -68,8 +68,6 @@
 #include "battle/battle_022378C0.h"
 #include "constants/flags.h"
 
-extern u8 _020FA0B0[];
-
 static PartyMenuArgs *PartyMenu_CreateArgs(HeapID heapId, FieldSystem *fieldSystem, int a2, int a3);
 static BOOL Task_OpenPartyMenuThenMoveSelect(TaskManager *taskman);
 static BOOL sub_0203E878(TaskManager *taskman);
@@ -124,7 +122,7 @@ void Bag_LaunchApp(FieldSystem *fieldSystem, BagView *args) {
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
 
-BagView *sub_0203E3FC(FieldSystem *fieldSystem, TaskManager *taskman) {
+BagView *sub_0203E3FC(FieldSystem *fieldSystem, ItemCheckUseData *taskman) {
     BagView *bagView = Bag_CreateView(Save_Bag_Get(fieldSystem->saveData), sAllPockets, HEAP_ID_FIELD);
     sub_0207789C(bagView, fieldSystem->saveData, 0, fieldSystem->bagCursor, &fieldSystem->unk_10C);
     sub_020778E8(bagView, fieldSystem->unk70);
@@ -665,7 +663,7 @@ static void sub_0203EFD4(FieldSystem *fieldSystem, UseMailArgs *args) {
     FieldSystem_LaunchApplication(fieldSystem, &_020FA434, args);
 }
 
-UseMailArgs *sub_0203EFEC(FieldSystem *fieldSystem, u16 a1, u8 partyIdx, u8 a3) {
+UseMailArgs *sub_0203EFEC(FieldSystem *fieldSystem, u16 a1, u8 partyIdx, u8 a3, HeapID heapId) {
     UseMailArgs *args = sub_02090E68(FieldSystem_GetSaveData(fieldSystem), a1, partyIdx, a3, HEAP_ID_FIELD);
     sub_0203EFD4(fieldSystem, args);
     return args;

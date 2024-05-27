@@ -1,3 +1,4 @@
+#include "bag_view.h"
 #include "task.h"
 #include "field_use_item.h"
 #include "sys_flags.h"

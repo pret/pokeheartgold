@@ -57,7 +57,7 @@ void sub_020778C8(BagView *bagView) {
     bagView->unk76_0 = TRUE;
 }
 
-void sub_020778DC(BagView *bagView, void *a1) {
+void sub_020778DC(BagView *bagView, ItemCheckUseData *a1) {
     bagView->unk70 = a1;
 }
 

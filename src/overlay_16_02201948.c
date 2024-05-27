@@ -1,3 +1,4 @@
+#include "bag_view.h"
 #include "global.h"
 #include "constants/items.h"
 #include "bag_cursor.h"

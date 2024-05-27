@@ -3,25 +3,13 @@
 
 #include "task.h"
 #include "party.h"
-#include "bag.h"
+#include "bag_types_def.h"
 #include "mail.h"
-#include "bag_view.h"
 #include "unk_0202E41C.h"
 
 #define USE_ITEM_TASK_MENU               0
 #define USE_ITEM_TASK_FIELD              1
 #define USE_ITEM_TASK_CHECK              2
-
-typedef struct ItemCheckUseData {
-    u32 mapId;
-    int playerState;
-    u16 haveFollower:1;
-    u16 haveRocketCostume:1;
-    u16 facingTile;
-    u16 standingTile;
-    PlayerAvatar *playerAvatar;
-    FieldSystem *fieldSystem;
-} ItemCheckUseData;
 
 struct AlphItemUseData {
     int scriptNo;

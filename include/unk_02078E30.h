@@ -22,13 +22,16 @@ typedef struct PartyMenuArgs {
     u8 unk_26;
     u8 unk_27;
     u16 unk28;
-    u8 unk2A[0x6];
+    u16 unk2A;
+    u8 filler_2C[0x4];
     u8 unk_30[3];
     u8 filler_33[3];
     u8 unk_36_0:4;
     u8 unk_36_4:4;
     u8 unk_37;
-    u8 filler_38[0xC];
+    int unk_38;
+    u16 unk_3C;
+    int unk_40;
 } PartyMenuArgs;
 
 extern const OVY_MGR_TEMPLATE gOverlayTemplate_PartyMenu;
