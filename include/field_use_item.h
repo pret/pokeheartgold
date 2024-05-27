@@ -21,7 +21,7 @@ struct AlphItemUseData {
 
 typedef void *(*FieldApplicationWorkCtor)(FieldSystem *fieldSystem);
 
-struct ItemFieldUseData {
+typedef struct ItemFieldUseData {
     FieldSystem *fieldSystem;      // 00
     struct ItemCheckUseData dat;   // 04
     FieldApplicationWorkCtor ctor; // 1C
@@ -29,13 +29,13 @@ struct ItemFieldUseData {
     u16 itemId;                    // 24
     u8 state;                      // 26
     u8 no_app;                     // 27
-};
+} ItemFieldUseData;
 
-struct ItemMenuUseData {
+typedef struct ItemMenuUseData {
     TaskManager *taskManager;
     u16 itemId;
     u8 unk6;
-};
+} ItemMenuUseData;
 
 typedef void (*ItemMenuUseFunc)(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
 typedef BOOL (*ItemFieldUseFunc)(struct ItemFieldUseData *data);
@@ -66,7 +66,7 @@ struct RegisteredKeyItemUseMessagePrintTaskData {
     u16 state;
 };
 
-void *GetItemFieldUseFunc(int funcType, int itemType);
+void *GetItemFieldUseFunc(int funcType, u16 itemType);
 void ItemCheckUseData_Init(FieldSystem *fieldSystem, struct ItemCheckUseData *dat);
 BOOL Leftover_CanPlantBerry(const struct ItemCheckUseData *data);
 int UseRegisteredItemButtonInField(FieldSystem *fieldSystem, u8 slot);

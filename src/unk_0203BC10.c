@@ -1,11 +1,11 @@
+#include "global.h"
+#include "unk_0203BC10.h"
 #include "bag_view.h"
 #include "constants/sndseq.h"
 #include "field_map_object.h"
 #include "field_move.h"
 #include "field_use_item.h"
 #include "gf_gfx_loader.h"
-#include "global.h"
-#include "unk_0203BC10.h"
 #include "launch_application.h"
 #include "map_header.h"
 #include "constants/map_sections.h"
@@ -29,6 +29,7 @@
 #include "constants/start_menu_icons.h"
 #include "unk_02092BE8.h"
 #include "overlay_01_021F6830.h"
+#include "unk_02068FC8.h"
 
 typedef enum StartMenuIconInternal {
     START_MENU_ICON_INTERNAL_POKEDEX,
@@ -104,8 +105,12 @@ BOOL sub_0203CA14(TaskManager *taskManager);
 BOOL sub_0203CA44(TaskManager *taskManager);
 BOOL sub_0203CA68(TaskManager *taskManager);
 BOOL sub_0203CF0C(TaskManager *taskManager);
+BOOL sub_0203CF30(TaskManager *taskManager);
+void sub_0203CF74(PartyMenuArgs *partyMenuArgs, FieldSystem *fieldSystem, StartMenuTaskData *startMenu);
 BOOL sub_0203CFC0(TaskManager *taskManager);
 BOOL sub_0203D1A8(TaskManager *taskManager);
+BOOL sub_0203D1CC(TaskManager *taskManager);
+BOOL sub_0203D218(TaskManager *taskManager);
 BOOL sub_0203D244(TaskManager *taskManager);
 void sub_0203D264(TaskManager *taskManager);
 void sub_0203D288(TaskManager *taskManager);
@@ -113,10 +118,13 @@ BOOL sub_0203D2CC(TaskManager *taskManager);
 void sub_0203D2EC(TaskManager *taskManager);
 void sub_0203D304(TaskManager *taskManager);
 BOOL sub_0203D318(TaskManager *taskManager);
+BOOL sub_0203D33C(TaskManager *taskManager);
+BOOL sub_0203D368(TaskManager *taskManager);
 BOOL sub_0203D394(TaskManager *taskManager);
 BOOL sub_0203D488(TaskManager *taskManager);
 BOOL sub_0203D500(TaskManager *taskManager);
 BOOL sub_0203D580(TaskManager *taskManager);
+void sub_0203D664(TaskManager *taskManager, int a1);
 void sub_0203D9E8(TaskManager *taskManager);
 void sub_0203DAE4(TaskManager *taskManager);
 
@@ -249,32 +257,32 @@ u32 sub_0203BEE8(FieldSystem *fieldSystem) {
 
 BOOL sub_0203BEF0(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    StartMenuTaskData *env = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
-    switch (env->state) {
+    switch (startMenu->state) {
     case 0:
         MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
         if (ov01_021F6B00(fieldSystem)) {
             ov01_021F6A9C(fieldSystem, 0, NULL);
-            env->state = 2;
+            startMenu->state = 2;
             break;
         }
         // fallthrough
     case 1:
-        ItemCheckUseData_Init(fieldSystem, &env->unk_358);
-        FieldSystem_MakeFieldMoveCheckData(fieldSystem, &env->unk_370);
+        ItemCheckUseData_Init(fieldSystem, &startMenu->unk_358);
+        FieldSystem_MakeFieldMoveCheckData(fieldSystem, &startMenu->unk_370);
         sub_0203C14C(taskManager);
         fieldSystem->unkD2_0 = 1;
-        env->state = 3;
+        startMenu->state = 3;
         break;
     case 2:
         if (ov01_021F6B10(fieldSystem) == 6) {
             sub_0203C14C(taskManager);
             fieldSystem->unkD2_0 = 1;
         } else if (ov01_021F6B10(fieldSystem) == 1) {
-            ItemCheckUseData_Init(fieldSystem, &env->unk_358);
-            FieldSystem_MakeFieldMoveCheckData(fieldSystem, &env->unk_370);
-            env->state = 3;
+            ItemCheckUseData_Init(fieldSystem, &startMenu->unk_358);
+            FieldSystem_MakeFieldMoveCheckData(fieldSystem, &startMenu->unk_370);
+            startMenu->state = 3;
         }
         break;
     case 3:
@@ -306,19 +314,19 @@ BOOL sub_0203BEF0(TaskManager *taskManager) {
             sub_0203C14C(taskManager);
             fieldSystem->unkD2_0 = 1;
             ov01_021E636C(1);
-            env->state = 17;
+            startMenu->state = 17;
         }
         break;
     case 10:
         if (sub_020505C8(fieldSystem)) {
             ov01_021E636C(1);
-            env->state = 11;
+            startMenu->state = 11;
         }
         break;
     case 11:
         if (IsPaletteFadeFinished()) {
-            sub_0203C69C(env, fieldSystem);
-            FreeToHeap(env);
+            sub_0203C69C(startMenu, fieldSystem);
+            FreeToHeap(startMenu);
             MapObjectManager_UnpauseAllMovement(fieldSystem->mapObjectManager);
             return TRUE;
         }
@@ -327,33 +335,33 @@ BOOL sub_0203BEF0(TaskManager *taskManager) {
         if (sub_020505C8(fieldSystem)) {
             MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
             ov01_021E636C(1);
-            env->state = 13;
+            startMenu->state = 13;
         }
         break;
     case 13:
         if (IsPaletteFadeFinished()) {
-            TaskManager_Jump(taskManager, env->atexit_TaskFunc, env->atexit_TaskEnv);
-            FreeToHeap(env);
+            TaskManager_Jump(taskManager, startMenu->atexit_TaskFunc, startMenu->atexit_TaskEnv);
+            FreeToHeap(startMenu);
         }
         break;
     case 14:
-        env->atexit_TaskFunc(taskManager);
+        startMenu->atexit_TaskFunc(taskManager);
         break;
     case 18:
-        FreeToHeap(env);
+        FreeToHeap(startMenu);
         MapObjectManager_UnpauseAllMovement(fieldSystem->mapObjectManager);
         return TRUE;
     case 16:
-        sub_0203C69C(env, fieldSystem);
-        sub_0203C38C(env, fieldSystem);
+        sub_0203C69C(startMenu, fieldSystem);
+        sub_0203C38C(startMenu, fieldSystem);
         fieldSystem->unkD2_0 = 2;
         ScheduleBgTilemapBufferTransfer(fieldSystem->bgConfig, GF_BG_LYR_MAIN_3);
-        FreeToHeap(env);
+        FreeToHeap(startMenu);
         MapObjectManager_UnpauseAllMovement(fieldSystem->mapObjectManager);
         return TRUE;
     case 17:
         if (IsPaletteFadeFinished()) {
-            env->state = 3;
+            startMenu->state = 3;
         }
         break;
     case 19:
@@ -363,29 +371,29 @@ BOOL sub_0203BEF0(TaskManager *taskManager) {
         sub_0203D304(taskManager);
         break;
     }
-    if (env->unk_020) {
-        sub_0202457C(env->unk_1D4);
+    if (startMenu->unk_020) {
+        sub_0202457C(startMenu->unk_1D4);
     }
     return FALSE;
 }
 
 void sub_0203C14C(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    StartMenuTaskData *env = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
-    u32 r6 = sub_0203C220(env, env->unk_030, env->unk_03A);
-    env->unk_02C = r6;
-    env->unk_024 = 0;
+    u32 r6 = sub_0203C220(startMenu, startMenu->unk_030, startMenu->unk_03A);
+    startMenu->unk_02C = r6;
+    startMenu->unk_024 = 0;
     for (int i = 0; i < r6; ++i) {
-        if (fieldSystem->unk90 == env->unk_030[i]) {
-            env->unk_024 = i;
+        if (fieldSystem->unk90 == startMenu->unk_030[i]) {
+            startMenu->unk_024 = i;
         }
     }
-    env->unk_020 = TRUE;
+    startMenu->unk_020 = TRUE;
     GfGfxLoader_LoadCharData(NARC_a_0_1_4, 12, fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_FIELD);
     GfGfxLoader_GXLoadPal(NARC_a_0_1_4, 15, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0x1C0, 0x20, HEAP_ID_FIELD);
     GfGfxLoader_LoadScrnData(NARC_a_0_1_4, 13, fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_FIELD);
-    sub_0203C6C8(env, env->unk_030, r6, PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->saveData)));
+    sub_0203C6C8(startMenu, startMenu->unk_030, r6, PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->saveData)));
 }
 
 void sub_0203C1FC(u8 *a0, u8 *a1, u32 *a2, u8 a3, vu32 a4) {
@@ -480,11 +488,11 @@ void sub_0203C460(FieldSystem *fieldSystem) {
 
 BOOL sub_0203C47C(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    StartMenuTaskData *env = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     if (!ov01_021F6B00(fieldSystem) && ov01_021F6B10(fieldSystem) == TRUE) {
         if (gSystem.newKeys & PAD_BUTTON_A) {
-            if (!sub_0203C508(taskManager, fieldSystem, env)) {
+            if (!sub_0203C508(taskManager, fieldSystem, startMenu)) {
                 return FALSE;
             }
             sub_0203C460(fieldSystem);
@@ -492,10 +500,10 @@ BOOL sub_0203C47C(TaskManager *taskManager) {
             if (fieldSystem->unkD0 == 0) {
                 if (gSystem.newKeys & (PAD_BUTTON_B | PAD_BUTTON_X)) {
                     PlaySE(SEQ_SE_GS_GEARCANCEL);
-                    env->state = 16;
+                    startMenu->state = 16;
                 }
             } else {
-                if (!sub_0203C5A4(taskManager, fieldSystem, env)) {
+                if (!sub_0203C5A4(taskManager, fieldSystem, startMenu)) {
                     return FALSE;
                 }
                 sub_0203C460(fieldSystem);
@@ -624,44 +632,44 @@ void sub_0203C830(StartMenuTaskData *startMenu) {
 void sub_0203C870(TaskManager *taskManager) {
     if (IsPaletteFadeFinished()) {
         FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-        StartMenuTaskData *env = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+        StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
-        sub_0203C38C(env, fieldSystem);
+        sub_0203C38C(startMenu, fieldSystem);
         fieldSystem->unkD2_0 = 0;
-        env->atexit_TaskFunc(taskManager);
-        env->state = 5;
+        startMenu->atexit_TaskFunc(taskManager);
+        startMenu->state = 5;
     }
 }
 
 void sub_0203C8B0(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    StartMenuTaskData *env = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     if (!FieldSystem_ApplicationIsRunning(fieldSystem)) {
-        env->atexit_TaskFunc(taskManager);
-        if (env->state == 15 && sub_020183F0(&fieldSystem->unk_10C) == TRUE) {
-            env->state = 10;
+        startMenu->atexit_TaskFunc(taskManager);
+        if (startMenu->state == 15 && sub_020183F0(&fieldSystem->unk_10C) == TRUE) {
+            startMenu->state = 10;
         }
     }
 }
 
-void sub_0203C8F0(StartMenuTaskData *env, TaskFunc func) {
-    env->atexit_TaskFunc = func;
-    env->state = 5;
+void sub_0203C8F0(StartMenuTaskData *startMenu, TaskFunc func) {
+    startMenu->atexit_TaskFunc = func;
+    startMenu->state = 5;
 }
 
 BOOL sub_0203C8FC(TaskManager *taskManager) {
-    StartMenuTaskData *env = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     ov01_021E636C(0);
-    env->atexit_TaskFunc = sub_0203C920;
-    env->state = 4;
+    startMenu->atexit_TaskFunc = sub_0203C920;
+    startMenu->state = 4;
     return TRUE;
 }
 
 BOOL sub_0203C920(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    StartMenuTaskData *env = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     LocalFieldData *localFieldData = Save_LocalFieldData_Get(fieldSystem->saveData);
     Location *position = LocalFieldData_GetCurrentPosition(localFieldData);
@@ -692,48 +700,48 @@ BOOL sub_0203C920(TaskManager *taskManager) {
         }
     }
     Pokedex_LaunchApp(fieldSystem, r5);
-    env->atexit_TaskEnv = r5;
-    env->atexit_TaskFunc = sub_0203CA14;
+    startMenu->atexit_TaskEnv = r5;
+    startMenu->atexit_TaskFunc = sub_0203CA14;
     return FALSE;
 }
 
 BOOL sub_0203CA14(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    StartMenuTaskData *env = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     sub_020505C0(fieldSystem);
-    if (env->atexit_TaskEnv != NULL) {
-        FreeToHeapExplicit(HEAP_ID_FIELD, env->atexit_TaskEnv);
+    if (startMenu->atexit_TaskEnv != NULL) {
+        FreeToHeapExplicit(HEAP_ID_FIELD, startMenu->atexit_TaskEnv);
     }
-    env->state = 15;
+    startMenu->state = 15;
     return FALSE;
 }
 
 BOOL sub_0203CA44(TaskManager *taskManager) {
-    StartMenuTaskData *env = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     ov01_021E636C(0);
-    env->atexit_TaskFunc = sub_0203CA68;
-    env->state = 4;
+    startMenu->atexit_TaskFunc = sub_0203CA68;
+    startMenu->state = 4;
     return TRUE;
 }
 
 BOOL sub_0203CA68(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    StartMenuTaskData *env = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
-    env->atexit_TaskEnv = PartyMenu_LaunchApp_Unk1(fieldSystem, &env->unk_370, 0);
-    env->atexit_TaskFunc = sub_0203CA9C;
+    startMenu->atexit_TaskEnv = PartyMenu_LaunchApp_Unk1(fieldSystem, &startMenu->unk_370, 0);
+    startMenu->atexit_TaskFunc = sub_0203CA9C;
     return FALSE;
 }
 
 BOOL sub_0203CA9C(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    StartMenuTaskData *env = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     PartyMenuArgs *r6 = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
-    memcpy(r6, env->atexit_TaskEnv, sizeof(PartyMenuArgs));
-    FreeToHeap(env->atexit_TaskEnv);
+    memcpy(r6, startMenu->atexit_TaskEnv, sizeof(PartyMenuArgs));
+    FreeToHeap(startMenu->atexit_TaskEnv);
 
     switch (r6->unk_27) {
     case 1: {
@@ -754,8 +762,8 @@ BOOL sub_0203CA9C(TaskManager *taskManager) {
         sub_02089D40(r7, _020FA0B0);
         sub_0208AD34(r7, Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
         PokemonSummary_LearnForget_LaunchApp(fieldSystem, r7);
-        env->atexit_TaskEnv = r7;
-        sub_0203C8F0(env, sub_0203D580);
+        startMenu->atexit_TaskEnv = r7;
+        sub_0203C8F0(startMenu, sub_0203D580);
         break;
     }
     case 4: {
@@ -778,9 +786,9 @@ BOOL sub_0203CA9C(TaskManager *taskManager) {
         u16 *unk = AllocFromHeap(HEAP_ID_FIELD, 2 * sizeof(u16));
         unk[0] = r6->unk28;
         unk[1] = 0;
-        env->unk_384 = unk;
-        env->atexit_TaskEnv = r7;
-        sub_0203C8F0(env, sub_0203D580);
+        startMenu->unk_384 = unk;
+        startMenu->atexit_TaskEnv = r7;
+        sub_0203C8F0(startMenu, sub_0203D580);
         break;
     }
     case 5: {
@@ -803,36 +811,36 @@ BOOL sub_0203CA9C(TaskManager *taskManager) {
         u16 *unk = AllocFromHeap(HEAP_ID_FIELD, 2 * sizeof(u16));
         unk[0] = 0;
         unk[1] = r6->unk_38;
-        env->unk_384 = unk;
-        env->atexit_TaskEnv = r7;
-        sub_0203C8F0(env, sub_0203D580);
+        startMenu->unk_384 = unk;
+        startMenu->atexit_TaskEnv = r7;
+        sub_0203C8F0(startMenu, sub_0203D580);
         break;
     }
     case 6:
-        env->atexit_TaskEnv = sub_0203EFEC(fieldSystem, 2, r6->unk_26, ItemToMailId(r6->unk28), HEAP_ID_FIELD);
+        startMenu->atexit_TaskEnv = sub_0203EFEC(fieldSystem, 2, r6->unk_26, ItemToMailId(r6->unk28), HEAP_ID_FIELD);
         if (r6->unk_24 == 10) {
-            env->unk_384 = sub_0203D818(r6->unk28, 0, r6->unk_26);
+            startMenu->unk_384 = sub_0203D818(r6->unk28, 0, r6->unk_26);
         } else {
-            env->unk_384 = sub_0203D818(r6->unk28, 1, r6->unk_26);
+            startMenu->unk_384 = sub_0203D818(r6->unk28, 1, r6->unk_26);
         }
-        sub_0203C8F0(env, sub_0203D830);
+        sub_0203C8F0(startMenu, sub_0203D830);
         break;
     case 7:
-        env->atexit_TaskEnv = sub_0203F050(fieldSystem, Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), r6->unk_26), HEAP_ID_FIELD);
-        env->unk_384 = sub_0203D818(r6->unk28, 2, r6->unk_26);
-        sub_0203C8F0(env, sub_0203D830);
+        startMenu->atexit_TaskEnv = sub_0203F050(fieldSystem, Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), r6->unk_26), HEAP_ID_FIELD);
+        startMenu->unk_384 = sub_0203D818(r6->unk28, 2, r6->unk_26);
+        sub_0203C8F0(startMenu, sub_0203D830);
         break;
     case 3: {
         int *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(int));
         *unk = r6->unk_26;
-        env->unk_384 = unk;
+        startMenu->unk_384 = unk;
         Bag *bag = Save_Bag_Get(fieldSystem->saveData);
         PlayerProfile *playerProfile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
         (void)playerProfile;
-        env->atexit_TaskEnv = Bag_CreateView(bag, _020FA0B8, HEAP_ID_FIELD);
-        sub_0207789C(env->atexit_TaskEnv, fieldSystem->saveData, 1, fieldSystem->bagCursor, &fieldSystem->unk_10C);
-        Bag_LaunchApp(fieldSystem, env->atexit_TaskEnv);
-        sub_0203C8F0(env, sub_0203CFC0);
+        startMenu->atexit_TaskEnv = Bag_CreateView(bag, _020FA0B8, HEAP_ID_FIELD);
+        sub_0207789C(startMenu->atexit_TaskEnv, fieldSystem->saveData, 1, fieldSystem->bagCursor, &fieldSystem->unk_10C);
+        Bag_LaunchApp(fieldSystem, startMenu->atexit_TaskEnv);
+        sub_0203C8F0(startMenu, sub_0203CFC0);
         break;
     }
     case 8: {
@@ -842,8 +850,8 @@ BOOL sub_0203CA9C(TaskManager *taskManager) {
         unk->unk_0 = r6->unk_26;
         unk->unk_4 = r6->unk_3C;
         unk->unk_8 = r6->unk_40;
-        env->atexit_TaskEnv = unk;
-        env->state = 8;
+        startMenu->atexit_TaskEnv = unk;
+        startMenu->state = 8;
         break;
     }
     case 9: {
@@ -853,8 +861,8 @@ BOOL sub_0203CA9C(TaskManager *taskManager) {
         unk->unk_0 = r6->unk_26;
         unk->unk_4 = r6->unk_3C;
         unk->unk_8 = r6->unk_40;
-        env->atexit_TaskEnv = unk;
-        env->state = 8;
+        startMenu->atexit_TaskEnv = unk;
+        startMenu->state = 8;
         break;
     }
     case 11:
@@ -876,31 +884,249 @@ BOOL sub_0203CA9C(TaskManager *taskManager) {
         sp4.fieldMoveIdx = r6->unk_27 - 11;
         sp4.partySlot = r6->unk_26;
         sp4.taskManager = taskManager;
-        ((FieldMoveUseFunc)PartyMenu_GetFieldMoveFunc(FIELD_MOVE_FUNC_USE, sp4.fieldMoveIdx))(&sp4, &env->unk_370);
+        ((FieldMoveUseFunc)PartyMenu_GetFieldMoveFunc(FIELD_MOVE_FUNC_USE, sp4.fieldMoveIdx))(&sp4, &startMenu->unk_370);
         break;
     }
     case 10:
-        env->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &env->unk_358);
-        sub_0203C8F0(env, sub_0203CFC0);
+        startMenu->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &startMenu->unk_358);
+        sub_0203C8F0(startMenu, sub_0203CFC0);
         break;
     default:
         if (r6->unk_24 == 5 || r6->unk_24 == 6 || r6->unk_24 == 7 || r6->unk_24 == 16 || r6->unk_24 == 8) {
-            env->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &env->unk_358);
+            startMenu->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &startMenu->unk_358);
             if (r6->unk_26 >= 6) {
-                sub_020778E0(env->atexit_TaskEnv, 0);
+                sub_020778E0(startMenu->atexit_TaskEnv, 0);
             } else {
-                sub_020778E0(env->atexit_TaskEnv, r6->unk_26);
+                sub_020778E0(startMenu->atexit_TaskEnv, r6->unk_26);
             }
-            sub_0203C8F0(env, sub_0203CFC0);
+            sub_0203C8F0(startMenu, sub_0203CFC0);
         } else if (r6->unk_24 == 9) {
-            env->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &env->unk_358);
-            sub_0203C8F0(env, sub_0203CFC0);
+            startMenu->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &startMenu->unk_358);
+            sub_0203C8F0(startMenu, sub_0203CFC0);
         } else {
             sub_020505C0(fieldSystem);
-            env->state = 15;
+            startMenu->state = 15;
         }
         break;
     }
     FreeToHeap(r6);
+    return FALSE;
+}
+
+BOOL sub_0203CF0C(TaskManager *taskManager) {
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    ov01_021E636C(0);
+    startMenu->atexit_TaskFunc = sub_0203CF30;
+    startMenu->state = 4;
+    return TRUE;
+}
+
+BOOL sub_0203CF30(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    startMenu->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &startMenu->unk_358);
+    sub_020778E0(startMenu->atexit_TaskEnv, 0);
+    startMenu->atexit_TaskFunc = sub_0203CFC0;
+    ov01_021F4440(fieldSystem);
+    return FALSE;
+}
+
+void sub_0203CF74(PartyMenuArgs *partyMenuArgs, FieldSystem *fieldSystem, StartMenuTaskData *startMenu) {
+    memset(partyMenuArgs, 0, sizeof(PartyMenuArgs));
+    partyMenuArgs->party = SaveArray_Party_Get(fieldSystem->saveData);
+    partyMenuArgs->bag = Save_Bag_Get(fieldSystem->saveData);
+    partyMenuArgs->mailbox = Save_Mailbox_Get(fieldSystem->saveData);
+    partyMenuArgs->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
+    partyMenuArgs->unk_18 = &startMenu->unk_370;
+    partyMenuArgs->unk_25 = 0;
+    partyMenuArgs->fieldSystem = fieldSystem;
+    partyMenuArgs->unk20 = &fieldSystem->unk_10C;
+}
+
+BOOL sub_0203CFC0(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    BagView *bagView = BagView_New(HEAP_ID_FIELD);
+    memcpy(bagView, startMenu->atexit_TaskEnv, BagView_sizeof());
+    FreeToHeap(startMenu->atexit_TaskEnv);
+
+    switch (sub_0207790C(bagView)) {
+    case 0: {
+        ItemMenuUseData sp10;
+        sp10.itemId = sub_02077904(bagView);
+        sp10.unk6 = sub_02077914(bagView);
+        sp10.taskManager = taskManager;
+        ItemMenuUseFunc func = GetItemFieldUseFunc(USE_ITEM_TASK_MENU, GetItemAttr(sp10.itemId, ITEMATTR_FIELDUSEFUNC, HEAP_ID_FIELD));
+        func(&sp10, &startMenu->unk_358);
+        break;
+    }
+    case 1:
+        sub_0203D664(taskManager, sub_02077904(bagView));
+        break;
+    case 2: {
+        PartyMenuArgs *partyMenuArgs = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
+        memset(partyMenuArgs, 0, sizeof(PartyMenuArgs));
+        sub_0203CF74(partyMenuArgs, fieldSystem, startMenu);
+        partyMenuArgs->unk_24 = 9;
+        partyMenuArgs->unk28 = sub_02077904(bagView);
+        FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, partyMenuArgs);
+        startMenu->atexit_TaskEnv = partyMenuArgs;
+        sub_0203C8F0(startMenu, sub_0203CA9C);
+        break;
+    }
+    case 4: {
+        Party *party = SaveArray_Party_Get(fieldSystem->saveData);
+        int *unk = startMenu->unk_384;
+        int monId = *unk;
+        u16 itemId = sub_02077904(bagView);
+        Pokemon *pokemon = Party_GetMonByIndex(party, monId);
+        FreeToHeap(startMenu->unk_384);
+        if (ItemIdIsMail(itemId) == TRUE && !GetMonData(pokemon, MON_DATA_HELD_ITEM, NULL)) {
+            startMenu->atexit_TaskEnv = sub_0203EFEC(fieldSystem, 2, monId, ItemToMailId(itemId), HEAP_ID_FIELD);
+            startMenu->unk_384 = sub_0203D818(itemId, 0, monId);
+            sub_0203C8F0(startMenu, sub_0203D830);
+        } else {
+            PartyMenuArgs *partyMenuArgs = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
+            memset(partyMenuArgs, 0, sizeof(PartyMenuArgs));
+            sub_0203CF74(partyMenuArgs, fieldSystem, startMenu);
+            partyMenuArgs->party = party;
+            partyMenuArgs->unk28 = sub_02077904(bagView);
+            partyMenuArgs->unk_26 = monId;
+            if (partyMenuArgs->unk28 == ITEM_NONE) {
+                partyMenuArgs->unk_24 = 0;
+            } else {
+                partyMenuArgs->unk_24 = 10;
+            }
+            FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, partyMenuArgs);
+            startMenu->atexit_TaskEnv = partyMenuArgs;
+            sub_0203C8F0(startMenu, sub_0203CA9C);
+        }
+        break;
+    }
+    case 3:
+    case 5:
+    default:
+        sub_020505C0(fieldSystem);
+        startMenu->state = 15;
+        break;
+    }
+    FreeToHeap(bagView);
+    return FALSE;
+}
+
+BOOL sub_0203D1A8(TaskManager *taskManager) {
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    ov01_021E636C(0);
+    startMenu->atexit_TaskFunc = sub_0203D1CC;
+    startMenu->state = 4;
+    return TRUE;
+}
+
+BOOL sub_0203D1CC(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    startMenu->atexit_TaskEnv = sub_020691C4(HEAP_ID_FIELD);
+    TrainerCardAppArgs *trainerCard = startMenu->atexit_TaskEnv;
+    sub_02068FC8(1, 1, 0, 255, fieldSystem, trainerCard);
+    TrainerCard_LaunchApp(fieldSystem, trainerCard);
+    startMenu->atexit_TaskFunc = sub_0203D218;
+    return FALSE;
+}
+
+BOOL sub_0203D218(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    sub_020691E0(startMenu->atexit_TaskEnv);
+    sub_020505C0(fieldSystem);
+    startMenu->state = 15;
+    return FALSE;
+}
+
+BOOL sub_0203D244(TaskManager *taskManager) {
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+
+    ov01_021F6A9C(fieldSystem, 1, NULL);
+    startMenu->state = 6;
+    return TRUE;
+}
+
+void sub_0203D264(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    if (ov01_021F6B00(fieldSystem) == TRUE) {
+        startMenu->state = 7;
+    }
+}
+
+void sub_0203D288(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    if (!ov01_021F6B00(fieldSystem) && ov01_021F6B10(fieldSystem) == TRUE) {
+        if (fieldSystem->unkD0 == 1) {
+            fieldSystem->unkD0 = 0;
+            startMenu->state = 16;
+        } else {
+            startMenu->state = 3;
+        }
+    }
+}
+
+BOOL sub_0203D2CC(TaskManager *taskManager) {
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+
+    ov01_021F6A9C(fieldSystem, 8, NULL);
+    startMenu->state = 19;
+    return TRUE;
+}
+
+void sub_0203D2EC(TaskManager *taskManager) {
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+
+    startMenu->state = 20;
+}
+
+void sub_0203D304(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    startMenu->state = 16;
+}
+
+BOOL sub_0203D318(TaskManager *taskManager) {
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    ov01_021E636C(0);
+    startMenu->atexit_TaskFunc = sub_0203D33C;
+    startMenu->state = 4;
+    return TRUE;
+}
+
+BOOL sub_0203D33C(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    startMenu->atexit_TaskEnv = OptionsMenu_LaunchApp(fieldSystem);
+    startMenu->atexit_TaskFunc = sub_0203D368;
+    return FALSE;
+}
+
+BOOL sub_0203D368(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    FreeToHeap(startMenu->atexit_TaskEnv);
+    sub_020505C0(fieldSystem);
+    startMenu->state = 15;
     return FALSE;
 }

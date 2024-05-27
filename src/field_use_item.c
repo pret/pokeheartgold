@@ -128,7 +128,7 @@ static const struct ItemUseFuncDat sItemFieldUseFuncs[] = {
     { ItemMenuUseFunc_VSRecorder, ItemFieldUseFunc_VSRecorder, NULL },
 };
 
-void *GetItemFieldUseFunc(int funcType, int itemType) {
+void *GetItemFieldUseFunc(int funcType, u16 itemType) {
     if (funcType == USE_ITEM_TASK_MENU) {
         return sItemFieldUseFuncs[itemType].menu;
     } else if (funcType == USE_ITEM_TASK_FIELD) {
