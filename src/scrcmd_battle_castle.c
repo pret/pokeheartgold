@@ -204,7 +204,7 @@ static u32 sub_0204FC78(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID
     partyMenu->unk_25 = 0;
     partyMenu->unk_24 = 23;
     partyMenu->fieldSystem = fieldSystem;
-    partyMenu->unk_26 = a0->unk05;
+    partyMenu->partySlot = a0->unk05;
     for (u8 i = 0; i < 3; i++) {
         partyMenu->unk_30[i] = a0->unk06[i];
     }
@@ -226,14 +226,14 @@ static u32 sub_0204FD50(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
         return TRUE;
     }
     PartyMenuArgs *partyMenu = *(a0->unk0c);
-    switch (partyMenu->unk_26) {
+    switch (partyMenu->partySlot) {
         case 7:
             return 4;
         case 6:
             return 4;
     }
     MI_CpuCopy8(partyMenu->unk_30, a0->unk06, sizeof(partyMenu->unk_30));
-    a0->unk05 = partyMenu->unk_26;
+    a0->unk05 = partyMenu->partySlot;
     FreeToHeap(partyMenu);
     *(a0->unk0c) = NULL;
     return 2;
@@ -248,7 +248,7 @@ static u32 sub_0204FDA0(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID
     unk->natDexEnabled = SaveArray_IsNatDexEnabled(saveData);
     unk->unk2C = sub_02088288(saveData);
     unk->unk11 = 1;
-    unk->unk14 = a0->unk05;
+    unk->partySlot = a0->unk05;
     unk->partyCount = Party_GetCount(unk->party);
     unk->unk18 = 0;
     unk->unk12 = 0;
@@ -266,7 +266,7 @@ static u32 sub_0204FE30(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
         return 3;
     }
     PokemonSummaryArgs *unk = *(a0->unk0c);
-    a0->unk05 = unk->unk14;
+    a0->unk05 = unk->partySlot;
     FreeToHeap(unk);
     *(a0->unk0c) = NULL;
     return 0;

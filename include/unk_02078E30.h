@@ -16,11 +16,11 @@ typedef struct PartyMenuArgs {
     int unk_14;
     FieldMoveCheckData *unk_18;
     FieldSystem *fieldSystem;
-    u32 *unk20;
+    BOOL *unk20;
     u8 unk_24;
     u8 unk_25;
-    u8 unk_26;
-    u8 unk_27;
+    u8 partySlot;
+    u8 selectedAction;
     u16 itemId;
     u16 unk2A;
     u8 unk2C;
@@ -31,7 +31,7 @@ typedef struct PartyMenuArgs {
     u8 unk_36_4:4;
     u8 unk_37;
     int unk_38;
-    u16 unk_3C;
+    u16 species;
     int unk_40;
 } PartyMenuArgs;
 

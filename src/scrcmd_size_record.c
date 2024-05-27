@@ -2,6 +2,7 @@
 #include "pokemon.h"
 #include "scrcmd.h"
 #include "dex_mon_measures.h"
+#include "field_system.h"
 #include "save_vars_flags.h"
 #include "script_state_misc.h"
 

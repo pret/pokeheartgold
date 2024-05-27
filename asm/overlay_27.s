@@ -3704,7 +3704,7 @@ ov27_0225BD50: ; 0x0225BD50
 	bl Save_VarsFlags_Get
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02067584
+	bl FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom
 	cmp r0, #0
 	beq _0225BD6A
 	mov r0, #6

@@ -630,7 +630,7 @@ _021E6D4C:
 	lsr r0, r0, #0x1f
 	beq _021E6D6E
 	add r0, r4, #0
-	bl sub_0203BC10
+	bl FieldSystem_MapIsNotMysteryZone
 	cmp r0, #1
 	bne _021E6D6E
 	ldr r0, _021E6DC0 ; =SEQ_SE_DP_WIN_OPEN

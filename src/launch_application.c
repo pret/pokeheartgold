@@ -153,7 +153,7 @@ BagView *Bag_LaunchApp_WithPocket(FieldSystem *fieldSystem, u8 pocketType) {
 }
 
 int BagView_SelectResult(BagView *bagView) {
-    int result = sub_02077904(bagView);
+    int result = BagView_GetItemId(bagView);
     GF_ASSERT(result == 0 || sub_0207790C(bagView) != 5);
     return result;
 }
@@ -179,7 +179,7 @@ static PartyMenuArgs *PartyMenu_CreateArgs(HeapID heapId, FieldSystem *fieldSyst
 PartyMenuArgs *PartyMenu_LaunchApp_Unk1(FieldSystem *fieldSystem, FieldMoveCheckData *a1, u8 a2) {
     PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELD, fieldSystem, 0, 0);
     args->unk_18 = a1;
-    args->unk_26 = a2;
+    args->partySlot = a2;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, args);
     return args;
 }
@@ -197,18 +197,18 @@ PartyMenuArgs *PartyMenu_LaunchApp_Unk3(HeapID heapId, FieldSystem *fieldSystem)
 }
 
 int sub_0203E5C8(PartyMenuArgs *partyWork) {
-    return partyWork->unk_26;
+    return partyWork->partySlot;
 }
 
 PartyMenuArgs *PartyMenu_LaunchApp_Unk4(HeapID heapId, FieldSystem *fieldSystem, u16 a2) {
     PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELD, fieldSystem, 0, 18);
-    args->unk_26 = a2;
+    args->partySlot = a2;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, args);
     return args;
 }
 
 int sub_0203E5F8(PartyMenuArgs *partyWork) {
-    return partyWork->unk_27;
+    return partyWork->selectedAction;
 }
 
 u16 sub_0203E600(UnkStruct_0203E600 *a0) {
@@ -242,13 +242,13 @@ static BOOL Task_OpenPartyMenuThenMoveSelect(TaskManager *taskman) {
         break;
     case PMMS_OPEN_FORGET_MOVE:
         data->pokemonSummary = PokemonSummary_CreateArgs(fieldSystem, data->unk0, 0);
-        data->pokemonSummary->unk14 = data->unk4->unk26;
+        data->pokemonSummary->partySlot = data->unk4->unk26;
         PokemonSummary_LearnForget_LaunchApp(fieldSystem, data->pokemonSummary);
         *state = PMMS_WAIT_FORGET_MOVE;
         break;
     case PMMS_WAIT_FORGET_MOVE:
         if (!FieldSystem_ApplicationIsRunning(fieldSystem)) {
-            data->unk4->unk26 = data->pokemonSummary->unk14;
+            data->unk4->unk26 = data->pokemonSummary->partySlot;
             FreeToHeap(data->pokemonSummary);
             *state = PMMS_OPEN_PARTY_MENU;
         }
@@ -277,7 +277,7 @@ PartyMenuArgs *SelectPartyMonAndLearnMove(TaskManager *taskman, HeapID heapId) {
 
 PartyMenuArgs *PartyMenu_LaunchApp_Unk5(FieldSystem *fieldSystem, int a1) {
     PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELD, fieldSystem, 0, 0x15);
-    args->unk_26 = a1;
+    args->partySlot = a1;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, args);
     return args;
 }
@@ -289,7 +289,7 @@ PokemonSummaryArgs *PokemonSummary_CreateArgs(FieldSystem *fieldSystem, HeapID h
     args->options = Save_PlayerData_GetOptionsAddr(saveData);
     args->party = SaveArray_Party_Get(saveData);
     args->unk11 = 1;
-    args->unk14 = 0;
+    args->partySlot = 0;
     args->partyCount = Party_GetCount(args->party);
     args->unk18 = 0;
     args->unk12 = a2;
@@ -311,7 +311,7 @@ PokemonSummaryArgs *LearnForgetMove_LaunchApp(HeapID heapId, FieldSystem *fieldS
     args->party = SaveArray_Party_Get(fieldSystem->saveData);
     args->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     args->unk11 = 1;
-    args->unk14 = a2;
+    args->partySlot = a2;
     args->partyCount = 1;
     args->unk18 = a3;
     args->unk12 = 2;
@@ -1190,7 +1190,7 @@ PartyMenuArgs *PartyMenu_LaunchApp_Gracidea(FieldSystem *fieldSystem, HeapID hea
     args->unk_25 = 0;
     args->unk_24 = 5;
     args->itemId = itemId;
-    args->unk_26 = 0;
+    args->partySlot = 0;
     args->fieldSystem = fieldSystem;
     args->unk20 = &fieldSystem->unk_10C;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, args);
@@ -1218,7 +1218,7 @@ PokemonSummaryArgs *PokemonSummary_LaunchApp(HeapID heapId, FieldSystem *fieldSy
     args->party = SaveArray_Party_Get(fieldSystem->saveData);
     args->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     args->unk11 = 1;
-    args->unk14 = a2;
+    args->partySlot = a2;
     args->partyCount = Party_GetCount(args->party);
     args->unk18 = 0;
     args->unk12 = 0;

@@ -6,7 +6,8 @@
 #include "map_events.h"
 #include "task.h"
 #include "field_map_object.h"
-#include "unk_0203BC10.h"
+#include "field_system.h"
+#include "start_menu.h"
 #include "constants/std_script.h"
 #include "fielddata/script/scr_seq.naix"
 #include "msgdata/msg.naix"
@@ -330,7 +331,7 @@ void* FieldSysGetAttrAddr(FieldSystem *fieldSystem, enum ScriptEnvField field) {
 
 void sub_0204031C(FieldSystem *fieldSystem) {
     ScriptEnvironment *unk = TaskManager_GetEnvironment(fieldSystem->taskman);
-    if (sub_0203BC10(fieldSystem) == TRUE) {
+    if (FieldSystem_MapIsNotMysteryZone(fieldSystem) == TRUE) {
         unk->scrctx_end_cb = sub_0203BD64;
     }
 }

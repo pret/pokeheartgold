@@ -13,34 +13,34 @@ typedef enum StartMenuIcon {
     START_MENU_ICON_TRAINER_CARD,
     START_MENU_ICON_SAVE,
     START_MENU_ICON_OPTIONS,
-    START_MENU_ICON_RUNNING_SHOES,
+    START_MENU_ICON_EXIT,
 } StartMenuIcon;
 
 typedef struct StartMenuTaskData {
     int unk_000;
     u8 filler_004[0x1C];
-    BOOL unk_020;
+    BOOL cursorActive;
     u16 unk_024;
     u16 state; // 26
-    int unk_028;
+    int selectedIndex;
     u32 unk_02C;
-    u8 unk_030[10];
-    u8 unk_03A[10];
+    u8 insertionOrder[10];
+    u8 selectionToAction[10];
     u8 filler_044[0x190];
-    SpriteList *unk_1D4;
-    GF_G2dRenderer unk_1D8;
-    GF_2DGfxResMan *unk_300[4];
-    GF_2DGfxResObj *unk_310[4];
-    SpriteResourcesHeader unk_320;
-    Sprite *unk_344;
+    SpriteList *spriteList;
+    GF_G2dRenderer g2dRenderer;
+    GF_2DGfxResMan *gfxResMan[4];
+    GF_2DGfxResObj *gfxResObj[4];
+    SpriteResourcesHeader spriteResourcesHeader;
+    Sprite *cursorSprite;
     u8 filler_348[0x4];
-    u32 unk_34C;
+    u32 inhibitIconFlags;
     BOOL unk_350;
     TaskFunc atexit_TaskFunc; // 354
-    ItemCheckUseData unk_358;
-    FieldMoveCheckData unk_370;
+    ItemCheckUseData itemCheckUseData;
+    FieldMoveCheckData fieldMoveCheckData;
     void *atexit_TaskEnv; // 380
-    void *unk_384;
+    void *atexit_TaskEnv2;
     u8 filler_unk_388[4];
 } StartMenuTaskData;
 
@@ -54,14 +54,14 @@ struct FlyTaskStruct {
     u32 partySlot;
 };
 
-BOOL sub_0203BC10(FieldSystem *fieldSystem);
+BOOL FieldSystem_MapIsNotMysteryZone(FieldSystem *fieldSystem);
 void sub_0203BC28(FieldSystem *fieldSystem);
 void sub_0203BCDC(FieldSystem *fieldSystem);
 void sub_0203BD20(FieldSystem *fieldSystem);
 void sub_0203BD64(FieldSystem *fieldSystem);
 BOOL sub_0203C3CC(FieldSystem *fieldSystem, int a1);
-void sub_0203C8F0(StartMenuTaskData *env, TaskFunc func);
-BOOL sub_0203CA9C(TaskManager *taskManager);
+void StartMenu_SetChildProcReturnTaskFunc(StartMenuTaskData *env, TaskFunc func);
+BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager);
 BOOL sub_0203D718(TaskManager *taskManager);
 BOOL Task_UseFlyInField(TaskManager *taskManager);
 struct UnkStruct_0203D818 *sub_0203D818(u16 itemId, u8 a1, u8 a2);

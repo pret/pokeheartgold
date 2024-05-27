@@ -1,4 +1,6 @@
+#include "global.h"
 #include "map_events.h"
+#include "field_system.h"
 #include "filesystem.h"
 #include "encounter_tables_narc.h"
 #include "field_map_object.h"

@@ -27,7 +27,7 @@ BagView *BagView_New(u8 heapId);
  */
 u32 BagView_sizeof(void);
 void sub_02077894(BagView *bagView, u8 a1);
-void sub_0207789C(BagView *bagView, SaveData *save, u8 a2, BagCursor *cursor, u32 *a4);
+void sub_0207789C(BagView *bagView, SaveData *save, u8 a2, BagCursor *cursor, BOOL *a4);
 
 /*
  * void BagView_SetItem(BagView *bagView, ItemSlot *slots, u8 pocketId, u8 position)
@@ -47,7 +47,7 @@ void sub_020778C8(BagView *bagView);
 void sub_020778DC(BagView *bagView, ItemCheckUseData *a1);
 void sub_020778E0(BagView *bagView, u8 a1);
 void sub_020778E8(BagView *bagView, u16 a1);
-u16 sub_02077904(BagView *bagView);
+u16 BagView_GetItemId(BagView *bagView);
 u16 sub_0207790C(BagView *bagView);
 u8 sub_02077914(BagView *bagView);
 u8 sub_0207791C(BagView *bagView);

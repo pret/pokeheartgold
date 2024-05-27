@@ -27,7 +27,7 @@ typedef struct {
     SaveEasyChat *easyChat;
     MAIL_MESSAGE mailMessage;
     u16 unk1C[0x4];
-    u32 *unk24;
+    BOOL *unk24;
 } EasyChatArgs;
 
 typedef struct UseMailArgs {
@@ -40,10 +40,10 @@ typedef struct UseMailArgs {
     SaveData *saveData;
     Mail *mail;
     MAILBOX *mailbox;
-    u32 *unk1C;
+    BOOL *unk1C;
 } UseMailArgs;
 
-EasyChatArgs *EasyChat_CreateArgs(u8 a0, u8 a1, SaveData *saveData, u32 *a3, HeapID heapId);
+EasyChatArgs *EasyChat_CreateArgs(u8 a0, u8 a1, SaveData *saveData, BOOL *a3, HeapID heapId);
 void EasyChat_FreeArgs(EasyChatArgs *args);
 void sub_02090D14(EasyChatArgs *args, u16 a1);
 void sub_02090D18(EasyChatArgs *args, u16 a1, u16 a2);

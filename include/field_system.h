@@ -148,7 +148,7 @@ struct FieldSystem {
     int unkC4;
     FieldSystemUnkC8 *unk_C8;
     u8 filler_CC[0x4];
-    u16 unkD0;
+    u16 lastTouchMenuInput;
     u8 unkD2_0:6;
     u8 unkD2_6:1;
     u8 unkD2_7:1;
@@ -156,11 +156,11 @@ struct FieldSystem {
     u8 filler_D4[0x4];
     SysTask *unk_D8;
     FieldViewPhoto *viewPhotoTask;
-    int unkE0;
+    int lastStartMenuAction;
     FollowMon followMon; // E4
     u8 unk104[4];
     FieldSystemUnk108 *unk108;
-    u32 unk_10C;
+    BOOL unk_10C;
     u8 unk_110;
     u8 unk_111[3];
     GearPhoneRingManager *unk114;

@@ -43,7 +43,7 @@
 .public LocalFieldData_GetSafariBallsCounter
 .public LocalFieldData_GetPoisonStepCounter
 .public Save_LocalFieldData_Get
-.public sub_0203BC10
+.public FieldSystem_MapIsNotMysteryZone
 .public sub_0203BC28
 .public sub_0203BCDC
 .public sub_0203BD20

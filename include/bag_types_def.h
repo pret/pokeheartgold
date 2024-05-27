@@ -72,16 +72,16 @@ typedef struct BagView {
     BagViewPocket pockets[8];        // Pocket information
     u8 unk64;
     u8 unk65;
-    u16 unk66;
+    u16 itemId;
     u16 unk68;
     u8 padding[2];
     BagCursor *cursor;                // State of last selection
-    ItemCheckUseData *unk70;
+    ItemCheckUseData *checkUseData;
     u8 unk74;
     u8 unk75;
     u16 unk76_0:1;
     u16 unk76_1:15;
-    u32 *unk78;
+    BOOL *unk78;
 } BagView; // size: 0x7C
 
 #endif //POKEHEARTGOLD_BAG_TYPES_DEF_H

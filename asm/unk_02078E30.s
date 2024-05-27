@@ -4321,7 +4321,7 @@ sub_0207B0B0: ; 0x0207B0B0
 	ldr r0, [sp]
 	ldr r0, [r0, r1]
 	ldr r0, [r0, #0x1c]
-	bl sub_02067584
+	bl FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom
 	cmp r0, #0
 	bne _0207B19E
 	ldr r0, _0207B1B4 ; =0x00000C65

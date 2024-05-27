@@ -16,7 +16,7 @@ typedef struct PokemonSummaryArgs {
     u8 unk11;
     u8 unk12;
     u8 partyCount;
-    u8 unk14;
+    u8 partySlot;
     u8 unk15;
     u8 unk16;
     u16 unk18;
@@ -26,7 +26,7 @@ typedef struct PokemonSummaryArgs {
     u8 unk24[0x4];
     int unk28;
     int unk2C;
-    u32 *unk30;
+    BOOL *unk30;
     BOOL isFlag982Set;
     u8 unk38[0x4];
 } PokemonSummaryArgs;

@@ -2,6 +2,7 @@
 #include "bug_contest.h"
 #include "pokedex.h"
 #include "math_util.h"
+#include "field_system.h"
 #include "message_format.h"
 #include "wild_encounter.h"
 #include "pokemon_storage_system.h"

@@ -54,13 +54,13 @@
 .public LocalFieldData_GetSpecialSpawnWarpPtr
 .public LocalFieldData_GetPlayer
 .public Save_LocalFieldData_Get
-.public sub_0203BC10
+.public FieldSystem_MapIsNotMysteryZone
 .public sub_0203BC28
 .public sub_0203BCDC
 .public sub_0203BD20
 .public sub_0203BD64
 .public sub_0203C3CC
-.public sub_0203C8F0
+.public StartMenu_SetChildProcReturnTaskFunc
 .public sub_0203CA9C
 .public sub_0203D718
 .public Task_UseFlyInField
@@ -111,7 +111,7 @@
 .public CheckGotPokegear
 .public CheckGotPokedex
 .public CheckGotMenuIconI
-.public sub_02067584
+.public FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom
 .public sub_02067BF8
 .public sub_02067C30
 .public PartyMenu_GetFieldMoveFunc
@@ -131,7 +131,7 @@
 .public BagView_sizeof
 .public sub_0207789C
 .public sub_020778E0
-.public sub_02077904
+.public BagView_GetItemId
 .public sub_0207790C
 .public sub_02077914
 .public GetItemAttr

@@ -11,7 +11,7 @@
 #include "overlay_01.h"
 #include "overlay_02.h"
 #include "metatile_behavior.h"
-#include "unk_0203BC10.h"
+#include "start_menu.h"
 #include "map_header.h"
 #include "sys_flags.h"
 #include "constants/sprites.h"
@@ -246,9 +246,9 @@ static void FieldMoveMenuUse_Fly(struct FieldMoveUseData *useData, const struct 
     struct StartMenuTaskData *env = TaskManager_GetEnvironment(useData->taskManager);
     struct FlyTaskStruct *flyEnv = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct FlyTaskStruct));
     flyEnv->partySlot = useData->partySlot;
-    env->unk_384 = flyEnv;
+    env->atexit_TaskEnv2 = flyEnv;
     env->atexit_TaskEnv = PokegearTownMap_LaunchApp(fieldSystem, 0);
-    sub_0203C8F0(env, Task_UseFlyInField);
+    StartMenu_SetChildProcReturnTaskFunc(env, Task_UseFlyInField);
 }
 
 static u32 FieldMoveMenuCheck_Surf(const struct FieldMoveCheckData *checkData) {

@@ -120,7 +120,7 @@
 .public Save_VarsFlags_CheckSafariSysFlag
 .public Save_VarsFlags_CheckBugContestFlag
 .public Save_VarsFlags_CheckPalParkSysFlag
-.public sub_02067584
+.public FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom
 .public FieldSystem_BugContest_Get
 .public BugContest_GetSportBallsAddr
 .public GetMonData
