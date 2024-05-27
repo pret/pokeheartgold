@@ -46,7 +46,6 @@
 #include "unk_0202DB34.h"
 #include "unk_02031904.h"
 #include "unk_02037C94.h"
-#include "unk_0203DFA4.h"
 #include "unk_02054E00.h"
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
@@ -1190,7 +1189,7 @@ PartyMenuArgs *PartyMenu_LaunchApp_Gracidea(FieldSystem *fieldSystem, HeapID hea
     args->unk_18 = NULL;
     args->unk_25 = 0;
     args->unk_24 = 5;
-    args->unk28 = itemId;
+    args->itemId = itemId;
     args->unk_26 = 0;
     args->fieldSystem = fieldSystem;
     args->unk20 = &fieldSystem->unk_10C;

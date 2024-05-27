@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_UNK_02088288_H
 
 #include "options.h"
+#include "player_data.h"
 #include "pokemon_types_def.h"
 #include "save_special_ribbons.h"
 
@@ -16,7 +17,8 @@ typedef struct PokemonSummaryArgs {
     u8 unk12;
     u8 partyCount;
     u8 unk14;
-    u8 unk15[0x3];
+    u8 unk15;
+    u8 unk16;
     u16 unk18;
     u8 unk1A[0x2];
     BOOL natDexEnabled;

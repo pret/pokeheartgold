@@ -1,3 +1,4 @@
+#include "constants/std_script.h"
 #include "global.h"
 #include "unk_0203BC10.h"
 #include "bag_view.h"
@@ -121,10 +122,15 @@ BOOL sub_0203D318(TaskManager *taskManager);
 BOOL sub_0203D33C(TaskManager *taskManager);
 BOOL sub_0203D368(TaskManager *taskManager);
 BOOL sub_0203D394(TaskManager *taskManager);
+BOOL sub_0203D3B8(TaskManager *taskManager);
+BOOL sub_0203D418(TaskManager *taskManager);
 BOOL sub_0203D488(TaskManager *taskManager);
 BOOL sub_0203D500(TaskManager *taskManager);
+BOOL sub_0203D524(TaskManager *taskManager);
+BOOL sub_0203D550(TaskManager *taskManager);
 BOOL sub_0203D580(TaskManager *taskManager);
 void sub_0203D664(TaskManager *taskManager, int a1);
+BOOL sub_0203D6C8(TaskManager *taskManager);
 void sub_0203D9E8(TaskManager *taskManager);
 void sub_0203DAE4(TaskManager *taskManager);
 
@@ -784,7 +790,7 @@ BOOL sub_0203CA9C(TaskManager *taskManager) {
         sub_0208AD34(r7, Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
         PokemonSummary_LearnForget_LaunchApp(fieldSystem, r7);
         u16 *unk = AllocFromHeap(HEAP_ID_FIELD, 2 * sizeof(u16));
-        unk[0] = r6->unk28;
+        unk[0] = r6->itemId;
         unk[1] = 0;
         startMenu->unk_384 = unk;
         startMenu->atexit_TaskEnv = r7;
@@ -817,17 +823,17 @@ BOOL sub_0203CA9C(TaskManager *taskManager) {
         break;
     }
     case 6:
-        startMenu->atexit_TaskEnv = sub_0203EFEC(fieldSystem, 2, r6->unk_26, ItemToMailId(r6->unk28), HEAP_ID_FIELD);
+        startMenu->atexit_TaskEnv = sub_0203EFEC(fieldSystem, 2, r6->unk_26, ItemToMailId(r6->itemId), HEAP_ID_FIELD);
         if (r6->unk_24 == 10) {
-            startMenu->unk_384 = sub_0203D818(r6->unk28, 0, r6->unk_26);
+            startMenu->unk_384 = sub_0203D818(r6->itemId, 0, r6->unk_26);
         } else {
-            startMenu->unk_384 = sub_0203D818(r6->unk28, 1, r6->unk_26);
+            startMenu->unk_384 = sub_0203D818(r6->itemId, 1, r6->unk_26);
         }
         sub_0203C8F0(startMenu, sub_0203D830);
         break;
     case 7:
         startMenu->atexit_TaskEnv = sub_0203F050(fieldSystem, Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), r6->unk_26), HEAP_ID_FIELD);
-        startMenu->unk_384 = sub_0203D818(r6->unk28, 2, r6->unk_26);
+        startMenu->unk_384 = sub_0203D818(r6->itemId, 2, r6->unk_26);
         sub_0203C8F0(startMenu, sub_0203D830);
         break;
     case 3: {
@@ -845,7 +851,7 @@ BOOL sub_0203CA9C(TaskManager *taskManager) {
     }
     case 8: {
         UnkStruct_0203CA9C_Case8 *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0203CA9C_Case8));
-        unk->unk_2 = r6->unk28;
+        unk->unk_2 = r6->itemId;
         unk->unk_1 = 3;
         unk->unk_0 = r6->unk_26;
         unk->unk_4 = r6->unk_3C;
@@ -971,7 +977,7 @@ BOOL sub_0203CFC0(TaskManager *taskManager) {
         memset(partyMenuArgs, 0, sizeof(PartyMenuArgs));
         sub_0203CF74(partyMenuArgs, fieldSystem, startMenu);
         partyMenuArgs->unk_24 = 9;
-        partyMenuArgs->unk28 = sub_02077904(bagView);
+        partyMenuArgs->itemId = sub_02077904(bagView);
         FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, partyMenuArgs);
         startMenu->atexit_TaskEnv = partyMenuArgs;
         sub_0203C8F0(startMenu, sub_0203CA9C);
@@ -993,9 +999,9 @@ BOOL sub_0203CFC0(TaskManager *taskManager) {
             memset(partyMenuArgs, 0, sizeof(PartyMenuArgs));
             sub_0203CF74(partyMenuArgs, fieldSystem, startMenu);
             partyMenuArgs->party = party;
-            partyMenuArgs->unk28 = sub_02077904(bagView);
+            partyMenuArgs->itemId = sub_02077904(bagView);
             partyMenuArgs->unk_26 = monId;
-            if (partyMenuArgs->unk28 == ITEM_NONE) {
+            if (partyMenuArgs->itemId == ITEM_NONE) {
                 partyMenuArgs->unk_24 = 0;
             } else {
                 partyMenuArgs->unk_24 = 10;
@@ -1128,5 +1134,188 @@ BOOL sub_0203D368(TaskManager *taskManager) {
     FreeToHeap(startMenu->atexit_TaskEnv);
     sub_020505C0(fieldSystem);
     startMenu->state = 15;
+    return FALSE;
+}
+
+BOOL sub_0203D394(TaskManager *taskManager) {
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    ov01_021E636C(0);
+    startMenu->atexit_TaskFunc = sub_0203D3B8;
+    startMenu->state = 4;
+    return TRUE;
+}
+
+BOOL sub_0203D3B8(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    startMenu->atexit_TaskEnv = EasyChat_CreateArgs(2, 0, fieldSystem->saveData, &fieldSystem->unk_10C, HEAP_ID_FIELD);
+    MAIL_MESSAGE mailMessage;
+    MailMsg_Init_WithBank(&mailMessage, MAILMSG_BANK_0295_GMM);
+    sub_02090D20(startMenu->atexit_TaskEnv, &mailMessage);
+    EasyChat_LaunchApp(fieldSystem, startMenu->atexit_TaskEnv);
+    startMenu->atexit_TaskFunc = sub_0203D418;
+    return FALSE;
+}
+
+BOOL sub_0203D418(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    if (!sub_02090D48(startMenu->atexit_TaskEnv)) {
+        MAIL_MESSAGE mailMessage;
+        sub_02090D60(startMenu->atexit_TaskEnv, &mailMessage);
+        if (sub_02035650()) {
+            sub_0205AB88(&mailMessage);
+            sub_0205AA6C(fieldSystem->unk80, &mailMessage);
+        }
+        startMenu->state = 10;
+    } else {
+        startMenu->state = 15;
+    }
+    EasyChat_FreeArgs(startMenu->atexit_TaskEnv);
+    sub_020505C0(fieldSystem);
+    sub_0205AD0C(fieldSystem->unk84);
+    return FALSE;
+}
+
+BOOL sub_0203D488(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    sub_0203C38C(startMenu, fieldSystem);
+    fieldSystem->unkD2_0 = 0;
+    if (Save_VarsFlags_CheckSafariSysFlag(Save_VarsFlags_Get(fieldSystem->saveData)) == TRUE) {
+        StartScriptFromMenu(taskManager, std_safari_exit, NULL);
+    } else if (Save_VarsFlags_CheckBugContestFlag(Save_VarsFlags_Get(fieldSystem->saveData)) == TRUE) {
+        StartScriptFromMenu(taskManager, std_bug_contest_retire, NULL);
+    } else {
+        StartScriptFromMenu(taskManager, 4, NULL);
+    }
+    FreeToHeap(startMenu);
+    return FALSE;
+}
+
+BOOL sub_0203D500(TaskManager *taskManager) {
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    ov01_021E636C(0);
+    startMenu->atexit_TaskFunc = sub_0203D524;
+    startMenu->state = 4;
+    return TRUE;
+}
+
+BOOL sub_0203D524(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    startMenu->atexit_TaskEnv = PokegearPhone_LaunchApp(fieldSystem);
+    startMenu->atexit_TaskFunc = sub_0203D550;
+    return FALSE;
+}
+
+BOOL sub_0203D550(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    sub_020505C0(fieldSystem);
+    if (startMenu->atexit_TaskEnv != NULL) {
+        FreeToHeapExplicit(HEAP_ID_FIELD, startMenu->atexit_TaskEnv);
+    }
+    startMenu->state = 15;
+    return FALSE;
+}
+
+BOOL sub_0203D580(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    PokemonSummaryArgs *summaryArgs = AllocFromHeap(HEAP_ID_FIELD, sizeof(PokemonSummaryArgs));
+    memcpy(summaryArgs, startMenu->atexit_TaskEnv, sizeof(PokemonSummaryArgs));
+    FreeToHeap(startMenu->atexit_TaskEnv);
+    if (summaryArgs->unk12 == 2) {
+        PartyMenuArgs *partyMenuArgs = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
+        u16 *r7 = startMenu->unk_384;
+        sub_0203CF74(partyMenuArgs, fieldSystem, startMenu);
+        partyMenuArgs->itemId = r7[0];
+        partyMenuArgs->unk_26 = summaryArgs->unk14;
+        partyMenuArgs->unk2A = summaryArgs->unk18;
+        partyMenuArgs->unk2C = summaryArgs->unk16;
+        if (r7[0] != ITEM_NONE) {
+            partyMenuArgs->unk_24 = 7;
+            partyMenuArgs->unk_38 = 0;
+        } else {
+            partyMenuArgs->unk_24 = 8;
+            partyMenuArgs->unk_38 = r7[1];
+        }
+        partyMenuArgs->unk20 = &fieldSystem->unk_10C;
+        FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, partyMenuArgs);
+        FreeToHeap(startMenu->unk_384);
+        startMenu->atexit_TaskEnv = partyMenuArgs;
+        sub_0203C8F0(startMenu, sub_0203CA9C);
+    } else {
+        startMenu->atexit_TaskEnv = PartyMenu_LaunchApp_Unk1(fieldSystem, &startMenu->unk_370, summaryArgs->unk14);
+        sub_0203C8F0(startMenu, sub_0203CA9C);
+    }
+    FreeToHeap(summaryArgs);
+    return FALSE;
+}
+
+void sub_0203D664(TaskManager *taskManager, int a1) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    Bag *bag = Save_Bag_Get(fieldSystem->saveData);
+    for (u8 i = 0; i < NUM_BERRIES; ++i) {
+        if (Bag_HasItem(bag, BerryToItemId(i), 1, HEAP_ID_FIELD)) {}
+    }
+    u8 scroll, position;
+    BagCursor_Field_PocketGetPosition(fieldSystem->bagCursor, POCKET_BERRIES, &position, &scroll);
+    sub_0203C8F0(startMenu, sub_0203D6C8);
+}
+
+BOOL sub_0203D6C8(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    BagCursor_Field_PocketSetPosition(fieldSystem->bagCursor, POCKET_BERRIES, 0, 0);
+    FreeToHeapExplicit(HEAP_ID_FIELD, startMenu->atexit_TaskEnv);
+    startMenu->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &startMenu->unk_358);
+    sub_0203C8F0(startMenu, sub_0203CFC0);
+    return FALSE;
+}
+
+BOOL sub_0203D718(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    FreeToHeapExplicit(HEAP_ID_FIELD, startMenu->atexit_TaskEnv);
+    startMenu->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &startMenu->unk_358);
+    sub_0203C8F0(startMenu, sub_0203CFC0);
+    return FALSE;
+}
+
+BOOL Task_UseFlyInField(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
+
+    struct FlyTaskStruct *flyMap = startMenu->unk_384;
+    int partySlot = flyMap->partySlot;
+    FreeToHeapExplicit(HEAP_ID_FIELD, flyMap);
+    PokegearArgs *pokegearArgs = startMenu->atexit_TaskEnv;
+    if (!pokegearArgs->unk_14) {
+        FreeToHeapExplicit(HEAP_ID_FIELD, pokegearArgs);
+        startMenu->atexit_TaskEnv = PartyMenu_LaunchApp_Unk1(fieldSystem, &startMenu->unk_370, partySlot);
+        sub_0203C8F0(startMenu, sub_0203CA9C);
+    } else {
+        Pokemon *pokemon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), partySlot);
+        struct UnkStruct_02067BF8 *r5 = sub_02067BF8(HEAP_ID_FIELD, fieldSystem, pokemon, partySlot, pokegearArgs->unk_20, pokegearArgs->unk_18 * 32 + 0x10, pokegearArgs->unk_1C * 32 + 0x10);
+        FreeToHeapExplicit(HEAP_ID_FIELD, startMenu->atexit_TaskEnv);
+        sub_020505C0(fieldSystem);
+        startMenu->atexit_TaskFunc = sub_02067C30;
+        startMenu->atexit_TaskEnv = r5;
+        startMenu->state = 12;
+    }
     return FALSE;
 }

@@ -4,7 +4,6 @@
 #include "sys_flags.h"
 #include "unk_02054648.h"
 #include "unk_0203DB6C.h"
-#include "unk_0203DFA4.h"
 #include "unk_02078E30.h"
 #include "follow_mon.h"
 #include "field_map_object.h"
@@ -221,19 +220,19 @@ static void ItemMenuUseFunc_HealingItem(struct ItemMenuUseData *data, const stru
 #pragma unused(dat2)
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     struct StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
-    struct UseItemInPartyTaskEnv *usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct UseItemInPartyTaskEnv));
-    memset(usedat, 0, sizeof(struct UseItemInPartyTaskEnv));
+    struct PartyMenuArgs *usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct PartyMenuArgs));
+    memset(usedat, 0, sizeof(struct PartyMenuArgs));
     usedat->party = SaveArray_Party_Get(fieldSystem->saveData);
     usedat->bag = Save_Bag_Get(fieldSystem->saveData);
     usedat->mailbox = Save_Mailbox_Get(fieldSystem->saveData);
     usedat->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     usedat->unk10 = sub_020270C4(fieldSystem->saveData);
-    usedat->unk18 = &env->unk_370;
-    usedat->unk25 = 0;
-    usedat->unk24 = 5;
+    usedat->unk_18 = &env->unk_370;
+    usedat->unk_25 = 0;
+    usedat->unk_24 = 5;
     usedat->fieldSystem = fieldSystem;
     usedat->itemId = data->itemId;
-    usedat->unk26 = data->unk6;
+    usedat->unk_26 = data->unk6;
     usedat->unk20 = &fieldSystem->unk_10C;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, usedat);
     env->atexit_TaskEnv = usedat;
@@ -344,18 +343,18 @@ static void ItemMenuUseFunc_TMHM(struct ItemMenuUseData *data, const struct Item
 #pragma unused(dat2)
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     struct StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
-    struct UseItemInPartyTaskEnv *usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct UseItemInPartyTaskEnv));
-    memset(usedat, 0, sizeof(struct UseItemInPartyTaskEnv));
+    struct PartyMenuArgs *usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct PartyMenuArgs));
+    memset(usedat, 0, sizeof(struct PartyMenuArgs));
     usedat->party = SaveArray_Party_Get(fieldSystem->saveData);
     usedat->bag = Save_Bag_Get(fieldSystem->saveData);
     usedat->mailbox = Save_Mailbox_Get(fieldSystem->saveData);
     usedat->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
-    usedat->unk18 = &env->unk_370;
-    usedat->unk25 = 0;
-    usedat->unk24 = 6;
+    usedat->unk_18 = &env->unk_370;
+    usedat->unk_25 = 0;
+    usedat->unk_24 = 6;
     usedat->fieldSystem = fieldSystem;
     usedat->itemId = data->itemId;
-    usedat->unk26 = data->unk6;
+    usedat->unk_26 = data->unk6;
     usedat->unk2A = TMHMGetMove(data->itemId);
     usedat->unk20 = &fieldSystem->unk_10C;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, usedat);
@@ -526,7 +525,7 @@ static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager) {
 static void ItemMenuUseFunc_EvoStone(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
     FieldSystem *fieldSystem;
     struct StartMenuTaskData *env;
-    struct UseItemInPartyTaskEnv *usedat;
+    struct PartyMenuArgs *usedat;
 
     fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     if (data->itemId == ITEM_WATER_STONE && CheckUseWaterStoneInAlphChamber(fieldSystem)) {
@@ -534,18 +533,18 @@ static void ItemMenuUseFunc_EvoStone(struct ItemMenuUseData *data, const struct 
         return;
     }
     env = TaskManager_GetEnvironment(data->taskManager);
-    usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct UseItemInPartyTaskEnv));
-    memset(usedat, 0, sizeof(struct UseItemInPartyTaskEnv));
+    usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct PartyMenuArgs));
+    memset(usedat, 0, sizeof(struct PartyMenuArgs));
     usedat->party = SaveArray_Party_Get(fieldSystem->saveData);
     usedat->bag = Save_Bag_Get(fieldSystem->saveData);
     usedat->mailbox = Save_Mailbox_Get(fieldSystem->saveData);
     usedat->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     usedat->unk10 = sub_020270C4(fieldSystem->saveData);
-    usedat->unk18 = &env->unk_370;
-    usedat->unk25 = 0;
-    usedat->unk24 = 16;
+    usedat->unk_18 = &env->unk_370;
+    usedat->unk_25 = 0;
+    usedat->unk_24 = 16;
     usedat->itemId = data->itemId;
-    usedat->unk26 = data->unk6;
+    usedat->unk_26 = data->unk6;
     usedat->fieldSystem = fieldSystem;
     usedat->unk20 = &fieldSystem->unk_10C;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, usedat);

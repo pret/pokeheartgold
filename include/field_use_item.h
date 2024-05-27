@@ -41,24 +41,6 @@ typedef void (*ItemMenuUseFunc)(struct ItemMenuUseData *data, const struct ItemC
 typedef BOOL (*ItemFieldUseFunc)(struct ItemFieldUseData *data);
 typedef enum ItemUseError (*ItemCheckUseFunc)(const struct ItemCheckUseData *data);
 
-struct UseItemInPartyTaskEnv {
-    Party *party;
-    Bag *bag;
-    MAILBOX *mailbox;
-    Options *options;
-    UnkStruct_0202E474 *unk10;
-    u32 unk14;
-    void *unk18;
-    FieldSystem *fieldSystem;
-    void *unk20;
-    u8 unk24;
-    u8 unk25;
-    u8 unk26;
-    u16 itemId;
-    u16 unk2A;
-    u8 padding_2C[0x18];
-};
-
 struct RegisteredKeyItemUseMessagePrintTaskData {
     Window window;
     String *strbuf;

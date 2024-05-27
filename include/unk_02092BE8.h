@@ -20,7 +20,10 @@ typedef struct PokegearArgs{
     int y; //0x0c
     u16 mapID; //0x10
     u16 mapHeader; //0x12
-    u8 filler_14[0xe];
+    BOOL unk_14;
+    int unk_18;
+    int unk_1C;
+    u16 unk_20;
     u8 matrixXCoord; //0x22
     u8 matrixYCoord; //0x23
     SaveData* saveData; //0x24

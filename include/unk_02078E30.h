@@ -21,9 +21,10 @@ typedef struct PartyMenuArgs {
     u8 unk_25;
     u8 unk_26;
     u8 unk_27;
-    u16 unk28;
+    u16 itemId;
     u16 unk2A;
-    u8 filler_2C[0x4];
+    u8 unk2C;
+    u8 filler_2D[3];
     u8 unk_30[3];
     u8 filler_33[3];
     u8 unk_36_0:4;

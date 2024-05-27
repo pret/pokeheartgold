@@ -17,6 +17,7 @@
 #include "photo_types_def.h"
 #include "field_types_def.h"
 #include "overlay_01_02204004.h"
+#include "unk_02078E30.h"
 
 typedef struct FollowMon {
     LocalMapObject *mapObject;
