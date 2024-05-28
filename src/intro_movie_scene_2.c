@@ -307,8 +307,8 @@ static void IntroMovie_Scene2_LoadBgGfx(BgConfig *bgConfig) {
 static void IntroMovie_Scene2_LoadSpriteGfx(IntroMovieOverlayData *data, IntroMovieScene2Data *sceneData) {
     IntroMovie_CreateSpriteResourceManagers(data, sIntroMovieScene2SpriteResCounts);
     GF_2DGfxResMan **resMen = IntroMovie_GetSpriteResourceManagersArray(data);
-    sceneData->spriteGfxRes[0][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(resMen[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000078_NCGR_lz, TRUE, 0, NNS_G2D_VRAM_TYPE_BOTH, HEAP_ID_INTRO_MOVIE);
-    sceneData->spriteGfxRes[0][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(resMen[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000077_NCLR, FALSE, 0, NNS_G2D_VRAM_TYPE_BOTH, 1, HEAP_ID_INTRO_MOVIE);
+    sceneData->spriteGfxRes[0][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(resMen[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000078_NCGR_lz, TRUE, 0, NNS_G2D_VRAM_TYPE_2DBOTH, HEAP_ID_INTRO_MOVIE);
+    sceneData->spriteGfxRes[0][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(resMen[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000077_NCLR, FALSE, 0, NNS_G2D_VRAM_TYPE_2DBOTH, 1, HEAP_ID_INTRO_MOVIE);
     sceneData->spriteGfxRes[0][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(resMen[GF_GFX_RES_TYPE_CELL], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000080_NCER_lz, TRUE, 0, GF_GFX_RES_TYPE_CELL, HEAP_ID_INTRO_MOVIE);
     sceneData->spriteGfxRes[0][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromNarc(resMen[GF_GFX_RES_TYPE_ANIM], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000079_NANR_lz, TRUE, 0, GF_GFX_RES_TYPE_ANIM, HEAP_ID_INTRO_MOVIE);
     sceneData->spriteGfxRes[1][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(resMen[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000074_NCGR_lz, TRUE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_INTRO_MOVIE);
@@ -347,7 +347,7 @@ static void IntroMovie_Scene2_CreateSprites(IntroMovieOverlayData *data, IntroMo
         0, 1, 2, 3, 0, 1, 2, 3, 0, 1,
     };
 
-    IntroMovie_BuildSpriteResourcesHeaderAndTemplate(0, data, 0, NNS_G2D_VRAM_TYPE_BOTH, &spriteTemplate, &spriteHeader);
+    IntroMovie_BuildSpriteResourcesHeaderAndTemplate(0, data, 0, NNS_G2D_VRAM_TYPE_2DBOTH, &spriteTemplate, &spriteHeader);
     spriteTemplate.position.x = 128 * FX32_ONE;
     spriteTemplate.position.y = 192 * FX32_ONE;
 

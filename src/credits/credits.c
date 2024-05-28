@@ -463,13 +463,13 @@ static void LoadBgGraphics(CreditsAppWork *work) {
 }
 
 static void CreateOamAndObjResMgrs(CreditsAppWork *work) {
-    ObjCharTransferTemplate temp;
+    ObjCharTransferTemplate objCharTransferTemplate;
     UnkOv021E60F6 temp2;
 
     GX_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_128K);
     GXS_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_128K);
-    temp = ov76_021E6EA0;
-    ObjCharTransfer_Init(&temp);
+    objCharTransferTemplate = sObjCharTransferTemplate;
+    ObjCharTransfer_Init(&objCharTransferTemplate);
     sub_02022588(0xd, HEAP_ID_CREDITS);
     ObjCharTransfer_ClearBuffers();
     sub_02022638();
@@ -497,9 +497,9 @@ static void FreeOamAndObjResMgrs(CreditsAppWork *work) {
 
 static void ov76_021E6170(CreditsAppWork *work) {
     work->gf2dGfxResObj[GF_GFX_RES_TYPE_CHAR] =
-        AddCharResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CHAR], NARC_a_2_6_3, 1, TRUE, 1, NNS_G2D_VRAM_TYPE_BOTH, HEAP_ID_CREDITS);
+        AddCharResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CHAR], NARC_a_2_6_3, 1, TRUE, 1, NNS_G2D_VRAM_TYPE_2DBOTH, HEAP_ID_CREDITS);
     work->gf2dGfxResObj[GF_GFX_RES_TYPE_PLTT] =
-        AddPlttResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_PLTT], NARC_a_2_6_3, 0, FALSE, 1, NNS_G2D_VRAM_TYPE_BOTH, 7, HEAP_ID_CREDITS);
+        AddPlttResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_PLTT], NARC_a_2_6_3, 0, FALSE, 1, NNS_G2D_VRAM_TYPE_2DBOTH, 7, HEAP_ID_CREDITS);
     work->gf2dGfxResObj[GF_GFX_RES_TYPE_CELL] =
         AddCellOrAnimResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CELL], NARC_a_2_6_3, 2, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_CREDITS);
     work->gf2dGfxResObj[GF_GFX_RES_TYPE_ANIM] =
@@ -546,7 +546,7 @@ static void InitSprites(CreditsAppWork *work) {
     u8 yIdx;
 
     SceneWork *ptr = &work->sceneWork;
-    InitDancingSpriteResources(1, work, 1, NNS_G2D_VRAM_TYPE_BOTH, &tmpl, &header);
+    InitDancingSpriteResources(1, work, 1, NNS_G2D_VRAM_TYPE_2DBOTH, &tmpl, &header);
 
     // Dancing Pokémon that start on top screen
     for (u8 i = 0; i < MONS_PER_SCREEN; i++) {
