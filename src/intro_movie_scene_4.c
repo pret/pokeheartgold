@@ -468,8 +468,8 @@ static void IntroMovie_Scene4_LoadSpriteGfx(IntroMovieOverlayData *data, IntroMo
 
     IntroMovie_CreateSpriteResourceManagers(data, sIntroMovieScene4SpriteResCounts);
     resMen = IntroMovie_GetSpriteResourceManagersArray(data);
-    sceneData->spriteResObjs[0][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(resMen[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000082_NCGR_lz, TRUE, 0, NNS_G2D_VRAM_TYPE_BOTH, HEAP_ID_INTRO_MOVIE);
-    sceneData->spriteResObjs[0][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(resMen[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000081_NCLR, FALSE, 0, NNS_G2D_VRAM_TYPE_BOTH, 2, HEAP_ID_INTRO_MOVIE);
+    sceneData->spriteResObjs[0][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(resMen[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000082_NCGR_lz, TRUE, 0, NNS_G2D_VRAM_TYPE_2DBOTH, HEAP_ID_INTRO_MOVIE);
+    sceneData->spriteResObjs[0][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(resMen[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000081_NCLR, FALSE, 0, NNS_G2D_VRAM_TYPE_2DBOTH, 2, HEAP_ID_INTRO_MOVIE);
     sceneData->spriteResObjs[0][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(resMen[GF_GFX_RES_TYPE_CELL], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000084_NCER_lz, TRUE, 0, GF_GFX_RES_TYPE_CELL, HEAP_ID_INTRO_MOVIE);
     sceneData->spriteResObjs[0][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromNarc(resMen[GF_GFX_RES_TYPE_ANIM], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000083_NANR_lz, TRUE, 0, GF_GFX_RES_TYPE_ANIM, HEAP_ID_INTRO_MOVIE);
 
