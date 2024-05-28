@@ -13,7 +13,7 @@
 #include "unk_0200B150.h"
 #include "sys_task_api.h"
 #include "unk_0200FA24.h"
-#include "unk_020215A0.h"
+#include "obj_char_transfer.h"
 #include "unk_02022588.h"
 #include "unk_02023694.h"
 #include "bg_window.h"
@@ -463,15 +463,15 @@ static void LoadBgGraphics(CreditsAppWork *work) {
 }
 
 static void CreateOamAndObjResMgrs(CreditsAppWork *work) {
-    UnkStruct_020215A0 temp;
+    ObjCharTransferTemplate objCharTransferTemplate;
     UnkOv021E60F6 temp2;
 
     GX_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_128K);
     GXS_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_128K);
-    temp = ov76_021E6EA0;
-    sub_020215A0(&temp);
+    objCharTransferTemplate = sObjCharTransferTemplate;
+    ObjCharTransfer_Init(&objCharTransferTemplate);
     sub_02022588(0xd, HEAP_ID_CREDITS);
-    sub_020216C8();
+    ObjCharTransfer_ClearBuffers();
     sub_02022638();
     NNS_G2dInitOamManagerModule();
     OamManager_Create(0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20, HEAP_ID_CREDITS);
@@ -491,15 +491,15 @@ static void FreeOamAndObjResMgrs(CreditsAppWork *work) {
     }
     SpriteList_Delete(work->spriteList);
     OamManager_Free();
-    sub_0202168C();
+    ObjCharTransfer_Destroy();
     sub_02022608();
 }
 
 static void ov76_021E6170(CreditsAppWork *work) {
     work->gf2dGfxResObj[GF_GFX_RES_TYPE_CHAR] =
-        AddCharResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CHAR], NARC_a_2_6_3, 1, TRUE, 1, 3, HEAP_ID_CREDITS);
+        AddCharResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CHAR], NARC_a_2_6_3, 1, TRUE, 1, NNS_G2D_VRAM_TYPE_2DBOTH, HEAP_ID_CREDITS);
     work->gf2dGfxResObj[GF_GFX_RES_TYPE_PLTT] =
-        AddPlttResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_PLTT], NARC_a_2_6_3, 0, FALSE, 1, 3, 7, HEAP_ID_CREDITS);
+        AddPlttResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_PLTT], NARC_a_2_6_3, 0, FALSE, 1, NNS_G2D_VRAM_TYPE_2DBOTH, 7, HEAP_ID_CREDITS);
     work->gf2dGfxResObj[GF_GFX_RES_TYPE_CELL] =
         AddCellOrAnimResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CELL], NARC_a_2_6_3, 2, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_CREDITS);
     work->gf2dGfxResObj[GF_GFX_RES_TYPE_ANIM] =
@@ -512,9 +512,9 @@ static void ov76_021E6170(CreditsAppWork *work) {
 
     for (u8 i = 0; i < UNIQUE_SPRITES_PER_CUTSCENE; i++) {
         work->cutsceneRsrs[i].charResObj =
-            AddCharResObjFromOpenNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CHAR], *narc, 20, TRUE, i + 2, 1, HEAP_ID_CREDITS);
+            AddCharResObjFromOpenNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CHAR], *narc, 20, TRUE, i + 2, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_CREDITS);
         work->cutsceneRsrs[i].plttResObj =
-            AddPlttResObjFromOpenNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_PLTT], *narc, 149, FALSE, i + 2, 1, 1, HEAP_ID_CREDITS);
+            AddPlttResObjFromOpenNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_PLTT], *narc, 149, FALSE, i + 2, NNS_G2D_VRAM_TYPE_2DMAIN, 1, HEAP_ID_CREDITS);
     }
 
     sub_0200ACF0(work->gf2dGfxResObj[GF_GFX_RES_TYPE_CHAR]);
@@ -546,7 +546,7 @@ static void InitSprites(CreditsAppWork *work) {
     u8 yIdx;
 
     SceneWork *ptr = &work->sceneWork;
-    InitDancingSpriteResources(1, work, 1, NNS_G2D_VRAM_TYPE_MAX, &tmpl, &header);
+    InitDancingSpriteResources(1, work, 1, NNS_G2D_VRAM_TYPE_2DBOTH, &tmpl, &header);
 
     // Dancing Pokémon that start on top screen
     for (u8 i = 0; i < MONS_PER_SCREEN; i++) {

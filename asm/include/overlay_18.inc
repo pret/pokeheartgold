@@ -194,8 +194,8 @@
 .public sub_020210BC
 .public sub_02021148
 .public sub_02021238
-.public sub_020215C0
-.public sub_0202168C
+.public ObjCharTransfer_InitEx
+.public ObjCharTransfer_Destroy
 .public GfGfx_SetBanks
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_EngineASetPlanes

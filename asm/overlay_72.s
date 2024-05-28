@@ -1121,11 +1121,11 @@ ov72_02238164: ; 0x02238164
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_020215A0
+	bl ObjCharTransfer_Init
 	mov r0, #0x14
 	mov r1, #0x43
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	add sp, #0x10
 	pop {r4, pc}
@@ -1937,7 +1937,7 @@ _0223882A:
 	mov r1, #0
 	str r1, [r6, r0]
 	bl OamManager_Free
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

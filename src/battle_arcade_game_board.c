@@ -21,7 +21,7 @@
 #include "unk_02005D10.h"
 #include "touchscreen.h"
 #include "unk_02022588.h"
-#include "unk_020215A0.h"
+#include "obj_char_transfer.h"
 #include "unk_0200A090.h"
 #include "unk_02078E30.h"
 #include "vram_transfer_manager.h"
@@ -605,7 +605,7 @@ static void BattleArcadeGameBoard_InitObjects(GAME_BOARD_WORK *work) {
     work->button = BattleArcadeObject_Create(&work->unk3E8, 0, 0, 0, 2, 128, 96, 0, 0, 1);
 
     if (sub_02037474()) {
-        sub_02009FE8(1, GX_OBJVRAMMODE_CHAR_1D_32K);
+        sub_02009FE8(NNS_G2D_VRAM_TYPE_2DMAIN, GX_OBJVRAMMODE_CHAR_1D_32K);
         sub_0200A080(1);
         sub_0203A880();
     }
@@ -1228,11 +1228,11 @@ static void ov84_0223F2B4(GAME_BOARD_SUB_3E8 *work, Party *playerParty, Party *o
     ov84_0223F5E4(work, playerParty, opponentParty, type);
 
     for (i = 0; i < 11; i++) {
-        sub_0200ACF0(work->resourceObj[i][0]);
+        sub_0200ACF0(work->resourceObj[i][GF_GFX_RES_TYPE_CHAR]);
     }
 
     for (i = 0; i < 4; i++) {
-        sub_0200AF94(work->resourceObj[i][1]);
+        sub_0200AF94(work->resourceObj[i][GF_GFX_RES_TYPE_PLTT]);
     }
 
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
@@ -1279,11 +1279,11 @@ static void ov84_0223F418(GAME_BOARD_SUB_3E8 *work) {
     u8 i;
 
     for (i = 0; i < 11; i++) {
-        sub_0200AEB0(work->resourceObj[i][0]);
+        sub_0200AEB0(work->resourceObj[i][GF_GFX_RES_TYPE_CHAR]);
     }
 
     for (i = 0; i < 4; i++) {
-        sub_0200B0A8(work->resourceObj[i][1]);
+        sub_0200B0A8(work->resourceObj[i][GF_GFX_RES_TYPE_PLTT]);
     }
 
     for (i = 0; i < 4; i++) {
@@ -1292,34 +1292,34 @@ static void ov84_0223F418(GAME_BOARD_SUB_3E8 *work) {
 
     SpriteList_Delete(work->spriteList);
     OamManager_Free();
-    sub_0202168C();
+    ObjCharTransfer_Destroy();
     sub_02022608();
 }
 
-extern UnkStruct_020215A0 ov84_0223F9E8;
+extern ObjCharTransferTemplate ov84_0223F9E8;
 
 static void ov84_0223F480(void) {
-    UnkStruct_020215A0 var = ov84_0223F9E8;
-    sub_020215C0(&var, GX_OBJVRAMMODE_CHAR_1D_32K, GX_OBJVRAMMODE_CHAR_1D_32K);
+    ObjCharTransferTemplate var = ov84_0223F9E8;
+    ObjCharTransfer_InitEx(&var, GX_OBJVRAMMODE_CHAR_1D_32K, GX_OBJVRAMMODE_CHAR_1D_32K);
     sub_02022588(14, HEAP_ID_GAME_BOARD);
-    sub_020216C8();
+    ObjCharTransfer_ClearBuffers();
     sub_02022638();
 }
 
 static void ov84_0223F4B4(GAME_BOARD_SUB_3E8 *work) {
-    work->resourceObj[1][0] = AddCharResObjFromNarc(work->resourceMan[0], NARC_a_1_8_4, 18, TRUE, 1, 1, HEAP_ID_GAME_BOARD);
-    work->resourceObj[1][1] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_a_1_8_4, 56, FALSE, 1, 1, 8, HEAP_ID_GAME_BOARD);
-    work->resourceObj[1][2] = AddCellOrAnimResObjFromNarc(work->resourceMan[2], NARC_a_1_8_4, 20, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_GAME_BOARD);
-    work->resourceObj[1][3] = AddCellOrAnimResObjFromNarc(work->resourceMan[3], NARC_a_1_8_4, 19, TRUE, 1, GF_GFX_RES_TYPE_ANIM, HEAP_ID_GAME_BOARD);
+    work->resourceObj[1][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(work->resourceMan[0], NARC_a_1_8_4, 18, TRUE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_GAME_BOARD);
+    work->resourceObj[1][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_a_1_8_4, 56, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 8, HEAP_ID_GAME_BOARD);
+    work->resourceObj[1][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(work->resourceMan[2], NARC_a_1_8_4, 20, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_GAME_BOARD);
+    work->resourceObj[1][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromNarc(work->resourceMan[3], NARC_a_1_8_4, 19, TRUE, 1, GF_GFX_RES_TYPE_ANIM, HEAP_ID_GAME_BOARD);
 }
 
 static void ov84_0223F538(GAME_BOARD_SUB_3E8 *work) {
     NARC *narc = NARC_New(NARC_a_0_2_1, HEAP_ID_GAME_BOARD);
 
-    work->resourceObj[2][0] = AddCharResObjFromOpenNarc(work->resourceMan[0], narc, sub_0207CA9C(), FALSE, 2, 1, HEAP_ID_GAME_BOARD);
-    work->resourceObj[2][1] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_a_0_2_1, sub_0207CAA0(), FALSE, 2, 1, 3, HEAP_ID_GAME_BOARD);
-    work->resourceObj[2][2] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[2], narc, sub_0207CAA4(), FALSE, 2, GF_GFX_RES_TYPE_CELL, HEAP_ID_GAME_BOARD);
-    work->resourceObj[2][3] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[3], narc, sub_0207CAA8(), FALSE, 2, GF_GFX_RES_TYPE_ANIM, HEAP_ID_GAME_BOARD);
+    work->resourceObj[2][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromOpenNarc(work->resourceMan[0], narc, sub_0207CA9C(), FALSE, 2, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_GAME_BOARD);
+    work->resourceObj[2][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_a_0_2_1, sub_0207CAA0(), FALSE, 2, NNS_G2D_VRAM_TYPE_2DMAIN, 3, HEAP_ID_GAME_BOARD);
+    work->resourceObj[2][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[2], narc, sub_0207CAA4(), FALSE, 2, GF_GFX_RES_TYPE_CELL, HEAP_ID_GAME_BOARD);
+    work->resourceObj[2][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[3], narc, sub_0207CAA8(), FALSE, 2, GF_GFX_RES_TYPE_ANIM, HEAP_ID_GAME_BOARD);
 
     NARC_Delete(narc);
 }
@@ -1330,9 +1330,9 @@ static void ov84_0223F5E4(GAME_BOARD_SUB_3E8 *work, Party *playerParty, Party *o
     Pokemon *opponentMon;
     NARC *narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_GAME_BOARD);
 
-    work->resourceObj[3][1] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_poketool_icongra_poke_icon, sub_02074490(), FALSE, 3, 1, 3, HEAP_ID_GAME_BOARD);
-    work->resourceObj[3][2] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[2], narc, sub_02074498(), FALSE, 3, GF_GFX_RES_TYPE_CELL, HEAP_ID_GAME_BOARD);
-    work->resourceObj[3][3] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[3], narc, sub_020744A4(), FALSE, 3, GF_GFX_RES_TYPE_ANIM, HEAP_ID_GAME_BOARD);
+    work->resourceObj[3][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_poketool_icongra_poke_icon, sub_02074490(), FALSE, 3, NNS_G2D_VRAM_TYPE_2DMAIN, 3, HEAP_ID_GAME_BOARD);
+    work->resourceObj[3][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[2], narc, sub_02074498(), FALSE, 3, GF_GFX_RES_TYPE_CELL, HEAP_ID_GAME_BOARD);
+    work->resourceObj[3][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[3], narc, sub_020744A4(), FALSE, 3, GF_GFX_RES_TYPE_ANIM, HEAP_ID_GAME_BOARD);
 
     for (i = 0; i < 4; i++) {
         if (i == 3) {
@@ -1348,18 +1348,18 @@ static void ov84_0223F5E4(GAME_BOARD_SUB_3E8 *work, Party *playerParty, Party *o
             opponentMon = Party_GetMonByIndex(opponentParty, i);
         }
 
-        work->resourceObj[3 + i][0] = AddCharResObjFromOpenNarc(work->resourceMan[0], narc, Pokemon_GetIconNaix(playerMon), FALSE, 3 + i, 1, HEAP_ID_GAME_BOARD);
-        work->resourceObj[7 + i][0] = AddCharResObjFromOpenNarc(work->resourceMan[0], narc, Pokemon_GetIconNaix(opponentMon), FALSE, 7 + i, 1, HEAP_ID_GAME_BOARD);
+        work->resourceObj[3 + i][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromOpenNarc(work->resourceMan[0], narc, Pokemon_GetIconNaix(playerMon), FALSE, 3 + i, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_GAME_BOARD);
+        work->resourceObj[7 + i][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromOpenNarc(work->resourceMan[0], narc, Pokemon_GetIconNaix(opponentMon), FALSE, 7 + i, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_GAME_BOARD);
     }
 
     NARC_Delete(narc);
 }
 
 static void ov84_0223F714(GAME_BOARD_SUB_3E8 *work) {
-    work->resourceObj[0][0] = AddCharResObjFromNarc(work->resourceMan[0], NARC_a_1_8_4, 21, TRUE, 0, 2, HEAP_ID_GAME_BOARD);
-    work->resourceObj[0][1] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_a_1_8_4, 57, FALSE, 0, 2, 2, HEAP_ID_GAME_BOARD);
-    work->resourceObj[0][2] = AddCellOrAnimResObjFromNarc(work->resourceMan[2], NARC_a_1_8_4, 23, TRUE, 0, GF_GFX_RES_TYPE_CELL, HEAP_ID_GAME_BOARD);
-    work->resourceObj[0][3] = AddCellOrAnimResObjFromNarc(work->resourceMan[3], NARC_a_1_8_4, 22, TRUE, 0, GF_GFX_RES_TYPE_ANIM, HEAP_ID_GAME_BOARD);
+    work->resourceObj[0][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(work->resourceMan[0], NARC_a_1_8_4, 21, TRUE, 0, NNS_G2D_VRAM_TYPE_2DSUB, HEAP_ID_GAME_BOARD);
+    work->resourceObj[0][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_a_1_8_4, 57, FALSE, 0, NNS_G2D_VRAM_TYPE_2DSUB, 2, HEAP_ID_GAME_BOARD);
+    work->resourceObj[0][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(work->resourceMan[2], NARC_a_1_8_4, 23, TRUE, 0, GF_GFX_RES_TYPE_CELL, HEAP_ID_GAME_BOARD);
+    work->resourceObj[0][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromNarc(work->resourceMan[3], NARC_a_1_8_4, 22, TRUE, 0, GF_GFX_RES_TYPE_ANIM, HEAP_ID_GAME_BOARD);
 }
 
 static BATTLE_ARCADE_OBJECT *BattleArcadeObject_Create(GAME_BOARD_SUB_3E8 *work, u32 chara, u32 pal, u32 cell, u32 anim, u16 x, u16 y, u32 priority, int bgPrio, u8 display) {

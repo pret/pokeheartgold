@@ -1882,11 +1882,11 @@ ov48_02259688: ; 0x02259688
 	mov r1, #0x10
 	ldr r0, _02259720 ; =ov48_0225B1A0
 	add r2, r1, #0
-	bl sub_020215C0
+	bl ObjCharTransfer_InitEx
 	mov r0, #0x20
 	add r1, r6, #0
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	mov r0, #1
 	mov r1, #0x10
@@ -1947,7 +1947,7 @@ _02259734:
 	add r5, r5, #4
 	cmp r4, #4
 	blt _02259734
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	bl OamManager_Free
 	pop {r4, r5, r6, pc}
