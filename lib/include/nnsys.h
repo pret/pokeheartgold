@@ -1,6 +1,8 @@
 #ifndef NNSYS_H_
 #define NNSYS_H_
 
+#include <nitro.h>
+
 #include <nnsys/fnd.h>
 #include <nnsys/snd.h>
 #include <nnsys/gfd.h>
