@@ -185,8 +185,8 @@ static void IntroMovie_InitSpriteGraphicsHW(IntroMovieOverlayData *data) {
     GX_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_32K);
     GXS_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_32K);
 
-    ObjCharTransferTemplate sp14 = {10, 0, 0, HEAP_ID_INTRO_MOVIE};
-    ObjCharTransfer_Init(&sp14);
+    ObjCharTransferTemplate template = {10, 0, 0, HEAP_ID_INTRO_MOVIE};
+    ObjCharTransfer_Init(&template);
     sub_02022588(10, HEAP_ID_INTRO_MOVIE);
     ObjCharTransfer_ClearBuffers();
     sub_02022638();
