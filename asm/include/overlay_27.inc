@@ -93,7 +93,7 @@
 .public LocalFieldData_GetPlayer
 .public LocalFieldData_GetSafariBallsCounter
 .public Save_LocalFieldData_Get
-.public sub_0203C3CC
+.public FieldSystem_ShouldDrawStartMenuIcon
 .public FieldSystem_GetFacingObject
 .public sub_0203DF8C
 .public sub_0203E13C

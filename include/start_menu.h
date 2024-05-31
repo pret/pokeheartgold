@@ -7,23 +7,23 @@
 
 typedef enum StartMenuIcon {
     START_MENU_ICON_POKEDEX,
-    START_MENU_ICOM_POKEMON,
+    START_MENU_ICON_POKEMON,
     START_MENU_ICON_BAG,
     START_MENU_ICON_POKEGEAR,
     START_MENU_ICON_TRAINER_CARD,
     START_MENU_ICON_SAVE,
     START_MENU_ICON_OPTIONS,
-    START_MENU_ICON_EXIT,
+    START_MENU_ICON_RUNNING_SHOES,
 } StartMenuIcon;
 
 typedef struct StartMenuTaskData {
     int unk_000;
     u8 filler_004[0x1C];
     BOOL cursorActive;
-    u16 unk_024;
+    u16 lastButtonSelected;
     u16 state; // 26
     int selectedIndex;
-    u32 unk_02C;
+    u32 numActiveButtons;
     u8 insertionOrder[10];
     u8 selectionToAction[10];
     u8 filler_044[0x190];
@@ -59,7 +59,7 @@ void sub_0203BC28(FieldSystem *fieldSystem);
 void sub_0203BCDC(FieldSystem *fieldSystem);
 void sub_0203BD20(FieldSystem *fieldSystem);
 void sub_0203BD64(FieldSystem *fieldSystem);
-BOOL sub_0203C3CC(FieldSystem *fieldSystem, int a1);
+BOOL FieldSystem_ShouldDrawStartMenuIcon(FieldSystem *fieldSystem, StartMenuIcon a1);
 void StartMenu_SetChildProcReturnTaskFunc(StartMenuTaskData *env, TaskFunc func);
 BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager);
 BOOL sub_0203D718(TaskManager *taskManager);

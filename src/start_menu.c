@@ -36,7 +36,7 @@
 #include "constants/std_script.h"
 #include "msgdata/msg/msg_0196.h"
 
-typedef enum StartMenuIconInternal {
+typedef enum StartMenuAction {
     START_MENU_ACTION_POKEDEX,
     START_MENU_ACTION_POKEMON,
     START_MENU_ACTION_BAG,
@@ -50,9 +50,9 @@ typedef enum StartMenuIconInternal {
     START_MENU_ACTION_10,
     START_MENU_ACTION_POKEGEAR,
     START_MENU_ACTION_12,
-} StartMenuIconInternal;
+} StartMenuAction;
 
-typedef enum StartMenuIconInhibit {
+typedef enum StartMenuActionDisable {
     START_MENU_ACTION_DISABLE_POKEDEX,
     START_MENU_ACTION_DISABLE_POKEMON,
     START_MENU_ACTION_DISABLE_BAG,
@@ -63,7 +63,7 @@ typedef enum StartMenuIconInhibit {
     START_MENU_ACTION_DISABLE_7,
     START_MENU_ACTION_DISABLE_RETIRE,
     START_MENU_ACTION_DISABLE_POKEGEAR,
-} StartMenuIconInhibit;
+} StartMenuActionDisable;
 
 typedef enum StartMenuState {
     START_MENU_STATE_INIT,
@@ -89,10 +89,10 @@ typedef enum StartMenuState {
     START_MENU_STATE_20,
 } StartMenuState;
 
-typedef struct StartMenuAction {
+typedef struct StartMenuActionFunc {
     int ident;
     TaskFunc func;
-} StartMenuAction;
+} StartMenuActionFunc;
 
 typedef struct UnkStruct_0203CA9C_Case8 {
     u8 partySlot;
@@ -101,6 +101,15 @@ typedef struct UnkStruct_0203CA9C_Case8 {
     u16 species;
     int unk_8;
 } UnkStruct_0203CA9C_Case8;
+
+typedef struct UnkStruct_0203D580 {
+    u16 itemId;
+    u16 unk_2;
+} UnkStruct_0203D580;
+
+typedef struct StartMenuAfterEvoPartySlotBak {
+    int partySlot;
+} StartMenuAfterEvoPartySlotBak;
 
 #define STARTMENUTASKFUNC_CANCEL  ((TaskFunc)-2)
 #define STARTMENUTASKFUNC_NONE    ((TaskFunc)-1)
@@ -115,10 +124,10 @@ static u32 sub_0203BEE0(FieldSystem *fieldSystem);
 static u32 sub_0203BEE8(FieldSystem *fieldSystem);
 static BOOL Task_StartMenu(TaskManager *taskManager);
 static void Task_StartMenu_DrawCursor(TaskManager *taskManager);
-static void sub_0203C1FC(u8 *insertionOrderDest, u8 *displayOrderDest, u32 *pLength, u8 item, vu32 position);
+static void StartMenuButton_Insert(u8 *insertionOrderDest, u8 *displayOrderDest, u32 *pLength, u8 item, vu32 position);
 static u32 StartMenu_BuildActionLists(StartMenuTaskData *startMenu, u8 *insertionOrderDest, u8 *displayOrderDest);
 static void sub_0203C38C(StartMenuTaskData *startMenu, FieldSystem *fieldSystem);
-static BOOL sub_0203C3B8(FieldSystem *fieldSystem, int a1);
+static BOOL FieldSystem_StartMenuActionIsAvailable(FieldSystem *fieldSystem, StartMenuAction action);
 static void FieldSystem_ResetGearRingManagerIfNotSelectingSaveOrPokegear(FieldSystem *fieldSystem);
 static BOOL Task_StartMenu_HandleInput(TaskManager *taskManager);
 static BOOL StartMenu_HandleKeyInput(TaskManager *taskManager, FieldSystem *fieldSystem, StartMenuTaskData *startMenu);
@@ -163,7 +172,7 @@ static void sub_0203D940(FieldSystem *fieldSystem, StartMenuTaskData *startMenu,
 static void Task_StartMenu_Evolution(TaskManager *taskManager);
 static void Task_StartMenu_WaitEvolution(TaskManager *taskManager);
 
-static const int _020FA0C4[] = {
+static const int sActionToIconIndex[] = {
     0,
     1,
     2,
@@ -178,7 +187,7 @@ static const int _020FA0C4[] = {
     3,
 };
 
-static const StartMenuAction sStartMenuActions[] = {
+static const StartMenuActionFunc sStartMenuActions[] = {
     [START_MENU_ACTION_POKEDEX] = {
         .ident = msg_0196_00000,
         .func = Task_StartMenu_HandleSelection_Pokedex
@@ -324,7 +333,7 @@ static StartMenuTaskData *StartMenu_Create(void) {
     StartMenuTaskData *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(StartMenuTaskData));
     MI_CpuClearFast(ret, sizeof(StartMenuTaskData));
     ret->state = 0;
-    ret->unk_024 = 0;
+    ret->lastButtonSelected = 0;
     ret->atexit_TaskEnv = NULL;
     return ret;
 }
@@ -501,11 +510,11 @@ static void Task_StartMenu_DrawCursor(TaskManager *taskManager) {
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     u32 numActiveButtons = StartMenu_BuildActionLists(startMenu, startMenu->insertionOrder, startMenu->selectionToAction);
-    startMenu->unk_02C = numActiveButtons;
-    startMenu->unk_024 = 0;
+    startMenu->numActiveButtons = numActiveButtons;
+    startMenu->lastButtonSelected = 0;
     for (int i = 0; i < numActiveButtons; ++i) {
         if (fieldSystem->unk90 == startMenu->insertionOrder[i]) {
-            startMenu->unk_024 = i;
+            startMenu->lastButtonSelected = i;
         }
     }
     startMenu->cursorActive = TRUE;
@@ -515,7 +524,7 @@ static void Task_StartMenu_DrawCursor(TaskManager *taskManager) {
     StartMenu_CreateCursor(startMenu, startMenu->insertionOrder, numActiveButtons, PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->saveData)));
 }
 
-static void sub_0203C1FC(u8 *insertionOrderDest, u8 *displayOrderDest, u32 *pLength, u8 item, vu32 position) {
+static void StartMenuButton_Insert(u8 *insertionOrderDest, u8 *displayOrderDest, u32 *pLength, u8 item, vu32 position) {
     insertionOrderDest[*pLength] = item;
     if (position == -1u) {
         position = *pLength;
@@ -528,41 +537,41 @@ static u32 StartMenu_BuildActionLists(StartMenuTaskData *startMenu, u8 *insertio
     u32 numIcons = 0;
 
     if (!(startMenu->inhibitIconFlags & (1 << START_MENU_ACTION_DISABLE_RETIRE))) {
-        sub_0203C1FC(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_RETIRE, -1u);
+        StartMenuButton_Insert(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_RETIRE, -1u);
     }
     if (!(startMenu->inhibitIconFlags & (1 << START_MENU_ACTION_DISABLE_7))) {
-        sub_0203C1FC(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_7, -1u);
+        StartMenuButton_Insert(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_7, -1u);
     }
     if (!(startMenu->inhibitIconFlags & (1 << START_MENU_ACTION_DISABLE_POKEDEX))) {
-        sub_0203C1FC(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_POKEDEX, -1u);
+        StartMenuButton_Insert(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_POKEDEX, -1u);
     }
     if (!(startMenu->inhibitIconFlags & (1 << START_MENU_ACTION_DISABLE_POKEMON))) {
-        sub_0203C1FC(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_POKEMON, -1u);
+        StartMenuButton_Insert(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_POKEMON, -1u);
     }
     if (!(startMenu->inhibitIconFlags & (1 << START_MENU_ACTION_DISABLE_BAG))) {
-        sub_0203C1FC(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_BAG, -1u);
+        StartMenuButton_Insert(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_BAG, -1u);
     }
     if (!(startMenu->inhibitIconFlags & (1 << START_MENU_ACTION_DISABLE_POKEGEAR))) {
         if (startMenu->unk_350) {
-            sub_0203C1FC(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_12, -1u);
+            StartMenuButton_Insert(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_12, -1u);
         } else {
-            sub_0203C1FC(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_POKEGEAR, -1u);
+            StartMenuButton_Insert(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_POKEGEAR, -1u);
         }
     }
     if (!(startMenu->inhibitIconFlags & (1 << START_MENU_ACTION_DISABLE_TRAINER_CARD))) {
-        sub_0203C1FC(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_TRAINER_CARD, -1u);
+        StartMenuButton_Insert(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_TRAINER_CARD, -1u);
     }
     if (!(startMenu->inhibitIconFlags & (1 << START_MENU_ACTION_DISABLE_SAVE))) {
-        sub_0203C1FC(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_SAVE, -1u);
+        StartMenuButton_Insert(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_SAVE, -1u);
     }
     if (!(startMenu->inhibitIconFlags & (1 << START_MENU_ACTION_DISABLE_OPTIONS))) {
-        sub_0203C1FC(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_OPTIONS, -1u);
+        StartMenuButton_Insert(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_OPTIONS, -1u);
     }
     if (!(startMenu->inhibitIconFlags & (1 << START_MENU_ACTION_DISABLE_RUNNING_SHOES))) {
-        sub_0203C1FC(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_RUNNING_SHOES, -1u);
+        StartMenuButton_Insert(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_RUNNING_SHOES, -1u);
     }
-    sub_0203C1FC(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_9, 7);
-    sub_0203C1FC(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_10, 8);
+    StartMenuButton_Insert(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_9, 7);
+    StartMenuButton_Insert(insertionOrderDest, displayOrderDest, &numIcons, START_MENU_ACTION_10, 8);
     return numIcons;
 }
 
@@ -572,15 +581,15 @@ static void sub_0203C38C(StartMenuTaskData *startMenu, FieldSystem *fieldSystem)
     startMenu->cursorActive = FALSE;
 }
 
-static BOOL sub_0203C3B8(FieldSystem *fieldSystem, int a1) {
-    return sub_0203C3CC(fieldSystem, _020FA0C4[a1]);
+static BOOL FieldSystem_StartMenuActionIsAvailable(FieldSystem *fieldSystem, StartMenuAction action) {
+    return FieldSystem_ShouldDrawStartMenuIcon(fieldSystem, (StartMenuIcon)sActionToIconIndex[action]);
 }
 
-BOOL sub_0203C3CC(FieldSystem *fieldSystem, int a1) {
+BOOL FieldSystem_ShouldDrawStartMenuIcon(FieldSystem *fieldSystem, StartMenuIcon a1) {
     switch (a1) {
     case START_MENU_ICON_POKEDEX:
         return CheckGotPokedex(Save_VarsFlags_Get(fieldSystem->saveData));
-    case START_MENU_ICOM_POKEMON:
+    case START_MENU_ICON_POKEMON:
         return CheckGotStarter(Save_VarsFlags_Get(fieldSystem->saveData));
     case START_MENU_ICON_BAG:
         return CheckGotMenuIconI(Save_VarsFlags_Get(fieldSystem->saveData), START_MENU_ICON_UNLOCK_BAG);
@@ -592,7 +601,7 @@ BOOL sub_0203C3CC(FieldSystem *fieldSystem, int a1) {
         return CheckGotMenuIconI(Save_VarsFlags_Get(fieldSystem->saveData), START_MENU_ICON_UNLOCK_SAVE_BUTTON);
     case START_MENU_ICON_OPTIONS:
         return CheckGotMenuIconI(Save_VarsFlags_Get(fieldSystem->saveData), START_MENU_ICON_UNLOCK_OPTIONS_BUTTON);
-    case START_MENU_ICON_EXIT:
+    case START_MENU_ICON_RUNNING_SHOES:
         return PlayerSaveData_CheckRunningShoes(LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData)));
     default:
         return TRUE;
@@ -633,14 +642,14 @@ static BOOL Task_StartMenu_HandleInput(TaskManager *taskManager) {
 }
 
 static BOOL StartMenu_HandleKeyInput(TaskManager *taskManager, FieldSystem *fieldSystem, StartMenuTaskData *startMenu) {
-    if (fieldSystem->unkD3 < startMenu->unk_02C) {
+    if (fieldSystem->unkD3 < startMenu->numActiveButtons) {
         PlaySE(SEQ_SE_DP_SELECT);
         sub_02018410(&fieldSystem->unk_10C, 0);
         startMenu->selectedIndex = fieldSystem->unkD3;
         if (sStartMenuActions[startMenu->selectionToAction[startMenu->selectedIndex]].func == STARTMENUTASKFUNC_CANCEL) {
             startMenu->state = START_MENU_STATE_CLOSE;
         } else if (sStartMenuActions[startMenu->selectionToAction[startMenu->selectedIndex]].func != STARTMENUTASKFUNC_NONE) {
-            if (sub_0203C3B8(fieldSystem, startMenu->selectionToAction[startMenu->selectedIndex])) {
+            if (FieldSystem_StartMenuActionIsAvailable(fieldSystem, (StartMenuAction)startMenu->selectionToAction[startMenu->selectedIndex])) {
                 TaskFunc func = sStartMenuActions[startMenu->selectionToAction[startMenu->selectedIndex]].func;
                 sub_0203DF64(fieldSystem, 0);
                 ov01_021F6B50(fieldSystem);
@@ -674,14 +683,14 @@ static BOOL StartMenu_HandleTouchInput(TaskManager *taskManager, FieldSystem *fi
     case 9:
     case 10:
         fieldSystem->unkD3 = fieldSystem->lastTouchMenuInput - 2;
-        if (fieldSystem->unkD3 < startMenu->unk_02C) {
+        if (fieldSystem->unkD3 < startMenu->numActiveButtons) {
             PlaySE(SEQ_SE_DP_SELECT);
             startMenu->selectedIndex = fieldSystem->unkD3;
             if (sStartMenuActions[startMenu->selectionToAction[startMenu->selectedIndex]].func == STARTMENUTASKFUNC_CANCEL) {
                 startMenu->state = START_MENU_STATE_CLOSE;
                 fieldSystem->lastTouchMenuInput = 0;
             } else if (sStartMenuActions[startMenu->selectionToAction[startMenu->selectedIndex]].func != STARTMENUTASKFUNC_NONE) {
-                if (sub_0203C3B8(fieldSystem, startMenu->selectionToAction[startMenu->selectedIndex])) {
+                if (FieldSystem_StartMenuActionIsAvailable(fieldSystem, (StartMenuAction)startMenu->selectionToAction[startMenu->selectedIndex])) {
                     TaskFunc func = sStartMenuActions[startMenu->selectionToAction[startMenu->selectedIndex]].func;
                     fieldSystem->lastTouchMenuInput = 0;
                     sub_0203DF64(fieldSystem, 1);
@@ -902,9 +911,9 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         sub_02089D40(pokemonSummaryArgs, _020FA0AC);
         sub_0208AD34(pokemonSummaryArgs, Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
         PokemonSummary_LearnForget_LaunchApp(fieldSystem, pokemonSummaryArgs);
-        u16 *unk = AllocFromHeap(HEAP_ID_FIELD, 2 * sizeof(u16));
-        unk[0] = partyMenuArgs->itemId;
-        unk[1] = 0;
+        UnkStruct_0203D580 *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0203D580));
+        unk->itemId = partyMenuArgs->itemId;
+        unk->unk_2 = 0;
         startMenu->atexit_TaskEnv2 = unk;
         startMenu->atexit_TaskEnv = pokemonSummaryArgs;
         StartMenu_SetChildProcReturnTaskFunc(startMenu, sub_0203D580);
@@ -927,9 +936,9 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         sub_02089D40(pokemonSummaryArgs, _020FA0AC);
         sub_0208AD34(pokemonSummaryArgs, Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
         PokemonSummary_LearnForget_LaunchApp(fieldSystem, pokemonSummaryArgs);
-        u16 *unk = AllocFromHeap(HEAP_ID_FIELD, 2 * sizeof(u16));
-        unk[0] = 0;
-        unk[1] = partyMenuArgs->unk_38;
+        UnkStruct_0203D580 *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0203D580));
+        unk->itemId = ITEM_NONE;
+        unk->unk_2 = partyMenuArgs->unk_38;
         startMenu->atexit_TaskEnv2 = unk;
         startMenu->atexit_TaskEnv = pokemonSummaryArgs;
         StartMenu_SetChildProcReturnTaskFunc(startMenu, sub_0203D580);
@@ -950,8 +959,8 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         StartMenu_SetChildProcReturnTaskFunc(startMenu, sub_0203D830);
         break;
     case 3: {
-        int *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(int));
-        *unk = partyMenuArgs->partySlot;
+        StartMenuAfterEvoPartySlotBak *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(StartMenuAfterEvoPartySlotBak));
+        unk->partySlot = partyMenuArgs->partySlot;
         startMenu->atexit_TaskEnv2 = unk;
         Bag *bag = Save_Bag_Get(fieldSystem->saveData);
         PlayerProfile *playerProfile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
@@ -1098,8 +1107,8 @@ static BOOL Task_StartMenu_HandleReturn(TaskManager *taskManager) {
     }
     case 4: {
         Party *party = SaveArray_Party_Get(fieldSystem->saveData);
-        int *unk = startMenu->atexit_TaskEnv2;
-        int monId = *unk;
+        StartMenuAfterEvoPartySlotBak *unk = startMenu->atexit_TaskEnv2;
+        int monId = unk->partySlot;
         u16 itemId = BagView_GetItemId(bagView);
         Pokemon *pokemon = Party_GetMonByIndex(party, monId);
         FreeToHeap(startMenu->atexit_TaskEnv2);
@@ -1349,18 +1358,18 @@ static BOOL sub_0203D580(TaskManager *taskManager) {
     FreeToHeap(startMenu->atexit_TaskEnv);
     if (summaryArgs->unk12 == 2) {
         PartyMenuArgs *partyMenuArgs = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
-        u16 *r7 = startMenu->atexit_TaskEnv2;
+        UnkStruct_0203D580 *r7 = startMenu->atexit_TaskEnv2;
         sub_0203CF74(partyMenuArgs, fieldSystem, startMenu);
-        partyMenuArgs->itemId = r7[0];
+        partyMenuArgs->itemId = r7->itemId;
         partyMenuArgs->partySlot = summaryArgs->partySlot;
         partyMenuArgs->unk2A = summaryArgs->unk18;
         partyMenuArgs->unk2C = summaryArgs->unk16;
-        if (r7[0] != ITEM_NONE) {
+        if (r7->itemId != ITEM_NONE) {
             partyMenuArgs->unk_24 = 7;
             partyMenuArgs->unk_38 = 0;
         } else {
             partyMenuArgs->unk_24 = 8;
-            partyMenuArgs->unk_38 = r7[1];
+            partyMenuArgs->unk_38 = r7->unk_2;
         }
         partyMenuArgs->unk20 = &fieldSystem->unk_10C;
         FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, partyMenuArgs);
@@ -1519,8 +1528,8 @@ static void Task_StartMenu_Evolution(TaskManager *taskManager) {
     } else {
         evolution = sub_02075A7C(party, pokemon, unk->species, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData), sub_02088288(fieldSystem->saveData), Save_Pokedex_Get(fieldSystem->saveData), Save_Bag_Get(fieldSystem->saveData), Save_GameStats_Get(fieldSystem->saveData), unk->unk_8, FALSE, HEAP_ID_EVOLUTION);
     }
-    int *newEnv = AllocFromHeap(HEAP_ID_FIELD, sizeof(int));
-    *newEnv = unk->partySlot;
+    StartMenuAfterEvoPartySlotBak *newEnv = AllocFromHeap(HEAP_ID_FIELD, sizeof(StartMenuAfterEvoPartySlotBak));
+    newEnv->partySlot = unk->partySlot;
     startMenu->atexit_TaskEnv2 = newEnv;
     FreeToHeap(startMenu->atexit_TaskEnv);
     startMenu->atexit_TaskEnv = evolution;
@@ -1538,8 +1547,8 @@ static void Task_StartMenu_WaitEvolution(TaskManager *taskManager) {
         sub_02004AD8(0);
         sub_02055164(fieldSystem, fieldSystem->location->mapId);
         startMenu->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &startMenu->itemCheckUseData);
-        int *unk = startMenu->atexit_TaskEnv2;
-        sub_020778E0(startMenu->atexit_TaskEnv, *unk);
+        StartMenuAfterEvoPartySlotBak *unk = startMenu->atexit_TaskEnv2;
+        sub_020778E0(startMenu->atexit_TaskEnv, unk->partySlot);
         FreeToHeap(startMenu->atexit_TaskEnv2);
         StartMenu_SetChildProcReturnTaskFunc(startMenu, Task_StartMenu_HandleReturn);
     }

@@ -138,7 +138,7 @@ _021E694E:
 	strh r0, [r5, #6]
 	add r0, r4, #0
 	strh r6, [r5, #8]
-	bl sub_0203C3CC
+	bl FieldSystem_ShouldDrawStartMenuIcon
 	str r0, [sp, #4]
 	ldr r0, [sp, #0xc]
 	cmp r0, #3

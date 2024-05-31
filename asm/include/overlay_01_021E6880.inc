@@ -47,7 +47,7 @@
 .public sub_0203BC28
 .public sub_0203BCDC
 .public sub_0203BD20
-.public sub_0203C3CC
+.public FieldSystem_ShouldDrawStartMenuIcon
 .public sub_0203DC64
 .public GetInteractedBackgroundEventScript
 .public sub_0203DDA4
