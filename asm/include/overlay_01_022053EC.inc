@@ -44,7 +44,7 @@
 .public MapObject_GetParam
 .public MapObject_GetManager
 .public sub_0205F484
-.public MapObject_GetFieldSystemPtr
+.public MapObject_GetFieldSystem
 .public MapObject_CheckVisible
 .public MapObject_PauseMovement
 .public MapObject_UnpauseMovement

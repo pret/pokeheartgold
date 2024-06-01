@@ -61,7 +61,7 @@
 .public MapObject_GetManager
 .public sub_0205F484
 .public sub_0205F504
-.public MapObject_GetFieldSystemPtr
+.public MapObject_GetFieldSystem
 .public MapObject_UnpauseMovement
 .public sub_0205F73C
 .public MapObject_CheckFlag28

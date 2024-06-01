@@ -24,7 +24,7 @@
 .public sub_0205F328
 .public sub_0205F370
 .public sub_0205F394
-.public MapObject_GetFieldSystemPtr
+.public MapObject_GetFieldSystem
 .public MapObject_SingleMovementSetActive
 .public MapObject_SingleMovementSetInactive
 .public MapObject_ClearFlag3

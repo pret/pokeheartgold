@@ -3,6 +3,7 @@
 #include "field_player_avatar.h"
 #include "filesystem.h"
 #include "heap.h"
+#include "overlay_01_021F944C.h"
 #include "constants/sprites.h"
 #include "sys_task_api.h"
 #include "unk_0205FD20.h"
@@ -51,8 +52,6 @@ void MapObjectManager_Delete(MapObjectManager *manager) {
     FreeToHeapExplicit(HEAP_ID_FIELD, MapObjectManager_GetObjects(manager));
     FreeToHeapExplicit(HEAP_ID_FIELD, manager);
 }
-
-extern void ov01_021F9FB0(MapObjectManager *manager, void *);
 
 void sub_0205E104(MapObjectManager *manager, u32 unused, u32 flagId, u32 objectCount, ObjectEvent *objectEvents) {
     u32 count = MapObjectManager_GetObjectCount(manager);
@@ -195,8 +194,8 @@ void MapObject_Remove(LocalMapObject *object) {
 
 void MapObject_Delete(LocalMapObject *object) {
     u32 flagId = MapObject_GetFlagID(object);
-    FieldSystem *fieldSystem = MapObject_GetFieldSystemPtr(object);
-    FieldSystem_FlagSet(fieldSystem, (u16)flagId);
+    FieldSystem *fieldSystem = MapObject_GetFieldSystem(object);
+    FieldSystem_FlagSet(fieldSystem, flagId);
     MapObject_Remove(object);
 }
 
@@ -797,8 +796,8 @@ BOOL sub_0205F0F8(LocalMapObject* object, u32 spriteId, u32 id, u32 a3) {
         return FALSE;
     }
 
-    u32 object_spriteId = MapObject_GetSpriteID(object);
-    if (object_spriteId != spriteId) {
+    u32 objectSpriteId = MapObject_GetSpriteID(object);
+    if (objectSpriteId != spriteId) {
         return FALSE;
     }
 
@@ -1293,7 +1292,7 @@ u16 sub_0205F524(LocalMapObject* object) {
     return object->unk128;
 }
 
-FieldSystem* MapObject_GetFieldSystemPtr(LocalMapObject* object) {
+FieldSystem* MapObject_GetFieldSystem(LocalMapObject* object) {
     return MapObjectManager_GetFieldSystemPtr(sub_0205F364(object));
 }
 

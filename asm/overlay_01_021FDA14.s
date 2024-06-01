@@ -76,7 +76,7 @@ ov01_021FDA74: ; 0x021FDA74
 	sub sp, #0x24
 	add r5, r0, #0
 	add r4, r1, #0
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	str r0, [sp, #8]
 	add r0, r5, #0
 	bl ov01_021F146C
@@ -726,7 +726,7 @@ ov01_021FDF88: ; 0x021FDF88
 	sub sp, #0x24
 	add r5, r0, #0
 	add r4, r1, #0
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	str r0, [sp, #8]
 	add r0, r5, #0
 	bl ov01_021F146C

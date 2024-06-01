@@ -52,7 +52,7 @@
 .public sub_0205F514
 .public sub_0205F51C
 .public sub_0205F524
-.public MapObject_GetFieldSystemPtr
+.public MapObject_GetFieldSystem
 .public sub_0205F5E8
 .public sub_0205F610
 .public MapObject_IsSingleMovementActive

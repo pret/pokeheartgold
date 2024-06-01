@@ -192,7 +192,7 @@ static LocalMapObject* CreateDaycareMonSpriteInternal(MapObjectManager* object_m
     MapObject_SetXRange(lmo, -1);
     MapObject_SetYRange(lmo, -1);
     MapObject_SetFlagsBits(lmo, MAPOBJECTFLAG_UNK2);
-    MapObject_ClearFlagsBits(lmo, MAPOBJECTFLAG_INACTIVE);
+    MapObject_ClearFlagsBits(lmo, MAPOBJECTFLAG_NONE);
     MapObject_SetFlag29(lmo, TRUE);
     ov01_021F9048(lmo);
 

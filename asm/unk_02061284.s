@@ -1761,7 +1761,7 @@ sub_02061E90: ; 0x02061E90
 	pop {r3, r4, r5, r6, r7, pc}
 _02061EA6:
 	add r0, r5, #0
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	bl FieldSystem_GetPlayerAvatar
 	add r6, r0, #0
 	bl sub_0205DE98
@@ -1891,7 +1891,7 @@ _02061F92:
 	bl MapObject_GetCurrentY
 	str r0, [sp, #4]
 	ldr r0, [sp]
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	bl FieldSystem_GetPlayerAvatar
 	str r0, [sp, #0xc]
 	bl GetPlayerXCoord

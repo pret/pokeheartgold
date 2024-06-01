@@ -29,7 +29,7 @@
 .public MapObject_SetMovementCommand
 .public MapObject_GetMovementCommand
 .public MapObject_SetMovementStep
-.public MapObject_GetFieldSystemPtr
+.public MapObject_GetFieldSystem
 .public MapObject_SingleMovementSetActive
 .public MapObject_SingleMovementSetInactive
 .public MapObject_IsSingleMovementActive

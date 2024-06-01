@@ -993,7 +993,7 @@ static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectManager, u8 unkA
     MapObject_SetXRange(mapObj, -1);
     MapObject_SetYRange(mapObj, -1);
     MapObject_SetFlagsBits(mapObj, MAPOBJECTFLAG_UNK30);
-    MapObject_ClearFlagsBits(mapObj, MAPOBJECTFLAG_INACTIVE);
+    MapObject_ClearFlagsBits(mapObj, MAPOBJECTFLAG_NONE);
     MapObject_SetFlag29(mapObj, FALSE);
 
     return mapObj;

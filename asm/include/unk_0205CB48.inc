@@ -86,7 +86,7 @@
 .public sub_0205F328
 .public MapObject_GetMovementCommand
 .public sub_0205F504
-.public MapObject_GetFieldSystemPtr
+.public MapObject_GetFieldSystem
 .public MapObject_GetPrevX
 .public MapObject_GetPrevY
 .public MapObject_GetCurrentX

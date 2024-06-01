@@ -115,7 +115,7 @@ typedef struct UnkLMOCallbackStruct2 {
 } UnkLMOCallbackStruct2;
 
 typedef enum MapObjectFlagBits {
-    MAPOBJECTFLAG_INACTIVE = 0,
+    MAPOBJECTFLAG_NONE = 0,
     MAPOBJECTFLAG_ACTIVE = (1 << 0),
     MAPOBJECTFLAG_SINGLE_MOVEMENT = (1 << 1),
     MAPOBJECTFLAG_UNK2 = (1 << 2),
@@ -362,7 +362,7 @@ LocalMapObject_UnkCallback sub_0205FB34(UnkLMOCallbackStruct2* unk);
 UnkLMOCallbackStruct2* sub_0205FB38(u32 spriteId);
 void sub_0205F348(LocalMapObject* object);
 u16 ObjectEvent_GetFlagID(ObjectEvent*);
-FieldSystem* MapObject_GetFieldSystemPtr(LocalMapObject* object);
+FieldSystem* MapObject_GetFieldSystem(LocalMapObject* object);
 void sub_0205FCC4(LocalMapObject* object);
 void sub_0205FCC8(LocalMapObject* object);
 void sub_0205FCCC(LocalMapObject* object);

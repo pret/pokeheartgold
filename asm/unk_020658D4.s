@@ -162,7 +162,7 @@ sub_020659B8: ; 0x020659B8
 sub_020659CC: ; 0x020659CC
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_0205F394
@@ -219,7 +219,7 @@ sub_02065A4C: ; 0x02065A4C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
 	bl MapObject_SingleMovementSetInactive
@@ -498,7 +498,7 @@ _02065C86:
 sub_02065C90: ; 0x02065C90
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	bl FieldSystem_GetPlayerAvatar
 	add r4, r0, #0
 	bl PlayerAvatar_GetMapObject
@@ -555,7 +555,7 @@ _02065CF6:
 sub_02065CFC: ; 0x02065CFC
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	bl FieldSystem_GetPlayerAvatar
 	mov r1, #1
 	add r4, r0, #0
@@ -575,7 +575,7 @@ sub_02065CFC: ; 0x02065CFC
 sub_02065D24: ; 0x02065D24
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	bl FieldSystem_GetPlayerAvatar
 	add r6, r0, #0
 	beq _02065D54
@@ -603,7 +603,7 @@ _02065D54:
 sub_02065D58: ; 0x02065D58
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	bl FieldSystem_GetPlayerAvatar
 	add r4, r0, #0
 	bl GetPlayerXCoord
@@ -618,7 +618,7 @@ sub_02065D58: ; 0x02065D58
 	thumb_func_start sub_02065D78
 sub_02065D78: ; 0x02065D78
 	push {r4, lr}
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	add r4, r0, #0
 	bl FieldSystem_GetPlayerAvatar
 	add r4, #0xe8
@@ -656,7 +656,7 @@ _02065DB2:
 	thumb_func_start sub_02065DB4
 sub_02065DB4: ; 0x02065DB4
 	push {r3, lr}
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	bl FieldSystem_GetPlayerAvatar
 	bl PlayerAvatar_GetMapObject
 	bl MapObject_GetMovementCommand
@@ -697,7 +697,7 @@ sub_02065DF4: ; 0x02065DF4
 	sub sp, #0x18
 	add r5, r0, #0
 	add r4, r1, #0
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	bl FieldSystem_GetPlayerAvatar
 	add r7, r0, #0
 	add r0, r5, #0
@@ -849,7 +849,7 @@ sub_02065F44: ; 0x02065F44
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	bl FieldSystem_GetPlayerAvatar
 	add r4, r0, #0
 	add r0, r5, #0
@@ -904,7 +904,7 @@ _02065FB4:
 sub_02065FBC: ; 0x02065FBC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	bl FieldSystem_GetPlayerAvatar
 	add r4, r0, #0
 	add r0, r5, #0
@@ -1604,7 +1604,7 @@ sub_020664D8: ; 0x020664D8
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
 	bl MapObject_GetCurrentX

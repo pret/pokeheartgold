@@ -20,7 +20,7 @@
 .public MapObject_GetSpriteID
 .public MapObject_GetFacingDirection
 .public MapObject_GetManager
-.public MapObject_GetFieldSystemPtr
+.public MapObject_GetFieldSystem
 .public MapObject_CheckVisible
 .public MapObject_CheckFlag24
 .public MapObject_GetPositionVec

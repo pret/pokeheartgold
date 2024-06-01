@@ -220,10 +220,10 @@ static u32 sub_0206D7B8(LocalMapObject *object, u32 x, u32 height, u32 y) {
     VecFx32 position;
     MapObject_GetPositionVec(object, &position);
     u32 flags = 0;
-    if (sub_020549F4(MapObject_GetFieldSystemPtr(object), &position, x, y, &unk) == 1) {
+    if (sub_020549F4(MapObject_GetFieldSystem(object), &position, x, y, &unk) == 1) {
         flags |= 1;
     }
-    u8 behavior = GetMetatileBehaviorAt(MapObject_GetFieldSystemPtr(object), x, y);
+    u8 behavior = GetMetatileBehaviorAt(MapObject_GetFieldSystem(object), x, y);
     if (sub_0205B828(behavior) == 0) {
         flags |= 4;
     }

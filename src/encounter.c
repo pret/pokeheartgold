@@ -37,7 +37,6 @@
 #include "unk_020552A4.h"
 #include "unk_02034354.h"
 #include "unk_02066EDC.h"
-#include "map_object.h"
 #include "field_warp_tasks.h"
 #include "unk_02058034.h"
 #include "pokedex_util.h"

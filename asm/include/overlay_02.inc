@@ -263,7 +263,7 @@
 .public sub_0205F328
 .public MapObject_GetManager
 .public sub_0205F484
-.public MapObject_GetFieldSystemPtr
+.public MapObject_GetFieldSystem
 .public MapObject_IsInUse
 .public MapObject_SetVisible
 .public MapObject_PauseMovement

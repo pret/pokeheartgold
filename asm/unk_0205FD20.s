@@ -614,7 +614,7 @@ _020601EE:
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	add r0, r5, #0
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	add r4, #0xfe
 	add r6, r0, #0
 	lsl r0, r4, #0x18
@@ -700,7 +700,7 @@ _020602A6:
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	add r0, r5, #0
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	add r4, #0xfe
 	add r6, r0, #0
 	lsl r0, r4, #0x18
@@ -1742,7 +1742,7 @@ sub_02060AF4: ; 0x02060AF4
 	orr r4, r0
 _02060B16:
 	add r0, r6, #0
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	add r1, sp, #0xc
 	str r1, [sp]
 	ldr r1, [sp, #4]
@@ -2110,7 +2110,7 @@ sub_02060DEC: ; 0x02060DEC
 	cmp r0, #0
 	bne _02060E46
 	add r0, r4, #0
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	str r0, [sp]
 	add r0, r4, #0
 	bl sub_0205F504
@@ -2354,7 +2354,7 @@ sub_02060FA8: ; 0x02060FA8
 	bl GetDeltaYByFacingDirection
 	add r5, r0, #0
 	add r0, r4, #0
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	ldr r2, [sp]
 	add r1, r6, r7
 	add r2, r2, r5
@@ -2380,7 +2380,7 @@ sub_02060FE0: ; 0x02060FE0
 	bl GetDeltaYByFacingDirection
 	add r5, r0, #0
 	add r0, r4, #0
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	ldr r2, [sp]
 	add r1, r6, r7
 	add r2, r2, r5
@@ -2470,7 +2470,7 @@ _020610A2:
 	bl MapObject_CheckFlag29
 	add r4, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	add r1, sp, #0
 	add r2, r4, #0
 	bl sub_02061248
@@ -2530,7 +2530,7 @@ sub_02061108: ; 0x02061108
 	bl MapObject_GetPrevY
 	add r6, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetFieldSystemPtr
+	bl MapObject_GetFieldSystem
 	add r1, r4, #0
 	add r2, r6, #0
 	add r7, r0, #0
