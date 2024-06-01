@@ -4,7 +4,7 @@
 #include "sys_flags.h"
 #include "unk_02054648.h"
 #include "unk_0203DB6C.h"
-#include "unk_02078E30.h"
+#include "party_menu.h"
 #include "follow_mon.h"
 #include "field_map_object.h"
 #include "launch_application.h"

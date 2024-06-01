@@ -23,7 +23,7 @@
 #include "unk_02022588.h"
 #include "obj_char_transfer.h"
 #include "unk_0200A090.h"
-#include "unk_02078E30.h"
+#include "party_menu.h"
 #include "vram_transfer_manager.h"
 #include "unk_0200B150.h"
 #include "pokemon.h"

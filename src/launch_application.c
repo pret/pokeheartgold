@@ -52,7 +52,7 @@
 #include "unk_02055418.h"
 #include "unk_0206D494.h"
 #include "unk_020755E8.h"
-#include "unk_02078E30.h"
+#include "party_menu.h"
 #include "unk_02082908.h"
 #include "unk_02087A78.h"
 #include "unk_02088288.h"

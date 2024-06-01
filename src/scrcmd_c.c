@@ -30,7 +30,7 @@
 #include "unk_02054648.h"
 #include "metatile_behavior.h"
 #include "unk_02055418.h"
-#include "unk_02078E30.h"
+#include "party_menu.h"
 #include "unk_020932A4.h"
 #include "unk_02092BE8.h"
 #include "unk_02097024.h"

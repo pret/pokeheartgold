@@ -40,7 +40,7 @@
 #include "save_special_ribbons.h"
 #include "sav_system_info.h"
 #include "unk_0202CA24.h"
-#include "unk_02078E30.h"
+#include "party_menu.h"
 #include "unk_02088288.h"
 #include "unk_02092BE8.h"
 #include "unk_02097B78.h"

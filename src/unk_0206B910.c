@@ -20,7 +20,7 @@
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
 #include "unk_0206B910.h"
-#include "unk_02078E30.h"
+#include "party_menu.h"
 #include "unk_02091054.h"
 #include "launch_application.h"
 
