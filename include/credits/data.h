@@ -3,6 +3,7 @@
 
 #include "global.h"
 #include "gf_gfx_planes.h"
+#include "obj_char_transfer.h"
 #include "bg_window.h"
 #include "credits/credits.h"
 
@@ -55,7 +56,7 @@ static const WindowTemplate ov76_021E6E98 = {
     .baseTile  = 0x0001,
 };
 
-static const UnkStruct_020215A0 ov76_021E6EA0 = { 0x28, 0, 0, HEAP_ID_CREDITS };
+static const ObjCharTransferTemplate sObjCharTransferTemplate = { 0x28, 0, 0, HEAP_ID_CREDITS };
 
 static const GraphicsModes ov76_021E6EB0 = {
     .dispMode    = GX_DISPMODE_GRAPHICS,

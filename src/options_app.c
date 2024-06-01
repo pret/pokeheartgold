@@ -1192,9 +1192,9 @@ static void OptionsApp_SetupSpriteRenderer(OptionsApp_Data *data) {
         .unk1C = 0x20,
     };
     const Unk122_021E92D0 unk2 = {
-        .unk0 = 9,
-        .unk4 = 0x400,
-        .unk8 = 0x400,
+        .maxTasks = 9,
+        .sizeMain = 0x400,
+        .sizeSub = 0x400,
         .charModeMain = GX_OBJVRAMMODE_CHAR_1D_32K,
         .charModeSub = GX_OBJVRAMMODE_CHAR_1D_32K,
     };

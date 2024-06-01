@@ -159,10 +159,10 @@
 .public sub_02020654
 .public sub_02020674
 .public sub_0202067C
-.public sub_020215C0
-.public sub_0202168C
-.public sub_020216C8
-.public sub_02021A50
+.public ObjCharTransfer_InitEx
+.public ObjCharTransfer_Destroy
+.public ObjCharTransfer_ClearBuffers
+.public ObjCharTransfer_DeleteTaskCopyByProxyPtr
 .public sub_02022588
 .public sub_02022608
 .public sub_02022638

@@ -6,7 +6,7 @@
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
 #include "gf_3d_render.h"
-#include "unk_020215A0.h"
+#include "obj_char_transfer.h"
 #include "unk_02022588.h"
 #include "demo/opening/gs_opening.naix"
 #include "unk_02026E30.h"
@@ -185,7 +185,7 @@ static void IntroMovie_Scene3_VBlankCB(void *pVoid) {
 
 static void IntroMovie_Scene3_Init(IntroMovieOverlayData *data, IntroMovieScene3Data *sceneData) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
-    sub_020216C8();
+    ObjCharTransfer_ClearBuffers();
     sub_02022638();
     gSystem.screensFlipped = FALSE;
     GfGfx_SwapDisplay();
@@ -627,13 +627,13 @@ static void IntroMovie_Scene3_LoadOBJGraphics(IntroMovieOverlayData *data, Intro
     IntroMovie_CreateSpriteResourceManagers(data, sIntroMovieScene3SpriteResCounts);
     GF_2DGfxResMan **resMen = IntroMovie_GetSpriteResourceManagersArray(data);
 
-    sceneData->spriteResObjs[0][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(resMen[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000066_NCGR_lz, TRUE, 2, 2, HEAP_ID_INTRO_MOVIE);
-    sceneData->spriteResObjs[0][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(resMen[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000065_NCLR, FALSE, 2, 2, 1, HEAP_ID_INTRO_MOVIE);
+    sceneData->spriteResObjs[0][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(resMen[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000066_NCGR_lz, TRUE, 2, NNS_G2D_VRAM_TYPE_2DSUB, HEAP_ID_INTRO_MOVIE);
+    sceneData->spriteResObjs[0][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(resMen[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000065_NCLR, FALSE, 2, NNS_G2D_VRAM_TYPE_2DSUB, 1, HEAP_ID_INTRO_MOVIE);
     sceneData->spriteResObjs[0][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(resMen[GF_GFX_RES_TYPE_CELL], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000068_NCER_lz, TRUE, 2, GF_GFX_RES_TYPE_CELL, HEAP_ID_INTRO_MOVIE);
     sceneData->spriteResObjs[0][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromNarc(resMen[GF_GFX_RES_TYPE_ANIM], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000067_NANR_lz, TRUE, 2, GF_GFX_RES_TYPE_ANIM, HEAP_ID_INTRO_MOVIE);
 
-    sceneData->spriteResObjs[1][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(resMen[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000070_NCGR_lz, TRUE, 3, 2, HEAP_ID_INTRO_MOVIE);
-    sceneData->spriteResObjs[1][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(resMen[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000069_NCLR, FALSE, 3, 2, 2, HEAP_ID_INTRO_MOVIE);
+    sceneData->spriteResObjs[1][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(resMen[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000070_NCGR_lz, TRUE, 3, NNS_G2D_VRAM_TYPE_2DSUB, HEAP_ID_INTRO_MOVIE);
+    sceneData->spriteResObjs[1][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(resMen[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000069_NCLR, FALSE, 3, NNS_G2D_VRAM_TYPE_2DSUB, 2, HEAP_ID_INTRO_MOVIE);
     sceneData->spriteResObjs[1][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(resMen[GF_GFX_RES_TYPE_CELL], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000072_NCER_lz, TRUE, 3, GF_GFX_RES_TYPE_CELL, HEAP_ID_INTRO_MOVIE);
     sceneData->spriteResObjs[1][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromNarc(resMen[GF_GFX_RES_TYPE_ANIM], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000071_NANR_lz, TRUE, 3, GF_GFX_RES_TYPE_ANIM, HEAP_ID_INTRO_MOVIE);
 
