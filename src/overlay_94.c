@@ -10,7 +10,7 @@
 #include "unk_02014DA0.h"
 #include "unk_0207EB24.h"
 #include "unk_02078E30.h"
-#include "unk_0207CB7C.h"
+#include "unk_0207F42C.h"
 #include "unk_02026E30.h"
 #include "text.h"
 #include "constants/pokemon.h"

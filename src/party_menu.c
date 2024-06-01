@@ -1,70 +1,53 @@
 #include "global.h"
 #include "party_menu.h"
 #include "font.h"
+#include "overlay_94.h"
 #include "render_text.h"
 #include "sound_02004A44.h"
 #include "system.h"
 #include "unk_0200FA24.h"
 #include "unk_020210A0.h"
-#include "unk_02078E30.h"
+#include "unk_0207CB7C.h"
+#include "unk_0207F42C.h"
 #include "unk_0203A3B0.h"
 #include "unk_02080BB4.h"
 #include "unk_0208805C.h"
 
 BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState);
 BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState);
+void sub_02079230(PartyMenuStruct *partyMenu);
+int sub_02079280(PartyMenuStruct *partyMenu);
+int sub_02079308(PartyMenuStruct *partyMenu);
+int sub_020793C0(PartyMenuStruct *partyMenu);
+int sub_02079400(PartyMenuStruct *partyMenu);
+int sub_02079440(PartyMenuStruct *partyMenu);
+int sub_020794C8(PartyMenuStruct *partyMenu);
+int sub_020794EC(PartyMenuStruct *partyMenu);
+int sub_020794F0(PartyMenuStruct *partyMenu);
+int sub_020794FC(PartyMenuStruct *partyMenu);
+int sub_02079550(PartyMenuStruct *partyMenu);
 BOOL PartyMenuApp_Exit(OVY_MANAGER *manager, int *pState);
 void sub_020796B8(void *cbData);
 void sub_02079700(void);
 void sub_02079758(BgConfig *bgConfig);
 void sub_02079A14(PartyMenuStruct *partyMenu, NARC *narc);
+PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager);
 void sub_02079CE4(PartyMenuStruct *partyMenu);
 void sub_02079D38(PartyMenuStruct *partyMenu);
 void sub_0207A22C(PartyMenuStruct *partyMenu);
-void sub_0207B51C(PartyMenuStruct *partyMenu, u8 a1, int a2);
 void sub_0207A89C(PartyMenuStruct *partyMenu);
-PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager);
-void sub_0207CDCC(PartyMenuStruct *partyMenu);
-void sub_0207CF98(PartyMenuStruct *partyMenu);
-void sub_0207DAC4(PartyMenuStruct *partyMenu, int a1, int a2);
-void sub_0207EB24(PartyMenuStruct *partyMenu);
-void sub_0207EDD4(PartyMenuStruct *partyMenu);
-
-int sub_02079280(PartyMenuStruct *partyMenu);
-int sub_02079308(PartyMenuStruct *partyMenu);
+void sub_0207AC20(PartyMenuStruct *partyMenu);
+void sub_0207B51C(PartyMenuStruct *partyMenu, u8 a1, int a2);
+int sub_0207B600(PartyMenuStruct *partyMenu);
 BOOL sub_0207BC1C(PartyMenuStruct *partyMenu, int *pState);
-int sub_02080B74(PartyMenuStruct *partyMenu);
-int sub_020793C0(PartyMenuStruct *partyMenu);
-int sub_02082738(PartyMenuStruct *partyMenu);
-int sub_02081820(PartyMenuStruct *partyMenu);
-int sub_02079400(PartyMenuStruct *partyMenu);
-int sub_0207C728(PartyMenuStruct *partyMenu);
-int sub_0207C74C(PartyMenuStruct *partyMenu);
+int sub_0207BD78(PartyMenuStruct *partyMenu);
+int sub_0207C400(PartyMenuStruct *partyMenu);
 int sub_0207C6BC(PartyMenuStruct *partyMenu);
 int sub_0207C6DC(PartyMenuStruct *partyMenu);
 int sub_0207C70C(PartyMenuStruct *partyMenu);
+int sub_0207C728(PartyMenuStruct *partyMenu);
+int sub_0207C74C(PartyMenuStruct *partyMenu);
 int sub_0207C908(PartyMenuStruct *partyMenu);
-int sub_02079440(PartyMenuStruct *partyMenu);
-int sub_0207C400(PartyMenuStruct *partyMenu);
-int sub_0207F694(PartyMenuStruct *partyMenu);
-int sub_0207F6E8(PartyMenuStruct *partyMenu);
-int sub_0207F720(PartyMenuStruct *partyMenu);
-int sub_0207FA08(PartyMenuStruct *partyMenu);
-int sub_02079550(PartyMenuStruct *partyMenu);
-int sub_02082370(PartyMenuStruct *partyMenu);
-int sub_02080610(PartyMenuStruct *partyMenu);
-int sub_020794C8(PartyMenuStruct *partyMenu);
-int sub_020794EC(PartyMenuStruct *partyMenu);
-int sub_020794F0(PartyMenuStruct *partyMenu);
-int sub_020794FC(PartyMenuStruct *partyMenu);
-int sub_0207B600(PartyMenuStruct *partyMenu);
-BOOL sub_0207FD6C(PartyMenuStruct *partyMenu);
-int sub_0207BD78(PartyMenuStruct *partyMenu);
-void sub_0207CB6C(PartyMenuStruct *partyMenu);
-void sub_0207F178(PartyMenuStruct *partyMenu);
-void sub_0207F2F8(PartyMenuStruct *partyMenu);
-void sub_0207AC20(PartyMenuStruct *partyMenu);
-void sub_02079230(PartyMenuStruct *partyMenu);
 
 BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
     PartyMenuStruct *partyMenu;

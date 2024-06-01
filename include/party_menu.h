@@ -110,4 +110,6 @@ struct TeleportFieldEnv {
     struct FlyTaskStruct *flySub; // waste of space
 };
 
+void sub_0207CB6C(PartyMenuStruct *partyMenu);
+
 #endif //POKEHEARTGOLD_PARTY_MENU_H

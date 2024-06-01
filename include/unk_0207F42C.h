@@ -1,0 +1,15 @@
+#ifndef GUARD_POKEHEARTGOLD_UNK_0207F42C_H
+#define GUARD_POKEHEARTGOLD_UNK_0207F42C_H
+
+#include "party_menu.h"
+
+int sub_0207F694(PartyMenuStruct *partyMenu);
+int sub_0207F6E8(PartyMenuStruct *partyMenu);
+int sub_0207F720(PartyMenuStruct *partyMenu);
+int sub_0207FA08(PartyMenuStruct *partyMenu);
+BOOL sub_0207FD6C(PartyMenuStruct *partyMenu);
+int sub_02080610(PartyMenuStruct *partyMenu);
+int sub_02080B74(PartyMenuStruct *partyMenu);
+void sub_0207DAEC(PartyMenuStruct *partyMenu, int a1, int a2);
+
+#endif //GUARD_POKEHEARTGOLD_UNK_0207F42C_H
