@@ -45,7 +45,7 @@ void PartyMenu_InitIconFormChangeData(PartyMenuStruct* unkPtr) {
 
 BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct* unkPtr) {
     IconFormChangeData* work = unkPtr->iconFormChange;
-    Pokemon *mon = Party_GetMonByIndex(unkPtr->unk654->party, unkPtr->partyMonIndex);
+    Pokemon *mon = Party_GetMonByIndex(unkPtr->unk_654->party, unkPtr->partyMonIndex);
 
     switch (work->state) {
     case 0:
@@ -66,7 +66,7 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct* unkPtr) {
             GF_ASSERT(FALSE);
             break;
         }
-        Pokedex_SetMonCaughtFlag(Save_Pokedex_Get(FieldSystem_GetSaveData(unkPtr->unk654->fieldSystem)), mon);
+        Pokedex_SetMonCaughtFlag(Save_Pokedex_Get(FieldSystem_GetSaveData(unkPtr->unk_654->fieldSystem)), mon);
         work->state++;
         break;
     case 1:
@@ -110,17 +110,17 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct* unkPtr) {
     case 9:
     {
         String* str = NewString_ReadMsgData(unkPtr->msgData, msg_0300_00188); //" changed Form!"
-        BufferBoxMonNickname(unkPtr->unk7c4, 0, Mon_GetBoxMon(mon));
-        StringExpandPlaceholders(unkPtr->unk7c4, unkPtr->unk7c8, str);
+        BufferBoxMonNickname(unkPtr->msgFormat, 0, Mon_GetBoxMon(mon));
+        StringExpandPlaceholders(unkPtr->msgFormat, unkPtr->strbuf, str);
         String_Delete(str);
         sub_0207DAEC(unkPtr, -1, 1);
         work->state++;
         break;
     }
     case 10:
-        if (TextPrinterCheckActive(unkPtr->unkc64) == 0) {
+        if (TextPrinterCheckActive(unkPtr->unk_C64) == 0) {
             _DestroyLocalWork(unkPtr);
-            unkPtr->unk654->unk27 = 0;
+            unkPtr->unk_654->selectedAction = 0;
             return TRUE;
         }
         break;

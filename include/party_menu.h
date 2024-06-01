@@ -1,7 +1,12 @@
 #ifndef POKEHEARTGOLD_PARTY_MENU_H
 #define POKEHEARTGOLD_PARTY_MENU_H
 
+#include "bag_types_def.h"
 #include "constants/party_menu.h"
+#include "mail.h"
+#include "task.h"
+#include "unk_02014DA0.h"
+#include "unk_0202E41C.h"
 
 #define FIELD_MOVE_CHECK_TREE_F                   0
 #define FIELD_MOVE_CHECK_WATER_F                  2
@@ -25,6 +30,68 @@ typedef struct FieldMoveCheckData {
     LocalMapObject *facingObject;
     u16 flag;
 } FieldMoveCheckData;
+
+typedef struct PartyMenuArgs {
+    Party *party;
+    Bag *bag;
+    MAILBOX *mailbox;
+    Options *options;
+    UnkStruct_0202E474 *unk10;
+    int unk_14;
+    FieldMoveCheckData *fieldMoveCheckData;
+    FieldSystem *fieldSystem;
+    BOOL *unk20;
+    u8 unk_24;
+    u8 unk_25;
+    u8 partySlot;
+    u8 selectedAction;
+    u16 itemId;
+    u16 unk2A;
+    u8 unk2C;
+    u8 filler_2D[3];
+    u8 unk_30[3];
+    u8 filler_33[3];
+    u8 unk_36_0:4;
+    u8 unk_36_4:4;
+    u8 unk_37;
+    int unk_38;
+    u16 species;
+    int unk_40;
+} PartyMenuArgs;
+
+typedef struct IconFormChangeData  {
+    int state;
+    int effectTimer;
+    int duration;
+    int species;
+    int fileId;
+    int partyMonIndex; //same information as B's unkc65
+    ParticleSystem* particleSystem;
+} IconFormChangeData;
+
+typedef struct PartyMenuStruct PartyMenuStruct;
+
+struct PartyMenuStruct {
+    BgConfig *unk_000;
+    u8 filler_004[0x650];
+    PartyMenuArgs* unk_654; //0x654
+    u8 filler_658[0x4];
+    SpriteGfxHandler *unk_65C;
+    u8 filler_660[0x18];
+    Sprite *unk_678;
+    u8 filler_67C[0x144];
+    MsgData* msgData; //0x7c0
+    MessageFormat* msgFormat;
+    String* strbuf;
+    u8 unk7cc[0x488];
+    int (*unk_C54)(PartyMenuStruct *);
+    u8 filler_C58[0xC];
+    u8 unk_C64;
+    u8 partyMonIndex; //selected index..?
+    u8 filler_C66[0x1a];
+    IconFormChangeData* iconFormChange;
+    u8 filler_C84[0x24];
+};
 
 #define FIELD_MOVE_FUNC_USE      0
 #define FIELD_MOVE_FUNC_CHECK    1
