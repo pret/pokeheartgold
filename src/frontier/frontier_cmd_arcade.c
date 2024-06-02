@@ -49,7 +49,7 @@ BOOL FrtCmd_ArcadeFree(FrontierContext *ctx) {
 
 extern OVY_MGR_TEMPLATE gOverlayTemplate_BattleArcadeGameBoard;
 
-BOOL ov80_0223371C(FrontierContext *ctx) {
+BOOL FrtCmd_195(FrontierContext *ctx) {
     FrontierLaunchParam *param = Frontier_GetLaunchParam(ctx->frontierSystem->unk0);
     ArcadeContext *data = Frontier_GetData(ctx->frontierSystem->unk0);
     GAME_BOARD_ARGS *args = AllocFromHeap(HEAP_ID_FIELD, sizeof(GAME_BOARD_ARGS));
@@ -61,7 +61,7 @@ BOOL ov80_0223371C(FrontierContext *ctx) {
     return TRUE;
 }
 
-BOOL ov80_02233770(FrontierContext *ctx) {
+BOOL FrtCmd_187(FrontierContext *ctx) {
     u8 monCnt;
     Pokemon *mon;
     int i, index1, index2, partyCnt, data;
@@ -514,7 +514,7 @@ BOOL FrtCmd_ArcadeSetEvent(FrontierContext *ctx) {
     return TRUE;
 }
 
-BOOL ov80_022340A8(FrontierContext *ctx) {
+BOOL FrtCmd_198(FrontierContext *ctx) {
     FrontierMap *map = FrontierSystem_GetFrontierMap(ctx->frontierSystem);
     u32 var0 = FrontierScript_ReadVar(ctx);
     u32 var1 = FrontierScript_ReadVar(ctx);

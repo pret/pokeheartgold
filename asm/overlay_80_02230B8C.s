@@ -671,8 +671,8 @@ FrtCmd_118: ; 0x022310A4
 	pop {r3, r4, r5, pc}
 	thumb_func_end FrtCmd_118
 
-	thumb_func_start ov80_022310C0
-ov80_022310C0: ; 0x022310C0
+	thumb_func_start FrtCmd_199
+FrtCmd_199: ; 0x022310C0
 	mov r0, #0
 	bx lr
-	thumb_func_end ov80_022310C0
+	thumb_func_end FrtCmd_199

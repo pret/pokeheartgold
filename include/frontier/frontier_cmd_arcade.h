@@ -8,8 +8,8 @@
 BOOL FrtCmd_ArcadeAlloc(FrontierContext *ctx);
 BOOL FrtCmd_ArcadeInit(FrontierContext  *ctx);
 BOOL FrtCmd_ArcadeFree(FrontierContext *ctx);
-BOOL ov80_0223371C(FrontierContext *ctx);
-BOOL ov80_02233770(FrontierContext *ctx);
+BOOL FrtCmd_195(FrontierContext *ctx);
+BOOL FrtCmd_187(FrontierContext *ctx);
 BOOL FrtCmd_ArcadeStartBattle(FrontierContext *ctx);
 BOOL FrtCmd_ArcadeSetPartyBeforeBattle(FrontierContext *ctx);
 BOOL FrtCmd_ArcadeSetPartyAfterBattle(FrontierContext *ctx);
@@ -19,6 +19,6 @@ BOOL FrtCmd_ArcadeSendBuffer(FrontierContext *ctx);
 BOOL FrtCmd_ArcadeReceiveBuffer(FrontierContext *ctx);
 BOOL FrtCmd_ArcadePrintMsg(FrontierContext *ctx);
 BOOL FrtCmd_ArcadeSetEvent(FrontierContext *ctx);
-BOOL ov80_022340A8(FrontierContext *ctx);
+BOOL FrtCmd_198(FrontierContext *ctx);
 
 #endif

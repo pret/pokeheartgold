@@ -42,7 +42,7 @@
 .public FrtCmd_148
 .public FrtCmd_149
 .public FrtCmd_118
-.public ov80_022310C0
+.public FrtCmd_199
 .public ov80_022310C4
 .public ov80_022313C0
 .public ov80_022314A0
