@@ -45,7 +45,7 @@ void PartyMenu_InitIconFormChangeData(PartyMenuStruct* unkPtr) {
 
 BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct* unkPtr) {
     IconFormChangeData* work = unkPtr->iconFormChange;
-    Pokemon *mon = Party_GetMonByIndex(unkPtr->unk_654->party, unkPtr->partyMonIndex);
+    Pokemon *mon = Party_GetMonByIndex(unkPtr->args->party, unkPtr->partyMonIndex);
 
     switch (work->state) {
     case 0:
@@ -66,7 +66,7 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct* unkPtr) {
             GF_ASSERT(FALSE);
             break;
         }
-        Pokedex_SetMonCaughtFlag(Save_Pokedex_Get(FieldSystem_GetSaveData(unkPtr->unk_654->fieldSystem)), mon);
+        Pokedex_SetMonCaughtFlag(Save_Pokedex_Get(FieldSystem_GetSaveData(unkPtr->args->fieldSystem)), mon);
         work->state++;
         break;
     case 1:
@@ -120,7 +120,7 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct* unkPtr) {
     case 10:
         if (TextPrinterCheckActive(unkPtr->unk_C64) == 0) {
             _DestroyLocalWork(unkPtr);
-            unkPtr->unk_654->selectedAction = 0;
+            unkPtr->args->selectedAction = 0;
             return TRUE;
         }
         break;

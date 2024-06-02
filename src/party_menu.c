@@ -12,6 +12,7 @@
 #include "unk_0203A3B0.h"
 #include "unk_02080BB4.h"
 #include "unk_0208805C.h"
+#include "unk_0207EB24.h"
 
 BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState);
 BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState);
@@ -37,10 +38,14 @@ void sub_02079D38(PartyMenuStruct *partyMenu);
 void sub_0207A22C(PartyMenuStruct *partyMenu);
 void sub_0207A89C(PartyMenuStruct *partyMenu);
 void sub_0207AC20(PartyMenuStruct *partyMenu);
+int sub_0207ADB8(PartyMenuStruct *partyMenu);
 void sub_0207B51C(PartyMenuStruct *partyMenu, u8 a1, int a2);
 int sub_0207B600(PartyMenuStruct *partyMenu);
+int sub_0207B7E0(PartyMenuStruct *partyMenu);
 BOOL sub_0207BC1C(PartyMenuStruct *partyMenu, int *pState);
 int sub_0207BD78(PartyMenuStruct *partyMenu);
+int sub_0207C0DC(PartyMenuStruct *partyMenu);
+int sub_0207C288(PartyMenuStruct *partyMenu);
 int sub_0207C400(PartyMenuStruct *partyMenu);
 int sub_0207C6BC(PartyMenuStruct *partyMenu);
 int sub_0207C6DC(PartyMenuStruct *partyMenu);
@@ -48,6 +53,9 @@ int sub_0207C70C(PartyMenuStruct *partyMenu);
 int sub_0207C728(PartyMenuStruct *partyMenu);
 int sub_0207C74C(PartyMenuStruct *partyMenu);
 int sub_0207C908(PartyMenuStruct *partyMenu);
+int sub_0207CA30(PartyMenuStruct *partyMenu);
+void sub_0207CB20(PartyMenuStruct *partyMenu);
+void sub_0207CB90(void);
 
 BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
     PartyMenuStruct *partyMenu;
@@ -82,27 +90,27 @@ BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
     sub_02079D38(partyMenu);
     sub_0207A22C(partyMenu);
     sub_0207B51C(partyMenu, partyMenu->partyMonIndex, 1);
-    if (partyMenu->unk_654->unk_24 == 5 || partyMenu->unk_654->unk_24 == 16) {
-        if (!sub_020817C4(partyMenu->unk_654->itemId)) {
+    if (partyMenu->args->unk_24 == 5 || partyMenu->args->unk_24 == 16) {
+        if (!sub_020817C4(partyMenu->args->itemId)) {
             sub_0207DAC4(partyMenu, 33, 1);
         }
-    } else if (partyMenu->unk_654->unk_24 == 6) {
+    } else if (partyMenu->args->unk_24 == 6) {
         sub_0207DAC4(partyMenu, 34, 1);
-    } else if (partyMenu->unk_654->unk_24 == 9 || partyMenu->unk_654->unk_24 == 14) {
+    } else if (partyMenu->args->unk_24 == 9 || partyMenu->args->unk_24 == 14) {
         sub_0207DAC4(partyMenu, 32, 1);
-    } else if (partyMenu->unk_654->unk_24 == 7 || partyMenu->unk_654->unk_24 == 8 || partyMenu->unk_654->unk_24 == 11 || partyMenu->unk_654->unk_24 == 12) {
+    } else if (partyMenu->args->unk_24 == 7 || partyMenu->args->unk_24 == 8 || partyMenu->args->unk_24 == 11 || partyMenu->args->unk_24 == 12) {
         thunk_Sprite_SetPalIndex(partyMenu->unk_678, 1);
-    } else if (partyMenu->unk_654->unk_24 == 2 || partyMenu->unk_654->unk_24 == 17) {
+    } else if (partyMenu->args->unk_24 == 2 || partyMenu->args->unk_24 == 17) {
         sub_0207DAC4(partyMenu, 35, 1);
-    } else if (partyMenu->unk_654->unk_24 == 15) {
+    } else if (partyMenu->args->unk_24 == 15) {
         sub_0207DAC4(partyMenu, 35, 1);
-    } else if (partyMenu->unk_654->unk_24 == 21) {
+    } else if (partyMenu->args->unk_24 == 21) {
         sub_0207DAC4(partyMenu, 184, 1);
-    } else if (partyMenu->unk_654->unk_24 == 22) {
+    } else if (partyMenu->args->unk_24 == 22) {
         sub_0207DAC4(partyMenu, 35, 1);
-    } else if (partyMenu->unk_654->unk_24 == 23) {
+    } else if (partyMenu->args->unk_24 == 23) {
         sub_0207DAC4(partyMenu, 35, 1);
-    } else if (partyMenu->unk_654->unk_24 != 10) {
+    } else if (partyMenu->args->unk_24 != 10) {
         sub_0207DAC4(partyMenu, 29, 1);
     } else {
         thunk_Sprite_SetPalIndex(partyMenu->unk_678, 1);
@@ -238,7 +246,7 @@ BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState) {
         break;
     case 33:
         if (IsPaletteFadeFinished() == TRUE) {
-            partyMenu->unk_654->partySlot = partyMenu->partyMonIndex;
+            partyMenu->args->partySlot = partyMenu->partyMonIndex;
             return TRUE;
         }
         break;
@@ -250,4 +258,189 @@ BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState) {
     sub_02079230(partyMenu);
     sub_0200D020(partyMenu->unk_65C);
     return FALSE;
+}
+
+void sub_02079224(PartyMenuStruct *partyMenu, BOOL a1) {
+    partyMenu->unk_C7C = a1;
+}
+
+void sub_02079230(PartyMenuStruct *partyMenu) {
+    if (partyMenu->unk_C7C) {
+        partyMenu->unk_C78 += 12;
+        if (partyMenu->unk_C78 > 40) {
+            partyMenu->unk_C78 = 40;
+        }
+        sub_0207F334(partyMenu, partyMenu->unk_C78);
+    } else {
+        partyMenu->unk_C78 -= 12;
+        if (partyMenu->unk_C78 < 0) {
+            partyMenu->unk_C78 = 0;
+        }
+        sub_0207F334(partyMenu, partyMenu->unk_C78);
+    }
+}
+
+int sub_02079280(PartyMenuStruct *partyMenu) {
+    if (IsPaletteFadeFinished() == TRUE) {
+        if (partyMenu->args->unk_24 == 5 || partyMenu->args->unk_24 == 16) {
+            if (sub_020817C4(partyMenu->args->itemId) == TRUE) {
+                partyMenu->unk_C62 = 0;
+                return 7;
+            } else {
+                return 4;
+            }
+        } else if (partyMenu->args->unk_24 == 6) {
+            return 21;
+        } else if (partyMenu->args->unk_24 == 7) {
+            return sub_020822CC(partyMenu);
+        } else if (partyMenu->args->unk_24 == 8) {
+            return sub_02081ED0(partyMenu);
+        } else if (partyMenu->args->unk_24 == 11 || partyMenu->args->unk_24 == 12) {
+            return 14;
+        } else if (partyMenu->args->unk_24 == 9) {
+            return 8;
+        } else if (partyMenu->args->unk_24 == 10) {
+            return 16;
+        } else {
+            return 1;
+        }
+    } else {
+        return 0;
+    }
+}
+
+int sub_02079308(PartyMenuStruct *partyMenu) {
+    switch (sub_0207ADB8(partyMenu)) {
+    case 0:
+        switch (partyMenu->args->unk_24) {
+        case 3:
+        case 20:
+            partyMenu->args->selectedAction = 0;
+            return 32;
+        case 14:
+            sub_02082868(partyMenu);
+            return 24;
+        case 19:
+            return sub_0207CA30(partyMenu);
+        default:
+            sub_02079224(partyMenu, 1);
+            return 2;
+        }
+    case 4:
+        return sub_0207B7E0(partyMenu);
+    case 3:
+        partyMenu->args->selectedAction = 0;
+        return 32;
+    case 2:
+        if (partyMenu->args->unk_24 != 15) {
+            partyMenu->args->selectedAction = 1;
+            return 32;
+        } else {
+            thunk_Sprite_SetPalIndex(partyMenu->unk_678, 1);
+            return sub_020807AC(partyMenu);
+        }
+    }
+    return 1;
+}
+
+int sub_020793C0(PartyMenuStruct *partyMenu) {
+    int x = sub_0207C0DC(partyMenu);
+    if (x == 0 || x == 2) {
+        thunk_Sprite_SetPalIndex(partyMenu->unk_678, 1);
+        return sub_0207C288(partyMenu);
+    } else if (x == 3) {
+        partyMenu->args->selectedAction = 0;
+        return 32;
+    } else {
+        return 4;
+    }
+}
+
+int sub_02079400(PartyMenuStruct *partyMenu) {
+    int x = sub_0207C0DC(partyMenu);
+    if (x == 0 || x == 2) {
+        thunk_Sprite_SetPalIndex(partyMenu->unk_678, 1);
+        return sub_0207C400(partyMenu);
+    } else if (x == 3) {
+        partyMenu->args->selectedAction = 0;
+        return 32;
+    } else {
+        return 8;
+    }
+}
+
+int sub_02079440(PartyMenuStruct *partyMenu) {
+    PartyMenuStruct_SubC90_UnkFunc r2 = sub_0207E93C(partyMenu, partyMenu->unk_824);
+    switch ((int)r2) {
+    case -2:
+        ClearFrameAndWindow2(&partyMenu->unk_214, TRUE);
+        sub_0200E5D4(&partyMenu->unk_234, TRUE);
+        ClearWindowTilemapAndScheduleTransfer(&partyMenu->unk_234);
+        sub_02079224(partyMenu, FALSE);
+        sub_0207CB20(partyMenu);
+        sub_0207CB90();
+        sub_0207DAC4(partyMenu, 29, 1);
+        thunk_Sprite_SetPalIndex(partyMenu->unk_678, 0);
+        return TRUE;
+    default: {
+        int result;
+        r2(partyMenu, &result);
+        return result;
+    }
+    case -1:
+        return 15;
+    }
+}
+
+int sub_020794C8(PartyMenuStruct *partyMenu) {
+    if (TextPrinterCheckActive(partyMenu->unk_C64) == FALSE) {
+        return partyMenu->unk_C62;
+    } else {
+        return 24;
+    }
+}
+
+int sub_020794EC(PartyMenuStruct *partyMenu) {
+    return 32;
+}
+
+int sub_020794F0(PartyMenuStruct *partyMenu) {
+    sub_0207DBCC(partyMenu);
+    return 27;
+}
+
+int sub_020794FC(PartyMenuStruct *partyMenu) {
+    switch (YesNoPrompt_HandleInput(partyMenu->yesNoPrompt)) {
+    case YESNORESPONSE_YES:
+        YesNoPrompt_Destroy(partyMenu->yesNoPrompt);
+        sub_0207CB90();
+        return partyMenu->unk_C58(partyMenu);
+    case YESNORESPONSE_NO:
+        YesNoPrompt_Destroy(partyMenu->yesNoPrompt);
+        sub_0207CB90();
+        return partyMenu->unk_C5C(partyMenu);
+    default:
+        return 27;
+    }
+}
+
+int sub_02079550(PartyMenuStruct *partyMenu) {
+    int x = sub_0207C0DC(partyMenu);
+    if (x == 0 || x == 2) {
+        thunk_Sprite_SetPalIndex(partyMenu->unk_678, 1);
+        if (partyMenu->unk_828[partyMenu->partyMonIndex].unk_10 != 1) {
+            return sub_02082134(partyMenu);
+        } else {
+            sub_0207DAEC(partyMenu, -1, 1);
+            partyMenu->args->selectedAction = 0;
+            partyMenu->unk_C62 = 25;
+            ReadMsgDataIntoString(partyMenu->msgData, 102, partyMenu->strbuf);
+            return 24;
+        }
+    } else if (x == 3) {
+        partyMenu->args->selectedAction = 0;
+        return 32;
+    } else {
+        return 21;
+    }
 }
