@@ -41,7 +41,7 @@
 .public ov80_02230FF0
 .public ov80_02231020
 .public ov80_0223106C
-.public ov80_022310A4
+.public FrtCmd_118
 .public ov80_022310C0
 .public ov80_022310C4
 .public ov80_022313C0

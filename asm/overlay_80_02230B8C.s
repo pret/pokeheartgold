@@ -656,8 +656,8 @@ _02231090:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov80_0223106C
 
-	thumb_func_start ov80_022310A4
-ov80_022310A4: ; 0x022310A4
+	thumb_func_start FrtCmd_118
+FrtCmd_118: ; 0x022310A4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl FrontierScript_ReadVarPtr
@@ -669,7 +669,7 @@ ov80_022310A4: ; 0x022310A4
 	bl ov80_0223151C
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov80_022310A4
+	thumb_func_end FrtCmd_118
 
 	thumb_func_start ov80_022310C0
 ov80_022310C0: ; 0x022310C0

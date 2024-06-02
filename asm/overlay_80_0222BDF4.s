@@ -1851,8 +1851,8 @@ ov80_0222CB94: ; 0x0222CB94
 _0222CB98: .word sub_0208311C
 	thumb_func_end ov80_0222CB94
 
-	thumb_func_start ov80_0222CB9C
-ov80_0222CB9C: ; 0x0222CB9C
+	thumb_func_start FrtCmd_108
+FrtCmd_108: ; 0x0222CB9C
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0]
@@ -1863,10 +1863,10 @@ ov80_0222CB9C: ; 0x0222CB9C
 	bl sub_0202FBF0
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ov80_0222CB9C
+	thumb_func_end FrtCmd_108
 
-	thumb_func_start ov80_0222CBB4
-ov80_0222CBB4: ; 0x0222CBB4
+	thumb_func_start FrtCmd_109
+FrtCmd_109: ; 0x0222CBB4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -1914,7 +1914,7 @@ _0222CBE2:
 	nop
 _0222CC18: .word 0x0000270F
 _0222CC1C: .word ov80_0222CC20
-	thumb_func_end ov80_0222CBB4
+	thumb_func_end FrtCmd_109
 
 	thumb_func_start ov80_0222CC20
 ov80_0222CC20: ; 0x0222CC20
@@ -2144,8 +2144,8 @@ _0222CD90:
 	pop {r4, pc}
 	thumb_func_end ov80_0222CC70
 
-	thumb_func_start ov80_0222CD94
-ov80_0222CD94: ; 0x0222CD94
+	thumb_func_start FrtCmd_110
+FrtCmd_110: ; 0x0222CD94
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -2187,19 +2187,19 @@ ov80_0222CD94: ; 0x0222CD94
 	.balign 4, 0
 _0222CDEC: .word 0x0000045D
 _0222CDF0: .word gOverlayTemplate_Battle
-	thumb_func_end ov80_0222CD94
+	thumb_func_end FrtCmd_110
 
-	thumb_func_start ov80_0222CDF4
-ov80_0222CDF4: ; 0x0222CDF4
+	thumb_func_start FrtCmd_111
+FrtCmd_111: ; 0x0222CDF4
 	push {r3, lr}
 	bl sub_0202FC24
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov80_0222CDF4
+	thumb_func_end FrtCmd_111
 
-	thumb_func_start ov80_0222CE00
-ov80_0222CE00: ; 0x0222CE00
+	thumb_func_start FrtCmd_112
+FrtCmd_112: ; 0x0222CE00
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -2217,10 +2217,10 @@ ov80_0222CE00: ; 0x0222CE00
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov80_0222CE00
+	thumb_func_end FrtCmd_112
 
-	thumb_func_start ov80_0222CE28
-ov80_0222CE28: ; 0x0222CE28
+	thumb_func_start FrtCmd_114
+FrtCmd_114: ; 0x0222CE28
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -2234,10 +2234,10 @@ ov80_0222CE28: ; 0x0222CE28
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov80_0222CE28
+	thumb_func_end FrtCmd_114
 
-	thumb_func_start ov80_0222CE48
-ov80_0222CE48: ; 0x0222CE48
+	thumb_func_start FrtCmd_115
+FrtCmd_115: ; 0x0222CE48
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r4, [r5]
@@ -2260,7 +2260,7 @@ ov80_0222CE48: ; 0x0222CE48
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0222CE7C: .word ov80_0222CE80
-	thumb_func_end ov80_0222CE48
+	thumb_func_end FrtCmd_115
 
 	thumb_func_start ov80_0222CE80
 ov80_0222CE80: ; 0x0222CE80
@@ -2290,8 +2290,8 @@ _0222CEB4:
 	pop {r3, pc}
 	thumb_func_end ov80_0222CE80
 
-	thumb_func_start ov80_0222CEB8
-ov80_0222CEB8: ; 0x0222CEB8
+	thumb_func_start FrtCmd_116
+FrtCmd_116: ; 0x0222CEB8
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0]
@@ -2300,10 +2300,10 @@ ov80_0222CEB8: ; 0x0222CEB8
 	bl Save_WipeExtraChunks
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ov80_0222CEB8
+	thumb_func_end FrtCmd_116
 
-	thumb_func_start ov80_0222CECC
-ov80_0222CECC: ; 0x0222CECC
+	thumb_func_start FrtCmd_117
+FrtCmd_117: ; 0x0222CECC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -2319,10 +2319,10 @@ ov80_0222CECC: ; 0x0222CECC
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov80_0222CECC
+	thumb_func_end FrtCmd_117
 
-	thumb_func_start ov80_0222CEF0
-ov80_0222CEF0: ; 0x0222CEF0
+	thumb_func_start FrtCmd_119
+FrtCmd_119: ; 0x0222CEF0
 	push {r4, lr}
 	ldr r4, [r0]
 	ldr r1, _0222CF04 ; =0x000003E2
@@ -2334,10 +2334,10 @@ ov80_0222CEF0: ; 0x0222CEF0
 	pop {r4, pc}
 	.balign 4, 0
 _0222CF04: .word 0x000003E2
-	thumb_func_end ov80_0222CEF0
+	thumb_func_end FrtCmd_119
 
-	thumb_func_start ov80_0222CF08
-ov80_0222CF08: ; 0x0222CF08
+	thumb_func_start FrtCmd_120
+FrtCmd_120: ; 0x0222CF08
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0, #0x7c]
@@ -2345,7 +2345,7 @@ ov80_0222CF08: ; 0x0222CF08
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov80_0222CF08
+	thumb_func_end FrtCmd_120
 
 	thumb_func_start ov80_0222CF18
 ov80_0222CF18: ; 0x0222CF18
@@ -4685,8 +4685,8 @@ FrtCmd_075: ; 0x0222E0EC
 	.balign 4, 0
 	thumb_func_end FrtCmd_075
 
-	thumb_func_start ov80_0222E10C
-ov80_0222E10C: ; 0x0222E10C
+	thumb_func_start FrtCmd_113
+FrtCmd_113: ; 0x0222E10C
 	push {r4, lr}
 	bl FrontierScript_ReadVarPtr
 	add r4, r0, #0
@@ -4695,7 +4695,7 @@ ov80_0222E10C: ; 0x0222E10C
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov80_0222E10C
+	thumb_func_end FrtCmd_113
 
 	thumb_func_start ov80_0222E120
 ov80_0222E120: ; 0x0222E120
@@ -7551,36 +7551,36 @@ gFrontierCommandTable: ; 0x0223BA04
 	.word FrtCmd_088
 	.word FrtCmd_089
 	.word FrtCmd_090
-	.word ov80_02235438
-	.word ov80_0222F608
-	.word ov80_0222F648
-	.word ov80_0222F664
-	.word ov80_0222F678
-	.word ov80_0222F6E0
-	.word ov80_0222F708
-	.word ov80_0222F74C
-	.word ov80_0222F7E0
-	.word ov80_0222F7F4
-	.word ov80_0222F808
-	.word ov80_0222F81C
-	.word ov80_0222F830
-	.word ov80_0222FC34
-	.word ov80_0222FC50
-	.word ov80_0222FC80
-	.word ov80_0222FCD0
-	.word ov80_0222CB9C
-	.word ov80_0222CBB4
-	.word ov80_0222CD94
-	.word ov80_0222CDF4
-	.word ov80_0222CE00
-	.word ov80_0222E10C
-	.word ov80_0222CE28
-	.word ov80_0222CE48
-	.word ov80_0222CEB8
-	.word ov80_0222CECC
-	.word ov80_022310A4
-	.word ov80_0222CEF0
-	.word ov80_0222CF08
+	.word FrtCmd_091
+	.word FrtCmd_092
+	.word FrtCmd_093
+	.word FrtCmd_094
+	.word FrtCmd_095
+	.word FrtCmd_096
+	.word FrtCmd_097
+	.word FrtCmd_098
+	.word FrtCmd_099
+	.word FrtCmd_100
+	.word FrtCmd_101
+	.word FrtCmd_102
+	.word FrtCmd_103
+	.word FrtCmd_104
+	.word FrtCmd_105
+	.word FrtCmd_106
+	.word FrtCmd_107
+	.word FrtCmd_108
+	.word FrtCmd_109
+	.word FrtCmd_110
+	.word FrtCmd_111
+	.word FrtCmd_112
+	.word FrtCmd_113
+	.word FrtCmd_114
+	.word FrtCmd_115
+	.word FrtCmd_116
+	.word FrtCmd_117
+	.word FrtCmd_118
+	.word FrtCmd_119
+	.word FrtCmd_120
 	.word ov80_0222CF18
 	.word ov80_0222CF38
 	.word ov80_0222D008

@@ -4,8 +4,8 @@
 
     .text
 
-	thumb_func_start ov80_02235438
-ov80_02235438: ; 0x02235438
+	thumb_func_start FrtCmd_091
+FrtCmd_091: ; 0x02235438
 	push {r3, lr}
 	bl FrontierScript_ReadHalf
 	bl GF_GetCurrentPlayingBGM
@@ -13,7 +13,7 @@ ov80_02235438: ; 0x02235438
 	bl StopBGM
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ov80_02235438
+	thumb_func_end FrtCmd_091
 
 	thumb_func_start ov80_0223544C
 ov80_0223544C: ; 0x0223544C

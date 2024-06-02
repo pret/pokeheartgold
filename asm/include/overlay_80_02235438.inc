@@ -31,7 +31,7 @@
 .public FrontierScript_ReadVar
 .public ov80_0222BE24
 .public ov80_0222F458
-.public ov80_02235438
+.public FrtCmd_091
 .public ov80_0223544C
 .public ov80_022355D0
 .public ov80_02235610
