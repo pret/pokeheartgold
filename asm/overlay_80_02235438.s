@@ -7,7 +7,7 @@
 	thumb_func_start ov80_02235438
 ov80_02235438: ; 0x02235438
 	push {r3, lr}
-	bl FrontierScriptReadHalf
+	bl FrontierScript_ReadHalf
 	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
 	bl StopBGM
@@ -24,7 +24,7 @@ ov80_0223544C: ; 0x0223544C
 	bl Frontier_GetLaunchParam
 	add r5, r0, #0
 	add r0, r7, #0
-	bl FrontierScriptReadHalf
+	bl FrontierScript_ReadHalf
 	add r6, r0, #0
 	add r0, r7, #0
 	bl FrontierScript_ReadVar
@@ -384,10 +384,10 @@ _0223570C: .word 0x0000083E
 ov80_02235710: ; 0x02235710
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl FrontierScriptReadHalf
+	bl FrontierScript_ReadHalf
 	add r4, r0, #0
 	add r0, r5, #0
-	bl FrontierScriptReadHalf
+	bl FrontierScript_ReadHalf
 	add r1, r5, #0
 	add r1, #0x78
 	strh r4, [r1]

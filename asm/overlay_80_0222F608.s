@@ -848,7 +848,7 @@ ov80_0222FC50: ; 0x0222FC50
 ov80_0222FC80: ; 0x0222FC80
 	push {r4, lr}
 	add r4, r0, #0
-	bl FrontierScriptReadHalf
+	bl FrontierScript_ReadHalf
 	add r1, r4, #0
 	add r1, #0x78
 	strh r0, [r1]

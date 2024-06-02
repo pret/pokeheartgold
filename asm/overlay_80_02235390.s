@@ -60,7 +60,7 @@ _022353E2:
 	thumb_func_start ov80_022353E8
 ov80_022353E8: ; 0x022353E8
 	push {r3, lr}
-	bl FrontierScriptReadHalf
+	bl FrontierScript_ReadHalf
 	bl PlayFanfare
 	mov r0, #0
 	pop {r3, pc}
@@ -95,7 +95,7 @@ _02235416:
 	thumb_func_start ov80_0223541C
 ov80_0223541C: ; 0x0223541C
 	push {r4, lr}
-	bl FrontierScriptReadHalf
+	bl FrontierScript_ReadHalf
 	add r4, r0, #0
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10

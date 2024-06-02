@@ -475,7 +475,7 @@ BOOL FrtCmd_ArcadeSendBuffer(FrontierContext *ctx) {
 }
 
 BOOL FrtCmd_ArcadeReceiveBuffer(FrontierContext *ctx) {
-    ctx->unk78[0] = FrontierScriptReadHalf(ctx);
+    ctx->unk78[0] = FrontierScript_ReadHalf(ctx);
     ov80_0222AB84(ctx, ov80_02234028);
     return TRUE;
 }

@@ -25,7 +25,7 @@
 .public gOverlayTemplate_Battle
 .public ov80_0222A474
 .public ov80_0222AB84
-.public FrontierScriptReadHalf
+.public FrontierScript_ReadHalf
 .public FrontierScript_ReadVarPtr
 .public FrontierScript_ReadVar
 .public ov80_0222BE9C

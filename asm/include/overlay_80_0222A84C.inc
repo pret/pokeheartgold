@@ -28,6 +28,6 @@
 .public ov80_0222ACA0
 .public ov80_02239C54
 .public ov80_0223B9CC
-.public ov80_0223BA04
+.public gFrontierCommandTable
 .public ov80_0223B9CC
-.public ov80_0223BA04
+.public gFrontierCommandTable

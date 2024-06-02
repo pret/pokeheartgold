@@ -153,7 +153,7 @@ FrontierSystem_AddTask: ; 0x0222A958
 	add r4, r0, #0
 	bl MI_CpuFill8
 	ldr r2, _0222A9D0 ; =ov80_0223B9CC
-	ldr r1, _0222A9D4 ; =ov80_0223BA04
+	ldr r1, _0222A9D4 ; =gFrontierCommandTable
 	ldr r2, [r2]
 	add r0, r4, #0
 	bl ov80_0222AB40
@@ -199,7 +199,7 @@ _0222A9B2:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0222A9D0: .word ov80_0223B9CC
-_0222A9D4: .word ov80_0223BA04
+_0222A9D4: .word gFrontierCommandTable
 _0222A9D8: .word 0x0000FFFF
 	thumb_func_end FrontierSystem_AddTask
 

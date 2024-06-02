@@ -197,7 +197,7 @@
 .public ov80_0222AB90
 .public ov80_0222AC3C
 .public ov80_0222AC4C
-.public FrontierScriptReadHalf
+.public FrontierScript_ReadHalf
 .public ov80_0222AC70
 .public FrontierScript_ReadVarPtr
 .public FrontierScript_ReadVar
@@ -342,7 +342,7 @@
 .public ov80_0223B5E8
 .public ov80_0223B60C
 .public ov80_0223B9CC
-.public ov80_0223BA04
+.public gFrontierCommandTable
 .public ov80_0223BDB4
 .public ov80_0223BDC4
 .public ov80_0223BDD4
@@ -396,7 +396,7 @@
 .public ov80_0223B9D0
 .public ov80_0223B9D8
 .public ov80_0223B9EC
-.public ov80_0223BA04
+.public gFrontierCommandTable
 .public ov80_0223BD44
 .public ov80_0223BD4C
 .public ov80_0223BD80
