@@ -15,7 +15,7 @@ typedef struct ArcadeContext {
     u8 randomFlag;
     u8 unk13;
     u32 weather;
-    u16 winstreak;
+    u16 winStreak;
     u16 unk1A;
     u8 cursorSpeed;
     u8 bpGain;
@@ -24,7 +24,7 @@ typedef struct ArcadeContext {
     u16 unk20;
     u16 unk22;
     u32 unk24;
-    BOOL isBattleWin;
+    BOOL battleWon;
     u8 unk2C[0x3];
     u8 unkF;
     UnkImageStruct *unk30[4];
@@ -54,7 +54,7 @@ typedef struct ArcadeContext {
     u8 unkA75;
     u8 unkA76;
     u8 unkA77;
-    u16 multiWinstreak;
+    u16 multiWinStreak;
     u8 unkA7A;
     u8 unkA7B;
     u8 unkA7C;
@@ -64,7 +64,7 @@ u32 BattleArcadeData_Alloc(SaveData *saveData, u32 a1, u8 a2, u32 a3, u32 a4, u3
 void BattleArcadeData_Init(void *a0, u32 a1);
 void BattleArcadeData_Free(void *a0);
 u8 BattleArcade_GetWonBattlePoints(ArcadeContext *ctx, Party *playerParty, Party *opponentParty, int a3);
-void ov80_02235364(Party *a0, Party *a1, int a2, int a3);
+void ov80_02235364(Party *party, Party *playerParty, int a2, int a3);
 int ov80_02237D8C(u8 a0);
 void ov80_02234550(void *a0, GAME_BOARD_ARGS *args);
 void BattleArcade_SetPartyBeforeBattle(ArcadeContext *ctx);

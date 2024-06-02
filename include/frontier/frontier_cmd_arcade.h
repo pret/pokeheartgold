@@ -8,7 +8,7 @@
 BOOL FrtCmd_ArcadeAlloc(FrontierContext *ctx);
 BOOL FrtCmd_ArcadeInit(FrontierContext  *ctx);
 BOOL FrtCmd_ArcadeFree(FrontierContext *ctx);
-BOOL FrtCmd_195(FrontierContext *ctx);
+BOOL FrtCmd_LaunchGameBoard(FrontierContext *ctx);
 BOOL FrtCmd_187(FrontierContext *ctx);
 BOOL FrtCmd_ArcadeStartBattle(FrontierContext *ctx);
 BOOL FrtCmd_ArcadeSetPartyBeforeBattle(FrontierContext *ctx);

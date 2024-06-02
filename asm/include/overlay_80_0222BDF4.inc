@@ -268,7 +268,7 @@
 .public FrtCmd_ArcadeAlloc
 .public FrtCmd_ArcadeInit
 .public FrtCmd_ArcadeFree
-.public FrtCmd_195
+.public FrtCmd_LaunchGameBoard
 .public FrtCmd_187
 .public FrtCmd_ArcadeStartBattle
 .public FrtCmd_ArcadeSetPartyBeforeBattle

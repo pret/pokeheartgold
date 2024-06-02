@@ -7655,7 +7655,7 @@ gFrontierCommandTable: ; 0x0223BA04
 	.word FrtCmd_ArcadeGetBattleResult
 	.word FrtCmd_ArcadeSendBuffer
 	.word FrtCmd_ArcadeReceiveBuffer
-	.word FrtCmd_195
+	.word FrtCmd_LaunchGameBoard
 	.word FrtCmd_ArcadePrintMsg
 	.word FrtCmd_ArcadeSetEvent
 	.word FrtCmd_198

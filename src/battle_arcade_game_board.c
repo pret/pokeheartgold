@@ -58,7 +58,7 @@ static void ov84_0223EBE8(GAME_BOARD_WORK *work, int key);
 static void BattleArcadeGameBoard_SetCursorPos(GAME_BOARD_WORK *work, u8 cursorPos);
 static void BattleArcadeGameBoard_StartCursorSlowdown(GAME_BOARD_WORK *work);
 static u8 ov84_0223EC88(u8 area, u8 a2);
-static u16 BattleArcade_GetWinstreak(GAME_BOARD_WORK *work);
+static u16 BattleArcade_GetWinStreak(GAME_BOARD_WORK *work);
 static BOOL ov84_0223ECBC(GAME_BOARD_WORK *work, u16 type, u16 a2);
 static void ov84_0223ED00(GAME_BOARD_WORK *work, u16 type);
 static void ov84_0223ED6C(GAME_BOARD_WORK *work, u16 type, u16 a2);
@@ -111,8 +111,8 @@ BOOL BattleArcadeGameBoard_InitOverlay(OVY_MANAGER *man, int *state) {
     work->arcadeScoreSaveData = sub_02030FA0(work->saveData);
     work->type = args->type;
     work->unk2A = args->unk1E;
-    work->winstreak = args->winstreak;
-    work->multiWinstreak = args->multiWinstreak;
+    work->winStreak = args->winStreak;
+    work->multiWinStreak = args->multiWinStreak;
     work->unk12 = args->bpGain;
     work->returnWork = &args->returnWork;
     work->options = Save_PlayerData_GetOptionsAddr(work->saveData);
@@ -776,14 +776,14 @@ static u8 ov84_0223EC88(u8 area, u8 a2) {
     return a2;
 }
 
-static u16 BattleArcade_GetWinstreak(GAME_BOARD_WORK *work) {
-    u16 winstreak = work->winstreak;
+static u16 BattleArcade_GetWinStreak(GAME_BOARD_WORK *work) {
+    u16 winStreak = work->winStreak;
 
-    if (BattleArcade_MultiplayerCheck(work->type) == TRUE && work->multiWinstreak > work->winstreak) {
-        winstreak = work->multiWinstreak;
+    if (BattleArcade_MultiplayerCheck(work->type) == TRUE && work->multiWinStreak > work->winStreak) {
+        winStreak = work->multiWinStreak;
     }
 
-    return winstreak;
+    return winStreak;
 }
 
 static BOOL ov84_0223ECBC(GAME_BOARD_WORK *work, u16 type, u16 a2) {
@@ -948,7 +948,7 @@ extern const STRUCT_0223F99C ov84_0223F904[7];
 
 static void ov84_0223EE74(GAME_BOARD_WORK *work) {
     int i;
-    u16 winstreak, var;
+    u16 winStreak, var;
     u8 flag, challenge;
 
     for (i = 0; i < NELEMS(ov84_0223F99C); i++) {
@@ -1003,11 +1003,11 @@ static void ov84_0223EE74(GAME_BOARD_WORK *work) {
                 break;
             }
 
-            winstreak = BattleArcade_GetWinstreak(work);
+            winStreak = BattleArcade_GetWinStreak(work);
 
-            var = winstreak % 7;
+            var = winStreak % 7;
 
-            if (winstreak >= 9999) {
+            if (winStreak >= 9999) {
                 var = 6;
             }
 

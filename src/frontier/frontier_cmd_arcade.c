@@ -17,7 +17,7 @@
 static void GameBoardArgs_Set(GAME_BOARD_ARGS *args, ArcadeContext *data);
 static void ov80_02233A1C(void *data);
 static void ov80_02233F1C(FrontierContext *ctx, ArcadeContext *arcadeCtx, u32 a2);
-static void ov80_02233F40(struct SPLEmitter *emitter);
+static void ov80_02233F40(SPLEmitter *emitter);
 static BOOL ov80_02234028(FrontierContext *ctx);
 
 BOOL FrtCmd_ArcadeAlloc(FrontierContext *ctx) {
@@ -29,7 +29,6 @@ BOOL FrtCmd_ArcadeAlloc(FrontierContext *ctx) {
     u16 *sp14 = FrontierScript_ReadVarPtr(ctx);
 
     FrontierLaunchParam *param = Frontier_GetLaunchParam(ctx->frontierSystem->unk0);
-
     Frontier_SetData(ctx->frontierSystem->unk0, BattleArcadeData_Alloc(param->saveData, spC, r4, sp10, r6, r7, sp14));
 
     return FALSE;
@@ -49,7 +48,7 @@ BOOL FrtCmd_ArcadeFree(FrontierContext *ctx) {
 
 extern OVY_MGR_TEMPLATE gOverlayTemplate_BattleArcadeGameBoard;
 
-BOOL FrtCmd_195(FrontierContext *ctx) {
+BOOL FrtCmd_LaunchGameBoard(FrontierContext *ctx) {
     FrontierLaunchParam *param = Frontier_GetLaunchParam(ctx->frontierSystem->unk0);
     ArcadeContext *data = Frontier_GetData(ctx->frontierSystem->unk0);
     GAME_BOARD_ARGS *args = AllocFromHeap(HEAP_ID_FIELD, sizeof(GAME_BOARD_ARGS));
@@ -71,7 +70,7 @@ BOOL FrtCmd_187(FrontierContext *ctx) {
     
     arcadeData->bpGain = BattleArcade_GetWonBattlePoints(arcadeData, setup->party[0], arcadeData->battleSetup->party[2], setup->unk1B4);
 
-    arcadeData->isBattleWin = IsBattleResultWin(setup->winFlag);
+    arcadeData->battleWon = IsBattleResultWin(setup->winFlag);
 
     if (arcadeData->unk13 == 0x1b) {
         index1 = 1;
@@ -146,8 +145,8 @@ static void GameBoardArgs_Set(GAME_BOARD_ARGS *args, ArcadeContext *data) {
     args->unk10 = &data->unk13;
     args->bpGain = data->bpGain;
     
-    args->winstreak = data->winstreak;
-    args->multiWinstreak = data->multiWinstreak;
+    args->winStreak = data->winStreak;
+    args->multiWinStreak = data->multiWinStreak;
 
     args->cursorSpeed = &data->cursorSpeed;
     args->playerParty = data->playerParty;
@@ -164,7 +163,6 @@ static void GameBoardArgs_Set(GAME_BOARD_ARGS *args, ArcadeContext *data) {
 
     for (int i = 0; i < partyCnt; i++) {
         Pokemon *mon = Party_GetMonByIndex(data->playerParty, i);
-
         data->savedHp[i] = GetMonData(mon, MON_DATA_MAXHP, NULL);
         data->savedAtk[i] = GetMonData(mon, MON_DATA_ATK, NULL);
         data->savedDef[i] = GetMonData(mon, MON_DATA_DEF, NULL);
@@ -207,224 +205,224 @@ BOOL FrtCmd_ArcadeAction(FrontierContext *ctx) {
     FrontierMap *frontierMap = FrontierSystem_GetFrontierMap(ctx->frontierSystem);
 
     switch (action) {
-        case 2:
-            arcadeCtx->type = var0;
-            break;
-        case 3:
-            *out = arcadeCtx->unk418[var0];
-            break;
-        case 4:
-            *out = arcadeCtx->winstreak;
-            break;
-        case 5:
-            if (arcadeCtx->winstreak < 9999) {
-                arcadeCtx->winstreak++;
-            }
-            break;
-        case 7:
-            OS_ResetSystem(0);
-            break;
-        case 9:
-            *out = sub_02030E98(arcadeCtx->unk8);
-            break;
-        case 10:
-            ov80_02234588(arcadeCtx, 2);
-            break;
-        case 12:
-            *out = ov80_02238430(arcadeCtx, arcadeCtx->unk13);
-            break;
-        case 14:
-            *out = ov80_02234764(arcadeCtx);
-            break;
-        case 15:
-            if (var0 == 0) {
-                mon = Party_GetMonByIndex(arcadeCtx->playerParty, 0);
-            } else {
-                mon = Party_GetMonByIndex(arcadeCtx->opponentParty, 0);
-            }
-            *out = GetMonData(mon, 6, NULL);
-            break;
-        case 16:
-            *out = arcadeCtx->unk13;
-            break;
-        case 18:
-            party = SaveArray_Party_Get(param->saveData);
-            for (i = 0; i < 3; i++) {
-                mon = Party_GetMonByIndex(party, arcadeCtx->unk2C[i]);
-                SetMonData(mon, 6, &arcadeCtx->unk412[i]);
-            }
-            break;
-        case 19:
-            *out = ov80_02238498(arcadeCtx);
-            break;
-        case 20:
-            *out = ov80_02234774(arcadeCtx, var0);
-            break;
-        case 21:
-            ov80_022347B8(arcadeCtx);
-            break;
-        case 22:
-            ov80_022347C4(arcadeCtx);
-            break;
-        case 23:
-            *out = ov80_02234770(arcadeCtx);
-            break;
-        case 24:
-            *out = arcadeCtx->unkA74;
-            break;
-        case 25:
-            if (arcadeCtx->unk13 == 0x1b) {
-                VecFx32 playerMatrix;
-                VecFx32 opponentMatrix;
-                u8 playerMonCnt = BattleArcade_GetMonCount(arcadeCtx->type, 1);
-                BattleArcade_GetOpponentMonCount(arcadeCtx->type, 1);
-
-                for (i = 0; i < playerMonCnt; i++) {
-                    Sprite *playerSprite = arcadeCtx->unk30[i]->sprite;
-                    playerMatrix = *(Sprite_GetMatrixPtr(playerSprite));
-
-                    Sprite *opponentSprite = arcadeCtx->unk40[i]->sprite;
-                    opponentMatrix = *(Sprite_GetMatrixPtr(opponentSprite));
-
-                    Sprite_SetMatrix(playerSprite, &opponentMatrix);
-                    Sprite_SetMatrix(opponentSprite, &playerMatrix);
-
-                    playerSprite = arcadeCtx->unk50[i]->sprite;
-                    playerMatrix = *(Sprite_GetMatrixPtr(playerSprite));
-
-                    opponentSprite = arcadeCtx->unk60[i]->sprite;
-                    opponentMatrix = *(Sprite_GetMatrixPtr(opponentSprite));
-
-                    Sprite_SetMatrix(playerSprite, &opponentMatrix);
-                    Sprite_SetMatrix(opponentSprite, &playerMatrix);
-                }
-            }
-            break;
-        case 6:
-            sub_02096910(arcadeCtx);
-            break;
-        case 28:
-            *out = BattleArcade_MultiplayerCheck(arcadeCtx->type);
-            break;
-        case 17:
-            *out = arcadeCtx->type;
-            break;
-        case 29:
-            ov80_0222F210(frontierMap);
-            break;
-        case 30:
-            ov80_0222F278(frontierMap);
-            break;
-        case 31:
-            ov80_02234A74(arcadeCtx, frontierMap, var0);
-
+    case 2:
+        arcadeCtx->type = var0;
+        break;
+    case 3:
+        *out = arcadeCtx->unk418[var0];
+        break;
+    case 4:
+        *out = arcadeCtx->winStreak;
+        break;
+    case 5:
+        if (arcadeCtx->winStreak < 9999) {
+            arcadeCtx->winStreak++;
+        }
+        break;
+    case 7:
+        OS_ResetSystem(0);
+        break;
+    case 9:
+        *out = sub_02030E98(arcadeCtx->unk8);
+        break;
+    case 10:
+        ov80_02234588(arcadeCtx, 2);
+        break;
+    case 12:
+        *out = ov80_02238430(arcadeCtx, arcadeCtx->unk13);
+        break;
+    case 14:
+        *out = ov80_02234764(arcadeCtx);
+        break;
+    case 15:
+        if (var0 == 0) {
+            mon = Party_GetMonByIndex(arcadeCtx->playerParty, 0);
+        } else {
+            mon = Party_GetMonByIndex(arcadeCtx->opponentParty, 0);
+        }
+        *out = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+        break;
+    case 16:
+        *out = arcadeCtx->unk13;
+        break;
+    case 18:
+        party = SaveArray_Party_Get(param->saveData);
+        for (i = 0; i < 3; i++) {
+            mon = Party_GetMonByIndex(party, arcadeCtx->unk2C[i]);
+            SetMonData(mon, MON_DATA_HELD_ITEM, &arcadeCtx->unk412[i]);
+        }
+        break;
+    case 19:
+        *out = ov80_02238498(arcadeCtx);
+        break;
+    case 20:
+        *out = ov80_02234774(arcadeCtx, var0);
+        break;
+    case 21:
+        ov80_022347B8(arcadeCtx);
+        break;
+    case 22:
+        ov80_022347C4(arcadeCtx);
+        break;
+    case 23:
+        *out = ov80_02234770(arcadeCtx);
+        break;
+    case 24:
+        *out = arcadeCtx->unkA74;
+        break;
+    case 25:
+        if (arcadeCtx->unk13 == 0x1b) {
+            VecFx32 playerMatrix;
+            VecFx32 opponentMatrix;
             u8 playerMonCnt = BattleArcade_GetMonCount(arcadeCtx->type, 1);
-            u8 opponentMonCnt = BattleArcade_GetOpponentMonCount(arcadeCtx->type, 1);
+            BattleArcade_GetOpponentMonCount(arcadeCtx->type, 1);
 
-            if (var0 == 0) {
-                for (i = 0; i < playerMonCnt; i++) {
-                    Sprite_SetPriority(arcadeCtx->unk30[i]->sprite, 2);
-                }
-            } else {
-                for (i = 0; i < opponentMonCnt; i++) {
-                    Sprite_SetPriority(arcadeCtx->unk40[i]->sprite, 2);
-                }
-            }
-            break;
-        case 32:
-            ov80_02234B24(arcadeCtx, frontierMap, var0);
-            break;
-        case 33:
-            ov80_0222F33C(frontierMap);
-            break;
-        case 34:
-            ov80_0222F3CC(frontierMap);
-            break;
-        case 35:
-            ov80_02234BEC(arcadeCtx, frontierMap, var0);
-            break;
-        case 36:
-            ov80_02234CB0(arcadeCtx, frontierMap, var0);
-            break;
-        case 11:
-            ov80_02234968(arcadeCtx, frontierMap);
-            break;
-        case 37:
-            if (BattleArcade_MultiplayerCheck(arcadeCtx->type) == TRUE) {
-                ov80_02234A38(arcadeCtx, frontierMap);
-            }
-            break;
-        case 38:
-            if (ov80_022384BC(arcadeCtx->unk13) == 0) {
-                BufferFrontierOpponentName(ctx->frontierSystem->unk44, var0, arcadeCtx->unk74[ov80_022347A8(arcadeCtx, var1)]);
-            } else {
-                if (BattleArcade_MultiplayerCheck(arcadeCtx->type) == FALSE) {
-                    profile = Save_PlayerData_GetProfileAddr(param->saveData);
-                } else {
-                    profile = sub_02034818(var1);
-                }
-                BufferPlayersName(ctx->frontierSystem->unk44, var0, profile);
-            }
-            break;
-        case 39:
-            arcadeCtx->unkA7A = var1;
-            ov80_02233F1C(ctx, arcadeCtx, var0);
-            break;
-        case 40:
-            ov80_0222A474(&arcadeCtx->unkF4[0], arcadeCtx->unk74[arcadeCtx->unk11], 0xb, 0xcc);
-            ov80_0222A474(&arcadeCtx->unkF4[1], arcadeCtx->unk74[arcadeCtx->unk11 + 7], 0xb, 0xcc);
-            break;
-        case 41:
-            ov80_02234B7C(arcadeCtx, frontierMap, var0, var1);
-            break;
-        case 42:
-            ov80_02234BB4(arcadeCtx, frontierMap, var0, var1);
-            break;
-        case 43:
-            ov80_02234DC4(var0, var1);
-            break;
-        case 44:
-            if (var0 == 0) {
-                PaletteData_BlendPalette(frontierMap->paletteData, PLTTBUF_MAIN_OBJ, 0, 0x100, var0, 0);
-            } else {
-                UnkStruct_02239938 *unkStruct = ov80_02239938(ctx->frontierSystem->unk0, var1);
-                u32 palNo = ov42_02229248(unkStruct->unk4);
-                PaletteData_BlendPalette(frontierMap->paletteData, PLTTBUF_MAIN_OBJ, palNo * 0x10, 0x10, var0, 0);
-            }
-            break;
-        case 45:
-            *out = ov80_02235324(arcadeCtx);
-            break;
-        case 46:
-            GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
-            break;
-        case 47:
-            *out = arcadeCtx->unk1F;
-            break;
-        case 48:
-            *out = 0;
+            for (i = 0; i < playerMonCnt; i++) {
+                Sprite *playerSprite = arcadeCtx->unk30[i]->sprite;
+                playerMatrix = *(Sprite_GetMatrixPtr(playerSprite));
 
-            if (arcadeCtx->type == 0) {
-                if (arcadeCtx->winstreak + 1 == 21) {
-                    *out = 1;
-                } else if (arcadeCtx->winstreak + 1 == 49) {
-                    *out = 2;
-                }
+                Sprite *opponentSprite = arcadeCtx->unk40[i]->sprite;
+                opponentMatrix = *(Sprite_GetMatrixPtr(opponentSprite));
+
+                Sprite_SetMatrix(playerSprite, &opponentMatrix);
+                Sprite_SetMatrix(opponentSprite, &playerMatrix);
+
+                playerSprite = arcadeCtx->unk50[i]->sprite;
+                playerMatrix = *(Sprite_GetMatrixPtr(playerSprite));
+
+                opponentSprite = arcadeCtx->unk60[i]->sprite;
+                opponentMatrix = *(Sprite_GetMatrixPtr(opponentSprite));
+
+                Sprite_SetMatrix(playerSprite, &opponentMatrix);
+                Sprite_SetMatrix(opponentSprite, &playerMatrix);
             }
-            break;
-        case 49:
-            ov80_0222A52C(arcadeCtx->unk330, arcadeCtx->unk314, arcadeCtx->unk31C, arcadeCtx->unk320, NULL, 4, 0xb, 0xcd);
-            break;
-        case 50:
-            ov80_022383C0(arcadeCtx);
-            break;
-        case 51:
-            *out = arcadeCtx->unk1E;
-            arcadeCtx->unk1E = 1;
-            break;
-        case 52:
-            arcadeCtx->unkA7C = 0;
-            break;
+        }
+        break;
+    case 6:
+        sub_02096910(arcadeCtx);
+        break;
+    case 28:
+        *out = BattleArcade_MultiplayerCheck(arcadeCtx->type);
+        break;
+    case 17:
+        *out = arcadeCtx->type;
+        break;
+    case 29:
+        ov80_0222F210(frontierMap);
+        break;
+    case 30:
+        ov80_0222F278(frontierMap);
+        break;
+    case 31:
+        ov80_02234A74(arcadeCtx, frontierMap, var0);
+
+        u8 playerMonCnt = BattleArcade_GetMonCount(arcadeCtx->type, 1);
+        u8 opponentMonCnt = BattleArcade_GetOpponentMonCount(arcadeCtx->type, 1);
+
+        if (var0 == 0) {
+            for (i = 0; i < playerMonCnt; i++) {
+                Sprite_SetPriority(arcadeCtx->unk30[i]->sprite, 2);
+            }
+        } else {
+            for (i = 0; i < opponentMonCnt; i++) {
+                Sprite_SetPriority(arcadeCtx->unk40[i]->sprite, 2);
+            }
+        }
+        break;
+    case 32:
+        ov80_02234B24(arcadeCtx, frontierMap, var0);
+        break;
+    case 33:
+        ov80_0222F33C(frontierMap);
+        break;
+    case 34:
+        ov80_0222F3CC(frontierMap);
+        break;
+    case 35:
+        ov80_02234BEC(arcadeCtx, frontierMap, var0);
+        break;
+    case 36:
+        ov80_02234CB0(arcadeCtx, frontierMap, var0);
+        break;
+    case 11:
+        ov80_02234968(arcadeCtx, frontierMap);
+        break;
+    case 37:
+        if (BattleArcade_MultiplayerCheck(arcadeCtx->type) == TRUE) {
+            ov80_02234A38(arcadeCtx, frontierMap);
+        }
+        break;
+    case 38:
+        if (ov80_022384BC(arcadeCtx->unk13) == 0) {
+            BufferFrontierOpponentName(ctx->frontierSystem->unk44, var0, arcadeCtx->unk74[ov80_022347A8(arcadeCtx, var1)]);
+        } else {
+            if (BattleArcade_MultiplayerCheck(arcadeCtx->type) == FALSE) {
+                profile = Save_PlayerData_GetProfileAddr(param->saveData);
+            } else {
+                profile = sub_02034818(var1);
+            }
+            BufferPlayersName(ctx->frontierSystem->unk44, var0, profile);
+        }
+        break;
+    case 39:
+        arcadeCtx->unkA7A = var1;
+        ov80_02233F1C(ctx, arcadeCtx, var0);
+        break;
+    case 40:
+        ov80_0222A474(&arcadeCtx->unkF4[0], arcadeCtx->unk74[arcadeCtx->unk11], 0xb, 0xcc);
+        ov80_0222A474(&arcadeCtx->unkF4[1], arcadeCtx->unk74[arcadeCtx->unk11 + 7], 0xb, 0xcc);
+        break;
+    case 41:
+        ov80_02234B7C(arcadeCtx, frontierMap, var0, var1);
+        break;
+    case 42:
+        ov80_02234BB4(arcadeCtx, frontierMap, var0, var1);
+        break;
+    case 43:
+        ov80_02234DC4(var0, var1);
+        break;
+    case 44:
+        if (var0 == 0) {
+            PaletteData_BlendPalette(frontierMap->paletteData, PLTTBUF_MAIN_OBJ, 0, 0x100, var0, 0);
+        } else {
+            UnkStruct_02239938 *unkStruct = ov80_02239938(ctx->frontierSystem->unk0, var1);
+            u32 palNo = ov42_02229248(unkStruct->unk4);
+            PaletteData_BlendPalette(frontierMap->paletteData, PLTTBUF_MAIN_OBJ, palNo * 0x10, 0x10, var0, 0);
+        }
+        break;
+    case 45:
+        *out = ov80_02235324(arcadeCtx);
+        break;
+    case 46:
+        GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
+        break;
+    case 47:
+        *out = arcadeCtx->unk1F;
+        break;
+    case 48:
+        *out = 0;
+
+        if (arcadeCtx->type == 0) {
+            if (arcadeCtx->winStreak + 1 == 21) {
+                *out = 1;
+            } else if (arcadeCtx->winStreak + 1 == 49) {
+                *out = 2;
+            }
+        }
+        break;
+    case 49:
+        ov80_0222A52C(arcadeCtx->unk330, arcadeCtx->unk314, arcadeCtx->unk31C, arcadeCtx->unk320, NULL, 4, 0xb, 0xcd);
+        break;
+    case 50:
+        ov80_022383C0(arcadeCtx);
+        break;
+    case 51:
+        *out = arcadeCtx->unk1E;
+        arcadeCtx->unk1E = 1;
+        break;
+    case 52:
+        arcadeCtx->unkA7C = 0;
+        break;
     }
 
     return FALSE;
@@ -436,18 +434,15 @@ static void ov80_02233F1C(FrontierContext *ctx, ArcadeContext *arcadeCtx, u32 a2
 }
 
 extern const VecFx32 ov80_0223BE6C; //{-1, 0, 0}
-static void ov80_02233F40(struct SPLEmitter *emitter) {
-	VecFx16 axis;
+static void ov80_02233F40(SPLEmitter *emitter) {
+    VecFx16 axis;
     ArcadeContext *ctx = sub_02015504();
     const VecFx32 pos = ov80_0223BE6C;
     
     if (ctx->unkA7A == 1) {
         sub_02015538(emitter, &axis);
-        
         axis.x *= -1;
-
         SPL_SetEmitterAxis(emitter, &axis);
-
         SPL_SetEmitterPosition(emitter, &pos);
     }
 }
@@ -456,8 +451,7 @@ BOOL FrtCmd_ArcadeGetBattleResult(FrontierContext *ctx) {
     u16 *var = FrontierScript_ReadVarPtr(ctx);
     
     ArcadeContext *arcadeCtx = Frontier_GetData(ctx->frontierSystem->unk0);
-    
-    *var = arcadeCtx->isBattleWin;
+    *var = arcadeCtx->battleWon;
 
     return FALSE;
 }
@@ -468,7 +462,6 @@ BOOL FrtCmd_ArcadeSendBuffer(FrontierContext *ctx) {
     u16 *ret = FrontierScript_ReadVarPtr(ctx);
 
     ArcadeContext *arcadeContxt = Frontier_GetData(ctx->frontierSystem->unk0);
-
     *ret = ov80_02234E50(arcadeContxt, unk0, unk1);
 
     return TRUE;
@@ -497,12 +490,11 @@ BOOL FrtCmd_ArcadePrintMsg(FrontierContext *ctx) {
     u8 index = FrontierScript_ReadShort(ctx);
     ArcadeContext *arcadeCtx = Frontier_GetData(ctx->frontierSystem->unk0);
 
-    if(arcadeCtx == NULL) {
+    if (arcadeCtx == NULL) {
         return FALSE;
     }
 
     u16 *msg = arcadeCtx->unkF4[index].unk18;
-
     ov80_0222F44C(ctx, msg);
 
     return TRUE;
