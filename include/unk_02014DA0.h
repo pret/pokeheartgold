@@ -5,8 +5,6 @@
 #include "camera.h"
 #include "spl.h"
 
-typedef struct SPLEmitter SPLEmitter;
-
 typedef u32 (*texAllocFun)(u32 szByte, BOOL is4x4comp);
 typedef u32 (*plttAllocFun)(u32 szByte, BOOL is4pltt);
 
@@ -26,5 +24,6 @@ void sub_02015460(void);
 void *sub_020154D0(SPLEmitter *emitter);
 int sub_02015420(void);
 void sub_02015538(SPLEmitter *emitter, VecFx16 *axis);
+void sub_02015528(SPLEmitter *emitter, int a1);
 
 #endif //POKEHEARTGOLD_UNK_02014DA0_H
