@@ -66,7 +66,7 @@
 .public AddPlttResObjFromNarc
 .public AddCellOrAnimResObjFromNarc
 .public sub_0200A740
-.public sub_0200A810
+.public GF2DGfxResObj_GetCharDataPtr
 .public sub_0200ADA4
 .public sub_0200AEB0
 .public sub_0200AF00
@@ -218,9 +218,9 @@
 .public sub_02020E80
 .public sub_02020EB0
 .public sub_02020F4C
-.public sub_020215C0
-.public sub_0202168C
-.public sub_020216C8
+.public ObjCharTransfer_InitEx
+.public ObjCharTransfer_Destroy
+.public ObjCharTransfer_ClearBuffers
 .public sub_02021AC8
 .public sub_02021B5C
 .public sub_02022588
@@ -267,7 +267,7 @@
 .public sub_02024B20
 .public sub_02024B34
 .public Sprite_GetVramType
-.public Sprite_IsCellAnimationFinished
+.public Sprite_IsCellAnimationRunning
 .public sub_02024B78
 .public sub_02024CB8
 .public TouchscreenHitbox_FindRectAtTouchNew

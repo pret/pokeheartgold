@@ -4185,13 +4185,13 @@ ov112_021E7910: ; 0x021E7910
 	bl DestroyHeap
 	mov r0, #0x10
 	bl sub_0201A738
-	ldr r0, _021E7954 ; =FS_OVERLAY_ID(OVY_60)
+	ldr r0, _021E7954 ; =FS_OVERLAY_ID(intro_title)
 	ldr r1, _021E7958 ; =gApplication_TitleScreen
 	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_021E7954: .word FS_OVERLAY_ID(OVY_60)
+_021E7954: .word FS_OVERLAY_ID(intro_title)
 _021E7958: .word gApplication_TitleScreen
 	thumb_func_end ov112_021E7910
 
@@ -18844,7 +18844,7 @@ ov112_021EF100: ; 0x021EF100
 	ldr r0, [r4, r0]
 	bl ov112_021F051C
 	bl OamManager_Free
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	ldr r0, [r4, #0x18]
 	bl FreeToHeap
@@ -18920,11 +18920,11 @@ ov112_021EF19C: ; 0x021EF19C
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_020215A0
+	bl ObjCharTransfer_Init
 	mov r0, #0x14
 	mov r1, #0x9a
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	add sp, #0x10
 	pop {r4, pc}

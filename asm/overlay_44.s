@@ -1120,7 +1120,7 @@ _0222A6F0:
 	ldr r0, [r5, r0]
 	bl SpriteList_Delete
 	bl OamManager_Free
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	add r0, r5, #0
 	bl ov44_0222B164
@@ -2262,11 +2262,11 @@ ov44_0222AFE8: ; 0x0222AFE8
 	add r0, r2, #0
 	ldr r1, _0222B02C ; =0x00200010
 	mov r2, #0x10
-	bl sub_020215C0
+	bl ObjCharTransfer_InitEx
 	mov r0, #0x14
 	mov r1, #0x35
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	ldr r1, _0222B02C ; =0x00200010
 	mov r0, #1
@@ -19327,11 +19327,11 @@ ov44_0223376C: ; 0x0223376C
 	ldr r1, _0223381C ; =0x00200010
 	mov r2, #0x10
 	str r6, [sp, #0x20]
-	bl sub_020215C0
+	bl ObjCharTransfer_InitEx
 	mov r0, #4
 	add r1, r6, #0
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	ldr r1, _0223381C ; =0x00200010
 	mov r0, #1
@@ -19404,7 +19404,7 @@ _02233844:
 	add r5, r5, #4
 	cmp r4, #4
 	blt _02233844
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	bl OamManager_Free
 	pop {r4, r5, r6, pc}

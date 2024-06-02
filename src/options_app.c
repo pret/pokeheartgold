@@ -19,6 +19,7 @@
 #include "sound.h"
 #include "system.h"
 #include "touchscreen.h"
+#include "unk_0203A3B0.h"
 #include "vram_transfer_manager.h"
 
 // Not to be confused with `Options`, which is almost exactly the same, save for two members being swapped. SMH
@@ -90,16 +91,6 @@ static const s8 sOptionsApp_UnkWindowWidthOffsets[MENU_ENTRY_COUNT] = {
     0, 0, 0, 0, 0, -0x10, 0,
 };
 
-extern const u16 sOptionsAppResourceDataFileNums[7] = {
-    NARC_resdat_resdat_00000022_bin,
-    NARC_resdat_resdat_00000023_bin,
-    NARC_resdat_resdat_00000021_bin,
-    NARC_resdat_resdat_00000020_bin,
-    0xFFFF,
-    0xFFFF,
-    NARC_resdat_resdat_00000077_bin,
-};
-
 static const u32 sOptionsAppBgLayers[5] = {
     GF_BG_LYR_MAIN_0,
     GF_BG_LYR_MAIN_1,
@@ -108,45 +99,12 @@ static const u32 sOptionsAppBgLayers[5] = {
     GF_BG_LYR_SUB_1,
 };
 
-static const GraphicsModes sOptionsAppGraphicsModes = {
-    .dispMode = GX_DISPMODE_GRAPHICS,
-    .bgMode = GX_BGMODE_0,
-    .subMode = GX_BGMODE_0,
-    ._2d3dMode = GX_BG0_AS_2D,
-};
-
-static const Unk122_021E92D0 ov54_021E6C6C = {
-    .unk0 = 9,
-    .unk4 = 0x400,
-    .unk8 = 0x400,
-    .unkC = 0x10,
-    .unk10 = 0x10,
-};
-
-static const int sMenuEntryBorderYCoords[MENU_ENTRY_COUNT] = {
-    -8, -32, -56, -80, -104, -128, -156
-};
-
 static const int sNumChoicesPerMenuEntry[MENU_ENTRY_COUNT] = {
     3, 2, 2, 2, 2, 20, 2
 };
 
-static const Unk122_021E92FC ov54_021E6CB8 = {
-    .unk0 = 0,
-    .unk4 = 0x80,
-    .unk8 = 0,
-    .unkC = 0x20,
-    .unk10 = 0,
-    .unk14 = 0x80,
-    .unk18 = 0,
-    .unk1C = 0x20,
-};
-
-static const GraphicsBanks sOptionsAppGraphicsBanks = {
-    .bg = GX_VRAM_BG_128_A,
-    .subbg = GX_VRAM_SUB_BG_128_C,
-    .obj = GX_VRAM_OBJ_16_G,
-    .subobj = GX_VRAM_SUB_OBJ_16_I,
+static const int sMenuEntryBorderYCoords[MENU_ENTRY_COUNT] = {
+    -8, -32, -56, -80, -104, -128, -156
 };
 
 static const u16 sOptionChoiceLabelXCoords[MENU_ENTRY_COUNT][3] = {
@@ -202,79 +160,6 @@ static const u32 ov54_021E6DA8[15][2] = {
     { MENU_ENTRY_FRAME, 4 },
     { MENU_ENTRY_6, 5 },
     { MENU_ENTRY_6, 6 },
-};
-
-static const BgTemplate sOptionsAppBgTemplates[5] = {
-    {
-        .x = 0,
-        .y = 0,
-        .bufferSize = 0x800,
-        .baseTile = 0,
-        .size = GF_BG_SCR_SIZE_256x256,
-        .colorMode = GX_BG_COLORMODE_16,
-        .screenBase = GX_BG_SCRBASE_0xf800,
-        .charBase = GX_BG_CHARBASE_0x00000,
-        .bgExtPltt = GX_BG_EXTPLTT_01,
-        .priority = 0,
-        .areaOver = GX_BG_AREAOVER_XLU,
-        .mosaic = FALSE,
-    },
-    {
-        .x = 0,
-        .y = 0,
-        .bufferSize = 0x800,
-        .baseTile = 0,
-        .size = GF_BG_SCR_SIZE_256x256,
-        .colorMode = GX_BG_COLORMODE_16,
-        .screenBase = GX_BG_SCRBASE_0xf000,
-        .charBase = GX_BG_CHARBASE_0x04000,
-        .bgExtPltt = GX_BG_EXTPLTT_01,
-        .priority = 1,
-        .areaOver = GX_BG_AREAOVER_XLU,
-        .mosaic = FALSE,
-    },
-    {
-        .x = 0,
-        .y = 0,
-        .bufferSize = 0x800,
-        .baseTile = 0,
-        .size = GF_BG_SCR_SIZE_256x256,
-        .colorMode = GX_BG_COLORMODE_16,
-        .screenBase = GX_BG_SCRBASE_0xe800,
-        .charBase = GX_BG_CHARBASE_0x00000,
-        .bgExtPltt = GX_BG_EXTPLTT_01,
-        .priority = 2,
-        .areaOver = GX_BG_AREAOVER_XLU,
-        .mosaic = FALSE,
-    },
-    {
-        .x = 0,
-        .y = 0,
-        .bufferSize = 0x800,
-        .baseTile = 0,
-        .size = GF_BG_SCR_SIZE_256x256,
-        .colorMode = GX_BG_COLORMODE_16,
-        .screenBase = GX_BG_SCRBASE_0xf800,
-        .charBase = GX_BG_CHARBASE_0x00000,
-        .bgExtPltt = GX_BG_EXTPLTT_01,
-        .priority = 1,
-        .areaOver = GX_BG_AREAOVER_XLU,
-        .mosaic = FALSE,
-    },
-    {
-        .x = 0,
-        .y = 0,
-        .bufferSize = 0x800,
-        .baseTile = 0,
-        .size = GF_BG_SCR_SIZE_256x256,
-        .colorMode = GX_BG_COLORMODE_16,
-        .screenBase = GX_BG_SCRBASE_0xf000,
-        .charBase = GX_BG_CHARBASE_0x08000,
-        .bgExtPltt = GX_BG_EXTPLTT_01,
-        .priority = 0,
-        .areaOver = GX_BG_AREAOVER_XLU,
-        .mosaic = FALSE,
-    },
 };
 
 static const UnkStruct_0200D2B4 ov54_021E6EAC[9] = {
@@ -405,8 +290,6 @@ static const UnkStruct_0200D2B4 ov54_021E6EAC[9] = {
         .unk_24 = 0,
     },
 };
-
-extern void sub_0203A964(void);
 
 static void OptionsApp_SetupGraphicsBanks(void);
 static void OptionsApp_OnVBlank(OptionsApp_Data *data);
@@ -553,7 +436,12 @@ BOOL OptionsMenu_Main(OVY_MANAGER *manager, int *state) {
 }
 
 static void OptionsApp_SetupGraphicsBanks(void) {
-    GraphicsBanks banks = sOptionsAppGraphicsBanks;
+    GraphicsBanks banks = {
+        .bg = GX_VRAM_BG_128_A,
+        .subbg = GX_VRAM_SUB_BG_128_C,
+        .obj = GX_VRAM_OBJ_16_G,
+        .subobj = GX_VRAM_SUB_OBJ_16_I,
+    };
     GfGfx_SetBanks(&banks);
 }
 
@@ -649,11 +537,86 @@ static BOOL ov54_021E5DBC(OptionsApp_Data *data) {
 
 static void OptionsApp_SetupBgConfig(OptionsApp_Data *data) {
     data->bgConfig = BgConfig_Alloc(data->heapId);
-    GraphicsModes modes = sOptionsAppGraphicsModes;
+    GraphicsModes modes = {
+        .dispMode = GX_DISPMODE_GRAPHICS,
+        .bgMode = GX_BGMODE_0,
+        .subMode = GX_BGMODE_0,
+        ._2d3dMode = GX_BG0_AS_2D,
+    };
     SetBothScreensModesAndDisable(&modes);
 
-    BgTemplate templates[5];
-    templates = sOptionsAppBgTemplates;
+    BgTemplate templates[5] = {
+        {
+            .x = 0,
+            .y = 0,
+            .bufferSize = 0x800,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xf800,
+            .charBase = GX_BG_CHARBASE_0x00000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 0,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = FALSE,
+        },
+        {
+            .x = 0,
+            .y = 0,
+            .bufferSize = 0x800,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xf000,
+            .charBase = GX_BG_CHARBASE_0x04000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 1,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = FALSE,
+        },
+        {
+            .x = 0,
+            .y = 0,
+            .bufferSize = 0x800,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xe800,
+            .charBase = GX_BG_CHARBASE_0x00000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 2,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = FALSE,
+        },
+        {
+            .x = 0,
+            .y = 0,
+            .bufferSize = 0x800,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xf800,
+            .charBase = GX_BG_CHARBASE_0x00000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 1,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = FALSE,
+        },
+        {
+            .x = 0,
+            .y = 0,
+            .bufferSize = 0x800,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xf000,
+            .charBase = GX_BG_CHARBASE_0x08000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 0,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = FALSE,
+        },
+    };
 
     for (int i = 0; i < 5; i++) {
         InitBgFromTemplate(data->bgConfig, sOptionsAppBgLayers[i], &templates[i], GF_BG_TYPE_TEXT);
@@ -1218,13 +1181,35 @@ static void OptionsApp_SetupSpriteRenderer(OptionsApp_Data *data) {
     data->spriteRenderer = SpriteRenderer_Create(data->heapId);
     data->spriteGfxHandler = SpriteRenderer_CreateGfxHandler(data->spriteRenderer);
 
-    const Unk122_021E92FC unk1 = ov54_021E6CB8;
-    const Unk122_021E92D0 unk2 = ov54_021E6C6C;
+    const Unk122_021E92FC unk1 = {
+        .unk0 = 0,
+        .unk4 = 0x80,
+        .unk8 = 0,
+        .unkC = 0x20,
+        .unk10 = 0,
+        .unk14 = 0x80,
+        .unk18 = 0,
+        .unk1C = 0x20,
+    };
+    const Unk122_021E92D0 unk2 = {
+        .maxTasks = 9,
+        .sizeMain = 0x400,
+        .sizeSub = 0x400,
+        .charModeMain = GX_OBJVRAMMODE_CHAR_1D_32K,
+        .charModeSub = GX_OBJVRAMMODE_CHAR_1D_32K,
+    };
     sub_0200CF70(data->spriteRenderer, &unk1, &unk2, 32);
     sub_0200CFF4(data->spriteRenderer, data->spriteGfxHandler, 9);
 
-    u16 fileIdList[7];
-    fileIdList = sOptionsAppResourceDataFileNums;
+    u16 fileIdList[7] = {
+        NARC_resdat_resdat_00000022_bin,
+        NARC_resdat_resdat_00000023_bin,
+        NARC_resdat_resdat_00000021_bin,
+        NARC_resdat_resdat_00000020_bin,
+        0xFFFF,
+        0xFFFF,
+        NARC_resdat_resdat_00000077_bin,
+    };
     sub_0200D294(data->spriteRenderer, data->spriteGfxHandler, fileIdList);
 
     G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(data->spriteRenderer), FX32_CONST(0), FX32_CONST(256));
@@ -1256,7 +1241,7 @@ static void OptionsApp_SetActiveButtonsXPosition(OptionsApp_Data *data) {
 }
 
 static BOOL OptionsApp_ConfirmAndQuitButtonsAreDoneAnimating(OptionsApp_Data *data) {
-    if (Sprite_IsCellAnimationFinished(data->sprites[7]) == 0 && Sprite_IsCellAnimationFinished(data->sprites[8]) == 0) {
+    if (Sprite_IsCellAnimationRunning(data->sprites[7]) == 0 && Sprite_IsCellAnimationRunning(data->sprites[8]) == 0) {
         return FALSE;
     }
 

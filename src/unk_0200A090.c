@@ -5,17 +5,17 @@
 static void loadAll2DGfxResObjFromHeaderInternal(GF_2DGfxResMan *mgr, const GF_2DGfxResHeader *header, int first, int count, GF_2DGfxResObjList *list, HeapID heapId);
 static void destroyAllObjects(GF_2DGfxResMan *mgr);
 static GF_2DGfxResObj *sub_0200AA70(GF_2DGfxResMan *mgr);
-static struct CharResExtraData *GetResourceExtraCharData(void *resource, int vram, HeapID heapId);
-static struct PlttResExtraData *GetResourceExtraPlttData(void *resource, int vram, int pltt_num, HeapID heapId);
+static struct CharResExtraData *GetResourceExtraCharData(void *resource, NNS_G2D_VRAM_TYPE vram, HeapID heapId);
+static struct PlttResExtraData *GetResourceExtraPlttData(void *resource, NNS_G2D_VRAM_TYPE vram, int pltt_num, HeapID heapId);
 static struct CellResExtraData *GetResourceExtraCellData(void *resource, HeapID heapId);
 static struct AnimResExtraData *GetResourceExtraAnimData(void *resource, HeapID heapId);
 static struct MulticellResExtraData *GetResourceExtraMulticellData(void *resource, HeapID heapId);
 static struct MultianimResExtraData *GetResourceExtraMultianimData(void *resource, HeapID heapId);
 static void destroyResObjExtra(GF_2DGfxResObj *obj);
 static void *getResObjExtra(GF_2DGfxResObj *obj);
-static void Add2DGfxResObjFromFile(GF_2DGfxResMan *mgr, GF_2DGfxResObj *obj, char *name, int id, int vram, int pltt_num, GfGfxResType type, HeapID heapId);
-static void Add2DGfxResObjFromNarc(GF_2DGfxResMan *mgr, GF_2DGfxResObj *obj, NarcId narcId, int fileId, BOOL compressed, int id, int vram, int pltt_num, GfGfxResType type, HeapID heapId, BOOL atEnd);
-static void Add2DGfxResObjFromOpenNarc(GF_2DGfxResMan *mgr, GF_2DGfxResObj *obj, NARC *narc, int fileId, BOOL compressed, int id, int vram, int pltt_num, GfGfxResType type, HeapID heapId, BOOL atEnd);
+static void Add2DGfxResObjFromFile(GF_2DGfxResMan *mgr, GF_2DGfxResObj *obj, char *name, int id, NNS_G2D_VRAM_TYPE vram, int pltt_num, GfGfxResType type, HeapID heapId);
+static void Add2DGfxResObjFromNarc(GF_2DGfxResMan *mgr, GF_2DGfxResObj *obj, NarcId narcId, int fileId, BOOL compressed, int id, NNS_G2D_VRAM_TYPE vram, int pltt_num, GfGfxResType type, HeapID heapId, BOOL atEnd);
+static void Add2DGfxResObjFromOpenNarc(GF_2DGfxResMan *mgr, GF_2DGfxResObj *obj, NARC *narc, int fileId, BOOL compressed, int id, NNS_G2D_VRAM_TYPE vram, int pltt_num, GfGfxResType type, HeapID heapId, BOOL atEnd);
 static int sub_0200AC88(const GF_2DGfxResHeaderNarc *a0);
 static void *sub_0200ACA4(NARC *narc, int fileId, BOOL compressed, HeapID heapId, BOOL atEnd);
 
@@ -57,17 +57,17 @@ GF_2DGfxResObj *Add2DGfxResObjFromHeader(GF_2DGfxResMan *mgr, const GF_2DGfxResH
     if (!header->isNarc) {
         headerFile = &((GF_2DGfxResHeaderFile *)header->table)[idx];
         GF_ASSERT(GF2DGfxResObjExistsById(mgr, headerFile->id) == TRUE);
-        Add2DGfxResObjFromFile(mgr, ret, headerFile->filename, headerFile->id, headerFile->extra[0], headerFile->extra[1], header->type, heapId);
+        Add2DGfxResObjFromFile(mgr, ret, headerFile->filename, headerFile->id, (NNS_G2D_VRAM_TYPE)headerFile->extra[0], headerFile->extra[1], header->type, heapId);
     } else {
         headerNarc = &((GF_2DGfxResHeaderNarc *)header->table)[idx];
         GF_ASSERT(GF2DGfxResObjExistsById(mgr, headerNarc->id) == TRUE);
-        Add2DGfxResObjFromNarc(mgr, ret, (NarcId)headerNarc->narcId, headerNarc->fileId, headerNarc->compressed, headerNarc->id, headerNarc->extra[0], headerNarc->extra[1], header->type, heapId, FALSE);
+        Add2DGfxResObjFromNarc(mgr, ret, (NarcId)headerNarc->narcId, headerNarc->fileId, headerNarc->compressed, headerNarc->id, (NNS_G2D_VRAM_TYPE)headerNarc->extra[0], headerNarc->extra[1], header->type, heapId, FALSE);
     }
     mgr->num++;
     return ret;
 }
 
-GF_2DGfxResObj *AddCharResObjFromNarc(GF_2DGfxResMan *mgr, NarcId narcId, int fileId, BOOL compressed, int id, int vram, HeapID heapId) {
+GF_2DGfxResObj *AddCharResObjFromNarc(GF_2DGfxResMan *mgr, NarcId narcId, int fileId, BOOL compressed, int id, NNS_G2D_VRAM_TYPE vram, HeapID heapId) {
     GF_2DGfxResObj *ret;
     GF_ASSERT(mgr != NULL);
     GF_ASSERT(mgr->type == GF_GFX_RES_TYPE_CHAR);
@@ -78,7 +78,7 @@ GF_2DGfxResObj *AddCharResObjFromNarc(GF_2DGfxResMan *mgr, NarcId narcId, int fi
     return ret;
 }
 
-GF_2DGfxResObj *AddPlttResObjFromNarc(GF_2DGfxResMan *mgr, NarcId narcId, int fileId, BOOL compressed, int id, int vram, int pltt_num, HeapID heapId) {
+GF_2DGfxResObj *AddPlttResObjFromNarc(GF_2DGfxResMan *mgr, NarcId narcId, int fileId, BOOL compressed, int id, NNS_G2D_VRAM_TYPE vram, int pltt_num, HeapID heapId) {
     GF_2DGfxResObj *ret;
     GF_ASSERT(mgr != NULL);
     GF_ASSERT(mgr->type == GF_GFX_RES_TYPE_PLTT);
@@ -97,40 +97,40 @@ GF_2DGfxResObj *AddCellOrAnimResObjFromNarc(GF_2DGfxResMan *mgr, NarcId narcId, 
 #endif  //UBFIX
     ret = sub_0200AA70(mgr);
     GF_ASSERT(ret != NULL);
-    Add2DGfxResObjFromNarc(mgr, ret, narcId, fileId, compressed, id, 0, 0, type, heapId, FALSE);
+    Add2DGfxResObjFromNarc(mgr, ret, narcId, fileId, compressed, id, NNS_G2D_VRAM_TYPE_NEITHER, 0, type, heapId, FALSE);
     mgr->num++;
     return ret;
 }
 
 void ReplaceCharResObjFromNarc(GF_2DGfxResMan *mgr, GF_2DGfxResObj *obj, NarcId narcId, int fileId, BOOL compressed, HeapID heapId) {
     int id;
-    int vram;
+    NNS_G2D_VRAM_TYPE vram;
     GF_ASSERT(mgr != NULL);
     GF_ASSERT(mgr->type == GF_GFX_RES_TYPE_CHAR);
     GF_ASSERT(obj != NULL);
     GF_ASSERT(obj->type == GF_GFX_RES_TYPE_CHAR);
-    id = sub_0200A7FC(obj);
-    vram = sub_0200A8B0(obj);
+    id = GF2DGfxResObj_GetResID(obj);
+    vram = GF2DGfxResObj_GetLoadAddress(obj);
     DestroySingle2DGfxResObj(mgr, obj);
     Add2DGfxResObjFromNarc(mgr, obj, narcId, fileId, compressed, id, vram, 0, GF_GFX_RES_TYPE_CHAR, heapId, FALSE);
 }
 
 void ReplacePlttResObjFromNarc(GF_2DGfxResMan *mgr, GF_2DGfxResObj *obj, NarcId narcId, int fileId, BOOL compressed, HeapID heapId) {
     int id;
-    int vram;
+    NNS_G2D_VRAM_TYPE vram;
     int pltt_num;
     GF_ASSERT(mgr != NULL);
     GF_ASSERT(mgr->type == GF_GFX_RES_TYPE_PLTT);
     GF_ASSERT(obj != NULL);
     GF_ASSERT(obj->type == GF_GFX_RES_TYPE_PLTT);
-    id = sub_0200A7FC(obj);
-    vram = sub_0200A8B0(obj);
-    pltt_num = sub_0200A8DC(obj);
+    id = GF2DGfxResObj_GetResID(obj);
+    vram = GF2DGfxResObj_GetLoadAddress(obj);
+    pltt_num = GF2DGfxResObj_GetPlttNum(obj);
     DestroySingle2DGfxResObj(mgr, obj);
     Add2DGfxResObjFromNarc(mgr, obj, narcId, fileId, compressed, id, vram, pltt_num, GF_GFX_RES_TYPE_PLTT, heapId, FALSE);
 }
 
-GF_2DGfxResObj *AddCharResObjFromOpenNarc(GF_2DGfxResMan *mgr, NARC *narc, int fileId, BOOL compressed, int id, int vram, HeapID heapId) {
+GF_2DGfxResObj *AddCharResObjFromOpenNarc(GF_2DGfxResMan *mgr, NARC *narc, int fileId, BOOL compressed, int id, NNS_G2D_VRAM_TYPE vram, HeapID heapId) {
     GF_2DGfxResObj *ret;
     GF_ASSERT(mgr != NULL);
     GF_ASSERT(mgr->type == GF_GFX_RES_TYPE_CHAR);
@@ -141,7 +141,7 @@ GF_2DGfxResObj *AddCharResObjFromOpenNarc(GF_2DGfxResMan *mgr, NARC *narc, int f
     return ret;
 }
 
-GF_2DGfxResObj *AddCharResObjFromOpenNarcWithAtEndFlag(GF_2DGfxResMan *mgr, NARC *narc, int fileId, BOOL compressed, int id, int vram, HeapID heapId, BOOL atEnd) {
+GF_2DGfxResObj *AddCharResObjFromOpenNarcWithAtEndFlag(GF_2DGfxResMan *mgr, NARC *narc, int fileId, BOOL compressed, int id, NNS_G2D_VRAM_TYPE vram, HeapID heapId, BOOL atEnd) {
     GF_2DGfxResObj *ret;
     GF_ASSERT(mgr != NULL);
     GF_ASSERT(mgr->type == GF_GFX_RES_TYPE_CHAR);
@@ -152,7 +152,7 @@ GF_2DGfxResObj *AddCharResObjFromOpenNarcWithAtEndFlag(GF_2DGfxResMan *mgr, NARC
     return ret;
 }
 
-GF_2DGfxResObj *AddPlttResObjFromOpenNarc(GF_2DGfxResMan *mgr, NARC *narc, int fileId, BOOL compressed, int id, int vram, int pltt_num, HeapID heapId) {
+GF_2DGfxResObj *AddPlttResObjFromOpenNarc(GF_2DGfxResMan *mgr, NARC *narc, int fileId, BOOL compressed, int id, NNS_G2D_VRAM_TYPE vram, int pltt_num, HeapID heapId) {
     GF_2DGfxResObj *ret;
     GF_ASSERT(mgr != NULL);
     GF_ASSERT(mgr->type == GF_GFX_RES_TYPE_PLTT);
@@ -163,7 +163,7 @@ GF_2DGfxResObj *AddPlttResObjFromOpenNarc(GF_2DGfxResMan *mgr, NARC *narc, int f
     return ret;
 }
 
-GF_2DGfxResObj *AddPlttResObjFromOpenNarcWithAtEndFlag(GF_2DGfxResMan *mgr, NARC *narc, int fileId, BOOL compressed, int id, int vram, int pltt_num, HeapID heapId, BOOL atEnd) {
+GF_2DGfxResObj *AddPlttResObjFromOpenNarcWithAtEndFlag(GF_2DGfxResMan *mgr, NARC *narc, int fileId, BOOL compressed, int id, NNS_G2D_VRAM_TYPE vram, int pltt_num, HeapID heapId, BOOL atEnd) {
     GF_2DGfxResObj *ret;
     GF_ASSERT(mgr != NULL);
     GF_ASSERT(mgr->type == GF_GFX_RES_TYPE_PLTT);
@@ -182,35 +182,35 @@ GF_2DGfxResObj *AddCellOrAnimResObjFromOpenNarc(GF_2DGfxResMan *resMan, NARC *na
 #endif //UBFIX
     ret = sub_0200AA70(resMan);
     GF_ASSERT(ret != NULL);
-    Add2DGfxResObjFromOpenNarc(resMan, ret, narc, fileId, compressed, id, 0, 0, type, heapId, FALSE);
+    Add2DGfxResObjFromOpenNarc(resMan, ret, narc, fileId, compressed, id, NNS_G2D_VRAM_TYPE_NEITHER, 0, type, heapId, FALSE);
     resMan->num++;
     return ret;
 }
 
 void ReplaceCharResObjFromOpenNarc(GF_2DGfxResMan *mgr, GF_2DGfxResObj *obj, NARC *narc, int fileId, BOOL compressed, HeapID heapId) {
     int id;
-    int vram;
+    NNS_G2D_VRAM_TYPE vram;
     GF_ASSERT(mgr != NULL);
     GF_ASSERT(mgr->type == GF_GFX_RES_TYPE_CHAR);
     GF_ASSERT(obj != NULL);
     GF_ASSERT(obj->type == GF_GFX_RES_TYPE_CHAR);
-    id = sub_0200A7FC(obj);
-    vram = sub_0200A8B0(obj);
+    id = GF2DGfxResObj_GetResID(obj);
+    vram = GF2DGfxResObj_GetLoadAddress(obj);
     DestroySingle2DGfxResObj(mgr, obj);
     Add2DGfxResObjFromOpenNarc(mgr, obj, narc, fileId, compressed, id, vram, 0, GF_GFX_RES_TYPE_CHAR, heapId, FALSE);
 }
 
 void ReplacePlttResObjFromOpenNarc(GF_2DGfxResMan *mgr, GF_2DGfxResObj *obj, NARC *narc, int fileId, BOOL compressed, HeapID heapId) {
     int id;
-    int vram;
+    NNS_G2D_VRAM_TYPE vram;
     int pltt_num;
     GF_ASSERT(mgr != NULL);
     GF_ASSERT(mgr->type == GF_GFX_RES_TYPE_PLTT);
     GF_ASSERT(obj != NULL);
     GF_ASSERT(obj->type == GF_GFX_RES_TYPE_PLTT);
-    id = sub_0200A7FC(obj);
-    vram = sub_0200A8B0(obj);
-    pltt_num = sub_0200A8DC(obj);
+    id = GF2DGfxResObj_GetResID(obj);
+    vram = GF2DGfxResObj_GetLoadAddress(obj);
+    pltt_num = GF2DGfxResObj_GetPlttNum(obj);
     DestroySingle2DGfxResObj(mgr, obj);
     Add2DGfxResObjFromOpenNarc(mgr, obj, narc, fileId, compressed, id, vram, pltt_num, GF_GFX_RES_TYPE_PLTT, heapId, FALSE);
 }
@@ -294,59 +294,59 @@ GF_2DGfxResObj *Get2DGfxResObjById(GF_2DGfxResMan *mgr, int id) {
     return NULL;
 }
 
-int sub_0200A7FC(GF_2DGfxResObj *obj) {
+int GF2DGfxResObj_GetResID(GF_2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
     return Get2DGfxRawResObjId(obj->resource);
 }
 
-NNSG2dCharacterData *sub_0200A810(GF_2DGfxResObj *obj) {
+NNSG2dCharacterData *GF2DGfxResObj_GetCharDataPtr(GF_2DGfxResObj *obj) {
     struct CharResExtraData *res;
     GF_ASSERT(obj->type == GF_GFX_RES_TYPE_CHAR);
     res = getResObjExtra(obj);
     return res->charData;
 }
 
-NNSG2dPaletteData *sub_0200A828(GF_2DGfxResObj *obj) {
+NNSG2dPaletteData *GF2DGfxResObj_GetPlttDataPtr(GF_2DGfxResObj *obj) {
     struct PlttResExtraData *res;
     GF_ASSERT(obj->type == GF_GFX_RES_TYPE_PLTT);
     res = getResObjExtra(obj);
     return res->plttData;
 }
 
-NNSG2dCellDataBank *sub_0200A840(GF_2DGfxResObj *obj) {
+NNSG2dCellDataBank *GF2DGfxResObj_GetCellDataPtr(GF_2DGfxResObj *obj) {
     struct CellResExtraData *res;
     GF_ASSERT(obj->type == GF_GFX_RES_TYPE_CELL);
     res = getResObjExtra(obj);
     return res->cellDataBank;
 }
 
-NNSG2dAnimBankData *sub_0200A858(GF_2DGfxResObj *obj) {
+NNSG2dAnimBankData *GF2DGfxResObj_GetAnimDataPtr(GF_2DGfxResObj *obj) {
     struct AnimResExtraData *res;
     GF_ASSERT(obj->type == GF_GFX_RES_TYPE_ANIM);
     res = getResObjExtra(obj);
     return res->animBankData;
 }
 
-NNSG2dMultiCellDataBank *sub_0200A870(GF_2DGfxResObj *obj) {
+NNSG2dMultiCellDataBank *GF2DGfxResObj_GetMultiCellDataPtr(GF_2DGfxResObj *obj) {
     struct MulticellResExtraData *res;
     GF_ASSERT(obj->type == GF_GFX_RES_TYPE_MCEL);
     res = getResObjExtra(obj);
     return res->multiCellDataBank;
 }
 
-NNSG2dAnimBankData *sub_0200A888(GF_2DGfxResObj *obj) {
+NNSG2dAnimBankData *GF2DGfxResObj_GetMultiAnimDataPtr(GF_2DGfxResObj *obj) {
     struct MultianimResExtraData *res;
     GF_ASSERT(obj->type == GF_GFX_RES_TYPE_MANM);
     res = getResObjExtra(obj);
     return res->animBankData;
 }
 
-GfGfxResType sub_0200A8A0(GF_2DGfxResObj *obj) {
+GfGfxResType GF2DGfxResObj_GetResType(GF_2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
     return obj->type;
 }
 
-int sub_0200A8B0(GF_2DGfxResObj *obj) {
+NNS_G2D_VRAM_TYPE GF2DGfxResObj_GetLoadAddress(GF_2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
     if (obj->type == GF_GFX_RES_TYPE_CHAR) {
         struct CharResExtraData *res = getResObjExtra(obj);
@@ -355,11 +355,11 @@ int sub_0200A8B0(GF_2DGfxResObj *obj) {
         struct PlttResExtraData *res = getResObjExtra(obj);
         return res->vram;
     } else {
-        return 0;
+        return NNS_G2D_VRAM_TYPE_NEITHER;
     }
 }
 
-int sub_0200A8DC(GF_2DGfxResObj *obj) {
+int GF2DGfxResObj_GetPlttNum(GF_2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
     if (obj->type == GF_GFX_RES_TYPE_PLTT) {
         struct PlttResExtraData *res = getResObjExtra(obj);
@@ -475,7 +475,7 @@ static GF_2DGfxResObj *sub_0200AA70(GF_2DGfxResMan *mgr) {
     return NULL;
 }
 
-void sub_0200AA9C(GF_2DGfxResObj *obj, GfGfxResType type, int vram, int pltt_num, HeapID heapId) {
+void sub_0200AA9C(GF_2DGfxResObj *obj, GfGfxResType type, NNS_G2D_VRAM_TYPE vram, int pltt_num, HeapID heapId) {
     void *resource = GF2dGfxRawResObj_GetData(obj->resource);
     switch (type) {
     case GF_GFX_RES_TYPE_CHAR:
@@ -499,14 +499,14 @@ void sub_0200AA9C(GF_2DGfxResObj *obj, GfGfxResType type, int vram, int pltt_num
     }
 }
 
-static struct CharResExtraData *GetResourceExtraCharData(void *resource, int vram, HeapID heapId) {
+static struct CharResExtraData *GetResourceExtraCharData(void *resource, NNS_G2D_VRAM_TYPE vram, HeapID heapId) {
     struct CharResExtraData *ret = AllocFromHeap(heapId, sizeof(struct CharResExtraData));
     NNS_G2dGetUnpackedCharacterData(resource, &ret->charData);
     ret->vram = vram;
     return ret;
 }
 
-static struct PlttResExtraData *GetResourceExtraPlttData(void *resource, int vram, int pltt_num, HeapID heapId) {
+static struct PlttResExtraData *GetResourceExtraPlttData(void *resource, NNS_G2D_VRAM_TYPE vram, int pltt_num, HeapID heapId) {
     struct PlttResExtraData *ret = AllocFromHeap(heapId, sizeof(struct PlttResExtraData));
     NNS_G2dGetUnpackedPaletteData(resource, &ret->plttData);
     ret->vram = vram;
@@ -551,20 +551,20 @@ static void *getResObjExtra(GF_2DGfxResObj *obj) {
     return obj->extra;
 }
 
-static void Add2DGfxResObjFromFile(GF_2DGfxResMan *mgr, GF_2DGfxResObj *obj, char *name, int id, int vram, int pltt_num, GfGfxResType type, HeapID heapId) {
+static void Add2DGfxResObjFromFile(GF_2DGfxResMan *mgr, GF_2DGfxResObj *obj, char *name, int id, NNS_G2D_VRAM_TYPE vram, int pltt_num, GfGfxResType type, HeapID heapId) {
     obj->resource = GF2dGfxRawResMan_ReadAndAllocObj(mgr->resourceMgr, name, id, heapId);
     obj->type = type;
     sub_0200AA9C(obj, type, vram, pltt_num, heapId);
 }
 
-static void Add2DGfxResObjFromNarc(GF_2DGfxResMan *mgr, GF_2DGfxResObj *obj, NarcId narcId, int fileId, BOOL compressed, int id, int vram, int pltt_num, GfGfxResType type, HeapID heapId, BOOL atEnd) {
+static void Add2DGfxResObjFromNarc(GF_2DGfxResMan *mgr, GF_2DGfxResObj *obj, NarcId narcId, int fileId, BOOL compressed, int id, NNS_G2D_VRAM_TYPE vram, int pltt_num, GfGfxResType type, HeapID heapId, BOOL atEnd) {
     void *res = GfGfxLoader_LoadFromNarc(narcId, fileId, compressed, heapId, atEnd);
     obj->resource = GF2dGfxRawResMan_AllocObj(mgr->resourceMgr, res, id);
     obj->type = type;
     sub_0200AA9C(obj, type, vram, pltt_num, heapId);
 }
 
-static void Add2DGfxResObjFromOpenNarc(GF_2DGfxResMan *mgr, GF_2DGfxResObj *obj, NARC *narc, int fileId, BOOL compressed, int id, int vram, int pltt_num, GfGfxResType type, HeapID heapId, BOOL atEnd) {
+static void Add2DGfxResObjFromOpenNarc(GF_2DGfxResMan *mgr, GF_2DGfxResObj *obj, NARC *narc, int fileId, BOOL compressed, int id, NNS_G2D_VRAM_TYPE vram, int pltt_num, GfGfxResType type, HeapID heapId, BOOL atEnd) {
     void *res = sub_0200ACA4(narc, fileId, compressed, heapId, atEnd);
     obj->resource = GF2dGfxRawResMan_AllocObj(mgr->resourceMgr, res, id);
     obj->type = type;

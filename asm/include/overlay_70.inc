@@ -140,9 +140,9 @@
 .public AddTextPrinterParameterized
 .public AddTextPrinterParameterizedWithColor
 .public GF_RunVramTransferTasks
-.public sub_020215A0
-.public sub_0202168C
-.public sub_020216C8
+.public ObjCharTransfer_Init
+.public ObjCharTransfer_Destroy
+.public ObjCharTransfer_ClearBuffers
 .public sub_02022588
 .public sub_02022608
 .public sub_02022638
@@ -164,7 +164,7 @@
 .public Get2dSpriteCurrentAnimSeqNo
 .public Sprite_SetPriority
 .public Sprite_SetPalIndex
-.public Sprite_IsCellAnimationFinished
+.public Sprite_IsCellAnimationRunning
 .public sub_02024B78
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail

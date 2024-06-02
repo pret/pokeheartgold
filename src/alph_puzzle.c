@@ -532,7 +532,7 @@ static const WindowTemplate sWindowTemplates[3] = {
 
 static const Unk122_021E92FC ov110_021E6EA4 = {0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20};
 
-static const Unk122_021E92D0 ov110_021E6DD0 = {5, 0, 0, 16, 16};
+static const Unk122_021E92D0 ov110_021E6DD0 = {5, 0, 0, GX_OBJVRAMMODE_CHAR_1D_32K, GX_OBJVRAMMODE_CHAR_1D_32K};
 
 static const u16 sResdatInfo[7] = {
     NARC_resdat_resdat_00000010_bin, // GF_GFX_RES_TYPE_CHAR
@@ -1402,7 +1402,7 @@ static void AlphPuzzle_CreateQuitTask(AlphPuzzleData *data) {
 
 static void Task_AlphPuzzle_WaitDropCursorAnimOnQuit(SysTask *task, void *_data) {
     AlphPuzzleQuitTaskData *data = _data;
-    if (!Sprite_IsCellAnimationFinished(data->data->sprites[ALPH_SPRITE_INDEX_DROP_CURSOR])) {
+    if (!Sprite_IsCellAnimationRunning(data->data->sprites[ALPH_SPRITE_INDEX_DROP_CURSOR])) {
         AlphPuzzle_ToggleDropCursorSprite(data->data, 0);
         data->data->quitTaskActive = 0;
         MI_CpuFill8(data, 0, sizeof(AlphPuzzleQuitTaskData));

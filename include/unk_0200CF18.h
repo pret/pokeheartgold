@@ -65,11 +65,11 @@ typedef struct Unk122_021E92FC {
 } Unk122_021E92FC;
 
 typedef struct Unk122_021E92D0 {
-    int unk0;
-    int unk4;
-    int unk8;
-    int unkC;
-    int unk10;
+    int maxTasks;
+    int sizeMain;
+    int sizeSub;
+    GXOBJVRamModeChar charModeMain;
+    GXOBJVRamModeChar charModeSub;
 } Unk122_021E92D0;
 
 typedef union SpriteResourceCountsListUnion {
@@ -99,12 +99,12 @@ BOOL sub_0200D294(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const 
 BOOL sub_0200D2A4(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const u16* fileIdList, int loadCharMode, int loadPlttMode);
 Sprite* SpriteRenderer_CreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const UnkStruct_0200D2B4* a2);
 BOOL SpriteRenderer_Init2DGfxResManagersFromCountsArray(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, SpriteResourceCountsListUnion*);
-BOOL SpriteRenderer_LoadCharResObjFromNarcId(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int vram, int resId);
-BOOL SpriteRenderer_LoadCharResObjFromOpenNarc(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, int vram, int resId);
-s8 SpriteRenderer_LoadPlttResObjFromNarcId(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId SpriteRenderer_LoadPlttResObjFromNarcId, int fileId, BOOL compressed, int pltt_num, int vram, int resId);
-s8 SpriteRenderer_LoadPlttResObjFromOpenNarc(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* SpriteRenderer_LoadPlttResObjFromNarcId, int fileId, BOOL compressed, int pltt_num, int vram, int resId);
-u8 sub_0200D644(PaletteData* plttData, PaletteBufferId bufferId, SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int pltt_num, int vram, int resId);
-u8 sub_0200D68C(PaletteData* plttData, PaletteBufferId bufferId, SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, int pltt_num, int vram, int resId);
+BOOL SpriteRenderer_LoadCharResObjFromNarcId(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, NNS_G2D_VRAM_TYPE vram, int resId);
+BOOL SpriteRenderer_LoadCharResObjFromOpenNarc(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, NNS_G2D_VRAM_TYPE vram, int resId);
+s8 SpriteRenderer_LoadPlttResObjFromNarcId(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId SpriteRenderer_LoadPlttResObjFromNarcId, int fileId, BOOL compressed, int pltt_num, NNS_G2D_VRAM_TYPE vram, int resId);
+s8 SpriteRenderer_LoadPlttResObjFromOpenNarc(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* SpriteRenderer_LoadPlttResObjFromNarcId, int fileId, BOOL compressed, int pltt_num, NNS_G2D_VRAM_TYPE vram, int resId);
+u8 sub_0200D644(PaletteData* plttData, PaletteBufferId bufferId, SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int pltt_num, NNS_G2D_VRAM_TYPE vram, int resId);
+u8 sub_0200D68C(PaletteData* plttData, PaletteBufferId bufferId, SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, int pltt_num, NNS_G2D_VRAM_TYPE vram, int resId);
 BOOL SpriteRenderer_LoadCellResObjFromNarcId(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int resId);
 BOOL SpriteRenderer_LoadCellResObjFromOpenNarc(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, int resId);
 BOOL SpriteRenderer_LoadAnimResObjFromNarcId(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int resId);
@@ -112,7 +112,7 @@ BOOL SpriteRenderer_LoadAnimResObjFromOpenNarc(SpriteRenderer* renderer, SpriteG
 UnkImageStruct* SpriteRenderer_LoadResourcesAndCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, UnkTemplate_0200D748* unkTemplate);
 UnkImageStruct* SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, UnkTemplate_0200D748* unkTemplate, fx32 yOffset);
 NNSG2dImagePaletteProxy* sub_0200D934(SpriteGfxHandler* gfxHandler, int id);
-int sub_0200D944(SpriteGfxHandler* gfxHandler, int id, int vram);
+int sub_0200D944(SpriteGfxHandler* gfxHandler, int id, NNS_G2D_VRAM_TYPE vram);
 BOOL SpriteGfxHandler_UnloadCharObjById(SpriteGfxHandler* gfxHandler, u32 character);
 BOOL SpriteGfxHandler_UnloadPlttObjById(SpriteGfxHandler* gfxHandler, u32 pal);
 BOOL SpriteGfxHandler_UnloadCellObjById(SpriteGfxHandler* gfxHandler, u32 cell);
@@ -190,9 +190,9 @@ void sub_0200E0FC(UnkImageStruct* unk, GXOamMode mode);
 GXOamMode sub_0200E108(Sprite* sprite);
 GXOamMode sub_0200E110(UnkImageStruct* unk);
 u32 sub_0200E11C(UnkImageStruct* unk);
-BOOL sub_0200E128(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int vram, int resId);
-BOOL sub_0200E188(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int vram, int resId);
-BOOL sub_0200E1E8(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, int vram, int resId);
+BOOL sub_0200E128(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, NNS_G2D_VRAM_TYPE vram, int resId);
+BOOL sub_0200E188(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, NNS_G2D_VRAM_TYPE vram, int resId);
+BOOL sub_0200E1E8(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, NNS_G2D_VRAM_TYPE vram, int resId);
 void sub_0200E248(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int resId);
 void sub_0200E27C(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int resId);
 SpriteList* sub_0200E2B0(SpriteGfxHandler* gfxHandler);

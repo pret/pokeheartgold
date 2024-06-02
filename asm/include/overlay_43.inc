@@ -119,9 +119,9 @@
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks
 .public sub_02020B78
-.public sub_020215C0
-.public sub_0202168C
-.public sub_020216C8
+.public ObjCharTransfer_InitEx
+.public ObjCharTransfer_Destroy
+.public ObjCharTransfer_ClearBuffers
 .public sub_02022588
 .public sub_02022608
 .public sub_02022638
@@ -140,7 +140,7 @@
 .public Sprite_GetAnimCtrlCurrentFrame
 .public Sprite_SetPriority
 .public Sprite_SetDrawPriority
-.public Sprite_IsCellAnimationFinished
+.public Sprite_IsCellAnimationRunning
 .public TouchscreenHitbox_FindHitboxAtTouchNew
 .public System_GetTouchNew
 .public GF_AssertFail

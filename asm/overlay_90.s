@@ -1275,11 +1275,11 @@ ov90_022590CC: ; 0x022590CC
 	add r2, r1, #0
 	str r6, [sp, #0x1c]
 	str r4, [sp, #0x28]
-	bl sub_020215C0
+	bl ObjCharTransfer_InitEx
 	ldr r0, [sp, #0x18]
 	add r1, r4, #0
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	mov r0, #1
 	mov r1, #0x10
@@ -1309,7 +1309,7 @@ ov90_02259158: ; 0x02259158
 	push {r3, lr}
 	ldr r0, [r0]
 	bl SpriteList_Delete
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	bl OamManager_Free
 	pop {r3, pc}
@@ -7442,7 +7442,7 @@ _0225BFEA:
 	strh r0, [r4, #6]
 _0225BFFC:
 	ldr r0, [r4, #0x30]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _0225C05E
 	ldrh r0, [r4, #4]

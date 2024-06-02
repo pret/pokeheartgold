@@ -181,7 +181,7 @@ _021E5A5A:
 	mov r0, #4
 	bl FontID_Release
 	bl OamManager_Free
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	add r0, r4, #0
 	add r0, #0x94
@@ -711,11 +711,11 @@ ov121_021E5EDC: ; 0x021E5EDC
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_020215A0
+	bl ObjCharTransfer_Init
 	mov r0, #1
 	mov r1, #0x9e
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	add sp, #0x10
 	pop {r4, pc}

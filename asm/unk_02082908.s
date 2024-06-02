@@ -878,7 +878,7 @@ _02083016:
 	ldr r0, [r4, r0]
 	mov r1, #7
 	bl FreeBgTilemapBuffer
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	mov r0, #0x16
 	lsl r0, r0, #4
@@ -1778,11 +1778,11 @@ sub_0208377C: ; 0x0208377C
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_020215A0
+	bl ObjCharTransfer_Init
 	mov r0, #0x14
 	mov r1, #0x12
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	add sp, #0x10
 	pop {r4, pc}
@@ -4877,7 +4877,7 @@ sub_02084FCC: ; 0x02084FCC
 	mov r0, #0xd3
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _02085038
 	mov r0, #0x56

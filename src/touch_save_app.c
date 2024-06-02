@@ -172,8 +172,7 @@ SysTask *ov30_0225D520(BgConfig *bgConfig, void* a1, FieldSystem *fieldSystem, v
     GXS_SetGraphicsMode(GX_BGMODE_0);
     GX_SetBankForSubBG(GX_VRAM_SUB_BG_32_H);
     GX_SetBankForSubOBJ(GX_VRAM_SUB_OBJ_16_I);
-    // FIXME: Make an inline function for this.
-    reg_GXS_DB_DISPCNT = (reg_GXS_DB_DISPCNT & ~(REG_GXS_DB_DISPCNT_EXOBJ_CH_MASK | REG_GXS_DB_DISPCNT_OBJMAP_CH_MASK)) | REG_GXS_DB_DISPCNT_OBJMAP_CH_MASK;
+    GXS_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_32K);
 
     InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_0, &ov30_0225DC2C, GF_BG_TYPE_TEXT);
     InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_1, &ov30_0225DC48, GF_BG_TYPE_TEXT);

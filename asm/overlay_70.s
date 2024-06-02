@@ -2091,11 +2091,11 @@ ov70_022388D0: ; 0x022388D0
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_020215A0
+	bl ObjCharTransfer_Init
 	mov r0, #0x14
 	mov r1, #0x3d
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	add sp, #0x10
 	pop {r4, pc}
@@ -2854,7 +2854,7 @@ _02238ECC:
 	mov r1, #0
 	str r1, [r6, r0]
 	bl OamManager_Free
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -18996,7 +18996,7 @@ _02240F8E:
 _02240FA0:
 	ldr r0, _02240FF8 ; =0x00000EE4
 	ldr r0, [r5, r0]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _02240FF6
 	add r0, r4, #0
@@ -19116,7 +19116,7 @@ _0224107E:
 _02241090:
 	ldr r0, _022410E4 ; =0x00000EE4
 	ldr r0, [r5, r0]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _022410E0
 	add r0, r4, #0

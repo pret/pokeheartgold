@@ -587,11 +587,11 @@ ov88_02258C98: ; 0x02258C98
 	ldr r0, _02258D30 ; =ov88_02259914
 	ldr r1, _02258D34 ; =0x00200010
 	mov r2, #0x10
-	bl sub_020215C0
+	bl ObjCharTransfer_InitEx
 	mov r0, #0x20
 	add r1, r6, #0
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	ldr r1, _02258D34 ; =0x00200010
 	mov r0, #1
@@ -653,7 +653,7 @@ _02258D48:
 	add r5, r5, #4
 	cmp r4, #4
 	blt _02258D48
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	bl OamManager_Free
 	pop {r4, r5, r6, pc}

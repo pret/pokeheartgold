@@ -44,7 +44,7 @@
 .public AddCellOrAnimResObjFromOpenNarc
 .public sub_0200A740
 .public DestroySingle2DGfxResObj
-.public sub_0200A828
+.public GF2DGfxResObj_GetPlttDataPtr
 .public sub_0200ADA4
 .public sub_0200AEB0
 .public sub_0200B00C
@@ -159,10 +159,10 @@
 .public sub_02020654
 .public sub_02020674
 .public sub_0202067C
-.public sub_020215C0
-.public sub_0202168C
-.public sub_020216C8
-.public sub_02021A50
+.public ObjCharTransfer_InitEx
+.public ObjCharTransfer_Destroy
+.public ObjCharTransfer_ClearBuffers
+.public ObjCharTransfer_DeleteTaskCopyByProxyPtr
 .public sub_02022588
 .public sub_02022608
 .public sub_02022638

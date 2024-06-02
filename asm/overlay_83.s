@@ -18082,7 +18082,7 @@ _0224723A:
 	ldr r0, [r5]
 	bl SpriteList_Delete
 	bl OamManager_Free
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -18162,11 +18162,11 @@ ov83_022472DC: ; 0x022472DC
 	add r0, r2, #0
 	ldr r2, _02247310 ; =0x00100010
 	mov r1, #0x10
-	bl sub_020215C0
+	bl ObjCharTransfer_InitEx
 	mov r0, #0x20
 	mov r1, #0x6b
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	add sp, #0x10
 	pop {r4, pc}
@@ -18582,11 +18582,11 @@ ov83_0224760C: ; 0x0224760C
 
 	thumb_func_start ov83_02247624
 ov83_02247624: ; 0x02247624
-	ldr r3, _0224762C ; =Sprite_IsCellAnimationFinished
+	ldr r3, _0224762C ; =Sprite_IsCellAnimationRunning
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_0224762C: .word Sprite_IsCellAnimationFinished
+_0224762C: .word Sprite_IsCellAnimationRunning
 	thumb_func_end ov83_02247624
 
 	thumb_func_start ov83_02247630

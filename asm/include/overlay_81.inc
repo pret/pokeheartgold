@@ -126,9 +126,9 @@
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterizedWithColor
 .public GF_RunVramTransferTasks
-.public sub_020215C0
-.public sub_0202168C
-.public sub_020216C8
+.public ObjCharTransfer_InitEx
+.public ObjCharTransfer_Destroy
+.public ObjCharTransfer_ClearBuffers
 .public sub_02022588
 .public sub_02022608
 .public sub_02022638
@@ -152,7 +152,7 @@
 .public Sprite_SetPalIndex
 .public sub_02024A48
 .public sub_02024B1C
-.public Sprite_IsCellAnimationFinished
+.public Sprite_IsCellAnimationRunning
 .public sub_02024B78
 .public GF_AssertFail
 .public String_New

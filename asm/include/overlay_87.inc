@@ -99,9 +99,9 @@
 .public sub_02021148
 .public sub_02021238
 .public sub_02021280
-.public sub_020215C0
-.public sub_0202168C
-.public sub_020216C8
+.public ObjCharTransfer_InitEx
+.public ObjCharTransfer_Destroy
+.public ObjCharTransfer_ClearBuffers
 .public sub_02022588
 .public sub_02022608
 .public sub_02022638
@@ -127,7 +127,7 @@
 .public sub_02024A48
 .public Sprite_SetDrawPriority
 .public sub_02024B38
-.public Sprite_IsCellAnimationFinished
+.public Sprite_IsCellAnimationRunning
 .public TouchscreenHitbox_FindRectAtTouchHeld
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchHeld

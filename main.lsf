@@ -30,7 +30,7 @@ Static main
 	Object asm/unk_02007FD8.o
 	Object src/unk_02009D48.o
 	Object src/unk_0200A090.o
-	Object asm/unk_0200ACF0.o
+	Object src/unk_0200ACF0.o
 	Object asm/unk_0200B150.o
 	Object src/brightness.o
 	Object src/msgdata.o
@@ -75,7 +75,7 @@ Static main
 	Object src/ascii_util.o
 	Object asm/unk_02020B8C.o
 	Object asm/unk_020210A0.o
-	Object asm/unk_020215A0.o
+	Object src/obj_char_transfer.o
 	Object asm/unk_02022588.o
 	Object src/gf_gfx_planes.o
 	Object src/camera.o
@@ -159,11 +159,11 @@ Static main
 	Object asm/unk_0203BC10.o
 	Object asm/unk_0203DB6C.o
 	Object src/field_system.o
-	Object src/location_backup.o
-	Object src/launch_application.o
-	Object src/launch_application_data1.o
-	Object src/launch_application_data2.o
-	Object asm/launch_application_data.o
+    Object src/location_backup.o
+    Object src/launch_application.o
+    Object src/launch_application_data1.o
+    Object src/launch_application_data2.o
+    Object asm/launch_application_data.o
 	Object src/script.o
 	Object src/fieldmap.o
 	Object src/scrcmd_c.o
@@ -337,99 +337,99 @@ Static main
 	Object src/pokemon_mood.o
 	Object src/unk_02097F6C.o
 
-	### Vendor libraries ###
-	Object asm/middleware.o
-	Object lib/asm/jn_spl.o
-	Object lib/NitroSDK/asm/wvr.o
-	Object lib/NitroDWC/asm/dwcbm.o
-	Object lib/NitroDWC/asm/dwcaccount.o
-	Object lib/asm/wifi.o
-	Object lib/asm/libVCT.o
-	Object lib/asm/nnsys.o
+    ### Vendor libraries ###
+    Object asm/middleware.o
+    Object lib/asm/jn_spl.o
+    Object lib/NitroSDK/asm/wvr.o
+    Object lib/NitroDWC/asm/dwcbm.o
+    Object lib/NitroDWC/asm/dwcaccount.o
+    Object lib/asm/wifi.o
+    Object lib/asm/libVCT.o
+    Object lib/asm/nnsys.o
 
-	### NitroSDK ###
-	Object lib/NitroSDK/asm/fx_sincos.o
-	Object lib/NitroSDK/asm/fx_mtx22.o
-	Object lib/NitroSDK/asm/fx_mtx33.o
-	Object lib/NitroSDK/asm/fx_mtx43.o
-	Object lib/NitroSDK/asm/fx_mtx44.o
-	Object lib/NitroSDK/asm/fx_cp.o
-	Object lib/NitroSDK/asm/fx_vec.o
-	Object lib/NitroSDK/asm/fx_trig.o
-	Object lib/NitroSDK/asm/fx_atanidx.o
-	Object lib/NitroSDK/asm/fx.o
-	Object lib/NitroSDK/asm/gx.o
-	Object lib/NitroSDK/asm/gxstate.o
-	Object lib/NitroSDK/asm/gx_vramcnt.o
-	Object lib/NitroSDK/asm/gx_bgcnt.o
-	Object lib/NitroSDK/asm/g2.o
-	Object lib/NitroSDK/asm/g3b.o
-	Object lib/NitroSDK/asm/g3imm.o
-	Object lib/NitroSDK/asm/g3x.o
-	Object lib/NitroSDK/asm/g3_util.o
-	Object lib/NitroSDK/asm/gx_load2d.o
-	Object lib/NitroSDK/asm/gx_load3d.o
-	Object lib/NitroSDK/asm/g3.o
-	Object lib/NitroSDK/asm/gxasm.o
-	Object lib/NitroSDK/src/os/os_irqHandler.o
-	Object lib/NitroSDK/src/os/os_irqTable.o
-	Object lib/NitroSDK/src/os/os_interrupt.o
-	Object lib/NitroSDK/src/os/os_spinLock.o
-	Object lib/NitroSDK/src/os/os_printf.o
-	Object lib/NitroSDK/src/os/os_thread.o
-	Object lib/NitroSDK/src/os/os_context.o
-	Object lib/NitroSDK/src/os/os_emulator.o
-	Object lib/NitroSDK/src/os/os_message.o
-	Object lib/NitroSDK/src/os/os_mutex.o
-	Object lib/NitroSDK/src/os/os_cache.o
-	Object lib/NitroSDK/src/os/os_init.o
-	Object lib/NitroSDK/src/os/os_arena.o
-	Object lib/NitroSDK/src/os/os_alloc.o
-	Object lib/NitroSDK/src/os/os_tcm.o
-	Object lib/NitroSDK/src/os/os_protectionUnit.o
-	Object lib/NitroSDK/src/os/os_protectionRegion.o
-	Object lib/NitroSDK/src/os/os_exception.o
-	Object lib/NitroSDK/src/os/os_timer.o
-	Object lib/NitroSDK/src/os/os_tick.o
-	Object lib/NitroSDK/src/os/os_alarm.o
-	Object lib/NitroSDK/src/os/os_valarm.o
-	Object lib/NitroSDK/src/os/os_system.o
-	Object lib/NitroSDK/src/os/os_reset.o
-	Object lib/NitroSDK/src/os/os_ownerInfo.o
-	Object lib/NitroSDK/src/os/os_vramExclusive.o
-	Object lib/NitroSDK/src/os/os_entropy.o
-	Object lib/NitroSDK/src/os/os_terminate_proc.o
-	Object lib/NitroSDK/asm/mi_wram.o
-	Object lib/NitroSDK/asm/mi_dma.o
-	Object lib/NitroSDK/asm/mi_dma_hblank.o
-	Object lib/NitroSDK/asm/mi_dma_gxcommand.o
-	Object lib/NitroSDK/asm/mi_memory.o
-	Object lib/NitroSDK/asm/mi_swap.o
-	Object lib/NitroSDK/asm/mi_uncompress.o
-	Object lib/NitroSDK/asm/mi_dma_card.o
-	Object lib/NitroSDK/asm/mi_compress.o
-	Object lib/NitroSDK/asm/mi_init.o
-	Object lib/asm/nitro.o
-	Object lib/asm/msl.o
+    ### NitroSDK ###
+    Object lib/NitroSDK/asm/fx_sincos.o
+    Object lib/NitroSDK/asm/fx_mtx22.o
+    Object lib/NitroSDK/asm/fx_mtx33.o
+    Object lib/NitroSDK/asm/fx_mtx43.o
+    Object lib/NitroSDK/asm/fx_mtx44.o
+    Object lib/NitroSDK/asm/fx_cp.o
+    Object lib/NitroSDK/asm/fx_vec.o
+    Object lib/NitroSDK/asm/fx_trig.o
+    Object lib/NitroSDK/asm/fx_atanidx.o
+    Object lib/NitroSDK/asm/fx.o
+    Object lib/NitroSDK/asm/gx.o
+    Object lib/NitroSDK/asm/gxstate.o
+    Object lib/NitroSDK/asm/gx_vramcnt.o
+    Object lib/NitroSDK/asm/gx_bgcnt.o
+    Object lib/NitroSDK/asm/g2.o
+    Object lib/NitroSDK/asm/g3b.o
+    Object lib/NitroSDK/asm/g3imm.o
+    Object lib/NitroSDK/asm/g3x.o
+    Object lib/NitroSDK/asm/g3_util.o
+    Object lib/NitroSDK/asm/gx_load2d.o
+    Object lib/NitroSDK/asm/gx_load3d.o
+    Object lib/NitroSDK/asm/g3.o
+    Object lib/NitroSDK/asm/gxasm.o
+    Object lib/NitroSDK/src/os/os_irqHandler.o
+    Object lib/NitroSDK/src/os/os_irqTable.o
+    Object lib/NitroSDK/src/os/os_interrupt.o
+    Object lib/NitroSDK/src/os/os_spinLock.o
+    Object lib/NitroSDK/src/os/os_printf.o
+    Object lib/NitroSDK/src/os/os_thread.o
+    Object lib/NitroSDK/src/os/os_context.o
+    Object lib/NitroSDK/src/os/os_emulator.o
+    Object lib/NitroSDK/src/os/os_message.o
+    Object lib/NitroSDK/src/os/os_mutex.o
+    Object lib/NitroSDK/src/os/os_cache.o
+    Object lib/NitroSDK/src/os/os_init.o
+    Object lib/NitroSDK/src/os/os_arena.o
+    Object lib/NitroSDK/src/os/os_alloc.o
+    Object lib/NitroSDK/src/os/os_tcm.o
+    Object lib/NitroSDK/src/os/os_protectionUnit.o
+    Object lib/NitroSDK/src/os/os_protectionRegion.o
+    Object lib/NitroSDK/src/os/os_exception.o
+    Object lib/NitroSDK/src/os/os_timer.o
+    Object lib/NitroSDK/src/os/os_tick.o
+    Object lib/NitroSDK/src/os/os_alarm.o
+    Object lib/NitroSDK/src/os/os_valarm.o
+    Object lib/NitroSDK/src/os/os_system.o
+    Object lib/NitroSDK/src/os/os_reset.o
+    Object lib/NitroSDK/src/os/os_ownerInfo.o
+    Object lib/NitroSDK/src/os/os_vramExclusive.o
+    Object lib/NitroSDK/src/os/os_entropy.o
+    Object lib/NitroSDK/src/os/os_terminate_proc.o
+    Object lib/NitroSDK/asm/mi_wram.o
+    Object lib/NitroSDK/asm/mi_dma.o
+    Object lib/NitroSDK/asm/mi_dma_hblank.o
+    Object lib/NitroSDK/asm/mi_dma_gxcommand.o
+    Object lib/NitroSDK/asm/mi_memory.o
+    Object lib/NitroSDK/asm/mi_swap.o
+    Object lib/NitroSDK/asm/mi_uncompress.o
+    Object lib/NitroSDK/asm/mi_dma_card.o
+    Object lib/NitroSDK/asm/mi_compress.o
+    Object lib/NitroSDK/asm/mi_init.o
+    Object lib/asm/nitro.o
+    Object lib/asm/msl.o
 }
 
 Autoload ITCM
 {
-	Address 0x01FF8000
-	Object lib/NitroSDK/src/os/os_irqHandler.o (.itcm)
-	Object lib/NitroSDK/src/os/os_reset.o (.itcm)
-	Object lib/NitroSDK/asm/mi_dma.o (.itcm)
-	Object lib/NitroSDK/asm/mi_dma_gxcommand.o (.itcm)
-	Object lib/asm/nitro.o (.itcm)
+    Address 0x01FF8000
+    Object lib/NitroSDK/src/os/os_irqHandler.o (.itcm)
+    Object lib/NitroSDK/src/os/os_reset.o (.itcm)
+    Object lib/NitroSDK/asm/mi_dma.o (.itcm)
+    Object lib/NitroSDK/asm/mi_dma_gxcommand.o (.itcm)
+    Object lib/asm/nitro.o (.itcm)
 }
 
 Autoload DTCM
 {
-	Address 0x027E0000
-	Object lib/NitroSDK/src/os/os_irqHandler.o (.dtcm)
-	Object lib/NitroSDK/src/os/os_irqTable.o (.dtcm)
-	Object lib/NitroSDK/src/os/os_irqHandler.o (.dtcm.bss)
-	Object lib/NitroSDK/src/os/os_irqTable.o (.dtcm.bss)
+    Address 0x027E0000
+    Object lib/NitroSDK/src/os/os_irqHandler.o (.dtcm)
+    Object lib/NitroSDK/src/os/os_irqTable.o (.dtcm)
+    Object lib/NitroSDK/src/os/os_irqHandler.o (.dtcm.bss)
+    Object lib/NitroSDK/src/os/os_irqTable.o (.dtcm.bss)
 }
 Overlay OVY_0
 {
@@ -617,7 +617,7 @@ Overlay OVY_17
 {
     After OVY_16
     Object src/berry_pots_app.o
-	Object src/berry_pots_app_tasks.o
+    Object src/berry_pots_app_tasks.o
 }
 Overlay OVY_18
 {
@@ -833,11 +833,17 @@ Overlay OVY_59
     After OVY_58
     Object asm/overlay_59.o
 }
-Overlay OVY_60
+Overlay intro_title
 {
     After main
-	Object src/title_screen.o
-    Object asm/overlay_60.o
+    Object src/title_screen.o
+    Object src/intro_movie.o
+    Object src/intro_movie_scenes_lib.o
+    Object src/intro_movie_scene_1.o
+    Object src/intro_movie_scene_2.o
+    Object src/intro_movie_scene_3.o
+    Object src/intro_movie_scene_4.o
+    Object src/intro_movie_scene_5.o
 }
 Overlay OVY_61
 {

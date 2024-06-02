@@ -4,6 +4,7 @@
 #include "constants/gx.h"
 #include "constants/charcode.h"
 #include "constants/global.fieldmap.h"
+#include "constants/sdk_extras.h"
 
 #define PLAYER_NAME_LENGTH      7
 #define POKEMON_NAME_LENGTH     10
@@ -13,6 +14,7 @@
 
 #define PARTY_SIZE 6
 
+// move this to msl header?
 #define S16_MAX                 32767
 #define U32_MAX                 4294967292
 

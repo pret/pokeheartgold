@@ -728,7 +728,7 @@ ov19_02259E44: ; 0x02259E44
 	lsl r2, r2, #2
 	add r0, r0, r2
 	ldr r0, [r0, r1]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _02259E60
 	mov r0, #1

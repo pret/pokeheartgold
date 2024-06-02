@@ -1,6 +1,7 @@
 #ifndef NITRO_GX_GX_H_
 #define NITRO_GX_GX_H_
 
+#include <nitro/types.h>
 #include <nitro/hw/io_reg.h>
 
 #define GX_LCD_SIZE_X 256
@@ -167,6 +168,22 @@ static inline void GX_SetVisibleWnd(int window) {
 
 static inline void GXS_SetVisibleWnd(int window) {
     reg_GXS_DB_DISPCNT = (u32)((reg_GXS_DB_DISPCNT & ~(REG_GXS_DB_DISPCNT_W0_MASK | REG_GXS_DB_DISPCNT_W1_MASK | REG_GXS_DB_DISPCNT_OW_MASK)) | (window << REG_GXS_DB_DISPCNT_W0_SHIFT));
+}
+
+static inline void GX_SetOBJVRamModeChar(GXOBJVRamModeChar mode) {
+    reg_GX_DISPCNT = (u32)(reg_GX_DISPCNT & ~(REG_GX_DISPCNT_EXOBJ_CH_MASK | REG_GX_DISPCNT_OBJMAP_CH_MASK) | mode);
+}
+
+static inline void GXS_SetOBJVRamModeChar(GXOBJVRamModeChar mode) {
+    reg_GXS_DB_DISPCNT = (u32)(reg_GXS_DB_DISPCNT & ~(REG_GXS_DB_DISPCNT_EXOBJ_CH_MASK | REG_GXS_DB_DISPCNT_OBJMAP_CH_MASK) | mode);
+}
+
+static inline GXOBJVRamModeChar GX_GetOBJVRamModeChar(void) {
+    return (GXOBJVRamModeChar)(reg_GX_DISPCNT & (REG_GX_DISPCNT_EXOBJ_CH_MASK | REG_GX_DISPCNT_OBJMAP_CH_MASK));
+}
+
+static inline GXOBJVRamModeChar GXS_GetOBJVRamModeChar(void) {
+    return (GXOBJVRamModeChar)(reg_GXS_DB_DISPCNT & (REG_GXS_DB_DISPCNT_EXOBJ_CH_MASK | REG_GXS_DB_DISPCNT_OBJMAP_CH_MASK));
 }
 
 #endif //NITRO_GX_GX_H_
