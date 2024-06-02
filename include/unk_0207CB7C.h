@@ -5,6 +5,7 @@
 #include "list_menu.h"
 
 void sub_0207CDCC(PartyMenuStruct *partyMenu);
+void sub_0207CF68(PartyMenuStruct *partyMenu);
 void sub_0207CF98(PartyMenuStruct *partyMenu);
 void sub_0207DAC4(PartyMenuStruct *partyMenu, int a1, int a2);
 PartyMenuStruct_SubC90_UnkFunc sub_0207E93C(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1);

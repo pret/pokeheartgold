@@ -13,6 +13,8 @@
 #include "unk_02080BB4.h"
 #include "unk_0208805C.h"
 #include "unk_0207EB24.h"
+#include "unk_02074944.h"
+#include "vram_transfer_manager.h"
 
 BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState);
 BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState);
@@ -30,7 +32,9 @@ int sub_02079550(PartyMenuStruct *partyMenu);
 BOOL PartyMenuApp_Exit(OVY_MANAGER *manager, int *pState);
 void sub_020796B8(void *cbData);
 void sub_02079700(void);
+void sub_02079720(BgConfig *bgConfig);
 void sub_02079758(BgConfig *bgConfig);
+void sub_020798C4(BgConfig *bgConfig);
 void sub_02079A14(PartyMenuStruct *partyMenu, NARC *narc);
 PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager);
 void sub_02079CE4(PartyMenuStruct *partyMenu);
@@ -443,4 +447,134 @@ int sub_02079550(PartyMenuStruct *partyMenu) {
     } else {
         return 21;
     }
+}
+
+BOOL PartyMenuApp_Exit(OVY_MANAGER *manager, int *pState) {
+    u32 i;
+    PartyMenuStruct *partyMenu = (PartyMenuStruct *)OverlayManager_GetData(manager);
+    sub_02002B8C(FALSE);
+    Main_SetVBlankIntrCB(NULL, NULL);
+    sub_0207EFA4(partyMenu);
+    sub_0207CF68(partyMenu);
+    sub_020798C4(partyMenu->unk_000);
+    sub_02021238();
+    GF_DestroyVramTransferManager();
+    for (i = 0; i < PARTY_SIZE; ++i) {
+        String_Delete(partyMenu->unk_828[i].unk_00);
+    }
+    String_Delete(partyMenu->strbuf);
+    String_Delete(partyMenu->unk_7CC);
+    for (i = 0; i < 20; ++i) {
+        String_Delete(partyMenu->unk_7D0[i]);
+    }
+    DestroyMsgData(partyMenu->msgData);
+    MessagePrinter_Delete(partyMenu->msgPrinter);
+    MessageFormat_Delete(partyMenu->msgFormat);
+    if (partyMenu->pokedex != NULL) {
+        sub_0207495C(partyMenu->pokedex);
+    }
+    if (partyMenu->args->unk_24 == 0) {
+        sub_02004B10();
+    }
+    FontID_Release(4);
+    OverlayManager_FreeData(manager);
+    DestroyHeap(HEAP_ID_PARTY_MENU);
+    sub_0203A964();
+    return TRUE;
+}
+
+void sub_020796B8(void *cbData) {
+    PartyMenuStruct *partyMenu = (PartyMenuStruct *)cbData;
+
+    BgSetPosTextAndCommit(partyMenu->unk_000, GF_BG_LYR_SUB_0, BG_POS_OP_SET_Y, partyMenu->unk_C78);
+    BgSetPosTextAndCommit(partyMenu->unk_000, GF_BG_LYR_SUB_2, BG_POS_OP_SET_Y, partyMenu->unk_C78);
+    DoScheduledBgGpuUpdates(partyMenu->unk_000);
+    GF_RunVramTransferTasks();
+    thunk_OamManager_ApplyAndResetBuffers();
+    OS_SetIrqCheckFlag(OS_IE_V_BLANK);
+}
+
+void sub_02079700(void) {
+    extern const GraphicsBanks _021013E4;
+    GraphicsBanks graphicsBanks = _021013E4;
+    GfGfx_SetBanks(&graphicsBanks);
+}
+
+void sub_02079720(BgConfig *bgConfig) {
+    extern const BgTemplate _02101370;
+    BgTemplate bgTemplate = _02101370;
+    InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_0, &bgTemplate, GF_BG_TYPE_TEXT);
+    BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_0);
+}
+
+void sub_02079758(BgConfig *bgConfig) {
+    {
+        extern const GraphicsModes _021012BC;
+        GraphicsModes graphicsModes = _021012BC;
+        SetBothScreensModesAndDisable(&graphicsModes);
+    }
+
+    {
+        extern const BgTemplate _02101354;
+        BgTemplate bgTemplate = _02101354;
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_0, &bgTemplate, GF_BG_TYPE_TEXT);
+        BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_0);
+    }
+
+    {
+        extern const BgTemplate _021013A8;
+        BgTemplate bgTemplate = _021013A8;
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_1, &bgTemplate, GF_BG_TYPE_TEXT);
+        BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_1);
+    }
+
+    {
+        extern const BgTemplate _0210131C;
+        BgTemplate bgTemplate = _0210131C;
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_2, &bgTemplate, GF_BG_TYPE_TEXT);
+        BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_2);
+    }
+
+    {
+        extern const BgTemplate _021012E4;
+        BgTemplate bgTemplate = _021012E4;
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_3, &bgTemplate, GF_BG_TYPE_TEXT);
+    }
+
+    {
+        extern const BgTemplate _02101338;
+        BgTemplate bgTemplate = _02101338;
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_2, &bgTemplate, GF_BG_TYPE_TEXT);
+        BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_2);
+    }
+
+    {
+        extern const BgTemplate _0210138C;
+        BgTemplate bgTemplate = _0210138C;
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_0, &bgTemplate, GF_BG_TYPE_TEXT);
+        BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_0);
+    }
+
+    {
+        extern const BgTemplate _02101300;
+        BgTemplate bgTemplate = _02101300;
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_1, &bgTemplate, GF_BG_TYPE_TEXT);
+    }
+
+    BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 0x20, 0, HEAP_ID_PARTY_MENU);
+    BG_ClearCharDataRange(GF_BG_LYR_SUB_0, 0x20, 0, HEAP_ID_PARTY_MENU);
+    BG_ClearCharDataRange(GF_BG_LYR_SUB_2, 0x20, 0, HEAP_ID_PARTY_MENU);
+}
+
+void sub_020798C4(BgConfig *bgConfig) {
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_ALL, GF_PLANE_TOGGLE_OFF);
+    GfGfx_EngineBTogglePlanes((GXPlaneMask)(GX_PLANEMASK_BG0 | GX_PLANEMASK_BG1 | GX_PLANEMASK_OBJ), GF_PLANE_TOGGLE_OFF);
+    FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_SUB_2);
+    FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_SUB_1);
+    FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_SUB_0);
+    FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_3);
+    FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_2);
+    FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_1);
+    FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_0);
+    FreeToHeapExplicit(HEAP_ID_PARTY_MENU, bgConfig);
 }
