@@ -51,9 +51,9 @@
 .public ov80_022322C8
 .public ov80_022322F8
 .public ov80_02232348
-.public ov80_022323A0
-.public ov80_022323B8
-.public ov80_022323D0
+.public FrtCmd_080
+.public FrtCmd_081
+.public FrtCmd_082
 .public ov80_022323E8
 .public ov80_02232430
 .public ov80_02232460

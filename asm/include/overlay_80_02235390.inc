@@ -10,9 +10,9 @@
 .public ov80_0222AB84
 .public FrontierScript_ReadHalf
 .public FrontierScript_ReadVar
-.public ov80_02235390
-.public ov80_022353A0
-.public ov80_022353B0
-.public ov80_022353E8
-.public ov80_022353F8
-.public ov80_0223541C
+.public FrtCmd_085
+.public FrtCmd_086
+.public FrtCmd_087
+.public FrtCmd_088
+.public FrtCmd_089
+.public FrtCmd_090

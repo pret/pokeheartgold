@@ -1782,8 +1782,8 @@ _0222CAF8:
 	.balign 4, 0
 	thumb_func_end ov80_0222CAD0
 
-	thumb_func_start ov80_0222CB24
-ov80_0222CB24: ; 0x0222CB24
+	thumb_func_start FrtCmd_083
+FrtCmd_083: ; 0x0222CB24
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -1798,10 +1798,10 @@ ov80_0222CB24: ; 0x0222CB24
 	mov r0, #0
 	add sp, #4
 	pop {r3, r4, pc}
-	thumb_func_end ov80_0222CB24
+	thumb_func_end FrtCmd_083
 
-	thumb_func_start ov80_0222CB44
-ov80_0222CB44: ; 0x0222CB44
+	thumb_func_start FrtCmd_084
+FrtCmd_084: ; 0x0222CB44
 	push {r3, lr}
 	mov r1, #1
 	mov r2, #3
@@ -1809,7 +1809,7 @@ ov80_0222CB44: ; 0x0222CB44
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov80_0222CB44
+	thumb_func_end FrtCmd_084
 
 	thumb_func_start FrtCmd_052
 FrtCmd_052: ; 0x0222CB54
@@ -2909,8 +2909,8 @@ FrtCmd_060: ; 0x0222D328
 	.balign 4, 0
 	thumb_func_end FrtCmd_060
 
-	thumb_func_start ov80_0222D334
-ov80_0222D334: ; 0x0222D334
+	thumb_func_start FrtCmd_061
+FrtCmd_061: ; 0x0222D334
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl FrontierScript_ReadHalf
@@ -2928,10 +2928,10 @@ ov80_0222D334: ; 0x0222D334
 	strh r4, [r0]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov80_0222D334
+	thumb_func_end FrtCmd_061
 
-	thumb_func_start ov80_0222D360
-ov80_0222D360: ; 0x0222D360
+	thumb_func_start FrtCmd_062
+FrtCmd_062: ; 0x0222D360
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl FrontierScript_ReadHalf
@@ -2951,7 +2951,7 @@ ov80_0222D360: ; 0x0222D360
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov80_0222D360
+	thumb_func_end FrtCmd_062
 
 	thumb_func_start ov80_0222D390
 ov80_0222D390: ; 0x0222D390
@@ -4095,8 +4095,8 @@ _0222DC68: .word 0x0400001C
 _0222DC6C: .word 0x000002AA
 	thumb_func_end ov80_0222DC14
 
-	thumb_func_start ov80_0222DC70
-ov80_0222DC70: ; 0x0222DC70
+	thumb_func_start FrtCmd_063
+FrtCmd_063: ; 0x0222DC70
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -4151,7 +4151,7 @@ ov80_0222DC70: ; 0x0222DC70
 	.balign 4, 0
 _0222DCE8: .word 0x0000045D
 _0222DCEC: .word ov80_0222DCF0
-	thumb_func_end ov80_0222DC70
+	thumb_func_end FrtCmd_063
 
 	thumb_func_start ov80_0222DCF0
 ov80_0222DCF0: ; 0x0222DCF0
@@ -4192,8 +4192,8 @@ _0222DD34:
 _0222DD38: .word ov80_0223B9EC
 	thumb_func_end ov80_0222DCF0
 
-	thumb_func_start ov80_0222DD3C
-ov80_0222DD3C: ; 0x0222DD3C
+	thumb_func_start FrtCmd_064
+FrtCmd_064: ; 0x0222DD3C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl FrontierScript_ReadVarPtr
@@ -4214,10 +4214,10 @@ _0222DD62:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov80_0222DD3C
+	thumb_func_end FrtCmd_064
 
-	thumb_func_start ov80_0222DD68
-ov80_0222DD68: ; 0x0222DD68
+	thumb_func_start FrtCmd_065
+FrtCmd_065: ; 0x0222DD68
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -4239,10 +4239,10 @@ ov80_0222DD68: ; 0x0222DD68
 	bl ov80_022399A4
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov80_0222DD68
+	thumb_func_end FrtCmd_065
 
-	thumb_func_start ov80_0222DD9C
-ov80_0222DD9C: ; 0x0222DD9C
+	thumb_func_start FrtCmd_066
+FrtCmd_066: ; 0x0222DD9C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -4256,10 +4256,10 @@ ov80_0222DD9C: ; 0x0222DD9C
 	bl ov80_02239A1C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov80_0222DD9C
+	thumb_func_end FrtCmd_066
 
-	thumb_func_start ov80_0222DDBC
-ov80_0222DDBC: ; 0x0222DDBC
+	thumb_func_start FrtCmd_067
+FrtCmd_067: ; 0x0222DDBC
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -4281,10 +4281,10 @@ ov80_0222DDBC: ; 0x0222DDBC
 	bl sub_02015494
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov80_0222DDBC
+	thumb_func_end FrtCmd_067
 
-	thumb_func_start ov80_0222DDF0
-ov80_0222DDF0: ; 0x0222DDF0
+	thumb_func_start FrtCmd_068
+FrtCmd_068: ; 0x0222DDF0
 	push {r3, lr}
 	ldr r1, _0222DDFC ; =ov80_0222DE00
 	bl ov80_0222AB84
@@ -4292,7 +4292,7 @@ ov80_0222DDF0: ; 0x0222DDF0
 	pop {r3, pc}
 	.balign 4, 0
 _0222DDFC: .word ov80_0222DE00
-	thumb_func_end ov80_0222DDF0
+	thumb_func_end FrtCmd_068
 
 	thumb_func_start ov80_0222DE00
 ov80_0222DE00: ; 0x0222DE00
@@ -4311,8 +4311,8 @@ _0222DE18:
 	pop {r3, pc}
 	thumb_func_end ov80_0222DE00
 
-	thumb_func_start ov80_0222DE1C
-ov80_0222DE1C: ; 0x0222DE1C
+	thumb_func_start FrtCmd_076
+FrtCmd_076: ; 0x0222DE1C
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -4359,10 +4359,10 @@ _0222DE3E:
 	nop
 _0222DE84: .word ov80_0222F4F0
 _0222DE88: .word 0x00011170
-	thumb_func_end ov80_0222DE1C
+	thumb_func_end FrtCmd_076
 
-	thumb_func_start ov80_0222DE8C
-ov80_0222DE8C: ; 0x0222DE8C
+	thumb_func_start FrtCmd_077
+FrtCmd_077: ; 0x0222DE8C
 	push {r3, lr}
 	ldr r1, _0222DE98 ; =ov80_0222DE9C
 	bl ov80_0222AB84
@@ -4370,7 +4370,7 @@ ov80_0222DE8C: ; 0x0222DE8C
 	pop {r3, pc}
 	.balign 4, 0
 _0222DE98: .word ov80_0222DE9C
-	thumb_func_end ov80_0222DE8C
+	thumb_func_end FrtCmd_077
 
 	thumb_func_start ov80_0222DE9C
 ov80_0222DE9C: ; 0x0222DE9C
@@ -4390,8 +4390,8 @@ _0222DEB2:
 	.balign 4, 0
 	thumb_func_end ov80_0222DE9C
 
-	thumb_func_start ov80_0222DEB8
-ov80_0222DEB8: ; 0x0222DEB8
+	thumb_func_start FrtCmd_078
+FrtCmd_078: ; 0x0222DEB8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -4439,10 +4439,10 @@ _0222DEDA:
 	pop {r3, r4, r5, pc}
 	nop
 _0222DF28: .word ov80_0222F53C
-	thumb_func_end ov80_0222DEB8
+	thumb_func_end FrtCmd_078
 
-	thumb_func_start ov80_0222DF2C
-ov80_0222DF2C: ; 0x0222DF2C
+	thumb_func_start FrtCmd_079
+FrtCmd_079: ; 0x0222DF2C
 	push {r3, lr}
 	ldr r1, _0222DF38 ; =ov80_0222DF3C
 	bl ov80_0222AB84
@@ -4450,7 +4450,7 @@ ov80_0222DF2C: ; 0x0222DF2C
 	pop {r3, pc}
 	.balign 4, 0
 _0222DF38: .word ov80_0222DF3C
-	thumb_func_end ov80_0222DF2C
+	thumb_func_end FrtCmd_079
 
 	thumb_func_start ov80_0222DF3C
 ov80_0222DF3C: ; 0x0222DF3C
@@ -4479,8 +4479,8 @@ ov80_0222DF58: ; 0x0222DF58
 	.balign 4, 0
 	thumb_func_end ov80_0222DF58
 
-	thumb_func_start ov80_0222DF64
-ov80_0222DF64: ; 0x0222DF64
+	thumb_func_start FrtCmd_069
+FrtCmd_069: ; 0x0222DF64
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	add r5, r0, #0
@@ -4526,10 +4526,10 @@ ov80_0222DF64: ; 0x0222DF64
 	mov r0, #0
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov80_0222DF64
+	thumb_func_end FrtCmd_069
 
-	thumb_func_start ov80_0222DFD4
-ov80_0222DFD4: ; 0x0222DFD4
+	thumb_func_start FrtCmd_070
+FrtCmd_070: ; 0x0222DFD4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -4543,10 +4543,10 @@ ov80_0222DFD4: ; 0x0222DFD4
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov80_0222DFD4
+	thumb_func_end FrtCmd_070
 
-	thumb_func_start ov80_0222DFF4
-ov80_0222DFF4: ; 0x0222DFF4
+	thumb_func_start FrtCmd_071
+FrtCmd_071: ; 0x0222DFF4
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0x14
 	add r5, r0, #0
@@ -4591,7 +4591,7 @@ ov80_0222DFF4: ; 0x0222DFF4
 	nop
 _0222E054: .word 0x0000047B
 _0222E058: .word ov80_0222E05C
-	thumb_func_end ov80_0222DFF4
+	thumb_func_end FrtCmd_071
 
 	thumb_func_start ov80_0222E05C
 ov80_0222E05C: ; 0x0222E05C
@@ -4611,8 +4611,8 @@ _0222E074:
 	pop {r4, pc}
 	thumb_func_end ov80_0222E05C
 
-	thumb_func_start ov80_0222E078
-ov80_0222E078: ; 0x0222E078
+	thumb_func_start FrtCmd_072
+FrtCmd_072: ; 0x0222E078
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl FrontierScript_ReadHalf
@@ -4627,10 +4627,10 @@ ov80_0222E078: ; 0x0222E078
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov80_0222E078
+	thumb_func_end FrtCmd_072
 
-	thumb_func_start ov80_0222E09C
-ov80_0222E09C: ; 0x0222E09C
+	thumb_func_start FrtCmd_073
+FrtCmd_073: ; 0x0222E09C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl FrontierScript_ReadHalf
@@ -4648,10 +4648,10 @@ ov80_0222E09C: ; 0x0222E09C
 	bl GameStats_Add
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov80_0222E09C
+	thumb_func_end FrtCmd_073
 
-	thumb_func_start ov80_0222E0C8
-ov80_0222E0C8: ; 0x0222E0C8
+	thumb_func_start FrtCmd_074
+FrtCmd_074: ; 0x0222E0C8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl FrontierScript_ReadHalf
@@ -4666,10 +4666,10 @@ ov80_0222E0C8: ; 0x0222E0C8
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov80_0222E0C8
+	thumb_func_end FrtCmd_074
 
-	thumb_func_start ov80_0222E0EC
-ov80_0222E0EC: ; 0x0222E0EC
+	thumb_func_start FrtCmd_075
+FrtCmd_075: ; 0x0222E0EC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl FrontierScript_ReadVarPtr
@@ -4683,7 +4683,7 @@ ov80_0222E0EC: ; 0x0222E0EC
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov80_0222E0EC
+	thumb_func_end FrtCmd_075
 
 	thumb_func_start ov80_0222E10C
 ov80_0222E10C: ; 0x0222E10C
@@ -7521,36 +7521,36 @@ gFrontierCommandTable: ; 0x0223BA04
 	.word FrtCmd_058
 	.word FrtCmd_059
 	.word FrtCmd_060
-	.word ov80_0222D334
-	.word ov80_0222D360
-	.word ov80_0222DC70
-	.word ov80_0222DD3C
-	.word ov80_0222DD68
-	.word ov80_0222DD9C
-	.word ov80_0222DDBC
-	.word ov80_0222DDF0
-	.word ov80_0222DF64
-	.word ov80_0222DFD4
-	.word ov80_0222DFF4
-	.word ov80_0222E078
-	.word ov80_0222E09C
-	.word ov80_0222E0C8
-	.word ov80_0222E0EC
-	.word ov80_0222DE1C
-	.word ov80_0222DE8C
-	.word ov80_0222DEB8
-	.word ov80_0222DF2C
-	.word ov80_022323A0
-	.word ov80_022323B8
-	.word ov80_022323D0
-	.word ov80_0222CB24
-	.word ov80_0222CB44
-	.word ov80_02235390
-	.word ov80_022353A0
-	.word ov80_022353B0
-	.word ov80_022353E8
-	.word ov80_022353F8
-	.word ov80_0223541C
+	.word FrtCmd_061
+	.word FrtCmd_062
+	.word FrtCmd_063
+	.word FrtCmd_064
+	.word FrtCmd_065
+	.word FrtCmd_066
+	.word FrtCmd_067
+	.word FrtCmd_068
+	.word FrtCmd_069
+	.word FrtCmd_070
+	.word FrtCmd_071
+	.word FrtCmd_072
+	.word FrtCmd_073
+	.word FrtCmd_074
+	.word FrtCmd_075
+	.word FrtCmd_076
+	.word FrtCmd_077
+	.word FrtCmd_078
+	.word FrtCmd_079
+	.word FrtCmd_080
+	.word FrtCmd_081
+	.word FrtCmd_082
+	.word FrtCmd_083
+	.word FrtCmd_084
+	.word FrtCmd_085
+	.word FrtCmd_086
+	.word FrtCmd_087
+	.word FrtCmd_088
+	.word FrtCmd_089
+	.word FrtCmd_090
 	.word ov80_02235438
 	.word ov80_0222F608
 	.word ov80_0222F648
