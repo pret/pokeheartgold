@@ -2,6 +2,7 @@
 #include "global.h"
 #include "party_menu.h"
 #include "font.h"
+#include "msgdata/msg.naix"
 #include "overlay_94.h"
 #include "render_text.h"
 #include "sound_02004A44.h"
@@ -14,6 +15,7 @@
 #include "unk_02080BB4.h"
 #include "unk_0208805C.h"
 #include "unk_0207EB24.h"
+#include "unk_02078E30.h"
 #include "unk_02074944.h"
 #include "vram_transfer_manager.h"
 
@@ -647,4 +649,32 @@ void sub_02079A14(PartyMenuStruct *partyMenu, NARC *narc) {
     sub_0207CAAC(HEAP_ID_PARTY_MENU, partyMenu->unk_314, partyMenu->unk_3D4, partyMenu->unk_494);
     BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB_BLACK);
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB_BLACK);
+}
+
+PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager) {
+    u32 i;
+    PartyMenuStruct *ret = (PartyMenuStruct *)OverlayManager_CreateAndGetData(manager, sizeof(PartyMenuStruct), HEAP_ID_PARTY_MENU);
+    memset(ret, 0, sizeof(PartyMenuStruct));
+    ret->args = OverlayManager_GetArgs(manager);
+    ret->bgConfig = BgConfig_Alloc(HEAP_ID_PARTY_MENU);
+    if (ret->args->unk_24 == 2 && ret->args->unk_14 != 0) {
+        ret->pokedex = sub_02074944(HEAP_ID_PARTY_MENU);
+    } else {
+        ret->pokedex = NULL;
+    }
+    ret->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0300_bin, HEAP_ID_PARTY_MENU);
+    ret->msgPrinter = MessagePrinter_New(15, 14, 0, HEAP_ID_PARTY_MENU);
+    ret->msgFormat = MessageFormat_New(HEAP_ID_PARTY_MENU);
+    for (i = 0; i < PARTY_SIZE; ++i) {
+        ret->unk_828[i].unk_00 = String_New(POKEMON_NAME_LENGTH + 1, HEAP_ID_PARTY_MENU);
+    }
+    ret->strbuf = String_New(0x100, HEAP_ID_PARTY_MENU);
+    ret->unk_7CC = String_New(0x100, HEAP_ID_PARTY_MENU);
+    for (i = 0; i < 20; ++i) {
+        ret->unk_7D0[i] = String_New(32, HEAP_ID_PARTY_MENU);
+    }
+    ret->unk_C7C = FALSE;
+    ret->partyMonIndex = ret->args->partySlot;
+    ret->unk_C66 = ret->partyMonIndex;
+    return ret;
 }

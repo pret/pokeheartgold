@@ -145,13 +145,15 @@ struct PartyMenuStruct {
     u8 unk_C63;
     u8 unk_C64;
     u8 partyMonIndex; // 0xc65
-    u8 filler_C66[0xE];
+    u8 unk_C66;
+    u8 filler_C67[0xD];
     Pokedex *pokedex; // 0xc74
     int unk_C78;
     BOOL unk_C7C;
     IconFormChangeData *iconFormChange; // C80
     GF3DVramMan *unk_C84; // C84
     YesNoPrompt *yesNoPrompt;
+    u8 filler_C8C[4];
     PartyMenuStruct_SubC90 unk_C90;
     u8 filler_CA0[0x8];
 }; // CA8
