@@ -3,11 +3,13 @@
 
 #include "bag_types_def.h"
 #include "constants/party_menu.h"
+#include "gf_3d_vramman.h"
 #include "mail.h"
 #include "message_printer.h"
 #include "pokedex.h"
 #include "task.h"
 #include "unk_02014DA0.h"
+#include "unk_02020654.h"
 #include "unk_0202E41C.h"
 #include "yes_no_prompt.h"
 
@@ -108,13 +110,17 @@ typedef struct PartyMenuStruct_Sub820 {
 } PartyMenuStruct_Sub820;
 
 struct PartyMenuStruct {
-    BgConfig *unk_000;
+    BgConfig *bgConfig;
     u8 filler_004[0x200];
     Window unk_204;
     Window unk_214;
     Window unk_224;
     Window unk_234;
-    u8 filler_244[0x410];
+    u8 filler_244[0xD0];
+    u8 unk_314[6][0x20];
+    u8 unk_3D4[6][0x20];
+    u8 unk_494[6][0x20];
+    u16 unk_554[0x80];
     PartyMenuArgs *args; //0x654
     u8 filler_658[0x4];
     SpriteGfxHandler *unk_65C;
@@ -144,7 +150,7 @@ struct PartyMenuStruct {
     int unk_C78;
     BOOL unk_C7C;
     IconFormChangeData *iconFormChange; // C80
-    u8 filler_C84[0x4];
+    GF3DVramMan *unk_C84; // C84
     YesNoPrompt *yesNoPrompt;
     PartyMenuStruct_SubC90 unk_C90;
     u8 filler_CA0[0x8];

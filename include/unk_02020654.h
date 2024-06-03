@@ -3,6 +3,17 @@
 
 #include "heap.h"
 
+typedef struct UnkStruct_02020654 {
+    u8 unk_0;
+    u8 unk_1;
+    u8 unk_2;
+    u8 unk_3;
+    u8 unk_4;
+    u8 unk_5;
+    u8 unk_6;
+    u8 unk_7;
+} UnkStruct_02020654;
+
 NNSG2dCellTransferState* sub_02020654(int a0, HeapID heapId);
 void sub_02020A0C(int, u8 *, u8 *);
 void sub_02020674(void);

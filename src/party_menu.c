@@ -1,3 +1,4 @@
+#include "gf_gfx_loader.h"
 #include "global.h"
 #include "party_menu.h"
 #include "font.h"
@@ -35,6 +36,9 @@ void sub_02079700(void);
 void sub_02079720(BgConfig *bgConfig);
 void sub_02079758(BgConfig *bgConfig);
 void sub_020798C4(BgConfig *bgConfig);
+GF3DVramMan *sub_0207997C(HeapID heapId);
+void sub_0207999C(void);
+void sub_02079A0C(GF3DVramMan *gf3dVramMan);
 void sub_02079A14(PartyMenuStruct *partyMenu, NARC *narc);
 PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager);
 void sub_02079CE4(PartyMenuStruct *partyMenu);
@@ -58,6 +62,7 @@ int sub_0207C728(PartyMenuStruct *partyMenu);
 int sub_0207C74C(PartyMenuStruct *partyMenu);
 int sub_0207C908(PartyMenuStruct *partyMenu);
 int sub_0207CA30(PartyMenuStruct *partyMenu);
+void sub_0207CAAC(HeapID heapId, void *a1, void *a2, void *a3);
 void sub_0207CB20(PartyMenuStruct *partyMenu);
 void sub_0207CB90(void);
 
@@ -82,7 +87,7 @@ BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
     BeginNormalPaletteFade(2, 3, 3, RGB_BLACK, 6, 1, HEAP_ID_PARTY_MENU);
     sub_02079CE4(partyMenu);
     sub_02079700();
-    sub_02079758(partyMenu->unk_000);
+    sub_02079758(partyMenu->bgConfig);
     sub_02079A14(partyMenu, narc);
     sub_020210BC();
     sub_02021148(4);
@@ -456,7 +461,7 @@ BOOL PartyMenuApp_Exit(OVY_MANAGER *manager, int *pState) {
     Main_SetVBlankIntrCB(NULL, NULL);
     sub_0207EFA4(partyMenu);
     sub_0207CF68(partyMenu);
-    sub_020798C4(partyMenu->unk_000);
+    sub_020798C4(partyMenu->bgConfig);
     sub_02021238();
     GF_DestroyVramTransferManager();
     for (i = 0; i < PARTY_SIZE; ++i) {
@@ -486,9 +491,9 @@ BOOL PartyMenuApp_Exit(OVY_MANAGER *manager, int *pState) {
 void sub_020796B8(void *cbData) {
     PartyMenuStruct *partyMenu = (PartyMenuStruct *)cbData;
 
-    BgSetPosTextAndCommit(partyMenu->unk_000, GF_BG_LYR_SUB_0, BG_POS_OP_SET_Y, partyMenu->unk_C78);
-    BgSetPosTextAndCommit(partyMenu->unk_000, GF_BG_LYR_SUB_2, BG_POS_OP_SET_Y, partyMenu->unk_C78);
-    DoScheduledBgGpuUpdates(partyMenu->unk_000);
+    BgSetPosTextAndCommit(partyMenu->bgConfig, GF_BG_LYR_SUB_0, BG_POS_OP_SET_Y, partyMenu->unk_C78);
+    BgSetPosTextAndCommit(partyMenu->bgConfig, GF_BG_LYR_SUB_2, BG_POS_OP_SET_Y, partyMenu->unk_C78);
+    DoScheduledBgGpuUpdates(partyMenu->bgConfig);
     GF_RunVramTransferTasks();
     thunk_OamManager_ApplyAndResetBuffers();
     OS_SetIrqCheckFlag(OS_IE_V_BLANK);
@@ -577,4 +582,69 @@ void sub_020798C4(BgConfig *bgConfig) {
     FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_1);
     FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_0);
     FreeToHeapExplicit(HEAP_ID_PARTY_MENU, bgConfig);
+}
+
+void sub_0207991C(PartyMenuStruct *partyMenu, int a1) {
+    if (a1 == FALSE) {
+        ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_OFF);
+        FreeBgTilemapBuffer(partyMenu->bgConfig, GF_BG_LYR_MAIN_0);
+        GX_SetGraphicsMode(GX_DISPMODE_GRAPHICS, GX_BGMODE_0, GX_BG0_AS_3D);
+        partyMenu->unk_C84 = sub_0207997C(HEAP_ID_PARTY_MENU);
+    } else {
+        GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);
+        sub_02079A0C(partyMenu->unk_C84);
+        GX_SetGraphicsMode(GX_DISPMODE_GRAPHICS, GX_BGMODE_0, GX_BG0_AS_2D);
+        sub_02079720(partyMenu->bgConfig);
+        BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 0x20, 0, HEAP_ID_PARTY_MENU);
+    }
+}
+
+GF3DVramMan *sub_0207997C(HeapID heapId) {
+    return GF_3DVramMan_Create(heapId, GF_3D_TEXALLOC_LNK, 1, GF_3D_PLTTALLOC_LNK, 2, sub_0207999C);
+}
+
+void sub_0207999C(void) {
+    G3X_SetShading(GX_SHADING_TOON);
+    G3X_AntiAlias(TRUE);
+    G3X_AlphaTest(FALSE, 0);
+    G3X_AlphaBlend(TRUE);
+    G3X_EdgeMarking(FALSE);
+    G3X_SetFog(FALSE, GX_FOGBLEND_COLOR_ALPHA, GX_FOGSLOPE_0x8000, 0);
+    G3X_SetClearColor(RGB_BLACK, 0, 0x7FFF, 0x3F, FALSE);
+    G3_ViewPort(0, 0, 255, 191);
+}
+
+void sub_02079A0C(GF3DVramMan *gf3dVramMan) {
+    GF_3DVramMan_Delete(gf3dVramMan);
+}
+
+void sub_02079A14(PartyMenuStruct *partyMenu, NARC *narc) {
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 15, partyMenu->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 17, partyMenu->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
+
+    void *nclrFile = NARC_AllocAndReadWholeMember(narc, 16, HEAP_ID_PARTY_MENU);
+    NNSG2dPaletteData *plttData;
+    NNS_G2dGetUnpackedPaletteData(nclrFile, &plttData);
+    u16 *plttBuf = AllocFromHeap(HEAP_ID_PARTY_MENU, plttData->szByte);
+    memcpy(plttBuf, plttData->pRawData, plttData->szByte);
+    plttBuf[0] = RGB_BLACK;
+    BG_LoadPlttData(GF_PAL_LOCATION_MAIN_OBJEXT, plttBuf, plttData->szByte, 0);
+    FreeToHeap(plttBuf);
+    memcpy(partyMenu->unk_554, (u8 *)plttData->pRawData + 0x60, 0x100);
+    FreeToHeap(nclrFile);
+    LoadFontPal1(GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0x1A0, HEAP_ID_PARTY_MENU);
+    LoadFontPal1(GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0x40, HEAP_ID_PARTY_MENU);
+    LoadUserFrameGfx1(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, 1, 14, 0, HEAP_ID_PARTY_MENU);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 26, partyMenu->bgConfig, GF_BG_LYR_MAIN_0, 10, 0, FALSE, HEAP_ID_PARTY_MENU);
+    LoadUserFrameGfx2(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, 42, 15, Options_GetFrame(partyMenu->args->options), HEAP_ID_PARTY_MENU);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 3, partyMenu->bgConfig, GF_BG_LYR_SUB_0, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
+    GfGfxLoader_GXLoadPalFromOpenNarc(narc, 4, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0x20, 0x20, HEAP_ID_PARTY_MENU);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 12, partyMenu->bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 14, partyMenu->bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 24, partyMenu->bgConfig, GF_BG_LYR_SUB_0, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 25, partyMenu->bgConfig, GF_BG_LYR_SUB_0, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
+    GfGfxLoader_GXLoadPalFromOpenNarc(narc, 13, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0, 0x40, HEAP_ID_PARTY_MENU);
+    sub_0207CAAC(HEAP_ID_PARTY_MENU, partyMenu->unk_314, partyMenu->unk_3D4, partyMenu->unk_494);
+    BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB_BLACK);
+    BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB_BLACK);
 }
