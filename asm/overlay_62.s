@@ -5,13 +5,13 @@
 
 	.text
 
-    .public ov62_021E5900
-    .public ov62_021E59C0
-    .public ov62_021E5A1C
+    .public MicTest_Init
+    .public MicTest_Main
+    .public MicTest_Exit
     .public ov62_021E5A84
     .public ov62_021E5A8C
     .public ov62_021E5A94
-    .public ov62_021E6288
+    .public MicTest_AverageMicInput
 
 	thumb_func_start ov62_021E63E8
 ov62_021E63E8: ; 0x021E63E8
@@ -408,7 +408,7 @@ ov62_021E67C8: ; 0x021E67C8
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.public gApplication_MicTest
 gApplication_MicTest:
-	.word ov62_021E5900, ov62_021E5A1C, ov62_021E59C0, 0xFFFFFFFF
+	.word MicTest_Init, MicTest_Exit, MicTest_Main, 0xFFFFFFFF
 
 	.bss
 

@@ -15,7 +15,7 @@ typedef void (*MicTestFuncPtr_12C)(MicTestSub_12C *, u32 *);
 typedef struct MicTestSub_F0 {
     MICAutoParam mic;
     void *unk1C;
-    s32 unk20;
+    s32 curVolume;
     u32 unk24;
     u32 unk28;
     u32 unk2C;
@@ -37,7 +37,7 @@ struct MicTestSub_12C {
 };
 
 struct MicTestData {
-    SpriteRenderer *unk0;
+    SpriteRenderer *spriteRenderer;
     SpriteGfxHandler *unk4;
     UnkImageStruct *unk8[7];
     struct {
@@ -51,9 +51,9 @@ struct MicTestData {
     HeapID heapId;
 };
 
-BOOL ov62_021E5900(OVY_MANAGER *overlayMan);
-BOOL ov62_021E59C0(OVY_MANAGER *overlayMan);
-BOOL ov62_021E5A1C(OVY_MANAGER *overlayMan);
+BOOL MicTest_Init(OVY_MANAGER *overlayMan);
+BOOL MicTest_Main(OVY_MANAGER *overlayMan);
+BOOL MicTest_Exit(OVY_MANAGER *overlayMan);
 void ov62_021E5A5C(MicTestSub_12C *a0, MicTestData *data, MicTestFuncPtr_12C a2);
 void ov62_021E5A6C(MicTestSub_12C *a0);
 void ov62_021E5A84(MicTestSub_12C *a0, MicTestFuncPtr_12C a1);
@@ -72,7 +72,7 @@ void ov62_021E5CC8(void *data);
 void ov62_021E5CF4(MicTestData *micTest, HeapID heapId);
 void ov62_021E5D54(MicTestData *micTest);
 void ov62_021E5D64(MicTestData *micTest);
-void ov62_021E5D88(MicTestData *micTest);
+void MicTest_LoadResources(MicTestData *micTest);
 void ov62_021E5FA0(MicTestData *micTest);
 void ov62_021E5FC4(MicTestData *micTest);
 void ov62_021E5FD4(MicTestSub_B8 *a0, HeapID heapId);
@@ -86,9 +86,9 @@ void ov62_021E61FC(MicTestSub_F0 *a0);
 void ov62_021E620C(MicTestSub_F0 *a0);
 void ov62_021E625C(MicTestSub_F0 *a0);
 void ov62_021E6278(MicTestSub_F0 *a0);
-s32 ov62_021E6288(MicTestSub_F0 *a0);
+s32 MicTest_AverageMicInput(MicTestSub_F0 *a0);
 void ov62_021E62B8(MICResult result, void *data);
-u32 ov62_021E6390(u8);
+u32 MicTest_GetVolumeBracket(u8);
 u32 ov62_021E63D0(MicTestData *micTest);
 
 //Still in asm
