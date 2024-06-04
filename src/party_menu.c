@@ -1,3 +1,4 @@
+#include "constants/moves.h"
 #include "gf_gfx_loader.h"
 #include "global.h"
 #include "party_menu.h"
@@ -47,7 +48,8 @@ PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager);
 void sub_02079CE4(PartyMenuStruct *partyMenu);
 void sub_02079D38(PartyMenuStruct *partyMenu);
 u8 sub_02079E28(PartyMenuStruct *partyMenu, u8 partySlot);
-void sub_02079FB8(PartyMenuStruct *partyMenu, Pokemon *mon, int partySlot);
+void sub_02079FB8(PartyMenuStruct *partyMenu, Pokemon *mon, u8 partySlot);
+u32 sub_0207A058(Pokemon *mon, u8 contestStat);
 void sub_0207A22C(PartyMenuStruct *partyMenu);
 void sub_0207A89C(PartyMenuStruct *partyMenu);
 void sub_0207AC20(PartyMenuStruct *partyMenu);
@@ -763,4 +765,66 @@ BOOL sub_02079E38(PartyMenuStruct *partyMenu, u8 partySlot) {
     partyMenu->unk_828[partySlot].unk_0E_00 = (u8)sub_0208AD64(mon);
     sub_02079FB8(partyMenu, mon, partySlot);
     return TRUE;
- }
+}
+
+void sub_02079FB8(PartyMenuStruct *partyMenu, Pokemon *mon, u8 partySlot) {
+    if (partyMenu->args->unk_24 == 13) {
+        if (partyMenu->unk_828[partySlot].isEgg == TRUE || partyMenu->unk_828[partySlot].hp == 0) {
+            partyMenu->unk_828[partySlot].unk_0E_0F = FALSE;
+        } else {
+            u32 numRibbons = sub_0207A058(mon, partyMenu->args->contestStat);
+            u32 i;
+            for (i = 0; i < 4; ++i) {
+                if (GetMonData(mon, MON_DATA_MOVE1 + i, NULL) == MOVE_NONE) {
+                    break;
+                }
+            }
+            if (partyMenu->args->unk_2F <= numRibbons && i >= 2) {
+                partyMenu->unk_828[partySlot].unk_0E_0F = TRUE;
+            } else {
+                partyMenu->unk_828[partySlot].unk_0E_0F = FALSE;
+            }
+        }
+    }
+}
+
+u32 sub_0207A058(Pokemon *mon, u8 contestStat) {
+    u32 result;
+    switch (contestStat) {
+    case COOL:
+        result  = GetMonData(mon, MON_DATA_COOL_RIBBON, NULL);
+        result += GetMonData(mon, MON_DATA_COOL_RIBBON_GREAT, NULL);
+        result += GetMonData(mon, MON_DATA_COOL_RIBBON_ULTRA, NULL);
+        result += GetMonData(mon, MON_DATA_COOL_RIBBON_MASTER, NULL);
+        break;
+    case BEAUTY:
+        result  = GetMonData(mon, MON_DATA_BEAUTY_RIBBON, NULL);
+        result += GetMonData(mon, MON_DATA_BEAUTY_RIBBON_GREAT, NULL);
+        result += GetMonData(mon, MON_DATA_BEAUTY_RIBBON_ULTRA, NULL);
+        result += GetMonData(mon, MON_DATA_BEAUTY_RIBBON_MASTER, NULL);
+        break;
+    case CUTE:
+        result  = GetMonData(mon, MON_DATA_CUTE_RIBBON, NULL);
+        result += GetMonData(mon, MON_DATA_CUTE_RIBBON_GREAT, NULL);
+        result += GetMonData(mon, MON_DATA_CUTE_RIBBON_ULTRA, NULL);
+        result += GetMonData(mon, MON_DATA_CUTE_RIBBON_MASTER, NULL);
+        break;
+    case SMART:
+        result  = GetMonData(mon, MON_DATA_SMART_RIBBON, NULL);
+        result += GetMonData(mon, MON_DATA_SMART_RIBBON_GREAT, NULL);
+        result += GetMonData(mon, MON_DATA_SMART_RIBBON_ULTRA, NULL);
+        result += GetMonData(mon, MON_DATA_SMART_RIBBON_MASTER, NULL);
+        break;
+    case TOUGH:
+        result  = GetMonData(mon, MON_DATA_TOUGH_RIBBON, NULL);
+        result += GetMonData(mon, MON_DATA_TOUGH_RIBBON_GREAT, NULL);
+        result += GetMonData(mon, MON_DATA_TOUGH_RIBBON_ULTRA, NULL);
+        result += GetMonData(mon, MON_DATA_TOUGH_RIBBON_MASTER, NULL);
+        break;
+    }
+    return result;
+}
+
+u16 *sub_0207A16C(PartyMenuStruct *partyMenu) {
+    return &partyMenu->unk_3D4[0x36];
+}

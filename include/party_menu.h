@@ -70,7 +70,9 @@ typedef struct PartyMenuArgs {
     u16 itemId;
     u16 unk2A;
     u8 unk2C;
-    u8 filler_2D[3];
+    u8 filler_2D[1];
+    u8 contestStat;
+    u8 unk_2F;
     u8 unk_30[3];
     u8 filler_33[3];
     u8 unk_36_0:4;
@@ -128,9 +130,9 @@ struct PartyMenuStruct {
     Window unk_224;
     Window unk_234;
     u8 filler_244[0xD0];
-    u8 unk_314[6][0x20];
-    u8 unk_3D4[6][0x20];
-    u8 unk_494[6][0x20];
+    u16 unk_314[6 * 0x10];
+    u16 unk_3D4[6 * 0x10];
+    u16 unk_494[6 * 0x10];
     u16 unk_554[0x80];
     PartyMenuArgs *args; //0x654
     u8 filler_658[0x4];
@@ -195,6 +197,7 @@ extern const OVY_MGR_TEMPLATE gOverlayTemplate_PartyMenu;
 void sub_02079224(PartyMenuStruct *partyMenu, int BOOL);
 void sub_0207991C(PartyMenuStruct *partyMenu, int a1);
 BOOL sub_02079E38(PartyMenuStruct *partyMenu, u8 partySlot);
+u16 *sub_0207A16C(PartyMenuStruct *partyMenu);
 u32 sub_0207CA9C(void);
 u32 sub_0207CAA0(void);
 u32 sub_0207CAA4(void);
