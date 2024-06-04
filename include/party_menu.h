@@ -102,12 +102,23 @@ typedef struct PartyMenuStruct_SubC90 {
     int unk_C;
 } PartyMenuStruct_SubC90;
 
-typedef struct PartyMenuStruct_Sub820 {
-    String *unk_00;
-    u8 filler_04[0xC];
-    u8 unk_10;
-    u8 filler_11[0x1F];
-} PartyMenuStruct_Sub820;
+typedef struct PartyMenuStruct_Sub828 {
+    String *nickname; // 828
+    u16 species;      // 82C
+    u16 hp;           // 82E
+    u16 maxHp;        // 830
+    u16 level;        // 832
+    u16 heldItem;     // 834
+    u16 unk_0E_00:12; // 836
+    u16 unk_0E_0C:1;
+    u16 gender:2;
+    u16 unk_0E_0F:1;
+    u8 isEgg;         // 838
+    u8 form;          // 839
+    u16 capsule;      // 83A
+    u8 filler_14[0x19];
+    u8 active;        // 855
+} PartyMenuStruct_Sub828;
 
 struct PartyMenuStruct {
     BgConfig *bgConfig;
@@ -126,8 +137,11 @@ struct PartyMenuStruct {
     SpriteGfxHandler *unk_65C;
     u8 filler_660[0x18];
     Sprite *unk_678;
-    u8 filler_67C[0x140];
-    MessagePrinter *msgPrinter; //0x7b4
+    u8 filler_67C[0x4];
+    Sprite *unk_680;
+    Sprite *unk_684;
+    u8 filler_688[0x134];
+    MessagePrinter *msgPrinter; //0x7bc
     MsgData *msgData; //0x7c0
     MessageFormat* msgFormat; //0x7c4
     String *strbuf; //0x7c8
@@ -135,8 +149,9 @@ struct PartyMenuStruct {
     String *unk_7D0[20];
     LISTMENUITEM *filler_820;
     UnkStruct_0207E590 *unk_824;
-    PartyMenuStruct_Sub820 unk_828[PARTY_SIZE];
-    u8 filler_948[0x30C];
+    PartyMenuStruct_Sub828 unk_828[PARTY_SIZE];
+    const UnkStruct_02020654 (*unk_948)[8];
+    u8 filler_94C[0x308];
     int (*unk_C54)(PartyMenuStruct *);
     int (*unk_C58)(PartyMenuStruct *);
     int (*unk_C5C)(PartyMenuStruct *);
@@ -179,6 +194,7 @@ extern const OVY_MGR_TEMPLATE gOverlayTemplate_PartyMenu;
 
 void sub_02079224(PartyMenuStruct *partyMenu, int BOOL);
 void sub_0207991C(PartyMenuStruct *partyMenu, int a1);
+BOOL sub_02079E38(PartyMenuStruct *partyMenu, u8 partySlot);
 u32 sub_0207CA9C(void);
 u32 sub_0207CAA0(void);
 u32 sub_0207CAA4(void);

@@ -17,6 +17,7 @@
 #include "unk_0207EB24.h"
 #include "unk_02078E30.h"
 #include "unk_02074944.h"
+#include "unk_02088288.h"
 #include "vram_transfer_manager.h"
 
 BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState);
@@ -45,6 +46,8 @@ void sub_02079A14(PartyMenuStruct *partyMenu, NARC *narc);
 PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager);
 void sub_02079CE4(PartyMenuStruct *partyMenu);
 void sub_02079D38(PartyMenuStruct *partyMenu);
+u8 sub_02079E28(PartyMenuStruct *partyMenu, u8 partySlot);
+void sub_02079FB8(PartyMenuStruct *partyMenu, Pokemon *mon, int partySlot);
 void sub_0207A22C(PartyMenuStruct *partyMenu);
 void sub_0207A89C(PartyMenuStruct *partyMenu);
 void sub_0207AC20(PartyMenuStruct *partyMenu);
@@ -67,6 +70,11 @@ int sub_0207CA30(PartyMenuStruct *partyMenu);
 void sub_0207CAAC(HeapID heapId, void *a1, void *a2, void *a3);
 void sub_0207CB20(PartyMenuStruct *partyMenu);
 void sub_0207CB90(void);
+
+extern const UnkStruct_02020654 _0210140C[8];
+extern const UnkStruct_02020654 _0210144C[8];
+extern const UnkStruct_02020654 _0210148C[8];
+extern const UnkStruct_02020654 _021014CC[8];
 
 BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
     PartyMenuStruct *partyMenu;
@@ -439,7 +447,7 @@ int sub_02079550(PartyMenuStruct *partyMenu) {
     int x = sub_0207C0DC(partyMenu);
     if (x == 0 || x == 2) {
         thunk_Sprite_SetPalIndex(partyMenu->unk_678, 1);
-        if (partyMenu->unk_828[partyMenu->partyMonIndex].unk_10 != 1) {
+        if (partyMenu->unk_828[partyMenu->partyMonIndex].isEgg != 1) {
             return sub_02082134(partyMenu);
         } else {
             sub_0207DAEC(partyMenu, -1, 1);
@@ -467,7 +475,7 @@ BOOL PartyMenuApp_Exit(OVY_MANAGER *manager, int *pState) {
     sub_02021238();
     GF_DestroyVramTransferManager();
     for (i = 0; i < PARTY_SIZE; ++i) {
-        String_Delete(partyMenu->unk_828[i].unk_00);
+        String_Delete(partyMenu->unk_828[i].nickname);
     }
     String_Delete(partyMenu->strbuf);
     String_Delete(partyMenu->unk_7CC);
@@ -666,7 +674,7 @@ PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager) {
     ret->msgPrinter = MessagePrinter_New(15, 14, 0, HEAP_ID_PARTY_MENU);
     ret->msgFormat = MessageFormat_New(HEAP_ID_PARTY_MENU);
     for (i = 0; i < PARTY_SIZE; ++i) {
-        ret->unk_828[i].unk_00 = String_New(POKEMON_NAME_LENGTH + 1, HEAP_ID_PARTY_MENU);
+        ret->unk_828[i].nickname = String_New(POKEMON_NAME_LENGTH + 1, HEAP_ID_PARTY_MENU);
     }
     ret->strbuf = String_New(0x100, HEAP_ID_PARTY_MENU);
     ret->unk_7CC = String_New(0x100, HEAP_ID_PARTY_MENU);
@@ -678,3 +686,81 @@ PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager) {
     ret->unk_C66 = ret->partyMonIndex;
     return ret;
 }
+
+void sub_02079CE4(PartyMenuStruct *partyMenu) {
+    if (partyMenu->args->unk_24 & 0x80) {
+        partyMenu->unk_C63 |= 0x80;
+        partyMenu->args->unk_24 ^= 0x80;
+    } else if (partyMenu->args->unk_24 == 21) {
+        partyMenu->unk_C63 |= 0x80;
+    } else {
+        partyMenu->unk_C63 &= ~0x80;
+    }
+}
+
+void sub_02079D38(PartyMenuStruct *partyMenu) {
+    u8 r4 = 3;
+    if (partyMenu->args->unk_25 == 2) {
+        partyMenu->unk_948 = &_0210144C;
+    } else if (partyMenu->args->unk_24 == 2 || partyMenu->args->unk_24 == 17 || partyMenu->args->unk_24 == 22 || partyMenu->args->unk_24 == 23) {
+        partyMenu->unk_948 = &_0210148C;
+    } else if (partyMenu->args->unk_24 == 21) {
+        partyMenu->unk_948 = &_021014CC;
+    } else {
+        partyMenu->unk_948 = &_0210140C;
+    }
+    if (partyMenu->args->unk_24 != 2 && partyMenu->args->unk_24 != 17 && partyMenu->args->unk_24 != 23 && partyMenu->args->unk_24 != 22) {
+        Set2dSpriteVisibleFlag(partyMenu->unk_680, FALSE);
+        Set2dSpriteAnimSeqNo(partyMenu->unk_684, 0);
+        s16 x, y;
+        Sprite_GetPositionXY(partyMenu->unk_684, &x, &y);
+        Sprite_SetPositionXY(partyMenu->unk_684, x, y - 8);
+        r4 ^= 1;
+    }
+    if (partyMenu->args->unk_24 == 4 || partyMenu->args->unk_24 == 21) {
+        Set2dSpriteVisibleFlag(partyMenu->unk_684, FALSE);
+        r4 ^= 2;
+    }
+    sub_0207D998(partyMenu, r4);
+}
+
+u8 sub_02079E28(PartyMenuStruct *partyMenu, u8 partySlot) {
+    return partyMenu->unk_828[partySlot].active;
+}
+
+BOOL sub_02079E38(PartyMenuStruct *partyMenu, u8 partySlot) {
+    Pokemon *mon;
+    u32 unused;
+    u16 species;  // sp4
+
+    (void)unused;
+
+    partyMenu->unk_828[partySlot].active = FALSE;
+    if (Party_GetCount(partyMenu->args->party) <= partySlot) {
+        return FALSE;
+    }
+    mon = Party_GetMonByIndex(partyMenu->args->party, partySlot);
+    species = (u16)GetMonData(mon, MON_DATA_SPECIES, NULL);
+    if (species == SPECIES_NONE) {
+        return FALSE;
+    }
+    sub_0207D294(partyMenu, mon, partySlot);
+    partyMenu->unk_828[partySlot].species = species;
+    partyMenu->unk_828[partySlot].hp = (u16)GetMonData(mon, MON_DATA_HP, NULL);
+    partyMenu->unk_828[partySlot].maxHp = (u16)GetMonData(mon, MON_DATA_MAXHP, NULL);
+    partyMenu->unk_828[partySlot].level = (u16)GetMonData(mon, MON_DATA_LEVEL, NULL);
+    partyMenu->unk_828[partySlot].heldItem = (u16)GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+    partyMenu->unk_828[partySlot].capsule = (u16)GetMonData(mon, MON_DATA_CAPSULE, NULL);
+    partyMenu->unk_828[partySlot].isEgg = (u8)GetMonData(mon, MON_DATA_IS_EGG, NULL);
+    partyMenu->unk_828[partySlot].form = (u8)GetMonData(mon, MON_DATA_FORM, NULL);
+    if (GetMonData(mon, MON_DATA_UNK_176, NULL) == TRUE) {
+        partyMenu->unk_828[partySlot].unk_0E_0C = FALSE;
+    } else {
+        partyMenu->unk_828[partySlot].unk_0E_0C = TRUE;
+    }
+    partyMenu->unk_828[partySlot].gender = GetMonGender(mon);
+    partyMenu->unk_828[partySlot].active = TRUE;
+    partyMenu->unk_828[partySlot].unk_0E_00 = (u8)sub_0208AD64(mon);
+    sub_02079FB8(partyMenu, mon, partySlot);
+    return TRUE;
+ }

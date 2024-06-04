@@ -15,357 +15,9 @@
 	.extern PartyMenuApp_Main
 	.extern PartyMenuApp_Exit
 	.extern sub_02079720
+	.extern sub_02079E28
 
 	.text
-
-	thumb_func_start sub_02079CE4
-sub_02079CE4: ; 0x02079CE4
-	push {r3, r4}
-	ldr r2, _02079D30 ; =0x00000654
-	mov r3, #0x80
-	ldr r1, [r0, r2]
-	add r1, #0x24
-	ldrb r4, [r1]
-	add r1, r4, #0
-	tst r1, r3
-	beq _02079D10
-	ldr r1, _02079D34 ; =0x00000C63
-	ldrb r4, [r0, r1]
-	orr r4, r3
-	strb r4, [r0, r1]
-	ldr r1, [r0, r2]
-	add r0, r1, #0
-	add r0, #0x24
-	ldrb r0, [r0]
-	add r1, #0x24
-	eor r0, r3
-	strb r0, [r1]
-	pop {r3, r4}
-	bx lr
-_02079D10:
-	cmp r4, #0x15
-	bne _02079D20
-	ldr r1, _02079D34 ; =0x00000C63
-	ldrb r2, [r0, r1]
-	orr r2, r3
-	strb r2, [r0, r1]
-	pop {r3, r4}
-	bx lr
-_02079D20:
-	ldr r2, _02079D34 ; =0x00000C63
-	mov r1, #0x80
-	ldrb r3, [r0, r2]
-	bic r3, r1
-	strb r3, [r0, r2]
-	pop {r3, r4}
-	bx lr
-	nop
-_02079D30: .word 0x00000654
-_02079D34: .word 0x00000C63
-	thumb_func_end sub_02079CE4
-
-	thumb_func_start sub_02079D38
-sub_02079D38: ; 0x02079D38
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	ldr r0, _02079E0C ; =0x00000654
-	mov r4, #3
-	ldr r1, [r5, r0]
-	add r0, r1, #0
-	add r0, #0x25
-	ldrb r0, [r0]
-	cmp r0, #2
-	bne _02079D54
-	ldr r1, _02079E10 ; =_0210144C
-	ldr r0, _02079E14 ; =0x00000948
-	str r1, [r5, r0]
-	b _02079D84
-_02079D54:
-	add r1, #0x24
-	ldrb r1, [r1]
-	cmp r1, #2
-	beq _02079D6C
-	cmp r1, #0x11
-	beq _02079D6C
-	add r0, r1, #0
-	add r0, #0xea
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	cmp r0, #1
-	bhi _02079D74
-_02079D6C:
-	ldr r1, _02079E18 ; =_0210148C
-	ldr r0, _02079E14 ; =0x00000948
-	str r1, [r5, r0]
-	b _02079D84
-_02079D74:
-	cmp r1, #0x15
-	ldr r0, _02079E14 ; =0x00000948
-	bne _02079D80
-	ldr r1, _02079E1C ; =_021014CC
-	str r1, [r5, r0]
-	b _02079D84
-_02079D80:
-	ldr r1, _02079E20 ; =_0210140C
-	str r1, [r5, r0]
-_02079D84:
-	ldr r0, _02079E0C ; =0x00000654
-	ldr r1, [r5, r0]
-	add r1, #0x24
-	ldrb r1, [r1]
-	cmp r1, #2
-	beq _02079DDE
-	cmp r1, #0x11
-	beq _02079DDE
-	cmp r1, #0x17
-	beq _02079DDE
-	cmp r1, #0x16
-	beq _02079DDE
-	add r0, #0x2c
-	ldr r0, [r5, r0]
-	mov r1, #0
-	bl Set2dSpriteVisibleFlag
-	ldr r0, _02079E24 ; =0x00000684
-	mov r1, #0
-	ldr r0, [r5, r0]
-	bl Set2dSpriteAnimSeqNo
-	ldr r0, _02079E24 ; =0x00000684
-	add r1, sp, #0
-	ldr r0, [r5, r0]
-	add r1, #2
-	add r2, sp, #0
-	bl Sprite_GetPositionXY
-	ldr r0, _02079E24 ; =0x00000684
-	add r3, sp, #0
-	mov r2, #0
-	ldrsh r2, [r3, r2]
-	mov r1, #2
-	ldrsh r1, [r3, r1]
-	sub r2, #8
-	lsl r2, r2, #0x10
-	ldr r0, [r5, r0]
-	asr r2, r2, #0x10
-	bl Sprite_SetPositionXY
-	mov r0, #1
-	eor r0, r4
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-_02079DDE:
-	ldr r0, _02079E0C ; =0x00000654
-	ldr r0, [r5, r0]
-	add r0, #0x24
-	ldrb r0, [r0]
-	cmp r0, #4
-	beq _02079DEE
-	cmp r0, #0x15
-	bne _02079E00
-_02079DEE:
-	ldr r0, _02079E24 ; =0x00000684
-	mov r1, #0
-	ldr r0, [r5, r0]
-	bl Set2dSpriteVisibleFlag
-	mov r0, #2
-	eor r0, r4
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-_02079E00:
-	add r0, r5, #0
-	add r1, r4, #0
-	bl sub_0207D998
-	pop {r3, r4, r5, pc}
-	nop
-_02079E0C: .word 0x00000654
-_02079E10: .word _0210144C
-_02079E14: .word 0x00000948
-_02079E18: .word _0210148C
-_02079E1C: .word _021014CC
-_02079E20: .word _0210140C
-_02079E24: .word 0x00000684
-	thumb_func_end sub_02079D38
-
-	thumb_func_start sub_02079E28
-sub_02079E28: ; 0x02079E28
-	mov r2, #0x30
-	mul r2, r1
-	add r1, r0, r2
-	ldr r0, _02079E34 ; =0x00000855
-	ldrb r0, [r1, r0]
-	bx lr
-	.balign 4, 0
-_02079E34: .word 0x00000855
-	thumb_func_end sub_02079E28
-
-	thumb_func_start sub_02079E38
-sub_02079E38: ; 0x02079E38
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0xc
-	str r1, [sp]
-	add r5, r0, #0
-	ldr r0, [sp]
-	mov r1, #0x30
-	add r4, r0, #0
-	ldr r0, _02079F84 ; =0x00000855
-	mul r4, r1
-	add r0, r5, r0
-	mov r1, #0
-	str r0, [sp, #8]
-	strb r1, [r0, r4]
-	ldr r0, _02079F88 ; =0x00000654
-	ldr r0, [r5, r0]
-	ldr r0, [r0]
-	bl Party_GetCount
-	ldr r1, [sp]
-	cmp r0, r1
-	bgt _02079E68
-	add sp, #0xc
-	mov r0, #0
-	pop {r4, r5, r6, r7, pc}
-_02079E68:
-	ldr r0, _02079F88 ; =0x00000654
-	ldr r0, [r5, r0]
-	ldr r0, [r0]
-	bl Party_GetMonByIndex
-	mov r1, #5
-	mov r2, #0
-	add r7, r0, #0
-	bl GetMonData
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
-	str r0, [sp, #4]
-	bne _02079E8A
-	add sp, #0xc
-	mov r0, #0
-	pop {r4, r5, r6, r7, pc}
-_02079E8A:
-	ldr r2, [sp]
-	add r0, r5, #0
-	add r1, r7, #0
-	bl sub_0207D294
-	ldr r0, [sp]
-	mov r1, #0x30
-	add r6, r0, #0
-	mul r6, r1
-	ldr r1, _02079F8C ; =0x0000082C
-	ldr r0, [sp, #4]
-	add r2, r5, r6
-	strh r0, [r2, r1]
-	add r0, r7, #0
-	mov r1, #0xa3
-	mov r2, #0
-	bl GetMonData
-	ldr r1, _02079F90 ; =0x0000082E
-	add r2, r5, r6
-	strh r0, [r2, r1]
-	add r0, r7, #0
-	mov r1, #0xa4
-	mov r2, #0
-	bl GetMonData
-	mov r1, #0x83
-	add r2, r5, r6
-	lsl r1, r1, #4
-	strh r0, [r2, r1]
-	add r0, r7, #0
-	mov r1, #0xa1
-	mov r2, #0
-	bl GetMonData
-	ldr r1, _02079F94 ; =0x00000832
-	add r2, r5, r6
-	strh r0, [r2, r1]
-	add r0, r7, #0
-	mov r1, #6
-	mov r2, #0
-	bl GetMonData
-	ldr r1, _02079F98 ; =0x00000834
-	add r2, r5, r6
-	strh r0, [r2, r1]
-	add r0, r7, #0
-	mov r1, #0xa2
-	mov r2, #0
-	bl GetMonData
-	ldr r1, _02079F9C ; =0x0000083A
-	add r2, r5, r6
-	strh r0, [r2, r1]
-	add r0, r7, #0
-	mov r1, #0x4c
-	mov r2, #0
-	bl GetMonData
-	ldr r1, _02079FA0 ; =0x00000838
-	add r2, r5, r6
-	strb r0, [r2, r1]
-	add r0, r7, #0
-	mov r1, #0x70
-	mov r2, #0
-	bl GetMonData
-	ldr r1, _02079FA4 ; =0x00000839
-	add r2, r5, r6
-	strb r0, [r2, r1]
-	add r0, r7, #0
-	mov r1, #0xb0
-	mov r2, #0
-	bl GetMonData
-	cmp r0, #1
-	ldr r0, _02079FA8 ; =0x00000836
-	bne _02079F30
-	add r2, r5, r0
-	ldrh r1, [r2, r4]
-	ldr r0, _02079FAC ; =0xFFFFEFFF
-	and r0, r1
-	b _02079F3A
-_02079F30:
-	add r2, r5, r0
-	ldrh r1, [r2, r4]
-	mov r0, #1
-	lsl r0, r0, #0xc
-	orr r0, r1
-_02079F3A:
-	strh r0, [r2, r4]
-	ldr r0, _02079FA8 ; =0x00000836
-	add r6, r5, r0
-	add r0, r7, #0
-	bl GetMonGender
-	lsl r0, r0, #0x1e
-	ldrh r2, [r6, r4]
-	ldr r1, _02079FB0 ; =0xFFFF9FFF
-	lsr r0, r0, #0x11
-	and r1, r2
-	orr r0, r1
-	strh r0, [r6, r4]
-	ldr r0, [sp, #8]
-	mov r1, #1
-	strb r1, [r0, r4]
-	add r0, r7, #0
-	bl sub_0208AD64
-	lsl r0, r0, #0x18
-	ldrh r1, [r6, r4]
-	ldr r2, _02079FB4 ; =0xFFFFF000
-	lsr r0, r0, #0x18
-	and r1, r2
-	lsr r2, r2, #0x14
-	and r0, r2
-	orr r0, r1
-	strh r0, [r6, r4]
-	ldr r2, [sp]
-	add r0, r5, #0
-	add r1, r7, #0
-	bl sub_02079FB8
-	mov r0, #1
-	add sp, #0xc
-	pop {r4, r5, r6, r7, pc}
-	nop
-_02079F84: .word 0x00000855
-_02079F88: .word 0x00000654
-_02079F8C: .word 0x0000082C
-_02079F90: .word 0x0000082E
-_02079F94: .word 0x00000832
-_02079F98: .word 0x00000834
-_02079F9C: .word 0x0000083A
-_02079FA0: .word 0x00000838
-_02079FA4: .word 0x00000839
-_02079FA8: .word 0x00000836
-_02079FAC: .word 0xFFFFEFFF
-_02079FB0: .word 0xFFFF9FFF
-_02079FB4: .word 0xFFFFF000
-	thumb_func_end sub_02079E38
 
 	thumb_func_start sub_02079FB8
 sub_02079FB8: ; 0x02079FB8
@@ -6048,6 +5700,8 @@ _021013E4:
 	.word 0x00000000
 	.word 0x00000002
 	.word 0x00000060
+
+	.global _0210140C
 _0210140C:
 	.byte 0x40, 0x19, 0x00, 0x00, 0x07, 0x02, 0x07, 0x01
 	.byte 0xC0, 0x21, 0x00, 0x00, 0x07, 0x03, 0x00, 0x02
@@ -6057,6 +5711,8 @@ _0210140C:
 	.byte 0xC0, 0x81, 0x00, 0x00, 0x03, 0x07, 0x04, 0x07
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xE0, 0xA8, 0x00, 0x00, 0x05, 0x01, 0x05, 0x00
+
+	.global _0210144C
 _0210144C:
 	.byte 0x40, 0x19, 0x00, 0x00, 0x04, 0x02, 0x01, 0x01
 	.byte 0xC0, 0x19, 0x00, 0x00, 0x07, 0x03, 0x00, 0x00
@@ -6066,6 +5722,8 @@ _0210144C:
 	.byte 0xC0, 0x79, 0x00, 0x00, 0x03, 0x07, 0x04, 0x04
 	.byte 0xE0, 0xA8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xE0, 0xA8, 0x00, 0x00, 0x05, 0x01, 0xFF, 0xFF
+
+	.global _0210148C
 _0210148C:
 	.byte 0x40, 0x19, 0x00, 0x00, 0x07, 0x02, 0x07, 0x01
 	.byte 0xC0, 0x21, 0x00, 0x00, 0x07, 0x03, 0x00, 0x02
@@ -6075,6 +5733,8 @@ _0210148C:
 	.byte 0xC0, 0x81, 0x00, 0x00, 0x03, 0x06, 0x04, 0x06
 	.byte 0xE0, 0xA8, 0x00, 0x00, 0x05, 0x07, 0x05, 0x07
 	.byte 0xE0, 0xB8, 0x00, 0x00, 0x06, 0x01, 0x06, 0x00
+
+	.global _021014CC
 _021014CC:
 	.byte 0x40, 0x19, 0x00, 0x00, 0x05, 0x02, 0x05, 0x01
 	.byte 0xC0, 0x21, 0x00, 0x00, 0x05, 0x03, 0x00, 0x02
