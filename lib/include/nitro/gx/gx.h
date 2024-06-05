@@ -178,4 +178,12 @@ static inline void GXS_SetOBJVRamModeChar(GXOBJVRamModeChar mode) {
     reg_GXS_DB_DISPCNT = (u32)(reg_GXS_DB_DISPCNT & ~(REG_GXS_DB_DISPCNT_EXOBJ_CH_MASK | REG_GXS_DB_DISPCNT_OBJMAP_CH_MASK) | mode);
 }
 
+static inline GXOBJVRamModeChar GX_GetOBJVRamModeChar(void) {
+    return (GXOBJVRamModeChar)(reg_GX_DISPCNT & (REG_GX_DISPCNT_EXOBJ_CH_MASK | REG_GX_DISPCNT_OBJMAP_CH_MASK));
+}
+
+static inline GXOBJVRamModeChar GXS_GetOBJVRamModeChar(void) {
+    return (GXOBJVRamModeChar)(reg_GXS_DB_DISPCNT & (REG_GXS_DB_DISPCNT_EXOBJ_CH_MASK | REG_GXS_DB_DISPCNT_OBJMAP_CH_MASK));
+}
+
 #endif //NITRO_GX_GX_H_

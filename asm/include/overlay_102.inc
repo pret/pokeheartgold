@@ -111,9 +111,9 @@
 .public SysTask_GetData
 .public MsgArray_SkipControlCode
 .public AddTextPrinterParameterizedWithColor
-.public sub_020215A0
-.public sub_0202168C
-.public sub_020216C8
+.public ObjCharTransfer_Init
+.public ObjCharTransfer_Destroy
+.public ObjCharTransfer_ClearBuffers
 .public sub_02021AC8
 .public sub_02021B5C
 .public GfGfx_SetBanks

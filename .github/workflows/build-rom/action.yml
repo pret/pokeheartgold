@@ -8,10 +8,11 @@ runs:
     - name: Update and Install Software
       shell: bash
       run: |
+        sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
         sudo apt update
         sudo ACCEPT_EULA=Y apt -y --fix-missing --allow-downgrades upgrade
         sudo apt -y --allow-downgrades install g++-10-multilib linux-libc-dev binutils-arm-none-eabi p7zip-full pkg-config libpugixml-dev ppa-purge
-        sudo ppa-purge -y ppa:ubuntu-toolchain-r/test
+        sudo ppa-purge -y ppa:ubuntu-toolchain-r/test || true
         sudo dpkg --add-architecture i386
         sudo mkdir -pm755 /etc/apt/keyrings
         sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key

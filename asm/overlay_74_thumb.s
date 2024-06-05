@@ -21706,11 +21706,11 @@ ov74_02231BC0: ; 0x02231BC0
 	ldmia r4!, {r0, r1}
 	stmia r3!, {r0, r1}
 	add r0, r2, #0
-	bl sub_020215A0
+	bl ObjCharTransfer_Init
 	mov r0, #0x14
 	mov r1, #0x4c
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	add sp, #0x10
 	pop {r4, pc}
@@ -24131,7 +24131,7 @@ _02232EEE:
 	mov r0, #0
 	str r0, [r6, #0x28]
 	bl OamManager_Free
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	ldr r0, _02232F54 ; =0x0000E88C
 	ldr r0, [r6, r0]
@@ -29368,12 +29368,12 @@ ov74_0223563C: ; 0x0223563C
 	str r0, [sp, #0xc]
 	add r0, r2, #0
 	add r2, r1, #0
-	bl sub_020215C0
+	bl ObjCharTransfer_InitEx
 	ldr r1, _02235678 ; =ov74_0223D454
 	mov r0, #0x1e
 	ldr r1, [r1, #8]
 	bl sub_02022588
-	bl sub_020216C8
+	bl ObjCharTransfer_ClearBuffers
 	bl sub_02022638
 	add sp, #0x10
 	pop {r4, pc}
@@ -29884,7 +29884,7 @@ _02235A24:
 	mov r1, #0
 	str r1, [r0]
 	bl OamManager_Free
-	bl sub_0202168C
+	bl ObjCharTransfer_Destroy
 	bl sub_02022608
 	mov r0, #0
 	add r1, r0, #0
