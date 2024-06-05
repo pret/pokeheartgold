@@ -32,8 +32,8 @@ typedef struct MicTestSub_B8 {
 struct MicTestTaskManager {
     MicTestData *micTest;
     MicTestTask task;
-    u32 unk8;
-    u32 unkC;
+    u32 state;
+    u32 isFinished;
 };
 
 struct MicTestData {
@@ -52,14 +52,14 @@ struct MicTestData {
 };
 
 BOOL MicTest_Init(OVY_MANAGER *overlayMan);
-BOOL MicTest_Main(OVY_MANAGER *overlayMan);
 BOOL MicTest_Exit(OVY_MANAGER *overlayMan);
+BOOL MicTest_Main(OVY_MANAGER *overlayMan);
 void MicTest_StartTask(MicTestTaskManager *a0, MicTestData *data, MicTestTask a2);
-void ov62_021E5A6C(MicTestTaskManager *a0);
+void MicTestTaskMan_Run(MicTestTaskManager *a0);
 void MicTest_SetTask(MicTestTaskManager *a0, MicTestTask a1);
 MicTestData *MicTestTaskMan_GetMicTestData(MicTestTaskManager *a0);
-u32 ov62_021E5A90(MicTestTaskManager *a0);
-void ov62_021E5A94(MicTestTaskManager *a0);
+u32 MicTestTaskMan_IsFinished(MicTestTaskManager *a0);
+void MicTestTaskMan_Finish(MicTestTaskManager *a0);
 void MicTestTask_FadeIn(MicTestTaskManager *a0, u32 *state);
 void ov62_021E5B04(MicTestTaskManager *a0, u32 *state);
 void ov62_021E5B6C(MicTestTaskManager *a0, u32 *state);
@@ -71,7 +71,7 @@ void MicTest_SetBanks();
 void MicTest_VBlankIntrCB(void *data);
 void ov62_021E5CF4(MicTestData *micTest, HeapID heapId);
 void ov62_021E5D54(MicTestData *micTest);
-void ov62_021E5D64(MicTestData *micTest);
+void MicTest_UpdateAnimations(MicTestData *micTest);
 void MicTest_LoadResources(MicTestData *micTest);
 void ov62_021E5FA0(MicTestData *micTest);
 void ov62_021E5FC4(MicTestData *micTest);

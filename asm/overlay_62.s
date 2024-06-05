@@ -6,11 +6,11 @@
 	.text
 
     .public MicTest_Init
-    .public MicTest_Main
     .public MicTest_Exit
+    .public MicTest_Main
     .public MicTest_SetTask
     .public MicTestTaskMan_GetMicTestData
-    .public ov62_021E5A94
+    .public MicTestTaskMan_Finish
     .public MicTest_AverageMicInput
 
 	thumb_func_start ov62_021E63E8
@@ -408,7 +408,7 @@ ov62_021E67C8: ; 0x021E67C8
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.public gApplication_MicTest
 gApplication_MicTest:
-	.word MicTest_Init, MicTest_Exit, MicTest_Main, 0xFFFFFFFF
+	.word MicTest_Init, MicTest_Main, MicTest_Exit, 0xFFFFFFFF
 
 	.bss
 
