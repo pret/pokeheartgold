@@ -53,6 +53,7 @@ GF3DVramMan *sub_0207997C(HeapID heapId);
 void sub_0207999C(void);
 void sub_02079A0C(GF3DVramMan *gf3dVramMan);
 void sub_02079A14(PartyMenuStruct *partyMenu, NARC *narc);
+BOOL sub_0207A880(PartyMenuStruct *partyMenu, u8 partySlot);
 PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager);
 void sub_02079CE4(PartyMenuStruct *partyMenu);
 void sub_02079D38(PartyMenuStruct *partyMenu);
@@ -708,12 +709,12 @@ PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager) {
 
 void sub_02079CE4(PartyMenuStruct *partyMenu) {
     if (partyMenu->args->unk_24 & 0x80) {
-        partyMenu->unk_C63 |= 0x80;
+        partyMenu->unk_C63_7 = TRUE;
         partyMenu->args->unk_24 ^= 0x80;
     } else if (partyMenu->args->unk_24 == 21) {
-        partyMenu->unk_C63 |= 0x80;
+        partyMenu->unk_C63_7 = TRUE;
     } else {
-        partyMenu->unk_C63 &= ~0x80;
+        partyMenu->unk_C63_7 = FALSE;
     }
 }
 
@@ -983,4 +984,36 @@ void sub_0207A68C(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
         }
     }
     NARC_Delete(narc);
+}
+
+void sub_0207A780(PartyMenuStruct *partyMenu, u8 partySlot, s16 x, s16 y) {
+    CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, x, y, 16, 6, partyMenu->unk_494, 0, 0, 16, 6);
+    BgTilemapRectChangePalette(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, x, y, 16, 6, 1);
+    sub_0207EFC4(partyMenu, partySlot, 7);
+    sub_0207F004(partyMenu, partySlot, ITEM_NONE);
+    sub_0207F0C8(partyMenu, partySlot);
+}
+
+void sub_0207A7F4(PartyMenuStruct *partyMenu, u8 partySlot) {
+    Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partySlot);
+    u8 r4;
+    if (partyMenu->unk_C63_6 == TRUE && (partySlot == partyMenu->partyMonIndex || partySlot == partyMenu->unk_C63_0)) {
+        r4 = 7;
+    } else {
+        if (partySlot == partyMenu->partyMonIndex) {
+            r4 = 4;
+        } else {
+            r4 = 0;
+        }
+        if (GetMonData(mon, MON_DATA_HP, NULL) == 0) {
+            r4 += 2;
+        } else if (sub_0207A880(partyMenu, partySlot) == TRUE) {
+            r4 += 1;
+        }
+    }
+    BG_LoadPlttData(GF_BG_LYR_MAIN_2, &partyMenu->unk_554[16 * r4], 0x10, (partySlot + 3) * 32);
+}
+
+BOOL sub_0207A880(PartyMenuStruct *partyMenu, u8 partySlot) {
+    return partyMenu->args->unk_25 == 2 && (partySlot & 1);
 }

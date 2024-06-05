@@ -161,7 +161,9 @@ struct PartyMenuStruct {
     int (*unk_C5C)(PartyMenuStruct *);
     u8 filler_C60[2];
     u8 unk_C62;
-    u8 unk_C63;
+    u8 unk_C63_0:6;
+    u8 unk_C63_6:1;
+    u8 unk_C63_7:1;
     u8 unk_C64;
     u8 partyMonIndex; // 0xc65
     u8 unk_C66;
