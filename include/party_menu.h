@@ -118,7 +118,9 @@ typedef struct PartyMenuStruct_Sub828 {
     u8 isEgg;         // 838
     u8 form;          // 839
     u16 capsule;      // 83A
-    u8 filler_14[0x19];
+    u8 unk_14;        // 83C
+    u8 unk_15;        // 83D
+    u8 filler_16[0x17];
     u8 active;        // 855
 } PartyMenuStruct_Sub828;
 
@@ -198,6 +200,7 @@ void sub_02079224(PartyMenuStruct *partyMenu, int BOOL);
 void sub_0207991C(PartyMenuStruct *partyMenu, int a1);
 BOOL sub_02079E38(PartyMenuStruct *partyMenu, u8 partySlot);
 u16 *sub_0207A16C(PartyMenuStruct *partyMenu);
+void sub_0207A7F4(PartyMenuStruct *partyMenu, u8 partySlot);
 u32 sub_0207CA9C(void);
 u32 sub_0207CAA0(void);
 u32 sub_0207CAA4(void);

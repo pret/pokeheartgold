@@ -21,6 +21,15 @@
 #include "unk_02088288.h"
 #include "vram_transfer_manager.h"
 
+typedef struct UnkStruct_0207A22C {
+    u16 unk_0;
+    u16 unk_2;
+    u16 unk_4;
+    u16 unk_6;
+    u16 unk_8;
+    u16 unk_A;
+} UnkStruct_0207A22C;
+
 BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState);
 BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState);
 void sub_02079230(PartyMenuStruct *partyMenu);
@@ -50,7 +59,14 @@ void sub_02079D38(PartyMenuStruct *partyMenu);
 u8 sub_02079E28(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_02079FB8(PartyMenuStruct *partyMenu, Pokemon *mon, u8 partySlot);
 u32 sub_0207A058(Pokemon *mon, u8 contestStat);
+void sub_0207A174(PartyMenuStruct *partyMenu, u8 partySlot, u8 x, u8 y, u8 a4);
 void sub_0207A22C(PartyMenuStruct *partyMenu);
+void sub_0207A2AC(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
+void sub_0207A3C8(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
+void sub_0207A4B4(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
+void sub_0207A5A0(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
+void sub_0207A68C(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
+void sub_0207A780(PartyMenuStruct *partyMenu, u8 partySlot, s16 x, s16 y);
 void sub_0207A89C(PartyMenuStruct *partyMenu);
 void sub_0207AC20(PartyMenuStruct *partyMenu);
 int sub_0207ADB8(PartyMenuStruct *partyMenu);
@@ -71,12 +87,13 @@ int sub_0207C908(PartyMenuStruct *partyMenu);
 int sub_0207CA30(PartyMenuStruct *partyMenu);
 void sub_0207CAAC(HeapID heapId, void *a1, void *a2, void *a3);
 void sub_0207CB20(PartyMenuStruct *partyMenu);
-void sub_0207CB90(void);
 
 extern const UnkStruct_02020654 _0210140C[8];
 extern const UnkStruct_02020654 _0210144C[8];
 extern const UnkStruct_02020654 _0210148C[8];
 extern const UnkStruct_02020654 _021014CC[8];
+extern const UnkStruct_0207A22C _0210150C[];
+extern const UnkStruct_0207A22C _02101554[];
 
 BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
     PartyMenuStruct *partyMenu;
@@ -827,4 +844,143 @@ u32 sub_0207A058(Pokemon *mon, u8 contestStat) {
 
 u16 *sub_0207A16C(PartyMenuStruct *partyMenu) {
     return &partyMenu->unk_3D4[0x36];
+}
+
+void sub_0207A174(PartyMenuStruct *partyMenu, u8 partySlot, u8 x, u8 y, u8 a4) {
+    void *src;
+    if (partySlot == 0 || (partyMenu->args->unk_25 != 0 && partySlot == 1)) {
+        src = partyMenu->unk_314;
+    } else {
+        src = partyMenu->unk_3D4;
+    }
+    partyMenu->unk_828[partySlot].unk_14 = x;
+    partyMenu->unk_828[partySlot].unk_15 = y;
+    CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, x, y, 16, 6, src, 0, 0, 16, 6);
+    if (!a4) {
+        FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, 0x4B, x + 6, y + 3, 9, 1, TILEMAP_FILL_KEEP_PAL);
+    }
+    BgTilemapRectChangePalette(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, x, y, 16, 6, partySlot + 3);
+    sub_0207A7F4(partyMenu, partySlot);
+}
+
+void sub_0207A22C(PartyMenuStruct *partyMenu) {
+    const UnkStruct_0207A22C *r1 = partyMenu->args->unk_25 == 2 ? _02101554 : _0210150C;
+    if (partyMenu->args->unk_24 == 16) {
+        sub_0207A3C8(partyMenu, r1);
+    } else if (partyMenu->args->unk_24 == 6) {
+        sub_0207A4B4(partyMenu, r1);
+    } else if (partyMenu->args->unk_24 == 13) {
+        sub_0207A5A0(partyMenu, r1);
+    } else if (partyMenu->args->unk_24 == 2 || partyMenu->args->unk_24 == 17 || partyMenu->args->unk_24 == 22 || partyMenu->args->unk_24 == 23) {
+        sub_0207A68C(partyMenu, r1);
+    } else {
+        sub_0207A2AC(partyMenu, r1);
+    }
+    ScheduleBgTilemapBufferTransfer(partyMenu->bgConfig, GF_BG_LYR_MAIN_2);
+    ScheduleBgTilemapBufferTransfer(partyMenu->bgConfig, GF_BG_LYR_SUB_0);
+}
+
+void sub_0207A2AC(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
+    NARC *narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
+    for (u8 i = 0; i < PARTY_SIZE; ++i) {
+        if (sub_02079E38(partyMenu, i) == TRUE) {
+            if (partyMenu->unk_828[i].isEgg == TRUE) {
+                sub_0207A174(partyMenu, i, a1[i].unk_0, a1[i].unk_2, FALSE);
+            } else {
+                sub_0207A174(partyMenu, i, a1[i].unk_0, a1[i].unk_2, TRUE);
+            }
+            sub_0207D5DC(partyMenu, i);
+            sub_0207EBE4(partyMenu, i, a1[i].unk_4, a1[i].unk_6, narc);
+            sub_0207EF5C(partyMenu, i, a1[i].unk_8, a1[i].unk_A);
+            sub_0207F004(partyMenu, i, partyMenu->unk_828[i].heldItem);
+            sub_0207F064(partyMenu, i, a1[i].unk_4, a1[i].unk_6);
+            sub_0207F0C8(partyMenu, i);
+            sub_0207F098(partyMenu, i);
+            sub_0207EFC4(partyMenu, i, partyMenu->unk_828[i].unk_0E_00);
+        } else {
+            sub_0207A780(partyMenu, i, a1[i].unk_0, a1[i].unk_2);
+        }
+    }
+    NARC_Delete(narc);
+}
+
+void sub_0207A3C8(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
+    NARC *narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
+    for (u8 i = 0; i < PARTY_SIZE; ++i) {
+        if (sub_02079E38(partyMenu, i) == TRUE) {
+            sub_0207A174(partyMenu, i, a1[i].unk_0, a1[i].unk_2, FALSE);
+            sub_0207D710(partyMenu, i);
+            sub_0207EBE4(partyMenu, i, a1[i].unk_4, a1[i].unk_6, narc);
+            sub_0207EF5C(partyMenu, i, a1[i].unk_8, a1[i].unk_A);
+            sub_0207F004(partyMenu, i, partyMenu->unk_828[i].heldItem);
+            sub_0207F064(partyMenu, i, a1[i].unk_4, a1[i].unk_6);
+            sub_0207F0C8(partyMenu, i);
+            sub_0207F098(partyMenu, i);
+            sub_0207EFC4(partyMenu, i, partyMenu->unk_828[i].unk_0E_00);
+        } else {
+            sub_0207A780(partyMenu, i, a1[i].unk_0, a1[i].unk_2);
+        }
+    }
+    NARC_Delete(narc);
+}
+
+void sub_0207A4B4(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
+    NARC *narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
+    for (u8 i = 0; i < PARTY_SIZE; ++i) {
+        if (sub_02079E38(partyMenu, i) == TRUE) {
+            sub_0207A174(partyMenu, i, a1[i].unk_0, a1[i].unk_2, FALSE);
+            sub_0207D7A8(partyMenu, i);
+            sub_0207EBE4(partyMenu, i, a1[i].unk_4, a1[i].unk_6, narc);
+            sub_0207EF5C(partyMenu, i, a1[i].unk_8, a1[i].unk_A);
+            sub_0207F004(partyMenu, i, partyMenu->unk_828[i].heldItem);
+            sub_0207F064(partyMenu, i, a1[i].unk_4, a1[i].unk_6);
+            sub_0207F0C8(partyMenu, i);
+            sub_0207F098(partyMenu, i);
+            sub_0207EFC4(partyMenu, i, partyMenu->unk_828[i].unk_0E_00);
+        } else {
+            sub_0207A780(partyMenu, i, a1[i].unk_0, a1[i].unk_2);
+        }
+    }
+    NARC_Delete(narc);
+}
+
+void sub_0207A5A0(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
+    NARC *narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
+    for (u8 i = 0; i < PARTY_SIZE; ++i) {
+        if (sub_02079E38(partyMenu, i) == TRUE) {
+            sub_0207A174(partyMenu, i, a1[i].unk_0, a1[i].unk_2, FALSE);
+            sub_0207D840(partyMenu, i);
+            sub_0207EBE4(partyMenu, i, a1[i].unk_4, a1[i].unk_6, narc);
+            sub_0207EF5C(partyMenu, i, a1[i].unk_8, a1[i].unk_A);
+            sub_0207F004(partyMenu, i, partyMenu->unk_828[i].heldItem);
+            sub_0207F064(partyMenu, i, a1[i].unk_4, a1[i].unk_6);
+            sub_0207F0C8(partyMenu, i);
+            sub_0207F098(partyMenu, i);
+            sub_0207EFC4(partyMenu, i, partyMenu->unk_828[i].unk_0E_00);
+        } else {
+            sub_0207A780(partyMenu, i, a1[i].unk_0, a1[i].unk_2);
+        }
+    }
+    NARC_Delete(narc);
+}
+
+void sub_0207A68C(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
+    NARC *narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
+    for (u8 i = 0; i < PARTY_SIZE; ++i) {
+        if (sub_02079E38(partyMenu, i) == TRUE) {
+            sub_0207A174(partyMenu, i, a1[i].unk_0, a1[i].unk_2, FALSE);
+            sub_0207D8A4(partyMenu, i);
+            sub_0207D8EC(partyMenu, i);
+            sub_0207EBE4(partyMenu, i, a1[i].unk_4, a1[i].unk_6, narc);
+            sub_0207EF5C(partyMenu, i, a1[i].unk_8, a1[i].unk_A);
+            sub_0207F004(partyMenu, i, partyMenu->unk_828[i].heldItem);
+            sub_0207F064(partyMenu, i, a1[i].unk_4, a1[i].unk_6);
+            sub_0207F0C8(partyMenu, i);
+            sub_0207F098(partyMenu, i);
+            sub_0207EFC4(partyMenu, i, partyMenu->unk_828[i].unk_0E_00);
+        } else {
+            sub_0207A780(partyMenu, i, a1[i].unk_0, a1[i].unk_2);
+        }
+    }
+    NARC_Delete(narc);
 }
