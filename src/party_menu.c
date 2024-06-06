@@ -8,6 +8,7 @@
 #include "render_text.h"
 #include "sound_02004A44.h"
 #include "system.h"
+#include "unk_02005D10.h"
 #include "unk_0200FA24.h"
 #include "unk_020210A0.h"
 #include "unk_0207CB7C.h"
@@ -69,11 +70,19 @@ void sub_0207A5A0(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
 void sub_0207A68C(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
 void sub_0207A780(PartyMenuStruct *partyMenu, u8 partySlot, s16 x, s16 y);
 void sub_0207A89C(PartyMenuStruct *partyMenu);
+int sub_0207A8FC(PartyMenuStruct *partyMenu);
+void sub_0207A910(PartyMenuStruct *partyMenu, int selection, int x, int y);
+void sub_0207A988(PartyMenuStruct *partyMenu, int selection, int x, int y);
+BOOL sub_0207A99C(PartyMenuStruct *partyMenu);
+int sub_0207B5EC(u8 a0, u8 partySlot);
+u8 sub_0207AAD0(PartyMenuStruct *partyMenu, u8 *px, u8 *py, u8 direction);
+u8 sub_0207AB20(PartyMenuStruct *partyMenu, u8 *px, u8 *py, const u8 *a3);
 void sub_0207AC20(PartyMenuStruct *partyMenu);
 int sub_0207ADB8(PartyMenuStruct *partyMenu);
-void sub_0207B51C(PartyMenuStruct *partyMenu, u8 a1, int a2);
+void sub_0207B51C(PartyMenuStruct *partyMenu, u8 a1, BOOL a2);
 int sub_0207B600(PartyMenuStruct *partyMenu);
 int sub_0207B7E0(PartyMenuStruct *partyMenu);
+void sub_0207BBFC(u8 a0, s16 *px, s16 *py);
 BOOL sub_0207BC1C(PartyMenuStruct *partyMenu, int *pState);
 int sub_0207BD78(PartyMenuStruct *partyMenu);
 int sub_0207C0DC(PartyMenuStruct *partyMenu);
@@ -89,6 +98,7 @@ int sub_0207CA30(PartyMenuStruct *partyMenu);
 void sub_0207CAAC(HeapID heapId, void *a1, void *a2, void *a3);
 void sub_0207CB20(PartyMenuStruct *partyMenu);
 
+extern const u8 _021012CC[][6];
 extern const UnkStruct_02020654 _0210140C[8];
 extern const UnkStruct_02020654 _0210144C[8];
 extern const UnkStruct_02020654 _0210148C[8];
@@ -128,7 +138,7 @@ BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
     sub_0207EDD4(partyMenu);
     sub_02079D38(partyMenu);
     sub_0207A22C(partyMenu);
-    sub_0207B51C(partyMenu, partyMenu->partyMonIndex, 1);
+    sub_0207B51C(partyMenu, partyMenu->partyMonIndex, TRUE);
     if (partyMenu->args->unk_24 == 5 || partyMenu->args->unk_24 == 16) {
         if (!sub_020817C4(partyMenu->args->itemId)) {
             sub_0207DAC4(partyMenu, 33, 1);
@@ -721,13 +731,13 @@ void sub_02079CE4(PartyMenuStruct *partyMenu) {
 void sub_02079D38(PartyMenuStruct *partyMenu) {
     u8 r4 = 3;
     if (partyMenu->args->unk_25 == 2) {
-        partyMenu->unk_948 = &_0210144C;
+        partyMenu->unk_948 = _0210144C;
     } else if (partyMenu->args->unk_24 == 2 || partyMenu->args->unk_24 == 17 || partyMenu->args->unk_24 == 22 || partyMenu->args->unk_24 == 23) {
-        partyMenu->unk_948 = &_0210148C;
+        partyMenu->unk_948 = _0210148C;
     } else if (partyMenu->args->unk_24 == 21) {
-        partyMenu->unk_948 = &_021014CC;
+        partyMenu->unk_948 = _021014CC;
     } else {
-        partyMenu->unk_948 = &_0210140C;
+        partyMenu->unk_948 = _0210140C;
     }
     if (partyMenu->args->unk_24 != 2 && partyMenu->args->unk_24 != 17 && partyMenu->args->unk_24 != 23 && partyMenu->args->unk_24 != 22) {
         Set2dSpriteVisibleFlag(partyMenu->unk_680, FALSE);
@@ -1016,4 +1026,144 @@ void sub_0207A7F4(PartyMenuStruct *partyMenu, u8 partySlot) {
 
 BOOL sub_0207A880(PartyMenuStruct *partyMenu, u8 partySlot) {
     return partyMenu->args->unk_25 == 2 && (partySlot & 1);
+}
+
+void sub_0207A89C(PartyMenuStruct *partyMenu) {
+    u8 x;
+    u8 y;
+    sub_02020A24(partyMenu->unk_948, &x, &y, 0, 0, partyMenu->partyMonIndex, 4);
+    Set2dSpriteAnimSeqNo(partyMenu->unk_678, sub_0207B5EC(partyMenu->args->unk_25, partyMenu->partyMonIndex));
+    Sprite_SetPositionXY(partyMenu->unk_678, x, y);
+}
+
+int sub_0207A8FC(PartyMenuStruct *partyMenu) {
+    return sub_0207A99C(partyMenu) == TRUE ? 1 : 5;
+}
+
+void sub_0207A910(PartyMenuStruct *partyMenu, int selection, int x, int y) {
+    if (selection == 6 || selection == 7) {
+        Set2dSpriteVisibleFlag(partyMenu->unk_678, FALSE);
+    } else {
+        Set2dSpriteAnimSeqNo(partyMenu->unk_678, sub_0207B5EC(partyMenu->args->unk_25, selection));
+        Set2dSpriteVisibleFlag(partyMenu->unk_678, TRUE);
+        Sprite_SetPositionXY(partyMenu->unk_678, x, y);
+    }
+    u8 oldPartyMonIndex = partyMenu->partyMonIndex;
+    partyMenu->partyMonIndex = selection;
+    sub_0207B51C(partyMenu, oldPartyMonIndex, FALSE);
+    sub_0207B51C(partyMenu, partyMenu->partyMonIndex, TRUE);
+}
+
+void sub_0207A988(PartyMenuStruct *partyMenu, int selection, int x, int y) {
+    sub_0207A910(partyMenu, selection, x, y);
+    PlaySE(SEQ_SE_DP_SELECT);
+}
+
+BOOL sub_0207A99C(PartyMenuStruct *partyMenu) {
+    u8 newSelection;
+    u8 direction;
+    u8 x, y;
+
+    direction = DIR_MAX;
+
+    if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
+        direction = DIR_NORTH;
+    } else if (gSystem.newAndRepeatedKeys & PAD_KEY_DOWN) {
+        direction = DIR_SOUTH;
+    } else if (gSystem.newAndRepeatedKeys & PAD_KEY_LEFT) {
+        direction = DIR_WEST;
+    } else if (gSystem.newAndRepeatedKeys & PAD_KEY_RIGHT) {
+        direction = DIR_EAST;
+    }
+
+    if (direction == DIR_MAX) {
+        return FALSE;
+    }
+
+    newSelection = partyMenu->partyMonIndex;
+    if (newSelection == 6) {
+        if (direction == DIR_NORTH) {
+            newSelection = sub_0207AB20(partyMenu, &x, &y, _021012CC[(partyMenu->unk_C66 & 1) + 2]);
+        } else {
+            newSelection = sub_0207AAD0(partyMenu, &x, &y, direction);
+        }
+    } else if (newSelection == 7) {
+        if (partyMenu->args->unk_24 != 2 && partyMenu->args->unk_24 != 17 && partyMenu->args->unk_24 != 23 && partyMenu->args->unk_24 != 22 && direction == DIR_NORTH) {
+            newSelection = sub_0207AB20(partyMenu, &x, &y, _021012CC[(partyMenu->unk_C66 & 1) + 2]);
+        } else if (direction == DIR_SOUTH) {
+            newSelection = sub_0207AB20(partyMenu, &x, &y, _021012CC[partyMenu->unk_C66 & 1]);
+        } else {
+            newSelection = sub_0207AAD0(partyMenu, &x, &y, direction);
+        }
+    } else {
+        newSelection = sub_0207AAD0(partyMenu, &x, &y, direction);
+    }
+    if (newSelection != partyMenu->partyMonIndex && newSelection != 0xFF) {
+        sub_0207A988(partyMenu, newSelection, x, y);
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+u8 sub_0207AAD0(PartyMenuStruct *partyMenu, u8 *px, u8 *py, u8 direction) {
+    u8 result = partyMenu->partyMonIndex;
+    while (TRUE) {
+        result = sub_02020A24(partyMenu->unk_948, px, py, 0, 0, result, direction);
+        if (result == 6 || result == 7 || result == 0xFF) {
+            break;
+        }
+        if (sub_02079E28(partyMenu, result)) {
+            break;
+        }
+    }
+    return result;
+}
+
+u8 sub_0207AB20(PartyMenuStruct *partyMenu, u8 *px, u8 *py, const u8 *a3) {
+    u8 i = 0;
+    while (TRUE) {
+        if (i == 6) {
+            break;
+        }
+        if (sub_02079E28(partyMenu, a3[i])) {
+            sub_02020A24(partyMenu->unk_948, px, py, 0, 0, a3[i], DIR_MAX);
+            return a3[i];
+        }
+        ++i;
+    }
+    sub_02020A24(partyMenu->unk_948, px, py, 0, 0, 0, DIR_MAX);
+    return 0;
+}
+
+void sub_0207AB84(PartyMenuStruct *partyMenu, u8 partySlot) {
+    if (partySlot == 6 || partySlot == 7) {
+        Set2dSpriteVisibleFlag(partyMenu->unk_678, FALSE);
+    } else {
+        u8 x, y;
+        sub_02020A24(partyMenu->unk_948, &x, &y, 0, 0, partyMenu->partyMonIndex, DIR_MAX);
+        Set2dSpriteAnimSeqNo(partyMenu->unk_678, sub_0207B5EC(partyMenu->args->unk_25, partySlot));
+        Set2dSpriteVisibleFlag(partyMenu->unk_678, TRUE);
+        Sprite_SetPositionXY(partyMenu->unk_678, x, y);
+    }
+    u8 oldSlot = partyMenu->partyMonIndex;
+    partyMenu->partyMonIndex = partySlot;
+    sub_0207B51C(partyMenu, oldSlot, FALSE);
+    sub_0207B51C(partyMenu, partyMenu->partyMonIndex, TRUE);
+}
+
+void sub_0207AC20(PartyMenuStruct *partyMenu) {
+    s16 x, y;
+    switch (partyMenu->unk_C60) {
+    case 0:
+        break;
+    case 1:
+        sub_0207BBFC(partyMenu->unk_C61, &x, &y);
+        sub_0207F2A8(partyMenu, x, y);
+        ++partyMenu->unk_C60;
+        break;
+    case 2:
+        partyMenu->unk_C60 = 0;
+        break;
+    }
 }
