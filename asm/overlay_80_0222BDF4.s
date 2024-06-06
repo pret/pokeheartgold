@@ -8,7 +8,7 @@
 FrontierScript_ReadVarPtr: ; 0x0222BDF4
 	push {r4, lr}
 	add r4, r0, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov80_0222BE24
@@ -24,7 +24,7 @@ _0222BE0C:
 FrontierScript_ReadVar: ; 0x0222BE10
 	push {r4, lr}
 	add r4, r0, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov80_0222BE9C
@@ -190,10 +190,10 @@ FrtCmd_004: ; 0x0222BF00
 FrtCmd_005: ; 0x0222BF28
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r4, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
@@ -238,7 +238,7 @@ FrtCmd_006: ; 0x0222BF7C
 	bl FrontierScript_ReadVarPtr
 	add r4, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -314,7 +314,7 @@ FrtCmd_032: ; 0x0222BFF8
 	bl FrontierScript_ReadVar
 	add r4, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov80_0222BFE4
@@ -453,7 +453,7 @@ FrtCmd_015: ; 0x0222C0EC
 	push {r4, lr}
 	sub sp, #8
 	add r4, r0, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r2, r0, #0
 	mov r3, #0
 	add r0, sp, #4
@@ -479,7 +479,7 @@ FrtCmd_016: ; 0x0222C11C
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	mov r3, #0
 	add r1, r4, #0
 	str r3, [sp]
@@ -503,7 +503,7 @@ FrtCmd_017: ; 0x0222C14C
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r2, r0, #0
 	mov r0, #0
 	add r1, r4, #0
@@ -556,16 +556,16 @@ FrtCmd_019: ; 0x0222C1A8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r4, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r6, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r7, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	str r4, [sp]
 	add r3, r0, #0
 	str r6, [sp, #4]
@@ -630,7 +630,7 @@ FrtCmd_021: ; 0x0222C214
 	add r1, r2, #1
 	str r1, [r5, #0x1c]
 	ldrb r6, [r2]
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	str r0, [sp, #0x18]
 	ldr r1, [sp, #0x18]
 	add r0, r5, #0
@@ -677,7 +677,7 @@ FrtCmd_022: ; 0x0222C270
 	add r1, r2, #1
 	str r1, [r5, #0x1c]
 	ldrb r6, [r2]
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	str r0, [sp, #0x18]
 	ldr r1, [sp, #0x18]
 	add r0, r5, #0
@@ -710,10 +710,10 @@ FrtCmd_023: ; 0x0222C2D0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r4, [r5]
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r6, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r3, r0, #0
 	ldr r0, [r4, #0x60]
 	add r1, r6, #0
@@ -729,13 +729,13 @@ FrtCmd_024: ; 0x0222C2F4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r4, [r5]
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r6, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r7, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r3, r0, #0
 	ldr r0, [r4, #0x60]
 	add r1, r6, #0
@@ -810,7 +810,7 @@ FrtCmd_026: ; 0x0222C368
 	add r1, r2, #1
 	str r1, [r5, #0x1c]
 	ldrb r6, [r2]
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	str r0, [sp, #0x18]
 	ldr r1, [sp, #0x18]
 	add r0, r5, #0
@@ -857,7 +857,7 @@ FrtCmd_027: ; 0x0222C3C4
 	add r1, r2, #1
 	str r1, [r5, #0x1c]
 	ldrb r6, [r2]
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	str r0, [sp, #0x18]
 	ldr r1, [sp, #0x18]
 	add r0, r5, #0
@@ -890,13 +890,13 @@ FrtCmd_028: ; 0x0222C424
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r4, [r5]
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r6, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r7, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r3, r0, #0
 	ldr r0, [r4, #0x60]
 	add r1, r6, #0
@@ -944,7 +944,7 @@ FrtCmd_031: ; 0x0222C47C
 	bl FrontierSystem_GetFrontierMap
 	add r6, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	ldr r1, [r5, #0x1c]
 	add r7, r0, #0
 	add r0, r1, #1
@@ -1168,11 +1168,11 @@ _0222C632:
 	ldrb r0, [r1]
 	strb r0, [r6, #0xa]
 	add r0, r5, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	sub r0, #8
 	strh r0, [r6, #6]
 	add r0, r5, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	sub r0, #0x10
 	strh r0, [r6, #8]
 	ldr r0, [r4]
@@ -1871,7 +1871,7 @@ FrtCmd_109: ; 0x0222CBB4
 	sub sp, #8
 	add r5, r0, #0
 	ldr r4, [r5]
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	str r0, [sp, #4]
 	add r0, r5, #0
 	bl FrontierScript_ReadVar
@@ -2547,7 +2547,7 @@ FrtCmd_126: ; 0x0222D084
 	bl FrontierScript_ReadVar
 	add r7, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	ldr r1, [r5, #0x1c]
 	str r0, [sp, #8]
 	add r0, r1, #1
@@ -2913,7 +2913,7 @@ FrtCmd_060: ; 0x0222D328
 FrtCmd_061: ; 0x0222D334
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r6, r0, #0
 	add r0, r5, #0
 	bl FrontierScript_ReadVar
@@ -2934,7 +2934,7 @@ FrtCmd_061: ; 0x0222D334
 FrtCmd_062: ; 0x0222D360
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r6, r0, #0
 	add r0, r5, #0
 	bl FrontierScript_ReadVarPtr
@@ -4473,7 +4473,7 @@ _0222DF52:
 	thumb_func_start FrtCmd_150
 FrtCmd_150: ; 0x0222DF58
 	push {r3, lr}
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -4497,12 +4497,12 @@ FrtCmd_069: ; 0x0222DF64
 	bl FrontierScript_ReadVar
 	add r6, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	str r0, [sp, #0x1c]
 	add r0, r5, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r0, r5, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	ldr r0, [r5]
 	ldr r0, [r0]
 	bl Frontier_GetLaunchParam
@@ -4536,7 +4536,7 @@ FrtCmd_070: ; 0x0222DFD4
 	bl FrontierSystem_GetFrontierMap
 	add r4, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov80_0222F1D0
@@ -4554,7 +4554,7 @@ FrtCmd_071: ; 0x0222DFF4
 	bl FrontierSystem_GetFrontierMap
 	add r4, r0, #0
 	add r0, r5, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r1, sp, #0x10
 	add r6, r0, #0
 	add r0, r4, #0
@@ -4615,7 +4615,7 @@ _0222E074:
 FrtCmd_072: ; 0x0222E078
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -4633,7 +4633,7 @@ FrtCmd_072: ; 0x0222E078
 FrtCmd_073: ; 0x0222E09C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r4, r0, #0
 	add r0, r5, #0
 	bl FrontierScript_ReadVar
@@ -4654,7 +4654,7 @@ FrtCmd_073: ; 0x0222E09C
 FrtCmd_074: ; 0x0222E0C8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]

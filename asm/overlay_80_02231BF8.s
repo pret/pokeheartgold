@@ -895,7 +895,7 @@ FrtCmd_162: ; 0x022322C8
 FrtCmd_163: ; 0x022322F8
 	push {r4, lr}
 	add r4, r0, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r1, r4, #0
 	add r1, #0x78
 	strh r0, [r1]
@@ -938,7 +938,7 @@ _02232344: .word 0x00000A1A
 FrtCmd_165: ; 0x02232348
 	push {r4, lr}
 	add r4, r0, #0
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r1, r4, #0
 	add r1, #0x78
 	strh r0, [r1]

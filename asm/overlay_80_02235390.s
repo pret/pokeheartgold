@@ -60,7 +60,7 @@ _022353E2:
 	thumb_func_start FrtCmd_088
 FrtCmd_088: ; 0x022353E8
 	push {r3, lr}
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	bl PlayFanfare
 	mov r0, #0
 	pop {r3, pc}
@@ -95,7 +95,7 @@ _02235416:
 	thumb_func_start FrtCmd_090
 FrtCmd_090: ; 0x0223541C
 	push {r4, lr}
-	bl FrontierScript_ReadHalf
+	bl FrontierScript_ReadU16
 	add r4, r0, #0
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10
