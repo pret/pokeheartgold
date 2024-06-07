@@ -3,10 +3,11 @@
 
 #include "save.h"
 #include "pm_string.h"
+#include "unk_02074944.h"
 
 BOOL sub_020291A4(SaveData *saveData, int a1);
 u32 sub_02029264(void *a0);
-BOOL sub_020290FC(void *, int);
+BOOL sub_020290FC(UnkStruct_02074944 *, int);
 void sub_020291D4(SaveData *saveData, u16 *a1);
 String *sub_020290E4(u16 *a0, HeapID heapId);
 

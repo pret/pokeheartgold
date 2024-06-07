@@ -1638,9 +1638,9 @@ BOOL ScrCmd_635(ScriptContext *ctx) {
     if (r0 == 7) {
         *r5 = 255;
     } else if (r0 == 6) {
-        *r5 = partyMenu->unk_30[0];
+        *r5 = partyMenu->selectedOrder[0];
         (*r5)--;
-        *r6 = partyMenu->unk_30[1];
+        *r6 = partyMenu->selectedOrder[1];
         if (*r6 != 0) {
             (*r6)--;
         }
@@ -1661,11 +1661,11 @@ BOOL ScrCmd_639(ScriptContext *ctx) {
     if (r0 == 7) {
         *r5 = 255;
     } else if (r0 == 6) {
-        *r5 = partyMenu->unk_30[0];
+        *r5 = partyMenu->selectedOrder[0];
         (*r5)--;
-        *sp0 = partyMenu->unk_30[1];
+        *sp0 = partyMenu->selectedOrder[1];
         (*sp0)--;
-        *r7 = partyMenu->unk_30[2];
+        *r7 = partyMenu->selectedOrder[2];
         if (*r7 != 0) {
             (*r7)--;
         }
@@ -1686,11 +1686,11 @@ BOOL ScrCmd_645(ScriptContext *ctx) {
     if (r0 == 7) {
         *r5 = 255;
     } else if (r0 == 6) {
-        *r5 = partyMenu->unk_30[0];
+        *r5 = partyMenu->selectedOrder[0];
         (*r5)--;
-        *sp0 = partyMenu->unk_30[1];
+        *sp0 = partyMenu->selectedOrder[1];
         (*sp0)--;
-        *r7 = partyMenu->unk_30[2];
+        *r7 = partyMenu->selectedOrder[2];
         if (*r7 != 0) {
             (*r7)--;
         }

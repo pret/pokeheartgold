@@ -320,12 +320,12 @@ static u32 sub_0204F320(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem, HeapID
     partyMenu->fieldSystem = fieldSystem;
     partyMenu->partySlot = a0->unk05;
     for (u8 i = 0; i < 2; i++) {
-        partyMenu->unk_30[i] = a0->unk06[i];
+        partyMenu->selectedOrder[i] = a0->unk06[i];
     }
     partyMenu->unk_37 = 30;
     partyMenu->unk_36_0 = 1;
     partyMenu->unk_36_4 = 1;
-    partyMenu->unk20 = &fieldSystem->unk_10C;
+    partyMenu->unk_20 = &fieldSystem->unk_10C;
     if (a0->challengeType == 1) { // doubles
         partyMenu->unk_36_0 = 2;
         partyMenu->unk_36_4 = 2;
@@ -346,7 +346,7 @@ static u32 sub_0204F3F8(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem) {
         case 6:
             return 4;
         default:
-            MI_CpuCopy8(partyMenu->unk_30, a0->unk06, 2);
+            MI_CpuCopy8(partyMenu->selectedOrder, a0->unk06, 2);
             a0->unk05 = partyMenu->partySlot;
             FreeToHeap(partyMenu);
             *(a0->unk08) = NULL;

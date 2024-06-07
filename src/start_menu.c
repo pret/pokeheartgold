@@ -901,7 +901,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         pokemonSummaryArgs->unk11 = 1;
         pokemonSummaryArgs->partySlot = partyMenuArgs->partySlot;
         pokemonSummaryArgs->partyCount = 1;
-        pokemonSummaryArgs->unk18 = partyMenuArgs->unk2A;
+        pokemonSummaryArgs->unk18 = partyMenuArgs->unk_2A;
         pokemonSummaryArgs->unk12 = 2;
         pokemonSummaryArgs->natDexEnabled = SaveArray_IsNatDexEnabled(fieldSystem->saveData);
         pokemonSummaryArgs->unk2C = sub_02088288(fieldSystem->saveData);
@@ -926,7 +926,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         pokemonSummaryArgs->unk11 = 1;
         pokemonSummaryArgs->partySlot = partyMenuArgs->partySlot;
         pokemonSummaryArgs->partyCount = 1;
-        pokemonSummaryArgs->unk18 = partyMenuArgs->unk2A;
+        pokemonSummaryArgs->unk18 = partyMenuArgs->unk_2A;
         pokemonSummaryArgs->unk12 = 2;
         pokemonSummaryArgs->natDexEnabled = SaveArray_IsNatDexEnabled(fieldSystem->saveData);
         pokemonSummaryArgs->unk2C = sub_02088288(fieldSystem->saveData);
@@ -1070,7 +1070,7 @@ static void sub_0203CF74(PartyMenuArgs *partyMenuArgs, FieldSystem *fieldSystem,
     partyMenuArgs->fieldMoveCheckData = &startMenu->fieldMoveCheckData;
     partyMenuArgs->unk_25 = 0;
     partyMenuArgs->fieldSystem = fieldSystem;
-    partyMenuArgs->unk20 = &fieldSystem->unk_10C;
+    partyMenuArgs->unk_20 = &fieldSystem->unk_10C;
 }
 
 static BOOL Task_StartMenu_HandleReturn(TaskManager *taskManager) {
@@ -1362,8 +1362,8 @@ static BOOL sub_0203D580(TaskManager *taskManager) {
         sub_0203CF74(partyMenuArgs, fieldSystem, startMenu);
         partyMenuArgs->itemId = r7->itemId;
         partyMenuArgs->partySlot = summaryArgs->partySlot;
-        partyMenuArgs->unk2A = summaryArgs->unk18;
-        partyMenuArgs->unk2C = summaryArgs->unk16;
+        partyMenuArgs->unk_2A = summaryArgs->unk18;
+        partyMenuArgs->unk_2C = summaryArgs->unk16;
         if (r7->itemId != ITEM_NONE) {
             partyMenuArgs->unk_24 = 7;
             partyMenuArgs->unk_38 = 0;
@@ -1371,7 +1371,7 @@ static BOOL sub_0203D580(TaskManager *taskManager) {
             partyMenuArgs->unk_24 = 8;
             partyMenuArgs->unk_38 = r7->unk_2;
         }
-        partyMenuArgs->unk20 = &fieldSystem->unk_10C;
+        partyMenuArgs->unk_20 = &fieldSystem->unk_10C;
         FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, partyMenuArgs);
         FreeToHeap(startMenu->atexit_TaskEnv2);
         startMenu->atexit_TaskEnv = partyMenuArgs;

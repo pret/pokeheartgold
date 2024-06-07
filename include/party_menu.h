@@ -11,6 +11,7 @@
 #include "unk_02014DA0.h"
 #include "unk_02020654.h"
 #include "unk_0202E41C.h"
+#include "unk_02074944.h"
 #include "yes_no_prompt.h"
 
 #define FIELD_MOVE_CHECK_TREE_F                   0
@@ -58,23 +59,22 @@ typedef struct PartyMenuArgs {
     Bag *bag;
     MAILBOX *mailbox;
     Options *options;
-    UnkStruct_0202E474 *unk10;
-    void *unk_14;
+    UnkStruct_0202E474 *unk_10;
+    UnkStruct_02074944 *unk_14;
     FieldMoveCheckData *fieldMoveCheckData;
     FieldSystem *fieldSystem;
-    BOOL *unk20;
+    BOOL *unk_20;
     u8 unk_24;
     u8 unk_25;
     u8 partySlot;
     u8 selectedAction;
     u16 itemId;
-    u16 unk2A;
-    u8 unk2C;
-    u8 filler_2D[1];
+    u16 unk_2A;
+    u8 unk_2C;
+    u8 unk_2D;
     u8 contestStat;
     u8 unk_2F;
-    u8 unk_30[3];
-    u8 filler_33[3];
+    u8 selectedOrder[6];
     u8 unk_36_0:4;
     u8 unk_36_4:4;
     u8 unk_37;

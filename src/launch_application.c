@@ -172,7 +172,7 @@ static PartyMenuArgs *PartyMenu_CreateArgs(HeapID heapId, FieldSystem *fieldSyst
     partyMenu->unk_25 = a2;
     partyMenu->unk_24 = a3;
     partyMenu->fieldSystem = fieldSystem;
-    partyMenu->unk20 = &fieldSystem->unk_10C;
+    partyMenu->unk_20 = &fieldSystem->unk_10C;
     return partyMenu;
 }
 
@@ -1185,14 +1185,14 @@ PartyMenuArgs *PartyMenu_LaunchApp_Gracidea(FieldSystem *fieldSystem, HeapID hea
     args->bag = Save_Bag_Get(fieldSystem->saveData);
     args->mailbox = Save_Mailbox_Get(fieldSystem->saveData);
     args->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
-    args->unk10 = sub_020270C4(fieldSystem->saveData);
+    args->unk_10 = sub_020270C4(fieldSystem->saveData);
     args->fieldMoveCheckData = NULL;
     args->unk_25 = 0;
     args->unk_24 = 5;
     args->itemId = itemId;
     args->partySlot = 0;
     args->fieldSystem = fieldSystem;
-    args->unk20 = &fieldSystem->unk_10C;
+    args->unk_20 = &fieldSystem->unk_10C;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, args);
     return args;
 }

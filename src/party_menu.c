@@ -11,6 +11,7 @@
 #include "unk_02005D10.h"
 #include "unk_0200FA24.h"
 #include "unk_020210A0.h"
+#include "unk_020290B4.h"
 #include "unk_02066EDC.h"
 #include "unk_0207CB7C.h"
 #include "unk_0207F42C.h"
@@ -22,6 +23,7 @@
 #include "unk_02074944.h"
 #include "unk_02088288.h"
 #include "vram_transfer_manager.h"
+#include "msgdata/msg/msg_0300.h"
 
 typedef struct UnkStruct_0207A22C {
     u16 unk_0;
@@ -98,6 +100,9 @@ u8 sub_0207BCC0(u16 move);
 void sub_0207B51C(PartyMenuStruct *partyMenu, u8 selection, BOOL a2);
 u8 sub_0207B600(PartyMenuStruct *partyMenu);
 int sub_0207B7E0(PartyMenuStruct *partyMenu);
+int sub_0207BA78(PartyMenuStruct *partyMenu);
+int sub_0207BB14(PartyMenuStruct *partyMenu);
+int sub_0207BB88(PartyMenuStruct *partyMenu);
 void sub_0207BBFC(u8 a0, s16 *px, s16 *py);
 BOOL sub_0207BC1C(PartyMenuStruct *partyMenu, int *pState);
 int sub_0207BD78(PartyMenuStruct *partyMenu);
@@ -502,7 +507,7 @@ int sub_02079550(PartyMenuStruct *partyMenu) {
             sub_0207DAEC(partyMenu, -1, 1);
             partyMenu->args->selectedAction = 0;
             partyMenu->unk_C62 = 25;
-            ReadMsgDataIntoString(partyMenu->msgData, 102, partyMenu->strbuf);
+            ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00102, partyMenu->strbuf);
             return 24;
         }
     } else if (x == 3) {
@@ -1531,7 +1536,7 @@ u8 sub_0207B364(PartyMenuStruct *partyMenu, u8 selection) {
         }
     }
     for (i = 0; i < partyMenu->args->unk_36_4; ++i) {
-        if (partyMenu->args->unk_30[i] == selection + 1) {
+        if (partyMenu->args->selectedOrder[i] == selection + 1) {
             return 2;
         }
     }
@@ -1550,7 +1555,7 @@ u8 sub_0207B418(PartyMenuStruct *partyMenu, u8 selection) {
         }
     }
     for (i = 0; i < partyMenu->args->unk_36_4; ++i) {
-        if (partyMenu->args->unk_30[i] == selection + 1) {
+        if (partyMenu->args->selectedOrder[i] == selection + 1) {
             return 2;
         }
     }
@@ -1569,7 +1574,7 @@ u8 sub_0207B4A0(PartyMenuStruct *partyMenu, u8 selection) {
         }
     }
     for (i = 0; i < partyMenu->args->unk_36_4; ++i) {
-        if (partyMenu->args->unk_30[i] == selection + 1) {
+        if (partyMenu->args->selectedOrder[i] == selection + 1) {
             return 2;
         }
     }
@@ -1702,4 +1707,180 @@ u8 sub_0207B600(PartyMenuStruct *partyMenu) {
     }
 
     return result;  // UB rist
+}
+
+int sub_0207B7E0(PartyMenuStruct *partyMenu) {
+    for (u8 i = 0; i < partyMenu->args->unk_36_0; ++i) {
+        if (partyMenu->args->selectedOrder[i] == 0) {
+            switch (partyMenu->args->unk_36_4) {
+            case 2:
+                sub_0207DAEC(partyMenu, msg_0300_00103, 1);
+                break;
+            case 3:
+                sub_0207DAEC(partyMenu, msg_0300_00108, 1);
+                break;
+            case 4:
+                sub_0207DAEC(partyMenu, msg_0300_00109, 1);
+                break;
+            case 5:
+                sub_0207DAEC(partyMenu, msg_0300_00110, 1);
+                break;
+            case 6:
+                sub_0207DAEC(partyMenu, msg_0300_00111, 1);
+                break;
+            case 0:
+            case 1:
+            default:
+                sub_0207DAEC(partyMenu, msg_0300_00030, 1);
+                break;
+            }
+            partyMenu->unk_C62 = 23;
+            PlaySE(SEQ_SE_DP_CUSTOM06);
+            return 24;
+        }
+    }
+
+    if (partyMenu->args->unk_14 != NULL) {
+        switch (sub_02074A6C(partyMenu->args->unk_14, partyMenu->args->party, partyMenu->pokedex, partyMenu->args->selectedOrder)) {
+        case 0:
+            break;
+        case 1: {
+            String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00167);
+            BufferIntegerAsString(partyMenu->msgFormat, 0, sub_020290FC(partyMenu->args->unk_14, 3), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+            StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->strbuf, string);
+            String_Delete(string);
+            sub_0207DAEC(partyMenu, -1, 1);
+            partyMenu->unk_C62 = 23;
+            PlaySE(SEQ_SE_DP_CUSTOM06);
+            return 24;
+        }
+        case 2:
+            sub_0207DAEC(partyMenu, msg_0300_00165, 1);
+            partyMenu->unk_C62 = 23;
+            PlaySE(SEQ_SE_DP_CUSTOM06);
+            return 24;
+        case 3:
+            sub_0207DAEC(partyMenu, msg_0300_00166, 1);
+            partyMenu->unk_C62 = 23;
+            PlaySE(SEQ_SE_DP_CUSTOM06);
+            return 24;
+        case 4:
+            break;
+        case 5:
+            break;
+        case 6:
+            sub_0207DAEC(partyMenu, msg_0300_00168, 1);
+            partyMenu->unk_C62 = 23;
+            PlaySE(SEQ_SE_DP_CUSTOM06);
+            return 24;
+        case 7:
+            break;
+        case 8:
+            sub_0207DAEC(partyMenu, msg_0300_00191, 1);
+            partyMenu->unk_C62 = 23;
+            PlaySE(SEQ_SE_DP_CUSTOM06);
+            return 24;
+        }
+    }
+
+    if (partyMenu->args->unk_24 == 17) {
+        switch (sub_0207BA78(partyMenu)) {
+        case 0:
+            break;
+        case 1:
+            sub_0207DAEC(partyMenu, msg_0300_00165, 1);
+            partyMenu->unk_C62 = 23;
+            PlaySE(SEQ_SE_DP_CUSTOM06);
+            return 24;
+        case 2:
+            sub_0207DAEC(partyMenu, msg_0300_00166, 1);
+            partyMenu->unk_C62 = 23;
+            PlaySE(SEQ_SE_DP_CUSTOM06);
+            return 24;
+        }
+    }
+
+    if (partyMenu->args->unk_24 == 22) {
+        switch (sub_0207BB14(partyMenu)) {
+        case 0:
+            break;
+        case 1:
+            sub_0207DAEC(partyMenu, msg_0300_00187, 1);
+            partyMenu->unk_C62 = 23;
+            PlaySE(SEQ_SE_DP_CUSTOM06);
+            return 24;
+        }
+    }
+
+    if (partyMenu->args->unk_24 == 23) {
+        switch (sub_0207BB88(partyMenu)) {
+        case 0:
+            break;
+        case 1:
+            sub_0207DAEC(partyMenu, msg_0300_00165, 1);
+            partyMenu->unk_C62 = 23;
+            PlaySE(SEQ_SE_DP_CUSTOM06);
+            return 24;
+        }
+    }
+
+    partyMenu->args->selectedAction = 0;
+    return 32;
+}
+
+int sub_0207BA78(PartyMenuStruct *partyMenu) {
+    for (u8 i = 0; i < PARTY_SIZE - 1; ++i) {
+        if (partyMenu->args->selectedOrder[i] == 0) {
+            break;
+        }
+        for (u8 j = i + 1; j < PARTY_SIZE; ++j) {
+            if (partyMenu->args->selectedOrder[j] == 0) {
+                break;
+            }
+            if (partyMenu->unk_828[partyMenu->args->selectedOrder[i] - 1].species == partyMenu->unk_828[partyMenu->args->selectedOrder[j] - 1].species) {
+                return 1;
+            }
+            if (partyMenu->unk_828[partyMenu->args->selectedOrder[i] - 1].heldItem != ITEM_NONE && partyMenu->unk_828[partyMenu->args->selectedOrder[i] - 1].heldItem == partyMenu->unk_828[partyMenu->args->selectedOrder[j] - 1].heldItem) {
+                return 2;
+            }
+        }
+    }
+
+    return 0;
+}
+
+int sub_0207BB14(PartyMenuStruct *partyMenu) {
+    for (u8 i = 0; i < PARTY_SIZE - 1; ++i) {
+        if (partyMenu->args->selectedOrder[i] == 0) {
+            break;
+        }
+        for (u8 j = i + 1; j < PARTY_SIZE; ++j) {
+            if (partyMenu->args->selectedOrder[j] == 0) {
+                break;
+            }
+            if (partyMenu->unk_828[partyMenu->args->selectedOrder[i] - 1].species != partyMenu->unk_828[partyMenu->args->selectedOrder[j] - 1].species) {
+                return 1;
+            }
+        }
+    }
+
+    return 0;
+}
+
+int sub_0207BB88(PartyMenuStruct *partyMenu) {
+    for (u8 i = 0; i < PARTY_SIZE - 1; ++i) {
+        if (partyMenu->args->selectedOrder[i] == 0) {
+            break;
+        }
+        for (u8 j = i + 1; j < PARTY_SIZE; ++j) {
+            if (partyMenu->args->selectedOrder[j] == 0) {
+                break;
+            }
+            if (partyMenu->unk_828[partyMenu->args->selectedOrder[i] - 1].species == partyMenu->unk_828[partyMenu->args->selectedOrder[j] - 1].species) {
+                return 1;
+            }
+        }
+    }
+
+    return 0;
 }

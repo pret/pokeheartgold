@@ -140,7 +140,7 @@ static BOOL sub_0206B984(TaskManager *taskManager) {
         partyMenu->unk_24 = 15;
         partyMenu->options = r6->options;
         partyMenu->fieldSystem = fieldSystem;
-        partyMenu->unk20 = &(fieldSystem->unk_10C);
+        partyMenu->unk_20 = &(fieldSystem->unk_10C);
         CallApplicationAsTask(taskManager, &gOverlayTemplate_PartyMenu, partyMenu);
         r7->state = 4;
         break;

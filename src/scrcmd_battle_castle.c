@@ -206,12 +206,12 @@ static u32 sub_0204FC78(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID
     partyMenu->fieldSystem = fieldSystem;
     partyMenu->partySlot = a0->unk05;
     for (u8 i = 0; i < 3; i++) {
-        partyMenu->unk_30[i] = a0->unk06[i];
+        partyMenu->selectedOrder[i] = a0->unk06[i];
     }
     partyMenu->unk_37 = 100;
     partyMenu->unk_36_0 = 3;
     partyMenu->unk_36_4 = 3;
-    partyMenu->unk20 = &(fieldSystem->unk_10C);
+    partyMenu->unk_20 = &(fieldSystem->unk_10C);
     if (a0->challengeType == BATTLE_CASTLE_CHALLENGE_TYPE_MULTI) {
         partyMenu->unk_36_0 = 2;
         partyMenu->unk_36_4 = 2;
@@ -232,7 +232,7 @@ static u32 sub_0204FD50(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
         case 6:
             return 4;
     }
-    MI_CpuCopy8(partyMenu->unk_30, a0->unk06, sizeof(partyMenu->unk_30));
+    MI_CpuCopy8(partyMenu->selectedOrder, a0->unk06, 3);
     a0->unk05 = partyMenu->partySlot;
     FreeToHeap(partyMenu);
     *(a0->unk0c) = NULL;
