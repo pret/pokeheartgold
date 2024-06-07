@@ -120,7 +120,9 @@ typedef struct PartyMenuStruct_Sub828 {
     u16 capsule;      // 83A
     u8 unk_14;        // 83C
     u8 unk_15;        // 83D
-    u8 filler_16[0x17];
+    s16 unk_16;       // 83E
+    s16 unk_18;       // 840
+    u8 filler_1A[0x13];
     u8 active;        // 855
 } PartyMenuStruct_Sub828;
 
@@ -139,7 +141,7 @@ struct PartyMenuStruct {
     PartyMenuArgs *args; //0x654
     u8 filler_658[0x4];
     SpriteGfxHandler *unk_65C;
-    u8 filler_660[0x18];
+    Sprite *unk_660[6];
     Sprite *unk_678;
     u8 filler_67C[0x4];
     Sprite *unk_680;

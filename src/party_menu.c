@@ -95,8 +95,8 @@ u8 sub_0207B364(PartyMenuStruct *partyMenu, u8 selection);
 u8 sub_0207B418(PartyMenuStruct *partyMenu, u8 selection);
 u8 sub_0207B4A0(PartyMenuStruct *partyMenu, u8 selection);
 u8 sub_0207BCC0(u16 move);
-void sub_0207B51C(PartyMenuStruct *partyMenu, u8 a1, BOOL a2);
-int sub_0207B600(PartyMenuStruct *partyMenu);
+void sub_0207B51C(PartyMenuStruct *partyMenu, u8 selection, BOOL a2);
+u8 sub_0207B600(PartyMenuStruct *partyMenu);
 int sub_0207B7E0(PartyMenuStruct *partyMenu);
 void sub_0207BBFC(u8 a0, s16 *px, s16 *py);
 BOOL sub_0207BC1C(PartyMenuStruct *partyMenu, int *pState);
@@ -283,7 +283,7 @@ BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState) {
         *pState = sub_020794FC(partyMenu);
         break;
     case 28: {
-        int x = sub_0207B600(partyMenu);
+        u8 x = sub_0207B600(partyMenu);
         if (x == 0) {
             *pState = 29;
         } else if (x == 3) {
@@ -1267,14 +1267,14 @@ u8 sub_0207ADB8(PartyMenuStruct *partyMenu) {
         case 4:
         case 5:
             if (selection >= Party_GetCount(partyMenu->args->party)) {
-                // UB: hits "return selection;" but selection was never initialized
+                // UB: hits "return result;" but result was never initialized
                 break;
             }
             sub_0207A910(partyMenu, selection, partyMenu->unk_948[selection].unk_0, partyMenu->unk_948[selection].unk_1);
             return sub_0207AC70(partyMenu, TRUE);
         case 6:
             if (partyMenu->unk_C63_7) {
-                // UB: hits "return selection;" but selection was never initialized
+                // UB: hits "return result;" but result was never initialized
                 break;
             }
             PlaySE(SEQ_SE_GS_GEARCANCEL);
@@ -1577,4 +1577,129 @@ u8 sub_0207B4A0(PartyMenuStruct *partyMenu, u8 selection) {
         return 0;
     }
     return 1;
+}
+
+void sub_0207B51C(PartyMenuStruct *partyMenu, u8 selection, BOOL a2) {
+    u8 animSeqNo;
+    if (selection == 6) {
+        animSeqNo = Get2dSpriteCurrentAnimSeqNo(partyMenu->unk_680);
+        if (a2 == FALSE) {
+            animSeqNo &= 2;
+        } else {
+            animSeqNo = (animSeqNo & 2) + 1;
+        }
+        Set2dSpriteAnimSeqNo(partyMenu->unk_680, animSeqNo);
+    } else if (selection == 7) {
+        animSeqNo = Get2dSpriteCurrentAnimSeqNo(partyMenu->unk_684);
+        if (a2 == FALSE) {
+            animSeqNo &= 2;
+        } else {
+            animSeqNo = (animSeqNo & 2) + 1;
+        }
+        Set2dSpriteAnimSeqNo(partyMenu->unk_684, animSeqNo);
+    } else {
+        if (!a2) {
+            partyMenu->unk_828[selection].unk_16 -= 2;
+            partyMenu->unk_828[selection].unk_18 -= 2;
+            Set2dSpriteAnimSeqNo(partyMenu->unk_660[selection], 0);
+        } else {
+            partyMenu->unk_828[selection].unk_16 += 2;
+            partyMenu->unk_828[selection].unk_18 += 2;
+            Set2dSpriteAnimSeqNo(partyMenu->unk_660[selection], 1);
+        }
+        sub_0207A7F4(partyMenu, selection);
+    }
+}
+
+int sub_0207B5EC(u8 a0, u8 partySlot) {
+    return partySlot == 0 || (a0 != 0 && partySlot == 1);
+}
+
+u8 sub_0207B600(PartyMenuStruct *partyMenu) {
+    u8 result;
+    PartyMenuStruct_SubC90 *r5 = &partyMenu->unk_C90;
+
+    if (r5->unk_C == TRUE) {
+        if (!sub_0207CC24(partyMenu)) {
+            if (partyMenu->partyMonIndex != 7) {
+                Sprite_SetAnimCtrlCurrentFrame(partyMenu->unk_684, 0);
+                Set2dSpriteAnimSeqNo(partyMenu->unk_684, 0);
+            }
+            return r5->unk_8;
+        } else {
+            return 5;
+        }
+    }
+
+    u32 selection = sub_0207AD6C(partyMenu);
+    if (selection != -1) {
+        switch (selection) {
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5: {
+            if (selection >= Party_GetCount(partyMenu->args->party)) {
+                break;
+            }
+            u32 oldSelection = partyMenu->partyMonIndex;
+            partyMenu->partyMonIndex = selection;
+            PlaySE(SEQ_SE_DP_SELECT);
+            if (partyMenu->partyMonIndex == partyMenu->unk_C63_0) {
+                if (oldSelection != partyMenu->partyMonIndex) {
+                    sub_0207B51C(partyMenu, oldSelection, FALSE);
+                    sub_0207B51C(partyMenu, partyMenu->partyMonIndex, TRUE);
+                    sub_0207A910(partyMenu, selection, partyMenu->unk_948[selection].unk_0, partyMenu->unk_948[selection].unk_1);
+                }
+                sub_0207FBC8(partyMenu);
+                return 3;
+            } else {
+                if (oldSelection != partyMenu->partyMonIndex && oldSelection != partyMenu->unk_C63_0) {
+                    sub_0207B51C(partyMenu, oldSelection, FALSE);
+                }
+                if (oldSelection == partyMenu->unk_C63_0) {
+                    sub_0207B51C(partyMenu, partyMenu->unk_C63_0, FALSE);
+                }
+                if (oldSelection != partyMenu->partyMonIndex) {
+                    sub_0207B51C(partyMenu, partyMenu->partyMonIndex, TRUE);
+                }
+                sub_0207A910(partyMenu, selection, partyMenu->unk_948[selection].unk_0, partyMenu->unk_948[selection].unk_1);
+                sub_0207FC1C(partyMenu);
+                return 0;
+            }
+            break;
+        }
+        case 6:
+            PlaySE(SEQ_SE_GS_GEARCANCEL);
+            sub_0207FBC8(partyMenu);
+            sub_0207CBD0(partyMenu, 9, 3, FALSE);
+            return 5;
+        }
+    } else {
+        if (gSystem.newKeys & PAD_BUTTON_A) {
+            if (partyMenu->partyMonIndex >= 7) {
+                PlaySE(SEQ_SE_GS_GEARCANCEL);
+                sub_0207FBC8(partyMenu);
+                sub_0207CBD0(partyMenu, 9, 3, FALSE);
+                return 5;
+            } else if (partyMenu->partyMonIndex == partyMenu->unk_C63_0) {
+                PlaySE(SEQ_SE_DP_SELECT);
+                sub_0207FBC8(partyMenu);
+                return 3;
+            } else {
+                PlaySE(SEQ_SE_DP_SELECT);
+                sub_0207FC1C(partyMenu);
+                return 0;
+            }
+        } else if (gSystem.newKeys & PAD_BUTTON_B) {
+            PlaySE(SEQ_SE_GS_GEARCANCEL);
+            sub_0207FBC8(partyMenu);
+            return 3;
+        } else {
+            result = sub_0207A8FC(partyMenu);
+        }
+    }
+
+    return result;  // UB rist
 }
