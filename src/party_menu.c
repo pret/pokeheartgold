@@ -78,7 +78,9 @@ int sub_0207B5EC(u8 a0, u8 partySlot);
 u8 sub_0207AAD0(PartyMenuStruct *partyMenu, u8 *px, u8 *py, u8 direction);
 u8 sub_0207AB20(PartyMenuStruct *partyMenu, u8 *px, u8 *py, const u8 *a3);
 void sub_0207AC20(PartyMenuStruct *partyMenu);
+int sub_0207AC70(PartyMenuStruct *partyMenu, BOOL a1);
 int sub_0207ADB8(PartyMenuStruct *partyMenu);
+void sub_0207AFC4(PartyMenuStruct *partyMenu);
 void sub_0207B51C(PartyMenuStruct *partyMenu, u8 a1, BOOL a2);
 int sub_0207B600(PartyMenuStruct *partyMenu);
 int sub_0207B7E0(PartyMenuStruct *partyMenu);
@@ -97,6 +99,7 @@ int sub_0207C908(PartyMenuStruct *partyMenu);
 int sub_0207CA30(PartyMenuStruct *partyMenu);
 void sub_0207CAAC(HeapID heapId, void *a1, void *a2, void *a3);
 void sub_0207CB20(PartyMenuStruct *partyMenu);
+void sub_0207CB3C(PartyMenuStruct *partyMenu, BOOL a1);
 
 extern const u8 _021012CC[][6];
 extern const UnkStruct_02020654 _0210140C[8];
@@ -1166,4 +1169,46 @@ void sub_0207AC20(PartyMenuStruct *partyMenu) {
         partyMenu->unk_C60 = 0;
         break;
     }
+}
+
+int sub_0207AC70(PartyMenuStruct *partyMenu, BOOL a1) {
+    G2_BlendNone();
+    if (partyMenu->partyMonIndex == 6) {
+        return 4;
+    } else if (partyMenu->partyMonIndex == 7) {
+        PlaySE(SEQ_SE_GS_GEARCANCEL);
+        if (!partyMenu->unk_C63_7) {
+            sub_0207CB3C(partyMenu, a1);
+            return 3;
+        }
+    } else if (partyMenu->args->unk_24 == 3 || partyMenu->args->unk_24 == 19) {
+        PlaySE(SEQ_SE_DP_SELECT);
+        return 0;
+    } else if (partyMenu->args->unk_24 == 20 || partyMenu->args->unk_24 == 14) {
+        if (!partyMenu->unk_828[partyMenu->partyMonIndex].isEgg) {
+            PlaySE(SEQ_SE_DP_SELECT);
+            return 0;
+        } else {
+            PlaySE(SEQ_SE_DP_CUSTOM06);
+            return 5;
+        }
+    } else if (partyMenu->args->unk_24 == 15) {
+        if (!partyMenu->unk_828[partyMenu->partyMonIndex].isEgg) {
+            PlaySE(SEQ_SE_DP_SELECT);
+            sub_0207E068(partyMenu);
+            sub_0207F3A4(partyMenu, partyMenu->partyMonIndex);
+            sub_0207AFC4(partyMenu);
+            return 0;
+        } else {
+            PlaySE(SEQ_SE_DP_CUSTOM06);
+            return 5;
+        }
+    } else {
+        PlaySE(SEQ_SE_DP_SELECT);
+        sub_0207E068(partyMenu);
+        sub_0207F3A4(partyMenu, partyMenu->partyMonIndex);
+        sub_0207AFC4(partyMenu);
+        return 0;
+    }
+    return 5;
 }

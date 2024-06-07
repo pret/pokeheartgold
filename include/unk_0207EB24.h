@@ -14,5 +14,6 @@ void sub_0207F0C8(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207F098(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207F2A8(PartyMenuStruct *partyMenu, s16 x, s16 y);
 void sub_0207F334(PartyMenuStruct *partyMenu, int a1);
+void sub_0207F3A4(PartyMenuStruct *partyMenu, u8 selection);
 
 #endif //POKEHEARTGOLD_UNK_0207EB24_H
