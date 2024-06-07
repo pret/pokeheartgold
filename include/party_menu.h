@@ -59,7 +59,7 @@ typedef struct PartyMenuArgs {
     MAILBOX *mailbox;
     Options *options;
     UnkStruct_0202E474 *unk10;
-    int unk_14;
+    void *unk_14;
     FieldMoveCheckData *fieldMoveCheckData;
     FieldSystem *fieldSystem;
     BOOL *unk20;
@@ -100,7 +100,7 @@ typedef void (*PartyMenuStruct_SubC90_UnkFunc)(PartyMenuStruct *partyMenu, int *
 
 typedef struct PartyMenuStruct_SubC90 {
     u8 unk_0[0x8];
-    PartyMenuStruct_SubC90_UnkFunc unk_8;
+    int unk_8;
     int unk_C;
 } PartyMenuStruct_SubC90;
 
