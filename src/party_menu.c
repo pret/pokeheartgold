@@ -107,6 +107,7 @@ int sub_0207BB88(PartyMenuStruct *partyMenu);
 void sub_0207BBFC(u8 a0, s16 *px, s16 *py);
 BOOL sub_0207BC1C(PartyMenuStruct *partyMenu, int *pState);
 int sub_0207BD78(PartyMenuStruct *partyMenu);
+BOOL sub_0207C048(PartyMenuStruct *partyMenu, int a1, int a2);
 int sub_0207C0DC(PartyMenuStruct *partyMenu);
 int sub_0207C288(PartyMenuStruct *partyMenu);
 int sub_0207C400(PartyMenuStruct *partyMenu);
@@ -1947,6 +1948,99 @@ int sub_0207BCE8(PartyMenuStruct *partyMenu) {
     case 2:
         PlaySE(SEQ_SE_DP_CUSTOM06);
         return 30;
+    }
+
+    return 30;
+}
+
+int sub_0207BD78(PartyMenuStruct *partyMenu) {
+    PartyMenuStruct_SubC90 *r5 = &partyMenu->unk_C90;
+    if (r5->unk_C == TRUE) {
+        if (!sub_0207CC24(partyMenu)) {
+            if (partyMenu->partyMonIndex != 7) {
+                Sprite_SetAnimCtrlCurrentFrame(partyMenu->unk_684, 0);
+                Set2dSpriteAnimSeqNo(partyMenu->unk_684, 0);
+            }
+            return r5->unk_8;
+        } else {
+            return 30;
+        }
+    }
+
+    switch (partyMenu->unk_C6A) {
+    case 0: {
+        u32 selection = sub_0207AD6C(partyMenu);
+        if (selection != -1) {
+            switch (selection) {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                if (selection >= Party_GetCount(partyMenu->args->party)) {
+                    break;
+                }
+                sub_0207A910(partyMenu, selection, partyMenu->unk_948[selection].unk_0, partyMenu->unk_948[selection].unk_1);
+                return sub_0207BCE8(partyMenu);
+            case 6:
+                PlaySE(SEQ_SE_GS_GEARCANCEL);
+                sub_0207FBC8(partyMenu);
+                sub_0207CBD0(partyMenu, 9, 1, 0);
+                return 30;
+            }
+        } else {
+            if (gSystem.newKeys & PAD_BUTTON_A) {
+                if (partyMenu->partyMonIndex >= 6) {
+                    PlaySE(SEQ_SE_GS_GEARCANCEL);
+                    sub_0207FBC8(partyMenu);
+                    sub_0207CBD0(partyMenu, 9, 1, 0);
+                    return 30;
+                } else {
+                    return sub_0207BCE8(partyMenu);
+                }
+            } else if (gSystem.newKeys & PAD_BUTTON_B) {
+                PlaySE(SEQ_SE_GS_GEARCANCEL);
+                sub_0207FBC8(partyMenu);
+                return 1;
+            } else {
+                sub_0207A8FC(partyMenu);
+            }
+        }
+        break;
+    }
+    case 1:
+        ClearFrameAndWindow2(&partyMenu->unk_224, TRUE);
+        thunk_Sprite_SetPalIndex(partyMenu->unk_678, 0);
+        sub_0207DAC4(partyMenu, 37, 1);
+        partyMenu->unk_C6A = 0;
+        break;
+    case 2:
+        if (sub_0207C048(partyMenu, partyMenu->unk_C63_0, -1) == TRUE) {
+            PlaySE(SEQ_SE_DP_KAIFUKU);
+            partyMenu->unk_C6A = 3;
+            partyMenu->unk_C6C = 0;
+        }
+        break;
+    case 3:
+        if (sub_0207C048(partyMenu, partyMenu->partyMonIndex, 1) == TRUE) {
+            Pokemon *pokemon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+            String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00065);
+            BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(pokemon));
+            BufferIntegerAsString(partyMenu->msgFormat, 1, partyMenu->unk_C6C, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+            StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->strbuf, string);
+            String_Delete(string);
+            sub_0207DAEC(partyMenu, -1, 1);
+            partyMenu->unk_C6A = 4;
+            partyMenu->unk_C62 = 30;
+            return 24;
+        }
+        break;
+    case 4:
+        ClearFrameAndWindow2(&partyMenu->unk_224, TRUE);
+        thunk_Sprite_SetPalIndex(partyMenu->unk_678, 0);
+        sub_0207FBC8(partyMenu);
+        return 1;
     }
 
     return 30;
