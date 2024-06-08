@@ -23,204 +23,9 @@
 	.extern sub_0207AC70
 	.extern sub_0207AD6C
 	.extern sub_0207B51C
+	.extern sub_0207BCE8
 
 	.text
-
-	thumb_func_start sub_0207BBFC
-sub_0207BBFC: ; 0x0207BBFC
-	lsl r3, r0, #1
-	ldr r0, _0207BC14 ; =_021012B0
-	ldrb r0, [r0, r3]
-	lsl r0, r0, #3
-	add r0, #0x14
-	strh r0, [r1]
-	ldr r0, _0207BC18 ; =_021012B0 + 1
-	ldrb r0, [r0, r3]
-	lsl r0, r0, #3
-	add r0, #0x14
-	strh r0, [r2]
-	bx lr
-	.balign 4, 0
-_0207BC14: .word _021012B0
-_0207BC18: .word _021012B0 + 1
-	thumb_func_end sub_0207BBFC
-
-	thumb_func_start sub_0207BC1C
-sub_0207BC1C: ; 0x0207BC1C
-	push {r3, r4, r5, lr}
-	add r4, r1, #0
-	ldr r1, _0207BCB4 ; =0x00000824
-	add r5, r0, #0
-	ldr r1, [r5, r1]
-	bl sub_0207E778
-	add r2, r0, #0
-	mov r0, #1
-	mvn r0, r0
-	cmp r2, r0
-	beq _0207BC3C
-	add r0, r0, #1
-	cmp r2, r0
-	beq _0207BCB0
-	b _0207BCAA
-_0207BC3C:
-	add r0, r5, #0
-	mov r1, #0
-	bl sub_02079224
-	mov r0, #0x85
-	lsl r0, r0, #2
-	add r0, r5, r0
-	mov r1, #1
-	bl ClearFrameAndWindow2
-	add r0, r5, #0
-	bl sub_0207CB20
-	bl sub_0207CB90
-	ldr r0, _0207BCB8 ; =0x00000654
-	ldr r0, [r5, r0]
-	add r0, #0x24
-	ldrb r1, [r0]
-	cmp r1, #2
-	beq _0207BC76
-	cmp r1, #0x11
-	beq _0207BC76
-	add r0, r1, #0
-	add r0, #0xea
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	cmp r0, #1
-	bhi _0207BC82
-_0207BC76:
-	add r0, r5, #0
-	mov r1, #0x23
-	mov r2, #1
-	bl sub_0207DAC4
-	b _0207BC9C
-_0207BC82:
-	cmp r1, #0x15
-	bne _0207BC92
-	add r0, r5, #0
-	mov r1, #0xb8
-	mov r2, #1
-	bl sub_0207DAC4
-	b _0207BC9C
-_0207BC92:
-	add r0, r5, #0
-	mov r1, #0x1d
-	mov r2, #1
-	bl sub_0207DAC4
-_0207BC9C:
-	ldr r0, _0207BCBC ; =0x00000678
-	mov r1, #0
-	ldr r0, [r5, r0]
-	bl thunk_Sprite_SetPalIndex
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-_0207BCAA:
-	add r0, r5, #0
-	add r1, r4, #0
-	blx r2
-_0207BCB0:
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_0207BCB4: .word 0x00000824
-_0207BCB8: .word 0x00000654
-_0207BCBC: .word 0x00000678
-	thumb_func_end sub_0207BC1C
-
-	thumb_func_start sub_0207BCC0
-sub_0207BCC0: ; 0x0207BCC0
-	ldr r2, _0207BCE4 ; =_021013C4
-	mov r3, #0
-_0207BCC4:
-	lsl r1, r3, #1
-	ldrh r1, [r2, r1]
-	cmp r0, r1
-	bne _0207BCD4
-	add r3, #0x10
-	lsl r0, r3, #0x18
-	lsr r0, r0, #0x18
-	bx lr
-_0207BCD4:
-	add r1, r3, #1
-	lsl r1, r1, #0x18
-	lsr r3, r1, #0x18
-	cmp r3, #0x10
-	blo _0207BCC4
-	mov r0, #0xff
-	bx lr
-	nop
-_0207BCE4: .word _021013C4
-	thumb_func_end sub_0207BCC0
-
-	thumb_func_start sub_0207BCE8
-sub_0207BCE8: ; 0x0207BCE8
-	push {r4, lr}
-	add r4, r0, #0
-	bl sub_0207BFD8
-	cmp r0, #0
-	beq _0207BCFE
-	cmp r0, #1
-	beq _0207BD40
-	cmp r0, #2
-	beq _0207BD50
-	b _0207BD5A
-_0207BCFE:
-	ldr r0, _0207BD60 ; =0x000005EC
-	bl PlaySE
-	ldr r0, _0207BD64 ; =0x00000678
-	mov r1, #1
-	ldr r0, [r4, r0]
-	bl thunk_Sprite_SetPalIndex
-	ldr r0, _0207BD68 ; =0x00000C65
-	mov r1, #0x30
-	ldrb r2, [r4, r0]
-	mul r1, r2
-	add r3, r4, r1
-	mov r1, #0x83
-	lsl r1, r1, #4
-	ldrh r2, [r3, r1]
-	sub r1, r1, #2
-	ldrh r1, [r3, r1]
-	sub r2, r2, r1
-	add r1, r0, #3
-	ldrh r1, [r4, r1]
-	cmp r2, r1
-	bge _0207BD30
-	add r0, r0, #3
-	strh r2, [r4, r0]
-_0207BD30:
-	ldr r0, _0207BD6C ; =0x00000C6A
-	mov r1, #2
-	strh r1, [r4, r0]
-	mov r1, #0
-	add r0, r0, #2
-	strh r1, [r4, r0]
-	mov r0, #0x1e
-	pop {r4, pc}
-_0207BD40:
-	ldr r0, _0207BD70 ; =0x000005DC
-	bl PlaySE
-	ldr r0, _0207BD6C ; =0x00000C6A
-	mov r1, #1
-	strh r1, [r4, r0]
-	mov r0, #0x18
-	pop {r4, pc}
-_0207BD50:
-	ldr r0, _0207BD74 ; =0x000005F2
-	bl PlaySE
-	mov r0, #0x1e
-	pop {r4, pc}
-_0207BD5A:
-	mov r0, #0x1e
-	pop {r4, pc}
-	nop
-_0207BD60: .word 0x000005EC
-_0207BD64: .word 0x00000678
-_0207BD68: .word 0x00000C65
-_0207BD6C: .word 0x00000C6A
-_0207BD70: .word 0x000005DC
-_0207BD74: .word 0x000005F2
-	thumb_func_end sub_0207BCE8
 
 	thumb_func_start sub_0207BD78
 sub_0207BD78: ; 0x0207BD78
@@ -1960,6 +1765,7 @@ _0207CB78: .word FS_OVERLAY_ID(OVY_94)
 
 	.rodata
 
+	.global _021012B0
 _021012B0:
 	.byte 0x01, 0x03
 	.byte 0x1A, 0x03
@@ -2043,6 +1849,7 @@ _021013A8:
 	.byte 0x01, 0x00, 0x1E, 0x00, 0x00, 0x01, 0x00, 0x00
 	.word 0x00000000
 
+	.global _021013C4
 _021013C4:
 	.short MOVE_CUT
 	.short MOVE_FLY

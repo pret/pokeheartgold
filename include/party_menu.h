@@ -170,7 +170,11 @@ struct PartyMenuStruct {
     u8 unk_C64;
     u8 partyMonIndex; // 0xc65
     u8 unk_C66;
-    u8 filler_C67[0xD];
+    u8 filler_C67[1];
+    u16 unk_C68;
+    u16 unk_C6A;
+    u16 unk_C6C;
+    u8 filler_C6E[6];
     Pokedex *pokedex; // 0xc74
     int unk_C78;
     BOOL unk_C7C;

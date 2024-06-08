@@ -97,6 +97,7 @@ u8 sub_0207B364(PartyMenuStruct *partyMenu, u8 selection);
 u8 sub_0207B418(PartyMenuStruct *partyMenu, u8 selection);
 u8 sub_0207B4A0(PartyMenuStruct *partyMenu, u8 selection);
 u8 sub_0207BCC0(u16 move);
+int sub_0207BCE8(PartyMenuStruct *partyMenu);
 void sub_0207B51C(PartyMenuStruct *partyMenu, u8 selection, BOOL a2);
 u8 sub_0207B600(PartyMenuStruct *partyMenu);
 int sub_0207B7E0(PartyMenuStruct *partyMenu);
@@ -120,6 +121,7 @@ void sub_0207CAAC(HeapID heapId, void *a1, void *a2, void *a3);
 void sub_0207CB20(PartyMenuStruct *partyMenu);
 void sub_0207CB3C(PartyMenuStruct *partyMenu, BOOL a1);
 
+extern const u8 _021012B0[][2];
 extern const u8 _021012CC[][6];
 extern const UnkStruct_02020654 _0210140C[8];
 extern const UnkStruct_02020654 _0210144C[8];
@@ -127,6 +129,7 @@ extern const UnkStruct_02020654 _0210148C[8];
 extern const UnkStruct_02020654 _021014CC[8];
 extern const UnkStruct_0207A22C _0210150C[];
 extern const UnkStruct_0207A22C _02101554[];
+extern const u16 _021013C4[16];
 extern TouchscreenHitbox _02110104[];
 extern TouchscreenHitbox _02110128[][8];
 
@@ -1883,4 +1886,68 @@ int sub_0207BB88(PartyMenuStruct *partyMenu) {
     }
 
     return 0;
+}
+
+void sub_0207BBFC(u8 a0, s16 *px, s16 *py) {
+    *px = _021012B0[a0][0] * 8 + 20;
+    *py = _021012B0[a0][1] * 8 + 20;
+}
+
+BOOL sub_0207BC1C(PartyMenuStruct *partyMenu, int *pState) {
+    PartyMenuStruct_SubC90_UnkFunc r2 = sub_0207E778(partyMenu, partyMenu->unk_824);
+    switch ((int)r2) {
+    case -2:
+        sub_02079224(partyMenu, FALSE);
+        ClearFrameAndWindow2(&partyMenu->unk_214, TRUE);
+        sub_0207CB20(partyMenu);
+        sub_0207CB90();
+        if (partyMenu->args->unk_24 == 2 || partyMenu->args->unk_24 == 17 || partyMenu->args->unk_24 == 22 || partyMenu->args->unk_24 == 23) {
+            sub_0207DAC4(partyMenu, 35, 1);
+        } else if (partyMenu->args->unk_24 == 21) {
+            sub_0207DAC4(partyMenu, 184, 1);
+        } else {
+            sub_0207DAC4(partyMenu, 29, 1);
+        }
+        thunk_Sprite_SetPalIndex(partyMenu->unk_678, 0);
+        return TRUE;
+    case -1:
+        break;
+    default:
+        r2(partyMenu, pState);
+        break;
+    }
+
+    return FALSE;
+}
+
+u8 sub_0207BCC0(u16 move) {
+    for (u8 i = 0; i < 16; ++i) {
+        if (move == _021013C4[i]) {
+            return i + 16;
+        }
+    }
+    return 0xFF;
+}
+
+int sub_0207BCE8(PartyMenuStruct *partyMenu) {
+    switch (sub_0207BFD8(partyMenu)) {
+    case 0:
+        PlaySE(SEQ_SE_DP_KAIFUKU);
+        thunk_Sprite_SetPalIndex(partyMenu->unk_678, 1);
+        if (partyMenu->unk_828[partyMenu->partyMonIndex].maxHp - partyMenu->unk_828[partyMenu->partyMonIndex].hp < partyMenu->unk_C68) {
+            partyMenu->unk_C68 = partyMenu->unk_828[partyMenu->partyMonIndex].maxHp - partyMenu->unk_828[partyMenu->partyMonIndex].hp;
+        }
+        partyMenu->unk_C6A = 2;
+        partyMenu->unk_C6C = 0;
+        return 30;
+    case 1:
+        PlaySE(SEQ_SE_DP_SELECT);
+        partyMenu->unk_C6A = 1;
+        return 24;
+    case 2:
+        PlaySE(SEQ_SE_DP_CUSTOM06);
+        return 30;
+    }
+
+    return 30;
 }
