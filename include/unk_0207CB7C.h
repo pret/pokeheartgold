@@ -25,6 +25,7 @@ void sub_0207D8EC(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207D998(PartyMenuStruct *partyMenu, u8 a1);
 void sub_0207DAC4(PartyMenuStruct *partyMenu, int a1, int a2);
 void sub_0207DAD8(PartyMenuStruct *partyMenu, int a1, int a2);
+void sub_0207DB30(PartyMenuStruct *partyMenu);
 void sub_0207DBCC(PartyMenuStruct *partyMenu);
 void sub_0207D0A0(PartyMenuStruct *partyMenu, u16 move, u8 a2);
 void sub_0207E068(PartyMenuStruct *partyMenu);
