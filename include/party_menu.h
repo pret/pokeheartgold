@@ -128,7 +128,8 @@ typedef struct PartyMenuStruct_Sub828 {
 
 struct PartyMenuStruct {
     BgConfig *bgConfig;
-    u8 filler_004[0x200];
+    Window unk_004[6];
+    u8 filler_064[0x1A0];
     Window unk_204;
     Window unk_214;
     Window unk_224;
@@ -155,7 +156,7 @@ struct PartyMenuStruct {
     String *unk_7D0[20];
     LISTMENUITEM *filler_820;
     UnkStruct_0207E590 *unk_824;
-    PartyMenuStruct_Sub828 unk_828[PARTY_SIZE];
+    PartyMenuStruct_Sub828 monsDrawState[PARTY_SIZE];
     const UnkStruct_02020654 *unk_948;
     u8 filler_94C[0x308];
     int (*unk_C54)(PartyMenuStruct *);
@@ -163,16 +164,16 @@ struct PartyMenuStruct {
     int (*unk_C5C)(PartyMenuStruct *);
     u8 unk_C60;
     u8 unk_C61;
-    u8 unk_C62;
-    u8 unk_C63_0:6;
+    u8 afterTextPrinterState;
+    u8 softboiledDonorSlot:6;
     u8 unk_C63_6:1;
     u8 unk_C63_7:1;
-    u8 unk_C64;
+    u8 textPrinterId;
     u8 partyMonIndex; // 0xc65
     u8 unk_C66;
     u8 filler_C67[1];
     u16 unk_C68;
-    u16 unk_C6A;
+    u16 subtaskState;
     u16 unk_C6C;
     u8 filler_C6E[6];
     Pokedex *pokedex; // 0xc74
