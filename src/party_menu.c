@@ -145,7 +145,7 @@ BOOL sub_0207BC1C(PartyMenuStruct *partyMenu, int *pState);
 int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu);
 int PartyMenu_SoftboiledTargetCheck(PartyMenuStruct *partyMenu);
 BOOL PartyMenu_SoftboiledHPTransferStep(PartyMenuStruct *partyMenu, u8 partySlot, s8 delta);
-int sub_0207C0DC(PartyMenuStruct *partyMenu);
+u8 sub_0207C0DC(PartyMenuStruct *partyMenu);
 int sub_0207C288(PartyMenuStruct *partyMenu);
 int sub_0207C400(PartyMenuStruct *partyMenu);
 int sub_0207C6BC(PartyMenuStruct *partyMenu);
@@ -458,7 +458,7 @@ int sub_02079308(PartyMenuStruct *partyMenu) {
 }
 
 int sub_020793C0(PartyMenuStruct *partyMenu) {
-    int x = sub_0207C0DC(partyMenu);
+    u8 x = sub_0207C0DC(partyMenu);
     if (x == 0 || x == 2) {
         thunk_Sprite_SetPalIndex(partyMenu->unk_678, 1);
         return sub_0207C288(partyMenu);
@@ -471,7 +471,7 @@ int sub_020793C0(PartyMenuStruct *partyMenu) {
 }
 
 int sub_02079400(PartyMenuStruct *partyMenu) {
-    int x = sub_0207C0DC(partyMenu);
+    u8 x = sub_0207C0DC(partyMenu);
     if (x == 0 || x == 2) {
         thunk_Sprite_SetPalIndex(partyMenu->unk_678, 1);
         return sub_0207C400(partyMenu);
@@ -539,7 +539,7 @@ int sub_020794FC(PartyMenuStruct *partyMenu) {
 }
 
 int sub_02079550(PartyMenuStruct *partyMenu) {
-    int x = sub_0207C0DC(partyMenu);
+    u8 x = sub_0207C0DC(partyMenu);
     if (x == 0 || x == 2) {
         thunk_Sprite_SetPalIndex(partyMenu->unk_678, 1);
         if (partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg != 1) {
@@ -2112,4 +2112,78 @@ BOOL PartyMenu_SoftboiledHPTransferStep(PartyMenuStruct *partyMenu, u8 partySlot
     }
 
     return FALSE;
+}
+
+u8 sub_0207C0DC(PartyMenuStruct *partyMenu) {
+    PartyMenuStruct_SubC90 *r5 = &partyMenu->unk_C90;
+    if (r5->unk_C == TRUE) {
+        if (sub_0207CC24(partyMenu) == FALSE) {
+            return r5->unk_8;
+        } else {
+            return 5;
+        }
+    }
+
+    u32 selection = sub_0207AD6C(partyMenu);
+    if (selection != -1) {
+        switch (selection) {
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+            if (selection < Party_GetCount(partyMenu->args->party)) {
+                sub_0207A910(partyMenu, selection, partyMenu->unk_948[selection].unk_0, partyMenu->unk_948[selection].unk_1);
+                partyMenu->partyMonIndex = selection;
+                if (!partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg) {
+                    PlaySE(SEQ_SE_DP_SELECT);
+                    return 0;
+                } else {
+                    PlaySE(SEQ_SE_DP_CUSTOM06);
+                    return 5;
+                }
+            }
+            break;
+        case 6:
+            if (!partyMenu->unk_C63_7) {
+                PlaySE(SEQ_SE_GS_GEARCANCEL);
+                sub_0207A910(partyMenu, 7, partyMenu->unk_948[7].unk_0, partyMenu->unk_948[7].unk_1);
+                sub_0207CBD0(partyMenu, 9, 3, 1);
+                return 5;
+            }
+        }
+    } else if (gSystem.newKeys & PAD_BUTTON_A) {
+        if (partyMenu->partyMonIndex == 7) {
+            if (!partyMenu->unk_C63_7) {
+                PlaySE(SEQ_SE_GS_GEARCANCEL);
+                sub_0207CBD0(partyMenu, 9, 3, 0);
+                return 5;
+            }
+        } else {
+            if (!partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg) {
+                PlaySE(SEQ_SE_DP_SELECT);
+                return 0;
+            } else {
+                PlaySE(SEQ_SE_DP_CUSTOM06);
+            }
+        }
+        return 5;
+    }
+    if (gSystem.newKeys & PAD_BUTTON_B) {
+        if (!partyMenu->unk_C63_7) {
+            PlaySE(SEQ_SE_GS_GEARCANCEL);
+            if (partyMenu->partyMonIndex == 7) {
+                sub_0207CBD0(partyMenu, 9, 3, 0);
+            } else {
+                sub_0207A910(partyMenu, 7, partyMenu->unk_948[7].unk_0, partyMenu->unk_948[7].unk_1);
+                sub_0207CBD0(partyMenu, 9, 3, 1);
+            }
+            return 5;
+        } else {
+            return 5;
+        }
+    }
+
+    return sub_0207A8FC(partyMenu);
 }
