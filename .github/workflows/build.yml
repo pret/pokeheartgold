@@ -13,94 +13,122 @@ env:
   CALCROM_DISCORD_WEBHOOK_AVATAR_URL: "https://i.imgur.com/38BQHdd.png"
   CALCROM_DISCORD_WEBHOOK_USERNAME: OK
   CALCROM_WEBHOOK_URL: ${{ secrets.WEBHOOKURL }}
-  COMPARE: 1
 
 jobs:
-  build:
+  build-heartgold:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Update and Install Software
-        run: |
-          sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
-          sudo apt update
-          sudo ACCEPT_EULA=Y apt -y --fix-missing --allow-downgrades upgrade
-          sudo apt -y --allow-downgrades install g++-10-multilib linux-libc-dev binutils-arm-none-eabi p7zip-full pkg-config libpugixml-dev ppa-purge
-          sudo ppa-purge -y ppa:ubuntu-toolchain-r/test || true
-          sudo dpkg --add-architecture i386
-          sudo mkdir -pm755 /etc/apt/keyrings
-          sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-          sudo add-apt-repository ppa:cybermax-dexter/sdl2-backport
-          sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/$(lsb_release -cs)/winehq-$(lsb_release -cs).sources
-          sudo apt update
-          sudo apt -y --allow-downgrades install --install-recommends winehq-stable
-
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Setup Repo
-        run: |
-          mkdir -p ~/download
-          cd ~/download
-          wget https://github.com/pret/pokeheartgold/raw/workflows/assets/mwccarm.zip
-          wget https://github.com/pret/pokeheartgold/raw/workflows/assets/NitroSDK-3_2-060901.7z
-          unzip mwccarm.zip
-          mv mwccarm $GITHUB_WORKSPACE/tools
-          7z x NitroSDK-3_2-060901.7z
-          mv NitroSDK-3_2-060901/tools/bin $GITHUB_WORKSPACE/tools
-          mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM7-TS.lcf.template $GITHUB_WORKSPACE/sub/
-          mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM9-TS.lcf.template $GITHUB_WORKSPACE/
-          mv NitroSDK-3_2-060901/include/nitro/specfiles/mwldarm.response.template $GITHUB_WORKSPACE/
-        working-directory: ~
-
-      - name: Set Swap Space
-        uses: pierotofy/set-swap-space@master
-        with:
-          swap-size-gb: 19
-
-      - name: Build HeartGold
+      - name: Build ROM
         env:
           GAME_VERSION: HEARTGOLD
           GAME_LANGUAGE: ENGLISH
           GAME_REVISION: 0
-        run: make -j${nproc}
+          NONMATCHING: 0
+          COMPARE: 1
+          BUILD_OUT: build/heartgold.us/
+        uses: ./.github/workflows/build-rom
 
-      - name: Build SoulSilver
+  build-soulsilver:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Build ROM
         env:
           GAME_VERSION: SOULSILVER
           GAME_LANGUAGE: ENGLISH
           GAME_REVISION: 0
-        run: make -j${nproc}
+          NONMATCHING: 0
+          COMPARE: 1
+          BUILD_OUT: build/soulsilver.us/
+        uses: ./.github/workflows/build-rom
+
+  build-nonmatching-heartgold:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Build ROM
+        env:
+          GAME_VERSION: HEARTGOLD
+          GAME_LANGUAGE: ENGLISH
+          GAME_REVISION: 0
+          NONMATCHING: 1
+          COMPARE: 0
+        uses: ./.github/workflows/build-rom
+
+  build-nonmatching-soulsilver:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Build ROM
+        env:
+          GAME_VERSION: SOULSILVER
+          GAME_LANGUAGE: ENGLISH
+          GAME_REVISION: 0
+          NONMATCHING: 1
+          COMPARE: 0
+        uses: ./.github/workflows/build-rom
+
+  post-merge:
+    runs-on: ubuntu-22.04
+    if: |
+      always() &&
+      (github.event_name == 'push') &&
+      contains(join(needs.*.result, ','), 'success')
+    needs: [build-heartgold, build-soulsilver, build-nonmatching-heartgold, build-nonmatching-soulsilver]
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Download HeartGold build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: HEARTGOLD-build
+
+      - name: Download SoulSilver build/ artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: SOULSILVER-build
+
+      - name: Extract build artifacts
+        run: |
+          mkdir HEARTGOLD_build/
+          mkdir SOULSILVER_build/
+          mkdir -p build/heartgold.us/
+          mkdir -p build/soulsilver.us/
+          mkdir -p sub/build/
+          tar -xzvhf HEARTGOLD_build.tar.gz -C HEARTGOLD_build/
+          tar -xzvhf SOULSILVER_build.tar.gz -C SOULSILVER_build/
+          cp -r HEARTGOLD_build/build/heartgold.us/ build/
+          cp -r SOULSILVER_build/build/soulsilver.us/ build/
+          cp -r HEARTGOLD_build/sub/build/ sub/
 
       - name: Webhook
-        if: ${{ github.event_name == 'push' }}
         run: |
           sudo chmod 755 $GITHUB_WORKSPACE/.github/calcrom/webhook.sh
           $GITHUB_WORKSPACE/.github/calcrom/webhook.sh pokeheartgold "$CALCROM_WEBHOOK_URL"
         continue-on-error: true
 
-      - name: Post error archive
-        if: failure()
-        continue-on-error: true
-        run: find . -maxdepth 2 -type d \( -name build -or -name files \) -exec tar -czvhf failure.tar.gz {} +
-
-      - name: Post error upload
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: pokeheartgold-failure-${{ github.run_id }}
-          path: failure.tar.gz
-          retention-days: 1
-
       - name: Checkout xMAP
-        if: ${{ github.event_name == 'push' }}
         uses: actions/checkout@v4
         with:
           path: 'xmap'
           ref: 'xmap'
 
       - name: Move xMAP
-        if: ${{ github.event_name == 'push' }}
         run: |
           mkdir -p xmap
           cp build/heartgold.us/*.xMAP xmap/heartgoldus.xMAP
@@ -108,10 +136,8 @@ jobs:
           echo "XMAP_COMMIT_MSG=$( git log --format=%s ${GITHUB_SHA} )" >> $GITHUB_ENV
 
       - name: Update xMAP
-        if: ${{ github.event_name == 'push' }}
         uses: EndBug/add-and-commit@v9
         with:
           cwd: "./xmap"
           add: "*.xMAP"
           message: ${{ env.XMAP_COMMIT_MSG }}
-
