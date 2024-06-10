@@ -2304,3 +2304,31 @@ int sub_0207C6BC(PartyMenuStruct *partyMenu) {
         return PARTY_MENU_STATE_11;
     }
 }
+
+int sub_0207C6DC(PartyMenuStruct *partyMenu) {
+    if (TextPrinterCheckActive(partyMenu->textPrinterId) == FALSE) {
+        ClearFrameAndWindow2(&partyMenu->unk_224, TRUE);
+        sub_0207CB54(partyMenu);
+        return PARTY_MENU_STATE_13;
+    } else {
+        return PARTY_MENU_STATE_12;
+    }
+}
+
+int sub_0207C70C(PartyMenuStruct *partyMenu) {
+    if (PartyMenu_AnimateIconFormChange(partyMenu) == TRUE) {
+        sub_0207CB6C(partyMenu);
+        return PARTY_MENU_STATE_11;
+    } else {
+        return PARTY_MENU_STATE_13;
+    }
+}
+
+int sub_0207C728(PartyMenuStruct *partyMenu) {
+    if (TextPrinterCheckActive(partyMenu->textPrinterId) == FALSE) {
+        sub_0207DBCC(partyMenu);
+        return PARTY_MENU_STATE_10;
+    } else {
+        return PARTY_MENU_STATE_9;
+    }
+}

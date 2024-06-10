@@ -30,68 +30,6 @@
 
 	.text
 
-	thumb_func_start sub_0207C6DC
-sub_0207C6DC: ; 0x0207C6DC
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, _0207C708 ; =0x00000C64
-	ldrb r0, [r4, r0]
-	bl TextPrinterCheckActive
-	cmp r0, #0
-	bne _0207C702
-	mov r0, #0x89
-	lsl r0, r0, #2
-	add r0, r4, r0
-	mov r1, #1
-	bl ClearFrameAndWindow2
-	add r0, r4, #0
-	bl sub_0207CB54
-	mov r0, #0xd
-	pop {r4, pc}
-_0207C702:
-	mov r0, #0xc
-	pop {r4, pc}
-	nop
-_0207C708: .word 0x00000C64
-	thumb_func_end sub_0207C6DC
-
-	thumb_func_start sub_0207C70C
-sub_0207C70C: ; 0x0207C70C
-	push {r4, lr}
-	add r4, r0, #0
-	bl PartyMenu_AnimateIconFormChange
-	cmp r0, #1
-	bne _0207C722
-	add r0, r4, #0
-	bl sub_0207CB6C
-	mov r0, #0xb
-	pop {r4, pc}
-_0207C722:
-	mov r0, #0xd
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end sub_0207C70C
-
-	thumb_func_start sub_0207C728
-sub_0207C728: ; 0x0207C728
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, _0207C748 ; =0x00000C64
-	ldrb r0, [r4, r0]
-	bl TextPrinterCheckActive
-	cmp r0, #0
-	bne _0207C742
-	add r0, r4, #0
-	bl sub_0207DBCC
-	mov r0, #0xa
-	pop {r4, pc}
-_0207C742:
-	mov r0, #9
-	pop {r4, pc}
-	nop
-_0207C748: .word 0x00000C64
-	thumb_func_end sub_0207C728
-
 	thumb_func_start sub_0207C74C
 sub_0207C74C: ; 0x0207C74C
 	push {r3, r4, r5, r6, r7, lr}
