@@ -2332,3 +2332,47 @@ int sub_0207C728(PartyMenuStruct *partyMenu) {
         return PARTY_MENU_STATE_9;
     }
 }
+
+int sub_0207C74C(PartyMenuStruct *partyMenu) {
+    int result;
+    switch (YesNoPrompt_HandleInput(partyMenu->yesNoPrompt)) {
+    case YESNORESPONSE_YES: {
+        YesNoPrompt_Destroy(partyMenu->yesNoPrompt);
+        sub_0207CB90();
+        Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+        int newItemId = partyMenu->args->itemId;
+        int oldItemId = partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem;
+        s32 giratinaResult;
+        result = sub_0207C5D4(partyMenu, mon, &giratinaResult);
+        if (!Bag_AddItem(partyMenu->args->bag, oldItemId, 1, HEAP_ID_PARTY_MENU)) {
+            sub_0207C658(partyMenu, mon, newItemId, oldItemId);
+            ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00084, partyMenu->strbuf);
+            result = PARTY_MENU_STATE_11;
+        } else if (ItemIdIsMail(partyMenu->args->itemId) == TRUE) {
+            Bag_TakeItem(partyMenu->args->bag, oldItemId, 1, HEAP_ID_PARTY_MENU);
+            sub_0207C658(partyMenu, mon, newItemId, oldItemId);
+            partyMenu->args->selectedAction = 6;
+            return PARTY_MENU_STATE_32;
+        } else {
+            ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00085, partyMenu->unk_7CC);
+            BufferItemName(partyMenu->msgFormat, 1, oldItemId);
+            BufferItemName(partyMenu->msgFormat, 2, newItemId);
+            StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->strbuf, partyMenu->unk_7CC);
+            if (newItemId != ITEM_GRISEOUS_ORB && oldItemId == ITEM_GRISEOUS_ORB && giratinaResult != -1) {
+                result = PARTY_MENU_STATE_12;
+            } else if (newItemId == ITEM_GRISEOUS_ORB && oldItemId == ITEM_GRISEOUS_ORB) {
+                result = PARTY_MENU_STATE_11;
+            }
+        }
+        FillWindowPixelBuffer(&partyMenu->unk_224, 15);
+        sub_0207DB30(partyMenu);
+        return result;
+    }
+    case YESNORESPONSE_NO:
+        YesNoPrompt_Destroy(partyMenu->yesNoPrompt);
+        sub_0207CB90();
+        return sub_0207C8B4(partyMenu);
+    }
+
+    return PARTY_MENU_STATE_10;
+}
