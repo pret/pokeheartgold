@@ -13,6 +13,5 @@ BOOL sub_0207FD6C(PartyMenuStruct *partyMenu);
 int sub_02080610(PartyMenuStruct *partyMenu);
 int sub_020807AC(PartyMenuStruct *partyMenu);
 int sub_02080B74(PartyMenuStruct *partyMenu);
-void sub_0207DAEC(PartyMenuStruct *partyMenu, int a1, int a2);
 
 #endif //GUARD_POKEHEARTGOLD_UNK_0207F42C_H

@@ -8,6 +8,7 @@
 #include "scrcmd.h"
 #include "unk_02005D10.h"
 #include "unk_02014DA0.h"
+#include "unk_0207CB7C.h"
 #include "unk_0207EB24.h"
 #include "party_menu.h"
 #include "unk_0207F42C.h"
@@ -113,7 +114,7 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct* unkPtr) {
         BufferBoxMonNickname(unkPtr->msgFormat, 0, Mon_GetBoxMon(mon));
         StringExpandPlaceholders(unkPtr->msgFormat, unkPtr->strbuf, str);
         String_Delete(str);
-        sub_0207DAEC(unkPtr, -1, 1);
+        sub_0207DAEC(unkPtr, -1, TRUE);
         work->state++;
         break;
     }

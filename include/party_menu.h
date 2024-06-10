@@ -191,7 +191,7 @@ struct PartyMenuStruct {
     String *strbuf; //0x7c8
     String *unk_7CC;
     String *unk_7D0[20];
-    LISTMENUITEM *filler_820;
+    LISTMENUITEM *unk_820;
     UnkStruct_0207E590 *unk_824;
     PartyMenuStruct_Sub828 monsDrawState[PARTY_SIZE];
     const UnkStruct_02020654 *unk_948;
