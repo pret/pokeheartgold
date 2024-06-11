@@ -23,7 +23,7 @@ typedef struct IconFormChangeData  {
     int species;
     int fileId;
     int partyMonIndex; //same information as B's unkc65
-    ParticleSystem* particleSystem;
+    SPLEmitter* particleSystem;
 } IconFormChangeData;
 
 typedef struct PartyMenuStruct {
