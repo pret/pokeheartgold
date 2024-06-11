@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_D02R0101_gsrivel",
-      "ovid": "SPRITE_GSRIVEL",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSRIVEL",
+      "movement": 16,
       "type": 0,
       "flag": "FLAG_UNK_25C",
       "scr": 0,

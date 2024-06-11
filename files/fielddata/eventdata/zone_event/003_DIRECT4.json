@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_DIRECT4_pcwoman3",
-      "ovid": "SPRITE_PCWOMAN3",
-      "mvt": 16,
+      "sprite_id": "SPRITE_PCWOMAN3",
+      "movement": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_colosseum_pcwoman3",

@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_D27R0101_middlewoman1_2",
-      "ovid": "SPRITE_MIDDLEWOMAN1_2",
-      "mvt": 2,
+      "sprite_id": "SPRITE_MIDDLEWOMAN1_2",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D27R0101_001 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_D27R0101_seaman_2",
-      "ovid": "SPRITE_SEAMAN_2",
-      "mvt": 2,
+      "sprite_id": "SPRITE_SEAMAN_2",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D27R0101_000 + 1",

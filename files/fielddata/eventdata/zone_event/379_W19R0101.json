@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_W19R0101_counterm",
-      "ovid": "SPRITE_COUNTERM",
-      "mvt": 0,
+      "sprite_id": "SPRITE_COUNTERM",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_W19R0101_000 + 1",

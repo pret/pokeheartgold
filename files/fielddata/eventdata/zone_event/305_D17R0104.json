@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_EVERYWHERE_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D17R0104_ESCAPE_ROPE",
       "scr": "std_itemball_d17r0104_escape_rope",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_EVERYWHERE_monstarball_2",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D17R0104_ULTRA_BALL",
       "scr": "std_itemball_d17r0104_ultra_ball",
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_EVERYWHERE_monstarball_3",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D17R0104_PP_UP",
       "scr": "std_itemball_d17r0104_pp_up",

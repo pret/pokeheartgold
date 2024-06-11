@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_D26R0102_rock",
-      "ovid": "SPRITE_ROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_ROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_field_strength",
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_D26R0102_rocketm",
-      "ovid": "SPRITE_ROCKETM",
-      "mvt": 15,
+      "sprite_id": "SPRITE_ROCKETM",
+      "movement": 15,
       "type": 1,
       "flag": "FLAG_UNK_1A9",
       "scr": "std_trainer(TRAINER_TEAM_ROCKET_GRUNT_2)",
@@ -55,8 +55,8 @@
     },
     {
       "id": "obj_D26R0102_rocketm_2",
-      "ovid": "SPRITE_ROCKETM",
-      "mvt": 17,
+      "sprite_id": "SPRITE_ROCKETM",
+      "movement": 17,
       "type": 1,
       "flag": "FLAG_UNK_1A9",
       "scr": "std_trainer(TRAINER_TEAM_ROCKET_GRUNT)",
@@ -72,8 +72,8 @@
     },
     {
       "id": "obj_D26R0102_rocketw",
-      "ovid": "SPRITE_ROCKETW",
-      "mvt": 16,
+      "sprite_id": "SPRITE_ROCKETW",
+      "movement": 16,
       "type": 1,
       "flag": "FLAG_UNK_1A9",
       "scr": "std_trainer(TRAINER_TEAM_ROCKET_F_GRUNT)",
@@ -89,8 +89,8 @@
     },
     {
       "id": "obj_D26R0102_rkanbum3",
-      "ovid": "SPRITE_RKANBUM3",
-      "mvt": 15,
+      "sprite_id": "SPRITE_RKANBUM3",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_UNK_1A9",
       "scr": "_EV_scr_seq_D26R0102_002 + 1",
@@ -106,8 +106,8 @@
     },
     {
       "id": "obj_D26R0102_yadon",
-      "ovid": "SPRITE_YADON",
-      "mvt": 15,
+      "sprite_id": "SPRITE_YADON",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_UNK_1D5",
       "scr": "_EV_scr_seq_D26R0102_001 + 1",
@@ -123,8 +123,8 @@
     },
     {
       "id": "obj_D26R0102_yadon_2",
-      "ovid": "SPRITE_YADON",
-      "mvt": 15,
+      "sprite_id": "SPRITE_YADON",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_UNK_1D5",
       "scr": "_EV_scr_seq_D26R0102_000 + 1",
@@ -140,8 +140,8 @@
     },
     {
       "id": "obj_D26R0102_gantetsu",
-      "ovid": "SPRITE_GANTETSU",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GANTETSU",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_UNK_1AA",
       "scr": 0,
@@ -157,8 +157,8 @@
     },
     {
       "id": "obj_D26R0102_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D26R0102_SUPER_POTION",
       "scr": "std_itemball_d26r0102_super_potion",

@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_D24R0202_babyboy1_12",
-      "ovid": "SPRITE_BABYBOY1_12",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BABYBOY1_12",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_OPENED_ALPH_ESCAPE_ROPE_SECRET_ROOM",
       "scr": "_EV_scr_seq_D24R0202_001 + 1",
@@ -30,8 +30,8 @@
     },
     {
       "id": "obj_D24R0202_babyboy1_13",
-      "ovid": "SPRITE_BABYBOY1_13",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BABYBOY1_13",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_UNK_21C",
       "scr": 0,
@@ -47,8 +47,8 @@
     },
     {
       "id": "obj_D24R0202_gswoman6",
-      "ovid": "SPRITE_GSWOMAN6",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSWOMAN6",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D24R0202_003 + 1",

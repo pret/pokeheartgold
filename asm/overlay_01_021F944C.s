@@ -115,7 +115,7 @@ ov01_021F9510: ; 0x021F9510
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -196,7 +196,7 @@ ov01_021F95A8: ; 0x021F95A8
 	cmp r0, #0
 	beq _021F95C8
 	add r0, r5, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -493,7 +493,7 @@ ov01_021F97BC: ; 0x021F97BC
 	add r7, r0, #0
 	add r5, r1, #0
 	add r6, r2, #0
-	bl MapObjectManager_GetCount
+	bl MapObjectManager_GetObjectCount
 	add r4, r0, #0
 	add r0, r7, #0
 	bl sub_0205F1AC
@@ -507,7 +507,7 @@ _021F97D4:
 	cmp r0, #1
 	bne _021F97F4
 	ldr r0, [sp]
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	cmp r0, r7
 	beq _021F97F4
 	cmp r0, r6
@@ -1605,7 +1605,7 @@ ov01_021F9FCC: ; 0x021F9FCC
 	add r2, sp, #4
 	mov r3, #1
 	add r6, r0, #0
-	bl sub_0205EEF4
+	bl MapObjectManager_GetNextObjectWithFlagFromIndex
 	cmp r0, #1
 	bne _021FA016
 	add r7, sp, #0
@@ -1617,7 +1617,7 @@ _021F9FEC:
 	beq _021FA006
 _021F9FF6:
 	ldr r0, [sp]
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	cmp r0, r5
 	bne _021FA006
 	add sp, #8
@@ -1628,7 +1628,7 @@ _021FA006:
 	add r1, r7, #0
 	add r2, sp, #4
 	mov r3, #1
-	bl sub_0205EEF4
+	bl MapObjectManager_GetNextObjectWithFlagFromIndex
 	cmp r0, #1
 	beq _021F9FEC
 _021FA016:
@@ -1650,7 +1650,7 @@ ov01_021FA01C: ; 0x021FA01C
 	add r2, sp, #4
 	mov r3, #1
 	add r7, r0, #0
-	bl sub_0205EEF4
+	bl MapObjectManager_GetNextObjectWithFlagFromIndex
 	cmp r0, #1
 	bne _021FA088
 _021FA03A:
@@ -1661,7 +1661,7 @@ _021FA03A:
 	beq _021FA078
 _021FA044:
 	ldr r0, [sp]
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	add r4, r0, #0
 	ldr r0, _021FA090 ; =0x0000FFFF
 	cmp r4, r0
@@ -1688,7 +1688,7 @@ _021FA078:
 	add r1, sp, #0
 	add r2, sp, #4
 	mov r3, #1
-	bl sub_0205EEF4
+	bl MapObjectManager_GetNextObjectWithFlagFromIndex
 	cmp r0, #1
 	beq _021FA03A
 _021FA088:
@@ -1712,7 +1712,7 @@ ov01_021FA094: ; 0x021FA094
 	add r2, sp, #4
 	mov r3, #1
 	add r7, r0, #0
-	bl sub_0205EEF4
+	bl MapObjectManager_GetNextObjectWithFlagFromIndex
 	cmp r0, #1
 	bne _021FA0FE
 _021FA0B2:
@@ -1733,7 +1733,7 @@ _021FA0BC:
 	cmp r0, #1
 	bne _021FA0EE
 	ldr r0, [sp]
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	ldr r1, _021FA104 ; =0x0000FFFF
 	add r4, r0, #0
 	cmp r4, r1
@@ -1749,7 +1749,7 @@ _021FA0EE:
 	add r1, sp, #0
 	add r2, sp, #4
 	mov r3, #1
-	bl sub_0205EEF4
+	bl MapObjectManager_GetNextObjectWithFlagFromIndex
 	cmp r0, #1
 	beq _021FA0B2
 _021FA0FE:
@@ -2095,7 +2095,7 @@ ov01_021FA2D4: ; 0x021FA2D4
 	push {r3, lr}
 	mov r1, #1
 	lsl r1, r1, #0x16
-	bl MapObject_GetFlagsMask
+	bl MapObject_GetFlagsBits
 	cmp r0, #0
 	beq _021FA2E6
 	mov r0, #1
@@ -2934,7 +2934,7 @@ _021FA882:
 	str r4, [r5, r0]
 	add r0, r0, #4
 	ldr r0, [r5, r0]
-	bl MapObjectManager_GetHeapID
+	bl MapObjectManager_GetPriority
 	add r6, r0, #0
 	ldr r0, _021FA8E8 ; =ov01_021FA564
 	add r1, r5, #0
@@ -3006,7 +3006,7 @@ ov01_021FA930: ; 0x021FA930
 	bne _021FA972
 _021FA948:
 	add r0, r5, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	add r6, r0, #0
 	add r0, r5, #0
 	bl MapObject_GetManager
@@ -3067,7 +3067,7 @@ _021FA9CE:
 	str r0, [sp, #0x1c]
 _021FA9D2:
 	add r0, r6, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	str r0, [sp, #0x18]
 	bl ov01_021FA28C
 	ldr r4, _021FAB90 ; =ov01_02207294
@@ -3245,7 +3245,7 @@ _021FAB4A:
 	mov r0, #0x41
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	bl MapObjectManager_GetHeapID
+	bl MapObjectManager_GetPriority
 	ldr r0, _021FAB98 ; =ov01_021FAB9C
 	add r1, r5, #0
 	mov r2, #0xff
@@ -3307,7 +3307,7 @@ _021FABCE:
 	pop {r4, r5, r6, pc}
 _021FABF4:
 	add r0, r4, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	ldr r1, [r5]
 	cmp r1, r0
 	beq _021FAC40

@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_D40R0104_bozu",
-      "ovid": "SPRITE_BOZU",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BOZU",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D40R0104_000 + 1",
@@ -30,8 +30,8 @@
     },
     {
       "id": "obj_D40R0104_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D40R0104_MAX_REVIVE",
       "scr": "std_itemball_d40r0104_max_revive",
@@ -47,8 +47,8 @@
     },
     {
       "id": "obj_D40R0104_monstarball_2",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D40R0104_FULL_RESTORE",
       "scr": "std_itemball_d40r0104_full_restore",
@@ -64,8 +64,8 @@
     },
     {
       "id": "obj_D40R0104_monstarball_3",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D40R0104_MAX_ELIXIR",
       "scr": "std_itemball_d40r0104_max_elixir",

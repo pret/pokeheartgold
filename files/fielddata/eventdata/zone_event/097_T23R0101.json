@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_T23R0101_counterm",
-      "ovid": "SPRITE_COUNTERM",
-      "mvt": 15,
+      "sprite_id": "SPRITE_COUNTERM",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T23R0101_001 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_T23R0101_gsoldwoman1",
-      "ovid": "SPRITE_GSOLDWOMAN1",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSOLDWOMAN1",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T23R0101_002 + 1",

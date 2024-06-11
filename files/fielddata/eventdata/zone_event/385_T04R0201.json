@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_T04R0201_fishing_2",
-      "ovid": "SPRITE_FISHING_2",
-      "mvt": 14,
+      "sprite_id": "SPRITE_FISHING_2",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T04R0201_000 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_T04R0201_middlewoman1_2",
-      "ovid": "SPRITE_MIDDLEWOMAN1_2",
-      "mvt": 16,
+      "sprite_id": "SPRITE_MIDDLEWOMAN1_2",
+      "movement": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T04R0201_001 + 1",
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_T04R0201_tsure_poke_static_diglett",
-      "ovid": "SPRITE_FOLLOWER_MON_STATIC_DIGLETT",
-      "mvt": 15,
+      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_DIGLETT",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T04R0201_002 + 1",

@@ -205,7 +205,7 @@ ov01_021FD2EC: ; 0x021FD2EC
 	bl ov01_021F146C
 	add r4, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	str r0, [sp, #8]
 	add r0, r5, #0
 	mov r1, #2

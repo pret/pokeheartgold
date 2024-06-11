@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_D01R0101_gsmiddleman1",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D01R0101_002 + 1",
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_D01R0101_gsleader14",
-      "ovid": "SPRITE_GSLEADER14",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSLEADER14",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_UNK_262",
       "scr": "_EV_scr_seq_D01R0101_001 + 1",
@@ -55,8 +55,8 @@
     },
     {
       "id": "obj_D01R0101_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D01R0101_PP_MAX",
       "scr": "std_itemball_d01r0101_pp_max",
@@ -72,8 +72,8 @@
     },
     {
       "id": "obj_D01R0101_monstarball_2",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D01R0101_ROCK_INCENSE",
       "scr": "std_itemball_d01r0101_rock_incense",

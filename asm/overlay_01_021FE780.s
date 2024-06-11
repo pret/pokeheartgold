@@ -92,7 +92,7 @@ ov01_021FE7DC: ; 0x021FE7DC
 	cmp r0, #0
 	bne _021FE826
 	add r0, r5, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystem
 	mov r1, #2
 	lsl r2, r4, #0x10
 	lsl r1, r1, #0xe

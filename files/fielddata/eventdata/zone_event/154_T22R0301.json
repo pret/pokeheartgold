@@ -37,8 +37,8 @@
   "objects": [
     {
       "id": "obj_T22R0301_gsbigman",
-      "ovid": "SPRITE_GSBIGMAN",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSBIGMAN",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_HIDE_EARL_IN_SCHOOL",
       "scr": "_EV_scr_seq_T22R0301_000 + 1",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_T22R0301_gsboy1",
-      "ovid": "SPRITE_GSBOY1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSBOY1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T22R0301_004 + 1",
@@ -71,8 +71,8 @@
     },
     {
       "id": "obj_T22R0301_gsboy1_2",
-      "ovid": "SPRITE_GSBOY1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSBOY1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T22R0301_005 + 1",
@@ -88,8 +88,8 @@
     },
     {
       "id": "obj_T22R0301_gsdsboy",
-      "ovid": "SPRITE_GSDSBOY",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSDSBOY",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T22R0301_006 + 1",
@@ -105,8 +105,8 @@
     },
     {
       "id": "obj_T22R0301_gsdsboy_2",
-      "ovid": "SPRITE_GSDSBOY",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSDSBOY",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T22R0301_007 + 1",
@@ -122,8 +122,8 @@
     },
     {
       "id": "obj_T22R0301_gsman2",
-      "ovid": "SPRITE_GSMAN2",
-      "mvt": 2,
+      "sprite_id": "SPRITE_GSMAN2",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_group",
@@ -139,8 +139,8 @@
     },
     {
       "id": "obj_T22R0301_gsgirl2",
-      "ovid": "SPRITE_GSGIRL2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSGIRL2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T22R0301_003 + 1",

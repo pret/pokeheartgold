@@ -11,8 +11,8 @@
 .public MapObject_TestFlagsBits
 .public MapObject_GetID
 .public sub_0205F254
-.public MapObject_GetGfxID
-.public MapObject_GetFieldSysPtr
+.public MapObject_GetSpriteID
+.public MapObject_GetFieldSystem
 .public MapObject_CheckFlag26
 .public MapObject_GetPositionVec
 .public MapObject_GetFacingVec

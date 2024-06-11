@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_D45R0101_stop",
-      "ovid": "SPRITE_STOP",
-      "mvt": 0,
+      "sprite_id": "SPRITE_STOP",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_D45R0101_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D45R0101_MOON_STONE",
       "scr": "std_itemball_d45r0101_moon_stone",

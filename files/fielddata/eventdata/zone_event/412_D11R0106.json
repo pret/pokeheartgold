@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_D11R0106_gsleader15",
-      "ovid": "SPRITE_GSLEADER15",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSLEADER15",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_UNK_2F5",
       "scr": "_EV_scr_seq_D11R0106_000 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_D11R0106_sunglasses",
-      "ovid": "SPRITE_SUNGLASSES",
-      "mvt": 15,
+      "sprite_id": "SPRITE_SUNGLASSES",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D11R0106_001 + 1",
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_D11R0106_assistantm",
-      "ovid": "SPRITE_ASSISTANTM",
-      "mvt": 15,
+      "sprite_id": "SPRITE_ASSISTANTM",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D11R0106_005 + 1",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_D11R0106_assistantm_2",
-      "ovid": "SPRITE_ASSISTANTM",
-      "mvt": 17,
+      "sprite_id": "SPRITE_ASSISTANTM",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D11R0106_006 + 1",
@@ -71,8 +71,8 @@
     },
     {
       "id": "obj_D11R0106_assistantm_3",
-      "ovid": "SPRITE_ASSISTANTM",
-      "mvt": 17,
+      "sprite_id": "SPRITE_ASSISTANTM",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D11R0106_007 + 1",
@@ -88,8 +88,8 @@
     },
     {
       "id": "obj_D11R0106_gsassistantm",
-      "ovid": "SPRITE_GSASSISTANTM",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSASSISTANTM",
+      "movement": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D11R0106_002 + 1",
@@ -105,8 +105,8 @@
     },
     {
       "id": "obj_D11R0106_gsassistantm_2",
-      "ovid": "SPRITE_GSASSISTANTM",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSASSISTANTM",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D11R0106_003 + 1",
@@ -122,8 +122,8 @@
     },
     {
       "id": "obj_D11R0106_gsassistantm_3",
-      "ovid": "SPRITE_GSASSISTANTM",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSASSISTANTM",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D11R0106_004 + 1",

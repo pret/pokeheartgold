@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_T02GYM0101_gsman3",
-      "ovid": "SPRITE_GSMAN3",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSMAN3",
+      "movement": 15,
       "type": 1,
       "flag": "FLAG_UNK_2F6",
       "scr": "std_trainer(TRAINER_ACE_TRAINER_M_ARABELLA)",
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_T02GYM0101_gsman3_2",
-      "ovid": "SPRITE_GSMAN3",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSMAN3",
+      "movement": 17,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_ACE_TRAINER_M_BONITA)",
@@ -55,8 +55,8 @@
     },
     {
       "id": "obj_T02GYM0101_gswoman3",
-      "ovid": "SPRITE_GSWOMAN3",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSWOMAN3",
+      "movement": 17,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_ACE_TRAINER_F_SALMA)",
@@ -72,8 +72,8 @@
     },
     {
       "id": "obj_T02GYM0101_gswoman3_2",
-      "ovid": "SPRITE_GSWOMAN3",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSWOMAN3",
+      "movement": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_DOUBLE_TEAM_ELAN_AND_IDA)",
@@ -89,8 +89,8 @@
     },
     {
       "id": "obj_T02GYM0101_sunglasses",
-      "ovid": "SPRITE_SUNGLASSES",
-      "mvt": 15,
+      "sprite_id": "SPRITE_SUNGLASSES",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T02GYM0101_001 + 1",
@@ -106,8 +106,8 @@
     },
     {
       "id": "obj_T02GYM0101_gsleader16",
-      "ovid": "SPRITE_GSLEADER16",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSLEADER16",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_UNK_2F6",
       "scr": "_EV_scr_seq_T02GYM0101_000 + 1",
@@ -123,8 +123,8 @@
     },
     {
       "id": "obj_T02GYM0101_gsman3_3",
-      "ovid": "SPRITE_GSMAN3",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSMAN3",
+      "movement": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer_2(TRAINER_DOUBLE_TEAM_ELAN_AND_IDA)",

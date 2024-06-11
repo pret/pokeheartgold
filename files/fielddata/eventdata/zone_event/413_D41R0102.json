@@ -29,8 +29,8 @@
   "objects": [
     {
       "id": "obj_EVERYWHERE_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D41R0102_PURE_INCENSE",
       "scr": "std_itemball_d41r0102_pure_incense",
@@ -46,8 +46,8 @@
     },
     {
       "id": "obj_EVERYWHERE_monstarball_2",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D41R0102_DAWN_STONE",
       "scr": "std_itemball_d41r0102_dawn_stone",

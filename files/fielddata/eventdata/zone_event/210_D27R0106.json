@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_D27R0106_seaman_2",
-      "ovid": "SPRITE_SEAMAN_2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SEAMAN_2",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_SAILOR_TERRELL)",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_D27R0106_seaman_2_2",
-      "ovid": "SPRITE_SEAMAN_2",
-      "mvt": 2,
+      "sprite_id": "SPRITE_SEAMAN_2",
+      "movement": 2,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_SAILOR_ROBERTO)",
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_D27R0106_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D27R0106_SUPER_REPEL",
       "scr": "std_itemball_d27r0106_super_repel",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_D27R0106_gsmiddleman1",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
       "scr": "_EV_scr_seq_D27R0106_000 + 1",

@@ -329,7 +329,7 @@ _021FF188:
 	ldr r0, [r6]
 	str r0, [r3]
 	ldr r0, [r4, #0x30]
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x30]
 	bl MapObject_GetID

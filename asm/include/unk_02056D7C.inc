@@ -72,7 +72,7 @@
 .public sub_0205DFC8
 .public sub_0205DFD4
 .public MapObject_Remove
-.public GetMapObjectByID
+.public MapObjectManager_GetFirstActiveObjectByID
 .public MapObject_SetID
 .public MapObject_SetCurrentX
 .public MapObject_SetCurrentY

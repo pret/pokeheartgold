@@ -29,8 +29,8 @@
   "objects": [
     {
       "id": "obj_T11R0802_gsgirl1",
-      "ovid": "SPRITE_GSGIRL1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSGIRL1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T11R0802_000 + 1",
@@ -46,8 +46,8 @@
     },
     {
       "id": "obj_T11R0802_mono_pip",
-      "ovid": "SPRITE_MONO_PIP",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONO_PIP",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_UNK_2FB",
       "scr": 0,
@@ -63,8 +63,8 @@
     },
     {
       "id": "obj_T11R0802_jupetta",
-      "ovid": "SPRITE_JUPETTA",
-      "mvt": 15,
+      "sprite_id": "SPRITE_JUPETTA",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T11R0802_003 + 1",
@@ -80,8 +80,8 @@
     },
     {
       "id": "obj_T11R0802_var_1",
-      "ovid": "SPRITE_VAR_1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_VAR_1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T11R0802_000 + 1",

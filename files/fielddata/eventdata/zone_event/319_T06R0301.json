@@ -29,8 +29,8 @@
   "objects": [
     {
       "id": "obj_T06R0301_gsgentleman",
-      "ovid": "SPRITE_GSGENTLEMAN",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSGENTLEMAN",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T06R0301_000 + 1",
@@ -46,8 +46,8 @@
     },
     {
       "id": "obj_T06R0301_gswoman2",
-      "ovid": "SPRITE_GSWOMAN2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSWOMAN2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T06R0301_001 + 1",
@@ -63,8 +63,8 @@
     },
     {
       "id": "obj_T06R0301_gswoman1",
-      "ovid": "SPRITE_GSWOMAN1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSWOMAN1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T06R0301_003 + 1",
@@ -80,8 +80,8 @@
     },
     {
       "id": "obj_T06R0301_gsbigman",
-      "ovid": "SPRITE_GSBIGMAN",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSBIGMAN",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T06R0301_002 + 1",
@@ -97,8 +97,8 @@
     },
     {
       "id": "obj_T06R0301_tsure_poke_static_bayleef",
-      "ovid": "SPRITE_FOLLOWER_MON_STATIC_BAYLEEF",
-      "mvt": 42,
+      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_BAYLEEF",
+      "movement": 42,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T06R0301_004 + 1",
@@ -114,8 +114,8 @@
     },
     {
       "id": "obj_T06R0301_mono_pip",
-      "ovid": "SPRITE_MONO_PIP",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONO_PIP",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_VERMILION_FAN_CLUB_LOST_ITEM",
       "scr": 0,

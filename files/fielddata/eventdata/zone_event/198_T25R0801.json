@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_T25R0801_gsbigman",
-      "ovid": "SPRITE_GSBIGMAN",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSBIGMAN",
+      "movement": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R0801_000 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_T25R0801_gsgirl1",
-      "ovid": "SPRITE_GSGIRL1",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSGIRL1",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R0801_001 + 1",

@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_EVERYWHERE_breakrock",
-      "ovid": "SPRITE_BREAKROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BREAKROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_010",
       "scr": "std_field_rock_smash",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_EVERYWHERE_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D39R0104_NEVERMELTICE",
       "scr": "std_itemball_d39r0104_nevermeltice",

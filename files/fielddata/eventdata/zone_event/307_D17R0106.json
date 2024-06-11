@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_EVERYWHERE_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D17R0106_MAX_POTION",
       "scr": "std_itemball_d17r0106_max_potion",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_EVERYWHERE_monstarball_2",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D17R0106_FULL_HEAL",
       "scr": "std_itemball_d17r0106_full_heal",

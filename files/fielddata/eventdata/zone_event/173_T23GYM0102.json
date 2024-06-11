@@ -37,8 +37,8 @@
   "objects": [
     {
       "id": "obj_T23GYM0102_gsboy3",
-      "ovid": "SPRITE_GSBOY3",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSBOY3",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BUG_CATCHER_AL)",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_T23GYM0102_gsboy3_2",
-      "ovid": "SPRITE_GSBOY3",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSBOY3",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BUG_CATCHER_BENNY)",
@@ -71,8 +71,8 @@
     },
     {
       "id": "obj_T23GYM0102_gsbabygirl1",
-      "ovid": "SPRITE_GSBABYGIRL1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSBABYGIRL1",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer_2(TRAINER_TWINS_AMY_AND_MIMI)",
@@ -88,8 +88,8 @@
     },
     {
       "id": "obj_T23GYM0102_gsbabygirl1_2",
-      "ovid": "SPRITE_GSBABYGIRL1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSBABYGIRL1",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_TWINS_AMY_AND_MIMI)",
@@ -105,8 +105,8 @@
     },
     {
       "id": "obj_T23GYM0102_gsboy3_3",
-      "ovid": "SPRITE_GSBOY3",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSBOY3",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BUG_CATCHER_JOSH)",
@@ -122,8 +122,8 @@
     },
     {
       "id": "obj_T23GYM0102_gsleader2",
-      "ovid": "SPRITE_GSLEADER2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSLEADER2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_UNK_2EA",
       "scr": "_EV_scr_seq_T23GYM0102_001 + 1",

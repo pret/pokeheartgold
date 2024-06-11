@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_EVERYWHERE_boarder",
-      "ovid": "SPRITE_BOARDER",
-      "mvt": 14,
+      "sprite_id": "SPRITE_BOARDER",
+      "movement": 14,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BOARDER_BRYCE)",
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_EVERYWHERE_boarder_2",
-      "ovid": "SPRITE_BOARDER",
-      "mvt": 20,
+      "sprite_id": "SPRITE_BOARDER",
+      "movement": 20,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BOARDER_SHAUN)",
@@ -55,8 +55,8 @@
     },
     {
       "id": "obj_EVERYWHERE_skierw",
-      "ovid": "SPRITE_SKIERW",
-      "mvt": 16,
+      "sprite_id": "SPRITE_SKIERW",
+      "movement": 16,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_SKIER_CADY)",
@@ -72,8 +72,8 @@
     },
     {
       "id": "obj_EVERYWHERE_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D11R0103_WATER_STONE",
       "scr": "std_itemball_d11r0103_water_stone",

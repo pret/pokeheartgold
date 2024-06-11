@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_T25R0601_gswoman1",
-      "ovid": "SPRITE_GSWOMAN1",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSWOMAN1",
+      "movement": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R0601_000 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_T25R0601_gsgirl1",
-      "ovid": "SPRITE_GSGIRL1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSGIRL1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_GOLDENROD_FLOWERSHOP_GIRL",
       "scr": "_EV_scr_seq_T25R0601_001 + 1",

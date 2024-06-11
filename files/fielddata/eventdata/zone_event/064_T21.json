@@ -37,8 +37,8 @@
   "objects": [
     {
       "id": "obj_T21_gsoldman1",
-      "ovid": "SPRITE_GSOLDMAN1",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSOLDMAN1",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_HIDE_CHERRYGROVE_GUIDE_GENT",
       "scr": "_EV_scr_seq_T21_000 + 1",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_T21_gsboy1",
-      "ovid": "SPRITE_GSBOY1",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSBOY1",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T21_007 + 1",
@@ -71,8 +71,8 @@
     },
     {
       "id": "obj_T21_gswoman1",
-      "ovid": "SPRITE_GSWOMAN1",
-      "mvt": 5,
+      "sprite_id": "SPRITE_GSWOMAN1",
+      "movement": 5,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T21_008 + 1",
@@ -88,8 +88,8 @@
     },
     {
       "id": "obj_T21_gsbigman",
-      "ovid": "SPRITE_GSBIGMAN",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSBIGMAN",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T21_004 + 1",
@@ -105,8 +105,8 @@
     },
     {
       "id": "obj_T21_gsrivel",
-      "ovid": "SPRITE_GSRIVEL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSRIVEL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_CHERRYGROVE_RIVAL",
       "scr": 0,
@@ -122,8 +122,8 @@
     },
     {
       "id": "obj_T21_gsmiddleman1",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
       "scr": "_EV_scr_seq_T21_009 + 1",

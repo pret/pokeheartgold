@@ -29,8 +29,8 @@
   "objects": [
     {
       "id": "obj_D24R0102_suit",
-      "ovid": "SPRITE_SUIT",
-      "mvt": 15,
+      "sprite_id": "SPRITE_SUIT",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D24R0102_000 + 1",
@@ -46,8 +46,8 @@
     },
     {
       "id": "obj_D24R0102_gsassistantm",
-      "ovid": "SPRITE_GSASSISTANTM",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSASSISTANTM",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D24R0102_002 + 1",
@@ -63,8 +63,8 @@
     },
     {
       "id": "obj_D24R0102_gsassistantm_2",
-      "ovid": "SPRITE_GSASSISTANTM",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSASSISTANTM",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D24R0102_001 + 1",

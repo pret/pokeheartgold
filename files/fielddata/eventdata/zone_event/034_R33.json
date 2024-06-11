@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_R33_mount_2",
-      "ovid": "SPRITE_MOUNT_2",
-      "mvt": 4,
+      "sprite_id": "SPRITE_MOUNT_2",
+      "movement": 4,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_HIKER_ANTHONY)",
@@ -30,8 +30,8 @@
     },
     {
       "id": "obj_R33_bonguri",
-      "ovid": "SPRITE_BONGURI",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BONGURI",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_apricorn_tree",
@@ -47,8 +47,8 @@
     },
     {
       "id": "obj_R33_bonguri_2",
-      "ovid": "SPRITE_BONGURI",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BONGURI",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_apricorn_tree",
@@ -64,8 +64,8 @@
     },
     {
       "id": "obj_R33_gsgirl1",
-      "ovid": "SPRITE_GSGIRL1",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSGIRL1",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_R33_000 + 1",

@@ -45,8 +45,8 @@
   "objects": [
     {
       "id": "obj_T09_gsleader16",
-      "ovid": "SPRITE_GSLEADER16",
-      "mvt": 2,
+      "sprite_id": "SPRITE_GSLEADER16",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_UNK_25A",
       "scr": "_EV_scr_seq_T09_000 + 1",
@@ -62,8 +62,8 @@
     },
     {
       "id": "obj_T09_gsleader15",
-      "ovid": "SPRITE_GSLEADER15",
-      "mvt": 2,
+      "sprite_id": "SPRITE_GSLEADER15",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_UNK_27D",
       "scr": "_EV_scr_seq_T09_004 + 1",
@@ -79,8 +79,8 @@
     },
     {
       "id": "obj_T09_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_T09_MAGMARIZER",
       "scr": "std_itemball_t09_magmarizer",

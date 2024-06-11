@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_EVERYWHERE_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D17R0103_FULL_HEAL",
       "scr": "std_itemball_d17r0103_full_heal",

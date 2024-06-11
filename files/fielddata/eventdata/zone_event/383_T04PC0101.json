@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_T04PC0101_pcwoman1",
-      "ovid": "SPRITE_PCWOMAN1",
-      "mvt": 15,
+      "sprite_id": "SPRITE_PCWOMAN1",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T04PC0101_000 + 1",
@@ -30,8 +30,8 @@
     },
     {
       "id": "obj_T04PC0101_pcwoman2",
-      "ovid": "SPRITE_PCWOMAN2",
-      "mvt": 15,
+      "sprite_id": "SPRITE_PCWOMAN2",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer_card_explain",
@@ -47,8 +47,8 @@
     },
     {
       "id": "obj_T04PC0101_pcwoman2_2",
-      "ovid": "SPRITE_PCWOMAN2",
-      "mvt": 15,
+      "sprite_id": "SPRITE_PCWOMAN2",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_union_room",
@@ -64,8 +64,8 @@
     },
     {
       "id": "obj_T04PC0101_pcwoman2_3",
-      "ovid": "SPRITE_PCWOMAN2",
-      "mvt": 15,
+      "sprite_id": "SPRITE_PCWOMAN2",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_wireless_colosseum",
@@ -81,8 +81,8 @@
     },
     {
       "id": "obj_T04PC0101_gsman1",
-      "ovid": "SPRITE_GSMAN1",
-      "mvt": 5,
+      "sprite_id": "SPRITE_GSMAN1",
+      "movement": 5,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T04PC0101_001 + 1",
@@ -98,8 +98,8 @@
     },
     {
       "id": "obj_T04PC0101_gsbigman",
-      "ovid": "SPRITE_GSBIGMAN",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSBIGMAN",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T04PC0101_002 + 1",

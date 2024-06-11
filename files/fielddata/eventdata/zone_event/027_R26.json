@@ -37,8 +37,8 @@
   "objects": [
     {
       "id": "obj_R26_fishing_2",
-      "ovid": "SPRITE_FISHING_2",
-      "mvt": 9,
+      "sprite_id": "SPRITE_FISHING_2",
+      "movement": 9,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_FISHERMAN_SCOTT)",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_R26_mystery_2",
-      "ovid": "SPRITE_MYSTERY_2",
-      "mvt": 16,
+      "sprite_id": "SPRITE_MYSTERY_2",
+      "movement": 16,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_PSYCHIC_M_VERNON)",
@@ -71,8 +71,8 @@
     },
     {
       "id": "obj_R26_gswoman3",
-      "ovid": "SPRITE_GSWOMAN3",
-      "mvt": 19,
+      "sprite_id": "SPRITE_GSWOMAN3",
+      "movement": 19,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_ACE_TRAINER_F_JOYCE)",
@@ -88,8 +88,8 @@
     },
     {
       "id": "obj_R26_gsman3",
-      "ovid": "SPRITE_GSMAN3",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSMAN3",
+      "movement": 16,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_ACE_TRAINER_M_GAVEN)",
@@ -105,8 +105,8 @@
     },
     {
       "id": "obj_R26_gsman3_2",
-      "ovid": "SPRITE_GSMAN3",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSMAN3",
+      "movement": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_ACE_TRAINER_M_JAKE)",
@@ -122,8 +122,8 @@
     },
     {
       "id": "obj_R26_gswoman3_2",
-      "ovid": "SPRITE_GSWOMAN3",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSWOMAN3",
+      "movement": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_ACE_TRAINER_F_JAMIE)",
@@ -139,8 +139,8 @@
     },
     {
       "id": "obj_R26_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_R26_MAX_ELIXIR",
       "scr": "std_itemball_r26_max_elixir",
@@ -156,8 +156,8 @@
     },
     {
       "id": "obj_R26_bonguri",
-      "ovid": "SPRITE_BONGURI",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BONGURI",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_apricorn_tree",
@@ -173,8 +173,8 @@
     },
     {
       "id": "obj_R26_gsmiddleman1",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
       "scr": "_EV_scr_seq_R26_000 + 1",

@@ -29,8 +29,8 @@
   "objects": [
     {
       "id": "obj_T24GYM0101_gsleader5",
-      "ovid": "SPRITE_GSLEADER5",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSLEADER5",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_UNK_2EB",
       "scr": "_EV_scr_seq_T24GYM0101_000 + 1",
@@ -46,8 +46,8 @@
     },
     {
       "id": "obj_T24GYM0101_gsfighter",
-      "ovid": "SPRITE_GSFIGHTER",
-      "mvt": 20,
+      "sprite_id": "SPRITE_GSFIGHTER",
+      "movement": 20,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BLACK_BELT_YOSHI)",
@@ -63,8 +63,8 @@
     },
     {
       "id": "obj_T24GYM0101_gsfighter_2",
-      "ovid": "SPRITE_GSFIGHTER",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSFIGHTER",
+      "movement": 17,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BLACK_BELT_LAO)",
@@ -80,8 +80,8 @@
     },
     {
       "id": "obj_T24GYM0101_gsfighter_3",
-      "ovid": "SPRITE_GSFIGHTER",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSFIGHTER",
+      "movement": 16,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BLACK_BELT_NOB)",
@@ -97,8 +97,8 @@
     },
     {
       "id": "obj_T24GYM0101_gsfighter_4",
-      "ovid": "SPRITE_GSFIGHTER",
-      "mvt": 20,
+      "sprite_id": "SPRITE_GSFIGHTER",
+      "movement": 20,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BLACK_BELT_LUNG)",

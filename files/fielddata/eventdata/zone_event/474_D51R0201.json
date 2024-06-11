@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_D51R0201_champion",
-      "ovid": "SPRITE_CHAMPION",
-      "mvt": 0,
+      "sprite_id": "SPRITE_CHAMPION",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_SINJOH_MYSTRI_SHRINE_CYNTHIA",
       "scr": "_EV_scr_seq_D51R0201_001 + 1",

@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_T22GYM0101_gsleader1",
-      "ovid": "SPRITE_GSLEADER1",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSLEADER1",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_UNK_2E9",
       "scr": "_EV_scr_seq_T22GYM0101_001 + 1",
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_T22GYM0101_gsman2",
-      "ovid": "SPRITE_GSMAN2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSMAN2",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BIRD_KEEPER_GS_ABE)",
@@ -55,8 +55,8 @@
     },
     {
       "id": "obj_T22GYM0101_gsman2_2",
-      "ovid": "SPRITE_GSMAN2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSMAN2",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BIRD_KEEPER_GS_ROD)",
@@ -72,8 +72,8 @@
     },
     {
       "id": "obj_T22GYM0101_sunglasses",
-      "ovid": "SPRITE_SUNGLASSES",
-      "mvt": 15,
+      "sprite_id": "SPRITE_SUNGLASSES",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_HIDE_VIOLET_GYM_GYM_GUY_BEFORE_SPROUT",
       "scr": "_EV_scr_seq_T22GYM0101_002 + 1",
@@ -89,8 +89,8 @@
     },
     {
       "id": "obj_T22GYM0101_sunglasses_2",
-      "ovid": "SPRITE_SUNGLASSES",
-      "mvt": 15,
+      "sprite_id": "SPRITE_SUNGLASSES",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT",
       "scr": "_EV_scr_seq_T22GYM0101_005 + 1",

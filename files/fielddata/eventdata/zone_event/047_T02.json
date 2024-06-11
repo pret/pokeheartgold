@@ -53,8 +53,8 @@
   "objects": [
     {
       "id": "obj_T02_gsoldman1",
-      "ovid": "SPRITE_GSOLDMAN1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSOLDMAN1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_VIRIDIAN_CITY_OLD_MAN_OUTSIDE_GYM_LOCKED",
       "scr": "_EV_scr_seq_T02_001 + 1",
@@ -70,8 +70,8 @@
     },
     {
       "id": "obj_T02_gsoldman1_2",
-      "ovid": "SPRITE_GSOLDMAN1",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSOLDMAN1",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T02_000 + 1",
@@ -87,8 +87,8 @@
     },
     {
       "id": "obj_T02_gsbigman",
-      "ovid": "SPRITE_GSBIGMAN",
-      "mvt": 2,
+      "sprite_id": "SPRITE_GSBIGMAN",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T02_002 + 1",
@@ -104,8 +104,8 @@
     },
     {
       "id": "obj_T02_gsboy1",
-      "ovid": "SPRITE_GSBOY1",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSBOY1",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T02_003 + 1",
@@ -121,8 +121,8 @@
     },
     {
       "id": "obj_T02_tree",
-      "ovid": "SPRITE_TREE",
-      "mvt": 0,
+      "sprite_id": "SPRITE_TREE",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_010",
       "scr": "std_field_cut",
@@ -138,8 +138,8 @@
     },
     {
       "id": "obj_T02_tree_2",
-      "ovid": "SPRITE_TREE",
-      "mvt": 0,
+      "sprite_id": "SPRITE_TREE",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_011",
       "scr": "std_field_cut",
@@ -155,8 +155,8 @@
     },
     {
       "id": "obj_T02_gsmiddleman1",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
       "scr": "_EV_scr_seq_T02_009 + 1",
@@ -172,8 +172,8 @@
     },
     {
       "id": "obj_T02_gsoldman1_3",
-      "ovid": "SPRITE_GSOLDMAN1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSOLDMAN1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_VIRIDIAN_CITY_OLD_MAN_OUTSIDE_GYM_UNLOCKED",
       "scr": "_EV_scr_seq_T02_010 + 1",

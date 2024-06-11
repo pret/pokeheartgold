@@ -11,7 +11,7 @@
 .public MapObject_TestFlagsBits
 .public MapObject_GetID
 .public sub_0205F254
-.public MapObject_GetGfxID
+.public MapObject_GetSpriteID
 .public MapObject_GetFacingDirection
 .public MapObject_GetCurrentX
 .public MapObject_GetCurrentHeight

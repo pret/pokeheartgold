@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_D15R0102_bozu",
-      "ovid": "SPRITE_BOZU",
-      "mvt": 15,
+      "sprite_id": "SPRITE_BOZU",
+      "movement": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_SAGE_NICO)",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_D15R0102_bozu_2",
-      "ovid": "SPRITE_BOZU",
-      "mvt": 16,
+      "sprite_id": "SPRITE_BOZU",
+      "movement": 16,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_SAGE_EDMOND)",
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_D15R0102_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D15R0102_X_ACCURACY",
       "scr": "std_itemball_d15r0102_x_accuracy",

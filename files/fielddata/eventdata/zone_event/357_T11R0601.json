@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_T11R0601_policeman",
-      "ovid": "SPRITE_POLICEMAN",
-      "mvt": 0,
+      "sprite_id": "SPRITE_POLICEMAN",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T11R0601_000 + 1",
@@ -30,8 +30,8 @@
     },
     {
       "id": "obj_T11R0601_gsbigman",
-      "ovid": "SPRITE_GSBIGMAN",
-      "mvt": 4,
+      "sprite_id": "SPRITE_GSBIGMAN",
+      "movement": 4,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T11R0601_001 + 1",
@@ -47,8 +47,8 @@
     },
     {
       "id": "obj_T11R0601_gswoman1",
-      "ovid": "SPRITE_GSWOMAN1",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSWOMAN1",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T11R0601_002 + 1",
@@ -64,8 +64,8 @@
     },
     {
       "id": "obj_T11R0601_gsgirl1",
-      "ovid": "SPRITE_GSGIRL1",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSGIRL1",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T11R0601_003 + 1",
@@ -81,8 +81,8 @@
     },
     {
       "id": "obj_T11R0601_gsleader9",
-      "ovid": "SPRITE_GSLEADER9",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSLEADER9",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_UNK_2F7",
       "scr": "_EV_scr_seq_T11R0601_007 + 1",

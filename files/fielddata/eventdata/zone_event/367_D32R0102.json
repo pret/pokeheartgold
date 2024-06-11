@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_D32R0102_gsmiddleman1",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D32R0102_000 + 1",
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_D32R0102_gsmiddleman1_2",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
       "scr": "_EV_scr_seq_D32R0102_003 + 1",
@@ -55,8 +55,8 @@
     },
     {
       "id": "obj_D32R0102_gsman1",
-      "ovid": "SPRITE_GSMAN1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSMAN1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D32R0102_005 + 1",
@@ -72,8 +72,8 @@
     },
     {
       "id": "obj_D32R0102_mount_2",
-      "ovid": "SPRITE_MOUNT_2",
-      "mvt": 3,
+      "sprite_id": "SPRITE_MOUNT_2",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D32R0102_006 + 1",
@@ -89,8 +89,8 @@
     },
     {
       "id": "obj_D32R0102_gsgirl2",
-      "ovid": "SPRITE_GSGIRL2",
-      "mvt": 4,
+      "sprite_id": "SPRITE_GSGIRL2",
+      "movement": 4,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D32R0102_007 + 1",

@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_T25R0401_masaki",
-      "ovid": "SPRITE_MASAKI",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MASAKI",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_GOLDENROD_BILL",
       "scr": "_EV_scr_seq_T25R0401_000 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_T25R0401_middlewoman1_2",
-      "ovid": "SPRITE_MIDDLEWOMAN1_2",
-      "mvt": 17,
+      "sprite_id": "SPRITE_MIDDLEWOMAN1_2",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R0401_001 + 1",
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_T25R0401_gsbabygirl1",
-      "ovid": "SPRITE_GSBABYGIRL1",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSBABYGIRL1",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R0401_002 + 1",

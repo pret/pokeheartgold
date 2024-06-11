@@ -53,8 +53,8 @@
   "objects": [
     {
       "id": "obj_T25R1203_gsgentleman",
-      "ovid": "SPRITE_GSGENTLEMAN",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSGENTLEMAN",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1203_005 + 1",
@@ -70,8 +70,8 @@
     },
     {
       "id": "obj_T25R1203_mount_2",
-      "ovid": "SPRITE_MOUNT_2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MOUNT_2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1203_008 + 1",
@@ -87,8 +87,8 @@
     },
     {
       "id": "obj_T25R1203_gsman2",
-      "ovid": "SPRITE_GSMAN2",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSMAN2",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1203_007 + 1",
@@ -104,8 +104,8 @@
     },
     {
       "id": "obj_T25R1203_gsgirl3",
-      "ovid": "SPRITE_GSGIRL3",
-      "mvt": 6,
+      "sprite_id": "SPRITE_GSGIRL3",
+      "movement": 6,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1203_001 + 1",
@@ -121,8 +121,8 @@
     },
     {
       "id": "obj_T25R1203_campboy_2",
-      "ovid": "SPRITE_CAMPBOY_2",
-      "mvt": 17,
+      "sprite_id": "SPRITE_CAMPBOY_2",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1203_004 + 1",
@@ -138,8 +138,8 @@
     },
     {
       "id": "obj_T25R1203_gsboy2",
-      "ovid": "SPRITE_GSBOY2",
-      "mvt": 8,
+      "sprite_id": "SPRITE_GSBOY2",
+      "movement": 8,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1203_000 + 1",
@@ -155,8 +155,8 @@
     },
     {
       "id": "obj_T25R1203_gsmiddleman1",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1203_003 + 1",
@@ -172,8 +172,8 @@
     },
     {
       "id": "obj_T25R1203_juggrer",
-      "ovid": "SPRITE_JUGGRER",
-      "mvt": 3,
+      "sprite_id": "SPRITE_JUGGRER",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1203_006 + 1",
@@ -189,8 +189,8 @@
     },
     {
       "id": "obj_T25R1203_gswoman3",
-      "ovid": "SPRITE_GSWOMAN3",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSWOMAN3",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1203_002 + 1",

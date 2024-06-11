@@ -1,4 +1,4 @@
-#include "field_map_object.h"
+#include "map_object.h"
 #include "map_events.h"
 #include "overlay_26.h"
 
@@ -43,7 +43,7 @@ static LocalMapObject* ov26_02259A24(FieldSystem* fieldSystem, LocalMapObject* a
     }
 
     for (int i = 0; i < num_events; i++) {
-        LocalMapObject* object = GetMapObjectByID(fieldSystem->mapObjectManager, i);
+        LocalMapObject* object = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, i);
         if (object == NULL) {
             continue;
         }

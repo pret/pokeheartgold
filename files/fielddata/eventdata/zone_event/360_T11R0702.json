@@ -45,8 +45,8 @@
   "objects": [
     {
       "id": "obj_T11R0702_rotomf",
-      "ovid": "SPRITE_ROTOMF",
-      "mvt": 0,
+      "sprite_id": "SPRITE_ROTOMF",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_SILPH_ROTOM_HEAT",
       "scr": "_EV_scr_seq_T11R0702_001 + 1",
@@ -62,8 +62,8 @@
     },
     {
       "id": "obj_T11R0702_rotoms",
-      "ovid": "SPRITE_ROTOMS",
-      "mvt": 0,
+      "sprite_id": "SPRITE_ROTOMS",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_SILPH_ROTOM_FAN",
       "scr": "_EV_scr_seq_T11R0702_002 + 1",
@@ -79,8 +79,8 @@
     },
     {
       "id": "obj_T11R0702_rotomi",
-      "ovid": "SPRITE_ROTOMI",
-      "mvt": 0,
+      "sprite_id": "SPRITE_ROTOMI",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_SILPH_ROTOM_FROST",
       "scr": "_EV_scr_seq_T11R0702_003 + 1",
@@ -96,8 +96,8 @@
     },
     {
       "id": "obj_T11R0702_rotomw",
-      "ovid": "SPRITE_ROTOMW",
-      "mvt": 0,
+      "sprite_id": "SPRITE_ROTOMW",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_SILPH_ROTOM_WASH",
       "scr": "_EV_scr_seq_T11R0702_004 + 1",
@@ -113,8 +113,8 @@
     },
     {
       "id": "obj_T11R0702_rotomg",
-      "ovid": "SPRITE_ROTOMG",
-      "mvt": 0,
+      "sprite_id": "SPRITE_ROTOMG",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_SILPH_ROTOM_MOW",
       "scr": "_EV_scr_seq_T11R0702_005 + 1",
@@ -130,8 +130,8 @@
     },
     {
       "id": "obj_T11R0702_babyboy1_2",
-      "ovid": "SPRITE_BABYBOY1_2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BABYBOY1_2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T11R0702_000 + 1",

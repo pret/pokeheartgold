@@ -36,7 +36,7 @@
 .public sub_0205C810
 .public PlayerAvatar_ToggleAutomaticHeightUpdating
 .public PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
-.public MapObject_ForceSetFacingDirection
+.public MapObject_SetFacingDirectionDirect
 .public sub_0205F328
 .public MapObject_GetPositionVec
 .public MapObject_SetPositionVec

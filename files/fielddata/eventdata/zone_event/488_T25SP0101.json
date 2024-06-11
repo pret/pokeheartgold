@@ -45,8 +45,8 @@
   "objects": [
     {
       "id": "obj_T25SP0101_suit",
-      "ovid": "SPRITE_SUIT",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SUIT",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25SP0101_002 + 1",
@@ -62,8 +62,8 @@
     },
     {
       "id": "obj_T25SP0101_gsgentleman",
-      "ovid": "SPRITE_GSGENTLEMAN",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSGENTLEMAN",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25SP0101_003 + 1",
@@ -79,8 +79,8 @@
     },
     {
       "id": "obj_T25SP0101_gsgentleman_2",
-      "ovid": "SPRITE_GSGENTLEMAN",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSGENTLEMAN",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25SP0101_004 + 1",

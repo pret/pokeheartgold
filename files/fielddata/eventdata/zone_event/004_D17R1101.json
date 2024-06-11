@@ -45,8 +45,8 @@
   "objects": [
     {
       "id": "obj_D17R1101_gsleader4",
-      "ovid": "SPRITE_GSLEADER4",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSLEADER4",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_UNK_2CA",
       "scr": "_EV_scr_seq_D17R1101_001 + 1",

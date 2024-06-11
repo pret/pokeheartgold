@@ -2,7 +2,7 @@
 #include "bag.h"
 #include "bug_contest.h"
 #include "fieldmap.h"
-#include "field_map_object.h"
+#include "map_object.h"
 #include "launch_application.h"
 #include "friend_group.h"
 #include "gf_gfx_loader.h"
@@ -645,7 +645,7 @@ BOOL ScrCmd_699(ScriptContext *ctx) {
 
     height = vec.y;
 
-    while (sub_0205EEF4(mapObjectManager, &curObj, &unkVar, 1) == TRUE) {
+    while (MapObjectManager_GetNextObjectWithFlagFromIndex(mapObjectManager, &curObj, &unkVar, MAPOBJECTFLAG_ACTIVE) == TRUE) {
         if (curObj == playerObj) continue;
         MapObject_SetFlagsBits(curObj, MAPOBJECTFLAG_UNK13);
         if (MapObject_TestFlagsBits(curObj, MAPOBJECTFLAG_UNK12) == TRUE) {
@@ -675,7 +675,7 @@ BOOL ScrCmd_700(ScriptContext *ctx) {
 
     playerObj  = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
 
-    while (sub_0205EEF4(mapObjectManager, &curObj, &index, MAPOBJECTFLAG_ACTIVE) == TRUE) {
+    while (MapObjectManager_GetNextObjectWithFlagFromIndex(mapObjectManager, &curObj, &index, MAPOBJECTFLAG_ACTIVE) == TRUE) {
         if (curObj == playerObj) continue;
         MapObject_ClearFlagsBits(curObj, MAPOBJECTFLAG_UNK13);
     }
@@ -736,8 +736,8 @@ BOOL ScrCmd_775(ScriptContext *ctx) {
     u32 objIdA = ScriptGetVar(ctx);
     u32 objIdB = ScriptGetVar(ctx);
 
-    LocalMapObject *objA = GetMapObjectByID(ctx->fieldSystem->mapObjectManager, objIdA);
-    LocalMapObject *objB = GetMapObjectByID(ctx->fieldSystem->mapObjectManager, objIdB);
+    LocalMapObject *objA = MapObjectManager_GetFirstActiveObjectByID(ctx->fieldSystem->mapObjectManager, objIdA);
+    LocalMapObject *objB = MapObjectManager_GetFirstActiveObjectByID(ctx->fieldSystem->mapObjectManager, objIdB);
 
     ov02_022469B4(ctx->fieldSystem->taskman, objA, objB);
 
@@ -955,10 +955,10 @@ BOOL ScrCmd_CreatePokeathlonFriendshipRoomStatues(ScriptContext *ctx) {
     SavePokeathlonFriendshipRecords *unkPtr = sub_02031B00(fieldSystem->saveData);
 
     for (i = 0; i < 3; i++) {
-        LocalMapObject *mapObj = GetMapObjectByID(fieldSystem->mapObjectManager, 0xf6 + i);
+        LocalMapObject *mapObj = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, 0xf6 + i);
 
         if (mapObj) {
-            DeleteMapObject(mapObj);
+            MapObject_Delete(mapObj);
         }
 
         species = unkPtr->friendshipRoomStatues[i].species;
@@ -978,7 +978,7 @@ static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectManager, u8 unkA
     spriteId = FollowMon_GetSpriteID(species, form, gender) << 1;
     size = FollowMon_GetSizeParamBySpecies(species)*3 + unkA;
 
-    mapObj = CreateSpecialFieldObjectEx(mapObjectManager, x, y, DIR_SOUTH, size + 0x19f, 0, mapId, 0, 0, spriteId);
+    mapObj = MapObject_CreateWithParams(mapObjectManager, x, y, DIR_SOUTH, size + 0x19f, 0, mapId, 0, 0, spriteId);
 
     if (!mapObj) {
         GF_AssertFail();
@@ -993,7 +993,7 @@ static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectManager, u8 unkA
     MapObject_SetXRange(mapObj, -1);
     MapObject_SetYRange(mapObj, -1);
     MapObject_SetFlagsBits(mapObj, MAPOBJECTFLAG_UNK30);
-    MapObject_ClearFlagsBits(mapObj, 0);
+    MapObject_ClearFlagsBits(mapObj, MAPOBJECTFLAG_NONE);
     MapObject_SetFlag29(mapObj, FALSE);
 
     return mapObj;

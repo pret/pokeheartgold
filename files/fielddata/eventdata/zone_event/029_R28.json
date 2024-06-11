@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_R28_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_R28_TM35",
       "scr": "std_itemball_r28_tm35",
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_R28_tree",
-      "ovid": "SPRITE_TREE",
-      "mvt": 0,
+      "sprite_id": "SPRITE_TREE",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_011",
       "scr": "std_field_cut",

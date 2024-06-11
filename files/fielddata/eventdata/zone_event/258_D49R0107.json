@@ -37,8 +37,8 @@
   "objects": [
     {
       "id": "obj_D49R0107_thlonowner",
-      "ovid": "SPRITE_THLONOWNER",
-      "mvt": 0,
+      "sprite_id": "SPRITE_THLONOWNER",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D49R0107_000 + 1",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_D49R0107_statuehero",
-      "ovid": "SPRITE_STATUEHERO",
-      "mvt": 0,
+      "sprite_id": "SPRITE_STATUEHERO",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,
@@ -71,8 +71,8 @@
     },
     {
       "id": "obj_D49R0107_statueheroine",
-      "ovid": "SPRITE_STATUEHEROINE",
-      "mvt": 0,
+      "sprite_id": "SPRITE_STATUEHEROINE",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,

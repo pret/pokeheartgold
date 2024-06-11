@@ -596,7 +596,7 @@ sub_02057184: ; 0x02057184
 	ldr r0, [r0, #0x30]
 	add r1, r5, r1
 	ldr r0, [r0, #0x3c]
-	bl GetMapObjectByID
+	bl MapObjectManager_GetFirstActiveObjectByID
 	cmp r0, #0
 	beq _020571CC
 	bl MapObject_Remove

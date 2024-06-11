@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_D31R0207_bfsw1",
-      "ovid": "SPRITE_BFSW1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BFSW1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D31R0207_000 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_D31R0207_seven1",
-      "ovid": "SPRITE_SEVEN1",
-      "mvt": 2,
+      "sprite_id": "SPRITE_SEVEN1",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_UNK_2AD",
       "scr": "_EV_scr_seq_D31R0207_001 + 1",
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_D31R0207_seven5",
-      "ovid": "SPRITE_SEVEN5",
-      "mvt": 2,
+      "sprite_id": "SPRITE_SEVEN5",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_UNK_2AE",
       "scr": "_EV_scr_seq_D31R0207_002 + 1",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_D31R0207_seven2",
-      "ovid": "SPRITE_SEVEN2",
-      "mvt": 2,
+      "sprite_id": "SPRITE_SEVEN2",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_UNK_2AF",
       "scr": "_EV_scr_seq_D31R0207_003 + 1",
@@ -71,8 +71,8 @@
     },
     {
       "id": "obj_D31R0207_seven3",
-      "ovid": "SPRITE_SEVEN3",
-      "mvt": 2,
+      "sprite_id": "SPRITE_SEVEN3",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_UNK_2B0",
       "scr": "_EV_scr_seq_D31R0207_004 + 1",
@@ -88,8 +88,8 @@
     },
     {
       "id": "obj_D31R0207_seven4",
-      "ovid": "SPRITE_SEVEN4",
-      "mvt": 2,
+      "sprite_id": "SPRITE_SEVEN4",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_UNK_2B1",
       "scr": "_EV_scr_seq_D31R0207_005 + 1",

@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_R31_gsman1",
-      "ovid": "SPRITE_GSMAN1",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSMAN1",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_R31_004 + 1",
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_R31_tree",
-      "ovid": "SPRITE_TREE",
-      "mvt": 0,
+      "sprite_id": "SPRITE_TREE",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_010",
       "scr": "std_field_cut",
@@ -55,8 +55,8 @@
     },
     {
       "id": "obj_R31_gsbigman",
-      "ovid": "SPRITE_GSBIGMAN",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSBIGMAN",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_R31_001 + 1",
@@ -72,8 +72,8 @@
     },
     {
       "id": "obj_R31_tree_2",
-      "ovid": "SPRITE_TREE",
-      "mvt": 0,
+      "sprite_id": "SPRITE_TREE",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_011",
       "scr": "std_field_cut",
@@ -89,8 +89,8 @@
     },
     {
       "id": "obj_R31_gsboy1",
-      "ovid": "SPRITE_GSBOY1",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSBOY1",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_R31_005 + 1",
@@ -106,8 +106,8 @@
     },
     {
       "id": "obj_R31_gsboy3",
-      "ovid": "SPRITE_GSBOY3",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSBOY3",
+      "movement": 14,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BUG_CATCHER_WADE)",
@@ -123,8 +123,8 @@
     },
     {
       "id": "obj_R31_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_R31_POTION",
       "scr": "std_itemball_r31_potion",
@@ -140,8 +140,8 @@
     },
     {
       "id": "obj_R31_monstarball_2",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_R31_POKE_BALL",
       "scr": "std_itemball_r31_poke_ball",
@@ -157,8 +157,8 @@
     },
     {
       "id": "obj_R31_bonguri",
-      "ovid": "SPRITE_BONGURI",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BONGURI",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_apricorn_tree",

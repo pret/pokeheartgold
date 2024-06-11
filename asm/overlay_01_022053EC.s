@@ -220,7 +220,7 @@ _02205554:
 	thumb_func_start ov01_02205564
 ov01_02205564: ; 0x02205564
 	push {r3, lr}
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	ldr r1, _02205580 ; =0x0000019F
 	cmp r0, r1
 	blt _0220557A
@@ -422,7 +422,7 @@ ov01_022056C4: ; 0x022056C4
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	add r5, r1, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystem
 	add r7, r0, #0
 	add r0, r6, #0
 	bl MapObject_GetCurrentX
@@ -617,7 +617,7 @@ ov01_02205808: ; 0x02205808
 	bl MapObject_GetManager
 	add r7, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	add r1, r0, #0
 	add r0, r7, #0
 	add r2, sp, #0
@@ -1358,7 +1358,7 @@ _02205E12:
 	add r0, r5, #0
 	bl FollowMon_GetMapObject
 	str r0, [sp]
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	bl ov01_02206088
 	add r7, r0, #0
 	ldr r0, [r5, #0x3c]
@@ -1752,7 +1752,7 @@ _0220613A: ; jump table
 _02206142:
 	add r0, r6, #0
 	bl FollowMon_GetMapObject
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	bl ov01_02206088
 	add r7, r0, #0
 	ldr r0, [r6, #0x3c]

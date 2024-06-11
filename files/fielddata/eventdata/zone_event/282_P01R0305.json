@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_P01R0305_fire",
-      "ovid": "SPRITE_FIRE",
-      "mvt": 18,
+      "sprite_id": "SPRITE_FIRE",
+      "movement": 18,
       "type": 1,
       "flag": "FLAG_UNK_22A",
       "scr": "std_trainer(TRAINER_FIREBREATHER_LYLE)",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_P01R0305_gswoman2",
-      "ovid": "SPRITE_GSWOMAN2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSWOMAN2",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_UNK_22B",
       "scr": "std_trainer(TRAINER_BEAUTY_CASSIE)",
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_P01R0305_gsman2",
-      "ovid": "SPRITE_GSMAN2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSMAN2",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_UNK_22C",
       "scr": "std_trainer(TRAINER_GUITARIST_CLYDE)",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_P01R0305_gsboy3",
-      "ovid": "SPRITE_GSBOY3",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSBOY3",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_UNK_22C",
       "scr": "std_trainer(TRAINER_BUG_CATCHER_KEN)",

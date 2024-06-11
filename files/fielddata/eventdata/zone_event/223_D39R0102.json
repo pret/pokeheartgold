@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_D39R0102_rock",
-      "ovid": "SPRITE_ROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_ROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ICE_PATH_BOULDER_1_INIT",
       "scr": "std_field_strength",
@@ -30,8 +30,8 @@
     },
     {
       "id": "obj_D39R0102_rock_2",
-      "ovid": "SPRITE_ROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_ROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ICE_PATH_BOULDER_2_INIT",
       "scr": "std_field_strength",
@@ -47,8 +47,8 @@
     },
     {
       "id": "obj_D39R0102_rock_3",
-      "ovid": "SPRITE_ROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_ROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ICE_PATH_BOULDER_3_INIT",
       "scr": "std_field_strength",
@@ -64,8 +64,8 @@
     },
     {
       "id": "obj_D39R0102_rock_4",
-      "ovid": "SPRITE_ROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_ROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ICE_PATH_BOULDER_4_INIT",
       "scr": "std_field_strength",
@@ -81,8 +81,8 @@
     },
     {
       "id": "obj_D39R0102_rock_5",
-      "ovid": "SPRITE_ROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_ROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_field_strength",
@@ -98,8 +98,8 @@
     },
     {
       "id": "obj_D39R0102_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D39R0102_IRON",
       "scr": "std_itemball_d39r0102_iron",

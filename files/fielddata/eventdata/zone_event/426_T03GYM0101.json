@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_T03GYM0101_sunglasses",
-      "ovid": "SPRITE_SUNGLASSES",
-      "mvt": 15,
+      "sprite_id": "SPRITE_SUNGLASSES",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T03GYM0101_001 + 1",
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_T03GYM0101_gsleader14",
-      "ovid": "SPRITE_GSLEADER14",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSLEADER14",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_UNK_2F4",
       "scr": "_EV_scr_seq_T03GYM0101_000 + 1",
@@ -55,8 +55,8 @@
     },
     {
       "id": "obj_T03GYM0101_campboy_2",
-      "ovid": "SPRITE_CAMPBOY_2",
-      "mvt": 17,
+      "sprite_id": "SPRITE_CAMPBOY_2",
+      "movement": 17,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_CAMPER_JERRY)",
@@ -72,8 +72,8 @@
     },
     {
       "id": "obj_T03GYM0101_mount_2",
-      "ovid": "SPRITE_MOUNT_2",
-      "mvt": 16,
+      "sprite_id": "SPRITE_MOUNT_2",
+      "movement": 16,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_HIKER_EDWIN)",

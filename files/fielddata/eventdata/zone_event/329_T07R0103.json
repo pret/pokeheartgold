@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_T07R0103_shopm1_2",
-      "ovid": "SPRITE_SHOPM1_2",
-      "mvt": 15,
+      "sprite_id": "SPRITE_SHOPM1_2",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0103_000 + 1",
@@ -30,8 +30,8 @@
     },
     {
       "id": "obj_T07R0103_gsdsboy",
-      "ovid": "SPRITE_GSDSBOY",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSDSBOY",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0103_003 + 1",
@@ -47,8 +47,8 @@
     },
     {
       "id": "obj_T07R0103_gsdsboy_2",
-      "ovid": "SPRITE_GSDSBOY",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSDSBOY",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0103_002 + 1",
@@ -64,8 +64,8 @@
     },
     {
       "id": "obj_T07R0103_gsboy1",
-      "ovid": "SPRITE_GSBOY1",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSBOY1",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0103_001 + 1",
@@ -81,8 +81,8 @@
     },
     {
       "id": "obj_T07R0103_gsman1",
-      "ovid": "SPRITE_GSMAN1",
-      "mvt": 5,
+      "sprite_id": "SPRITE_GSMAN1",
+      "movement": 5,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0103_004 + 1",

@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_T25R1005_shopm1_2",
-      "ovid": "SPRITE_SHOPM1_2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SHOPM1_2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1005_000 + 1",
@@ -30,8 +30,8 @@
     },
     {
       "id": "obj_T25R1005_gsmiddleman1",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1005_001 + 1",
@@ -47,8 +47,8 @@
     },
     {
       "id": "obj_T25R1005_gsbigman",
-      "ovid": "SPRITE_GSBIGMAN",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSBIGMAN",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1005_003 + 1",
@@ -64,8 +64,8 @@
     },
     {
       "id": "obj_T25R1005_gsgirl3",
-      "ovid": "SPRITE_GSGIRL3",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSGIRL3",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1005_002 + 1",
@@ -81,8 +81,8 @@
     },
     {
       "id": "obj_T25R1005_gswoman1",
-      "ovid": "SPRITE_GSWOMAN1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSWOMAN1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_GOLDENROD_DEPT_STORE_5F_RETURN_FRUSTRATION_LADY",
       "scr": "_EV_scr_seq_T25R1005_006 + 1",

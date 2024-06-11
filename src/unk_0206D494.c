@@ -1,7 +1,7 @@
 #include "global.h"
 #include "assert.h"
 #include "save_vars_flags.h"
-#include "field_map_object.h"
+#include "map_object.h"
 #include "field_player_avatar.h"
 #include "field_system.h"
 #include "field_warp_tasks.h"
@@ -117,7 +117,7 @@ static LocalMapObject *sub_0206D590(LocalMapObject *object) {
     u32 dy = GetDeltaYByFacingDirection(direction);
     LocalMapObject *obj = sub_0206D614(manager, x + dx, height, y + dy);
     if (obj) {
-        if (MapObject_GetGfxID(obj) != SPRITE_ICE) {
+        if (MapObject_GetSpriteID(obj) != SPRITE_ICE) {
             return NULL;
         }
         u32 dir = MapObject_GetFacingDirection(obj);
@@ -132,10 +132,10 @@ static LocalMapObject *sub_0206D590(LocalMapObject *object) {
 
 static LocalMapObject *sub_0206D614(MapObjectManager *manager, u32 x, u32 a2, u32 y) {
     LocalMapObject *object = MapObjectManager_GetObjects(manager);
-    u32 count = MapObjectManager_GetCount(manager);
+    u32 count = MapObjectManager_GetObjectCount(manager);
     do {
-        if (MapObject_GetFlagsMask(object, MAPOBJECTFLAG_ACTIVE)
-                && !MapObject_GetFlagsMask(object, MAPOBJECTFLAG_UNK18)) {
+        if (MapObject_GetFlagsBits(object, MAPOBJECTFLAG_ACTIVE)
+                && !MapObject_GetFlagsBits(object, MAPOBJECTFLAG_UNK18)) {
             u32 curX = MapObject_GetCurrentX(object);
             u32 curY = MapObject_GetCurrentY(object);
             if (curX == x && curY == y) {
@@ -170,7 +170,7 @@ static u32 sub_0206D688(UnkStruct_0206D494 *a0) {
                         GF_ASSERT(FALSE);
                         return TRUE;
                     }
-                    if (MapObject_GetGfxID(object) == SPRITE_ICE) {
+                    if (MapObject_GetSpriteID(object) == SPRITE_ICE) {
                         a0->unk04 = object;
                         MapObject_SetHeldMovement(a0->unk00, MOVEMENT_UNK_72);
                         a0->unk09 = 2;
@@ -220,10 +220,10 @@ static u32 sub_0206D7B8(LocalMapObject *object, u32 x, u32 height, u32 y) {
     VecFx32 position;
     MapObject_GetPositionVec(object, &position);
     u32 flags = 0;
-    if (sub_020549F4(MapObject_GetFieldSysPtr(object), &position, x, y, &unk) == 1) {
+    if (sub_020549F4(MapObject_GetFieldSystem(object), &position, x, y, &unk) == 1) {
         flags |= 1;
     }
-    u8 behavior = GetMetatileBehaviorAt(MapObject_GetFieldSysPtr(object), x, y);
+    u8 behavior = GetMetatileBehaviorAt(MapObject_GetFieldSystem(object), x, y);
     if (sub_0205B828(behavior) == 0) {
         flags |= 4;
     }
@@ -256,7 +256,7 @@ static u32 sub_0206D81C(u32 direction) {
 
 static void sub_0206D850(PlayerAvatar *playerAvatar) {
     if (sub_0205CA38(playerAvatar) == TRUE) {
-        MapObject_ClearFlagsBits(PlayerAvatar_GetMapObject(playerAvatar), MAPOBJECTFLAG_UNK7 | MAPOBJECTFLAG_UNK8);
+        MapObject_ClearFlagsBits(PlayerAvatar_GetMapObject(playerAvatar), (MapObjectFlagBits)(MAPOBJECTFLAG_UNK7 | MAPOBJECTFLAG_UNK8));
         if (sub_0205CB2C(playerAvatar) == 0) {
             sub_0205C74C(playerAvatar);
         }

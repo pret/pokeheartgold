@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_D10R0101_mount_2",
-      "ovid": "SPRITE_MOUNT_2",
-      "mvt": 16,
+      "sprite_id": "SPRITE_MOUNT_2",
+      "movement": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D10R0101_005 + 1",

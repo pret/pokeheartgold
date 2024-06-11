@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_R02R0101_gsboy3",
-      "ovid": "SPRITE_GSBOY3",
-      "mvt": 8,
+      "sprite_id": "SPRITE_GSBOY3",
+      "movement": 8,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BUG_CATCHER_ED)",
@@ -30,8 +30,8 @@
     },
     {
       "id": "obj_R02R0101_tree",
-      "ovid": "SPRITE_TREE",
-      "mvt": 0,
+      "sprite_id": "SPRITE_TREE",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_010",
       "scr": "std_field_cut",
@@ -47,8 +47,8 @@
     },
     {
       "id": "obj_R02R0101_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_R02R0101_CARBOS",
       "scr": "std_itemball_r02r0101_carbos",
@@ -64,8 +64,8 @@
     },
     {
       "id": "obj_R02R0101_bonguri",
-      "ovid": "SPRITE_BONGURI",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BONGURI",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_apricorn_tree",

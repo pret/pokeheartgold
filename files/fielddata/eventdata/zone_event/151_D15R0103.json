@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_D15R0103_bozu",
-      "ovid": "SPRITE_BOZU",
-      "mvt": 16,
+      "sprite_id": "SPRITE_BOZU",
+      "movement": 16,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_SAGE_JIN)",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_D15R0103_bozu_2",
-      "ovid": "SPRITE_BOZU",
-      "mvt": 17,
+      "sprite_id": "SPRITE_BOZU",
+      "movement": 17,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_SAGE_NEAL)",
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_D15R0103_bozu_3",
-      "ovid": "SPRITE_BOZU",
-      "mvt": 15,
+      "sprite_id": "SPRITE_BOZU",
+      "movement": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_SAGE_TROY)",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_D15R0103_chourou",
-      "ovid": "SPRITE_CHOUROU",
-      "mvt": 15,
+      "sprite_id": "SPRITE_CHOUROU",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D15R0103_002 + 1",
@@ -71,8 +71,8 @@
     },
     {
       "id": "obj_D15R0103_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D15R0103_POTION",
       "scr": "std_itemball_d15r0103_potion",
@@ -88,8 +88,8 @@
     },
     {
       "id": "obj_D15R0103_monstarball_2",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D15R0103_ESCAPE_ROPE",
       "scr": "std_itemball_d15r0103_escape_rope",
@@ -105,8 +105,8 @@
     },
     {
       "id": "obj_D15R0103_gsrivel",
-      "ovid": "SPRITE_GSRIVEL",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSRIVEL",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_UNK_1A3",
       "scr": 0,

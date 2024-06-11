@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_T20R0402_var_1",
-      "ovid": "SPRITE_VAR_1",
-      "mvt": 16,
+      "sprite_id": "SPRITE_VAR_1",
+      "movement": 16,
       "type": 0,
       "flag": "FLAG_HIDE_NEW_BARK_FRIENDS_ROOM_FRIEND",
       "scr": "_EV_scr_seq_T20R0402_000 + 1",
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_T20R0402_tsure_poke_static_marill",
-      "ovid": "SPRITE_FOLLOWER_MON_STATIC_MARILL",
-      "mvt": 44,
+      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_MARILL",
+      "movement": 44,
       "type": 0,
       "flag": "FLAG_HIDE_NEW_BARK_FRIENDS_ROOM_FRIEND",
       "scr": "_EV_scr_seq_T20R0402_001 + 1",

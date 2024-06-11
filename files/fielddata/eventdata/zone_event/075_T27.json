@@ -77,8 +77,8 @@
   "objects": [
     {
       "id": "obj_T27_gsgirl1",
-      "ovid": "SPRITE_GSGIRL1",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSGIRL1",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T27_006 + 1",
@@ -94,8 +94,8 @@
     },
     {
       "id": "obj_T27_gsboy1",
-      "ovid": "SPRITE_GSBOY1",
-      "mvt": 5,
+      "sprite_id": "SPRITE_GSBOY1",
+      "movement": 5,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T27_007 + 1",
@@ -111,8 +111,8 @@
     },
     {
       "id": "obj_T27_gsbigman",
-      "ovid": "SPRITE_GSBIGMAN",
-      "mvt": 5,
+      "sprite_id": "SPRITE_GSBIGMAN",
+      "movement": 5,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T27_008 + 1",
@@ -128,8 +128,8 @@
     },
     {
       "id": "obj_T27_gsoldman1",
-      "ovid": "SPRITE_GSOLDMAN1",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSOLDMAN1",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T27_009 + 1",
@@ -145,8 +145,8 @@
     },
     {
       "id": "obj_T27_gsoldman1_2",
-      "ovid": "SPRITE_GSOLDMAN1",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSOLDMAN1",
+      "movement": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T27_010 + 1",
@@ -162,8 +162,8 @@
     },
     {
       "id": "obj_T27_gsgirl2",
-      "ovid": "SPRITE_GSGIRL2",
-      "mvt": 5,
+      "sprite_id": "SPRITE_GSGIRL2",
+      "movement": 5,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T27_011 + 1",
@@ -179,8 +179,8 @@
     },
     {
       "id": "obj_T27_gsrivel",
-      "ovid": "SPRITE_GSRIVEL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSRIVEL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ECRUTEAK_RIVAL",
       "scr": 0,
@@ -196,8 +196,8 @@
     },
     {
       "id": "obj_T27_gsoldman1_3",
-      "ovid": "SPRITE_GSOLDMAN1",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSOLDMAN1",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_HIDE_ECRUTEAK_OLD_MAN",
       "scr": "_EV_scr_seq_T27_013 + 1",
@@ -213,8 +213,8 @@
     },
     {
       "id": "obj_T27_gsmiddleman1",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
       "scr": "_EV_scr_seq_T27_014 + 1",

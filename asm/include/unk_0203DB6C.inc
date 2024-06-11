@@ -9,7 +9,7 @@
 .public sub_0203DDA4
 .public sub_0203DE04
 .public FieldSystem_VarGet
-.public FieldSystem_FlagGet
+.public FieldSystem_FlagCheck
 .public HiddenItemScriptNoToFlagId
 .public GetMetatileBehaviorAt
 .public sub_0205B700

@@ -14,10 +14,10 @@
 .public PlayerAvatar_GetMapObject
 .public FieldSystem_GetPlayerAvatar
 .public sub_0205CB00
-.public sub_0205EEF4
+.public MapObjectManager_GetNextObjectWithFlagFromIndex
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
-.public MapObject_GetFlagsMask
+.public MapObject_GetFlagsBits
 .public MapObject_TestFlagsBits
 .public sub_0205F254
 .public MapObject_GetType
@@ -29,7 +29,7 @@
 .public MapObject_SetMovementCommand
 .public MapObject_GetMovementCommand
 .public MapObject_SetMovementStep
-.public MapObject_GetFieldSysPtr
+.public MapObject_GetFieldSystem
 .public MapObject_SingleMovementSetActive
 .public MapObject_SingleMovementSetInactive
 .public MapObject_IsSingleMovementActive

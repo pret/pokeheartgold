@@ -262,7 +262,7 @@ _0203DD1E:
 	bl HiddenItemScriptNoToFlagId
 	add r1, r0, #0
 	add r0, r4, #0
-	bl FieldSystem_FlagGet
+	bl FieldSystem_FlagCheck
 	cmp r0, #1
 	beq _0203DD34
 	mov r0, #1

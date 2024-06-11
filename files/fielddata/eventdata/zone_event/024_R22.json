@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_R22_gsmiddleman1",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
       "scr": "_EV_scr_seq_R22_000 + 1",
@@ -30,8 +30,8 @@
     },
     {
       "id": "obj_R22_sakaki",
-      "ovid": "SPRITE_SAKAKI",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SAKAKI",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ROUTE_22_GIOVANNI_RIVAL",
       "scr": 0,
@@ -47,8 +47,8 @@
     },
     {
       "id": "obj_R22_gsrivel",
-      "ovid": "SPRITE_GSRIVEL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSRIVEL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ROUTE_22_GIOVANNI_RIVAL",
       "scr": 0,
@@ -64,8 +64,8 @@
     },
     {
       "id": "obj_R22_var_1",
-      "ovid": "SPRITE_VAR_1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_VAR_1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ROUTE_22_FRIEND",
       "scr": 0,

@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_R05R0201_gswoman1",
-      "ovid": "SPRITE_GSWOMAN1",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSWOMAN1",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_R05R0201_000 + 1",

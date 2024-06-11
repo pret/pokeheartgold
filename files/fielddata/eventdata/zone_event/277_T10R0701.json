@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_T10R0701_wataru",
-      "ovid": "SPRITE_WATARU",
-      "mvt": 0,
+      "sprite_id": "SPRITE_WATARU",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,

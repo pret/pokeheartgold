@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_T05R0301_middlewoman1_2",
-      "ovid": "SPRITE_MIDDLEWOMAN1_2",
-      "mvt": 17,
+      "sprite_id": "SPRITE_MIDDLEWOMAN1_2",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T05R0301_000 + 1",

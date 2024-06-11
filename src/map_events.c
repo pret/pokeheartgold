@@ -1,7 +1,7 @@
 #include "map_events.h"
 #include "filesystem.h"
 #include "encounter_tables_narc.h"
-#include "field_map_object.h"
+#include "map_object.h"
 
 static void MapEvents_ReadFromNarc(MapEvents *events, u32 mapno);
 static void MapEvents_ComputeRamHeader(MapEvents *events);
@@ -35,7 +35,7 @@ void Field_InitMapObjectsFromZoneEventData(FieldSystem *fieldSystem) {
     u32 obj_count = fieldSystem->mapEvents->num_object_events;
     GF_ASSERT(fieldSystem->mapEvents != NULL);
     if (obj_count != 0) {
-        InitMapObjectsFromEventTemplates(fieldSystem->mapObjectManager, fieldSystem->location->mapId, obj_count, fieldSystem->mapEvents->object_events);
+        MapObject_CreateFromMultipleObjectEvents(fieldSystem->mapObjectManager, fieldSystem->location->mapId, obj_count, fieldSystem->mapEvents->object_events);
     }
 }
 
@@ -117,14 +117,14 @@ BOOL Field_SetEventDefaultDirection(FieldSystem *fieldSystem, int id, u16 dirn) 
     return FALSE;
 }
 
-BOOL Field_SetEventDefaultMovement(FieldSystem *fieldSystem, int id, u16 mvt) {
+BOOL Field_SetEventDefaultMovement(FieldSystem *fieldSystem, int id, u16 movement) {
     int i;
     ObjectEvent *objs = fieldSystem->mapEvents->object_events;
     u32 num_objs = fieldSystem->mapEvents->num_object_events;
 
     for (i = 0; i < num_objs; i++) {
         if (objs[i].id == id) {
-            objs[i].mvt = mvt;
+            objs[i].movement = movement;
             return TRUE;
         }
     }

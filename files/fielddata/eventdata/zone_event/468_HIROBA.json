@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_HIROBA_wifisf",
-      "ovid": "SPRITE_WIFISF",
-      "mvt": 0,
+      "sprite_id": "SPRITE_WIFISF",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,

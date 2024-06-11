@@ -107,8 +107,8 @@ BgEvent = NamedStruct('BgEvent', '<HHLLLL', (
 ))
 ObjectEvent = NamedStruct('ObjectEvent', '<HHHHHHhHHHhhHHl', (
     'id',
-    'ovid',
-    'mvt',
+    'sprite_id',
+    'movement',
     'type',
     'flag',
     'scr',
@@ -391,7 +391,7 @@ class NormalScriptParser(ScriptParserBase):
             obj_prefix = self.prefix.replace('scr_seq_', 'obj_')
             seen_objects = collections.Counter()
             for obj in obs:
-                sprite = self.constants['sprites'][obj.ovid].replace('SPRITE_', '').lower()
+                sprite = self.constants['sprites'][obj.sprite_id].replace('SPRITE_', '').lower()
                 obj_name = f'{obj_prefix}_{sprite}'
                 seen_objects[obj_name] += 1
                 if seen_objects[obj_name] > 1:
@@ -401,8 +401,8 @@ class NormalScriptParser(ScriptParserBase):
             ret['objects'] = [
                 {
                     'id': self.objects[i + 2][1],
-                    'ovid': self.constants['sprites'][ob.ovid],
-                    'mvt': ob.mvt,
+                    'sprite_id': self.constants['sprites'][ob.sprite_id],
+                    'movement': ob.movement,
                     'type': ob.type,
                     'flag': self.constants['flag'][ob.flag],
                     'scr': scr_get(ob.scr),

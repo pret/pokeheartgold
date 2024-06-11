@@ -245,8 +245,8 @@
   "objects": [
     {
       "id": "obj_D24R0218_suit",
-      "ovid": "SPRITE_SUIT",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SUIT",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE",
       "scr": 0,

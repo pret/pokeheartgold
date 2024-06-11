@@ -635,7 +635,7 @@ _02056B70:
 	add r0, r5, #0
 	bl FollowMon_GetMapObject
 	add r1, r4, #0
-	bl MapObject_ForceSetFacingDirection
+	bl MapObject_SetFacingDirectionDirect
 _02056BC2:
 	add sp, #0x34
 	pop {r3, r4, r5, r6, pc}

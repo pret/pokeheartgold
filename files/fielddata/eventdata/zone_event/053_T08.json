@@ -45,8 +45,8 @@
   "objects": [
     {
       "id": "obj_T08_gsmiddleman1",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T08_001 + 1",
@@ -62,8 +62,8 @@
     },
     {
       "id": "obj_T08_gswoman1",
-      "ovid": "SPRITE_GSWOMAN1",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSWOMAN1",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T08_002 + 1",
@@ -79,8 +79,8 @@
     },
     {
       "id": "obj_T08_gsboy2",
-      "ovid": "SPRITE_GSBOY2",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSBOY2",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T08_000 + 1",
@@ -96,8 +96,8 @@
     },
     {
       "id": "obj_T08_tree",
-      "ovid": "SPRITE_TREE",
-      "mvt": 0,
+      "sprite_id": "SPRITE_TREE",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_010",
       "scr": "std_field_cut",
@@ -113,8 +113,8 @@
     },
     {
       "id": "obj_T08_bonguri",
-      "ovid": "SPRITE_BONGURI",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BONGURI",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_apricorn_tree",
@@ -130,8 +130,8 @@
     },
     {
       "id": "obj_T08_gsmiddleman1_2",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
       "scr": "_EV_scr_seq_T08_006 + 1",
@@ -147,8 +147,8 @@
     },
     {
       "id": "obj_T08_juggrer",
-      "ovid": "SPRITE_JUGGRER",
-      "mvt": 0,
+      "sprite_id": "SPRITE_JUGGRER",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T08_008 + 1",

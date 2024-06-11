@@ -29,8 +29,8 @@
   "objects": [
     {
       "id": "obj_D43R0102_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D43R0102_TM26",
       "scr": "std_itemball_d43r0102_tm26",
@@ -46,8 +46,8 @@
     },
     {
       "id": "obj_D43R0102_monstarball_2",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D43R0102_HP_UP",
       "scr": "std_itemball_d43r0102_hp_up",
@@ -63,8 +63,8 @@
     },
     {
       "id": "obj_D43R0102_monstarball_3",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D43R0102_FULL_RESTORE",
       "scr": "std_itemball_d43r0102_full_restore",
@@ -80,8 +80,8 @@
     },
     {
       "id": "obj_D43R0102_rock",
-      "ovid": "SPRITE_ROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_ROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_field_strength",
@@ -97,8 +97,8 @@
     },
     {
       "id": "obj_D43R0102_rock_2",
-      "ovid": "SPRITE_ROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_ROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_field_strength",

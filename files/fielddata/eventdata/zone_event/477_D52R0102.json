@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_D52R0102_tsure_poke_static_kyogre",
-      "ovid": "SPRITE_FOLLOWER_MON_STATIC_KYOGRE",
-      "mvt": 0,
+      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_KYOGRE",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_EMBEDDED_TOWER_KYOGRE",
       "scr": "_EV_scr_seq_D52R0102_000 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_D52R0102_mount_2",
-      "ovid": "SPRITE_MOUNT_2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MOUNT_2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_EMBEDDED_TOWER_KYOGRE_HIKER",
       "scr": 0,

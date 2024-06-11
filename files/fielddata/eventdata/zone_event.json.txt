@@ -21,8 +21,8 @@
 	.word {{ length(objects) }}
 ## for object in objects
 	.short {{ object.id }}
-	.short {{ object.ovid }}
-	.short {{ object.mvt }}
+	.short {{ object.sprite_id }}
+	.short {{ object.movement }}
 	.short {{ object.type }}
 	.short {{ object.flag }}
 	.short {{ object.scr }}

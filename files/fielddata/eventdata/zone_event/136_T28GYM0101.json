@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_T28GYM0101_gsleader7",
-      "ovid": "SPRITE_GSLEADER7",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSLEADER7",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_UNK_2EE",
       "scr": "_EV_scr_seq_T28GYM0101_000 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_T28GYM0101_ice",
-      "ovid": "SPRITE_ICE",
-      "mvt": 15,
+      "sprite_id": "SPRITE_ICE",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_T28GYM0101_ice_2",
-      "ovid": "SPRITE_ICE",
-      "mvt": 15,
+      "sprite_id": "SPRITE_ICE",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_T28GYM0101_boarder",
-      "ovid": "SPRITE_BOARDER",
-      "mvt": 4,
+      "sprite_id": "SPRITE_BOARDER",
+      "movement": 4,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BOARDER_DEANDRE)",
@@ -71,8 +71,8 @@
     },
     {
       "id": "obj_T28GYM0101_boarder_2",
-      "ovid": "SPRITE_BOARDER",
-      "mvt": 15,
+      "sprite_id": "SPRITE_BOARDER",
+      "movement": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BOARDER_GERARDO)",
@@ -88,8 +88,8 @@
     },
     {
       "id": "obj_T28GYM0101_ice_3",
-      "ovid": "SPRITE_ICE",
-      "mvt": 15,
+      "sprite_id": "SPRITE_ICE",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,
@@ -105,8 +105,8 @@
     },
     {
       "id": "obj_T28GYM0101_skierw",
-      "ovid": "SPRITE_SKIERW",
-      "mvt": 17,
+      "sprite_id": "SPRITE_SKIERW",
+      "movement": 17,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_SKIER_JILL)",

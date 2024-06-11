@@ -38,13 +38,13 @@
 .public sub_0205F1A0
 .public FldObjSys_GetMModelNarc
 .public MapObject_GetID
-.public MapObject_GetGfxID
+.public MapObject_GetSpriteID
 .public MapObject_SetFacingDirection
 .public MapObject_GetFacingDirection
 .public MapObject_GetParam
 .public MapObject_GetManager
 .public sub_0205F484
-.public MapObject_GetFieldSysPtr
+.public MapObject_GetFieldSystem
 .public MapObject_CheckVisible
 .public MapObject_PauseMovement
 .public MapObject_UnpauseMovement

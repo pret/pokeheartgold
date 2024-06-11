@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_T29R0101_gsbigman",
-      "ovid": "SPRITE_GSBIGMAN",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSBIGMAN",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T29R0101_000 + 1",

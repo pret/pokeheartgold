@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_T03R0601_gsoldman1",
-      "ovid": "SPRITE_GSOLDMAN1",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSOLDMAN1",
+      "movement": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T03R0601_000 + 1",

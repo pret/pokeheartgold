@@ -6,7 +6,7 @@
 .public MapObject_GetID
 .public sub_0205F254
 .public MapObject_GetFacingDirection
-.public MapObject_GetFieldSysPtr
+.public MapObject_GetFieldSystem
 .public MapObject_GetPositionVec
 .public sub_0205F9A0
 .public sub_0206121C

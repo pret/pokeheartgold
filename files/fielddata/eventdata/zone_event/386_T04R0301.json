@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_T04R0301_gsoldwoman1",
-      "ovid": "SPRITE_GSOLDWOMAN1",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSOLDWOMAN1",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T04R0301_000 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_T04R0301_gsoldman1",
-      "ovid": "SPRITE_GSOLDMAN1",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSOLDMAN1",
+      "movement": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T04R0301_001 + 1",
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_T04R0301_tsure_poke_static_zubat",
-      "ovid": "SPRITE_FOLLOWER_MON_STATIC_ZUBAT",
-      "mvt": 3,
+      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_ZUBAT",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T04R0301_003 + 1",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_T04R0301_tsure_poke_static_kangaskhan",
-      "ovid": "SPRITE_FOLLOWER_MON_STATIC_KANGASKHAN",
-      "mvt": 5,
+      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_KANGASKHAN",
+      "movement": 5,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T04R0301_002 + 1",

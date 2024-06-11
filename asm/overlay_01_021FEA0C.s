@@ -143,7 +143,7 @@ ov01_021FEAB0: ; 0x021FEAB0
 	str r4, [sp, #0x1c]
 	str r0, [sp, #0x18]
 	add r0, r5, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystem
 	str r0, [sp, #0x20]
 	add r0, r4, #0
 	mov r1, #5

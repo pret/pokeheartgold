@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_R31R0101_counterm",
-      "ovid": "SPRITE_COUNTERM",
-      "mvt": 15,
+      "sprite_id": "SPRITE_COUNTERM",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_R31R0101_002 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_R31R0101_var_1",
-      "ovid": "SPRITE_VAR_1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_VAR_1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_R31R0101_tsure_poke_static_marill",
-      "ovid": "SPRITE_FOLLOWER_MON_STATIC_MARILL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_MARILL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,

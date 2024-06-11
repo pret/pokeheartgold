@@ -29,8 +29,8 @@
   "objects": [
     {
       "id": "obj_D41R0101_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D41R0101_FULL_RESTORE",
       "scr": "std_itemball_d41r0101_full_restore",
@@ -46,8 +46,8 @@
     },
     {
       "id": "obj_D41R0101_gsmiddleman1",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
       "scr": "_EV_scr_seq_D41R0101_000 + 1",

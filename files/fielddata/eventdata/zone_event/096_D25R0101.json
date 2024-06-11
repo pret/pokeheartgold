@@ -29,8 +29,8 @@
   "objects": [
     {
       "id": "obj_D25R0101_mount_2",
-      "ovid": "SPRITE_MOUNT_2",
-      "mvt": 17,
+      "sprite_id": "SPRITE_MOUNT_2",
+      "movement": 17,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_HIKER_DANIEL)",
@@ -46,8 +46,8 @@
     },
     {
       "id": "obj_D25R0101_mount_2_2",
-      "ovid": "SPRITE_MOUNT_2",
-      "mvt": 13,
+      "sprite_id": "SPRITE_MOUNT_2",
+      "movement": 13,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_HIKER_RUSSEL)",
@@ -63,8 +63,8 @@
     },
     {
       "id": "obj_D25R0101_fire",
-      "ovid": "SPRITE_FIRE",
-      "mvt": 17,
+      "sprite_id": "SPRITE_FIRE",
+      "movement": 17,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_FIREBREATHER_BILL)",
@@ -80,8 +80,8 @@
     },
     {
       "id": "obj_D25R0101_fire_2",
-      "ovid": "SPRITE_FIRE",
-      "mvt": 15,
+      "sprite_id": "SPRITE_FIRE",
+      "movement": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_FIREBREATHER_RAY)",
@@ -97,8 +97,8 @@
     },
     {
       "id": "obj_D25R0101_mania",
-      "ovid": "SPRITE_MANIA",
-      "mvt": 9,
+      "sprite_id": "SPRITE_MANIA",
+      "movement": 9,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_POKE_MANIAC_LARRY)",
@@ -114,8 +114,8 @@
     },
     {
       "id": "obj_D25R0101_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D25R0101_X_ATTACK",
       "scr": "std_itemball_d25r0101_x_attack",
@@ -131,8 +131,8 @@
     },
     {
       "id": "obj_D25R0101_monstarball_2",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D25R0101_GREAT_BALL",
       "scr": "std_itemball_d25r0101_great_ball",
@@ -148,8 +148,8 @@
     },
     {
       "id": "obj_D25R0101_monstarball_3",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D25R0101_POTION",
       "scr": "std_itemball_d25r0101_potion",
@@ -165,8 +165,8 @@
     },
     {
       "id": "obj_D25R0101_monstarball_4",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D25R0101_AWAKENING",
       "scr": "std_itemball_d25r0101_awakening",

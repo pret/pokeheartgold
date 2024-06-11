@@ -37,8 +37,8 @@
   "objects": [
     {
       "id": "obj_EVERYWHERE_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D38R0103_RARE_CANDY",
       "scr": "std_itemball_d38r0103_rare_candy",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_EVERYWHERE_monstarball_2",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D38R0103_MAX_POTION",
       "scr": "std_itemball_d38r0103_max_potion",
@@ -71,8 +71,8 @@
     },
     {
       "id": "obj_EVERYWHERE_monstarball_3",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D38R0103_TM40",
       "scr": "std_itemball_d38r0103_tm40",
@@ -88,8 +88,8 @@
     },
     {
       "id": "obj_EVERYWHERE_monstarball_4",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D38R0103_ELIXIR",
       "scr": "std_itemball_d38r0103_elixir",
@@ -105,8 +105,8 @@
     },
     {
       "id": "obj_EVERYWHERE_monstarball_5",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D38R0103_DRAGON_SCALE",
       "scr": "std_itemball_d38r0103_dragon_scale",
@@ -122,8 +122,8 @@
     },
     {
       "id": "obj_EVERYWHERE_monstarball_6",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D38R0103_ESCAPE_ROPE",
       "scr": "std_itemball_d38r0103_escape_rope",
@@ -139,8 +139,8 @@
     },
     {
       "id": "obj_EVERYWHERE_gsassistantm",
-      "ovid": "SPRITE_GSASSISTANTM",
-      "mvt": 2,
+      "sprite_id": "SPRITE_GSASSISTANTM",
+      "movement": 2,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_SUPER_NERD_HUGH)",

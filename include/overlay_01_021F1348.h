@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_OV_01_021F1348_H
 #define POKEHEARTGOLD_OV_01_021F1348_H
 
-#include "field_map_object.h"
+#include "map_object.h"
 #include "script.h"
 #include "task.h"
 #include "unk_020689C8.h"

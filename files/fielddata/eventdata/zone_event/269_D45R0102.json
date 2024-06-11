@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_D45R0102_breakrock",
-      "ovid": "SPRITE_BREAKROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BREAKROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_010",
       "scr": "std_field_rock_smash",
@@ -30,8 +30,8 @@
     },
     {
       "id": "obj_D45R0102_breakrock_2",
-      "ovid": "SPRITE_BREAKROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BREAKROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_011",
       "scr": "std_field_rock_smash",
@@ -47,8 +47,8 @@
     },
     {
       "id": "obj_D45R0102_breakrock_3",
-      "ovid": "SPRITE_BREAKROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BREAKROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_012",
       "scr": "std_field_rock_smash",
@@ -64,8 +64,8 @@
     },
     {
       "id": "obj_D45R0102_breakrock_4",
-      "ovid": "SPRITE_BREAKROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BREAKROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_013",
       "scr": "std_field_rock_smash",
@@ -81,8 +81,8 @@
     },
     {
       "id": "obj_D45R0102_sakaki",
-      "ovid": "SPRITE_SAKAKI",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SAKAKI",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_TOHJO_FALLS_GIOVANNI",
       "scr": 0,
@@ -98,8 +98,8 @@
     },
     {
       "id": "obj_D45R0102_var_1",
-      "ovid": "SPRITE_VAR_1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_VAR_1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_TOHJO_FALLS_FRIEND",
       "scr": 0,

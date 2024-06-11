@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_D23R0105_gsgentleman",
-      "ovid": "SPRITE_GSGENTLEMAN",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSGENTLEMAN",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_RADIO_TOWER_5F_OFFICE_DIRECTOR",
       "scr": "_EV_scr_seq_D23R0105_002 + 1",
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_D23R0105_rkanbuw",
-      "ovid": "SPRITE_RKANBUW",
-      "mvt": 0,
+      "sprite_id": "SPRITE_RKANBUW",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_HIDE_ROCKET_TAKEOVER_1",
       "scr": "std_trainer(TRAINER_EXECUTIVE_ARIANA_ARIANA)",
@@ -55,8 +55,8 @@
     },
     {
       "id": "obj_D23R0105_rkanbum2",
-      "ovid": "SPRITE_RKANBUM2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_RKANBUM2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_RADIO_TOWER_5F_PETREL_REVEALED",
       "scr": "_EV_scr_seq_D23R0105_002 + 1",

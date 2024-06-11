@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_EVERYWHERE_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D41R0106_MAX_ELIXIR",
       "scr": "std_itemball_d41r0106_max_elixir",
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_EVERYWHERE_monstarball_2",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D41R0106_CALCIUM",
       "scr": "std_itemball_d41r0106_calcium",
@@ -55,8 +55,8 @@
     },
     {
       "id": "obj_EVERYWHERE_monstarball_3",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D41R0106_PROTEIN",
       "scr": "std_itemball_d41r0106_protein",
@@ -72,8 +72,8 @@
     },
     {
       "id": "obj_EVERYWHERE_monstarball_4",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D41R0106_MAX_REVIVE",
       "scr": "std_itemball_d41r0106_max_revive",
@@ -89,8 +89,8 @@
     },
     {
       "id": "obj_EVERYWHERE_breakrock",
-      "ovid": "SPRITE_BREAKROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BREAKROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_010",
       "scr": "std_field_rock_smash",
@@ -106,8 +106,8 @@
     },
     {
       "id": "obj_EVERYWHERE_breakrock_2",
-      "ovid": "SPRITE_BREAKROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BREAKROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_011",
       "scr": "std_field_rock_smash",
@@ -123,8 +123,8 @@
     },
     {
       "id": "obj_EVERYWHERE_breakrock_3",
-      "ovid": "SPRITE_BREAKROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BREAKROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_012",
       "scr": "std_field_rock_smash",
@@ -140,8 +140,8 @@
     },
     {
       "id": "obj_EVERYWHERE_breakrock_4",
-      "ovid": "SPRITE_BREAKROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BREAKROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_013",
       "scr": "std_field_rock_smash",
@@ -157,8 +157,8 @@
     },
     {
       "id": "obj_EVERYWHERE_breakrock_5",
-      "ovid": "SPRITE_BREAKROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BREAKROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_014",
       "scr": "std_field_rock_smash",

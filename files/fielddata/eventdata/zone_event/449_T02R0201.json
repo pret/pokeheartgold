@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_T02R0201_gsmiddleman1",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T02R0201_000 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_T02R0201_gsgirl1",
-      "ovid": "SPRITE_GSGIRL1",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSGIRL1",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T02R0201_001 + 1",
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_T02R0201_tsure_poke_static_rattata",
-      "ovid": "SPRITE_FOLLOWER_MON_STATIC_RATTATA",
-      "mvt": 3,
+      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_RATTATA",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T02R0201_003 + 1",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_T02R0201_tsure_poke_static_spearow",
-      "ovid": "SPRITE_FOLLOWER_MON_STATIC_SPEAROW",
-      "mvt": 15,
+      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_SPEAROW",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T02R0201_002 + 1",

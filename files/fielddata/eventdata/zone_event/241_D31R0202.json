@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_D31R0202_var_11",
-      "ovid": "SPRITE_VAR_11",
-      "mvt": 0,
+      "sprite_id": "SPRITE_VAR_11",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,

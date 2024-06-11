@@ -141,8 +141,8 @@
   "objects": [
     {
       "id": "obj_T07R0401_shopm1_2",
-      "ovid": "SPRITE_SHOPM1_2",
-      "mvt": 15,
+      "sprite_id": "SPRITE_SHOPM1_2",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0401_000 + 1",
@@ -158,8 +158,8 @@
     },
     {
       "id": "obj_T07R0401_gswoman6",
-      "ovid": "SPRITE_GSWOMAN6",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSWOMAN6",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0401_001 + 1",
@@ -175,8 +175,8 @@
     },
     {
       "id": "obj_T07R0401_sunglasses",
-      "ovid": "SPRITE_SUNGLASSES",
-      "mvt": 15,
+      "sprite_id": "SPRITE_SUNGLASSES",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0401_006 + 1",
@@ -192,8 +192,8 @@
     },
     {
       "id": "obj_T07R0401_gsbigman",
-      "ovid": "SPRITE_GSBIGMAN",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSBIGMAN",
+      "movement": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0401_005 + 1",
@@ -209,8 +209,8 @@
     },
     {
       "id": "obj_T07R0401_gsoldman1",
-      "ovid": "SPRITE_GSOLDMAN1",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSOLDMAN1",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0401_007 + 1",
@@ -226,8 +226,8 @@
     },
     {
       "id": "obj_T07R0401_fishing_2",
-      "ovid": "SPRITE_FISHING_2",
-      "mvt": 17,
+      "sprite_id": "SPRITE_FISHING_2",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0401_004 + 1",
@@ -243,8 +243,8 @@
     },
     {
       "id": "obj_T07R0401_gsmiddleman1",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0401_002 + 1",
@@ -260,8 +260,8 @@
     },
     {
       "id": "obj_T07R0401_gswoman1",
-      "ovid": "SPRITE_GSWOMAN1",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSWOMAN1",
+      "movement": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0401_003 + 1",

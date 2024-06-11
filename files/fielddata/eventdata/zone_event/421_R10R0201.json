@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_R10R0201_policeman",
-      "ovid": "SPRITE_POLICEMAN",
-      "mvt": 15,
+      "sprite_id": "SPRITE_POLICEMAN",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_R10R0201_001 + 1",
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_R10R0201_gsassistantm",
-      "ovid": "SPRITE_GSASSISTANTM",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSASSISTANTM",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_R10R0201_003 + 1",
@@ -55,8 +55,8 @@
     },
     {
       "id": "obj_R10R0201_gsassistantm_2",
-      "ovid": "SPRITE_GSASSISTANTM",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSASSISTANTM",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_R10R0201_002 + 1",
@@ -72,8 +72,8 @@
     },
     {
       "id": "obj_R10R0201_policeman_2",
-      "ovid": "SPRITE_POLICEMAN",
-      "mvt": 15,
+      "sprite_id": "SPRITE_POLICEMAN",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_R10R0201_004 + 1",
@@ -89,8 +89,8 @@
     },
     {
       "id": "obj_R10R0201_gsassistantm_3",
-      "ovid": "SPRITE_GSASSISTANTM",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSASSISTANTM",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_R10R0201_006 + 1",
@@ -106,8 +106,8 @@
     },
     {
       "id": "obj_R10R0201_gsassistantm_4",
-      "ovid": "SPRITE_GSASSISTANTM",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSASSISTANTM",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_R10R0201_005 + 1",
@@ -123,8 +123,8 @@
     },
     {
       "id": "obj_R10R0201_gsbigman",
-      "ovid": "SPRITE_GSBIGMAN",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSBIGMAN",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_R10R0201_000 + 1",

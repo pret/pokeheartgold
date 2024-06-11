@@ -141,8 +141,8 @@
   "objects": [
     {
       "id": "obj_D24R0211_gsassistantm",
-      "ovid": "SPRITE_GSASSISTANTM",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSASSISTANTM",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,
@@ -158,8 +158,8 @@
     },
     {
       "id": "obj_D24R0211_gsmiddleman1",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
       "scr": "_EV_scr_seq_D24R0211_002 + 1",
@@ -175,8 +175,8 @@
     },
     {
       "id": "obj_D24R0211_gsmiddleman1_2",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
       "scr": "_EV_scr_seq_D24R0211_004 + 1",

@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_T10R0601_wataru",
-      "ovid": "SPRITE_WATARU",
-      "mvt": 15,
+      "sprite_id": "SPRITE_WATARU",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_T10R0601_ookido",
-      "ovid": "SPRITE_OOKIDO",
-      "mvt": 15,
+      "sprite_id": "SPRITE_OOKIDO",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_T10R0601_kurumi",
-      "ovid": "SPRITE_KURUMI",
-      "mvt": 15,
+      "sprite_id": "SPRITE_KURUMI",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_T10R0601_babyboy1_11",
-      "ovid": "SPRITE_BABYBOY1_11",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BABYBOY1_11",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_UNK_210",
       "scr": 0,
@@ -71,8 +71,8 @@
     },
     {
       "id": "obj_T10R0601_leag_door2",
-      "ovid": "SPRITE_LEAG_DOOR2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_LEAG_DOOR2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,
