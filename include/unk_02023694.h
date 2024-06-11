@@ -65,13 +65,13 @@ void SpriteList_Delete(SpriteList *spriteList);
 void sub_0202457C(SpriteList *spriteList);
 void Sprite_Delete(Sprite *sprite);
 void Sprite_SetMatrix(Sprite *sprite, VecFx32 *vec);
-NNSG2dImagePaletteProxy *sub_02024B34(Sprite *sprite);
+NNSG2dImagePaletteProxy *Sprite_GetPaletteProxy(Sprite *sprite);
 NNS_G2D_VRAM_TYPE Sprite_GetVramType(Sprite *sprite);
 void sub_0202487C(Sprite *sprite, u8 a1);
 void Set2dSpriteVisibleFlag(Sprite *sprite, int a1);
 void sub_02024868(Sprite *sprite, int a1);
 VecFx32 *Sprite_GetMatrixPtr(Sprite *sprite);
-VecFx32* sub_020248B0(Sprite *sprite);
+VecFx32 *sub_020248B0(Sprite *sprite);
 void sub_020247F4(Sprite *sprite, VecFx32 *vec);
 void sub_02024818(Sprite *sprite, u32 a1);
 u16 sub_020248B4(Sprite *sprite);
@@ -100,8 +100,8 @@ void Sprite_SetPriority(Sprite *sprite, u8 a1);
 u8 Sprite_GetPriority(Sprite *sprite);
 void Sprite_SetDrawPriority(Sprite *sprite, u16 a1);
 u16 Sprite_GetDrawPriority(Sprite *sprite);
-NNSG2dImageProxy *sub_02024B1C(Sprite *sprite);
+NNSG2dImageProxy *Sprite_GetImageProxy(Sprite *sprite);
 int Sprite_IsCellAnimationRunning(Sprite *sprite);
-NNSG2dCellAnimation *sub_02024CB8(Sprite *sprite);
+NNSG2dCellAnimation *Sprite_GetCellAnim(Sprite *sprite);
 
 #endif //POKEHEARTGOLD_UNK_02023694_H

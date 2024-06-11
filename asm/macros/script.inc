@@ -827,14 +827,14 @@
 	.short \arg1
 	.endm
 
-	.macro give_mon arg0, arg1, arg2, arg3, arg4, arg5
+	.macro give_mon species, level, heldItem, form, ability, retvar
 	.short 137
-	.short \arg0
-	.short \arg1
-	.short \arg2
-	.short \arg3
-	.short \arg4
-	.short \arg5
+	.short \species
+	.short \level
+	.short \heldItem
+	.short \form
+	.short \ability
+	.short \retvar
 	.endm
 
 	.macro give_egg arg0, arg1
@@ -906,7 +906,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_150
+	.macro restore_overworld
 	.short 150
 	.endm
 

@@ -12677,7 +12677,7 @@ ov15_021FF894: ; 0x021FF894
 	lsl r7, r7, #4
 _021FF8A0:
 	ldr r0, [r5, r7]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0x27

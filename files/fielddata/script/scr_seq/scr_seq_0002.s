@@ -48,7 +48,7 @@ _008A:
 	scrcmd_117
 	party_select_ui
 	get_party_selection VAR_SPECIAL_x8001
-	scrcmd_150
+	restore_overworld
 	scrcmd_116 1, 21, 1
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
@@ -163,7 +163,7 @@ _0241:
 	pokemon_summary_screen 1, VAR_SPECIAL_x8001, VAR_SPECIAL_x8003
 	get_move_selection 1, VAR_SPECIAL_x8006
 	nop_var_490 VAR_SPECIAL_x8006
-	scrcmd_150
+	restore_overworld
 	scrcmd_116 1, 21, 1
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade

@@ -224,15 +224,15 @@ struct UnkPokemonStruct_02072A98 {
     /* 0x6E */ u16 spdef;
 };
 
-struct SomeDrawPokemonStruct {
+typedef struct PokepicTemplate {
     u16 narcID;
     u16 charDataID;
     u16 palDataID;
-    u16 unk6;
-    u8 unk8;
+    u16 species;
+    u8 isAnimated;
     u8 filler_9[3];
-    u32 unkC;
-};
+    u32 personality;
+} PokepicTemplate;
 
 struct PokeanmSub {
     s8 unk0;

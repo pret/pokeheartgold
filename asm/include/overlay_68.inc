@@ -22,12 +22,12 @@
 .public NARC_New
 .public NARC_Delete
 .public GfGfxLoader_GetScrnDataFromOpenNarc
-.public sub_02007FD4
-.public sub_02008120
-.public sub_02008524
-.public sub_020085EC
-.public sub_020087A4
-.public sub_02009418
+.public PokepicManager_Create
+.public PokepicManager_DrawAll
+.public PokepicManager_Delete
+.public PokepicManager_CreatePokepic
+.public Pokepic_SetAttr
+.public PokepicManager_HandleLoadImgAndOrPltt
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
@@ -54,7 +54,7 @@
 .public SpriteRenderer_LoadAnimResObjFromOpenNarc
 .public SpriteRenderer_LoadResourcesAndCreateSprite
 .public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public UnkImageStruct_SetSpriteAnimActiveFlag
 .public UnkImageStruct_ResetSpriteAnimCtrlState

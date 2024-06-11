@@ -1349,7 +1349,7 @@ scr_seq_T20R0101_013:
 	play_fanfare SEQ_ME_ASA
 	heal_party
 	scrcmd_436
-	scrcmd_150
+	restore_overworld
 	wait_fanfare
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade

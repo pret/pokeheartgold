@@ -63,7 +63,7 @@ _0097:
 	get_scratch_off_prize 1, VAR_TEMP_x4002, VAR_TEMP_x4003
 	get_scratch_off_prize 2, VAR_TEMP_x4004, VAR_TEMP_x4005
 	scratch_off_card_end
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	setvar VAR_SPECIAL_x8000, 0

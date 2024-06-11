@@ -368,7 +368,7 @@ sub_020866CC: ; 0x020866CC
 	lsl r7, r7, #4
 _020866E2:
 	ldr r0, [r5, #0xc]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r6, r7]
 	add r4, r4, #1
 	add r5, #0x1c
@@ -388,7 +388,7 @@ _02086704:
 	mov r0, #0x73
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r6, r7]
 	add r5, r5, #1
 	add r4, #0x1c
@@ -401,7 +401,7 @@ _02086718:
 	lsl r7, r7, #2
 _02086720:
 	ldr r0, [r4, r7]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r5, r5, #1
 	add r4, #0x1c
 	cmp r5, #2
@@ -412,7 +412,7 @@ _02086720:
 	lsl r7, r7, #4
 _02086736:
 	ldr r0, [r4, r7]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r5, r5, #1
 	add r4, #0x1c
 	cmp r5, #3

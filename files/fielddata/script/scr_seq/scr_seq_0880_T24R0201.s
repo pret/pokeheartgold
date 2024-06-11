@@ -122,7 +122,7 @@ _0192:
 	end
 
 _019A:
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	return

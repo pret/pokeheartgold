@@ -52,7 +52,7 @@
 .public SpriteGfxHandler_UnloadCellObjById
 .public SpriteGfxHandler_UnloadAnimObjById
 .public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
@@ -109,8 +109,8 @@
 .public Camera_SetLookAtCamUp
 .public Camera_SetPerspectiveClippingPlane
 .public Camera_Init_FromTargetDistanceAndAngle
-.public sub_02024B1C
-.public sub_02024B34
+.public Sprite_GetImageProxy
+.public Sprite_GetPaletteProxy
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New
@@ -134,10 +134,10 @@
 .public GetMonData
 .public MonIsShiny
 .public GetPokemonSpriteCharAndPlttNarcIds
-.public sub_020708D8
+.public GetMonPicHeightBySpeciesGenderForme
 .public sub_02070D84
 .public Mon_GetBoxMon
-.public sub_02072914
+.public NARC_ReadPokepicAnimScript
 .public sub_020729A4
 .public Party_GetCount
 .public Party_GetMonByIndex

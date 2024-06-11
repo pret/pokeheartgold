@@ -733,7 +733,7 @@ _02087840:
 	add r1, r1, r7
 	bl SpriteGfxHandler_UnloadAnimObjById
 	ldr r0, [r4, #0x24]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r5, #0x10]
 	add r6, r6, #1
 	add r4, #0x10

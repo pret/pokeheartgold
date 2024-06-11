@@ -80,7 +80,7 @@ _0098:
 	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _0295
 	return_loan_mon VAR_TEMP_x4000
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	get_player_facing VAR_SPECIAL_RESULT
@@ -139,7 +139,7 @@ _01FC:
 	end
 
 _0206:
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0378_R31_00009
@@ -149,7 +149,7 @@ _0206:
 	end
 
 _021F:
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0378_R31_00015
@@ -159,7 +159,7 @@ _021F:
 	end
 
 _0238:
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0378_R31_00002
@@ -169,7 +169,7 @@ _0238:
 	end
 
 _0251:
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0378_R31_00003
@@ -179,7 +179,7 @@ _0251:
 	end
 
 _026A:
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0378_R31_00004
@@ -193,7 +193,7 @@ _026A:
 	end
 
 _0295:
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0378_R31_00010

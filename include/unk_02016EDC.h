@@ -1,15 +1,14 @@
 #ifndef POKEHEARTGOLD_UNK_02016EDC_H
 #define POKEHEARTGOLD_UNK_02016EDC_H
 
-struct UnkStruct_02072914_sub_sub {
-    u8 filler_0[4];
-};
+#include "global.h"
+#include "pokepic.h"
 
 struct UnkStruct_02072914_sub {
     u8 unk_0;
     u8 unk_1;
     u8 unk_2;
-    struct UnkStruct_02072914_sub_sub unk_3[10];
+    PokepicAnimScript unk_3[10];
 };
 
 struct UnkStruct_02072914 {

@@ -153,8 +153,8 @@
 .public Set2dSpriteAnimSeqNo
 .public Sprite_SetAnimCtrlCurrentFrame
 .public sub_02024AA8
-.public sub_02024B1C
-.public sub_02024B34
+.public Sprite_GetImageProxy
+.public Sprite_GetPaletteProxy
 .public Sprite_IsCellAnimationRunning
 .public sub_02024B78
 .public TouchscreenHitbox_FindRectAtTouchNew

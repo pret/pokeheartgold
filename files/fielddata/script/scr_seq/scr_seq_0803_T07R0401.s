@@ -67,7 +67,7 @@ scr_seq_T07R0401_010:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 0, 1
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _00F5:
@@ -83,7 +83,7 @@ scr_seq_T07R0401_011:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 1, 1
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _0130:
@@ -99,7 +99,7 @@ scr_seq_T07R0401_012:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 2, 1
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _016B:
@@ -115,7 +115,7 @@ scr_seq_T07R0401_013:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 3, 1
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _01A6:
@@ -131,7 +131,7 @@ scr_seq_T07R0401_014:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 4, 1
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _01E1:
@@ -147,7 +147,7 @@ scr_seq_T07R0401_015:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 5, 1
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _021C:
@@ -163,7 +163,7 @@ scr_seq_T07R0401_016:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 6, 1
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _0257:
@@ -179,7 +179,7 @@ scr_seq_T07R0401_017:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 7, 1
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _0292:
@@ -195,7 +195,7 @@ scr_seq_T07R0401_018:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 8, 1
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _02CD:
@@ -211,7 +211,7 @@ scr_seq_T07R0401_019:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 9, 1
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _0308:
@@ -227,7 +227,7 @@ scr_seq_T07R0401_020:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 10, 1
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _0343:
@@ -243,7 +243,7 @@ scr_seq_T07R0401_021:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 11, 1
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _037E:
@@ -261,7 +261,7 @@ scr_seq_T07R0401_022:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 12, 1
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _03BE:
@@ -277,7 +277,7 @@ scr_seq_T07R0401_023:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 13, 1
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _03F9:

@@ -61,7 +61,7 @@ BattleCursor *BattleCursor_New(SpriteRenderer *renderer, SpriteGfxHandler *gfxHa
 
 void BattleCursor_Delete(BattleCursor *cursor) {
     for (int i = 0; i < 5; i++) {
-        sub_0200D9DC(cursor->unk0[i]);
+        UnkImageStruct_Delete(cursor->unk0[i]);
     }
 
     SysTask_Destroy(cursor->task);

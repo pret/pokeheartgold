@@ -2503,7 +2503,7 @@ _0221CE22:
 	mov r0, #0x66
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r6, r7]
 	add r4, r4, #1
 	add r5, r5, #4

@@ -181,7 +181,7 @@ _0273:
 	wait_fade
 	closemsg
 	scrcmd_436
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	bufferpartymonnick 0, VAR_SPECIAL_x8009
@@ -219,7 +219,7 @@ _02F7:
 	wait_fade
 	closemsg
 	scrcmd_436
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	bufferpartymonnick 0, VAR_SPECIAL_x8009
@@ -263,7 +263,7 @@ _0395:
 	wait_fade
 	closemsg
 	scrcmd_436
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	bufferpartymonnick 0, VAR_SPECIAL_x8009
@@ -337,7 +337,7 @@ scr_seq_0003_069:
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
 	heal_party
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	endstd
@@ -844,35 +844,35 @@ _0BA2:
 	closemsg
 	call _0E16
 	scrcmd_158 0
-	scrcmd_150
+	restore_overworld
 	goto _0C01
 
 _0BB5:
 	closemsg
 	call _0E16
 	scrcmd_158 1
-	scrcmd_150
+	restore_overworld
 	goto _0C01
 
 _0BC8:
 	closemsg
 	call _0E16
 	scrcmd_158 2
-	scrcmd_150
+	restore_overworld
 	goto _0C01
 
 _0BDB:
 	closemsg
 	call _0E16
 	scrcmd_158 3
-	scrcmd_150
+	restore_overworld
 	goto _0C01
 
 _0BEE:
 	closemsg
 	call _0E16
 	scrcmd_158 4
-	scrcmd_150
+	restore_overworld
 	goto _0C01
 
 _0C01:
@@ -931,7 +931,7 @@ _0CEC:
 	goto_if_eq _0D0F
 	call _0E16
 	scrcmd_376
-	scrcmd_150
+	restore_overworld
 	goto _0D18
 
 _0D0F:
@@ -971,7 +971,7 @@ _0D86:
 	closemsg
 	call _0E16
 	scrcmd_617
-	scrcmd_150
+	restore_overworld
 	goto _0D98
 
 _0D98:
@@ -990,7 +990,7 @@ _0DBA:
 	goto_if_eq _0DE7
 	call _0E16
 	scrcmd_164
-	scrcmd_150
+	restore_overworld
 	call _0E02
 	goto _0A2E
 
@@ -1223,7 +1223,7 @@ scr_seq_0003_015:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_450
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -1336,7 +1336,7 @@ _11AE:
 	setvar VAR_SPECIAL_x8000, 2
 	addvar VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
 	scrcmd_492 VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT, VAR_SPECIAL_x8001
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_RESULT, 0
@@ -1488,7 +1488,7 @@ _136C:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	run_phone_call
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	return
@@ -1530,14 +1530,14 @@ scr_seq_0003_046:
 	scrcmd_662 VAR_SPECIAL_x8005, VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _1444
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	endstd
 	end
 
 _1444:
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	endstd

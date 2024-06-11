@@ -123,7 +123,7 @@ scr_seq_D49R0104_007:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_712 0
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

@@ -159,7 +159,7 @@ ov12_02265F68: ; 0x02265F68
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _02265F7A
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0
 	str r0, [r4]
 _02265F7A:

@@ -279,7 +279,7 @@ _03D4:
 	scrcmd_627 3
 	compare VAR_UNK_4143, 2
 	call_if_eq _0435
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	scrcmd_682 1

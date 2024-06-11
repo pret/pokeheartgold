@@ -2520,10 +2520,10 @@ _021E6C40: .word ov100_021E770C
 
 	thumb_func_start ov100_021E6C44
 ov100_021E6C44: ; 0x021E6C44
-	ldr r3, _021E6C48 ; =sub_0200D9DC
+	ldr r3, _021E6C48 ; =UnkImageStruct_Delete
 	bx r3
 	.balign 4, 0
-_021E6C48: .word sub_0200D9DC
+_021E6C48: .word UnkImageStruct_Delete
 	thumb_func_end ov100_021E6C44
 
 	thumb_func_start ov100_021E6C4C

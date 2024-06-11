@@ -7,11 +7,17 @@ FLAGS="-E -P -dD -undef"
 INCLUDES="-Iinclude -Iinclude/library -Ifiles -Ilib/include -include global.h"
 DEFINES="-DHEARTGOLD -DGAME_REMASTER=0 -DENGLISH -DPM_KEEP_ASSERTS -DSDK_ARM9 -DSDK_CODE_ARM -DSDK_FINALROM"
 
+if [ "$(uname -s)" == "Darwin" ]; then
+	SED="$(which gsed)"
+else
+	SED="$(which sed)"
+fi
+
 
 generate-ctx () {
     # Remove any line containing a predefined macro. If not removed, mwccarm
     # generates compiler warnings.
-    grep "^#include " "$1" | $GCC $FLAGS $INCLUDES $DEFINES  -x c - | sed '/__STDC__\|__STDC_VERSION__\|__STDC_VERSION__\|__STDC_HOSTED__/d' > $OUT_FILE
+    grep "^#include " "$1" | $GCC $FLAGS $INCLUDES $DEFINES  -x c - | ${SED} '/__STDC__\|__STDC_VERSION__\|__STDC_VERSION__\|__STDC_HOSTED__/d' > $OUT_FILE
 }
 
 usage () {

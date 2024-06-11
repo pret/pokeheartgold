@@ -2285,7 +2285,7 @@ ov115_02260254: ; 0x02260254
 	ldr r0, [r0, #0xc]
 	bl BlendPalette
 	add r0, r7, #0
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #0x20

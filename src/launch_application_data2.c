@@ -17,7 +17,7 @@
 #include "overlay_54.h"
 #include "overlay_55.h"
 #include "overlay_58.h"
-#include "overlay_63.h"
+#include "register_hall_of_fame.h"
 #include "overlay_64.h"
 #include "overlay_65.h"
 #include "overlay_67.h"

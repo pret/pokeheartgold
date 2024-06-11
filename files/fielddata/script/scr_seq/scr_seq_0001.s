@@ -94,7 +94,7 @@ scr_seq_0001_008:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	town_map
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

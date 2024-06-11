@@ -27,7 +27,7 @@
 .public Sprite_TickCellOrMulticellAnimation
 .public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_SetDrawPriority
-.public sub_02024B1C
+.public Sprite_GetImageProxy
 .public GetMonBaseStat_HandleAlternateForm
 .public CalcBoxMonPokeathlonPerformance
 .public CalcBoxmonPokeathlonStars
