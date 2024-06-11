@@ -98,7 +98,7 @@ typedef struct IntroMovieScene4Data {
     Sprite *starterSprites[3];
     GF3DVramMan *gf3dVramMan;
     void *particleHeap;
-    ParticleSystem *particleSystem;
+    SPLEmitter *particleSystem;
     int flipScreensTaskArg;
     SysTask *flipScreensTask;
 } IntroMovieScene4Data;

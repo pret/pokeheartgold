@@ -110,7 +110,7 @@ _0222ABD2:
 	pop {r4, pc}
 _0222ABDE:
 	add r0, r4, #0
-	bl ov80_0222AC58
+	bl FrontierScript_ReadU16
 	add r1, r0, #0
 	ldr r0, [r4, #0x74]
 	cmp r1, r0
@@ -188,8 +188,8 @@ ov80_0222AC4C: ; 0x0222AC4C
 	pop {r4, pc}
 	thumb_func_end ov80_0222AC4C
 
-	thumb_func_start ov80_0222AC58
-ov80_0222AC58: ; 0x0222AC58
+	thumb_func_start FrontierScript_ReadU16
+FrontierScript_ReadU16: ; 0x0222AC58
 	ldr r1, [r0, #0x1c]
 	add r3, r1, #1
 	str r3, [r0, #0x1c]
@@ -202,7 +202,7 @@ ov80_0222AC58: ; 0x0222AC58
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bx lr
-	thumb_func_end ov80_0222AC58
+	thumb_func_end FrontierScript_ReadU16
 
 	thumb_func_start ov80_0222AC70
 ov80_0222AC70: ; 0x0222AC70

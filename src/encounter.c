@@ -10,7 +10,7 @@
 #include "game_stats.h"
 #include "overlay_02.h"
 #include "overlay_03.h"
-#include "overlay_80.h"
+#include "frontier/overlay_80.h"
 #include "pokedex_util.h"
 #include "use_item_on_mon.h"
 #include "save_arrays.h"

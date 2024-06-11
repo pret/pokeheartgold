@@ -4,31 +4,31 @@
 
     .text
 
-	thumb_func_start ov80_02235390
-ov80_02235390: ; 0x02235390
+	thumb_func_start FrtCmd_085
+FrtCmd_085: ; 0x02235390
 	push {r3, lr}
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	bl PlaySE
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov80_02235390
+	thumb_func_end FrtCmd_085
 
-	thumb_func_start ov80_022353A0
-ov80_022353A0: ; 0x022353A0
+	thumb_func_start FrtCmd_086
+FrtCmd_086: ; 0x022353A0
 	push {r3, lr}
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	mov r1, #0
 	bl StopSE
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ov80_022353A0
+	thumb_func_end FrtCmd_086
 
-	thumb_func_start ov80_022353B0
-ov80_022353B0: ; 0x022353B0
+	thumb_func_start FrtCmd_087
+FrtCmd_087: ; 0x022353B0
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov80_0222BE10
+	bl FrontierScript_ReadVar
 	add r1, r4, #0
 	add r1, #0x78
 	strh r0, [r1]
@@ -39,7 +39,7 @@ ov80_022353B0: ; 0x022353B0
 	pop {r4, pc}
 	nop
 _022353CC: .word ov80_022353D0
-	thumb_func_end ov80_022353B0
+	thumb_func_end FrtCmd_087
 
 	thumb_func_start ov80_022353D0
 ov80_022353D0: ; 0x022353D0
@@ -57,18 +57,18 @@ _022353E2:
 	.balign 4, 0
 	thumb_func_end ov80_022353D0
 
-	thumb_func_start ov80_022353E8
-ov80_022353E8: ; 0x022353E8
+	thumb_func_start FrtCmd_088
+FrtCmd_088: ; 0x022353E8
 	push {r3, lr}
-	bl ov80_0222AC58
+	bl FrontierScript_ReadU16
 	bl PlayFanfare
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov80_022353E8
+	thumb_func_end FrtCmd_088
 
-	thumb_func_start ov80_022353F8
-ov80_022353F8: ; 0x022353F8
+	thumb_func_start FrtCmd_089
+FrtCmd_089: ; 0x022353F8
 	push {r3, lr}
 	ldr r1, _02235404 ; =ov80_02235408
 	bl ov80_0222AB84
@@ -76,7 +76,7 @@ ov80_022353F8: ; 0x022353F8
 	pop {r3, pc}
 	.balign 4, 0
 _02235404: .word ov80_02235408
-	thumb_func_end ov80_022353F8
+	thumb_func_end FrtCmd_089
 
 	thumb_func_start ov80_02235408
 ov80_02235408: ; 0x02235408
@@ -92,10 +92,10 @@ _02235416:
 	.balign 4, 0
 	thumb_func_end ov80_02235408
 
-	thumb_func_start ov80_0223541C
-ov80_0223541C: ; 0x0223541C
+	thumb_func_start FrtCmd_090
+FrtCmd_090: ; 0x0223541C
 	push {r4, lr}
-	bl ov80_0222AC58
+	bl FrontierScript_ReadU16
 	add r4, r0, #0
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10
@@ -105,4 +105,4 @@ ov80_0223541C: ; 0x0223541C
 	bl PlayBGM
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ov80_0223541C
+	thumb_func_end FrtCmd_090
