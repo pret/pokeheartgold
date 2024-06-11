@@ -40,101 +40,91 @@ typedef struct UnkStruct_0207A22C {
     u16 unk_A;
 } UnkStruct_0207A22C;
 
-BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState);
-BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState);
-void sub_02079230(PartyMenuStruct *partyMenu);
-int sub_02079280(PartyMenuStruct *partyMenu);
-int sub_02079308(PartyMenuStruct *partyMenu);
-int sub_020793C0(PartyMenuStruct *partyMenu);
-int sub_02079400(PartyMenuStruct *partyMenu);
-int sub_02079440(PartyMenuStruct *partyMenu);
-int PartyMenu_Subtask_WaitTextPrinter(PartyMenuStruct *partyMenu);
-int sub_020794EC(PartyMenuStruct *partyMenu);
-int sub_020794F0(PartyMenuStruct *partyMenu);
-int sub_020794FC(PartyMenuStruct *partyMenu);
-int sub_02079550(PartyMenuStruct *partyMenu);
-BOOL PartyMenuApp_Exit(OVY_MANAGER *manager, int *pState);
-void sub_020796B8(void *cbData);
-void sub_02079700(void);
-void sub_02079720(BgConfig *bgConfig);
-void sub_02079758(BgConfig *bgConfig);
-void sub_020798C4(BgConfig *bgConfig);
+static BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState);
+static BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState);
+static void sub_02079230(PartyMenuStruct *partyMenu);
+static int sub_02079280(PartyMenuStruct *partyMenu);
+static int sub_02079308(PartyMenuStruct *partyMenu);
+static int sub_020793C0(PartyMenuStruct *partyMenu);
+static int sub_02079400(PartyMenuStruct *partyMenu);
+static int sub_02079440(PartyMenuStruct *partyMenu);
+static int PartyMenu_Subtask_WaitTextPrinter(PartyMenuStruct *partyMenu);
+static int sub_020794EC(PartyMenuStruct *partyMenu);
+static int sub_020794F0(PartyMenuStruct *partyMenu);
+static int sub_020794FC(PartyMenuStruct *partyMenu);
+static int sub_02079550(PartyMenuStruct *partyMenu);
+static BOOL PartyMenuApp_Exit(OVY_MANAGER *manager, int *pState);
+static void sub_020796B8(void *cbData);
+static void sub_02079700(void);
+static void sub_02079720(BgConfig *bgConfig);
+static void sub_02079758(BgConfig *bgConfig);
+static void sub_020798C4(BgConfig *bgConfig);
 GF3DVramMan *sub_0207997C(HeapID heapId);
-void sub_0207999C(void);
-void sub_02079A0C(GF3DVramMan *gf3dVramMan);
-void sub_02079A14(PartyMenuStruct *partyMenu, NARC *narc);
-BOOL sub_0207A880(PartyMenuStruct *partyMenu, u8 partySlot);
+static void sub_0207999C(void);
+static void sub_02079A0C(GF3DVramMan *gf3dVramMan);
+static void sub_02079A14(PartyMenuStruct *partyMenu, NARC *narc);
+static BOOL sub_0207A880(PartyMenuStruct *partyMenu, u8 partySlot);
 PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager);
-void sub_02079CE4(PartyMenuStruct *partyMenu);
-void sub_02079D38(PartyMenuStruct *partyMenu);
-u8 sub_02079E28(PartyMenuStruct *partyMenu, u8 partySlot);
-void sub_02079FB8(PartyMenuStruct *partyMenu, Pokemon *mon, u8 partySlot);
-u32 sub_0207A058(Pokemon *mon, u8 contestStat);
-void sub_0207A174(PartyMenuStruct *partyMenu, u8 partySlot, u8 x, u8 y, u8 a4);
-void sub_0207A22C(PartyMenuStruct *partyMenu);
-void sub_0207A2AC(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
-void sub_0207A3C8(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
-void sub_0207A4B4(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
-void sub_0207A5A0(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
-void sub_0207A68C(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
-void sub_0207A780(PartyMenuStruct *partyMenu, u8 partySlot, s16 x, s16 y);
-void sub_0207A89C(PartyMenuStruct *partyMenu);
-u8 sub_0207A8FC(PartyMenuStruct *partyMenu);
-void sub_0207A910(PartyMenuStruct *partyMenu, int selection, int x, int y);
-void sub_0207A988(PartyMenuStruct *partyMenu, int selection, int x, int y);
-BOOL sub_0207A99C(PartyMenuStruct *partyMenu);
-int sub_0207B5EC(u8 a0, u8 partySlot);
-u8 sub_0207AAD0(PartyMenuStruct *partyMenu, u8 *px, u8 *py, u8 direction);
-u8 sub_0207AB20(PartyMenuStruct *partyMenu, u8 *px, u8 *py, const u8 *a3);
-void sub_0207AC20(PartyMenuStruct *partyMenu);
-int sub_0207AC70(PartyMenuStruct *partyMenu, BOOL a1);
-int sub_0207AD6C(PartyMenuStruct *partyMenu);
-u8 sub_0207ADB8(PartyMenuStruct *partyMenu);
-void sub_0207AFC4(PartyMenuStruct *partyMenu);
-u8 sub_0207B0B0(PartyMenuStruct *partyMenu, u8 *buf);
-u8 sub_0207B1BC(PartyMenuStruct *partyMenu, u8 *buf);
-u8 sub_0207B1C8(PartyMenuStruct *partyMenu, u8 *buf);
-u8 sub_0207B200(PartyMenuStruct *partyMenu, u8 *buf);
-u8 sub_0207B23C(PartyMenuStruct *partyMenu, u8 *buf);
-u8 sub_0207B32C(PartyMenuStruct *partyMenu, u8 *buf);
-u8 sub_0207B28C(PartyMenuStruct *partyMenu, u8 *buf);
-u8 sub_0207B2DC(PartyMenuStruct *partyMenu, u8 *buf);
-u8 sub_0207B364(PartyMenuStruct *partyMenu, u8 selection);
-u8 sub_0207B418(PartyMenuStruct *partyMenu, u8 selection);
-u8 sub_0207B4A0(PartyMenuStruct *partyMenu, u8 selection);
-u8 sub_0207BCC0(u16 move);
-int PartyMenu_SoftboiledTryTargetCheck(PartyMenuStruct *partyMenu);
-void sub_0207B51C(PartyMenuStruct *partyMenu, u8 selection, BOOL a2);
-u8 sub_0207B600(PartyMenuStruct *partyMenu);
-int sub_0207B7E0(PartyMenuStruct *partyMenu);
-u8 sub_0207BA78(PartyMenuStruct *partyMenu);
-u8 sub_0207BB14(PartyMenuStruct *partyMenu);
-u8 sub_0207BB88(PartyMenuStruct *partyMenu);
-void sub_0207BBFC(u8 a0, s16 *px, s16 *py);
-BOOL sub_0207BC1C(PartyMenuStruct *partyMenu, int *pState);
-int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu);
-u8 PartyMenu_SoftboiledTargetCheck(PartyMenuStruct *partyMenu);
-BOOL PartyMenu_SoftboiledHPTransferStep(PartyMenuStruct *partyMenu, u8 partySlot, s8 delta);
-u8 sub_0207C0DC(PartyMenuStruct *partyMenu);
-int sub_0207C288(PartyMenuStruct *partyMenu);
-u8 sub_0207C3D0(PartyMenuStruct *partyMenu);
-int sub_0207C400(PartyMenuStruct *partyMenu);
-int sub_0207C5D4(PartyMenuStruct *partyMenu, Pokemon *mon, s32 *transformResult);
-void sub_0207C658(PartyMenuStruct *partyMenu, Pokemon *mon, u32 oldItemId, u32 newItemId, ...);
-int sub_0207C6BC(PartyMenuStruct *partyMenu);
-int sub_0207C6DC(PartyMenuStruct *partyMenu);
-int sub_0207C70C(PartyMenuStruct *partyMenu);
-int sub_0207C728(PartyMenuStruct *partyMenu);
-int sub_0207C74C(PartyMenuStruct *partyMenu);
-int sub_0207C8B4(PartyMenuStruct *partyMenu);
-int sub_0207C908(PartyMenuStruct *partyMenu);
-int sub_0207CA30(PartyMenuStruct *partyMenu);
-int sub_0207FAA8(PartyMenuStruct *partyMenu);
-int sub_0207FAD4(PartyMenuStruct *partyMenu);
-void sub_0207CAAC(HeapID heapId, u16 *a1, u16 *a2, u16 *a3);
-void sub_0207CB20(PartyMenuStruct *partyMenu);
-void sub_0207CB3C(PartyMenuStruct *partyMenu, BOOL a1);
-void sub_0207CB54(PartyMenuStruct *partyMenu);
+static void sub_02079CE4(PartyMenuStruct *partyMenu);
+static void sub_02079D38(PartyMenuStruct *partyMenu);
+static u8 sub_02079E28(PartyMenuStruct *partyMenu, u8 partySlot);
+static void sub_02079FB8(PartyMenuStruct *partyMenu, Pokemon *mon, u8 partySlot);
+static u32 sub_0207A058(Pokemon *mon, u8 contestStat);
+static void sub_0207A174(PartyMenuStruct *partyMenu, u8 partySlot, u8 x, u8 y, u8 a4);
+static void sub_0207A22C(PartyMenuStruct *partyMenu);
+static void sub_0207A2AC(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
+static void sub_0207A3C8(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
+static void sub_0207A4B4(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
+static void sub_0207A5A0(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
+static void sub_0207A68C(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
+static void sub_0207A780(PartyMenuStruct *partyMenu, u8 partySlot, s16 x, s16 y);
+static void sub_0207A89C(PartyMenuStruct *partyMenu);
+static u8 sub_0207A8FC(PartyMenuStruct *partyMenu);
+static void sub_0207A910(PartyMenuStruct *partyMenu, int selection, int x, int y);
+static void sub_0207A988(PartyMenuStruct *partyMenu, int selection, int x, int y);
+static BOOL sub_0207A99C(PartyMenuStruct *partyMenu);
+static u8 sub_0207AAD0(PartyMenuStruct *partyMenu, u8 *px, u8 *py, u8 direction);
+static u8 sub_0207AB20(PartyMenuStruct *partyMenu, u8 *px, u8 *py, const u8 *a3);
+static void sub_0207AC20(PartyMenuStruct *partyMenu);
+static int sub_0207AC70(PartyMenuStruct *partyMenu, BOOL a1);
+static int sub_0207AD6C(PartyMenuStruct *partyMenu);
+static u8 sub_0207ADB8(PartyMenuStruct *partyMenu);
+static void sub_0207AFC4(PartyMenuStruct *partyMenu);
+static u8 sub_0207B0B0(PartyMenuStruct *partyMenu, u8 *buf);
+static u8 sub_0207B1BC(PartyMenuStruct *partyMenu, u8 *buf);
+static u8 sub_0207B1C8(PartyMenuStruct *partyMenu, u8 *buf);
+static u8 sub_0207B200(PartyMenuStruct *partyMenu, u8 *buf);
+static u8 sub_0207B23C(PartyMenuStruct *partyMenu, u8 *buf);
+static u8 sub_0207B32C(PartyMenuStruct *partyMenu, u8 *buf);
+static u8 sub_0207B28C(PartyMenuStruct *partyMenu, u8 *buf);
+static u8 sub_0207B2DC(PartyMenuStruct *partyMenu, u8 *buf);
+static u8 sub_0207BCC0(u16 move);
+static int PartyMenu_SoftboiledTryTargetCheck(PartyMenuStruct *partyMenu);
+static void sub_0207B51C(PartyMenuStruct *partyMenu, u8 selection, BOOL a2);
+static u8 sub_0207B600(PartyMenuStruct *partyMenu);
+static int sub_0207B7E0(PartyMenuStruct *partyMenu);
+static u8 sub_0207BA78(PartyMenuStruct *partyMenu);
+static u8 sub_0207BB14(PartyMenuStruct *partyMenu);
+static u8 sub_0207BB88(PartyMenuStruct *partyMenu);
+static void sub_0207BBFC(u8 a0, s16 *px, s16 *py);
+static BOOL sub_0207BC1C(PartyMenuStruct *partyMenu, int *pState);
+static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu);
+static u8 PartyMenu_SoftboiledTargetCheck(PartyMenuStruct *partyMenu);
+static BOOL PartyMenu_SoftboiledHPTransferStep(PartyMenuStruct *partyMenu, u8 partySlot, s8 delta);
+static u8 sub_0207C0DC(PartyMenuStruct *partyMenu);
+static int sub_0207C288(PartyMenuStruct *partyMenu);
+static u8 sub_0207C3D0(PartyMenuStruct *partyMenu);
+static int sub_0207C400(PartyMenuStruct *partyMenu);
+static int sub_0207C5D4(PartyMenuStruct *partyMenu, Pokemon *mon, s32 *transformResult);
+static void sub_0207C658(PartyMenuStruct *partyMenu, Pokemon *mon, u32 oldItemId, u32 newItemId, ...);
+static int sub_0207C6BC(PartyMenuStruct *partyMenu);
+static int sub_0207C6DC(PartyMenuStruct *partyMenu);
+static int sub_0207C70C(PartyMenuStruct *partyMenu);
+static int sub_0207C728(PartyMenuStruct *partyMenu);
+static int sub_0207C74C(PartyMenuStruct *partyMenu);
+static int sub_0207C8B4(PartyMenuStruct *partyMenu);
+static int sub_0207C908(PartyMenuStruct *partyMenu);
+static int sub_0207CA30(PartyMenuStruct *partyMenu);
 
 const OVY_MGR_TEMPLATE gOverlayTemplate_PartyMenu = {
     PartyMenuApp_Init,
@@ -224,7 +214,7 @@ static const u16 _021013C4[16] = {
     MOVE_SOFTBOILED,
 };
 
-BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
+static BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
     PartyMenuStruct *partyMenu;
     NARC * narc;
 
@@ -291,7 +281,7 @@ BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
     return TRUE;
 }
 
-BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState) {
+static BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState) {
     PartyMenuStruct *partyMenu = (PartyMenuStruct *)OverlayManager_GetData(manager);
 
     switch (*pState) {
@@ -431,7 +421,7 @@ void sub_02079224(PartyMenuStruct *partyMenu, BOOL a1) {
     partyMenu->unk_C7C = a1;
 }
 
-void sub_02079230(PartyMenuStruct *partyMenu) {
+static void sub_02079230(PartyMenuStruct *partyMenu) {
     if (partyMenu->unk_C7C) {
         partyMenu->unk_C78 += 12;
         if (partyMenu->unk_C78 > 40) {
@@ -447,7 +437,7 @@ void sub_02079230(PartyMenuStruct *partyMenu) {
     }
 }
 
-int sub_02079280(PartyMenuStruct *partyMenu) {
+static int sub_02079280(PartyMenuStruct *partyMenu) {
     if (IsPaletteFadeFinished() == TRUE) {
         if (partyMenu->args->unk_24 == 5 || partyMenu->args->unk_24 == 16) {
             if (sub_020817C4(partyMenu->args->itemId) == TRUE) {
@@ -476,7 +466,7 @@ int sub_02079280(PartyMenuStruct *partyMenu) {
     }
 }
 
-int sub_02079308(PartyMenuStruct *partyMenu) {
+static int sub_02079308(PartyMenuStruct *partyMenu) {
     switch (sub_0207ADB8(partyMenu)) {
     case 0:
         switch (partyMenu->args->unk_24) {
@@ -510,7 +500,7 @@ int sub_02079308(PartyMenuStruct *partyMenu) {
     return PARTY_MENU_STATE_1;
 }
 
-int sub_020793C0(PartyMenuStruct *partyMenu) {
+static int sub_020793C0(PartyMenuStruct *partyMenu) {
     u8 x = sub_0207C0DC(partyMenu);
     if (x == 0 || x == 2) {
         thunk_Sprite_SetPalIndex(partyMenu->unk_678, 1);
@@ -523,7 +513,7 @@ int sub_020793C0(PartyMenuStruct *partyMenu) {
     }
 }
 
-int sub_02079400(PartyMenuStruct *partyMenu) {
+static int sub_02079400(PartyMenuStruct *partyMenu) {
     u8 x = sub_0207C0DC(partyMenu);
     if (x == 0 || x == 2) {
         thunk_Sprite_SetPalIndex(partyMenu->unk_678, 1);
@@ -536,7 +526,7 @@ int sub_02079400(PartyMenuStruct *partyMenu) {
     }
 }
 
-int sub_02079440(PartyMenuStruct *partyMenu) {
+static int sub_02079440(PartyMenuStruct *partyMenu) {
     PartyMenuStruct_SubC90_UnkFunc func = sub_0207E93C(partyMenu, partyMenu->unk_824);
     switch ((int)func) {
     case -2:
@@ -559,7 +549,7 @@ int sub_02079440(PartyMenuStruct *partyMenu) {
     }
 }
 
-int PartyMenu_Subtask_WaitTextPrinter(PartyMenuStruct *partyMenu) {
+static int PartyMenu_Subtask_WaitTextPrinter(PartyMenuStruct *partyMenu) {
     if (TextPrinterCheckActive(partyMenu->textPrinterId) == FALSE) {
         return partyMenu->afterTextPrinterState;
     } else {
@@ -567,16 +557,16 @@ int PartyMenu_Subtask_WaitTextPrinter(PartyMenuStruct *partyMenu) {
     }
 }
 
-int sub_020794EC(PartyMenuStruct *partyMenu) {
+static int sub_020794EC(PartyMenuStruct *partyMenu) {
     return PARTY_MENU_STATE_32;
 }
 
-int sub_020794F0(PartyMenuStruct *partyMenu) {
+static int sub_020794F0(PartyMenuStruct *partyMenu) {
     sub_0207DBCC(partyMenu);
     return PARTY_MENU_STATE_27;
 }
 
-int sub_020794FC(PartyMenuStruct *partyMenu) {
+static int sub_020794FC(PartyMenuStruct *partyMenu) {
     switch (YesNoPrompt_HandleInput(partyMenu->yesNoPrompt)) {
     case YESNORESPONSE_YES:
         YesNoPrompt_Destroy(partyMenu->yesNoPrompt);
@@ -591,7 +581,7 @@ int sub_020794FC(PartyMenuStruct *partyMenu) {
     }
 }
 
-int sub_02079550(PartyMenuStruct *partyMenu) {
+static int sub_02079550(PartyMenuStruct *partyMenu) {
     u8 x = sub_0207C0DC(partyMenu);
     if (x == 0 || x == 2) {
         thunk_Sprite_SetPalIndex(partyMenu->unk_678, 1);
@@ -612,7 +602,7 @@ int sub_02079550(PartyMenuStruct *partyMenu) {
     }
 }
 
-BOOL PartyMenuApp_Exit(OVY_MANAGER *manager, int *pState) {
+static BOOL PartyMenuApp_Exit(OVY_MANAGER *manager, int *pState) {
     u32 i;
     PartyMenuStruct *partyMenu = (PartyMenuStruct *)OverlayManager_GetData(manager);
     sub_02002B8C(FALSE);
@@ -646,7 +636,7 @@ BOOL PartyMenuApp_Exit(OVY_MANAGER *manager, int *pState) {
     return TRUE;
 }
 
-void sub_020796B8(void *cbData) {
+static void sub_020796B8(void *cbData) {
     PartyMenuStruct *partyMenu = (PartyMenuStruct *)cbData;
 
     BgSetPosTextAndCommit(partyMenu->bgConfig, GF_BG_LYR_SUB_0, BG_POS_OP_SET_Y, partyMenu->unk_C78);
@@ -691,7 +681,7 @@ static TouchscreenHitbox _02110104[] = {
     { .rect = { TOUCHSCREEN_RECTLIST_END } },
 };
 
-void sub_02079700(void) {
+static void sub_02079700(void) {
     GraphicsBanks graphicsBanks = {
         .bg = GX_VRAM_BG_128_A,
         .bgextpltt = GX_VRAM_BGEXTPLTT_NONE,
@@ -707,7 +697,7 @@ void sub_02079700(void) {
     GfGfx_SetBanks(&graphicsBanks);
 }
 
-void sub_02079720(BgConfig *bgConfig) {
+static void sub_02079720(BgConfig *bgConfig) {
     BgTemplate bgTemplate = {
         .x = 0,
         .y = 0,
@@ -726,7 +716,7 @@ void sub_02079720(BgConfig *bgConfig) {
     BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_0);
 }
 
-void sub_02079758(BgConfig *bgConfig) {
+static void sub_02079758(BgConfig *bgConfig) {
     {
         GraphicsModes graphicsModes = {
             .dispMode = GX_DISPMODE_GRAPHICS,
@@ -873,7 +863,7 @@ void sub_02079758(BgConfig *bgConfig) {
     BG_ClearCharDataRange(GF_BG_LYR_SUB_2, 0x20, 0, HEAP_ID_PARTY_MENU);
 }
 
-void sub_020798C4(BgConfig *bgConfig) {
+static void sub_020798C4(BgConfig *bgConfig) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_ALL, GF_PLANE_TOGGLE_OFF);
     GfGfx_EngineBTogglePlanes((GXPlaneMask)(GX_PLANEMASK_BG0 | GX_PLANEMASK_BG1 | GX_PLANEMASK_OBJ), GF_PLANE_TOGGLE_OFF);
     FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_SUB_2);
@@ -905,7 +895,7 @@ GF3DVramMan *sub_0207997C(HeapID heapId) {
     return GF_3DVramMan_Create(heapId, GF_3D_TEXALLOC_LNK, 1, GF_3D_PLTTALLOC_LNK, 2, sub_0207999C);
 }
 
-void sub_0207999C(void) {
+static void sub_0207999C(void) {
     G3X_SetShading(GX_SHADING_TOON);
     G3X_AntiAlias(TRUE);
     G3X_AlphaTest(FALSE, 0);
@@ -916,11 +906,11 @@ void sub_0207999C(void) {
     G3_ViewPort(0, 0, 255, 191);
 }
 
-void sub_02079A0C(GF3DVramMan *gf3dVramMan) {
+static void sub_02079A0C(GF3DVramMan *gf3dVramMan) {
     GF_3DVramMan_Delete(gf3dVramMan);
 }
 
-void sub_02079A14(PartyMenuStruct *partyMenu, NARC *narc) {
+static void sub_02079A14(PartyMenuStruct *partyMenu, NARC *narc) {
     GfGfxLoader_LoadCharDataFromOpenNarc(narc, 15, partyMenu->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
     GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 17, partyMenu->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
 
@@ -979,7 +969,7 @@ PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager) {
     return ret;
 }
 
-void sub_02079CE4(PartyMenuStruct *partyMenu) {
+static void sub_02079CE4(PartyMenuStruct *partyMenu) {
     if (partyMenu->args->unk_24 & 0x80) {
         partyMenu->unk_C63_7 = TRUE;
         partyMenu->args->unk_24 ^= 0x80;
@@ -990,7 +980,7 @@ void sub_02079CE4(PartyMenuStruct *partyMenu) {
     }
 }
 
-void sub_02079D38(PartyMenuStruct *partyMenu) {
+static void sub_02079D38(PartyMenuStruct *partyMenu) {
     u8 r4 = 3;
     if (partyMenu->args->unk_25 == 2) {
         partyMenu->unk_948 = _0210144C;
@@ -1016,7 +1006,7 @@ void sub_02079D38(PartyMenuStruct *partyMenu) {
     sub_0207D998(partyMenu, r4);
 }
 
-u8 sub_02079E28(PartyMenuStruct *partyMenu, u8 partySlot) {
+static u8 sub_02079E28(PartyMenuStruct *partyMenu, u8 partySlot) {
     return partyMenu->monsDrawState[partySlot].active;
 }
 
@@ -1057,7 +1047,7 @@ BOOL sub_02079E38(PartyMenuStruct *partyMenu, u8 partySlot) {
     return TRUE;
 }
 
-void sub_02079FB8(PartyMenuStruct *partyMenu, Pokemon *mon, u8 partySlot) {
+static void sub_02079FB8(PartyMenuStruct *partyMenu, Pokemon *mon, u8 partySlot) {
     if (partyMenu->args->unk_24 == 13) {
         if (partyMenu->monsDrawState[partySlot].isEgg == TRUE || partyMenu->monsDrawState[partySlot].hp == 0) {
             partyMenu->monsDrawState[partySlot].unk_0E_0F = FALSE;
@@ -1078,7 +1068,7 @@ void sub_02079FB8(PartyMenuStruct *partyMenu, Pokemon *mon, u8 partySlot) {
     }
 }
 
-u32 sub_0207A058(Pokemon *mon, u8 contestStat) {
+static u32 sub_0207A058(Pokemon *mon, u8 contestStat) {
     u32 result;
     switch (contestStat) {
     case COOL:
@@ -1119,7 +1109,7 @@ u16 *sub_0207A16C(PartyMenuStruct *partyMenu) {
     return &partyMenu->unk_3D4[0x36];
 }
 
-void sub_0207A174(PartyMenuStruct *partyMenu, u8 partySlot, u8 x, u8 y, u8 a4) {
+static void sub_0207A174(PartyMenuStruct *partyMenu, u8 partySlot, u8 x, u8 y, u8 a4) {
     void *src;
     if (partySlot == 0 || (partyMenu->args->unk_25 != 0 && partySlot == 1)) {
         src = partyMenu->unk_314;
@@ -1136,7 +1126,7 @@ void sub_0207A174(PartyMenuStruct *partyMenu, u8 partySlot, u8 x, u8 y, u8 a4) {
     sub_0207A7F4(partyMenu, partySlot);
 }
 
-void sub_0207A22C(PartyMenuStruct *partyMenu) {
+static void sub_0207A22C(PartyMenuStruct *partyMenu) {
     const UnkStruct_0207A22C *r1 = partyMenu->args->unk_25 == 2 ? _0210150C[1] : _0210150C[0];
     if (partyMenu->args->unk_24 == 16) {
         sub_0207A3C8(partyMenu, r1);
@@ -1153,7 +1143,7 @@ void sub_0207A22C(PartyMenuStruct *partyMenu) {
     ScheduleBgTilemapBufferTransfer(partyMenu->bgConfig, GF_BG_LYR_SUB_0);
 }
 
-void sub_0207A2AC(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
+static void sub_0207A2AC(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
     NARC *narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
     for (u8 i = 0; i < PARTY_SIZE; ++i) {
         if (sub_02079E38(partyMenu, i) == TRUE) {
@@ -1177,7 +1167,7 @@ void sub_0207A2AC(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
     NARC_Delete(narc);
 }
 
-void sub_0207A3C8(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
+static void sub_0207A3C8(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
     NARC *narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
     for (u8 i = 0; i < PARTY_SIZE; ++i) {
         if (sub_02079E38(partyMenu, i) == TRUE) {
@@ -1197,7 +1187,7 @@ void sub_0207A3C8(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
     NARC_Delete(narc);
 }
 
-void sub_0207A4B4(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
+static void sub_0207A4B4(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
     NARC *narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
     for (u8 i = 0; i < PARTY_SIZE; ++i) {
         if (sub_02079E38(partyMenu, i) == TRUE) {
@@ -1217,7 +1207,7 @@ void sub_0207A4B4(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
     NARC_Delete(narc);
 }
 
-void sub_0207A5A0(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
+static void sub_0207A5A0(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
     NARC *narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
     for (u8 i = 0; i < PARTY_SIZE; ++i) {
         if (sub_02079E38(partyMenu, i) == TRUE) {
@@ -1237,7 +1227,7 @@ void sub_0207A5A0(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
     NARC_Delete(narc);
 }
 
-void sub_0207A68C(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
+static void sub_0207A68C(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
     NARC *narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
     for (u8 i = 0; i < PARTY_SIZE; ++i) {
         if (sub_02079E38(partyMenu, i) == TRUE) {
@@ -1258,7 +1248,7 @@ void sub_0207A68C(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
     NARC_Delete(narc);
 }
 
-void sub_0207A780(PartyMenuStruct *partyMenu, u8 partySlot, s16 x, s16 y) {
+static void sub_0207A780(PartyMenuStruct *partyMenu, u8 partySlot, s16 x, s16 y) {
     CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, x, y, 16, 6, partyMenu->unk_494, 0, 0, 16, 6);
     BgTilemapRectChangePalette(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, x, y, 16, 6, 1);
     sub_0207EFC4(partyMenu, partySlot, 7);
@@ -1286,11 +1276,11 @@ void sub_0207A7F4(PartyMenuStruct *partyMenu, u8 partySlot) {
     BG_LoadPlttData(GF_BG_LYR_MAIN_2, &partyMenu->unk_554[16 * r4], 0x10, (partySlot + 3) * 32);
 }
 
-BOOL sub_0207A880(PartyMenuStruct *partyMenu, u8 partySlot) {
+static BOOL sub_0207A880(PartyMenuStruct *partyMenu, u8 partySlot) {
     return partyMenu->args->unk_25 == 2 && (partySlot & 1);
 }
 
-void sub_0207A89C(PartyMenuStruct *partyMenu) {
+static void sub_0207A89C(PartyMenuStruct *partyMenu) {
     u8 x;
     u8 y;
     sub_02020A24(partyMenu->unk_948, &x, &y, 0, 0, partyMenu->partyMonIndex, 4);
@@ -1305,7 +1295,7 @@ static const u8 _021012CC[][6] = {
     { 5, 3, 1, 4, 2, 0 },
 };
 
-u8 sub_0207A8FC(PartyMenuStruct *partyMenu) {
+static u8 sub_0207A8FC(PartyMenuStruct *partyMenu) {
     if (sub_0207A99C(partyMenu) == TRUE) {
         return 1;
     } else {
@@ -1313,7 +1303,7 @@ u8 sub_0207A8FC(PartyMenuStruct *partyMenu) {
     }
 }
 
-void sub_0207A910(PartyMenuStruct *partyMenu, int selection, int x, int y) {
+static void sub_0207A910(PartyMenuStruct *partyMenu, int selection, int x, int y) {
     if (selection == 6 || selection == 7) {
         Set2dSpriteVisibleFlag(partyMenu->unk_678, FALSE);
     } else {
@@ -1327,12 +1317,12 @@ void sub_0207A910(PartyMenuStruct *partyMenu, int selection, int x, int y) {
     sub_0207B51C(partyMenu, partyMenu->partyMonIndex, TRUE);
 }
 
-void sub_0207A988(PartyMenuStruct *partyMenu, int selection, int x, int y) {
+static void sub_0207A988(PartyMenuStruct *partyMenu, int selection, int x, int y) {
     sub_0207A910(partyMenu, selection, x, y);
     PlaySE(SEQ_SE_DP_SELECT);
 }
 
-BOOL sub_0207A99C(PartyMenuStruct *partyMenu) {
+static BOOL sub_0207A99C(PartyMenuStruct *partyMenu) {
     u8 newSelection;
     u8 direction;
     u8 x, y;
@@ -1379,7 +1369,7 @@ BOOL sub_0207A99C(PartyMenuStruct *partyMenu) {
     return FALSE;
 }
 
-u8 sub_0207AAD0(PartyMenuStruct *partyMenu, u8 *px, u8 *py, u8 direction) {
+static u8 sub_0207AAD0(PartyMenuStruct *partyMenu, u8 *px, u8 *py, u8 direction) {
     u8 result = partyMenu->partyMonIndex;
     while (TRUE) {
         result = sub_02020A24(partyMenu->unk_948, px, py, 0, 0, result, direction);
@@ -1393,7 +1383,7 @@ u8 sub_0207AAD0(PartyMenuStruct *partyMenu, u8 *px, u8 *py, u8 direction) {
     return result;
 }
 
-u8 sub_0207AB20(PartyMenuStruct *partyMenu, u8 *px, u8 *py, const u8 *a3) {
+static u8 sub_0207AB20(PartyMenuStruct *partyMenu, u8 *px, u8 *py, const u8 *a3) {
     u8 i = 0;
     while (TRUE) {
         if (i == 6) {
@@ -1425,7 +1415,7 @@ void sub_0207AB84(PartyMenuStruct *partyMenu, u8 partySlot) {
     sub_0207B51C(partyMenu, partyMenu->partyMonIndex, TRUE);
 }
 
-void sub_0207AC20(PartyMenuStruct *partyMenu) {
+static void sub_0207AC20(PartyMenuStruct *partyMenu) {
     s16 x, y;
     switch (partyMenu->unk_C60) {
     case 0:
@@ -1441,7 +1431,7 @@ void sub_0207AC20(PartyMenuStruct *partyMenu) {
     }
 }
 
-int sub_0207AC70(PartyMenuStruct *partyMenu, BOOL a1) {
+static int sub_0207AC70(PartyMenuStruct *partyMenu, BOOL a1) {
     G2_BlendNone();
     if (partyMenu->partyMonIndex == 6) {
         return 4;
@@ -1483,7 +1473,7 @@ int sub_0207AC70(PartyMenuStruct *partyMenu, BOOL a1) {
     return 5;
 }
 
-int sub_0207AD6C(PartyMenuStruct *partyMenu) {
+static int sub_0207AD6C(PartyMenuStruct *partyMenu) {
     int idx = 0;
     if (partyMenu->args->unk_24 == 2 || partyMenu->args->unk_24 == 17 || partyMenu->args->unk_24 == 22 || partyMenu->args->unk_24 == 23) {
         return TouchscreenHitbox_FindRectAtTouchNew(_02110104);
@@ -1495,7 +1485,7 @@ int sub_0207AD6C(PartyMenuStruct *partyMenu) {
     }
 }
 
-u8 sub_0207ADB8(PartyMenuStruct *partyMenu) {
+static u8 sub_0207ADB8(PartyMenuStruct *partyMenu) {
     PartyMenuStruct_SubC90 *r5 = &partyMenu->unk_C90;
     u8 result;
 
@@ -1572,7 +1562,7 @@ u8 sub_0207ADB8(PartyMenuStruct *partyMenu) {
     return result;  // possible UB
 }
 
-void sub_0207AFC4(PartyMenuStruct *partyMenu) {
+static void sub_0207AFC4(PartyMenuStruct *partyMenu) {
     ClearFrameAndWindow2(&partyMenu->unk_204, TRUE);
     u8 *buf = AllocFromHeap(HEAP_ID_PARTY_MENU, 8);
     u8 r2;
@@ -1610,7 +1600,7 @@ void sub_0207AFC4(PartyMenuStruct *partyMenu) {
     thunk_Sprite_SetPalIndex(partyMenu->unk_678, 1);
 }
 
-u8 sub_0207B0B0(PartyMenuStruct *partyMenu, u8 *buf) {
+static u8 sub_0207B0B0(PartyMenuStruct *partyMenu, u8 *buf) {
     Pokemon *pokemon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     u16 move;
     u8 r4 = 0;
@@ -1658,13 +1648,13 @@ u8 sub_0207B0B0(PartyMenuStruct *partyMenu, u8 *buf) {
     return count;
 }
 
-u8 sub_0207B1BC(PartyMenuStruct *partyMenu, u8 *buf) {
+static u8 sub_0207B1BC(PartyMenuStruct *partyMenu, u8 *buf) {
     buf[0] = 14;
     buf[1] = 9;
     return 2;
 }
 
-u8 sub_0207B1C8(PartyMenuStruct *partyMenu, u8 *buf) {
+static u8 sub_0207B1C8(PartyMenuStruct *partyMenu, u8 *buf) {
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg == FALSE) {
         buf[0] = 8;
         buf[1] = 1;
@@ -1677,7 +1667,7 @@ u8 sub_0207B1C8(PartyMenuStruct *partyMenu, u8 *buf) {
     }
 }
 
-u8 sub_0207B200(PartyMenuStruct *partyMenu, u8 *buf) {
+static u8 sub_0207B200(PartyMenuStruct *partyMenu, u8 *buf) {
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].unk_0E_0F == TRUE) {
         buf[0] = 13;
         buf[1] = 1;
@@ -1690,7 +1680,7 @@ u8 sub_0207B200(PartyMenuStruct *partyMenu, u8 *buf) {
     }
 }
 
-u8 sub_0207B23C(PartyMenuStruct *partyMenu, u8 *buf) {
+static u8 sub_0207B23C(PartyMenuStruct *partyMenu, u8 *buf) {
     switch (sub_0207B364(partyMenu, partyMenu->partyMonIndex)) {
     case 0:
         buf[0] = 1;
@@ -1711,7 +1701,7 @@ u8 sub_0207B23C(PartyMenuStruct *partyMenu, u8 *buf) {
     return 0;
 }
 
-u8 sub_0207B28C(PartyMenuStruct *partyMenu, u8 *buf) {
+static u8 sub_0207B28C(PartyMenuStruct *partyMenu, u8 *buf) {
     switch (sub_0207B418(partyMenu, partyMenu->partyMonIndex)) {
     case 0:
         buf[0] = 1;
@@ -1732,7 +1722,7 @@ u8 sub_0207B28C(PartyMenuStruct *partyMenu, u8 *buf) {
     return 0;
 }
 
-u8 sub_0207B2DC(PartyMenuStruct *partyMenu, u8 *buf) {
+static u8 sub_0207B2DC(PartyMenuStruct *partyMenu, u8 *buf) {
     switch (sub_0207B4A0(partyMenu, partyMenu->partyMonIndex)) {
     case 0:
         buf[0] = 1;
@@ -1753,7 +1743,7 @@ u8 sub_0207B2DC(PartyMenuStruct *partyMenu, u8 *buf) {
     return 0;
 }
 
-u8 sub_0207B32C(PartyMenuStruct *partyMenu, u8 *buf) {
+static u8 sub_0207B32C(PartyMenuStruct *partyMenu, u8 *buf) {
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg == TRUE) {
         buf[0] = 1;
         buf[1] = 15;
@@ -1829,7 +1819,7 @@ u8 sub_0207B4A0(PartyMenuStruct *partyMenu, u8 selection) {
     return 1;
 }
 
-void sub_0207B51C(PartyMenuStruct *partyMenu, u8 selection, BOOL a2) {
+static void sub_0207B51C(PartyMenuStruct *partyMenu, u8 selection, BOOL a2) {
     u8 animSeqNo;
     if (selection == 6) {
         animSeqNo = Get2dSpriteCurrentAnimSeqNo(partyMenu->unk_680);
@@ -1865,7 +1855,7 @@ int sub_0207B5EC(u8 a0, u8 partySlot) {
     return partySlot == 0 || (a0 != 0 && partySlot == 1);
 }
 
-u8 sub_0207B600(PartyMenuStruct *partyMenu) {
+static u8 sub_0207B600(PartyMenuStruct *partyMenu) {
     u8 result;
     PartyMenuStruct_SubC90 *r5 = &partyMenu->unk_C90;
 
@@ -1954,7 +1944,7 @@ u8 sub_0207B600(PartyMenuStruct *partyMenu) {
     return result;  // UB rist
 }
 
-int sub_0207B7E0(PartyMenuStruct *partyMenu) {
+static int sub_0207B7E0(PartyMenuStruct *partyMenu) {
     for (u8 i = 0; i < partyMenu->args->unk_36_0; ++i) {
         if (partyMenu->args->selectedOrder[i] == 0) {
             switch (partyMenu->args->unk_36_4) {
@@ -2073,7 +2063,7 @@ int sub_0207B7E0(PartyMenuStruct *partyMenu) {
     return PARTY_MENU_STATE_32;
 }
 
-u8 sub_0207BA78(PartyMenuStruct *partyMenu) {
+static u8 sub_0207BA78(PartyMenuStruct *partyMenu) {
     for (u8 i = 0; i < PARTY_SIZE - 1; ++i) {
         if (partyMenu->args->selectedOrder[i] == 0) {
             break;
@@ -2094,7 +2084,7 @@ u8 sub_0207BA78(PartyMenuStruct *partyMenu) {
     return 0;
 }
 
-u8 sub_0207BB14(PartyMenuStruct *partyMenu) {
+static u8 sub_0207BB14(PartyMenuStruct *partyMenu) {
     for (u8 i = 0; i < PARTY_SIZE - 1; ++i) {
         if (partyMenu->args->selectedOrder[i] == 0) {
             break;
@@ -2112,7 +2102,7 @@ u8 sub_0207BB14(PartyMenuStruct *partyMenu) {
     return 0;
 }
 
-u8 sub_0207BB88(PartyMenuStruct *partyMenu) {
+static u8 sub_0207BB88(PartyMenuStruct *partyMenu) {
     for (u8 i = 0; i < PARTY_SIZE - 1; ++i) {
         if (partyMenu->args->selectedOrder[i] == 0) {
             break;
@@ -2139,12 +2129,12 @@ static const u8 _021012B0[][2] = {
     { 26, 17 },
 };
 
-void sub_0207BBFC(u8 a0, s16 *px, s16 *py) {
+static void sub_0207BBFC(u8 a0, s16 *px, s16 *py) {
     *px = _021012B0[a0][0] * 8 + 20;
     *py = _021012B0[a0][1] * 8 + 20;
 }
 
-BOOL sub_0207BC1C(PartyMenuStruct *partyMenu, int *pState) {
+static BOOL sub_0207BC1C(PartyMenuStruct *partyMenu, int *pState) {
     PartyMenuStruct_SubC90_UnkFunc func = sub_0207E778(partyMenu, partyMenu->unk_824);
     switch ((int)func) {
     case -2:
@@ -2171,7 +2161,7 @@ BOOL sub_0207BC1C(PartyMenuStruct *partyMenu, int *pState) {
     return FALSE;
 }
 
-u8 sub_0207BCC0(u16 move) {
+static u8 sub_0207BCC0(u16 move) {
     for (u8 i = 0; i < 16; ++i) {
         if (move == _021013C4[i]) {
             return i + 16;
@@ -2180,7 +2170,7 @@ u8 sub_0207BCC0(u16 move) {
     return 0xFF;
 }
 
-int PartyMenu_SoftboiledTryTargetCheck(PartyMenuStruct *partyMenu) {
+static int PartyMenu_SoftboiledTryTargetCheck(PartyMenuStruct *partyMenu) {
     switch (PartyMenu_SoftboiledTargetCheck(partyMenu)) {
     case 0:
         PlaySE(SEQ_SE_DP_KAIFUKU);
@@ -2203,7 +2193,7 @@ int PartyMenu_SoftboiledTryTargetCheck(PartyMenuStruct *partyMenu) {
     return PARTY_MENU_STATE_30;
 }
 
-int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
+static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
     PartyMenuStruct_SubC90 *r5 = &partyMenu->unk_C90;
     if (r5->unk_C == TRUE) {
         if (!sub_0207CC24(partyMenu)) {
@@ -2296,7 +2286,7 @@ int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
     return PARTY_MENU_STATE_30;
 }
 
-u8 PartyMenu_SoftboiledTargetCheck(PartyMenuStruct *partyMenu) {
+static u8 PartyMenu_SoftboiledTargetCheck(PartyMenuStruct *partyMenu) {
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg) {
         return 2;
     }
@@ -2310,7 +2300,7 @@ u8 PartyMenu_SoftboiledTargetCheck(PartyMenuStruct *partyMenu) {
     return 0;
 }
 
-BOOL PartyMenu_SoftboiledHPTransferStep(PartyMenuStruct *partyMenu, u8 partySlot, s8 delta) {
+static BOOL PartyMenu_SoftboiledHPTransferStep(PartyMenuStruct *partyMenu, u8 partySlot, s8 delta) {
     partyMenu->monsDrawState[partySlot].hp += delta;
     ++partyMenu->unk_C6C;
     sub_0207D480(partyMenu, partySlot);
@@ -2327,7 +2317,7 @@ BOOL PartyMenu_SoftboiledHPTransferStep(PartyMenuStruct *partyMenu, u8 partySlot
     return FALSE;
 }
 
-u8 sub_0207C0DC(PartyMenuStruct *partyMenu) {
+static u8 sub_0207C0DC(PartyMenuStruct *partyMenu) {
     PartyMenuStruct_SubC90 *r5 = &partyMenu->unk_C90;
     if (r5->unk_C == TRUE) {
         if (sub_0207CC24(partyMenu) == FALSE) {
@@ -2401,7 +2391,7 @@ u8 sub_0207C0DC(PartyMenuStruct *partyMenu) {
     return sub_0207A8FC(partyMenu);
 }
 
-int sub_0207C288(PartyMenuStruct *partyMenu) {
+static int sub_0207C288(PartyMenuStruct *partyMenu) {
     ItemData *itemData = LoadItemDataOrGfx(partyMenu->args->itemId, ITEMNARC_PARAM, HEAP_ID_PARTY_MENU);
 
     if (partyMenu->args->itemId == ITEM_GRACIDEA && Mon_CanUseGracidea(Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex)) == TRUE) {
@@ -2442,7 +2432,7 @@ int sub_0207C288(PartyMenuStruct *partyMenu) {
     return PARTY_MENU_STATE_5;
 }
 
-u8 sub_0207C3D0(PartyMenuStruct *partyMenu) {
+static u8 sub_0207C3D0(PartyMenuStruct *partyMenu) {
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem == ITEM_NONE) {
         return 0;
     } else if (ItemIdIsMail(partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem) == TRUE) {
@@ -2452,7 +2442,7 @@ u8 sub_0207C3D0(PartyMenuStruct *partyMenu) {
     }
 }
 
-int sub_0207C400(PartyMenuStruct *partyMenu) {
+static int sub_0207C400(PartyMenuStruct *partyMenu) {
     int result = -1;
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     FieldSystem *fieldSystem = partyMenu->args->fieldSystem;
@@ -2509,7 +2499,7 @@ int sub_0207C400(PartyMenuStruct *partyMenu) {
     return result;
 }
 
-int sub_0207C5D4(PartyMenuStruct *partyMenu, Pokemon *mon, s32 *transformResult) {
+static int sub_0207C5D4(PartyMenuStruct *partyMenu, Pokemon *mon, s32 *transformResult) {
     u32 itemToBeHeld = partyMenu->args->itemId;
     Bag_TakeItem(partyMenu->args->bag, partyMenu->args->itemId, 1, HEAP_ID_PARTY_MENU);
     SetMonData(mon, MON_DATA_HELD_ITEM, &itemToBeHeld);
@@ -2524,7 +2514,7 @@ int sub_0207C5D4(PartyMenuStruct *partyMenu, Pokemon *mon, s32 *transformResult)
     }
 }
 
-void sub_0207C658(PartyMenuStruct *partyMenu, Pokemon *mon, u32 oldItemId, u32 newItemId, ...) {
+static void sub_0207C658(PartyMenuStruct *partyMenu, Pokemon *mon, u32 oldItemId, u32 newItemId, ...) {
     va_list va_args;
     va_start(va_args, newItemId);
 
@@ -2538,7 +2528,7 @@ void sub_0207C658(PartyMenuStruct *partyMenu, Pokemon *mon, u32 oldItemId, u32 n
     va_end(va_args);
 }
 
-int sub_0207C6BC(PartyMenuStruct *partyMenu) {
+static int sub_0207C6BC(PartyMenuStruct *partyMenu) {
     if (TextPrinterCheckActive(partyMenu->textPrinterId) == FALSE) {
         return sub_0207C8B4(partyMenu);
     } else {
@@ -2546,7 +2536,7 @@ int sub_0207C6BC(PartyMenuStruct *partyMenu) {
     }
 }
 
-int sub_0207C6DC(PartyMenuStruct *partyMenu) {
+static int sub_0207C6DC(PartyMenuStruct *partyMenu) {
     if (TextPrinterCheckActive(partyMenu->textPrinterId) == FALSE) {
         ClearFrameAndWindow2(&partyMenu->unk_224, TRUE);
         sub_0207CB54(partyMenu);
@@ -2556,7 +2546,7 @@ int sub_0207C6DC(PartyMenuStruct *partyMenu) {
     }
 }
 
-int sub_0207C70C(PartyMenuStruct *partyMenu) {
+static int sub_0207C70C(PartyMenuStruct *partyMenu) {
     if (PartyMenu_AnimateIconFormChange(partyMenu) == TRUE) {
         sub_0207CB6C(partyMenu);
         return PARTY_MENU_STATE_11;
@@ -2565,7 +2555,7 @@ int sub_0207C70C(PartyMenuStruct *partyMenu) {
     }
 }
 
-int sub_0207C728(PartyMenuStruct *partyMenu) {
+static int sub_0207C728(PartyMenuStruct *partyMenu) {
     if (TextPrinterCheckActive(partyMenu->textPrinterId) == FALSE) {
         sub_0207DBCC(partyMenu);
         return PARTY_MENU_STATE_10;
@@ -2574,7 +2564,7 @@ int sub_0207C728(PartyMenuStruct *partyMenu) {
     }
 }
 
-int sub_0207C74C(PartyMenuStruct *partyMenu) {
+static int sub_0207C74C(PartyMenuStruct *partyMenu) {
     int result;
     switch (YesNoPrompt_HandleInput(partyMenu->yesNoPrompt)) {
     case YESNORESPONSE_YES: {
@@ -2618,7 +2608,7 @@ int sub_0207C74C(PartyMenuStruct *partyMenu) {
     return PARTY_MENU_STATE_10;
 }
 
-int sub_0207C8B4(PartyMenuStruct *partyMenu) {
+static int sub_0207C8B4(PartyMenuStruct *partyMenu) {
     if (partyMenu->args->unk_24 == 10) {
         ClearFrameAndWindow2(&partyMenu->unk_224, TRUE);
         sub_0207DAC4(partyMenu, msg_0300_00029, TRUE);
@@ -2631,7 +2621,7 @@ int sub_0207C8B4(PartyMenuStruct *partyMenu) {
     }
 }
 
-int sub_0207C908(PartyMenuStruct *partyMenu) {
+static int sub_0207C908(PartyMenuStruct *partyMenu) {
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     s32 giratinaResult;
     int newItem = partyMenu->args->itemId;
@@ -2661,7 +2651,7 @@ int sub_0207C908(PartyMenuStruct *partyMenu) {
     return manipulateItemResult;
 }
 
-int sub_0207CA30(PartyMenuStruct *partyMenu) {
+static int sub_0207CA30(PartyMenuStruct *partyMenu) {
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].capsule == 0) {
         partyMenu->args->selectedAction = 0;
         return PARTY_MENU_STATE_32;

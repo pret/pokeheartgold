@@ -249,10 +249,18 @@ BOOL sub_02079E38(PartyMenuStruct *partyMenu, u8 partySlot);
 u16 *sub_0207A16C(PartyMenuStruct *partyMenu);
 void sub_0207AB84(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207A7F4(PartyMenuStruct *partyMenu, u8 partySlot);
+u8 sub_0207B364(PartyMenuStruct *partyMenu, u8 selection);
+u8 sub_0207B418(PartyMenuStruct *partyMenu, u8 selection);
+u8 sub_0207B4A0(PartyMenuStruct *partyMenu, u8 selection);
+int sub_0207B5EC(u8 a0, u8 partySlot);
 u32 sub_0207CA9C(void);
 u32 sub_0207CAA0(void);
 u32 sub_0207CAA4(void);
 u32 sub_0207CAA8(void);
+void sub_0207CAAC(HeapID heapId, u16 *a1, u16 *a2, u16 *a3);
 void sub_0207CB6C(PartyMenuStruct *partyMenu);
+void sub_0207CB20(PartyMenuStruct *partyMenu);
+void sub_0207CB3C(PartyMenuStruct *partyMenu, BOOL a1);
+void sub_0207CB54(PartyMenuStruct *partyMenu);
 
 #endif //POKEHEARTGOLD_PARTY_MENU_H
