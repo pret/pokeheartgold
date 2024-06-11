@@ -136,17 +136,93 @@ void sub_0207CB20(PartyMenuStruct *partyMenu);
 void sub_0207CB3C(PartyMenuStruct *partyMenu, BOOL a1);
 void sub_0207CB54(PartyMenuStruct *partyMenu);
 
-extern const u8 _021012B0[][2];
-extern const u8 _021012CC[][6];
-extern const UnkStruct_02020654 _0210140C[8];
-extern const UnkStruct_02020654 _0210144C[8];
-extern const UnkStruct_02020654 _0210148C[8];
-extern const UnkStruct_02020654 _021014CC[8];
-extern const UnkStruct_0207A22C _0210150C[];
-extern const UnkStruct_0207A22C _02101554[];
-extern const u16 _021013C4[16];
-extern TouchscreenHitbox _02110104[];
-extern TouchscreenHitbox _02110128[][8];
+const OVY_MGR_TEMPLATE gOverlayTemplate_PartyMenu = {
+    PartyMenuApp_Init,
+    PartyMenuApp_Main,
+    PartyMenuApp_Exit,
+    FS_OVERLAY_ID_NONE,
+};
+
+static const UnkStruct_0207A22C _0210150C[2][6] = {
+    {
+        { 0x0000, 0x0000, 0x001E, 0x0010, 0x0010, 0x000E },
+        { 0x0010, 0x0001, 0x009E, 0x0018, 0x0090, 0x0016 },
+        { 0x0000, 0x0006, 0x001E, 0x0040, 0x0010, 0x003E },
+        { 0x0010, 0x0007, 0x009E, 0x0048, 0x0090, 0x0046 },
+        { 0x0000, 0x000C, 0x001E, 0x0070, 0x0010, 0x006E },
+        { 0x0010, 0x000D, 0x009E, 0x0078, 0x0090, 0x0076 },
+    }, {
+        { 0x0000, 0x0000, 0x001E, 0x0010, 0x0010, 0x000E },
+        { 0x0010, 0x0000, 0x009E, 0x0010, 0x0090, 0x000E },
+        { 0x0000, 0x0006, 0x001E, 0x0040, 0x0010, 0x003E },
+        { 0x0010, 0x0006, 0x009E, 0x0040, 0x0090, 0x003E },
+        { 0x0000, 0x000C, 0x001E, 0x0070, 0x0010, 0x006E },
+        { 0x0010, 0x000C, 0x009E, 0x0070, 0x0090, 0x006E },
+    }
+};
+
+static const UnkStruct_02020654 _0210140C[8] = {
+    { 0x40, 0x19, 0x00, 0x00, 0x07, 0x02, 0x07, 0x01 },
+    { 0xC0, 0x21, 0x00, 0x00, 0x07, 0x03, 0x00, 0x02 },
+    { 0x40, 0x49, 0x00, 0x00, 0x00, 0x04, 0x01, 0x03 },
+    { 0xC0, 0x51, 0x00, 0x00, 0x01, 0x05, 0x02, 0x04 },
+    { 0x40, 0x79, 0x00, 0x00, 0x02, 0x07, 0x03, 0x05 },
+    { 0xC0, 0x81, 0x00, 0x00, 0x03, 0x07, 0x04, 0x07 },
+    { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 },
+    { 0xE0, 0xA8, 0x00, 0x00, 0x05, 0x01, 0x05, 0x00 },
+};
+
+static const UnkStruct_02020654 _0210144C[8] = {
+    { 0x40, 0x19, 0x00, 0x00, 0x04, 0x02, 0x01, 0x01 },
+    { 0xC0, 0x19, 0x00, 0x00, 0x07, 0x03, 0x00, 0x00 },
+    { 0x40, 0x49, 0x00, 0x00, 0x00, 0x04, 0x03, 0x03 },
+    { 0xC0, 0x49, 0x00, 0x00, 0x01, 0x05, 0x02, 0x02 },
+    { 0x40, 0x79, 0x00, 0x00, 0x02, 0x00, 0x05, 0x05 },
+    { 0xC0, 0x79, 0x00, 0x00, 0x03, 0x07, 0x04, 0x04 },
+    { 0xE0, 0xA8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 },
+    { 0xE0, 0xA8, 0x00, 0x00, 0x05, 0x01, 0xFF, 0xFF },
+};
+
+static const UnkStruct_02020654 _0210148C[8] = {
+    { 0x40, 0x19, 0x00, 0x00, 0x07, 0x02, 0x07, 0x01 },
+    { 0xC0, 0x21, 0x00, 0x00, 0x07, 0x03, 0x00, 0x02 },
+    { 0x40, 0x49, 0x00, 0x00, 0x00, 0x04, 0x01, 0x03 },
+    { 0xC0, 0x51, 0x00, 0x00, 0x01, 0x05, 0x02, 0x04 },
+    { 0x40, 0x79, 0x00, 0x00, 0x02, 0x06, 0x03, 0x05 },
+    { 0xC0, 0x81, 0x00, 0x00, 0x03, 0x06, 0x04, 0x06 },
+    { 0xE0, 0xA8, 0x00, 0x00, 0x05, 0x07, 0x05, 0x07 },
+    { 0xE0, 0xB8, 0x00, 0x00, 0x06, 0x01, 0x06, 0x00 },
+};
+
+static const UnkStruct_02020654 _021014CC[8] = {
+    { 0x40, 0x19, 0x00, 0x00, 0x05, 0x02, 0x05, 0x01 },
+    { 0xC0, 0x21, 0x00, 0x00, 0x05, 0x03, 0x00, 0x02 },
+    { 0x40, 0x49, 0x00, 0x00, 0x00, 0x04, 0x01, 0x03 },
+    { 0xC0, 0x51, 0x00, 0x00, 0x01, 0x05, 0x02, 0x04 },
+    { 0x40, 0x79, 0x00, 0x00, 0x02, 0x00, 0x03, 0x05 },
+    { 0xC0, 0x81, 0x00, 0x00, 0x03, 0x00, 0x04, 0x00 },
+    { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 },
+    { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 },
+};
+
+static const u16 _021013C4[16] = {
+    MOVE_CUT,
+    MOVE_FLY,
+    MOVE_SURF,
+    MOVE_STRENGTH,
+    MOVE_ROCK_SMASH,
+    MOVE_WATERFALL,
+    MOVE_ROCK_CLIMB,
+    MOVE_WHIRLPOOL,
+    MOVE_FLASH,
+    MOVE_TELEPORT,
+    MOVE_DIG,
+    MOVE_SWEET_SCENT,
+    MOVE_CHATTER,
+    MOVE_HEADBUTT,
+    MOVE_MILK_DRINK,
+    MOVE_SOFTBOILED,
+};
 
 BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
     PartyMenuStruct *partyMenu;
@@ -581,70 +657,214 @@ void sub_020796B8(void *cbData) {
     OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
+static TouchscreenHitbox _02110128[][8] = {
+    {
+        { .rect = { 0x00, 0x30, 0x00, 0x80 } },
+        { .rect = { 0x08, 0x38, 0x80, 0x00 } },
+        { .rect = { 0x30, 0x60, 0x00, 0x80 } },
+        { .rect = { 0x38, 0x68, 0x80, 0x00 } },
+        { .rect = { 0x60, 0x90, 0x00, 0x80 } },
+        { .rect = { 0x68, 0x98, 0x80, 0x00 } },
+        { .rect = { 0x98, 0xC0, 0xC8, 0x00 } },
+        { .rect = { TOUCHSCREEN_RECTLIST_END } },
+    }, {
+        { .rect = { 0x00, 0x30, 0x00, 0x80 } },
+        { .rect = { 0x00, 0x30, 0x80, 0x00 } },
+        { .rect = { 0x30, 0x60, 0x00, 0x80 } },
+        { .rect = { 0x30, 0x60, 0x80, 0x00 } },
+        { .rect = { 0x60, 0x90, 0x00, 0x80 } },
+        { .rect = { 0x60, 0x90, 0x80, 0x00 } },
+        { .rect = { 0x98, 0xC0, 0xC8, 0x00 } },
+        { .rect = { TOUCHSCREEN_RECTLIST_END } },
+    }
+};
+
+static TouchscreenHitbox _02110104[] = {
+    { .rect = { 0x00, 0x30, 0x00, 0x80 } },
+    { .rect = { 0x08, 0x38, 0x80, 0x00 } },
+    { .rect = { 0x30, 0x60, 0x00, 0x80 } },
+    { .rect = { 0x38, 0x68, 0x80, 0x00 } },
+    { .rect = { 0x60, 0x90, 0x00, 0x80 } },
+    { .rect = { 0x68, 0x98, 0x80, 0x00 } },
+    { .rect = { 0xB0, 0xC0, 0xC8, 0x00 } },
+    { .rect = { 0xA0, 0xB0, 0xC8, 0x00 } },
+    { .rect = { TOUCHSCREEN_RECTLIST_END } },
+};
+
 void sub_02079700(void) {
-    extern const GraphicsBanks _021013E4;
-    GraphicsBanks graphicsBanks = _021013E4;
+    GraphicsBanks graphicsBanks = {
+        .bg = GX_VRAM_BG_128_A,
+        .bgextpltt = GX_VRAM_BGEXTPLTT_NONE,
+        .subbg = GX_VRAM_SUB_BG_128_C,
+        .subbgextpltt = GX_VRAM_SUB_BGEXTPLTT_NONE,
+        .obj = GX_VRAM_OBJ_64_E,
+        .objextpltt = GX_VRAM_OBJEXTPLTT_NONE,
+        .subobj = GX_VRAM_SUB_OBJ_16_I,
+        .subobjextpltt = GX_VRAM_SUB_OBJEXTPLTT_NONE,
+        .tex = GX_VRAM_TEX_0_B,
+        .texpltt = GX_VRAM_TEXPLTT_01_FG,
+    };
     GfGfx_SetBanks(&graphicsBanks);
 }
 
 void sub_02079720(BgConfig *bgConfig) {
-    extern const BgTemplate _02101370;
-    BgTemplate bgTemplate = _02101370;
+    BgTemplate bgTemplate = {
+        .x = 0,
+        .y = 0,
+        .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+        .baseTile = 0,
+        .size = GF_BG_SCR_SIZE_256x256,
+        .colorMode = GX_BG_COLORMODE_16,
+        .screenBase = GX_BG_SCRBASE_0xf800,
+        .charBase = GX_BG_CHARBASE_0x00000,
+        .bgExtPltt = GX_BG_EXTPLTT_01,
+        .priority = 0,
+        .areaOver = GX_BG_AREAOVER_XLU,
+        .mosaic = 0,
+    };
     InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_0, &bgTemplate, GF_BG_TYPE_TEXT);
     BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_0);
 }
 
 void sub_02079758(BgConfig *bgConfig) {
     {
-        extern const GraphicsModes _021012BC;
-        GraphicsModes graphicsModes = _021012BC;
+        GraphicsModes graphicsModes = {
+            .dispMode = GX_DISPMODE_GRAPHICS,
+            .bgMode = GX_BGMODE_0,
+            .subMode = GX_BGMODE_0,
+            ._2d3dMode = GX_BG0_AS_2D,
+        };
         SetBothScreensModesAndDisable(&graphicsModes);
     }
 
     {
-        extern const BgTemplate _02101354;
-        BgTemplate bgTemplate = _02101354;
+        BgTemplate bgTemplate = {
+            .x = 0,
+            .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xf800,
+            .charBase = GX_BG_CHARBASE_0x00000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 0,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = 0,
+        };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_0, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_0);
     }
 
     {
-        extern const BgTemplate _021013A8;
-        BgTemplate bgTemplate = _021013A8;
+        BgTemplate bgTemplate = {
+            .x = 0,
+            .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xf000,
+            .charBase = GX_BG_CHARBASE_0x00000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 1,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = 0,
+        };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_1, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_1);
     }
 
     {
-        extern const BgTemplate _0210131C;
-        BgTemplate bgTemplate = _0210131C;
+        BgTemplate bgTemplate = {
+            .x = 0,
+            .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xe800,
+            .charBase = GX_BG_CHARBASE_0x10000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 2,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = 0,
+        };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_2, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_2);
     }
 
     {
-        extern const BgTemplate _021012E4;
-        BgTemplate bgTemplate = _021012E4;
+        BgTemplate bgTemplate = {
+            .x = 0,
+            .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xe000,
+            .charBase = GX_BG_CHARBASE_0x10000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 3,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = 0,
+        };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_3, &bgTemplate, GF_BG_TYPE_TEXT);
     }
 
     {
-        extern const BgTemplate _02101338;
-        BgTemplate bgTemplate = _02101338;
+        BgTemplate bgTemplate = {
+            .x = 0,
+            .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xd800,
+            .charBase = GX_BG_CHARBASE_0x10000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 0,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = 0,
+        };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_2, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_2);
     }
 
     {
-        extern const BgTemplate _0210138C;
-        BgTemplate bgTemplate = _0210138C;
+        BgTemplate bgTemplate = {
+            .x = 0,
+            .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xf800,
+            .charBase = GX_BG_CHARBASE_0x08000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 1,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = 0,
+        };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_0, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_0);
     }
 
     {
-        extern const BgTemplate _02101300;
-        BgTemplate bgTemplate = _02101300;
+        BgTemplate bgTemplate = {
+            .x = 0,
+            .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xf000,
+            .charBase = GX_BG_CHARBASE_0x00000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 2,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = 0,
+        };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_1, &bgTemplate, GF_BG_TYPE_TEXT);
     }
 
@@ -917,7 +1137,7 @@ void sub_0207A174(PartyMenuStruct *partyMenu, u8 partySlot, u8 x, u8 y, u8 a4) {
 }
 
 void sub_0207A22C(PartyMenuStruct *partyMenu) {
-    const UnkStruct_0207A22C *r1 = partyMenu->args->unk_25 == 2 ? _02101554 : _0210150C;
+    const UnkStruct_0207A22C *r1 = partyMenu->args->unk_25 == 2 ? _0210150C[1] : _0210150C[0];
     if (partyMenu->args->unk_24 == 16) {
         sub_0207A3C8(partyMenu, r1);
     } else if (partyMenu->args->unk_24 == 6) {
@@ -1077,6 +1297,13 @@ void sub_0207A89C(PartyMenuStruct *partyMenu) {
     Set2dSpriteAnimSeqNo(partyMenu->unk_678, sub_0207B5EC(partyMenu->args->unk_25, partyMenu->partyMonIndex));
     Sprite_SetPositionXY(partyMenu->unk_678, x, y);
 }
+
+static const u8 _021012CC[][6] = {
+    { 0, 2, 4, 1, 3, 5 },
+    { 1, 3, 5, 0, 2, 4 },
+    { 4, 2, 0, 5, 3, 1 },
+    { 5, 3, 1, 4, 2, 0 },
+};
 
 u8 sub_0207A8FC(PartyMenuStruct *partyMenu) {
     if (sub_0207A99C(partyMenu) == TRUE) {
@@ -1902,6 +2129,15 @@ u8 sub_0207BB88(PartyMenuStruct *partyMenu) {
 
     return 0;
 }
+
+static const u8 _021012B0[][2] = {
+    {  1,  3 },
+    { 26,  3 },
+    {  1, 10 },
+    { 26, 10 },
+    {  1, 17 },
+    { 26, 17 },
+};
 
 void sub_0207BBFC(u8 a0, s16 *px, s16 *py) {
     *px = _021012B0[a0][0] * 8 + 20;
