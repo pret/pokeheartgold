@@ -24,8 +24,18 @@
 #define FIELD_MOVE_CHECK_WHIRLPOOL_F             12
 #define FIELD_MOVE_CHECK_HEADBUTT_F              13
 
+typedef enum PartyMonSelection {
+    PARTY_MON_SELECTION_1,
+    PARTY_MON_SELECTION_2,
+    PARTY_MON_SELECTION_3,
+    PARTY_MON_SELECTION_4,
+    PARTY_MON_SELECTION_5,
+    PARTY_MON_SELECTION_6,
+    PARTY_MON_SELECTION_CANCEL,
+} PartyMonSelection;
+
 typedef enum PartyMenuState {
-    PARTY_MENU_STATE_0,
+    PARTY_MENU_STATE_INIT,
     PARTY_MENU_STATE_1,
     PARTY_MENU_STATE_2,
     PARTY_MENU_STATE_3,
@@ -49,17 +59,21 @@ typedef enum PartyMenuState {
     PARTY_MENU_STATE_21,
     PARTY_MENU_STATE_22,
     PARTY_MENU_STATE_23,
-    PARTY_MENU_STATE_24,
+    PARTY_MENU_STATE_WAIT_TEXT_PRINTER,
     PARTY_MENU_STATE_25,
-    PARTY_MENU_STATE_26,
-    PARTY_MENU_STATE_27,
+    PARTY_MENU_STATE_YES_NO_INIT,
+    PARTY_MENU_STATE_YES_NO_HANDLE_INPUT,
     PARTY_MENU_STATE_28,
     PARTY_MENU_STATE_29,
     PARTY_MENU_STATE_30,
     PARTY_MENU_STATE_31,
-    PARTY_MENU_STATE_32,
-    PARTY_MENU_STATE_33,
+    PARTY_MENU_STATE_BEGIN_EXIT,
+    PARTY_MENU_STATE_WAIT_EXIT_FADE_OUT,
 } PartyMenuState;
+
+typedef enum PartyMenuContext {
+    PARTY_MENU_CONTEXT_0,
+} PartyMenuContext;
 
 typedef struct UnkTemplate_0207E590 {
     int unk_00;
@@ -141,7 +155,7 @@ typedef struct PartyMenuStruct_SubC90 {
     int unk_C;
 } PartyMenuStruct_SubC90;
 
-typedef struct PartyMenuStruct_Sub828 {
+typedef struct PartyMenuMonsDrawState {
     String *nickname; // 828
     u16 species;      // 82C
     u16 hp;           // 82E
@@ -161,17 +175,11 @@ typedef struct PartyMenuStruct_Sub828 {
     s16 unk_18;       // 840
     u8 filler_1A[0x13];
     u8 active;        // 855
-} PartyMenuStruct_Sub828;
+} PartyMenuMonsDrawState;
 
 struct PartyMenuStruct {
     BgConfig *bgConfig;
-    Window unk_004[6];
-    u8 filler_064[0x1A0];
-    Window unk_204;
-    Window unk_214;
-    Window unk_224;
-    Window unk_234;
-    u8 filler_244[0xD0];
+    Window unk_004[49];
     u16 unk_314[6 * 0x10];
     u16 unk_3D4[6 * 0x10];
     u16 unk_494[6 * 0x10];
@@ -179,12 +187,7 @@ struct PartyMenuStruct {
     PartyMenuArgs *args; //0x654
     u8 filler_658[0x4];
     SpriteGfxHandler *unk_65C;
-    Sprite *unk_660[6];
-    Sprite *unk_678;
-    u8 filler_67C[0x4];
-    Sprite *unk_680;
-    Sprite *unk_684;
-    u8 filler_688[0x134];
+    Sprite *unk_660[87];
     MessagePrinter *msgPrinter; //0x7bc
     MsgData *msgData; //0x7c0
     MessageFormat* msgFormat; //0x7c4
@@ -193,12 +196,12 @@ struct PartyMenuStruct {
     String *unk_7D0[20];
     LISTMENUITEM *unk_820;
     UnkStruct_0207E590 *unk_824;
-    PartyMenuStruct_Sub828 monsDrawState[PARTY_SIZE];
+    PartyMenuMonsDrawState monsDrawState[PARTY_SIZE];
     const UnkStruct_02020654 *unk_948;
     u8 filler_94C[0x308];
     int (*unk_C54)(PartyMenuStruct *);
-    int (*unk_C58)(PartyMenuStruct *);
-    int (*unk_C5C)(PartyMenuStruct *);
+    int (*yesCallback)(PartyMenuStruct *);
+    int (*noCallback)(PartyMenuStruct *);
     u8 unk_C60;
     u8 unk_C61;
     u8 afterTextPrinterState;

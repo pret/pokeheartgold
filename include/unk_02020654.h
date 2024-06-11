@@ -18,6 +18,6 @@ NNSG2dCellTransferState* sub_02020654(int a0, HeapID heapId);
 void sub_02020A0C(int, u8 *, u8 *);
 void sub_02020674(void);
 void sub_0202067C(NNSG2dCellTransferState* state);
-u8 sub_02020A24(const UnkStruct_02020654 *a0, u8 *a1, u8 *a2, int a3, int a4, int a5, int a6);
+u8 sub_02020A24(const UnkStruct_02020654 *a0, u8 *px, u8 *py, int a3, int a4, int partyMonIndex, int direction);
 
 #endif //POKEHEARTGOLD_UNK_02020654_H
