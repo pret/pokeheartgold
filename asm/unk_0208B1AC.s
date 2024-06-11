@@ -1577,7 +1577,7 @@ sub_0208BE00: ; 0x0208BE00
 	add r1, r5, r0
 	ldr r0, _0208BE6C ; =0x00000404
 	ldr r0, [r1, r0]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	mov r1, #2
 	bl NNS_G2dGetImageLocation
 	add r6, r0, #0

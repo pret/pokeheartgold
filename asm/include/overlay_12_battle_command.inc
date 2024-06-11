@@ -11,12 +11,12 @@
 .public OverlayManager_Delete
 .public OverlayManager_Run
 .public GfGfxLoader_LoadFromNarc
-.public sub_020085EC
-.public sub_0200878C
-.public sub_020087A4
-.public sub_02008A78
-.public sub_02008C2C
-.public sub_020090E4
+.public PokepicManager_CreatePokepic
+.public PokepicManager_DeleteAllPics
+.public Pokepic_SetAttr
+.public Pokepic_GetAttr
+.public Pokepic_AddAttr
+.public Pokepic_StartPaletteFadeAll
 .public NewString_ReadMsgData
 .public BufferBoxMonNickname
 .public BufferIntegerAsString
@@ -31,7 +31,7 @@
 .public SpriteGfxHandler_UnloadPlttObjById
 .public SpriteGfxHandler_UnloadCellObjById
 .public SpriteGfxHandler_UnloadAnimObjById
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public sub_0200E188
 .public sub_0200E2B0

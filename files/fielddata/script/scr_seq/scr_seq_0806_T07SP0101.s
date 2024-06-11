@@ -25,7 +25,7 @@ scr_seq_T07SP0101_000:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 0, 0
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	setvar VAR_TEMP_x4001, 2

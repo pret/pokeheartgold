@@ -272,10 +272,10 @@ _020777D6:
 
 	thumb_func_start sub_020777F8
 sub_020777F8: ; 0x020777F8
-	ldr r3, _020777FC ; =sub_0200D9DC
+	ldr r3, _020777FC ; =UnkImageStruct_Delete
 	bx r3
 	.balign 4, 0
-_020777FC: .word sub_0200D9DC
+_020777FC: .word UnkImageStruct_Delete
 	thumb_func_end sub_020777F8
 
 	thumb_func_start sub_02077800
@@ -352,8 +352,8 @@ _0207786C: .word SpriteGfxHandler_UnloadCharObjById
 
 	thumb_func_start sub_02077870
 sub_02077870: ; 0x02077870
-	ldr r3, _02077874 ; =sub_0200D9DC
+	ldr r3, _02077874 ; =UnkImageStruct_Delete
 	bx r3
 	.balign 4, 0
-_02077874: .word sub_0200D9DC
+_02077874: .word UnkImageStruct_Delete
 	thumb_func_end sub_02077870

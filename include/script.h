@@ -3,6 +3,7 @@
 
 #include "global.h"
 #include "map_events_internal.h"
+#include "field_types_def.h"
 #include "msgdata.h"
 #include "bg_window.h"
 #include "field_player_avatar.h"
@@ -15,7 +16,6 @@
 #include "list_menu_2d.h"
 #include "render_window.h"
 #include "camera.h"
-#include "field_system.h"
 #include "render_window.h"
 
 #define SCRIPT_MODE_STOPPED  0

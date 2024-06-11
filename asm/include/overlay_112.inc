@@ -86,7 +86,7 @@
 .public SpriteRenderer_LoadResourcesAndCreateSprite
 .public SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 .public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public UnkImageStruct_TryChangeSpriteAnimSeqNo
 .public UnkImageStruct_GetSpriteCurrentAnimSeqNo
@@ -185,8 +185,8 @@
 .public Set2dSpriteAnimActiveFlag
 .public Set2dSpriteAnimSeqNo
 .public Sprite_SetPriority
-.public sub_02024B1C
-.public sub_02024B34
+.public Sprite_GetImageProxy
+.public Sprite_GetPaletteProxy
 .public Sprite_GetVramType
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public TouchscreenHitbox_TouchNewIsIn

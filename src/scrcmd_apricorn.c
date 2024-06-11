@@ -1,6 +1,7 @@
 #include "scrcmd.h"
 #include "overlay_01_apricorn_tree_anim.h"
 #include "unk_02055418.h"
+#include "field_system.h"
 #include "unk_02031B0C.h"
 
 BOOL ScrCmd_AnimApricornTree(ScriptContext *ctx) {

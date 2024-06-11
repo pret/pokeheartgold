@@ -597,7 +597,7 @@ _0226002C:
 	bl ov93_0225FE08
 _0226005C:
 	ldr r0, [r4, #0x10]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	str r7, [r4]
 _02260064:
 	add r6, r6, #1
@@ -927,7 +927,7 @@ _022602EE:
 	bne _02260300
 	ldr r0, _02260310 ; =0x00002FEC
 	ldr r0, [r5, r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, _0226030C ; =0x00002FDC
 	str r6, [r5, r0]
 _02260300:
@@ -1303,7 +1303,7 @@ _02260612:
 	ldr r0, [r5]
 	cmp r0, #0
 	beq _0226061C
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 _0226061C:
 	add r4, r4, #1
 	add r5, #0x18
@@ -1317,7 +1317,7 @@ _0226062C:
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _02260636
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 _02260636:
 	add r5, r5, #1
 	add r4, #0x18
@@ -1331,7 +1331,7 @@ _02260646:
 	ldr r0, [r5]
 	cmp r0, #0
 	beq _02260650
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 _02260650:
 	add r4, r4, #1
 	add r5, #0x18
@@ -1368,7 +1368,7 @@ _0226067E:
 	ldrsh r1, [r5, r1]
 	cmp r1, #0
 	bne _02260696
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0
 	str r0, [r5]
 	b _0226073A
@@ -1472,7 +1472,7 @@ _02260752:
 	ldrsh r1, [r5, r1]
 	cmp r1, #0
 	bne _0226076A
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0
 	str r0, [r5]
 	b _0226080E
@@ -1575,7 +1575,7 @@ _02260824:
 	ldrsh r1, [r5, r1]
 	cmp r1, #0
 	bne _0226083C
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0
 	str r0, [r5]
 	b _022608E0
@@ -1821,7 +1821,7 @@ ov93_02260A14: ; 0x02260A14
 	mov r4, #0
 _02260A1C:
 	ldr r0, [r5, r6]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, #0xc
 	cmp r4, #5
@@ -2809,7 +2809,7 @@ ov93_0226114C: ; 0x0226114C
 	mov r4, #0
 _02261152:
 	ldr r0, [r5]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -2994,11 +2994,11 @@ ov93_022612E0: ; 0x022612E0
 	mov r4, #0
 _022612E8:
 	ldr r0, [r5]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r5, #4]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r5, #8]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r1, r5, #0
 	add r0, r6, #0
 	add r1, #0x30
@@ -4178,9 +4178,9 @@ ov93_02261C3C: ; 0x02261C3C
 	mov r4, #0
 _02261C42:
 	ldr r0, [r5]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r5, #4]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, #0x18
 	cmp r4, #3
@@ -5101,11 +5101,11 @@ _02262334: .word 0x000016B0
 
 	thumb_func_start ov93_02262338
 ov93_02262338: ; 0x02262338
-	ldr r3, _02262340 ; =sub_0200D9DC
+	ldr r3, _02262340 ; =UnkImageStruct_Delete
 	add r0, r1, #0
 	bx r3
 	nop
-_02262340: .word sub_0200D9DC
+_02262340: .word UnkImageStruct_Delete
 	thumb_func_end ov93_02262338
 
 	thumb_func_start ov93_02262344
@@ -5129,11 +5129,11 @@ _02262364: .word ov93_02262FA0
 
 	thumb_func_start ov93_02262368
 ov93_02262368: ; 0x02262368
-	ldr r3, _02262370 ; =sub_0200D9DC
+	ldr r3, _02262370 ; =UnkImageStruct_Delete
 	add r0, r1, #0
 	bx r3
 	nop
-_02262370: .word sub_0200D9DC
+_02262370: .word UnkImageStruct_Delete
 	thumb_func_end ov93_02262368
 
 	thumb_func_start ov93_02262374
@@ -5286,7 +5286,7 @@ ov93_02262484: ; 0x02262484
 	mov r4, #0
 _0226248A:
 	ldr r0, [r5]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2

@@ -1,5 +1,6 @@
 #include "scrcmd.h"
 #include "player_data.h"
+#include "field_system.h"
 
 BOOL ScrCmd_AddMoney(ScriptContext* ctx) {
     SaveData* saveData = FieldSystem_GetSaveData(ctx->fieldSystem);

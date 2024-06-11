@@ -42,7 +42,7 @@ _0068:
 	wait_fade
 	party_select_ui
 	get_party_selection VAR_SPECIAL_x8002
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x8002, 255
@@ -59,7 +59,7 @@ _0068:
 	wait_fade
 	scrcmd_394 VAR_SPECIAL_x8002
 	scrcmd_395 VAR_SPECIAL_x8001
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x8001, 255
@@ -117,7 +117,7 @@ scr_seq_T30R0601_001:
 	wait_fade
 	party_select_ui
 	get_party_selection VAR_SPECIAL_x8005
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x8005, 255
@@ -134,7 +134,7 @@ scr_seq_T30R0601_001:
 	wait_fade
 	move_relearner_init VAR_SPECIAL_x8005
 	move_relearner_get_result VAR_SPECIAL_RESULT
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_RESULT, 255
@@ -272,7 +272,7 @@ _0359:
 	wait_fade
 	party_select_ui
 	get_party_selection VAR_SPECIAL_x8000
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x8000, 255
@@ -300,7 +300,7 @@ _03EF:
 	wait_fade
 	move_tutor_init VAR_SPECIAL_x8000, MOVE_DRACO_METEOR
 	move_relearner_get_result VAR_SPECIAL_RESULT
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_RESULT, 255
@@ -352,7 +352,7 @@ _04AC:
 	wait_fade
 	party_select_ui
 	get_party_selection VAR_SPECIAL_x8000
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x8000, 255
@@ -410,7 +410,7 @@ _05BB:
 	wait_fade
 	move_tutor_init VAR_SPECIAL_x8000, VAR_SPECIAL_x8003
 	move_relearner_get_result VAR_SPECIAL_RESULT
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_RESULT, 255

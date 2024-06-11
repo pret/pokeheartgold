@@ -124,7 +124,7 @@ ov01_021EAF98: ; 0x021EAF98
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r0, r4, #0
-	bl ov19_022598C0
+	bl FieldSystem_CreateViewPhotoTask
 	add r4, #0xd8
 	str r0, [r4]
 	pop {r4, pc}
@@ -136,7 +136,7 @@ _021EAFB0: .word FS_OVERLAY_ID(OVY_19)
 ov01_021EAFB4: ; 0x021EAFB4
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov19_02259918
+	bl FieldSystem_DestroyViewPhotoTask
 	mov r0, #0
 	add r4, #0xd8
 	str r0, [r4]

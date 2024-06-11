@@ -58,7 +58,7 @@ _00A6:
 	goto_if_eq _0200
 	scrcmd_436
 	scrcmd_627 5
-	scrcmd_150
+	restore_overworld
 	warp MAP_D31R0201, 0, 15, 6, DIR_NORTH
 	end
 
@@ -67,7 +67,7 @@ _00E9:
 	wait_fade
 	scrcmd_436
 	scrcmd_627 6
-	scrcmd_150
+	restore_overworld
 	warp MAP_D31R0201, 0, 11, 6, DIR_NORTH
 	end
 
@@ -156,7 +156,7 @@ _01EC:
 _0200:
 	scrcmd_436
 	scrcmd_627 5
-	scrcmd_150
+	restore_overworld
 	warp MAP_D31R0201, 0, 19, 6, DIR_NORTH
 	end
 	.balign 4, 0

@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_0003.h"
 #include "msgdata/msg/msg_0040.h"
+#include "msgdata/msg/msg_0191.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -181,7 +182,7 @@ _0273:
 	wait_fade
 	closemsg
 	scrcmd_436
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	bufferpartymonnick 0, VAR_SPECIAL_x8009
@@ -219,7 +220,7 @@ _02F7:
 	wait_fade
 	closemsg
 	scrcmd_436
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	bufferpartymonnick 0, VAR_SPECIAL_x8009
@@ -263,7 +264,7 @@ _0395:
 	wait_fade
 	closemsg
 	scrcmd_436
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	bufferpartymonnick 0, VAR_SPECIAL_x8009
@@ -337,7 +338,7 @@ scr_seq_0003_069:
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
 	heal_party
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	endstd
@@ -778,23 +779,23 @@ _0A2E:
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x8006
 	call_if_unset FLAG_SYS_MET_BILL, _0A78
 	call_if_set FLAG_SYS_MET_BILL, _0A82
-	menu_item_add 63, 255, 1
+	menu_item_add msg_0191_00063, 255, 1
 	goto_if_set FLAG_GAME_CLEAR, _0A8C
 	goto_if_unset FLAG_GAME_CLEAR, _0AD1
 	goto _0AD1
 	end
 
 _0A78:
-	menu_item_add 61, 255, 0
+	menu_item_add msg_0191_00061, 255, 0
 	return
 
 _0A82:
-	menu_item_add 62, 255, 0
+	menu_item_add msg_0191_00062, 255, 0
 	return
 
 _0A8C:
-	menu_item_add 64, 255, 2
-	menu_item_add 66, 255, 3
+	menu_item_add msg_0191_00064, 255, 2
+	menu_item_add msg_0191_00066, 255, 3
 	menu_exec
 	switch VAR_SPECIAL_x8006
 	case 0, _0B01
@@ -803,7 +804,7 @@ _0A8C:
 	goto _0DF0
 
 _0AD1:
-	menu_item_add 66, 255, 2
+	menu_item_add msg_0191_00066, 255, 2
 	menu_exec
 	switch VAR_SPECIAL_x8006
 	case 0, _0B01
@@ -819,11 +820,11 @@ _0B01:
 
 _0B17:
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 67, 76, 0
-	menu_item_add 68, 77, 1
-	menu_item_add 69, 78, 2
-	menu_item_add 70, 79, 3
-	menu_item_add 72, 81, 5
+	menu_item_add msg_0191_00067, 76, 0
+	menu_item_add msg_0191_00068, 77, 1
+	menu_item_add msg_0191_00069, 78, 2
+	menu_item_add msg_0191_00070, 79, 3
+	menu_item_add msg_0191_00072, 81, 5
 	return
 
 _0B49:
@@ -844,35 +845,35 @@ _0BA2:
 	closemsg
 	call _0E16
 	scrcmd_158 0
-	scrcmd_150
+	restore_overworld
 	goto _0C01
 
 _0BB5:
 	closemsg
 	call _0E16
 	scrcmd_158 1
-	scrcmd_150
+	restore_overworld
 	goto _0C01
 
 _0BC8:
 	closemsg
 	call _0E16
 	scrcmd_158 2
-	scrcmd_150
+	restore_overworld
 	goto _0C01
 
 _0BDB:
 	closemsg
 	call _0E16
 	scrcmd_158 3
-	scrcmd_150
+	restore_overworld
 	goto _0C01
 
 _0BEE:
 	closemsg
 	call _0E16
 	scrcmd_158 4
-	scrcmd_150
+	restore_overworld
 	goto _0C01
 
 _0C01:
@@ -892,7 +893,7 @@ _0C23:
 _0C33:
 	call _0CA7
 _0C39:
-	scrcmd_616 VAR_TEMP_x4000
+	count_saved_photos VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_ne _0C72
 	menu_exec
@@ -911,17 +912,17 @@ _0C72:
 
 _0CA7:
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 73, 82, 0
-	menu_item_add 74, 83, 1
-	scrcmd_616 VAR_TEMP_x4000
+	menu_item_add msg_0191_00073, 82, 0
+	menu_item_add msg_0191_00074, 83, 1
+	count_saved_photos VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_ne _0CDA
-	menu_item_add 75, 84, 2
+	menu_item_add msg_0191_00075, 84, 2
 	return
 
 _0CDA:
-	menu_item_add 65, 85, 2
-	menu_item_add 75, 84, 3
+	menu_item_add msg_0191_00065, 85, 2
+	menu_item_add msg_0191_00075, 84, 3
 	return
 
 _0CEC:
@@ -931,7 +932,7 @@ _0CEC:
 	goto_if_eq _0D0F
 	call _0E16
 	scrcmd_376
-	scrcmd_150
+	restore_overworld
 	goto _0D18
 
 _0D0F:
@@ -970,8 +971,8 @@ _0D64:
 _0D86:
 	closemsg
 	call _0E16
-	scrcmd_617
-	scrcmd_150
+	open_photo_album
+	restore_overworld
 	goto _0D98
 
 _0D98:
@@ -990,7 +991,7 @@ _0DBA:
 	goto_if_eq _0DE7
 	call _0E16
 	scrcmd_164
-	scrcmd_150
+	restore_overworld
 	call _0E02
 	goto _0A2E
 
@@ -1223,7 +1224,7 @@ scr_seq_0003_015:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_450
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -1319,11 +1320,11 @@ scr_seq_0003_023:
 	touchscreen_menu_hide
 _11AE:
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 112, 255, 0
-	menu_item_add 113, 255, 1
-	menu_item_add 114, 255, 2
-	menu_item_add 115, 255, 3
-	menu_item_add 116, 255, 4
+	menu_item_add msg_0191_00112, 255, 0
+	menu_item_add msg_0191_00113, 255, 1
+	menu_item_add msg_0191_00114, 255, 2
+	menu_item_add msg_0191_00115, 255, 3
+	menu_item_add msg_0191_00116, 255, 4
 	menu_exec
 	compare VAR_SPECIAL_RESULT, 4
 	goto_if_ge _1277
@@ -1336,7 +1337,7 @@ _11AE:
 	setvar VAR_SPECIAL_x8000, 2
 	addvar VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
 	scrcmd_492 VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT, VAR_SPECIAL_x8001
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_RESULT, 0
@@ -1488,7 +1489,7 @@ _136C:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	run_phone_call
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	return
@@ -1530,14 +1531,14 @@ scr_seq_0003_046:
 	scrcmd_662 VAR_SPECIAL_x8005, VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _1444
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	endstd
 	end
 
 _1444:
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	endstd
@@ -1550,9 +1551,9 @@ scr_seq_0003_048:
 _145E:
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 321, 255, 0
-	menu_item_add 322, 255, 1
-	menu_item_add 323, 255, 2
+	menu_item_add msg_0191_00321, 255, 0
+	menu_item_add msg_0191_00322, 255, 1
+	menu_item_add msg_0191_00323, 255, 2
 	menu_exec
 	switch VAR_SPECIAL_RESULT
 	case 0, scr_seq_0003_049
@@ -1593,9 +1594,9 @@ scr_seq_0003_052:
 _14FB:
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 321, 255, 0
-	menu_item_add 322, 255, 1
-	menu_item_add 323, 255, 2
+	menu_item_add msg_0191_00321, 255, 0
+	menu_item_add msg_0191_00322, 255, 1
+	menu_item_add msg_0191_00323, 255, 2
 	menu_exec
 	switch VAR_SPECIAL_RESULT
 	case 0, scr_seq_0003_053
@@ -1682,9 +1683,9 @@ _1666:
 scr_seq_0003_056:
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 321, 255, 0
-	menu_item_add 324, 255, 1
-	menu_item_add 323, 255, 2
+	menu_item_add msg_0191_00321, 255, 0
+	menu_item_add msg_0191_00324, 255, 1
+	menu_item_add msg_0191_00323, 255, 2
 	menu_exec
 	switch VAR_SPECIAL_RESULT
 	case 0, scr_seq_0003_057
@@ -1710,9 +1711,9 @@ scr_seq_0003_059:
 scr_seq_0003_060:
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 321, 255, 0
-	menu_item_add 324, 255, 1
-	menu_item_add 323, 255, 2
+	menu_item_add msg_0191_00321, 255, 0
+	menu_item_add msg_0191_00324, 255, 1
+	menu_item_add msg_0191_00323, 255, 2
 	menu_exec
 	switch VAR_SPECIAL_RESULT
 	case 0, scr_seq_0003_061

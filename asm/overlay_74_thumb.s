@@ -30048,7 +30048,7 @@ ov74_02235B14: ; 0x02235B14
 	lsl r1, r1, #6
 	bl DC_FlushRange
 	ldr r0, [sp, #0x20]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	mov r1, #2
 	bl NNS_G2dGetImageLocation
 	mov r2, #0x32
@@ -30058,7 +30058,7 @@ ov74_02235B14: ; 0x02235B14
 	add r1, r1, r2
 	bl GXS_LoadOBJ
 	ldr r0, [sp, #0x20]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #2
 	bl NNS_G2dGetImagePaletteLocation
 	add r3, r0, #0

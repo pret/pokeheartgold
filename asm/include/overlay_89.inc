@@ -59,7 +59,7 @@
 .public SpriteRenderer_LoadResourcesAndCreateSprite
 .public sub_0200D934
 .public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public TickSpriteAnimation1Frame
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public sub_0200DCA0
@@ -168,7 +168,7 @@
 .public Camera_GetLookAtCamPos
 .public Camera_SetLookAtCamTarget
 .public Camera_SetLookAtCamPos
-.public sub_02024B1C
+.public Sprite_GetImageProxy
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public String_New

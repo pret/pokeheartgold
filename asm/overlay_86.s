@@ -2777,7 +2777,7 @@ _021E7002:
 	ldr r0, [r5, r7]
 	cmp r0, #0
 	beq _021E7012
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0x8d
 	lsl r0, r0, #2
 	str r6, [r5, r0]

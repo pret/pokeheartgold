@@ -411,7 +411,7 @@ _02264B3A:
 	ldr r0, [r4, #4]
 	cmp r0, #0
 	beq _02264B48
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0
 	str r0, [r4, #4]
 _02264B48:
@@ -426,7 +426,7 @@ ov12_02264B4C: ; 0x02264B4C
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	beq _02264B5E
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0
 	str r0, [r4, #8]
 _02264B5E:
@@ -603,7 +603,7 @@ _02264C96:
 	strb r1, [r0]
 	ldr r0, [r5, #4]
 	ldr r0, [r0]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x4f
@@ -1297,7 +1297,7 @@ ov12_0226516C: ; 0x0226516C
 	ldr r0, [r5, #4]
 	ldr r6, [sp, #0x30]
 	ldr r0, [r0]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	add r4, r0, #0
 	mov r0, #1
 	lsl r0, r0, #8
@@ -1415,7 +1415,7 @@ _022652F0:
 	add r7, r0, #0
 	ldr r0, [r5, #4]
 	ldr r0, [r0]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x25
@@ -1482,7 +1482,7 @@ ov12_02265354: ; 0x02265354
 	ldr r0, [sp, #4]
 	ldr r0, [r0, #4]
 	ldr r0, [r0]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	str r0, [sp, #8]
 	ldr r0, [sp, #4]
 	ldr r1, _02265464 ; =ov12_0226D420
@@ -1607,7 +1607,7 @@ ov12_02265474: ; 0x02265474
 	bl sub_0200CEB0
 	ldr r0, [r5, #4]
 	ldr r0, [r0]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0x25
@@ -1668,7 +1668,7 @@ ov12_02265500: ; 0x02265500
 	bl sub_0200CEB0
 	ldr r0, [r5, #4]
 	ldr r0, [r0]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	add r1, r0, #0
 	add r5, #0x25
 	ldrb r0, [r5]
@@ -1710,7 +1710,7 @@ _0226557A:
 	add r4, r0, #0
 	ldr r0, [r5, #4]
 	ldr r0, [r0]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	add r5, #0x25
 	add r1, r0, #0
 	ldrb r0, [r5]
@@ -1741,7 +1741,7 @@ ov12_022655B0: ; 0x022655B0
 	add r4, r0, #0
 	ldr r0, [r5, #4]
 	ldr r0, [r0]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	add r5, #0x25
 	add r1, r0, #0
 	ldrb r0, [r5]
@@ -1812,7 +1812,7 @@ _0226561E:
 	ldr r0, [r4, #4]
 	ldr r5, [sp, #0x24]
 	ldr r0, [r0]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	add r4, r0, #0
 	mov r2, #0x1a
 	mov r6, #0x19
@@ -1939,7 +1939,7 @@ _02265716:
 	ldr r0, [r4, #4]
 	ldr r5, [sp, #0x30]
 	ldr r0, [r0]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	add r4, r0, #0
 	mov r7, #0x19
 	mov r2, #0x11
@@ -2080,7 +2080,7 @@ ov12_02265878: ; 0x02265878
 	ldr r0, [r6, #4]
 	add r4, r1, #0
 	ldr r0, [r0]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	add r5, r0, #0
 	cmp r4, #0
 	beq _02265896

@@ -6684,7 +6684,7 @@ ov14_021E8B1C: ; 0x021E8B1C
 	ldr r0, _021E8B38 ; =FS_OVERLAY_ID(OVY_15)
 	bl UnloadOverlayByID
 	ldr r0, [r4, #0x18]
-	bl sub_02077904
+	bl BagView_GetItemId
 	strh r0, [r4, #0x1c]
 	ldr r0, [r4, #0x18]
 	bl FreeToHeap
@@ -26578,7 +26578,7 @@ ov14_021F2BE8: ; 0x021F2BE8
 	ldr r0, [r4, r5]
 	cmp r0, #0
 	beq _021F2C00
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0
 	str r0, [r4, r5]
 _021F2C00:
@@ -26613,7 +26613,7 @@ ov14_021F2C1C: ; 0x021F2C1C
 	add r5, r2, #0
 	ldr r0, [r0]
 	add r4, r3, #0
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	mov r1, #1
 	bl NNS_G2dGetImageLocation
 	add r6, r0, #0
@@ -26639,7 +26639,7 @@ ov14_021F2C50: ; 0x021F2C50
 	add r5, r2, #0
 	ldr r0, [r0]
 	add r4, r3, #0
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	mov r1, #2
 	bl NNS_G2dGetImageLocation
 	add r6, r0, #0
@@ -27968,7 +27968,7 @@ _021F365A:
 	lsl r6, r7, #2
 	ldr r0, [r4, r6]
 	ldr r0, [r0]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	mov r1, #2
 	bl NNS_G2dGetImageLocation
 	mov r1, #0x32
@@ -27983,7 +27983,7 @@ _021F365A:
 	bl GXS_LoadOBJ
 	ldr r0, [r4, r6]
 	ldr r0, [r0]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #2
 	bl NNS_G2dGetImagePaletteLocation
 	add r3, r0, #0
@@ -28206,7 +28206,7 @@ ov14_021F3844: ; 0x021F3844
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #1
 	bl NNS_G2dGetImagePaletteLocation
 	add r4, r0, #0
@@ -28256,7 +28256,7 @@ ov14_021F38B0: ; 0x021F38B0
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #2
 	bl NNS_G2dGetImagePaletteLocation
 	add r4, r0, #0
@@ -29163,7 +29163,7 @@ _021F3FDA:
 _021F402C:
 	ldr r0, [r7, r5]
 	ldr r0, [r0]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	str r0, [sp, #8]
 	ldr r0, [r7, r5]
 	bl UnkImageStruct_GetSpriteDrawPriority

@@ -858,7 +858,7 @@ _0A3A:
 	wait_fade
 	hide_money_box
 	scrcmd_740 VAR_SPECIAL_x8000, VAR_SPECIAL_x8003
-	scrcmd_150
+	restore_overworld
 	show_money_box 21, 1
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
