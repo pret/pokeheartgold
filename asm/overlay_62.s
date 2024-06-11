@@ -839,7 +839,7 @@ _021E5FA8:
 	ldr r0, [r5, #8]
 	cmp r0, #0
 	beq _021E5FB2
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 _021E5FB2:
 	add r4, r4, #1
 	add r5, r5, #4

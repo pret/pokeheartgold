@@ -39,7 +39,7 @@
 .public Sprite_SetPalOffset
 .public sub_02024AA8
 .public Sprite_SetDrawPriority
-.public sub_02024B1C
+.public Sprite_GetImageProxy
 .public Sprite_GetVramType
 .public GF_AssertFail
 .public NNS_G2dInitImageProxy

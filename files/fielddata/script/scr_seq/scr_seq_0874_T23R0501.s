@@ -107,7 +107,7 @@ _011A:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_739
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	scrcmd_735 VAR_SPECIAL_RESULT

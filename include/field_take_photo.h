@@ -2,8 +2,12 @@
 #define POKEHEARTGOLD_FIELD_TAKE_PHOTO_H
 
 #include "script.h"
+#include "photo_album.h"
+#include "photo_types_def.h"
 
 void FieldSystem_TakePhoto(FieldSystem *fieldSystem, u16 photo_id);
-void sub_0206A860(FieldSystem *fieldSystem);
+void FieldSystem_ViewSavedPhotos(FieldSystem *fieldSystem);
+void FieldViewPhoto_GetAlbumScrollParam(FieldViewPhoto *takePhoto, PhotoAlbumScroll *albumScroll);
+void FieldViewPhoto_SetPlayerInput(FieldViewPhoto *takePhoto, ViewPhotoInputResponse exitRequested);
 
 #endif //POKEHEARTGOLD_FIELD_TAKE_PHOTO_H

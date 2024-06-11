@@ -695,7 +695,7 @@ sub_020139D0: ; 0x020139D0
 	add r1, r6, #0
 	bl DC_FlushRange
 	ldr r0, [sp, #8]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	ldr r1, [sp, #0xc]
 	cmp r1, #1
 	bne _02013A36

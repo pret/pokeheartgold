@@ -795,7 +795,7 @@ ov111_021E5F04: ; 0x021E5F04
 	ldr r0, [r4, #0x14]
 	cmp r0, #0
 	beq _021E5F2E
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0
 	str r0, [r4, #0x14]
 _021E5F2E:
@@ -1253,7 +1253,7 @@ ov111_021E62E0: ; 0x021E62E0
 	bl Sprite_GetVramType
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	add r1, r4, #0
 	bl NNS_G2dGetImageLocation
 	add r5, r0, #0
@@ -1746,7 +1746,7 @@ _021E66A4:
 	ldr r0, [r5, #4]
 	cmp r0, #0
 	beq _021E66B0
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	str r6, [r5, #4]
 _021E66B0:
 	add r4, r4, #1

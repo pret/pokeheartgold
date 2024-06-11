@@ -103,7 +103,7 @@ static void ov17_02203674(SysTask *task, SysTaskArgs_ov17_02203674 *args) {
             }
             break;
         case 2:
-            sub_0200D9DC(args->berrySprite);
+            UnkImageStruct_Delete(args->berrySprite);
 
             data->runningTasks--;
             FreeToHeap(args);

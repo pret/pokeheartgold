@@ -122,8 +122,8 @@ void SetScreenModeAndDisable(const struct GraphicsModes *gfxModes, enum GFScreen
     }
 }
 
-void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *template, u8 bgMode, GFPlaneToggle enable) {
-    u8 screenSize = TranslateGFBgModePairToGXScreenSize((enum GFBgScreenSize)template->size, (enum GFBgType)bgMode);
+void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *template, u8 bgType, GFPlaneToggle enable) {
+    u8 screenSize = TranslateGFBgModePairToGXScreenSize((enum GFBgScreenSize)template->size, (enum GFBgType)bgType);
 
     switch (bgId) {
         case GF_BG_LYR_MAIN_0:
@@ -142,7 +142,7 @@ void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *templat
 
         case GF_BG_LYR_MAIN_2:
             GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, enable);
-            switch (bgMode) {
+            switch (bgType) {
                 default:
                 case GF_BG_TYPE_TEXT:
                     G2_SetBG2ControlText((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
@@ -160,7 +160,7 @@ void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *templat
 
         case GF_BG_LYR_MAIN_3:
             GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG3, enable);
-            switch (bgMode) {
+            switch (bgType) {
                 default:
                 case GF_BG_TYPE_TEXT:
                     G2_SetBG3ControlText((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
@@ -192,7 +192,7 @@ void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *templat
 
         case GF_BG_LYR_SUB_2:
             GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG2, enable);
-            switch (bgMode) {
+            switch (bgType) {
                 default:
                 case GF_BG_TYPE_TEXT:
                     G2S_SetBG2ControlText((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
@@ -210,7 +210,7 @@ void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *templat
 
         case GF_BG_LYR_SUB_3:
             GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG3, enable);
-            switch (bgMode) {
+            switch (bgType) {
                 default:
                 case GF_BG_TYPE_TEXT:
                     G2S_SetBG3ControlText((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase);
@@ -247,10 +247,10 @@ void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *templat
     }
 
     bgConfig->bgs[bgId].size = template->size;
-    bgConfig->bgs[bgId].mode = bgMode;
+    bgConfig->bgs[bgId].mode = bgType;
     bgConfig->bgs[bgId].colorMode = template->colorMode;
 
-    if (bgMode == GF_BG_TYPE_TEXT && template->colorMode == GX_BG_COLORMODE_16) {
+    if (bgType == GF_BG_TYPE_TEXT && template->colorMode == GX_BG_COLORMODE_16) {
         bgConfig->bgs[bgId].tileSize = 0x20;
     } else {
         bgConfig->bgs[bgId].tileSize = 0x40;
@@ -260,8 +260,8 @@ void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *templat
     BgSetPosTextAndCommit(bgConfig, bgId, BG_POS_OP_SET_Y, template->y);
 }
 
-void InitBgFromTemplate(BgConfig *bgConfig, u8 bgId, const BgTemplate *template, u8 bgMode) {
-    InitBgFromTemplateEx(bgConfig, bgId, template, bgMode, GF_PLANE_TOGGLE_ON);
+void InitBgFromTemplate(BgConfig *bgConfig, u8 bgId, const BgTemplate *template, u8 bgType) {
+    InitBgFromTemplateEx(bgConfig, bgId, template, bgType, GF_PLANE_TOGGLE_ON);
 }
 
 void SetBgControlParam(BgConfig *config, u8 bgId, enum GFBgCntSet attr, u8 value) {

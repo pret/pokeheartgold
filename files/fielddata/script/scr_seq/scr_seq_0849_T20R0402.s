@@ -92,7 +92,7 @@ _010D:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	show_certificate 2
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	gender_msgbox msg_0549_T20R0402_00013, msg_0549_T20R0402_00014

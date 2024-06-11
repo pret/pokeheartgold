@@ -8026,7 +8026,7 @@ ov49_0225C328: ; 0x0225C328
 	add r5, r0, #0
 	ldr r0, [r5, #0x68]
 	add r4, r1, #0
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	bl ObjCharTransfer_DeleteTaskCopyByProxyPtr
 	ldr r0, [r5, #0x68]
 	bl Sprite_Delete

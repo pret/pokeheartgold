@@ -6,20 +6,17 @@
 #include "gear_phone.h"
 #include "map_events_internal.h"
 #include "map_matrix.h"
+#include "overlay_01_021EB1E8.h"
 #include "overlay_manager.h"
 #include "save_pokegear.h"
 #include "sys_task_api.h"
 #include "camera.h"
 #include "bg_window.h"
+#include "sys_task.h"
 #include "scrcmd_9.h"
-
-typedef struct FieldSystem FieldSystem;
-typedef struct TaskManager TaskManager;
-typedef struct FieldSystemUnkSub2C FieldSystemUnkSub2C;
-typedef struct LocalMapObject LocalMapObject;
-typedef struct FieldMapObject FieldMapObject;
-typedef struct PlayerAvatar PlayerAvatar;
-typedef struct MapObjectManager MapObjectManager;
+#include "photo_types_def.h"
+#include "field_types_def.h"
+#include "overlay_01_02204004.h"
 
 typedef struct FollowMon {
     LocalMapObject *mapObject;
@@ -64,14 +61,6 @@ typedef struct GearPhoneRingManager {
     } gearRing;
 } GearPhoneRingManager; //size: 0x48
 
-typedef struct Location {
-    int mapId;
-    int warpId;
-    int x;
-    int y;
-    int direction;
-} Location;
-
 typedef struct FieldSystemUnk108 {
     u32 personality;
     u16 species;
@@ -104,7 +93,7 @@ typedef struct FieldSystemUnkSub4 {
     u32 unk4;
     u32 unk8;
     void *unk_0C; // weather related?
-    u8 unk10[0x4];
+    UnkStruct_ov01_021EB1E8 *unk10;
     u32 unk14;
     u32 unk18;
     u32 unk1c;
@@ -134,7 +123,7 @@ struct FieldSystem {
     u32 unk60;
     int unk64;
     struct FieldSystemUnkSub68 *unk68;
-    u32 unk6C;
+    BOOL unk6C;
     int unk70;
     const struct UnkStruct_020FC5CC *unk74;
     u16 unk78;
@@ -155,12 +144,16 @@ struct FieldSystem {
     s64 unkB4;
     u8 unkBC[8];
     int unkC4;
-    u8 filler_C8[0xA];
+    FieldSystemUnkC8 *unk_C8;
+    u8 filler_CC[0x6];
     u8 unkD2_0:6;
     u8 unkD2_6:1;
     u8 unkD2_7:1;
-    u8 filler_D3[0x11];
-    FollowMon followMon; // A4
+    u8 filler_D3[0x5];
+    SysTask *unk_D8;
+    FieldViewPhoto *viewPhotoTask;
+    u8 filler_E0[4];
+    FollowMon followMon; // E4
     u8 unk104[4];
     FieldSystemUnk108 *unk108;
     u32 unk_10C;

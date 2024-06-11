@@ -726,7 +726,7 @@ static void IntroMovie_Scene3_Load3dGfxData(IntroMovieScene3Data *sceneData) {
         &sCameraParam.angle,
         sCameraParam.perspective,
         sCameraParam.perspectiveType,
-        sCameraParam.setReference,
+        FALSE,
         sceneData->camera
     );
     Camera_SetPerspectiveAngle(0x981, sceneData->camera);

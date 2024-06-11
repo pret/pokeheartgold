@@ -17,7 +17,7 @@
 .public SpriteRenderer_LoadResourcesAndCreateSprite
 .public sub_0200D934
 .public sub_0200D944
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public TickSpriteAnimation1Frame
 .public UnkImageStruct_TickSpriteAnimationNFrames
 .public UnkImageStruct_SetSpriteAnimSeqNo

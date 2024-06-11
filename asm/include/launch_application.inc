@@ -145,7 +145,7 @@
 .public TaskManager_GetEnvironment
 .public TaskManager_GetStatePtr
 .public FieldSystem_GetOverriddenMusicId
-.public sub_0205525C
+.public CallTask_LeaveOverworld
 .public CallTask_RestoreOverworld
 .public Field_GetTimeOfDay
 .public sub_0205A508

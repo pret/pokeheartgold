@@ -83,9 +83,9 @@
 .public Sprite_SetDrawPriority
 .public Sprite_GetDrawPriority
 .public sub_02024B00
-.public sub_02024B1C
+.public Sprite_GetImageProxy
 .public sub_02024B20
-.public sub_02024B34
+.public Sprite_GetPaletteProxy
 .public sub_02024B38
 .public Sprite_GetVramType
 .public Sprite_IsCellAnimationRunning
@@ -94,7 +94,7 @@
 .public sub_02024BBC
 .public sub_02024BF4
 .public sub_02024C9C
-.public sub_02024CB8
+.public Sprite_GetCellAnim
 .public GF_AssertFail
 .public sub_02026DE0
 .public NNS_G2dGetUnpackedAnimBank

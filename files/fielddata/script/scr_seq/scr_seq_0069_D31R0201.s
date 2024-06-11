@@ -341,7 +341,7 @@ _0560:
 	goto_if_ne _058F
 	scrcmd_815 0
 _058F:
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	return
@@ -649,7 +649,7 @@ _0A52:
 	goto_if_eq _0A81
 	scrcmd_815 0
 _0A81:
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	copyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4001
@@ -1283,7 +1283,7 @@ _1404:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_408 VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -1348,7 +1348,7 @@ _1506:
 	closemsg
 	party_select_ui
 	get_party_selection VAR_SPECIAL_RESULT
-	scrcmd_150
+	restore_overworld
 	copyvar VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade

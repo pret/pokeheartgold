@@ -155,7 +155,7 @@ _01F5:
 	wait_fade
 	party_select_ui
 	get_party_selection VAR_SPECIAL_RESULT
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_RESULT, 255
@@ -272,7 +272,7 @@ _0375:
 	wait_fade
 	party_select_ui
 	get_party_selection VAR_SPECIAL_RESULT
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_RESULT, 255
@@ -913,7 +913,7 @@ _0CCC:
 	wait_fade
 	party_select_ui
 	get_party_selection VAR_TEMP_x4002
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_TEMP_x4002, 255
@@ -949,7 +949,7 @@ _0D5B:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_154 VAR_TEMP_x4002, VAR_SPECIAL_x8005, VAR_SPECIAL_x8007
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x8006, 0
@@ -992,7 +992,7 @@ _0DEE:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_492 0, VAR_SPECIAL_RESULT, VAR_SPECIAL_x8004
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_RESULT, 0
@@ -1337,7 +1337,7 @@ scr_seq_D37R0102_012:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_155 0, VAR_SPECIAL_RESULT
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -1352,7 +1352,7 @@ scr_seq_D37R0102_013:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_155 1, VAR_SPECIAL_RESULT
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -1367,7 +1367,7 @@ scr_seq_D37R0102_014:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_155 2, VAR_SPECIAL_RESULT
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -1382,7 +1382,7 @@ scr_seq_D37R0102_015:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_155 3, VAR_SPECIAL_RESULT
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -1397,7 +1397,7 @@ scr_seq_D37R0102_016:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_155 4, VAR_SPECIAL_RESULT
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -1412,7 +1412,7 @@ scr_seq_D37R0102_017:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_155 5, VAR_SPECIAL_RESULT
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -1427,7 +1427,7 @@ scr_seq_D37R0102_018:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_155 6, VAR_SPECIAL_RESULT
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -1442,7 +1442,7 @@ scr_seq_D37R0102_019:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_155 7, VAR_SPECIAL_RESULT
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -1457,7 +1457,7 @@ scr_seq_D37R0102_020:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_155 8, VAR_SPECIAL_RESULT
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -1472,7 +1472,7 @@ scr_seq_D37R0102_021:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_155 9, VAR_SPECIAL_RESULT
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -1487,7 +1487,7 @@ scr_seq_D37R0102_022:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_155 10, VAR_SPECIAL_RESULT
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

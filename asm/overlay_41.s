@@ -505,7 +505,7 @@ _02246234:
 	cmp r0, #0
 	beq _02246240
 	ldr r0, [r4, #0x20]
-	bl sub_02008120
+	bl PokepicManager_DrawAll
 _02246240:
 	mov r0, #0
 	add r1, r0, #0
@@ -848,7 +848,7 @@ ov41_02246494: ; 0x02246494
 	ldr r0, [r4, #0x40]
 	bl DoScheduledBgGpuUpdates
 	ldr r0, [r4, #0x20]
-	bl sub_02009418
+	bl PokepicManager_HandleLoadImgAndOrPltt
 	bl OamManager_ApplyAndResetBuffers
 	pop {r4, pc}
 	.balign 4, 0
@@ -932,7 +932,7 @@ ov41_02246518: ; 0x02246518
 	bl ov41_02246CC0
 	ldr r0, [r5, #0x20]
 	mov r1, #1
-	bl sub_020094B0
+	bl PokepicManager_SetNeedG3IdentityFlag
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov41_02246C90
@@ -1012,11 +1012,11 @@ _022465C8: .word FreeBgTilemapBuffer
 
 	thumb_func_start ov41_022465CC
 ov41_022465CC: ; 0x022465CC
-	ldr r3, _022465D4 ; =sub_02009418
+	ldr r3, _022465D4 ; =PokepicManager_HandleLoadImgAndOrPltt
 	ldr r0, [r0, #0x20]
 	bx r3
 	nop
-_022465D4: .word sub_02009418
+_022465D4: .word PokepicManager_HandleLoadImgAndOrPltt
 	thumb_func_end ov41_022465CC
 
 	thumb_func_start ov41_022465D8
@@ -1077,7 +1077,7 @@ _02246644:
 	cmp r0, #0
 	beq _02246650
 	ldr r0, [r5, #0x20]
-	bl sub_02008120
+	bl PokepicManager_DrawAll
 _02246650:
 	ldr r0, _0224666C ; =0x04000448
 	mov r1, #1
@@ -1918,7 +1918,7 @@ ov41_02246CC0: ; 0x02246CC0
 	add r0, r1, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_02007FD4
+	bl PokepicManager_Create
 	str r0, [r5, #0x20]
 	ldr r3, _02246D1C ; =NNS_GfdDefaultFuncAllocTexVram
 	mov r1, #0
@@ -1942,7 +1942,7 @@ ov41_02246CC0: ; 0x02246CC0
 	ldr r0, [r5, #0x20]
 	lsr r1, r1, #0xd
 	lsl r2, r2, #4
-	bl sub_020093FC
+	bl PokepicManager_SetCharBaseAddrAndSize
 	ldr r3, [r5, #0x28]
 	ldr r2, _02246D28 ; =0xFFFF0000
 	lsl r1, r3, #0x10
@@ -1951,7 +1951,7 @@ ov41_02246CC0: ; 0x02246CC0
 	ldr r0, [r5, #0x20]
 	lsr r1, r1, #0xd
 	lsl r2, r2, #3
-	bl sub_02009408
+	bl PokepicManager_SetPlttBaseAddrAndSize
 	mov r0, #1
 	str r0, [r5, #0x2c]
 	pop {r4, r5, r6, pc}
@@ -1967,7 +1967,7 @@ ov41_02246D2C: ; 0x02246D2C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x20]
-	bl sub_02008524
+	bl PokepicManager_Delete
 	ldr r1, _02246D4C ; =NNS_GfdDefaultFuncFreeTexVram
 	ldr r0, [r4, #0x24]
 	ldr r1, [r1]
@@ -7483,7 +7483,7 @@ ov41_022495C8: ; 0x022495C8
 	bl ov41_022463DC
 	ldrh r1, [r4]
 	ldr r0, [r0, #0x14]
-	bl sub_02009D28
+	bl UnscanPokepic
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov41_022495C8
 
@@ -7525,7 +7525,7 @@ ov41_02249604: ; 0x02249604
 	add r1, r4, #0
 	mov r2, #0xc0
 	mov r3, #0x38
-	bl sub_020085EC
+	bl PokepicManager_CreatePokepic
 	str r0, [r5]
 	add r0, r5, #0
 	add r1, sp, #0x1c
@@ -7575,7 +7575,7 @@ ov41_02249604: ; 0x02249604
 	ldr r0, [sp, #0x14]
 	ldrh r1, [r4]
 	ldr r0, [r0, #0x14]
-	bl sub_02009D28
+	bl UnscanPokepic
 	ldr r0, [sp, #0x3c]
 	cmp r0, #0
 	bne _022496C6
@@ -7613,7 +7613,7 @@ ov41_022496E8: ; 0x022496E8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_02008780
+	bl Pokepic_Delete
 	mov r1, #0x10
 	mov r0, #0
 _022496F6:
@@ -7626,23 +7626,23 @@ _022496F6:
 
 	thumb_func_start ov41_02249700
 ov41_02249700: ; 0x02249700
-	ldr r3, _0224970C ; =sub_020087A4
+	ldr r3, _0224970C ; =Pokepic_SetAttr
 	add r2, r1, #0
 	ldr r0, [r0]
 	mov r1, #2
 	bx r3
 	nop
-_0224970C: .word sub_020087A4
+_0224970C: .word Pokepic_SetAttr
 	thumb_func_end ov41_02249700
 
 	thumb_func_start ov41_02249710
 ov41_02249710: ; 0x02249710
-	ldr r3, _02249718 ; =sub_02008A78
+	ldr r3, _02249718 ; =Pokepic_GetAttr
 	ldr r0, [r0]
 	mov r1, #2
 	bx r3
 	.balign 4, 0
-_02249718: .word sub_02008A78
+_02249718: .word Pokepic_GetAttr
 	thumb_func_end ov41_02249710
 
 	thumb_func_start ov41_0224971C
@@ -7658,11 +7658,11 @@ ov41_0224971C: ; 0x0224971C
 	ldr r0, [r5]
 	mov r1, #0
 	add r2, r4, #0
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	ldr r0, [r5]
 	mov r1, #1
 	add r2, r6, #0
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	ldr r1, [sp, #4]
 	lsr r0, r1, #0x1f
 	add r0, r1, r0
@@ -7709,11 +7709,11 @@ ov41_02249780: ; 0x02249780
 	add r4, r1, #0
 	mov r1, #0
 	add r6, r2, #0
-	bl sub_02008A78
+	bl Pokepic_GetAttr
 	str r0, [r4]
 	ldr r0, [r5]
 	mov r1, #1
-	bl sub_02008A78
+	bl Pokepic_GetAttr
 	str r0, [r6]
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

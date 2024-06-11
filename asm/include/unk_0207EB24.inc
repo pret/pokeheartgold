@@ -29,7 +29,7 @@
 .public Sprite_TickCellOrMulticellAnimation
 .public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_GetAnimCtrlCurrentFrame
-.public sub_02024B1C
+.public Sprite_GetImageProxy
 .public GetMonData
 .public Pokemon_GetIconNaix
 .public GetMonIconPaletteEx

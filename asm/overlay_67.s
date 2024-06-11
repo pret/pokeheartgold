@@ -2068,7 +2068,7 @@ _021E699C:
 	ldr r0, [r5, r7]
 	cmp r0, #0
 	beq _021E69AA
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, _021E69D0 ; =0x00000484
 	str r6, [r5, r0]
 _021E69AA:

@@ -3067,11 +3067,11 @@ _02024B0A:
 	.balign 4, 0
 	thumb_func_end sub_02024B00
 
-	thumb_func_start sub_02024B1C
-sub_02024B1C: ; 0x02024B1C
+	thumb_func_start Sprite_GetImageProxy
+Sprite_GetImageProxy: ; 0x02024B1C
 	add r0, #0xb4
 	bx lr
-	thumb_func_end sub_02024B1C
+	thumb_func_end Sprite_GetImageProxy
 
 	thumb_func_start sub_02024B20
 sub_02024B20: ; 0x02024B20
@@ -3087,11 +3087,11 @@ sub_02024B20: ; 0x02024B20
 	bx lr
 	thumb_func_end sub_02024B20
 
-	thumb_func_start sub_02024B34
-sub_02024B34: ; 0x02024B34
+	thumb_func_start Sprite_GetPaletteProxy
+Sprite_GetPaletteProxy: ; 0x02024B34
 	add r0, #0xd8
 	bx lr
-	thumb_func_end sub_02024B34
+	thumb_func_end Sprite_GetPaletteProxy
 
 	thumb_func_start sub_02024B38
 sub_02024B38: ; 0x02024B38
@@ -3323,8 +3323,8 @@ sub_02024C9C: ; 0x02024C9C
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02024C9C
 
-	thumb_func_start sub_02024CB8
-sub_02024CB8: ; 0x02024CB8
+	thumb_func_start Sprite_GetCellAnim
+Sprite_GetCellAnim: ; 0x02024CB8
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0xec
@@ -3337,7 +3337,7 @@ _02024CC8:
 	add r4, #8
 	add r0, r4, #0
 	pop {r4, pc}
-	thumb_func_end sub_02024CB8
+	thumb_func_end Sprite_GetCellAnim
 
 	thumb_func_start sub_02024CD0
 sub_02024CD0: ; 0x02024CD0

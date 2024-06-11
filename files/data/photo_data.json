@@ -1,0 +1,1213 @@
+{
+    "photos": [
+        {
+            "map": "MAP_T20",
+            "icon": 5,
+            "x": 695,
+            "y": 399,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T21",
+            "icon": 7,
+            "x": 562,
+            "y": 398,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                22,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T07R0104",
+            "icon": 6,
+            "x": 12,
+            "y": 5,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER1",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D24R0101",
+            "icon": 5,
+            "x": 435,
+            "y": 280,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D24R0211",
+            "icon": 4,
+            "x": 4,
+            "y": 4,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_R32",
+            "icon": 9,
+            "x": 468,
+            "y": 395,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D26R0101",
+            "icon": 4,
+            "x": 16,
+            "y": 6,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D22R0101",
+            "icon": 7,
+            "x": 58,
+            "y": 40,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER2",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D36R0101",
+            "icon": 8,
+            "x": 11,
+            "y": 20,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_R34",
+            "icon": 5,
+            "x": 363,
+            "y": 410,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSOLDMAN1",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D37R0102",
+            "icon": 6,
+            "x": 17,
+            "y": 6,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                131,
+                0
+            ]
+        },
+        {
+            "map": "MAP_R35",
+            "icon": 9,
+            "x": 372,
+            "y": 303,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_R35R0201",
+            "icon": 6,
+            "x": 10,
+            "y": 5,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D49",
+            "icon": 7,
+            "x": 19,
+            "y": 26,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D49",
+            "icon": 5,
+            "x": 41,
+            "y": 25,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                184,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T25R1006",
+            "icon": 6,
+            "x": 3,
+            "y": 4,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER3",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D22R0101",
+            "icon": 9,
+            "x": 54,
+            "y": 48,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D22R0101",
+            "icon": 7,
+            "x": 52,
+            "y": 78,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_R36",
+            "icon": 8,
+            "x": 396,
+            "y": 220,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T27",
+            "icon": 5,
+            "x": 390,
+            "y": 156,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D17R1101",
+            "icon": 8,
+            "x": 31,
+            "y": 12,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER4",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T27R0501",
+            "icon": 6,
+            "x": 5,
+            "y": 6,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_DANCER",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D17R0107",
+            "icon": 6,
+            "x": 7,
+            "y": 8,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T26",
+            "icon": 5,
+            "x": 278,
+            "y": 253,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T26GYM0101",
+            "icon": 6,
+            "x": 5,
+            "y": 6,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER6",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T26R0701",
+            "icon": 6,
+            "x": 6,
+            "y": 4,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_P01R0102",
+            "icon": 1,
+            "x": 23,
+            "y": 23,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_SEAMAN_2",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D27R0106",
+            "icon": 6,
+            "x": 2,
+            "y": 10,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_R39",
+            "icon": 5,
+            "x": 262,
+            "y": 168,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D32R0102",
+            "icon": 5,
+            "x": 13,
+            "y": 12,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_C11R0101",
+            "icon": 6,
+            "x": 6,
+            "y": 8,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_TOWERBOSS",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D32",
+            "icon": 5,
+            "x": 70,
+            "y": 35,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_W40",
+            "icon": 1,
+            "x": 240,
+            "y": 269,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_W41",
+            "icon": 1,
+            "x": 206,
+            "y": 344,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D40R0102",
+            "icon": 4,
+            "x": 73,
+            "y": 10,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T24",
+            "icon": 1,
+            "x": 185,
+            "y": 351,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                90,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T24GYM0101",
+            "icon": 6,
+            "x": 12,
+            "y": 16,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER5",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_R48",
+            "icon": 7,
+            "x": 101,
+            "y": 339,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D47",
+            "icon": 5,
+            "x": 87,
+            "y": 296,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D38R0102",
+            "icon": 4,
+            "x": 25,
+            "y": 18,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T28GYM0101",
+            "icon": 6,
+            "x": 6,
+            "y": 5,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER7",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T29",
+            "icon": 9,
+            "x": 526,
+            "y": 85,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_R44",
+            "icon": 0,
+            "x": 562,
+            "y": 182,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D39R0101",
+            "icon": 4,
+            "x": 38,
+            "y": 17,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T30",
+            "icon": 5,
+            "x": 684,
+            "y": 171,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T30GYM0101",
+            "icon": 4,
+            "x": 11,
+            "y": 4,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER8",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D44R0103",
+            "icon": 6,
+            "x": 5,
+            "y": 11,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_CHOUROU",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_R45",
+            "icon": 7,
+            "x": 648,
+            "y": 254,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_R26",
+            "icon": 8,
+            "x": 914,
+            "y": 386,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T06GYM0101",
+            "icon": 6,
+            "x": 5,
+            "y": 5,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER9",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T06",
+            "icon": 7,
+            "x": 1318,
+            "y": 302,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T11GYM0101",
+            "icon": 6,
+            "x": 14,
+            "y": 13,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER10",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T11",
+            "icon": 5,
+            "x": 1287,
+            "y": 211,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                253,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T11",
+            "icon": 5,
+            "x": 1307,
+            "y": 232,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                253,
+                252
+            ]
+        },
+        {
+            "map": "MAP_T04GYM0101",
+            "icon": 6,
+            "x": 14,
+            "y": 4,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER11",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T04",
+            "icon": 9,
+            "x": 1325,
+            "y": 104,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                32,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T07GYM0101",
+            "icon": 6,
+            "x": 6,
+            "y": 4,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER12",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T07",
+            "icon": 7,
+            "x": 1200,
+            "y": 252,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T07R0102",
+            "icon": 6,
+            "x": 3,
+            "y": 6,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_R12",
+            "icon": 1,
+            "x": 1427,
+            "y": 275,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_R14",
+            "icon": 1,
+            "x": 1357,
+            "y": 387,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T08GYM0101",
+            "icon": 6,
+            "x": 6,
+            "y": 15,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER13",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T08",
+            "icon": 5,
+            "x": 1201,
+            "y": 441,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                246,
+                0
+            ]
+        },
+        {
+            "map": "MAP_R17",
+            "icon": 5,
+            "x": 1142,
+            "y": 403,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T03GYM0101",
+            "icon": 6,
+            "x": 6,
+            "y": 5,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER14",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T03R0101",
+            "icon": 6,
+            "x": 8,
+            "y": 4,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T03",
+            "icon": 5,
+            "x": 1047,
+            "y": 81,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                294,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D46R0101",
+            "icon": 8,
+            "x": 26,
+            "y": 71,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER2",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T02GYM0101",
+            "icon": 6,
+            "x": 4,
+            "y": 5,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER16",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T02",
+            "icon": 5,
+            "x": 1037,
+            "y": 256,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_R22R0101",
+            "icon": 6,
+            "x": 10,
+            "y": 8,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER13",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_R22",
+            "icon": 0,
+            "x": 952,
+            "y": 267,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_R01",
+            "icon": 8,
+            "x": 1036,
+            "y": 316,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T01",
+            "icon": 5,
+            "x": 1031,
+            "y": 367,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_W21",
+            "icon": 1,
+            "x": 1043,
+            "y": 412,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D11R0102",
+            "icon": 4,
+            "x": 33,
+            "y": 9,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D11R0106",
+            "icon": 4,
+            "x": 12,
+            "y": 12,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER15",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T31",
+            "icon": 5,
+            "x": 820,
+            "y": 267,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D41R0101",
+            "icon": 4,
+            "x": 12,
+            "y": 36,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": 0,
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T27GYM0101",
+            "icon": 4,
+            "x": 9,
+            "y": 9,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER4",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_R39",
+            "icon": 0,
+            "x": 261,
+            "y": 188,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER9",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T07",
+            "icon": 7,
+            "x": 1200,
+            "y": 252,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER12",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T07",
+            "icon": 5,
+            "x": 1205,
+            "y": 239,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER6",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D44R0102",
+            "icon": 4,
+            "x": 27,
+            "y": 13,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER8",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_R25",
+            "icon": 0,
+            "x": 1420,
+            "y": 44,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER11",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T09",
+            "icon": 1,
+            "x": 1035,
+            "y": 504,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER15",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D01R0101",
+            "icon": 4,
+            "x": 35,
+            "y": 5,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER14",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_D46R0101",
+            "icon": 8,
+            "x": 26,
+            "y": 71,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER2",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_P01R0102",
+            "icon": 1,
+            "x": 16,
+            "y": 22,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER10",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T26R0701",
+            "icon": 6,
+            "x": 7,
+            "y": 5,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER6",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T01R0301",
+            "icon": 6,
+            "x": 6,
+            "y": 6,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_OOKIDO",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_R47",
+            "icon": 0,
+            "x": 79,
+            "y": 371,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER5",
+            "param": [
+                0,
+                0
+            ]
+        },
+        {
+            "map": "MAP_T09",
+            "icon": 1,
+            "x": 1034,
+            "y": 495,
+            "unk8": 1,
+            "unk9": 255,
+            "subject": "SPRITE_GSLEADER16",
+            "param": [
+                0,
+                0
+            ]
+        }
+    ]
+}

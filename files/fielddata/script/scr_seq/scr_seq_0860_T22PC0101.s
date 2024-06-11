@@ -34,7 +34,7 @@ scr_seq_T22PC0101_004:
 	wait_fade
 	closemsg
 	prompt_easy_chat VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_RESULT, 0
@@ -45,7 +45,7 @@ scr_seq_T22PC0101_004:
 	closemsg
 	scrcmd_815 0
 	prompt_easy_chat VAR_SPECIAL_RESULT, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_RESULT, 0

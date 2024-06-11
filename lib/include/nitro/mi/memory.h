@@ -53,5 +53,6 @@ static inline void MI_CpuClear8(void *dst, u32 size) {
 }
 
 void MI_Copy36B(const void *pSrc, void *pDst);
+void MI_Copy64B(const void *pSrc, void *pDst);
 
 #endif //NITRO_MI_MEMORY_H

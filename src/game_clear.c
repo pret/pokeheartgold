@@ -6,7 +6,7 @@
 #include "location_backup.h"
 #include "game_clear.h"
 #include "hall_of_fame.h"
-#include "overlay_63.h"
+#include "register_hall_of_fame.h"
 #include "player_data.h"
 #include "save_arrays.h"
 #include "save_local_field_data.h"

@@ -1604,7 +1604,7 @@ _02239426:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0223945A
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r1, _02239478 ; =0x0000C350
 	ldr r0, [r5, #0x38]
 	add r1, r4, r1
