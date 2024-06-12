@@ -360,7 +360,7 @@ sub_0207F6E8: ; 0x0207F6E8
 	mov r1, #1
 	bl ClearFrameAndWindow2
 	add r0, r4, #0
-	bl sub_0207CB54
+	bl PartyMenu_FormChangeScene_Begin
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_02079224
@@ -381,7 +381,7 @@ sub_0207F720: ; 0x0207F720
 	cmp r0, #1
 	bne _0207F736
 	add r0, r4, #0
-	bl sub_0207CB6C
+	bl PartyMenu_FormChangeScene_End
 	mov r0, #0x11
 	pop {r4, pc}
 _0207F736:

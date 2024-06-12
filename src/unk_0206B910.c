@@ -137,7 +137,7 @@ static BOOL sub_0206B984(TaskManager *taskManager) {
         partyMenu->mailbox = Save_Mailbox_Get(r7->saveData);
         partyMenu->partySlot = 0;
         partyMenu->unk_25 = 0;
-        partyMenu->unk_24 = 15;
+        partyMenu->context = 15;
         partyMenu->options = r6->options;
         partyMenu->fieldSystem = fieldSystem;
         partyMenu->unk_20 = &(fieldSystem->unk_10C);

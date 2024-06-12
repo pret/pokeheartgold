@@ -68,7 +68,7 @@
 .public sub_020822CC
 .public sub_02082370
 .public sub_02082654
-.public sub_02082738
+.public PartyMenu_Subtask_SelectMove
 .public sub_02082868
 .public sub_0208AD64
 .public UseItemOnPokemon

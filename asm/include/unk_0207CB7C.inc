@@ -64,7 +64,7 @@
 .public sub_0207CC24
 .public sub_0207CDCC
 .public sub_0207CF68
-.public sub_0207CF98
+.public PartyMenu_SetContextMenuStaticStrings
 .public sub_0207D0A0
 .public sub_0207D0E4
 .public sub_0207D1C8

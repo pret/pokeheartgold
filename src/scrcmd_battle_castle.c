@@ -202,7 +202,7 @@ static u32 sub_0204FC78(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID
     partyMenu->mailbox = Save_Mailbox_Get(fieldSystem->saveData);
     partyMenu->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     partyMenu->unk_25 = 0;
-    partyMenu->unk_24 = 23;
+    partyMenu->context = 23;
     partyMenu->fieldSystem = fieldSystem;
     partyMenu->partySlot = a0->unk05;
     for (u8 i = 0; i < 3; i++) {

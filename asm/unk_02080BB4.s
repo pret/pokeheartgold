@@ -3265,8 +3265,8 @@ _02082682:
 _02082734: .word 0x00000824
 	thumb_func_end sub_02082654
 
-	thumb_func_start sub_02082738
-sub_02082738: ; 0x02082738
+	thumb_func_start PartyMenu_Subtask_SelectMove
+PartyMenu_Subtask_SelectMove: ; 0x02082738
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	ldr r1, _02082850 ; =0x00000824
@@ -3399,7 +3399,7 @@ _02082858: .word 0x00000654
 _0208285C: .word 0x00000C65
 _02082860: .word 0x000005EC
 _02082864: .word 0x00000C62
-	thumb_func_end sub_02082738
+	thumb_func_end PartyMenu_Subtask_SelectMove
 
 	thumb_func_start sub_02082868
 sub_02082868: ; 0x02082868

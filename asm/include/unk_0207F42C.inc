@@ -39,8 +39,8 @@
 .public sub_0207AB84
 .public sub_0207B5EC
 .public sub_0207CB20
-.public sub_0207CB54
-.public sub_0207CB6C
+.public PartyMenu_FormChangeScene_Begin
+.public PartyMenu_FormChangeScene_End
 .public sub_0207CB90
 .public sub_0207D5DC
 .public sub_0207D6D8

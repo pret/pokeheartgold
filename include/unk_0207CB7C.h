@@ -9,7 +9,7 @@ void sub_0207CBD0(PartyMenuStruct *partyMenu, int a1, int a2, BOOL a3);
 BOOL sub_0207CC24(PartyMenuStruct *partyMenu);
 void sub_0207CDCC(PartyMenuStruct *partyMenu);
 void sub_0207CF68(PartyMenuStruct *partyMenu);
-void sub_0207CF98(PartyMenuStruct *partyMenu);
+void PartyMenu_SetContextMenuStaticStrings(PartyMenuStruct *partyMenu);
 void sub_0207D0E4(PartyMenuStruct *partyMenu, u8 *a1, u8 a2);
 void sub_0207D1C8(PartyMenuStruct *partyMenu);
 void sub_0207D294(PartyMenuStruct *partyMenu, Pokemon *mon, u32 partySlot);

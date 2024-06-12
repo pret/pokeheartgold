@@ -112,7 +112,7 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct* unkPtr) {
     {
         String* str = NewString_ReadMsgData(unkPtr->msgData, msg_0300_00188); //" changed Form!"
         BufferBoxMonNickname(unkPtr->msgFormat, 0, Mon_GetBoxMon(mon));
-        StringExpandPlaceholders(unkPtr->msgFormat, unkPtr->strbuf, str);
+        StringExpandPlaceholders(unkPtr->msgFormat, unkPtr->formattedStrBuf, str);
         String_Delete(str);
         sub_0207DAEC(unkPtr, -1, TRUE);
         work->state++;

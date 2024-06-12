@@ -533,8 +533,8 @@ _0207CF96:
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_0207CF68
 
-	thumb_func_start sub_0207CF98
-sub_0207CF98: ; 0x0207CF98
+	thumb_func_start PartyMenu_SetContextMenuStaticStrings
+PartyMenu_SetContextMenuStaticStrings: ; 0x0207CF98
 	push {r4, lr}
 	mov r2, #0x1f
 	add r4, r0, #0
@@ -542,116 +542,116 @@ sub_0207CF98: ; 0x0207CF98
 	ldr r0, [r4, r2]
 	add r2, #0x10
 	ldr r2, [r4, r2]
-	mov r1, #0x80
+	mov r1, #msg_0300_00128
 	bl ReadMsgDataIntoString
 	mov r2, #0x1f
 	lsl r2, r2, #6
 	ldr r0, [r4, r2]
 	add r2, #0x14
 	ldr r2, [r4, r2]
-	mov r1, #0x81
+	mov r1, #msg_0300_00129
 	bl ReadMsgDataIntoString
 	mov r2, #0x1f
 	lsl r2, r2, #6
 	ldr r0, [r4, r2]
 	add r2, #0x18
 	ldr r2, [r4, r2]
-	mov r1, #0x82
+	mov r1, #msg_0300_00130
 	bl ReadMsgDataIntoString
 	mov r2, #0x1f
 	lsl r2, r2, #6
 	ldr r0, [r4, r2]
 	add r2, #0x1c
 	ldr r2, [r4, r2]
-	mov r1, #0x8f
+	mov r1, #msg_0300_00143
 	bl ReadMsgDataIntoString
 	mov r2, #0x1f
 	lsl r2, r2, #6
 	ldr r0, [r4, r2]
 	add r2, #0x20
 	ldr r2, [r4, r2]
-	mov r1, #0x90
+	mov r1, #msg_0300_00144
 	bl ReadMsgDataIntoString
 	mov r2, #0x1f
 	lsl r2, r2, #6
 	ldr r0, [r4, r2]
 	add r2, #0x24
 	ldr r2, [r4, r2]
-	mov r1, #0x83
+	mov r1, #msg_0300_00131
 	bl ReadMsgDataIntoString
 	mov r2, #0x1f
 	lsl r2, r2, #6
 	ldr r0, [r4, r2]
 	add r2, #0x28
 	ldr r2, [r4, r2]
-	mov r1, #0x84
+	mov r1, #msg_0300_00132
 	bl ReadMsgDataIntoString
 	mov r2, #0x1f
 	lsl r2, r2, #6
 	ldr r0, [r4, r2]
 	add r2, #0x2c
 	ldr r2, [r4, r2]
-	mov r1, #0x85
+	mov r1, #msg_0300_00133
 	bl ReadMsgDataIntoString
 	mov r2, #0x1f
 	lsl r2, r2, #6
 	ldr r0, [r4, r2]
 	add r2, #0x30
 	ldr r2, [r4, r2]
-	mov r1, #0x86
+	mov r1, #msg_0300_00134
 	bl ReadMsgDataIntoString
 	mov r2, #0x1f
 	lsl r2, r2, #6
 	ldr r0, [r4, r2]
 	add r2, #0x34
 	ldr r2, [r4, r2]
-	mov r1, #0x87
+	mov r1, #msg_0300_00135
 	bl ReadMsgDataIntoString
 	mov r2, #0x1f
 	lsl r2, r2, #6
 	ldr r0, [r4, r2]
 	add r2, #0x38
 	ldr r2, [r4, r2]
-	mov r1, #0x88
+	mov r1, #msg_0300_00136
 	bl ReadMsgDataIntoString
 	mov r2, #0x1f
 	lsl r2, r2, #6
 	ldr r0, [r4, r2]
 	add r2, #0x3c
 	ldr r2, [r4, r2]
-	mov r1, #0x89
+	mov r1, #msg_0300_00137
 	bl ReadMsgDataIntoString
 	mov r2, #0x1f
 	lsl r2, r2, #6
 	ldr r0, [r4, r2]
 	add r2, #0x40
 	ldr r2, [r4, r2]
-	mov r1, #0x8a
+	mov r1, #msg_0300_00138
 	bl ReadMsgDataIntoString
 	mov r2, #0x1f
 	lsl r2, r2, #6
 	ldr r0, [r4, r2]
 	add r2, #0x44
 	ldr r2, [r4, r2]
-	mov r1, #0x89
+	mov r1, #msg_0300_00137
 	bl ReadMsgDataIntoString
 	mov r2, #0x1f
 	lsl r2, r2, #6
 	ldr r0, [r4, r2]
 	add r2, #0x48
 	ldr r2, [r4, r2]
-	mov r1, #0x95
+	mov r1, #msg_0300_00149
 	bl ReadMsgDataIntoString
 	mov r2, #0x1f
 	lsl r2, r2, #6
 	ldr r0, [r4, r2]
 	add r2, #0x4c
 	ldr r2, [r4, r2]
-	mov r1, #0xba
+	mov r1, #msg_0300_00186
 	bl ReadMsgDataIntoString
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0207CF98
+	thumb_func_end PartyMenu_SetContextMenuStaticStrings
 
 	thumb_func_start sub_0207D0A0
 sub_0207D0A0: ; 0x0207D0A0
