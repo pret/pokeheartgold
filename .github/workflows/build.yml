@@ -61,14 +61,14 @@ jobs:
           GAME_VERSION: HEARTGOLD
           GAME_LANGUAGE: ENGLISH
           GAME_REVISION: 0
-        run: make -j${nproc}
+        run: make -j4
 
       - name: Build SoulSilver
         env:
           GAME_VERSION: SOULSILVER
           GAME_LANGUAGE: ENGLISH
           GAME_REVISION: 0
-        run: make -j${nproc}
+        run: make -j4
 
       - name: Webhook
         if: ${{ github.event_name == 'push' }}
