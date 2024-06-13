@@ -3,6 +3,7 @@
 
 #include "party_menu.h"
 
+u32 sub_0207F42C(int index);
 int sub_0207F694(PartyMenuStruct *partyMenu);
 int sub_0207F6E8(PartyMenuStruct *partyMenu);
 int sub_0207F720(PartyMenuStruct *partyMenu);

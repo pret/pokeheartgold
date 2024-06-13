@@ -527,8 +527,8 @@ static int sub_02079400(PartyMenuStruct *partyMenu) {
 }
 
 static int sub_02079440(PartyMenuStruct *partyMenu) {
-    PartyMenuStruct_SubC90_UnkFunc func = sub_0207E93C(partyMenu, partyMenu->unk_824);
-    switch ((int)func) {
+    u32 func = sub_0207E93C(partyMenu, partyMenu->unk_824);
+    switch (func) {
     case LIST_CANCEL:
         ClearFrameAndWindow2(&partyMenu->unk_004[33], TRUE);
         sub_0200E5D4(&partyMenu->unk_004[35], TRUE);
@@ -541,7 +541,7 @@ static int sub_02079440(PartyMenuStruct *partyMenu) {
         return PARTY_MENU_STATE_1;
     default: {
         int result;
-        func(partyMenu, &result);
+        ((PartyMenuStruct_SubC90_UnkFunc)func)(partyMenu, &result);
         return result;
     }
     case LIST_NOTHING_CHOSEN:
@@ -2136,8 +2136,8 @@ static void sub_0207BBFC(u8 a0, s16 *px, s16 *py) {
 }
 
 static BOOL sub_0207BC1C(PartyMenuStruct *partyMenu, int *pState) {
-    PartyMenuStruct_SubC90_UnkFunc func = sub_0207E778(partyMenu, partyMenu->unk_824);
-    switch ((int)func) {
+    u32 func = sub_0207E778(partyMenu, partyMenu->unk_824);
+    switch (func) {
     case LIST_CANCEL:
         sub_02079224(partyMenu, FALSE);
         ClearFrameAndWindow2(&partyMenu->unk_004[33], TRUE);
@@ -2155,7 +2155,7 @@ static BOOL sub_0207BC1C(PartyMenuStruct *partyMenu, int *pState) {
     case LIST_NOTHING_CHOSEN:
         break;
     default:
-        func(partyMenu, (int *)pState);
+        ((PartyMenuStruct_SubC90_UnkFunc)func)(partyMenu, (int *)pState);
         break;
     }
 

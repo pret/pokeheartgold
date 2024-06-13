@@ -1,10 +1,14 @@
 #include "global.h"
 #include "party_context_menu.h"
+#include "msgdata/msg/msg_0300.h"
+#include "unk_0207F42C.h"
 
 void sub_0207CB9C(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1, int a2);
 void sub_0207CD84(BgConfig *bgConfig, Window *window, const WindowTemplate *template);
 void sub_0207E28C(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, int a3, int a4, int a5);
 void sub_0207E3A8(PartyMenuStruct *partyMenu, int a1, int a2, int a3, int a4);
+void sub_0207E54C(PartyMenuStruct *partyMenu, int a1, int a2, int a3);
+UnkStruct_0207E590 *sub_0207E590(PartyMenuStruct *partyMenu, const UnkTemplate_0207E590 *a1, int a2, int a3, int a4);
 
 // const WindowTemplate _02101734[] = {
 //     { GF_BG_LYR_MAIN_1, 0x06, 0x01, 0x09, 0x02, 0x00, 0x0048 },
@@ -265,4 +269,75 @@ void sub_0207CDCC(PartyMenuStruct *partyMenu) {
     AddWindow(partyMenu->bgConfig, &partyMenu->unk_004[34], &_0210161C[4]);
     AddWindow(partyMenu->bgConfig, &partyMenu->unk_004[35], &_0210161C[5]);
     AddWindow(partyMenu->bgConfig, &partyMenu->unk_004[36], &_0210161C[6]);
+}
+
+void sub_0207CF68(PartyMenuStruct *partyMenu) {
+    u16 i;
+    for (i = 0; i < 40; ++i) {
+        RemoveWindow(&partyMenu->unk_004[i]);
+    }
+
+    for (i = 0; i < 1; ++i){
+        Window *win = &partyMenu->unk_284[i];
+        if (WindowIsInUse(win) == TRUE) {
+            RemoveWindow(win);
+        }
+    }
+}
+
+void PartyMenu_SetContextMenuStaticStrings(PartyMenuStruct *partyMenu) {
+    ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00128, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_SWITCH]);
+    ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00129, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_SUMMARY]);
+    ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00130, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_ITEM]);
+    ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00143, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_GIVE]);
+    ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00144, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_TAKE]);
+    ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00131, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_MAIL]);
+    ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00132, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_READ_MAIL]);
+    ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00133, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_TAKE_MAIL]);
+    ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00134, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_STORE]);
+    ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00135, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_QUIT]);
+    ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00136, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_UNUSED]);
+    ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00137, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_ENTER]);
+    ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00138, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_NO_ENTRY]);
+    ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00137, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_CONTEST_ENTER]);
+    ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00149, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_SET]);
+    ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00186, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_CONFIRM]);
+}
+
+void sub_0207D0A0(PartyMenuStruct *partyMenu, u16 move, u8 index) {
+    String *msg = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00139 + index);
+    BufferMoveName(partyMenu->msgFormat, 0, move);
+    StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_FIELD_MOVES_BEGIN + index], msg);
+    String_Delete(msg);
+}
+
+void sub_0207D0E4(PartyMenuStruct *partyMenu, u8 *items, u8 numItems) {
+    UnkTemplate_0207E590 sp8;
+    u16 i, numFieldMoves;
+
+    partyMenu->listMenuItems = ListMenuItems_New(numItems, HEAP_ID_PARTY_MENU);
+    numFieldMoves = 0;
+    for (i = 0; i < numItems; ++i) {
+        if (items[i] >= PARTY_MON_CONTEXT_MENU_FIELD_MOVES_BEGIN) {
+            ListMenuItems_AddItem(partyMenu->listMenuItems, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_FIELD_MOVES_BEGIN + numFieldMoves], sub_0207F42C(items[i]));
+            ++numFieldMoves;
+        } else {
+            ListMenuItems_AddItem(partyMenu->listMenuItems, partyMenu->contextMenuStrings[items[i]], sub_0207F42C(items[i]));
+        }
+    }
+
+    sp8.unk_00 = partyMenu->listMenuItems;
+    sp8.unk_04 = &partyMenu->unk_004[40];
+    sp8.unk_08 = 0;
+    sp8.unk_09 = 1;
+    sp8.unk_0A = numItems;
+    sp8.unk_0B_0 = 0;
+    sp8.unk_0B_4 = 0;
+    if (numItems >= 4) {
+        sp8.unk_0B_6 = 1;
+    } else {
+        sp8.unk_0B_6 = 0;
+    }
+    sub_0207E54C(partyMenu, sp8.unk_0A, 0, 0);
+    partyMenu->unk_824 = sub_0207E590(partyMenu, &sp8, 0, HEAP_ID_PARTY_MENU, 0);
 }

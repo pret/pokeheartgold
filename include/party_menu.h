@@ -172,12 +172,14 @@ typedef enum PartyMenuActionReturn {
 } PartyMenuActionReturn;
 
 typedef struct UnkTemplate_0207E590 {
-    int unk_00;
-    LISTMENUITEM *unk_04;
+    LISTMENUITEM *unk_00;
+    Window *unk_04;
     u8 unk_08;
     u8 unk_09;
     u8 unk_0A;
-    u8 unk_0B;
+    u8 unk_0B_0:4;
+    u8 unk_0B_4:2;
+    u8 unk_0B_6:2;
 } UnkTemplate_0207E590;
 
 typedef struct UnkStruct_0207E590 {
@@ -280,7 +282,9 @@ typedef struct PartyMenuMonsDrawState {
 
 struct PartyMenuStruct {
     BgConfig *bgConfig;
-    Window unk_004[49];
+    Window unk_004[40];
+    Window unk_284[1];
+    u8 filler_294[0x80];
     u16 unk_314[6 * 0x10];
     u16 unk_3D4[6 * 0x10];
     u16 unk_494[6 * 0x10];
