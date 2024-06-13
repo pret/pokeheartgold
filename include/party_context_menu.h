@@ -15,6 +15,7 @@ void sub_0207D0A0(PartyMenuStruct *partyMenu, u16 move, u8 index);
 void sub_0207D0E4(PartyMenuStruct *partyMenu, u8 *items, u8 numItems);
 void sub_0207D1C8(PartyMenuStruct *partyMenu);
 void sub_0207D294(PartyMenuStruct *partyMenu, Pokemon *mon, u32 partySlot);
+void sub_0207D3E4(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207D440(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207D480(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207D4EC(PartyMenuStruct *partyMenu, u8 partySlot);

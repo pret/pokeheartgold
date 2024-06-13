@@ -298,7 +298,7 @@ struct PartyMenuStruct {
     MessageFormat* msgFormat; //0x7c4
     String *formattedStrBuf; //0x7c8
     String *unformattedStrBuf;
-    String *contextMenuStrings[PARTY_MON_CONTEXT_MENU_NUM_STRINGS];
+    String *contextMenuStrings[PARTY_MON_CONTEXT_MENU_NUM_STRINGS]; //0x7d0
     LISTMENUITEM *listMenuItems; //0x820
     UnkStruct_0207E590 *unk_824;
     PartyMenuMonsDrawState monsDrawState[PARTY_SIZE];

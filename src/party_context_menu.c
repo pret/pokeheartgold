@@ -1,10 +1,15 @@
 #include "global.h"
 #include "party_context_menu.h"
 #include "msgdata/msg/msg_0300.h"
+#include "text.h"
 #include "unk_0207F42C.h"
+#include "unk_0200CE7C.h"
 
 void sub_0207CB9C(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1, int a2);
 void sub_0207CD84(BgConfig *bgConfig, Window *window, const WindowTemplate *template);
+void sub_0207D268(PartyMenuStruct *partyMenu, int windowId);
+void sub_0207D2E4(PartyMenuStruct *partyMenu, u8 partySlot);
+void sub_0207D4AC(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207E28C(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, int a3, int a4, int a5);
 void sub_0207E3A8(PartyMenuStruct *partyMenu, int a1, int a2, int a3, int a4);
 void sub_0207E54C(PartyMenuStruct *partyMenu, int a1, int a2, int a3);
@@ -340,4 +345,84 @@ void sub_0207D0E4(PartyMenuStruct *partyMenu, u8 *items, u8 numItems) {
     }
     sub_0207E54C(partyMenu, sp8.unk_0A, 0, 0);
     partyMenu->unk_824 = sub_0207E590(partyMenu, &sp8, 0, HEAP_ID_PARTY_MENU, 0);
+}
+
+void sub_0207D1C8(PartyMenuStruct *partyMenu) {
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_15) {
+        ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00043, partyMenu->formattedStrBuf);
+    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_21 && partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg == TRUE) {
+        ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00183, partyMenu->formattedStrBuf);
+    } else {
+        Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+        String *msg = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00038);
+        BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+        StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, msg);
+        String_Delete(msg);
+    }
+}
+
+void sub_0207D268(PartyMenuStruct *partyMenu, int windowId) {
+    sub_0200CDAC(partyMenu->msgPrinter, 0, &partyMenu->unk_004[5 * windowId + 2], 28, 2);
+}
+
+void sub_0207D294(PartyMenuStruct *partyMenu, Pokemon *mon, u32 partySlot) {
+    String *msg = NewString_ReadMsgData(partyMenu->msgData, _021015BC[partySlot][0]);
+    BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+    StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->monsDrawState[partySlot].nickname, msg);
+    String_Delete(msg);
+}
+
+void sub_0207D2E4(PartyMenuStruct *partyMenu, u8 partySlot) {
+    Window *window = &partyMenu->unk_004[partySlot * 5 + 0];
+
+    AddTextPrinterParameterizedWithColor(window, 0, partyMenu->monsDrawState[partySlot].nickname, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    if (partyMenu->monsDrawState[partySlot].isEgg == TRUE) {
+        ScheduleWindowCopyToVram(window);
+    } else {
+        FillWindowPixelBuffer(&partyMenu->unk_004[38], 0);
+        AddTextPrinterParameterizedWithColor(&partyMenu->unk_004[38], 0, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_ITEM], 2, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+        if (!partyMenu->monsDrawState[partySlot].unk_0E_0C) {
+            if (partyMenu->monsDrawState[partySlot].gender == MON_MALE) {
+                ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00027, partyMenu->unformattedStrBuf);
+                AddTextPrinterParameterizedWithColor(window, 0, partyMenu->unformattedStrBuf, 64, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 4, 0), NULL);
+            }
+            else if (partyMenu->monsDrawState[partySlot].gender == MON_FEMALE) {
+                ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00028, partyMenu->unformattedStrBuf);
+                AddTextPrinterParameterizedWithColor(window, 0, partyMenu->unformattedStrBuf, 64, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(5, 6, 0), NULL);
+            }
+        }
+        ScheduleWindowCopyToVram(window);
+    }
+}
+
+void sub_0207D3E4(PartyMenuStruct *partyMenu, u8 partySlot) {
+    Window *window = &partyMenu->unk_004[partySlot * 5 + 1];
+
+    if (partyMenu->monsDrawState[partySlot].unk_0E_00 != 7) {
+        ScheduleWindowCopyToVram(window);
+    } else {
+        sub_0200CE7C(partyMenu->msgPrinter, 1, partyMenu->monsDrawState[partySlot].level, 3, PRINTING_MODE_LEFT_ALIGN, window, 5, 2);
+        ScheduleWindowCopyToVram(window);
+    }
+}
+
+void sub_0207D440(PartyMenuStruct *partyMenu, u8 partySlot) {
+    Window *window = &partyMenu->unk_004[partySlot * 5 + 2];
+
+    PrintUIntOnWindow(partyMenu->msgPrinter, partyMenu->monsDrawState[partySlot].hp, 3, PRINTING_MODE_RIGHT_ALIGN, window, 0, 2);
+    ScheduleWindowCopyToVram(window);
+}
+
+void sub_0207D480(PartyMenuStruct *partyMenu, u8 partySlot) {
+    Window *window = &partyMenu->unk_004[partySlot * 5 + 2];
+
+    FillWindowPixelRect(window, 0, 0, 0, 24, 16);
+    ScheduleWindowCopyToVram(window);
+}
+
+void sub_0207D4AC(PartyMenuStruct *partyMenu, u8 partySlot) {
+    Window *window = &partyMenu->unk_004[partySlot * 5 + 2];
+
+    PrintUIntOnWindow(partyMenu->msgPrinter, partyMenu->monsDrawState[partySlot].maxHp, 3, PRINTING_MODE_LEFT_ALIGN, window, 36, 2);
+    ScheduleWindowCopyToVram(window);
 }
