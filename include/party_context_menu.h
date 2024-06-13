@@ -1,9 +1,10 @@
-#ifndef POKEHEARTGOLD_UNK_0207CB7C_H
-#define POKEHEARTGOLD_UNK_0207CB7C_H
+#ifndef POKEHEARTGOLD_PARTY_CONTEXT_MENU_H
+#define POKEHEARTGOLD_PARTY_CONTEXT_MENU_H
 
 #include "party_menu.h"
 #include "list_menu.h"
 
+void sub_0207CB7C(void);
 void sub_0207CB90(void);
 void sub_0207CBD0(PartyMenuStruct *partyMenu, int a1, int a2, BOOL a3);
 BOOL sub_0207CC24(PartyMenuStruct *partyMenu);
@@ -38,4 +39,4 @@ void sub_0207EDD4(PartyMenuStruct *partyMenu);
 void sub_0207F178(PartyMenuStruct *partyMenu);
 void sub_0207F2F8(PartyMenuStruct *partyMenu);
 
-#endif //POKEHEARTGOLD_UNK_0207CB7C_H
+#endif //POKEHEARTGOLD_PARTY_CONTEXT_MENU_H

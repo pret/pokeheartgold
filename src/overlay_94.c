@@ -8,7 +8,7 @@
 #include "scrcmd.h"
 #include "unk_02005D10.h"
 #include "unk_02014DA0.h"
-#include "unk_0207CB7C.h"
+#include "party_context_menu.h"
 #include "unk_0207EB24.h"
 #include "party_menu.h"
 #include "unk_0207F42C.h"

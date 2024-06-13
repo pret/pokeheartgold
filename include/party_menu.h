@@ -66,7 +66,7 @@ typedef enum PartyMenuState {
     PARTY_MENU_STATE_YES_NO_HANDLE_INPUT,
     PARTY_MENU_STATE_28,
     PARTY_MENU_STATE_29,
-    PARTY_MENU_STATE_30,
+    PARTY_MENU_STATE_SOFTBOILED,
     PARTY_MENU_STATE_FORM_CHANGE_ANIM,
     PARTY_MENU_STATE_BEGIN_EXIT,
     PARTY_MENU_STATE_WAIT_EXIT_FADE_OUT,
@@ -246,9 +246,14 @@ typedef void (*PartyMenuStruct_SubC90_UnkFunc)(PartyMenuStruct *partyMenu, int *
 #define PARTYMENUSTRUCT_SUBC90_UNKFUNC_NONE ((PartyMenuStruct_SubC90_UnkFunc)-2)
 
 typedef struct PartyMenuStruct_SubC90 {
-    u8 unk_0[0x8];
+    UnkTemplate_0207E590 *unk_0;
+    u8 unk_4;
+    u8 unk_5;
+    u8 unk_6_0:4;
+    u8 unk_6_4:4;
+    u8 unk_7;
     int unk_8;
-    int unk_C;
+    BOOL unk_C;
 } PartyMenuStruct_SubC90;
 
 typedef struct PartyMenuMonsDrawState {

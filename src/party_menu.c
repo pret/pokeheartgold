@@ -16,7 +16,7 @@
 #include "unk_020210A0.h"
 #include "unk_020290B4.h"
 #include "unk_02066EDC.h"
-#include "unk_0207CB7C.h"
+#include "party_context_menu.h"
 #include "unk_0207F42C.h"
 #include "unk_0203A3B0.h"
 #include "unk_02080BB4.h"
@@ -80,8 +80,8 @@ static void sub_0207A68C(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a
 static void sub_0207A780(PartyMenuStruct *partyMenu, u8 partySlot, s16 x, s16 y);
 static void sub_0207A89C(PartyMenuStruct *partyMenu);
 static u8 sub_0207A8FC(PartyMenuStruct *partyMenu);
-static void sub_0207A910(PartyMenuStruct *partyMenu, int selection, int x, int y);
-static void sub_0207A988(PartyMenuStruct *partyMenu, int selection, int x, int y);
+static void PartyMenu_MoveCursorSpriteTo(PartyMenuStruct *partyMenu, int selection, int x, int y);
+static void PartyMenu_MoveCursorSpriteTo_WithSfx(PartyMenuStruct *partyMenu, int selection, int x, int y);
 static BOOL sub_0207A99C(PartyMenuStruct *partyMenu);
 static u8 PartyMenu_HandleDpadInput(PartyMenuStruct *partyMenu, u8 *px, u8 *py, u8 direction);
 static u8 sub_0207AB20(PartyMenuStruct *partyMenu, u8 *px, u8 *py, const u8 *a3);
@@ -100,7 +100,7 @@ static u8 sub_0207B28C(PartyMenuStruct *partyMenu, u8 *buf);
 static u8 sub_0207B2DC(PartyMenuStruct *partyMenu, u8 *buf);
 static u8 sub_0207BCC0(u16 move);
 static int PartyMenu_SoftboiledTryTargetCheck(PartyMenuStruct *partyMenu);
-static void sub_0207B51C(PartyMenuStruct *partyMenu, u8 selection, BOOL a2);
+static void sub_0207B51C(PartyMenuStruct *partyMenu, u8 selection, BOOL active);
 static u8 sub_0207B600(PartyMenuStruct *partyMenu);
 static int sub_0207B7E0(PartyMenuStruct *partyMenu);
 static u8 sub_0207BA78(PartyMenuStruct *partyMenu);
@@ -385,7 +385,7 @@ static BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState) {
             *pState = PARTY_MENU_STATE_1;
         }
         break;
-    case PARTY_MENU_STATE_30:
+    case PARTY_MENU_STATE_SOFTBOILED:
         *pState = PartyMenu_Subtask_Softboiled(partyMenu);
         break;
     case PARTY_MENU_STATE_FORM_CHANGE_ANIM:
@@ -1303,7 +1303,7 @@ static u8 sub_0207A8FC(PartyMenuStruct *partyMenu) {
     }
 }
 
-static void sub_0207A910(PartyMenuStruct *partyMenu, int selection, int x, int y) {
+static void PartyMenu_MoveCursorSpriteTo(PartyMenuStruct *partyMenu, int selection, int x, int y) {
     if (selection == PARTY_MON_SELECTION_CANCEL || selection == PARTY_MON_SELECTION_CONFIRM) {
         Set2dSpriteVisibleFlag(partyMenu->unk_660[6], FALSE);
     } else {
@@ -1317,8 +1317,8 @@ static void sub_0207A910(PartyMenuStruct *partyMenu, int selection, int x, int y
     sub_0207B51C(partyMenu, partyMenu->partyMonIndex, TRUE);
 }
 
-static void sub_0207A988(PartyMenuStruct *partyMenu, int selection, int x, int y) {
-    sub_0207A910(partyMenu, selection, x, y);
+static void PartyMenu_MoveCursorSpriteTo_WithSfx(PartyMenuStruct *partyMenu, int selection, int x, int y) {
+    PartyMenu_MoveCursorSpriteTo(partyMenu, selection, x, y);
     PlaySE(SEQ_SE_DP_SELECT);
 }
 
@@ -1362,7 +1362,7 @@ static BOOL sub_0207A99C(PartyMenuStruct *partyMenu) {
         newSelection = PartyMenu_HandleDpadInput(partyMenu, &x, &y, direction);
     }
     if (newSelection != partyMenu->partyMonIndex && newSelection != 0xFF) {
-        sub_0207A988(partyMenu, newSelection, x, y);
+        PartyMenu_MoveCursorSpriteTo_WithSfx(partyMenu, newSelection, x, y);
         return TRUE;
     }
 
@@ -1489,7 +1489,7 @@ static u8 sub_0207ADB8(PartyMenuStruct *partyMenu) {
     PartyMenuStruct_SubC90 *r5 = &partyMenu->unk_C90;
     u8 result;
 
-    if (r5->unk_C == 1) {
+    if (r5->unk_C == TRUE) {
         if (sub_0207CC24(partyMenu) == FALSE) {
             return r5->unk_8;
         } else {
@@ -1510,7 +1510,7 @@ static u8 sub_0207ADB8(PartyMenuStruct *partyMenu) {
                 // UB: hits "return result;" but result was never initialized
                 break;
             }
-            sub_0207A910(partyMenu, selection, partyMenu->unk_948[selection].unk_0, partyMenu->unk_948[selection].unk_1);
+            PartyMenu_MoveCursorSpriteTo(partyMenu, selection, partyMenu->unk_948[selection].unk_0, partyMenu->unk_948[selection].unk_1);
             return sub_0207AC70(partyMenu, TRUE);
         case PARTY_MON_SELECTION_CANCEL:
             if (partyMenu->unk_C63_7) {
@@ -1522,22 +1522,22 @@ static u8 sub_0207ADB8(PartyMenuStruct *partyMenu) {
             partyMenu->partyMonIndex = PARTY_MON_SELECTION_CONFIRM;
             sub_0207CB3C(partyMenu, TRUE);
             G2_BlendNone();
-            sub_0207A910(partyMenu, 7, partyMenu->unk_948[7].unk_0, partyMenu->unk_948[7].unk_1);
+            PartyMenu_MoveCursorSpriteTo(partyMenu, 7, partyMenu->unk_948[7].unk_0, partyMenu->unk_948[7].unk_1);
             sub_0207CBD0(partyMenu, 9, 3, TRUE);
             return 5;
         case PARTY_MON_SELECTION_CONFIRM:
-            sub_0207A988(partyMenu, 6, partyMenu->unk_948[6].unk_0, partyMenu->unk_948[6].unk_1);
+            PartyMenu_MoveCursorSpriteTo_WithSfx(partyMenu, 6, partyMenu->unk_948[6].unk_0, partyMenu->unk_948[6].unk_1);
             sub_0207CBD0(partyMenu, 8, sub_0207AC70(partyMenu, TRUE), TRUE);
             return 5;
         }
     } else {
         if (gSystem.newKeys & PAD_BUTTON_A) {
             if (partyMenu->partyMonIndex == PARTY_MON_SELECTION_CONFIRM) {
-                sub_0207A910(partyMenu, partyMenu->partyMonIndex, partyMenu->unk_948[partyMenu->partyMonIndex].unk_0, partyMenu->unk_948[partyMenu->partyMonIndex].unk_1);
+                PartyMenu_MoveCursorSpriteTo(partyMenu, partyMenu->partyMonIndex, partyMenu->unk_948[partyMenu->partyMonIndex].unk_0, partyMenu->unk_948[partyMenu->partyMonIndex].unk_1);
                 sub_0207CBD0(partyMenu, 9,  sub_0207AC70(partyMenu, FALSE), FALSE);
                 return 5;
             } else if (partyMenu->partyMonIndex == PARTY_MON_SELECTION_CANCEL) {
-                sub_0207A988(partyMenu, partyMenu->partyMonIndex, partyMenu->unk_948[partyMenu->partyMonIndex].unk_0, partyMenu->unk_948[partyMenu->partyMonIndex].unk_1);
+                PartyMenu_MoveCursorSpriteTo_WithSfx(partyMenu, partyMenu->partyMonIndex, partyMenu->unk_948[partyMenu->partyMonIndex].unk_0, partyMenu->unk_948[partyMenu->partyMonIndex].unk_1);
                 sub_0207CBD0(partyMenu, 8, sub_0207AC70(partyMenu, FALSE), FALSE);
                 return 5;
             } else {
@@ -1551,7 +1551,7 @@ static u8 sub_0207ADB8(PartyMenuStruct *partyMenu) {
             if (partyMenu->partyMonIndex == PARTY_MON_SELECTION_CONFIRM) {
                 sub_0207CBD0(partyMenu, 9, 3, FALSE);
             } else {
-                sub_0207A910(partyMenu, 7, partyMenu->unk_948[7].unk_0, partyMenu->unk_948[7].unk_1);
+                PartyMenu_MoveCursorSpriteTo(partyMenu, 7, partyMenu->unk_948[7].unk_0, partyMenu->unk_948[7].unk_1);
                 sub_0207CBD0(partyMenu, 9, 3, TRUE);
             }
             return 5;
@@ -1819,11 +1819,11 @@ u8 sub_0207B4A0(PartyMenuStruct *partyMenu, u8 selection) {
     return 1;
 }
 
-static void sub_0207B51C(PartyMenuStruct *partyMenu, u8 selection, BOOL a2) {
+static void sub_0207B51C(PartyMenuStruct *partyMenu, u8 selection, BOOL active) {
     u8 animSeqNo;
     if (selection == PARTY_MON_SELECTION_CANCEL) {
         animSeqNo = Get2dSpriteCurrentAnimSeqNo(partyMenu->unk_660[8]);
-        if (a2 == FALSE) {
+        if (active == FALSE) {
             animSeqNo &= 2;
         } else {
             animSeqNo = (animSeqNo & 2) + 1;
@@ -1831,14 +1831,14 @@ static void sub_0207B51C(PartyMenuStruct *partyMenu, u8 selection, BOOL a2) {
         Set2dSpriteAnimSeqNo(partyMenu->unk_660[8], animSeqNo);
     } else if (selection == PARTY_MON_SELECTION_CONFIRM) {
         animSeqNo = Get2dSpriteCurrentAnimSeqNo(partyMenu->unk_660[9]);
-        if (a2 == FALSE) {
+        if (active == FALSE) {
             animSeqNo &= 2;
         } else {
             animSeqNo = (animSeqNo & 2) + 1;
         }
         Set2dSpriteAnimSeqNo(partyMenu->unk_660[9], animSeqNo);
     } else {
-        if (!a2) {
+        if (!active) {
             partyMenu->monsDrawState[selection].unk_16 -= 2;
             partyMenu->monsDrawState[selection].unk_18 -= 2;
             Set2dSpriteAnimSeqNo(partyMenu->unk_660[selection], 0);
@@ -1891,7 +1891,7 @@ static u8 sub_0207B600(PartyMenuStruct *partyMenu) {
                 if (oldSelection != partyMenu->partyMonIndex) {
                     sub_0207B51C(partyMenu, oldSelection, FALSE);
                     sub_0207B51C(partyMenu, partyMenu->partyMonIndex, TRUE);
-                    sub_0207A910(partyMenu, selection, partyMenu->unk_948[selection].unk_0, partyMenu->unk_948[selection].unk_1);
+                    PartyMenu_MoveCursorSpriteTo(partyMenu, selection, partyMenu->unk_948[selection].unk_0, partyMenu->unk_948[selection].unk_1);
                 }
                 sub_0207FBC8(partyMenu);
                 return 3;
@@ -1905,7 +1905,7 @@ static u8 sub_0207B600(PartyMenuStruct *partyMenu) {
                 if (oldSelection != partyMenu->partyMonIndex) {
                     sub_0207B51C(partyMenu, partyMenu->partyMonIndex, TRUE);
                 }
-                sub_0207A910(partyMenu, selection, partyMenu->unk_948[selection].unk_0, partyMenu->unk_948[selection].unk_1);
+                PartyMenu_MoveCursorSpriteTo(partyMenu, selection, partyMenu->unk_948[selection].unk_0, partyMenu->unk_948[selection].unk_1);
                 sub_0207FC1C(partyMenu);
                 return 0;
             }
@@ -2181,17 +2181,17 @@ static int PartyMenu_SoftboiledTryTargetCheck(PartyMenuStruct *partyMenu) {
         }
         partyMenu->subtaskState = 2;
         partyMenu->unk_C6C = 0;
-        return PARTY_MENU_STATE_30;
+        return PARTY_MENU_STATE_SOFTBOILED;
     case 1:
         PlaySE(SEQ_SE_DP_SELECT);
         partyMenu->subtaskState = 1;
         return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
     case 2:
         PlaySE(SEQ_SE_DP_CUSTOM06);
-        return PARTY_MENU_STATE_30;
+        return PARTY_MENU_STATE_SOFTBOILED;
     }
 
-    return PARTY_MENU_STATE_30;
+    return PARTY_MENU_STATE_SOFTBOILED;
 }
 
 static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
@@ -2204,7 +2204,7 @@ static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
             }
             return r5->unk_8;
         } else {
-            return PARTY_MENU_STATE_30;
+            return PARTY_MENU_STATE_SOFTBOILED;
         }
     }
 
@@ -2222,21 +2222,21 @@ static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
                 if (selection >= Party_GetCount(partyMenu->args->party)) {
                     break;
                 }
-                sub_0207A910(partyMenu, selection, partyMenu->unk_948[selection].unk_0, partyMenu->unk_948[selection].unk_1);
+                PartyMenu_MoveCursorSpriteTo(partyMenu, selection, partyMenu->unk_948[selection].unk_0, partyMenu->unk_948[selection].unk_1);
                 return PartyMenu_SoftboiledTryTargetCheck(partyMenu);
             case PARTY_MON_SELECTION_CANCEL:
                 PlaySE(SEQ_SE_GS_GEARCANCEL);
                 sub_0207FBC8(partyMenu);
-                sub_0207CBD0(partyMenu, 9, 1, 0);
-                return PARTY_MENU_STATE_30;
+                sub_0207CBD0(partyMenu, 9, 1, FALSE);
+                return PARTY_MENU_STATE_SOFTBOILED;
             }
         } else {
             if (gSystem.newKeys & PAD_BUTTON_A) {
                 if (partyMenu->partyMonIndex >= 6) {
                     PlaySE(SEQ_SE_GS_GEARCANCEL);
                     sub_0207FBC8(partyMenu);
-                    sub_0207CBD0(partyMenu, 9, 1, 0);
-                    return PARTY_MENU_STATE_30;
+                    sub_0207CBD0(partyMenu, 9, 1, FALSE);
+                    return PARTY_MENU_STATE_SOFTBOILED;
                 } else {
                     return PartyMenu_SoftboiledTryTargetCheck(partyMenu);
                 }
@@ -2273,7 +2273,7 @@ static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
             String_Delete(string);
             sub_0207DAEC(partyMenu, -1, TRUE);
             partyMenu->subtaskState = 4;
-            partyMenu->afterTextPrinterState = PARTY_MENU_STATE_30;
+            partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SOFTBOILED;
             return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
         }
         break;
@@ -2284,7 +2284,7 @@ static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
         return PARTY_MENU_STATE_1;
     }
 
-    return PARTY_MENU_STATE_30;
+    return PARTY_MENU_STATE_SOFTBOILED;
 }
 
 static u8 PartyMenu_SoftboiledTargetCheck(PartyMenuStruct *partyMenu) {
@@ -2295,7 +2295,7 @@ static u8 PartyMenu_SoftboiledTargetCheck(PartyMenuStruct *partyMenu) {
         thunk_Sprite_SetPalIndex(partyMenu->unk_660[6], 1);
         sub_0207DAEC(partyMenu, msg_0300_00120, TRUE);
         partyMenu->subtaskState = 1;
-        partyMenu->afterTextPrinterState = PARTY_MENU_STATE_30;
+        partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SOFTBOILED;
         return 1;
     }
     return 0;
@@ -2338,7 +2338,7 @@ static u8 sub_0207C0DC(PartyMenuStruct *partyMenu) {
         case PARTY_MON_SELECTION_5:
         case PARTY_MON_SELECTION_6:
             if (selection < Party_GetCount(partyMenu->args->party)) {
-                sub_0207A910(partyMenu, selection, partyMenu->unk_948[selection].unk_0, partyMenu->unk_948[selection].unk_1);
+                PartyMenu_MoveCursorSpriteTo(partyMenu, selection, partyMenu->unk_948[selection].unk_0, partyMenu->unk_948[selection].unk_1);
                 partyMenu->partyMonIndex = selection;
                 if (!partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg) {
                     PlaySE(SEQ_SE_DP_SELECT);
@@ -2352,8 +2352,8 @@ static u8 sub_0207C0DC(PartyMenuStruct *partyMenu) {
         case PARTY_MON_SELECTION_CANCEL:
             if (!partyMenu->unk_C63_7) {
                 PlaySE(SEQ_SE_GS_GEARCANCEL);
-                sub_0207A910(partyMenu, 7, partyMenu->unk_948[7].unk_0, partyMenu->unk_948[7].unk_1);
-                sub_0207CBD0(partyMenu, 9, 3, 1);
+                PartyMenu_MoveCursorSpriteTo(partyMenu, 7, partyMenu->unk_948[7].unk_0, partyMenu->unk_948[7].unk_1);
+                sub_0207CBD0(partyMenu, 9, 3, TRUE);
                 return 5;
             }
         }
@@ -2361,7 +2361,7 @@ static u8 sub_0207C0DC(PartyMenuStruct *partyMenu) {
         if (partyMenu->partyMonIndex == PARTY_MON_SELECTION_CONFIRM) {
             if (!partyMenu->unk_C63_7) {
                 PlaySE(SEQ_SE_GS_GEARCANCEL);
-                sub_0207CBD0(partyMenu, 9, 3, 0);
+                sub_0207CBD0(partyMenu, 9, 3, FALSE);
                 return 5;
             }
         } else {
@@ -2378,10 +2378,10 @@ static u8 sub_0207C0DC(PartyMenuStruct *partyMenu) {
         if (!partyMenu->unk_C63_7) {
             PlaySE(SEQ_SE_GS_GEARCANCEL);
             if (partyMenu->partyMonIndex == PARTY_MON_SELECTION_CONFIRM) {
-                sub_0207CBD0(partyMenu, 9, 3, 0);
+                sub_0207CBD0(partyMenu, 9, 3, FALSE);
             } else {
-                sub_0207A910(partyMenu, 7, partyMenu->unk_948[7].unk_0, partyMenu->unk_948[7].unk_1);
-                sub_0207CBD0(partyMenu, 9, 3, 1);
+                PartyMenu_MoveCursorSpriteTo(partyMenu, 7, partyMenu->unk_948[7].unk_0, partyMenu->unk_948[7].unk_1);
+                sub_0207CBD0(partyMenu, 9, 3, TRUE);
             }
             return 5;
         } else {
