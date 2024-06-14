@@ -3,6 +3,7 @@
 #include "party_context_menu.h"
 #include "msgdata/msg/msg_0300.h"
 #include "render_text.h"
+#include "system.h"
 #include "text.h"
 #include "unk_02005D10.h"
 #include "unk_0207F42C.h"
@@ -179,6 +180,8 @@ extern const u16 _021015BC[][4];
 
 extern int _021101A4[][5][2];
 extern int _02110244[][8][3];
+extern TouchscreenHitbox _02110180[];
+extern TouchscreenHitbox _02110168[];
 
 void sub_0207CB7C(void) {
     G2_SetBlendBrightness(30, 8);
@@ -1009,7 +1012,7 @@ int sub_0207E6B4(int a0, int a1, int a2) {
         }
     }
 
-    return -1;
+    return LIST_NOTHING_CHOSEN;
 }
 
 BOOL sub_0207E6E8(int a0, int a1, int a2) {
@@ -1036,4 +1039,137 @@ BOOL sub_0207E748(u8 *a0, int a1, int a2) {
     } else {
         return FALSE;
     }
+}
+
+u32 sub_0207E778(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1) {
+    PartyMenuStruct_SubC90 *unkC90 = &partyMenu->unk_C90;
+    int r4 = 0;
+
+    if (unkC90->unk_C == TRUE) {
+        if (sub_0207CC24(partyMenu) == FALSE) {
+            return unkC90->unk_8;
+        } else {
+            return LIST_NOTHING_CHOSEN;
+        }
+    }
+
+    int hitbox = TouchscreenHitbox_FindRectAtTouchNew(_02110180);
+    if (hitbox != -1) {
+        if (sub_0207E684(a1->unk_3, a1->unk_2, hitbox) == TRUE) {
+            if (hitbox == 7) {
+                PlaySE(SEQ_SE_GS_GEARCANCEL);
+            } else {
+                PlaySE(SEQ_SE_DP_SELECT);
+            }
+            sub_0207E3A8(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3, 0);
+            sub_0207E28C(partyMenu, &a1->unk_4, a1->unk_2, a1->unk_1, a1->unk_3, 0);
+            a1->unk_1 = sub_0207E6B4(a1->unk_3, a1->unk_2, hitbox);
+            sub_0207CB9C(partyMenu, a1, a1->unk_4.unk_00[a1->unk_1].value);
+            return LIST_NOTHING_CHOSEN;
+        }
+    } else {
+        if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
+            if (sub_0207E714(&a1->unk_1, a1->unk_2, 0)) {
+                ++r4;
+            }
+        } else if (gSystem.newAndRepeatedKeys & PAD_KEY_DOWN) {
+            if (sub_0207E714(&a1->unk_1, a1->unk_2, 1)) {
+                ++r4;
+            }
+        } else if (gSystem.newAndRepeatedKeys & PAD_KEY_LEFT || gSystem.newAndRepeatedKeys & PAD_KEY_RIGHT) {
+            if (sub_0207E714(&a1->unk_1, a1->unk_2, 2)) {
+                ++r4;
+            }
+        } else if (gSystem.newKeys & PAD_BUTTON_A) {
+            if (a1->unk_1 == sub_0207E6B4(a1->unk_3, a1->unk_2, 7)) {
+                PlaySE(SEQ_SE_GS_GEARCANCEL);
+            } else {
+                PlaySE(SEQ_SE_DP_SELECT);
+            }
+            sub_0207CB9C(partyMenu, a1, a1->unk_4.unk_00[a1->unk_1].value);
+            return LIST_NOTHING_CHOSEN;
+        } else if (gSystem.newKeys & PAD_BUTTON_B) {
+            PlaySE(SEQ_SE_GS_GEARCANCEL);
+            sub_0207E3A8(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3, 0);
+            sub_0207E28C(partyMenu, &a1->unk_4, a1->unk_2, a1->unk_1, a1->unk_3, 0);
+            a1->unk_1 = sub_0207E6B4(a1->unk_3, a1->unk_2, 7);
+            sub_0207CB9C(partyMenu, a1, LIST_CANCEL);
+            return LIST_NOTHING_CHOSEN;
+        }
+    }
+
+    if (r4) {
+        PlaySE(SEQ_SE_DP_SELECT);
+        sub_0207E54C(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3);
+        sub_0207E358(partyMenu, &a1->unk_4, a1->unk_2, a1->unk_1, a1->unk_3);
+    }
+
+    return LIST_NOTHING_CHOSEN;
+}
+
+u32 sub_0207E93C(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1) {
+    PartyMenuStruct_SubC90 *unkC90 = &partyMenu->unk_C90;
+    int r6 = 0;
+
+    if (unkC90->unk_C == TRUE) {
+        if (sub_0207CC24(partyMenu) == FALSE) {
+            return unkC90->unk_8;
+        } else {
+            return LIST_NOTHING_CHOSEN;
+        }
+    }
+
+    int hitbox = TouchscreenHitbox_FindRectAtTouchNew(_02110168);
+    if (hitbox != -1) {
+        if (hitbox == 4) {
+            PlaySE(SEQ_SE_GS_GEARCANCEL);
+            sub_0207E3A8(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3, 0);
+            sub_0207E28C(partyMenu, &a1->unk_4, a1->unk_2, a1->unk_1, a1->unk_3, 0);
+            a1->unk_1 = a1->unk_2 - 1;
+            sub_0207CB9C(partyMenu, a1, LIST_CANCEL);
+            return LIST_NOTHING_CHOSEN;
+        } else if (sub_0207E6E8(a1->unk_3, a1->unk_2, hitbox) == TRUE) {
+            PlaySE(SEQ_SE_DP_SELECT);
+            sub_0207E3A8(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3, 0);
+            sub_0207E28C(partyMenu, &a1->unk_4, a1->unk_2, a1->unk_1, a1->unk_3, 0);
+            a1->unk_1 = hitbox;
+            sub_0207CB9C(partyMenu, a1, a1->unk_4.unk_00[a1->unk_1].value);
+            return LIST_NOTHING_CHOSEN;
+        }
+    } else {
+        if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
+            if (sub_0207E748(&a1->unk_1, a1->unk_2, 0)) {
+                ++r6;
+            }
+        } else if (gSystem.newAndRepeatedKeys & PAD_KEY_DOWN) {
+            if (sub_0207E748(&a1->unk_1, a1->unk_2, 1)) {
+                ++r6;
+            }
+        } else if (gSystem.newKeys & PAD_BUTTON_A) {
+            if (a1->unk_1 == a1->unk_2 - 1) {
+                PlaySE(SEQ_SE_GS_GEARCANCEL);
+            } else {
+                PlaySE(SEQ_SE_DP_SELECT);
+            }
+            sub_0207E3A8(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3, 0);
+            sub_0207E28C(partyMenu, &a1->unk_4, a1->unk_2, a1->unk_1, a1->unk_3, 0);
+            sub_0207CB9C(partyMenu, a1, a1->unk_4.unk_00[a1->unk_1].value);
+            return LIST_NOTHING_CHOSEN;
+        } else if (gSystem.newKeys & PAD_BUTTON_B) {
+            PlaySE(SEQ_SE_GS_GEARCANCEL);
+            sub_0207E3A8(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3, 0);
+            sub_0207E28C(partyMenu, &a1->unk_4, a1->unk_2, a1->unk_1, a1->unk_3, 0);
+            a1->unk_1 = a1->unk_2 - 1;
+            sub_0207CB9C(partyMenu, a1, LIST_CANCEL);
+            return LIST_NOTHING_CHOSEN;
+        }
+    }
+
+    if (r6) {
+        PlaySE(SEQ_SE_DP_SELECT);
+        sub_0207E54C(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3);
+        sub_0207E358(partyMenu, &a1->unk_4, a1->unk_2, a1->unk_1, a1->unk_3);
+    }
+
+    return LIST_NOTHING_CHOSEN;
 }
