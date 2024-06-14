@@ -1992,7 +1992,7 @@ _02081C76:
 	cmp r0, #0
 	bne _02081D0C
 	add r0, r4, #0
-	bl sub_0207DDFC
+	bl PartyMenu_LevelUpPrintStatsChange
 	ldr r0, _02081EAC ; =0x00000C67
 	mov r1, #1
 	strb r1, [r4, r0]

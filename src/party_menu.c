@@ -530,9 +530,9 @@ static int sub_02079440(PartyMenuStruct *partyMenu) {
     u32 func = sub_0207E93C(partyMenu, partyMenu->unk_824);
     switch (func) {
     case LIST_CANCEL:
-        ClearFrameAndWindow2(&partyMenu->unk_004[33], TRUE);
-        sub_0200E5D4(&partyMenu->unk_004[35], TRUE);
-        ClearWindowTilemapAndScheduleTransfer(&partyMenu->unk_004[35]);
+        ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
+        sub_0200E5D4(&partyMenu->windows[PARTY_MENU_WINDOW_ID_35], TRUE);
+        ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_35]);
         sub_02079224(partyMenu, FALSE);
         sub_0207CB20(partyMenu);
         sub_0207CB90();
@@ -1563,7 +1563,7 @@ static u8 sub_0207ADB8(PartyMenuStruct *partyMenu) {
 }
 
 static void sub_0207AFC4(PartyMenuStruct *partyMenu) {
-    ClearFrameAndWindow2(&partyMenu->unk_004[32], TRUE);
+    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_32], TRUE);
     u8 *buf = AllocFromHeap(HEAP_ID_PARTY_MENU, 8);
     u8 r2;
     switch (partyMenu->args->context) {
@@ -2140,7 +2140,7 @@ static BOOL sub_0207BC1C(PartyMenuStruct *partyMenu, int *pState) {
     switch (func) {
     case LIST_CANCEL:
         sub_02079224(partyMenu, FALSE);
-        ClearFrameAndWindow2(&partyMenu->unk_004[33], TRUE);
+        ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
         sub_0207CB20(partyMenu);
         sub_0207CB90();
         if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_22 || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
@@ -2251,7 +2251,7 @@ static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
         break;
     }
     case 1:
-        ClearFrameAndWindow2(&partyMenu->unk_004[34], TRUE);
+        ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
         thunk_Sprite_SetPalIndex(partyMenu->unk_660[6], 0);
         sub_0207DAC4(partyMenu, msg_0300_00037, TRUE);
         partyMenu->unk_C68[1] = 0;
@@ -2278,7 +2278,7 @@ static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
         }
         break;
     case 4:
-        ClearFrameAndWindow2(&partyMenu->unk_004[34], TRUE);
+        ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
         thunk_Sprite_SetPalIndex(partyMenu->unk_660[6], 0);
         sub_0207FBC8(partyMenu);
         return PARTY_MENU_STATE_1;
@@ -2305,7 +2305,7 @@ static BOOL PartyMenu_SoftboiledHPTransferStep(PartyMenuStruct *partyMenu, u8 pa
     partyMenu->monsDrawState[partySlot].hp += delta;
     ++partyMenu->unk_C68[2];
     sub_0207D480(partyMenu, partySlot);
-    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 3], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 3], 0);
     sub_0207D440(partyMenu, partySlot);
     sub_0207D4EC(partyMenu, partySlot);
     if (partyMenu->unk_C68[0] == partyMenu->unk_C68[2] || partyMenu->monsDrawState[partySlot].hp == partyMenu->monsDrawState[partySlot].maxHp) {
@@ -2494,8 +2494,8 @@ static int sub_0207C400(PartyMenuStruct *partyMenu) {
         }
     }
 
-    DrawFrameAndWindow2(&partyMenu->unk_004[34], TRUE, 0x02A, 15);
-    FillWindowPixelBuffer(&partyMenu->unk_004[34], 15);
+    DrawFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE, 0x02A, 15);
+    FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], 15);
     sub_0207DB30(partyMenu);
     return result;
 }
@@ -2534,7 +2534,7 @@ static int PartyMenu_Subtask_PrintItemSwapMessage(PartyMenuStruct *partyMenu) {
 
 static int PartyMenu_Subtask_PrintGriseousOrbMessage(PartyMenuStruct *partyMenu) {
     if (TextPrinterCheckActive(partyMenu->textPrinterId) == FALSE) {
-        ClearFrameAndWindow2(&partyMenu->unk_004[34], TRUE);
+        ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
         PartyMenu_FormChangeScene_Begin(partyMenu);
         return PARTY_MENU_STATE_WAIT_FORM_CHANGE;
     } else {
@@ -2591,7 +2591,7 @@ static int PartyMenu_Subtask_SwitchItemsHandleYesNoInput(PartyMenuStruct *partyM
                 result = PARTY_MENU_STATE_PRINT_ITEM_SWAP_MESSAGE;
             }
         }
-        FillWindowPixelBuffer(&partyMenu->unk_004[34], 15);
+        FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], 15);
         sub_0207DB30(partyMenu);
         return result;
     }
@@ -2606,7 +2606,7 @@ static int PartyMenu_Subtask_SwitchItemsHandleYesNoInput(PartyMenuStruct *partyM
 
 static int sub_0207C8B4(PartyMenuStruct *partyMenu) {
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_10) {
-        ClearFrameAndWindow2(&partyMenu->unk_004[34], TRUE);
+        ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
         sub_0207DAC4(partyMenu, msg_0300_00029, TRUE);
         thunk_Sprite_SetPalIndex(partyMenu->unk_660[6], 0);
         partyMenu->args->context = PARTY_MENU_CONTEXT_0;
@@ -2638,8 +2638,8 @@ static int sub_0207C908(PartyMenuStruct *partyMenu) {
         BufferItemName(partyMenu->msgFormat, 2, newItem);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, partyMenu->unformattedStrBuf);
     }
-    DrawFrameAndWindow2(&partyMenu->unk_004[34], TRUE, 42, 15);
-    FillWindowPixelBuffer(&partyMenu->unk_004[34], 15);
+    DrawFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE, 42, 15);
+    FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], 15);
     sub_0207DB30(partyMenu);
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_12) {
         partyMenu->args->context = PARTY_MENU_CONTEXT_10;

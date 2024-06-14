@@ -382,44 +382,44 @@ static void sub_0207CD84(BgConfig *bgConfig, Window *window, const WindowTemplat
 
 void sub_0207CDCC(PartyMenuStruct *partyMenu) {
     const WindowTemplate *r4 = _02101734;
-    sub_0207CD84(partyMenu->bgConfig, &partyMenu->unk_004[0], &r4[0]);
-    sub_0207CD84(partyMenu->bgConfig, &partyMenu->unk_004[10], &r4[10]);
-    sub_0207CD84(partyMenu->bgConfig, &partyMenu->unk_004[20], &r4[20]);
+    sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_0], &r4[0]);
+    sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_10], &r4[10]);
+    sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_20], &r4[20]);
     if (partyMenu->args->unk_25 == 2) {
-        sub_0207CD84(partyMenu->bgConfig, &partyMenu->unk_004[5], &r4[30]);
-        sub_0207CD84(partyMenu->bgConfig, &partyMenu->unk_004[15], &r4[35]);
-        sub_0207CD84(partyMenu->bgConfig, &partyMenu->unk_004[25], &r4[40]);
+        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_5], &r4[30]);
+        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_15], &r4[35]);
+        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_25], &r4[40]);
     } else {
-        sub_0207CD84(partyMenu->bgConfig, &partyMenu->unk_004[5], &r4[5]);
-        sub_0207CD84(partyMenu->bgConfig, &partyMenu->unk_004[15], &r4[15]);
-        sub_0207CD84(partyMenu->bgConfig, &partyMenu->unk_004[25], &r4[25]);
+        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_5], &r4[5]);
+        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_15], &r4[15]);
+        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_25], &r4[25]);
     }
-    AddWindow(partyMenu->bgConfig, &partyMenu->unk_004[37], &r4[45]);
-    AddWindow(partyMenu->bgConfig, &partyMenu->unk_004[38], &r4[46]);
-    AddWindow(partyMenu->bgConfig, &partyMenu->unk_004[39], &r4[47]);
+    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_37], &r4[45]);
+    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_38], &r4[46]);
+    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_39], &r4[47]);
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_22 || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
         WindowTemplate template = _0210161C[0];
         template.top = 22;
-        AddWindow(partyMenu->bgConfig, &partyMenu->unk_004[31], &template);
+        AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_31], &template);
     } else {
-        AddWindow(partyMenu->bgConfig, &partyMenu->unk_004[31], &_0210161C[0]);
+        AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_31], &_0210161C[0]);
     }
-    AddWindow(partyMenu->bgConfig, &partyMenu->unk_004[30], &_0210161C[1]);
-    AddWindow(partyMenu->bgConfig, &partyMenu->unk_004[32], &_0210161C[2]);
-    AddWindow(partyMenu->bgConfig, &partyMenu->unk_004[33], &_0210161C[3]);
-    AddWindow(partyMenu->bgConfig, &partyMenu->unk_004[34], &_0210161C[4]);
-    AddWindow(partyMenu->bgConfig, &partyMenu->unk_004[35], &_0210161C[5]);
-    AddWindow(partyMenu->bgConfig, &partyMenu->unk_004[36], &_0210161C[6]);
+    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_30], &_0210161C[1]);
+    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_32], &_0210161C[2]);
+    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_33], &_0210161C[3]);
+    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_34], &_0210161C[4]);
+    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_35], &_0210161C[5]);
+    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_36], &_0210161C[6]);
 }
 
 void sub_0207CF68(PartyMenuStruct *partyMenu) {
     u16 i;
     for (i = 0; i < 40; ++i) {
-        RemoveWindow(&partyMenu->unk_004[i]);
+        RemoveWindow(&partyMenu->windows[i]);
     }
 
     for (i = 0; i < 1; ++i){
-        Window *win = &partyMenu->unk_284[i];
+        Window *win = &partyMenu->levelUpStatsWindow[i];
         if (WindowIsInUse(win) == TRUE) {
             RemoveWindow(win);
         }
@@ -468,7 +468,7 @@ void sub_0207D0E4(PartyMenuStruct *partyMenu, u8 *items, u8 numItems) {
     }
 
     sp8.unk_00 = partyMenu->listMenuItems;
-    sp8.unk_04 = &partyMenu->unk_004[40];
+    sp8.unk_04 = &partyMenu->levelUpStatsWindow[0];
     sp8.unk_08 = 0;
     sp8.unk_09 = 1;
     sp8.unk_0A = numItems;
@@ -498,7 +498,7 @@ void sub_0207D1C8(PartyMenuStruct *partyMenu) {
 }
 
 static void sub_0207D268(PartyMenuStruct *partyMenu, int windowId) {
-    sub_0200CDAC(partyMenu->msgPrinter, 0, &partyMenu->unk_004[5 * windowId + 2], 28, 2);
+    sub_0200CDAC(partyMenu->msgPrinter, 0, &partyMenu->windows[PARTY_MENU_WINDOW_ID_5 * windowId + 2], 28, 2);
 }
 
 void sub_0207D294(PartyMenuStruct *partyMenu, Pokemon *mon, u32 partySlot) {
@@ -509,14 +509,14 @@ void sub_0207D294(PartyMenuStruct *partyMenu, Pokemon *mon, u32 partySlot) {
 }
 
 static void sub_0207D2E4(PartyMenuStruct *partyMenu, u8 partySlot) {
-    Window *window = &partyMenu->unk_004[partySlot * 5 + 0];
+    Window *window = &partyMenu->windows[partySlot * 5 + 0];
 
     AddTextPrinterParameterizedWithColor(window, 0, partyMenu->monsDrawState[partySlot].nickname, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     if (partyMenu->monsDrawState[partySlot].isEgg == TRUE) {
         ScheduleWindowCopyToVram(window);
     } else {
-        FillWindowPixelBuffer(&partyMenu->unk_004[38], 0);
-        AddTextPrinterParameterizedWithColor(&partyMenu->unk_004[38], 0, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_ITEM], 2, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+        FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_38], 0);
+        AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_38], 0, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_ITEM], 2, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 14, 0), NULL);
         if (!partyMenu->monsDrawState[partySlot].unk_0E_0C) {
             if (partyMenu->monsDrawState[partySlot].gender == MON_MALE) {
                 ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00027, partyMenu->unformattedStrBuf);
@@ -532,7 +532,7 @@ static void sub_0207D2E4(PartyMenuStruct *partyMenu, u8 partySlot) {
 }
 
 void sub_0207D3E4(PartyMenuStruct *partyMenu, u8 partySlot) {
-    Window *window = &partyMenu->unk_004[partySlot * 5 + 1];
+    Window *window = &partyMenu->windows[partySlot * 5 + 1];
 
     if (partyMenu->monsDrawState[partySlot].unk_0E_00 != 7) {
         ScheduleWindowCopyToVram(window);
@@ -543,28 +543,28 @@ void sub_0207D3E4(PartyMenuStruct *partyMenu, u8 partySlot) {
 }
 
 void sub_0207D440(PartyMenuStruct *partyMenu, u8 partySlot) {
-    Window *window = &partyMenu->unk_004[partySlot * 5 + 2];
+    Window *window = &partyMenu->windows[partySlot * 5 + 2];
 
     PrintUIntOnWindow(partyMenu->msgPrinter, partyMenu->monsDrawState[partySlot].hp, 3, PRINTING_MODE_RIGHT_ALIGN, window, 0, 2);
     ScheduleWindowCopyToVram(window);
 }
 
 void sub_0207D480(PartyMenuStruct *partyMenu, u8 partySlot) {
-    Window *window = &partyMenu->unk_004[partySlot * 5 + 2];
+    Window *window = &partyMenu->windows[partySlot * 5 + 2];
 
     FillWindowPixelRect(window, 0, 0, 0, 24, 16);
     ScheduleWindowCopyToVram(window);
 }
 
 static void sub_0207D4AC(PartyMenuStruct *partyMenu, u8 partySlot) {
-    Window *window = &partyMenu->unk_004[partySlot * 5 + 2];
+    Window *window = &partyMenu->windows[partySlot * 5 + 2];
 
     PrintUIntOnWindow(partyMenu->msgPrinter, partyMenu->monsDrawState[partySlot].maxHp, 3, PRINTING_MODE_LEFT_ALIGN, window, 36, 2);
     ScheduleWindowCopyToVram(window);
 }
 
 void sub_0207D4EC(PartyMenuStruct *partyMenu, u8 partySlot) {
-    Window *window = &partyMenu->unk_004[partySlot * 5 + 3];
+    Window *window = &partyMenu->windows[partySlot * 5 + 3];
 
     switch (sub_020880B0(partyMenu->monsDrawState[partySlot].hp, partyMenu->monsDrawState[partySlot].maxHp, 48)) {
     case 0:
@@ -590,16 +590,16 @@ void sub_0207D4EC(PartyMenuStruct *partyMenu, u8 partySlot) {
 }
 
 void sub_0207D5DC(PartyMenuStruct *partyMenu, u8 partySlot) {
-    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 0], 0);
-    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 1], 0);
-    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 2], 0);
-    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 3], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 0], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 1], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 2], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 3], 0);
     sub_0207D2E4(partyMenu, partySlot);
     if (partyMenu->monsDrawState[partySlot].isEgg == TRUE) {
-        ScheduleWindowCopyToVram(&partyMenu->unk_004[partySlot * 5 + 0]);
-        ScheduleWindowCopyToVram(&partyMenu->unk_004[partySlot * 5 + 1]);
-        ScheduleWindowCopyToVram(&partyMenu->unk_004[partySlot * 5 + 2]);
-        ScheduleWindowCopyToVram(&partyMenu->unk_004[partySlot * 5 + 3]);
+        ScheduleWindowCopyToVram(&partyMenu->windows[partySlot * 5 + 0]);
+        ScheduleWindowCopyToVram(&partyMenu->windows[partySlot * 5 + 1]);
+        ScheduleWindowCopyToVram(&partyMenu->windows[partySlot * 5 + 2]);
+        ScheduleWindowCopyToVram(&partyMenu->windows[partySlot * 5 + 3]);
     } else {
         sub_0207D268(partyMenu, partySlot);
         sub_0207D3E4(partyMenu, partySlot);
@@ -610,22 +610,22 @@ void sub_0207D5DC(PartyMenuStruct *partyMenu, u8 partySlot) {
 }
 
 void sub_0207D6A0(PartyMenuStruct *partyMenu, u8 partySlot) {
-    CopyWindowPixelsToVram_TextMode(&partyMenu->unk_004[partySlot * 5 + 0]);
-    CopyWindowPixelsToVram_TextMode(&partyMenu->unk_004[partySlot * 5 + 1]);
-    CopyWindowPixelsToVram_TextMode(&partyMenu->unk_004[partySlot * 5 + 2]);
-    CopyWindowPixelsToVram_TextMode(&partyMenu->unk_004[partySlot * 5 + 3]);
+    CopyWindowPixelsToVram_TextMode(&partyMenu->windows[partySlot * 5 + 0]);
+    CopyWindowPixelsToVram_TextMode(&partyMenu->windows[partySlot * 5 + 1]);
+    CopyWindowPixelsToVram_TextMode(&partyMenu->windows[partySlot * 5 + 2]);
+    CopyWindowPixelsToVram_TextMode(&partyMenu->windows[partySlot * 5 + 3]);
 }
 
 void sub_0207D6D8(PartyMenuStruct *partyMenu, u8 partySlot) {
-    ClearWindowTilemapAndScheduleTransfer(&partyMenu->unk_004[partySlot * 5 + 0]);
-    ClearWindowTilemapAndScheduleTransfer(&partyMenu->unk_004[partySlot * 5 + 1]);
-    ClearWindowTilemapAndScheduleTransfer(&partyMenu->unk_004[partySlot * 5 + 2]);
-    ClearWindowTilemapAndScheduleTransfer(&partyMenu->unk_004[partySlot * 5 + 3]);
+    ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[partySlot * 5 + 0]);
+    ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[partySlot * 5 + 1]);
+    ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[partySlot * 5 + 2]);
+    ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[partySlot * 5 + 3]);
 }
 
 void sub_0207D710(PartyMenuStruct *partyMenu, u8 partySlot) {
-    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 0], 0);
-    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 1], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 0], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 1], 0);
     sub_0207D2E4(partyMenu, partySlot);
     if (partyMenu->monsDrawState[partySlot].isEgg == TRUE) {
         sub_0207DC20(partyMenu, partySlot, 1);
@@ -641,8 +641,8 @@ void sub_0207D710(PartyMenuStruct *partyMenu, u8 partySlot) {
 }
 
 void sub_0207D7A8(PartyMenuStruct *partyMenu, u8 partySlot) {
-    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 0], 0);
-    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 1], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 0], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 1], 0);
     sub_0207D2E4(partyMenu, partySlot);
     if (partyMenu->monsDrawState[partySlot].isEgg == TRUE) {
         sub_0207DC90(partyMenu, partySlot, 1);
@@ -660,8 +660,8 @@ void sub_0207D7A8(PartyMenuStruct *partyMenu, u8 partySlot) {
 }
 
 void sub_0207D840(PartyMenuStruct *partyMenu, u8 partySlot) {
-    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 0], 0);
-    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 1], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 0], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 1], 0);
     sub_0207D2E4(partyMenu, partySlot);
     if (partyMenu->monsDrawState[partySlot].isEgg != TRUE) {
         sub_0207D3E4(partyMenu, partySlot);
@@ -670,8 +670,8 @@ void sub_0207D840(PartyMenuStruct *partyMenu, u8 partySlot) {
 }
 
 void sub_0207D8A4(PartyMenuStruct *partyMenu, u8 partySlot) {
-    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 0], 0);
-    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 1], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 0], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 1], 0);
     sub_0207D2E4(partyMenu, partySlot);
     if (partyMenu->monsDrawState[partySlot].isEgg != TRUE) {
         sub_0207D3E4(partyMenu, partySlot);
@@ -711,17 +711,17 @@ static u32 sub_0207D988(FontID fontId, String *string, u32 windowWidth) {
 }
 
 void sub_0207D998(PartyMenuStruct *partyMenu, u8 a1) {
-    FillWindowPixelBuffer(&partyMenu->unk_004[30], 0);
-    FillWindowPixelBuffer(&partyMenu->unk_004[31], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_30], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_31], 0);
     if (a1 & 1) {
         ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00000, partyMenu->unformattedStrBuf);
-        AddTextPrinterParameterizedWithColor(&partyMenu->unk_004[30], 0, partyMenu->unformattedStrBuf, sub_0207D988(0, partyMenu->unformattedStrBuf, partyMenu->unk_004[30].width * 8), 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
-        ScheduleWindowCopyToVram(&partyMenu->unk_004[30]);
+        AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_30], 0, partyMenu->unformattedStrBuf, sub_0207D988(0, partyMenu->unformattedStrBuf, partyMenu->windows[PARTY_MENU_WINDOW_ID_30].width * 8), 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+        ScheduleWindowCopyToVram(&partyMenu->windows[PARTY_MENU_WINDOW_ID_30]);
     }
     if (a1 & 2) {
         ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00001, partyMenu->unformattedStrBuf);
-        AddTextPrinterParameterizedWithColor(&partyMenu->unk_004[31], 0, partyMenu->unformattedStrBuf, sub_0207D988(0, partyMenu->unformattedStrBuf, partyMenu->unk_004[31].width * 8), 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
-        ScheduleWindowCopyToVram(&partyMenu->unk_004[31]);
+        AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_31], 0, partyMenu->unformattedStrBuf, sub_0207D988(0, partyMenu->unformattedStrBuf, partyMenu->windows[PARTY_MENU_WINDOW_ID_31].width * 8), 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+        ScheduleWindowCopyToVram(&partyMenu->windows[PARTY_MENU_WINDOW_ID_31]);
     }
 }
 
@@ -738,15 +738,15 @@ static void sub_0207DA64(PartyMenuStruct *partyMenu, Window *window, int msgId, 
 }
 
 void sub_0207DAC4(PartyMenuStruct *partyMenu, int msgId, BOOL drawFrame) {
-    sub_0207DA64(partyMenu, &partyMenu->unk_004[32], msgId, drawFrame);
+    sub_0207DA64(partyMenu, &partyMenu->windows[PARTY_MENU_WINDOW_ID_32], msgId, drawFrame);
 }
 
 void sub_0207DAD8(PartyMenuStruct *partyMenu, int msgId, BOOL drawFrame) {
-    sub_0207DA64(partyMenu, &partyMenu->unk_004[33], msgId, drawFrame);
+    sub_0207DA64(partyMenu, &partyMenu->windows[PARTY_MENU_WINDOW_ID_33], msgId, drawFrame);
 }
 
 void sub_0207DAEC(PartyMenuStruct *partyMenu, int msgId, BOOL drawFrame) {
-    Window *window = &partyMenu->unk_004[34];
+    Window *window = &partyMenu->windows[PARTY_MENU_WINDOW_ID_34];
     if (drawFrame == TRUE) {
         DrawFrameAndWindow2(window, TRUE, 0x02A, 15);
     }
@@ -760,7 +760,7 @@ void sub_0207DAEC(PartyMenuStruct *partyMenu, int msgId, BOOL drawFrame) {
 void sub_0207DB30(PartyMenuStruct *partyMenu) {
     TextFlags_SetCanABSpeedUpPrint(TRUE);
     sub_02002B50(0);
-    partyMenu->textPrinterId = AddTextPrinterParameterized(&partyMenu->unk_004[34], 1, partyMenu->formattedStrBuf, 0, 0, Options_GetTextFrameDelay(partyMenu->args->options), sub_0207DB80);
+    partyMenu->textPrinterId = AddTextPrinterParameterized(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], 1, partyMenu->formattedStrBuf, 0, 0, Options_GetTextFrameDelay(partyMenu->args->options), sub_0207DB80);
 }
 
 static BOOL sub_0207DB80(TextPrinterTemplate *template, u16 glyphId) {
@@ -803,7 +803,7 @@ void sub_0207DBCC(PartyMenuStruct *partyMenu) {
 }
 
 static void sub_0207DC20(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
-    Window *window = &partyMenu->unk_004[partySlot * 5 + 4];
+    Window *window = &partyMenu->windows[partySlot * 5 + 4];
     String *string;
 
     FillWindowPixelBuffer(window, 0);
@@ -822,7 +822,7 @@ static void sub_0207DC20(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
 }
 
 static void sub_0207DC90(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
-    Window *window = &partyMenu->unk_004[partySlot * 5 + 4];
+    Window *window = &partyMenu->windows[partySlot * 5 + 4];
     String *string;
 
     FillWindowPixelBuffer(window, 0);
@@ -844,7 +844,7 @@ static void sub_0207DC90(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
 }
 
 static void sub_0207DD14(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
-    Window *window = &partyMenu->unk_004[partySlot * 5 + 4];
+    Window *window = &partyMenu->windows[partySlot * 5 + 4];
     String *string;
 
     FillWindowPixelBuffer(window, 0);
@@ -859,7 +859,7 @@ static void sub_0207DD14(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
 }
 
 static void sub_0207DD7C(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
-    Window *window = &partyMenu->unk_004[partySlot * 5 + 4];
+    Window *window = &partyMenu->windows[partySlot * 5 + 4];
     String *string;
 
     FillWindowPixelBuffer(window, 0);
@@ -875,11 +875,11 @@ static void sub_0207DD7C(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
     ScheduleWindowCopyToVram(window);
 }
 
-void sub_0207DDFC(PartyMenuStruct *partyMenu) {
+void PartyMenu_LevelUpPrintStatsChange(PartyMenuStruct *partyMenu) {
     u16 stats[NUM_STATS];
-    String *sp20;
-    String *sp1C;
-    String *sp18;
+    String *str_formatInt;
+    String *str_statName;
+    String *str_plusSign;
     u32 i;
     Pokemon *mon;
 
@@ -890,72 +890,72 @@ void sub_0207DDFC(PartyMenuStruct *partyMenu) {
     stats[3] = GetMonData(mon, MON_DATA_SPATK, NULL);
     stats[4] = GetMonData(mon, MON_DATA_SPDEF, NULL);
     stats[5] = GetMonData(mon, MON_DATA_SPEED, NULL);
-    AddWindowParameterized(partyMenu->bgConfig, &partyMenu->unk_004[40], GF_BG_LYR_MAIN_0, 1, 1, 14, 12, 0, 0x260);
-    DrawFrameAndWindow1(&partyMenu->unk_004[40], TRUE, 1, 14);
-    FillWindowPixelBuffer(&partyMenu->unk_004[40], 15);
-    sp18 = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00175);
+    AddWindowParameterized(partyMenu->bgConfig, &partyMenu->levelUpStatsWindow[0], GF_BG_LYR_MAIN_0, 1, 1, 14, 12, 0, 0x260);
+    DrawFrameAndWindow1(&partyMenu->levelUpStatsWindow[0], TRUE, 1, 14);
+    FillWindowPixelBuffer(&partyMenu->levelUpStatsWindow[0], 15);
+    str_plusSign = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00175);
     for (i = 0; i < NUM_STATS; ++i) {
-        sp1C = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00169 + i);
-        AddTextPrinterParameterized(&partyMenu->unk_004[40], 0, sp1C, 0, i * 16, TEXT_SPEED_NOTRANSFER, NULL);
-        String_Delete(sp1C);
+        str_statName = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00169 + i);
+        AddTextPrinterParameterized(&partyMenu->levelUpStatsWindow[0], 0, str_statName, 0, i * 16, TEXT_SPEED_NOTRANSFER, NULL);
+        String_Delete(str_statName);
 
-        AddTextPrinterParameterized(&partyMenu->unk_004[40], 0, sp18, 80, i * 16, TEXT_SPEED_NOTRANSFER, NULL);
+        AddTextPrinterParameterized(&partyMenu->levelUpStatsWindow[0], 0, str_plusSign, 80, i * 16, TEXT_SPEED_NOTRANSFER, NULL);
 
-        sp20 = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00176);
+        str_formatInt = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00176);
         BufferIntegerAsString(partyMenu->msgFormat, 0, stats[i] - partyMenu->unk_C68[i], 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
-        StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, sp20);
-        String_Delete(sp20);
-        AddTextPrinterParameterized(&partyMenu->unk_004[40], 0, partyMenu->formattedStrBuf, 94, i * 16, TEXT_SPEED_NOTRANSFER, NULL);
+        StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, str_formatInt);
+        String_Delete(str_formatInt);
+        AddTextPrinterParameterized(&partyMenu->levelUpStatsWindow[0], 0, partyMenu->formattedStrBuf, 94, i * 16, TEXT_SPEED_NOTRANSFER, NULL);
 
         partyMenu->unk_C68[i] = stats[i];
     }
-    String_Delete(sp18);
-    ScheduleWindowCopyToVram(&partyMenu->unk_004[40]);
+    String_Delete(str_plusSign);
+    ScheduleWindowCopyToVram(&partyMenu->levelUpStatsWindow[0]);
 }
 
 void sub_0207DF98(PartyMenuStruct *partyMenu) {
     String *spC;
     u32 i;
 
-    FillWindowPixelRect(&partyMenu->unk_004[40], 15, 80, 0, 32, 112);
+    FillWindowPixelRect(&partyMenu->levelUpStatsWindow[0], 15, 80, 0, 32, 112);
     spC = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00176);
     for (i = 0; i < NUM_STATS; ++i) {
         BufferIntegerAsString(partyMenu->msgFormat, 0, partyMenu->unk_C68[i], 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, spC);
-        AddTextPrinterParameterized(&partyMenu->unk_004[40], 0, partyMenu->formattedStrBuf, 104 - FontID_String_GetWidth(0, partyMenu->formattedStrBuf, 0), i * 16, TEXT_SPEED_NOTRANSFER, NULL);
+        AddTextPrinterParameterized(&partyMenu->levelUpStatsWindow[0], 0, partyMenu->formattedStrBuf, 104 - FontID_String_GetWidth(0, partyMenu->formattedStrBuf, 0), i * 16, TEXT_SPEED_NOTRANSFER, NULL);
     }
     String_Delete(spC);
-    ScheduleWindowCopyToVram(&partyMenu->unk_004[40]);
+    ScheduleWindowCopyToVram(&partyMenu->levelUpStatsWindow[0]);
 }
 
 void sub_0207E04C(PartyMenuStruct *partyMenu) {
-    sub_0200E5D4(&partyMenu->unk_004[40], FALSE);
-    RemoveWindow(&partyMenu->unk_004[40]);
+    sub_0200E5D4(&partyMenu->levelUpStatsWindow[0], FALSE);
+    RemoveWindow(&partyMenu->levelUpStatsWindow[0]);
 }
 
 void sub_0207E068(PartyMenuStruct *partyMenu) {
     Pokemon *mon;
     String *msg;
 
-    FillWindowPixelBuffer(&partyMenu->unk_004[37], 0);
-    FillWindowPixelBuffer(&partyMenu->unk_004[39], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_37], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_39], 0);
 
     mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     msg = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00008);
     BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, msg);
-    AddTextPrinterParameterizedWithColor(&partyMenu->unk_004[37], 0, partyMenu->formattedStrBuf, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_37], 0, partyMenu->formattedStrBuf, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     String_Delete(msg);
 
     mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     msg = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00182);
     BufferItemName(partyMenu->msgFormat, 1, GetMonData(mon, MON_DATA_HELD_ITEM, NULL));
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, msg);
-    AddTextPrinterParameterizedWithColor(&partyMenu->unk_004[39], 0, partyMenu->formattedStrBuf, 2, 4, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_39], 0, partyMenu->formattedStrBuf, 2, 4, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     String_Delete(msg);
 
-    ScheduleWindowCopyToVram(&partyMenu->unk_004[37]);
-    ScheduleWindowCopyToVram(&partyMenu->unk_004[39]);
+    ScheduleWindowCopyToVram(&partyMenu->windows[PARTY_MENU_WINDOW_ID_37]);
+    ScheduleWindowCopyToVram(&partyMenu->windows[PARTY_MENU_WINDOW_ID_39]);
 }
 
 static void sub_0207E17C(PartyMenuStruct *partyMenu, int a1, int a2) {

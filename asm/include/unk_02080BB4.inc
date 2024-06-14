@@ -48,7 +48,7 @@
 .public sub_0207DAC4
 .public sub_0207DAD8
 .public sub_0207DAEC
-.public sub_0207DDFC
+.public PartyMenu_LevelUpPrintStatsChange
 .public sub_0207DF98
 .public sub_0207E04C
 .public sub_0207E54C
