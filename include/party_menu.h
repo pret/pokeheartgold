@@ -284,7 +284,7 @@ struct PartyMenuStruct {
     BgConfig *bgConfig;
     Window unk_004[40];
     Window unk_284[1];
-    u8 filler_294[0x80];
+    Window unk_294[8];
     u16 unk_314[6 * 0x10];
     u16 unk_3D4[6 * 0x10];
     u16 unk_494[6 * 0x10];

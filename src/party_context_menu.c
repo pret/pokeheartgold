@@ -22,7 +22,12 @@ BOOL sub_0207DB80(TextPrinterTemplate *template, u16 glyphId);
 void sub_0207DC20(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
 void sub_0207DC90(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
 void sub_0207DD7C(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
+void sub_0207E17C(PartyMenuStruct *partyMenu, int a1, int a2);
+void sub_0207E1DC(PartyMenuStruct *partyMenu, int a1, int a2);
+u32 sub_0207E264(int a0);
+u32 sub_0207E278(int a0);
 void sub_0207E28C(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, int a3, int a4, int a5);
+void sub_0207E358(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, int a3, int a4);
 void sub_0207E3A8(PartyMenuStruct *partyMenu, int a1, int a2, int a3, int a4);
 void sub_0207E54C(PartyMenuStruct *partyMenu, int a1, int a2, int a3);
 UnkStruct_0207E590 *sub_0207E590(PartyMenuStruct *partyMenu, const UnkTemplate_0207E590 *a1, int a2, int a3, int a4);
@@ -807,4 +812,107 @@ void sub_0207DF98(PartyMenuStruct *partyMenu) {
 void sub_0207E04C(PartyMenuStruct *partyMenu) {
     sub_0200E5D4(&partyMenu->unk_004[40], FALSE);
     RemoveWindow(&partyMenu->unk_004[40]);
+}
+
+void sub_0207E068(PartyMenuStruct *partyMenu) {
+    Pokemon *mon;
+    String *msg;
+
+    FillWindowPixelBuffer(&partyMenu->unk_004[37], 0);
+    FillWindowPixelBuffer(&partyMenu->unk_004[39], 0);
+
+    mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+    msg = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00008);
+    BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+    StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, msg);
+    AddTextPrinterParameterizedWithColor(&partyMenu->unk_004[37], 0, partyMenu->formattedStrBuf, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    String_Delete(msg);
+
+    mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+    msg = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00182);
+    BufferItemName(partyMenu->msgFormat, 1, GetMonData(mon, MON_DATA_HELD_ITEM, NULL));
+    StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, msg);
+    AddTextPrinterParameterizedWithColor(&partyMenu->unk_004[39], 0, partyMenu->formattedStrBuf, 2, 4, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    String_Delete(msg);
+
+    ScheduleWindowCopyToVram(&partyMenu->unk_004[37]);
+    ScheduleWindowCopyToVram(&partyMenu->unk_004[39]);
+}
+
+void sub_0207E17C(PartyMenuStruct *partyMenu, int a1, int a2) {
+    GF_ASSERT(a1 <= 8);
+    for (int i = 0; i < a1; ++i) {
+        AddWindow(partyMenu->bgConfig, &partyMenu->unk_294[_021016B4[a1 - 1][a2][i]], &_02101654[_021016B4[a1 - 1][a2][i]]);
+        FillWindowPixelBuffer(&partyMenu->unk_294[_021016B4[a1 - 1][a2][i]], 4);
+    }
+}
+
+void sub_0207E1DC(PartyMenuStruct *partyMenu, int a1, int a2) {
+    GF_ASSERT(a1 <= 8);
+    for (int i = 0; i < a1; ++i) {
+        RemoveWindow(&partyMenu->unk_294[_021016B4[a1 - 1][a2][i]]);
+    }
+    FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, 0, 32, 18, 0);
+    FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, 0, 25, 19, 7, 5, 0);
+    BgCommitTilemapBufferToVram(partyMenu->bgConfig, GF_BG_LYR_MAIN_0);
+}
+
+u32 sub_0207E264(int a0) {
+    if (a0 < 4) {
+        return MAKE_TEXT_COLOR(14, 15, 11);
+    } else {
+        return MAKE_TEXT_COLOR(9, 10, 11);
+    }
+}
+
+u32 sub_0207E278(int a0) {
+    if (a0 < 4) {
+        return MAKE_TEXT_COLOR(14, 15, 4);
+    } else {
+        return MAKE_TEXT_COLOR(9, 10, 4);
+    }
+}
+
+void sub_0207E28C(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, int a3, int a4, int a5) {
+    u32 color;
+    u32 y;
+    u32 x = 0;
+    u32 fillValue;
+    u8 windowId;
+
+    windowId = _021016B4[a2 - 1][a4][a3];
+    if (windowId == 7) {
+        if (a5 == FALSE) {
+            fillValue = 4;
+            color = MAKE_TEXT_COLOR(14, 15, 4);
+        } else {
+            fillValue = 11;
+            color = MAKE_TEXT_COLOR(14, 15, 11);
+        }
+        y = 4;
+        x = FontID_String_GetCenterAlignmentX(4, a1->unk_00[a3].text, 0, GetWindowWidth(&partyMenu->unk_294[windowId]) * 8);
+    } else {
+        if (a5 == FALSE) {
+            fillValue = 4;
+            color = sub_0207E278(a3);
+        } else {
+            fillValue = 11;
+            color = sub_0207E264(a3);
+        }
+        y = 0;
+    }
+    FillWindowPixelBuffer(&partyMenu->unk_294[windowId], fillValue);
+    AddTextPrinterParameterizedWithColor(&partyMenu->unk_294[windowId], 4, a1->unk_00[a3].text, x, y, TEXT_SPEED_NOTRANSFER, color, NULL);
+    ScheduleWindowCopyToVram(&partyMenu->unk_294[windowId]);
+}
+
+void sub_0207E358(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, int a3, int a4) {
+    GF_ASSERT(a2 <= 8);
+    for (int i = 0; i < a2; ++i) {
+        if (a3 == i) {
+            sub_0207E28C(partyMenu, a1, a2, i, a4, 1);
+        } else {
+            sub_0207E28C(partyMenu, a1, a2, i, a4, 0);
+        }
+    }
 }
