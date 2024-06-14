@@ -271,7 +271,6 @@ Static main
     Object asm/unk_02078DD8.o
     Object src/party_menu.o
     Object src/party_context_menu.o
-    Object asm/unk_0207CB7C.o
     Object asm/unk_0207EB24.o
     Object asm/unk_0207F42C.o
     Object asm/unk_02080BB4.o

@@ -11,177 +11,287 @@
 #include "unk_0208805C.h"
 #include "unk_02080BB4.h"
 
-void sub_0207DD14(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
-void sub_0207CB9C(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1, int a2);
-void sub_0207CD84(BgConfig *bgConfig, Window *window, const WindowTemplate *template);
-void sub_0207D268(PartyMenuStruct *partyMenu, int windowId);
-void sub_0207D2E4(PartyMenuStruct *partyMenu, u8 partySlot);
-void sub_0207D4AC(PartyMenuStruct *partyMenu, u8 partySlot);
-u32 sub_0207D988(FontID fontId, String *string, u32 windowWidth);
-void sub_0207DA64(PartyMenuStruct *partyMenu, Window *window, int msgId, BOOL drawFrame);
-BOOL sub_0207DB80(TextPrinterTemplate *template, u16 glyphId);
-void sub_0207DC20(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
-void sub_0207DC90(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
-void sub_0207DD7C(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
-void sub_0207E17C(PartyMenuStruct *partyMenu, int a1, int a2);
-void sub_0207E1DC(PartyMenuStruct *partyMenu, int a1, int a2);
-u32 sub_0207E264(int a0);
-u32 sub_0207E278(int a0);
-void sub_0207E28C(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, int a3, int a4, int a5);
-void sub_0207E358(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, int a3, int a4);
-void sub_0207E3A8(PartyMenuStruct *partyMenu, int a1, int a2, int a3, int a4);
-void sub_0207E54C(PartyMenuStruct *partyMenu, int a1, int a2, int a3);
-UnkStruct_0207E590 *sub_0207E590(PartyMenuStruct *partyMenu, const UnkTemplate_0207E590 *a1, int a2, HeapID a3, int a4);
-BOOL sub_0207E684(int a0, int a1, int a2);
-int sub_0207E6B4(int a0, int a1, int a2);
-BOOL sub_0207E6E8(int a0, int a1, int a2);
-BOOL sub_0207E714(u8 *a0, int a1, int a2);
-BOOL sub_0207E748(u8 *a0, int a1, int a2);
+static void sub_0207DD14(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
+static void sub_0207CB9C(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1, int a2);
+static void sub_0207CD84(BgConfig *bgConfig, Window *window, const WindowTemplate *template);
+static void sub_0207D268(PartyMenuStruct *partyMenu, int windowId);
+static void sub_0207D2E4(PartyMenuStruct *partyMenu, u8 partySlot);
+static void sub_0207D4AC(PartyMenuStruct *partyMenu, u8 partySlot);
+static u32 sub_0207D988(FontID fontId, String *string, u32 windowWidth);
+static void sub_0207DA64(PartyMenuStruct *partyMenu, Window *window, int msgId, BOOL drawFrame);
+static BOOL sub_0207DB80(TextPrinterTemplate *template, u16 glyphId);
+static void sub_0207DC20(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
+static void sub_0207DC90(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
+static void sub_0207DD7C(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
+static void sub_0207E17C(PartyMenuStruct *partyMenu, int a1, int a2);
+static void sub_0207E1DC(PartyMenuStruct *partyMenu, int a1, int a2);
+static u32 sub_0207E264(int a0);
+static u32 sub_0207E278(int a0);
+static void sub_0207E28C(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, int a3, int a4, int a5);
+static void sub_0207E358(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, int a3, int a4);
+static void sub_0207E3A8(PartyMenuStruct *partyMenu, int a1, int a2, int a3, int a4);
+static BOOL sub_0207E684(int a0, int a1, int a2);
+static int sub_0207E6B4(int a0, int a1, int a2);
+static BOOL sub_0207E6E8(int a0, int a1, int a2);
+static BOOL sub_0207E714(u8 *a0, int a1, int a2);
+static BOOL sub_0207E748(u8 *a0, int a1, int a2);
 
-// const WindowTemplate _02101734[] = {
-//     { GF_BG_LYR_MAIN_1, 0x06, 0x01, 0x09, 0x02, 0x00, 0x0048 },
-//     { GF_BG_LYR_MAIN_1, 0x00, 0x04, 0x06, 0x02, 0x00, 0x005A },
-//     { GF_BG_LYR_MAIN_1, 0x07, 0x04, 0x08, 0x02, 0x00, 0x0066 },
-//     { GF_BG_LYR_MAIN_1, 0x08, 0x03, 0x06, 0x01, 0x03, 0x0076 },
-//     { GF_BG_LYR_MAIN_1, 0x06, 0x04, 0x0A, 0x02, 0x00, 0x0066 },
-//     { GF_BG_LYR_MAIN_1, 0x16, 0x02, 0x09, 0x02, 0x00, 0x007C },
-//     { GF_BG_LYR_MAIN_1, 0x10, 0x05, 0x06, 0x02, 0x00, 0x008E },
-//     { GF_BG_LYR_MAIN_1, 0x17, 0x05, 0x08, 0x02, 0x00, 0x009A },
-//     { GF_BG_LYR_MAIN_1, 0x18, 0x04, 0x06, 0x01, 0x04, 0x00AA },
-//     { GF_BG_LYR_MAIN_1, 0x16, 0x05, 0x0A, 0x02, 0x00, 0x009A },
-//     { GF_BG_LYR_MAIN_1, 0x06, 0x07, 0x09, 0x02, 0x00, 0x00B0 },
-//     { GF_BG_LYR_MAIN_1, 0x00, 0x0A, 0x06, 0x02, 0x00, 0x00C2 },
-//     { GF_BG_LYR_MAIN_1, 0x07, 0x0A, 0x08, 0x02, 0x00, 0x00CE },
-//     { GF_BG_LYR_MAIN_1, 0x08, 0x09, 0x06, 0x01, 0x05, 0x00DE },
-//     { GF_BG_LYR_MAIN_1, 0x06, 0x0A, 0x0A, 0x02, 0x00, 0x00CE },
-//     { GF_BG_LYR_MAIN_1, 0x16, 0x08, 0x09, 0x02, 0x00, 0x00E4 },
-//     { GF_BG_LYR_MAIN_1, 0x10, 0x0B, 0x06, 0x02, 0x00, 0x00F6 },
-//     { GF_BG_LYR_MAIN_1, 0x17, 0x0B, 0x08, 0x02, 0x00, 0x0102 },
-//     { GF_BG_LYR_MAIN_1, 0x18, 0x0A, 0x06, 0x01, 0x06, 0x0112 },
-//     { GF_BG_LYR_MAIN_1, 0x16, 0x0B, 0x0A, 0x02, 0x00, 0x0102 },
-//     { GF_BG_LYR_MAIN_1, 0x06, 0x0D, 0x09, 0x02, 0x00, 0x0118 },
-//     { GF_BG_LYR_MAIN_1, 0x00, 0x10, 0x06, 0x02, 0x00, 0x012A },
-//     { GF_BG_LYR_MAIN_1, 0x07, 0x10, 0x08, 0x02, 0x00, 0x0136 },
-//     { GF_BG_LYR_MAIN_1, 0x08, 0x0F, 0x06, 0x01, 0x07, 0x0146 },
-//     { GF_BG_LYR_MAIN_1, 0x06, 0x10, 0x0A, 0x02, 0x00, 0x0136 },
-//     { GF_BG_LYR_MAIN_1, 0x16, 0x0E, 0x09, 0x02, 0x00, 0x014C },
-//     { GF_BG_LYR_MAIN_1, 0x10, 0x11, 0x06, 0x02, 0x00, 0x015E },
-//     { GF_BG_LYR_MAIN_1, 0x17, 0x11, 0x08, 0x02, 0x00, 0x016A },
-//     { GF_BG_LYR_MAIN_1, 0x18, 0x10, 0x06, 0x01, 0x08, 0x017A },
-//     { GF_BG_LYR_MAIN_1, 0x16, 0x11, 0x0A, 0x02, 0x00, 0x016A },
-//     { GF_BG_LYR_MAIN_1, 0x16, 0x01, 0x09, 0x02, 0x00, 0x007C },
-//     { GF_BG_LYR_MAIN_1, 0x11, 0x05, 0x05, 0x02, 0x00, 0x008E },
-//     { GF_BG_LYR_MAIN_1, 0x17, 0x05, 0x08, 0x02, 0x00, 0x009A },
-//     { GF_BG_LYR_MAIN_1, 0x18, 0x04, 0x06, 0x01, 0x04, 0x00AA },
-//     { GF_BG_LYR_MAIN_1, 0x18, 0x04, 0x06, 0x01, 0x04, 0x00AA },
-//     { GF_BG_LYR_MAIN_1, 0x16, 0x08, 0x09, 0x02, 0x00, 0x00E4 },
-//     { GF_BG_LYR_MAIN_1, 0x11, 0x0B, 0x05, 0x02, 0x00, 0x00F6 },
-//     { GF_BG_LYR_MAIN_1, 0x17, 0x0B, 0x08, 0x02, 0x00, 0x0102 },
-//     { GF_BG_LYR_MAIN_1, 0x18, 0x0A, 0x06, 0x01, 0x06, 0x0112 },
-//     { GF_BG_LYR_MAIN_1, 0x18, 0x04, 0x06, 0x01, 0x04, 0x00AA },
-//     { GF_BG_LYR_MAIN_1, 0x16, 0x0E, 0x09, 0x02, 0x00, 0x014C },
-//     { GF_BG_LYR_MAIN_1, 0x11, 0x11, 0x05, 0x02, 0x00, 0x015E },
-//     { GF_BG_LYR_MAIN_1, 0x17, 0x11, 0x08, 0x02, 0x00, 0x016A },
-//     { GF_BG_LYR_MAIN_1, 0x18, 0x10, 0x06, 0x01, 0x08, 0x017A },
-//     { GF_BG_LYR_MAIN_1, 0x18, 0x04, 0x06, 0x01, 0x04, 0x00AA },
-//     { GF_BG_LYR_SUB_2, 0x07, 0x18, 0x0A, 0x02, 0x02, 0x0001 },
-//     { GF_BG_LYR_SUB_2, 0x11, 0x18, 0x06, 0x02, 0x02, 0x0015 },
-//     { GF_BG_LYR_SUB_2, 0x11, 0x1A, 0x0C, 0x03, 0x02, 0x0021 },
-// };
+static const WindowTemplate _02101734[] = {
+    { GF_BG_LYR_MAIN_1, 0x06, 0x01, 0x09, 0x02, 0x00, 0x0048 },
+    { GF_BG_LYR_MAIN_1, 0x00, 0x04, 0x06, 0x02, 0x00, 0x005A },
+    { GF_BG_LYR_MAIN_1, 0x07, 0x04, 0x08, 0x02, 0x00, 0x0066 },
+    { GF_BG_LYR_MAIN_1, 0x08, 0x03, 0x06, 0x01, 0x03, 0x0076 },
+    { GF_BG_LYR_MAIN_1, 0x06, 0x04, 0x0A, 0x02, 0x00, 0x0066 },
+    { GF_BG_LYR_MAIN_1, 0x16, 0x02, 0x09, 0x02, 0x00, 0x007C },
+    { GF_BG_LYR_MAIN_1, 0x10, 0x05, 0x06, 0x02, 0x00, 0x008E },
+    { GF_BG_LYR_MAIN_1, 0x17, 0x05, 0x08, 0x02, 0x00, 0x009A },
+    { GF_BG_LYR_MAIN_1, 0x18, 0x04, 0x06, 0x01, 0x04, 0x00AA },
+    { GF_BG_LYR_MAIN_1, 0x16, 0x05, 0x0A, 0x02, 0x00, 0x009A },
+    { GF_BG_LYR_MAIN_1, 0x06, 0x07, 0x09, 0x02, 0x00, 0x00B0 },
+    { GF_BG_LYR_MAIN_1, 0x00, 0x0A, 0x06, 0x02, 0x00, 0x00C2 },
+    { GF_BG_LYR_MAIN_1, 0x07, 0x0A, 0x08, 0x02, 0x00, 0x00CE },
+    { GF_BG_LYR_MAIN_1, 0x08, 0x09, 0x06, 0x01, 0x05, 0x00DE },
+    { GF_BG_LYR_MAIN_1, 0x06, 0x0A, 0x0A, 0x02, 0x00, 0x00CE },
+    { GF_BG_LYR_MAIN_1, 0x16, 0x08, 0x09, 0x02, 0x00, 0x00E4 },
+    { GF_BG_LYR_MAIN_1, 0x10, 0x0B, 0x06, 0x02, 0x00, 0x00F6 },
+    { GF_BG_LYR_MAIN_1, 0x17, 0x0B, 0x08, 0x02, 0x00, 0x0102 },
+    { GF_BG_LYR_MAIN_1, 0x18, 0x0A, 0x06, 0x01, 0x06, 0x0112 },
+    { GF_BG_LYR_MAIN_1, 0x16, 0x0B, 0x0A, 0x02, 0x00, 0x0102 },
+    { GF_BG_LYR_MAIN_1, 0x06, 0x0D, 0x09, 0x02, 0x00, 0x0118 },
+    { GF_BG_LYR_MAIN_1, 0x00, 0x10, 0x06, 0x02, 0x00, 0x012A },
+    { GF_BG_LYR_MAIN_1, 0x07, 0x10, 0x08, 0x02, 0x00, 0x0136 },
+    { GF_BG_LYR_MAIN_1, 0x08, 0x0F, 0x06, 0x01, 0x07, 0x0146 },
+    { GF_BG_LYR_MAIN_1, 0x06, 0x10, 0x0A, 0x02, 0x00, 0x0136 },
+    { GF_BG_LYR_MAIN_1, 0x16, 0x0E, 0x09, 0x02, 0x00, 0x014C },
+    { GF_BG_LYR_MAIN_1, 0x10, 0x11, 0x06, 0x02, 0x00, 0x015E },
+    { GF_BG_LYR_MAIN_1, 0x17, 0x11, 0x08, 0x02, 0x00, 0x016A },
+    { GF_BG_LYR_MAIN_1, 0x18, 0x10, 0x06, 0x01, 0x08, 0x017A },
+    { GF_BG_LYR_MAIN_1, 0x16, 0x11, 0x0A, 0x02, 0x00, 0x016A },
+    { GF_BG_LYR_MAIN_1, 0x16, 0x01, 0x09, 0x02, 0x00, 0x007C },
+    { GF_BG_LYR_MAIN_1, 0x11, 0x05, 0x05, 0x02, 0x00, 0x008E },
+    { GF_BG_LYR_MAIN_1, 0x17, 0x05, 0x08, 0x02, 0x00, 0x009A },
+    { GF_BG_LYR_MAIN_1, 0x18, 0x04, 0x06, 0x01, 0x04, 0x00AA },
+    { GF_BG_LYR_MAIN_1, 0x18, 0x04, 0x06, 0x01, 0x04, 0x00AA },
+    { GF_BG_LYR_MAIN_1, 0x16, 0x08, 0x09, 0x02, 0x00, 0x00E4 },
+    { GF_BG_LYR_MAIN_1, 0x11, 0x0B, 0x05, 0x02, 0x00, 0x00F6 },
+    { GF_BG_LYR_MAIN_1, 0x17, 0x0B, 0x08, 0x02, 0x00, 0x0102 },
+    { GF_BG_LYR_MAIN_1, 0x18, 0x0A, 0x06, 0x01, 0x06, 0x0112 },
+    { GF_BG_LYR_MAIN_1, 0x18, 0x04, 0x06, 0x01, 0x04, 0x00AA },
+    { GF_BG_LYR_MAIN_1, 0x16, 0x0E, 0x09, 0x02, 0x00, 0x014C },
+    { GF_BG_LYR_MAIN_1, 0x11, 0x11, 0x05, 0x02, 0x00, 0x015E },
+    { GF_BG_LYR_MAIN_1, 0x17, 0x11, 0x08, 0x02, 0x00, 0x016A },
+    { GF_BG_LYR_MAIN_1, 0x18, 0x10, 0x06, 0x01, 0x08, 0x017A },
+    { GF_BG_LYR_MAIN_1, 0x18, 0x04, 0x06, 0x01, 0x04, 0x00AA },
+    { GF_BG_LYR_SUB_2, 0x07, 0x18, 0x0A, 0x02, 0x02, 0x0001 },
+    { GF_BG_LYR_SUB_2, 0x11, 0x18, 0x06, 0x02, 0x02, 0x0015 },
+    { GF_BG_LYR_SUB_2, 0x11, 0x1A, 0x0C, 0x03, 0x02, 0x0021 },
+};
 
-// const WindowTemplate _0210161C[] = {
-//     { GF_BG_LYR_MAIN_1, 0x1A, 0x15, 0x05, 0x02, 0x00, 0x0180 },
-//     { GF_BG_LYR_MAIN_1, 0x19, 0x14, 0x07, 0x02, 0x00, 0x018A },
-//     { GF_BG_LYR_MAIN_0, 0x02, 0x15, 0x14, 0x02, 0x0D, 0x0198 },
-//     { GF_BG_LYR_MAIN_0, 0x02, 0x13, 0x0D, 0x04, 0x0D, 0x01C0 },
-//     { GF_BG_LYR_MAIN_0, 0x02, 0x13, 0x1B, 0x04, 0x0D, 0x01F4 },
-//     { GF_BG_LYR_MAIN_0, 0x13, 0x11, 0x0C, 0x06, 0x00, 0x0260 },
-//     { GF_BG_LYR_MAIN_0, 0x13, 0x0F, 0x0C, 0x08, 0x00, 0x0260 },
-// };
+static const WindowTemplate _0210161C[] = {
+    { GF_BG_LYR_MAIN_1, 0x1A, 0x15, 0x05, 0x02, 0x00, 0x0180 },
+    { GF_BG_LYR_MAIN_1, 0x19, 0x14, 0x07, 0x02, 0x00, 0x018A },
+    { GF_BG_LYR_MAIN_0, 0x02, 0x15, 0x14, 0x02, 0x0D, 0x0198 },
+    { GF_BG_LYR_MAIN_0, 0x02, 0x13, 0x0D, 0x04, 0x0D, 0x01C0 },
+    { GF_BG_LYR_MAIN_0, 0x02, 0x13, 0x1B, 0x04, 0x0D, 0x01F4 },
+    { GF_BG_LYR_MAIN_0, 0x13, 0x11, 0x0C, 0x06, 0x00, 0x0260 },
+    { GF_BG_LYR_MAIN_0, 0x13, 0x0F, 0x0C, 0x08, 0x00, 0x0260 },
+};
 
-// const WindowTemplate _02101654[] = {
-//     { GF_BG_LYR_MAIN_0, 0x11, 0x04, 0x0E, 0x02, 0x02, 0x0260 },
-//     { GF_BG_LYR_MAIN_0, 0x11, 0x08, 0x0E, 0x02, 0x02, 0x027C },
-//     { GF_BG_LYR_MAIN_0, 0x11, 0x0C, 0x0E, 0x02, 0x02, 0x0298 },
-//     { GF_BG_LYR_MAIN_0, 0x01, 0x03, 0x0E, 0x02, 0x02, 0x02B4 },
-//     { GF_BG_LYR_MAIN_0, 0x01, 0x07, 0x0E, 0x02, 0x02, 0x02D0 },
-//     { GF_BG_LYR_MAIN_0, 0x01, 0x0B, 0x0E, 0x02, 0x02, 0x02EC },
-//     { GF_BG_LYR_MAIN_0, 0x01, 0x0F, 0x0E, 0x02, 0x02, 0x0308 },
-//     { GF_BG_LYR_MAIN_0, 0x1A, 0x14, 0x05, 0x03, 0x02, 0x0324 },
-//     { GF_BG_LYR_MAIN_0, 0x11, 0x03, 0x0E, 0x02, 0x02, 0x0260 },
-//     { GF_BG_LYR_MAIN_0, 0x11, 0x07, 0x0E, 0x02, 0x02, 0x027C },
-//     { GF_BG_LYR_MAIN_0, 0x11, 0x0B, 0x0E, 0x02, 0x02, 0x0298 },
-//     { GF_BG_LYR_MAIN_0, 0x11, 0x0F, 0x0E, 0x02, 0x02, 0x02B4 },
-// };
+static const WindowTemplate _02101654[] = {
+    { GF_BG_LYR_MAIN_0, 0x11, 0x04, 0x0E, 0x02, 0x02, 0x0260 },
+    { GF_BG_LYR_MAIN_0, 0x11, 0x08, 0x0E, 0x02, 0x02, 0x027C },
+    { GF_BG_LYR_MAIN_0, 0x11, 0x0C, 0x0E, 0x02, 0x02, 0x0298 },
+    { GF_BG_LYR_MAIN_0, 0x01, 0x03, 0x0E, 0x02, 0x02, 0x02B4 },
+    { GF_BG_LYR_MAIN_0, 0x01, 0x07, 0x0E, 0x02, 0x02, 0x02D0 },
+    { GF_BG_LYR_MAIN_0, 0x01, 0x0B, 0x0E, 0x02, 0x02, 0x02EC },
+    { GF_BG_LYR_MAIN_0, 0x01, 0x0F, 0x0E, 0x02, 0x02, 0x0308 },
+    { GF_BG_LYR_MAIN_0, 0x1A, 0x14, 0x05, 0x03, 0x02, 0x0324 },
+    { GF_BG_LYR_MAIN_0, 0x11, 0x03, 0x0E, 0x02, 0x02, 0x0260 },
+    { GF_BG_LYR_MAIN_0, 0x11, 0x07, 0x0E, 0x02, 0x02, 0x027C },
+    { GF_BG_LYR_MAIN_0, 0x11, 0x0B, 0x0E, 0x02, 0x02, 0x0298 },
+    { GF_BG_LYR_MAIN_0, 0x11, 0x0F, 0x0E, 0x02, 0x02, 0x02B4 },
+};
 
-// const u8 _021015EC[][4] = {
-//     { 0x10, 0x03, 0x10, 0x04 },
-//     { 0x10, 0x07, 0x10, 0x04 },
-//     { 0x10, 0x0B, 0x10, 0x04 },
-//     { 0x00, 0x02, 0x10, 0x04 },
-//     { 0x00, 0x06, 0x10, 0x04 },
-//     { 0x00, 0x0A, 0x10, 0x04 },
-//     { 0x00, 0x0E, 0x10, 0x04 },
-//     { 0x19, 0x13, 0x07, 0x05 },
-//     { 0x10, 0x02, 0x10, 0x04 },
-//     { 0x10, 0x06, 0x10, 0x04 },
-//     { 0x10, 0x0A, 0x10, 0x04 },
-//     { 0x10, 0x0E, 0x10, 0x04 },
-// };
+static const u8 _021015EC[][4] = {
+    { 0x10, 0x03, 0x10, 0x04 },
+    { 0x10, 0x07, 0x10, 0x04 },
+    { 0x10, 0x0B, 0x10, 0x04 },
+    { 0x00, 0x02, 0x10, 0x04 },
+    { 0x00, 0x06, 0x10, 0x04 },
+    { 0x00, 0x0A, 0x10, 0x04 },
+    { 0x00, 0x0E, 0x10, 0x04 },
+    { 0x19, 0x13, 0x07, 0x05 },
+    { 0x10, 0x02, 0x10, 0x04 },
+    { 0x10, 0x06, 0x10, 0x04 },
+    { 0x10, 0x0A, 0x10, 0x04 },
+    { 0x10, 0x0E, 0x10, 0x04 },
+};
 
-// const s8 _021016B4[][2][8] = {
-//     {
-//             { 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
-//         { 0x07, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }
-//     }, {
-//             { 0x00, 0x07, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
-//         { 0x08, 0x07, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }
-//     }, {
-//             { 0x00, 0x01, 0x07, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
-//         { 0x08, 0x09, 0x07, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }
-//     }, {
-//             { 0x00, 0x01, 0x02, 0x07, 0xFF, 0xFF, 0xFF, 0xFF },
-//         { 0x08, 0x09, 0x0A, 0x07, 0xFF, 0xFF, 0xFF, 0xFF }
-//     }, {
-//             { 0x00, 0x01, 0x02, 0x07, 0x03, 0xFF, 0xFF, 0xFF },
-//         { 0x08, 0x09, 0x0A, 0x0B, 0x07, 0xFF, 0xFF, 0xFF }
-//     }, {
-//             { 0x00, 0x01, 0x02, 0x07, 0x03, 0x04, 0xFF, 0xFF },
-//         { 0x00, 0x01, 0x02, 0x03, 0x04, 0x08, 0xFF, 0xFF }
-//     }, {
-//             { 0x00, 0x01, 0x02, 0x07, 0x03, 0x04, 0x05, 0xFF },
-//         { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x08, 0xFF }
-//     }, {
-//             { 0x00, 0x01, 0x02, 0x07, 0x03, 0x04, 0x05, 0x06 },
-//         { 0x00, 0x01, 0x02, 0x07, 0x03, 0x04, 0x05, 0x06 }
-//     },
-// };
+static const s8 _021016B4[][2][8] = {
+    {
+            { 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
+        { 0x07, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }
+    }, {
+            { 0x00, 0x07, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
+        { 0x08, 0x07, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }
+    }, {
+            { 0x00, 0x01, 0x07, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
+        { 0x08, 0x09, 0x07, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }
+    }, {
+            { 0x00, 0x01, 0x02, 0x07, 0xFF, 0xFF, 0xFF, 0xFF },
+        { 0x08, 0x09, 0x0A, 0x07, 0xFF, 0xFF, 0xFF, 0xFF }
+    }, {
+            { 0x00, 0x01, 0x02, 0x07, 0x03, 0xFF, 0xFF, 0xFF },
+        { 0x08, 0x09, 0x0A, 0x0B, 0x07, 0xFF, 0xFF, 0xFF }
+    }, {
+            { 0x00, 0x01, 0x02, 0x07, 0x03, 0x04, 0xFF, 0xFF },
+        { 0x00, 0x01, 0x02, 0x03, 0x04, 0x08, 0xFF, 0xFF }
+    }, {
+            { 0x00, 0x01, 0x02, 0x07, 0x03, 0x04, 0x05, 0xFF },
+        { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x08, 0xFF }
+    }, {
+            { 0x00, 0x01, 0x02, 0x07, 0x03, 0x04, 0x05, 0x06 },
+        { 0x00, 0x01, 0x02, 0x07, 0x03, 0x04, 0x05, 0x06 }
+    },
+};
 
-// const u16 _021015AC[] = {
-//     0, 2, 6, 8, 3, 5, 1, 7
-// };
+static const u16 _021015AC[] = {
+    0, 2, 6, 8, 3, 5, 1, 7
+};
 
-// const u16 _021015BC[][4] = {
-//     { 0x0008, 0x0002, 0x0014, 0x000E },
-//     { 0x0009, 0x0003, 0x0015, 0x000F },
-//     { 0x000A, 0x0004, 0x0016, 0x0010 },
-//     { 0x000B, 0x0005, 0x0017, 0x0011 },
-//     { 0x000C, 0x0006, 0x0018, 0x0012 },
-//     { 0x000D, 0x0007, 0x0019, 0x0013 },
-// };
+static const u16 _021015BC[][4] = {
+    { 0x0008, 0x0002, 0x0014, 0x000E },
+    { 0x0009, 0x0003, 0x0015, 0x000F },
+    { 0x000A, 0x0004, 0x0016, 0x0010 },
+    { 0x000B, 0x0005, 0x0017, 0x0011 },
+    { 0x000C, 0x0006, 0x0018, 0x0012 },
+    { 0x000D, 0x0007, 0x0019, 0x0013 },
+};
 
-extern const WindowTemplate _02101734[];
-extern const WindowTemplate _0210161C[];
-extern const WindowTemplate _02101654[];
-extern const u8 _021015EC[][4];
-extern const s8 _021016B4[][2][8];
-extern const u16 _021015AC[];
-extern const u16 _021015BC[][4];
+static int _021101A4[][5][2] = {
+    {
+        {  1,  1 },
+        {  0,  0 },
+        { -1, -1 },
+        { -1, -1 },
+        { -1, -1 },
+    },
+    {
+        {  2,  1 },
+        {  0,  2 },
+        {  1,  0 },
+        { -1, -1 },
+        { -1, -1 },
+    },
+    {
+        {  3,  1 },
+        {  0,  2 },
+        {  1,  3 },
+        {  2,  0 },
+        { -1, -1 },
+    },
+    {
+        {  4,  1 },
+        {  0,  2 },
+        {  1,  3 },
+        {  2,  4 },
+        {  3,  0 },
+    },
+};
 
-extern int _021101A4[][5][2];
-extern int _02110244[][8][3];
-extern TouchscreenHitbox _02110180[];
-extern TouchscreenHitbox _02110168[];
+static int _02110244[][8][3] = {
+    {
+        {  1,  1, -1 },
+        {  0,  0, -1 },
+        { -1, -1, -1 },
+        { -1, -1, -1 },
+        { -1, -1, -1 },
+        { -1, -1, -1 },
+        { -1, -1, -1 },
+        { -1, -1, -1 },
+    },
+    {
+        {  2,  1, -1 },
+        {  0,  2, -1 },
+        {  1,  0, -1 },
+        { -1, -1, -1 },
+        { -1, -1, -1 },
+        { -1, -1, -1 },
+        { -1, -1, -1 },
+        {  2,  0, -1 },
+    },
+    {
+        {  3,  1, -1 },
+        {  0,  2, -1 },
+        {  1,  3, -1 },
+        {  2,  0, -1 },
+        { -1, -1, -1 },
+        { -1, -1, -1 },
+        { -1, -1, -1 },
+        {  2,  0, -1 },
+    },
+    {
+        {  3,  1,  4 },
+        {  0,  2,  4 },
+        {  1,  3,  4 },
+        {  2,  0, -1 },
+        { -1, -1,  0 },
+        { -1, -1, -1 },
+        { -1, -1, -1 },
+        {  2,  0, -1 },
+    },
+    {
+        {  3,  1,  4 },
+        {  0,  2,  5 },
+        {  1,  3,  5 },
+        {  2,  0, -1 },
+        {  5,  5,  0 },
+        {  4,  4,  1 },
+        { -1, -1, -1 },
+        {  2,  0, -1 },
+    },
+    {
+        {  3,  1,  4 },
+        {  0,  2,  5 },
+        {  1,  3,  6 },
+        {  2,  0, -1 },
+        {  6,  5,  0 },
+        {  4,  6,  1 },
+        {  5,  4,  2 },
+        {  2,  0, -1 },
+    },
+    {
+        {  3,  1,  4 },
+        {  0,  2,  5 },
+        {  1,  3,  6 },
+        {  2,  0, -1 },
+        {  7,  5,  0 },
+        {  4,  6,  1 },
+        {  5,  7,  2 },
+        {  6,  4,  2 },
+    },
+};
+
+static TouchscreenHitbox _02110180[] = {
+    { .rect = { 0x18, 0x38, 0x80, 0x00 } },
+    { .rect = { 0x38, 0x58, 0x80, 0x00 } },
+    { .rect = { 0x58, 0x78, 0x80, 0x00 } },
+    { .rect = { 0x10, 0x30, 0x00, 0x80 } },
+    { .rect = { 0x30, 0x50, 0x00, 0x80 } },
+    { .rect = { 0x50, 0x70, 0x00, 0x80 } },
+    { .rect = { 0x70, 0x90, 0x00, 0x80 } },
+    { .rect = { 0x98, 0xC0, 0xC8, 0x00 } },
+    { { TOUCHSCREEN_RECTLIST_END } },
+};
+
+static TouchscreenHitbox _02110168[] = {
+    { .rect = { 0x10, 0x30, 0x80, 0x00 } },
+    { .rect = { 0x30, 0x50, 0x80, 0x00 } },
+    { .rect = { 0x50, 0x70, 0x80, 0x00 } },
+    { .rect = { 0x70, 0x90, 0x80, 0x00 } },
+    { .rect = { 0x98, 0xC0, 0xC8, 0x00 } },
+    { { TOUCHSCREEN_RECTLIST_END } },
+};
 
 void sub_0207CB7C(void) {
     G2_SetBlendBrightness(30, 8);
@@ -191,7 +301,7 @@ void sub_0207CB90(void) {
     G2_BlendNone();
 }
 
-void sub_0207CB9C(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1, int a2) {
+static void sub_0207CB9C(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1, int a2) {
     PartyMenuStruct_SubC90 *unk = &partyMenu->unk_C90;
 
     unk->unk_6_0 = 0;
@@ -262,7 +372,7 @@ BOOL sub_0207CC24(PartyMenuStruct *partyMenu) {
     return TRUE;
 }
 
-void sub_0207CD84(BgConfig *bgConfig, Window *window, const WindowTemplate *template) {
+static void sub_0207CD84(BgConfig *bgConfig, Window *window, const WindowTemplate *template) {
     AddWindow(bgConfig, &window[0], &template[0]);
     AddWindow(bgConfig, &window[1], &template[1]);
     AddWindow(bgConfig, &window[2], &template[2]);
@@ -288,9 +398,7 @@ void sub_0207CDCC(PartyMenuStruct *partyMenu) {
     AddWindow(partyMenu->bgConfig, &partyMenu->unk_004[38], &r4[46]);
     AddWindow(partyMenu->bgConfig, &partyMenu->unk_004[39], &r4[47]);
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_22 || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
-        // FIXME: temp hack
-        // WindowTemplate template = _0210161C[0];
-        WindowTemplate template = ((const WindowTemplate *)_021015EC)[6];
+        WindowTemplate template = _0210161C[0];
         template.top = 22;
         AddWindow(partyMenu->bgConfig, &partyMenu->unk_004[31], &template);
     } else {
@@ -389,7 +497,7 @@ void sub_0207D1C8(PartyMenuStruct *partyMenu) {
     }
 }
 
-void sub_0207D268(PartyMenuStruct *partyMenu, int windowId) {
+static void sub_0207D268(PartyMenuStruct *partyMenu, int windowId) {
     sub_0200CDAC(partyMenu->msgPrinter, 0, &partyMenu->unk_004[5 * windowId + 2], 28, 2);
 }
 
@@ -400,7 +508,7 @@ void sub_0207D294(PartyMenuStruct *partyMenu, Pokemon *mon, u32 partySlot) {
     String_Delete(msg);
 }
 
-void sub_0207D2E4(PartyMenuStruct *partyMenu, u8 partySlot) {
+static void sub_0207D2E4(PartyMenuStruct *partyMenu, u8 partySlot) {
     Window *window = &partyMenu->unk_004[partySlot * 5 + 0];
 
     AddTextPrinterParameterizedWithColor(window, 0, partyMenu->monsDrawState[partySlot].nickname, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
@@ -448,7 +556,7 @@ void sub_0207D480(PartyMenuStruct *partyMenu, u8 partySlot) {
     ScheduleWindowCopyToVram(window);
 }
 
-void sub_0207D4AC(PartyMenuStruct *partyMenu, u8 partySlot) {
+static void sub_0207D4AC(PartyMenuStruct *partyMenu, u8 partySlot) {
     Window *window = &partyMenu->unk_004[partySlot * 5 + 2];
 
     PrintUIntOnWindow(partyMenu->msgPrinter, partyMenu->monsDrawState[partySlot].maxHp, 3, PRINTING_MODE_LEFT_ALIGN, window, 36, 2);
@@ -598,7 +706,7 @@ void sub_0207D8EC(PartyMenuStruct *partyMenu, u8 partySlot) {
     sub_0207DD7C(partyMenu, partySlot, 7);
 }
 
-u32 sub_0207D988(FontID fontId, String *string, u32 windowWidth) {
+static u32 sub_0207D988(FontID fontId, String *string, u32 windowWidth) {
     return (windowWidth - FontID_String_GetWidth(fontId, string, 0)) / 2;
 }
 
@@ -617,7 +725,7 @@ void sub_0207D998(PartyMenuStruct *partyMenu, u8 a1) {
     }
 }
 
-void sub_0207DA64(PartyMenuStruct *partyMenu, Window *window, int msgId, BOOL drawFrame) {
+static void sub_0207DA64(PartyMenuStruct *partyMenu, Window *window, int msgId, BOOL drawFrame) {
     if (drawFrame == TRUE) {
         DrawFrameAndWindow2(window, TRUE, 0x02A, 15);
     }
@@ -655,7 +763,7 @@ void sub_0207DB30(PartyMenuStruct *partyMenu) {
     partyMenu->textPrinterId = AddTextPrinterParameterized(&partyMenu->unk_004[34], 1, partyMenu->formattedStrBuf, 0, 0, Options_GetTextFrameDelay(partyMenu->args->options), sub_0207DB80);
 }
 
-BOOL sub_0207DB80(TextPrinterTemplate *template, u16 glyphId) {
+static BOOL sub_0207DB80(TextPrinterTemplate *template, u16 glyphId) {
     switch (glyphId) {
     case 0:
         break;
@@ -694,7 +802,7 @@ void sub_0207DBCC(PartyMenuStruct *partyMenu) {
     sub_0207CB7C();
 }
 
-void sub_0207DC20(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
+static void sub_0207DC20(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
     Window *window = &partyMenu->unk_004[partySlot * 5 + 4];
     String *string;
 
@@ -713,7 +821,7 @@ void sub_0207DC20(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
     ScheduleWindowCopyToVram(window);
 }
 
-void sub_0207DC90(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
+static void sub_0207DC90(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
     Window *window = &partyMenu->unk_004[partySlot * 5 + 4];
     String *string;
 
@@ -735,7 +843,7 @@ void sub_0207DC90(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
     ScheduleWindowCopyToVram(window);
 }
 
-void sub_0207DD14(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
+static void sub_0207DD14(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
     Window *window = &partyMenu->unk_004[partySlot * 5 + 4];
     String *string;
 
@@ -750,7 +858,7 @@ void sub_0207DD14(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
     ScheduleWindowCopyToVram(window);
 }
 
-void sub_0207DD7C(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
+static void sub_0207DD7C(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
     Window *window = &partyMenu->unk_004[partySlot * 5 + 4];
     String *string;
 
@@ -850,7 +958,7 @@ void sub_0207E068(PartyMenuStruct *partyMenu) {
     ScheduleWindowCopyToVram(&partyMenu->unk_004[39]);
 }
 
-void sub_0207E17C(PartyMenuStruct *partyMenu, int a1, int a2) {
+static void sub_0207E17C(PartyMenuStruct *partyMenu, int a1, int a2) {
     GF_ASSERT(a1 <= 8);
     for (int i = 0; i < a1; ++i) {
         AddWindow(partyMenu->bgConfig, &partyMenu->unk_294[_021016B4[a1 - 1][a2][i]], &_02101654[_021016B4[a1 - 1][a2][i]]);
@@ -858,7 +966,7 @@ void sub_0207E17C(PartyMenuStruct *partyMenu, int a1, int a2) {
     }
 }
 
-void sub_0207E1DC(PartyMenuStruct *partyMenu, int a1, int a2) {
+static void sub_0207E1DC(PartyMenuStruct *partyMenu, int a1, int a2) {
     GF_ASSERT(a1 <= 8);
     for (int i = 0; i < a1; ++i) {
         RemoveWindow(&partyMenu->unk_294[_021016B4[a1 - 1][a2][i]]);
@@ -868,7 +976,7 @@ void sub_0207E1DC(PartyMenuStruct *partyMenu, int a1, int a2) {
     BgCommitTilemapBufferToVram(partyMenu->bgConfig, GF_BG_LYR_MAIN_0);
 }
 
-u32 sub_0207E264(int a0) {
+static u32 sub_0207E264(int a0) {
     if (a0 < 4) {
         return MAKE_TEXT_COLOR(14, 15, 11);
     } else {
@@ -876,7 +984,7 @@ u32 sub_0207E264(int a0) {
     }
 }
 
-u32 sub_0207E278(int a0) {
+static u32 sub_0207E278(int a0) {
     if (a0 < 4) {
         return MAKE_TEXT_COLOR(14, 15, 4);
     } else {
@@ -884,7 +992,7 @@ u32 sub_0207E278(int a0) {
     }
 }
 
-void sub_0207E28C(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, int a3, int a4, int a5) {
+static void sub_0207E28C(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, int a3, int a4, int a5) {
     u32 color;
     u32 y;
     u32 x = 0;
@@ -917,7 +1025,7 @@ void sub_0207E28C(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, 
     ScheduleWindowCopyToVram(&partyMenu->unk_294[windowId]);
 }
 
-void sub_0207E358(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, int a3, int a4) {
+static void sub_0207E358(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, int a3, int a4) {
     GF_ASSERT(a2 <= 8);
     for (int i = 0; i < a2; ++i) {
         if (a3 == i) {
@@ -928,7 +1036,7 @@ void sub_0207E358(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, 
     }
 }
 
-void sub_0207E3A8(PartyMenuStruct *partyMenu, int a1, int a2, int a3, int a4) {
+static void sub_0207E3A8(PartyMenuStruct *partyMenu, int a1, int a2, int a3, int a4) {
     u16 i;
     u16 sp10[8];
     const u8 *r4 = _021015EC[_021016B4[a1 - 1][a3][a2]];
@@ -995,7 +1103,7 @@ void sub_0207E618(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1) {
     }
 }
 
-BOOL sub_0207E684(int a0, int a1, int a2) {
+static BOOL sub_0207E684(int a0, int a1, int a2) {
     for (int i = 0; i < 8; ++i) {
         if (a2 == _021016B4[a1 - 1][a0][i]) {
             return TRUE;
@@ -1005,7 +1113,7 @@ BOOL sub_0207E684(int a0, int a1, int a2) {
     return FALSE;
 }
 
-int sub_0207E6B4(int a0, int a1, int a2) {
+static int sub_0207E6B4(int a0, int a1, int a2) {
     for (int i = 0; i < 8; ++i) {
         if (a2 == _021016B4[a1 - 1][a0][i]) {
             return i;
@@ -1015,7 +1123,7 @@ int sub_0207E6B4(int a0, int a1, int a2) {
     return LIST_NOTHING_CHOSEN;
 }
 
-BOOL sub_0207E6E8(int a0, int a1, int a2) {
+static BOOL sub_0207E6E8(int a0, int a1, int a2) {
     if (_021016B4[a1 - 1][a0][a2] != -1 && _021016B4[a1 - 1][a0][a2] != 7) {
         return TRUE;
     } else {
@@ -1023,7 +1131,7 @@ BOOL sub_0207E6E8(int a0, int a1, int a2) {
     }
 }
 
-BOOL sub_0207E714(u8 *a0, int a1, int a2) {
+static BOOL sub_0207E714(u8 *a0, int a1, int a2) {
     if (_02110244[a1 - 2][*a0][a2] != -1) {
         *a0 = _02110244[a1 - 2][*a0][a2];
         return TRUE;
@@ -1032,7 +1140,7 @@ BOOL sub_0207E714(u8 *a0, int a1, int a2) {
     }
 }
 
-BOOL sub_0207E748(u8 *a0, int a1, int a2) {
+static BOOL sub_0207E748(u8 *a0, int a1, int a2) {
     if (_021101A4[a1 - 2][*a0][a2] != -1) {
         *a0 = _021101A4[a1 - 2][*a0][a2];
         return TRUE;
