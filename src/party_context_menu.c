@@ -4,6 +4,7 @@
 #include "msgdata/msg/msg_0300.h"
 #include "render_text.h"
 #include "text.h"
+#include "unk_02005D10.h"
 #include "unk_0207F42C.h"
 #include "unk_0200CE7C.h"
 #include "unk_0208805C.h"
@@ -636,4 +637,174 @@ void sub_0207DB30(PartyMenuStruct *partyMenu) {
     TextFlags_SetCanABSpeedUpPrint(TRUE);
     sub_02002B50(0);
     partyMenu->textPrinterId = AddTextPrinterParameterized(&partyMenu->unk_004[34], 1, partyMenu->formattedStrBuf, 0, 0, Options_GetTextFrameDelay(partyMenu->args->options), sub_0207DB80);
+}
+
+BOOL sub_0207DB80(TextPrinterTemplate *template, u16 glyphId) {
+    switch (glyphId) {
+    case 0:
+        break;
+    case 1:
+        return GF_IsAnySEPlaying();
+    case 2:
+        return IsFanfarePlaying();
+    case 3:
+        PlaySE(SEQ_SE_DP_KON);
+        break;
+    case 4:
+        PlayFanfare(SEQ_ME_LVUP);
+        break;
+    case 5:
+        return IsSEPlaying(SEQ_SE_DP_KON);
+    }
+
+    return FALSE;
+}
+
+void sub_0207DBCC(PartyMenuStruct *partyMenu) {
+    YesNoPromptTemplate template;
+
+    partyMenu->yesNoPrompt = YesNoPrompt_Create(HEAP_ID_PARTY_MENU);
+
+    template.bgConfig = partyMenu->bgConfig;
+    template.bgId = GF_BG_LYR_MAIN_0;
+    template.tileStart = 0x260;
+    template.plttSlot = 11;
+    template.x = 25;
+    template.y = 10;
+    template.ignoreTouchFlag = FALSE;
+    template.initialCursorPos = 0;
+    template.shapeParam = 0;
+    YesNoPrompt_InitFromTemplate(partyMenu->yesNoPrompt, &template);
+    sub_0207CB7C();
+}
+
+void sub_0207DC20(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
+    Window *window = &partyMenu->unk_004[partySlot * 5 + 4];
+    String *string;
+
+    FillWindowPixelBuffer(window, 0);
+    switch (a2) {
+    case 0:
+        string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00161);
+        break;
+    case 1:
+        string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00162);
+        break;
+    }
+    // potential UB: in default case, string is uninitialized
+    AddTextPrinterParameterizedWithColor(window, 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    String_Delete(string);
+    ScheduleWindowCopyToVram(window);
+}
+
+void sub_0207DC90(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
+    Window *window = &partyMenu->unk_004[partySlot * 5 + 4];
+    String *string;
+
+    FillWindowPixelBuffer(window, 0);
+    switch (a2) {
+    case 0:
+        string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00158);
+        break;
+    case 1:
+        string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00159);
+        break;
+    case 2:
+        string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00160);
+        break;
+    }
+    // potential UB: in default case, string is uninitialized
+    AddTextPrinterParameterizedWithColor(window, 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    String_Delete(string);
+    ScheduleWindowCopyToVram(window);
+}
+
+void sub_0207DD14(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
+    Window *window = &partyMenu->unk_004[partySlot * 5 + 4];
+    String *string;
+
+    FillWindowPixelBuffer(window, 0);
+    if (a2 == 0) {
+        string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00164);
+    } else {
+        string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00163);
+    }
+    AddTextPrinterParameterizedWithColor(window, 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    String_Delete(string);
+    ScheduleWindowCopyToVram(window);
+}
+
+void sub_0207DD7C(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
+    Window *window = &partyMenu->unk_004[partySlot * 5 + 4];
+    String *string;
+
+    FillWindowPixelBuffer(window, 0);
+    if (a2 < 6) {
+        string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00152 + a2);
+    } else if (a2 == 7) {
+        string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00150);
+    } else {
+        string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00151);
+    }
+    AddTextPrinterParameterizedWithColor(window, 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    String_Delete(string);
+    ScheduleWindowCopyToVram(window);
+}
+
+void sub_0207DDFC(PartyMenuStruct *partyMenu) {
+    u16 stats[NUM_STATS];
+    String *sp20;
+    String *sp1C;
+    String *sp18;
+    u32 i;
+    Pokemon *mon;
+
+    mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+    stats[0] = GetMonData(mon, MON_DATA_MAXHP, NULL);
+    stats[1] = GetMonData(mon, MON_DATA_ATK, NULL);
+    stats[2] = GetMonData(mon, MON_DATA_DEF, NULL);
+    stats[3] = GetMonData(mon, MON_DATA_SPATK, NULL);
+    stats[4] = GetMonData(mon, MON_DATA_SPDEF, NULL);
+    stats[5] = GetMonData(mon, MON_DATA_SPEED, NULL);
+    AddWindowParameterized(partyMenu->bgConfig, &partyMenu->unk_004[40], GF_BG_LYR_MAIN_0, 1, 1, 14, 12, 0, 0x260);
+    DrawFrameAndWindow1(&partyMenu->unk_004[40], TRUE, 1, 14);
+    FillWindowPixelBuffer(&partyMenu->unk_004[40], 15);
+    sp18 = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00175);
+    for (i = 0; i < NUM_STATS; ++i) {
+        sp1C = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00169 + i);
+        AddTextPrinterParameterized(&partyMenu->unk_004[40], 0, sp1C, 0, i * 16, TEXT_SPEED_NOTRANSFER, NULL);
+        String_Delete(sp1C);
+
+        AddTextPrinterParameterized(&partyMenu->unk_004[40], 0, sp18, 80, i * 16, TEXT_SPEED_NOTRANSFER, NULL);
+
+        sp20 = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00176);
+        BufferIntegerAsString(partyMenu->msgFormat, 0, stats[i] - partyMenu->unk_C68[i], 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, sp20);
+        String_Delete(sp20);
+        AddTextPrinterParameterized(&partyMenu->unk_004[40], 0, partyMenu->formattedStrBuf, 94, i * 16, TEXT_SPEED_NOTRANSFER, NULL);
+
+        partyMenu->unk_C68[i] = stats[i];
+    }
+    String_Delete(sp18);
+    ScheduleWindowCopyToVram(&partyMenu->unk_004[40]);
+}
+
+void sub_0207DF98(PartyMenuStruct *partyMenu) {
+    String *spC;
+    u32 i;
+
+    FillWindowPixelRect(&partyMenu->unk_004[40], 15, 80, 0, 32, 112);
+    spC = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00176);
+    for (i = 0; i < NUM_STATS; ++i) {
+        BufferIntegerAsString(partyMenu->msgFormat, 0, partyMenu->unk_C68[i], 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, spC);
+        AddTextPrinterParameterized(&partyMenu->unk_004[40], 0, partyMenu->formattedStrBuf, 104 - FontID_String_GetWidth(0, partyMenu->formattedStrBuf, 0), i * 16, TEXT_SPEED_NOTRANSFER, NULL);
+    }
+    String_Delete(spC);
+    ScheduleWindowCopyToVram(&partyMenu->unk_004[40]);
+}
+
+void sub_0207E04C(PartyMenuStruct *partyMenu) {
+    sub_0200E5D4(&partyMenu->unk_004[40], FALSE);
+    RemoveWindow(&partyMenu->unk_004[40]);
 }

@@ -2176,15 +2176,15 @@ static int PartyMenu_SoftboiledTryTargetCheck(PartyMenuStruct *partyMenu) {
     case 0:
         PlaySE(SEQ_SE_DP_KAIFUKU);
         thunk_Sprite_SetPalIndex(partyMenu->unk_660[6], 1);
-        if (partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp - partyMenu->monsDrawState[partyMenu->partyMonIndex].hp < partyMenu->unk_C68) {
-            partyMenu->unk_C68 = partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp - partyMenu->monsDrawState[partyMenu->partyMonIndex].hp;
+        if (partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp - partyMenu->monsDrawState[partyMenu->partyMonIndex].hp < partyMenu->unk_C68[0]) {
+            partyMenu->unk_C68[0] = partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp - partyMenu->monsDrawState[partyMenu->partyMonIndex].hp;
         }
-        partyMenu->subtaskState = 2;
-        partyMenu->unk_C6C = 0;
+        partyMenu->unk_C68[1] = 2;
+        partyMenu->unk_C68[2] = 0;
         return PARTY_MENU_STATE_SOFTBOILED;
     case 1:
         PlaySE(SEQ_SE_DP_SELECT);
-        partyMenu->subtaskState = 1;
+        partyMenu->unk_C68[1] = 1;
         return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
     case 2:
         PlaySE(SEQ_SE_DP_CUSTOM06);
@@ -2208,7 +2208,7 @@ static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
         }
     }
 
-    switch (partyMenu->subtaskState) {
+    switch (partyMenu->unk_C68[1]) {
     case 0: {
         u32 selection = PartyMenu_GetTouchButtonInput(partyMenu);
         if (selection != -1) {
@@ -2254,13 +2254,13 @@ static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
         ClearFrameAndWindow2(&partyMenu->unk_004[34], TRUE);
         thunk_Sprite_SetPalIndex(partyMenu->unk_660[6], 0);
         sub_0207DAC4(partyMenu, msg_0300_00037, TRUE);
-        partyMenu->subtaskState = 0;
+        partyMenu->unk_C68[1] = 0;
         break;
     case 2:
         if (PartyMenu_SoftboiledHPTransferStep(partyMenu, partyMenu->softboiledDonorSlot, -1) == TRUE) {
             PlaySE(SEQ_SE_DP_KAIFUKU);
-            partyMenu->subtaskState = 3;
-            partyMenu->unk_C6C = 0;
+            partyMenu->unk_C68[1] = 3;
+            partyMenu->unk_C68[2] = 0;
         }
         break;
     case 3:
@@ -2268,11 +2268,11 @@ static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
             Pokemon *pokemon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
             String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00065);
             BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(pokemon));
-            BufferIntegerAsString(partyMenu->msgFormat, 1, partyMenu->unk_C6C, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+            BufferIntegerAsString(partyMenu->msgFormat, 1, partyMenu->unk_C68[2], 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
             StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
             String_Delete(string);
             sub_0207DAEC(partyMenu, -1, TRUE);
-            partyMenu->subtaskState = 4;
+            partyMenu->unk_C68[1] = 4;
             partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SOFTBOILED;
             return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
         }
@@ -2294,7 +2294,7 @@ static u8 PartyMenu_SoftboiledTargetCheck(PartyMenuStruct *partyMenu) {
     if (partyMenu->partyMonIndex == partyMenu->softboiledDonorSlot || partyMenu->monsDrawState[partyMenu->partyMonIndex].hp == 0 || partyMenu->monsDrawState[partyMenu->partyMonIndex].hp == partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp) {
         thunk_Sprite_SetPalIndex(partyMenu->unk_660[6], 1);
         sub_0207DAEC(partyMenu, msg_0300_00120, TRUE);
-        partyMenu->subtaskState = 1;
+        partyMenu->unk_C68[1] = 1;
         partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SOFTBOILED;
         return 1;
     }
@@ -2303,12 +2303,12 @@ static u8 PartyMenu_SoftboiledTargetCheck(PartyMenuStruct *partyMenu) {
 
 static BOOL PartyMenu_SoftboiledHPTransferStep(PartyMenuStruct *partyMenu, u8 partySlot, s8 delta) {
     partyMenu->monsDrawState[partySlot].hp += delta;
-    ++partyMenu->unk_C6C;
+    ++partyMenu->unk_C68[2];
     sub_0207D480(partyMenu, partySlot);
     FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 3], 0);
     sub_0207D440(partyMenu, partySlot);
     sub_0207D4EC(partyMenu, partySlot);
-    if (partyMenu->unk_C68 == partyMenu->unk_C6C || partyMenu->monsDrawState[partySlot].hp == partyMenu->monsDrawState[partySlot].maxHp) {
+    if (partyMenu->unk_C68[0] == partyMenu->unk_C68[2] || partyMenu->monsDrawState[partySlot].hp == partyMenu->monsDrawState[partySlot].maxHp) {
         Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partySlot);
         u32 hp = partyMenu->monsDrawState[partySlot].hp;
         SetMonData(mon, MON_DATA_HP, &hp);
