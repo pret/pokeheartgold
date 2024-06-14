@@ -30,7 +30,12 @@ void sub_0207E28C(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, 
 void sub_0207E358(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, int a3, int a4);
 void sub_0207E3A8(PartyMenuStruct *partyMenu, int a1, int a2, int a3, int a4);
 void sub_0207E54C(PartyMenuStruct *partyMenu, int a1, int a2, int a3);
-UnkStruct_0207E590 *sub_0207E590(PartyMenuStruct *partyMenu, const UnkTemplate_0207E590 *a1, int a2, int a3, int a4);
+UnkStruct_0207E590 *sub_0207E590(PartyMenuStruct *partyMenu, const UnkTemplate_0207E590 *a1, int a2, HeapID a3, int a4);
+BOOL sub_0207E684(int a0, int a1, int a2);
+int sub_0207E6B4(int a0, int a1, int a2);
+BOOL sub_0207E6E8(int a0, int a1, int a2);
+BOOL sub_0207E714(u8 *a0, int a1, int a2);
+BOOL sub_0207E748(u8 *a0, int a1, int a2);
 
 // const WindowTemplate _02101734[] = {
 //     { GF_BG_LYR_MAIN_1, 0x06, 0x01, 0x09, 0x02, 0x00, 0x0048 },
@@ -171,6 +176,9 @@ extern const u8 _021015EC[][4];
 extern const s8 _021016B4[][2][8];
 extern const u16 _021015AC[];
 extern const u16 _021015BC[][4];
+
+extern int _021101A4[][5][2];
+extern int _02110244[][8][3];
 
 void sub_0207CB7C(void) {
     G2_SetBlendBrightness(30, 8);
@@ -914,5 +922,118 @@ void sub_0207E358(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, 
         } else {
             sub_0207E28C(partyMenu, a1, a2, i, a4, 0);
         }
+    }
+}
+
+void sub_0207E3A8(PartyMenuStruct *partyMenu, int a1, int a2, int a3, int a4) {
+    u16 i;
+    u16 sp10[8];
+    const u8 *r4 = _021015EC[_021016B4[a1 - 1][a3][a2]];
+    u32 tileStart;
+    if (a4 == 0) {
+        tileStart = 0x2000;
+    } else if (a4 == 1) {
+        tileStart = 0x2009;
+    } else {
+        tileStart = 0x2012;
+    }
+    tileStart += 10;
+
+    for (i = 0; i < 8; ++i) {
+        sp10[i] = tileStart + _021015AC[i];
+    }
+    LoadRectToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, &sp10[0], r4[0], r4[1], 1, 1);
+    LoadRectToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, &sp10[1], r4[0] + r4[2] - 1, r4[1], 1, 1);
+    LoadRectToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, &sp10[2], r4[0], r4[1] + r4[3] - 1, 1, 1);
+    LoadRectToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, &sp10[3], r4[0] + r4[2] - 1, r4[1] + r4[3] - 1, 1, 1);
+    FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, sp10[4], r4[0], r4[1] + 1, 1, r4[3] - 2, TILEMAP_FILL_OVWT_PAL);
+    FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, sp10[5], r4[0] + r4[2] - 1, r4[1] + 1, 1, r4[3] - 2, TILEMAP_FILL_OVWT_PAL);
+    FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, sp10[6], r4[0] + 1, r4[1], r4[2] - 2, 1, TILEMAP_FILL_OVWT_PAL);
+    FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, sp10[7], r4[0] + 1, r4[1] + r4[3] - 1, r4[2] - 2, 1, TILEMAP_FILL_OVWT_PAL);
+}
+
+void sub_0207E54C(PartyMenuStruct *partyMenu, int a1, int a2, int a3) {
+    for (int i = 0; i < a1; ++i) {
+        if (a2 == i) {
+            sub_0207E3A8(partyMenu, a1, i, a3, 1);
+        } else {
+            sub_0207E3A8(partyMenu, a1, i, a3, 0);
+        }
+    }
+}
+
+UnkStruct_0207E590 *sub_0207E590(PartyMenuStruct *partyMenu, const UnkTemplate_0207E590 *a1, int a2, HeapID a3, int a4) {
+    UnkStruct_0207E590 *ret = AllocFromHeap(a3, sizeof(UnkStruct_0207E590));
+    ret->unk_4 = *a1;
+    ret->unk_2 = ret->unk_4.unk_0A;
+    ret->unk_0 = a2;
+    ret->unk_1 = a2;
+    ret->unk_3 = a4;
+    sub_0207E17C(partyMenu, ret->unk_4.unk_0A, ret->unk_3);
+    sub_0207E358(partyMenu, &ret->unk_4, ret->unk_4.unk_0A, ret->unk_0, ret->unk_3);
+    sub_0207CB7C();
+    Set2dSpriteVisibleFlag(partyMenu->unk_660[9], FALSE);
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_22 || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
+        Set2dSpriteVisibleFlag(partyMenu->unk_660[8], FALSE);
+    }
+    return ret;
+}
+
+void sub_0207E618(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1) {
+    sub_0207E1DC(partyMenu, a1->unk_2, a1->unk_3);
+    FreeToHeap(a1);
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_4 || partyMenu->args->context == PARTY_MENU_CONTEXT_21) {
+        Set2dSpriteVisibleFlag(partyMenu->unk_660[9], FALSE);
+    } else {
+        Set2dSpriteVisibleFlag(partyMenu->unk_660[9], TRUE);
+    }
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_22 || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
+        Set2dSpriteVisibleFlag(partyMenu->unk_660[8], TRUE);
+    }
+}
+
+BOOL sub_0207E684(int a0, int a1, int a2) {
+    for (int i = 0; i < 8; ++i) {
+        if (a2 == _021016B4[a1 - 1][a0][i]) {
+            return TRUE;
+        }
+    }
+
+    return FALSE;
+}
+
+int sub_0207E6B4(int a0, int a1, int a2) {
+    for (int i = 0; i < 8; ++i) {
+        if (a2 == _021016B4[a1 - 1][a0][i]) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+BOOL sub_0207E6E8(int a0, int a1, int a2) {
+    if (_021016B4[a1 - 1][a0][a2] != -1 && _021016B4[a1 - 1][a0][a2] != 7) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+BOOL sub_0207E714(u8 *a0, int a1, int a2) {
+    if (_02110244[a1 - 2][*a0][a2] != -1) {
+        *a0 = _02110244[a1 - 2][*a0][a2];
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+BOOL sub_0207E748(u8 *a0, int a1, int a2) {
+    if (_021101A4[a1 - 2][*a0][a2] != -1) {
+        *a0 = _021101A4[a1 - 2][*a0][a2];
+        return TRUE;
+    } else {
+        return FALSE;
     }
 }
