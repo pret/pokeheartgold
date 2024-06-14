@@ -4,12 +4,18 @@
 #include "text.h"
 #include "unk_0207F42C.h"
 #include "unk_0200CE7C.h"
+#include "unk_0208805C.h"
+#include "unk_02080BB4.h"
 
+void sub_0207DD14(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
 void sub_0207CB9C(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1, int a2);
 void sub_0207CD84(BgConfig *bgConfig, Window *window, const WindowTemplate *template);
 void sub_0207D268(PartyMenuStruct *partyMenu, int windowId);
 void sub_0207D2E4(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207D4AC(PartyMenuStruct *partyMenu, u8 partySlot);
+void sub_0207DC20(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
+void sub_0207DC90(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
+void sub_0207DD7C(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
 void sub_0207E28C(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, int a3, int a4, int a5);
 void sub_0207E3A8(PartyMenuStruct *partyMenu, int a1, int a2, int a3, int a4);
 void sub_0207E54C(PartyMenuStruct *partyMenu, int a1, int a2, int a3);
@@ -425,4 +431,147 @@ void sub_0207D4AC(PartyMenuStruct *partyMenu, u8 partySlot) {
 
     PrintUIntOnWindow(partyMenu->msgPrinter, partyMenu->monsDrawState[partySlot].maxHp, 3, PRINTING_MODE_LEFT_ALIGN, window, 36, 2);
     ScheduleWindowCopyToVram(window);
+}
+
+void sub_0207D4EC(PartyMenuStruct *partyMenu, u8 partySlot) {
+    Window *window = &partyMenu->unk_004[partySlot * 5 + 3];
+
+    switch (sub_020880B0(partyMenu->monsDrawState[partySlot].hp, partyMenu->monsDrawState[partySlot].maxHp, 48)) {
+    case 0:
+        ScheduleWindowCopyToVram(window);
+        return;
+    case 4:
+    case 3:
+        BG_LoadPlttData(1, &partyMenu->unk_554[9], 4, (window->paletteNum * 16 + 9) * sizeof(u16));
+        break;
+    case 2:
+        BG_LoadPlttData(1, &partyMenu->unk_554[16 + 9], 4, (window->paletteNum * 16 + 9) * sizeof(u16));
+        break;
+    case 1:
+        BG_LoadPlttData(1, &partyMenu->unk_554[32 + 9], 4, (window->paletteNum * 16 + 9) * sizeof(u16));
+        break;
+    }
+
+    u8 barLength = RatioToInt(partyMenu->monsDrawState[partySlot].hp, partyMenu->monsDrawState[partySlot].maxHp, 48);
+    FillWindowPixelRect(window, 10, 0, 2, barLength, 1);
+    FillWindowPixelRect(window, 9, 0, 3, barLength, 2);
+    FillWindowPixelRect(window, 10, 0, 5, barLength, 1);
+    ScheduleWindowCopyToVram(window);
+}
+
+void sub_0207D5DC(PartyMenuStruct *partyMenu, u8 partySlot) {
+    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 0], 0);
+    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 1], 0);
+    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 2], 0);
+    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 3], 0);
+    sub_0207D2E4(partyMenu, partySlot);
+    if (partyMenu->monsDrawState[partySlot].isEgg == TRUE) {
+        ScheduleWindowCopyToVram(&partyMenu->unk_004[partySlot * 5 + 0]);
+        ScheduleWindowCopyToVram(&partyMenu->unk_004[partySlot * 5 + 1]);
+        ScheduleWindowCopyToVram(&partyMenu->unk_004[partySlot * 5 + 2]);
+        ScheduleWindowCopyToVram(&partyMenu->unk_004[partySlot * 5 + 3]);
+    } else {
+        sub_0207D268(partyMenu, partySlot);
+        sub_0207D3E4(partyMenu, partySlot);
+        sub_0207D440(partyMenu, partySlot);
+        sub_0207D4AC(partyMenu, partySlot);
+        sub_0207D4EC(partyMenu, partySlot);
+    }
+}
+
+void sub_0207D6A0(PartyMenuStruct *partyMenu, u8 partySlot) {
+    CopyWindowPixelsToVram_TextMode(&partyMenu->unk_004[partySlot * 5 + 0]);
+    CopyWindowPixelsToVram_TextMode(&partyMenu->unk_004[partySlot * 5 + 1]);
+    CopyWindowPixelsToVram_TextMode(&partyMenu->unk_004[partySlot * 5 + 2]);
+    CopyWindowPixelsToVram_TextMode(&partyMenu->unk_004[partySlot * 5 + 3]);
+}
+
+void sub_0207D6D8(PartyMenuStruct *partyMenu, u8 partySlot) {
+    ClearWindowTilemapAndScheduleTransfer(&partyMenu->unk_004[partySlot * 5 + 0]);
+    ClearWindowTilemapAndScheduleTransfer(&partyMenu->unk_004[partySlot * 5 + 1]);
+    ClearWindowTilemapAndScheduleTransfer(&partyMenu->unk_004[partySlot * 5 + 2]);
+    ClearWindowTilemapAndScheduleTransfer(&partyMenu->unk_004[partySlot * 5 + 3]);
+}
+
+void sub_0207D710(PartyMenuStruct *partyMenu, u8 partySlot) {
+    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 0], 0);
+    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 1], 0);
+    sub_0207D2E4(partyMenu, partySlot);
+    if (partyMenu->monsDrawState[partySlot].isEgg == TRUE) {
+        sub_0207DC20(partyMenu, partySlot, 1);
+    } else {
+        sub_0207D3E4(partyMenu, partySlot);
+        Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partySlot);
+        if (!GetMonEvolution(NULL, mon, EVOCTX_ITEM_USE, partyMenu->args->itemId, NULL)) {
+            sub_0207DC20(partyMenu, partySlot, 1);
+        } else {
+            sub_0207DC20(partyMenu, partySlot, 0);
+        }
+    }
+}
+
+void sub_0207D7A8(PartyMenuStruct *partyMenu, u8 partySlot) {
+    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 0], 0);
+    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 1], 0);
+    sub_0207D2E4(partyMenu, partySlot);
+    if (partyMenu->monsDrawState[partySlot].isEgg == TRUE) {
+        sub_0207DC90(partyMenu, partySlot, 1);
+    } else {
+        sub_0207D3E4(partyMenu, partySlot);
+        u8 x = sub_020820DC(partyMenu, Party_GetMonByIndex(partyMenu->args->party, partySlot));
+        if (x == 0xFF) {
+            sub_0207DC90(partyMenu, partySlot, 1);
+        } else if (x == 0xFD) {
+            sub_0207DC90(partyMenu, partySlot, 2);
+        } else {
+            sub_0207DC90(partyMenu, partySlot, 0);
+        }
+    }
+}
+
+void sub_0207D840(PartyMenuStruct *partyMenu, u8 partySlot) {
+    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 0], 0);
+    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 1], 0);
+    sub_0207D2E4(partyMenu, partySlot);
+    if (partyMenu->monsDrawState[partySlot].isEgg != TRUE) {
+        sub_0207D3E4(partyMenu, partySlot);
+    }
+    sub_0207DD14(partyMenu, partySlot, partyMenu->monsDrawState[partySlot].unk_0E_0F);
+}
+
+void sub_0207D8A4(PartyMenuStruct *partyMenu, u8 partySlot) {
+    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 0], 0);
+    FillWindowPixelBuffer(&partyMenu->unk_004[partySlot * 5 + 1], 0);
+    sub_0207D2E4(partyMenu, partySlot);
+    if (partyMenu->monsDrawState[partySlot].isEgg != TRUE) {
+        sub_0207D3E4(partyMenu, partySlot);
+    }
+}
+
+void sub_0207D8EC(PartyMenuStruct *partyMenu, u8 partySlot) {
+    for (u8 i = 0; i < partyMenu->args->unk_36_4; ++i) {
+        if (partyMenu->args->selectedOrder[i] == partySlot + 1) {
+            sub_0207DD7C(partyMenu, partySlot, i);
+            return;
+        }
+    }
+
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_22) {
+        if (sub_0207B418(partyMenu, partySlot) == 0) {
+            sub_0207DD7C(partyMenu, partySlot, 8);
+            return;
+        }
+    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
+        if (sub_0207B4A0(partyMenu, partySlot) == 0) {
+            sub_0207DD7C(partyMenu, partySlot, 8);
+            return;
+        }
+    } else {
+        if (sub_0207B364(partyMenu, partySlot) == 0) {
+            sub_0207DD7C(partyMenu, partySlot, 8);
+            return;
+        }
+    }
+
+    sub_0207DD7C(partyMenu, partySlot, 7);
 }

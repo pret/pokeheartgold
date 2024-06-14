@@ -20,6 +20,8 @@ void sub_0207D440(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207D480(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207D4EC(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207D5DC(PartyMenuStruct *partyMenu, u8 partySlot);
+void sub_0207D6A0(PartyMenuStruct *partyMenu, u8 partySlot);
+void sub_0207D6D8(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207D710(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207D7A8(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207D840(PartyMenuStruct *partyMenu, u8 partySlot);
