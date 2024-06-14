@@ -30,7 +30,7 @@ void sub_0207D8EC(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207D998(PartyMenuStruct *partyMenu, u8 a1);
 void sub_0207DAC4(PartyMenuStruct *partyMenu, int msgId, BOOL drawFrame);
 void sub_0207DAD8(PartyMenuStruct *partyMenu, int msgId, BOOL drawFrame);
-void sub_0207DAEC(PartyMenuStruct *partyMenu, int msgNo, BOOL drawFrame);
+void sub_0207DAEC(PartyMenuStruct *partyMenu, int msgId, BOOL drawFrame);
 void sub_0207DB30(PartyMenuStruct *partyMenu);
 void sub_0207DBCC(PartyMenuStruct *partyMenu);
 void sub_0207E068(PartyMenuStruct *partyMenu);

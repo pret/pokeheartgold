@@ -1,6 +1,8 @@
+#include "font.h"
 #include "global.h"
 #include "party_context_menu.h"
 #include "msgdata/msg/msg_0300.h"
+#include "render_text.h"
 #include "text.h"
 #include "unk_0207F42C.h"
 #include "unk_0200CE7C.h"
@@ -13,6 +15,9 @@ void sub_0207CD84(BgConfig *bgConfig, Window *window, const WindowTemplate *temp
 void sub_0207D268(PartyMenuStruct *partyMenu, int windowId);
 void sub_0207D2E4(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207D4AC(PartyMenuStruct *partyMenu, u8 partySlot);
+u32 sub_0207D988(FontID fontId, String *string, u32 windowWidth);
+void sub_0207DA64(PartyMenuStruct *partyMenu, Window *window, int msgId, BOOL drawFrame);
+BOOL sub_0207DB80(TextPrinterTemplate *template, u16 glyphId);
 void sub_0207DC20(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
 void sub_0207DC90(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
 void sub_0207DD7C(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
@@ -574,4 +579,61 @@ void sub_0207D8EC(PartyMenuStruct *partyMenu, u8 partySlot) {
     }
 
     sub_0207DD7C(partyMenu, partySlot, 7);
+}
+
+u32 sub_0207D988(FontID fontId, String *string, u32 windowWidth) {
+    return (windowWidth - FontID_String_GetWidth(fontId, string, 0)) / 2;
+}
+
+void sub_0207D998(PartyMenuStruct *partyMenu, u8 a1) {
+    FillWindowPixelBuffer(&partyMenu->unk_004[30], 0);
+    FillWindowPixelBuffer(&partyMenu->unk_004[31], 0);
+    if (a1 & 1) {
+        ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00000, partyMenu->unformattedStrBuf);
+        AddTextPrinterParameterizedWithColor(&partyMenu->unk_004[30], 0, partyMenu->unformattedStrBuf, sub_0207D988(0, partyMenu->unformattedStrBuf, partyMenu->unk_004[30].width * 8), 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+        ScheduleWindowCopyToVram(&partyMenu->unk_004[30]);
+    }
+    if (a1 & 2) {
+        ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00001, partyMenu->unformattedStrBuf);
+        AddTextPrinterParameterizedWithColor(&partyMenu->unk_004[31], 0, partyMenu->unformattedStrBuf, sub_0207D988(0, partyMenu->unformattedStrBuf, partyMenu->unk_004[31].width * 8), 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+        ScheduleWindowCopyToVram(&partyMenu->unk_004[31]);
+    }
+}
+
+void sub_0207DA64(PartyMenuStruct *partyMenu, Window *window, int msgId, BOOL drawFrame) {
+    if (drawFrame == TRUE) {
+        DrawFrameAndWindow2(window, TRUE, 0x02A, 15);
+    }
+    FillWindowPixelBuffer(window, 15);
+    if (msgId != -1) {
+        ReadMsgDataIntoString(partyMenu->msgData, msgId, partyMenu->formattedStrBuf);
+    }
+    AddTextPrinterParameterized(window, 1, partyMenu->formattedStrBuf, 0, 0, TEXT_SPEED_NOTRANSFER, NULL);
+    ScheduleWindowCopyToVram(window);
+}
+
+void sub_0207DAC4(PartyMenuStruct *partyMenu, int msgId, BOOL drawFrame) {
+    sub_0207DA64(partyMenu, &partyMenu->unk_004[32], msgId, drawFrame);
+}
+
+void sub_0207DAD8(PartyMenuStruct *partyMenu, int msgId, BOOL drawFrame) {
+    sub_0207DA64(partyMenu, &partyMenu->unk_004[33], msgId, drawFrame);
+}
+
+void sub_0207DAEC(PartyMenuStruct *partyMenu, int msgId, BOOL drawFrame) {
+    Window *window = &partyMenu->unk_004[34];
+    if (drawFrame == TRUE) {
+        DrawFrameAndWindow2(window, TRUE, 0x02A, 15);
+    }
+    FillWindowPixelBuffer(window, 15);
+    if (msgId != -1) {
+        ReadMsgDataIntoString(partyMenu->msgData, msgId, partyMenu->formattedStrBuf);
+    }
+    sub_0207DB30(partyMenu);
+}
+
+void sub_0207DB30(PartyMenuStruct *partyMenu) {
+    TextFlags_SetCanABSpeedUpPrint(TRUE);
+    sub_02002B50(0);
+    partyMenu->textPrinterId = AddTextPrinterParameterized(&partyMenu->unk_004[34], 1, partyMenu->formattedStrBuf, 0, 0, Options_GetTextFrameDelay(partyMenu->args->options), sub_0207DB80);
 }
