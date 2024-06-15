@@ -11,6 +11,7 @@ void sub_0207EF5C(PartyMenuStruct *partyMenu, u8 partySlot, u16 x, u16 y);
 void sub_0207EFA4(PartyMenuStruct *partyMenu);
 void sub_0207EFC4(PartyMenuStruct *partyMenu, u8 partySlot, u8 status);
 void sub_0207F004(PartyMenuStruct *partyMenu, u8 partySlot, u16 heldItem);
+void sub_0207F044(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207F064(PartyMenuStruct *partyMenu, u8 partySlot, s16 x, s16 y);
 void sub_0207F098(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207F0C8(PartyMenuStruct *partyMenu, u8 partySlot);

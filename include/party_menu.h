@@ -335,7 +335,9 @@ typedef struct PartyMenuMonsDrawState {
     s16 unk_18;       // 840
     s16 unk_1A;       // 842
     s16 unk_1C;       // 844
-    u8 filler_1E[0x6];
+    s16 unk_1E;       // 846
+    s16 unk_20;       // 848
+    u8 filler_22[2];  // alignment padding
     Sprite *unk_24;   // 84C
     Sprite *unk_28;   // 850
     u8 unk_2C;        // 854
@@ -354,7 +356,8 @@ struct PartyMenuStruct {
     PartyMenuArgs *args; //0x654
     SpriteRenderer *unk_658;
     SpriteGfxHandler *unk_65C;
-    Sprite *sprites[87];  //0x660; true number is at least 64
+    Sprite *sprites[58];  //0x660; true number is at least 64
+    Sprite *spritesExtra[29];  //0x748
     MessagePrinter *msgPrinter; //0x7bc
     MsgData *msgData; //0x7c0
     MessageFormat* msgFormat; //0x7c4

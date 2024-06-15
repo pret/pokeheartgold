@@ -4,6 +4,8 @@
 #include "pokemon_icon_idx.h"
 #include "vram_transfer_manager.h"
 
+void sub_0207F0FC(Sprite *sprite, u8 seqNo);
+
 extern const UnkStruct_0200D2B4 _021018F8[24];
 
 void sub_0207EB24(PartyMenuStruct *partyMenu) {
@@ -107,9 +109,91 @@ void sub_0207EDD4(PartyMenuStruct *partyMenu) {
         partyMenu->sprites[22 + i] = SpriteRenderer_CreateSprite(partyMenu->unk_658, partyMenu->unk_65C, &_021018F8[16 + i]);
     }
     for (u32 i = 0; i < 6; ++i) {
-        partyMenu->sprites[58 + i] = SpriteRenderer_CreateSprite(partyMenu->unk_658, partyMenu->unk_65C, &_021018F8[23]);
-        Set2dSpriteVisibleFlag(partyMenu->sprites[58 + i], FALSE);
+        partyMenu->spritesExtra[i] = SpriteRenderer_CreateSprite(partyMenu->unk_658, partyMenu->unk_65C, &_021018F8[23]);
+        Set2dSpriteVisibleFlag(partyMenu->spritesExtra[i], FALSE);
     }
     Set2dSpriteVisibleFlag(partyMenu->sprites[7], FALSE);
     Set2dSpriteVisibleFlag(partyMenu->sprites[28], FALSE);
+}
+
+void sub_0207EF5C(PartyMenuStruct *partyMenu, u8 partySlot, u16 x, u16 y) {
+    UnkStruct_0200D2B4 sp0;
+
+    sp0.resourceSet = 0;
+    sp0.x = x;
+    sp0.y = y;
+    sp0.z = 0;
+    sp0.animSeqNo = 0;
+    sp0.unk_10 = 0;
+    sp0.unk_18 = 0;
+    sp0.unk_1C = 0;
+    sp0.unk_20 = 0;
+    sp0.unk_24 = 0;
+    sp0.rotation = 1;
+    sp0.whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN;
+    partyMenu->sprites[partySlot] = SpriteRenderer_CreateSprite(partyMenu->unk_658, partyMenu->unk_65C, &sp0);
+}
+
+void sub_0207EFA4(PartyMenuStruct *partyMenu) {
+    SpriteRenderer_RemoveGfxHandler(partyMenu->unk_658, partyMenu->unk_65C);
+    SpriteRenderer_Delete(partyMenu->unk_658);
+}
+
+void sub_0207EFC4(PartyMenuStruct *partyMenu, u8 partySlot, u8 status) {
+    Sprite **pSprite1 = &partyMenu->sprites[partySlot + 10];
+    Sprite **pSprite2 = &partyMenu->spritesExtra[partySlot];
+    if (status == PARTY_MON_STATUS_ICON_OK) {
+        Set2dSpriteVisibleFlag(*pSprite1, FALSE);
+    } else {
+        Set2dSpriteAnimSeqNo(*pSprite1, status);
+        Set2dSpriteAnimSeqNo(*pSprite2, status);
+        Set2dSpriteVisibleFlag(*pSprite1, TRUE);
+    }
+}
+
+void sub_0207F004(PartyMenuStruct *partyMenu, u8 partySlot, u16 heldItem) {
+    Sprite **pSprite = &partyMenu->sprites[partySlot + 16];
+    if (heldItem == ITEM_NONE) {
+        Set2dSpriteVisibleFlag(*pSprite, FALSE);
+    } else {
+        if (ItemIdIsMail(heldItem) == TRUE) {
+            Set2dSpriteAnimSeqNo(*pSprite, 1);
+        } else {
+            Set2dSpriteAnimSeqNo(*pSprite, 0);
+        }
+        Set2dSpriteVisibleFlag(*pSprite, TRUE);
+    }
+}
+
+void sub_0207F044(PartyMenuStruct *partyMenu, u8 partySlot) {
+    Sprite **pSprite = &partyMenu->sprites[partySlot + 16];
+
+    Set2dSpriteAnimSeqNo(*pSprite, 1);
+    Set2dSpriteVisibleFlag(*pSprite, TRUE);
+}
+
+void sub_0207F064(PartyMenuStruct *partyMenu, u8 partySlot, s16 x, s16 y) {
+    partyMenu->monsDrawState[partySlot].unk_1E = x + 8;
+    partyMenu->monsDrawState[partySlot].unk_20 = y + 8;
+    Sprite_SetPositionXY(partyMenu->sprites[partySlot + 16], partyMenu->monsDrawState[partySlot].unk_1E, partyMenu->monsDrawState[partySlot].unk_20);
+}
+
+void sub_0207F098(PartyMenuStruct *partyMenu, u8 partySlot) {
+    Sprite_SetPositionXY(partyMenu->sprites[partySlot + 22], partyMenu->monsDrawState[partySlot].unk_1E + 8, partyMenu->monsDrawState[partySlot].unk_20);
+}
+
+void sub_0207F0C8(PartyMenuStruct *partyMenu, u8 partySlot) {
+    Sprite **pSprite = &partyMenu->sprites[partySlot + 22];
+    if (partyMenu->monsDrawState[partySlot].capsule == 0) {
+        Set2dSpriteVisibleFlag(*pSprite, FALSE);
+    } else {
+        Set2dSpriteVisibleFlag(*pSprite, TRUE);
+    }
+}
+
+void sub_0207F0FC(Sprite *sprite, u8 seqNo) {
+    if (seqNo != Get2dSpriteCurrentAnimSeqNo(sprite)) {
+        Sprite_SetAnimCtrlCurrentFrame(sprite, 0);
+        Set2dSpriteAnimSeqNo(sprite, seqNo);
+    }
 }
