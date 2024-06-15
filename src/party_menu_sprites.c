@@ -5,11 +5,277 @@
 #include "pokemon_icon_idx.h"
 #include "unk_0208805C.h"
 #include "vram_transfer_manager.h"
+#include "data/resdat.naix"
 
 void sub_0207F0FC(Sprite *sprite, u8 seqNo);
 int sub_0207F11C(PartyMenuMonsDrawState *monDraw);
 
-extern const UnkStruct_0200D2B4 _021018F8[24];
+static const UnkStruct_0200D2B4 _021018F8[24] = {
+    {
+        0x1,
+        0x40, 0x18, 0x0, 0x1,
+        0x3,
+        0x0,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+    {
+        0x1,
+        0x40, 0x48, 0x0, 0x2,
+        0x2,
+        0x0,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+    {
+        0x2,
+        0xE8, 0xA8, 0x0, 0x2,
+        0x1,
+        0x0,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+    {
+        0x2,
+        0xE8, 0xB8, 0x0, 0x2,
+        0x1,
+        0x0,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+    {
+        0x3,
+        0x24, 0x2C, 0x0, 0x0,
+        0x1,
+        0x2,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+    {
+        0x3,
+        0xA4, 0x34, 0x0, 0x0,
+        0x1,
+        0x2,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+    {
+        0x3,
+        0x24, 0x5C, 0x0, 0x0,
+        0x1,
+        0x2,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+    {
+        0x3,
+        0xA4, 0x64, 0x0, 0x0,
+        0x1,
+        0x2,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+    {
+        0x3,
+        0x24, 0x8C, 0x0, 0x0,
+        0x1,
+        0x2,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+    {
+        0x3,
+        0xA4, 0x94, 0x0, 0x0,
+        0x1,
+        0x2,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+    {
+        0xA,
+        0xA4, 0x94, 0x0, 0x0,
+        0x0,
+        0x6,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+    {
+        0xA,
+        0xA4, 0x94, 0x0, 0x0,
+        0x0,
+        0x6,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+    {
+        0xA,
+        0xA4, 0x94, 0x0, 0x0,
+        0x0,
+        0x6,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+    {
+        0xA,
+        0xA4, 0x94, 0x0, 0x0,
+        0x0,
+        0x6,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+    {
+        0xA,
+        0xA4, 0x94, 0x0, 0x0,
+        0x0,
+        0x6,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+    {
+        0xA,
+        0xA4, 0x94, 0x0, 0x0,
+        0x0,
+        0x6,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+    {
+        0xA,
+        0xA4, 0x94, 0x0, 0x2,
+        0x0,
+        0x6,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+    {
+        0xA,
+        0xA4, 0x94, 0x0, 0x2,
+        0x0,
+        0x6,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+    {
+        0xA,
+        0xA4, 0x94, 0x0, 0x2,
+        0x0,
+        0x6,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+    {
+        0xA,
+        0xA4, 0x94, 0x0, 0x2,
+        0x0,
+        0x6,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+    {
+        0xA,
+        0xA4, 0x94, 0x0, 0x2,
+        0x0,
+        0x6,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+    {
+        0xA,
+        0xA4, 0x94, 0x0, 0x2,
+        0x0,
+        0x6,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+    {
+        0xB,
+        0xA4, 0x94, 0x0, 0x0,
+        0x0,
+        0x0,
+        NNS_G2D_VRAM_TYPE_2DSUB,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+    {
+        0x3,
+        0x32, 0x194, 0x0, 0x0,
+        0x0,
+        0x0,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        0x0,
+        0x0,
+        0x0,
+        0x0,
+    },
+};
 
 void sub_0207EB24(PartyMenuStruct *partyMenu) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
@@ -18,20 +284,37 @@ void sub_0207EB24(PartyMenuStruct *partyMenu) {
     partyMenu->unk_658 = SpriteRenderer_Create(HEAP_ID_PARTY_MENU);
     partyMenu->unk_65C = SpriteRenderer_CreateGfxHandler(partyMenu->unk_658);
 
-    extern const Unk122_021E92FC _021018D8;
-    Unk122_021E92FC sp24 = _021018D8;
-
-    extern const Unk122_021E92D0 _021018C4;
-    Unk122_021E92D0 sp10 = _021018C4;
-
-    sub_0200CF70(partyMenu->unk_658, &sp24, &sp10, 32);
+    Unk122_021E92FC _021018D8 = {
+        0x0,
+        0x80,
+        0x0,
+        0x20,
+        0x4,
+        0x7C,
+        0x1,
+        0x1F,
+    };
+    Unk122_021E92D0 _021018C4 = {
+        35,
+        0x400,
+        0x400,
+        GX_OBJVRAMMODE_CHAR_1D_32K,
+        GX_OBJVRAMMODE_CHAR_1D_32K,
+    };
+    sub_0200CF70(partyMenu->unk_658, &_021018D8, &_021018C4, 32);
     sub_0200CFF4(partyMenu->unk_658, partyMenu->unk_65C, 49);
     G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(partyMenu->unk_658), 0, FX32_CONST(256));
 
-    extern const u16 _021018B4[7];
-    u16 sp0[7];
-    ARRAY_ASSIGN(sp0, _021018B4);
-    sub_0200D294(partyMenu->unk_658, partyMenu->unk_65C, sp0);
+    u16 _021018B4[7] = {
+        NARC_resdat_resdat_00000050_bin,
+        NARC_resdat_resdat_00000051_bin,
+        NARC_resdat_resdat_00000049_bin,
+        NARC_resdat_resdat_00000048_bin,
+        0xFFFF,
+        0xFFFF,
+        NARC_resdat_resdat_00000084_bin,
+    };
+    sub_0200D294(partyMenu->unk_658, partyMenu->unk_65C, _021018B4);
 }
 
 void sub_0207EBE4(PartyMenuStruct *partyMenu, u8 partySlot, u16 x, u16 y, NARC *narc) {
