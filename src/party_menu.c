@@ -256,7 +256,7 @@ static BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_9 || partyMenu->args->context == PARTY_MENU_CONTEXT_14) {
         sub_0207DAC4(partyMenu, msg_0300_00032, TRUE);
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_7 || partyMenu->args->context == PARTY_MENU_CONTEXT_8 || partyMenu->args->context == PARTY_MENU_CONTEXT_11 || partyMenu->args->context == PARTY_MENU_CONTEXT_12) {
-        thunk_Sprite_SetPalIndex(partyMenu->unk_660[6], 1);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 1);
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17) {
         sub_0207DAC4(partyMenu, msg_0300_00035, TRUE);
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_15) {
@@ -270,7 +270,7 @@ static BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
     } else if (partyMenu->args->context != PARTY_MENU_CONTEXT_10) {
         sub_0207DAC4(partyMenu, msg_0300_00029, TRUE);
     } else {
-        thunk_Sprite_SetPalIndex(partyMenu->unk_660[6], 1);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 1);
     }
     sub_0207A89C(partyMenu);
     sub_02002B8C(TRUE);
@@ -493,7 +493,7 @@ static int sub_02079308(PartyMenuStruct *partyMenu) {
             partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_1;
             return PARTY_MENU_STATE_BEGIN_EXIT;
         } else {
-            thunk_Sprite_SetPalIndex(partyMenu->unk_660[6], 1);
+            thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 1);
             return sub_020807AC(partyMenu);
         }
     }
@@ -503,7 +503,7 @@ static int sub_02079308(PartyMenuStruct *partyMenu) {
 static int sub_020793C0(PartyMenuStruct *partyMenu) {
     u8 x = sub_0207C0DC(partyMenu);
     if (x == 0 || x == 2) {
-        thunk_Sprite_SetPalIndex(partyMenu->unk_660[6], 1);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 1);
         return sub_0207C288(partyMenu);
     } else if (x == 3) {
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
@@ -516,7 +516,7 @@ static int sub_020793C0(PartyMenuStruct *partyMenu) {
 static int sub_02079400(PartyMenuStruct *partyMenu) {
     u8 x = sub_0207C0DC(partyMenu);
     if (x == 0 || x == 2) {
-        thunk_Sprite_SetPalIndex(partyMenu->unk_660[6], 1);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 1);
         return sub_0207C400(partyMenu);
     } else if (x == 3) {
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
@@ -537,7 +537,7 @@ static int sub_02079440(PartyMenuStruct *partyMenu) {
         sub_0207CB20(partyMenu);
         sub_0207CB90();
         sub_0207DAC4(partyMenu, msg_0300_00029, TRUE);
-        thunk_Sprite_SetPalIndex(partyMenu->unk_660[6], 0);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 0);
         return PARTY_MENU_STATE_1;
     default: {
         int result;
@@ -584,7 +584,7 @@ static int PartyMenu_Subtask_YesNoMenuHandleInput(PartyMenuStruct *partyMenu) {
 static int sub_02079550(PartyMenuStruct *partyMenu) {
     u8 x = sub_0207C0DC(partyMenu);
     if (x == 0 || x == 2) {
-        thunk_Sprite_SetPalIndex(partyMenu->unk_660[6], 1);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 1);
         if (partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg != 1) {
             return sub_02082134(partyMenu);
         } else {
@@ -971,12 +971,12 @@ PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager) {
 
 static void sub_02079CE4(PartyMenuStruct *partyMenu) {
     if (partyMenu->args->context & 0x80) {
-        partyMenu->unk_C63_7 = TRUE;
+        partyMenu->cancelDisabled = TRUE;
         partyMenu->args->context ^= 0x80;
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_21) {
-        partyMenu->unk_C63_7 = TRUE;
+        partyMenu->cancelDisabled = TRUE;
     } else {
-        partyMenu->unk_C63_7 = FALSE;
+        partyMenu->cancelDisabled = FALSE;
     }
 }
 
@@ -992,15 +992,15 @@ static void sub_02079D38(PartyMenuStruct *partyMenu) {
         partyMenu->unk_948 = _0210140C;
     }
     if (partyMenu->args->context != PARTY_MENU_CONTEXT_2 && partyMenu->args->context != PARTY_MENU_CONTEXT_17 && partyMenu->args->context != PARTY_MENU_CONTEXT_23 && partyMenu->args->context != PARTY_MENU_CONTEXT_22) {
-        Set2dSpriteVisibleFlag(partyMenu->unk_660[8], FALSE);
-        Set2dSpriteAnimSeqNo(partyMenu->unk_660[9], 0);
+        Set2dSpriteVisibleFlag(partyMenu->sprites[8], FALSE);
+        Set2dSpriteAnimSeqNo(partyMenu->sprites[9], 0);
         s16 x, y;
-        Sprite_GetPositionXY(partyMenu->unk_660[9], &x, &y);
-        Sprite_SetPositionXY(partyMenu->unk_660[9], x, y - 8);
+        Sprite_GetPositionXY(partyMenu->sprites[9], &x, &y);
+        Sprite_SetPositionXY(partyMenu->sprites[9], x, y - 8);
         r4 ^= 1;
     }
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_4 || partyMenu->args->context == PARTY_MENU_CONTEXT_21) {
-        Set2dSpriteVisibleFlag(partyMenu->unk_660[9], FALSE);
+        Set2dSpriteVisibleFlag(partyMenu->sprites[9], FALSE);
         r4 ^= 2;
     }
     sub_0207D998(partyMenu, r4);
@@ -1026,7 +1026,7 @@ BOOL sub_02079E38(PartyMenuStruct *partyMenu, u8 partySlot) {
     if (species == SPECIES_NONE) {
         return FALSE;
     }
-    sub_0207D294(partyMenu, mon, partySlot);
+    PartyMenu_BufferMonNickname(partyMenu, mon, partySlot);
     partyMenu->monsDrawState[partySlot].species = species;
     partyMenu->monsDrawState[partySlot].hp = (u16)GetMonData(mon, MON_DATA_HP, NULL);
     partyMenu->monsDrawState[partySlot].maxHp = (u16)GetMonData(mon, MON_DATA_MAXHP, NULL);
@@ -1035,14 +1035,14 @@ BOOL sub_02079E38(PartyMenuStruct *partyMenu, u8 partySlot) {
     partyMenu->monsDrawState[partySlot].capsule = (u16)GetMonData(mon, MON_DATA_CAPSULE, NULL);
     partyMenu->monsDrawState[partySlot].isEgg = (u8)GetMonData(mon, MON_DATA_IS_EGG, NULL);
     partyMenu->monsDrawState[partySlot].form = (u8)GetMonData(mon, MON_DATA_FORM, NULL);
-    if (GetMonData(mon, MON_DATA_UNK_176, NULL) == TRUE) {
-        partyMenu->monsDrawState[partySlot].unk_0E_0C = FALSE;
+    if (GetMonData(mon, MON_DATA_NO_PRINT_GENDER, NULL) == TRUE) {
+        partyMenu->monsDrawState[partySlot].dontPrintGenderSymbol = FALSE;
     } else {
-        partyMenu->monsDrawState[partySlot].unk_0E_0C = TRUE;
+        partyMenu->monsDrawState[partySlot].dontPrintGenderSymbol = TRUE;
     }
     partyMenu->monsDrawState[partySlot].gender = GetMonGender(mon);
     partyMenu->monsDrawState[partySlot].active = TRUE;
-    partyMenu->monsDrawState[partySlot].unk_0E_00 = (u8)sub_0208AD64(mon);
+    partyMenu->monsDrawState[partySlot].status = (u8)Pokemon_GetStatusIconId(mon);
     sub_02079FB8(partyMenu, mon, partySlot);
     return TRUE;
 }
@@ -1050,7 +1050,7 @@ BOOL sub_02079E38(PartyMenuStruct *partyMenu, u8 partySlot) {
 static void sub_02079FB8(PartyMenuStruct *partyMenu, Pokemon *mon, u8 partySlot) {
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_13) {
         if (partyMenu->monsDrawState[partySlot].isEgg == TRUE || partyMenu->monsDrawState[partySlot].hp == 0) {
-            partyMenu->monsDrawState[partySlot].unk_0E_0F = FALSE;
+            partyMenu->monsDrawState[partySlot].isCompatible = FALSE;
         } else {
             u32 numRibbons = sub_0207A058(mon, partyMenu->args->contestStat);
             u32 i;
@@ -1060,9 +1060,9 @@ static void sub_02079FB8(PartyMenuStruct *partyMenu, Pokemon *mon, u8 partySlot)
                 }
             }
             if (partyMenu->args->unk_2F <= numRibbons && i >= 2) {
-                partyMenu->monsDrawState[partySlot].unk_0E_0F = TRUE;
+                partyMenu->monsDrawState[partySlot].isCompatible = TRUE;
             } else {
-                partyMenu->monsDrawState[partySlot].unk_0E_0F = FALSE;
+                partyMenu->monsDrawState[partySlot].isCompatible = FALSE;
             }
         }
     }
@@ -1159,7 +1159,7 @@ static void sub_0207A2AC(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a
             sub_0207F064(partyMenu, i, a1[i].unk_4, a1[i].unk_6);
             sub_0207F0C8(partyMenu, i);
             sub_0207F098(partyMenu, i);
-            sub_0207EFC4(partyMenu, i, partyMenu->monsDrawState[i].unk_0E_00);
+            sub_0207EFC4(partyMenu, i, partyMenu->monsDrawState[i].status);
         } else {
             sub_0207A780(partyMenu, i, a1[i].unk_0, a1[i].unk_2);
         }
@@ -1179,7 +1179,7 @@ static void sub_0207A3C8(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a
             sub_0207F064(partyMenu, i, a1[i].unk_4, a1[i].unk_6);
             sub_0207F0C8(partyMenu, i);
             sub_0207F098(partyMenu, i);
-            sub_0207EFC4(partyMenu, i, partyMenu->monsDrawState[i].unk_0E_00);
+            sub_0207EFC4(partyMenu, i, partyMenu->monsDrawState[i].status);
         } else {
             sub_0207A780(partyMenu, i, a1[i].unk_0, a1[i].unk_2);
         }
@@ -1199,7 +1199,7 @@ static void sub_0207A4B4(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a
             sub_0207F064(partyMenu, i, a1[i].unk_4, a1[i].unk_6);
             sub_0207F0C8(partyMenu, i);
             sub_0207F098(partyMenu, i);
-            sub_0207EFC4(partyMenu, i, partyMenu->monsDrawState[i].unk_0E_00);
+            sub_0207EFC4(partyMenu, i, partyMenu->monsDrawState[i].status);
         } else {
             sub_0207A780(partyMenu, i, a1[i].unk_0, a1[i].unk_2);
         }
@@ -1219,7 +1219,7 @@ static void sub_0207A5A0(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a
             sub_0207F064(partyMenu, i, a1[i].unk_4, a1[i].unk_6);
             sub_0207F0C8(partyMenu, i);
             sub_0207F098(partyMenu, i);
-            sub_0207EFC4(partyMenu, i, partyMenu->monsDrawState[i].unk_0E_00);
+            sub_0207EFC4(partyMenu, i, partyMenu->monsDrawState[i].status);
         } else {
             sub_0207A780(partyMenu, i, a1[i].unk_0, a1[i].unk_2);
         }
@@ -1240,7 +1240,7 @@ static void sub_0207A68C(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a
             sub_0207F064(partyMenu, i, a1[i].unk_4, a1[i].unk_6);
             sub_0207F0C8(partyMenu, i);
             sub_0207F098(partyMenu, i);
-            sub_0207EFC4(partyMenu, i, partyMenu->monsDrawState[i].unk_0E_00);
+            sub_0207EFC4(partyMenu, i, partyMenu->monsDrawState[i].status);
         } else {
             sub_0207A780(partyMenu, i, a1[i].unk_0, a1[i].unk_2);
         }
@@ -1251,29 +1251,29 @@ static void sub_0207A68C(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a
 static void sub_0207A780(PartyMenuStruct *partyMenu, u8 partySlot, s16 x, s16 y) {
     CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, x, y, 16, 6, partyMenu->unk_494, 0, 0, 16, 6);
     BgTilemapRectChangePalette(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, x, y, 16, 6, 1);
-    sub_0207EFC4(partyMenu, partySlot, 7);
+    sub_0207EFC4(partyMenu, partySlot, PARTY_MON_STATUS_ICON_OK);
     sub_0207F004(partyMenu, partySlot, ITEM_NONE);
     sub_0207F0C8(partyMenu, partySlot);
 }
 
 void sub_0207A7F4(PartyMenuStruct *partyMenu, u8 partySlot) {
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partySlot);
-    u8 r4;
+    u8 paletteSlot;
     if (partyMenu->unk_C63_6 == TRUE && (partySlot == partyMenu->partyMonIndex || partySlot == partyMenu->softboiledDonorSlot)) {
-        r4 = 7;
+        paletteSlot = 7;
     } else {
         if (partySlot == partyMenu->partyMonIndex) {
-            r4 = 4;
+            paletteSlot = 4;
         } else {
-            r4 = 0;
+            paletteSlot = 0;
         }
         if (GetMonData(mon, MON_DATA_HP, NULL) == 0) {
-            r4 += 2;
+            paletteSlot += 2;
         } else if (sub_0207A880(partyMenu, partySlot) == TRUE) {
-            r4 += 1;
+            paletteSlot += 1;
         }
     }
-    BG_LoadPlttData(GF_BG_LYR_MAIN_2, &partyMenu->unk_554[16 * r4], 0x10, (partySlot + 3) * 32);
+    BG_LoadPlttData(GF_BG_LYR_MAIN_2, &partyMenu->unk_554[16 * paletteSlot], 0x10, (partySlot + 3) * 32);
 }
 
 static BOOL sub_0207A880(PartyMenuStruct *partyMenu, u8 partySlot) {
@@ -1284,8 +1284,8 @@ static void sub_0207A89C(PartyMenuStruct *partyMenu) {
     u8 x;
     u8 y;
     sub_02020A24(partyMenu->unk_948, &x, &y, 0, 0, partyMenu->partyMonIndex, 4);
-    Set2dSpriteAnimSeqNo(partyMenu->unk_660[6], sub_0207B5EC(partyMenu->args->unk_25, partyMenu->partyMonIndex));
-    Sprite_SetPositionXY(partyMenu->unk_660[6], x, y);
+    Set2dSpriteAnimSeqNo(partyMenu->sprites[6], sub_0207B5EC(partyMenu->args->unk_25, partyMenu->partyMonIndex));
+    Sprite_SetPositionXY(partyMenu->sprites[6], x, y);
 }
 
 static const u8 _021012CC[][6] = {
@@ -1305,11 +1305,11 @@ static u8 sub_0207A8FC(PartyMenuStruct *partyMenu) {
 
 static void PartyMenu_MoveCursorSpriteTo(PartyMenuStruct *partyMenu, int selection, int x, int y) {
     if (selection == PARTY_MON_SELECTION_CANCEL || selection == PARTY_MON_SELECTION_CONFIRM) {
-        Set2dSpriteVisibleFlag(partyMenu->unk_660[6], FALSE);
+        Set2dSpriteVisibleFlag(partyMenu->sprites[6], FALSE);
     } else {
-        Set2dSpriteAnimSeqNo(partyMenu->unk_660[6], sub_0207B5EC(partyMenu->args->unk_25, selection));
-        Set2dSpriteVisibleFlag(partyMenu->unk_660[6], TRUE);
-        Sprite_SetPositionXY(partyMenu->unk_660[6], x, y);
+        Set2dSpriteAnimSeqNo(partyMenu->sprites[6], sub_0207B5EC(partyMenu->args->unk_25, selection));
+        Set2dSpriteVisibleFlag(partyMenu->sprites[6], TRUE);
+        Sprite_SetPositionXY(partyMenu->sprites[6], x, y);
     }
     u8 oldPartyMonIndex = partyMenu->partyMonIndex;
     partyMenu->partyMonIndex = selection;
@@ -1401,13 +1401,13 @@ static u8 sub_0207AB20(PartyMenuStruct *partyMenu, u8 *px, u8 *py, const u8 *a3)
 
 void sub_0207AB84(PartyMenuStruct *partyMenu, u8 partySlot) {
     if (partySlot == 6 || partySlot == 7) {
-        Set2dSpriteVisibleFlag(partyMenu->unk_660[6], FALSE);
+        Set2dSpriteVisibleFlag(partyMenu->sprites[6], FALSE);
     } else {
         u8 x, y;
         sub_02020A24(partyMenu->unk_948, &x, &y, 0, 0, partyMenu->partyMonIndex, DIR_MAX);
-        Set2dSpriteAnimSeqNo(partyMenu->unk_660[6], sub_0207B5EC(partyMenu->args->unk_25, partySlot));
-        Set2dSpriteVisibleFlag(partyMenu->unk_660[6], TRUE);
-        Sprite_SetPositionXY(partyMenu->unk_660[6], x, y);
+        Set2dSpriteAnimSeqNo(partyMenu->sprites[6], sub_0207B5EC(partyMenu->args->unk_25, partySlot));
+        Set2dSpriteVisibleFlag(partyMenu->sprites[6], TRUE);
+        Sprite_SetPositionXY(partyMenu->sprites[6], x, y);
     }
     u8 oldSlot = partyMenu->partyMonIndex;
     partyMenu->partyMonIndex = partySlot;
@@ -1437,7 +1437,7 @@ static int sub_0207AC70(PartyMenuStruct *partyMenu, BOOL a1) {
         return 4;
     } else if (partyMenu->partyMonIndex == PARTY_MON_SELECTION_CONFIRM) {
         PlaySE(SEQ_SE_GS_GEARCANCEL);
-        if (!partyMenu->unk_C63_7) {
+        if (!partyMenu->cancelDisabled) {
             sub_0207CB3C(partyMenu, a1);
             return 3;
         }
@@ -1513,7 +1513,7 @@ static u8 sub_0207ADB8(PartyMenuStruct *partyMenu) {
             PartyMenu_MoveCursorSpriteTo(partyMenu, selection, partyMenu->unk_948[selection].unk_0, partyMenu->unk_948[selection].unk_1);
             return sub_0207AC70(partyMenu, TRUE);
         case PARTY_MON_SELECTION_CANCEL:
-            if (partyMenu->unk_C63_7) {
+            if (partyMenu->cancelDisabled) {
                 // UB: hits "return result;" but result was never initialized
                 break;
             }
@@ -1543,7 +1543,7 @@ static u8 sub_0207ADB8(PartyMenuStruct *partyMenu) {
             } else {
                 return sub_0207AC70(partyMenu, FALSE);
             }
-        } else if ((gSystem.newKeys & PAD_BUTTON_B) && !partyMenu->unk_C63_7) {
+        } else if ((gSystem.newKeys & PAD_BUTTON_B) && !partyMenu->cancelDisabled) {
             PlaySE(SEQ_SE_GS_GEARCANCEL);
             sub_02079224(partyMenu, FALSE);
             sub_0207CB3C(partyMenu, FALSE);
@@ -1597,7 +1597,7 @@ static void sub_0207AFC4(PartyMenuStruct *partyMenu) {
     FreeToHeapExplicit(HEAP_ID_PARTY_MENU, buf);
     sub_0207D1C8(partyMenu);
     sub_0207DAD8(partyMenu, -1, TRUE);
-    thunk_Sprite_SetPalIndex(partyMenu->unk_660[6], 1);
+    thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 1);
 }
 
 static u8 sub_0207B0B0(PartyMenuStruct *partyMenu, u8 *buf) {
@@ -1668,7 +1668,7 @@ static u8 sub_0207B1C8(PartyMenuStruct *partyMenu, u8 *buf) {
 }
 
 static u8 sub_0207B200(PartyMenuStruct *partyMenu, u8 *buf) {
-    if (partyMenu->monsDrawState[partyMenu->partyMonIndex].unk_0E_0F == TRUE) {
+    if (partyMenu->monsDrawState[partyMenu->partyMonIndex].isCompatible == TRUE) {
         buf[0] = 13;
         buf[1] = 1;
         buf[2] = 9;
@@ -1822,30 +1822,30 @@ u8 sub_0207B4A0(PartyMenuStruct *partyMenu, u8 selection) {
 static void sub_0207B51C(PartyMenuStruct *partyMenu, u8 selection, BOOL active) {
     u8 animSeqNo;
     if (selection == PARTY_MON_SELECTION_CANCEL) {
-        animSeqNo = Get2dSpriteCurrentAnimSeqNo(partyMenu->unk_660[8]);
+        animSeqNo = Get2dSpriteCurrentAnimSeqNo(partyMenu->sprites[8]);
         if (active == FALSE) {
             animSeqNo &= 2;
         } else {
             animSeqNo = (animSeqNo & 2) + 1;
         }
-        Set2dSpriteAnimSeqNo(partyMenu->unk_660[8], animSeqNo);
+        Set2dSpriteAnimSeqNo(partyMenu->sprites[8], animSeqNo);
     } else if (selection == PARTY_MON_SELECTION_CONFIRM) {
-        animSeqNo = Get2dSpriteCurrentAnimSeqNo(partyMenu->unk_660[9]);
+        animSeqNo = Get2dSpriteCurrentAnimSeqNo(partyMenu->sprites[9]);
         if (active == FALSE) {
             animSeqNo &= 2;
         } else {
             animSeqNo = (animSeqNo & 2) + 1;
         }
-        Set2dSpriteAnimSeqNo(partyMenu->unk_660[9], animSeqNo);
+        Set2dSpriteAnimSeqNo(partyMenu->sprites[9], animSeqNo);
     } else {
         if (!active) {
             partyMenu->monsDrawState[selection].unk_16 -= 2;
             partyMenu->monsDrawState[selection].unk_18 -= 2;
-            Set2dSpriteAnimSeqNo(partyMenu->unk_660[selection], 0);
+            Set2dSpriteAnimSeqNo(partyMenu->sprites[selection], 0);
         } else {
             partyMenu->monsDrawState[selection].unk_16 += 2;
             partyMenu->monsDrawState[selection].unk_18 += 2;
-            Set2dSpriteAnimSeqNo(partyMenu->unk_660[selection], 1);
+            Set2dSpriteAnimSeqNo(partyMenu->sprites[selection], 1);
         }
         sub_0207A7F4(partyMenu, selection);
     }
@@ -1862,8 +1862,8 @@ static u8 sub_0207B600(PartyMenuStruct *partyMenu) {
     if (r5->unk_C == TRUE) {
         if (!sub_0207CC24(partyMenu)) {
             if (partyMenu->partyMonIndex != PARTY_MON_SELECTION_CONFIRM) {
-                Sprite_SetAnimCtrlCurrentFrame(partyMenu->unk_660[9], 0);
-                Set2dSpriteAnimSeqNo(partyMenu->unk_660[9], 0);
+                Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[9], 0);
+                Set2dSpriteAnimSeqNo(partyMenu->sprites[9], 0);
             }
             return r5->unk_8;
         } else {
@@ -2150,7 +2150,7 @@ static BOOL sub_0207BC1C(PartyMenuStruct *partyMenu, int *pState) {
         } else {
             sub_0207DAC4(partyMenu, msg_0300_00029, TRUE);
         }
-        thunk_Sprite_SetPalIndex(partyMenu->unk_660[6], 0);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 0);
         return TRUE;
     case LIST_NOTHING_CHOSEN:
         break;
@@ -2175,7 +2175,7 @@ static int PartyMenu_SoftboiledTryTargetCheck(PartyMenuStruct *partyMenu) {
     switch (PartyMenu_SoftboiledTargetCheck(partyMenu)) {
     case 0:
         PlaySE(SEQ_SE_DP_KAIFUKU);
-        thunk_Sprite_SetPalIndex(partyMenu->unk_660[6], 1);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 1);
         if (partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp - partyMenu->monsDrawState[partyMenu->partyMonIndex].hp < partyMenu->unk_C68[0]) {
             partyMenu->unk_C68[0] = partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp - partyMenu->monsDrawState[partyMenu->partyMonIndex].hp;
         }
@@ -2199,8 +2199,8 @@ static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
     if (r5->unk_C == TRUE) {
         if (!sub_0207CC24(partyMenu)) {
             if (partyMenu->partyMonIndex != PARTY_MON_SELECTION_CONFIRM) {
-                Sprite_SetAnimCtrlCurrentFrame(partyMenu->unk_660[9], 0);
-                Set2dSpriteAnimSeqNo(partyMenu->unk_660[9], 0);
+                Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[9], 0);
+                Set2dSpriteAnimSeqNo(partyMenu->sprites[9], 0);
             }
             return r5->unk_8;
         } else {
@@ -2252,7 +2252,7 @@ static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
     }
     case 1:
         ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
-        thunk_Sprite_SetPalIndex(partyMenu->unk_660[6], 0);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 0);
         sub_0207DAC4(partyMenu, msg_0300_00037, TRUE);
         partyMenu->unk_C68[1] = 0;
         break;
@@ -2279,7 +2279,7 @@ static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
         break;
     case 4:
         ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
-        thunk_Sprite_SetPalIndex(partyMenu->unk_660[6], 0);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 0);
         sub_0207FBC8(partyMenu);
         return PARTY_MENU_STATE_1;
     }
@@ -2292,7 +2292,7 @@ static u8 PartyMenu_SoftboiledTargetCheck(PartyMenuStruct *partyMenu) {
         return 2;
     }
     if (partyMenu->partyMonIndex == partyMenu->softboiledDonorSlot || partyMenu->monsDrawState[partyMenu->partyMonIndex].hp == 0 || partyMenu->monsDrawState[partyMenu->partyMonIndex].hp == partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp) {
-        thunk_Sprite_SetPalIndex(partyMenu->unk_660[6], 1);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 1);
         sub_0207DAEC(partyMenu, msg_0300_00120, TRUE);
         partyMenu->unk_C68[1] = 1;
         partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SOFTBOILED;
@@ -2304,10 +2304,10 @@ static u8 PartyMenu_SoftboiledTargetCheck(PartyMenuStruct *partyMenu) {
 static BOOL PartyMenu_SoftboiledHPTransferStep(PartyMenuStruct *partyMenu, u8 partySlot, s8 delta) {
     partyMenu->monsDrawState[partySlot].hp += delta;
     ++partyMenu->unk_C68[2];
-    sub_0207D480(partyMenu, partySlot);
+    PartyMenu_ClearMonHpTextWindow(partyMenu, partySlot);
     FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 3], 0);
-    sub_0207D440(partyMenu, partySlot);
-    sub_0207D4EC(partyMenu, partySlot);
+    PartyMenu_PrintMonCurHpOnWindow(partyMenu, partySlot);
+    PartyMenu_DrawMonHpBarOnWindow(partyMenu, partySlot);
     if (partyMenu->unk_C68[0] == partyMenu->unk_C68[2] || partyMenu->monsDrawState[partySlot].hp == partyMenu->monsDrawState[partySlot].maxHp) {
         Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partySlot);
         u32 hp = partyMenu->monsDrawState[partySlot].hp;
@@ -2350,7 +2350,7 @@ static u8 sub_0207C0DC(PartyMenuStruct *partyMenu) {
             }
             break;
         case PARTY_MON_SELECTION_CANCEL:
-            if (!partyMenu->unk_C63_7) {
+            if (!partyMenu->cancelDisabled) {
                 PlaySE(SEQ_SE_GS_GEARCANCEL);
                 PartyMenu_MoveCursorSpriteTo(partyMenu, 7, partyMenu->unk_948[7].unk_0, partyMenu->unk_948[7].unk_1);
                 sub_0207CBD0(partyMenu, 9, 3, TRUE);
@@ -2359,7 +2359,7 @@ static u8 sub_0207C0DC(PartyMenuStruct *partyMenu) {
         }
     } else if (gSystem.newKeys & PAD_BUTTON_A) {
         if (partyMenu->partyMonIndex == PARTY_MON_SELECTION_CONFIRM) {
-            if (!partyMenu->unk_C63_7) {
+            if (!partyMenu->cancelDisabled) {
                 PlaySE(SEQ_SE_GS_GEARCANCEL);
                 sub_0207CBD0(partyMenu, 9, 3, FALSE);
                 return 5;
@@ -2375,7 +2375,7 @@ static u8 sub_0207C0DC(PartyMenuStruct *partyMenu) {
         return 5;
     }
     if (gSystem.newKeys & PAD_BUTTON_B) {
-        if (!partyMenu->unk_C63_7) {
+        if (!partyMenu->cancelDisabled) {
             PlaySE(SEQ_SE_GS_GEARCANCEL);
             if (partyMenu->partyMonIndex == PARTY_MON_SELECTION_CONFIRM) {
                 sub_0207CBD0(partyMenu, 9, 3, FALSE);
@@ -2608,7 +2608,7 @@ static int sub_0207C8B4(PartyMenuStruct *partyMenu) {
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_10) {
         ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
         sub_0207DAC4(partyMenu, msg_0300_00029, TRUE);
-        thunk_Sprite_SetPalIndex(partyMenu->unk_660[6], 0);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 0);
         partyMenu->args->context = PARTY_MENU_CONTEXT_0;
         return PARTY_MENU_STATE_1;
     } else {
@@ -2652,7 +2652,7 @@ static int sub_0207CA30(PartyMenuStruct *partyMenu) {
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
         return PARTY_MENU_STATE_BEGIN_EXIT;
     } else {
-        thunk_Sprite_SetPalIndex(partyMenu->unk_660[6], 1);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 1);
         sub_0207DAEC(partyMenu, msg_0300_00179, TRUE);
         partyMenu->yesCallback = sub_0207FAA8;
         partyMenu->noCallback = sub_0207FAD4;

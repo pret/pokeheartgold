@@ -759,7 +759,7 @@ _0207F12A:
 _0207F140:
 	ldrh r1, [r2, #8]
 	mov r2, #0x30
-	bl sub_020880B0
+	bl CalculateHpBarColor
 	cmp r0, #4
 	bhi _0207F172
 	add r0, r0, r0

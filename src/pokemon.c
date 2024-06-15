@@ -858,7 +858,7 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void * dest) {
                  (blockB->spatkIV << 20) | \
                  (blockB->spdefIV << 25);
         break;
-    case MON_DATA_UNK_176:
+    case MON_DATA_NO_PRINT_GENDER:
         if ((blockA->species == SPECIES_NIDORAN_F || blockA->species == SPECIES_NIDORAN_M) && !blockB->isNicknamed) {
             ret = FALSE;
         } else {
@@ -1705,7 +1705,7 @@ static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value) {
     case MON_DATA_SANITY_IS_EGG:
     case MON_DATA_SPECIES_OR_EGG:
     case MON_DATA_IVS_WORD:
-    case MON_DATA_UNK_176:
+    case MON_DATA_NO_PRINT_GENDER:
     case MON_DATA_TYPE_1:
     case MON_DATA_TYPE_2:
     case MON_DATA_SPECIES_NAME:

@@ -334,7 +334,7 @@
 #define MON_DATA_SANITY_IS_EGG                  173
 #define MON_DATA_SPECIES_OR_EGG                 174 // If the Pokémon is in an Egg, return SPECIES_EGG.
 #define MON_DATA_IVS_WORD                       175
-#define MON_DATA_UNK_176                        176
+#define MON_DATA_NO_PRINT_GENDER                176
 #define MON_DATA_TYPE_1                         177
 #define MON_DATA_TYPE_2                         178
 #define MON_DATA_SPECIES_NAME                   179

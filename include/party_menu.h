@@ -172,36 +172,37 @@ typedef enum PartyMenuActionReturn {
 } PartyMenuActionReturn;
 
 typedef enum PartyMenuWindowId {
-    PARTY_MENU_WINDOW_ID_0,
-    PARTY_MENU_WINDOW_ID_1,
-    PARTY_MENU_WINDOW_ID_2,
-    PARTY_MENU_WINDOW_ID_3,
-    PARTY_MENU_WINDOW_ID_4,
-    PARTY_MENU_WINDOW_ID_5,
-    PARTY_MENU_WINDOW_ID_6,
-    PARTY_MENU_WINDOW_ID_7,
-    PARTY_MENU_WINDOW_ID_8,
-    PARTY_MENU_WINDOW_ID_9,
-    PARTY_MENU_WINDOW_ID_10,
-    PARTY_MENU_WINDOW_ID_11,
-    PARTY_MENU_WINDOW_ID_12,
-    PARTY_MENU_WINDOW_ID_13,
-    PARTY_MENU_WINDOW_ID_14,
-    PARTY_MENU_WINDOW_ID_15,
-    PARTY_MENU_WINDOW_ID_16,
-    PARTY_MENU_WINDOW_ID_17,
-    PARTY_MENU_WINDOW_ID_18,
-    PARTY_MENU_WINDOW_ID_19,
-    PARTY_MENU_WINDOW_ID_20,
-    PARTY_MENU_WINDOW_ID_21,
-    PARTY_MENU_WINDOW_ID_22,
-    PARTY_MENU_WINDOW_ID_23,
-    PARTY_MENU_WINDOW_ID_24,
-    PARTY_MENU_WINDOW_ID_25,
-    PARTY_MENU_WINDOW_ID_26,
-    PARTY_MENU_WINDOW_ID_27,
-    PARTY_MENU_WINDOW_ID_28,
-    PARTY_MENU_WINDOW_ID_29,
+    PARTY_MENU_WINDOW_ID_MON1_NICKNAME,
+    PARTY_MENU_WINDOW_ID_MON1_LEVEL,
+    PARTY_MENU_WINDOW_ID_MON1_HPTEXT,
+    PARTY_MENU_WINDOW_ID_MON1_HPBAR,
+    PARTY_MENU_WINDOW_ID_MON1_COMPAT,
+    PARTY_MENU_WINDOW_ID_MON2_NICKNAME,
+    PARTY_MENU_WINDOW_ID_MON2_LEVEL,
+    PARTY_MENU_WINDOW_ID_MON2_HPTEXT,
+    PARTY_MENU_WINDOW_ID_MON2_HPBAR,
+    PARTY_MENU_WINDOW_ID_MON2_COMPAT,
+    PARTY_MENU_WINDOW_ID_MON3_NICKNAME,
+    PARTY_MENU_WINDOW_ID_MON3_LEVEL,
+    PARTY_MENU_WINDOW_ID_MON3_HPTEXT,
+    PARTY_MENU_WINDOW_ID_MON3_HPBAR,
+    PARTY_MENU_WINDOW_ID_MON3_COMPAT,
+    PARTY_MENU_WINDOW_ID_MON4_NICKNAME,
+    PARTY_MENU_WINDOW_ID_MON4_LEVEL,
+    PARTY_MENU_WINDOW_ID_MON4_HPTEXT,
+    PARTY_MENU_WINDOW_ID_MON4_HPBAR,
+    PARTY_MENU_WINDOW_ID_MON4_COMPAT,
+    PARTY_MENU_WINDOW_ID_MON5_NICKNAME,
+    PARTY_MENU_WINDOW_ID_MON5_LEVEL,
+    PARTY_MENU_WINDOW_ID_MON5_HPTEXT,
+    PARTY_MENU_WINDOW_ID_MON5_HPBAR,
+    PARTY_MENU_WINDOW_ID_MON5_COMPAT,
+    PARTY_MENU_WINDOW_ID_MON6_NICKNAME,
+    PARTY_MENU_WINDOW_ID_MON6_LEVEL,
+    PARTY_MENU_WINDOW_ID_MON6_HPTEXT,
+    PARTY_MENU_WINDOW_ID_MON6_HPBAR,
+    PARTY_MENU_WINDOW_ID_MON6_COMPAT,
+
     PARTY_MENU_WINDOW_ID_30,
     PARTY_MENU_WINDOW_ID_31,
     PARTY_MENU_WINDOW_ID_32,
@@ -213,7 +214,19 @@ typedef enum PartyMenuWindowId {
     PARTY_MENU_WINDOW_ID_38,
     PARTY_MENU_WINDOW_ID_39,
     PARTY_MENU_WINDOW_ID_MAX,
+
+    PARTY_MENU_WINDOWS_PER_MON = 5,
 } PartyMenuWindowId;
+
+typedef enum PartyMonStatusIconId {
+    PARTY_MON_STATUS_ICON_PRZ = 1,
+    PARTY_MON_STATUS_ICON_FRZ,
+    PARTY_MON_STATUS_ICON_SLP,
+    PARTY_MON_STATUS_ICON_PSN,
+    PARTY_MON_STATUS_ICON_BRN,
+    PARTY_MON_STATUS_ICON_FNT,
+    PARTY_MON_STATUS_ICON_OK,
+} PartyMonStatusIconId;
 
 typedef struct UnkTemplate_0207E590 {
     LISTMENUITEM *unk_00;
@@ -231,7 +244,7 @@ typedef struct UnkStruct_0207E590 {
     u8 unk_1;
     u8 unk_2;
     u8 unk_3;
-    UnkTemplate_0207E590 unk_4;
+    UnkTemplate_0207E590 template;
 } UnkStruct_0207E590;
 
 typedef struct FieldMoveUseData {
@@ -309,10 +322,10 @@ typedef struct PartyMenuMonsDrawState {
     u16 maxHp;        // 830
     u16 level;        // 832
     u16 heldItem;     // 834
-    u16 unk_0E_00:12; // 836
-    u16 unk_0E_0C:1;
+    u16 status:12;    // 836
+    u16 dontPrintGenderSymbol:1;
     u16 gender:2;
-    u16 unk_0E_0F:1;
+    u16 isCompatible:1;
     u8 isEgg;         // 838
     u8 form;          // 839
     u16 capsule;      // 83A
@@ -336,7 +349,7 @@ struct PartyMenuStruct {
     PartyMenuArgs *args; //0x654
     u8 filler_658[0x4];
     SpriteGfxHandler *unk_65C;
-    Sprite *unk_660[87];
+    Sprite *sprites[87];
     MessagePrinter *msgPrinter; //0x7bc
     MsgData *msgData; //0x7c0
     MessageFormat* msgFormat; //0x7c4
@@ -356,7 +369,7 @@ struct PartyMenuStruct {
     u8 afterTextPrinterState;
     u8 softboiledDonorSlot:6;
     u8 unk_C63_6:1;
-    u8 unk_C63_7:1;
+    u8 cancelDisabled:1;
     u8 textPrinterId;
     u8 partyMonIndex; // 0xc65
     u8 unk_C66;

@@ -1305,7 +1305,7 @@ _0208165E:
 	add r0, r7, #0
 	bl String_Delete
 	ldr r0, [sp, #8]
-	bl sub_0208AD64
+	bl Pokemon_GetStatusIconId
 	add r4, r0, #0
 	ldr r1, _02081700 ; =0x00000C65
 	lsl r2, r4, #0x18
@@ -1329,7 +1329,7 @@ _0208165E:
 	strh r3, [r2, r0]
 	ldrb r1, [r5, r1]
 	add r0, r5, #0
-	bl sub_0207D3E4
+	bl PartyMenu_PrintMonLevelOnWindow
 _020816E0:
 	ldr r1, _02081700 ; =0x00000C65
 	add r0, r5, #0
@@ -1385,7 +1385,7 @@ _02081754:
 	ldr r1, _020817B4 ; =0x00000C65
 	add r0, r5, #0
 	ldrb r1, [r5, r1]
-	bl sub_0207D480
+	bl PartyMenu_ClearMonHpTextWindow
 	ldr r1, _020817B4 ; =0x00000C65
 	add r0, r5, #4
 	ldrb r2, [r5, r1]
@@ -1399,11 +1399,11 @@ _02081754:
 	ldr r1, _020817B4 ; =0x00000C65
 	add r0, r5, #0
 	ldrb r1, [r5, r1]
-	bl sub_0207D440
+	bl PartyMenu_PrintMonCurHpOnWindow
 	ldr r1, _020817B4 ; =0x00000C65
 	add r0, r5, #0
 	ldrb r1, [r5, r1]
-	bl sub_0207D4EC
+	bl PartyMenu_DrawMonHpBarOnWindow
 	ldr r0, _020817B4 ; =0x00000C65
 	mov r1, #0x30
 	ldrb r0, [r5, r0]
@@ -1618,7 +1618,7 @@ _02081894:
 	add r1, r7, #0
 	ldrb r1, [r4, r1]
 	add r0, r4, #0
-	bl sub_0207D3E4
+	bl PartyMenu_PrintMonLevelOnWindow
 	add r1, r7, #0
 	ldrb r1, [r4, r1]
 	add r0, r4, #0
@@ -1657,7 +1657,7 @@ _0208195C:
 	strh r3, [r1, r0]
 	ldrb r1, [r4, r2]
 	add r0, r4, #0
-	bl sub_0207D480
+	bl PartyMenu_ClearMonHpTextWindow
 	ldr r1, _02081A50 ; =0x00000C65
 	add r0, r4, #4
 	ldrb r2, [r4, r1]
@@ -1671,11 +1671,11 @@ _0208195C:
 	ldr r1, _02081A50 ; =0x00000C65
 	add r0, r4, #0
 	ldrb r1, [r4, r1]
-	bl sub_0207D440
+	bl PartyMenu_PrintMonCurHpOnWindow
 	ldr r1, _02081A50 ; =0x00000C65
 	add r0, r4, #0
 	ldrb r1, [r4, r1]
-	bl sub_0207D4EC
+	bl PartyMenu_DrawMonHpBarOnWindow
 	ldr r0, _02081A50 ; =0x00000C65
 	mov r1, #0x30
 	ldrb r0, [r4, r0]
@@ -1890,7 +1890,7 @@ sub_02081A74: ; 0x02081A74
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r4, #0
-	bl sub_0208AD64
+	bl Pokemon_GetStatusIconId
 	add r4, r0, #0
 	ldr r1, _02081C18 ; =0x00000C65
 	lsl r2, r4, #0x18
@@ -1914,7 +1914,7 @@ sub_02081A74: ; 0x02081A74
 	strh r3, [r2, r0]
 	ldrb r1, [r5, r1]
 	add r0, r5, #0
-	bl sub_0207D3E4
+	bl PartyMenu_PrintMonLevelOnWindow
 _02081BD2:
 	ldr r1, _02081C18 ; =0x00000C65
 	add r0, r5, #0

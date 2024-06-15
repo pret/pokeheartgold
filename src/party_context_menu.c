@@ -11,17 +11,17 @@
 #include "unk_0208805C.h"
 #include "unk_02080BB4.h"
 
-static void sub_0207DD14(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
 static void sub_0207CB9C(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1, int a2);
 static void sub_0207CD84(BgConfig *bgConfig, Window *window, const WindowTemplate *template);
-static void sub_0207D268(PartyMenuStruct *partyMenu, int windowId);
-static void sub_0207D2E4(PartyMenuStruct *partyMenu, u8 partySlot);
-static void sub_0207D4AC(PartyMenuStruct *partyMenu, u8 partySlot);
+static void PartyMenu_DrawSlashOnMonHpTextWindow(PartyMenuStruct *partyMenu, u8 partySlot);
+static void PartyMenu_PrintMonNicknameOnWindow(PartyMenuStruct *partyMenu, u8 partySlot);
+static void PartyMenu_PrintMonMaxHpOnWindow(PartyMenuStruct *partyMenu, u8 partySlot);
 static u32 sub_0207D988(FontID fontId, String *string, u32 windowWidth);
 static void sub_0207DA64(PartyMenuStruct *partyMenu, Window *window, int msgId, BOOL drawFrame);
 static BOOL sub_0207DB80(TextPrinterTemplate *template, u16 glyphId);
 static void sub_0207DC20(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
 static void sub_0207DC90(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
+static void sub_0207DD14(PartyMenuStruct *partyMenu, u8 partySlot, u8 isCompatible);
 static void sub_0207DD7C(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
 static void sub_0207E17C(PartyMenuStruct *partyMenu, int a1, int a2);
 static void sub_0207E1DC(PartyMenuStruct *partyMenu, int a1, int a2);
@@ -129,29 +129,29 @@ static const u8 _021015EC[][4] = {
 
 static const s8 _021016B4[][2][8] = {
     {
-            { 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
-        { 0x07, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }
+            { 0, -1, -1, -1, -1, -1, -1, -1 },
+        { 7, -1, -1, -1, -1, -1, -1, -1 }
     }, {
-            { 0x00, 0x07, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
-        { 0x08, 0x07, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }
+            { 0, 7, -1, -1, -1, -1, -1, -1 },
+        { 8, 7, -1, -1, -1, -1, -1, -1 }
     }, {
-            { 0x00, 0x01, 0x07, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
-        { 0x08, 0x09, 0x07, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }
+            { 0, 1, 7, -1, -1, -1, -1, -1 },
+        { 8, 9, 7, -1, -1, -1, -1, -1 }
     }, {
-            { 0x00, 0x01, 0x02, 0x07, 0xFF, 0xFF, 0xFF, 0xFF },
-        { 0x08, 0x09, 0x0A, 0x07, 0xFF, 0xFF, 0xFF, 0xFF }
+            { 0, 1, 2, 7, -1, -1, -1, -1 },
+        { 8, 9, 10, 7, -1, -1, -1, -1 }
     }, {
-            { 0x00, 0x01, 0x02, 0x07, 0x03, 0xFF, 0xFF, 0xFF },
-        { 0x08, 0x09, 0x0A, 0x0B, 0x07, 0xFF, 0xFF, 0xFF }
+            { 0, 1, 2, 7, 3, -1, -1, -1 },
+        { 8, 9, 10, 11, 7, -1, -1, -1 }
     }, {
-            { 0x00, 0x01, 0x02, 0x07, 0x03, 0x04, 0xFF, 0xFF },
-        { 0x00, 0x01, 0x02, 0x03, 0x04, 0x08, 0xFF, 0xFF }
+            { 0, 1, 2, 7, 3, 4, -1, -1 },
+        { 0, 1, 2, 3, 4, 8, -1, -1 }
     }, {
-            { 0x00, 0x01, 0x02, 0x07, 0x03, 0x04, 0x05, 0xFF },
-        { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x08, 0xFF }
+            { 0, 1, 2, 7, 3, 4, 5, -1 },
+        { 0, 1, 2, 3, 4, 5, 8, -1 }
     }, {
-            { 0x00, 0x01, 0x02, 0x07, 0x03, 0x04, 0x05, 0x06 },
-        { 0x00, 0x01, 0x02, 0x07, 0x03, 0x04, 0x05, 0x06 }
+            { 0, 1, 2, 7, 3, 4, 5, 6 },
+        { 0, 1, 2, 7, 3, 4, 5, 6 }
     },
 };
 
@@ -160,12 +160,12 @@ static const u16 _021015AC[] = {
 };
 
 static const u16 _021015BC[][4] = {
-    { 0x0008, 0x0002, 0x0014, 0x000E },
-    { 0x0009, 0x0003, 0x0015, 0x000F },
-    { 0x000A, 0x0004, 0x0016, 0x0010 },
-    { 0x000B, 0x0005, 0x0017, 0x0011 },
-    { 0x000C, 0x0006, 0x0018, 0x0012 },
-    { 0x000D, 0x0007, 0x0019, 0x0013 },
+    { msg_0300_00008, msg_0300_00002, msg_0300_00020, msg_0300_00014 },
+    { msg_0300_00009, msg_0300_00003, msg_0300_00021, msg_0300_00015 },
+    { msg_0300_00010, msg_0300_00004, msg_0300_00022, msg_0300_00016 },
+    { msg_0300_00011, msg_0300_00005, msg_0300_00023, msg_0300_00017 },
+    { msg_0300_00012, msg_0300_00006, msg_0300_00024, msg_0300_00018 },
+    { msg_0300_00013, msg_0300_00007, msg_0300_00025, msg_0300_00019 },
 };
 
 static int _021101A4[][5][2] = {
@@ -306,7 +306,7 @@ static void sub_0207CB9C(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1, int
 
     unk->unk_6_0 = 0;
     unk->unk_6_4 = 0;
-    unk->unk_0 = &a1->unk_4;
+    unk->unk_0 = &a1->template;
     unk->unk_4 = a1->unk_2;
     unk->unk_5 = a1->unk_1;
     unk->unk_7 = a1->unk_3;
@@ -321,10 +321,10 @@ void sub_0207CBD0(PartyMenuStruct *partyMenu, int a1, int a2, BOOL a3) {
     unk->unk_6_4 = 0;
     unk->unk_0 = NULL;
     unk->unk_5 = a1;
-    unk->unk_7 = Get2dSpriteCurrentAnimSeqNo(partyMenu->unk_660[a1]) & 2;
+    unk->unk_7 = Get2dSpriteCurrentAnimSeqNo(partyMenu->sprites[a1]) & 2;
     if (a3 == TRUE) {
-        Sprite_SetAnimCtrlCurrentFrame(partyMenu->unk_660[a1], 0);
-        Set2dSpriteAnimSeqNo(partyMenu->unk_660[a1], unk->unk_7);
+        Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[a1], 0);
+        Set2dSpriteAnimSeqNo(partyMenu->sprites[a1], unk->unk_7);
     }
     unk->unk_8 = a2;
     unk->unk_C = TRUE;
@@ -340,8 +340,8 @@ BOOL sub_0207CC24(PartyMenuStruct *partyMenu) {
             sub_0207E28C(partyMenu, unk->unk_0, unk->unk_4, unk->unk_5, unk->unk_7, 0);
             BgCommitTilemapBufferToVram(partyMenu->bgConfig, GF_BG_LYR_MAIN_0);
         } else {
-            Sprite_SetAnimCtrlCurrentFrame(partyMenu->unk_660[unk->unk_5], 0);
-            Set2dSpriteAnimSeqNo(partyMenu->unk_660[unk->unk_5], unk->unk_7);
+            Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[unk->unk_5], 0);
+            Set2dSpriteAnimSeqNo(partyMenu->sprites[unk->unk_5], unk->unk_7);
         }
         ++unk->unk_6_4;
         break;
@@ -353,8 +353,8 @@ BOOL sub_0207CC24(PartyMenuStruct *partyMenu) {
                 sub_0207E28C(partyMenu, unk->unk_0, unk->unk_4, unk->unk_5, unk->unk_7, 1);
                 BgCommitTilemapBufferToVram(partyMenu->bgConfig, GF_BG_LYR_MAIN_0);
             } else {
-                Sprite_SetAnimCtrlCurrentFrame(partyMenu->unk_660[unk->unk_5], 0);
-                Set2dSpriteAnimSeqNo(partyMenu->unk_660[unk->unk_5], unk->unk_7 + 1);
+                Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[unk->unk_5], 0);
+                Set2dSpriteAnimSeqNo(partyMenu->sprites[unk->unk_5], unk->unk_7 + 1);
             }
             unk->unk_6_0 = 0;
             ++unk->unk_6_4;
@@ -382,17 +382,17 @@ static void sub_0207CD84(BgConfig *bgConfig, Window *window, const WindowTemplat
 
 void sub_0207CDCC(PartyMenuStruct *partyMenu) {
     const WindowTemplate *r4 = _02101734;
-    sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_0], &r4[0]);
-    sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_10], &r4[10]);
-    sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_20], &r4[20]);
+    sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON1_NICKNAME], &r4[0]);
+    sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON3_NICKNAME], &r4[10]);
+    sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON5_NICKNAME], &r4[20]);
     if (partyMenu->args->unk_25 == 2) {
-        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_5], &r4[30]);
-        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_15], &r4[35]);
-        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_25], &r4[40]);
+        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON2_NICKNAME], &r4[30]);
+        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON4_NICKNAME], &r4[35]);
+        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON6_NICKNAME], &r4[40]);
     } else {
-        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_5], &r4[5]);
-        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_15], &r4[15]);
-        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_25], &r4[25]);
+        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON2_NICKNAME], &r4[5]);
+        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON4_NICKNAME], &r4[15]);
+        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON6_NICKNAME], &r4[25]);
     }
     AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_37], &r4[45]);
     AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_38], &r4[46]);
@@ -497,19 +497,19 @@ void sub_0207D1C8(PartyMenuStruct *partyMenu) {
     }
 }
 
-static void sub_0207D268(PartyMenuStruct *partyMenu, int windowId) {
-    sub_0200CDAC(partyMenu->msgPrinter, 0, &partyMenu->windows[PARTY_MENU_WINDOW_ID_5 * windowId + 2], 28, 2);
+static void PartyMenu_DrawSlashOnMonHpTextWindow(PartyMenuStruct *partyMenu, u8 partySlot) {
+    sub_0200CDAC(partyMenu->msgPrinter, 0, &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPTEXT], 28, 2);
 }
 
-void sub_0207D294(PartyMenuStruct *partyMenu, Pokemon *mon, u32 partySlot) {
+void PartyMenu_BufferMonNickname(PartyMenuStruct *partyMenu, Pokemon *mon, u32 partySlot) {
     String *msg = NewString_ReadMsgData(partyMenu->msgData, _021015BC[partySlot][0]);
     BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->monsDrawState[partySlot].nickname, msg);
     String_Delete(msg);
 }
 
-static void sub_0207D2E4(PartyMenuStruct *partyMenu, u8 partySlot) {
-    Window *window = &partyMenu->windows[partySlot * 5 + 0];
+static void PartyMenu_PrintMonNicknameOnWindow(PartyMenuStruct *partyMenu, u8 partySlot) {
+    Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_NICKNAME];
 
     AddTextPrinterParameterizedWithColor(window, 0, partyMenu->monsDrawState[partySlot].nickname, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     if (partyMenu->monsDrawState[partySlot].isEgg == TRUE) {
@@ -517,12 +517,11 @@ static void sub_0207D2E4(PartyMenuStruct *partyMenu, u8 partySlot) {
     } else {
         FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_38], 0);
         AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_38], 0, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_ITEM], 2, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 14, 0), NULL);
-        if (!partyMenu->monsDrawState[partySlot].unk_0E_0C) {
+        if (!partyMenu->monsDrawState[partySlot].dontPrintGenderSymbol) {
             if (partyMenu->monsDrawState[partySlot].gender == MON_MALE) {
                 ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00027, partyMenu->unformattedStrBuf);
                 AddTextPrinterParameterizedWithColor(window, 0, partyMenu->unformattedStrBuf, 64, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 4, 0), NULL);
-            }
-            else if (partyMenu->monsDrawState[partySlot].gender == MON_FEMALE) {
+            } else if (partyMenu->monsDrawState[partySlot].gender == MON_FEMALE) {
                 ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00028, partyMenu->unformattedStrBuf);
                 AddTextPrinterParameterizedWithColor(window, 0, partyMenu->unformattedStrBuf, 64, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(5, 6, 0), NULL);
             }
@@ -531,10 +530,10 @@ static void sub_0207D2E4(PartyMenuStruct *partyMenu, u8 partySlot) {
     }
 }
 
-void sub_0207D3E4(PartyMenuStruct *partyMenu, u8 partySlot) {
-    Window *window = &partyMenu->windows[partySlot * 5 + 1];
+void PartyMenu_PrintMonLevelOnWindow(PartyMenuStruct *partyMenu, u8 partySlot) {
+    Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_LEVEL];
 
-    if (partyMenu->monsDrawState[partySlot].unk_0E_00 != 7) {
+    if (partyMenu->monsDrawState[partySlot].status != PARTY_MON_STATUS_ICON_OK) {
         ScheduleWindowCopyToVram(window);
     } else {
         sub_0200CE7C(partyMenu->msgPrinter, 1, partyMenu->monsDrawState[partySlot].level, 3, PRINTING_MODE_LEFT_ALIGN, window, 5, 2);
@@ -542,31 +541,31 @@ void sub_0207D3E4(PartyMenuStruct *partyMenu, u8 partySlot) {
     }
 }
 
-void sub_0207D440(PartyMenuStruct *partyMenu, u8 partySlot) {
-    Window *window = &partyMenu->windows[partySlot * 5 + 2];
+void PartyMenu_PrintMonCurHpOnWindow(PartyMenuStruct *partyMenu, u8 partySlot) {
+    Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPTEXT];
 
     PrintUIntOnWindow(partyMenu->msgPrinter, partyMenu->monsDrawState[partySlot].hp, 3, PRINTING_MODE_RIGHT_ALIGN, window, 0, 2);
     ScheduleWindowCopyToVram(window);
 }
 
-void sub_0207D480(PartyMenuStruct *partyMenu, u8 partySlot) {
-    Window *window = &partyMenu->windows[partySlot * 5 + 2];
+void PartyMenu_ClearMonHpTextWindow(PartyMenuStruct *partyMenu, u8 partySlot) {
+    Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPTEXT];
 
     FillWindowPixelRect(window, 0, 0, 0, 24, 16);
     ScheduleWindowCopyToVram(window);
 }
 
-static void sub_0207D4AC(PartyMenuStruct *partyMenu, u8 partySlot) {
-    Window *window = &partyMenu->windows[partySlot * 5 + 2];
+static void PartyMenu_PrintMonMaxHpOnWindow(PartyMenuStruct *partyMenu, u8 partySlot) {
+    Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPTEXT];
 
     PrintUIntOnWindow(partyMenu->msgPrinter, partyMenu->monsDrawState[partySlot].maxHp, 3, PRINTING_MODE_LEFT_ALIGN, window, 36, 2);
     ScheduleWindowCopyToVram(window);
 }
 
-void sub_0207D4EC(PartyMenuStruct *partyMenu, u8 partySlot) {
-    Window *window = &partyMenu->windows[partySlot * 5 + 3];
+void PartyMenu_DrawMonHpBarOnWindow(PartyMenuStruct *partyMenu, u8 partySlot) {
+    Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPBAR];
 
-    switch (sub_020880B0(partyMenu->monsDrawState[partySlot].hp, partyMenu->monsDrawState[partySlot].maxHp, 48)) {
+    switch (CalculateHpBarColor(partyMenu->monsDrawState[partySlot].hp, partyMenu->monsDrawState[partySlot].maxHp, 48)) {
     case 0:
         ScheduleWindowCopyToVram(window);
         return;
@@ -582,7 +581,7 @@ void sub_0207D4EC(PartyMenuStruct *partyMenu, u8 partySlot) {
         break;
     }
 
-    u8 barLength = RatioToInt(partyMenu->monsDrawState[partySlot].hp, partyMenu->monsDrawState[partySlot].maxHp, 48);
+    u8 barLength = CalculateHpBarPixelsLength(partyMenu->monsDrawState[partySlot].hp, partyMenu->monsDrawState[partySlot].maxHp, 48);
     FillWindowPixelRect(window, 10, 0, 2, barLength, 1);
     FillWindowPixelRect(window, 9, 0, 3, barLength, 2);
     FillWindowPixelRect(window, 10, 0, 5, barLength, 1);
@@ -590,47 +589,47 @@ void sub_0207D4EC(PartyMenuStruct *partyMenu, u8 partySlot) {
 }
 
 void sub_0207D5DC(PartyMenuStruct *partyMenu, u8 partySlot) {
-    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 0], 0);
-    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 1], 0);
-    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 2], 0);
-    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 3], 0);
-    sub_0207D2E4(partyMenu, partySlot);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_NICKNAME], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_LEVEL], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPTEXT], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPBAR], 0);
+    PartyMenu_PrintMonNicknameOnWindow(partyMenu, partySlot);
     if (partyMenu->monsDrawState[partySlot].isEgg == TRUE) {
-        ScheduleWindowCopyToVram(&partyMenu->windows[partySlot * 5 + 0]);
-        ScheduleWindowCopyToVram(&partyMenu->windows[partySlot * 5 + 1]);
-        ScheduleWindowCopyToVram(&partyMenu->windows[partySlot * 5 + 2]);
-        ScheduleWindowCopyToVram(&partyMenu->windows[partySlot * 5 + 3]);
+        ScheduleWindowCopyToVram(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_NICKNAME]);
+        ScheduleWindowCopyToVram(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_LEVEL]);
+        ScheduleWindowCopyToVram(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPTEXT]);
+        ScheduleWindowCopyToVram(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPBAR]);
     } else {
-        sub_0207D268(partyMenu, partySlot);
-        sub_0207D3E4(partyMenu, partySlot);
-        sub_0207D440(partyMenu, partySlot);
-        sub_0207D4AC(partyMenu, partySlot);
-        sub_0207D4EC(partyMenu, partySlot);
+        PartyMenu_DrawSlashOnMonHpTextWindow(partyMenu, partySlot);
+        PartyMenu_PrintMonLevelOnWindow(partyMenu, partySlot);
+        PartyMenu_PrintMonCurHpOnWindow(partyMenu, partySlot);
+        PartyMenu_PrintMonMaxHpOnWindow(partyMenu, partySlot);
+        PartyMenu_DrawMonHpBarOnWindow(partyMenu, partySlot);
     }
 }
 
 void sub_0207D6A0(PartyMenuStruct *partyMenu, u8 partySlot) {
-    CopyWindowPixelsToVram_TextMode(&partyMenu->windows[partySlot * 5 + 0]);
-    CopyWindowPixelsToVram_TextMode(&partyMenu->windows[partySlot * 5 + 1]);
-    CopyWindowPixelsToVram_TextMode(&partyMenu->windows[partySlot * 5 + 2]);
-    CopyWindowPixelsToVram_TextMode(&partyMenu->windows[partySlot * 5 + 3]);
+    CopyWindowPixelsToVram_TextMode(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_NICKNAME]);
+    CopyWindowPixelsToVram_TextMode(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_LEVEL]);
+    CopyWindowPixelsToVram_TextMode(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPTEXT]);
+    CopyWindowPixelsToVram_TextMode(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPBAR]);
 }
 
 void sub_0207D6D8(PartyMenuStruct *partyMenu, u8 partySlot) {
-    ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[partySlot * 5 + 0]);
-    ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[partySlot * 5 + 1]);
-    ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[partySlot * 5 + 2]);
-    ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[partySlot * 5 + 3]);
+    ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_NICKNAME]);
+    ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_LEVEL]);
+    ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPTEXT]);
+    ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPBAR]);
 }
 
 void sub_0207D710(PartyMenuStruct *partyMenu, u8 partySlot) {
-    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 0], 0);
-    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 1], 0);
-    sub_0207D2E4(partyMenu, partySlot);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_NICKNAME], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_LEVEL], 0);
+    PartyMenu_PrintMonNicknameOnWindow(partyMenu, partySlot);
     if (partyMenu->monsDrawState[partySlot].isEgg == TRUE) {
         sub_0207DC20(partyMenu, partySlot, 1);
     } else {
-        sub_0207D3E4(partyMenu, partySlot);
+        PartyMenu_PrintMonLevelOnWindow(partyMenu, partySlot);
         Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partySlot);
         if (!GetMonEvolution(NULL, mon, EVOCTX_ITEM_USE, partyMenu->args->itemId, NULL)) {
             sub_0207DC20(partyMenu, partySlot, 1);
@@ -641,13 +640,13 @@ void sub_0207D710(PartyMenuStruct *partyMenu, u8 partySlot) {
 }
 
 void sub_0207D7A8(PartyMenuStruct *partyMenu, u8 partySlot) {
-    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 0], 0);
-    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 1], 0);
-    sub_0207D2E4(partyMenu, partySlot);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_NICKNAME], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_LEVEL], 0);
+    PartyMenu_PrintMonNicknameOnWindow(partyMenu, partySlot);
     if (partyMenu->monsDrawState[partySlot].isEgg == TRUE) {
         sub_0207DC90(partyMenu, partySlot, 1);
     } else {
-        sub_0207D3E4(partyMenu, partySlot);
+        PartyMenu_PrintMonLevelOnWindow(partyMenu, partySlot);
         u8 x = sub_020820DC(partyMenu, Party_GetMonByIndex(partyMenu->args->party, partySlot));
         if (x == 0xFF) {
             sub_0207DC90(partyMenu, partySlot, 1);
@@ -660,21 +659,21 @@ void sub_0207D7A8(PartyMenuStruct *partyMenu, u8 partySlot) {
 }
 
 void sub_0207D840(PartyMenuStruct *partyMenu, u8 partySlot) {
-    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 0], 0);
-    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 1], 0);
-    sub_0207D2E4(partyMenu, partySlot);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_NICKNAME], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_LEVEL], 0);
+    PartyMenu_PrintMonNicknameOnWindow(partyMenu, partySlot);
     if (partyMenu->monsDrawState[partySlot].isEgg != TRUE) {
-        sub_0207D3E4(partyMenu, partySlot);
+        PartyMenu_PrintMonLevelOnWindow(partyMenu, partySlot);
     }
-    sub_0207DD14(partyMenu, partySlot, partyMenu->monsDrawState[partySlot].unk_0E_0F);
+    sub_0207DD14(partyMenu, partySlot, partyMenu->monsDrawState[partySlot].isCompatible);
 }
 
 void sub_0207D8A4(PartyMenuStruct *partyMenu, u8 partySlot) {
-    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 0], 0);
-    FillWindowPixelBuffer(&partyMenu->windows[partySlot * 5 + 1], 0);
-    sub_0207D2E4(partyMenu, partySlot);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_NICKNAME], 0);
+    FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_LEVEL], 0);
+    PartyMenu_PrintMonNicknameOnWindow(partyMenu, partySlot);
     if (partyMenu->monsDrawState[partySlot].isEgg != TRUE) {
-        sub_0207D3E4(partyMenu, partySlot);
+        PartyMenu_PrintMonLevelOnWindow(partyMenu, partySlot);
     }
 }
 
@@ -803,15 +802,15 @@ void sub_0207DBCC(PartyMenuStruct *partyMenu) {
 }
 
 static void sub_0207DC20(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
-    Window *window = &partyMenu->windows[partySlot * 5 + 4];
+    Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_COMPAT];
     String *string;
 
     FillWindowPixelBuffer(window, 0);
     switch (a2) {
-    case 0:
+    case 0: // ABLE!
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00161);
         break;
-    case 1:
+    case 1: // UNABLE!
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00162);
         break;
     }
@@ -821,19 +820,19 @@ static void sub_0207DC20(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
     ScheduleWindowCopyToVram(window);
 }
 
-static void sub_0207DC90(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
-    Window *window = &partyMenu->windows[partySlot * 5 + 4];
+static void sub_0207DC90(PartyMenuStruct *partyMenu, u8 partySlot, u8 compatibilityParam) {
+    Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_COMPAT];
     String *string;
 
     FillWindowPixelBuffer(window, 0);
-    switch (a2) {
-    case 0:
+    switch (compatibilityParam) {
+    case 0: // ABLE!
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00158);
         break;
-    case 1:
+    case 1: // UNABLE!
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00159);
         break;
-    case 2:
+    case 2: // LEARNED
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00160);
         break;
     }
@@ -843,14 +842,16 @@ static void sub_0207DC90(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
     ScheduleWindowCopyToVram(window);
 }
 
-static void sub_0207DD14(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
-    Window *window = &partyMenu->windows[partySlot * 5 + 4];
+static void sub_0207DD14(PartyMenuStruct *partyMenu, u8 partySlot, u8 isCompatible) {
+    Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_COMPAT];
     String *string;
 
     FillWindowPixelBuffer(window, 0);
-    if (a2 == 0) {
+    if (isCompatible == FALSE) {
+        // UNABLE
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00164);
     } else {
+        // ABLE
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00163);
     }
     AddTextPrinterParameterizedWithColor(window, 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
@@ -859,7 +860,7 @@ static void sub_0207DD14(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
 }
 
 static void sub_0207DD7C(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
-    Window *window = &partyMenu->windows[partySlot * 5 + 4];
+    Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_COMPAT];
     String *string;
 
     FillWindowPixelBuffer(window, 0);
@@ -1073,19 +1074,19 @@ void sub_0207E54C(PartyMenuStruct *partyMenu, int a1, int a2, int a3) {
     }
 }
 
-UnkStruct_0207E590 *sub_0207E590(PartyMenuStruct *partyMenu, const UnkTemplate_0207E590 *a1, int a2, HeapID a3, int a4) {
-    UnkStruct_0207E590 *ret = AllocFromHeap(a3, sizeof(UnkStruct_0207E590));
-    ret->unk_4 = *a1;
-    ret->unk_2 = ret->unk_4.unk_0A;
+UnkStruct_0207E590 *sub_0207E590(PartyMenuStruct *partyMenu, const UnkTemplate_0207E590 *template, int a2, HeapID heapId, int a4) {
+    UnkStruct_0207E590 *ret = AllocFromHeap(heapId, sizeof(UnkStruct_0207E590));
+    ret->template = *template;
+    ret->unk_2 = ret->template.unk_0A;
     ret->unk_0 = a2;
     ret->unk_1 = a2;
     ret->unk_3 = a4;
-    sub_0207E17C(partyMenu, ret->unk_4.unk_0A, ret->unk_3);
-    sub_0207E358(partyMenu, &ret->unk_4, ret->unk_4.unk_0A, ret->unk_0, ret->unk_3);
+    sub_0207E17C(partyMenu, ret->template.unk_0A, ret->unk_3);
+    sub_0207E358(partyMenu, &ret->template, ret->template.unk_0A, ret->unk_0, ret->unk_3);
     sub_0207CB7C();
-    Set2dSpriteVisibleFlag(partyMenu->unk_660[9], FALSE);
+    Set2dSpriteVisibleFlag(partyMenu->sprites[9], FALSE);
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_22 || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
-        Set2dSpriteVisibleFlag(partyMenu->unk_660[8], FALSE);
+        Set2dSpriteVisibleFlag(partyMenu->sprites[8], FALSE);
     }
     return ret;
 }
@@ -1094,12 +1095,12 @@ void sub_0207E618(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1) {
     sub_0207E1DC(partyMenu, a1->unk_2, a1->unk_3);
     FreeToHeap(a1);
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_4 || partyMenu->args->context == PARTY_MENU_CONTEXT_21) {
-        Set2dSpriteVisibleFlag(partyMenu->unk_660[9], FALSE);
+        Set2dSpriteVisibleFlag(partyMenu->sprites[9], FALSE);
     } else {
-        Set2dSpriteVisibleFlag(partyMenu->unk_660[9], TRUE);
+        Set2dSpriteVisibleFlag(partyMenu->sprites[9], TRUE);
     }
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_22 || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
-        Set2dSpriteVisibleFlag(partyMenu->unk_660[8], TRUE);
+        Set2dSpriteVisibleFlag(partyMenu->sprites[8], TRUE);
     }
 }
 
@@ -1170,9 +1171,9 @@ u32 sub_0207E778(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1) {
                 PlaySE(SEQ_SE_DP_SELECT);
             }
             sub_0207E3A8(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3, 0);
-            sub_0207E28C(partyMenu, &a1->unk_4, a1->unk_2, a1->unk_1, a1->unk_3, 0);
+            sub_0207E28C(partyMenu, &a1->template, a1->unk_2, a1->unk_1, a1->unk_3, 0);
             a1->unk_1 = sub_0207E6B4(a1->unk_3, a1->unk_2, hitbox);
-            sub_0207CB9C(partyMenu, a1, a1->unk_4.unk_00[a1->unk_1].value);
+            sub_0207CB9C(partyMenu, a1, a1->template.unk_00[a1->unk_1].value);
             return LIST_NOTHING_CHOSEN;
         }
     } else {
@@ -1194,12 +1195,12 @@ u32 sub_0207E778(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1) {
             } else {
                 PlaySE(SEQ_SE_DP_SELECT);
             }
-            sub_0207CB9C(partyMenu, a1, a1->unk_4.unk_00[a1->unk_1].value);
+            sub_0207CB9C(partyMenu, a1, a1->template.unk_00[a1->unk_1].value);
             return LIST_NOTHING_CHOSEN;
         } else if (gSystem.newKeys & PAD_BUTTON_B) {
             PlaySE(SEQ_SE_GS_GEARCANCEL);
             sub_0207E3A8(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3, 0);
-            sub_0207E28C(partyMenu, &a1->unk_4, a1->unk_2, a1->unk_1, a1->unk_3, 0);
+            sub_0207E28C(partyMenu, &a1->template, a1->unk_2, a1->unk_1, a1->unk_3, 0);
             a1->unk_1 = sub_0207E6B4(a1->unk_3, a1->unk_2, 7);
             sub_0207CB9C(partyMenu, a1, LIST_CANCEL);
             return LIST_NOTHING_CHOSEN;
@@ -1209,7 +1210,7 @@ u32 sub_0207E778(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1) {
     if (r4) {
         PlaySE(SEQ_SE_DP_SELECT);
         sub_0207E54C(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3);
-        sub_0207E358(partyMenu, &a1->unk_4, a1->unk_2, a1->unk_1, a1->unk_3);
+        sub_0207E358(partyMenu, &a1->template, a1->unk_2, a1->unk_1, a1->unk_3);
     }
 
     return LIST_NOTHING_CHOSEN;
@@ -1232,16 +1233,16 @@ u32 sub_0207E93C(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1) {
         if (hitbox == 4) {
             PlaySE(SEQ_SE_GS_GEARCANCEL);
             sub_0207E3A8(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3, 0);
-            sub_0207E28C(partyMenu, &a1->unk_4, a1->unk_2, a1->unk_1, a1->unk_3, 0);
+            sub_0207E28C(partyMenu, &a1->template, a1->unk_2, a1->unk_1, a1->unk_3, 0);
             a1->unk_1 = a1->unk_2 - 1;
             sub_0207CB9C(partyMenu, a1, LIST_CANCEL);
             return LIST_NOTHING_CHOSEN;
         } else if (sub_0207E6E8(a1->unk_3, a1->unk_2, hitbox) == TRUE) {
             PlaySE(SEQ_SE_DP_SELECT);
             sub_0207E3A8(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3, 0);
-            sub_0207E28C(partyMenu, &a1->unk_4, a1->unk_2, a1->unk_1, a1->unk_3, 0);
+            sub_0207E28C(partyMenu, &a1->template, a1->unk_2, a1->unk_1, a1->unk_3, 0);
             a1->unk_1 = hitbox;
-            sub_0207CB9C(partyMenu, a1, a1->unk_4.unk_00[a1->unk_1].value);
+            sub_0207CB9C(partyMenu, a1, a1->template.unk_00[a1->unk_1].value);
             return LIST_NOTHING_CHOSEN;
         }
     } else {
@@ -1260,13 +1261,13 @@ u32 sub_0207E93C(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1) {
                 PlaySE(SEQ_SE_DP_SELECT);
             }
             sub_0207E3A8(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3, 0);
-            sub_0207E28C(partyMenu, &a1->unk_4, a1->unk_2, a1->unk_1, a1->unk_3, 0);
-            sub_0207CB9C(partyMenu, a1, a1->unk_4.unk_00[a1->unk_1].value);
+            sub_0207E28C(partyMenu, &a1->template, a1->unk_2, a1->unk_1, a1->unk_3, 0);
+            sub_0207CB9C(partyMenu, a1, a1->template.unk_00[a1->unk_1].value);
             return LIST_NOTHING_CHOSEN;
         } else if (gSystem.newKeys & PAD_BUTTON_B) {
             PlaySE(SEQ_SE_GS_GEARCANCEL);
             sub_0207E3A8(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3, 0);
-            sub_0207E28C(partyMenu, &a1->unk_4, a1->unk_2, a1->unk_1, a1->unk_3, 0);
+            sub_0207E28C(partyMenu, &a1->template, a1->unk_2, a1->unk_1, a1->unk_3, 0);
             a1->unk_1 = a1->unk_2 - 1;
             sub_0207CB9C(partyMenu, a1, LIST_CANCEL);
             return LIST_NOTHING_CHOSEN;
@@ -1276,7 +1277,7 @@ u32 sub_0207E93C(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1) {
     if (r6) {
         PlaySE(SEQ_SE_DP_SELECT);
         sub_0207E54C(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3);
-        sub_0207E358(partyMenu, &a1->unk_4, a1->unk_2, a1->unk_1, a1->unk_3);
+        sub_0207E358(partyMenu, &a1->template, a1->unk_2, a1->unk_1, a1->unk_3);
     }
 
     return LIST_NOTHING_CHOSEN;

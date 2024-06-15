@@ -39,10 +39,10 @@
 .public sub_0207A7F4
 .public sub_0207CB20
 .public sub_0207CB90
-.public sub_0207D3E4
-.public sub_0207D440
-.public sub_0207D480
-.public sub_0207D4EC
+.public PartyMenu_PrintMonLevelOnWindow
+.public PartyMenu_PrintMonCurHpOnWindow
+.public PartyMenu_ClearMonHpTextWindow
+.public PartyMenu_DrawMonHpBarOnWindow
 .public sub_0207D5DC
 .public sub_0207D6A0
 .public sub_0207DAC4
@@ -70,7 +70,7 @@
 .public sub_02082654
 .public PartyMenu_Subtask_SelectMove
 .public sub_02082868
-.public sub_0208AD64
+.public Pokemon_GetStatusIconId
 .public UseItemOnPokemon
 .public UseItemOnMonInParty
 .public ApplyMonMoodModifier

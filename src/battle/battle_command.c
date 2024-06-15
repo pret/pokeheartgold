@@ -2971,7 +2971,7 @@ BOOL BtlCmd_CalcFlailPower(BattleSystem *bsys, BattleContext *ctx) {
 
     BattleScriptIncrementPointer(ctx, 1);
 
-    unkA = RatioToInt(ctx->battleMons[ctx->battlerIdAttacker].hp, ctx->battleMons[ctx->battlerIdAttacker].maxHp, 64);
+    unkA = CalculateHpBarPixelsLength(ctx->battleMons[ctx->battlerIdAttacker].hp, ctx->battleMons[ctx->battlerIdAttacker].maxHp, 64);
     for (i = 0; i < sizeof(sFlailDamageTable) / sizeof(sFlailDamageTable[0]); i++) {
         if (unkA <= sFlailDamageTable[i][0]) {
             break;

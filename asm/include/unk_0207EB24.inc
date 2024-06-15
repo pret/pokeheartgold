@@ -55,7 +55,7 @@
 .public sub_0207F2F8
 .public sub_0207F334
 .public sub_0207F3A4
-.public sub_020880B0
+.public CalculateHpBarColor
 .public NNS_G2dGetUnpackedCharacterData
 .public NNS_G2dGetImageLocation
 .public GX_LoadOBJ
