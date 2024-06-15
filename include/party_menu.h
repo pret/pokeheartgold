@@ -219,7 +219,8 @@ typedef enum PartyMenuWindowId {
 } PartyMenuWindowId;
 
 typedef enum PartyMonStatusIconId {
-    PARTY_MON_STATUS_ICON_PRZ = 1,
+    PARTY_MON_STATUS_ICON_UNSET,
+    PARTY_MON_STATUS_ICON_PRZ,
     PARTY_MON_STATUS_ICON_FRZ,
     PARTY_MON_STATUS_ICON_SLP,
     PARTY_MON_STATUS_ICON_PSN,
@@ -368,7 +369,11 @@ struct PartyMenuStruct {
     UnkStruct_0207E590 *unk_824;
     PartyMenuMonsDrawState monsDrawState[PARTY_SIZE];
     const UnkStruct_02020654 *unk_948;
-    u8 filler_94C[0x308];
+    u8 filler_94C[0x300];
+    u8 unk_C4C;
+    u8 unk_C4D;
+    u8 filler_C4E[2];
+    u8 unk_C50;
     int (*unk_C54)(PartyMenuStruct *);
     int (*yesCallback)(PartyMenuStruct *);
     int (*noCallback)(PartyMenuStruct *);

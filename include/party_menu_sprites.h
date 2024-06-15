@@ -16,6 +16,7 @@ void sub_0207F064(PartyMenuStruct *partyMenu, u8 partySlot, s16 x, s16 y);
 void sub_0207F098(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207F0C8(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207F178(PartyMenuStruct *partyMenu);
+void sub_0207F240(PartyMenuStruct *partyMenu, u8 partySlot, int selected);
 void sub_0207F2A8(PartyMenuStruct *partyMenu, s16 x, s16 y);
 void sub_0207F2F8(PartyMenuStruct *partyMenu);
 void sub_0207F334(PartyMenuStruct *partyMenu, int a1);

@@ -1,10 +1,13 @@
 #include "gf_gfx_loader.h"
 #include "global.h"
 #include "party_menu_sprites.h"
+#include "math_util.h"
 #include "pokemon_icon_idx.h"
+#include "unk_0208805C.h"
 #include "vram_transfer_manager.h"
 
 void sub_0207F0FC(Sprite *sprite, u8 seqNo);
+int sub_0207F11C(PartyMenuMonsDrawState *monDraw);
 
 extern const UnkStruct_0200D2B4 _021018F8[24];
 
@@ -195,5 +198,103 @@ void sub_0207F0FC(Sprite *sprite, u8 seqNo) {
     if (seqNo != Get2dSpriteCurrentAnimSeqNo(sprite)) {
         Sprite_SetAnimCtrlCurrentFrame(sprite, 0);
         Set2dSpriteAnimSeqNo(sprite, seqNo);
+    }
+}
+
+int sub_0207F11C(PartyMenuMonsDrawState *monDraw) {
+    if (monDraw->hp == 0) {
+        return 0;
+    }
+    if (monDraw->status != PARTY_MON_STATUS_ICON_OK && monDraw->status != PARTY_MON_STATUS_ICON_UNSET && monDraw->status != PARTY_MON_STATUS_ICON_FNT) {
+        return 5;
+    }
+    switch (CalculateHpBarColor(monDraw->hp, monDraw->maxHp, 48)) {
+    case 4:
+        return 1;
+    case 3:
+        return 2;
+    case 2:
+        return 3;
+    case 1:
+        return 4;
+    case 0:
+    default:
+        return 0;
+    }
+}
+
+void sub_0207F178(PartyMenuStruct *partyMenu) {
+    PartyMenuMonsDrawState *monDraw;
+    u16 i;
+
+    for (i = 0; i < 6; ++i) {
+        monDraw = &partyMenu->monsDrawState[i];
+        if (monDraw->active) {
+            int r7;
+            if (partyMenu->unk_C50 == 1 && (partyMenu->unk_C4C == i || partyMenu->unk_C4D == i)) {
+                r7 = 0;
+            } else {
+                r7 = sub_0207F11C(monDraw);
+            }
+            sub_0207F0FC(monDraw->unk_24, r7);
+            Sprite_TickCellOrMulticellAnimation(monDraw->unk_24, FX32_ONE);
+            if (partyMenu->partyMonIndex == i && r7 != 0 && r7 != 5) {
+                if (Sprite_GetAnimCtrlCurrentFrame(monDraw->unk_24) == 0) {
+                    Sprite_SetPositionXY(monDraw->unk_24, monDraw->unk_16, monDraw->unk_18 - 3);
+                } else {
+                    Sprite_SetPositionXY(monDraw->unk_24, monDraw->unk_16, monDraw->unk_18 + 1);
+                }
+            } else {
+                Sprite_SetPositionXY(monDraw->unk_24, monDraw->unk_16, monDraw->unk_18);
+            }
+        }
+    }
+}
+
+void sub_0207F240(PartyMenuStruct *partyMenu, u8 partySlot, int selected) {
+    u8 sp1, sp0;
+    sub_02020A0C(&partyMenu->unk_948[partySlot], &sp1, &sp0);
+    Set2dSpriteAnimSeqNo(partyMenu->sprites[6], sub_0207B5EC(partyMenu->args->unk_25, partySlot));
+    Set2dSpriteVisibleFlag(partyMenu->sprites[6], TRUE);
+    Sprite_SetPositionXY(partyMenu->sprites[6], sp1, sp0);
+    thunk_Sprite_SetPalIndex(partyMenu->sprites[6], selected);
+}
+
+void sub_0207F2A8(PartyMenuStruct *partyMenu, s16 x, s16 y) {
+    VecFx32 pos;
+    pos.x = x * FX32_ONE;
+    pos.y = y * FX32_ONE;
+    pos.y += FX32_CONST(256);
+    pos.z = 0;
+    Sprite_SetMatrix(partyMenu->sprites[28], &pos);
+    Set2dSpriteVisibleFlag(partyMenu->sprites[28], TRUE);
+    Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[28], 0);
+    Set2dSpriteAnimSeqNo(partyMenu->sprites[28], 0);
+}
+
+void sub_0207F2F8(PartyMenuStruct *partyMenu) {
+    if (Get2dSpriteVisibleFlag(partyMenu->sprites[28]) == TRUE) {
+        Sprite_TickCellOrMulticellAnimation(partyMenu->sprites[28], FX32_ONE);
+        if (Sprite_GetAnimCtrlCurrentFrame(partyMenu->sprites[28]) == 2) {
+            Set2dSpriteVisibleFlag(partyMenu->sprites[28], FALSE);
+        }
+    }
+}
+
+void sub_0207F334(PartyMenuStruct *partyMenu, int a1) {
+    for (int i = 0; i < Party_GetCount(partyMenu->args->party); ++i) {
+        Sprite_SetPositionXY(partyMenu->monsDrawState[i].unk_28, 30, 456 - a1);
+        Sprite_SetPositionXY(partyMenu->spritesExtra[i], 50, 476 - a1);
+    }
+}
+
+void sub_0207F3A4(PartyMenuStruct *partyMenu, u8 selection) {
+    for (int i = 0; i < Party_GetCount(partyMenu->args->party); ++i) {
+        Set2dSpriteVisibleFlag(partyMenu->monsDrawState[i].unk_28, FALSE);
+        Set2dSpriteVisibleFlag(partyMenu->spritesExtra[i], FALSE);
+    }
+    Set2dSpriteVisibleFlag(partyMenu->monsDrawState[selection].unk_28, TRUE);
+    if (partyMenu->monsDrawState[selection].status != PARTY_MON_STATUS_ICON_OK) {
+        Set2dSpriteVisibleFlag(partyMenu->spritesExtra[selection], TRUE);
     }
 }
