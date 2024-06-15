@@ -333,7 +333,12 @@ typedef struct PartyMenuMonsDrawState {
     u8 unk_15;        // 83D
     s16 unk_16;       // 83E
     s16 unk_18;       // 840
-    u8 filler_1A[0x13];
+    s16 unk_1A;       // 842
+    s16 unk_1C;       // 844
+    u8 filler_1E[0x6];
+    Sprite *unk_24;   // 84C
+    Sprite *unk_28;   // 850
+    u8 unk_2C;        // 854
     u8 active;        // 855
 } PartyMenuMonsDrawState;
 
@@ -347,9 +352,9 @@ struct PartyMenuStruct {
     u16 unk_494[6 * 0x10];
     u16 unk_554[0x80];
     PartyMenuArgs *args; //0x654
-    u8 filler_658[0x4];
+    SpriteRenderer *unk_658;
     SpriteGfxHandler *unk_65C;
-    Sprite *sprites[87];
+    Sprite *sprites[87];  //0x660; true number is at least 64
     MessagePrinter *msgPrinter; //0x7bc
     MsgData *msgData; //0x7c0
     MessageFormat* msgFormat; //0x7c4

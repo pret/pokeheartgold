@@ -21,7 +21,7 @@
 #include "unk_0203A3B0.h"
 #include "unk_02080BB4.h"
 #include "unk_0208805C.h"
-#include "unk_0207EB24.h"
+#include "party_menu_sprites.h"
 #include "unk_02074944.h"
 #include "unk_02088288.h"
 #include "use_item_on_mon.h"

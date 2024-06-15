@@ -9,7 +9,7 @@
 #include "unk_02005D10.h"
 #include "unk_02014DA0.h"
 #include "party_context_menu.h"
-#include "unk_0207EB24.h"
+#include "party_menu_sprites.h"
 #include "party_menu.h"
 #include "unk_0207F42C.h"
 #include "unk_02026E30.h"

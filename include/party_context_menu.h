@@ -42,9 +42,5 @@ UnkStruct_0207E590 *sub_0207E590(PartyMenuStruct *partyMenu, const UnkTemplate_0
 void sub_0207E618(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1);
 u32 sub_0207E778(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1);
 u32 sub_0207E93C(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1);
-void sub_0207EB24(PartyMenuStruct *partyMenu);
-void sub_0207EDD4(PartyMenuStruct *partyMenu);
-void sub_0207F178(PartyMenuStruct *partyMenu);
-void sub_0207F2F8(PartyMenuStruct *partyMenu);
 
 #endif //POKEHEARTGOLD_PARTY_CONTEXT_MENU_H
