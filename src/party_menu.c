@@ -256,7 +256,7 @@ static BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_9 || partyMenu->args->context == PARTY_MENU_CONTEXT_14) {
         sub_0207DAC4(partyMenu, msg_0300_00032, TRUE);
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_7 || partyMenu->args->context == PARTY_MENU_CONTEXT_8 || partyMenu->args->context == PARTY_MENU_CONTEXT_11 || partyMenu->args->context == PARTY_MENU_CONTEXT_12) {
-        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 1);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17) {
         sub_0207DAC4(partyMenu, msg_0300_00035, TRUE);
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_15) {
@@ -270,7 +270,7 @@ static BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
     } else if (partyMenu->args->context != PARTY_MENU_CONTEXT_10) {
         sub_0207DAC4(partyMenu, msg_0300_00029, TRUE);
     } else {
-        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 1);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
     }
     sub_0207A89C(partyMenu);
     sub_02002B8C(TRUE);
@@ -413,7 +413,7 @@ static BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState) {
     sub_0207F2F8(partyMenu);
     sub_0207AC20(partyMenu);
     sub_02079230(partyMenu);
-    sub_0200D020(partyMenu->unk_65C);
+    sub_0200D020(partyMenu->spriteGfxHandler);
     return FALSE;
 }
 
@@ -493,7 +493,7 @@ static int sub_02079308(PartyMenuStruct *partyMenu) {
             partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_1;
             return PARTY_MENU_STATE_BEGIN_EXIT;
         } else {
-            thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 1);
+            thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
             return sub_020807AC(partyMenu);
         }
     }
@@ -503,7 +503,7 @@ static int sub_02079308(PartyMenuStruct *partyMenu) {
 static int sub_020793C0(PartyMenuStruct *partyMenu) {
     u8 x = sub_0207C0DC(partyMenu);
     if (x == 0 || x == 2) {
-        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 1);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
         return sub_0207C288(partyMenu);
     } else if (x == 3) {
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
@@ -516,7 +516,7 @@ static int sub_020793C0(PartyMenuStruct *partyMenu) {
 static int sub_02079400(PartyMenuStruct *partyMenu) {
     u8 x = sub_0207C0DC(partyMenu);
     if (x == 0 || x == 2) {
-        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 1);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
         return sub_0207C400(partyMenu);
     } else if (x == 3) {
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
@@ -537,7 +537,7 @@ static int sub_02079440(PartyMenuStruct *partyMenu) {
         sub_0207CB20(partyMenu);
         sub_0207CB90();
         sub_0207DAC4(partyMenu, msg_0300_00029, TRUE);
-        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 0);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
         return PARTY_MENU_STATE_1;
     default: {
         int result;
@@ -584,7 +584,7 @@ static int PartyMenu_Subtask_YesNoMenuHandleInput(PartyMenuStruct *partyMenu) {
 static int sub_02079550(PartyMenuStruct *partyMenu) {
     u8 x = sub_0207C0DC(partyMenu);
     if (x == 0 || x == 2) {
-        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 1);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
         if (partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg != 1) {
             return sub_02082134(partyMenu);
         } else {
@@ -992,15 +992,15 @@ static void sub_02079D38(PartyMenuStruct *partyMenu) {
         partyMenu->unk_948 = _0210140C;
     }
     if (partyMenu->args->context != PARTY_MENU_CONTEXT_2 && partyMenu->args->context != PARTY_MENU_CONTEXT_17 && partyMenu->args->context != PARTY_MENU_CONTEXT_23 && partyMenu->args->context != PARTY_MENU_CONTEXT_22) {
-        Set2dSpriteVisibleFlag(partyMenu->sprites[8], FALSE);
-        Set2dSpriteAnimSeqNo(partyMenu->sprites[9], 0);
+        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_8], FALSE);
+        Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], 0);
         s16 x, y;
-        Sprite_GetPositionXY(partyMenu->sprites[9], &x, &y);
-        Sprite_SetPositionXY(partyMenu->sprites[9], x, y - 8);
+        Sprite_GetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], &x, &y);
+        Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], x, y - 8);
         r4 ^= 1;
     }
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_4 || partyMenu->args->context == PARTY_MENU_CONTEXT_21) {
-        Set2dSpriteVisibleFlag(partyMenu->sprites[9], FALSE);
+        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], FALSE);
         r4 ^= 2;
     }
     sub_0207D998(partyMenu, r4);
@@ -1284,8 +1284,8 @@ static void sub_0207A89C(PartyMenuStruct *partyMenu) {
     u8 x;
     u8 y;
     sub_02020A24(partyMenu->unk_948, &x, &y, 0, 0, partyMenu->partyMonIndex, 4);
-    Set2dSpriteAnimSeqNo(partyMenu->sprites[6], sub_0207B5EC(partyMenu->args->unk_25, partyMenu->partyMonIndex));
-    Sprite_SetPositionXY(partyMenu->sprites[6], x, y);
+    Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], sub_0207B5EC(partyMenu->args->unk_25, partyMenu->partyMonIndex));
+    Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], x, y);
 }
 
 static const u8 _021012CC[][6] = {
@@ -1305,11 +1305,11 @@ static u8 sub_0207A8FC(PartyMenuStruct *partyMenu) {
 
 static void PartyMenu_MoveCursorSpriteTo(PartyMenuStruct *partyMenu, int selection, int x, int y) {
     if (selection == PARTY_MON_SELECTION_CANCEL || selection == PARTY_MON_SELECTION_CONFIRM) {
-        Set2dSpriteVisibleFlag(partyMenu->sprites[6], FALSE);
+        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], FALSE);
     } else {
-        Set2dSpriteAnimSeqNo(partyMenu->sprites[6], sub_0207B5EC(partyMenu->args->unk_25, selection));
-        Set2dSpriteVisibleFlag(partyMenu->sprites[6], TRUE);
-        Sprite_SetPositionXY(partyMenu->sprites[6], x, y);
+        Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], sub_0207B5EC(partyMenu->args->unk_25, selection));
+        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], TRUE);
+        Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], x, y);
     }
     u8 oldPartyMonIndex = partyMenu->partyMonIndex;
     partyMenu->partyMonIndex = selection;
@@ -1401,13 +1401,13 @@ static u8 sub_0207AB20(PartyMenuStruct *partyMenu, u8 *px, u8 *py, const u8 *a3)
 
 void sub_0207AB84(PartyMenuStruct *partyMenu, u8 partySlot) {
     if (partySlot == 6 || partySlot == 7) {
-        Set2dSpriteVisibleFlag(partyMenu->sprites[6], FALSE);
+        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], FALSE);
     } else {
         u8 x, y;
         sub_02020A24(partyMenu->unk_948, &x, &y, 0, 0, partyMenu->partyMonIndex, DIR_MAX);
-        Set2dSpriteAnimSeqNo(partyMenu->sprites[6], sub_0207B5EC(partyMenu->args->unk_25, partySlot));
-        Set2dSpriteVisibleFlag(partyMenu->sprites[6], TRUE);
-        Sprite_SetPositionXY(partyMenu->sprites[6], x, y);
+        Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], sub_0207B5EC(partyMenu->args->unk_25, partySlot));
+        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], TRUE);
+        Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], x, y);
     }
     u8 oldSlot = partyMenu->partyMonIndex;
     partyMenu->partyMonIndex = partySlot;
@@ -1597,7 +1597,7 @@ static void sub_0207AFC4(PartyMenuStruct *partyMenu) {
     FreeToHeapExplicit(HEAP_ID_PARTY_MENU, buf);
     sub_0207D1C8(partyMenu);
     sub_0207DAD8(partyMenu, -1, TRUE);
-    thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 1);
+    thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
 }
 
 static u8 sub_0207B0B0(PartyMenuStruct *partyMenu, u8 *buf) {
@@ -1822,21 +1822,21 @@ u8 sub_0207B4A0(PartyMenuStruct *partyMenu, u8 selection) {
 static void sub_0207B51C(PartyMenuStruct *partyMenu, u8 selection, BOOL active) {
     u8 animSeqNo;
     if (selection == PARTY_MON_SELECTION_CANCEL) {
-        animSeqNo = Get2dSpriteCurrentAnimSeqNo(partyMenu->sprites[8]);
+        animSeqNo = Get2dSpriteCurrentAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_8]);
         if (active == FALSE) {
             animSeqNo &= 2;
         } else {
             animSeqNo = (animSeqNo & 2) + 1;
         }
-        Set2dSpriteAnimSeqNo(partyMenu->sprites[8], animSeqNo);
+        Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_8], animSeqNo);
     } else if (selection == PARTY_MON_SELECTION_CONFIRM) {
-        animSeqNo = Get2dSpriteCurrentAnimSeqNo(partyMenu->sprites[9]);
+        animSeqNo = Get2dSpriteCurrentAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9]);
         if (active == FALSE) {
             animSeqNo &= 2;
         } else {
             animSeqNo = (animSeqNo & 2) + 1;
         }
-        Set2dSpriteAnimSeqNo(partyMenu->sprites[9], animSeqNo);
+        Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], animSeqNo);
     } else {
         if (!active) {
             partyMenu->monsDrawState[selection].unk_16 -= 2;
@@ -1862,8 +1862,8 @@ static u8 sub_0207B600(PartyMenuStruct *partyMenu) {
     if (r5->unk_C == TRUE) {
         if (!sub_0207CC24(partyMenu)) {
             if (partyMenu->partyMonIndex != PARTY_MON_SELECTION_CONFIRM) {
-                Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[9], 0);
-                Set2dSpriteAnimSeqNo(partyMenu->sprites[9], 0);
+                Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], 0);
+                Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], 0);
             }
             return r5->unk_8;
         } else {
@@ -2150,7 +2150,7 @@ static BOOL sub_0207BC1C(PartyMenuStruct *partyMenu, int *pState) {
         } else {
             sub_0207DAC4(partyMenu, msg_0300_00029, TRUE);
         }
-        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 0);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
         return TRUE;
     case LIST_NOTHING_CHOSEN:
         break;
@@ -2175,7 +2175,7 @@ static int PartyMenu_SoftboiledTryTargetCheck(PartyMenuStruct *partyMenu) {
     switch (PartyMenu_SoftboiledTargetCheck(partyMenu)) {
     case 0:
         PlaySE(SEQ_SE_DP_KAIFUKU);
-        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 1);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
         if (partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp - partyMenu->monsDrawState[partyMenu->partyMonIndex].hp < partyMenu->unk_C68[0]) {
             partyMenu->unk_C68[0] = partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp - partyMenu->monsDrawState[partyMenu->partyMonIndex].hp;
         }
@@ -2199,8 +2199,8 @@ static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
     if (r5->unk_C == TRUE) {
         if (!sub_0207CC24(partyMenu)) {
             if (partyMenu->partyMonIndex != PARTY_MON_SELECTION_CONFIRM) {
-                Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[9], 0);
-                Set2dSpriteAnimSeqNo(partyMenu->sprites[9], 0);
+                Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], 0);
+                Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], 0);
             }
             return r5->unk_8;
         } else {
@@ -2252,7 +2252,7 @@ static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
     }
     case 1:
         ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
-        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 0);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
         sub_0207DAC4(partyMenu, msg_0300_00037, TRUE);
         partyMenu->unk_C68[1] = 0;
         break;
@@ -2279,7 +2279,7 @@ static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
         break;
     case 4:
         ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
-        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 0);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
         sub_0207FBC8(partyMenu);
         return PARTY_MENU_STATE_1;
     }
@@ -2292,7 +2292,7 @@ static u8 PartyMenu_SoftboiledTargetCheck(PartyMenuStruct *partyMenu) {
         return 2;
     }
     if (partyMenu->partyMonIndex == partyMenu->softboiledDonorSlot || partyMenu->monsDrawState[partyMenu->partyMonIndex].hp == 0 || partyMenu->monsDrawState[partyMenu->partyMonIndex].hp == partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp) {
-        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 1);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
         sub_0207DAEC(partyMenu, msg_0300_00120, TRUE);
         partyMenu->unk_C68[1] = 1;
         partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SOFTBOILED;
@@ -2608,7 +2608,7 @@ static int sub_0207C8B4(PartyMenuStruct *partyMenu) {
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_10) {
         ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
         sub_0207DAC4(partyMenu, msg_0300_00029, TRUE);
-        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 0);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
         partyMenu->args->context = PARTY_MENU_CONTEXT_0;
         return PARTY_MENU_STATE_1;
     } else {
@@ -2652,7 +2652,7 @@ static int sub_0207CA30(PartyMenuStruct *partyMenu) {
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
         return PARTY_MENU_STATE_BEGIN_EXIT;
     } else {
-        thunk_Sprite_SetPalIndex(partyMenu->sprites[6], 1);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
         sub_0207DAEC(partyMenu, msg_0300_00179, TRUE);
         partyMenu->yesCallback = sub_0207FAA8;
         partyMenu->noCallback = sub_0207FAD4;

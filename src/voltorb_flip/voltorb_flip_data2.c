@@ -27,7 +27,7 @@ const u8 ov122_021E92B0[4][4] = {
     { 0x0D, 0x09, 0x08, 0x08 },
 };
 
-const Unk122_021E92D0 ov122_021E92D0 = {
+const OamCharTransferParam ov122_021E92D0 = {
     0x00000000,
     0x00020000,
     0x00004000,
@@ -37,7 +37,7 @@ const Unk122_021E92D0 ov122_021E92D0 = {
 
 const SpriteResourceCountsListUnion ov122_021E92E4 = { 2, 2, 2, 2, 0, 0 };
 
-const Unk122_021E92FC ov122_021E92FC = { 0, 0x7e, 0, 0x20, 1, 0x7e, 0, 0x20 };
+const OamManagerParam ov122_021E92FC = { 0, 126, 0, 32, 1, 126, 0, 32 };
 
 const GraphicsBanks sVoltorbFlipGraphicsBanks = {
     GX_VRAM_BG_128_B,

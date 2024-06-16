@@ -2,7 +2,7 @@
   "kind": "char",
   "graphics": [
     {
-      "narc": 60,
+      "narc": "NARC_a_0_6_0",
       "file": 4,
       "compressed": false,
       "id": 0,
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "narc": 60,
+      "narc": "NARC_a_0_6_0",
       "file": 7,
       "compressed": false,
       "id": 1,
@@ -22,7 +22,7 @@
       ]
     },
     {
-      "narc": 18,
+      "narc": "NARC_itemtool_itemdata_item_icon",
       "file": 2,
       "compressed": false,
       "id": 2,
@@ -32,7 +32,7 @@
       ]
     },
     {
-      "narc": 18,
+      "narc": "NARC_itemtool_itemdata_item_icon",
       "file": 2,
       "compressed": false,
       "id": 3,
@@ -42,7 +42,7 @@
       ]
     },
     {
-      "narc": 18,
+      "narc": "NARC_itemtool_itemdata_item_icon",
       "file": 2,
       "compressed": false,
       "id": 4,
@@ -52,7 +52,7 @@
       ]
     },
     {
-      "narc": 18,
+      "narc": "NARC_itemtool_itemdata_item_icon",
       "file": 2,
       "compressed": false,
       "id": 5,
@@ -62,7 +62,7 @@
       ]
     },
     {
-      "narc": 18,
+      "narc": "NARC_itemtool_itemdata_item_icon",
       "file": 2,
       "compressed": false,
       "id": 6,
@@ -72,7 +72,7 @@
       ]
     },
     {
-      "narc": 18,
+      "narc": "NARC_itemtool_itemdata_item_icon",
       "file": 2,
       "compressed": false,
       "id": 7,
@@ -82,7 +82,7 @@
       ]
     },
     {
-      "narc": 18,
+      "narc": "NARC_itemtool_itemdata_item_icon",
       "file": 2,
       "compressed": false,
       "id": 8,
@@ -92,7 +92,7 @@
       ]
     },
     {
-      "narc": 60,
+      "narc": "NARC_a_0_6_0",
       "file": 23,
       "compressed": false,
       "id": 9,

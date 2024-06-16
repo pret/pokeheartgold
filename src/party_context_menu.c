@@ -1084,9 +1084,9 @@ UnkStruct_0207E590 *sub_0207E590(PartyMenuStruct *partyMenu, const UnkTemplate_0
     sub_0207E17C(partyMenu, ret->template.unk_0A, ret->unk_3);
     sub_0207E358(partyMenu, &ret->template, ret->template.unk_0A, ret->unk_0, ret->unk_3);
     sub_0207CB7C();
-    Set2dSpriteVisibleFlag(partyMenu->sprites[9], FALSE);
+    Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], FALSE);
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_22 || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
-        Set2dSpriteVisibleFlag(partyMenu->sprites[8], FALSE);
+        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_8], FALSE);
     }
     return ret;
 }
@@ -1095,12 +1095,12 @@ void sub_0207E618(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1) {
     sub_0207E1DC(partyMenu, a1->unk_2, a1->unk_3);
     FreeToHeap(a1);
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_4 || partyMenu->args->context == PARTY_MENU_CONTEXT_21) {
-        Set2dSpriteVisibleFlag(partyMenu->sprites[9], FALSE);
+        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], FALSE);
     } else {
-        Set2dSpriteVisibleFlag(partyMenu->sprites[9], TRUE);
+        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], TRUE);
     }
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_22 || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
-        Set2dSpriteVisibleFlag(partyMenu->sprites[8], TRUE);
+        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_8], TRUE);
     }
 }
 

@@ -2,7 +2,7 @@
   "kind": "cell",
   "graphics": [
     {
-      "narc": 144,
+      "narc": "NARC_a_1_4_4",
       "file": 5,
       "compressed": false,
       "id": 0,
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "narc": 144,
+      "narc": "NARC_a_1_4_4",
       "file": 2,
       "compressed": false,
       "id": 1,
@@ -22,7 +22,7 @@
       ]
     },
     {
-      "narc": 144,
+      "narc": "NARC_a_1_4_4",
       "file": 8,
       "compressed": false,
       "id": 2,

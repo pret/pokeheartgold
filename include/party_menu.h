@@ -229,6 +229,39 @@ typedef enum PartyMonStatusIconId {
     PARTY_MON_STATUS_ICON_OK,
 } PartyMonStatusIconId;
 
+typedef enum PartyMenuSpriteId {
+    PARTY_MENU_SPRITE_ID_0,
+    PARTY_MENU_SPRITE_ID_1,
+    PARTY_MENU_SPRITE_ID_2,
+    PARTY_MENU_SPRITE_ID_3,
+    PARTY_MENU_SPRITE_ID_4,
+    PARTY_MENU_SPRITE_ID_5,
+    PARTY_MENU_SPRITE_ID_CURSOR,
+    PARTY_MENU_SPRITE_ID_7,
+    PARTY_MENU_SPRITE_ID_8,
+    PARTY_MENU_SPRITE_ID_9,
+    PARTY_MENU_SPRITE_ID_10,
+    PARTY_MENU_SPRITE_ID_11,
+    PARTY_MENU_SPRITE_ID_12,
+    PARTY_MENU_SPRITE_ID_13,
+    PARTY_MENU_SPRITE_ID_14,
+    PARTY_MENU_SPRITE_ID_15,
+    PARTY_MENU_SPRITE_ID_16,
+    PARTY_MENU_SPRITE_ID_17,
+    PARTY_MENU_SPRITE_ID_18,
+    PARTY_MENU_SPRITE_ID_19,
+    PARTY_MENU_SPRITE_ID_20,
+    PARTY_MENU_SPRITE_ID_21,
+    PARTY_MENU_SPRITE_ID_22,
+    PARTY_MENU_SPRITE_ID_23,
+    PARTY_MENU_SPRITE_ID_24,
+    PARTY_MENU_SPRITE_ID_25,
+    PARTY_MENU_SPRITE_ID_26,
+    PARTY_MENU_SPRITE_ID_27,
+    PARTY_MENU_SPRITE_ID_28,
+    PARTY_MENU_SPRITE_ID_MAX,
+} PartyMenuSpriteId;
+
 typedef struct UnkTemplate_0207E590 {
     LISTMENUITEM *unk_00;
     Window *unk_04;
@@ -355,9 +388,10 @@ struct PartyMenuStruct {
     u16 unk_494[6 * 0x10];
     u16 unk_554[0x80];
     PartyMenuArgs *args; //0x654
-    SpriteRenderer *unk_658;
-    SpriteGfxHandler *unk_65C;
-    Sprite *sprites[58];  //0x660; true number is at least 64
+    SpriteRenderer *spriteRenderer;
+    SpriteGfxHandler *spriteGfxHandler;
+    Sprite *sprites[PARTY_MENU_SPRITE_ID_MAX];  //0x660
+    void *unk_6D4[PARTY_MENU_SPRITE_ID_MAX];
     Sprite *spritesExtra[29];  //0x748
     MessagePrinter *msgPrinter; //0x7bc
     MsgData *msgData; //0x7c0
