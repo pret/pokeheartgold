@@ -985,7 +985,7 @@ sub_020813A4: ; 0x020813A4
 	ldr r1, _02081430 ; =0x00000C65
 	add r0, r5, #0
 	ldrb r1, [r5, r1]
-	bl sub_0207D6A0
+	bl PartyMenu_CommitPartyMonPanelWindowsToVram_InVBlank
 	ldr r0, _02081430 ; =0x00000C65
 	mov r2, #0x30
 	ldrb r1, [r5, r0]
@@ -1110,7 +1110,7 @@ sub_02081444: ; 0x02081444
 	ldr r1, _020815D4 ; =0x00000C65
 	add r0, r5, #0
 	ldrb r1, [r5, r1]
-	bl sub_0207D6A0
+	bl PartyMenu_CommitPartyMonPanelWindowsToVram_InVBlank
 	ldr r0, _020815D4 ; =0x00000C65
 	mov r2, #0x30
 	ldrb r1, [r5, r0]
@@ -1930,7 +1930,7 @@ _02081BD2:
 	ldr r1, _02081C18 ; =0x00000C65
 	add r0, r5, #0
 	ldrb r1, [r5, r1]
-	bl sub_0207D6A0
+	bl PartyMenu_CommitPartyMonPanelWindowsToVram_InVBlank
 	mov r1, #0
 	add r0, r5, #0
 	mvn r1, r1
@@ -3272,7 +3272,7 @@ PartyMenu_Subtask_SelectMove: ; 0x02082738
 	ldr r1, _02082850 ; =0x00000824
 	add r5, r0, #0
 	ldr r1, [r5, r1]
-	bl sub_0207E93C
+	bl PartyMenu_HandleInput_TopLevel
 	add r4, r0, #0
 	mov r0, #1
 	mvn r0, r0

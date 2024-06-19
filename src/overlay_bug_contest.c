@@ -159,7 +159,7 @@ BOOL BugContest_BufferCaughtMonNick(BugContest *bugContest, MessageFormat *msgFm
     }
 
     string = String_New(POKEMON_NAME_LENGTH+1+1, bugContest->heapId);
-    GetMonData(bugContest->mon, MON_DATA_NICKNAME_3, string);
+    GetMonData(bugContest->mon, MON_DATA_NICKNAME_STRING, string);
     BufferString(msgFmt, slot, string, 2, 1, 2);
     String_Delete(string);
     return bugContest->party_cur_num >= PARTY_SIZE;

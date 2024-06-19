@@ -416,7 +416,7 @@ void sub_0207EF5C(PartyMenuStruct *partyMenu, u8 partySlot, u16 x, u16 y) {
     sp0.unk_24 = 0;
     sp0.rotation = 1;
     sp0.whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN;
-    partyMenu->sprites[partySlot] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sp0);
+    partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_0] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sp0);
 }
 
 void sub_0207EFA4(PartyMenuStruct *partyMenu) {
@@ -425,7 +425,7 @@ void sub_0207EFA4(PartyMenuStruct *partyMenu) {
 }
 
 void sub_0207EFC4(PartyMenuStruct *partyMenu, u8 partySlot, u8 status) {
-    Sprite **pSprite1 = &partyMenu->sprites[partySlot + 10];
+    Sprite **pSprite1 = &partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_10];
     Sprite **pSprite2 = &partyMenu->spritesExtra[partySlot];
     if (status == PARTY_MON_STATUS_ICON_OK) {
         Set2dSpriteVisibleFlag(*pSprite1, FALSE);
@@ -437,7 +437,7 @@ void sub_0207EFC4(PartyMenuStruct *partyMenu, u8 partySlot, u8 status) {
 }
 
 void sub_0207F004(PartyMenuStruct *partyMenu, u8 partySlot, u16 heldItem) {
-    Sprite **pSprite = &partyMenu->sprites[partySlot + 16];
+    Sprite **pSprite = &partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_16];
     if (heldItem == ITEM_NONE) {
         Set2dSpriteVisibleFlag(*pSprite, FALSE);
     } else {
@@ -451,7 +451,7 @@ void sub_0207F004(PartyMenuStruct *partyMenu, u8 partySlot, u16 heldItem) {
 }
 
 void sub_0207F044(PartyMenuStruct *partyMenu, u8 partySlot) {
-    Sprite **pSprite = &partyMenu->sprites[partySlot + 16];
+    Sprite **pSprite = &partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_16];
 
     Set2dSpriteAnimSeqNo(*pSprite, 1);
     Set2dSpriteVisibleFlag(*pSprite, TRUE);
@@ -460,15 +460,15 @@ void sub_0207F044(PartyMenuStruct *partyMenu, u8 partySlot) {
 void sub_0207F064(PartyMenuStruct *partyMenu, u8 partySlot, s16 x, s16 y) {
     partyMenu->monsDrawState[partySlot].unk_1E = x + 8;
     partyMenu->monsDrawState[partySlot].unk_20 = y + 8;
-    Sprite_SetPositionXY(partyMenu->sprites[partySlot + 16], partyMenu->monsDrawState[partySlot].unk_1E, partyMenu->monsDrawState[partySlot].unk_20);
+    Sprite_SetPositionXY(partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_16], partyMenu->monsDrawState[partySlot].unk_1E, partyMenu->monsDrawState[partySlot].unk_20);
 }
 
 void sub_0207F098(PartyMenuStruct *partyMenu, u8 partySlot) {
-    Sprite_SetPositionXY(partyMenu->sprites[partySlot + 22], partyMenu->monsDrawState[partySlot].unk_1E + 8, partyMenu->monsDrawState[partySlot].unk_20);
+    Sprite_SetPositionXY(partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_22], partyMenu->monsDrawState[partySlot].unk_1E + 8, partyMenu->monsDrawState[partySlot].unk_20);
 }
 
 void sub_0207F0C8(PartyMenuStruct *partyMenu, u8 partySlot) {
-    Sprite **pSprite = &partyMenu->sprites[partySlot + 22];
+    Sprite **pSprite = &partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_22];
     if (partyMenu->monsDrawState[partySlot].capsule == 0) {
         Set2dSpriteVisibleFlag(*pSprite, FALSE);
     } else {

@@ -195,7 +195,7 @@ static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, NpcTra
 
     heapId_2 = (int)heapId;
     name = _GetNpcTradeName((HeapID)heapId_2, tradeno);
-    SetMonData(mon, MON_DATA_NICKNAME_3, name);
+    SetMonData(mon, MON_DATA_NICKNAME_STRING, name);
     String_Delete(name);
 
     nickname_flag = TRUE;

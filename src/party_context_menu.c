@@ -11,32 +11,32 @@
 #include "unk_0208805C.h"
 #include "unk_02080BB4.h"
 
-static void sub_0207CB9C(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1, int a2);
-static void sub_0207CD84(BgConfig *bgConfig, Window *window, const WindowTemplate *template);
+static void PartyMenu_StartContextMenuButtonPressAnim_FromCursorObj(PartyMenuStruct *partyMenu, PartyMenuContextMenuCursor *cursor, int followUpState);
+static void addFiveWindows(BgConfig *bgConfig, Window *window, const WindowTemplate *template);
 static void PartyMenu_DrawSlashOnMonHpTextWindow(PartyMenuStruct *partyMenu, u8 partySlot);
 static void PartyMenu_PrintMonNicknameOnWindow(PartyMenuStruct *partyMenu, u8 partySlot);
 static void PartyMenu_PrintMonMaxHpOnWindow(PartyMenuStruct *partyMenu, u8 partySlot);
 static u32 sub_0207D988(FontID fontId, String *string, u32 windowWidth);
 static void sub_0207DA64(PartyMenuStruct *partyMenu, Window *window, int msgId, BOOL drawFrame);
 static BOOL sub_0207DB80(TextPrinterTemplate *template, u16 glyphId);
-static void sub_0207DC20(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
-static void sub_0207DC90(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
+static void sub_0207DC20(PartyMenuStruct *partyMenu, u8 partySlot, u8 compatibilityParam);
+static void sub_0207DC90(PartyMenuStruct *partyMenu, u8 partySlot, u8 compatibilityParam);
 static void sub_0207DD14(PartyMenuStruct *partyMenu, u8 partySlot, u8 isCompatible);
 static void sub_0207DD7C(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
-static void sub_0207E17C(PartyMenuStruct *partyMenu, int a1, int a2);
-static void sub_0207E1DC(PartyMenuStruct *partyMenu, int a1, int a2);
-static u32 sub_0207E264(int a0);
-static u32 sub_0207E278(int a0);
-static void sub_0207E28C(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, int a3, int a4, int a5);
-static void sub_0207E358(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, int a3, int a4);
-static void sub_0207E3A8(PartyMenuStruct *partyMenu, int a1, int a2, int a3, int a4);
-static BOOL sub_0207E684(int a0, int a1, int a2);
-static int sub_0207E6B4(int a0, int a1, int a2);
-static BOOL sub_0207E6E8(int a0, int a1, int a2);
-static BOOL sub_0207E714(u8 *a0, int a1, int a2);
-static BOOL sub_0207E748(u8 *a0, int a1, int a2);
+static void sub_0207E17C(PartyMenuStruct *partyMenu, int numItems, int state);
+static void sub_0207E1DC(PartyMenuStruct *partyMenu, int numItems, int state);
+static u32 sub_0207E264(int selection);
+static u32 sub_0207E278(int selection);
+static void sub_0207E28C(PartyMenuStruct *partyMenu, PartyMenuContextMenu *contextMenu, int numItems, int selection, int state, BOOL a5);
+static void sub_0207E358(PartyMenuStruct *partyMenu, PartyMenuContextMenu *contextMenu, int numItems, int selection, int state);
+static void sub_0207E3A8(PartyMenuStruct *partyMenu, int numItems, int selection, int state, int frameType);
+static BOOL hitboxHasSelectionMapping(int state, int numItems, int selection);
+static int hitboxToSelection(int state, int numItems, int selection);
+static BOOL contextMenuButtonIsActive(int state, int numItems, int selection);
+static BOOL handlePartyMenuTopLevelDpadInput(u8 *pSelection, int numItems, int direction);
+static BOOL handlePartyContextMenuDpadInput(u8 *pSelection, int numItems, int direction);
 
-static const WindowTemplate _02101734[] = {
+static const WindowTemplate sMainWindowTemplates[] = {
     { GF_BG_LYR_MAIN_1, 0x06, 0x01, 0x09, 0x02, 0x00, 0x0048 },
     { GF_BG_LYR_MAIN_1, 0x00, 0x04, 0x06, 0x02, 0x00, 0x005A },
     { GF_BG_LYR_MAIN_1, 0x07, 0x04, 0x08, 0x02, 0x00, 0x0066 },
@@ -87,7 +87,7 @@ static const WindowTemplate _02101734[] = {
     { GF_BG_LYR_SUB_2, 0x11, 0x1A, 0x0C, 0x03, 0x02, 0x0021 },
 };
 
-static const WindowTemplate _0210161C[] = {
+static const WindowTemplate sAdditionalWindowTemplates[] = {
     { GF_BG_LYR_MAIN_1, 0x1A, 0x15, 0x05, 0x02, 0x00, 0x0180 },
     { GF_BG_LYR_MAIN_1, 0x19, 0x14, 0x07, 0x02, 0x00, 0x018A },
     { GF_BG_LYR_MAIN_0, 0x02, 0x15, 0x14, 0x02, 0x0D, 0x0198 },
@@ -97,7 +97,7 @@ static const WindowTemplate _0210161C[] = {
     { GF_BG_LYR_MAIN_0, 0x13, 0x0F, 0x0C, 0x08, 0x00, 0x0260 },
 };
 
-static const WindowTemplate _02101654[] = {
+static const WindowTemplate sButtonWindowTemplates[] = {
     { GF_BG_LYR_MAIN_0, 0x11, 0x04, 0x0E, 0x02, 0x02, 0x0260 },
     { GF_BG_LYR_MAIN_0, 0x11, 0x08, 0x0E, 0x02, 0x02, 0x027C },
     { GF_BG_LYR_MAIN_0, 0x11, 0x0C, 0x0E, 0x02, 0x02, 0x0298 },
@@ -112,7 +112,8 @@ static const WindowTemplate _02101654[] = {
     { GF_BG_LYR_MAIN_0, 0x11, 0x0F, 0x0E, 0x02, 0x02, 0x02B4 },
 };
 
-static const u8 _021015EC[][4] = {
+static const u8 sButtonRects[][4] = {
+    // x, y, width, height
     { 0x10, 0x03, 0x10, 0x04 },
     { 0x10, 0x07, 0x10, 0x04 },
     { 0x10, 0x0B, 0x10, 0x04 },
@@ -127,7 +128,7 @@ static const u8 _021015EC[][4] = {
     { 0x10, 0x0E, 0x10, 0x04 },
 };
 
-static const s8 _021016B4[][2][8] = {
+static const s8 sButtonWindowIDs[][2][8] = {
     {
             { 0, -1, -1, -1, -1, -1, -1, -1 },
         { 7, -1, -1, -1, -1, -1, -1, -1 }
@@ -155,11 +156,15 @@ static const s8 _021016B4[][2][8] = {
     },
 };
 
-static const u16 _021015AC[] = {
+static const u16 sButtonFrameTileOffsets[] = {
     0, 2, 6, 8, 3, 5, 1, 7
 };
 
-static const u16 _021015BC[][4] = {
+// only the first column is used and they all
+// reference the MessageFormat field 0
+// which derives from BufferMonNickname.
+// they could've just gotten MON_DATA_NICKNAME_STRING
+static const u16 sMonNicknameMsgIds[][4] = {
     { msg_0300_00008, msg_0300_00002, msg_0300_00020, msg_0300_00014 },
     { msg_0300_00009, msg_0300_00003, msg_0300_00021, msg_0300_00015 },
     { msg_0300_00010, msg_0300_00004, msg_0300_00022, msg_0300_00016 },
@@ -168,7 +173,7 @@ static const u16 _021015BC[][4] = {
     { msg_0300_00013, msg_0300_00007, msg_0300_00025, msg_0300_00019 },
 };
 
-static int _021101A4[][5][2] = {
+static int sDpadNavParam_ContextMenu[][5][2] = {
     {
         {  1,  1 },
         {  0,  0 },
@@ -199,7 +204,7 @@ static int _021101A4[][5][2] = {
     },
 };
 
-static int _02110244[][8][3] = {
+static int sDpadNavParam_PartyMenu[][8][3] = {
     {
         {  1,  1, -1 },
         {  0,  0, -1 },
@@ -272,7 +277,7 @@ static int _02110244[][8][3] = {
     },
 };
 
-static TouchscreenHitbox _02110180[] = {
+static TouchscreenHitbox sHitboxes[] = {
     { .rect = { 0x18, 0x38, 0x80, 0x00 } },
     { .rect = { 0x38, 0x58, 0x80, 0x00 } },
     { .rect = { 0x58, 0x78, 0x80, 0x00 } },
@@ -284,7 +289,7 @@ static TouchscreenHitbox _02110180[] = {
     { { TOUCHSCREEN_RECTLIST_END } },
 };
 
-static TouchscreenHitbox _02110168[] = {
+static TouchscreenHitbox sContextMenuHitboxes[] = {
     { .rect = { 0x10, 0x30, 0x80, 0x00 } },
     { .rect = { 0x30, 0x50, 0x80, 0x00 } },
     { .rect = { 0x50, 0x70, 0x80, 0x00 } },
@@ -301,69 +306,69 @@ void sub_0207CB90(void) {
     G2_BlendNone();
 }
 
-static void sub_0207CB9C(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1, int a2) {
-    PartyMenuStruct_SubC90 *unk = &partyMenu->unk_C90;
+static void PartyMenu_StartContextMenuButtonPressAnim_FromCursorObj(PartyMenuStruct *partyMenu, PartyMenuContextMenuCursor *cursor, int followUpState) {
+    PartyMenuContextButtonAnimData *unk = &partyMenu->contextMenuButtonAnim;
 
-    unk->unk_6_0 = 0;
-    unk->unk_6_4 = 0;
-    unk->unk_0 = &a1->template;
-    unk->unk_4 = a1->unk_2;
-    unk->unk_5 = a1->unk_1;
-    unk->unk_7 = a1->unk_3;
-    unk->unk_8 = a2;
-    unk->unk_C = TRUE;
+    unk->autoAnimTimer = 0;
+    unk->buttonAnimState = 0;
+    unk->template = &cursor->menu;
+    unk->numItems = cursor->numItems;
+    unk->selection = cursor->selection;
+    unk->state = cursor->state;
+    unk->followUpState = followUpState;
+    unk->active = TRUE;
 }
 
-void sub_0207CBD0(PartyMenuStruct *partyMenu, int a1, int a2, BOOL a3) {
-    PartyMenuStruct_SubC90 *unk = &partyMenu->unk_C90;
+void PartyMenu_StartContextMenuButtonAnim(PartyMenuStruct *partyMenu, int selection, int followUpState, BOOL restartAnim) {
+    PartyMenuContextButtonAnimData *unk = &partyMenu->contextMenuButtonAnim;
 
-    unk->unk_6_0 = 0;
-    unk->unk_6_4 = 0;
-    unk->unk_0 = NULL;
-    unk->unk_5 = a1;
-    unk->unk_7 = Get2dSpriteCurrentAnimSeqNo(partyMenu->sprites[a1]) & 2;
-    if (a3 == TRUE) {
-        Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[a1], 0);
-        Set2dSpriteAnimSeqNo(partyMenu->sprites[a1], unk->unk_7);
+    unk->autoAnimTimer = 0;
+    unk->buttonAnimState = 0;
+    unk->template = NULL;
+    unk->selection = selection;
+    unk->state = Get2dSpriteCurrentAnimSeqNo(partyMenu->sprites[selection]) & 2;
+    if (restartAnim == TRUE) {
+        Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[selection], 0);
+        Set2dSpriteAnimSeqNo(partyMenu->sprites[selection], unk->state);
     }
-    unk->unk_8 = a2;
-    unk->unk_C = TRUE;
+    unk->followUpState = followUpState;
+    unk->active = TRUE;
 }
 
-BOOL sub_0207CC24(PartyMenuStruct *partyMenu) {
-    PartyMenuStruct_SubC90 *unk = &partyMenu->unk_C90;
+BOOL PartyMenu_AnimateContextMenuButtonPress(PartyMenuStruct *partyMenu) {
+    PartyMenuContextButtonAnimData *unk = &partyMenu->contextMenuButtonAnim;
 
-    switch (unk->unk_6_4) {
+    switch (unk->buttonAnimState) {
     case 0:
-        if (unk->unk_0 != NULL) {
-            sub_0207E3A8(partyMenu, unk->unk_4, unk->unk_5, unk->unk_7, 2);
-            sub_0207E28C(partyMenu, unk->unk_0, unk->unk_4, unk->unk_5, unk->unk_7, 0);
+        if (unk->template != NULL) {
+            sub_0207E3A8(partyMenu, unk->numItems, unk->selection, unk->state, 2);
+            sub_0207E28C(partyMenu, unk->template, unk->numItems, unk->selection, unk->state, FALSE);
             BgCommitTilemapBufferToVram(partyMenu->bgConfig, GF_BG_LYR_MAIN_0);
         } else {
-            Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[unk->unk_5], 0);
-            Set2dSpriteAnimSeqNo(partyMenu->sprites[unk->unk_5], unk->unk_7);
+            Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[unk->selection], 0);
+            Set2dSpriteAnimSeqNo(partyMenu->sprites[unk->selection], unk->state);
         }
-        ++unk->unk_6_4;
+        ++unk->buttonAnimState;
         break;
     case 1:
-        ++unk->unk_6_0;
-        if (unk->unk_6_0 == 2) {
-            if (unk->unk_0 != NULL) {
-                sub_0207E3A8(partyMenu, unk->unk_4, unk->unk_5, unk->unk_7, 1);
-                sub_0207E28C(partyMenu, unk->unk_0, unk->unk_4, unk->unk_5, unk->unk_7, 1);
+        ++unk->autoAnimTimer;
+        if (unk->autoAnimTimer == 2) {
+            if (unk->template != NULL) {
+                sub_0207E3A8(partyMenu, unk->numItems, unk->selection, unk->state, 1);
+                sub_0207E28C(partyMenu, unk->template, unk->numItems, unk->selection, unk->state, TRUE);
                 BgCommitTilemapBufferToVram(partyMenu->bgConfig, GF_BG_LYR_MAIN_0);
             } else {
-                Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[unk->unk_5], 0);
-                Set2dSpriteAnimSeqNo(partyMenu->sprites[unk->unk_5], unk->unk_7 + 1);
+                Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[unk->selection], 0);
+                Set2dSpriteAnimSeqNo(partyMenu->sprites[unk->selection], unk->state + 1);
             }
-            unk->unk_6_0 = 0;
-            ++unk->unk_6_4;
+            unk->autoAnimTimer = 0;
+            ++unk->buttonAnimState;
         }
         break;
     case 2:
-        ++unk->unk_6_0;
-        if (unk->unk_6_0 == 2) {
-            unk->unk_C = FALSE;
+        ++unk->autoAnimTimer;
+        if (unk->autoAnimTimer == 2) {
+            unk->active = FALSE;
             return FALSE;
         }
         break;
@@ -372,7 +377,7 @@ BOOL sub_0207CC24(PartyMenuStruct *partyMenu) {
     return TRUE;
 }
 
-static void sub_0207CD84(BgConfig *bgConfig, Window *window, const WindowTemplate *template) {
+static void addFiveWindows(BgConfig *bgConfig, Window *window, const WindowTemplate *template) {
     AddWindow(bgConfig, &window[0], &template[0]);
     AddWindow(bgConfig, &window[1], &template[1]);
     AddWindow(bgConfig, &window[2], &template[2]);
@@ -380,41 +385,41 @@ static void sub_0207CD84(BgConfig *bgConfig, Window *window, const WindowTemplat
     AddWindow(bgConfig, &window[4], &template[4]);
 }
 
-void sub_0207CDCC(PartyMenuStruct *partyMenu) {
-    const WindowTemplate *r4 = _02101734;
-    sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON1_NICKNAME], &r4[0]);
-    sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON3_NICKNAME], &r4[10]);
-    sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON5_NICKNAME], &r4[20]);
+void PartyMenu_AddAllWindows(PartyMenuStruct *partyMenu) {
+    const WindowTemplate *templates = sMainWindowTemplates;
+    addFiveWindows(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON1_NICKNAME], &templates[0]);
+    addFiveWindows(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON3_NICKNAME], &templates[10]);
+    addFiveWindows(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON5_NICKNAME], &templates[20]);
     if (partyMenu->args->unk_25 == 2) {
-        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON2_NICKNAME], &r4[30]);
-        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON4_NICKNAME], &r4[35]);
-        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON6_NICKNAME], &r4[40]);
+        addFiveWindows(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON2_NICKNAME], &templates[30]);
+        addFiveWindows(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON4_NICKNAME], &templates[35]);
+        addFiveWindows(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON6_NICKNAME], &templates[40]);
     } else {
-        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON2_NICKNAME], &r4[5]);
-        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON4_NICKNAME], &r4[15]);
-        sub_0207CD84(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON6_NICKNAME], &r4[25]);
+        addFiveWindows(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON2_NICKNAME], &templates[5]);
+        addFiveWindows(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON4_NICKNAME], &templates[15]);
+        addFiveWindows(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON6_NICKNAME], &templates[25]);
     }
-    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_37], &r4[45]);
-    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_38], &r4[46]);
-    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_39], &r4[47]);
+    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_37], &templates[45]);
+    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_38], &templates[46]);
+    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_39], &templates[47]);
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_22 || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
-        WindowTemplate template = _0210161C[0];
+        WindowTemplate template = sAdditionalWindowTemplates[0];
         template.top = 22;
         AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_31], &template);
     } else {
-        AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_31], &_0210161C[0]);
+        AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_31], &sAdditionalWindowTemplates[0]);
     }
-    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_30], &_0210161C[1]);
-    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_32], &_0210161C[2]);
-    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_33], &_0210161C[3]);
-    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_34], &_0210161C[4]);
-    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_35], &_0210161C[5]);
-    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_36], &_0210161C[6]);
+    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_30], &sAdditionalWindowTemplates[1]);
+    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_32], &sAdditionalWindowTemplates[2]);
+    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_33], &sAdditionalWindowTemplates[3]);
+    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_34], &sAdditionalWindowTemplates[4]);
+    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_35], &sAdditionalWindowTemplates[5]);
+    AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_36], &sAdditionalWindowTemplates[6]);
 }
 
-void sub_0207CF68(PartyMenuStruct *partyMenu) {
+void PartyMenu_RemoveAllWindows(PartyMenuStruct *partyMenu) {
     u16 i;
-    for (i = 0; i < 40; ++i) {
+    for (i = 0; i < PARTY_MENU_WINDOW_ID_MAX; ++i) {
         RemoveWindow(&partyMenu->windows[i]);
     }
 
@@ -453,7 +458,7 @@ void sub_0207D0A0(PartyMenuStruct *partyMenu, u16 move, u8 index) {
 }
 
 void sub_0207D0E4(PartyMenuStruct *partyMenu, u8 *items, u8 numItems) {
-    UnkTemplate_0207E590 sp8;
+    PartyMenuContextMenu contextMenu;
     u16 i, numFieldMoves;
 
     partyMenu->listMenuItems = ListMenuItems_New(numItems, HEAP_ID_PARTY_MENU);
@@ -467,20 +472,20 @@ void sub_0207D0E4(PartyMenuStruct *partyMenu, u8 *items, u8 numItems) {
         }
     }
 
-    sp8.unk_00 = partyMenu->listMenuItems;
-    sp8.unk_04 = &partyMenu->levelUpStatsWindow[0];
-    sp8.unk_08 = 0;
-    sp8.unk_09 = 1;
-    sp8.unk_0A = numItems;
-    sp8.unk_0B_0 = 0;
-    sp8.unk_0B_4 = 0;
+    contextMenu.items = partyMenu->listMenuItems;
+    contextMenu.window = &partyMenu->levelUpStatsWindow[0];
+    contextMenu.unk_08 = 0;
+    contextMenu.unk_09 = 1;
+    contextMenu.numItems = numItems;
+    contextMenu.unk_0B_0 = 0;
+    contextMenu.unk_0B_4 = 0;
     if (numItems >= 4) {
-        sp8.unk_0B_6 = 1;
+        contextMenu.scrollEnabled = 1;
     } else {
-        sp8.unk_0B_6 = 0;
+        contextMenu.scrollEnabled = 0;
     }
-    sub_0207E54C(partyMenu, sp8.unk_0A, 0, 0);
-    partyMenu->unk_824 = sub_0207E590(partyMenu, &sp8, 0, HEAP_ID_PARTY_MENU, 0);
+    sub_0207E54C(partyMenu, contextMenu.numItems, 0, 0);
+    partyMenu->contextMenuCursor = sub_0207E590(partyMenu, &contextMenu, 0, HEAP_ID_PARTY_MENU, 0);
 }
 
 void sub_0207D1C8(PartyMenuStruct *partyMenu) {
@@ -502,7 +507,7 @@ static void PartyMenu_DrawSlashOnMonHpTextWindow(PartyMenuStruct *partyMenu, u8 
 }
 
 void PartyMenu_BufferMonNickname(PartyMenuStruct *partyMenu, Pokemon *mon, u32 partySlot) {
-    String *msg = NewString_ReadMsgData(partyMenu->msgData, _021015BC[partySlot][0]);
+    String *msg = NewString_ReadMsgData(partyMenu->msgData, sMonNicknameMsgIds[partySlot][0]);
     BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->monsDrawState[partySlot].nickname, msg);
     String_Delete(msg);
@@ -608,14 +613,14 @@ void sub_0207D5DC(PartyMenuStruct *partyMenu, u8 partySlot) {
     }
 }
 
-void sub_0207D6A0(PartyMenuStruct *partyMenu, u8 partySlot) {
+void PartyMenu_CommitPartyMonPanelWindowsToVram_InVBlank(PartyMenuStruct *partyMenu, u8 partySlot) {
     CopyWindowPixelsToVram_TextMode(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_NICKNAME]);
     CopyWindowPixelsToVram_TextMode(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_LEVEL]);
     CopyWindowPixelsToVram_TextMode(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPTEXT]);
     CopyWindowPixelsToVram_TextMode(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPBAR]);
 }
 
-void sub_0207D6D8(PartyMenuStruct *partyMenu, u8 partySlot) {
+void PartyMenu_CommitPartyMonPanelWindowsToVram_NotInVBlank(PartyMenuStruct *partyMenu, u8 partySlot) {
     ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_NICKNAME]);
     ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_LEVEL]);
     ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPTEXT]);
@@ -709,15 +714,15 @@ static u32 sub_0207D988(FontID fontId, String *string, u32 windowWidth) {
     return (windowWidth - FontID_String_GetWidth(fontId, string, 0)) / 2;
 }
 
-void sub_0207D998(PartyMenuStruct *partyMenu, u8 a1) {
+void sub_0207D998(PartyMenuStruct *partyMenu, u8 flag) {
     FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_30], 0);
     FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_31], 0);
-    if (a1 & 1) {
+    if (flag & 1) {
         ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00000, partyMenu->unformattedStrBuf);
         AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_30], 0, partyMenu->unformattedStrBuf, sub_0207D988(0, partyMenu->unformattedStrBuf, partyMenu->windows[PARTY_MENU_WINDOW_ID_30].width * 8), 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
         ScheduleWindowCopyToVram(&partyMenu->windows[PARTY_MENU_WINDOW_ID_30]);
     }
-    if (a1 & 2) {
+    if (flag & 2) {
         ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00001, partyMenu->unformattedStrBuf);
         AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_31], 0, partyMenu->unformattedStrBuf, sub_0207D988(0, partyMenu->unformattedStrBuf, partyMenu->windows[PARTY_MENU_WINDOW_ID_31].width * 8), 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
         ScheduleWindowCopyToVram(&partyMenu->windows[PARTY_MENU_WINDOW_ID_31]);
@@ -801,12 +806,12 @@ void sub_0207DBCC(PartyMenuStruct *partyMenu) {
     sub_0207CB7C();
 }
 
-static void sub_0207DC20(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
+static void sub_0207DC20(PartyMenuStruct *partyMenu, u8 partySlot, u8 compatibilityParam) {
     Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_COMPAT];
     String *string;
 
     FillWindowPixelBuffer(window, 0);
-    switch (a2) {
+    switch (compatibilityParam) {
     case 0: // ABLE!
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00161);
         break;
@@ -959,48 +964,48 @@ void sub_0207E068(PartyMenuStruct *partyMenu) {
     ScheduleWindowCopyToVram(&partyMenu->windows[PARTY_MENU_WINDOW_ID_39]);
 }
 
-static void sub_0207E17C(PartyMenuStruct *partyMenu, int a1, int a2) {
-    GF_ASSERT(a1 <= 8);
-    for (int i = 0; i < a1; ++i) {
-        AddWindow(partyMenu->bgConfig, &partyMenu->unk_294[_021016B4[a1 - 1][a2][i]], &_02101654[_021016B4[a1 - 1][a2][i]]);
-        FillWindowPixelBuffer(&partyMenu->unk_294[_021016B4[a1 - 1][a2][i]], 4);
+static void sub_0207E17C(PartyMenuStruct *partyMenu, int numItems, int state) {
+    GF_ASSERT(numItems <= 8);
+    for (int i = 0; i < numItems; ++i) {
+        AddWindow(partyMenu->bgConfig, &partyMenu->contextMenuButtonWindows[sButtonWindowIDs[numItems - 1][state][i]], &sButtonWindowTemplates[sButtonWindowIDs[numItems - 1][state][i]]);
+        FillWindowPixelBuffer(&partyMenu->contextMenuButtonWindows[sButtonWindowIDs[numItems - 1][state][i]], 4);
     }
 }
 
-static void sub_0207E1DC(PartyMenuStruct *partyMenu, int a1, int a2) {
-    GF_ASSERT(a1 <= 8);
-    for (int i = 0; i < a1; ++i) {
-        RemoveWindow(&partyMenu->unk_294[_021016B4[a1 - 1][a2][i]]);
+static void sub_0207E1DC(PartyMenuStruct *partyMenu, int numItems, int state) {
+    GF_ASSERT(numItems <= 8);
+    for (int i = 0; i < numItems; ++i) {
+        RemoveWindow(&partyMenu->contextMenuButtonWindows[sButtonWindowIDs[numItems - 1][state][i]]);
     }
     FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, 0, 32, 18, 0);
     FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, 0, 25, 19, 7, 5, 0);
     BgCommitTilemapBufferToVram(partyMenu->bgConfig, GF_BG_LYR_MAIN_0);
 }
 
-static u32 sub_0207E264(int a0) {
-    if (a0 < 4) {
+static u32 sub_0207E264(int selection) {
+    if (selection < 4) {
         return MAKE_TEXT_COLOR(14, 15, 11);
     } else {
         return MAKE_TEXT_COLOR(9, 10, 11);
     }
 }
 
-static u32 sub_0207E278(int a0) {
-    if (a0 < 4) {
+static u32 sub_0207E278(int selection) {
+    if (selection < 4) {
         return MAKE_TEXT_COLOR(14, 15, 4);
     } else {
         return MAKE_TEXT_COLOR(9, 10, 4);
     }
 }
 
-static void sub_0207E28C(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, int a3, int a4, int a5) {
+static void sub_0207E28C(PartyMenuStruct *partyMenu, PartyMenuContextMenu *contextMenu, int numItems, int selection, int state, BOOL a5) {
     u32 color;
     u32 y;
     u32 x = 0;
     u32 fillValue;
     u8 windowId;
 
-    windowId = _021016B4[a2 - 1][a4][a3];
+    windowId = sButtonWindowIDs[numItems - 1][state][selection];
     if (windowId == 7) {
         if (a5 == FALSE) {
             fillValue = 4;
@@ -1010,41 +1015,41 @@ static void sub_0207E28C(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, i
             color = MAKE_TEXT_COLOR(14, 15, 11);
         }
         y = 4;
-        x = FontID_String_GetCenterAlignmentX(4, a1->unk_00[a3].text, 0, GetWindowWidth(&partyMenu->unk_294[windowId]) * 8);
+        x = FontID_String_GetCenterAlignmentX(4, contextMenu->items[selection].text, 0, GetWindowWidth(&partyMenu->contextMenuButtonWindows[windowId]) * 8);
     } else {
         if (a5 == FALSE) {
             fillValue = 4;
-            color = sub_0207E278(a3);
+            color = sub_0207E278(selection);
         } else {
             fillValue = 11;
-            color = sub_0207E264(a3);
+            color = sub_0207E264(selection);
         }
         y = 0;
     }
-    FillWindowPixelBuffer(&partyMenu->unk_294[windowId], fillValue);
-    AddTextPrinterParameterizedWithColor(&partyMenu->unk_294[windowId], 4, a1->unk_00[a3].text, x, y, TEXT_SPEED_NOTRANSFER, color, NULL);
-    ScheduleWindowCopyToVram(&partyMenu->unk_294[windowId]);
+    FillWindowPixelBuffer(&partyMenu->contextMenuButtonWindows[windowId], fillValue);
+    AddTextPrinterParameterizedWithColor(&partyMenu->contextMenuButtonWindows[windowId], 4, contextMenu->items[selection].text, x, y, TEXT_SPEED_NOTRANSFER, color, NULL);
+    ScheduleWindowCopyToVram(&partyMenu->contextMenuButtonWindows[windowId]);
 }
 
-static void sub_0207E358(PartyMenuStruct *partyMenu, UnkTemplate_0207E590 *a1, int a2, int a3, int a4) {
-    GF_ASSERT(a2 <= 8);
-    for (int i = 0; i < a2; ++i) {
-        if (a3 == i) {
-            sub_0207E28C(partyMenu, a1, a2, i, a4, 1);
+static void sub_0207E358(PartyMenuStruct *partyMenu, PartyMenuContextMenu *contextMenu, int numItems, int selection, int state) {
+    GF_ASSERT(numItems <= 8);
+    for (int i = 0; i < numItems; ++i) {
+        if (selection == i) {
+            sub_0207E28C(partyMenu, contextMenu, numItems, i, state, TRUE);
         } else {
-            sub_0207E28C(partyMenu, a1, a2, i, a4, 0);
+            sub_0207E28C(partyMenu, contextMenu, numItems, i, state, FALSE);
         }
     }
 }
 
-static void sub_0207E3A8(PartyMenuStruct *partyMenu, int a1, int a2, int a3, int a4) {
+static void sub_0207E3A8(PartyMenuStruct *partyMenu, int numItems, int selection, int state, int frameType) {
     u16 i;
-    u16 sp10[8];
-    const u8 *r4 = _021015EC[_021016B4[a1 - 1][a3][a2]];
+    u16 tiles[8];
+    const u8 *rect = sButtonRects[sButtonWindowIDs[numItems - 1][state][selection]];
     u32 tileStart;
-    if (a4 == 0) {
+    if (frameType == 0) {
         tileStart = 0x2000;
-    } else if (a4 == 1) {
+    } else if (frameType == 1) {
         tileStart = 0x2009;
     } else {
         tileStart = 0x2012;
@@ -1052,37 +1057,37 @@ static void sub_0207E3A8(PartyMenuStruct *partyMenu, int a1, int a2, int a3, int
     tileStart += 10;
 
     for (i = 0; i < 8; ++i) {
-        sp10[i] = tileStart + _021015AC[i];
+        tiles[i] = tileStart + sButtonFrameTileOffsets[i];
     }
-    LoadRectToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, &sp10[0], r4[0], r4[1], 1, 1);
-    LoadRectToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, &sp10[1], r4[0] + r4[2] - 1, r4[1], 1, 1);
-    LoadRectToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, &sp10[2], r4[0], r4[1] + r4[3] - 1, 1, 1);
-    LoadRectToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, &sp10[3], r4[0] + r4[2] - 1, r4[1] + r4[3] - 1, 1, 1);
-    FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, sp10[4], r4[0], r4[1] + 1, 1, r4[3] - 2, TILEMAP_FILL_OVWT_PAL);
-    FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, sp10[5], r4[0] + r4[2] - 1, r4[1] + 1, 1, r4[3] - 2, TILEMAP_FILL_OVWT_PAL);
-    FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, sp10[6], r4[0] + 1, r4[1], r4[2] - 2, 1, TILEMAP_FILL_OVWT_PAL);
-    FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, sp10[7], r4[0] + 1, r4[1] + r4[3] - 1, r4[2] - 2, 1, TILEMAP_FILL_OVWT_PAL);
+    LoadRectToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, &tiles[0], rect[0], rect[1], 1, 1);
+    LoadRectToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, &tiles[1], rect[0] + rect[2] - 1, rect[1], 1, 1);
+    LoadRectToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, &tiles[2], rect[0], rect[1] + rect[3] - 1, 1, 1);
+    LoadRectToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, &tiles[3], rect[0] + rect[2] - 1, rect[1] + rect[3] - 1, 1, 1);
+    FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, tiles[4], rect[0], rect[1] + 1, 1, rect[3] - 2, TILEMAP_FILL_OVWT_PAL);
+    FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, tiles[5], rect[0] + rect[2] - 1, rect[1] + 1, 1, rect[3] - 2, TILEMAP_FILL_OVWT_PAL);
+    FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, tiles[6], rect[0] + 1, rect[1], rect[2] - 2, 1, TILEMAP_FILL_OVWT_PAL);
+    FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, tiles[7], rect[0] + 1, rect[1] + rect[3] - 1, rect[2] - 2, 1, TILEMAP_FILL_OVWT_PAL);
 }
 
-void sub_0207E54C(PartyMenuStruct *partyMenu, int a1, int a2, int a3) {
-    for (int i = 0; i < a1; ++i) {
-        if (a2 == i) {
-            sub_0207E3A8(partyMenu, a1, i, a3, 1);
+void sub_0207E54C(PartyMenuStruct *partyMenu, int numItems, int selection, int state) {
+    for (int i = 0; i < numItems; ++i) {
+        if (selection == i) {
+            sub_0207E3A8(partyMenu, numItems, i, state, 1);
         } else {
-            sub_0207E3A8(partyMenu, a1, i, a3, 0);
+            sub_0207E3A8(partyMenu, numItems, i, state, 0);
         }
     }
 }
 
-UnkStruct_0207E590 *sub_0207E590(PartyMenuStruct *partyMenu, const UnkTemplate_0207E590 *template, int a2, HeapID heapId, int a4) {
-    UnkStruct_0207E590 *ret = AllocFromHeap(heapId, sizeof(UnkStruct_0207E590));
-    ret->template = *template;
-    ret->unk_2 = ret->template.unk_0A;
-    ret->unk_0 = a2;
-    ret->unk_1 = a2;
-    ret->unk_3 = a4;
-    sub_0207E17C(partyMenu, ret->template.unk_0A, ret->unk_3);
-    sub_0207E358(partyMenu, &ret->template, ret->template.unk_0A, ret->unk_0, ret->unk_3);
+PartyMenuContextMenuCursor *sub_0207E590(PartyMenuStruct *partyMenu, const PartyMenuContextMenu *template, int selection, HeapID heapId, int state) {
+    PartyMenuContextMenuCursor *ret = AllocFromHeap(heapId, sizeof(PartyMenuContextMenuCursor));
+    ret->menu = *template;
+    ret->numItems = ret->menu.numItems;
+    ret->prevSelection = selection;
+    ret->selection = selection;
+    ret->state = state;
+    sub_0207E17C(partyMenu, ret->menu.numItems, ret->state);
+    sub_0207E358(partyMenu, &ret->menu, ret->menu.numItems, ret->prevSelection, ret->state);
     sub_0207CB7C();
     Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], FALSE);
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_22 || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
@@ -1091,9 +1096,9 @@ UnkStruct_0207E590 *sub_0207E590(PartyMenuStruct *partyMenu, const UnkTemplate_0
     return ret;
 }
 
-void sub_0207E618(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1) {
-    sub_0207E1DC(partyMenu, a1->unk_2, a1->unk_3);
-    FreeToHeap(a1);
+void sub_0207E618(PartyMenuStruct *partyMenu, PartyMenuContextMenuCursor *cursor) {
+    sub_0207E1DC(partyMenu, cursor->numItems, cursor->state);
+    FreeToHeap(cursor);
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_4 || partyMenu->args->context == PARTY_MENU_CONTEXT_21) {
         Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], FALSE);
     } else {
@@ -1104,9 +1109,9 @@ void sub_0207E618(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1) {
     }
 }
 
-static BOOL sub_0207E684(int a0, int a1, int a2) {
+static BOOL hitboxHasSelectionMapping(int state, int numItems, int selection) {
     for (int i = 0; i < 8; ++i) {
-        if (a2 == _021016B4[a1 - 1][a0][i]) {
+        if (selection == sButtonWindowIDs[numItems - 1][state][i]) {
             return TRUE;
         }
     }
@@ -1114,9 +1119,9 @@ static BOOL sub_0207E684(int a0, int a1, int a2) {
     return FALSE;
 }
 
-static int sub_0207E6B4(int a0, int a1, int a2) {
+static int hitboxToSelection(int state, int numItems, int selection) {
     for (int i = 0; i < 8; ++i) {
-        if (a2 == _021016B4[a1 - 1][a0][i]) {
+        if (selection == sButtonWindowIDs[numItems - 1][state][i]) {
             return i;
         }
     }
@@ -1124,160 +1129,160 @@ static int sub_0207E6B4(int a0, int a1, int a2) {
     return LIST_NOTHING_CHOSEN;
 }
 
-static BOOL sub_0207E6E8(int a0, int a1, int a2) {
-    if (_021016B4[a1 - 1][a0][a2] != -1 && _021016B4[a1 - 1][a0][a2] != 7) {
+static BOOL contextMenuButtonIsActive(int state, int numItems, int selection) {
+    if (sButtonWindowIDs[numItems - 1][state][selection] != -1 && sButtonWindowIDs[numItems - 1][state][selection] != 7) {
         return TRUE;
     } else {
         return FALSE;
     }
 }
 
-static BOOL sub_0207E714(u8 *a0, int a1, int a2) {
-    if (_02110244[a1 - 2][*a0][a2] != -1) {
-        *a0 = _02110244[a1 - 2][*a0][a2];
+static BOOL handlePartyMenuTopLevelDpadInput(u8 *pSelection, int numItems, int direction) {
+    if (sDpadNavParam_PartyMenu[numItems - 2][*pSelection][direction] != -1) {
+        *pSelection = sDpadNavParam_PartyMenu[numItems - 2][*pSelection][direction];
         return TRUE;
     } else {
         return FALSE;
     }
 }
 
-static BOOL sub_0207E748(u8 *a0, int a1, int a2) {
-    if (_021101A4[a1 - 2][*a0][a2] != -1) {
-        *a0 = _021101A4[a1 - 2][*a0][a2];
+static BOOL handlePartyContextMenuDpadInput(u8 *pSelection, int numItems, int direction) {
+    if (sDpadNavParam_ContextMenu[numItems - 2][*pSelection][direction] != -1) {
+        *pSelection = sDpadNavParam_ContextMenu[numItems - 2][*pSelection][direction];
         return TRUE;
     } else {
         return FALSE;
     }
 }
 
-u32 sub_0207E778(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1) {
-    PartyMenuStruct_SubC90 *unkC90 = &partyMenu->unk_C90;
+u32 PartyMenu_HandleInput_ContextMenu(PartyMenuStruct *partyMenu, PartyMenuContextMenuCursor *cursor) {
+    PartyMenuContextButtonAnimData *animData = &partyMenu->contextMenuButtonAnim;
     int r4 = 0;
 
-    if (unkC90->unk_C == TRUE) {
-        if (sub_0207CC24(partyMenu) == FALSE) {
-            return unkC90->unk_8;
+    if (animData->active == TRUE) {
+        if (PartyMenu_AnimateContextMenuButtonPress(partyMenu) == FALSE) {
+            return animData->followUpState;
         } else {
             return LIST_NOTHING_CHOSEN;
         }
     }
 
-    int hitbox = TouchscreenHitbox_FindRectAtTouchNew(_02110180);
+    int hitbox = TouchscreenHitbox_FindRectAtTouchNew(sHitboxes);
     if (hitbox != -1) {
-        if (sub_0207E684(a1->unk_3, a1->unk_2, hitbox) == TRUE) {
+        if (hitboxHasSelectionMapping(cursor->state, cursor->numItems, hitbox) == TRUE) {
             if (hitbox == 7) {
                 PlaySE(SEQ_SE_GS_GEARCANCEL);
             } else {
                 PlaySE(SEQ_SE_DP_SELECT);
             }
-            sub_0207E3A8(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3, 0);
-            sub_0207E28C(partyMenu, &a1->template, a1->unk_2, a1->unk_1, a1->unk_3, 0);
-            a1->unk_1 = sub_0207E6B4(a1->unk_3, a1->unk_2, hitbox);
-            sub_0207CB9C(partyMenu, a1, a1->template.unk_00[a1->unk_1].value);
+            sub_0207E3A8(partyMenu, cursor->numItems, cursor->selection, cursor->state, 0);
+            sub_0207E28C(partyMenu, &cursor->menu, cursor->numItems, cursor->selection, cursor->state, FALSE);
+            cursor->selection = hitboxToSelection(cursor->state, cursor->numItems, hitbox);
+            PartyMenu_StartContextMenuButtonPressAnim_FromCursorObj(partyMenu, cursor, cursor->menu.items[cursor->selection].value);
             return LIST_NOTHING_CHOSEN;
         }
     } else {
         if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
-            if (sub_0207E714(&a1->unk_1, a1->unk_2, 0)) {
+            if (handlePartyMenuTopLevelDpadInput(&cursor->selection, cursor->numItems, 0)) {
                 ++r4;
             }
         } else if (gSystem.newAndRepeatedKeys & PAD_KEY_DOWN) {
-            if (sub_0207E714(&a1->unk_1, a1->unk_2, 1)) {
+            if (handlePartyMenuTopLevelDpadInput(&cursor->selection, cursor->numItems, 1)) {
                 ++r4;
             }
         } else if (gSystem.newAndRepeatedKeys & PAD_KEY_LEFT || gSystem.newAndRepeatedKeys & PAD_KEY_RIGHT) {
-            if (sub_0207E714(&a1->unk_1, a1->unk_2, 2)) {
+            if (handlePartyMenuTopLevelDpadInput(&cursor->selection, cursor->numItems, 2)) {
                 ++r4;
             }
         } else if (gSystem.newKeys & PAD_BUTTON_A) {
-            if (a1->unk_1 == sub_0207E6B4(a1->unk_3, a1->unk_2, 7)) {
+            if (cursor->selection == hitboxToSelection(cursor->state, cursor->numItems, 7)) {
                 PlaySE(SEQ_SE_GS_GEARCANCEL);
             } else {
                 PlaySE(SEQ_SE_DP_SELECT);
             }
-            sub_0207CB9C(partyMenu, a1, a1->template.unk_00[a1->unk_1].value);
+            PartyMenu_StartContextMenuButtonPressAnim_FromCursorObj(partyMenu, cursor, cursor->menu.items[cursor->selection].value);
             return LIST_NOTHING_CHOSEN;
         } else if (gSystem.newKeys & PAD_BUTTON_B) {
             PlaySE(SEQ_SE_GS_GEARCANCEL);
-            sub_0207E3A8(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3, 0);
-            sub_0207E28C(partyMenu, &a1->template, a1->unk_2, a1->unk_1, a1->unk_3, 0);
-            a1->unk_1 = sub_0207E6B4(a1->unk_3, a1->unk_2, 7);
-            sub_0207CB9C(partyMenu, a1, LIST_CANCEL);
+            sub_0207E3A8(partyMenu, cursor->numItems, cursor->selection, cursor->state, 0);
+            sub_0207E28C(partyMenu, &cursor->menu, cursor->numItems, cursor->selection, cursor->state, FALSE);
+            cursor->selection = hitboxToSelection(cursor->state, cursor->numItems, 7);
+            PartyMenu_StartContextMenuButtonPressAnim_FromCursorObj(partyMenu, cursor, LIST_CANCEL);
             return LIST_NOTHING_CHOSEN;
         }
     }
 
     if (r4) {
         PlaySE(SEQ_SE_DP_SELECT);
-        sub_0207E54C(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3);
-        sub_0207E358(partyMenu, &a1->template, a1->unk_2, a1->unk_1, a1->unk_3);
+        sub_0207E54C(partyMenu, cursor->numItems, cursor->selection, cursor->state);
+        sub_0207E358(partyMenu, &cursor->menu, cursor->numItems, cursor->selection, cursor->state);
     }
 
     return LIST_NOTHING_CHOSEN;
 }
 
-u32 sub_0207E93C(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1) {
-    PartyMenuStruct_SubC90 *unkC90 = &partyMenu->unk_C90;
+u32 PartyMenu_HandleInput_TopLevel(PartyMenuStruct *partyMenu, PartyMenuContextMenuCursor *a1) {
+    PartyMenuContextButtonAnimData *animData = &partyMenu->contextMenuButtonAnim;
     int r6 = 0;
 
-    if (unkC90->unk_C == TRUE) {
-        if (sub_0207CC24(partyMenu) == FALSE) {
-            return unkC90->unk_8;
+    if (animData->active == TRUE) {
+        if (PartyMenu_AnimateContextMenuButtonPress(partyMenu) == FALSE) {
+            return animData->followUpState;
         } else {
             return LIST_NOTHING_CHOSEN;
         }
     }
 
-    int hitbox = TouchscreenHitbox_FindRectAtTouchNew(_02110168);
+    int hitbox = TouchscreenHitbox_FindRectAtTouchNew(sContextMenuHitboxes);
     if (hitbox != -1) {
         if (hitbox == 4) {
             PlaySE(SEQ_SE_GS_GEARCANCEL);
-            sub_0207E3A8(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3, 0);
-            sub_0207E28C(partyMenu, &a1->template, a1->unk_2, a1->unk_1, a1->unk_3, 0);
-            a1->unk_1 = a1->unk_2 - 1;
-            sub_0207CB9C(partyMenu, a1, LIST_CANCEL);
+            sub_0207E3A8(partyMenu, a1->numItems, a1->selection, a1->state, 0);
+            sub_0207E28C(partyMenu, &a1->menu, a1->numItems, a1->selection, a1->state, FALSE);
+            a1->selection = a1->numItems - 1;
+            PartyMenu_StartContextMenuButtonPressAnim_FromCursorObj(partyMenu, a1, LIST_CANCEL);
             return LIST_NOTHING_CHOSEN;
-        } else if (sub_0207E6E8(a1->unk_3, a1->unk_2, hitbox) == TRUE) {
+        } else if (contextMenuButtonIsActive(a1->state, a1->numItems, hitbox) == TRUE) {
             PlaySE(SEQ_SE_DP_SELECT);
-            sub_0207E3A8(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3, 0);
-            sub_0207E28C(partyMenu, &a1->template, a1->unk_2, a1->unk_1, a1->unk_3, 0);
-            a1->unk_1 = hitbox;
-            sub_0207CB9C(partyMenu, a1, a1->template.unk_00[a1->unk_1].value);
+            sub_0207E3A8(partyMenu, a1->numItems, a1->selection, a1->state, 0);
+            sub_0207E28C(partyMenu, &a1->menu, a1->numItems, a1->selection, a1->state, FALSE);
+            a1->selection = hitbox;
+            PartyMenu_StartContextMenuButtonPressAnim_FromCursorObj(partyMenu, a1, a1->menu.items[a1->selection].value);
             return LIST_NOTHING_CHOSEN;
         }
     } else {
         if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
-            if (sub_0207E748(&a1->unk_1, a1->unk_2, 0)) {
+            if (handlePartyContextMenuDpadInput(&a1->selection, a1->numItems, 0)) {
                 ++r6;
             }
         } else if (gSystem.newAndRepeatedKeys & PAD_KEY_DOWN) {
-            if (sub_0207E748(&a1->unk_1, a1->unk_2, 1)) {
+            if (handlePartyContextMenuDpadInput(&a1->selection, a1->numItems, 1)) {
                 ++r6;
             }
         } else if (gSystem.newKeys & PAD_BUTTON_A) {
-            if (a1->unk_1 == a1->unk_2 - 1) {
+            if (a1->selection == a1->numItems - 1) {
                 PlaySE(SEQ_SE_GS_GEARCANCEL);
             } else {
                 PlaySE(SEQ_SE_DP_SELECT);
             }
-            sub_0207E3A8(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3, 0);
-            sub_0207E28C(partyMenu, &a1->template, a1->unk_2, a1->unk_1, a1->unk_3, 0);
-            sub_0207CB9C(partyMenu, a1, a1->template.unk_00[a1->unk_1].value);
+            sub_0207E3A8(partyMenu, a1->numItems, a1->selection, a1->state, 0);
+            sub_0207E28C(partyMenu, &a1->menu, a1->numItems, a1->selection, a1->state, FALSE);
+            PartyMenu_StartContextMenuButtonPressAnim_FromCursorObj(partyMenu, a1, a1->menu.items[a1->selection].value);
             return LIST_NOTHING_CHOSEN;
         } else if (gSystem.newKeys & PAD_BUTTON_B) {
             PlaySE(SEQ_SE_GS_GEARCANCEL);
-            sub_0207E3A8(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3, 0);
-            sub_0207E28C(partyMenu, &a1->template, a1->unk_2, a1->unk_1, a1->unk_3, 0);
-            a1->unk_1 = a1->unk_2 - 1;
-            sub_0207CB9C(partyMenu, a1, LIST_CANCEL);
+            sub_0207E3A8(partyMenu, a1->numItems, a1->selection, a1->state, 0);
+            sub_0207E28C(partyMenu, &a1->menu, a1->numItems, a1->selection, a1->state, FALSE);
+            a1->selection = a1->numItems - 1;
+            PartyMenu_StartContextMenuButtonPressAnim_FromCursorObj(partyMenu, a1, LIST_CANCEL);
             return LIST_NOTHING_CHOSEN;
         }
     }
 
     if (r6) {
         PlaySE(SEQ_SE_DP_SELECT);
-        sub_0207E54C(partyMenu, a1->unk_2, a1->unk_1, a1->unk_3);
-        sub_0207E358(partyMenu, &a1->template, a1->unk_2, a1->unk_1, a1->unk_3);
+        sub_0207E54C(partyMenu, a1->numItems, a1->selection, a1->state);
+        sub_0207E358(partyMenu, &a1->menu, a1->numItems, a1->selection, a1->state);
     }
 
     return LIST_NOTHING_CHOSEN;

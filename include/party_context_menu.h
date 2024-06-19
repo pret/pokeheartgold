@@ -6,10 +6,10 @@
 
 void sub_0207CB7C(void);
 void sub_0207CB90(void);
-void sub_0207CBD0(PartyMenuStruct *partyMenu, int a1, int a2, BOOL a3);
-BOOL sub_0207CC24(PartyMenuStruct *partyMenu);
-void sub_0207CDCC(PartyMenuStruct *partyMenu);
-void sub_0207CF68(PartyMenuStruct *partyMenu);
+void PartyMenu_StartContextMenuButtonAnim(PartyMenuStruct *partyMenu, int spriteId, int followUpState, BOOL restartAnim);
+BOOL PartyMenu_AnimateContextMenuButtonPress(PartyMenuStruct *partyMenu);
+void PartyMenu_AddAllWindows(PartyMenuStruct *partyMenu);
+void PartyMenu_RemoveAllWindows(PartyMenuStruct *partyMenu);
 void PartyMenu_SetContextMenuStaticStrings(PartyMenuStruct *partyMenu);
 void sub_0207D0A0(PartyMenuStruct *partyMenu, u16 move, u8 index);
 void sub_0207D0E4(PartyMenuStruct *partyMenu, u8 *items, u8 numItems);
@@ -20,8 +20,8 @@ void PartyMenu_PrintMonCurHpOnWindow(PartyMenuStruct *partyMenu, u8 partySlot);
 void PartyMenu_ClearMonHpTextWindow(PartyMenuStruct *partyMenu, u8 partySlot);
 void PartyMenu_DrawMonHpBarOnWindow(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207D5DC(PartyMenuStruct *partyMenu, u8 partySlot);
-void sub_0207D6A0(PartyMenuStruct *partyMenu, u8 partySlot);
-void sub_0207D6D8(PartyMenuStruct *partyMenu, u8 partySlot);
+void PartyMenu_CommitPartyMonPanelWindowsToVram_InVBlank(PartyMenuStruct *partyMenu, u8 partySlot);
+void PartyMenu_CommitPartyMonPanelWindowsToVram_NotInVBlank(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207D710(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207D7A8(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207D840(PartyMenuStruct *partyMenu, u8 partySlot);
@@ -37,10 +37,10 @@ void PartyMenu_LevelUpPrintStatsChange(PartyMenuStruct *partyMenu);
 void sub_0207DF98(PartyMenuStruct *partyMenu);
 void sub_0207E04C(PartyMenuStruct *partyMenu);
 void sub_0207E068(PartyMenuStruct *partyMenu);
-void sub_0207E54C(PartyMenuStruct *partyMenu, int a1, int a2, int a3);
-UnkStruct_0207E590 *sub_0207E590(PartyMenuStruct *partyMenu, const UnkTemplate_0207E590 *template, int a2, HeapID heapId, int a4);
-void sub_0207E618(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1);
-u32 sub_0207E778(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1);
-u32 sub_0207E93C(PartyMenuStruct *partyMenu, UnkStruct_0207E590 *a1);
+void sub_0207E54C(PartyMenuStruct *partyMenu, int numItems, int selection, int state);
+PartyMenuContextMenuCursor *sub_0207E590(PartyMenuStruct *partyMenu, const PartyMenuContextMenu *template, int selection, HeapID heapId, int state);
+void sub_0207E618(PartyMenuStruct *partyMenu, PartyMenuContextMenuCursor *a1);
+u32 PartyMenu_HandleInput_ContextMenu(PartyMenuStruct *partyMenu, PartyMenuContextMenuCursor *a1);
+u32 PartyMenu_HandleInput_TopLevel(PartyMenuStruct *partyMenu, PartyMenuContextMenuCursor *a1);
 
 #endif //POKEHEARTGOLD_PARTY_CONTEXT_MENU_H

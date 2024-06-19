@@ -1922,11 +1922,11 @@ _02080200:
 	lsl r1, r1, #8
 	ldrb r1, [r4, r1]
 	add r0, r5, #0
-	bl sub_0207D6D8
+	bl PartyMenu_CommitPartyMonPanelWindowsToVram_NotInVBlank
 	ldr r1, _0208046C ; =0x00000301
 	add r0, r5, #0
 	ldrb r1, [r4, r1]
-	bl sub_0207D6D8
+	bl PartyMenu_CommitPartyMonPanelWindowsToVram_NotInVBlank
 	add r0, r5, #0
 	mov r1, #0
 	bl sub_0208047C

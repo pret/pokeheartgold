@@ -528,7 +528,7 @@ static void Photo_InitFromArcData(PHOTO *photo, FieldSystem *fieldSystem, u8 ico
     photo->numMons = photo->subjectSpriteId ? 1 : partySize;
 
     Pokemon *leadMon = GetFirstAliveMonInParty_CrashIfNone(party);
-    GetMonData(leadMon, MON_DATA_NICKNAME, photo->leadMonNick);
+    GetMonData(leadMon, MON_DATA_NICKNAME_FLAT, photo->leadMonNick);
     if (!photo->subjectSpriteId) {
         for (i = 0; i < partySize; ++i) {
             Pokemon *mon = Party_GetMonByIndex(party, i);

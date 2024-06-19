@@ -38,7 +38,7 @@ typedef enum PartyMonSelection {
 typedef enum PartyMenuState {
     PARTY_MENU_STATE_INIT,
     PARTY_MENU_STATE_1,
-    PARTY_MENU_STATE_2,
+    PARTY_MENU_STATE_HANDLE_CONTEXT_MENU_INPUT,
     PARTY_MENU_STATE_3,
     PARTY_MENU_STATE_4,
     PARTY_MENU_STATE_5,
@@ -51,7 +51,7 @@ typedef enum PartyMenuState {
     PARTY_MENU_STATE_PRINT_TAKE_GRISEOUS_ORB_MESSAGE,
     PARTY_MENU_STATE_WAIT_FORM_CHANGE,
     PARTY_MENU_STATE_14,
-    PARTY_MENU_STATE_15,
+    PARTY_MENU_STATE_HANDLE_INPUT,
     PARTY_MENU_STATE_16,
     PARTY_MENU_STATE_17,
     PARTY_MENU_STATE_18,
@@ -262,24 +262,24 @@ typedef enum PartyMenuSpriteId {
     PARTY_MENU_SPRITE_ID_MAX,
 } PartyMenuSpriteId;
 
-typedef struct UnkTemplate_0207E590 {
-    LISTMENUITEM *unk_00;
-    Window *unk_04;
+typedef struct UnkTemplatePartyMenuContextMenu_0207E590 {
+    LISTMENUITEM *items;
+    Window *window;
     u8 unk_08;
     u8 unk_09;
-    u8 unk_0A;
+    u8 numItems;
     u8 unk_0B_0:4;
     u8 unk_0B_4:2;
-    u8 unk_0B_6:2;
-} UnkTemplate_0207E590;
+    u8 scrollEnabled:2;
+} PartyMenuContextMenu;
 
-typedef struct UnkStruct_0207E590 {
-    u8 unk_0;
-    u8 unk_1;
-    u8 unk_2;
-    u8 unk_3;
-    UnkTemplate_0207E590 template;
-} UnkStruct_0207E590;
+typedef struct PartyMenuContextMenuCursor {
+    u8 prevSelection;
+    u8 selection;
+    u8 numItems;
+    u8 state;
+    PartyMenuContextMenu menu;
+} PartyMenuContextMenuCursor;
 
 typedef struct FieldMoveUseData {
     TaskManager *taskManager;
@@ -338,16 +338,16 @@ typedef struct PartyMenuStruct PartyMenuStruct;
 typedef void (*PartyMenuStruct_SubC90_UnkFunc)(PartyMenuStruct *partyMenu, int *a1);
 #define PARTYMENUSTRUCT_SUBC90_UNKFUNC_NONE ((PartyMenuStruct_SubC90_UnkFunc)-2)
 
-typedef struct PartyMenuStruct_SubC90 {
-    UnkTemplate_0207E590 *unk_0;
-    u8 unk_4;
-    u8 unk_5;
-    u8 unk_6_0:4;
-    u8 unk_6_4:4;
-    u8 unk_7;
-    int unk_8;
-    BOOL unk_C;
-} PartyMenuStruct_SubC90;
+typedef struct PartyMenuContextButtonAnimData {
+    PartyMenuContextMenu *template;
+    u8 numItems;
+    u8 selection;
+    u8 autoAnimTimer:4;
+    u8 buttonAnimState:4;
+    u8 state;
+    int followUpState;
+    BOOL active;
+} PartyMenuContextButtonAnimData;
 
 typedef struct PartyMenuMonsDrawState {
     String *nickname; // 828
@@ -382,7 +382,7 @@ struct PartyMenuStruct {
     BgConfig *bgConfig;
     Window windows[PARTY_MENU_WINDOW_ID_MAX];
     Window levelUpStatsWindow[1];
-    Window unk_294[8];
+    Window contextMenuButtonWindows[8];
     u16 unk_314[6 * 0x10];
     u16 unk_3D4[6 * 0x10];
     u16 unk_494[6 * 0x10];
@@ -400,7 +400,7 @@ struct PartyMenuStruct {
     String *unformattedStrBuf;
     String *contextMenuStrings[PARTY_MON_CONTEXT_MENU_NUM_STRINGS]; //0x7d0
     LISTMENUITEM *listMenuItems; //0x820
-    UnkStruct_0207E590 *unk_824;
+    PartyMenuContextMenuCursor *contextMenuCursor;
     PartyMenuMonsDrawState monsDrawState[PARTY_SIZE];
     const UnkStruct_02020654 *unk_948;
     u8 filler_94C[0x300];
@@ -429,7 +429,7 @@ struct PartyMenuStruct {
     GF3DVramMan *unk_C84; // C84
     YesNoPrompt *yesNoPrompt;
     u8 filler_C8C[4];
-    PartyMenuStruct_SubC90 unk_C90;
+    PartyMenuContextButtonAnimData contextMenuButtonAnim;
     u8 filler_CA0[0x8];
 }; // CA8
 

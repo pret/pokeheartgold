@@ -127,7 +127,7 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BattleContext *ctx, int battl
     PokedexData_UnloadAll(dexData);
     PokedexData_Delete(dexData);
 
-    GetMonData(mon, MON_DATA_NICKNAME, ctx->battleMons[battlerId].nickname);
+    GetMonData(mon, MON_DATA_NICKNAME_FLAT, ctx->battleMons[battlerId].nickname);
     GetMonData(mon, MON_DATA_OT_NAME, ctx->battleMons[battlerId].otName);
 
     ctx->battleMons[battlerId].unk78 = 0;

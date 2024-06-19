@@ -43,7 +43,7 @@
 .public PartyMenu_FormChangeScene_End
 .public sub_0207CB90
 .public sub_0207D5DC
-.public sub_0207D6D8
+.public PartyMenu_CommitPartyMonPanelWindowsToVram_NotInVBlank
 .public sub_0207D8EC
 .public sub_0207DAC4
 .public sub_0207DAD8

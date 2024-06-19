@@ -44,7 +44,7 @@
 .public PartyMenu_ClearMonHpTextWindow
 .public PartyMenu_DrawMonHpBarOnWindow
 .public sub_0207D5DC
-.public sub_0207D6A0
+.public PartyMenu_CommitPartyMonPanelWindowsToVram_InVBlank
 .public sub_0207DAC4
 .public sub_0207DAD8
 .public sub_0207DAEC
@@ -53,7 +53,7 @@
 .public sub_0207E04C
 .public sub_0207E54C
 .public sub_0207E590
-.public sub_0207E93C
+.public PartyMenu_HandleInput_TopLevel
 .public sub_0207EFC4
 .public sub_0207F044
 .public sub_0207F240

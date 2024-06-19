@@ -991,7 +991,7 @@ static void SetName(TaskManager *taskman) {
         } else {
             mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), data->partyIdx);
         }
-        SetMonData(mon, MON_DATA_NICKNAME_2, data->args->unk1C);
+        SetMonData(mon, MON_DATA_NICKNAME_FLAT_COMPARE, data->args->unk1C);
         break;
     case 5:
         SAV_FRIEND_GRP *friendGroup = Save_FriendGroup_Get(fieldSystem->saveData);

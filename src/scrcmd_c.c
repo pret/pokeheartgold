@@ -2121,7 +2121,7 @@ BOOL ScrCmd_NicknameInput(ScriptContext *ctx) {
     } else {
         mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), partyPos);
     }
-    GetMonData(mon, MON_DATA_NICKNAME, nickname);
+    GetMonData(mon, MON_DATA_NICKNAME_FLAT, nickname);
     var_ret = ScriptGetVarPointer(ctx);
     species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     CallTask_NamingScreen(ctx->taskman, NAME_SCREEN_POKEMON, species, POKEMON_NAME_LENGTH, partyPos, nickname, var_ret);

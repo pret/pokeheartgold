@@ -712,7 +712,7 @@ static void sub_0204B34C(UnkStruct_0204B470 *a0, Pokemon *mon) {
     }
     a0->ability = GetMonData(mon, MON_DATA_ABILITY, NULL);
     a0->friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
-    GetMonData(mon, MON_DATA_NICKNAME, a0->nickname);
+    GetMonData(mon, MON_DATA_NICKNAME_FLAT, a0->nickname);
 }
 
 static void sub_0204B470(UnkStruct_Fsys_A0 *a0, SaveData *saveData, u32 a2) {

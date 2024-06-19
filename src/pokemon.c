@@ -732,7 +732,7 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void * dest) {
     case MON_DATA_RESERVED_114:
         ret = blockB->Unused;
         break;
-    case MON_DATA_NICKNAME:
+    case MON_DATA_NICKNAME_FLAT:
         if (boxMon->checksum_fail) {
             GetSpeciesNameIntoArray(SPECIES_MANAPHY_EGG, HEAP_ID_DEFAULT, dest);
         } else {
@@ -743,10 +743,10 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void * dest) {
             dest16[ret] = EOS;
         }
         break;
-    case MON_DATA_NICKNAME_4:
+    case MON_DATA_NICKNAME_STRING_COMPARE:
         ret = blockB->isNicknamed;
         // fallthrough
-    case MON_DATA_NICKNAME_3:
+    case MON_DATA_NICKNAME_STRING:
         if (boxMon->checksum_fail) {
             String * buffer = GetSpeciesName(SPECIES_MANAPHY_EGG, HEAP_ID_DEFAULT);
             String_Copy(dest, buffer);
@@ -1202,21 +1202,21 @@ static void SetBoxMonDataInternal(BoxPokemon *boxMon, int attr, const void * val
     case MON_DATA_RESERVED_114:
         blockB->Unused = VALUE(u16);
         break;
-    case MON_DATA_NICKNAME_2:
+    case MON_DATA_NICKNAME_FLAT_COMPARE:
         GetSpeciesNameIntoArray(blockA->species, HEAP_ID_DEFAULT, namebuf);
         blockB->isNicknamed = StringNotEqual(namebuf, value);
         // fallthrough
-    case MON_DATA_NICKNAME:
+    case MON_DATA_NICKNAME_FLAT:
         for (i = 0; i < POKEMON_NAME_LENGTH + 1; i++) {
             blockC->nickname[i] = VALUE(u16); value = (void *const )((char *)value + 2);
         }
         break;
-    case MON_DATA_NICKNAME_4:
+    case MON_DATA_NICKNAME_STRING_COMPARE:
         GetSpeciesNameIntoArray(blockA->species, HEAP_ID_DEFAULT, namebuf2);
         CopyStringToU16Array(value, namebuf3, POKEMON_NAME_LENGTH + 1);
         blockB->isNicknamed = StringNotEqual(namebuf2, namebuf3);
         // fallthrough
-    case MON_DATA_NICKNAME_3:
+    case MON_DATA_NICKNAME_STRING:
         CopyStringToU16Array(value, blockC->nickname, POKEMON_NAME_LENGTH + 1);
         break;
     case MON_DATA_UNK_121:
@@ -1644,10 +1644,10 @@ static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value) {
     case MON_DATA_FORM:
     case MON_DATA_RESERVED_113:
     case MON_DATA_RESERVED_114:
-    case MON_DATA_NICKNAME:
-    case MON_DATA_NICKNAME_2:
-    case MON_DATA_NICKNAME_3:
-    case MON_DATA_NICKNAME_4:
+    case MON_DATA_NICKNAME_FLAT:
+    case MON_DATA_NICKNAME_FLAT_COMPARE:
+    case MON_DATA_NICKNAME_STRING:
+    case MON_DATA_NICKNAME_STRING_COMPARE:
     case MON_DATA_UNK_121:
     case MON_DATA_GAME_VERSION:
     case MON_DATA_COOL_RIBBON:
