@@ -3256,7 +3256,7 @@ _02082682:
 	add r1, sp, #4
 	mov r2, #0
 	mov r3, #0xc
-	bl sub_0207E590
+	bl PartyMenu_CreateContextMenuCursor
 	ldr r1, _02082734 ; =0x00000824
 	str r0, [r5, r1]
 	add sp, #0x10
@@ -3295,7 +3295,7 @@ _02082758:
 	bl sub_0200E5D4
 	add r0, r5, #0
 	bl sub_0207CB20
-	bl sub_0207CB90
+	bl PartyMenu_DisableMainScreenBlend_AfterYesNo
 	add r0, r5, #0
 	mov r1, #0x21
 	mov r2, #1
@@ -3320,7 +3320,7 @@ _02082794:
 	bl sub_0200E5D4
 	add r0, r5, #0
 	bl sub_0207CB20
-	bl sub_0207CB90
+	bl PartyMenu_DisableMainScreenBlend_AfterYesNo
 	ldr r0, _02082858 ; =0x00000654
 	ldr r6, [r5, r0]
 	add r0, r5, #0

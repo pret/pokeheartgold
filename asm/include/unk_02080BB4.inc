@@ -38,7 +38,7 @@
 .public sub_02079E38
 .public sub_0207A7F4
 .public sub_0207CB20
-.public sub_0207CB90
+.public PartyMenu_DisableMainScreenBlend_AfterYesNo
 .public PartyMenu_PrintMonLevelOnWindow
 .public PartyMenu_PrintMonCurHpOnWindow
 .public PartyMenu_ClearMonHpTextWindow
@@ -52,7 +52,7 @@
 .public sub_0207DF98
 .public sub_0207E04C
 .public sub_0207E54C
-.public sub_0207E590
+.public PartyMenu_CreateContextMenuCursor
 .public PartyMenu_HandleInput_TopLevel
 .public sub_0207EFC4
 .public sub_0207F044

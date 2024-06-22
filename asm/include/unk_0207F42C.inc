@@ -41,7 +41,7 @@
 .public sub_0207CB20
 .public PartyMenu_FormChangeScene_Begin
 .public PartyMenu_FormChangeScene_End
-.public sub_0207CB90
+.public PartyMenu_DisableMainScreenBlend_AfterYesNo
 .public sub_0207D5DC
 .public PartyMenu_CommitPartyMonPanelWindowsToVram_NotInVBlank
 .public sub_0207D8EC
@@ -50,7 +50,7 @@
 .public sub_0207DAEC
 .public sub_0207DB30
 .public sub_0207E54C
-.public sub_0207E590
+.public PartyMenu_CreateContextMenuCursor
 .public sub_0207EFC4
 .public sub_0207F004
 .public sub_0207F0C8

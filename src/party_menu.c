@@ -68,15 +68,15 @@ PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager);
 static void sub_02079CE4(PartyMenuStruct *partyMenu);
 static void sub_02079D38(PartyMenuStruct *partyMenu);
 static u8 PartyMenu_IsMonDrawStateActive(PartyMenuStruct *partyMenu, u8 partySlot);
-static void sub_02079FB8(PartyMenuStruct *partyMenu, Pokemon *mon, u8 partySlot);
-static u32 sub_0207A058(Pokemon *mon, u8 contestStat);
+static void PartyMenu_MonSuperContestEligibilityCheck(PartyMenuStruct *partyMenu, Pokemon *mon, u8 partySlot);
+static u32 Pokemon_CountRibbonsByCategory(Pokemon *mon, u8 contestStat);
 static void sub_0207A174(PartyMenuStruct *partyMenu, u8 partySlot, u8 x, u8 y, u8 a4);
-static void sub_0207A22C(PartyMenuStruct *partyMenu);
-static void sub_0207A2AC(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
-static void sub_0207A3C8(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
-static void sub_0207A4B4(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
-static void sub_0207A5A0(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
-static void sub_0207A68C(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
+static void PartyMenu_DrawPanelsAndPush(PartyMenuStruct *partyMenu);
+static void PartyMenu_DrawPanels_Default(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
+static void PartyMenu_DrawPanels_UseEvoStone(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
+static void PartyMenu_DrawPanels_UseTMHM(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
+static void PartyMenu_Setup_SuperContestEntry(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
+static void PartyMenu_DrawPanels_FrontierFacilityEntry(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
 static void sub_0207A780(PartyMenuStruct *partyMenu, u8 partySlot, s16 x, s16 y);
 static void sub_0207A89C(PartyMenuStruct *partyMenu);
 static u8 sub_0207A8FC(PartyMenuStruct *partyMenu);
@@ -245,7 +245,7 @@ static BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
     sub_0207EB24(partyMenu);
     sub_0207EDD4(partyMenu);
     sub_02079D38(partyMenu);
-    sub_0207A22C(partyMenu);
+    PartyMenu_DrawPanelsAndPush(partyMenu);
     sub_0207B51C(partyMenu, partyMenu->partyMonIndex, TRUE);
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_USE_ITEM || partyMenu->args->context == PARTY_MENU_CONTEXT_EVO_STONE) {
         if (!sub_020817C4(partyMenu->args->itemId)) {
@@ -535,7 +535,7 @@ static int PartyMenu_Subtask_HandleInput(PartyMenuStruct *partyMenu) {
         ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_35]);
         sub_02079224(partyMenu, FALSE);
         sub_0207CB20(partyMenu);
-        sub_0207CB90();
+        PartyMenu_DisableMainScreenBlend_AfterYesNo();
         sub_0207DAC4(partyMenu, msg_0300_00029, TRUE);
         thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
         return PARTY_MENU_STATE_1;
@@ -570,11 +570,11 @@ static int PartyMenu_Subtask_YesNoMenuHandleInput(PartyMenuStruct *partyMenu) {
     switch (YesNoPrompt_HandleInput(partyMenu->yesNoPrompt)) {
     case YESNORESPONSE_YES:
         YesNoPrompt_Destroy(partyMenu->yesNoPrompt);
-        sub_0207CB90();
+        PartyMenu_DisableMainScreenBlend_AfterYesNo();
         return partyMenu->yesCallback(partyMenu);
     case YESNORESPONSE_NO:
         YesNoPrompt_Destroy(partyMenu->yesNoPrompt);
-        sub_0207CB90();
+        PartyMenu_DisableMainScreenBlend_AfterYesNo();
         return partyMenu->noCallback(partyMenu);
     default:
         return PARTY_MENU_STATE_YES_NO_HANDLE_INPUT;
@@ -1043,32 +1043,34 @@ BOOL sub_02079E38(PartyMenuStruct *partyMenu, u8 partySlot) {
     partyMenu->monsDrawState[partySlot].gender = GetMonGender(mon);
     partyMenu->monsDrawState[partySlot].active = TRUE;
     partyMenu->monsDrawState[partySlot].status = (u8)Pokemon_GetStatusIconId(mon);
-    sub_02079FB8(partyMenu, mon, partySlot);
+    PartyMenu_MonSuperContestEligibilityCheck(partyMenu, mon, partySlot);
     return TRUE;
 }
 
-static void sub_02079FB8(PartyMenuStruct *partyMenu, Pokemon *mon, u8 partySlot) {
-    if (partyMenu->args->context == PARTY_MENU_CONTEXT_13) {
+static void PartyMenu_MonSuperContestEligibilityCheck(PartyMenuStruct *partyMenu, Pokemon *mon, u8 partySlot) {
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_SUPER_CONTEST) {
+        // Eggs and dead mons cannot compete
         if (partyMenu->monsDrawState[partySlot].isEgg == TRUE || partyMenu->monsDrawState[partySlot].hp == 0) {
-            partyMenu->monsDrawState[partySlot].isCompatible = FALSE;
+            partyMenu->monsDrawState[partySlot].isContestCompatible = FALSE;
         } else {
-            u32 numRibbons = sub_0207A058(mon, partyMenu->args->contestStat);
+            // A Pokemon must be at the minimum required ribbon level and have at least 2 moves
+            u32 numRibbons = Pokemon_CountRibbonsByCategory(mon, partyMenu->args->contestStat);
             u32 i;
             for (i = 0; i < 4; ++i) {
                 if (GetMonData(mon, MON_DATA_MOVE1 + i, NULL) == MOVE_NONE) {
                     break;
                 }
             }
-            if (partyMenu->args->unk_2F <= numRibbons && i >= 2) {
-                partyMenu->monsDrawState[partySlot].isCompatible = TRUE;
+            if (partyMenu->args->contestLevel <= numRibbons && i >= 2) {
+                partyMenu->monsDrawState[partySlot].isContestCompatible = TRUE;
             } else {
-                partyMenu->monsDrawState[partySlot].isCompatible = FALSE;
+                partyMenu->monsDrawState[partySlot].isContestCompatible = FALSE;
             }
         }
     }
 }
 
-static u32 sub_0207A058(Pokemon *mon, u8 contestStat) {
+static u32 Pokemon_CountRibbonsByCategory(Pokemon *mon, u8 contestStat) {
     u32 result;
     switch (contestStat) {
     case COOL:
@@ -1126,24 +1128,24 @@ static void sub_0207A174(PartyMenuStruct *partyMenu, u8 partySlot, u8 x, u8 y, u
     sub_0207A7F4(partyMenu, partySlot);
 }
 
-static void sub_0207A22C(PartyMenuStruct *partyMenu) {
+static void PartyMenu_DrawPanelsAndPush(PartyMenuStruct *partyMenu) {
     const UnkStruct_0207A22C *r1 = partyMenu->args->unk_25 == 2 ? _0210150C[1] : _0210150C[0];
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_EVO_STONE) {
-        sub_0207A3C8(partyMenu, r1);
+        PartyMenu_DrawPanels_UseEvoStone(partyMenu, r1);
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_TM_HM) {
-        sub_0207A4B4(partyMenu, r1);
-    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_13) {
-        sub_0207A5A0(partyMenu, r1);
+        PartyMenu_DrawPanels_UseTMHM(partyMenu, r1);
+    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_SUPER_CONTEST) {
+        PartyMenu_Setup_SuperContestEntry(partyMenu, r1);
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_22 || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
-        sub_0207A68C(partyMenu, r1);
+        PartyMenu_DrawPanels_FrontierFacilityEntry(partyMenu, r1);
     } else {
-        sub_0207A2AC(partyMenu, r1);
+        PartyMenu_DrawPanels_Default(partyMenu, r1);
     }
     ScheduleBgTilemapBufferTransfer(partyMenu->bgConfig, GF_BG_LYR_MAIN_2);
     ScheduleBgTilemapBufferTransfer(partyMenu->bgConfig, GF_BG_LYR_SUB_0);
 }
 
-static void sub_0207A2AC(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
+static void PartyMenu_DrawPanels_Default(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
     NARC *narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
     for (u8 i = 0; i < PARTY_SIZE; ++i) {
         if (sub_02079E38(partyMenu, i) == TRUE) {
@@ -1167,7 +1169,7 @@ static void sub_0207A2AC(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a
     NARC_Delete(narc);
 }
 
-static void sub_0207A3C8(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
+static void PartyMenu_DrawPanels_UseEvoStone(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
     NARC *narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
     for (u8 i = 0; i < PARTY_SIZE; ++i) {
         if (sub_02079E38(partyMenu, i) == TRUE) {
@@ -1187,12 +1189,12 @@ static void sub_0207A3C8(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a
     NARC_Delete(narc);
 }
 
-static void sub_0207A4B4(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
+static void PartyMenu_DrawPanels_UseTMHM(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
     NARC *narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
     for (u8 i = 0; i < PARTY_SIZE; ++i) {
         if (sub_02079E38(partyMenu, i) == TRUE) {
             sub_0207A174(partyMenu, i, a1[i].unk_0, a1[i].unk_2, FALSE);
-            sub_0207D7A8(partyMenu, i);
+            PartyMenu_DrawPartyMonsList_UseTMHM(partyMenu, i);
             sub_0207EBE4(partyMenu, i, a1[i].unk_4, a1[i].unk_6, narc);
             sub_0207EF5C(partyMenu, i, a1[i].unk_8, a1[i].unk_A);
             sub_0207F004(partyMenu, i, partyMenu->monsDrawState[i].heldItem);
@@ -1207,7 +1209,7 @@ static void sub_0207A4B4(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a
     NARC_Delete(narc);
 }
 
-static void sub_0207A5A0(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
+static void PartyMenu_Setup_SuperContestEntry(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
     NARC *narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
     for (u8 i = 0; i < PARTY_SIZE; ++i) {
         if (sub_02079E38(partyMenu, i) == TRUE) {
@@ -1227,7 +1229,7 @@ static void sub_0207A5A0(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a
     NARC_Delete(narc);
 }
 
-static void sub_0207A68C(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
+static void PartyMenu_DrawPanels_FrontierFacilityEntry(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
     NARC *narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
     for (u8 i = 0; i < PARTY_SIZE; ++i) {
         if (sub_02079E38(partyMenu, i) == TRUE) {
@@ -1593,7 +1595,7 @@ static void sub_0207AFC4(PartyMenuStruct *partyMenu) {
         r2 = sub_0207B200(partyMenu, buf);
         break;
     }
-    sub_0207D0E4(partyMenu, buf, r2);
+    PartyMenu_OpenContextMenu(partyMenu, buf, r2);
     FreeToHeapExplicit(HEAP_ID_PARTY_MENU, buf);
     sub_0207D1C8(partyMenu);
     sub_0207DAD8(partyMenu, -1, TRUE);
@@ -1631,7 +1633,7 @@ static u8 sub_0207B0B0(PartyMenuStruct *partyMenu, u8 *buf) {
                 if (fieldEffect != 0xFF) {
                     buf[count] = fieldEffect;
                     ++count;
-                    sub_0207D0A0(partyMenu, move, r4);
+                    PartyMenu_ContextMenuAddFieldMove(partyMenu, move, r4);
                     ++r4;
                 }
             }
@@ -1668,7 +1670,7 @@ static u8 sub_0207B1C8(PartyMenuStruct *partyMenu, u8 *buf) {
 }
 
 static u8 sub_0207B200(PartyMenuStruct *partyMenu, u8 *buf) {
-    if (partyMenu->monsDrawState[partyMenu->partyMonIndex].isCompatible == TRUE) {
+    if (partyMenu->monsDrawState[partyMenu->partyMonIndex].isContestCompatible == TRUE) {
         buf[0] = 13;
         buf[1] = 1;
         buf[2] = 9;
@@ -2142,7 +2144,7 @@ static BOOL PartyMenu_Subtask_HandleContextMenuInput(PartyMenuStruct *partyMenu,
         sub_02079224(partyMenu, FALSE);
         ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
         sub_0207CB20(partyMenu);
-        sub_0207CB90();
+        PartyMenu_DisableMainScreenBlend_AfterYesNo();
         if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_22 || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
             sub_0207DAC4(partyMenu, msg_0300_00035, TRUE);
         } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_21) {
@@ -2565,7 +2567,7 @@ static int PartyMenu_Subtask_SwitchItemsHandleYesNoInput(PartyMenuStruct *partyM
     switch (YesNoPrompt_HandleInput(partyMenu->yesNoPrompt)) {
     case YESNORESPONSE_YES: {
         YesNoPrompt_Destroy(partyMenu->yesNoPrompt);
-        sub_0207CB90();
+        PartyMenu_DisableMainScreenBlend_AfterYesNo();
         Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
         int newItemId = partyMenu->args->itemId;
         int oldItemId = partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem;
@@ -2597,7 +2599,7 @@ static int PartyMenu_Subtask_SwitchItemsHandleYesNoInput(PartyMenuStruct *partyM
     }
     case YESNORESPONSE_NO:
         YesNoPrompt_Destroy(partyMenu->yesNoPrompt);
-        sub_0207CB90();
+        PartyMenu_DisableMainScreenBlend_AfterYesNo();
         return sub_0207C8B4(partyMenu);
     }
 
@@ -2697,7 +2699,7 @@ void sub_0207CAAC(HeapID heapId, u16 *a1, u16 *a2, u16 *a3) {
 }
 
 void sub_0207CB20(PartyMenuStruct *partyMenu) {
-    sub_0207E618(partyMenu, partyMenu->contextMenuCursor);
+    PartyMenu_CloseContextMenu(partyMenu, partyMenu->contextMenuCursor);
     ListMenuItems_Delete(partyMenu->listMenuItems);
 }
 

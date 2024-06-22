@@ -86,7 +86,7 @@ typedef enum PartyMenuContext {
     PARTY_MENU_CONTEXT_10,
     PARTY_MENU_CONTEXT_11,
     PARTY_MENU_CONTEXT_12,
-    PARTY_MENU_CONTEXT_13,
+    PARTY_MENU_CONTEXT_SUPER_CONTEST,
     PARTY_MENU_CONTEXT_14,
     PARTY_MENU_CONTEXT_15,
     PARTY_MENU_CONTEXT_EVO_STONE,
@@ -313,7 +313,7 @@ typedef struct PartyMenuArgs {
     u8 unk_2C;
     u8 unk_2D;
     u8 contestStat;
-    u8 unk_2F;
+    u8 contestLevel;
     u8 selectedOrder[6];
     u8 unk_36_0:4;
     u8 unk_36_4:4;
@@ -359,7 +359,7 @@ typedef struct PartyMenuMonsDrawState {
     u16 status:12;    // 836
     u16 dontPrintGenderSymbol:1;
     u16 gender:2;
-    u16 isCompatible:1;
+    u16 isContestCompatible:1;
     u8 isEgg;         // 838
     u8 form;          // 839
     u16 capsule;      // 83A

@@ -108,7 +108,7 @@ sub_0207F438: ; 0x0207F438
 	add r1, sp, #4
 	mov r2, #0
 	mov r3, #0xc
-	bl sub_0207E590
+	bl PartyMenu_CreateContextMenuCursor
 	ldr r1, _0207F4F8 ; =0x00000824
 	str r0, [r5, r1]
 	mov r0, #0xf
@@ -125,7 +125,7 @@ sub_0207F4FC: ; 0x0207F4FC
 	add r5, r0, #0
 	add r4, r1, #0
 	bl sub_0207CB20
-	bl sub_0207CB90
+	bl PartyMenu_DisableMainScreenBlend_AfterYesNo
 	ldr r0, _0207F51C ; =0x00000654
 	mov r1, #3
 	ldr r0, [r5, r0]
@@ -151,7 +151,7 @@ sub_0207F520: ; 0x0207F520
 	bl sub_0200E5D4
 	add r0, r5, #0
 	bl sub_0207CB20
-	bl sub_0207CB90
+	bl PartyMenu_DisableMainScreenBlend_AfterYesNo
 	ldr r0, _0207F684 ; =0x00000C65
 	ldrb r1, [r5, r0]
 	mov r0, #0x30
@@ -470,7 +470,7 @@ sub_0207F73C: ; 0x0207F73C
 	add r1, sp, #4
 	mov r2, #0
 	mov r3, #0xc
-	bl sub_0207E590
+	bl PartyMenu_CreateContextMenuCursor
 	ldr r1, _0207F7FC ; =0x00000824
 	str r0, [r5, r1]
 	mov r0, #0xf
@@ -487,7 +487,7 @@ sub_0207F800: ; 0x0207F800
 	add r5, r0, #0
 	add r4, r1, #0
 	bl sub_0207CB20
-	bl sub_0207CB90
+	bl PartyMenu_DisableMainScreenBlend_AfterYesNo
 	ldr r0, _0207F820 ; =0x00000654
 	mov r1, #7
 	ldr r0, [r5, r0]
@@ -512,7 +512,7 @@ sub_0207F824: ; 0x0207F824
 	bl sub_0200E5D4
 	add r0, r5, #0
 	bl sub_0207CB20
-	bl sub_0207CB90
+	bl PartyMenu_DisableMainScreenBlend_AfterYesNo
 	add r0, r5, #0
 	mov r1, #0x2c
 	mov r2, #1
@@ -758,7 +758,7 @@ sub_0207FA3C: ; 0x0207FA3C
 	add r5, r0, #0
 	add r4, r1, #0
 	bl sub_0207CB20
-	bl sub_0207CB90
+	bl PartyMenu_DisableMainScreenBlend_AfterYesNo
 	ldr r0, _0207FA90 ; =0x00000C65
 	ldrb r1, [r5, r0]
 	mov r0, #0x30
@@ -920,7 +920,7 @@ sub_0207FB0C: ; 0x0207FB0C
 	bl ClearFrameAndWindow2
 	add r0, r5, #0
 	bl sub_0207CB20
-	bl sub_0207CB90
+	bl PartyMenu_DisableMainScreenBlend_AfterYesNo
 	add r0, r5, #0
 	mov r1, #0x1f
 	mov r2, #1
@@ -2087,7 +2087,7 @@ sub_0208050C: ; 0x0208050C
 	bl ClearFrameAndWindow2
 	add r0, r5, #0
 	bl sub_0207CB20
-	bl sub_0207CB90
+	bl PartyMenu_DisableMainScreenBlend_AfterYesNo
 	add r0, r5, #0
 	mov r1, #0
 	bl sub_02079224
@@ -2325,7 +2325,7 @@ _020806DC:
 	bl ClearFrameAndWindow2
 	add r0, r5, #0
 	bl sub_0207CB20
-	bl sub_0207CB90
+	bl PartyMenu_DisableMainScreenBlend_AfterYesNo
 	add r0, r5, #0
 	mov r1, #0x23
 	mov r2, #1
@@ -2355,7 +2355,7 @@ sub_02080728: ; 0x02080728
 	add r1, #0x27
 	strb r2, [r1]
 	bl sub_0207CB20
-	bl sub_0207CB90
+	bl PartyMenu_DisableMainScreenBlend_AfterYesNo
 	mov r0, #0x20
 	str r0, [r4]
 	pop {r4, pc}
@@ -2373,7 +2373,7 @@ sub_02080748: ; 0x02080748
 	add r1, #0x27
 	strb r2, [r1]
 	bl sub_0207CB20
-	bl sub_0207CB90
+	bl PartyMenu_DisableMainScreenBlend_AfterYesNo
 	mov r0, #0x20
 	str r0, [r4]
 	pop {r4, pc}
@@ -2391,7 +2391,7 @@ sub_02080768: ; 0x02080768
 	add r1, #0x27
 	strb r2, [r1]
 	bl sub_0207CB20
-	bl sub_0207CB90
+	bl PartyMenu_DisableMainScreenBlend_AfterYesNo
 	mov r0, #0x20
 	str r0, [r4]
 	pop {r4, pc}
@@ -2405,7 +2405,7 @@ sub_02080788: ; 0x02080788
 	add r5, r0, #0
 	add r4, r1, #0
 	bl sub_0207CB20
-	bl sub_0207CB90
+	bl PartyMenu_DisableMainScreenBlend_AfterYesNo
 	mov r0, #0x85
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -2525,7 +2525,7 @@ _0208086E: ; jump table
 _0208087A:
 	add r0, r4, #0
 	bl sub_0207CB20
-	bl sub_0207CB90
+	bl PartyMenu_DisableMainScreenBlend_AfterYesNo
 	mov r0, #0x20
 	str r0, [r6]
 	pop {r4, r5, r6, pc}
@@ -2551,7 +2551,7 @@ _0208089C:
 	bl ClearFrameAndWindow2
 	add r0, r4, #0
 	bl sub_0207CB20
-	bl sub_0207CB90
+	bl PartyMenu_DisableMainScreenBlend_AfterYesNo
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #1
@@ -2811,7 +2811,7 @@ sub_02080A58: ; 0x02080A58
 	bl ClearFrameAndWindow2
 	add r0, r4, #0
 	bl sub_0207CB20
-	bl sub_0207CB90
+	bl PartyMenu_DisableMainScreenBlend_AfterYesNo
 	ldr r0, _02080B50 ; =0x00000C65
 	ldrb r1, [r4, r0]
 	mov r0, #0x30
