@@ -64,7 +64,7 @@ typedef enum PartyMenuState {
     PARTY_MENU_STATE_25,
     PARTY_MENU_STATE_YES_NO_INIT,
     PARTY_MENU_STATE_YES_NO_HANDLE_INPUT,
-    PARTY_MENU_STATE_28,
+    PARTY_MENU_STATE_SELECT_SWITCH_MON,
     PARTY_MENU_STATE_29,
     PARTY_MENU_STATE_SOFTBOILED,
     PARTY_MENU_STATE_FORM_CHANGE_ANIM,
@@ -238,7 +238,7 @@ typedef enum PartyMenuSpriteId {
     PARTY_MENU_SPRITE_ID_4,
     PARTY_MENU_SPRITE_ID_5,
     PARTY_MENU_SPRITE_ID_CURSOR,
-    PARTY_MENU_SPRITE_ID_7,
+    PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR,
     PARTY_MENU_SPRITE_ID_8,
     PARTY_MENU_SPRITE_ID_9,
     PARTY_MENU_SPRITE_ID_10,
@@ -363,8 +363,8 @@ typedef struct PartyMenuMonsDrawState {
     u8 isEgg;         // 838
     u8 form;          // 839
     u16 capsule;      // 83A
-    u8 unk_14;        // 83C
-    u8 unk_15;        // 83D
+    s8 unk_14;        // 83C
+    s8 unk_15;        // 83D
     s16 unk_16;       // 83E
     s16 unk_18;       // 840
     s16 unk_1A;       // 842
@@ -377,6 +377,16 @@ typedef struct PartyMenuMonsDrawState {
     u8 unk_2C;        // 854
     u8 active;        // 855
 } PartyMenuMonsDrawState;
+
+typedef struct UnkPartyMenuSub_94C {
+    u16 unk_000[2][0x60];
+    u16 unk_180[2][0x60];
+    u8 unk_300[2];
+    u8 unk_302[2];
+    u8 unk_304;
+    u8 unk_305;
+    u8 unk_306;
+} UnkPartyMenuSub_94C;
 
 struct PartyMenuStruct {
     BgConfig *bgConfig;
@@ -403,11 +413,7 @@ struct PartyMenuStruct {
     PartyMenuContextMenuCursor *contextMenuCursor;
     PartyMenuMonsDrawState monsDrawState[PARTY_SIZE]; //0x828
     const UnkStruct_02020654 *unk_948;
-    u8 filler_94C[0x300];
-    u8 unk_C4C;
-    u8 unk_C4D;
-    u8 filler_C4E[2];
-    u8 unk_C50;
+    UnkPartyMenuSub_94C unk_94C;
     int (*unk_C54)(PartyMenuStruct *);
     int (*yesCallback)(PartyMenuStruct *);  //0xc58
     int (*noCallback)(PartyMenuStruct *);  //0xc5c

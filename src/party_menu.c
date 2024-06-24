@@ -371,7 +371,7 @@ static BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState) {
     case PARTY_MENU_STATE_YES_NO_HANDLE_INPUT:
         *pState = PartyMenu_Subtask_YesNoMenuHandleInput(partyMenu);
         break;
-    case PARTY_MENU_STATE_28: {
+    case PARTY_MENU_STATE_SELECT_SWITCH_MON: {
         u8 x = sub_0207B600(partyMenu);
         if (x == 0) {
             *pState = PARTY_MENU_STATE_29;

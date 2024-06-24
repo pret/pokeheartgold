@@ -7,6 +7,7 @@
 #include "party_context_menu.h"
 #include "party_menu_sprites.h"
 #include "text.h"
+#include "unk_02005D10.h"
 
 void PartyMonContextMenuAction_Item(PartyMenuStruct *partyMenu, int *pState);
 void PartyMonContextMenuAction_Give(PartyMenuStruct *partyMenu, int *pState);
@@ -20,6 +21,9 @@ int PartyMenu_TakeMail_ReturnToBag(PartyMenuStruct *partyMenu);
 int PartyMenu_TakeMail_DontReturnToBag(PartyMenuStruct *partyMenu);
 void PartyMonContextMenuAction_Store(PartyMenuStruct *partyMenu, int *pState);
 void PartyMonContextMenuAction_Switch(PartyMenuStruct *partyMenu, int *pState);
+void sub_0207FEE8(PartyMenuStruct *partyMenu, u8 slot);
+void sub_02080040(PartyMenuStruct *partyMenu, u8 slot, u8 direciton);
+void sub_02080198(PartyMenuStruct *partyMenu);
 void PartyMonContextMenuAction_Enter(PartyMenuStruct *partyMenu, int *pState);
 void PartyMonContextMenuAction_NoEntry(PartyMenuStruct *partyMenu, int *pState);
 void PartyMonContextMenuAction_ContestEnter(PartyMenuStruct *partyMenu, int *pState);
@@ -282,4 +286,156 @@ int sub_0207FA08(PartyMenuStruct *partyMenu) {
     thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
     sub_02079224(partyMenu, FALSE);
     return PARTY_MENU_STATE_1;
+}
+
+void PartyMonContextMenuAction_Store(PartyMenuStruct *partyMenu, int *pState) {
+    sub_0207CB20(partyMenu);
+    PartyMenu_DisableMainScreenBlend_AfterYesNo();
+    if (partyMenu->monsDrawState[partyMenu->partyMonIndex].capsule == 0) {
+        partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
+        *pState = PARTY_MENU_STATE_BEGIN_EXIT;
+    } else {
+        sub_0207DAEC(partyMenu, msg_0300_00179, TRUE);
+        partyMenu->yesCallback = sub_0207FAA8;
+        partyMenu->noCallback = sub_0207FAD4;
+        partyMenu->afterTextPrinterState = PARTY_MENU_STATE_YES_NO_INIT;
+        *pState = PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
+    }
+}
+
+int sub_0207FAA8(PartyMenuStruct *partyMenu) {
+    Pokemon_RemoveCapsule(Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex));
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
+    return PARTY_MENU_STATE_BEGIN_EXIT;
+}
+
+int sub_0207FAD4(PartyMenuStruct *partyMenu) {
+    G2_BlendNone();
+    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
+    sub_0207DAC4(partyMenu, msg_0300_00029, TRUE);
+    thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
+    return PARTY_MENU_STATE_1;
+}
+
+void PartyMonContextMenuAction_Switch(PartyMenuStruct *partyMenu, int *pState) {
+    partyMenu->unk_C63_6 = 1;
+    partyMenu->softboiledDonorSlot = partyMenu->partyMonIndex;
+    thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
+
+    s16 x, y;
+    Sprite_GetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], &x, &y);
+    Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], x, y);
+    Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], sub_0207B5EC(partyMenu->args->unk_25, partyMenu->softboiledDonorSlot) + 2);
+    Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], TRUE);
+    sub_0207A7F4(partyMenu, partyMenu->softboiledDonorSlot);
+    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
+    sub_0207CB20(partyMenu);
+    PartyMenu_DisableMainScreenBlend_AfterYesNo();
+    sub_0207DAC4(partyMenu, msg_0300_00031, TRUE);
+    *pState = PARTY_MENU_STATE_SELECT_SWITCH_MON;
+}
+
+void sub_0207FBC8(PartyMenuStruct *partyMenu) {
+    partyMenu->unk_C63_6 = 0;
+    Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], FALSE);
+    if (partyMenu->partyMonIndex < PARTY_SIZE) {
+        sub_0207A7F4(partyMenu, partyMenu->partyMonIndex);
+    }
+    sub_02079224(partyMenu, FALSE);
+    sub_0207A7F4(partyMenu, partyMenu->softboiledDonorSlot);
+    sub_0207DAC4(partyMenu, msg_0300_00029, TRUE);
+}
+
+void sub_0207FC1C(PartyMenuStruct *partyMenu) {
+    u16 *bg2Tilemap;
+    u16 *bg1Tilemap;
+    s8 spC;
+    s8 sp8;
+    s8 sp4;
+    s8 sp0;
+    u16 i;
+    partyMenu->unk_94C.unk_300[0] = partyMenu->partyMonIndex;
+    partyMenu->unk_94C.unk_300[1] = partyMenu->softboiledDonorSlot;
+    partyMenu->unk_94C.unk_304 = 1;
+    partyMenu->unk_94C.unk_306 = 0;
+    partyMenu->unk_94C.unk_305 = 0;
+    if (partyMenu->unk_94C.unk_300[0] & 1) {
+        partyMenu->unk_94C.unk_302[0] = 1;
+    } else {
+        partyMenu->unk_94C.unk_302[0] = 0;
+    }
+    if (partyMenu->unk_94C.unk_300[1] & 1) {
+        partyMenu->unk_94C.unk_302[1] = 1;
+    } else {
+        partyMenu->unk_94C.unk_302[1] = 0;
+    }
+
+    bg2Tilemap = GetBgTilemapBuffer(partyMenu->bgConfig, GF_BG_LYR_MAIN_2);
+    bg1Tilemap = GetBgTilemapBuffer(partyMenu->bgConfig, GF_BG_LYR_MAIN_1);
+
+    spC = partyMenu->monsDrawState[partyMenu->unk_94C.unk_300[0]].unk_15;
+    sp8 = partyMenu->monsDrawState[partyMenu->unk_94C.unk_300[0]].unk_14;
+    sp4 = partyMenu->monsDrawState[partyMenu->unk_94C.unk_300[1]].unk_15;
+    sp0 = partyMenu->monsDrawState[partyMenu->unk_94C.unk_300[1]].unk_14;
+
+    for (i = 0; i < PARTY_SIZE; ++i) {
+        memcpy(&partyMenu->unk_94C.unk_000[0][i * 16], &bg2Tilemap[sp8 + (spC + i) * 32], 0x20);
+        memcpy(&partyMenu->unk_94C.unk_180[0][i * 16], &bg1Tilemap[sp8 + (spC + i) * 32], 0x20);
+        memcpy(&partyMenu->unk_94C.unk_000[1][i * 16], &bg2Tilemap[sp0 + (sp4 + i) * 32], 0x20);
+        memcpy(&partyMenu->unk_94C.unk_180[1][i * 16], &bg1Tilemap[sp0 + (sp4 + i) * 32], 0x20);
+    }
+    Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], FALSE);
+    Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], FALSE);
+}
+
+BOOL sub_0207FD6C(PartyMenuStruct *partyMenu) {
+    UnkPartyMenuSub_94C *r4 = &partyMenu->unk_94C;
+
+    switch (r4->unk_305) {
+    case 0:
+        PlaySE(SEQ_SE_DP_POKELIST_001);
+        sub_02079224(partyMenu, FALSE);
+        r4->unk_305 = 1;
+        break;
+    case 1:
+        ++r4->unk_306;
+        sub_0207FEE8(partyMenu, 0);
+        sub_0207FEE8(partyMenu, 1);
+        sub_02080040(partyMenu, 0, r4->unk_302[0]);
+        sub_02080040(partyMenu, 1, r4->unk_302[1]);
+        ScheduleBgTilemapBufferTransfer(partyMenu->bgConfig, GF_BG_LYR_MAIN_2);
+        ScheduleBgTilemapBufferTransfer(partyMenu->bgConfig, GF_BG_LYR_MAIN_1);
+        if (r4->unk_306 == 16) {
+            r4->unk_305 = 2;
+        }
+        break;
+    case 2:
+        sub_02080198(partyMenu);
+        PlaySE(SEQ_SE_DP_POKELIST_001);
+        r4->unk_305 = 3;
+        break;
+    case 3:
+        --r4->unk_306;
+        sub_0207FEE8(partyMenu, 0);
+        sub_0207FEE8(partyMenu, 1);
+        sub_02080040(partyMenu, 0, r4->unk_302[0] ^ 1);
+        sub_02080040(partyMenu, 1, r4->unk_302[1] ^ 1);
+        ScheduleBgTilemapBufferTransfer(partyMenu->bgConfig, GF_BG_LYR_MAIN_2);
+        ScheduleBgTilemapBufferTransfer(partyMenu->bgConfig, GF_BG_LYR_MAIN_1);
+        if (r4->unk_306 == 0) {
+            r4->unk_305 = 4;
+        }
+        break;
+    case 4:
+        Party_SwapSlots(partyMenu->args->party, r4->unk_300[0], r4->unk_300[1]);
+        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], TRUE);
+        r4->unk_304 = 0;
+        partyMenu->unk_C63_6 = 0;
+        sub_0207A7F4(partyMenu, partyMenu->partyMonIndex);
+        sub_0207A7F4(partyMenu, partyMenu->softboiledDonorSlot);
+        sub_0207DAC4(partyMenu, msg_0300_00029, FALSE);
+        return TRUE;
+    }
+
+    return FALSE;
 }

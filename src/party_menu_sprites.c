@@ -379,7 +379,7 @@ void sub_0207ECE0(PartyMenuStruct *partyMenu, u8 partySlot) {
 
 void sub_0207EDD4(PartyMenuStruct *partyMenu) {
     partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[0]);
-    partyMenu->sprites[PARTY_MENU_SPRITE_ID_7] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[1]);
+    partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[1]);
     partyMenu->sprites[PARTY_MENU_SPRITE_ID_8] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[2]);
     partyMenu->sprites[PARTY_MENU_SPRITE_ID_9] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[3]);
     partyMenu->sprites[PARTY_MENU_SPRITE_ID_28] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[22]);
@@ -397,7 +397,7 @@ void sub_0207EDD4(PartyMenuStruct *partyMenu) {
         partyMenu->spritesExtra[i] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[23]);
         Set2dSpriteVisibleFlag(partyMenu->spritesExtra[i], FALSE);
     }
-    Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_7], FALSE);
+    Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], FALSE);
     Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_28], FALSE);
 }
 
@@ -513,7 +513,7 @@ void sub_0207F178(PartyMenuStruct *partyMenu) {
         monDraw = &partyMenu->monsDrawState[i];
         if (monDraw->active) {
             int r7;
-            if (partyMenu->unk_C50 == 1 && (partyMenu->unk_C4C == i || partyMenu->unk_C4D == i)) {
+            if (partyMenu->unk_94C.unk_304 == 1 && (partyMenu->unk_94C.unk_300[0] == i || partyMenu->unk_94C.unk_300[1] == i)) {
                 r7 = 0;
             } else {
                 r7 = sub_0207F11C(monDraw);
