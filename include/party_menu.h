@@ -133,6 +133,7 @@ typedef enum PartyMonContextMenuItem {
     PARTY_MON_CONTEXT_MENU_HEADBUTT,
     PARTY_MON_CONTEXT_MENU_MILK_DRINK,
     PARTY_MON_CONTEXT_MENU_SOFTBOILED,
+    PARTY_MON_CONTEXT_MENU_MAX,
 
     PARTY_MON_CONTEXT_MENU_FIELD_MOVES_BEGIN = PARTY_MON_CONTEXT_MENU_CUT,
     PARTY_MON_CONTEXT_MENU_NUM_STRINGS = PARTY_MON_CONTEXT_MENU_CUT + MAX_MON_MOVES,
@@ -142,11 +143,11 @@ typedef enum PartyMenuActionReturn {
     PARTY_MENU_ACTION_RETURN_0,
     PARTY_MENU_ACTION_RETURN_1,
     PARTY_MENU_ACTION_RETURN_2,
-    PARTY_MENU_ACTION_RETURN_3,
+    PARTY_MENU_ACTION_RETURN_GIVE_ITEM,
     PARTY_MENU_ACTION_RETURN_4,
     PARTY_MENU_ACTION_RETURN_5,
     PARTY_MENU_ACTION_RETURN_6,
-    PARTY_MENU_ACTION_RETURN_7,
+    PARTY_MENU_ACTION_RETURN_READ_MAIL,
     PARTY_MENU_ACTION_RETURN_EVO_ITEM_USE,
     PARTY_MENU_ACTION_RETURN_EVO_RARE_CANDY,
     PARTY_MENU_ACTION_RETURN_10,
@@ -335,8 +336,7 @@ typedef struct IconFormChangeData  {
 
 typedef struct PartyMenuStruct PartyMenuStruct;
 
-typedef void (*PartyMenuStruct_SubC90_UnkFunc)(PartyMenuStruct *partyMenu, int *a1);
-#define PARTYMENUSTRUCT_SUBC90_UNKFUNC_NONE ((PartyMenuStruct_SubC90_UnkFunc)-2)
+typedef void (*PartyMenuStruct_SubC90_UnkFunc)(PartyMenuStruct *partyMenu, int *pState);
 
 typedef struct PartyMenuContextButtonAnimData {
     PartyMenuContextMenu *template;
@@ -401,7 +401,7 @@ struct PartyMenuStruct {
     String *contextMenuStrings[PARTY_MON_CONTEXT_MENU_NUM_STRINGS]; //0x7d0
     LISTMENUITEM *listMenuItems; //0x820
     PartyMenuContextMenuCursor *contextMenuCursor;
-    PartyMenuMonsDrawState monsDrawState[PARTY_SIZE];
+    PartyMenuMonsDrawState monsDrawState[PARTY_SIZE]; //0x828
     const UnkStruct_02020654 *unk_948;
     u8 filler_94C[0x300];
     u8 unk_C4C;
@@ -409,8 +409,8 @@ struct PartyMenuStruct {
     u8 filler_C4E[2];
     u8 unk_C50;
     int (*unk_C54)(PartyMenuStruct *);
-    int (*yesCallback)(PartyMenuStruct *);
-    int (*noCallback)(PartyMenuStruct *);
+    int (*yesCallback)(PartyMenuStruct *);  //0xc58
+    int (*noCallback)(PartyMenuStruct *);  //0xc5c
     u8 unk_C60;
     u8 unk_C61;
     u8 afterTextPrinterState;
@@ -452,7 +452,7 @@ struct TeleportFieldEnv {
 
 extern const OVY_MGR_TEMPLATE gOverlayTemplate_PartyMenu;
 
-void sub_02079224(PartyMenuStruct *partyMenu, int BOOL);
+void sub_02079224(PartyMenuStruct *partyMenu, BOOL a1);
 void sub_0207991C(PartyMenuStruct *partyMenu, int a1);
 BOOL sub_02079E38(PartyMenuStruct *partyMenu, u8 partySlot);
 u16 *sub_0207A16C(PartyMenuStruct *partyMenu);

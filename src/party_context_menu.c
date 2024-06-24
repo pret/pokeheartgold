@@ -6,7 +6,7 @@
 #include "system.h"
 #include "text.h"
 #include "unk_02005D10.h"
-#include "unk_0207F42C.h"
+#include "party_menu_list_items.h"
 #include "unk_0200CE7C.h"
 #include "unk_0208805C.h"
 #include "unk_02080BB4.h"

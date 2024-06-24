@@ -11,749 +11,10 @@
 	.public gOverlayTemplate_Battle
 	.public gNatureStatMods
 
-	.bss
-
-_021D43B0:
-	.space 0x4
-
 	.text
 
-	thumb_func_start sub_0207F42C
-sub_0207F42C: ; 0x0207F42C
-	lsl r1, r0, #2
-	ldr r0, _0207F434 ; =_02101CB8
-	ldr r0, [r0, r1]
-	bx lr
-	.balign 4, 0
-_0207F434: .word _02101CB8
-	thumb_func_end sub_0207F42C
-
-	thumb_func_start sub_0207F438
-sub_0207F438: ; 0x0207F438
-	push {r4, r5, r6, lr}
-	sub sp, #0x10
-	add r5, r0, #0
-	add r4, r1, #0
-	bl sub_0207CB20
-	add r0, r5, #0
-	mov r1, #0x27
-	mov r2, #0
-	bl sub_0207DAD8
-	mov r0, #3
-	mov r1, #0xc
-	bl ListMenuItems_New
-	mov r1, #0x82
-	lsl r1, r1, #4
-	str r0, [r5, r1]
-	mov r0, #3
-	bl sub_0207F42C
-	mov r1, #0x82
-	lsl r1, r1, #4
-	add r2, r0, #0
-	ldr r0, [r5, r1]
-	sub r1, #0x44
-	ldr r1, [r5, r1]
-	bl ListMenuItems_AddItem
-	mov r0, #4
-	bl sub_0207F42C
-	mov r1, #0x82
-	lsl r1, r1, #4
-	add r2, r0, #0
-	ldr r0, [r5, r1]
-	sub r1, #0x40
-	ldr r1, [r5, r1]
-	bl ListMenuItems_AddItem
-	mov r0, #9
-	bl sub_0207F42C
-	mov r1, #0x82
-	lsl r1, r1, #4
-	add r2, r0, #0
-	ldr r0, [r5, r1]
-	sub r1, #0x2c
-	ldr r1, [r5, r1]
-	bl ListMenuItems_AddItem
-	mov r0, #0x82
-	lsl r0, r0, #4
-	ldr r0, [r5, r0]
-	mov r2, #0
-	str r0, [sp, #4]
-	mov r0, #0x8d
-	lsl r0, r0, #2
-	add r0, r5, r0
-	str r0, [sp, #8]
-	add r1, sp, #4
-	strb r2, [r1, #8]
-	mov r3, #1
-	strb r3, [r1, #9]
-	mov r0, #3
-	strb r0, [r1, #0xa]
-	ldrb r6, [r1, #0xb]
-	mov r0, #0xf
-	bic r6, r0
-	strb r6, [r1, #0xb]
-	ldrb r6, [r1, #0xb]
-	mov r0, #0x30
-	bic r6, r0
-	strb r6, [r1, #0xb]
-	ldrb r6, [r1, #0xb]
-	mov r0, #0xc0
-	bic r6, r0
-	strb r6, [r1, #0xb]
-	ldrb r1, [r1, #0xa]
-	add r0, r5, #0
-	bl sub_0207E54C
-	mov r0, #1
-	str r0, [sp]
-	add r0, r5, #0
-	add r1, sp, #4
-	mov r2, #0
-	mov r3, #0xc
-	bl PartyMenu_CreateContextMenuCursor
-	ldr r1, _0207F4F8 ; =0x00000824
-	str r0, [r5, r1]
-	mov r0, #0xf
-	str r0, [r4]
-	add sp, #0x10
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-_0207F4F8: .word 0x00000824
-	thumb_func_end sub_0207F438
-
-	thumb_func_start sub_0207F4FC
-sub_0207F4FC: ; 0x0207F4FC
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	bl sub_0207CB20
-	bl PartyMenu_DisableMainScreenBlend_AfterYesNo
-	ldr r0, _0207F51C ; =0x00000654
-	mov r1, #3
-	ldr r0, [r5, r0]
-	add r0, #0x27
-	strb r1, [r0]
-	mov r0, #0x20
-	str r0, [r4]
-	pop {r3, r4, r5, pc}
-	nop
-_0207F51C: .word 0x00000654
-	thumb_func_end sub_0207F4FC
-
-	thumb_func_start sub_0207F520
-sub_0207F520: ; 0x0207F520
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	mov r0, #0x8d
-	lsl r0, r0, #2
-	add r7, r1, #0
-	add r0, r5, r0
-	mov r1, #1
-	mov r4, #0x11
-	bl sub_0200E5D4
-	add r0, r5, #0
-	bl sub_0207CB20
-	bl PartyMenu_DisableMainScreenBlend_AfterYesNo
-	ldr r0, _0207F684 ; =0x00000C65
-	ldrb r1, [r5, r0]
-	mov r0, #0x30
-	mul r0, r1
-	add r2, r5, r0
-	ldr r0, _0207F688 ; =0x00000834
-	ldrh r2, [r2, r0]
-	ldr r0, _0207F68C ; =0x00000654
-	cmp r2, #0
-	bne _0207F590
-	ldr r0, [r5, r0]
-	ldr r0, [r0]
-	bl Party_GetMonByIndex
-	mov r2, #0x1f
-	lsl r2, r2, #6
-	add r6, r0, #0
-	ldr r0, [r5, r2]
-	add r2, #0xc
-	ldr r2, [r5, r2]
-	mov r1, #0x52
-	bl ReadMsgDataIntoString
-	add r0, r6, #0
-	bl Mon_GetBoxMon
-	add r2, r0, #0
-	ldr r0, _0207F690 ; =0x000007C4
-	mov r1, #0
-	ldr r0, [r5, r0]
-	bl BufferBoxMonNickname
-	ldr r2, _0207F690 ; =0x000007C4
-	add r1, r2, #4
-	ldr r0, [r5, r2]
-	add r2, #8
-	ldr r1, [r5, r1]
-	ldr r2, [r5, r2]
-	bl StringExpandPlaceholders
-	b _0207F65E
-_0207F590:
-	ldr r0, [r5, r0]
-	add r1, r2, #0
-	ldr r0, [r0, #4]
-	mov r2, #1
-	mov r3, #0xc
-	bl Bag_AddItem
-	cmp r0, #1
-	bne _0207F64E
-	ldr r0, _0207F68C ; =0x00000654
-	ldr r1, _0207F684 ; =0x00000C65
-	ldr r0, [r5, r0]
-	ldrb r1, [r5, r1]
-	ldr r0, [r0]
-	bl Party_GetMonByIndex
-	mov r1, #0
-	str r1, [sp]
-	add r6, r0, #0
-	mov r1, #6
-	add r2, sp, #0
-	bl SetMonData
-	add r0, r6, #0
-	bl Pokemon_UpdateArceusForm
-	add r0, r6, #0
-	bl Mon_UpdateGiratinaForm
-	ldr r1, _0207F684 ; =0x00000C65
-	ldrb r2, [r5, r1]
-	mov r1, #0x30
-	mul r1, r2
-	add r2, r5, r1
-	ldr r1, _0207F688 ; =0x00000834
-	ldrh r1, [r2, r1]
-	cmp r1, #0x70
-	bne _0207F5E2
-	cmp r0, #0
-	bne _0207F5E2
-	mov r4, #0x12
-_0207F5E2:
-	mov r2, #0x1f
-	lsl r2, r2, #6
-	ldr r0, [r5, r2]
-	add r2, #0xc
-	ldr r2, [r5, r2]
-	mov r1, #0x53
-	bl ReadMsgDataIntoString
-	add r0, r6, #0
-	bl Mon_GetBoxMon
-	add r2, r0, #0
-	ldr r0, _0207F690 ; =0x000007C4
-	mov r1, #0
-	ldr r0, [r5, r0]
-	bl BufferBoxMonNickname
-	ldr r2, _0207F684 ; =0x00000C65
-	ldr r3, _0207F690 ; =0x000007C4
-	ldrb r6, [r5, r2]
-	mov r2, #0x30
-	ldr r0, [r5, r3]
-	mul r2, r6
-	add r2, r5, r2
-	add r3, #0x70
-	ldrh r2, [r2, r3]
-	mov r1, #1
-	bl BufferItemName
-	ldr r2, _0207F690 ; =0x000007C4
-	add r1, r2, #4
-	ldr r0, [r5, r2]
-	add r2, #8
-	ldr r1, [r5, r1]
-	ldr r2, [r5, r2]
-	bl StringExpandPlaceholders
-	ldr r6, _0207F684 ; =0x00000C65
-	mov r3, #0x30
-	ldrb r1, [r5, r6]
-	mov r0, #0
-	add r2, r1, #0
-	mul r2, r3
-	add r1, r5, r2
-	ldr r2, _0207F688 ; =0x00000834
-	strh r0, [r1, r2]
-	ldrb r1, [r5, r6]
-	add r0, r5, #0
-	mul r3, r1
-	add r3, r5, r3
-	ldrh r2, [r3, r2]
-	bl sub_0207F004
-	b _0207F65E
-_0207F64E:
-	mov r2, #0x1f
-	lsl r2, r2, #6
-	ldr r0, [r5, r2]
-	add r2, #8
-	ldr r2, [r5, r2]
-	mov r1, #0x54
-	bl ReadMsgDataIntoString
-_0207F65E:
-	mov r0, #0x89
-	lsl r0, r0, #2
-	add r0, r5, r0
-	mov r1, #1
-	mov r2, #0x2a
-	mov r3, #0xf
-	bl DrawFrameAndWindow2
-	mov r0, #0x89
-	lsl r0, r0, #2
-	add r0, r5, r0
-	mov r1, #0xf
-	bl FillWindowPixelBuffer
-	add r0, r5, #0
-	bl sub_0207DB30
-	str r4, [r7]
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_0207F684: .word 0x00000C65
-_0207F688: .word 0x00000834
-_0207F68C: .word 0x00000654
-_0207F690: .word 0x000007C4
-	thumb_func_end sub_0207F520
-
-	thumb_func_start sub_0207F694
-sub_0207F694: ; 0x0207F694
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, _0207F6DC ; =0x00000C64
-	ldrb r0, [r4, r0]
-	bl TextPrinterCheckActive
-	cmp r0, #0
-	bne _0207F6D6
-	mov r0, #0x89
-	lsl r0, r0, #2
-	add r0, r4, r0
-	mov r1, #1
-	bl ClearFrameAndWindow2
-	add r0, r4, #0
-	mov r1, #0x1d
-	mov r2, #1
-	bl sub_0207DAC4
-	ldr r0, _0207F6E0 ; =0x00000678
-	mov r1, #0
-	ldr r0, [r4, r0]
-	bl thunk_Sprite_SetPalIndex
-	add r0, r4, #0
-	mov r1, #0
-	bl sub_02079224
-	ldr r0, _0207F6E4 ; =0x04000050
-	mov r1, #0
-	strh r1, [r0]
-	mov r0, #1
-	pop {r4, pc}
-_0207F6D6:
-	mov r0, #0x11
-	pop {r4, pc}
-	nop
-_0207F6DC: .word 0x00000C64
-_0207F6E0: .word 0x00000678
-_0207F6E4: .word 0x04000050
-	thumb_func_end sub_0207F694
-
-	thumb_func_start sub_0207F6E8
-sub_0207F6E8: ; 0x0207F6E8
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, _0207F71C ; =0x00000C64
-	ldrb r0, [r4, r0]
-	bl TextPrinterCheckActive
-	cmp r0, #0
-	bne _0207F716
-	mov r0, #0x89
-	lsl r0, r0, #2
-	add r0, r4, r0
-	mov r1, #1
-	bl ClearFrameAndWindow2
-	add r0, r4, #0
-	bl PartyMenu_FormChangeScene_Begin
-	add r0, r4, #0
-	mov r1, #0
-	bl sub_02079224
-	mov r0, #0x13
-	pop {r4, pc}
-_0207F716:
-	mov r0, #0x12
-	pop {r4, pc}
-	nop
-_0207F71C: .word 0x00000C64
-	thumb_func_end sub_0207F6E8
-
-	thumb_func_start sub_0207F720
-sub_0207F720: ; 0x0207F720
-	push {r4, lr}
-	add r4, r0, #0
-	bl PartyMenu_AnimateIconFormChange
-	cmp r0, #1
-	bne _0207F736
-	add r0, r4, #0
-	bl PartyMenu_FormChangeScene_End
-	mov r0, #0x11
-	pop {r4, pc}
-_0207F736:
-	mov r0, #0x13
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end sub_0207F720
-
-	thumb_func_start sub_0207F73C
-sub_0207F73C: ; 0x0207F73C
-	push {r4, r5, r6, lr}
-	sub sp, #0x10
-	add r5, r0, #0
-	add r4, r1, #0
-	bl sub_0207CB20
-	add r0, r5, #0
-	mov r1, #0x28
-	mov r2, #0
-	bl sub_0207DAD8
-	mov r0, #3
-	mov r1, #0xc
-	bl ListMenuItems_New
-	mov r1, #0x82
-	lsl r1, r1, #4
-	str r0, [r5, r1]
-	mov r0, #6
-	bl sub_0207F42C
-	mov r1, #0x82
-	lsl r1, r1, #4
-	add r2, r0, #0
-	ldr r0, [r5, r1]
-	sub r1, #0x38
-	ldr r1, [r5, r1]
-	bl ListMenuItems_AddItem
-	mov r0, #7
-	bl sub_0207F42C
-	mov r1, #0x82
-	lsl r1, r1, #4
-	add r2, r0, #0
-	ldr r0, [r5, r1]
-	sub r1, #0x34
-	ldr r1, [r5, r1]
-	bl ListMenuItems_AddItem
-	mov r0, #9
-	bl sub_0207F42C
-	mov r1, #0x82
-	lsl r1, r1, #4
-	add r2, r0, #0
-	ldr r0, [r5, r1]
-	sub r1, #0x2c
-	ldr r1, [r5, r1]
-	bl ListMenuItems_AddItem
-	mov r0, #0x82
-	lsl r0, r0, #4
-	ldr r0, [r5, r0]
-	mov r2, #0
-	str r0, [sp, #4]
-	mov r0, #0x8d
-	lsl r0, r0, #2
-	add r0, r5, r0
-	str r0, [sp, #8]
-	add r1, sp, #4
-	strb r2, [r1, #8]
-	mov r3, #1
-	strb r3, [r1, #9]
-	mov r0, #3
-	strb r0, [r1, #0xa]
-	ldrb r6, [r1, #0xb]
-	mov r0, #0xf
-	bic r6, r0
-	strb r6, [r1, #0xb]
-	ldrb r6, [r1, #0xb]
-	mov r0, #0x30
-	bic r6, r0
-	strb r6, [r1, #0xb]
-	ldrb r6, [r1, #0xb]
-	mov r0, #0xc0
-	bic r6, r0
-	strb r6, [r1, #0xb]
-	ldrb r1, [r1, #0xa]
-	add r0, r5, #0
-	bl sub_0207E54C
-	mov r0, #1
-	str r0, [sp]
-	add r0, r5, #0
-	add r1, sp, #4
-	mov r2, #0
-	mov r3, #0xc
-	bl PartyMenu_CreateContextMenuCursor
-	ldr r1, _0207F7FC ; =0x00000824
-	str r0, [r5, r1]
-	mov r0, #0xf
-	str r0, [r4]
-	add sp, #0x10
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-_0207F7FC: .word 0x00000824
-	thumb_func_end sub_0207F73C
-
-	thumb_func_start sub_0207F800
-sub_0207F800: ; 0x0207F800
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	bl sub_0207CB20
-	bl PartyMenu_DisableMainScreenBlend_AfterYesNo
-	ldr r0, _0207F820 ; =0x00000654
-	mov r1, #7
-	ldr r0, [r5, r0]
-	add r0, #0x27
-	strb r1, [r0]
-	mov r0, #0x20
-	str r0, [r4]
-	pop {r3, r4, r5, pc}
-	nop
-_0207F820: .word 0x00000654
-	thumb_func_end sub_0207F800
-
-	thumb_func_start sub_0207F824
-sub_0207F824: ; 0x0207F824
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	mov r0, #0x8d
-	lsl r0, r0, #2
-	add r4, r1, #0
-	add r0, r5, r0
-	mov r1, #1
-	bl sub_0200E5D4
-	add r0, r5, #0
-	bl sub_0207CB20
-	bl PartyMenu_DisableMainScreenBlend_AfterYesNo
-	add r0, r5, #0
-	mov r1, #0x2c
-	mov r2, #1
-	bl sub_0207DAEC
-	ldr r0, _0207F864 ; =sub_0207F870
-	ldr r1, _0207F868 ; =0x00000C58
-	ldr r2, _0207F86C ; =sub_0207F8F4
-	str r0, [r5, r1]
-	add r0, r1, #4
-	str r2, [r5, r0]
-	mov r0, #0x1a
-	add r1, #0xa
-	strb r0, [r5, r1]
-	mov r0, #0x18
-	str r0, [r4]
-	pop {r3, r4, r5, pc}
-	nop
-_0207F864: .word sub_0207F870
-_0207F868: .word 0x00000C58
-_0207F86C: .word sub_0207F8F4
-	thumb_func_end sub_0207F824
-
-	thumb_func_start sub_0207F870
-sub_0207F870: ; 0x0207F870
-	push {r3, r4, r5, lr}
-	add r4, r0, #0
-	ldr r0, _0207F8E0 ; =0x04000050
-	mov r1, #0
-	strh r1, [r0]
-	ldr r0, _0207F8E4 ; =0x00000654
-	ldr r1, _0207F8E8 ; =0x00000C65
-	ldr r0, [r4, r0]
-	ldrb r1, [r4, r1]
-	ldr r0, [r0]
-	bl Party_GetMonByIndex
-	add r1, r0, #0
-	ldr r0, _0207F8E4 ; =0x00000654
-	mov r2, #0xc
-	ldr r0, [r4, r0]
-	ldr r0, [r0, #8]
-	bl sub_02090FA8
-	mov r1, #0
-	mvn r1, r1
-	cmp r0, r1
-	beq _0207F8CA
-	ldr r1, _0207F8E8 ; =0x00000C65
-	mov r2, #0x30
-	ldrb r3, [r4, r1]
-	mov r0, #0
-	add r5, r3, #0
-	mul r5, r2
-	ldr r3, _0207F8EC ; =0x00000834
-	add r5, r4, r5
-	strh r0, [r5, r3]
-	ldrb r1, [r4, r1]
-	add r0, r4, #0
-	mul r2, r1
-	add r2, r4, r2
-	ldrh r2, [r2, r3]
-	bl sub_0207F004
-	add r0, r4, #0
-	mov r1, #0x2f
-	mov r2, #0
-	bl sub_0207DAEC
-	b _0207F8D4
-_0207F8CA:
-	add r0, r4, #0
-	mov r1, #0x33
-	mov r2, #0
-	bl sub_0207DAEC
-_0207F8D4:
-	ldr r0, _0207F8F0 ; =0x00000C62
-	mov r1, #0x14
-	strb r1, [r4, r0]
-	mov r0, #0x18
-	pop {r3, r4, r5, pc}
-	nop
-_0207F8E0: .word 0x04000050
-_0207F8E4: .word 0x00000654
-_0207F8E8: .word 0x00000C65
-_0207F8EC: .word 0x00000834
-_0207F8F0: .word 0x00000C62
-	thumb_func_end sub_0207F870
-
-	thumb_func_start sub_0207F8F4
-sub_0207F8F4: ; 0x0207F8F4
-	push {r4, lr}
-	mov r1, #0x30
-	mov r2, #0
-	add r4, r0, #0
-	bl sub_0207DAEC
-	ldr r0, _0207F918 ; =sub_0207F924
-	ldr r1, _0207F91C ; =0x00000C58
-	ldr r2, _0207F920 ; =sub_0207F9CC
-	str r0, [r4, r1]
-	add r0, r1, #4
-	str r2, [r4, r0]
-	mov r0, #0x1a
-	add r1, #0xa
-	strb r0, [r4, r1]
-	mov r0, #0x18
-	pop {r4, pc}
-	nop
-_0207F918: .word sub_0207F924
-_0207F91C: .word 0x00000C58
-_0207F920: .word sub_0207F9CC
-	thumb_func_end sub_0207F8F4
-
-	thumb_func_start sub_0207F924
-sub_0207F924: ; 0x0207F924
-	push {r3, r4, r5, lr}
-	add r4, r0, #0
-	ldr r0, _0207F9B8 ; =0x04000050
-	mov r1, #0
-	strh r1, [r0]
-	ldr r1, _0207F9BC ; =0x00000C65
-	ldr r0, _0207F9C0 ; =0x00000654
-	ldrb r2, [r4, r1]
-	mov r1, #0x30
-	ldr r0, [r4, r0]
-	mul r1, r2
-	add r2, r4, r1
-	ldr r1, _0207F9C4 ; =0x00000834
-	ldr r0, [r0, #4]
-	ldrh r1, [r2, r1]
-	mov r2, #1
-	mov r3, #0xc
-	bl Bag_AddItem
-	cmp r0, #1
-	bne _0207F9A2
-	ldr r0, _0207F9C0 ; =0x00000654
-	ldr r1, _0207F9BC ; =0x00000C65
-	ldr r0, [r4, r0]
-	ldrb r1, [r4, r1]
-	ldr r0, [r0]
-	bl Party_GetMonByIndex
-	mov r1, #0
-	str r1, [sp]
-	add r5, r0, #0
-	mov r1, #6
-	add r2, sp, #0
-	bl SetMonData
-	add r0, r5, #0
-	bl Pokemon_UpdateArceusForm
-	add r0, r5, #0
-	bl Mon_UpdateGiratinaForm
-	ldr r1, _0207F9BC ; =0x00000C65
-	mov r2, #0x30
-	ldrb r3, [r4, r1]
-	mov r0, #0
-	add r5, r3, #0
-	mul r5, r2
-	ldr r3, _0207F9C4 ; =0x00000834
-	add r5, r4, r5
-	strh r0, [r5, r3]
-	ldrb r1, [r4, r1]
-	add r0, r4, #0
-	mul r2, r1
-	add r2, r4, r2
-	ldrh r2, [r2, r3]
-	bl sub_0207F004
-	add r0, r4, #0
-	mov r1, #0x34
-	mov r2, #0
-	bl sub_0207DAEC
-	b _0207F9AC
-_0207F9A2:
-	add r0, r4, #0
-	mov r1, #0x54
-	mov r2, #0
-	bl sub_0207DAEC
-_0207F9AC:
-	ldr r0, _0207F9C8 ; =0x00000C62
-	mov r1, #0x14
-	strb r1, [r4, r0]
-	mov r0, #0x18
-	pop {r3, r4, r5, pc}
-	nop
-_0207F9B8: .word 0x04000050
-_0207F9BC: .word 0x00000C65
-_0207F9C0: .word 0x00000654
-_0207F9C4: .word 0x00000834
-_0207F9C8: .word 0x00000C62
-	thumb_func_end sub_0207F924
-
-	thumb_func_start sub_0207F9CC
-sub_0207F9CC: ; 0x0207F9CC
-	push {r4, lr}
-	ldr r2, _0207FA00 ; =0x04000050
-	mov r1, #0
-	add r4, r0, #0
-	strh r1, [r2]
-	bl sub_02079224
-	mov r0, #0x89
-	lsl r0, r0, #2
-	add r0, r4, r0
-	mov r1, #1
-	bl ClearFrameAndWindow2
-	add r0, r4, #0
-	mov r1, #0x1d
-	mov r2, #1
-	bl sub_0207DAC4
-	ldr r0, _0207FA04 ; =0x00000678
-	mov r1, #0
-	ldr r0, [r4, r0]
-	bl thunk_Sprite_SetPalIndex
-	mov r0, #1
-	pop {r4, pc}
-	nop
-_0207FA00: .word 0x04000050
-_0207FA04: .word 0x00000678
-	thumb_func_end sub_0207F9CC
-
-	thumb_func_start sub_0207FA08
-sub_0207FA08: ; 0x0207FA08
-	push {r4, lr}
-	add r4, r0, #0
-	mov r0, #0x89
-	lsl r0, r0, #2
-	add r0, r4, r0
-	mov r1, #1
-	bl ClearFrameAndWindow2
-	add r0, r4, #0
-	mov r1, #0x1d
-	mov r2, #1
-	bl sub_0207DAC4
-	ldr r0, _0207FA38 ; =0x00000678
-	mov r1, #0
-	ldr r0, [r4, r0]
-	bl thunk_Sprite_SetPalIndex
-	add r0, r4, #0
-	mov r1, #0
-	bl sub_02079224
-	mov r0, #1
-	pop {r4, pc}
-	.balign 4, 0
-_0207FA38: .word 0x00000678
-	thumb_func_end sub_0207FA08
-
-	thumb_func_start sub_0207FA3C
-sub_0207FA3C: ; 0x0207FA3C
+	thumb_func_start PartyMonContextMenuAction_Store
+PartyMonContextMenuAction_Store: ; 0x0207FA3C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -800,7 +61,7 @@ _0207FA98: .word 0x00000654
 _0207FA9C: .word sub_0207FAA8
 _0207FAA0: .word 0x00000C58
 _0207FAA4: .word sub_0207FAD4
-	thumb_func_end sub_0207FA3C
+	thumb_func_end PartyMonContextMenuAction_Store
 
 	thumb_func_start sub_0207FAA8
 sub_0207FAA8: ; 0x0207FAA8
@@ -852,8 +113,8 @@ _0207FB04: .word 0x04000050
 _0207FB08: .word 0x00000678
 	thumb_func_end sub_0207FAD4
 
-	thumb_func_start sub_0207FB0C
-sub_0207FB0C: ; 0x0207FB0C
+	thumb_func_start PartyMonContextMenuAction_Switch
+PartyMonContextMenuAction_Switch: ; 0x0207FB0C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, _0207FBB8 ; =0x00000C63
@@ -933,7 +194,7 @@ _0207FBB8: .word 0x00000C63
 _0207FBBC: .word 0x00000678
 _0207FBC0: .word 0x0000067C
 _0207FBC4: .word 0x00000654
-	thumb_func_end sub_0207FB0C
+	thumb_func_end PartyMonContextMenuAction_Switch
 
 	thumb_func_start sub_0207FBC8
 sub_0207FBC8: ; 0x0207FBC8
@@ -2075,8 +1336,8 @@ _02080504: .word 0x00000838
 _02080508: .word 0x00000FFF
 	thumb_func_end sub_0208047C
 
-	thumb_func_start sub_0208050C
-sub_0208050C: ; 0x0208050C
+	thumb_func_start PartyMonContextMenuAction_Enter
+PartyMonContextMenuAction_Enter: ; 0x0208050C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	mov r0, #0x85
@@ -2202,7 +1463,7 @@ _02080600: .word 0x00000654
 _02080604: .word 0x00000C65
 _02080608: .word 0x00000678
 _0208060C: .word 0x00000C62
-	thumb_func_end sub_0208050C
+	thumb_func_end PartyMonContextMenuAction_Enter
 
 	thumb_func_start sub_02080610
 sub_02080610: ; 0x02080610
@@ -2227,8 +1488,8 @@ sub_02080610: ; 0x02080610
 _02080638: .word 0x00000678
 	thumb_func_end sub_02080610
 
-	thumb_func_start sub_0208063C
-sub_0208063C: ; 0x0208063C
+	thumb_func_start PartyMonContextMenuAction_NoEntry
+PartyMonContextMenuAction_NoEntry: ; 0x0208063C
 	push {r3, r4, r5, r6, r7, lr}
 	str r1, [sp]
 	mov r1, #0
@@ -2343,10 +1604,10 @@ _02080718: .word 0x00000654
 _0208071C: .word 0x00000C65
 _02080720: .word 0x00000855
 _02080724: .word 0x00000678
-	thumb_func_end sub_0208063C
+	thumb_func_end PartyMonContextMenuAction_NoEntry
 
-	thumb_func_start sub_02080728
-sub_02080728: ; 0x02080728
+	thumb_func_start PartyMonContextMenuAction_ContestEnter
+PartyMonContextMenuAction_ContestEnter: ; 0x02080728
 	push {r4, lr}
 	add r4, r1, #0
 	ldr r1, _02080744 ; =0x00000654
@@ -2361,10 +1622,10 @@ sub_02080728: ; 0x02080728
 	pop {r4, pc}
 	.balign 4, 0
 _02080744: .word 0x00000654
-	thumb_func_end sub_02080728
+	thumb_func_end PartyMonContextMenuAction_ContestEnter
 
-	thumb_func_start sub_02080748
-sub_02080748: ; 0x02080748
+	thumb_func_start PartyMonContextMenuAction_Confirm
+PartyMonContextMenuAction_Confirm: ; 0x02080748
 	push {r4, lr}
 	add r4, r1, #0
 	ldr r1, _02080764 ; =0x00000654
@@ -2379,10 +1640,10 @@ sub_02080748: ; 0x02080748
 	pop {r4, pc}
 	.balign 4, 0
 _02080764: .word 0x00000654
-	thumb_func_end sub_02080748
+	thumb_func_end PartyMonContextMenuAction_Confirm
 
-	thumb_func_start sub_02080768
-sub_02080768: ; 0x02080768
+	thumb_func_start PartyMonContextMenuAction_Summary
+PartyMonContextMenuAction_Summary: ; 0x02080768
 	push {r4, lr}
 	add r4, r1, #0
 	ldr r1, _02080784 ; =0x00000654
@@ -2397,10 +1658,10 @@ sub_02080768: ; 0x02080768
 	pop {r4, pc}
 	.balign 4, 0
 _02080784: .word 0x00000654
-	thumb_func_end sub_02080768
+	thumb_func_end PartyMonContextMenuAction_Summary
 
-	thumb_func_start sub_02080788
-sub_02080788: ; 0x02080788
+	thumb_func_start PartyMonContextMenuAction_Set
+PartyMonContextMenuAction_Set: ; 0x02080788
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -2415,7 +1676,7 @@ sub_02080788: ; 0x02080788
 	bl sub_020807AC
 	str r0, [r4]
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02080788
+	thumb_func_end PartyMonContextMenuAction_Set
 
 	thumb_func_start sub_020807AC
 sub_020807AC: ; 0x020807AC
@@ -2567,8 +1828,8 @@ _020808C8: .word 0x00000654
 _020808CC: .word 0x00000C62
 	thumb_func_end sub_02080834
 
-	thumb_func_start sub_020808D0
-sub_020808D0: ; 0x020808D0
+	thumb_func_start PartyMonContextMenuAction_Cut
+PartyMonContextMenuAction_Cut: ; 0x020808D0
 	ldr r2, _020808E0 ; =0x00000654
 	mov r3, #0xb
 	ldr r2, [r0, r2]
@@ -2579,10 +1840,10 @@ sub_020808D0: ; 0x020808D0
 	nop
 _020808E0: .word 0x00000654
 _020808E4: .word sub_02080834
-	thumb_func_end sub_020808D0
+	thumb_func_end PartyMonContextMenuAction_Cut
 
-	thumb_func_start sub_020808E8
-sub_020808E8: ; 0x020808E8
+	thumb_func_start PartyMonContextMenuAction_RockSmash
+PartyMonContextMenuAction_RockSmash: ; 0x020808E8
 	ldr r2, _020808F8 ; =0x00000654
 	mov r3, #0xf
 	ldr r2, [r0, r2]
@@ -2593,10 +1854,10 @@ sub_020808E8: ; 0x020808E8
 	nop
 _020808F8: .word 0x00000654
 _020808FC: .word sub_02080834
-	thumb_func_end sub_020808E8
+	thumb_func_end PartyMonContextMenuAction_RockSmash
 
-	thumb_func_start sub_02080900
-sub_02080900: ; 0x02080900
+	thumb_func_start PartyMonContextMenuAction_Strength
+PartyMonContextMenuAction_Strength: ; 0x02080900
 	ldr r2, _02080910 ; =0x00000654
 	mov r3, #0xe
 	ldr r2, [r0, r2]
@@ -2607,10 +1868,10 @@ sub_02080900: ; 0x02080900
 	nop
 _02080910: .word 0x00000654
 _02080914: .word sub_02080834
-	thumb_func_end sub_02080900
+	thumb_func_end PartyMonContextMenuAction_Strength
 
-	thumb_func_start sub_02080918
-sub_02080918: ; 0x02080918
+	thumb_func_start PartyMonContextMenuAction_Surf
+PartyMonContextMenuAction_Surf: ; 0x02080918
 	ldr r2, _02080928 ; =0x00000654
 	mov r3, #0xd
 	ldr r2, [r0, r2]
@@ -2621,10 +1882,10 @@ sub_02080918: ; 0x02080918
 	nop
 _02080928: .word 0x00000654
 _0208092C: .word sub_02080834
-	thumb_func_end sub_02080918
+	thumb_func_end PartyMonContextMenuAction_Surf
 
-	thumb_func_start sub_02080930
-sub_02080930: ; 0x02080930
+	thumb_func_start PartyMonContextMenuAction_RockClimb
+PartyMonContextMenuAction_RockClimb: ; 0x02080930
 	ldr r2, _02080940 ; =0x00000654
 	mov r3, #0x11
 	ldr r2, [r0, r2]
@@ -2635,10 +1896,10 @@ sub_02080930: ; 0x02080930
 	nop
 _02080940: .word 0x00000654
 _02080944: .word sub_02080834
-	thumb_func_end sub_02080930
+	thumb_func_end PartyMonContextMenuAction_RockClimb
 
-	thumb_func_start sub_02080948
-sub_02080948: ; 0x02080948
+	thumb_func_start PartyMonContextMenuAction_Fly
+PartyMonContextMenuAction_Fly: ; 0x02080948
 	ldr r2, _02080958 ; =0x00000654
 	mov r3, #0xc
 	ldr r2, [r0, r2]
@@ -2649,10 +1910,10 @@ sub_02080948: ; 0x02080948
 	nop
 _02080958: .word 0x00000654
 _0208095C: .word sub_02080834
-	thumb_func_end sub_02080948
+	thumb_func_end PartyMonContextMenuAction_Fly
 
-	thumb_func_start sub_02080960
-sub_02080960: ; 0x02080960
+	thumb_func_start PartyMonContextMenuAction_Waterfall
+PartyMonContextMenuAction_Waterfall: ; 0x02080960
 	ldr r2, _02080970 ; =0x00000654
 	mov r3, #0x10
 	ldr r2, [r0, r2]
@@ -2663,10 +1924,10 @@ sub_02080960: ; 0x02080960
 	nop
 _02080970: .word 0x00000654
 _02080974: .word sub_02080834
-	thumb_func_end sub_02080960
+	thumb_func_end PartyMonContextMenuAction_Waterfall
 
-	thumb_func_start sub_02080978
-sub_02080978: ; 0x02080978
+	thumb_func_start PartyMonContextMenuAction_Whirlpool
+PartyMonContextMenuAction_Whirlpool: ; 0x02080978
 	ldr r2, _02080988 ; =0x00000654
 	mov r3, #0x17
 	ldr r2, [r0, r2]
@@ -2677,10 +1938,10 @@ sub_02080978: ; 0x02080978
 	nop
 _02080988: .word 0x00000654
 _0208098C: .word sub_02080834
-	thumb_func_end sub_02080978
+	thumb_func_end PartyMonContextMenuAction_Whirlpool
 
-	thumb_func_start sub_02080990
-sub_02080990: ; 0x02080990
+	thumb_func_start PartyMonContextMenuAction_Flash
+PartyMonContextMenuAction_Flash: ; 0x02080990
 	ldr r2, _020809A0 ; =0x00000654
 	mov r3, #0x12
 	ldr r2, [r0, r2]
@@ -2691,10 +1952,10 @@ sub_02080990: ; 0x02080990
 	nop
 _020809A0: .word 0x00000654
 _020809A4: .word sub_02080834
-	thumb_func_end sub_02080990
+	thumb_func_end PartyMonContextMenuAction_Flash
 
-	thumb_func_start sub_020809A8
-sub_020809A8: ; 0x020809A8
+	thumb_func_start PartyMonContextMenuAction_Teleport
+PartyMonContextMenuAction_Teleport: ; 0x020809A8
 	ldr r2, _020809B8 ; =0x00000654
 	mov r3, #0x13
 	ldr r2, [r0, r2]
@@ -2705,10 +1966,10 @@ sub_020809A8: ; 0x020809A8
 	nop
 _020809B8: .word 0x00000654
 _020809BC: .word sub_02080834
-	thumb_func_end sub_020809A8
+	thumb_func_end PartyMonContextMenuAction_Teleport
 
-	thumb_func_start sub_020809C0
-sub_020809C0: ; 0x020809C0
+	thumb_func_start PartyMonContextMenuAction_Dig
+PartyMonContextMenuAction_Dig: ; 0x020809C0
 	ldr r2, _020809D0 ; =0x00000654
 	mov r3, #0x14
 	ldr r2, [r0, r2]
@@ -2719,10 +1980,10 @@ sub_020809C0: ; 0x020809C0
 	nop
 _020809D0: .word 0x00000654
 _020809D4: .word sub_02080834
-	thumb_func_end sub_020809C0
+	thumb_func_end PartyMonContextMenuAction_Dig
 
-	thumb_func_start sub_020809D8
-sub_020809D8: ; 0x020809D8
+	thumb_func_start PartyMonContextMenuAction_SweetScent
+PartyMonContextMenuAction_SweetScent: ; 0x020809D8
 	ldr r2, _020809E8 ; =0x00000654
 	mov r3, #0x15
 	ldr r2, [r0, r2]
@@ -2733,10 +1994,10 @@ sub_020809D8: ; 0x020809D8
 	nop
 _020809E8: .word 0x00000654
 _020809EC: .word sub_02080834
-	thumb_func_end sub_020809D8
+	thumb_func_end PartyMonContextMenuAction_SweetScent
 
-	thumb_func_start sub_020809F0
-sub_020809F0: ; 0x020809F0
+	thumb_func_start PartyMonContextMenuAction_Chatter
+PartyMonContextMenuAction_Chatter: ; 0x020809F0
 	ldr r2, _02080A00 ; =0x00000654
 	mov r3, #0x16
 	ldr r2, [r0, r2]
@@ -2747,10 +2008,10 @@ sub_020809F0: ; 0x020809F0
 	nop
 _02080A00: .word 0x00000654
 _02080A04: .word sub_02080834
-	thumb_func_end sub_020809F0
+	thumb_func_end PartyMonContextMenuAction_Chatter
 
-	thumb_func_start sub_02080A08
-sub_02080A08: ; 0x02080A08
+	thumb_func_start PartyMonContextMenuAction_MilkDrink
+PartyMonContextMenuAction_MilkDrink: ; 0x02080A08
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r5, r1, #0
@@ -2765,10 +2026,10 @@ _02080A1E:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02080A20: .word 0x00000C6E
-	thumb_func_end sub_02080A08
+	thumb_func_end PartyMonContextMenuAction_MilkDrink
 
-	thumb_func_start sub_02080A24
-sub_02080A24: ; 0x02080A24
+	thumb_func_start PartyMonContextMenuAction_Softboiled
+PartyMonContextMenuAction_Softboiled: ; 0x02080A24
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r5, r1, #0
@@ -2783,10 +2044,10 @@ _02080A3A:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02080A3C: .word 0x00000C6E
-	thumb_func_end sub_02080A24
+	thumb_func_end PartyMonContextMenuAction_Softboiled
 
-	thumb_func_start sub_02080A40
-sub_02080A40: ; 0x02080A40
+	thumb_func_start PartyMonContextMenuAction_Headbutt
+PartyMonContextMenuAction_Headbutt: ; 0x02080A40
 	ldr r2, _02080A50 ; =0x00000654
 	mov r3, #0x18
 	ldr r2, [r0, r2]
@@ -2797,7 +2058,7 @@ sub_02080A40: ; 0x02080A40
 	nop
 _02080A50: .word 0x00000654
 _02080A54: .word sub_02080834
-	thumb_func_end sub_02080A40
+	thumb_func_end PartyMonContextMenuAction_Headbutt
 
 	thumb_func_start sub_02080A58
 sub_02080A58: ; 0x02080A58
@@ -2954,39 +2215,3 @@ sub_02080B74: ; 0x02080B74
 _02080BAC: .word 0x00000678
 _02080BB0: .word 0x04000050
 	thumb_func_end sub_02080B74
-
-	.rodata
-_02101CB8:
-	.word sub_0207FB0C
-	.word sub_02080768
-	.word sub_0207F438
-	.word sub_0207F4FC
-	.word sub_0207F520
-	.word sub_0207F73C
-	.word sub_0207F800
-	.word sub_0207F824
-	.word sub_0207FA3C
-	.word 0xFFFFFFFE
-	.word 0xFFFFFFFE
-	.word sub_0208050C
-	.word sub_0208063C
-	.word sub_02080728
-	.word sub_02080788
-	.word sub_02080748
-	.word sub_020808D0
-	.word sub_02080948
-	.word sub_02080918
-	.word sub_02080900
-	.word sub_020808E8
-	.word sub_02080960
-	.word sub_02080930
-	.word sub_02080978
-	.word sub_02080990
-	.word sub_020809A8
-	.word sub_020809C0
-	.word sub_020809D8
-	.word sub_020809F0
-	.word sub_02080A40
-	.word sub_02080A08
-	.word sub_02080A24
-	.word 0xFFFFFFFE

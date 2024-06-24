@@ -17,7 +17,7 @@
 #include "unk_020290B4.h"
 #include "unk_02066EDC.h"
 #include "party_context_menu.h"
-#include "unk_0207F42C.h"
+#include "party_menu_list_items.h"
 #include "unk_0203A3B0.h"
 #include "unk_02080BB4.h"
 #include "unk_0208805C.h"
@@ -82,9 +82,9 @@ static void sub_0207A89C(PartyMenuStruct *partyMenu);
 static u8 sub_0207A8FC(PartyMenuStruct *partyMenu);
 static void PartyMenu_MoveCursorSpriteTo(PartyMenuStruct *partyMenu, int selection, int x, int y);
 static void PartyMenu_MoveCursorSpriteTo_WithSfx(PartyMenuStruct *partyMenu, int selection, int x, int y);
-static BOOL sub_0207A99C(PartyMenuStruct *partyMenu);
-static u8 PartyMenu_HandleDpadInput(PartyMenuStruct *partyMenu, u8 *px, u8 *py, u8 direction);
-static u8 sub_0207AB20(PartyMenuStruct *partyMenu, u8 *px, u8 *py, const u8 *a3);
+static BOOL PartyMenu_HandleDpadInput(PartyMenuStruct *partyMenu);
+static u8 PartyMenu_GetSelectionInDirection(PartyMenuStruct *partyMenu, u8 *px, u8 *py, u8 direction);
+static u8 PartyMenu_GetNewSelectionFromTable(PartyMenuStruct *partyMenu, u8 *px, u8 *py, const u8 *table);
 static void sub_0207AC20(PartyMenuStruct *partyMenu);
 static int sub_0207AC70(PartyMenuStruct *partyMenu, BOOL a1);
 static int PartyMenu_GetTouchButtonInput(PartyMenuStruct *partyMenu);
@@ -1298,7 +1298,7 @@ static const u8 _021012CC[][6] = {
 };
 
 static u8 sub_0207A8FC(PartyMenuStruct *partyMenu) {
-    if (sub_0207A99C(partyMenu) == TRUE) {
+    if (PartyMenu_HandleDpadInput(partyMenu) == TRUE) {
         return 1;
     } else {
         return 5;
@@ -1324,11 +1324,14 @@ static void PartyMenu_MoveCursorSpriteTo_WithSfx(PartyMenuStruct *partyMenu, int
     PlaySE(SEQ_SE_DP_SELECT);
 }
 
-static BOOL sub_0207A99C(PartyMenuStruct *partyMenu) {
+// Moves cursor sprite in response to dpad input.
+// Returns TRUE if the cursor was moved, FALSE otherwise
+static BOOL PartyMenu_HandleDpadInput(PartyMenuStruct *partyMenu) {
     u8 newSelection;
     u8 direction;
     u8 x, y;
 
+    // Routine to get the dpad input. If none detected, return FALSE.
     direction = DIR_MAX;
 
     if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
@@ -1348,20 +1351,20 @@ static BOOL sub_0207A99C(PartyMenuStruct *partyMenu) {
     newSelection = partyMenu->partyMonIndex;
     if (newSelection == PARTY_MON_SELECTION_CANCEL) {
         if (direction == DIR_NORTH) {
-            newSelection = sub_0207AB20(partyMenu, &x, &y, _021012CC[(partyMenu->unk_C66 & 1) + 2]);
+            newSelection = PartyMenu_GetNewSelectionFromTable(partyMenu, &x, &y, _021012CC[(partyMenu->unk_C66 & 1) + 2]);
         } else {
-            newSelection = PartyMenu_HandleDpadInput(partyMenu, &x, &y, direction);
+            newSelection = PartyMenu_GetSelectionInDirection(partyMenu, &x, &y, direction);
         }
     } else if (newSelection == PARTY_MON_SELECTION_CONFIRM) {
         if (partyMenu->args->context != PARTY_MENU_CONTEXT_2 && partyMenu->args->context != PARTY_MENU_CONTEXT_17 && partyMenu->args->context != PARTY_MENU_CONTEXT_23 && partyMenu->args->context != PARTY_MENU_CONTEXT_22 && direction == DIR_NORTH) {
-            newSelection = sub_0207AB20(partyMenu, &x, &y, _021012CC[(partyMenu->unk_C66 & 1) + 2]);
+            newSelection = PartyMenu_GetNewSelectionFromTable(partyMenu, &x, &y, _021012CC[(partyMenu->unk_C66 & 1) + 2]);
         } else if (direction == DIR_SOUTH) {
-            newSelection = sub_0207AB20(partyMenu, &x, &y, _021012CC[partyMenu->unk_C66 & 1]);
+            newSelection = PartyMenu_GetNewSelectionFromTable(partyMenu, &x, &y, _021012CC[partyMenu->unk_C66 & 1]);
         } else {
-            newSelection = PartyMenu_HandleDpadInput(partyMenu, &x, &y, direction);
+            newSelection = PartyMenu_GetSelectionInDirection(partyMenu, &x, &y, direction);
         }
     } else {
-        newSelection = PartyMenu_HandleDpadInput(partyMenu, &x, &y, direction);
+        newSelection = PartyMenu_GetSelectionInDirection(partyMenu, &x, &y, direction);
     }
     if (newSelection != partyMenu->partyMonIndex && newSelection != 0xFF) {
         PartyMenu_MoveCursorSpriteTo_WithSfx(partyMenu, newSelection, x, y);
@@ -1371,7 +1374,7 @@ static BOOL sub_0207A99C(PartyMenuStruct *partyMenu) {
     return FALSE;
 }
 
-static u8 PartyMenu_HandleDpadInput(PartyMenuStruct *partyMenu, u8 *px, u8 *py, u8 direction) {
+static u8 PartyMenu_GetSelectionInDirection(PartyMenuStruct *partyMenu, u8 *px, u8 *py, u8 direction) {
     u8 result = partyMenu->partyMonIndex;
     while (TRUE) {
         result = sub_02020A24(partyMenu->unk_948, px, py, 0, 0, result, direction);
@@ -1385,15 +1388,15 @@ static u8 PartyMenu_HandleDpadInput(PartyMenuStruct *partyMenu, u8 *px, u8 *py, 
     return result;
 }
 
-static u8 sub_0207AB20(PartyMenuStruct *partyMenu, u8 *px, u8 *py, const u8 *a3) {
+static u8 PartyMenu_GetNewSelectionFromTable(PartyMenuStruct *partyMenu, u8 *px, u8 *py, const u8 *table) {
     u8 i = 0;
     while (TRUE) {
         if (i == 6) {
             break;
         }
-        if (PartyMenu_IsMonDrawStateActive(partyMenu, a3[i])) {
-            sub_02020A24(partyMenu->unk_948, px, py, 0, 0, a3[i], DIR_MAX);
-            return a3[i];
+        if (PartyMenu_IsMonDrawStateActive(partyMenu, table[i])) {
+            sub_02020A24(partyMenu->unk_948, px, py, 0, 0, table[i], DIR_MAX);
+            return table[i];
         }
         ++i;
     }

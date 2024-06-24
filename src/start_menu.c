@@ -953,12 +953,12 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         }
         StartMenu_SetChildProcReturnTaskFunc(startMenu, sub_0203D830);
         break;
-    case PARTY_MENU_ACTION_RETURN_7:
+    case PARTY_MENU_ACTION_RETURN_READ_MAIL:
         startMenu->atexit_TaskEnv = sub_0203F050(fieldSystem, Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), partyMenuArgs->partySlot), HEAP_ID_FIELD);
         startMenu->atexit_TaskEnv2 = sub_0203D818(partyMenuArgs->itemId, 2, partyMenuArgs->partySlot);
         StartMenu_SetChildProcReturnTaskFunc(startMenu, sub_0203D830);
         break;
-    case PARTY_MENU_ACTION_RETURN_3: {
+    case PARTY_MENU_ACTION_RETURN_GIVE_ITEM: {
         StartMenuAfterEvoPartySlotBak *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(StartMenuAfterEvoPartySlotBak));
         unk->partySlot = partyMenuArgs->partySlot;
         startMenu->atexit_TaskEnv2 = unk;
