@@ -43,15 +43,15 @@ static inline void G3_ViewPort(int x1, int y1, int x2, int y2) {
 }
 
 static inline void G3_MtxMode(GXMtxMode mode) {
-	reg_G3_MTX_MODE = GX_PACK_MTXMODE_PARAM(mode);
+    reg_G3_MTX_MODE = GX_PACK_MTXMODE_PARAM(mode);
 }
 
 static inline void G3_PushMtx() {
-	reg_G3_MTX_PUSH = 0;
+    reg_G3_MTX_PUSH = 0;
 }
 
 static inline void G3_PopMtx(int num) {
-	reg_G3_MTX_POP = GX_PACK_POPMTX_PARAM(num);
+    reg_G3_MTX_POP = GX_PACK_POPMTX_PARAM(num);
 }
 
 static inline void G3_TexImageParam(GXTexFmt texFmt, GXTexGen texGen, GXTexSizeS s, GXTexSizeT t, GXTexRepeat repeat, GXTexFlip flip, GXTexPlttColor0 pltt0, u32 addr) {
