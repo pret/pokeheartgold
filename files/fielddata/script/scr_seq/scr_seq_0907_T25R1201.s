@@ -206,7 +206,7 @@ _024D:
 	scrcmd_165 VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0314
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	call _00A7
@@ -214,7 +214,7 @@ _024D:
 	end
 
 _0314:
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	call _00A7

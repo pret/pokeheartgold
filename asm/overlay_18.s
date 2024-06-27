@@ -22671,7 +22671,7 @@ ov18_021F10E8: ; 0x021F10E8
 	ldr r0, [r4, r5]
 	cmp r0, #0
 	beq _021F1100
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0
 	str r0, [r4, r5]
 _021F1100:
@@ -22706,7 +22706,7 @@ ov18_021F111C: ; 0x021F111C
 	add r5, r2, #0
 	ldr r0, [r0]
 	add r4, r3, #0
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	ldr r1, [sp, #0x10]
 	bl NNS_G2dGetImageLocation
 	add r6, r0, #0
@@ -23960,7 +23960,7 @@ _021F1AC8:
 	lsl r6, r0, #2
 	ldr r0, [r4, r6]
 	ldr r0, [r0]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	mov r1, #2
 	bl NNS_G2dGetImageLocation
 	mov r1, #0x32
@@ -23975,7 +23975,7 @@ _021F1AC8:
 	bl GXS_LoadOBJ
 	ldr r0, [r4, r6]
 	ldr r0, [r0]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #2
 	bl NNS_G2dGetImagePaletteLocation
 	add r4, r0, #0
@@ -32497,7 +32497,7 @@ _021F5F4A:
 	ldrb r1, [r3, #1]
 	ldrh r0, [r5, r0]
 	ldrb r3, [r3]
-	bl sub_020708D8
+	bl GetMonPicHeightBySpeciesGenderForme
 	add r2, r0, #0
 	lsl r0, r4, #2
 	add r1, r5, r0
@@ -33627,7 +33627,7 @@ _021F6872:
 	ldrh r0, [r5, r0]
 	ldrb r3, [r3]
 	add r2, r6, #0
-	bl sub_020708D8
+	bl GetMonPicHeightBySpeciesGenderForme
 _021F6886:
 	cmp r4, #1
 	bne _021F68EC
@@ -39452,7 +39452,7 @@ ov18_021F9518: ; 0x021F9518
 	mov r0, #0x8b
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	mov r1, #1
 	bl NNS_G2dGetImageLocation
 	add r5, r0, #0

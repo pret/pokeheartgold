@@ -35,7 +35,7 @@
 .public sub_0202487C
 .public Set2dSpriteAnimSeqNo
 .public Sprite_SetPriority
-.public sub_02024B34
+.public Sprite_GetPaletteProxy
 .public String_New
 .public String_Delete
 .public Thunk_G3X_Reset

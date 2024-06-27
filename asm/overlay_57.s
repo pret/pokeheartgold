@@ -1464,7 +1464,7 @@ ov57_02238438: ; 0x02238438
 	lsl r0, r0, #2
 	add r7, r5, r0
 	ldr r0, [r7, r4]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r1, #0
 	mov r2, #0xd3
 	lsl r2, r2, #2
@@ -2310,7 +2310,7 @@ _02238ACA:
 	add r1, r4, r1
 	bl SpriteGfxHandler_UnloadCharObjById
 	ldr r0, [r5, r7]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #8
@@ -2983,7 +2983,7 @@ ov57_02238FEC: ; 0x02238FEC
 	lsl r7, r7, #2
 _02239000:
 	ldr r0, [r5, r7]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r6]
 	add r4, r4, #1
 	ldr r0, [r0]
@@ -3304,7 +3304,7 @@ ov57_02239260: ; 0x02239260
 	lsl r6, r6, #2
 _0223926A:
 	ldr r0, [r5, r6]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -3708,7 +3708,7 @@ ov57_02239588: ; 0x02239588
 	lsl r6, r6, #2
 _02239594:
 	ldr r0, [r5, r6]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, #0xc
 	cmp r4, #0xc
@@ -3716,11 +3716,11 @@ _02239594:
 	mov r0, #0xc7
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0x32
 	lsl r0, r0, #4
 	ldr r0, [r7, r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov57_02239588
 
@@ -5047,7 +5047,7 @@ ov57_0223A05C: ; 0x0223A05C
 	add r5, #0x20
 _0223A066:
 	ldr r0, [r5, r6]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0xd

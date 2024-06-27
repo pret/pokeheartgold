@@ -3024,7 +3024,7 @@ ov103_021EE078: ; 0x021EE078
 	ldr r0, [r4, r5]
 	cmp r0, #0
 	beq _021EE090
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0
 	str r0, [r4, r5]
 _021EE090:
@@ -3287,7 +3287,7 @@ _021EE260:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	ldr r0, [r0]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	mov r1, #2
 	bl NNS_G2dGetImageLocation
 	str r0, [sp, #8]

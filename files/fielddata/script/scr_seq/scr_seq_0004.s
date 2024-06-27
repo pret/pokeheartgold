@@ -936,7 +936,7 @@ scr_seq_0004_009:
 scr_seq_0004_010:
 	scrcmd_436
 	scrcmd_152
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	end
@@ -971,7 +971,7 @@ _0EF6:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_252
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0F1C

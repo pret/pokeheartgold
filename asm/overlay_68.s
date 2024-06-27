@@ -2700,7 +2700,7 @@ ov68_021E6E84: ; 0x021E6E84
 	lsl r6, r6, #2
 _021E6E90:
 	ldr r0, [r5, r6]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0xc

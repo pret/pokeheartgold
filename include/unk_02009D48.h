@@ -48,8 +48,8 @@ void CreateSpriteResourcesHeader(SpriteResourcesHeader *hdr, int charId, int plt
 SpriteResourceHeaderList *SpriteResourceHeaderList_Create(const struct ResdatNarcEntry *resdatNarcEntry, HeapID heapId, GF_2DGfxResMan *charMan, GF_2DGfxResMan *plttMan, GF_2DGfxResMan *cellMan, GF_2DGfxResMan *animMan, GF_2DGfxResMan *mcelMan, GF_2DGfxResMan *manmMan);
 void SpriteResourceHeaderList_Destroy(SpriteResourceHeaderList *list);
 SpriteList *G2dRenderer_Init(int a0, GF_G2dRenderer *renderer, HeapID heapId);
-void G2dRenderer_SetMainSurfaceCoords(GF_G2dRenderer *renderer, s32 x, s32 y);
-void G2dRenderer_SetSubSurfaceCoords(GF_G2dRenderer *renderer, s32 x, s32 y);
+void G2dRenderer_SetMainSurfaceCoords(GF_G2dRenderer *renderer, fx32 x, fx32 y);
+void G2dRenderer_SetSubSurfaceCoords(GF_G2dRenderer *renderer, fx32 x, fx32 y);
 void sub_02009FE8(NNS_G2D_VRAM_TYPE vram, GXOBJVRamModeChar mode);
 void sub_0200A080(u32 a0);
 

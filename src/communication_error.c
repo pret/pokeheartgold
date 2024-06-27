@@ -151,7 +151,7 @@ void ShowCommunicationError(HeapID heapId, u32 error, u32 errorCode) {
 
     BgConfig* bgConfig = BgConfig_Alloc(heapId);
     SetBothScreensModesAndDisable(&sCommunicationErrorGraphicsModes);
-    InitBgFromTemplate(bgConfig, 0, &sCommunicationErrorBgTemplate, GX_BGMODE_0);
+    InitBgFromTemplate(bgConfig, 0, &sCommunicationErrorBgTemplate, GF_BG_TYPE_TEXT);
     BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_0);
     LoadUserFrameGfx1(bgConfig, GF_BG_LYR_MAIN_0, 0x1F7, 2, 0, heapId);
     LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_1_OFFSET, heapId);

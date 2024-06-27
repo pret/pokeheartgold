@@ -739,7 +739,7 @@ _0223A5FA:
 	add r0, r5, #0
 	add r0, #0x90
 	ldr r0, [r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r5, #0x14
 	add r0, r5, #0
 	bl ov80_0223A81C
@@ -1013,7 +1013,7 @@ ov80_0223A81C: ; 0x0223A81C
 	mov r4, #0
 _0223A822:
 	ldr r0, [r5, #4]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
