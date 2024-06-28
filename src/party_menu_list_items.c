@@ -22,7 +22,7 @@ int PartyMenu_TakeMail_DontReturnToBag(PartyMenuStruct *partyMenu);
 void PartyMonContextMenuAction_Store(PartyMenuStruct *partyMenu, int *pState);
 void PartyMonContextMenuAction_Switch(PartyMenuStruct *partyMenu, int *pState);
 void sub_0207FEE8(PartyMenuStruct *partyMenu, u8 slot);
-void sub_02080040(PartyMenuStruct *partyMenu, u8 slot, u8 direciton);
+void sub_02080040(PartyMenuStruct *partyMenu, u8 slot, u8 direction);
 void sub_02080198(PartyMenuStruct *partyMenu);
 void PartyMonContextMenuAction_Enter(PartyMenuStruct *partyMenu, int *pState);
 void PartyMonContextMenuAction_NoEntry(PartyMenuStruct *partyMenu, int *pState);
@@ -438,4 +438,43 @@ BOOL sub_0207FD6C(PartyMenuStruct *partyMenu) {
     }
 
     return FALSE;
+}
+
+void sub_0207FEE8(PartyMenuStruct *partyMenu, u8 slot) {
+    UnkPartyMenuSub_94C *r4 = &partyMenu->unk_94C;
+    s8 x = partyMenu->monsDrawState[r4->unk_300[slot]].unk_14;
+    s8 y = partyMenu->monsDrawState[r4->unk_300[slot]].unk_15;
+
+    FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, 0, x, y, 16, 6, TILEMAP_FILL_KEEP_PAL);
+    FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_1, 0, x, y, 16, 6, TILEMAP_FILL_KEEP_PAL);
+    if (r4->unk_302[slot] == 0) {
+        CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, x, y, 16 - r4->unk_306, 6, r4->unk_000[slot], r4->unk_306, 0, 16, 6);
+        CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_1, x, y, 16 - r4->unk_306, 6, r4->unk_180[slot], r4->unk_306, 0, 16, 6);
+    } else {
+        CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, x + r4->unk_306, y, 16 - r4->unk_306, 6, r4->unk_000[slot], 0, 0, 16, 6);
+        CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_1, x + r4->unk_306, y, 16 - r4->unk_306, 6, r4->unk_180[slot], 0, 0, 16, 6);
+    }
+}
+
+void sub_02080040(PartyMenuStruct *partyMenu, u8 slot, u8 direction) {
+    UnkPartyMenuSub_94C *r4 = &partyMenu->unk_94C;
+    s16 x, y;
+
+    Sprite_GetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_0 + r4->unk_300[slot]], &x, &y);
+    if (direction == 0) {
+        partyMenu->monsDrawState[r4->unk_300[slot]].unk_16 -= 8;
+        partyMenu->monsDrawState[r4->unk_300[slot]].unk_1A -= 8;
+        partyMenu->monsDrawState[r4->unk_300[slot]].unk_1E -= 8;
+        x -= 8;
+    } else {
+        partyMenu->monsDrawState[r4->unk_300[slot]].unk_16 += 8;
+        partyMenu->monsDrawState[r4->unk_300[slot]].unk_1A += 8;
+        partyMenu->monsDrawState[r4->unk_300[slot]].unk_1E += 8;
+        x += 8;
+    }
+    Sprite_SetPositionXY(partyMenu->monsDrawState[r4->unk_300[slot]].unk_24, partyMenu->monsDrawState[r4->unk_300[slot]].unk_16, partyMenu->monsDrawState[r4->unk_300[slot]].unk_18);
+    Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_10 + r4->unk_300[slot]], partyMenu->monsDrawState[r4->unk_300[slot]].unk_1A, partyMenu->monsDrawState[r4->unk_300[slot]].unk_1C);
+    Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_16 + r4->unk_300[slot]], partyMenu->monsDrawState[r4->unk_300[slot]].unk_1E, partyMenu->monsDrawState[r4->unk_300[slot]].unk_20);
+    Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_22 + r4->unk_300[slot]], partyMenu->monsDrawState[r4->unk_300[slot]].unk_1E + 8, partyMenu->monsDrawState[r4->unk_300[slot]].unk_20);
+    Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_0 + r4->unk_300[slot]], x, y);
 }
