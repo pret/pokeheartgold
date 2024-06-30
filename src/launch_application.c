@@ -266,7 +266,7 @@ PartyMenuArgs *SelectPartyMonAndLearnMove(TaskManager *taskman, HeapID heapId) {
     data->heapId = heapId;
     PartyMenuArgs *partyMenu = PartyMenu_CreateArgs(heapId, fieldSystem, 0, PARTY_MENU_CONTEXT_2);
     partyMenu->unk_36_0 = 2;
-    partyMenu->unk_36_4 = 2;
+    partyMenu->maxMonsToSelect = 2;
     partyMenu->unk_37 = 0x1e;
     partyMenu->unk_14 = NULL;
 

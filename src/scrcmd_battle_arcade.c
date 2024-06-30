@@ -206,11 +206,11 @@ static u32 sub_020501B8(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, u32 a2
     }
     partyMenu->unk_37 = 100;
     partyMenu->unk_36_0 = 3;
-    partyMenu->unk_36_4 = 3;
+    partyMenu->maxMonsToSelect = 3;
     partyMenu->unk_20 = &(fieldSystem->unk_10C);
     if (a0->challengeType == BATTLE_ARCADE_CHALLENGE_TYPE_MULTI) {
         partyMenu->unk_36_0 = 2;
-        partyMenu->unk_36_4 = 2;
+        partyMenu->maxMonsToSelect = 2;
     }
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, partyMenu);
     *(a0->unk0c) = partyMenu;

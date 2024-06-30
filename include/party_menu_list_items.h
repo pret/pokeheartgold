@@ -3,18 +3,18 @@
 
 #include "party_menu.h"
 
-u32 sub_0207F42C(int index);
-int sub_0207F694(PartyMenuStruct *partyMenu);
-int sub_0207F6E8(PartyMenuStruct *partyMenu);
-int sub_0207F720(PartyMenuStruct *partyMenu);
+u32 GetPartyMenuContextMenuActionFunc(int index);
+int PartyMenu_Subtask_PrintTakeItemMessage(PartyMenuStruct *partyMenu);
+int PartyMenu_Subtask_PrintTakeGriseousOrbMessage(PartyMenuStruct *partyMenu);
+int PartyMenu_Subtask_WaitTakeGriseousOrbAnim(PartyMenuStruct *partyMenu);
 int sub_0207FA08(PartyMenuStruct *partyMenu);
 int sub_0207FAA8(PartyMenuStruct *partyMenu);
 int sub_0207FAD4(PartyMenuStruct *partyMenu);
 void sub_0207FBC8(PartyMenuStruct *partyMenu);
 void sub_0207FC1C(PartyMenuStruct *partyMenu);
 BOOL sub_0207FD6C(PartyMenuStruct *partyMenu);
-int sub_02080610(PartyMenuStruct *partyMenu);
-int sub_020807AC(PartyMenuStruct *partyMenu);
+int PartyMenu_Subtask_SelectMonsErrorMsgClose(PartyMenuStruct *partyMenu);
+int PartyMenu_HandleSetMonCapsule(PartyMenuStruct *partyMenu);
 int sub_02080B74(PartyMenuStruct *partyMenu);
 
 #endif //GUARD_POKEHEARTGOLD_UNK_0207F42C_H

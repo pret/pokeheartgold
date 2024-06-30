@@ -345,7 +345,7 @@ void sub_0207EBE4(PartyMenuStruct *partyMenu, u8 partySlot, u16 x, u16 y, NARC *
     sp1C.unk_10 = GetMonIconPaletteEx(partyMenu->monsDrawState[partySlot].species, partyMenu->monsDrawState[partySlot].form, isEgg) + 1;
     sp1C.x = x;
     sp1C.y = y + 0x100;
-    partyMenu->monsDrawState[partySlot].unk_28 = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sp1C);
+    partyMenu->monsDrawState[partySlot].mainScreenIconSprite = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sp1C);
 }
 
 void sub_0207ECE0(PartyMenuStruct *partyMenu, u8 partySlot) {
@@ -367,13 +367,13 @@ void sub_0207ECE0(PartyMenuStruct *partyMenu, u8 partySlot) {
     if (NNS_G2dGetUnpackedCharacterData(ncgrFile, &pCharData)) {
         DC_FlushRange(pCharData->pRawData, pCharData->szByte);
         GX_LoadOBJ(pCharData->pRawData, imageLocation, pCharData->szByte);
-        subImageLocation = NNS_G2dGetImageLocation(Sprite_GetImageProxy(partyMenu->monsDrawState[partySlot].unk_28), NNS_G2D_VRAM_TYPE_2DSUB);
+        subImageLocation = NNS_G2dGetImageLocation(Sprite_GetImageProxy(partyMenu->monsDrawState[partySlot].mainScreenIconSprite), NNS_G2D_VRAM_TYPE_2DSUB);
         DC_FlushRange(pCharData->pRawData, pCharData->szByte);
         GXS_LoadOBJ(pCharData->pRawData, subImageLocation, pCharData->szByte);
     }
     FreeToHeap(ncgrFile);
     thunk_Sprite_SetPalIndex(partyMenu->monsDrawState[partySlot].unk_24, GetMonIconPaletteEx(species, form, FALSE) + 3);
-    thunk_Sprite_SetPalIndex(partyMenu->monsDrawState[partySlot].unk_28, GetMonIconPaletteEx(species, form, FALSE) + 1);
+    thunk_Sprite_SetPalIndex(partyMenu->monsDrawState[partySlot].mainScreenIconSprite, GetMonIconPaletteEx(species, form, FALSE) + 1);
     NARC_Delete(narc);
 }
 
@@ -390,12 +390,12 @@ void sub_0207EDD4(PartyMenuStruct *partyMenu) {
         partyMenu->monsDrawState[i].unk_1C = sSpriteTemplates[4 + i].y;
         Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_10 + i], FALSE);
 
-        partyMenu->sprites[PARTY_MENU_SPRITE_ID_16 + i] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[10 + i]);
-        partyMenu->sprites[PARTY_MENU_SPRITE_ID_22 + i] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[16 + i]);
+        partyMenu->sprites[PARTY_MENU_SPRITE_ID_HELD_ITEM_ICON + i] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[10 + i]);
+        partyMenu->sprites[PARTY_MENU_SPRITE_ID_CAPSULE_ICON + i] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[16 + i]);
     }
     for (u32 i = 0; i < 6; ++i) {
-        partyMenu->spritesExtra[i] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[23]);
-        Set2dSpriteVisibleFlag(partyMenu->spritesExtra[i], FALSE);
+        partyMenu->mainScreenStatusSprites[i] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[23]);
+        Set2dSpriteVisibleFlag(partyMenu->mainScreenStatusSprites[i], FALSE);
     }
     Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], FALSE);
     Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_28], FALSE);
@@ -416,17 +416,17 @@ void sub_0207EF5C(PartyMenuStruct *partyMenu, u8 partySlot, u16 x, u16 y) {
     sp0.unk_24 = 0;
     sp0.rotation = 1;
     sp0.whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN;
-    partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_0] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sp0);
+    partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_BALL] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sp0);
 }
 
-void sub_0207EFA4(PartyMenuStruct *partyMenu) {
+void PartyMenu_RemoveSpriteRenderer(PartyMenuStruct *partyMenu) {
     SpriteRenderer_RemoveGfxHandler(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler);
     SpriteRenderer_Delete(partyMenu->spriteRenderer);
 }
 
-void sub_0207EFC4(PartyMenuStruct *partyMenu, u8 partySlot, u8 status) {
+void PartyMenu_DrawMonStatusIcon(PartyMenuStruct *partyMenu, u8 partySlot, u8 status) {
     Sprite **pSprite1 = &partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_10];
-    Sprite **pSprite2 = &partyMenu->spritesExtra[partySlot];
+    Sprite **pSprite2 = &partyMenu->mainScreenStatusSprites[partySlot];
     if (status == PARTY_MON_STATUS_ICON_OK) {
         Set2dSpriteVisibleFlag(*pSprite1, FALSE);
     } else {
@@ -436,8 +436,8 @@ void sub_0207EFC4(PartyMenuStruct *partyMenu, u8 partySlot, u8 status) {
     }
 }
 
-void sub_0207F004(PartyMenuStruct *partyMenu, u8 partySlot, u16 heldItem) {
-    Sprite **pSprite = &partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_16];
+void PartyMenu_DrawMonHeldItemIcon(PartyMenuStruct *partyMenu, u8 partySlot, u16 heldItem) {
+    Sprite **pSprite = &partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_HELD_ITEM_ICON];
     if (heldItem == ITEM_NONE) {
         Set2dSpriteVisibleFlag(*pSprite, FALSE);
     } else {
@@ -450,25 +450,25 @@ void sub_0207F004(PartyMenuStruct *partyMenu, u8 partySlot, u16 heldItem) {
     }
 }
 
-void sub_0207F044(PartyMenuStruct *partyMenu, u8 partySlot) {
-    Sprite **pSprite = &partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_16];
+void PartyMenu_SetMonHeldMailIcon(PartyMenuStruct *partyMenu, u8 partySlot) {
+    Sprite **pSprite = &partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_HELD_ITEM_ICON];
 
     Set2dSpriteAnimSeqNo(*pSprite, 1);
     Set2dSpriteVisibleFlag(*pSprite, TRUE);
 }
 
-void sub_0207F064(PartyMenuStruct *partyMenu, u8 partySlot, s16 x, s16 y) {
+void PartyMenu_SetMonHeldItemIconCoords(PartyMenuStruct *partyMenu, u8 partySlot, s16 x, s16 y) {
     partyMenu->monsDrawState[partySlot].unk_1E = x + 8;
     partyMenu->monsDrawState[partySlot].unk_20 = y + 8;
-    Sprite_SetPositionXY(partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_16], partyMenu->monsDrawState[partySlot].unk_1E, partyMenu->monsDrawState[partySlot].unk_20);
+    Sprite_SetPositionXY(partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_HELD_ITEM_ICON], partyMenu->monsDrawState[partySlot].unk_1E, partyMenu->monsDrawState[partySlot].unk_20);
 }
 
-void sub_0207F098(PartyMenuStruct *partyMenu, u8 partySlot) {
-    Sprite_SetPositionXY(partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_22], partyMenu->monsDrawState[partySlot].unk_1E + 8, partyMenu->monsDrawState[partySlot].unk_20);
+void PartyMenu_RefreshMonCapsuleIconSpritePos(PartyMenuStruct *partyMenu, u8 partySlot) {
+    Sprite_SetPositionXY(partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_CAPSULE_ICON], partyMenu->monsDrawState[partySlot].unk_1E + 8, partyMenu->monsDrawState[partySlot].unk_20);
 }
 
-void sub_0207F0C8(PartyMenuStruct *partyMenu, u8 partySlot) {
-    Sprite **pSprite = &partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_22];
+void PartyMenu_DrawMonCapsuleIcon(PartyMenuStruct *partyMenu, u8 partySlot) {
+    Sprite **pSprite = &partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_CAPSULE_ICON];
     if (partyMenu->monsDrawState[partySlot].capsule == 0) {
         Set2dSpriteVisibleFlag(*pSprite, FALSE);
     } else {
@@ -563,20 +563,20 @@ void sub_0207F2F8(PartyMenuStruct *partyMenu) {
     }
 }
 
-void sub_0207F334(PartyMenuStruct *partyMenu, int a1) {
+void PartyMenu_SetTopScreenSelectionPanelYDisplacement(PartyMenuStruct *partyMenu, int dy) {
     for (int i = 0; i < Party_GetCount(partyMenu->args->party); ++i) {
-        Sprite_SetPositionXY(partyMenu->monsDrawState[i].unk_28, 30, 456 - a1);
-        Sprite_SetPositionXY(partyMenu->spritesExtra[i], 50, 476 - a1);
+        Sprite_SetPositionXY(partyMenu->monsDrawState[i].mainScreenIconSprite, 30, 456 - dy);
+        Sprite_SetPositionXY(partyMenu->mainScreenStatusSprites[i], 50, 476 - dy);
     }
 }
 
-void sub_0207F3A4(PartyMenuStruct *partyMenu, u8 selection) {
+void PartyMenu_SetTopScreenMonIconSprite(PartyMenuStruct *partyMenu, u8 selection) {
     for (int i = 0; i < Party_GetCount(partyMenu->args->party); ++i) {
-        Set2dSpriteVisibleFlag(partyMenu->monsDrawState[i].unk_28, FALSE);
-        Set2dSpriteVisibleFlag(partyMenu->spritesExtra[i], FALSE);
+        Set2dSpriteVisibleFlag(partyMenu->monsDrawState[i].mainScreenIconSprite, FALSE);
+        Set2dSpriteVisibleFlag(partyMenu->mainScreenStatusSprites[i], FALSE);
     }
-    Set2dSpriteVisibleFlag(partyMenu->monsDrawState[selection].unk_28, TRUE);
+    Set2dSpriteVisibleFlag(partyMenu->monsDrawState[selection].mainScreenIconSprite, TRUE);
     if (partyMenu->monsDrawState[selection].status != PARTY_MON_STATUS_ICON_OK) {
-        Set2dSpriteVisibleFlag(partyMenu->spritesExtra[selection], TRUE);
+        Set2dSpriteVisibleFlag(partyMenu->mainScreenStatusSprites[selection], TRUE);
     }
 }

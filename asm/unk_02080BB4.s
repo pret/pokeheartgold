@@ -998,7 +998,7 @@ sub_020813A4: ; 0x020813A4
 	lsr r2, r2, #0x14
 	lsl r2, r2, #0x18
 	lsr r2, r2, #0x18
-	bl sub_0207EFC4
+	bl PartyMenu_DrawMonStatusIcon
 	ldr r1, _0208142C ; =0x00000654
 	add r0, r5, #0
 	ldr r1, [r5, r1]
@@ -1009,7 +1009,7 @@ sub_020813A4: ; 0x020813A4
 	add r0, r5, #0
 	mvn r1, r1
 	mov r2, #1
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r0, _02081438 ; =0x000005EC
 	bl PlaySE
 	ldr r1, _0208143C ; =sub_02081378
@@ -1123,7 +1123,7 @@ sub_02081444: ; 0x02081444
 	lsr r2, r2, #0x14
 	lsl r2, r2, #0x18
 	lsr r2, r2, #0x18
-	bl sub_0207EFC4
+	bl PartyMenu_DrawMonStatusIcon
 	add r0, r4, #0
 	mov r1, #0xd
 	mov r2, #0
@@ -1199,7 +1199,7 @@ _020815B8:
 	add r0, r5, #0
 	mvn r1, r1
 	mov r2, #1
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r1, _020815DC ; =sub_02081378
 	ldr r0, _020815E0 ; =0x00000C54
 	str r1, [r5, r0]
@@ -1312,7 +1312,7 @@ _0208165E:
 	ldrb r1, [r5, r1]
 	add r0, r5, #0
 	lsr r2, r2, #0x18
-	bl sub_0207EFC4
+	bl PartyMenu_DrawMonStatusIcon
 	cmp r4, #7
 	bne _020816E0
 	ldr r1, _02081700 ; =0x00000C65
@@ -1417,7 +1417,7 @@ _02081754:
 	add r0, r5, #0
 	sub r1, #0x31
 	mov r2, #1
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r1, _020817BC ; =sub_02081378
 	ldr r0, _020817C0 ; =0x00000C54
 	str r1, [r5, r0]
@@ -1529,7 +1529,7 @@ _02081842:
 	add r0, r4, #0
 	mvn r1, r1
 	mov r2, #1
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r1, _02081A54 ; =sub_02081378
 	ldr r0, _02081A58 ; =0x00000C54
 	mov r2, #1
@@ -1614,7 +1614,7 @@ _02081894:
 	lsr r2, r2, #0x14
 	lsl r2, r2, #0x18
 	lsr r2, r2, #0x18
-	bl sub_0207EFC4
+	bl PartyMenu_DrawMonStatusIcon
 	add r1, r7, #0
 	ldrb r1, [r4, r1]
 	add r0, r4, #0
@@ -1689,7 +1689,7 @@ _0208195C:
 	add r0, r4, #0
 	sub r1, #0x31
 	mov r2, #1
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r0, _02081A4C ; =0x00000C62
 	ldrb r1, [r4, r0]
 	add r1, r1, #1
@@ -1897,7 +1897,7 @@ sub_02081A74: ; 0x02081A74
 	ldrb r1, [r5, r1]
 	add r0, r5, #0
 	lsr r2, r2, #0x18
-	bl sub_0207EFC4
+	bl PartyMenu_DrawMonStatusIcon
 	cmp r4, #7
 	bne _02081BD2
 	ldr r1, _02081C18 ; =0x00000C65
@@ -1935,7 +1935,7 @@ _02081BD2:
 	add r0, r5, #0
 	mvn r1, r1
 	mov r2, #1
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r1, _02081C4C ; =sub_02081C50
 	ldr r0, _02081C48 ; =0x00000C54
 	str r1, [r5, r0]
@@ -2101,7 +2101,7 @@ _02081D1E:
 	add r0, r4, #0
 	mvn r1, r1
 	mov r2, #0
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r0, _02081EC4 ; =sub_02081F8C
 	ldr r1, _02081EC8 ; =0x00000C58
 	ldr r2, _02081ECC ; =sub_02081FE0
@@ -2146,7 +2146,7 @@ _02081D84:
 	add r0, r4, #0
 	mvn r1, r1
 	mov r2, #0
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r0, _02081EAC ; =0x00000C67
 	mov r1, #4
 	strb r1, [r4, r0]
@@ -2200,7 +2200,7 @@ _02081DF0:
 	add r0, r4, #0
 	mvn r1, r1
 	mov r2, #0
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r0, _02081EAC ; =0x00000C67
 	mov r1, #4
 	strb r1, [r4, r0]
@@ -2329,7 +2329,7 @@ _02081F24:
 	add r0, r4, #0
 	mvn r1, r1
 	mov r2, #1
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r0, _02081F88 ; =0x00000C62
 	mov r1, #5
 	strb r1, [r4, r0]
@@ -2367,7 +2367,7 @@ sub_02081F8C: ; 0x02081F8C
 	add r0, r5, #0
 	mvn r1, r1
 	mov r2, #0
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r0, _02081FD8 ; =0x00000654
 	mov r1, #5
 	ldr r0, [r5, r0]
@@ -2406,7 +2406,7 @@ sub_02081FE0: ; 0x02081FE0
 	add r0, r5, #0
 	mvn r1, r1
 	mov r2, #1
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r0, _0208202C ; =sub_02082038
 	ldr r1, _02082030 ; =0x00000C58
 	ldr r2, _02082034 ; =sub_02082084
@@ -2447,7 +2447,7 @@ sub_02082038: ; 0x02082038
 	add r0, r5, #0
 	mvn r1, r1
 	mov r2, #0
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r0, _02082080 ; =0x00000C62
 	mov r1, #5
 	strb r1, [r5, r0]
@@ -2483,7 +2483,7 @@ sub_02082084: ; 0x02082084
 	add r0, r5, #0
 	mvn r1, r1
 	mov r2, #0
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r0, _020820D0 ; =sub_02081F8C
 	ldr r1, _020820D4 ; =0x00000C58
 	ldr r2, _020820D8 ; =sub_02081FE0
@@ -2630,7 +2630,7 @@ _020821A0:
 	add r0, r4, #0
 	mvn r1, r1
 	mov r2, #1
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r0, _020822B0 ; =0x00000654
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -2659,7 +2659,7 @@ _020821EA:
 	add r0, r4, #0
 	mvn r1, r1
 	mov r2, #1
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r0, _020822B0 ; =0x00000654
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -2688,7 +2688,7 @@ _0208222A:
 	add r0, r4, #0
 	mvn r1, r1
 	mov r2, #1
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r0, _020822C0 ; =sub_020823F4
 	ldr r1, _020822C4 ; =0x00000C58
 	ldr r2, _020822C8 ; =sub_02082448
@@ -2718,7 +2718,7 @@ _0208226C:
 	add r0, r4, #0
 	mvn r1, r1
 	mov r2, #1
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r0, _020822B0 ; =0x00000654
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -2800,7 +2800,7 @@ _02082312:
 	add r0, r4, #0
 	mvn r1, r1
 	mov r2, #1
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r0, _0208236C ; =0x00000C62
 	mov r1, #0x16
 	strb r1, [r4, r0]
@@ -2855,7 +2855,7 @@ sub_02082370: ; 0x02082370
 	add r0, r5, #0
 	mvn r1, r1
 	mov r2, #0
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r0, _020823E4 ; =0x00000654
 	mov r1, #0
 	ldr r0, [r5, r0]
@@ -2895,7 +2895,7 @@ sub_020823F4: ; 0x020823F4
 	add r0, r5, #0
 	mvn r1, r1
 	mov r2, #0
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r0, _02082440 ; =0x00000654
 	mov r1, #4
 	ldr r0, [r5, r0]
@@ -2934,7 +2934,7 @@ sub_02082448: ; 0x02082448
 	add r0, r5, #0
 	mvn r1, r1
 	mov r2, #1
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r0, _02082494 ; =sub_020824A0
 	ldr r1, _02082498 ; =0x00000C58
 	ldr r2, _0208249C ; =sub_020824F4
@@ -2975,7 +2975,7 @@ sub_020824A0: ; 0x020824A0
 	add r0, r5, #0
 	mvn r1, r1
 	mov r2, #0
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r0, _020824EC ; =0x00000654
 	mov r1, #0
 	ldr r0, [r5, r0]
@@ -3014,7 +3014,7 @@ sub_020824F4: ; 0x020824F4
 	add r0, r5, #0
 	mvn r1, r1
 	mov r2, #0
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r0, _02082540 ; =sub_020823F4
 	ldr r1, _02082544 ; =0x00000C58
 	ldr r2, _02082548 ; =sub_02082448
@@ -3173,13 +3173,13 @@ sub_02082654: ; 0x02082654
 	add r0, r5, #0
 	mov r1, #0x2a
 	mov r2, #1
-	bl sub_0207DAD8
+	bl PartyMenu_PrintMessageOnWindow33
 	b _02082682
 _02082678:
 	add r0, r5, #0
 	mov r1, #0x29
 	mov r2, #1
-	bl sub_0207DAD8
+	bl PartyMenu_PrintMessageOnWindow33
 _02082682:
 	mov r0, #5
 	mov r1, #0xc
@@ -3210,7 +3210,7 @@ _02082682:
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	mov r0, #9
-	bl sub_0207F42C
+	bl GetPartyMenuContextMenuActionFunc
 	mov r1, #0x82
 	lsl r1, r1, #4
 	add r2, r0, #0
@@ -3272,7 +3272,7 @@ PartyMenu_Subtask_SelectMove: ; 0x02082738
 	ldr r1, _02082850 ; =0x00000824
 	add r5, r0, #0
 	ldr r1, [r5, r1]
-	bl PartyMenu_HandleInput_TopLevel
+	bl PartyMenu_HandleSubcontextMenuInput_TopLevel
 	add r4, r0, #0
 	mov r0, #1
 	mvn r0, r0
@@ -3299,7 +3299,7 @@ _02082758:
 	add r0, r5, #0
 	mov r1, #0x21
 	mov r2, #1
-	bl sub_0207DAC4
+	bl PartyMenu_PrintMessageOnWindow32
 	ldr r0, _02082854 ; =0x00000678
 	mov r1, #0
 	ldr r0, [r5, r0]
@@ -3376,7 +3376,7 @@ _02082828:
 	add r0, r5, #0
 	mvn r1, r1
 	mov r2, #1
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r0, _02082858 ; =0x00000654
 	mov r1, #0
 	ldr r0, [r5, r0]
@@ -3429,7 +3429,7 @@ sub_02082868: ; 0x02082868
 	ldr r1, _020828DC ; =0x00000C65
 	add r0, r4, #0
 	ldrb r1, [r4, r1]
-	bl sub_0207F044
+	bl PartyMenu_SetMonHeldMailIcon
 	b _020828BC
 _020828A6:
 	add r0, r2, #0
@@ -3447,7 +3447,7 @@ _020828BC:
 	add r0, r4, #0
 	mvn r1, r1
 	mov r2, #1
-	bl sub_0207DAEC
+	bl partyMenu_PrintMessageOnWindow34
 	ldr r0, _020828E4 ; =0x00000654
 	mov r1, #0
 	ldr r0, [r4, r0]

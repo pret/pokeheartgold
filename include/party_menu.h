@@ -48,18 +48,18 @@ typedef enum PartyMenuState {
     PARTY_MENU_STATE_PRINT_ASK_SWITCH_ITEMS,
     PARTY_MENU_STATE_YESNO_ASK_SWITCH_ITEMS,
     PARTY_MENU_STATE_PRINT_ITEM_SWAP_MESSAGE,
-    PARTY_MENU_STATE_PRINT_TAKE_GRISEOUS_ORB_MESSAGE,
-    PARTY_MENU_STATE_WAIT_FORM_CHANGE,
+    PARTY_MENU_STATE_PRINT_GIVE_GRISEOUS_ORB_MESSAGE,
+    PARTY_MENU_STATE_WAIT_GIVE_GRISEOUS_ORB_ANIM,
     PARTY_MENU_STATE_14,
-    PARTY_MENU_STATE_HANDLE_INPUT,
+    PARTY_MENU_STATE_HANDLE_SUBCONTEXT_MENU_INPUT,
     PARTY_MENU_STATE_16,
-    PARTY_MENU_STATE_17,
-    PARTY_MENU_STATE_18,
-    PARTY_MENU_STATE_19,
+    PARTY_MENU_STATE_PRINT_TAKE_ITEM_MESSAGE,
+    PARTY_MENU_STATE_PRINT_TAKE_GRISEOUS_ORB_MESSAGE,
+    PARTY_MENU_STATE_WAIT_TAKE_GRISEOUS_ORB_ANIM,
     PARTY_MENU_STATE_20,
     PARTY_MENU_STATE_21,
     PARTY_MENU_STATE_22,
-    PARTY_MENU_STATE_23,
+    PARTY_MENU_STATE_SELECT_MONS_ERROR_MSG_CLOSE,
     PARTY_MENU_STATE_WAIT_TEXT_PRINTER,
     PARTY_MENU_STATE_25,
     PARTY_MENU_STATE_YES_NO_INIT,
@@ -231,7 +231,7 @@ typedef enum PartyMonStatusIconId {
 } PartyMonStatusIconId;
 
 typedef enum PartyMenuSpriteId {
-    PARTY_MENU_SPRITE_ID_0,
+    PARTY_MENU_SPRITE_ID_BALL,
     PARTY_MENU_SPRITE_ID_1,
     PARTY_MENU_SPRITE_ID_2,
     PARTY_MENU_SPRITE_ID_3,
@@ -247,13 +247,13 @@ typedef enum PartyMenuSpriteId {
     PARTY_MENU_SPRITE_ID_13,
     PARTY_MENU_SPRITE_ID_14,
     PARTY_MENU_SPRITE_ID_15,
-    PARTY_MENU_SPRITE_ID_16,
+    PARTY_MENU_SPRITE_ID_HELD_ITEM_ICON,
     PARTY_MENU_SPRITE_ID_17,
     PARTY_MENU_SPRITE_ID_18,
     PARTY_MENU_SPRITE_ID_19,
     PARTY_MENU_SPRITE_ID_20,
     PARTY_MENU_SPRITE_ID_21,
-    PARTY_MENU_SPRITE_ID_22,
+    PARTY_MENU_SPRITE_ID_CAPSULE_ICON,
     PARTY_MENU_SPRITE_ID_23,
     PARTY_MENU_SPRITE_ID_24,
     PARTY_MENU_SPRITE_ID_25,
@@ -317,7 +317,7 @@ typedef struct PartyMenuArgs {
     u8 contestLevel;
     u8 selectedOrder[6];
     u8 unk_36_0:4;
-    u8 unk_36_4:4;
+    u8 maxMonsToSelect:4;
     u8 unk_37;
     int unk_38;
     u16 species;
@@ -373,7 +373,7 @@ typedef struct PartyMenuMonsDrawState {
     s16 unk_20;       // 848
     u8 filler_22[2];  // alignment padding
     Sprite *unk_24;   // 84C
-    Sprite *unk_28;   // 850
+    Sprite *mainScreenIconSprite;   // 850
     u8 unk_2C;        // 854
     u8 active;        // 855
 } PartyMenuMonsDrawState;
@@ -402,7 +402,7 @@ struct PartyMenuStruct {
     SpriteGfxHandler *spriteGfxHandler;
     Sprite *sprites[PARTY_MENU_SPRITE_ID_MAX];  //0x660
     void *unk_6D4[PARTY_MENU_SPRITE_ID_MAX];
-    Sprite *spritesExtra[29];  //0x748
+    Sprite *mainScreenStatusSprites[29];  //0x748
     MessagePrinter *msgPrinter; //0x7bc
     MsgData *msgData; //0x7c0
     MessageFormat* msgFormat; //0x7c4
@@ -429,8 +429,8 @@ struct PartyMenuStruct {
     u8 filler_C67[1];
     u16 unk_C68[6];
     Pokedex *pokedex; // 0xc74
-    int unk_C78;
-    BOOL unk_C7C;
+    int topScreenPanelYPos;
+    BOOL topScreenPanelShow;
     IconFormChangeData *iconFormChange; // C80
     GF3DVramMan *unk_C84; // C84
     YesNoPrompt *yesNoPrompt;
@@ -458,7 +458,7 @@ struct TeleportFieldEnv {
 
 extern const OVY_MGR_TEMPLATE gOverlayTemplate_PartyMenu;
 
-void sub_02079224(PartyMenuStruct *partyMenu, BOOL a1);
+void PartyMenu_SetTopScreenSelectionPanelVisibility(PartyMenuStruct *partyMenu, BOOL show);
 void sub_0207991C(PartyMenuStruct *partyMenu, int a1);
 BOOL sub_02079E38(PartyMenuStruct *partyMenu, u8 partySlot);
 u16 *sub_0207A16C(PartyMenuStruct *partyMenu);

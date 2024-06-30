@@ -324,11 +324,11 @@ static u32 sub_0204F320(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem, HeapID
     }
     partyMenu->unk_37 = 30;
     partyMenu->unk_36_0 = 1;
-    partyMenu->unk_36_4 = 1;
+    partyMenu->maxMonsToSelect = 1;
     partyMenu->unk_20 = &fieldSystem->unk_10C;
     if (a0->challengeType == 1) { // doubles
         partyMenu->unk_36_0 = 2;
-        partyMenu->unk_36_4 = 2;
+        partyMenu->maxMonsToSelect = 2;
     }
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, partyMenu);
     *(a0->unk08) = partyMenu;

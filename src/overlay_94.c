@@ -114,7 +114,7 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct* unkPtr) {
         BufferBoxMonNickname(unkPtr->msgFormat, 0, Mon_GetBoxMon(mon));
         StringExpandPlaceholders(unkPtr->msgFormat, unkPtr->formattedStrBuf, str);
         String_Delete(str);
-        sub_0207DAEC(unkPtr, -1, TRUE);
+        partyMenu_PrintMessageOnWindow34(unkPtr, -1, TRUE);
         work->state++;
         break;
     }
