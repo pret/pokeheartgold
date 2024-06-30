@@ -18,9 +18,9 @@
 	scrdef_end
 
 scr_seq_D35R0101_001:
-	scrcmd_375 obj_D35R0101_stop
-	scrcmd_375 obj_D35R0101_stop_2
-	scrcmd_375 obj_D35R0101_stop_3
+	make_object_visible obj_D35R0101_stop
+	make_object_visible obj_D35R0101_stop_2
+	make_object_visible obj_D35R0101_stop_3
 	compare VAR_UNK_40AC, 9
 	goto_if_ge _00B7
 	compare VAR_UNK_40A8, 2

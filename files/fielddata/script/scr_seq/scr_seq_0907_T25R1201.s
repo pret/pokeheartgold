@@ -32,7 +32,7 @@ scr_seq_T25R1201_001:
 	end
 
 _005B:
-	scrcmd_375 obj_player
+	make_object_visible obj_player
 	return
 
 scr_seq_T25R1201_002:
@@ -193,7 +193,7 @@ _024D:
 	call _00F5
 	apply_movement obj_player, _03AC
 	wait_movement
-	scrcmd_375 obj_player
+	make_object_visible obj_player
 	apply_movement obj_player, _03BC
 	wait_movement
 	call _00FD

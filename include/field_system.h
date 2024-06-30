@@ -9,6 +9,8 @@
 #include "overlay_manager.h"
 #include "save_pokegear.h"
 #include "sys_task_api.h"
+#include "field/overlay_01_021E66E4.h"
+#include "camera_translation.h"
 #include "camera.h"
 #include "bg_window.h"
 #include "scrcmd_9.h"
@@ -101,13 +103,15 @@ struct FieldSystemUnkSub68 {
 
 typedef struct FieldSystemUnkSub4 {
     u32 unk0;
-    u32 unk4;
+    Field3dObjectTaskManager *field3dObjectTaskManager;
     u32 unk8;
     void *unk_0C; // weather related?
     u8 unk10[0x4];
     u32 unk14;
     u32 unk18;
     u32 unk1c;
+    u32 unk20;
+    void *legendCutsceneCamera;
 } FieldSystemUnkSub4;
 
 struct FieldSystem {
@@ -153,7 +157,8 @@ struct FieldSystem {
     u32 unkAC;
     void *unkB0;
     s64 unkB4;
-    u8 unkBC[8];
+    u8 unkBC[4];
+    void *unkC0;
     int unkC4;
     u8 filler_C8[0xA];
     u8 unkD2_0:6;

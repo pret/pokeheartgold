@@ -11,7 +11,7 @@
 	scrdef_end
 
 scr_seq_D02R0103_002:
-	scrcmd_375 obj_D02R0103_stop
+	make_object_visible obj_D02R0103_stop
 	scrcmd_379 VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 3
 	goto_if_ne _003D

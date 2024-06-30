@@ -19,7 +19,7 @@ scr_seq_0071_001:
 	end
 
 _001F:
-	scrcmd_375 obj_player
+	make_object_visible obj_player
 	return
 
 scr_seq_0071_002:

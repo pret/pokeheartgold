@@ -12,8 +12,8 @@
 
 scr_seq_T10R0301_002:
 	goto_if_set FLAG_DEFEATED_KOGA, _0023
-	scrcmd_375 obj_T10R0301_stop
-	scrcmd_375 obj_T10R0301_stop_2
+	make_object_visible obj_T10R0301_stop
+	make_object_visible obj_T10R0301_stop_2
 	end
 
 _0023:

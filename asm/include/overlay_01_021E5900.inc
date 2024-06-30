@@ -117,9 +117,9 @@
 .public ov01_021E631C
 .public ov01_021E6340
 .public ov01_021E636C
-.public ov01_021E66E4
-.public ov01_021E6734
-.public ov01_021E6768
+.public Field3dObjectTaskManager_Create
+.public Field3dObjectTaskManager_Delete
+.public Field3dObjectTaskManager_RunDrawTasks
 .public ov01_021E7F00
 .public ov01_021E87E4
 .public ov01_021E8A28

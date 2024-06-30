@@ -22,7 +22,7 @@ scr_seq_D43R0102_000:
 scr_seq_D43R0102_001:
 	compare VAR_UNK_40CA, 1
 	goto_if_ne _0043
-	scrcmd_375 obj_player
+	make_object_visible obj_player
 _0043:
 	end
 

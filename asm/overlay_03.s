@@ -5661,7 +5661,7 @@ ov03_02256BA8: ; 0x02256BA8
 	add r0, #0xc0
 	ldr r0, [r0]
 	add r1, r4, #0
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	add r7, r0, #0
 	bne _02256BCA
 	bl GF_AssertFail

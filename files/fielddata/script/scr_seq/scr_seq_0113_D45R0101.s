@@ -9,6 +9,6 @@
 	scrdef_end
 
 scr_seq_D45R0101_000:
-	scrcmd_375 obj_D45R0101_stop
+	make_object_visible obj_D45R0101_stop
 	end
 	.balign 4, 0

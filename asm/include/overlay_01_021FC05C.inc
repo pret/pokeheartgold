@@ -21,9 +21,9 @@
 .public G2x_SetBlendAlpha_
 .public memset
 .public _s32_div_f
-.public ov01_021E67BC
-.public ov01_021E683C
-.public ov01_021E687C
+.public Field3dObjectTaskManager_CreateTask
+.public Field3dObjectTask_Delete
+.public Field3dObjectTask_GetData
 .public ov01_021EB31C
 .public GetHoneySweetScentWorkSize
 .public Task_HoneyOrSweetScent

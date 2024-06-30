@@ -12,8 +12,8 @@
 
 scr_seq_T10R0501_002:
 	goto_if_set FLAG_DEFEATED_KAREN, _0023
-	scrcmd_375 obj_T10R0501_leag_door2_2
-	scrcmd_375 obj_T10R0501_leag_door2_3
+	make_object_visible obj_T10R0501_leag_door2_2
+	make_object_visible obj_T10R0501_leag_door2_3
 	end
 
 _0023:

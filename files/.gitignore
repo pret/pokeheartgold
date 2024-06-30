@@ -40,6 +40,7 @@ a/1/5/2
 a/1/6/3
 a/1/6/9
 a/1/7/2
+a/1/7/4
 a/1/7/5
 a/1/8/5
 a/1/9/4
@@ -67,3 +68,4 @@ fielddata/tsurepoke/tp_param.narc
 data/resdat.narc
 application/annon/puzzle_gra.narc
 demo/opening/gs_opening.narc
+demo/legend.narc

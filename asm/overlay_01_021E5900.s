@@ -158,7 +158,7 @@ _021E5A12:
 	add r0, r4, #0
 	mov r1, #4
 	mov r2, #8
-	bl ov01_021E66E4
+	bl Field3dObjectTaskManager_Create
 	ldr r1, [r4, #4]
 	str r0, [r1, #4]
 	ldr r1, _021E5BCC ; =0x00000D69
@@ -583,7 +583,7 @@ _021E5E12:
 	bl GF3dRender_DeleteSimpleManager
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #4]
-	bl ov01_021E6734
+	bl Field3dObjectTaskManager_Delete
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -1166,7 +1166,7 @@ _021E6294:
 	bl NNS_G3dGlbFlushP
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #4]
-	bl ov01_021E6768
+	bl Field3dObjectTaskManager_RunDrawTasks
 	ldr r1, _021E6318 ; =gG3dDepthBufferingMode
 	add r0, r5, #0
 	ldr r1, [r1]

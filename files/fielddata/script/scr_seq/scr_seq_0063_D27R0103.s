@@ -28,7 +28,7 @@ _0038:
 scr_seq_D27R0103_001:
 	compare VAR_UNK_40A7, 1
 	goto_if_ne _0051
-	scrcmd_375 obj_player
+	make_object_visible obj_player
 _0051:
 	end
 	.balign 4, 0
