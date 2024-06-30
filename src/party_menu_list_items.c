@@ -1,4 +1,5 @@
 #include "bag.h"
+#include "field_move.h"
 #include "global.h"
 #include "party_menu_list_items.h"
 #include "mail_misc.h"
@@ -24,12 +25,14 @@ void PartyMonContextMenuAction_Switch(PartyMenuStruct *partyMenu, int *pState);
 void sub_0207FEE8(PartyMenuStruct *partyMenu, u8 slot);
 void sub_02080040(PartyMenuStruct *partyMenu, u8 slot, u8 direction);
 void sub_02080198(PartyMenuStruct *partyMenu);
+void sub_0208047C(PartyMenuStruct *partyMenu, u8 slot);
 void PartyMonContextMenuAction_Enter(PartyMenuStruct *partyMenu, int *pState);
 void PartyMonContextMenuAction_NoEntry(PartyMenuStruct *partyMenu, int *pState);
 void PartyMonContextMenuAction_ContestEnter(PartyMenuStruct *partyMenu, int *pState);
 void PartyMonContextMenuAction_Confirm(PartyMenuStruct *partyMenu, int *pState);
 void PartyMonContextMenuAction_Summary(PartyMenuStruct *partyMenu, int *pState);
 void PartyMonContextMenuAction_Set(PartyMenuStruct *partyMenu, int *pState);
+void sub_02080834(PartyMenuStruct *partyMenu, int *pState);
 void PartyMonContextMenuAction_Cut(PartyMenuStruct *partyMenu, int *pState);
 void PartyMonContextMenuAction_RockSmash(PartyMenuStruct *partyMenu, int *pState);
 void PartyMonContextMenuAction_Strength(PartyMenuStruct *partyMenu, int *pState);
@@ -46,6 +49,7 @@ void PartyMonContextMenuAction_Chatter(PartyMenuStruct *partyMenu, int *pState);
 void PartyMonContextMenuAction_MilkDrink(PartyMenuStruct *partyMenu, int *pState);
 void PartyMonContextMenuAction_Softboiled(PartyMenuStruct *partyMenu, int *pState);
 void PartyMonContextMenuAction_Headbutt(PartyMenuStruct *partyMenu, int *pState);
+int sub_02080A58(PartyMenuStruct *partyMenu);
 
 static const u32 _02101CB8[] = {
     [PARTY_MON_CONTEXT_MENU_SWITCH]        = (u32)PartyMonContextMenuAction_Switch,
@@ -477,4 +481,350 @@ void sub_02080040(PartyMenuStruct *partyMenu, u8 slot, u8 direction) {
     Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_16 + r4->unk_300[slot]], partyMenu->monsDrawState[r4->unk_300[slot]].unk_1E, partyMenu->monsDrawState[r4->unk_300[slot]].unk_20);
     Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_22 + r4->unk_300[slot]], partyMenu->monsDrawState[r4->unk_300[slot]].unk_1E + 8, partyMenu->monsDrawState[r4->unk_300[slot]].unk_20);
     Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_0 + r4->unk_300[slot]], x, y);
+}
+
+void sub_02080198(PartyMenuStruct *partyMenu) {
+    UnkPartyMenuSub_94C *r4 = &partyMenu->unk_94C;
+    PartyMenuMonsDrawState *monBuf;
+    s16 pos;
+
+    monBuf = AllocFromHeap(HEAP_ID_PARTY_MENU, sizeof(PartyMenuMonsDrawState));
+    *monBuf = partyMenu->monsDrawState[r4->unk_300[0]];
+    partyMenu->monsDrawState[r4->unk_300[0]] = partyMenu->monsDrawState[r4->unk_300[1]];
+    partyMenu->monsDrawState[r4->unk_300[1]] = *monBuf;
+    FreeToHeapExplicit(HEAP_ID_PARTY_MENU, monBuf);
+
+    pos = partyMenu->monsDrawState[r4->unk_300[0]].unk_16;
+    partyMenu->monsDrawState[r4->unk_300[0]].unk_16 = partyMenu->monsDrawState[r4->unk_300[1]].unk_16;
+    partyMenu->monsDrawState[r4->unk_300[1]].unk_16 = pos;
+    pos = partyMenu->monsDrawState[r4->unk_300[0]].unk_18;
+    partyMenu->monsDrawState[r4->unk_300[0]].unk_18 = partyMenu->monsDrawState[r4->unk_300[1]].unk_18;
+    partyMenu->monsDrawState[r4->unk_300[1]].unk_18 = pos;
+
+    pos = partyMenu->monsDrawState[r4->unk_300[0]].unk_1A;
+    partyMenu->monsDrawState[r4->unk_300[0]].unk_1A = partyMenu->monsDrawState[r4->unk_300[1]].unk_1A;
+    partyMenu->monsDrawState[r4->unk_300[1]].unk_1A = pos;
+    pos = partyMenu->monsDrawState[r4->unk_300[0]].unk_1C;
+    partyMenu->monsDrawState[r4->unk_300[0]].unk_1C = partyMenu->monsDrawState[r4->unk_300[1]].unk_1C;
+    partyMenu->monsDrawState[r4->unk_300[1]].unk_1C = pos;
+
+    pos = partyMenu->monsDrawState[r4->unk_300[0]].unk_1E;
+    partyMenu->monsDrawState[r4->unk_300[0]].unk_1E = partyMenu->monsDrawState[r4->unk_300[1]].unk_1E;
+    partyMenu->monsDrawState[r4->unk_300[1]].unk_1E = pos;
+    pos = partyMenu->monsDrawState[r4->unk_300[0]].unk_20;
+    partyMenu->monsDrawState[r4->unk_300[0]].unk_20 = partyMenu->monsDrawState[r4->unk_300[1]].unk_20;
+    partyMenu->monsDrawState[r4->unk_300[1]].unk_20 = pos;
+
+    pos = partyMenu->monsDrawState[r4->unk_300[0]].unk_14;
+    partyMenu->monsDrawState[r4->unk_300[0]].unk_14 = partyMenu->monsDrawState[r4->unk_300[1]].unk_14;
+    partyMenu->monsDrawState[r4->unk_300[1]].unk_14 = pos;
+    pos = partyMenu->monsDrawState[r4->unk_300[0]].unk_15;
+    partyMenu->monsDrawState[r4->unk_300[0]].unk_15 = partyMenu->monsDrawState[r4->unk_300[1]].unk_15;
+    partyMenu->monsDrawState[r4->unk_300[1]].unk_15 = pos;
+
+    sub_0207D5DC(partyMenu, r4->unk_300[0]);
+    sub_0207D5DC(partyMenu, r4->unk_300[1]);
+    PartyMenu_CommitPartyMonPanelWindowsToVram_NotInVBlank(partyMenu, r4->unk_300[0]);
+    PartyMenu_CommitPartyMonPanelWindowsToVram_NotInVBlank(partyMenu, r4->unk_300[1]);
+    sub_0208047C(partyMenu, 0);
+    sub_0208047C(partyMenu, 1);
+    sub_0207EFC4(partyMenu, r4->unk_300[0], partyMenu->monsDrawState[r4->unk_300[0]].status);
+    sub_0207EFC4(partyMenu, r4->unk_300[1], partyMenu->monsDrawState[r4->unk_300[1]].status);
+    sub_0207F004(partyMenu, r4->unk_300[0], partyMenu->monsDrawState[r4->unk_300[0]].heldItem);
+    sub_0207F004(partyMenu, r4->unk_300[1], partyMenu->monsDrawState[r4->unk_300[1]].heldItem);
+    sub_0207F0C8(partyMenu, r4->unk_300[0]);
+    sub_0207F0C8(partyMenu, r4->unk_300[1]);
+}
+
+void sub_0208047C(PartyMenuStruct *partyMenu, u8 slot) {
+    UnkPartyMenuSub_94C *r4 = &partyMenu->unk_94C;
+    u16 *r5 = r4->unk_000[slot];
+    const u16 *r3 = sub_0207A16C(partyMenu);
+    u16 color;
+    u16 i;
+
+    if (partyMenu->monsDrawState[r4->unk_300[slot]].isEgg == TRUE) {
+        for (i = 0; i < 9; ++i) {
+            color = r5[0x36 + i] & 0xF000;
+            r5[0x36 + i] = color | 0x04B;
+        }
+    } else {
+        for (i = 0; i < 9; ++i) {
+            color = r5[0x36 + i] & 0xF000;
+            r5[0x36 + i] = color | (r3[i] & 0xFFF);
+        }
+    }
+}
+
+void PartyMonContextMenuAction_Enter(PartyMenuStruct *partyMenu, int *pState) {
+    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
+    sub_0207CB20(partyMenu);
+    PartyMenu_DisableMainScreenBlend_AfterYesNo();
+    sub_02079224(partyMenu, FALSE);
+    for (u8 i = 0; i < partyMenu->args->unk_36_4; ++i) {
+        if (partyMenu->args->selectedOrder[i] == 0) {
+            partyMenu->args->selectedOrder[i] = partyMenu->partyMonIndex + 1;
+            sub_0207D8EC(partyMenu, partyMenu->partyMonIndex);
+            sub_0207DAC4(partyMenu, msg_0300_00035, TRUE);
+            thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
+            if (i == partyMenu->args->unk_36_4 - 1) {
+                sub_0207AB84(partyMenu, 6);
+            }
+            *pState = PARTY_MENU_STATE_1;
+            return;
+        }
+    }
+    switch (partyMenu->args->unk_36_4) {
+    case 0:
+        break;
+    case 1:
+        sub_0207DAEC(partyMenu, msg_0300_00112, TRUE);
+        break;
+    case 2:
+        sub_0207DAEC(partyMenu, msg_0300_00099, TRUE);
+        break;
+    case 3:
+        sub_0207DAEC(partyMenu, msg_0300_00113, TRUE);
+        break;
+    case 4:
+        sub_0207DAEC(partyMenu, msg_0300_00114, TRUE);
+        break;
+    case 5:
+        sub_0207DAEC(partyMenu, msg_0300_00115, TRUE);
+        break;
+    }
+    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_23;
+    *pState = PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
+}
+
+int sub_02080610(PartyMenuStruct *partyMenu) {
+    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
+    sub_0207DAC4(partyMenu, msg_0300_00035, TRUE);
+    thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
+    return PARTY_MENU_STATE_1;
+}
+
+void PartyMonContextMenuAction_NoEntry(PartyMenuStruct *partyMenu, int *pState) {
+    sub_02079224(partyMenu, FALSE);
+    for (u8 i = 0; i < partyMenu->args->unk_36_4; ++i) {
+        if (partyMenu->partyMonIndex + 1 == partyMenu->args->selectedOrder[i]) {
+            partyMenu->args->selectedOrder[i] = 0;
+            for (; i < partyMenu->args->unk_36_4 - 1; ++i) {
+                partyMenu->args->selectedOrder[i] = partyMenu->args->selectedOrder[i + 1];
+                partyMenu->args->selectedOrder[i + 1] = 0;
+            }
+            break;
+        }
+    }
+    for (u8 i = 0; i < PARTY_SIZE; ++i) {
+        if (partyMenu->monsDrawState[i].active) {
+            sub_0207D8EC(partyMenu, i);
+        }
+    }
+    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
+    sub_0207CB20(partyMenu);
+    PartyMenu_DisableMainScreenBlend_AfterYesNo();
+    sub_0207DAC4(partyMenu, msg_0300_00035, TRUE);
+    thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
+    *pState = PARTY_MENU_STATE_1;
+}
+
+void PartyMonContextMenuAction_ContestEnter(PartyMenuStruct *partyMenu, int *pState) {
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
+    sub_0207CB20(partyMenu);
+    PartyMenu_DisableMainScreenBlend_AfterYesNo();
+    *pState = PARTY_MENU_STATE_BEGIN_EXIT;
+}
+
+void PartyMonContextMenuAction_Confirm(PartyMenuStruct *partyMenu, int *pState) {
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
+    sub_0207CB20(partyMenu);
+    PartyMenu_DisableMainScreenBlend_AfterYesNo();
+    *pState = PARTY_MENU_STATE_BEGIN_EXIT;
+}
+
+void PartyMonContextMenuAction_Summary(PartyMenuStruct *partyMenu, int *pState) {
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_1;
+    sub_0207CB20(partyMenu);
+    PartyMenu_DisableMainScreenBlend_AfterYesNo();
+    *pState = PARTY_MENU_STATE_BEGIN_EXIT;
+}
+
+void PartyMonContextMenuAction_Set(PartyMenuStruct *partyMenu, int *pState) {
+    sub_0207CB20(partyMenu);
+    PartyMenu_DisableMainScreenBlend_AfterYesNo();
+    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
+    *pState = sub_020807AC(partyMenu);
+}
+
+int sub_020807AC(PartyMenuStruct *partyMenu) {
+    Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+    if (GetMonData(mon, MON_DATA_CAPSULE, NULL) == 0) {
+        ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00118, partyMenu->formattedStrBuf);
+        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_22 + partyMenu->partyMonIndex], TRUE);
+    } else {
+        ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00119, partyMenu->formattedStrBuf);
+        partyMenu->partyMonIndex = 7;
+    }
+    sub_0207DAEC(partyMenu, -1, TRUE);
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
+    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
+    return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
+}
+
+void sub_02080834(PartyMenuStruct *partyMenu, int *pState) {
+    FieldMoveCheckFunc func;
+    int response;
+    int msgId;
+
+    func = PartyMenu_GetFieldMoveFunc(FIELD_MOVE_FUNC_CHECK, partyMenu->args->selectedAction - PARTY_MENU_ACTION_RETURN_FIELD_MOVE_BEGIN);
+    if (func != NULL) {
+        response = func(partyMenu->args->fieldMoveCheckData);
+    } else {
+        response = PARTY_MENU_RESPONSE_NOT_HERE;
+    }
+    switch (response) {
+    case PARTY_MENU_RESPONSE_OK:
+        sub_0207CB20(partyMenu);
+        PartyMenu_DisableMainScreenBlend_AfterYesNo();
+        *pState = PARTY_MENU_STATE_BEGIN_EXIT;
+        return;
+    case PARTY_MENU_RESPONSE_NOT_HERE:
+        msgId = msg_0300_00101;
+        break;
+    case PARTY_MENU_RESPONSE_NEED_BADGE:
+        msgId = msg_0300_00077;
+        break;
+    case PARTY_MENU_RESPONSE_HAVE_FOLLOWER:
+        msgId = msg_0300_00180;
+        break;
+    case PARTY_MENU_RESPONSE_ALREADY_SURFING:
+        msgId = msg_0300_00100;
+        break;
+    case PARTY_MENU_RESPONSE_NOT_NOW:
+        msgId = msg_0300_00181;
+        break;
+    }
+    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
+    sub_0207CB20(partyMenu);
+    PartyMenu_DisableMainScreenBlend_AfterYesNo();
+    sub_0207DAEC(partyMenu, msgId, TRUE);
+    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_3;
+    *pState = PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
+}
+
+void PartyMonContextMenuAction_Cut(PartyMenuStruct *partyMenu, int *pState) {
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_CUT;
+    sub_02080834(partyMenu, pState);
+}
+
+void PartyMonContextMenuAction_RockSmash(PartyMenuStruct *partyMenu, int *pState) {
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_ROCK_SMASH;
+    sub_02080834(partyMenu, pState);
+}
+
+void PartyMonContextMenuAction_Strength(PartyMenuStruct *partyMenu, int *pState) {
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_STRENGTH;
+    sub_02080834(partyMenu, pState);
+}
+
+void PartyMonContextMenuAction_Surf(PartyMenuStruct *partyMenu, int *pState) {
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_SURF;
+    sub_02080834(partyMenu, pState);
+}
+
+void PartyMonContextMenuAction_RockClimb(PartyMenuStruct *partyMenu, int *pState) {
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_ROCK_CLIMB;
+    sub_02080834(partyMenu, pState);
+}
+
+void PartyMonContextMenuAction_Fly(PartyMenuStruct *partyMenu, int *pState) {
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_FLY;
+    sub_02080834(partyMenu, pState);
+}
+
+void PartyMonContextMenuAction_Waterfall(PartyMenuStruct *partyMenu, int *pState) {
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_WATERFALL;
+    sub_02080834(partyMenu, pState);
+}
+
+void PartyMonContextMenuAction_Whirlpool(PartyMenuStruct *partyMenu, int *pState) {
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_WHIRLPOOL;
+    sub_02080834(partyMenu, pState);
+}
+
+void PartyMonContextMenuAction_Flash(PartyMenuStruct *partyMenu, int *pState) {
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_FLASH;
+    sub_02080834(partyMenu, pState);
+}
+
+void PartyMonContextMenuAction_Teleport(PartyMenuStruct *partyMenu, int *pState) {
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_TELEPORT;
+    sub_02080834(partyMenu, pState);
+}
+
+void PartyMonContextMenuAction_Dig(PartyMenuStruct *partyMenu, int *pState) {
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_DIG;
+    sub_02080834(partyMenu, pState);
+}
+
+void PartyMonContextMenuAction_SweetScent(PartyMenuStruct *partyMenu, int *pState) {
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_SWEET_SCENT;
+    sub_02080834(partyMenu, pState);
+}
+
+void PartyMonContextMenuAction_Chatter(PartyMenuStruct *partyMenu, int *pState) {
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_CHATTER;
+    sub_02080834(partyMenu, pState);
+}
+
+void PartyMonContextMenuAction_MilkDrink(PartyMenuStruct *partyMenu, int *pState) {
+    *pState = sub_02080A58(partyMenu);
+    if (*pState == PARTY_MENU_STATE_SOFTBOILED) {
+        partyMenu->unk_C68[3] = PARTY_MENU_ACTION_RETURN_MILK_DRINK - PARTY_MENU_ACTION_RETURN_FIELD_MOVE_BEGIN;
+    }
+}
+
+void PartyMonContextMenuAction_Softboiled(PartyMenuStruct *partyMenu, int *pState) {
+    *pState = sub_02080A58(partyMenu);
+    if (*pState == PARTY_MENU_STATE_SOFTBOILED) {
+        partyMenu->unk_C68[3] = PARTY_MENU_ACTION_RETURN_SOFTBOILED - PARTY_MENU_ACTION_RETURN_FIELD_MOVE_BEGIN;
+    }
+}
+
+void PartyMonContextMenuAction_Headbutt(PartyMenuStruct *partyMenu, int *pState) {
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_HEADBUTT;
+    sub_02080834(partyMenu, pState);
+}
+
+int sub_02080A58(PartyMenuStruct *partyMenu) {
+    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
+    sub_0207CB20(partyMenu);
+    PartyMenu_DisableMainScreenBlend_AfterYesNo();
+    partyMenu->unk_C68[0] = partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp / 5;
+    if (partyMenu->monsDrawState[partyMenu->partyMonIndex].hp <= partyMenu->unk_C68[0]) {
+        sub_0207DAEC(partyMenu, msg_0300_00127, TRUE);partyMenu->afterTextPrinterState = PARTY_MENU_STATE_3;
+        return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
+    }
+    partyMenu->unk_C63_6 = 1;
+    partyMenu->softboiledDonorSlot = partyMenu->partyMonIndex;
+    thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
+    s16 x, y;
+    Sprite_GetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], &x, &y);
+    Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], x, y);
+    Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], sub_0207B5EC(partyMenu->args->unk_25, partyMenu->softboiledDonorSlot) + 2);
+    Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], TRUE);
+    sub_0207A7F4(partyMenu, partyMenu->softboiledDonorSlot);
+    sub_0207DAC4(partyMenu, msg_0300_00037, TRUE);
+    partyMenu->unk_C68[1] = 0;
+    return PARTY_MENU_STATE_SOFTBOILED;
+}
+
+int sub_02080B74(PartyMenuStruct *partyMenu) {
+    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
+    sub_0207DAC4(partyMenu, msg_0300_00029, TRUE);
+    sub_02079224(partyMenu, FALSE);
+    thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
+    G2_BlendNone();
+    return PARTY_MENU_STATE_1;
 }

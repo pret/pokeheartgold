@@ -110,7 +110,7 @@ static inline BOOL MoveUseCheck_FieldContextFlagCheck(const struct FieldMoveChec
     }
 }
 
-void *PartyMenu_GetFieldMoveFunc(int funcType, int fieldMoveIdx) {
+void *PartyMenu_GetFieldMoveFunc(u16 funcType, u16 fieldMoveIdx) {
     if (funcType == FIELD_MOVE_FUNC_USE) {
         return sFieldMoveFuncTable[fieldMoveIdx].use;
     } else {
