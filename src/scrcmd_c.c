@@ -30,7 +30,7 @@
 #include "unk_02054648.h"
 #include "metatile_behavior.h"
 #include "unk_02055418.h"
-#include "unk_02078E30.h"
+#include "party_menu.h"
 #include "unk_020932A4.h"
 #include "unk_02092BE8.h"
 #include "unk_02097024.h"
@@ -1638,9 +1638,9 @@ BOOL ScrCmd_635(ScriptContext *ctx) {
     if (r0 == 7) {
         *r5 = 255;
     } else if (r0 == 6) {
-        *r5 = partyMenu->unk_30[0];
+        *r5 = partyMenu->selectedOrder[0];
         (*r5)--;
-        *r6 = partyMenu->unk_30[1];
+        *r6 = partyMenu->selectedOrder[1];
         if (*r6 != 0) {
             (*r6)--;
         }
@@ -1661,11 +1661,11 @@ BOOL ScrCmd_639(ScriptContext *ctx) {
     if (r0 == 7) {
         *r5 = 255;
     } else if (r0 == 6) {
-        *r5 = partyMenu->unk_30[0];
+        *r5 = partyMenu->selectedOrder[0];
         (*r5)--;
-        *sp0 = partyMenu->unk_30[1];
+        *sp0 = partyMenu->selectedOrder[1];
         (*sp0)--;
-        *r7 = partyMenu->unk_30[2];
+        *r7 = partyMenu->selectedOrder[2];
         if (*r7 != 0) {
             (*r7)--;
         }
@@ -1686,11 +1686,11 @@ BOOL ScrCmd_645(ScriptContext *ctx) {
     if (r0 == 7) {
         *r5 = 255;
     } else if (r0 == 6) {
-        *r5 = partyMenu->unk_30[0];
+        *r5 = partyMenu->selectedOrder[0];
         (*r5)--;
-        *sp0 = partyMenu->unk_30[1];
+        *sp0 = partyMenu->selectedOrder[1];
         (*sp0)--;
-        *r7 = partyMenu->unk_30[2];
+        *r7 = partyMenu->selectedOrder[2];
         if (*r7 != 0) {
             (*r7)--;
         }
@@ -1793,7 +1793,7 @@ BOOL ScrCmd_RestoreOverworld(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_436(ScriptContext *ctx) {
-    sub_0205525C(ctx->fieldSystem->taskman);
+    CallTask_LeaveOverworld(ctx->fieldSystem->taskman);
     return TRUE;
 }
 
@@ -2121,7 +2121,7 @@ BOOL ScrCmd_NicknameInput(ScriptContext *ctx) {
     } else {
         mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), partyPos);
     }
-    GetMonData(mon, MON_DATA_NICKNAME, nickname);
+    GetMonData(mon, MON_DATA_NICKNAME_FLAT, nickname);
     var_ret = ScriptGetVarPointer(ctx);
     species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     CallTask_NamingScreen(ctx->taskman, NAME_SCREEN_POKEMON, species, POKEMON_NAME_LENGTH, partyPos, nickname, var_ret);
@@ -4746,27 +4746,30 @@ BOOL ScrCmd_CameronPhoto(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_616(ScriptContext *ctx) {
+BOOL ScrCmd_CountSavedPhotos(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = PhotoAlbum_GetNumSaved(Save_PhotoAlbum_Get(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
-BOOL ScrCmd_617(ScriptContext *ctx) {
-    sub_0206A860(ctx->fieldSystem);
+BOOL ScrCmd_OpenPhotoAlbum(ScriptContext *ctx) {
+    FieldSystem_ViewSavedPhotos(ctx->fieldSystem);
     return TRUE;
 }
 
-BOOL ScrCmd_621(ScriptContext *ctx) {
+BOOL ScrCmd_PlaceStarterBallsInElmsLab(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    const struct UnkStruct_020FACDC sp4[3] = {
-        {0x00083000, 0x00000000, 0x00041000},
-        {0x0008D000, 0x00000000, 0x00041000},
-        {0x00088000, 0x00000000, 0x00048000},
+    const VecFx32 ballCoords[3] = {
+        {FX32_CONST(131), 0, FX32_CONST(65)},
+        {FX32_CONST(141), 0, FX32_CONST(65)},
+        {FX32_CONST(136), 0, FX32_CONST(72)},
     };
     int n, i;
 
     int partyCount = Party_GetCount(SaveArray_Party_Get(fieldSystem->saveData));
+
+    // The number of balls visible on the machine in Elm's lab
+    // depends on story progress.
     if (FieldSystem_FlagGet(fieldSystem, FLAG_GOT_TM51_FROM_FALKNER)) {
         n = 0;
     } else if (FieldSystem_FlagGet(fieldSystem, FLAG_MET_PASSERBY_BOY)) {
@@ -4777,7 +4780,7 @@ BOOL ScrCmd_621(ScriptContext *ctx) {
         n = 3;
     }
     for (i = 0; i < n; i++) {
-        ov01_021F3C0C(fieldSystem->unk9C, 0x8D, &sp4[i], 0, fieldSystem->unk54);
+        ov01_021F3C0C(fieldSystem->unk9C, 0x8D, &ballCoords[i], 0, fieldSystem->unk54);
     }
     return FALSE;
 }

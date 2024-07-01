@@ -1,6 +1,7 @@
 #include "scrcmd.h"
 #include "save_vars_flags.h"
 #include "sys_vars.h"
+#include "field_system.h"
 #include "save_arrays.h"
 
 u8 LotoId_CountDigitsMatched(u16 lotoId, u16 otid);

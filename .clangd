@@ -1,0 +1,4 @@
+If:
+    PathMatch: ctx.c
+Index:
+    Background: Skip

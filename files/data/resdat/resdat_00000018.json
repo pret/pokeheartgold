@@ -2,7 +2,7 @@
   "kind": "char",
   "graphics": [
     {
-      "narc": 220,
+      "narc": "NARC_a_2_1_8",
       "file": 8,
       "compressed": false,
       "id": 0,

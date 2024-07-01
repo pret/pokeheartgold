@@ -25,6 +25,7 @@
 #define BTLPOCKETLIST_BALLS          2
 #define BTLPOCKETLIST_BATTLE_ITEMS   3
 
+// todo
 #define BPOCKET_BALLS_F      0
 #define BPOCKET_
 
@@ -984,10 +985,10 @@
 #define STEAL_EFFECT_RESTORE_BITTER     14
 #define STEAL_EFFECT_RESTORE_SOUR       15
 #define STEAL_EFFECT_ATK_UP             16
-#define STEAL_EFFECT_DEF_UP             17    
-#define STEAL_EFFECT_SPEED_UP           18    
-#define STEAL_EFFECT_SPATK_UP           19    
-#define STEAL_EFFECT_SPDEF_UP           20    
+#define STEAL_EFFECT_DEF_UP             17
+#define STEAL_EFFECT_SPEED_UP           18
+#define STEAL_EFFECT_SPATK_UP           19
+#define STEAL_EFFECT_SPDEF_UP           20
 #define STEAL_EFFECT_CRITRATE_UP        21
 #define STEAL_EFFECT_RANDOM_UP          22
 #define STEAL_EFFECT_ACC_UP             23

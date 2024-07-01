@@ -82,7 +82,7 @@ sub_0202B684: ; 0x0202B684
 	add r2, r5, #0
 	strh r0, [r5, #8]
 	add r0, r4, #0
-	mov r1, #MON_DATA_NICKNAME
+	mov r1, #MON_DATA_NICKNAME_FLAT
 	add r2, #0xa
 	bl GetMonData
 	mov r1, #MON_DATA_PERSONALITY

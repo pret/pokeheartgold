@@ -150,13 +150,13 @@
 .public sub_0207CAA0
 .public sub_0207CAA4
 .public sub_0207CAA8
-.public RatioToInt
-.public sub_020880B0
+.public CalculateHpBarPixelsLength
+.public CalculateHpBarColor
 .public sub_0208AD54
 .public sub_0208AD58
 .public sub_0208AD5C
 .public sub_0208AD60
-.public sub_0208AD64
+.public Pokemon_GetStatusIconId
 .public NNS_G2dGetUnpackedScreenData
 .public memcpy
 .public memset

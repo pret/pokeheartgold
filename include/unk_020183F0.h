@@ -22,8 +22,8 @@ typedef struct Ov122_021E7488 {
     u8 unk15[0x3];
 } Ov122_021E7488;
 
-int sub_020183F0(u32 *);
-void sub_02018410(u32 *a0, u32 a1);
+int sub_020183F0(BOOL *);
+void sub_02018410(BOOL *a0, BOOL a1);
 void *sub_02018424(HeapID, int);
 void sub_02018474(void *);
 void *sub_020185FC(void *, Ov122_021E7488 *, s32, u8, u8, u8, u8);

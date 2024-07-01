@@ -170,7 +170,7 @@ BOOL sub_02055DBC(TaskManager *man) {
         env->state++;
         break;
     case 3:
-        sub_0205525C(man);
+        CallTask_LeaveOverworld(man);
         env->state++;
         break;
     case 4:
@@ -237,7 +237,7 @@ BOOL sub_02056004(TaskManager *man) {
     switch (fenv->transitionState) {
     case 0:
         PlaySE(SEQ_SE_DP_KAIDAN2);
-        PalleteFadeUntilFinished(man);
+        PaletteFadeUntilFinished(man);
         fenv->transitionState++;
         break;
     case 1:
@@ -262,7 +262,7 @@ BOOL sub_02056040(TaskManager *man) {
         }
         break;
     case 2:
-        PalleteFadeUntilFinished(man);
+        PaletteFadeUntilFinished(man);
         fenv->transitionState++;
         break;
     case 3:

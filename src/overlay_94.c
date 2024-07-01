@@ -4,12 +4,14 @@
 #include "party.h"
 #include "pokemon.h"
 #include "pokedex.h"
+#include "field_system.h"
 #include "scrcmd.h"
 #include "unk_02005D10.h"
 #include "unk_02014DA0.h"
-#include "unk_0207EB24.h"
-#include "unk_02078E30.h"
-#include "unk_0207CB7C.h"
+#include "party_context_menu.h"
+#include "party_menu_sprites.h"
+#include "party_menu.h"
+#include "party_menu_list_items.h"
 #include "unk_02026E30.h"
 #include "text.h"
 #include "constants/pokemon.h"
@@ -44,7 +46,7 @@ void PartyMenu_InitIconFormChangeData(PartyMenuStruct* unkPtr) {
 
 BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct* unkPtr) {
     IconFormChangeData* work = unkPtr->iconFormChange;
-    Pokemon *mon = Party_GetMonByIndex(unkPtr->unk654->party, unkPtr->partyMonIndex);
+    Pokemon *mon = Party_GetMonByIndex(unkPtr->args->party, unkPtr->partyMonIndex);
 
     switch (work->state) {
     case 0:
@@ -65,7 +67,7 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct* unkPtr) {
             GF_ASSERT(FALSE);
             break;
         }
-        Pokedex_SetMonCaughtFlag(Save_Pokedex_Get(FieldSystem_GetSaveData(unkPtr->unk654->fieldSystem)), mon);
+        Pokedex_SetMonCaughtFlag(Save_Pokedex_Get(FieldSystem_GetSaveData(unkPtr->args->fieldSystem)), mon);
         work->state++;
         break;
     case 1:
@@ -109,17 +111,17 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct* unkPtr) {
     case 9:
     {
         String* str = NewString_ReadMsgData(unkPtr->msgData, msg_0300_00188); //" changed Form!"
-        BufferBoxMonNickname(unkPtr->unk7c4, 0, Mon_GetBoxMon(mon));
-        StringExpandPlaceholders(unkPtr->unk7c4, unkPtr->unk7c8, str);
+        BufferBoxMonNickname(unkPtr->msgFormat, 0, Mon_GetBoxMon(mon));
+        StringExpandPlaceholders(unkPtr->msgFormat, unkPtr->formattedStrBuf, str);
         String_Delete(str);
-        sub_0207DAEC(unkPtr, -1, 1);
+        PartyMenu_PrintMessageOnWindow34(unkPtr, -1, TRUE);
         work->state++;
         break;
     }
     case 10:
-        if (TextPrinterCheckActive(unkPtr->unkc64) == 0) {
+        if (TextPrinterCheckActive(unkPtr->textPrinterId) == 0) {
             _DestroyLocalWork(unkPtr);
-            unkPtr->unk654->unk27 = 0;
+            unkPtr->args->selectedAction = 0;
             return TRUE;
         }
         break;

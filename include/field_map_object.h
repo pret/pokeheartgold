@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_FIELD_MAP_OBJECT_H
 #define POKEHEARTGOLD_FIELD_MAP_OBJECT_H
 
-#include "script.h"
+#include "field_types_def.h"
 
 typedef struct SavedMapObject {
     u32 unk0;
@@ -190,7 +190,12 @@ u32 sub_0205ED90(LocalMapObject*, u32, u32, ObjectEvent*);
 LocalMapObject* sub_0205EE10(MapObjectManager*, u32, u32);
 LocalMapObject *GetMapObjectByID(MapObjectManager *manager, u32 id);
 LocalMapObject *sub_0205EEB4(MapObjectManager *manager, u32 movement);
-BOOL sub_0205EEF4(MapObjectManager*, LocalMapObject**, int*, u32);
+
+// Yields map objects with all the bits in flag_mask set.
+// Updates pIndex, this is the reentrant state
+// Returns FALSE when done iterating
+// Returns TRUE and an object to *ppMapObject_out for each match
+BOOL MapObjectManager_IterObjects(MapObjectManager *manager, LocalMapObject **ppMapObject_out, int *pIndex, u32 flag_mask);
 void sub_0205EF48(LocalMapObject* object);
 void sub_0205EF5C(LocalMapObject* object);
 void sub_0205EF6C(LocalMapObject* object);

@@ -20,7 +20,7 @@
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
 #include "unk_0206B910.h"
-#include "unk_02078E30.h"
+#include "party_menu.h"
 #include "unk_02091054.h"
 #include "launch_application.h"
 
@@ -96,7 +96,7 @@ static BOOL sub_0206B984(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     switch (r7->state) {
     case 0:
-        sub_0205525C(taskManager);
+        CallTask_LeaveOverworld(taskManager);
         SealCase *sealCase = Save_SealCase_Get(r7->saveData);
         r6->sealCase = sealCase;
         r6->unk31 = 0;
@@ -135,20 +135,20 @@ static BOOL sub_0206B984(TaskManager *taskManager) {
         partyMenu->party = r6->party;
         partyMenu->bag = Save_Bag_Get(r7->saveData);
         partyMenu->mailbox = Save_Mailbox_Get(r7->saveData);
-        partyMenu->unk_26 = 0;
+        partyMenu->partySlot = 0;
         partyMenu->unk_25 = 0;
-        partyMenu->unk_24 = 15;
+        partyMenu->context = 15;
         partyMenu->options = r6->options;
         partyMenu->fieldSystem = fieldSystem;
-        partyMenu->unk20 = &(fieldSystem->unk_10C);
+        partyMenu->unk_20 = &(fieldSystem->unk_10C);
         CallApplicationAsTask(taskManager, &gOverlayTemplate_PartyMenu, partyMenu);
         r7->state = 4;
         break;
     case 4: {
         PartyMenuArgs *partyMenu = r7->partyMenu;
         u32 index = r7->unk04->unk30 + 1;
-        if (partyMenu->unk_26 != 7) {
-            Pokemon *mon = r7->unk04->mons[partyMenu->unk_26];
+        if (partyMenu->partySlot != 7) {
+            Pokemon *mon = r7->unk04->mons[partyMenu->partySlot];
             SetMonData(mon, MON_DATA_CAPSULE, &index);
             SetMonData(mon, MON_DATA_SEAL_COORDS, SealCase_GetCapsuleI(r6->sealCase, index - 1));
             sub_0209106C(SealOnCapsuleGetID(CapsuleGetSealI(SealCase_GetCapsuleI(r6->sealCase, index - 1), 0)));

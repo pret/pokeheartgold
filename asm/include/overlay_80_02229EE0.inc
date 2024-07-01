@@ -38,7 +38,7 @@
 .public sub_0207217C
 .public MaskOfFlagNo
 .public Party_AddMon
-.public sub_020880B0
+.public CalculateHpBarColor
 .public MonSetTrainerMemo
 .public MI_CpuFill8
 .public _s32_div_f

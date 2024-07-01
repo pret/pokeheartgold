@@ -5,9 +5,9 @@
 .public GfGfxLoader_GXLoadPalFromOpenNarc
 .public BeginNormalPaletteFade
 .public sub_0208805C
-.public RatioToInt
+.public CalculateHpBarPixelsLength
 .public sub_02088080
-.public sub_020880B0
+.public CalculateHpBarColor
 .public sub_020880CC
 .public sub_020881C0
 .public sub_0208820C

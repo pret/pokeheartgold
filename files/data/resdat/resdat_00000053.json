@@ -2,7 +2,7 @@
   "kind": "cell",
   "graphics": [
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 48,
       "compressed": false,
       "id": 0,
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 128,
       "compressed": false,
       "id": 1,
@@ -22,7 +22,7 @@
       ]
     },
     {
-      "narc": 162,
+      "narc": "NARC_a_1_6_2",
       "file": 63,
       "compressed": false,
       "id": 2,
@@ -32,7 +32,7 @@
       ]
     },
     {
-      "narc": 8,
+      "narc": "NARC_a_0_0_8",
       "file": 242,
       "compressed": true,
       "id": 3,
@@ -42,7 +42,7 @@
       ]
     },
     {
-      "narc": 20,
+      "narc": "NARC_poketool_icongra_poke_icon",
       "file": 2,
       "compressed": false,
       "id": 4,
@@ -52,7 +52,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 63,
       "compressed": false,
       "id": 5,
@@ -62,7 +62,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 67,
       "compressed": false,
       "id": 6,
@@ -72,7 +72,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 60,
       "compressed": false,
       "id": 7,
@@ -82,7 +82,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 51,
       "compressed": false,
       "id": 8,
@@ -92,7 +92,7 @@
       ]
     },
     {
-      "narc": 15,
+      "narc": "NARC_a_0_1_5",
       "file": 28,
       "compressed": false,
       "id": 9,
@@ -102,7 +102,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 18,
       "compressed": false,
       "id": 10,
@@ -112,7 +112,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 45,
       "compressed": false,
       "id": 11,
@@ -122,7 +122,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 71,
       "compressed": false,
       "id": 12,
@@ -132,7 +132,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 123,
       "compressed": false,
       "id": 13,
@@ -142,7 +142,7 @@
       ]
     },
     {
-      "narc": 162,
+      "narc": "NARC_a_1_6_2",
       "file": 6,
       "compressed": false,
       "id": 15,
@@ -152,7 +152,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 134,
       "compressed": false,
       "id": 16,
@@ -162,7 +162,7 @@
       ]
     },
     {
-      "narc": 162,
+      "narc": "NARC_a_1_6_2",
       "file": 67,
       "compressed": false,
       "id": 17,

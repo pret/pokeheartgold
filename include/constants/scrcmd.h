@@ -28,6 +28,7 @@
 #define ge    4
 #define ne    5
 
+#define obj_photo_subject          249
 #define obj_daycare_poke_1         250
 #define obj_daycare_poke_2         251
 #define obj_apricorn               252

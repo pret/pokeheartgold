@@ -40,9 +40,9 @@ void LoadMonPersonal(int species, BASE_STATS *dest);
 int ResolveMonForm(int species, int form);
 u8 GetGenderBySpeciesAndPersonality_PreloadedPersonal(const BASE_STATS *personal, u16 species, u32 pid);
 u32 MaskOfFlagNo(int flagno);
-void GetBoxmonSpriteCharAndPlttNarcIds(struct SomeDrawPokemonStruct *a0, BoxPokemon *boxMon, u8 whichFacing, BOOL a3);
-void DP_GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct *a0, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 pid);
-void GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct *a0, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 pid);
+void GetBoxmonSpriteCharAndPlttNarcIds(struct PokepicTemplate *a0, BoxPokemon *boxMon, u8 whichFacing, BOOL a3);
+void DP_GetMonSpriteCharAndPlttNarcIdsEx(struct PokepicTemplate *a0, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 pid);
+void GetMonSpriteCharAndPlttNarcIdsEx(struct PokepicTemplate *a0, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 pid);
 u8 sub_02070438(u16 species, u8 form);
 u8 sub_02070854(BoxPokemon *boxMon, u8 whichFacing, BOOL a2);
 u8 GetMonPicHeightBySpeciesGenderForme_PBR(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);
@@ -732,7 +732,7 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void * dest) {
     case MON_DATA_RESERVED_114:
         ret = blockB->Unused;
         break;
-    case MON_DATA_NICKNAME:
+    case MON_DATA_NICKNAME_FLAT:
         if (boxMon->checksum_fail) {
             GetSpeciesNameIntoArray(SPECIES_MANAPHY_EGG, HEAP_ID_DEFAULT, dest);
         } else {
@@ -743,10 +743,10 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void * dest) {
             dest16[ret] = EOS;
         }
         break;
-    case MON_DATA_NICKNAME_4:
+    case MON_DATA_NICKNAME_STRING_COMPARE:
         ret = blockB->isNicknamed;
         // fallthrough
-    case MON_DATA_NICKNAME_3:
+    case MON_DATA_NICKNAME_STRING:
         if (boxMon->checksum_fail) {
             String * buffer = GetSpeciesName(SPECIES_MANAPHY_EGG, HEAP_ID_DEFAULT);
             String_Copy(dest, buffer);
@@ -858,7 +858,7 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void * dest) {
                  (blockB->spatkIV << 20) | \
                  (blockB->spdefIV << 25);
         break;
-    case MON_DATA_UNK_176:
+    case MON_DATA_NO_PRINT_GENDER:
         if ((blockA->species == SPECIES_NIDORAN_F || blockA->species == SPECIES_NIDORAN_M) && !blockB->isNicknamed) {
             ret = FALSE;
         } else {
@@ -1202,21 +1202,21 @@ static void SetBoxMonDataInternal(BoxPokemon *boxMon, int attr, const void * val
     case MON_DATA_RESERVED_114:
         blockB->Unused = VALUE(u16);
         break;
-    case MON_DATA_NICKNAME_2:
+    case MON_DATA_NICKNAME_FLAT_COMPARE:
         GetSpeciesNameIntoArray(blockA->species, HEAP_ID_DEFAULT, namebuf);
         blockB->isNicknamed = StringNotEqual(namebuf, value);
         // fallthrough
-    case MON_DATA_NICKNAME:
+    case MON_DATA_NICKNAME_FLAT:
         for (i = 0; i < POKEMON_NAME_LENGTH + 1; i++) {
             blockC->nickname[i] = VALUE(u16); value = (void *const )((char *)value + 2);
         }
         break;
-    case MON_DATA_NICKNAME_4:
+    case MON_DATA_NICKNAME_STRING_COMPARE:
         GetSpeciesNameIntoArray(blockA->species, HEAP_ID_DEFAULT, namebuf2);
         CopyStringToU16Array(value, namebuf3, POKEMON_NAME_LENGTH + 1);
         blockB->isNicknamed = StringNotEqual(namebuf2, namebuf3);
         // fallthrough
-    case MON_DATA_NICKNAME_3:
+    case MON_DATA_NICKNAME_STRING:
         CopyStringToU16Array(value, blockC->nickname, POKEMON_NAME_LENGTH + 1);
         break;
     case MON_DATA_UNK_121:
@@ -1644,10 +1644,10 @@ static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value) {
     case MON_DATA_FORM:
     case MON_DATA_RESERVED_113:
     case MON_DATA_RESERVED_114:
-    case MON_DATA_NICKNAME:
-    case MON_DATA_NICKNAME_2:
-    case MON_DATA_NICKNAME_3:
-    case MON_DATA_NICKNAME_4:
+    case MON_DATA_NICKNAME_FLAT:
+    case MON_DATA_NICKNAME_FLAT_COMPARE:
+    case MON_DATA_NICKNAME_STRING:
+    case MON_DATA_NICKNAME_STRING_COMPARE:
     case MON_DATA_UNK_121:
     case MON_DATA_GAME_VERSION:
     case MON_DATA_COOL_RIBBON:
@@ -1705,7 +1705,7 @@ static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value) {
     case MON_DATA_SANITY_IS_EGG:
     case MON_DATA_SPECIES_OR_EGG:
     case MON_DATA_IVS_WORD:
-    case MON_DATA_UNK_176:
+    case MON_DATA_NO_PRINT_GENDER:
     case MON_DATA_TYPE_1:
     case MON_DATA_TYPE_2:
     case MON_DATA_SPECIES_NAME:
@@ -2151,15 +2151,15 @@ u32 GenerateShinyPersonality(u32 otid) {
     return (u32)((r5 << 16) | r6);
 }
 
-void GetPokemonSpriteCharAndPlttNarcIds(struct SomeDrawPokemonStruct *a0, Pokemon *mon, u8 whichFacing) {
+void GetPokemonSpriteCharAndPlttNarcIds(struct PokepicTemplate *a0, Pokemon *mon, u8 whichFacing) {
     GetBoxmonSpriteCharAndPlttNarcIds(a0, &mon->box, whichFacing, FALSE);
 }
 
-void sub_02070130(struct SomeDrawPokemonStruct *a0, BoxPokemon *boxMon, u8 whichFacing) {
+void sub_02070130(struct PokepicTemplate *a0, BoxPokemon *boxMon, u8 whichFacing) {
     GetBoxmonSpriteCharAndPlttNarcIds(a0, boxMon, whichFacing, TRUE);
 }
 
-void GetBoxmonSpriteCharAndPlttNarcIds(struct SomeDrawPokemonStruct *spC, BoxPokemon *boxMon, u8 whichFacing, BOOL sp14) {
+void GetBoxmonSpriteCharAndPlttNarcIds(struct PokepicTemplate *spC, BoxPokemon *boxMon, u8 whichFacing, BOOL sp14) {
     BOOL decry = AcquireBoxMonLock(boxMon);
     u16 species = GetBoxMonData(boxMon, MON_DATA_SPECIES_OR_EGG, NULL);
     u8 gender = GetBoxMonGender(boxMon);
@@ -2183,7 +2183,7 @@ void GetBoxmonSpriteCharAndPlttNarcIds(struct SomeDrawPokemonStruct *spC, BoxPok
     ReleaseBoxMonLock(boxMon, decry);
 }
 
-void GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct * spC, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 personality) {
+void GetMonSpriteCharAndPlttNarcIdsEx(struct PokepicTemplate * spC, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 personality) {
     spC->species = 0;
     spC->isAnimated = 0;
     spC->personality = 0;
@@ -2354,13 +2354,13 @@ u8 sub_02070438(u16 species, u8 form) {
     return form;
 }
 
-void sub_02070560(struct SomeDrawPokemonStruct * spC, u16 species, u8 whichFacing, u8 gender, u32 shiny) {
+void sub_02070560(struct PokepicTemplate * spC, u16 species, u8 whichFacing, u8 gender, u32 shiny) {
     spC->narcID = NARC_pbr_pokegra;
     spC->charDataID = (u16)(species * 6 + whichFacing + (gender == MON_FEMALE ? 0 : 1));
     spC->palDataID = (u16)(shiny + (species * 6 + 4));
 }
 
-void DP_GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct * spC, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 personality) {
+void DP_GetMonSpriteCharAndPlttNarcIdsEx(struct PokepicTemplate * spC, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 personality) {
     spC->species = 0;
     spC->isAnimated = 0;
     spC->personality = 0;
@@ -4189,11 +4189,11 @@ void RestoreBoxMonPP(BoxPokemon *boxMon) {
     ReleaseBoxMonLock(boxMon, decry);
 }
 
-void sub_02072914(NARC *narc, struct UnkStruct_02072914_sub_sub *dest, u16 species, u16 a3) {
+void NARC_ReadPokepicAnimScript(NARC *narc, PokepicAnimScript *dest, u16 species, u16 a3) {
     struct UnkStruct_02072914 sp4;
     int r5 = (a3 & 1 ? 0 : 1);
     NARC_ReadFromMember(narc, 0, species * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &sp4);
-    MI_CpuCopy8(&sp4.unk0[r5].unk_3[0], dest, sizeof(struct UnkStruct_02072914_sub_sub) * 10);
+    MI_CpuCopy8(&sp4.unk0[r5].unk_3[0], dest, sizeof(PokepicAnimScript) * 10);
 }
 
 void sub_0207294C(NARC *narc, void *a1, void *a2, u16 a3, int a4, int a5, int a6) {
@@ -4207,10 +4207,10 @@ void sub_0207294C(NARC *narc, void *a1, void *a2, u16 a3, int a4, int a5, int a6
     sub_02016F40(a1, a2, &sp4, a6);
 }
 
-void sub_020729A4(NARC *narc, u8 *ret, u16 a2, u16 a3) {
+void sub_020729A4(NARC *narc, u8 *ret, u16 species, u16 isFrontpic) {
     struct UnkStruct_02072914 sp4;
-    int r5 = (a3 & 1 ? 0 : 1);
-    NARC_ReadFromMember(narc, 0, a2 * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &sp4);
+    int r5 = (isFrontpic & 1 ? 0 : 1);
+    NARC_ReadFromMember(narc, 0, species * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &sp4);
     *ret = sp4.unk0[r5].unk_0;
 }
 

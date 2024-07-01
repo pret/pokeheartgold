@@ -93,7 +93,7 @@ static BOOL TouchSaveApp_PrintSavedMessage(TouchSaveAppData *data);
 static BOOL TouchSaveApp_SaveSucceeded(TouchSaveAppData *data);
 static BOOL TouchSaveApp_CloseApp(TouchSaveAppData *data);
 static BOOL TouchSaveApp_ShouldPrintAlternateSavingMessage(TouchSaveAppData *data);
-static void ov30_0225DC00(u32 *a0, u32 a1);
+static void ov30_0225DC00(BOOL *a0, u32 a1);
 static void ov30_0225DC08(void);
 static void ov30_0225DC18(void);
 static void ov30_0225DC28(void);
@@ -496,7 +496,7 @@ static BOOL TouchSaveApp_ShouldPrintAlternateSavingMessage(TouchSaveAppData *dat
     return Save_NumModifiedPCBoxesIsMany(data->fieldSystem->saveData);
 }
 
-static void ov30_0225DC00(u32 *a0, u32 a1) {
+static void ov30_0225DC00(BOOL *a0, u32 a1) {
     sub_02018410(a0, a1);
 }
 
