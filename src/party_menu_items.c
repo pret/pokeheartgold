@@ -5,6 +5,7 @@
 #include "party_menu_sprites.h"
 #include "text.h"
 #include "unk_02005D10.h"
+#include "unk_02088288.h"
 #include "use_item_on_mon.h"
 
 typedef enum PartyMenuItemType {
@@ -44,6 +45,7 @@ void sub_02080E9C(PartyMenuStruct *partyMenu, u16 itemId, int a2);
 int sub_020813A4(PartyMenuStruct *partyMenu);
 int sub_02081444(PartyMenuStruct *partyMenu);
 int sub_020815E4(PartyMenuStruct *partyMenu);
+int sub_02081720(PartyMenuStruct *partyMenu);
 int sub_02081A74(PartyMenuStruct *partyMenu);
 u16 sub_020828EC(PartyMenuStruct *partyMenu);
 
@@ -392,4 +394,88 @@ int sub_020813A4(PartyMenuStruct *partyMenu) {
     PlaySE(SEQ_SE_DP_KAIFUKU);
     partyMenu->unk_C54 = sub_02081378;
     return PARTY_MENU_STATE_5;
+}
+
+int sub_02081444(PartyMenuStruct *partyMenu) {
+    Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+    u8 hpEv = GetMonData(mon, MON_DATA_HP_EV, NULL);
+    u8 atkEv = GetMonData(mon, MON_DATA_ATK_EV, NULL);
+    u8 defEv = GetMonData(mon, MON_DATA_DEF_EV, NULL);
+    u8 speedEv = GetMonData(mon, MON_DATA_SPEED_EV, NULL);
+    u8 spAtkEv = GetMonData(mon, MON_DATA_SPATK_EV, NULL);
+    u8 spDefEv = GetMonData(mon, MON_DATA_SPDEF_EV, NULL);
+    u8 friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
+    UseItemOnMonInParty(partyMenu->args->party, partyMenu->args->itemId, partyMenu->partyMonIndex, 0, sub_020828EC(partyMenu), HEAP_ID_PARTY_MENU);
+    sub_02079E38(partyMenu, partyMenu->partyMonIndex);
+    sub_0207D5DC(partyMenu, partyMenu->partyMonIndex);
+    PartyMenu_CommitPartyMonPanelWindowsToVram_InVBlank(partyMenu, partyMenu->partyMonIndex);
+    PartyMenu_DrawMonStatusIcon(partyMenu, partyMenu->partyMonIndex, partyMenu->monsDrawState[partyMenu->partyMonIndex].status);
+    if (
+        hpEv != GetMonData(mon, MON_DATA_HP_EV, NULL) ||
+        atkEv != GetMonData(mon, MON_DATA_ATK_EV, NULL) ||
+        defEv != GetMonData(mon, MON_DATA_DEF_EV, NULL) ||
+        speedEv != GetMonData(mon, MON_DATA_SPEED_EV, NULL) ||
+        spAtkEv != GetMonData(mon, MON_DATA_SPATK_EV, NULL) ||
+        spDefEv != GetMonData(mon, MON_DATA_SPDEF_EV, NULL)
+    ) {
+        if (friendship != GetMonData(mon, MON_DATA_FRIENDSHIP, NULL)) {
+            sub_02080E9C(partyMenu, partyMenu->args->itemId, 0);
+        } else {
+            sub_02080E9C(partyMenu, partyMenu->args->itemId, 1);
+        }
+    } else {
+        sub_02080E9C(partyMenu, partyMenu->args->itemId, 2);
+    }
+    PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
+    partyMenu->unk_C54 = sub_02081378;
+    return PARTY_MENU_STATE_5;
+}
+
+int sub_020815E4(PartyMenuStruct *partyMenu) {
+    UseItemOnMonInParty(partyMenu->args->party, partyMenu->args->itemId, partyMenu->partyMonIndex, 0, sub_020828EC(partyMenu), HEAP_ID_PARTY_MENU);
+    Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+    int hp = GetMonData(mon, MON_DATA_HP, NULL);
+    String *string;
+    if (partyMenu->monsDrawState[partyMenu->partyMonIndex].hp == 0) {
+        string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00071);
+    } else if (partyMenu->monsDrawState[partyMenu->partyMonIndex].hp == hp) {
+        string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00072);
+    } else {
+        string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00065);
+    }
+    BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));BufferIntegerAsString(partyMenu->msgFormat, 1, hp - partyMenu->monsDrawState[partyMenu->partyMonIndex].hp, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
+    String_Delete(string);
+    int statusIcon = Pokemon_GetStatusIconId(mon);
+    PartyMenu_DrawMonStatusIcon(partyMenu, partyMenu->partyMonIndex, statusIcon);
+    if (statusIcon == PARTY_MON_STATUS_ICON_OK) {
+        partyMenu->monsDrawState[partyMenu->partyMonIndex].status = PARTY_MON_STATUS_ICON_OK;
+        PartyMenu_PrintMonLevelOnWindow(partyMenu, partyMenu->partyMonIndex);
+    }
+    sub_0207A7F4(partyMenu, partyMenu->partyMonIndex);
+    partyMenu->unk_C54 = sub_02081720;
+    PlaySE(SEQ_SE_DP_KAIFUKU);
+    return PARTY_MENU_STATE_5;
+}
+
+int sub_02081720(PartyMenuStruct *partyMenu) {
+    int hp = GetMonData(Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex), MON_DATA_HP, NULL);
+    // Hook: Speed up HP restore here
+    // This currently animates 1 HP per frame
+    if (hp != partyMenu->monsDrawState[partyMenu->partyMonIndex].hp) {
+        ++partyMenu->monsDrawState[partyMenu->partyMonIndex].hp;
+    }
+    PartyMenu_ClearMonHpTextWindow(partyMenu, partyMenu->partyMonIndex);
+    FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_MON1_HPBAR + partyMenu->partyMonIndex * 5], 0);
+    PartyMenu_PrintMonCurHpOnWindow(partyMenu, partyMenu->partyMonIndex);
+    PartyMenu_DrawMonHpBarOnWindow(partyMenu, partyMenu->partyMonIndex);
+    if (hp == partyMenu->monsDrawState[partyMenu->partyMonIndex].hp) {
+        PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
+        partyMenu->unk_C54 = sub_02081378;
+    }
+    return PARTY_MENU_STATE_5;
+}
+
+BOOL sub_020817C4(u16 itemId) {
+    return !!GetItemAttr(itemId, ITEMATTR_REVIVE_ALL, HEAP_ID_PARTY_MENU);
 }
