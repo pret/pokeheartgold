@@ -1,5 +1,5 @@
-#ifndef GUARD_POKEHEARTGOLD_UNK_02080BB4_H
-#define GUARD_POKEHEARTGOLD_UNK_02080BB4_H
+#ifndef GUARD_POKEHEARTGOLD_PARTY_MENU_MOVES_H
+#define GUARD_POKEHEARTGOLD_PARTY_MENU_MOVES_H
 
 #include "party_menu.h"
 
@@ -16,4 +16,4 @@ int PartyMenu_Subtask_SelectMove(PartyMenuStruct *partyMenu);
 void sub_02082654(PartyMenuStruct *partyMenu, BOOL a1);
 int sub_02082868(PartyMenuStruct *partyMenu);
 
-#endif //GUARD_POKEHEARTGOLD_UNK_02080BB4_H
+#endif //GUARD_POKEHEARTGOLD_PARTY_MENU_MOVES_H

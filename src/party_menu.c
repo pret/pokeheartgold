@@ -19,7 +19,7 @@
 #include "party_context_menu.h"
 #include "party_menu_list_items.h"
 #include "unk_0203A3B0.h"
-#include "unk_02080BB4.h"
+#include "party_menu_items.h"
 #include "unk_0208805C.h"
 #include "party_menu_sprites.h"
 #include "unk_02074944.h"
@@ -588,7 +588,7 @@ static int sub_02079550(PartyMenuStruct *partyMenu) {
         if (partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg != 1) {
             return sub_02082134(partyMenu);
         } else {
-            partyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
+            PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
             partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
             partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
             ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00102, partyMenu->formattedStrBuf);
@@ -1214,7 +1214,7 @@ static void PartyMenu_Setup_SuperContestEntry(PartyMenuStruct *partyMenu, const 
     for (u8 i = 0; i < PARTY_SIZE; ++i) {
         if (sub_02079E38(partyMenu, i) == TRUE) {
             sub_0207A174(partyMenu, i, a1[i].unk_0, a1[i].unk_2, FALSE);
-            sub_0207D840(partyMenu, i);
+            PartyMenu_DrawPartyMonsList_SuperContestEntry(partyMenu, i);
             sub_0207EBE4(partyMenu, i, a1[i].unk_4, a1[i].unk_6, narc);
             sub_0207EF5C(partyMenu, i, a1[i].unk_8, a1[i].unk_A);
             PartyMenu_DrawMonHeldItemIcon(partyMenu, i, partyMenu->monsDrawState[i].heldItem);
@@ -1234,7 +1234,7 @@ static void PartyMenu_DrawPanels_FrontierFacilityEntry(PartyMenuStruct *partyMen
     for (u8 i = 0; i < PARTY_SIZE; ++i) {
         if (sub_02079E38(partyMenu, i) == TRUE) {
             sub_0207A174(partyMenu, i, a1[i].unk_0, a1[i].unk_2, FALSE);
-            sub_0207D8A4(partyMenu, i);
+            PartyMenu_DrawPartyMonsList_FrontierFacilityEntry(partyMenu, i);
             sub_0207D8EC(partyMenu, i);
             sub_0207EBE4(partyMenu, i, a1[i].unk_4, a1[i].unk_6, narc);
             sub_0207EF5C(partyMenu, i, a1[i].unk_8, a1[i].unk_A);
@@ -1955,24 +1955,24 @@ static int sub_0207B7E0(PartyMenuStruct *partyMenu) {
         if (partyMenu->args->selectedOrder[i] == 0) {
             switch (partyMenu->args->maxMonsToSelect) {
             case 2:
-                partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00103, TRUE);
+                PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00103, TRUE);
                 break;
             case 3:
-                partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00108, TRUE);
+                PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00108, TRUE);
                 break;
             case 4:
-                partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00109, TRUE);
+                PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00109, TRUE);
                 break;
             case 5:
-                partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00110, TRUE);
+                PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00110, TRUE);
                 break;
             case 6:
-                partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00111, TRUE);
+                PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00111, TRUE);
                 break;
             case 0:
             case 1:
             default:
-                partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00030, TRUE);
+                PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00030, TRUE);
                 break;
             }
             partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SELECT_MONS_ERROR_MSG_CLOSE;
@@ -1990,18 +1990,18 @@ static int sub_0207B7E0(PartyMenuStruct *partyMenu) {
             BufferIntegerAsString(partyMenu->msgFormat, 0, sub_020290FC(partyMenu->args->unk_14, 3), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
             StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
             String_Delete(string);
-            partyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
+            PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
             partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SELECT_MONS_ERROR_MSG_CLOSE;
             PlaySE(SEQ_SE_DP_CUSTOM06);
             return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
         }
         case 2:
-            partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00165, TRUE);
+            PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00165, TRUE);
             partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SELECT_MONS_ERROR_MSG_CLOSE;
             PlaySE(SEQ_SE_DP_CUSTOM06);
             return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
         case 3:
-            partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00166, TRUE);
+            PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00166, TRUE);
             partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SELECT_MONS_ERROR_MSG_CLOSE;
             PlaySE(SEQ_SE_DP_CUSTOM06);
             return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
@@ -2010,14 +2010,14 @@ static int sub_0207B7E0(PartyMenuStruct *partyMenu) {
         case 5:
             break;
         case 6:
-            partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00168, TRUE);
+            PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00168, TRUE);
             partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SELECT_MONS_ERROR_MSG_CLOSE;
             PlaySE(SEQ_SE_DP_CUSTOM06);
             return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
         case 7:
             break;
         case 8:
-            partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00191, TRUE);
+            PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00191, TRUE);
             partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SELECT_MONS_ERROR_MSG_CLOSE;
             PlaySE(SEQ_SE_DP_CUSTOM06);
             return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
@@ -2029,12 +2029,12 @@ static int sub_0207B7E0(PartyMenuStruct *partyMenu) {
         case 0:
             break;
         case 1:
-            partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00165, TRUE);
+            PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00165, TRUE);
             partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SELECT_MONS_ERROR_MSG_CLOSE;
             PlaySE(SEQ_SE_DP_CUSTOM06);
             return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
         case 2:
-            partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00166, TRUE);
+            PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00166, TRUE);
             partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SELECT_MONS_ERROR_MSG_CLOSE;
             PlaySE(SEQ_SE_DP_CUSTOM06);
             return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
@@ -2046,7 +2046,7 @@ static int sub_0207B7E0(PartyMenuStruct *partyMenu) {
         case 0:
             break;
         case 1:
-            partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00187, TRUE);
+            PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00187, TRUE);
             partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SELECT_MONS_ERROR_MSG_CLOSE;
             PlaySE(SEQ_SE_DP_CUSTOM06);
             return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
@@ -2058,7 +2058,7 @@ static int sub_0207B7E0(PartyMenuStruct *partyMenu) {
         case 0:
             break;
         case 1:
-            partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00165, TRUE);
+            PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00165, TRUE);
             partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SELECT_MONS_ERROR_MSG_CLOSE;
             PlaySE(SEQ_SE_DP_CUSTOM06);
             return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
@@ -2276,7 +2276,7 @@ static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
             BufferIntegerAsString(partyMenu->msgFormat, 1, partyMenu->unk_C68[2], 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
             StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
             String_Delete(string);
-            partyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
+            PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
             partyMenu->unk_C68[1] = 4;
             partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SOFTBOILED;
             return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
@@ -2298,7 +2298,7 @@ static u8 PartyMenu_SoftboiledTargetCheck(PartyMenuStruct *partyMenu) {
     }
     if (partyMenu->partyMonIndex == partyMenu->softboiledDonorSlot || partyMenu->monsDrawState[partyMenu->partyMonIndex].hp == 0 || partyMenu->monsDrawState[partyMenu->partyMonIndex].hp == partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp) {
         thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
-        partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00120, TRUE);
+        PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00120, TRUE);
         partyMenu->unk_C68[1] = 1;
         partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SOFTBOILED;
         return 1;
@@ -2430,7 +2430,7 @@ static int sub_0207C288(PartyMenuStruct *partyMenu) {
             sub_020812E8(partyMenu);
         }
     } else {
-        partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00102, TRUE);
+        PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00102, TRUE);
         partyMenu->partyMonIndex = PARTY_MON_SELECTION_CONFIRM;
         partyMenu->unk_C54 = sub_02081378;
     }
@@ -2658,7 +2658,7 @@ static int sub_0207CA30(PartyMenuStruct *partyMenu) {
         return PARTY_MENU_STATE_BEGIN_EXIT;
     } else {
         thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
-        partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00179, TRUE);
+        PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00179, TRUE);
         partyMenu->yesCallback = sub_0207FAA8;
         partyMenu->noCallback = sub_0207FAD4;
         partyMenu->afterTextPrinterState = PARTY_MENU_STATE_YES_NO_INIT;

@@ -227,7 +227,7 @@ static void PartyMonContextMenuAction_TakeMail(PartyMenuStruct *partyMenu, int *
     sub_0200E5D4(&partyMenu->windows[PARTY_MENU_WINDOW_ID_35], TRUE);
     sub_0207CB20(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
-    partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00044, TRUE);
+    PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00044, TRUE);
     partyMenu->yesCallback = PartyMenu_TakeMail_SendToPC;
     partyMenu->noCallback = PartyMenu_TakeMail_DontSendToPC;
     partyMenu->afterTextPrinterState = PARTY_MENU_STATE_YES_NO_INIT;
@@ -239,16 +239,16 @@ static int PartyMenu_TakeMail_SendToPC(PartyMenuStruct *partyMenu) {
     if (sub_02090FA8(partyMenu->args->mailbox, Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex), HEAP_ID_PARTY_MENU) != -1) {
         partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem = ITEM_NONE;
         PartyMenu_DrawMonHeldItemIcon(partyMenu, partyMenu->partyMonIndex, partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem);
-        partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00047, FALSE);
+        PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00047, FALSE);
     } else {
-        partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00051, FALSE);
+        PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00051, FALSE);
     }
     partyMenu->afterTextPrinterState = PARTY_MENU_STATE_20;
     return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
 }
 
 static int PartyMenu_TakeMail_DontSendToPC(PartyMenuStruct *partyMenu) {
-    partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00048, FALSE);
+    PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00048, FALSE);
     partyMenu->yesCallback = PartyMenu_TakeMail_ReturnToBag;
     partyMenu->noCallback = PartyMenu_TakeMail_DontReturnToBag;
     partyMenu->afterTextPrinterState = PARTY_MENU_STATE_YES_NO_INIT;
@@ -267,9 +267,9 @@ static int PartyMenu_TakeMail_ReturnToBag(PartyMenuStruct *partyMenu) {
         Mon_UpdateGiratinaForm(mon);
         partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem = ITEM_NONE;
         PartyMenu_DrawMonHeldItemIcon(partyMenu, partyMenu->partyMonIndex, partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem);
-        partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00052, FALSE);
+        PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00052, FALSE);
     } else {
-        partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00084, FALSE);
+        PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00084, FALSE);
     }
     partyMenu->afterTextPrinterState = PARTY_MENU_STATE_20;
     return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
@@ -299,7 +299,7 @@ static void PartyMonContextMenuAction_Store(PartyMenuStruct *partyMenu, int *pSt
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
         *pState = PARTY_MENU_STATE_BEGIN_EXIT;
     } else {
-        partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00179, TRUE);
+        PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00179, TRUE);
         partyMenu->yesCallback = sub_0207FAA8;
         partyMenu->noCallback = sub_0207FAD4;
         partyMenu->afterTextPrinterState = PARTY_MENU_STATE_YES_NO_INIT;
@@ -578,19 +578,19 @@ static void PartyMonContextMenuAction_Enter(PartyMenuStruct *partyMenu, int *pSt
     case 0:
         break;
     case 1:
-        partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00112, TRUE);
+        PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00112, TRUE);
         break;
     case 2:
-        partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00099, TRUE);
+        PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00099, TRUE);
         break;
     case 3:
-        partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00113, TRUE);
+        PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00113, TRUE);
         break;
     case 4:
-        partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00114, TRUE);
+        PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00114, TRUE);
         break;
     case 5:
-        partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00115, TRUE);
+        PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00115, TRUE);
         break;
     }
     partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SELECT_MONS_ERROR_MSG_CLOSE;
@@ -666,7 +666,7 @@ int PartyMenu_HandleSetMonCapsule(PartyMenuStruct *partyMenu) {
         ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00119, partyMenu->formattedStrBuf);
         partyMenu->partyMonIndex = 7;
     }
-    partyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
+    PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
     partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
     partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
     return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
@@ -708,7 +708,7 @@ static void PartyMenuContextMenuAction_FieldMoveCommon(PartyMenuStruct *partyMen
     ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
     sub_0207CB20(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
-    partyMenu_PrintMessageOnWindow34(partyMenu, msgId, TRUE);
+    PartyMenu_PrintMessageOnWindow34(partyMenu, msgId, TRUE);
     partyMenu->afterTextPrinterState = PARTY_MENU_STATE_3;
     *pState = PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
 }
@@ -803,7 +803,7 @@ static int sub_02080A58(PartyMenuStruct *partyMenu) {
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
     partyMenu->unk_C68[0] = partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp / 5;
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].hp <= partyMenu->unk_C68[0]) {
-        partyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00127, TRUE);partyMenu->afterTextPrinterState = PARTY_MENU_STATE_3;
+        PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00127, TRUE);partyMenu->afterTextPrinterState = PARTY_MENU_STATE_3;
         return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
     }
     partyMenu->unk_C63_6 = 1;

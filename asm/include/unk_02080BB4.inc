@@ -47,7 +47,7 @@
 .public PartyMenu_CommitPartyMonPanelWindowsToVram_InVBlank
 .public PartyMenu_PrintMessageOnWindow32
 .public PartyMenu_PrintMessageOnWindow33
-.public partyMenu_PrintMessageOnWindow34
+.public PartyMenu_PrintMessageOnWindow34
 .public PartyMenu_LevelUpPrintStatsChange
 .public sub_0207DF98
 .public sub_0207E04C

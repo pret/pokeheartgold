@@ -9,7 +9,7 @@
 #include "party_menu_list_items.h"
 #include "unk_0200CE7C.h"
 #include "unk_0208805C.h"
-#include "unk_02080BB4.h"
+#include "party_menu_items.h"
 
 static void PartyMenu_StartContextMenuButtonPressAnim_FromCursorObj(PartyMenuStruct *partyMenu, PartyMenuContextMenuCursor *cursor, int followUpState);
 static void addFiveWindows(BgConfig *bgConfig, Window *window, const WindowTemplate *template);
@@ -20,8 +20,8 @@ static u32 sub_0207D988(FontID fontId, String *string, u32 windowWidth);
 static void PartyMenu_PrintMessageOnWindowEx(PartyMenuStruct *partyMenu, Window *window, int msgId, BOOL drawFrame);
 static BOOL TextPrinterCB_PartyMenuWin34Msg(TextPrinterTemplate *template, u16 glyphId);
 static void PartyMenu_PrintEvoStoneCompatString(PartyMenuStruct *partyMenu, u8 partySlot, u8 compatibilityParam);
-static void sub_0207DC90(PartyMenuStruct *partyMenu, u8 partySlot, u8 compatibilityParam);
-static void sub_0207DD14(PartyMenuStruct *partyMenu, u8 partySlot, u8 isCompatible);
+static void PartyMenu_PrintTMHMCompatString(PartyMenuStruct *partyMenu, u8 partySlot, u8 compatibilityParam);
+static void PartyMenu_PrintSuperContestCompatString(PartyMenuStruct *partyMenu, u8 partySlot, u8 isCompatible);
 static void sub_0207DD7C(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
 static void PartyMenu_ShowContextMenu(PartyMenuStruct *partyMenu, int numItems, int state);
 static void PartyMenu_HideContextMenu(PartyMenuStruct *partyMenu, int numItems, int state);
@@ -649,31 +649,31 @@ void PartyMenu_DrawPartyMonsList_UseTMHM(PartyMenuStruct *partyMenu, u8 partySlo
     FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_LEVEL], 0);
     PartyMenu_PrintMonNicknameOnWindow(partyMenu, partySlot);
     if (partyMenu->monsDrawState[partySlot].isEgg == TRUE) {
-        sub_0207DC90(partyMenu, partySlot, 1);
+        PartyMenu_PrintTMHMCompatString(partyMenu, partySlot, 1);
     } else {
         PartyMenu_PrintMonLevelOnWindow(partyMenu, partySlot);
         u8 x = sub_020820DC(partyMenu, Party_GetMonByIndex(partyMenu->args->party, partySlot));
         if (x == 0xFF) {
-            sub_0207DC90(partyMenu, partySlot, 1);
+            PartyMenu_PrintTMHMCompatString(partyMenu, partySlot, 1);
         } else if (x == 0xFD) {
-            sub_0207DC90(partyMenu, partySlot, 2);
+            PartyMenu_PrintTMHMCompatString(partyMenu, partySlot, 2);
         } else {
-            sub_0207DC90(partyMenu, partySlot, 0);
+            PartyMenu_PrintTMHMCompatString(partyMenu, partySlot, 0);
         }
     }
 }
 
-void sub_0207D840(PartyMenuStruct *partyMenu, u8 partySlot) {
+void PartyMenu_DrawPartyMonsList_SuperContestEntry(PartyMenuStruct *partyMenu, u8 partySlot) {
     FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_NICKNAME], 0);
     FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_LEVEL], 0);
     PartyMenu_PrintMonNicknameOnWindow(partyMenu, partySlot);
     if (partyMenu->monsDrawState[partySlot].isEgg != TRUE) {
         PartyMenu_PrintMonLevelOnWindow(partyMenu, partySlot);
     }
-    sub_0207DD14(partyMenu, partySlot, partyMenu->monsDrawState[partySlot].isContestCompatible);
+    PartyMenu_PrintSuperContestCompatString(partyMenu, partySlot, partyMenu->monsDrawState[partySlot].isContestCompatible);
 }
 
-void sub_0207D8A4(PartyMenuStruct *partyMenu, u8 partySlot) {
+void PartyMenu_DrawPartyMonsList_FrontierFacilityEntry(PartyMenuStruct *partyMenu, u8 partySlot) {
     FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_NICKNAME], 0);
     FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_LEVEL], 0);
     PartyMenu_PrintMonNicknameOnWindow(partyMenu, partySlot);
@@ -749,7 +749,7 @@ void PartyMenu_PrintMessageOnWindow33(PartyMenuStruct *partyMenu, int msgId, BOO
     PartyMenu_PrintMessageOnWindowEx(partyMenu, &partyMenu->windows[PARTY_MENU_WINDOW_ID_33], msgId, drawFrame);
 }
 
-void partyMenu_PrintMessageOnWindow34(PartyMenuStruct *partyMenu, int msgId, BOOL drawFrame) {
+void PartyMenu_PrintMessageOnWindow34(PartyMenuStruct *partyMenu, int msgId, BOOL drawFrame) {
     Window *window = &partyMenu->windows[PARTY_MENU_WINDOW_ID_34];
     if (drawFrame == TRUE) {
         DrawFrameAndWindow2(window, TRUE, 0x02A, 15);
@@ -825,7 +825,7 @@ static void PartyMenu_PrintEvoStoneCompatString(PartyMenuStruct *partyMenu, u8 p
     ScheduleWindowCopyToVram(window);
 }
 
-static void sub_0207DC90(PartyMenuStruct *partyMenu, u8 partySlot, u8 compatibilityParam) {
+static void PartyMenu_PrintTMHMCompatString(PartyMenuStruct *partyMenu, u8 partySlot, u8 compatibilityParam) {
     Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_COMPAT];
     String *string;
 
@@ -847,7 +847,7 @@ static void sub_0207DC90(PartyMenuStruct *partyMenu, u8 partySlot, u8 compatibil
     ScheduleWindowCopyToVram(window);
 }
 
-static void sub_0207DD14(PartyMenuStruct *partyMenu, u8 partySlot, u8 isCompatible) {
+static void PartyMenu_PrintSuperContestCompatString(PartyMenuStruct *partyMenu, u8 partySlot, u8 isCompatible) {
     Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_COMPAT];
     String *string;
 

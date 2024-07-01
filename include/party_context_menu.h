@@ -24,13 +24,13 @@ void PartyMenu_CommitPartyMonPanelWindowsToVram_InVBlank(PartyMenuStruct *partyM
 void PartyMenu_CommitPartyMonPanelWindowsToVram_NotInVBlank(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207D710(PartyMenuStruct *partyMenu, u8 partySlot);
 void PartyMenu_DrawPartyMonsList_UseTMHM(PartyMenuStruct *partyMenu, u8 partySlot);
-void sub_0207D840(PartyMenuStruct *partyMenu, u8 partySlot);
-void sub_0207D8A4(PartyMenuStruct *partyMenu, u8 partySlot);
+void PartyMenu_DrawPartyMonsList_SuperContestEntry(PartyMenuStruct *partyMenu, u8 partySlot);
+void PartyMenu_DrawPartyMonsList_FrontierFacilityEntry(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207D8EC(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207D998(PartyMenuStruct *partyMenu, u8 a1);
 void PartyMenu_PrintMessageOnWindow32(PartyMenuStruct *partyMenu, int msgId, BOOL drawFrame);
 void PartyMenu_PrintMessageOnWindow33(PartyMenuStruct *partyMenu, int msgId, BOOL drawFrame);
-void partyMenu_PrintMessageOnWindow34(PartyMenuStruct *partyMenu, int msgId, BOOL drawFrame);
+void PartyMenu_PrintMessageOnWindow34(PartyMenuStruct *partyMenu, int msgId, BOOL drawFrame);
 void PartyMenu_PrintBufferedMessageOnWindow34(PartyMenuStruct *partyMenu);
 void PartyMenu_CreateYesNoPrompt(PartyMenuStruct *partyMenu);
 void PartyMenu_LevelUpPrintStatsChange(PartyMenuStruct *partyMenu);
