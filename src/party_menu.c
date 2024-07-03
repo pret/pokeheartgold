@@ -308,8 +308,8 @@ static BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState) {
     case PARTY_MENU_STATE_SELECT_MOVE:
         *pState = PartyMenu_Subtask_SelectMove(partyMenu);
         break;
-    case PARTY_MENU_STATE_7:
-        *pState = sub_02081820(partyMenu);
+    case PARTY_MENU_STATE_SACRED_ASH:
+        *pState = PartyMenu_Subtask_SacredAsh(partyMenu);
         break;
     case PARTY_MENU_STATE_8:
         *pState = sub_02079400(partyMenu);
@@ -442,7 +442,7 @@ static int PartyMenu_Subtask_Init(PartyMenuStruct *partyMenu) {
         if (partyMenu->args->context == PARTY_MENU_CONTEXT_USE_ITEM || partyMenu->args->context == PARTY_MENU_CONTEXT_EVO_STONE) {
             if (sub_020817C4(partyMenu->args->itemId) == TRUE) {
                 partyMenu->afterTextPrinterState = PARTY_MENU_STATE_INIT;
-                return PARTY_MENU_STATE_7;
+                return PARTY_MENU_STATE_SACRED_ASH;
             } else {
                 return PARTY_MENU_STATE_4;
             }

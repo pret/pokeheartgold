@@ -6,7 +6,7 @@
 void sub_020812E8(PartyMenuStruct *partyMenu);
 int sub_02081378(PartyMenuStruct *partyMenu);
 BOOL sub_020817C4(u16 itemId);
-int sub_02081820(PartyMenuStruct *partyMenu);
+int PartyMenu_Subtask_SacredAsh(PartyMenuStruct *partyMenu);
 int sub_02081ED0(PartyMenuStruct *partyMenu);
 u8 sub_020820DC(PartyMenuStruct *partyMenu, Pokemon *mon);
 int sub_02082134(PartyMenuStruct *partyMenu);

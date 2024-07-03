@@ -61,7 +61,7 @@
 .public sub_020812E8
 .public sub_02081378
 .public sub_020817C4
-.public sub_02081820
+.public PartyMenu_Subtask_SacredAsh
 .public sub_02081ED0
 .public sub_020820DC
 .public sub_02082134

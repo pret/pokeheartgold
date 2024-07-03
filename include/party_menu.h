@@ -43,7 +43,7 @@ typedef enum PartyMenuState {
     PARTY_MENU_STATE_4,
     PARTY_MENU_STATE_5,
     PARTY_MENU_STATE_SELECT_MOVE,
-    PARTY_MENU_STATE_7,
+    PARTY_MENU_STATE_SACRED_ASH,
     PARTY_MENU_STATE_8,
     PARTY_MENU_STATE_PRINT_ASK_SWITCH_ITEMS,
     PARTY_MENU_STATE_YESNO_ASK_SWITCH_ITEMS,
@@ -426,7 +426,7 @@ struct PartyMenuStruct {
     u8 textPrinterId;
     u8 partyMonIndex; // 0xc65
     u8 unk_C66;
-    u8 filler_C67[1];
+    u8 unk_C67;
     u16 unk_C68[6];
     Pokedex *pokedex; // 0xc74
     int topScreenPanelYPos;

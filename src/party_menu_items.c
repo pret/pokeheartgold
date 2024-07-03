@@ -1,3 +1,4 @@
+#include "bag.h"
 #include "global.h"
 #include "party_menu_items.h"
 #include "msgdata/msg/msg_0300.h"
@@ -46,7 +47,9 @@ int sub_020813A4(PartyMenuStruct *partyMenu);
 int sub_02081444(PartyMenuStruct *partyMenu);
 int sub_020815E4(PartyMenuStruct *partyMenu);
 int sub_02081720(PartyMenuStruct *partyMenu);
+u8 sub_020817DC(PartyMenuStruct *partyMenu, u8 a1);
 int sub_02081A74(PartyMenuStruct *partyMenu);
+int sub_02081C50(PartyMenuStruct *partyMenu);
 u16 sub_020828EC(PartyMenuStruct *partyMenu);
 
 PartyMenuItemType sub_02080BB4(u16 itemId) {
@@ -478,4 +481,117 @@ int sub_02081720(PartyMenuStruct *partyMenu) {
 
 BOOL sub_020817C4(u16 itemId) {
     return !!GetItemAttr(itemId, ITEMATTR_REVIVE_ALL, HEAP_ID_PARTY_MENU);
+}
+
+u8 sub_020817DC(PartyMenuStruct *partyMenu, u8 a1) {
+    if (a1 >= 6) {
+        return 0xFF;
+    }
+    for (; a1 < 6; ++a1) {
+        if (partyMenu->monsDrawState[a1].active && partyMenu->monsDrawState[a1].hp == 0) {
+            return a1;
+        }
+    }
+
+    return 0xFF;
+}
+
+int PartyMenu_Subtask_SacredAsh(PartyMenuStruct *partyMenu) {
+    Pokemon *mon;
+    String *string;
+    int hp;
+
+    switch (partyMenu->afterTextPrinterState) {
+    case 0:
+        partyMenu->partyMonIndex = sub_020817DC(partyMenu, 0);
+        if (partyMenu->partyMonIndex == 0xFF) {
+            ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00102, partyMenu->formattedStrBuf);
+            PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
+            partyMenu->unk_C54 = sub_02081378;
+            sub_0207F240(partyMenu, 0, 1);
+            partyMenu->partyMonIndex = 7;
+            return PARTY_MENU_STATE_5;
+        } else if (partyMenu->partyMonIndex != 0) {
+            sub_0207A7F4(partyMenu, 0);
+        }
+        // fallthrough
+    case 1:
+        mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+        UseItemOnPokemon(mon, partyMenu->args->itemId, 0, sub_020828EC(partyMenu), HEAP_ID_PARTY_MENU);
+        hp = GetMonData(mon, MON_DATA_HP, NULL);
+        string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00071);
+        BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+        StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
+        String_Delete(string);
+        partyMenu->monsDrawState[partyMenu->partyMonIndex].status = PARTY_MON_STATUS_ICON_OK;
+        PartyMenu_DrawMonStatusIcon(partyMenu, partyMenu->partyMonIndex, partyMenu->monsDrawState[partyMenu->partyMonIndex].status);
+        PartyMenu_PrintMonLevelOnWindow(partyMenu, partyMenu->partyMonIndex);
+        sub_0207A7F4(partyMenu, partyMenu->partyMonIndex);
+        sub_0207F240(partyMenu, partyMenu->partyMonIndex, 1);
+        PlaySE(SEQ_SE_DP_KAIFUKU);
+        ++partyMenu->afterTextPrinterState;
+        break;
+    case 2:
+        mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+        hp = GetMonData(mon, MON_DATA_HP, NULL);
+        ++partyMenu->monsDrawState[partyMenu->partyMonIndex].hp;
+        PartyMenu_ClearMonHpTextWindow(partyMenu, partyMenu->partyMonIndex);
+        FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_MON1_HPBAR + 5 * partyMenu->partyMonIndex], 0);PartyMenu_PrintMonCurHpOnWindow(partyMenu, partyMenu->partyMonIndex);
+        PartyMenu_DrawMonHpBarOnWindow(partyMenu, partyMenu->partyMonIndex);
+        if (hp == partyMenu->monsDrawState[partyMenu->partyMonIndex].hp) {
+            PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
+            ++partyMenu->afterTextPrinterState;
+        }
+        break;
+    case 3:
+        if (!TextPrinterCheckActive(partyMenu->textPrinterId)) {
+            u8 last = partyMenu->partyMonIndex;
+            partyMenu->partyMonIndex = sub_020817DC(partyMenu, last + 1);
+            if (partyMenu->partyMonIndex != 0xFF) {
+                ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], FALSE);
+                sub_0207A7F4(partyMenu, last);
+                partyMenu->afterTextPrinterState = 1;
+            } else {
+                Bag_TakeItem(partyMenu->args->bag, partyMenu->args->itemId, 1, HEAP_ID_PARTY_MENU);
+                partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
+                partyMenu->partyMonIndex = 7;
+                return PARTY_MENU_STATE_BEGIN_EXIT;
+            }
+        }
+    }
+
+    return PARTY_MENU_STATE_SACRED_ASH;
+}
+
+int sub_02081A74(PartyMenuStruct *partyMenu) {
+    Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+    partyMenu->unk_C68[0] = GetMonData(mon, MON_DATA_MAXHP, NULL);
+    partyMenu->unk_C68[1] = GetMonData(mon, MON_DATA_ATK, NULL);
+    partyMenu->unk_C68[2] = GetMonData(mon, MON_DATA_DEF, NULL);
+    partyMenu->unk_C68[3] = GetMonData(mon, MON_DATA_SPATK, NULL);
+    partyMenu->unk_C68[4] = GetMonData(mon, MON_DATA_SPDEF, NULL);
+    partyMenu->unk_C68[5] = GetMonData(mon, MON_DATA_SPEED, NULL);
+    UseItemOnMonInParty(partyMenu->args->party, partyMenu->args->itemId, partyMenu->partyMonIndex, 0, sub_020828EC(partyMenu), HEAP_ID_PARTY_MENU);
+    partyMenu->monsDrawState[partyMenu->partyMonIndex].level = GetMonData(mon, MON_DATA_LEVEL, NULL);
+    partyMenu->monsDrawState[partyMenu->partyMonIndex].hp = GetMonData(mon, MON_DATA_HP, NULL);
+    partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp = GetMonData(mon, MON_DATA_MAXHP, NULL);
+    String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00177);
+    BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+    BufferIntegerAsString(partyMenu->msgFormat, 1, partyMenu->monsDrawState[partyMenu->partyMonIndex].level, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
+    String_Delete(string);
+    int statusIcon = Pokemon_GetStatusIconId(mon);
+    PartyMenu_DrawMonStatusIcon(partyMenu, partyMenu->partyMonIndex, statusIcon);
+    if (statusIcon == PARTY_MON_STATUS_ICON_OK) {
+        partyMenu->monsDrawState[partyMenu->partyMonIndex].status = PARTY_MON_STATUS_ICON_OK;
+        PartyMenu_PrintMonLevelOnWindow(partyMenu, partyMenu->partyMonIndex);
+    }
+    sub_0207A7F4(partyMenu, partyMenu->partyMonIndex);
+    partyMenu->unk_C54 = sub_02081720;
+    sub_0207D5DC(partyMenu, partyMenu->partyMonIndex);
+    PartyMenu_CommitPartyMonPanelWindowsToVram_InVBlank(partyMenu, partyMenu->partyMonIndex);
+    PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
+    partyMenu->unk_C54 = sub_02081C50;
+    partyMenu->unk_C67 = 0;
+    return PARTY_MENU_STATE_5;
 }
