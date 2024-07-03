@@ -1,13 +1,16 @@
 #include "bag.h"
 #include "global.h"
 #include "party_menu_items.h"
+#include "map_header.h"
 #include "msgdata/msg/msg_0300.h"
 #include "party_context_menu.h"
 #include "party_menu_sprites.h"
+#include "system.h"
 #include "text.h"
 #include "unk_02005D10.h"
 #include "unk_02088288.h"
 #include "use_item_on_mon.h"
+#include "field_system.h"
 
 typedef enum PartyMenuItemType {
     PARTY_MENU_ITEM_TYPE_BATTLE_STAT_STAGES,
@@ -50,6 +53,9 @@ int sub_02081720(PartyMenuStruct *partyMenu);
 u8 sub_020817DC(PartyMenuStruct *partyMenu, u8 a1);
 int sub_02081A74(PartyMenuStruct *partyMenu);
 int sub_02081C50(PartyMenuStruct *partyMenu);
+int sub_02081F8C(PartyMenuStruct *partyMenu);
+int sub_02081FE0(PartyMenuStruct *partyMenu);
+void sub_0208254C(PartyMenuStruct *partyMenu, Pokemon *mon, int moveIdx);
 u16 sub_020828EC(PartyMenuStruct *partyMenu);
 
 PartyMenuItemType sub_02080BB4(u16 itemId) {
@@ -593,5 +599,88 @@ int sub_02081A74(PartyMenuStruct *partyMenu) {
     PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
     partyMenu->unk_C54 = sub_02081C50;
     partyMenu->unk_C67 = 0;
+    return PARTY_MENU_STATE_5;
+}
+
+int sub_02081C50(PartyMenuStruct *partyMenu) {
+    Pokemon *mon;
+    String *string;
+    int mapEvoMethod;
+
+    switch (partyMenu->unk_C67) {
+    case 0:
+        if (!TextPrinterCheckActive(partyMenu->textPrinterId)) {
+            PartyMenu_LevelUpPrintStatsChange(partyMenu);
+            partyMenu->unk_C67 = 1;
+        }
+        break;
+    case 1:
+        if ((gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B)) || System_GetTouchNew() == TRUE) {
+            PlaySE(SEQ_SE_DP_SELECT);
+            sub_0207DF98(partyMenu);
+            partyMenu->unk_C67 = 2;
+        }
+        break;
+    case 2:
+        if ((gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B)) || System_GetTouchNew() == TRUE) {
+            PlaySE(SEQ_SE_DP_SELECT);
+            sub_0207E04C(partyMenu);
+            partyMenu->unk_C67 = 3;
+            partyMenu->args->unk_38 = 0;
+        }
+        break;
+    case 3:
+        mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+        switch (MonTryLearnMoveOnLevelUp(mon, &partyMenu->args->unk_38, &partyMenu->args->unk_2A)) {
+        case 0:
+            partyMenu->unk_C67 = 6;
+            break;
+        case MOVE_APPEND_KNOWN:
+            break;
+        case MOVE_APPEND_FULL:
+            BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+            BufferMoveName(partyMenu->msgFormat, 1, partyMenu->args->unk_2A);
+            string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00053);
+            StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
+            String_Delete(string);
+            PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
+            partyMenu->yesCallback = sub_02081F8C;
+            partyMenu->noCallback = sub_02081FE0;
+            partyMenu->afterTextPrinterState = PARTY_MENU_STATE_YES_NO_INIT;
+            return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
+        default:
+            BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+            BufferMoveName(partyMenu->msgFormat, 1, partyMenu->args->unk_2A);
+            string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00178);
+            StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
+            String_Delete(string);
+            PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
+            partyMenu->unk_C67 = 4;
+            break;
+        }
+        break;
+    case 4:
+        if (!TextPrinterCheckActive(partyMenu->textPrinterId)) {
+            partyMenu->unk_C67 = 3;
+        }
+        break;
+    case 5:
+        mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+        sub_0208254C(partyMenu, mon, partyMenu->args->unk_2C);
+        string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00062);
+        BufferMoveName(partyMenu->msgFormat, 1, partyMenu->args->unk_2A);
+        StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
+        String_Delete(string);
+        PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
+        partyMenu->unk_C67 = 4;
+        break;
+    case 6:
+        mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+        mapEvoMethod = MapHeader_GetMapEvolutionMethod(partyMenu->args->fieldSystem->location->mapId);
+        partyMenu->args->species = GetMonEvolution(partyMenu->args->party, mon, EVOCTX_LEVELUP, mapEvoMethod, &partyMenu->args->unk_40);
+        partyMenu->args->selectedAction = partyMenu->args->species != SPECIES_NONE ? PARTY_MENU_ACTION_RETURN_EVO_RARE_CANDY : PARTY_MENU_ACTION_RETURN_0;
+        return PARTY_MENU_STATE_BEGIN_EXIT;
+    }
+
     return PARTY_MENU_STATE_5;
 }
