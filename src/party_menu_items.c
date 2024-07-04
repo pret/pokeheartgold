@@ -3,9 +3,12 @@
 #include "global.h"
 #include "party_menu_items.h"
 #include "map_header.h"
+#include "move.h"
 #include "msgdata/msg/msg_0300.h"
 #include "party_context_menu.h"
+#include "party_menu_list_items.h"
 #include "party_menu_sprites.h"
+#include "pokemon_mood.h"
 #include "system.h"
 #include "text.h"
 #include "unk_02005D10.h"
@@ -63,6 +66,7 @@ int sub_02082448(PartyMenuStruct *partyMenu);
 int sub_020824A0(PartyMenuStruct *partyMenu);
 int sub_020824F4(PartyMenuStruct *partyMenu);
 void sub_0208254C(PartyMenuStruct *partyMenu, Pokemon *mon, int moveIdx);
+u8 sub_020825D8(PartyMenuStruct *partyMenu, int moveIdx);
 u16 sub_020828EC(PartyMenuStruct *partyMenu);
 
 PartyMenuItemType sub_02080BB4(u16 itemId) {
@@ -897,3 +901,61 @@ int sub_020824F4(PartyMenuStruct *partyMenu) {
     partyMenu->afterTextPrinterState = PARTY_MENU_STATE_YES_NO_INIT;
     return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
 }
+
+ void sub_0208254C(PartyMenuStruct *partyMenu, Pokemon *mon, int moveIdx) {
+    int data = partyMenu->args->unk_2A;
+    SetMonData(mon, MON_DATA_MOVE1 + moveIdx, &data);
+    data = 0;
+    SetMonData(mon, MON_DATA_MOVE1PPUP + moveIdx, &data);
+    data = GetMoveMaxPP(partyMenu->args->unk_2A, 0);
+    SetMonData(mon, MON_DATA_MOVE1PP + moveIdx, &data);
+    if (partyMenu->args->itemId != ITEM_NONE) {
+        if (!MoveIsHM(partyMenu->args->unk_2A)) {
+            Bag_TakeItem(partyMenu->args->bag, partyMenu->args->itemId, 1, HEAP_ID_PARTY_MENU);
+        }
+        MonApplyFriendshipMod(mon, FRIENDSHIP_EVENT_LEARN_TMHM, sub_020828EC(partyMenu));
+        ApplyMonMoodModifier(mon, MON_MOOD_MODIFIER_LEARN_TMHM);
+    }
+ }
+
+ u8 sub_020825D8(PartyMenuStruct *partyMenu, int moveIdx) {
+    Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+    u16 moveId = GetMonData(mon, MON_DATA_MOVE1 + moveIdx, NULL);
+    String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00145 + moveIdx);
+    BufferMoveName(partyMenu->msgFormat, 0, moveId);
+    StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->unformattedStrBuf, string);
+    String_Delete(string);
+    if (moveId == MOVE_NONE) {
+        return FALSE;
+    } else {
+        ListMenuItems_AddItem(partyMenu->listMenuItems, partyMenu->unformattedStrBuf, moveIdx);
+        return TRUE;
+    }
+ }
+
+ void sub_02082654(PartyMenuStruct *partyMenu, BOOL a1) {
+    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_32], TRUE);
+    if (!a1) {
+        PartyMenu_PrintMessageOnWindow33(partyMenu, msg_0300_00042, TRUE);
+    } else {
+        PartyMenu_PrintMessageOnWindow33(partyMenu, msg_0300_00041, TRUE);
+    }
+    partyMenu->listMenuItems = ListMenuItems_New(5, HEAP_ID_PARTY_MENU);
+    u8 numItems = sub_020825D8(partyMenu, 0);
+    numItems   += sub_020825D8(partyMenu, 1);
+    numItems   += sub_020825D8(partyMenu, 2);
+    numItems   += sub_020825D8(partyMenu, 3);
+    ListMenuItems_AddItem(partyMenu->listMenuItems, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_QUIT], GetPartyMenuContextMenuActionFunc(PARTY_MON_CONTEXT_MENU_QUIT));
+
+    PartyMenuContextMenu contextMenu;
+    contextMenu.items = partyMenu->listMenuItems;
+    contextMenu.window = &partyMenu->windows[PARTY_MENU_WINDOW_ID_36];
+    contextMenu.unk_08 = 0;
+    contextMenu.unk_09 = 1;
+    contextMenu.numItems = numItems + 1;
+    contextMenu.unk_0B_0 = 0;
+    contextMenu.unk_0B_4 = 0;
+    contextMenu.scrollEnabled = 1;
+    sub_0207E54C(partyMenu, contextMenu.numItems, 0, 1);
+    partyMenu->contextMenuCursor = PartyMenu_CreateContextMenuCursor(partyMenu, &contextMenu, 0, HEAP_ID_PARTY_MENU, 1);
+ }

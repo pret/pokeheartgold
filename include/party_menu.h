@@ -391,8 +391,8 @@ typedef struct UnkPartyMenuSub_94C {
 struct PartyMenuStruct {
     BgConfig *bgConfig;
     Window windows[PARTY_MENU_WINDOW_ID_MAX];
-    Window levelUpStatsWindow[1];
-    Window contextMenuButtonWindows[8];
+    Window levelUpStatsWindow[1];  //0x284
+    Window contextMenuButtonWindows[8];  //0x294
     u16 unk_314[6 * 0x10];
     u16 unk_3D4[6 * 0x10];
     u16 unk_494[6 * 0x10];

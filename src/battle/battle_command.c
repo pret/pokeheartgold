@@ -6157,7 +6157,7 @@ static void Task_GetExp(SysTask *task, void *inData)
                 oldStats->stats[i] = GetMonData(mon, stats.stats[i], NULL);
             }
 
-            MonApplyFriendshipMod(mon, 0, BattleSystem_GetLocation(data->bsys));
+            MonApplyFriendshipMod(mon, MON_MOOD_MODIFIER_LEVEL_UP_IN_BATTLE, BattleSystem_GetLocation(data->bsys));
             ApplyMonMoodModifier(mon, 0);
             CalcMonStats(mon);
 
