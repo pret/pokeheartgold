@@ -49,7 +49,7 @@ typedef enum PartyMenuItemType {
 } PartyMenuItemType;
 
 PartyMenuItemType sub_02080BB4(u16 itemId);
-void sub_02080E9C(PartyMenuStruct *partyMenu, u16 itemId, int a2);
+void sub_02080E9C(PartyMenuStruct *partyMenu, u16 itemId, int param);
 int sub_020813A4(PartyMenuStruct *partyMenu);
 int sub_02081444(PartyMenuStruct *partyMenu);
 int sub_020815E4(PartyMenuStruct *partyMenu);
@@ -218,7 +218,7 @@ PartyMenuItemType sub_02080BB4(u16 itemId) {
     return PARTY_MENU_ITEM_TYPE_OTHER;
 }
 
-void sub_02080E9C(PartyMenuStruct *partyMenu, u16 itemId, int a2) {
+void sub_02080E9C(PartyMenuStruct *partyMenu, u16 itemId, int param) {
     String *string;
 
     BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex)));
@@ -300,37 +300,37 @@ void sub_02080E9C(PartyMenuStruct *partyMenu, u16 itemId, int a2) {
         String_Delete(string);
         break;
     case PARTY_MENU_ITEM_TYPE_HP_EV_DOWN:
-        string = NewString_ReadMsgData(partyMenu->msgData, a2 + msg_0300_00104);
+        string = NewString_ReadMsgData(partyMenu->msgData, param + msg_0300_00104);
         BufferStatName(partyMenu->msgFormat, 1, STAT_HP);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
         String_Delete(string);
         break;
     case PARTY_MENU_ITEM_TYPE_ATK_EV_DOWN:
-        string = NewString_ReadMsgData(partyMenu->msgData, a2 + msg_0300_00104);
+        string = NewString_ReadMsgData(partyMenu->msgData, param + msg_0300_00104);
         BufferStatName(partyMenu->msgFormat, 1, STAT_ATK);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
         String_Delete(string);
         break;
     case PARTY_MENU_ITEM_TYPE_DEF_EV_DOWN:
-        string = NewString_ReadMsgData(partyMenu->msgData, a2 + msg_0300_00104);
+        string = NewString_ReadMsgData(partyMenu->msgData, param + msg_0300_00104);
         BufferStatName(partyMenu->msgFormat, 1, STAT_DEF);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
         String_Delete(string);
         break;
     case PARTY_MENU_ITEM_TYPE_SPEED_EV_DOWN:
-        string = NewString_ReadMsgData(partyMenu->msgData, a2 + msg_0300_00104);
+        string = NewString_ReadMsgData(partyMenu->msgData, param + msg_0300_00104);
         BufferStatName(partyMenu->msgFormat, 1, STAT_SPEED);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
         String_Delete(string);
         break;
     case PARTY_MENU_ITEM_TYPE_SPATK_EV_DOWN:
-        string = NewString_ReadMsgData(partyMenu->msgData, a2 + msg_0300_00104);
+        string = NewString_ReadMsgData(partyMenu->msgData, param + msg_0300_00104);
         BufferStatName(partyMenu->msgFormat, 1, STAT_SPATK);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
         String_Delete(string);
         break;
     case PARTY_MENU_ITEM_TYPE_SPDEF_EV_DOWN:
-        string = NewString_ReadMsgData(partyMenu->msgData, a2 + msg_0300_00104);
+        string = NewString_ReadMsgData(partyMenu->msgData, param + msg_0300_00104);
         BufferStatName(partyMenu->msgFormat, 1, STAT_SPDEF);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
         String_Delete(string);
@@ -338,7 +338,7 @@ void sub_02080E9C(PartyMenuStruct *partyMenu, u16 itemId, int a2) {
     case PARTY_MENU_ITEM_TYPE_PP_UP:
     case PARTY_MENU_ITEM_TYPE_PP_MAX:
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00073);
-        BufferMoveName(partyMenu->msgFormat, 0, a2);
+        BufferMoveName(partyMenu->msgFormat, 0, param);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
         String_Delete(string);
         break;
@@ -958,4 +958,58 @@ int sub_020824F4(PartyMenuStruct *partyMenu) {
     contextMenu.scrollEnabled = 1;
     sub_0207E54C(partyMenu, contextMenu.numItems, 0, 1);
     partyMenu->contextMenuCursor = PartyMenu_CreateContextMenuCursor(partyMenu, &contextMenu, 0, HEAP_ID_PARTY_MENU, 1);
- }
+}
+
+int PartyMenu_Subtask_SelectMove(PartyMenuStruct *partyMenu) {
+    u32 input = PartyMenu_HandleSubcontextMenuInput_TopLevel(partyMenu, partyMenu->contextMenuCursor);
+    switch (input) {
+    case LIST_CANCEL:
+        ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
+        sub_0200E5D4(&partyMenu->windows[PARTY_MENU_WINDOW_ID_36], TRUE);
+        sub_0207CB20(partyMenu);
+        PartyMenu_DisableMainScreenBlend_AfterYesNo();
+        PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00033, TRUE);
+        thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
+        return PARTY_MENU_STATE_4;
+    default:
+        ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
+        sub_0200E5D4(&partyMenu->windows[PARTY_MENU_WINDOW_ID_36], TRUE);
+        sub_0207CB20(partyMenu);
+        PartyMenu_DisableMainScreenBlend_AfterYesNo();
+        if (UseItemOnMonInParty(partyMenu->args->party, partyMenu->args->itemId, partyMenu->partyMonIndex, input, sub_020828EC(partyMenu), HEAP_ID_PARTY_MENU) == TRUE) {
+            Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+            int moveId = GetMonData(mon, MON_DATA_MOVE1 + input, NULL);
+            sub_02080E9C(partyMenu, partyMenu->args->itemId, moveId);
+            Bag_TakeItem(partyMenu->args->bag, partyMenu->args->itemId, 1, HEAP_ID_PARTY_MENU);
+            PlaySE(SEQ_SE_DP_KAIFUKU);
+        } else {
+            ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00102, partyMenu->formattedStrBuf);
+        }
+        PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
+        partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
+        partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
+        return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
+    case LIST_NOTHING_CHOSEN:
+        return PARTY_MENU_STATE_SELECT_MOVE;
+    }
+}
+
+void sub_02082868(PartyMenuStruct *partyMenu) {
+    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_32], TRUE);
+    if (partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem == ITEM_NONE) {
+        ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00116, partyMenu->formattedStrBuf);
+        PartyMenu_SetMonHeldMailIcon(partyMenu, partyMenu->partyMonIndex);
+    } else {
+        ReadMsgDataIntoString(partyMenu->msgData,
+        msg_0300_00117, partyMenu->formattedStrBuf);
+        partyMenu->partyMonIndex = 7;
+    }
+    PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
+    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
+}
+
+u16 sub_020828EC(PartyMenuStruct *partyMenu) {
+    int ret = MapHeader_GetMapSec(partyMenu->args->fieldSystem->location->mapId);
+    return ret;
+}

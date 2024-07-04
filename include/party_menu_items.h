@@ -18,6 +18,6 @@ int sub_020822CC(PartyMenuStruct *partyMenu);
 int sub_02082370(PartyMenuStruct *partyMenu);
 int PartyMenu_Subtask_SelectMove(PartyMenuStruct *partyMenu);
 void sub_02082654(PartyMenuStruct *partyMenu, BOOL a1);
-int sub_02082868(PartyMenuStruct *partyMenu);
+void sub_02082868(PartyMenuStruct *partyMenu);
 
 #endif //GUARD_POKEHEARTGOLD_PARTY_MENU_MOVES_H
