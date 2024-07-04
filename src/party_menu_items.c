@@ -60,6 +60,8 @@ int sub_02082038(PartyMenuStruct *partyMenu);
 int sub_02082084(PartyMenuStruct *partyMenu);
 int sub_020823F4(PartyMenuStruct *partyMenu);
 int sub_02082448(PartyMenuStruct *partyMenu);
+int sub_020824A0(PartyMenuStruct *partyMenu);
+int sub_020824F4(PartyMenuStruct *partyMenu);
 void sub_0208254C(PartyMenuStruct *partyMenu, Pokemon *mon, int moveIdx);
 u16 sub_020828EC(PartyMenuStruct *partyMenu);
 
@@ -821,5 +823,77 @@ int sub_02082134(PartyMenuStruct *partyMenu) {
         partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
         break;
     }
+    return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
+}
+
+int sub_020822CC(PartyMenuStruct *partyMenu) {
+    Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+    BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+    if (partyMenu->args->unk_2C == 4) {
+        BufferMoveName(partyMenu->msgFormat, 1, partyMenu->args->unk_2A);
+        return sub_02082448(partyMenu);
+    } else {
+        BufferMoveName(partyMenu->msgFormat, 1, GetMonData(mon, MON_DATA_MOVE1 + partyMenu->args->unk_2C, NULL));
+        String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00061);
+        StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
+        String_Delete(string);
+        PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
+        partyMenu->afterTextPrinterState = PARTY_MENU_STATE_22;
+        return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
+    }
+}
+
+int sub_02082370(PartyMenuStruct *partyMenu) {
+    Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+    sub_0208254C(partyMenu, mon, partyMenu->args->unk_2C);
+    String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00062);
+    BufferMoveName(partyMenu->msgFormat, 1, partyMenu->args->unk_2A);
+    StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
+    String_Delete(string);
+    PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
+    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
+    return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
+}
+
+int sub_020823F4(PartyMenuStruct *partyMenu) {
+    String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00060);
+    StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
+    String_Delete(string);
+    PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_4;
+    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
+    return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
+}
+
+int sub_02082448(PartyMenuStruct *partyMenu) {
+    String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00056);
+    StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
+    String_Delete(string);
+    PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
+    partyMenu->yesCallback = sub_020824A0;
+    partyMenu->noCallback = sub_020824F4;
+    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_YES_NO_INIT;
+    return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
+}
+
+int sub_020824A0(PartyMenuStruct *partyMenu) {
+    String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00059);
+    StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
+    String_Delete(string);
+    PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
+    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
+    return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
+}
+
+int sub_020824F4(PartyMenuStruct *partyMenu) {
+    String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00053);
+    StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
+    String_Delete(string);
+    PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
+    partyMenu->yesCallback = sub_020823F4;
+    partyMenu->noCallback = sub_02082448;
+    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_YES_NO_INIT;
     return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
 }
