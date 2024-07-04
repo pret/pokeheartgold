@@ -653,9 +653,9 @@ void PartyMenu_DrawPartyMonsList_UseTMHM(PartyMenuStruct *partyMenu, u8 partySlo
     } else {
         PartyMenu_PrintMonLevelOnWindow(partyMenu, partySlot);
         u8 x = sub_020820DC(partyMenu, Party_GetMonByIndex(partyMenu->args->party, partySlot));
-        if (x == 0xFF) {
+        if (x == LEARN_MOVE_CHECK_INCOMPAT) {
             PartyMenu_PrintTMHMCompatString(partyMenu, partySlot, 1);
-        } else if (x == 0xFD) {
+        } else if (x == LEARN_MOVE_CHECK_KNOWN) {
             PartyMenu_PrintTMHMCompatString(partyMenu, partySlot, 2);
         } else {
             PartyMenu_PrintTMHMCompatString(partyMenu, partySlot, 0);

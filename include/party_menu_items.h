@@ -3,6 +3,10 @@
 
 #include "party_menu.h"
 
+#define LEARN_MOVE_CHECK_KNOWN         0xFD
+#define LEARN_MOVE_CHECK_FULL          0xFE
+#define LEARN_MOVE_CHECK_INCOMPAT      0xFF
+
 void sub_020812E8(PartyMenuStruct *partyMenu);
 int sub_02081378(PartyMenuStruct *partyMenu);
 BOOL sub_020817C4(u16 itemId);

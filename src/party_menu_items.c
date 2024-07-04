@@ -1,4 +1,5 @@
 #include "bag.h"
+#include "constants/moves.h"
 #include "global.h"
 #include "party_menu_items.h"
 #include "map_header.h"
@@ -55,6 +56,10 @@ int sub_02081A74(PartyMenuStruct *partyMenu);
 int sub_02081C50(PartyMenuStruct *partyMenu);
 int sub_02081F8C(PartyMenuStruct *partyMenu);
 int sub_02081FE0(PartyMenuStruct *partyMenu);
+int sub_02082038(PartyMenuStruct *partyMenu);
+int sub_02082084(PartyMenuStruct *partyMenu);
+int sub_020823F4(PartyMenuStruct *partyMenu);
+int sub_02082448(PartyMenuStruct *partyMenu);
 void sub_0208254C(PartyMenuStruct *partyMenu, Pokemon *mon, int moveIdx);
 u16 sub_020828EC(PartyMenuStruct *partyMenu);
 
@@ -683,4 +688,138 @@ int sub_02081C50(PartyMenuStruct *partyMenu) {
     }
 
     return PARTY_MENU_STATE_5;
+}
+
+int sub_02081ED0(PartyMenuStruct *partyMenu) {
+    partyMenu->unk_C54 = sub_02081C50;
+    partyMenu->unk_C67 = 3;
+    Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+    BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+    if (partyMenu->args->unk_2C == 4) {
+        BufferMoveName(partyMenu->msgFormat, 1, partyMenu->args->unk_2A);
+        return sub_02081FE0(partyMenu);
+    } else {
+        BufferMoveName(partyMenu->msgFormat, 1, GetMonData(mon, MON_DATA_MOVE1 + partyMenu->args->unk_2C, NULL));
+        String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00061);
+        StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
+        String_Delete(string);
+        PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
+        partyMenu->afterTextPrinterState = PARTY_MENU_STATE_5;
+        partyMenu->unk_C67 = 5;
+        return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
+    }
+}
+
+int sub_02081F8C(PartyMenuStruct *partyMenu) {
+    String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00060);
+    StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
+    String_Delete(string);
+    PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
+    partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_5;
+    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
+    return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
+}
+
+int sub_02081FE0(PartyMenuStruct *partyMenu) {
+    String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00056);
+    StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
+    String_Delete(string);
+    PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
+    partyMenu->yesCallback = sub_02082038;
+    partyMenu->noCallback = sub_02082084;
+    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_YES_NO_INIT;
+    return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
+}
+
+int sub_02082038(PartyMenuStruct *partyMenu) {
+    String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00059);
+    StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
+    String_Delete(string);
+    PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
+    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_5;
+    partyMenu->unk_C67 = 4;
+    return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
+}
+
+int sub_02082084(PartyMenuStruct *partyMenu) {
+    String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00053);
+    StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
+    String_Delete(string);
+    PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
+    partyMenu->yesCallback = sub_02081F8C;
+    partyMenu->noCallback = sub_02081FE0;
+    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_YES_NO_INIT;
+    return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
+}
+
+u8 sub_020820DC(PartyMenuStruct *partyMenu, Pokemon *mon) {
+    u8 i;
+    for (i = 0; i < MAX_MON_MOVES; ++i) {
+        u16 move = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
+        if (move == partyMenu->args->unk_2A) {
+            return LEARN_MOVE_CHECK_KNOWN;
+        }
+        if (move == MOVE_NONE) {
+            break;
+        }
+    }
+
+    if (!GetMonTMHMCompat(mon, ItemToTMHMId(partyMenu->args->itemId))) {
+        return LEARN_MOVE_CHECK_INCOMPAT;
+    }
+
+    if (i == MAX_MON_MOVES) {
+        i = LEARN_MOVE_CHECK_FULL;
+    }
+
+    return i;
+}
+
+int sub_02082134(PartyMenuStruct *partyMenu) {
+    Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+    u32 response = sub_020820DC(partyMenu, mon);
+    String *string;
+
+    BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+    BufferMoveName(partyMenu->msgFormat, 1, partyMenu->args->unk_2A);
+    switch (response) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+        sub_0208254C(partyMenu, mon, response);
+        string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00062);
+        StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
+        String_Delete(string);
+        PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
+        partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
+        partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
+        break;
+    case LEARN_MOVE_CHECK_KNOWN:
+        string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00064);
+        StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
+        String_Delete(string);
+        PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
+        partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
+        partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
+        break;
+    case LEARN_MOVE_CHECK_FULL:
+        string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00053);
+        StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
+        String_Delete(string);
+        PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
+        partyMenu->yesCallback = sub_020823F4;
+        partyMenu->noCallback = sub_02082448;
+        partyMenu->afterTextPrinterState = PARTY_MENU_STATE_YES_NO_INIT;
+        break;
+    case LEARN_MOVE_CHECK_INCOMPAT:
+        string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00063);
+        StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
+        String_Delete(string);
+        PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
+        partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
+        partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
+        break;
+    }
+    return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
 }
