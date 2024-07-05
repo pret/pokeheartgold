@@ -6,8 +6,8 @@
 #include "vram_transfer_manager.h"
 #include "data/resdat.naix"
 
-void sub_0207F0FC(Sprite *sprite, u8 seqNo);
-int sub_0207F11C(PartyMenuMonsDrawState *monDraw);
+static void sub_0207F0FC(Sprite *sprite, u8 seqNo);
+static int sub_0207F11C(PartyMenuMonsDrawState *monDraw);
 
 static const UnkStruct_0200D2B4 sSpriteTemplates[24] = {
     {
@@ -340,7 +340,7 @@ void sub_0207EBE4(PartyMenuStruct *partyMenu, u8 partySlot, u16 x, u16 y, NARC *
     sp1C.unk_1C = 0;
     sp1C.unk_20 = 0;
     sp1C.unk_24 = 0;
-    partyMenu->monsDrawState[partySlot].unk_24 = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sp1C);
+    partyMenu->monsDrawState[partySlot].iconSprite = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sp1C);
     sp1C.whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN;
     sp1C.unk_10 = GetMonIconPaletteEx(partyMenu->monsDrawState[partySlot].species, partyMenu->monsDrawState[partySlot].form, isEgg) + 1;
     sp1C.x = x;
@@ -362,7 +362,7 @@ void sub_0207ECE0(PartyMenuStruct *partyMenu, u8 partySlot) {
     species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     form = GetMonData(mon, MON_DATA_FORM, NULL);
     narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
-    imageLocation = NNS_G2dGetImageLocation(Sprite_GetImageProxy(partyMenu->monsDrawState[partySlot].unk_24), NNS_G2D_VRAM_TYPE_2DMAIN);
+    imageLocation = NNS_G2dGetImageLocation(Sprite_GetImageProxy(partyMenu->monsDrawState[partySlot].iconSprite), NNS_G2D_VRAM_TYPE_2DMAIN);
     ncgrFile = GfGfxLoader_LoadFromOpenNarc(narc, Pokemon_GetIconNaix(mon), FALSE, HEAP_ID_PARTY_MENU, TRUE);
     if (NNS_G2dGetUnpackedCharacterData(ncgrFile, &pCharData)) {
         DC_FlushRange(pCharData->pRawData, pCharData->szByte);
@@ -372,7 +372,7 @@ void sub_0207ECE0(PartyMenuStruct *partyMenu, u8 partySlot) {
         GXS_LoadOBJ(pCharData->pRawData, subImageLocation, pCharData->szByte);
     }
     FreeToHeap(ncgrFile);
-    thunk_Sprite_SetPalIndex(partyMenu->monsDrawState[partySlot].unk_24, GetMonIconPaletteEx(species, form, FALSE) + 3);
+    thunk_Sprite_SetPalIndex(partyMenu->monsDrawState[partySlot].iconSprite, GetMonIconPaletteEx(species, form, FALSE) + 3);
     thunk_Sprite_SetPalIndex(partyMenu->monsDrawState[partySlot].mainScreenIconSprite, GetMonIconPaletteEx(species, form, FALSE) + 1);
     NARC_Delete(narc);
 }
@@ -476,14 +476,14 @@ void PartyMenu_DrawMonCapsuleIcon(PartyMenuStruct *partyMenu, u8 partySlot) {
     }
 }
 
-void sub_0207F0FC(Sprite *sprite, u8 seqNo) {
+static void sub_0207F0FC(Sprite *sprite, u8 seqNo) {
     if (seqNo != Get2dSpriteCurrentAnimSeqNo(sprite)) {
         Sprite_SetAnimCtrlCurrentFrame(sprite, 0);
         Set2dSpriteAnimSeqNo(sprite, seqNo);
     }
 }
 
-int sub_0207F11C(PartyMenuMonsDrawState *monDraw) {
+static int sub_0207F11C(PartyMenuMonsDrawState *monDraw) {
     if (monDraw->hp == 0) {
         return 0;
     }
@@ -512,22 +512,22 @@ void sub_0207F178(PartyMenuStruct *partyMenu) {
     for (i = 0; i < 6; ++i) {
         monDraw = &partyMenu->monsDrawState[i];
         if (monDraw->active) {
-            int r7;
-            if (partyMenu->unk_94C.unk_304 == 1 && (partyMenu->unk_94C.unk_300[0] == i || partyMenu->unk_94C.unk_300[1] == i)) {
-                r7 = 0;
+            int animSeqNo;
+            if (partyMenu->swapMonsData.active == 1 && (partyMenu->swapMonsData.slots[0] == i || partyMenu->swapMonsData.slots[1] == i)) {
+                animSeqNo = 0;
             } else {
-                r7 = sub_0207F11C(monDraw);
+                animSeqNo = sub_0207F11C(monDraw);
             }
-            sub_0207F0FC(monDraw->unk_24, r7);
-            Sprite_TickCellOrMulticellAnimation(monDraw->unk_24, FX32_ONE);
-            if (partyMenu->partyMonIndex == i && r7 != 0 && r7 != 5) {
-                if (Sprite_GetAnimCtrlCurrentFrame(monDraw->unk_24) == 0) {
-                    Sprite_SetPositionXY(monDraw->unk_24, monDraw->unk_16, monDraw->unk_18 - 3);
+            sub_0207F0FC(monDraw->iconSprite, animSeqNo);
+            Sprite_TickCellOrMulticellAnimation(monDraw->iconSprite, FX32_ONE);
+            if (partyMenu->partyMonIndex == i && animSeqNo != 0 && animSeqNo != 5) {
+                if (Sprite_GetAnimCtrlCurrentFrame(monDraw->iconSprite) == 0) {
+                    Sprite_SetPositionXY(monDraw->iconSprite, monDraw->unk_16, monDraw->unk_18 - 3);
                 } else {
-                    Sprite_SetPositionXY(monDraw->unk_24, monDraw->unk_16, monDraw->unk_18 + 1);
+                    Sprite_SetPositionXY(monDraw->iconSprite, monDraw->unk_16, monDraw->unk_18 + 1);
                 }
             } else {
-                Sprite_SetPositionXY(monDraw->unk_24, monDraw->unk_16, monDraw->unk_18);
+                Sprite_SetPositionXY(monDraw->iconSprite, monDraw->unk_16, monDraw->unk_18);
             }
         }
     }

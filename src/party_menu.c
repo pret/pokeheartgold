@@ -28,6 +28,7 @@
 #include "vram_transfer_manager.h"
 #include "constants/moves.h"
 #include "msgdata/msg/msg_0300.h"
+#include "graphic/plist_gra.naix"
 
 FS_EXTERN_OVERLAY(OVY_94);
 
@@ -98,7 +99,7 @@ static u8 sub_0207B23C(PartyMenuStruct *partyMenu, u8 *buf);
 static u8 sub_0207B32C(PartyMenuStruct *partyMenu, u8 *buf);
 static u8 sub_0207B28C(PartyMenuStruct *partyMenu, u8 *buf);
 static u8 sub_0207B2DC(PartyMenuStruct *partyMenu, u8 *buf);
-static u8 sub_0207BCC0(u16 move);
+static u8 MoveId_GetFieldEffectId(u16 move);
 static int PartyMenu_SoftboiledTryTargetCheck(PartyMenuStruct *partyMenu);
 static void sub_0207B51C(PartyMenuStruct *partyMenu, u8 selection, BOOL active);
 static u8 sub_0207B600(PartyMenuStruct *partyMenu);
@@ -195,7 +196,7 @@ static const UnkStruct_02020654 _021014CC[8] = {
     { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 },
 };
 
-static const u16 sFieldMoves[16] = {
+static const u16 sFieldMoves[PARTY_MON_CONTEXT_MENU_FIELD_MOVES_COUNT] = {
     MOVE_CUT,
     MOVE_FLY,
     MOVE_SURF,
@@ -230,7 +231,7 @@ static BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
     SetKeyRepeatTimers(4, 8);
     CreateHeap(HEAP_ID_3, HEAP_ID_PARTY_MENU, 0x30000);
 
-    narc = NARC_New(NARC_a_0_2_1, HEAP_ID_PARTY_MENU);
+    narc = NARC_New(NARC_graphic_plist_gra, HEAP_ID_PARTY_MENU);
     partyMenu = sub_02079BD8(manager);
     BeginNormalPaletteFade(2, 3, 3, RGB_BLACK, 6, 1, HEAP_ID_PARTY_MENU);
     sub_02079CE4(partyMenu);
@@ -912,10 +913,10 @@ static void sub_02079A0C(GF3DVramMan *gf3dVramMan) {
 }
 
 static void sub_02079A14(PartyMenuStruct *partyMenu, NARC *narc) {
-    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 15, partyMenu->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 17, partyMenu->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, NARC_plist_gra_plist_gra_00000015_NCGR, partyMenu->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, NARC_plist_gra_plist_gra_00000017_NSCR, partyMenu->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
 
-    void *nclrFile = NARC_AllocAndReadWholeMember(narc, 16, HEAP_ID_PARTY_MENU);
+    void *nclrFile = NARC_AllocAndReadWholeMember(narc, NARC_plist_gra_plist_gra_00000016_NCLR, HEAP_ID_PARTY_MENU);
     NNSG2dPaletteData *plttData;
     NNS_G2dGetUnpackedPaletteData(nclrFile, &plttData);
     u16 *plttBuf = AllocFromHeap(HEAP_ID_PARTY_MENU, plttData->szByte);
@@ -923,20 +924,20 @@ static void sub_02079A14(PartyMenuStruct *partyMenu, NARC *narc) {
     plttBuf[0] = RGB_BLACK;
     BG_LoadPlttData(GF_PAL_LOCATION_MAIN_OBJEXT, plttBuf, plttData->szByte, 0);
     FreeToHeap(plttBuf);
-    memcpy(partyMenu->unk_554, (u8 *)plttData->pRawData + 0x60, 0x100);
+    memcpy(partyMenu->hpBarPalettes, (u8 *)plttData->pRawData + 0x60, 0x100);
     FreeToHeap(nclrFile);
     LoadFontPal1(GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0x1A0, HEAP_ID_PARTY_MENU);
     LoadFontPal1(GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0x40, HEAP_ID_PARTY_MENU);
     LoadUserFrameGfx1(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, 1, 14, 0, HEAP_ID_PARTY_MENU);
-    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 26, partyMenu->bgConfig, GF_BG_LYR_MAIN_0, 10, 0, FALSE, HEAP_ID_PARTY_MENU);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, NARC_plist_gra_plist_gra_00000026_NCGR, partyMenu->bgConfig, GF_BG_LYR_MAIN_0, 10, 0, FALSE, HEAP_ID_PARTY_MENU);
     LoadUserFrameGfx2(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, 42, 15, Options_GetFrame(partyMenu->args->options), HEAP_ID_PARTY_MENU);
-    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 3, partyMenu->bgConfig, GF_BG_LYR_SUB_0, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
-    GfGfxLoader_GXLoadPalFromOpenNarc(narc, 4, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0x20, 0x20, HEAP_ID_PARTY_MENU);
-    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 12, partyMenu->bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 14, partyMenu->bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
-    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 24, partyMenu->bgConfig, GF_BG_LYR_SUB_0, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 25, partyMenu->bgConfig, GF_BG_LYR_SUB_0, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
-    GfGfxLoader_GXLoadPalFromOpenNarc(narc, 13, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0, 0x40, HEAP_ID_PARTY_MENU);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, NARC_plist_gra_plist_gra_00000003_NCGR, partyMenu->bgConfig, GF_BG_LYR_SUB_0, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
+    GfGfxLoader_GXLoadPalFromOpenNarc(narc, NARC_plist_gra_plist_gra_00000004_NCLR, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0x20, 0x20, HEAP_ID_PARTY_MENU);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, NARC_plist_gra_plist_gra_00000012_NCGR, partyMenu->bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, NARC_plist_gra_plist_gra_00000014_NSCR, partyMenu->bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, NARC_plist_gra_plist_gra_00000024_NCGR, partyMenu->bgConfig, GF_BG_LYR_SUB_0, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, NARC_plist_gra_plist_gra_00000025_NSCR, partyMenu->bgConfig, GF_BG_LYR_SUB_0, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
+    GfGfxLoader_GXLoadPalFromOpenNarc(narc, NARC_plist_gra_plist_gra_00000013_NCLR, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0, 0x40, HEAP_ID_PARTY_MENU);
     sub_0207CAAC(HEAP_ID_PARTY_MENU, partyMenu->unk_314, partyMenu->unk_3D4, partyMenu->unk_494);
     BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB_BLACK);
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB_BLACK);
@@ -1262,7 +1263,7 @@ static void sub_0207A780(PartyMenuStruct *partyMenu, u8 partySlot, s16 x, s16 y)
 void sub_0207A7F4(PartyMenuStruct *partyMenu, u8 partySlot) {
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partySlot);
     u8 paletteSlot;
-    if (partyMenu->unk_C63_6 == TRUE && (partySlot == partyMenu->partyMonIndex || partySlot == partyMenu->softboiledDonorSlot)) {
+    if (partyMenu->secondCursorActive == TRUE && (partySlot == partyMenu->partyMonIndex || partySlot == partyMenu->softboiledDonorSlot)) {
         paletteSlot = 7;
     } else {
         if (partySlot == partyMenu->partyMonIndex) {
@@ -1276,7 +1277,7 @@ void sub_0207A7F4(PartyMenuStruct *partyMenu, u8 partySlot) {
             paletteSlot += 1;
         }
     }
-    BG_LoadPlttData(GF_BG_LYR_MAIN_2, &partyMenu->unk_554[16 * paletteSlot], 0x10, (partySlot + 3) * 32);
+    BG_LoadPlttData(GF_BG_LYR_MAIN_2, &partyMenu->hpBarPalettes[16 * paletteSlot], 0x10, (partySlot + 3) * 32);
 }
 
 static BOOL sub_0207A880(PartyMenuStruct *partyMenu, u8 partySlot) {
@@ -1571,35 +1572,35 @@ static u8 PartyMenu_HandleInput(PartyMenuStruct *partyMenu) {
 static void sub_0207AFC4(PartyMenuStruct *partyMenu) {
     ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_32], TRUE);
     u8 *buf = AllocFromHeap(HEAP_ID_PARTY_MENU, 8);
-    u8 r2;
+    u8 numItems;
     switch (partyMenu->args->context) {
     case PARTY_MENU_CONTEXT_0:
-        r2 = sub_0207B0B0(partyMenu, buf);
+        numItems = sub_0207B0B0(partyMenu, buf);
         break;
     case PARTY_MENU_CONTEXT_2:
     case PARTY_MENU_CONTEXT_17:
-        r2 = sub_0207B23C(partyMenu, buf);
+        numItems = sub_0207B23C(partyMenu, buf);
         break;
     case PARTY_MENU_CONTEXT_15:
-        r2 = sub_0207B1BC(partyMenu, buf);
+        numItems = sub_0207B1BC(partyMenu, buf);
         break;
     case PARTY_MENU_CONTEXT_18:
-        r2 = sub_0207B1C8(partyMenu, buf);
+        numItems = sub_0207B1C8(partyMenu, buf);
         break;
     case PARTY_MENU_CONTEXT_21:
-        r2 = sub_0207B32C(partyMenu, buf);
+        numItems = sub_0207B32C(partyMenu, buf);
         break;
     case PARTY_MENU_CONTEXT_22:
-        r2 = sub_0207B28C(partyMenu, buf);
+        numItems = sub_0207B28C(partyMenu, buf);
         break;
     case PARTY_MENU_CONTEXT_23:
-        r2 = sub_0207B2DC(partyMenu, buf);
+        numItems = sub_0207B2DC(partyMenu, buf);
         break;
     default:
-        r2 = sub_0207B200(partyMenu, buf);
+        numItems = sub_0207B200(partyMenu, buf);
         break;
     }
-    PartyMenu_OpenContextMenu(partyMenu, buf, r2);
+    PartyMenu_OpenContextMenu(partyMenu, buf, numItems);
     FreeToHeapExplicit(HEAP_ID_PARTY_MENU, buf);
     sub_0207D1C8(partyMenu);
     PartyMenu_PrintMessageOnWindow33(partyMenu, -1, TRUE);
@@ -1609,7 +1610,7 @@ static void sub_0207AFC4(PartyMenuStruct *partyMenu) {
 static u8 sub_0207B0B0(PartyMenuStruct *partyMenu, u8 *buf) {
     Pokemon *pokemon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     u16 move;
-    u8 r4 = 0;
+    u8 fieldMoveIndex = 0;
     u8 i;
     u8 count = 0;
     u8 fieldEffect;
@@ -1633,12 +1634,12 @@ static u8 sub_0207B0B0(PartyMenuStruct *partyMenu, u8 *buf) {
                 if (move == MOVE_NONE) {
                     break;
                 }
-                fieldEffect = sub_0207BCC0(move);
+                fieldEffect = MoveId_GetFieldEffectId(move);
                 if (fieldEffect != 0xFF) {
                     buf[count] = fieldEffect;
                     ++count;
-                    PartyMenu_ContextMenuAddFieldMove(partyMenu, move, r4);
-                    ++r4;
+                    PartyMenu_ContextMenuAddFieldMove(partyMenu, move, fieldMoveIndex);
+                    ++fieldMoveIndex;
                 }
             }
         } else {
@@ -2168,10 +2169,10 @@ static BOOL PartyMenu_Subtask_HandleContextMenuInput(PartyMenuStruct *partyMenu,
     return FALSE;
 }
 
-static u8 sub_0207BCC0(u16 move) {
-    for (u8 i = 0; i < 16; ++i) {
+static u8 MoveId_GetFieldEffectId(u16 move) {
+    for (u8 i = 0; i < PARTY_MON_CONTEXT_MENU_FIELD_MOVES_COUNT; ++i) {
         if (move == sFieldMoves[i]) {
-            return i + 16;
+            return i + PARTY_MON_CONTEXT_MENU_FIELD_MOVES_BEGIN;
         }
     }
     return 0xFF;
@@ -2690,7 +2691,7 @@ void sub_0207CAAC(HeapID heapId, u16 *a1, u16 *a2, u16 *a3) {
     const u16 *src;
     u32 i;
 
-    pNscrFile = AllocAndReadWholeNarcMemberByIdPair(NARC_a_0_2_1, 22, heapId);
+    pNscrFile = AllocAndReadWholeNarcMemberByIdPair(NARC_graphic_plist_gra, NARC_plist_gra_plist_gra_00000022_NSCR, heapId);
     NNS_G2dGetUnpackedScreenData(pNscrFile, &screenData);
     src = (const u16 *)screenData->rawData;
 

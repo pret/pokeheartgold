@@ -322,7 +322,7 @@ int sub_0207FAD4(PartyMenuStruct *partyMenu) {
 }
 
 static void PartyMonContextMenuAction_Switch(PartyMenuStruct *partyMenu, int *pState) {
-    partyMenu->unk_C63_6 = 1;
+    partyMenu->secondCursorActive = 1;
     partyMenu->softboiledDonorSlot = partyMenu->partyMonIndex;
     thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
 
@@ -340,7 +340,7 @@ static void PartyMonContextMenuAction_Switch(PartyMenuStruct *partyMenu, int *pS
 }
 
 void sub_0207FBC8(PartyMenuStruct *partyMenu) {
-    partyMenu->unk_C63_6 = 0;
+    partyMenu->secondCursorActive = 0;
     Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], FALSE);
     if (partyMenu->partyMonIndex < PARTY_SIZE) {
         sub_0207A7F4(partyMenu, partyMenu->partyMonIndex);
@@ -358,83 +358,83 @@ void sub_0207FC1C(PartyMenuStruct *partyMenu) {
     s8 sp4;
     s8 sp0;
     u16 i;
-    partyMenu->unk_94C.unk_300[0] = partyMenu->partyMonIndex;
-    partyMenu->unk_94C.unk_300[1] = partyMenu->softboiledDonorSlot;
-    partyMenu->unk_94C.unk_304 = 1;
-    partyMenu->unk_94C.unk_306 = 0;
-    partyMenu->unk_94C.unk_305 = 0;
-    if (partyMenu->unk_94C.unk_300[0] & 1) {
-        partyMenu->unk_94C.unk_302[0] = 1;
+    partyMenu->swapMonsData.slots[0] = partyMenu->partyMonIndex;
+    partyMenu->swapMonsData.slots[1] = partyMenu->softboiledDonorSlot;
+    partyMenu->swapMonsData.active = 1;
+    partyMenu->swapMonsData.xOffset = 0;
+    partyMenu->swapMonsData.state = 0;
+    if (partyMenu->swapMonsData.slots[0] & 1) {
+        partyMenu->swapMonsData.directions[0] = 1;
     } else {
-        partyMenu->unk_94C.unk_302[0] = 0;
+        partyMenu->swapMonsData.directions[0] = 0;
     }
-    if (partyMenu->unk_94C.unk_300[1] & 1) {
-        partyMenu->unk_94C.unk_302[1] = 1;
+    if (partyMenu->swapMonsData.slots[1] & 1) {
+        partyMenu->swapMonsData.directions[1] = 1;
     } else {
-        partyMenu->unk_94C.unk_302[1] = 0;
+        partyMenu->swapMonsData.directions[1] = 0;
     }
 
     bg2Tilemap = GetBgTilemapBuffer(partyMenu->bgConfig, GF_BG_LYR_MAIN_2);
     bg1Tilemap = GetBgTilemapBuffer(partyMenu->bgConfig, GF_BG_LYR_MAIN_1);
 
-    spC = partyMenu->monsDrawState[partyMenu->unk_94C.unk_300[0]].unk_15;
-    sp8 = partyMenu->monsDrawState[partyMenu->unk_94C.unk_300[0]].unk_14;
-    sp4 = partyMenu->monsDrawState[partyMenu->unk_94C.unk_300[1]].unk_15;
-    sp0 = partyMenu->monsDrawState[partyMenu->unk_94C.unk_300[1]].unk_14;
+    spC = partyMenu->monsDrawState[partyMenu->swapMonsData.slots[0]].unk_15;
+    sp8 = partyMenu->monsDrawState[partyMenu->swapMonsData.slots[0]].unk_14;
+    sp4 = partyMenu->monsDrawState[partyMenu->swapMonsData.slots[1]].unk_15;
+    sp0 = partyMenu->monsDrawState[partyMenu->swapMonsData.slots[1]].unk_14;
 
     for (i = 0; i < PARTY_SIZE; ++i) {
-        memcpy(&partyMenu->unk_94C.unk_000[0][i * 16], &bg2Tilemap[sp8 + (spC + i) * 32], 0x20);
-        memcpy(&partyMenu->unk_94C.unk_180[0][i * 16], &bg1Tilemap[sp8 + (spC + i) * 32], 0x20);
-        memcpy(&partyMenu->unk_94C.unk_000[1][i * 16], &bg2Tilemap[sp0 + (sp4 + i) * 32], 0x20);
-        memcpy(&partyMenu->unk_94C.unk_180[1][i * 16], &bg1Tilemap[sp0 + (sp4 + i) * 32], 0x20);
+        memcpy(&partyMenu->swapMonsData.bg2Tilemaps[0][i * 16], &bg2Tilemap[sp8 + (spC + i) * 32], 0x20);
+        memcpy(&partyMenu->swapMonsData.bg1Tilemaps[0][i * 16], &bg1Tilemap[sp8 + (spC + i) * 32], 0x20);
+        memcpy(&partyMenu->swapMonsData.bg2Tilemaps[1][i * 16], &bg2Tilemap[sp0 + (sp4 + i) * 32], 0x20);
+        memcpy(&partyMenu->swapMonsData.bg1Tilemaps[1][i * 16], &bg1Tilemap[sp0 + (sp4 + i) * 32], 0x20);
     }
     Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], FALSE);
     Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], FALSE);
 }
 
 BOOL sub_0207FD6C(PartyMenuStruct *partyMenu) {
-    UnkPartyMenuSub_94C *r4 = &partyMenu->unk_94C;
+    PartyMenuSwapMonsData *r4 = &partyMenu->swapMonsData;
 
-    switch (r4->unk_305) {
+    switch (r4->state) {
     case 0:
         PlaySE(SEQ_SE_DP_POKELIST_001);
         PartyMenu_SetTopScreenSelectionPanelVisibility(partyMenu, FALSE);
-        r4->unk_305 = 1;
+        r4->state = 1;
         break;
     case 1:
-        ++r4->unk_306;
+        ++r4->xOffset;
         PartyMenu_SwapMonsPanelsStep(partyMenu, 0);
         PartyMenu_SwapMonsPanelsStep(partyMenu, 1);
-        PartyMenu_SwapMonsSpritesStep(partyMenu, 0, r4->unk_302[0]);
-        PartyMenu_SwapMonsSpritesStep(partyMenu, 1, r4->unk_302[1]);
+        PartyMenu_SwapMonsSpritesStep(partyMenu, 0, r4->directions[0]);
+        PartyMenu_SwapMonsSpritesStep(partyMenu, 1, r4->directions[1]);
         ScheduleBgTilemapBufferTransfer(partyMenu->bgConfig, GF_BG_LYR_MAIN_2);
         ScheduleBgTilemapBufferTransfer(partyMenu->bgConfig, GF_BG_LYR_MAIN_1);
-        if (r4->unk_306 == 16) {
-            r4->unk_305 = 2;
+        if (r4->xOffset == 16) {
+            r4->state = 2;
         }
         break;
     case 2:
         PartyMenu_SwapMonsData(partyMenu);
         PlaySE(SEQ_SE_DP_POKELIST_001);
-        r4->unk_305 = 3;
+        r4->state = 3;
         break;
     case 3:
-        --r4->unk_306;
+        --r4->xOffset;
         PartyMenu_SwapMonsPanelsStep(partyMenu, 0);
         PartyMenu_SwapMonsPanelsStep(partyMenu, 1);
-        PartyMenu_SwapMonsSpritesStep(partyMenu, 0, r4->unk_302[0] ^ 1);
-        PartyMenu_SwapMonsSpritesStep(partyMenu, 1, r4->unk_302[1] ^ 1);
+        PartyMenu_SwapMonsSpritesStep(partyMenu, 0, r4->directions[0] ^ 1);
+        PartyMenu_SwapMonsSpritesStep(partyMenu, 1, r4->directions[1] ^ 1);
         ScheduleBgTilemapBufferTransfer(partyMenu->bgConfig, GF_BG_LYR_MAIN_2);
         ScheduleBgTilemapBufferTransfer(partyMenu->bgConfig, GF_BG_LYR_MAIN_1);
-        if (r4->unk_306 == 0) {
-            r4->unk_305 = 4;
+        if (r4->xOffset == 0) {
+            r4->state = 4;
         }
         break;
     case 4:
-        Party_SwapSlots(partyMenu->args->party, r4->unk_300[0], r4->unk_300[1]);
+        Party_SwapSlots(partyMenu->args->party, r4->slots[0], r4->slots[1]);
         Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], TRUE);
-        r4->unk_304 = 0;
-        partyMenu->unk_C63_6 = 0;
+        r4->active = 0;
+        partyMenu->secondCursorActive = 0;
         sub_0207A7F4(partyMenu, partyMenu->partyMonIndex);
         sub_0207A7F4(partyMenu, partyMenu->softboiledDonorSlot);
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00029, FALSE);
@@ -445,105 +445,105 @@ BOOL sub_0207FD6C(PartyMenuStruct *partyMenu) {
 }
 
 static void PartyMenu_SwapMonsPanelsStep(PartyMenuStruct *partyMenu, u8 slot) {
-    UnkPartyMenuSub_94C *r4 = &partyMenu->unk_94C;
-    s8 x = partyMenu->monsDrawState[r4->unk_300[slot]].unk_14;
-    s8 y = partyMenu->monsDrawState[r4->unk_300[slot]].unk_15;
+    PartyMenuSwapMonsData *r4 = &partyMenu->swapMonsData;
+    s8 x = partyMenu->monsDrawState[r4->slots[slot]].unk_14;
+    s8 y = partyMenu->monsDrawState[r4->slots[slot]].unk_15;
 
     FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, 0, x, y, 16, 6, TILEMAP_FILL_KEEP_PAL);
     FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_1, 0, x, y, 16, 6, TILEMAP_FILL_KEEP_PAL);
-    if (r4->unk_302[slot] == 0) {
-        CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, x, y, 16 - r4->unk_306, 6, r4->unk_000[slot], r4->unk_306, 0, 16, 6);
-        CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_1, x, y, 16 - r4->unk_306, 6, r4->unk_180[slot], r4->unk_306, 0, 16, 6);
+    if (r4->directions[slot] == 0) {
+        CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, x, y, 16 - r4->xOffset, 6, r4->bg2Tilemaps[slot], r4->xOffset, 0, 16, 6);
+        CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_1, x, y, 16 - r4->xOffset, 6, r4->bg1Tilemaps[slot], r4->xOffset, 0, 16, 6);
     } else {
-        CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, x + r4->unk_306, y, 16 - r4->unk_306, 6, r4->unk_000[slot], 0, 0, 16, 6);
-        CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_1, x + r4->unk_306, y, 16 - r4->unk_306, 6, r4->unk_180[slot], 0, 0, 16, 6);
+        CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, x + r4->xOffset, y, 16 - r4->xOffset, 6, r4->bg2Tilemaps[slot], 0, 0, 16, 6);
+        CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_1, x + r4->xOffset, y, 16 - r4->xOffset, 6, r4->bg1Tilemaps[slot], 0, 0, 16, 6);
     }
 }
 
 static void PartyMenu_SwapMonsSpritesStep(PartyMenuStruct *partyMenu, u8 slot, u8 direction) {
-    UnkPartyMenuSub_94C *r4 = &partyMenu->unk_94C;
+    PartyMenuSwapMonsData *r4 = &partyMenu->swapMonsData;
     s16 x, y;
 
-    Sprite_GetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_BALL + r4->unk_300[slot]], &x, &y);
+    Sprite_GetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_BALL + r4->slots[slot]], &x, &y);
     if (direction == 0) {
-        partyMenu->monsDrawState[r4->unk_300[slot]].unk_16 -= 8;
-        partyMenu->monsDrawState[r4->unk_300[slot]].unk_1A -= 8;
-        partyMenu->monsDrawState[r4->unk_300[slot]].unk_1E -= 8;
+        partyMenu->monsDrawState[r4->slots[slot]].unk_16 -= 8;
+        partyMenu->monsDrawState[r4->slots[slot]].unk_1A -= 8;
+        partyMenu->monsDrawState[r4->slots[slot]].unk_1E -= 8;
         x -= 8;
     } else {
-        partyMenu->monsDrawState[r4->unk_300[slot]].unk_16 += 8;
-        partyMenu->monsDrawState[r4->unk_300[slot]].unk_1A += 8;
-        partyMenu->monsDrawState[r4->unk_300[slot]].unk_1E += 8;
+        partyMenu->monsDrawState[r4->slots[slot]].unk_16 += 8;
+        partyMenu->monsDrawState[r4->slots[slot]].unk_1A += 8;
+        partyMenu->monsDrawState[r4->slots[slot]].unk_1E += 8;
         x += 8;
     }
-    Sprite_SetPositionXY(partyMenu->monsDrawState[r4->unk_300[slot]].unk_24, partyMenu->monsDrawState[r4->unk_300[slot]].unk_16, partyMenu->monsDrawState[r4->unk_300[slot]].unk_18);
-    Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_10 + r4->unk_300[slot]], partyMenu->monsDrawState[r4->unk_300[slot]].unk_1A, partyMenu->monsDrawState[r4->unk_300[slot]].unk_1C);
-    Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_HELD_ITEM_ICON + r4->unk_300[slot]], partyMenu->monsDrawState[r4->unk_300[slot]].unk_1E, partyMenu->monsDrawState[r4->unk_300[slot]].unk_20);
-    Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CAPSULE_ICON + r4->unk_300[slot]], partyMenu->monsDrawState[r4->unk_300[slot]].unk_1E + 8, partyMenu->monsDrawState[r4->unk_300[slot]].unk_20);
-    Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_BALL + r4->unk_300[slot]], x, y);
+    Sprite_SetPositionXY(partyMenu->monsDrawState[r4->slots[slot]].iconSprite, partyMenu->monsDrawState[r4->slots[slot]].unk_16, partyMenu->monsDrawState[r4->slots[slot]].unk_18);
+    Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_10 + r4->slots[slot]], partyMenu->monsDrawState[r4->slots[slot]].unk_1A, partyMenu->monsDrawState[r4->slots[slot]].unk_1C);
+    Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_HELD_ITEM_ICON + r4->slots[slot]], partyMenu->monsDrawState[r4->slots[slot]].unk_1E, partyMenu->monsDrawState[r4->slots[slot]].unk_20);
+    Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CAPSULE_ICON + r4->slots[slot]], partyMenu->monsDrawState[r4->slots[slot]].unk_1E + 8, partyMenu->monsDrawState[r4->slots[slot]].unk_20);
+    Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_BALL + r4->slots[slot]], x, y);
 }
 
 static void PartyMenu_SwapMonsData(PartyMenuStruct *partyMenu) {
-    UnkPartyMenuSub_94C *r4 = &partyMenu->unk_94C;
+    PartyMenuSwapMonsData *r4 = &partyMenu->swapMonsData;
     PartyMenuMonsDrawState *monBuf;
     s16 pos;
 
     monBuf = AllocFromHeap(HEAP_ID_PARTY_MENU, sizeof(PartyMenuMonsDrawState));
-    *monBuf = partyMenu->monsDrawState[r4->unk_300[0]];
-    partyMenu->monsDrawState[r4->unk_300[0]] = partyMenu->monsDrawState[r4->unk_300[1]];
-    partyMenu->monsDrawState[r4->unk_300[1]] = *monBuf;
+    *monBuf = partyMenu->monsDrawState[r4->slots[0]];
+    partyMenu->monsDrawState[r4->slots[0]] = partyMenu->monsDrawState[r4->slots[1]];
+    partyMenu->monsDrawState[r4->slots[1]] = *monBuf;
     FreeToHeapExplicit(HEAP_ID_PARTY_MENU, monBuf);
 
-    pos = partyMenu->monsDrawState[r4->unk_300[0]].unk_16;
-    partyMenu->monsDrawState[r4->unk_300[0]].unk_16 = partyMenu->monsDrawState[r4->unk_300[1]].unk_16;
-    partyMenu->monsDrawState[r4->unk_300[1]].unk_16 = pos;
-    pos = partyMenu->monsDrawState[r4->unk_300[0]].unk_18;
-    partyMenu->monsDrawState[r4->unk_300[0]].unk_18 = partyMenu->monsDrawState[r4->unk_300[1]].unk_18;
-    partyMenu->monsDrawState[r4->unk_300[1]].unk_18 = pos;
+    pos = partyMenu->monsDrawState[r4->slots[0]].unk_16;
+    partyMenu->monsDrawState[r4->slots[0]].unk_16 = partyMenu->monsDrawState[r4->slots[1]].unk_16;
+    partyMenu->monsDrawState[r4->slots[1]].unk_16 = pos;
+    pos = partyMenu->monsDrawState[r4->slots[0]].unk_18;
+    partyMenu->monsDrawState[r4->slots[0]].unk_18 = partyMenu->monsDrawState[r4->slots[1]].unk_18;
+    partyMenu->monsDrawState[r4->slots[1]].unk_18 = pos;
 
-    pos = partyMenu->monsDrawState[r4->unk_300[0]].unk_1A;
-    partyMenu->monsDrawState[r4->unk_300[0]].unk_1A = partyMenu->monsDrawState[r4->unk_300[1]].unk_1A;
-    partyMenu->monsDrawState[r4->unk_300[1]].unk_1A = pos;
-    pos = partyMenu->monsDrawState[r4->unk_300[0]].unk_1C;
-    partyMenu->monsDrawState[r4->unk_300[0]].unk_1C = partyMenu->monsDrawState[r4->unk_300[1]].unk_1C;
-    partyMenu->monsDrawState[r4->unk_300[1]].unk_1C = pos;
+    pos = partyMenu->monsDrawState[r4->slots[0]].unk_1A;
+    partyMenu->monsDrawState[r4->slots[0]].unk_1A = partyMenu->monsDrawState[r4->slots[1]].unk_1A;
+    partyMenu->monsDrawState[r4->slots[1]].unk_1A = pos;
+    pos = partyMenu->monsDrawState[r4->slots[0]].unk_1C;
+    partyMenu->monsDrawState[r4->slots[0]].unk_1C = partyMenu->monsDrawState[r4->slots[1]].unk_1C;
+    partyMenu->monsDrawState[r4->slots[1]].unk_1C = pos;
 
-    pos = partyMenu->monsDrawState[r4->unk_300[0]].unk_1E;
-    partyMenu->monsDrawState[r4->unk_300[0]].unk_1E = partyMenu->monsDrawState[r4->unk_300[1]].unk_1E;
-    partyMenu->monsDrawState[r4->unk_300[1]].unk_1E = pos;
-    pos = partyMenu->monsDrawState[r4->unk_300[0]].unk_20;
-    partyMenu->monsDrawState[r4->unk_300[0]].unk_20 = partyMenu->monsDrawState[r4->unk_300[1]].unk_20;
-    partyMenu->monsDrawState[r4->unk_300[1]].unk_20 = pos;
+    pos = partyMenu->monsDrawState[r4->slots[0]].unk_1E;
+    partyMenu->monsDrawState[r4->slots[0]].unk_1E = partyMenu->monsDrawState[r4->slots[1]].unk_1E;
+    partyMenu->monsDrawState[r4->slots[1]].unk_1E = pos;
+    pos = partyMenu->monsDrawState[r4->slots[0]].unk_20;
+    partyMenu->monsDrawState[r4->slots[0]].unk_20 = partyMenu->monsDrawState[r4->slots[1]].unk_20;
+    partyMenu->monsDrawState[r4->slots[1]].unk_20 = pos;
 
-    pos = partyMenu->monsDrawState[r4->unk_300[0]].unk_14;
-    partyMenu->monsDrawState[r4->unk_300[0]].unk_14 = partyMenu->monsDrawState[r4->unk_300[1]].unk_14;
-    partyMenu->monsDrawState[r4->unk_300[1]].unk_14 = pos;
-    pos = partyMenu->monsDrawState[r4->unk_300[0]].unk_15;
-    partyMenu->monsDrawState[r4->unk_300[0]].unk_15 = partyMenu->monsDrawState[r4->unk_300[1]].unk_15;
-    partyMenu->monsDrawState[r4->unk_300[1]].unk_15 = pos;
+    pos = partyMenu->monsDrawState[r4->slots[0]].unk_14;
+    partyMenu->monsDrawState[r4->slots[0]].unk_14 = partyMenu->monsDrawState[r4->slots[1]].unk_14;
+    partyMenu->monsDrawState[r4->slots[1]].unk_14 = pos;
+    pos = partyMenu->monsDrawState[r4->slots[0]].unk_15;
+    partyMenu->monsDrawState[r4->slots[0]].unk_15 = partyMenu->monsDrawState[r4->slots[1]].unk_15;
+    partyMenu->monsDrawState[r4->slots[1]].unk_15 = pos;
 
-    sub_0207D5DC(partyMenu, r4->unk_300[0]);
-    sub_0207D5DC(partyMenu, r4->unk_300[1]);
-    PartyMenu_CommitPartyMonPanelWindowsToVram_NotInVBlank(partyMenu, r4->unk_300[0]);
-    PartyMenu_CommitPartyMonPanelWindowsToVram_NotInVBlank(partyMenu, r4->unk_300[1]);
+    sub_0207D5DC(partyMenu, r4->slots[0]);
+    sub_0207D5DC(partyMenu, r4->slots[1]);
+    PartyMenu_CommitPartyMonPanelWindowsToVram_NotInVBlank(partyMenu, r4->slots[0]);
+    PartyMenu_CommitPartyMonPanelWindowsToVram_NotInVBlank(partyMenu, r4->slots[1]);
     PartyMenu_RedrawMonHpBarAfterSwap(partyMenu, 0);
     PartyMenu_RedrawMonHpBarAfterSwap(partyMenu, 1);
-    PartyMenu_DrawMonStatusIcon(partyMenu, r4->unk_300[0], partyMenu->monsDrawState[r4->unk_300[0]].status);
-    PartyMenu_DrawMonStatusIcon(partyMenu, r4->unk_300[1], partyMenu->monsDrawState[r4->unk_300[1]].status);
-    PartyMenu_DrawMonHeldItemIcon(partyMenu, r4->unk_300[0], partyMenu->monsDrawState[r4->unk_300[0]].heldItem);
-    PartyMenu_DrawMonHeldItemIcon(partyMenu, r4->unk_300[1], partyMenu->monsDrawState[r4->unk_300[1]].heldItem);
-    PartyMenu_DrawMonCapsuleIcon(partyMenu, r4->unk_300[0]);
-    PartyMenu_DrawMonCapsuleIcon(partyMenu, r4->unk_300[1]);
+    PartyMenu_DrawMonStatusIcon(partyMenu, r4->slots[0], partyMenu->monsDrawState[r4->slots[0]].status);
+    PartyMenu_DrawMonStatusIcon(partyMenu, r4->slots[1], partyMenu->monsDrawState[r4->slots[1]].status);
+    PartyMenu_DrawMonHeldItemIcon(partyMenu, r4->slots[0], partyMenu->monsDrawState[r4->slots[0]].heldItem);
+    PartyMenu_DrawMonHeldItemIcon(partyMenu, r4->slots[1], partyMenu->monsDrawState[r4->slots[1]].heldItem);
+    PartyMenu_DrawMonCapsuleIcon(partyMenu, r4->slots[0]);
+    PartyMenu_DrawMonCapsuleIcon(partyMenu, r4->slots[1]);
 }
 
 static void PartyMenu_RedrawMonHpBarAfterSwap(PartyMenuStruct *partyMenu, u8 slot) {
-    UnkPartyMenuSub_94C *r4 = &partyMenu->unk_94C;
-    u16 *r5 = r4->unk_000[slot];
+    PartyMenuSwapMonsData *r4 = &partyMenu->swapMonsData;
+    u16 *r5 = r4->bg2Tilemaps[slot];
     const u16 *r3 = sub_0207A16C(partyMenu);
     u16 color;
     u16 i;
 
-    if (partyMenu->monsDrawState[r4->unk_300[slot]].isEgg == TRUE) {
+    if (partyMenu->monsDrawState[r4->slots[slot]].isEgg == TRUE) {
         for (i = 0; i < 9; ++i) {
             color = r5[0x36 + i] & 0xF000;
             r5[0x36 + i] = color | 0x04B;
@@ -806,7 +806,7 @@ static int sub_02080A58(PartyMenuStruct *partyMenu) {
         PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00127, TRUE);partyMenu->afterTextPrinterState = PARTY_MENU_STATE_3;
         return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
     }
-    partyMenu->unk_C63_6 = 1;
+    partyMenu->secondCursorActive = 1;
     partyMenu->softboiledDonorSlot = partyMenu->partyMonIndex;
     thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
     s16 x, y;

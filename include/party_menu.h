@@ -135,7 +135,7 @@ typedef enum PartyMonContextMenuItem {
     PARTY_MON_CONTEXT_MENU_SOFTBOILED,
     PARTY_MON_CONTEXT_MENU_MAX,
 
-    PARTY_MON_CONTEXT_MENU_FIELD_MOVES_BEGIN = PARTY_MON_CONTEXT_MENU_CUT,
+    PARTY_MON_CONTEXT_MENU_FIELD_MOVES_BEGIN = PARTY_MON_CONTEXT_MENU_CUT,PARTY_MON_CONTEXT_MENU_FIELD_MOVES_COUNT = PARTY_MON_CONTEXT_MENU_MAX - PARTY_MON_CONTEXT_MENU_FIELD_MOVES_BEGIN,
     PARTY_MON_CONTEXT_MENU_NUM_STRINGS = PARTY_MON_CONTEXT_MENU_CUT + MAX_MON_MOVES,
 } PartyMonContextMenuItem;
 
@@ -372,21 +372,21 @@ typedef struct PartyMenuMonsDrawState {
     s16 unk_1E;       // 846
     s16 unk_20;       // 848
     u8 filler_22[2];  // alignment padding
-    Sprite *unk_24;   // 84C
+    Sprite *iconSprite;   // 84C
     Sprite *mainScreenIconSprite;   // 850
     u8 unk_2C;        // 854
     u8 active;        // 855
 } PartyMenuMonsDrawState;
 
-typedef struct UnkPartyMenuSub_94C {
-    u16 unk_000[2][0x60];
-    u16 unk_180[2][0x60];
-    u8 unk_300[2];
-    u8 unk_302[2];
-    u8 unk_304;
-    u8 unk_305;
-    u8 unk_306;
-} UnkPartyMenuSub_94C;
+typedef struct PartyMenuSwapMonsData {
+    u16 bg2Tilemaps[2][0x60];
+    u16 bg1Tilemaps[2][0x60];
+    u8 slots[2];
+    u8 directions[2];
+    u8 active;
+    u8 state;
+    u8 xOffset;
+} PartyMenuSwapMonsData;
 
 struct PartyMenuStruct {
     BgConfig *bgConfig;
@@ -396,7 +396,7 @@ struct PartyMenuStruct {
     u16 unk_314[6 * 0x10];
     u16 unk_3D4[6 * 0x10];
     u16 unk_494[6 * 0x10];
-    u16 unk_554[0x80];
+    u16 hpBarPalettes[0x80];
     PartyMenuArgs *args; //0x654
     SpriteRenderer *spriteRenderer;
     SpriteGfxHandler *spriteGfxHandler;
@@ -413,7 +413,7 @@ struct PartyMenuStruct {
     PartyMenuContextMenuCursor *contextMenuCursor;
     PartyMenuMonsDrawState monsDrawState[PARTY_SIZE]; //0x828
     const UnkStruct_02020654 *unk_948;
-    UnkPartyMenuSub_94C unk_94C;
+    PartyMenuSwapMonsData swapMonsData;
     int (*itemUseCallback)(PartyMenuStruct *);
     int (*yesCallback)(PartyMenuStruct *);  //0xc58
     int (*noCallback)(PartyMenuStruct *);  //0xc5c
@@ -421,7 +421,7 @@ struct PartyMenuStruct {
     u8 unk_C61;
     u8 afterTextPrinterState;
     u8 softboiledDonorSlot:6;
-    u8 unk_C63_6:1;
+    u8 secondCursorActive:1;
     u8 cancelDisabled:1;
     u8 textPrinterId;
     u8 partyMonIndex; // 0xc65

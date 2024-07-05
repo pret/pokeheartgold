@@ -576,13 +576,13 @@ void PartyMenu_DrawMonHpBarOnWindow(PartyMenuStruct *partyMenu, u8 partySlot) {
         return;
     case 4:
     case 3:
-        BG_LoadPlttData(1, &partyMenu->unk_554[9], 4, (window->paletteNum * 16 + 9) * sizeof(u16));
+        BG_LoadPlttData(1, &partyMenu->hpBarPalettes[9], 4, (window->paletteNum * 16 + 9) * sizeof(u16));
         break;
     case 2:
-        BG_LoadPlttData(1, &partyMenu->unk_554[16 + 9], 4, (window->paletteNum * 16 + 9) * sizeof(u16));
+        BG_LoadPlttData(1, &partyMenu->hpBarPalettes[16 + 9], 4, (window->paletteNum * 16 + 9) * sizeof(u16));
         break;
     case 1:
-        BG_LoadPlttData(1, &partyMenu->unk_554[32 + 9], 4, (window->paletteNum * 16 + 9) * sizeof(u16));
+        BG_LoadPlttData(1, &partyMenu->hpBarPalettes[32 + 9], 4, (window->paletteNum * 16 + 9) * sizeof(u16));
         break;
     }
 
