@@ -52,7 +52,7 @@ static int PartyMenu_Subtask_WaitTextPrinter(PartyMenuStruct *partyMenu);
 static int sub_020794EC(PartyMenuStruct *partyMenu);
 static int PartyMenu_Subtask_YesNoMenuInit(PartyMenuStruct *partyMenu);
 static int PartyMenu_Subtask_YesNoMenuHandleInput(PartyMenuStruct *partyMenu);
-static int sub_02079550(PartyMenuStruct *partyMenu);
+static int PartyMenu_Subtask_UseTMHM(PartyMenuStruct *partyMenu);
 static BOOL PartyMenuApp_Exit(OVY_MANAGER *manager, int *pState);
 static void sub_020796B8(void *cbData);
 static void sub_02079700(void);
@@ -248,14 +248,14 @@ static BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
     PartyMenu_DrawPanelsAndPush(partyMenu);
     sub_0207B51C(partyMenu, partyMenu->partyMonIndex, TRUE);
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_USE_ITEM || partyMenu->args->context == PARTY_MENU_CONTEXT_EVO_STONE) {
-        if (!sub_020817C4(partyMenu->args->itemId)) {
+        if (!ItemId_IsReviveAll(partyMenu->args->itemId)) {
             PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00033, TRUE);
         }
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_TM_HM) {
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00034, TRUE);
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_9 || partyMenu->args->context == PARTY_MENU_CONTEXT_14) {
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00032, TRUE);
-    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_7 || partyMenu->args->context == PARTY_MENU_CONTEXT_8 || partyMenu->args->context == PARTY_MENU_CONTEXT_11 || partyMenu->args->context == PARTY_MENU_CONTEXT_12) {
+    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_REPLACE_MOVE_TMHM || partyMenu->args->context == PARTY_MENU_CONTEXT_REPLACE_MOVE_LEVELUP || partyMenu->args->context == PARTY_MENU_CONTEXT_11 || partyMenu->args->context == PARTY_MENU_CONTEXT_12) {
         thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17) {
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00035, TRUE);
@@ -350,11 +350,11 @@ static BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState) {
     case PARTY_MENU_STATE_20:
         *pState = sub_0207FA08(partyMenu);
         break;
-    case PARTY_MENU_STATE_21:
-        *pState = sub_02079550(partyMenu);
+    case PARTY_MENU_STATE_USE_TMHM:
+        *pState = PartyMenu_Subtask_UseTMHM(partyMenu);
         break;
     case PARTY_MENU_STATE_22:
-        *pState = sub_02082370(partyMenu);
+        *pState = PartyMenu_Subtask_TMHMLearnMove(partyMenu);
         break;
     case PARTY_MENU_STATE_SELECT_MONS_ERROR_MSG_CLOSE:
         *pState = PartyMenu_Subtask_SelectMonsErrorMsgClose(partyMenu);
@@ -440,7 +440,7 @@ static void PartyMenu_UpdateTopScreenPanelYCoordFrame(PartyMenuStruct *partyMenu
 static int PartyMenu_Subtask_Init(PartyMenuStruct *partyMenu) {
     if (IsPaletteFadeFinished() == TRUE) {
         if (partyMenu->args->context == PARTY_MENU_CONTEXT_USE_ITEM || partyMenu->args->context == PARTY_MENU_CONTEXT_EVO_STONE) {
-            if (sub_020817C4(partyMenu->args->itemId) == TRUE) {
+            if (ItemId_IsReviveAll(partyMenu->args->itemId) == TRUE) {
                 // this field is overloaded
                 partyMenu->afterTextPrinterState = 0;
                 return PARTY_MENU_STATE_SACRED_ASH;
@@ -448,10 +448,10 @@ static int PartyMenu_Subtask_Init(PartyMenuStruct *partyMenu) {
                 return PARTY_MENU_STATE_4;
             }
         } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_TM_HM) {
-            return PARTY_MENU_STATE_21;
-        } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_7) {
-            return sub_020822CC(partyMenu);
-        } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_8) {
+            return PARTY_MENU_STATE_USE_TMHM;
+        } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_REPLACE_MOVE_TMHM) {
+            return PartyMenu_ItemUseFunc_TMHMDoLearnMove(partyMenu);
+        } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_REPLACE_MOVE_LEVELUP) {
             return PartyMenu_ItemUseFunc_LevelUpDoLearnMove(partyMenu);
         } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_11 || partyMenu->args->context == PARTY_MENU_CONTEXT_12) {
             return PARTY_MENU_STATE_14;
@@ -582,12 +582,12 @@ static int PartyMenu_Subtask_YesNoMenuHandleInput(PartyMenuStruct *partyMenu) {
     }
 }
 
-static int sub_02079550(PartyMenuStruct *partyMenu) {
+static int PartyMenu_Subtask_UseTMHM(PartyMenuStruct *partyMenu) {
     u8 x = sub_0207C0DC(partyMenu);
     if (x == 0 || x == 2) {
         thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
         if (partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg != 1) {
-            return sub_02082134(partyMenu);
+            return PartyMenu_HandleUseTMHMonMon(partyMenu);
         } else {
             PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
             partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
@@ -599,7 +599,7 @@ static int sub_02079550(PartyMenuStruct *partyMenu) {
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
         return PARTY_MENU_STATE_BEGIN_EXIT;
     } else {
-        return PARTY_MENU_STATE_21;
+        return PARTY_MENU_STATE_USE_TMHM;
     }
 }
 
@@ -2433,7 +2433,7 @@ static int sub_0207C288(PartyMenuStruct *partyMenu) {
     } else {
         PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00102, TRUE);
         partyMenu->partyMonIndex = PARTY_MON_SELECTION_CONFIRM;
-        partyMenu->itemUseCallback = sub_02081378;
+        partyMenu->itemUseCallback = PartyMenu_ItemUseFunc_WaitTextPrinterThenExit;
     }
     FreeToHeap(itemData);
     return PARTY_MENU_STATE_ITEM_USE_CB;

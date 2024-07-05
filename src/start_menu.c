@@ -1020,7 +1020,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         StartMenu_SetChildProcReturnTaskFunc(startMenu, Task_StartMenu_HandleReturn);
         break;
     default:
-        if (partyMenuArgs->context == PARTY_MENU_CONTEXT_USE_ITEM || partyMenuArgs->context == PARTY_MENU_CONTEXT_TM_HM || partyMenuArgs->context == PARTY_MENU_CONTEXT_7 || partyMenuArgs->context == PARTY_MENU_CONTEXT_EVO_STONE || partyMenuArgs->context == PARTY_MENU_CONTEXT_8) {
+        if (partyMenuArgs->context == PARTY_MENU_CONTEXT_USE_ITEM || partyMenuArgs->context == PARTY_MENU_CONTEXT_TM_HM || partyMenuArgs->context == PARTY_MENU_CONTEXT_REPLACE_MOVE_TMHM || partyMenuArgs->context == PARTY_MENU_CONTEXT_EVO_STONE || partyMenuArgs->context == PARTY_MENU_CONTEXT_REPLACE_MOVE_LEVELUP) {
             startMenu->atexit_TaskEnv = sub_0203E3FC(fieldSystem, &startMenu->itemCheckUseData);
             if (partyMenuArgs->partySlot >= 6) {
                 sub_020778E0(startMenu->atexit_TaskEnv, 0);
@@ -1365,10 +1365,10 @@ static BOOL sub_0203D580(TaskManager *taskManager) {
         partyMenuArgs->moveId = summaryArgs->unk18;
         partyMenuArgs->selectedMoveIdx = summaryArgs->unk16;
         if (r7->itemId != ITEM_NONE) {
-            partyMenuArgs->context = PARTY_MENU_CONTEXT_7;
+            partyMenuArgs->context = PARTY_MENU_CONTEXT_REPLACE_MOVE_TMHM;
             partyMenuArgs->levelUpMoveSearchState = 0;
         } else {
-            partyMenuArgs->context = PARTY_MENU_CONTEXT_8;
+            partyMenuArgs->context = PARTY_MENU_CONTEXT_REPLACE_MOVE_LEVELUP;
             partyMenuArgs->levelUpMoveSearchState = r7->unk_2;
         }
         partyMenuArgs->unk_20 = &fieldSystem->unk_10C;

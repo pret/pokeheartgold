@@ -8,14 +8,14 @@
 #define LEARN_MOVE_CHECK_INCOMPAT      0xFF
 
 void PartyMenu_SetItemUseFuncFromBagSelection(PartyMenuStruct *partyMenu);
-int sub_02081378(PartyMenuStruct *partyMenu);
-BOOL sub_020817C4(u16 itemId);
+int PartyMenu_ItemUseFunc_WaitTextPrinterThenExit(PartyMenuStruct *partyMenu);
+BOOL ItemId_IsReviveAll(u16 itemId);
 int PartyMenu_Subtask_SacredAsh(PartyMenuStruct *partyMenu);
 int PartyMenu_ItemUseFunc_LevelUpDoLearnMove(PartyMenuStruct *partyMenu);
 u8 PartyMenu_CheckCanLearnTMHMMove(PartyMenuStruct *partyMenu, Pokemon *mon);
-int sub_02082134(PartyMenuStruct *partyMenu);
-int sub_020822CC(PartyMenuStruct *partyMenu);
-int sub_02082370(PartyMenuStruct *partyMenu);
+int PartyMenu_HandleUseTMHMonMon(PartyMenuStruct *partyMenu);
+int PartyMenu_ItemUseFunc_TMHMDoLearnMove(PartyMenuStruct *partyMenu);
+int PartyMenu_Subtask_TMHMLearnMove(PartyMenuStruct *partyMenu);
 int PartyMenu_Subtask_SelectMove(PartyMenuStruct *partyMenu);
 void PartyMenu_SelectMoveForPpRestoreOrPpUp(PartyMenuStruct *partyMenu, BOOL isPpRestore);
 void PartyMenu_HandleAttachMailFromMailbox(PartyMenuStruct *partyMenu);
