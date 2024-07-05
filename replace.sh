@@ -6,6 +6,18 @@ if [ "$1" = "" -o "$2" = "" ]; then
 	exit 1
 fi
 
+git grep -w "$1" src asm include >/dev/null
+if [ "$?" -ne 0 ]; then
+	echo "error: query symbol not found"
+	exit 1
+fi
+
+git grep -w "$2" src asm include >/dev/null
+if [ "$?" -eq 0 ]; then
+	echo "error: replacement symbol already exists"
+	exit 1
+fi
+
 set -e
 
 if [ "$(uname -s)" == "Darwin" ]; then

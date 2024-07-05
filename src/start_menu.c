@@ -901,7 +901,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         pokemonSummaryArgs->unk11 = 1;
         pokemonSummaryArgs->partySlot = partyMenuArgs->partySlot;
         pokemonSummaryArgs->partyCount = 1;
-        pokemonSummaryArgs->unk18 = partyMenuArgs->unk_2A;
+        pokemonSummaryArgs->unk18 = partyMenuArgs->moveId;
         pokemonSummaryArgs->unk12 = 2;
         pokemonSummaryArgs->natDexEnabled = SaveArray_IsNatDexEnabled(fieldSystem->saveData);
         pokemonSummaryArgs->unk2C = sub_02088288(fieldSystem->saveData);
@@ -926,7 +926,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         pokemonSummaryArgs->unk11 = 1;
         pokemonSummaryArgs->partySlot = partyMenuArgs->partySlot;
         pokemonSummaryArgs->partyCount = 1;
-        pokemonSummaryArgs->unk18 = partyMenuArgs->unk_2A;
+        pokemonSummaryArgs->unk18 = partyMenuArgs->moveId;
         pokemonSummaryArgs->unk12 = 2;
         pokemonSummaryArgs->natDexEnabled = SaveArray_IsNatDexEnabled(fieldSystem->saveData);
         pokemonSummaryArgs->unk2C = sub_02088288(fieldSystem->saveData);
@@ -938,7 +938,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         PokemonSummary_LearnForget_LaunchApp(fieldSystem, pokemonSummaryArgs);
         UnkStruct_0203D580 *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0203D580));
         unk->itemId = ITEM_NONE;
-        unk->unk_2 = partyMenuArgs->unk_38;
+        unk->unk_2 = partyMenuArgs->levelUpMoveSearchState;
         startMenu->atexit_TaskEnv2 = unk;
         startMenu->atexit_TaskEnv = pokemonSummaryArgs;
         StartMenu_SetChildProcReturnTaskFunc(startMenu, sub_0203D580);
@@ -977,7 +977,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         unk->evoType = EVOCTX_ITEM_USE;
         unk->partySlot = partyMenuArgs->partySlot;
         unk->species = partyMenuArgs->species;
-        unk->unk_8 = partyMenuArgs->unk_40;
+        unk->unk_8 = partyMenuArgs->evoMethod;
         startMenu->atexit_TaskEnv = unk;
         startMenu->state = START_MENU_STATE_EVOLUTION;
         break;
@@ -988,7 +988,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         unk->evoType = EVOCTX_LEVELUP;
         unk->partySlot = partyMenuArgs->partySlot;
         unk->species = partyMenuArgs->species;
-        unk->unk_8 = partyMenuArgs->unk_40;
+        unk->unk_8 = partyMenuArgs->evoMethod;
         startMenu->atexit_TaskEnv = unk;
         startMenu->state = START_MENU_STATE_EVOLUTION;
         break;
@@ -1362,14 +1362,14 @@ static BOOL sub_0203D580(TaskManager *taskManager) {
         sub_0203CF74(partyMenuArgs, fieldSystem, startMenu);
         partyMenuArgs->itemId = r7->itemId;
         partyMenuArgs->partySlot = summaryArgs->partySlot;
-        partyMenuArgs->unk_2A = summaryArgs->unk18;
-        partyMenuArgs->unk_2C = summaryArgs->unk16;
+        partyMenuArgs->moveId = summaryArgs->unk18;
+        partyMenuArgs->selectedMoveIdx = summaryArgs->unk16;
         if (r7->itemId != ITEM_NONE) {
             partyMenuArgs->context = PARTY_MENU_CONTEXT_7;
-            partyMenuArgs->unk_38 = 0;
+            partyMenuArgs->levelUpMoveSearchState = 0;
         } else {
             partyMenuArgs->context = PARTY_MENU_CONTEXT_8;
-            partyMenuArgs->unk_38 = r7->unk_2;
+            partyMenuArgs->levelUpMoveSearchState = r7->unk_2;
         }
         partyMenuArgs->unk_20 = &fieldSystem->unk_10C;
         FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, partyMenuArgs);

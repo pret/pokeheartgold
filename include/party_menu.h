@@ -41,7 +41,7 @@ typedef enum PartyMenuState {
     PARTY_MENU_STATE_HANDLE_CONTEXT_MENU_INPUT,
     PARTY_MENU_STATE_3,
     PARTY_MENU_STATE_4,
-    PARTY_MENU_STATE_5,
+    PARTY_MENU_STATE_ITEM_USE_CB,
     PARTY_MENU_STATE_SELECT_MOVE,
     PARTY_MENU_STATE_SACRED_ASH,
     PARTY_MENU_STATE_8,
@@ -310,8 +310,8 @@ typedef struct PartyMenuArgs {
     u8 partySlot;
     u8 selectedAction;
     u16 itemId;
-    u16 unk_2A;
-    u8 unk_2C;
+    u16 moveId;
+    u8 selectedMoveIdx;
     u8 unk_2D;
     u8 contestStat;
     u8 contestLevel;
@@ -319,9 +319,9 @@ typedef struct PartyMenuArgs {
     u8 unk_36_0:4;
     u8 maxMonsToSelect:4;
     u8 unk_37;
-    int unk_38;
+    int levelUpMoveSearchState;
     u16 species;
-    int unk_40;
+    int evoMethod;
 } PartyMenuArgs;
 
 typedef struct IconFormChangeData  {
@@ -414,7 +414,7 @@ struct PartyMenuStruct {
     PartyMenuMonsDrawState monsDrawState[PARTY_SIZE]; //0x828
     const UnkStruct_02020654 *unk_948;
     UnkPartyMenuSub_94C unk_94C;
-    int (*unk_C54)(PartyMenuStruct *);
+    int (*itemUseCallback)(PartyMenuStruct *);
     int (*yesCallback)(PartyMenuStruct *);  //0xc58
     int (*noCallback)(PartyMenuStruct *);  //0xc5c
     u8 unk_C60;
@@ -426,8 +426,8 @@ struct PartyMenuStruct {
     u8 textPrinterId;
     u8 partyMonIndex; // 0xc65
     u8 unk_C66;
-    u8 unk_C67;
-    u16 unk_C68[6];
+    u8 levelUpLearnMovesLoopState;
+    u16 levelUpStatsTmp[6];
     Pokedex *pokedex; // 0xc74
     int topScreenPanelYPos;
     BOOL topScreenPanelShow;
@@ -474,7 +474,7 @@ u32 sub_0207CAA4(void);
 u32 sub_0207CAA8(void);
 void sub_0207CAAC(HeapID heapId, u16 *a1, u16 *a2, u16 *a3);
 void PartyMenu_FormChangeScene_End(PartyMenuStruct *partyMenu);
-void sub_0207CB20(PartyMenuStruct *partyMenu);
+void PartyMenu_DeleteContextMenuAndList(PartyMenuStruct *partyMenu);
 void sub_0207CB3C(PartyMenuStruct *partyMenu, BOOL a1);
 void PartyMenu_FormChangeScene_Begin(PartyMenuStruct *partyMenu);
 

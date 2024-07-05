@@ -652,7 +652,7 @@ void PartyMenu_DrawPartyMonsList_UseTMHM(PartyMenuStruct *partyMenu, u8 partySlo
         PartyMenu_PrintTMHMCompatString(partyMenu, partySlot, 1);
     } else {
         PartyMenu_PrintMonLevelOnWindow(partyMenu, partySlot);
-        u8 x = sub_020820DC(partyMenu, Party_GetMonByIndex(partyMenu->args->party, partySlot));
+        u8 x = PartyMenu_CheckCanLearnTMHMMove(partyMenu, Party_GetMonByIndex(partyMenu->args->party, partySlot));
         if (x == LEARN_MOVE_CHECK_INCOMPAT) {
             PartyMenu_PrintTMHMCompatString(partyMenu, partySlot, 1);
         } else if (x == LEARN_MOVE_CHECK_KNOWN) {
@@ -908,12 +908,12 @@ void PartyMenu_LevelUpPrintStatsChange(PartyMenuStruct *partyMenu) {
         AddTextPrinterParameterized(&partyMenu->levelUpStatsWindow[0], 0, str_plusSign, 80, i * 16, TEXT_SPEED_NOTRANSFER, NULL);
 
         str_formatInt = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00176);
-        BufferIntegerAsString(partyMenu->msgFormat, 0, stats[i] - partyMenu->unk_C68[i], 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        BufferIntegerAsString(partyMenu->msgFormat, 0, stats[i] - partyMenu->levelUpStatsTmp[i], 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, str_formatInt);
         String_Delete(str_formatInt);
         AddTextPrinterParameterized(&partyMenu->levelUpStatsWindow[0], 0, partyMenu->formattedStrBuf, 94, i * 16, TEXT_SPEED_NOTRANSFER, NULL);
 
-        partyMenu->unk_C68[i] = stats[i];
+        partyMenu->levelUpStatsTmp[i] = stats[i];
     }
     String_Delete(str_plusSign);
     ScheduleWindowCopyToVram(&partyMenu->levelUpStatsWindow[0]);
@@ -926,7 +926,7 @@ void sub_0207DF98(PartyMenuStruct *partyMenu) {
     FillWindowPixelRect(&partyMenu->levelUpStatsWindow[0], 15, 80, 0, 32, 112);
     spC = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00176);
     for (i = 0; i < NUM_STATS; ++i) {
-        BufferIntegerAsString(partyMenu->msgFormat, 0, partyMenu->unk_C68[i], 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        BufferIntegerAsString(partyMenu->msgFormat, 0, partyMenu->levelUpStatsTmp[i], 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, spC);
         AddTextPrinterParameterized(&partyMenu->levelUpStatsWindow[0], 0, partyMenu->formattedStrBuf, 104 - FontID_String_GetWidth(0, partyMenu->formattedStrBuf, 0), i * 16, TEXT_SPEED_NOTRANSFER, NULL);
     }

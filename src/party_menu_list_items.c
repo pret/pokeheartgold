@@ -92,7 +92,7 @@ u32 GetPartyMenuContextMenuActionFunc(int index) {
 }
 
 static void PartyMonContextMenuAction_Item(PartyMenuStruct *partyMenu, int *pState) {
-    sub_0207CB20(partyMenu);
+    PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_PrintMessageOnWindow33(partyMenu, msg_0300_00039, FALSE);
     partyMenu->listMenuItems = ListMenuItems_New(3, HEAP_ID_PARTY_MENU);
     ListMenuItems_AddItem(partyMenu->listMenuItems, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_GIVE], GetPartyMenuContextMenuActionFunc(PARTY_MON_CONTEXT_MENU_GIVE));
@@ -115,7 +115,7 @@ static void PartyMonContextMenuAction_Item(PartyMenuStruct *partyMenu, int *pSta
 }
 
 static void PartyMonContextMenuAction_Give(PartyMenuStruct *partyMenu, int *pState) {
-    sub_0207CB20(partyMenu);
+    PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
     partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_GIVE_ITEM;
     *pState = PARTY_MENU_STATE_BEGIN_EXIT;
@@ -127,7 +127,7 @@ static void PartyMonContextMenuAction_Take(PartyMenuStruct *partyMenu, int *pSta
     BOOL griseousOrbResult;
 
     sub_0200E5D4(&partyMenu->windows[PARTY_MENU_WINDOW_ID_35], TRUE);
-    sub_0207CB20(partyMenu);
+    PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem == ITEM_NONE) {
         mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
@@ -194,7 +194,7 @@ int PartyMenu_Subtask_WaitTakeGriseousOrbAnim(PartyMenuStruct *partyMenu) {
 }
 
 static void PartyMonContextMenuAction_Mail(PartyMenuStruct *partyMenu, int *pState) {
-    sub_0207CB20(partyMenu);
+    PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_PrintMessageOnWindow33(partyMenu, msg_0300_00040, FALSE);
     partyMenu->listMenuItems = ListMenuItems_New(3, HEAP_ID_PARTY_MENU);
     ListMenuItems_AddItem(partyMenu->listMenuItems, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_READ_MAIL], GetPartyMenuContextMenuActionFunc(PARTY_MON_CONTEXT_MENU_READ_MAIL));
@@ -217,7 +217,7 @@ static void PartyMonContextMenuAction_Mail(PartyMenuStruct *partyMenu, int *pSta
 }
 
 static void PartyMonContextMenuAction_ReadMail(PartyMenuStruct *partyMenu, int *pState) {
-    sub_0207CB20(partyMenu);
+    PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
     partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_READ_MAIL;
     *pState = PARTY_MENU_STATE_BEGIN_EXIT;
@@ -225,7 +225,7 @@ static void PartyMonContextMenuAction_ReadMail(PartyMenuStruct *partyMenu, int *
 
 static void PartyMonContextMenuAction_TakeMail(PartyMenuStruct *partyMenu, int *pState) {
     sub_0200E5D4(&partyMenu->windows[PARTY_MENU_WINDOW_ID_35], TRUE);
-    sub_0207CB20(partyMenu);
+    PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
     PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00044, TRUE);
     partyMenu->yesCallback = PartyMenu_TakeMail_SendToPC;
@@ -293,7 +293,7 @@ int sub_0207FA08(PartyMenuStruct *partyMenu) {
 }
 
 static void PartyMonContextMenuAction_Store(PartyMenuStruct *partyMenu, int *pState) {
-    sub_0207CB20(partyMenu);
+    PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].capsule == 0) {
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
@@ -333,7 +333,7 @@ static void PartyMonContextMenuAction_Switch(PartyMenuStruct *partyMenu, int *pS
     Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], TRUE);
     sub_0207A7F4(partyMenu, partyMenu->softboiledDonorSlot);
     ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
-    sub_0207CB20(partyMenu);
+    PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
     PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00031, TRUE);
     *pState = PARTY_MENU_STATE_SELECT_SWITCH_MON;
@@ -558,7 +558,7 @@ static void PartyMenu_RedrawMonHpBarAfterSwap(PartyMenuStruct *partyMenu, u8 slo
 
 static void PartyMonContextMenuAction_Enter(PartyMenuStruct *partyMenu, int *pState) {
     ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
-    sub_0207CB20(partyMenu);
+    PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
     PartyMenu_SetTopScreenSelectionPanelVisibility(partyMenu, FALSE);
     for (u8 i = 0; i < partyMenu->args->maxMonsToSelect; ++i) {
@@ -622,7 +622,7 @@ static void PartyMonContextMenuAction_NoEntry(PartyMenuStruct *partyMenu, int *p
         }
     }
     ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
-    sub_0207CB20(partyMenu);
+    PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
     PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00035, TRUE);
     thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
@@ -631,27 +631,27 @@ static void PartyMonContextMenuAction_NoEntry(PartyMenuStruct *partyMenu, int *p
 
 static void PartyMonContextMenuAction_ContestEnter(PartyMenuStruct *partyMenu, int *pState) {
     partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
-    sub_0207CB20(partyMenu);
+    PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
     *pState = PARTY_MENU_STATE_BEGIN_EXIT;
 }
 
 static void PartyMonContextMenuAction_Confirm(PartyMenuStruct *partyMenu, int *pState) {
     partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
-    sub_0207CB20(partyMenu);
+    PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
     *pState = PARTY_MENU_STATE_BEGIN_EXIT;
 }
 
 static void PartyMonContextMenuAction_Summary(PartyMenuStruct *partyMenu, int *pState) {
     partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_1;
-    sub_0207CB20(partyMenu);
+    PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
     *pState = PARTY_MENU_STATE_BEGIN_EXIT;
 }
 
 static void PartyMonContextMenuAction_Set(PartyMenuStruct *partyMenu, int *pState) {
-    sub_0207CB20(partyMenu);
+    PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
     ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
     *pState = PartyMenu_HandleSetMonCapsule(partyMenu);
@@ -685,7 +685,7 @@ static void PartyMenuContextMenuAction_FieldMoveCommon(PartyMenuStruct *partyMen
     }
     switch (response) {
     case PARTY_MENU_RESPONSE_OK:
-        sub_0207CB20(partyMenu);
+        PartyMenu_DeleteContextMenuAndList(partyMenu);
         PartyMenu_DisableMainScreenBlend_AfterYesNo();
         *pState = PARTY_MENU_STATE_BEGIN_EXIT;
         return;
@@ -706,7 +706,7 @@ static void PartyMenuContextMenuAction_FieldMoveCommon(PartyMenuStruct *partyMen
         break;
     }
     ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
-    sub_0207CB20(partyMenu);
+    PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
     PartyMenu_PrintMessageOnWindow34(partyMenu, msgId, TRUE);
     partyMenu->afterTextPrinterState = PARTY_MENU_STATE_3;
@@ -781,14 +781,14 @@ static void PartyMonContextMenuAction_Chatter(PartyMenuStruct *partyMenu, int *p
 static void PartyMonContextMenuAction_MilkDrink(PartyMenuStruct *partyMenu, int *pState) {
     *pState = sub_02080A58(partyMenu);
     if (*pState == PARTY_MENU_STATE_SOFTBOILED) {
-        partyMenu->unk_C68[3] = PARTY_MENU_ACTION_RETURN_MILK_DRINK - PARTY_MENU_ACTION_RETURN_FIELD_MOVE_BEGIN;
+        partyMenu->levelUpStatsTmp[3] = PARTY_MENU_ACTION_RETURN_MILK_DRINK - PARTY_MENU_ACTION_RETURN_FIELD_MOVE_BEGIN;
     }
 }
 
 static void PartyMonContextMenuAction_Softboiled(PartyMenuStruct *partyMenu, int *pState) {
     *pState = sub_02080A58(partyMenu);
     if (*pState == PARTY_MENU_STATE_SOFTBOILED) {
-        partyMenu->unk_C68[3] = PARTY_MENU_ACTION_RETURN_SOFTBOILED - PARTY_MENU_ACTION_RETURN_FIELD_MOVE_BEGIN;
+        partyMenu->levelUpStatsTmp[3] = PARTY_MENU_ACTION_RETURN_SOFTBOILED - PARTY_MENU_ACTION_RETURN_FIELD_MOVE_BEGIN;
     }
 }
 
@@ -799,10 +799,10 @@ static void PartyMonContextMenuAction_Headbutt(PartyMenuStruct *partyMenu, int *
 
 static int sub_02080A58(PartyMenuStruct *partyMenu) {
     ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
-    sub_0207CB20(partyMenu);
+    PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
-    partyMenu->unk_C68[0] = partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp / 5;
-    if (partyMenu->monsDrawState[partyMenu->partyMonIndex].hp <= partyMenu->unk_C68[0]) {
+    partyMenu->levelUpStatsTmp[0] = partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp / 5;
+    if (partyMenu->monsDrawState[partyMenu->partyMonIndex].hp <= partyMenu->levelUpStatsTmp[0]) {
         PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00127, TRUE);partyMenu->afterTextPrinterState = PARTY_MENU_STATE_3;
         return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
     }
@@ -816,7 +816,7 @@ static int sub_02080A58(PartyMenuStruct *partyMenu) {
     Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], TRUE);
     sub_0207A7F4(partyMenu, partyMenu->softboiledDonorSlot);
     PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00037, TRUE);
-    partyMenu->unk_C68[1] = 0;
+    partyMenu->levelUpStatsTmp[1] = 0;
     return PARTY_MENU_STATE_SOFTBOILED;
 }
 

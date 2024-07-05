@@ -355,7 +355,7 @@ static void ItemMenuUseFunc_TMHM(struct ItemMenuUseData *data, const struct Item
     usedat->fieldSystem = fieldSystem;
     usedat->itemId = data->itemId;
     usedat->partySlot = data->unk6;
-    usedat->unk_2A = TMHMGetMove(data->itemId);
+    usedat->moveId = TMHMGetMove(data->itemId);
     usedat->unk_20 = &fieldSystem->unk_10C;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, usedat);
     env->atexit_TaskEnv = usedat;
