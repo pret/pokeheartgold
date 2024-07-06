@@ -12,21 +12,23 @@ struct GFRtcWork {
     RTCTime time; // 20
     RTCDate date_async; // 2C
     RTCTime time_async; // 3C
-    s32 unk_48;
-    RTCTime unk_4C;
+
+    // used for rendering photos
+    s32 frozenTimeState;  // 3: in photo state; 0: normal operation
+    RTCTime frozenTime;   // when frozenTimeState is 3, this is the time returned
 };
 
 struct GFRtcWork sRTCWork;
 
 static void GF_RTC_GetDateTime(struct GFRtcWork *work);
-static void sub_02014700(struct GFRtcWork *work);
+static void GF_RTC_UnfreezeTimeInternal(struct GFRtcWork *work);
 
 static inline RTCDate *getDate(struct GFRtcWork *work) {
     return &work->date;
 }
 
 static inline RTCTime *getTime(struct GFRtcWork *work) {
-    return (work->unk_48 == 3) ? &work->unk_4C : &work->time;
+    return (work->frozenTimeState == 3) ? &work->frozenTime : &work->time;
 }
 
 void GF_InitRTCWork(void) {
@@ -36,7 +38,7 @@ void GF_InitRTCWork(void) {
     sRTCWork.getDateTimeLock = FALSE;
     sRTCWork.getDateTimeSleep = 0;
     GF_RTC_GetDateTime(&sRTCWork);
-    sub_02014700(&sRTCWork);
+    GF_RTC_UnfreezeTimeInternal(&sRTCWork);
 }
 
 void GF_RTC_UpdateOnFrame(void) {
@@ -62,14 +64,14 @@ static void GF_RTC_GetDateTime(struct GFRtcWork *work) {
     GF_ASSERT(work->getDateTimeErrorCode == RTC_RESULT_SUCCESS);
 }
 
-static void sub_020146F4(struct GFRtcWork *work, s32 hour, s32 minute) {
-    work->unk_48 = 3;
-    work->unk_4C.hour = hour;
-    work->unk_4C.minute = minute;
+static void GF_RTC_SetAndFreezeTimeInternal(struct GFRtcWork *work, s32 hour, s32 minute) {
+    work->frozenTimeState = 3;
+    work->frozenTime.hour = hour;
+    work->frozenTime.minute = minute;
 }
 
-static void sub_02014700(struct GFRtcWork *work) {
-    work->unk_48 = 0;
+static void GF_RTC_UnfreezeTimeInternal(struct GFRtcWork *work) {
+    work->frozenTimeState = 0;
 }
 
 void GF_RTC_CopyDateTime(RTCDate *date, RTCTime *time) {
@@ -195,10 +197,10 @@ s64 GF_RTC_TimeDelta(s64 first, s64 last) {
     }
 }
 
-void sub_020148F4(void) {
-    sub_02014700(&sRTCWork);
+void GF_RTC_UnfreezeTime(void) {
+    GF_RTC_UnfreezeTimeInternal(&sRTCWork);
 }
 
-void sub_02014904(s32 hour, s32 minute) {
-    sub_020146F4(&sRTCWork, hour, minute);
+void GF_RTC_SetAndFreezeTime(s32 hour, s32 minute) {
+    GF_RTC_SetAndFreezeTimeInternal(&sRTCWork, hour, minute);
 }

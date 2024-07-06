@@ -16,5 +16,5 @@
 .public ov01_021F6894
 .public ov01_021F68B8
 .public ov01_021F68C0
-.public ov19_022598C0
-.public ov19_02259918
+.public FieldSystem_CreateViewPhotoTask
+.public FieldSystem_DestroyViewPhotoTask

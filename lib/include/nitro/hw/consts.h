@@ -58,11 +58,4 @@
 
 #define HW_CPU_CLOCK_ARM9          67027964
 
-#define REG_PXI_SUBP_FIFO_CNT_E_MASK                       0x8000
-#define REG_PXI_SUBP_FIFO_CNT_ERR_MASK                     0x4000
-#define REG_PXI_SUBP_FIFO_CNT_RECV_RI_MASK                 0x0400
-#define REG_PXI_SUBP_FIFO_CNT_RECV_EMP_MASK                0x0100
-#define REG_PXI_SUBP_FIFO_CNT_SEND_CL_MASK                 0x0008
-#define REG_PXI_SUBP_FIFO_CNT_SEND_FULL_MASK               0x0002
-
 #endif //NITRO_HW_CONSTS_H_

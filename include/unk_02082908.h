@@ -3,6 +3,7 @@
 
 #include "overlay_manager.h"
 #include "pm_string.h"
+#include "options.h"
 
 extern const OVY_MGR_TEMPLATE _02102610;
 

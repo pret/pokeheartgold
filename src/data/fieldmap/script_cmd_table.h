@@ -615,12 +615,12 @@ BOOL ScrCmd_GetNpcTradeUnusedFlag(ScriptContext *ctx);
 BOOL ScrCmd_GetPhoneContactRandomGiftBerry(ScriptContext *ctx);
 BOOL ScrCmd_GetPhoneContactGiftItem(ScriptContext *ctx);
 BOOL ScrCmd_CameronPhoto(ScriptContext *ctx);
-BOOL ScrCmd_616(ScriptContext *ctx);
-BOOL ScrCmd_617(ScriptContext *ctx);
+BOOL ScrCmd_CountSavedPhotos(ScriptContext *ctx);
+BOOL ScrCmd_OpenPhotoAlbum(ScriptContext *ctx);
 BOOL ScrCmd_PhotoAlbumIsFull(ScriptContext *ctx);
 BOOL ScrCmd_RocketCostumeFlagCheck(ScriptContext *ctx);
 BOOL ScrCmd_RocketCostumeFlagAction(ScriptContext *ctx);
-BOOL ScrCmd_621(ScriptContext *ctx);
+BOOL ScrCmd_PlaceStarterBallsInElmsLab(ScriptContext *ctx);
 BOOL ScrCmd_622(ScriptContext *ctx);
 BOOL ScrCmd_AnimApricornTree(ScriptContext *ctx);
 BOOL ScrCmd_ApricornTreeGetApricorn(ScriptContext *ctx);
@@ -1470,12 +1470,12 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_GetPhoneContactRandomGiftBerry,
     ScrCmd_GetPhoneContactGiftItem,
     ScrCmd_CameronPhoto,
-    ScrCmd_616,
-    ScrCmd_617,
+    ScrCmd_CountSavedPhotos,
+    ScrCmd_OpenPhotoAlbum,
     ScrCmd_PhotoAlbumIsFull,
     ScrCmd_RocketCostumeFlagCheck,
     ScrCmd_RocketCostumeFlagAction,
-    ScrCmd_621,
+    ScrCmd_PlaceStarterBallsInElmsLab,
     ScrCmd_622,
     ScrCmd_AnimApricornTree,
     ScrCmd_ApricornTreeGetApricorn,

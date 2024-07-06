@@ -6,7 +6,7 @@
 
 typedef struct PCBoxArgs {
     SaveData *saveData;
-    void *fieldSystemUnk10C;
+    BOOL *fieldSystemUnk10C;
     int unk8;
 } PCBoxArgs;
 

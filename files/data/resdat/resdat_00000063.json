@@ -2,7 +2,7 @@
   "kind": "pltt",
   "graphics": [
     {
-      "narc": 225,
+      "narc": "NARC_a_2_2_3",
       "file": 9,
       "compressed": false,
       "id": 0,

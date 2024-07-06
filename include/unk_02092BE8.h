@@ -7,6 +7,7 @@
 #include "script.h"
 #include "gear_phone.h"
 #include "sys_task_api.h"
+#include "field_types_def.h"
 
 typedef struct PokegearArgs{
     u8 kind;
@@ -20,7 +21,10 @@ typedef struct PokegearArgs{
     int y; //0x0c
     u16 mapID; //0x10
     u16 mapHeader; //0x12
-    u8 filler_14[0xe];
+    BOOL unk_14;
+    int mapCursorX;
+    int mapCursorY;
+    u16 unk_20;
     u8 matrixXCoord; //0x22
     u8 matrixYCoord; //0x23
     SaveData* saveData; //0x24

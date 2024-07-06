@@ -45,7 +45,7 @@ typedef struct CameraParam {
     CameraAngle angle;
     u8 perspectiveType;
     u16 perspective;
-    BOOL setReference;
+    u8 dummy;  // because gf misaccounted for the previous field's alignment
 } CameraParam;
 
 typedef struct CameraLookAt {

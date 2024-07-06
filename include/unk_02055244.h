@@ -3,8 +3,8 @@
 
 #include "task.h"
 
-void sub_0205525C(TaskManager *taskManager);
-void PalleteFadeUntilFinished(TaskManager *taskManager);
+void CallTask_LeaveOverworld(TaskManager *taskManager);
+void PaletteFadeUntilFinished(TaskManager *taskManager);
 void CallTask_FadeFromBlack(TaskManager *taskManager);
 void sub_020553B0(TaskManager *taskManager);
 void sub_02055408(TaskManager *taskManager);
