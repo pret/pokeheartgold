@@ -60,12 +60,12 @@ static void sub_02079700(void);
 static void sub_02079720(BgConfig *bgConfig);
 static void sub_02079758(BgConfig *bgConfig);
 static void sub_020798C4(BgConfig *bgConfig);
-GF3DVramMan *sub_0207997C(HeapID heapId);
-static void sub_0207999C(void);
-static void sub_02079A0C(GF3DVramMan *gf3dVramMan);
+static GF3DVramMan *Create3dVramManForPartyMenu(HeapID heapId);
+static void Init3dVramManForPartyMenu(void);
+static void Delete3dVramManForPartyMenu(GF3DVramMan *gf3dVramMan);
 static void sub_02079A14(PartyMenuStruct *partyMenu, NARC *narc);
 static BOOL sub_0207A880(PartyMenuStruct *partyMenu, u8 partySlot);
-PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager);
+static PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager);
 static void sub_02079CE4(PartyMenuStruct *partyMenu);
 static void sub_02079D38(PartyMenuStruct *partyMenu);
 static u8 PartyMenu_IsMonDrawStateActive(PartyMenuStruct *partyMenu, u8 partySlot);
@@ -878,26 +878,26 @@ static void sub_020798C4(BgConfig *bgConfig) {
     FreeToHeapExplicit(HEAP_ID_PARTY_MENU, bgConfig);
 }
 
-void sub_0207991C(PartyMenuStruct *partyMenu, int a1) {
-    if (a1 == FALSE) {
+void PartyMenu_Toggle3dEngine(PartyMenuStruct *partyMenu, PartyMenu3dEngineToggle toggle) {
+    if (toggle == PARTY_MENU_3D_ENGINE_ON) {
         ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_OFF);
         FreeBgTilemapBuffer(partyMenu->bgConfig, GF_BG_LYR_MAIN_0);
         GX_SetGraphicsMode(GX_DISPMODE_GRAPHICS, GX_BGMODE_0, GX_BG0_AS_3D);
-        partyMenu->unk_C84 = sub_0207997C(HEAP_ID_PARTY_MENU);
-    } else {
+        partyMenu->gf3dVramMan = Create3dVramManForPartyMenu(HEAP_ID_PARTY_MENU);
+    } else {  // PARTY_MENU_3D_ENGINE_OFF
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);
-        sub_02079A0C(partyMenu->unk_C84);
+        Delete3dVramManForPartyMenu(partyMenu->gf3dVramMan);
         GX_SetGraphicsMode(GX_DISPMODE_GRAPHICS, GX_BGMODE_0, GX_BG0_AS_2D);
         sub_02079720(partyMenu->bgConfig);
         BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 0x20, 0, HEAP_ID_PARTY_MENU);
     }
 }
 
-GF3DVramMan *sub_0207997C(HeapID heapId) {
-    return GF_3DVramMan_Create(heapId, GF_3D_TEXALLOC_LNK, 1, GF_3D_PLTTALLOC_LNK, 2, sub_0207999C);
+static GF3DVramMan *Create3dVramManForPartyMenu(HeapID heapId) {
+    return GF_3DVramMan_Create(heapId, GF_3D_TEXALLOC_LNK, 1, GF_3D_PLTTALLOC_LNK, 2, Init3dVramManForPartyMenu);
 }
 
-static void sub_0207999C(void) {
+static void Init3dVramManForPartyMenu(void) {
     G3X_SetShading(GX_SHADING_TOON);
     G3X_AntiAlias(TRUE);
     G3X_AlphaTest(FALSE, 0);
@@ -908,7 +908,7 @@ static void sub_0207999C(void) {
     G3_ViewPort(0, 0, 255, 191);
 }
 
-static void sub_02079A0C(GF3DVramMan *gf3dVramMan) {
+static void Delete3dVramManForPartyMenu(GF3DVramMan *gf3dVramMan) {
     GF_3DVramMan_Delete(gf3dVramMan);
 }
 
@@ -943,7 +943,7 @@ static void sub_02079A14(PartyMenuStruct *partyMenu, NARC *narc) {
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB_BLACK);
 }
 
-PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager) {
+static PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager) {
     u32 i;
     PartyMenuStruct *ret = (PartyMenuStruct *)OverlayManager_CreateAndGetData(manager, sizeof(PartyMenuStruct), HEAP_ID_PARTY_MENU);
     memset(ret, 0, sizeof(PartyMenuStruct));

@@ -432,7 +432,7 @@ struct PartyMenuStruct {
     int topScreenPanelYPos;
     BOOL topScreenPanelShow;
     IconFormChangeData *iconFormChange; // C80
-    GF3DVramMan *unk_C84; // C84
+    GF3DVramMan *gf3dVramMan; // C84
     YesNoPrompt *yesNoPrompt;
     u8 filler_C8C[4];
     PartyMenuContextButtonAnimData contextMenuButtonAnim;
@@ -459,7 +459,13 @@ struct TeleportFieldEnv {
 extern const OVY_MGR_TEMPLATE gOverlayTemplate_PartyMenu;
 
 void PartyMenu_SetTopScreenSelectionPanelVisibility(PartyMenuStruct *partyMenu, BOOL show);
-void sub_0207991C(PartyMenuStruct *partyMenu, int a1);
+
+typedef enum PartyMenu3dEngineToggle {
+    PARTY_MENU_3D_ENGINE_ON,
+    PARTY_MENU_3D_ENGINE_OFF,
+} PartyMenu3dEngineToggle;
+
+void PartyMenu_Toggle3dEngine(PartyMenuStruct *partyMenu, PartyMenu3dEngineToggle toggle);
 BOOL sub_02079E38(PartyMenuStruct *partyMenu, u8 partySlot);
 u16 *sub_0207A16C(PartyMenuStruct *partyMenu);
 void sub_0207AB84(PartyMenuStruct *partyMenu, u8 partySlot);
