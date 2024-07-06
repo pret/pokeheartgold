@@ -2,7 +2,7 @@
   "kind": "cell",
   "graphics": [
     {
-      "narc": "NARC_a_0_2_1",
+      "narc": "NARC_graphic_plist_gra",
       "file": 1,
       "compressed": false,
       "id": 0,
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "narc": "NARC_a_0_2_1",
+      "narc": "NARC_graphic_plist_gra",
       "file": 6,
       "compressed": false,
       "id": 1,
@@ -22,7 +22,7 @@
       ]
     },
     {
-      "narc": "NARC_a_0_2_1",
+      "narc": "NARC_graphic_plist_gra",
       "file": 10,
       "compressed": false,
       "id": 2,
@@ -52,7 +52,7 @@
       ]
     },
     {
-      "narc": "NARC_a_0_2_1",
+      "narc": "NARC_graphic_plist_gra",
       "file": 19,
       "compressed": false,
       "id": 5,
