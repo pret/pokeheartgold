@@ -149,7 +149,7 @@ BOOL ScrCmd_RegisterGearNumber(ScriptContext *ctx);
 BOOL ScrCmd_CheckRegisteredPhoneNumber(ScriptContext *ctx);
 BOOL ScrCmd_148(ScriptContext *ctx);
 BOOL ScrCmd_149(ScriptContext *ctx);
-BOOL ScrCmd_150(ScriptContext *ctx);
+BOOL ScrCmd_RestoreOverworld(ScriptContext *ctx);
 BOOL ScrCmd_151(ScriptContext *ctx);
 BOOL ScrCmd_152(ScriptContext *ctx);
 BOOL ScrCmd_153(ScriptContext *ctx);
@@ -1004,7 +1004,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_CheckRegisteredPhoneNumber,
     ScrCmd_148,
     ScrCmd_149,
-    ScrCmd_150,
+    ScrCmd_RestoreOverworld,
     ScrCmd_151,
     ScrCmd_152,
     ScrCmd_153,

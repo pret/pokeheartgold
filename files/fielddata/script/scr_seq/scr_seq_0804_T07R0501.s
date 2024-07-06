@@ -43,7 +43,7 @@ _006D:
 	wait_fade
 	party_select_ui
 	get_party_selection VAR_SPECIAL_x8000
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x8000, 255

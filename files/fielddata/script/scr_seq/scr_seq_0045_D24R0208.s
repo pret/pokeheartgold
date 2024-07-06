@@ -17,7 +17,7 @@ scr_seq_D24R0208_000:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	alph_puzzle 3
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto_if_set FLAG_SYS_ALPH_PUZZLE_HO_OH, _0042

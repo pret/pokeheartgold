@@ -1210,7 +1210,7 @@ _02246DF6:
 	ldr r0, [r6, #0x18]
 	cmp r0, #0
 	beq _02246E0C
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	str r7, [r6, #0x18]
 _02246E0C:
 	ldr r0, [r4]
@@ -4080,9 +4080,9 @@ ov12_022484D4: ; 0x022484D4
 	bl ov12_0223A8EC
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r5, #0x10]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r5, #0x14]
 	bl sub_02013660
 	add r0, r5, #0

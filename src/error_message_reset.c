@@ -118,7 +118,7 @@ void PrintErrorMessageAndReset(void) {
 
     BgConfig* bg_config = BgConfig_Alloc(HEAP_ID_DEFAULT);
     SetBothScreensModesAndDisable(&sErrorMessageBgModeSet);
-    InitBgFromTemplate(bg_config, 0, &sErrorMessageBgTemplate, GX_BGMODE_0);
+    InitBgFromTemplate(bg_config, 0, &sErrorMessageBgTemplate, GF_BG_TYPE_TEXT);
     BgClearTilemapBufferAndCommit(bg_config, GF_BG_LYR_MAIN_0);
     LoadUserFrameGfx1(bg_config, GF_BG_LYR_MAIN_0, 0x1F7, 2, 0, HEAP_ID_DEFAULT);
     LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_1_OFFSET, HEAP_ID_DEFAULT);

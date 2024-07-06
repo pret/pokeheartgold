@@ -151,7 +151,7 @@
 .public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_SetPalIndex
 .public sub_02024A48
-.public sub_02024B1C
+.public Sprite_GetImageProxy
 .public Sprite_IsCellAnimationRunning
 .public sub_02024B78
 .public GF_AssertFail

@@ -1100,7 +1100,7 @@ _0F0B:
 	wait_fade
 	party_select_ui
 	get_party_selection VAR_SPECIAL_RESULT
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_RESULT, 255
@@ -1135,7 +1135,7 @@ _0F99:
 	wait_fade
 	pokemon_summary_screen 1, VAR_SPECIAL_x8006, 29
 	get_move_selection 1, VAR_SPECIAL_x8001
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x8001, 4

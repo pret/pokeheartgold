@@ -37,7 +37,7 @@
 .public SpriteGfxHandler_UnloadPlttObjById
 .public SpriteGfxHandler_UnloadCellObjById
 .public SpriteGfxHandler_UnloadAnimObjById
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public UnkImageStruct_GetSpriteAnimSeqNo
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public UnkImageStruct_SetSpriteAnimActiveFlag
@@ -73,7 +73,7 @@
 .public GetMonBaseStat
 .public GetNatureFromPersonality
 .public GetMonSpriteCharAndPlttNarcIdsEx
-.public sub_020708D8
+.public GetMonPicHeightBySpeciesGenderForme
 .public sub_02070C24
 .public sub_02070D84
 .public CopyPokemonToPokemon

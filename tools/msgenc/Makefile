@@ -1,4 +1,5 @@
-CXXFLAGS := -std=c++17 -O2 -Wall -Wno-switch
+CXX := g++
+CXXFLAGS := -std=c++17 -O2 -Wall -Wno-switch -Wno-unused-but-set-variable
 CFLAGS   := -O2 -Wall -Wno-switch
 LDFLAGS  :=
 

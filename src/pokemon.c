@@ -45,8 +45,8 @@ void DP_GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct *a0, u16 s
 void GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct *a0, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 pid);
 u8 sub_02070438(u16 species, u8 form);
 u8 sub_02070854(BoxPokemon *boxMon, u8 whichFacing, BOOL a2);
-u8 sub_02070A64(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);
-u8 sub_020708D8(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);
+u8 GetMonPicHeightBySpeciesGenderForme_PBR(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);
+u8 GetMonPicHeightBySpeciesGenderForme(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);
 void sub_02070D3C(s32 trainer_class, s32 a1, BOOL a2, struct UnkStruct_02070D3C *a3);
 int TrainerClassToBackpicID(int trainer_class, int a1);
 void LoadMonEvolutionTable(u16 species, struct Evolution *evoTable);
@@ -2151,8 +2151,8 @@ u32 GenerateShinyPersonality(u32 otid) {
     return (u32)((r5 << 16) | r6);
 }
 
-void GetPokemonSpriteCharAndPlttNarcIds(struct SomeDrawPokemonStruct *a0, BoxPokemon *boxMon, u8 whichFacing) {
-    GetBoxmonSpriteCharAndPlttNarcIds(a0, boxMon, whichFacing, FALSE);
+void GetPokemonSpriteCharAndPlttNarcIds(struct SomeDrawPokemonStruct *a0, Pokemon *mon, u8 whichFacing) {
+    GetBoxmonSpriteCharAndPlttNarcIds(a0, &mon->box, whichFacing, FALSE);
 }
 
 void sub_02070130(struct SomeDrawPokemonStruct *a0, BoxPokemon *boxMon, u8 whichFacing) {
@@ -2184,9 +2184,9 @@ void GetBoxmonSpriteCharAndPlttNarcIds(struct SomeDrawPokemonStruct *spC, BoxPok
 }
 
 void GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct * spC, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 personality) {
-    spC->unk6 = 0;
-    spC->unk8 = 0;
-    spC->unkC = 0;
+    spC->species = 0;
+    spC->isAnimated = 0;
+    spC->personality = 0;
     form = sub_02070438(species, form);
     switch (species) {
     case SPECIES_BURMY:
@@ -2268,11 +2268,11 @@ void GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct * spC, u16 sp
         spC->narcID = NARC_poketool_pokegra_pokegra;
         spC->charDataID = (u16)(species * 6 + whichFacing + (gender == MON_FEMALE ? 0 : 1));
         spC->palDataID = (u16)(shiny + (species * 6 + 4));
-        if (species == SPECIES_SPINDA && whichFacing == 2)
+        if (species == SPECIES_SPINDA && whichFacing == MON_PIC_FACING_FRONT)
         {
-            spC->unk6 = SPECIES_SPINDA;
-            spC->unk8 = 0;
-            spC->unkC = personality;
+            spC->species = SPECIES_SPINDA;
+            spC->isAnimated = 0;
+            spC->personality = personality;
         }
         break;
     }
@@ -2361,9 +2361,9 @@ void sub_02070560(struct SomeDrawPokemonStruct * spC, u16 species, u8 whichFacin
 }
 
 void DP_GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct * spC, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 personality) {
-    spC->unk6 = 0;
-    spC->unk8 = 0;
-    spC->unkC = 0;
+    spC->species = 0;
+    spC->isAnimated = 0;
+    spC->personality = 0;
     form = sub_02070438(species, form);
     switch (species) {
     case SPECIES_BURMY:
@@ -2459,11 +2459,11 @@ void DP_GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct * spC, u16
         break;
     default:
         sub_02070560(spC, species, whichFacing, gender, shiny);
-        if (species == SPECIES_SPINDA && whichFacing == 2)
+        if (species == SPECIES_SPINDA && whichFacing == MON_PIC_FACING_FRONT)
         {
-            spC->unk6 = SPECIES_SPINDA;
-            spC->unk8 = 0;
-            spC->unkC = personality;
+            spC->species = SPECIES_SPINDA;
+            spC->isAnimated = 0;
+            spC->personality = personality;
         }
         break;
     }
@@ -2492,13 +2492,13 @@ u8 sub_02070854(BoxPokemon *boxMon, u8 whichFacing, BOOL a2) {
         form = GetBoxMonData(boxMon, MON_DATA_FORM, NULL);
     }
     if (a2 == TRUE) {
-        return sub_02070A64(species, gender, whichFacing, form, pid);
+        return GetMonPicHeightBySpeciesGenderForme_PBR(species, gender, whichFacing, form, pid);
     } else {
-        return sub_020708D8(species, gender, whichFacing, form, pid);
+        return GetMonPicHeightBySpeciesGenderForme(species, gender, whichFacing, form, pid);
     }
 }
 
-u8 sub_020708D8(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid) {
+u8 GetMonPicHeightBySpeciesGenderForme(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid) {
     // species -> r5
     // gender -> r6
     // whichFacing -> r4
@@ -2580,7 +2580,7 @@ u8 sub_020708D8(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid) {
     return ret;
 }
 
-u8 sub_02070A64(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid) {
+u8 GetMonPicHeightBySpeciesGenderForme_PBR(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid) {
     // species -> r5
     // gender -> r6
     // whichFacing -> r4
@@ -4189,10 +4189,10 @@ void RestoreBoxMonPP(BoxPokemon *boxMon) {
     ReleaseBoxMonLock(boxMon, decry);
 }
 
-void sub_02072914(NARC *narc, struct UnkStruct_02072914_sub *dest, u16 a2, u16 a3) {
+void sub_02072914(NARC *narc, struct UnkStruct_02072914_sub_sub *dest, u16 species, u16 a3) {
     struct UnkStruct_02072914 sp4;
     int r5 = (a3 & 1 ? 0 : 1);
-    NARC_ReadFromMember(narc, 0, a2 * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &sp4);
+    NARC_ReadFromMember(narc, 0, species * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &sp4);
     MI_CpuCopy8(&sp4.unk0[r5].unk_3[0], dest, sizeof(struct UnkStruct_02072914_sub_sub) * 10);
 }
 

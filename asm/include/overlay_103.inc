@@ -46,7 +46,7 @@
 .public SpriteRenderer_LoadResourcesAndCreateSprite
 .public SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 .public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
@@ -123,7 +123,7 @@
 .public GfGfx_EngineASetPlanes
 .public GfGfx_EngineBTogglePlanes
 .public GfGfx_EngineBSetPlanes
-.public sub_02024B1C
+.public Sprite_GetImageProxy
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchNew
 .public String_New

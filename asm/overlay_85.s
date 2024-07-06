@@ -5426,7 +5426,7 @@ _021E81A8:
 	pop {r3, r4, r5, pc}
 _021E81C6:
 	ldr r0, [r4, #0x14]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
