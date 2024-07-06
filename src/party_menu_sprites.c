@@ -321,8 +321,8 @@ void sub_0207EBE4(PartyMenuStruct *partyMenu, u8 partySlot, u16 x, u16 y, NARC *
     UnkStruct_0200D2B4 sp1C;
     int isEgg;
 
-    partyMenu->monsDrawState[partySlot].unk_16 = x;
-    partyMenu->monsDrawState[partySlot].unk_18 = y;
+    partyMenu->monsDrawState[partySlot].iconX = x;
+    partyMenu->monsDrawState[partySlot].iconY = y;
 
     sub_0200E2B8(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, narc, Pokemon_GetIconNaix(mon), FALSE, partySlot + 4);
 
@@ -385,13 +385,13 @@ void sub_0207EDD4(PartyMenuStruct *partyMenu) {
     partyMenu->sprites[PARTY_MENU_SPRITE_ID_28] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[22]);
 
     for (u32 i = 0; i < 6; ++i) {
-        partyMenu->sprites[PARTY_MENU_SPRITE_ID_10 + i] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[4 + i]);
-        partyMenu->monsDrawState[i].unk_1A = sSpriteTemplates[4 + i].x;
-        partyMenu->monsDrawState[i].unk_1C = sSpriteTemplates[4 + i].y;
-        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_10 + i], FALSE);
+        partyMenu->sprites[PARTY_MENU_SPRITE_ID_MON1_STATUS + i] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[4 + i]);
+        partyMenu->monsDrawState[i].statusIconX = sSpriteTemplates[4 + i].x;
+        partyMenu->monsDrawState[i].statusIconY = sSpriteTemplates[4 + i].y;
+        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_MON1_STATUS + i], FALSE);
 
-        partyMenu->sprites[PARTY_MENU_SPRITE_ID_HELD_ITEM_ICON + i] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[10 + i]);
-        partyMenu->sprites[PARTY_MENU_SPRITE_ID_CAPSULE_ICON + i] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[16 + i]);
+        partyMenu->sprites[PARTY_MENU_SPRITE_ID_MON1_HELD_ITEM + i] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[10 + i]);
+        partyMenu->sprites[PARTY_MENU_SPRITE_ID_MON1_CAPSULE + i] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[16 + i]);
     }
     for (u32 i = 0; i < 6; ++i) {
         partyMenu->mainScreenStatusSprites[i] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[23]);
@@ -425,7 +425,7 @@ void PartyMenu_RemoveSpriteRenderer(PartyMenuStruct *partyMenu) {
 }
 
 void PartyMenu_DrawMonStatusIcon(PartyMenuStruct *partyMenu, u8 partySlot, u8 status) {
-    Sprite **pSprite1 = &partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_10];
+    Sprite **pSprite1 = &partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_MON1_STATUS];
     Sprite **pSprite2 = &partyMenu->mainScreenStatusSprites[partySlot];
     if (status == PARTY_MON_STATUS_ICON_OK) {
         Set2dSpriteVisibleFlag(*pSprite1, FALSE);
@@ -437,7 +437,7 @@ void PartyMenu_DrawMonStatusIcon(PartyMenuStruct *partyMenu, u8 partySlot, u8 st
 }
 
 void PartyMenu_DrawMonHeldItemIcon(PartyMenuStruct *partyMenu, u8 partySlot, u16 heldItem) {
-    Sprite **pSprite = &partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_HELD_ITEM_ICON];
+    Sprite **pSprite = &partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_MON1_HELD_ITEM];
     if (heldItem == ITEM_NONE) {
         Set2dSpriteVisibleFlag(*pSprite, FALSE);
     } else {
@@ -451,24 +451,24 @@ void PartyMenu_DrawMonHeldItemIcon(PartyMenuStruct *partyMenu, u8 partySlot, u16
 }
 
 void PartyMenu_SetMonHeldMailIcon(PartyMenuStruct *partyMenu, u8 partySlot) {
-    Sprite **pSprite = &partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_HELD_ITEM_ICON];
+    Sprite **pSprite = &partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_MON1_HELD_ITEM];
 
     Set2dSpriteAnimSeqNo(*pSprite, 1);
     Set2dSpriteVisibleFlag(*pSprite, TRUE);
 }
 
 void PartyMenu_SetMonHeldItemIconCoords(PartyMenuStruct *partyMenu, u8 partySlot, s16 x, s16 y) {
-    partyMenu->monsDrawState[partySlot].unk_1E = x + 8;
-    partyMenu->monsDrawState[partySlot].unk_20 = y + 8;
-    Sprite_SetPositionXY(partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_HELD_ITEM_ICON], partyMenu->monsDrawState[partySlot].unk_1E, partyMenu->monsDrawState[partySlot].unk_20);
+    partyMenu->monsDrawState[partySlot].heldItemX = x + 8;
+    partyMenu->monsDrawState[partySlot].heldItemY = y + 8;
+    Sprite_SetPositionXY(partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_MON1_HELD_ITEM], partyMenu->monsDrawState[partySlot].heldItemX, partyMenu->monsDrawState[partySlot].heldItemY);
 }
 
 void PartyMenu_RefreshMonCapsuleIconSpritePos(PartyMenuStruct *partyMenu, u8 partySlot) {
-    Sprite_SetPositionXY(partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_CAPSULE_ICON], partyMenu->monsDrawState[partySlot].unk_1E + 8, partyMenu->monsDrawState[partySlot].unk_20);
+    Sprite_SetPositionXY(partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_MON1_CAPSULE], partyMenu->monsDrawState[partySlot].heldItemX + 8, partyMenu->monsDrawState[partySlot].heldItemY);
 }
 
 void PartyMenu_DrawMonCapsuleIcon(PartyMenuStruct *partyMenu, u8 partySlot) {
-    Sprite **pSprite = &partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_CAPSULE_ICON];
+    Sprite **pSprite = &partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_MON1_CAPSULE];
     if (partyMenu->monsDrawState[partySlot].capsule == 0) {
         Set2dSpriteVisibleFlag(*pSprite, FALSE);
     } else {
@@ -522,12 +522,12 @@ void sub_0207F178(PartyMenuStruct *partyMenu) {
             Sprite_TickCellOrMulticellAnimation(monDraw->iconSprite, FX32_ONE);
             if (partyMenu->partyMonIndex == i && animSeqNo != 0 && animSeqNo != 5) {
                 if (Sprite_GetAnimCtrlCurrentFrame(monDraw->iconSprite) == 0) {
-                    Sprite_SetPositionXY(monDraw->iconSprite, monDraw->unk_16, monDraw->unk_18 - 3);
+                    Sprite_SetPositionXY(monDraw->iconSprite, monDraw->iconX, monDraw->iconY - 3);
                 } else {
-                    Sprite_SetPositionXY(monDraw->iconSprite, monDraw->unk_16, monDraw->unk_18 + 1);
+                    Sprite_SetPositionXY(monDraw->iconSprite, monDraw->iconX, monDraw->iconY + 1);
                 }
             } else {
-                Sprite_SetPositionXY(monDraw->iconSprite, monDraw->unk_16, monDraw->unk_18);
+                Sprite_SetPositionXY(monDraw->iconSprite, monDraw->iconX, monDraw->iconY);
             }
         }
     }

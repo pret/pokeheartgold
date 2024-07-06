@@ -722,7 +722,7 @@ static int PartyMenu_ItemUseFunc_LevelUpPromptForgetMove(PartyMenuStruct *partyM
     String_Delete(string);
     PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
     partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_5;
-    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
+    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT;
     return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
 }
 
@@ -799,7 +799,7 @@ int PartyMenu_HandleUseTMHMonMon(PartyMenuStruct *partyMenu) {
         String_Delete(string);
         PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
-        partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
+        partyMenu->afterTextPrinterState = PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT;
         break;
     case LEARN_MOVE_CHECK_KNOWN:
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00064);
@@ -807,7 +807,7 @@ int PartyMenu_HandleUseTMHMonMon(PartyMenuStruct *partyMenu) {
         String_Delete(string);
         PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
-        partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
+        partyMenu->afterTextPrinterState = PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT;
         break;
     case LEARN_MOVE_CHECK_FULL:
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00053);
@@ -824,7 +824,7 @@ int PartyMenu_HandleUseTMHMonMon(PartyMenuStruct *partyMenu) {
         String_Delete(string);
         PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
-        partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
+        partyMenu->afterTextPrinterState = PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT;
         break;
     }
     return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
@@ -842,7 +842,7 @@ int PartyMenu_ItemUseFunc_TMHMDoLearnMove(PartyMenuStruct *partyMenu) {
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
         String_Delete(string);
         PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
-        partyMenu->afterTextPrinterState = PARTY_MENU_STATE_22;
+        partyMenu->afterTextPrinterState = PARTY_MENU_STATE_TMHM_LEARN_MOVE;
         return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
     }
 }
@@ -856,7 +856,7 @@ int PartyMenu_Subtask_TMHMLearnMove(PartyMenuStruct *partyMenu) {
     String_Delete(string);
     PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
     partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
-    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
+    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT;
     return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
 }
 
@@ -866,7 +866,7 @@ static int PartyMenu_ItemUseFunc_TMHMPromptForgetMove(PartyMenuStruct *partyMenu
     String_Delete(string);
     PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
     partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_4;
-    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
+    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT;
     return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
 }
 
@@ -887,7 +887,7 @@ static int PartyMenu_ItemUseFunc_TMHMDidNotLearnMove(PartyMenuStruct *partyMenu)
     String_Delete(string);
     PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
     partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
-    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
+    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT;
     return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
 }
 
@@ -970,7 +970,7 @@ int PartyMenu_Subtask_SelectMove(PartyMenuStruct *partyMenu) {
         PartyMenu_DisableMainScreenBlend_AfterYesNo();
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00033, TRUE);
         thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
-        return PARTY_MENU_STATE_4;
+        return PARTY_MENU_STATE_USE_ITEM_SELECT_MON;
     default:
         ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
         sub_0200E5D4(&partyMenu->windows[PARTY_MENU_WINDOW_ID_36], TRUE);
@@ -987,7 +987,7 @@ int PartyMenu_Subtask_SelectMove(PartyMenuStruct *partyMenu) {
         }
         PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
-        partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
+        partyMenu->afterTextPrinterState = PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT;
         return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
     case LIST_NOTHING_CHOSEN:
         return PARTY_MENU_STATE_SELECT_MOVE;
@@ -1006,7 +1006,7 @@ void PartyMenu_HandleAttachMailFromMailbox(PartyMenuStruct *partyMenu) {
     }
     PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
     partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
-    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
+    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT;
 }
 
 static u16 PartyMenu_GetCurrentMapSec(PartyMenuStruct *partyMenu) {

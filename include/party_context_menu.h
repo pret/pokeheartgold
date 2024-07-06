@@ -28,6 +28,8 @@ void PartyMenu_DrawPartyMonsList_SuperContestEntry(PartyMenuStruct *partyMenu, u
 void PartyMenu_DrawPartyMonsList_FrontierFacilityEntry(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207D8EC(PartyMenuStruct *partyMenu, u8 partySlot);
 void sub_0207D998(PartyMenuStruct *partyMenu, u8 a1);
+
+// For these next three funcs, if msgId is -1, uses partyMenu->formattedStrBuf
 void PartyMenu_PrintMessageOnWindow32(PartyMenuStruct *partyMenu, int msgId, BOOL drawFrame);
 void PartyMenu_PrintMessageOnWindow33(PartyMenuStruct *partyMenu, int msgId, BOOL drawFrame);
 void PartyMenu_PrintMessageOnWindow34(PartyMenuStruct *partyMenu, int msgId, BOOL drawFrame);

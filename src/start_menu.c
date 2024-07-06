@@ -644,7 +644,7 @@ static BOOL Task_StartMenu_HandleInput(TaskManager *taskManager) {
 static BOOL StartMenu_HandleKeyInput(TaskManager *taskManager, FieldSystem *fieldSystem, StartMenuTaskData *startMenu) {
     if (fieldSystem->unkD3 < startMenu->numActiveButtons) {
         PlaySE(SEQ_SE_DP_SELECT);
-        sub_02018410(&fieldSystem->unk_10C, 0);
+        sub_02018410(&fieldSystem->menuInputState, 0);
         startMenu->selectedIndex = fieldSystem->unkD3;
         if (sStartMenuActions[startMenu->selectionToAction[startMenu->selectedIndex]].func == STARTMENUTASKFUNC_CANCEL) {
             startMenu->state = START_MENU_STATE_CLOSE;
@@ -665,7 +665,7 @@ static BOOL StartMenu_HandleKeyInput(TaskManager *taskManager, FieldSystem *fiel
 
 static BOOL StartMenu_HandleTouchInput(TaskManager *taskManager, FieldSystem *fieldSystem, StartMenuTaskData *startMenu) {
     if (fieldSystem->lastTouchMenuInput != 0) {
-        sub_02018410(&fieldSystem->unk_10C, 1);
+        sub_02018410(&fieldSystem->menuInputState, 1);
     }
     switch (fieldSystem->lastTouchMenuInput) {
     case 1:
@@ -775,7 +775,7 @@ static void Task_StartMenu_WaitApp(TaskManager *taskManager) {
 
     if (!FieldSystem_ApplicationIsRunning(fieldSystem)) {
         startMenu->atexit_TaskFunc(taskManager);
-        if (startMenu->state == START_MENU_STATE_RETURN && sub_020183F0(&fieldSystem->unk_10C) == TRUE) {
+        if (startMenu->state == START_MENU_STATE_RETURN && sub_020183F0(&fieldSystem->menuInputState) == TRUE) {
             startMenu->state = START_MENU_STATE_10;
         }
     }
@@ -807,7 +807,7 @@ static BOOL Task_StartMenu_OpenPokedex(TaskManager *taskManager) {
     pokedexArgs->pokedex = Save_Pokedex_Get(fieldSystem->saveData);
     pokedexArgs->playerProfile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
     pokedexArgs->unk_08 = fieldSystem->unkA8;
-    pokedexArgs->unk_0C = &fieldSystem->unk_10C;
+    pokedexArgs->unk_0C = &fieldSystem->menuInputState;
     int x = GetPlayerXCoord(fieldSystem->playerAvatar);
     int y = GetPlayerYCoord(fieldSystem->playerAvatar);
     pokedexArgs->mapMatrixId = MapMatrix_GetMapHeader(fieldSystem->mapMatrix, x / 32, y / 32);
@@ -885,7 +885,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         pokemonSummaryArgs->natDexEnabled = SaveArray_IsNatDexEnabled(fieldSystem->saveData);
         pokemonSummaryArgs->unk2C = sub_02088288(fieldSystem->saveData);
         pokemonSummaryArgs->unk28 = 0;
-        pokemonSummaryArgs->unk30 = &fieldSystem->unk_10C;
+        pokemonSummaryArgs->unk30 = &fieldSystem->menuInputState;
         pokemonSummaryArgs->isFlag982Set = sub_0208828C(fieldSystem->saveData);
         sub_02089D40(pokemonSummaryArgs, _020FA0B0);
         sub_0208AD34(pokemonSummaryArgs, Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
@@ -906,7 +906,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         pokemonSummaryArgs->natDexEnabled = SaveArray_IsNatDexEnabled(fieldSystem->saveData);
         pokemonSummaryArgs->unk2C = sub_02088288(fieldSystem->saveData);
         pokemonSummaryArgs->unk28 = 0;
-        pokemonSummaryArgs->unk30 = &fieldSystem->unk_10C;
+        pokemonSummaryArgs->unk30 = &fieldSystem->menuInputState;
         pokemonSummaryArgs->isFlag982Set = sub_0208828C(fieldSystem->saveData);
         sub_02089D40(pokemonSummaryArgs, _020FA0AC);
         sub_0208AD34(pokemonSummaryArgs, Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
@@ -931,7 +931,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         pokemonSummaryArgs->natDexEnabled = SaveArray_IsNatDexEnabled(fieldSystem->saveData);
         pokemonSummaryArgs->unk2C = sub_02088288(fieldSystem->saveData);
         pokemonSummaryArgs->unk28 = 0;
-        pokemonSummaryArgs->unk30 = &fieldSystem->unk_10C;
+        pokemonSummaryArgs->unk30 = &fieldSystem->menuInputState;
         pokemonSummaryArgs->isFlag982Set = sub_0208828C(fieldSystem->saveData);
         sub_02089D40(pokemonSummaryArgs, _020FA0AC);
         sub_0208AD34(pokemonSummaryArgs, Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
@@ -966,7 +966,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         PlayerProfile *playerProfile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
         (void)playerProfile;
         startMenu->atexit_TaskEnv = Bag_CreateView(bag, sPockets, HEAP_ID_FIELD);
-        sub_0207789C(startMenu->atexit_TaskEnv, fieldSystem->saveData, 1, fieldSystem->bagCursor, &fieldSystem->unk_10C);
+        sub_0207789C(startMenu->atexit_TaskEnv, fieldSystem->saveData, 1, fieldSystem->bagCursor, &fieldSystem->menuInputState);
         Bag_LaunchApp(fieldSystem, startMenu->atexit_TaskEnv);
         StartMenu_SetChildProcReturnTaskFunc(startMenu, Task_StartMenu_HandleReturn);
         break;
@@ -1070,7 +1070,7 @@ static void sub_0203CF74(PartyMenuArgs *partyMenuArgs, FieldSystem *fieldSystem,
     partyMenuArgs->fieldMoveCheckData = &startMenu->fieldMoveCheckData;
     partyMenuArgs->unk_25 = 0;
     partyMenuArgs->fieldSystem = fieldSystem;
-    partyMenuArgs->unk_20 = &fieldSystem->unk_10C;
+    partyMenuArgs->menuInputStatePtr = &fieldSystem->menuInputState;
 }
 
 static BOOL Task_StartMenu_HandleReturn(TaskManager *taskManager) {
@@ -1272,7 +1272,7 @@ static BOOL Task_StartMenu_RemovedEasyChatThing(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
-    startMenu->atexit_TaskEnv = EasyChat_CreateArgs(2, 0, fieldSystem->saveData, &fieldSystem->unk_10C, HEAP_ID_FIELD);
+    startMenu->atexit_TaskEnv = EasyChat_CreateArgs(2, 0, fieldSystem->saveData, &fieldSystem->menuInputState, HEAP_ID_FIELD);
     MAIL_MESSAGE mailMessage;
     MailMsg_Init_WithBank(&mailMessage, MAILMSG_BANK_0295_GMM);
     sub_02090D20(startMenu->atexit_TaskEnv, &mailMessage);
@@ -1371,7 +1371,7 @@ static BOOL sub_0203D580(TaskManager *taskManager) {
             partyMenuArgs->context = PARTY_MENU_CONTEXT_REPLACE_MOVE_LEVELUP;
             partyMenuArgs->levelUpMoveSearchState = r7->unk_2;
         }
-        partyMenuArgs->unk_20 = &fieldSystem->unk_10C;
+        partyMenuArgs->menuInputStatePtr = &fieldSystem->menuInputState;
         FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, partyMenuArgs);
         FreeToHeap(startMenu->atexit_TaskEnv2);
         startMenu->atexit_TaskEnv = partyMenuArgs;

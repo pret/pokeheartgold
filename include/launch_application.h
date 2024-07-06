@@ -100,7 +100,7 @@ static inline PCBoxArgs *PCBoxAppData_New(ScriptContext *ctx) {
     PCBoxArgs *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(PCBoxArgs));
     ret->saveData = ctx->fieldSystem->saveData;
     ret->unk8 = ScriptReadByte(ctx);
-    ret->fieldSystemUnk10C = &ctx->fieldSystem->unk_10C;
+    ret->fieldSystemUnk10C = &ctx->fieldSystem->menuInputState;
     return ret;
 }
 

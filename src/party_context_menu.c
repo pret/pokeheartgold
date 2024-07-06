@@ -16,7 +16,7 @@ static void addFiveWindows(BgConfig *bgConfig, Window *window, const WindowTempl
 static void PartyMenu_DrawSlashOnMonHpTextWindow(PartyMenuStruct *partyMenu, u8 partySlot);
 static void PartyMenu_PrintMonNicknameOnWindow(PartyMenuStruct *partyMenu, u8 partySlot);
 static void PartyMenu_PrintMonMaxHpOnWindow(PartyMenuStruct *partyMenu, u8 partySlot);
-static u32 sub_0207D988(FontID fontId, String *string, u32 windowWidth);
+static u32 getStringCenterXPos(FontID fontId, String *string, u32 windowWidth);
 static void PartyMenu_PrintMessageOnWindowEx(PartyMenuStruct *partyMenu, Window *window, int msgId, BOOL drawFrame);
 static BOOL TextPrinterCB_PartyMenuWin34Msg(TextPrinterTemplate *template, u16 glyphId);
 static void PartyMenu_PrintEvoStoneCompatString(PartyMenuStruct *partyMenu, u8 partySlot, u8 compatibilityParam);
@@ -402,7 +402,7 @@ void PartyMenu_AddAllWindows(PartyMenuStruct *partyMenu) {
     AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_37], &templates[45]);
     AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_38], &templates[46]);
     AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_39], &templates[47]);
-    if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_22 || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
         WindowTemplate template = sAdditionalWindowTemplates[0];
         template.top = 22;
         AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_31], &template);
@@ -489,9 +489,9 @@ void PartyMenu_OpenContextMenu(PartyMenuStruct *partyMenu, u8 *items, u8 numItem
 }
 
 void sub_0207D1C8(PartyMenuStruct *partyMenu) {
-    if (partyMenu->args->context == PARTY_MENU_CONTEXT_15) {
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_ATTACH_CAPSULE) {
         ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00043, partyMenu->formattedStrBuf);
-    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_21 && partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg == TRUE) {
+    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_SPIN_TRADE && partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg == TRUE) {
         ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00183, partyMenu->formattedStrBuf);
     } else {
         Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
@@ -690,7 +690,7 @@ void sub_0207D8EC(PartyMenuStruct *partyMenu, u8 partySlot) {
         }
     }
 
-    if (partyMenu->args->context == PARTY_MENU_CONTEXT_22) {
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL) {
         if (sub_0207B418(partyMenu, partySlot) == 0) {
             sub_0207DD7C(partyMenu, partySlot, 8);
             return;
@@ -710,7 +710,7 @@ void sub_0207D8EC(PartyMenuStruct *partyMenu, u8 partySlot) {
     sub_0207DD7C(partyMenu, partySlot, 7);
 }
 
-static u32 sub_0207D988(FontID fontId, String *string, u32 windowWidth) {
+static u32 getStringCenterXPos(FontID fontId, String *string, u32 windowWidth) {
     return (windowWidth - FontID_String_GetWidth(fontId, string, 0)) / 2;
 }
 
@@ -719,12 +719,12 @@ void sub_0207D998(PartyMenuStruct *partyMenu, u8 flag) {
     FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_31], 0);
     if (flag & 1) {
         ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00000, partyMenu->unformattedStrBuf);
-        AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_30], 0, partyMenu->unformattedStrBuf, sub_0207D988(0, partyMenu->unformattedStrBuf, partyMenu->windows[PARTY_MENU_WINDOW_ID_30].width * 8), 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_30], 0, partyMenu->unformattedStrBuf, getStringCenterXPos(0, partyMenu->unformattedStrBuf, partyMenu->windows[PARTY_MENU_WINDOW_ID_30].width * 8), 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
         ScheduleWindowCopyToVram(&partyMenu->windows[PARTY_MENU_WINDOW_ID_30]);
     }
     if (flag & 2) {
         ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00001, partyMenu->unformattedStrBuf);
-        AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_31], 0, partyMenu->unformattedStrBuf, sub_0207D988(0, partyMenu->unformattedStrBuf, partyMenu->windows[PARTY_MENU_WINDOW_ID_31].width * 8), 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_31], 0, partyMenu->unformattedStrBuf, getStringCenterXPos(0, partyMenu->unformattedStrBuf, partyMenu->windows[PARTY_MENU_WINDOW_ID_31].width * 8), 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
         ScheduleWindowCopyToVram(&partyMenu->windows[PARTY_MENU_WINDOW_ID_31]);
     }
 }
@@ -1090,7 +1090,7 @@ PartyMenuContextMenuCursor *PartyMenu_CreateContextMenuCursor(PartyMenuStruct *p
     sub_0207E358(partyMenu, &ret->menu, ret->menu.numItems, ret->prevSelection, ret->state);
     PartyMenu_SetBlendBrightness_ForYesNo();
     Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], FALSE);
-    if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_22 || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
         Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_8], FALSE);
     }
     return ret;
@@ -1099,12 +1099,12 @@ PartyMenuContextMenuCursor *PartyMenu_CreateContextMenuCursor(PartyMenuStruct *p
 void PartyMenu_CloseContextMenu(PartyMenuStruct *partyMenu, PartyMenuContextMenuCursor *cursor) {
     PartyMenu_HideContextMenu(partyMenu, cursor->numItems, cursor->state);
     FreeToHeap(cursor);
-    if (partyMenu->args->context == PARTY_MENU_CONTEXT_4 || partyMenu->args->context == PARTY_MENU_CONTEXT_21) {
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_4 || partyMenu->args->context == PARTY_MENU_CONTEXT_SPIN_TRADE) {
         Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], FALSE);
     } else {
         Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], TRUE);
     }
-    if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_22 || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
         Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_8], TRUE);
     }
 }

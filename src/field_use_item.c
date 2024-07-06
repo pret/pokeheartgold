@@ -233,7 +233,7 @@ static void ItemMenuUseFunc_HealingItem(struct ItemMenuUseData *data, const stru
     usedat->fieldSystem = fieldSystem;
     usedat->itemId = data->itemId;
     usedat->partySlot = data->unk6;
-    usedat->unk_20 = &fieldSystem->unk_10C;
+    usedat->menuInputStatePtr = &fieldSystem->menuInputState;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, usedat);
     env->atexit_TaskEnv = usedat;
     StartMenu_SetChildProcReturnTaskFunc(env, Task_StartMenu_HandleReturn_Pokemon);
@@ -356,7 +356,7 @@ static void ItemMenuUseFunc_TMHM(struct ItemMenuUseData *data, const struct Item
     usedat->itemId = data->itemId;
     usedat->partySlot = data->unk6;
     usedat->moveId = TMHMGetMove(data->itemId);
-    usedat->unk_20 = &fieldSystem->unk_10C;
+    usedat->menuInputStatePtr = &fieldSystem->menuInputState;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, usedat);
     env->atexit_TaskEnv = usedat;
     StartMenu_SetChildProcReturnTaskFunc(env, Task_StartMenu_HandleReturn_Pokemon);
@@ -546,7 +546,7 @@ static void ItemMenuUseFunc_EvoStone(struct ItemMenuUseData *data, const struct 
     usedat->itemId = data->itemId;
     usedat->partySlot = data->unk6;
     usedat->fieldSystem = fieldSystem;
-    usedat->unk_20 = &fieldSystem->unk_10C;
+    usedat->menuInputStatePtr = &fieldSystem->menuInputState;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, usedat);
     env->atexit_TaskEnv = usedat;
     StartMenu_SetChildProcReturnTaskFunc(env, Task_StartMenu_HandleReturn_Pokemon);

@@ -244,7 +244,7 @@ void sub_02090F90(UseMailArgs *args) {
     FreeToHeap(args);
 }
 
-int sub_02090FA8(MAILBOX *mailbox, Pokemon *mon, HeapID heapId) {
+int Mailbox_MoveMessageFromMon(MAILBOX *mailbox, Pokemon *mon, HeapID heapId) {
     int item = ITEM_NONE;
     int idx = Mailbox_GetFirstEmptySlotIdx(mailbox);
 

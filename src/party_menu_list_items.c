@@ -236,14 +236,14 @@ static void PartyMonContextMenuAction_TakeMail(PartyMenuStruct *partyMenu, int *
 
 static int PartyMenu_TakeMail_SendToPC(PartyMenuStruct *partyMenu) {
     G2_BlendNone();
-    if (sub_02090FA8(partyMenu->args->mailbox, Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex), HEAP_ID_PARTY_MENU) != -1) {
+    if (Mailbox_MoveMessageFromMon(partyMenu->args->mailbox, Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex), HEAP_ID_PARTY_MENU) != -1) {
         partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem = ITEM_NONE;
         PartyMenu_DrawMonHeldItemIcon(partyMenu, partyMenu->partyMonIndex, partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem);
         PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00047, FALSE);
     } else {
         PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00051, FALSE);
     }
-    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_20;
+    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_AFTER_TAKE_MAIL;
     return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
 }
 
@@ -271,7 +271,7 @@ static int PartyMenu_TakeMail_ReturnToBag(PartyMenuStruct *partyMenu) {
     } else {
         PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00084, FALSE);
     }
-    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_20;
+    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_AFTER_TAKE_MAIL;
     return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
 }
 
@@ -284,7 +284,7 @@ static int PartyMenu_TakeMail_DontReturnToBag(PartyMenuStruct *partyMenu) {
     return PARTY_MENU_STATE_1;
 }
 
-int sub_0207FA08(PartyMenuStruct *partyMenu) {
+int PartyMenu_Subtask_AfterTakeMail(PartyMenuStruct *partyMenu) {
     ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
     PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00029, TRUE);
     thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
@@ -393,47 +393,47 @@ void sub_0207FC1C(PartyMenuStruct *partyMenu) {
 }
 
 BOOL sub_0207FD6C(PartyMenuStruct *partyMenu) {
-    PartyMenuSwapMonsData *r4 = &partyMenu->swapMonsData;
+    PartyMenuSwapMonsData *swapMonsData = &partyMenu->swapMonsData;
 
-    switch (r4->state) {
+    switch (swapMonsData->state) {
     case 0:
         PlaySE(SEQ_SE_DP_POKELIST_001);
         PartyMenu_SetTopScreenSelectionPanelVisibility(partyMenu, FALSE);
-        r4->state = 1;
+        swapMonsData->state = 1;
         break;
     case 1:
-        ++r4->xOffset;
+        ++swapMonsData->xOffset;
         PartyMenu_SwapMonsPanelsStep(partyMenu, 0);
         PartyMenu_SwapMonsPanelsStep(partyMenu, 1);
-        PartyMenu_SwapMonsSpritesStep(partyMenu, 0, r4->directions[0]);
-        PartyMenu_SwapMonsSpritesStep(partyMenu, 1, r4->directions[1]);
+        PartyMenu_SwapMonsSpritesStep(partyMenu, 0, swapMonsData->directions[0]);
+        PartyMenu_SwapMonsSpritesStep(partyMenu, 1, swapMonsData->directions[1]);
         ScheduleBgTilemapBufferTransfer(partyMenu->bgConfig, GF_BG_LYR_MAIN_2);
         ScheduleBgTilemapBufferTransfer(partyMenu->bgConfig, GF_BG_LYR_MAIN_1);
-        if (r4->xOffset == 16) {
-            r4->state = 2;
+        if (swapMonsData->xOffset == 16) {
+            swapMonsData->state = 2;
         }
         break;
     case 2:
         PartyMenu_SwapMonsData(partyMenu);
         PlaySE(SEQ_SE_DP_POKELIST_001);
-        r4->state = 3;
+        swapMonsData->state = 3;
         break;
     case 3:
-        --r4->xOffset;
+        --swapMonsData->xOffset;
         PartyMenu_SwapMonsPanelsStep(partyMenu, 0);
         PartyMenu_SwapMonsPanelsStep(partyMenu, 1);
-        PartyMenu_SwapMonsSpritesStep(partyMenu, 0, r4->directions[0] ^ 1);
-        PartyMenu_SwapMonsSpritesStep(partyMenu, 1, r4->directions[1] ^ 1);
+        PartyMenu_SwapMonsSpritesStep(partyMenu, 0, swapMonsData->directions[0] ^ 1);
+        PartyMenu_SwapMonsSpritesStep(partyMenu, 1, swapMonsData->directions[1] ^ 1);
         ScheduleBgTilemapBufferTransfer(partyMenu->bgConfig, GF_BG_LYR_MAIN_2);
         ScheduleBgTilemapBufferTransfer(partyMenu->bgConfig, GF_BG_LYR_MAIN_1);
-        if (r4->xOffset == 0) {
-            r4->state = 4;
+        if (swapMonsData->xOffset == 0) {
+            swapMonsData->state = 4;
         }
         break;
     case 4:
-        Party_SwapSlots(partyMenu->args->party, r4->slots[0], r4->slots[1]);
+        Party_SwapSlots(partyMenu->args->party, swapMonsData->slots[0], swapMonsData->slots[1]);
         Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], TRUE);
-        r4->active = 0;
+        swapMonsData->active = 0;
         partyMenu->secondCursorActive = 0;
         sub_0207A7F4(partyMenu, partyMenu->partyMonIndex);
         sub_0207A7F4(partyMenu, partyMenu->softboiledDonorSlot);
@@ -445,113 +445,113 @@ BOOL sub_0207FD6C(PartyMenuStruct *partyMenu) {
 }
 
 static void PartyMenu_SwapMonsPanelsStep(PartyMenuStruct *partyMenu, u8 slot) {
-    PartyMenuSwapMonsData *r4 = &partyMenu->swapMonsData;
-    s8 x = partyMenu->monsDrawState[r4->slots[slot]].unk_14;
-    s8 y = partyMenu->monsDrawState[r4->slots[slot]].unk_15;
+    PartyMenuSwapMonsData *swapMonsData = &partyMenu->swapMonsData;
+    s8 x = partyMenu->monsDrawState[swapMonsData->slots[slot]].unk_14;
+    s8 y = partyMenu->monsDrawState[swapMonsData->slots[slot]].unk_15;
 
     FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, 0, x, y, 16, 6, TILEMAP_FILL_KEEP_PAL);
     FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_1, 0, x, y, 16, 6, TILEMAP_FILL_KEEP_PAL);
-    if (r4->directions[slot] == 0) {
-        CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, x, y, 16 - r4->xOffset, 6, r4->bg2Tilemaps[slot], r4->xOffset, 0, 16, 6);
-        CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_1, x, y, 16 - r4->xOffset, 6, r4->bg1Tilemaps[slot], r4->xOffset, 0, 16, 6);
+    if (swapMonsData->directions[slot] == 0) {
+        CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, x, y, 16 - swapMonsData->xOffset, 6, swapMonsData->bg2Tilemaps[slot], swapMonsData->xOffset, 0, 16, 6);
+        CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_1, x, y, 16 - swapMonsData->xOffset, 6, swapMonsData->bg1Tilemaps[slot], swapMonsData->xOffset, 0, 16, 6);
     } else {
-        CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, x + r4->xOffset, y, 16 - r4->xOffset, 6, r4->bg2Tilemaps[slot], 0, 0, 16, 6);
-        CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_1, x + r4->xOffset, y, 16 - r4->xOffset, 6, r4->bg1Tilemaps[slot], 0, 0, 16, 6);
+        CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, x + swapMonsData->xOffset, y, 16 - swapMonsData->xOffset, 6, swapMonsData->bg2Tilemaps[slot], 0, 0, 16, 6);
+        CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_1, x + swapMonsData->xOffset, y, 16 - swapMonsData->xOffset, 6, swapMonsData->bg1Tilemaps[slot], 0, 0, 16, 6);
     }
 }
 
 static void PartyMenu_SwapMonsSpritesStep(PartyMenuStruct *partyMenu, u8 slot, u8 direction) {
-    PartyMenuSwapMonsData *r4 = &partyMenu->swapMonsData;
+    PartyMenuSwapMonsData *swapMonsData = &partyMenu->swapMonsData;
     s16 x, y;
 
-    Sprite_GetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_BALL + r4->slots[slot]], &x, &y);
+    Sprite_GetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_BALL + swapMonsData->slots[slot]], &x, &y);
     if (direction == 0) {
-        partyMenu->monsDrawState[r4->slots[slot]].unk_16 -= 8;
-        partyMenu->monsDrawState[r4->slots[slot]].unk_1A -= 8;
-        partyMenu->monsDrawState[r4->slots[slot]].unk_1E -= 8;
+        partyMenu->monsDrawState[swapMonsData->slots[slot]].iconX -= 8;
+        partyMenu->monsDrawState[swapMonsData->slots[slot]].statusIconX -= 8;
+        partyMenu->monsDrawState[swapMonsData->slots[slot]].heldItemX -= 8;
         x -= 8;
     } else {
-        partyMenu->monsDrawState[r4->slots[slot]].unk_16 += 8;
-        partyMenu->monsDrawState[r4->slots[slot]].unk_1A += 8;
-        partyMenu->monsDrawState[r4->slots[slot]].unk_1E += 8;
+        partyMenu->monsDrawState[swapMonsData->slots[slot]].iconX += 8;
+        partyMenu->monsDrawState[swapMonsData->slots[slot]].statusIconX += 8;
+        partyMenu->monsDrawState[swapMonsData->slots[slot]].heldItemX += 8;
         x += 8;
     }
-    Sprite_SetPositionXY(partyMenu->monsDrawState[r4->slots[slot]].iconSprite, partyMenu->monsDrawState[r4->slots[slot]].unk_16, partyMenu->monsDrawState[r4->slots[slot]].unk_18);
-    Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_10 + r4->slots[slot]], partyMenu->monsDrawState[r4->slots[slot]].unk_1A, partyMenu->monsDrawState[r4->slots[slot]].unk_1C);
-    Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_HELD_ITEM_ICON + r4->slots[slot]], partyMenu->monsDrawState[r4->slots[slot]].unk_1E, partyMenu->monsDrawState[r4->slots[slot]].unk_20);
-    Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CAPSULE_ICON + r4->slots[slot]], partyMenu->monsDrawState[r4->slots[slot]].unk_1E + 8, partyMenu->monsDrawState[r4->slots[slot]].unk_20);
-    Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_BALL + r4->slots[slot]], x, y);
+    Sprite_SetPositionXY(partyMenu->monsDrawState[swapMonsData->slots[slot]].iconSprite, partyMenu->monsDrawState[swapMonsData->slots[slot]].iconX, partyMenu->monsDrawState[swapMonsData->slots[slot]].iconY);
+    Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_MON1_STATUS + swapMonsData->slots[slot]], partyMenu->monsDrawState[swapMonsData->slots[slot]].statusIconX, partyMenu->monsDrawState[swapMonsData->slots[slot]].statusIconY);
+    Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_MON1_HELD_ITEM + swapMonsData->slots[slot]], partyMenu->monsDrawState[swapMonsData->slots[slot]].heldItemX, partyMenu->monsDrawState[swapMonsData->slots[slot]].heldItemY);
+    Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_MON1_CAPSULE + swapMonsData->slots[slot]], partyMenu->monsDrawState[swapMonsData->slots[slot]].heldItemX + 8, partyMenu->monsDrawState[swapMonsData->slots[slot]].heldItemY);
+    Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_BALL + swapMonsData->slots[slot]], x, y);
 }
 
 static void PartyMenu_SwapMonsData(PartyMenuStruct *partyMenu) {
-    PartyMenuSwapMonsData *r4 = &partyMenu->swapMonsData;
+    PartyMenuSwapMonsData *swapMonsData = &partyMenu->swapMonsData;
     PartyMenuMonsDrawState *monBuf;
     s16 pos;
 
     monBuf = AllocFromHeap(HEAP_ID_PARTY_MENU, sizeof(PartyMenuMonsDrawState));
-    *monBuf = partyMenu->monsDrawState[r4->slots[0]];
-    partyMenu->monsDrawState[r4->slots[0]] = partyMenu->monsDrawState[r4->slots[1]];
-    partyMenu->monsDrawState[r4->slots[1]] = *monBuf;
+    *monBuf = partyMenu->monsDrawState[swapMonsData->slots[0]];
+    partyMenu->monsDrawState[swapMonsData->slots[0]] = partyMenu->monsDrawState[swapMonsData->slots[1]];
+    partyMenu->monsDrawState[swapMonsData->slots[1]] = *monBuf;
     FreeToHeapExplicit(HEAP_ID_PARTY_MENU, monBuf);
 
-    pos = partyMenu->monsDrawState[r4->slots[0]].unk_16;
-    partyMenu->monsDrawState[r4->slots[0]].unk_16 = partyMenu->monsDrawState[r4->slots[1]].unk_16;
-    partyMenu->monsDrawState[r4->slots[1]].unk_16 = pos;
-    pos = partyMenu->monsDrawState[r4->slots[0]].unk_18;
-    partyMenu->monsDrawState[r4->slots[0]].unk_18 = partyMenu->monsDrawState[r4->slots[1]].unk_18;
-    partyMenu->monsDrawState[r4->slots[1]].unk_18 = pos;
+    pos = partyMenu->monsDrawState[swapMonsData->slots[0]].iconX;
+    partyMenu->monsDrawState[swapMonsData->slots[0]].iconX = partyMenu->monsDrawState[swapMonsData->slots[1]].iconX;
+    partyMenu->monsDrawState[swapMonsData->slots[1]].iconX = pos;
+    pos = partyMenu->monsDrawState[swapMonsData->slots[0]].iconY;
+    partyMenu->monsDrawState[swapMonsData->slots[0]].iconY = partyMenu->monsDrawState[swapMonsData->slots[1]].iconY;
+    partyMenu->monsDrawState[swapMonsData->slots[1]].iconY = pos;
 
-    pos = partyMenu->monsDrawState[r4->slots[0]].unk_1A;
-    partyMenu->monsDrawState[r4->slots[0]].unk_1A = partyMenu->monsDrawState[r4->slots[1]].unk_1A;
-    partyMenu->monsDrawState[r4->slots[1]].unk_1A = pos;
-    pos = partyMenu->monsDrawState[r4->slots[0]].unk_1C;
-    partyMenu->monsDrawState[r4->slots[0]].unk_1C = partyMenu->monsDrawState[r4->slots[1]].unk_1C;
-    partyMenu->monsDrawState[r4->slots[1]].unk_1C = pos;
+    pos = partyMenu->monsDrawState[swapMonsData->slots[0]].statusIconX;
+    partyMenu->monsDrawState[swapMonsData->slots[0]].statusIconX = partyMenu->monsDrawState[swapMonsData->slots[1]].statusIconX;
+    partyMenu->monsDrawState[swapMonsData->slots[1]].statusIconX = pos;
+    pos = partyMenu->monsDrawState[swapMonsData->slots[0]].statusIconY;
+    partyMenu->monsDrawState[swapMonsData->slots[0]].statusIconY = partyMenu->monsDrawState[swapMonsData->slots[1]].statusIconY;
+    partyMenu->monsDrawState[swapMonsData->slots[1]].statusIconY = pos;
 
-    pos = partyMenu->monsDrawState[r4->slots[0]].unk_1E;
-    partyMenu->monsDrawState[r4->slots[0]].unk_1E = partyMenu->monsDrawState[r4->slots[1]].unk_1E;
-    partyMenu->monsDrawState[r4->slots[1]].unk_1E = pos;
-    pos = partyMenu->monsDrawState[r4->slots[0]].unk_20;
-    partyMenu->monsDrawState[r4->slots[0]].unk_20 = partyMenu->monsDrawState[r4->slots[1]].unk_20;
-    partyMenu->monsDrawState[r4->slots[1]].unk_20 = pos;
+    pos = partyMenu->monsDrawState[swapMonsData->slots[0]].heldItemX;
+    partyMenu->monsDrawState[swapMonsData->slots[0]].heldItemX = partyMenu->monsDrawState[swapMonsData->slots[1]].heldItemX;
+    partyMenu->monsDrawState[swapMonsData->slots[1]].heldItemX = pos;
+    pos = partyMenu->monsDrawState[swapMonsData->slots[0]].heldItemY;
+    partyMenu->monsDrawState[swapMonsData->slots[0]].heldItemY = partyMenu->monsDrawState[swapMonsData->slots[1]].heldItemY;
+    partyMenu->monsDrawState[swapMonsData->slots[1]].heldItemY = pos;
 
-    pos = partyMenu->monsDrawState[r4->slots[0]].unk_14;
-    partyMenu->monsDrawState[r4->slots[0]].unk_14 = partyMenu->monsDrawState[r4->slots[1]].unk_14;
-    partyMenu->monsDrawState[r4->slots[1]].unk_14 = pos;
-    pos = partyMenu->monsDrawState[r4->slots[0]].unk_15;
-    partyMenu->monsDrawState[r4->slots[0]].unk_15 = partyMenu->monsDrawState[r4->slots[1]].unk_15;
-    partyMenu->monsDrawState[r4->slots[1]].unk_15 = pos;
+    pos = partyMenu->monsDrawState[swapMonsData->slots[0]].unk_14;
+    partyMenu->monsDrawState[swapMonsData->slots[0]].unk_14 = partyMenu->monsDrawState[swapMonsData->slots[1]].unk_14;
+    partyMenu->monsDrawState[swapMonsData->slots[1]].unk_14 = pos;
+    pos = partyMenu->monsDrawState[swapMonsData->slots[0]].unk_15;
+    partyMenu->monsDrawState[swapMonsData->slots[0]].unk_15 = partyMenu->monsDrawState[swapMonsData->slots[1]].unk_15;
+    partyMenu->monsDrawState[swapMonsData->slots[1]].unk_15 = pos;
 
-    sub_0207D5DC(partyMenu, r4->slots[0]);
-    sub_0207D5DC(partyMenu, r4->slots[1]);
-    PartyMenu_CommitPartyMonPanelWindowsToVram_NotInVBlank(partyMenu, r4->slots[0]);
-    PartyMenu_CommitPartyMonPanelWindowsToVram_NotInVBlank(partyMenu, r4->slots[1]);
+    sub_0207D5DC(partyMenu, swapMonsData->slots[0]);
+    sub_0207D5DC(partyMenu, swapMonsData->slots[1]);
+    PartyMenu_CommitPartyMonPanelWindowsToVram_NotInVBlank(partyMenu, swapMonsData->slots[0]);
+    PartyMenu_CommitPartyMonPanelWindowsToVram_NotInVBlank(partyMenu, swapMonsData->slots[1]);
     PartyMenu_RedrawMonHpBarAfterSwap(partyMenu, 0);
     PartyMenu_RedrawMonHpBarAfterSwap(partyMenu, 1);
-    PartyMenu_DrawMonStatusIcon(partyMenu, r4->slots[0], partyMenu->monsDrawState[r4->slots[0]].status);
-    PartyMenu_DrawMonStatusIcon(partyMenu, r4->slots[1], partyMenu->monsDrawState[r4->slots[1]].status);
-    PartyMenu_DrawMonHeldItemIcon(partyMenu, r4->slots[0], partyMenu->monsDrawState[r4->slots[0]].heldItem);
-    PartyMenu_DrawMonHeldItemIcon(partyMenu, r4->slots[1], partyMenu->monsDrawState[r4->slots[1]].heldItem);
-    PartyMenu_DrawMonCapsuleIcon(partyMenu, r4->slots[0]);
-    PartyMenu_DrawMonCapsuleIcon(partyMenu, r4->slots[1]);
+    PartyMenu_DrawMonStatusIcon(partyMenu, swapMonsData->slots[0], partyMenu->monsDrawState[swapMonsData->slots[0]].status);
+    PartyMenu_DrawMonStatusIcon(partyMenu, swapMonsData->slots[1], partyMenu->monsDrawState[swapMonsData->slots[1]].status);
+    PartyMenu_DrawMonHeldItemIcon(partyMenu, swapMonsData->slots[0], partyMenu->monsDrawState[swapMonsData->slots[0]].heldItem);
+    PartyMenu_DrawMonHeldItemIcon(partyMenu, swapMonsData->slots[1], partyMenu->monsDrawState[swapMonsData->slots[1]].heldItem);
+    PartyMenu_DrawMonCapsuleIcon(partyMenu, swapMonsData->slots[0]);
+    PartyMenu_DrawMonCapsuleIcon(partyMenu, swapMonsData->slots[1]);
 }
 
 static void PartyMenu_RedrawMonHpBarAfterSwap(PartyMenuStruct *partyMenu, u8 slot) {
-    PartyMenuSwapMonsData *r4 = &partyMenu->swapMonsData;
-    u16 *r5 = r4->bg2Tilemaps[slot];
-    const u16 *r3 = sub_0207A16C(partyMenu);
+    PartyMenuSwapMonsData *swapMonsData = &partyMenu->swapMonsData;
+    u16 *bg2Tilemap = swapMonsData->bg2Tilemaps[slot];
+    const u16 *src = sub_0207A16C(partyMenu);
     u16 color;
     u16 i;
 
-    if (partyMenu->monsDrawState[r4->slots[slot]].isEgg == TRUE) {
+    if (partyMenu->monsDrawState[swapMonsData->slots[slot]].isEgg == TRUE) {
         for (i = 0; i < 9; ++i) {
-            color = r5[0x36 + i] & 0xF000;
-            r5[0x36 + i] = color | 0x04B;
+            color = bg2Tilemap[0x36 + i] & 0xF000;
+            bg2Tilemap[0x36 + i] = color | 0x04B;
         }
     } else {
         for (i = 0; i < 9; ++i) {
-            color = r5[0x36 + i] & 0xF000;
-            r5[0x36 + i] = color | (r3[i] & 0xFFF);
+            color = bg2Tilemap[0x36 + i] & 0xF000;
+            bg2Tilemap[0x36 + i] = color | (src[i] & 0xFFF);
         }
     }
 }
@@ -661,14 +661,14 @@ int PartyMenu_HandleSetMonCapsule(PartyMenuStruct *partyMenu) {
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     if (GetMonData(mon, MON_DATA_CAPSULE, NULL) == 0) {
         ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00118, partyMenu->formattedStrBuf);
-        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CAPSULE_ICON + partyMenu->partyMonIndex], TRUE);
+        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_MON1_CAPSULE + partyMenu->partyMonIndex], TRUE);
     } else {
         ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00119, partyMenu->formattedStrBuf);
         partyMenu->partyMonIndex = 7;
     }
     PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
     partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
-    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
+    partyMenu->afterTextPrinterState = PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT;
     return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
 }
 

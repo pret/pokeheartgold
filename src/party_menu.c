@@ -46,11 +46,11 @@ static BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState);
 static void PartyMenu_UpdateTopScreenPanelYCoordFrame(PartyMenuStruct *partyMenu);
 static int PartyMenu_Subtask_Init(PartyMenuStruct *partyMenu);
 static int PartyMenu_Subtask_MainNormal(PartyMenuStruct *partyMenu);
-static int sub_020793C0(PartyMenuStruct *partyMenu);
-static int sub_02079400(PartyMenuStruct *partyMenu);
+static int PartyMenu_Subtask_UseItemSelectMon(PartyMenuStruct *partyMenu);
+static int PartyMenu_Subtask_GiveItemSelectMon(PartyMenuStruct *partyMenu);
 static int PartyMenu_Subtask_HandleSubcontextMenuInput(PartyMenuStruct *partyMenu);
 static int PartyMenu_Subtask_WaitTextPrinter(PartyMenuStruct *partyMenu);
-static int sub_020794EC(PartyMenuStruct *partyMenu);
+static int PartyMenu_Subtask_AfterMessageBeginExit(PartyMenuStruct *partyMenu);
 static int PartyMenu_Subtask_YesNoMenuInit(PartyMenuStruct *partyMenu);
 static int PartyMenu_Subtask_YesNoMenuHandleInput(PartyMenuStruct *partyMenu);
 static int PartyMenu_Subtask_UseTMHM(PartyMenuStruct *partyMenu);
@@ -92,12 +92,12 @@ static int PartyMenu_GetTouchButtonInput(PartyMenuStruct *partyMenu);
 static u8 PartyMenu_HandleInput(PartyMenuStruct *partyMenu);
 static void sub_0207AFC4(PartyMenuStruct *partyMenu);
 static u8 sub_0207B0B0(PartyMenuStruct *partyMenu, u8 *buf);
-static u8 sub_0207B1BC(PartyMenuStruct *partyMenu, u8 *buf);
+static u8 PartyMenu_SetContextMenuItems_GiveCapsule(PartyMenuStruct *partyMenu, u8 *buf);
 static u8 sub_0207B1C8(PartyMenuStruct *partyMenu, u8 *buf);
 static u8 sub_0207B200(PartyMenuStruct *partyMenu, u8 *buf);
 static u8 sub_0207B23C(PartyMenuStruct *partyMenu, u8 *buf);
-static u8 sub_0207B32C(PartyMenuStruct *partyMenu, u8 *buf);
-static u8 sub_0207B28C(PartyMenuStruct *partyMenu, u8 *buf);
+static u8 PartyMenu_SetContextMenuItems_SpinTrade(PartyMenuStruct *partyMenu, u8 *buf);
+static u8 PartyMenu_SetContextMenuItems_BattleHallEntry(PartyMenuStruct *partyMenu, u8 *buf);
 static u8 sub_0207B2DC(PartyMenuStruct *partyMenu, u8 *buf);
 static u8 MoveId_GetFieldEffectId(u16 move);
 static int PartyMenu_SoftboiledTryTargetCheck(PartyMenuStruct *partyMenu);
@@ -112,10 +112,10 @@ static BOOL PartyMenu_Subtask_HandleContextMenuInput(PartyMenuStruct *partyMenu,
 static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu);
 static u8 PartyMenu_SoftboiledTargetCheck(PartyMenuStruct *partyMenu);
 static BOOL PartyMenu_SoftboiledHPTransferStep(PartyMenuStruct *partyMenu, u8 partySlot, s8 delta);
-static u8 sub_0207C0DC(PartyMenuStruct *partyMenu);
-static int sub_0207C288(PartyMenuStruct *partyMenu);
+static u8 PartyMenu_GiveOrUseItemOnMon_HandleInput(PartyMenuStruct *partyMenu);
+static int PartyMenu_HandleUseItemOnMon(PartyMenuStruct *partyMenu);
 static u8 sub_0207C3D0(PartyMenuStruct *partyMenu);
-static int sub_0207C400(PartyMenuStruct *partyMenu);
+static int PartyMenu_Subtask_GiveItemToMon(PartyMenuStruct *partyMenu);
 static int sub_0207C5D4(PartyMenuStruct *partyMenu, Pokemon *mon, s32 *transformResult);
 static void PartyMenu_SwapMonHeldItem(PartyMenuStruct *partyMenu, Pokemon *mon, u32 oldItemId, u32 newItemId);
 static int PartyMenu_Subtask_PrintItemSwapMessage(PartyMenuStruct *partyMenu);
@@ -123,7 +123,7 @@ static int PartyMenu_Subtask_PrintGiveGriseousOrbMessage(PartyMenuStruct *partyM
 static int PartyMenu_Subtask_WaitGiveGriseiousOrbAnim(PartyMenuStruct *partyMenu);
 static int PartyMenu_Subtask_PrintAskSwitchItems(PartyMenuStruct *partyMenu);
 static int PartyMenu_Subtask_SwitchItemsHandleYesNoInput(PartyMenuStruct *partyMenu);
-static int sub_0207C8B4(PartyMenuStruct *partyMenu);
+static int PartyMenu_SwitchItemsDeclined(PartyMenuStruct *partyMenu);
 static int sub_0207C908(PartyMenuStruct *partyMenu);
 static int sub_0207CA30(PartyMenuStruct *partyMenu);
 
@@ -254,17 +254,17 @@ static BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
         }
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_TM_HM) {
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00034, TRUE);
-    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_9 || partyMenu->args->context == PARTY_MENU_CONTEXT_14) {
+    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_9 || partyMenu->args->context == PARTY_MENU_CONTEXT_GIVE_MAIL_FROM_MAILBOX) {
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00032, TRUE);
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_REPLACE_MOVE_TMHM || partyMenu->args->context == PARTY_MENU_CONTEXT_REPLACE_MOVE_LEVELUP || partyMenu->args->context == PARTY_MENU_CONTEXT_11 || partyMenu->args->context == PARTY_MENU_CONTEXT_12) {
         thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17) {
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00035, TRUE);
-    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_15) {
+    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_ATTACH_CAPSULE) {
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00035, TRUE);
-    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_21) {
+    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_SPIN_TRADE) {
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00184, TRUE);
-    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_22) {
+    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL) {
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00035, TRUE);
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00035, TRUE);
@@ -300,8 +300,8 @@ static BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState) {
     case PARTY_MENU_STATE_3:
         *pState = sub_02080B74(partyMenu);
         break;
-    case PARTY_MENU_STATE_4:
-        *pState = sub_020793C0(partyMenu);
+    case PARTY_MENU_STATE_USE_ITEM_SELECT_MON:
+        *pState = PartyMenu_Subtask_UseItemSelectMon(partyMenu);
         break;
     case PARTY_MENU_STATE_ITEM_USE_CB:
         *pState = partyMenu->itemUseCallback(partyMenu);
@@ -312,8 +312,8 @@ static BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState) {
     case PARTY_MENU_STATE_SACRED_ASH:
         *pState = PartyMenu_Subtask_SacredAsh(partyMenu);
         break;
-    case PARTY_MENU_STATE_8:
-        *pState = sub_02079400(partyMenu);
+    case PARTY_MENU_STATE_GIVE_ITEM_SELECT_MON:
+        *pState = PartyMenu_Subtask_GiveItemSelectMon(partyMenu);
         break;
     case PARTY_MENU_STATE_PRINT_ASK_SWITCH_ITEMS:
         *pState = PartyMenu_Subtask_PrintAskSwitchItems(partyMenu);
@@ -336,8 +336,8 @@ static BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState) {
     case PARTY_MENU_STATE_HANDLE_SUBCONTEXT_MENU_INPUT:
         *pState = PartyMenu_Subtask_HandleSubcontextMenuInput(partyMenu);
         break;
-    case PARTY_MENU_STATE_16:
-        *pState = sub_0207C400(partyMenu);
+    case PARTY_MENU_STATE_GIVE_ITEM_TO_MON:
+        *pState = PartyMenu_Subtask_GiveItemToMon(partyMenu);
         break;
     case PARTY_MENU_STATE_PRINT_TAKE_ITEM_MESSAGE:
         *pState = PartyMenu_Subtask_PrintTakeItemMessage(partyMenu);
@@ -348,13 +348,13 @@ static BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState) {
     case PARTY_MENU_STATE_WAIT_TAKE_GRISEOUS_ORB_ANIM:
         *pState = PartyMenu_Subtask_WaitTakeGriseousOrbAnim(partyMenu);
         break;
-    case PARTY_MENU_STATE_20:
-        *pState = sub_0207FA08(partyMenu);
+    case PARTY_MENU_STATE_AFTER_TAKE_MAIL:
+        *pState = PartyMenu_Subtask_AfterTakeMail(partyMenu);
         break;
     case PARTY_MENU_STATE_USE_TMHM:
         *pState = PartyMenu_Subtask_UseTMHM(partyMenu);
         break;
-    case PARTY_MENU_STATE_22:
+    case PARTY_MENU_STATE_TMHM_LEARN_MOVE:
         *pState = PartyMenu_Subtask_TMHMLearnMove(partyMenu);
         break;
     case PARTY_MENU_STATE_SELECT_MONS_ERROR_MSG_CLOSE:
@@ -363,8 +363,8 @@ static BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState) {
     case PARTY_MENU_STATE_WAIT_TEXT_PRINTER:
         *pState = PartyMenu_Subtask_WaitTextPrinter(partyMenu);
         break;
-    case PARTY_MENU_STATE_25:
-        *pState = sub_020794EC(partyMenu);
+    case PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT:
+        *pState = PartyMenu_Subtask_AfterMessageBeginExit(partyMenu);
         break;
     case PARTY_MENU_STATE_YES_NO_INIT:
         *pState = PartyMenu_Subtask_YesNoMenuInit(partyMenu);
@@ -392,7 +392,7 @@ static BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState) {
     case PARTY_MENU_STATE_FORM_CHANGE_ANIM:
         if (PartyMenu_AnimateIconFormChange(partyMenu) == TRUE) {
             PartyMenu_FormChangeScene_End(partyMenu);
-            *pState = PARTY_MENU_STATE_25;
+            *pState = PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT;
         }
         else {
             *pState = PARTY_MENU_STATE_FORM_CHANGE_ANIM;
@@ -446,7 +446,7 @@ static int PartyMenu_Subtask_Init(PartyMenuStruct *partyMenu) {
                 partyMenu->afterTextPrinterState = 0;
                 return PARTY_MENU_STATE_SACRED_ASH;
             } else {
-                return PARTY_MENU_STATE_4;
+                return PARTY_MENU_STATE_USE_ITEM_SELECT_MON;
             }
         } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_TM_HM) {
             return PARTY_MENU_STATE_USE_TMHM;
@@ -457,9 +457,9 @@ static int PartyMenu_Subtask_Init(PartyMenuStruct *partyMenu) {
         } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_11 || partyMenu->args->context == PARTY_MENU_CONTEXT_12) {
             return PARTY_MENU_STATE_14;
         } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_9) {
-            return PARTY_MENU_STATE_8;
+            return PARTY_MENU_STATE_GIVE_ITEM_SELECT_MON;
         } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_10) {
-            return PARTY_MENU_STATE_16;
+            return PARTY_MENU_STATE_GIVE_ITEM_TO_MON;
         } else {
             return PARTY_MENU_STATE_1;
         }
@@ -476,7 +476,7 @@ static int PartyMenu_Subtask_MainNormal(PartyMenuStruct *partyMenu) {
         case PARTY_MENU_CONTEXT_20:
             partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
             return PARTY_MENU_STATE_BEGIN_EXIT;
-        case PARTY_MENU_CONTEXT_14:
+        case PARTY_MENU_CONTEXT_GIVE_MAIL_FROM_MAILBOX:
             PartyMenu_HandleAttachMailFromMailbox(partyMenu);
             return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
         case PARTY_MENU_CONTEXT_19:
@@ -491,7 +491,7 @@ static int PartyMenu_Subtask_MainNormal(PartyMenuStruct *partyMenu) {
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
         return PARTY_MENU_STATE_BEGIN_EXIT;
     case 2:
-        if (partyMenu->args->context != PARTY_MENU_CONTEXT_15) {
+        if (partyMenu->args->context != PARTY_MENU_CONTEXT_ATTACH_CAPSULE) {
             partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_1;
             return PARTY_MENU_STATE_BEGIN_EXIT;
         } else {
@@ -502,29 +502,29 @@ static int PartyMenu_Subtask_MainNormal(PartyMenuStruct *partyMenu) {
     return PARTY_MENU_STATE_1;
 }
 
-static int sub_020793C0(PartyMenuStruct *partyMenu) {
-    u8 x = sub_0207C0DC(partyMenu);
+static int PartyMenu_Subtask_UseItemSelectMon(PartyMenuStruct *partyMenu) {
+    u8 x = PartyMenu_GiveOrUseItemOnMon_HandleInput(partyMenu);
     if (x == 0 || x == 2) {
         thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
-        return sub_0207C288(partyMenu);
+        return PartyMenu_HandleUseItemOnMon(partyMenu);
     } else if (x == 3) {
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
         return PARTY_MENU_STATE_BEGIN_EXIT;
     } else {
-        return PARTY_MENU_STATE_4;
+        return PARTY_MENU_STATE_USE_ITEM_SELECT_MON;
     }
 }
 
-static int sub_02079400(PartyMenuStruct *partyMenu) {
-    u8 x = sub_0207C0DC(partyMenu);
+static int PartyMenu_Subtask_GiveItemSelectMon(PartyMenuStruct *partyMenu) {
+    u8 x = PartyMenu_GiveOrUseItemOnMon_HandleInput(partyMenu);
     if (x == 0 || x == 2) {
         thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
-        return sub_0207C400(partyMenu);
+        return PartyMenu_Subtask_GiveItemToMon(partyMenu);
     } else if (x == 3) {
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
         return PARTY_MENU_STATE_BEGIN_EXIT;
     } else {
-        return PARTY_MENU_STATE_8;
+        return PARTY_MENU_STATE_GIVE_ITEM_SELECT_MON;
     }
 }
 
@@ -543,7 +543,7 @@ static int PartyMenu_Subtask_HandleSubcontextMenuInput(PartyMenuStruct *partyMen
         return PARTY_MENU_STATE_1;
     default: {
         int result;
-        ((PartyMenuStruct_SubC90_UnkFunc)func)(partyMenu, &result);
+        ((PartyMonContextMenuActionFunc)func)(partyMenu, &result);
         return result;
     }
     case LIST_NOTHING_CHOSEN:
@@ -559,7 +559,7 @@ static int PartyMenu_Subtask_WaitTextPrinter(PartyMenuStruct *partyMenu) {
     }
 }
 
-static int sub_020794EC(PartyMenuStruct *partyMenu) {
+static int PartyMenu_Subtask_AfterMessageBeginExit(PartyMenuStruct *partyMenu) {
     return PARTY_MENU_STATE_BEGIN_EXIT;
 }
 
@@ -584,7 +584,7 @@ static int PartyMenu_Subtask_YesNoMenuHandleInput(PartyMenuStruct *partyMenu) {
 }
 
 static int PartyMenu_Subtask_UseTMHM(PartyMenuStruct *partyMenu) {
-    u8 x = sub_0207C0DC(partyMenu);
+    u8 x = PartyMenu_GiveOrUseItemOnMon_HandleInput(partyMenu);
     if (x == 0 || x == 2) {
         thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
         if (partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg != 1) {
@@ -592,7 +592,7 @@ static int PartyMenu_Subtask_UseTMHM(PartyMenuStruct *partyMenu) {
         } else {
             PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
             partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
-            partyMenu->afterTextPrinterState = PARTY_MENU_STATE_25;
+            partyMenu->afterTextPrinterState = PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT;
             ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00102, partyMenu->formattedStrBuf);
             return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
         }
@@ -975,7 +975,7 @@ static void sub_02079CE4(PartyMenuStruct *partyMenu) {
     if (partyMenu->args->context & 0x80) {
         partyMenu->cancelDisabled = TRUE;
         partyMenu->args->context ^= 0x80;
-    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_21) {
+    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_SPIN_TRADE) {
         partyMenu->cancelDisabled = TRUE;
     } else {
         partyMenu->cancelDisabled = FALSE;
@@ -986,14 +986,14 @@ static void sub_02079D38(PartyMenuStruct *partyMenu) {
     u8 r4 = 3;
     if (partyMenu->args->unk_25 == 2) {
         partyMenu->unk_948 = _0210144C;
-    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_22 || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
+    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
         partyMenu->unk_948 = _0210148C;
-    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_21) {
+    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_SPIN_TRADE) {
         partyMenu->unk_948 = _021014CC;
     } else {
         partyMenu->unk_948 = _0210140C;
     }
-    if (partyMenu->args->context != PARTY_MENU_CONTEXT_2 && partyMenu->args->context != PARTY_MENU_CONTEXT_17 && partyMenu->args->context != PARTY_MENU_CONTEXT_23 && partyMenu->args->context != PARTY_MENU_CONTEXT_22) {
+    if (partyMenu->args->context != PARTY_MENU_CONTEXT_2 && partyMenu->args->context != PARTY_MENU_CONTEXT_17 && partyMenu->args->context != PARTY_MENU_CONTEXT_23 && partyMenu->args->context != PARTY_MENU_CONTEXT_BATTLE_HALL) {
         Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_8], FALSE);
         Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], 0);
         s16 x, y;
@@ -1001,7 +1001,7 @@ static void sub_02079D38(PartyMenuStruct *partyMenu) {
         Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], x, y - 8);
         r4 ^= 1;
     }
-    if (partyMenu->args->context == PARTY_MENU_CONTEXT_4 || partyMenu->args->context == PARTY_MENU_CONTEXT_21) {
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_4 || partyMenu->args->context == PARTY_MENU_CONTEXT_SPIN_TRADE) {
         Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], FALSE);
         r4 ^= 2;
     }
@@ -1138,7 +1138,7 @@ static void PartyMenu_DrawPanelsAndPush(PartyMenuStruct *partyMenu) {
         PartyMenu_DrawPanels_UseTMHM(partyMenu, r1);
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_SUPER_CONTEST) {
         PartyMenu_Setup_SuperContestEntry(partyMenu, r1);
-    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_22 || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
+    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
         PartyMenu_DrawPanels_FrontierFacilityEntry(partyMenu, r1);
     } else {
         PartyMenu_DrawPanels_Default(partyMenu, r1);
@@ -1358,7 +1358,7 @@ static BOOL PartyMenu_HandleDpadInput(PartyMenuStruct *partyMenu) {
             newSelection = PartyMenu_GetSelectionInDirection(partyMenu, &x, &y, direction);
         }
     } else if (newSelection == PARTY_MON_SELECTION_CONFIRM) {
-        if (partyMenu->args->context != PARTY_MENU_CONTEXT_2 && partyMenu->args->context != PARTY_MENU_CONTEXT_17 && partyMenu->args->context != PARTY_MENU_CONTEXT_23 && partyMenu->args->context != PARTY_MENU_CONTEXT_22 && direction == DIR_NORTH) {
+        if (partyMenu->args->context != PARTY_MENU_CONTEXT_2 && partyMenu->args->context != PARTY_MENU_CONTEXT_17 && partyMenu->args->context != PARTY_MENU_CONTEXT_23 && partyMenu->args->context != PARTY_MENU_CONTEXT_BATTLE_HALL && direction == DIR_NORTH) {
             newSelection = PartyMenu_GetNewSelectionFromTable(partyMenu, &x, &y, _021012CC[(partyMenu->unk_C66 & 1) + 2]);
         } else if (direction == DIR_SOUTH) {
             newSelection = PartyMenu_GetNewSelectionFromTable(partyMenu, &x, &y, _021012CC[partyMenu->unk_C66 & 1]);
@@ -1451,7 +1451,7 @@ static int sub_0207AC70(PartyMenuStruct *partyMenu, BOOL a1) {
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_3 || partyMenu->args->context == PARTY_MENU_CONTEXT_19) {
         PlaySE(SEQ_SE_DP_SELECT);
         return 0;
-    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_20 || partyMenu->args->context == PARTY_MENU_CONTEXT_14) {
+    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_20 || partyMenu->args->context == PARTY_MENU_CONTEXT_GIVE_MAIL_FROM_MAILBOX) {
         if (!partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg) {
             PlaySE(SEQ_SE_DP_SELECT);
             return 0;
@@ -1459,7 +1459,7 @@ static int sub_0207AC70(PartyMenuStruct *partyMenu, BOOL a1) {
             PlaySE(SEQ_SE_DP_CUSTOM06);
             return 5;
         }
-    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_15) {
+    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_ATTACH_CAPSULE) {
         if (!partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg) {
             PlaySE(SEQ_SE_DP_SELECT);
             sub_0207E068(partyMenu);
@@ -1482,7 +1482,7 @@ static int sub_0207AC70(PartyMenuStruct *partyMenu, BOOL a1) {
 
 static int PartyMenu_GetTouchButtonInput(PartyMenuStruct *partyMenu) {
     int idx = 0;
-    if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_22 || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
         return TouchscreenHitbox_FindRectAtTouchNew(_02110104);
     } else {
         if (partyMenu->args->unk_25 == 2) {
@@ -1581,17 +1581,17 @@ static void sub_0207AFC4(PartyMenuStruct *partyMenu) {
     case PARTY_MENU_CONTEXT_17:
         numItems = sub_0207B23C(partyMenu, buf);
         break;
-    case PARTY_MENU_CONTEXT_15:
-        numItems = sub_0207B1BC(partyMenu, buf);
+    case PARTY_MENU_CONTEXT_ATTACH_CAPSULE:
+        numItems = PartyMenu_SetContextMenuItems_GiveCapsule(partyMenu, buf);
         break;
     case PARTY_MENU_CONTEXT_18:
         numItems = sub_0207B1C8(partyMenu, buf);
         break;
-    case PARTY_MENU_CONTEXT_21:
-        numItems = sub_0207B32C(partyMenu, buf);
+    case PARTY_MENU_CONTEXT_SPIN_TRADE:
+        numItems = PartyMenu_SetContextMenuItems_SpinTrade(partyMenu, buf);
         break;
-    case PARTY_MENU_CONTEXT_22:
-        numItems = sub_0207B28C(partyMenu, buf);
+    case PARTY_MENU_CONTEXT_BATTLE_HALL:
+        numItems = PartyMenu_SetContextMenuItems_BattleHallEntry(partyMenu, buf);
         break;
     case PARTY_MENU_CONTEXT_23:
         numItems = sub_0207B2DC(partyMenu, buf);
@@ -1615,19 +1615,19 @@ static u8 sub_0207B0B0(PartyMenuStruct *partyMenu, u8 *buf) {
     u8 count = 0;
     u8 fieldEffect;
 
-    buf[count] = 1;
+    buf[count] = PARTY_MON_CONTEXT_MENU_SUMMARY;
     ++count;
     if (!FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom(partyMenu->args->fieldSystem)) {
         if (!partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg) {
             buf[count] = 0;
             ++count;
             if (ItemIdIsMail(partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem) == TRUE) {
-                buf[count] = 5;
+                buf[count] = PARTY_MON_CONTEXT_MENU_MAIL;
             } else {
-                buf[count] = 2;
+                buf[count] = PARTY_MON_CONTEXT_MENU_ITEM;
             }
             ++count;
-            buf[count] = 9;
+            buf[count] = PARTY_MON_CONTEXT_MENU_QUIT;
             ++count;
             for (i = 0; i < MAX_MON_MOVES; ++i) {
                 move = GetMonData(pokemon, MON_DATA_MOVE1 + i, NULL);
@@ -1643,46 +1643,46 @@ static u8 sub_0207B0B0(PartyMenuStruct *partyMenu, u8 *buf) {
                 }
             }
         } else {
-            buf[count] = 0;
+            buf[count] = PARTY_MON_CONTEXT_MENU_SWITCH;
             ++count;
-            buf[count] = 9;
+            buf[count] = PARTY_MON_CONTEXT_MENU_QUIT;
             ++count;
         }
     } else {
-        buf[count] = 9;
+        buf[count] = PARTY_MON_CONTEXT_MENU_QUIT;
         ++count;
     }
     return count;
 }
 
-static u8 sub_0207B1BC(PartyMenuStruct *partyMenu, u8 *buf) {
-    buf[0] = 14;
-    buf[1] = 9;
+static u8 PartyMenu_SetContextMenuItems_GiveCapsule(PartyMenuStruct *partyMenu, u8 *buf) {
+    buf[0] = PARTY_MON_CONTEXT_MENU_SET;
+    buf[1] = PARTY_MON_CONTEXT_MENU_QUIT;
     return 2;
 }
 
 static u8 sub_0207B1C8(PartyMenuStruct *partyMenu, u8 *buf) {
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg == FALSE) {
-        buf[0] = 8;
-        buf[1] = 1;
-        buf[2] = 9;
+        buf[0] = PARTY_MON_CONTEXT_MENU_STORE;
+        buf[1] = PARTY_MON_CONTEXT_MENU_SUMMARY;
+        buf[2] = PARTY_MON_CONTEXT_MENU_QUIT;
         return 3;
     } else {
-        buf[0] = 1;
-        buf[1] = 9;
+        buf[0] = PARTY_MON_CONTEXT_MENU_SUMMARY;
+        buf[1] = PARTY_MON_CONTEXT_MENU_QUIT;
         return 2;
     }
 }
 
 static u8 sub_0207B200(PartyMenuStruct *partyMenu, u8 *buf) {
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].isContestCompatible == TRUE) {
-        buf[0] = 13;
-        buf[1] = 1;
-        buf[2] = 9;
+        buf[0] = PARTY_MON_CONTEXT_MENU_CONTEST_ENTER;
+        buf[1] = PARTY_MON_CONTEXT_MENU_SUMMARY;
+        buf[2] = PARTY_MON_CONTEXT_MENU_QUIT;
         return 3;
     } else {
-        buf[0] = 1;
-        buf[1] = 9;
+        buf[0] = PARTY_MON_CONTEXT_MENU_SUMMARY;
+        buf[1] = PARTY_MON_CONTEXT_MENU_QUIT;
         return 2;
     }
 }
@@ -1690,39 +1690,39 @@ static u8 sub_0207B200(PartyMenuStruct *partyMenu, u8 *buf) {
 static u8 sub_0207B23C(PartyMenuStruct *partyMenu, u8 *buf) {
     switch (sub_0207B364(partyMenu, partyMenu->partyMonIndex)) {
     case 0:
-        buf[0] = 1;
-        buf[1] = 9;
+        buf[0] = PARTY_MON_CONTEXT_MENU_SUMMARY;
+        buf[1] = PARTY_MON_CONTEXT_MENU_QUIT;
         return 2;
     case 1:
-        buf[0] = 11;
-        buf[1] = 1;
-        buf[2] = 9;
+        buf[0] = PARTY_MON_CONTEXT_MENU_ENTER;
+        buf[1] = PARTY_MON_CONTEXT_MENU_SUMMARY;
+        buf[2] = PARTY_MON_CONTEXT_MENU_QUIT;
         return 3;
     case 2:
-        buf[0] = 12;
-        buf[1] = 1;
-        buf[2] = 9;
+        buf[0] = PARTY_MON_CONTEXT_MENU_NO_ENTRY;
+        buf[1] = PARTY_MON_CONTEXT_MENU_SUMMARY;
+        buf[2] = PARTY_MON_CONTEXT_MENU_QUIT;
         return 3;
     }
 
     return 0;
 }
 
-static u8 sub_0207B28C(PartyMenuStruct *partyMenu, u8 *buf) {
+static u8 PartyMenu_SetContextMenuItems_BattleHallEntry(PartyMenuStruct *partyMenu, u8 *buf) {
     switch (sub_0207B418(partyMenu, partyMenu->partyMonIndex)) {
     case 0:
-        buf[0] = 1;
-        buf[1] = 9;
+        buf[0] = PARTY_MON_CONTEXT_MENU_SUMMARY;
+        buf[1] = PARTY_MON_CONTEXT_MENU_QUIT;
         return 2;
     case 1:
-        buf[0] = 11;
-        buf[1] = 1;
-        buf[2] = 9;
+        buf[0] = PARTY_MON_CONTEXT_MENU_ENTER;
+        buf[1] = PARTY_MON_CONTEXT_MENU_SUMMARY;
+        buf[2] = PARTY_MON_CONTEXT_MENU_QUIT;
         return 3;
     case 2:
-        buf[0] = 12;
-        buf[1] = 1;
-        buf[2] = 9;
+        buf[0] = PARTY_MON_CONTEXT_MENU_NO_ENTRY;
+        buf[1] = PARTY_MON_CONTEXT_MENU_SUMMARY;
+        buf[2] = PARTY_MON_CONTEXT_MENU_QUIT;
         return 3;
     }
 
@@ -1732,33 +1732,33 @@ static u8 sub_0207B28C(PartyMenuStruct *partyMenu, u8 *buf) {
 static u8 sub_0207B2DC(PartyMenuStruct *partyMenu, u8 *buf) {
     switch (sub_0207B4A0(partyMenu, partyMenu->partyMonIndex)) {
     case 0:
-        buf[0] = 1;
-        buf[1] = 9;
+        buf[0] = PARTY_MON_CONTEXT_MENU_SUMMARY;
+        buf[1] = PARTY_MON_CONTEXT_MENU_QUIT;
         return 2;
     case 1:
-        buf[0] = 11;
-        buf[1] = 1;
-        buf[2] = 9;
+        buf[0] = PARTY_MON_CONTEXT_MENU_ENTER;
+        buf[1] = PARTY_MON_CONTEXT_MENU_SUMMARY;
+        buf[2] = PARTY_MON_CONTEXT_MENU_QUIT;
         return 3;
     case 2:
-        buf[0] = 12;
-        buf[1] = 1;
-        buf[2] = 9;
+        buf[0] = PARTY_MON_CONTEXT_MENU_NO_ENTRY;
+        buf[1] = PARTY_MON_CONTEXT_MENU_SUMMARY;
+        buf[2] = PARTY_MON_CONTEXT_MENU_QUIT;
         return 3;
     }
 
     return 0;
 }
 
-static u8 sub_0207B32C(PartyMenuStruct *partyMenu, u8 *buf) {
+static u8 PartyMenu_SetContextMenuItems_SpinTrade(PartyMenuStruct *partyMenu, u8 *buf) {
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg == TRUE) {
-        buf[0] = 1;
-        buf[1] = 15;
-        buf[2] = 9;
+        buf[0] = PARTY_MON_CONTEXT_MENU_SUMMARY;
+        buf[1] = PARTY_MON_CONTEXT_MENU_CONFIRM;
+        buf[2] = PARTY_MON_CONTEXT_MENU_QUIT;
         return 3;
     } else {
-        buf[0] = 1;
-        buf[1] = 9;
+        buf[0] = PARTY_MON_CONTEXT_MENU_SUMMARY;
+        buf[1] = PARTY_MON_CONTEXT_MENU_QUIT;
         return 2;
     }
 }
@@ -1782,7 +1782,7 @@ u8 sub_0207B364(PartyMenuStruct *partyMenu, u8 selection) {
             return 2;
         }
     }
-    if (partyMenu->monsDrawState[selection].isEgg == TRUE || partyMenu->monsDrawState[selection].level > partyMenu->args->unk_37) {
+    if (partyMenu->monsDrawState[selection].isEgg == TRUE || partyMenu->monsDrawState[selection].level > partyMenu->args->maxLevel) {
         return 0;
     }
     return 1;
@@ -1791,7 +1791,7 @@ u8 sub_0207B364(PartyMenuStruct *partyMenu, u8 selection) {
 u8 sub_0207B418(PartyMenuStruct *partyMenu, u8 selection) {
     u8 i;
 
-    if (partyMenu->args->context == PARTY_MENU_CONTEXT_22) {
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL) {
         if (IsPokemonBannedFromBattleFrontier(partyMenu->monsDrawState[selection].species, partyMenu->monsDrawState[selection].form) == TRUE) {
             return 0;
         }
@@ -1801,7 +1801,7 @@ u8 sub_0207B418(PartyMenuStruct *partyMenu, u8 selection) {
             return 2;
         }
     }
-    if (partyMenu->monsDrawState[selection].isEgg == TRUE || partyMenu->monsDrawState[selection].level < partyMenu->args->unk_37) {
+    if (partyMenu->monsDrawState[selection].isEgg == TRUE || partyMenu->monsDrawState[selection].level < partyMenu->args->maxLevel) {
         return 0;
     }
     return 1;
@@ -1846,12 +1846,12 @@ static void sub_0207B51C(PartyMenuStruct *partyMenu, u8 selection, BOOL active) 
         Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], animSeqNo);
     } else {
         if (!active) {
-            partyMenu->monsDrawState[selection].unk_16 -= 2;
-            partyMenu->monsDrawState[selection].unk_18 -= 2;
+            partyMenu->monsDrawState[selection].iconX -= 2;
+            partyMenu->monsDrawState[selection].iconY -= 2;
             Set2dSpriteAnimSeqNo(partyMenu->sprites[selection + PARTY_MENU_SPRITE_ID_BALL], 0);
         } else {
-            partyMenu->monsDrawState[selection].unk_16 += 2;
-            partyMenu->monsDrawState[selection].unk_18 += 2;
+            partyMenu->monsDrawState[selection].iconX += 2;
+            partyMenu->monsDrawState[selection].iconY += 2;
             Set2dSpriteAnimSeqNo(partyMenu->sprites[selection + PARTY_MENU_SPRITE_ID_BALL], 1);
         }
         sub_0207A7F4(partyMenu, selection);
@@ -1864,15 +1864,15 @@ int sub_0207B5EC(u8 a0, u8 partySlot) {
 
 static u8 sub_0207B600(PartyMenuStruct *partyMenu) {
     u8 result;
-    PartyMenuContextButtonAnimData *r5 = &partyMenu->contextMenuButtonAnim;
+    PartyMenuContextButtonAnimData *buttonAnim = &partyMenu->contextMenuButtonAnim;
 
-    if (r5->active == TRUE) {
+    if (buttonAnim->active == TRUE) {
         if (PartyMenu_AnimateContextMenuButtonPress(partyMenu) == FALSE) {
             if (partyMenu->partyMonIndex != PARTY_MON_SELECTION_CONFIRM) {
                 Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], 0);
                 Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], 0);
             }
-            return r5->followUpState;
+            return buttonAnim->followUpState;
         } else {
             return 5;
         }
@@ -1953,7 +1953,7 @@ static u8 sub_0207B600(PartyMenuStruct *partyMenu) {
 }
 
 static int sub_0207B7E0(PartyMenuStruct *partyMenu) {
-    for (u8 i = 0; i < partyMenu->args->unk_36_0; ++i) {
+    for (u8 i = 0; i < partyMenu->args->minMonsToSelect; ++i) {
         if (partyMenu->args->selectedOrder[i] == 0) {
             switch (partyMenu->args->maxMonsToSelect) {
             case 2:
@@ -2043,7 +2043,7 @@ static int sub_0207B7E0(PartyMenuStruct *partyMenu) {
         }
     }
 
-    if (partyMenu->args->context == PARTY_MENU_CONTEXT_22) {
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL) {
         switch (sub_0207BB14(partyMenu)) {
         case 0:
             break;
@@ -2150,9 +2150,9 @@ static BOOL PartyMenu_Subtask_HandleContextMenuInput(PartyMenuStruct *partyMenu,
         ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
         PartyMenu_DeleteContextMenuAndList(partyMenu);
         PartyMenu_DisableMainScreenBlend_AfterYesNo();
-        if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_22 || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
+        if (partyMenu->args->context == PARTY_MENU_CONTEXT_2 || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
             PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00035, TRUE);
-        } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_21) {
+        } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_SPIN_TRADE) {
             PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00184, TRUE);
         } else {
             PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00029, TRUE);
@@ -2162,7 +2162,7 @@ static BOOL PartyMenu_Subtask_HandleContextMenuInput(PartyMenuStruct *partyMenu,
     case LIST_NOTHING_CHOSEN:
         break;
     default:
-        ((PartyMenuStruct_SubC90_UnkFunc)func)(partyMenu, (int *)pState);
+        ((PartyMonContextMenuActionFunc)func)(partyMenu, (int *)pState);
         break;
     }
 
@@ -2202,14 +2202,14 @@ static int PartyMenu_SoftboiledTryTargetCheck(PartyMenuStruct *partyMenu) {
 }
 
 static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
-    PartyMenuContextButtonAnimData *r5 = &partyMenu->contextMenuButtonAnim;
-    if (r5->active == TRUE) {
+    PartyMenuContextButtonAnimData *buttonAnim = &partyMenu->contextMenuButtonAnim;
+    if (buttonAnim->active == TRUE) {
         if (PartyMenu_AnimateContextMenuButtonPress(partyMenu) == FALSE) {
             if (partyMenu->partyMonIndex != PARTY_MON_SELECTION_CONFIRM) {
                 Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], 0);
                 Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], 0);
             }
-            return r5->followUpState;
+            return buttonAnim->followUpState;
         } else {
             return PARTY_MENU_STATE_SOFTBOILED;
         }
@@ -2325,11 +2325,11 @@ static BOOL PartyMenu_SoftboiledHPTransferStep(PartyMenuStruct *partyMenu, u8 pa
     return FALSE;
 }
 
-static u8 sub_0207C0DC(PartyMenuStruct *partyMenu) {
-    PartyMenuContextButtonAnimData *r5 = &partyMenu->contextMenuButtonAnim;
-    if (r5->active == TRUE) {
+static u8 PartyMenu_GiveOrUseItemOnMon_HandleInput(PartyMenuStruct *partyMenu) {
+    PartyMenuContextButtonAnimData *buttonAnim = &partyMenu->contextMenuButtonAnim;
+    if (buttonAnim->active == TRUE) {
         if (PartyMenu_AnimateContextMenuButtonPress(partyMenu) == FALSE) {
-            return r5->followUpState;
+            return buttonAnim->followUpState;
         } else {
             return 5;
         }
@@ -2399,7 +2399,7 @@ static u8 sub_0207C0DC(PartyMenuStruct *partyMenu) {
     return sub_0207A8FC(partyMenu);
 }
 
-static int sub_0207C288(PartyMenuStruct *partyMenu) {
+static int PartyMenu_HandleUseItemOnMon(PartyMenuStruct *partyMenu) {
     ItemData *itemData = LoadItemDataOrGfx(partyMenu->args->itemId, ITEMNARC_PARAM, HEAP_ID_PARTY_MENU);
 
     if (partyMenu->args->itemId == ITEM_GRACIDEA && Mon_CanUseGracidea(Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex)) == TRUE) {
@@ -2450,7 +2450,7 @@ static u8 sub_0207C3D0(PartyMenuStruct *partyMenu) {
     }
 }
 
-static int sub_0207C400(PartyMenuStruct *partyMenu) {
+static int PartyMenu_Subtask_GiveItemToMon(PartyMenuStruct *partyMenu) {
     int result = -1;
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     FieldSystem *fieldSystem = partyMenu->args->fieldSystem;
@@ -2533,7 +2533,7 @@ static void PartyMenu_SwapMonHeldItem(PartyMenuStruct *partyMenu, Pokemon *mon, 
 
 static int PartyMenu_Subtask_PrintItemSwapMessage(PartyMenuStruct *partyMenu) {
     if (TextPrinterCheckActive(partyMenu->textPrinterId) == FALSE) {
-        return sub_0207C8B4(partyMenu);
+        return PartyMenu_SwitchItemsDeclined(partyMenu);
     } else {
         return PARTY_MENU_STATE_PRINT_ITEM_SWAP_MESSAGE;
     }
@@ -2605,13 +2605,13 @@ static int PartyMenu_Subtask_SwitchItemsHandleYesNoInput(PartyMenuStruct *partyM
     case YESNORESPONSE_NO:
         YesNoPrompt_Destroy(partyMenu->yesNoPrompt);
         PartyMenu_DisableMainScreenBlend_AfterYesNo();
-        return sub_0207C8B4(partyMenu);
+        return PartyMenu_SwitchItemsDeclined(partyMenu);
     }
 
     return PARTY_MENU_STATE_YESNO_ASK_SWITCH_ITEMS;
 }
 
-static int sub_0207C8B4(PartyMenuStruct *partyMenu) {
+static int PartyMenu_SwitchItemsDeclined(PartyMenuStruct *partyMenu) {
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_10) {
         ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00029, TRUE);
@@ -2668,21 +2668,20 @@ static int sub_0207CA30(PartyMenuStruct *partyMenu) {
     }
 }
 
-// file IDs from NARC_a_0_2_1
 u32 sub_0207CA9C(void) {
-    return 20;
+    return NARC_plist_gra_plist_gra_00000020_NCGR;
 }
 
 u32 sub_0207CAA0(void) {
-    return 21;
+    return NARC_plist_gra_plist_gra_00000021_NCLR;
 }
 
 u32 sub_0207CAA4(void) {
-    return 19;
+    return NARC_plist_gra_plist_gra_00000019_NCER;
 }
 
 u32 sub_0207CAA8(void) {
-    return 18;
+    return NARC_plist_gra_plist_gra_00000018_NANR;
 }
 
 void sub_0207CAAC(HeapID heapId, u16 *a1, u16 *a2, u16 *a3) {
@@ -2709,8 +2708,8 @@ void PartyMenu_DeleteContextMenuAndList(PartyMenuStruct *partyMenu) {
 }
 
 void sub_0207CB3C(PartyMenuStruct *partyMenu, BOOL a1) {
-    if (partyMenu->args->unk_20 != NULL) {
-        sub_02018410(partyMenu->args->unk_20, a1);
+    if (partyMenu->args->menuInputStatePtr != NULL) {
+        sub_02018410(partyMenu->args->menuInputStatePtr, a1);
     }
 }
 

@@ -40,11 +40,11 @@ typedef enum PartyMenuState {
     PARTY_MENU_STATE_1,
     PARTY_MENU_STATE_HANDLE_CONTEXT_MENU_INPUT,
     PARTY_MENU_STATE_3,
-    PARTY_MENU_STATE_4,
+    PARTY_MENU_STATE_USE_ITEM_SELECT_MON,
     PARTY_MENU_STATE_ITEM_USE_CB,
     PARTY_MENU_STATE_SELECT_MOVE,
     PARTY_MENU_STATE_SACRED_ASH,
-    PARTY_MENU_STATE_8,
+    PARTY_MENU_STATE_GIVE_ITEM_SELECT_MON,
     PARTY_MENU_STATE_PRINT_ASK_SWITCH_ITEMS,
     PARTY_MENU_STATE_YESNO_ASK_SWITCH_ITEMS,
     PARTY_MENU_STATE_PRINT_ITEM_SWAP_MESSAGE,
@@ -52,16 +52,16 @@ typedef enum PartyMenuState {
     PARTY_MENU_STATE_WAIT_GIVE_GRISEOUS_ORB_ANIM,
     PARTY_MENU_STATE_14,
     PARTY_MENU_STATE_HANDLE_SUBCONTEXT_MENU_INPUT,
-    PARTY_MENU_STATE_16,
+    PARTY_MENU_STATE_GIVE_ITEM_TO_MON,
     PARTY_MENU_STATE_PRINT_TAKE_ITEM_MESSAGE,
     PARTY_MENU_STATE_PRINT_TAKE_GRISEOUS_ORB_MESSAGE,
     PARTY_MENU_STATE_WAIT_TAKE_GRISEOUS_ORB_ANIM,
-    PARTY_MENU_STATE_20,
+    PARTY_MENU_STATE_AFTER_TAKE_MAIL,
     PARTY_MENU_STATE_USE_TMHM,
-    PARTY_MENU_STATE_22,
+    PARTY_MENU_STATE_TMHM_LEARN_MOVE,
     PARTY_MENU_STATE_SELECT_MONS_ERROR_MSG_CLOSE,
     PARTY_MENU_STATE_WAIT_TEXT_PRINTER,
-    PARTY_MENU_STATE_25,
+    PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT,
     PARTY_MENU_STATE_YES_NO_INIT,
     PARTY_MENU_STATE_YES_NO_HANDLE_INPUT,
     PARTY_MENU_STATE_SELECT_SWITCH_MON,
@@ -87,15 +87,15 @@ typedef enum PartyMenuContext {
     PARTY_MENU_CONTEXT_11,
     PARTY_MENU_CONTEXT_12,
     PARTY_MENU_CONTEXT_SUPER_CONTEST,
-    PARTY_MENU_CONTEXT_14,
-    PARTY_MENU_CONTEXT_15,
+    PARTY_MENU_CONTEXT_GIVE_MAIL_FROM_MAILBOX,
+    PARTY_MENU_CONTEXT_ATTACH_CAPSULE,
     PARTY_MENU_CONTEXT_EVO_STONE,
     PARTY_MENU_CONTEXT_17,
     PARTY_MENU_CONTEXT_18,
     PARTY_MENU_CONTEXT_19,
     PARTY_MENU_CONTEXT_20,
-    PARTY_MENU_CONTEXT_21,
-    PARTY_MENU_CONTEXT_22,
+    PARTY_MENU_CONTEXT_SPIN_TRADE,
+    PARTY_MENU_CONTEXT_BATTLE_HALL,
     PARTY_MENU_CONTEXT_23,
 } PartyMenuContext;
 
@@ -241,24 +241,24 @@ typedef enum PartyMenuSpriteId {
     PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR,
     PARTY_MENU_SPRITE_ID_8,
     PARTY_MENU_SPRITE_ID_9,
-    PARTY_MENU_SPRITE_ID_10,
-    PARTY_MENU_SPRITE_ID_11,
-    PARTY_MENU_SPRITE_ID_12,
-    PARTY_MENU_SPRITE_ID_13,
-    PARTY_MENU_SPRITE_ID_14,
-    PARTY_MENU_SPRITE_ID_15,
-    PARTY_MENU_SPRITE_ID_HELD_ITEM_ICON,
-    PARTY_MENU_SPRITE_ID_17,
-    PARTY_MENU_SPRITE_ID_18,
-    PARTY_MENU_SPRITE_ID_19,
-    PARTY_MENU_SPRITE_ID_20,
-    PARTY_MENU_SPRITE_ID_21,
-    PARTY_MENU_SPRITE_ID_CAPSULE_ICON,
-    PARTY_MENU_SPRITE_ID_23,
-    PARTY_MENU_SPRITE_ID_24,
-    PARTY_MENU_SPRITE_ID_25,
-    PARTY_MENU_SPRITE_ID_26,
-    PARTY_MENU_SPRITE_ID_27,
+    PARTY_MENU_SPRITE_ID_MON1_STATUS,
+    PARTY_MENU_SPRITE_ID_MON2_STATUS,
+    PARTY_MENU_SPRITE_ID_MON3_STATUS,
+    PARTY_MENU_SPRITE_ID_MON4_STATUS,
+    PARTY_MENU_SPRITE_ID_MON5_STATUS,
+    PARTY_MENU_SPRITE_ID_MON6_STATUS,
+    PARTY_MENU_SPRITE_ID_MON1_HELD_ITEM,
+    PARTY_MENU_SPRITE_ID_MON2_HELD_ITEM,
+    PARTY_MENU_SPRITE_ID_MON3_HELD_ITEM,
+    PARTY_MENU_SPRITE_ID_MON4_HELD_ITEM,
+    PARTY_MENU_SPRITE_ID_MON5_HELD_ITEM,
+    PARTY_MENU_SPRITE_ID_MON6_HELD_ITEM,
+    PARTY_MENU_SPRITE_ID_MON1_CAPSULE,
+    PARTY_MENU_SPRITE_ID_MON2_CAPSULE,
+    PARTY_MENU_SPRITE_ID_MON3_CAPSULE,
+    PARTY_MENU_SPRITE_ID_MON4_CAPSULE,
+    PARTY_MENU_SPRITE_ID_MON5_CAPSULE,
+    PARTY_MENU_SPRITE_ID_MON6_CAPSULE,
     PARTY_MENU_SPRITE_ID_28,
     PARTY_MENU_SPRITE_ID_MAX,
 } PartyMenuSpriteId;
@@ -304,7 +304,7 @@ typedef struct PartyMenuArgs {
     UnkStruct_02074944 *unk_14;
     FieldMoveCheckData *fieldMoveCheckData;
     FieldSystem *fieldSystem;
-    BOOL *unk_20;
+    BOOL *menuInputStatePtr;
     u8 context;
     u8 unk_25;
     u8 partySlot;
@@ -316,9 +316,9 @@ typedef struct PartyMenuArgs {
     u8 contestStat;
     u8 contestLevel;
     u8 selectedOrder[6];
-    u8 unk_36_0:4;
+    u8 minMonsToSelect:4;
     u8 maxMonsToSelect:4;
-    u8 unk_37;
+    u8 maxLevel;
     int levelUpMoveSearchState;
     u16 species;
     int evoMethod;
@@ -336,7 +336,7 @@ typedef struct IconFormChangeData  {
 
 typedef struct PartyMenuStruct PartyMenuStruct;
 
-typedef void (*PartyMenuStruct_SubC90_UnkFunc)(PartyMenuStruct *partyMenu, int *pState);
+typedef void (*PartyMonContextMenuActionFunc)(PartyMenuStruct *partyMenu, int *pState);
 
 typedef struct PartyMenuContextButtonAnimData {
     PartyMenuContextMenu *template;
@@ -365,12 +365,12 @@ typedef struct PartyMenuMonsDrawState {
     u16 capsule;      // 83A
     s8 unk_14;        // 83C
     s8 unk_15;        // 83D
-    s16 unk_16;       // 83E
-    s16 unk_18;       // 840
-    s16 unk_1A;       // 842
-    s16 unk_1C;       // 844
-    s16 unk_1E;       // 846
-    s16 unk_20;       // 848
+    s16 iconX;       // 83E
+    s16 iconY;       // 840
+    s16 statusIconX;       // 842
+    s16 statusIconY;       // 844
+    s16 heldItemX;       // 846
+    s16 heldItemY;       // 848
     u8 filler_22[2];  // alignment padding
     Sprite *iconSprite;   // 84C
     Sprite *mainScreenIconSprite;   // 850

@@ -202,18 +202,18 @@ static u32 sub_0204FC78(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID
     partyMenu->mailbox = Save_Mailbox_Get(fieldSystem->saveData);
     partyMenu->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     partyMenu->unk_25 = 0;
-    partyMenu->context = 23;
+    partyMenu->context = PARTY_MENU_CONTEXT_23;
     partyMenu->fieldSystem = fieldSystem;
     partyMenu->partySlot = a0->unk05;
     for (u8 i = 0; i < 3; i++) {
         partyMenu->selectedOrder[i] = a0->unk06[i];
     }
-    partyMenu->unk_37 = 100;
-    partyMenu->unk_36_0 = 3;
+    partyMenu->maxLevel = 100;
+    partyMenu->minMonsToSelect = 3;
     partyMenu->maxMonsToSelect = 3;
-    partyMenu->unk_20 = &(fieldSystem->unk_10C);
+    partyMenu->menuInputStatePtr = &(fieldSystem->menuInputState);
     if (a0->challengeType == BATTLE_CASTLE_CHALLENGE_TYPE_MULTI) {
-        partyMenu->unk_36_0 = 2;
+        partyMenu->minMonsToSelect = 2;
         partyMenu->maxMonsToSelect = 2;
     }
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, partyMenu);

@@ -67,7 +67,7 @@
 #include "battle/battle_022378C0.h"
 #include "constants/flags.h"
 
-static PartyMenuArgs *PartyMenu_CreateArgs(HeapID heapId, FieldSystem *fieldSystem, int a2, int context);
+static PartyMenuArgs *PartyMenu_CreateArgs(HeapID heapId, FieldSystem *fieldSystem, int a2, PartyMenuContext context);
 static BOOL Task_OpenPartyMenuThenMoveSelect(TaskManager *taskman);
 static BOOL sub_0203E878(TaskManager *taskman);
 static void PokegearPhone_LaunchApp_Impl(FieldSystem *fieldSystem, PokegearArgs *args);
@@ -123,7 +123,7 @@ void Bag_LaunchApp(FieldSystem *fieldSystem, BagView *args) {
 
 BagView *sub_0203E3FC(FieldSystem *fieldSystem, ItemCheckUseData *taskman) {
     BagView *bagView = Bag_CreateView(Save_Bag_Get(fieldSystem->saveData), sAllPockets, HEAP_ID_FIELD);
-    sub_0207789C(bagView, fieldSystem->saveData, 0, fieldSystem->bagCursor, &fieldSystem->unk_10C);
+    sub_0207789C(bagView, fieldSystem->saveData, 0, fieldSystem->bagCursor, &fieldSystem->menuInputState);
     sub_020778E8(bagView, fieldSystem->unk70);
     if (PlayerAvatar_GetState(fieldSystem->playerAvatar) == PLAYER_STATE_CYCLING) {
         sub_020778C8(bagView);
@@ -147,7 +147,7 @@ BagView *Bag_LaunchApp_WithPocket(FieldSystem *fieldSystem, u8 pocketType) {
     }
 
     BagView *bagView = Bag_CreateView(bag, sPockets, HEAP_ID_32);
-    sub_0207789C(bagView, fieldSystem->saveData, 3, fieldSystem->bagCursor, &fieldSystem->unk_10C);
+    sub_0207789C(bagView, fieldSystem->saveData, 3, fieldSystem->bagCursor, &fieldSystem->menuInputState);
     Bag_LaunchApp(fieldSystem, bagView);
     return bagView;
 }
@@ -162,7 +162,7 @@ void PokemonSummary_LearnForget_LaunchApp(FieldSystem *fieldSystem, PokemonSumma
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PokemonSummary, args);
 }
 
-static PartyMenuArgs *PartyMenu_CreateArgs(HeapID heapId, FieldSystem *fieldSystem, int a2, int context) {
+static PartyMenuArgs *PartyMenu_CreateArgs(HeapID heapId, FieldSystem *fieldSystem, int a2, PartyMenuContext context) {
     PartyMenuArgs *partyMenu = AllocFromHeap(heapId, sizeof(PartyMenuArgs));
     MI_CpuClearFast(partyMenu, sizeof(PartyMenuArgs));
     partyMenu->party = SaveArray_Party_Get(fieldSystem->saveData);
@@ -172,7 +172,7 @@ static PartyMenuArgs *PartyMenu_CreateArgs(HeapID heapId, FieldSystem *fieldSyst
     partyMenu->unk_25 = a2;
     partyMenu->context = context;
     partyMenu->fieldSystem = fieldSystem;
-    partyMenu->unk_20 = &fieldSystem->unk_10C;
+    partyMenu->menuInputStatePtr = &fieldSystem->menuInputState;
     return partyMenu;
 }
 
@@ -264,19 +264,19 @@ PartyMenuArgs *SelectPartyMonAndLearnMove(TaskManager *taskman, HeapID heapId) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     UnkStruct_0203E6D4 *data = AllocFromHeap(heapId, sizeof(UnkStruct_0203E6D4));
     data->heapId = heapId;
-    PartyMenuArgs *partyMenu = PartyMenu_CreateArgs(heapId, fieldSystem, 0, PARTY_MENU_CONTEXT_2);
-    partyMenu->unk_36_0 = 2;
-    partyMenu->maxMonsToSelect = 2;
-    partyMenu->unk_37 = 0x1e;
-    partyMenu->unk_14 = NULL;
+    PartyMenuArgs *args = PartyMenu_CreateArgs(heapId, fieldSystem, 0, PARTY_MENU_CONTEXT_2);
+    args->minMonsToSelect = 2;
+    args->maxMonsToSelect = 2;
+    args->maxLevel = 30;
+    args->unk_14 = NULL;
 
-    data->partyMenu = partyMenu;
+    data->partyMenu = args;
     TaskManager_Call(taskman, Task_OpenPartyMenuThenMoveSelect, data);
-    return partyMenu;
+    return args;
 }
 
 PartyMenuArgs *PartyMenu_LaunchApp_Unk5(FieldSystem *fieldSystem, int partySlot) {
-    PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELD, fieldSystem, 0, PARTY_MENU_CONTEXT_21);
+    PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELD, fieldSystem, 0, PARTY_MENU_CONTEXT_SPIN_TRADE);
     args->partySlot = partySlot;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, args);
     return args;
@@ -296,7 +296,7 @@ PokemonSummaryArgs *PokemonSummary_CreateArgs(FieldSystem *fieldSystem, HeapID h
     args->natDexEnabled = SaveArray_IsNatDexEnabled(saveData);
     args->unk2C = sub_02088288(saveData);
     args->ribbons = Save_SpecialRibbons_Get(saveData);
-    args->unk30 = &fieldSystem->unk_10C;
+    args->unk30 = &fieldSystem->menuInputState;
     args->isFlag982Set = sub_0208828C(fieldSystem->saveData);
     sub_02089D40(args, _020FA1B0);
 
@@ -317,7 +317,7 @@ PokemonSummaryArgs *LearnForgetMove_LaunchApp(HeapID heapId, FieldSystem *fieldS
     args->unk12 = 2;
     args->natDexEnabled = SaveArray_IsNatDexEnabled(fieldSystem->saveData);
     args->unk2C = 0;
-    args->unk30 = &fieldSystem->unk_10C;
+    args->unk30 = &fieldSystem->menuInputState;
     sub_02089D40(args, _020FA1A8);
     sub_0208AD34(args, Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
     PokemonSummary_LearnForget_LaunchApp(fieldSystem, args);
@@ -391,12 +391,12 @@ void sub_0203E960(TaskManager *taskman, int a1, UnkStruct_0203E8C8 *a2, u16 *a3,
     data->unk10 = a1;
     switch (a1) {
     default:
-        args = EasyChat_CreateArgs(0, 0, fieldSystem->saveData, &fieldSystem->unk_10C, HEAP_ID_32);
+        args = EasyChat_CreateArgs(0, 0, fieldSystem->saveData, &fieldSystem->menuInputState, HEAP_ID_32);
         data->easyChat = args;
         sub_02090D14(args, *a3);
         break;
     case 1:
-        args = EasyChat_CreateArgs(1, 0, fieldSystem->saveData, &fieldSystem->unk_10C, HEAP_ID_32);
+        args = EasyChat_CreateArgs(1, 0, fieldSystem->saveData, &fieldSystem->menuInputState, HEAP_ID_32);
         data->easyChat = args;
         sub_02090D18(args, *a3, *a4);
         break;
@@ -404,7 +404,7 @@ void sub_0203E960(TaskManager *taskman, int a1, UnkStruct_0203E8C8 *a2, u16 *a3,
     case 3:
     case 4:
     case 5:
-        args = EasyChat_CreateArgs(2, 0, fieldSystem->saveData, &fieldSystem->unk_10C, HEAP_ID_32);
+        args = EasyChat_CreateArgs(2, 0, fieldSystem->saveData, &fieldSystem->menuInputState, HEAP_ID_32);
         data->easyChat = args;
         sub_02090D40(args);
         MAIL_MESSAGE *mailMessage = sub_0202D660(fieldSystem->saveData, a1 - 2);
@@ -454,7 +454,7 @@ SafariAreaCustomizerArgs *SafariAreaCustomizer_LaunchApp(FieldSystem *fieldSyste
     SafariAreaCustomizerArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(SafariAreaCustomizerArgs));
     MI_CpuFill8(args, 0, sizeof(SafariAreaCustomizerArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
-    args->unk4 = &fieldSystem->unk_10C;
+    args->unk4 = &fieldSystem->menuInputState;
     SafariAreaCustomizer_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
@@ -479,7 +479,7 @@ PhotoAlbumArgs *PhotoAlbum_LaunchApp(FieldSystem *fieldSystem, int unused, int i
     PhotoAlbumArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(PhotoAlbumArgs));
     MI_CpuFill8(args, 0, sizeof(PhotoAlbumArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
-    args->unk8 = &fieldSystem->unk_10C;
+    args->unk8 = &fieldSystem->menuInputState;
     args->cursorPos = initialCursorPos;
     PhotoAlbum_LaunchApp_Impl(fieldSystem, args);
     return args;
@@ -494,7 +494,7 @@ AlphPuzzleArgs *AlphPuzzle_LaunchApp(FieldSystem *fieldSystem, u8 puzzle) {
     AlphPuzzleArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(AlphPuzzleArgs));
     MI_CpuFill8(args, 0, sizeof(AlphPuzzleArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
-    args->fieldSystemUnk10Cpointer = &fieldSystem->unk_10C;
+    args->fieldSystemUnk10Cpointer = &fieldSystem->menuInputState;
     args->puzzle = puzzle;
     AlphPuzzle_LaunchApp_Impl(fieldSystem, args);
     return args;
@@ -509,7 +509,7 @@ UnownReportArgs *UnownReport_LaunchApp(FieldSystem *fieldSystem) {
     UnownReportArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(UnownReportArgs));
     MI_CpuFill8(args, 0, sizeof(UnownReportArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
-    args->unk0 = &fieldSystem->unk_10C;
+    args->unk0 = &fieldSystem->menuInputState;
     UnownReport_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
@@ -523,7 +523,7 @@ BerryPotsArgs *BerryPots_LaunchApp(FieldSystem *fieldSystem) {
     BerryPotsArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(BerryPotsArgs));
     MI_CpuFill8(args, 0, sizeof(BerryPotsArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
-    args->unk4 = &fieldSystem->unk_10C;
+    args->unk4 = &fieldSystem->menuInputState;
     args->cursor = fieldSystem->bagCursor;
     BerryPots_LaunchApp_Impl(fieldSystem, args);
     return args;
@@ -538,7 +538,7 @@ ApricornBoxArgs *ApricornBox_LaunchApp(FieldSystem *fieldSystem, int a1) {
     ApricornBoxArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(ApricornBoxArgs));
     MI_CpuFill8(args, 0, sizeof(ApricornBoxArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
-    args->unk14 = &fieldSystem->unk_10C;
+    args->unk14 = &fieldSystem->menuInputState;
     args->unk10 = GameStats_GetCapped(Save_GameStats_Get(args->saveData), GAME_STAT_UNK0);
     if (a1 == 1 && !CheckFlag997(Save_VarsFlags_Get(fieldSystem->saveData))) {
         args->unk0 = 0;
@@ -553,7 +553,7 @@ ApricornBoxArgs *sub_0203ED80(FieldSystem *fieldSystem, u32 a1, u16 *a2) {
     ApricornBoxArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(ApricornBoxArgs));
     MI_CpuFill8(args, 0, sizeof(ApricornBoxArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
-    args->unk14 = &fieldSystem->unk_10C;
+    args->unk14 = &fieldSystem->menuInputState;
     args->unk10 = GameStats_GetCapped(Save_GameStats_Get(args->saveData), GAME_STAT_UNK0);
     args->unk0 = 3;
     args->unkC = a1;
@@ -584,7 +584,7 @@ static void OptionsMenu_LaunchApp_Impl(FieldSystem *fieldSystem, OptionsMenuArgs
 OptionsMenuArgs *OptionsMenu_LaunchApp(FieldSystem *fieldSystem) {
     OptionsMenuArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(OptionsMenuArgs));
     args->options = Save_PlayerData_GetOptionsAddr(FieldSystem_GetSaveData(fieldSystem));
-    args->unk8 = &fieldSystem->unk_10C;
+    args->unk8 = &fieldSystem->menuInputState;
     OptionsMenu_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
@@ -658,7 +658,7 @@ UnkStruct_0203EFA0 *PokeathlonUnk_LaunchApp(FieldSystem *fieldSystem) {
 }
 
 static void sub_0203EFD4(FieldSystem *fieldSystem, UseMailArgs *args) {
-    args->unk1C = &fieldSystem->unk_10C;
+    args->unk1C = &fieldSystem->menuInputState;
     FieldSystem_LaunchApplication(fieldSystem, &_020FA434, args);
 }
 
@@ -690,7 +690,7 @@ UnkStruct_0203F074 *sub_0203F074(FieldSystem *fieldSystem, HeapID heapId) {
     UnkStruct_0203F074 *args = AllocFromHeap(heapId, sizeof(UnkStruct_0203F074));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
     args->fieldSystem = fieldSystem;
-    args->unk8 = &fieldSystem->unk_10C;
+    args->unk8 = &fieldSystem->menuInputState;
     FieldSystem_LaunchApplication(fieldSystem, &_020FA2F4, args);
     return args;
 }
@@ -754,7 +754,7 @@ void sub_0203F198(TaskManager *taskman, u16 *ret, SaveData *saveData, u16 a3, u1
 }
 
 static BOOL sub_0203F1E8(FieldSystem *fieldSystem, UnkStruct_0203F0D0 *args) {
-    args->unk20 = &fieldSystem->unk_10C;
+    args->unk20 = &fieldSystem->menuInputState;
     FieldSystem_LaunchApplication(fieldSystem, &_0210F9AC, args);
     return TRUE;
 }
@@ -909,7 +909,7 @@ UnkStruct_0203F4F8 *sub_0203F4F8(FieldSystem *fieldSystem) {
     args->unk4 = fieldSystem->unk84;
     args->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     args->gameStats = Save_GameStats_Get(fieldSystem->saveData);
-    args->unk10 = &fieldSystem->unk_10C;
+    args->unk10 = &fieldSystem->menuInputState;
     FieldSystem_LaunchApplication(fieldSystem, &_020FA2B4, args);
     return args;
 }
@@ -918,7 +918,7 @@ PalPadArgs *PalPad_LaunchApp(FieldSystem *fieldSystem, SaveData *saveData, HeapI
     PalPadArgs *args = AllocFromHeap(heapId, sizeof(PalPadArgs));
     MI_CpuFill8(args, 0, sizeof(PalPadArgs));
     args->saveData = saveData;
-    args->unk4 = &fieldSystem->unk_10C;
+    args->unk4 = &fieldSystem->menuInputState;
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_PalPad, args);
     return args;
 }
@@ -1010,7 +1010,7 @@ void CallTask_NamingScreen(TaskManager *taskman, NameScreenType type, int specie
     data->state = 0;
     data->partyIdx = partyIdx;
     data->retVar = retVar;
-    data->args = NamingScreen_CreateArgs(HEAP_ID_FIELD, type, species, maxLen, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData), &fieldSystem->unk_10C);
+    data->args = NamingScreen_CreateArgs(HEAP_ID_FIELD, type, species, maxLen, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData), &fieldSystem->menuInputState);
     data->unk10 = String_New(12, HEAP_ID_FIELD);
 
     switch (type) {
@@ -1041,7 +1041,7 @@ void CallTask_NamingScreen(TaskManager *taskman, NameScreenType type, int specie
 }
 
 void TrainerCard_LaunchApp(FieldSystem *fieldSystem, TrainerCardAppArgs *args) {
-    args->unk66C.unk0 = &fieldSystem->unk_10C;
+    args->unk66C.unk0 = &fieldSystem->menuInputState;
     args->unk66C.saveData = fieldSystem->saveData;
     args->unk66C.gameCleared = CheckGameClearFlag(Save_VarsFlags_Get(fieldSystem->saveData));
     args->unk66C.unk8 = 0;
@@ -1130,7 +1130,7 @@ void Credits_LaunchApp(FieldSystem *fieldSystem, CreditsArgs *args) {
 
 void MoveRelearner_LaunchApp(FieldSystem *fieldSystem, MoveRelearnerArgs *args) {
     OVY_MGR_TEMPLATE template = sOverlayTemplate_MoveRelearner;
-    args->unkC = &fieldSystem->unk_10C;
+    args->unkC = &fieldSystem->menuInputState;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
 
@@ -1153,7 +1153,7 @@ VoltorbFlipArgs *VoltorbFlip_LaunchApp(FieldSystem *fieldSystem, u32 luck) {
     SaveData *saveData = FieldSystem_GetSaveData(fieldSystem);
     args->coins = Save_PlayerData_GetCoinsAddr(saveData);
     args->options = Save_PlayerData_GetOptionsAddr(saveData);
-    args->unk8 = &fieldSystem->unk_10C;
+    args->unk8 = &fieldSystem->menuInputState;
     args->profile = Save_PlayerData_GetProfileAddr(saveData);
     args->saveData = fieldSystem->saveData;
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_VoltorbFlip, args);
@@ -1192,7 +1192,7 @@ PartyMenuArgs *PartyMenu_LaunchApp_Gracidea(FieldSystem *fieldSystem, HeapID hea
     args->itemId = itemId;
     args->partySlot = 0;
     args->fieldSystem = fieldSystem;
-    args->unk_20 = &fieldSystem->unk_10C;
+    args->menuInputStatePtr = &fieldSystem->menuInputState;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, args);
     return args;
 }

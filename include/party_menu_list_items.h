@@ -7,7 +7,7 @@ u32 GetPartyMenuContextMenuActionFunc(int index);
 int PartyMenu_Subtask_PrintTakeItemMessage(PartyMenuStruct *partyMenu);
 int PartyMenu_Subtask_PrintTakeGriseousOrbMessage(PartyMenuStruct *partyMenu);
 int PartyMenu_Subtask_WaitTakeGriseousOrbAnim(PartyMenuStruct *partyMenu);
-int sub_0207FA08(PartyMenuStruct *partyMenu);
+int PartyMenu_Subtask_AfterTakeMail(PartyMenuStruct *partyMenu);
 int sub_0207FAA8(PartyMenuStruct *partyMenu);
 int sub_0207FAD4(PartyMenuStruct *partyMenu);
 void sub_0207FBC8(PartyMenuStruct *partyMenu);
