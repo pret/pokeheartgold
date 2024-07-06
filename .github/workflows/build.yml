@@ -23,6 +23,7 @@ jobs:
       - name: Update and Install Software
         run: |
           sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+          sudo apt update
           sudo apt -y --allow-downgrades install g++-10-multilib linux-libc-dev binutils-arm-none-eabi p7zip-full pkg-config libpugixml-dev ppa-purge
           sudo ppa-purge -y ppa:ubuntu-toolchain-r/test || true
           sudo dpkg --add-architecture i386
