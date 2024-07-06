@@ -300,20 +300,20 @@ static void PartyMonContextMenuAction_Store(PartyMenuStruct *partyMenu, int *pSt
         *pState = PARTY_MENU_STATE_BEGIN_EXIT;
     } else {
         PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00179, TRUE);
-        partyMenu->yesCallback = sub_0207FAA8;
-        partyMenu->noCallback = sub_0207FAD4;
+        partyMenu->yesCallback = PartyMenu_ConfirmRemoveCapsuleYes;
+        partyMenu->noCallback = PartyMenu_ConfirmRemoveCapsuleNo;
         partyMenu->afterTextPrinterState = PARTY_MENU_STATE_YES_NO_INIT;
         *pState = PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
     }
 }
 
-int sub_0207FAA8(PartyMenuStruct *partyMenu) {
+int PartyMenu_ConfirmRemoveCapsuleYes(PartyMenuStruct *partyMenu) {
     Pokemon_RemoveCapsule(Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex));
     partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
     return PARTY_MENU_STATE_BEGIN_EXIT;
 }
 
-int sub_0207FAD4(PartyMenuStruct *partyMenu) {
+int PartyMenu_ConfirmRemoveCapsuleNo(PartyMenuStruct *partyMenu) {
     G2_BlendNone();
     ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
     PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00029, TRUE);

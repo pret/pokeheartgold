@@ -112,7 +112,7 @@ UnownReportArgs *UnownReport_LaunchApp(FieldSystem *fieldSystem);
 PartyMenuArgs *PartyMenu_LaunchApp_Gracidea(FieldSystem *fieldSystem, HeapID heapId, u16 itemId);
 PartyMenuArgs *PartyMenu_LaunchApp_Unk2(HeapID heapId, FieldSystem *fieldSystem); //todo: party select screen
 PartyMenuArgs *PartyMenu_LaunchApp_Unk3(HeapID heapId, FieldSystem *fieldSystem); //todo: party trade screen
-PartyMenuArgs *SelectPartyMonAndLearnMove(TaskManager *taskManager, HeapID heapId); //todo: union party select screen
+PartyMenuArgs *TaskManager_LaunchPartyMenu_UnionRoomBattleSelect(TaskManager *taskManager, HeapID heapId); //todo: union party select screen
 int sub_0203E5C8(struct PartyMenuArgs *partyWork);
 int sub_0203E5F8(struct PartyMenuArgs *partyWork);
 void sub_0203F570(FieldSystem *fieldSystem, SaveData *saveData);

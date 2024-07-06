@@ -1609,7 +1609,7 @@ BOOL ScrCmd_566(ScriptContext *ctx) { //todo: trade screen
 
 BOOL ScrCmd_350(ScriptContext *ctx) { //todo: union pokemon selection
     PartyMenuArgs **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *partyMenu = SelectPartyMonAndLearnMove(ctx->fieldSystem->taskman, HEAP_ID_32);
+    *partyMenu = TaskManager_LaunchPartyMenu_UnionRoomBattleSelect(ctx->fieldSystem->taskman, HEAP_ID_32);
     return TRUE;
 }
 

@@ -75,7 +75,7 @@
 .public PartyMenu_LaunchApp_Unk4
 .public sub_0203E5F8
 .public sub_0203E600
-.public SelectPartyMonAndLearnMove
+.public TaskManager_LaunchPartyMenu_UnionRoomBattleSelect
 .public PartyMenu_LaunchApp_Unk5
 .public PokemonSummary_CreateArgs
 .public LearnForgetMove_LaunchApp

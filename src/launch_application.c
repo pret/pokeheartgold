@@ -68,7 +68,7 @@
 #include "constants/flags.h"
 
 static PartyMenuArgs *PartyMenu_CreateArgs(HeapID heapId, FieldSystem *fieldSystem, int a2, PartyMenuContext context);
-static BOOL Task_OpenPartyMenuThenMoveSelect(TaskManager *taskman);
+static BOOL Task_OpenPartyMenuForUnionRoomBattleSelect(TaskManager *taskman);
 static BOOL sub_0203E878(TaskManager *taskman);
 static void PokegearPhone_LaunchApp_Impl(FieldSystem *fieldSystem, PokegearArgs *args);
 static void PokegearTownMap_LaunchApp_Impl(FieldSystem *fieldSystem, PokegearArgs *args);
@@ -158,6 +158,7 @@ int BagView_SelectResult(BagView *bagView) {
     return result;
 }
 
+// fixme: wrong name
 void PokemonSummary_LearnForget_LaunchApp(FieldSystem *fieldSystem, PokemonSummaryArgs *args) {
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PokemonSummary, args);
 }
@@ -191,7 +192,7 @@ PartyMenuArgs *PartyMenu_LaunchApp_Unk2(HeapID heapId, FieldSystem *fieldSystem)
 }
 
 PartyMenuArgs *PartyMenu_LaunchApp_Unk3(HeapID heapId, FieldSystem *fieldSystem) {
-    PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELD, fieldSystem, 0, PARTY_MENU_CONTEXT_19);
+    PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELD, fieldSystem, 0, PARTY_MENU_CONTEXT_INGAME_TRADE);
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, args);
     return args;
 }
@@ -215,7 +216,7 @@ u16 sub_0203E600(UnkStruct_0203E600 *a0) {
     return a0->unk14;
 }
 
-static BOOL Task_OpenPartyMenuThenMoveSelect(TaskManager *taskman) {
+static BOOL Task_OpenPartyMenuForUnionRoomBattleSelect(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     PartyMenuMoveSelectData *data = TaskManager_GetEnvironment(taskman);
     int *state = TaskManager_GetStatePtr(taskman);
@@ -236,17 +237,17 @@ static BOOL Task_OpenPartyMenuThenMoveSelect(TaskManager *taskman) {
                 *state = PMMS_FREE;
                 break;
             default:
-                *state = PMMS_OPEN_FORGET_MOVE;
+                *state = PMMS_OPEN_SUMMARY;
             }
         }
         break;
-    case PMMS_OPEN_FORGET_MOVE:
-        data->pokemonSummary = PokemonSummary_CreateArgs(fieldSystem, data->unk0, 0);
+    case PMMS_OPEN_SUMMARY:
+        data->pokemonSummary = PokemonSummary_CreateArgs(fieldSystem, data->heapId, 0);
         data->pokemonSummary->partySlot = data->unk4->unk26;
         PokemonSummary_LearnForget_LaunchApp(fieldSystem, data->pokemonSummary);
-        *state = PMMS_WAIT_FORGET_MOVE;
+        *state = PMMS_WAIT_SUMMARY;
         break;
-    case PMMS_WAIT_FORGET_MOVE:
+    case PMMS_WAIT_SUMMARY:
         if (!FieldSystem_ApplicationIsRunning(fieldSystem)) {
             data->unk4->unk26 = data->pokemonSummary->partySlot;
             FreeToHeap(data->pokemonSummary);
@@ -260,18 +261,18 @@ static BOOL Task_OpenPartyMenuThenMoveSelect(TaskManager *taskman) {
     return FALSE;
 }
 
-PartyMenuArgs *SelectPartyMonAndLearnMove(TaskManager *taskman, HeapID heapId) {
+PartyMenuArgs *TaskManager_LaunchPartyMenu_UnionRoomBattleSelect(TaskManager *taskman, HeapID heapId) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     UnkStruct_0203E6D4 *data = AllocFromHeap(heapId, sizeof(UnkStruct_0203E6D4));
     data->heapId = heapId;
-    PartyMenuArgs *args = PartyMenu_CreateArgs(heapId, fieldSystem, 0, PARTY_MENU_CONTEXT_2);
+    PartyMenuArgs *args = PartyMenu_CreateArgs(heapId, fieldSystem, 0, PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT);
     args->minMonsToSelect = 2;
     args->maxMonsToSelect = 2;
     args->maxLevel = 30;
     args->unk_14 = NULL;
 
     data->partyMenu = args;
-    TaskManager_Call(taskman, Task_OpenPartyMenuThenMoveSelect, data);
+    TaskManager_Call(taskman, Task_OpenPartyMenuForUnionRoomBattleSelect, data);
     return args;
 }
 
