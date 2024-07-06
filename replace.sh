@@ -14,11 +14,12 @@ fi
 
 git grep -w "$2" >/dev/null
 if [ "$?" -eq 0 ]; then
-	read -p "Replacement symbol already exists. Proceed anyway? [y/N]" yn
+	read -p "Replacement symbol already exists. Proceed anyway? [y/N] " yn
 	case $yn in
 		[yY] )
 			;;
 		* )
+			echo Aborting.
 			exit 0 ;;
 	esac
 fi
