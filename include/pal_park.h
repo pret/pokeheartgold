@@ -1,9 +1,10 @@
 #ifndef POKEHEARTGOLD_PAL_PARK_H
 #define POKEHEARTGOLD_PAL_PARK_H
 
+#include "battle/battle_setup.h"
+
 #include "script.h"
 #include "unk_0202EB30.h"
-#include "battle/battle_setup.h"
 
 enum PalParkEncounterType {
     PP_ENCTYPE_NONE,
@@ -35,12 +36,12 @@ struct PalParkMonsData {
     u8 unk5;
 };
 
-#define PPMONDAT_OFFSET_LAND_SECTOR     0
-#define PPMONDAT_OFFSET_WATER_SECTOR    1
-#define PPMONDAT_OFFSET_SCORE           2
-#define PPMONDAT_OFFSET_ENCOUTER_RATE   3
-#define PPMONDAT_OFFSET_UNK4            4
-#define PPMONDAT_OFFSET_UNK5            5
+#define PPMONDAT_OFFSET_LAND_SECTOR   0
+#define PPMONDAT_OFFSET_WATER_SECTOR  1
+#define PPMONDAT_OFFSET_SCORE         2
+#define PPMONDAT_OFFSET_ENCOUTER_RATE 3
+#define PPMONDAT_OFFSET_UNK4          4
+#define PPMONDAT_OFFSET_UNK5          5
 
 // Resets the Pal Park state. fieldSystem is unused.
 // Called when entering the park game, right
@@ -89,12 +90,12 @@ u32 PalPark_CalcTypesScore(FieldSystem *fieldSystem);
 // random (LCRNG) based on the cumulative weights.
 // If the chosen bucket corresponds to a Pokemon, it will
 // be encountered.
-BOOL PalPark_TryEncounter(FieldSystem* fieldSystem, int x, int z);
+BOOL PalPark_TryEncounter(FieldSystem *fieldSystem, int x, int z);
 
 // Called if PalPark_TryEncounter succeeds. Loads the
 // migrated Pokemon as the opponent and sets the Pal Park
 // state.
-BattleSetup* PalPark_SetupEncounter(FieldSystem* fieldSystem);
+BattleSetup *PalPark_SetupEncounter(FieldSystem *fieldSystem);
 
 // Called on return from the battle. Action is based on
 // whether the player caught the Pokemon or fled from it.
@@ -105,4 +106,4 @@ void PalPark_HandleBattleEnd(FieldSystem *fieldSystem, BattleSetup *setup);
 // caught.
 int PalPark_CountMonsNotCaught(FieldSystem *fieldSystem);
 
-#endif //POKEHEARTGOLD_PAL_PARK_H
+#endif // POKEHEARTGOLD_PAL_PARK_H

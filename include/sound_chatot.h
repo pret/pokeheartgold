@@ -20,4 +20,4 @@ BOOL sub_02006F30(int a0);
 void PlayCry(u16 species, u8 form);
 void sub_02006920(int, u16, int, int, int, u8, u8);
 
-#endif //POKEHEARTGOLD_SOUND_CHATOT_H
+#endif // POKEHEARTGOLD_SOUND_CHATOT_H

@@ -15,4 +15,4 @@ BOOL ov86_021E5900(OVY_MANAGER *man, int *state);
 BOOL ov86_021E5A40(OVY_MANAGER *man, int *state);
 BOOL ov86_021E5AA4(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_OVY_86_H
+#endif // POKEHEARTGOLD_OVY_86_H

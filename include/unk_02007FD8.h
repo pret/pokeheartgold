@@ -19,4 +19,4 @@ int sub_02009284(UnkStruct_02009264 *a0);
 void sub_02009D28(void *pRawData, NarcId narcId);
 void sub_02009B60(void *pRawData, u32 pid, BOOL isAnimated);
 
-#endif //POKEHEARTGOLD_UNK_02007FD8_H
+#endif // POKEHEARTGOLD_UNK_02007FD8_H

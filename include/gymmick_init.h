@@ -14,4 +14,4 @@ void InitFuchsiaGym(FieldSystem *fieldSystem);
 void InitViridianGym(FieldSystem *fieldSystem);
 BOOL FieldSystem_IsSaveGymmickTypeEqualTo(FieldSystem *fieldSystem, int kind);
 
-#endif //POKEHEARTGOLD_GYMMICK_INIT_H
+#endif // POKEHEARTGOLD_GYMMICK_INIT_H

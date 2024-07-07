@@ -20,4 +20,4 @@ void sub_02054030(TaskManager *taskManager);
 void sub_0205412C(TaskManager *taskManager, u32 mapId, int warpId, int x, int y, int direction);
 void sub_02054190(TaskManager *taskManager);
 
-#endif //POKEHEARTGOLD_FIELD_WARP_TASKS_H
+#endif // POKEHEARTGOLD_FIELD_WARP_TASKS_H

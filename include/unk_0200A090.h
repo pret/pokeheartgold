@@ -38,7 +38,7 @@ typedef enum GF_GraphicsResourceType {
     GF_GFX_RES_TYPE_ANIM = 3,
     GF_GFX_RES_TYPE_MCEL = 4,
     GF_GFX_RES_TYPE_MANM = 5,
-    GF_GFX_RES_TYPE_MAX  = 6,
+    GF_GFX_RES_TYPE_MAX = 6,
 } GfGfxResType;
 
 typedef struct GF_2DGfxResObj {
@@ -71,7 +71,7 @@ typedef struct GF_2DGfxResHeaderNarc {
 
 typedef struct GF_2DGfxResHeaderNarcList {
     GfGfxResType type;
-    GF_2DGfxResHeaderNarc internal[];  // arbitrary length
+    GF_2DGfxResHeaderNarc internal[]; // arbitrary length
 } GF_2DGfxResHeaderNarcList;
 
 typedef struct GF_2DGfxResHeader {
@@ -131,4 +131,4 @@ int sub_0200AA08(GF_2DGfxResHeader *header, int idx);
 int sub_0200AA3C(GF_2DGfxResHeader *header, int idx);
 void sub_0200AA9C(GF_2DGfxResObj *obj, GfGfxResType type, NNS_G2D_VRAM_TYPE vram, int pltt_num, HeapID heapId);
 
-#endif //POKEHEARTGOLD_UNK_0200A090_H
+#endif // POKEHEARTGOLD_UNK_0200A090_H

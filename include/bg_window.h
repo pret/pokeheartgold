@@ -1,9 +1,9 @@
 #ifndef POKEHEARTGOLD_BG_WINDOW_H
 #define POKEHEARTGOLD_BG_WINDOW_H
 
+#include "gf_gfx_planes.h"
 #include "global.h"
 #include "heap.h"
-#include "gf_gfx_planes.h"
 
 typedef struct BgTemplate {
     u32 x;
@@ -79,7 +79,7 @@ typedef struct Window {
 
 enum GFScreen {
     SCREEN_MAIN = 0,
-    SCREEN_SUB  = 1,
+    SCREEN_SUB = 1,
 };
 
 enum GFBppMode {
@@ -141,17 +141,17 @@ enum GFBgScreenSize {
 };
 
 enum GFBgBufferSize {
-    GF_BG_BUF_SIZE_128x128_4BPP   = 128 * 128 / 32,
-    GF_BG_BUF_SIZE_256x256_4BPP   = 256 * 256 / 32,
-    GF_BG_BUF_SIZE_256x512_4BPP   = 256 * 512 / 32,
-    GF_BG_BUF_SIZE_512x256_4BPP   = 512 * 256 / 32,
-    GF_BG_BUF_SIZE_512x512_4BPP   = 512 * 512 / 32,
+    GF_BG_BUF_SIZE_128x128_4BPP = 128 * 128 / 32,
+    GF_BG_BUF_SIZE_256x256_4BPP = 256 * 256 / 32,
+    GF_BG_BUF_SIZE_256x512_4BPP = 256 * 512 / 32,
+    GF_BG_BUF_SIZE_512x256_4BPP = 512 * 256 / 32,
+    GF_BG_BUF_SIZE_512x512_4BPP = 512 * 512 / 32,
     GF_BG_BUF_SIZE_1024x1024_4BPP = 1024 * 1024 / 32,
-    GF_BG_BUF_SIZE_128x128_8BPP   = 128 * 128 / 64,
-    GF_BG_BUF_SIZE_256x256_8BPP   = 256 * 256 / 64,
-    GF_BG_BUF_SIZE_256x512_8BPP   = 256 * 512 / 64,
-    GF_BG_BUF_SIZE_512x256_8BPP   = 512 * 256 / 64,
-    GF_BG_BUF_SIZE_512x512_8BPP   = 512 * 512 / 64,
+    GF_BG_BUF_SIZE_128x128_8BPP = 128 * 128 / 64,
+    GF_BG_BUF_SIZE_256x256_8BPP = 256 * 256 / 64,
+    GF_BG_BUF_SIZE_256x512_8BPP = 256 * 512 / 64,
+    GF_BG_BUF_SIZE_512x256_8BPP = 512 * 256 / 64,
+    GF_BG_BUF_SIZE_512x512_8BPP = 512 * 512 / 64,
     GF_BG_BUF_SIZE_1024x1024_8BPP = 1024 * 1024 / 64,
 };
 
@@ -194,12 +194,12 @@ typedef struct GraphicsModes {
     GXBG0As _2d3dMode;
 } GraphicsModes;
 
-#define TILEMAP_COPY_SRC_FLAT       0  // Source dimensions are equal to dest dimensions
-#define TILEMAP_COPY_SRC_RECT       1  // Dest dimensions carve out a window from source
+#define TILEMAP_COPY_SRC_FLAT 0 // Source dimensions are equal to dest dimensions
+#define TILEMAP_COPY_SRC_RECT 1 // Dest dimensions carve out a window from source
 
 // Passed to FillBgTilemapRect(Text) mode arg. 0-15 = palette selection. 16,17 as defined.
-#define TILEMAP_FILL_KEEP_PAL      16  // Do not replace the selected palette index
-#define TILEMAP_FILL_OVWT_PAL      17  // Fill value includes palette
+#define TILEMAP_FILL_KEEP_PAL 16 // Do not replace the selected palette index
+#define TILEMAP_FILL_OVWT_PAL 17 // Fill value includes palette
 
 BgConfig *BgConfig_Alloc(HeapID heapId);
 HeapID BgConfig_GetHeapId(BgConfig *bgConfig);
@@ -246,7 +246,7 @@ BOOL WindowIsInUse(const Window *window);
 void AddWindowParameterized(BgConfig *bgConfig, Window *window, u8 bgId, u8 x, u8 y, u8 width, u8 height, u8 paletteNum, u16 baseTile);
 void AddTextWindowTopLeftCorner(BgConfig *bgConfig, Window *window, u8 width, u8 height, u16 baseTile, u8 paletteNum);
 void AddWindow(BgConfig *bgConfig, Window *window, const WindowTemplate *template);
-void RemoveWindow(Window* window);
+void RemoveWindow(Window *window);
 void WindowArray_Delete(Window *windows, s32 count);
 void CopyWindowToVram(Window *window);
 void ScheduleWindowCopyToVram(Window *window);
@@ -278,4 +278,4 @@ void ScheduleSetBgPosText(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustOp op, in
 void ScheduleSetBgAffineScale(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustOp op, int value);
 BOOL DoesPixelAtScreenXYMatchPtrVal(BgConfig *bgConfig, u8 bgId, u8 x, u8 y, u16 *src);
 
-#endif //POKEHEARTGOLD_BG_WINDOW_H
+#endif // POKEHEARTGOLD_BG_WINDOW_H

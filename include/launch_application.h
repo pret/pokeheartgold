@@ -1,13 +1,24 @@
 #ifndef POKEHEARTGOLD_FIELD_LAUNCH_APPLICATION_H
 #define POKEHEARTGOLD_FIELD_LAUNCH_APPLICATION_H
 
+#include "battle/battle_setup.h"
+#include "credits/credits.h"
+#include "voltorb_flip/voltorb_flip.h"
+
 #include "alph_puzzle.h"
 #include "bag.h"
-#include "battle/battle_setup.h"
 #include "certificates_app.h"
 #include "choose_starter_app.h"
-#include "script.h"
+#include "fashion_case.h"
+#include "mail.h"
+#include "mail_misc.h"
+#include "move_relearner.h"
 #include "overlay_02.h"
+#include "overlay_103.h"
+#include "overlay_108.h"
+#include "overlay_109.h"
+#include "overlay_111.h"
+#include "overlay_113.h"
 #include "overlay_14.h"
 #include "overlay_16.h"
 #include "overlay_18.h"
@@ -15,7 +26,6 @@
 #include "overlay_43.h"
 #include "overlay_54.h"
 #include "overlay_58.h"
-#include "register_hall_of_fame.h"
 #include "overlay_67.h"
 #include "overlay_72.h"
 #include "overlay_73.h"
@@ -23,29 +33,19 @@
 #include "overlay_87.h"
 #include "overlay_96.h"
 #include "overlay_99.h"
-#include "overlay_103.h"
-#include "overlay_108.h"
-#include "overlay_109.h"
-#include "overlay_111.h"
-#include "overlay_113.h"
 #include "overlay_trainer_card.h"
-#include "bag.h"
-#include "mail.h"
-#include "mail_misc.h"
-#include "move_relearner.h"
-#include "fashion_case.h"
 #include "pokemon_types_def.h"
+#include "register_hall_of_fame.h"
+#include "sav_system_info.h"
 #include "save_palpad.h"
 #include "save_pokeathlon.h"
 #include "save_special_ribbons.h"
-#include "sav_system_info.h"
+#include "script.h"
 #include "unk_0202CA24.h"
 #include "unk_02078E30.h"
 #include "unk_02088288.h"
 #include "unk_02092BE8.h"
 #include "unk_02097B78.h"
-#include "credits/credits.h"
-#include "voltorb_flip/voltorb_flip.h"
 
 typedef enum NameScreenType {
     NAME_SCREEN_PLAYER,
@@ -110,13 +110,13 @@ PalPadArgs *PalPad_LaunchApp(FieldSystem *fieldSystem, SaveData *saveData, HeapI
 BerryPotsArgs *BerryPots_LaunchApp(FieldSystem *fieldSystem);
 UnownReportArgs *UnownReport_LaunchApp(FieldSystem *fieldSystem);
 PartyMenuArgs *PartyMenu_LaunchApp_Gracidea(FieldSystem *fieldSystem, HeapID heapId, u16 itemId);
-PartyMenuArgs *PartyMenu_LaunchApp_Unk2(HeapID heapId, FieldSystem *fieldSystem); //todo: party select screen
-PartyMenuArgs *PartyMenu_LaunchApp_Unk3(HeapID heapId, FieldSystem *fieldSystem); //todo: party trade screen
-PartyMenuArgs *SelectPartyMonAndLearnMove(TaskManager *taskManager, HeapID heapId); //todo: union party select screen
+PartyMenuArgs *PartyMenu_LaunchApp_Unk2(HeapID heapId, FieldSystem *fieldSystem); // todo: party select screen
+PartyMenuArgs *PartyMenu_LaunchApp_Unk3(HeapID heapId, FieldSystem *fieldSystem); // todo: party trade screen
+PartyMenuArgs *SelectPartyMonAndLearnMove(TaskManager *taskManager, HeapID heapId); // todo: union party select screen
 int sub_0203E5C8(struct PartyMenuArgs *partyWork);
 int sub_0203E5F8(struct PartyMenuArgs *partyWork);
 void sub_0203F570(FieldSystem *fieldSystem, SaveData *saveData);
-SafariDecorationArgs* SafariDecoration_LaunchApp(FieldSystem *fieldSystem);
+SafariDecorationArgs *SafariDecoration_LaunchApp(FieldSystem *fieldSystem);
 void GeonetGlobe_LaunchApp(FieldSystem *fieldSystem);
 void ChooseStarter_LaunchApp(FieldSystem *fieldSystem, ChooseStarterArgs *args);
 u16 sub_0203E864(UnkStruct_0203E600 *a0);
@@ -184,4 +184,4 @@ BOOL Battle_Init(OVY_MANAGER *man, int *state);
 BOOL Battle_Main(OVY_MANAGER *man, int *state);
 BOOL Battle_Exit(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_FIELD_LAUNCH_APPLICATION_H
+#endif // POKEHEARTGOLD_FIELD_LAUNCH_APPLICATION_H

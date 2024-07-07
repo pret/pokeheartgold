@@ -6,4 +6,4 @@
 void ov01_022057D0(FieldSystem *fieldSystem);
 void ov01_02205990(int a0, int x, int y, FollowMon *mon);
 
-#endif //POKEHEARTGOLD_OVERLAY_01_022053EC_H
+#endif // POKEHEARTGOLD_OVERLAY_01_022053EC_H

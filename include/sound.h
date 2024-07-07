@@ -2,14 +2,15 @@
 #define POKEHEARTGOLD_SOUND_H
 
 #include "constants/sndseq.h"
-#include "sound_chatot.h"
-#include "options.h"
 
-#define PLAYER_RADIO           9
+#include "options.h"
+#include "sound_chatot.h"
+
+#define PLAYER_RADIO 9
 
 typedef struct SND_WORK SND_WORK;
 
-#define SND_HEAP_SIZE      0xBEAE0
+#define SND_HEAP_SIZE 0xBEAE0
 
 enum SoundHandleNo {
     SND_HANDLE_FIELD,
@@ -60,4 +61,4 @@ u8 GF_SndWorkGetGbSoundsVolume(void);
 void GF_SndStartFadeOutBGM(u16 seqno, u16 length);
 NNSSndHandle *GF_GetSoundHandle(int playerNo);
 
-#endif //POKEHEARTGOLD_SOUND_H
+#endif // POKEHEARTGOLD_SOUND_H

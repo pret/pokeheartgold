@@ -17,4 +17,4 @@ int *TrainerCard_GetBadgeShininessArr(struct SaveTrainerCard *data);
 int GetShininessOfBadgeI(u8 idx, int *arr);
 void SetShininessOfBadgeI(u8 idx, int val, int *arr);
 
-#endif //POKEHEARTGOLD_SAVE_TRAINER_CARD_H
+#endif // POKEHEARTGOLD_SAVE_TRAINER_CARD_H

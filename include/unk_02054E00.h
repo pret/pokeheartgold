@@ -15,4 +15,4 @@ u16 GetMapMusic(FieldSystem *fieldSystem, int mapId);
 void sub_02055198(FieldSystem *fieldSystem, u16 a1);
 void FieldSystem_BeginFadeOutMusic(FieldSystem *fieldSystem, u32 mapId);
 
-#endif //POKEHEARTGOLD_UNK_02054E00_H
+#endif // POKEHEARTGOLD_UNK_02054E00_H

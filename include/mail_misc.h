@@ -77,4 +77,4 @@ void sub_02090F90(UseMailArgs *args);
 int sub_02090FA8(MAILBOX *mailbox, Pokemon *mon, HeapID heapId);
 int sub_02091004(Mail *msgs, int i, Pokemon *mon, HeapID heapId);
 
-#endif //POKEHEARTGOLD_MAIL_MISC_H
+#endif // POKEHEARTGOLD_MAIL_MISC_H

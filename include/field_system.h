@@ -2,16 +2,16 @@
 #define POKEHEARTGOLD_FIELD_SYSTEM_H
 
 #include "bag_cursor.h"
+#include "bg_window.h"
 #include "bug_contest_internal.h"
+#include "camera.h"
 #include "gear_phone.h"
 #include "map_events_internal.h"
 #include "map_matrix.h"
 #include "overlay_manager.h"
 #include "save_pokegear.h"
-#include "sys_task_api.h"
-#include "camera.h"
-#include "bg_window.h"
 #include "scrcmd_9.h"
+#include "sys_task_api.h"
 
 typedef struct FieldSystem FieldSystem;
 typedef struct TaskManager TaskManager;
@@ -37,11 +37,11 @@ typedef struct FollowMon {
 } FollowMon;
 
 typedef struct GearPhoneRingManager {
-    u8 unk_var0_0:1;
-    u8 unk_var0_1:1;
-    u8 unk_var0_2:1;
-    u8 unk_var0_3:1;
-    u8 unk_var0_4:4;
+    u8 unk_var0_0 : 1;
+    u8 unk_var0_1 : 1;
+    u8 unk_var0_2 : 1;
+    u8 unk_var0_3 : 1;
+    u8 unk_var0_4 : 4;
     u8 unk_var1;
     u8 unk_var2;
     u8 unk_var3;
@@ -52,17 +52,17 @@ typedef struct GearPhoneRingManager {
     s32 unk_varC;
     u16 unk_var10;
     u16 unk_var12;
-    s64 unk_var14; //Seconds? see sub_02092F30
-    PhoneBookEntry entry; //0x1c
-    SavePokegear *pokegearData; //0x30
-    MomsSavings *savingsData;//0x34
-    SaveData *saveData; //0x38
-    FieldSystem *sys; //0x3c
+    s64 unk_var14; // Seconds? see sub_02092F30
+    PhoneBookEntry entry; // 0x1c
+    SavePokegear *pokegearData; // 0x30
+    MomsSavings *savingsData; // 0x34
+    SaveData *saveData; // 0x38
+    FieldSystem *sys; // 0x3c
     struct PokegearRingingTask {
         SysTask *task;
         u8 counter;
     } gearRing;
-} GearPhoneRingManager; //size: 0x48
+} GearPhoneRingManager; // size: 0x48
 
 typedef struct Location {
     int mapId;
@@ -95,8 +95,8 @@ struct FieldSystemUnkSub68 {
     Window unk0;
     u16 unk10;
     u8 unk12;
-    u8 unk13_0:7;
-    u8 unk13_7:1;
+    u8 unk13_0 : 7;
+    u8 unk13_7 : 1;
 };
 
 typedef struct FieldSystemUnkSub4 {
@@ -148,7 +148,7 @@ struct FieldSystem {
     u8 filler_98[0x4];
     void *unk9C;
     UnkStruct_Fsys_A0 *unkA0;
-    void * unkA4;
+    void *unkA4;
     u32 *unkA8;
     u32 unkAC;
     void *unkB0;
@@ -156,9 +156,9 @@ struct FieldSystem {
     u8 unkBC[8];
     int unkC4;
     u8 filler_C8[0xA];
-    u8 unkD2_0:6;
-    u8 unkD2_6:1;
-    u8 unkD2_7:1;
+    u8 unkD2_0 : 6;
+    u8 unkD2_6 : 1;
+    u8 unkD2_7 : 1;
     u8 filler_D3[0x11];
     FollowMon followMon; // A4
     u8 unk104[4];
@@ -215,4 +215,4 @@ static inline void InitLocation(Location *location, int mapId, int warpId, int x
     location->direction = direction;
 }
 
-#endif //POKEHEARTGOLD_FIELD_SYSTEM_H
+#endif // POKEHEARTGOLD_FIELD_SYSTEM_H

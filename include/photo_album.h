@@ -3,19 +3,19 @@
 
 #include "save.h"
 
-#define PHOTO_ALBUM_MAX       36
+#define PHOTO_ALBUM_MAX 36
 
 typedef struct PHOTO_MON {
     u16 species;
     u8 form;
-    u8 shiny:1;
-    u8 gender:1;
+    u8 shiny : 1;
+    u8 gender : 1;
 } PHOTO_MON;
 
 typedef struct PHOTO {
     u8 filler_0[4];
-    u8 gender:1;
-    u8 unk_4_1:7;
+    u8 gender : 1;
+    u8 unk_4_1 : 7;
     u8 filler_5[2];
     u8 is_init;
     u16 playerName[8];
@@ -64,4 +64,4 @@ BOOL PhotoAlbum_GetPhotoByIndex(const PHOTO_ALBUM *photoAlbum, PHOTO *photo, u8 
 PHOTO *PhotoAlbum_LoadAllInUsePhotos(const PHOTO_ALBUM *photoAlbum, HeapID heapId);
 void Photo_Init(PHOTO *photo);
 
-#endif //POKEHEARTGOLD_PHOTO_ALBUM_H
+#endif // POKEHEARTGOLD_PHOTO_ALBUM_H

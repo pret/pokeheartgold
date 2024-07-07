@@ -5,8 +5,8 @@
 
 struct SaveFollowMon {
     int mapno;
-    int unk_4_0:2;
-    int unk_4_2:1;
+    int unk_4_0 : 2;
+    int unk_4_2 : 1;
 };
 
 u32 Save_FollowMon_sizeof(void);
@@ -19,4 +19,4 @@ void Save_FollowMon_SetUnused2bitField(u8 unk, struct SaveFollowMon *followPoke)
 void Save_FollowMon_SetInhibitFlagState(struct SaveFollowMon *followPoke, u8 state);
 u8 Save_FollowMon_GetInhibitFlagState(struct SaveFollowMon *followPoke);
 
-#endif //POKEHEARTGOLD_SAVE_FOLLOW_MON_H
+#endif // POKEHEARTGOLD_SAVE_FOLLOW_MON_H

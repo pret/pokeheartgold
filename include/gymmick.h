@@ -55,4 +55,4 @@ GymmickUnion *Save_Gymmick_Init(Gymmick *gymmick, GymmickType type);
 GymmickUnion *Save_Gymmick_AssertMagic_GetData(Gymmick *gymmick, GymmickType type);
 GymmickType Save_Gymmick_GetType(Gymmick *gymmick);
 
-#endif //POKEHEARTGOLD_GYMMICK_H
+#endif // POKEHEARTGOLD_GYMMICK_H

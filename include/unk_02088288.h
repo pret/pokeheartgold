@@ -29,10 +29,9 @@ typedef struct PokemonSummaryArgs {
     u8 unk38[0x4];
 } PokemonSummaryArgs;
 
-u32 sub_02088288(SaveData*);
-BOOL sub_0208828C(SaveData*);
-void sub_02089D40(void*, const u8*);
-void sub_0208AD34(void*, PlayerProfile*);
+u32 sub_02088288(SaveData *);
+BOOL sub_0208828C(SaveData *);
+void sub_02089D40(void *, const u8 *);
+void sub_0208AD34(void *, PlayerProfile *);
 
-#endif //POKEHEARTGOLD_UNK_02088288_H
-
+#endif // POKEHEARTGOLD_UNK_02088288_H

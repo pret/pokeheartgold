@@ -13,4 +13,4 @@ int GetDeltaYByFacingDirection(int direction);
 void sub_020611C8(int x, int y, VecFx32 *a2);
 void sub_0206121C(TaskManager *taskman, VecFx32 *a1);
 
-#endif //POKEHEARTGOLD_UNK_0205FD20_H
+#endif // POKEHEARTGOLD_UNK_0205FD20_H

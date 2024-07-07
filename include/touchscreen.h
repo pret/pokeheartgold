@@ -9,7 +9,7 @@ typedef union TouchscreenHitbox {
         u8 right;
     } rect;
     struct {
-        u8 sentinel;  // 0xFE
+        u8 sentinel; // 0xFE
         u8 x;
         u8 y;
         u8 r;

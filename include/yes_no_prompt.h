@@ -1,8 +1,8 @@
 #ifndef POKEHEARTGOLD_YES_NO_PROMPT_H
 #define POKEHEARTGOLD_YES_NO_PROMPT_H
 
-#include "heap.h"
 #include "bg_window.h"
+#include "heap.h"
 #include "palette.h"
 #include "touch_hitbox_controller.h"
 
@@ -75,4 +75,4 @@ YesNoResponse YesNoPrompt_HandleInput(YesNoPrompt *);
 int YesNoPrompt_IsInTouchMode(YesNoPrompt *);
 void YesNoPrompt_SetIgnoreTouch(YesNoPrompt *yesno, int a1);
 
-#endif //POKEHEARTGOLD_YES_NO_PROMPT_H
+#endif // POKEHEARTGOLD_YES_NO_PROMPT_H

@@ -2,11 +2,12 @@
 #define POKEHEARTGOLD_OVERLAY_02_H
 
 #include "battle/battle_setup.h"
+#include "field/headbutt.h"
+
 #include "heap.h"
 #include "script.h"
 #include "sys_task.h"
 #include "unk_0203BC10.h"
-#include "field/headbutt.h"
 
 struct FieldLongWarpTaskData;
 
@@ -107,4 +108,4 @@ void OpenAlphHiddenRoom(TaskManager *man, u32 a1);
 int GetRadioMusicPlayingSeq(void);
 SafariDecorationArgs *SafariDecoration_CreateArgs(FieldSystem *fieldSystem, HeapID heapId);
 
-#endif //POKEHEARTGOLD_OVERLAY_02_H
+#endif // POKEHEARTGOLD_OVERLAY_02_H

@@ -13,4 +13,4 @@ u32 GetRibbonAttr(u8 ribbon, RibbonAttr attr);
 int GetRibbonDescGmm(const u8 *a0, u8 ribbon);
 u8 GetSpecialRibbonNo(u8 ribbon);
 
-#endif //POKEHEARTGOLD_RIBBON_H
+#endif // POKEHEARTGOLD_RIBBON_H

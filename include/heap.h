@@ -38,21 +38,21 @@ typedef enum HeapID {
 } HeapID;
 
 typedef struct HeapParam {
-    u32 size;         // maximum size of the heap
-    OSArenaId arena;  // where to allocate the heap from
+    u32 size; // maximum size of the heap
+    OSArenaId arena; // where to allocate the heap from
 } HEAP_PARAM;
 
 void InitHeapSystem(const HEAP_PARAM *templates, u32 nTemplates, u32 totalNumHeaps, u32 pre_size);
 BOOL CreateHeap(HeapID parent, HeapID child, u32 size);
 BOOL CreateHeapAtEnd(HeapID parent, HeapID child, u32 size);
 void DestroyHeap(HeapID heapId);
-void * AllocFromHeap(HeapID heapId, u32 size);
-void * AllocFromHeapAtEnd(HeapID heapId, u32 size);
-void FreeToHeap(void * ptr);
-void FreeToHeapExplicit(HeapID heapId, void * ptr);
+void *AllocFromHeap(HeapID heapId, u32 size);
+void *AllocFromHeapAtEnd(HeapID heapId, u32 size);
+void FreeToHeap(void *ptr);
+void FreeToHeapExplicit(HeapID heapId, void *ptr);
 u32 GF_ExpHeap_FndGetTotalFreeSize(HeapID heapId);
-void GF_ExpHeap_FndInitAllocator(NNSFndAllocator * pAllocator, HeapID heapId, int alignment);
+void GF_ExpHeap_FndInitAllocator(NNSFndAllocator *pAllocator, HeapID heapId, int alignment);
 void ReallocFromHeap(void *ptr, u32 newSize);
 BOOL GF_heap_c_dummy_return_true(HeapID heapId);
 
-#endif //POKEHEARTGOLD_HEAP_H
+#endif // POKEHEARTGOLD_HEAP_H

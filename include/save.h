@@ -1,18 +1,19 @@
 #ifndef POKEHEARTGOLD_SAVE_H
 #define POKEHEARTGOLD_SAVE_H
 
-#include "heap.h"
 #include "constants/save_arrays.h"
 
-#define LOAD_STATUS_NOT_EXIST       0
-#define LOAD_STATUS_IS_GOOD         1
-#define LOAD_STATUS_SLOT_FAIL       2
-#define LOAD_STATUS_TOTAL_FAIL      3
+#include "heap.h"
 
-#define WRITE_STATUS_CONTINUE       0
-#define WRITE_STATUS_NEXT           1
-#define WRITE_STATUS_SUCCESS        2
-#define WRITE_STATUS_TOTAL_FAIL     3
+#define LOAD_STATUS_NOT_EXIST  0
+#define LOAD_STATUS_IS_GOOD    1
+#define LOAD_STATUS_SLOT_FAIL  2
+#define LOAD_STATUS_TOTAL_FAIL 3
+
+#define WRITE_STATUS_CONTINUE   0
+#define WRITE_STATUS_NEXT       1
+#define WRITE_STATUS_SUCCESS    2
+#define WRITE_STATUS_TOTAL_FAIL 3
 
 #define SAVE_CHUNK_MAGIC 0x20060623
 
@@ -117,4 +118,4 @@ void *sub_020284A4(SaveData *saveData, HeapID heapId, int idx, int *ret_p, int *
 BOOL SaveSubstruct_AssertCRC(int idx);
 void SaveSubstruct_UpdateCRC(int idx);
 
-#endif //POKEHEARTGOLD_SAVE_H
+#endif // POKEHEARTGOLD_SAVE_H

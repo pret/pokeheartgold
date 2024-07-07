@@ -35,7 +35,7 @@ typedef enum MoveAttr {
 u32 GetMoveAttr(u16 moveId, MoveAttr attrno);
 u8 GetMoveMaxPP(u16 moveId, u8 ppUps);
 void LoadMoveTbl(MOVE *dest);
-u32 GetMoveTblAttr(MOVE * moveTbl, MoveAttr attr);
-void LoadMoveEntry(u16 moveId, MOVE * moveTbl);
+u32 GetMoveTblAttr(MOVE *moveTbl, MoveAttr attr);
+void LoadMoveEntry(u16 moveId, MOVE *moveTbl);
 
-#endif //POKEHEARTGOLD_MOVE_H
+#endif // POKEHEARTGOLD_MOVE_H
