@@ -111,10 +111,10 @@
 .public ov01_021FBF28
 .public Field3dObject_InitFromModel
 .public Field3dObject_AddAnimation
-.public Field3dObj_Draw
+.public Field3dObject_Draw
 .public Field3dObject_SetActiveFlag
 .public Field3dObject_GetActiveFlag
-.public Field3dObj_SetPosEx
+.public Field3dObject_SetPosEx
 .public Field3dObjectList_GetRenderObjectByID
 .public ov01_02205A34
 .public ov01_02205A60

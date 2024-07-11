@@ -22,9 +22,9 @@
 .public Field3dModelAnimation_FrameSet
 .public Field3dObject_InitFromModel
 .public Field3dObject_AddAnimation
-.public Field3dObj_Draw
+.public Field3dObject_Draw
 .public Field3dObject_SetActiveFlag
-.public Field3dObj_SetPosEx
+.public Field3dObject_SetPosEx
 .public GetHoneySweetScentWorkSize
 .public Task_HoneyOrSweetScent
 .public Task_UseSweetScentInField

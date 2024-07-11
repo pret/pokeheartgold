@@ -184,7 +184,7 @@ ov01_02205300: ; 0x02205300
 	ldr r2, [sp, #4]
 	ldr r3, [sp, #8]
 	add r0, r4, #0
-	bl Field3dObj_SetPosEx
+	bl Field3dObject_SetPosEx
 	mov r0, #SEQ_SE_GS_TUREARUKI>>4
 	lsl r0, r0, #4
 	bl PlaySE
@@ -227,7 +227,7 @@ ov01_02205364: ; 0x02205364
 _0220537C:
 	add r4, #0x4c
 	add r0, r4, #0
-	bl Field3dObj_Draw
+	bl Field3dObject_Draw
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov01_02205364

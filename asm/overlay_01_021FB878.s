@@ -962,8 +962,8 @@ Field3dObject_RemoveAnimation: ; 0x021FBF5C
 _021FBF64: .word NNS_G3dRenderObjRemoveAnmObj
 	thumb_func_end Field3dObject_RemoveAnimation
 
-	thumb_func_start Field3dObj_Draw
-Field3dObj_Draw: ; 0x021FBF68
+	thumb_func_start Field3dObject_Draw
+Field3dObject_Draw: ; 0x021FBF68
 	push {r4, lr}
 	sub sp, #0x48
 	add r4, r0, #0
@@ -1035,7 +1035,7 @@ _021FBFFC:
 	pop {r4, pc}
 	.balign 4, 0
 _021FC000: .word FX_SinCosTable_
-	thumb_func_end Field3dObj_Draw
+	thumb_func_end Field3dObject_Draw
 
 	thumb_func_start Field3dObject_SetActiveFlag
 Field3dObject_SetActiveFlag: ; 0x021FC004
@@ -1049,16 +1049,16 @@ Field3dObject_GetActiveFlag: ; 0x021FC008
 	bx lr
 	thumb_func_end Field3dObject_GetActiveFlag
 
-	thumb_func_start Field3dObj_SetPosEx
-Field3dObj_SetPosEx: ; 0x021FC00C
+	thumb_func_start Field3dObject_SetPosEx
+Field3dObject_SetPosEx: ; 0x021FC00C
 	str r1, [r0, #0x54]
 	str r2, [r0, #0x58]
 	str r3, [r0, #0x5c]
 	bx lr
-	thumb_func_end Field3dObj_SetPosEx
+	thumb_func_end Field3dObject_SetPosEx
 
-	thumb_func_start Field3dObj_SetPos
-Field3dObj_SetPos: ; 0x021FC014
+	thumb_func_start Field3dObject_SetPos
+Field3dObject_SetPos: ; 0x021FC014
 	add r3, r1, #0
 	add r2, r0, #0
 	ldmia r3!, {r0, r1}
@@ -1067,7 +1067,7 @@ Field3dObj_SetPos: ; 0x021FC014
 	ldr r0, [r3]
 	str r0, [r2]
 	bx lr
-	thumb_func_end Field3dObj_SetPos
+	thumb_func_end Field3dObject_SetPos
 
 	thumb_func_start Field3dObject_SetXRotation
 Field3dObject_SetXRotation: ; 0x021FC024

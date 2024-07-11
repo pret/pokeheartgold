@@ -38,8 +38,8 @@ void Field3dModelAnimation_FrameSet(Field3DModelAnimation *anim, fx32 frame);
 void Field3dObject_InitFromModel(Field3dObject *object, Field3dModel *model);
 void Field3dObject_AddAnimation(Field3dObject *object, Field3DModelAnimation *anim);
 void Field3dObject_RemoveAnimation(Field3dObject *object, Field3DModelAnimation *anim);
-void Field3dObj_Draw(Field3dObject *object);
+void Field3dObject_Draw(Field3dObject *object);
 void Field3dObject_SetActiveFlag(Field3dObject *object, BOOL active);
-void Field3dObj_SetPosEx(Field3dObject *object, fx32 x, fx32 y, fx32 z);
+void Field3dObject_SetPosEx(Field3dObject *object, fx32 x, fx32 y, fx32 z);
 
 #endif //POKEHEARTGOLD_FIELD_OVERLAY_01_021FB878_H

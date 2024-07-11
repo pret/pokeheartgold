@@ -1,7 +1,0 @@
-^ov01_021E8970:
-^ov01_021E8B04:
-^ov01_021E8B6C:
-^ov01_021E8B84:
-^ov01_021E8B90:
-^ov01_021EBABC:
-^Field3dObjectList_GetRenderObjectByID:

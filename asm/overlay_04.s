@@ -5282,7 +5282,7 @@ ov04_02256734: ; 0x02256734
 _0225674E:
 	add r4, #0x54
 	add r0, r4, #0
-	bl Field3dObj_Draw
+	bl Field3dObject_Draw
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov04_02256734
 
@@ -5400,7 +5400,7 @@ _02256808:
 	ldr r2, [sp, #0x2c]
 	ldr r3, [sp, #0x30]
 	add r0, #0x54
-	bl Field3dObj_SetPosEx
+	bl Field3dObject_SetPosEx
 	ldr r0, [sp, #0x20]
 	mov r1, #0
 	add r0, #0x54
@@ -5639,7 +5639,7 @@ _02256978:
 	ldr r0, [r5, #4]
 	ldr r2, [sp, #8]
 	add r0, #0x54
-	bl Field3dObj_SetPosEx
+	bl Field3dObject_SetPosEx
 	mov r4, #0
 	mov r7, #0x14
 _02256A08:
@@ -6013,7 +6013,7 @@ _02256C80:
 	ldr r2, [sp, #0x24]
 	ldr r3, [sp, #0x28]
 	add r0, r6, r0
-	bl Field3dObj_SetPosEx
+	bl Field3dObject_SetPosEx
 	add r0, r6, r5
 	mov r1, #0
 	bl Field3dObject_SetActiveFlag
@@ -6158,7 +6158,7 @@ _02256DA2:
 	ldr r2, [sp, #4]
 	ldr r3, [sp, #8]
 	add r0, r5, r6
-	bl Field3dObj_SetPosEx
+	bl Field3dObject_SetPosEx
 	add r4, #8
 	add r0, r4, r6
 	mov r1, #0
@@ -6204,7 +6204,7 @@ ov04_02256DFC: ; 0x02256DFC
 _02256E3E:
 	add r5, #0x1c
 	add r0, r5, r4
-	bl Field3dObj_Draw
+	bl Field3dObject_Draw
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov04_02256DFC
 
@@ -6538,7 +6538,7 @@ _022570B8:
 	ldr r2, [r3, #4]
 	ldr r1, [r4, r1]
 	ldr r3, [r3, #8]
-	bl Field3dObj_SetPosEx
+	bl Field3dObject_SetPosEx
 	add r0, r5, #1
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
@@ -6674,7 +6674,7 @@ _022571C8:
 	add r0, r5, #0
 	mul r0, r6
 	add r0, r4, r0
-	bl Field3dObj_Draw
+	bl Field3dObject_Draw
 	add r0, r5, #1
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18

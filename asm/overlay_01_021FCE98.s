@@ -227,7 +227,7 @@ _021FD032:
 _021FD046:
 	add r5, #0x5c
 	add r0, r5, #0
-	bl Field3dObj_Draw
+	bl Field3dObject_Draw
 	b _021FD060
 _021FD050:
 	add r0, r5, #0
@@ -319,7 +319,7 @@ ov01_021FD064: ; 0x021FD064
 	ldr r2, [sp, #0xc]
 	ldr r3, [sp, #0x10]
 	add r0, #0x5c
-	bl Field3dObj_SetPosEx
+	bl Field3dObject_SetPosEx
 	add r4, #0x5c
 	add r0, r4, #0
 	mov r1, #1

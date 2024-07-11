@@ -1070,7 +1070,7 @@ _022526AA:
 	beq _022526BC
 	add r4, #0x68
 	add r0, r4, #0
-	bl Field3dObj_Draw
+	bl Field3dObject_Draw
 _022526BC:
 	mov r0, #0
 	add sp, #0xc
@@ -1416,7 +1416,7 @@ _02252912:
 	ldr r2, [sp, #0x14]
 	ldr r3, [sp, #0x18]
 	add r0, #0x68
-	bl Field3dObj_SetPosEx
+	bl Field3dObject_SetPosEx
 	ldr r0, [sp, #8]
 	mov r1, #1
 	add r0, #0xf1
@@ -1699,14 +1699,14 @@ _02252B6A:
 	beq _02252B8C
 	add r0, r4, #0
 	add r0, #0x84
-	bl Field3dObj_Draw
+	bl Field3dObject_Draw
 	add r0, r4, #0
 	add r0, #0xfc
-	bl Field3dObj_Draw
+	bl Field3dObject_Draw
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl Field3dObj_Draw
+	bl Field3dObject_Draw
 _02252B8C:
 	mov r0, #0
 	add sp, #0xc
@@ -1984,7 +1984,7 @@ _02252DB2:
 	ldr r2, [sp, #0x38]
 	ldr r3, [sp, #0x3c]
 	add r0, r4, r0
-	bl Field3dObj_SetPosEx
+	bl Field3dObject_SetPosEx
 	add r0, r5, #1
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
@@ -1997,7 +1997,7 @@ _02252DB2:
 	ldr r1, [sp, #0x34]
 	ldr r2, [sp, #0x38]
 	ldr r3, [sp, #0x3c]
-	bl Field3dObj_SetPosEx
+	bl Field3dObject_SetPosEx
 	ldr r1, _02252DF4 ; =0x00000226
 	ldr r0, [sp, #8]
 	mov r2, #1
@@ -2283,7 +2283,7 @@ _02252FEE:
 	beq _02253000
 	add r5, #0x74
 	add r0, r5, #0
-	bl Field3dObj_Draw
+	bl Field3dObject_Draw
 _02253000:
 	mov r0, #0
 	add sp, #0xc
@@ -2402,7 +2402,7 @@ _022530AE:
 	ldr r2, [sp, #0x18]
 	ldr r3, [sp, #0x1c]
 	add r0, #0x74
-	bl Field3dObj_SetPosEx
+	bl Field3dObject_SetPosEx
 	mov r0, #1
 	add r7, #0xee
 	strb r0, [r7]

@@ -259,11 +259,11 @@ _02203374:
 	ldr r0, [r4, #0x2c]
 	add r1, sp, #0
 	add r0, #0x3c
-	bl Field3dObj_SetPos
+	bl Field3dObject_SetPos
 	ldr r0, [r4, #0x2c]
 	add r1, sp, #0
 	add r0, #0xb4
-	bl Field3dObj_SetPos
+	bl Field3dObject_SetPos
 	ldr r0, [r4, #0x2c]
 	mov r1, #0
 	add r0, #0xb4
@@ -407,10 +407,10 @@ _022034DA:
 	bl sub_02068DB8
 	ldr r0, [r4, #0x2c]
 	add r0, #0x3c
-	bl Field3dObj_Draw
+	bl Field3dObject_Draw
 	ldr r0, [r4, #0x2c]
 	add r0, #0xb4
-	bl Field3dObj_Draw
+	bl Field3dObject_Draw
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -524,7 +524,7 @@ _022035C6:
 	bl sub_02068DB8
 	ldr r0, [r4, #0x2c]
 	add r0, #0xb4
-	bl Field3dObj_Draw
+	bl Field3dObject_Draw
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -577,7 +577,7 @@ _022035F4:
 	ldr r0, [r4, #0x2c]
 	add r1, sp, #0
 	add r0, #0x3c
-	bl Field3dObj_SetPos
+	bl Field3dObject_SetPos
 	ldr r0, [r4, #0x2c]
 	mov r1, #0
 	add r0, #0x3c
@@ -800,7 +800,7 @@ _0220380A:
 	bl sub_02068DB8
 	ldr r0, [r4, #0x2c]
 	add r0, #0x3c
-	bl Field3dObj_Draw
+	bl Field3dObject_Draw
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -849,7 +849,7 @@ _02203838:
 	ldr r0, [r4, #0x2c]
 	add r1, sp, #0
 	add r0, #0x3c
-	bl Field3dObj_SetPos
+	bl Field3dObject_SetPos
 	ldr r0, [r4, #0x2c]
 	mov r1, #0
 	add r0, #0x3c

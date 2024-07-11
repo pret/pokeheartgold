@@ -152,12 +152,12 @@ static void endLeavesEffect(ClearBellCutscene3dObjectTaskData *taskData);
 static BOOL Task_LugiaArrivesEffectCameraPan(TaskManager *taskman);
 
 static const Field3dObjectTaskTemplate sField3dObjectTaskTemplate_ClearBellCutscene = {
-    3,
-    sizeof(ClearBellCutscene3dObjectTaskData),
-    Field3dObjectTaskInit_ClearBellCutscene,
-    Field3dObjectTaskDestroy_ClearBellCutscene,
-    Field3dObjectTaskUpdate_ClearBellCutscene,
-    Field3dObjectTaskRender_ClearBellCutscene,
+    .taskPriority = 3,
+    .dataSize = sizeof(ClearBellCutscene3dObjectTaskData),
+    .initFunc = Field3dObjectTaskInit_ClearBellCutscene,
+    .destroyFunc = Field3dObjectTaskDestroy_ClearBellCutscene,
+    .updateFunc = Field3dObjectTaskUpdate_ClearBellCutscene,
+    .renderFunc = Field3dObjectTaskRender_ClearBellCutscene,
 };
 
 static const CameraParam sCameraParam_HeartGold[] = {
@@ -362,21 +362,21 @@ static void Field3dObjectTaskInit_ClearBellCutscene(Field3dObjectTask *task, Fie
 
     VecFx32 pos;
     MapObject_GetPositionVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &pos);
-    Field3dObj_SetPosEx(&kimonoDanceObjData->clearBellRisingObject, pos.x, pos.y, pos.z);
-    Field3dObj_SetPosEx(&kimonoDanceObjData->clearBellObject, pos.x, pos.y, pos.z);
+    Field3dObject_SetPosEx(&kimonoDanceObjData->clearBellRisingObject, pos.x, pos.y, pos.z);
+    Field3dObject_SetPosEx(&kimonoDanceObjData->clearBellObject, pos.x, pos.y, pos.z);
     if (kimonoDanceObjData->gameVersion == VERSION_SOULSILVER) {
-        Field3dObj_SetPosEx(&kimonoDanceObjData->cornerBellObjects[0], pos.x + FX32_CONST(128), pos.y + FX32_CONST(32), pos.z - FX32_CONST(180));
-        Field3dObj_SetPosEx(&kimonoDanceObjData->cornerBellObjects[1], pos.x - FX32_CONST(128), pos.y + FX32_CONST(32), pos.z - FX32_CONST(180));
-        Field3dObj_SetPosEx(&kimonoDanceObjData->cornerBellObjects[2], 0, 0, 0);
-        Field3dObj_SetPosEx(&kimonoDanceObjData->cornerBellObjects[3], 0, 0, 0);
+        Field3dObject_SetPosEx(&kimonoDanceObjData->cornerBellObjects[0], pos.x + FX32_CONST(128), pos.y + FX32_CONST(32), pos.z - FX32_CONST(180));
+        Field3dObject_SetPosEx(&kimonoDanceObjData->cornerBellObjects[1], pos.x - FX32_CONST(128), pos.y + FX32_CONST(32), pos.z - FX32_CONST(180));
+        Field3dObject_SetPosEx(&kimonoDanceObjData->cornerBellObjects[2], 0, 0, 0);
+        Field3dObject_SetPosEx(&kimonoDanceObjData->cornerBellObjects[3], 0, 0, 0);
         kimonoDanceObjData->birdModelNum = 0x131;
         kimonoDanceObjData->cameraParam = sCameraParam_SoulSilver;
         kimonoDanceObjData->cameraOffset = sCameraOffset_SoulSilver;
     } else {
-        Field3dObj_SetPosEx(&kimonoDanceObjData->cornerBellObjects[0], pos.x + FX32_CONST(200), pos.y - FX32_CONST(73), pos.z + FX32_CONST(144));
-        Field3dObj_SetPosEx(&kimonoDanceObjData->cornerBellObjects[1], pos.x - FX32_CONST(198), pos.y - FX32_CONST(73), pos.z + FX32_CONST(144));
-        Field3dObj_SetPosEx(&kimonoDanceObjData->cornerBellObjects[2], pos.x + FX32_CONST(200), pos.y - FX32_CONST(73), pos.z - FX32_CONST(270));
-        Field3dObj_SetPosEx(&kimonoDanceObjData->cornerBellObjects[3], pos.x - FX32_CONST(198), pos.y - FX32_CONST(73), pos.z - FX32_CONST(270));
+        Field3dObject_SetPosEx(&kimonoDanceObjData->cornerBellObjects[0], pos.x + FX32_CONST(200), pos.y - FX32_CONST(73), pos.z + FX32_CONST(144));
+        Field3dObject_SetPosEx(&kimonoDanceObjData->cornerBellObjects[1], pos.x - FX32_CONST(198), pos.y - FX32_CONST(73), pos.z + FX32_CONST(144));
+        Field3dObject_SetPosEx(&kimonoDanceObjData->cornerBellObjects[2], pos.x + FX32_CONST(200), pos.y - FX32_CONST(73), pos.z - FX32_CONST(270));
+        Field3dObject_SetPosEx(&kimonoDanceObjData->cornerBellObjects[3], pos.x - FX32_CONST(198), pos.y - FX32_CONST(73), pos.z - FX32_CONST(270));
         kimonoDanceObjData->birdModelNum = 0x130;
         kimonoDanceObjData->cameraParam = sCameraParam_HeartGold;
         kimonoDanceObjData->cameraOffset = sCameraOffset_HeartGold;
@@ -438,10 +438,10 @@ static void Field3dObjectTaskUpdate_ClearBellCutscene(Field3dObjectTask *task, s
 static void Field3dObjectTaskRender_ClearBellCutscene(Field3dObjectTask *task, struct FieldSystem *fieldSystem, void *taskData) {
     ClearBellCutscene3dObjectTaskData *clearBell = (ClearBellCutscene3dObjectTaskData *)taskData;
 
-    Field3dObj_Draw(&clearBell->clearBellRisingObject);
-    Field3dObj_Draw(&clearBell->clearBellObject);
+    Field3dObject_Draw(&clearBell->clearBellRisingObject);
+    Field3dObject_Draw(&clearBell->clearBellObject);
     for (u8 i = 0; i < 4; ++i) {
-        Field3dObj_Draw(&clearBell->cornerBellObjects[i]);
+        Field3dObject_Draw(&clearBell->cornerBellObjects[i]);
     }
 }
 
@@ -509,7 +509,7 @@ static void loadEyeGlimmer3dModel(HeapID heapId, FieldSystem *fieldSystem, Legen
     MapObject_GetPositionVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &pos);
     pos.y += FX32_CONST(100);
     pos.z -= FX32_CONST(350);
-    Field3dObj_SetPosEx(&taskData->object, pos.x, pos.y, pos.z);
+    Field3dObject_SetPosEx(&taskData->object, pos.x, pos.y, pos.z);
     Field3dObject_SetActiveFlag(&taskData->object, TRUE);
 }
 
@@ -533,7 +533,7 @@ static BOOL Task_LugiaEyeGlimmer(TaskManager *taskman) {
         if (modelAnimListAdvanceNoLoop(unk->anims, 3)) {
             ++(*pState);
         }
-        Field3dObj_Draw(&unk->object);
+        Field3dObject_Draw(&unk->object);
         break;
     case LUGIA_EYE_GLIMMER_TASK_STATE_FINISH:
         unloadEyeGlimmer3dModel(unk);
@@ -586,18 +586,18 @@ static BOOL ov02_02251320(TaskManager *taskman) {
     return FALSE;
 }
 
-void LegendCutscene_MoveCamera(FieldSystem *fieldSystem, u8 whichScene) {
+void LegendCutscene_MoveCamera(FieldSystem *fieldSystem, u8 scene) {
     ClearBellCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
     ClearBellCutscene3dObjectTaskData *taskData = (ClearBellCutscene3dObjectTaskData *)Field3dObjectTask_GetData(cam->draw3dTask);
 
-    GF_ASSERT(whichScene < 3);
+    GF_ASSERT(scene < 3);
 
     Camera_SetLookAtCamTarget(&cam->lookAtTarget, fieldSystem->camera);
     Camera_SetLookAtCamPos(&cam->lookAtPos, fieldSystem->camera);
-    Camera_SetDistance(taskData->cameraParam[whichScene].distance, fieldSystem->camera);
-    Camera_SetAnglePos(&taskData->cameraParam[whichScene].angle, fieldSystem->camera);
-    Camera_SetPerspectiveAngle(taskData->cameraParam[whichScene].perspective, fieldSystem->camera);
-    Camera_OffsetLookAtPosAndTarget(&taskData->cameraOffset[whichScene], fieldSystem->camera);
+    Camera_SetDistance(taskData->cameraParam[scene].distance, fieldSystem->camera);
+    Camera_SetAnglePos(&taskData->cameraParam[scene].angle, fieldSystem->camera);
+    Camera_SetPerspectiveAngle(taskData->cameraParam[scene].perspective, fieldSystem->camera);
+    Camera_OffsetLookAtPosAndTarget(&taskData->cameraOffset[scene], fieldSystem->camera);
     Camera_SetPerspectiveClippingPlane(FX32_CONST(150), FX32_CONST(1700), fieldSystem->camera);
 
     Camera_GetLookAtCamTarget(fieldSystem->camera);
@@ -611,12 +611,12 @@ void LegendCutscene_StartPanCameraTo(FieldSystem *fieldSystem, u8 destination) {
     ClearBellCutscene3dObjectTaskData *taskData = (ClearBellCutscene3dObjectTaskData *)Field3dObjectTask_GetData(cam->draw3dTask);
 
     CameraTranslationPathTemplate template;
-    int whichPoint = destination == 0 ? 0 : 3;
+    int point = destination == 0 ? 0 : 3;
 
-    template.angleX = taskData->cameraParam[whichPoint].angle.x;
-    template.perspectiveAngle = taskData->cameraParam[whichPoint].perspective;
-    template.position = taskData->cameraOffset[whichPoint];
-    template.distance = taskData->cameraParam[whichPoint].distance;
+    template.angleX = taskData->cameraParam[point].angle.x;
+    template.perspectiveAngle = taskData->cameraParam[point].perspective;
+    template.position = taskData->cameraOffset[point];
+    template.distance = taskData->cameraParam[point].distance;
     if (cam->gameVersion == VERSION_HEARTGOLD) {
         if (destination == 0) {
             duration = 200;
@@ -651,9 +651,9 @@ static BOOL Task_WaitCameraPan(TaskManager *taskman) {
 }
 
 void LegendCutscene_BirdFinalApproach(FieldSystem *fieldSystem) {
-    BirdFinalApproachTaskData *unk = AllocFromHeapAtEnd(HEAP_ID_4, sizeof(BirdFinalApproachTaskData));
-    unk->gameVersion = gGameVersion;
-    TaskManager_Call(fieldSystem->taskman, Task_BirdFinalApproach, unk);
+    BirdFinalApproachTaskData *taskData = AllocFromHeapAtEnd(HEAP_ID_4, sizeof(BirdFinalApproachTaskData));
+    taskData->gameVersion = gGameVersion;
+    TaskManager_Call(fieldSystem->taskman, Task_BirdFinalApproach, taskData);
 }
 
 static BOOL Task_BirdFinalApproach(TaskManager *taskman) {
@@ -693,33 +693,33 @@ static BOOL Task_BirdFinalApproach(TaskManager *taskman) {
         Field3dObject_AddAnimation(&taskData->object, &taskData->anims[1]);
         Field3dObject_AddAnimation(&taskData->object, &taskData->anims[2]);
         Field3dObject_SetActiveFlag(&taskData->object, FALSE);
-        modelAnimListSetFrameIndex(taskData->anims,3, 0);
-    {
-        VecFx32 pos;
-        MapObject_GetPositionVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &pos);
-        if (taskData->gameVersion == VERSION_HEARTGOLD) {
-            pos.y += FX32_CONST(40);
-            pos.z -= FX32_CONST(16);
-        } else {
-            pos.z -= FX32_CONST(280);
+        modelAnimListSetFrameIndex(taskData->anims, 3, 0);
+        {
+            VecFx32 pos;
+            MapObject_GetPositionVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &pos);
+            if (taskData->gameVersion == VERSION_HEARTGOLD) {
+                pos.y += FX32_CONST(40);
+                pos.z -= FX32_CONST(16);
+            } else {
+                pos.z -= FX32_CONST(280);
+            }
+            Field3dObject_SetPosEx(&taskData->object, pos.x, pos.y, pos.z);
         }
-        Field3dObj_SetPosEx(&taskData->object, pos.x, pos.y, pos.z);
-    }
         ++(*pState);
         break;
     case BIRD_FINAL_APPROACH_TASK_STATE_CORRECT_POS:
-    {
-        VecFx32 pos;
-        MapObject_GetPositionVec(mapObject, &pos);
-        taskData->yEnd = pos.y;
-        if (taskData->gameVersion == VERSION_HEARTGOLD) {
-            taskData->yDelta = FX32_CONST(120);
-        } else {
-            taskData->yDelta = FX32_CONST(160);
+        {
+            VecFx32 pos;
+            MapObject_GetPositionVec(mapObject, &pos);
+            taskData->yEnd = pos.y;
+            if (taskData->gameVersion == VERSION_HEARTGOLD) {
+                taskData->yDelta = FX32_CONST(120);
+            } else {
+                taskData->yDelta = FX32_CONST(160);
+            }
+            pos.y += taskData->yDelta;
+            MapObject_SetPositionVec(mapObject, &pos);
         }
-        pos.y += taskData->yDelta;
-        MapObject_SetPositionVec(mapObject, &pos);
-    }
         MapObject_SetVisible(mapObject, FALSE);
         taskData->delayTimer = 0;
         taskData->betweenFlapsDelayTimer = 0;
@@ -734,22 +734,22 @@ static BOOL Task_BirdFinalApproach(TaskManager *taskman) {
             }
             --taskData->betweenFlapsDelayTimer;
         }
-    {
-        VecFx32 pos;
-        BOOL snapped = FALSE;
-        MapObject_GetPositionVec(mapObject, &pos);
-        taskData->yDelta -= FX32_ONE;
-        if (taskData->yDelta <= 0) {
-            taskData->yDelta = 0;
-            snapped = TRUE;
+        {
+            VecFx32 pos;
+            BOOL snapped = FALSE;
+            MapObject_GetPositionVec(mapObject, &pos);
+            taskData->yDelta -= FX32_ONE;
+            if (taskData->yDelta <= 0) {
+                taskData->yDelta = 0;
+                snapped = TRUE;
+            }
+            pos.y = taskData->yEnd + taskData->yDelta;
+            MapObject_SetPositionVec(mapObject, &pos);
+            if (snapped) {
+                taskData->delayTimer = 0;
+                ++(*pState);
+            }
         }
-        pos.y = taskData->yEnd + taskData->yDelta;
-        MapObject_SetPositionVec(mapObject, &pos);
-        if (snapped) {
-            taskData->delayTimer = 0;
-            ++(*pState);
-        }
-    }
         break;
     case BIRD_FINAL_APPROACH_TASK_STATE_DELAY__ALT_ANIM:
         ++taskData->delayTimer;
@@ -770,16 +770,16 @@ static BOOL Task_BirdFinalApproach(TaskManager *taskman) {
         }
         break;
     case BIRD_FINAL_APPROACH_TASK_STATE_EXPANDING_CIRCLE_EFFECT:
-    {
-        BOOL animDone = modelAnimListAdvanceNoLoop(taskData->anims, 3);
-        ++taskData->animTimer;
-        if (animDone && taskData->animTimer >= 65) {
-            sub_0205F328(mapObject, 0);
-            taskData->delayTimer = 0;
-            ++(*pState);
+        {
+            BOOL animDone = modelAnimListAdvanceNoLoop(taskData->anims, 3);
+            ++taskData->animTimer;
+            if (animDone && taskData->animTimer >= 65) {
+                sub_0205F328(mapObject, 0);
+                taskData->delayTimer = 0;
+                ++(*pState);
+            }
         }
-    }
-        Field3dObj_Draw(&taskData->object);
+        Field3dObject_Draw(&taskData->object);
         break;
     case BIRD_FINAL_APPROACH_TASK_STATE_WAIT_AFTER_ANIM:
         ++taskData->delayTimer;
@@ -824,7 +824,7 @@ static void beginWavesEffect(FieldSystem *fieldSystem) {
 
     VecFx32 pos;
     MapObject_GetPositionVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &pos);
-    Field3dObj_SetPosEx(&wavesEffectData->object, pos.x, pos.y, pos.z);
+    Field3dObject_SetPosEx(&wavesEffectData->object, pos.x, pos.y, pos.z);
     taskData->task = SysTask_CreateOnMainQueue(Task_WavesEffect, taskData, 0);
 }
 
@@ -892,7 +892,7 @@ static void Task_WavesEffect(SysTask *task, void *taskData) {
     ClearBellCutscene3dObjectTaskData *cutsceneData = (ClearBellCutscene3dObjectTaskData *)taskData;
     ClearBellCutscene3dObjectTaskData_SoulSilver *wavesEffectData = &cutsceneData->wavesEffect;
     modelAnimListAdvanceLooping(wavesEffectData->anims, 2);
-    Field3dObj_Draw(&wavesEffectData->object);
+    Field3dObject_Draw(&wavesEffectData->object);
 }
 
 static void Task_LeavesEffect(SysTask *task, void *taskData) {
