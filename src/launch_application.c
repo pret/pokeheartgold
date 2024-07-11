@@ -7,7 +7,6 @@
 #include "fashion_case.h"
 #include "field_system.h"
 #include "global.h"
-// #include "launch_application_data.h"
 #include "constants/flags.h"
 
 #include "battle/battle_022378C0.h"
