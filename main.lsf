@@ -1201,7 +1201,7 @@ Overlay OVY_123
 Overlay OVY_124
 {
     After OVY_123
-    Object asm/overlay_124.o
+    Object src/overlay_124.o
 }
 Overlay OVY_125
 {

@@ -17,6 +17,7 @@
 #include "yes_no_prompt.h"
 #include "sys_task.h"
 #include "unk_020183F0.h"
+#include "overlay_123.h"
 
 FS_EXTERN_OVERLAY(OVY_123);
 
@@ -64,10 +65,6 @@ typedef struct TouchSaveAppData {
     WaitingIcon *waitingIcon;
     SysTask *savingMovementTask;
 } TouchSaveAppData; // size: 0x6C
-
-extern void *ov123_0225F4A8(void(*)(void));
-extern void *ov123_0225F520(void(*)(void));
-extern void *ov123_0225F610(void(*)(void));
 
 static void ov30_0225D700(SysTask *task, TouchSaveAppData *data);
 static void TouchSaveApp_SetupGraphics(TouchSaveAppData *data);
