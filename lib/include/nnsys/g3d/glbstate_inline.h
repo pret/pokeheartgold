@@ -1,6 +1,9 @@
 #ifndef NNSYS_G3D_GLBSTATE_INLINE_H_
 #define NNSYS_G3D_GLBSTATE_INLINE_H_
 
+#include <nitro.h>
+#include <nnsys/g3d/glbstate.h>
+
 static inline void NNS_G3dGlbSetBaseRot(const MtxFx33 *pRot) {
     MI_Copy36B(pRot, &NNS_G3dGlb.prmBaseRot);
     NNS_G3dGlb.flag &= ~(NNS_G3D_GLB_FLAG_BASECAMERA_UPTODATE | NNS_G3D_GLB_FLAG_INVBASE_UPTODATE | NNS_G3D_GLB_FLAG_INVBASECAMERA_UPTODATE);
@@ -30,6 +33,10 @@ static inline void NNS_G3dGlbPerspective(fx32 fovySin, fx32 fovyCos, fx32 aspect
 static inline void NNS_G3dGlbOrtho(fx32 t, fx32 b, fx32 l, fx32 r, fx32 n, fx32 f) {
     MTX_OrthoW(t, b, l, r, n, f, FX32_ONE, &NNS_G3dGlb.projMtx);
     NNS_G3dGlb.flag &= ~(NNS_G3D_GLB_FLAG_INVPROJ_UPTODATE | NNS_G3D_GLB_FLAG_INVCAMERAPROJ_UPTODATE);
+}
+
+static inline void NNS_G3dGlbSetViewPort(int x1, int y1, int x2, int y2) {
+    NNS_G3dGlb.prmViewPort = GX_PACK_VIEWPORT_PARAM(x1, y1, x2, y2);
 }
 
 #endif //NNSYS_G3D_GLBSTATE_INLINE_H_

@@ -23,8 +23,8 @@ sub_0208805C: ; 0x0208805C
 _02088064: .word _02103894
 	thumb_func_end sub_0208805C
 
-	thumb_func_start RatioToInt
-RatioToInt: ; 0x02088068
+	thumb_func_start CalculateHpBarPixelsLength
+CalculateHpBarPixelsLength: ; 0x02088068
 	push {r4, lr}
 	add r4, r0, #0
 	mul r0, r2
@@ -37,7 +37,7 @@ RatioToInt: ; 0x02088068
 	mov r0, #1
 _0208807E:
 	pop {r4, pc}
-	thumb_func_end RatioToInt
+	thumb_func_end CalculateHpBarPixelsLength
 
 	thumb_func_start sub_02088080
 sub_02088080: ; 0x02088080
@@ -70,8 +70,8 @@ _020880AA:
 	pop {r4, pc}
 	thumb_func_end sub_02088080
 
-	thumb_func_start sub_020880B0
-sub_020880B0: ; 0x020880B0
+	thumb_func_start CalculateHpBarColor
+CalculateHpBarColor: ; 0x020880B0
 	push {r4, lr}
 	add r4, r2, #0
 	cmp r0, r1
@@ -81,11 +81,11 @@ sub_020880B0: ; 0x020880B0
 _020880BC:
 	lsl r2, r4, #0x18
 	lsr r2, r2, #0x18
-	bl RatioToInt
+	bl CalculateHpBarPixelsLength
 	add r1, r4, #0
 	bl sub_02088080
 	pop {r4, pc}
-	thumb_func_end sub_020880B0
+	thumb_func_end CalculateHpBarColor
 
 	thumb_func_start sub_020880CC
 sub_020880CC: ; 0x020880CC
@@ -341,6 +341,8 @@ _02088276:
 	.rodata
 
 _02103894:
-	.short 0x20, 0x80, 0x200, 0x800, 0x40, 0x80, 0x100, 0x400, 0x40, 0x80, 0x100, 0x400
+	.short 0x20, 0x80, 0x200, 0x800
+	.short 0x40, 0x80, 0x100, 0x400
+	.short 0x40, 0x80, 0x100, 0x400
 
 	; File boundary

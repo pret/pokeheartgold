@@ -4232,7 +4232,7 @@ _02268356:
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x10
 	mov r2, #0x30
-	bl sub_020880B0
+	bl CalculateHpBarColor
 	cmp r0, #4
 	bhi _022683EC
 	add r0, r0, r0

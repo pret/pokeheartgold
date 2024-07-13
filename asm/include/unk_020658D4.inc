@@ -14,7 +14,7 @@
 .public PlayerAvatar_GetMapObject
 .public FieldSystem_GetPlayerAvatar
 .public sub_0205CB00
-.public sub_0205EEF4
+.public MapObjectManager_IterObjects
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
 .public MapObject_GetFlagsMask

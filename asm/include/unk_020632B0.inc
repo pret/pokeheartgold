@@ -24,7 +24,7 @@
 .public GetPlayerXCoord
 .public GetPlayerYCoord
 .public PlayerAvatar_GetMapObject
-.public sub_0205EEF4
+.public MapObjectManager_IterObjects
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
 .public MapObject_SetGfxID

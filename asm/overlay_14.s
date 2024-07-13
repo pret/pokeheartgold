@@ -6684,7 +6684,7 @@ ov14_021E8B1C: ; 0x021E8B1C
 	ldr r0, _021E8B38 ; =FS_OVERLAY_ID(OVY_15)
 	bl UnloadOverlayByID
 	ldr r0, [r4, #0x18]
-	bl sub_02077904
+	bl BagView_GetItemId
 	strh r0, [r4, #0x1c]
 	ldr r0, [r4, #0x18]
 	bl FreeToHeap

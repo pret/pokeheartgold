@@ -35,12 +35,12 @@ void sub_02077894(BagView *bagView, u8 a1) {
     bagView->unk65 = a1;
 }
 
-void sub_0207789C(BagView *bagView, SaveData *save, u8 a2, BagCursor *cursor, u32 *a4) {
+void sub_0207789C(BagView *bagView, SaveData *save, u8 a2, BagCursor *cursor, BOOL *a4) {
     sub_02077894(bagView, a2);
     bagView->saveData = save;
     bagView->unk78 = a4;
     bagView->cursor = cursor;
-    bagView->unk66 = 0;
+    bagView->itemId = ITEM_NONE;
 }
 
 void BagView_SetItem(BagView *bagView, ItemSlot *slots, u8 pocketId, u8 position) {
@@ -57,8 +57,8 @@ void sub_020778C8(BagView *bagView) {
     bagView->unk76_0 = TRUE;
 }
 
-void sub_020778DC(BagView *bagView, void *a1) {
-    bagView->unk70 = a1;
+void sub_020778DC(BagView *bagView, ItemCheckUseData *checkUseData) {
+    bagView->checkUseData = checkUseData;
 }
 
 void sub_020778E0(BagView *bagView, u8 a1) {
@@ -69,8 +69,8 @@ void sub_020778E8(BagView *bagView, u16 a1) {
     bagView->unk76_1 = a1;
 }
 
-u16 sub_02077904(BagView *bagView) {
-    return bagView->unk66;
+u16 BagView_GetItemId(BagView *bagView) {
+    return bagView->itemId;
 }
 
 u16 sub_0207790C(BagView *bagView) {

@@ -9,7 +9,7 @@
 typedef struct VoltorbFlipArgs {
     Options *options;
     u16 *coins;
-    u32 *unk8;
+    BOOL *unk8;
     PlayerProfile *profile;
     SaveData *saveData;
 } VoltorbFlipArgs;

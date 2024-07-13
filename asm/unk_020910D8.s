@@ -43,7 +43,7 @@ _02091106:
 	mov r1, #0xb
 	bl sub_0206D328
 	add r0, r5, #0
-	bl sub_0205525C
+	bl CallTask_LeaveOverworld
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]

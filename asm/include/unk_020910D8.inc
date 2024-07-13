@@ -11,7 +11,7 @@
 .public CallApplicationAsTask
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnvironment
-.public sub_0205525C
+.public CallTask_LeaveOverworld
 .public CallTask_RestoreOverworld
 .public sub_0206D328
 .public GetMonData

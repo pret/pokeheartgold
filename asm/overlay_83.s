@@ -2585,7 +2585,7 @@ _0223F394:
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x10
 	mov r2, #0x30
-	bl sub_020880B0
+	bl CalculateHpBarColor
 	add r1, r0, #0
 	add r0, r5, #0
 	bl ov83_022411B0
@@ -2597,7 +2597,7 @@ _0223F394:
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x10
 	mov r2, #0x30
-	bl sub_020880B0
+	bl CalculateHpBarColor
 	add r1, r0, #0
 	add r0, r5, #0
 	bl ov83_022411DC
@@ -6035,7 +6035,7 @@ ov83_02240FAC: ; 0x02240FAC
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x10
 	mov r2, #0x30
-	bl sub_020880B0
+	bl CalculateHpBarColor
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov83_022411B0
@@ -6046,7 +6046,7 @@ ov83_02240FAC: ; 0x02240FAC
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x10
 	mov r2, #0x30
-	bl sub_020880B0
+	bl CalculateHpBarColor
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov83_022411DC

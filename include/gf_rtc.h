@@ -36,7 +36,7 @@ void GF_RTC_UpdateOnFrame(void);
 s32 GF_RTC_TimeToSec(void);
 s32 GF_RTC_GetDayOfYear(const RTCDate * date);
 s64 GF_RTC_TimeDelta(s64 first, s64 last);
-void sub_020148F4(void);
-void sub_02014904(s32 hour, s32 minute);
+void GF_RTC_UnfreezeTime(void);
+void GF_RTC_SetAndFreezeTime(s32 hour, s32 minute);
 
 #endif //POKEHEARTGOLD_GF_RTC_H

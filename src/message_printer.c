@@ -13,45 +13,45 @@ static const u16 _020F5C24[][2] = {
     { 0x02A0, 0x0010 },
 };
 
-MessagePrinter *MessagePrinter_New(u32 color1, u32 color2, u32 color3, HeapID heapId)
+MessagePrinter *MessagePrinter_New(u32 foreground, u32 shadow, u32 background, HeapID heapId)
 {
     MessagePrinter *messagePrinter = AllocFromHeap(heapId, sizeof(MessagePrinter));
     if (messagePrinter != NULL) {
-        messagePrinter->charData = GfGfxLoader_GetCharData(NARC_graphic_font, 5, 1, &messagePrinter->ppCharData, heapId);
+        messagePrinter->charData = GfGfxLoader_GetCharData(NARC_graphic_font, 5, TRUE, &messagePrinter->ppCharData, heapId);
         int i;
         u8 *ptr = messagePrinter->ppCharData->pRawData;
         for (i = 0; i < messagePrinter->ppCharData->szByte; i++) {
             switch (ptr[i]) {
-            case 0:
-                ptr[i] = ((color3 << 4) | color3);
+            case 0x00:
+                ptr[i] = ((background << 4) | background);
                 break;
-            case 1:
-                ptr[i] = ((color3 << 4) | color1);
+            case 0x01:
+                ptr[i] = ((background << 4) | foreground);
                 break;
-            case 2:
-                ptr[i] = ((color3 << 4) | color2);
+            case 0x02:
+                ptr[i] = ((background << 4) | shadow);
                 break;
-            case 16:
-                ptr[i] = ((color1 << 4) | color3);
+            case 0x10:
+                ptr[i] = ((foreground << 4) | background);
                 break;
-            case 17:
-                ptr[i] = ((color1 << 4) | color1);
+            case 0x11:
+                ptr[i] = ((foreground << 4) | foreground);
                 break;
-            case 18:
-                ptr[i] = ((color1 << 4) | color2);
+            case 0x12:
+                ptr[i] = ((foreground << 4) | shadow);
                 break;
-            case 32:
-                ptr[i] = ((color2 << 4) | color3);
+            case 0x20:
+                ptr[i] = ((shadow << 4) | background);
                 break;
-            case 33:
-                ptr[i] = ((color2 << 4) | color1);
+            case 0x21:
+                ptr[i] = ((shadow << 4) | foreground);
                 break;
-            case 34:
-                ptr[i] = ((color2 << 4) | color2);
+            case 0x22:
+                ptr[i] = ((shadow << 4) | shadow);
                 break;
             }
         }
-        messagePrinter->color = color3;
+        messagePrinter->backgroundColor = background;
     }
     return messagePrinter;
 }
@@ -66,9 +66,9 @@ void MessagePrinter_Delete(MessagePrinter *messagePrinter)
     }
 }
 
-void sub_0200CDAC(MessagePrinter *messagePrinter, u8 a1, Window *window, u32 x, u32 y)
+void sub_0200CDAC(MessagePrinter *messagePrinter, u8 glyphId, Window *window, u32 x, u32 y)
 {
-    BlitBitmapRectToWindow(window, messagePrinter->ppCharData->pRawData + _020F5C24[a1][0], 0, 0, _020F5C24[a1][1], 8, x, y, _020F5C24[a1][1], 8);
+    BlitBitmapRectToWindow(window, messagePrinter->ppCharData->pRawData + _020F5C24[glyphId][0], 0, 0, _020F5C24[glyphId][1], 8, x, y, _020F5C24[glyphId][1], 8);
 }
 
 void PrintUIntOnWindow(MessagePrinter *messagePrinter, u32 num, u32 ndigits, PrintingMode mode, Window *window, u32 x, u32 y)
@@ -80,7 +80,7 @@ void PrintUIntOnWindow(MessagePrinter *messagePrinter, u32 num, u32 ndigits, Pri
             BlitBitmapRectToWindow(window, messagePrinter->ppCharData->pRawData + (messagePrinter->string[i] - CHAR_JP_0) * 32, 0, 0, 8, 8, x, y, 8, 8);
         }
         else {
-            FillWindowPixelRect(window, messagePrinter->color, x, y, 8, 8);
+            FillWindowPixelRect(window, messagePrinter->backgroundColor, x, y, 8, 8);
         }
         x += 8;
     }

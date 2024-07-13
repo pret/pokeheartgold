@@ -91,7 +91,7 @@ sub_0208DEDC: ; 0x0208DEDC
 	mov r0, #0x2a
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02008120
+	bl PokepicManager_DrawAll
 	ldr r0, _0208DEF8 ; =0x04000540
 	mov r1, #1
 	str r1, [r0]
@@ -120,7 +120,7 @@ sub_0208DEFC: ; 0x0208DEFC
 	mov r0, #0x2a
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02008524
+	bl PokepicManager_Delete
 	pop {r4, pc}
 	thumb_func_end sub_0208DEFC
 
@@ -627,7 +627,7 @@ sub_0208E3AC: ; 0x0208E3AC
 	sub sp, #0x20
 	add r4, r0, #0
 	mov r0, #0x13
-	bl sub_02007FD4
+	bl PokepicManager_Create
 	mov r1, #0x2a
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -657,7 +657,7 @@ _0208E3E4:
 	ldrh r2, [r4, r2]
 	ldr r0, [r4, r0]
 	mov r3, #1
-	bl sub_02072914
+	bl NARC_ReadPokepicAnimScript
 	mov r1, #0xb5
 	lsl r1, r1, #2
 	mov r2, #0
@@ -674,20 +674,20 @@ _0208E3E4:
 	add r1, sp, #0x10
 	mov r2, #0xd0
 	mov r3, #0x68
-	bl sub_020085EC
+	bl PokepicManager_CreatePokepic
 	mov r1, #0x2d
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	mov r1, #6
 	mov r2, #1
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	mov r0, #0x2d
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0x23
 	mov r2, #0
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	add sp, #0x20
 	pop {r4, pc}
 	nop
@@ -727,7 +727,7 @@ _0208E47C:
 	add r2, #0x50
 	ldr r0, [r4, r2]
 	mov r1, #1
-	bl sub_02008550
+	bl Pokepic_StartAnim
 	mov r3, #0xb5
 	lsl r3, r3, #2
 	mov r0, #2
@@ -764,7 +764,7 @@ sub_0208E4B4: ; 0x0208E4B4
 	mov r0, #0x2a
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02008524
+	bl PokepicManager_Delete
 	add r0, r4, #0
 	bl sub_0208E3AC
 	add r0, r4, #0
