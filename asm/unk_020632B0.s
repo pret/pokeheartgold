@@ -2063,7 +2063,7 @@ CheckSeenByNpcTrainers: ; 0x020641EC
 	add r1, sp, #4
 	add r2, sp, #0xc
 	mov r3, #1
-	bl sub_0205EEF4
+	bl MapObjectManager_IterObjects
 	cmp r0, #0
 	beq _02064264
 _0206420E:
@@ -2104,7 +2104,7 @@ _02064254:
 	add r1, sp, #4
 	add r2, sp, #0xc
 	mov r3, #1
-	bl sub_0205EEF4
+	bl MapObjectManager_IterObjects
 	cmp r0, #0
 	bne _0206420E
 _02064264:
@@ -2499,7 +2499,7 @@ sub_02064520: ; 0x02064520
 	add r1, sp, #0
 	add r2, sp, #4
 	mov r3, #1
-	bl sub_0205EEF4
+	bl MapObjectManager_IterObjects
 	cmp r0, #0
 	beq _02064570
 	add r7, sp, #0
@@ -2523,7 +2523,7 @@ _02064560:
 	add r1, r7, #0
 	add r2, sp, #4
 	mov r3, #1
-	bl sub_0205EEF4
+	bl MapObjectManager_IterObjects
 	cmp r0, #0
 	bne _02064540
 _02064570:

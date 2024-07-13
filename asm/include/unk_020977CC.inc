@@ -19,7 +19,7 @@
 .public TaskManager_GetStatePtr
 .public sub_020537F0
 .public sub_02055110
-.public sub_0205525C
+.public CallTask_LeaveOverworld
 .public sub_02055408
 .public Field_GetTimeOfDay
 .public sub_020977CC

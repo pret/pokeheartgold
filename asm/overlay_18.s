@@ -38298,7 +38298,7 @@ ov18_021F8C0C: ; 0x021F8C0C
 	ldr r0, [r4, #0x20]
 	mov r1, #0x10
 	add r3, r2, #0
-	bl sub_020090B4
+	bl Pokepic_StartPaletteFade
 	ldr r0, [r4, #4]
 	mov r1, #0
 	bl PaletteData_SetAutoTransparent
@@ -38317,7 +38317,7 @@ ov18_021F8C48: ; 0x021F8C48
 	cmp r0, #0
 	bne _021F8C64
 	ldr r0, [r4, #0x20]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _021F8C64
 	mov r0, #1
@@ -39519,7 +39519,7 @@ ov18_021F95CC: ; 0x021F95CC
 	add r1, sp, #0x10
 	mov r2, #0x30
 	mov r3, #0x48
-	bl sub_020085EC
+	bl PokepicManager_CreatePokepic
 	str r0, [r4, #0x20]
 	add sp, #0x20
 	pop {r4, pc}

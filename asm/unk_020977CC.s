@@ -203,7 +203,7 @@ _0209793E:
 	mov r1, #0
 	bl StopBGM
 	add r0, r5, #0
-	bl sub_0205525C
+	bl CallTask_LeaveOverworld
 	mov r0, #2
 	strb r0, [r4]
 	b _020979A2

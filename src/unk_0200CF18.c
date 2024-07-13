@@ -55,21 +55,21 @@ GF_G2dRenderer* SpriteRenderer_GetG2dRendererPtr(SpriteRenderer* renderer) {
     return &renderer->renderer;
 }
 
-BOOL sub_0200CF70(SpriteRenderer* renderer, const Unk122_021E92FC* a1, const Unk122_021E92D0* a2, int a3) {
+BOOL sub_0200CF70(SpriteRenderer* renderer, const OamManagerParam* oamManagerParam, const OamCharTransferParam* oamTransferParam, int a3) {
     GF_ASSERT(renderer != NULL);
     if (renderer == NULL) {
         return FALSE;
     }
     ObjCharTransferTemplate transferTemplate;
-    transferTemplate.maxTasks = a2->maxTasks;
-    transferTemplate.sizeMain = a2->sizeMain;
-    transferTemplate.sizeSub = a2->sizeSub;
+    transferTemplate.maxTasks = oamTransferParam->maxTasks;
+    transferTemplate.sizeMain = oamTransferParam->sizeMain;
+    transferTemplate.sizeSub = oamTransferParam->sizeSub;
     transferTemplate.heapId = renderer->heapId;
-    ObjCharTransfer_InitEx(&transferTemplate, a2->charModeMain, a2->charModeSub);
+    ObjCharTransfer_InitEx(&transferTemplate, oamTransferParam->charModeMain, oamTransferParam->charModeSub);
     sub_02022588(a3, renderer->heapId);
     NNS_G2dInitOamManagerModule();
     if (renderer->hasOamManager == TRUE) {
-        OamManager_Create(a1->unk0, a1->unk4, a1->unk8, a1->unkC, a1->unk10, a1->unk14, a1->unk18, a1->unk1C, renderer->heapId);
+        OamManager_Create(oamManagerParam->fromOBJmain, oamManagerParam->numOBJmain, oamManagerParam->fromAffineMain, oamManagerParam->numAffineMain, oamManagerParam->fromOBJsub, oamManagerParam->numOBJsub, oamManagerParam->fromAffineSub, oamManagerParam->numAffineSub, renderer->heapId);
     }
     renderer->cellTransferState = sub_02020654(0x20, renderer->heapId);
     ObjCharTransfer_ClearBuffers();

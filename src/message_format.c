@@ -138,7 +138,7 @@ void BufferSpeciesNameWithArticle(MessageFormat *msgFmt, u32 fieldno, u32 specie
 }
 
 void BufferBoxMonNickname(MessageFormat *msgFmt, u32 fieldno, BoxPokemon *boxMon) {
-    GetBoxMonData(boxMon, MON_DATA_NICKNAME_3, msgFmt->buffer);
+    GetBoxMonData(boxMon, MON_DATA_NICKNAME_STRING, msgFmt->buffer);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
 

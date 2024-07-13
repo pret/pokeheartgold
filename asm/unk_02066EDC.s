@@ -879,8 +879,8 @@ _0206756E:
 	.balign 4, 0
 	thumb_func_end sub_0206751C
 
-	thumb_func_start sub_02067584
-sub_02067584: ; 0x02067584
+	thumb_func_start FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom
+FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom: ; 0x02067584
 	ldr r0, [r0, #0x20]
 	ldr r1, [r0]
 	ldr r0, _02067598 ; =MAP_D31R0207
@@ -893,7 +893,7 @@ _02067592:
 	bx lr
 	nop
 _02067598: .word MAP_D31R0207
-	thumb_func_end sub_02067584
+	thumb_func_end FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom
 
 	thumb_func_start sub_0206759C
 sub_0206759C: ; 0x0206759C

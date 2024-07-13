@@ -2,7 +2,7 @@
   "kind": "char",
   "graphics": [
     {
-      "narc": 162,
+      "narc": "NARC_a_1_6_2",
       "file": 25,
       "compressed": false,
       "id": 0,
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 129,
       "compressed": false,
       "id": 1,
@@ -22,7 +22,7 @@
       ]
     },
     {
-      "narc": 162,
+      "narc": "NARC_a_1_6_2",
       "file": 64,
       "compressed": false,
       "id": 2,
@@ -32,7 +32,7 @@
       ]
     },
     {
-      "narc": 8,
+      "narc": "NARC_a_0_0_8",
       "file": 234,
       "compressed": true,
       "id": 3,
@@ -42,7 +42,7 @@
       ]
     },
     {
-      "narc": 8,
+      "narc": "NARC_a_0_0_8",
       "file": 234,
       "compressed": true,
       "id": 4,
@@ -52,7 +52,7 @@
       ]
     },
     {
-      "narc": 8,
+      "narc": "NARC_a_0_0_8",
       "file": 234,
       "compressed": true,
       "id": 5,
@@ -62,7 +62,7 @@
       ]
     },
     {
-      "narc": 8,
+      "narc": "NARC_a_0_0_8",
       "file": 234,
       "compressed": true,
       "id": 6,
@@ -72,7 +72,7 @@
       ]
     },
     {
-      "narc": 8,
+      "narc": "NARC_a_0_0_8",
       "file": 234,
       "compressed": true,
       "id": 7,
@@ -82,7 +82,7 @@
       ]
     },
     {
-      "narc": 8,
+      "narc": "NARC_a_0_0_8",
       "file": 234,
       "compressed": true,
       "id": 8,
@@ -92,7 +92,7 @@
       ]
     },
     {
-      "narc": 8,
+      "narc": "NARC_a_0_0_8",
       "file": 234,
       "compressed": true,
       "id": 9,
@@ -102,7 +102,7 @@
       ]
     },
     {
-      "narc": 8,
+      "narc": "NARC_a_0_0_8",
       "file": 245,
       "compressed": true,
       "id": 10,
@@ -112,7 +112,7 @@
       ]
     },
     {
-      "narc": 162,
+      "narc": "NARC_a_1_6_2",
       "file": 76,
       "compressed": false,
       "id": 11,
@@ -122,7 +122,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 64,
       "compressed": false,
       "id": 12,
@@ -132,7 +132,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 68,
       "compressed": false,
       "id": 13,
@@ -142,7 +142,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 61,
       "compressed": false,
       "id": 14,
@@ -152,7 +152,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 52,
       "compressed": false,
       "id": 15,
@@ -162,7 +162,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 19,
       "compressed": false,
       "id": 16,
@@ -172,7 +172,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 20,
       "compressed": false,
       "id": 17,
@@ -182,7 +182,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 53,
       "compressed": false,
       "id": 18,
@@ -192,7 +192,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 54,
       "compressed": false,
       "id": 19,
@@ -202,7 +202,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 55,
       "compressed": false,
       "id": 20,
@@ -212,7 +212,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 56,
       "compressed": false,
       "id": 21,
@@ -222,7 +222,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 57,
       "compressed": false,
       "id": 22,
@@ -232,7 +232,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 58,
       "compressed": false,
       "id": 23,
@@ -242,7 +242,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 46,
       "compressed": false,
       "id": 24,
@@ -252,7 +252,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 72,
       "compressed": false,
       "id": 25,
@@ -262,7 +262,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 72,
       "compressed": false,
       "id": 26,
@@ -272,7 +272,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 72,
       "compressed": false,
       "id": 27,
@@ -282,7 +282,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 72,
       "compressed": false,
       "id": 28,
@@ -292,7 +292,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 72,
       "compressed": false,
       "id": 29,
@@ -302,7 +302,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 72,
       "compressed": false,
       "id": 30,
@@ -312,7 +312,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 72,
       "compressed": false,
       "id": 31,
@@ -322,7 +322,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 72,
       "compressed": false,
       "id": 32,
@@ -332,7 +332,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 72,
       "compressed": false,
       "id": 33,
@@ -342,7 +342,7 @@
       ]
     },
     {
-      "narc": 162,
+      "narc": "NARC_a_1_6_2",
       "file": 8,
       "compressed": false,
       "id": 34,
@@ -352,7 +352,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 124,
       "compressed": false,
       "id": 35,
@@ -362,7 +362,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 49,
       "compressed": false,
       "id": 36,
@@ -372,7 +372,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 135,
       "compressed": false,
       "id": 37,
@@ -382,7 +382,7 @@
       ]
     },
     {
-      "narc": 162,
+      "narc": "NARC_a_1_6_2",
       "file": 76,
       "compressed": false,
       "id": 38,
@@ -392,7 +392,7 @@
       ]
     },
     {
-      "narc": 162,
+      "narc": "NARC_a_1_6_2",
       "file": 76,
       "compressed": false,
       "id": 39,
@@ -402,7 +402,7 @@
       ]
     },
     {
-      "narc": 162,
+      "narc": "NARC_a_1_6_2",
       "file": 76,
       "compressed": false,
       "id": 40,
@@ -412,7 +412,7 @@
       ]
     },
     {
-      "narc": 162,
+      "narc": "NARC_a_1_6_2",
       "file": 76,
       "compressed": false,
       "id": 41,
@@ -422,7 +422,7 @@
       ]
     },
     {
-      "narc": 162,
+      "narc": "NARC_a_1_6_2",
       "file": 76,
       "compressed": false,
       "id": 42,
@@ -432,7 +432,7 @@
       ]
     },
     {
-      "narc": 162,
+      "narc": "NARC_a_1_6_2",
       "file": 76,
       "compressed": false,
       "id": 43,
@@ -442,7 +442,7 @@
       ]
     },
     {
-      "narc": 162,
+      "narc": "NARC_a_1_6_2",
       "file": 66,
       "compressed": false,
       "id": 44,

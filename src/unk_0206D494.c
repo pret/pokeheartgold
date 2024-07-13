@@ -349,7 +349,7 @@ static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTrade
     }
     MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0200_bin, HEAP_ID_FIELD);
     String *monNickname = String_New(12, HEAP_ID_FIELD);
-    GetMonData(mon, MON_DATA_NICKNAME_3, monNickname);
+    GetMonData(mon, MON_DATA_NICKNAME_STRING, monNickname);
     String *tradeNickname = NewString_ReadMsgData(messageData, tradeNum);
     BOOL differentNickname = String_Compare(monNickname, tradeNickname);
     String_Delete(tradeNickname);

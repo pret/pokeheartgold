@@ -19,8 +19,8 @@ _02055256:
 	.balign 4, 0
 	thumb_func_end sub_02055244
 
-	thumb_func_start sub_0205525C
-sub_0205525C: ; 0x0205525C
+	thumb_func_start CallTask_LeaveOverworld
+CallTask_LeaveOverworld: ; 0x0205525C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl TaskManager_GetFieldSystem
@@ -40,7 +40,7 @@ _02055274:
 	pop {r3, r4, r5, pc}
 	nop
 _02055288: .word sub_02055244
-	thumb_func_end sub_0205525C
+	thumb_func_end CallTask_LeaveOverworld
 
 	thumb_func_start sub_0205528C
 sub_0205528C: ; 0x0205528C
@@ -94,8 +94,8 @@ _020552E2:
 	.balign 4, 0
 	thumb_func_end sub_020552D4
 
-	thumb_func_start PalleteFadeUntilFinished
-PalleteFadeUntilFinished: ; 0x020552E8
+	thumb_func_start PaletteFadeUntilFinished
+PaletteFadeUntilFinished: ; 0x020552E8
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -126,7 +126,7 @@ _02055302:
 	pop {r3, r4, pc}
 	.balign 4, 0
 _02055328: .word sub_020552D4
-	thumb_func_end PalleteFadeUntilFinished
+	thumb_func_end PaletteFadeUntilFinished
 
 	thumb_func_start CallTask_FadeFromBlack
 CallTask_FadeFromBlack: ; 0x0205532C
@@ -177,14 +177,14 @@ sub_02055370: ; 0x02055370
 	b _020553AA
 _0205538A:
 	add r0, r5, #0
-	bl PalleteFadeUntilFinished
+	bl PaletteFadeUntilFinished
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _020553AA
 _02055398:
 	add r0, r5, #0
-	bl sub_0205525C
+	bl CallTask_LeaveOverworld
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
