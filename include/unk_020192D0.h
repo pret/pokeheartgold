@@ -18,7 +18,7 @@ void sub_02019BDC(void *);
 int sub_02019F74(void *);
 void sub_02019F7C(void *, int);
 int sub_02019D18(void *);
-int sub_0201A018(void *, int);
+const UnkStruct_02020654 *sub_0201A018(void *, int);
 
 BOOL sub_020192D0(OVY_MANAGER *man, int *state);
 BOOL sub_0201935C(OVY_MANAGER *man, int *state);

@@ -32,4 +32,7 @@
 #define GAME_STAT_UNK100             100
 #define GAME_STAT_UNK114             114
 
+#define NUM_GAME_STATS_WORD           72
+#define NUM_GAME_STATS               149
+
 #endif //POKEHEARTGOLD_CONSTANTS_GAME_STATS_H

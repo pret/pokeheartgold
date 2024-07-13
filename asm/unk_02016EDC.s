@@ -217,13 +217,13 @@ _02016FAE:
 	str r0, [r1, #0x54]
 	add r0, r7, #0
 	mov r1, #0
-	bl sub_02008A78
+	bl Pokepic_GetAttr
 	ldr r1, [r5]
 	add r1, r1, r4
 	str r0, [r1, #0x58]
 	add r0, r7, #0
 	mov r1, #1
-	bl sub_02008A78
+	bl Pokepic_GetAttr
 	ldr r1, [r5]
 	add r1, r1, r4
 	str r0, [r1, #0x5c]
@@ -407,7 +407,7 @@ _0201716A:
 	cmp r0, #0
 	beq _02017182
 	ldr r0, [r5]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _020171E4
 	ldr r0, _020171EC ; =0x000001CF
@@ -842,11 +842,11 @@ sub_02017488: ; 0x02017488
 	asr r2, r3, #2
 	lsr r2, r2, #0x1d
 	add r2, r3, r2
-	ldr r3, _020174A0 ; =sub_02008C2C
+	ldr r3, _020174A0 ; =Pokepic_AddAttr
 	asr r2, r2, #3
 	bx r3
 	nop
-_020174A0: .word sub_02008C2C
+_020174A0: .word Pokepic_AddAttr
 	thumb_func_end sub_02017488
 
 	thumb_func_start sub_020174A4
@@ -875,29 +875,29 @@ sub_020174BC: ; 0x020174BC
 	ldr r0, [r4]
 	ldr r2, [r4, #0x58]
 	mov r1, #0
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	ldr r0, [r4]
 	ldr r2, [r4, #0x5c]
 	mov r1, #1
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	ldr r0, [r4]
 	mov r1, #9
 	mov r2, #0
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	ldr r0, [r4]
 	mov r1, #0xa
 	mov r2, #0
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	mov r1, #0xc
 	add r2, r1, #0
 	ldr r0, [r4]
 	add r2, #0xf4
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	mov r1, #0xd
 	add r2, r1, #0
 	ldr r0, [r4]
 	add r2, #0xf3
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_020174BC
@@ -1222,7 +1222,7 @@ sub_02017730: ; 0x02017730
 	lsl r2, r2, #2
 	add r2, r4, r2
 	ldr r2, [r2, #0x24]
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
@@ -1245,7 +1245,7 @@ sub_0201775C: ; 0x0201775C
 	lsl r2, r2, #2
 	add r2, r4, r2
 	ldr r2, [r2, #0x24]
-	bl sub_02008C2C
+	bl Pokepic_AddAttr
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
@@ -1297,7 +1297,7 @@ _020177D0:
 	ldr r0, [r4]
 	ldr r1, [sp, #8]
 	ldr r2, [sp, #4]
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	add sp, #0xc
 	pop {r3, r4, pc}
 _020177EE:
@@ -1306,7 +1306,7 @@ _020177EE:
 	ldr r0, [r4]
 	ldr r1, [sp, #8]
 	ldr r2, [sp, #4]
-	bl sub_02008C2C
+	bl Pokepic_AddAttr
 	add sp, #0xc
 	pop {r3, r4, pc}
 _02017800:
@@ -1580,7 +1580,7 @@ sub_020179D4: ; 0x020179D4
 	add r2, r3, r2
 	mov r1, #0
 	sub r2, r5, r2
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	b _02017A06
 _020179F6:
 	ldr r3, [r4, #0x58]
@@ -1589,7 +1589,7 @@ _020179F6:
 	add r2, r3, r2
 	mov r1, #0
 	add r2, r5, r2
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 _02017A06:
 	ldr r3, [r4, #0x5c]
 	ldr r2, [r4, #0x64]
@@ -1598,7 +1598,7 @@ _02017A06:
 	ldr r0, [r4]
 	mov r1, #1
 	add r2, r5, r2
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end sub_020179D4
@@ -1613,20 +1613,20 @@ sub_02017A1C: ; 0x02017A1C
 	add r2, #0xf4
 	ldr r0, [r4]
 	add r2, r3, r2
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	mov r1, #0xd
 	add r2, r1, #0
 	ldr r3, [r4, #0x74]
 	add r2, #0xf3
 	ldr r0, [r4]
 	add r2, r3, r2
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	ldr r2, [r4, #0x78]
 	ldr r0, [r4]
 	lsl r2, r2, #0x10
 	mov r1, #9
 	lsr r2, r2, #0x10
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	ldr r0, _02017A80 ; =0x000001CE
 	ldrb r0, [r4, r0]
 	cmp r0, #0x1b
@@ -1741,7 +1741,7 @@ sub_02017AEC: ; 0x02017AEC
 	ldrb r2, [r3, #1]
 	ldrb r3, [r3]
 	ldr r0, [r4]
-	bl sub_020090B4
+	bl Pokepic_StartPaletteFade
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -1752,7 +1752,7 @@ sub_02017B2C: ; 0x02017B2C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	beq _02017B42
 	ldr r0, _02017B44 ; =0x000001CF

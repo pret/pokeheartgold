@@ -19,7 +19,6 @@
 #include "sound_02004A44.h"
 #include "unk_02005D10.h"
 #include "field_warp_tasks.h"
-#include "unk_0203DFA4.h"
 #include "unk_02054514.h"
 #include "unk_02054648.h"
 #include "unk_0200FA24.h"
@@ -519,7 +518,7 @@ static BOOL sub_02053740(TaskManager *taskManager) {
     return FALSE;
 }
 
-void sub_020537A8(TaskManager *taskManager, Location *location) {
+void sub_020537A8(TaskManager *taskManager, const Location *location) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     struct ErrorContinueEnv *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct ErrorContinueEnv));
     if (sub_0203DF7C(fieldSystem)) {
@@ -550,7 +549,7 @@ static BOOL Task_ScriptWarp(TaskManager *taskManager) {
     switch (env->state) {
     case 0:
         FieldSystem_BeginFadeOutMusic(fieldSystem, env->location.mapId);
-        sub_0205525C(taskManager);
+        CallTask_LeaveOverworld(taskManager);
         env->state++;
         break;
     case 1:
@@ -650,7 +649,7 @@ static BOOL sub_020539E8(TaskManager *taskManager) {
 
     switch (*state_p) {
     case 0:
-        sub_0205525C(taskManager);
+        CallTask_LeaveOverworld(taskManager);
         (*state_p)++;
         break;
     case 1:
@@ -766,7 +765,7 @@ static BOOL sub_02053BF8(TaskManager *taskManager) {
 
     switch (*state_p) {
     case 0:
-        sub_0205525C(taskManager);
+        CallTask_LeaveOverworld(taskManager);
         (*state_p)++;
         break;
     case 1:
@@ -839,7 +838,7 @@ static BOOL sub_02053CCC(TaskManager *taskManager) {
     case 2:
         if (env->unk4) {
             FieldSystem_BeginFadeOutMusic(fieldSystem, location->mapId);
-            sub_0205525C(taskManager);
+            CallTask_LeaveOverworld(taskManager);
             env->unk0++;
         }
         break;
@@ -907,7 +906,7 @@ static BOOL sub_02053E5C(TaskManager *taskManager) {
         break;
     case 1:
         if (env->unk4) {
-            sub_0205525C(taskManager);
+            CallTask_LeaveOverworld(taskManager);
             (*state_p)++;
         }
         break;
@@ -956,11 +955,11 @@ static BOOL sub_02053F70(TaskManager *taskManager) {
     switch (*state_p) {
     case 0:
         FieldSystem_BeginFadeOutMusic(fieldSystem, location->mapId);
-        PalleteFadeUntilFinished(taskManager);
+        PaletteFadeUntilFinished(taskManager);
         (*state_p)++;
         break;
     case 1:
-        sub_0205525C(taskManager);
+        CallTask_LeaveOverworld(taskManager);
         (*state_p)++;
         break;
     case 2:
