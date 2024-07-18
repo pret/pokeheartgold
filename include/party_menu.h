@@ -11,7 +11,7 @@
 #include "unk_02014DA0.h"
 #include "unk_02020654.h"
 #include "unk_0202E41C.h"
-#include "unk_02074944.h"
+#include "pokedex_02074944.h"
 #include "yes_no_prompt.h"
 
 #define FIELD_MOVE_CHECK_TREE_F                   0
@@ -428,7 +428,7 @@ struct PartyMenuStruct {
     u8 unk_C66;
     u8 levelUpLearnMovesLoopState;
     u16 levelUpStatsTmp[6];
-    Pokedex *pokedex; // 0xc74
+    PokedexData *pokedex; // 0xc74
     int topScreenPanelYPos;
     BOOL topScreenPanelShow;
     IconFormChangeData *iconFormChange; // C80

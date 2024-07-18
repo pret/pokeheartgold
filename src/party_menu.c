@@ -22,7 +22,7 @@
 #include "party_menu_items.h"
 #include "unk_0208805C.h"
 #include "party_menu_sprites.h"
-#include "unk_02074944.h"
+#include "pokedex_02074944.h"
 #include "unk_02088288.h"
 #include "use_item_on_mon.h"
 #include "vram_transfer_manager.h"
