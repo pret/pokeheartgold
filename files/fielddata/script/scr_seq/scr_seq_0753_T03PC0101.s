@@ -33,7 +33,7 @@ scr_seq_T03PC0101_001:
 	wait_fade
 	scrcmd_566
 	get_party_selection VAR_SPECIAL_RESULT
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_RESULT, 255

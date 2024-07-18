@@ -1143,7 +1143,7 @@ scr_seq_D47R0101_005:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_716
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto_if_set FLAG_UNK_99D, _0EFC

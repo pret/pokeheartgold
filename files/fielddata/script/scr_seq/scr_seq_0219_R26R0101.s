@@ -21,7 +21,7 @@ scr_seq_R26R0101_000:
 	wait_fanfare
 	heal_party
 	scrcmd_436
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0366_R26R0101_00001

@@ -22,7 +22,7 @@
 .public SpriteRenderer_LoadAnimResObjFromOpenNarc
 .public SpriteRenderer_LoadResourcesAndCreateSprite
 .public sub_0200D934
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public TickSpriteAnimation1Frame
 .public UnkImageStruct_SetSpriteVisibleFlag
 .public UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset

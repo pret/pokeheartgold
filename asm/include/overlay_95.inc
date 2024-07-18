@@ -66,7 +66,7 @@
 .public SpriteRenderer_LoadAnimResObjFromOpenNarc
 .public SpriteRenderer_LoadResourcesAndCreateSprite
 .public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public UnkImageStruct_GetSpriteCurrentAnimSeqNo
@@ -136,7 +136,7 @@
 .public GfGfx_EngineBTogglePlanes
 .public GfGfx_BothDispOn
 .public Camera_SetPerspectiveClippingPlane
-.public sub_02024B34
+.public Sprite_GetPaletteProxy
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public String_New

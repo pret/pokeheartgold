@@ -6,7 +6,7 @@
 #include <nitro/card/common.h>
 #include <nitro/os/tcm.h>
 
-#define CARD_ROM_PAGE_SIZE	512
+#define CARD_ROM_PAGE_SIZE    512
 
 #define CARDMST_SEL_ROM     0x00
 #define CARDMST_IF_ENABLE   0x40

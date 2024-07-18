@@ -1788,7 +1788,7 @@ BOOL ScrNative_WaitApplication(ScriptContext *ctx) {
     }
 }
 
-BOOL ScrCmd_150(ScriptContext *ctx) {
+BOOL ScrCmd_RestoreOverworld(ScriptContext *ctx) {
     CallTask_RestoreOverworld(ctx->fieldSystem->taskman);
     return TRUE;
 }

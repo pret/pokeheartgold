@@ -12,7 +12,7 @@
 .public Get2DGfxResObjById
 .public sub_0200AF00
 .public sub_0200B0F8
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public SysTask_CreateOnVBlankQueue
 .public SysTask_CreateOnVWaitQueue
 .public SysTask_Destroy

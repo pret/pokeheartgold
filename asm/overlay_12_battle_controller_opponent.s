@@ -861,7 +861,7 @@ _02258E8C:
 	ldr r0, [r4, #0x18]
 	cmp r0, #0
 	beq _02258E96
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 _02258E96:
 	add r0, r4, #0
 	bl ov12_02262014
@@ -1713,7 +1713,7 @@ _02259418:
 	ldrb r1, [r4, #4]
 	ldrb r3, [r4, #1]
 	lsr r2, r2, #0x18
-	bl sub_020708D8
+	bl GetMonPicHeightBySpeciesGenderForme
 	add r6, r0, #0
 	ldr r0, [sp, #0x10]
 	bl ov12_0223A99C
@@ -2425,7 +2425,7 @@ _022599F2:
 	lsl r3, r3, #0x18
 	lsr r1, r1, #0x1e
 	lsr r3, r3, #0x1b
-	bl sub_020708D8
+	bl GetMonPicHeightBySpeciesGenderForme
 	str r0, [sp, #0x2c]
 	mov r0, #0x69
 	lsl r0, r0, #2
@@ -2666,7 +2666,7 @@ _02259BE4:
 	ldrb r2, [r2]
 	lsr r1, r1, #0x1e
 	lsr r3, r3, #0x1b
-	bl sub_020708D8
+	bl GetMonPicHeightBySpeciesGenderForme
 	add r1, r4, #0
 	add r1, #0x85
 	strb r0, [r1]
@@ -2873,7 +2873,7 @@ _02259D92:
 	ldrb r2, [r2]
 	lsr r1, r1, #0x1e
 	lsr r3, r3, #0x1b
-	bl sub_020708D8
+	bl GetMonPicHeightBySpeciesGenderForme
 	add r1, r5, #0
 	add r1, #0x85
 	strb r0, [r1]
@@ -9559,7 +9559,7 @@ _0225D2E6:
 	add r5, r0, #0
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x18]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4, #4]
 	mov r1, #0
 	str r1, [r0, #0x18]
@@ -9759,7 +9759,7 @@ _0225D49C:
 	add r5, r0, #0
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x18]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4, #4]
 	mov r1, #0
 	str r1, [r0, #0x18]
@@ -9991,7 +9991,7 @@ _0225D694:
 	add r4, r0, #0
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r5, #4]
 	mov r1, #0
 	str r1, [r0, #0x18]
@@ -10154,7 +10154,7 @@ _0225D7F2:
 	add r4, r0, #0
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r5, #4]
 	mov r1, #0
 	str r1, [r0, #0x18]
@@ -10279,7 +10279,7 @@ _0225D90E:
 	add r4, r0, #0
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r5, #4]
 	mov r1, #0
 	str r1, [r0, #0x18]
@@ -15462,7 +15462,7 @@ _022602CE:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldrb r3, [r3]
-	bl sub_020708D8
+	bl GetMonPicHeightBySpeciesGenderForme
 	mov r3, #0x50
 	sub r0, r3, r0
 	str r0, [sp]

@@ -39,7 +39,7 @@
 .public SpriteGfxHandler_UnloadPlttObjById
 .public SpriteGfxHandler_UnloadCellObjById
 .public SpriteGfxHandler_UnloadAnimObjById
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public TickSpriteAnimation1Frame
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public UnkImageStruct_SetSpriteAnimSeqNo
@@ -90,7 +90,7 @@
 .public sub_02021B5C
 .public Set2dSpriteAnimSeqNo
 .public sub_02024AA8
-.public sub_02024B1C
+.public Sprite_GetImageProxy
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public String_New

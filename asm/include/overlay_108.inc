@@ -59,7 +59,7 @@
 .public sub_0200D2A4
 .public SpriteRenderer_CreateSprite
 .public sub_0200D934
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public thunk_Set2dSpriteVisibleFlag
 .public thunk_Sprite_SetPriority
 .public UnkImageStruct_SetSpritePriority

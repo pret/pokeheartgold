@@ -427,6 +427,10 @@
 #define SHAYMIN_SKY             1
 #define SHAYMIN_FORM_MAX        2
 
+//Pic facing
+#define MON_PIC_FACING_BACK     0
+#define MON_PIC_FACING_FRONT    2
+
 #ifndef PM_ASM
 typedef enum {
     EGG = 0,

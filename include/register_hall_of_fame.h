@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_OVERLAY_63_H
-#define POKEHEARTGOLD_OVERLAY_63_H
+#ifndef POKEHEARTGOLD_REGISTER_HALL_OF_FAME_H
+#define POKEHEARTGOLD_REGISTER_HALL_OF_FAME_H
 
 #include "igt.h"
 #include "overlay_manager.h"
@@ -16,4 +16,4 @@ BOOL RegisterHallOfFame_Init(OVY_MANAGER *man, int *state);
 BOOL RegisterHallOfFame_Main(OVY_MANAGER *man, int *state);
 BOOL RegisterHallOfFame_Exit(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_OVERLAY_63_H
+#endif //POKEHEARTGOLD_REGISTER_HALL_OF_FAME_H
