@@ -100,6 +100,8 @@ typedef enum {
 void GX_SetGraphicsMode(GXDispMode dispMode, GXBGMode bgMode, GXBG0As bg0_2d3d);
 void GXS_SetGraphicsMode(GXBGMode bgMode);
 
+int GXx_GetMasterBrightness_(vu16 *reg);
+
 static inline s32 GX_GetVCount() {
     return reg_GX_VCOUNT;
 }
@@ -184,6 +186,14 @@ static inline GXOBJVRamModeChar GX_GetOBJVRamModeChar(void) {
 
 static inline GXOBJVRamModeChar GXS_GetOBJVRamModeChar(void) {
     return (GXOBJVRamModeChar)(reg_GXS_DB_DISPCNT & (REG_GXS_DB_DISPCNT_EXOBJ_CH_MASK | REG_GXS_DB_DISPCNT_OBJMAP_CH_MASK));
+}
+
+static inline int GX_GetMasterBrightness(void) {
+    return GXx_GetMasterBrightness_(&reg_GX_MASTER_BRIGHT);
+}
+
+static inline int GXS_GetMasterBrightness(void) {
+    return GXx_GetMasterBrightness_(&reg_GXS_DB_MASTER_BRIGHT);
 }
 
 #endif //NITRO_GX_GX_H_

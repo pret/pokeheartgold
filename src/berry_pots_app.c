@@ -106,7 +106,7 @@ static const GraphicsModes ov17_02203D88 = {
     GX_BGMODE_0,
     GX_BG0_AS_2D,
 };
-static const Unk122_021E92D0 ov17_02203D98 = {
+static const OamCharTransferParam ov17_02203D98 = {
     0x8, 0x10000, 0x4000, GX_OBJVRAMMODE_CHAR_1D_32K, GX_OBJVRAMMODE_CHAR_1D_32K,
 };
 static const WindowTemplate ov17_02203DC4[3] = {
@@ -132,7 +132,7 @@ static const BgTemplate ov17_02203E30 = {
 static const BgTemplate ov17_02203E4C = {
     0, 0, GF_BG_BUF_SIZE_256x256_4BPP, 0, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, GX_BG_SCRBASE_0xe800, GX_BG_CHARBASE_0x00000, GX_BG_EXTPLTT_01, 3, GX_BG_AREAOVER_XLU, 0, FALSE,
 };
-static const Unk122_021E92FC ov17_02203E68 = {0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20};
+static const OamManagerParam ov17_02203E68 = {0, 128, 0, 32, 0, 128, 0, 32};
 
 static const u8 ov17_02203D5C[] = {4, 3, 1};
 static const u8 ov17_02203D58[] = {3, 1};

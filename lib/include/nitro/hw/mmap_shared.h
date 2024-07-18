@@ -21,12 +21,16 @@
 #define HW_WRAM                 0x037F8000
 
 #define HW_MAIN_MEM_SYSTEM      (HW_MAIN_MEM + 0x007ffc00)
+#define HW_VBLANK_COUNT_BUF     (HW_MAIN_MEM + 0x007ffc3c)
 #define HW_WM_BOOT_BUF          (HW_MAIN_MEM + 0x007ffc40)
 #define HW_ARENA_INFO_BUF       (HW_MAIN_MEM + 0x007ffda0)
 #define HW_CTRDG_LOCK_BUF       (HW_MAIN_MEM + 0x007fffe8)
 #define HW_INIT_LOCK_BUF        (HW_MAIN_MEM + 0x007ffff0)
 #define HW_MAIN_MEM_MAIN        (HW_MAIN_MEM)
 #define HW_MAIN_MEM_MAIN_END    (HW_MAIN_MEM + HW_MAIN_MEM_MAIN_SIZE)
+
+#define HW_IOREG                0x04000000
+#define HW_REG_BASE             HW_IOREG  // alias
 
 #define HW_SVC_STACK_SIZE       0x00000040
 

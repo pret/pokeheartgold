@@ -101,7 +101,7 @@ LocalMapObject* sub_0205E1D0(MapObjectManager* manager, ObjectEvent* object_even
             return ret;
         }
     }
-    
+
     ret = MapObjectManager_GetFirstInactiveObject(manager);
     if (ret == NULL) {
         return ret;
@@ -292,7 +292,7 @@ void FieldSystem_SyncMapObjectsToSaveEx(FieldSystem* fieldSystem, MapObjectManag
     int index = 0;
     LocalMapObject* local_object;
     SavedMapObject* saved_object = list;
-    while (sub_0205EEF4(manager, &local_object, &index, MAPOBJECTFLAG_ACTIVE)) {
+    while (MapObjectManager_IterObjects(manager, &local_object, &index, MAPOBJECTFLAG_ACTIVE)) {
         sub_0205E680(fieldSystem, local_object, saved_object);
 
         count--;
@@ -507,7 +507,7 @@ LocalMapObject* sub_0205EA98(MapObjectManager* manager, u32 id, u32 map_no) {
     int index = 0;
     LocalMapObject* object;
 
-    while (sub_0205EEF4(manager, &object, &index, MAPOBJECTFLAG_ACTIVE) == TRUE) {
+    while (MapObjectManager_IterObjects(manager, &object, &index, MAPOBJECTFLAG_ACTIVE) == TRUE) {
         if (MapObject_CheckFlag25(object) == TRUE && id == MapObject_GetID(object) && map_no == sub_0205F544(object)) {
             return object;
         }
@@ -633,7 +633,7 @@ LocalMapObject* sub_0205EE10(MapObjectManager* manager, u32 object_id, u32 objec
     int index = 0;
     LocalMapObject* object;
 
-    while (sub_0205EEF4(manager, &object, &index, MAPOBJECTFLAG_ACTIVE) == TRUE) {
+    while (MapObjectManager_IterObjects(manager, &object, &index, MAPOBJECTFLAG_ACTIVE) == TRUE) {
         if (object_id == MapObject_GetID(object) && object_flag_id == sub_0205F254(object)) {
             return object;
         }
@@ -679,7 +679,7 @@ LocalMapObject* sub_0205EEB4(MapObjectManager* manager, u32 movement) {
     return NULL;
 }
 
-BOOL sub_0205EEF4(MapObjectManager* manager, LocalMapObject** object_dest, int* index, u32 bits) {
+BOOL MapObjectManager_IterObjects(MapObjectManager* manager, LocalMapObject** object_dest, int* index, u32 bits) {
     int count = MapObjectManager_GetCount(manager);
     if (*index >= count) {
         return FALSE;

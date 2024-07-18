@@ -53,24 +53,24 @@ typedef struct SpriteGfxHandler {
     int numGfxResObjectTypes;
 } SpriteGfxHandler; // size: 0x58
 
-typedef struct Unk122_021E92FC {
-    int unk0;
-    int unk4;
-    int unk8;
-    int unkC;
-    int unk10;
-    int unk14;
-    int unk18;
-    int unk1C;
-} Unk122_021E92FC;
+typedef struct OamManagerParam {
+    int fromOBJmain;
+    int numOBJmain;
+    int fromAffineMain;
+    int numAffineMain;
+    int fromOBJsub;
+    int numOBJsub;
+    int fromAffineSub;
+    int numAffineSub;
+} OamManagerParam;
 
-typedef struct Unk122_021E92D0 {
+typedef struct OamCharTransferParam {
     int maxTasks;
     int sizeMain;
     int sizeSub;
     GXOBJVRamModeChar charModeMain;
     GXOBJVRamModeChar charModeSub;
-} Unk122_021E92D0;
+} OamCharTransferParam;
 
 typedef union SpriteResourceCountsListUnion {
     int asArray[GF_GFX_RES_TYPE_MAX];
@@ -87,7 +87,7 @@ typedef union SpriteResourceCountsListUnion {
 SpriteRenderer* SpriteRenderer_Create(HeapID);
 SpriteGfxHandler* SpriteRenderer_CreateGfxHandler(SpriteRenderer*);
 GF_G2dRenderer* SpriteRenderer_GetG2dRendererPtr(SpriteRenderer*);
-BOOL sub_0200CF70(SpriteRenderer* renderer, const Unk122_021E92FC*, const Unk122_021E92D0*, int);
+BOOL sub_0200CF70(SpriteRenderer* renderer, const OamManagerParam* oamManagerParam, const OamCharTransferParam* oamTransferParam, int a3);
 BOOL sub_0200CFF4(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, int);
 void thunk_Sprite_Delete(Sprite* sprite);
 void sub_0200D020(SpriteGfxHandler* gfxHandler);

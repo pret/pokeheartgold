@@ -93,5 +93,5 @@ void Photo_Init(PHOTO *photo) {
 }
 
 static BOOL Photo_IsUse(const PHOTO *photo) {
-    return photo->is_init ? TRUE : FALSE;
+    return photo->numMons ? TRUE : FALSE;
 }

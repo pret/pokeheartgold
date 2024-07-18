@@ -101,7 +101,7 @@ asm void OSi_DoBoot(void) {
     add r1, r1, #HW_DTCM_SYSRV_OFS_INTR_VECTOR
     mov r0, #0
     str r0, [r1]
-    ldr r1, =REG_SUBINTF_ADDR
+    ldr r1, =REG_SUBPINTF_ADDR
     @waitSubIntf:
     ldrh r0, [r1]
     and r0, r0, #0x000F
@@ -124,7 +124,7 @@ asm void OSi_DoBoot(void) {
     ldr r1, =HW_COMPONENT_PARAM
     mov r2, #0x64
     bl OSi_CpuClear32
-    ldr r1, =REG_SUBINTF_ADDR
+    ldr r1, =REG_SUBPINTF_ADDR
     @waitSubIntf2:
     ldrh r0, [r1]
     and r0, r0, #0x000F

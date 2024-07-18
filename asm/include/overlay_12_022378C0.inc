@@ -31,11 +31,11 @@
 .public NARC_Delete
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadScrnData
-.public sub_02007FD4
-.public sub_02008120
-.public sub_02008524
-.public sub_02009408
-.public sub_02009418
+.public PokepicManager_Create
+.public PokepicManager_DrawAll
+.public PokepicManager_Delete
+.public PokepicManager_SetPlttBaseAddrAndSize
+.public PokepicManager_HandleLoadImgAndOrPltt
 .public G2dRenderer_SetSubSurfaceCoords
 .public sub_02009FE8
 .public sub_0200A080
@@ -173,7 +173,7 @@
 .public Save_Bag_New
 .public Save_Bag_Copy
 .public BagCursor_Battle_Init
-.public sub_020880B0
+.public CalculateHpBarColor
 .public ApplyMonMoodModifier
 .public G3X_SetFog
 .public G3X_SetClearColor

@@ -2,7 +2,7 @@
   "kind": "anim",
   "graphics": [
     {
-      "narc": 8,
+      "narc": "NARC_a_0_0_8",
       "file": 243,
       "compressed": true,
       "id": 0,
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "narc": 120,
+      "narc": "NARC_a_1_2_0",
       "file": 54,
       "compressed": false,
       "id": 1,
@@ -22,7 +22,7 @@
       ]
     },
     {
-      "narc": 120,
+      "narc": "NARC_a_1_2_0",
       "file": 56,
       "compressed": false,
       "id": 2,
@@ -32,7 +32,7 @@
       ]
     },
     {
-      "narc": 120,
+      "narc": "NARC_a_1_2_0",
       "file": 62,
       "compressed": false,
       "id": 3,
@@ -42,7 +42,7 @@
       ]
     },
     {
-      "narc": 239,
+      "narc": "NARC_a_2_3_7",
       "file": 14,
       "compressed": false,
       "id": 4,
@@ -52,7 +52,7 @@
       ]
     },
     {
-      "narc": 120,
+      "narc": "NARC_a_1_2_0",
       "file": 66,
       "compressed": false,
       "id": 5,

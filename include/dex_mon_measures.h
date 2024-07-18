@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_DEX_MON_MEASURES_H
 
 #include "heap.h"
+#include "filesystem.h"
 
 typedef struct PokedexData {
     u32 *height;

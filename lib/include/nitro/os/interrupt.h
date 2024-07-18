@@ -85,4 +85,8 @@ void OS_WaitIrq(BOOL clear, OSIrqMask irqFlags);
 OSIrqFunction OS_GetIrqFunction(OSIrqMask intrBit);
 void OSi_EnterDmaCallback(u32 dmaNo, void (*callback)(void * arg), void * arg);
 
+static inline vu32 OS_GetVBlankCount(void) {
+    return *(vu32 *)HW_VBLANK_COUNT_BUF;
+}
+
 #endif //NITRO_SUB_OS_INTERRUPT_H

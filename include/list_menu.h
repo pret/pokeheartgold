@@ -33,7 +33,7 @@ enum ListMenuAttr {
 typedef void (*LM_MoveCursorFunc_t)(struct ListMenu *list, s32 index, u8 onInit);
 typedef void (*LM_ItemPrintFunc_t)(struct ListMenu *list, s32 index, u8 y);
 
-struct ListMenuTemplate {
+typedef struct ListMenuTemplate {
     /*0x00*/ LISTMENUITEM *items;
     /*0x04*/ LM_MoveCursorFunc_t moveCursorFunc;
     /*0x08*/ LM_ItemPrintFunc_t itemPrintFunc;
@@ -53,11 +53,10 @@ struct ListMenuTemplate {
              u16 fontId:6;
              u16 cursorKind:1;
     /*0x1C*/ u32 unk_1C;
-};
+} ListMenuTemplate;
 
-struct ListMenu
-{
-    /*0x00*/ struct ListMenuTemplate template;
+typedef struct ListMenu {
+    /*0x00*/ ListMenuTemplate template;
     // ListMenuOverride from gen 3
     /*0x20*/ u8 cursorPal:4;
     u8 fillValue:4;
@@ -75,7 +74,7 @@ struct ListMenu
     /*0x32*/ u8 taskId;
     /*0x33*/ u8 unk_33;
     /*0x34*/ u8 heapId;
-};
+} ListMenu;
 
 struct ListMenu *ListMenuInit(const struct ListMenuTemplate *template, u16 cursorPos, u16 itemsAbove, HeapID heapId);
 s32 ListMenu_ProcessInput(struct ListMenu *list);
