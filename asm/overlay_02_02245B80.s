@@ -229,7 +229,7 @@ ov02_02245D18: ; 0x02245D18
 	add r0, #0xc
 	mov r1, #0xae
 	mov r2, #0
-	bl ov01_021FBCD8
+	bl Field3dModel_LoadFromFilesystem
 	ldr r0, [r4]
 	add r1, r4, #0
 	str r0, [sp]
@@ -241,7 +241,7 @@ ov02_02245D18: ; 0x02245D18
 	add r1, #0xc
 	mov r2, #0xae
 	mov r3, #1
-	bl ov01_021FBE44
+	bl Field3dModelAnimation_LoadFromFilesystem
 	ldr r0, [r4]
 	add r1, r4, #0
 	str r0, [sp]
@@ -253,22 +253,22 @@ ov02_02245D18: ; 0x02245D18
 	add r1, #0xc
 	mov r2, #0xae
 	mov r3, #2
-	bl ov01_021FBE44
+	bl Field3dModelAnimation_LoadFromFilesystem
 	add r0, r4, #0
 	add r1, r4, #0
 	add r0, #0x44
 	add r1, #0xc
-	bl ov01_021FBF2C
+	bl Field3dObject_InitFromModel
 	add r0, r4, #0
 	add r1, r4, #0
 	add r0, #0x44
 	add r1, #0x1c
-	bl ov01_021FBF50
+	bl Field3dObject_AddAnimation
 	add r0, r4, #0
 	add r1, r4, #0
 	add r0, #0x44
 	add r1, #0x30
-	bl ov01_021FBF50
+	bl Field3dObject_AddAnimation
 	add r0, r4, #0
 	mov r1, #0x22
 	mov r3, #0xa
@@ -276,11 +276,11 @@ ov02_02245D18: ; 0x02245D18
 	lsl r1, r1, #0xe
 	mov r2, #0
 	lsl r3, r3, #0x10
-	bl ov01_021FC00C
+	bl Field3dObject_SetPosEx
 	add r4, #0x44
 	add r0, r4, #0
 	mov r1, #1
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
@@ -292,20 +292,20 @@ ov02_02245DB0: ; 0x02245DB0
 	add r4, r0, #0
 	add r0, #0x44
 	mov r1, #0
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add r0, r4, #0
 	add r1, r4, #0
 	add r0, #0x30
 	add r1, #0xbc
-	bl ov01_021FBE80
+	bl Field3dModelAnimation_Unload
 	add r0, r4, #0
 	add r1, r4, #0
 	add r0, #0x1c
 	add r1, #0xbc
-	bl ov01_021FBE80
+	bl Field3dModelAnimation_Unload
 	add r4, #0xc
 	add r0, r4, #0
-	bl ov01_021FBDA8
+	bl Field3dModel_Unload
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov02_02245DB0
@@ -317,15 +317,15 @@ ov02_02245DE0: ; 0x02245DE0
 	add r4, r0, #0
 	add r0, #0x1c
 	lsl r1, r1, #0xc
-	bl ov01_021FBEAC
+	bl Field3dModelAnimation_FrameAdvanceAndLoop
 	add r0, r4, #0
 	mov r1, #1
 	add r0, #0x30
 	lsl r1, r1, #0xc
-	bl ov01_021FBEAC
+	bl Field3dModelAnimation_FrameAdvanceAndLoop
 	add r4, #0x44
 	add r0, r4, #0
-	bl ov01_021FBF68
+	bl Field3dObject_Draw
 	pop {r4, pc}
 	thumb_func_end ov02_02245DE0
 
@@ -353,11 +353,11 @@ ov02_02245E04: ; 0x02245E04
 	ldrb r2, [r5, #2]
 	add r0, r4, #0
 	add r3, r6, #0
-	bl ov01_021FBCD8
+	bl Field3dModel_LoadFromFilesystem
 	add r0, r4, #0
 	add r0, #0x10
 	add r1, r4, #0
-	bl ov01_021FBF2C
+	bl Field3dObject_InitFromModel
 	ldrh r1, [r5]
 	ldrb r3, [r5, #3]
 	ldr r2, [r5, #4]
@@ -366,7 +366,7 @@ ov02_02245E04: ; 0x02245E04
 	add r0, r4, #0
 	add r0, #0x10
 	mov r1, #1
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add r0, r4, #0
 	mov r1, #1
 	add r0, #0x9e
@@ -382,7 +382,7 @@ ov02_02245E68: ; 0x02245E68
 	add r5, r0, #0
 	add r0, #0x10
 	mov r1, #0
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add r0, r5, #0
 	add r0, #0x9c
 	ldrb r0, [r0]
@@ -402,13 +402,13 @@ _02245E8E:
 	ldr r1, [r1]
 	add r0, r7, #0
 	add r1, r1, r4
-	bl ov01_021FBF5C
+	bl Field3dObject_RemoveAnimation
 	add r0, r5, #0
 	add r0, #0x88
 	ldr r0, [r0]
 	ldr r1, [sp]
 	add r0, r0, r4
-	bl ov01_021FBE80
+	bl Field3dModelAnimation_Unload
 	add r0, r5, #0
 	add r0, #0x9c
 	ldrb r0, [r0]
@@ -422,7 +422,7 @@ _02245EB8:
 	add r0, #0x9c
 	strb r1, [r0]
 	add r0, r5, #0
-	bl ov01_021FBDA8
+	bl Field3dModel_Unload
 	add r0, r5, #0
 	add r0, #0x88
 	ldr r0, [r0]
@@ -462,13 +462,13 @@ _02245F04:
 	ldr r1, [r1]
 	ldr r0, [sp, #0x10]
 	add r1, r1, r4
-	bl ov01_021FBF5C
+	bl Field3dObject_RemoveAnimation
 	add r0, r5, #0
 	add r0, #0x88
 	ldr r0, [r0]
 	ldr r1, [sp, #0x14]
 	add r0, r0, r4
-	bl ov01_021FBE80
+	bl Field3dModelAnimation_Unload
 	add r0, r5, #0
 	add r0, #0x9c
 	ldrb r0, [r0]
@@ -537,13 +537,13 @@ _02245F8E:
 	ldr r0, [r0]
 	ldrh r3, [r7]
 	add r0, r0, r4
-	bl ov01_021FBE44
+	bl Field3dModelAnimation_LoadFromFilesystem
 	add r1, r5, #0
 	add r1, #0x88
 	ldr r1, [r1]
 	ldr r0, [sp, #0x1c]
 	add r1, r1, r4
-	bl ov01_021FBF50
+	bl Field3dObject_AddAnimation
 	add r0, r5, #0
 	add r0, #0x9c
 	ldrb r0, [r0]
@@ -595,7 +595,7 @@ _0224600C:
 	add r0, #0x88
 	ldr r0, [r0]
 	add r0, r0, r4
-	bl ov01_021FBEE4
+	bl Field3dModelAnimation_FrameAdvanceAndCheck
 	add r7, r7, r0
 	add r0, r5, #0
 	add r0, #0x9c
@@ -607,7 +607,7 @@ _0224600C:
 _0224602E:
 	add r0, r5, #0
 	add r0, #0x10
-	bl ov01_021FBF68
+	bl Field3dObject_Draw
 	add r5, #0x9c
 	ldrb r0, [r5]
 	cmp r7, r0
@@ -656,7 +656,7 @@ _02246082:
 	add r0, #0x88
 	ldr r0, [r0]
 	add r0, r0, r6
-	bl ov01_021FBEAC
+	bl Field3dModelAnimation_FrameAdvanceAndLoop
 	add r0, r5, #0
 	add r0, #0x9c
 	ldrb r0, [r0]
@@ -667,7 +667,7 @@ _02246082:
 _022460A2:
 	add r5, #0x10
 	add r0, r5, #0
-	bl ov01_021FBF68
+	bl Field3dObject_Draw
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov02_02246048
 
@@ -746,7 +746,7 @@ _02246116:
 	ldr r2, [sp, #4]
 	ldr r3, [sp, #8]
 	add r0, #0x10
-	bl ov01_021FC00C
+	bl Field3dObject_SetPosEx
 	ldrh r1, [r4, #0x10]
 	mov r0, #0xc
 	add r2, r1, #0
@@ -866,7 +866,7 @@ _02246204:
 	ldr r2, [sp, #4]
 	ldr r3, [sp, #8]
 	add r0, #0x10
-	bl ov01_021FC00C
+	bl Field3dObject_SetPosEx
 	ldr r0, _022462CC ; =SEQ_SE_GS_STOPPERKAIJO
 	bl PlaySE
 	ldrh r0, [r4, #0x12]
@@ -12265,11 +12265,11 @@ ov02_0224B7CC: ; 0x0224B7CC
 	add r0, r4, r6
 	add r0, #0x24
 	add r1, sp, #0
-	bl ov01_021FC014
+	bl Field3dObject_SetPos
 	add r0, r4, r6
 	add r0, #0x24
 	mov r1, #0
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	mov r0, #1
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
@@ -12310,15 +12310,15 @@ _0224B832:
 	add r0, r4, r6
 	add r0, #0x24
 	mov r1, #1
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add r0, r4, r6
 	add r0, #0x9c
 	mov r1, #0
-	bl ov01_021FBF20
+	bl Field3dModelAnimation_FrameSet
 	add r0, r4, r6
 	add r0, #0xb0
 	mov r1, #0
-	bl ov01_021FBF20
+	bl Field3dModelAnimation_FrameSet
 	mov r0, #2
 	str r0, [r5, #4]
 _0224B854:
@@ -12326,12 +12326,12 @@ _0224B854:
 	mov r1, #1
 	add r0, #0x9c
 	lsl r1, r1, #0xc
-	bl ov01_021FBEE4
+	bl Field3dModelAnimation_FrameAdvanceAndCheck
 	add r0, r4, r6
 	mov r1, #1
 	add r0, #0xb0
 	lsl r1, r1, #0xc
-	bl ov01_021FBEE4
+	bl Field3dModelAnimation_FrameAdvanceAndCheck
 	cmp r0, #0
 	beq _0224B878
 	mov r0, #1
@@ -12348,11 +12348,11 @@ ov02_0224B87C: ; 0x0224B87C
 	mov r0, #0x93
 	ldr r1, [r1]
 	lsl r0, r0, #2
-	ldr r3, _0224B888 ; =ov01_021FBF68
+	ldr r3, _0224B888 ; =Field3dObject_Draw
 	add r0, r1, r0
 	bx r3
 	.balign 4, 0
-_0224B888: .word ov01_021FBF68
+_0224B888: .word Field3dObject_Draw
 	thumb_func_end ov02_0224B87C
 
 	thumb_func_start ov02_0224B88C
@@ -12379,7 +12379,7 @@ ov02_0224B88C: ; 0x0224B88C
 	add r1, r4, #0
 	add r0, #0x24
 	add r1, #0x14
-	bl ov01_021FBF2C
+	bl Field3dObject_InitFromModel
 	mov r0, #4
 	str r0, [sp]
 	add r0, r4, #0
@@ -12389,7 +12389,7 @@ ov02_0224B88C: ; 0x0224B88C
 	mov r2, #0x67
 	mov r3, #0xa7
 	str r4, [sp, #4]
-	bl ov01_021FBE44
+	bl Field3dModelAnimation_LoadFromFilesystem
 	mov r0, #4
 	str r0, [sp]
 	add r0, r4, #0
@@ -12399,17 +12399,17 @@ ov02_0224B88C: ; 0x0224B88C
 	mov r2, #0x67
 	mov r3, #0xa5
 	str r4, [sp, #4]
-	bl ov01_021FBE44
+	bl Field3dModelAnimation_LoadFromFilesystem
 	add r0, r4, #0
 	add r1, r4, #0
 	add r0, #0x24
 	add r1, #0x9c
-	bl ov01_021FBF50
+	bl Field3dObject_AddAnimation
 	add r0, r4, #0
 	add r4, #0xb0
 	add r0, #0x24
 	add r1, r4, #0
-	bl ov01_021FBF50
+	bl Field3dObject_AddAnimation
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
@@ -12429,11 +12429,11 @@ ov02_0224B90C: ; 0x0224B90C
 	add r0, r4, #0
 	add r0, #0x9c
 	add r1, r4, #0
-	bl ov01_021FBE80
+	bl Field3dModelAnimation_Unload
 	add r0, r4, #0
 	add r0, #0xb0
 	add r1, r4, #0
-	bl ov01_021FBE80
+	bl Field3dModelAnimation_Unload
 	pop {r4, pc}
 	thumb_func_end ov02_0224B90C
 
@@ -15419,7 +15419,7 @@ _0224D02C:
 	add r1, r1, r3
 	add r0, r7, #0
 	add r3, r4, r3
-	bl ov01_021FC00C
+	bl Field3dObject_SetPosEx
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov02_0224CFD8
@@ -15476,7 +15476,7 @@ _0224D094:
 	add r1, r1, r3
 	add r0, r7, #0
 	add r3, r4, r3
-	bl ov01_021FC00C
+	bl Field3dObject_SetPosEx
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov02_0224D044
@@ -15492,7 +15492,7 @@ ov02_0224D0AC: ; 0x0224D0AC
 	ldr r2, [sp, #4]
 	ldr r3, [sp, #8]
 	add r0, r4, #0
-	bl ov01_021FC00C
+	bl Field3dObject_SetPosEx
 	add sp, #0xc
 	pop {r3, r4, pc}
 	thumb_func_end ov02_0224D0AC
@@ -15514,11 +15514,11 @@ ov02_0224D0C8: ; 0x0224D0C8
 	mov r1, #0x86
 	add r2, r5, #0
 	mov r3, #4
-	bl ov01_021FBCD8
+	bl Field3dModel_LoadFromFilesystem
 	add r1, r6, #0
 	add r0, r6, #0
 	add r1, #0x78
-	bl ov01_021FBF2C
+	bl Field3dObject_InitFromModel
 	add r0, r6, #0
 	add r0, #0xd8
 	str r4, [r0]
@@ -15543,10 +15543,10 @@ _0224D114:
 	mov r2, #0x86
 	add r3, r3, r4
 	str r7, [sp, #4]
-	bl ov01_021FBE44
+	bl Field3dModelAnimation_LoadFromFilesystem
 	add r0, r6, #0
 	add r1, r5, #0
-	bl ov01_021FBF50
+	bl Field3dObject_AddAnimation
 	add r0, r6, #0
 	add r0, #0xd8
 	ldr r0, [r0]
@@ -15566,7 +15566,7 @@ ov02_0224D144: ; 0x0224D144
 	add r6, r0, #0
 	add r0, #0x78
 	add r7, r1, #0
-	bl ov01_021FBDA8
+	bl Field3dModel_Unload
 	add r0, r6, #0
 	add r0, #0xd8
 	ldr r0, [r0]
@@ -15578,7 +15578,7 @@ ov02_0224D144: ; 0x0224D144
 _0224D160:
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov01_021FBE80
+	bl Field3dModelAnimation_Unload
 	add r0, r6, #0
 	add r0, #0xd8
 	ldr r0, [r0]
@@ -15606,7 +15606,7 @@ _0224D18C:
 	mov r1, #1
 	add r0, r5, #0
 	lsl r1, r1, #0xc
-	bl ov01_021FBEE4
+	bl Field3dModelAnimation_FrameAdvanceAndCheck
 	and r6, r0
 	add r0, r7, #0
 	add r0, #0xd8
@@ -15637,7 +15637,7 @@ ov02_0224D1AC: ; 0x0224D1AC
 _0224D1C2:
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov01_021FBEAC
+	bl Field3dModelAnimation_FrameAdvanceAndLoop
 	add r0, r6, #0
 	add r0, #0xd8
 	ldr r0, [r0]
@@ -15652,10 +15652,10 @@ _0224D1D8:
 
 	thumb_func_start ov02_0224D1DC
 ov02_0224D1DC: ; 0x0224D1DC
-	ldr r3, _0224D1E0 ; =ov01_021FBF68
+	ldr r3, _0224D1E0 ; =Field3dObject_Draw
 	bx r3
 	.balign 4, 0
-_0224D1E0: .word ov01_021FBF68
+_0224D1E0: .word Field3dObject_Draw
 	thumb_func_end ov02_0224D1DC
 
 	thumb_func_start ov02_0224D1E4
@@ -15758,7 +15758,7 @@ _0224D29A:
 	bne _0224D2B8
 	add r0, r4, #0
 	mov r1, #0
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add r0, r4, #0
 	add r0, #0xec
 	ldr r0, [r0]
@@ -15782,39 +15782,39 @@ _0224D2C4: .word ov02_0224D1DC
 	thumb_func_start ov02_0224D2C8
 ov02_0224D2C8: ; 0x0224D2C8
 	ldr r0, [r0, #4]
-	ldr r3, _0224D2D4 ; =ov01_021E67BC
+	ldr r3, _0224D2D4 ; =Field3dObjectTaskManager_CreateTask
 	ldr r0, [r0, #4]
 	ldr r1, _0224D2D8 ; =ov02_02253974
 	bx r3
 	nop
-_0224D2D4: .word ov01_021E67BC
+_0224D2D4: .word Field3dObjectTaskManager_CreateTask
 _0224D2D8: .word ov02_02253974
 	thumb_func_end ov02_0224D2C8
 
 	thumb_func_start ov02_0224D2DC
 ov02_0224D2DC: ; 0x0224D2DC
 	ldr r0, [r0, #4]
-	ldr r3, _0224D2E8 ; =ov01_021E67BC
+	ldr r3, _0224D2E8 ; =Field3dObjectTaskManager_CreateTask
 	ldr r0, [r0, #4]
 	ldr r1, _0224D2EC ; =ov02_022539BC
 	bx r3
 	nop
-_0224D2E8: .word ov01_021E67BC
+_0224D2E8: .word Field3dObjectTaskManager_CreateTask
 _0224D2EC: .word ov02_022539BC
 	thumb_func_end ov02_0224D2DC
 
 	thumb_func_start ov02_0224D2F0
 ov02_0224D2F0: ; 0x0224D2F0
-	ldr r3, _0224D2F4 ; =ov01_021E683C
+	ldr r3, _0224D2F4 ; =Field3dObjectTask_Delete
 	bx r3
 	.balign 4, 0
-_0224D2F4: .word ov01_021E683C
+_0224D2F4: .word Field3dObjectTask_Delete
 	thumb_func_end ov02_0224D2F0
 
 	thumb_func_start ov02_0224D2F8
 ov02_0224D2F8: ; 0x0224D2F8
 	push {r3, lr}
-	bl ov01_021E687C
+	bl Field3dObjectTask_GetData
 	add r0, #0xec
 	ldr r0, [r0]
 	cmp r0, #1
@@ -15927,7 +15927,7 @@ _0224D3C6:
 	bne _0224D3E4
 	add r0, r4, #0
 	mov r1, #0
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add r0, r4, #0
 	add r0, #0xec
 	ldr r0, [r0]
@@ -15951,39 +15951,39 @@ _0224D3F0: .word ov02_0224D1DC
 	thumb_func_start ov02_0224D3F4
 ov02_0224D3F4: ; 0x0224D3F4
 	ldr r0, [r0, #4]
-	ldr r3, _0224D400 ; =ov01_021E67BC
+	ldr r3, _0224D400 ; =Field3dObjectTaskManager_CreateTask
 	ldr r0, [r0, #4]
 	ldr r1, _0224D404 ; =ov02_022538FC
 	bx r3
 	nop
-_0224D400: .word ov01_021E67BC
+_0224D400: .word Field3dObjectTaskManager_CreateTask
 _0224D404: .word ov02_022538FC
 	thumb_func_end ov02_0224D3F4
 
 	thumb_func_start ov02_0224D408
 ov02_0224D408: ; 0x0224D408
 	ldr r0, [r0, #4]
-	ldr r3, _0224D414 ; =ov01_021E67BC
+	ldr r3, _0224D414 ; =Field3dObjectTaskManager_CreateTask
 	ldr r0, [r0, #4]
 	ldr r1, _0224D418 ; =ov02_0225398C
 	bx r3
 	nop
-_0224D414: .word ov01_021E67BC
+_0224D414: .word Field3dObjectTaskManager_CreateTask
 _0224D418: .word ov02_0225398C
 	thumb_func_end ov02_0224D408
 
 	thumb_func_start ov02_0224D41C
 ov02_0224D41C: ; 0x0224D41C
-	ldr r3, _0224D420 ; =ov01_021E683C
+	ldr r3, _0224D420 ; =Field3dObjectTask_Delete
 	bx r3
 	.balign 4, 0
-_0224D420: .word ov01_021E683C
+_0224D420: .word Field3dObjectTask_Delete
 	thumb_func_end ov02_0224D41C
 
 	thumb_func_start ov02_0224D424
 ov02_0224D424: ; 0x0224D424
 	push {r3, lr}
-	bl ov01_021E687C
+	bl Field3dObjectTask_GetData
 	add r0, #0xec
 	ldr r0, [r0]
 	cmp r0, #1
@@ -16110,7 +16110,7 @@ _0224D50A:
 	add r0, r4, #0
 	add r0, #0xdc
 	mov r1, #0
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	ldr r0, _0224D57C ; =SEQ_SE_DP_FW463
 	bl PlaySE
 	add r0, r7, #0
@@ -16129,10 +16129,10 @@ _0224D522:
 	add r0, r4, #0
 	add r0, #0xdc
 	mov r1, #1
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add r0, r4, #0
 	mov r1, #0
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add r1, r4, #0
 	ldr r0, [r5, #0x40]
 	add r1, #0xdc
@@ -16179,21 +16179,21 @@ _0224D586:
 	thumb_func_start ov02_0224D598
 ov02_0224D598: ; 0x0224D598
 	ldr r0, [r0, #4]
-	ldr r3, _0224D5A4 ; =ov01_021E67BC
+	ldr r3, _0224D5A4 ; =Field3dObjectTaskManager_CreateTask
 	ldr r0, [r0, #4]
 	ldr r1, _0224D5A8 ; =ov02_02253944
 	bx r3
 	nop
-_0224D5A4: .word ov01_021E67BC
+_0224D5A4: .word Field3dObjectTaskManager_CreateTask
 _0224D5A8: .word ov02_02253944
 	thumb_func_end ov02_0224D598
 
 	thumb_func_start ov02_0224D5AC
 ov02_0224D5AC: ; 0x0224D5AC
-	ldr r3, _0224D5B0 ; =ov01_021E683C
+	ldr r3, _0224D5B0 ; =Field3dObjectTask_Delete
 	bx r3
 	.balign 4, 0
-_0224D5B0: .word ov01_021E683C
+_0224D5B0: .word Field3dObjectTask_Delete
 	thumb_func_end ov02_0224D5AC
 
 	thumb_func_start ov02_0224D5B4
@@ -16250,7 +16250,7 @@ ov02_0224D5B4: ; 0x0224D5B4
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #1
-	bl ov01_021FC024
+	bl Field3dObject_SetXRotation
 	ldr r0, _0224D644 ; =SEQ_SE_DP_FW463
 	bl PlaySE
 	mov r0, #0
@@ -16300,21 +16300,21 @@ _0224D678: .word ov02_0224D1DC
 	thumb_func_start ov02_0224D67C
 ov02_0224D67C: ; 0x0224D67C
 	ldr r0, [r0, #4]
-	ldr r3, _0224D688 ; =ov01_021E67BC
+	ldr r3, _0224D688 ; =Field3dObjectTaskManager_CreateTask
 	ldr r0, [r0, #4]
 	ldr r1, _0224D68C ; =ov02_02253914
 	bx r3
 	nop
-_0224D688: .word ov01_021E67BC
+_0224D688: .word Field3dObjectTaskManager_CreateTask
 _0224D68C: .word ov02_02253914
 	thumb_func_end ov02_0224D67C
 
 	thumb_func_start ov02_0224D690
 ov02_0224D690: ; 0x0224D690
-	ldr r3, _0224D694 ; =ov01_021E683C
+	ldr r3, _0224D694 ; =Field3dObjectTask_Delete
 	bx r3
 	.balign 4, 0
-_0224D694: .word ov01_021E683C
+_0224D694: .word Field3dObjectTask_Delete
 	thumb_func_end ov02_0224D690
 
 	thumb_func_start ov02_0224D698
@@ -16340,7 +16340,7 @@ _0224D6B0:
 	add r0, r7, #0
 	add r2, r2, r4
 	add r3, r3, r5
-	bl ov01_021FC00C
+	bl Field3dObject_SetPosEx
 	add r0, r7, #0
 	mov r4, #0
 	add r5, r7, #0
@@ -16352,14 +16352,14 @@ _0224D6B0:
 _0224D6D8:
 	add r0, r5, #0
 	add r1, r6, #0
-	bl ov01_021FBF20
+	bl Field3dModelAnimation_FrameSet
 	add r4, r4, #1
 	add r5, #0x14
 	cmp r4, #4
 	blt _0224D6D8
 	add r0, r7, #0
 	mov r1, #1
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	ldr r0, _0224D6FC ; =SEQ_SE_DP_UG_023
 	bl PlaySE
 	add sp, #0xc
@@ -16384,7 +16384,7 @@ ov02_0224D700: ; 0x0224D700
 _0224D716:
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov01_021FBEE4
+	bl Field3dModelAnimation_FrameAdvanceAndCheck
 	add r6, r6, #1
 	and r4, r0
 	add r5, #0x14
@@ -16397,7 +16397,7 @@ _0224D716:
 	add r0, #0xc8
 	str r1, [r0]
 	ldr r0, [sp]
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 _0224D73A:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov02_0224D700
@@ -16415,7 +16415,7 @@ ov02_0224D73C: ; 0x0224D73C
 	bl memset
 	ldr r1, [sp]
 	add r0, r7, #0
-	bl ov01_021FBF2C
+	bl Field3dObject_InitFromModel
 	add r4, r7, #0
 	mov r6, #0
 	add r4, #0x78
@@ -16427,7 +16427,7 @@ _0224D75E:
 	bl ov01_021FBE70
 	add r0, r7, #0
 	add r1, r4, #0
-	bl ov01_021FBF50
+	bl Field3dObject_AddAnimation
 	add r6, r6, #1
 	add r5, r5, #4
 	add r4, #0x14
@@ -16435,7 +16435,7 @@ _0224D75E:
 	blt _0224D75E
 	add r0, r7, #0
 	mov r1, #0
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov02_0224D73C
@@ -16451,7 +16451,7 @@ ov02_0224D788: ; 0x0224D788
 _0224D794:
 	add r0, r5, #0
 	add r1, r6, #0
-	bl ov01_021FBE80
+	bl Field3dModelAnimation_Unload
 	add r4, r4, #1
 	add r5, #0x14
 	cmp r4, #4
@@ -16598,7 +16598,7 @@ ov02_0224D880: ; 0x0224D880
 	mov r1, #0x86
 	mov r2, #8
 	mov r3, #4
-	bl ov01_021FBCD8
+	bl Field3dModel_LoadFromFilesystem
 	mov r7, #0xcd
 	mov r4, #0
 	add r6, r5, #0
@@ -16668,7 +16668,7 @@ _0224D920:
 	cmp r6, #0x10
 	blt _0224D920
 	add r0, r5, #0
-	bl ov01_021FBDA8
+	bl Field3dModel_Unload
 	mov r6, #0xcd
 	mov r4, #0
 	lsl r6, r6, #4
@@ -16726,7 +16726,7 @@ ov02_0224D98C: ; 0x0224D98C
 	add r5, #0x10
 _0224D994:
 	add r0, r5, #0
-	bl ov01_021FBF68
+	bl Field3dObject_Draw
 	add r4, r4, #1
 	add r5, #0xcc
 	cmp r4, #0x10
@@ -16737,21 +16737,21 @@ _0224D994:
 	thumb_func_start ov02_0224D9A4
 ov02_0224D9A4: ; 0x0224D9A4
 	ldr r0, [r0, #4]
-	ldr r3, _0224D9B0 ; =ov01_021E67BC
+	ldr r3, _0224D9B0 ; =Field3dObjectTaskManager_CreateTask
 	ldr r0, [r0, #4]
 	ldr r1, _0224D9B4 ; =ov02_0225395C
 	bx r3
 	nop
-_0224D9B0: .word ov01_021E67BC
+_0224D9B0: .word Field3dObjectTaskManager_CreateTask
 _0224D9B4: .word ov02_0225395C
 	thumb_func_end ov02_0224D9A4
 
 	thumb_func_start ov02_0224D9B8
 ov02_0224D9B8: ; 0x0224D9B8
-	ldr r3, _0224D9BC ; =ov01_021E683C
+	ldr r3, _0224D9BC ; =Field3dObjectTask_Delete
 	bx r3
 	.balign 4, 0
-_0224D9BC: .word ov01_021E683C
+_0224D9BC: .word Field3dObjectTask_Delete
 	thumb_func_end ov02_0224D9B8
 
 	thumb_func_start ov02_0224D9C0
@@ -17069,7 +17069,7 @@ _0224DC1C:
 	bne _0224DC4C
 	add r0, r4, #0
 	mov r1, #0
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	ldr r0, _0224DC50 ; =0x00000113
 	ldrb r1, [r4, r0]
 	add r1, r1, #1
@@ -17103,39 +17103,39 @@ _0224DC60: .word ov02_0224D1DC
 	thumb_func_start ov02_0224DC64
 ov02_0224DC64: ; 0x0224DC64
 	ldr r0, [r0, #4]
-	ldr r3, _0224DC70 ; =ov01_021E67BC
+	ldr r3, _0224DC70 ; =Field3dObjectTaskManager_CreateTask
 	ldr r0, [r0, #4]
 	ldr r1, _0224DC74 ; =ov02_022539A4
 	bx r3
 	nop
-_0224DC70: .word ov01_021E67BC
+_0224DC70: .word Field3dObjectTaskManager_CreateTask
 _0224DC74: .word ov02_022539A4
 	thumb_func_end ov02_0224DC64
 
 	thumb_func_start ov02_0224DC78
 ov02_0224DC78: ; 0x0224DC78
 	ldr r0, [r0, #4]
-	ldr r3, _0224DC84 ; =ov01_021E67BC
+	ldr r3, _0224DC84 ; =Field3dObjectTaskManager_CreateTask
 	ldr r0, [r0, #4]
 	ldr r1, _0224DC88 ; =ov02_0225392C
 	bx r3
 	nop
-_0224DC84: .word ov01_021E67BC
+_0224DC84: .word Field3dObjectTaskManager_CreateTask
 _0224DC88: .word ov02_0225392C
 	thumb_func_end ov02_0224DC78
 
 	thumb_func_start ov02_0224DC8C
 ov02_0224DC8C: ; 0x0224DC8C
-	ldr r3, _0224DC90 ; =ov01_021E683C
+	ldr r3, _0224DC90 ; =Field3dObjectTask_Delete
 	bx r3
 	.balign 4, 0
-_0224DC90: .word ov01_021E683C
+_0224DC90: .word Field3dObjectTask_Delete
 	thumb_func_end ov02_0224DC8C
 
 	thumb_func_start ov02_0224DC94
 ov02_0224DC94: ; 0x0224DC94
 	push {r3, lr}
-	bl ov01_021E687C
+	bl Field3dObjectTask_GetData
 	ldr r1, _0224DCAC ; =0x00000113
 	ldrb r0, [r0, r1]
 	cmp r0, #1
@@ -17168,7 +17168,7 @@ ov02_0224DCB0: ; 0x0224DCB0
 	mov r1, #0x86
 	mov r2, #8
 	mov r3, #4
-	bl ov01_021FBCD8
+	bl Field3dModel_LoadFromFilesystem
 	ldr r7, _0224DD30 ; =0x00000E68
 	mov r4, #0
 	add r5, r6, #0
@@ -17245,7 +17245,7 @@ _0224DD58:
 	cmp r6, #0x12
 	blt _0224DD58
 	add r0, r5, #0
-	bl ov01_021FBDA8
+	bl Field3dModel_Unload
 	ldr r6, _0224DD88 ; =0x00000E68
 	mov r4, #0
 _0224DD72:
@@ -17303,7 +17303,7 @@ ov02_0224DDC8: ; 0x0224DDC8
 	add r5, #0x10
 _0224DDD0:
 	add r0, r5, #0
-	bl ov01_021FBF68
+	bl Field3dObject_Draw
 	add r4, r4, #1
 	add r5, #0xcc
 	cmp r4, #0x12
@@ -17314,33 +17314,33 @@ _0224DDD0:
 	thumb_func_start ov02_0224DDE0
 ov02_0224DDE0: ; 0x0224DDE0
 	ldr r0, [r0, #4]
-	ldr r3, _0224DDEC ; =ov01_021E67BC
+	ldr r3, _0224DDEC ; =Field3dObjectTaskManager_CreateTask
 	ldr r0, [r0, #4]
 	ldr r1, _0224DDF0 ; =ov02_022539D4
 	bx r3
 	nop
-_0224DDEC: .word ov01_021E67BC
+_0224DDEC: .word Field3dObjectTaskManager_CreateTask
 _0224DDF0: .word ov02_022539D4
 	thumb_func_end ov02_0224DDE0
 
 	thumb_func_start ov02_0224DDF4
 ov02_0224DDF4: ; 0x0224DDF4
 	ldr r0, [r0, #4]
-	ldr r3, _0224DE00 ; =ov01_021E67BC
+	ldr r3, _0224DE00 ; =Field3dObjectTaskManager_CreateTask
 	ldr r0, [r0, #4]
 	ldr r1, _0224DE04 ; =ov02_022539EC
 	bx r3
 	nop
-_0224DE00: .word ov01_021E67BC
+_0224DE00: .word Field3dObjectTaskManager_CreateTask
 _0224DE04: .word ov02_022539EC
 	thumb_func_end ov02_0224DDF4
 
 	thumb_func_start ov02_0224DE08
 ov02_0224DE08: ; 0x0224DE08
-	ldr r3, _0224DE0C ; =ov01_021E683C
+	ldr r3, _0224DE0C ; =Field3dObjectTask_Delete
 	bx r3
 	.balign 4, 0
-_0224DE0C: .word ov01_021E683C
+_0224DE0C: .word Field3dObjectTask_Delete
 	thumb_func_end ov02_0224DE08
 
 	thumb_func_start ov02_0224DE10
@@ -17362,7 +17362,7 @@ _0224DE26:
 	add r0, r7, #0
 	add r2, r2, r5
 	add r3, r3, r6
-	bl ov01_021FC00C
+	bl Field3dObject_SetPosEx
 	add r0, r7, #0
 	mov r4, #0
 	add r5, r7, #0
@@ -17374,14 +17374,14 @@ _0224DE26:
 _0224DE46:
 	add r0, r5, #0
 	add r1, r6, #0
-	bl ov01_021FBF20
+	bl Field3dModelAnimation_FrameSet
 	add r4, r4, #1
 	add r5, #0x14
 	cmp r4, #4
 	blt _0224DE46
 	add r0, r7, #0
 	mov r1, #1
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	ldr r0, _0224DE68 ; =SEQ_SE_DP_UG_023
 	bl PlaySE
 	pop {r3, r4, r5, r6, r7, pc}
@@ -17405,7 +17405,7 @@ ov02_0224DE6C: ; 0x0224DE6C
 _0224DE82:
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ov01_021FBEE4
+	bl Field3dModelAnimation_FrameAdvanceAndCheck
 	add r6, r6, #1
 	and r4, r0
 	add r5, #0x14
@@ -17418,7 +17418,7 @@ _0224DE82:
 	add r0, #0xc8
 	str r1, [r0]
 	ldr r0, [sp]
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 _0224DEA6:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov02_0224DE6C
@@ -17436,7 +17436,7 @@ ov02_0224DEA8: ; 0x0224DEA8
 	bl memset
 	ldr r1, [sp]
 	add r0, r7, #0
-	bl ov01_021FBF2C
+	bl Field3dObject_InitFromModel
 	add r4, r7, #0
 	mov r6, #0
 	add r4, #0x78
@@ -17448,7 +17448,7 @@ _0224DECA:
 	bl ov01_021FBE70
 	add r0, r7, #0
 	add r1, r4, #0
-	bl ov01_021FBF50
+	bl Field3dObject_AddAnimation
 	add r6, r6, #1
 	add r5, r5, #4
 	add r4, #0x14
@@ -17456,7 +17456,7 @@ _0224DECA:
 	blt _0224DECA
 	add r0, r7, #0
 	mov r1, #0
-	bl ov01_021FC004
+	bl Field3dObject_SetActiveFlag
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov02_0224DEA8
@@ -17472,7 +17472,7 @@ ov02_0224DEF4: ; 0x0224DEF4
 _0224DF00:
 	add r0, r5, #0
 	add r1, r6, #0
-	bl ov01_021FBE80
+	bl Field3dModelAnimation_Unload
 	add r4, r4, #1
 	add r5, #0x14
 	cmp r4, #4
@@ -23185,5054 +23185,6 @@ _02250A58: .word 0x40B00000
 _02250A5C: .word ov02_02253B30
 	thumb_func_end ov02_022508D8
 
-	thumb_func_start ov02_02250A60
-ov02_02250A60: ; 0x02250A60
-	push {r3, r4, r5, lr}
-	sub sp, #0x18
-	add r5, r0, #0
-	mov r0, #4
-	mov r1, #0x28
-	bl AllocFromHeapAtEnd
-	ldr r1, [r5, #4]
-	str r0, [r1, #0x24]
-	ldr r0, [r5, #4]
-	ldr r1, [r5, #0x24]
-	ldr r4, [r0, #0x24]
-	mov r0, #4
-	bl CreateCameraTranslationWrapper
-	str r0, [r4, #8]
-	ldr r0, _02250AC4 ; =gGameVersion
-	ldrb r0, [r0]
-	str r0, [r4, #0x24]
-	ldr r1, [r5, #0x24]
-	add r0, sp, #0xc
-	bl Camera_GetLookAtCamTarget
-	add r3, sp, #0xc
-	add r2, r4, #0
-	ldmia r3!, {r0, r1}
-	add r2, #0xc
-	stmia r2!, {r0, r1}
-	ldr r0, [r3]
-	str r0, [r2]
-	ldr r1, [r5, #0x24]
-	add r0, sp, #0
-	bl Camera_GetLookAtCamPos
-	add r3, sp, #0
-	add r2, r4, #0
-	ldmia r3!, {r0, r1}
-	add r2, #0x18
-	stmia r2!, {r0, r1}
-	ldr r0, [r3]
-	str r0, [r2]
-	ldr r0, [r5, #4]
-	ldr r0, [r0, #4]
-	str r0, [r4]
-	add r0, r4, #0
-	bl ov02_02250BB0
-	add sp, #0x18
-	pop {r3, r4, r5, pc}
-	nop
-_02250AC4: .word gGameVersion
-	thumb_func_end ov02_02250A60
-
-	thumb_func_start ov02_02250AC8
-ov02_02250AC8: ; 0x02250AC8
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, [r4, #4]
-	ldr r0, [r0, #0x24]
-	ldr r0, [r0, #8]
-	bl DeleteCameraTranslationWrapper
-	ldr r0, [r4, #4]
-	ldr r0, [r0, #0x24]
-	bl FreeToHeap
-	ldr r0, [r4, #4]
-	mov r1, #0
-	str r1, [r0, #0x24]
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end ov02_02250AC8
-
-	thumb_func_start ov02_02250AE8
-ov02_02250AE8: ; 0x02250AE8
-	push {r3, lr}
-	ldr r0, [r0, #4]
-	ldr r0, [r0, #0x24]
-	ldr r0, [r0, #4]
-	bl ov01_021E687C
-	mov r1, #1
-	strb r1, [r0, #0x10]
-	pop {r3, pc}
-	.balign 4, 0
-	thumb_func_end ov02_02250AE8
-
-	thumb_func_start ov02_02250AFC
-ov02_02250AFC: ; 0x02250AFC
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	ldr r0, [r5, #4]
-	add r4, r1, #0
-	ldr r0, [r0, #0x24]
-	ldr r0, [r0, #4]
-	bl ov01_021E687C
-	ldrb r1, [r0, #0x10]
-	cmp r1, #3
-	beq _02250B22
-	bl GF_AssertFail
-	ldr r0, [r5, #0x10]
-	ldr r1, _02250B2C ; =ov02_02250B58
-	mov r2, #0
-	bl TaskManager_Call
-	pop {r3, r4, r5, pc}
-_02250B22:
-	strb r4, [r0, #0x11]
-	add r0, r5, #0
-	bl ov02_02250B44
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_02250B2C: .word ov02_02250B58
-	thumb_func_end ov02_02250AFC
-
-	thumb_func_start ov02_02250B30
-ov02_02250B30: ; 0x02250B30
-	ldr r3, _02250B3C ; =TaskManager_Call
-	ldr r0, [r0, #0x10]
-	ldr r1, _02250B40 ; =ov02_02251320
-	mov r2, #0
-	bx r3
-	nop
-_02250B3C: .word TaskManager_Call
-_02250B40: .word ov02_02251320
-	thumb_func_end ov02_02250B30
-
-	thumb_func_start ov02_02250B44
-ov02_02250B44: ; 0x02250B44
-	push {r3, lr}
-	ldr r0, [r0, #4]
-	ldr r0, [r0, #0x24]
-	ldr r0, [r0, #4]
-	bl ov01_021E687C
-	mov r1, #4
-	strb r1, [r0, #0x10]
-	pop {r3, pc}
-	.balign 4, 0
-	thumb_func_end ov02_02250B44
-
-	thumb_func_start ov02_02250B58
-ov02_02250B58: ; 0x02250B58
-	push {r4, lr}
-	bl TaskManager_GetFieldSystem
-	add r4, r0, #0
-	ldr r0, [r4, #4]
-	ldr r0, [r0, #0x24]
-	ldr r0, [r0, #4]
-	bl ov01_021E687C
-	ldrb r0, [r0, #0x10]
-	cmp r0, #3
-	bne _02250B7A
-	add r0, r4, #0
-	bl ov02_02250B44
-	mov r0, #1
-	pop {r4, pc}
-_02250B7A:
-	mov r0, #0
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end ov02_02250B58
-
-	thumb_func_start ov02_02250B80
-ov02_02250B80: ; 0x02250B80
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	mov r0, #4
-	mov r1, #0xd8
-	bl AllocFromHeapAtEnd
-	add r4, r0, #0
-	mov r1, #0
-	add r0, #0xd4
-	str r1, [r0]
-	mov r0, #4
-	add r1, r5, #0
-	add r2, r4, #0
-	bl ov02_022511AC
-	ldr r0, [r5, #0x10]
-	ldr r1, _02250BAC ; =ov02_022512AC
-	add r2, r4, #0
-	bl TaskManager_Call
-	pop {r3, r4, r5, pc}
-	nop
-_02250BAC: .word ov02_022512AC
-	thumb_func_end ov02_02250B80
-
-	thumb_func_start ov02_02250BB0
-ov02_02250BB0: ; 0x02250BB0
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, [r4]
-	ldr r1, _02250BC0 ; =ov02_02253B4C
-	bl ov01_021E67BC
-	str r0, [r4, #4]
-	pop {r4, pc}
-	.balign 4, 0
-_02250BC0: .word ov02_02253B4C
-	thumb_func_end ov02_02250BB0
-
-	thumb_func_start ov02_02250BC4
-ov02_02250BC4: ; 0x02250BC4
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x20
-	add r0, r1, #0
-	ldr r0, [r0, #4]
-	add r5, r2, #0
-	ldr r0, [r0, #0x24]
-	str r1, [sp, #8]
-	ldr r0, [r0, #0x24]
-	mov r1, #4
-	strh r0, [r5, #0x12]
-	add r0, r5, #0
-	mov r2, #0x20
-	bl GF_ExpHeap_FndInitAllocator
-	add r0, r5, #0
-	add r0, #0x14
-	mov r1, #0xae
-	mov r2, #0x12
-	mov r3, #4
-	bl ov01_021FBCD8
-	add r0, r5, #0
-	add r0, #0x24
-	mov r1, #0xae
-	mov r2, #0x19
-	mov r3, #4
-	bl ov01_021FBCD8
-	add r0, r5, #0
-	add r0, #0x34
-	mov r1, #0xae
-	mov r2, #0x20
-	mov r3, #4
-	bl ov01_021FBCD8
-	mov r0, #4
-	str r0, [sp]
-	add r0, r5, #0
-	add r1, r5, #0
-	add r0, #0x44
-	add r1, #0x14
-	mov r2, #0xae
-	mov r3, #0x13
-	str r5, [sp, #4]
-	bl ov01_021FBE44
-	mov r0, #4
-	str r0, [sp]
-	add r0, r5, #0
-	add r1, r5, #0
-	add r0, #0x58
-	add r1, #0x14
-	mov r2, #0xae
-	mov r3, #0x14
-	str r5, [sp, #4]
-	bl ov01_021FBE44
-	mov r0, #4
-	str r0, [sp]
-	add r0, r5, #0
-	add r1, r5, #0
-	add r0, #0x6c
-	add r1, #0x14
-	mov r2, #0xae
-	mov r3, #0x15
-	str r5, [sp, #4]
-	bl ov01_021FBE44
-	mov r0, #4
-	str r0, [sp]
-	add r0, r5, #0
-	add r1, r5, #0
-	add r0, #0x80
-	add r1, #0x24
-	mov r2, #0xae
-	mov r3, #0x1a
-	str r5, [sp, #4]
-	bl ov01_021FBE44
-	mov r0, #4
-	str r0, [sp]
-	add r0, r5, #0
-	add r1, r5, #0
-	add r0, #0x94
-	add r1, #0x24
-	mov r2, #0xae
-	mov r3, #0x1b
-	str r5, [sp, #4]
-	bl ov01_021FBE44
-	mov r0, #4
-	str r0, [sp]
-	add r0, r5, #0
-	add r1, r5, #0
-	add r0, #0xa8
-	add r1, #0x34
-	mov r2, #0xae
-	mov r3, #0x21
-	str r5, [sp, #4]
-	bl ov01_021FBE44
-	add r0, r5, #0
-	add r1, r5, #0
-	add r0, #0xbc
-	add r1, #0x14
-	bl ov01_021FBF2C
-	mov r0, #0x4d
-	lsl r0, r0, #2
-	add r1, r5, #0
-	add r0, r5, r0
-	add r1, #0x24
-	bl ov01_021FBF2C
-	add r0, r5, #0
-	add r1, r5, #0
-	add r0, #0xbc
-	add r1, #0x44
-	bl ov01_021FBF50
-	add r0, r5, #0
-	add r1, r5, #0
-	add r0, #0xbc
-	add r1, #0x58
-	bl ov01_021FBF50
-	add r0, r5, #0
-	add r1, r5, #0
-	add r0, #0xbc
-	add r1, #0x6c
-	bl ov01_021FBF50
-	mov r0, #0x4d
-	lsl r0, r0, #2
-	add r1, r5, #0
-	add r0, r5, r0
-	add r1, #0x80
-	bl ov01_021FBF50
-	mov r0, #0x4d
-	lsl r0, r0, #2
-	add r1, r5, #0
-	add r0, r5, r0
-	add r1, #0x94
-	bl ov01_021FBF50
-	add r0, r5, #0
-	add r0, #0xbc
-	mov r1, #0
-	bl ov01_021FC004
-	mov r0, #0x4d
-	lsl r0, r0, #2
-	add r0, r5, r0
-	mov r1, #0
-	bl ov01_021FC004
-	mov r0, #0x6b
-	lsl r0, r0, #2
-	add r4, r5, r0
-	add r0, r5, #0
-	str r0, [sp, #0xc]
-	add r0, #0x34
-	str r0, [sp, #0xc]
-	add r0, r5, #0
-	str r0, [sp, #0x10]
-	add r0, #0xa8
-	mov r6, #0
-	str r0, [sp, #0x10]
-_02250D16:
-	mov r0, #0x78
-	add r7, r6, #0
-	mul r7, r0
-	ldr r1, [sp, #0xc]
-	add r0, r4, r7
-	bl ov01_021FBF2C
-	ldr r1, [sp, #0x10]
-	add r0, r4, r7
-	bl ov01_021FBF50
-	add r0, r4, r7
-	mov r1, #0
-	bl ov01_021FC004
-	add r0, r6, #1
-	lsl r0, r0, #0x18
-	lsr r6, r0, #0x18
-	cmp r6, #4
-	blo _02250D16
-	add r0, r5, #0
-	add r0, #0x44
-	mov r1, #3
-	mov r2, #0
-	bl ov02_022510D4
-	add r0, r5, #0
-	add r0, #0x80
-	mov r1, #2
-	mov r2, #0
-	bl ov02_022510D4
-	add r0, r5, #0
-	add r0, #0xa8
-	mov r1, #1
-	mov r2, #0
-	bl ov02_022510D4
-	ldr r0, [sp, #8]
-	ldr r0, [r0, #0x40]
-	bl PlayerAvatar_GetMapObject
-	add r1, sp, #0x14
-	bl MapObject_GetPositionVec
-	add r0, r5, #0
-	ldr r1, [sp, #0x14]
-	ldr r2, [sp, #0x18]
-	ldr r3, [sp, #0x1c]
-	add r0, #0xbc
-	bl ov01_021FC00C
-	mov r0, #0x4d
-	lsl r0, r0, #2
-	ldr r1, [sp, #0x14]
-	ldr r2, [sp, #0x18]
-	ldr r3, [sp, #0x1c]
-	add r0, r5, r0
-	bl ov01_021FC00C
-	ldrh r0, [r5, #0x12]
-	cmp r0, #8
-	bne _02250E04
-	mov r2, #2
-	ldr r1, [sp, #0x14]
-	lsl r2, r2, #0x12
-	add r1, r1, r2
-	mov r0, #0x6b
-	lsl r0, r0, #2
-	ldr r3, [sp, #0x18]
-	lsr r2, r2, #2
-	add r2, r3, r2
-	mov r3, #0x2d
-	ldr r4, [sp, #0x1c]
-	lsl r3, r3, #0xe
-	add r0, r5, r0
-	sub r3, r4, r3
-	bl ov01_021FC00C
-	mov r2, #2
-	mov r0, #0x89
-	lsl r0, r0, #2
-	ldr r1, [sp, #0x14]
-	lsl r2, r2, #0x12
-	sub r1, r1, r2
-	ldr r3, [sp, #0x18]
-	lsr r2, r2, #2
-	add r2, r3, r2
-	mov r3, #0x2d
-	ldr r4, [sp, #0x1c]
-	lsl r3, r3, #0xe
-	add r0, r5, r0
-	sub r3, r4, r3
-	bl ov01_021FC00C
-	mov r1, #0
-	mov r0, #0xa7
-	lsl r0, r0, #2
-	add r0, r5, r0
-	add r2, r1, #0
-	add r3, r1, #0
-	bl ov01_021FC00C
-	mov r1, #0
-	mov r0, #0xc5
-	lsl r0, r0, #2
-	add r0, r5, r0
-	add r2, r1, #0
-	add r3, r1, #0
-	bl ov01_021FC00C
-	ldr r0, _02250EA4 ; =0x00000131
-	ldr r1, _02250EA8 ; =0x000004AC
-	ldr r2, _02250EAC ; =ov02_02253C20
-	str r0, [r5, r1]
-	add r0, r1, #4
-	str r2, [r5, r0]
-	ldr r0, _02250EB0 ; =ov02_02253B94
-	b _02250E98
-_02250E04:
-	mov r1, #0x32
-	ldr r2, [sp, #0x14]
-	lsl r1, r1, #0xe
-	add r1, r2, r1
-	mov r2, #0x49
-	mov r0, #0x6b
-	lsl r0, r0, #2
-	ldr r3, [sp, #0x18]
-	lsl r2, r2, #0xc
-	sub r2, r3, r2
-	mov r3, #9
-	ldr r4, [sp, #0x1c]
-	lsl r3, r3, #0x10
-	add r0, r5, r0
-	add r3, r4, r3
-	bl ov01_021FC00C
-	mov r1, #0xc6
-	mov r0, #0x89
-	lsl r0, r0, #2
-	ldr r2, [sp, #0x14]
-	lsl r1, r1, #0xc
-	sub r1, r2, r1
-	mov r2, #0x49
-	ldr r3, [sp, #0x18]
-	lsl r2, r2, #0xc
-	sub r2, r3, r2
-	mov r3, #9
-	ldr r4, [sp, #0x1c]
-	lsl r3, r3, #0x10
-	add r0, r5, r0
-	add r3, r4, r3
-	bl ov01_021FC00C
-	mov r1, #0x32
-	mov r0, #0xa7
-	lsl r0, r0, #2
-	ldr r2, [sp, #0x14]
-	lsl r1, r1, #0xe
-	add r1, r2, r1
-	mov r2, #0x49
-	ldr r3, [sp, #0x18]
-	lsl r2, r2, #0xc
-	sub r2, r3, r2
-	ldr r4, [sp, #0x1c]
-	ldr r3, _02250EB4 ; =0x0010E000
-	add r0, r5, r0
-	sub r3, r4, r3
-	bl ov01_021FC00C
-	mov r1, #0xc6
-	mov r0, #0xc5
-	lsl r0, r0, #2
-	ldr r2, [sp, #0x14]
-	lsl r1, r1, #0xc
-	sub r1, r2, r1
-	mov r2, #0x49
-	ldr r3, [sp, #0x18]
-	lsl r2, r2, #0xc
-	sub r2, r3, r2
-	ldr r4, [sp, #0x1c]
-	ldr r3, _02250EB4 ; =0x0010E000
-	add r0, r5, r0
-	sub r3, r4, r3
-	bl ov01_021FC00C
-	mov r0, #0x13
-	ldr r1, _02250EA8 ; =0x000004AC
-	lsl r0, r0, #4
-	str r0, [r5, r1]
-	ldr r2, _02250EB8 ; =ov02_02253BD0
-	add r0, r1, #4
-	str r2, [r5, r0]
-	ldr r0, _02250EBC ; =ov02_02253B64
-_02250E98:
-	add r1, #8
-	str r0, [r5, r1]
-	mov r0, #0
-	strb r0, [r5, #0x10]
-	add sp, #0x20
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02250EA4: .word 0x00000131
-_02250EA8: .word 0x000004AC
-_02250EAC: .word ov02_02253C20
-_02250EB0: .word ov02_02253B94
-_02250EB4: .word 0x0010E000
-_02250EB8: .word ov02_02253BD0
-_02250EBC: .word ov02_02253B64
-	thumb_func_end ov02_02250BC4
-
-	thumb_func_start ov02_02250EC0
-ov02_02250EC0: ; 0x02250EC0
-	push {r4, lr}
-	add r4, r2, #0
-	add r0, r4, #0
-	add r0, #0x6c
-	add r1, r4, #0
-	bl ov01_021FBE80
-	add r0, r4, #0
-	add r0, #0x58
-	add r1, r4, #0
-	bl ov01_021FBE80
-	add r0, r4, #0
-	add r0, #0x44
-	add r1, r4, #0
-	bl ov01_021FBE80
-	add r0, r4, #0
-	add r0, #0x94
-	add r1, r4, #0
-	bl ov01_021FBE80
-	add r0, r4, #0
-	add r0, #0x80
-	add r1, r4, #0
-	bl ov01_021FBE80
-	add r0, r4, #0
-	add r0, #0xa8
-	add r1, r4, #0
-	bl ov01_021FBE80
-	add r0, r4, #0
-	add r0, #0x14
-	bl ov01_021FBDA8
-	add r0, r4, #0
-	add r0, #0x24
-	bl ov01_021FBDA8
-	add r4, #0x34
-	add r0, r4, #0
-	bl ov01_021FBDA8
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end ov02_02250EC0
-
-	thumb_func_start ov02_02250F1C
-ov02_02250F1C: ; 0x02250F1C
-	push {r4, lr}
-	add r4, r2, #0
-	ldrb r0, [r4, #0x10]
-	cmp r0, #5
-	bhi _02250FDC
-	add r0, r0, r0
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_02250F32: ; jump table
-	.short _02250FDC - _02250F32 - 2 ; case 0
-	.short _02250F3E - _02250F32 - 2 ; case 1
-	.short _02250F4E - _02250F32 - 2 ; case 2
-	.short _02250F68 - _02250F32 - 2 ; case 3
-	.short _02250F74 - _02250F32 - 2 ; case 4
-	.short _02250FA4 - _02250F32 - 2 ; case 5
-_02250F3E:
-	add r0, r4, #0
-	add r0, #0xbc
-	mov r1, #1
-	bl ov01_021FC004
-	mov r0, #2
-	strb r0, [r4, #0x10]
-	pop {r4, pc}
-_02250F4E:
-	add r0, r4, #0
-	add r0, #0x44
-	mov r1, #3
-	bl ov02_022510FC
-	cmp r0, #0
-	beq _02250FDC
-	add r0, r4, #0
-	bl ov02_02251018
-	mov r0, #3
-	strb r0, [r4, #0x10]
-	pop {r4, pc}
-_02250F68:
-	add r4, #0x44
-	add r0, r4, #0
-	mov r1, #3
-	bl ov02_02251138
-	pop {r4, pc}
-_02250F74:
-	add r0, r4, #0
-	add r0, #0xbc
-	mov r1, #0
-	bl ov01_021FC004
-	add r0, r4, #0
-	mov r1, #1
-	bl ov02_02251164
-	add r0, r4, #0
-	add r0, #0x80
-	mov r1, #2
-	mov r2, #0
-	bl ov02_022510D4
-	add r0, r4, #0
-	add r0, #0xa8
-	mov r1, #1
-	mov r2, #0
-	bl ov02_022510D4
-	mov r0, #5
-	strb r0, [r4, #0x10]
-	pop {r4, pc}
-_02250FA4:
-	add r0, r4, #0
-	add r0, #0x44
-	mov r1, #3
-	bl ov02_02251138
-	add r0, r4, #0
-	add r0, #0xa8
-	mov r1, #1
-	bl ov02_022510FC
-	add r0, r4, #0
-	add r0, #0x80
-	mov r1, #2
-	bl ov02_022510FC
-	cmp r0, #0
-	beq _02250FDC
-	add r0, r4, #0
-	mov r1, #0
-	bl ov02_02251164
-	add r0, r4, #0
-	add r0, #0xbc
-	mov r1, #1
-	bl ov01_021FC004
-	mov r0, #3
-	strb r0, [r4, #0x10]
-_02250FDC:
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end ov02_02250F1C
-
-	thumb_func_start ov02_02250FE0
-ov02_02250FE0: ; 0x02250FE0
-	push {r4, r5, r6, lr}
-	add r4, r2, #0
-	add r0, r4, #0
-	add r0, #0xbc
-	bl ov01_021FBF68
-	mov r0, #0x4d
-	lsl r0, r0, #2
-	add r0, r4, r0
-	bl ov01_021FBF68
-	mov r0, #0x6b
-	lsl r0, r0, #2
-	mov r5, #0
-	add r4, r4, r0
-	mov r6, #0x78
-_02251000:
-	add r0, r5, #0
-	mul r0, r6
-	add r0, r4, r0
-	bl ov01_021FBF68
-	add r0, r5, #1
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-	cmp r5, #4
-	blo _02251000
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end ov02_02250FE0
-
-	thumb_func_start ov02_02251018
-ov02_02251018: ; 0x02251018
-	push {r4, lr}
-	sub sp, #8
-	add r4, r0, #0
-	add r1, r4, #0
-	add r0, #0xbc
-	add r1, #0x44
-	bl ov01_021FBF5C
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0xbc
-	add r1, #0x58
-	bl ov01_021FBF5C
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0xbc
-	add r1, #0x6c
-	bl ov01_021FBF5C
-	add r0, r4, #0
-	add r0, #0x6c
-	add r1, r4, #0
-	bl ov01_021FBE80
-	add r0, r4, #0
-	add r0, #0x58
-	add r1, r4, #0
-	bl ov01_021FBE80
-	add r0, r4, #0
-	add r0, #0x44
-	add r1, r4, #0
-	bl ov01_021FBE80
-	mov r0, #4
-	str r0, [sp]
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0x44
-	add r1, #0x14
-	mov r2, #0xae
-	mov r3, #0x16
-	str r4, [sp, #4]
-	bl ov01_021FBE44
-	mov r0, #4
-	str r0, [sp]
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0x58
-	add r1, #0x14
-	mov r2, #0xae
-	mov r3, #0x17
-	str r4, [sp, #4]
-	bl ov01_021FBE44
-	mov r0, #4
-	str r0, [sp]
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0x6c
-	add r1, #0x14
-	mov r2, #0xae
-	mov r3, #0x18
-	str r4, [sp, #4]
-	bl ov01_021FBE44
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0xbc
-	add r1, #0x44
-	bl ov01_021FBF50
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0xbc
-	add r1, #0x58
-	bl ov01_021FBF50
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0xbc
-	add r1, #0x6c
-	bl ov01_021FBF50
-	add r4, #0x44
-	add r0, r4, #0
-	mov r1, #3
-	mov r2, #0
-	bl ov02_022510D4
-	add sp, #8
-	pop {r4, pc}
-	thumb_func_end ov02_02251018
-
-	thumb_func_start ov02_022510D4
-ov02_022510D4: ; 0x022510D4
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r6, r0, #0
-	add r7, r2, #0
-	mov r4, #0
-	cmp r5, #0
-	bls _022510F8
-_022510E2:
-	mov r0, #0x14
-	mul r0, r4
-	add r0, r6, r0
-	add r1, r7, #0
-	bl ov01_021FBF20
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, r5
-	blo _022510E2
-_022510F8:
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ov02_022510D4
-
-	thumb_func_start ov02_022510FC
-ov02_022510FC: ; 0x022510FC
-	push {r3, r4, r5, r6, r7, lr}
-	mov r5, #0
-	add r6, r1, #0
-	add r7, r0, #0
-	add r4, r5, #0
-	cmp r6, #0
-	bls _0225112C
-_0225110A:
-	mov r0, #0x14
-	mul r0, r4
-	mov r1, #1
-	add r0, r7, r0
-	lsl r1, r1, #0xc
-	bl ov01_021FBEE4
-	cmp r0, #0
-	beq _02251122
-	add r0, r5, #1
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-_02251122:
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, r6
-	blo _0225110A
-_0225112C:
-	cmp r5, r6
-	bne _02251134
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-_02251134:
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov02_022510FC
-
-	thumb_func_start ov02_02251138
-ov02_02251138: ; 0x02251138
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	add r6, r1, #0
-	ldr r4, _02251160 ; =0x00000000
-	beq _0225115C
-	mov r7, #0x14
-_02251144:
-	add r0, r4, #0
-	mul r0, r7
-	mov r1, #1
-	add r0, r5, r0
-	lsl r1, r1, #0xc
-	bl ov01_021FBEAC
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, r6
-	blo _02251144
-_0225115C:
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_02251160: .word 0x00000000
-	thumb_func_end ov02_02251138
-
-	thumb_func_start ov02_02251164
-ov02_02251164: ; 0x02251164
-	push {r3, r4, r5, r6, r7, lr}
-	add r6, r0, #0
-	ldrh r0, [r6, #0x12]
-	add r7, r1, #0
-	cmp r0, #8
-	bne _02251174
-	mov r5, #2
-	b _02251176
-_02251174:
-	mov r5, #4
-_02251176:
-	mov r0, #0x4d
-	lsl r0, r0, #2
-	add r0, r6, r0
-	add r1, r7, #0
-	bl ov01_021FC004
-	ldrb r0, [r6, #0x11]
-	cmp r0, #0
-	bne _022511AA
-	mov r4, #0
-	cmp r5, #0
-	bls _022511AA
-	mov r0, #0x6b
-	lsl r0, r0, #2
-	add r6, r6, r0
-_02251194:
-	mov r0, #0x78
-	mul r0, r4
-	add r0, r6, r0
-	add r1, r7, #0
-	bl ov01_021FC004
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, r5
-	blo _02251194
-_022511AA:
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov02_02251164
-
-	thumb_func_start ov02_022511AC
-ov02_022511AC: ; 0x022511AC
-	push {r3, r4, r5, r6, lr}
-	sub sp, #0x14
-	add r4, r2, #0
-	add r5, r0, #0
-	add r6, r1, #0
-	add r0, r4, #0
-	add r1, r5, #0
-	mov r2, #0x20
-	bl GF_ExpHeap_FndInitAllocator
-	add r0, r4, #0
-	add r0, #0x10
-	mov r1, #0xae
-	mov r2, #0x1c
-	add r3, r5, #0
-	bl ov01_021FBCD8
-	add r0, r4, #0
-	add r1, r4, #0
-	str r5, [sp]
-	add r0, #0x20
-	add r1, #0x10
-	mov r2, #0xae
-	mov r3, #0x1d
-	str r4, [sp, #4]
-	bl ov01_021FBE44
-	add r0, r4, #0
-	add r1, r4, #0
-	str r5, [sp]
-	add r0, #0x34
-	add r1, #0x10
-	mov r2, #0xae
-	mov r3, #0x1e
-	str r4, [sp, #4]
-	bl ov01_021FBE44
-	add r0, r4, #0
-	add r1, r4, #0
-	str r5, [sp]
-	add r0, #0x48
-	add r1, #0x10
-	mov r2, #0xae
-	mov r3, #0x1f
-	str r4, [sp, #4]
-	bl ov01_021FBE44
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0x5c
-	add r1, #0x10
-	bl ov01_021FBF2C
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0x5c
-	add r1, #0x20
-	bl ov01_021FBF50
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0x5c
-	add r1, #0x34
-	bl ov01_021FBF50
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0x5c
-	add r1, #0x48
-	bl ov01_021FBF50
-	add r0, r4, #0
-	add r0, #0x20
-	mov r1, #3
-	mov r2, #0
-	bl ov02_022510D4
-	ldr r0, [r6, #0x40]
-	bl PlayerAvatar_GetMapObject
-	add r1, sp, #8
-	bl MapObject_GetPositionVec
-	mov r0, #0x19
-	ldr r1, [sp, #0xc]
-	lsl r0, r0, #0xe
-	add r2, r1, r0
-	ldr r1, [sp, #0x10]
-	ldr r0, _0225127C ; =0x0015E000
-	str r2, [sp, #0xc]
-	sub r3, r1, r0
-	add r0, r4, #0
-	ldr r1, [sp, #8]
-	add r0, #0x5c
-	str r3, [sp, #0x10]
-	bl ov01_021FC00C
-	add r4, #0x5c
-	add r0, r4, #0
-	mov r1, #1
-	bl ov01_021FC004
-	add sp, #0x14
-	pop {r3, r4, r5, r6, pc}
-	.balign 4, 0
-_0225127C: .word 0x0015E000
-	thumb_func_end ov02_022511AC
-
-	thumb_func_start ov02_02251280
-ov02_02251280: ; 0x02251280
-	push {r4, lr}
-	add r4, r0, #0
-	add r1, r4, #0
-	add r0, #0x48
-	bl ov01_021FBE80
-	add r0, r4, #0
-	add r0, #0x34
-	add r1, r4, #0
-	bl ov01_021FBE80
-	add r0, r4, #0
-	add r0, #0x20
-	add r1, r4, #0
-	bl ov01_021FBE80
-	add r4, #0x10
-	add r0, r4, #0
-	bl ov01_021FBDA8
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end ov02_02251280
-
-	thumb_func_start ov02_022512AC
-ov02_022512AC: ; 0x022512AC
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	bl TaskManager_GetEnvironment
-	add r4, r0, #0
-	add r0, r5, #0
-	bl TaskManager_GetStatePtr
-	add r5, r0, #0
-	ldr r0, [r5]
-	cmp r0, #0
-	beq _022512CA
-	cmp r0, #1
-	beq _02251306
-	b _02251316
-_022512CA:
-	add r0, r4, #0
-	add r0, #0xd4
-	ldr r0, [r0]
-	add r1, r0, #1
-	add r0, r4, #0
-	add r0, #0xd4
-	str r1, [r0]
-	add r0, r4, #0
-	add r0, #0xd4
-	ldr r0, [r0]
-	cmp r0, #2
-	bne _022512E8
-	ldr r0, _0225131C ; =SEQ_SE_GS_RUGIA_MENOHIKARI
-	bl PlaySE
-_022512E8:
-	add r0, r4, #0
-	add r0, #0x20
-	mov r1, #3
-	bl ov02_022510FC
-	cmp r0, #0
-	beq _022512FC
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-_022512FC:
-	add r4, #0x5c
-	add r0, r4, #0
-	bl ov01_021FBF68
-	b _02251316
-_02251306:
-	add r0, r4, #0
-	bl ov02_02251280
-	add r0, r4, #0
-	bl FreeToHeap
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-_02251316:
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-	nop
-_0225131C: .word SEQ_SE_GS_RUGIA_MENOHIKARI
-	thumb_func_end ov02_022512AC
-
-	thumb_func_start ov02_02251320
-ov02_02251320: ; 0x02251320
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	add r5, r0, #0
-	bl TaskManager_GetFieldSystem
-	add r4, r0, #0
-	add r0, r5, #0
-	bl TaskManager_GetStatePtr
-	str r0, [sp, #4]
-	ldr r0, [r4, #4]
-	ldr r0, [r0, #0x24]
-	ldr r0, [r0, #4]
-	bl ov01_021E687C
-	add r5, r0, #0
-	ldr r0, [sp, #4]
-	ldr r0, [r0]
-	cmp r0, #0
-	beq _02251352
-	cmp r0, #1
-	beq _022513AE
-	cmp r0, #2
-	beq _02251412
-	b _02251418
-_02251352:
-	add r0, r4, #0
-	ldr r1, _02251420 ; =0x000004AC
-	add r0, #0xc0
-	ldr r0, [r0]
-	ldr r1, [r5, r1]
-	bl ov01_022040D0
-	add r7, r0, #0
-	mov r6, #0
-_02251364:
-	ldr r0, [r4, #0x54]
-	add r1, r6, #0
-	str r0, [sp]
-	ldr r0, _02251420 ; =0x000004AC
-	mov r2, #1
-	ldr r0, [r5, r0]
-	add r3, r7, #0
-	bl ov01_021E8970
-	add r0, r6, #1
-	lsl r0, r0, #0x18
-	lsr r6, r0, #0x18
-	cmp r6, #2
-	blo _02251364
-	mov r6, #0
-_02251382:
-	ldr r0, _02251420 ; =0x000004AC
-	ldr r2, [r4, #0x54]
-	ldr r0, [r5, r0]
-	add r1, r6, #0
-	bl ov01_021E8B04
-	add r7, r0, #0
-	mov r1, #1
-	bl ov01_021E8B84
-	add r0, r7, #0
-	bl ov01_021E8B6C
-	add r0, r6, #1
-	lsl r0, r0, #0x18
-	lsr r6, r0, #0x18
-	cmp r6, #2
-	blo _02251382
-	ldr r0, [sp, #4]
-	mov r1, #1
-	str r1, [r0]
-	b _02251418
-_022513AE:
-	add r0, r4, #0
-	ldr r1, _02251420 ; =0x000004AC
-	add r0, #0xc0
-	ldr r0, [r0]
-	ldr r1, [r5, r1]
-	bl ov01_022040D0
-	add r7, r0, #0
-	ldr r0, _02251420 ; =0x000004AC
-	ldr r2, [r4, #0x54]
-	ldr r0, [r5, r0]
-	mov r1, #0
-	bl ov01_021E8B04
-	bl ov01_021E8B90
-	cmp r0, #0
-	beq _02251418
-	mov r6, #0
-_022513D4:
-	ldr r2, _02251420 ; =0x000004AC
-	ldr r0, [r4, #0x54]
-	ldr r2, [r5, r2]
-	add r1, r7, #0
-	add r3, r6, #0
-	bl ov01_021E8A8C
-	add r0, r6, #1
-	lsl r0, r0, #0x18
-	lsr r6, r0, #0x18
-	cmp r6, #2
-	blo _022513D4
-	mov r6, #0
-_022513EE:
-	ldr r0, [r4, #0x54]
-	add r1, r6, #2
-	str r0, [sp]
-	ldr r0, _02251420 ; =0x000004AC
-	mov r2, #1
-	ldr r0, [r5, r0]
-	add r3, r7, #0
-	bl ov01_021E8970
-	add r0, r6, #1
-	lsl r0, r0, #0x18
-	lsr r6, r0, #0x18
-	cmp r6, #2
-	blo _022513EE
-	ldr r0, [sp, #4]
-	mov r1, #2
-	str r1, [r0]
-	b _02251418
-_02251412:
-	add sp, #8
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-_02251418:
-	mov r0, #0
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_02251420: .word 0x000004AC
-	thumb_func_end ov02_02251320
-
-	thumb_func_start ov02_02251424
-ov02_02251424: ; 0x02251424
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x14
-	add r5, r0, #0
-	ldr r0, [r5, #4]
-	add r7, r1, #0
-	ldr r6, [r0, #0x24]
-	ldr r0, [r6, #4]
-	bl ov01_021E687C
-	add r4, r0, #0
-	cmp r7, #3
-	blo _02251440
-	bl GF_AssertFail
-_02251440:
-	add r0, r6, #0
-	ldr r1, [r5, #0x24]
-	add r0, #0xc
-	bl Camera_SetLookAtCamTarget
-	add r6, #0x18
-	ldr r1, [r5, #0x24]
-	add r0, r6, #0
-	bl Camera_SetLookAtCamPos
-	mov r0, #0x14
-	add r6, r7, #0
-	mul r6, r0
-	mov r0, #0x4b
-	lsl r0, r0, #4
-	ldr r0, [r4, r0]
-	ldr r1, [r5, #0x24]
-	ldr r0, [r0, r6]
-	bl Camera_SetDistance
-	mov r0, #0x4b
-	lsl r0, r0, #4
-	ldr r0, [r4, r0]
-	ldr r1, [r5, #0x24]
-	add r0, r0, r6
-	add r0, r0, #4
-	bl Camera_SetAnglePos
-	mov r0, #0x4b
-	lsl r0, r0, #4
-	ldr r0, [r4, r0]
-	ldr r1, [r5, #0x24]
-	add r0, r0, r6
-	ldrh r0, [r0, #0xe]
-	bl Camera_SetPerspectiveAngle
-	ldr r0, _022514C0 ; =0x000004B4
-	ldr r1, [r4, r0]
-	mov r0, #0xc
-	mul r0, r7
-	add r0, r1, r0
-	ldr r1, [r5, #0x24]
-	bl Camera_OffsetLookAtPosAndTarget
-	mov r0, #0x96
-	ldr r1, _022514C4 ; =0x006A4000
-	ldr r2, [r5, #0x24]
-	lsl r0, r0, #0xc
-	bl Camera_SetPerspectiveClippingPlane
-	ldr r1, [r5, #0x24]
-	add r0, sp, #8
-	bl Camera_GetLookAtCamTarget
-	ldr r0, [r5, #0x24]
-	bl Camera_GetCurrentTarget
-	ldr r1, [r5, #0x24]
-	add r0, sp, #0
-	bl Camera_GetAngle
-	add sp, #0x14
-	pop {r4, r5, r6, r7, pc}
-	nop
-_022514C0: .word 0x000004B4
-_022514C4: .word 0x006A4000
-	thumb_func_end ov02_02251424
-
-	thumb_func_start ov02_022514C8
-ov02_022514C8: ; 0x022514C8
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x18
-	ldr r0, [r0, #4]
-	add r4, r1, #0
-	ldr r0, [r0, #0x24]
-	str r0, [sp]
-	ldr r0, [r0, #4]
-	bl ov01_021E687C
-	add r6, r0, #0
-	cmp r4, #0
-	bne _022514E4
-	mov r1, #0
-	b _022514E6
-_022514E4:
-	mov r1, #3
-_022514E6:
-	mov r0, #0x4b
-	lsl r0, r0, #4
-	mov r5, #0x14
-	add r3, r1, #0
-	ldr r0, [r6, r0]
-	mul r3, r5
-	add r0, r0, r3
-	ldrh r0, [r0, #4]
-	add r2, sp, #4
-	add r7, sp, #8
-	strh r0, [r2]
-	mov r0, #0x4b
-	lsl r0, r0, #4
-	ldr r0, [r6, r0]
-	add r0, r0, r3
-	ldrh r0, [r0, #0xe]
-	strh r0, [r2, #2]
-	mov r0, #0x4b
-	lsl r0, r0, #4
-	add r0, r0, #4
-	mov r2, #0xc
-	ldr r0, [r6, r0]
-	mul r2, r1
-	add r2, r0, r2
-	ldmia r2!, {r0, r1}
-	stmia r7!, {r0, r1}
-	ldr r0, [r2]
-	str r0, [r7]
-	mov r0, #0x4b
-	lsl r0, r0, #4
-	ldr r0, [r6, r0]
-	ldr r0, [r0, r3]
-	str r0, [sp, #0x14]
-	ldr r0, [sp]
-	ldr r0, [r0, #0x24]
-	cmp r0, #7
-	bne _02251538
-	cmp r4, #0
-	bne _02251542
-	mov r5, #0xc8
-	b _02251542
-_02251538:
-	cmp r4, #0
-	bne _02251540
-	mov r5, #0xa0
-	b _02251542
-_02251540:
-	mov r5, #0xc8
-_02251542:
-	ldr r0, [sp]
-	add r1, sp, #4
-	ldr r0, [r0, #8]
-	add r2, r5, #0
-	bl SetCameraTranslationPath
-	add sp, #0x18
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ov02_022514C8
-
-	thumb_func_start ov02_02251554
-ov02_02251554: ; 0x02251554
-	ldr r3, _02251560 ; =TaskManager_Call
-	ldr r0, [r0, #0x10]
-	ldr r1, _02251564 ; =ov02_02251568
-	mov r2, #0
-	bx r3
-	nop
-_02251560: .word TaskManager_Call
-_02251564: .word ov02_02251568
-	thumb_func_end ov02_02251554
-
-	thumb_func_start ov02_02251568
-ov02_02251568: ; 0x02251568
-	push {r3, r4, lr}
-	sub sp, #0x14
-	bl TaskManager_GetFieldSystem
-	add r4, r0, #0
-	ldr r0, [r4, #4]
-	ldr r0, [r0, #0x24]
-	ldr r0, [r0, #8]
-	bl IsCameraTranslationFinished
-	cmp r0, #0
-	beq _0225159C
-	ldr r1, [r4, #0x24]
-	add r0, sp, #8
-	bl Camera_GetLookAtCamTarget
-	ldr r0, [r4, #0x24]
-	bl Camera_GetCurrentTarget
-	ldr r1, [r4, #0x24]
-	add r0, sp, #0
-	bl Camera_GetAngle
-	add sp, #0x14
-	mov r0, #1
-	pop {r3, r4, pc}
-_0225159C:
-	mov r0, #0
-	add sp, #0x14
-	pop {r3, r4, pc}
-	.balign 4, 0
-	thumb_func_end ov02_02251568
-
-	thumb_func_start ov02_022515A4
-ov02_022515A4: ; 0x022515A4
-	push {r4, lr}
-	add r4, r0, #0
-	mov r0, #4
-	mov r1, #0xe4
-	bl AllocFromHeapAtEnd
-	add r2, r0, #0
-	ldr r0, _022515C8 ; =gGameVersion
-	ldrb r1, [r0]
-	add r0, r2, #0
-	add r0, #0xe0
-	strh r1, [r0]
-	ldr r0, [r4, #0x10]
-	ldr r1, _022515CC ; =ov02_022515D0
-	bl TaskManager_Call
-	pop {r4, pc}
-	nop
-_022515C8: .word gGameVersion
-_022515CC: .word ov02_022515D0
-	thumb_func_end ov02_022515A4
-
-	thumb_func_start ov02_022515D0
-ov02_022515D0: ; 0x022515D0
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x38
-	add r5, r0, #0
-	bl TaskManager_GetFieldSystem
-	str r0, [sp, #8]
-	add r0, r5, #0
-	bl TaskManager_GetEnvironment
-	add r4, r0, #0
-	add r0, r5, #0
-	bl TaskManager_GetStatePtr
-	add r5, r0, #0
-	add r0, r4, #0
-	add r0, #0xe0
-	ldrh r0, [r0]
-	cmp r0, #8
-	bne _02251604
-	mov r0, #SPECIES_LUGIA
-	str r0, [sp, #0x10]
-	mov r0, #0x12
-	mov r1, #5
-	str r0, [sp, #0xc]
-	ldr r7, _022518D8 ; =SEQ_SE_GS_RUGIA_HABATAKI
-	b _02251610
-_02251604:
-	mov r0, #SPECIES_HO_OH
-	str r0, [sp, #0x10]
-	mov r0, #0
-	ldr r7, _022518DC ; =SEQ_SE_GS_HOUOU_HABATAKI
-	mov r1, #5
-	str r0, [sp, #0xc]
-_02251610:
-	ldr r0, [sp, #8]
-	ldr r0, [r0, #0x3c]
-	bl GetMapObjectByID
-	add r6, r0, #0
-	bne _02251620
-	bl GF_AssertFail
-_02251620:
-	ldr r0, [r5]
-	cmp r0, #7
-	bls _02251628
-	b _022518D0
-_02251628:
-	add r0, r0, r0
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_02251634: ; jump table
-	.short _02251644 - _02251634 - 2 ; case 0
-	.short _02251740 - _02251634 - 2 ; case 1
-	.short _0225178A - _02251634 - 2 ; case 2
-	.short _022517FE - _02251634 - 2 ; case 3
-	.short _0225181E - _02251634 - 2 ; case 4
-	.short _0225184E - _02251634 - 2 ; case 5
-	.short _02251884 - _02251634 - 2 ; case 6
-	.short _02251898 - _02251634 - 2 ; case 7
-_02251644:
-	add r0, r4, #0
-	add r0, #0xc
-	mov r1, #4
-	mov r2, #0x20
-	bl GF_ExpHeap_FndInitAllocator
-	add r0, r4, #0
-	add r0, #0x1c
-	mov r1, #0xae
-	mov r2, #0x22
-	mov r3, #4
-	bl ov01_021FBCD8
-	mov r0, #4
-	str r0, [sp]
-	add r0, r4, #0
-	add r0, #0xc
-	str r0, [sp, #4]
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0x2c
-	add r1, #0x1c
-	mov r2, #0xae
-	mov r3, #0x23
-	bl ov01_021FBE44
-	mov r0, #4
-	str r0, [sp]
-	add r0, r4, #0
-	add r0, #0xc
-	str r0, [sp, #4]
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0x40
-	add r1, #0x1c
-	mov r2, #0xae
-	mov r3, #0x24
-	bl ov01_021FBE44
-	mov r0, #4
-	str r0, [sp]
-	add r0, r4, #0
-	add r0, #0xc
-	str r0, [sp, #4]
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0x54
-	add r1, #0x1c
-	mov r2, #0xae
-	mov r3, #0x25
-	bl ov01_021FBE44
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0x68
-	add r1, #0x1c
-	bl ov01_021FBF2C
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0x68
-	add r1, #0x2c
-	bl ov01_021FBF50
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0x68
-	add r1, #0x40
-	bl ov01_021FBF50
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0x68
-	add r1, #0x54
-	bl ov01_021FBF50
-	add r0, r4, #0
-	add r0, #0x68
-	mov r1, #0
-	bl ov01_021FC004
-	add r0, r4, #0
-	add r0, #0x2c
-	mov r1, #3
-	mov r2, #0
-	bl ov02_022510D4
-	ldr r0, [sp, #8]
-	ldr r0, [r0, #0x40]
-	bl PlayerAvatar_GetMapObject
-	add r1, sp, #0x2c
-	bl MapObject_GetPositionVec
-	add r0, r4, #0
-	add r0, #0xe0
-	ldrh r0, [r0]
-	cmp r0, #7
-	bne _02251720
-	mov r0, #0xa
-	ldr r1, [sp, #0x30]
-	lsl r0, r0, #0xe
-	add r0, r1, r0
-	str r0, [sp, #0x30]
-	mov r0, #1
-	ldr r1, [sp, #0x34]
-	lsl r0, r0, #0x10
-	sub r0, r1, r0
-	str r0, [sp, #0x34]
-	b _0225172A
-_02251720:
-	mov r0, #0x46
-	ldr r1, [sp, #0x34]
-	lsl r0, r0, #0xe
-	sub r0, r1, r0
-	str r0, [sp, #0x34]
-_0225172A:
-	add r4, #0x68
-	ldr r1, [sp, #0x2c]
-	ldr r2, [sp, #0x30]
-	ldr r3, [sp, #0x34]
-	add r0, r4, #0
-	bl ov01_021FC00C
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-	b _022518D0
-_02251740:
-	add r0, r6, #0
-	add r1, sp, #0x20
-	bl MapObject_GetPositionVec
-	ldr r0, [sp, #0x24]
-	str r0, [r4, #4]
-	add r0, r4, #0
-	add r0, #0xe0
-	ldrh r0, [r0]
-	cmp r0, #7
-	bne _0225175C
-	mov r0, #0x1e
-	lsl r0, r0, #0xe
-	b _02251760
-_0225175C:
-	mov r0, #0xa
-	lsl r0, r0, #0x10
-_02251760:
-	str r0, [r4]
-	ldr r1, [sp, #0x24]
-	ldr r0, [r4]
-	add r0, r1, r0
-	str r0, [sp, #0x24]
-	add r0, r6, #0
-	add r1, sp, #0x20
-	bl MapObject_SetPositionVec
-	add r0, r6, #0
-	mov r1, #0
-	bl MapObject_SetVisible
-	mov r0, #0
-	strh r0, [r4, #8]
-	add r4, #0xe2
-	strh r0, [r4]
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-	b _022518D0
-_0225178A:
-	ldrh r0, [r4, #8]
-	add r0, r0, #1
-	strh r0, [r4, #8]
-	ldrh r1, [r4, #8]
-	ldr r0, [sp, #0xc]
-	cmp r1, r0
-	blt _022517C0
-	add r0, r4, #0
-	add r0, #0xe2
-	ldrh r0, [r0]
-	cmp r0, #0
-	bne _022517B2
-	lsl r0, r7, #0x10
-	lsr r0, r0, #0x10
-	bl PlaySE
-	add r0, r4, #0
-	mov r1, #0x18
-	add r0, #0xe2
-	strh r1, [r0]
-_022517B2:
-	add r0, r4, #0
-	add r0, #0xe2
-	ldrh r0, [r0]
-	sub r1, r0, #1
-	add r0, r4, #0
-	add r0, #0xe2
-	strh r1, [r0]
-_022517C0:
-	add r0, r6, #0
-	add r1, sp, #0x14
-	mov r7, #0
-	bl MapObject_GetPositionVec
-	mov r0, #1
-	ldr r1, [r4]
-	lsl r0, r0, #0xc
-	sub r0, r1, r0
-	str r0, [r4]
-	cmp r0, #0
-	bgt _022517DE
-	add r0, r7, #0
-	str r0, [r4]
-	mov r7, #1
-_022517DE:
-	ldr r1, [r4, #4]
-	ldr r0, [r4]
-	add r0, r1, r0
-	str r0, [sp, #0x18]
-	add r0, r6, #0
-	add r1, sp, #0x14
-	bl MapObject_SetPositionVec
-	cmp r7, #0
-	beq _022518D0
-	mov r0, #0
-	strh r0, [r4, #8]
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-	b _022518D0
-_022517FE:
-	ldrh r0, [r4, #8]
-	add r0, r0, #1
-	strh r0, [r4, #8]
-	ldrh r0, [r4, #8]
-	cmp r0, #0x3c
-	blo _022518D0
-	add r0, r6, #0
-	mov r1, #1
-	bl sub_0205F328
-	mov r0, #0
-	strh r0, [r4, #8]
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-	b _022518D0
-_0225181E:
-	ldrh r0, [r4, #8]
-	add r0, r0, #1
-	strh r0, [r4, #8]
-	ldrh r0, [r4, #8]
-	cmp r0, #0x32
-	blo _022518D0
-	add r0, r4, #0
-	add r0, #0x68
-	mov r1, #1
-	bl ov01_021FC004
-	ldr r0, [sp, #0x10]
-	mov r1, #0
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
-	bl PlayCry
-	mov r0, #0
-	strh r0, [r4, #0xa]
-	strh r0, [r4, #8]
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-	b _022518D0
-_0225184E:
-	add r0, r4, #0
-	add r0, #0x2c
-	mov r1, #3
-	bl ov02_022510FC
-	ldrh r1, [r4, #0xa]
-	add r1, r1, #1
-	strh r1, [r4, #0xa]
-	cmp r0, #0
-	beq _0225187A
-	ldrh r0, [r4, #0xa]
-	cmp r0, #0x41
-	blo _0225187A
-	add r0, r6, #0
-	mov r1, #0
-	bl sub_0205F328
-	mov r0, #0
-	strh r0, [r4, #8]
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-_0225187A:
-	add r4, #0x68
-	add r0, r4, #0
-	bl ov01_021FBF68
-	b _022518D0
-_02251884:
-	ldrh r0, [r4, #8]
-	add r0, r0, #1
-	strh r0, [r4, #8]
-	ldrh r0, [r4, #8]
-	cmp r0, #0x1e
-	blo _022518D0
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-	b _022518D0
-_02251898:
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0x54
-	add r1, #0xc
-	bl ov01_021FBE80
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0x40
-	add r1, #0xc
-	bl ov01_021FBE80
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0x2c
-	add r1, #0xc
-	bl ov01_021FBE80
-	add r0, r4, #0
-	add r0, #0x1c
-	bl ov01_021FBDA8
-	add r0, r4, #0
-	bl FreeToHeap
-	add sp, #0x38
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-_022518D0:
-	mov r0, #0
-	add sp, #0x38
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_022518D8: .word SEQ_SE_GS_RUGIA_HABATAKI
-_022518DC: .word SEQ_SE_GS_HOUOU_HABATAKI
-	thumb_func_end ov02_022515D0
-
-	thumb_func_start ov02_022518E0
-ov02_022518E0: ; 0x022518E0
-	push {r3, lr}
-	ldr r1, [r0, #4]
-	ldr r1, [r1, #0x24]
-	ldr r1, [r1, #0x24]
-	cmp r1, #8
-	bne _022518F2
-	bl ov02_022518F8
-	pop {r3, pc}
-_022518F2:
-	bl ov02_022519B0
-	pop {r3, pc}
-	thumb_func_end ov02_022518E0
-
-	thumb_func_start ov02_022518F8
-ov02_022518F8: ; 0x022518F8
-	push {r3, r4, r5, r6, lr}
-	sub sp, #0x14
-	add r6, r0, #0
-	ldr r0, [r6, #4]
-	ldr r0, [r0, #0x24]
-	ldr r0, [r0, #4]
-	bl ov01_021E687C
-	mov r4, #0xe3
-	add r5, r0, #0
-	lsl r4, r4, #2
-	add r0, r5, r4
-	mov r1, #0xae
-	mov r2, #0x26
-	mov r3, #4
-	bl ov01_021FBCD8
-	mov r0, #4
-	str r0, [sp]
-	add r0, r5, r4
-	add r0, #0x10
-	add r1, r5, r4
-	mov r2, #0xae
-	mov r3, #0x27
-	str r5, [sp, #4]
-	bl ov01_021FBE44
-	mov r0, #4
-	str r0, [sp]
-	add r0, r5, r4
-	add r0, #0x24
-	add r1, r5, r4
-	mov r2, #0xae
-	mov r3, #0x28
-	str r5, [sp, #4]
-	bl ov01_021FBE44
-	add r0, r5, r4
-	add r0, #0x38
-	add r1, r5, r4
-	bl ov01_021FBF2C
-	add r0, r5, r4
-	add r1, r5, r4
-	add r0, #0x38
-	add r1, #0x10
-	bl ov01_021FBF50
-	add r0, r5, r4
-	add r1, r5, r4
-	add r0, #0x38
-	add r1, #0x24
-	bl ov01_021FBF50
-	add r0, r5, r4
-	add r0, #0x38
-	mov r1, #1
-	bl ov01_021FC004
-	add r0, r5, r4
-	add r0, #0x10
-	mov r1, #2
-	mov r2, #0
-	bl ov02_022510D4
-	ldr r0, [r6, #0x40]
-	bl PlayerAvatar_GetMapObject
-	add r1, sp, #8
-	bl MapObject_GetPositionVec
-	add r0, r5, r4
-	ldr r1, [sp, #8]
-	ldr r2, [sp, #0xc]
-	ldr r3, [sp, #0x10]
-	add r0, #0x38
-	bl ov01_021FC00C
-	ldr r0, _022519A8 ; =ov02_02251BA8
-	add r1, r5, #0
-	mov r2, #0
-	bl SysTask_CreateOnMainQueue
-	ldr r1, _022519AC ; =0x000004A8
-	str r0, [r5, r1]
-	add sp, #0x14
-	pop {r3, r4, r5, r6, pc}
-	nop
-_022519A8: .word ov02_02251BA8
-_022519AC: .word 0x000004A8
-	thumb_func_end ov02_022518F8
-
-	thumb_func_start ov02_022519B0
-ov02_022519B0: ; 0x022519B0
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x18
-	add r4, r0, #0
-	ldr r0, [r4, #4]
-	ldr r0, [r0, #0x24]
-	ldr r0, [r0, #4]
-	bl ov01_021E687C
-	ldr r1, _02251AFC ; =0x0000043C
-	str r0, [sp, #0x10]
-	add r6, r0, r1
-	ldr r0, [r4, #8]
-	mov r4, #0
-	str r0, [r6, #0x64]
-	add r0, r6, #0
-	str r0, [sp, #0x14]
-	add r0, #0x18
-	str r0, [sp, #0x14]
-_022519D4:
-	ldr r1, _02251B00 ; =ov02_02253B44
-	lsl r7, r4, #2
-	ldrb r1, [r1, r4]
-	add r5, r6, r7
-	mov r0, #4
-	str r0, [sp]
-	mov r0, #0xae
-	mov r2, #0
-	add r3, r5, #0
-	bl GfGfxLoader_GetScrnData
-	ldr r1, _02251B04 ; =ov02_02253B3C
-	ldr r3, [sp, #0x14]
-	str r0, [r5, #0x30]
-	mov r0, #4
-	str r0, [sp]
-	ldrb r1, [r1, r4]
-	mov r0, #0xae
-	mov r2, #0
-	add r3, r3, r7
-	bl GfGfxLoader_GetScrnData
-	str r0, [r5, #0x48]
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, #6
-	blo _022519D4
-	ldr r3, [r6]
-	ldr r0, [r6, #0x64]
-	add r2, r3, #0
-	ldr r3, [r3, #8]
-	mov r1, #2
-	add r2, #0xc
-	bl BG_LoadScreenTilemapData
-	ldr r3, [r6, #0x18]
-	ldr r0, [r6, #0x64]
-	add r2, r3, #0
-	ldr r3, [r3, #8]
-	mov r1, #3
-	add r2, #0xc
-	bl BG_LoadScreenTilemapData
-	mov r0, #0x20
-	str r0, [sp]
-	str r0, [sp, #4]
-	mov r0, #6
-	str r0, [sp, #8]
-	mov r2, #0
-	ldr r0, [r6, #0x64]
-	mov r1, #2
-	add r3, r2, #0
-	bl BgTilemapRectChangePalette
-	mov r0, #0x20
-	str r0, [sp]
-	str r0, [sp, #4]
-	mov r0, #6
-	str r0, [sp, #8]
-	mov r2, #0
-	ldr r0, [r6, #0x64]
-	mov r1, #3
-	add r3, r2, #0
-	bl BgTilemapRectChangePalette
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	str r0, [sp, #8]
-	mov r0, #4
-	str r0, [sp, #0xc]
-	ldr r2, [r6, #0x64]
-	mov r0, #0xae
-	mov r1, #0x35
-	mov r3, #2
-	bl GfGfxLoader_LoadCharData
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	str r0, [sp, #8]
-	mov r0, #4
-	str r0, [sp, #0xc]
-	ldr r2, [r6, #0x64]
-	mov r0, #0xae
-	mov r1, #0x35
-	mov r3, #3
-	bl GfGfxLoader_LoadCharData
-	mov r0, #0x20
-	str r0, [sp]
-	mov r0, #4
-	str r0, [sp, #4]
-	mov r0, #0xae
-	mov r1, #0x36
-	mov r2, #0
-	mov r3, #0xc0
-	bl GfGfxLoader_GXLoadPal
-	ldr r0, _02251B08 ; =ov02_02251BC4
-	ldr r1, [sp, #0x10]
-	mov r2, #0
-	bl SysTask_CreateOnMainQueue
-	ldr r2, _02251B0C ; =0x000004A8
-	ldr r1, [sp, #0x10]
-	str r0, [r1, r2]
-	ldr r0, [r6, #0x64]
-	mov r1, #2
-	bl ScheduleBgTilemapBufferTransfer
-	ldr r0, [r6, #0x64]
-	mov r1, #3
-	bl ScheduleBgTilemapBufferTransfer
-	mov r0, #4
-	mov r1, #1
-	bl GfGfx_EngineATogglePlanes
-	mov r0, #8
-	mov r1, #1
-	bl GfGfx_EngineATogglePlanes
-	add r0, r6, #0
-	mov r1, #0
-	add r0, #0x63
-	strb r1, [r0]
-	str r1, [r6, #0x68]
-	ldr r3, _02251B10 ; =0x0400000C
-	mov r1, #3
-	ldrh r0, [r3]
-	bic r0, r1
-	strh r0, [r3]
-	ldrh r2, [r3, #2]
-	mov r0, #1
-	bic r2, r1
-	orr r0, r2
-	strh r0, [r3, #2]
-	sub r2, r3, #4
-	ldrh r3, [r2]
-	mov r0, #2
-	bic r3, r1
-	orr r0, r3
-	strh r0, [r2]
-	add sp, #0x18
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_02251AFC: .word 0x0000043C
-_02251B00: .word ov02_02253B44
-_02251B04: .word ov02_02253B3C
-_02251B08: .word ov02_02251BC4
-_02251B0C: .word 0x000004A8
-_02251B10: .word 0x0400000C
-	thumb_func_end ov02_022519B0
-
-	thumb_func_start ov02_02251B14
-ov02_02251B14: ; 0x02251B14
-	push {r3, r4, r5, lr}
-	ldr r0, [r0, #4]
-	ldr r5, [r0, #0x24]
-	ldr r0, [r5, #4]
-	bl ov01_021E687C
-	add r4, r0, #0
-	ldr r0, _02251B48 ; =0x000004A8
-	ldr r0, [r4, r0]
-	bl SysTask_Destroy
-	ldr r0, _02251B48 ; =0x000004A8
-	mov r1, #0
-	str r1, [r4, r0]
-	ldr r0, [r5, #0x24]
-	cmp r0, #8
-	bne _02251B3E
-	add r0, r4, #0
-	bl ov02_02251B4C
-	pop {r3, r4, r5, pc}
-_02251B3E:
-	add r0, r4, #0
-	bl ov02_02251B70
-	pop {r3, r4, r5, pc}
-	nop
-_02251B48: .word 0x000004A8
-	thumb_func_end ov02_02251B14
-
-	thumb_func_start ov02_02251B4C
-ov02_02251B4C: ; 0x02251B4C
-	push {r3, r4, r5, lr}
-	mov r4, #0xe3
-	add r5, r0, #0
-	lsl r4, r4, #2
-	add r0, r5, r4
-	add r0, #0x24
-	add r1, r5, #0
-	bl ov01_021FBE80
-	add r0, r5, r4
-	add r0, #0x10
-	add r1, r5, #0
-	bl ov01_021FBE80
-	add r0, r5, r4
-	bl ov01_021FBDA8
-	pop {r3, r4, r5, pc}
-	thumb_func_end ov02_02251B4C
-
-	thumb_func_start ov02_02251B70
-ov02_02251B70: ; 0x02251B70
-	push {r4, r5, r6, lr}
-	ldr r1, _02251BA4 ; =0x0000043C
-	add r6, r0, r1
-	mov r0, #4
-	mov r1, #0
-	bl GfGfx_EngineATogglePlanes
-	mov r0, #8
-	mov r1, #0
-	bl GfGfx_EngineATogglePlanes
-	mov r4, #0
-_02251B88:
-	lsl r0, r4, #2
-	add r5, r6, r0
-	ldr r0, [r5, #0x30]
-	bl FreeToHeap
-	ldr r0, [r5, #0x48]
-	bl FreeToHeap
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, #6
-	blo _02251B88
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-_02251BA4: .word 0x0000043C
-	thumb_func_end ov02_02251B70
-
-	thumb_func_start ov02_02251BA8
-ov02_02251BA8: ; 0x02251BA8
-	push {r3, r4, r5, lr}
-	mov r4, #0xe3
-	add r5, r1, #0
-	lsl r4, r4, #2
-	add r0, r5, r4
-	add r0, #0x10
-	mov r1, #2
-	bl ov02_02251138
-	add r0, r5, r4
-	add r0, #0x38
-	bl ov01_021FBF68
-	pop {r3, r4, r5, pc}
-	thumb_func_end ov02_02251BA8
-
-	thumb_func_start ov02_02251BC4
-ov02_02251BC4: ; 0x02251BC4
-	push {r3, r4, lr}
-	sub sp, #0x1c
-	ldr r0, _02251CEC ; =0x0000043C
-	add r4, r1, r0
-	add r0, r4, #0
-	add r0, #0x63
-	ldrb r0, [r0]
-	add r1, r0, #1
-	add r0, r4, #0
-	add r0, #0x63
-	strb r1, [r0]
-	add r0, r4, #0
-	add r0, #0x63
-	ldrb r0, [r0]
-	cmp r0, #6
-	blo _02251C7E
-	add r0, r4, #0
-	mov r1, #0
-	add r0, #0x63
-	strb r1, [r0]
-	ldr r0, [r4, #0x68]
-	add r0, r0, #1
-	str r0, [r4, #0x68]
-	cmp r0, #6
-	blt _02251BF8
-	str r1, [r4, #0x68]
-_02251BF8:
-	mov r1, #0x20
-	str r1, [sp]
-	str r1, [sp, #4]
-	ldr r0, [r4, #0x68]
-	mov r2, #0
-	lsl r0, r0, #2
-	ldr r0, [r4, r0]
-	add r3, r2, #0
-	add r0, #0xc
-	str r0, [sp, #8]
-	str r2, [sp, #0xc]
-	str r2, [sp, #0x10]
-	str r1, [sp, #0x14]
-	str r1, [sp, #0x18]
-	ldr r0, [r4, #0x64]
-	mov r1, #2
-	bl CopyRectToBgTilemapRect
-	mov r1, #0x20
-	str r1, [sp]
-	str r1, [sp, #4]
-	ldr r0, [r4, #0x68]
-	mov r2, #0
-	lsl r0, r0, #2
-	add r0, r4, r0
-	ldr r0, [r0, #0x18]
-	add r3, r2, #0
-	add r0, #0xc
-	str r0, [sp, #8]
-	str r2, [sp, #0xc]
-	str r2, [sp, #0x10]
-	str r1, [sp, #0x14]
-	str r1, [sp, #0x18]
-	ldr r0, [r4, #0x64]
-	mov r1, #3
-	bl CopyRectToBgTilemapRect
-	mov r0, #0x20
-	str r0, [sp]
-	str r0, [sp, #4]
-	mov r0, #6
-	str r0, [sp, #8]
-	mov r2, #0
-	ldr r0, [r4, #0x64]
-	mov r1, #2
-	add r3, r2, #0
-	bl BgTilemapRectChangePalette
-	mov r0, #0x20
-	str r0, [sp]
-	str r0, [sp, #4]
-	mov r0, #6
-	str r0, [sp, #8]
-	mov r2, #0
-	ldr r0, [r4, #0x64]
-	mov r1, #3
-	add r3, r2, #0
-	bl BgTilemapRectChangePalette
-	ldr r0, [r4, #0x64]
-	mov r1, #2
-	bl ScheduleBgTilemapBufferTransfer
-	ldr r0, [r4, #0x64]
-	mov r1, #3
-	bl ScheduleBgTilemapBufferTransfer
-_02251C7E:
-	add r0, r4, #0
-	add r0, #0x60
-	ldrb r0, [r0]
-	add r3, r4, #0
-	add r3, #0x60
-	sub r1, r0, #1
-	add r0, r4, #0
-	add r0, #0x60
-	strb r1, [r0]
-	add r0, r4, #0
-	add r0, #0x61
-	ldrb r0, [r0]
-	mov r2, #0
-	add r1, r0, #1
-	add r0, r4, #0
-	add r0, #0x61
-	strb r1, [r0]
-	add r0, r4, #0
-	add r0, #0x62
-	ldrb r0, [r0]
-	sub r1, r0, #1
-	add r0, r4, #0
-	add r0, #0x62
-	strb r1, [r0]
-	ldrb r3, [r3]
-	ldr r0, [r4, #0x64]
-	mov r1, #2
-	bl ScheduleSetBgPosText
-	add r3, r4, #0
-	add r3, #0x62
-	ldrb r3, [r3]
-	ldr r0, [r4, #0x64]
-	mov r1, #2
-	mov r2, #3
-	bl ScheduleSetBgPosText
-	add r3, r4, #0
-	add r3, #0x61
-	ldrb r3, [r3]
-	ldr r0, [r4, #0x64]
-	mov r1, #3
-	mov r2, #0
-	bl ScheduleSetBgPosText
-	ldr r0, [r4, #0x64]
-	add r4, #0x62
-	mov r1, #3
-	ldrb r3, [r4]
-	add r2, r1, #0
-	bl ScheduleSetBgPosText
-	add sp, #0x1c
-	pop {r3, r4, pc}
-	nop
-_02251CEC: .word 0x0000043C
-	thumb_func_end ov02_02251BC4
-
-	thumb_func_start ov02_02251CF0
-ov02_02251CF0: ; 0x02251CF0
-	push {r3, r4, r5, lr}
-	sub sp, #0x20
-	add r5, r0, #0
-	mov r0, #4
-	mov r1, #0x28
-	bl AllocFromHeapAtEnd
-	ldr r1, [r5, #4]
-	str r0, [r1, #0x24]
-	ldr r0, [r5, #4]
-	ldr r4, [r0, #0x24]
-	ldr r0, _02251DAC ; =gGameVersion
-	ldrb r0, [r0]
-	strh r0, [r4, #0x1a]
-	ldrh r0, [r4, #0x1a]
-	cmp r0, #7
-	bne _02251D1A
-	bl GF_AssertFail
-	add sp, #0x20
-	pop {r3, r4, r5, pc}
-_02251D1A:
-	ldr r0, [r5, #0x24]
-	bl Camera_GetDistance
-	str r0, [r4]
-	ldr r1, [r5, #0x24]
-	add r0, sp, #0
-	bl Camera_GetAngle
-	add r0, sp, #0
-	ldrh r1, [r0]
-	strh r1, [r4, #4]
-	ldrh r1, [r0, #2]
-	strh r1, [r4, #6]
-	ldrh r1, [r0, #4]
-	strh r1, [r4, #8]
-	ldrh r0, [r0, #6]
-	strh r0, [r4, #0xa]
-	ldr r1, [r5, #0x24]
-	add r0, sp, #8
-	bl Camera_GetLookAtCamTarget
-	add r3, sp, #8
-	ldmia r3!, {r0, r1}
-	add r2, sp, #0x14
-	stmia r2!, {r0, r1}
-	ldr r0, [r3]
-	str r0, [r2]
-	ldr r0, [r5, #0x24]
-	bl Camera_GetCurrentTarget
-	add r2, r4, #0
-	add r1, r0, #0
-	add r0, sp, #0x14
-	add r2, #0xc
-	bl VEC_Subtract
-	ldr r0, [r5, #0x24]
-	bl Camera_GetPerspectiveAngle
-	strh r0, [r4, #0x18]
-	ldr r0, [r5, #0x24]
-	bl Camera_GetPerspectiveClippingPlaneNear
-	str r0, [r4, #0x1c]
-	ldr r0, [r5, #0x24]
-	bl Camera_GetPerspectiveClippingPlaneFar
-	str r0, [r4, #0x20]
-	ldr r0, _02251DB0 ; =0x0029AEC1
-	ldr r1, [r5, #0x24]
-	bl Camera_SetDistance
-	ldr r0, _02251DB4 ; =ov02_02253C74
-	ldr r1, [r5, #0x24]
-	bl Camera_SetAnglePos
-	ldr r0, _02251DB8 ; =0x000005C1
-	ldr r1, [r5, #0x24]
-	bl Camera_SetPerspectiveAngle
-	ldr r0, _02251DBC ; =ov02_02253BC4
-	ldr r1, [r5, #0x24]
-	bl Camera_OffsetLookAtPosAndTarget
-	mov r0, #0x96
-	ldr r1, _02251DC0 ; =0x006A4000
-	ldr r2, [r5, #0x24]
-	lsl r0, r0, #0xc
-	bl Camera_SetPerspectiveClippingPlane
-	add sp, #0x20
-	pop {r3, r4, r5, pc}
-	nop
-_02251DAC: .word gGameVersion
-_02251DB0: .word 0x0029AEC1
-_02251DB4: .word ov02_02253C74
-_02251DB8: .word 0x000005C1
-_02251DBC: .word ov02_02253BC4
-_02251DC0: .word 0x006A4000
-	thumb_func_end ov02_02251CF0
-
-	thumb_func_start ov02_02251DC4
-ov02_02251DC4: ; 0x02251DC4
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, [r4, #4]
-	ldr r0, [r0, #0x24]
-	ldrh r0, [r0, #0x1a]
-	cmp r0, #7
-	bne _02251DD6
-	bl GF_AssertFail
-_02251DD6:
-	ldr r0, [r4, #4]
-	ldr r0, [r0, #0x24]
-	bl FreeToHeap
-	ldr r0, [r4, #4]
-	mov r1, #0
-	str r1, [r0, #0x24]
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end ov02_02251DC4
-
-	thumb_func_start ov02_02251DE8
-ov02_02251DE8: ; 0x02251DE8
-	push {r4, r5, lr}
-	sub sp, #0x14
-	add r5, r0, #0
-	ldr r0, [r5, #4]
-	ldr r4, [r0, #0x24]
-	ldrh r0, [r4, #0x1a]
-	cmp r0, #7
-	bne _02251E00
-	bl GF_AssertFail
-	add sp, #0x14
-	pop {r4, r5, pc}
-_02251E00:
-	ldr r1, [r5, #0x24]
-	mov r0, #4
-	bl CreateCameraTranslationWrapper
-	str r0, [r4, #0x24]
-	add r3, r4, #0
-	ldrh r1, [r4, #4]
-	add r0, sp, #0
-	add r3, #0xc
-	strh r1, [r0]
-	ldrh r1, [r4, #0x18]
-	add r2, sp, #4
-	strh r1, [r0, #2]
-	ldmia r3!, {r0, r1}
-	stmia r2!, {r0, r1}
-	ldr r0, [r3]
-	add r1, sp, #0
-	str r0, [r2]
-	ldr r0, [r4]
-	mov r2, #0x1e
-	str r0, [sp, #0x10]
-	ldr r0, [r4, #0x24]
-	bl SetCameraTranslationPath
-	ldr r0, [r5, #0x10]
-	ldr r1, _02251E40 ; =ov02_02251E44
-	add r2, r5, #0
-	bl TaskManager_Call
-	add sp, #0x14
-	pop {r4, r5, pc}
-	nop
-_02251E40: .word ov02_02251E44
-	thumb_func_end ov02_02251DE8
-
-	thumb_func_start ov02_02251E44
-ov02_02251E44: ; 0x02251E44
-	push {r4, r5, r6, lr}
-	bl TaskManager_GetEnvironment
-	add r4, r0, #0
-	ldr r0, [r4, #4]
-	ldr r5, [r0, #0x24]
-	ldr r6, [r5, #0x24]
-	add r0, r6, #0
-	bl IsCameraTranslationFinished
-	cmp r0, #0
-	beq _02251E70
-	add r0, r6, #0
-	bl DeleteCameraTranslationWrapper
-	ldr r0, [r5, #0x1c]
-	ldr r1, [r5, #0x20]
-	ldr r2, [r4, #0x24]
-	bl Camera_SetPerspectiveClippingPlane
-	mov r0, #1
-	pop {r4, r5, r6, pc}
-_02251E70:
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-	thumb_func_end ov02_02251E44
-
-	thumb_func_start GetPhoneBookEntryName
-GetPhoneBookEntryName: ; 0x02251E74
-	push {r3, r4, r5, lr}
-	add r4, r1, #0
-	ldrb r1, [r0]
-	lsl r1, r1, #0x1f
-	lsr r1, r1, #0x1f
-	beq _02251E86
-	ldrb r0, [r0, #2]
-	cmp r0, #0x4b
-	blo _02251E92
-_02251E86:
-	mov r0, #8
-	add r1, r4, #0
-	bl String_New
-	add r5, r0, #0
-	b _02251EB2
-_02251E92:
-	bl GetPhoneMessageGmm
-	add r2, r0, #0
-	mov r0, #1
-	mov r1, #0x1b
-	add r3, r4, #0
-	bl NewMsgDataFromNarc
-	add r4, r0, #0
-	mov r1, #0
-	bl NewString_ReadMsgData
-	add r5, r0, #0
-	add r0, r4, #0
-	bl DestroyMsgData
-_02251EB2:
-	add r0, r5, #0
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end GetPhoneBookEntryName
-
-	thumb_func_start ov02_02251EB8
-ov02_02251EB8: ; 0x02251EB8
-	push {r4, lr}
-	add r4, r0, #0
-	cmp r1, #0x4b
-	blo _02251ED0
-	mov r0, #0xff
-	strb r0, [r4, #2]
-	strb r0, [r4, #5]
-	mov r0, #0
-	strb r0, [r4, #6]
-	bl GF_AssertFail
-	b _02251ED6
-_02251ED0:
-	strb r1, [r4, #2]
-	strb r2, [r4, #5]
-	strb r3, [r4, #6]
-_02251ED6:
-	ldr r0, _02251EE4 ; =0xFFFFFFF8
-	add r0, sp
-	ldrb r1, [r0, #0x10]
-	strb r1, [r4, #3]
-	ldrb r0, [r0, #0x14]
-	strb r0, [r4, #4]
-	pop {r4, pc}
-	.balign 4, 0
-_02251EE4: .word 0xFFFFFFF8
-	thumb_func_end ov02_02251EB8
-
-	thumb_func_start ov02_02251EE8
-ov02_02251EE8: ; 0x02251EE8
-	push {r3, r4, r5, lr}
-	add r4, r1, #0
-	add r5, r0, #0
-	add r0, r4, #0
-	mov r1, #0
-	mov r2, #5
-	bl MI_CpuFill8
-	ldrb r0, [r5, #2]
-	cmp r0, #0x4b
-	blo _02251F08
-	bl GF_AssertFail
-	mov r0, #0xff
-	strb r0, [r4]
-	pop {r3, r4, r5, pc}
-_02251F08:
-	ldrb r0, [r5, #5]
-	strb r0, [r4]
-	ldrb r0, [r5, #6]
-	strb r0, [r4, #1]
-	ldrb r0, [r5, #3]
-	strb r0, [r4, #3]
-	ldrb r0, [r5, #4]
-	strb r0, [r4, #4]
-	ldrb r0, [r5, #7]
-	strb r0, [r4, #2]
-	ldrb r0, [r5, #2]
-	pop {r3, r4, r5, pc}
-	thumb_func_end ov02_02251EE8
-
-	thumb_func_start ov02_02251F20
-ov02_02251F20: ; 0x02251F20
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	ldr r0, [r5, #0x38]
-	bl Save_LocalFieldData_Get
-	bl LocalFieldData_GetCurrentPosition
-	add r4, r0, #0
-	ldr r0, [r4]
-	bl MapHeader_GetField14_1E
-	cmp r0, #0
-	bne _02251F3E
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_02251F3E:
-	ldrb r0, [r5]
-	lsl r0, r0, #0x1f
-	lsr r0, r0, #0x1f
-	bne _02251F4E
-	ldr r1, [r5, #8]
-	ldr r0, [r5, #0xc]
-	cmp r1, r0
-	bge _02251F52
-_02251F4E:
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_02251F52:
-	mov r0, #4
-	bl AllocAndReadPhoneBook
-	add r6, r0, #0
-	ldr r2, [r4]
-	add r0, r5, #0
-	add r1, r6, #0
-	bl ov02_022521C0
-	add r7, r0, #0
-	beq _02251F9C
-	add r0, r6, #0
-	bl FreePhoneBook
-	cmp r7, #2
-	bne _02251F90
-	ldr r2, [r5, #0x3c]
-	add r0, r2, #0
-	add r0, #0xd2
-	ldrb r1, [r0]
-	mov r0, #0x80
-	add r2, #0xd2
-	orr r0, r1
-	strb r0, [r2]
-	ldr r0, [r5, #0x3c]
-	ldr r1, _02251FD8 ; =0x000007FF
-	mov r2, #0
-	bl StartMapSceneScript
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-_02251F90:
-	add r0, r5, #0
-	mov r1, #1
-	bl ov02_022522AC
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_02251F9C:
-	bl MTRandom
-	mov r1, #0x64
-	bl _u32_div_f
-	ldrh r0, [r5, #0x12]
-	cmp r1, r0
-	bls _02251FB8
-	add r0, r6, #0
-	bl FreePhoneBook
-	mov r0, #0
-	str r0, [r5, #8]
-	pop {r3, r4, r5, r6, r7, pc}
-_02251FB8:
-	ldr r2, [r4]
-	add r0, r5, #0
-	add r1, r6, #0
-	bl ov02_02251FDC
-	add r4, r0, #0
-	add r0, r6, #0
-	bl FreePhoneBook
-	cmp r4, #0
-	bne _02251FD2
-	mov r0, #0
-	str r0, [r5, #8]
-_02251FD2:
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_02251FD8: .word 0x000007FF
-	thumb_func_end ov02_02251F20
-
-	thumb_func_start ov02_02251FDC
-ov02_02251FDC: ; 0x02251FDC
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x30
-	str r0, [sp, #8]
-	ldr r0, [r0, #0x38]
-	add r6, r1, #0
-	str r2, [sp, #0xc]
-	bl Save_VarsFlags_Get
-	str r0, [sp, #0x1c]
-	ldr r0, [sp, #8]
-	ldr r0, [r0, #0x38]
-	bl Save_PlayerData_GetProfileAddr
-	ldr r0, [sp, #8]
-	ldr r0, [r0, #0x38]
-	bl Save_Misc_Get
-	str r0, [sp, #0x18]
-	ldr r0, [sp, #8]
-	ldr r0, [r0, #0x30]
-	bl GSPlayerMisc_FindEmptyGearPhonebookSlot
-	str r0, [sp, #0x2c]
-	ldr r0, [sp, #8]
-	mov r1, #4
-	ldr r0, [r0, #0x30]
-	bl GSPlayerMisc_AllocAndCopyPhonebook
-	str r0, [sp, #0x20]
-	ldr r1, [sp, #0x2c]
-	mov r0, #4
-	bl AllocFromHeapAtEnd
-	ldr r2, [sp, #0x2c]
-	mov r1, #0xff
-	add r4, r0, #0
-	bl MI_CpuFill8
-	bl LCRandom
-	mov r1, #0xfa
-	lsl r1, r1, #2
-	bl _s32_div_f
-	lsl r0, r1, #0x10
-	lsr r1, r0, #0x10
-	mov r0, #0x7d
-	lsl r0, r0, #2
-	cmp r1, r0
-	bhs _02252046
-	mov r0, #0
-	str r0, [sp, #0x24]
-	b _02252058
-_02252046:
-	mov r0, #0x32
-	lsl r0, r0, #4
-	cmp r1, r0
-	bhs _02252054
-	mov r0, #1
-	str r0, [sp, #0x24]
-	b _02252058
-_02252054:
-	mov r0, #2
-	str r0, [sp, #0x24]
-_02252058:
-	ldr r0, [sp, #0x2c]
-	mov r7, #0
-	add r2, r7, #0
-	cmp r0, #0
-	bls _022520A2
-_02252062:
-	ldr r0, [sp, #0x20]
-	mov r1, #0x14
-	ldrb r3, [r0, r2]
-	ldr r0, [r6, #4]
-	mul r1, r3
-	add r5, r0, r1
-	ldrb r1, [r5, #0xf]
-	ldr r0, [sp, #0x24]
-	cmp r0, r1
-	bne _02252096
-	ldrb r0, [r5, #1]
-	cmp r0, #0
-	beq _0225208C
-	cmp r0, #0xc
-	beq _0225208C
-	cmp r0, #0xb
-	beq _0225208C
-	cmp r0, #0xa
-	beq _0225208C
-	cmp r0, #0xe
-	bne _02252096
-_0225208C:
-	add r1, r7, #1
-	add r0, r7, #0
-	lsl r1, r1, #0x18
-	lsr r7, r1, #0x18
-	strb r3, [r4, r0]
-_02252096:
-	add r0, r2, #1
-	lsl r0, r0, #0x18
-	lsr r2, r0, #0x18
-	ldr r0, [sp, #0x2c]
-	cmp r2, r0
-	blo _02252062
-_022520A2:
-	cmp r7, #0
-	bne _022520B8
-	ldr r0, [sp, #0x20]
-	bl FreeToHeap
-	add r0, r4, #0
-	bl FreeToHeap
-	add sp, #0x30
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_022520B8:
-	ldr r0, [sp, #0x20]
-	ldr r2, [sp, #0x2c]
-	mov r1, #0xff
-	bl MI_CpuFill8
-	ldr r0, [sp, #8]
-	ldr r0, [r0, #0x38]
-	bl Save_SysInfo_RTC_Get
-	ldr r0, [r0, #0x14]
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	str r0, [sp, #0x14]
-	ldr r0, [sp, #0x1c]
-	bl Save_VarsFlags_CheckBugContestFlag
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	str r0, [sp, #0x10]
-	mov r0, #0
-	str r0, [sp, #0x28]
-	ldr r0, [sp, #0x18]
-	ldr r1, [sp, #0x24]
-	bl sub_0202AAD4
-	cmp r0, r7
-	bne _022520F6
-	ldr r0, [sp, #0x18]
-	ldr r1, [sp, #0x24]
-	bl sub_0202AA9C
-_022520F6:
-	mov r5, #0
-	cmp r7, #0
-	bls _02252164
-_022520FC:
-	ldrb r2, [r4, r5]
-	mov r1, #0x14
-	ldr r0, [r6, #4]
-	mul r1, r2
-	add r0, r0, r1
-	ldrh r1, [r0, #6]
-	ldr r0, [sp, #0xc]
-	cmp r0, r1
-	beq _0225215A
-	ldr r0, [sp, #0x18]
-	ldr r1, [sp, #0x24]
-	bl sub_0202AA44
-	cmp r0, #0
-	bne _0225215A
-	ldrb r0, [r4, r5]
-	cmp r0, #8
-	bne _02252134
-	ldr r0, [sp, #0x14]
-	bl sub_02095FF8
-	cmp r0, #0
-	bne _0225215A
-	ldr r0, [sp, #0x1c]
-	bl Save_VarsFlags_IsInRocketTakeover
-	cmp r0, #0
-	bne _0225215A
-_02252134:
-	ldrb r1, [r4, r5]
-	mov r2, #0x14
-	ldr r0, [r6, #4]
-	mul r2, r1
-	add r0, r0, r2
-	ldrh r0, [r0, #6]
-	cmp r0, #0x60
-	bne _0225214A
-	ldr r0, [sp, #0x10]
-	cmp r0, #0
-	bne _0225215A
-_0225214A:
-	ldr r0, [sp, #0x28]
-	add r2, r0, #0
-	add r2, r2, #1
-	lsl r2, r2, #0x18
-	lsr r2, r2, #0x18
-	str r2, [sp, #0x28]
-	ldr r2, [sp, #0x20]
-	strb r1, [r2, r0]
-_0225215A:
-	add r0, r5, #1
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-	cmp r5, r7
-	blo _022520FC
-_02252164:
-	ldr r0, [sp, #0x28]
-	cmp r0, #0
-	beq _022521AC
-	bl MTRandom
-	ldr r2, [sp, #0x28]
-	mov r1, #0x64
-	mul r1, r2
-	bl _u32_div_f
-	add r0, r1, #0
-	mov r1, #0x64
-	bl _u32_div_f
-	add r1, r0, #0
-	lsl r1, r1, #0x10
-	lsr r1, r1, #0x10
-	mov r0, #0
-	lsl r1, r1, #0x18
-	str r0, [sp]
-	lsr r2, r1, #0x18
-	str r0, [sp, #4]
-	ldr r1, [sp, #0x20]
-	ldr r0, [sp, #8]
-	ldrb r1, [r1, r2]
-	ldr r2, [sp, #0x24]
-	add r3, r7, #0
-	bl ov02_02251EB8
-	ldr r0, [sp, #8]
-	bl sub_02092DF4
-	ldr r0, [sp, #8]
-	mov r1, #1
-	bl ov02_022522AC
-_022521AC:
-	ldr r0, [sp, #0x20]
-	bl FreeToHeap
-	add r0, r4, #0
-	bl FreeToHeap
-	ldr r0, [sp, #0x28]
-	add sp, #0x30
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ov02_02251FDC
-
-	thumb_func_start ov02_022521C0
-ov02_022521C0: ; 0x022521C0
-	push {r4, r5, r6, lr}
-	sub sp, #8
-	add r5, r0, #0
-	bl ov02_02252218
-	add r6, r0, #0
-	cmp r6, #0xff
-	bne _022521D6
-	add sp, #8
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_022521D6:
-	mov r0, #6
-	add r4, r6, #0
-	mul r4, r0
-	mov r0, #3
-	str r0, [sp]
-	ldr r0, _0225220C ; =ov02_02253C86
-	ldr r1, _02252210 ; =ov02_02253C84
-	ldrh r0, [r0, r4]
-	ldrb r1, [r1, r4]
-	mov r2, #0xff
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	str r0, [sp, #4]
-	add r0, r5, #0
-	mov r3, #0
-	bl ov02_02251EB8
-	add r0, r5, #0
-	bl sub_02092DF4
-	ldr r0, _02252214 ; =ov02_02253C88
-	strb r6, [r5, #7]
-	ldrb r0, [r0, r4]
-	add r0, r0, #1
-	add sp, #8
-	pop {r4, r5, r6, pc}
-	nop
-_0225220C: .word ov02_02253C86
-_02252210: .word ov02_02253C84
-_02252214: .word ov02_02253C88
-	thumb_func_end ov02_022521C0
-
-	thumb_func_start ov02_02252218
-ov02_02252218: ; 0x02252218
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0xc
-	add r7, r0, #0
-	str r1, [sp]
-	mov r0, #4
-	mov r1, #0xd
-	str r2, [sp, #4]
-	bl AllocFromHeapAtEnd
-	mov r1, #0
-	mov r2, #0xd
-	str r0, [sp, #8]
-	bl MI_CpuFill8
-	mov r5, #0
-	ldr r6, _022522A8 ; =ov02_02253C84
-	add r4, r5, #0
-_0225223A:
-	lsl r1, r4, #0x18
-	ldr r0, [r7, #0x34]
-	lsr r1, r1, #0x18
-	bl sub_0202F08C
-	cmp r0, #0
-	beq _02252276
-	ldr r0, [sp]
-	mov r1, #0x14
-	ldr r2, [r0, #4]
-	ldrb r0, [r6]
-	mul r1, r0
-	add r0, r2, r1
-	ldrb r1, [r2, r1]
-	cmp r1, #6
-	bne _02252268
-	ldr r0, [r7, #0x30]
-	mov r1, #6
-	bl GSPlayerMisc_IsGearNumberRegistered
-	cmp r0, #0xff
-	beq _02252276
-	b _02252270
-_02252268:
-	ldrh r1, [r0, #6]
-	ldr r0, [sp, #4]
-	cmp r1, r0
-	beq _02252276
-_02252270:
-	ldr r0, [sp, #8]
-	strb r4, [r0, r5]
-	add r5, r5, #1
-_02252276:
-	add r4, r4, #1
-	add r6, r6, #6
-	cmp r4, #0xd
-	blt _0225223A
-	cmp r5, #0
-	bne _0225228E
-	ldr r0, [sp, #8]
-	bl FreeToHeap
-	add sp, #0xc
-	mov r0, #0xff
-	pop {r4, r5, r6, r7, pc}
-_0225228E:
-	bl LCRandom
-	add r1, r5, #0
-	bl _s32_div_f
-	ldr r0, [sp, #8]
-	ldrb r4, [r0, r1]
-	bl FreeToHeap
-	add r0, r4, #0
-	add sp, #0xc
-	pop {r4, r5, r6, r7, pc}
-	nop
-_022522A8: .word ov02_02253C84
-	thumb_func_end ov02_02252218
-
-	thumb_func_start ov02_022522AC
-ov02_022522AC: ; 0x022522AC
-	ldr r3, _022522B0 ; =GearPhone_ToggleRinging
-	bx r3
-	.balign 4, 0
-_022522B0: .word GearPhone_ToggleRinging
-	thumb_func_end ov02_022522AC
-
-	thumb_func_start GetRadioMusicPlayingSeq
-GetRadioMusicPlayingSeq: ; 0x022522B4
-	push {r3, lr}
-	bl SndRadio_GetSeqNo
-	lsl r0, r0, #0x10
-	ldr r2, _0225232C ; =SEQ_GS_RADIO_R_201
-	lsr r0, r0, #0x10
-	cmp r0, r2
-	bgt _022522F0
-	bge _0225231C
-	add r1, r2, #0
-	sub r1, #SEQ_GS_RADIO_R_201-SEQ_GS_HUE
-	cmp r0, r1
-	bgt _022522E8
-	sub r2, #SEQ_GS_RADIO_R_201-SEQ_GS_RADIO_KOMORIUTA
-	sub r1, r0, r2
-	bmi _02252328
-	add r1, r1, r1
-	add r1, pc
-	ldrh r1, [r1, #6]
-	lsl r1, r1, #0x10
-	asr r1, r1, #0x10
-	add pc, r1
-_022522E0: ; jump table
-	.short _02252314 - _022522E0 - 2 ; case SEQ_GS_RADIO_KOMORIUTA
-	.short _02252310 - _022522E0 - 2 ; case SEQ_GS_RADIO_MARCH
-	.short _02252320 - _022522E0 - 2 ; case SEQ_GS_RADIO_UNKNOWN
-	.short _02252324 - _022522E0 - 2 ; case SEQ_GS_HUE
-_022522E8:
-	ldr r1, _02252330 ; =SEQ_GS_RADIO_R_101
-	cmp r0, r1
-	beq _02252318
-	b _02252328
-_022522F0:
-	add r1, r2, #0
-	add r1, #SEQ_GS_P_RADIO_MARCH-SEQ_GS_RADIO_R_201
-	cmp r0, r1
-	bgt _02252308
-	add r1, r2, #0
-	add r1, #SEQ_GS_P_RADIO_MARCH-SEQ_GS_RADIO_R_201
-	cmp r0, r1
-	bge _02252310
-	add r2, #SEQ_GS_P_RADIO_KOMORIUTA-SEQ_GS_RADIO_R_201
-	cmp r0, r2
-	beq _02252314
-	b _02252328
-_02252308:
-	add r2, #SEQ_GS_P_HUE-SEQ_GS_RADIO_R_201
-	cmp r0, r2
-	beq _02252324
-	b _02252328
-_02252310:
-	mov r0, #1
-	pop {r3, pc}
-_02252314:
-	mov r0, #2
-	pop {r3, pc}
-_02252318:
-	mov r0, #3
-	pop {r3, pc}
-_0225231C:
-	mov r0, #4
-	pop {r3, pc}
-_02252320:
-	mov r0, #6
-	pop {r3, pc}
-_02252324:
-	mov r0, #5
-	pop {r3, pc}
-_02252328:
-	mov r0, #0
-	pop {r3, pc}
-	.balign 4, 0
-_0225232C: .word SEQ_GS_RADIO_R_201
-_02252330: .word SEQ_GS_RADIO_R_101
-	thumb_func_end GetRadioMusicPlayingSeq
-
-	thumb_func_start ov02_02252334
-ov02_02252334: ; 0x02252334
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	ldr r0, [r5, #0x40]
-	bl PlayerAvatar_GetMapObject
-	bl MapObject_AreBitsSetForMovementScriptInit
-	cmp r0, #0
-	bne _0225234A
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_0225234A:
-	add r0, r5, #0
-	bl FollowMon_IsActive
-	cmp r0, #0
-	beq _022523B0
-	add r0, r5, #0
-	add r0, #0xf4
-	ldr r1, [r0]
-	mov r0, #0x7b
-	lsl r0, r0, #2
-	cmp r1, r0
-	bne _022523B0
-	ldr r0, [r5, #0xc]
-	bl SaveArray_Party_Get
-	bl GetFirstAliveMonInParty_CrashIfNone
-	add r6, r0, #0
-	mov r1, #5
-	mov r2, #0
-	bl GetMonData
-	add r4, r0, #0
-	add r0, r6, #0
-	mov r1, #0x70
-	mov r2, #0
-	bl GetMonData
-	add r6, r0, #0
-	add r0, r5, #0
-	add r0, #0xf4
-	ldr r0, [r0]
-	cmp r4, r0
-	beq _02252392
-	bl GF_AssertFail
-_02252392:
-	add r0, r5, #0
-	add r0, #0xf4
-	ldr r0, [r0]
-	cmp r4, r0
-	beq _022523A0
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_022523A0:
-	add r5, #0xfc
-	ldrh r0, [r5]
-	cmp r0, #1
-	bne _022523B0
-	cmp r6, #0
-	bne _022523B0
-	mov r0, #1
-	pop {r4, r5, r6, pc}
-_022523B0:
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-	thumb_func_end ov02_02252334
-
-	thumb_func_start ov02_022523B4
-ov02_022523B4: ; 0x022523B4
-	push {r4, lr}
-	add r4, r0, #0
-	mov r0, #0xb
-	mov r1, #0xc
-	bl AllocFromHeapAtEnd
-	add r2, r0, #0
-	ldr r1, _022523CC ; =ov02_022523D0
-	add r0, r4, #0
-	bl TaskManager_Call
-	pop {r4, pc}
-	.balign 4, 0
-_022523CC: .word ov02_022523D0
-	thumb_func_end ov02_022523B4
-
-	thumb_func_start ov02_022523D0
-ov02_022523D0: ; 0x022523D0
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0xc
-	add r6, r0, #0
-	bl TaskManager_GetStatePtr
-	add r5, r0, #0
-	add r0, r6, #0
-	bl TaskManager_GetFieldSystem
-	add r4, r0, #0
-	add r0, r6, #0
-	bl TaskManager_GetEnvironment
-	add r6, r0, #0
-	ldr r0, [r5]
-	cmp r0, #4
-	bls _022523F4
-	b _02252524
-_022523F4:
-	add r0, r0, r0
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_02252400: ; jump table
-	.short _0225240A - _02252400 - 2 ; case 0
-	.short _02252426 - _02252400 - 2 ; case 1
-	.short _0225246E - _02252400 - 2 ; case 2
-	.short _022524D2 - _02252400 - 2 ; case 3
-	.short _022524EE - _02252400 - 2 ; case 4
-_0225240A:
-	add r0, r4, #0
-	bl FollowMon_GetMapObject
-	bl MapObject_UnpauseMovement
-	ldr r0, [r4, #0x10]
-	ldr r1, _0225252C ; =ov01_02205A60
-	mov r2, #0
-	bl TaskManager_Call
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-	b _02252524
-_02252426:
-	add r0, r4, #0
-	bl FollowMon_GetMapObject
-	add r1, sp, #0
-	bl MapObject_GetPositionVec
-	add r0, r4, #0
-	bl FollowMon_IsVisible
-	cmp r0, #0
-	beq _0225244A
-	ldr r0, [r4, #0x44]
-	add r1, sp, #0
-	bl ov01_022052C4
-	str r0, [r6, #4]
-	mov r0, #1
-	b _0225244E
-_0225244A:
-	mov r0, #0
-	str r0, [r6, #4]
-_0225244E:
-	str r0, [r6, #8]
-	add r0, r4, #0
-	mov r2, #0
-	mov r1, #0x7b
-	str r2, [r6]
-	add r4, #0xfb
-	add r0, #0xe4
-	ldrb r3, [r4]
-	ldr r0, [r0]
-	lsl r1, r1, #2
-	bl FollowMon_SetObjectParams
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-	b _02252524
-_0225246E:
-	ldr r0, [r6, #8]
-	cmp r0, #0
-	beq _02252490
-	ldr r0, [r6]
-	add r0, r0, #1
-	str r0, [r6]
-	cmp r0, #4
-	blt _02252524
-	add r4, #0xe4
-	ldr r0, [r4]
-	ldr r1, _02252530 ; =0x000003CE
-	bl ov01_021FA930
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-	b _02252524
-_02252490:
-	add r0, r4, #0
-	add r0, #0xe4
-	ldr r0, [r0]
-	bl MapObject_GetManager
-	add r6, r0, #0
-	add r0, r4, #0
-	add r0, #0xe4
-	ldr r0, [r0]
-	bl MapObject_GetGfxID
-	add r7, r0, #0
-	add r0, r4, #0
-	add r0, #0xe4
-	ldr r0, [r0]
-	bl sub_0205E420
-	add r2, r4, #0
-	add r2, #0xe4
-	ldr r2, [r2]
-	add r0, r6, #0
-	add r1, r7, #0
-	bl ov01_021FA108
-	add r4, #0xe4
-	ldr r0, [r4]
-	ldr r1, _02252530 ; =0x000003CE
-	bl sub_0205E38C
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-	b _02252524
-_022524D2:
-	add r0, r4, #0
-	add r0, #0xe4
-	ldr r0, [r0]
-	bl ov01_021FA2D4
-	cmp r0, #0
-	bne _02252524
-	mov r0, #0
-	add r4, #0xfc
-	strh r0, [r4]
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-	b _02252524
-_022524EE:
-	ldr r0, [r6, #4]
-	mov r5, #0
-	cmp r0, #0
-	bne _022524FA
-	mov r5, #1
-	b _0225250A
-_022524FA:
-	bl ov01_022052F4
-	cmp r0, #0
-	beq _0225250A
-	ldr r0, [r6, #4]
-	bl sub_02068B48
-	mov r5, #1
-_0225250A:
-	cmp r5, #0
-	beq _02252524
-	add r0, r6, #0
-	bl FreeToHeap
-	add r0, r4, #0
-	bl FollowMon_GetMapObject
-	bl MapObject_PauseMovement
-	add sp, #0xc
-	mov r0, #1
-	pop {r4, r5, r6, r7, pc}
-_02252524:
-	mov r0, #0
-	add sp, #0xc
-	pop {r4, r5, r6, r7, pc}
-	nop
-_0225252C: .word ov01_02205A60
-_02252530: .word 0x000003CE
-	thumb_func_end ov02_022523D0
-
-	thumb_func_start ov02_02252534
-ov02_02252534: ; 0x02252534
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	mov r0, #0xb
-	mov r1, #0xf4
-	bl AllocFromHeapAtEnd
-	add r4, r0, #0
-	mov r1, #0
-	mov r2, #0xf4
-	bl MI_CpuFill8
-	str r5, [r4, #8]
-	ldr r0, [r5, #0x10]
-	ldr r1, _02252558 ; =ov02_0225255C
-	add r2, r4, #0
-	bl TaskManager_Call
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_02252558: .word ov02_0225255C
-	thumb_func_end ov02_02252534
-
-	thumb_func_start ov02_0225255C
-ov02_0225255C: ; 0x0225255C
-	push {r4, r5, lr}
-	sub sp, #0xc
-	add r4, r0, #0
-	bl TaskManager_GetStatePtr
-	add r5, r0, #0
-	add r0, r4, #0
-	bl TaskManager_GetFieldSystem
-	add r0, r4, #0
-	bl TaskManager_GetEnvironment
-	ldr r1, [r5]
-	add r4, r0, #0
-	cmp r1, #5
-	bls _0225257E
-	b _02252698
-_0225257E:
-	add r1, r1, r1
-	add r1, pc
-	ldrh r1, [r1, #6]
-	lsl r1, r1, #0x10
-	asr r1, r1, #0x10
-	add pc, r1
-_0225258A: ; jump table
-	.short _02252596 - _0225258A - 2 ; case 0
-	.short _022525B4 - _0225258A - 2 ; case 1
-	.short _022525EA - _0225258A - 2 ; case 2
-	.short _0225260C - _0225258A - 2 ; case 3
-	.short _02252638 - _0225258A - 2 ; case 4
-	.short _0225266E - _0225258A - 2 ; case 5
-_02252596:
-	mov r1, #4
-	str r1, [sp]
-	mov r0, #1
-	str r0, [sp, #4]
-	str r1, [sp, #8]
-	mov r1, #0
-	ldr r3, _022526C4 ; =0x00007FFF
-	mov r0, #3
-	add r2, r1, #0
-	bl BeginNormalPaletteFade
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-	b _02252698
-_022525B4:
-	bl IsPaletteFadeFinished
-	cmp r0, #0
-	beq _02252698
-	add r0, r4, #0
-	bl ov02_02252898
-	ldr r0, [r4, #8]
-	bl FollowMon_GetMapObject
-	mov r1, #1
-	bl sub_02069DC8
-	mov r0, #4
-	str r0, [sp]
-	mov r1, #1
-	str r1, [sp, #4]
-	str r0, [sp, #8]
-	ldr r3, _022526C4 ; =0x00007FFF
-	mov r0, #3
-	mov r2, #0
-	bl BeginNormalPaletteFade
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-	b _02252698
-_022525EA:
-	bl IsPaletteFadeFinished
-	cmp r0, #0
-	beq _02252698
-	ldr r0, [r4, #8]
-	bl FollowMon_GetMapObject
-	bl sub_0205F484
-	add r0, r4, #0
-	mov r1, #1
-	add r0, #0xf0
-	strb r1, [r0]
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-	b _02252698
-_0225260C:
-	add r1, r4, #0
-	add r1, #0xf2
-	ldrb r1, [r1]
-	add r2, r1, #1
-	add r1, r4, #0
-	add r1, #0xf2
-	strb r2, [r1]
-	add r1, r4, #0
-	add r1, #0xf2
-	ldrb r1, [r1]
-	cmp r1, #0x1e
-	blo _02252698
-	bl ov02_022526C8
-	add r0, r4, #0
-	mov r1, #0
-	add r0, #0xf2
-	strb r1, [r0]
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-	b _02252698
-_02252638:
-	add r0, #0xf2
-	ldrb r0, [r0]
-	add r1, r0, #1
-	add r0, r4, #0
-	add r0, #0xf2
-	strb r1, [r0]
-	add r0, r4, #0
-	add r0, #0xf2
-	ldrb r0, [r0]
-	cmp r0, #0x50
-	blo _02252698
-	mov r0, #0x1e
-	str r0, [sp]
-	mov r0, #1
-	str r0, [sp, #4]
-	mov r0, #4
-	str r0, [sp, #8]
-	mov r0, #0
-	ldr r3, _022526C4 ; =0x00007FFF
-	add r1, r0, #0
-	add r2, r0, #0
-	bl BeginNormalPaletteFade
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-	b _02252698
-_0225266E:
-	bl IsPaletteFadeFinished
-	cmp r0, #0
-	beq _02252698
-	add r0, r4, #0
-	bl ov02_022526EC
-	cmp r0, #0
-	beq _02252698
-	add r0, r4, #0
-	bl ov02_0225296C
-	add r0, r4, #4
-	bl ov01_021F46DC
-	add r0, r4, #0
-	bl FreeToHeap
-	add sp, #0xc
-	mov r0, #1
-	pop {r4, r5, pc}
-_02252698:
-	add r0, r4, #0
-	add r0, #0xf0
-	ldrb r0, [r0]
-	cmp r0, #0
-	beq _022526AA
-	add r0, r4, #0
-	add r0, #0x2c
-	bl ov02_022529C4
-_022526AA:
-	add r0, r4, #0
-	add r0, #0xf1
-	ldrb r0, [r0]
-	cmp r0, #0
-	beq _022526BC
-	add r4, #0x68
-	add r0, r4, #0
-	bl ov01_021FBF68
-_022526BC:
-	mov r0, #0
-	add sp, #0xc
-	pop {r4, r5, pc}
-	nop
-_022526C4: .word 0x00007FFF
-	thumb_func_end ov02_0225255C
-
-	thumb_func_start ov02_022526C8
-ov02_022526C8: ; 0x022526C8
-	push {r4, lr}
-	add r4, r0, #0
-	mov r0, #3
-	mov r1, #0xd
-	bl ov01_021F467C
-	str r0, [r4, #4]
-	ldr r0, _022526E8 ; =ov02_022526FC
-	add r1, r4, #0
-	mov r2, #0
-	bl SysTask_CreateOnMainQueue
-	mov r0, #0
-	strb r0, [r4, #2]
-	pop {r4, pc}
-	nop
-_022526E8: .word ov02_022526FC
-	thumb_func_end ov02_022526C8
-
-	thumb_func_start ov02_022526EC
-ov02_022526EC: ; 0x022526EC
-	ldrb r0, [r0, #2]
-	cmp r0, #0
-	beq _022526F6
-	mov r0, #1
-	bx lr
-_022526F6:
-	mov r0, #0
-	bx lr
-	.balign 4, 0
-	thumb_func_end ov02_022526EC
-
-	thumb_func_start ov02_022526FC
-ov02_022526FC: ; 0x022526FC
-	push {r4, r5, lr}
-	sub sp, #0xc
-	add r4, r1, #0
-	add r5, r0, #0
-	add r0, r4, #0
-	add r0, #0xee
-	ldrh r0, [r0]
-	cmp r0, #0
-	beq _02252716
-	cmp r0, #1
-	beq _02252746
-	add sp, #0xc
-	pop {r4, r5, pc}
-_02252716:
-	ldr r3, _02252760 ; =ov02_02253CE0
-	add r2, sp, #0
-	ldmia r3!, {r0, r1}
-	stmia r2!, {r0, r1}
-	ldr r0, [r3]
-	str r0, [r2]
-	ldr r0, [r4, #8]
-	ldr r0, [r0, #0x24]
-	bl Camera_GetPerspectiveAngle
-	add r1, sp, #0
-	strh r0, [r1, #8]
-	add r0, r4, #0
-	add r1, sp, #0
-	bl ov02_02252764
-	add r0, r4, #0
-	add r0, #0xee
-	ldrh r0, [r0]
-	add r4, #0xee
-	add sp, #0xc
-	add r0, r0, #1
-	strh r0, [r4]
-	pop {r4, r5, pc}
-_02252746:
-	add r0, r4, #0
-	bl ov02_02252888
-	cmp r0, #0
-	beq _0225275A
-	mov r0, #1
-	strb r0, [r4, #2]
-	add r0, r5, #0
-	bl SysTask_Destroy
-_0225275A:
-	add sp, #0xc
-	pop {r4, r5, pc}
-	nop
-_02252760: .word ov02_02253CE0
-	thumb_func_end ov02_022526FC
-
-	thumb_func_start ov02_02252764
-ov02_02252764: ; 0x02252764
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	mov r1, #0
-	strb r1, [r5, #3]
-	add r0, #0xe6
-	strh r1, [r0]
-	add r0, r5, #0
-	ldr r1, [r4]
-	add r0, #0xe0
-	str r1, [r0]
-	add r0, r5, #0
-	ldrh r1, [r5]
-	add r0, #0xe4
-	strh r1, [r0]
-	ldr r0, [r5, #8]
-	ldr r0, [r0, #0x24]
-	bl Camera_GetPerspectiveAngle
-	add r1, r5, #0
-	add r1, #0xea
-	strh r0, [r1]
-	add r0, r5, #0
-	ldrh r1, [r4, #8]
-	add r0, #0xec
-	mov r2, #1
-	strh r1, [r0]
-	add r0, r5, #0
-	ldr r1, [r4, #4]
-	add r0, #0xe8
-	strh r1, [r0]
-	ldr r0, _022527AC ; =ov02_0225286C
-	add r1, r5, #0
-	bl SysTask_CreateOnMainQueue
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_022527AC: .word ov02_0225286C
-	thumb_func_end ov02_02252764
-
-	thumb_func_start ov02_022527B0
-ov02_022527B0: ; 0x022527B0
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x40
-	ldr r3, _02252864 ; =ov02_02253CD4
-	add r5, r0, #0
-	ldmia r3!, {r0, r1}
-	add r2, sp, #4
-	stmia r2!, {r0, r1}
-	ldr r0, [r3]
-	str r0, [r2]
-	ldr r0, [r5, #8]
-	ldr r0, [r0, #0x24]
-	str r0, [sp]
-	add r0, r5, #0
-	add r0, #0xe6
-	ldrh r0, [r0]
-	add r1, r0, #1
-	add r0, r5, #0
-	add r0, #0xe6
-	strh r1, [r0]
-	add r0, r5, #0
-	add r0, #0xe6
-	ldrh r6, [r0]
-	add r0, r5, #0
-	add r0, #0xe8
-	ldrh r7, [r0]
-	add r0, r5, #0
-	add r0, #0xea
-	ldrh r4, [r0]
-	add r0, r5, #0
-	add r0, #0xec
-	ldrh r0, [r0]
-	sub r1, r0, r4
-	add r0, r1, #0
-	mul r0, r6
-	add r1, r7, #0
-	bl _s32_div_f
-	add r4, r0, r4
-	add r0, r5, #0
-	add r0, #0xe0
-	ldr r1, [r0]
-	add r0, r1, #0
-	mul r0, r6
-	add r1, r7, #0
-	bl _s32_div_f
-	add r1, r5, #0
-	add r1, #0xe4
-	ldrh r1, [r1]
-	ldr r3, _02252868 ; =FX_SinCosTable_
-	add r0, r1, r0
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
-	asr r0, r0, #4
-	lsl r2, r0, #1
-	lsl r1, r2, #1
-	add r2, r2, #1
-	lsl r2, r2, #1
-	ldrsh r1, [r3, r1]
-	ldrsh r2, [r3, r2]
-	add r0, sp, #0x10
-	bl MTX_RotZ33_
-	add r0, sp, #4
-	add r1, sp, #0x10
-	add r2, sp, #0x34
-	bl MTX_MultVec33
-	ldr r1, [sp]
-	add r0, sp, #0x34
-	bl Camera_SetLookAtCamUp
-	lsl r0, r4, #0x10
-	ldr r1, [sp]
-	lsr r0, r0, #0x10
-	bl Camera_SetPerspectiveAngle
-	add r0, r5, #0
-	add r0, #0xe6
-	add r5, #0xe8
-	ldrh r1, [r0]
-	ldrh r0, [r5]
-	cmp r1, r0
-	blo _0225285E
-	add sp, #0x40
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-_0225285E:
-	mov r0, #0
-	add sp, #0x40
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02252864: .word ov02_02253CD4
-_02252868: .word FX_SinCosTable_
-	thumb_func_end ov02_022527B0
-
-	thumb_func_start ov02_0225286C
-ov02_0225286C: ; 0x0225286C
-	push {r3, r4, r5, lr}
-	add r4, r1, #0
-	add r5, r0, #0
-	add r0, r4, #0
-	bl ov02_022527B0
-	cmp r0, #0
-	beq _02252886
-	mov r0, #1
-	strb r0, [r4, #3]
-	add r0, r5, #0
-	bl SysTask_Destroy
-_02252886:
-	pop {r3, r4, r5, pc}
-	thumb_func_end ov02_0225286C
-
-	thumb_func_start ov02_02252888
-ov02_02252888: ; 0x02252888
-	ldrb r0, [r0, #3]
-	cmp r0, #0
-	beq _02252892
-	mov r0, #1
-	bx lr
-_02252892:
-	mov r0, #0
-	bx lr
-	.balign 4, 0
-	thumb_func_end ov02_02252888
-
-	thumb_func_start ov02_02252898
-ov02_02252898: ; 0x02252898
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x28
-	ldr r3, _02252968 ; =ov02_02253CEC
-	str r0, [sp, #8]
-	ldmia r3!, {r0, r1}
-	add r2, sp, #0x1c
-	stmia r2!, {r0, r1}
-	ldr r0, [r3]
-	mov r1, #4
-	str r0, [r2]
-	ldr r0, [sp, #8]
-	mov r2, #0x20
-	add r0, #0xc
-	bl GF_ExpHeap_FndInitAllocator
-	ldr r0, [sp, #8]
-	mov r1, #0xae
-	add r0, #0x1c
-	mov r2, #0x4b
-	mov r3, #4
-	bl ov01_021FBCD8
-	ldr r0, [sp, #8]
-	ldr r4, [sp, #8]
-	ldr r7, [sp, #8]
-	str r0, [sp, #0xc]
-	add r0, #0x1c
-	mov r5, #0
-	add r4, #0xc
-	add r7, #0x2c
-	str r0, [sp, #0xc]
-_022528D6:
-	mov r0, #4
-	str r0, [sp]
-	mov r0, #0x14
-	mul r0, r5
-	str r4, [sp, #4]
-	lsl r6, r5, #2
-	add r3, sp, #0x1c
-	ldr r1, [sp, #0xc]
-	ldr r3, [r3, r6]
-	add r0, r7, r0
-	mov r2, #0xae
-	bl ov01_021FBE44
-	add r0, r5, #1
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-	cmp r5, #3
-	blo _022528D6
-	ldr r0, [sp, #8]
-	ldr r1, [sp, #8]
-	add r0, #0x68
-	add r1, #0x1c
-	bl ov01_021FBF2C
-	ldr r6, [sp, #8]
-	ldr r4, [sp, #8]
-	mov r5, #0
-	add r6, #0x68
-	add r4, #0x2c
-	mov r7, #0x14
-_02252912:
-	add r1, r5, #0
-	mul r1, r7
-	add r0, r6, #0
-	add r1, r4, r1
-	bl ov01_021FBF50
-	add r0, r5, #1
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-	cmp r5, #3
-	blo _02252912
-	ldr r0, [sp, #8]
-	mov r1, #1
-	add r0, #0x68
-	bl ov01_021FC004
-	ldr r0, [sp, #8]
-	mov r1, #0
-	add r0, #0x2c
-	bl ov02_022529A0
-	ldr r0, [sp, #8]
-	ldr r0, [r0, #8]
-	bl FollowMon_GetMapObject
-	add r1, sp, #0x10
-	bl MapObject_GetPositionVec
-	ldr r0, [sp, #8]
-	ldr r1, [sp, #0x10]
-	ldr r2, [sp, #0x14]
-	ldr r3, [sp, #0x18]
-	add r0, #0x68
-	bl ov01_021FC00C
-	ldr r0, [sp, #8]
-	mov r1, #1
-	add r0, #0xf1
-	str r0, [sp, #8]
-	strb r1, [r0]
-	add sp, #0x28
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_02252968: .word ov02_02253CEC
-	thumb_func_end ov02_02252898
-
-	thumb_func_start ov02_0225296C
-ov02_0225296C: ; 0x0225296C
-	push {r3, r4, r5, r6, r7, lr}
-	add r4, r0, #0
-	add r6, r0, #0
-	str r0, [sp]
-	mov r5, #0
-	add r4, #0x2c
-	add r6, #0xc
-	mov r7, #0x14
-_0225297C:
-	add r0, r5, #0
-	mul r0, r7
-	add r0, r4, r0
-	add r1, r6, #0
-	bl ov01_021FBE80
-	add r0, r5, #1
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-	cmp r5, #3
-	blo _0225297C
-	ldr r0, [sp]
-	add r0, #0x1c
-	str r0, [sp]
-	bl ov01_021FBDA8
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ov02_0225296C
-
-	thumb_func_start ov02_022529A0
-ov02_022529A0: ; 0x022529A0
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	add r6, r1, #0
-	mov r4, #0
-	mov r7, #0x14
-_022529AA:
-	add r0, r4, #0
-	mul r0, r7
-	add r0, r5, r0
-	add r1, r6, #0
-	bl ov01_021FBF20
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, #3
-	blo _022529AA
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ov02_022529A0
-
-	thumb_func_start ov02_022529C4
-ov02_022529C4: ; 0x022529C4
-	push {r3, r4, r5, r6, r7, lr}
-	mov r5, #0
-	add r6, r0, #0
-	add r4, r5, #0
-	mov r7, #0x14
-_022529CE:
-	add r0, r4, #0
-	mul r0, r7
-	mov r1, #1
-	add r0, r6, r0
-	lsl r1, r1, #0xc
-	bl ov01_021FBEE4
-	cmp r0, #0
-	beq _022529E6
-	add r0, r5, #1
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-_022529E6:
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, #3
-	blo _022529CE
-	cmp r5, #3
-	bne _022529F8
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-_022529F8:
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov02_022529C4
-
-	thumb_func_start ov02_022529FC
-ov02_022529FC: ; 0x022529FC
-	push {r3, r4, r5, lr}
-	mov r1, #0x8a
-	add r5, r0, #0
-	mov r0, #0xb
-	lsl r1, r1, #2
-	bl AllocFromHeapAtEnd
-	mov r2, #0x8a
-	add r4, r0, #0
-	mov r1, #0
-	lsl r2, r2, #2
-	bl MI_CpuFill8
-	str r5, [r4]
-	ldr r0, [r5, #0x10]
-	ldr r1, _02252A24 ; =ov02_02252A28
-	add r2, r4, #0
-	bl TaskManager_Call
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_02252A24: .word ov02_02252A28
-	thumb_func_end ov02_022529FC
-
-	thumb_func_start ov02_02252A28
-ov02_02252A28: ; 0x02252A28
-	push {r4, r5, lr}
-	sub sp, #0xc
-	add r4, r0, #0
-	bl TaskManager_GetStatePtr
-	add r5, r0, #0
-	add r0, r4, #0
-	bl TaskManager_GetFieldSystem
-	add r0, r4, #0
-	bl TaskManager_GetEnvironment
-	add r4, r0, #0
-	ldr r0, [r5]
-	cmp r0, #5
-	bhi _02252B3A
-	add r0, r0, r0
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_02252A54: ; jump table
-	.short _02252A60 - _02252A54 - 2 ; case 0
-	.short _02252A80 - _02252A54 - 2 ; case 1
-	.short _02252AAC - _02252A54 - 2 ; case 2
-	.short _02252AD2 - _02252A54 - 2 ; case 3
-	.short _02252AF2 - _02252A54 - 2 ; case 4
-	.short _02252B20 - _02252A54 - 2 ; case 5
-_02252A60:
-	mov r0, #2
-	str r0, [sp]
-	mov r0, #1
-	str r0, [sp, #4]
-	mov r0, #4
-	mov r1, #0
-	str r0, [sp, #8]
-	ldr r3, _02252B94 ; =0x00007FFF
-	mov r0, #3
-	add r2, r1, #0
-	bl BeginNormalPaletteFade
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-	b _02252B3A
-_02252A80:
-	bl IsPaletteFadeFinished
-	cmp r0, #0
-	beq _02252B3A
-	add r0, r4, #0
-	bl ov02_02252BA4
-	mov r0, #2
-	str r0, [sp]
-	mov r1, #1
-	str r1, [sp, #4]
-	mov r0, #4
-	str r0, [sp, #8]
-	ldr r3, _02252B94 ; =0x00007FFF
-	mov r0, #3
-	mov r2, #0
-	bl BeginNormalPaletteFade
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-	b _02252B3A
-_02252AAC:
-	bl IsPaletteFadeFinished
-	cmp r0, #0
-	beq _02252B3A
-	mov r2, #0x89
-	lsl r2, r2, #2
-	mov r1, #1
-	strb r1, [r4, r2]
-	add r0, r2, #3
-	mov r3, #0
-	sub r2, #0x78
-	strb r3, [r4, r0]
-	add r0, r4, r2
-	bl ov01_021FC004
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-	b _02252B3A
-_02252AD2:
-	ldr r1, _02252B98 ; =0x00000227
-	ldrb r0, [r4, r1]
-	add r0, r0, #1
-	strb r0, [r4, r1]
-	ldrb r0, [r4, r1]
-	cmp r0, #0x64
-	blo _02252B3A
-	mov r2, #1
-	sub r0, r1, #2
-	strb r2, [r4, r0]
-	mov r0, #0
-	strb r0, [r4, r1]
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-	b _02252B3A
-_02252AF2:
-	ldr r0, _02252B98 ; =0x00000227
-	ldrb r1, [r4, r0]
-	add r1, r1, #1
-	strb r1, [r4, r0]
-	ldrb r0, [r4, r0]
-	cmp r0, #0x96
-	blo _02252B3A
-	mov r0, #2
-	str r0, [sp]
-	mov r0, #1
-	str r0, [sp, #4]
-	mov r0, #4
-	mov r1, #0
-	str r0, [sp, #8]
-	ldr r3, _02252B94 ; =0x00007FFF
-	mov r0, #3
-	add r2, r1, #0
-	bl BeginNormalPaletteFade
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-	b _02252B3A
-_02252B20:
-	bl IsPaletteFadeFinished
-	cmp r0, #0
-	beq _02252B3A
-	add r0, r4, #0
-	bl ov02_02252DF8
-	add r0, r4, #0
-	bl FreeToHeap
-	add sp, #0xc
-	mov r0, #1
-	pop {r4, r5, pc}
-_02252B3A:
-	mov r0, #0x89
-	lsl r0, r0, #2
-	ldrb r0, [r4, r0]
-	cmp r0, #0
-	beq _02252B58
-	add r0, r4, #0
-	add r0, #0x34
-	mov r1, #2
-	bl ov02_02252EA8
-	add r0, r4, #0
-	add r0, #0x5c
-	mov r1, #2
-	bl ov02_02252EA8
-_02252B58:
-	ldr r0, _02252B9C ; =0x00000225
-	ldrb r1, [r4, r0]
-	cmp r1, #0
-	beq _02252B6A
-	sub r0, #0xa1
-	add r0, r4, r0
-	mov r1, #2
-	bl ov02_02252EA8
-_02252B6A:
-	ldr r0, _02252BA0 ; =0x00000226
-	ldrb r0, [r4, r0]
-	cmp r0, #0
-	beq _02252B8C
-	add r0, r4, #0
-	add r0, #0x84
-	bl ov01_021FBF68
-	add r0, r4, #0
-	add r0, #0xfc
-	bl ov01_021FBF68
-	mov r0, #0x6b
-	lsl r0, r0, #2
-	add r0, r4, r0
-	bl ov01_021FBF68
-_02252B8C:
-	mov r0, #0
-	add sp, #0xc
-	pop {r4, r5, pc}
-	nop
-_02252B94: .word 0x00007FFF
-_02252B98: .word 0x00000227
-_02252B9C: .word 0x00000225
-_02252BA0: .word 0x00000226
-	thumb_func_end ov02_02252A28
-
-	thumb_func_start ov02_02252BA4
-ov02_02252BA4: ; 0x02252BA4
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x50
-	ldr r3, _02252DEC ; =ov02_02253D14
-	add r2, sp, #0x40
-	str r0, [sp, #8]
-	ldmia r3!, {r0, r1}
-	stmia r2!, {r0, r1}
-	ldmia r3!, {r0, r1}
-	stmia r2!, {r0, r1}
-	ldr r0, _02252DF0 ; =ov02_02253CF8
-	ldr r1, [r0, #4]
-	ldr r2, [r0]
-	str r1, [sp, #0x30]
-	ldr r1, [r0, #8]
-	ldr r0, [r0, #0xc]
-	str r2, [sp, #0x2c]
-	str r0, [sp, #0x28]
-	ldr r0, [sp, #8]
-	str r1, [sp, #0x24]
-	add r0, r0, #4
-	mov r1, #4
-	mov r2, #0x20
-	bl GF_ExpHeap_FndInitAllocator
-	ldr r4, [sp, #8]
-	mov r5, #0
-	add r4, #0x14
-	mov r7, #0xae
-	add r6, sp, #0x24
-_02252BDE:
-	lsl r2, r5, #2
-	lsl r0, r5, #4
-	ldr r2, [r6, r2]
-	add r0, r4, r0
-	add r1, r7, #0
-	mov r3, #4
-	bl ov01_021FBCD8
-	add r0, r5, #1
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-	cmp r5, #2
-	blo _02252BDE
-	mov r1, #0x5d
-	ldr r0, [sp, #8]
-	lsl r1, r1, #2
-	add r0, r0, r1
-	mov r1, #0xae
-	mov r2, #0x55
-	mov r3, #4
-	bl ov01_021FBCD8
-	mov r0, #0
-	str r0, [sp, #0x10]
-	ldr r0, [sp, #8]
-	add r0, r0, #4
-	str r0, [sp, #0x1c]
-	ldr r0, [sp, #8]
-	str r0, [sp, #0x14]
-	add r0, #0x14
-	str r0, [sp, #0x14]
-	ldr r0, [sp, #8]
-	str r0, [sp, #0x18]
-	add r0, #0x34
-	str r0, [sp, #0x18]
-_02252C24:
-	ldr r0, [sp, #0x10]
-	mov r5, #0
-	lsl r1, r0, #3
-	add r0, sp, #0x40
-	add r6, r0, r1
-	ldr r0, [sp, #0x10]
-	add r1, r0, #0
-	lsl r7, r0, #4
-	mov r0, #0x28
-	add r2, r1, #0
-	mul r2, r0
-	ldr r0, [sp, #0x18]
-	add r4, r0, r2
-_02252C3E:
-	mov r0, #4
-	str r0, [sp]
-	ldr r0, [sp, #0x1c]
-	ldr r1, [sp, #0x14]
-	str r0, [sp, #4]
-	mov r0, #0x14
-	lsl r3, r5, #2
-	mul r0, r5
-	ldr r3, [r6, r3]
-	add r0, r4, r0
-	add r1, r1, r7
-	mov r2, #0xae
-	bl ov01_021FBE44
-	add r0, r5, #1
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-	cmp r5, #2
-	blo _02252C3E
-	ldr r0, [sp, #0x10]
-	add r0, r0, #1
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	str r0, [sp, #0x10]
-	cmp r0, #2
-	blo _02252C24
-	ldr r0, [sp, #8]
-	mov r1, #0x61
-	lsl r1, r1, #2
-	mov r5, #0
-	add r4, r0, #4
-	add r7, r0, r1
-_02252C7E:
-	mov r0, #4
-	str r0, [sp]
-	mov r0, #0x14
-	mov r1, #0x5d
-	mul r0, r5
-	ldr r2, [sp, #8]
-	lsl r1, r1, #2
-	add r1, r2, r1
-	lsl r6, r5, #2
-	add r3, sp, #0x2c
-	ldr r3, [r3, r6]
-	add r0, r7, r0
-	mov r2, #0xae
-	str r4, [sp, #4]
-	bl ov01_021FBE44
-	add r0, r5, #1
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-	cmp r5, #2
-	blo _02252C7E
-	ldr r4, [sp, #8]
-	ldr r6, [sp, #8]
-	mov r5, #0
-	add r4, #0x84
-	add r6, #0x14
-	mov r7, #0x78
-_02252CB4:
-	add r0, r5, #0
-	mul r0, r7
-	lsl r1, r5, #4
-	add r0, r4, r0
-	add r1, r6, r1
-	bl ov01_021FBF2C
-	add r0, r5, #1
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-	cmp r5, #2
-	blo _02252CB4
-	mov r2, #0x6b
-	ldr r0, [sp, #8]
-	lsl r2, r2, #2
-	add r0, r0, r2
-	ldr r1, [sp, #8]
-	sub r2, #0x38
-	add r1, r1, r2
-	bl ov01_021FBF2C
-	mov r0, #0
-	str r0, [sp, #0xc]
-	ldr r0, [sp, #8]
-	ldr r7, [sp, #8]
-	str r0, [sp, #0x20]
-	add r0, #0x34
-	str r0, [sp, #0x20]
-	add r7, #0x84
-_02252CEE:
-	ldr r1, [sp, #0xc]
-	mov r0, #0x28
-	add r2, r1, #0
-	mul r2, r0
-	ldr r0, [sp, #0x20]
-	add r6, r1, #0
-	add r4, r0, r2
-	mov r0, #0x78
-	mov r5, #0
-	mul r6, r0
-_02252D02:
-	mov r1, #0x14
-	mul r1, r5
-	add r0, r7, r6
-	add r1, r4, r1
-	bl ov01_021FBF50
-	add r0, r5, #1
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-	cmp r5, #2
-	blo _02252D02
-	ldr r0, [sp, #0xc]
-	add r0, r0, #1
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	str r0, [sp, #0xc]
-	cmp r0, #2
-	blo _02252CEE
-	mov r6, #0x6b
-	lsl r6, r6, #2
-	add r1, r6, #0
-	ldr r0, [sp, #8]
-	sub r1, #0x28
-	mov r5, #0
-	add r4, r0, r1
-	mov r7, #0x14
-_02252D36:
-	ldr r0, [sp, #8]
-	add r1, r5, #0
-	mul r1, r7
-	add r0, r0, r6
-	add r1, r4, r1
-	bl ov01_021FBF50
-	add r0, r5, #1
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-	cmp r5, #2
-	blo _02252D36
-	ldr r4, [sp, #8]
-	ldr r6, [sp, #8]
-	mov r5, #0
-	add r4, #0x84
-	add r6, #0x34
-	mov r7, #0x28
-_02252D5A:
-	mov r0, #0x78
-	mul r0, r5
-	add r0, r4, r0
-	mov r1, #1
-	bl ov01_021FC004
-	add r0, r5, #0
-	mul r0, r7
-	add r0, r6, r0
-	mov r1, #2
-	mov r2, #0
-	bl ov02_02252E80
-	add r0, r5, #1
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-	cmp r5, #2
-	blo _02252D5A
-	mov r1, #0x6b
-	ldr r0, [sp, #8]
-	lsl r1, r1, #2
-	add r0, r0, r1
-	mov r1, #0
-	bl ov01_021FC004
-	mov r1, #0x61
-	ldr r0, [sp, #8]
-	lsl r1, r1, #2
-	add r0, r0, r1
-	mov r1, #2
-	mov r2, #0
-	bl ov02_02252E80
-	ldr r0, [sp, #8]
-	ldr r0, [r0]
-	bl FollowMon_GetMapObject
-	add r1, sp, #0x34
-	bl MapObject_GetPositionVec
-	ldr r4, [sp, #8]
-	mov r5, #0
-	add r4, #0x84
-	mov r6, #0x78
-_02252DB2:
-	add r0, r5, #0
-	mul r0, r6
-	ldr r1, [sp, #0x34]
-	ldr r2, [sp, #0x38]
-	ldr r3, [sp, #0x3c]
-	add r0, r4, r0
-	bl ov01_021FC00C
-	add r0, r5, #1
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-	cmp r5, #2
-	blo _02252DB2
-	mov r1, #0x6b
-	ldr r0, [sp, #8]
-	lsl r1, r1, #2
-	add r0, r0, r1
-	ldr r1, [sp, #0x34]
-	ldr r2, [sp, #0x38]
-	ldr r3, [sp, #0x3c]
-	bl ov01_021FC00C
-	ldr r1, _02252DF4 ; =0x00000226
-	ldr r0, [sp, #8]
-	mov r2, #1
-	strb r2, [r0, r1]
-	add sp, #0x50
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_02252DEC: .word ov02_02253D14
-_02252DF0: .word ov02_02253CF8
-_02252DF4: .word 0x00000226
-	thumb_func_end ov02_02252BA4
-
-	thumb_func_start ov02_02252DF8
-ov02_02252DF8: ; 0x02252DF8
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0xc
-	add r5, r0, #0
-	mov r0, #0
-	str r0, [sp]
-	add r0, r5, #0
-	str r0, [sp, #8]
-	add r0, #0x14
-	str r0, [sp, #8]
-	add r0, r5, #0
-	str r0, [sp, #4]
-	add r0, #0x34
-	str r0, [sp, #4]
-	mov r7, #0x14
-_02252E14:
-	ldr r1, [sp]
-	mov r0, #0x28
-	add r2, r1, #0
-	mul r2, r0
-	ldr r0, [sp, #4]
-	mov r4, #0
-	add r6, r0, r2
-_02252E22:
-	add r0, r4, #0
-	mul r0, r7
-	add r0, r6, r0
-	add r1, r5, #4
-	bl ov01_021FBE80
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, #2
-	blo _02252E22
-	ldr r0, [sp]
-	lsl r1, r0, #4
-	ldr r0, [sp, #8]
-	add r0, r0, r1
-	bl ov01_021FBDA8
-	ldr r0, [sp]
-	add r0, r0, #1
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	str r0, [sp]
-	cmp r0, #2
-	blo _02252E14
-	mov r0, #0x61
-	lsl r0, r0, #2
-	mov r4, #0
-	add r6, r5, r0
-	mov r7, #0x14
-_02252E5C:
-	add r0, r4, #0
-	mul r0, r7
-	add r0, r6, r0
-	add r1, r5, #4
-	bl ov01_021FBE80
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, #2
-	blo _02252E5C
-	mov r0, #0x5d
-	lsl r0, r0, #2
-	add r0, r5, r0
-	bl ov01_021FBDA8
-	add sp, #0xc
-	pop {r4, r5, r6, r7, pc}
-	thumb_func_end ov02_02252DF8
-
-	thumb_func_start ov02_02252E80
-ov02_02252E80: ; 0x02252E80
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r6, r0, #0
-	add r7, r2, #0
-	mov r4, #0
-	cmp r5, #0
-	bls _02252EA4
-_02252E8E:
-	mov r0, #0x14
-	mul r0, r4
-	add r0, r6, r0
-	add r1, r7, #0
-	bl ov01_021FBF20
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, r5
-	blo _02252E8E
-_02252EA4:
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ov02_02252E80
-
-	thumb_func_start ov02_02252EA8
-ov02_02252EA8: ; 0x02252EA8
-	push {r3, r4, r5, r6, r7, lr}
-	mov r5, #0
-	add r6, r1, #0
-	add r7, r0, #0
-	add r4, r5, #0
-	cmp r6, #0
-	bls _02252ED8
-_02252EB6:
-	mov r0, #0x14
-	mul r0, r4
-	mov r1, #1
-	add r0, r7, r0
-	lsl r1, r1, #0xc
-	bl ov01_021FBEE4
-	cmp r0, #0
-	beq _02252ECE
-	add r0, r5, #1
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-_02252ECE:
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, r6
-	blo _02252EB6
-_02252ED8:
-	cmp r5, r6
-	bne _02252EE0
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-_02252EE0:
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov02_02252EA8
-
-	thumb_func_start ov02_02252EE4
-ov02_02252EE4: ; 0x02252EE4
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	mov r0, #0xb
-	mov r1, #0xf0
-	bl AllocFromHeapAtEnd
-	add r6, r0, #0
-	mov r1, #0
-	mov r2, #0xf0
-	bl MI_CpuFill8
-	add r0, r6, #0
-	str r5, [r6]
-	add r0, #0xef
-	strb r4, [r0]
-	ldr r0, [r5, #0x10]
-	ldr r1, _02252F10 ; =ov02_02252F14
-	add r2, r6, #0
-	bl TaskManager_Call
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-_02252F10: .word ov02_02252F14
-	thumb_func_end ov02_02252EE4
-
-	thumb_func_start ov02_02252F14
-ov02_02252F14: ; 0x02252F14
-	push {r4, r5, lr}
-	sub sp, #0xc
-	add r5, r0, #0
-	bl TaskManager_GetStatePtr
-	add r4, r0, #0
-	add r0, r5, #0
-	bl TaskManager_GetFieldSystem
-	add r0, r5, #0
-	bl TaskManager_GetEnvironment
-	ldr r1, [r4]
-	add r5, r0, #0
-	cmp r1, #4
-	bhi _02252FD4
-	add r2, r1, r1
-	add r2, pc
-	ldrh r2, [r2, #6]
-	lsl r2, r2, #0x10
-	asr r2, r2, #0x10
-	add pc, r2
-_02252F40: ; jump table
-	.short _02252F4A - _02252F40 - 2 ; case 0
-	.short _02252F6A - _02252F40 - 2 ; case 1
-	.short _02252F96 - _02252F40 - 2 ; case 2
-	.short _02252FB6 - _02252F40 - 2 ; case 3
-	.short _02252FC4 - _02252F40 - 2 ; case 4
-_02252F4A:
-	mov r0, #2
-	str r0, [sp]
-	mov r0, #1
-	str r0, [sp, #4]
-	mov r0, #4
-	mov r1, #0
-	str r0, [sp, #8]
-	ldr r3, _02253008 ; =0x00007FFF
-	mov r0, #3
-	add r2, r1, #0
-	bl BeginNormalPaletteFade
-	ldr r0, [r4]
-	add r0, r0, #1
-	str r0, [r4]
-	b _02252FD4
-_02252F6A:
-	bl IsPaletteFadeFinished
-	cmp r0, #0
-	beq _02252FD4
-	add r0, r5, #0
-	bl ov02_0225300C
-	mov r0, #2
-	str r0, [sp]
-	mov r1, #1
-	str r1, [sp, #4]
-	mov r0, #4
-	str r0, [sp, #8]
-	ldr r3, _02253008 ; =0x00007FFF
-	mov r0, #3
-	mov r2, #0
-	bl BeginNormalPaletteFade
-	ldr r0, [r4]
-	add r0, r0, #1
-	str r0, [r4]
-	b _02252FD4
-_02252F96:
-	bl IsPaletteFadeFinished
-	cmp r0, #0
-	beq _02252FD4
-	add r0, r5, #0
-	mov r1, #1
-	add r0, #0xec
-	strb r1, [r0]
-	add r0, r5, #0
-	mov r1, #0
-	add r0, #0xed
-	strb r1, [r0]
-	ldr r0, [r4]
-	add r0, r0, #1
-	str r0, [r4]
-	b _02252FD4
-_02252FB6:
-	add r0, #0xed
-	ldrb r0, [r0]
-	cmp r0, #0
-	beq _02252FD4
-	add r0, r1, #1
-	str r0, [r4]
-	b _02252FD4
-_02252FC4:
-	bl ov02_02253108
-	add r0, r5, #0
-	bl FreeToHeap
-	add sp, #0xc
-	mov r0, #1
-	pop {r4, r5, pc}
-_02252FD4:
-	add r0, r5, #0
-	add r0, #0xec
-	ldrb r0, [r0]
-	cmp r0, #0
-	beq _02252FEE
-	add r0, r5, #0
-	add r0, #0x24
-	mov r1, #4
-	bl ov02_02252EA8
-	add r1, r5, #0
-	add r1, #0xed
-	strb r0, [r1]
-_02252FEE:
-	add r0, r5, #0
-	add r0, #0xee
-	ldrb r0, [r0]
-	cmp r0, #0
-	beq _02253000
-	add r5, #0x74
-	add r0, r5, #0
-	bl ov01_021FBF68
-_02253000:
-	mov r0, #0
-	add sp, #0xc
-	pop {r4, r5, pc}
-	nop
-_02253008: .word 0x00007FFF
-	thumb_func_end ov02_02252F14
-
-	thumb_func_start ov02_0225300C
-ov02_0225300C: ; 0x0225300C
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x5c
-	ldr r4, _02253100 ; =ov02_02253D24
-	add r7, r0, #0
-	add r3, sp, #0x2c
-	mov r2, #6
-_02253018:
-	ldmia r4!, {r0, r1}
-	stmia r3!, {r0, r1}
-	sub r2, r2, #1
-	bne _02253018
-	ldr r3, _02253104 ; =ov02_02253D08
-	add r2, sp, #0x20
-	ldmia r3!, {r0, r1}
-	stmia r2!, {r0, r1}
-	ldr r0, [r3]
-	mov r1, #4
-	str r0, [r2]
-	add r0, r7, #4
-	mov r2, #0x20
-	bl GF_ExpHeap_FndInitAllocator
-	add r2, r7, #0
-	add r2, #0xef
-	ldrb r2, [r2]
-	add r0, r7, #0
-	add r0, #0x14
-	lsl r3, r2, #2
-	add r2, sp, #0x20
-	ldr r2, [r2, r3]
-	mov r1, #0xae
-	mov r3, #4
-	bl ov01_021FBCD8
-	add r0, r7, #4
-	str r0, [sp, #0x10]
-	add r0, r7, #0
-	str r0, [sp, #8]
-	add r0, #0x24
-	str r0, [sp, #8]
-	add r0, r7, #0
-	str r0, [sp, #0xc]
-	add r0, #0x14
-	mov r4, #0
-	str r0, [sp, #0xc]
-_02253064:
-	mov r0, #4
-	str r0, [sp]
-	ldr r0, [sp, #0x10]
-	add r3, r7, #0
-	str r0, [sp, #4]
-	add r3, #0xef
-	ldrb r3, [r3]
-	mov r0, #0x14
-	add r1, r4, #0
-	mul r1, r0
-	ldr r0, [sp, #8]
-	lsl r6, r3, #4
-	add r3, sp, #0x2c
-	add r0, r0, r1
-	lsl r5, r4, #2
-	add r3, r3, r6
-	ldr r1, [sp, #0xc]
-	ldr r3, [r5, r3]
-	mov r2, #0xae
-	bl ov01_021FBE44
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, #4
-	blo _02253064
-	add r0, r7, #0
-	add r1, r7, #0
-	add r0, #0x74
-	add r1, #0x14
-	bl ov01_021FBF2C
-	add r6, r7, #0
-	add r5, r7, #0
-	mov r4, #0
-	add r6, #0x74
-	add r5, #0x24
-_022530AE:
-	mov r1, #0x14
-	mul r1, r4
-	add r0, r6, #0
-	add r1, r5, r1
-	bl ov01_021FBF50
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, #4
-	blo _022530AE
-	add r0, r7, #0
-	add r0, #0x74
-	mov r1, #1
-	bl ov01_021FC004
-	add r0, r7, #0
-	add r0, #0x24
-	mov r1, #4
-	mov r2, #0
-	bl ov02_02252E80
-	ldr r0, [r7]
-	bl FollowMon_GetMapObject
-	add r1, sp, #0x14
-	bl MapObject_GetPositionVec
-	add r0, r7, #0
-	ldr r1, [sp, #0x14]
-	ldr r2, [sp, #0x18]
-	ldr r3, [sp, #0x1c]
-	add r0, #0x74
-	bl ov01_021FC00C
-	mov r0, #1
-	add r7, #0xee
-	strb r0, [r7]
-	add sp, #0x5c
-	pop {r4, r5, r6, r7, pc}
-	nop
-_02253100: .word ov02_02253D24
-_02253104: .word ov02_02253D08
-	thumb_func_end ov02_0225300C
-
-	thumb_func_start ov02_02253108
-ov02_02253108: ; 0x02253108
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	add r6, r5, #0
-	mov r4, #0
-	add r6, #0x24
-	mov r7, #0x14
-_02253114:
-	add r0, r4, #0
-	mul r0, r7
-	add r0, r6, r0
-	add r1, r5, #4
-	bl ov01_021FBE80
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, #4
-	blo _02253114
-	add r5, #0x14
-	add r0, r5, #0
-	bl ov01_021FBDA8
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov02_02253108
-
-	thumb_func_start ov02_02253134
-ov02_02253134: ; 0x02253134
-	push {r3, r4, r5, r6, r7, lr}
-	bl Save_FashionData_Get
-	bl Save_FashionData_GetFashionCase
-	ldr r6, _02253168 ; =ov02_02253D54
-	add r5, r0, #0
-	mov r4, #0
-	mov r7, #1
-_02253146:
-	ldrb r1, [r6, r4]
-	add r0, r5, #0
-	add r2, r7, #0
-	bl sub_0202BA2C
-	cmp r0, #1
-	bne _02253158
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_02253158:
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, #0x27
-	blo _02253146
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_02253168: .word ov02_02253D54
-	thumb_func_end ov02_02253134
-
-	thumb_func_start ov02_0225316C
-ov02_0225316C: ; 0x0225316C
-	push {r3, lr}
-	bl LCRandom
-	mov r1, #0x27
-	bl _s32_div_f
-	lsl r0, r1, #0x18
-	lsr r1, r0, #0x18
-	ldr r0, _02253184 ; =ov02_02253D54
-	ldrb r0, [r0, r1]
-	pop {r3, pc}
-	nop
-_02253184: .word ov02_02253D54
-	thumb_func_end ov02_0225316C
-
-	thumb_func_start ov02_02253188
-ov02_02253188: ; 0x02253188
-	push {r3, r4, r5, lr}
-	bl Save_FashionData_Get
-	bl Save_FashionData_GetFashionCase
-	add r4, r0, #0
-	mov r5, #0
-_02253196:
-	add r0, r4, #0
-	add r1, r5, #0
-	bl sub_0202BA5C
-	cmp r0, #0
-	bne _022531A6
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-_022531A6:
-	add r0, r5, #1
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-	cmp r5, #0xe
-	blo _02253196
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-	thumb_func_end ov02_02253188
-
-	thumb_func_start ov02_022531B4
-ov02_022531B4: ; 0x022531B4
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x10
-	mov r4, #0
-	add r1, r4, #0
-	add r3, r4, #0
-	add r2, sp, #0
-_022531C0:
-	strb r3, [r2, r1]
-	add r1, r1, #1
-	lsl r1, r1, #0x18
-	lsr r1, r1, #0x18
-	cmp r1, #0xe
-	blo _022531C0
-	bl Save_FashionData_Get
-	bl Save_FashionData_GetFashionCase
-	add r6, r0, #0
-	mov r5, #0
-	add r7, sp, #0
-_022531DA:
-	add r0, r6, #0
-	add r1, r5, #0
-	bl sub_0202BA5C
-	cmp r0, #0
-	bne _022531EE
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	strb r5, [r7, r4]
-	lsr r4, r0, #0x18
-_022531EE:
-	add r0, r5, #1
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-	cmp r5, #0xe
-	blo _022531DA
-	cmp r4, #0
-	bne _02253206
-	bl GF_AssertFail
-	add sp, #0x10
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_02253206:
-	bl LCRandom
-	add r1, r4, #0
-	bl _s32_div_f
-	lsl r0, r1, #0x18
-	lsr r1, r0, #0x18
-	add r0, sp, #0
-	ldrb r0, [r0, r1]
-	add sp, #0x10
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov02_022531B4
-
 	.rodata
 
 ov02_0225321C:
@@ -28777,101 +23729,6 @@ ov02_02253B24: ; 0x02253B24
 
 ov02_02253B30: ; 0x02253B30
 	.byte 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00
-
-ov02_02253B3C: ; 0x02253B3C
-	.byte 0x2F, 0x30, 0x31, 0x32
-	.byte 0x33, 0x34, 0x00, 0x00
-
-ov02_02253B44: ; 0x02253B44
-	.byte 0x29, 0x2A, 0x2B, 0x2C, 0x2D, 0x2E, 0x00, 0x00
-
-ov02_02253B4C: ; 0x02253B4C
-	.byte 0x03, 0x00, 0x00, 0x00, 0xB8, 0x04, 0x00, 0x00
-	.word ov02_02250BC4
-	.word ov02_02250EC0
-	.word ov02_02250F1C
-	.word ov02_02250FE0
-
-ov02_02253B64: ; 0x02253B64
-	.byte 0x00, 0xD0, 0xF3, 0xFF, 0x52, 0xB6, 0xF6, 0xFF, 0xEF, 0x2C, 0xFD, 0xFF
-	.byte 0x00, 0x60, 0x0C, 0x00, 0x52, 0xB6, 0xF6, 0xFF, 0xEF, 0x2C, 0xFD, 0xFF, 0x00, 0x00, 0x00, 0x00
-	.byte 0xF9, 0xC3, 0xFD, 0xFF, 0x3D, 0x8F, 0xFE, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x1E, 0xFA, 0x1E, 0x00
-	.byte 0xAE, 0xCB, 0x01, 0x00
-
-ov02_02253B94: ; 0x02253B94
-	.byte 0x00, 0x10, 0xF8, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF3, 0xFF
-	.byte 0x00, 0xF0, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF3, 0xFF, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0xE0, 0xFA, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0xF0, 0xE4, 0xFF
-
-ov02_02253BC4: ; 0x02253BC4
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF0, 0xF1, 0xFF
-
-ov02_02253BD0: ; 0x02253BD0
-	.byte 0xC1, 0xAE, 0x29, 0x00, 0x62, 0xF5, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05
-	.byte 0x00, 0x00, 0x00, 0x00, 0xC1, 0xAE, 0x29, 0x00, 0x62, 0xF5, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0xC1, 0x05, 0x00, 0x00, 0x00, 0x00, 0xC1, 0xAE, 0x29, 0x00, 0x62, 0xF7, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x0C, 0x00, 0x00, 0x00, 0x00, 0xC1, 0xAE, 0x29, 0x00
-	.byte 0xA2, 0xFB, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x0C, 0x00, 0x00, 0x00, 0x00
-
-ov02_02253C20: ; 0x02253C20
-	.byte 0xC1, 0xAE, 0x29, 0x00, 0xE2, 0xDF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05
-	.byte 0x00, 0x00, 0x00, 0x00, 0xC1, 0xAE, 0x29, 0x00, 0xE2, 0xDF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0xC1, 0x05, 0x00, 0x00, 0x00, 0x00, 0xC1, 0xAE, 0x29, 0x00, 0xF2, 0xDE, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05, 0x00, 0x00, 0x00, 0x00, 0xC1, 0xAE, 0x29, 0x00
-	.byte 0xF2, 0xDE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05, 0x00, 0x00, 0x00, 0x00
-	.byte 0xC1, 0xAE, 0x29, 0x00
-
-ov02_02253C74: ; 0x02253C74
-	.byte 0xF2, 0xDE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05
-	.byte 0x00, 0x00, 0x00, 0x00
-
-ov02_02253C84: ; 0x02253C84
-	.byte 0x01, 0x00
-
-ov02_02253C86: ; 0x02253C86
-	.byte 0x0D, 0x00
-
-ov02_02253C88: ; 0x02253C88
-	.byte 0x00, 0x00, 0x01, 0x00, 0x07, 0x00, 0x00, 0x00
-	.byte 0x0F, 0x00, 0x55, 0x00, 0x01, 0x00, 0x09, 0x00, 0x5D, 0x00, 0x01, 0x00, 0x02, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00, 0x00, 0x00, 0x18, 0x00
-	.byte 0x8E, 0x00, 0x01, 0x00, 0x18, 0x00, 0x8F, 0x00, 0x01, 0x00, 0x18, 0x00, 0x90, 0x00, 0x01, 0x00
-	.byte 0x18, 0x00, 0x91, 0x00, 0x01, 0x00, 0x18, 0x00, 0x92, 0x00, 0x01, 0x00, 0x00, 0x00, 0x1B, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00
-
-ov02_02253CD4: ; 0x02253CD4
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-
-ov02_02253CE0: ; 0x02253CE0
-	.byte 0x00, 0x00, 0xFF, 0xFF, 0xB4, 0x00, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00
-
-ov02_02253CEC: ; 0x02253CEC
-	.byte 0x4C, 0x00, 0x00, 0x00
-	.byte 0x4E, 0x00, 0x00, 0x00, 0x4D, 0x00, 0x00, 0x00
-
-ov02_02253CF8: ; 0x02253CF8
-	.byte 0x56, 0x00, 0x00, 0x00, 0x57, 0x00, 0x00, 0x00
-	.byte 0x4F, 0x00, 0x00, 0x00, 0x52, 0x00, 0x00, 0x00
-
-ov02_02253D08: ; 0x02253D08
-	.byte 0x58, 0x00, 0x00, 0x00, 0x5C, 0x00, 0x00, 0x00
-	.byte 0x60, 0x00, 0x00, 0x00
-
-ov02_02253D14: ; 0x02253D14
-	.byte 0x50, 0x00, 0x00, 0x00, 0x51, 0x00, 0x00, 0x00, 0x53, 0x00, 0x00, 0x00
-	.byte 0x54, 0x00, 0x00, 0x00
-
-ov02_02253D24: ; 0x02253D24
-	.byte 0x64, 0x00, 0x00, 0x00, 0x5A, 0x00, 0x00, 0x00, 0x5B, 0x00, 0x00, 0x00
-	.byte 0x59, 0x00, 0x00, 0x00, 0x64, 0x00, 0x00, 0x00, 0x5E, 0x00, 0x00, 0x00, 0x5F, 0x00, 0x00, 0x00
-	.byte 0x5D, 0x00, 0x00, 0x00, 0x64, 0x00, 0x00, 0x00, 0x62, 0x00, 0x00, 0x00, 0x63, 0x00, 0x00, 0x00
-	.byte 0x61, 0x00, 0x00, 0x00
-
-ov02_02253D54: ; 0x02253D54
-	.byte 0x2F, 0x38, 0x39, 0x3A, 0x3B, 0x3C, 0x3D, 0x3E, 0x3F, 0x40, 0x41, 0x42
-	.byte 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4A, 0x4B, 0x4C, 0x4D, 0x4E, 0x4F, 0x50, 0x51, 0x52
-	.byte 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5A, 0x5B, 0x5F, 0x60, 0x00
 
 	.data
 

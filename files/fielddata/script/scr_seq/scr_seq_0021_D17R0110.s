@@ -112,8 +112,8 @@ scr_seq_D17R0110_006:
 	stop_se SEQ_SE_GS_KYOUHUU
 	fade_screen 4, 4, 0, RGB_WHITE
 	wait_fade
-	scrcmd_755
-	scrcmd_757
+	legend_cutscene_clear_bell_anim_begin
+	legend_cutscene_clear_bell_rise_from_bag
 	play_se SEQ_SE_GS_SUZUSYUTUGEN_HO
 	fade_screen 4, 4, 1, RGB_WHITE
 	wait_fade
@@ -141,7 +141,7 @@ scr_seq_D17R0110_006:
 	apply_movement obj_D17R0110_dancer_4, _07A0
 	apply_movement obj_D17R0110_dancer_5, _07A0
 	wait 12, VAR_SPECIAL_RESULT
-	scrcmd_758 1
+	legend_cutscene_clear_bell_shimmer 1
 	play_se SEQ_SE_GS_SUZUNOONPA_RU
 	wait_movement
 	wait 67, VAR_SPECIAL_RESULT
@@ -151,11 +151,11 @@ scr_seq_D17R0110_006:
 	apply_movement obj_D17R0110_dancer_4, _07A0
 	apply_movement obj_D17R0110_dancer_5, _07A0
 	wait 12, VAR_SPECIAL_RESULT
-	scrcmd_758 1
+	legend_cutscene_clear_bell_shimmer 1
 	play_se SEQ_SE_GS_SUZUNOONPA_RU
 	wait_movement
 	fade_screen 4, 6, 1, RGB_WHITE
-	scrcmd_765
+	legend_cutscene_waves_or_leaves_effect_begin
 	wait_fade
 	wait 4, VAR_SPECIAL_RESULT
 	apply_movement obj_D17R0110_dancer, _0914
@@ -170,7 +170,7 @@ scr_seq_D17R0110_006:
 	apply_movement obj_D17R0110_dancer_4, _080C
 	apply_movement obj_D17R0110_dancer_5, _07E8
 	wait 12, VAR_SPECIAL_RESULT
-	scrcmd_758 1
+	legend_cutscene_clear_bell_shimmer 1
 	play_se SEQ_SE_GS_SUZUNOONPA_RU
 	wait_movement
 	wait 32, VAR_SPECIAL_RESULT
@@ -186,7 +186,7 @@ scr_seq_D17R0110_006:
 	apply_movement obj_D17R0110_dancer_4, _080C
 	apply_movement obj_D17R0110_dancer_5, _07E8
 	wait 12, VAR_SPECIAL_RESULT
-	scrcmd_758 1
+	legend_cutscene_clear_bell_shimmer 1
 	play_se SEQ_SE_GS_SUZUNOONPA_RU
 	wait_movement
 	wait 33, VAR_SPECIAL_RESULT
@@ -202,7 +202,7 @@ scr_seq_D17R0110_006:
 	apply_movement obj_D17R0110_dancer_4, _08AC
 	apply_movement obj_D17R0110_dancer_5, _0880
 	wait 12, VAR_SPECIAL_RESULT
-	scrcmd_758 1
+	legend_cutscene_clear_bell_shimmer 1
 	play_se SEQ_SE_GS_SUZUNOONPA_RU
 	wait_movement
 	wait 32, VAR_SPECIAL_RESULT
@@ -218,11 +218,11 @@ scr_seq_D17R0110_006:
 	apply_movement obj_D17R0110_dancer_4, _07C4
 	apply_movement obj_D17R0110_dancer_5, _080C
 	wait 12, VAR_SPECIAL_RESULT
-	scrcmd_758 1
+	legend_cutscene_clear_bell_shimmer 1
 	play_se SEQ_SE_GS_SUZUNOONPA_RU
 	wait_movement
-	scrcmd_766
-	scrcmd_762 0
+	legend_cutscene_waves_or_leaves_effect_end
+	legend_cutscene_pan_camera_to 0
 	wait 32, VAR_SPECIAL_RESULT
 	apply_movement obj_D17R0110_dancer, _091C
 	apply_movement obj_D17R0110_dancer_2, _091C
@@ -236,7 +236,7 @@ scr_seq_D17R0110_006:
 	apply_movement obj_D17R0110_dancer_4, _07C4
 	apply_movement obj_D17R0110_dancer_5, _080C
 	wait 12, VAR_SPECIAL_RESULT
-	scrcmd_758 0
+	legend_cutscene_clear_bell_shimmer 0
 	play_se SEQ_SE_GS_SUZUNOONPA2
 	wait_movement
 	wait 32, VAR_SPECIAL_RESULT
@@ -252,19 +252,19 @@ scr_seq_D17R0110_006:
 	apply_movement obj_D17R0110_dancer_4, _07C4
 	apply_movement obj_D17R0110_dancer_5, _080C
 	wait 12, VAR_SPECIAL_RESULT
-	scrcmd_758 0
+	legend_cutscene_clear_bell_shimmer 0
 	play_se SEQ_SE_GS_SUZUNOONPA2
 	wait_movement
 	wait 41, VAR_SPECIAL_RESULT
-	scrcmd_763
+	legend_cutscene_wait_camera_pan
 	wait 8, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_761 1
+	legend_cutscene_move_camera_to 1
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	wait 20, VAR_SPECIAL_RESULT
-	scrcmd_758 0
+	legend_cutscene_clear_bell_shimmer 0
 	play_se SEQ_SE_GS_SUZUNOONPA2
 	release obj_D17R0110_dancer
 	release obj_D17R0110_dancer_2
@@ -277,12 +277,12 @@ scr_seq_D17R0110_006:
 	move_person_facing obj_D17R0110_dancer_4, 18, 1, 18, DIR_NORTH
 	move_person_facing obj_D17R0110_dancer_5, 18, 1, 12, DIR_SOUTH
 	wait 86, VAR_SPECIAL_RESULT
-	scrcmd_758 0
+	legend_cutscene_clear_bell_shimmer 0
 	play_se SEQ_SE_GS_SUZUNOONPA2
 	wait 32, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_761 2
+	legend_cutscene_move_camera_to 2
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	wait 22, VAR_SPECIAL_RESULT
@@ -292,7 +292,7 @@ scr_seq_D17R0110_006:
 	apply_movement obj_D17R0110_dancer_4, _07C4
 	apply_movement obj_D17R0110_dancer_5, _07E8
 	wait 12, VAR_SPECIAL_RESULT
-	scrcmd_758 0
+	legend_cutscene_clear_bell_shimmer 0
 	play_se SEQ_SE_GS_SUZUNOONPA2
 	wait_movement
 	wait 32, VAR_SPECIAL_RESULT
@@ -303,26 +303,26 @@ scr_seq_D17R0110_006:
 	apply_movement obj_D17R0110_dancer_4, _07C4
 	apply_movement obj_D17R0110_dancer_5, _07E8
 	wait 12, VAR_SPECIAL_RESULT
-	scrcmd_758 0
+	legend_cutscene_clear_bell_shimmer 0
 	play_se SEQ_SE_GS_SUZUNOONPA2
 	wait_movement
 	wait 60, VAR_SPECIAL_RESULT
-	scrcmd_762 1
-	scrcmd_763
+	legend_cutscene_pan_camera_to 1
+	legend_cutscene_wait_camera_pan
 	stop_bgm 0
-	scrcmd_756
+	legend_cutscene_clear_bell_anim_end
 	setvar VAR_TEMP_x400B, 123
 	fade_screen 6, 1, 0, RGB_WHITE
 	wait_fade
 	cinematic 0
 	clearflag FLAG_HIDE_BELL_TOWER_HO_OH
 	show_person obj_D17R0110_hou_obj01
-	scrcmd_375 obj_D17R0110_hou_obj01
+	make_object_visible obj_D17R0110_hou_obj01
 	wait 6, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 1, RGB_WHITE
 	wait_fade
 	wait 20, VAR_SPECIAL_RESULT
-	scrcmd_764
+	legend_cutscene_bird_final_approach
 	stop_bgm 30
 	apply_movement obj_D17R0110_dancer, _0798
 	wait_movement

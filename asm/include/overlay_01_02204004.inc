@@ -21,7 +21,7 @@
 .public ov01_02204004
 .public ov01_02204084
 .public ov01_022040A4
-.public ov01_022040D0
+.public Field3dObjectList_GetRenderObjectByID
 .public ov01_022040F8
 .public ov01_0220411C
 .public ov01_02204154

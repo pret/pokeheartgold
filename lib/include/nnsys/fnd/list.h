@@ -1,6 +1,8 @@
 #ifndef NNSYS_FND_LIST_H_
 #define NNSYS_FND_LIST_H_
 
+#include <nitro.h>
+
 typedef struct {
     void *prevObject;
     void *nextObject;
