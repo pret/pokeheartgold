@@ -22,7 +22,7 @@
 #include "party_menu_items.h"
 #include "unk_0208805C.h"
 #include "party_menu_sprites.h"
-#include "pokedex_02074944.h"
+#include "battle_regulation.h"
 #include "unk_02088288.h"
 #include "use_item_on_mon.h"
 #include "vram_transfer_manager.h"
@@ -949,7 +949,7 @@ static PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager) {
     memset(ret, 0, sizeof(PartyMenuStruct));
     ret->args = OverlayManager_GetArgs(manager);
     ret->bgConfig = BgConfig_Alloc(HEAP_ID_PARTY_MENU);
-    if (ret->args->context == PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT && ret->args->unk_14 != NULL) {
+    if (ret->args->context == PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT && ret->args->linkBattleRuleset != NULL) {
         ret->pokedex = sub_02074944(HEAP_ID_PARTY_MENU);
     } else {
         ret->pokedex = NULL;
@@ -1766,9 +1766,9 @@ static u8 PartyMenu_SetContextMenuItems_SpinTrade(PartyMenuStruct *partyMenu, u8
 u8 sub_0207B364(PartyMenuStruct *partyMenu, u8 selection) {
     u8 i;
 
-    if (partyMenu->args->unk_14 != NULL) {
+    if (partyMenu->args->linkBattleRuleset != NULL) {
         Pokemon *pokemon = Party_GetMonByIndex(partyMenu->args->party, selection);
-        if (sub_0207496C(partyMenu->args->unk_14, pokemon, partyMenu->pokedex) == FALSE) {
+        if (sub_0207496C(partyMenu->args->linkBattleRuleset, pokemon, partyMenu->pokedex) == FALSE) {
             return 0;
         }
     }
@@ -1983,13 +1983,13 @@ static int sub_0207B7E0(PartyMenuStruct *partyMenu) {
         }
     }
 
-    if (partyMenu->args->unk_14 != NULL) {
-        switch (sub_02074A6C(partyMenu->args->unk_14, partyMenu->args->party, partyMenu->pokedex, partyMenu->args->selectedOrder)) {
+    if (partyMenu->args->linkBattleRuleset != NULL) {
+        switch (sub_02074A6C(partyMenu->args->linkBattleRuleset, partyMenu->args->party, partyMenu->pokedex, partyMenu->args->selectedOrder)) {
         case 0:
             break;
         case 1: {
             String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00167);
-            BufferIntegerAsString(partyMenu->msgFormat, 0, sub_020290FC(partyMenu->args->unk_14, 3), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+            BufferIntegerAsString(partyMenu->msgFormat, 0, LinkBattleRuleset_GetRuleValue(partyMenu->args->linkBattleRuleset, 3), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
             StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
             String_Delete(string);
             PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);

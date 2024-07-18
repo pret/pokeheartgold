@@ -256,7 +256,7 @@ Static main
     Object src/pokemon_icon_idx.o
     Object src/party.o
     Object src/pokedex_util.o
-    Object src/pokedex_02074944.o
+    Object src/battle_regulation.o
     Object asm/unk_02074E5C.o
     Object asm/unk_020755E8.o
     Object asm/unk_020773AC.o

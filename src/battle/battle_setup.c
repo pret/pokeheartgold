@@ -364,7 +364,7 @@ void sub_020520B0(BattleSetup* setup, FieldSystem *fieldSystem, Party *party, u8
         FreeToHeap(pokemon);
     }
 
-    if (fieldSystem_unkA4 != NULL && sub_020290FC(fieldSystem_unkA4, 12)) {
+    if (fieldSystem_unkA4 != NULL && LinkBattleRuleset_GetRuleValue(fieldSystem_unkA4, 12)) {
         setup->unk_194 = 1;
     }
     Save_Bag_Copy(bag, setup->bag);

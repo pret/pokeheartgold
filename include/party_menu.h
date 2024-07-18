@@ -11,7 +11,7 @@
 #include "unk_02014DA0.h"
 #include "unk_02020654.h"
 #include "unk_0202E41C.h"
-#include "pokedex_02074944.h"
+#include "battle_regulation.h"
 #include "yes_no_prompt.h"
 
 #define FIELD_MOVE_CHECK_TREE_F                   0
@@ -301,7 +301,7 @@ typedef struct PartyMenuArgs {
     MAILBOX *mailbox;
     Options *options;
     UnkStruct_0202E474 *unk_10;
-    UnkStruct_02074944 *unk_14;
+    LinkBattleRuleset *linkBattleRuleset;
     FieldMoveCheckData *fieldMoveCheckData;
     FieldSystem *fieldSystem;
     BOOL *menuInputStatePtr;
