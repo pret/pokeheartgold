@@ -5,7 +5,8 @@
 #include "gf_gfx_loader.h"
 #include "gf_gfx_planes.h"
 #include "math_util.h"
-#include "overlay_80.h"
+#include "frontier/overlay_80.h"
+#include "frontier/overlay_80_02238034.h"
 #include "palette.h"
 #include "party.h"
 #include "system.h"
@@ -57,7 +58,7 @@ static void ov84_0223EBE8(GAME_BOARD_WORK *work, int key);
 static void BattleArcadeGameBoard_SetCursorPos(GAME_BOARD_WORK *work, u8 cursorPos);
 static void BattleArcadeGameBoard_StartCursorSlowdown(GAME_BOARD_WORK *work);
 static u8 ov84_0223EC88(u8 area, u8 a2);
-static u16 BattleArcade_GetWinstreak(GAME_BOARD_WORK *work);
+static u16 BattleArcade_GetWinStreak(GAME_BOARD_WORK *work);
 static BOOL ov84_0223ECBC(GAME_BOARD_WORK *work, u16 type, u16 a2);
 static void ov84_0223ED00(GAME_BOARD_WORK *work, u16 type);
 static void ov84_0223ED6C(GAME_BOARD_WORK *work, u16 type, u16 a2);
@@ -75,10 +76,10 @@ static void ov84_0223F2B4(GAME_BOARD_SUB_3E8 *work, Party *playerParty, Party *o
 static Sprite *ov84_0223F374(GAME_BOARD_SUB_3E8 *work, u32 chara, u32 pal, u32 cell, u32 anim, u32 prio, int bgPrio, u8 display);
 static void ov84_0223F418(GAME_BOARD_SUB_3E8 *work);
 static void ov84_0223F480(void);
-static void ov84_0223F4B4(GAME_BOARD_SUB_3E8 *work);
+static void GameBoard_LoadEventGraphics(GAME_BOARD_SUB_3E8 *work);
 static void ov84_0223F538(GAME_BOARD_SUB_3E8 *work);
 static void ov84_0223F5E4(GAME_BOARD_SUB_3E8 *work, Party *playerParty, Party *opponentParty, u8 type);
-static void ov84_0223F714(GAME_BOARD_SUB_3E8 *work);
+static void GameBoard_LoadButtonGraphics(GAME_BOARD_SUB_3E8 *work);
 static BATTLE_ARCADE_OBJECT *BattleArcadeObject_Create(GAME_BOARD_SUB_3E8 *work, u32 chara, u32 pal, u32 cell, u32 anim, u16 x, u16 y, u32 priority, int bgPrio, u8 display);
 static void *BattleArcadeObj_Delete(BATTLE_ARCADE_OBJECT *obj);
 static void BattleArcadeObj_SetVisible(BATTLE_ARCADE_OBJECT *obj, int flag);
@@ -110,9 +111,9 @@ BOOL BattleArcadeGameBoard_InitOverlay(OVY_MANAGER *man, int *state) {
     work->arcadeScoreSaveData = sub_02030FA0(work->saveData);
     work->type = args->type;
     work->unk2A = args->unk1E;
-    work->winstreak = args->winstreak;
-    work->multiWinstreak = args->multiWinstreak;
-    work->unk12 = args->unk7;
+    work->winStreak = args->winStreak;
+    work->multiWinStreak = args->multiWinStreak;
+    work->unk12 = args->bpGain;
     work->returnWork = &args->returnWork;
     work->options = Save_PlayerData_GetOptionsAddr(work->saveData);
     work->playerParty = args->playerParty;
@@ -775,14 +776,14 @@ static u8 ov84_0223EC88(u8 area, u8 a2) {
     return a2;
 }
 
-static u16 BattleArcade_GetWinstreak(GAME_BOARD_WORK *work) {
-    u16 winstreak = work->winstreak;
+static u16 BattleArcade_GetWinStreak(GAME_BOARD_WORK *work) {
+    u16 winStreak = work->winStreak;
 
-    if (BattleArcade_MultiplayerCheck(work->type) == TRUE && work->multiWinstreak > work->winstreak) {
-        winstreak = work->multiWinstreak;
+    if (BattleArcade_MultiplayerCheck(work->type) == TRUE && work->multiWinStreak > work->winStreak) {
+        winStreak = work->multiWinStreak;
     }
 
-    return winstreak;
+    return winStreak;
 }
 
 static BOOL ov84_0223ECBC(GAME_BOARD_WORK *work, u16 type, u16 a2) {
@@ -947,7 +948,7 @@ extern const STRUCT_0223F99C ov84_0223F904[7];
 
 static void ov84_0223EE74(GAME_BOARD_WORK *work) {
     int i;
-    u16 winstreak, var;
+    u16 winStreak, var;
     u8 flag, challenge;
 
     for (i = 0; i < NELEMS(ov84_0223F99C); i++) {
@@ -1002,11 +1003,11 @@ static void ov84_0223EE74(GAME_BOARD_WORK *work) {
                 break;
             }
 
-            winstreak = BattleArcade_GetWinstreak(work);
+            winStreak = BattleArcade_GetWinStreak(work);
 
-            var = winstreak % 7;
+            var = winStreak % 7;
 
-            if (winstreak >= 9999) {
+            if (winStreak >= 9999) {
                 var = 6;
             }
 
@@ -1222,8 +1223,8 @@ static void ov84_0223F2B4(GAME_BOARD_SUB_3E8 *work, Party *playerParty, Party *o
         work->resourceMan[i] = Create2DGfxResObjMan(ov84_0223F9E4[i], (GfGfxResType)i, HEAP_ID_GAME_BOARD);
     }
 
-    ov84_0223F714(work);
-    ov84_0223F4B4(work);
+    GameBoard_LoadButtonGraphics(work);
+    GameBoard_LoadEventGraphics(work);
     ov84_0223F538(work);
     ov84_0223F5E4(work, playerParty, opponentParty, type);
 
@@ -1306,7 +1307,7 @@ static void ov84_0223F480(void) {
     sub_02022638();
 }
 
-static void ov84_0223F4B4(GAME_BOARD_SUB_3E8 *work) {
+static void GameBoard_LoadEventGraphics(GAME_BOARD_SUB_3E8 *work) {
     work->resourceObj[1][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(work->resourceMan[0], NARC_a_1_8_4, 18, TRUE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_GAME_BOARD);
     work->resourceObj[1][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_a_1_8_4, 56, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 8, HEAP_ID_GAME_BOARD);
     work->resourceObj[1][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(work->resourceMan[2], NARC_a_1_8_4, 20, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_GAME_BOARD);
@@ -1355,7 +1356,7 @@ static void ov84_0223F5E4(GAME_BOARD_SUB_3E8 *work, Party *playerParty, Party *o
     NARC_Delete(narc);
 }
 
-static void ov84_0223F714(GAME_BOARD_SUB_3E8 *work) {
+static void GameBoard_LoadButtonGraphics(GAME_BOARD_SUB_3E8 *work) {
     work->resourceObj[0][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(work->resourceMan[0], NARC_a_1_8_4, 21, TRUE, 0, NNS_G2D_VRAM_TYPE_2DSUB, HEAP_ID_GAME_BOARD);
     work->resourceObj[0][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_a_1_8_4, 57, FALSE, 0, NNS_G2D_VRAM_TYPE_2DSUB, 2, HEAP_ID_GAME_BOARD);
     work->resourceObj[0][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(work->resourceMan[2], NARC_a_1_8_4, 23, TRUE, 0, GF_GFX_RES_TYPE_CELL, HEAP_ID_GAME_BOARD);

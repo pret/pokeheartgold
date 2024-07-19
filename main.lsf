@@ -321,7 +321,7 @@ Static main
     Object asm/unk_020961D8.o
     Object src/error_message_reset.o
     Object src/sin_vcount.o
-    Object asm/unk_020965A4.o
+    Object asm/frontier.o
     Object asm/unk_020968B0.o
     Object asm/unk_02096910.o
     Object asm/unk_02096C88.o
@@ -946,7 +946,7 @@ Overlay OVY_80
 {
     After OVY_42
     Object asm/overlay_80_02229EE0.o
-    Object asm/overlay_80_0222A84C.o
+    Object asm/frontier_system.o
     Object asm/overlay_80_0222AB40.o
     Object asm/overlay_80_0222ACA0.o
     Object asm/overlay_80_0222AEF8.o
@@ -957,7 +957,7 @@ Overlay OVY_80
     Object asm/overlay_80_022310C4.o
     Object asm/overlay_80_02231BF8.o
     Object asm/overlay_80_022324C4.o
-    Object asm/overlay_80_02233688.o
+    Object src/frontier/frontier_cmd_arcade.o
     Object asm/overlay_80_022340E8.o
     Object asm/overlay_80_02235390.o
     Object asm/overlay_80_02235438.o
@@ -970,7 +970,7 @@ Overlay OVY_80
     Object asm/overlay_80_02237A70.o
     Object asm/overlay_80_02238034.o
     Object asm/overlay_80_022384D8.o
-    Object asm/overlay_80_02238648.o
+    Object asm/frontier_map.o
     Object asm/overlay_80_02239960.o
     Object asm/overlay_80_02239AF8.o
     Object asm/overlay_80_02239BF0.o

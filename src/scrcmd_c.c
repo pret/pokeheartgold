@@ -80,7 +80,7 @@
 #include "unk_0202C034.h"
 #include "unk_0203A3B0.h"
 #include "unk_02067A80.h"
-#include "unk_020965A4.h"
+#include "frontier/frontier.h"
 #include "unk_02056680.h"
 #include "trainer_memo.h"
 #include "daycare.h"
@@ -101,6 +101,7 @@
 #include "constants/trainers.h"
 #include "render_window.h"
 #include "overlay_01_021F1AFC.h"
+#include "frontier/frontier.h"
 #include "field/legend_cutscene_camera.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
@@ -4148,23 +4149,23 @@ BOOL ScrCmd_595(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_627(ScriptContext *ctx) {
-    struct UnkStruct_ScrCmd627 **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    FrontierLaunchParam **pParam = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     u8 r6 = ScriptReadByte(ctx);
-    struct UnkStruct_ScrCmd627 *work = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct UnkStruct_ScrCmd627));
-    MI_CpuClear8(work, sizeof(struct UnkStruct_ScrCmd627));
-    *p_work = work;
+    FrontierLaunchParam *param = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FrontierLaunchParam));
+    MI_CpuClear8(param, sizeof(FrontierLaunchParam));
+    *pParam = param;
     if (r6 == 5 || r6 == 6) {
-        work->unk_0 = ctx->fieldSystem->unkA0;
+        param->unk0 = ctx->fieldSystem->unkA0;
     } else {
-        work->unk_0 = NULL;
+        param->unk0 = NULL;
     }
-    work->options = Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->saveData);
-    work->unk_20 = r6;
-    work->saveData = ctx->fieldSystem->saveData;
-    work->mapId = ctx->fieldSystem->location->mapId;
-    work->unk_0C = ctx->fieldSystem->bagCursor;
-    work->unk_1C = ctx->fieldSystem->unkB0;
-    CallApplicationAsTask(ctx->taskman, &_02108584, work);
+    param->options = Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->saveData);
+    param->unk20 = r6;
+    param->saveData = ctx->fieldSystem->saveData;
+    param->mapId = ctx->fieldSystem->location->mapId;
+    param->bagCursor = ctx->fieldSystem->bagCursor;
+    param->unk1C = ctx->fieldSystem->unkB0;
+    CallApplicationAsTask(ctx->taskman, &gOverlayTemplate_Frontier, param);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
