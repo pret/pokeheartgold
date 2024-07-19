@@ -198,10 +198,10 @@ typedef enum {
 } GXLightMask;
 
 typedef enum {
-	GX_POLYGONMODE_MODULATE    = 0,
-	GX_POLYGONMODE_DECAL       = 1,
-	GX_POLYGONMODE_TOON        = 2,
-	GX_POLYGONMODE_SHADOW      = 3
+    GX_POLYGONMODE_MODULATE    = 0,
+    GX_POLYGONMODE_DECAL       = 1,
+    GX_POLYGONMODE_TOON        = 2,
+    GX_POLYGONMODE_SHADOW      = 3
 } GXPolygonMode;
 
 typedef enum {

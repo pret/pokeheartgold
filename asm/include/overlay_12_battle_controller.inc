@@ -7,7 +7,7 @@
 .public GetMonData
 .public GetPercentProgressTowardsNextLevel
 .public GetMonExpBySpeciesAndLevel
-.public GetMonPicHeightBySpeciesGenderForme
+.public GetMonPicHeightBySpeciesGenderForm
 .public MaskOfFlagNo
 .public GetMoveMaxPP
 .public Party_GetCount

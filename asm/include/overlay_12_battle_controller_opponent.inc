@@ -73,7 +73,7 @@
 .public GetMonBaseStat
 .public GetNatureFromPersonality
 .public GetMonSpriteCharAndPlttNarcIdsEx
-.public GetMonPicHeightBySpeciesGenderForme
+.public GetMonPicHeightBySpeciesGenderForm
 .public sub_02070C24
 .public sub_02070D84
 .public CopyPokemonToPokemon
