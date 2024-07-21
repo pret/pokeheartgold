@@ -1026,9 +1026,9 @@ static void Pokepic_RunAnim(Pokepic *pokepic) {
 }
 
 void PokepicAnim_Init(PokepicAnim *anim, PokepicAnimScript *animScript) {
-    anim->active = 1;
-    anim->whichAnim = 0;
-    anim->whichAnimStep = animScript->next;
+    anim->active = TRUE;
+    anim->animId = 0;
+    anim->animStep = animScript->next;
     anim->stepDelay = animScript->duration;
     anim->animScript = animScript;
     for (int i = 0; i < 10; ++i) {
@@ -1038,8 +1038,8 @@ void PokepicAnim_Init(PokepicAnim *anim, PokepicAnimScript *animScript) {
 
 int PokepicAnim_Exec(PokepicAnim *anim) {
     if (anim->active) {
-        runPokepicAnim(&anim->active, &anim->whichAnimStep, &anim->whichAnim, &anim->stepDelay, anim->loopTimers, anim->animScript);
-        return anim->whichAnimStep;
+        runPokepicAnim(&anim->active, &anim->animStep, &anim->animId, &anim->stepDelay, anim->loopTimers, anim->animScript);
+        return anim->animStep;
     }
 
     return -1;

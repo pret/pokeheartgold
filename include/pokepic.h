@@ -64,8 +64,8 @@ typedef struct PokepicAnimScript {
 
 typedef struct PokepicAnim {
     u8 active;
-    u8 whichAnimStep;
-    u8 whichAnim;
+    u8 animStep;
+    u8 animId;
     u8 stepDelay;
     u8 loopTimers[10];
     PokepicAnimScript *animScript;
@@ -260,7 +260,7 @@ void PokepicManager_HandleLoadImgAndOrPltt(PokepicManager *pokepicManager);
 // If needG3Identity is TRUE, the GPU will receive Identity instructions for each pic and shadow to be drawn.
 void PokepicManager_SetNeedG3IdentityFlag(PokepicManager *pokepicManager, BOOL needG3Identity);
 
-// Returns TRUE if the Pokepic active flag is FALSE.
+// Returns TRUE if the Pokepic active flag is TRUE.
 BOOL Pokepic_IsActive(Pokepic *pokepic);
 
 // Sets the specified bits of pokepicManager->flags. Only bit 0 appears to be used.
