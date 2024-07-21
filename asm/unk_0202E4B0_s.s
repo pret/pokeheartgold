@@ -4,13 +4,8 @@
 
 	.rodata
 
-_020F684C:
-	.byte 0x06
-_020F684D:
-	.byte 0x00
-	.byte 0x04, 0x06
-	.byte 0x03, 0x0A
 	.balign 4, 0
+	.global _020F6854
 _020F6854:
 	.word 0x00000000
 	.word 0x00000002
@@ -28,151 +23,8 @@ _020F6854:
 
 	.text
 
-	thumb_func_start sub_0202E4B0
-sub_0202E4B0: ; 0x0202E4B0
-	lsl r1, r0, #1
-	ldr r0, _0202E4B8 ; =_020F684C
-	ldrb r0, [r0, r1]
-	bx lr
-	.balign 4, 0
-_0202E4B8: .word _020F684C
-	thumb_func_end sub_0202E4B0
-
-	thumb_func_start sub_0202E4BC
-sub_0202E4BC: ; 0x0202E4BC
-	lsl r1, r0, #1
-	ldr r0, _0202E4C4 ; =_020F684D
-	ldrb r0, [r0, r1]
-	bx lr
-	.balign 4, 0
-_0202E4C4: .word _020F684D
-	thumb_func_end sub_0202E4BC
-
-	thumb_func_start sub_0202E4C8
-sub_0202E4C8: ; 0x0202E4C8
-	push {r3, lr}
-	mov r1, #0
-	str r1, [r0]
-	str r1, [r0, #4]
-	add r0, #8
-	mov r1, #8
-	bl StringFillEOS
-	mov r0, #0x18
-	bl SaveSubstruct_UpdateCRC
-	pop {r3, pc}
-	thumb_func_end sub_0202E4C8
-
-	thumb_func_start sub_0202E4E0
-sub_0202E4E0: ; 0x0202E4E0
-	push {r3, lr}
-	add r0, #8
-	bl StringLength
-	cmp r0, #0
-	beq _0202E4F0
-	mov r0, #1
-	pop {r3, pc}
-_0202E4F0:
-	mov r0, #0
-	pop {r3, pc}
-	thumb_func_end sub_0202E4E0
-
-	thumb_func_start sub_0202E4F4
-sub_0202E4F4: ; 0x0202E4F4
-	mov r0, #0xea
-	lsl r0, r0, #4
-	bx lr
-	.balign 4, 0
-	thumb_func_end sub_0202E4F4
-
-	thumb_func_start sub_0202E4FC
-sub_0202E4FC: ; 0x0202E4FC
-	push {r3, r4, r5, r6, r7, lr}
-	mov r2, #0xea
-	mov r1, #0
-	lsl r2, r2, #4
-	add r6, r0, #0
-	bl MI_CpuFill8
-	mov r7, #0
-_0202E50C:
-	mov r4, #0
-	add r5, r6, #0
-_0202E510:
-	add r0, r5, #0
-	bl sub_0202E4C8
-	add r4, r4, #1
-	add r5, #0x18
-	cmp r4, #6
-	blt _0202E510
-	add r7, r7, #1
-	add r6, #0x90
-	cmp r7, #0x1a
-	blt _0202E50C
-	mov r0, #0x18
-	bl SaveSubstruct_UpdateCRC
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end sub_0202E4FC
-
-	thumb_func_start sub_0202E530
-sub_0202E530: ; 0x0202E530
-	push {r4, lr}
-	add r4, r0, #0
-	mov r0, #0x18
-	bl SaveSubstruct_AssertCRC
-	add r0, r4, #0
-	mov r1, #0x18
-	bl SaveArray_Get
-	pop {r4, pc}
-	thumb_func_end sub_0202E530
-
-	thumb_func_start sub_0202E544
-sub_0202E544: ; 0x0202E544
-	push {r4, r5, r6, lr}
-	cmp r2, #6
-	blo _0202E552
-	blo _0202E58A
-	bl GF_AssertFail
-	pop {r4, r5, r6, pc}
-_0202E552:
-	mov r3, #0x90
-	mul r3, r1
-	add r3, r0, r3
-	cmp r2, #5
-	bge _0202E57C
-	mov r0, #0x18
-	mul r0, r2
-	add r6, r3, r0
-_0202E562:
-	add r5, r6, #0
-	add r5, #0x18
-	add r4, r6, #0
-	ldmia r5!, {r0, r1}
-	stmia r4!, {r0, r1}
-	ldmia r5!, {r0, r1}
-	stmia r4!, {r0, r1}
-	ldmia r5!, {r0, r1}
-	add r2, r2, #1
-	add r6, #0x18
-	stmia r4!, {r0, r1}
-	cmp r2, #5
-	blt _0202E562
-_0202E57C:
-	add r3, #0x78
-	add r0, r3, #0
-	bl sub_0202E4C8
-	mov r0, #0x18
-	bl SaveSubstruct_UpdateCRC
-_0202E58A:
-	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0202E544
-
-	thumb_func_start sub_0202E58C
-sub_0202E58C: ; 0x0202E58C
-	mov r0, #0x4e
-	lsl r0, r0, #2
-	bx lr
-	.balign 4, 0
-	thumb_func_end sub_0202E58C
+	.extern sub_0202E4C8
+	.extern sub_0202E4E0
 
 	thumb_func_start sub_0202E594
 sub_0202E594: ; 0x0202E594

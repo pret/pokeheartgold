@@ -29,7 +29,7 @@ typedef struct Overlay121Appdata {
     void *unk_22C;
     u8 unk_230;
     u8 filler_231[0x7];
-    UnkStruct_0202E4B0 *unk_238[7];
+    UnkStruct_0202E4B0_sub *unk_238[7];
     void *unk_254;
     u8 filler_258[6];
     u8 unk_25E;

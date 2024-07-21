@@ -123,7 +123,8 @@ Static main
     Object src/mystery_gift.o
     Object src/hall_of_fame.o
     Object asm/unk_0202E41C.o
-    Object asm/unk_0202E4B0.o
+    Object src/unk_0202E4B0.o
+    Object asm/unk_0202E4B0_s.o
     Object asm/unk_0202EB30.o
     Object src/update_dex_received.o
     Object asm/unk_0202ED18.o
