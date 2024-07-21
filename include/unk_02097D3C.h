@@ -4,7 +4,7 @@
 typedef struct UnkStruct_02097D56 {
     u16 unk00;
     u16 unk02;
-    SaveData *unk04;
+    SaveData *saveData;
 } UnkStruct_02097D56;
 
 typedef struct UnkStruct_02097D48 {
@@ -14,7 +14,7 @@ typedef struct UnkStruct_02097D48 {
 
 typedef struct UnkStruct_02097D8E {
     u32 state;
-    void *unk04;
+    UnkStruct_02097D48 *unk04;
 } UnkStruct_02097D8E;
 
 void sub_02097D3C(FieldSystem *fieldSystem, u8 a1, u8 a2);
