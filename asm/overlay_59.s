@@ -8722,25 +8722,25 @@ ov59_0223C09C: ; 0x0223C09C
 	ldrb r2, [r5, #6]
 	ldr r0, [r0, #0x20]
 	mov r1, #0xc
-	bl sub_02008C2C
+	bl Pokepic_AddAttr
 	ldr r0, [r4, #0x78]
 	ldrb r2, [r5, #6]
 	ldr r0, [r0, #0x20]
 	mov r1, #0xd
 	neg r2, r2
-	bl sub_02008C2C
+	bl Pokepic_AddAttr
 	b _0223C0E8
 _0223C0D0:
 	ldrb r2, [r5, #6]
 	ldr r0, [r0, #0x20]
 	mov r1, #0xc
 	neg r2, r2
-	bl sub_02008C2C
+	bl Pokepic_AddAttr
 	ldr r0, [r4, #0x78]
 	ldrb r2, [r5, #6]
 	ldr r0, [r0, #0x20]
 	mov r1, #0xd
-	bl sub_02008C2C
+	bl Pokepic_AddAttr
 _0223C0E8:
 	ldrb r1, [r5, #4]
 	add r0, r1, #1
@@ -8759,13 +8759,13 @@ _0223C0E8:
 	add r2, r1, #0
 	ldr r0, [r0, #0x20]
 	add r2, #0xf4
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	ldr r0, [r4, #0x78]
 	mov r1, #0xd
 	add r2, r1, #0
 	ldr r0, [r0, #0x20]
 	add r2, #0xf3
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	add r0, r4, #0
 	add r0, #0x4f
 	ldrb r0, [r0]
@@ -8856,7 +8856,7 @@ _0223C1AE:
 	mov r2, #0x10
 	ldr r0, [r0, #0x20]
 	mov r3, #4
-	bl sub_020090B4
+	bl Pokepic_StartPaletteFade
 	ldr r0, [r5, #0x78]
 	mov r1, #1
 	bl ov59_0223C3C0
@@ -8886,7 +8886,7 @@ _0223C1E8:
 _0223C202:
 	ldr r0, [r5, #0x78]
 	ldr r0, [r0, #0x20]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _0223C288
 	ldr r0, [r5, #0x78]
@@ -8919,7 +8919,7 @@ _0223C22A:
 	mov r2, #0
 	ldr r0, [r0, #0x20]
 	mov r3, #4
-	bl sub_020090B4
+	bl Pokepic_StartPaletteFade
 	ldrb r0, [r4, #5]
 	add sp, #0xc
 	add r0, r0, #1
@@ -8931,7 +8931,7 @@ _0223C25C:
 	beq _0223C288
 	ldr r0, [r5, #0x78]
 	ldr r0, [r0, #0x20]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _0223C288
 	add r0, r5, #0
@@ -8982,7 +8982,7 @@ ov59_0223C298: ; 0x0223C298
 	add r0, r4, #0
 	bl ov59_0223C584
 	add r0, r5, #0
-	bl sub_02007FD4
+	bl PokepicManager_Create
 	str r0, [r4, #0xc]
 	mov r0, #1
 	add r1, r0, #0
@@ -9023,7 +9023,7 @@ ov59_0223C304: ; 0x0223C304
 	bl NNS_G3dGlbFlushP
 	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r4, #0xc]
-	bl sub_02008120
+	bl PokepicManager_DrawAll
 	bl sub_02015460
 	ldr r0, _0223C34C ; =0x04000540
 	mov r1, #1
@@ -9041,7 +9041,7 @@ ov59_0223C350: ; 0x0223C350
 	ldr r0, [r4, #8]
 	bl Camera_Delete
 	ldr r0, [r4, #0xc]
-	bl sub_02008524
+	bl PokepicManager_Delete
 	add r0, r4, #0
 	bl ov59_0223C5B0
 	ldr r0, [r4, #4]
@@ -9053,11 +9053,11 @@ ov59_0223C350: ; 0x0223C350
 
 	thumb_func_start ov59_0223C374
 ov59_0223C374: ; 0x0223C374
-	ldr r3, _0223C37C ; =sub_02009418
+	ldr r3, _0223C37C ; =PokepicManager_HandleLoadImgAndOrPltt
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_0223C37C: .word sub_02009418
+_0223C37C: .word PokepicManager_HandleLoadImgAndOrPltt
 	thumb_func_end ov59_0223C374
 
 	thumb_func_start ov59_0223C380
@@ -9078,7 +9078,7 @@ ov59_0223C380: ; 0x0223C380
 	add r1, sp, #0x10
 	mov r2, #0xcc
 	mov r3, #0x70
-	bl sub_020085EC
+	bl PokepicManager_CreatePokepic
 	str r0, [r4, #0x20]
 	add sp, #0x20
 	pop {r4, pc}
@@ -9091,7 +9091,7 @@ ov59_0223C3AC: ; 0x0223C3AC
 	ldr r0, [r4, #0x20]
 	cmp r0, #0
 	beq _0223C3BE
-	bl sub_02008780
+	bl Pokepic_Delete
 	mov r0, #0
 	str r0, [r4, #0x20]
 _0223C3BE:

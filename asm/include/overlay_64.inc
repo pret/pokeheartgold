@@ -105,7 +105,7 @@
 .public GetGenderBySpeciesAndPersonality
 .public CalcShininessByOtIdAndPersonality
 .public GetMonSpriteCharAndPlttNarcIdsEx
-.public GetMonPicHeightBySpeciesGenderForme
+.public GetMonPicHeightBySpeciesGenderForm
 .public sub_020729D8
 .public NNS_G2dGetImageLocation
 .public NNS_G2dGetImagePaletteLocation

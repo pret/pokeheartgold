@@ -27,7 +27,7 @@ Static main
     Object src/overlay_manager.o
     Object src/filesystem.o
     Object src/gf_gfx_loader.o
-    Object asm/unk_02007FD8.o
+    Object src/pokepic.o
     Object src/unk_02009D48.o
     Object src/unk_0200A090.o
     Object src/unk_0200ACF0.o

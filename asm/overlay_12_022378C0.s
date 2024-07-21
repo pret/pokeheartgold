@@ -475,7 +475,7 @@ _02237FD8:
 	add r0, r5, #0
 	bl NARC_Delete
 	mov r0, #5
-	bl sub_02007FD4
+	bl PokepicManager_Create
 	add r1, r4, #0
 	add r1, #0x88
 	str r0, [r1]
@@ -484,7 +484,7 @@ _02237FD8:
 	ldr r0, [r0]
 	mov r1, #0
 	mov r2, #0xc0
-	bl sub_02009408
+	bl PokepicManager_SetPlttBaseAddrAndSize
 	add r0, r4, #0
 	bl BattleSystem_HpBar_Init
 	bl ov12_022396F0
@@ -1098,7 +1098,7 @@ _022386A8:
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_02008524
+	bl PokepicManager_Delete
 	ldr r0, _02238794 ; =0x000023FD
 	ldrb r0, [r4, r0]
 	cmp r0, #2
@@ -3166,7 +3166,7 @@ _02239798:
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_02009418
+	bl PokepicManager_HandleLoadImgAndOrPltt
 	bl GF_RunVramTransferTasks
 	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #0x28]
@@ -3233,7 +3233,7 @@ _02239830:
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_02008120
+	bl PokepicManager_DrawAll
 	add r4, #0x94
 	ldr r0, [r4]
 	bl sub_0200D020

@@ -165,6 +165,15 @@ int main(int argc, char *argv[])
         return s;
     });
 
+    env.add_callback("getVarHexUpper", 1, [=](Arguments& args) {
+        string key = args.at(0)->get<string>();
+        unsigned long value = std::stoul(get_custom_var(key));
+        std::stringstream ss;
+        ss << "0x" << std::hex << std::uppercase << (value & 0xFFFFFFFFul);
+        string s = ss.str();
+        return s;
+    });
+
     env.add_callback("concat", 2, [](Arguments& args) {
         string first = args.at(0)->get<string>();
         string second = args.at(1)->get<string>();
