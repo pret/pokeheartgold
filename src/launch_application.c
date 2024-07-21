@@ -1274,6 +1274,6 @@ LegendaryCinematicArgs *LegendaryCinematic_LaunchApp(FieldSystem *fieldSystem, U
     return args;
 }
 
-void sub_0203FD08(FieldSystem *fieldSystem, void *args) {
+void sub_0203FD08(FieldSystem *fieldSystem, UnkStruct_02097D48 *args) {
     FieldSystem_LaunchApplication(fieldSystem, &_020FA494, args);
 }
