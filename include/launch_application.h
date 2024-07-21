@@ -146,7 +146,7 @@ void PokeathlonCourse_LaunchApp(FieldSystem *fieldSystem, PokeathlonCourseArgs *
 void sub_0203FC68(FieldSystem *fieldSystem, void *args);
 void sub_0203FC90(FieldSystem *fieldSystem, void *args);
 LegendaryCinematicArgs *LegendaryCinematic_LaunchApp(FieldSystem *fieldSystem, UnkStruct_0203FCC4 *a1, u16 a2, u16 a3, HeapID heapId);
-void sub_0203FD08(FieldSystem *fieldSystem, UnkStruct_02097D48 *args);
+void sub_0203FD08(FieldSystem *fieldSystem, UnkStruct_02097D56 *args);
 PartyMenuArgs *PartyMenu_LaunchApp_Unk1(FieldSystem *fieldSystem, FieldMoveCheckData *fieldMoveCheckData, u8 partySlot);
 void CallTask_NamingScreen(TaskManager *taskManager, NameScreenType type, int species, int maxLen, int initPos, const u16 *defaultStr, u16 *retVar);
 void sub_0203E960(TaskManager *a0, int a1, UnkStruct_0203E8C8 *a2, u16 *a3, u16 *a4);

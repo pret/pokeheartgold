@@ -27,17 +27,17 @@
 #include "save_local_field_data.h"
 #include "save_trainer_house.h"
 #include "save_special_ribbons.h"
+#include "unk_0202E4B0.h"
+#include "game_stats.h"
 
 #define DECL_CHUNK(prefix) extern u32 prefix##_sizeof(void); extern void prefix##_Init(void *);
 #define DECL_CHUNK_EX(sizefn, initfn) extern u32 sizefn(void); extern void initfn(void *);
 
 DECL_CHUNK_EX(sub_020290B8, sub_020290C8)
 DECL_CHUNK(Save_FashionData)
-DECL_CHUNK(GameStats)
 DECL_CHUNK_EX(sub_02031000, sub_02031008)
 DECL_CHUNK_EX(sub_0202DB40, sub_0202DB44)
 DECL_CHUNK_EX(sub_0202E41C, sub_0202E424)
-DECL_CHUNK_EX(sub_0202E4F4, sub_0202E4FC)
 DECL_CHUNK_EX(sub_0202C034, sub_0202C03C)
 DECL_CHUNK_EX(sub_0202CA24, sub_0202CA2C)
 DECL_CHUNK_EX(sub_0202EB30, sub_0202EB38)
