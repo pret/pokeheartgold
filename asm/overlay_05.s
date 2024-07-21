@@ -3281,7 +3281,7 @@ _0221D43A:
 	cmp r0, #0
 	bne _0221D4C0
 	add r0, r7, #0
-	bl sub_0208AD64
+	bl Pokemon_GetStatusIconId
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	cmp r0, #6
@@ -4747,7 +4747,7 @@ _0221E036:
 	ldr r1, _0221E078 ; =0x00000221
 	strb r0, [r5, r1]
 	add r0, r4, #0
-	bl sub_0208AD64
+	bl Pokemon_GetStatusIconId
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
 	mov r0, #0x8a
@@ -4824,7 +4824,7 @@ _0221E0D0:
 	lsl r1, r1, #2
 	ldrh r1, [r2, r1]
 	mov r2, #0x30
-	bl sub_020880B0
+	bl CalculateHpBarColor
 	cmp r0, #4
 	bhi _0221E108
 	add r0, r0, r0
@@ -5717,7 +5717,7 @@ ov05_0221E7B8: ; 0x0221E7B8
 	ldrh r0, [r0, r6]
 	ldrh r1, [r7, r6]
 	mov r2, #0x30
-	bl sub_020880B0
+	bl CalculateHpBarColor
 	cmp r0, #4
 	bhi _0221E846
 	add r0, r0, r0
@@ -5772,7 +5772,7 @@ _0221E846:
 	ldrh r1, [r7, r6]
 	ldrh r0, [r0, r6]
 	mov r2, #0x30
-	bl RatioToInt
+	bl CalculateHpBarPixelsLength
 	add r5, r0, #0
 	lsl r0, r5, #0x10
 	lsr r0, r0, #0x10

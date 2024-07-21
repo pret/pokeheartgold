@@ -8,6 +8,7 @@
 #include "trainer_memo.h"
 #include "update_dex_received.h"
 #include "unk_02092BE8.h"
+#include "field_system.h"
 
 BOOL ScrCmd_MomGiftCheck(ScriptContext *ctx) {
     u16 sp;

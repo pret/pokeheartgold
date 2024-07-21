@@ -7,7 +7,7 @@
 BOOL CanUseItemOnPokemon(Pokemon *mon, u16 itemID, s32 moveIdx, HeapID heapID);
 BOOL CanUseItemOnMonInParty(Party *party, u16 itemID, s32 partyIdx, s32 moveIdx, HeapID heapID);
 BOOL UseItemOnPokemon(Pokemon *mon, u16 itemID, u16 moveIdx, u16 location, HeapID heapID);
-BOOL UseItemOnMonInParty(Party *party, u16 itemID, s32 partyIdx, u16 moveIdx, u16 location, HeapID heapID);
+BOOL UseItemOnMonInParty(Party *party, u16 itemID, s32 partyIdx, u8 moveIdx, u16 location, HeapID heapID);
 BOOL MonMoveCanRestorePP(Pokemon *mon, int moveIdx);
 BOOL MonMoveRestorePP(Pokemon *mon, int moveIdx, int ppRestore);
 BOOL BoostMonMovePpUpBy(Pokemon *mon, int moveIdx, int nPpUp);

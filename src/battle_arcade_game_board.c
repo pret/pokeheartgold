@@ -24,7 +24,7 @@
 #include "unk_02022588.h"
 #include "obj_char_transfer.h"
 #include "unk_0200A090.h"
-#include "unk_02078E30.h"
+#include "party_menu.h"
 #include "vram_transfer_manager.h"
 #include "unk_0200B150.h"
 #include "pokemon.h"
@@ -1315,10 +1315,10 @@ static void GameBoard_LoadEventGraphics(GAME_BOARD_SUB_3E8 *work) {
 }
 
 static void ov84_0223F538(GAME_BOARD_SUB_3E8 *work) {
-    NARC *narc = NARC_New(NARC_a_0_2_1, HEAP_ID_GAME_BOARD);
+    NARC *narc = NARC_New(NARC_graphic_plist_gra, HEAP_ID_GAME_BOARD);
 
     work->resourceObj[2][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromOpenNarc(work->resourceMan[0], narc, sub_0207CA9C(), FALSE, 2, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_GAME_BOARD);
-    work->resourceObj[2][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_a_0_2_1, sub_0207CAA0(), FALSE, 2, NNS_G2D_VRAM_TYPE_2DMAIN, 3, HEAP_ID_GAME_BOARD);
+    work->resourceObj[2][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_graphic_plist_gra, sub_0207CAA0(), FALSE, 2, NNS_G2D_VRAM_TYPE_2DMAIN, 3, HEAP_ID_GAME_BOARD);
     work->resourceObj[2][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[2], narc, sub_0207CAA4(), FALSE, 2, GF_GFX_RES_TYPE_CELL, HEAP_ID_GAME_BOARD);
     work->resourceObj[2][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[3], narc, sub_0207CAA8(), FALSE, 2, GF_GFX_RES_TYPE_ANIM, HEAP_ID_GAME_BOARD);
 

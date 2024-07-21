@@ -93,7 +93,7 @@
 .public LocalFieldData_GetPlayer
 .public LocalFieldData_GetSafariBallsCounter
 .public Save_LocalFieldData_Get
-.public sub_0203C3CC
+.public FieldSystem_ShouldDrawStartMenuIcon
 .public FieldSystem_GetFacingObject
 .public sub_0203DF8C
 .public sub_0203E13C
@@ -120,7 +120,7 @@
 .public Save_VarsFlags_CheckSafariSysFlag
 .public Save_VarsFlags_CheckBugContestFlag
 .public Save_VarsFlags_CheckPalParkSysFlag
-.public sub_02067584
+.public FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom
 .public FieldSystem_BugContest_Get
 .public BugContest_GetSportBallsAddr
 .public GetMonData

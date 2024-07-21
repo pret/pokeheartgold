@@ -56,7 +56,7 @@ static const GraphicsModes ov78_021E67E0 = {
     ._2d3dMode = GX_BG0_AS_2D,
 };
 
-static const Unk122_021E92D0 ov78_021E67F0 = {
+static const OamCharTransferParam ov78_021E67F0 = {
     .maxTasks = 0,
     .sizeMain = 0x20000,
     .sizeSub = 0x4000,
@@ -88,15 +88,15 @@ static const BgTemplate ov78_021E681C = {
     .mosaic = FALSE,
 };
 
-static const Unk122_021E92FC ov78_021E6838 = {
-    .unk0 = 0,
-    .unk4 = 0x80,
-    .unk8 = 0,
-    .unkC = 0x20,
-    .unk10 = 0,
-    .unk14 = 0x80,
-    .unk18 = 0,
-    .unk1C = 0x20,
+static const OamManagerParam ov78_021E6838 = {
+    .fromOBJmain = 0,
+    .numOBJmain = 128,
+    .fromAffineMain = 0,
+    .numAffineMain = 32,
+    .fromOBJsub = 0,
+    .numOBJsub = 128,
+    .fromAffineSub = 0,
+    .numAffineSub = 32,
 };
 
 static const GraphicsBanks ov78_021E6858 = {
@@ -590,8 +590,8 @@ static void CertificatesApp_SetupSpriteRenderer(CertificatesApp_Data *data) {
     data->spriteRenderer = SpriteRenderer_Create(data->heapId);
     data->spriteGfxHandler = SpriteRenderer_CreateGfxHandler(data->spriteRenderer);
 
-    Unk122_021E92FC unkTemplate1 = ov78_021E6838;
-    Unk122_021E92D0 unkTemplate2 = ov78_021E67F0;
+    OamManagerParam unkTemplate1 = ov78_021E6838;
+    OamCharTransferParam unkTemplate2 = ov78_021E67F0;
     unkTemplate2.maxTasks = 0x20;
     sub_0200CF70(data->spriteRenderer, &unkTemplate1, &unkTemplate2, 0x20);
     sub_0200CFF4(data->spriteRenderer, data->spriteGfxHandler, 0x20);

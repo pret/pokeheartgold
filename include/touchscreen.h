@@ -1,12 +1,14 @@
 #ifndef POKEHEARTGOLD_TOUCHSCREEN_H
 #define POKEHEARTGOLD_TOUCHSCREEN_H
 
+#include <nitro.h>
+
 typedef union TouchscreenHitbox {
     struct {
-        u8 top;
-        u8 bottom;
-        u8 left;
-        u8 right;
+        u8 top;      // min: 0
+        u8 bottom;   // max: 192
+        u8 left;     // min: 0
+        u8 right;    // max: 256 (encode as 0)
     } rect;
     struct {
         u8 sentinel;  // 0xFE

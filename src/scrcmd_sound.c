@@ -2,6 +2,7 @@
 #include "unk_02005D10.h"
 #include "sound.h"
 #include "sound_02004A44.h"
+#include "field_system.h"
 #include "unk_02054E00.h"
 #include "sav_chatot.h"
 

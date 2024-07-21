@@ -4,7 +4,7 @@
 #include "unk_02009D48.h"
 
 typedef struct SpriteTemplate {
-    void *spriteList;                            // 000
+    SpriteList *spriteList;                      // 000
     const struct SpriteResourcesHeader *header;  // 004
     VecFx32 position;                            // 008
     VecFx32 scale;                               // 014

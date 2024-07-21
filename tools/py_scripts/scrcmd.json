@@ -3873,13 +3873,13 @@
       ]
     },
     {
-      "name": "scrcmd_616",
+      "name": "count_saved_photos",
       "args": [
         "var"
       ]
     },
     {
-      "name": "scrcmd_617",
+      "name": "open_photo_album",
       "args": []
     },
     {
@@ -3901,7 +3901,7 @@
       ]
     },
     {
-      "name": "scrcmd_621",
+      "name": "place_starter_balls_in_elms_lab",
       "args": []
     },
     {

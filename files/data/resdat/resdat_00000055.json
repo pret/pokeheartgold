@@ -2,7 +2,7 @@
   "kind": "pltt",
   "graphics": [
     {
-      "narc": 162,
+      "narc": "NARC_a_1_6_2",
       "file": 61,
       "compressed": false,
       "id": 0,
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "narc": 8,
+      "narc": "NARC_a_0_0_8",
       "file": 74,
       "compressed": false,
       "id": 1,
@@ -22,7 +22,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 65,
       "compressed": false,
       "id": 3,
@@ -32,7 +32,7 @@
       ]
     },
     {
-      "narc": 21,
+      "narc": "NARC_graphic_plist_gra",
       "file": 23,
       "compressed": false,
       "id": 4,
@@ -42,7 +42,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 136,
       "compressed": false,
       "id": 5,
@@ -52,7 +52,7 @@
       ]
     },
     {
-      "narc": 162,
+      "narc": "NARC_a_1_6_2",
       "file": 49,
       "compressed": false,
       "id": 6,
@@ -62,7 +62,7 @@
       ]
     },
     {
-      "narc": 162,
+      "narc": "NARC_a_1_6_2",
       "file": 65,
       "compressed": false,
       "id": 7,
@@ -72,7 +72,7 @@
       ]
     },
     {
-      "narc": 20,
+      "narc": "NARC_poketool_icongra_poke_icon",
       "file": 0,
       "compressed": false,
       "id": 8,
@@ -82,7 +82,7 @@
       ]
     },
     {
-      "narc": 162,
+      "narc": "NARC_a_1_6_2",
       "file": 3,
       "compressed": false,
       "id": 9,

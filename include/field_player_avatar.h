@@ -3,7 +3,7 @@
 
 #include "save.h"
 #include "global.h"
-#include "field_system.h"
+#include "field_types_def.h"
 
 typedef struct PlayerSaveData {
     u16 hasRunningShoes;

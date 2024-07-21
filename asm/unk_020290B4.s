@@ -91,8 +91,8 @@ sub_020290E4: ; 0x020290E4
 	.balign 4, 0
 	thumb_func_end sub_020290E4
 
-	thumb_func_start sub_020290FC
-sub_020290FC: ; 0x020290FC
+	thumb_func_start LinkBattleRuleset_GetRuleValue
+LinkBattleRuleset_GetRuleValue: ; 0x020290FC
 	mov r2, #0
 	cmp r1, #0xd
 	bhi _0202919A
@@ -193,7 +193,7 @@ _0202919A:
 	bx lr
 	nop
 _020291A0: .word 0x00000FFF
-	thumb_func_end sub_020290FC
+	thumb_func_end LinkBattleRuleset_GetRuleValue
 
 	thumb_func_start sub_020291A4
 sub_020291A4: ; 0x020291A4
@@ -211,7 +211,7 @@ _020291B2:
 	lsl r5, r5, #5
 	add r0, r4, r5
 	mov r1, #1
-	bl sub_020290FC
+	bl LinkBattleRuleset_GetRuleValue
 	cmp r0, #0
 	beq _020291CE
 	add r0, r4, r5

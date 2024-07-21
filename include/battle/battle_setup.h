@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_BATTLE_SETUP_H
 #define POKEHEARTGOLD_BATTLE_SETUP_H
 
-#include "field_system.h"
+#include "field_types_def.h"
 #include "party.h"
 #include "player_data.h"
 #include "trainer_data.h"
@@ -15,6 +15,7 @@
 #include "map_header.h"
 #include "save_palpad.h"
 #include "constants/battle.h"
+#include "unk_020755E8.h"
 
 struct BattleSetupSub_138 {
     int unk_0;
@@ -57,7 +58,7 @@ struct BattleSetup { //declared in trainer_data.h
     u32 battleSpecial; //18C
     int safariBalls; // 190
     int unk_194;
-    void *unk198;
+    EvolutionTaskData *unk198;
     int unk_19C;
     int unk_1A0[4];
     u16 unk1B0;

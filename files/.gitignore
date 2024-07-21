@@ -10,6 +10,7 @@ a/0/1/6
 a/0/1/7
 a/0/1/8
 a/0/2/0
+a/0/2/1
 a/0/2/7
 a/0/3/0
 a/0/3/2
@@ -49,6 +50,8 @@ a/2/1/2
 a/2/1/4
 a/2/2/9
 a/2/5/2
+a/2/5/4
+a/2/6/1
 a/2/6/2
 a/2/6/4
 msgdata/msg.narc
@@ -69,3 +72,5 @@ data/resdat.narc
 application/annon/puzzle_gra.narc
 demo/opening/gs_opening.narc
 demo/legend.narc
+data/photo_data.narc
+graphic/camera_viewfinder.narc

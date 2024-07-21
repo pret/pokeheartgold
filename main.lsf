@@ -115,7 +115,7 @@ Static main
     Object src/seal_case.o
     Object src/igt.o
     Object src/sav_chatot.o
-    Object asm/game_stats.o
+    Object src/game_stats.o
     Object asm/unk_0202D230.o
     Object src/save_special_ribbons.o
     Object src/roamer.o
@@ -156,14 +156,11 @@ Static main
     Object src/save_local_field_data.o
     Object asm/unk_0203BA5C.o
     Object src/field_system_rtc_weather.o
-    Object asm/unk_0203BC10.o
+    Object src/start_menu.o
     Object asm/unk_0203DB6C.o
     Object src/field_system.o
     Object src/location_backup.o
     Object src/launch_application.o
-    Object src/launch_application_data1.o
-    Object src/launch_application_data2.o
-    Object asm/launch_application_data.o
     Object src/script.o
     Object src/fieldmap.o
     Object src/scrcmd_c.o
@@ -247,7 +244,7 @@ Static main
     Object asm/unk_0206979C.o
     Object src/follow_mon.o
     Object src/map_preview_graphic.o
-    Object asm/field_take_photo.o
+    Object src/field_take_photo.o
     Object src/unk_0206B910.o
     Object src/alph_checks.o
     Object src/get_egg.o
@@ -259,7 +256,7 @@ Static main
     Object src/pokemon_icon_idx.o
     Object src/party.o
     Object src/pokedex_util.o
-    Object asm/unk_02074944.o
+    Object src/battle_regulation.o
     Object asm/unk_02074E5C.o
     Object asm/unk_020755E8.o
     Object asm/unk_020773AC.o
@@ -269,11 +266,11 @@ Static main
     Object src/bag.o
     Object asm/unk_02078834.o
     Object asm/unk_02078DD8.o
-    Object asm/unk_02078E30.o
-    Object asm/unk_0207CB7C.o
-    Object asm/unk_0207EB24.o
-    Object asm/unk_0207F42C.o
-    Object asm/unk_02080BB4.o
+    Object src/party_menu.o
+    Object src/party_context_menu.o
+    Object src/party_menu_sprites.o
+    Object src/party_menu_list_items.o
+    Object src/party_menu_items.o
     Object asm/unk_02082908.o
     Object asm/unk_020850F4.o
     Object asm/unk_02085604.o
@@ -629,7 +626,7 @@ Overlay OVY_18
 Overlay OVY_19
 {
     After OVY_3
-    Object asm/overlay_19.o
+    Object src/application/view_photo.o
 }
 Overlay OVY_20
 {
@@ -1206,7 +1203,7 @@ Overlay OVY_123
 Overlay OVY_124
 {
     After OVY_123
-    Object asm/overlay_124.o
+    Object src/overlay_124.o
 }
 Overlay OVY_125
 {

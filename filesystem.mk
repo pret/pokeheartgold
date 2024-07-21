@@ -407,6 +407,7 @@ $(eval $(call arc_strip_name,files/fielddata/script/scr_seq.narc,files/a/0/1/2))
 $(eval $(call arc_strip_name,files/graphic/font.narc,files/a/0/1/6))
 $(eval $(call arc_strip_name,files/itemtool/itemdata/item_data.narc,files/a/0/1/7))
 $(eval $(call arc_strip_name,files/itemtool/itemdata/item_icon.narc,files/a/0/1/8))
+$(eval $(call arc_strip_name,files/graphic/plist_gra.narc,files/a/0/2/1))
 $(eval $(call arc_strip_name,files/msgdata/msg.narc,files/a/0/2/7))
 $(eval $(call arc_strip_name,files/battledata/script/effect_script.narc,files/a/0/3/0))
 $(eval $(call arc_strip_name,files/fielddata/eventdata/zone_event.narc,files/a/0/3/2))
@@ -449,6 +450,8 @@ $(eval $(call arc_strip_name,files/arc/headbutt.$(buildname).narc,files/a/2/5/2)
 $(eval $(call arc_strip_name,files/demo/opening/gs_opening.narc,files/a/2/6/2))
 $(eval $(call arc_strip_name,files/application/voltorb_flip.narc,files/a/2/6/4))
 $(eval $(call arc_strip_name,files/poketool/icongra/poke_icon/poke_icon.narc,files/a/0/2/0))
+$(eval $(call arc_strip_name,files/data/photo_data.narc,files/a/2/5/4))
+$(eval $(call arc_strip_name,files/graphic/camera_viewfinder.narc,files/a/2/6/1))
 
 $(DIFF_ARCS):
 	cp $< $@
@@ -483,6 +486,7 @@ $(BTL_SUBSCRIPT_SCRIPT_BINS): $(FIRST_MSG_H_GEN)
 include files/fielddata/eventdata/zone_event.mk
 include files/data/sound/sound_data.mk
 include files/data/gs_areawindow.mk
+include files/graphic/plist_gra.mk
 include files/fielddata/encountdata/gs_enc_data.mk
 include files/itemtool/itemdata/item_data.mk
 include files/poketool/icongra/poke_icon/poke_icon.mk
@@ -509,6 +513,8 @@ include files/demo/legend.mk
 include files/arc/headbutt.mk
 include files/poketool/personal/personal.mk
 include files/fielddata/graphic/preview_graphic/preview_graphic.mk
+include files/data/photo_data.mk
+include files/graphic/camera_viewfinder.mk
 
 $(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
 

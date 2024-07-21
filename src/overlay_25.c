@@ -287,7 +287,7 @@ static void TrainerHouse_CopyToPokemon(TrainerHouseMon *trainerHouseMon, Pokemon
     u16 nickname[POKEMON_NAME_LENGTH + 1];
     StringFillEOS(nickname, NELEMS(nickname));
     CopyU16StringArrayN(nickname, trainerHouseMon->nickname, POKEMON_NAME_LENGTH);
-    SetMonData(mon, MON_DATA_NICKNAME, nickname);
+    SetMonData(mon, MON_DATA_NICKNAME_FLAT, nickname);
     SetMonData(mon, MON_DATA_GAME_LANGUAGE, &(trainerHouseMon->language));
     CalcMonLevelAndStats(mon);
 }

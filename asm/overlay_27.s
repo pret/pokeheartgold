@@ -1436,7 +1436,7 @@ ov27_0225AAD4: ; 0x0225AAD4
 _0225AAF6:
 	ldr r0, [r5, #0x10]
 	add r1, r6, #0
-	bl sub_0203C3CC
+	bl FieldSystem_ShouldDrawStartMenuIcon
 	cmp r0, #1
 	bne _0225AB62
 	ldr r0, _0225ABF4 ; =0x00000514
@@ -3596,7 +3596,7 @@ _0225BC90:
 	ldr r0, [sp]
 	add r1, r4, #0
 	ldr r0, [r0, #0x10]
-	bl sub_0203C3CC
+	bl FieldSystem_ShouldDrawStartMenuIcon
 	add r4, r4, #1
 	stmia r5!, {r0}
 	cmp r4, #8
@@ -3704,7 +3704,7 @@ ov27_0225BD50: ; 0x0225BD50
 	bl Save_VarsFlags_Get
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02067584
+	bl FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom
 	cmp r0, #0
 	beq _0225BD6A
 	mov r0, #6
@@ -4211,7 +4211,7 @@ _0225C116:
 	cmp r1, #7
 	bge _0225C13A
 	ldr r0, [r5, #0x10]
-	bl sub_0203C3CC
+	bl FieldSystem_ShouldDrawStartMenuIcon
 	ldr r1, _0225C168 ; =0x00000514
 	add r2, r5, r4
 	strb r0, [r2, r1]

@@ -210,7 +210,7 @@
 .public sub_0207CAA0
 .public sub_0207CAA4
 .public sub_0207CAA8
-.public sub_020880B0
+.public CalculateHpBarColor
 .public UseItemOnPokemon
 .public sub_02096910
 .public NNS_G2dInitOamManagerModule

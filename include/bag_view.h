@@ -1,50 +1,11 @@
 #ifndef POKEHEARTGOLD_BAG_VIEW_H
 #define POKEHEARTGOLD_BAG_VIEW_H
 
+#include "field_use_item.h"
 #include "item.h"
 #include "save.h"
 #include "bag_cursor.h"
 #include "player_data.h"
-
-// Enum for argument "code" to GetItemUseErrorMessage
-enum ItemUseError {
-    ITEMUSEERROR_OKAY       = 0, // no error
-    ITEMUSEERROR_NODISMOUNT = 1, // can't get off bike
-    ITEMUSEERROR_NOFOLLOWER = 2, // have a companion
-    ITEMUSEERROR_NOTNOW     = 3, // you're a member of team rocket
-
-    ITEMUSEERROR_OAKSWORDS  = -1u,
-};
-
-/*
- * Item slot access for bag view
- */
-typedef struct BagViewPocket {
-    ItemSlot *slots;                  // Points into Bag
-    u8 padding[4];
-    u8 pocketId;                       // POCKET_XXX constant
-    u8 padding2[3];
-} BagViewPocket;
-
-/*
- * Data relevant to drawing the bag on screen
- */
-typedef struct BagView {
-    SaveData *saveData;                // Persistent game state
-    BagViewPocket pockets[8];        // Pocket information
-    u8 unk64;
-    u8 unk65;
-    u16 unk66;
-    u16 unk68;
-    u8 padding[2];
-    BagCursor *cursor;                // State of last selection
-    void *unk70;
-    u8 unk74;
-    u8 unk75;
-    u16 unk76_0:1;
-    u16 unk76_1:15;
-    u32 *unk78;
-} BagView; // size: 0x7C
 
 /*
  * BagView *BagView_New(u8 heapId)
@@ -66,7 +27,7 @@ BagView *BagView_New(u8 heapId);
  */
 u32 BagView_sizeof(void);
 void sub_02077894(BagView *bagView, u8 a1);
-void sub_0207789C(BagView *bagView, SaveData *save, u8 a2, BagCursor *cursor, u32 *a4);
+void sub_0207789C(BagView *bagView, SaveData *save, u8 a2, BagCursor *cursor, BOOL *a4);
 
 /*
  * void BagView_SetItem(BagView *bagView, ItemSlot *slots, u8 pocketId, u8 position)
@@ -83,10 +44,10 @@ void sub_0207789C(BagView *bagView, SaveData *save, u8 a2, BagCursor *cursor, u3
  */
 void BagView_SetItem(BagView *bagView, ItemSlot *slots, u8 pocketId, u8 position);
 void sub_020778C8(BagView *bagView);
-void sub_020778DC(BagView *bagView, void *a1);
+void sub_020778DC(BagView *bagView, ItemCheckUseData *a1);
 void sub_020778E0(BagView *bagView, u8 a1);
 void sub_020778E8(BagView *bagView, u16 a1);
-u16 sub_02077904(BagView *bagView);
+u16 BagView_GetItemId(BagView *bagView);
 u16 sub_0207790C(BagView *bagView);
 u8 sub_02077914(BagView *bagView);
 u8 sub_0207791C(BagView *bagView);

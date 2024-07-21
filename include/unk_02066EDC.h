@@ -13,7 +13,7 @@ u32 sub_020674A4(u32 a0);
 void sub_020674BC(SaveData *saveData);
 u32 sub_020674E0(SaveData *saveData);
 u32 sub_0206751C(SaveData *saveData);
-BOOL sub_02067584(FieldSystem *fieldSystem);
+BOOL FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom(FieldSystem *fieldSystem);
 void sub_0206759C(SaveData *saveData, int a1);
 
 #endif //POKEHEARTGOLD_UNK_02066EDC_H

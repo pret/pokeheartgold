@@ -13,7 +13,7 @@
 .public sub_020290BC
 .public sub_020290C8
 .public sub_020290E4
-.public sub_020290FC
+.public LinkBattleRuleset_GetRuleValue
 .public sub_020291A4
 .public sub_020291D4
 .public sub_020291E8

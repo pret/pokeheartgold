@@ -2,6 +2,7 @@
 #include "mart.h"
 #include "save_vars_flags.h"
 #include "pokedex.h"
+#include "field_system.h"
 #include "unk_02031904.h"
 #include "constants/items.h"
 #include "constants/decorations.h"

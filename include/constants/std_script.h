@@ -55,6 +55,7 @@
 #define std_special_mart_buy            2053
 #define std_special_mart_sell           2054
 #define std_special_mart_cancel         2055
+#define std_revert_shaymin              2064
 #define std_play_pichu_music            2065
 #define std_fade_end_pichu_music        2066
 #define std_play_kimono_girl_music      2067
