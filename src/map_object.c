@@ -125,7 +125,7 @@ static LocalMapObject *MapObject_CreateFromObjectEvent(MapObjectManager *manager
     sub_0205EFB4(ret);
     MapObject_SetFlagsBits(ret, MAPOBJECTFLAG_UNK2);
     sub_0205EAF0(manager, ret);
-    sub_0205F16C(MapObjectManager_GetMapObjectManager(manager));
+    sub_0205F16C(MapObjectManager_Get(manager));
     return ret;
 }
 
@@ -414,7 +414,7 @@ static void sub_0205E8EC(MapObjectManager *manager, LocalMapObject *object) {
     sub_0205EFB4(object);
     sub_0205EAF0(manager, object);
     sub_0205F450(object);
-    sub_0205F16C(MapObjectManager_GetMapObjectManager(manager));
+    sub_0205F16C(MapObjectManager_Get(manager));
 }
 
 static void sub_0205E934(LocalMapObject *object) {
@@ -822,7 +822,7 @@ void sub_0205F148(LocalMapObject* object) {
 }
 
 // Likely a scrubbed debug func, but WTF is GF smoking?
-MapObjectManager* MapObjectManager_GetMapObjectManager(MapObjectManager* manager) {
+MapObjectManager* MapObjectManager_Get(MapObjectManager* manager) {
     return manager;
 }
 
@@ -1128,7 +1128,7 @@ MapObjectManager* MapObject_GetManager(LocalMapObject* object) {
 }
 
 MapObjectManager* sub_0205F364(LocalMapObject* object) {
-    return MapObjectManager_GetMapObjectManager(object->manager);
+    return MapObjectManager_Get(object->manager);
 }
 
 u8* sub_0205F370(LocalMapObject* object, s32 size) {

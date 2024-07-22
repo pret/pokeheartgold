@@ -191,7 +191,7 @@ BOOL sub_0205F0A8(LocalMapObject* object, u32 id, u32 a2);
 BOOL sub_0205F0F8(LocalMapObject* object, u32 spriteId, u32 id, u32 a3);
 void sub_0205F12C(SysTask* task, LocalMapObject* object);
 void sub_0205F148(LocalMapObject* object);
-MapObjectManager* MapObjectManager_GetMapObjectManager(MapObjectManager* manager);
+MapObjectManager* MapObjectManager_Get(MapObjectManager* manager);
 void MapObjectManager_SetObjectCount(MapObjectManager*, u32);
 u32 MapObjectManager_GetObjectCount(MapObjectManager*);
 void sub_0205F16C(MapObjectManager* manager);
