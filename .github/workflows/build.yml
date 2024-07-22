@@ -24,7 +24,6 @@ jobs:
         run: |
           sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
           sudo apt update
-          sudo ACCEPT_EULA=Y apt -y --fix-missing --allow-downgrades upgrade
           sudo apt -y --allow-downgrades install g++-10-multilib linux-libc-dev binutils-arm-none-eabi p7zip-full pkg-config libpugixml-dev ppa-purge
           sudo ppa-purge -y ppa:ubuntu-toolchain-r/test || true
           sudo dpkg --add-architecture i386
@@ -63,14 +62,14 @@ jobs:
           GAME_VERSION: HEARTGOLD
           GAME_LANGUAGE: ENGLISH
           GAME_REVISION: 0
-        run: make -j${nproc}
+        run: make -j4
 
       - name: Build SoulSilver
         env:
           GAME_VERSION: SOULSILVER
           GAME_LANGUAGE: ENGLISH
           GAME_REVISION: 0
-        run: make -j${nproc}
+        run: make -j4
 
       - name: Webhook
         if: ${{ github.event_name == 'push' }}

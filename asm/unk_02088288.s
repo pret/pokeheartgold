@@ -232,7 +232,7 @@ _02088470:
 	ldr r0, [r5, r0]
 	mov r1, #6
 	mov r2, #0
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	mov r0, #1
 	str r0, [r4]
 	b _0208854A
@@ -324,7 +324,7 @@ _02088530:
 	ldr r0, [r5, r0]
 	mov r1, #6
 	mov r2, #0
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	mov r0, #2
 	str r0, [r4]
 	b _0208854A
@@ -400,7 +400,7 @@ sub_020885DC: ; 0x020885DC
 	mov r0, #0x2a
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02009418
+	bl PokepicManager_HandleLoadImgAndOrPltt
 	bl GF_RunVramTransferTasks
 	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r3, _02088608 ; =OS_IRQTable

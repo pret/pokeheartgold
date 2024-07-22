@@ -39,9 +39,9 @@
 .public GfGfxLoader_GetCharDataFromOpenNarc
 .public GfGfxLoader_GetScrnDataFromOpenNarc
 .public GfGfxLoader_LoadFromOpenNarc
-.public sub_020085EC
-.public sub_020090B4
-.public sub_02009138
+.public PokepicManager_CreatePokepic
+.public Pokepic_StartPaletteFade
+.public Pokepic_ResumePaletteFade
 .public CreateSpriteResourcesHeader
 .public G2dRenderer_Init
 .public G2dRenderer_SetSubSurfaceCoords
@@ -97,7 +97,7 @@
 .public SpriteGfxHandler_UnloadCellObjById
 .public SpriteGfxHandler_UnloadAnimObjById
 .public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public UnkImageStruct_GetSpriteCurrentAnimSeqNo
@@ -207,8 +207,8 @@
 .public Sprite_Delete
 .public Set2dSpriteVisibleFlag
 .public sub_02024A48
-.public sub_02024B1C
-.public sub_02024B34
+.public Sprite_GetImageProxy
+.public Sprite_GetPaletteProxy
 .public sub_02024BBC
 .public TouchscreenHitbox_FindRectAtTouchHeld
 .public TouchscreenHitbox_FindRectAtTouchNew
@@ -238,7 +238,7 @@
 .public GetMonBaseStat_HandleAlternateForm
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public GetMonSpriteCharAndPlttNarcIdsEx
-.public sub_020708D8
+.public GetMonPicHeightBySpeciesGenderForm
 .public GetBattleMonIconNaixEx
 .public GetBattleMonIconPaletteEx
 .public sub_02074490

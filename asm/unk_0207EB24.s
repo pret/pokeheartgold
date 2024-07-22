@@ -246,7 +246,7 @@ sub_0207ECE0: ; 0x0207ECE0
 	ldr r0, _0207EDD0 ; =0x0000084C
 	add r6, r5, r0
 	ldr r0, [r6, r4]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	mov r1, #1
 	bl NNS_G2dGetImageLocation
 	str r0, [sp, #0x14]
@@ -277,7 +277,7 @@ sub_0207ECE0: ; 0x0207ECE0
 	add r1, r5, r4
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	mov r1, #2
 	bl NNS_G2dGetImageLocation
 	ldr r1, [sp, #0x18]

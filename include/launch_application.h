@@ -15,7 +15,7 @@
 #include "overlay_43.h"
 #include "overlay_54.h"
 #include "overlay_58.h"
-#include "overlay_63.h"
+#include "register_hall_of_fame.h"
 #include "overlay_67.h"
 #include "overlay_72.h"
 #include "overlay_73.h"
@@ -44,6 +44,7 @@
 #include "unk_02088288.h"
 #include "unk_02092BE8.h"
 #include "unk_02097B78.h"
+#include "unk_02097D3C.h"
 #include "credits/credits.h"
 #include "voltorb_flip/voltorb_flip.h"
 
@@ -63,18 +64,6 @@ typedef enum PocketType {
 struct UnkStruct_ScrCmd230 {
     u8 filler_00[0x30];
     u8 unk_30[6];
-};
-
-struct UnkStruct_ScrCmd627 {
-    void *unk_0;
-    Options *options;
-    SaveData *saveData;
-    void *unk_0C;
-    u8 filler_10[0x8];
-    u32 mapId;
-    void *unk_1C;
-    u8 unk_20;
-    u8 filler_21[0x7];
 };
 
 typedef struct UnkStruct_0203E600 {
@@ -157,7 +146,7 @@ void PokeathlonCourse_LaunchApp(FieldSystem *fieldSystem, PokeathlonCourseArgs *
 void sub_0203FC68(FieldSystem *fieldSystem, void *args);
 void sub_0203FC90(FieldSystem *fieldSystem, void *args);
 LegendaryCinematicArgs *LegendaryCinematic_LaunchApp(FieldSystem *a0, UnkStruct_0203FCC4 *a1, u16 a2, u16 a3, HeapID a4);
-void sub_0203FD08(FieldSystem *fieldSystem, void *args);
+void sub_0203FD08(FieldSystem *fieldSystem, UnkStruct_02097D48 *args);
 PartyMenuArgs *PartyMenu_LaunchApp_Unk1(FieldSystem *fieldSystem, int a1, u8 a2);
 void CallTask_NamingScreen(TaskManager *taskManager, NameScreenType type, int species, int maxLen, int initPos, const u16 *defaultStr, u16 *retVar);
 void sub_0203E960(TaskManager *a0, int a1, UnkStruct_0203E8C8 *a2, u16 *a3, u16 *a4);

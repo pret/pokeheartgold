@@ -40,13 +40,13 @@ void LoadMonPersonal(int species, BASE_STATS *dest);
 int ResolveMonForm(int species, int form);
 u8 GetGenderBySpeciesAndPersonality_PreloadedPersonal(const BASE_STATS *personal, u16 species, u32 pid);
 u32 MaskOfFlagNo(int flagno);
-void GetBoxmonSpriteCharAndPlttNarcIds(struct SomeDrawPokemonStruct *a0, BoxPokemon *boxMon, u8 whichFacing, BOOL a3);
-void DP_GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct *a0, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 pid);
-void GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct *a0, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 pid);
+void GetBoxmonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing, BOOL a3);
+void DP_GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 pid);
+void GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 pid);
 u8 sub_02070438(u16 species, u8 form);
 u8 sub_02070854(BoxPokemon *boxMon, u8 whichFacing, BOOL a2);
-u8 sub_02070A64(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);
-u8 sub_020708D8(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);
+u8 GetMonPicHeightBySpeciesGenderForm_PBR(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);
+u8 GetMonPicHeightBySpeciesGenderForm(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);
 void sub_02070D3C(s32 trainer_class, s32 a1, BOOL a2, struct UnkStruct_02070D3C *a3);
 int TrainerClassToBackpicID(int trainer_class, int a1);
 void LoadMonEvolutionTable(u16 species, struct Evolution *evoTable);
@@ -2151,15 +2151,15 @@ u32 GenerateShinyPersonality(u32 otid) {
     return (u32)((r5 << 16) | r6);
 }
 
-void GetPokemonSpriteCharAndPlttNarcIds(struct SomeDrawPokemonStruct *a0, BoxPokemon *boxMon, u8 whichFacing) {
-    GetBoxmonSpriteCharAndPlttNarcIds(a0, boxMon, whichFacing, FALSE);
+void GetPokemonSpriteCharAndPlttNarcIds(PokepicTemplate *a0, Pokemon *mon, u8 whichFacing) {
+    GetBoxmonSpriteCharAndPlttNarcIds(a0, &mon->box, whichFacing, FALSE);
 }
 
-void sub_02070130(struct SomeDrawPokemonStruct *a0, BoxPokemon *boxMon, u8 whichFacing) {
+void sub_02070130(PokepicTemplate *a0, BoxPokemon *boxMon, u8 whichFacing) {
     GetBoxmonSpriteCharAndPlttNarcIds(a0, boxMon, whichFacing, TRUE);
 }
 
-void GetBoxmonSpriteCharAndPlttNarcIds(struct SomeDrawPokemonStruct *spC, BoxPokemon *boxMon, u8 whichFacing, BOOL sp14) {
+void GetBoxmonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing, BOOL sp14) {
     BOOL decry = AcquireBoxMonLock(boxMon);
     u16 species = GetBoxMonData(boxMon, MON_DATA_SPECIES_OR_EGG, NULL);
     u8 gender = GetBoxMonGender(boxMon);
@@ -2176,103 +2176,103 @@ void GetBoxmonSpriteCharAndPlttNarcIds(struct SomeDrawPokemonStruct *spC, BoxPok
         form = GetBoxMonData(boxMon, MON_DATA_FORM, NULL);
     }
     if (sp14 == TRUE) {
-        DP_GetMonSpriteCharAndPlttNarcIdsEx(spC, species, gender, whichFacing, shiny, form, pid);
+        DP_GetMonSpriteCharAndPlttNarcIdsEx(pokepicTemplate, species, gender, whichFacing, shiny, form, pid);
     } else {
-        GetMonSpriteCharAndPlttNarcIdsEx(spC, species, gender, whichFacing, shiny, form, pid);
+        GetMonSpriteCharAndPlttNarcIdsEx(pokepicTemplate, species, gender, whichFacing, shiny, form, pid);
     }
     ReleaseBoxMonLock(boxMon, decry);
 }
 
-void GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct * spC, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 personality) {
-    spC->unk6 = 0;
-    spC->unk8 = 0;
-    spC->unkC = 0;
+void GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 personality) {
+    pokepicTemplate->species = SPECIES_NONE;
+    pokepicTemplate->isAnimated = FALSE;
+    pokepicTemplate->personality = 0;
     form = sub_02070438(species, form);
     switch (species) {
     case SPECIES_BURMY:
-        spC->narcID = NARC_poketool_pokegra_otherpoke;
-        spC->charDataID = (u16)(whichFacing / 2 + 0x48 + form * 2);
-        spC->palDataID = (u16)(shiny + 0xAA + form * 2);
+        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
+        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x48 + form * 2);
+        pokepicTemplate->palDataID = (u16)(shiny + 0xAA + form * 2);
         break;
     case SPECIES_WORMADAM:
-        spC->narcID = NARC_poketool_pokegra_otherpoke;
-        spC->charDataID = (u16)(whichFacing / 2 + 0x4E + form * 2);
-        spC->palDataID = (u16)(shiny + 0xB0 + form * 2);
+        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
+        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x4E + form * 2);
+        pokepicTemplate->palDataID = (u16)(shiny + 0xB0 + form * 2);
         break;
     case SPECIES_SHELLOS:
-        spC->narcID = NARC_poketool_pokegra_otherpoke;
-        spC->charDataID = (u16)(whichFacing + 0x54 + form);
-        spC->palDataID = (u16)(shiny + 0xB6 + form * 2);
+        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
+        pokepicTemplate->charDataID = (u16)(whichFacing + 0x54 + form);
+        pokepicTemplate->palDataID = (u16)(shiny + 0xB6 + form * 2);
         break;
     case SPECIES_GASTRODON:
-        spC->narcID = NARC_poketool_pokegra_otherpoke;
-        spC->charDataID = (u16)(whichFacing + 0x58 + form);
-        spC->palDataID = (u16)(shiny + 0xBA + form * 2);
+        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
+        pokepicTemplate->charDataID = (u16)(whichFacing + 0x58 + form);
+        pokepicTemplate->palDataID = (u16)(shiny + 0xBA + form * 2);
         break;
     case SPECIES_CHERRIM:
-        spC->narcID = NARC_poketool_pokegra_otherpoke;
-        spC->charDataID = (u16)(whichFacing + 0x5C + form);
-        spC->palDataID = (u16)(shiny * 2 + 0xBE + form);
+        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
+        pokepicTemplate->charDataID = (u16)(whichFacing + 0x5C + form);
+        pokepicTemplate->palDataID = (u16)(shiny * 2 + 0xBE + form);
         break;
     case SPECIES_ARCEUS:
-        spC->narcID = NARC_poketool_pokegra_otherpoke;
-        spC->charDataID = (u16)(whichFacing / 2 + 0x60 + form * 2);
-        spC->palDataID = (u16)(shiny + 0xC2 + form * 2);
+        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
+        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x60 + form * 2);
+        pokepicTemplate->palDataID = (u16)(shiny + 0xC2 + form * 2);
         break;
     case SPECIES_CASTFORM:
-        spC->narcID = NARC_poketool_pokegra_otherpoke;
-        spC->charDataID = (u16)(whichFacing * 2 + 0x40 + form);
-        spC->palDataID = (u16)(shiny * 4 + 0xA2 + form);
+        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
+        pokepicTemplate->charDataID = (u16)(whichFacing * 2 + 0x40 + form);
+        pokepicTemplate->palDataID = (u16)(shiny * 4 + 0xA2 + form);
         break;
     case SPECIES_DEOXYS:
-        spC->narcID = NARC_poketool_pokegra_otherpoke;
-        spC->charDataID = (u16)(whichFacing / 2 + form * 2);
-        spC->palDataID = (u16)(shiny + 0x9E);
+        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
+        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + form * 2);
+        pokepicTemplate->palDataID = (u16)(shiny + 0x9E);
         break;
     case SPECIES_UNOWN:
-        spC->narcID = NARC_poketool_pokegra_otherpoke;
-        spC->charDataID = (u16)(whichFacing / 2 + 0x8 + form * 2);
-        spC->palDataID = (u16)(shiny + 0xA0);
+        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
+        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x8 + form * 2);
+        pokepicTemplate->palDataID = (u16)(shiny + 0xA0);
         break;
     case SPECIES_EGG: // egg, manaphy egg
-        spC->narcID = NARC_poketool_pokegra_otherpoke;
-        spC->charDataID = (u16)(0x84 + form);
-        spC->palDataID = (u16)(0xE6 + form);
+        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
+        pokepicTemplate->charDataID = (u16)(0x84 + form);
+        pokepicTemplate->palDataID = (u16)(0xE6 + form);
         break;
     case SPECIES_MANAPHY_EGG: // bad egg
-        spC->narcID = NARC_poketool_pokegra_otherpoke;
-        spC->charDataID = 0x84;
-        spC->palDataID = 0xE6;
+        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
+        pokepicTemplate->charDataID = 0x84;
+        pokepicTemplate->palDataID = 0xE6;
         break;
     case SPECIES_SHAYMIN: // land, sky
-        spC->narcID = NARC_poketool_pokegra_otherpoke;
-        spC->charDataID = (u16)(whichFacing / 2 + 0x86 + form * 2);
-        spC->palDataID = (u16)(shiny + 0xE8 + form * 2);
+        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
+        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x86 + form * 2);
+        pokepicTemplate->palDataID = (u16)(shiny + 0xE8 + form * 2);
         break;
     case SPECIES_ROTOM: // normal, fan, mow, wash, heat, frost
-        spC->narcID = NARC_poketool_pokegra_otherpoke;
-        spC->charDataID = (u16)(whichFacing / 2 + 0x8A + form * 2);
-        spC->palDataID = (u16)(shiny + 0xEC + form * 2);
+        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
+        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x8A + form * 2);
+        pokepicTemplate->palDataID = (u16)(shiny + 0xEC + form * 2);
         break;
     case SPECIES_GIRATINA: // altered, origin
-        spC->narcID = NARC_poketool_pokegra_otherpoke;
-        spC->charDataID = (u16)(whichFacing / 2 + 0x96 + form * 2);
-        spC->palDataID = (u16)(shiny + 0xF8 + form * 2);
+        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
+        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x96 + form * 2);
+        pokepicTemplate->palDataID = (u16)(shiny + 0xF8 + form * 2);
         break;
     case SPECIES_PICHU: // spiky-ear
-        spC->narcID = NARC_poketool_pokegra_otherpoke;
-        spC->charDataID = (u16)(whichFacing / 2 + 0x9A + form * 2);
-        spC->palDataID = (u16)(shiny + 0xFC + form * 2);
+        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
+        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x9A + form * 2);
+        pokepicTemplate->palDataID = (u16)(shiny + 0xFC + form * 2);
         break;
     default:
-        spC->narcID = NARC_poketool_pokegra_pokegra;
-        spC->charDataID = (u16)(species * 6 + whichFacing + (gender == MON_FEMALE ? 0 : 1));
-        spC->palDataID = (u16)(shiny + (species * 6 + 4));
-        if (species == SPECIES_SPINDA && whichFacing == 2)
+        pokepicTemplate->narcID = NARC_poketool_pokegra_pokegra;
+        pokepicTemplate->charDataID = (u16)(species * 6 + whichFacing + (gender == MON_FEMALE ? 0 : 1));
+        pokepicTemplate->palDataID = (u16)(shiny + (species * 6 + 4));
+        if (species == SPECIES_SPINDA && whichFacing == MON_PIC_FACING_FRONT)
         {
-            spC->unk6 = SPECIES_SPINDA;
-            spC->unk8 = 0;
-            spC->unkC = personality;
+            pokepicTemplate->species = SPECIES_SPINDA;
+            pokepicTemplate->isAnimated = FALSE;
+            pokepicTemplate->personality = personality;
         }
         break;
     }
@@ -2354,116 +2354,116 @@ u8 sub_02070438(u16 species, u8 form) {
     return form;
 }
 
-void sub_02070560(struct SomeDrawPokemonStruct * spC, u16 species, u8 whichFacing, u8 gender, u32 shiny) {
-    spC->narcID = NARC_pbr_pokegra;
-    spC->charDataID = (u16)(species * 6 + whichFacing + (gender == MON_FEMALE ? 0 : 1));
-    spC->palDataID = (u16)(shiny + (species * 6 + 4));
+void sub_02070560(PokepicTemplate *pokepicTemplate, u16 species, u8 whichFacing, u8 gender, u32 shiny) {
+    pokepicTemplate->narcID = NARC_pbr_pokegra;
+    pokepicTemplate->charDataID = (u16)(species * 6 + whichFacing + (gender == MON_FEMALE ? 0 : 1));
+    pokepicTemplate->palDataID = (u16)(shiny + (species * 6 + 4));
 }
 
-void DP_GetMonSpriteCharAndPlttNarcIdsEx(struct SomeDrawPokemonStruct * spC, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 personality) {
-    spC->unk6 = 0;
-    spC->unk8 = 0;
-    spC->unkC = 0;
+void DP_GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 personality) {
+    pokepicTemplate->species = SPECIES_NONE;
+    pokepicTemplate->isAnimated = FALSE;
+    pokepicTemplate->personality = 0;
     form = sub_02070438(species, form);
     switch (species) {
     case SPECIES_BURMY:
-        spC->narcID = NARC_pbr_otherpoke;
-        spC->charDataID = (u16)(whichFacing / 2 + 0x48 + form * 2);
-        spC->palDataID = (u16)(shiny + 0x92 + form * 2);
+        pokepicTemplate->narcID = NARC_pbr_otherpoke;
+        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x48 + form * 2);
+        pokepicTemplate->palDataID = (u16)(shiny + 0x92 + form * 2);
         break;
     case SPECIES_WORMADAM:
-        spC->narcID = NARC_pbr_otherpoke;
-        spC->charDataID = (u16)(whichFacing / 2 + 0x4E + form * 2);
-        spC->palDataID = (u16)(shiny + 0x98 + form * 2);
+        pokepicTemplate->narcID = NARC_pbr_otherpoke;
+        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x4E + form * 2);
+        pokepicTemplate->palDataID = (u16)(shiny + 0x98 + form * 2);
         break;
     case SPECIES_SHELLOS:
-        spC->narcID = NARC_pbr_otherpoke;
-        spC->charDataID = (u16)(whichFacing + 0x54 + form);
-        spC->palDataID = (u16)(shiny + 0x9E + form * 2);
+        pokepicTemplate->narcID = NARC_pbr_otherpoke;
+        pokepicTemplate->charDataID = (u16)(whichFacing + 0x54 + form);
+        pokepicTemplate->palDataID = (u16)(shiny + 0x9E + form * 2);
         break;
     case SPECIES_GASTRODON:
-        spC->narcID = NARC_pbr_otherpoke;
-        spC->charDataID = (u16)(whichFacing + 0x58 + form);
-        spC->palDataID = (u16)(shiny + 0xA2 + form * 2);
+        pokepicTemplate->narcID = NARC_pbr_otherpoke;
+        pokepicTemplate->charDataID = (u16)(whichFacing + 0x58 + form);
+        pokepicTemplate->palDataID = (u16)(shiny + 0xA2 + form * 2);
         break;
     case SPECIES_CHERRIM:
-        spC->narcID = NARC_pbr_otherpoke;
-        spC->charDataID = (u16)(whichFacing + 0x5C + form);
-        spC->palDataID = (u16)(shiny * 2 + 0xA6 + form);
+        pokepicTemplate->narcID = NARC_pbr_otherpoke;
+        pokepicTemplate->charDataID = (u16)(whichFacing + 0x5C + form);
+        pokepicTemplate->palDataID = (u16)(shiny * 2 + 0xA6 + form);
         break;
     case SPECIES_ARCEUS:
-        spC->narcID = NARC_pbr_otherpoke;
-        spC->charDataID = (u16)(whichFacing / 2 + 0x60 + form * 2);
-        spC->palDataID = (u16)(shiny + 0xAA + form * 2);
+        pokepicTemplate->narcID = NARC_pbr_otherpoke;
+        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x60 + form * 2);
+        pokepicTemplate->palDataID = (u16)(shiny + 0xAA + form * 2);
         break;
     case SPECIES_CASTFORM:
-        spC->narcID = NARC_pbr_otherpoke;
-        spC->charDataID = (u16)(whichFacing * 2 + 0x40 + form);
-        spC->palDataID = (u16)(shiny * 4 + 0x8A + form);
+        pokepicTemplate->narcID = NARC_pbr_otherpoke;
+        pokepicTemplate->charDataID = (u16)(whichFacing * 2 + 0x40 + form);
+        pokepicTemplate->palDataID = (u16)(shiny * 4 + 0x8A + form);
         break;
     case SPECIES_DEOXYS:
-        spC->narcID = NARC_pbr_otherpoke;
-        spC->charDataID = (u16)(whichFacing / 2 + form * 2);
-        spC->palDataID = (u16)(shiny + 0x86);
+        pokepicTemplate->narcID = NARC_pbr_otherpoke;
+        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + form * 2);
+        pokepicTemplate->palDataID = (u16)(shiny + 0x86);
         break;
     case SPECIES_UNOWN:
-        spC->narcID = NARC_pbr_otherpoke;
-        spC->charDataID = (u16)(whichFacing / 2 + 0x8 + form * 2);
-        spC->palDataID = (u16)(shiny + 0x88);
+        pokepicTemplate->narcID = NARC_pbr_otherpoke;
+        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x8 + form * 2);
+        pokepicTemplate->palDataID = (u16)(shiny + 0x88);
         break;
     case SPECIES_EGG: // egg, manaphy egg
-        spC->narcID = NARC_pbr_otherpoke;
-        spC->charDataID = (u16)(0x84 + form);
-        spC->palDataID = (u16)(0xCE + form);
+        pokepicTemplate->narcID = NARC_pbr_otherpoke;
+        pokepicTemplate->charDataID = (u16)(0x84 + form);
+        pokepicTemplate->palDataID = (u16)(0xCE + form);
         break;
     case SPECIES_MANAPHY_EGG: // bad egg
-        spC->narcID = NARC_pbr_otherpoke;
-        spC->charDataID = 0x84;
-        spC->palDataID = 0xCE;
+        pokepicTemplate->narcID = NARC_pbr_otherpoke;
+        pokepicTemplate->charDataID = 0x84;
+        pokepicTemplate->palDataID = 0xCE;
         break;
     case SPECIES_SHAYMIN: // land, sky
         if (form != 0) {
-            spC->narcID = NARC_poketool_pokegra_otherpoke;
-            spC->charDataID = (u16)(whichFacing / 2 + 0x86 + form * 2);
-            spC->palDataID = (u16)(shiny + 0xEA);
+            pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
+            pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x86 + form * 2);
+            pokepicTemplate->palDataID = (u16)(shiny + 0xEA);
         } else {
-            sub_02070560(spC, species, whichFacing, gender, shiny);
+            sub_02070560(pokepicTemplate, species, whichFacing, gender, shiny);
         }
         break;
     case SPECIES_ROTOM: // normal, fan, mow, wash, heat, frost
         if (form != 0) {
-            spC->narcID = NARC_poketool_pokegra_otherpoke;
-            spC->charDataID = (u16)(whichFacing / 2 + 0x8A + form * 2);
-            spC->palDataID = (u16)(shiny + 0xEC + form * 2);
+            pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
+            pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x8A + form * 2);
+            pokepicTemplate->palDataID = (u16)(shiny + 0xEC + form * 2);
         } else {
-            sub_02070560(spC, species, whichFacing, gender, shiny);
+            sub_02070560(pokepicTemplate, species, whichFacing, gender, shiny);
         }
         break;
     case SPECIES_GIRATINA: // altered, origin
         if (form != 0) {
-            spC->narcID = NARC_poketool_pokegra_otherpoke;
-            spC->charDataID = (u16)(whichFacing / 2 + 0x96 + form * 2);
-            spC->palDataID = (u16)(shiny + 0xF8 + form * 2);
+            pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
+            pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x96 + form * 2);
+            pokepicTemplate->palDataID = (u16)(shiny + 0xF8 + form * 2);
         } else {
-            sub_02070560(spC, species, whichFacing, gender, shiny);
+            sub_02070560(pokepicTemplate, species, whichFacing, gender, shiny);
         }
         break;
     case SPECIES_PICHU: // spiky-ear
         if (form != 0) {
-            spC->narcID = NARC_poketool_pokegra_otherpoke;
-            spC->charDataID = (u16)(whichFacing / 2 + 0x9C);
-            spC->palDataID = (u16)(shiny + 0xFE);
+            pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
+            pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x9C);
+            pokepicTemplate->palDataID = (u16)(shiny + 0xFE);
         } else {
-            sub_02070560(spC, species, whichFacing, gender, shiny);
+            sub_02070560(pokepicTemplate, species, whichFacing, gender, shiny);
         }
         break;
     default:
-        sub_02070560(spC, species, whichFacing, gender, shiny);
-        if (species == SPECIES_SPINDA && whichFacing == 2)
+        sub_02070560(pokepicTemplate, species, whichFacing, gender, shiny);
+        if (species == SPECIES_SPINDA && whichFacing == MON_PIC_FACING_FRONT)
         {
-            spC->unk6 = SPECIES_SPINDA;
-            spC->unk8 = 0;
-            spC->unkC = personality;
+            pokepicTemplate->species = SPECIES_SPINDA;
+            pokepicTemplate->isAnimated = FALSE;
+            pokepicTemplate->personality = personality;
         }
         break;
     }
@@ -2492,18 +2492,13 @@ u8 sub_02070854(BoxPokemon *boxMon, u8 whichFacing, BOOL a2) {
         form = GetBoxMonData(boxMon, MON_DATA_FORM, NULL);
     }
     if (a2 == TRUE) {
-        return sub_02070A64(species, gender, whichFacing, form, pid);
+        return GetMonPicHeightBySpeciesGenderForm_PBR(species, gender, whichFacing, form, pid);
     } else {
-        return sub_020708D8(species, gender, whichFacing, form, pid);
+        return GetMonPicHeightBySpeciesGenderForm(species, gender, whichFacing, form, pid);
     }
 }
 
-u8 sub_020708D8(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid) {
-    // species -> r5
-    // gender -> r6
-    // whichFacing -> r4
-    // form -> <overwrittten>
-    // pid -> sp18
+u8 GetMonPicHeightBySpeciesGenderForm(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid) {
 #pragma unused(pid)
     NarcId narcId;
     s32 fileId;
@@ -2580,7 +2575,7 @@ u8 sub_020708D8(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid) {
     return ret;
 }
 
-u8 sub_02070A64(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid) {
+u8 GetMonPicHeightBySpeciesGenderForm_PBR(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid) {
     // species -> r5
     // gender -> r6
     // whichFacing -> r4
@@ -4189,11 +4184,11 @@ void RestoreBoxMonPP(BoxPokemon *boxMon) {
     ReleaseBoxMonLock(boxMon, decry);
 }
 
-void sub_02072914(NARC *narc, struct UnkStruct_02072914_sub *dest, u16 a2, u16 a3) {
+void NARC_ReadPokepicAnimScript(NARC *narc, PokepicAnimScript *dest, u16 species, u16 a3) {
     struct UnkStruct_02072914 sp4;
     int r5 = (a3 & 1 ? 0 : 1);
-    NARC_ReadFromMember(narc, 0, a2 * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &sp4);
-    MI_CpuCopy8(&sp4.unk0[r5].unk_3[0], dest, sizeof(struct UnkStruct_02072914_sub_sub) * 10);
+    NARC_ReadFromMember(narc, 0, species * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &sp4);
+    MI_CpuCopy8(&sp4.unk0[r5].unk_3[0], dest, sizeof(PokepicAnimScript) * 10);
 }
 
 void sub_0207294C(NARC *narc, void *a1, void *a2, u16 a3, int a4, int a5, int a6) {
@@ -4207,10 +4202,10 @@ void sub_0207294C(NARC *narc, void *a1, void *a2, u16 a3, int a4, int a5, int a6
     sub_02016F40(a1, a2, &sp4, a6);
 }
 
-void sub_020729A4(NARC *narc, u8 *ret, u16 a2, u16 a3) {
+void sub_020729A4(NARC *narc, u8 *ret, u16 species, u16 isFrontpic) {
     struct UnkStruct_02072914 sp4;
-    int r5 = (a3 & 1 ? 0 : 1);
-    NARC_ReadFromMember(narc, 0, a2 * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &sp4);
+    int r5 = (isFrontpic & 1 ? 0 : 1);
+    NARC_ReadFromMember(narc, 0, species * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &sp4);
     *ret = sp4.unk0[r5].unk_0;
 }
 

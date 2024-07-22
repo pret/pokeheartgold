@@ -40,7 +40,7 @@
 .public SpriteRenderer_LoadAnimResObjFromOpenNarc
 .public SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 .public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public UnkImageStruct_SetSpriteAnimActiveFlag
 .public sub_0200DC8C
@@ -94,7 +94,7 @@
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_DisableEngineBPlanes
 .public GfGfx_EngineBTogglePlanes
-.public sub_02024B1C
+.public Sprite_GetImageProxy
 .public Sprite_GetVramType
 .public System_GetTouchNew
 .public GF_AssertFail

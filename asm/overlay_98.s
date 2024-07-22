@@ -119,7 +119,7 @@ _0221E69E:
 	ldr r0, [r5]
 	cmp r0, #0
 	beq _0221E6AC
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0
 	str r0, [r5]
 _0221E6AC:
@@ -565,7 +565,7 @@ ov98_0221E9FC: ; 0x0221E9FC
 	bl Sprite_GetVramType
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	add r1, r4, #0
 	bl NNS_G2dGetImageLocation
 	add r5, r0, #0
@@ -611,7 +611,7 @@ _0221EA5E:
 	mov r6, #5
 _0221EA62:
 	ldr r0, [r0]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	add r1, r5, #0
 	bl NNS_G2dGetImagePaletteLocation
 	add r5, r0, #0

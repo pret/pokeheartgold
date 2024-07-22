@@ -49,7 +49,7 @@ _0064:
 	return
 scr_seq_0166_004:
 	end
-	scrcmd_375 0xFF
+	make_object_visible 0xFF
 	return
 scr_seq_0166_005:
 	simple_npc_msg msg_0043_00000
@@ -565,7 +565,7 @@ _0837:
 	goto _0837
 
 _084F:
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_TEMP_x4002, 255

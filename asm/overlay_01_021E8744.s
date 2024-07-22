@@ -324,6 +324,7 @@ _021E895E:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021E8894
 
+	// void ov01_021E8970(int a0, int a1, int a2, UnkStruct_FieldSysC0_SubC *a3, void *a4);
 	thumb_func_start ov01_021E8970
 ov01_021E8970: ; 0x021E8970
 	push {r4, r5, r6, r7, lr}

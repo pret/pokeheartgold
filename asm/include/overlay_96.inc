@@ -112,7 +112,7 @@
 .public SpriteRenderer_LoadResourcesAndCreateSprite
 .public SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 .public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public UnkImageStruct_TryChangeSpriteAnimSeqNo
 .public UnkImageStruct_GetSpriteCurrentAnimSeqNo
@@ -263,13 +263,13 @@
 .public Sprite_SetPalOffset
 .public Sprite_SetDrawPriority
 .public sub_02024B00
-.public sub_02024B1C
+.public Sprite_GetImageProxy
 .public sub_02024B20
-.public sub_02024B34
+.public Sprite_GetPaletteProxy
 .public Sprite_GetVramType
 .public Sprite_IsCellAnimationRunning
 .public sub_02024B78
-.public sub_02024CB8
+.public Sprite_GetCellAnim
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchHeld
 .public System_GetTouchNew
@@ -332,7 +332,7 @@
 .public OverworldModelLookupHasFemaleForm
 .public GetMonBaseStat
 .public GetMonSpriteCharAndPlttNarcIdsEx
-.public sub_020708D8
+.public GetMonPicHeightBySpeciesGenderForm
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx
 .public sub_02074490

@@ -80,7 +80,7 @@
 #include "unk_0202C034.h"
 #include "unk_0203A3B0.h"
 #include "unk_02067A80.h"
-#include "unk_020965A4.h"
+#include "frontier/frontier.h"
 #include "unk_02056680.h"
 #include "trainer_memo.h"
 #include "daycare.h"
@@ -101,6 +101,8 @@
 #include "constants/trainers.h"
 #include "render_window.h"
 #include "overlay_01_021F1AFC.h"
+#include "frontier/frontier.h"
+#include "field/legend_cutscene_camera.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
 FS_EXTERN_OVERLAY(npc_trade);
@@ -1787,7 +1789,7 @@ BOOL ScrNative_WaitApplication(ScriptContext *ctx) {
     }
 }
 
-BOOL ScrCmd_150(ScriptContext *ctx) {
+BOOL ScrCmd_RestoreOverworld(ScriptContext *ctx) {
     CallTask_RestoreOverworld(ctx->fieldSystem->taskman);
     return TRUE;
 }
@@ -3214,7 +3216,7 @@ BOOL ScrCmd_374(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_375(ScriptContext *ctx) {
+BOOL ScrCmd_MakeObjectVisible(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 objId = ScriptGetVar(ctx);
     LocalMapObject *object = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, objId);
@@ -4147,23 +4149,23 @@ BOOL ScrCmd_595(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_627(ScriptContext *ctx) {
-    struct UnkStruct_ScrCmd627 **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    FrontierLaunchParam **pParam = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     u8 r6 = ScriptReadByte(ctx);
-    struct UnkStruct_ScrCmd627 *work = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct UnkStruct_ScrCmd627));
-    MI_CpuClear8(work, sizeof(struct UnkStruct_ScrCmd627));
-    *p_work = work;
+    FrontierLaunchParam *param = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FrontierLaunchParam));
+    MI_CpuClear8(param, sizeof(FrontierLaunchParam));
+    *pParam = param;
     if (r6 == 5 || r6 == 6) {
-        work->unk_0 = ctx->fieldSystem->unkA0;
+        param->unk0 = ctx->fieldSystem->unkA0;
     } else {
-        work->unk_0 = NULL;
+        param->unk0 = NULL;
     }
-    work->options = Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->saveData);
-    work->unk_20 = r6;
-    work->saveData = ctx->fieldSystem->saveData;
-    work->mapId = ctx->fieldSystem->location->mapId;
-    work->unk_0C = ctx->fieldSystem->bagCursor;
-    work->unk_1C = ctx->fieldSystem->unkB0;
-    CallApplicationAsTask(ctx->taskman, &_02108584, work);
+    param->options = Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->saveData);
+    param->unk20 = r6;
+    param->saveData = ctx->fieldSystem->saveData;
+    param->mapId = ctx->fieldSystem->location->mapId;
+    param->bagCursor = ctx->fieldSystem->bagCursor;
+    param->unk1C = ctx->fieldSystem->unkB0;
+    CallApplicationAsTask(ctx->taskman, &gOverlayTemplate_Frontier, param);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
@@ -5154,81 +5156,82 @@ BOOL ScrCmd_TryHeadbuttEncounter(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_755(ScriptContext *ctx) {
-    ov02_02250A60(ctx->fieldSystem);
+BOOL ScrCmd_LegendCutsceneClearBellAnimBegin(ScriptContext *ctx) {
+    LegendCutscene_BeginClearBellAnim(ctx->fieldSystem);
     return FALSE;
 }
 
-BOOL ScrCmd_756(ScriptContext *ctx) {
-    ov02_02250AC8(ctx->fieldSystem);
+BOOL ScrCmd_LegendCutsceneClearBellAnimEnd(ScriptContext *ctx) {
+    LegendCutscene_EndClearBellAnim(ctx->fieldSystem);
     return FALSE;
 }
 
-BOOL ScrCmd_757(ScriptContext *ctx) {
-    ov02_02250AE8(ctx->fieldSystem);
+BOOL ScrCmd_LegendCutsceneClearBellRiseFromBag(ScriptContext *ctx) {
+    LegendCutscene_ClearBellRiseFromBag(ctx->fieldSystem);
     return FALSE;
 }
 
-BOOL ScrCmd_758(ScriptContext *ctx) {
-    u8 r1 = ScriptReadHalfword(ctx);
-    ov02_02250AFC(ctx->fieldSystem, r1);
+BOOL ScrCmd_LegendCutsceneClearBellShimmer(ScriptContext *ctx) {
+    u8 clearBellOnly = ScriptReadHalfword(ctx);
+    LegendCutscene_ClearBellShimmer(ctx->fieldSystem, clearBellOnly);
     return TRUE;
 }
 
-BOOL ScrCmd_759(ScriptContext *ctx) {
-    ov02_02250B80(ctx->fieldSystem);
+BOOL ScrCmd_LegendCutsceneLugiaEyeGlimmerEffect(ScriptContext *ctx) {
+    LegendCutscene_LugiaEyeGlimmerEffect(ctx->fieldSystem);
     return TRUE;
 }
 
+// Unreferenced
 BOOL ScrCmd_760(ScriptContext *ctx) {
     ov02_02250B30(ctx->fieldSystem);
     return TRUE;
 }
 
-BOOL ScrCmd_761(ScriptContext *ctx) {
-    u8 r1 = ScriptReadHalfword(ctx);
-    ov02_02251424(ctx->fieldSystem, r1);
+BOOL ScrCmd_LegendCutsceneMoveCameraTo(ScriptContext *ctx) {
+    u8 destIndex = ScriptReadHalfword(ctx);
+    LegendCutscene_MoveCamera(ctx->fieldSystem, destIndex);
     return FALSE;
 }
 
-BOOL ScrCmd_762(ScriptContext *ctx) {
-    u8 r1 = ScriptReadHalfword(ctx);
-    ov02_022514C8(ctx->fieldSystem, r1);
+BOOL ScrCmd_LegendCutscenePanCameraTo(ScriptContext *ctx) {
+    u8 destIndex = ScriptReadHalfword(ctx);
+    LegendCutscene_StartPanCameraTo(ctx->fieldSystem, destIndex);
     return FALSE;
 }
 
-BOOL ScrCmd_763(ScriptContext *ctx) {
-    ov02_02251554(ctx->fieldSystem);
+BOOL ScrCmd_LegendCutsceneWaitCameraPan(ScriptContext *ctx) {
+    LegendCutscene_WaitCameraPan(ctx->fieldSystem);
     return TRUE;
 }
 
-BOOL ScrCmd_764(ScriptContext *ctx) {
-    ov02_022515A4(ctx->fieldSystem);
+BOOL ScrCmd_LegendCutsceneBirdFinalApproach(ScriptContext *ctx) {
+    LegendCutscene_BirdFinalApproach(ctx->fieldSystem);
     return TRUE;
 }
 
-BOOL ScrCmd_765(ScriptContext *ctx) {
-    ov02_022518E0(ctx->fieldSystem);
+BOOL ScrCmd_LegendCutsceneWavesOrLeavesEffectBegin(ScriptContext *ctx) {
+    LegendCutscene_BeginWavesOrLeavesEffect(ctx->fieldSystem);
     return FALSE;
 }
 
-BOOL ScrCmd_766(ScriptContext *ctx) {
-    ov02_02251B14(ctx->fieldSystem);
+BOOL ScrCmd_LegendCutsceneWavesOrLeavesEffectEnd(ScriptContext *ctx) {
+    LegendCutscene_EndWavesOrLeavesEffect(ctx->fieldSystem);
     return FALSE;
 }
 
-BOOL ScrCmd_767(ScriptContext *ctx) {
-    ov02_02251CF0(ctx->fieldSystem);
+BOOL ScrCmd_LegendCutsceneLugiaArrivesEffectBegin(ScriptContext *ctx) {
+    LegendCutscene_BeginLugiaArrivesEffect(ctx->fieldSystem);
     return FALSE;
 }
 
-BOOL ScrCmd_768(ScriptContext *ctx) {
-    ov02_02251DC4(ctx->fieldSystem);
+BOOL ScrCmd_LegendCutsceneLugiaArrivesEffectEnd(ScriptContext *ctx) {
+    LegendCutscene_EndLugiaArrivesEffect(ctx->fieldSystem);
     return FALSE;
 }
 
-BOOL ScrCmd_769(ScriptContext *ctx) {
-    ov02_02251DE8(ctx->fieldSystem);
+BOOL ScrCmd_LegendCutsceneLugiaArrivesEffectCameraPan(ScriptContext *ctx) {
+    LegendCutscene_LugiaArrivesEffectCameraPan(ctx->fieldSystem);
     return TRUE;
 }
 

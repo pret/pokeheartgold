@@ -2253,7 +2253,7 @@ _021E6AB8:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _021E6AC6
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 _021E6AC6:
 	add r6, r6, #1
 	add r4, r4, #4

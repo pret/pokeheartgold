@@ -827,14 +827,14 @@
 	.short \arg1
 	.endm
 
-	.macro give_mon arg0, arg1, arg2, arg3, arg4, arg5
+	.macro give_mon species, level, heldItem, form, ability, retvar
 	.short 137
-	.short \arg0
-	.short \arg1
-	.short \arg2
-	.short \arg3
-	.short \arg4
-	.short \arg5
+	.short \species
+	.short \level
+	.short \heldItem
+	.short \form
+	.short \ability
+	.short \retvar
 	.endm
 
 	.macro give_egg arg0, arg1
@@ -906,7 +906,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_150
+	.macro restore_overworld
 	.short 150
 	.endm
 
@@ -2120,7 +2120,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_375 arg0
+	.macro make_object_visible arg0
 	.short 375
 	.short \arg0
 	.endm
@@ -4264,24 +4264,24 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_755
+	.macro legend_cutscene_clear_bell_anim_begin
 	.short 755
 	.endm
 
-	.macro scrcmd_756
+	.macro legend_cutscene_clear_bell_anim_end
 	.short 756
 	.endm
 
-	.macro scrcmd_757
+	.macro legend_cutscene_clear_bell_rise_from_bag
 	.short 757
 	.endm
 
-	.macro scrcmd_758 arg0
+	.macro legend_cutscene_clear_bell_shimmer arg0
 	.short 758
 	.short \arg0
 	.endm
 
-	.macro scrcmd_759
+	.macro legend_cutscene_lugia_eye_glimmer_effect
 	.short 759
 	.endm
 
@@ -4289,41 +4289,41 @@
 	.short 760
 	.endm
 
-	.macro scrcmd_761 arg0
+	.macro legend_cutscene_move_camera_to arg0
 	.short 761
 	.short \arg0
 	.endm
 
-	.macro scrcmd_762 arg0
+	.macro legend_cutscene_pan_camera_to arg0
 	.short 762
 	.short \arg0
 	.endm
 
-	.macro scrcmd_763
+	.macro legend_cutscene_wait_camera_pan
 	.short 763
 	.endm
 
-	.macro scrcmd_764
+	.macro legend_cutscene_bird_final_approach
 	.short 764
 	.endm
 
-	.macro scrcmd_765
+	.macro legend_cutscene_waves_or_leaves_effect_begin
 	.short 765
 	.endm
 
-	.macro scrcmd_766
+	.macro legend_cutscene_waves_or_leaves_effect_end
 	.short 766
 	.endm
 
-	.macro scrcmd_767
+	.macro legend_cutscene_lugia_arrives_effect_begin
 	.short 767
 	.endm
 
-	.macro scrcmd_768
+	.macro legend_cutscene_lugia_arrives_effect_end
 	.short 768
 	.endm
 
-	.macro scrcmd_769
+	.macro legend_cutscene_lugia_arrives_effect_camera_pan
 	.short 769
 	.endm
 

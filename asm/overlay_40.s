@@ -48,7 +48,7 @@ ov40_0222B6E0: ; 0x0222B6E0
 	bl GF_3DVramMan_Create
 	str r0, [r4, #0x60]
 	mov r0, #0x6d
-	bl sub_02007FD4
+	bl PokepicManager_Create
 	str r0, [r4, #0x64]
 	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r4, #0x28]
@@ -376,7 +376,7 @@ _0222BA4A:
 	ldr r0, [r5, #0x60]
 	bl GF_3DVramMan_Delete
 	ldr r0, [r5, #0x64]
-	bl sub_02008524
+	bl PokepicManager_Delete
 	add r0, r5, #0
 	bl ov40_0223D600
 	mov r0, #0
@@ -931,7 +931,7 @@ _0222BF0A:
 _0222BF0E:
 	bl Thunk_G3X_Reset
 	ldr r0, [r4, #0x64]
-	bl sub_02008120
+	bl PokepicManager_DrawAll
 	mov r0, #1
 	mov r1, #0
 	bl RequestSwap3DBuffers
@@ -2404,7 +2404,7 @@ _0222CA96:
 	add r5, r7, #0
 _0222CA9A:
 	ldr r0, [r5, r6]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2
@@ -3051,11 +3051,11 @@ ov40_0222CF94: ; 0x0222CF94
 	add r5, r0, r1
 _0222CF9C:
 	ldr r0, [r5]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r0, r5, #0
 	add r0, #0xc8
 	ldr r0, [r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, #0x28
 	cmp r4, #5
@@ -5683,7 +5683,7 @@ ov40_0222E4D4: ; 0x0222E4D4
 	ldr r0, [r4, #4]
 	cmp r0, #0
 	beq _0222E508
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0
 	str r0, [r4, #4]
 _0222E508:
@@ -5841,7 +5841,7 @@ ov40_0222E624: ; 0x0222E624
 	ldr r1, _0222E654 ; =0x0002869F
 	bl SpriteGfxHandler_UnloadAnimObjById
 	ldr r0, [r5, #8]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	pop {r3, r4, r5, pc}
 	nop
 _0222E654: .word 0x0002869F
@@ -8233,9 +8233,9 @@ ov40_0222F920: ; 0x0222F920
 	ldr r1, _0222F94C ; =0x00030D40
 	bl SpriteGfxHandler_UnloadAnimObjById
 	ldr r0, [r5, #0x2c]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r5, #0x30]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0222F94C: .word 0x00030D40
@@ -8302,9 +8302,9 @@ ov40_0222F9C0: ; 0x0222F9C0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4, #0x1c]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov40_0222F9C0
@@ -8609,7 +8609,7 @@ ov40_0222FBBC: ; 0x0222FBBC
 	mov r1, #1
 	str r1, [r4, r0]
 	ldr r0, [r4, #0x64]
-	bl sub_02009418
+	bl PokepicManager_HandleLoadImgAndOrPltt
 	ldr r0, [r4, #0x1c]
 	bl sub_0200D020
 	bl thunk_OamManager_ApplyAndResetBuffers
@@ -9071,7 +9071,7 @@ ov40_0222FF48: ; 0x0222FF48
 	add r1, r1, r2
 	bl SpriteGfxHandler_UnloadCharObjById
 	add r0, r4, #0
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 _0222FF5E:
 	pop {r4, pc}
 	.balign 4, 0
@@ -9084,7 +9084,7 @@ ov40_0222FF64: ; 0x0222FF64
 	cmp r2, #0
 	beq _0222FF70
 	add r0, r2, #0
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 _0222FF70:
 	pop {r3, pc}
 	.balign 4, 0
@@ -9935,7 +9935,7 @@ _02230670:
 	add r1, r4, r1
 	bl SpriteGfxHandler_UnloadCharObjById
 	ldr r0, [r5, #0xc]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	str r7, [r5, #0xc]
 _02230688:
 	add r4, r4, #1
@@ -10371,7 +10371,7 @@ ov40_022309CC: ; 0x022309CC
 	add r4, r0, #0
 	bl ov40_0222D6D0
 	ldr r0, [r4, #4]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	pop {r4, pc}
 	thumb_func_end ov40_022309CC
 
@@ -15328,7 +15328,7 @@ ov40_022330B8: ; 0x022330B8
 	mov r0, #0x57
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r0, r5, #0
 	bl ov40_0222D7DC
 	pop {r3, r4, r5, pc}
@@ -15494,10 +15494,10 @@ ov40_0223320C: ; 0x0223320C
 	add r0, r4, #0
 	add r0, #0xbc
 	ldr r0, [r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, #0x98
 	ldr r0, [r4]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r0, r5, #0
 	bl ov40_0222D7DC
 	pop {r3, r4, r5, pc}
@@ -16322,7 +16322,7 @@ _022338DE:
 	add r1, r4, r1
 	bl SpriteGfxHandler_UnloadPlttObjById
 	ldr r0, [r6, #0x54]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r6, r6, #4
 	cmp r4, #5
@@ -16343,7 +16343,7 @@ _022338DE:
 	add r4, r7, #0
 _02233924:
 	ldr r0, [r4, #0x40]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #5
@@ -16364,7 +16364,7 @@ _02233924:
 	add r4, r7, #0
 _02233956:
 	ldr r0, [r4, #0x68]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #5
@@ -16384,7 +16384,7 @@ _02233956:
 	mov r4, #0
 _02233986:
 	ldr r0, [r7, #0x7c]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r7, r7, #4
 	cmp r4, #5
@@ -20365,11 +20365,11 @@ ov40_02235B10: ; 0x02235B10
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0x6e
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r0, r5, #0
 	bl ov40_0222D7DC
 	pop {r3, r4, r5, pc}
@@ -23510,7 +23510,7 @@ _02237436:
 	mov r0, #0xad
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0xad
 	mov r1, #0
 	lsl r0, r0, #2
@@ -23595,7 +23595,7 @@ _022374D0:
 	mov r2, #2
 	lsr r3, r3, #0x18
 	str r6, [sp]
-	bl sub_020708D8
+	bl GetMonPicHeightBySpeciesGenderForm
 	ldr r0, [sp, #0x20]
 	ldr r2, [sp, #0x1c]
 	str r0, [sp]
@@ -23617,7 +23617,7 @@ _022374D0:
 	ldr r0, [r0, #0x64]
 	mov r2, #0x2a
 	mov r3, #0x5b
-	bl sub_020085EC
+	bl PokepicManager_CreatePokepic
 	mov r1, #0xcb
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -23643,7 +23643,7 @@ ov40_02237548: ; 0x02237548
 	cmp r0, #0
 	beq _02237562
 	mov r1, #6
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 _02237562:
 	pop {r3, pc}
 	thumb_func_end ov40_02237548
@@ -23659,7 +23659,7 @@ ov40_02237564: ; 0x02237564
 	ldr r0, [r1, r0]
 	cmp r0, #0
 	beq _0223757A
-	bl sub_02008780
+	bl Pokepic_Delete
 _0223757A:
 	pop {r3, pc}
 	thumb_func_end ov40_02237564
@@ -27921,10 +27921,10 @@ ov40_022398F8: ; 0x022398F8
 	add r0, r4, #0
 	add r0, #0xa8
 	ldr r0, [r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, #0xc4
 	ldr r0, [r4]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r0, r5, #0
 	bl ov40_0222D7DC
 	pop {r3, r4, r5, pc}
@@ -31178,7 +31178,7 @@ _0223B460:
 	add r0, r4, #0
 	bl ov40_0222D6D0
 	ldr r0, [r5, r7]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r6, r6, #1
 	add r4, #0x1c
 	add r5, #0x1c
@@ -31208,11 +31208,11 @@ ov40_0223B480: ; 0x0223B480
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0x4d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r0, r5, #0
 	bl ov40_0222D7DC
 	pop {r3, r4, r5, pc}
@@ -35144,11 +35144,11 @@ ov40_0223D504: ; 0x0223D504
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0x4d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r0, r5, #0
 	bl ov40_0222D7DC
 	pop {r3, r4, r5, pc}
@@ -42456,7 +42456,7 @@ _02241124:
 	add r0, r4, #0
 	bl ov40_0222D6D0
 	ldr r0, [r5, #0x14]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r6, r6, #1
 	add r4, #0x1c
 	add r5, #0x1c
@@ -44329,9 +44329,9 @@ ov40_02242084: ; 0x02242084
 	add r0, #0x2c
 	bl ov40_0222D6D0
 	ldr r0, [r5, #0x14]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r5, #0x30]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r0, r4, #0
 	bl ov40_0222D7DC
 	pop {r3, r4, r5, pc}
@@ -44500,9 +44500,9 @@ ov40_022421FC: ; 0x022421FC
 	add r0, #0x2c
 	bl ov40_0222D6D0
 	ldr r0, [r5, #0x14]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r5, #0x30]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r0, r4, #0
 	bl ov40_0222D7DC
 	pop {r3, r4, r5, pc}
@@ -47722,7 +47722,7 @@ ov40_02243B94: ; 0x02243B94
 	lsl r7, r7, #2
 _02243BAA:
 	ldr r0, [r5, #0xc]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r6, r7]
 	add r4, r4, #1
 	add r5, #0x1c
@@ -47735,7 +47735,7 @@ _02243BBA:
 	lsl r7, r7, #2
 _02243BC2:
 	ldr r0, [r4, r7]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r5, r5, #1
 	add r4, #0x1c
 	cmp r5, #2
@@ -47746,7 +47746,7 @@ _02243BC2:
 	lsl r7, r7, #2
 _02243BD8:
 	ldr r0, [r4, r7]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r5, r5, #1
 	add r4, #0x1c
 	cmp r5, #3

@@ -271,7 +271,7 @@ ov95_021E5B24: ; 0x021E5B24
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x3c]
-	bl sub_02009418
+	bl PokepicManager_HandleLoadImgAndOrPltt
 	bl GF_RunVramTransferTasks
 	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #8]
@@ -1094,11 +1094,11 @@ ov95_021E6184: ; 0x021E6184
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x74]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4, #0x78]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4, #0x7c]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	pop {r4, pc}
 	thumb_func_end ov95_021E6184
 
@@ -1212,7 +1212,7 @@ ov95_021E623C: ; 0x021E623C
 	add r1, sp, #0x14
 	lsr r2, r2, #0x10
 	mov r3, #1
-	bl sub_02072914
+	bl NARC_ReadPokepicAnimScript
 	mov r1, #0
 	str r1, [sp]
 	add r7, #0x60
@@ -1224,7 +1224,7 @@ ov95_021E623C: ; 0x021E623C
 	add r1, sp, #0x3c
 	mov r2, #0x80
 	add r3, r7, #0
-	bl sub_020085EC
+	bl PokepicManager_CreatePokepic
 	str r0, [r5, #0x70]
 	add sp, #0x4c
 	pop {r4, r5, r6, r7, pc}
@@ -1247,7 +1247,7 @@ ov95_021E62A4: ; 0x021E62A4
 	bl GetMonNature
 	ldr r0, [r5, #0x70]
 	mov r1, #1
-	bl sub_02008550
+	bl Pokepic_StartAnim
 	mov r0, #2
 	str r0, [sp]
 	mov r0, #0
@@ -1265,22 +1265,22 @@ ov95_021E62A4: ; 0x021E62A4
 
 	thumb_func_start ov95_021E62E4
 ov95_021E62E4: ; 0x021E62E4
-	ldr r3, _021E62EC ; =sub_02008780
+	ldr r3, _021E62EC ; =Pokepic_Delete
 	ldr r0, [r0, #0x70]
 	bx r3
 	nop
-_021E62EC: .word sub_02008780
+_021E62EC: .word Pokepic_Delete
 	thumb_func_end ov95_021E62E4
 
 	thumb_func_start ov95_021E62F0
 ov95_021E62F0: ; 0x021E62F0
-	ldr r3, _021E62FC ; =sub_020087A4
+	ldr r3, _021E62FC ; =Pokepic_SetAttr
 	add r2, r1, #0
 	ldr r0, [r0, #0x70]
 	mov r1, #6
 	bx r3
 	nop
-_021E62FC: .word sub_020087A4
+_021E62FC: .word Pokepic_SetAttr
 	thumb_func_end ov95_021E62F0
 
 	thumb_func_start ov95_021E6300
@@ -1522,7 +1522,7 @@ _021E64D4:
 	cmp r0, #1
 	bne _021E6586
 	ldr r0, [r4, #0x70]
-	bl sub_020085DC
+	bl Pokepic_IsAnimFinished
 	cmp r0, #0
 	bne _021E6586
 	add r0, r4, #0
@@ -1803,7 +1803,7 @@ _021E6726:
 	cmp r0, #1
 	bne _021E67D8
 	ldr r0, [r4, #0x70]
-	bl sub_020085DC
+	bl Pokepic_IsAnimFinished
 	cmp r0, #0
 	bne _021E67D8
 	add r0, r4, #0
@@ -2179,7 +2179,7 @@ _021E69FA:
 	bl PaletteData_BeginPaletteFade
 	ldr r0, [r4, #0x78]
 	ldr r0, [r0]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #1
 	bl sub_02022808
 	add r5, r0, #0
@@ -2203,7 +2203,7 @@ _021E69FA:
 	ldr r0, [r4, #0x70]
 	mov r2, #0x10
 	add r3, r1, #0
-	bl sub_020090B4
+	bl Pokepic_StartPaletteFade
 	ldr r0, [r4, #0x68]
 	add r0, r0, #1
 	str r0, [r4, #0x68]
@@ -2253,7 +2253,7 @@ _021E6AA0:
 	cmp r5, #2
 	bne _021E6B64
 	ldr r0, [r4, #0x70]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _021E6B64
 	mov r0, #2
@@ -2288,7 +2288,7 @@ _021E6AE8:
 	ldr r0, [r4, #0x70]
 	mov r1, #0x10
 	add r3, r2, #0
-	bl sub_020090B4
+	bl Pokepic_StartPaletteFade
 	mov r0, #0x10
 	str r0, [sp]
 	mov r3, #0
@@ -2317,7 +2317,7 @@ _021E6B34:
 	cmp r0, #0
 	bne _021E6B64
 	ldr r0, [r4, #0x70]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _021E6B64
 	ldr r0, [r4, #0x68]
@@ -2425,7 +2425,7 @@ _021E6BFA:
 	bl PaletteData_BeginPaletteFade
 	ldr r0, [r4, #0x78]
 	ldr r0, [r0]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #1
 	bl sub_02022808
 	add r5, r0, #0
@@ -2449,7 +2449,7 @@ _021E6BFA:
 	ldr r0, [r4, #0x70]
 	mov r2, #0x10
 	add r3, r1, #0
-	bl sub_020090B4
+	bl Pokepic_StartPaletteFade
 	ldr r0, [r4, #0x68]
 	add r0, r0, #1
 	str r0, [r4, #0x68]
@@ -2499,7 +2499,7 @@ _021E6CA0:
 	cmp r5, #2
 	bne _021E6D5A
 	ldr r0, [r4, #0x70]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _021E6D5A
 	add r0, r4, #0
@@ -2534,7 +2534,7 @@ _021E6CE8:
 	ldr r0, [r4, #0x70]
 	mov r1, #0x10
 	add r3, r2, #0
-	bl sub_020090B4
+	bl Pokepic_StartPaletteFade
 	mov r0, #0x10
 	str r0, [sp]
 	mov r3, #0
@@ -2563,7 +2563,7 @@ _021E6D34:
 	cmp r0, #0
 	bne _021E6D5A
 	ldr r0, [r4, #0x70]
-	bl sub_02009138
+	bl Pokepic_ResumePaletteFade
 	cmp r0, #0
 	bne _021E6D5A
 	ldr r0, [r4, #0x68]
@@ -2622,7 +2622,7 @@ ov95_021E6D70: ; 0x021E6D70
 	bl ov95_021E5954
 	str r0, [r4, #0x38]
 	mov r0, #0x46
-	bl sub_02007FD4
+	bl PokepicManager_Create
 	str r0, [r4, #0x3c]
 	mov r0, #0xb4
 	mov r1, #0x46
@@ -2754,7 +2754,7 @@ _021E6EDC:
 	b _021E6F04
 _021E6EEC:
 	ldr r0, [r5, #0x3c]
-	bl sub_02008120
+	bl PokepicManager_DrawAll
 	bl ov95_021E5B58
 	b _021E6F04
 _021E6EF8:
@@ -2819,7 +2819,7 @@ ov95_021E6F0C: ; 0x021E6F0C
 	bl FreeToHeap
 	bl GF_DestroyVramTransferManager
 	ldr r0, [r4, #0x3c]
-	bl sub_02008524
+	bl PokepicManager_Delete
 	ldr r0, [r4, #0x58]
 	bl sub_02016F2C
 	ldr r0, [r4, #0x40]
@@ -3369,11 +3369,11 @@ _021E7400: .word ov95_021E782C
 
 	thumb_func_start ov95_021E7404
 ov95_021E7404: ; 0x021E7404
-	ldr r3, _021E740C ; =sub_0200D9DC
+	ldr r3, _021E740C ; =UnkImageStruct_Delete
 	ldr r0, [r0, #0x10]
 	bx r3
 	nop
-_021E740C: .word sub_0200D9DC
+_021E740C: .word UnkImageStruct_Delete
 	thumb_func_end ov95_021E7404
 
 	thumb_func_start ov95_021E7410

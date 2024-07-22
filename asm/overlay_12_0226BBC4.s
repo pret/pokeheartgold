@@ -148,7 +148,7 @@ ov12_0226BCE4: ; 0x0226BCE4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4, #4]
 	bl SysTask_Destroy
 	add r0, r4, #0

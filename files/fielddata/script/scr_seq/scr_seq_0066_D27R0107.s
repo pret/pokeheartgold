@@ -18,7 +18,7 @@ scr_seq_D27R0107_003:
 
 scr_seq_D27R0107_004:
 	goto_if_set FLAG_UNK_1D8, _002D
-	scrcmd_375 obj_D27R0107_stop
+	make_object_visible obj_D27R0107_stop
 _002D:
 	end
 

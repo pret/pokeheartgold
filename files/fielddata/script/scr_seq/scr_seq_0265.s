@@ -289,7 +289,7 @@ _0374:
 	end
 
 _038B:
-	scrcmd_150
+	restore_overworld
 	show_money_box 20, 2
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade

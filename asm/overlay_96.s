@@ -13149,7 +13149,7 @@ _021EBA1C:
 	add r0, r7, #0
 	bl ov96_021EAA20
 	bl ov96_021E8BAC
-	bl sub_02024CB8
+	bl Sprite_GetCellAnim
 	lsl r1, r5, #0xc
 	str r1, [r0, #0x10]
 	ldr r0, [sp, #0x10]
@@ -14508,7 +14508,7 @@ _021EC524:
 	ldr r0, [r5, #0x20]
 	cmp r0, #0
 	beq _021EC534
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	str r7, [r5, #0x20]
 _021EC534:
 	add r0, r4, #1
@@ -15864,7 +15864,7 @@ _021ECF54:
 	and r0, r1
 	str r0, [r5, #0x14]
 	ldr r0, [r5]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r0, r6, #0
 	str r0, [r5]
 	b _021ECFCA
@@ -15927,7 +15927,7 @@ _021ED008:
 	asr r0, r0, #0xc
 	strh r0, [r1, #2]
 	ldr r0, [r5]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r3, #0x83
 	add r0, r4, #0
 	add r1, r7, #0
@@ -15994,7 +15994,7 @@ _021ED0AC:
 	ldr r0, [r5, #4]
 	cmp r0, #0
 	beq _021ED0B8
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	str r6, [r5, #4]
 _021ED0B8:
 	add r4, r4, #1
@@ -16370,7 +16370,7 @@ _021ED3AE:
 	add r0, r4, #0
 	bl ov96_021EAA20
 	bl ov96_021E8BAC
-	bl sub_02024CB8
+	bl Sprite_GetCellAnim
 	lsl r1, r6, #0xc
 	str r1, [r0, #0x10]
 	add r0, r4, #0
@@ -19486,7 +19486,7 @@ _021EEAEA:
 	mov r1, #0x20
 	bl DC_FlushRange
 	add r0, r6, #0
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	add r1, r7, #0
 	bl NNS_G2dGetImagePaletteLocation
 	add r1, r0, #0
@@ -19739,7 +19739,7 @@ ov96_021EED14: ; 0x021EED14
 	bl Sprite_GetVramType
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	add r1, r4, #0
 	bl NNS_G2dGetImageLocation
 	add r6, r0, #0
@@ -19794,7 +19794,7 @@ _021EED82:
 	mov r6, #5
 _021EED86:
 	ldr r0, [r0]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	add r1, r5, #0
 	bl NNS_G2dGetImagePaletteLocation
 	add r5, r0, #0
@@ -20329,7 +20329,7 @@ _021EF1DE:
 	ldr r0, [r4, #0x38]
 	cmp r0, #0
 	beq _021EF1EA
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	str r7, [r4, #0x38]
 _021EF1EA:
 	add r5, r5, #1
@@ -38844,7 +38844,7 @@ _021F84EC:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _021F8502
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r0, r5, r6
 	add r0, #0x9c
 	str r7, [r0]
@@ -39674,10 +39674,10 @@ ov96_021F8AFC: ; 0x021F8AFC
 	bl Sprite_GetVramType
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	str r0, [sp]
 	add r0, r7, #0
 	add r1, r6, #0
@@ -57309,7 +57309,7 @@ _022017F2:
 	ldrh r3, [r3, #2]
 	lsl r3, r3, #0x18
 	lsr r3, r3, #0x18
-	bl sub_020708D8
+	bl GetMonPicHeightBySpeciesGenderForm
 	lsl r1, r5, #0xc
 	str r1, [sp, #0x80]
 	mov r1, #0x5e
@@ -62031,7 +62031,7 @@ _02203E5E:
 	ldrb r1, [r6, #7]
 	lsl r3, r3, #0x18
 	lsr r3, r3, #0x18
-	bl sub_020708D8
+	bl GetMonPicHeightBySpeciesGenderForm
 	mov r1, #0x5e
 	lsl r1, r1, #2
 	add r0, r0, r1
@@ -73504,7 +73504,7 @@ _022099F8:
 	bl GF_AssertFail
 _02209A02:
 	ldr r0, [r5, #0x24]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2
@@ -74369,14 +74369,14 @@ _0220A0E8:
 	bl GF_AssertFail
 _0220A0F2:
 	ldr r0, [r6, #4]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r6, #8]
 	cmp r0, #0
 	bne _0220A102
 	bl GF_AssertFail
 _0220A102:
 	ldr r0, [r6, #8]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r4, #0
 	add r5, r6, #0
 _0220A10C:
@@ -74386,7 +74386,7 @@ _0220A10C:
 	bl GF_AssertFail
 _0220A116:
 	ldr r0, [r5, #0xc]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0x14
@@ -74400,7 +74400,7 @@ _0220A128:
 	bl GF_AssertFail
 _0220A132:
 	ldr r0, [r4, #0x5c]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #5
@@ -75256,9 +75256,9 @@ _0220A802:
 	bl GF_AssertFail
 _0220A80C:
 	ldr r0, [r6, #0xc]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r6, #0x10]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r7, #0x55
 	mov r4, #0
 	add r5, r6, #0
@@ -76189,9 +76189,9 @@ _0220AF44:
 	bl GF_AssertFail
 _0220AF4E:
 	ldr r0, [r4]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r4, #4]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -76518,7 +76518,7 @@ _0220B1BE:
 	bl GF_AssertFail
 _0220B1C8:
 	ldr r0, [r5]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, #0x14
 	cmp r4, #0x10
@@ -76931,7 +76931,7 @@ _0220B50E:
 	ldr r0, [r5, #0x10]
 	cmp r0, #0
 	beq _0220B518
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 _0220B518:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -77025,7 +77025,7 @@ _0220B58E:
 	beq _0220B628
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0]
-	bl sub_02024CB8
+	bl Sprite_GetCellAnim
 	add r6, r0, #0
 	bl NNS_G2dGetAnimCtrlCurrentElement
 	add r5, r0, #0
@@ -77442,7 +77442,7 @@ _0220B8B4:
 	ldr r0, [r5, #0x30]
 	cmp r0, #0
 	beq _0220B8BE
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 _0220B8BE:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -86893,7 +86893,7 @@ _022101D8:
 	bl GF_AssertFail
 _022101E2:
 	ldr r0, [r5, #0x3c]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r5, #0x44]
 	cmp r0, #0
 	beq _022101F2
@@ -86910,17 +86910,17 @@ _022101FE:
 	add r5, r6, #0
 _02210202:
 	ldr r0, [r5]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r5, #8]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2
 	blt _02210202
 	ldr r0, [r6, #0x10]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	ldr r0, [r6, #0x14]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r7, r7, #1
 	add r6, #0x1c
 	cmp r7, #2
@@ -87037,7 +87037,7 @@ _022102FC:
 	bl GF_AssertFail
 _02210306:
 	ldr r0, [r4, #0x68]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #0x1f
@@ -102065,7 +102065,7 @@ _022177F0:
 	bl GF_AssertFail
 _022177FA:
 	ldr r0, [r6, #0xc]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r7, #0
 	add r6, #0x10
 _02217804:
@@ -102073,7 +102073,7 @@ _02217804:
 	add r5, r6, #0
 _02217808:
 	ldr r0, [r5, #4]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #5
@@ -106042,7 +106042,7 @@ _0221962C:
 	bl GF_AssertFail
 _02219636:
 	ldr r0, [r4, #0x60]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #0x12

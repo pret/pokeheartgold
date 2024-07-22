@@ -61,7 +61,7 @@ BattleFinger *BattleFinger_New(SpriteRenderer *renderer, SpriteGfxHandler *gfxHa
 
 //BattleFinger_Delete
 void BattleFinger_Delete(BattleFinger *finger) {
-    sub_0200D9DC(finger->unk0);
+    UnkImageStruct_Delete(finger->unk0);
     SysTask_Destroy(finger->task);
     FreeToHeap(finger);
 }

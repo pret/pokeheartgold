@@ -32,7 +32,7 @@ scr_seq_T25R1201_001:
 	end
 
 _005B:
-	scrcmd_375 obj_player
+	make_object_visible obj_player
 	return
 
 scr_seq_T25R1201_002:
@@ -193,7 +193,7 @@ _024D:
 	call _00F5
 	apply_movement obj_player, _03AC
 	wait_movement
-	scrcmd_375 obj_player
+	make_object_visible obj_player
 	apply_movement obj_player, _03BC
 	wait_movement
 	call _00FD
@@ -206,7 +206,7 @@ _024D:
 	scrcmd_165 VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0314
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	call _00A7
@@ -214,7 +214,7 @@ _024D:
 	end
 
 _0314:
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	call _00A7

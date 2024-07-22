@@ -9263,7 +9263,7 @@ ov08_02220A50: ; 0x02220A50
 	add r5, r7, #0
 _02220A64:
 	ldr r0, [r5, r6]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0x26
@@ -15927,7 +15927,7 @@ ov08_02223F34: ; 0x02223F34
 	lsl r6, r6, #4
 _02223F4A:
 	ldr r0, [r5, r6]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #6

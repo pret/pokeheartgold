@@ -19,8 +19,8 @@
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public GfGfxLoader_GXLoadPalFromOpenNarc
-.public sub_020087A4
-.public sub_02009418
+.public Pokepic_SetAttr
+.public PokepicManager_HandleLoadImgAndOrPltt
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString

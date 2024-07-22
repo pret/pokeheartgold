@@ -951,7 +951,7 @@
       ]
     },
     {
-      "name": "scrcmd_150",
+      "name": "restore_overworld",
       "args": []
     },
     {
@@ -2280,7 +2280,7 @@
       ]
     },
     {
-      "name": "scrcmd_375",
+      "name": "make_object_visible",
       "args": [
         "object2"
       ]
@@ -4773,25 +4773,25 @@
       ]
     },
     {
-      "name": "scrcmd_755",
+      "name": "legend_cutscene_clear_bell_anim_begin",
       "args": []
     },
     {
-      "name": "scrcmd_756",
+      "name": "legend_cutscene_clear_bell_anim_end",
       "args": []
     },
     {
-      "name": "scrcmd_757",
+      "name": "legend_cutscene_clear_bell_rise_from_bag",
       "args": []
     },
     {
-      "name": "scrcmd_758",
+      "name": "legend_cutscene_clear_bell_shimmer",
       "args": [
         2
       ]
     },
     {
-      "name": "scrcmd_759",
+      "name": "legend_cutscene_lugia_eye_glimmer_effect",
       "args": []
     },
     {
@@ -4799,43 +4799,43 @@
       "args": []
     },
     {
-      "name": "scrcmd_761",
+      "name": "legend_cutscene_move_camera_to",
       "args": [
         2
       ]
     },
     {
-      "name": "scrcmd_762",
+      "name": "legend_cutscene_pan_camera_to",
       "args": [
         2
       ]
     },
     {
-      "name": "scrcmd_763",
+      "name": "legend_cutscene_wait_camera_pan",
       "args": []
     },
     {
-      "name": "scrcmd_764",
+      "name": "legend_cutscene_bird_final_approach",
       "args": []
     },
     {
-      "name": "scrcmd_765",
+      "name": "legend_cutscene_waves_or_leaves_effect_begin",
       "args": []
     },
     {
-      "name": "scrcmd_766",
+      "name": "legend_cutscene_waves_or_leaves_effect_end",
       "args": []
     },
     {
-      "name": "scrcmd_767",
+      "name": "legend_cutscene_lugia_arrives_effect_begin",
       "args": []
     },
     {
-      "name": "scrcmd_768",
+      "name": "legend_cutscene_lugia_arrives_effect_end",
       "args": []
     },
     {
-      "name": "scrcmd_769",
+      "name": "legend_cutscene_lugia_arrives_effect_camera_pan",
       "args": []
     },
     {

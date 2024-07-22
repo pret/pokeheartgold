@@ -612,7 +612,7 @@ static void CertificatesApp_FreeSpriteRenderer(CertificatesApp_Data *data) {
 
     for (int i = 0; i < (int)NELEMS(data->unk4C); i++) {
         GF_ASSERT(data->unk4C[i] != NULL);
-        sub_0200D9DC(data->unk4C[i]);
+        UnkImageStruct_Delete(data->unk4C[i]);
     }
 
     SpriteRenderer_UnloadResourcesAndRemoveGfxHandler(renderer, gfxHandler);
@@ -674,7 +674,7 @@ static void ov78_021E656C(Sprite *sprite, void *unkBuffer, u32 unkBufferSize, u3
 
     DC_FlushRange(unkBuffer, unkBufferSize);
 
-    NNSG2dImageProxy *proxy = sub_02024B1C(sprite);
+    NNSG2dImageProxy *proxy = Sprite_GetImageProxy(sprite);
     GX_LoadOBJ(unkBuffer, (u32)((void*)NNS_G2dGetImageLocation(proxy, NNS_G2D_VRAM_TYPE_2DMAIN) + srcOffset), unkBufferSize);
     GXS_LoadOBJ(unkBuffer, (u32)((void*)NNS_G2dGetImageLocation(proxy, NNS_G2D_VRAM_TYPE_2DSUB) + srcOffset), unkBufferSize);
 }
@@ -695,7 +695,7 @@ void ov78_021E65BC(Sprite *sprite, s32 narcMemberNum, u8 a2, HeapID heapId) {
     Sprite_GetVramType(sprite);
     address = NNS_G3dGetPlttData(tex);
     DC_FlushRange(address, 0x20);
-    sub_02024B34(sprite);
+    Sprite_GetPaletteProxy(sprite);
     GX_LoadOBJPltt(address, 0x40, 0x20);
     GXS_LoadOBJPltt(address, 0x40, 0x20);
 
@@ -766,7 +766,7 @@ static void ov78_021E66D4(Sprite *sprite, Pokemon *pokemon, HeapID heapId, u32 a
     }
 
     DC_FlushRange(pointer, 0x20);
-    sub_02024B34(sprite);
+    Sprite_GetPaletteProxy(sprite);
     GX_LoadOBJPltt(pointer, 0x60, 0x20);
     GXS_LoadOBJPltt(pointer, 0x60, 0x20);
 

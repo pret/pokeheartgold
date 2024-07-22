@@ -27,7 +27,7 @@
 .public ov80_022380A0
 .public BattleArcade_GetMonCount
 .public BattleArcade_GetOpponentMonCount
-.public ov80_02238150
+.public BattleArcade_NewBattleSetup
 .public ov80_02238370
 .public BattleArcade_MultiplayerCheck
 .public ov80_022383A8

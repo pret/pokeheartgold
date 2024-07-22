@@ -194,7 +194,7 @@ int Options::main_compile() {
             to_array<unsigned>(btaf, i * manifest.size() + manifest.size(0), 16 + 8 * i);
             if (naix_mode) {
                 char num_buf[10] = {0};
-                sprintf(num_buf, "%04d", i);
+                snprintf(num_buf, sizeof(num_buf), "%04d", i);
                 naixfile << "    NARC_" << guard_sub << "_" << num_buf << "_bin = " << i << "," << std::endl;
             }
         }

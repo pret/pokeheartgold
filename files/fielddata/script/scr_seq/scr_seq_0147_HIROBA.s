@@ -73,9 +73,9 @@ _00DB:
 	scrcmd_166 VAR_SPECIAL_RESULT
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	scrcmd_663 VAR_SPECIAL_x8004
-	scrcmd_150
+	restore_overworld
 	setvar VAR_UNK_4137, 1
-	scrcmd_375 obj_player
+	make_object_visible obj_player
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

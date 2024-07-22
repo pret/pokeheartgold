@@ -50,7 +50,7 @@
 .public SpriteRenderer_LoadResourcesAndCreateSprite
 .public sub_0200D934
 .public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public UnkImageStruct_SetSpriteVisibleFlag
 .public UnkImageStruct_SetSpritePalIndex

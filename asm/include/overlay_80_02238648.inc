@@ -37,7 +37,7 @@
 .public SpriteGfxHandler_UnloadCellObjById
 .public SpriteGfxHandler_UnloadAnimObjById
 .public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public UnkImageStruct_GetSpriteCurrentAnimSeqNo
@@ -91,7 +91,7 @@
 .public sub_0203A880
 .public sub_0203A914
 .public sub_02055198
-.public sub_02096808
+.public Frontier_GetLaunchParam
 .public sub_02096864
 .public sub_02096868
 .public sub_0209686C
@@ -147,8 +147,8 @@
 .public ov80_0222ACA0
 .public ov80_0222AD9C
 .public ov80_0222ADB4
-.public ov80_02238648
-.public ov80_0223885C
+.public FrontierMap_Init
+.public FrontierMap_Free
 .public ov80_022389C4
 .public ov80_02238A18
 .public ov80_0223947C

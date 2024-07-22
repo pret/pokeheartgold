@@ -6,7 +6,7 @@
 	.include "asm/macros.inc"
 	.include "unk_020968B0.inc"
 	.include "global.inc"
-	.public _02108584
+	.public gOverlayTemplate_Frontier
 
 	.text
 
@@ -47,12 +47,12 @@ sub_020968B0: ; 0x020968B0
 	add r0, r4, #0
 	add r0, #0x20
 	strb r1, [r0]
-	ldr r1, _0209690C ; =_02108584
+	ldr r1, _0209690C ; =gOverlayTemplate_Frontier
 	add r0, r5, #0
 	str r5, [r4, #0x24]
 	bl FieldSystem_LaunchApplication
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	nop
-_0209690C: .word _02108584
+_0209690C: .word gOverlayTemplate_Frontier
 	thumb_func_end sub_020968B0

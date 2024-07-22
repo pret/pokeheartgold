@@ -19,6 +19,7 @@
 #include "filesystem.h"
 #include "unk_02023694.h"
 #include "sys_task_api.h"
+#include "pokepic.h"
 #include "unk_0200CF18.h"
 #include "constants/battle.h"
 #include "constants/moves.h"
@@ -179,9 +180,9 @@ typedef struct UnkBattlemonSub {
     u32 embargoFlag:3;
     u32 knockOffFlag:1; //unclear whether true mean knocked off or not knocked off based on current information on its usage
     u32 metronomeTurns:4; //refers to the item, not the move
-    u32 micleBerryFlag:1; 
+    u32 micleBerryFlag:1;
     u32 custapBerryFlag:1;
-    u32 quickClawFlag:1; 
+    u32 quickClawFlag:1;
     u32 meFirstFlag:1;
     u32 unk4_2F:1; //unused
     int rechargeCount;
@@ -348,7 +349,7 @@ typedef struct BattleContext {
     SideConditionData fieldSideConditionData[2];
     TurnData turnData[4];
     SelfTurnData selfTurnData[4];
-    MoveFailFlags moveFail[4]; 
+    MoveFailFlags moveFail[4];
     TrainerAIData trainerAIData;
     u32 * unk_2134;
     u32 unk_2138;
@@ -481,7 +482,7 @@ typedef struct OpponentData {
     u32 unk0[6];
     u32 unk18;
     u32 *unk1C;
-    u32 *unk20;
+    Pokepic *pokepic;
     u32 *unk24;
     BattleHpBar hpBar;
     OpponentData_UnkSub_70 unk70;
@@ -539,7 +540,7 @@ struct BattleSystem {
     u32 battleType;
     BattleContext *ctx;
     OpponentData *opponentData[4];
-    int maxBattlers; 
+    int maxBattlers;
     PlayerProfile *playerProfile[4];
     Bag *bag;
     BagCursor *bagCursor;
@@ -589,8 +590,8 @@ struct BattleSystem {
     u8 unk23FC;
     u8 unk23FD;
     u8 unk23FE;
-    u8 unk240F_0:1; 
-    u8 unk240F_1:1; 
+    u8 unk240F_0:1;
+    u8 unk240F_1:1;
     u8 unk240E_F:1;
     u8 criticalHpMusic:2;
     u8 criticalHpMusicDelay:3;
@@ -622,9 +623,9 @@ struct BattleSystem {
     u16 unk2454[4];
     u16 unk245C[4];
     int unk2464[4];
-    u32 isRecordingPaused:1, 
-        unk2474_1:1, 
-        unk2474_2:1, 
+    u32 isRecordingPaused:1,
+        unk2474_1:1,
+        unk2474_2:1,
         unk2474_3:1,
         unk2474_4:28;
     u32 unk2478;
