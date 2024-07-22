@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_T28GYM0103_ice",
-      "ovid": "SPRITE_ICE",
-      "mvt": 15,
+      "sprite_id": "SPRITE_ICE",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_T28GYM0103_ice_2",
-      "ovid": "SPRITE_ICE",
-      "mvt": 15,
+      "sprite_id": "SPRITE_ICE",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,
@@ -55,8 +55,8 @@
     },
     {
       "id": "obj_T28GYM0103_sunglasses",
-      "ovid": "SPRITE_SUNGLASSES",
-      "mvt": 15,
+      "sprite_id": "SPRITE_SUNGLASSES",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T28GYM0103_000 + 1",

@@ -240,7 +240,7 @@ _02063456:
 	add r0, r2, r1
 	str r0, [sp, #0x10]
 	add r0, r5, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystem
 	add r6, r0, #0
 	add r0, r5, #0
 	bl MapObject_CheckFlag29
@@ -1626,7 +1626,7 @@ sub_02063E70: ; 0x02063E70
 	bl sub_0205F40C
 	add r4, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystem
 	add r1, r5, #0
 	bl sub_02055780
 	add r6, r0, #0
@@ -1640,7 +1640,7 @@ _02063E9C:
 	cmp r0, #0
 	bne _02063ECC
 	add r0, r5, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystem
 	add r1, r5, #0
 	bl FieldSystem_ApricornTree_TryGetApricorn
 	add r1, r6, #0
@@ -1648,7 +1648,7 @@ _02063E9C:
 	str r0, [r4]
 	ldr r1, [r4]
 	add r0, r5, #0
-	bl MapObject_SetGfxID
+	bl MapObject_SetSpriteID
 	add r1, r4, #0
 	ldr r2, [r4]
 	add r0, r5, #0
@@ -1665,7 +1665,7 @@ _02063ECC:
 	add r1, #8
 	bl ov01_021F95CC
 	add r0, r5, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystem
 	add r1, r5, #0
 	bl FieldSystem_ApricornTree_TryGetApricorn
 	add r1, r6, #0
@@ -1673,7 +1673,7 @@ _02063ECC:
 	str r0, [r4]
 	ldr r1, [r4]
 	add r0, r5, #0
-	bl MapObject_SetGfxID
+	bl MapObject_SetSpriteID
 	ldr r1, [r4]
 	ldr r0, _02063FE0 ; =0x0000FFFF
 	cmp r1, r0
@@ -2063,7 +2063,7 @@ CheckSeenByNpcTrainers: ; 0x020641EC
 	add r1, sp, #4
 	add r2, sp, #0xc
 	mov r3, #1
-	bl sub_0205EEF4
+	bl MapObjectManager_GetNextObjectWithFlagFromIndex
 	cmp r0, #0
 	beq _02064264
 _0206420E:
@@ -2104,7 +2104,7 @@ _02064254:
 	add r1, sp, #4
 	add r2, sp, #0xc
 	mov r3, #1
-	bl sub_0205EEF4
+	bl MapObjectManager_GetNextObjectWithFlagFromIndex
 	cmp r0, #0
 	bne _0206420E
 _02064264:
@@ -2499,7 +2499,7 @@ sub_02064520: ; 0x02064520
 	add r1, sp, #0
 	add r2, sp, #4
 	mov r3, #1
-	bl sub_0205EEF4
+	bl MapObjectManager_GetNextObjectWithFlagFromIndex
 	cmp r0, #0
 	beq _02064570
 	add r7, sp, #0
@@ -2523,7 +2523,7 @@ _02064560:
 	add r1, r7, #0
 	add r2, sp, #4
 	mov r3, #1
-	bl sub_0205EEF4
+	bl MapObjectManager_GetNextObjectWithFlagFromIndex
 	cmp r0, #0
 	bne _02064540
 _02064570:

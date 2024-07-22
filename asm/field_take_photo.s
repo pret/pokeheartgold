@@ -993,7 +993,7 @@ sub_0206AF08: ; 0x0206AF08
 	add r1, r3, #0
 	ldr r2, [sp, #0x18]
 	add r3, r4, #0
-	bl CreateSpecialFieldObject
+	bl MapObject_Create
 	add r4, r0, #0
 	bne _0206AF2A
 	bl GF_AssertFail
@@ -1048,7 +1048,7 @@ _0206AF8E:
 	add r1, r4, #0
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0205EEF4
+	bl MapObjectManager_GetNextObjectWithFlagFromIndex
 	cmp r0, #0
 	bne _0206AF8E
 	add sp, #8
@@ -2126,7 +2126,7 @@ sub_0206B82C: ; 0x0206B82C
 	bl MapObject_GetManager
 	add r7, r0, #0
 	add r0, r4, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	str r0, [sp]
 	add r0, r4, #0
 	bl sub_0205E420

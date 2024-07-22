@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_P01R0304_mount_2",
-      "ovid": "SPRITE_MOUNT_2",
-      "mvt": 14,
+      "sprite_id": "SPRITE_MOUNT_2",
+      "movement": 14,
       "type": 1,
       "flag": "FLAG_UNK_22A",
       "scr": "std_trainer(TRAINER_HIKER_NOLAND)",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_P01R0304_gsman3",
-      "ovid": "SPRITE_GSMAN3",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSMAN3",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_UNK_22B",
       "scr": "std_trainer(TRAINER_ACE_TRAINER_M_SHAYE)",
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_P01R0304_gswoman3",
-      "ovid": "SPRITE_GSWOMAN3",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSWOMAN3",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_UNK_22B",
       "scr": "std_trainer(TRAINER_ACE_TRAINER_F_CAROL)",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_P01R0304_mania",
-      "ovid": "SPRITE_MANIA",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MANIA",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_UNK_22C",
       "scr": "std_trainer(TRAINER_POKE_MANIAC_MORGAN)",

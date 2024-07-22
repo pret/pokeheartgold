@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_R18_gsman2",
-      "ovid": "SPRITE_GSMAN2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSMAN2",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BIRD_KEEPER_GS_BOB)",
@@ -30,8 +30,8 @@
     },
     {
       "id": "obj_R18_gsman2_2",
-      "ovid": "SPRITE_GSMAN2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSMAN2",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BIRD_KEEPER_GS_BORIS)",
@@ -47,8 +47,8 @@
     },
     {
       "id": "obj_R18_gang",
-      "ovid": "SPRITE_GANG",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GANG",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BIKER_CHARLES)",

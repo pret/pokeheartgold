@@ -815,7 +815,7 @@ _02252490:
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	add r7, r0, #0
 	add r0, r4, #0
 	add r0, #0xe4

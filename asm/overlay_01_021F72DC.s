@@ -18,7 +18,7 @@
 ov01_021F72DC: ; 0x021F72DC
 	push {r4, lr}
 	add r4, r0, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	cmp r0, #0xf8
 	bgt _021F7356
 	bge _021F737E
@@ -368,7 +368,7 @@ _021F7524:
 	bl FollowMon_SetObjectParams
 	ldr r1, [sp, #0x14]
 	add r0, r5, #0
-	bl MapObject_SetGfxID
+	bl MapObject_SetSpriteID
 	add r0, r5, #0
 	bl sub_0205FCD4
 	add r0, r5, #0
@@ -386,12 +386,12 @@ _021F7524:
 	add r0, r2, r0
 	str r0, [sp, #0x30]
 	add r0, r5, #0
-	bl MapObject_SetPrevX
+	bl MapObject_SetPreviousX
 	add r0, r5, #0
 	bl MapObject_GetCurrentHeight
 	add r1, r0, #0
 	add r0, r5, #0
-	bl MapObject_SetPrevHeight
+	bl MapObject_SetPreviousHeight
 	add r0, r5, #0
 	bl MapObject_GetCurrentY
 	add r1, r0, #0
@@ -401,7 +401,7 @@ _021F7524:
 	add r0, r2, r0
 	str r0, [sp, #0x38]
 	add r0, r5, #0
-	bl MapObject_SetPrevY
+	bl MapObject_SetPreviousY
 	add r0, r5, #0
 	add r1, sp, #0x30
 	bl MapObject_SetPositionVec
@@ -440,7 +440,7 @@ _021F761C:
 	bl FieldSystem_SetFollowerPokeParam
 	add r0, r5, #0
 	mov r1, #1
-	bl MapObject_ForceSetFacingDirection
+	bl MapObject_SetFacingDirectionDirect
 _021F7636:
 	mov r1, #0
 	ldr r0, [sp, #0xc]
@@ -485,7 +485,7 @@ _021F766C:
 	add r1, sp, #0x24
 	bl MapObject_GetFacingVec
 	add r0, r5, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	add r0, r5, #0
 	bl MapObject_GetFacingDirection
 	add r1, r0, #0
@@ -553,7 +553,7 @@ ov01_021F7704: ; 0x021F7704
 ov01_021F771C: ; 0x021F771C
 	push {r3, lr}
 	mov r1, #0xfd
-	bl GetMapObjectByID
+	bl MapObjectManager_GetFirstActiveObjectByID
 	bl sub_0205F40C
 	ldr r0, [r0]
 	pop {r3, pc}
@@ -3376,7 +3376,7 @@ ov01_021F8CFC: ; 0x021F8CFC
 	bl sub_0205F3E8
 	add r4, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	add r1, sp, #0
 	bl ov01_021F8CC8
 	add r0, r5, #0
@@ -3431,7 +3431,7 @@ ov01_021F8D58: ; 0x021F8D58
 	bl sub_0205F40C
 	add r4, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	add r1, sp, #0
 	bl ov01_021F8CC8
 	add r0, r5, #0

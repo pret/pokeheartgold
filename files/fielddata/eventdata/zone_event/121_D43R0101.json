@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_EVERYWHERE_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D43R0101_MAX_REVIVE",
       "scr": "std_itemball_d43r0101_max_revive",
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_EVERYWHERE_monstarball_2",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D43R0101_FULL_HEAL",
       "scr": "std_itemball_d43r0101_full_heal",
@@ -55,8 +55,8 @@
     },
     {
       "id": "obj_EVERYWHERE_monstarball_3",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D43R0101_POTION",
       "scr": "std_itemball_d43r0101_potion",
@@ -72,8 +72,8 @@
     },
     {
       "id": "obj_EVERYWHERE_rock",
-      "ovid": "SPRITE_ROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_ROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_field_strength",
@@ -89,8 +89,8 @@
     },
     {
       "id": "obj_EVERYWHERE_rock_2",
-      "ovid": "SPRITE_ROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_ROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_field_strength",
@@ -106,8 +106,8 @@
     },
     {
       "id": "obj_EVERYWHERE_rock_3",
-      "ovid": "SPRITE_ROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_ROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_field_strength",

@@ -341,8 +341,8 @@
   "objects": [
     {
       "id": "obj_T03R0101_gsassistantm",
-      "ovid": "SPRITE_GSASSISTANTM",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSASSISTANTM",
+      "movement": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T03R0101_001 + 1",
@@ -358,8 +358,8 @@
     },
     {
       "id": "obj_T03R0101_gswoman6",
-      "ovid": "SPRITE_GSWOMAN6",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSWOMAN6",
+      "movement": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T03R0101_000 + 1",
@@ -375,8 +375,8 @@
     },
     {
       "id": "obj_T03R0101_gsoldman1",
-      "ovid": "SPRITE_GSOLDMAN1",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSOLDMAN1",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T03R0101_004 + 1",
@@ -392,8 +392,8 @@
     },
     {
       "id": "obj_T03R0101_mania",
-      "ovid": "SPRITE_MANIA",
-      "mvt": 4,
+      "sprite_id": "SPRITE_MANIA",
+      "movement": 4,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T03R0101_003 + 1",
@@ -409,8 +409,8 @@
     },
     {
       "id": "obj_T03R0101_gsassistantm_2",
-      "ovid": "SPRITE_GSASSISTANTM",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSASSISTANTM",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T03R0101_002 + 1",
@@ -426,8 +426,8 @@
     },
     {
       "id": "obj_T03R0101_gsmiddleman1",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
       "scr": "_EV_scr_seq_T03R0101_013 + 1",
@@ -443,8 +443,8 @@
     },
     {
       "id": "obj_T03R0101_daigo",
-      "ovid": "SPRITE_DAIGO",
-      "mvt": 0,
+      "sprite_id": "SPRITE_DAIGO",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_STEVEN_IN_HOUSE_BEFORE_LATIS",
       "scr": "_EV_scr_seq_T03R0101_015 + 1",
@@ -460,8 +460,8 @@
     },
     {
       "id": "obj_T03R0101_daigo_2",
-      "ovid": "SPRITE_DAIGO",
-      "mvt": 0,
+      "sprite_id": "SPRITE_DAIGO",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS",
       "scr": "_EV_scr_seq_T03R0101_019 + 1",

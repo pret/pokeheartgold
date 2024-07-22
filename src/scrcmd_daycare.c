@@ -1,6 +1,6 @@
 #include "scrcmd.h"
 #include "bag.h"
-#include "field_map_object.h"
+#include "map_object.h"
 #include "get_egg.h"
 #include "party.h"
 #include "player_data.h"
@@ -157,9 +157,9 @@ BOOL ScrCmd_UpdateDaycareMonObjects(ScriptContext* ctx) {
     daycare = Save_Daycare_Get(fieldSystem->saveData);
 
     for (s32 dc_mon_idx = 0, y = 5, x = 8; dc_mon_idx < 2; dc_mon_idx++, y += 4, x += 2) {
-        LocalMapObject* mon_map_object = GetMapObjectByID(fieldSystem->mapObjectManager, obj_daycare_poke_1 + dc_mon_idx);
+        LocalMapObject* mon_map_object = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, obj_daycare_poke_1 + dc_mon_idx);
         if (mon_map_object) {
-            DeleteMapObject(mon_map_object);
+            MapObject_Delete(mon_map_object);
         }
 
         BoxPokemon *boxMon = DaycareMon_GetBoxMon(Save_Daycare_GetMonX(daycare, dc_mon_idx));
@@ -180,7 +180,7 @@ BOOL ScrCmd_UpdateDaycareMonObjects(ScriptContext* ctx) {
 
 static LocalMapObject* CreateDaycareMonSpriteInternal(MapObjectManager* object_man, u8 dc_mon_idx, u16 species, u8 form, u32 gender, u32 direction, u32 x, u32 y, u32 map_no, BOOL shiny) {
     u32 sprite_id = FollowMon_GetSpriteID(species, form, gender);
-    LocalMapObject* lmo = CreateSpecialFieldObject(object_man, x, y, direction, sprite_id, 11, map_no);
+    LocalMapObject* lmo = MapObject_Create(object_man, x, y, direction, sprite_id, 11, map_no);
     GF_ASSERT(lmo != NULL);
 
     MapObject_SetID(lmo, obj_daycare_poke_1 + dc_mon_idx);
@@ -192,7 +192,7 @@ static LocalMapObject* CreateDaycareMonSpriteInternal(MapObjectManager* object_m
     MapObject_SetXRange(lmo, -1);
     MapObject_SetYRange(lmo, -1);
     MapObject_SetFlagsBits(lmo, MAPOBJECTFLAG_UNK2);
-    MapObject_ClearFlagsBits(lmo, 0);
+    MapObject_ClearFlagsBits(lmo, MAPOBJECTFLAG_NONE);
     MapObject_SetFlag29(lmo, TRUE);
     ov01_021F9048(lmo);
 

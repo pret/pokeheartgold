@@ -220,7 +220,7 @@ Static main
     Object asm/unk_0205BFF0.o
     Object src/field_player_avatar.o
     Object asm/unk_0205CB48.o
-    Object src/field_map_object.o
+    Object src/map_object.o
     Object asm/unk_data_020FCBD8.o
     Object asm/unk_0205FD20.o
     Object asm/unk_02061284.o

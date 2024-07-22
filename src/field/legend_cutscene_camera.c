@@ -1,5 +1,5 @@
 #include "global.h"
-#include "field_map_object.h"
+#include "map_object.h"
 #include "gf_gfx_loader.h"
 #include "field/legend_cutscene_camera.h"
 #include "camera_translation.h"
@@ -678,7 +678,7 @@ static BOOL Task_BirdFinalApproach(TaskManager *taskman) {
         flapSfx = SEQ_SE_GS_HOUOU_HABATAKI;
     }
 
-    mapObject = GetMapObjectByID(fieldSystem->mapObjectManager, mapObjectId);
+    mapObject = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, mapObjectId);
     GF_ASSERT(mapObject != NULL);
 
     switch (*pState) {

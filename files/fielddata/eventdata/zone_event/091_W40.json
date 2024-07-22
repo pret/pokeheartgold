@@ -29,8 +29,8 @@
   "objects": [
     {
       "id": "obj_W40_gsswimmerm",
-      "ovid": "SPRITE_GSSWIMMERM",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSSWIMMERM",
+      "movement": 16,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_SWIMMER_M_SIMON)",
@@ -46,8 +46,8 @@
     },
     {
       "id": "obj_W40_gsswimmerw",
-      "ovid": "SPRITE_GSSWIMMERW",
-      "mvt": 5,
+      "sprite_id": "SPRITE_GSSWIMMERW",
+      "movement": 5,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_SWIMMER_F_ELAINE)",
@@ -63,8 +63,8 @@
     },
     {
       "id": "obj_W40_gsswimmerm_2",
-      "ovid": "SPRITE_GSSWIMMERM",
-      "mvt": 7,
+      "sprite_id": "SPRITE_GSSWIMMERM",
+      "movement": 7,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_SWIMMER_M_RANDALL)",
@@ -80,8 +80,8 @@
     },
     {
       "id": "obj_W40_gsswimmerw_2",
-      "ovid": "SPRITE_GSSWIMMERW",
-      "mvt": 20,
+      "sprite_id": "SPRITE_GSSWIMMERW",
+      "movement": 20,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_SWIMMER_F_PAULA)",
@@ -97,8 +97,8 @@
     },
     {
       "id": "obj_W40_gswoman1",
-      "ovid": "SPRITE_GSWOMAN1",
-      "mvt": 2,
+      "sprite_id": "SPRITE_GSWOMAN1",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_UNK_206",
       "scr": "_EV_scr_seq_W40_001 + 1",
@@ -114,8 +114,8 @@
     },
     {
       "id": "obj_W40_gsmiddleman1",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_W40_007 + 1",
@@ -131,8 +131,8 @@
     },
     {
       "id": "obj_W40_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_W40_TM88",
       "scr": "std_itemball_w40_tm88",
