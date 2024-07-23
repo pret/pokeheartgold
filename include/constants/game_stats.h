@@ -26,6 +26,11 @@
 #define GAME_STAT_UNK77               77
 #define GAME_STAT_UNK79               79
 #define GAME_STAT_UNK80               80
+#define GAME_STAT_UNK91               91
+#define GAME_STAT_UNK92               92
+#define GAME_STAT_UNK93               93
+#define GAME_STAT_UNK94               94
+#define GAME_STAT_UNK95               95
 #define GAME_STAT_UNK96               96
 #define GAME_STAT_UNK97               97
 #define GAME_STAT_UNK98               98

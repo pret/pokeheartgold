@@ -273,7 +273,7 @@ UnkStruct_Fsys_A0 *sub_0204A824(SaveData *saveData, BOOL resumeFromPrevious, u32
     }
     unkStruct->unk11 = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(saveData));
     if (unkStruct->unk0f != 5) {
-        void *unk5 = sub_0203107C(saveData);
+        FRONTIER_SAVE *frontierSaveData = sub_0203107C(saveData);
         GAME_STATS *gameStats = Save_GameStats_Get(saveData);
         u16 unk0;
         if (unkStruct->unk0f == 6) {
@@ -284,9 +284,9 @@ UnkStruct_Fsys_A0 *sub_0204A824(SaveData *saveData, BOOL resumeFromPrevious, u32
         if (unk0 != 0) {
             u32 unk0;
             if (unkStruct->unk0f == 6) {
-                unk0 = sub_020310BC(unk5, 113, sub_0205C268(113));
+                unk0 = sub_020310BC(frontierSaveData, 113, sub_0205C268(113));
             } else {
-                unk0 = sub_020310BC(unk5, 2 * unkStruct->unk0f + 1, 0xff);
+                unk0 = sub_020310BC(frontierSaveData, 2 * unkStruct->unk0f + 1, 0xff);
             }
             unkStruct->unk1a = unk0;
             unkStruct->unk1c = sub_0202D57C(unkStruct->unk74, unkStruct->unk0f, 0);
@@ -430,19 +430,19 @@ static void sub_0204ACA0(UnkStruct_Fsys_A0 *a0, SaveData *saveData, BOOL a2, u16
 
 void sub_0204AD04(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     GAME_STATS *gameStats = Save_GameStats_Get(saveData);
-    void *unk00 = sub_0203107C(saveData);
+    FRONTIER_SAVE *frontierSaveData = sub_0203107C(saveData);
     if (a0->unk0f == 5) {
         return;
     }
     u32 unk4 = a0->unk0f == 6 ? 112 : a0->unk0f * 2;
-    sub_020310BC(unk00, unk4, sub_0205C268(unk4));
-    sub_0203126C(unk00, unk4, sub_0205C268(unk4), a0->unk1a + a0->unk0d);
+    sub_020310BC(frontierSaveData, unk4, sub_0205C268(unk4));
+    sub_0203126C(frontierSaveData, unk4, sub_0205C268(unk4), a0->unk1a + a0->unk0d);
     if (a0->unk0f == 6) {
         sub_020310BC(sub_0203107C(saveData), 100, sub_0205C268(100));
     } else {
         sub_0202D5DC(a0->unk74, a0->unk0f + 8, 0);
     }
-    u32 unk = sub_02031108(unk00, unk4 + 1, sub_0205C268(unk4 + 1), a0->unk1a + a0->unk0d);
+    u32 unk = sub_02031108(frontierSaveData, unk4 + 1, sub_0205C268(unk4 + 1), a0->unk1a + a0->unk0d);
     if (a0->unk0f == 6) {
         sub_02031108(sub_0203107C(saveData), 100, sub_0205C268(100), 0);
     } else {
@@ -466,21 +466,21 @@ void sub_0204AE20(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
         return;
     }
     GAME_STATS *gameStats = Save_GameStats_Get(saveData);
-    void *unk00 = sub_0203107C(saveData);
+    FRONTIER_SAVE *frontierSaveData = sub_0203107C(saveData);
     u32 unk4 = a0->unk0f == 6 ? 112 : a0->unk0f * 2;
     if (a0->unk0f == 6) {
         sub_020310BC(sub_0203107C(saveData), 100, sub_0205C268(100));
     } else {
         sub_0202D5DC(a0->unk74, a0->unk0f + 8, 0);
     }
-    u32 unk6 = sub_02031108(unk00, unk4 + 1, sub_0205C268(unk4 + 1), a0->unk1a + a0->unk0d);
+    u32 unk6 = sub_02031108(frontierSaveData, unk4 + 1, sub_0205C268(unk4 + 1), a0->unk1a + a0->unk0d);
     if (a0->unk0f == 6) {
         sub_02031108(sub_0203107C(saveData), 100, sub_0205C268(100), 1);
     } else {
         sub_0202D5DC(a0->unk74, a0->unk0f + 8, 1);
     }
-    sub_020310BC(unk00, unk4, sub_0205C268(unk4));
-    sub_0203126C(unk00, unk4, sub_0205C268(unk4), unk6);
+    sub_020310BC(frontierSaveData, unk4, sub_0205C268(unk4));
+    sub_0203126C(frontierSaveData, unk4, sub_0205C268(unk4), unk6);
     GameStats_Add(gameStats, GAME_STAT_UNK30, 7);
     sub_0202D57C(a0->unk74, a0->unk0f, 3);
     if (a0->unk0f != 6) {
