@@ -44,14 +44,14 @@ struct UnkStruct_0202E9FC {
     UnkStruct_0202E9FC_sub unk_04[6];
 };
 
-void sub_0202E4C8(UnkStruct_0202E4B0_sub *a0);
-BOOL sub_0202E4E0(UnkStruct_0202E4B0_sub *a0);
-u32 *sub_0202E594(SaveData *saveData, HeapID heapId);
-void sub_0202E6F0(UnkStruct_0202E4B0_sub *a0);
-BOOL sub_0202E708(const UnkStruct_0202E4B0_sub *a0, const UnkStruct_0202E4B0_sub *a1);
-BOOL sub_0202E72C(const UnkStruct_0202E920 *a0, const UnkStruct_0202E4B0_sub *a1);
-void sub_0202E75C(UnkStruct_0202E4B0 *a0, UnkStruct_0202E920 *a1, int a2, u8 a3, u8 a4, UnkStruct_0202E4B0_sub **a5, u8 a6, HeapID heapId);
-void sub_0202E920(UnkStruct_0202E4B0 *a0, int a1, u8 a2, UnkStruct_0202E4B0_sub **a3, u8 a4, HeapID heapId);
+static void sub_0202E4C8(UnkStruct_0202E4B0_sub *a0);
+static BOOL sub_0202E4E0(UnkStruct_0202E4B0_sub *a0);
+static u32 *sub_0202E594(SaveData *saveData, HeapID heapId);
+static void sub_0202E6F0(UnkStruct_0202E4B0_sub *a0);
+static BOOL sub_0202E708(const UnkStruct_0202E4B0_sub *a0, const UnkStruct_0202E4B0_sub *a1);
+static BOOL sub_0202E72C(const UnkStruct_0202E920 *a0, const UnkStruct_0202E4B0_sub *a1);
+static void sub_0202E75C(UnkStruct_0202E4B0 *a0, UnkStruct_0202E920 *a1, int a2, u8 a3, u8 a4, UnkStruct_0202E4B0_sub **a5, u8 a6, HeapID heapId);
+static void sub_0202E920(UnkStruct_0202E4B0 *a0, int a1, u8 a2, UnkStruct_0202E4B0_sub **a3, u8 a4, HeapID heapId);
 
 static const u8 _020F684C[][2] = {
     {  6,  0 },
@@ -83,14 +83,14 @@ u8 sub_0202E4BC(int a0) {
     return _020F684C[a0][1];
 }
 
-void sub_0202E4C8(UnkStruct_0202E4B0_sub *a0) {
+static void sub_0202E4C8(UnkStruct_0202E4B0_sub *a0) {
     a0->unk_00 = 0;
     a0->unk_04 = 0;
     StringFillEOS(a0->unk_08, PLAYER_NAME_LENGTH + 1);
     SaveSubstruct_UpdateCRC(SAVE_UNK_24);
 }
 
-BOOL sub_0202E4E0(UnkStruct_0202E4B0_sub *a0) {
+static BOOL sub_0202E4E0(UnkStruct_0202E4B0_sub *a0) {
     return StringLength(a0->unk_08) != 0;
 }
 
@@ -130,7 +130,7 @@ u32 sub_0202E58C(void) {
     return 0x138;  // TODO: what is this?
 }
 
-u32 *sub_0202E594(SaveData *saveData, HeapID heapId) {
+static u32 *sub_0202E594(SaveData *saveData, HeapID heapId) {
     int i;
     u32 val;
     GAME_STATS *gameStats;
@@ -206,20 +206,20 @@ UnkStruct_0202E4B0_sub *sub_0202E66C(SaveData *saveData, HeapID heapId) {
     return ret;
 }
 
-void sub_0202E6F0(UnkStruct_0202E4B0_sub *a0) {
+static void sub_0202E6F0(UnkStruct_0202E4B0_sub *a0) {
     for (int i = 0; i < 6; ++i) {
         sub_0202E4C8(&a0[i]);
     }
 }
 
-BOOL sub_0202E708(const UnkStruct_0202E4B0_sub *a0, const UnkStruct_0202E4B0_sub *a1) {
+static BOOL sub_0202E708(const UnkStruct_0202E4B0_sub *a0, const UnkStruct_0202E4B0_sub *a1) {
     if (a0->unk_00 != a1->unk_00) {
         return FALSE;
     }
     return !StringNotEqual(a0->unk_08, a1->unk_08);
 }
 
-BOOL sub_0202E72C(const UnkStruct_0202E920 *a0, const UnkStruct_0202E4B0_sub *a1) {
+static BOOL sub_0202E72C(const UnkStruct_0202E920 *a0, const UnkStruct_0202E4B0_sub *a1) {
     for (int i = 0; i < a0->unk_04; ++i) {
         if (sub_0202E708(a0->unk_0C[i], a1)) {
             return TRUE;
@@ -229,7 +229,7 @@ BOOL sub_0202E72C(const UnkStruct_0202E920 *a0, const UnkStruct_0202E4B0_sub *a1
     return FALSE;
 }
 
-void sub_0202E75C(UnkStruct_0202E4B0 *a0, UnkStruct_0202E920 *a1, int a2, u8 a3, u8 a4, UnkStruct_0202E4B0_sub **a5, u8 a6, HeapID unused) {
+static void sub_0202E75C(UnkStruct_0202E4B0 *a0, UnkStruct_0202E920 *a1, int a2, u8 a3, u8 a4, UnkStruct_0202E4B0_sub **a5, u8 a6, HeapID unused) {
     UnkStruct_0202E4B0_sub *sp8;
     int i;
     int j;
@@ -279,7 +279,7 @@ void sub_0202E75C(UnkStruct_0202E4B0 *a0, UnkStruct_0202E920 *a1, int a2, u8 a3,
     }
 }
 
-void sub_0202E920(UnkStruct_0202E4B0 *a0, int a1, u8 a2, UnkStruct_0202E4B0_sub **a3, u8 a4, HeapID heapId) {
+static void sub_0202E920(UnkStruct_0202E4B0 *a0, int a1, u8 a2, UnkStruct_0202E4B0_sub **a3, u8 a4, HeapID heapId) {
     UnkStruct_0202E920 *r6 = AllocFromHeapAtEnd(heapId, sizeof(UnkStruct_0202E920));
     sub_0202E75C(a0, r6, a1, a2, 0, a3, a4, heapId);
     if (a1 != 0) {
