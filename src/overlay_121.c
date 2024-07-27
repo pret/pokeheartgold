@@ -36,7 +36,7 @@ typedef struct Overlay121Appdata {
     GF_2DGfxResObj *unk_1DC[6];
     SpriteResourcesHeader unk_1F4;
     Sprite *unk_218[5];
-    void *unk_22C;
+    TouchscreenHitbox *unk_22C;
     u8 unk_230;
     u8 unk_231;
     u8 unk_232;
@@ -468,4 +468,15 @@ void ov121_021E6194(Overlay121AppData *appData) {
     Set2dSpriteAnimSeqNo(sprite, 8);
     Set2dSpriteVisibleFlag(sprite, TRUE);
     appData->unk_218[4] = sprite;
+}
+
+void ov121_021E62A0(Overlay121AppData *appData, HeapID heapId) {
+    appData->unk_22C = AllocFromHeap(heapId, 10 * sizeof(TouchscreenHitbox));
+    for (int i = 0; i < 6; ++i) {
+        TouchscreenHitbox_SetRect(&appData->unk_22C[i], 56 + 16 * i, 40, 16, 176);
+    }
+    TouchscreenHitbox_SetRect(&appData->unk_22C[6], 168, 8, 16, 128);
+    TouchscreenHitbox_SetRect(&appData->unk_22C[7], 168, 192, 16, 64);
+    TouchscreenHitbox_SetCircle(&appData->unk_22C[8], 16, 96, 16);
+    TouchscreenHitbox_SetCircle(&appData->unk_22C[9], 240, 96, 16);
 }
