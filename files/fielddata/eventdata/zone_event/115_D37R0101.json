@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_D37R0101_gswoman1",
-      "ovid": "SPRITE_GSWOMAN1",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSWOMAN1",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D37R0101_001 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_D37R0101_gsman1",
-      "ovid": "SPRITE_GSMAN1",
-      "mvt": 5,
+      "sprite_id": "SPRITE_GSMAN1",
+      "movement": 5,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D37R0101_000 + 1",
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_D37R0101_var_1",
-      "ovid": "SPRITE_VAR_1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_VAR_1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_GOLDENROD_UNDERGROUND_FRIEND",
       "scr": 0,
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_D37R0101_tsure_poke_static_marill",
-      "ovid": "SPRITE_FOLLOWER_MON_STATIC_MARILL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_MARILL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_GOLDENROD_UNDERGROUND_FRIEND",
       "scr": 0,

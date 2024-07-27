@@ -93,8 +93,8 @@
   "objects": [
     {
       "id": "obj_T20R0101_doctor",
-      "ovid": "SPRITE_DOCTOR",
-      "mvt": 0,
+      "sprite_id": "SPRITE_DOCTOR",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ELMS_LAB_ELM",
       "scr": "_EV_scr_seq_T20R0101_000 + 1",
@@ -110,8 +110,8 @@
     },
     {
       "id": "obj_T20R0101_policeman",
-      "ovid": "SPRITE_POLICEMAN",
-      "mvt": 0,
+      "sprite_id": "SPRITE_POLICEMAN",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ELMS_LAB_OFFICER",
       "scr": 0,
@@ -127,8 +127,8 @@
     },
     {
       "id": "obj_T20R0101_assistantm",
-      "ovid": "SPRITE_ASSISTANTM",
-      "mvt": 0,
+      "sprite_id": "SPRITE_ASSISTANTM",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ELMS_LAB_AIDE",
       "scr": "_EV_scr_seq_T20R0101_001 + 1",
@@ -144,8 +144,8 @@
     },
     {
       "id": "obj_T20R0101_var_1",
-      "ovid": "SPRITE_VAR_1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_VAR_1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ELMS_LAB_FRIEND",
       "scr": 0,

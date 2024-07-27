@@ -456,25 +456,25 @@ static LocalMapObject *createPartymonMapObject(MapObjectManager *objectMan, u16 
 }
 
 static LocalMapObject *createSpecialMapObject(MapObjectManager *objectMan, int spriteId, int direction, int x, int y, int localId) {
-    LocalMapObject *ret = CreateSpecialFieldObject(objectMan, x, y, direction, spriteId, 0, 1);
+    LocalMapObject *ret = MapObject_Create(objectMan, x, y, direction, spriteId, 0, 1);
     GF_ASSERT(ret != NULL);
     MapObject_SetID(ret, localId);
     MapObject_SetType(ret, 0);
     MapObject_SetFlagID(ret, 0);
     MapObject_SetXRange(ret, -1);
     MapObject_SetYRange(ret, -1);
-    MapObject_SetFlagsBits(ret, MAPOBJECTFLAG_UNK10 | MAPOBJECTFLAG_UNK13);
-    MapObject_ClearFlagsBits(ret, MAPOBJECTFLAG_UNK7 | MAPOBJECTFLAG_UNK8);
+    MapObject_SetFlagsBits(ret, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK10 | MAPOBJECTFLAG_UNK13));
+    MapObject_ClearFlagsBits(ret, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK7 | MAPOBJECTFLAG_UNK8));
     MapObject_SetFlag29(ret, TRUE);
     return ret;
 }
 
 // this function was partially stubbed, or called a static inline child routine that was subbed
 static void sub_0206AF78(FieldSystem *fieldSystem, PHOTO *photo) {
-    int index = 0;
+    s32 index = 0;
     LocalMapObject *curObj;
     PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
-    while (MapObjectManager_IterObjects(fieldSystem->mapObjectManager, &curObj, &index, MAPOBJECTFLAG_ACTIVE)) {
+    while (MapObjectManager_GetNextObjectWithFlagFromIndex(fieldSystem->mapObjectManager, &curObj, &index, MAPOBJECTFLAG_ACTIVE)) {
     }
 }
 
@@ -804,7 +804,7 @@ static void sub_0206B82C(PlayerAvatar *playerAvatar, u8 state, u8 gender) {
     int spriteId = PlayerAvatar_GetSpriteByStateAndGender(state, gender);
     LocalMapObject *mapObject = PlayerAvatar_GetMapObject(playerAvatar);
     MapObjectManager *mapObjectManager = MapObject_GetManager(mapObject);
-    int gfxId = MapObject_GetGfxID(mapObject);
+    int gfxId = MapObject_GetSpriteID(mapObject);
     sub_0205E420(mapObject);
     ov01_021FA108(mapObjectManager, gfxId, mapObject);
     sub_0205E38C(mapObject, spriteId);

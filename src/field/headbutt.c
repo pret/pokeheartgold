@@ -3,7 +3,7 @@
 #include "assert.h"
 #include "encounter.h"
 #include "follow_mon.h"
-#include "field_map_object.h"
+#include "map_object.h"
 #include "fieldmap.h"
 #include "filesystem.h"
 #include "heap.h"

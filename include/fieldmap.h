@@ -34,7 +34,7 @@ u16* GetVarPointer(FieldSystem* fieldSystem, u16 varId);
 u16 FieldSystem_VarGet(FieldSystem* fieldSystem, u16 varId);
 BOOL FieldSystem_VarSet(FieldSystem* fieldSystem, u16 varId, u16 value);
 u16 FieldSystem_VarGetObjectEventGraphicsId(FieldSystem* fieldSystem, u16 objId);
-BOOL FieldSystem_FlagGet(FieldSystem *fieldSystem, u16 flagId);
+BOOL FieldSystem_FlagCheck(FieldSystem *fieldSystem, u16 flagId);
 void FieldSystem_FlagSet(FieldSystem *fieldSystem, u16 flagId);
 void FieldSystem_FlagClear(FieldSystem *fieldSystem, u16 flagId);
 void ClearTempFieldEventData(FieldSystem *fieldSystem);

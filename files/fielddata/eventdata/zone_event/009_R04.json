@@ -29,8 +29,8 @@
   "objects": [
     {
       "id": "obj_R04_picnicgirl_2",
-      "ovid": "SPRITE_PICNICGIRL_2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_PICNICGIRL_2",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_PICNICKER_HOPE)",
@@ -46,8 +46,8 @@
     },
     {
       "id": "obj_R04_picnicgirl_2_2",
-      "ovid": "SPRITE_PICNICGIRL_2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_PICNICGIRL_2",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_PICNICKER_SHARON)",
@@ -63,8 +63,8 @@
     },
     {
       "id": "obj_R04_gsman2",
-      "ovid": "SPRITE_GSMAN2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSMAN2",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BIRD_KEEPER_GS_HANK)",
@@ -80,8 +80,8 @@
     },
     {
       "id": "obj_R04_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_R04_HP_UP",
       "scr": "std_itemball_r04_hp_up",

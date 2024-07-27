@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_R24_gsman1",
-      "ovid": "SPRITE_GSMAN1",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSMAN1",
+      "movement": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_R24_000 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_R24_gswoman2",
-      "ovid": "SPRITE_GSWOMAN2",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSWOMAN2",
+      "movement": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_R24_001 + 1",
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_R24_rocketm",
-      "ovid": "SPRITE_ROCKETM",
-      "mvt": 15,
+      "sprite_id": "SPRITE_ROCKETM",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_HIDE_ROUTE_24_ROCKET",
       "scr": "_EV_scr_seq_R24_002 + 1",

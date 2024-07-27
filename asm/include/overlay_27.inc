@@ -114,7 +114,7 @@
 .public FieldSystem_GetPlayerAvatar
 .public sub_0205CB38
 .public sub_0205CB40
-.public MapObject_GetGfxID
+.public MapObject_GetSpriteID
 .public MapObject_GetScript
 .public sub_0205F330
 .public Save_VarsFlags_CheckSafariSysFlag

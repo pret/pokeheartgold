@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_T01R0201_nanami",
-      "ovid": "SPRITE_NANAMI",
-      "mvt": 17,
+      "sprite_id": "SPRITE_NANAMI",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T01R0201_000 + 1",

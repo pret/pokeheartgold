@@ -6,7 +6,7 @@
 #include "unk_0203DFA4.h"
 #include "unk_02078E30.h"
 #include "follow_mon.h"
-#include "field_map_object.h"
+#include "map_object.h"
 #include "launch_application.h"
 #include "save_arrays.h"
 #include "sound_radio.h"
