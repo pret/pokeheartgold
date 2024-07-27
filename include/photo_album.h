@@ -6,12 +6,12 @@
 
 #define PHOTO_ALBUM_MAX 36
 
-typedef struct PHOTO_MON {
+typedef struct PhotoMon {
   u16 species;
   u8 form;
-  u8 shiny : 1;
-  u8 gender : 1;
-} PHOTO_MON;
+  u8 shiny:1;
+  u8 gender:1;
+} PhotoMon;
 
 typedef struct PhotoCameraParam {
   fx32 distance;
@@ -22,7 +22,7 @@ typedef struct PhotoCameraParam {
   VecFx32 lookAt;
 } PhotoCameraParam;
 
-typedef struct PHOTO {
+typedef struct Photo {
   u8 filler_0[4];
   u8 gender : 1;
   u8 iconId : 7;
@@ -41,11 +41,11 @@ typedef struct PHOTO {
   u16 subjectSpriteId;
   u16 unk_46;
   PhotoCameraParam unk_48;
-  PHOTO_MON party[PARTY_SIZE];
-} PHOTO; // size: 0x84
+  PhotoMon party[PARTY_SIZE];
+} Photo; // size: 0x84
 
 // file: a/2/5/4
-typedef struct PHOTO_DAT {
+typedef struct PhotoData {
   u16 mapId;
   u16 iconId;
   u16 x;
@@ -54,25 +54,22 @@ typedef struct PHOTO_DAT {
   u8 unk9;
   u16 subjectObjId;
   u16 param[2];
-} PHOTO_DAT;
+} PhotoData;
 
-typedef struct PHOTO_ALBUM {
+typedef struct PhotoAlbum {
   int unk_00;
-  PHOTO photos[PHOTO_ALBUM_MAX];
-} PHOTO_ALBUM;
+  Photo photos[PHOTO_ALBUM_MAX];
+} PhotoAlbum;
 
 u32 Save_PhotoAlbum_sizeof(void);
-PHOTO_ALBUM *Save_PhotoAlbum_Get(SaveData *saveData);
-void Save_PhotoAlbum_Init(PHOTO_ALBUM *photoAlbum);
-u8 PhotoAlbum_GetIndexOfFirstEmptySlot(const PHOTO_ALBUM *photoAlbum);
-u8 PhotoAlbum_GetNumSaved(const PHOTO_ALBUM *photoAlbum);
-void PhotoAlbum_DeletePhotoByIndex(PHOTO_ALBUM *photoAlbum, u8 idx);
-BOOL PhotoAlbum_SetPhotoAtIndex(PHOTO_ALBUM *photoAlbum, const PHOTO *photo,
-                                u8 idx);
-BOOL PhotoAlbum_GetPhotoByIndex(const PHOTO_ALBUM *photoAlbum, PHOTO *photo,
-                                u8 idx);
-PHOTO *PhotoAlbum_LoadAllInUsePhotos(const PHOTO_ALBUM *photoAlbum,
-                                     HeapID heapId);
-void Photo_Init(PHOTO *photo);
+PhotoAlbum *Save_PhotoAlbum_Get(SaveData *saveData);
+void Save_PhotoAlbum_Init(PhotoAlbum *photoAlbum);
+u8 PhotoAlbum_GetIndexOfFirstEmptySlot(const PhotoAlbum *photoAlbum);
+u8 PhotoAlbum_GetNumSaved(const PhotoAlbum *photoAlbum);
+void PhotoAlbum_DeletePhotoByIndex(PhotoAlbum *photoAlbum, u8 idx);
+BOOL PhotoAlbum_SetPhotoAtIndex(PhotoAlbum *photoAlbum, const Photo *photo, u8 idx);
+BOOL PhotoAlbum_GetPhotoByIndex(const PhotoAlbum *photoAlbum, Photo *photo, u8 idx);
+Photo *PhotoAlbum_LoadAllInUsePhotos(const PhotoAlbum *photoAlbum, HeapID heapId);
+void Photo_Init(Photo *photo);
 
 #endif // POKEHEARTGOLD_PHOTO_ALBUM_H

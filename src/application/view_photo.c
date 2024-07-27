@@ -14,6 +14,12 @@
 #include "field/ov01_021E7FDC.h"
 #include "unk_02068F84.h"
 
+typedef enum ViewPhotoTaskState {
+    VIEW_PHOTO_TASK_STATE_0,
+    VIEW_PHOTO_TASK_STATE_1,
+    VIEW_PHOTO_TASK_STATE_2,
+} ViewPhotoTaskState;
+
 typedef struct ViewPhotoSysTaskData {
     HeapID heapId;
     int state;
@@ -54,10 +60,10 @@ static void ViewPhotoSysTask_CreateSprites(ViewPhotoSysTaskData *viewPhoto);
 static void ViewPhotoSysTask_DeleteSprites(ViewPhotoSysTaskData *viewPhoto);
 static void ViewPhotoSysTask_AnimateButtonSelect(ViewPhotoSysTaskData *viewPhoto, int spriteNo);
 static BOOL ViewPhotoSysTask_IsButtonAnimPlaying(ViewPhotoSysTaskData *viewPhoto);
-static void formatPhotoFlavorText(PHOTO *a0, MessageFormat *msgFormat, String *strBuf, HeapID heapId, SaveData *saveData);
+static void formatPhotoFlavorText(Photo *a0, MessageFormat *msgFormat, String *strBuf, HeapID heapId, SaveData *saveData);
 static void ViewPhotoSysTask_DrawLyr3Icon(ViewPhotoSysTaskData *viewPhoto);
 static void ViewPhotoSysTask_PrintTextOnWindows(ViewPhotoSysTaskData *viewPhoto);
-static u8 Photo_CountValidMons(PHOTO *a0);
+static u8 Photo_CountValidMons(Photo *a0);
 
 static const WindowTemplate ov19_0225A04E[2] = {
     {
@@ -152,16 +158,16 @@ void FieldSystem_DestroyViewPhotoTask(FieldSystem *fieldSystem) {
 static void SysTask_ViewPhoto(SysTask *task, void *taskData) {
     ViewPhotoSysTaskData *viewPhoto = (ViewPhotoSysTaskData *)taskData;
     switch (viewPhoto->state) {
-    case 0:
+    case VIEW_PHOTO_TASK_STATE_0:
         ViewPhotoSysTask_Setup(viewPhoto);
         ++viewPhoto->state;
         return;
-    case 1:
+    case VIEW_PHOTO_TASK_STATE_1:
         if (GX_GetMasterBrightness() == 0 && ViewPhotoSysTask_HandleInput(viewPhoto) != VIEW_PHOTO_INPUT_NOTHING) {
             ++viewPhoto->state;
         }
         break;
-    case 2:
+    case VIEW_PHOTO_TASK_STATE_2:
         if (ViewPhotoSysTask_IsButtonAnimPlaying(viewPhoto)) {
             FieldViewPhoto_SetPlayerInput(viewPhoto->parent, viewPhoto->lastInput);
         }
@@ -413,7 +419,7 @@ static BOOL ViewPhotoSysTask_IsButtonAnimPlaying(ViewPhotoSysTaskData *viewPhoto
     return !Sprite_IsCellAnimationRunning(viewPhoto->sprites[viewPhoto->animSpriteNo]);
 }
 
-static void formatPhotoFlavorText(PHOTO *photo, MessageFormat *msgFormat, String *strBuf, HeapID heapId, SaveData *saveData) {
+static void formatPhotoFlavorText(Photo *photo, MessageFormat *msgFormat, String *strBuf, HeapID heapId, SaveData *saveData) {
     BufferPlayersName(msgFormat, 0, Save_PlayerData_GetProfileAddr(saveData));
     sub_02068F98(photo->mapId, heapId, strBuf);
     BufferString(msgFormat, 1, strBuf, 2, 0, 2);
@@ -453,7 +459,7 @@ static void ViewPhotoSysTask_PrintTextOnWindows(ViewPhotoSysTaskData *viewPhoto)
     ViewPhotoSysTask_DrawLyr3Icon(viewPhoto);
 }
 
-static u8 Photo_CountValidMons(PHOTO *photo) {
+static u8 Photo_CountValidMons(Photo *photo) {
     u8 answer = 0;
     for (u8 i = 0; i < PARTY_SIZE; ++i) {
         int species = photo->party[i].species;
