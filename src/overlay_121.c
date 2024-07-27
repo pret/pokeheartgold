@@ -5,6 +5,7 @@
 #include "overlay_121.h"
 #include "math_util.h"
 #include "obj_char_transfer.h"
+#include "render_window.h"
 #include "system.h"
 #include "text.h"
 #include "unk_02005D10.h"
@@ -87,8 +88,9 @@ void ov121_021E6544(Overlay121AppData *appData, int a1);
 void ov121_021E65A8(Overlay121AppData *appData, int a1);
 void ov121_021E65D8(Overlay121AppData *appData);
 void ov121_021E662C(Overlay121AppData *appData, int a1);
-void ov121_021E66EC(Overlay121AppData *appData);
 void ov121_021E6690(Overlay121AppData *appData, int a1);
+void ov121_021E66EC(Overlay121AppData *appData);
+void ov121_021E67E4(Overlay121AppData *appData);
 void ov121_021E67FC(Overlay121AppData *appData, SaveData *saveData);
 void ov121_021E69F0(Overlay121AppData *appData);
 void ov121_021E6A4C(Overlay121AppData *appData);
@@ -673,4 +675,36 @@ void ov121_021E662C(Overlay121AppData *appData, int a1) {
     }
     ov121_021E6DD8(appData);
     appData->unk_233 = 0;
+}
+
+void ov121_021E6690(Overlay121AppData *appData, int a1) {
+    appData->unk_231 = a1;
+    if (a1 == 0) {
+        appData->unk_232 = 6;
+        Set2dSpriteVisibleFlag(appData->unk_218[1], TRUE);
+        Set2dSpriteVisibleFlag(appData->unk_218[2], TRUE);
+        ov121_021E67E4(appData);
+    } else {
+        appData->unk_232 = 0;
+        Set2dSpriteVisibleFlag(appData->unk_218[1], FALSE);
+        Set2dSpriteVisibleFlag(appData->unk_218[2], FALSE);
+        ov121_021E6E68(appData);
+    }
+    ov121_021E65D8(appData);
+}
+
+void ov121_021E66EC(Overlay121AppData *appData) {
+    LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0x1E0, HEAP_ID_9E);
+    AddWindowParameterized(appData->unk_000, &appData->unk_004[0], GF_BG_LYR_MAIN_1, 5, 7, 2, 12, 15, 0x001);
+    AddWindowParameterized(appData->unk_000, &appData->unk_004[1], GF_BG_LYR_MAIN_1, 7, 7, 20, 12, 15, 0x019);
+    AddWindowParameterized(appData->unk_000, &appData->unk_004[2], GF_BG_LYR_MAIN_2, 2, 1, 28, 4, 15, 0x109);
+    AddWindowParameterized(appData->unk_000, &appData->unk_004[3], GF_BG_LYR_MAIN_2, 25, 21, 6, 2, 1, 0x179);
+    AddWindowParameterized(appData->unk_000, &appData->unk_004[4], GF_BG_LYR_MAIN_2, 4, 21, 12, 2, 1, 0x185);
+    AddWindowParameterized(appData->unk_000, &appData->unk_004[5], GF_BG_LYR_MAIN_0, 2, 1, 28, 4, 15, 0x01F);
+    LoadUserFrameGfx2(appData->unk_000, GF_BG_LYR_MAIN_0, 0x001, 12, appData->unk_268, HEAP_ID_9E);
+}
+
+void ov121_021E67E4(Overlay121AppData *appData) {
+    ClearFrameAndWindow2(&appData->unk_004[5], TRUE);
+    ClearWindowTilemapAndCopyToVram(&appData->unk_004[5]);
 }
