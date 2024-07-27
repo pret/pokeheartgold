@@ -7,6 +7,7 @@
 #include "obj_char_transfer.h"
 #include "system.h"
 #include "text.h"
+#include "unk_02005D10.h"
 #include "unk_02009D48.h"
 #include "unk_0200A090.h"
 #include "unk_0200ACF0.h"
@@ -39,7 +40,7 @@ typedef struct Overlay121Appdata {
     TouchscreenHitbox *unk_22C;
     u8 unk_230;
     u8 unk_231;
-    u8 unk_232;
+    s8 unk_232;
     u8 unk_233;
     UnkStruct_0202E4B0 *unk_234;
     UnkStruct_0202E9FC *unk_238[7];
@@ -50,9 +51,16 @@ typedef struct Overlay121Appdata {
     u8 unk_25E;
     u8 unk_25F;
     u8 unk_260;
-    u8 filler_261[7];
+    u8 unk_261;
+    u8 filler_262[6];
     u8 unk_268;
 } Overlay121AppData;
+
+typedef struct UnkStruct_Overlay121_021E7140 {
+    int x;
+    int y;
+    int anim;
+} UnkStruct_Overlay121_021E7140;
 
 void ov121_021E5AEC(OVY_MANAGER *man, int *pState);
 BOOL ov121_021E5C50(Overlay121AppData *appData);
@@ -75,6 +83,10 @@ void ov121_021E62A0(Overlay121AppData *appData, HeapID heapId);
 int ov121_021E633C(Overlay121AppData *appData, int *a1);
 BOOL ov121_021E6404(Overlay121AppData *appData, int a1, int a2);
 void ov121_021E6478(Overlay121AppData *appData, int a1, int a2);
+void ov121_021E6544(Overlay121AppData *appData, int a1);
+void ov121_021E65A8(Overlay121AppData *appData, int a1);
+void ov121_021E65D8(Overlay121AppData *appData);
+void ov121_021E662C(Overlay121AppData *appData, int a1);
 void ov121_021E66EC(Overlay121AppData *appData);
 void ov121_021E6690(Overlay121AppData *appData, int a1);
 void ov121_021E67FC(Overlay121AppData *appData, SaveData *saveData);
@@ -85,8 +97,11 @@ void ov121_021E6C5C(Overlay121AppData *appData);
 void ov121_021E6CA4(Overlay121AppData *appData);
 void ov121_021E6DD8(Overlay121AppData *appData);
 void ov121_021E6E68(Overlay121AppData *appData);
+void ov121_021E6EC0(Overlay121AppData *appData);
 void ov121_021E6F6C(void);
 BOOL ov121_021E6F78(Overlay121AppData *appData);
+
+extern const UnkStruct_Overlay121_021E7140 ov121_021E7140[];
 
 BOOL ov121_021E5900(OVY_MANAGER *man, int *pState) {
     ov121_021E5AEC(man, pState);
@@ -479,4 +494,183 @@ void ov121_021E62A0(Overlay121AppData *appData, HeapID heapId) {
     TouchscreenHitbox_SetRect(&appData->unk_22C[7], 168, 192, 16, 64);
     TouchscreenHitbox_SetCircle(&appData->unk_22C[8], 16, 96, 16);
     TouchscreenHitbox_SetCircle(&appData->unk_22C[9], 240, 96, 16);
+}
+
+int ov121_021E633C(Overlay121AppData *appData, int *a1) {
+    int input = 0;
+    if (!System_GetTouchHeld()) {
+        input = gSystem.newKeys;
+        if (input != 0) {
+            switch (input) {
+            case PAD_KEY_LEFT:
+                return 6;
+            case PAD_KEY_RIGHT:
+                return 7;
+            case PAD_KEY_UP:
+                return 1;
+            case PAD_KEY_DOWN:
+                return 2;
+            case PAD_BUTTON_X:
+                return 5;
+            case PAD_BUTTON_A:
+                return 8;
+            case PAD_BUTTON_B:
+                return 4;
+            }
+        }
+    }
+    if (input == 0 && System_GetTouchNew()) {
+        // Potential UB: TouchscreenHitbox_FindRectAtTouchNew expects unk_22C to be terminated with {0xFF,0,0,0} but ov121_021E62A0 never sets that up
+        input = TouchscreenHitbox_FindHitboxAtTouchNew(appData->unk_22C);
+        if (input != -1) {
+            switch (input) {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                *a1 = input;
+                return 3;
+            case 6:
+                return 5;
+            case 7:
+                *a1 = input;
+                return 4;
+            case 8:
+                return 6;
+            case 9:
+                return 7;
+            }
+        }
+    }
+    return 0;
+}
+
+BOOL ov121_021E6404(Overlay121AppData *appData, int a1, int a2) {
+    switch (a1) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+        break;
+    case 6:
+        ov121_021E662C(appData, -1);
+        break;
+    case 7:
+        ov121_021E662C(appData,  1);
+        break;
+    case 5:
+        PlaySE(SEQ_SE_DP_DECIDE);
+        Set2dSpriteAnimSeqNo(appData->unk_218[4], 9);
+        ov121_021E6690(appData, 1);
+        break;
+    case 4:
+    case 8:
+        PlaySE(SEQ_SE_DP_DECIDE);
+        Set2dSpriteAnimSeqNo(appData->unk_218[3], 1);
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+void ov121_021E6478(Overlay121AppData *appData, int a1, int a2) {
+    switch (a1) {
+    case 0:
+    case 6:
+    case 7:
+        break;
+    case 1:
+        ov121_021E6544(appData, -1);
+        break;
+    case 2:
+        ov121_021E6544(appData,  1);
+        break;
+    case 3:
+        ov121_021E65A8(appData, a2);
+        break;
+    case 5:
+        if (appData->unk_232 < appData->unk_261) {
+            PlaySE(SEQ_SE_DP_DECIDE);
+            ov121_021E6EC0(appData);
+        } else {
+            PlaySE(SEQ_SE_DP_DECIDE);
+            Set2dSpriteAnimSeqNo(appData->unk_218[3], 1);
+            ov121_021E6690(appData, 0);
+        }
+        break;
+    case 4:
+        PlaySE(SEQ_SE_DP_DECIDE);
+        Set2dSpriteAnimSeqNo(appData->unk_218[3], 1);
+        ov121_021E6690(appData, 0);
+        break;
+    case 8:
+        if (appData->unk_232 < appData->unk_261) {
+            PlaySE(SEQ_SE_DP_DECIDE);
+            ov121_021E6EC0(appData);
+        } else {
+            PlaySE(SEQ_SE_DP_DECIDE);
+            Set2dSpriteAnimSeqNo(appData->unk_218[3], 1);
+            ov121_021E6690(appData, 0);
+        }
+        break;
+    }
+}
+
+void ov121_021E6544(Overlay121AppData *appData, int a1) {
+    if (a1 > 0) {
+        if (appData->unk_232 == 6) {
+            appData->unk_232 = 0;
+        } else if (appData->unk_232 + a1 >= appData->unk_261) {
+            appData->unk_232 = 6;
+        } else {
+            appData->unk_232 += a1;
+        }
+    } else if (a1 < 0) {
+        if (appData->unk_232 == 6) {
+            appData->unk_232 = appData->unk_261 - 1;
+        } else if (appData->unk_232 + a1 < 0) {
+            appData->unk_232 = 6;
+        } else {
+            appData->unk_232 += a1;
+        }
+    }
+    PlaySE(SEQ_SE_DP_SELECT);
+    ov121_021E65D8(appData);
+}
+
+void ov121_021E65A8(Overlay121AppData *appData, int a1) {
+    if (a1 == 6 || a1 < appData->unk_261) {
+        PlaySE(SEQ_SE_DP_SELECT);
+        appData->unk_232 = a1;
+        ov121_021E65D8(appData);
+    }
+}
+
+void ov121_021E65D8(Overlay121AppData *appData) {
+    VecFx32 pos = {};
+    u8 idx = appData->unk_232;
+    pos.x = ov121_021E7140[idx].x * FX32_ONE;
+    pos.y = ov121_021E7140[idx].y * FX32_ONE;
+    Sprite_SetMatrix(appData->unk_218[0], &pos);
+    Set2dSpriteAnimSeqNo(appData->unk_218[0], ov121_021E7140[idx].anim);
+}
+
+void ov121_021E662C(Overlay121AppData *appData, int a1) {
+    int new = appData->unk_260 + a1;
+    if (new < 0) {
+        new = appData->unk_25E - 1;
+    } else if (new >= appData->unk_25E) {
+        new = 0;
+    }
+    appData->unk_260 = new;
+    PlaySE(SEQ_SE_DP_SELECT78);
+    if (a1 > 0) {
+        Set2dSpriteAnimSeqNo(appData->unk_218[1], 6);
+    } else if (a1 < 0) {
+        Set2dSpriteAnimSeqNo(appData->unk_218[2], 4);
+    }
+    ov121_021E6DD8(appData);
+    appData->unk_233 = 0;
 }
