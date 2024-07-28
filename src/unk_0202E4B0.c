@@ -33,17 +33,6 @@ typedef struct UnkStruct_0202E920 {
     UnkStruct_0202E4B0_sub unk_50[6];
 } UnkStruct_0202E920;
 
-typedef struct UnkStruct_0202E9FC_sub {
-    int unk_0;
-    int unk_4;
-    String *unk_8;
-} UnkStruct_0202E9FC_sub;
-
-struct UnkStruct_0202E9FC {
-    int unk_00;
-    UnkStruct_0202E9FC_sub unk_04[6];
-};
-
 static void sub_0202E4C8(UnkStruct_0202E4B0_sub *a0);
 static BOOL sub_0202E4E0(UnkStruct_0202E4B0_sub *a0);
 static u32 *sub_0202E594(SaveData *saveData, HeapID heapId);

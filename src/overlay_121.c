@@ -4,6 +4,8 @@
 #include "global.h"
 #include "overlay_121.h"
 #include "math_util.h"
+#include "msgdata.h"
+#include "msgdata/msg.naix"
 #include "obj_char_transfer.h"
 #include "render_window.h"
 #include "system.h"
@@ -21,6 +23,18 @@
 #include "vram_transfer_manager.h"
 #include "yes_no_prompt.h"
 #include "player_data.h"
+#include "msgdata/msg/msg_0421.h"
+
+typedef struct Overlay121Sub254_sub {
+    UnkStruct_0202E9FC_sub *unk_00;
+    u16 unk_04;
+    u8 unk_06;
+} Overlay121Sub254_sub;
+
+typedef struct Overlay121Sub254 {
+    int unk_00;
+    Overlay121Sub254_sub unk_04[7];
+} Overlay121Sub254;
 
 typedef struct Overlay121Sub258 {
     u8 filler_00[4];
@@ -30,7 +44,12 @@ typedef struct Overlay121Sub258 {
 typedef struct Overlay121Appdata {
     BgConfig *unk_000;
     Window unk_004[6];
-    u8 filler_064[0x30];
+    MsgData *unk_064;
+    MessageFormat *unk_068;
+    String *unk_06C;
+    String *unk_070;
+    String *unk_074;
+    String *unk_078[7];
     YesNoPrompt *unk_094;
     SpriteList *unk_098;
     GF_G2dRenderer unk_09C;
@@ -45,7 +64,7 @@ typedef struct Overlay121Appdata {
     u8 unk_233;
     UnkStruct_0202E4B0 *unk_234;
     UnkStruct_0202E9FC *unk_238[7];
-    void *unk_254;
+    Overlay121Sub254 *unk_254;
     Overlay121Sub258 *unk_258;
     u8 unk_25C;
     u8 unk_25D;
@@ -707,4 +726,80 @@ void ov121_021E66EC(Overlay121AppData *appData) {
 void ov121_021E67E4(Overlay121AppData *appData) {
     ClearFrameAndWindow2(&appData->unk_004[5], TRUE);
     ClearWindowTilemapAndCopyToVram(&appData->unk_004[5]);
+}
+
+void ov121_021E67FC(Overlay121AppData *appData, SaveData *saveData) {
+    int j;
+    int i;
+    BOOL ip;
+    UnkStruct_0202E9FC *ptr;
+    int cnt;
+
+    appData->unk_254 = AllocFromHeap(HEAP_ID_9E, appData->unk_25E * sizeof(Overlay121Sub254));
+    MI_CpuClear8(appData->unk_254, appData->unk_25E * sizeof(Overlay121Sub254));
+    appData->unk_238[0] = sub_0202E9FC(saveData, appData->unk_25C, HEAP_ID_9E);
+    for (i = 0; i < appData->unk_25E; ++i) {
+        // sp10 = i
+        // spC = appData->unk_238[1 + i]
+        // sp8 = 4 * i
+        // sp4 = 12 * i
+        // sp0 = spC + 12 * j
+        // r5 = 60 * i
+        appData->unk_238[1 + i] = sub_0202EA80(appData->unk_234, appData->unk_25F + appData->unk_25D * 13 + i, HEAP_ID_9E);
+        cnt = 0;
+        ip = FALSE;
+        ptr = appData->unk_238[1 + i];
+        if (ptr->unk_00 == 0) {
+            appData->unk_254[i].unk_04[0].unk_00 = &appData->unk_238[0]->unk_04[i];
+            appData->unk_254[i].unk_04[0].unk_04 = 1;
+            appData->unk_254[i].unk_04[0].unk_06 = 0xFF;
+            appData->unk_254[i].unk_00 = 1;
+        } else {
+            for (j = 0; j < ptr->unk_00; ++j) {
+                if (!ip && appData->unk_238[0]->unk_04[i].unk_4 >= ptr->unk_04[j].unk_4) {
+                    appData->unk_254[i].unk_04[cnt].unk_00 = &appData->unk_238[0]->unk_04[i];
+                    appData->unk_254[i].unk_04[cnt].unk_04 = 1;
+                    appData->unk_254[i].unk_04[cnt].unk_06 = 0xFF;
+                    ++cnt;
+                    appData->unk_254[i].unk_04[cnt].unk_00 = &ptr->unk_04[j];
+                    appData->unk_254[i].unk_04[cnt].unk_04 = 1;
+                    appData->unk_254[i].unk_04[cnt].unk_06 = j;
+                    ip = TRUE;
+                } else {
+                    appData->unk_254[i].unk_04[cnt].unk_00 = &ptr->unk_04[j];
+                    appData->unk_254[i].unk_04[cnt].unk_04 = 1;
+                    appData->unk_254[i].unk_04[cnt].unk_06 = j;
+                }
+                ++cnt;
+            }
+            if (!ip) {
+                appData->unk_254[i].unk_04[cnt].unk_00 = &appData->unk_238[0]->unk_04[i];
+                appData->unk_254[i].unk_04[cnt].unk_04 = 1;
+                appData->unk_254[i].unk_04[cnt].unk_06 = 0xFF;
+            }
+            appData->unk_254[i].unk_00 = ptr->unk_00 + 1;
+        }
+    }
+}
+
+void ov121_021E69F0(Overlay121AppData *appData) {
+    appData->unk_064 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0421_bin, HEAP_ID_9E);
+    appData->unk_068 = MessageFormat_New_Custom(2, 76, HEAP_ID_9E);
+    appData->unk_06C = String_New(76, HEAP_ID_9E);
+    appData->unk_070 = NewString_ReadMsgData(appData->unk_064, msg_0421_00043);
+    appData->unk_074 = NewString_ReadMsgData(appData->unk_064, msg_0421_00042);
+    for (int i = 0; i < 7; ++i) {
+        appData->unk_078[i] = NewString_ReadMsgData(appData->unk_064, msg_0421_00044 + i);
+    }
+}
+
+void ov121_021E6A4C(Overlay121AppData *appData) {
+    for (int i = 0; i < 7; ++i) {
+        String_Delete(appData->unk_078[i]);
+    }
+    String_Delete(appData->unk_070);
+    String_Delete(appData->unk_074);
+    String_Delete(appData->unk_06C);
+    MessageFormat_Delete(appData->unk_068);
+    DestroyMsgData(appData->unk_064);
 }
