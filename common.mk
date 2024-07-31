@@ -174,12 +174,14 @@ $(BUILD_DIR)/lib/NitroSDK/%.o: MWCCVER := 2.0/sp2p3
 
 $(BUILD_DIR)/%.o: %.c
 $(BUILD_DIR)/%.o: %.c $(BUILD_DIR)/%.d
-	$(BUILD_C) $@ $<
+	@echo $(BUILD_C) $@ $<
+	@$(BUILD_C) $@ $< || { rm -f $(BUILD_DIR)/%.d; exit 1; }
 	@$(call fixdep,$(BUILD_DIR)/$*.d)
 
 $(BUILD_DIR)/%.o: %.s
 $(BUILD_DIR)/%.o: %.s $(BUILD_DIR)/%.d
-	$(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $@ $<
+	@echo $(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $@ $<
+	@$(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $@ $< || { rm -f $(BUILD_DIR)/%.d; exit 1; }
 	@$(call fixdep,$(BUILD_DIR)/$*.d)
 
 include $(wildcard $(DEPFILES))
