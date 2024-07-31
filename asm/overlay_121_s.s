@@ -7,234 +7,6 @@
 	.extern ov121_021E6168
 	.extern ov121_021E65D8
 
-	thumb_func_start ov121_021E6A84
-ov121_021E6A84: ; 0x021E6A84
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x30
-	mov r2, #0x26
-	lsl r2, r2, #4
-	add r1, r2, #0
-	add r4, r0, #0
-	sub r1, #0xc
-	ldr r1, [r4, r1]
-	ldrb r0, [r4, r2]
-	str r1, [sp, #0x20]
-	mov r1, #0x3c
-	mul r1, r0
-	str r1, [sp, #0x24]
-	sub r1, r2, #4
-	ldrb r1, [r4, r1]
-	lsl r0, r0, #3
-	lsl r2, r1, #2
-	ldr r1, _021E6C4C ; =ov121_021E7014
-	ldr r1, [r1, r2]
-	add r0, r1, r0
-	str r0, [sp, #0x10]
-	add r0, r4, #0
-	add r0, #0x14
-	mov r1, #0
-	bl FillWindowPixelBuffer
-	add r0, r4, #4
-	mov r1, #0
-	bl FillWindowPixelBuffer
-	mov r0, #1
-	str r0, [sp, #0x18]
-	mov r0, #0
-	add r1, r0, #0
-	ldr r2, _021E6C50 ; =0x00000261
-	str r1, [sp, #0x1c]
-	strb r1, [r4, r2]
-	ldr r2, [sp, #0x20]
-	ldr r1, [sp, #0x24]
-	str r0, [sp, #0x14]
-	ldr r1, [r2, r1]
-	cmp r1, #0
-	bgt _021E6ADC
-	b _021E6C04
-_021E6ADC:
-	ldr r1, [sp, #0x24]
-	add r7, r0, #0
-	add r1, r2, r1
-	str r1, [sp, #0x2c]
-	add r1, r4, #0
-	str r1, [sp, #0x28]
-	add r1, #0x14
-	str r1, [sp, #0x28]
-_021E6AEC:
-	ldr r1, [sp, #0x2c]
-	ldrh r1, [r1, #8]
-	cmp r1, #0
-	beq _021E6BEA
-	ldr r1, [sp, #0x2c]
-	ldr r1, [r1, #4]
-	ldr r5, [r1, #4]
-	ldr r1, [sp, #0x10]
-	ldr r1, [r1]
-	cmp r5, r1
-	bls _021E6B04
-	add r5, r1, #0
-_021E6B04:
-	cmp r5, r0
-	bge _021E6B0E
-	ldr r0, [sp, #0x18]
-	add r0, r0, #1
-	str r0, [sp, #0x18]
-_021E6B0E:
-	mov r0, #1
-	str r0, [sp]
-	str r0, [sp, #4]
-	ldr r0, [r4, #0x68]
-	ldr r2, [sp, #0x18]
-	mov r1, #0
-	mov r3, #1
-	bl BufferIntegerAsString
-	ldr r0, [r4, #0x68]
-	ldr r1, [r4, #0x6c]
-	ldr r2, [r4, #0x74]
-	bl StringExpandPlaceholders
-	mov r1, #0
-	str r7, [sp]
-	mov r0, #0xff
-	str r0, [sp, #4]
-	ldr r0, _021E6C54 ; =0x00010200
-	add r3, r1, #0
-	str r0, [sp, #8]
-	mov r0, #0
-	str r0, [sp, #0xc]
-	ldr r2, [r4, #0x6c]
-	add r0, r4, #4
-	bl AddTextPrinterParameterizedWithColor
-	mov r0, #1
-	str r0, [sp]
-	mov r0, #2
-	str r0, [sp, #4]
-	ldr r2, [sp, #0x2c]
-	ldr r0, [r4, #0x68]
-	ldr r2, [r2, #4]
-	mov r1, #1
-	ldr r2, [r2, #8]
-	mov r3, #2
-	bl BufferString
-	ldr r0, [r4, #0x68]
-	ldr r1, [r4, #0x6c]
-	ldr r2, [r4, #0x70]
-	bl StringExpandPlaceholders
-	mov r1, #0
-	str r7, [sp]
-	mov r0, #0xff
-	str r0, [sp, #4]
-	ldr r0, _021E6C54 ; =0x00010200
-	add r3, r1, #0
-	str r0, [sp, #8]
-	mov r0, #0
-	str r0, [sp, #0xc]
-	ldr r0, [sp, #0x28]
-	ldr r2, [r4, #0x6c]
-	bl AddTextPrinterParameterizedWithColor
-	mov r0, #1
-	str r0, [sp]
-	str r0, [sp, #4]
-	ldr r3, [sp, #0x10]
-	ldr r0, [r4, #0x68]
-	ldrh r3, [r3, #4]
-	mov r1, #0
-	add r2, r5, #0
-	bl BufferIntegerAsString
-	ldr r2, [sp, #0x10]
-	ldr r0, [r4, #0x68]
-	ldrh r2, [r2, #6]
-	ldr r1, [r4, #0x6c]
-	lsl r2, r2, #2
-	add r2, r4, r2
-	sub r2, #0x38
-	ldr r2, [r2]
-	bl StringExpandPlaceholders
-	mov r0, #0
-	ldr r1, [r4, #0x6c]
-	add r2, r0, #0
-	bl FontID_String_GetWidth
-	mov ip, r0
-	str r7, [sp]
-	mov r0, #0xff
-	str r0, [sp, #4]
-	ldr r0, _021E6C54 ; =0x00010200
-	mov r3, #0xa0
-	str r0, [sp, #8]
-	mov r0, #0
-	str r0, [sp, #0xc]
-	mov r6, ip
-	ldr r0, [sp, #0x28]
-	ldr r2, [r4, #0x6c]
-	mov r1, #0
-	sub r3, r3, r6
-	bl AddTextPrinterParameterizedWithColor
-	ldr r0, [sp, #0x14]
-	ldr r1, [sp, #0x1c]
-	add r2, r4, r0
-	ldr r0, _021E6C58 ; =0x00000262
-	add r7, #0x10
-	strb r1, [r2, r0]
-	ldr r1, [sp, #0x14]
-	add r0, r5, #0
-	add r1, r1, #1
-	str r1, [sp, #0x14]
-	cmp r1, #6
-	bge _021E6C04
-_021E6BEA:
-	ldr r1, [sp, #0x2c]
-	ldr r2, [sp, #0x20]
-	add r1, #8
-	str r1, [sp, #0x2c]
-	ldr r1, [sp, #0x1c]
-	add r1, r1, #1
-	str r1, [sp, #0x1c]
-	ldr r1, [sp, #0x24]
-	ldr r2, [r2, r1]
-	ldr r1, [sp, #0x1c]
-	cmp r1, r2
-	bge _021E6C04
-	b _021E6AEC
-_021E6C04:
-	add r0, r4, #0
-	add r0, #0x14
-	bl CopyWindowToVram
-	add r0, r4, #4
-	bl CopyWindowToVram
-	ldr r1, _021E6C50 ; =0x00000261
-	ldr r0, [sp, #0x14]
-	strb r0, [r4, r1]
-	add r0, r1, #0
-	sub r0, #0x30
-	ldrb r0, [r4, r0]
-	cmp r0, #1
-	bne _021E6C46
-	add r0, r1, #0
-	sub r0, #0x2f
-	ldrsb r2, [r4, r0]
-	ldrb r0, [r4, r1]
-	cmp r2, r0
-	blt _021E6C46
-	cmp r2, #7
-	bne _021E6C36
-	bl GF_AssertFail
-_021E6C36:
-	ldr r0, _021E6C50 ; =0x00000261
-	ldrb r1, [r4, r0]
-	sub r0, #0x2f
-	sub r1, r1, #1
-	strb r1, [r4, r0]
-	add r0, r4, #0
-	bl ov121_021E65D8
-_021E6C46:
-	add sp, #0x30
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_021E6C4C: .word ov121_021E7014
-_021E6C50: .word 0x00000261
-_021E6C54: .word 0x00010200
-_021E6C58: .word 0x00000262
-	thumb_func_end ov121_021E6A84
-
 	thumb_func_start ov121_021E6C5C
 ov121_021E6C5C: ; 0x021E6C5C
 	push {r3, r4, r5, lr}
@@ -756,7 +528,8 @@ ov121_021E70AC: ; 0x021E70AC
 	.global ov121_021E70C8
 ov121_021E70C8:
 	.byte 0x3F, 0x42, 0x0F, 0x00, 0x06, 0x00, 0x2F, 0x00
-	.byte 0x3F, 0x42, 0x0F, 0x00, 0x06, 0x00, 0x2F, 0x00, 0x3F, 0x42, 0x0F, 0x00, 0x06, 0x00, 0x2E, 0x00
+	.byte 0x3F, 0x42, 0x0F, 0x00, 0x06, 0x00, 0x2F, 0x00
+	.byte 0x3F, 0x42, 0x0F, 0x00, 0x06, 0x00, 0x2E, 0x00
 	.byte 0x3F, 0x42, 0x0F, 0x00, 0x06, 0x00, 0x2F, 0x00
 
 	.global ov121_021E70E8
@@ -767,9 +540,12 @@ ov121_021E70E8: ; 0x021E70E8
 
 	.global ov121_021E7110
 ov121_021E7110:
-	.byte 0x0F, 0x27, 0x00, 0x00, 0x04, 0x00, 0x2C, 0x00, 0x0F, 0x27, 0x00, 0x00, 0x04, 0x00, 0x2C, 0x00
-	.byte 0x0F, 0x27, 0x00, 0x00, 0x04, 0x00, 0x2C, 0x00, 0x0F, 0x27, 0x00, 0x00, 0x04, 0x00, 0x2C, 0x00
-	.byte 0x0F, 0x27, 0x00, 0x00, 0x04, 0x00, 0x2C, 0x00, 0x07, 0x00, 0x00, 0x00, 0x01, 0x00, 0x2D, 0x00
+	.byte 0x0F, 0x27, 0x00, 0x00, 0x04, 0x00, 0x2C, 0x00
+	.byte 0x0F, 0x27, 0x00, 0x00, 0x04, 0x00, 0x2C, 0x00
+	.byte 0x0F, 0x27, 0x00, 0x00, 0x04, 0x00, 0x2C, 0x00
+	.byte 0x0F, 0x27, 0x00, 0x00, 0x04, 0x00, 0x2C, 0x00
+	.byte 0x0F, 0x27, 0x00, 0x00, 0x04, 0x00, 0x2C, 0x00
+	.byte 0x07, 0x00, 0x00, 0x00, 0x01, 0x00, 0x2D, 0x00
 
 	.global ov121_021E7140
 ov121_021E7140: ; 0x021E7140

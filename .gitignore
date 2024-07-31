@@ -102,4 +102,9 @@ diff.txt
 # clangd
 .cache
 compile_commands.json
+
+# python
 /pyscripts/
+__pycache__
+.venv/
+*.pyc

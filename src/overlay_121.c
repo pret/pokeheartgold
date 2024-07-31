@@ -25,6 +25,14 @@
 #include "player_data.h"
 #include "msgdata/msg/msg_0421.h"
 
+#define min(a, b) ((a) <= (b) ? (a) : (b))
+
+typedef struct UnkStruct_ov121_021E7014 {
+    u32 unk_0;
+    u16 unk_4;
+    u16 unk_6;
+} UnkStruct_ov121_021E7014;
+
 typedef struct Overlay121Sub254_sub {
     UnkStruct_0202E9FC_sub *unk_00;
     u16 unk_04;
@@ -72,7 +80,7 @@ typedef struct Overlay121Appdata {
     u8 unk_25F;
     u8 unk_260;
     u8 unk_261;
-    u8 filler_262[6];
+    u8 unk_262[6];
     u8 unk_268;
 } Overlay121AppData;
 
@@ -123,6 +131,7 @@ void ov121_021E6F6C(void);
 BOOL ov121_021E6F78(Overlay121AppData *appData);
 
 extern const UnkStruct_Overlay121_021E7140 ov121_021E7140[];
+extern const UnkStruct_ov121_021E7014 *ov121_021E7014[];
 
 BOOL ov121_021E5900(OVY_MANAGER *man, int *pState) {
     ov121_021E5AEC(man, pState);
@@ -739,12 +748,6 @@ void ov121_021E67FC(Overlay121AppData *appData, SaveData *saveData) {
     MI_CpuClear8(appData->unk_254, appData->unk_25E * sizeof(Overlay121Sub254));
     appData->unk_238[0] = sub_0202E9FC(saveData, appData->unk_25C, HEAP_ID_9E);
     for (i = 0; i < appData->unk_25E; ++i) {
-        // sp10 = i
-        // spC = appData->unk_238[1 + i]
-        // sp8 = 4 * i
-        // sp4 = 12 * i
-        // sp0 = spC + 12 * j
-        // r5 = 60 * i
         appData->unk_238[1 + i] = sub_0202EA80(appData->unk_234, appData->unk_25F + appData->unk_25D * 13 + i, HEAP_ID_9E);
         cnt = 0;
         ip = FALSE;
@@ -802,4 +805,58 @@ void ov121_021E6A4C(Overlay121AppData *appData) {
     String_Delete(appData->unk_06C);
     MessageFormat_Delete(appData->unk_068);
     DestroyMsgData(appData->unk_064);
+}
+
+void ov121_021E6A84(Overlay121AppData *appData) {
+    int i;
+    int sp18;
+    int sp14;
+    const UnkStruct_ov121_021E7014 *sp10;
+    Overlay121Sub254 *sp24_plus_sp20;
+    int r0;
+    int r5;
+
+    sp24_plus_sp20= &appData->unk_254[appData->unk_260];
+    sp10 = &ov121_021E7014[appData->unk_25C][appData->unk_260];
+
+    FillWindowPixelBuffer(&appData->unk_004[1], 0);
+    FillWindowPixelBuffer(&appData->unk_004[0], 0);
+    sp18 = 1;
+    sp14 = 0;
+    r0 = 0;
+    i = 0;
+    appData->unk_261 = 0;
+    for (; i < sp24_plus_sp20->unk_00; ++i) {
+        if (sp24_plus_sp20->unk_04[i].unk_04 != 0) {
+            r5 = min(sp24_plus_sp20->unk_04[i].unk_00->unk_4, sp10->unk_0);
+            if (r5 < r0) {
+                ++sp18;
+            }
+            BufferIntegerAsString(appData->unk_068, 0, sp18, 1, PRINTING_MODE_RIGHT_ALIGN, TRUE);
+            StringExpandPlaceholders(appData->unk_068, appData->unk_06C, appData->unk_074);
+            AddTextPrinterParameterizedWithColor(&appData->unk_004[0], 0, appData->unk_06C, 0, 16 * sp14, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+
+            BufferString(appData->unk_068, 1, sp24_plus_sp20->unk_04[i].unk_00->unk_8, 2, 1, 2);
+            StringExpandPlaceholders(appData->unk_068, appData->unk_06C, appData->unk_070);
+            AddTextPrinterParameterizedWithColor(&appData->unk_004[1], 0, appData->unk_06C, 0, 16 * sp14, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+
+            BufferIntegerAsString(appData->unk_068, 0, r5, sp10->unk_4, PRINTING_MODE_RIGHT_ALIGN, TRUE);
+            StringExpandPlaceholders(appData->unk_068, appData->unk_06C, appData->unk_078[sp10->unk_6 - 44]);
+            AddTextPrinterParameterizedWithColor(&appData->unk_004[1], 0, appData->unk_06C, 160 - FontID_String_GetWidth(0, appData->unk_06C, 0), 16 * sp14, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+
+            appData->unk_262[sp14] = i;
+            r0 = r5;
+            if (++sp14 >= 6) {
+                break;
+            }
+        }
+    }
+    CopyWindowToVram(&appData->unk_004[1]);
+    CopyWindowToVram(&appData->unk_004[0]);
+    appData->unk_261 = sp14;
+    if (appData->unk_231 == 1 && appData->unk_232 >= appData->unk_261) {
+        GF_ASSERT(appData->unk_232 != 7);
+        appData->unk_232 = appData->unk_261 - 1;
+        ov121_021E65D8(appData);
+    }
 }
