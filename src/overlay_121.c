@@ -124,6 +124,8 @@ void ov121_021E6A4C(Overlay121AppData *appData);
 void ov121_021E6A84(Overlay121AppData *appData);
 void ov121_021E6C5C(Overlay121AppData *appData);
 void ov121_021E6CA4(Overlay121AppData *appData);
+void ov121_021E6CEC(Overlay121AppData *appData);
+void ov121_021E6D80(Overlay121AppData *appData);
 void ov121_021E6DD8(Overlay121AppData *appData);
 void ov121_021E6E68(Overlay121AppData *appData);
 void ov121_021E6EC0(Overlay121AppData *appData);
@@ -859,4 +861,47 @@ void ov121_021E6A84(Overlay121AppData *appData) {
         appData->unk_232 = appData->unk_261 - 1;
         ov121_021E65D8(appData);
     }
+}
+
+void ov121_021E6C5C(Overlay121AppData *appData) {
+    FillWindowPixelBuffer(&appData->unk_004[4], 0);
+    String *string = NewString_ReadMsgData(appData->unk_064, msg_0421_00040);
+    AddTextPrinterParameterizedWithColor(&appData->unk_004[4], 4, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 1, 0), NULL);
+    String_Delete(string);
+    CopyWindowToVram(&appData->unk_004[4]);
+}
+
+void ov121_021E6CA4(Overlay121AppData *appData) {
+    FillWindowPixelBuffer(&appData->unk_004[3], 0);
+    String *string = NewString_ReadMsgData(appData->unk_064, msg_0421_00041);
+    AddTextPrinterParameterizedWithColor(&appData->unk_004[3], 4, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 1, 0), NULL);
+    String_Delete(string);
+    CopyWindowToVram(&appData->unk_004[3]);
+}
+
+void ov121_021E6CEC(Overlay121AppData *appData) {
+    Overlay121Sub254 *r6;
+    u8 r4;
+    String *string;
+
+    r4 = appData->unk_262[appData->unk_232];
+    r6 = &appData->unk_254[appData->unk_260];
+    DrawFrameAndWindow2(&appData->unk_004[5], TRUE, 0x001, 12);
+    FillWindowPixelBuffer(&appData->unk_004[5], 0xFF);
+    BufferString(appData->unk_068, 0, r6->unk_04[r4].unk_00->unk_8, 2, 1, 2);
+    string = ReadMsgData_ExpandPlaceholders(appData->unk_068, appData->unk_064, msg_0421_00049, HEAP_ID_9E);
+    AddTextPrinterParameterizedWithColor(&appData->unk_004[5], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    String_Delete(string);
+    CopyWindowToVram(&appData->unk_004[5]);
+}
+
+void ov121_021E6D80(Overlay121AppData *appData) {
+    String *string;
+
+    DrawFrameAndWindow2(&appData->unk_004[5], TRUE, 0x001, 12);
+    FillWindowPixelBuffer(&appData->unk_004[5], 0xFF);
+    string = NewString_ReadMsgData(appData->unk_064, msg_0421_00052);
+    AddTextPrinterParameterizedWithColor(&appData->unk_004[5], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    String_Delete(string);
+    CopyWindowToVram(&appData->unk_004[5]);
 }
