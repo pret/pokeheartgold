@@ -102,7 +102,7 @@ UnkStruct_0202E4B0 *sub_0202E530(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_UNK_24);
 }
 
-void sub_0202E544(UnkStruct_0202E4B0 *a0, int a1, u32 a2) {
+void sub_0202E544(UnkStruct_0202E4B0 *a0, int a1, u8 a2) {
     if (a2 >= 6) {
         GF_ASSERT(a2 < 6);
         return;

@@ -33,21 +33,16 @@ typedef struct UnkStruct_ov121_021E7014 {
     u16 unk_6;
 } UnkStruct_ov121_021E7014;
 
-typedef struct Overlay121Sub254_sub {
+typedef struct Overlay121Sub258 {
     UnkStruct_0202E9FC_sub *unk_00;
     u16 unk_04;
     u8 unk_06;
-} Overlay121Sub254_sub;
+} Overlay121Sub258;
 
 typedef struct Overlay121Sub254 {
     int unk_00;
-    Overlay121Sub254_sub unk_04[7];
+    Overlay121Sub258 unk_04[7];
 } Overlay121Sub254;
-
-typedef struct Overlay121Sub258 {
-    u8 filler_00[4];
-    u16 unk_04;
-} Overlay121Sub258;
 
 typedef struct Overlay121Appdata {
     BgConfig *unk_000;
@@ -129,8 +124,9 @@ void ov121_021E6D80(Overlay121AppData *appData);
 void ov121_021E6DD8(Overlay121AppData *appData);
 void ov121_021E6E68(Overlay121AppData *appData);
 void ov121_021E6EC0(Overlay121AppData *appData);
+void ov121_021E6F58(void);
 void ov121_021E6F6C(void);
-BOOL ov121_021E6F78(Overlay121AppData *appData);
+void ov121_021E6F78(Overlay121AppData *appData);
 
 extern const UnkStruct_Overlay121_021E7140 ov121_021E7140[];
 extern const UnkStruct_ov121_021E7014 *ov121_021E7014[];
@@ -904,4 +900,82 @@ void ov121_021E6D80(Overlay121AppData *appData) {
     AddTextPrinterParameterizedWithColor(&appData->unk_004[5], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     String_Delete(string);
     CopyWindowToVram(&appData->unk_004[5]);
+}
+
+void ov121_021E6DD8(Overlay121AppData *appData) {
+    String *string;
+    String *string2;
+    int msgNo;
+
+    FillWindowPixelBuffer(&appData->unk_004[2], 0);
+    msgNo = (appData->unk_25C == 0 ? msg_0421_00053 : msg_0421_00065) + appData->unk_260 * 2;
+    string = NewString_ReadMsgData(appData->unk_064, msgNo);
+    string2 = NewString_ReadMsgData(appData->unk_064, msgNo + 1);
+    AddTextPrinterParameterizedWithColor(&appData->unk_004[2], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&appData->unk_004[2], 0, string2, 0, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    String_Delete(string);
+    String_Delete(string2);
+    CopyWindowToVram(&appData->unk_004[2]);
+}
+
+void ov121_021E6E68(Overlay121AppData *appData) {
+    String *string;
+
+    DrawFrameAndWindow2(&appData->unk_004[5], TRUE, 0x001, 12);
+    FillWindowPixelBuffer(&appData->unk_004[5], 0xFF);
+    string = NewString_ReadMsgData(appData->unk_064, msg_0421_00048);
+    AddTextPrinterParameterizedWithColor(&appData->unk_004[5], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    String_Delete(string);
+    CopyWindowToVram(&appData->unk_004[5]);
+}
+
+void ov121_021E6EC0(Overlay121AppData *appData) {
+    YesNoPromptTemplate template;
+
+    appData->unk_258 = &appData->unk_254[appData->unk_260].unk_04[appData->unk_262[appData->unk_232]];
+    if (appData->unk_258->unk_06 == 0xFF) {
+        appData->unk_233 = 3;
+        ov121_021E6D80(appData);
+        PlaySE(SEQ_SE_DP_CUSTOM06);
+    } else {
+        MI_CpuClear8(&template, sizeof(YesNoPromptTemplate));
+        template.bgConfig = appData->unk_000;
+        template.bgId = GF_BG_LYR_MAIN_0;
+        template.tileStart = 0x08F;
+        template.plttSlot = 13;
+        template.x = 25;
+        template.y = 6;
+        YesNoPrompt_InitFromTemplate(appData->unk_094, &template);
+        ov121_021E6CEC(appData);
+        ov121_021E6F58();
+        appData->unk_233 = 2;
+    }
+}
+
+void ov121_021E6F58(void) {
+    G2_SetBlendBrightness(
+        GX_PLANEMASK_ALL & ~GX_PLANEMASK_BG0,
+        -7
+    );
+}
+
+void ov121_021E6F6C(void) {
+    G2_BlendNone();
+}
+
+void ov121_021E6F78(Overlay121AppData *appData) {
+    int i;
+    int j;
+    int r6;
+    Overlay121Sub258 *r1;
+    for (i = 0; i < appData->unk_25E; ++i) {
+        r6 = 0;
+        for (j = 0; j < appData->unk_254[i].unk_00; ++j) {
+            r1 = &appData->unk_254[i].unk_04[j];
+            if (r1->unk_06 != 0xFF && r1->unk_04 == 0) {
+                sub_0202E544(appData->unk_234, appData->unk_25F + appData->unk_25D * 13 + i, r1->unk_06 - r6);
+                ++r6;
+            }
+        }
+    }
 }
