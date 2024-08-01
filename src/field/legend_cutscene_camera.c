@@ -166,25 +166,21 @@ static const CameraParam sCameraParam_HeartGold[] = {
         .angle = { .x = 0xF562 },
         .perspectiveType = 0,
         .perspective = 0x5C1,
-        .setReference = FALSE,
     }, {
         .distance = FX32_CONST(666.922119148625),
         .angle = { .x = 0xF562 },
         .perspectiveType = 0,
         .perspective = 0x5C1,
-        .setReference = FALSE,
     }, {
         .distance = FX32_CONST(666.922119148625),
         .angle = { .x = 0xF762 },
         .perspectiveType = 0,
         .perspective = 0xCC1,
-        .setReference = FALSE,
     }, {
         .distance = FX32_CONST(666.922119148625),
         .angle = { .x = 0xFBA2 },
         .perspectiveType = 0,
         .perspective = 0xCC1,
-        .setReference = FALSE,
     },
 };
 
@@ -194,31 +190,26 @@ static const CameraParam sCameraParam_SoulSilver[] = {
         .angle = { .x = 0xDFE2 },
         .perspectiveType = 0,
         .perspective = 0x5C1,
-        .setReference = FALSE,
     }, {
         .distance = FX32_CONST(666.922119148625),
         .angle = { .x = 0xDFE2 },
         .perspectiveType = 0,
         .perspective = 0x5C1,
-        .setReference = FALSE,
     }, {
         .distance = FX32_CONST(666.922119148625),
         .angle = { .x = 0xDEF2 },
         .perspectiveType = 0,
         .perspective = 0x5C1,
-        .setReference = FALSE,
     }, {
         .distance = FX32_CONST(666.922119148625),
         .angle = { .x = 0xDEF2 },
         .perspectiveType = 0,
         .perspective = 0x5C1,
-        .setReference = FALSE,
     }, {
         .distance = FX32_CONST(666.922119148625),
         .angle = { .x = 0xDEF2 },
         .perspectiveType = 0,
         .perspective = 0x5C1,
-        .setReference = FALSE,
     },
 };
 

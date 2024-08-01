@@ -1,18 +1,19 @@
 #ifndef POKEHEARTGOLD_MAP_EVENTS_INTERNAL_H
 #define POKEHEARTGOLD_MAP_EVENTS_INTERNAL_H
 
+#include "field_types_def.h"
 #include "wild_encounter.h"
 
-typedef struct BG_EVENT {
+struct BG_EVENT {
     u16 scr;
     u16 type;
     int x;
     int y;
     int z;
     u16 dir;
-} BG_EVENT;
+};
 
-typedef struct ObjectEvent {
+struct ObjectEvent {
     u16 id;
     u16 spriteId;
     u16 movement;
@@ -28,17 +29,17 @@ typedef struct ObjectEvent {
     u16 x;
     u16 y;
     s32 z;
-} ObjectEvent;
+};
 
-typedef struct WARP_EVENT {
+struct WARP_EVENT {
     u16 x;
     u16 y;
     u16 header;
     u16 anchor;
     u32 height;
-} WARP_EVENT;
+};
 
-typedef struct COORD_EVENT {
+struct COORD_EVENT {
     u16 scr;
     s16 x;
     s16 y;
@@ -47,7 +48,7 @@ typedef struct COORD_EVENT {
     u16 z;
     u16 val;
     u16 var;
-} COORD_EVENT;
+};
 
 typedef struct MapEvents {
     u32 num_bg_events;

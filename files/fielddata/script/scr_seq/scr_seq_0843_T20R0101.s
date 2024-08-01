@@ -43,7 +43,7 @@ _008F:
 	move_person_facing obj_T20R0101_doctor, 4, 0, 5, DIR_SOUTH
 	move_person_facing obj_T20R0101_var_1, 7, 0, 12, DIR_EAST
 _00B4:
-	scrcmd_621
+	place_starter_balls_in_elms_lab
 	end
 
 _00B8:

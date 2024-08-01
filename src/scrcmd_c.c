@@ -1795,7 +1795,7 @@ BOOL ScrCmd_RestoreOverworld(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_436(ScriptContext *ctx) {
-    sub_0205525C(ctx->fieldSystem->taskman);
+    CallTask_LeaveOverworld(ctx->fieldSystem->taskman);
     return TRUE;
 }
 
@@ -4748,23 +4748,23 @@ BOOL ScrCmd_CameronPhoto(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_616(ScriptContext *ctx) {
+BOOL ScrCmd_CountSavedPhotos(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = PhotoAlbum_GetNumSaved(Save_PhotoAlbum_Get(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
-BOOL ScrCmd_617(ScriptContext *ctx) {
-    sub_0206A860(ctx->fieldSystem);
+BOOL ScrCmd_OpenPhotoAlbum(ScriptContext *ctx) {
+    FieldSystem_ViewSavedPhotos(ctx->fieldSystem);
     return TRUE;
 }
 
-BOOL ScrCmd_621(ScriptContext *ctx) {
+BOOL ScrCmd_PlaceStarterBallsInElmsLab(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    const struct UnkStruct_020FACDC sp4[3] = {
-        {0x00083000, 0x00000000, 0x00041000},
-        {0x0008D000, 0x00000000, 0x00041000},
-        {0x00088000, 0x00000000, 0x00048000},
+    const VecFx32 ballCoords[3] = {
+        {FX32_CONST(131), 0, FX32_CONST(65)},
+        {FX32_CONST(141), 0, FX32_CONST(65)},
+        {FX32_CONST(136), 0, FX32_CONST(72)},
     };
     int n, i;
 
@@ -4779,7 +4779,7 @@ BOOL ScrCmd_621(ScriptContext *ctx) {
         n = 3;
     }
     for (i = 0; i < n; i++) {
-        ov01_021F3C0C(fieldSystem->unk9C, 0x8D, &sp4[i], 0, fieldSystem->unk54);
+        ov01_021F3C0C(fieldSystem->unk9C, 0x8D, &ballCoords[i], 0, fieldSystem->unk54);
     }
     return FALSE;
 }

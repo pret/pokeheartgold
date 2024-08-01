@@ -96,7 +96,7 @@ static BOOL sub_0206B984(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     switch (r7->state) {
     case 0:
-        sub_0205525C(taskManager);
+        CallTask_LeaveOverworld(taskManager);
         SealCase *sealCase = Save_SealCase_Get(r7->saveData);
         r6->sealCase = sealCase;
         r6->unk31 = 0;

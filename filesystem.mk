@@ -449,6 +449,8 @@ $(eval $(call arc_strip_name,files/arc/headbutt.$(buildname).narc,files/a/2/5/2)
 $(eval $(call arc_strip_name,files/demo/opening/gs_opening.narc,files/a/2/6/2))
 $(eval $(call arc_strip_name,files/application/voltorb_flip.narc,files/a/2/6/4))
 $(eval $(call arc_strip_name,files/poketool/icongra/poke_icon/poke_icon.narc,files/a/0/2/0))
+$(eval $(call arc_strip_name,files/data/photo_data.narc,files/a/2/5/4))
+$(eval $(call arc_strip_name,files/graphic/camera_viewfinder.narc,files/a/2/6/1))
 
 $(DIFF_ARCS):
 	cp $< $@
@@ -509,6 +511,8 @@ include files/demo/legend.mk
 include files/arc/headbutt.mk
 include files/poketool/personal/personal.mk
 include files/fielddata/graphic/preview_graphic/preview_graphic.mk
+include files/data/photo_data.mk
+include files/graphic/camera_viewfinder.mk
 
 $(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
 

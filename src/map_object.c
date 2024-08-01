@@ -112,7 +112,7 @@ static LocalMapObject *MapObject_CreateFromObjectEvent(MapObjectManager *manager
             return ret;
         }
     }
-    
+
     ret = MapObjectManager_GetFirstInactiveObject(manager);
     if (ret == NULL) {
         return ret;

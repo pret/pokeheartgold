@@ -91,13 +91,13 @@ void sub_0203DEF0(FieldSystem *fieldSystem) {
 
     HandleLoadOverlay(FS_OVERLAY_ID(field), OVY_LOAD_ASYNC);
 
-    fieldSystem->unk6C = 0;
+    fieldSystem->unk6C = FALSE;
     fieldSystem->unk0->unk8 = FALSE;
     fieldSystem->unk0->unk0 = OverlayManager_New(&ov01_02206378, fieldSystem, HEAP_ID_FIELD);
 }
 
 void sub_0203DF34(FieldSystem *fieldSystem) {
-    fieldSystem->unk6C = 0;
+    fieldSystem->unk6C = FALSE;
 }
 
 u8 sub_0203DF3C(FieldSystem *fieldSystem) {
@@ -116,7 +116,7 @@ BOOL sub_0203DF7C(FieldSystem *fieldSystem) {
 }
 
 BOOL sub_0203DF8C(FieldSystem *fieldSystem) {
-    return (fieldSystem->unk0->unk0 && fieldSystem->unk6C);
+    return (fieldSystem->unk0->unk0 != NULL && fieldSystem->unk6C);
 }
 
 BOOL sub_0203DFA4(FieldSystem *fieldSystem) {

@@ -247,7 +247,7 @@ Static main
     Object asm/unk_0206979C.o
     Object src/follow_mon.o
     Object src/map_preview_graphic.o
-    Object asm/field_take_photo.o
+    Object src/field_take_photo.o
     Object src/unk_0206B910.o
     Object src/alph_checks.o
     Object src/get_egg.o
@@ -629,7 +629,7 @@ Overlay OVY_18
 Overlay OVY_19
 {
     After OVY_3
-    Object asm/overlay_19.o
+    Object src/application/view_photo.o
 }
 Overlay OVY_20
 {

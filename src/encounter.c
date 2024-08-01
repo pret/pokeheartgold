@@ -126,7 +126,7 @@ static BOOL Task_StartEncounter(TaskManager *taskManager) { //todo: better name
             (*state)++;
             break;
         case 1:
-            sub_0205525C(taskManager);
+            CallTask_LeaveOverworld(taskManager);
             (*state)++;
             break;
         case 2:
@@ -202,7 +202,7 @@ static BOOL Task_020508B8(TaskManager *taskManager) {
             (*state)++;
             break;
         case 1:
-            sub_0205525C(taskManager);
+            CallTask_LeaveOverworld(taskManager);
             (*state)++;
             break;
         case 2:
@@ -263,7 +263,7 @@ static BOOL Task_020509F0(TaskManager *taskManager) {
             (*state)++;
             break;
         case 1:
-            sub_0205525C(taskManager);
+            CallTask_LeaveOverworld(taskManager);
             (*state)++;
             break;
         case 2:
@@ -359,7 +359,7 @@ static BOOL Task_WildEncounter(TaskManager *taskManager) {
             encounter->state++;
             break;
         case 1:
-            sub_0205525C(taskManager);
+            CallTask_LeaveOverworld(taskManager);
             encounter->state++;
             break;
         case 2:
@@ -413,7 +413,7 @@ static BOOL Task_SafariEncounter(TaskManager *taskManager) {
             (*state)++;
             break;
         case 1:
-            sub_0205525C(taskManager);
+            CallTask_LeaveOverworld(taskManager);
             (*state)++;
             break;
         case 2:
@@ -490,7 +490,7 @@ static BOOL Task_BugContestEncounter(TaskManager *taskManager) {
             (*state)++;
             break;
         case 1:
-            sub_0205525C(taskManager);
+            CallTask_LeaveOverworld(taskManager);
             (*state)++;
             break;
         case 2:
@@ -589,7 +589,7 @@ static BOOL Task_PalParkEncounter(TaskManager *taskManager) {
             (*state)++;
             break;
         case 1:
-            sub_0205525C(taskManager);
+            CallTask_LeaveOverworld(taskManager);
             (*state)++;
             break;
         case 2:
@@ -657,7 +657,7 @@ static BOOL Task_TutorialBattle(TaskManager *taskManager) {
             (*state)++;
             break;
         case 1:
-            sub_0205525C(taskManager);
+            CallTask_LeaveOverworld(taskManager);
             (*state)++;
             break;
         case 2:

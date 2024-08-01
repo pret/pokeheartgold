@@ -10,8 +10,8 @@
 .public IsPaletteFadeFinished
 .public GF_RTC_CopyTime
 .public GF_RTC_CopyDate
-.public sub_020148F4
-.public sub_02014904
+.public GF_RTC_UnfreezeTime
+.public GF_RTC_SetAndFreezeTime
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public SetBgPriority
@@ -41,9 +41,9 @@
 .public sub_020537A8
 .public GetFirstAliveMonInParty_CrashIfNone
 .public sub_02054EB0
-.public sub_0205525C
+.public CallTask_LeaveOverworld
 .public CallTask_RestoreOverworld
-.public PalleteFadeUntilFinished
+.public PaletteFadeUntilFinished
 .public CallTask_FadeFromBlack
 .public PlayerAvatar_GetFacingDirection
 .public GetPlayerXCoord
@@ -86,9 +86,9 @@
 .public FollowMon_SetObjectParams
 .public FollowMon_IsActive
 .public FieldSystem_TakePhoto
-.public sub_0206A860
-.public sub_0206A8C0
-.public sub_0206A8DC
+.public FieldSystem_ViewSavedPhotos
+.public FieldViewPhoto_GetAlbumScrollParam
+.public FieldViewPhoto_SetExitRequestedFlag
 .public GetMonData
 .public MonIsShiny
 .public Party_GetCount
