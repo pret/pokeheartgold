@@ -85,6 +85,105 @@ typedef struct UnkStruct_Overlay121_021E7140 {
     int anim;
 } UnkStruct_Overlay121_021E7140;
 
+static const UnkStruct_Overlay121_021E7140 ov121_021E7140[] = {
+    {
+        .x = 0x80,
+        .y = 0x40,
+        .anim = 7
+    },
+    {
+        .x = 0x80,
+        .y = 0x50,
+        .anim = 7
+    },
+    {
+        .x = 0x80,
+        .y = 0x60,
+        .anim = 7
+    },
+    {
+        .x = 0x80,
+        .y = 0x70,
+        .anim = 7
+    },
+    {
+        .x = 0x80,
+        .y = 0x80,
+        .anim = 7
+    },
+    {
+        .x = 0x80,
+        .y = 0x90,
+        .anim = 7
+    },
+    {
+        .x = 0xE0,
+        .y = 0xB0,
+        .anim = 2
+    },
+};
+
+static const UnkStruct_ov121_021E7014 ov121_021E7110[] = {
+    {
+        .unk_0 = 0x0000270F,
+        .unk_4 = 0x0004,
+        .unk_6 = 0x002C,
+    },
+    {
+        .unk_0 = 0x0000270F,
+        .unk_4 = 0x0004,
+        .unk_6 = 0x002C,
+    },
+    {
+        .unk_0 = 0x0000270F,
+        .unk_4 = 0x0004,
+        .unk_6 = 0x002C,
+    },
+    {
+        .unk_0 = 0x0000270F,
+        .unk_4 = 0x0004,
+        .unk_6 = 0x002C,
+    },
+    {
+        .unk_0 = 0x0000270F,
+        .unk_4 = 0x0004,
+        .unk_6 = 0x002C,
+    },
+    {
+        .unk_0 = 0x00000007,
+        .unk_4 = 0x0001,
+        .unk_6 = 0x002D,
+    },
+};
+
+static const UnkStruct_ov121_021E7014 ov121_021E70C8[] = {
+    {
+        .unk_0 = 0x000F423F,
+	    .unk_4 = 0x0006,
+        .unk_6 = 0x002F,
+    },
+    {
+        .unk_0 = 0x000F423F,
+	    .unk_4 = 0x0006,
+        .unk_6 = 0x002F,
+    },
+    {
+        .unk_0 = 0x000F423F,
+	    .unk_4 = 0x0006,
+        .unk_6 = 0x002E,
+    },
+    {
+        .unk_0 = 0x000F423F,
+	    .unk_4 = 0x0006,
+        .unk_6 = 0x002F,
+    },
+};
+
+static const UnkStruct_ov121_021E7014 *const ov121_021E7014[] = {
+    ov121_021E7110,
+    ov121_021E70C8,
+};
+
 void ov121_021E5AEC(OVY_MANAGER *man, int *pState);
 BOOL ov121_021E5C50(Overlay121AppData *appData);
 void ov121_021E5CB4(Overlay121AppData *appData);
@@ -127,9 +226,6 @@ void ov121_021E6EC0(Overlay121AppData *appData);
 void ov121_021E6F58(void);
 void ov121_021E6F6C(void);
 void ov121_021E6F78(Overlay121AppData *appData);
-
-extern const UnkStruct_Overlay121_021E7140 ov121_021E7140[];
-extern const UnkStruct_ov121_021E7014 *ov121_021E7014[];
 
 BOOL ov121_021E5900(OVY_MANAGER *man, int *pState) {
     ov121_021E5AEC(man, pState);
@@ -330,8 +426,18 @@ BOOL ov121_021E5D5C(Overlay121AppData *appData) {
 }
 
 void ov121_021E5D84(void) {
-    extern const GraphicsBanks ov121_021E70E8;
-    GraphicsBanks graphicsBanks = ov121_021E70E8;
+    GraphicsBanks graphicsBanks = {
+        .bg = GX_VRAM_BG_128_A,
+        .bgextpltt = GX_VRAM_BGEXTPLTT_NONE,
+        .subbg = GX_VRAM_SUB_BG_128_C,
+        .subbgextpltt = GX_VRAM_SUB_BGEXTPLTT_NONE,
+        .obj = GX_VRAM_OBJ_64_E,
+        .objextpltt = GX_VRAM_OBJEXTPLTT_NONE,
+        .subobj = GX_VRAM_SUB_OBJ_16_I,
+        .subobjextpltt = GX_VRAM_SUB_OBJEXTPLTT_NONE,
+        .tex = GX_VRAM_TEX_0_B,
+        .texpltt = GX_VRAM_TEXPLTT_01_FG,
+    };
     GfGfx_SetBanks(&graphicsBanks);
 }
 
@@ -340,42 +446,101 @@ void ov121_021E5DA4(BgConfig *bgConfig) {
     GfGfx_SwapDisplay();
 
     {
-        extern const GraphicsModes ov121_021E701C;
-        GraphicsModes graphicsModes = ov121_021E701C;
+        GraphicsModes graphicsModes = {
+            .dispMode = GX_DISPMODE_GRAPHICS,
+            .bgMode = GX_BGMODE_0,
+            .subMode = GX_BGMODE_0,
+            ._2d3dMode = GX_BG0_AS_2D
+        };
         SetBothScreensModesAndDisable(&graphicsModes);
     }
 
     {
-        extern const BgTemplate ov121_021E7058;
-        BgTemplate bgTemplate = ov121_021E7058;
+        BgTemplate bgTemplate = {
+            .x = 0, .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xf800,
+            .charBase = GX_BG_CHARBASE_0x00000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 0,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = 0
+        };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_0, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_0);
     }
 
     {
-        extern const BgTemplate ov121_021E7074;
-        BgTemplate bgTemplate = ov121_021E7074;
+        BgTemplate bgTemplate = {
+            .x = 0, .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xf000,
+            .charBase = GX_BG_CHARBASE_0x08000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 1,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = 0
+        };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_1, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_1);
     }
 
     {
-        extern const BgTemplate ov121_021E7090;
-        BgTemplate bgTemplate = ov121_021E7090;
+        BgTemplate bgTemplate = {
+            .x = 0, .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xe000,
+            .charBase = GX_BG_CHARBASE_0x08000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 2,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = 0
+        };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_2, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_2);
     }
 
     {
-        extern const BgTemplate ov121_021E703C;
-        BgTemplate bgTemplate = ov121_021E703C;
+        BgTemplate bgTemplate = {
+            .x = 0, .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xd800,
+            .charBase = GX_BG_CHARBASE_0x10000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 3,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = 0
+        };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_3, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_3);
     }
 
     {
-        extern const BgTemplate ov121_021E70AC;
-        BgTemplate bgTemplate = ov121_021E70AC;
+        BgTemplate bgTemplate = {
+            .x = 0, .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xf000,
+            .charBase = GX_BG_CHARBASE_0x00000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 0,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .mosaic = 0
+        };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_0, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_0);
     }
@@ -386,8 +551,12 @@ void ov121_021E5DA4(BgConfig *bgConfig) {
 }
 
 void ov121_021E5EDC(void) {
-    extern const ObjCharTransferTemplate ov121_021E702C;
-    ObjCharTransferTemplate template = ov121_021E702C;
+    ObjCharTransferTemplate template = {
+        .maxTasks = 10,
+        .sizeMain = 0x10000,
+        .sizeSub = 0x4000,
+        .heapId = HEAP_ID_9E
+    };
     ObjCharTransfer_Init(&template);
     sub_02022588(1, HEAP_ID_9E);
     ObjCharTransfer_ClearBuffers();
@@ -721,13 +890,13 @@ void ov121_021E6690(Overlay121AppData *appData, int a1) {
 
 void ov121_021E66EC(Overlay121AppData *appData) {
     LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0x1E0, HEAP_ID_9E);
-    AddWindowParameterized(appData->unk_000, &appData->unk_004[0], GF_BG_LYR_MAIN_1, 5, 7, 2, 12, 15, 0x001);
-    AddWindowParameterized(appData->unk_000, &appData->unk_004[1], GF_BG_LYR_MAIN_1, 7, 7, 20, 12, 15, 0x019);
+    AddWindowParameterized(appData->unk_000, &appData->unk_004[0], GF_BG_LYR_MAIN_1, 5, 7, 2, 12, 15, 0x1);
+    AddWindowParameterized(appData->unk_000, &appData->unk_004[1], GF_BG_LYR_MAIN_1, 7, 7, 20, 12, 15, 0x19);
     AddWindowParameterized(appData->unk_000, &appData->unk_004[2], GF_BG_LYR_MAIN_2, 2, 1, 28, 4, 15, 0x109);
     AddWindowParameterized(appData->unk_000, &appData->unk_004[3], GF_BG_LYR_MAIN_2, 25, 21, 6, 2, 1, 0x179);
     AddWindowParameterized(appData->unk_000, &appData->unk_004[4], GF_BG_LYR_MAIN_2, 4, 21, 12, 2, 1, 0x185);
-    AddWindowParameterized(appData->unk_000, &appData->unk_004[5], GF_BG_LYR_MAIN_0, 2, 1, 28, 4, 15, 0x01F);
-    LoadUserFrameGfx2(appData->unk_000, GF_BG_LYR_MAIN_0, 0x001, 12, appData->unk_268, HEAP_ID_9E);
+    AddWindowParameterized(appData->unk_000, &appData->unk_004[5], GF_BG_LYR_MAIN_0, 2, 1, 28, 4, 15, 0x1F);
+    LoadUserFrameGfx2(appData->unk_000, GF_BG_LYR_MAIN_0, 0x1, 12, appData->unk_268, HEAP_ID_9E);
 }
 
 void ov121_021E67E4(Overlay121AppData *appData) {
@@ -882,7 +1051,7 @@ void ov121_021E6CEC(Overlay121AppData *appData) {
 
     r4 = appData->unk_262[appData->unk_232];
     r6 = &appData->unk_254[appData->unk_260];
-    DrawFrameAndWindow2(&appData->unk_004[5], TRUE, 0x001, 12);
+    DrawFrameAndWindow2(&appData->unk_004[5], TRUE, 0x1, 12);
     FillWindowPixelBuffer(&appData->unk_004[5], 0xFF);
     BufferString(appData->unk_068, 0, r6->unk_04[r4].unk_00->unk_8, 2, 1, 2);
     string = ReadMsgData_ExpandPlaceholders(appData->unk_068, appData->unk_064, msg_0421_00049, HEAP_ID_9E);
@@ -894,7 +1063,7 @@ void ov121_021E6CEC(Overlay121AppData *appData) {
 void ov121_021E6D80(Overlay121AppData *appData) {
     String *string;
 
-    DrawFrameAndWindow2(&appData->unk_004[5], TRUE, 0x001, 12);
+    DrawFrameAndWindow2(&appData->unk_004[5], TRUE, 0x1, 12);
     FillWindowPixelBuffer(&appData->unk_004[5], 0xFF);
     string = NewString_ReadMsgData(appData->unk_064, msg_0421_00052);
     AddTextPrinterParameterizedWithColor(&appData->unk_004[5], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
@@ -921,7 +1090,7 @@ void ov121_021E6DD8(Overlay121AppData *appData) {
 void ov121_021E6E68(Overlay121AppData *appData) {
     String *string;
 
-    DrawFrameAndWindow2(&appData->unk_004[5], TRUE, 0x001, 12);
+    DrawFrameAndWindow2(&appData->unk_004[5], TRUE, 0x1, 12);
     FillWindowPixelBuffer(&appData->unk_004[5], 0xFF);
     string = NewString_ReadMsgData(appData->unk_064, msg_0421_00048);
     AddTextPrinterParameterizedWithColor(&appData->unk_004[5], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
@@ -941,7 +1110,7 @@ void ov121_021E6EC0(Overlay121AppData *appData) {
         MI_CpuClear8(&template, sizeof(YesNoPromptTemplate));
         template.bgConfig = appData->unk_000;
         template.bgId = GF_BG_LYR_MAIN_0;
-        template.tileStart = 0x08F;
+        template.tileStart = 0x8F;
         template.plttSlot = 13;
         template.x = 25;
         template.y = 6;

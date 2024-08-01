@@ -1181,7 +1181,6 @@ Overlay OVY_121
 {
     After main
     Object src/overlay_121.o
-    Object asm/overlay_121_s.o
 }
 Overlay voltorb_flip
 {
