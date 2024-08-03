@@ -160,7 +160,7 @@
 .public SealOnCapsuleGetY
 .public GetMonData
 .public GetMonSpriteCharAndPlttNarcIdsEx
-.public GetMonPicHeightBySpeciesGenderForme
+.public GetMonPicHeightBySpeciesGenderForm
 .public sub_02071FDC
 .public sub_020729D8
 .public sub_020729FC

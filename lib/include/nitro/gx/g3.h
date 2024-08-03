@@ -151,31 +151,31 @@ typedef enum {
 } GXMtxMode;
 
 typedef enum {
-	GX_TEXGEN_NONE        = 0,
-	GX_TEXGEN_TEXCOORD    = 1,
-	GX_TEXGEN_NORMAL      = 2,
-	GX_TEXGEN_VERTEX      = 3
+    GX_TEXGEN_NONE        = 0,
+    GX_TEXGEN_TEXCOORD    = 1,
+    GX_TEXGEN_NORMAL      = 2,
+    GX_TEXGEN_VERTEX      = 3
 } GXTexGen;
 
 typedef enum {
-	GX_TEXREPEAT_NONE    = 0,
-	GX_TEXREPEAT_S       = 1,
-	GX_TEXREPEAT_T       = 2,
-	GX_TEXREPEAT_ST      = 3
+    GX_TEXREPEAT_NONE    = 0,
+    GX_TEXREPEAT_S       = 1,
+    GX_TEXREPEAT_T       = 2,
+    GX_TEXREPEAT_ST      = 3
 } GXTexRepeat;
 
 typedef enum {
-	GX_TEXFLIP_NONE    = 0,
-	GX_TEXFLIP_S       = 1,
-	GX_TEXFLIP_T       = 2,
-	GX_TEXFLIP_ST      = 3
+    GX_TEXFLIP_NONE    = 0,
+    GX_TEXFLIP_S       = 1,
+    GX_TEXFLIP_T       = 2,
+    GX_TEXFLIP_ST      = 3
 } GXTexFlip;
 
 typedef enum {
-	GX_BEGIN_TRIANGLES      = 0,
-	GX_BEGIN_QUADS          = 1,
-	GX_BEGIN_TRIANGLE_STRIP = 2,
-	GX_BEGIN_QUAD_STRIP     = 3
+    GX_BEGIN_TRIANGLES      = 0,
+    GX_BEGIN_QUADS          = 1,
+    GX_BEGIN_TRIANGLE_STRIP = 2,
+    GX_BEGIN_QUAD_STRIP     = 3
 } GXBegin;
 
 typedef enum {
@@ -198,17 +198,17 @@ typedef enum {
 } GXLightMask;
 
 typedef enum {
-	GX_POLYGONMODE_MODULATE    = 0,
-	GX_POLYGONMODE_DECAL       = 1,
-	GX_POLYGONMODE_TOON        = 2,
-	GX_POLYGONMODE_SHADOW      = 3
+    GX_POLYGONMODE_MODULATE    = 0,
+    GX_POLYGONMODE_DECAL       = 1,
+    GX_POLYGONMODE_TOON        = 2,
+    GX_POLYGONMODE_SHADOW      = 3
 } GXPolygonMode;
 
 typedef enum {
-	GX_CULL_ALL      = 0,
-	GX_CULL_FRONT    = 1,
-	GX_CULL_BACK     = 2,
-	GX_CULL_NONE     = 3
+    GX_CULL_ALL      = 0,
+    GX_CULL_FRONT    = 1,
+    GX_CULL_BACK     = 2,
+    GX_CULL_NONE     = 3
 } GXCull;
 
 #ifdef SDK_ADS

@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_T25GYM0101_gsleader3",
-      "ovid": "SPRITE_GSLEADER3",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSLEADER3",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_UNK_2EC",
       "scr": "_EV_scr_seq_T25GYM0101_000 + 1",
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_T25GYM0101_gsgirl1",
-      "ovid": "SPRITE_GSGIRL1",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSGIRL1",
+      "movement": 16,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_LASS_CATHY)",
@@ -55,8 +55,8 @@
     },
     {
       "id": "obj_T25GYM0101_gsgirl1_2",
-      "ovid": "SPRITE_GSGIRL1",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSGIRL1",
+      "movement": 17,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_LASS_CARRIE)",
@@ -72,8 +72,8 @@
     },
     {
       "id": "obj_T25GYM0101_gswoman2",
-      "ovid": "SPRITE_GSWOMAN2",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSWOMAN2",
+      "movement": 17,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BEAUTY_VICTORIA)",
@@ -89,8 +89,8 @@
     },
     {
       "id": "obj_T25GYM0101_gswoman2_2",
-      "ovid": "SPRITE_GSWOMAN2",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSWOMAN2",
+      "movement": 16,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BEAUTY_SAMANTHA)",
@@ -106,8 +106,8 @@
     },
     {
       "id": "obj_T25GYM0101_sunglasses",
-      "ovid": "SPRITE_SUNGLASSES",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SUNGLASSES",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25GYM0101_002 + 1",

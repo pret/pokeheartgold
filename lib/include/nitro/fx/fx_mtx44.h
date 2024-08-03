@@ -35,19 +35,19 @@ static inline void MTX_Identity44 (MtxFx44 * pDst) {
 }
 
 static inline void MTX_Copy44 (const MtxFx44 * pSrc, MtxFx44 * pDst) {
-	MI_Copy64B(pSrc, pDst);
+    MI_Copy64B(pSrc, pDst);
 }
 
 static inline void MTX_Copy44To33 (const MtxFx44 * pSrc, MtxFx33 * pDst) {
-	MTX_Copy44To33_(pSrc, pDst);
+    MTX_Copy44To33_(pSrc, pDst);
 }
 
 static inline void MTX_Copy44To43 (const MtxFx44 * pSrc, MtxFx43 * pDst) {
-	MTX_Copy44To43_(pSrc, pDst);
+    MTX_Copy44To43_(pSrc, pDst);
 }
 
 static inline void MTX_Transpose44 (const MtxFx44 * pSrc, MtxFx44 * pDst) {
-	MTX_Transpose44_(pSrc, pDst);
+    MTX_Transpose44_(pSrc, pDst);
 }
 
 static inline void MTX_Scale44 (MtxFx44 * pDst, fx32 x, fx32 y, fx32 z) {
@@ -67,16 +67,16 @@ static inline void MTX_RotZ44 (MtxFx44 * pDst, fx32 sinVal, fx32 cosVal) {
 }
 
 static inline void MTX_Frustum (fx32 t, fx32 b, fx32 l, fx32 r, fx32 n, fx32 f, MtxFx44 * mtx) {
-	MTX_FrustumW(t, b, l, r, n, f, FX32_ONE, mtx);
+    MTX_FrustumW(t, b, l, r, n, f, FX32_ONE, mtx);
 }
 
 static inline
 void MTX_Perspective (fx32 fovySin, fx32 fovyCos, fx32 aspect, fx32 n, fx32 f, MtxFx44 * mtx) {
-	MTX_PerspectiveW(fovySin, fovyCos, aspect, n, f, FX32_ONE, mtx);
+    MTX_PerspectiveW(fovySin, fovyCos, aspect, n, f, FX32_ONE, mtx);
 }
 
 static inline void MTX_Ortho (fx32 t, fx32 b, fx32 l, fx32 r, fx32 n, fx32 f, MtxFx44 * mtx) {
-	MTX_OrthoW(t, b, l, r, n, f, FX32_ONE, mtx);
+    MTX_OrthoW(t, b, l, r, n, f, FX32_ONE, mtx);
 }
 
 #endif //NITRO_FX_FX_MTX44_H_

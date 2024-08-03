@@ -133,8 +133,8 @@
   "objects": [
     {
       "id": "obj_T01R0301_ookido",
-      "ovid": "SPRITE_OOKIDO",
-      "mvt": 15,
+      "sprite_id": "SPRITE_OOKIDO",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T01R0301_000 + 1",
@@ -150,8 +150,8 @@
     },
     {
       "id": "obj_T01R0301_assistantm",
-      "ovid": "SPRITE_ASSISTANTM",
-      "mvt": 2,
+      "sprite_id": "SPRITE_ASSISTANTM",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T01R0301_001 + 1",
@@ -167,8 +167,8 @@
     },
     {
       "id": "obj_T01R0301_assistantm_2",
-      "ovid": "SPRITE_ASSISTANTM",
-      "mvt": 16,
+      "sprite_id": "SPRITE_ASSISTANTM",
+      "movement": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T01R0301_002 + 1",
@@ -184,8 +184,8 @@
     },
     {
       "id": "obj_T01R0301_assistantm_3",
-      "ovid": "SPRITE_ASSISTANTM",
-      "mvt": 14,
+      "sprite_id": "SPRITE_ASSISTANTM",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T01R0301_003 + 1",
@@ -201,8 +201,8 @@
     },
     {
       "id": "obj_T01R0301_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_OAKS_LAB_CHARMANDER_BALL",
       "scr": 0,
@@ -218,8 +218,8 @@
     },
     {
       "id": "obj_T01R0301_monstarball_2",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_OAKS_LAB_SQUIRTLE_BALL",
       "scr": 0,
@@ -235,8 +235,8 @@
     },
     {
       "id": "obj_T01R0301_monstarball_3",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_OAKS_LAB_BULBASAUR_BALL",
       "scr": 0,

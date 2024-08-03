@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_D25R0103_gsman3",
-      "ovid": "SPRITE_GSMAN3",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSMAN3",
+      "movement": 16,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_ACE_TRAINER_M_NICK)",
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_D25R0103_gswoman3",
-      "ovid": "SPRITE_GSWOMAN3",
-      "mvt": 8,
+      "sprite_id": "SPRITE_GSWOMAN3",
+      "movement": 8,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_ACE_TRAINER_F_GWEN)",
@@ -55,8 +55,8 @@
     },
     {
       "id": "obj_D25R0103_gswoman3_2",
-      "ovid": "SPRITE_GSWOMAN3",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSWOMAN3",
+      "movement": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_ACE_TRAINER_F_EMMA)",
@@ -72,8 +72,8 @@
     },
     {
       "id": "obj_D25R0103_rapurasu",
-      "ovid": "SPRITE_RAPURASU",
-      "mvt": 3,
+      "sprite_id": "SPRITE_RAPURASU",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_HIDE_UNION_CAVE_LAPRAS",
       "scr": "_EV_scr_seq_D25R0103_000 + 1",
@@ -89,8 +89,8 @@
     },
     {
       "id": "obj_D25R0103_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D25R0103_ELIXIR",
       "scr": "std_itemball_d25r0103_elixir",
@@ -106,8 +106,8 @@
     },
     {
       "id": "obj_D25R0103_monstarball_2",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D25R0103_HYPER_POTION",
       "scr": "std_itemball_d25r0103_hyper_potion",

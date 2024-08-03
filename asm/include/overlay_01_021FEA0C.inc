@@ -3,7 +3,7 @@
 .public sub_02020DA4
 .public GF_AssertFail
 .public sub_0205F09C
-.public MapObject_GetFieldSysPtr
+.public MapObject_GetFieldSystem
 .public MapObject_GetPositionVec
 .public sub_0205F9A0
 .public sub_0206121C

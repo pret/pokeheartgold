@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_D38R0104_rock",
-      "ovid": "SPRITE_ROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_ROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_010",
       "scr": "std_field_strength",
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_D38R0104_gsfighter",
-      "ovid": "SPRITE_GSFIGHTER",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSFIGHTER",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D38R0104_000 + 1",
@@ -55,8 +55,8 @@
     },
     {
       "id": "obj_D38R0104_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D38R0104_CARBOS",
       "scr": "std_itemball_d38r0104_carbos",
@@ -72,8 +72,8 @@
     },
     {
       "id": "obj_D38R0104_monstarball_2",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D38R0104_PP_UP",
       "scr": "std_itemball_d38r0104_pp_up",
@@ -89,8 +89,8 @@
     },
     {
       "id": "obj_D38R0104_monstarball_3",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D38R0104_FULL_RESTORE",
       "scr": "std_itemball_d38r0104_full_restore",
@@ -106,8 +106,8 @@
     },
     {
       "id": "obj_D38R0104_monstarball_4",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D38R0104_MAX_ETHER",
       "scr": "std_itemball_d38r0104_max_ether",
@@ -123,8 +123,8 @@
     },
     {
       "id": "obj_D38R0104_monstarball_5",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D38R0104_HYPER_POTION",
       "scr": "std_itemball_d38r0104_hyper_potion",

@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_T07R0105_shopm1_2",
-      "ovid": "SPRITE_SHOPM1_2",
-      "mvt": 14,
+      "sprite_id": "SPRITE_SHOPM1_2",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0105_000 + 1",
@@ -30,8 +30,8 @@
     },
     {
       "id": "obj_T07R0105_shopm1_2_2",
-      "ovid": "SPRITE_SHOPM1_2",
-      "mvt": 14,
+      "sprite_id": "SPRITE_SHOPM1_2",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0105_001 + 1",
@@ -47,8 +47,8 @@
     },
     {
       "id": "obj_T07R0105_gsgentleman",
-      "ovid": "SPRITE_GSGENTLEMAN",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSGENTLEMAN",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0105_002 + 1",
@@ -64,8 +64,8 @@
     },
     {
       "id": "obj_T07R0105_seaman_2",
-      "ovid": "SPRITE_SEAMAN_2",
-      "mvt": 5,
+      "sprite_id": "SPRITE_SEAMAN_2",
+      "movement": 5,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0105_003 + 1",
@@ -81,8 +81,8 @@
     },
     {
       "id": "obj_T07R0105_gswoman1",
-      "ovid": "SPRITE_GSWOMAN1",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSWOMAN1",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0105_004 + 1",

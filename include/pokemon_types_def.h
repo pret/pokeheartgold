@@ -252,14 +252,14 @@ struct UnkStruct_02069038 {
     struct Pokeanm anim;
 };
 
-struct UnkStruct_02070D3C {
+typedef struct UnkStruct_02070D3C {
     NarcId narcId;
     s32 ncgr_id;
     s32 nclr_id;
     s32 ncer_id;
     s32 nanr_id;
     s32 ncbr_id;
-};
+} UnkStruct_02070D3C;
 
 struct Evolution {
     u16 method;

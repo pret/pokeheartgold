@@ -69,13 +69,27 @@ typedef enum FieldTakePhotoShutterState {
     TAKE_PHOTO_SHUTTER_STATE_DELAY_AFTER,
 } FieldTakePhotoShutterState;
 
+typedef enum FieldPhotoDoViewState {
+    FIELD_PHOTO_DO_VIEW_STATE_0,
+    FIELD_PHOTO_DO_VIEW_STATE_1,
+    FIELD_PHOTO_DO_VIEW_STATE_2,
+    FIELD_PHOTO_DO_VIEW_STATE_3,
+    FIELD_PHOTO_DO_VIEW_STATE_4,
+    FIELD_PHOTO_DO_VIEW_STATE_5,
+    FIELD_PHOTO_DO_VIEW_STATE_6,
+    FIELD_PHOTO_DO_VIEW_STATE_7,
+    FIELD_PHOTO_DO_VIEW_STATE_8,
+    FIELD_PHOTO_DO_VIEW_STATE_9,
+} FieldPhotoDoViewStat;
+
 typedef struct FieldTakePhoto3 {
     int state;
     u8 filler_4[4];
     FieldViewPhoto *parent;
     u8 placeObjectCounter;
 } FieldTakePhoto3;
- static BOOL FieldTask_ViewPhoto(TaskManager *taskManager);
+
+static BOOL FieldTask_ViewPhoto(TaskManager *taskManager);
 static int ViewPhotoFieldTask_Init(FieldSystem *fieldSystem, TaskManager *taskManager, FieldViewPhoto *photo);
 static int ViewPhotoFieldTask_HandleAlbumSelection(FieldSystem *fieldSystem, TaskManager *taskManager, FieldViewPhoto *photo);
 static int ViewPhotoFieldTask_LoadPhotoAndBeginRender(FieldSystem *fieldSystem, TaskManager *taskManager, FieldViewPhoto *photo);
@@ -87,13 +101,13 @@ static int ViewPhotoFieldTask_RestorePlayerOverworldPosition(FieldSystem *fieldS
 static BOOL FieldTask_DoViewPhoto(TaskManager *taskManager);
 static LocalMapObject *createPartymonMapObject(MapObjectManager *objectMan, u16 species, u16 form, int gender, int direction, int x, int y, BOOL shiny);
 static LocalMapObject *createSpecialMapObject(MapObjectManager *objectMan, int spriteId, int direction, int x, int y, int localId);
-static void sub_0206AF78(FieldSystem *fieldSystem, PHOTO *photo);
+static void sub_0206AF78(FieldSystem *fieldSystem, Photo *photo);
 static void FieldTakePhoto_RemoveAllMapObjects(FieldTakePhoto *takePhoto);
 static void setCameraParam(Camera *camera);
-static void Photo_InitFromArcData(PHOTO *photo, FieldSystem *fieldSystem, u8 iconId, int mapId, int x, int y, int a6, int a7, u16 a8, u16 subjectObjId);
+static void Photo_InitFromArcData(Photo *photo, FieldSystem *fieldSystem, u8 iconId, int mapId, int x, int y, int a6, int a7, u16 a8, u16 subjectObjId);
 static BOOL FieldTask_TakePhoto(TaskManager *taskManager);
 static void sub_0206B82C(PlayerAvatar *playerAvatar, u8 state, u8 gender);
-static void sub_0206B880(FieldSystem *fieldSystem, PHOTO *photo);
+static void sub_0206B880(FieldSystem *fieldSystem, Photo *photo);
 static void drawCameraGfx(BgConfig *bgConfig, HeapID heapId);
 
 typedef struct Coord2U16 {
@@ -111,7 +125,8 @@ static const Coord2U16 sPhotoMonCoordOffsets[] = {
     {  2, -2 },
 };
 
-static PhotoCameraParam sCameraParam = {     .distance = FX32_CONST(666.922119140625),
+static PhotoCameraParam sCameraParam = {
+    .distance = FX32_CONST(666.922119140625),
     .angle.x = 0xEE00,
     .perspectiveType = 0,
     .perspective = 0x230,
@@ -142,7 +157,7 @@ void FieldSystem_TakePhoto(FieldSystem *fieldSystem, u16 photo_id) {
         takePhoto->followMonFacingDirectionBak = MapObject_GetFacingDirection(followMonObj);
     }
     if (PhotoAlbum_GetIndexOfFirstEmptySlot(Save_PhotoAlbum_Get(FieldSystem_GetSaveData(fieldSystem))) != 0xFF) {
-        PHOTO_DAT photoDat;
+        PhotoData photoDat;
         ReadWholeNarcMemberByIdPair(&photoDat, NARC_data_photo_data, photo_id);
         Photo_InitFromArcData(&takePhoto->photoBuf, fieldSystem, photoDat.iconId, photoDat.mapId, photoDat.x, photoDat.y, photoDat.param[0], photoDat.param[1], photoDat.unk9, photoDat.subjectObjId);
         takePhoto->pPhoto = &takePhoto->photoBuf;
@@ -234,7 +249,7 @@ static int ViewPhotoFieldTask_LoadPhotoAndBeginRender(FieldSystem *fieldSystem, 
     FieldTakePhoto3 *taskData = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldTakePhoto3));
     MI_CpuClear8(taskData, sizeof(FieldTakePhoto3));
     PhotoAlbum_GetPhotoByIndex(viewPhoto->photoAlbum, &viewPhoto->pPhoto, viewPhoto->whichPhoto);
-    viewPhoto->numMons = viewPhoto->pPhoto.subjectSpriteId ? 2 : viewPhoto->pPhoto.numMons;
+    viewPhoto->numMons = viewPhoto->pPhoto.subjectSpriteId != 0 ? 2 : viewPhoto->pPhoto.numMons;
     viewPhoto->input = VIEW_PHOTO_INPUT_NOTHING;
     taskData->parent = viewPhoto;
     viewPhoto->fieldSystemUnk70Bak = fieldSystem->unk70;
@@ -273,7 +288,7 @@ static int ViewPhotoFieldTask_Cleanup(FieldSystem *fieldSystem, TaskManager *tas
         }
     }
 
-    return 6;
+    return VIEW_PHOTO_STATE_HANDLE_NEXT;
 }
 
 static int ViewPhotoFieldTask_WaitInput(FieldSystem *fieldSystem, TaskManager *taskManager, FieldViewPhoto *photo) {
@@ -329,10 +344,10 @@ static int ViewPhotoFieldTask_RestorePlayerOverworldPosition(FieldSystem *fieldS
 static BOOL FieldTask_DoViewPhoto(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     FieldTakePhoto3 *taskData = (FieldTakePhoto3 *)TaskManager_GetEnvironment(taskManager);
-    PHOTO *photo = &taskData->parent->pPhoto;
+    Photo *photo = &taskData->parent->pPhoto;
 
     switch (taskData->state) {
-    case 0:
+    case FIELD_PHOTO_DO_VIEW_STATE_0:
         sub_02067A80(fieldSystem, 1);
         GF_RTC_SetAndFreezeTime(photo->hour, photo->min);
         {
@@ -342,11 +357,11 @@ static BOOL FieldTask_DoViewPhoto(TaskManager *taskManager) {
         }
         ++taskData->state;
         break;
-    case 1:
+    case FIELD_PHOTO_DO_VIEW_STATE_1:
         CallTask_RestoreOverworld(taskManager);
         ++taskData->state;
         break;
-    case 2:
+    case FIELD_PHOTO_DO_VIEW_STATE_2:
         setCameraParam(fieldSystem->camera);
         sub_0206AF78(fieldSystem, photo);
         sub_0206B880(fieldSystem, photo);
@@ -363,29 +378,29 @@ static BOOL FieldTask_DoViewPhoto(TaskManager *taskManager) {
         }
         ++taskData->state;
         break;
-    case 3:
+    case FIELD_PHOTO_DO_VIEW_STATE_3:
         ov01_021F9FB0(fieldSystem->mapObjectManager, sub_0205F1A0(fieldSystem->mapObjectManager));
         ov01_022043D8(fieldSystem->unk_C8);
         ov01_02204424(fieldSystem->unk_C8);
         ov01_021EB1E8(fieldSystem->unk4->unk10);
         if (photo->subjectSpriteId) {
-            taskData->state = 6;
+            taskData->state = FIELD_PHOTO_DO_VIEW_STATE_6;
         } else {
-            taskData->state = 4;
+            taskData->state = FIELD_PHOTO_DO_VIEW_STATE_4;
         }
         break;
-    case 4: {
-        PHOTO_MON *mon = &photo->party[taskData->placeObjectCounter];
+    case FIELD_PHOTO_DO_VIEW_STATE_4: {
+        PhotoMon *mon = &photo->party[taskData->placeObjectCounter];
         if (mon->species != SPECIES_NONE) {
             taskData->parent->mapObjects[taskData->placeObjectCounter] = createPartymonMapObject(fieldSystem->mapObjectManager, mon->species, mon->form, mon->gender, DIR_SOUTH, photo->x + sPhotoMonCoordOffsets[taskData->placeObjectCounter].x, photo->y + sPhotoMonCoordOffsets[taskData->placeObjectCounter].y, mon->shiny);
             sub_0205F47C(taskData->parent->mapObjects[taskData->placeObjectCounter], ov01_021F7918);
         } else {
             taskData->parent->mapObjects[taskData->placeObjectCounter] = NULL;
         }
-        taskData->state = 5;
+        taskData->state = FIELD_PHOTO_DO_VIEW_STATE_5;
         break;
     }
-    case 5: {
+    case FIELD_PHOTO_DO_VIEW_STATE_5: {
         LocalMapObject *mapObject = taskData->parent->mapObjects[taskData->placeObjectCounter];
         if (mapObject != NULL) {
             if (ov01_0220553C(mapObject)) {
@@ -402,34 +417,34 @@ static BOOL FieldTask_DoViewPhoto(TaskManager *taskManager) {
             FreeToHeap(taskData);
             return TRUE;
         }
-        taskData->state = 4;
+        taskData->state = FIELD_PHOTO_DO_VIEW_STATE_4;
         break;
     }
-    case 6:
+    case FIELD_PHOTO_DO_VIEW_STATE_6:
         taskData->parent->mapObjects[0] = createSpecialMapObject(fieldSystem->mapObjectManager, photo->subjectSpriteId, DIR_SOUTH, photo->x + 2, photo->y, obj_photo_subject);
-        taskData->state = 7;
+        taskData->state = FIELD_PHOTO_DO_VIEW_STATE_7;
         break;
-    case 7: {
+    case FIELD_PHOTO_DO_VIEW_STATE_7: {
         VecFx32 facingVec;
         MapObject_GetFacingVec(taskData->parent->mapObjects[0], &facingVec);
         facingVec.y -= FX32_CONST(2);
         MapObject_SetFacingVec(taskData->parent->mapObjects[0], &facingVec);
         sub_0205F484(taskData->parent->mapObjects[0]);
-        taskData->state = 8;
+        taskData->state = FIELD_PHOTO_DO_VIEW_STATE_8;
         break;
     }
-    case 8: {
-        PHOTO_MON *mon = &photo->party[0];
+    case FIELD_PHOTO_DO_VIEW_STATE_8: {
+        PhotoMon *mon = &photo->party[0];
         if (mon->species != SPECIES_NONE) {
             taskData->parent->mapObjects[1] = createPartymonMapObject(fieldSystem->mapObjectManager, mon->species, mon->form, mon->gender, DIR_SOUTH, photo->x + sSoloPhotoMonCoordOffsets.x, photo->y + sSoloPhotoMonCoordOffsets.y, mon->shiny);
             sub_0205F47C(taskData->parent->mapObjects[1], ov01_021F7918);
         } else {
             taskData->parent->mapObjects[1] = NULL;
         }
-        taskData->state = 9;
+        taskData->state = FIELD_PHOTO_DO_VIEW_STATE_9;
         break;
     }
-    case 9:
+    case FIELD_PHOTO_DO_VIEW_STATE_9:
         if (taskData->parent->mapObjects[1] != NULL) {
             VecFx32 facingVec;
             MapObject_GetFacingVec(taskData->parent->mapObjects[1], &facingVec);
@@ -456,25 +471,25 @@ static LocalMapObject *createPartymonMapObject(MapObjectManager *objectMan, u16 
 }
 
 static LocalMapObject *createSpecialMapObject(MapObjectManager *objectMan, int spriteId, int direction, int x, int y, int localId) {
-    LocalMapObject *ret = CreateSpecialFieldObject(objectMan, x, y, direction, spriteId, 0, 1);
+    LocalMapObject *ret = MapObject_Create(objectMan, x, y, direction, spriteId, 0, 1);
     GF_ASSERT(ret != NULL);
     MapObject_SetID(ret, localId);
     MapObject_SetType(ret, 0);
     MapObject_SetFlagID(ret, 0);
     MapObject_SetXRange(ret, -1);
     MapObject_SetYRange(ret, -1);
-    MapObject_SetFlagsBits(ret, MAPOBJECTFLAG_UNK10 | MAPOBJECTFLAG_UNK13);
-    MapObject_ClearFlagsBits(ret, MAPOBJECTFLAG_UNK7 | MAPOBJECTFLAG_UNK8);
+    MapObject_SetFlagsBits(ret, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK10 | MAPOBJECTFLAG_UNK13));
+    MapObject_ClearFlagsBits(ret, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK7 | MAPOBJECTFLAG_UNK8));
     MapObject_SetFlag29(ret, TRUE);
     return ret;
 }
 
 // this function was partially stubbed, or called a static inline child routine that was subbed
-static void sub_0206AF78(FieldSystem *fieldSystem, PHOTO *photo) {
-    int index = 0;
+static void sub_0206AF78(FieldSystem *fieldSystem, Photo *photo) {
+    s32 index = 0;
     LocalMapObject *curObj;
     PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
-    while (MapObjectManager_IterObjects(fieldSystem->mapObjectManager, &curObj, &index, MAPOBJECTFLAG_ACTIVE)) {
+    while (MapObjectManager_GetNextObjectWithFlagFromIndex(fieldSystem->mapObjectManager, &curObj, &index, MAPOBJECTFLAG_ACTIVE)) {
     }
 }
 
@@ -494,7 +509,7 @@ static void setCameraParam(Camera *camera) {
     Camera_OffsetLookAtPosAndTarget(&sCameraParam.lookAt, camera);
 }
 
-static void Photo_InitFromArcData(PHOTO *photo, FieldSystem *fieldSystem, u8 iconId, int mapId, int x, int y, int a6, int a7, u16 a8, u16 subjectObjId) {
+static void Photo_InitFromArcData(Photo *photo, FieldSystem *fieldSystem, u8 iconId, int mapId, int x, int y, int a6, int a7, u16 a8, u16 subjectObjId) {
     int partySize;
     SaveData *saveData = FieldSystem_GetSaveData(fieldSystem);
     PlayerProfile *profile = Save_PlayerData_GetProfileAddr(saveData);
@@ -525,7 +540,7 @@ static void Photo_InitFromArcData(PHOTO *photo, FieldSystem *fieldSystem, u8 ico
     photo->unk_40[1] = a7;
     photo->unk_46 = a8;
     photo->subjectSpriteId = subjectObjId;
-    photo->numMons = photo->subjectSpriteId ? 1 : partySize;
+    photo->numMons = photo->subjectSpriteId != 0 ? 1 : partySize;
 
     Pokemon *leadMon = GetFirstAliveMonInParty_CrashIfNone(party);
     GetMonData(leadMon, MON_DATA_NICKNAME, photo->leadMonNick);
@@ -612,7 +627,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
         }
         break;
     case TAKE_PHOTO_STATE_PARTY_PHOTO_PLACE_MON_ITER: {
-        PHOTO_MON *mon = &takePhoto->pPhoto->party[takePhoto->curMon];
+        PhotoMon *mon = &takePhoto->pPhoto->party[takePhoto->curMon];
         if (mon->species != SPECIES_NONE) {
             takePhoto->mapObjects[takePhoto->curMon] = createPartymonMapObject(fieldSystem->mapObjectManager, mon->species, mon->form, mon->gender, DIR_SOUTH, takePhoto->pPhoto->x + sPhotoMonCoordOffsets[takePhoto->curMon].x, takePhoto->pPhoto->y + sPhotoMonCoordOffsets[takePhoto->curMon].y, mon->shiny);
             sub_0205F47C(takePhoto->mapObjects[takePhoto->curMon], ov01_021F7918);
@@ -661,7 +676,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
         }
         break;
     case TAKE_PHOTO_STATE_NPC_PHOTO_PLACE_MON: {
-        PHOTO_MON *mon = &takePhoto->pPhoto->party[takePhoto->curMon];
+        PhotoMon *mon = &takePhoto->pPhoto->party[takePhoto->curMon];
         if (mon->species != SPECIES_NONE) {
             takePhoto->mapObjects[1] = createPartymonMapObject(fieldSystem->mapObjectManager, mon->species, mon->form, mon->gender, DIR_SOUTH, takePhoto->pPhoto->x + sSoloPhotoMonCoordOffsets.x, takePhoto->pPhoto->y + sSoloPhotoMonCoordOffsets.y, mon->shiny);
             sub_0205F47C(takePhoto->mapObjects[1], ov01_021F7918);
@@ -721,7 +736,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
             break;
         case TAKE_PHOTO_SHUTTER_STATE_EXPOSURE:
             if (IsPaletteFadeFinished()) {
-                PHOTO_ALBUM *photoAlbum = Save_PhotoAlbum_Get(FieldSystem_GetSaveData(fieldSystem));
+                PhotoAlbum *photoAlbum = Save_PhotoAlbum_Get(FieldSystem_GetSaveData(fieldSystem));
                 u8 photoIndex = PhotoAlbum_GetIndexOfFirstEmptySlot(photoAlbum);
                 RTCDate date;
                 GF_RTC_CopyDate(&date);
@@ -804,7 +819,7 @@ static void sub_0206B82C(PlayerAvatar *playerAvatar, u8 state, u8 gender) {
     int spriteId = PlayerAvatar_GetSpriteByStateAndGender(state, gender);
     LocalMapObject *mapObject = PlayerAvatar_GetMapObject(playerAvatar);
     MapObjectManager *mapObjectManager = MapObject_GetManager(mapObject);
-    int gfxId = MapObject_GetGfxID(mapObject);
+    int gfxId = MapObject_GetSpriteID(mapObject);
     sub_0205E420(mapObject);
     ov01_021FA108(mapObjectManager, gfxId, mapObject);
     sub_0205E38C(mapObject, spriteId);
@@ -815,7 +830,7 @@ static void sub_0206B82C(PlayerAvatar *playerAvatar, u8 state, u8 gender) {
     sub_0205C78C(playerAvatar, 0);
 }
 
-static void sub_0206B880(FieldSystem *fieldSystem, PHOTO *photo) {
+static void sub_0206B880(FieldSystem *fieldSystem, Photo *photo) {
     for (u8 i = 0; i < 2; ++i) {
         if (photo->unk_40[i] != 0) {
             sub_02054EB0(fieldSystem, photo->unk_40[i], TRUE);

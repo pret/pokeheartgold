@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_T01R0101_redmama",
-      "ovid": "SPRITE_REDMAMA",
-      "mvt": 14,
+      "sprite_id": "SPRITE_REDMAMA",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T01R0101_000 + 1",

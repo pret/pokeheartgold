@@ -8,7 +8,7 @@
 #include "msgdata.h"
 #include "trainer_memo.h"
 #include "unk_02055418.h"
-#include "unk_02092BE8.h"
+#include "start_menu.h"
 #include "map_section.h"
 #include "script.h"
 #include "constants/moves.h"
@@ -17,6 +17,7 @@
 #include "constants/map_sections.h"
 #include "constants/abilities.h"
 #include "unk_02055418.h"
+#include "unk_02092BE8.h"
 
 static u8 Save_Daycare_CountMonsInDaycare(Daycare *daycare);
 static int Save_Daycare_GetAvailableSlot(Daycare *daycare);

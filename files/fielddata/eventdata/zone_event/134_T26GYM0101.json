@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_T26GYM0101_gsleader6",
-      "ovid": "SPRITE_GSLEADER6",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSLEADER6",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_HIDE_JASMINE_IN_GYM",
       "scr": "_EV_scr_seq_T26GYM0101_000 + 1",
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_T26GYM0101_gsgirl1",
-      "ovid": "SPRITE_GSGIRL1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSGIRL1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_OLIVINE_GYM_GIRL",
       "scr": "_EV_scr_seq_T26GYM0101_004 + 1",
@@ -55,8 +55,8 @@
     },
     {
       "id": "obj_T26GYM0101_gsgentleman",
-      "ovid": "SPRITE_GSGENTLEMAN",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSGENTLEMAN",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_OLIVINE_GYM_GENTLEMAN",
       "scr": "_EV_scr_seq_T26GYM0101_003 + 1",
@@ -72,8 +72,8 @@
     },
     {
       "id": "obj_T26GYM0101_sunglasses",
-      "ovid": "SPRITE_SUNGLASSES",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SUNGLASSES",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T26GYM0101_005 + 1",

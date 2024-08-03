@@ -5,7 +5,7 @@
 .public sub_0205F0A8
 .public MapObject_GetID
 .public sub_0205F254
-.public MapObject_GetGfxID
+.public MapObject_GetSpriteID
 .public sub_0205F544
 .public MapObject_CheckFlag25
 .public MapObject_GetPositionVec

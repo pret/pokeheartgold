@@ -15,8 +15,8 @@ struct BG_EVENT {
 
 struct ObjectEvent {
     u16 id;
-    u16 ovid;
-    u16 mvt;
+    u16 spriteId;
+    u16 movement;
     u16 type;
     u16 flag;
     u16 scr;

@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_T25R0501_policeman",
-      "ovid": "SPRITE_POLICEMAN",
-      "mvt": 0,
+      "sprite_id": "SPRITE_POLICEMAN",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R0501_000 + 1",

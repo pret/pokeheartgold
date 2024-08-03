@@ -10,6 +10,8 @@
 #include "overlay_manager.h"
 #include "save_pokegear.h"
 #include "sys_task_api.h"
+#include "field/overlay_01_021E66E4.h"
+#include "camera_translation.h"
 #include "camera.h"
 #include "bg_window.h"
 #include "sys_task.h"
@@ -17,7 +19,6 @@
 #include "photo_types_def.h"
 #include "field_types_def.h"
 #include "overlay_01_02204004.h"
-#include "unk_02078E30.h"
 
 typedef struct FollowMon {
     LocalMapObject *mapObject;
@@ -34,7 +35,7 @@ typedef struct FollowMon {
     u32 unk1C;
 } FollowMon;
 
-struct GearPhoneRingManager {
+typedef struct GearPhoneRingManager {
     u8 unk_var0_0:1;
     u8 unk_var0_1:1;
     u8 unk_var0_2:1;
@@ -60,7 +61,7 @@ struct GearPhoneRingManager {
         SysTask *task;
         u8 counter;
     } gearRing;
-}; //size: 0x48
+} GearPhoneRingManager; //size: 0x48
 
 typedef struct FieldSystemUnk108 {
     u32 personality;
@@ -91,13 +92,15 @@ struct FieldSystemUnkSub68 {
 
 typedef struct FieldSystemUnkSub4 {
     u32 unk0;
-    u32 unk4;
+    Field3dObjectTaskManager *field3dObjectTaskManager;
     u32 unk8;
     void *unk_0C; // weather related?
     UnkStruct_ov01_021EB1E8 *unk10;
     u32 unk14;
     u32 unk18;
     u32 unk1c;
+    u32 unk20;
+    void *legendCutsceneCamera;
 } FieldSystemUnkSub4;
 
 struct FieldSystem {
@@ -144,7 +147,8 @@ struct FieldSystem {
     u32 unkAC;
     void *unkB0;
     s64 unkB4;
-    u8 unkBC[8];
+    u8 unkBC[4];
+    void *unkC0;
     int unkC4;
     FieldSystemUnkC8 *unk_C8;
     u8 filler_CC[0x4];
