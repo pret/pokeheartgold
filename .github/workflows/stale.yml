@@ -17,3 +17,4 @@ jobs:
           close-issue-message: "This issue has had no activity for 90 days and will now be closed."
           close-pr-message: "This pull request has had no activity for 90 days and will now be closed."
           exempt-draft-pr: true
+          exempt-issue-labels: long-term
