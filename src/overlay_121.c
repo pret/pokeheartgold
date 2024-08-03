@@ -27,6 +27,43 @@
 
 #define min(a, b) ((a) <= (b) ? (a) : (b))
 
+typedef enum Overlay121WindowId {
+    OV121_WINDOW_0,
+    OV121_WINDOW_1,
+    OV121_WINDOW_2,
+    OV121_WINDOW_3,
+    OV121_WINDOW_4,
+    OV121_WINDOW_5,
+} Overlay121WindowId;
+
+typedef enum Overlay121SpriteId {
+    OV121_SPRITE_0,
+    OV121_SPRITE_1,
+    OV121_SPRITE_2,
+    OV121_SPRITE_3,
+    OV121_SPRITE_4,
+} Overlay121SpriteId;
+
+typedef enum Overlay121State {
+    OV121_STATE_INIT,
+    OV121_STATE_1,
+    OV121_STATE_YESNO,
+    OV121_STATE_3,
+    OV121_STATE_4,
+} Overlay121State;
+
+typedef enum Overlay121Input {
+    OV121_INPUT_NONE,
+    OV121_INPUT_CURSOR_UP,
+    OV121_INPUT_CURSOR_DOWN,
+    OV121_INPUT_TAP_RECORD,
+    OV121_INPUT_B_BUTTON,
+    OV121_INPUT_X_BUTTON,
+    OV121_INPUT_CURSOR_LEFT,
+    OV121_INPUT_CURSOR_RIGHT,
+    OV121_INPUT_A_BUTTON,
+} Overlay121Input;
+
 typedef struct UnkStruct_ov121_021E7014 {
     u32 unk_0;
     u16 unk_4;
@@ -45,31 +82,31 @@ typedef struct Overlay121Sub254 {
 } Overlay121Sub254;
 
 typedef struct Overlay121Appdata {
-    BgConfig *unk_000;
-    Window unk_004[6];
-    MsgData *unk_064;
-    MessageFormat *unk_068;
+    BgConfig *bgConfig;
+    Window windows[6];
+    MsgData *msgData;
+    MessageFormat *msgFormat;
     String *unk_06C;
     String *unk_070;
     String *unk_074;
     String *unk_078[7];
-    YesNoPrompt *unk_094;
-    SpriteList *unk_098;
-    GF_G2dRenderer unk_09C;
-    GF_2DGfxResMan *unk_1C4[6];
-    GF_2DGfxResObj *unk_1DC[6];
-    SpriteResourcesHeader unk_1F4;
-    Sprite *unk_218[5];
-    TouchscreenHitbox *unk_22C;
+    YesNoPrompt *yesNoPrompt;
+    SpriteList *spriteList;
+    GF_G2dRenderer g2dRenderer;
+    GF_2DGfxResMan *gf2dGfxResManagers[6];
+    GF_2DGfxResObj *gf2dGfxResObjects[6];
+    SpriteResourcesHeader spriteResourcesHeader;
+    Sprite *sprites[5];
+    TouchscreenHitbox *touchscreenHitboxes;
     u8 unk_230;
     u8 unk_231;
     s8 unk_232;
-    u8 unk_233;
+    u8 state;
     UnkStruct_0202E4B0 *unk_234;
     UnkStruct_0202E9FC *unk_238[7];
     Overlay121Sub254 *unk_254;
     Overlay121Sub258 *unk_258;
-    u8 unk_25C;
+    u8 page;
     u8 unk_25D;
     u8 unk_25E;
     u8 unk_25F;
@@ -87,70 +124,70 @@ typedef struct UnkStruct_Overlay121_021E7140 {
 
 static const UnkStruct_Overlay121_021E7140 ov121_021E7140[] = {
     {
-        .x = 0x80,
-        .y = 0x40,
+        .x = 128,
+        .y = 64,
         .anim = 7
     },
     {
-        .x = 0x80,
-        .y = 0x50,
+        .x = 128,
+        .y = 80,
         .anim = 7
     },
     {
-        .x = 0x80,
-        .y = 0x60,
+        .x = 128,
+        .y = 96,
         .anim = 7
     },
     {
-        .x = 0x80,
-        .y = 0x70,
+        .x = 128,
+        .y = 112,
         .anim = 7
     },
     {
-        .x = 0x80,
-        .y = 0x80,
+        .x = 128,
+        .y = 128,
         .anim = 7
     },
     {
-        .x = 0x80,
-        .y = 0x90,
+        .x = 128,
+        .y = 144,
         .anim = 7
     },
     {
-        .x = 0xE0,
-        .y = 0xB0,
+        .x = 224,
+        .y = 176,
         .anim = 2
     },
 };
 
 static const UnkStruct_ov121_021E7014 ov121_021E7110[] = {
     {
-        .unk_0 = 0x0000270F,
-        .unk_4 = 0x0004,
-        .unk_6 = 0x002C,
+        .unk_0 = 9999,
+        .unk_4 = 4,
+        .unk_6 = 44,
     },
     {
-        .unk_0 = 0x0000270F,
-        .unk_4 = 0x0004,
-        .unk_6 = 0x002C,
+        .unk_0 = 9999,
+        .unk_4 = 4,
+        .unk_6 = 44,
     },
     {
-        .unk_0 = 0x0000270F,
-        .unk_4 = 0x0004,
-        .unk_6 = 0x002C,
+        .unk_0 = 9999,
+        .unk_4 = 4,
+        .unk_6 = 44,
     },
     {
-        .unk_0 = 0x0000270F,
-        .unk_4 = 0x0004,
-        .unk_6 = 0x002C,
+        .unk_0 = 9999,
+        .unk_4 = 4,
+        .unk_6 = 44,
     },
     {
-        .unk_0 = 0x0000270F,
-        .unk_4 = 0x0004,
-        .unk_6 = 0x002C,
+        .unk_0 = 9999,
+        .unk_4 = 4,
+        .unk_6 = 44,
     },
     {
-        .unk_0 = 0x00000007,
+        .unk_0 = 7,
         .unk_4 = 0x0001,
         .unk_6 = 0x002D,
     },
@@ -158,24 +195,24 @@ static const UnkStruct_ov121_021E7014 ov121_021E7110[] = {
 
 static const UnkStruct_ov121_021E7014 ov121_021E70C8[] = {
     {
-        .unk_0 = 0x000F423F,
-	    .unk_4 = 0x0006,
-        .unk_6 = 0x002F,
+        .unk_0 = 999999,
+	    .unk_4 = 6,
+        .unk_6 = 47,
     },
     {
-        .unk_0 = 0x000F423F,
-	    .unk_4 = 0x0006,
-        .unk_6 = 0x002F,
+        .unk_0 = 999999,
+	    .unk_4 = 6,
+        .unk_6 = 47,
     },
     {
-        .unk_0 = 0x000F423F,
-	    .unk_4 = 0x0006,
+        .unk_0 = 999999,
+	    .unk_4 = 6,
         .unk_6 = 0x002E,
     },
     {
-        .unk_0 = 0x000F423F,
-	    .unk_4 = 0x0006,
-        .unk_6 = 0x002F,
+        .unk_0 = 999999,
+	    .unk_4 = 6,
+        .unk_6 = 47,
     },
 };
 
@@ -184,48 +221,48 @@ static const UnkStruct_ov121_021E7014 *const ov121_021E7014[] = {
     ov121_021E70C8,
 };
 
-void ov121_021E5AEC(OVY_MANAGER *man, int *pState);
-BOOL ov121_021E5C50(Overlay121AppData *appData);
-void ov121_021E5CB4(Overlay121AppData *appData);
-BOOL ov121_021E5CC4(Overlay121AppData *appData);
-void ov121_021E5D08(Overlay121AppData *appData);
-BOOL ov121_021E5D5C(Overlay121AppData *appData);
-void ov121_021E5D84(void);
-void ov121_021E5DA4(BgConfig *bgConfig);
-void ov121_021E5EDC(void);
-void ov121_021E5F0C(void);
-void ov121_021E5F30(void *cbData);
-void ov121_021E5F58(BgConfig *bgConfig, HeapID heapId);
-void ov121_021E600C(Overlay121AppData *appData, HeapID heapId);
-void ov121_021E60D4(Overlay121AppData *appData);
-void ov121_021E611C(Overlay121AppData *appData);
-void ov121_021E6168(SpriteTemplate *spriteTemplate, Overlay121AppData *appData);
-void ov121_021E6194(Overlay121AppData *appData);
-void ov121_021E62A0(Overlay121AppData *appData, HeapID heapId);
-int ov121_021E633C(Overlay121AppData *appData, int *a1);
-BOOL ov121_021E6404(Overlay121AppData *appData, int a1, int a2);
-void ov121_021E6478(Overlay121AppData *appData, int a1, int a2);
-void ov121_021E6544(Overlay121AppData *appData, int a1);
-void ov121_021E65A8(Overlay121AppData *appData, int a1);
-void ov121_021E65D8(Overlay121AppData *appData);
-void ov121_021E662C(Overlay121AppData *appData, int a1);
-void ov121_021E6690(Overlay121AppData *appData, int a1);
-void ov121_021E66EC(Overlay121AppData *appData);
-void ov121_021E67E4(Overlay121AppData *appData);
-void ov121_021E67FC(Overlay121AppData *appData, SaveData *saveData);
-void ov121_021E69F0(Overlay121AppData *appData);
-void ov121_021E6A4C(Overlay121AppData *appData);
-void ov121_021E6A84(Overlay121AppData *appData);
-void ov121_021E6C5C(Overlay121AppData *appData);
-void ov121_021E6CA4(Overlay121AppData *appData);
-void ov121_021E6CEC(Overlay121AppData *appData);
-void ov121_021E6D80(Overlay121AppData *appData);
-void ov121_021E6DD8(Overlay121AppData *appData);
-void ov121_021E6E68(Overlay121AppData *appData);
-void ov121_021E6EC0(Overlay121AppData *appData);
-void ov121_021E6F58(void);
-void ov121_021E6F6C(void);
-void ov121_021E6F78(Overlay121AppData *appData);
+static void ov121_021E5AEC(OVY_MANAGER *man, int *pState);
+static BOOL ov121_021E5C50(Overlay121AppData *appData);
+static void ov121_021E5CB4(Overlay121AppData *appData);
+static BOOL ov121_021E5CC4(Overlay121AppData *appData);
+static void Overlay121_HandleYesNoInput(Overlay121AppData *appData);
+static BOOL ov121_021E5D5C(Overlay121AppData *appData);
+static void Overlay121_SetGfxBanks(void);
+static void Overlay121_InitBgLayers(BgConfig *bgConfig);
+static void Overlay121_InitObjCharTransfer(void);
+static void Overlay121_CreateOamManager(void);
+static void VBlankCB_Overlay121(void *cbData);
+static void Overlay121_LoadBgGraphics(BgConfig *bgConfig, HeapID heapId);
+static void Overlay121_LoadSpriteGraphics(Overlay121AppData *appData, HeapID heapId);
+static void Overlay121_CreateSpriteResourcesHeader(Overlay121AppData *appData);
+static void Overlay121_DestroySprites(Overlay121AppData *appData);
+static void setSpriteTemplate(SpriteTemplate *spriteTemplate, Overlay121AppData *appData);
+static void Overlay121_CreateSprites(Overlay121AppData *appData);
+static void Overlay121_CreateTouchscreenHitboxes(Overlay121AppData *appData, HeapID heapId);
+static Overlay121Input Overlay121_PollInput(Overlay121AppData *appData, int *pSelection);
+static BOOL ov121_021E6404(Overlay121AppData *appData, Overlay121Input input, int selection);
+static void ov121_021E6478(Overlay121AppData *appData, Overlay121Input input, int selection);
+static void ov121_021E6544(Overlay121AppData *appData, int direction);
+static void ov121_021E65A8(Overlay121AppData *appData, int selection);
+static void ov121_021E65D8(Overlay121AppData *appData);
+static void ov121_021E662C(Overlay121AppData *appData, int direction);
+static void ov121_021E6690(Overlay121AppData *appData, BOOL selection);
+static void Overlay121_CreateWindows(Overlay121AppData *appData);
+static void ov121_021E67E4(Overlay121AppData *appData);
+static void ov121_021E67FC(Overlay121AppData *appData, SaveData *saveData);
+static void ov121_021E69F0(Overlay121AppData *appData);
+static void ov121_021E6A4C(Overlay121AppData *appData);
+static void ov121_021E6A84(Overlay121AppData *appData);
+static void Overlay121_PrintDeleteRecordText(Overlay121AppData *appData);
+static void Overlay121_PrintReturnText(Overlay121AppData *appData);
+static void Overlay121_PrintDeleteXsRecordAreYouSure(Overlay121AppData *appData);
+static void Overlay121_PrintYourOwnRecordCantBeDeleted(Overlay121AppData *appData);
+static void Overlay121_PrintRecordStatHeaderText(Overlay121AppData *appData);
+static void Overlay121_PrintSelectRecordToDeleteText(Overlay121AppData *appData);
+static void ov121_021E6EC0(Overlay121AppData *appData);
+static void dimAllMainBgsExceptLyr0(void);
+static void resetMainBgsBrightness(void);
+static void ov121_021E6F78(Overlay121AppData *appData);
 
 BOOL ov121_021E5900(OVY_MANAGER *man, int *pState) {
     ov121_021E5AEC(man, pState);
@@ -273,31 +310,31 @@ BOOL ov121_021E59BC(OVY_MANAGER *man, int *pState) {
     Main_SetVBlankIntrCB(NULL, NULL);
     G2_BlendNone();
     ov121_021E6A4C(appData);
-    RemoveWindow(&appData->unk_004[0]);
-    RemoveWindow(&appData->unk_004[1]);
-    RemoveWindow(&appData->unk_004[2]);
-    RemoveWindow(&appData->unk_004[3]);
-    RemoveWindow(&appData->unk_004[4]);
-    RemoveWindow(&appData->unk_004[5]);
-    FreeBgTilemapBuffer(appData->unk_000, GF_BG_LYR_MAIN_0);
-    FreeBgTilemapBuffer(appData->unk_000, GF_BG_LYR_MAIN_1);
-    FreeBgTilemapBuffer(appData->unk_000, GF_BG_LYR_MAIN_2);
-    FreeBgTilemapBuffer(appData->unk_000, GF_BG_LYR_MAIN_3);
-    FreeBgTilemapBuffer(appData->unk_000, GF_BG_LYR_SUB_0);
-    ov121_021E611C(appData);
-    sub_0200AEB0(appData->unk_1DC[GF_GFX_RES_TYPE_CHAR]);
-    sub_0200B0A8(appData->unk_1DC[GF_GFX_RES_TYPE_PLTT]);
+    RemoveWindow(&appData->windows[OV121_WINDOW_0]);
+    RemoveWindow(&appData->windows[OV121_WINDOW_1]);
+    RemoveWindow(&appData->windows[OV121_WINDOW_2]);
+    RemoveWindow(&appData->windows[OV121_WINDOW_3]);
+    RemoveWindow(&appData->windows[OV121_WINDOW_4]);
+    RemoveWindow(&appData->windows[OV121_WINDOW_5]);
+    FreeBgTilemapBuffer(appData->bgConfig, GF_BG_LYR_MAIN_0);
+    FreeBgTilemapBuffer(appData->bgConfig, GF_BG_LYR_MAIN_1);
+    FreeBgTilemapBuffer(appData->bgConfig, GF_BG_LYR_MAIN_2);
+    FreeBgTilemapBuffer(appData->bgConfig, GF_BG_LYR_MAIN_3);
+    FreeBgTilemapBuffer(appData->bgConfig, GF_BG_LYR_SUB_0);
+    Overlay121_DestroySprites(appData);
+    sub_0200AEB0(appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_CHAR]);
+    sub_0200B0A8(appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_PLTT]);
     for (int i = 0; i < 6; ++i) {
-        Destroy2DGfxResObjMan(appData->unk_1C4[i]);
+        Destroy2DGfxResObjMan(appData->gf2dGfxResManagers[i]);
     }
-    SpriteList_Delete(appData->unk_098);
+    SpriteList_Delete(appData->spriteList);
     FontID_Release(4);
     OamManager_Free();
     ObjCharTransfer_Destroy();
     sub_02022608();
-    YesNoPrompt_Destroy(appData->unk_094);
-    FreeToHeap(appData->unk_22C);
-    FreeToHeap(appData->unk_000);
+    YesNoPrompt_Destroy(appData->yesNoPrompt);
+    FreeToHeap(appData->touchscreenHitboxes);
+    FreeToHeap(appData->bgConfig);
     for (int i = 0; i < appData->unk_25E + 1; ++i) {
         sub_0202EAFC(appData->unk_238[i]);
     }
@@ -307,36 +344,36 @@ BOOL ov121_021E59BC(OVY_MANAGER *man, int *pState) {
     return TRUE;
 }
 
-void ov121_021E5AEC(OVY_MANAGER *man, int *pState) {
+static void ov121_021E5AEC(OVY_MANAGER *man, int *pState) {
     UnkStruct_02097D56 *args = OverlayManager_GetArgs(man);
     CreateHeap(HEAP_ID_3, HEAP_ID_9E, 0x10000);
     Overlay121AppData *data = OverlayManager_CreateAndGetData(man, sizeof(Overlay121AppData), HEAP_ID_9E);
     memset(data, 0, sizeof(Overlay121AppData));
-    data->unk_000 = BgConfig_Alloc(HEAP_ID_9E);
-    ov121_021E5D84();
-    ov121_021E5DA4(data->unk_000);
-    ov121_021E5EDC();
-    ov121_021E5F0C();
-    ov121_021E600C(data, HEAP_ID_9E);
-    ov121_021E60D4(data);
-    data->unk_094 = YesNoPrompt_Create(HEAP_ID_9E);
+    data->bgConfig = BgConfig_Alloc(HEAP_ID_9E);
+    Overlay121_SetGfxBanks();
+    Overlay121_InitBgLayers(data->bgConfig);
+    Overlay121_InitObjCharTransfer();
+    Overlay121_CreateOamManager();
+    Overlay121_LoadSpriteGraphics(data, HEAP_ID_9E);
+    Overlay121_CreateSpriteResourcesHeader(data);
+    data->yesNoPrompt = YesNoPrompt_Create(HEAP_ID_9E);
     data->unk_268 = Options_GetFrame(Save_PlayerData_GetOptionsAddr(args->saveData));
-    Main_SetVBlankIntrCB(ov121_021E5F30, data->unk_000);
+    Main_SetVBlankIntrCB(VBlankCB_Overlay121, data->bgConfig);
     data->unk_230 = 0;
     ResetAllTextPrinters();
     FontID_Alloc(4, HEAP_ID_9E);
-    ov121_021E5F58(data->unk_000, HEAP_ID_9E);
+    Overlay121_LoadBgGraphics(data->bgConfig, HEAP_ID_9E);
     LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0x1E0, HEAP_ID_9E);
-    ov121_021E66EC(data);
-    ov121_021E6194(data);
+    Overlay121_CreateWindows(data);
+    Overlay121_CreateSprites(data);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
-    ov121_021E62A0(data, HEAP_ID_9E);
-    data->unk_233 = 1;
+    Overlay121_CreateTouchscreenHitboxes(data, HEAP_ID_9E);
+    data->state = 1;
     data->unk_234 = sub_0202E530(args->saveData);
-    data->unk_25C = args->unk_0 % 3;
+    data->page = args->unk_0 % 3;
     data->unk_25D = args->unk_0 / 3;
-    data->unk_25E = sub_0202E4B0(data->unk_25C);
-    data->unk_25F = sub_0202E4BC(data->unk_25C);
+    data->unk_25E = sub_0202E4B0(data->page);
+    data->unk_25F = sub_0202E4BC(data->page);
     ov121_021E67FC(data, args->saveData);
     data->unk_260 = args->unk_2;
     if (data->unk_260 >= data->unk_25E) {
@@ -346,86 +383,86 @@ void ov121_021E5AEC(OVY_MANAGER *man, int *pState) {
     ov121_021E69F0(data);
     ov121_021E6690(data, 0);
     ov121_021E6A84(data);
-    ov121_021E6C5C(data);
-    ov121_021E6CA4(data);
-    ov121_021E6DD8(data);
+    Overlay121_PrintDeleteRecordText(data);
+    Overlay121_PrintReturnText(data);
+    Overlay121_PrintRecordStatHeaderText(data);
 }
 
-BOOL ov121_021E5C50(Overlay121AppData *appData) {
-    switch (appData->unk_233) {
-    case 0:
+static BOOL ov121_021E5C50(Overlay121AppData *appData) {
+    switch (appData->state) {
+    case OV121_STATE_INIT:
         ov121_021E6A84(appData);
-        appData->unk_233 = 1;
+        appData->state = OV121_STATE_1;
         break;
-    case 1:
+    case OV121_STATE_1:
         if (ov121_021E5CC4(appData)) {
             return TRUE;
         }
         break;
-    case 2:
-        ov121_021E5D08(appData);
+    case OV121_STATE_YESNO:
+        Overlay121_HandleYesNoInput(appData);
         break;
-    case 3:
+    case OV121_STATE_3:
         if (ov121_021E5D5C(appData)) {
-            appData->unk_233 = 1;
+            appData->state = OV121_STATE_1;
         }
         break;
-    case 4:
+    case OV121_STATE_4:
         appData->unk_258->unk_04 = 0;
-        appData->unk_233 = 0;
+        appData->state = OV121_STATE_INIT;
         break;
     }
     return FALSE;
 }
 
-void ov121_021E5CB4(Overlay121AppData *appData) {
-    if (appData->unk_098 != NULL) {
-        sub_0202457C(appData->unk_098);
+static void ov121_021E5CB4(Overlay121AppData *appData) {
+    if (appData->spriteList != NULL) {
+        sub_0202457C(appData->spriteList);
     }
 }
 
-BOOL ov121_021E5CC4(Overlay121AppData *appData) {
-    int sp0;
-    int r1 = ov121_021E633C(appData, &sp0);
-    if (r1 == 0) {
+static BOOL ov121_021E5CC4(Overlay121AppData *appData) {
+    int selection;
+    Overlay121Input input = Overlay121_PollInput(appData, &selection);
+    if (input == 0) {
         return FALSE;
     }
     if (appData->unk_231 == 0) {
-        if (ov121_021E6404(appData, r1, sp0)) {
+        if (ov121_021E6404(appData, input, selection)) {
             return TRUE;
         }
     } else {
-        ov121_021E6478(appData, r1, sp0);
+        ov121_021E6478(appData, input, selection);
     }
     return FALSE;
 }
 
-void ov121_021E5D08(Overlay121AppData *appData) {
-    switch (YesNoPrompt_HandleInput(appData->unk_094)) {
+static void Overlay121_HandleYesNoInput(Overlay121AppData *appData) {
+    switch (YesNoPrompt_HandleInput(appData->yesNoPrompt)) {
     case YESNORESPONSE_YES:
-        YesNoPrompt_Reset(appData->unk_094);
-        ov121_021E6F6C();
-        appData->unk_233 = 4;
-        ov121_021E6E68(appData);
+        YesNoPrompt_Reset(appData->yesNoPrompt);
+        resetMainBgsBrightness();
+        appData->state = OV121_STATE_4;
+        Overlay121_PrintSelectRecordToDeleteText(appData);
         break;
     case YESNORESPONSE_NO:
-        YesNoPrompt_Reset(appData->unk_094);
-        ov121_021E6F6C();
-        appData->unk_233 = 1;
-        ov121_021E6E68(appData);
+        YesNoPrompt_Reset(appData->yesNoPrompt);
+        resetMainBgsBrightness();
+        appData->state = OV121_STATE_1;
+        Overlay121_PrintSelectRecordToDeleteText(appData);
         break;
     }
 }
 
-BOOL ov121_021E5D5C(Overlay121AppData *appData) {
+static BOOL ov121_021E5D5C(Overlay121AppData *appData) {
     if (gSystem.newKeys != 0 || System_GetTouchNew()) {
-        ov121_021E6E68(appData);
+        Overlay121_PrintSelectRecordToDeleteText(appData);
         return TRUE;
     }
     return FALSE;
 }
 
-void ov121_021E5D84(void) {
+static void Overlay121_SetGfxBanks(void) {
     GraphicsBanks graphicsBanks = {
         .bg = GX_VRAM_BG_128_A,
         .bgextpltt = GX_VRAM_BGEXTPLTT_NONE,
@@ -441,7 +478,7 @@ void ov121_021E5D84(void) {
     GfGfx_SetBanks(&graphicsBanks);
 }
 
-void ov121_021E5DA4(BgConfig *bgConfig) {
+static void Overlay121_InitBgLayers(BgConfig *bgConfig) {
     gSystem.screensFlipped = TRUE;
     GfGfx_SwapDisplay();
 
@@ -550,7 +587,7 @@ void ov121_021E5DA4(BgConfig *bgConfig) {
     BG_FillCharDataRange(bgConfig, GF_BG_LYR_MAIN_2, 0, 1, 0);
 }
 
-void ov121_021E5EDC(void) {
+static void Overlay121_InitObjCharTransfer(void) {
     ObjCharTransferTemplate template = {
         .maxTasks = 10,
         .sizeMain = 0x10000,
@@ -563,12 +600,12 @@ void ov121_021E5EDC(void) {
     sub_02022638();
 }
 
-void ov121_021E5F0C(void) {
+static void Overlay121_CreateOamManager(void) {
     NNS_G2dInitOamManagerModule();
     OamManager_Create(0, 126, 0, 32, 0, 126, 0, 32, HEAP_ID_9E);
 }
 
-void ov121_021E5F30(void *cbData) {
+static void VBlankCB_Overlay121(void *cbData) {
     BgConfig *bgConfig = (BgConfig *)cbData;
 
     OamManager_ApplyAndResetBuffers();
@@ -577,7 +614,7 @@ void ov121_021E5F30(void *cbData) {
     OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
-void ov121_021E5F58(BgConfig *bgConfig, HeapID heapId) {
+static void Overlay121_LoadBgGraphics(BgConfig *bgConfig, HeapID heapId) {
     GfGfxLoader_GXLoadPal(NARC_a_2_6_0, 1, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0x40, heapId);
     GfGfxLoader_LoadCharData(NARC_a_2_6_0, 3, bgConfig, GF_BG_LYR_MAIN_3, 0, 0x1000, TRUE, heapId);
     GfGfxLoader_LoadScrnData(NARC_a_2_6_0, 5, bgConfig, GF_BG_LYR_MAIN_3, 0, 0x600, TRUE, heapId);
@@ -589,44 +626,44 @@ void ov121_021E5F58(BgConfig *bgConfig, HeapID heapId) {
     BgCommitTilemapBufferToVram(bgConfig, GF_BG_LYR_SUB_0);
 }
 
-void ov121_021E600C(Overlay121AppData *appData, HeapID heapId) {
-    appData->unk_098 = G2dRenderer_Init(5, &appData->unk_09C, heapId);
+static void Overlay121_LoadSpriteGraphics(Overlay121AppData *appData, HeapID heapId) {
+    appData->spriteList = G2dRenderer_Init(5, &appData->g2dRenderer, heapId);
     for (int i = 0; i < 6; ++i) {
-        appData->unk_1C4[i] = Create2DGfxResObjMan(1, (GfGfxResType)i, heapId);
+        appData->gf2dGfxResManagers[i] = Create2DGfxResObjMan(1, (GfGfxResType)i, heapId);
     }
-    appData->unk_1DC[GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(appData->unk_1C4[GF_GFX_RES_TYPE_CHAR], NARC_a_2_6_0, 9, TRUE, 0, NNS_G2D_VRAM_TYPE_2DMAIN, heapId);
-    appData->unk_1DC[GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(appData->unk_1C4[GF_GFX_RES_TYPE_PLTT], NARC_a_2_6_0, 6, FALSE, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 4, heapId);
-    appData->unk_1DC[GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(appData->unk_1C4[GF_GFX_RES_TYPE_CELL], NARC_a_2_6_0, 8, TRUE, 0, GF_GFX_RES_TYPE_CELL, heapId);
-    appData->unk_1DC[GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromNarc(appData->unk_1C4[GF_GFX_RES_TYPE_ANIM], NARC_a_2_6_0, 7, TRUE, 0, GF_GFX_RES_TYPE_ANIM, heapId);
-    sub_0200ADA4(appData->unk_1DC[GF_GFX_RES_TYPE_CHAR]);
-    sub_0200AF94(appData->unk_1DC[GF_GFX_RES_TYPE_PLTT]);
+    appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_CHAR], NARC_a_2_6_0, 9, TRUE, 0, NNS_G2D_VRAM_TYPE_2DMAIN, heapId);
+    appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_PLTT], NARC_a_2_6_0, 6, FALSE, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 4, heapId);
+    appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_CELL], NARC_a_2_6_0, 8, TRUE, 0, GF_GFX_RES_TYPE_CELL, heapId);
+    appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromNarc(appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_ANIM], NARC_a_2_6_0, 7, TRUE, 0, GF_GFX_RES_TYPE_ANIM, heapId);
+    sub_0200ADA4(appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_CHAR]);
+    sub_0200AF94(appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_PLTT]);
 }
 
-void ov121_021E60D4(Overlay121AppData *appData) {
-    CreateSpriteResourcesHeader(&appData->unk_1F4, 0, 0, 0, 0, -1, -1, 0, 3, appData->unk_1C4[GF_GFX_RES_TYPE_CHAR], appData->unk_1C4[GF_GFX_RES_TYPE_PLTT], appData->unk_1C4[GF_GFX_RES_TYPE_CELL], appData->unk_1C4[GF_GFX_RES_TYPE_ANIM], NULL, NULL);
+static void Overlay121_CreateSpriteResourcesHeader(Overlay121AppData *appData) {
+    CreateSpriteResourcesHeader(&appData->spriteResourcesHeader, 0, 0, 0, 0, -1, -1, 0, 3, appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_CHAR], appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_PLTT], appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_CELL], appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_ANIM], NULL, NULL);
 }
 
-void ov121_021E611C(Overlay121AppData *appData) {
-    if (appData->unk_218[0] != NULL) {
-        Sprite_Delete(appData->unk_218[0]);
+static void Overlay121_DestroySprites(Overlay121AppData *appData) {
+    if (appData->sprites[OV121_SPRITE_0] != NULL) {
+        Sprite_Delete(appData->sprites[OV121_SPRITE_0]);
     }
-    if (appData->unk_218[1] != NULL) {
-        Sprite_Delete(appData->unk_218[1]);
+    if (appData->sprites[OV121_SPRITE_1] != NULL) {
+        Sprite_Delete(appData->sprites[OV121_SPRITE_1]);
     }
-    if (appData->unk_218[2] != NULL) {
-        Sprite_Delete(appData->unk_218[2]);
+    if (appData->sprites[OV121_SPRITE_2] != NULL) {
+        Sprite_Delete(appData->sprites[OV121_SPRITE_2]);
     }
-    if (appData->unk_218[3] != NULL) {
-        Sprite_Delete(appData->unk_218[3]);
+    if (appData->sprites[OV121_SPRITE_3] != NULL) {
+        Sprite_Delete(appData->sprites[OV121_SPRITE_3]);
     }
-    if (appData->unk_218[4] != NULL) {
-        Sprite_Delete(appData->unk_218[4]);
+    if (appData->sprites[OV121_SPRITE_4] != NULL) {
+        Sprite_Delete(appData->sprites[OV121_SPRITE_4]);
     }
 }
 
-void ov121_021E6168(SpriteTemplate *spriteTemplate, Overlay121AppData *appData) {
-    spriteTemplate->spriteList = appData->unk_098;
-    spriteTemplate->header = &appData->unk_1F4;
+static void setSpriteTemplate(SpriteTemplate *spriteTemplate, Overlay121AppData *appData) {
+    spriteTemplate->spriteList = appData->spriteList;
+    spriteTemplate->header = &appData->spriteResourcesHeader;
     spriteTemplate->position.z = 0;
     SetVecFx32(spriteTemplate->scale, FX32_ONE, FX32_ONE, FX32_ONE);
     spriteTemplate->rotation = 0;
@@ -635,10 +672,10 @@ void ov121_021E6168(SpriteTemplate *spriteTemplate, Overlay121AppData *appData) 
     spriteTemplate->heapId = HEAP_ID_9E;
 }
 
-void ov121_021E6194(Overlay121AppData *appData) {
+static void Overlay121_CreateSprites(Overlay121AppData *appData) {
     Sprite *sprite;
     SpriteTemplate spriteTemplate;
-    ov121_021E6168(&spriteTemplate, appData);
+    setSpriteTemplate(&spriteTemplate, appData);
 
     spriteTemplate.position.x = FX32_CONST(224);
     spriteTemplate.position.y = FX32_CONST(176);
@@ -647,7 +684,7 @@ void ov121_021E6194(Overlay121AppData *appData) {
     Set2dSpriteAnimSeqNo(sprite, 2);
     Sprite_SetPriority(sprite, 1);
     Set2dSpriteVisibleFlag(sprite, TRUE);
-    appData->unk_218[0] = sprite;
+    appData->sprites[OV121_SPRITE_0] = sprite;
 
     spriteTemplate.position.x = FX32_CONST(16);
     spriteTemplate.position.y = FX32_CONST(96);
@@ -655,7 +692,7 @@ void ov121_021E6194(Overlay121AppData *appData) {
     Set2dSpriteAnimActiveFlag(sprite, TRUE);
     Set2dSpriteAnimSeqNo(sprite, 3);
     Set2dSpriteVisibleFlag(sprite, TRUE);
-    appData->unk_218[2] = sprite;
+    appData->sprites[OV121_SPRITE_2] = sprite;
 
     spriteTemplate.position.x = FX32_CONST(240);
     spriteTemplate.position.y = FX32_CONST(96);
@@ -663,7 +700,7 @@ void ov121_021E6194(Overlay121AppData *appData) {
     Set2dSpriteAnimActiveFlag(sprite, TRUE);
     Set2dSpriteAnimSeqNo(sprite, 5);
     Set2dSpriteVisibleFlag(sprite, TRUE);
-    appData->unk_218[1] = sprite;
+    appData->sprites[OV121_SPRITE_1] = sprite;
 
     spriteTemplate.position.x = FX32_CONST(224);
     spriteTemplate.position.y = FX32_CONST(176);
@@ -671,7 +708,7 @@ void ov121_021E6194(Overlay121AppData *appData) {
     Set2dSpriteAnimActiveFlag(sprite, TRUE);
     Set2dSpriteAnimSeqNo(sprite, 0);
     Set2dSpriteVisibleFlag(sprite, TRUE);
-    appData->unk_218[3] = sprite;
+    appData->sprites[OV121_SPRITE_3] = sprite;
 
     spriteTemplate.position.x = FX32_CONST(64);
     spriteTemplate.position.y = FX32_CONST(176);
@@ -679,46 +716,46 @@ void ov121_021E6194(Overlay121AppData *appData) {
     Set2dSpriteAnimActiveFlag(sprite, TRUE);
     Set2dSpriteAnimSeqNo(sprite, 8);
     Set2dSpriteVisibleFlag(sprite, TRUE);
-    appData->unk_218[4] = sprite;
+    appData->sprites[OV121_SPRITE_4] = sprite;
 }
 
-void ov121_021E62A0(Overlay121AppData *appData, HeapID heapId) {
-    appData->unk_22C = AllocFromHeap(heapId, 10 * sizeof(TouchscreenHitbox));
+static void Overlay121_CreateTouchscreenHitboxes(Overlay121AppData *appData, HeapID heapId) {
+    appData->touchscreenHitboxes = AllocFromHeap(heapId, 10 * sizeof(TouchscreenHitbox));
     for (int i = 0; i < 6; ++i) {
-        TouchscreenHitbox_SetRect(&appData->unk_22C[i], 56 + 16 * i, 40, 16, 176);
+        TouchscreenHitbox_SetRect(&appData->touchscreenHitboxes[i], 56 + 16 * i, 40, 16, 176);
     }
-    TouchscreenHitbox_SetRect(&appData->unk_22C[6], 168, 8, 16, 128);
-    TouchscreenHitbox_SetRect(&appData->unk_22C[7], 168, 192, 16, 64);
-    TouchscreenHitbox_SetCircle(&appData->unk_22C[8], 16, 96, 16);
-    TouchscreenHitbox_SetCircle(&appData->unk_22C[9], 240, 96, 16);
+    TouchscreenHitbox_SetRect(&appData->touchscreenHitboxes[6], 168, 8, 16, 128);
+    TouchscreenHitbox_SetRect(&appData->touchscreenHitboxes[7], 168, 192, 16, 64);
+    TouchscreenHitbox_SetCircle(&appData->touchscreenHitboxes[8], 16, 96, 16);
+    TouchscreenHitbox_SetCircle(&appData->touchscreenHitboxes[9], 240, 96, 16);
 }
 
-int ov121_021E633C(Overlay121AppData *appData, int *a1) {
+static Overlay121Input Overlay121_PollInput(Overlay121AppData *appData, int *a1) {
     int input = 0;
     if (!System_GetTouchHeld()) {
         input = gSystem.newKeys;
         if (input != 0) {
             switch (input) {
             case PAD_KEY_LEFT:
-                return 6;
+                return OV121_INPUT_CURSOR_LEFT;
             case PAD_KEY_RIGHT:
-                return 7;
+                return OV121_INPUT_CURSOR_RIGHT;
             case PAD_KEY_UP:
-                return 1;
+                return OV121_INPUT_CURSOR_UP;
             case PAD_KEY_DOWN:
-                return 2;
+                return OV121_INPUT_CURSOR_DOWN;
             case PAD_BUTTON_X:
-                return 5;
+                return OV121_INPUT_X_BUTTON;
             case PAD_BUTTON_A:
-                return 8;
+                return OV121_INPUT_A_BUTTON;
             case PAD_BUTTON_B:
-                return 4;
+                return OV121_INPUT_B_BUTTON;
             }
         }
     }
     if (input == 0 && System_GetTouchNew()) {
         // Potential UB: TouchscreenHitbox_FindRectAtTouchNew expects unk_22C to be terminated with {0xFF,0,0,0} but ov121_021E62A0 never sets that up
-        input = TouchscreenHitbox_FindHitboxAtTouchNew(appData->unk_22C);
+        input = TouchscreenHitbox_FindHitboxAtTouchNew(appData->touchscreenHitboxes);
         if (input != -1) {
             switch (input) {
             case 0:
@@ -728,134 +765,134 @@ int ov121_021E633C(Overlay121AppData *appData, int *a1) {
             case 4:
             case 5:
                 *a1 = input;
-                return 3;
+                return OV121_INPUT_TAP_RECORD;
             case 6:
-                return 5;
+                return OV121_INPUT_X_BUTTON;
             case 7:
                 *a1 = input;
-                return 4;
+                return OV121_INPUT_B_BUTTON;
             case 8:
-                return 6;
+                return OV121_INPUT_CURSOR_LEFT;
             case 9:
-                return 7;
+                return OV121_INPUT_CURSOR_RIGHT;
             }
         }
     }
-    return 0;
+    return OV121_INPUT_NONE;
 }
 
-BOOL ov121_021E6404(Overlay121AppData *appData, int a1, int a2) {
-    switch (a1) {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
+static BOOL ov121_021E6404(Overlay121AppData *appData, Overlay121Input input, int selection) {
+    switch (input) {
+    case OV121_INPUT_NONE:
+    case OV121_INPUT_CURSOR_UP:
+    case OV121_INPUT_CURSOR_DOWN:
+    case OV121_INPUT_TAP_RECORD:
         break;
-    case 6:
+    case OV121_INPUT_CURSOR_LEFT:
         ov121_021E662C(appData, -1);
         break;
-    case 7:
+    case OV121_INPUT_CURSOR_RIGHT:
         ov121_021E662C(appData,  1);
         break;
-    case 5:
+    case OV121_INPUT_X_BUTTON:
         PlaySE(SEQ_SE_DP_DECIDE);
-        Set2dSpriteAnimSeqNo(appData->unk_218[4], 9);
+        Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_4], 9);
         ov121_021E6690(appData, 1);
         break;
-    case 4:
-    case 8:
+    case OV121_INPUT_B_BUTTON:
+    case OV121_INPUT_A_BUTTON:
         PlaySE(SEQ_SE_DP_DECIDE);
-        Set2dSpriteAnimSeqNo(appData->unk_218[3], 1);
+        Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_3], 1);
         return TRUE;
     }
 
     return FALSE;
 }
 
-void ov121_021E6478(Overlay121AppData *appData, int a1, int a2) {
-    switch (a1) {
-    case 0:
-    case 6:
-    case 7:
+static void ov121_021E6478(Overlay121AppData *appData, Overlay121Input input, int selection) {
+    switch (input) {
+    case OV121_INPUT_NONE:
+    case OV121_INPUT_CURSOR_LEFT:
+    case OV121_INPUT_CURSOR_RIGHT:
         break;
-    case 1:
+    case OV121_INPUT_CURSOR_UP:
         ov121_021E6544(appData, -1);
         break;
-    case 2:
+    case OV121_INPUT_CURSOR_DOWN:
         ov121_021E6544(appData,  1);
         break;
-    case 3:
-        ov121_021E65A8(appData, a2);
+    case OV121_INPUT_TAP_RECORD:
+        ov121_021E65A8(appData, selection);
         break;
-    case 5:
+    case OV121_INPUT_X_BUTTON:
         if (appData->unk_232 < appData->unk_261) {
             PlaySE(SEQ_SE_DP_DECIDE);
             ov121_021E6EC0(appData);
         } else {
             PlaySE(SEQ_SE_DP_DECIDE);
-            Set2dSpriteAnimSeqNo(appData->unk_218[3], 1);
+            Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_3], 1);
             ov121_021E6690(appData, 0);
         }
         break;
-    case 4:
+    case OV121_INPUT_B_BUTTON:
         PlaySE(SEQ_SE_DP_DECIDE);
-        Set2dSpriteAnimSeqNo(appData->unk_218[3], 1);
+        Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_3], 1);
         ov121_021E6690(appData, 0);
         break;
-    case 8:
+    case OV121_INPUT_A_BUTTON:
         if (appData->unk_232 < appData->unk_261) {
             PlaySE(SEQ_SE_DP_DECIDE);
             ov121_021E6EC0(appData);
         } else {
             PlaySE(SEQ_SE_DP_DECIDE);
-            Set2dSpriteAnimSeqNo(appData->unk_218[3], 1);
+            Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_3], 1);
             ov121_021E6690(appData, 0);
         }
         break;
     }
 }
 
-void ov121_021E6544(Overlay121AppData *appData, int a1) {
-    if (a1 > 0) {
+static void ov121_021E6544(Overlay121AppData *appData, int direction) {
+    if (direction > 0) {
         if (appData->unk_232 == 6) {
             appData->unk_232 = 0;
-        } else if (appData->unk_232 + a1 >= appData->unk_261) {
+        } else if (appData->unk_232 + direction >= appData->unk_261) {
             appData->unk_232 = 6;
         } else {
-            appData->unk_232 += a1;
+            appData->unk_232 += direction;
         }
-    } else if (a1 < 0) {
+    } else if (direction < 0) {
         if (appData->unk_232 == 6) {
             appData->unk_232 = appData->unk_261 - 1;
-        } else if (appData->unk_232 + a1 < 0) {
+        } else if (appData->unk_232 + direction < 0) {
             appData->unk_232 = 6;
         } else {
-            appData->unk_232 += a1;
+            appData->unk_232 += direction;
         }
     }
     PlaySE(SEQ_SE_DP_SELECT);
     ov121_021E65D8(appData);
 }
 
-void ov121_021E65A8(Overlay121AppData *appData, int a1) {
-    if (a1 == 6 || a1 < appData->unk_261) {
+static void ov121_021E65A8(Overlay121AppData *appData, int selection) {
+    if (selection == 6 || selection < appData->unk_261) {
         PlaySE(SEQ_SE_DP_SELECT);
-        appData->unk_232 = a1;
+        appData->unk_232 = selection;
         ov121_021E65D8(appData);
     }
 }
 
-void ov121_021E65D8(Overlay121AppData *appData) {
+static void ov121_021E65D8(Overlay121AppData *appData) {
     VecFx32 pos = {};
     u8 idx = appData->unk_232;
     pos.x = ov121_021E7140[idx].x * FX32_ONE;
     pos.y = ov121_021E7140[idx].y * FX32_ONE;
-    Sprite_SetMatrix(appData->unk_218[0], &pos);
-    Set2dSpriteAnimSeqNo(appData->unk_218[0], ov121_021E7140[idx].anim);
+    Sprite_SetMatrix(appData->sprites[OV121_SPRITE_0], &pos);
+    Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_0], ov121_021E7140[idx].anim);
 }
 
-void ov121_021E662C(Overlay121AppData *appData, int a1) {
-    int new = appData->unk_260 + a1;
+static void ov121_021E662C(Overlay121AppData *appData, int direction) {
+    int new = appData->unk_260 + direction;
     if (new < 0) {
         new = appData->unk_25E - 1;
     } else if (new >= appData->unk_25E) {
@@ -863,70 +900,70 @@ void ov121_021E662C(Overlay121AppData *appData, int a1) {
     }
     appData->unk_260 = new;
     PlaySE(SEQ_SE_DP_SELECT78);
-    if (a1 > 0) {
-        Set2dSpriteAnimSeqNo(appData->unk_218[1], 6);
-    } else if (a1 < 0) {
-        Set2dSpriteAnimSeqNo(appData->unk_218[2], 4);
+    if (direction > 0) {
+        Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_1], 6);
+    } else if (direction < 0) {
+        Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_2], 4);
     }
-    ov121_021E6DD8(appData);
-    appData->unk_233 = 0;
+    Overlay121_PrintRecordStatHeaderText(appData);
+    appData->state = OV121_STATE_INIT;
 }
 
-void ov121_021E6690(Overlay121AppData *appData, int a1) {
-    appData->unk_231 = a1;
-    if (a1 == 0) {
+static void ov121_021E6690(Overlay121AppData *appData, BOOL selection) {
+    appData->unk_231 = selection;
+    if (selection == 0) {
         appData->unk_232 = 6;
-        Set2dSpriteVisibleFlag(appData->unk_218[1], TRUE);
-        Set2dSpriteVisibleFlag(appData->unk_218[2], TRUE);
+        Set2dSpriteVisibleFlag(appData->sprites[OV121_SPRITE_1], TRUE);
+        Set2dSpriteVisibleFlag(appData->sprites[OV121_SPRITE_2], TRUE);
         ov121_021E67E4(appData);
     } else {
         appData->unk_232 = 0;
-        Set2dSpriteVisibleFlag(appData->unk_218[1], FALSE);
-        Set2dSpriteVisibleFlag(appData->unk_218[2], FALSE);
-        ov121_021E6E68(appData);
+        Set2dSpriteVisibleFlag(appData->sprites[OV121_SPRITE_1], FALSE);
+        Set2dSpriteVisibleFlag(appData->sprites[OV121_SPRITE_2], FALSE);
+        Overlay121_PrintSelectRecordToDeleteText(appData);
     }
     ov121_021E65D8(appData);
 }
 
-void ov121_021E66EC(Overlay121AppData *appData) {
+static void Overlay121_CreateWindows(Overlay121AppData *appData) {
     LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0x1E0, HEAP_ID_9E);
-    AddWindowParameterized(appData->unk_000, &appData->unk_004[0], GF_BG_LYR_MAIN_1, 5, 7, 2, 12, 15, 0x1);
-    AddWindowParameterized(appData->unk_000, &appData->unk_004[1], GF_BG_LYR_MAIN_1, 7, 7, 20, 12, 15, 0x19);
-    AddWindowParameterized(appData->unk_000, &appData->unk_004[2], GF_BG_LYR_MAIN_2, 2, 1, 28, 4, 15, 0x109);
-    AddWindowParameterized(appData->unk_000, &appData->unk_004[3], GF_BG_LYR_MAIN_2, 25, 21, 6, 2, 1, 0x179);
-    AddWindowParameterized(appData->unk_000, &appData->unk_004[4], GF_BG_LYR_MAIN_2, 4, 21, 12, 2, 1, 0x185);
-    AddWindowParameterized(appData->unk_000, &appData->unk_004[5], GF_BG_LYR_MAIN_0, 2, 1, 28, 4, 15, 0x1F);
-    LoadUserFrameGfx2(appData->unk_000, GF_BG_LYR_MAIN_0, 0x1, 12, appData->unk_268, HEAP_ID_9E);
+    AddWindowParameterized(appData->bgConfig, &appData->windows[OV121_WINDOW_0], GF_BG_LYR_MAIN_1, 5, 7, 2, 12, 15, 0x1);
+    AddWindowParameterized(appData->bgConfig, &appData->windows[OV121_WINDOW_1], GF_BG_LYR_MAIN_1, 7, 7, 20, 12, 15, 0x19);
+    AddWindowParameterized(appData->bgConfig, &appData->windows[OV121_WINDOW_2], GF_BG_LYR_MAIN_2, 2, 1, 28, 4, 15, 0x109);
+    AddWindowParameterized(appData->bgConfig, &appData->windows[OV121_WINDOW_3], GF_BG_LYR_MAIN_2, 25, 21, 6, 2, 1, 0x179);
+    AddWindowParameterized(appData->bgConfig, &appData->windows[OV121_WINDOW_4], GF_BG_LYR_MAIN_2, 4, 21, 12, 2, 1, 0x185);
+    AddWindowParameterized(appData->bgConfig, &appData->windows[OV121_WINDOW_5], GF_BG_LYR_MAIN_0, 2, 1, 28, 4, 15, 0x1F);
+    LoadUserFrameGfx2(appData->bgConfig, GF_BG_LYR_MAIN_0, 0x1, 12, appData->unk_268, HEAP_ID_9E);
 }
 
-void ov121_021E67E4(Overlay121AppData *appData) {
-    ClearFrameAndWindow2(&appData->unk_004[5], TRUE);
-    ClearWindowTilemapAndCopyToVram(&appData->unk_004[5]);
+static void ov121_021E67E4(Overlay121AppData *appData) {
+    ClearFrameAndWindow2(&appData->windows[OV121_WINDOW_5], TRUE);
+    ClearWindowTilemapAndCopyToVram(&appData->windows[OV121_WINDOW_5]);
 }
 
-void ov121_021E67FC(Overlay121AppData *appData, SaveData *saveData) {
+static void ov121_021E67FC(Overlay121AppData *appData, SaveData *saveData) {
     int j;
     int i;
-    BOOL ip;
+    BOOL inserted;
     UnkStruct_0202E9FC *ptr;
     int cnt;
 
     appData->unk_254 = AllocFromHeap(HEAP_ID_9E, appData->unk_25E * sizeof(Overlay121Sub254));
     MI_CpuClear8(appData->unk_254, appData->unk_25E * sizeof(Overlay121Sub254));
-    appData->unk_238[0] = sub_0202E9FC(saveData, appData->unk_25C, HEAP_ID_9E);
+    appData->unk_238[0] = sub_0202E9FC(saveData, appData->page, HEAP_ID_9E);
     for (i = 0; i < appData->unk_25E; ++i) {
         appData->unk_238[1 + i] = sub_0202EA80(appData->unk_234, appData->unk_25F + appData->unk_25D * 13 + i, HEAP_ID_9E);
         cnt = 0;
-        ip = FALSE;
+        inserted = FALSE;
         ptr = appData->unk_238[1 + i];
-        if (ptr->unk_00 == 0) {
+        if (ptr->count == 0) {
             appData->unk_254[i].unk_04[0].unk_00 = &appData->unk_238[0]->unk_04[i];
             appData->unk_254[i].unk_04[0].unk_04 = 1;
             appData->unk_254[i].unk_04[0].unk_06 = 0xFF;
             appData->unk_254[i].unk_00 = 1;
         } else {
-            for (j = 0; j < ptr->unk_00; ++j) {
-                if (!ip && appData->unk_238[0]->unk_04[i].unk_4 >= ptr->unk_04[j].unk_4) {
+            for (j = 0; j < ptr->count; ++j) {
+                if (!inserted && appData->unk_238[0]->unk_04[i].unk_4 >= ptr->unk_04[j].unk_4) {
                     appData->unk_254[i].unk_04[cnt].unk_00 = &appData->unk_238[0]->unk_04[i];
                     appData->unk_254[i].unk_04[cnt].unk_04 = 1;
                     appData->unk_254[i].unk_04[cnt].unk_06 = 0xFF;
@@ -934,7 +971,7 @@ void ov121_021E67FC(Overlay121AppData *appData, SaveData *saveData) {
                     appData->unk_254[i].unk_04[cnt].unk_00 = &ptr->unk_04[j];
                     appData->unk_254[i].unk_04[cnt].unk_04 = 1;
                     appData->unk_254[i].unk_04[cnt].unk_06 = j;
-                    ip = TRUE;
+                    inserted = TRUE;
                 } else {
                     appData->unk_254[i].unk_04[cnt].unk_00 = &ptr->unk_04[j];
                     appData->unk_254[i].unk_04[cnt].unk_04 = 1;
@@ -942,39 +979,39 @@ void ov121_021E67FC(Overlay121AppData *appData, SaveData *saveData) {
                 }
                 ++cnt;
             }
-            if (!ip) {
+            if (!inserted) {
                 appData->unk_254[i].unk_04[cnt].unk_00 = &appData->unk_238[0]->unk_04[i];
                 appData->unk_254[i].unk_04[cnt].unk_04 = 1;
                 appData->unk_254[i].unk_04[cnt].unk_06 = 0xFF;
             }
-            appData->unk_254[i].unk_00 = ptr->unk_00 + 1;
+            appData->unk_254[i].unk_00 = ptr->count + 1;
         }
     }
 }
 
-void ov121_021E69F0(Overlay121AppData *appData) {
-    appData->unk_064 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0421_bin, HEAP_ID_9E);
-    appData->unk_068 = MessageFormat_New_Custom(2, 76, HEAP_ID_9E);
+static void ov121_021E69F0(Overlay121AppData *appData) {
+    appData->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0421_bin, HEAP_ID_9E);
+    appData->msgFormat = MessageFormat_New_Custom(2, 76, HEAP_ID_9E);
     appData->unk_06C = String_New(76, HEAP_ID_9E);
-    appData->unk_070 = NewString_ReadMsgData(appData->unk_064, msg_0421_00043);
-    appData->unk_074 = NewString_ReadMsgData(appData->unk_064, msg_0421_00042);
+    appData->unk_070 = NewString_ReadMsgData(appData->msgData, msg_0421_00043);
+    appData->unk_074 = NewString_ReadMsgData(appData->msgData, msg_0421_00042);
     for (int i = 0; i < 7; ++i) {
-        appData->unk_078[i] = NewString_ReadMsgData(appData->unk_064, msg_0421_00044 + i);
+        appData->unk_078[i] = NewString_ReadMsgData(appData->msgData, msg_0421_00044 + i);
     }
 }
 
-void ov121_021E6A4C(Overlay121AppData *appData) {
+static void ov121_021E6A4C(Overlay121AppData *appData) {
     for (int i = 0; i < 7; ++i) {
         String_Delete(appData->unk_078[i]);
     }
     String_Delete(appData->unk_070);
     String_Delete(appData->unk_074);
     String_Delete(appData->unk_06C);
-    MessageFormat_Delete(appData->unk_068);
-    DestroyMsgData(appData->unk_064);
+    MessageFormat_Delete(appData->msgFormat);
+    DestroyMsgData(appData->msgData);
 }
 
-void ov121_021E6A84(Overlay121AppData *appData) {
+static void ov121_021E6A84(Overlay121AppData *appData) {
     int i;
     int sp18;
     int sp14;
@@ -984,10 +1021,10 @@ void ov121_021E6A84(Overlay121AppData *appData) {
     int r5;
 
     sp24_plus_sp20= &appData->unk_254[appData->unk_260];
-    sp10 = &ov121_021E7014[appData->unk_25C][appData->unk_260];
+    sp10 = &ov121_021E7014[appData->page][appData->unk_260];
 
-    FillWindowPixelBuffer(&appData->unk_004[1], 0);
-    FillWindowPixelBuffer(&appData->unk_004[0], 0);
+    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_1], 0);
+    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_0], 0);
     sp18 = 1;
     sp14 = 0;
     r0 = 0;
@@ -999,17 +1036,17 @@ void ov121_021E6A84(Overlay121AppData *appData) {
             if (r5 < r0) {
                 ++sp18;
             }
-            BufferIntegerAsString(appData->unk_068, 0, sp18, 1, PRINTING_MODE_RIGHT_ALIGN, TRUE);
-            StringExpandPlaceholders(appData->unk_068, appData->unk_06C, appData->unk_074);
-            AddTextPrinterParameterizedWithColor(&appData->unk_004[0], 0, appData->unk_06C, 0, 16 * sp14, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+            BufferIntegerAsString(appData->msgFormat, 0, sp18, 1, PRINTING_MODE_RIGHT_ALIGN, TRUE);
+            StringExpandPlaceholders(appData->msgFormat, appData->unk_06C, appData->unk_074);
+            AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_0], 0, appData->unk_06C, 0, 16 * sp14, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 
-            BufferString(appData->unk_068, 1, sp24_plus_sp20->unk_04[i].unk_00->unk_8, 2, 1, 2);
-            StringExpandPlaceholders(appData->unk_068, appData->unk_06C, appData->unk_070);
-            AddTextPrinterParameterizedWithColor(&appData->unk_004[1], 0, appData->unk_06C, 0, 16 * sp14, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+            BufferString(appData->msgFormat, 1, sp24_plus_sp20->unk_04[i].unk_00->playerName, 2, 1, 2);
+            StringExpandPlaceholders(appData->msgFormat, appData->unk_06C, appData->unk_070);
+            AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_1], 0, appData->unk_06C, 0, 16 * sp14, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 
-            BufferIntegerAsString(appData->unk_068, 0, r5, sp10->unk_4, PRINTING_MODE_RIGHT_ALIGN, TRUE);
-            StringExpandPlaceholders(appData->unk_068, appData->unk_06C, appData->unk_078[sp10->unk_6 - 44]);
-            AddTextPrinterParameterizedWithColor(&appData->unk_004[1], 0, appData->unk_06C, 160 - FontID_String_GetWidth(0, appData->unk_06C, 0), 16 * sp14, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+            BufferIntegerAsString(appData->msgFormat, 0, r5, sp10->unk_4, PRINTING_MODE_RIGHT_ALIGN, TRUE);
+            StringExpandPlaceholders(appData->msgFormat, appData->unk_06C, appData->unk_078[sp10->unk_6 - 44]);
+            AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_1], 0, appData->unk_06C, 160 - FontID_String_GetWidth(0, appData->unk_06C, 0), 16 * sp14, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 
             appData->unk_262[sp14] = i;
             r0 = r5;
@@ -1018,8 +1055,8 @@ void ov121_021E6A84(Overlay121AppData *appData) {
             }
         }
     }
-    CopyWindowToVram(&appData->unk_004[1]);
-    CopyWindowToVram(&appData->unk_004[0]);
+    CopyWindowToVram(&appData->windows[OV121_WINDOW_1]);
+    CopyWindowToVram(&appData->windows[OV121_WINDOW_0]);
     appData->unk_261 = sp14;
     if (appData->unk_231 == 1 && appData->unk_232 >= appData->unk_261) {
         GF_ASSERT(appData->unk_232 != 7);
@@ -1028,111 +1065,111 @@ void ov121_021E6A84(Overlay121AppData *appData) {
     }
 }
 
-void ov121_021E6C5C(Overlay121AppData *appData) {
-    FillWindowPixelBuffer(&appData->unk_004[4], 0);
-    String *string = NewString_ReadMsgData(appData->unk_064, msg_0421_00040);
-    AddTextPrinterParameterizedWithColor(&appData->unk_004[4], 4, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 1, 0), NULL);
+static void Overlay121_PrintDeleteRecordText(Overlay121AppData *appData) {
+    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_4], 0);
+    String *string = NewString_ReadMsgData(appData->msgData, msg_0421_00040);
+    AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_4], 4, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 1, 0), NULL);
     String_Delete(string);
-    CopyWindowToVram(&appData->unk_004[4]);
+    CopyWindowToVram(&appData->windows[OV121_WINDOW_4]);
 }
 
-void ov121_021E6CA4(Overlay121AppData *appData) {
-    FillWindowPixelBuffer(&appData->unk_004[3], 0);
-    String *string = NewString_ReadMsgData(appData->unk_064, msg_0421_00041);
-    AddTextPrinterParameterizedWithColor(&appData->unk_004[3], 4, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 1, 0), NULL);
+static void Overlay121_PrintReturnText(Overlay121AppData *appData) {
+    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_3], 0);
+    String *string = NewString_ReadMsgData(appData->msgData, msg_0421_00041);
+    AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_3], 4, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 1, 0), NULL);
     String_Delete(string);
-    CopyWindowToVram(&appData->unk_004[3]);
+    CopyWindowToVram(&appData->windows[OV121_WINDOW_3]);
 }
 
-void ov121_021E6CEC(Overlay121AppData *appData) {
+static void Overlay121_PrintDeleteXsRecordAreYouSure(Overlay121AppData *appData) {
     Overlay121Sub254 *r6;
     u8 r4;
     String *string;
 
     r4 = appData->unk_262[appData->unk_232];
     r6 = &appData->unk_254[appData->unk_260];
-    DrawFrameAndWindow2(&appData->unk_004[5], TRUE, 0x1, 12);
-    FillWindowPixelBuffer(&appData->unk_004[5], 0xFF);
-    BufferString(appData->unk_068, 0, r6->unk_04[r4].unk_00->unk_8, 2, 1, 2);
-    string = ReadMsgData_ExpandPlaceholders(appData->unk_068, appData->unk_064, msg_0421_00049, HEAP_ID_9E);
-    AddTextPrinterParameterizedWithColor(&appData->unk_004[5], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    DrawFrameAndWindow2(&appData->windows[OV121_WINDOW_5], TRUE, 0x1, 12);
+    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_5], 0xFF);
+    BufferString(appData->msgFormat, 0, r6->unk_04[r4].unk_00->playerName, 2, 1, 2);
+    string = ReadMsgData_ExpandPlaceholders(appData->msgFormat, appData->msgData, msg_0421_00049, HEAP_ID_9E);
+    AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_5], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     String_Delete(string);
-    CopyWindowToVram(&appData->unk_004[5]);
+    CopyWindowToVram(&appData->windows[OV121_WINDOW_5]);
 }
 
-void ov121_021E6D80(Overlay121AppData *appData) {
+static void Overlay121_PrintYourOwnRecordCantBeDeleted(Overlay121AppData *appData) {
     String *string;
 
-    DrawFrameAndWindow2(&appData->unk_004[5], TRUE, 0x1, 12);
-    FillWindowPixelBuffer(&appData->unk_004[5], 0xFF);
-    string = NewString_ReadMsgData(appData->unk_064, msg_0421_00052);
-    AddTextPrinterParameterizedWithColor(&appData->unk_004[5], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    DrawFrameAndWindow2(&appData->windows[OV121_WINDOW_5], TRUE, 0x1, 12);
+    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_5], 0xFF);
+    string = NewString_ReadMsgData(appData->msgData, msg_0421_00052);
+    AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_5], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     String_Delete(string);
-    CopyWindowToVram(&appData->unk_004[5]);
+    CopyWindowToVram(&appData->windows[OV121_WINDOW_5]);
 }
 
-void ov121_021E6DD8(Overlay121AppData *appData) {
+static void Overlay121_PrintRecordStatHeaderText(Overlay121AppData *appData) {
     String *string;
     String *string2;
     int msgNo;
 
-    FillWindowPixelBuffer(&appData->unk_004[2], 0);
-    msgNo = (appData->unk_25C == 0 ? msg_0421_00053 : msg_0421_00065) + appData->unk_260 * 2;
-    string = NewString_ReadMsgData(appData->unk_064, msgNo);
-    string2 = NewString_ReadMsgData(appData->unk_064, msgNo + 1);
-    AddTextPrinterParameterizedWithColor(&appData->unk_004[2], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
-    AddTextPrinterParameterizedWithColor(&appData->unk_004[2], 0, string2, 0, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_2], 0);
+    msgNo = (appData->page == 0 ? msg_0421_00053 : msg_0421_00065) + appData->unk_260 * 2;
+    string = NewString_ReadMsgData(appData->msgData, msgNo);
+    string2 = NewString_ReadMsgData(appData->msgData, msgNo + 1);
+    AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_2], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_2], 0, string2, 0, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     String_Delete(string);
     String_Delete(string2);
-    CopyWindowToVram(&appData->unk_004[2]);
+    CopyWindowToVram(&appData->windows[OV121_WINDOW_2]);
 }
 
-void ov121_021E6E68(Overlay121AppData *appData) {
+static void Overlay121_PrintSelectRecordToDeleteText(Overlay121AppData *appData) {
     String *string;
 
-    DrawFrameAndWindow2(&appData->unk_004[5], TRUE, 0x1, 12);
-    FillWindowPixelBuffer(&appData->unk_004[5], 0xFF);
-    string = NewString_ReadMsgData(appData->unk_064, msg_0421_00048);
-    AddTextPrinterParameterizedWithColor(&appData->unk_004[5], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    DrawFrameAndWindow2(&appData->windows[OV121_WINDOW_5], TRUE, 0x1, 12);
+    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_5], 0xFF);
+    string = NewString_ReadMsgData(appData->msgData, msg_0421_00048);
+    AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_5], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     String_Delete(string);
-    CopyWindowToVram(&appData->unk_004[5]);
+    CopyWindowToVram(&appData->windows[OV121_WINDOW_5]);
 }
 
-void ov121_021E6EC0(Overlay121AppData *appData) {
+static void ov121_021E6EC0(Overlay121AppData *appData) {
     YesNoPromptTemplate template;
 
     appData->unk_258 = &appData->unk_254[appData->unk_260].unk_04[appData->unk_262[appData->unk_232]];
     if (appData->unk_258->unk_06 == 0xFF) {
-        appData->unk_233 = 3;
-        ov121_021E6D80(appData);
+        appData->state = OV121_STATE_3;
+        Overlay121_PrintYourOwnRecordCantBeDeleted(appData);
         PlaySE(SEQ_SE_DP_CUSTOM06);
     } else {
         MI_CpuClear8(&template, sizeof(YesNoPromptTemplate));
-        template.bgConfig = appData->unk_000;
+        template.bgConfig = appData->bgConfig;
         template.bgId = GF_BG_LYR_MAIN_0;
-        template.tileStart = 0x8F;
+        template.tileStart = 0x08F;
         template.plttSlot = 13;
         template.x = 25;
         template.y = 6;
-        YesNoPrompt_InitFromTemplate(appData->unk_094, &template);
-        ov121_021E6CEC(appData);
-        ov121_021E6F58();
-        appData->unk_233 = 2;
+        YesNoPrompt_InitFromTemplate(appData->yesNoPrompt, &template);
+        Overlay121_PrintDeleteXsRecordAreYouSure(appData);
+        dimAllMainBgsExceptLyr0();
+        appData->state = OV121_STATE_YESNO;
     }
 }
 
-void ov121_021E6F58(void) {
+static void dimAllMainBgsExceptLyr0(void) {
     G2_SetBlendBrightness(
         GX_PLANEMASK_ALL & ~GX_PLANEMASK_BG0,
         -7
     );
 }
 
-void ov121_021E6F6C(void) {
+static void resetMainBgsBrightness(void) {
     G2_BlendNone();
 }
 
-void ov121_021E6F78(Overlay121AppData *appData) {
+static void ov121_021E6F78(Overlay121AppData *appData) {
     int i;
     int j;
     int r6;

@@ -20,6 +20,7 @@
 #include "constants/spawns.h"
 #include "constants/badge.h"
 #include "constants/global.fieldmap.h"
+#include "constants/game_stats.h"
 
 #define lt    0
 #define eq    1

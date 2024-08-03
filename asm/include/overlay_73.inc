@@ -149,7 +149,7 @@
 .public Save_FriendGroup_Get
 .public sub_0202C8C4
 .public sub_0202C8E4
-.public GameStats_AddSpecial
+.public GameStats_AddScore
 .public sub_0202D230
 .public sub_0202D488
 .public sub_0202D568

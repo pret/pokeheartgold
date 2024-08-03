@@ -13,7 +13,7 @@
 struct UnkStruct_0202E4B0_sub {
     int unk_00;
     u32 unk_04;
-    u16 unk_08[PLAYER_NAME_LENGTH + 1];
+    u16 playerName[PLAYER_NAME_LENGTH + 1];
 };
 
 struct UnkStruct_0202E4B0 {
@@ -42,20 +42,20 @@ static BOOL sub_0202E72C(const UnkStruct_0202E920 *a0, const UnkStruct_0202E4B0_
 static void sub_0202E75C(UnkStruct_0202E4B0 *a0, UnkStruct_0202E920 *a1, int a2, u8 a3, u8 a4, UnkStruct_0202E4B0_sub **a5, u8 a6, HeapID heapId);
 static void sub_0202E920(UnkStruct_0202E4B0 *a0, int a1, u8 a2, UnkStruct_0202E4B0_sub **a3, u8 a4, HeapID heapId);
 
-static const u8 _020F684C[][2] = {
+static const u8 sPageOffsets[][2] = {
     {  6,  0 },
     {  4,  6 },
     {  3, 10 },
 };
 
-static const int _020F6854[] = {
+static const int sStatIDs[] = {
     0,
     2,
     4,
     6,
     8,
-    GAME_STAT_UNK30,
-    GAME_STAT_UNK42,
+    GAME_STAT_BATTLE_TOWER_WIN_COUNT,
+    GAME_STAT_OPPONENT_MON_FAINTED,
     GAME_STAT_UNK10,
     GAME_STAT_UNK12,
     GAME_STAT_UNK11,
@@ -64,23 +64,23 @@ static const int _020F6854[] = {
     GAME_STAT_UNK95,
 };
 
-u8 sub_0202E4B0(int a0) {
-    return _020F684C[a0][0];
+u8 sub_0202E4B0(int page) {
+    return sPageOffsets[page][0];
 }
 
-u8 sub_0202E4BC(int a0) {
-    return _020F684C[a0][1];
+u8 sub_0202E4BC(int page) {
+    return sPageOffsets[page][1];
 }
 
 static void sub_0202E4C8(UnkStruct_0202E4B0_sub *a0) {
     a0->unk_00 = 0;
     a0->unk_04 = 0;
-    StringFillEOS(a0->unk_08, PLAYER_NAME_LENGTH + 1);
+    StringFillEOS(a0->playerName, PLAYER_NAME_LENGTH + 1);
     SaveSubstruct_UpdateCRC(SAVE_UNK_24);
 }
 
 static BOOL sub_0202E4E0(UnkStruct_0202E4B0_sub *a0) {
-    return StringLength(a0->unk_08) != 0;
+    return StringLength(a0->playerName) != 0;
 }
 
 u32 sub_0202E4F4(void) {
@@ -127,7 +127,7 @@ static u32 *sub_0202E594(SaveData *saveData, HeapID heapId) {
     u32 *ret;
 
     gameStats = Save_GameStats_Get(saveData);
-    frontierSave = sub_0203107C(saveData);
+    frontierSave = Save_Frontier_GetStatic(saveData);
     ret = AllocFromHeapAtEnd(heapId, 13 * sizeof(u32));
 
     for (i = 0; i < 13; ++i) {
@@ -135,7 +135,7 @@ static u32 *sub_0202E594(SaveData *saveData, HeapID heapId) {
         case 5: {
             val = GameStats_GetCapped(gameStats, GAME_STAT_UNK16);
             if (val != 0) {
-                val = GameStats_GetCapped(gameStats, GAME_STAT_UNK30) / val;
+                val = GameStats_GetCapped(gameStats, GAME_STAT_BATTLE_TOWER_WIN_COUNT) / val;
             }
             ret[i] = val;
             break;
@@ -157,9 +157,9 @@ static u32 *sub_0202E594(SaveData *saveData, HeapID heapId) {
         }
         default:
             if (i >= 0 && i <= 4) {
-                ret[i] = sub_020310BC(frontierSave, _020F6854[i], 0xFF);
+                ret[i] = FrontierSave_GetStat(frontierSave, sStatIDs[i], 0xFF);
             } else {
-                ret[i] = GameStats_GetCapped(gameStats, _020F6854[i]);
+                ret[i] = GameStats_GetCapped(gameStats, sStatIDs[i]);
             }
             break;
         }
@@ -172,7 +172,7 @@ UnkStruct_0202E4B0_sub *sub_0202E66C(SaveData *saveData, HeapID heapId) {
     int i;
     int sp8;
     UnkStruct_0202E4B0_sub *ret;
-    u32 *sp0;
+    u32 *tmp;
     String *name;
     PlayerProfile *profile;
 
@@ -181,15 +181,15 @@ UnkStruct_0202E4B0_sub *sub_0202E66C(SaveData *saveData, HeapID heapId) {
     MI_CpuClear8(ret, 13 * sizeof(UnkStruct_0202E4B0_sub));
     sp8 = sub_0202C7B4(Save_FriendGroup_Get(saveData), 1);
     name = PlayerProfile_GetPlayerName_NewString(profile, heapId);
-    sp0 = sub_0202E594(saveData, heapId);
+    tmp = sub_0202E594(saveData, heapId);
 
     for (i = 0; i < 13; ++i) {
         ret[i].unk_00 = sp8;
-        CopyStringToU16Array(name, ret[i].unk_08, PLAYER_NAME_LENGTH + 1);
-        ret[i].unk_04 = sp0[i];
+        CopyStringToU16Array(name, ret[i].playerName, PLAYER_NAME_LENGTH + 1);
+        ret[i].unk_04 = tmp[i];
     }
 
-    FreeToHeap(sp0);
+    FreeToHeap(tmp);
     String_Delete(name);
     SaveSubstruct_UpdateCRC(SAVE_UNK_24);
     return ret;
@@ -205,7 +205,7 @@ static BOOL sub_0202E708(const UnkStruct_0202E4B0_sub *a0, const UnkStruct_0202E
     if (a0->unk_00 != a1->unk_00) {
         return FALSE;
     }
-    return !StringNotEqual(a0->unk_08, a1->unk_08);
+    return !StringNotEqual(a0->playerName, a1->playerName);
 }
 
 static BOOL sub_0202E72C(const UnkStruct_0202E920 *a0, const UnkStruct_0202E4B0_sub *a1) {
@@ -300,27 +300,27 @@ void sub_0202E97C(SaveData *saveData, u8 a1, u8 a2, UnkStruct_0202E4B0_sub **a3,
     }
 }
 
-UnkStruct_0202E9FC *sub_0202E9FC(SaveData *saveData, int a1, HeapID heapId) {
+UnkStruct_0202E9FC *sub_0202E9FC(SaveData *saveData, int page, HeapID heapId) {
     int i;
     int r0;
     UnkStruct_0202E9FC *ret;
     int spC;
-    u32 *sp8;
+    u32 *tmp;
     PlayerProfile *profile;
 
     profile = Save_PlayerData_GetProfileAddr(saveData);
     ret = AllocFromHeap(heapId, sizeof(UnkStruct_0202E9FC));
     MI_CpuClear8(ret, sizeof(UnkStruct_0202E9FC));
     spC = sub_0202C7B4(Save_FriendGroup_Get(saveData), 1);
-    sp8 = sub_0202E594(saveData, heapId);
-    ret->unk_00 = sub_0202E4B0(a1);
-    r0 = sub_0202E4BC(a1);
-    for (i = 0; i < ret->unk_00; ++i) {
+    tmp = sub_0202E594(saveData, heapId);
+    ret->count = sub_0202E4B0(page);
+    r0 = sub_0202E4BC(page);
+    for (i = 0; i < ret->count; ++i) {
         ret->unk_04[i].unk_0 = spC;
-        ret->unk_04[i].unk_4 = sp8[i + r0];
-        ret->unk_04[i].unk_8 = PlayerProfile_GetPlayerName_NewString(profile, heapId);
+        ret->unk_04[i].unk_4 = tmp[i + r0];
+        ret->unk_04[i].playerName = PlayerProfile_GetPlayerName_NewString(profile, heapId);
     }
-    FreeToHeap(sp8);
+    FreeToHeap(tmp);
     return ret;
 }
 
@@ -332,11 +332,11 @@ UnkStruct_0202E9FC *sub_0202EA80(UnkStruct_0202E4B0 *a0, int a1, HeapID heapId) 
     MI_CpuClear8(ret, sizeof(UnkStruct_0202E9FC));
     for (i = 0; i < 6; ++i) {
         if (sub_0202E4E0(&a0->unk_000[a1][i])) {
-            ret->unk_04[ret->unk_00].unk_0 = a0->unk_000[a1][i].unk_00;
-            ret->unk_04[ret->unk_00].unk_4 = a0->unk_000[a1][i].unk_04;
-            ret->unk_04[ret->unk_00].unk_8 = String_New(PLAYER_NAME_LENGTH + 1, heapId);
-            CopyU16ArrayToString(ret->unk_04[ret->unk_00].unk_8, a0->unk_000[a1][i].unk_08);
-            ++ret->unk_00;
+            ret->unk_04[ret->count].unk_0 = a0->unk_000[a1][i].unk_00;
+            ret->unk_04[ret->count].unk_4 = a0->unk_000[a1][i].unk_04;
+            ret->unk_04[ret->count].playerName = String_New(PLAYER_NAME_LENGTH + 1, heapId);
+            CopyU16ArrayToString(ret->unk_04[ret->count].playerName, a0->unk_000[a1][i].playerName);
+            ++ret->count;
         }
     }
     return ret;
@@ -346,8 +346,8 @@ void sub_0202EAFC(UnkStruct_0202E9FC *a0) {
     int i;
 
     for (i = 0; i < 6; ++i) {
-        if (a0->unk_04[i].unk_8 != NULL) {
-            String_Delete(a0->unk_04[i].unk_8);
+        if (a0->unk_04[i].playerName != NULL) {
+            String_Delete(a0->unk_04[i].playerName);
         }
     }
     MI_CpuClear8(a0, sizeof(UnkStruct_0202E9FC));

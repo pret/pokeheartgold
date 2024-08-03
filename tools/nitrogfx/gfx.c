@@ -9,6 +9,26 @@
 #include "gfx.h"
 #include "util.h"
 
+static unsigned int FindNitroDataBlock(const unsigned char *data, const char *ident, unsigned int fileSize, unsigned int *blockSize_out)
+{
+    unsigned int offset = 0x10;
+    while (offset < fileSize)
+    {
+        unsigned int blockSize = data[offset + 4] | (data[offset + 5] << 8) | (data[offset + 6] << 16) | (data[offset + 7] << 24);
+        if (offset + blockSize > fileSize)
+        {
+            FATAL_ERROR("corrupted NTR file");
+        }
+        if (memcmp(data + offset, ident, 4) == 0)
+        {
+            *blockSize_out = blockSize;
+            return offset;
+        }
+        offset += blockSize;
+    }
+    return -1u;
+}
+
 #define GET_GBA_PAL_RED(x)   (((x) >>  0) & 0x1F)
 #define GET_GBA_PAL_GREEN(x) (((x) >>  5) & 0x1F)
 #define GET_GBA_PAL_BLUE(x)  (((x) >> 10) & 0x1F)
@@ -888,38 +908,27 @@ void WriteNtrPalette(char *path, struct Palette *palette, bool ncpr, bool ir, in
     fclose(fp);
 }
 
-void ReadNtrCell(char *path, struct JsonToCellOptions *options)
+void ReadNtrCell_CEBK(unsigned char * restrict data, unsigned int blockOffset, unsigned int blockSize, struct JsonToCellOptions *options)
 {
-    int fileSize;
-    unsigned char *data = ReadWholeFile(path, &fileSize);
-
-    if (memcmp(data, "RECN", 4) != 0) //NCER
-    {
-        FATAL_ERROR("Not a valid NCER cell file.\n");
-    }
-
-    options->labelEnabled = data[0xE] != 1;
-
-    if (memcmp(data + 0x10, "KBEC", 4) != 0 ) //KBEC
-    {
-        FATAL_ERROR("Not a valid KBEC cell file.\n");
-    }
-
-    options->cellCount = data[0x18] | (data[0x19] << 8);
-    options->extended = data[0x1A] == 1;
+    options->cellCount = data[blockOffset + 0x8] | (data[blockOffset + 0x9] << 8);
+    options->extended = data[blockOffset + 0xA] == 1;
     /*if (!options->extended)
     {
         //in theory not extended should be implemented, however not 100% sure
         FATAL_ERROR("Don't know how to deal with not extended yet, bug red031000.\n");
     }*/
 
-    options->mappingType = data[0x20];
+    options->mappingType = data[blockOffset + 0x10];
 
     options->cells = malloc(sizeof(struct Cell *) * options->cellCount);
+    int celSize = options->extended ? 0x10 : 0x8;
 
     for (int i = 0; i < options->cellCount; i++)
     {
-        int offset = 0x30 + (i * (options->extended ? 0x10 : 0x8));
+        int offset = blockOffset + 0x20 + (i * celSize);
+        if (offset + celSize > blockSize) {
+            FATAL_ERROR("corrupted CEBK block");
+        }
         options->cells[i] = malloc(sizeof(struct Cell));
         options->cells[i]->oamCount = data[offset] | (data[offset + 1] << 8);
         short cellAttrs = data[offset + 2] | (data[offset + 3] << 8);
@@ -938,7 +947,7 @@ void ReadNtrCell(char *path, struct JsonToCellOptions *options)
         }
     }
 
-    int offset = 0x30 + (options->cellCount * (options->extended ? 0x10 : 0x8));
+    int offset = blockOffset + 0x20 + (options->cellCount * celSize);
     for (int i = 0; i < options->cellCount; i++)
     {
         options->cells[i]->oam = malloc(sizeof(struct OAM) * options->cells[i]->oamCount);
@@ -993,35 +1002,65 @@ void ReadNtrCell(char *path, struct JsonToCellOptions *options)
         }
     }
 
-    if (options->labelEnabled)
+}
+
+void ReadNtrCell_LABL(unsigned char * restrict data, unsigned int blockOffset, unsigned int blockSize, struct JsonToCellOptions *options)
+{
+    int count = 0;
+    unsigned int textStart = blockOffset + 8;
+    while (textStart < blockOffset + blockSize)
     {
-        int count = 0;
-        int offset = 0x30 + (options->cellCount * 0x16) + 0x8;
-        bool flag = false;
-        //this entire thing is a huge assumption, it will not work with labels that are less than 2 characters long
-        while (!flag)
+        unsigned int labelOffset = data[textStart] | (data[textStart + 1] << 8) | (data[textStart + 2] << 16) | (data[textStart + 3] << 24);
+        if (labelOffset > blockSize)
         {
-            if (strlen((char *) data + offset) < 2)
-            {
-                //probably a pointer, maybe?
-                count++;
-                offset += 4;
-            }
-            else
-            {
-                //huzzah a string
-                flag = true;
-            }
+            break;
         }
-        options->labelCount = count;
-        options->labels = malloc(sizeof(char *) * count);
-        for (int i = 0; i < count; i++)
+        else {
+            ++count;
+            textStart += 4;
+        }
+    }
+    options->labelCount = count;
+    options->labels = malloc(sizeof(char *) * count);
+    for (int i = 0; i < count; ++i)
+    {
+        int offset = textStart + (data[blockOffset + 4 * i + 8] | (data[blockOffset + 4 * i + 9] << 8) | (data[blockOffset + 4 * i + 10] << 16) | (data[blockOffset + 4 * i + 11] << 24));
+        if (offset > blockOffset + blockSize)
         {
-            options->labels[i] = malloc(strlen((char *) data + offset) + 1);
-            strcpy(options->labels[i], (char *) data + offset);
-            offset += strlen(options->labels[i]) + 1;
+            FATAL_ERROR("corrupted LABL block");
         }
-        //after this should be txeu, if everything was done right
+        unsigned long slen = strnlen((char *)data + offset, blockSize - offset);
+        options->labels[i] = malloc(slen + 1);
+        strncpy(options->labels[i], (char *)data + offset, slen + 1);
+    }
+}
+
+void ReadNtrCell(char *path, struct JsonToCellOptions *options)
+{
+    int fileSize;
+    unsigned char *data = ReadWholeFile(path, &fileSize);
+    unsigned int offset = 0x10;
+
+    if (memcmp(data, "RECN", 4) != 0) //NCER
+    {
+        FATAL_ERROR("Not a valid NCER cell file.\n");
+    }
+
+    options->labelEnabled = data[0xE] != 1;
+
+    unsigned int blockSize;
+    offset = FindNitroDataBlock(data, "KBEC", fileSize, &blockSize);
+    if (offset != -1u)
+    {
+        ReadNtrCell_CEBK(data, offset, blockSize, options);
+    }
+    else {
+        FATAL_ERROR("missing CEBK block");
+    }
+    offset = FindNitroDataBlock(data, "LBAL", fileSize, &blockSize);
+    if (offset != -1u)
+    {
+        ReadNtrCell_LABL(data, offset, blockSize, options);
     }
 
     free(data);

@@ -15,9 +15,9 @@ static void GameStats_Acquire(GAME_STATS *gameStats, int statIdx);
 static u32 GameStats_GetValue(GAME_STATS *gameStats, int statIdx);
 static u32 GameStats_SetValue(GAME_STATS *gameStats, int statIdx, u32 value);
 static u32 GameStats_GetMaxValue(int statIdx);
-static u16 GameStats_GetStdInc(int statIdx);
+static u16 GameStats_GetScoreMod(int event);
 
-static u8 _0210F864[] = {
+static u8 sIsExtraWide[] = {
     TRUE,
     TRUE,
     TRUE,
@@ -169,7 +169,7 @@ static u8 _0210F864[] = {
     FALSE,
 };
 
-static const u16 _020F67DC[] = {
+static const u16 sScoreMods[] = {
         1,
         1,
         1,
@@ -272,13 +272,13 @@ static u32 GameStats_SetValue(GAME_STATS *gameStats, int statIdx, u32 value) {
 
 static u32 GameStats_GetMaxValue(int statIdx) {
     if (statIdx < NUM_GAME_STATS_WORD) {
-        if (_0210F864[statIdx]) {
+        if (sIsExtraWide[statIdx]) {
             return 999999999;
         } else {
             return 999999;
         }
     } else if (statIdx < NUM_GAME_STATS) {
-        if (_0210F864[statIdx]) {
+        if (sIsExtraWide[statIdx]) {
             return 65535;
         } else {
             return 9999;
@@ -289,8 +289,8 @@ static u32 GameStats_GetMaxValue(int statIdx) {
     }
 }
 
-static u16 GameStats_GetStdInc(int statIdx) {
-    return _020F67DC[statIdx];
+static u16 GameStats_GetScoreMod(int event) {
+    return sScoreMods[event];
 }
 
 u32 GameStats_SetCapped(GAME_STATS *gameStats, int statIdx, u32 value) {
@@ -366,22 +366,22 @@ u32 GameStats_GetCapped(GAME_STATS *gameStats, int statIdx) {
     }
 }
 
-u32 GameStats_AddSpecial(GAME_STATS *gameStats, int statIdx) {
-    GF_ASSERT(statIdx < 40);
-    u32 value = GameStats_GetCapped(gameStats, GAME_STAT_UNK2);
-    if (value + GameStats_GetStdInc(statIdx) > 99999999) {
-        return GameStats_SetCapped(gameStats, GAME_STAT_UNK2, 99999999);
+u32 GameStats_AddScore(GAME_STATS *gameStats, int reason) {
+    GF_ASSERT(reason < SCORE_INC_TYPE_COUNT);
+    u32 value = GameStats_GetCapped(gameStats, GAME_STAT_SCORE);
+    if (value + GameStats_GetScoreMod(reason) > 99999999) {
+        return GameStats_SetCapped(gameStats, GAME_STAT_SCORE, 99999999);
     } else {
-        return GameStats_Add(gameStats, GAME_STAT_UNK2, GameStats_GetStdInc(statIdx));
+        return GameStats_Add(gameStats, GAME_STAT_SCORE, GameStats_GetScoreMod(reason));
     }
 }
 
-u32 GameStats_GetStat2(GAME_STATS *gameStats) {
-    return GameStats_GetCapped(gameStats, GAME_STAT_UNK2);
+u32 GameStats_GetScore(GAME_STATS *gameStats) {
+    return GameStats_GetCapped(gameStats, GAME_STAT_SCORE);
 }
 
 void GameStats_IncSpeciesCaught(GAME_STATS *gameStats, const Pokedex *pokedex, u16 species) {
     if (!Pokedex_CheckMonCaughtFlag(pokedex, species)) {
-        GameStats_AddSpecial(gameStats, 21);
+        GameStats_AddScore(gameStats, SCORE_INC_TYPE_21);
     }
 }

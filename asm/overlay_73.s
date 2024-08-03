@@ -2343,7 +2343,7 @@ ov73_021E6C20: ; 0x021E6C20
 	ldr r0, [r5, #8]
 	mov r1, #0x13
 	ldr r0, [r0, #0xc]
-	bl GameStats_AddSpecial
+	bl GameStats_AddScore
 	mov r0, #0xdd
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -9868,36 +9868,16 @@ ov73_021EA728: ; 0x021EA728
 	.byte 0x00, 0x00, 0x00, 0x00
 
 ov73_021EA744: ; 0x021EA744
-	.word ov73_021EA25C
-	.word ov73_021EA268
-	.word ov73_021EA290
-	.word ov73_021EA2A8
-	.word ov73_021EA2B4
-	.word ov73_021EA2E0
-	.word ov73_021E7A7C
-	.word ov73_021E7B84
-	.word 0
-	.word ov73_021E7A84
-	.word ov73_021E7BC8
-	.word 0
-	.word ov73_021E7A74
-	.word ov73_021E7B3C
-	.word 0
-	.word sub_0202E58C
-	.word ov73_021EA31C
-	.word ov73_021EA324
-	.word sub_0202D230
-	.word ov73_021EA348
-	.word ov73_021EA370
-	.word ov73_021E7A7C
-	.word ov73_021E7C50
-	.word 0
-	.word ov73_021E7A84
-	.word ov73_021E7C94
-	.word 0
-	.word ov73_021E7A74
-	.word ov73_021E7C0C
-	.word ov73_021EA2FC
+	.word ov73_021EA25C, ov73_021EA268, ov73_021EA290
+	.word ov73_021EA2A8, ov73_021EA2B4, ov73_021EA2E0
+	.word ov73_021E7A7C, ov73_021E7B84, 0
+	.word ov73_021E7A84, ov73_021E7BC8, 0
+	.word ov73_021E7A74, ov73_021E7B3C, 0
+	.word sub_0202E58C, ov73_021EA31C, ov73_021EA324
+	.word sub_0202D230, ov73_021EA348, ov73_021EA370
+	.word ov73_021E7A7C, ov73_021E7C50, 0
+	.word ov73_021E7A84, ov73_021E7C94, 0
+	.word ov73_021E7A74, ov73_021E7C0C, ov73_021EA2FC
 
 	.data
 

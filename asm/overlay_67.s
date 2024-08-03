@@ -31,7 +31,7 @@ ov67_021E5900: ; 0x021E5900
 	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r4, #0x18]
 	ldr r0, [r5]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	str r0, [r4, #0x1c]
 	ldr r0, [r5]
 	bl Save_FrontierData_Get
@@ -1273,7 +1273,7 @@ _021E62E8:
 	ldr r0, [r5, #0x1c]
 	mov r1, #9
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -1304,7 +1304,7 @@ _021E62E8:
 	ldr r0, [r5, #0x1c]
 	mov r1, #8
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]

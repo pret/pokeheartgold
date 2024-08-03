@@ -206,7 +206,7 @@
 .public GetIGTSeconds
 .public Save_GameStats_Get
 .public GameStats_GetCapped
-.public GameStats_AddSpecial
+.public GameStats_AddScore
 .public FrontierData_BattlePointAction
 .public Save_FrontierData_Get
 .public sub_0202FBF0

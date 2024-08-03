@@ -43,7 +43,7 @@
 .public Save_GameStats_Get
 .public GameStats_Inc
 .public GameStats_GetCapped
-.public GameStats_AddSpecial
+.public GameStats_AddScore
 .public sub_0202D640
 .public sub_0202D660
 .public Save_FrontierData_Get

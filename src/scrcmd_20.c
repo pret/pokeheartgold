@@ -135,10 +135,10 @@ BOOL ScrCmd_628(ScriptContext *ctx) {
         } else {
             r7 = 0x68;
         }
-        sub_02031108(sub_0203107C(ctx->fieldSystem->saveData), r7, sub_0205C268(r7), 0);
+        sub_02031108(Save_Frontier_GetStatic(ctx->fieldSystem->saveData), r7, sub_0205C268(r7), 0);
     }
-    sub_02031108(sub_0203107C(ctx->fieldSystem->saveData), sub_0205BFF0(r5, r4), sub_0205C268(sub_0205BFF0(r5, r4)), 0);
-    sub_02031108(sub_0203107C(ctx->fieldSystem->saveData), sub_0205C048(r5, r4), sub_0205C268(sub_0205C048(r5, r4)), 0);
+    sub_02031108(Save_Frontier_GetStatic(ctx->fieldSystem->saveData), sub_0205BFF0(r5, r4), sub_0205C268(sub_0205BFF0(r5, r4)), 0);
+    sub_02031108(Save_Frontier_GetStatic(ctx->fieldSystem->saveData), sub_0205C048(r5, r4), sub_0205C268(sub_0205C048(r5, r4)), 0);
     return FALSE;
 }
 
@@ -155,13 +155,13 @@ BOOL ScrCmd_633(ScriptContext *ctx) {
             break;
         case 1:
             if (r5 == 3) {
-                *resultPtr = sub_020310BC(sub_0203107C(ctx->fieldSystem->saveData), 0x6a, sub_0205C268(0x6a));
+                *resultPtr = FrontierSave_GetStat(Save_Frontier_GetStatic(ctx->fieldSystem->saveData), 0x6a, sub_0205C268(0x6a));
             } else {
                 *resultPtr = sub_02030CA0(sp04, 5, r5, 0, 0);
             }
             break;
         case 2:
-            *resultPtr = sub_020310BC(sub_0203107C(ctx->fieldSystem->saveData), sub_0205C11C(r5), sub_0205C268(sub_0205C11C(r5)));
+            *resultPtr = FrontierSave_GetStat(Save_Frontier_GetStatic(ctx->fieldSystem->saveData), sub_0205C11C(r5), sub_0205C268(sub_0205C11C(r5)));
             break;
         case 3:
             sub_0204F878(ctx->fieldSystem->saveData, sp04, r5);
@@ -511,8 +511,8 @@ BOOL ScrCmd_BattleHallGetTotalStreak(ScriptContext *ctx) {
 // Unused
 BOOL ScrCmd_697(ScriptContext *ctx) {
     u16 *result = ScriptGetVarPointer(ctx);
-    sub_020310BC(sub_0203107C(ctx->fieldSystem->saveData), sub_0205C11C(0), 0xff);
-    u32 unk0 = sub_020310BC(sub_0203107C(ctx->fieldSystem->saveData), sub_0205C0CC(0), 0xff);
+    FrontierSave_GetStat(Save_Frontier_GetStatic(ctx->fieldSystem->saveData), sub_0205C11C(0), 0xff);
+    u32 unk0 = FrontierSave_GetStat(Save_Frontier_GetStatic(ctx->fieldSystem->saveData), sub_0205C0CC(0), 0xff);
     *result = 0;
     if (unk0 == 50) {
         *result = 1;
@@ -532,7 +532,7 @@ void sub_0204F878(SaveData *saveData, u32 a1, u8 a2) {
     unk0 = 0;
     sub_02030C6C(a1, 5, a2, 0, &unk0);
     if (a2 == 3) {
-        sub_02031108(sub_0203107C(saveData), 0x6a, sub_0205C268(0x6a), 0);
+        sub_02031108(Save_Frontier_GetStatic(saveData), 0x6a, sub_0205C268(0x6a), 0);
     }
-    sub_02031108(sub_0203107C(saveData), sub_0205C0CC(a2), sub_0205C268(sub_0205C0CC(a2)), 0);
+    sub_02031108(Save_Frontier_GetStatic(saveData), sub_0205C0CC(a2), sub_0205C268(sub_0205C0CC(a2)), 0);
 }

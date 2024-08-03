@@ -134,7 +134,7 @@ scr_seq_T26GYM0101_000:
 	wait_fanfare
 	give_badge BADGE_MINERAL
 	addvar VAR_UNK_4134, 1
-	add_special_game_stat 22
+	add_special_game_stat SCORE_INC_TYPE_22
 	compare VAR_UNK_4134, 3
 	goto_if_ne _01CB
 	setvar VAR_SCENE_ROCKET_TAKEOVER, 1

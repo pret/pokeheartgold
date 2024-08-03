@@ -961,7 +961,7 @@ void ov12_0223BB44(BattleSystem *bsys) {
     if (bsys->battleSpecial & BATTLE_SPECIAL_RECORDING) {
         return;
     }
-    GameStats_AddSpecial(bsys->gameStats, GAME_STAT_UNK21);
+    GameStats_AddScore(bsys->gameStats, SCORE_INC_TYPE_21);
 }
 
 void ov12_0223BB64(BattleSystem *bsys, int a1) {
@@ -1206,7 +1206,7 @@ BOOL BattleSystem_IsRecordingPaused(BattleSystem *bsys) {
 }
 
 void ov12_0223BFFC(BattleSystem *bsys, u32 flag) {
-    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDING) || 
+    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDING) ||
         bsys->isRecordingPaused ||
         ov12_022581D4(bsys, bsys->ctx, 13, 0) == 44 ||
         ov12_022581D4(bsys, bsys->ctx, 14, 0) == 44) {
@@ -1221,7 +1221,7 @@ void ov12_0223BFFC(BattleSystem *bsys, u32 flag) {
 }
 
 BOOL ov12_0223C080(BattleSystem *bsys) {
-    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDING) || 
+    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDING) ||
         bsys->isRecordingPaused ||
         ov12_022581D4(bsys, bsys->ctx, 13, 0) == 44 ||
         ov12_022581D4(bsys, bsys->ctx, 14, 0) == 44) {

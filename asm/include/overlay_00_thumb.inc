@@ -8,7 +8,7 @@
 .public sub_0202C23C
 .public sub_0202C5E4
 .public sub_0202C6F4
-.public sub_0203107C
+.public Save_Frontier_GetStatic
 .public sub_02031214
 .public sub_02034084
 .public sub_02034098

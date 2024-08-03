@@ -35,7 +35,7 @@
 
 DECL_CHUNK_EX(sub_020290B8, sub_020290C8)
 DECL_CHUNK(Save_FashionData)
-DECL_CHUNK_EX(sub_02031000, sub_02031008)
+DECL_CHUNK(Save_Frontier)
 DECL_CHUNK_EX(sub_0202DB40, sub_0202DB44)
 DECL_CHUNK_EX(sub_0202E41C, sub_0202E424)
 DECL_CHUNK_EX(sub_0202C034, sub_0202C03C)
@@ -146,8 +146,8 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
     }, {
         SAVE_UNK_19,
         0,
-        (SAVESIZEFN)sub_02031000,
-        (SAVEINITFN)sub_02031008
+        (SAVESIZEFN)Save_Frontier_sizeof,
+        (SAVEINITFN)Save_Frontier_Init
     }, {
         SAVE_SPECIAL_RIBBONS,
         0,

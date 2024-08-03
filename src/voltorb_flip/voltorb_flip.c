@@ -2007,7 +2007,7 @@ static void ov122_021E8094(OVY_MANAGER *man) {
     sub_02002B8C(TRUE);
 
     Main_SetVBlankIntrCB((GFIntrCB)ov122_021E8004, work);
-    GameStats_AddSpecial(Save_GameStats_Get(args->saveData), GAME_STAT_UNK6);
+    GameStats_AddScore(Save_GameStats_Get(args->saveData), SCORE_INC_TYPE_6);
 }
 
 static void FreeOverlayData(OVY_MANAGER *man) {

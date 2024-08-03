@@ -169,8 +169,8 @@
 .public sub_0202C2DC
 .public sub_0202C338
 .public sub_0202C6F4
-.public sub_0203107C
-.public sub_020310BC
+.public Save_Frontier_GetStatic
+.public FrontierSave_GetStat
 .public sub_020311AC
 .public sub_0203A128
 .public Save_VarsFlags_Get

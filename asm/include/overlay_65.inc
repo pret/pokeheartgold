@@ -162,7 +162,7 @@
 .public GameStats_Inc
 .public Save_SpecialRibbons_Get
 .public UpdatePokedexWithReceivedSpecies
-.public sub_0203107C
+.public Save_Frontier_GetStatic
 .public sub_020311AC
 .public sub_02034818
 .public sub_02034AEC

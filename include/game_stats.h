@@ -13,10 +13,10 @@ GAME_STATS *Save_GameStats_Get(SaveData *saveData);
 u32 GameStats_Inc(GAME_STATS *gameStats, int statIdx);
 u32 GameStats_GetCapped(GAME_STATS *gameStats, int statIdx);
 u32 GameStats_Add(GAME_STATS *gameStats, int statIdx, u32 addend);
-u32 GameStats_AddSpecial(GAME_STATS *gameStats, int statIdx);
+u32 GameStats_AddScore(GAME_STATS *gameStats, int reason);
 void GameStats_IncSpeciesCaught(GAME_STATS *gameStats, const Pokedex *pokedex, u16 species);
 u32 GameStats_SetCapped(GAME_STATS *gameStats, int statIdx, u32 value);
 u32 GameStats_UpdateBounded(GAME_STATS *gameStats, int statIdx, u32 value);
-u32 GameStats_GetStat2(GAME_STATS *gameStat);
+u32 GameStats_GetScore(GAME_STATS *gameStat);
 
 #endif //POKEHEARTGOLD_GAME_STATS_H

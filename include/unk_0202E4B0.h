@@ -10,11 +10,11 @@ typedef struct UnkStruct_0202E4B0 UnkStruct_0202E4B0;
 typedef struct UnkStruct_0202E9FC_sub {
     int unk_0;
     u32 unk_4;
-    String *unk_8;
+    String *playerName;
 } UnkStruct_0202E9FC_sub;
 
 typedef struct UnkStruct_0202E9FC {
-    int unk_00;
+    int count;
     UnkStruct_0202E9FC_sub unk_04[6];
 } UnkStruct_0202E9FC;
 

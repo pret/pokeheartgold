@@ -975,7 +975,7 @@ static BOOL Task_WirelessTrade(TaskManager *taskman) {
         data->wirelessTradeSelectMon.unk30++;
         data->state = 2;
         GAME_STATS *gameStats = Save_GameStats_Get(fieldSystem->saveData);
-        GameStats_AddSpecial(gameStats, GAME_STAT_UNK16);
+        GameStats_AddScore(gameStats, SCORE_INC_TYPE_16);
         if (sub_02039998()) {
             GameStats_Inc(gameStats, GAME_STAT_UNK114);
         }

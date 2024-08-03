@@ -119,7 +119,7 @@ BOOL BattleArcadeGameBoard_InitOverlay(OVY_MANAGER *man, int *state) {
     work->playerParty = args->playerParty;
     work->opponentParty = args->opponentParty;
     work->unkE = 0xff;
-    work->frontierSaveData = sub_0203107C(work->saveData);
+    work->frontierSaveData = Save_Frontier_GetStatic(work->saveData);
     work->weather = args->weather;
     work->cursorSpeed = args->cursorSpeed;
     work->unk20 = args->unk10;

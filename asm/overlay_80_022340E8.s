@@ -81,7 +81,7 @@ _02234180:
 	ldr r0, _02234374 ; =ov80_0223DD4C
 	ldr r5, [r0]
 	ldr r0, [r5, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r4, r0, #0
 	ldr r0, _02234374 ; =ov80_0223DD4C
 	ldr r0, [r0]
@@ -94,7 +94,7 @@ _02234180:
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	strh r0, [r5, #0x18]
 	b _022341C0
 _022341B8:
@@ -160,7 +160,7 @@ _022341EC:
 	ldr r0, _02234374 ; =ov80_0223DD4C
 	ldr r5, [r0]
 	ldr r0, [r5, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r7, r0, #0
 	ldr r0, _02234374 ; =ov80_0223DD4C
 	ldr r0, [r0]
@@ -173,7 +173,7 @@ _022341EC:
 	add r2, r0, #0
 	ldr r1, [sp, #0x10]
 	add r0, r7, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	strh r0, [r5, #0x18]
 	ldrh r0, [r5, #0x18]
 	mov r1, #7
@@ -635,7 +635,7 @@ ov80_02234588: ; 0x02234588
 	mov r1, #1
 	bl sub_02030EB4
 	ldr r0, [r5, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r6, r0, #0
 	ldrb r0, [r5, #0x10]
 	bl sub_0205C2C0
@@ -651,7 +651,7 @@ ov80_02234588: ; 0x02234588
 	cmp r4, #2
 	beq _0223468E
 	ldr r0, [r5, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r4, r0, #0
 	ldrb r0, [r5, #0x10]
 	bl sub_0205C2E8
@@ -680,7 +680,7 @@ ov80_02234588: ; 0x02234588
 	cmp r0, #3
 	bne _0223468E
 	ldr r0, [r5, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r4, r0, #0
 	mov r0, #0x6e
 	bl sub_0205C268
