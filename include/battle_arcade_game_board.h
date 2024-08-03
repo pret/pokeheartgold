@@ -12,21 +12,21 @@
 #include "unk_02009D48.h"
 #include "unk_02023694.h"
 
-#define ARCADE_ENEMY_POKEMON_MAX 4
+#define ARCADE_ENEMY_POKEMON_MAX    4
 
 typedef struct GAME_BOARD_ARGS {
     SaveData *saveData;
     u8 type;
     u8 level;
     u8 unk6;
-    u8 unk7;
+    u8 bpGain;
     int *weather;
     u8 *cursorSpeed;
     u8 *unk10;
     u16 *unk14;
-    u16 multiWinstreak;
+    u16 multiWinStreak;
     u16 unk1A;
-    u16 winstreak;
+    u16 winStreak;
     u16 unk1E;
     u8 opponentHeldItemFlag[ARCADE_ENEMY_POKEMON_MAX];
     u8 opponentLevelFlag[ARCADE_ENEMY_POKEMON_MAX];
@@ -88,7 +88,7 @@ typedef struct GAME_BOARD_WORK {
     u8 *cursorSpeed;
     u8 *unk20;
     u16 *unk24;
-    u16 winstreak;
+    u16 winStreak;
     u16 unk2A;
     u8 boardHeight;
     u8 boardWidth;
@@ -131,7 +131,7 @@ typedef struct GAME_BOARD_WORK {
     u16 sendBuffer[40];
     u8 multiCursorPos;
     u8 multiSelectPos;
-    u16 multiWinstreak;
+    u16 multiWinStreak;
     u16 dummy1;
     u32 dummy;
 } GAME_BOARD_WORK;

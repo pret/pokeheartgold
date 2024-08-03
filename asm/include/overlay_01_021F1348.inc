@@ -28,7 +28,7 @@
 .public GF3dGfxRawResObj_GetTex4x4Key
 .public GF3dGfxRawResObj_GetPlttKey
 .public sub_02026E18
-.public MapObject_GetFieldSysPtr
+.public MapObject_GetFieldSystem
 .public sub_020689C8
 .public sub_020689F8
 .public sub_02068B0C

@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_T04PC0102_wifisf",
-      "ovid": "SPRITE_WIFISF",
-      "mvt": 15,
+      "sprite_id": "SPRITE_WIFISF",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_wifi_reception",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_T04PC0102_pcwoman2",
-      "ovid": "SPRITE_PCWOMAN2",
-      "mvt": 15,
+      "sprite_id": "SPRITE_PCWOMAN2",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_wifi_pichu_check",
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_T04PC0102_pcwoman2_2",
-      "ovid": "SPRITE_PCWOMAN2",
-      "mvt": 15,
+      "sprite_id": "SPRITE_PCWOMAN2",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_teala_subsequent_talk",

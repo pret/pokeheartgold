@@ -103,7 +103,7 @@ ov01_021FF4FC: ; 0x021FF4FC
 	bl ov01_021F146C
 	add r4, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystem
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	mov r1, #0xa
@@ -153,7 +153,7 @@ ov01_021FF54C: ; 0x021FF54C
 	ldmia r3!, {r0, r1}
 	stmia r2!, {r0, r1}
 	ldr r0, [r4, #0x20]
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x20]
 	bl MapObject_GetID

@@ -223,8 +223,8 @@
 .public _u32_div_f
 .public gSystem
 .public ov01_021E636C
-.public ov01_021E7FDC
-.public ov01_021E8194
+.public UnkFieldSpriteRenderer_ov01_021E7FDC_Init
+.public UnkFieldSpriteRenderer_ov01_021E7FDC_Release
 .public ov01_021E81F0
 .public ov01_021E8970
 .public ov01_021F3B0C
@@ -240,7 +240,7 @@
 .public ov01_021F6AEC
 .public ov01_021F6B00
 .public ov01_021F6B10
-.public ov01_022040D0
+.public Field3dObjectList_GetRenderObjectByID
 .public ov02_0224E698
 .public ov02_0224E754
 .public ov03_02255BB0

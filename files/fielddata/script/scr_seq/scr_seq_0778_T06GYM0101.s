@@ -101,12 +101,12 @@ _014A:
 
 scr_seq_T06GYM0101_022:
 	goto_if_set FLAG_UNK_31A, _0175
-	scrcmd_375 obj_T06GYM0101_stop
-	scrcmd_375 obj_T06GYM0101_stop_2
-	scrcmd_375 obj_T06GYM0101_stop_3
-	scrcmd_375 obj_T06GYM0101_stop_4
-	scrcmd_375 obj_T06GYM0101_stop_5
-	scrcmd_375 obj_T06GYM0101_stop_6
+	make_object_visible obj_T06GYM0101_stop
+	make_object_visible obj_T06GYM0101_stop_2
+	make_object_visible obj_T06GYM0101_stop_3
+	make_object_visible obj_T06GYM0101_stop_4
+	make_object_visible obj_T06GYM0101_stop_5
+	make_object_visible obj_T06GYM0101_stop_6
 	end
 
 _0175:

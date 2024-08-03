@@ -20,7 +20,7 @@
 #include "pokemon_storage_system.h"
 #include "sav_chatot.h"
 #include "sys_task_api.h"
-#include "trainer_data.h"
+#include "pokepic.h"
 #include "unk_0200CF18.h"
 #include "unk_02023694.h"
 
@@ -157,34 +157,34 @@ typedef struct MoveFailFlags {
 } MoveFailFlags;
 
 typedef struct UnkBattlemonSub {
-    u32 disabledTurns : 3;
-    u32 encoredTurns : 3;
-    u32 isCharged : 2;
-    u32 tauntTurns : 3;
-    u32 protectSuccessTurns : 2;
-    u32 perishSongTurns : 2;
-    u32 rolloutCount : 3;
-    u32 furyCutterCount : 3;
-    u32 stockpileCount : 3;
-    u32 stockpileDefCount : 3;
-    u32 stockpileSpDefCount : 3;
-    u32 truantFlag : 1;
-    u32 flashFire : 1;
-    u32 battlerIdLockOn : 2;
-    u32 mimicedMoveIndex : 4;
-    u32 battlerIdBinding : 2;
-    u32 battlerIdMeanLook : 2;
-    u32 lastResortCount : 3;
-    u32 magnetRiseTurns : 3;
-    u32 healBlockTurns : 3;
-    u32 embargoFlag : 3;
-    u32 knockOffFlag : 1; // unclear whether true mean knocked off or not knocked off based on current information on its usage
-    u32 metronomeTurns : 4; // refers to the item, not the move
-    u32 micleBerryFlag : 1;
-    u32 custapBerryFlag : 1;
-    u32 quickClawFlag : 1;
-    u32 meFirstFlag : 1;
-    u32 unk4_2F : 1; // unused
+    u32 disabledTurns:3;
+    u32 encoredTurns:3;
+    u32 isCharged:2;
+    u32 tauntTurns:3;
+    u32 protectSuccessTurns:2;
+    u32 perishSongTurns:2;
+    u32 rolloutCount:3;
+    u32 furyCutterCount:3;
+    u32 stockpileCount:3;
+    u32 stockpileDefCount:3;
+    u32 stockpileSpDefCount:3;
+    u32 truantFlag:1;
+    u32 flashFire:1;
+    u32 battlerIdLockOn:2;
+    u32 mimicedMoveIndex:4;
+    u32 battlerIdBinding:2;
+    u32 battlerIdMeanLook:2;
+    u32 lastResortCount:3;
+    u32 magnetRiseTurns:3;
+    u32 healBlockTurns:3;
+    u32 embargoFlag:3;
+    u32 knockOffFlag:1; //unclear whether true mean knocked off or not knocked off based on current information on its usage
+    u32 metronomeTurns:4; //refers to the item, not the move
+    u32 micleBerryFlag:1;
+    u32 custapBerryFlag:1;
+    u32 quickClawFlag:1;
+    u32 meFirstFlag:1;
+    u32 unk4_2F:1; //unused
     int rechargeCount;
     int fakeOutCount;
     int slowStartTurns;
@@ -482,7 +482,7 @@ typedef struct OpponentData {
     u32 unk0[6];
     u32 unk18;
     u32 *unk1C;
-    u32 *unk20;
+    Pokepic *pokepic;
     u32 *unk24;
     BattleHpBar hpBar;
     OpponentData_UnkSub_70 unk70;
@@ -590,11 +590,11 @@ struct BattleSystem {
     u8 unk23FC;
     u8 unk23FD;
     u8 unk23FE;
-    u8 unk240F_0 : 1;
-    u8 unk240F_1 : 1;
-    u8 unk240E_F : 1;
-    u8 criticalHpMusic : 2;
-    u8 criticalHpMusicDelay : 3;
+    u8 unk240F_0:1;
+    u8 unk240F_1:1;
+    u8 unk240E_F:1;
+    u8 criticalHpMusic:2;
+    u8 criticalHpMusicDelay:3;
     Terrain terrain;
     int unk2404;
     int location;
@@ -623,11 +623,11 @@ struct BattleSystem {
     u16 unk2454[4];
     u16 unk245C[4];
     int unk2464[4];
-    u32 isRecordingPaused : 1,
-        unk2474_1 : 1,
-        unk2474_2 : 1,
-        unk2474_3 : 1,
-        unk2474_4 : 28;
+    u32 isRecordingPaused:1,
+        unk2474_1:1,
+        unk2474_2:1,
+        unk2474_3:1,
+        unk2474_4:28;
     u32 unk2478;
     SysTask *unk247C;
     u8 chatotVoiceParam[4];

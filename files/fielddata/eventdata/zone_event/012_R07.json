@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_R07_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_R07_MENTAL_HERB",
       "scr": "std_itemball_r07_mental_herb",

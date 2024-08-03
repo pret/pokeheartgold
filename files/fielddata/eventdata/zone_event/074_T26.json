@@ -53,8 +53,8 @@
   "objects": [
     {
       "id": "obj_T26_seaman_2",
-      "ovid": "SPRITE_SEAMAN_2",
-      "mvt": 5,
+      "sprite_id": "SPRITE_SEAMAN_2",
+      "movement": 5,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T26_008 + 1",
@@ -70,8 +70,8 @@
     },
     {
       "id": "obj_T26_gsboy1",
-      "ovid": "SPRITE_GSBOY1",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSBOY1",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T26_009 + 1",
@@ -87,8 +87,8 @@
     },
     {
       "id": "obj_T26_seaman_2_2",
-      "ovid": "SPRITE_SEAMAN_2",
-      "mvt": 3,
+      "sprite_id": "SPRITE_SEAMAN_2",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T26_010 + 1",
@@ -104,8 +104,8 @@
     },
     {
       "id": "obj_T26_gsrivel",
-      "ovid": "SPRITE_GSRIVEL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSRIVEL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_OLIVINE_RIVAL",
       "scr": "_EV_scr_seq_T26_000 + 1",
@@ -121,8 +121,8 @@
     },
     {
       "id": "obj_T26_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_T26_TM57",
       "scr": "std_itemball_t26_tm57",
@@ -138,8 +138,8 @@
     },
     {
       "id": "obj_T26_seaman_2_3",
-      "ovid": "SPRITE_SEAMAN_2",
-      "mvt": 15,
+      "sprite_id": "SPRITE_SEAMAN_2",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,
@@ -155,8 +155,8 @@
     },
     {
       "id": "obj_T26_gswoman2",
-      "ovid": "SPRITE_GSWOMAN2",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSWOMAN2",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,
@@ -172,8 +172,8 @@
     },
     {
       "id": "obj_T26_gsmiddleman1",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
       "scr": "_EV_scr_seq_T26_011 + 1",
@@ -189,8 +189,8 @@
     },
     {
       "id": "obj_T26_gsmiddleman1_2",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_UNK_05E",
       "scr": 65535,

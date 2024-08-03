@@ -57,12 +57,12 @@ _0033:
 	end
 
 scr_seq_D37R0104_005:
-	scrcmd_375 obj_D37R0104_stop_3
-	scrcmd_375 obj_D37R0104_stop_2
-	scrcmd_375 obj_D37R0104_stop
-	scrcmd_375 obj_D37R0104_stop_4
-	scrcmd_375 obj_D37R0104_stop_5
-	scrcmd_375 obj_D37R0104_stop_6
+	make_object_visible obj_D37R0104_stop_3
+	make_object_visible obj_D37R0104_stop_2
+	make_object_visible obj_D37R0104_stop
+	make_object_visible obj_D37R0104_stop_4
+	make_object_visible obj_D37R0104_stop_5
+	make_object_visible obj_D37R0104_stop_6
 	goto_if_set FLAG_OPENED_GOLDENROD_PURPLE_GATE, _open_purple_gate
 	end
 

@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_T25R1003_shopm1_2",
-      "ovid": "SPRITE_SHOPM1_2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SHOPM1_2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1003_000 + 1",
@@ -30,8 +30,8 @@
     },
     {
       "id": "obj_T25R1003_mania",
-      "ovid": "SPRITE_MANIA",
-      "mvt": 3,
+      "sprite_id": "SPRITE_MANIA",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1003_001 + 1",
@@ -47,8 +47,8 @@
     },
     {
       "id": "obj_T25R1003_gsman2",
-      "ovid": "SPRITE_GSMAN2",
-      "mvt": 45,
+      "sprite_id": "SPRITE_GSMAN2",
+      "movement": 45,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1003_002 + 1",

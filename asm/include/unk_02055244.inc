@@ -10,9 +10,9 @@
 .public sub_020505C8
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetStatePtr
-.public sub_0205525C
+.public CallTask_LeaveOverworld
 .public CallTask_RestoreOverworld
-.public PalleteFadeUntilFinished
+.public PaletteFadeUntilFinished
 .public CallTask_FadeFromBlack
 .public sub_020553B0
 .public sub_02055408

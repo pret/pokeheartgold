@@ -332,7 +332,7 @@
 .public OverworldModelLookupHasFemaleForm
 .public GetMonBaseStat
 .public GetMonSpriteCharAndPlttNarcIdsEx
-.public GetMonPicHeightBySpeciesGenderForme
+.public GetMonPicHeightBySpeciesGenderForm
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx
 .public sub_02074490

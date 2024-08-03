@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_T05R0201_gsman1",
-      "ovid": "SPRITE_GSMAN1",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSMAN1",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T05R0201_000 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_T05R0201_gsgirl1",
-      "ovid": "SPRITE_GSGIRL1",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSGIRL1",
+      "movement": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T05R0201_001 + 1",
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_T05R0201_tsure_poke_static_pidgey",
-      "ovid": "SPRITE_FOLLOWER_MON_STATIC_PIDGEY",
-      "mvt": 3,
+      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_PIDGEY",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T05R0201_004 + 1",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_T05R0201_tsure_poke_static_psyduck",
-      "ovid": "SPRITE_FOLLOWER_MON_STATIC_PSYDUCK",
-      "mvt": 2,
+      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_PSYDUCK",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T05R0201_002 + 1",
@@ -71,8 +71,8 @@
     },
     {
       "id": "obj_T05R0201_tsure_poke_static_nidorino",
-      "ovid": "SPRITE_FOLLOWER_MON_STATIC_NIDORINO",
-      "mvt": 3,
+      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_NIDORINO",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T05R0201_003 + 1",

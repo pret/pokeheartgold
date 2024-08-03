@@ -7,7 +7,7 @@
 .public FreeToHeapExplicit
 .public SysTask_GetData
 .public GF_AssertFail
-.public MapObjectManager_GetHeapID
+.public MapObjectManager_GetPriority
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
 .public MapObject_TestFlagsBits

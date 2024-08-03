@@ -478,12 +478,12 @@ static void PhotoAlbum_LaunchApp_Impl(FieldSystem *fieldSystem, PhotoAlbumArgs *
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
 
-PhotoAlbumArgs *PhotoAlbum_LaunchApp(FieldSystem *fieldSystem, int a1, int a2) {
+PhotoAlbumArgs *PhotoAlbum_LaunchApp(FieldSystem *fieldSystem, int unused, int initialCursorPos) {
     PhotoAlbumArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(PhotoAlbumArgs));
     MI_CpuFill8(args, 0, sizeof(PhotoAlbumArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
     args->unk8 = &fieldSystem->unk_10C;
-    args->unk2 = a2;
+    args->cursorPos = initialCursorPos;
     PhotoAlbum_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
@@ -807,7 +807,7 @@ static BOOL Task_WirelessTrade(TaskManager *taskman) {
     switch (data->state) {
     case WIRELESS_TRADE_STATE_0:
         if (!sub_02039998()) {
-            sub_0205525C(taskman);
+            CallTask_LeaveOverworld(taskman);
         }
         data->state++;
         break;
@@ -935,7 +935,7 @@ static BOOL Task_NamingScreen(TaskManager *taskman) {
     NamingScreenData *data = TaskManager_GetEnvironment(taskman);
     switch (data->state) {
     case 0:
-        sub_0205525C(taskman);
+        CallTask_LeaveOverworld(taskman);
         data->state++;
         break;
     case 1:
@@ -1274,6 +1274,6 @@ LegendaryCinematicArgs *LegendaryCinematic_LaunchApp(FieldSystem *fieldSystem, U
     return args;
 }
 
-void sub_0203FD08(FieldSystem *fieldSystem, void *args) {
+void sub_0203FD08(FieldSystem *fieldSystem, UnkStruct_02097D48 *args) {
     FieldSystem_LaunchApplication(fieldSystem, &_020FA494, args);
 }

@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_FOLLOW_MON_H
 #define POKEHEARTGOLD_FOLLOW_MON_H
 
-#include "field_map_object.h"
+#include "map_object.h"
 #include "heap.h"
 #include "map_object_manager.h"
 

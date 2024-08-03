@@ -2120,7 +2120,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_375 arg0
+	.macro make_object_visible arg0
 	.short 375
 	.short \arg0
 	.endm
@@ -3475,12 +3475,12 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_616 arg0
+	.macro count_saved_photos arg0
 	.short 616
 	.short \arg0
 	.endm
 
-	.macro scrcmd_617
+	.macro open_photo_album
 	.short 617
 	.endm
 
@@ -3499,7 +3499,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_621
+	.macro place_starter_balls_in_elms_lab
 	.short 621
 	.endm
 
@@ -4264,24 +4264,24 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_755
+	.macro legend_cutscene_clear_bell_anim_begin
 	.short 755
 	.endm
 
-	.macro scrcmd_756
+	.macro legend_cutscene_clear_bell_anim_end
 	.short 756
 	.endm
 
-	.macro scrcmd_757
+	.macro legend_cutscene_clear_bell_rise_from_bag
 	.short 757
 	.endm
 
-	.macro scrcmd_758 arg0
+	.macro legend_cutscene_clear_bell_shimmer arg0
 	.short 758
 	.short \arg0
 	.endm
 
-	.macro scrcmd_759
+	.macro legend_cutscene_lugia_eye_glimmer_effect
 	.short 759
 	.endm
 
@@ -4289,41 +4289,41 @@
 	.short 760
 	.endm
 
-	.macro scrcmd_761 arg0
+	.macro legend_cutscene_move_camera_to arg0
 	.short 761
 	.short \arg0
 	.endm
 
-	.macro scrcmd_762 arg0
+	.macro legend_cutscene_pan_camera_to arg0
 	.short 762
 	.short \arg0
 	.endm
 
-	.macro scrcmd_763
+	.macro legend_cutscene_wait_camera_pan
 	.short 763
 	.endm
 
-	.macro scrcmd_764
+	.macro legend_cutscene_bird_final_approach
 	.short 764
 	.endm
 
-	.macro scrcmd_765
+	.macro legend_cutscene_waves_or_leaves_effect_begin
 	.short 765
 	.endm
 
-	.macro scrcmd_766
+	.macro legend_cutscene_waves_or_leaves_effect_end
 	.short 766
 	.endm
 
-	.macro scrcmd_767
+	.macro legend_cutscene_lugia_arrives_effect_begin
 	.short 767
 	.endm
 
-	.macro scrcmd_768
+	.macro legend_cutscene_lugia_arrives_effect_end
 	.short 768
 	.endm
 
-	.macro scrcmd_769
+	.macro legend_cutscene_lugia_arrives_effect_camera_pan
 	.short 769
 	.endm
 

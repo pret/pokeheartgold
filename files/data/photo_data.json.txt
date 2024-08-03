@@ -1,0 +1,26 @@
+{{ doNotModifyHeader }}
+
+#include "global.h"
+#include "photo_album.h"
+#include "constants/maps.h"
+#include "constants/sprites.h"
+
+u32 __size = sizeof(PhotoData);
+
+const PhotoData __data[] = {
+## for photo in photos
+    {
+        .mapId = {{photo.map}},
+        .iconId = {{photo.icon}},
+        .x = {{photo.x}},
+        .y = {{photo.y}},
+        .unk8 = 1,
+        .unk9 = -1,
+        .subjectObjId = {{photo.subject}},
+        .param = {
+            {{photo.param.0}},
+            {{photo.param.1}}
+        }
+    },
+## endfor
+};

@@ -1,4 +1,4 @@
-#include "field_map_object.h"
+#include "map_object.h"
 #include "overlay_01_021F1AFC.h"
 #include "overlay_01_021F944C.h"
 #include "overlay_01_apricorn_tree_anim.h"
@@ -180,7 +180,7 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
 }
 
 static LocalMapObject *CreateJumpingApricornObj(MapObjectManager *taskman, u32 sprite, u32 x, u32 z) {
-    LocalMapObject *obj = CreateSpecialFieldObject(taskman, x, z, 0, sprite, 0, 1);
+    LocalMapObject *obj = MapObject_Create(taskman, x, z, 0, sprite, 0, 1);
     GF_ASSERT(obj != NULL);
 
     MapObject_SetID(obj, obj_apricorn);
@@ -188,8 +188,8 @@ static LocalMapObject *CreateJumpingApricornObj(MapObjectManager *taskman, u32 s
     MapObject_SetFlagID(obj, 0);
     MapObject_SetXRange(obj, -1);
     MapObject_SetYRange(obj, -1);
-    MapObject_SetFlagsBits(obj, MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_UNK10);
-    MapObject_ClearFlagsBits(obj, MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7);
+    MapObject_SetFlagsBits(obj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_UNK10));
+    MapObject_ClearFlagsBits(obj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7));
     MapObject_SetFlag29(obj, TRUE);
     MapObject_SetFlagsBits(obj, MAPOBJECTFLAG_VISIBLE);
     return obj;

@@ -1,7 +1,7 @@
 #include "global.h"
 #include "field_player_avatar.h"
 #include "assert.h"
-#include "field_map_object.h"
+#include "map_object.h"
 #include "heap.h"
 #include "overlay_00_thumb.h"
 #include "overlay_01.h"
@@ -160,9 +160,9 @@ PlayerAvatar* sub_0205C408(MapObjectManager* man, PlayerSaveData* playerSaveData
     int state = sub_0205C7EC(playerSaveData);
     sub_0205C500(avatar, state, gender, playerSaveData);
     LocalMapObject* mapObj = sub_0205C640(man);
-    MapObject_SetGfxID(mapObj, PlayerAvatar_GetSpriteByStateAndGender(state, gender));
-    MapObject_SetFlagsBits(mapObj, MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_UNK10);
-    MapObject_ClearFlagsBits(mapObj, MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7);
+    MapObject_SetSpriteID(mapObj, PlayerAvatar_GetSpriteByStateAndGender(state, gender));
+    MapObject_SetFlagsBits(mapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_UNK10));
+    MapObject_ClearFlagsBits(mapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7));
     MapObject_SetFlag29(mapObj, TRUE);
     sub_0205C6D8(avatar, mapObj);
     return avatar;
@@ -216,7 +216,7 @@ void sub_0205C500(PlayerAvatar* avatar, int state, u32 gender, PlayerSaveData* p
 }
 
 void CreatePlayerAvatarMapObject(PlayerAvatar* avatar, MapObjectManager* man, u32 sprite, u32 direction, u32 x, u32 y) {
-    LocalMapObject* mapObj = CreateSpecialFieldObject(man, x, y, direction, sprite, 1, 1);
+    LocalMapObject* mapObj = MapObject_Create(man, x, y, direction, sprite, 1, 1);
     if (!mapObj) {
         GF_ASSERT(FALSE);
     }
@@ -229,8 +229,8 @@ void CreatePlayerAvatarMapObject(PlayerAvatar* avatar, MapObjectManager* man, u3
     MapObject_SetParam(mapObj, 0, 2);
     MapObject_SetXRange(mapObj, -1);
     MapObject_SetYRange(mapObj, -1);
-    MapObject_SetFlagsBits(mapObj, MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_UNK10);
-    MapObject_ClearFlagsBits(mapObj, MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7);
+    MapObject_SetFlagsBits(mapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_UNK10));
+    MapObject_ClearFlagsBits(mapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7));
     MapObject_SetFlag29(mapObj, TRUE);
     sub_0205C6D8(avatar, mapObj);
 }
@@ -238,7 +238,7 @@ void CreatePlayerAvatarMapObject(PlayerAvatar* avatar, MapObjectManager* man, u3
 LocalMapObject* sub_0205C600(MapObjectManager* man) {
     int y = 0;
     LocalMapObject* mapObj = 0;
-    while (sub_0205EEF4(man, &mapObj, &y, MAPOBJECTFLAG_ACTIVE)) {
+    while (MapObjectManager_GetNextObjectWithFlagFromIndex(man, &mapObj, &y, MAPOBJECTFLAG_ACTIVE)) {
         if (MapObject_GetMovement(mapObj) == TRUE) {
             break;
         }
@@ -263,7 +263,7 @@ void PlayerAvatar_SetFacingDirection(PlayerAvatar* avatar, int direction) {
 }
 
 u32 PlayerAvatar_GetNextFacing(PlayerAvatar* avatar) {
-    return MapObject_GetNextFacing(PlayerAvatar_GetMapObject(avatar));
+    return MapObject_GetNextFacingDirection(PlayerAvatar_GetMapObject(avatar));
 }
 
 int GetPlayerXCoord(PlayerAvatar* avatar) {

@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_R37_gsbabygirl1",
-      "ovid": "SPRITE_GSBABYGIRL1",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSBABYGIRL1",
+      "movement": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_TWINS_TORI_AND_TIL)",
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_R37_gsbabygirl1_2",
-      "ovid": "SPRITE_GSBABYGIRL1",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSBABYGIRL1",
+      "movement": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer_2(TRAINER_TWINS_TORI_AND_TIL)",
@@ -55,8 +55,8 @@
     },
     {
       "id": "obj_R37_mystery_2",
-      "ovid": "SPRITE_MYSTERY_2",
-      "mvt": 9,
+      "sprite_id": "SPRITE_MYSTERY_2",
+      "movement": 9,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_PSYCHIC_M_GREG)",
@@ -72,8 +72,8 @@
     },
     {
       "id": "obj_R37_gsbabyboy1",
-      "ovid": "SPRITE_GSBABYBOY1",
-      "mvt": 2,
+      "sprite_id": "SPRITE_GSBABYBOY1",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_UNK_1C3",
       "scr": "_EV_scr_seq_R37_001 + 1",
@@ -89,8 +89,8 @@
     },
     {
       "id": "obj_R37_bonguri",
-      "ovid": "SPRITE_BONGURI",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BONGURI",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_apricorn_tree",
@@ -106,8 +106,8 @@
     },
     {
       "id": "obj_R37_bonguri_2",
-      "ovid": "SPRITE_BONGURI",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BONGURI",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_apricorn_tree",
@@ -123,8 +123,8 @@
     },
     {
       "id": "obj_R37_bonguri_3",
-      "ovid": "SPRITE_BONGURI",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BONGURI",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_apricorn_tree",
@@ -140,8 +140,8 @@
     },
     {
       "id": "obj_R37_gswoman2",
-      "ovid": "SPRITE_GSWOMAN2",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSWOMAN2",
+      "movement": 17,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BEAUTY_CALLIE)",
@@ -157,8 +157,8 @@
     },
     {
       "id": "obj_R37_gswoman2_2",
-      "ovid": "SPRITE_GSWOMAN2",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSWOMAN2",
+      "movement": 16,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BEAUTY_KASSANDRA)",

@@ -431,7 +431,7 @@ _0205AF8A:
 _0205AFA6:
 	ldr r0, [sp, #4]
 	add r1, r7, #1
-	bl GetMapObjectByID
+	bl MapObjectManager_GetFirstActiveObjectByID
 	add r5, r0, #0
 	bne _0205AFB6
 	bl GF_AssertFail
@@ -673,7 +673,7 @@ _0205B16C:
 	bl sub_0205FC2C
 	add r0, r4, #0
 	mov r1, #1
-	bl MapObject_ForceSetFacingDirection
+	bl MapObject_SetFacingDirectionDirect
 	add r0, r4, #0
 	mov r1, #0x44
 	bl MapObject_SetHeldMovement
@@ -772,7 +772,7 @@ sub_0205B240: ; 0x0205B240
 _0205B24C:
 	add r0, r7, #0
 	add r1, r5, #0
-	bl GetMapObjectByID
+	bl MapObjectManager_GetFirstActiveObjectByID
 	add r4, r0, #0
 	bne _0205B25C
 	bl GF_AssertFail
@@ -799,7 +799,7 @@ sub_0205B27C: ; 0x0205B27C
 	add r5, r1, #0
 	mov r1, #0
 	add r7, r0, #0
-	bl GetMapObjectByID
+	bl MapObjectManager_GetFirstActiveObjectByID
 	add r4, r0, #0
 	bne _0205B290
 	bl GF_AssertFail
@@ -823,7 +823,7 @@ _0205B2AE:
 	bne _0205B318
 	add r0, r7, #0
 	add r1, r6, #1
-	bl GetMapObjectByID
+	bl MapObjectManager_GetFirstActiveObjectByID
 	add r4, r0, #0
 	bne _0205B2C4
 	bl GF_AssertFail
@@ -833,7 +833,7 @@ _0205B2C4:
 	bl sub_0205E3AC
 	add r0, r4, #0
 	mov r1, #1
-	bl MapObject_ForceSetFacingDirection
+	bl MapObject_SetFacingDirectionDirect
 	add r0, r4, #0
 	mov r1, #0x44
 	bl MapObject_SetHeldMovement

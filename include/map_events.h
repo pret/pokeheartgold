@@ -20,7 +20,7 @@ u32 Field_GetNumObjectEvents(const FieldSystem *fieldSystem);
 const ObjectEvent *Field_GetObjectEvents(const FieldSystem *fieldSystem);
 BOOL Field_SetEventDefaultXYPos(FieldSystem *fieldSystem, int id, u16 x, u16 y);
 BOOL Field_SetEventDefaultDirection(FieldSystem *fieldSystem, int id, u16 dirn);
-BOOL Field_SetEventDefaultMovement(FieldSystem *fieldSystem, int id, u16 mvt);
+BOOL Field_SetEventDefaultMovement(FieldSystem *fieldSystem, int id, u16 movement);
 BOOL Field_SetWarpXYPos(FieldSystem *fieldSystem, int warpno, u16 x, u16 y);
 BOOL Field_SetBgEventXYPos(FieldSystem *fieldSystem, int bgno, u32 x, u32 y);
 void WildEncounters_ReadFromNarc(ENC_DATA *encData, u32 mapno);

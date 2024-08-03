@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_T27GYM0101_sunglasses",
-      "ovid": "SPRITE_SUNGLASSES",
-      "mvt": 15,
+      "sprite_id": "SPRITE_SUNGLASSES",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T27GYM0101_003 + 1",
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_T27GYM0101_gsleader4",
-      "ovid": "SPRITE_GSLEADER4",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSLEADER4",
+      "movement": 15,
       "type": 1,
       "flag": "FLAG_UNK_2ED",
       "scr": "_EV_scr_seq_T27GYM0101_001 + 1",
@@ -55,8 +55,8 @@
     },
     {
       "id": "obj_T27GYM0101_itako",
-      "ovid": "SPRITE_ITAKO",
-      "mvt": 16,
+      "sprite_id": "SPRITE_ITAKO",
+      "movement": 16,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_MEDIUM_GEORGINA)",
@@ -72,8 +72,8 @@
     },
     {
       "id": "obj_T27GYM0101_itako_2",
-      "ovid": "SPRITE_ITAKO",
-      "mvt": 15,
+      "sprite_id": "SPRITE_ITAKO",
+      "movement": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_MEDIUM_GRACE)",
@@ -89,8 +89,8 @@
     },
     {
       "id": "obj_T27GYM0101_itako_3",
-      "ovid": "SPRITE_ITAKO",
-      "mvt": 17,
+      "sprite_id": "SPRITE_ITAKO",
+      "movement": 17,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_MEDIUM_EDITH)",
@@ -106,8 +106,8 @@
     },
     {
       "id": "obj_T27GYM0101_itako_4",
-      "ovid": "SPRITE_ITAKO",
-      "mvt": 15,
+      "sprite_id": "SPRITE_ITAKO",
+      "movement": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_MEDIUM_MARTHA)",
@@ -123,8 +123,8 @@
     },
     {
       "id": "obj_T27GYM0101_gsoldman1",
-      "ovid": "SPRITE_GSOLDMAN1",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSOLDMAN1",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_UNK_247",
       "scr": 0,
