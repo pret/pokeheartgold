@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_OVERLAY_12_02266024_H
 
 #include "battle/battle.h"
+
 #include "filesystem.h"
 
 void *ov12_022660D0(NARC *a0, NARC *a1, BattleSystem *bsys, u32 gender, void *a4);

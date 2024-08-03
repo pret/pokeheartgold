@@ -1,13 +1,12 @@
 #ifndef POKEHEARTGOLD_HALL_OF_FAME_H
 #define POKEHEARTGOLD_HALL_OF_FAME_H
 
-#include "pm_string.h"
 #include "party.h"
+#include "pm_string.h"
 
 #define NUM_HOF_RECORDS 30
 
-typedef struct HOFMon
-{
+typedef struct HOFMon {
     /* 0x00 */ u16 species;
     /* 0x02 */ u8 level;
     /* 0x03 */ u8 form;
@@ -19,25 +18,22 @@ typedef struct HOFMon
     /* 0x3A */ u8 padding[2];
 } HOFMON;
 
-typedef struct HOFParty
-{
+typedef struct HOFParty {
     HOFMON party[6];
     u16 year;
     u8 month;
     u8 day;
 } HOFTEAM;
 
-typedef struct HallOfFame
-{
+typedef struct HallOfFame {
     HOFTEAM parties[NUM_HOF_RECORDS];
     u32 next_record;
     u32 num_total;
 } HallOfFame;
 
-typedef struct HofDisplayMon
-{
-    String * nickname;
-    String * otname;
+typedef struct HofDisplayMon {
+    String *nickname;
+    String *otname;
     u32 personality;
     u32 otid;
     u16 species;
@@ -53,6 +49,6 @@ u32 Save_HOF_GetNumRecords(const HallOfFame *hallOfFame);
 int Save_HOF_TranslateRecordIdx(const HallOfFame *hallOfFame, int num);
 u32 Save_HOF_RecordCountMons(HallOfFame *hallOfFame, int num);
 void Save_HOF_GetMonStatsByIndexPair(HallOfFame *hallOfFame, int teamNum, int monNum, SHOW_HOFMON *dest);
-void Save_HOF_GetClearDate(HallOfFame * hof, int num, RTCDate * dest);
+void Save_HOF_GetClearDate(HallOfFame *hof, int num, RTCDate *dest);
 
-#endif //POKEHEARTGOLD_HALL_OF_FAME_H
+#endif // POKEHEARTGOLD_HALL_OF_FAME_H

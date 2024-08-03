@@ -5,4 +5,4 @@
 
 void sub_0207DAEC(PartyMenuStruct *unkPtr, int a1, int a2);
 
-#endif //POKEHEARTGOLD_UNK_0207CB7C_H
+#endif // POKEHEARTGOLD_UNK_0207CB7C_H

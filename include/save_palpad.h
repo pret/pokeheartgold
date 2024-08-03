@@ -3,8 +3,8 @@
 
 #include "save.h"
 
-#define NUM_PALPAD_ENTRIES       16
-#define NUM_FRIENDS_PER_ENTRY    16
+#define NUM_PALPAD_ENTRIES    16
+#define NUM_FRIENDS_PER_ENTRY 16
 
 typedef struct SavePalPad {
     u16 name[PLAYER_NAME_LENGTH + 1];
@@ -24,4 +24,4 @@ u8 PalPadEntry_GetFromUnk68Array(SavePalPad *palPad, int n);
 void SavePalPad_Merge(SavePalPad *a, SavePalPad *b, int n, HeapID heapId);
 int PalPad_PlayerIdIsFriendOrMutual(SavePalPad *palPad, u32 otId);
 
-#endif //POKEHEARTGOLD_SAVE_PALPAD_H
+#endif // POKEHEARTGOLD_SAVE_PALPAD_H

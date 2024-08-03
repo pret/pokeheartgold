@@ -34,9 +34,9 @@ TimeOfDayWildParam GF_RTC_GetTimeOfDayWildParamByHour(s32 hour);
 void GF_InitRTCWork(void);
 void GF_RTC_UpdateOnFrame(void);
 s32 GF_RTC_TimeToSec(void);
-s32 GF_RTC_GetDayOfYear(const RTCDate * date);
+s32 GF_RTC_GetDayOfYear(const RTCDate *date);
 s64 GF_RTC_TimeDelta(s64 first, s64 last);
 void GF_RTC_UnfreezeTime(void);
 void GF_RTC_SetAndFreezeTime(s32 hour, s32 minute);
 
-#endif //POKEHEARTGOLD_GF_RTC_H
+#endif // POKEHEARTGOLD_GF_RTC_H

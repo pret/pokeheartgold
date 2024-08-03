@@ -20,4 +20,4 @@ typedef struct NamingScreenArgs {
 void sub_0208311C(NamingScreenArgs *a0);
 NamingScreenArgs *NamingScreen_CreateArgs(HeapID heapId, int kind, int param, int maxLen, Options *options, int *a5);
 
-#endif //POKEHEARTGOLD_UNK_02082908_H
+#endif // POKEHEARTGOLD_UNK_02082908_H

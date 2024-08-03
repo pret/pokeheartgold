@@ -5,7 +5,7 @@
 
 u32 SaveArray_Party_sizeof(void);
 u32 PartyCore_sizeof(void);
-Party * SaveArray_Party_Alloc(HeapID heapId);
+Party *SaveArray_Party_Alloc(HeapID heapId);
 void SaveArray_Party_Init(Party *party);
 void Party_InitWithMaxSize(Party *party, int maxSize);
 BOOL Party_AddMon(Party *party, const Pokemon *mon);
@@ -22,4 +22,4 @@ void Party_Copy(const Party *src, Party *dest);
 BOOL Party_HasMon(Party *party, u16 species);
 Party *SaveArray_Party_Get(SaveData *saveData);
 
-#endif //GUARD_PARTY_H
+#endif // GUARD_PARTY_H

@@ -16,4 +16,4 @@ void RegisterMainOverlay(FSOverlayID overlayId, const OVY_MGR_TEMPLATE *template
 void InitializeMainRNG(void);
 void HandleDSLidAction(void);
 
-#endif //POKEHEARTGOLD_MAIN_H
+#endif // POKEHEARTGOLD_MAIN_H

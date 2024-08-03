@@ -7,4 +7,4 @@ void sub_02058190(FieldSystem *fieldSystem);
 void sub_02058284(void);
 void sub_020582A8(void);
 
-#endif //POKEHEARTGOLD_UNK_02058034_H
+#endif // POKEHEARTGOLD_UNK_02058034_H

@@ -154,4 +154,4 @@ typedef struct PartyMenuMoveSelectData {
     PokemonSummaryArgs *pokemonSummary;
 } PartyMenuMoveSelectData;
 
-#endif //POKEHEARTGOLD_FIELD_LAUNCH_APPLICATION_INTERNAL_H
+#endif // POKEHEARTGOLD_FIELD_LAUNCH_APPLICATION_INTERNAL_H

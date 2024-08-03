@@ -44,4 +44,4 @@ BOOL GiveCoins(u16 *coins, u16 amount);
 BOOL CanGiveCoins(u16 *coins, u16 amount);
 BOOL TakeCoins(u16 *coins, u16 amount);
 
-#endif //POKEHEARTGOLD_COINS_H
+#endif // POKEHEARTGOLD_COINS_H

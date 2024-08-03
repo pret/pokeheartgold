@@ -1,15 +1,15 @@
 #ifndef POKEHEARTGOLD_SYSTEM_H
 #define POKEHEARTGOLD_SYSTEM_H
 
-#include "sys_task.h"
 #include "heap.h"
+#include "sys_task.h"
 
-#define BUTTONMODE_NORMAL         0
-#define BUTTONMODE_STARTEQUALSX   1
-#define BUTTONMODE_SWAPXY         2
-#define BUTTONMODE_LEQUALSA       3
+#define BUTTONMODE_NORMAL       0
+#define BUTTONMODE_STARTEQUALSX 1
+#define BUTTONMODE_SWAPXY       2
+#define BUTTONMODE_LEQUALSA     3
 
-#define OFFSET_OF(p_type,field)     ((u32)&(((p_type )NULL)->field))
+#define OFFSET_OF(p_type, field) ((u32) & (((p_type)NULL)->field))
 
 typedef void (*GFIntrCB)(void *);
 
@@ -66,7 +66,7 @@ BOOL Main_SetHBlankIntrCB(GFIntrCB cb, void *arg);
 void InitSystemForTheGame(void);
 void InitGraphicMemory(void);
 void *Sys_AllocAndReadFile(HeapID heapId, const char *path);
-void sub_0201A3F8(const char * path, void **mem);
+void sub_0201A3F8(const char *path, void **mem);
 void sub_0201A430(void);
 void InitKeypadAndTouchpad(void);
 void sub_0201A4B0(int a0);
@@ -80,4 +80,4 @@ void sub_0201A748(HeapID heapId);
 void sub_0201A774(void);
 BOOL sub_0201A79C(void);
 
-#endif //POKEHEARTGOLD_SYSTEM_H
+#endif // POKEHEARTGOLD_SYSTEM_H

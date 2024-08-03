@@ -1,8 +1,9 @@
 #ifndef POKEHEARTGOLD_OBJ_CHAR_TRANSFER_H
 #define POKEHEARTGOLD_OBJ_CHAR_TRANSFER_H
 
-#include "heap.h"
 #include <nnsys.h>
+
+#include "heap.h"
 
 typedef struct ObjCharTransferTemplate {
     int maxTasks;
@@ -46,4 +47,4 @@ ObjCharTransferTasksManager *ObjCharTransfer_PopTaskManager(void);
 void ObjCharTransfer_PushTaskManager(ObjCharTransferTasksManager *a0);
 int ObjCharTransfer_GetBlockSizeFromMode(GXOBJVRamModeChar mode);
 
-#endif //POKEHEARTGOLD_OBJ_CHAR_TRANSFER_H
+#endif // POKEHEARTGOLD_OBJ_CHAR_TRANSFER_H

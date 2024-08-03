@@ -9,4 +9,4 @@ BOOL sub_02037B38(u8 a0);
 void sub_02037BEC(void);
 u32 sub_02037C0C(u32 a0, u16 *a1);
 
-#endif //POKEHEARTGOLD_UNK_020379A0_H
+#endif // POKEHEARTGOLD_UNK_020379A0_H

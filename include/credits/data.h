@@ -1,11 +1,12 @@
 #ifndef POKEHEARTGOLD_CREDITS_DATA_H
 #define POKEHEARTGOLD_CREDITS_DATA_H
 
-#include "global.h"
-#include "gf_gfx_planes.h"
-#include "obj_char_transfer.h"
-#include "bg_window.h"
 #include "credits/credits.h"
+
+#include "bg_window.h"
+#include "gf_gfx_planes.h"
+#include "global.h"
+#include "obj_char_transfer.h"
 
 typedef struct {
     int plttFileId;
@@ -47,22 +48,22 @@ typedef struct {
 } Cutscene;
 
 static const WindowTemplate ov76_021E6E98 = {
-    .bgId      = 0x05,
-    .left      = 0x03,
-    .top       = 0x00,
-    .width     = 0x18,
-    .height    = 0x18,
-    .palette   = 0x0F,
-    .baseTile  = 0x0001,
+    .bgId = 0x05,
+    .left = 0x03,
+    .top = 0x00,
+    .width = 0x18,
+    .height = 0x18,
+    .palette = 0x0F,
+    .baseTile = 0x0001,
 };
 
 static const ObjCharTransferTemplate sObjCharTransferTemplate = { 0x28, 0, 0, HEAP_ID_CREDITS };
 
 static const GraphicsModes ov76_021E6EB0 = {
-    .dispMode    = GX_DISPMODE_GRAPHICS,
-    .bgMode      = GX_BGMODE_0,
-    .subMode     = GX_BGMODE_0,
-    ._2d3dMode   = GX_BG0_AS_2D,
+    .dispMode = GX_DISPMODE_GRAPHICS,
+    .bgMode = GX_BGMODE_0,
+    .subMode = GX_BGMODE_0,
+    ._2d3dMode = GX_BG0_AS_2D,
 };
 
 static const int sSceneTransitionTimings[5] = { 890, 1780, 2615, 3030, 4295 };
@@ -78,124 +79,124 @@ static const ScrnFileIds ov76_021E6EE8 = {
 };
 
 static const BgTemplate ov76_021E6F50 = {
-    .x          = 0,
-    .y          = 0,
+    .x = 0,
+    .y = 0,
     .bufferSize = 0x0800,
-    .baseTile   = 0,
-    .size       = GF_BG_SCR_SIZE_256x256,
-    .colorMode  = GX_BG_COLORMODE_16,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
     .screenBase = GX_BG_SCRBASE_0xd800,
-    .charBase   = GX_BG_CHARBASE_0x00000,
-    .bgExtPltt  = GX_BG_EXTPLTT_01,
-    .priority   = 1,
-    .areaOver   = GX_BG_AREAOVER_XLU,
-    .dummy      = 0,
-    .mosaic     = FALSE,
+    .charBase = GX_BG_CHARBASE_0x00000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 1,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .dummy = 0,
+    .mosaic = FALSE,
 };
 
 static const BgTemplate ov76_021E6F6C = {
-    .x          = 0,
-    .y          = 0,
+    .x = 0,
+    .y = 0,
     .bufferSize = 0x0800,
-    .baseTile   = 0,
-    .size       = GF_BG_SCR_SIZE_256x256,
-    .colorMode  = GX_BG_COLORMODE_16,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
     .screenBase = GX_BG_SCRBASE_0xe800,
-    .charBase   = GX_BG_CHARBASE_0x08000,
-    .bgExtPltt  = GX_BG_EXTPLTT_01,
-    .priority   = 2,
-    .areaOver   = GX_BG_AREAOVER_XLU,
-    .dummy      = 0,
-    .mosaic     = FALSE,
+    .charBase = GX_BG_CHARBASE_0x08000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 2,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .dummy = 0,
+    .mosaic = FALSE,
 };
 
 static const BgTemplate ov76_021E6F88 = {
-    .x          = 0,
-    .y          = 0,
+    .x = 0,
+    .y = 0,
     .bufferSize = 0x0800,
-    .baseTile   = 0,
-    .size       = GF_BG_SCR_SIZE_256x256,
-    .colorMode  = GX_BG_COLORMODE_16,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
     .screenBase = GX_BG_SCRBASE_0xe000,
-    .charBase   = GX_BG_CHARBASE_0x00000,
-    .bgExtPltt  = GX_BG_EXTPLTT_01,
-    .priority   = 1,
-    .areaOver   = GX_BG_AREAOVER_XLU,
-    .dummy      = 0,
-    .mosaic     = FALSE,
+    .charBase = GX_BG_CHARBASE_0x00000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 1,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .dummy = 0,
+    .mosaic = FALSE,
 };
 
 static const BgTemplate ov76_021E6FA4 = {
-    .x          = 0,
-    .y          = 0,
+    .x = 0,
+    .y = 0,
     .bufferSize = 0x0800,
-    .baseTile   = 0,
-    .size       = GF_BG_SCR_SIZE_256x256,
-    .colorMode  = GX_BG_COLORMODE_16,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
     .screenBase = GX_BG_SCRBASE_0xd800,
-    .charBase   = GX_BG_CHARBASE_0x00000,
-    .bgExtPltt  = GX_BG_EXTPLTT_01,
-    .priority   = 3,
-    .areaOver   = GX_BG_AREAOVER_XLU,
-    .dummy      = 0,
-    .mosaic     = FALSE,
+    .charBase = GX_BG_CHARBASE_0x00000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 3,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .dummy = 0,
+    .mosaic = FALSE,
 };
 
 static const BgTemplate ov76_021E6F18 = {
-    .x          = 0,
-    .y          = 0,
+    .x = 0,
+    .y = 0,
     .bufferSize = 0x0800,
-    .baseTile   = 0,
-    .size       = GF_BG_SCR_SIZE_256x256,
-    .colorMode  = GX_BG_COLORMODE_16,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
     .screenBase = GX_BG_SCRBASE_0xe800,
-    .charBase   = GX_BG_CHARBASE_0x00000,
-    .bgExtPltt  = GX_BG_EXTPLTT_01,
-    .priority   = 2,
-    .areaOver   = GX_BG_AREAOVER_XLU,
-    .dummy      = 0,
-    .mosaic     = FALSE,
+    .charBase = GX_BG_CHARBASE_0x00000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 2,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .dummy = 0,
+    .mosaic = FALSE,
 };
 
 static const BgTemplate ov76_021E6F34 = {
-    .x          = 0,
-    .y          = 0,
+    .x = 0,
+    .y = 0,
     .bufferSize = 0x0800,
-    .baseTile   = 0,
-    .size       = GF_BG_SCR_SIZE_256x256,
-    .colorMode  = GX_BG_COLORMODE_16,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
     .screenBase = GX_BG_SCRBASE_0xe000,
-    .charBase   = GX_BG_CHARBASE_0x00000,
-    .bgExtPltt  = GX_BG_EXTPLTT_01,
-    .priority   = 3,
-    .areaOver   = GX_BG_AREAOVER_XLU,
-    .dummy      = 0,
-    .mosaic     = FALSE,
+    .charBase = GX_BG_CHARBASE_0x00000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 3,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .dummy = 0,
+    .mosaic = FALSE,
 };
 
 static const GraphicsBanks sCreditsGraphicsBanks = {
-    .bg            = GX_VRAM_BG_128_B,
-    .bgextpltt     = GX_VRAM_BGEXTPLTT_NONE,
-    .subbg         = GX_VRAM_SUB_BG_128_C,
-    .subbgextpltt  = GX_VRAM_SUB_BGEXTPLTT_NONE,
-    .obj           = GX_VRAM_OBJ_128_A,
-    .objextpltt    = GX_VRAM_OBJEXTPLTT_NONE,
-    .subobj        = GX_VRAM_SUB_OBJ_16_I,
+    .bg = GX_VRAM_BG_128_B,
+    .bgextpltt = GX_VRAM_BGEXTPLTT_NONE,
+    .subbg = GX_VRAM_SUB_BG_128_C,
+    .subbgextpltt = GX_VRAM_SUB_BGEXTPLTT_NONE,
+    .obj = GX_VRAM_OBJ_128_A,
+    .objextpltt = GX_VRAM_OBJEXTPLTT_NONE,
+    .subobj = GX_VRAM_SUB_OBJ_16_I,
     .subobjextpltt = GX_VRAM_SUB_OBJEXTPLTT_NONE,
-    .tex           = GX_VRAM_TEX_NONE,
-    .texpltt       = GX_VRAM_TEXPLTT_NONE,
+    .tex = GX_VRAM_TEX_NONE,
+    .texpltt = GX_VRAM_TEXPLTT_NONE,
 };
 
 static const PageTiming sPageTimings[NUM_CREDIT_PAGES] = {
-    {    0, 105 },
-    {  110, 105 },
-    {  220, 105 },
-    {  330, 105 },
-    {  440, 105 },
-    {  550, 105 },
-    {  660, 115 },
-    {  779, 109 },
-    {  894, 115 },
+    { 0, 105 },
+    { 110, 105 },
+    { 220, 105 },
+    { 330, 105 },
+    { 440, 105 },
+    { 550, 105 },
+    { 660, 115 },
+    { 779, 109 },
+    { 894, 115 },
     { 1012, 109 },
     { 1125, 102 },
     { 1232, 102 },
@@ -533,7 +534,8 @@ static const CreditMsgLine sCreditMsgLines[251] = {
 
 static const Cutscene sCutscenes[NUM_CUTSCENES] = {
     {
-        0x04, 0x04,
+        0x04,
+        0x04,
         { 0x00, 0x01, 0x02, 0x03, 0xFF, 0xFF },
         {
             { 0x0000, 0x00, 0x02, 0x0080, 0x0060, 0x0032 },
@@ -555,7 +557,8 @@ static const Cutscene sCutscenes[NUM_CUTSCENES] = {
         },
     },
     {
-        0x02, 0x02,
+        0x02,
+        0x02,
         { 0x03, 0x04, 0xFF, 0xFF, 0xFF, 0xFF },
         {
             { 0x0003, 0x00, 0x03, 0x0080, 0x0060, 0x014D },
@@ -577,7 +580,8 @@ static const Cutscene sCutscenes[NUM_CUTSCENES] = {
         },
     },
     {
-        0x04, 0x04,
+        0x04,
+        0x04,
         { 0x05, 0x06, 0x07, 0x08, 0xFF, 0xFF },
         {
             { 0x0005, 0x00, 0x02, 0x0080, 0x0060, 0x02BC },
@@ -599,7 +603,8 @@ static const Cutscene sCutscenes[NUM_CUTSCENES] = {
         },
     },
     {
-        0x06, 0x06,
+        0x06,
+        0x06,
         { 0x00, 0x01, 0x02, 0x03, 0x05, 0x06 },
         {
             { 0x0000, 0x00, 0x03, 0x0080, 0x0060, 0x037A },
@@ -621,7 +626,8 @@ static const Cutscene sCutscenes[NUM_CUTSCENES] = {
         },
     },
     {
-        0x03, 0x03,
+        0x03,
+        0x03,
         { 0x05, 0x07, 0x09, 0xFF, 0xFF, 0xFF },
         {
             { 0x0005, 0x00, 0x04, 0x0080, 0x0060, 0x0384 },
@@ -643,7 +649,8 @@ static const Cutscene sCutscenes[NUM_CUTSCENES] = {
         },
     },
     {
-        0x05, 0x0E,
+        0x05,
+        0x0E,
         { 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x00 },
         {
             { 0x000A, 0x00, 0x02, 0x0080, 0x0060, 0x04CE },
@@ -665,7 +672,8 @@ static const Cutscene sCutscenes[NUM_CUTSCENES] = {
         },
     },
     {
-        0x04, 0x04,
+        0x04,
+        0x04,
         { 0x03, 0x10, 0x04, 0x0F, 0xFF, 0xFF },
         {
             { 0x0003, 0x00, 0x05, 0x0080, 0x0060, 0x060E },
@@ -687,7 +695,8 @@ static const Cutscene sCutscenes[NUM_CUTSCENES] = {
         },
     },
     {
-        0x04, 0x04,
+        0x04,
+        0x04,
         { 0x0F, 0x11, 0x12, 0x13, 0xFF, 0xFF },
         {
             { 0x0018, 0x00, 0x03, 0x0080, 0x0060, 0x0708 },
@@ -709,7 +718,8 @@ static const Cutscene sCutscenes[NUM_CUTSCENES] = {
         },
     },
     {
-        0x04, 0x0D,
+        0x04,
+        0x0D,
         { 0x18, 0x19, 0x1A, 0x1B, 0xFF, 0xFF },
         {
             { 0x002A, 0x00, 0x02, 0x0080, 0x0060, 0x0898 },
@@ -731,7 +741,8 @@ static const Cutscene sCutscenes[NUM_CUTSCENES] = {
         },
     },
     {
-        0x04, 0x0C,
+        0x04,
+        0x0C,
         { 0x14, 0x15, 0x16, 0x17, 0xFF, 0xFF },
         {
             { 0x001D, 0x00, 0x02, 0x0080, 0x0060, 0x0A5A },
@@ -753,7 +764,8 @@ static const Cutscene sCutscenes[NUM_CUTSCENES] = {
         },
     },
     {
-        0x04, 0x04,
+        0x04,
+        0x04,
         { 0x1C, 0x1E, 0x1D, 0x21, 0xFF, 0xFF },
         {
             { 0x0037, 0x00, 0x02, 0x0080, 0x0060, 0x0BF4 },
@@ -775,7 +787,8 @@ static const Cutscene sCutscenes[NUM_CUTSCENES] = {
         },
     },
     {
-        0x05, 0x09,
+        0x05,
+        0x09,
         { 0x22, 0x23, 0x24, 0x25, 0x20, 0x00 },
         {
             { 0x0045, 0x00, 0x02, 0x0080, 0x006E, 0x0D1F },
@@ -797,7 +810,8 @@ static const Cutscene sCutscenes[NUM_CUTSCENES] = {
         },
     },
     {
-        0x06, 0x06,
+        0x06,
+        0x06,
         { 0x25, 0x24, 0x05, 0x1D, 0x23, 0x22 },
         {
             { 0x0048, 0x00, 0x03, 0x0080, 0x007D, 0x0EB0 },
@@ -819,7 +833,8 @@ static const Cutscene sCutscenes[NUM_CUTSCENES] = {
         },
     },
     {
-        0x04, 0x04,
+        0x04,
+        0x04,
         { 0x26, 0x27, 0x28, 0x29, 0xFF, 0xFF },
         {
             { 0x0049, 0x00, 0x02, 0x0080, 0x0060, 0x0F5F },
@@ -841,7 +856,8 @@ static const Cutscene sCutscenes[NUM_CUTSCENES] = {
         },
     },
     {
-        0x03, 0x03,
+        0x03,
+        0x03,
         { 0x05, 0x1D, 0x1E, 0xFF, 0xFF, 0xFF },
         {
             { 0x0005, 0x00, 0x06, 0x0080, 0x0060, 0x10CC },
@@ -863,7 +879,8 @@ static const Cutscene sCutscenes[NUM_CUTSCENES] = {
         },
     },
     {
-        0x02, 0x02,
+        0x02,
+        0x02,
         { 0x05, 0x06, 0xFF, 0xFF, 0xFF, 0xFF },
         {
             { 0x0005, 0x00, 0x07, 0x0080, 0x0060, 0x11DA },
@@ -886,4 +903,4 @@ static const Cutscene sCutscenes[NUM_CUTSCENES] = {
     },
 };
 
-#endif //POKEHEARTGOLD_CREDITS_DATA_H
+#endif // POKEHEARTGOLD_CREDITS_DATA_H

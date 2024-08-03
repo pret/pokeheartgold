@@ -5,4 +5,4 @@
 
 void FieldSystem_GetFacingObject(FieldSystem *fieldSystem, LocalMapObject **ret_p);
 
-#endif //POKEHEARTGOLD_UNK_0203DB6C_H
+#endif // POKEHEARTGOLD_UNK_0203DB6C_H

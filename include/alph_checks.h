@@ -7,4 +7,4 @@ BOOL CheckUseEscapeRopeInAlphChamber(FieldSystem *fieldSystem);
 BOOL CheckUseFlashInAlphChamber(FieldSystem *fieldSystem);
 BOOL CheckUseWaterStoneInAlphChamber(FieldSystem *fieldSystem);
 
-#endif //POKEHEARTGOLD_ALPH_CHECKS_H
+#endif // POKEHEARTGOLD_ALPH_CHECKS_H

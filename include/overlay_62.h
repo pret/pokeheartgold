@@ -7,4 +7,4 @@ FS_EXTERN_OVERLAY(OVY_62);
 
 extern const OVY_MGR_TEMPLATE gApplication_MicTest;
 
-#endif //POKEHEARTGOLD_OVERLAY_62_H
+#endif // POKEHEARTGOLD_OVERLAY_62_H

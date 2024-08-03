@@ -5,4 +5,4 @@
 
 void sub_0209730C(SaveData *, int);
 
-#endif //POKEHEARTGOLD_UNK_02097268_H
+#endif // POKEHEARTGOLD_UNK_02097268_H

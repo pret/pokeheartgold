@@ -9,4 +9,4 @@ typedef struct UnkStruct_0202E474 {
     u8 filler_24C[0x97C];
 } UnkStruct_0202E474;
 
-#endif //POKEHEARTGOLD_UNK_0202E41C_H
+#endif // POKEHEARTGOLD_UNK_0202E41C_H

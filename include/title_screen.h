@@ -1,12 +1,12 @@
 #ifndef POKEHEARTGOLD_TITLE_SCREEN_H
 #define POKEHEARTGOLD_TITLE_SCREEN_H
 
-#include "heap.h"
-#include "palette.h"
 #include "bg_window.h"
 #include "camera.h"
 #include "gf_3d_vramman.h"
+#include "heap.h"
 #include "overlay_manager.h"
+#include "palette.h"
 
 FS_EXTERN_OVERLAY(intro_title);
 

@@ -16,4 +16,4 @@ BOOL RegisterHallOfFame_Init(OVY_MANAGER *man, int *state);
 BOOL RegisterHallOfFame_Main(OVY_MANAGER *man, int *state);
 BOOL RegisterHallOfFame_Exit(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_REGISTER_HALL_OF_FAME_H
+#endif // POKEHEARTGOLD_REGISTER_HALL_OF_FAME_H

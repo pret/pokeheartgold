@@ -50,4 +50,4 @@ void GF_SndHandleSetPlayerVolume(u32 a0, u32 a1);
 void sub_02004AD8(int a0);
 void sub_02005BEC(BOOL);
 
-#endif //POKEHEARTGOLD_SOUND_02004A44_H
+#endif // POKEHEARTGOLD_SOUND_02004A44_H

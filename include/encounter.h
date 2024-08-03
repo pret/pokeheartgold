@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_ENCOUNTER_H
 
 #include "battle/battle_setup.h"
+
 #include "field_player_avatar.h"
 #include "task.h"
 
@@ -35,4 +36,4 @@ void CallTask_02050960(TaskManager *taskManager, s32 target, s32 maxLevel, u32 f
 void sub_02051598(FieldSystem *fieldSystem, void *param1, s32 battleType);
 void sub_020515FC(FieldSystem *fieldSystem, Party *party, s32 battleType);
 
-#endif //POKEHEARTGOLD_ENCOUNTER_H
+#endif // POKEHEARTGOLD_ENCOUNTER_H

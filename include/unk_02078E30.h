@@ -24,8 +24,8 @@ typedef struct PartyMenuArgs {
     u8 unk2A[0x6];
     u8 unk_30[3];
     u8 filler_33[3];
-    u8 unk_36_0:4;
-    u8 unk_36_4:4;
+    u8 unk_36_0 : 4;
+    u8 unk_36_4 : 4;
     u8 unk_37;
     u8 filler_38[0xC];
 } PartyMenuArgs;
@@ -38,4 +38,4 @@ u32 sub_0207CAA0(void);
 u32 sub_0207CAA4(void);
 u32 sub_0207CAA8(void);
 
-#endif //POKEHEARTGOLD_UNK_02078E30_H
+#endif // POKEHEARTGOLD_UNK_02078E30_H

@@ -17,4 +17,4 @@ BOOL CanItemModFriendship(Pokemon *mon, ItemData *itemData);
 BOOL DoItemFriendshipMod(Pokemon *mon, s32 friendship, s32 mod, u16 location, HeapID heapID);
 void HealParty(Party *party);
 
-#endif //POKEHEARTGOLD_USE_ITEM_ON_MON_H
+#endif // POKEHEARTGOLD_USE_ITEM_ON_MON_H

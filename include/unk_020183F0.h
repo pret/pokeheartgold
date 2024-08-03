@@ -1,9 +1,9 @@
 #ifndef POKEHEARTGOLD_UNK_020183F0_H
 #define POKEHEARTGOLD_UNK_020183F0_H
 
+#include "bg_window.h"
 #include "heap.h"
 #include "list_menu_items.h"
-#include "bg_window.h"
 
 typedef struct Ov122_021E9282 {
     u16 unk0;
@@ -31,4 +31,4 @@ int sub_020186A4(void *);
 u8 sub_02018674(void *);
 void sub_02018680(void *);
 
-#endif //POKEHEARTGOLD_UNK_020183F0_H
+#endif // POKEHEARTGOLD_UNK_020183F0_H

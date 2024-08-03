@@ -1,9 +1,10 @@
 #ifndef POKEHEARTGOLD_EASY_CHAT_H
 #define POKEHEARTGOLD_EASY_CHAT_H
 
-#include "pm_string.h"
-#include "msgdata.h"
 #include "constants/easy_chat.h"
+
+#include "msgdata.h"
+#include "pm_string.h"
 
 typedef u16 ecword_t;
 
@@ -46,4 +47,4 @@ u16 EasyChat_GetMsgBankForGroup(s32 category);
 s32 GetDuplicateWordNum(ecword_t word);
 ecword_t RemapDuplicateWord(ecword_t word, s32 target);
 
-#endif //POKEHEARTGOLD_EASY_CHAT_H
+#endif // POKEHEARTGOLD_EASY_CHAT_H

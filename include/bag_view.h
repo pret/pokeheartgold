@@ -1,28 +1,28 @@
 #ifndef POKEHEARTGOLD_BAG_VIEW_H
 #define POKEHEARTGOLD_BAG_VIEW_H
 
-#include "item.h"
-#include "save.h"
 #include "bag_cursor.h"
+#include "item.h"
 #include "player_data.h"
+#include "save.h"
 
 // Enum for argument "code" to GetItemUseErrorMessage
 enum ItemUseError {
-    ITEMUSEERROR_OKAY       = 0, // no error
+    ITEMUSEERROR_OKAY = 0, // no error
     ITEMUSEERROR_NODISMOUNT = 1, // can't get off bike
     ITEMUSEERROR_NOFOLLOWER = 2, // have a companion
-    ITEMUSEERROR_NOTNOW     = 3, // you're a member of team rocket
+    ITEMUSEERROR_NOTNOW = 3, // you're a member of team rocket
 
-    ITEMUSEERROR_OAKSWORDS  = -1u,
+    ITEMUSEERROR_OAKSWORDS = -1u,
 };
 
 /*
  * Item slot access for bag view
  */
 typedef struct BagViewPocket {
-    ItemSlot *slots;                  // Points into Bag
+    ItemSlot *slots; // Points into Bag
     u8 padding[4];
-    u8 pocketId;                       // POCKET_XXX constant
+    u8 pocketId; // POCKET_XXX constant
     u8 padding2[3];
 } BagViewPocket;
 
@@ -30,19 +30,19 @@ typedef struct BagViewPocket {
  * Data relevant to drawing the bag on screen
  */
 typedef struct BagView {
-    SaveData *saveData;                // Persistent game state
-    BagViewPocket pockets[8];        // Pocket information
+    SaveData *saveData; // Persistent game state
+    BagViewPocket pockets[8]; // Pocket information
     u8 unk64;
     u8 unk65;
     u16 unk66;
     u16 unk68;
     u8 padding[2];
-    BagCursor *cursor;                // State of last selection
+    BagCursor *cursor; // State of last selection
     void *unk70;
     u8 unk74;
     u8 unk75;
-    u16 unk76_0:1;
-    u16 unk76_1:15;
+    u16 unk76_0 : 1;
+    u16 unk76_1 : 15;
     u32 *unk78;
 } BagView; // size: 0x7C
 
@@ -126,4 +126,4 @@ BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, String *dest, u16 
  */
 void GetItemUseErrorMessage(PlayerProfile *playerProfile, String *dest, u16 itemId, enum ItemUseError code, HeapID heapId);
 
-#endif //POKEHEARTGOLD_BAG_VIEW_H
+#endif // POKEHEARTGOLD_BAG_VIEW_H

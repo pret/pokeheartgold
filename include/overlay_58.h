@@ -18,4 +18,4 @@ BOOL ApricornBox_Init(OVY_MANAGER *man, int *state);
 BOOL ApricornBox_Main(OVY_MANAGER *man, int *state);
 BOOL ApricornBox_Exit(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_OVY_58_H
+#endif // POKEHEARTGOLD_OVY_58_H

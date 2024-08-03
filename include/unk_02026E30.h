@@ -6,4 +6,4 @@ void Thunk_G3X_Reset(void);
 void RequestSwap3DBuffers(GXSortMode sortMode, GXBufferMode bufferMode);
 void Handle3DBufferSwapRequest(void);
 
-#endif //POKEHEARTGOLD_UNK_02026E30_H
+#endif // POKEHEARTGOLD_UNK_02026E30_H

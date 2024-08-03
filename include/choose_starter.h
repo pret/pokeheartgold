@@ -5,4 +5,4 @@
 
 void LaunchStarterChoiceScene(FieldSystem *fieldSystem);
 
-#endif //POKEHEARTGOLD_CHOOSE_STARTER_H
+#endif // POKEHEARTGOLD_CHOOSE_STARTER_H

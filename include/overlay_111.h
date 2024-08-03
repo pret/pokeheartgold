@@ -17,4 +17,4 @@ BOOL BugContestSwapMon_Init(OVY_MANAGER *man, int *state);
 BOOL BugContestSwapMon_Main(OVY_MANAGER *man, int *state);
 BOOL BugContestSwapMon_Exit(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_OVY_111_H
+#endif // POKEHEARTGOLD_OVY_111_H

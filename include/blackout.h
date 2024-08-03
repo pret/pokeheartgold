@@ -1,8 +1,8 @@
 #ifndef POKEHEARTGOLD_BLACKOUT_H
 #define POKEHEARTGOLD_BLACKOUT_H
 
-#include "global.h"
 #include "field_system.h"
+#include "global.h"
 #include "message_format.h"
 #include "msgdata.h"
 #include "task.h"
@@ -19,4 +19,4 @@ typedef struct BlackoutScreenEnvironment {
 BOOL Task_Blackout(TaskManager *taskManager);
 void CallTask_Blackout(TaskManager *taskManager);
 
-#endif //POKEHEARTGOLD_BLACKOUT_H
+#endif // POKEHEARTGOLD_BLACKOUT_H

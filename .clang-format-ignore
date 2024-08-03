@@ -1,0 +1,3 @@
+src/battle/battle_controller_player.c
+src/options_app.c
+src/voltorb_flip/voltorb_flip.c

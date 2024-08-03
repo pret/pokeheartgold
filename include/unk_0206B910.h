@@ -5,4 +5,4 @@
 
 void sub_0206B910(TaskManager *taskManager, SaveData *saveData);
 
-#endif //POKEHEARTGOLD_UNK_0206B910_H
+#endif // POKEHEARTGOLD_UNK_0206B910_H

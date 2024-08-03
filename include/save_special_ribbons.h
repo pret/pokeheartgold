@@ -10,7 +10,7 @@ typedef struct SaveSpecialRibbons {
 } SaveSpecialRibbons;
 
 u32 Save_SpecialRibbons_sizeof(void);
-void Save_SpecialRibbons_Init(SaveSpecialRibbons* argP);
-SaveSpecialRibbons* Save_SpecialRibbons_Get(SaveData* data);
+void Save_SpecialRibbons_Init(SaveSpecialRibbons *argP);
+SaveSpecialRibbons *Save_SpecialRibbons_Get(SaveData *data);
 
-#endif //POKEHEARTGOLD_SAVE_SPECIAL_RIBBONS_H
+#endif // POKEHEARTGOLD_SAVE_SPECIAL_RIBBONS_H

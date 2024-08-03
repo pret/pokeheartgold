@@ -1,9 +1,10 @@
 #ifndef POKEHEARTGOLD_SAVE_VARS_FLAGS_H
 #define POKEHEARTGOLD_SAVE_VARS_FLAGS_H
 
-#include "save.h"
 #include "constants/flags.h"
 #include "constants/vars.h"
+
+#include "save.h"
 
 typedef struct SaveVarsFlags {
     u16 vars[NUM_VARS];
@@ -19,4 +20,4 @@ void Save_VarsFlags_ClearFlagInArray(SaveVarsFlags *varsFlags, u16 flagId);
 u8 *Save_VarsFlags_GetFlagAddr(SaveVarsFlags *varsFlags, u16 flagId);
 u16 *Save_VarsFlags_GetVarAddr(SaveVarsFlags *varsFlags, u16 varId);
 
-#endif //POKEHEARTGOLD_SAVE_VARS_FLAGS_H
+#endif // POKEHEARTGOLD_SAVE_VARS_FLAGS_H

@@ -11,4 +11,4 @@ void UpdatePlayerLocationHistoryIfAnyRoamersActive(RoamerSaveData *roamers, u32 
 void Save_CreateRoamerByID(SaveData *saveData, u8 idx);
 u8 SpeciesToRoamerIdx(u16 species);
 
-#endif //POKEHEARTGOLD_FIELD_ROAMER_H
+#endif // POKEHEARTGOLD_FIELD_ROAMER_H

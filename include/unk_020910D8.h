@@ -15,4 +15,4 @@ typedef struct UnkStruct_02091240 {
 
 void CallTask_HatchEggInParty(TaskManager *taskman, UnkStruct_02091240 *a1);
 
-#endif //POKEHEARTGOLD_UNK_020910D8_H
+#endif // POKEHEARTGOLD_UNK_020910D8_H

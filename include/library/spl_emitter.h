@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_SPL_EMITTER_H
 
 #include <nitro.h>
+
 #include "spl_particle.h"
 #include "spl_resource.h"
 
@@ -9,25 +10,25 @@ typedef struct SPLEmitterFlag {
     union {
         u32 all;
         struct {
-            u32 terminate:1;
-            u32 stop_generate:1;
-            u32 stop_calc:1;
-            u32 stop_draw:1;
-            u32 started: 1;
-            u32 reserved0:27;
+            u32 terminate : 1;
+            u32 stop_generate : 1;
+            u32 stop_calc : 1;
+            u32 stop_draw : 1;
+            u32 started : 1;
+            u32 reserved0 : 27;
         };
     };
 } SPLEmitterFlag;
 
 typedef struct SPLEmitter {
-    struct SPLEmitter* p_next; //0
-    struct SPLEmitter* p_prev; //4
-    SPLParticleList act_ptcl_list; //8
-    SPLParticleList act_chld_list; //14
-    SPLResource* p_res; //20
-    SPLEmitterFlag flag; //24
-    VecFx32 emtr_pos; //28
-    VecFx32 emtr_vel; //34
+    struct SPLEmitter *p_next; // 0
+    struct SPLEmitter *p_prev; // 4
+    SPLParticleList act_ptcl_list; // 8
+    SPLParticleList act_chld_list; // 14
+    SPLResource *p_res; // 20
+    SPLEmitterFlag flag; // 24
+    VecFx32 emtr_pos; // 28
+    VecFx32 emtr_vel; // 34
     VecFx32 emtr_init_vel;
     u16 age;
     fx16 gen_num_dec;
@@ -39,7 +40,7 @@ typedef struct SPLEmitter {
     fx32 init_vel_mag_pos;
     fx32 init_vel_mag_axis;
     fx32 base_scl;
-    u16  ptcl_life;
+    u16 ptcl_life;
     GXRgb clr;
     fx32 simple_collision_y;
     fx16 tex_s;
@@ -47,15 +48,15 @@ typedef struct SPLEmitter {
     fx16 chld_tex_s;
     fx16 chld_tex_t;
     struct {
-        u32 gen_intvl:8;
-        u32 base_alp:8;
-        u32 calc_cycle:3;
-        u32 reserved:13;
+        u32 gen_intvl : 8;
+        u32 base_alp : 8;
+        u32 calc_cycle : 3;
+        u32 reserved : 13;
     } etc;
     VecFx16 cross_to_axis_1;
     VecFx16 cross_to_axis_2;
-    void (*callbackfunc)(struct SPLEmitter*, unsigned int uFlag);
-    void* emtr_userdata;
+    void (*callbackfunc)(struct SPLEmitter *, unsigned int uFlag);
+    void *emtr_userdata;
     union {
         u32 uw_u32;
         u16 uw_u16[2];
@@ -64,9 +65,9 @@ typedef struct SPLEmitter {
 } SPLEmitter;
 
 typedef struct SPLEmitterList {
-    SPLEmitter* p_begin;
+    SPLEmitter *p_begin;
     int node_num;
-    SPLEmitter* p_end;
+    SPLEmitter *p_end;
 } SPLEmitterList;
 
 static inline void SPL_SetEmitterPosition(SPLEmitter* p_emtr, const VecFx32* p_pos)
@@ -93,4 +94,4 @@ static inline void SPL_SetEmitterAxis(SPLEmitter* p_emtr, const VecFx16* axis)
     p_emtr->axis = *axis;
 }
 
-#endif //POKEHEARTGOLD_SPL_EMITTER_H
+#endif // POKEHEARTGOLD_SPL_EMITTER_H

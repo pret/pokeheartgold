@@ -20,4 +20,4 @@ void sub_02039F68(void *);
 void sub_02039AD8(int);
 void *sub_0203A040(UnkStruct_021D2230 *a0);
 
-#endif //POKEHEARTGOLD_UNK_02037C94_H
+#endif // POKEHEARTGOLD_UNK_02037C94_H

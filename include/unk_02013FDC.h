@@ -22,4 +22,4 @@ void sub_02014540(NarcId narcId, s32 fileId, HeapID heapId, void *dest, u32 pers
 void *sub_0201457C(NarcId narcId, s32 fileId, HeapID heapId, u32 personality, BOOL isAnimated, int whichFacing, int species);
 void sub_020145B4(const void *texSrc, int texDim, int x, int y, int w, int h, void *dest);
 
-#endif //POKEHEARTGOLD_UNK_02013FDC_H
+#endif // POKEHEARTGOLD_UNK_02013FDC_H

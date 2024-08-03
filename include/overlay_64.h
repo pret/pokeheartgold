@@ -7,4 +7,4 @@ BOOL HallOfFameShowcase_Init(OVY_MANAGER *man, int *state);
 BOOL HallOfFameShowcase_Main(OVY_MANAGER *man, int *state);
 BOOL HallOfFameShowcase_Exit(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_OVY_64_H
+#endif // POKEHEARTGOLD_OVY_64_H

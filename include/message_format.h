@@ -1,12 +1,12 @@
 #ifndef GUARD_MESSAGE_FORMAT_H
 #define GUARD_MESSAGE_FORMAT_H
 
-#include "pm_string.h"
 #include "player_data.h"
-#include "save_misc_data.h"
-#include "pokemon_types_def.h"
-#include "trainer_data.h"
+#include "pm_string.h"
 #include "pokemon_storage_system.h"
+#include "pokemon_types_def.h"
+#include "save_misc_data.h"
+#include "trainer_data.h"
 
 typedef struct MessageFormatAttrs {
     u8 data[4];
@@ -94,4 +94,4 @@ void MessageFormat_UpperFirstChar(MessageFormat *messageFormat, u32 fieldno);
 void BufferDeptStoreFloorNo(MessageFormat *messageFormat, u32 fieldno, u32 floor);
 void MessageFormat_ResetBuffers(MessageFormat *messageFormat);
 
-#endif //GUARD_MESSAGE_FORMAT_H
+#endif // GUARD_MESSAGE_FORMAT_H

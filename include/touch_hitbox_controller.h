@@ -24,4 +24,4 @@ TouchHitboxController *TouchHitboxController_Create(const TouchscreenHitbox *hit
 BOOL TouchHitboxController_IsTriggered(TouchHitboxController *controller);
 void TouchHitboxController_Destroy(TouchHitboxController *controller);
 
-#endif //POKEHEARTGOLD_TOUCH_HITBOX_CONTROLLER_H
+#endif // POKEHEARTGOLD_TOUCH_HITBOX_CONTROLLER_H

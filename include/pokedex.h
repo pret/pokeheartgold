@@ -1,21 +1,22 @@
 #ifndef POKEHEARTGOLD_POKEDEX_H
 #define POKEHEARTGOLD_POKEDEX_H
 
-#include "save.h"
+#include "constants/pokemon.h"
+#include "constants/species.h"
+
 #include "heap.h"
 #include "pokemon_types_def.h"
-#include "constants/species.h"
-#include "constants/pokemon.h"
+#include "save.h"
 
-#define ROUND_UP(x,n)             (((x)+(n)-1)&~((n)-1))
-#define CEILDIV(x,n)              (((x)+(n)-1)/(n))
+#define ROUND_UP(x, n) (((x) + (n) - 1) & ~((n) - 1))
+#define CEILDIV(x, n)  (((x) + (n) - 1) / (n))
 
 // Deoxys form history is split between the
 // seen and caught flags because of space efficiency.
 // For some reason, 4 bits are reserved for each form,
 // even though 2 would suffice. This negates any
 // benefits this split would have provided.
-#define NUM_DEX_FLAG_WORDS        (CEILDIV(NATIONAL_DEX_COUNT+8,32))
+#define NUM_DEX_FLAG_WORDS (CEILDIV(NATIONAL_DEX_COUNT + 8, 32))
 
 typedef struct Pokedex {
     u32 magic;
@@ -29,7 +30,7 @@ typedef struct Pokedex {
     u8 wormadamFormOrder;
     u8 unownSeenOrder[28];
     u8 unownCaughtOrder[28];
-    u8 caughtLanguages[ROUND_UP(NATIONAL_DEX_COUNT,4)];
+    u8 caughtLanguages[ROUND_UP(NATIONAL_DEX_COUNT, 4)];
     u8 unk_334;
     u8 enabledInternational;
     u8 dexEnabled;
@@ -77,4 +78,4 @@ int Pokedex_GetSeenFormByIdx(Pokedex *pokedex, int species, int idx);
 int Pokedex_GetSeenFormNum(Pokedex *pokedex, int species);
 void UpdatePokedexWithReceivedSpecies(SaveData *saveData, Pokemon *pokemon);
 
-#endif //POKEHEARTGOLD_POKEDEX_H
+#endif // POKEHEARTGOLD_POKEDEX_H

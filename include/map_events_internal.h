@@ -64,4 +64,4 @@ typedef struct MapEvents {
     ENC_DATA wildEncounters;
 } MapEvents;
 
-#endif //POKEHEARTGOLD_MAP_EVENTS_INTERNAL_H
+#endif // POKEHEARTGOLD_MAP_EVENTS_INTERNAL_H

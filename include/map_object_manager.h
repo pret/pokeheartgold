@@ -5,4 +5,4 @@
 
 FieldSystem *MapObjectManager_GetFieldSystemPtr(MapObjectManager *mapObjectManager);
 
-#endif //POKEHEARTGOLD_MAP_OBJECT_MANAGER_H
+#endif // POKEHEARTGOLD_MAP_OBJECT_MANAGER_H

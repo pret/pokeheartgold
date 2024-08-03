@@ -2,9 +2,10 @@
 #define POKEHEARTGOLD_NPC_TRADE_H
 
 #include "constants/npc_trade.h"
+
 #include "heap.h"
-#include "trade_anim.h"
 #include "script.h"
+#include "trade_anim.h"
 
 typedef struct NPCTrade {
     int give_species;
@@ -49,4 +50,4 @@ int NPCTradeApp_GetUnusedFlag(NPCTradeAppData *work);
 void NPCTrade_ReceiveMonToSlot(FieldSystem *fieldSystem, NPCTradeAppData *work, int slot);
 void NPCTrade_CreateTradeAnim(FieldSystem *fieldSystem, NPCTradeAppData *work, int slot, TRADE_ANIM_WORK *anim_work, Pokemon *my_mon_buf, Pokemon *trade_mon_buf);
 
-#endif //POKEHEARTGOLD_NPC_TRADE_H
+#endif // POKEHEARTGOLD_NPC_TRADE_H

@@ -1,8 +1,8 @@
 #ifndef POKEHEARTGOLD_UNK_02014DA0_H
 #define POKEHEARTGOLD_UNK_02014DA0_H
 
-#include "filesystem_files_def.h"
 #include "camera.h"
+#include "filesystem_files_def.h"
 #include "spl.h"
 
 typedef u32 (*texAllocFun)(u32 szByte, BOOL is4x4comp);
@@ -26,4 +26,4 @@ int sub_02015420(void);
 void sub_02015538(SPLEmitter *emitter, VecFx16 *axis);
 void sub_02015528(SPLEmitter *emitter, int a1);
 
-#endif //POKEHEARTGOLD_UNK_02014DA0_H
+#endif // POKEHEARTGOLD_UNK_02014DA0_H

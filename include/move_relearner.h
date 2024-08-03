@@ -4,8 +4,8 @@
 #include "player_data.h"
 #include "pokemon_types_def.h"
 
-#define MOVE_RELEARNER_TUTOR    0
-#define MOVE_RELEARNER_RELEARN  1
+#define MOVE_RELEARNER_TUTOR   0
+#define MOVE_RELEARNER_RELEARN 1
 
 typedef struct MoveRelearnerArgs {
     Pokemon *mon;
@@ -23,4 +23,4 @@ void MoveRelearner_Delete(MoveRelearnerArgs *moveRelearner);
 u16 *MoveRelearner_GetEligibleLevelUpMoves(Pokemon *mon, HeapID heapId);
 BOOL MoveRelearner_IsValidMove(const u16 *ptr);
 
-#endif //POKEHEARTGOLD_MOVE_RELEARNER_H
+#endif // POKEHEARTGOLD_MOVE_RELEARNER_H

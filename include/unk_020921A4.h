@@ -5,4 +5,4 @@
 
 extern const OVY_MGR_TEMPLATE gApplication_MainMenu;
 
-#endif //POKEHEARTGOLD_UNK_020921A4_H
+#endif // POKEHEARTGOLD_UNK_020921A4_H

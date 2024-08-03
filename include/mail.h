@@ -1,13 +1,13 @@
 #ifndef POKEHEARTGOLD_MAIL_H
 #define POKEHEARTGOLD_MAIL_H
 
-#include "mail_message.h"
 #include "heap.h"
-#include "save.h"
-#include "pokemon_types_def.h"
+#include "mail_message.h"
 #include "pm_string.h"
+#include "pokemon_types_def.h"
+#include "save.h"
 
-#define MAILBOX_MSG_COUNT       (20)
+#define MAILBOX_MSG_COUNT (20)
 
 typedef struct Mailbox {
     Mail msgs[MAILBOX_MSG_COUNT];
@@ -43,4 +43,4 @@ int MailArray_GetFirstEmptySlotIdx(Mail *msgs, int n);
 u32 MailArray_CountMessages(Mail *msgs, int n);
 Mail *CreateKenyaMail(Pokemon *mon, u8 mailType, u8 gender, String *name, u8 otId);
 
-#endif //POKEHEARTGOLD_MAIL_H
+#endif // POKEHEARTGOLD_MAIL_H

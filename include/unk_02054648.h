@@ -10,4 +10,4 @@ u32 sub_020549F4(FieldSystem *fieldSystem, VecFx32 *playerPos, u32 x, u32 y, u32
 BOOL sub_02060BFC(LocalMapObject *playerObj, int xInFront, int playerElev, int yInFront);
 void sub_020659CC(LocalMapObject *object);
 
-#endif //POKEHEARTGOLD_UNK_02054648_H
+#endif // POKEHEARTGOLD_UNK_02054648_H

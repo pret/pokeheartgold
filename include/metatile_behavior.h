@@ -1,7 +1,6 @@
 #ifndef POKEHEARTGOLD_UNK_METATILE_BEHAVIOR_H
 #define POKEHEARTGOLD_UNK_METATILE_BEHAVIOR_H
 
-
 BOOL MetatileBehavior_IsEncounterGrass(u8 tile);
 BOOL sub_0205B6F4(u8 tile);
 BOOL sub_0205B700(u8 tile);
@@ -77,5 +76,4 @@ BOOL sub_0205BAEC(u8 tile);
 BOOL MetatileBehavior_IsHeadbutt(u8 tile);
 BOOL sub_0205BB04(u8 tile);
 
-
-#endif //POKEHEARTGOLD_UNK_0205B6E8_H
+#endif // POKEHEARTGOLD_UNK_0205B6E8_H

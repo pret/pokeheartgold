@@ -903,21 +903,21 @@
 #define SPRITE_FOLLOWER_MON_STATIC_FERALIGATR     1049
 #define SPRITE_CAMERA_FOCUS                       8192
 
-#define SPRITE_VAR_0                              100
-#define SPRITE_VAR_1                              101
-#define SPRITE_VAR_2                              102
-#define SPRITE_VAR_3                              103
-#define SPRITE_VAR_4                              104
-#define SPRITE_VAR_5                              105
-#define SPRITE_VAR_6                              106
-#define SPRITE_VAR_7                              107
-#define SPRITE_VAR_8                              108
-#define SPRITE_VAR_9                              109
-#define SPRITE_VAR_10                             110
-#define SPRITE_VAR_11                             111
-#define SPRITE_VAR_12                             112
-#define SPRITE_VAR_13                             113
-#define SPRITE_VAR_14                             114
-#define SPRITE_VAR_15                             115
+#define SPRITE_VAR_0  100
+#define SPRITE_VAR_1  101
+#define SPRITE_VAR_2  102
+#define SPRITE_VAR_3  103
+#define SPRITE_VAR_4  104
+#define SPRITE_VAR_5  105
+#define SPRITE_VAR_6  106
+#define SPRITE_VAR_7  107
+#define SPRITE_VAR_8  108
+#define SPRITE_VAR_9  109
+#define SPRITE_VAR_10 110
+#define SPRITE_VAR_11 111
+#define SPRITE_VAR_12 112
+#define SPRITE_VAR_13 113
+#define SPRITE_VAR_14 114
+#define SPRITE_VAR_15 115
 
-#endif //POKEHEARTGOLD_CONSTANTS_SPRITES_H
+#endif // POKEHEARTGOLD_CONSTANTS_SPRITES_H

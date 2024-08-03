@@ -8,7 +8,7 @@ typedef struct UnkStruct_02031CEC {
     u8 unk2;
     u8 unk3;
     u32 unk4;
-} UnkStruct_02031CEC; //size: 0x8
+} UnkStruct_02031CEC; // size: 0x8
 
 typedef struct SaveApricornBox SaveApricornBox;
 
@@ -24,4 +24,4 @@ int ApricornBox_GetKurtQuantity(SaveApricornBox *apricornBox);
 void ApricornBox_SetKurtApricorn(SaveApricornBox *apricornBox, u32 a0, u32 a1);
 int ApricornBox_GetKurtBall(SaveApricornBox *apricornBox);
 
-#endif //POKEHEARTGOLD_UNK_02031B0C_H
+#endif // POKEHEARTGOLD_UNK_02031B0C_H

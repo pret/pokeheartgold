@@ -16,4 +16,4 @@ void MessagePrinter_Delete(MessagePrinter *messagePrinter);
 void sub_0200CDAC(MessagePrinter *messagePrinter, u8 a1, Window *window, u32 x, u32 y);
 void PrintUIntOnWindow(MessagePrinter *messagePrinter, u32 num, u32 ndigits, PrintingMode mode, Window *window, u32 x, u32 y);
 
-#endif //POKEHEARTGOLD_MESSAGE_PRINTER_H
+#endif // POKEHEARTGOLD_MESSAGE_PRINTER_H

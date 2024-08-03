@@ -21,7 +21,7 @@ void sub_0204AA2C(UnkStruct_Fsys_A0 *a0);
 void sub_0204AA58(UnkStruct_Fsys_A0 *a0, TaskManager *taskManager, void *a2);
 BOOL sub_0204AA78(UnkStruct_Fsys_A0 *a0, void **a1, SaveData *saveData);
 u32 sub_0204AB10(UnkStruct_Fsys_A0 *a0, SaveData *saveData);
-void sub_0204ABC8(UnkStruct_Fsys_A0* a0, SaveData *saveData);
+void sub_0204ABC8(UnkStruct_Fsys_A0 *a0, SaveData *saveData);
 u8 sub_0204AC78(UnkStruct_Fsys_A0 *a0);
 BOOL sub_0204AC7C(UnkStruct_Fsys_A0 *a0);
 void sub_0204AD04(UnkStruct_Fsys_A0 *a0, SaveData *saveData);
@@ -40,4 +40,4 @@ u16 sub_0204B258(UnkStruct_Fsys_A0 *a0, SaveData *saveData);
 u8 sub_0204B4D4(u32 a0);
 u16 sub_0204B510(UnkStruct_Fsys_A0 *a0);
 
-#endif //POKEHEARTGOLD_UNK_0204A3F4_H
+#endif // POKEHEARTGOLD_UNK_0204A3F4_H

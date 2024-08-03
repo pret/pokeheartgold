@@ -18,4 +18,4 @@ BOOL SafariAreaCustomizer_Init(OVY_MANAGER *man, int *state);
 BOOL SafariAreaCustomizer_Main(OVY_MANAGER *man, int *state);
 BOOL SafariAreaCustomizer_Exit(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_OVY_108_H
+#endif // POKEHEARTGOLD_OVY_108_H

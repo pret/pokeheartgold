@@ -33,4 +33,4 @@ BOOL sub_0203D830(TaskManager *taskManager);
 BOOL sub_0203D9B4(TaskManager *taskManager);
 BOOL Task_UseFlyInField(TaskManager *taskManager);
 
-#endif //POKEHEARTGOLD_UNK_0203BC10_H
+#endif // POKEHEARTGOLD_UNK_0203BC10_H

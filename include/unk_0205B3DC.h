@@ -9,4 +9,4 @@ int SpriteToUnionRoomAvatarIdx(int playerGender, int trclass);
 int GetUnionRoomAvatarAttrBySprite(int playerGender, int trclass, int attr);
 u16 *sub_0205B4A4(HeapID heapId);
 
-#endif //POKEHEARTGOLD_UNK_0205B3DC_H
+#endif // POKEHEARTGOLD_UNK_0205B3DC_H

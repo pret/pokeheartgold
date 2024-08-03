@@ -10,7 +10,6 @@ typedef struct UnkStruct_0204FB20 {
     u16 *result;
 } UnkStruct_0204FB20;
 
-void sub_0204FE58(u32, u32, UnkStruct_0204FB20*, UnkStruct_0204FB20*);
+void sub_0204FE58(u32, u32, UnkStruct_0204FB20 *, UnkStruct_0204FB20 *);
 
-#endif //POKEHEARTGOLD_SCRCMD_BATTLE_CASTLE_H
-
+#endif // POKEHEARTGOLD_SCRCMD_BATTLE_CASTLE_H

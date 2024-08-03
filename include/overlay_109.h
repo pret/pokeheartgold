@@ -19,4 +19,4 @@ BOOL PhotoAlbum_Init(OVY_MANAGER *man, int *state);
 BOOL PhotoAlbum_Main(OVY_MANAGER *man, int *state);
 BOOL PhotoAlbum_Exit(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_OVY_109_H
+#endif // POKEHEARTGOLD_OVY_109_H

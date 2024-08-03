@@ -16,4 +16,4 @@ typedef struct HeadbuttEncounterData {
     s16 treeCoords[][2];
 } HeadbuttEncounterData;
 
-#endif //POKEHEARTGOLD_FIELD_HEADBUTT_H
+#endif // POKEHEARTGOLD_FIELD_HEADBUTT_H

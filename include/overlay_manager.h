@@ -4,7 +4,7 @@
 #include "heap.h"
 #include "poke_overlay.h"
 
-#define FS_OVERLAY_ID_NONE       (-1)
+#define FS_OVERLAY_ID_NONE (-1)
 
 typedef struct OVY_MANAGER OVY_MANAGER;
 
@@ -35,4 +35,4 @@ void OverlayManager_FreeData(OVY_MANAGER *man);
 void *OverlayManager_GetArgs(OVY_MANAGER *man);
 BOOL OverlayManager_Run(OVY_MANAGER *man);
 
-#endif //POKEHEARTGOLD_OVERLAY_MANAGER_H
+#endif // POKEHEARTGOLD_OVERLAY_MANAGER_H

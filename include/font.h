@@ -3,7 +3,7 @@
 
 #include "font_types_def.h"
 
-#define FONT_NUM    6
+#define FONT_NUM 6
 
 void FontWork_Init(void);
 void FontID_Alloc(FontID fontId, HeapID heapId);
@@ -23,4 +23,4 @@ u32 FontID_String_GetWidthMultiline(FontID fontId, String *string, u32 letterSpa
 u32 FontID_String_GetCenterAlignmentX(FontID fontId, String *string, u32 letterSpacing, u32 windowWidth);
 u32 FontID_GetGlyphWidth(FontID fontId, u16 glyph);
 
-#endif //POKEHEARTGOLD_FONT_H
+#endif // POKEHEARTGOLD_FONT_H

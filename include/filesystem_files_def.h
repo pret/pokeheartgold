@@ -276,7 +276,7 @@ typedef enum NarcId
 
 #ifdef _IN_FILESYSTEM_C
 #undef _IN_FILESYSTEM_C // inverse guard
-char * sNarcFileList[] = {
+char *sNarcFileList[] = {
     "a/0/0/0",
     "a/0/0/1",
     "a/0/0/2",
@@ -546,6 +546,6 @@ char * sNarcFileList[] = {
     "a/2/6/4",
 };
 #else
-extern char * sNarcFileList[];
+extern char *sNarcFileList[];
 #endif //_IN_FILESYSTEM_C
-#endif //POKEHEARTGOLD_FILESYSTEM_FILES_DEF_H
+#endif // POKEHEARTGOLD_FILESYSTEM_FILES_DEF_H

@@ -4,13 +4,13 @@
 #include "unk_0200A090.h"
 
 typedef struct SpriteResourcesHeader {
-    const NNSG2dImageProxy* imageProxy;
-    const NNSG2dCharacterData* charData;
-    const NNSG2dImagePaletteProxy* plttProxy;
-    NNSG2dCellDataBank* cellData;
-    const NNSG2dCellAnimBankData* cellAnim;
-    const NNSG2dMultiCellDataBank* multiCellData;
-    const NNSG2dMultiCellAnimBankData* multiCellAnim;
+    const NNSG2dImageProxy *imageProxy;
+    const NNSG2dCharacterData *charData;
+    const NNSG2dImagePaletteProxy *plttProxy;
+    NNSG2dCellDataBank *cellData;
+    const NNSG2dCellAnimBankData *cellAnim;
+    const NNSG2dMultiCellDataBank *multiCellData;
+    const NNSG2dMultiCellAnimBankData *multiCellAnim;
     int flag;
     u8 priority;
 } SpriteResourcesHeader;
@@ -53,4 +53,4 @@ void G2dRenderer_SetSubSurfaceCoords(GF_G2dRenderer *renderer, fx32 x, fx32 y);
 void sub_02009FE8(NNS_G2D_VRAM_TYPE vram, GXOBJVRamModeChar mode);
 void sub_0200A080(u32 a0);
 
-#endif //POKEHEARTGOLD_UNK_02009D48_H
+#endif // POKEHEARTGOLD_UNK_02009D48_H

@@ -18,4 +18,4 @@ BOOL VoltorbFlip_Init(OVY_MANAGER *man, int *state);
 BOOL VoltorbFlip_Exit(OVY_MANAGER *man, int *state);
 BOOL VoltorbFlip_Main(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_VOLTORB_FLIP_H
+#endif // POKEHEARTGOLD_VOLTORB_FLIP_H

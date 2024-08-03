@@ -5,4 +5,4 @@
 
 void UpdatePokedexWithReceivedSpecies(SaveData *saveData, Pokemon *mon);
 
-#endif //POKEHEARTGOLD_UPDATE_DEX_RECEIVED_H
+#endif // POKEHEARTGOLD_UPDATE_DEX_RECEIVED_H

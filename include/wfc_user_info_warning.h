@@ -5,4 +5,4 @@
 
 void ShowWFCUserInfoWarning(HeapID heapId, int a1);
 
-#endif //POKEHEARTGOLD_WFC_USER_INFO_WARNING_H
+#endif // POKEHEARTGOLD_WFC_USER_INFO_WARNING_H

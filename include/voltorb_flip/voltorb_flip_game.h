@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_VOLTORB_FLIP_GAME_H
 #define POKEHEARTGOLD_VOLTORB_FLIP_GAME_H
 
+#include "heap.h"
+
 typedef enum CardType {
     CARD_TYPE_NONE,
     CARD_TYPE_ONE,
@@ -75,12 +77,12 @@ typedef struct GameState {
     RoundOutcome roundOutcome;
     u16 payout;
     u16 maxPayout;
-    u16 multiplierCards;     // number of x2 and x3 cards on board
+    u16 multiplierCards; // number of x2 and x3 cards on board
     u16 multipliersFlipped;
     u8 cardsFlipped;
     u8 boardId;
     Level level;
-    u8 historyHead;          // index of current game in `boardHistory`
+    u8 historyHead; // index of current game in `boardHistory`
     u8 unk150[0x4];
     RoundSummary boardHistory[5];
 } GameState;
@@ -97,10 +99,10 @@ typedef struct BoardConfig {
     u8 threes;
     // The maximum number of 'free' multipliers that can appear in any one row
     // or column.
-    u8 maxFreeMultipliersPerRowCol:4;
+    u8 maxFreeMultipliersPerRowCol : 4;
     // The maximum number of 'free' multipliers that can appear on the whole
     // board.
-    u8 maxFreeMultipliers:4;
+    u8 maxFreeMultipliers : 4;
 } BoardConfig;
 
 GameState *CreateGameState(HeapID);
@@ -125,4 +127,4 @@ u8 MultiplierCardsFlipped(GameState *);
 u8 GameLevel(GameState *);
 int LevelsGained(GameState *);
 
-#endif //POKEHEARTGOLD_VOLTORB_FLIP_GAME_H
+#endif // POKEHEARTGOLD_VOLTORB_FLIP_GAME_H

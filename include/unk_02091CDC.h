@@ -5,4 +5,4 @@
 
 extern const OVY_MGR_TEMPLATE gApplication_DeleteSave;
 
-#endif //POKEHEARTGOLD_UNK_02091CDC_H
+#endif // POKEHEARTGOLD_UNK_02091CDC_H

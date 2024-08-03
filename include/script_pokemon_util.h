@@ -1,8 +1,8 @@
 #ifndef POKEHEARTGOLD_SCRIPT_POKEMON_UTIL_H
 #define POKEHEARTGOLD_SCRIPT_POKEMON_UTIL_H
 
-#include "pokemon.h"
 #include "map_section.h"
+#include "pokemon.h"
 
 BOOL GiveMon(HeapID heapId, SaveData *saveData, int species, int level, int form, u8 ability, u16 heldItem, int ball, int encounterType);
 BOOL GiveEgg(HeapID heapId, SaveData *saveData, int species, u8 metLocation, MapsecType mapsecType, int mapLoc);
@@ -16,4 +16,4 @@ BOOL HasEnoughAlivePokemonForDoubleBattle(Party *party);
 BOOL ApplyPoisonStep(Party *party, u16 location);
 BOOL SurvivePoisoning(Pokemon *mon);
 
-#endif //POKEHEARTGOLD_SCRIPT_POKEMON_UTIL_H
+#endif // POKEHEARTGOLD_SCRIPT_POKEMON_UTIL_H

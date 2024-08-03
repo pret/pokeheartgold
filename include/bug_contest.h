@@ -19,4 +19,4 @@ void BugContest_InitEncounters(BugContest *bugContest);
 u16 BugContest_JudgePlayerMon(BugContest *bugContest, Pokemon *pokemon);
 ENC_SLOT *BugContest_GetEncounterSlot(BugContest *bugContest, HeapID heapId);
 
-#endif //POKEHEARTGOLD_BUG_CONTEST_H
+#endif // POKEHEARTGOLD_BUG_CONTEST_H

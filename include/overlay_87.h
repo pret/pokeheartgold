@@ -16,4 +16,4 @@ BOOL ScratchOffCards_Init(OVY_MANAGER *man, int *state);
 BOOL ScratchOffCards_Main(OVY_MANAGER *man, int *state);
 BOOL ScratchOffCards_Exit(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_OVY_87_H
+#endif // POKEHEARTGOLD_OVY_87_H

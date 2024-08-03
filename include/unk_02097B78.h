@@ -19,4 +19,4 @@ BOOL LegendaryCinematic_Init(OVY_MANAGER *man, int *state);
 BOOL LegendaryCinematic_Main(OVY_MANAGER *man, int *state);
 BOOL LegendaryCinematic_Exit(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_UNK_02097B78_H
+#endif // POKEHEARTGOLD_UNK_02097B78_H
