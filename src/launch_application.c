@@ -1397,7 +1397,7 @@ LegendaryCinematicArgs *LegendaryCinematic_LaunchApp(FieldSystem *fieldSystem, U
     return args;
 }
 
-void sub_0203FD08(FieldSystem *fieldSystem, UnkStruct_02097D56 *args) {
-    static const OVY_MGR_TEMPLATE _020FA494 = { ov121_021E5900, ov121_021E590C, ov121_021E59BC, FS_OVERLAY_ID(OVY_121) };
-    FieldSystem_LaunchApplication(fieldSystem, &_020FA494, args);
+void LaunchApp_ViewFriendRecords(FieldSystem *fieldSystem, ViewFriendRecordsArgs *args) {
+    static const OVY_MGR_TEMPLATE sViewFriendRecordsAppTemplate = { ViewFriendRecordsApp_Init, ViewFriendRecordsApp_Main, ViewFriendRecordsApp_Exit, FS_OVERLAY_ID(OVY_121) };
+    FieldSystem_LaunchApplication(fieldSystem, &sViewFriendRecordsAppTemplate, args);
 }

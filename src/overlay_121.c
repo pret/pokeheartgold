@@ -24,35 +24,44 @@
 #include "yes_no_prompt.h"
 #include "player_data.h"
 #include "msgdata/msg/msg_0421.h"
+#include "constants/ranking.h"
 
 #define min(a, b) ((a) <= (b) ? (a) : (b))
 
-typedef enum Overlay121WindowId {
-    OV121_WINDOW_0,
-    OV121_WINDOW_1,
-    OV121_WINDOW_2,
-    OV121_WINDOW_3,
-    OV121_WINDOW_4,
-    OV121_WINDOW_5,
-} Overlay121WindowId;
+typedef enum ViewFriendRecordsWindowId {
+    OV121_WINDOW_RANKING,
+    OV121_WINDOW_RECORDS,
+    OV121_WINDOW_HEADER,
+    OV121_WINDOW_RETURN,
+    OV121_WINDOW_DELETE_RECORD,
+    OV121_WINDOW_SELECT_RECORD_TO_DELETE,
+} ViewFriendRecordsWindowId;
 
-typedef enum Overlay121SpriteId {
-    OV121_SPRITE_0,
-    OV121_SPRITE_1,
-    OV121_SPRITE_2,
-    OV121_SPRITE_3,
-    OV121_SPRITE_4,
-} Overlay121SpriteId;
+typedef enum ViewFriendRecordsSpriteId {
+    OV121_SPRITE_CURSOR,
+    OV121_SPRITE_RIGHT_ARROW,
+    OV121_SPRITE_LEFT_ARROW,
+    OV121_SPRITE_RETURN,
+    OV121_SPRITE_DELETE_RECORD,
+} ViewFriendRecordsSpriteId;
 
-typedef enum Overlay121State {
-    OV121_STATE_INIT,
-    OV121_STATE_1,
+typedef enum ViewFriendRecordsMainState {
+    OV121_MAIN_STATE_FADE_IN,
+    OV121_MAIN_STATE_WAIT_FADE_IN,
+    OV121_MAIN_STATE_MAIN,
+    OV121_MAIN_STATE_FADE_OUT,
+    OV121_MAIN_STATE_WAIT_FADE_OUT,
+} ViewFriendRecordsMainState;
+
+typedef enum ViewFriendRecordsState {
+    OV121_STATE_REDRAW,
+    OV121_STATE_HANDLE_INPUT,
     OV121_STATE_YESNO,
-    OV121_STATE_3,
-    OV121_STATE_4,
-} Overlay121State;
+    OV121_STATE_DELETE_FAILED_CANT_DELETE_OWN,
+    OV121_STATE_DO_DELETE_RECORD,
+} ViewFriendRecordsState;
 
-typedef enum Overlay121Input {
+typedef enum ViewFriendRecordsInput {
     OV121_INPUT_NONE,
     OV121_INPUT_CURSOR_UP,
     OV121_INPUT_CURSOR_DOWN,
@@ -62,34 +71,34 @@ typedef enum Overlay121Input {
     OV121_INPUT_CURSOR_LEFT,
     OV121_INPUT_CURSOR_RIGHT,
     OV121_INPUT_A_BUTTON,
-} Overlay121Input;
+} ViewFriendRecordsInput;
 
-typedef struct UnkStruct_ov121_021E7014 {
-    u32 unk_0;
-    u16 unk_4;
-    u16 unk_6;
-} UnkStruct_ov121_021E7014;
+typedef struct RecordPageParam {
+    u32 max;
+    u16 numDigits;
+    u16 msgId;
+} RecordPageParam;
 
-typedef struct Overlay121Sub258 {
+typedef struct ViewFriendRecordsSub258 {
     UnkStruct_0202E9FC_sub *unk_00;
-    u16 unk_04;
-    u8 unk_06;
-} Overlay121Sub258;
+    u16 active;
+    u8 friendIdx;
+} ViewFriendRecordsSub258;
 
-typedef struct Overlay121Sub254 {
-    int unk_00;
-    Overlay121Sub258 unk_04[7];
-} Overlay121Sub254;
+typedef struct ViewFriendRecordsSub254 {
+    int count;
+    ViewFriendRecordsSub258 entries[7];
+} ViewFriendRecordsSub254;
 
-typedef struct Overlay121Appdata {
+typedef struct ViewFriendRecordsAppdata {
     BgConfig *bgConfig;
     Window windows[6];
     MsgData *msgData;
     MessageFormat *msgFormat;
-    String *unk_06C;
-    String *unk_070;
-    String *unk_074;
-    String *unk_078[7];
+    String *formatedStrBuf;
+    String *playerNameString;
+    String *rankingString;
+    String *miscStrings[7];
     YesNoPrompt *yesNoPrompt;
     SpriteList *spriteList;
     GF_G2dRenderer g2dRenderer;
@@ -98,31 +107,31 @@ typedef struct Overlay121Appdata {
     SpriteResourcesHeader spriteResourcesHeader;
     Sprite *sprites[5];
     TouchscreenHitbox *touchscreenHitboxes;
-    u8 unk_230;
-    u8 unk_231;
-    s8 unk_232;
+    u8 mainState;
+    u8 isDeleteMode;
+    s8 cursorPos;
     u8 state;
-    UnkStruct_0202E4B0 *unk_234;
+    SaveRankings *unk_234;
     UnkStruct_0202E9FC *unk_238[7];
-    Overlay121Sub254 *unk_254;
-    Overlay121Sub258 *unk_258;
+    ViewFriendRecordsSub254 *records;
+    ViewFriendRecordsSub258 *recordToDelete;
     u8 page;
     u8 unk_25D;
-    u8 unk_25E;
-    u8 unk_25F;
-    u8 unk_260;
-    u8 unk_261;
-    u8 unk_262[6];
+    u8 pageLength;
+    u8 pageOffset;
+    u8 recordIdx;
+    u8 numRecords;
+    u8 recordEntryIdxs[6];
     u8 unk_268;
-} Overlay121AppData;
+} ViewFriendRecordsAppData;
 
-typedef struct UnkStruct_Overlay121_021E7140 {
+typedef struct ViewFriendRecordsCursorPositionParam {
     int x;
     int y;
     int anim;
-} UnkStruct_Overlay121_021E7140;
+} ViewFriendRecordsCursorPositionParam;
 
-static const UnkStruct_Overlay121_021E7140 ov121_021E7140[] = {
+static const ViewFriendRecordsCursorPositionParam sCursorPositionParams[] = {
     {
         .x = 128,
         .y = 64,
@@ -160,139 +169,143 @@ static const UnkStruct_Overlay121_021E7140 ov121_021E7140[] = {
     },
 };
 
-static const UnkStruct_ov121_021E7014 ov121_021E7110[] = {
+static const RecordPageParam sRecordPageParam_BattleTower[] = {
     {
-        .unk_0 = 9999,
-        .unk_4 = 4,
-        .unk_6 = 44,
+        .max = 9999,
+        .numDigits = 4,
+        .msgId = msg_0421_00044,
     },
     {
-        .unk_0 = 9999,
-        .unk_4 = 4,
-        .unk_6 = 44,
+        .max = 9999,
+        .numDigits = 4,
+        .msgId = msg_0421_00044,
     },
     {
-        .unk_0 = 9999,
-        .unk_4 = 4,
-        .unk_6 = 44,
+        .max = 9999,
+        .numDigits = 4,
+        .msgId = msg_0421_00044,
     },
     {
-        .unk_0 = 9999,
-        .unk_4 = 4,
-        .unk_6 = 44,
+        .max = 9999,
+        .numDigits = 4,
+        .msgId = msg_0421_00044,
     },
     {
-        .unk_0 = 9999,
-        .unk_4 = 4,
-        .unk_6 = 44,
+        .max = 9999,
+        .numDigits = 4,
+        .msgId = msg_0421_00044,
     },
     {
-        .unk_0 = 7,
-        .unk_4 = 0x0001,
-        .unk_6 = 0x002D,
-    },
-};
-
-static const UnkStruct_ov121_021E7014 ov121_021E70C8[] = {
-    {
-        .unk_0 = 999999,
-	    .unk_4 = 6,
-        .unk_6 = 47,
-    },
-    {
-        .unk_0 = 999999,
-	    .unk_4 = 6,
-        .unk_6 = 47,
-    },
-    {
-        .unk_0 = 999999,
-	    .unk_4 = 6,
-        .unk_6 = 0x002E,
-    },
-    {
-        .unk_0 = 999999,
-	    .unk_4 = 6,
-        .unk_6 = 47,
+        .max = 7,
+        .numDigits = 1,
+        .msgId = msg_0421_00045,
     },
 };
 
-static const UnkStruct_ov121_021E7014 *const ov121_021E7014[] = {
-    ov121_021E7110,
-    ov121_021E70C8,
+static const RecordPageParam sRecordPageParam_Pokemon[] = {
+    // mons fainted
+    {
+        .max = 999999,
+	    .numDigits = 6,
+        .msgId = msg_0421_00047,
+    },
+    // mons caught
+    {
+        .max = 999999,
+	    .numDigits = 6,
+        .msgId = msg_0421_00047,
+    },
+    // eggs hatched
+    {
+        .max = 999999,
+	    .numDigits = 6,
+        .msgId = msg_0421_00046,
+    },
+    // fishing landed
+    {
+        .max = 999999,
+	    .numDigits = 6,
+        .msgId = msg_0421_00047,
+    },
 };
 
-static void ov121_021E5AEC(OVY_MANAGER *man, int *pState);
-static BOOL ov121_021E5C50(Overlay121AppData *appData);
-static void ov121_021E5CB4(Overlay121AppData *appData);
-static BOOL ov121_021E5CC4(Overlay121AppData *appData);
-static void Overlay121_HandleYesNoInput(Overlay121AppData *appData);
-static BOOL ov121_021E5D5C(Overlay121AppData *appData);
-static void Overlay121_SetGfxBanks(void);
-static void Overlay121_InitBgLayers(BgConfig *bgConfig);
-static void Overlay121_InitObjCharTransfer(void);
-static void Overlay121_CreateOamManager(void);
-static void VBlankCB_Overlay121(void *cbData);
-static void Overlay121_LoadBgGraphics(BgConfig *bgConfig, HeapID heapId);
-static void Overlay121_LoadSpriteGraphics(Overlay121AppData *appData, HeapID heapId);
-static void Overlay121_CreateSpriteResourcesHeader(Overlay121AppData *appData);
-static void Overlay121_DestroySprites(Overlay121AppData *appData);
-static void setSpriteTemplate(SpriteTemplate *spriteTemplate, Overlay121AppData *appData);
-static void Overlay121_CreateSprites(Overlay121AppData *appData);
-static void Overlay121_CreateTouchscreenHitboxes(Overlay121AppData *appData, HeapID heapId);
-static Overlay121Input Overlay121_PollInput(Overlay121AppData *appData, int *pSelection);
-static BOOL ov121_021E6404(Overlay121AppData *appData, Overlay121Input input, int selection);
-static void ov121_021E6478(Overlay121AppData *appData, Overlay121Input input, int selection);
-static void ov121_021E6544(Overlay121AppData *appData, int direction);
-static void ov121_021E65A8(Overlay121AppData *appData, int selection);
-static void ov121_021E65D8(Overlay121AppData *appData);
-static void ov121_021E662C(Overlay121AppData *appData, int direction);
-static void ov121_021E6690(Overlay121AppData *appData, BOOL selection);
-static void Overlay121_CreateWindows(Overlay121AppData *appData);
-static void ov121_021E67E4(Overlay121AppData *appData);
-static void ov121_021E67FC(Overlay121AppData *appData, SaveData *saveData);
-static void ov121_021E69F0(Overlay121AppData *appData);
-static void ov121_021E6A4C(Overlay121AppData *appData);
-static void ov121_021E6A84(Overlay121AppData *appData);
-static void Overlay121_PrintDeleteRecordText(Overlay121AppData *appData);
-static void Overlay121_PrintReturnText(Overlay121AppData *appData);
-static void Overlay121_PrintDeleteXsRecordAreYouSure(Overlay121AppData *appData);
-static void Overlay121_PrintYourOwnRecordCantBeDeleted(Overlay121AppData *appData);
-static void Overlay121_PrintRecordStatHeaderText(Overlay121AppData *appData);
-static void Overlay121_PrintSelectRecordToDeleteText(Overlay121AppData *appData);
-static void ov121_021E6EC0(Overlay121AppData *appData);
+static const RecordPageParam *const sRecordPageParams[] = {
+    sRecordPageParam_BattleTower,
+    sRecordPageParam_Pokemon,
+};
+
+static void ViewFriendRecordsApp_Init_Internal(OVY_MANAGER *man, int *pState);
+static BOOL ViewFriendRecordsApp_Main_Internal(ViewFriendRecordsAppData *appData);
+static void ov121_021E5CB4(ViewFriendRecordsAppData *appData);
+static BOOL ViewFriendRecords_PollAndHandleInput(ViewFriendRecordsAppData *appData);
+static void ViewFriendRecords_HandleYesNoInput(ViewFriendRecordsAppData *appData);
+static BOOL ViewFriendRecords_WaitButtonOrTouch(ViewFriendRecordsAppData *appData);
+static void ViewFriendRecords_SetGfxBanks(void);
+static void ViewFriendRecords_InitBgLayers(BgConfig *bgConfig);
+static void ViewFriendRecords_InitObjCharTransfer(void);
+static void ViewFriendRecords_CreateOamManager(void);
+static void VBlankCB_ViewFriendRecords(void *cbData);
+static void ViewFriendRecords_LoadBgGraphics(BgConfig *bgConfig, HeapID heapId);
+static void ViewFriendRecords_LoadSpriteGraphics(ViewFriendRecordsAppData *appData, HeapID heapId);
+static void ViewFriendRecords_CreateSpriteResourcesHeader(ViewFriendRecordsAppData *appData);
+static void ViewFriendRecords_DestroySprites(ViewFriendRecordsAppData *appData);
+static void setSpriteTemplate(SpriteTemplate *spriteTemplate, ViewFriendRecordsAppData *appData);
+static void ViewFriendRecords_CreateSprites(ViewFriendRecordsAppData *appData);
+static void ViewFriendRecords_CreateTouchscreenHitboxes(ViewFriendRecordsAppData *appData, HeapID heapId);
+static ViewFriendRecordsInput ViewFriendRecords_PollInput(ViewFriendRecordsAppData *appData, int *pSelection);
+static BOOL ViewFriendRecords_HandleInput_BrowsePages(ViewFriendRecordsAppData *appData, ViewFriendRecordsInput input, int selection);
+static void ViewFriendRecords_HandleInput_SelectRecordToDelete(ViewFriendRecordsAppData *appData, ViewFriendRecordsInput input, int selection);
+static void ViewFriendRecords_MoveCursorInDirection(ViewFriendRecordsAppData *appData, int direction);
+static void ViewFriendRecords_TrySetCursorPosition(ViewFriendRecordsAppData *appData, int selection);
+static void ViewFriendRecords_DrawCursor(ViewFriendRecordsAppData *appData);
+static void ViewFriendRecords_SwitchPage(ViewFriendRecordsAppData *appData, int direction);
+static void ViewFriendRecords_ToggleDeleteMode(ViewFriendRecordsAppData *appData, BOOL selection);
+static void ViewFriendRecords_CreateWindows(ViewFriendRecordsAppData *appData);
+static void ViewFriendRecords_HideSelectRecordToDeleteText(ViewFriendRecordsAppData *appData);
+static void ov121_021E67FC(ViewFriendRecordsAppData *appData, SaveData *saveData);
+static void ViewFriendRecords_CreateStrings(ViewFriendRecordsAppData *appData);
+static void ViewFriendRecords_DeleteStrings(ViewFriendRecordsAppData *appData);
+static void ViewFriendRecords_PrintRecords(ViewFriendRecordsAppData *appData);
+static void ViewFriendRecords_PrintDeleteRecordText(ViewFriendRecordsAppData *appData);
+static void ViewFriendRecords_PrintReturnText(ViewFriendRecordsAppData *appData);
+static void ViewFriendRecords_PrintDeleteXsRecordAreYouSure(ViewFriendRecordsAppData *appData);
+static void ViewFriendRecords_PrintYourOwnRecordCantBeDeleted(ViewFriendRecordsAppData *appData);
+static void ViewFriendRecords_PrintRecordStatHeaderText(ViewFriendRecordsAppData *appData);
+static void ViewFriendRecords_PrintSelectRecordToDeleteText(ViewFriendRecordsAppData *appData);
+static void ViewFriendRecords_AskConfirmDeleteRecord(ViewFriendRecordsAppData *appData);
 static void dimAllMainBgsExceptLyr0(void);
 static void resetMainBgsBrightness(void);
-static void ov121_021E6F78(Overlay121AppData *appData);
+static void ViewFriendRecordsApp_CommitChanges(ViewFriendRecordsAppData *appData);
 
-BOOL ov121_021E5900(OVY_MANAGER *man, int *pState) {
-    ov121_021E5AEC(man, pState);
+BOOL ViewFriendRecordsApp_Init(OVY_MANAGER *man, int *pState) {
+    ViewFriendRecordsApp_Init_Internal(man, pState);
     return TRUE;
 }
 
-BOOL ov121_021E590C(OVY_MANAGER *man, int *pState) {
-    Overlay121AppData *appData = OverlayManager_GetData(man);
-    switch (appData->unk_230) {
-    case 0:
+BOOL ViewFriendRecordsApp_Main(OVY_MANAGER *man, int *pState) {
+    ViewFriendRecordsAppData *appData = OverlayManager_GetData(man);
+    switch (appData->mainState) {
+    case OV121_MAIN_STATE_FADE_IN:
         BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, HEAP_ID_9E);
-        appData->unk_230 = 1;
+        appData->mainState = OV121_MAIN_STATE_WAIT_FADE_IN;
         break;
-    case 1:
+    case OV121_MAIN_STATE_WAIT_FADE_IN:
         if (IsPaletteFadeFinished()) {
-            appData->unk_230 = 2;
+            appData->mainState = OV121_MAIN_STATE_MAIN;
         }
         break;
-    case 2:
-        if (ov121_021E5C50(appData)) {
-            appData->unk_230 = 3;
+    case OV121_MAIN_STATE_MAIN:
+        if (ViewFriendRecordsApp_Main_Internal(appData)) {
+            appData->mainState = OV121_MAIN_STATE_FADE_OUT;
         }
         break;
-    case 3:
+    case OV121_MAIN_STATE_FADE_OUT:
         BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_9E);
-        appData->unk_230 = 4;
+        appData->mainState = OV121_MAIN_STATE_WAIT_FADE_OUT;
         break;
-    case 4:
+    case OV121_MAIN_STATE_WAIT_FADE_OUT:
         if (IsPaletteFadeFinished()) {
-            ov121_021E6F78(appData);
+            ViewFriendRecordsApp_CommitChanges(appData);
             return TRUE;
         }
         break;
@@ -302,26 +315,26 @@ BOOL ov121_021E590C(OVY_MANAGER *man, int *pState) {
     return FALSE;
 }
 
-BOOL ov121_021E59BC(OVY_MANAGER *man, int *pState) {
-    Overlay121AppData *appData = OverlayManager_GetData(man);
+BOOL ViewFriendRecordsApp_Exit(OVY_MANAGER *man, int *pState) {
+    ViewFriendRecordsAppData *appData = OverlayManager_GetData(man);
 
     gSystem.screensFlipped = FALSE;
     GfGfx_SwapDisplay();
     Main_SetVBlankIntrCB(NULL, NULL);
     G2_BlendNone();
-    ov121_021E6A4C(appData);
-    RemoveWindow(&appData->windows[OV121_WINDOW_0]);
-    RemoveWindow(&appData->windows[OV121_WINDOW_1]);
-    RemoveWindow(&appData->windows[OV121_WINDOW_2]);
-    RemoveWindow(&appData->windows[OV121_WINDOW_3]);
-    RemoveWindow(&appData->windows[OV121_WINDOW_4]);
-    RemoveWindow(&appData->windows[OV121_WINDOW_5]);
+    ViewFriendRecords_DeleteStrings(appData);
+    RemoveWindow(&appData->windows[OV121_WINDOW_RANKING]);
+    RemoveWindow(&appData->windows[OV121_WINDOW_RECORDS]);
+    RemoveWindow(&appData->windows[OV121_WINDOW_HEADER]);
+    RemoveWindow(&appData->windows[OV121_WINDOW_RETURN]);
+    RemoveWindow(&appData->windows[OV121_WINDOW_DELETE_RECORD]);
+    RemoveWindow(&appData->windows[OV121_WINDOW_SELECT_RECORD_TO_DELETE]);
     FreeBgTilemapBuffer(appData->bgConfig, GF_BG_LYR_MAIN_0);
     FreeBgTilemapBuffer(appData->bgConfig, GF_BG_LYR_MAIN_1);
     FreeBgTilemapBuffer(appData->bgConfig, GF_BG_LYR_MAIN_2);
     FreeBgTilemapBuffer(appData->bgConfig, GF_BG_LYR_MAIN_3);
     FreeBgTilemapBuffer(appData->bgConfig, GF_BG_LYR_SUB_0);
-    Overlay121_DestroySprites(appData);
+    ViewFriendRecords_DestroySprites(appData);
     sub_0200AEB0(appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_CHAR]);
     sub_0200B0A8(appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_PLTT]);
     for (int i = 0; i < 6; ++i) {
@@ -335,134 +348,134 @@ BOOL ov121_021E59BC(OVY_MANAGER *man, int *pState) {
     YesNoPrompt_Destroy(appData->yesNoPrompt);
     FreeToHeap(appData->touchscreenHitboxes);
     FreeToHeap(appData->bgConfig);
-    for (int i = 0; i < appData->unk_25E + 1; ++i) {
+    for (int i = 0; i < appData->pageLength + 1; ++i) {
         sub_0202EAFC(appData->unk_238[i]);
     }
-    FreeToHeap(appData->unk_254);
+    FreeToHeap(appData->records);
     FreeToHeap(appData);
     DestroyHeap(HEAP_ID_9E);
     return TRUE;
 }
 
-static void ov121_021E5AEC(OVY_MANAGER *man, int *pState) {
-    UnkStruct_02097D56 *args = OverlayManager_GetArgs(man);
+static void ViewFriendRecordsApp_Init_Internal(OVY_MANAGER *man, int *pState) {
+    ViewFriendRecordsArgs *args = OverlayManager_GetArgs(man);
     CreateHeap(HEAP_ID_3, HEAP_ID_9E, 0x10000);
-    Overlay121AppData *data = OverlayManager_CreateAndGetData(man, sizeof(Overlay121AppData), HEAP_ID_9E);
-    memset(data, 0, sizeof(Overlay121AppData));
+    ViewFriendRecordsAppData *data = OverlayManager_CreateAndGetData(man, sizeof(ViewFriendRecordsAppData), HEAP_ID_9E);
+    memset(data, 0, sizeof(ViewFriendRecordsAppData));
     data->bgConfig = BgConfig_Alloc(HEAP_ID_9E);
-    Overlay121_SetGfxBanks();
-    Overlay121_InitBgLayers(data->bgConfig);
-    Overlay121_InitObjCharTransfer();
-    Overlay121_CreateOamManager();
-    Overlay121_LoadSpriteGraphics(data, HEAP_ID_9E);
-    Overlay121_CreateSpriteResourcesHeader(data);
+    ViewFriendRecords_SetGfxBanks();
+    ViewFriendRecords_InitBgLayers(data->bgConfig);
+    ViewFriendRecords_InitObjCharTransfer();
+    ViewFriendRecords_CreateOamManager();
+    ViewFriendRecords_LoadSpriteGraphics(data, HEAP_ID_9E);
+    ViewFriendRecords_CreateSpriteResourcesHeader(data);
     data->yesNoPrompt = YesNoPrompt_Create(HEAP_ID_9E);
     data->unk_268 = Options_GetFrame(Save_PlayerData_GetOptionsAddr(args->saveData));
-    Main_SetVBlankIntrCB(VBlankCB_Overlay121, data->bgConfig);
-    data->unk_230 = 0;
+    Main_SetVBlankIntrCB(VBlankCB_ViewFriendRecords, data->bgConfig);
+    data->mainState = 0;
     ResetAllTextPrinters();
     FontID_Alloc(4, HEAP_ID_9E);
-    Overlay121_LoadBgGraphics(data->bgConfig, HEAP_ID_9E);
+    ViewFriendRecords_LoadBgGraphics(data->bgConfig, HEAP_ID_9E);
     LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0x1E0, HEAP_ID_9E);
-    Overlay121_CreateWindows(data);
-    Overlay121_CreateSprites(data);
+    ViewFriendRecords_CreateWindows(data);
+    ViewFriendRecords_CreateSprites(data);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
-    Overlay121_CreateTouchscreenHitboxes(data, HEAP_ID_9E);
+    ViewFriendRecords_CreateTouchscreenHitboxes(data, HEAP_ID_9E);
     data->state = 1;
     data->unk_234 = sub_0202E530(args->saveData);
-    data->page = args->unk_0 % 3;
-    data->unk_25D = args->unk_0 / 3;
-    data->unk_25E = sub_0202E4B0(data->page);
-    data->unk_25F = sub_0202E4BC(data->page);
+    data->page = args->page_scroll % 3;
+    data->unk_25D = args->page_scroll / 3;
+    data->pageLength = RankingsViewSys_GetNumRecordsPerPage(data->page);
+    data->pageOffset = RankingsViewSys_GetFirstRecordIndexOnPage(data->page);
     ov121_021E67FC(data, args->saveData);
-    data->unk_260 = args->unk_2;
-    if (data->unk_260 >= data->unk_25E) {
+    data->recordIdx = args->cursorPos;
+    if (data->recordIdx >= data->pageLength) {
         GF_ASSERT(FALSE);
-        data->unk_260 = 0;
+        data->recordIdx = 0;
     }
-    ov121_021E69F0(data);
-    ov121_021E6690(data, 0);
-    ov121_021E6A84(data);
-    Overlay121_PrintDeleteRecordText(data);
-    Overlay121_PrintReturnText(data);
-    Overlay121_PrintRecordStatHeaderText(data);
+    ViewFriendRecords_CreateStrings(data);
+    ViewFriendRecords_ToggleDeleteMode(data, 0);
+    ViewFriendRecords_PrintRecords(data);
+    ViewFriendRecords_PrintDeleteRecordText(data);
+    ViewFriendRecords_PrintReturnText(data);
+    ViewFriendRecords_PrintRecordStatHeaderText(data);
 }
 
-static BOOL ov121_021E5C50(Overlay121AppData *appData) {
+static BOOL ViewFriendRecordsApp_Main_Internal(ViewFriendRecordsAppData *appData) {
     switch (appData->state) {
-    case OV121_STATE_INIT:
-        ov121_021E6A84(appData);
-        appData->state = OV121_STATE_1;
+    case OV121_STATE_REDRAW:
+        ViewFriendRecords_PrintRecords(appData);
+        appData->state = OV121_STATE_HANDLE_INPUT;
         break;
-    case OV121_STATE_1:
-        if (ov121_021E5CC4(appData)) {
+    case OV121_STATE_HANDLE_INPUT:
+        if (ViewFriendRecords_PollAndHandleInput(appData)) {
             return TRUE;
         }
         break;
     case OV121_STATE_YESNO:
-        Overlay121_HandleYesNoInput(appData);
+        ViewFriendRecords_HandleYesNoInput(appData);
         break;
-    case OV121_STATE_3:
-        if (ov121_021E5D5C(appData)) {
-            appData->state = OV121_STATE_1;
+    case OV121_STATE_DELETE_FAILED_CANT_DELETE_OWN:
+        if (ViewFriendRecords_WaitButtonOrTouch(appData)) {
+            appData->state = OV121_STATE_HANDLE_INPUT;
         }
         break;
-    case OV121_STATE_4:
-        appData->unk_258->unk_04 = 0;
-        appData->state = OV121_STATE_INIT;
+    case OV121_STATE_DO_DELETE_RECORD:
+        appData->recordToDelete->active = FALSE;
+        appData->state = OV121_STATE_REDRAW;
         break;
     }
     return FALSE;
 }
 
-static void ov121_021E5CB4(Overlay121AppData *appData) {
+static void ov121_021E5CB4(ViewFriendRecordsAppData *appData) {
     if (appData->spriteList != NULL) {
         sub_0202457C(appData->spriteList);
     }
 }
 
-static BOOL ov121_021E5CC4(Overlay121AppData *appData) {
+static BOOL ViewFriendRecords_PollAndHandleInput(ViewFriendRecordsAppData *appData) {
     int selection;
-    Overlay121Input input = Overlay121_PollInput(appData, &selection);
+    ViewFriendRecordsInput input = ViewFriendRecords_PollInput(appData, &selection);
     if (input == 0) {
         return FALSE;
     }
-    if (appData->unk_231 == 0) {
-        if (ov121_021E6404(appData, input, selection)) {
+    if (appData->isDeleteMode == 0) {
+        if (ViewFriendRecords_HandleInput_BrowsePages(appData, input, selection)) {
             return TRUE;
         }
     } else {
-        ov121_021E6478(appData, input, selection);
+        ViewFriendRecords_HandleInput_SelectRecordToDelete(appData, input, selection);
     }
     return FALSE;
 }
 
-static void Overlay121_HandleYesNoInput(Overlay121AppData *appData) {
+static void ViewFriendRecords_HandleYesNoInput(ViewFriendRecordsAppData *appData) {
     switch (YesNoPrompt_HandleInput(appData->yesNoPrompt)) {
     case YESNORESPONSE_YES:
         YesNoPrompt_Reset(appData->yesNoPrompt);
         resetMainBgsBrightness();
-        appData->state = OV121_STATE_4;
-        Overlay121_PrintSelectRecordToDeleteText(appData);
+        appData->state = OV121_STATE_DO_DELETE_RECORD;
+        ViewFriendRecords_PrintSelectRecordToDeleteText(appData);
         break;
     case YESNORESPONSE_NO:
         YesNoPrompt_Reset(appData->yesNoPrompt);
         resetMainBgsBrightness();
-        appData->state = OV121_STATE_1;
-        Overlay121_PrintSelectRecordToDeleteText(appData);
+        appData->state = OV121_STATE_HANDLE_INPUT;
+        ViewFriendRecords_PrintSelectRecordToDeleteText(appData);
         break;
     }
 }
 
-static BOOL ov121_021E5D5C(Overlay121AppData *appData) {
+static BOOL ViewFriendRecords_WaitButtonOrTouch(ViewFriendRecordsAppData *appData) {
     if (gSystem.newKeys != 0 || System_GetTouchNew()) {
-        Overlay121_PrintSelectRecordToDeleteText(appData);
+        ViewFriendRecords_PrintSelectRecordToDeleteText(appData);
         return TRUE;
     }
     return FALSE;
 }
 
-static void Overlay121_SetGfxBanks(void) {
+static void ViewFriendRecords_SetGfxBanks(void) {
     GraphicsBanks graphicsBanks = {
         .bg = GX_VRAM_BG_128_A,
         .bgextpltt = GX_VRAM_BGEXTPLTT_NONE,
@@ -478,7 +491,7 @@ static void Overlay121_SetGfxBanks(void) {
     GfGfx_SetBanks(&graphicsBanks);
 }
 
-static void Overlay121_InitBgLayers(BgConfig *bgConfig) {
+static void ViewFriendRecords_InitBgLayers(BgConfig *bgConfig) {
     gSystem.screensFlipped = TRUE;
     GfGfx_SwapDisplay();
 
@@ -587,7 +600,7 @@ static void Overlay121_InitBgLayers(BgConfig *bgConfig) {
     BG_FillCharDataRange(bgConfig, GF_BG_LYR_MAIN_2, 0, 1, 0);
 }
 
-static void Overlay121_InitObjCharTransfer(void) {
+static void ViewFriendRecords_InitObjCharTransfer(void) {
     ObjCharTransferTemplate template = {
         .maxTasks = 10,
         .sizeMain = 0x10000,
@@ -600,12 +613,12 @@ static void Overlay121_InitObjCharTransfer(void) {
     sub_02022638();
 }
 
-static void Overlay121_CreateOamManager(void) {
+static void ViewFriendRecords_CreateOamManager(void) {
     NNS_G2dInitOamManagerModule();
     OamManager_Create(0, 126, 0, 32, 0, 126, 0, 32, HEAP_ID_9E);
 }
 
-static void VBlankCB_Overlay121(void *cbData) {
+static void VBlankCB_ViewFriendRecords(void *cbData) {
     BgConfig *bgConfig = (BgConfig *)cbData;
 
     OamManager_ApplyAndResetBuffers();
@@ -614,7 +627,7 @@ static void VBlankCB_Overlay121(void *cbData) {
     OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
-static void Overlay121_LoadBgGraphics(BgConfig *bgConfig, HeapID heapId) {
+static void ViewFriendRecords_LoadBgGraphics(BgConfig *bgConfig, HeapID heapId) {
     GfGfxLoader_GXLoadPal(NARC_a_2_6_0, 1, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0x40, heapId);
     GfGfxLoader_LoadCharData(NARC_a_2_6_0, 3, bgConfig, GF_BG_LYR_MAIN_3, 0, 0x1000, TRUE, heapId);
     GfGfxLoader_LoadScrnData(NARC_a_2_6_0, 5, bgConfig, GF_BG_LYR_MAIN_3, 0, 0x600, TRUE, heapId);
@@ -626,7 +639,7 @@ static void Overlay121_LoadBgGraphics(BgConfig *bgConfig, HeapID heapId) {
     BgCommitTilemapBufferToVram(bgConfig, GF_BG_LYR_SUB_0);
 }
 
-static void Overlay121_LoadSpriteGraphics(Overlay121AppData *appData, HeapID heapId) {
+static void ViewFriendRecords_LoadSpriteGraphics(ViewFriendRecordsAppData *appData, HeapID heapId) {
     appData->spriteList = G2dRenderer_Init(5, &appData->g2dRenderer, heapId);
     for (int i = 0; i < 6; ++i) {
         appData->gf2dGfxResManagers[i] = Create2DGfxResObjMan(1, (GfGfxResType)i, heapId);
@@ -639,29 +652,29 @@ static void Overlay121_LoadSpriteGraphics(Overlay121AppData *appData, HeapID hea
     sub_0200AF94(appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_PLTT]);
 }
 
-static void Overlay121_CreateSpriteResourcesHeader(Overlay121AppData *appData) {
+static void ViewFriendRecords_CreateSpriteResourcesHeader(ViewFriendRecordsAppData *appData) {
     CreateSpriteResourcesHeader(&appData->spriteResourcesHeader, 0, 0, 0, 0, -1, -1, 0, 3, appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_CHAR], appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_PLTT], appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_CELL], appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_ANIM], NULL, NULL);
 }
 
-static void Overlay121_DestroySprites(Overlay121AppData *appData) {
-    if (appData->sprites[OV121_SPRITE_0] != NULL) {
-        Sprite_Delete(appData->sprites[OV121_SPRITE_0]);
+static void ViewFriendRecords_DestroySprites(ViewFriendRecordsAppData *appData) {
+    if (appData->sprites[OV121_SPRITE_CURSOR] != NULL) {
+        Sprite_Delete(appData->sprites[OV121_SPRITE_CURSOR]);
     }
-    if (appData->sprites[OV121_SPRITE_1] != NULL) {
-        Sprite_Delete(appData->sprites[OV121_SPRITE_1]);
+    if (appData->sprites[OV121_SPRITE_RIGHT_ARROW] != NULL) {
+        Sprite_Delete(appData->sprites[OV121_SPRITE_RIGHT_ARROW]);
     }
-    if (appData->sprites[OV121_SPRITE_2] != NULL) {
-        Sprite_Delete(appData->sprites[OV121_SPRITE_2]);
+    if (appData->sprites[OV121_SPRITE_LEFT_ARROW] != NULL) {
+        Sprite_Delete(appData->sprites[OV121_SPRITE_LEFT_ARROW]);
     }
-    if (appData->sprites[OV121_SPRITE_3] != NULL) {
-        Sprite_Delete(appData->sprites[OV121_SPRITE_3]);
+    if (appData->sprites[OV121_SPRITE_RETURN] != NULL) {
+        Sprite_Delete(appData->sprites[OV121_SPRITE_RETURN]);
     }
-    if (appData->sprites[OV121_SPRITE_4] != NULL) {
-        Sprite_Delete(appData->sprites[OV121_SPRITE_4]);
+    if (appData->sprites[OV121_SPRITE_DELETE_RECORD] != NULL) {
+        Sprite_Delete(appData->sprites[OV121_SPRITE_DELETE_RECORD]);
     }
 }
 
-static void setSpriteTemplate(SpriteTemplate *spriteTemplate, Overlay121AppData *appData) {
+static void setSpriteTemplate(SpriteTemplate *spriteTemplate, ViewFriendRecordsAppData *appData) {
     spriteTemplate->spriteList = appData->spriteList;
     spriteTemplate->header = &appData->spriteResourcesHeader;
     spriteTemplate->position.z = 0;
@@ -672,7 +685,7 @@ static void setSpriteTemplate(SpriteTemplate *spriteTemplate, Overlay121AppData 
     spriteTemplate->heapId = HEAP_ID_9E;
 }
 
-static void Overlay121_CreateSprites(Overlay121AppData *appData) {
+static void ViewFriendRecords_CreateSprites(ViewFriendRecordsAppData *appData) {
     Sprite *sprite;
     SpriteTemplate spriteTemplate;
     setSpriteTemplate(&spriteTemplate, appData);
@@ -684,7 +697,7 @@ static void Overlay121_CreateSprites(Overlay121AppData *appData) {
     Set2dSpriteAnimSeqNo(sprite, 2);
     Sprite_SetPriority(sprite, 1);
     Set2dSpriteVisibleFlag(sprite, TRUE);
-    appData->sprites[OV121_SPRITE_0] = sprite;
+    appData->sprites[OV121_SPRITE_CURSOR] = sprite;
 
     spriteTemplate.position.x = FX32_CONST(16);
     spriteTemplate.position.y = FX32_CONST(96);
@@ -692,7 +705,7 @@ static void Overlay121_CreateSprites(Overlay121AppData *appData) {
     Set2dSpriteAnimActiveFlag(sprite, TRUE);
     Set2dSpriteAnimSeqNo(sprite, 3);
     Set2dSpriteVisibleFlag(sprite, TRUE);
-    appData->sprites[OV121_SPRITE_2] = sprite;
+    appData->sprites[OV121_SPRITE_LEFT_ARROW] = sprite;
 
     spriteTemplate.position.x = FX32_CONST(240);
     spriteTemplate.position.y = FX32_CONST(96);
@@ -700,7 +713,7 @@ static void Overlay121_CreateSprites(Overlay121AppData *appData) {
     Set2dSpriteAnimActiveFlag(sprite, TRUE);
     Set2dSpriteAnimSeqNo(sprite, 5);
     Set2dSpriteVisibleFlag(sprite, TRUE);
-    appData->sprites[OV121_SPRITE_1] = sprite;
+    appData->sprites[OV121_SPRITE_RIGHT_ARROW] = sprite;
 
     spriteTemplate.position.x = FX32_CONST(224);
     spriteTemplate.position.y = FX32_CONST(176);
@@ -708,7 +721,7 @@ static void Overlay121_CreateSprites(Overlay121AppData *appData) {
     Set2dSpriteAnimActiveFlag(sprite, TRUE);
     Set2dSpriteAnimSeqNo(sprite, 0);
     Set2dSpriteVisibleFlag(sprite, TRUE);
-    appData->sprites[OV121_SPRITE_3] = sprite;
+    appData->sprites[OV121_SPRITE_RETURN] = sprite;
 
     spriteTemplate.position.x = FX32_CONST(64);
     spriteTemplate.position.y = FX32_CONST(176);
@@ -716,10 +729,10 @@ static void Overlay121_CreateSprites(Overlay121AppData *appData) {
     Set2dSpriteAnimActiveFlag(sprite, TRUE);
     Set2dSpriteAnimSeqNo(sprite, 8);
     Set2dSpriteVisibleFlag(sprite, TRUE);
-    appData->sprites[OV121_SPRITE_4] = sprite;
+    appData->sprites[OV121_SPRITE_DELETE_RECORD] = sprite;
 }
 
-static void Overlay121_CreateTouchscreenHitboxes(Overlay121AppData *appData, HeapID heapId) {
+static void ViewFriendRecords_CreateTouchscreenHitboxes(ViewFriendRecordsAppData *appData, HeapID heapId) {
     appData->touchscreenHitboxes = AllocFromHeap(heapId, 10 * sizeof(TouchscreenHitbox));
     for (int i = 0; i < 6; ++i) {
         TouchscreenHitbox_SetRect(&appData->touchscreenHitboxes[i], 56 + 16 * i, 40, 16, 176);
@@ -730,7 +743,7 @@ static void Overlay121_CreateTouchscreenHitboxes(Overlay121AppData *appData, Hea
     TouchscreenHitbox_SetCircle(&appData->touchscreenHitboxes[9], 240, 96, 16);
 }
 
-static Overlay121Input Overlay121_PollInput(Overlay121AppData *appData, int *a1) {
+static ViewFriendRecordsInput ViewFriendRecords_PollInput(ViewFriendRecordsAppData *appData, int *a1) {
     int input = 0;
     if (!System_GetTouchHeld()) {
         input = gSystem.newKeys;
@@ -781,7 +794,7 @@ static Overlay121Input Overlay121_PollInput(Overlay121AppData *appData, int *a1)
     return OV121_INPUT_NONE;
 }
 
-static BOOL ov121_021E6404(Overlay121AppData *appData, Overlay121Input input, int selection) {
+static BOOL ViewFriendRecords_HandleInput_BrowsePages(ViewFriendRecordsAppData *appData, ViewFriendRecordsInput input, int selection) {
     switch (input) {
     case OV121_INPUT_NONE:
     case OV121_INPUT_CURSOR_UP:
@@ -789,359 +802,359 @@ static BOOL ov121_021E6404(Overlay121AppData *appData, Overlay121Input input, in
     case OV121_INPUT_TAP_RECORD:
         break;
     case OV121_INPUT_CURSOR_LEFT:
-        ov121_021E662C(appData, -1);
+        ViewFriendRecords_SwitchPage(appData, -1);
         break;
     case OV121_INPUT_CURSOR_RIGHT:
-        ov121_021E662C(appData,  1);
+        ViewFriendRecords_SwitchPage(appData,  1);
         break;
     case OV121_INPUT_X_BUTTON:
         PlaySE(SEQ_SE_DP_DECIDE);
-        Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_4], 9);
-        ov121_021E6690(appData, 1);
+        Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_DELETE_RECORD], 9);
+        ViewFriendRecords_ToggleDeleteMode(appData, 1);
         break;
     case OV121_INPUT_B_BUTTON:
     case OV121_INPUT_A_BUTTON:
         PlaySE(SEQ_SE_DP_DECIDE);
-        Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_3], 1);
+        Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_RETURN], 1);
         return TRUE;
     }
 
     return FALSE;
 }
 
-static void ov121_021E6478(Overlay121AppData *appData, Overlay121Input input, int selection) {
+static void ViewFriendRecords_HandleInput_SelectRecordToDelete(ViewFriendRecordsAppData *appData, ViewFriendRecordsInput input, int selection) {
     switch (input) {
     case OV121_INPUT_NONE:
     case OV121_INPUT_CURSOR_LEFT:
     case OV121_INPUT_CURSOR_RIGHT:
         break;
     case OV121_INPUT_CURSOR_UP:
-        ov121_021E6544(appData, -1);
+        ViewFriendRecords_MoveCursorInDirection(appData, -1);
         break;
     case OV121_INPUT_CURSOR_DOWN:
-        ov121_021E6544(appData,  1);
+        ViewFriendRecords_MoveCursorInDirection(appData,  1);
         break;
     case OV121_INPUT_TAP_RECORD:
-        ov121_021E65A8(appData, selection);
+        ViewFriendRecords_TrySetCursorPosition(appData, selection);
         break;
     case OV121_INPUT_X_BUTTON:
-        if (appData->unk_232 < appData->unk_261) {
+        if (appData->cursorPos < appData->numRecords) {
             PlaySE(SEQ_SE_DP_DECIDE);
-            ov121_021E6EC0(appData);
+            ViewFriendRecords_AskConfirmDeleteRecord(appData);
         } else {
             PlaySE(SEQ_SE_DP_DECIDE);
-            Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_3], 1);
-            ov121_021E6690(appData, 0);
+            Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_RETURN], 1);
+            ViewFriendRecords_ToggleDeleteMode(appData, 0);
         }
         break;
     case OV121_INPUT_B_BUTTON:
         PlaySE(SEQ_SE_DP_DECIDE);
-        Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_3], 1);
-        ov121_021E6690(appData, 0);
+        Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_RETURN], 1);
+        ViewFriendRecords_ToggleDeleteMode(appData, 0);
         break;
     case OV121_INPUT_A_BUTTON:
-        if (appData->unk_232 < appData->unk_261) {
+        if (appData->cursorPos < appData->numRecords) {
             PlaySE(SEQ_SE_DP_DECIDE);
-            ov121_021E6EC0(appData);
+            ViewFriendRecords_AskConfirmDeleteRecord(appData);
         } else {
             PlaySE(SEQ_SE_DP_DECIDE);
-            Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_3], 1);
-            ov121_021E6690(appData, 0);
+            Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_RETURN], 1);
+            ViewFriendRecords_ToggleDeleteMode(appData, 0);
         }
         break;
     }
 }
 
-static void ov121_021E6544(Overlay121AppData *appData, int direction) {
+static void ViewFriendRecords_MoveCursorInDirection(ViewFriendRecordsAppData *appData, int direction) {
     if (direction > 0) {
-        if (appData->unk_232 == 6) {
-            appData->unk_232 = 0;
-        } else if (appData->unk_232 + direction >= appData->unk_261) {
-            appData->unk_232 = 6;
+        if (appData->cursorPos == 6) {
+            appData->cursorPos = 0;
+        } else if (appData->cursorPos + direction >= appData->numRecords) {
+            appData->cursorPos = 6;
         } else {
-            appData->unk_232 += direction;
+            appData->cursorPos += direction;
         }
     } else if (direction < 0) {
-        if (appData->unk_232 == 6) {
-            appData->unk_232 = appData->unk_261 - 1;
-        } else if (appData->unk_232 + direction < 0) {
-            appData->unk_232 = 6;
+        if (appData->cursorPos == 6) {
+            appData->cursorPos = appData->numRecords - 1;
+        } else if (appData->cursorPos + direction < 0) {
+            appData->cursorPos = 6;
         } else {
-            appData->unk_232 += direction;
+            appData->cursorPos += direction;
         }
     }
     PlaySE(SEQ_SE_DP_SELECT);
-    ov121_021E65D8(appData);
+    ViewFriendRecords_DrawCursor(appData);
 }
 
-static void ov121_021E65A8(Overlay121AppData *appData, int selection) {
-    if (selection == 6 || selection < appData->unk_261) {
+static void ViewFriendRecords_TrySetCursorPosition(ViewFriendRecordsAppData *appData, int selection) {
+    if (selection == 6 || selection < appData->numRecords) {
         PlaySE(SEQ_SE_DP_SELECT);
-        appData->unk_232 = selection;
-        ov121_021E65D8(appData);
+        appData->cursorPos = selection;
+        ViewFriendRecords_DrawCursor(appData);
     }
 }
 
-static void ov121_021E65D8(Overlay121AppData *appData) {
+static void ViewFriendRecords_DrawCursor(ViewFriendRecordsAppData *appData) {
     VecFx32 pos = {};
-    u8 idx = appData->unk_232;
-    pos.x = ov121_021E7140[idx].x * FX32_ONE;
-    pos.y = ov121_021E7140[idx].y * FX32_ONE;
-    Sprite_SetMatrix(appData->sprites[OV121_SPRITE_0], &pos);
-    Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_0], ov121_021E7140[idx].anim);
+    u8 idx = appData->cursorPos;
+    pos.x = sCursorPositionParams[idx].x * FX32_ONE;
+    pos.y = sCursorPositionParams[idx].y * FX32_ONE;
+    Sprite_SetMatrix(appData->sprites[OV121_SPRITE_CURSOR], &pos);
+    Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_CURSOR], sCursorPositionParams[idx].anim);
 }
 
-static void ov121_021E662C(Overlay121AppData *appData, int direction) {
-    int new = appData->unk_260 + direction;
+static void ViewFriendRecords_SwitchPage(ViewFriendRecordsAppData *appData, int direction) {
+    int new = appData->recordIdx + direction;
     if (new < 0) {
-        new = appData->unk_25E - 1;
-    } else if (new >= appData->unk_25E) {
+        new = appData->pageLength - 1;
+    } else if (new >= appData->pageLength) {
         new = 0;
     }
-    appData->unk_260 = new;
+    appData->recordIdx = new;
     PlaySE(SEQ_SE_DP_SELECT78);
     if (direction > 0) {
-        Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_1], 6);
+        Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_RIGHT_ARROW], 6);
     } else if (direction < 0) {
-        Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_2], 4);
+        Set2dSpriteAnimSeqNo(appData->sprites[OV121_SPRITE_LEFT_ARROW], 4);
     }
-    Overlay121_PrintRecordStatHeaderText(appData);
-    appData->state = OV121_STATE_INIT;
+    ViewFriendRecords_PrintRecordStatHeaderText(appData);
+    appData->state = OV121_STATE_REDRAW;
 }
 
-static void ov121_021E6690(Overlay121AppData *appData, BOOL selection) {
-    appData->unk_231 = selection;
-    if (selection == 0) {
-        appData->unk_232 = 6;
-        Set2dSpriteVisibleFlag(appData->sprites[OV121_SPRITE_1], TRUE);
-        Set2dSpriteVisibleFlag(appData->sprites[OV121_SPRITE_2], TRUE);
-        ov121_021E67E4(appData);
+static void ViewFriendRecords_ToggleDeleteMode(ViewFriendRecordsAppData *appData, BOOL selection) {
+    appData->isDeleteMode = selection;
+    if (selection == FALSE) {
+        appData->cursorPos = 6;
+        Set2dSpriteVisibleFlag(appData->sprites[OV121_SPRITE_RIGHT_ARROW], TRUE);
+        Set2dSpriteVisibleFlag(appData->sprites[OV121_SPRITE_LEFT_ARROW], TRUE);
+        ViewFriendRecords_HideSelectRecordToDeleteText(appData);
     } else {
-        appData->unk_232 = 0;
-        Set2dSpriteVisibleFlag(appData->sprites[OV121_SPRITE_1], FALSE);
-        Set2dSpriteVisibleFlag(appData->sprites[OV121_SPRITE_2], FALSE);
-        Overlay121_PrintSelectRecordToDeleteText(appData);
+        appData->cursorPos = 0;
+        Set2dSpriteVisibleFlag(appData->sprites[OV121_SPRITE_RIGHT_ARROW], FALSE);
+        Set2dSpriteVisibleFlag(appData->sprites[OV121_SPRITE_LEFT_ARROW], FALSE);
+        ViewFriendRecords_PrintSelectRecordToDeleteText(appData);
     }
-    ov121_021E65D8(appData);
+    ViewFriendRecords_DrawCursor(appData);
 }
 
-static void Overlay121_CreateWindows(Overlay121AppData *appData) {
+static void ViewFriendRecords_CreateWindows(ViewFriendRecordsAppData *appData) {
     LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0x1E0, HEAP_ID_9E);
-    AddWindowParameterized(appData->bgConfig, &appData->windows[OV121_WINDOW_0], GF_BG_LYR_MAIN_1, 5, 7, 2, 12, 15, 0x1);
-    AddWindowParameterized(appData->bgConfig, &appData->windows[OV121_WINDOW_1], GF_BG_LYR_MAIN_1, 7, 7, 20, 12, 15, 0x19);
-    AddWindowParameterized(appData->bgConfig, &appData->windows[OV121_WINDOW_2], GF_BG_LYR_MAIN_2, 2, 1, 28, 4, 15, 0x109);
-    AddWindowParameterized(appData->bgConfig, &appData->windows[OV121_WINDOW_3], GF_BG_LYR_MAIN_2, 25, 21, 6, 2, 1, 0x179);
-    AddWindowParameterized(appData->bgConfig, &appData->windows[OV121_WINDOW_4], GF_BG_LYR_MAIN_2, 4, 21, 12, 2, 1, 0x185);
-    AddWindowParameterized(appData->bgConfig, &appData->windows[OV121_WINDOW_5], GF_BG_LYR_MAIN_0, 2, 1, 28, 4, 15, 0x1F);
+    AddWindowParameterized(appData->bgConfig, &appData->windows[OV121_WINDOW_RANKING], GF_BG_LYR_MAIN_1, 5, 7, 2, 12, 15, 0x1);
+    AddWindowParameterized(appData->bgConfig, &appData->windows[OV121_WINDOW_RECORDS], GF_BG_LYR_MAIN_1, 7, 7, 20, 12, 15, 0x19);
+    AddWindowParameterized(appData->bgConfig, &appData->windows[OV121_WINDOW_HEADER], GF_BG_LYR_MAIN_2, 2, 1, 28, 4, 15, 0x109);
+    AddWindowParameterized(appData->bgConfig, &appData->windows[OV121_WINDOW_RETURN], GF_BG_LYR_MAIN_2, 25, 21, 6, 2, 1, 0x179);
+    AddWindowParameterized(appData->bgConfig, &appData->windows[OV121_WINDOW_DELETE_RECORD], GF_BG_LYR_MAIN_2, 4, 21, 12, 2, 1, 0x185);
+    AddWindowParameterized(appData->bgConfig, &appData->windows[OV121_WINDOW_SELECT_RECORD_TO_DELETE], GF_BG_LYR_MAIN_0, 2, 1, 28, 4, 15, 0x1F);
     LoadUserFrameGfx2(appData->bgConfig, GF_BG_LYR_MAIN_0, 0x1, 12, appData->unk_268, HEAP_ID_9E);
 }
 
-static void ov121_021E67E4(Overlay121AppData *appData) {
-    ClearFrameAndWindow2(&appData->windows[OV121_WINDOW_5], TRUE);
-    ClearWindowTilemapAndCopyToVram(&appData->windows[OV121_WINDOW_5]);
+static void ViewFriendRecords_HideSelectRecordToDeleteText(ViewFriendRecordsAppData *appData) {
+    ClearFrameAndWindow2(&appData->windows[OV121_WINDOW_SELECT_RECORD_TO_DELETE], TRUE);
+    ClearWindowTilemapAndCopyToVram(&appData->windows[OV121_WINDOW_SELECT_RECORD_TO_DELETE]);
 }
 
-static void ov121_021E67FC(Overlay121AppData *appData, SaveData *saveData) {
+static void ov121_021E67FC(ViewFriendRecordsAppData *appData, SaveData *saveData) {
     int j;
     int i;
     BOOL inserted;
     UnkStruct_0202E9FC *ptr;
     int cnt;
 
-    appData->unk_254 = AllocFromHeap(HEAP_ID_9E, appData->unk_25E * sizeof(Overlay121Sub254));
-    MI_CpuClear8(appData->unk_254, appData->unk_25E * sizeof(Overlay121Sub254));
+    appData->records = AllocFromHeap(HEAP_ID_9E, appData->pageLength * sizeof(ViewFriendRecordsSub254));
+    MI_CpuClear8(appData->records, appData->pageLength * sizeof(ViewFriendRecordsSub254));
     appData->unk_238[0] = sub_0202E9FC(saveData, appData->page, HEAP_ID_9E);
-    for (i = 0; i < appData->unk_25E; ++i) {
-        appData->unk_238[1 + i] = sub_0202EA80(appData->unk_234, appData->unk_25F + appData->unk_25D * 13 + i, HEAP_ID_9E);
+    for (i = 0; i < appData->pageLength; ++i) {
+        appData->unk_238[1 + i] = sub_0202EA80(appData->unk_234, appData->pageOffset + appData->unk_25D * RANKINGS_COUNT + i, HEAP_ID_9E);
         cnt = 0;
         inserted = FALSE;
         ptr = appData->unk_238[1 + i];
         if (ptr->count == 0) {
-            appData->unk_254[i].unk_04[0].unk_00 = &appData->unk_238[0]->unk_04[i];
-            appData->unk_254[i].unk_04[0].unk_04 = 1;
-            appData->unk_254[i].unk_04[0].unk_06 = 0xFF;
-            appData->unk_254[i].unk_00 = 1;
+            appData->records[i].entries[0].unk_00 = &appData->unk_238[0]->unk_04[i];
+            appData->records[i].entries[0].active = TRUE;
+            appData->records[i].entries[0].friendIdx = 0xFF;
+            appData->records[i].count = 1;
         } else {
             for (j = 0; j < ptr->count; ++j) {
-                if (!inserted && appData->unk_238[0]->unk_04[i].unk_4 >= ptr->unk_04[j].unk_4) {
-                    appData->unk_254[i].unk_04[cnt].unk_00 = &appData->unk_238[0]->unk_04[i];
-                    appData->unk_254[i].unk_04[cnt].unk_04 = 1;
-                    appData->unk_254[i].unk_04[cnt].unk_06 = 0xFF;
+                if (!inserted && appData->unk_238[0]->unk_04[i].stat >= ptr->unk_04[j].stat) {
+                    appData->records[i].entries[cnt].unk_00 = &appData->unk_238[0]->unk_04[i];
+                    appData->records[i].entries[cnt].active = TRUE;
+                    appData->records[i].entries[cnt].friendIdx = 0xFF;
                     ++cnt;
-                    appData->unk_254[i].unk_04[cnt].unk_00 = &ptr->unk_04[j];
-                    appData->unk_254[i].unk_04[cnt].unk_04 = 1;
-                    appData->unk_254[i].unk_04[cnt].unk_06 = j;
+                    appData->records[i].entries[cnt].unk_00 = &ptr->unk_04[j];
+                    appData->records[i].entries[cnt].active = TRUE;
+                    appData->records[i].entries[cnt].friendIdx = j;
                     inserted = TRUE;
                 } else {
-                    appData->unk_254[i].unk_04[cnt].unk_00 = &ptr->unk_04[j];
-                    appData->unk_254[i].unk_04[cnt].unk_04 = 1;
-                    appData->unk_254[i].unk_04[cnt].unk_06 = j;
+                    appData->records[i].entries[cnt].unk_00 = &ptr->unk_04[j];
+                    appData->records[i].entries[cnt].active = TRUE;
+                    appData->records[i].entries[cnt].friendIdx = j;
                 }
                 ++cnt;
             }
             if (!inserted) {
-                appData->unk_254[i].unk_04[cnt].unk_00 = &appData->unk_238[0]->unk_04[i];
-                appData->unk_254[i].unk_04[cnt].unk_04 = 1;
-                appData->unk_254[i].unk_04[cnt].unk_06 = 0xFF;
+                appData->records[i].entries[cnt].unk_00 = &appData->unk_238[0]->unk_04[i];
+                appData->records[i].entries[cnt].active = TRUE;
+                appData->records[i].entries[cnt].friendIdx = 0xFF;
             }
-            appData->unk_254[i].unk_00 = ptr->count + 1;
+            appData->records[i].count = ptr->count + 1;
         }
     }
 }
 
-static void ov121_021E69F0(Overlay121AppData *appData) {
+static void ViewFriendRecords_CreateStrings(ViewFriendRecordsAppData *appData) {
     appData->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0421_bin, HEAP_ID_9E);
     appData->msgFormat = MessageFormat_New_Custom(2, 76, HEAP_ID_9E);
-    appData->unk_06C = String_New(76, HEAP_ID_9E);
-    appData->unk_070 = NewString_ReadMsgData(appData->msgData, msg_0421_00043);
-    appData->unk_074 = NewString_ReadMsgData(appData->msgData, msg_0421_00042);
+    appData->formatedStrBuf = String_New(76, HEAP_ID_9E);
+    appData->playerNameString = NewString_ReadMsgData(appData->msgData, msg_0421_00043);
+    appData->rankingString = NewString_ReadMsgData(appData->msgData, msg_0421_00042);
     for (int i = 0; i < 7; ++i) {
-        appData->unk_078[i] = NewString_ReadMsgData(appData->msgData, msg_0421_00044 + i);
+        appData->miscStrings[i] = NewString_ReadMsgData(appData->msgData, msg_0421_00044 + i);
     }
 }
 
-static void ov121_021E6A4C(Overlay121AppData *appData) {
+static void ViewFriendRecords_DeleteStrings(ViewFriendRecordsAppData *appData) {
     for (int i = 0; i < 7; ++i) {
-        String_Delete(appData->unk_078[i]);
+        String_Delete(appData->miscStrings[i]);
     }
-    String_Delete(appData->unk_070);
-    String_Delete(appData->unk_074);
-    String_Delete(appData->unk_06C);
+    String_Delete(appData->playerNameString);
+    String_Delete(appData->rankingString);
+    String_Delete(appData->formatedStrBuf);
     MessageFormat_Delete(appData->msgFormat);
     DestroyMsgData(appData->msgData);
 }
 
-static void ov121_021E6A84(Overlay121AppData *appData) {
+static void ViewFriendRecords_PrintRecords(ViewFriendRecordsAppData *appData) {
     int i;
-    int sp18;
-    int sp14;
-    const UnkStruct_ov121_021E7014 *sp10;
-    Overlay121Sub254 *sp24_plus_sp20;
-    int r0;
-    int r5;
+    int ranking;
+    int y;
+    const RecordPageParam *sp10;
+    ViewFriendRecordsSub254 *pRecord;
+    int prev;
+    int cur;
 
-    sp24_plus_sp20= &appData->unk_254[appData->unk_260];
-    sp10 = &ov121_021E7014[appData->page][appData->unk_260];
+    pRecord= &appData->records[appData->recordIdx];
+    sp10 = &sRecordPageParams[appData->page][appData->recordIdx];
 
-    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_1], 0);
-    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_0], 0);
-    sp18 = 1;
-    sp14 = 0;
-    r0 = 0;
+    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_RECORDS], 0);
+    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_RANKING], 0);
+    ranking = 1;
+    y = 0;
+    prev = 0;
     i = 0;
-    appData->unk_261 = 0;
-    for (; i < sp24_plus_sp20->unk_00; ++i) {
-        if (sp24_plus_sp20->unk_04[i].unk_04 != 0) {
-            r5 = min(sp24_plus_sp20->unk_04[i].unk_00->unk_4, sp10->unk_0);
-            if (r5 < r0) {
-                ++sp18;
+    appData->numRecords = 0;
+    for (; i < pRecord->count; ++i) {
+        if (pRecord->entries[i].active != 0) {
+            cur = min(pRecord->entries[i].unk_00->stat, sp10->max);
+            if (cur < prev) {
+                ++ranking;
             }
-            BufferIntegerAsString(appData->msgFormat, 0, sp18, 1, PRINTING_MODE_RIGHT_ALIGN, TRUE);
-            StringExpandPlaceholders(appData->msgFormat, appData->unk_06C, appData->unk_074);
-            AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_0], 0, appData->unk_06C, 0, 16 * sp14, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+            BufferIntegerAsString(appData->msgFormat, 0, ranking, 1, PRINTING_MODE_RIGHT_ALIGN, TRUE);
+            StringExpandPlaceholders(appData->msgFormat, appData->formatedStrBuf, appData->rankingString);
+            AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_RANKING], 0, appData->formatedStrBuf, 0, 16 * y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 
-            BufferString(appData->msgFormat, 1, sp24_plus_sp20->unk_04[i].unk_00->playerName, 2, 1, 2);
-            StringExpandPlaceholders(appData->msgFormat, appData->unk_06C, appData->unk_070);
-            AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_1], 0, appData->unk_06C, 0, 16 * sp14, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+            BufferString(appData->msgFormat, 1, pRecord->entries[i].unk_00->playerName, 2, 1, 2);
+            StringExpandPlaceholders(appData->msgFormat, appData->formatedStrBuf, appData->playerNameString);
+            AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_RECORDS], 0, appData->formatedStrBuf, 0, 16 * y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 
-            BufferIntegerAsString(appData->msgFormat, 0, r5, sp10->unk_4, PRINTING_MODE_RIGHT_ALIGN, TRUE);
-            StringExpandPlaceholders(appData->msgFormat, appData->unk_06C, appData->unk_078[sp10->unk_6 - 44]);
-            AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_1], 0, appData->unk_06C, 160 - FontID_String_GetWidth(0, appData->unk_06C, 0), 16 * sp14, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+            BufferIntegerAsString(appData->msgFormat, 0, cur, sp10->numDigits, PRINTING_MODE_RIGHT_ALIGN, TRUE);
+            StringExpandPlaceholders(appData->msgFormat, appData->formatedStrBuf, appData->miscStrings[sp10->msgId - msg_0421_00044]);
+            AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_RECORDS], 0, appData->formatedStrBuf, 160 - FontID_String_GetWidth(0, appData->formatedStrBuf, 0), 16 * y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 
-            appData->unk_262[sp14] = i;
-            r0 = r5;
-            if (++sp14 >= 6) {
+            appData->recordEntryIdxs[y] = i;
+            prev = cur;
+            if (++y >= 6) {
                 break;
             }
         }
     }
-    CopyWindowToVram(&appData->windows[OV121_WINDOW_1]);
-    CopyWindowToVram(&appData->windows[OV121_WINDOW_0]);
-    appData->unk_261 = sp14;
-    if (appData->unk_231 == 1 && appData->unk_232 >= appData->unk_261) {
-        GF_ASSERT(appData->unk_232 != 7);
-        appData->unk_232 = appData->unk_261 - 1;
-        ov121_021E65D8(appData);
+    CopyWindowToVram(&appData->windows[OV121_WINDOW_RECORDS]);
+    CopyWindowToVram(&appData->windows[OV121_WINDOW_RANKING]);
+    appData->numRecords = y;
+    if (appData->isDeleteMode == 1 && appData->cursorPos >= appData->numRecords) {
+        GF_ASSERT(appData->cursorPos != 7);
+        appData->cursorPos = appData->numRecords - 1;
+        ViewFriendRecords_DrawCursor(appData);
     }
 }
 
-static void Overlay121_PrintDeleteRecordText(Overlay121AppData *appData) {
-    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_4], 0);
+static void ViewFriendRecords_PrintDeleteRecordText(ViewFriendRecordsAppData *appData) {
+    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_DELETE_RECORD], 0);
     String *string = NewString_ReadMsgData(appData->msgData, msg_0421_00040);
-    AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_4], 4, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 1, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_DELETE_RECORD], 4, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 1, 0), NULL);
     String_Delete(string);
-    CopyWindowToVram(&appData->windows[OV121_WINDOW_4]);
+    CopyWindowToVram(&appData->windows[OV121_WINDOW_DELETE_RECORD]);
 }
 
-static void Overlay121_PrintReturnText(Overlay121AppData *appData) {
-    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_3], 0);
+static void ViewFriendRecords_PrintReturnText(ViewFriendRecordsAppData *appData) {
+    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_RETURN], 0);
     String *string = NewString_ReadMsgData(appData->msgData, msg_0421_00041);
-    AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_3], 4, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 1, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_RETURN], 4, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 1, 0), NULL);
     String_Delete(string);
-    CopyWindowToVram(&appData->windows[OV121_WINDOW_3]);
+    CopyWindowToVram(&appData->windows[OV121_WINDOW_RETURN]);
 }
 
-static void Overlay121_PrintDeleteXsRecordAreYouSure(Overlay121AppData *appData) {
-    Overlay121Sub254 *r6;
+static void ViewFriendRecords_PrintDeleteXsRecordAreYouSure(ViewFriendRecordsAppData *appData) {
+    ViewFriendRecordsSub254 *r6;
     u8 r4;
     String *string;
 
-    r4 = appData->unk_262[appData->unk_232];
-    r6 = &appData->unk_254[appData->unk_260];
-    DrawFrameAndWindow2(&appData->windows[OV121_WINDOW_5], TRUE, 0x1, 12);
-    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_5], 0xFF);
-    BufferString(appData->msgFormat, 0, r6->unk_04[r4].unk_00->playerName, 2, 1, 2);
+    r4 = appData->recordEntryIdxs[appData->cursorPos];
+    r6 = &appData->records[appData->recordIdx];
+    DrawFrameAndWindow2(&appData->windows[OV121_WINDOW_SELECT_RECORD_TO_DELETE], TRUE, 0x1, 12);
+    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_SELECT_RECORD_TO_DELETE], 0xFF);
+    BufferString(appData->msgFormat, 0, r6->entries[r4].unk_00->playerName, 2, 1, 2);
     string = ReadMsgData_ExpandPlaceholders(appData->msgFormat, appData->msgData, msg_0421_00049, HEAP_ID_9E);
-    AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_5], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_SELECT_RECORD_TO_DELETE], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     String_Delete(string);
-    CopyWindowToVram(&appData->windows[OV121_WINDOW_5]);
+    CopyWindowToVram(&appData->windows[OV121_WINDOW_SELECT_RECORD_TO_DELETE]);
 }
 
-static void Overlay121_PrintYourOwnRecordCantBeDeleted(Overlay121AppData *appData) {
+static void ViewFriendRecords_PrintYourOwnRecordCantBeDeleted(ViewFriendRecordsAppData *appData) {
     String *string;
 
-    DrawFrameAndWindow2(&appData->windows[OV121_WINDOW_5], TRUE, 0x1, 12);
-    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_5], 0xFF);
+    DrawFrameAndWindow2(&appData->windows[OV121_WINDOW_SELECT_RECORD_TO_DELETE], TRUE, 0x1, 12);
+    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_SELECT_RECORD_TO_DELETE], 0xFF);
     string = NewString_ReadMsgData(appData->msgData, msg_0421_00052);
-    AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_5], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_SELECT_RECORD_TO_DELETE], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     String_Delete(string);
-    CopyWindowToVram(&appData->windows[OV121_WINDOW_5]);
+    CopyWindowToVram(&appData->windows[OV121_WINDOW_SELECT_RECORD_TO_DELETE]);
 }
 
-static void Overlay121_PrintRecordStatHeaderText(Overlay121AppData *appData) {
+static void ViewFriendRecords_PrintRecordStatHeaderText(ViewFriendRecordsAppData *appData) {
     String *string;
     String *string2;
     int msgNo;
 
-    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_2], 0);
-    msgNo = (appData->page == 0 ? msg_0421_00053 : msg_0421_00065) + appData->unk_260 * 2;
+    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_HEADER], 0);
+    msgNo = (appData->page == 0 ? msg_0421_00053 : msg_0421_00065) + appData->recordIdx * 2;
     string = NewString_ReadMsgData(appData->msgData, msgNo);
     string2 = NewString_ReadMsgData(appData->msgData, msgNo + 1);
-    AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_2], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
-    AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_2], 0, string2, 0, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_HEADER], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_HEADER], 0, string2, 0, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     String_Delete(string);
     String_Delete(string2);
-    CopyWindowToVram(&appData->windows[OV121_WINDOW_2]);
+    CopyWindowToVram(&appData->windows[OV121_WINDOW_HEADER]);
 }
 
-static void Overlay121_PrintSelectRecordToDeleteText(Overlay121AppData *appData) {
+static void ViewFriendRecords_PrintSelectRecordToDeleteText(ViewFriendRecordsAppData *appData) {
     String *string;
 
-    DrawFrameAndWindow2(&appData->windows[OV121_WINDOW_5], TRUE, 0x1, 12);
-    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_5], 0xFF);
+    DrawFrameAndWindow2(&appData->windows[OV121_WINDOW_SELECT_RECORD_TO_DELETE], TRUE, 0x1, 12);
+    FillWindowPixelBuffer(&appData->windows[OV121_WINDOW_SELECT_RECORD_TO_DELETE], 0xFF);
     string = NewString_ReadMsgData(appData->msgData, msg_0421_00048);
-    AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_5], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&appData->windows[OV121_WINDOW_SELECT_RECORD_TO_DELETE], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     String_Delete(string);
-    CopyWindowToVram(&appData->windows[OV121_WINDOW_5]);
+    CopyWindowToVram(&appData->windows[OV121_WINDOW_SELECT_RECORD_TO_DELETE]);
 }
 
-static void ov121_021E6EC0(Overlay121AppData *appData) {
+static void ViewFriendRecords_AskConfirmDeleteRecord(ViewFriendRecordsAppData *appData) {
     YesNoPromptTemplate template;
 
-    appData->unk_258 = &appData->unk_254[appData->unk_260].unk_04[appData->unk_262[appData->unk_232]];
-    if (appData->unk_258->unk_06 == 0xFF) {
-        appData->state = OV121_STATE_3;
-        Overlay121_PrintYourOwnRecordCantBeDeleted(appData);
+    appData->recordToDelete = &appData->records[appData->recordIdx].entries[appData->recordEntryIdxs[appData->cursorPos]];
+    if (appData->recordToDelete->friendIdx == 0xFF) {
+        appData->state = OV121_STATE_DELETE_FAILED_CANT_DELETE_OWN;
+        ViewFriendRecords_PrintYourOwnRecordCantBeDeleted(appData);
         PlaySE(SEQ_SE_DP_CUSTOM06);
     } else {
         MI_CpuClear8(&template, sizeof(YesNoPromptTemplate));
@@ -1152,7 +1165,7 @@ static void ov121_021E6EC0(Overlay121AppData *appData) {
         template.x = 25;
         template.y = 6;
         YesNoPrompt_InitFromTemplate(appData->yesNoPrompt, &template);
-        Overlay121_PrintDeleteXsRecordAreYouSure(appData);
+        ViewFriendRecords_PrintDeleteXsRecordAreYouSure(appData);
         dimAllMainBgsExceptLyr0();
         appData->state = OV121_STATE_YESNO;
     }
@@ -1169,18 +1182,18 @@ static void resetMainBgsBrightness(void) {
     G2_BlendNone();
 }
 
-static void ov121_021E6F78(Overlay121AppData *appData) {
+static void ViewFriendRecordsApp_CommitChanges(ViewFriendRecordsAppData *appData) {
     int i;
     int j;
-    int r6;
-    Overlay121Sub258 *r1;
-    for (i = 0; i < appData->unk_25E; ++i) {
-        r6 = 0;
-        for (j = 0; j < appData->unk_254[i].unk_00; ++j) {
-            r1 = &appData->unk_254[i].unk_04[j];
-            if (r1->unk_06 != 0xFF && r1->unk_04 == 0) {
-                sub_0202E544(appData->unk_234, appData->unk_25F + appData->unk_25D * 13 + i, r1->unk_06 - r6);
-                ++r6;
+    int count;
+    ViewFriendRecordsSub258 *r1;
+    for (i = 0; i < appData->pageLength; ++i) {
+        count = 0;
+        for (j = 0; j < appData->records[i].count; ++j) {
+            r1 = &appData->records[i].entries[j];
+            if (r1->friendIdx != 0xFF && r1->active == FALSE) {
+                sub_0202E544(appData->unk_234, appData->pageOffset + appData->unk_25D * RANKINGS_COUNT + i, r1->friendIdx - count);
+                ++count;
             }
         }
     }

@@ -5,19 +5,19 @@
 #include "unk_0200FA24.h"
 #include "unk_02097D3C.h"
 
-static BOOL sub_02097D80(TaskManager *taskManager);
+static BOOL Task_ViewFriendRecordsApp(TaskManager *taskManager);
 
-void sub_02097D3C(FieldSystem *fieldSystem, u8 a1, u8 a2) {
+void FieldSystem_LaunchTask_ViewFriendRecordsApp(FieldSystem *fieldSystem, u8 pageScrollParam, u8 cursorPos) {
     UnkStruct_02097D48 *taskData = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(UnkStruct_02097D48));
     taskData->state = 0;
-    taskData->args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(UnkStruct_02097D56));
+    taskData->args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(ViewFriendRecordsArgs));
     taskData->args->saveData = FieldSystem_GetSaveData(fieldSystem);
-    taskData->args->unk_0 = a1;
-    taskData->args->unk_2 = a2;
-    TaskManager_Call(fieldSystem->taskman, sub_02097D80, taskData);
+    taskData->args->page_scroll = pageScrollParam;
+    taskData->args->cursorPos = cursorPos;
+    TaskManager_Call(fieldSystem->taskman, Task_ViewFriendRecordsApp, taskData);
 }
 
-static BOOL sub_02097D80(TaskManager *taskManager) {
+static BOOL Task_ViewFriendRecordsApp(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     UnkStruct_02097D48 *taskData = TaskManager_GetEnvironment(taskManager);
 
@@ -32,7 +32,7 @@ static BOOL sub_02097D80(TaskManager *taskManager) {
             break;
         }
 
-        sub_0203FD08(fieldSystem, taskData->args);
+        LaunchApp_ViewFriendRecords(fieldSystem, taskData->args);
         sub_0203E30C();
         taskData->state++;
         break;

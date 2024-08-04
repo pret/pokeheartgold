@@ -169,10 +169,10 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
         (SAVESIZEFN)sub_0202E41C,
         (SAVEINITFN)sub_0202E424
     }, {
-        SAVE_UNK_24,
+        SAVE_RANKINGS,
         0,
-        (SAVESIZEFN)sub_0202E4F4,
-        (SAVEINITFN)sub_0202E4FC
+        (SAVESIZEFN)Save_Rankings_sizeof,
+        (SAVEINITFN)Save_Rankings_Init
     }, {
         SAVE_UNK_25,
         0,

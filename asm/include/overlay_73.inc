@@ -163,7 +163,7 @@
 .public sub_0202E474
 .public sub_0202E530
 .public sub_0202E58C
-.public sub_0202E66C
+.public Save_GetPlayerRankingEntry
 .public sub_0202E97C
 .public sub_0203189C
 .public sub_02033250

@@ -232,9 +232,9 @@ scr_seq_T10R0101_007:
 	touchscreen_menu_hide
 _02CD:
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 8, 255, 0
-	menu_item_add 9, 255, 1
-	menu_item_add 10, 255, 2
+	menu_item_add msg_0522_T10R0101_00008, 255, 0
+	menu_item_add msg_0522_T10R0101_00009, 255, 1
+	menu_item_add msg_0522_T10R0101_00010, 255, 2
 	menu_exec
 	switch VAR_SPECIAL_RESULT
 	case 0, _0317
@@ -247,9 +247,9 @@ _0317:
 	goto_if_eq _037A
 	npc_msg msg_0522_T10R0101_00011
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 12, 255, 0
-	menu_item_add 13, 255, 1
-	menu_item_add 14, 255, 2
+	menu_item_add msg_0522_T10R0101_00012, 255, 0
+	menu_item_add msg_0522_T10R0101_00013, 255, 1
+	menu_item_add msg_0522_T10R0101_00014, 255, 2
 	menu_exec
 	switch VAR_SPECIAL_RESULT
 	case 0, _037A
@@ -264,16 +264,16 @@ _0371:
 _037A:
 	npc_msg msg_0522_T10R0101_00015
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 16, 255, 0
-	menu_item_add 17, 255, 1
-	menu_item_add 18, 255, 2
-	menu_item_add 19, 255, 3
-	menu_item_add 26, 255, 4
+	menu_item_add msg_0522_T10R0101_00016, 255, 0
+	menu_item_add msg_0522_T10R0101_00017, 255, 1
+	menu_item_add msg_0522_T10R0101_00018, 255, 2
+	menu_item_add msg_0522_T10R0101_00019, 255, 3
+	menu_item_add msg_0522_T10R0101_00026, 255, 4
 	menu_exec
 	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _03CF
 	closemsg
-	scrcmd_378 4, VAR_SPECIAL_RESULT
+	view_rankings RANKINGS_SCOPE_GROUP, RANKINGS_PAGE_POKEMON, VAR_SPECIAL_RESULT
 	npc_msg msg_0522_T10R0101_00007
 	touchscreen_menu_hide
 	goto _02CD
@@ -293,18 +293,18 @@ _03EB:
 _03F1:
 	npc_msg msg_0522_T10R0101_00015
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 20, 255, 0
-	menu_item_add 21, 255, 1
-	menu_item_add 22, 255, 2
-	menu_item_add 23, 255, 3
-	menu_item_add 24, 255, 4
-	menu_item_add 25, 255, 5
-	menu_item_add 26, 255, 6
+	menu_item_add msg_0522_T10R0101_00020, 255, 0
+	menu_item_add msg_0522_T10R0101_00021, 255, 1
+	menu_item_add msg_0522_T10R0101_00022, 255, 2
+	menu_item_add msg_0522_T10R0101_00023, 255, 3
+	menu_item_add msg_0522_T10R0101_00024, 255, 4
+	menu_item_add msg_0522_T10R0101_00025, 255, 5
+	menu_item_add msg_0522_T10R0101_00026, 255, 6
 	menu_exec
 	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _03CF
 	closemsg
-	scrcmd_378 3, VAR_SPECIAL_RESULT
+	view_rankings RANKINGS_SCOPE_GROUP, RANKINGS_PAGE_BATTLE_TOWER, VAR_SPECIAL_RESULT
 	npc_msg msg_0522_T10R0101_00007
 	touchscreen_menu_hide
 	goto _02CD
@@ -314,9 +314,9 @@ _0456:
 	goto_if_eq _04B0
 	npc_msg msg_0522_T10R0101_00011
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 12, 255, 0
-	menu_item_add 13, 255, 1
-	menu_item_add 14, 255, 2
+	menu_item_add msg_0522_T10R0101_00012, 255, 0
+	menu_item_add msg_0522_T10R0101_00013, 255, 1
+	menu_item_add msg_0522_T10R0101_00014, 255, 2
 	menu_exec
 	switch VAR_SPECIAL_RESULT
 	case 0, _04B0
@@ -327,16 +327,16 @@ _0456:
 _04B0:
 	npc_msg msg_0522_T10R0101_00015
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 16, 255, 0
-	menu_item_add 17, 255, 1
-	menu_item_add 18, 255, 2
-	menu_item_add 19, 255, 3
-	menu_item_add 26, 255, 4
+	menu_item_add msg_0522_T10R0101_00016, 255, 0
+	menu_item_add msg_0522_T10R0101_00017, 255, 1
+	menu_item_add msg_0522_T10R0101_00018, 255, 2
+	menu_item_add msg_0522_T10R0101_00019, 255, 3
+	menu_item_add msg_0522_T10R0101_00026, 255, 4
 	menu_exec
 	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _0505
 	closemsg
-	scrcmd_378 1, VAR_SPECIAL_RESULT
+	view_rankings RANKINGS_SCOPE_GLOBAL, RANKINGS_PAGE_POKEMON, VAR_SPECIAL_RESULT
 	npc_msg msg_0522_T10R0101_00007
 	touchscreen_menu_hide
 	goto _02CD
@@ -356,18 +356,18 @@ _0521:
 _0527:
 	npc_msg msg_0522_T10R0101_00015
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 20, 255, 0
-	menu_item_add 21, 255, 1
-	menu_item_add 22, 255, 2
-	menu_item_add 23, 255, 3
-	menu_item_add 24, 255, 4
-	menu_item_add 25, 255, 5
-	menu_item_add 26, 255, 6
+	menu_item_add msg_0522_T10R0101_00020, 255, 0
+	menu_item_add msg_0522_T10R0101_00021, 255, 1
+	menu_item_add msg_0522_T10R0101_00022, 255, 2
+	menu_item_add msg_0522_T10R0101_00023, 255, 3
+	menu_item_add msg_0522_T10R0101_00024, 255, 4
+	menu_item_add msg_0522_T10R0101_00025, 255, 5
+	menu_item_add msg_0522_T10R0101_00026, 255, 6
 	menu_exec
 	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _0505
 	closemsg
-	scrcmd_378 0, VAR_SPECIAL_RESULT
+	view_rankings RANKINGS_SCOPE_GLOBAL, RANKINGS_PAGE_BATTLE_TOWER, VAR_SPECIAL_RESULT
 	npc_msg msg_0522_T10R0101_00007
 	touchscreen_menu_hide
 	goto _02CD

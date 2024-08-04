@@ -219,7 +219,7 @@ u32 GameStats_sizeof(void) {
 void GameStats_Init(GAME_STATS *gameStats) {
     MI_CpuClear32(gameStats, sizeof(GAME_STATS));
     gameStats->unk_1BE = OS_GetVBlankCount() | (OS_GetVBlankCount() << 8);
-    GameStats_Release(gameStats, 2);
+    GameStats_Release(gameStats, GAME_STAT_SCORE);
 }
 
 GAME_STATS *Save_GameStats_Get(SaveData *saveData) {

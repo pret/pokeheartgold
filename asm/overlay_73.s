@@ -9476,10 +9476,10 @@ ov73_021EA2FC: ; 0x021EA2FC
 
 	thumb_func_start ov73_021EA31C
 ov73_021EA31C: ; 0x021EA31C
-	ldr r3, _021EA320 ; =sub_0202E66C
+	ldr r3, _021EA320 ; =Save_GetPlayerRankingEntry
 	bx r3
 	.balign 4, 0
-_021EA320: .word sub_0202E66C
+_021EA320: .word Save_GetPlayerRankingEntry
 	thumb_func_end ov73_021EA31C
 
 	thumb_func_start ov73_021EA324

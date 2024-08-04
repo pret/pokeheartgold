@@ -21,6 +21,7 @@
 #include "constants/badge.h"
 #include "constants/global.fieldmap.h"
 #include "constants/game_stats.h"
+#include "constants/ranking.h"
 
 #define lt    0
 #define eq    1

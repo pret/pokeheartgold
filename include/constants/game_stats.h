@@ -8,9 +8,9 @@
 #define GAME_STAT_UNK6                         6
 #define GAME_STAT_UNK8                         8 //wild battles?
 #define GAME_STAT_UNK9                         9 //trainer battles?
-#define GAME_STAT_UNK10                       10
-#define GAME_STAT_UNK11                       11
-#define GAME_STAT_UNK12                       12
+#define GAME_STAT_CAUGHT_MON                  10
+#define GAME_STAT_FISHING_LANDED_MON          11
+#define GAME_STAT_HATCHED_EGG                 12
 #define GAME_STAT_UNK14                       14
 #define GAME_STAT_UNK16                       16
 #define GAME_STAT_UNK17                       17
@@ -23,14 +23,15 @@
 #define GAME_STAT_UNK46                       46
 #define GAME_STAT_BATTLE_POINTS               69
 #define GAME_STAT_UNK70                       70
+#define GAME_STAT_UNK74                       74
 #define GAME_STAT_UNK77                       77
 #define GAME_STAT_UNK79                       79
 #define GAME_STAT_UNK80                       80
-#define GAME_STAT_UNK91                       91
-#define GAME_STAT_UNK92                       92
-#define GAME_STAT_UNK93                       93
-#define GAME_STAT_UNK94                       94
-#define GAME_STAT_UNK95                       95
+#define GAME_STAT_LOCAL_CONTEST_ENTRIES       91
+#define GAME_STAT_COMM_CONTEST_ENTRIES        92
+#define GAME_STAT_LOCAL_CONTEST_WINS          93
+#define GAME_STAT_COMM_CONTEST_WINS           94
+#define GAME_STAT_RIBBONS_EARNED              95
 #define GAME_STAT_UNK96                       96
 #define GAME_STAT_PLAYER_MON_FAINTED          97
 #define GAME_STAT_UNK98                       98

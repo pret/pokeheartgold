@@ -3239,10 +3239,10 @@ BOOL ScrCmd_377(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_378(ScriptContext *ctx) {
-    u16 r4 = ScriptGetVar(ctx);
-    u16 r2 = ScriptGetVar(ctx);
-    sub_02097D3C(ctx->fieldSystem, r4, r2);
+BOOL ScrCmd_ViewFriendRecords(ScriptContext *ctx) {
+    u16 pageScrollParam = ScriptGetVar(ctx);
+    u16 cursorPos = ScriptGetVar(ctx);
+    FieldSystem_LaunchTask_ViewFriendRecordsApp(ctx->fieldSystem, pageScrollParam, cursorPos);
     return TRUE;
 }
 
