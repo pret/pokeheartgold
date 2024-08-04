@@ -27,7 +27,7 @@
 #include "save_local_field_data.h"
 #include "save_trainer_house.h"
 #include "save_special_ribbons.h"
-#include "unk_0202E4B0.h"
+#include "save_rankings.h"
 #include "game_stats.h"
 
 #define DECL_CHUNK(prefix) extern u32 prefix##_sizeof(void); extern void prefix##_Init(void *);

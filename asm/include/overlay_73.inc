@@ -161,10 +161,10 @@
 .public sub_0202D8A4
 .public sub_0202E43C
 .public sub_0202E474
-.public sub_0202E530
-.public sub_0202E58C
-.public Save_GetPlayerRankingEntry
-.public sub_0202E97C
+.public Save_Rankings_Get
+.public Save_Rankings_GetMixingSize
+.public Save_GetPlayerMixingRankingEntry
+.public Save_UpdateRankingsFromMixing
 .public sub_0203189C
 .public sub_02033250
 .public sub_02034818

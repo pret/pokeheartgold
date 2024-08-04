@@ -3239,10 +3239,10 @@ BOOL ScrCmd_377(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_ViewFriendRecords(ScriptContext *ctx) {
+BOOL ScrCmd_ViewRankings(ScriptContext *ctx) {
     u16 pageScrollParam = ScriptGetVar(ctx);
     u16 cursorPos = ScriptGetVar(ctx);
-    FieldSystem_LaunchTask_ViewFriendRecordsApp(ctx->fieldSystem, pageScrollParam, cursorPos);
+    FieldSystem_LaunchTask_ViewRankingsApp(ctx->fieldSystem, pageScrollParam, cursorPos);
     return TRUE;
 }
 

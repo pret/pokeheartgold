@@ -9476,10 +9476,10 @@ ov73_021EA2FC: ; 0x021EA2FC
 
 	thumb_func_start ov73_021EA31C
 ov73_021EA31C: ; 0x021EA31C
-	ldr r3, _021EA320 ; =Save_GetPlayerRankingEntry
+	ldr r3, _021EA320 ; =Save_GetPlayerMixingRankingEntry
 	bx r3
 	.balign 4, 0
-_021EA320: .word Save_GetPlayerRankingEntry
+_021EA320: .word Save_GetPlayerMixingRankingEntry
 	thumb_func_end ov73_021EA31C
 
 	thumb_func_start ov73_021EA324
@@ -9488,7 +9488,7 @@ ov73_021EA324: ; 0x021EA324
 	sub sp, #4
 	add r4, r0, #0
 	ldr r0, [r4, #4]
-	bl sub_0202E530
+	bl Save_Rankings_Get
 	ldr r0, [r4]
 	str r0, [sp]
 	ldr r2, [r4, #8]
@@ -9497,7 +9497,7 @@ ov73_021EA324: ; 0x021EA324
 	ldr r1, [r4, #0xc]
 	ldr r3, [r4, #0x10]
 	lsr r2, r2, #0x18
-	bl sub_0202E97C
+	bl Save_UpdateRankingsFromMixing
 	add sp, #4
 	pop {r3, r4, pc}
 	thumb_func_end ov73_021EA324
@@ -9873,7 +9873,7 @@ ov73_021EA744: ; 0x021EA744
 	.word ov73_021E7A7C, ov73_021E7B84, 0
 	.word ov73_021E7A84, ov73_021E7BC8, 0
 	.word ov73_021E7A74, ov73_021E7B3C, 0
-	.word sub_0202E58C, ov73_021EA31C, ov73_021EA324
+	.word Save_Rankings_GetMixingSize, ov73_021EA31C, ov73_021EA324
 	.word sub_0202D230, ov73_021EA348, ov73_021EA370
 	.word ov73_021E7A7C, ov73_021E7C50, 0
 	.word ov73_021E7A84, ov73_021E7C94, 0

@@ -29,7 +29,7 @@
 #include "overlay_109.h"
 #include "overlay_111.h"
 #include "overlay_113.h"
-#include "overlay_121.h"
+#include "application/view_rankings.h"
 #include "overlay_14.h"
 #include "overlay_15.h"
 #include "overlay_16.h"
@@ -1397,7 +1397,7 @@ LegendaryCinematicArgs *LegendaryCinematic_LaunchApp(FieldSystem *fieldSystem, U
     return args;
 }
 
-void LaunchApp_ViewFriendRecords(FieldSystem *fieldSystem, ViewFriendRecordsArgs *args) {
-    static const OVY_MGR_TEMPLATE sViewFriendRecordsAppTemplate = { ViewFriendRecordsApp_Init, ViewFriendRecordsApp_Main, ViewFriendRecordsApp_Exit, FS_OVERLAY_ID(OVY_121) };
-    FieldSystem_LaunchApplication(fieldSystem, &sViewFriendRecordsAppTemplate, args);
+void LaunchApp_ViewRankings(FieldSystem *fieldSystem, ViewRankingsArgs *args) {
+    static const OVY_MGR_TEMPLATE sViewRankingsAppTemplate = { ViewRankingsApp_Init, ViewRankingsApp_Main, ViewRankingsApp_Exit, FS_OVERLAY_ID(OVY_121) };
+    FieldSystem_LaunchApplication(fieldSystem, &sViewRankingsAppTemplate, args);
 }

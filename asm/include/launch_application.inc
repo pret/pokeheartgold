@@ -135,7 +135,7 @@
 .public sub_0203FC68
 .public sub_0203FC90
 .public LegendaryCinematic_LaunchApp
-.public LaunchApp_ViewFriendRecords
+.public LaunchApp_ViewRankings
 .public Save_VarsFlags_Get
 .public Save_VarsFlags_CheckFlagInArray
 .public TaskManager_Call
@@ -352,9 +352,9 @@
 .public UnownReport_Init
 .public UnownReport_Main
 .public UnownReport_Exit
-.public ViewFriendRecordsApp_Init
-.public ViewFriendRecordsApp_Main
-.public ViewFriendRecordsApp_Exit
+.public ViewRankingsApp_Init
+.public ViewRankingsApp_Main
+.public ViewRankingsApp_Exit
 .public VoltorbFlip_Init
 .public VoltorbFlip_Exit
 .public VoltorbFlip_Main

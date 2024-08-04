@@ -4,18 +4,18 @@
 #include "field_types_def.h"
 #include "save.h"
 
-typedef struct ViewFriendRecordsArgs {
+typedef struct ViewRankingsArgs {
     u16 page_scroll;
     u16 cursorPos;
     SaveData *saveData;
-} ViewFriendRecordsArgs;
+} ViewRankingsArgs;
 
 typedef struct UnkStruct_02097D48 {
     u32 state;
-    ViewFriendRecordsArgs *args;
+    ViewRankingsArgs *args;
 } UnkStruct_02097D48;
 
 // pageScrollParam = 3 * scroll + page
-void FieldSystem_LaunchTask_ViewFriendRecordsApp(FieldSystem *fieldSystem, u8 pageScrollParam, u8 cursorPos);
+void FieldSystem_LaunchTask_ViewRankingsApp(FieldSystem *fieldSystem, u8 pageScrollParam, u8 cursorPos);
 
 #endif //POKEHEARTGOLD_UNK_02097D3C_H

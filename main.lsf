@@ -123,7 +123,7 @@ Static main
     Object src/mystery_gift.o
     Object src/hall_of_fame.o
     Object asm/unk_0202E41C.o
-    Object src/unk_0202E4B0.o
+    Object src/save_rankings.o
     Object asm/unk_0202EB30.o
     Object src/update_dex_received.o
     Object asm/unk_0202ED18.o
@@ -1180,7 +1180,7 @@ Overlay OVY_120
 Overlay OVY_121
 {
     After main
-    Object src/overlay_121.o
+    Object src/application/view_rankings.o
 }
 Overlay voltorb_flip
 {
