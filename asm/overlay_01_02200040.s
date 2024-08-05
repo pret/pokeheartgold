@@ -103,7 +103,7 @@ ov01_022000DC: ; 0x022000DC
 	bl ov01_021F146C
 	add r4, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystem
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	mov r1, #0xf

@@ -41,8 +41,8 @@
 .public sub_0205C838
 .public PlayerAvatar_ToggleAutomaticHeightUpdating
 .public PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
-.public GetMapObjectByID
-.public MapObjectManager_GetCount
+.public MapObjectManager_GetFirstActiveObjectByID
+.public MapObjectManager_GetObjectCount
 .public MapObjectManager_GetObjects
 .public sub_0205F1D0
 .public MapObject_GetID

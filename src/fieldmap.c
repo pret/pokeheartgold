@@ -1,3 +1,4 @@
+#include "start_menu.h"
 #define _IN_FIELDMAP_C
 
 #include "fieldmap.h"
@@ -5,9 +6,8 @@
 #include "save_vars_flags.h"
 #include "map_events.h"
 #include "task.h"
-#include "field_map_object.h"
+#include "map_object.h"
 #include "field_system.h"
-#include "start_menu.h"
 #include "constants/std_script.h"
 #include "fielddata/script/scr_seq.naix"
 #include "msgdata/msg.naix"
@@ -382,7 +382,7 @@ u16 FieldSystem_VarGetObjectEventGraphicsId(FieldSystem *fieldSystem, u16 varobj
     return FieldSystem_VarGet(fieldSystem, VAR_OBJ_GFX_BASE + varobjId);
 }
 
-BOOL FieldSystem_FlagGet(FieldSystem *fieldSystem, u16 flagId) {
+BOOL FieldSystem_FlagCheck(FieldSystem *fieldSystem, u16 flagId) {
     return Save_VarsFlags_CheckFlagInArray(Save_VarsFlags_Get(fieldSystem->saveData), flagId);
 }
 
@@ -553,7 +553,7 @@ HiddenItemResponse* AllocAndFetchNearbyHiddenItems(FieldSystem *fieldSystem, Hea
     // To fix, subtract 1 from num_bgs in the condition clause
     for (i = 0; i < num_bgs; i++) {
         if (bgEvents[i].type == 2
-        && !FieldSystem_FlagGet(fieldSystem, HiddenItemScriptNoToFlagId(bgEvents[i].scr))) {
+        && !FieldSystem_FlagCheck(fieldSystem, HiddenItemScriptNoToFlagId(bgEvents[i].scr))) {
             if (bgEvents[i].x >= left
                && bgEvents[i].x <= right
                && bgEvents[i].y >= top

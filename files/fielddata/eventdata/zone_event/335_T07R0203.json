@@ -125,8 +125,8 @@
   "objects": [
     {
       "id": "obj_T07R0203_gsman1",
-      "ovid": "SPRITE_GSMAN1",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSMAN1",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0203_002 + 1",
@@ -142,8 +142,8 @@
     },
     {
       "id": "obj_T07R0203_sunglasses",
-      "ovid": "SPRITE_SUNGLASSES",
-      "mvt": 14,
+      "sprite_id": "SPRITE_SUNGLASSES",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0203_001 + 1",
@@ -159,8 +159,8 @@
     },
     {
       "id": "obj_T07R0203_gsbigman",
-      "ovid": "SPRITE_GSBIGMAN",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSBIGMAN",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0203_003 + 1",
@@ -176,8 +176,8 @@
     },
     {
       "id": "obj_T07R0203_gsman3",
-      "ovid": "SPRITE_GSMAN3",
-      "mvt": 5,
+      "sprite_id": "SPRITE_GSMAN3",
+      "movement": 5,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0203_000 + 1",
@@ -193,8 +193,8 @@
     },
     {
       "id": "obj_T07R0203_gsboy1",
-      "ovid": "SPRITE_GSBOY1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSBOY1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0203_009 + 1",
@@ -210,8 +210,8 @@
     },
     {
       "id": "obj_T07R0203_var_1",
-      "ovid": "SPRITE_VAR_1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_VAR_1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,
@@ -227,8 +227,8 @@
     },
     {
       "id": "obj_T07R0203_tsure_poke_static_marill",
-      "ovid": "SPRITE_FOLLOWER_MON_STATIC_MARILL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_MARILL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,
@@ -244,8 +244,8 @@
     },
     {
       "id": "obj_T07R0203_suit",
-      "ovid": "SPRITE_SUIT",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SUIT",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07R0203_012 + 1",

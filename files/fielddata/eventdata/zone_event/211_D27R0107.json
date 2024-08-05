@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_D27R0107_babyboy1_8",
-      "ovid": "SPRITE_BABYBOY1_8",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BABYBOY1_8",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_UNK_1D8",
       "scr": "_EV_scr_seq_D27R0107_002 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_D27R0107_gsleader6",
-      "ovid": "SPRITE_GSLEADER6",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSLEADER6",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_UNK_1D7",
       "scr": "_EV_scr_seq_D27R0107_000 + 1",
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_D27R0107_tsure_poke_static_ampharos",
-      "ovid": "SPRITE_FOLLOWER_MON_STATIC_AMPHAROS",
-      "mvt": 0,
+      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_AMPHAROS",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D27R0107_001 + 1",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_D27R0107_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D27R0107_SUPER_POTION",
       "scr": "std_itemball_d27r0107_super_potion",
@@ -71,8 +71,8 @@
     },
     {
       "id": "obj_D27R0107_stop",
-      "ovid": "SPRITE_STOP",
-      "mvt": 0,
+      "sprite_id": "SPRITE_STOP",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_UNK_1D8",
       "scr": 0,

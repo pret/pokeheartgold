@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_UNK_02092BE8_H
 #define POKEHEARTGOLD_UNK_02092BE8_H
 
+#include "field_system.h"
 #include "save.h"
 #include "save_local_field_data.h"
 #include "save_vars_flags.h"

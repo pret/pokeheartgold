@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_T23R0201_gsfighter",
-      "ovid": "SPRITE_GSFIGHTER",
-      "mvt": 9,
+      "sprite_id": "SPRITE_GSFIGHTER",
+      "movement": 9,
       "type": 0,
       "flag": "FLAG_UNK_1AE",
       "scr": "_EV_scr_seq_T23R0201_000 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_T23R0201_gsboy1",
-      "ovid": "SPRITE_GSBOY1",
-      "mvt": 2,
+      "sprite_id": "SPRITE_GSBOY1",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_UNK_1AC",
       "scr": "_EV_scr_seq_T23R0201_001 + 1",
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_T23R0201_tsure_poke_static_farfetchd",
-      "ovid": "SPRITE_FOLLOWER_MON_STATIC_FARFETCHD",
-      "mvt": 3,
+      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_FARFETCHD",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_UNK_1AC",
       "scr": "_EV_scr_seq_T23R0201_002 + 1",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_T23R0201_tsure_poke_static_farfetchd_2",
-      "ovid": "SPRITE_FOLLOWER_MON_STATIC_FARFETCHD",
-      "mvt": 2,
+      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_FARFETCHD",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_UNK_1AC",
       "scr": "_EV_scr_seq_T23R0201_002 + 1",

@@ -999,7 +999,7 @@ _02061942:
 	bl MapObject_GetFacingDirection
 	add r4, r0, #0
 	add r0, r7, #0
-	bl MapObject_GetInitialFacing
+	bl MapObject_GetInitialFacingDirection
 	cmp r4, r0
 	bne _02061968
 	mov r0, #0
@@ -1062,7 +1062,7 @@ sub_020619C0: ; 0x020619C0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl MapObject_GetInitialFacing
+	bl MapObject_GetInitialFacingDirection
 	mov r1, #2
 	ldrsh r1, [r4, r1]
 	add r6, r0, #0
@@ -1073,7 +1073,7 @@ sub_020619C0: ; 0x020619C0
 _020619DA:
 	add r0, r5, #0
 	add r1, r6, #0
-	bl MapObject_SetNextFacing
+	bl MapObject_SetNextFacingDirection
 	add r0, r5, #0
 	bl sub_02062050
 	cmp r0, #0
@@ -1113,12 +1113,12 @@ sub_020619FC: ; 0x020619FC
 	cmp r1, r0
 	bne _02061A5A
 	add r0, r5, #0
-	bl MapObject_GetNextFacing
+	bl MapObject_GetNextFacingDirection
 	bl sub_020611F4
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl MapObject_SetNextFacing
+	bl MapObject_SetNextFacingDirection
 	add r0, r5, #0
 	bl sub_02062050
 	cmp r0, #0
@@ -1131,7 +1131,7 @@ _02061A56:
 	strh r0, [r6, #2]
 _02061A5A:
 	add r0, r5, #0
-	bl MapObject_GetNextFacing
+	bl MapObject_GetNextFacingDirection
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1487,7 +1487,7 @@ _02061CB4:
 	ldr r5, [r7, r0]
 	add r0, r6, #0
 	add r1, r5, #0
-	bl MapObject_SetNextFacing
+	bl MapObject_SetNextFacingDirection
 	add r0, r6, #0
 	bl sub_02062050
 	cmp r0, #0
@@ -1510,7 +1510,7 @@ _02061CDC:
 	ldr r5, [r7, r0]
 	add r0, r6, #0
 	add r1, r5, #0
-	bl MapObject_SetNextFacing
+	bl MapObject_SetNextFacingDirection
 	add r0, r6, #0
 	bl sub_02062050
 	cmp r0, #0
@@ -1761,7 +1761,7 @@ sub_02061E90: ; 0x02061E90
 	pop {r3, r4, r5, r6, r7, pc}
 _02061EA6:
 	add r0, r5, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystem
 	bl FieldSystem_GetPlayerAvatar
 	add r6, r0, #0
 	bl sub_0205DE98
@@ -1891,7 +1891,7 @@ _02061F92:
 	bl MapObject_GetCurrentY
 	str r0, [sp, #4]
 	ldr r0, [sp]
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystem
 	bl FieldSystem_GetPlayerAvatar
 	str r0, [sp, #0xc]
 	bl GetPlayerXCoord
@@ -2055,7 +2055,7 @@ _020620AE:
 	ldr r4, [r1, r0]
 	add r0, r7, #0
 	mov r1, #0x80
-	bl MapObject_GetFlagsMask
+	bl MapObject_GetFlagsBits
 	cmp r0, #0
 	beq _020620DC
 	mov r0, #1

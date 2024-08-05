@@ -45,8 +45,8 @@
   "objects": [
     {
       "id": "obj_R36_gsbigman",
-      "ovid": "SPRITE_GSBIGMAN",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSBIGMAN",
+      "movement": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_R36_008 + 1",
@@ -62,8 +62,8 @@
     },
     {
       "id": "obj_R36_gsgirl1",
-      "ovid": "SPRITE_GSGIRL1",
-      "mvt": 5,
+      "sprite_id": "SPRITE_GSGIRL1",
+      "movement": 5,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_R36_009 + 1",
@@ -79,8 +79,8 @@
     },
     {
       "id": "obj_R36_mystery_2",
-      "ovid": "SPRITE_MYSTERY_2",
-      "mvt": 17,
+      "sprite_id": "SPRITE_MYSTERY_2",
+      "movement": 17,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_PSYCHIC_M_MARK)",
@@ -96,8 +96,8 @@
     },
     {
       "id": "obj_R36_gsboy1",
-      "ovid": "SPRITE_GSBOY1",
-      "mvt": 16,
+      "sprite_id": "SPRITE_GSBOY1",
+      "movement": 16,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_SCHOOL_KID_M_ALAN)",
@@ -113,8 +113,8 @@
     },
     {
       "id": "obj_R36_usokky",
-      "ovid": "SPRITE_USOKKY",
-      "mvt": 0,
+      "sprite_id": "SPRITE_USOKKY",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ROUTE_36_SUDOWOODO",
       "scr": "_EV_scr_seq_R36_000 + 1",
@@ -130,8 +130,8 @@
     },
     {
       "id": "obj_R36_gsgirl1_2",
-      "ovid": "SPRITE_GSGIRL1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSGIRL1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ROUTE_36_FLOWERSHOP_GIRL",
       "scr": "_EV_scr_seq_R36_007 + 1",
@@ -147,8 +147,8 @@
     },
     {
       "id": "obj_R36_gsboy1_2",
-      "ovid": "SPRITE_GSBOY1",
-      "mvt": 2,
+      "sprite_id": "SPRITE_GSBOY1",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_UNK_1C4",
       "scr": "_EV_scr_seq_R36_001 + 1",
@@ -164,8 +164,8 @@
     },
     {
       "id": "obj_R36_bonguri",
-      "ovid": "SPRITE_BONGURI",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BONGURI",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_apricorn_tree",
@@ -181,8 +181,8 @@
     },
     {
       "id": "obj_R36_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_R36_HYPER_POTION",
       "scr": "std_itemball_r36_hyper_potion",

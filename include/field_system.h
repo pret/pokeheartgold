@@ -35,7 +35,7 @@ typedef struct FollowMon {
     u32 unk1C;
 } FollowMon;
 
-struct GearPhoneRingManager {
+typedef struct GearPhoneRingManager {
     u8 unk_var0_0:1;
     u8 unk_var0_1:1;
     u8 unk_var0_2:1;
@@ -61,7 +61,7 @@ struct GearPhoneRingManager {
         SysTask *task;
         u8 counter;
     } gearRing;
-}; //size: 0x48
+} GearPhoneRingManager; //size: 0x48
 
 typedef struct FieldSystemUnk108 {
     u32 personality;

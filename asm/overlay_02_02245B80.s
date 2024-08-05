@@ -15371,7 +15371,7 @@ ov02_0224CFD8: ; 0x0224CFD8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r7, r2, #0
-	bl GetMapObjectByID
+	bl MapObjectManager_GetFirstActiveObjectByID
 	add r6, r0, #0
 	add r1, sp, #0
 	bl MapObject_GetPositionVec
@@ -20328,7 +20328,7 @@ ov02_0224F4BC: ; 0x0224F4BC
 	bl GetPlayerYCoord
 	str r0, [sp]
 	ldr r0, [r4, #0x3c]
-	bl MapObjectManager_GetCount
+	bl MapObjectManager_GetObjectCount
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x3c]
 	bl MapObjectManager_GetObjects
@@ -20355,7 +20355,7 @@ _0224F4FC:
 	ldr r1, [sp]
 	sub r4, r1, r0
 	ldr r0, [sp, #0x10]
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	cmp r0, #0x54
 	bne _0224F52C
 	mov r0, #1
@@ -20434,7 +20434,7 @@ _0224F5A4:
 	bl HiddenItemScriptNoToFlagId
 	add r1, r0, #0
 	ldr r0, [sp]
-	bl FieldSystem_FlagGet
+	bl FieldSystem_FlagCheck
 	cmp r0, #0
 	bne _0224F5BE
 	add r4, r4, #1
@@ -21629,7 +21629,7 @@ ov02_0224FE40: ; 0x0224FE40
 	lsr r6, r0, #0x18
 	add r0, r4, #0
 	sub r1, r1, #1
-	bl MapObject_ForceSetFacingDirection
+	bl MapObject_SetFacingDirectionDirect
 	add r0, r7, #0
 	add r1, r4, #0
 	add r2, r6, #0
@@ -21664,7 +21664,7 @@ ov02_0224FE70: ; 0x0224FE70
 	bne _0224FEFC
 _0224FE9E:
 	add r0, r4, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystem
 	ldr r1, _0224FF00 ; =0x0000087C
 	add r6, r0, #0
 	ldrb r1, [r5, r1]
@@ -21967,7 +21967,7 @@ _022500AE:
 	add r0, #0xe4
 	ldrb r1, [r4, r1]
 	ldr r0, [r0]
-	bl MapObject_ForceSetFacingDirection
+	bl MapObject_SetFacingDirectionDirect
 	add r5, #0xe4
 	ldr r1, [r5]
 	add r0, r4, #0

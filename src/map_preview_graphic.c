@@ -1,5 +1,5 @@
 #include "global.h"
-#include "field_map_object.h"
+#include "map_object.h"
 #include "field_player_avatar.h"
 #include "follow_mon.h"
 #include "gf_gfx_loader.h"
