@@ -74,3 +74,4 @@ demo/opening/gs_opening.narc
 demo/legend.narc
 data/photo_data.narc
 graphic/camera_viewfinder.narc
+*.NCLR
