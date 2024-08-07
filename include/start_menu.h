@@ -62,11 +62,11 @@ void sub_0203BD64(FieldSystem *fieldSystem);
 BOOL FieldSystem_ShouldDrawStartMenuIcon(FieldSystem *fieldSystem, StartMenuIcon a1);
 void StartMenu_SetChildProcReturnTaskFunc(StartMenuTaskData *env, TaskFunc func);
 BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager);
-BOOL sub_0203D718(TaskManager *taskManager);
+BOOL Task_ReturnToMenuFromAppItem(TaskManager *taskManager);
 BOOL Task_UseFlyInField(TaskManager *taskManager);
 struct UnkStruct_0203D818 *sub_0203D818(u16 itemId, u8 kind, u8 partySlot);
-BOOL sub_0203D830(TaskManager *taskManager);
-BOOL sub_0203D9B4(TaskManager *taskManager);
+BOOL Task_ReturnToMenuFromMail(TaskManager *taskManager);
+BOOL Task_ReturnToMenuFromVSRecorder(TaskManager *taskManager);
 
 extern const u8 _020FA0B0[];
 

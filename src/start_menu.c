@@ -880,7 +880,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         pokemonSummaryArgs->unk11 = 1;
         pokemonSummaryArgs->partySlot = partyMenuArgs->partySlot;
         pokemonSummaryArgs->partyCount = Party_GetCount(pokemonSummaryArgs->party);
-        pokemonSummaryArgs->unk18 = 0;
+        pokemonSummaryArgs->moveToLearn = 0;
         pokemonSummaryArgs->unk12 = 0;
         pokemonSummaryArgs->ribbons = Save_SpecialRibbons_Get(fieldSystem->saveData);
         pokemonSummaryArgs->natDexEnabled = SaveArray_IsNatDexEnabled(fieldSystem->saveData);
@@ -902,7 +902,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         pokemonSummaryArgs->unk11 = 1;
         pokemonSummaryArgs->partySlot = partyMenuArgs->partySlot;
         pokemonSummaryArgs->partyCount = 1;
-        pokemonSummaryArgs->unk18 = partyMenuArgs->unk2A;
+        pokemonSummaryArgs->moveToLearn = partyMenuArgs->unk2A;
         pokemonSummaryArgs->unk12 = 2;
         pokemonSummaryArgs->natDexEnabled = SaveArray_IsNatDexEnabled(fieldSystem->saveData);
         pokemonSummaryArgs->unk2C = sub_02088288(fieldSystem->saveData);
@@ -927,7 +927,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         pokemonSummaryArgs->unk11 = 1;
         pokemonSummaryArgs->partySlot = partyMenuArgs->partySlot;
         pokemonSummaryArgs->partyCount = 1;
-        pokemonSummaryArgs->unk18 = partyMenuArgs->unk2A;
+        pokemonSummaryArgs->moveToLearn = partyMenuArgs->unk2A;
         pokemonSummaryArgs->unk12 = 2;
         pokemonSummaryArgs->natDexEnabled = SaveArray_IsNatDexEnabled(fieldSystem->saveData);
         pokemonSummaryArgs->unk2C = sub_02088288(fieldSystem->saveData);
@@ -952,12 +952,12 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         } else {
             startMenu->atexit_TaskEnv2 = sub_0203D818(partyMenuArgs->itemId, 1, partyMenuArgs->partySlot);
         }
-        StartMenu_SetChildProcReturnTaskFunc(startMenu, sub_0203D830);
+        StartMenu_SetChildProcReturnTaskFunc(startMenu, Task_ReturnToMenuFromMail);
         break;
     case 7:
         startMenu->atexit_TaskEnv = sub_0203F050(fieldSystem, Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), partyMenuArgs->partySlot), HEAP_ID_FIELD);
         startMenu->atexit_TaskEnv2 = sub_0203D818(partyMenuArgs->itemId, 2, partyMenuArgs->partySlot);
-        StartMenu_SetChildProcReturnTaskFunc(startMenu, sub_0203D830);
+        StartMenu_SetChildProcReturnTaskFunc(startMenu, Task_ReturnToMenuFromMail);
         break;
     case 3: {
         StartMenuAfterEvoPartySlotBak *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(StartMenuAfterEvoPartySlotBak));
@@ -1116,7 +1116,7 @@ static BOOL Task_StartMenu_HandleReturn(TaskManager *taskManager) {
         if (ItemIdIsMail(itemId) == TRUE && !GetMonData(pokemon, MON_DATA_HELD_ITEM, NULL)) {
             startMenu->atexit_TaskEnv = sub_0203EFEC(fieldSystem, 2, monId, ItemToMailId(itemId), HEAP_ID_FIELD);
             startMenu->atexit_TaskEnv2 = sub_0203D818(itemId, 0, monId);
-            StartMenu_SetChildProcReturnTaskFunc(startMenu, sub_0203D830);
+            StartMenu_SetChildProcReturnTaskFunc(startMenu, Task_ReturnToMenuFromMail);
         } else {
             PartyMenuArgs *partyMenuArgs = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
             memset(partyMenuArgs, 0, sizeof(PartyMenuArgs));
@@ -1274,7 +1274,7 @@ static BOOL Task_StartMenu_RemovedEasyChatThing(TaskManager *taskManager) {
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     startMenu->atexit_TaskEnv = EasyChat_CreateArgs(2, 0, fieldSystem->saveData, &fieldSystem->unk_10C, HEAP_ID_FIELD);
-    MAIL_MESSAGE mailMessage;
+    MailMessage mailMessage;
     MailMsg_Init_WithBank(&mailMessage, MAILMSG_BANK_0295_GMM);
     sub_02090D20(startMenu->atexit_TaskEnv, &mailMessage);
     EasyChat_LaunchApp(fieldSystem, startMenu->atexit_TaskEnv);
@@ -1287,7 +1287,7 @@ static BOOL Task_StartMenu_HandleReturn_RemovedEasyChatThing(TaskManager *taskMa
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     if (!sub_02090D48(startMenu->atexit_TaskEnv)) {
-        MAIL_MESSAGE mailMessage;
+        MailMessage mailMessage;
         sub_02090D60(startMenu->atexit_TaskEnv, &mailMessage);
         if (sub_02035650()) {
             sub_0205AB88(&mailMessage);
@@ -1363,7 +1363,7 @@ static BOOL sub_0203D580(TaskManager *taskManager) {
         sub_0203CF74(partyMenuArgs, fieldSystem, startMenu);
         partyMenuArgs->itemId = r7->itemId;
         partyMenuArgs->partySlot = summaryArgs->partySlot;
-        partyMenuArgs->unk2A = summaryArgs->unk18;
+        partyMenuArgs->unk2A = summaryArgs->moveToLearn;
         partyMenuArgs->unk2C = summaryArgs->unk16;
         if (r7->itemId != ITEM_NONE) {
             partyMenuArgs->unk_24 = 7;
@@ -1409,7 +1409,7 @@ static BOOL sub_0203D6C8(TaskManager *taskManager) {
     return FALSE;
 }
 
-BOOL sub_0203D718(TaskManager *taskManager) {
+BOOL Task_ReturnToMenuFromAppItem(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1451,7 +1451,7 @@ struct UnkStruct_0203D818 *sub_0203D818(u16 itemId, u8 kind, u8 partySlot) {
     return ret;
 }
 
-BOOL sub_0203D830(TaskManager *taskManager) {
+BOOL Task_ReturnToMenuFromMail(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1504,7 +1504,7 @@ static void sub_0203D940(FieldSystem *fieldSystem, StartMenuTaskData *startMenu,
     StartMenu_SetChildProcReturnTaskFunc(startMenu, Task_StartMenu_HandleReturn_Pokemon);
 }
 
-BOOL sub_0203D9B4(TaskManager *taskManager) {
+BOOL Task_ReturnToMenuFromVSRecorder(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 

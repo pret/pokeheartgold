@@ -19,7 +19,7 @@ typedef struct PokemonSummaryArgs {
     u8 partySlot;
     u8 unk15;
     u8 unk16;
-    u16 unk18;
+    u16 moveToLearn;
     u8 unk1A[0x2];
     BOOL natDexEnabled;
     SaveSpecialRibbons *ribbons;

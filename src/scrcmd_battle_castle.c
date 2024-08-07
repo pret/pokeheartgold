@@ -250,7 +250,7 @@ static u32 sub_0204FDA0(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID
     unk->unk11 = 1;
     unk->partySlot = a0->unk05;
     unk->partyCount = Party_GetCount(unk->party);
-    unk->unk18 = 0;
+    unk->moveToLearn = 0;
     unk->unk12 = 0;
     unk->ribbons = Save_SpecialRibbons_Get(saveData);
     unk->isFlag982Set = sub_0208828C(saveData);

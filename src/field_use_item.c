@@ -369,7 +369,7 @@ static void ItemMenuUseFunc_Mail(struct ItemMenuUseData *data, const struct Item
     UseMailArgs *mailWork = UseMail_CreateArgs(fieldSystem, 3, ItemToMailId(data->itemId), HEAP_ID_FIELD);
     env->atexit_TaskEnv2 = sub_0203D818(data->itemId, 3, 0);
     env->atexit_TaskEnv = mailWork;
-    StartMenu_SetChildProcReturnTaskFunc(env, sub_0203D830);
+    StartMenu_SetChildProcReturnTaskFunc(env, Task_ReturnToMenuFromMail);
 }
 
 static enum ItemUseError ItemCheckUseFunc_Berry(const struct ItemCheckUseData *data) {
@@ -391,7 +391,7 @@ static void ItemMenuUseFunc_PalPad(struct ItemMenuUseData *data, const struct It
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     struct StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
     env->atexit_TaskEnv = PalPad_LaunchApp(fieldSystem, fieldSystem->saveData, HEAP_ID_FIELD);
-    StartMenu_SetChildProcReturnTaskFunc(env, sub_0203D718);
+    StartMenu_SetChildProcReturnTaskFunc(env, Task_ReturnToMenuFromAppItem);
 }
 
 static BOOL ItemFieldUseFunc_PalPad(struct ItemFieldUseData *data) {
@@ -595,7 +595,7 @@ static void ItemMenuUseFunc_ApricornBox(struct ItemMenuUseData *data, const stru
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     struct StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
     env->atexit_TaskEnv = ApricornBox_LaunchApp(fieldSystem, 1);
-    StartMenu_SetChildProcReturnTaskFunc(env, sub_0203D718);
+    StartMenu_SetChildProcReturnTaskFunc(env, Task_ReturnToMenuFromAppItem);
 }
 
 static BOOL ItemFieldUseFunc_ApricornBox(struct ItemFieldUseData *data) {
@@ -611,7 +611,7 @@ static void ItemMenuUseFunc_BerryPots(struct ItemMenuUseData *data, const struct
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     struct StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
     env->atexit_TaskEnv = BerryPots_LaunchApp(fieldSystem);
-    StartMenu_SetChildProcReturnTaskFunc(env, sub_0203D718);
+    StartMenu_SetChildProcReturnTaskFunc(env, Task_ReturnToMenuFromAppItem);
 }
 
 static BOOL ItemFieldUseFunc_BerryPots(struct ItemFieldUseData *data) {
@@ -627,7 +627,7 @@ static void ItemMenuUseFunc_UnownReport(struct ItemMenuUseData *data, const stru
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     struct StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
     env->atexit_TaskEnv = UnownReport_LaunchApp(fieldSystem);
-    StartMenu_SetChildProcReturnTaskFunc(env, sub_0203D718);
+    StartMenu_SetChildProcReturnTaskFunc(env, Task_ReturnToMenuFromAppItem);
 }
 
 static BOOL ItemFieldUseFunc_UnownReport(struct ItemFieldUseData *data) {
@@ -710,7 +710,7 @@ static void ItemMenuUseFunc_VSRecorder(struct ItemMenuUseData *data, const struc
     struct StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
     sub_0203F570(fieldSystem, fieldSystem->saveData);
     env->atexit_TaskEnv = NULL;
-    StartMenu_SetChildProcReturnTaskFunc(env, sub_0203D9B4);
+    StartMenu_SetChildProcReturnTaskFunc(env, Task_ReturnToMenuFromVSRecorder);
 }
 
 static BOOL ItemFieldUseFunc_VSRecorder(struct ItemFieldUseData *data) {

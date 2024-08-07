@@ -1619,7 +1619,7 @@ BOOL ScrCmd_PartySelect(ScriptContext *ctx) { //todo: get selected pokemon slot
     u16 *dest_p = ScriptGetVarPointer(ctx);
     PartyMenuArgs **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     GF_ASSERT(*partyMenu != NULL);
-    *dest_p = sub_0203E5C8(*partyMenu);
+    *dest_p = PartyMenuArgs_GetSlot(*partyMenu);
     if (*dest_p == 7) {
         *dest_p = 255;
     }
@@ -1636,7 +1636,7 @@ BOOL ScrCmd_635(ScriptContext *ctx) {
     int r0;
     partyMenu = *partyMenuPtr;
     GF_ASSERT(*partyMenuPtr != NULL);
-    r0 = sub_0203E5C8(*partyMenuPtr);
+    r0 = PartyMenuArgs_GetSlot(*partyMenuPtr);
     if (r0 == 7) {
         *r5 = 255;
     } else if (r0 == 6) {
@@ -1659,7 +1659,7 @@ BOOL ScrCmd_639(ScriptContext *ctx) {
     struct PartyMenuArgs **partyMenuPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     struct PartyMenuArgs *partyMenu = *partyMenuPtr;
     GF_ASSERT(partyMenu != NULL);
-    int r0 = sub_0203E5C8(*partyMenuPtr);
+    int r0 = PartyMenuArgs_GetSlot(*partyMenuPtr);
     if (r0 == 7) {
         *r5 = 255;
     } else if (r0 == 6) {
@@ -1684,7 +1684,7 @@ BOOL ScrCmd_645(ScriptContext *ctx) {
     struct PartyMenuArgs **partyMenuPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     struct PartyMenuArgs *partyMenu = *partyMenuPtr;
     GF_ASSERT(partyMenu != NULL);
-    int r0 = sub_0203E5C8(*partyMenuPtr);
+    int r0 = PartyMenuArgs_GetSlot(*partyMenuPtr);
     if (r0 == 7) {
         *r5 = 255;
     } else if (r0 == 6) {
@@ -1720,12 +1720,12 @@ BOOL ScrCmd_GetMoveSelection(ScriptContext *ctx) {
 BOOL ScrCmd_PokemonSummaryScreen(ScriptContext *ctx) {
     void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     u8 onlySkillsPanel = ScriptReadByte(ctx);
-    u16 r7 = ScriptGetVar(ctx);
-    u16 r3 = ScriptGetVar(ctx);
-    if (onlySkillsPanel == 1) {
-        *p_work = LearnForgetMove_LaunchApp(HEAP_ID_32, ctx->fieldSystem, r7, r3);
+    u16 partySlot = ScriptGetVar(ctx);
+    u16 moveToLearn = ScriptGetVar(ctx);
+    if (onlySkillsPanel == TRUE) {
+        *p_work = LearnForgetMove_LaunchApp(HEAP_ID_32, ctx->fieldSystem, partySlot, moveToLearn);
     } else {
-        *p_work = PokemonSummary_LaunchApp(HEAP_ID_32, ctx->fieldSystem, r7, r3);
+        *p_work = PokemonSummary_LaunchApp(HEAP_ID_32, ctx->fieldSystem, partySlot, moveToLearn);
     }
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
@@ -3962,7 +3962,7 @@ BOOL ScrCmd_552(ScriptContext *ctx) {
     u16 *r5 = ScriptGetVarPointer(ctx);
     struct PartyMenuArgs **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     GF_ASSERT(*partyMenu != NULL);
-    *r6 = sub_0203E5C8(*partyMenu);
+    *r6 = PartyMenuArgs_GetSlot(*partyMenu);
     if (*r6 == 7) {
         *r6 = 255;
     }
