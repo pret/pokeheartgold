@@ -173,7 +173,7 @@
 .public Save_Bag_New
 .public Save_Bag_Copy
 .public BagCursor_Battle_Init
-.public sub_020880B0
+.public CalculateHpBarColor
 .public ApplyMonMoodModifier
 .public G3X_SetFog
 .public G3X_SetClearColor

@@ -680,7 +680,7 @@ sub_0202D640: ; 0x0202D640
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r2, #0
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	ldr r1, _0202D65C ; =0x00000ABC
 	add r1, r0, r1
 	lsl r0, r5, #3
@@ -696,7 +696,7 @@ _0202D65C: .word 0x00000ABC
 sub_0202D660: ; 0x0202D660
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	ldr r1, _0202D674 ; =0x00000ABC
 	add r1, r0, r1
 	lsl r0, r4, #3
@@ -1074,7 +1074,7 @@ sub_0202D8E4: ; 0x0202D8E4
 	thumb_func_start sub_0202D908
 sub_0202D908: ; 0x0202D908
 	push {r3, lr}
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	mov r1, #0x8e
 	lsl r1, r1, #4
 	add r0, r0, r1
@@ -1085,7 +1085,7 @@ sub_0202D908: ; 0x0202D908
 	thumb_func_start Save_FrontierData_Get
 Save_FrontierData_Get: ; 0x0202D918
 	push {r3, lr}
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	ldr r1, _0202D924 ; =0x00000954
 	add r0, r0, r1
 	pop {r3, pc}
@@ -1096,7 +1096,7 @@ _0202D924: .word 0x00000954
 	thumb_func_start sub_0202D928
 sub_0202D928: ; 0x0202D928
 	push {r3, lr}
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	ldr r1, _0202D934 ; =0x00000ADC
 	add r0, r0, r1
 	pop {r3, pc}

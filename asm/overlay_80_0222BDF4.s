@@ -4662,7 +4662,7 @@ FrtCmd_074: ; 0x0222E0C8
 	ldr r0, [r0, #8]
 	bl Save_GameStats_Get
 	add r1, r4, #0
-	bl GameStats_AddSpecial
+	bl GameStats_AddScore
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

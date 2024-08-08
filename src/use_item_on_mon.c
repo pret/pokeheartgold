@@ -469,7 +469,7 @@ BOOL UseItemOnPokemon(Pokemon *mon, u16 itemID, u16 moveIdx, u16 location, HeapI
 #undef sp58
 #undef sp54
 
-BOOL UseItemOnMonInParty(Party *party, u16 itemID, s32 partyIdx, u16 moveIdx, u16 location, HeapID heapID) {
+BOOL UseItemOnMonInParty(Party *party, u16 itemID, s32 partyIdx, u8 moveIdx, u16 location, HeapID heapID) {
     Pokemon *mon = Party_GetMonByIndex(party, partyIdx);
     return UseItemOnPokemon(mon, itemID, moveIdx, location, heapID);
 }

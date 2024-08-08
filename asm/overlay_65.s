@@ -4580,7 +4580,7 @@ _0221E3EE: ; jump table
 	.short _0221E42C - _0221E3EE - 2 ; case 4
 _0221E3F8:
 	ldr r0, [r4, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	ldr r1, _0221E45C ; =0x0000367C
 	ldr r1, [r4, r1]
 	bl sub_020311AC

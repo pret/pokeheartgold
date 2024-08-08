@@ -403,7 +403,7 @@ static const GraphicsModes sGraphicsModes_WholePartyScene = {
     GX_BG0_AS_3D,
 };
 
-static const Unk122_021E92D0 ov63_0221FB30 = {
+static const OamCharTransferParam ov63_0221FB30 = {
     0x400,
     0x10000,
     0x4000,
@@ -663,7 +663,7 @@ static const GXRgb sSpritePltt_Black[16] = {
     RGB_BLACK,
 };
 
-static const Unk122_021E92FC ov63_0221FCB8 = {
+static const OamManagerParam ov63_0221FCB8 = {
     0,
     0x80,
     0,
@@ -1274,8 +1274,8 @@ static void RegisterHallOfFame_CreateSpriteGfxHandlers(RegisterHallOfFameData *d
     data->spriteGfxHandler = SpriteRenderer_CreateGfxHandler(data->spriteRenderer);
 
     {
-        Unk122_021E92FC sp2C = ov63_0221FCB8;
-        Unk122_021E92D0 sp18 = ov63_0221FB30;
+        OamManagerParam sp2C = ov63_0221FCB8;
+        OamCharTransferParam sp18 = ov63_0221FB30;
         sub_0200CF70(data->spriteRenderer, &sp2C, &sp18, 0x20);
     }
 

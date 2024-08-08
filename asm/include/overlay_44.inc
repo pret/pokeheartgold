@@ -219,8 +219,8 @@
 .public sub_0202CA44
 .public sub_0202CA8C
 .public sub_0202CA90
-.public sub_0203107C
-.public sub_020310BC
+.public Save_Frontier_GetStatic
+.public FrontierSave_GetStat
 .public sub_02031188
 .public sub_02031710
 .public sub_02034354

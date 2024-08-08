@@ -117,7 +117,7 @@
 .public sub_02077868
 .public sub_02077870
 .public sub_0208805C
-.public sub_020880B0
+.public CalculateHpBarColor
 .public FX_ModS32
 .public G2x_SetBlendAlpha_
 .public MIi_CpuCopy16

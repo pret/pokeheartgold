@@ -1235,7 +1235,7 @@ ov00_021E629C: ; 0x021E629C
 	ldr r1, [r0]
 	ldr r0, _021E62D0 ; =0x00000F78
 	ldr r0, [r1, r0]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r1, r5, #0
 	add r2, r4, #0
 	bl sub_02031214

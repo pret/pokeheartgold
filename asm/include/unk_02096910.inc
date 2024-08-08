@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_0203107C
-.public sub_020310BC
+.public Save_Frontier_GetStatic
+.public FrontierSave_GetStat
 .public sub_0203410C
 .public sub_020342B8
 .public sub_02037030

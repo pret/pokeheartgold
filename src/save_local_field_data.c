@@ -4,6 +4,7 @@
 #include "map_object.h"
 #include "script_pokemon_util.h"
 #include "unk_0203BA5C.h"
+#include "field_system.h"
 #include "constants/scrcmd.h"
 
 struct LocalFieldData {

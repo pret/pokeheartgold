@@ -2008,7 +2008,7 @@ _02259688:
 	cmp r1, #0
 	beq _0225969A
 	mov r1, #0x27
-	bl GameStats_AddSpecial
+	bl GameStats_AddScore
 _0225969A:
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}

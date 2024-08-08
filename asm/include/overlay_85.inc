@@ -176,7 +176,7 @@
 .public PlayerProfile_GetAvatar
 .public Options_GetFrame
 .public GameStats_Inc
-.public GameStats_AddSpecial
+.public GameStats_AddScore
 .public sub_02033250
 .public sub_02034818
 .public sub_02036FD8

@@ -7,7 +7,7 @@
 .public GF_AssertFail
 .public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_Copy
-.public sub_020310BC
+.public FrontierSave_GetStat
 .public sub_02031108
 .public sub_02031228
 .public sub_02031248

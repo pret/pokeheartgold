@@ -453,19 +453,19 @@ _02235C3C:
 	b _02235E80
 _02235C44:
 	ldr r0, [r7, #8]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r4, r0, #0
 	mov r0, #0x6a
 	bl sub_0205C268
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0x6a
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	strh r0, [r5]
 	b _02235E80
 _02235C60:
 	ldr r0, [r7, #8]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r4, r0, #0
 	mov r0, #3
 	bl sub_0205C11C
@@ -476,7 +476,7 @@ _02235C60:
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	strh r0, [r5]
 	b _02235E80
 _02235C88:
@@ -522,14 +522,14 @@ _02235CC4:
 	bl ov80_022385D8
 	add r6, r0, #0
 	ldr r0, [r4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r7, r0, #0
 	add r0, r6, #0
 	bl sub_0205C268
 	add r2, r0, #0
 	add r0, r7, #0
 	add r1, r6, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r1, r4, #0
 	add r1, #0x72
 	ldrh r1, [r1]
@@ -539,7 +539,7 @@ _02235CF6:
 	b _02235E80
 _02235CF8:
 	ldr r0, [r4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r7, r0, #0
 	add r0, r6, #0
 	bl sub_0205C268
@@ -554,7 +554,7 @@ _02235CF8:
 	bl ov80_02238610
 	add r6, r0, #0
 	ldr r0, [r4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0205C268
@@ -573,14 +573,14 @@ _02235D3E:
 	bl ov80_02238610
 	add r6, r0, #0
 	ldr r0, [r4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r7, r0, #0
 	add r0, r6, #0
 	bl sub_0205C268
 	add r2, r0, #0
 	add r0, r7, #0
 	add r1, r6, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	strh r0, [r5]
 	ldrh r0, [r5]
 	cmp r0, #0
@@ -591,7 +591,7 @@ _02235D3E:
 	bl ov80_022385D8
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r6, r0, #0
 	add r0, r5, #0
 	bl sub_0205C268
@@ -617,7 +617,7 @@ _02235DA8:
 	cmp r0, #4
 	bne _02235DE6
 	ldr r0, [r4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r5, r0, #0
 	mov r0, #0x88
 	bl sub_0205C268
@@ -627,7 +627,7 @@ _02235DA8:
 	mov r3, #0
 	bl sub_02031108
 	ldr r0, [r4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r5, r0, #0
 	mov r0, #0x89
 	bl sub_0205C268
@@ -643,7 +643,7 @@ _02235DE6:
 	cmp r0, #2
 	bne _02235E1A
 	ldr r0, [r4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r5, r0, #0
 	mov r0, #0
 	mov r1, #3
@@ -665,7 +665,7 @@ _02235E1A:
 	cmp r0, #3
 	bne _02235E80
 	ldr r0, [r4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r5, r0, #0
 	mov r0, #1
 	mov r1, #3
@@ -683,7 +683,7 @@ _02235E1A:
 	b _02235E80
 _02235E50:
 	ldr r0, [r4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0205C268

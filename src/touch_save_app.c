@@ -17,6 +17,7 @@
 #include "yes_no_prompt.h"
 #include "sys_task.h"
 #include "unk_020183F0.h"
+#include "overlay_123.h"
 
 FS_EXTERN_OVERLAY(OVY_123);
 
@@ -65,10 +66,6 @@ typedef struct TouchSaveAppData {
     SysTask *savingMovementTask;
 } TouchSaveAppData; // size: 0x6C
 
-extern void *ov123_0225F4A8(void(*)(void));
-extern void *ov123_0225F520(void(*)(void));
-extern void *ov123_0225F610(void(*)(void));
-
 static void ov30_0225D700(SysTask *task, TouchSaveAppData *data);
 static void TouchSaveApp_SetupGraphics(TouchSaveAppData *data);
 static void TouchSaveApp_DestroyWindow(TouchSaveAppData *data);
@@ -93,7 +90,7 @@ static BOOL TouchSaveApp_PrintSavedMessage(TouchSaveAppData *data);
 static BOOL TouchSaveApp_SaveSucceeded(TouchSaveAppData *data);
 static BOOL TouchSaveApp_CloseApp(TouchSaveAppData *data);
 static BOOL TouchSaveApp_ShouldPrintAlternateSavingMessage(TouchSaveAppData *data);
-static void ov30_0225DC00(u32 *a0, u32 a1);
+static void ov30_0225DC00(BOOL *a0, u32 a1);
 static void ov30_0225DC08(void);
 static void ov30_0225DC18(void);
 static void ov30_0225DC28(void);
@@ -362,7 +359,7 @@ static BOOL TouchSaveApp_GetSaveConfirmation(TouchSaveAppData *data) {
 static BOOL TouchSaveApp_HandleSaveConfirmation(TouchSaveAppData *data) {
     switch (YesNoPrompt_HandleInputForSave(data->yesNoPrompt)) {
         case YESNORESPONSE_YES:
-            ov30_0225DC00(&data->fieldSystem->unk_10C, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
+            ov30_0225DC00(&data->fieldSystem->menuInputState, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
             YesNoPrompt_Destroy(data->yesNoPrompt);
             if (Save_FileExists(data->fieldSystem->saveData) == TRUE) {
                 data->state = TOUCHSAVEAPP_STATE_PRINT_OVERWRITE_MESSAGE;
@@ -371,7 +368,7 @@ static BOOL TouchSaveApp_HandleSaveConfirmation(TouchSaveAppData *data) {
             }
             break;
         case YESNORESPONSE_NO:
-            ov30_0225DC00(&data->fieldSystem->unk_10C, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
+            ov30_0225DC00(&data->fieldSystem->menuInputState, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
             YesNoPrompt_Destroy(data->yesNoPrompt);
             return TRUE;
         default:  // clang(-Wswitch)
@@ -400,12 +397,12 @@ static BOOL TouchSaveApp_GetOverwriteConfirmation(TouchSaveAppData *data) {
 static BOOL TouchSaveApp_HandleOverwriteConfirmation(TouchSaveAppData *data) {
     switch (YesNoPrompt_HandleInputForSave(data->yesNoPrompt)) {
         case YESNORESPONSE_YES:
-            ov30_0225DC00(&data->fieldSystem->unk_10C, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
+            ov30_0225DC00(&data->fieldSystem->menuInputState, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
             YesNoPrompt_Destroy(data->yesNoPrompt);
             data->state = TOUCHSAVEAPP_STATE_PRINT_SAVING_MESSAGE;
             break;
         case YESNORESPONSE_NO:
-            ov30_0225DC00(&data->fieldSystem->unk_10C, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
+            ov30_0225DC00(&data->fieldSystem->menuInputState, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
             YesNoPrompt_Destroy(data->yesNoPrompt);
             return TRUE;
         default:  // clang(-Wswitch)
@@ -496,7 +493,7 @@ static BOOL TouchSaveApp_ShouldPrintAlternateSavingMessage(TouchSaveAppData *dat
     return Save_NumModifiedPCBoxesIsMany(data->fieldSystem->saveData);
 }
 
-static void ov30_0225DC00(u32 *a0, u32 a1) {
+static void ov30_0225DC00(BOOL *a0, u32 a1) {
     sub_02018410(a0, a1);
 }
 

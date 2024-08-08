@@ -97,7 +97,7 @@ scr_seq_T03GYM0101_000:
 	goto_if_eq _01B8
 	give_badge BADGE_BOULDER
 	addvar VAR_UNK_4135, 1
-	add_special_game_stat 22
+	add_special_game_stat SCORE_INC_TYPE_22
 	settrainerflag TRAINER_CAMPER_JERRY
 	settrainerflag TRAINER_HIKER_EDWIN
 	npc_msg msg_0462_T03GYM0101_00001

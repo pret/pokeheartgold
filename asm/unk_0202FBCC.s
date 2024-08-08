@@ -1866,7 +1866,7 @@ _02030948: .word MI_CpuFill8
 	thumb_func_start sub_0203094C
 sub_0203094C: ; 0x0203094C
 	push {r3, lr}
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	mov r1, #0x8e
 	lsl r1, r1, #4
 	add r0, r0, r1

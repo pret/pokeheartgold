@@ -130,7 +130,7 @@ sub_02058B84: ; 0x02058B84
 	cmp r0, #0
 	beq _02058C1E
 	mov r1, #1
-	bl sub_020290FC
+	bl LinkBattleRuleset_GetRuleValue
 	add r1, r4, #0
 	add r1, #0x36
 	ldrb r1, [r1]

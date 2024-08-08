@@ -56,7 +56,7 @@
 .public sub_02030964
 .public sub_02030978
 .public sub_02030A24
-.public sub_0203107C
+.public Save_Frontier_GetStatic
 .public AllocMonZeroed
 .public SetMonData
 .public sub_02072A98

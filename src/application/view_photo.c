@@ -140,7 +140,7 @@ SysTask *FieldSystem_CreateViewPhotoTask(FieldSystem *fieldSystem) {
     viewPhoto->bgConfig = fieldSystem->bgConfig;
     viewPhoto->saveData = fieldSystem->saveData;
     viewPhoto->parent = fieldSystem->viewPhotoTask;
-    viewPhoto->lastInputWasTouch = sub_020183F0(&fieldSystem->unk_10C);
+    viewPhoto->lastInputWasTouch = sub_020183F0(&fieldSystem->menuInputState);
     FieldViewPhoto_GetAlbumScrollParam(viewPhoto->parent, &viewPhoto->scrollData);
     return SysTask_CreateOnMainQueue(SysTask_ViewPhoto, viewPhoto, 1);
 }
@@ -148,7 +148,7 @@ SysTask *FieldSystem_CreateViewPhotoTask(FieldSystem *fieldSystem) {
 void FieldSystem_DestroyViewPhotoTask(FieldSystem *fieldSystem) {
     ViewPhotoSysTaskData *viewPhoto = (ViewPhotoSysTaskData *)SysTask_GetData(fieldSystem->unk_D8);
 
-    sub_02018410(&fieldSystem->unk_10C, viewPhoto->lastInputWasTouch);
+    sub_02018410(&fieldSystem->menuInputState, viewPhoto->lastInputWasTouch);
     ViewPhotoSysTask_Teardown(viewPhoto);
     FreeToHeap(viewPhoto);
     SysTask_Destroy(fieldSystem->unk_D8);

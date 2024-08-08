@@ -10,6 +10,7 @@ a/0/1/6
 a/0/1/7
 a/0/1/8
 a/0/2/0
+a/0/2/1
 a/0/2/7
 a/0/3/0
 a/0/3/2
@@ -73,3 +74,4 @@ demo/opening/gs_opening.narc
 demo/legend.narc
 data/photo_data.narc
 graphic/camera_viewfinder.narc
+*.NCLR

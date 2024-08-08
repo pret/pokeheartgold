@@ -5,14 +5,13 @@
 #include "heap.h"
 #include "script.h"
 #include "sys_task.h"
-#include "unk_0203BC10.h"
 #include "field/headbutt.h"
 
 struct FieldLongWarpTaskData;
 
 typedef struct SafariDecorationArgs {
     SaveData *saveData;
-    void *unk04; // points to fieldSystem->unk_10C
+    BOOL *unk04; // points to fieldSystem->unk_10C
     u8 unk08;
     u8 deltaX;
     u8 unk0A;

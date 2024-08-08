@@ -1,6 +1,9 @@
 #ifndef POKEHEARTGOLD_GF_GFX_PLANES_H
 #define POKEHEARTGOLD_GF_GFX_PLANES_H
 
+#include <nitro/gx/gx.h>
+#include <nitro/gx/gx_vramcnt.h>
+
 typedef enum {
     GF_PLANE_TOGGLE_OFF,
     GF_PLANE_TOGGLE_ON,

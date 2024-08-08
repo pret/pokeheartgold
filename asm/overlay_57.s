@@ -5448,7 +5448,7 @@ _0223A39A:
 	ldr r0, [r0, #0x28]
 	bl Save_GameStats_Get
 	mov r1, #7
-	bl GameStats_AddSpecial
+	bl GameStats_AddScore
 	mov r0, #0xfb
 	lsl r0, r0, #2
 	ldr r1, [r4, r0]

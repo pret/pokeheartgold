@@ -43,7 +43,7 @@
 .public Save_GameStats_Get
 .public GameStats_Inc
 .public GameStats_GetCapped
-.public GameStats_AddSpecial
+.public GameStats_AddScore
 .public sub_0202D640
 .public sub_0202D660
 .public Save_FrontierData_Get
@@ -75,7 +75,7 @@
 .public PartyMenu_LaunchApp_Unk4
 .public sub_0203E5F8
 .public sub_0203E600
-.public SelectPartyMonAndLearnMove
+.public TaskManager_LaunchPartyMenu_UnionRoomBattleSelect
 .public PartyMenu_LaunchApp_Unk5
 .public PokemonSummary_CreateArgs
 .public LearnForgetMove_LaunchApp
@@ -135,7 +135,7 @@
 .public sub_0203FC68
 .public sub_0203FC90
 .public LegendaryCinematic_LaunchApp
-.public sub_0203FD08
+.public LaunchApp_ViewRankings
 .public Save_VarsFlags_Get
 .public Save_VarsFlags_CheckFlagInArray
 .public TaskManager_Call
@@ -171,7 +171,7 @@
 .public sub_020778C8
 .public sub_020778DC
 .public sub_020778E8
-.public sub_02077904
+.public BagView_GetItemId
 .public sub_0207790C
 .public Bag_CreateView
 .public Save_Bag_Get
@@ -352,9 +352,9 @@
 .public UnownReport_Init
 .public UnownReport_Main
 .public UnownReport_Exit
-.public ov121_021E5900
-.public ov121_021E590C
-.public ov121_021E59BC
+.public ViewRankingsApp_Init
+.public ViewRankingsApp_Main
+.public ViewRankingsApp_Exit
 .public VoltorbFlip_Init
 .public VoltorbFlip_Exit
 .public VoltorbFlip_Main

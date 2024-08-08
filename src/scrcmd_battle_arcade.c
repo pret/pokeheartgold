@@ -21,11 +21,10 @@
 #include "task.h"
 #include "unk_02030A98.h"
 #include "unk_02035900.h"
-#include "unk_0203DFA4.h"
 #include "unk_0204A3F4.h"
 #include "unk_0205BB1C.h"
 #include "unk_0205BFF0.h"
-#include "unk_02078E30.h"
+#include "party_menu.h"
 #include "unk_02088288.h"
 #include "unk_02091564.h"
 
@@ -69,7 +68,7 @@ BOOL ScrCmd_643(ScriptContext *ctx) {
             break;
         case 1: // Unused
             if (arg1 == 3) {
-                *result = sub_020310BC(sub_0203107C(ctx->fieldSystem->saveData), 110, sub_0205C268(110));
+                *result = FrontierSave_GetStat(Save_Frontier_GetStatic(ctx->fieldSystem->saveData), 110, sub_0205C268(110));
             } else {
                 *result = sub_02030FE4(unk0, 8, arg1, 0, 0);
             }
@@ -109,9 +108,9 @@ static void sub_0204FFB0(SaveData *saveData, void *a1, u8 a2) {
     unk = 0;
     sub_02030FB0(a1, 8, a2, 0, &unk);
     if (a2 == 3) {
-        sub_02031108(sub_0203107C(saveData), 110, sub_0205C268(110), 0);
+        sub_02031108(Save_Frontier_GetStatic(saveData), 110, sub_0205C268(110), 0);
     }
-    sub_02031108(sub_0203107C(saveData), sub_0205C2C0(a2), sub_0205C268(sub_0205C2C0(a2)), 0);
+    sub_02031108(Save_Frontier_GetStatic(saveData), sub_0205C2C0(a2), sub_0205C268(sub_0205C2C0(a2)), 0);
 }
 
 BOOL ScrCmd_644(ScriptContext *ctx) {
@@ -199,19 +198,19 @@ static u32 sub_020501B8(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, u32 a2
     partyMenu->mailbox = Save_Mailbox_Get(fieldSystem->saveData);
     partyMenu->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     partyMenu->unk_25 = 0;
-    partyMenu->unk_24 = 0x17;
+    partyMenu->context = PARTY_MENU_CONTEXT_23;
     partyMenu->fieldSystem = fieldSystem;
-    partyMenu->unk_26 = a0->unk05;
+    partyMenu->partySlot = a0->unk05;
     for (u8 i = 0; i < 3; i++) {
-        partyMenu->unk_30[i] = a0->unk06[i];
+        partyMenu->selectedOrder[i] = a0->unk06[i];
     }
-    partyMenu->unk_37 = 100;
-    partyMenu->unk_36_0 = 3;
-    partyMenu->unk_36_4 = 3;
-    partyMenu->unk20 = &(fieldSystem->unk_10C);
+    partyMenu->maxLevel = 100;
+    partyMenu->minMonsToSelect = 3;
+    partyMenu->maxMonsToSelect = 3;
+    partyMenu->menuInputStatePtr = &(fieldSystem->menuInputState);
     if (a0->challengeType == BATTLE_ARCADE_CHALLENGE_TYPE_MULTI) {
-        partyMenu->unk_36_0 = 2;
-        partyMenu->unk_36_4 = 2;
+        partyMenu->minMonsToSelect = 2;
+        partyMenu->maxMonsToSelect = 2;
     }
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, partyMenu);
     *(a0->unk0c) = partyMenu;
@@ -223,14 +222,14 @@ static u32 sub_02050290(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
         return TRUE;
     }
     PartyMenuArgs *partyMenu = *(a0->unk0c);
-    switch (partyMenu->unk_26) {
+    switch (partyMenu->partySlot) {
         case 7:
             return 4;
         case 6:
             return 4;
     }
-    MI_CpuCopy8(partyMenu->unk_30, a0->unk06, 3);
-    a0->unk05 = partyMenu->unk_26;
+    MI_CpuCopy8(partyMenu->selectedOrder, a0->unk06, 3);
+    a0->unk05 = partyMenu->partySlot;
     FreeToHeap(partyMenu);
     *(a0->unk0c) = NULL;
     return 2;
@@ -245,7 +244,7 @@ static u32 sub_020502E0(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID
     unk->natDexEnabled = SaveArray_IsNatDexEnabled(saveData);
     unk->unk2C = sub_02088288(saveData);
     unk->unk11 = 1;
-    unk->unk14 = a0->unk05;
+    unk->partySlot = a0->unk05;
     unk->partyCount = Party_GetCount(unk->party);
     unk->unk18 = 0;
     unk->unk12 = 0;
@@ -263,7 +262,7 @@ static u32 sub_02050370(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
         return 3;
     }
     PokemonSummaryArgs *unk = *(a0->unk0c);
-    a0->unk05 = unk->unk14;
+    a0->unk05 = unk->partySlot;
     FreeToHeap(unk);
     *(a0->unk0c) = NULL;
     return 0;

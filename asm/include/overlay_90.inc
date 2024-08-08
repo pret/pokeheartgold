@@ -141,7 +141,7 @@
 .public sub_0202C5B4
 .public sub_0202C6F4
 .public Save_GameStats_Get
-.public GameStats_AddSpecial
+.public GameStats_AddScore
 .public sub_0203410C
 .public sub_020343E4
 .public sub_02034420

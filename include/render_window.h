@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_RENDER_WINDOW_H
 
 #include "bg_window.h"
+#include "pokemon_types_def.h"
 
 typedef struct WaitingIcon WaitingIcon; //todo: copy from pokediamond
 struct PokepicManager;

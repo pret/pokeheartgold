@@ -27,17 +27,17 @@
 #include "save_local_field_data.h"
 #include "save_trainer_house.h"
 #include "save_special_ribbons.h"
+#include "save_rankings.h"
+#include "game_stats.h"
 
 #define DECL_CHUNK(prefix) extern u32 prefix##_sizeof(void); extern void prefix##_Init(void *);
 #define DECL_CHUNK_EX(sizefn, initfn) extern u32 sizefn(void); extern void initfn(void *);
 
 DECL_CHUNK_EX(sub_020290B8, sub_020290C8)
 DECL_CHUNK(Save_FashionData)
-DECL_CHUNK(GameStats)
-DECL_CHUNK_EX(sub_02031000, sub_02031008)
+DECL_CHUNK(Save_Frontier)
 DECL_CHUNK_EX(sub_0202DB40, sub_0202DB44)
 DECL_CHUNK_EX(sub_0202E41C, sub_0202E424)
-DECL_CHUNK_EX(sub_0202E4F4, sub_0202E4FC)
 DECL_CHUNK_EX(sub_0202C034, sub_0202C03C)
 DECL_CHUNK_EX(sub_0202CA24, sub_0202CA2C)
 DECL_CHUNK_EX(sub_0202EB30, sub_0202EB38)
@@ -146,8 +146,8 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
     }, {
         SAVE_UNK_19,
         0,
-        (SAVESIZEFN)sub_02031000,
-        (SAVEINITFN)sub_02031008
+        (SAVESIZEFN)Save_Frontier_sizeof,
+        (SAVEINITFN)Save_Frontier_Init
     }, {
         SAVE_SPECIAL_RIBBONS,
         0,
@@ -169,10 +169,10 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
         (SAVESIZEFN)sub_0202E41C,
         (SAVEINITFN)sub_0202E424
     }, {
-        SAVE_UNK_24,
+        SAVE_RANKINGS,
         0,
-        (SAVESIZEFN)sub_0202E4F4,
-        (SAVEINITFN)sub_0202E4FC
+        (SAVESIZEFN)Save_Rankings_sizeof,
+        (SAVEINITFN)Save_Rankings_Init
     }, {
         SAVE_UNK_25,
         0,

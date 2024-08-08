@@ -186,14 +186,14 @@ sub_02096A34: ; 0x02096A34
 	bl ov80_022385D8
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r6, r0, #0
 	add r0, r4, #0
 	bl sub_0205C268
 	add r2, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	strh r0, [r5, #0xa]
 	add r5, #8
 	mov r0, #0x39

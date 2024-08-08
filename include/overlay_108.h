@@ -6,7 +6,7 @@
 
 typedef struct SafariAreaCustomizerArgs {
     SaveData *saveData;
-    u32 *unk4;
+    BOOL *unk4;
     u8 unk8[0x1c];
 } SafariAreaCustomizerArgs;
 

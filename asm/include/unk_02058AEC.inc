@@ -39,7 +39,7 @@
 .public String_Delete
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr
-.public sub_020290FC
+.public LinkBattleRuleset_GetRuleValue
 .public Save_SpecialRibbons_Get
 .public sub_02034434
 .public sub_02034818

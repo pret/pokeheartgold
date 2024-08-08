@@ -77,7 +77,7 @@ _02232552:
 	ldr r0, _0223281C ; =ov80_0223DD48
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r5, r0, #0
 	ldr r0, _0223281C ; =ov80_0223DD48
 	ldr r0, [r0]
@@ -92,7 +92,7 @@ _02232552:
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	ldr r1, _0223281C ; =ov80_0223DD48
 	ldr r1, [r1]
 	strh r0, [r1, #0x14]
@@ -103,7 +103,7 @@ _02232592:
 	mov r0, #0
 	strh r0, [r4, #0x14]
 	ldr r0, [r4, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r5, r0, #0
 	ldr r0, _0223281C ; =ov80_0223DD48
 	ldr r0, [r0]
@@ -121,7 +121,7 @@ _02232592:
 	ldr r0, _0223281C ; =ov80_0223DD48
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0205C218
@@ -139,7 +139,7 @@ _02232592:
 _022325F2:
 	ldr r0, [r4]
 	ldr r0, [r0, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r6, r0, #0
 	ldr r0, [r4]
 	lsl r1, r5, #0x18
@@ -188,7 +188,7 @@ _02232630:
 	ldr r0, _0223281C ; =ov80_0223DD48
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r4, r0, #0
 	ldr r0, _0223281C ; =ov80_0223DD48
 	ldr r0, [r0]
@@ -201,12 +201,12 @@ _02232630:
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	strh r0, [r5, #0x20]
 	ldr r0, _0223281C ; =ov80_0223DD48
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r4, r0, #0
 	ldr r0, _0223281C ; =ov80_0223DD48
 	ldr r0, [r0]
@@ -242,7 +242,7 @@ _022326BA:
 	ldr r0, _0223281C ; =ov80_0223DD48
 	ldr r6, [r0]
 	ldr r0, [r6, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r7, r0, #0
 	ldr r0, _0223281C ; =ov80_0223DD48
 	ldr r0, [r0]
@@ -255,7 +255,7 @@ _022326BA:
 	add r2, r0, #0
 	ldr r1, [sp, #0xc]
 	add r0, r7, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	strh r0, [r6, #0x14]
 	ldrh r0, [r6, #0x14]
 	mov r1, #7
@@ -802,7 +802,7 @@ ov80_02232B58: ; 0x02232B58
 	bl sub_02030E08
 	str r0, [sp, #4]
 	ldr r0, [r5, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r4, r0, #0
 	ldrb r0, [r5, #0x10]
 	mov r1, #1
@@ -852,7 +852,7 @@ ov80_02232B58: ; 0x02232B58
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r6, r0, #0
 	ldrb r0, [r5, #0x10]
 	bl sub_0205C1C8
@@ -874,7 +874,7 @@ ov80_02232B58: ; 0x02232B58
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r7, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	str r0, [sp, #0xc]
 	ldrb r0, [r5, #0x10]
 	bl sub_0205C1F0
@@ -885,7 +885,7 @@ ov80_02232B58: ; 0x02232B58
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r7, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r7, r0, #0
 	ldrh r0, [r5, #0x14]
 	cmp r0, r6
@@ -1180,7 +1180,7 @@ ov80_02232E9C: ; 0x02232E9C
 	mov r4, #0
 _02232EA2:
 	ldr r0, [r5, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r6, r0, #0
 	lsl r1, r4, #0x18
 	ldrb r0, [r5, #0x10]
@@ -1620,7 +1620,7 @@ ov80_022331E8: ; 0x022331E8
 	add r5, r1, #0
 	add r6, r0, #0
 	add r4, r2, #0
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r7, r0, #0
 	add r0, r5, #0
 	bl sub_0205C1F0
@@ -1631,13 +1631,13 @@ ov80_022331E8: ; 0x022331E8
 	add r2, r0, #0
 	ldr r1, [sp]
 	add r0, r7, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r1, r0, r4
 	ldr r0, _0223327C ; =0x0000270F
 	cmp r1, r0
 	ble _02233244
 	add r0, r6, #0
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r7, r0, #0
 	add r0, r5, #0
 	bl sub_0205C1F0
@@ -1653,7 +1653,7 @@ ov80_022331E8: ; 0x022331E8
 	b _0223326A
 _02233244:
 	add r0, r6, #0
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r7, r0, #0
 	add r0, r5, #0
 	bl sub_0205C1F0
@@ -1958,7 +1958,7 @@ ov80_02233490: ; 0x02233490
 	bl GF_AssertFail
 _022334AE:
 	ldr r0, [r5, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r6, r0, #0
 	ldrb r0, [r5, #0x10]
 	bl sub_0205C1F0
@@ -1969,7 +1969,7 @@ _022334AE:
 	add r2, r0, #0
 	add r0, r6, #0
 	add r1, r7, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r6, r0, #0
 	ldr r0, [r5, #4]
 	bl Save_PlayerData_GetProfileAddr
@@ -1999,7 +1999,7 @@ _02233506:
 	cmp r0, #0
 	bne _0223353A
 	ldr r0, [r5, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r6, r0, #0
 	ldrb r0, [r5, #0x10]
 	bl sub_0205C1F0
@@ -2010,7 +2010,7 @@ _02233506:
 	add r2, r0, #0
 	add r0, r6, #0
 	add r1, r7, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r6, r0, #0
 	ldr r0, _02233590 ; =0x00000A1C
 	ldrh r5, [r5, r0]
@@ -2019,7 +2019,7 @@ _0223353A:
 	ldr r0, _02233590 ; =0x00000A1C
 	ldrh r6, [r5, r0]
 	ldr r0, [r5, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r7, r0, #0
 	ldrb r0, [r5, #0x10]
 	bl sub_0205C1F0
@@ -2030,7 +2030,7 @@ _0223353A:
 	add r2, r0, #0
 	ldr r1, [sp]
 	add r0, r7, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r5, r0, #0
 _02233564:
 	mov r0, #0

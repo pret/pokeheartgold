@@ -22,8 +22,8 @@
 .public sub_0202D908
 .public Save_FrontierData_Get
 .public Save_SpecialRibbons_Get
-.public sub_0203107C
-.public sub_020310BC
+.public Save_Frontier_GetStatic
+.public FrontierSave_GetStat
 .public sub_0203769C
 .public sub_02037C44
 .public sub_0203A05C
@@ -47,7 +47,7 @@
 .public sub_020674BC
 .public sub_020674E0
 .public sub_0206751C
-.public sub_02067584
+.public FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom
 .public sub_0206759C
 .public Party_GetCount
 .public SaveArray_Party_Get

@@ -34,7 +34,8 @@ typedef enum HeapID {
     HEAP_ID_GAME_BOARD = 110,
     HEAP_ID_BERRY_POTS = 130,
     HEAP_ID_BERRY_POTS_APP = 131,
-    HEAP_ID_VOLTORB_FLIP = 160
+    HEAP_ID_9E = 158,
+    HEAP_ID_VOLTORB_FLIP = 160,
 } HeapID;
 
 typedef struct HeapParam {

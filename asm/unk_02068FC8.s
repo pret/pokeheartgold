@@ -62,7 +62,7 @@ sub_02068FC8: ; 0x02068FC8
 	bl Pokedex_IsEnabled
 	str r0, [sp, #0x3c]
 	add r0, r4, #0
-	bl GameStats_GetStat2
+	bl GameStats_GetScore
 	ldr r1, [sp, #0x38]
 	ldr r2, [sp, #0x30]
 	str r1, [sp]
@@ -256,7 +256,7 @@ sub_020691E8: ; 0x020691E8
 	bl Save_VarsFlags_Get
 	add r6, r0, #0
 	add r0, r7, #0
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r4, #0
@@ -279,31 +279,31 @@ _0206922A:
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	cmp r0, #0x64
 	bhs _02069270
 	add r0, r5, #0
 	mov r1, #2
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	cmp r0, #0x64
 	bhs _02069270
 	add r0, r5, #0
 	mov r1, #4
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	cmp r0, #0x64
 	bhs _02069270
 	add r0, r5, #0
 	mov r1, #6
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	cmp r0, #0x64
 	bhs _02069270
 	add r0, r5, #0
 	mov r1, #8
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	cmp r0, #0x64
 	blo _02069276
 _02069270:

@@ -109,8 +109,8 @@
 .public sub_02030E58
 .public sub_02030FA0
 .public sub_02030FE4
-.public sub_0203107C
-.public sub_020310BC
+.public Save_Frontier_GetStatic
+.public FrontierSave_GetStat
 .public sub_020312C4
 .public sub_020312E0
 .public sub_0205BFF0

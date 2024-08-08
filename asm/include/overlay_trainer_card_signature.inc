@@ -110,7 +110,7 @@
 .public TrainerCard_GetSignature
 .public Save_GameStats_Get
 .public GameStats_Inc
-.public GameStats_AddSpecial
+.public GameStats_AddScore
 .public NNS_G2dInitOamManagerModule
 .public GX_LoadOBJPltt
 .public GX_LoadOBJ

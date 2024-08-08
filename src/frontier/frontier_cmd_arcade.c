@@ -7,7 +7,7 @@
 #include "frontier/overlay_80_02239960.h"
 #include "frontier/overlay_80_0222AB40.h"
 #include "frontier/frontier.h"
-#include "launch_application_data.h"
+#include "launch_application.h"
 #include "unk_02096910.h"
 #include "unk_02034354.h"
 #include "unk_02014DA0.h"
@@ -64,10 +64,10 @@ BOOL FrtCmd_187(FrontierContext *ctx) {
     u8 monCnt;
     Pokemon *mon;
     int i, index1, index2, partyCnt, data;
-    
+
     ArcadeContext *arcadeData = Frontier_GetData(ctx->frontierSystem->unk0);
     BattleSetup *setup = arcadeData->battleSetup;
-    
+
     arcadeData->bpGain = BattleArcade_GetWonBattlePoints(arcadeData, setup->party[0], arcadeData->battleSetup->party[2], setup->unk1B4);
 
     arcadeData->battleWon = IsBattleResultWin(setup->winFlag);
@@ -82,7 +82,7 @@ BOOL FrtCmd_187(FrontierContext *ctx) {
 
     ov80_02235364(setup->party[index1], arcadeData->playerParty, 0, 0);
     ov80_02235364(setup->party[index1], arcadeData->playerParty, 1, 1);
-    
+
     if (ov80_02237D8C(arcadeData->type) == 0) {
         ov80_02235364(setup->party[index1], arcadeData->playerParty, 2, 2);
     } else {
@@ -101,7 +101,7 @@ BOOL FrtCmd_187(FrontierContext *ctx) {
             CalcMonLevelAndStats(mon);
         }
     }
-    
+
     partyCnt = Party_GetCount(arcadeData->playerParty);
     for (i = 0; i < partyCnt; i++) {
         mon = Party_GetMonByIndex(arcadeData->playerParty, i);
@@ -119,9 +119,9 @@ BOOL FrtCmd_187(FrontierContext *ctx) {
         data = arcadeData->savedSpDef[i];
         SetMonData(mon, MON_DATA_SPDEF, &data);
     }
-    
+
     BattleSetup_Delete(setup);
-    
+
     return FALSE;
 }
 
@@ -131,7 +131,7 @@ BOOL FrtCmd_ArcadeStartBattle(FrontierContext *ctx) {
     BattleSetup *setup = BattleArcade_NewBattleSetup(arcadeData, param);
 
     arcadeData->battleSetup = setup;
-    
+
     Frontier_LaunchApplication(ctx->frontierSystem->unk0, &gOverlayTemplate_Battle, setup, 0, NULL);
 
     return TRUE;
@@ -140,11 +140,11 @@ BOOL FrtCmd_ArcadeStartBattle(FrontierContext *ctx) {
 static void GameBoardArgs_Set(GAME_BOARD_ARGS *args, ArcadeContext *data) {
     args->type = data->type;
     args->unk1E = ov80_02238498(data);
-    
+
     args->unk14 = &data->unk20;
     args->unk10 = &data->unk13;
     args->bpGain = data->bpGain;
-    
+
     args->winStreak = data->winStreak;
     args->multiWinStreak = data->multiWinStreak;
 
@@ -194,8 +194,8 @@ BOOL FrtCmd_ArcadeAction(FrontierContext *ctx) {
     Pokemon *mon;
     Party *party;
     int i;
-    PlayerProfile *profile; 
-    
+    PlayerProfile *profile;
+
     u32 action = FrontierScript_ReadShort(ctx);
     u8 var0 = FrontierScript_ReadVar(ctx);
     u8 var1 = FrontierScript_ReadVar(ctx);
@@ -438,7 +438,7 @@ static void ov80_02233F40(SPLEmitter *emitter) {
     VecFx16 axis;
     ArcadeContext *ctx = sub_02015504();
     const VecFx32 pos = ov80_0223BE6C;
-    
+
     if (ctx->unkA7A == 1) {
         sub_02015538(emitter, &axis);
         axis.x *= -1;
@@ -449,7 +449,7 @@ static void ov80_02233F40(SPLEmitter *emitter) {
 
 BOOL FrtCmd_ArcadeGetBattleResult(FrontierContext *ctx) {
     u16 *var = FrontierScript_ReadVarPtr(ctx);
-    
+
     ArcadeContext *arcadeCtx = Frontier_GetData(ctx->frontierSystem->unk0);
     *var = arcadeCtx->battleWon;
 

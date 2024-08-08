@@ -2,6 +2,7 @@
 #include "constants/items.h"
 #include "save.h"
 #include "bag.h"
+#include "bag_view.h"
 #include "heap.h"
 
 static u32 Bag_GetItemPocket(Bag *bag, u16 itemId, ItemSlot **itemSlots, u32 *countPtr, HeapID heapId);

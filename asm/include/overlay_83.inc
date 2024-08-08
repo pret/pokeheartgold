@@ -170,8 +170,8 @@
 .public Options_GetFrame
 .public sub_02030CC8
 .public sub_02030E08
-.public sub_0203107C
-.public sub_020310BC
+.public Save_Frontier_GetStatic
+.public FrontierSave_GetStat
 .public sub_02031108
 .public sub_02034818
 .public sub_02037030
@@ -210,7 +210,7 @@
 .public sub_0207CAA0
 .public sub_0207CAA4
 .public sub_0207CAA8
-.public sub_020880B0
+.public CalculateHpBarColor
 .public UseItemOnPokemon
 .public sub_02096910
 .public NNS_G2dInitOamManagerModule

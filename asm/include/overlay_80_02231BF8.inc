@@ -6,8 +6,8 @@
 .public sub_02030E08
 .public sub_02030E18
 .public sub_02030E58
-.public sub_0203107C
-.public sub_020310BC
+.public Save_Frontier_GetStatic
+.public FrontierSave_GetStat
 .public sub_02031108
 .public sub_0203769C
 .public BattleSetup_Delete

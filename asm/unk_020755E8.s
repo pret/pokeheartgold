@@ -1818,7 +1818,7 @@ _02076478:
 	bl GameStats_Inc
 	ldr r0, [r4, #0x50]
 	mov r1, #0x15
-	bl GameStats_AddSpecial
+	bl GameStats_AddScore
 	ldr r0, [r4, #0x28]
 	mov r1, #0x4d
 	mov r2, #0
@@ -2947,7 +2947,7 @@ _02076D62:
 	bl GameStats_Inc
 	ldr r0, [r4, #0x50]
 	mov r1, #0x15
-	bl GameStats_AddSpecial
+	bl GameStats_AddScore
 	add r0, r5, #0
 	bl FreeToHeap
 	ldr r0, [r4, #0x4c]

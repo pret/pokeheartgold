@@ -631,7 +631,7 @@ _022320CE:
 	cmp r5, #1
 	bne _022320E2
 	ldr r0, [r7, #8]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	ldrb r1, [r4, #0x10]
 	mov r2, #0x32
 	bl ov80_02237FA4
@@ -797,7 +797,7 @@ _02232212:
 	cmp r6, #0
 	ldr r0, [r7, #8]
 	bne _0223226A
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r6, r0, #0
 	ldrb r0, [r4, #0x10]
 	bl sub_0205C1F0
@@ -808,10 +808,10 @@ _02232212:
 	add r2, r0, #0
 	ldr r1, [sp, #0x1c]
 	add r0, r6, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	strh r0, [r4, #0x22]
 	ldr r0, [r7, #8]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r5, r0, #0
 	ldrb r0, [r4, #0x10]
 	bl sub_0205C1F0
@@ -826,7 +826,7 @@ _02232212:
 	bl sub_02031108
 	b _0223228E
 _0223226A:
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r6, r0, #0
 	ldrb r0, [r4, #0x10]
 	bl sub_0205C1F0
@@ -1036,7 +1036,7 @@ FrtCmd_166: ; 0x022323E8
 	ldr r0, [r0]
 	bl Frontier_GetLaunchParam
 	ldr r0, [r0, #8]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r5, r0, #0
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
@@ -1049,7 +1049,7 @@ FrtCmd_166: ; 0x022323E8
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	strh r0, [r6]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1068,7 +1068,7 @@ FrtCmd_167: ; 0x02232430
 	ldr r0, [r0]
 	bl Frontier_GetLaunchParam
 	ldr r0, [r0, #8]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	lsl r1, r4, #0x18
 	lsr r1, r1, #0x18
 	add r2, r6, #0

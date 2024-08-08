@@ -6,7 +6,7 @@ ifeq ($(HAVE_LIBPNG),1)
 $(error No package 'libpng' found)
 endif
 
-CFLAGS = -Wall -Wextra -Werror -Wno-sign-compare -std=c11 -O2 -DPNG_SKIP_SETJMP_CHECK $(shell pkg-config --cflags libpng zlib)
+CFLAGS = -Wall -Wextra -Werror -Wno-sign-compare -std=gnu17 -DPNG_SKIP_SETJMP_CHECK $(shell pkg-config --cflags libpng zlib)
 
 LIBS = $(shell pkg-config --libs libpng zlib)
 
@@ -22,7 +22,7 @@ nitrogfx-debug: $(SRCS) convert_png.h gfx.h global.h jasc_pal.h lz.h rl.h util.h
 	$(CC) $(CFLAGS) -g -DDEBUG $(SRCS) -o $@ $(LDFLAGS) $(LIBS)
 
 nitrogfx: $(SRCS) convert_png.h gfx.h global.h jasc_pal.h lz.h rl.h util.h font.h json.h cJSON.h
-	$(CC) $(CFLAGS) $(SRCS) -o $@ $(LDFLAGS) $(LIBS)
+	$(CC) $(CFLAGS) -O2 $(SRCS) -o $@ $(LDFLAGS) $(LIBS)
 
 clean:
 	$(RM) -r nitrogfx nitrogfx.exe $(OBJS)

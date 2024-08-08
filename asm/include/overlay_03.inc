@@ -103,7 +103,7 @@
 .public PlayerProfile_GetTrainerGender
 .public PlayerProfile_GetMoney
 .public PlayerProfile_SubMoney
-.public sub_020290FC
+.public LinkBattleRuleset_GetRuleValue
 .public sub_020291A4
 .public sub_020291E8
 .public sub_0202921C
