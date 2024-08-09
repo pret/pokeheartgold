@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_PARTY_MENU_H
 #define POKEHEARTGOLD_PARTY_MENU_H
 
+#include "field_types_def.h"
+#include "pokemon_types_def.h"
 #include "constants/party_menu.h"
 
 #define FIELD_MOVE_CHECK_TREE_F                   0
@@ -32,11 +34,11 @@ typedef struct FieldMoveCheckData {
 typedef void (*FieldMoveUseFunc)(struct FieldMoveUseData *useData, const struct FieldMoveCheckData *sub);
 typedef u32 (*FieldMoveCheckFunc)(const struct FieldMoveCheckData *checkData);
 
-struct FieldUseMoveEnv {
+typedef struct FieldUseMoveEnv {
     u32 magic;
     LocalMapObject *facingObject;
     struct FieldMoveUseData useData;
-};
+} FieldUseMoveEnv;
 
 struct TeleportFieldEnv {
     Pokemon *mon;

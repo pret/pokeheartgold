@@ -586,8 +586,8 @@ static BOOL FieldSystem_StartMenuActionIsAvailable(FieldSystem *fieldSystem, Sta
     return FieldSystem_ShouldDrawStartMenuIcon(fieldSystem, (StartMenuIcon)sActionToIconIndex[action]);
 }
 
-BOOL FieldSystem_ShouldDrawStartMenuIcon(FieldSystem *fieldSystem, StartMenuIcon a1) {
-    switch (a1) {
+BOOL FieldSystem_ShouldDrawStartMenuIcon(FieldSystem *fieldSystem, StartMenuIcon icon) {
+    switch (icon) {
     case START_MENU_ICON_POKEDEX:
         return CheckGotPokedex(Save_VarsFlags_Get(fieldSystem->saveData));
     case START_MENU_ICON_POKEMON:
@@ -902,7 +902,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         pokemonSummaryArgs->unk11 = 1;
         pokemonSummaryArgs->partySlot = partyMenuArgs->partySlot;
         pokemonSummaryArgs->partyCount = 1;
-        pokemonSummaryArgs->moveToLearn = partyMenuArgs->unk2A;
+        pokemonSummaryArgs->moveToLearn = partyMenuArgs->moveToLearn;
         pokemonSummaryArgs->unk12 = 2;
         pokemonSummaryArgs->natDexEnabled = SaveArray_IsNatDexEnabled(fieldSystem->saveData);
         pokemonSummaryArgs->unk2C = sub_02088288(fieldSystem->saveData);
@@ -927,7 +927,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         pokemonSummaryArgs->unk11 = 1;
         pokemonSummaryArgs->partySlot = partyMenuArgs->partySlot;
         pokemonSummaryArgs->partyCount = 1;
-        pokemonSummaryArgs->moveToLearn = partyMenuArgs->unk2A;
+        pokemonSummaryArgs->moveToLearn = partyMenuArgs->moveToLearn;
         pokemonSummaryArgs->unk12 = 2;
         pokemonSummaryArgs->natDexEnabled = SaveArray_IsNatDexEnabled(fieldSystem->saveData);
         pokemonSummaryArgs->unk2C = sub_02088288(fieldSystem->saveData);
@@ -960,9 +960,9 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         StartMenu_SetChildProcReturnTaskFunc(startMenu, Task_ReturnToMenuFromMail);
         break;
     case 3: {
-        StartMenuAfterEvoPartySlotBak *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(StartMenuAfterEvoPartySlotBak));
-        unk->partySlot = partyMenuArgs->partySlot;
-        startMenu->atexit_TaskEnv2 = unk;
+        StartMenuAfterEvoPartySlotBak *afterEvoPartySlot = AllocFromHeap(HEAP_ID_FIELD, sizeof(StartMenuAfterEvoPartySlotBak));
+        afterEvoPartySlot->partySlot = partyMenuArgs->partySlot;
+        startMenu->atexit_TaskEnv2 = afterEvoPartySlot;
         Bag *bag = Save_Bag_Get(fieldSystem->saveData);
         PlayerProfile *playerProfile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
         (void)playerProfile;
@@ -1109,13 +1109,13 @@ static BOOL Task_StartMenu_HandleReturn(TaskManager *taskManager) {
     case 4: {
         Party *party = SaveArray_Party_Get(fieldSystem->saveData);
         StartMenuAfterEvoPartySlotBak *unk = startMenu->atexit_TaskEnv2;
-        int monId = unk->partySlot;
+        int monSlot = unk->partySlot;
         u16 itemId = BagView_GetItemId(bagView);
-        Pokemon *pokemon = Party_GetMonByIndex(party, monId);
+        Pokemon *pokemon = Party_GetMonByIndex(party, monSlot);
         FreeToHeap(startMenu->atexit_TaskEnv2);
         if (ItemIdIsMail(itemId) == TRUE && !GetMonData(pokemon, MON_DATA_HELD_ITEM, NULL)) {
-            startMenu->atexit_TaskEnv = sub_0203EFEC(fieldSystem, 2, monId, ItemToMailId(itemId), HEAP_ID_FIELD);
-            startMenu->atexit_TaskEnv2 = sub_0203D818(itemId, 0, monId);
+            startMenu->atexit_TaskEnv = sub_0203EFEC(fieldSystem, 2, monSlot, ItemToMailId(itemId), HEAP_ID_FIELD);
+            startMenu->atexit_TaskEnv2 = sub_0203D818(itemId, 0, monSlot);
             StartMenu_SetChildProcReturnTaskFunc(startMenu, Task_ReturnToMenuFromMail);
         } else {
             PartyMenuArgs *partyMenuArgs = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
@@ -1123,7 +1123,7 @@ static BOOL Task_StartMenu_HandleReturn(TaskManager *taskManager) {
             sub_0203CF74(partyMenuArgs, fieldSystem, startMenu);
             partyMenuArgs->party = party;
             partyMenuArgs->itemId = BagView_GetItemId(bagView);
-            partyMenuArgs->partySlot = monId;
+            partyMenuArgs->partySlot = monSlot;
             if (partyMenuArgs->itemId == ITEM_NONE) {
                 partyMenuArgs->unk_24 = 0;
             } else {
@@ -1363,7 +1363,7 @@ static BOOL sub_0203D580(TaskManager *taskManager) {
         sub_0203CF74(partyMenuArgs, fieldSystem, startMenu);
         partyMenuArgs->itemId = r7->itemId;
         partyMenuArgs->partySlot = summaryArgs->partySlot;
-        partyMenuArgs->unk2A = summaryArgs->moveToLearn;
+        partyMenuArgs->moveToLearn = summaryArgs->moveToLearn;
         partyMenuArgs->unk2C = summaryArgs->unk16;
         if (r7->itemId != ITEM_NONE) {
             partyMenuArgs->unk_24 = 7;
@@ -1423,7 +1423,7 @@ BOOL Task_UseFlyInField(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
-    struct FlyTaskStruct *flyMap = startMenu->atexit_TaskEnv2;
+    FlyTaskStruct *flyMap = startMenu->atexit_TaskEnv2;
     int partySlot = flyMap->partySlot;
     FreeToHeapExplicit(HEAP_ID_FIELD, flyMap);
     PokegearArgs *pokegearArgs = startMenu->atexit_TaskEnv;
@@ -1443,8 +1443,8 @@ BOOL Task_UseFlyInField(TaskManager *taskManager) {
     return FALSE;
 }
 
-struct UnkStruct_0203D818 *sub_0203D818(u16 itemId, u8 kind, u8 partySlot) {
-    struct UnkStruct_0203D818 *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct UnkStruct_0203D818));
+UnkStruct_0203D818 *sub_0203D818(u16 itemId, u8 kind, u8 partySlot) {
+    UnkStruct_0203D818 *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0203D818));
     ret->itemId = itemId;
     ret->partySlot = partySlot;
     ret->kind = kind;
@@ -1455,7 +1455,7 @@ BOOL Task_ReturnToMenuFromMail(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
-    struct UnkStruct_0203D818 *unk = startMenu->atexit_TaskEnv2;
+    UnkStruct_0203D818 *unk = startMenu->atexit_TaskEnv2;
     switch (unk->kind) {
     case 3:
         sub_02090F90(startMenu->atexit_TaskEnv);
@@ -1491,7 +1491,7 @@ BOOL Task_ReturnToMenuFromMail(TaskManager *taskManager) {
 }
 
 static void sub_0203D940(FieldSystem *fieldSystem, StartMenuTaskData *startMenu, u8 a2) {
-    struct UnkStruct_0203D818 *unk = startMenu->atexit_TaskEnv2;
+    UnkStruct_0203D818 *unk = startMenu->atexit_TaskEnv2;
     PartyMenuArgs *partyMenuArgs = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
     sub_0203CF74(partyMenuArgs, fieldSystem, startMenu);
     partyMenuArgs->itemId = unk->itemId;

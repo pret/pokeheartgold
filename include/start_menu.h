@@ -44,27 +44,27 @@ typedef struct StartMenuTaskData {
     u8 filler_unk_388[4];
 } StartMenuTaskData;
 
-struct UnkStruct_0203D818 {
+typedef struct UnkStruct_0203D818 {
     u16 itemId;
     u8 partySlot;
     u8 kind;
-};
+} UnkStruct_0203D818;
 
-struct FlyTaskStruct {
+typedef struct FlyTaskStruct {
     u32 partySlot;
-};
+} FlyTaskStruct;
 
 BOOL FieldSystem_MapIsNotMysteryZone(FieldSystem *fieldSystem);
 void sub_0203BC28(FieldSystem *fieldSystem);
 void sub_0203BCDC(FieldSystem *fieldSystem);
 void sub_0203BD20(FieldSystem *fieldSystem);
 void sub_0203BD64(FieldSystem *fieldSystem);
-BOOL FieldSystem_ShouldDrawStartMenuIcon(FieldSystem *fieldSystem, StartMenuIcon a1);
+BOOL FieldSystem_ShouldDrawStartMenuIcon(FieldSystem *fieldSystem, StartMenuIcon icon);
 void StartMenu_SetChildProcReturnTaskFunc(StartMenuTaskData *env, TaskFunc func);
 BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager);
 BOOL Task_ReturnToMenuFromAppItem(TaskManager *taskManager);
 BOOL Task_UseFlyInField(TaskManager *taskManager);
-struct UnkStruct_0203D818 *sub_0203D818(u16 itemId, u8 kind, u8 partySlot);
+UnkStruct_0203D818 *sub_0203D818(u16 itemId, u8 kind, u8 partySlot);
 BOOL Task_ReturnToMenuFromMail(TaskManager *taskManager);
 BOOL Task_ReturnToMenuFromVSRecorder(TaskManager *taskManager);
 

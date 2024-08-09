@@ -22,7 +22,7 @@ typedef struct PartyMenuArgs {
     u8 partySlot;
     u8 selectedAction;
     u16 itemId;
-    u16 unk2A;
+    u16 moveToLearn;
     u8 unk2C;
     u8 filler_2D[3];
     u8 unk_30[3];
