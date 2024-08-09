@@ -25,6 +25,7 @@
 #include "player_data.h"
 #include "msgdata/msg/msg_0421.h"
 #include "constants/ranking.h"
+#include "application/guinness.naix"
 
 #define min(a, b) ((a) <= (b) ? (a) : (b))
 
@@ -628,14 +629,14 @@ static void VBlankCB_ViewRankings(void *cbData) {
 }
 
 static void ViewRankings_LoadBgGraphics(BgConfig *bgConfig, HeapID heapId) {
-    GfGfxLoader_GXLoadPal(NARC_a_2_6_0, 1, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0x40, heapId);
-    GfGfxLoader_LoadCharData(NARC_a_2_6_0, 3, bgConfig, GF_BG_LYR_MAIN_3, 0, 0x1000, TRUE, heapId);
-    GfGfxLoader_LoadScrnData(NARC_a_2_6_0, 5, bgConfig, GF_BG_LYR_MAIN_3, 0, 0x600, TRUE, heapId);
+    GfGfxLoader_GXLoadPal(NARC_application_guinness, NARC_guinness_guinness_00000001_NCLR, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0x40, heapId);
+    GfGfxLoader_LoadCharData(NARC_application_guinness, NARC_guinness_guinness_00000003_NCGR_lz, bgConfig, GF_BG_LYR_MAIN_3, 0, 0x1000, TRUE, heapId);
+    GfGfxLoader_LoadScrnData(NARC_application_guinness, NARC_guinness_guinness_00000005_NSCR_lz, bgConfig, GF_BG_LYR_MAIN_3, 0, 0x600, TRUE, heapId);
     BgCommitTilemapBufferToVram(bgConfig, GF_BG_LYR_MAIN_3);
 
-    GfGfxLoader_GXLoadPal(NARC_a_2_6_0, 0, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0, 0x20, heapId);
-    GfGfxLoader_LoadCharData(NARC_a_2_6_0, 2, bgConfig, GF_BG_LYR_SUB_0, 0, 0x400, TRUE, heapId);
-    GfGfxLoader_LoadScrnData(NARC_a_2_6_0, 4, bgConfig, GF_BG_LYR_SUB_0, 0, 0x600, TRUE, heapId);
+    GfGfxLoader_GXLoadPal(NARC_application_guinness, NARC_guinness_guinness_00000000_NCLR, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0, 0x20, heapId);
+    GfGfxLoader_LoadCharData(NARC_application_guinness, NARC_guinness_guinness_00000002_NCGR_lz, bgConfig, GF_BG_LYR_SUB_0, 0, 0x400, TRUE, heapId);
+    GfGfxLoader_LoadScrnData(NARC_application_guinness, NARC_guinness_guinness_00000004_NSCR_lz, bgConfig, GF_BG_LYR_SUB_0, 0, 0x600, TRUE, heapId);
     BgCommitTilemapBufferToVram(bgConfig, GF_BG_LYR_SUB_0);
 }
 
@@ -644,10 +645,10 @@ static void ViewRankings_LoadSpriteGraphics(ViewRankingsAppData *appData, HeapID
     for (int i = 0; i < 6; ++i) {
         appData->gf2dGfxResManagers[i] = Create2DGfxResObjMan(1, (GfGfxResType)i, heapId);
     }
-    appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_CHAR], NARC_a_2_6_0, 9, TRUE, 0, NNS_G2D_VRAM_TYPE_2DMAIN, heapId);
-    appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_PLTT], NARC_a_2_6_0, 6, FALSE, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 4, heapId);
-    appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_CELL], NARC_a_2_6_0, 8, TRUE, 0, GF_GFX_RES_TYPE_CELL, heapId);
-    appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromNarc(appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_ANIM], NARC_a_2_6_0, 7, TRUE, 0, GF_GFX_RES_TYPE_ANIM, heapId);
+    appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_CHAR], NARC_application_guinness, NARC_guinness_guinness_00000009_NCGR_lz, TRUE, 0, NNS_G2D_VRAM_TYPE_2DMAIN, heapId);
+    appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_PLTT], NARC_application_guinness, NARC_guinness_guinness_00000006_NCLR, FALSE, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 4, heapId);
+    appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_CELL], NARC_application_guinness, NARC_guinness_guinness_00000008_NCER_lz, TRUE, 0, GF_GFX_RES_TYPE_CELL, heapId);
+    appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromNarc(appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_ANIM], NARC_application_guinness, NARC_guinness_guinness_00000007_NANR_lz, TRUE, 0, GF_GFX_RES_TYPE_ANIM, heapId);
     sub_0200ADA4(appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_CHAR]);
     sub_0200AF94(appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_PLTT]);
 }
