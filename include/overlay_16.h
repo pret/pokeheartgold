@@ -7,7 +7,7 @@
 
 typedef struct BerryPotsArgs {
     void *unk0;
-    u32 *unk4;
+    BOOL *unk4;
     BagCursor *cursor;
     SaveData *saveData;
 } BerryPotsArgs;

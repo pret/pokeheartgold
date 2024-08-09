@@ -7,6 +7,7 @@
 #include "player_data.h"
 #include "pokemon_storage_system.h"
 #include "save_arrays.h"
+#include "field_system.h"
 #include "unk_0205B3DC.h"
 #include "unk_02068F84.h"
 #include "ribbon.h"

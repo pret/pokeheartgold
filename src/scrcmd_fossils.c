@@ -1,5 +1,6 @@
 #include "scrcmd.h"
 #include "bag.h"
+#include "field_system.h"
 #include "constants/items.h"
 #include "constants/species.h"
 

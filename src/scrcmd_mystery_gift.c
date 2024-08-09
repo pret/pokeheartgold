@@ -6,6 +6,7 @@
 #include "save_vars_flags.h"
 #include "script_pokemon_util.h"
 #include "ribbon.h"
+#include "field_system.h"
 #include "pokedex.h"
 #include "sys_vars.h"
 #include "fashion_case.h"

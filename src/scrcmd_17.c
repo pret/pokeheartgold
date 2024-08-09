@@ -1,5 +1,6 @@
 #include "scrcmd.h"
 #include "pokedex.h"
+#include "field_system.h"
 #include "save_local_field_data.h"
 #include "sys_flags.h"
 

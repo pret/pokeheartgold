@@ -1,5 +1,6 @@
 #include "map_object.h"
 #include "map_events.h"
+#include "field_system.h"
 #include "overlay_26.h"
 
 static LocalMapObject* ov26_02259A24(FieldSystem* fieldSystem, LocalMapObject* a1, BOOL a2);

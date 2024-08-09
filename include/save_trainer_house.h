@@ -15,9 +15,9 @@ typedef struct TrainerHouseTrainer {
     u8 version;
     u8 gender;
     u16 otName[PLAYER_NAME_LENGTH + 1];
-    MAIL_MESSAGE introMessage;
-    MAIL_MESSAGE winMessage;
-    MAIL_MESSAGE loseMessage;
+    MailMessage introMessage;
+    MailMessage winMessage;
+    MailMessage loseMessage;
 } TrainerHouseTrainer;
 
 typedef struct TrainerHouseMon {

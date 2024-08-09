@@ -31,8 +31,8 @@ typedef struct THOUSE_TEAM {
     u8 unk7;
     u16 otName[PLAYER_NAME_LENGTH + 1];
     u16 unk14[8];
-    MAIL_MESSAGE win;
-    MAIL_MESSAGE lose;
+    MailMessage win;
+    MailMessage lose;
     THOUSE_MON party[PARTY_SIZE];
 } THOUSE_TEAM;
 

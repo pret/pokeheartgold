@@ -185,11 +185,11 @@ void SaveMisc_GetTogepiPersonalityGender(SAVE_MISC_DATA * saveMiscData, int *per
     *gender = saveMiscData->togepiEggGender;
 }
 
-void SaveMisc_GetBattleGreeting(SAVE_MISC_DATA *saveMiscData, MAIL_MESSAGE *a1) {
+void SaveMisc_GetBattleGreeting(SAVE_MISC_DATA *saveMiscData, MailMessage *a1) {
     *a1 = saveMiscData->battleGreetingEC;
 }
 
-void SaveMisc_SetBattleGreeting(SAVE_MISC_DATA *saveMiscData, MAIL_MESSAGE *a1) {
+void SaveMisc_SetBattleGreeting(SAVE_MISC_DATA *saveMiscData, MailMessage *a1) {
     saveMiscData->battleGreetingEC = *a1;
 }
 

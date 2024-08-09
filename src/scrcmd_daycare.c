@@ -2,6 +2,7 @@
 #include "bag.h"
 #include "map_object.h"
 #include "get_egg.h"
+#include "field_system.h"
 #include "party.h"
 #include "player_data.h"
 #include "pokemon.h"

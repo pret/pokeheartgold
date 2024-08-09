@@ -99,7 +99,7 @@
 .public Options_GetFrame
 .public sub_0203A964
 .public sub_0203A994
-.public sub_02067584
+.public FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom
 .public GetMonData
 .public SetMonData
 .public GetMonGender

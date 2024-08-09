@@ -247,7 +247,7 @@ u16 sub_0202B4E4(const Mail *mail) {
     return mail->form_flags;
 }
 
-MAIL_MESSAGE *Mail_GetUnk20Array(Mail *mail, int i) {
+MailMessage *Mail_GetUnk20Array(Mail *mail, int i) {
     if (i < NELEMS(mail->unk_20)) {
         return &mail->unk_20[i];
     } else {
@@ -255,7 +255,7 @@ MAIL_MESSAGE *Mail_GetUnk20Array(Mail *mail, int i) {
     }
 }
 
-void Mail_SetMessage(Mail *mail, const MAIL_MESSAGE *src, int i) {
+void Mail_SetMessage(Mail *mail, const MailMessage *src, int i) {
     if (i < NELEMS(mail->unk_20)) {
         MailMsg_Copy(&mail->unk_20[i], src);
     }

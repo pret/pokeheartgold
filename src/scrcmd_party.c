@@ -5,6 +5,7 @@
 #include "player_data.h"
 #include "get_egg.h"
 #include "constants/balls.h"
+#include "field_system.h"
 #include "item.h"
 #include "save_arrays.h"
 #include "npc_trade.h"
@@ -27,7 +28,7 @@ BOOL ScrCmd_GiveMon(ScriptContext *ctx) {
 
     Party *party = SaveArray_Party_Get(fieldSystem->saveData);
     *retPtr = GiveMon(HEAP_ID_FIELD, fieldSystem->saveData, species, level, form, ability, heldItem, map, 24);
-  
+
     return FALSE;
 }
 

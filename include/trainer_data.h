@@ -98,8 +98,8 @@ typedef struct Trainer {
     struct TrainerData data;
     /*014*/ u16 name[PLAYER_NAME_LENGTH + 1];
     // Used in the Frontier
-    /*024*/ MAIL_MESSAGE winMessage;
-    /*02C*/ MAIL_MESSAGE loseMessage;
+    /*024*/ MailMessage winMessage;
+    /*02C*/ MailMessage loseMessage;
 } Trainer; // size=0x34
 
 typedef struct BattleSetup BattleSetup;

@@ -58,7 +58,7 @@ typedef struct UnkStruct_0203F0D0 {
     PlayerProfile *profile;
     int *unk18;
     int unk1C;
-    u32 *unk20;
+    BOOL *unk20;
 } UnkStruct_0203F0D0;
 
 typedef struct UnkStruct_0203F134 {
@@ -101,7 +101,7 @@ typedef struct TradeSequenceArgs {
     TradeSequenceBackground bgType;
     int unk10;
     Options *options;
-    void *unk18;
+    EvolutionTaskData *evolutionTaskData;
     u8 unk1C[0x4];
 } TradeSequenceArgs;
 

@@ -142,7 +142,7 @@ typedef struct MailMessage {
     u16 msg_bank;
     u16 msg_no;
     u16 fields[MAILMSG_FIELDS_MAX];
-} MAIL_MESSAGE;
+} MailMessage;
 
 typedef struct Mail
 {
@@ -154,7 +154,7 @@ typedef struct Mail
     u16 author_name[PLAYER_NAME_LENGTH + 1];
     union MailPatternData mon_icons[3];
     u16 form_flags; // bitfield of three 5-bit values
-    MAIL_MESSAGE unk_20[3];
+    MailMessage unk_20[3];
 } Mail;
 
 typedef struct PartyPokemon {

@@ -218,7 +218,7 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heapId, SaveData* saveDa
         mail = CreateKenyaMail(mon, MAIL_AIR, MON_MALE, author_name, 0);
     }
 
-    MAIL_MESSAGE mail_message;
+    MailMessage mail_message;
 
     for (i = 0; i < (s32)NELEMS(sMailMsgTemplates); i++) {
         MailMsg_Init_FromTemplate(&mail_message, &sMailMsgTemplates[i]);
