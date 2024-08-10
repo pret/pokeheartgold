@@ -915,7 +915,7 @@ _02262754:
 	lsr r1, r1, #0x18
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_020708D8
+	bl GetMonPicHeightBySpeciesGenderForm
 	b _022627C8
 _022627A6:
 	add r0, r1, #0
@@ -933,7 +933,7 @@ _022627A6:
 	lsr r1, r1, #0x1c
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_020708D8
+	bl GetMonPicHeightBySpeciesGenderForm
 _022627C8:
 	add r1, sp, #0xc
 	strb r0, [r1, #1]
@@ -1098,7 +1098,7 @@ _022628C0:
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
 	lsr r3, r3, #0x18
-	bl sub_020708D8
+	bl GetMonPicHeightBySpeciesGenderForm
 	b _02262930
 _0226290E:
 	add r0, r5, #0
@@ -1116,7 +1116,7 @@ _0226290E:
 	lsl r1, r1, #0x1c
 	lsr r1, r1, #0x1c
 	lsr r3, r3, #0x18
-	bl sub_020708D8
+	bl GetMonPicHeightBySpeciesGenderForm
 _02262930:
 	add r1, sp, #8
 	strb r0, [r1, #1]

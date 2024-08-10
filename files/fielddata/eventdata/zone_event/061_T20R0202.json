@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_T20R0202_storophy",
-      "ovid": "SPRITE_STOROPHY",
-      "mvt": 0,
+      "sprite_id": "SPRITE_STOROPHY",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_PLAYERS_ROOM_SILVER_TROPHY",
       "scr": 0,
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_T20R0202_gtorophy",
-      "ovid": "SPRITE_GTOROPHY",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GTOROPHY",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_PLAYERS_ROOM_GOLD_TROPHY",
       "scr": 0,
@@ -55,8 +55,8 @@
     },
     {
       "id": "obj_T20R0202_btorophy",
-      "ovid": "SPRITE_BTOROPHY",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BTOROPHY",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_PLAYERS_ROOM_BRONZE_TROPHY",
       "scr": 0,

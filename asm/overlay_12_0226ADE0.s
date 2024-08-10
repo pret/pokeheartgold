@@ -265,12 +265,12 @@ ov12_0226AFC8: ; 0x0226AFC8
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	ldr r0, [r6]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r4, #0
 	add r5, r6, #0
 _0226AFD6:
 	ldr r0, [r5, #0x1c]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, #0x30
 	cmp r4, #6

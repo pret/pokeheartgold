@@ -149,7 +149,7 @@ BOOL ScrCmd_RegisterGearNumber(ScriptContext *ctx);
 BOOL ScrCmd_CheckRegisteredPhoneNumber(ScriptContext *ctx);
 BOOL ScrCmd_148(ScriptContext *ctx);
 BOOL ScrCmd_149(ScriptContext *ctx);
-BOOL ScrCmd_150(ScriptContext *ctx);
+BOOL ScrCmd_RestoreOverworld(ScriptContext *ctx);
 BOOL ScrCmd_151(ScriptContext *ctx);
 BOOL ScrCmd_152(ScriptContext *ctx);
 BOOL ScrCmd_153(ScriptContext *ctx);
@@ -374,7 +374,7 @@ BOOL ScrCmd_BufferDaycareMonGrowth(ScriptContext *ctx);
 BOOL ScrCmd_GetTailDaycareMonSpeciesAndNick(ScriptContext *ctx);
 BOOL ScrCmd_PutMonInDaycare(ScriptContext *ctx);
 BOOL ScrCmd_374(ScriptContext *ctx);
-BOOL ScrCmd_375(ScriptContext *ctx);
+BOOL ScrCmd_MakeObjectVisible(ScriptContext *ctx);
 BOOL ScrCmd_376(ScriptContext *ctx);
 BOOL ScrCmd_377(ScriptContext *ctx);
 BOOL ScrCmd_378(ScriptContext *ctx);
@@ -615,12 +615,12 @@ BOOL ScrCmd_GetNpcTradeUnusedFlag(ScriptContext *ctx);
 BOOL ScrCmd_GetPhoneContactRandomGiftBerry(ScriptContext *ctx);
 BOOL ScrCmd_GetPhoneContactGiftItem(ScriptContext *ctx);
 BOOL ScrCmd_CameronPhoto(ScriptContext *ctx);
-BOOL ScrCmd_616(ScriptContext *ctx);
-BOOL ScrCmd_617(ScriptContext *ctx);
+BOOL ScrCmd_CountSavedPhotos(ScriptContext *ctx);
+BOOL ScrCmd_OpenPhotoAlbum(ScriptContext *ctx);
 BOOL ScrCmd_PhotoAlbumIsFull(ScriptContext *ctx);
 BOOL ScrCmd_RocketCostumeFlagCheck(ScriptContext *ctx);
 BOOL ScrCmd_RocketCostumeFlagAction(ScriptContext *ctx);
-BOOL ScrCmd_621(ScriptContext *ctx);
+BOOL ScrCmd_PlaceStarterBallsInElmsLab(ScriptContext *ctx);
 BOOL ScrCmd_622(ScriptContext *ctx);
 BOOL ScrCmd_AnimApricornTree(ScriptContext *ctx);
 BOOL ScrCmd_ApricornTreeGetApricorn(ScriptContext *ctx);
@@ -754,21 +754,21 @@ BOOL ScrCmd_MenuItemAdd(ScriptContext *ctx);
 BOOL ScrCmd_MenuExec(ScriptContext *ctx);
 BOOL ScrCmd_RockSmashItemCheck(ScriptContext *ctx);
 BOOL ScrCmd_TryHeadbuttEncounter(ScriptContext *ctx);
-BOOL ScrCmd_755(ScriptContext *ctx);
-BOOL ScrCmd_756(ScriptContext *ctx);
-BOOL ScrCmd_757(ScriptContext *ctx);
-BOOL ScrCmd_758(ScriptContext *ctx);
-BOOL ScrCmd_759(ScriptContext *ctx);
+BOOL ScrCmd_LegendCutsceneClearBellAnimBegin(ScriptContext *ctx);
+BOOL ScrCmd_LegendCutsceneClearBellAnimEnd(ScriptContext *ctx);
+BOOL ScrCmd_LegendCutsceneClearBellRiseFromBag(ScriptContext *ctx);
+BOOL ScrCmd_LegendCutsceneClearBellShimmer(ScriptContext *ctx);
+BOOL ScrCmd_LegendCutsceneLugiaEyeGlimmerEffect(ScriptContext *ctx);
 BOOL ScrCmd_760(ScriptContext *ctx);
-BOOL ScrCmd_761(ScriptContext *ctx);
-BOOL ScrCmd_762(ScriptContext *ctx);
-BOOL ScrCmd_763(ScriptContext *ctx);
-BOOL ScrCmd_764(ScriptContext *ctx);
-BOOL ScrCmd_765(ScriptContext *ctx);
-BOOL ScrCmd_766(ScriptContext *ctx);
-BOOL ScrCmd_767(ScriptContext *ctx);
-BOOL ScrCmd_768(ScriptContext *ctx);
-BOOL ScrCmd_769(ScriptContext *ctx);
+BOOL ScrCmd_LegendCutsceneMoveCameraTo(ScriptContext *ctx);
+BOOL ScrCmd_LegendCutscenePanCameraTo(ScriptContext *ctx);
+BOOL ScrCmd_LegendCutsceneWaitCameraPan(ScriptContext *ctx);
+BOOL ScrCmd_LegendCutsceneBirdFinalApproach(ScriptContext *ctx);
+BOOL ScrCmd_LegendCutsceneWavesOrLeavesEffectBegin(ScriptContext *ctx);
+BOOL ScrCmd_LegendCutsceneWavesOrLeavesEffectEnd(ScriptContext *ctx);
+BOOL ScrCmd_LegendCutsceneLugiaArrivesEffectBegin(ScriptContext *ctx);
+BOOL ScrCmd_LegendCutsceneLugiaArrivesEffectEnd(ScriptContext *ctx);
+BOOL ScrCmd_LegendCutsceneLugiaArrivesEffectCameraPan(ScriptContext *ctx);
 BOOL ScrCmd_CheckSeenAllLetterUnown(ScriptContext *ctx);
 BOOL ScrCmd_771(ScriptContext *ctx);
 BOOL ScrCmd_772(ScriptContext *ctx);
@@ -1004,7 +1004,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_CheckRegisteredPhoneNumber,
     ScrCmd_148,
     ScrCmd_149,
-    ScrCmd_150,
+    ScrCmd_RestoreOverworld,
     ScrCmd_151,
     ScrCmd_152,
     ScrCmd_153,
@@ -1229,7 +1229,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_GetTailDaycareMonSpeciesAndNick,
     ScrCmd_PutMonInDaycare,
     ScrCmd_374,
-    ScrCmd_375,
+    ScrCmd_MakeObjectVisible,
     ScrCmd_376,
     ScrCmd_377,
     ScrCmd_378,
@@ -1470,12 +1470,12 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_GetPhoneContactRandomGiftBerry,
     ScrCmd_GetPhoneContactGiftItem,
     ScrCmd_CameronPhoto,
-    ScrCmd_616,
-    ScrCmd_617,
+    ScrCmd_CountSavedPhotos,
+    ScrCmd_OpenPhotoAlbum,
     ScrCmd_PhotoAlbumIsFull,
     ScrCmd_RocketCostumeFlagCheck,
     ScrCmd_RocketCostumeFlagAction,
-    ScrCmd_621,
+    ScrCmd_PlaceStarterBallsInElmsLab,
     ScrCmd_622,
     ScrCmd_AnimApricornTree,
     ScrCmd_ApricornTreeGetApricorn,
@@ -1609,21 +1609,21 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_MenuExec,
     ScrCmd_RockSmashItemCheck,
     ScrCmd_TryHeadbuttEncounter,
-    ScrCmd_755,
-    ScrCmd_756,
-    ScrCmd_757,
-    ScrCmd_758,
-    ScrCmd_759,
+    ScrCmd_LegendCutsceneClearBellAnimBegin,
+    ScrCmd_LegendCutsceneClearBellAnimEnd,
+    ScrCmd_LegendCutsceneClearBellRiseFromBag,
+    ScrCmd_LegendCutsceneClearBellShimmer,
+    ScrCmd_LegendCutsceneLugiaEyeGlimmerEffect,
     ScrCmd_760,
-    ScrCmd_761,
-    ScrCmd_762,
-    ScrCmd_763,
-    ScrCmd_764,
-    ScrCmd_765,
-    ScrCmd_766,
-    ScrCmd_767,
-    ScrCmd_768,
-    ScrCmd_769,
+    ScrCmd_LegendCutsceneMoveCameraTo,
+    ScrCmd_LegendCutscenePanCameraTo,
+    ScrCmd_LegendCutsceneWaitCameraPan,
+    ScrCmd_LegendCutsceneBirdFinalApproach,
+    ScrCmd_LegendCutsceneWavesOrLeavesEffectBegin,
+    ScrCmd_LegendCutsceneWavesOrLeavesEffectEnd,
+    ScrCmd_LegendCutsceneLugiaArrivesEffectBegin,
+    ScrCmd_LegendCutsceneLugiaArrivesEffectEnd,
+    ScrCmd_LegendCutsceneLugiaArrivesEffectCameraPan,
     ScrCmd_CheckSeenAllLetterUnown,
     ScrCmd_771,
     ScrCmd_772,

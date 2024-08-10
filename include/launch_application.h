@@ -15,7 +15,7 @@
 #include "overlay_43.h"
 #include "overlay_54.h"
 #include "overlay_58.h"
-#include "overlay_63.h"
+#include "register_hall_of_fame.h"
 #include "overlay_67.h"
 #include "overlay_72.h"
 #include "overlay_73.h"
@@ -44,6 +44,7 @@
 #include "unk_02088288.h"
 #include "unk_02092BE8.h"
 #include "unk_02097B78.h"
+#include "unk_02097D3C.h"
 #include "credits/credits.h"
 #include "voltorb_flip/voltorb_flip.h"
 
@@ -134,7 +135,7 @@ void EasyChat_LaunchApp(FieldSystem *fieldSystem, EasyChatArgs *a1);
 void sub_0202D640(SaveData *saveData, int a1, MAIL_MESSAGE *a2);
 PokegearArgs *PokegearTownMap_LaunchApp(FieldSystem *fieldSystem, int kind);
 SafariAreaCustomizerArgs *SafariAreaCustomizer_LaunchApp(FieldSystem *fieldSystem);
-PhotoAlbumArgs *PhotoAlbum_LaunchApp(FieldSystem *fieldSystem, int a1, int a2);
+PhotoAlbumArgs *PhotoAlbum_LaunchApp(FieldSystem *fieldSystem, int unused, int initialCursorPos);
 OptionsMenuArgs *OptionsMenu_LaunchApp(FieldSystem *fieldSystem);
 UseMailArgs *sub_0203EFEC(FieldSystem *fieldSystem, u16 a1, u8 a2, u8 a3);
 UseMailArgs *sub_0203F050(FieldSystem *fieldSystem, Pokemon *mon, HeapID heapId);
@@ -145,7 +146,7 @@ void PokeathlonCourse_LaunchApp(FieldSystem *fieldSystem, PokeathlonCourseArgs *
 void sub_0203FC68(FieldSystem *fieldSystem, void *args);
 void sub_0203FC90(FieldSystem *fieldSystem, void *args);
 LegendaryCinematicArgs *LegendaryCinematic_LaunchApp(FieldSystem *a0, UnkStruct_0203FCC4 *a1, u16 a2, u16 a3, HeapID a4);
-void sub_0203FD08(FieldSystem *fieldSystem, void *args);
+void sub_0203FD08(FieldSystem *fieldSystem, UnkStruct_02097D48 *args);
 PartyMenuArgs *PartyMenu_LaunchApp_Unk1(FieldSystem *fieldSystem, int a1, u8 a2);
 void CallTask_NamingScreen(TaskManager *taskManager, NameScreenType type, int species, int maxLen, int initPos, const u16 *defaultStr, u16 *retVar);
 void sub_0203E960(TaskManager *a0, int a1, UnkStruct_0203E8C8 *a2, u16 *a3, u16 *a4);

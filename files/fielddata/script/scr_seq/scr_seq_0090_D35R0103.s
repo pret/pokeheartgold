@@ -101,7 +101,7 @@ scr_seq_D35R0103_000:
 	wait_fanfare
 	heal_party
 	scrcmd_436
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	buffer_players_name 0

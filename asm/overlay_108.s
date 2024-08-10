@@ -5716,10 +5716,10 @@ _021E866E:
 
 	thumb_func_start ov108_021E8674
 ov108_021E8674: ; 0x021E8674
-	ldr r3, _021E8678 ; =sub_0200D9DC
+	ldr r3, _021E8678 ; =UnkImageStruct_Delete
 	bx r3
 	.balign 4, 0
-_021E8678: .word sub_0200D9DC
+_021E8678: .word UnkImageStruct_Delete
 	thumb_func_end ov108_021E8674
 
 	thumb_func_start ov108_021E867C

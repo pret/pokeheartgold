@@ -41,8 +41,8 @@
 .public _ffix
 .public _fflt
 .public _fsub
-.public ov01_021E7FDC
-.public ov01_021E8194
+.public UnkFieldSpriteRenderer_ov01_021E7FDC_Init
+.public UnkFieldSpriteRenderer_ov01_021E7FDC_Release
 .public ov01_021E81F0
 .public ov01_021E8298
 .public ov01_021E8378

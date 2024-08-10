@@ -45,8 +45,8 @@
   "objects": [
     {
       "id": "obj_T07SP0101_suit",
-      "ovid": "SPRITE_SUIT",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SUIT",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07SP0101_003 + 1",
@@ -62,8 +62,8 @@
     },
     {
       "id": "obj_T07SP0101_sunglasses",
-      "ovid": "SPRITE_SUNGLASSES",
-      "mvt": 4,
+      "sprite_id": "SPRITE_SUNGLASSES",
+      "movement": 4,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T07SP0101_001 + 1",

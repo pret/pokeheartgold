@@ -1,6 +1,9 @@
 #ifndef NITRO_GX_G3_H_
 #define NITRO_GX_G3_H_
 
+#include <nitro/types.h>
+#include <nitro/fx.h>
+
 #define G3OP_NOP                0x00
 
 #define G3OP_MTX_MODE           0x10
@@ -147,20 +150,111 @@ typedef enum {
     GX_MTXMODE_TEXTURE = 3
 } GXMtxMode;
 
-#define GX_PACK_VIEWPORT_PARAM(x1, y1, x2, y2)  ((u32)((x1) | ((y1) << 8) | ((x2) << 16) | ((y2) << 24)))
+typedef enum {
+    GX_TEXGEN_NONE        = 0,
+    GX_TEXGEN_TEXCOORD    = 1,
+    GX_TEXGEN_NORMAL      = 2,
+    GX_TEXGEN_VERTEX      = 3
+} GXTexGen;
 
 typedef enum {
-    GX_POLYGONMODE_MODULATE = 0,
-    GX_POLYGONMODE_DECAL = 1,
-    GX_POLYGONMODE_TOON = 2,
-    GX_POLYGONMODE_SHADOW = 3
+    GX_TEXREPEAT_NONE    = 0,
+    GX_TEXREPEAT_S       = 1,
+    GX_TEXREPEAT_T       = 2,
+    GX_TEXREPEAT_ST      = 3
+} GXTexRepeat;
+
+typedef enum {
+    GX_TEXFLIP_NONE    = 0,
+    GX_TEXFLIP_S       = 1,
+    GX_TEXFLIP_T       = 2,
+    GX_TEXFLIP_ST      = 3
+} GXTexFlip;
+
+typedef enum {
+    GX_BEGIN_TRIANGLES      = 0,
+    GX_BEGIN_QUADS          = 1,
+    GX_BEGIN_TRIANGLE_STRIP = 2,
+    GX_BEGIN_QUAD_STRIP     = 3
+} GXBegin;
+
+typedef enum {
+    GX_LIGHTMASK_NONE = 0,
+    GX_LIGHTMASK_0 = 1,
+    GX_LIGHTMASK_1 = 2,
+    GX_LIGHTMASK_01 = 3,
+    GX_LIGHTMASK_2 = 4,
+    GX_LIGHTMASK_02 = 5,
+    GX_LIGHTMASK_12 = 6,
+    GX_LIGHTMASK_012 = 7,
+    GX_LIGHTMASK_3 = 8,
+    GX_LIGHTMASK_03 = 9,
+    GX_LIGHTMASK_13 = 10,
+    GX_LIGHTMASK_013 = 11,
+    GX_LIGHTMASK_23 = 12,
+    GX_LIGHTMASK_023 = 13,
+    GX_LIGHTMASK_123 = 14,
+    GX_LIGHTMASK_0123 = 15
+} GXLightMask;
+
+typedef enum {
+    GX_POLYGONMODE_MODULATE    = 0,
+    GX_POLYGONMODE_DECAL       = 1,
+    GX_POLYGONMODE_TOON        = 2,
+    GX_POLYGONMODE_SHADOW      = 3
 } GXPolygonMode;
 
 typedef enum {
-    GX_CULL_ALL = 0,
-    GX_CULL_FRONT = 1,
-    GX_CULL_BACK = 2,
-    GX_CULL_NONE = 3
+    GX_CULL_ALL      = 0,
+    GX_CULL_FRONT    = 1,
+    GX_CULL_BACK     = 2,
+    GX_CULL_NONE     = 3
 } GXCull;
+
+#ifdef SDK_ADS
+    typedef struct {
+        u32 val[3];
+    } GXBoxTestParam;
+#else
+    typedef union {
+        u32 val[3];
+        struct {
+            fx16 x;
+            fx16 y;
+            fx16 z;
+            fx16 width;
+            fx16 height;
+            fx16 depth;
+        };
+    } GXBoxTestParam;
+#endif
+
+#define GX_PACK_VIEWPORT_PARAM(x1, y1, x2, y2)  ((u32)((x1) | ((y1) << 8) | ((x2) << 16) | ((y2) << 24)))
+#define GX_PACK_DIFFAMB_PARAM(diffuse, ambient, IsSetVtxColor)   \
+    ((u32)((diffuse)                                           | \
+           ((ambient) << REG_G3_DIF_AMB_AMBIENT_RED_SHIFT)     | \
+           (((IsSetVtxColor) != FALSE) << REG_G3_DIF_AMB_C_SHIFT)))
+#define GX_PACK_SPECEMI_PARAM(specular, emission, IsShininess)   \
+    ((u32)((specular)                                          | \
+           ((emission) << REG_G3_SPE_EMI_EMISSION_RED_SHIFT)   | \
+           (((IsShininess) != FALSE) << REG_G3_SPE_EMI_S_SHIFT)))
+#define GX_PACK_POLYGONATTR_PARAM(light, polyMode, cullMode, polygonID, alpha, misc) \
+    ((u32)(((light) << REG_G3_POLYGON_ATTR_LE_SHIFT)     | \
+           ((polyMode) << REG_G3_POLYGON_ATTR_PM_SHIFT)  | \
+           ((cullMode) << REG_G3_POLYGON_ATTR_BK_SHIFT)  | \
+           (misc)                                        | \
+           ((polygonID) << REG_G3_POLYGON_ATTR_ID_SHIFT) | \
+           ((alpha) << REG_G3_POLYGON_ATTR_ALPHA_SHIFT)))
+
+typedef struct {
+    u8 *curr_cmd;
+    u32 *curr_param;
+    u32 *bottom;
+    u32 length;
+    BOOL param0_cmd_flg;
+} GXDLInfo;
+
+void G3_BeginMakeDL(GXDLInfo *info, void *ptr, u32 length);
+u32 G3_EndMakeDL(GXDLInfo *info);
 
 #endif //NITRO_GX_G3_H_

@@ -29,8 +29,8 @@
   "objects": [
     {
       "id": "obj_R10_gsleader9",
-      "ovid": "SPRITE_GSLEADER9",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSLEADER9",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_HIDE_ROUTE_10_LT_SURGE",
       "scr": "_EV_scr_seq_R10_002 + 1",
@@ -46,8 +46,8 @@
     },
     {
       "id": "obj_R10_tsure_poke_static_zapdos",
-      "ovid": "SPRITE_FOLLOWER_MON_STATIC_ZAPDOS",
-      "mvt": 15,
+      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_ZAPDOS",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_HIDE_ROUTE_10_ZAPDOS",
       "scr": "_EV_scr_seq_R10_003 + 1",

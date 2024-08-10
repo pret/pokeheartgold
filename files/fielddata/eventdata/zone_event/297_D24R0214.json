@@ -37,8 +37,8 @@
   "objects": [
     {
       "id": "obj_D24R0214_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D24R0214_REVIVAL_HERB",
       "scr": "std_itemball_d24r0214_revival_herb",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_D24R0214_monstarball_2",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D24R0214_CHARCOAL",
       "scr": "std_itemball_d24r0214_charcoal",
@@ -71,8 +71,8 @@
     },
     {
       "id": "obj_D24R0214_monstarball_3",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D24R0214_LIFE_ORB",
       "scr": "std_itemball_d24r0214_life_orb",
@@ -88,8 +88,8 @@
     },
     {
       "id": "obj_D24R0214_monstarball_4",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D24R0214_LEPPA_BERRY",
       "scr": "std_itemball_d24r0214_leppa_berry",

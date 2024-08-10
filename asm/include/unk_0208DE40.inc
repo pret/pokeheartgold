@@ -1,11 +1,11 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_02007FD4
-.public sub_02008120
-.public sub_02008524
-.public sub_02008550
-.public sub_020085EC
-.public sub_020087A4
+.public PokepicManager_Create
+.public PokepicManager_DrawAll
+.public PokepicManager_Delete
+.public Pokepic_StartAnim
+.public PokepicManager_CreatePokepic
+.public Pokepic_SetAttr
 .public sub_02016F2C
 .public sub_02017088
 .public GfGfx_EngineATogglePlanes
@@ -18,7 +18,7 @@
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public GetBoxmonSpriteCharAndPlttNarcIds
-.public sub_02072914
+.public NARC_ReadPokepicAnimScript
 .public sub_0207294C
 .public sub_0208A520
 .public sub_0208DE40

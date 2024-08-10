@@ -27,7 +27,7 @@
 scr_seq_T27R0501_013:
 	compare VAR_UNK_410C, 1
 	goto_if_gt _0057
-	scrcmd_375 obj_T27R0501_rocketm_2
+	make_object_visible obj_T27R0501_rocketm_2
 _0057:
 	compare VAR_UNK_410C, 0
 	goto_if_ne _007C
@@ -37,7 +37,7 @@ _007C:
 	compare VAR_TEMP_x4009, 222
 	goto_if_ne _0110
 	move_person_facing obj_T27R0501_rocketm, 29, 0, 29, DIR_SOUTH
-	scrcmd_375 obj_T27R0501_rocketm
+	make_object_visible obj_T27R0501_rocketm
 	get_player_facing VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_ne _00BC

@@ -31,7 +31,7 @@ _003D:
 _0057:
 	move_person_facing obj_D45R0102_sakaki, 6, 1, 6, DIR_SOUTH
 	move_person_facing obj_D45R0102_var_1, 5, 1, 7, DIR_NORTH
-	scrcmd_375 obj_partner_poke
+	make_object_visible obj_partner_poke
 	scrcmd_606
 	end
 
@@ -191,7 +191,7 @@ _02C0:
 	wait_fanfare
 	heal_party
 	scrcmd_436
-	scrcmd_150
+	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	return

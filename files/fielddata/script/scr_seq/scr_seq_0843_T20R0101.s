@@ -43,7 +43,7 @@ _008F:
 	move_person_facing obj_T20R0101_doctor, 4, 0, 5, DIR_SOUTH
 	move_person_facing obj_T20R0101_var_1, 7, 0, 12, DIR_EAST
 _00B4:
-	scrcmd_621
+	place_starter_balls_in_elms_lab
 	end
 
 _00B8:
@@ -1349,7 +1349,7 @@ scr_seq_T20R0101_013:
 	play_fanfare SEQ_ME_ASA
 	heal_party
 	scrcmd_436
-	scrcmd_150
+	restore_overworld
 	wait_fanfare
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade

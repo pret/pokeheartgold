@@ -294,7 +294,7 @@ ov68_021E5B6C: ; 0x021E5B6C
 	mov r0, #0x56
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02009418
+	bl PokepicManager_HandleLoadImgAndOrPltt
 	bl GF_RunVramTransferTasks
 	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r3, _021E5B98 ; =0x027E0000
@@ -2700,7 +2700,7 @@ ov68_021E6E84: ; 0x021E6E84
 	lsl r6, r6, #2
 _021E6E90:
 	ldr r0, [r5, r6]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0xc
@@ -3147,7 +3147,7 @@ ov68_021E7224: ; 0x021E7224
 	add r5, r0, #0
 	add r4, r1, #0
 	add r0, r2, #0
-	bl sub_02007FD4
+	bl PokepicManager_Create
 	str r0, [r5, #4]
 	add r0, sp, #0x10
 	add r1, r4, #0
@@ -3162,7 +3162,7 @@ ov68_021E7224: ; 0x021E7224
 	add r1, sp, #0x10
 	mov r2, #0x34
 	mov r3, #0x80
-	bl sub_020085EC
+	bl PokepicManager_CreatePokepic
 	str r0, [r5, #0x18]
 	add r0, r4, #0
 	mov r1, #5
@@ -3182,7 +3182,7 @@ ov68_021E7224: ; 0x021E7224
 	ldr r0, [r5, #0x18]
 	mov r1, #0x23
 	eor r2, r3
-	bl sub_020087A4
+	bl Pokepic_SetAttr
 	add sp, #0x20
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov68_021E7224
@@ -3292,7 +3292,7 @@ ov68_021E734C: ; 0x021E734C
 	bl NNS_G3dGlbFlushP
 	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r4, #4]
-	bl sub_02008120
+	bl PokepicManager_DrawAll
 	ldr r0, _021E7384 ; =0x04000540
 	mov r1, #1
 	str r1, [r0]
@@ -3309,7 +3309,7 @@ ov68_021E7388: ; 0x021E7388
 	ldr r0, [r4]
 	bl Camera_Delete
 	ldr r0, [r4, #4]
-	bl sub_02008524
+	bl PokepicManager_Delete
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x1c

@@ -834,7 +834,7 @@ ov64_021E6010: ; 0x021E6010
 	ldr r0, [r4, r5]
 	cmp r0, #0
 	beq _021E6028
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0
 	str r0, [r4, r5]
 _021E6028:
@@ -1870,7 +1870,7 @@ _021E67D0:
 	ldrb r3, [r5, r3]
 	lsr r1, r1, #0x18
 	mov r2, #2
-	bl sub_020708D8
+	bl GetMonPicHeightBySpeciesGenderForm
 	add r7, r0, #0
 	ldr r0, [sp, #0x1c]
 	add r3, sp, #0x3c
@@ -1951,7 +1951,7 @@ _021E685E:
 	ldr r0, [sp, #0x24]
 	ldr r0, [r0, r6]
 	ldr r0, [r0]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	mov r1, #2
 	bl NNS_G2dGetImageLocation
 	add r1, r0, #0
@@ -1964,7 +1964,7 @@ _021E685E:
 	ldr r0, [sp, #0x24]
 	ldr r0, [r0, r6]
 	ldr r0, [r0]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #2
 	bl NNS_G2dGetImagePaletteLocation
 	add r3, r0, #0
@@ -2453,7 +2453,7 @@ _021E6C84:
 	add r1, r2, #0
 	ldr r0, [r1, r0]
 	ldr r0, [r0]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	mov r1, #1
 	bl NNS_G2dGetImageLocation
 	mov r1, #0x66
@@ -2568,7 +2568,7 @@ _021E6DCE:
 	ldr r0, [sp, #0x28]
 	ldr r0, [r1, r0]
 	ldr r0, [r0]
-	bl sub_02024B34
+	bl Sprite_GetPaletteProxy
 	mov r1, #1
 	bl NNS_G2dGetImagePaletteLocation
 	add r6, r0, #0

@@ -76,7 +76,7 @@ ov01_021FDA74: ; 0x021FDA74
 	sub sp, #0x24
 	add r5, r0, #0
 	add r4, r1, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystem
 	str r0, [sp, #8]
 	add r0, r5, #0
 	bl ov01_021F146C
@@ -129,7 +129,7 @@ ov01_021FDAC0: ; 0x021FDAC0
 	bl sub_0205F254
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x20]
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	str r0, [r4, #8]
 	mov r0, #1
 	lsl r0, r0, #0xc
@@ -180,7 +180,7 @@ ov01_021FDB44: ; 0x021FDB44
 	ldr r6, [r4, #0x20]
 	add r5, r0, #0
 	add r0, r6, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	ldr r1, [r4, #8]
 	cmp r1, r0
 	bne _021FDB72
@@ -251,7 +251,7 @@ ov01_021FDBCC: ; 0x021FDBCC
 	add r7, r0, #0
 	add r0, r6, #0
 	mov r4, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	ldr r1, [r5, #8]
 	cmp r1, r0
 	bne _021FDBFC
@@ -350,7 +350,7 @@ ov01_021FDC7C: ; 0x021FDC7C
 	cmp r0, #0xff
 	bne _021FDCD2
 	add r0, r6, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	cmp r0, #0xbc
 	bne _021FDCD2
 	add r0, r6, #0
@@ -382,7 +382,7 @@ _021FDCD4:
 	ldr r0, [r5, #0x14]
 	ldr r0, [r0, #0x40]
 	bl PlayerAvatar_GetMapObject
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	cmp r0, #0xbc
 	bne _021FDCFE
 	mov r0, #0
@@ -726,7 +726,7 @@ ov01_021FDF88: ; 0x021FDF88
 	sub sp, #0x24
 	add r5, r0, #0
 	add r4, r1, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystem
 	str r0, [sp, #8]
 	add r0, r5, #0
 	bl ov01_021F146C
@@ -779,7 +779,7 @@ ov01_021FDFD4: ; 0x021FDFD4
 	bl sub_0205F254
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x20]
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	str r0, [r4, #8]
 	mov r0, #1
 	lsl r0, r0, #0xc
@@ -826,7 +826,7 @@ ov01_021FE058: ; 0x021FE058
 	ldr r6, [r4, #0x20]
 	add r5, r0, #0
 	add r0, r6, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	ldr r1, [r4, #8]
 	cmp r1, r0
 	bne _021FE086
@@ -901,7 +901,7 @@ ov01_021FE0EC: ; 0x021FE0EC
 	ldr r4, [r5, #0x20]
 	add r6, r0, #0
 	add r0, r4, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	ldr r1, [r5, #8]
 	cmp r1, r0
 	bne _021FE11A

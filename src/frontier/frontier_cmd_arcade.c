@@ -275,7 +275,7 @@ BOOL FrtCmd_ArcadeAction(FrontierContext *ctx) {
             VecFx32 playerMatrix;
             VecFx32 opponentMatrix;
             u8 playerMonCnt = BattleArcade_GetMonCount(arcadeCtx->type, 1);
-            BattleArcade_GetOpponentMonCount(arcadeCtx->type, 1);
+            u8 opponentMonCnt = BattleArcade_GetOpponentMonCount(arcadeCtx->type, 1);
 
             for (i = 0; i < playerMonCnt; i++) {
                 Sprite *playerSprite = arcadeCtx->unk30[i]->sprite;
@@ -468,7 +468,7 @@ BOOL FrtCmd_ArcadeSendBuffer(FrontierContext *ctx) {
 }
 
 BOOL FrtCmd_ArcadeReceiveBuffer(FrontierContext *ctx) {
-    ctx->unk78[0] = FrontierScript_ReadHalf(ctx);
+    ctx->unk78[0] = FrontierScript_ReadU16(ctx);
     ov80_0222AB84(ctx, ov80_02234028);
     return TRUE;
 }

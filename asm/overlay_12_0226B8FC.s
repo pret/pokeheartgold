@@ -158,7 +158,7 @@ ov12_0226BA28: ; 0x0226BA28
 	add r5, r6, #0
 _0226BA30:
 	ldr r0, [r5]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #5

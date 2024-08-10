@@ -127,10 +127,10 @@ _02239BE4: .word ov80_0223DA54
 
 	thumb_func_start ov80_02239BE8
 ov80_02239BE8: ; 0x02239BE8
-	ldr r3, _02239BEC ; =sub_0200D9DC
+	ldr r3, _02239BEC ; =UnkImageStruct_Delete
 	bx r3
 	.balign 4, 0
-_02239BEC: .word sub_0200D9DC
+_02239BEC: .word UnkImageStruct_Delete
 	thumb_func_end ov80_02239BE8
 
     .rodata

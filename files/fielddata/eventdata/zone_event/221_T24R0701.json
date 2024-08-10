@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_T24R0701_gswoman1",
-      "ovid": "SPRITE_GSWOMAN1",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSWOMAN1",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T24R0701_000 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_T24R0701_gsbabygirl1",
-      "ovid": "SPRITE_GSBABYGIRL1",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSBABYGIRL1",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T24R0701_002 + 1",
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_T24R0701_gsgirl1",
-      "ovid": "SPRITE_GSGIRL1",
-      "mvt": 5,
+      "sprite_id": "SPRITE_GSGIRL1",
+      "movement": 5,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T24R0701_001 + 1",

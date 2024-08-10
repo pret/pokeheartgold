@@ -118,7 +118,7 @@ struct UnkStruct_020FACDC {
     int filler_00[12/sizeof(int)];
 };
 
-void ov01_021F3C0C(void *fieldSystem_unk9C, int a1, const struct UnkStruct_020FACDC *unk_FACDC, int a3, void *fieldSystem_unk54);
+void ov01_021F3C0C(void *fieldSystem_unk9C, int a1, const VecFx32 *unk_FACDC, int a3, void *fieldSystem_unk54);
 BOOL ov01_022060B8(FieldSystem *fieldSystem, u8 a1, u8 a2);
 
 struct BankTransactionWorkSub {

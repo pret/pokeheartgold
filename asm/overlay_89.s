@@ -1701,7 +1701,7 @@ ov89_022596DC: ; 0x022596DC
 	add r5, r7, #0
 _022596E6:
 	ldr r0, [r5, r6]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #6
@@ -1711,7 +1711,7 @@ _022596E6:
 	add r4, r7, #0
 _022596FA:
 	ldr r0, [r4, r6]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #6
@@ -1721,7 +1721,7 @@ _022596FA:
 	add r4, r7, #0
 _0225970E:
 	ldr r0, [r4, r6]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #6
@@ -1919,13 +1919,13 @@ ov89_022598A8: ; 0x022598A8
 	add r5, r0, #0
 	ldr r0, _022598CC ; =0x0000096C
 	ldr r0, [r5, r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r6, #0x97
 	mov r4, #0
 	lsl r6, r6, #4
 _022598BA:
 	ldr r0, [r5, r6]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #8
@@ -2182,7 +2182,7 @@ _02259AC6:
 	lsl r5, r5, #0x14
 _02259ACA:
 	ldr r0, [r6]
-	bl sub_02024B1C
+	bl Sprite_GetImageProxy
 	add r6, r0, #0
 	ldr r0, [sp, #0x2c]
 	mov r2, #0x40
@@ -3139,7 +3139,7 @@ _0225A228:
 	mov r0, #0x99
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	mov r0, #0x99
 	lsl r0, r0, #4
 	str r6, [r5, r0]

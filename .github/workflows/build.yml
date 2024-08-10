@@ -19,21 +19,19 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-
-      - name: Build ROM
-        env:
-          GAME_VERSION: HEARTGOLD
-          GAME_LANGUAGE: ENGLISH
-          GAME_REVISION: 0
-          NONMATCHING: 0
-          COMPARE: 1
-          BUILD_OUT: build/heartgold.us/
-        uses: ./.github/workflows/build-rom
-
-  build-soulsilver:
-    runs-on: ubuntu-22.04
+      - name: Update and Install Software
+        run: |
+          sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+          sudo apt update
+          sudo apt -y --allow-downgrades install g++-10-multilib linux-libc-dev binutils-arm-none-eabi p7zip-full pkg-config libpugixml-dev ppa-purge
+          sudo ppa-purge -y ppa:ubuntu-toolchain-r/test || true
+          sudo dpkg --add-architecture i386
+          sudo mkdir -pm755 /etc/apt/keyrings
+          sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+          sudo add-apt-repository ppa:cybermax-dexter/sdl2-backport
+          sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/$(lsb_release -cs)/winehq-$(lsb_release -cs).sources
+          sudo apt update
+          sudo apt -y --allow-downgrades install --install-recommends winehq-stable
 
     steps:
       - name: Checkout Repo
@@ -61,9 +59,7 @@ jobs:
           GAME_VERSION: HEARTGOLD
           GAME_LANGUAGE: ENGLISH
           GAME_REVISION: 0
-          NONMATCHING: 1
-          COMPARE: 0
-        uses: ./.github/workflows/build-rom
+        run: make -j4
 
   build-nonmatching-soulsilver:
     runs-on: ubuntu-22.04
@@ -77,44 +73,7 @@ jobs:
           GAME_VERSION: SOULSILVER
           GAME_LANGUAGE: ENGLISH
           GAME_REVISION: 0
-          NONMATCHING: 1
-          COMPARE: 0
-        uses: ./.github/workflows/build-rom
-
-  post-merge:
-    runs-on: ubuntu-22.04
-    if: |
-      always() &&
-      (github.event_name == 'push') &&
-      contains(join(needs.*.result, ','), 'success')
-    needs: [build-heartgold, build-soulsilver, build-nonmatching-heartgold, build-nonmatching-soulsilver]
-
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-
-      - name: Download HeartGold build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: HEARTGOLD-build
-
-      - name: Download SoulSilver build/ artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: SOULSILVER-build
-
-      - name: Extract build artifacts
-        run: |
-          mkdir HEARTGOLD_build/
-          mkdir SOULSILVER_build/
-          mkdir -p build/heartgold.us/
-          mkdir -p build/soulsilver.us/
-          mkdir -p sub/build/
-          tar -xzvhf HEARTGOLD_build.tar.gz -C HEARTGOLD_build/
-          tar -xzvhf SOULSILVER_build.tar.gz -C SOULSILVER_build/
-          cp -r HEARTGOLD_build/build/heartgold.us/ build/
-          cp -r SOULSILVER_build/build/soulsilver.us/ build/
-          cp -r HEARTGOLD_build/sub/build/ sub/
+        run: make -j4
 
       - name: Webhook
         run: |

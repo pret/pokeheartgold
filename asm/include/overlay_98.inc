@@ -34,7 +34,7 @@
 .public SpriteRenderer_LoadAnimResObjFromNarcId
 .public SpriteRenderer_LoadResourcesAndCreateSprite
 .public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
-.public sub_0200D9DC
+.public UnkImageStruct_Delete
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public UnkImageStruct_SetSpriteAnimActiveFlag
 .public sub_0200DC8C
@@ -62,8 +62,8 @@
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_DisableEngineBPlanes
 .public GfGfx_EngineBTogglePlanes
-.public sub_02024B1C
-.public sub_02024B34
+.public Sprite_GetImageProxy
+.public Sprite_GetPaletteProxy
 .public Sprite_GetVramType
 .public TouchscreenHitbox_TouchNewIsIn
 .public GF_AssertFail

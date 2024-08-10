@@ -9,7 +9,7 @@
 #include "unk_02054E00.h"
 #include "unk_0206793C.h"
 #include "unk_0203BA5C.h"
-#include "field_map_object.h"
+#include "map_object.h"
 #include "follow_mon.h"
 #include "unk_02056D7C.h"
 #include "field_system_rtc_weather.h"
@@ -223,7 +223,7 @@ static void sub_0205316C(FieldSystem *fieldSystem) {
         playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData));
         fieldSystem->playerAvatar = sub_0205C390(fieldSystem->mapObjectManager, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, playerSaveData->unk4, gender, 2, playerSaveData);
     } else {
-        fieldSystem->mapObjectManager = sub_0205E0BC(fieldSystem, 64, HEAP_ID_BATTLE);
+        fieldSystem->mapObjectManager = MapObjectManager_Init(fieldSystem, 64, 5);
         gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
         playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData));
         fieldSystem->playerAvatar = sub_0205C390(fieldSystem->mapObjectManager, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, playerSaveData->unk4, gender, 2, playerSaveData);
@@ -248,7 +248,7 @@ static void sub_0205323C(FieldSystem *fieldSystem) {
     u32 gender;
     struct PlayerSaveData *playerSaveData;
 
-    fieldSystem->mapObjectManager = sub_0205E0BC(fieldSystem, 64, HEAP_ID_BATTLE);
+    fieldSystem->mapObjectManager = MapObjectManager_Init(fieldSystem, 64, 5);
     FieldSystem_RestoreMapObjectsFromSave(fieldSystem);
     playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData));
     gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
@@ -519,7 +519,7 @@ static BOOL sub_02053740(TaskManager *taskManager) {
     return FALSE;
 }
 
-void sub_020537A8(TaskManager *taskManager, Location *location) {
+void sub_020537A8(TaskManager *taskManager, const Location *location) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     struct ErrorContinueEnv *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct ErrorContinueEnv));
     if (sub_0203DF7C(fieldSystem)) {
@@ -550,7 +550,7 @@ static BOOL Task_ScriptWarp(TaskManager *taskManager) {
     switch (env->state) {
     case 0:
         FieldSystem_BeginFadeOutMusic(fieldSystem, env->location.mapId);
-        sub_0205525C(taskManager);
+        CallTask_LeaveOverworld(taskManager);
         env->state++;
         break;
     case 1:
@@ -650,7 +650,7 @@ static BOOL sub_020539E8(TaskManager *taskManager) {
 
     switch (*state_p) {
     case 0:
-        sub_0205525C(taskManager);
+        CallTask_LeaveOverworld(taskManager);
         (*state_p)++;
         break;
     case 1:
@@ -766,7 +766,7 @@ static BOOL sub_02053BF8(TaskManager *taskManager) {
 
     switch (*state_p) {
     case 0:
-        sub_0205525C(taskManager);
+        CallTask_LeaveOverworld(taskManager);
         (*state_p)++;
         break;
     case 1:
@@ -839,7 +839,7 @@ static BOOL sub_02053CCC(TaskManager *taskManager) {
     case 2:
         if (env->unk4) {
             FieldSystem_BeginFadeOutMusic(fieldSystem, location->mapId);
-            sub_0205525C(taskManager);
+            CallTask_LeaveOverworld(taskManager);
             env->unk0++;
         }
         break;
@@ -907,7 +907,7 @@ static BOOL sub_02053E5C(TaskManager *taskManager) {
         break;
     case 1:
         if (env->unk4) {
-            sub_0205525C(taskManager);
+            CallTask_LeaveOverworld(taskManager);
             (*state_p)++;
         }
         break;
@@ -956,11 +956,11 @@ static BOOL sub_02053F70(TaskManager *taskManager) {
     switch (*state_p) {
     case 0:
         FieldSystem_BeginFadeOutMusic(fieldSystem, location->mapId);
-        PalleteFadeUntilFinished(taskManager);
+        PaletteFadeUntilFinished(taskManager);
         (*state_p)++;
         break;
     case 1:
-        sub_0205525C(taskManager);
+        CallTask_LeaveOverworld(taskManager);
         (*state_p)++;
         break;
     case 2:

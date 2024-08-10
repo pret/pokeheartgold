@@ -25,7 +25,7 @@
 .public sub_02096998
 .public ov80_0222A840
 .public ov80_0222AB84
-.public FrontierScript_ReadHalf
+.public FrontierScript_ReadU16
 .public FrontierScript_ReadVarPtr
 .public FrontierScript_ReadVar
 .public FrtCmd_170

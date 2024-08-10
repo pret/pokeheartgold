@@ -2,7 +2,7 @@
 #include "battle/battle_setup.h"
 #include "encounter.h"
 #include "blackout.h"
-#include "field_map_object.h"
+#include "map_object.h"
 #include "field_system.h"
 #include "field_warp_tasks.h"
 #include "launch_application.h"
@@ -37,7 +37,6 @@
 #include "unk_020552A4.h"
 #include "unk_02034354.h"
 #include "unk_02066EDC.h"
-#include "field_map_object.h"
 #include "field_warp_tasks.h"
 #include "unk_02058034.h"
 #include "pokedex_util.h"
@@ -127,7 +126,7 @@ static BOOL Task_StartEncounter(TaskManager *taskManager) { //todo: better name
             (*state)++;
             break;
         case 1:
-            sub_0205525C(taskManager);
+            CallTask_LeaveOverworld(taskManager);
             (*state)++;
             break;
         case 2:
@@ -203,7 +202,7 @@ static BOOL Task_020508B8(TaskManager *taskManager) {
             (*state)++;
             break;
         case 1:
-            sub_0205525C(taskManager);
+            CallTask_LeaveOverworld(taskManager);
             (*state)++;
             break;
         case 2:
@@ -264,7 +263,7 @@ static BOOL Task_020509F0(TaskManager *taskManager) {
             (*state)++;
             break;
         case 1:
-            sub_0205525C(taskManager);
+            CallTask_LeaveOverworld(taskManager);
             (*state)++;
             break;
         case 2:
@@ -360,7 +359,7 @@ static BOOL Task_WildEncounter(TaskManager *taskManager) {
             encounter->state++;
             break;
         case 1:
-            sub_0205525C(taskManager);
+            CallTask_LeaveOverworld(taskManager);
             encounter->state++;
             break;
         case 2:
@@ -414,7 +413,7 @@ static BOOL Task_SafariEncounter(TaskManager *taskManager) {
             (*state)++;
             break;
         case 1:
-            sub_0205525C(taskManager);
+            CallTask_LeaveOverworld(taskManager);
             (*state)++;
             break;
         case 2:
@@ -491,7 +490,7 @@ static BOOL Task_BugContestEncounter(TaskManager *taskManager) {
             (*state)++;
             break;
         case 1:
-            sub_0205525C(taskManager);
+            CallTask_LeaveOverworld(taskManager);
             (*state)++;
             break;
         case 2:
@@ -590,7 +589,7 @@ static BOOL Task_PalParkEncounter(TaskManager *taskManager) {
             (*state)++;
             break;
         case 1:
-            sub_0205525C(taskManager);
+            CallTask_LeaveOverworld(taskManager);
             (*state)++;
             break;
         case 2:
@@ -658,7 +657,7 @@ static BOOL Task_TutorialBattle(TaskManager *taskManager) {
             (*state)++;
             break;
         case 1:
-            sub_0205525C(taskManager);
+            CallTask_LeaveOverworld(taskManager);
             (*state)++;
             break;
         case 2:

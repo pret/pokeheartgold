@@ -2260,7 +2260,7 @@ _0200F564:
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200D9DC
+	bl UnkImageStruct_Delete
 	add r0, r4, #0
 	bl ov01_021E86F4
 	add r0, r5, #0
@@ -2449,7 +2449,7 @@ sub_0200F6D4: ; 0x0200F6D4
 	add r4, r1, #0
 	ldrh r0, [r5, r0]
 	add r6, r2, #0
-	bl sub_02007FD4
+	bl PokepicManager_Create
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -2464,7 +2464,7 @@ sub_0200F6D4: ; 0x0200F6D4
 	add r1, sp, #0xc
 	bl sub_0200F748
 	add r0, r7, #0
-	bl sub_02008524
+	bl PokepicManager_Delete
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -2479,7 +2479,7 @@ sub_0200F714: ; 0x0200F714
 	ldr r0, _0200F744 ; =0x00000162
 	add r4, r1, #0
 	ldrh r0, [r5, r0]
-	bl sub_02007FD4
+	bl PokepicManager_Create
 	add r6, r0, #0
 	add r0, sp, #0
 	add r1, r4, #0
@@ -2489,7 +2489,7 @@ sub_0200F714: ; 0x0200F714
 	add r1, sp, #0
 	bl sub_0200F748
 	add r0, r6, #0
-	bl sub_02008524
+	bl PokepicManager_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop

@@ -437,6 +437,7 @@ $(eval $(call arc_strip_name,files/system/touch_subwindow.narc,files/a/1/5/2))
 $(eval $(call arc_strip_name,files/data/gs_areawindow.narc,files/a/1/6/3))
 $(eval $(call arc_strip_name,files/poketool/personal/performance.narc,files/a/1/6/9))
 $(eval $(call arc_strip_name,files/application/annon/puzzle_gra.narc,files/a/1/7/2))
+$(eval $(call arc_strip_name,files/demo/legend.narc,files/a/1/7/4))
 $(eval $(call arc_strip_name,files/data/resdat.narc,files/a/1/7/5))
 $(eval $(call arc_strip_name,files/application/custom_ball/edit/gs_cb_data.narc,files/a/1/8/5))
 $(eval $(call arc_strip_name,files/pbr/dp_height.narc,files/a/1/9/4))
@@ -448,6 +449,8 @@ $(eval $(call arc_strip_name,files/arc/headbutt.$(buildname).narc,files/a/2/5/2)
 $(eval $(call arc_strip_name,files/demo/opening/gs_opening.narc,files/a/2/6/2))
 $(eval $(call arc_strip_name,files/application/voltorb_flip.narc,files/a/2/6/4))
 $(eval $(call arc_strip_name,files/poketool/icongra/poke_icon/poke_icon.narc,files/a/0/2/0))
+$(eval $(call arc_strip_name,files/data/photo_data.narc,files/a/2/5/4))
+$(eval $(call arc_strip_name,files/graphic/camera_viewfinder.narc,files/a/2/6/1))
 
 $(DIFF_ARCS):
 	cp $< $@
@@ -504,9 +507,12 @@ include files/application/annon/puzzle_gra.mk
 include files/data/resdat.mk
 include files/demo/title/titledemo.mk
 include files/demo/opening/gs_opening.mk
+include files/demo/legend.mk
 include files/arc/headbutt.mk
 include files/poketool/personal/personal.mk
 include files/fielddata/graphic/preview_graphic/preview_graphic.mk
+include files/data/photo_data.mk
+include files/graphic/camera_viewfinder.mk
 
 $(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
 

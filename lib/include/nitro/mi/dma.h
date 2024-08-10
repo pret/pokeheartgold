@@ -76,5 +76,9 @@ static inline void MIi_CallCallback(MIDmaCallback callback, void *arg)
         (callback) (arg);
     }
 }
+void MI_SendGXCommand(u32 dmaNo, const void * src, u32 commandLength);
+void MI_SendGXCommandAsync(u32 dmaNo, const void * src, u32 commandLength, MIDmaCallback callback, void * arg);
+void MI_SendGXCommandFast(u32 dmaNo, const void * src, u32 commandLength);
+void MI_SendGXCommandAsyncFast(u32 dmaNo, const void * src, u32 commandLength, MIDmaCallback callback, void * arg);
 
 #endif //NITRO_MI_DMA_H_

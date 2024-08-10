@@ -152,7 +152,7 @@ struct StarterChooseMonSpriteData {
     struct StarterChooseMonObjResPtrs objs[3];
     void *charDatas[3];
     void *plttDatas[3];
-    struct SomeDrawPokemonStruct param;
+    struct PokepicTemplate pokepicTemplate;
     SpriteList *spriteList;
     GF_G2dRenderer g2dRender;
     struct Sprite *sprites[3];
@@ -1182,7 +1182,7 @@ static void createMonSprites(struct ChooseStarterAppWork *work) {
         spriteData->objs[i].cellResObj = AddCellOrAnimResObjFromOpenNarc(spriteData->cellResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000010_NCER, FALSE, i, GF_GFX_RES_TYPE_CELL, work->heapId);
         spriteData->objs[i].animResObj = AddCellOrAnimResObjFromOpenNarc(spriteData->animResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000016_NANR, FALSE, i, GF_GFX_RES_TYPE_ANIM, work->heapId);
         GetMonSpriteCharAndPlttNarcIdsEx(
-            &spriteData->param,
+            &spriteData->pokepicTemplate,
             GetMonData(work->choices[i], MON_DATA_SPECIES, NULL),
             GetMonData(work->choices[i], MON_DATA_GENDER, NULL),
             2,
@@ -1190,8 +1190,8 @@ static void createMonSprites(struct ChooseStarterAppWork *work) {
             0,
             0
         );
-        spriteData->charDatas[i] = sub_0201442C((NarcId)spriteData->param.narcID, spriteData->param.charDataID, work->heapId);
-        spriteData->plttDatas[i] = sub_02014450((NarcId)spriteData->param.narcID, spriteData->param.palDataID, work->heapId);
+        spriteData->charDatas[i] = sub_0201442C((NarcId)spriteData->pokepicTemplate.narcID, spriteData->pokepicTemplate.charDataID, work->heapId);
+        spriteData->plttDatas[i] = sub_02014450((NarcId)spriteData->pokepicTemplate.narcID, spriteData->pokepicTemplate.palDataID, work->heapId);
         loadOneMonObj(spriteData->charResMan, spriteData->plttResMan, spriteData->charDatas[i], spriteData->plttDatas[i], i);
         createOneMonRender(spriteData, i, work->heapId);
     }
