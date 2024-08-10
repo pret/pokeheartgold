@@ -451,7 +451,7 @@ void sub_0204AD04(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     GameStats_Add(gameStats, GAME_STAT_BATTLE_TOWER_WIN_COUNT, a0->curWinStreak);
     sub_0202D57C(a0->unk74, a0->unk0f, 2);
     if (a0->unk0f != 6) {
-        GameStats_Add(Save_GameStats_Get(saveData), GAME_STAT_UNK16, 1);
+        GameStats_Add(Save_GameStats_Get(saveData), GAME_STAT_BATTLE_TOWER_BATTLE_COUNT, 1);
     }
     sub_0204B318(a0);
     unk++;
@@ -484,7 +484,7 @@ void sub_0204AE20(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     GameStats_Add(gameStats, GAME_STAT_BATTLE_TOWER_WIN_COUNT, 7);
     sub_0202D57C(a0->unk74, a0->unk0f, 3);
     if (a0->unk0f != 6) {
-        GameStats_Add(gameStats, GAME_STAT_UNK16, 1);
+        GameStats_Add(gameStats, GAME_STAT_BATTLE_TOWER_BATTLE_COUNT, 1);
     }
     GameStats_AddScore(gameStats, SCORE_INC_TYPE_14);
     sub_0204B318(a0);

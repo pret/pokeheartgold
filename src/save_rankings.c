@@ -135,7 +135,7 @@ static u32 *Save_RankingSys_GetPlayerStats(SaveData *saveData, HeapID heapId) {
     for (i = 0; i < RANKINGS_COUNT; ++i) {
         switch (i) {
         case RANKINGS_RECORD_BATTLE_TOWER_AVG_WIN_STREAK: {
-            val = GameStats_GetCapped(gameStats, GAME_STAT_UNK16);
+            val = GameStats_GetCapped(gameStats, GAME_STAT_BATTLE_TOWER_BATTLE_COUNT);
             if (val != 0) {
                 val = GameStats_GetCapped(gameStats, GAME_STAT_BATTLE_TOWER_WIN_COUNT) / val;
             }
@@ -152,13 +152,13 @@ static u32 *Save_RankingSys_GetPlayerStats(SaveData *saveData, HeapID heapId) {
             val = GameStats_GetCapped(gameStats, GAME_STAT_LOCAL_CONTEST_ENTRIES);
             val += GameStats_GetCapped(gameStats, GAME_STAT_COMM_CONTEST_ENTRIES);
             if (val != 0) {
-                val = ret[10] * 100 / val;
+                val = ret[RANKINGS_RECORD_CONTEST_WIN] * 100 / val;
             }
             ret[i] = val;
             break;
         }
         default:
-            if (i >= 0 && i <= 4) {
+            if (i >= RANKINGS_RECORD_BATTLE_TOWER_SINGLE_WINS && i <= RANKINGS_RECORD_BATTLE_TOWER_WIFI_WINS) {
                 ret[i] = FrontierSave_GetStat(frontierSave, sStatIDs[i], 0xFF);
             } else {
                 ret[i] = GameStats_GetCapped(gameStats, sStatIDs[i]);

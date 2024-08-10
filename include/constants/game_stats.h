@@ -12,7 +12,7 @@
 #define GAME_STAT_FISHING_LANDED_MON          11
 #define GAME_STAT_HATCHED_EGG                 12
 #define GAME_STAT_UNK14                       14
-#define GAME_STAT_UNK16                       16
+#define GAME_STAT_BATTLE_TOWER_BATTLE_COUNT                       16
 #define GAME_STAT_UNK17                       17
 #define GAME_STAT_UNK20                       20
 #define GAME_STAT_UNK21                       21 //link battles?

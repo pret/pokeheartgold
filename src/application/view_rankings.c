@@ -36,6 +36,7 @@ typedef enum ViewRankingsWindowId {
     VIEW_RANKINGS_APP_WINDOW_RETURN,
     VIEW_RANKINGS_APP_WINDOW_DELETE_RECORD,
     VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE,
+    VIEW_RANKINGS_APP_WINDOW_MAX,
 } ViewRankingsWindowId;
 
 typedef enum ViewRankingsSpriteId {
@@ -44,7 +45,19 @@ typedef enum ViewRankingsSpriteId {
     VIEW_RANKINGS_APP_SPRITE_LEFT_ARROW,
     VIEW_RANKINGS_APP_SPRITE_RETURN,
     VIEW_RANKINGS_APP_SPRITE_DELETE_RECORD,
+    VIEW_RANKINGS_APP_SPRITE_MAX,
 } ViewRankingsSpriteId;
+
+typedef enum ViewRankingsMiscStringId {
+    VIEW_RANKINGS_MISC_STRING_0,
+    VIEW_RANKINGS_MISC_STRING_1,
+    VIEW_RANKINGS_MISC_STRING_2,
+    VIEW_RANKINGS_MISC_STRING_3,
+    VIEW_RANKINGS_MISC_STRING_4,
+    VIEW_RANKINGS_MISC_STRING_5,
+    VIEW_RANKINGS_MISC_STRING_6,
+    VIEW_RANKINGS_MISC_STRING_MAX,
+} ViewRankingsMiscStringId;
 
 typedef enum ViewRankingsMainState {
     VIEW_RANKINGS_APP_MAIN_STATE_FADE_IN,
@@ -93,27 +106,27 @@ typedef struct ViewRankingsAppPage {
 
 typedef struct ViewRankingsAppdata {
     BgConfig *bgConfig;
-    Window windows[6];
+    Window windows[VIEW_RANKINGS_APP_WINDOW_MAX];
     MsgData *msgData;
     MessageFormat *msgFormat;
     String *formatedStrBuf;
     String *playerNameString;
     String *rankingString;
-    String *miscStrings[7];
+    String *miscStrings[VIEW_RANKINGS_MISC_STRING_MAX];
     YesNoPrompt *yesNoPrompt;
     SpriteList *spriteList;
     GF_G2dRenderer g2dRenderer;
-    GF_2DGfxResMan *gf2dGfxResManagers[6];
-    GF_2DGfxResObj *gf2dGfxResObjects[6];
+    GF_2DGfxResMan *gf2dGfxResManagers[GF_GFX_RES_TYPE_MAX];
+    GF_2DGfxResObj *gf2dGfxResObjects[GF_GFX_RES_TYPE_MAX];
     SpriteResourcesHeader spriteResourcesHeader;
-    Sprite *sprites[5];
+    Sprite *sprites[VIEW_RANKINGS_APP_SPRITE_MAX];
     TouchscreenHitbox *touchscreenHitboxes;
     u8 mainState;
     u8 isDeleteMode;
     s8 cursorPos;
     u8 state;
     SaveRankings *saveRankings;
-    ViewRankingsPage *pages[7];
+    ViewRankingsPage *pages[RANKINGS_PER_STAT + 1];
     ViewRankingsAppPage *records;
     ViewRankingsAppPageEntry *recordToDelete;
     u8 page;
@@ -122,7 +135,7 @@ typedef struct ViewRankingsAppdata {
     u8 pageOffset;
     u8 recordIdx;
     u8 numRecords;
-    u8 recordEntryIdxs[6];
+    u8 recordEntryIdxs[RANKINGS_PER_STAT];
     u8 frame;
 } ViewRankingsAppData;
 
@@ -642,7 +655,7 @@ static void ViewRankings_LoadBgGraphics(BgConfig *bgConfig, HeapID heapId) {
 
 static void ViewRankings_LoadSpriteGraphics(ViewRankingsAppData *appData, HeapID heapId) {
     appData->spriteList = G2dRenderer_Init(5, &appData->g2dRenderer, heapId);
-    for (int i = 0; i < 6; ++i) {
+    for (int i = 0; i < GF_GFX_RES_TYPE_MAX; ++i) {
         appData->gf2dGfxResManagers[i] = Create2DGfxResObjMan(1, (GfGfxResType)i, heapId);
     }
     appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_CHAR], NARC_application_guinness, NARC_guinness_guinness_00000009_NCGR_lz, TRUE, 0, NNS_G2D_VRAM_TYPE_2DMAIN, heapId);
@@ -1009,13 +1022,13 @@ static void ViewRankings_CreateStrings(ViewRankingsAppData *appData) {
     appData->formatedStrBuf = String_New(76, HEAP_ID_9E);
     appData->playerNameString = NewString_ReadMsgData(appData->msgData, msg_0421_00043);
     appData->rankingString = NewString_ReadMsgData(appData->msgData, msg_0421_00042);
-    for (int i = 0; i < 7; ++i) {
+    for (int i = 0; i < VIEW_RANKINGS_MISC_STRING_MAX; ++i) {
         appData->miscStrings[i] = NewString_ReadMsgData(appData->msgData, msg_0421_00044 + i);
     }
 }
 
 static void ViewRankings_DeleteStrings(ViewRankingsAppData *appData) {
-    for (int i = 0; i < 7; ++i) {
+    for (int i = 0; i < VIEW_RANKINGS_MISC_STRING_MAX; ++i) {
         String_Delete(appData->miscStrings[i]);
     }
     String_Delete(appData->playerNameString);
