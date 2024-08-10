@@ -145,7 +145,7 @@ typedef struct UnkStruct_0203F844 {
 
 typedef struct UnkStruct_0203E644 {
     u8 unk0[0x26];
-    u8 unk26;
+    u8 partySlot;
 } UnkStruct_0203E644;
 
 typedef struct PartyMenuMoveSelectData {

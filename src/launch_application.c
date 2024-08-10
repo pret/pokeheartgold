@@ -200,9 +200,9 @@ int PartyMenuArgs_GetSlot(PartyMenuArgs *partyMenuArgs) {
     return partyMenuArgs->partySlot;
 }
 
-PartyMenuArgs *PartyMenu_LaunchApp_Unk4(HeapID heapId, FieldSystem *fieldSystem, u16 a2) {
+PartyMenuArgs *PartyMenu_LaunchApp_Unk4(HeapID heapId, FieldSystem *fieldSystem, u16 partySlot) {
     PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELD, fieldSystem, 0, 18);
-    args->partySlot = a2;
+    args->partySlot = partySlot;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, args);
     return args;
 }
@@ -226,7 +226,7 @@ static BOOL Task_OpenPartyMenuThenMoveSelect(TaskManager *taskman) {
         break;
     case PMMS_WAIT_PARTY_MENU:
         if (!FieldSystem_ApplicationIsRunning(fieldSystem)) {
-            switch (data->unk4->unk26) {
+            switch (data->unk4->partySlot) {
             case 7:
                 sub_0205A508(2);
                 *state = PMMS_FREE;
@@ -242,13 +242,13 @@ static BOOL Task_OpenPartyMenuThenMoveSelect(TaskManager *taskman) {
         break;
     case PMMS_OPEN_FORGET_MOVE:
         data->pokemonSummary = PokemonSummary_CreateArgs(fieldSystem, data->unk0, 0);
-        data->pokemonSummary->partySlot = data->unk4->unk26;
+        data->pokemonSummary->partySlot = data->unk4->partySlot;
         PokemonSummary_LearnForget_LaunchApp(fieldSystem, data->pokemonSummary);
         *state = PMMS_WAIT_FORGET_MOVE;
         break;
     case PMMS_WAIT_FORGET_MOVE:
         if (!FieldSystem_ApplicationIsRunning(fieldSystem)) {
-            data->unk4->unk26 = data->pokemonSummary->partySlot;
+            data->unk4->partySlot = data->pokemonSummary->partySlot;
             FreeToHeap(data->pokemonSummary);
             *state = PMMS_OPEN_PARTY_MENU;
         }

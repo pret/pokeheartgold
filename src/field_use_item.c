@@ -232,7 +232,7 @@ static void ItemMenuUseFunc_HealingItem(struct ItemMenuUseData *data, const stru
     usedat->unk_24 = 5;
     usedat->fieldSystem = fieldSystem;
     usedat->itemId = data->itemId;
-    usedat->partySlot = data->unk6;
+    usedat->partySlot = data->partySlot;
     usedat->unk20 = &fieldSystem->unk_10C;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, usedat);
     env->atexit_TaskEnv = usedat;
@@ -354,7 +354,7 @@ static void ItemMenuUseFunc_TMHM(struct ItemMenuUseData *data, const struct Item
     usedat->unk_24 = 6;
     usedat->fieldSystem = fieldSystem;
     usedat->itemId = data->itemId;
-    usedat->partySlot = data->unk6;
+    usedat->partySlot = data->partySlot;
     usedat->moveToLearn = TMHMGetMove(data->itemId);
     usedat->unk20 = &fieldSystem->unk_10C;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, usedat);
@@ -544,7 +544,7 @@ static void ItemMenuUseFunc_EvoStone(struct ItemMenuUseData *data, const struct 
     usedat->unk_25 = 0;
     usedat->unk_24 = 16;
     usedat->itemId = data->itemId;
-    usedat->partySlot = data->unk6;
+    usedat->partySlot = data->partySlot;
     usedat->fieldSystem = fieldSystem;
     usedat->unk20 = &fieldSystem->unk_10C;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, usedat);

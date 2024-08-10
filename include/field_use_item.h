@@ -34,7 +34,7 @@ typedef struct ItemFieldUseData {
 typedef struct ItemMenuUseData {
     TaskManager *taskManager;
     u16 itemId;
-    u8 unk6;
+    u8 partySlot;
 } ItemMenuUseData;
 
 typedef void (*ItemMenuUseFunc)(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);

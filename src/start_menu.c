@@ -1086,7 +1086,7 @@ static BOOL Task_StartMenu_HandleReturn(TaskManager *taskManager) {
     case 0: {
         ItemMenuUseData itemMenuUseData;
         itemMenuUseData.itemId = BagView_GetItemId(bagView);
-        itemMenuUseData.unk6 = sub_02077914(bagView);
+        itemMenuUseData.partySlot = sub_02077914(bagView);
         itemMenuUseData.taskManager = taskManager;
         ItemMenuUseFunc func = GetItemFieldUseFunc(USE_ITEM_TASK_MENU, GetItemAttr(itemMenuUseData.itemId, ITEMATTR_FIELDUSEFUNC, HEAP_ID_FIELD));
         func(&itemMenuUseData, &startMenu->itemCheckUseData);

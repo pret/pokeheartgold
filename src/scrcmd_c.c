@@ -1633,13 +1633,13 @@ BOOL ScrCmd_635(ScriptContext *ctx) {
     u16 *r6 = ScriptGetVarPointer(ctx);
     PartyMenuArgs **partyMenuPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     PartyMenuArgs *partyMenu;
-    int r0;
+    int partySlot;
     partyMenu = *partyMenuPtr;
     GF_ASSERT(*partyMenuPtr != NULL);
-    r0 = PartyMenuArgs_GetSlot(*partyMenuPtr);
-    if (r0 == 7) {
+    partySlot = PartyMenuArgs_GetSlot(*partyMenuPtr);
+    if (partySlot == 7) {
         *r5 = 255;
-    } else if (r0 == 6) {
+    } else if (partySlot == 6) {
         *r5 = partyMenu->unk_30[0];
         (*r5)--;
         *r6 = partyMenu->unk_30[1];
@@ -1659,10 +1659,10 @@ BOOL ScrCmd_639(ScriptContext *ctx) {
     struct PartyMenuArgs **partyMenuPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     struct PartyMenuArgs *partyMenu = *partyMenuPtr;
     GF_ASSERT(partyMenu != NULL);
-    int r0 = PartyMenuArgs_GetSlot(*partyMenuPtr);
-    if (r0 == 7) {
+    int partySlot = PartyMenuArgs_GetSlot(*partyMenuPtr);
+    if (partySlot == 7) {
         *r5 = 255;
-    } else if (r0 == 6) {
+    } else if (partySlot == 6) {
         *r5 = partyMenu->unk_30[0];
         (*r5)--;
         *sp0 = partyMenu->unk_30[1];
@@ -1684,10 +1684,10 @@ BOOL ScrCmd_645(ScriptContext *ctx) {
     struct PartyMenuArgs **partyMenuPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     struct PartyMenuArgs *partyMenu = *partyMenuPtr;
     GF_ASSERT(partyMenu != NULL);
-    int r0 = PartyMenuArgs_GetSlot(*partyMenuPtr);
-    if (r0 == 7) {
+    int partySlot = PartyMenuArgs_GetSlot(*partyMenuPtr);
+    if (partySlot == 7) {
         *r5 = 255;
-    } else if (r0 == 6) {
+    } else if (partySlot == 6) {
         *r5 = partyMenu->unk_30[0];
         (*r5)--;
         *sp0 = partyMenu->unk_30[1];

@@ -365,7 +365,7 @@ static u32 sub_0204F448(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem, HeapID
     args->unk11 = 1;
     args->partySlot = a0->partySlot;
     args->partyCount = Party_GetCount(args->party);
-    args->moveToLearn = 0;
+    args->moveToLearn = MOVE_NONE;
     args->unk12 = 0;
     args->ribbons = Save_SpecialRibbons_Get(saveData);
     args->isFlag982Set = sub_0208828C(saveData);
@@ -380,9 +380,9 @@ static u32 sub_0204F4D8(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem) {
     if (FieldSystem_ApplicationIsRunning(fieldSystem)) {
         return 3;
     }
-    PokemonSummaryArgs *r0 = *(a0->unk08);
-    a0->partySlot = r0->partySlot;
-    FreeToHeap(r0);
+    PokemonSummaryArgs *pokemonSummaryArgs = *(a0->unk08);
+    a0->partySlot = pokemonSummaryArgs->partySlot;
+    FreeToHeap(pokemonSummaryArgs);
     *(a0->unk08) = NULL;
     return 0;
 }
