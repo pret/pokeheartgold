@@ -39,11 +39,11 @@ int _02111864;
 PMBackLightSwitch gBacklightTop;
 struct UnkStruct_02111868 _02111868;
 
-void sub_02000F60(void);
-void DoSoftReset(u32 param);
-void Main_RunOverlayManager(void);
-void sub_02000FD8(u32 a0, int a1);
-BOOL sub_02001098(int a0);
+static void sub_02000F60(void);
+static void DoSoftReset(u32 param);
+static void Main_RunOverlayManager(void);
+static void sub_02000FD8(u32 a0, int a1);
+static BOOL sub_02001098(int a0);
 
 void NitroMain(void) {
     InitSystemForTheGame();
@@ -137,7 +137,7 @@ void Main_ResetOverlayManager(void) {
     _02111868.queuedMainOverlayTemplate = NULL;
 }
 
-void Main_RunOverlayManager(void) {
+static void Main_RunOverlayManager(void) {
     if (_02111868.overlayManager == NULL) {
         if (_02111868.queuedMainOverlayTemplate == NULL) {
             return;
@@ -182,7 +182,7 @@ static void sub_02000F40(u32 param) {
     sub_02000F14();
 }
 
-void sub_02000F60(void) {
+static void sub_02000F60(void) {
     int r1 = sub_020399B8();
     switch (r1) {
     case 5:
@@ -200,7 +200,7 @@ void sub_02000F60(void) {
     }
 }
 
-void DoSoftReset(u32 param) {
+static void DoSoftReset(u32 param) {
     sub_0200FBF4(0, RGB_WHITE);
     sub_0200FBF4(1, RGB_WHITE);
     if (sub_02038D90()) {
@@ -212,7 +212,7 @@ void DoSoftReset(u32 param) {
     }
 }
 
-void sub_02000FD8(u32 a0, int a1) {
+static void sub_02000FD8(u32 a0, int a1) {
     int sp4;
     int r7;
     int r4;
@@ -262,7 +262,7 @@ void sub_02000FD8(u32 a0, int a1) {
     DoSoftReset(a0);
 }
 
-BOOL sub_02001098(int a0) {
+static BOOL sub_02001098(int a0) {
     switch (a0) {
     case 0:
     case 7:
@@ -277,11 +277,7 @@ BOOL sub_02001098(int a0) {
 }
 
 void InitializeMainRNG(void) {
-    RTCDate date;
-    RTCTime time;
-    u32 seed;
-    GF_RTC_CopyDateTime(&date, &time);
-    seed = date.year + date.month * 0x100 * date.day * 0x10000 + time.hour * 0x10000 + (time.minute + time.second) * 0x1000000 + gSystem.vblankCounter;
+    u32 seed = RngSeedFromRTC();
     SetMTRNGSeed(seed);
     SetLCRNGSeed(seed);
 }

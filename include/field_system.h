@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_FIELD_SYSTEM_H
 
 #include "bag_cursor.h"
+#include "battle_regulation.h"
 #include "bug_contest_internal.h"
 #include "gear_phone.h"
 #include "map_events_internal.h"
@@ -142,7 +143,7 @@ struct FieldSystem {
     u8 filler_98[0x4];
     void *unk9C;
     UnkStruct_Fsys_A0 *unkA0;
-    void * unkA4;
+    LinkBattleRuleset *unkA4;
     u32 *unkA8;
     u32 unkAC;
     void *unkB0;
