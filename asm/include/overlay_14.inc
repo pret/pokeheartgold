@@ -262,7 +262,7 @@
 .public sub_0207769C
 .public sub_020776B4
 .public sub_0207789C
-.public sub_02077904
+.public BagView_GetItemId
 .public GetItemIndexMapping
 .public GetItemNameIntoString
 .public GetItemDescIntoString

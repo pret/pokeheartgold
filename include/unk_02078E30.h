@@ -4,6 +4,7 @@
 #include "bag.h"
 #include "mail.h"
 #include "overlay_94.h"
+#include "party_menu.h"
 #include "unk_0202E41C.h"
 
 typedef struct PartyMenuArgs {
@@ -13,21 +14,25 @@ typedef struct PartyMenuArgs {
     Options *options;
     UnkStruct_0202E474 *unk10;
     int unk_14;
-    int unk_18;
+    FieldMoveCheckData *fieldMoveCheckData;
     FieldSystem *fieldSystem;
-    u32 *unk20;
+    BOOL *unk20;
     u8 unk_24;
     u8 unk_25;
-    u8 unk_26;
-    u8 unk_27;
-    u16 unk28;
-    u8 unk2A[0x6];
+    u8 partySlot;
+    u8 selectedAction;
+    u16 itemId;
+    u16 moveToLearn;
+    u8 unk2C;
+    u8 filler_2D[3];
     u8 unk_30[3];
     u8 filler_33[3];
     u8 unk_36_0:4;
     u8 unk_36_4:4;
     u8 unk_37;
-    u8 filler_38[0xC];
+    int unk_38;
+    u16 species;
+    int unk_40;
 } PartyMenuArgs;
 
 extern const OVY_MGR_TEMPLATE gOverlayTemplate_PartyMenu;

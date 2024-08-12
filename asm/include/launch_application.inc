@@ -71,7 +71,7 @@
 .public PartyMenu_LaunchApp_Unk1
 .public PartyMenu_LaunchApp_Unk2
 .public PartyMenu_LaunchApp_Unk3
-.public sub_0203E5C8
+.public PartyMenuArgs_GetSlot
 .public PartyMenu_LaunchApp_Unk4
 .public sub_0203E5F8
 .public sub_0203E600
@@ -171,7 +171,7 @@
 .public sub_020778C8
 .public sub_020778DC
 .public sub_020778E8
-.public sub_02077904
+.public BagView_GetItemId
 .public sub_0207790C
 .public Bag_CreateView
 .public Save_Bag_Get

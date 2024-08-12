@@ -4,6 +4,7 @@
 #include "constants/species.h"
 #include "constants/sprites.h"
 #include "constants/maps.h"
+#include "constants/flags.h"
 #include "constants/mmodel.h"
 #include "constants/items.h"
 #include "msgdata/msg/msg_0096_D31R0201.h"
@@ -137,7 +138,7 @@ _021E694E:
 	strh r0, [r5, #6]
 	add r0, r4, #0
 	strh r6, [r5, #8]
-	bl sub_0203C3CC
+	bl FieldSystem_ShouldDrawStartMenuIcon
 	str r0, [sp, #4]
 	ldr r0, [sp, #0xc]
 	cmp r0, #3
@@ -630,7 +631,7 @@ _021E6D4C:
 	lsr r0, r0, #0x1f
 	beq _021E6D6E
 	add r0, r4, #0
-	bl sub_0203BC10
+	bl FieldSystem_MapIsNotMysteryZone
 	cmp r0, #1
 	bne _021E6D6E
 	ldr r0, _021E6DC0 ; =SEQ_SE_DP_WIN_OPEN
@@ -644,7 +645,7 @@ _021E6D6E:
 	bl ov02_02252334
 	cmp r0, #0
 	beq _021E6D88
-	mov r1, #0x81
+	mov r1, #std_revert_shaymin>>4
 	add r0, r4, #0
 	lsl r1, r1, #4
 	mov r2, #0
@@ -729,7 +730,7 @@ ov01_021E6E00: ; 0x021E6E00
 	bl sub_0205B73C
 	cmp r0, #0
 	beq _021E6E32
-	ldr r1, _021E6ED0 ; =0x0000238D
+	ldr r1, _021E6ED0 ; =std_colosseum_exit
 	add r0, r5, #0
 	mov r2, #0
 	bl StartMapSceneScript
@@ -807,7 +808,7 @@ _021E6ECA:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_021E6ED0: .word 0x0000238D
+_021E6ED0: .word std_colosseum_exit
 _021E6ED4: .word SEQ_SE_DP_WIN_OPEN
 	thumb_func_end ov01_021E6E00
 
@@ -1781,7 +1782,7 @@ _021E76CC:
 	pop {r3, r4, r5, r6, r7, pc}
 _021E76EA:
 	add r0, r5, #0
-	bl ov01_021E79CC
+	bl SafariBallsOutCheck
 	cmp r0, #1
 	bne _021E76F8
 	mov r0, #1
@@ -2152,8 +2153,8 @@ _021E79C2:
 _021E79C8: .word std_survive_poisoning
 	thumb_func_end ov01_021E794C
 
-	thumb_func_start ov01_021E79CC
-ov01_021E79CC: ; 0x021E79CC
+	thumb_func_start SafariBallsOutCheck
+SafariBallsOutCheck: ; 0x021E79CC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
@@ -2170,7 +2171,7 @@ _021E79E2:
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne _021E7A00
-	ldr r1, _021E7A04 ; =0x00002263
+	ldr r1, _021E7A04 ; =std_safari_balls_out
 	add r0, r4, #0
 	mov r2, #0
 	bl StartMapSceneScript
@@ -2180,8 +2181,8 @@ _021E7A00:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-_021E7A04: .word 0x00002263
-	thumb_func_end ov01_021E79CC
+_021E7A04: .word std_safari_balls_out
+	thumb_func_end SafariBallsOutCheck
 
 	thumb_func_start ov01_021E7A08
 ov01_021E7A08: ; 0x021E7A08
@@ -2192,7 +2193,7 @@ ov01_021E7A08: ; 0x021E7A08
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl Save_VarsFlags_Get
-	ldr r1, _021E7A5C ; =0x00000984
+	ldr r1, _021E7A5C ; =FLAG_UNK_984
 	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021E7A56
@@ -2220,7 +2221,7 @@ _021E7A56:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_021E7A5C: .word 0x00000984
+_021E7A5C: .word FLAG_UNK_984
 	thumb_func_end ov01_021E7A08
 
 	thumb_func_start BugContestTimeoutCheck

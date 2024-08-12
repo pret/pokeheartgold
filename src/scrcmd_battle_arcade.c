@@ -21,7 +21,6 @@
 #include "task.h"
 #include "unk_02030A98.h"
 #include "unk_02035900.h"
-#include "unk_0203DFA4.h"
 #include "unk_0204A3F4.h"
 #include "unk_0205BB1C.h"
 #include "unk_0205BFF0.h"
@@ -38,7 +37,7 @@ typedef enum BattleArcadeChallengeType {
 typedef struct UnkStruct_0204FBDC {
     u32 state;
     u8 challengeType;
-    u8 unk05;
+    u8 partySlot;
     u8 unk06[3];
     u8 filler[2];
     void **unk0c;
@@ -201,7 +200,7 @@ static u32 sub_020501B8(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, u32 a2
     partyMenu->unk_25 = 0;
     partyMenu->unk_24 = 0x17;
     partyMenu->fieldSystem = fieldSystem;
-    partyMenu->unk_26 = a0->unk05;
+    partyMenu->partySlot = a0->partySlot;
     for (u8 i = 0; i < 3; i++) {
         partyMenu->unk_30[i] = a0->unk06[i];
     }
@@ -223,14 +222,14 @@ static u32 sub_02050290(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
         return TRUE;
     }
     PartyMenuArgs *partyMenu = *(a0->unk0c);
-    switch (partyMenu->unk_26) {
+    switch (partyMenu->partySlot) {
         case 7:
             return 4;
         case 6:
             return 4;
     }
     MI_CpuCopy8(partyMenu->unk_30, a0->unk06, 3);
-    a0->unk05 = partyMenu->unk_26;
+    a0->partySlot = partyMenu->partySlot;
     FreeToHeap(partyMenu);
     *(a0->unk0c) = NULL;
     return 2;
@@ -245,9 +244,9 @@ static u32 sub_020502E0(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID
     unk->natDexEnabled = SaveArray_IsNatDexEnabled(saveData);
     unk->unk2C = sub_02088288(saveData);
     unk->unk11 = 1;
-    unk->unk14 = a0->unk05;
+    unk->partySlot = a0->partySlot;
     unk->partyCount = Party_GetCount(unk->party);
-    unk->unk18 = 0;
+    unk->moveToLearn = MOVE_NONE;
     unk->unk12 = 0;
     unk->ribbons = Save_SpecialRibbons_Get(saveData);
     unk->isFlag982Set = sub_0208828C(saveData);
@@ -262,9 +261,9 @@ static u32 sub_02050370(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
     if (FieldSystem_ApplicationIsRunning(fieldSystem)) {
         return 3;
     }
-    PokemonSummaryArgs *unk = *(a0->unk0c);
-    a0->unk05 = unk->unk14;
-    FreeToHeap(unk);
+    PokemonSummaryArgs *pokemonSummaryArgs = *(a0->unk0c);
+    a0->partySlot = pokemonSummaryArgs->partySlot;
+    FreeToHeap(pokemonSummaryArgs);
     *(a0->unk0c) = NULL;
     return 0;
 }

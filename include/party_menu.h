@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_PARTY_MENU_H
 #define POKEHEARTGOLD_PARTY_MENU_H
 
+#include "field_types_def.h"
+#include "pokemon_types_def.h"
 #include "constants/party_menu.h"
 
 #define FIELD_MOVE_CHECK_TREE_F                   0
@@ -13,18 +15,18 @@
 #define FIELD_MOVE_CHECK_WHIRLPOOL_F             12
 #define FIELD_MOVE_CHECK_HEADBUTT_F              13
 
-struct FieldMoveUseData {
+typedef struct FieldMoveUseData {
     TaskManager *taskManager;
     u16 partySlot;
     u16 fieldMoveIdx;
-};
+} FieldMoveUseData;
 
-struct FieldMoveCheckData {
+typedef struct FieldMoveCheckData {
     u32 mapId;
     FieldSystem *fieldSystem;
     LocalMapObject *facingObject;
     u16 flag;
-};
+} FieldMoveCheckData;
 
 #define FIELD_MOVE_FUNC_USE      0
 #define FIELD_MOVE_FUNC_CHECK    1
@@ -32,11 +34,11 @@ struct FieldMoveCheckData {
 typedef void (*FieldMoveUseFunc)(struct FieldMoveUseData *useData, const struct FieldMoveCheckData *sub);
 typedef u32 (*FieldMoveCheckFunc)(const struct FieldMoveCheckData *checkData);
 
-struct FieldUseMoveEnv {
+typedef struct FieldUseMoveEnv {
     u32 magic;
     LocalMapObject *facingObject;
     struct FieldMoveUseData useData;
-};
+} FieldUseMoveEnv;
 
 struct TeleportFieldEnv {
     Pokemon *mon;

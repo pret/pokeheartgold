@@ -59,8 +59,4 @@ u16 GetMapLoadScriptId(u8 *header, u8 type);
 u16 GetMapSceneScriptId(FieldSystem *fieldSystem, u8 *header, u8 type);
 void* FieldSysGetAttrAddr(FieldSystem *fieldSystem, enum ScriptEnvField field);
 
-
-BOOL sub_0203BC10(FieldSystem *);
-void sub_0203BD64(FieldSystem *);
-
 #endif

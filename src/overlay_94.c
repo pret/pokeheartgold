@@ -4,6 +4,7 @@
 #include "party.h"
 #include "pokemon.h"
 #include "pokedex.h"
+#include "field_system.h"
 #include "scrcmd.h"
 #include "unk_02005D10.h"
 #include "unk_02014DA0.h"

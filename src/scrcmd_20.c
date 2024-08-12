@@ -21,7 +21,6 @@
 #include "task.h"
 #include "unk_02030A98.h"
 #include "unk_02035900.h"
-#include "unk_0203DFA4.h"
 #include "unk_0205BB1C.h"
 #include "unk_0205BFF0.h"
 #include "unk_02078E30.h"
@@ -38,7 +37,7 @@ typedef enum BattleHallChallengeType {
 typedef struct UnkStruct_0204F284 {
     u32 state;
     u8 challengeType;
-    u8 unk05;
+    u8 partySlot;
     u8 unk06[2];
     void **unk08;
 } UnkStruct_0204F284;
@@ -319,7 +318,7 @@ static u32 sub_0204F320(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem, HeapID
     partyMenu->unk_25 = 0;
     partyMenu->unk_24 = 22;
     partyMenu->fieldSystem = fieldSystem;
-    partyMenu->unk_26 = a0->unk05;
+    partyMenu->partySlot = a0->partySlot;
     for (u8 i = 0; i < 2; i++) {
         partyMenu->unk_30[i] = a0->unk06[i];
     }
@@ -341,14 +340,14 @@ static u32 sub_0204F3F8(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem) {
         return 1;
     }
     PartyMenuArgs *partyMenu = *(a0->unk08);
-    switch (partyMenu->unk_26) {
+    switch (partyMenu->partySlot) {
         case 7:
             return 4;
         case 6:
             return 4;
         default:
             MI_CpuCopy8(partyMenu->unk_30, a0->unk06, 2);
-            a0->unk05 = partyMenu->unk_26;
+            a0->partySlot = partyMenu->partySlot;
             FreeToHeap(partyMenu);
             *(a0->unk08) = NULL;
             return 2;
@@ -364,9 +363,9 @@ static u32 sub_0204F448(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem, HeapID
     args->natDexEnabled = SaveArray_IsNatDexEnabled(saveData);
     args->unk2C = sub_02088288(saveData);
     args->unk11 = 1;
-    args->unk14 = a0->unk05;
+    args->partySlot = a0->partySlot;
     args->partyCount = Party_GetCount(args->party);
-    args->unk18 = 0;
+    args->moveToLearn = MOVE_NONE;
     args->unk12 = 0;
     args->ribbons = Save_SpecialRibbons_Get(saveData);
     args->isFlag982Set = sub_0208828C(saveData);
@@ -381,9 +380,9 @@ static u32 sub_0204F4D8(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem) {
     if (FieldSystem_ApplicationIsRunning(fieldSystem)) {
         return 3;
     }
-    PokemonSummaryArgs *r0 = *(a0->unk08);
-    a0->unk05 = r0->unk14;
-    FreeToHeap(r0);
+    PokemonSummaryArgs *pokemonSummaryArgs = *(a0->unk08);
+    a0->partySlot = pokemonSummaryArgs->partySlot;
+    FreeToHeap(pokemonSummaryArgs);
     *(a0->unk08) = NULL;
     return 0;
 }

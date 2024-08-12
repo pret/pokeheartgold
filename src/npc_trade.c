@@ -1,5 +1,6 @@
 #include "global.h"
 #include "npc_trade.h"
+#include "field_system.h"
 #include "pokemon.h"
 #include "gf_gfx_loader.h"
 #include "update_dex_received.h"
