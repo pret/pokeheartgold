@@ -1,7 +1,8 @@
 #ifndef POKEHEARTGOLD_PARTY_MENU_H
 #define POKEHEARTGOLD_PARTY_MENU_H
 
-#include "bag_types_def.h"
+#include "field_types_def.h"
+#include "pokemon_types_def.h"
 #include "constants/party_menu.h"
 #include "gf_3d_vramman.h"
 #include "mail.h"
@@ -9,6 +10,7 @@
 #include "pokedex.h"
 #include "task.h"
 #include "unk_02014DA0.h"
+#include "bag_types_def.h"
 #include "unk_02020654.h"
 #include "unk_0202E41C.h"
 #include "unk_02074944.h"
@@ -331,7 +333,7 @@ typedef struct IconFormChangeData  {
     int species;
     int fileId;
     int partyMonIndex; //same information as B's unkc65
-    ParticleSystem* particleSystem;
+    SPLEmitter* particleSystem;
 } IconFormChangeData;
 
 typedef struct PartyMenuStruct PartyMenuStruct;
@@ -445,11 +447,11 @@ struct PartyMenuStruct {
 typedef void (*FieldMoveUseFunc)(struct FieldMoveUseData *useData, const struct FieldMoveCheckData *sub);
 typedef u32 (*FieldMoveCheckFunc)(const struct FieldMoveCheckData *checkData);
 
-struct FieldUseMoveEnv {
+typedef struct FieldUseMoveEnv {
     u32 magic;
     LocalMapObject *facingObject;
     struct FieldMoveUseData useData;
-};
+} FieldUseMoveEnv;
 
 struct TeleportFieldEnv {
     Pokemon *mon;

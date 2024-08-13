@@ -64,7 +64,7 @@
 .public ov80_0222A52C
 .public ov80_0222A6B8
 .public ov80_0222A840
-.public ov80_0222AB34
+.public FrontierSystem_GetFrontierMap
 .public ov80_0222B5C8
 .public ov80_0222B65C
 .public ov80_0222B6C8

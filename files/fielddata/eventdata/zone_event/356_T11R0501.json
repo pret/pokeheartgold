@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_T11R0501_fishing_2",
-      "ovid": "SPRITE_FISHING_2",
-      "mvt": 16,
+      "sprite_id": "SPRITE_FISHING_2",
+      "movement": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T11R0501_000 + 1",

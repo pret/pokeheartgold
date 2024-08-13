@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_EVERYWHERE_gsgentleman",
-      "ovid": "SPRITE_GSGENTLEMAN",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSGENTLEMAN",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_GENTLEMAN_ALFRED)",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_EVERYWHERE_seaman_2",
-      "ovid": "SPRITE_SEAMAN_2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SEAMAN_2",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_SAILOR_HUEY)",

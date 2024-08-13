@@ -53,8 +53,8 @@
   "objects": [
     {
       "id": "obj_D49R0106_pcwoman2",
-      "ovid": "SPRITE_PCWOMAN2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_PCWOMAN2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D49R0106_001 + 1",
@@ -70,8 +70,8 @@
     },
     {
       "id": "obj_D49R0106_pcwoman2_2",
-      "ovid": "SPRITE_PCWOMAN2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_PCWOMAN2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D49R0106_000 + 1",
@@ -87,8 +87,8 @@
     },
     {
       "id": "obj_D49R0106_gsbigman",
-      "ovid": "SPRITE_GSBIGMAN",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSBIGMAN",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D49R0106_002 + 1",
@@ -104,8 +104,8 @@
     },
     {
       "id": "obj_D49R0106_tsure_poke_static_dodrio",
-      "ovid": "SPRITE_FOLLOWER_MON_STATIC_DODRIO",
-      "mvt": 0,
+      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_DODRIO",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D49R0106_003 + 1",
@@ -121,8 +121,8 @@
     },
     {
       "id": "obj_D49R0106_signpokegear",
-      "ovid": "SPRITE_SIGNPOKEGEAR",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SIGNPOKEGEAR",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_POKEATHLON_POKEGEAR_SIGN",
       "scr": 0,
@@ -138,8 +138,8 @@
     },
     {
       "id": "obj_D49R0106_signball",
-      "ovid": "SPRITE_SIGNBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SIGNBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_POKEATHLON_BALL_SIGN",
       "scr": 0,

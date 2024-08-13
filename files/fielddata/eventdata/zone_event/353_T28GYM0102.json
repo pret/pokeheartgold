@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_EVERYWHERE_ice",
-      "ovid": "SPRITE_ICE",
-      "mvt": 15,
+      "sprite_id": "SPRITE_ICE",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_EVERYWHERE_ice_2",
-      "ovid": "SPRITE_ICE",
-      "mvt": 15,
+      "sprite_id": "SPRITE_ICE",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": 0,
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_EVERYWHERE_skierw",
-      "ovid": "SPRITE_SKIERW",
-      "mvt": 15,
+      "sprite_id": "SPRITE_SKIERW",
+      "movement": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_SKIER_DIANA)",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_EVERYWHERE_boarder",
-      "ovid": "SPRITE_BOARDER",
-      "mvt": 16,
+      "sprite_id": "SPRITE_BOARDER",
+      "movement": 16,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BOARDER_PATTON)",

@@ -69,16 +69,28 @@ typedef struct SPLEmitterList {
     SPLEmitter* p_end;
 } SPLEmitterList;
 
+static inline void SPL_SetEmitterPosition(SPLEmitter* p_emtr, const VecFx32* p_pos)
+{
+    p_emtr->emtr_pos.x = p_pos->x + p_emtr->p_res->p_base->pos.x ;
+    p_emtr->emtr_pos.y = p_pos->y + p_emtr->p_res->p_base->pos.y ;
+    p_emtr->emtr_pos.z = p_pos->z + p_emtr->p_res->p_base->pos.z ;
+}
+
 static inline void SPL_SetEmitterPositionX(SPLEmitter* p_emtr, fx32 x) {
     p_emtr->emtr_pos.x = x + p_emtr->p_res->p_base->pos.x;
 }
 
 static inline void SPL_SetEmitterPositionY(SPLEmitter* p_emtr, fx32 y) {
-    p_emtr->emtr_pos.y = y + p_emtr->p_res->p_base->pos.y ;
+    p_emtr->emtr_pos.y = y + p_emtr->p_res->p_base->pos.y;
 }
 
 static inline void SPL_SetEmitterPositionZ(SPLEmitter* p_emtr, fx32 z) {
-    p_emtr->emtr_pos.z = z + p_emtr->p_res->p_base->pos.z ;
+    p_emtr->emtr_pos.z = z + p_emtr->p_res->p_base->pos.z;
+}
+
+static inline void SPL_SetEmitterAxis(SPLEmitter* p_emtr, const VecFx16* axis)
+{
+    p_emtr->axis = *axis;
 }
 
 #endif //POKEHEARTGOLD_SPL_EMITTER_H

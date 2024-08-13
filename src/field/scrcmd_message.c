@@ -1,4 +1,4 @@
-#include "field_map_object.h"
+#include "map_object.h"
 #include "field_system.h"
 #include "fieldmap.h"
 #include "font.h"

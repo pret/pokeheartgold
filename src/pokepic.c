@@ -529,150 +529,150 @@ void PokepicManager_DeleteAllPics(PokepicManager *pokepicManager) {
 
 void Pokepic_SetAttr(Pokepic *pokepic, int attr, int value) {
     switch (attr) {
-    case 0:
+    case POKEPIC_X:
         pokepic->drawParam.xCenter = value;
         break;
-    case 1:
+    case POKEPIC_Y:
         pokepic->drawParam.yCenter = value;
         break;
-    case 2:
+    case POKEPIC_Z:
         pokepic->drawParam.zCenter = value;
         break;
-    case 3:
+    case POKEPIC_XOFFSET:
         pokepic->drawParam.xOffset = value;
         break;
-    case 4:
+    case POKEPIC_YOFFSET:
         pokepic->drawParam.yOffset = value;
         break;
-    case 5:
+    case POKEPIC_ZOFFSET:
         pokepic->drawParam.zOffset = value;
         break;
-    case 6:
+    case POKEPIC_VANISHED:
         pokepic->drawParam.hasVanished = value;
         break;
-    case 7:
+    case POKEPIC_XROT:
         pokepic->drawParam.rotX = value;
         break;
-    case 8:
+    case POKEPIC_YROT:
         pokepic->drawParam.rotY = value;
         break;
-    case 9:
+    case POKEPIC_ZROT:
         pokepic->drawParam.rotZ = value;
         break;
-    case 10:
+    case POKEPIC_XPIVOT:
         pokepic->drawParam.xPivot = value;
         break;
-    case 11:
+    case POKEPIC_YPIVOT:
         pokepic->drawParam.yPivot = value;
         break;
-    case 12:
+    case POKEPIC_AFFINEW:
         pokepic->drawParam.affineWidth = value;
         break;
-    case 13:
+    case POKEPIC_AFFINEH:
         pokepic->drawParam.affineHeight = value;
         break;
-    case 14:
+    case POKEPIC_VISIBLE:
         pokepic->drawParam.visible = value;
         break;
-    case 15:
+    case POKEPIC_XOFF2:
         pokepic->drawParam.xOffset2 = value;
         break;
-    case 16:
+    case POKEPIC_YOFF2:
         pokepic->drawParam.yOffset2 = value;
         break;
-    case 17:
+    case POKEPIC_W:
         pokepic->drawParam.width = value;
         break;
-    case 18:
+    case POKEPIC_H:
         pokepic->drawParam.height = value;
         break;
-    case 19:
+    case POKEPIC_SHADOW_X:
         pokepic->shadow.x = value;
         break;
-    case 20:
+    case POKEPIC_SHADOW_Y:
         pokepic->shadow.y = value;
         break;
-    case 21:
+    case POKEPIC_SHADOW_XOFFSET:
         pokepic->shadow.xOffset = value;
         break;
-    case 22:
+    case POKEPIC_SHADOW_YOFFSET:
         pokepic->shadow.yOffset = value;
         break;
-    case 23:
+    case POKEPIC_ALPHA:
         pokepic->drawParam.alpha = value;
         break;
-    case 24:
+    case POKEPIC_DIFFUSE_R:
         pokepic->drawParam.diffuseR = value;
         break;
-    case 25:
+    case POKEPIC_DIFFUSE_G:
         pokepic->drawParam.diffuseG = value;
         break;
-    case 26:
+    case POKEPIC_DIFFUSE_B:
         pokepic->drawParam.diffuseB = value;
         break;
-    case 27:
+    case POKEPIC_AMBIENT_R:
         pokepic->drawParam.ambientR = value;
         break;
-    case 28:
+    case POKEPIC_AMBIENT_G:
         pokepic->drawParam.ambientG = value;
         break;
-    case 29:
+    case POKEPIC_AMBIENT_B:
         pokepic->drawParam.ambientB = value;
         break;
-    case 30:
+    case POKEPIC_FADE:
         pokepic->drawParam.fadeActive = value;
         pokepic->needReloadPltt = TRUE;
         break;
-    case 31:
+    case POKEPIC_FADE_COLOR:
         pokepic->drawParam.fadeTargetColor = value;
         pokepic->needReloadPltt = TRUE;
         break;
-    case 32:
+    case POKEPIC_FADE_BLDY:
         pokepic->drawParam.fadeCur = value;
         pokepic->needReloadPltt = TRUE;
         break;
-    case 33:
+    case POKEPIC_FADE_BLDY_TARGET:
         pokepic->drawParam.fadeEnd = value;
         pokepic->needReloadPltt = TRUE;
         break;
-    case 34:
+    case POKEPIC_FADE_SPEED:
         pokepic->drawParam.fadeDelayCounter = value;
         break;
-    case 35:
+    case POKEPIC_HFLIP:
         pokepic->drawParam.hflip = value;
         pokepic->needReloadChar = TRUE;
         break;
-    case 36:
+    case POKEPIC_VFLIP:
         pokepic->drawParam.vflip = value;
         pokepic->needReloadChar = TRUE;
         break;
-    case 37:
+    case POKEPIC_NODRAW:
         pokepic->drawParam.dontDraw = value;
         break;
-    case 38:
+    case POKEPIC_ANIM_STEP:
         pokepic->whichAnimStep = value;
         break;
-    case 40:
+    case POKEPIC_MOSAIC:
         pokepic->drawParam.mosaic = value;
         pokepic->needReloadChar = TRUE;
         break;
-    case 41:
+    case POKEPIC_SHADOW_H:
         pokepic->shadow.height = value;
         break;
-    case 42:
+    case POKEPIC_SHADOW_PLTT:
         pokepic->shadow.palSlot = value;
         pokepic->needReloadPltt = TRUE;
         break;
-    case 43:
+    case POKEPIC_SHADOW_XADJ_REQ:
         pokepic->shadow.shouldAdjustX = value;
         break;
-    case 44:
+    case POKEPIC_SHADOW_YADJ_REQ:
         pokepic->shadow.shouldAdjustY = value;
         break;
-    case 45:
+    case POKEPIC_SHADOW_AFFINE:
         pokepic->shadow.isAffine = value;
         break;
-    case 46:
+    case POKEPIC_SHADOW_SIZE:
         pokepic->shadow.size = value;
         break;
     }
@@ -680,97 +680,97 @@ void Pokepic_SetAttr(Pokepic *pokepic, int attr, int value) {
 
 int Pokepic_GetAttr(Pokepic *pokepic, int attr) {
     switch (attr) {
-    case 0:
+    case POKEPIC_X:
         return pokepic->drawParam.xCenter;
-    case 1:
+    case POKEPIC_Y:
         return pokepic->drawParam.yCenter;
-    case 2:
+    case POKEPIC_Z:
         return pokepic->drawParam.zCenter;
-    case 3:
+    case POKEPIC_XOFFSET:
         return pokepic->drawParam.xOffset;
-    case 4:
+    case POKEPIC_YOFFSET:
         return pokepic->drawParam.yOffset;
-    case 5:
+    case POKEPIC_ZOFFSET:
         return pokepic->drawParam.zOffset;
-    case 6:
+    case POKEPIC_VANISHED:
         return pokepic->drawParam.hasVanished;
-    case 7:
+    case POKEPIC_XROT:
         return pokepic->drawParam.rotX;
-    case 8:
+    case POKEPIC_YROT:
         return pokepic->drawParam.rotY;
-    case 9:
+    case POKEPIC_ZROT:
         return pokepic->drawParam.rotZ;
-    case 10:
+    case POKEPIC_XPIVOT:
         return pokepic->drawParam.xPivot;
-    case 11:
+    case POKEPIC_YPIVOT:
         return pokepic->drawParam.yPivot;
-    case 12:
+    case POKEPIC_AFFINEW:
         return pokepic->drawParam.affineWidth;
-    case 13:
+    case POKEPIC_AFFINEH:
         return pokepic->drawParam.affineHeight;
-    case 14:
+    case POKEPIC_VISIBLE:
         return pokepic->drawParam.visible;
-    case 15:
+    case POKEPIC_XOFF2:
         return pokepic->drawParam.xOffset2;
-    case 16:
+    case POKEPIC_YOFF2:
         return pokepic->drawParam.yOffset2;
-    case 17:
+    case POKEPIC_W:
         return pokepic->drawParam.width;
-    case 18:
+    case POKEPIC_H:
         return pokepic->drawParam.height;
-    case 19:
+    case POKEPIC_SHADOW_X:
         return pokepic->shadow.x;
-    case 20:
+    case POKEPIC_SHADOW_Y:
         return pokepic->shadow.y;
-    case 21:
+    case POKEPIC_SHADOW_XOFFSET:
         return pokepic->shadow.xOffset;
-    case 22:
+    case POKEPIC_SHADOW_YOFFSET:
         return pokepic->shadow.yOffset;
-    case 23:
+    case POKEPIC_ALPHA:
         return pokepic->drawParam.alpha;
-    case 24:
+    case POKEPIC_DIFFUSE_R:
         return pokepic->drawParam.diffuseR;
-    case 25:
+    case POKEPIC_DIFFUSE_G:
         return pokepic->drawParam.diffuseG;
-    case 26:
+    case POKEPIC_DIFFUSE_B:
         return pokepic->drawParam.diffuseB;
-    case 27:
+    case POKEPIC_AMBIENT_R:
         return pokepic->drawParam.ambientR;
-    case 28:
+    case POKEPIC_AMBIENT_G:
         return pokepic->drawParam.ambientG;
-    case 29:
+    case POKEPIC_AMBIENT_B:
         return pokepic->drawParam.ambientB;
-    case 30:
+    case POKEPIC_FADE:
         return pokepic->drawParam.fadeActive;
-    case 31:
+    case POKEPIC_FADE_COLOR:
         return pokepic->drawParam.fadeTargetColor;
-    case 32:
+    case POKEPIC_FADE_BLDY:
         return pokepic->drawParam.fadeCur;
-    case 33:
+    case POKEPIC_FADE_BLDY_TARGET:
         return pokepic->drawParam.fadeEnd;
-    case 34:
+    case POKEPIC_FADE_SPEED:
         return pokepic->drawParam.fadeDelayCounter;
-    case 35:
+    case POKEPIC_HFLIP:
         return pokepic->drawParam.hflip;
-    case 36:
+    case POKEPIC_VFLIP:
         return pokepic->drawParam.vflip;
-    case 37:
+    case POKEPIC_NODRAW:
         return pokepic->drawParam.dontDraw;
-    case 38:
+    case POKEPIC_ANIM_STEP:
         return pokepic->whichAnimStep;
-    case 40:
+    case POKEPIC_MOSAIC:
         return pokepic->drawParam.mosaic;
-    case 41:
+    case POKEPIC_SHADOW_H:
         return pokepic->shadow.height;
-    case 42:
+    case POKEPIC_SHADOW_PLTT:
         return pokepic->shadow.palSlot;
-    case 43:
+    case POKEPIC_SHADOW_XADJ_REQ:
         return pokepic->shadow.shouldAdjustX;
-    case 44:
+    case POKEPIC_SHADOW_YADJ_REQ:
         return pokepic->shadow.shouldAdjustY;
-    case 45:
+    case POKEPIC_SHADOW_AFFINE:
         return pokepic->shadow.isAffine;
-    case 46:
+    case POKEPIC_SHADOW_SIZE:
         return pokepic->shadow.size;
     }
 
@@ -780,150 +780,150 @@ int Pokepic_GetAttr(Pokepic *pokepic, int attr) {
 
 void Pokepic_AddAttr(Pokepic *pokepic, int attr, int addend) {
     switch (attr) {
-    case 0:
+    case POKEPIC_X:
         pokepic->drawParam.xCenter += addend;
         break;
-    case 1:
+    case POKEPIC_Y:
         pokepic->drawParam.yCenter += addend;
         break;
-    case 2:
+    case POKEPIC_Z:
         pokepic->drawParam.zCenter += addend;
         break;
-    case 3:
+    case POKEPIC_XOFFSET:
         pokepic->drawParam.xOffset += addend;
         break;
-    case 4:
+    case POKEPIC_YOFFSET:
         pokepic->drawParam.yOffset += addend;
         break;
-    case 5:
+    case POKEPIC_ZOFFSET:
         pokepic->drawParam.zOffset += addend;
         break;
-    case 6:
+    case POKEPIC_VANISHED:
         pokepic->drawParam.hasVanished += addend;
         break;
-    case 7:
+    case POKEPIC_XROT:
         pokepic->drawParam.rotX += addend;
         break;
-    case 8:
+    case POKEPIC_YROT:
         pokepic->drawParam.rotY += addend;
         break;
-    case 9:
+    case POKEPIC_ZROT:
         pokepic->drawParam.rotZ += addend;
         break;
-    case 10:
+    case POKEPIC_XPIVOT:
         pokepic->drawParam.xPivot += addend;
         break;
-    case 11:
+    case POKEPIC_YPIVOT:
         pokepic->drawParam.yPivot += addend;
         break;
-    case 12:
+    case POKEPIC_AFFINEW:
         pokepic->drawParam.affineWidth += addend;
         break;
-    case 13:
+    case POKEPIC_AFFINEH:
         pokepic->drawParam.affineHeight += addend;
         break;
-    case 14:
+    case POKEPIC_VISIBLE:
         pokepic->drawParam.visible += addend;
         break;
-    case 15:
+    case POKEPIC_XOFF2:
         pokepic->drawParam.xOffset2 += addend;
         break;
-    case 16:
+    case POKEPIC_YOFF2:
         pokepic->drawParam.yOffset2 += addend;
         break;
-    case 17:
+    case POKEPIC_W:
         pokepic->drawParam.width += addend;
         break;
-    case 18:
+    case POKEPIC_H:
         pokepic->drawParam.height += addend;
         break;
-    case 19:
+    case POKEPIC_SHADOW_X:
         pokepic->shadow.x += addend;
         break;
-    case 20:
+    case POKEPIC_SHADOW_Y:
         pokepic->shadow.y += addend;
         break;
-    case 21:
+    case POKEPIC_SHADOW_XOFFSET:
         pokepic->shadow.xOffset += addend;
         break;
-    case 22:
+    case POKEPIC_SHADOW_YOFFSET:
         pokepic->shadow.yOffset += addend;
         break;
-    case 23:
+    case POKEPIC_ALPHA:
         pokepic->drawParam.alpha += addend;
         break;
-    case 24:
+    case POKEPIC_DIFFUSE_R:
         pokepic->drawParam.diffuseR += addend;
         break;
-    case 25:
+    case POKEPIC_DIFFUSE_G:
         pokepic->drawParam.diffuseG += addend;
         break;
-    case 26:
+    case POKEPIC_DIFFUSE_B:
         pokepic->drawParam.diffuseB += addend;
         break;
-    case 27:
+    case POKEPIC_AMBIENT_R:
         pokepic->drawParam.ambientR += addend;
         break;
-    case 28:
+    case POKEPIC_AMBIENT_G:
         pokepic->drawParam.ambientG += addend;
         break;
-    case 29:
+    case POKEPIC_AMBIENT_B:
         pokepic->drawParam.ambientB += addend;
         break;
-    case 30:
+    case POKEPIC_FADE:
         pokepic->drawParam.fadeActive += addend;
         pokepic->needReloadPltt = TRUE;
         break;
-    case 31:
+    case POKEPIC_FADE_COLOR:
         pokepic->drawParam.fadeTargetColor += addend;
         pokepic->needReloadPltt = TRUE;
         break;
-    case 32:
+    case POKEPIC_FADE_BLDY:
         pokepic->drawParam.fadeCur += addend;
         pokepic->needReloadPltt = TRUE;
         break;
-    case 33:
+    case POKEPIC_FADE_BLDY_TARGET:
         pokepic->drawParam.fadeEnd += addend;
         pokepic->needReloadPltt = TRUE;
         break;
-    case 34:
+    case POKEPIC_FADE_SPEED:
         pokepic->drawParam.fadeDelayCounter += addend;
         break;
-    case 35:
+    case POKEPIC_HFLIP:
         pokepic->drawParam.hflip += addend;
         pokepic->needReloadChar = TRUE;
         break;
-    case 36:
+    case POKEPIC_VFLIP:
         pokepic->drawParam.vflip += addend;
         pokepic->needReloadChar = TRUE;
         break;
-    case 37:
+    case POKEPIC_NODRAW:
         pokepic->drawParam.dontDraw += addend;
         break;
-    case 38:
+    case POKEPIC_ANIM_STEP:
         pokepic->whichAnimStep += addend;
         break;
-    case 40:
+    case POKEPIC_MOSAIC:
         pokepic->drawParam.mosaic += addend;
         pokepic->needReloadChar = TRUE;
         break;
-    case 41:
+    case POKEPIC_SHADOW_H:
         pokepic->shadow.height += addend;
         break;
-    case 42:
+    case POKEPIC_SHADOW_PLTT:
         pokepic->shadow.palSlot += addend;
         pokepic->needReloadPltt = TRUE;
         break;
-    case 43:
+    case POKEPIC_SHADOW_XADJ_REQ:
         pokepic->shadow.shouldAdjustX += addend;
         break;
-    case 44:
+    case POKEPIC_SHADOW_YADJ_REQ:
         pokepic->shadow.shouldAdjustY += addend;
         break;
-    case 45:
+    case POKEPIC_SHADOW_AFFINE:
         pokepic->shadow.isAffine += addend;
         break;
-    case 46:
+    case POKEPIC_SHADOW_SIZE:
         pokepic->shadow.size += addend;
         break;
     }
@@ -1026,9 +1026,9 @@ static void Pokepic_RunAnim(Pokepic *pokepic) {
 }
 
 void PokepicAnim_Init(PokepicAnim *anim, PokepicAnimScript *animScript) {
-    anim->active = 1;
-    anim->whichAnim = 0;
-    anim->whichAnimStep = animScript->next;
+    anim->active = TRUE;
+    anim->animId = 0;
+    anim->animStep = animScript->next;
     anim->stepDelay = animScript->duration;
     anim->animScript = animScript;
     for (int i = 0; i < 10; ++i) {
@@ -1038,8 +1038,8 @@ void PokepicAnim_Init(PokepicAnim *anim, PokepicAnimScript *animScript) {
 
 int PokepicAnim_Exec(PokepicAnim *anim) {
     if (anim->active) {
-        runPokepicAnim(&anim->active, &anim->whichAnimStep, &anim->whichAnim, &anim->stepDelay, anim->loopTimers, anim->animScript);
-        return anim->whichAnimStep;
+        runPokepicAnim(&anim->active, &anim->animStep, &anim->animId, &anim->stepDelay, anim->loopTimers, anim->animScript);
+        return anim->animStep;
     }
 
     return -1;

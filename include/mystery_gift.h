@@ -51,7 +51,7 @@ typedef union {
     int baseDecoration;
     MysteryGiftMonDecorationTag monDecoration;
     u8 pokewalkerCourse;
-    PHOTO photo;
+    Photo photo;
     u8 raw[256];
 } MysteryGiftData;
 
