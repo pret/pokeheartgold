@@ -1604,7 +1604,7 @@ BOOL ScrCmd_PartySelectUI(ScriptContext *ctx) {
 
 BOOL ScrCmd_566(ScriptContext *ctx) { //todo: trade screen
     PartyMenuArgs **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *partyMenu = PartyMenu_LaunchApp_Unk3(HEAP_ID_32, ctx->fieldSystem);
+    *partyMenu = PartyMenu_LaunchApp_InGameTrade(HEAP_ID_32, ctx->fieldSystem);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }

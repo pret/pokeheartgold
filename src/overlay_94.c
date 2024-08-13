@@ -20,18 +20,18 @@
 #include "msgdata/msg/msg_0300.h"
 #include "overlay_94.h"
 
-static void _DestroyLocalWork(struct PartyMenuStruct *unkPtr);
-static void _InitEffects(struct PartyMenuStruct *unkPtr);
-static void _CleanupEffects(struct PartyMenuStruct *unkPtr);
+static void _DestroyLocalWork(PartyMenu *unkPtr);
+static void _InitEffects(PartyMenu *unkPtr);
+static void _CleanupEffects(PartyMenu *unkPtr);
 static void _CreateParticleSystem(IconFormChangeData *unkPtr);
 static void _EmitParticles(IconFormChangeData *unkPtr);
-static void particleEmitCallback(struct SPLEmitter *unkPtr);
+static void particleEmitCallback(SPLEmitter *unkPtr);
 static s32 _RunParticleSystem(void);
 static void _DestroyParticleSystem(IconFormChangeData *unkPtr);
 static u32 texAlloc(u32 szByte, BOOL is4x4comp);
 static u32 plttAlloc(u32 szByte, BOOL is4pltt);
 
-void PartyMenu_InitIconFormChangeData(PartyMenuStruct *unkPtr) {
+void PartyMenu_InitIconFormChangeData(PartyMenu *unkPtr) {
     if (unkPtr->iconFormChange != NULL) {
         GF_ASSERT(FALSE);
     }
@@ -44,7 +44,7 @@ void PartyMenu_InitIconFormChangeData(PartyMenuStruct *unkPtr) {
 #define NARC_particle_giratina 0
 #define NARC_particle_shaymin  1
 
-BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct *unkPtr) {
+BOOL PartyMenu_AnimateIconFormChange(PartyMenu *unkPtr) {
     IconFormChangeData *work = unkPtr->iconFormChange;
     Pokemon *mon = Party_GetMonByIndex(unkPtr->args->party, unkPtr->partyMonIndex);
 
@@ -129,18 +129,18 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct *unkPtr) {
     return FALSE;
 }
 
-static void _DestroyLocalWork(PartyMenuStruct *unkPtr) {
+static void _DestroyLocalWork(PartyMenu *unkPtr) {
     FreeToHeap(unkPtr->iconFormChange);
     unkPtr->iconFormChange = 0;
 }
 
-static void _InitEffects(PartyMenuStruct *unkPtr) {
+static void _InitEffects(PartyMenu *unkPtr) {
     PartyMenu_Toggle3dEngine(unkPtr, PARTY_MENU_3D_ENGINE_ON);
     _CreateParticleSystem(unkPtr->iconFormChange);
     G2_SetBlendAlpha(0, 63, 31, 0);
 }
 
-static void _CleanupEffects(PartyMenuStruct *unkPtr) {
+static void _CleanupEffects(PartyMenu *unkPtr) {
     _DestroyParticleSystem(unkPtr->iconFormChange);
     PartyMenu_Toggle3dEngine(unkPtr, PARTY_MENU_3D_ENGINE_OFF);
     G2_BlendNone();
@@ -182,7 +182,7 @@ static const fx32 sPartyMonSpritePositions[][2] = {
   { 5000, -4500 }
 };
 
-static void particleEmitCallback(struct SPLEmitter *emitter) {
+static void particleEmitCallback(SPLEmitter *emitter) {
     IconFormChangeData *unkA = sub_02015504();
     SPL_SetEmitterPositionX(emitter, sPartyMonSpritePositions[unkA->partyMonIndex][0]);
     SPL_SetEmitterPositionY(emitter, sPartyMonSpritePositions[unkA->partyMonIndex][1]);

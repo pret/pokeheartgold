@@ -26,7 +26,7 @@ typedef struct PokemonSummaryArgs {
     u8 unk24[0x4];
     int unk28;
     int unk2C;
-    BOOL *unk30;
+    BOOL *menuInputStatePtr;
     BOOL isFlag982Set;
     u8 unk38[0x4];
 } PokemonSummaryArgs;

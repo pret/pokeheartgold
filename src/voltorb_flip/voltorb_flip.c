@@ -1970,7 +1970,7 @@ static void ov122_021E8094(OVY_MANAGER *man) {
     work->heapId = HEAP_ID_VOLTORB_FLIP;
     work->options = args->options;
     work->coins = args->coins;
-    work->unkC = args->unk8;
+    work->unkC = args->menuInputStatePtr;
     work->profile = args->profile;
     work->unk228 = sub_020183F0(work->unkC);
     work->unk229 = Options_GetFrame(work->options);

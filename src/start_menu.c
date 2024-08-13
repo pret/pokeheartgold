@@ -100,7 +100,7 @@ typedef struct UnkStruct_0203CA9C_Case8 {
     u8 evoType;
     u16 evoParam;
     u16 species;
-    int unk_8;
+    int evoMethod;
 } UnkStruct_0203CA9C_Case8;
 
 typedef struct UnkStruct_0203D580 {
@@ -808,7 +808,7 @@ static BOOL Task_StartMenu_OpenPokedex(TaskManager *taskManager) {
     pokedexArgs->pokedex = Save_Pokedex_Get(fieldSystem->saveData);
     pokedexArgs->playerProfile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
     pokedexArgs->unk_08 = fieldSystem->unkA8;
-    pokedexArgs->unk_0C = &fieldSystem->menuInputState;
+    pokedexArgs->menuInputStatePtr = &fieldSystem->menuInputState;
     int x = GetPlayerXCoord(fieldSystem->playerAvatar);
     int y = GetPlayerYCoord(fieldSystem->playerAvatar);
     pokedexArgs->mapMatrixId = MapMatrix_GetMapHeader(fieldSystem->mapMatrix, x / 32, y / 32);
@@ -886,7 +886,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         pokemonSummaryArgs->natDexEnabled = SaveArray_IsNatDexEnabled(fieldSystem->saveData);
         pokemonSummaryArgs->unk2C = sub_02088288(fieldSystem->saveData);
         pokemonSummaryArgs->unk28 = 0;
-        pokemonSummaryArgs->unk30 = &fieldSystem->menuInputState;
+        pokemonSummaryArgs->menuInputStatePtr = &fieldSystem->menuInputState;
         pokemonSummaryArgs->isFlag982Set = sub_0208828C(fieldSystem->saveData);
         sub_02089D40(pokemonSummaryArgs, _020FA0B0);
         sub_0208AD34(pokemonSummaryArgs, Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
@@ -907,7 +907,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         pokemonSummaryArgs->natDexEnabled = SaveArray_IsNatDexEnabled(fieldSystem->saveData);
         pokemonSummaryArgs->unk2C = sub_02088288(fieldSystem->saveData);
         pokemonSummaryArgs->unk28 = 0;
-        pokemonSummaryArgs->unk30 = &fieldSystem->menuInputState;
+        pokemonSummaryArgs->menuInputStatePtr = &fieldSystem->menuInputState;
         pokemonSummaryArgs->isFlag982Set = sub_0208828C(fieldSystem->saveData);
         sub_02089D40(pokemonSummaryArgs, _020FA0AC);
         sub_0208AD34(pokemonSummaryArgs, Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
@@ -932,7 +932,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         pokemonSummaryArgs->natDexEnabled = SaveArray_IsNatDexEnabled(fieldSystem->saveData);
         pokemonSummaryArgs->unk2C = sub_02088288(fieldSystem->saveData);
         pokemonSummaryArgs->unk28 = 0;
-        pokemonSummaryArgs->unk30 = &fieldSystem->menuInputState;
+        pokemonSummaryArgs->menuInputStatePtr = &fieldSystem->menuInputState;
         pokemonSummaryArgs->isFlag982Set = sub_0208828C(fieldSystem->saveData);
         sub_02089D40(pokemonSummaryArgs, _020FA0AC);
         sub_0208AD34(pokemonSummaryArgs, Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
@@ -978,7 +978,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         unk->evoType = EVOCTX_ITEM_USE;
         unk->partySlot = partyMenuArgs->partySlot;
         unk->species = partyMenuArgs->species;
-        unk->unk_8 = partyMenuArgs->evoMethod;
+        unk->evoMethod = partyMenuArgs->evoMethod;
         startMenu->atexit_TaskEnv = unk;
         startMenu->state = START_MENU_STATE_EVOLUTION;
         break;
@@ -989,7 +989,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         unk->evoType = EVOCTX_LEVELUP;
         unk->partySlot = partyMenuArgs->partySlot;
         unk->species = partyMenuArgs->species;
-        unk->unk_8 = partyMenuArgs->evoMethod;
+        unk->evoMethod = partyMenuArgs->evoMethod;
         startMenu->atexit_TaskEnv = unk;
         startMenu->state = START_MENU_STATE_EVOLUTION;
         break;
@@ -1525,9 +1525,9 @@ static void Task_StartMenu_Evolution(TaskManager *taskManager) {
     Pokemon *pokemon = Party_GetMonByIndex(party, unk->partySlot);
     EvolutionTaskData *evolution;
     if (unk->evoType == EVOCTX_LEVELUP) {
-        evolution = sub_02075A7C(party, pokemon, unk->species, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData), sub_02088288(fieldSystem->saveData), Save_Pokedex_Get(fieldSystem->saveData), Save_Bag_Get(fieldSystem->saveData), Save_GameStats_Get(fieldSystem->saveData), unk->unk_8, TRUE, HEAP_ID_EVOLUTION);
+        evolution = sub_02075A7C(party, pokemon, unk->species, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData), sub_02088288(fieldSystem->saveData), Save_Pokedex_Get(fieldSystem->saveData), Save_Bag_Get(fieldSystem->saveData), Save_GameStats_Get(fieldSystem->saveData), unk->evoMethod, TRUE, HEAP_ID_EVOLUTION);
     } else {
-        evolution = sub_02075A7C(party, pokemon, unk->species, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData), sub_02088288(fieldSystem->saveData), Save_Pokedex_Get(fieldSystem->saveData), Save_Bag_Get(fieldSystem->saveData), Save_GameStats_Get(fieldSystem->saveData), unk->unk_8, FALSE, HEAP_ID_EVOLUTION);
+        evolution = sub_02075A7C(party, pokemon, unk->species, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData), sub_02088288(fieldSystem->saveData), Save_Pokedex_Get(fieldSystem->saveData), Save_Bag_Get(fieldSystem->saveData), Save_GameStats_Get(fieldSystem->saveData), unk->evoMethod, FALSE, HEAP_ID_EVOLUTION);
     }
     StartMenuAfterEvoPartySlotBak *newEnv = AllocFromHeap(HEAP_ID_FIELD, sizeof(StartMenuAfterEvoPartySlotBak));
     newEnv->partySlot = unk->partySlot;

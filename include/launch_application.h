@@ -89,7 +89,7 @@ static inline PCBoxArgs *PCBoxAppData_New(ScriptContext *ctx) {
     PCBoxArgs *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(PCBoxArgs));
     ret->saveData = ctx->fieldSystem->saveData;
     ret->unk8 = ScriptReadByte(ctx);
-    ret->fieldSystemUnk10C = &ctx->fieldSystem->menuInputState;
+    ret->menuInputStatePtr = &ctx->fieldSystem->menuInputState;
     return ret;
 }
 
@@ -100,7 +100,7 @@ BerryPotsArgs *BerryPots_LaunchApp(FieldSystem *fieldSystem);
 UnownReportArgs *UnownReport_LaunchApp(FieldSystem *fieldSystem);
 PartyMenuArgs *PartyMenu_LaunchApp_Gracidea(FieldSystem *fieldSystem, HeapID heapId, u16 itemId);
 PartyMenuArgs *PartyMenu_LaunchApp_Unk2(HeapID heapId, FieldSystem *fieldSystem); //todo: party select screen
-PartyMenuArgs *PartyMenu_LaunchApp_Unk3(HeapID heapId, FieldSystem *fieldSystem); //todo: party trade screen
+PartyMenuArgs *PartyMenu_LaunchApp_InGameTrade(HeapID heapId, FieldSystem *fieldSystem); //todo: party trade screen
 PartyMenuArgs *SelectPartyMonAndLearnMove(TaskManager *taskManager, HeapID heapId); //todo: union party select screen
 int PartyMenuArgs_GetSlot(struct PartyMenuArgs *partyWork);
 int sub_0203E5F8(struct PartyMenuArgs *partyWork);

@@ -11,25 +11,25 @@
 #include "unk_0208805C.h"
 #include "party_menu_items.h"
 
-static void PartyMenu_StartContextMenuButtonPressAnim_FromCursorObj(PartyMenuStruct *partyMenu, PartyMenuContextMenuCursor *cursor, int followUpState);
+static void PartyMenu_StartContextMenuButtonPressAnim_FromCursorObj(PartyMenu *partyMenu, PartyMenuContextMenuCursor *cursor, int followUpState);
 static void addFiveWindows(BgConfig *bgConfig, Window *window, const WindowTemplate *template);
-static void PartyMenu_DrawSlashOnMonHpTextWindow(PartyMenuStruct *partyMenu, u8 partySlot);
-static void PartyMenu_PrintMonNicknameOnWindow(PartyMenuStruct *partyMenu, u8 partySlot);
-static void PartyMenu_PrintMonMaxHpOnWindow(PartyMenuStruct *partyMenu, u8 partySlot);
+static void PartyMenu_DrawSlashOnMonHpTextWindow(PartyMenu *partyMenu, u8 partySlot);
+static void PartyMenu_PrintMonNicknameOnWindow(PartyMenu *partyMenu, u8 partySlot);
+static void PartyMenu_PrintMonMaxHpOnWindow(PartyMenu *partyMenu, u8 partySlot);
 static u32 getStringCenterXPos(FontID fontId, String *string, u32 windowWidth);
-static void PartyMenu_PrintMessageOnWindowEx(PartyMenuStruct *partyMenu, Window *window, int msgId, BOOL drawFrame);
+static void PartyMenu_PrintMessageOnWindowEx(PartyMenu *partyMenu, Window *window, int msgId, BOOL drawFrame);
 static BOOL TextPrinterCB_PartyMenuWin34Msg(TextPrinterTemplate *template, u16 glyphId);
-static void PartyMenu_PrintEvoStoneCompatString(PartyMenuStruct *partyMenu, u8 partySlot, u8 compatibilityParam);
-static void PartyMenu_PrintTMHMCompatString(PartyMenuStruct *partyMenu, u8 partySlot, u8 compatibilityParam);
-static void PartyMenu_PrintSuperContestCompatString(PartyMenuStruct *partyMenu, u8 partySlot, u8 isCompatible);
-static void sub_0207DD7C(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2);
-static void PartyMenu_ShowContextMenu(PartyMenuStruct *partyMenu, int numItems, int state);
-static void PartyMenu_HideContextMenu(PartyMenuStruct *partyMenu, int numItems, int state);
+static void PartyMenu_PrintEvoStoneCompatString(PartyMenu *partyMenu, u8 partySlot, u8 compatibilityParam);
+static void PartyMenu_PrintTMHMCompatString(PartyMenu *partyMenu, u8 partySlot, u8 compatibilityParam);
+static void PartyMenu_PrintSuperContestCompatString(PartyMenu *partyMenu, u8 partySlot, u8 isCompatible);
+static void sub_0207DD7C(PartyMenu *partyMenu, u8 partySlot, u8 a2);
+static void PartyMenu_ShowContextMenu(PartyMenu *partyMenu, int numItems, int state);
+static void PartyMenu_HideContextMenu(PartyMenu *partyMenu, int numItems, int state);
 static u32 getButtonColorDepressed(int selection);
 static u32 getButtonColorRaised(int selection);
-static void PartyMenu_PrintContextMenuItemText(PartyMenuStruct *partyMenu, PartyMenuContextMenu *contextMenu, int numItems, int selection, int state, BOOL a5);
-static void sub_0207E358(PartyMenuStruct *partyMenu, PartyMenuContextMenu *contextMenu, int numItems, int selection, int state);
-static void sub_0207E3A8(PartyMenuStruct *partyMenu, int numItems, int selection, int state, int frameType);
+static void PartyMenu_PrintContextMenuItemText(PartyMenu *partyMenu, PartyMenuContextMenu *contextMenu, int numItems, int selection, int state, BOOL a5);
+static void sub_0207E358(PartyMenu *partyMenu, PartyMenuContextMenu *contextMenu, int numItems, int selection, int state);
+static void sub_0207E3A8(PartyMenu *partyMenu, int numItems, int selection, int state, int frameType);
 static BOOL hitboxHasSelectionMapping(int state, int numItems, int selection);
 static int hitboxToSelection(int state, int numItems, int selection);
 static BOOL contextMenuButtonIsActive(int state, int numItems, int selection);
@@ -130,28 +130,28 @@ static const u8 sButtonRects[][4] = {
 
 static const s8 sButtonWindowIDs[][2][8] = {
     {
-            { 0, -1, -1, -1, -1, -1, -1, -1 },
+        { 0, -1, -1, -1, -1, -1, -1, -1 },
         { 7, -1, -1, -1, -1, -1, -1, -1 }
     }, {
-            { 0, 7, -1, -1, -1, -1, -1, -1 },
+        { 0, 7, -1, -1, -1, -1, -1, -1 },
         { 8, 7, -1, -1, -1, -1, -1, -1 }
     }, {
-            { 0, 1, 7, -1, -1, -1, -1, -1 },
+        { 0, 1, 7, -1, -1, -1, -1, -1 },
         { 8, 9, 7, -1, -1, -1, -1, -1 }
     }, {
-            { 0, 1, 2, 7, -1, -1, -1, -1 },
+        { 0, 1, 2, 7, -1, -1, -1, -1 },
         { 8, 9, 10, 7, -1, -1, -1, -1 }
     }, {
-            { 0, 1, 2, 7, 3, -1, -1, -1 },
+        { 0, 1, 2, 7, 3, -1, -1, -1 },
         { 8, 9, 10, 11, 7, -1, -1, -1 }
     }, {
-            { 0, 1, 2, 7, 3, 4, -1, -1 },
+        { 0, 1, 2, 7, 3, 4, -1, -1 },
         { 0, 1, 2, 3, 4, 8, -1, -1 }
     }, {
-            { 0, 1, 2, 7, 3, 4, 5, -1 },
+        { 0, 1, 2, 7, 3, 4, 5, -1 },
         { 0, 1, 2, 3, 4, 5, 8, -1 }
     }, {
-            { 0, 1, 2, 7, 3, 4, 5, 6 },
+        { 0, 1, 2, 7, 3, 4, 5, 6 },
         { 0, 1, 2, 7, 3, 4, 5, 6 }
     },
 };
@@ -306,69 +306,69 @@ void PartyMenu_DisableMainScreenBlend_AfterYesNo(void) {
     G2_BlendNone();
 }
 
-static void PartyMenu_StartContextMenuButtonPressAnim_FromCursorObj(PartyMenuStruct *partyMenu, PartyMenuContextMenuCursor *cursor, int followUpState) {
-    PartyMenuContextButtonAnimData *unk = &partyMenu->contextMenuButtonAnim;
+static void PartyMenu_StartContextMenuButtonPressAnim_FromCursorObj(PartyMenu *partyMenu, PartyMenuContextMenuCursor *cursor, int followUpState) {
+    PartyMenuContextButtonAnimData *animData = &partyMenu->contextMenuButtonAnim;
 
-    unk->autoAnimTimer = 0;
-    unk->buttonAnimState = 0;
-    unk->template = &cursor->menu;
-    unk->numItems = cursor->numItems;
-    unk->selection = cursor->selection;
-    unk->state = cursor->state;
-    unk->followUpState = followUpState;
-    unk->active = TRUE;
+    animData->autoAnimTimer = 0;
+    animData->buttonAnimState = 0;
+    animData->template = &cursor->menu;
+    animData->numItems = cursor->numItems;
+    animData->selection = cursor->selection;
+    animData->state = cursor->state;
+    animData->followUpState = followUpState;
+    animData->active = TRUE;
 }
 
-void PartyMenu_StartContextMenuButtonAnim(PartyMenuStruct *partyMenu, int selection, int followUpState, BOOL restartAnim) {
-    PartyMenuContextButtonAnimData *unk = &partyMenu->contextMenuButtonAnim;
+void PartyMenu_StartContextMenuButtonAnim(PartyMenu *partyMenu, int selection, int followUpState, BOOL restartAnim) {
+    PartyMenuContextButtonAnimData *animData = &partyMenu->contextMenuButtonAnim;
 
-    unk->autoAnimTimer = 0;
-    unk->buttonAnimState = 0;
-    unk->template = NULL;
-    unk->selection = selection;
-    unk->state = Get2dSpriteCurrentAnimSeqNo(partyMenu->sprites[selection]) & 2;
+    animData->autoAnimTimer = 0;
+    animData->buttonAnimState = 0;
+    animData->template = NULL;
+    animData->selection = selection;
+    animData->state = Get2dSpriteCurrentAnimSeqNo(partyMenu->sprites[selection]) & 2;
     if (restartAnim == TRUE) {
         Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[selection], 0);
-        Set2dSpriteAnimSeqNo(partyMenu->sprites[selection], unk->state);
+        Set2dSpriteAnimSeqNo(partyMenu->sprites[selection], animData->state);
     }
-    unk->followUpState = followUpState;
-    unk->active = TRUE;
+    animData->followUpState = followUpState;
+    animData->active = TRUE;
 }
 
-BOOL PartyMenu_AnimateContextMenuButtonPress(PartyMenuStruct *partyMenu) {
-    PartyMenuContextButtonAnimData *unk = &partyMenu->contextMenuButtonAnim;
+BOOL PartyMenu_AnimateContextMenuButtonPress(PartyMenu *partyMenu) {
+    PartyMenuContextButtonAnimData *animData = &partyMenu->contextMenuButtonAnim;
 
-    switch (unk->buttonAnimState) {
+    switch (animData->buttonAnimState) {
     case 0:
-        if (unk->template != NULL) {
-            sub_0207E3A8(partyMenu, unk->numItems, unk->selection, unk->state, 2);
-            PartyMenu_PrintContextMenuItemText(partyMenu, unk->template, unk->numItems, unk->selection, unk->state, FALSE);
+        if (animData->template != NULL) {
+            sub_0207E3A8(partyMenu, animData->numItems, animData->selection, animData->state, 2);
+            PartyMenu_PrintContextMenuItemText(partyMenu, animData->template, animData->numItems, animData->selection, animData->state, FALSE);
             BgCommitTilemapBufferToVram(partyMenu->bgConfig, GF_BG_LYR_MAIN_0);
         } else {
-            Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[unk->selection], 0);
-            Set2dSpriteAnimSeqNo(partyMenu->sprites[unk->selection], unk->state);
+            Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[animData->selection], 0);
+            Set2dSpriteAnimSeqNo(partyMenu->sprites[animData->selection], animData->state);
         }
-        ++unk->buttonAnimState;
+        ++animData->buttonAnimState;
         break;
     case 1:
-        ++unk->autoAnimTimer;
-        if (unk->autoAnimTimer == 2) {
-            if (unk->template != NULL) {
-                sub_0207E3A8(partyMenu, unk->numItems, unk->selection, unk->state, 1);
-                PartyMenu_PrintContextMenuItemText(partyMenu, unk->template, unk->numItems, unk->selection, unk->state, TRUE);
+        ++animData->autoAnimTimer;
+        if (animData->autoAnimTimer == 2) {
+            if (animData->template != NULL) {
+                sub_0207E3A8(partyMenu, animData->numItems, animData->selection, animData->state, 1);
+                PartyMenu_PrintContextMenuItemText(partyMenu, animData->template, animData->numItems, animData->selection, animData->state, TRUE);
                 BgCommitTilemapBufferToVram(partyMenu->bgConfig, GF_BG_LYR_MAIN_0);
             } else {
-                Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[unk->selection], 0);
-                Set2dSpriteAnimSeqNo(partyMenu->sprites[unk->selection], unk->state + 1);
+                Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[animData->selection], 0);
+                Set2dSpriteAnimSeqNo(partyMenu->sprites[animData->selection], animData->state + 1);
             }
-            unk->autoAnimTimer = 0;
-            ++unk->buttonAnimState;
+            animData->autoAnimTimer = 0;
+            ++animData->buttonAnimState;
         }
         break;
     case 2:
-        ++unk->autoAnimTimer;
-        if (unk->autoAnimTimer == 2) {
-            unk->active = FALSE;
+        ++animData->autoAnimTimer;
+        if (animData->autoAnimTimer == 2) {
+            animData->active = FALSE;
             return FALSE;
         }
         break;
@@ -385,7 +385,7 @@ static void addFiveWindows(BgConfig *bgConfig, Window *window, const WindowTempl
     AddWindow(bgConfig, &window[4], &template[4]);
 }
 
-void PartyMenu_AddAllWindows(PartyMenuStruct *partyMenu) {
+void PartyMenu_AddAllWindows(PartyMenu *partyMenu) {
     const WindowTemplate *templates = sMainWindowTemplates;
     addFiveWindows(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON1_NICKNAME], &templates[0]);
     addFiveWindows(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_MON3_NICKNAME], &templates[10]);
@@ -417,7 +417,7 @@ void PartyMenu_AddAllWindows(PartyMenuStruct *partyMenu) {
     AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_36], &sAdditionalWindowTemplates[6]);
 }
 
-void PartyMenu_RemoveAllWindows(PartyMenuStruct *partyMenu) {
+void PartyMenu_RemoveAllWindows(PartyMenu *partyMenu) {
     u16 i;
     for (i = 0; i < PARTY_MENU_WINDOW_ID_MAX; ++i) {
         RemoveWindow(&partyMenu->windows[i]);
@@ -431,7 +431,7 @@ void PartyMenu_RemoveAllWindows(PartyMenuStruct *partyMenu) {
     }
 }
 
-void PartyMenu_SetContextMenuStaticStrings(PartyMenuStruct *partyMenu) {
+void PartyMenu_SetContextMenuStaticStrings(PartyMenu *partyMenu) {
     ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00128, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_SWITCH]);
     ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00129, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_SUMMARY]);
     ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00130, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_ITEM]);
@@ -450,14 +450,14 @@ void PartyMenu_SetContextMenuStaticStrings(PartyMenuStruct *partyMenu) {
     ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00186, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_CONFIRM]);
 }
 
-void PartyMenu_ContextMenuAddFieldMove(PartyMenuStruct *partyMenu, u16 move, u8 index) {
+void PartyMenu_ContextMenuAddFieldMove(PartyMenu *partyMenu, u16 move, u8 index) {
     String *msg = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00139 + index);
     BufferMoveName(partyMenu->msgFormat, 0, move);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_FIELD_MOVES_BEGIN + index], msg);
     String_Delete(msg);
 }
 
-void PartyMenu_OpenContextMenu(PartyMenuStruct *partyMenu, u8 *items, u8 numItems) {
+void PartyMenu_OpenContextMenu(PartyMenu *partyMenu, u8 *items, u8 numItems) {
     PartyMenuContextMenu contextMenu;
     u16 i, numFieldMoves;
 
@@ -488,7 +488,7 @@ void PartyMenu_OpenContextMenu(PartyMenuStruct *partyMenu, u8 *items, u8 numItem
     partyMenu->contextMenuCursor = PartyMenu_CreateContextMenuCursor(partyMenu, &contextMenu, 0, HEAP_ID_PARTY_MENU, 0);
 }
 
-void sub_0207D1C8(PartyMenuStruct *partyMenu) {
+void sub_0207D1C8(PartyMenu *partyMenu) {
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_ATTACH_CAPSULE) {
         ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00043, partyMenu->formattedStrBuf);
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_SPIN_TRADE && partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg == TRUE) {
@@ -502,18 +502,18 @@ void sub_0207D1C8(PartyMenuStruct *partyMenu) {
     }
 }
 
-static void PartyMenu_DrawSlashOnMonHpTextWindow(PartyMenuStruct *partyMenu, u8 partySlot) {
+static void PartyMenu_DrawSlashOnMonHpTextWindow(PartyMenu *partyMenu, u8 partySlot) {
     sub_0200CDAC(partyMenu->msgPrinter, 0, &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPTEXT], 28, 2);
 }
 
-void PartyMenu_BufferMonNickname(PartyMenuStruct *partyMenu, Pokemon *mon, u32 partySlot) {
+void PartyMenu_BufferMonNickname(PartyMenu *partyMenu, Pokemon *mon, u32 partySlot) {
     String *msg = NewString_ReadMsgData(partyMenu->msgData, sMonNicknameMsgIds[partySlot][0]);
     BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->monsDrawState[partySlot].nickname, msg);
     String_Delete(msg);
 }
 
-static void PartyMenu_PrintMonNicknameOnWindow(PartyMenuStruct *partyMenu, u8 partySlot) {
+static void PartyMenu_PrintMonNicknameOnWindow(PartyMenu *partyMenu, u8 partySlot) {
     Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_NICKNAME];
 
     AddTextPrinterParameterizedWithColor(window, 0, partyMenu->monsDrawState[partySlot].nickname, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
@@ -535,7 +535,7 @@ static void PartyMenu_PrintMonNicknameOnWindow(PartyMenuStruct *partyMenu, u8 pa
     }
 }
 
-void PartyMenu_PrintMonLevelOnWindow(PartyMenuStruct *partyMenu, u8 partySlot) {
+void PartyMenu_PrintMonLevelOnWindow(PartyMenu *partyMenu, u8 partySlot) {
     Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_LEVEL];
 
     if (partyMenu->monsDrawState[partySlot].status != PARTY_MON_STATUS_ICON_OK) {
@@ -546,28 +546,28 @@ void PartyMenu_PrintMonLevelOnWindow(PartyMenuStruct *partyMenu, u8 partySlot) {
     }
 }
 
-void PartyMenu_PrintMonCurHpOnWindow(PartyMenuStruct *partyMenu, u8 partySlot) {
+void PartyMenu_PrintMonCurHpOnWindow(PartyMenu *partyMenu, u8 partySlot) {
     Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPTEXT];
 
     PrintUIntOnWindow(partyMenu->msgPrinter, partyMenu->monsDrawState[partySlot].hp, 3, PRINTING_MODE_RIGHT_ALIGN, window, 0, 2);
     ScheduleWindowCopyToVram(window);
 }
 
-void PartyMenu_ClearMonHpTextWindow(PartyMenuStruct *partyMenu, u8 partySlot) {
+void PartyMenu_ClearMonHpTextWindow(PartyMenu *partyMenu, u8 partySlot) {
     Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPTEXT];
 
     FillWindowPixelRect(window, 0, 0, 0, 24, 16);
     ScheduleWindowCopyToVram(window);
 }
 
-static void PartyMenu_PrintMonMaxHpOnWindow(PartyMenuStruct *partyMenu, u8 partySlot) {
+static void PartyMenu_PrintMonMaxHpOnWindow(PartyMenu *partyMenu, u8 partySlot) {
     Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPTEXT];
 
     PrintUIntOnWindow(partyMenu->msgPrinter, partyMenu->monsDrawState[partySlot].maxHp, 3, PRINTING_MODE_LEFT_ALIGN, window, 36, 2);
     ScheduleWindowCopyToVram(window);
 }
 
-void PartyMenu_DrawMonHpBarOnWindow(PartyMenuStruct *partyMenu, u8 partySlot) {
+void PartyMenu_DrawMonHpBarOnWindow(PartyMenu *partyMenu, u8 partySlot) {
     Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPBAR];
 
     switch (CalculateHpBarColor(partyMenu->monsDrawState[partySlot].hp, partyMenu->monsDrawState[partySlot].maxHp, 48)) {
@@ -593,7 +593,7 @@ void PartyMenu_DrawMonHpBarOnWindow(PartyMenuStruct *partyMenu, u8 partySlot) {
     ScheduleWindowCopyToVram(window);
 }
 
-void sub_0207D5DC(PartyMenuStruct *partyMenu, u8 partySlot) {
+void sub_0207D5DC(PartyMenu *partyMenu, u8 partySlot) {
     FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_NICKNAME], 0);
     FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_LEVEL], 0);
     FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPTEXT], 0);
@@ -613,21 +613,21 @@ void sub_0207D5DC(PartyMenuStruct *partyMenu, u8 partySlot) {
     }
 }
 
-void PartyMenu_CommitPartyMonPanelWindowsToVram_InVBlank(PartyMenuStruct *partyMenu, u8 partySlot) {
+void PartyMenu_CommitPartyMonPanelWindowsToVram_InVBlank(PartyMenu *partyMenu, u8 partySlot) {
     CopyWindowPixelsToVram_TextMode(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_NICKNAME]);
     CopyWindowPixelsToVram_TextMode(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_LEVEL]);
     CopyWindowPixelsToVram_TextMode(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPTEXT]);
     CopyWindowPixelsToVram_TextMode(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPBAR]);
 }
 
-void PartyMenu_CommitPartyMonPanelWindowsToVram_NotInVBlank(PartyMenuStruct *partyMenu, u8 partySlot) {
+void PartyMenu_CommitPartyMonPanelWindowsToVram_NotInVBlank(PartyMenu *partyMenu, u8 partySlot) {
     ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_NICKNAME]);
     ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_LEVEL]);
     ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPTEXT]);
     ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPBAR]);
 }
 
-void sub_0207D710(PartyMenuStruct *partyMenu, u8 partySlot) {
+void sub_0207D710(PartyMenu *partyMenu, u8 partySlot) {
     FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_NICKNAME], 0);
     FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_LEVEL], 0);
     PartyMenu_PrintMonNicknameOnWindow(partyMenu, partySlot);
@@ -644,7 +644,7 @@ void sub_0207D710(PartyMenuStruct *partyMenu, u8 partySlot) {
     }
 }
 
-void PartyMenu_DrawPartyMonsList_UseTMHM(PartyMenuStruct *partyMenu, u8 partySlot) {
+void PartyMenu_DrawPartyMonsList_UseTMHM(PartyMenu *partyMenu, u8 partySlot) {
     FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_NICKNAME], 0);
     FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_LEVEL], 0);
     PartyMenu_PrintMonNicknameOnWindow(partyMenu, partySlot);
@@ -663,7 +663,7 @@ void PartyMenu_DrawPartyMonsList_UseTMHM(PartyMenuStruct *partyMenu, u8 partySlo
     }
 }
 
-void PartyMenu_DrawPartyMonsList_SuperContestEntry(PartyMenuStruct *partyMenu, u8 partySlot) {
+void PartyMenu_DrawPartyMonsList_SuperContestEntry(PartyMenu *partyMenu, u8 partySlot) {
     FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_NICKNAME], 0);
     FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_LEVEL], 0);
     PartyMenu_PrintMonNicknameOnWindow(partyMenu, partySlot);
@@ -673,7 +673,7 @@ void PartyMenu_DrawPartyMonsList_SuperContestEntry(PartyMenuStruct *partyMenu, u
     PartyMenu_PrintSuperContestCompatString(partyMenu, partySlot, partyMenu->monsDrawState[partySlot].isContestCompatible);
 }
 
-void PartyMenu_DrawPartyMonsList_FrontierFacilityEntry(PartyMenuStruct *partyMenu, u8 partySlot) {
+void PartyMenu_DrawPartyMonsList_FrontierFacilityEntry(PartyMenu *partyMenu, u8 partySlot) {
     FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_NICKNAME], 0);
     FillWindowPixelBuffer(&partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_LEVEL], 0);
     PartyMenu_PrintMonNicknameOnWindow(partyMenu, partySlot);
@@ -682,7 +682,7 @@ void PartyMenu_DrawPartyMonsList_FrontierFacilityEntry(PartyMenuStruct *partyMen
     }
 }
 
-void sub_0207D8EC(PartyMenuStruct *partyMenu, u8 partySlot) {
+void sub_0207D8EC(PartyMenu *partyMenu, u8 partySlot) {
     for (u8 i = 0; i < partyMenu->args->maxMonsToSelect; ++i) {
         if (partyMenu->args->selectedOrder[i] == partySlot + 1) {
             sub_0207DD7C(partyMenu, partySlot, i);
@@ -714,7 +714,7 @@ static u32 getStringCenterXPos(FontID fontId, String *string, u32 windowWidth) {
     return (windowWidth - FontID_String_GetWidth(fontId, string, 0)) / 2;
 }
 
-void sub_0207D998(PartyMenuStruct *partyMenu, u8 flag) {
+void sub_0207D998(PartyMenu *partyMenu, u8 flag) {
     FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_30], 0);
     FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_31], 0);
     if (flag & 1) {
@@ -729,7 +729,7 @@ void sub_0207D998(PartyMenuStruct *partyMenu, u8 flag) {
     }
 }
 
-static void PartyMenu_PrintMessageOnWindowEx(PartyMenuStruct *partyMenu, Window *window, int msgId, BOOL drawFrame) {
+static void PartyMenu_PrintMessageOnWindowEx(PartyMenu *partyMenu, Window *window, int msgId, BOOL drawFrame) {
     if (drawFrame == TRUE) {
         DrawFrameAndWindow2(window, TRUE, 0x02A, 15);
     }
@@ -741,15 +741,15 @@ static void PartyMenu_PrintMessageOnWindowEx(PartyMenuStruct *partyMenu, Window 
     ScheduleWindowCopyToVram(window);
 }
 
-void PartyMenu_PrintMessageOnWindow32(PartyMenuStruct *partyMenu, int msgId, BOOL drawFrame) {
+void PartyMenu_PrintMessageOnWindow32(PartyMenu *partyMenu, int msgId, BOOL drawFrame) {
     PartyMenu_PrintMessageOnWindowEx(partyMenu, &partyMenu->windows[PARTY_MENU_WINDOW_ID_32], msgId, drawFrame);
 }
 
-void PartyMenu_PrintMessageOnWindow33(PartyMenuStruct *partyMenu, int msgId, BOOL drawFrame) {
+void PartyMenu_PrintMessageOnWindow33(PartyMenu *partyMenu, int msgId, BOOL drawFrame) {
     PartyMenu_PrintMessageOnWindowEx(partyMenu, &partyMenu->windows[PARTY_MENU_WINDOW_ID_33], msgId, drawFrame);
 }
 
-void PartyMenu_PrintMessageOnWindow34(PartyMenuStruct *partyMenu, int msgId, BOOL drawFrame) {
+void PartyMenu_PrintMessageOnWindow34(PartyMenu *partyMenu, int msgId, BOOL drawFrame) {
     Window *window = &partyMenu->windows[PARTY_MENU_WINDOW_ID_34];
     if (drawFrame == TRUE) {
         DrawFrameAndWindow2(window, TRUE, 0x02A, 15);
@@ -761,7 +761,7 @@ void PartyMenu_PrintMessageOnWindow34(PartyMenuStruct *partyMenu, int msgId, BOO
     PartyMenu_PrintBufferedMessageOnWindow34(partyMenu);
 }
 
-void PartyMenu_PrintBufferedMessageOnWindow34(PartyMenuStruct *partyMenu) {
+void PartyMenu_PrintBufferedMessageOnWindow34(PartyMenu *partyMenu) {
     TextFlags_SetCanABSpeedUpPrint(TRUE);
     sub_02002B50(0);
     partyMenu->textPrinterId = AddTextPrinterParameterized(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], 1, partyMenu->formattedStrBuf, 0, 0, Options_GetTextFrameDelay(partyMenu->args->options), TextPrinterCB_PartyMenuWin34Msg);
@@ -788,7 +788,7 @@ static BOOL TextPrinterCB_PartyMenuWin34Msg(TextPrinterTemplate *template, u16 g
     return FALSE;
 }
 
-void PartyMenu_CreateYesNoPrompt(PartyMenuStruct *partyMenu) {
+void PartyMenu_CreateYesNoPrompt(PartyMenu *partyMenu) {
     YesNoPromptTemplate template;
 
     partyMenu->yesNoPrompt = YesNoPrompt_Create(HEAP_ID_PARTY_MENU);
@@ -806,7 +806,7 @@ void PartyMenu_CreateYesNoPrompt(PartyMenuStruct *partyMenu) {
     PartyMenu_SetBlendBrightness_ForYesNo();
 }
 
-static void PartyMenu_PrintEvoStoneCompatString(PartyMenuStruct *partyMenu, u8 partySlot, u8 compatibilityParam) {
+static void PartyMenu_PrintEvoStoneCompatString(PartyMenu *partyMenu, u8 partySlot, u8 compatibilityParam) {
     Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_COMPAT];
     String *string;
 
@@ -825,7 +825,7 @@ static void PartyMenu_PrintEvoStoneCompatString(PartyMenuStruct *partyMenu, u8 p
     ScheduleWindowCopyToVram(window);
 }
 
-static void PartyMenu_PrintTMHMCompatString(PartyMenuStruct *partyMenu, u8 partySlot, u8 compatibilityParam) {
+static void PartyMenu_PrintTMHMCompatString(PartyMenu *partyMenu, u8 partySlot, u8 compatibilityParam) {
     Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_COMPAT];
     String *string;
 
@@ -847,7 +847,7 @@ static void PartyMenu_PrintTMHMCompatString(PartyMenuStruct *partyMenu, u8 party
     ScheduleWindowCopyToVram(window);
 }
 
-static void PartyMenu_PrintSuperContestCompatString(PartyMenuStruct *partyMenu, u8 partySlot, u8 isCompatible) {
+static void PartyMenu_PrintSuperContestCompatString(PartyMenu *partyMenu, u8 partySlot, u8 isCompatible) {
     Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_COMPAT];
     String *string;
 
@@ -864,7 +864,7 @@ static void PartyMenu_PrintSuperContestCompatString(PartyMenuStruct *partyMenu, 
     ScheduleWindowCopyToVram(window);
 }
 
-static void sub_0207DD7C(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
+static void sub_0207DD7C(PartyMenu *partyMenu, u8 partySlot, u8 a2) {
     Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_COMPAT];
     String *string;
 
@@ -881,7 +881,7 @@ static void sub_0207DD7C(PartyMenuStruct *partyMenu, u8 partySlot, u8 a2) {
     ScheduleWindowCopyToVram(window);
 }
 
-void PartyMenu_LevelUpPrintStatsChange(PartyMenuStruct *partyMenu) {
+void PartyMenu_LevelUpPrintStatsChange(PartyMenu *partyMenu) {
     u16 stats[NUM_STATS];
     String *str_formatInt;
     String *str_statName;
@@ -919,7 +919,7 @@ void PartyMenu_LevelUpPrintStatsChange(PartyMenuStruct *partyMenu) {
     ScheduleWindowCopyToVram(&partyMenu->levelUpStatsWindow[0]);
 }
 
-void sub_0207DF98(PartyMenuStruct *partyMenu) {
+void sub_0207DF98(PartyMenu *partyMenu) {
     String *spC;
     u32 i;
 
@@ -934,12 +934,12 @@ void sub_0207DF98(PartyMenuStruct *partyMenu) {
     ScheduleWindowCopyToVram(&partyMenu->levelUpStatsWindow[0]);
 }
 
-void sub_0207E04C(PartyMenuStruct *partyMenu) {
+void sub_0207E04C(PartyMenu *partyMenu) {
     sub_0200E5D4(&partyMenu->levelUpStatsWindow[0], FALSE);
     RemoveWindow(&partyMenu->levelUpStatsWindow[0]);
 }
 
-void sub_0207E068(PartyMenuStruct *partyMenu) {
+void sub_0207E068(PartyMenu *partyMenu) {
     Pokemon *mon;
     String *msg;
 
@@ -964,7 +964,7 @@ void sub_0207E068(PartyMenuStruct *partyMenu) {
     ScheduleWindowCopyToVram(&partyMenu->windows[PARTY_MENU_WINDOW_ID_39]);
 }
 
-static void PartyMenu_ShowContextMenu(PartyMenuStruct *partyMenu, int numItems, int state) {
+static void PartyMenu_ShowContextMenu(PartyMenu *partyMenu, int numItems, int state) {
     GF_ASSERT(numItems <= 8);
     for (int i = 0; i < numItems; ++i) {
         AddWindow(partyMenu->bgConfig, &partyMenu->contextMenuButtonWindows[sButtonWindowIDs[numItems - 1][state][i]], &sButtonWindowTemplates[sButtonWindowIDs[numItems - 1][state][i]]);
@@ -972,7 +972,7 @@ static void PartyMenu_ShowContextMenu(PartyMenuStruct *partyMenu, int numItems, 
     }
 }
 
-static void PartyMenu_HideContextMenu(PartyMenuStruct *partyMenu, int numItems, int state) {
+static void PartyMenu_HideContextMenu(PartyMenu *partyMenu, int numItems, int state) {
     GF_ASSERT(numItems <= 8);
     for (int i = 0; i < numItems; ++i) {
         RemoveWindow(&partyMenu->contextMenuButtonWindows[sButtonWindowIDs[numItems - 1][state][i]]);
@@ -998,7 +998,7 @@ static u32 getButtonColorRaised(int selection) {
     }
 }
 
-static void PartyMenu_PrintContextMenuItemText(PartyMenuStruct *partyMenu, PartyMenuContextMenu *contextMenu, int numItems, int selection, int state, BOOL depressed) {
+static void PartyMenu_PrintContextMenuItemText(PartyMenu *partyMenu, PartyMenuContextMenu *contextMenu, int numItems, int selection, int state, BOOL depressed) {
     u32 color;
     u32 y;
     u32 x = 0;
@@ -1031,7 +1031,7 @@ static void PartyMenu_PrintContextMenuItemText(PartyMenuStruct *partyMenu, Party
     ScheduleWindowCopyToVram(&partyMenu->contextMenuButtonWindows[windowId]);
 }
 
-static void sub_0207E358(PartyMenuStruct *partyMenu, PartyMenuContextMenu *contextMenu, int numItems, int selection, int state) {
+static void sub_0207E358(PartyMenu *partyMenu, PartyMenuContextMenu *contextMenu, int numItems, int selection, int state) {
     GF_ASSERT(numItems <= 8);
     for (int i = 0; i < numItems; ++i) {
         if (selection == i) {
@@ -1042,7 +1042,7 @@ static void sub_0207E358(PartyMenuStruct *partyMenu, PartyMenuContextMenu *conte
     }
 }
 
-static void sub_0207E3A8(PartyMenuStruct *partyMenu, int numItems, int selection, int state, int frameType) {
+static void sub_0207E3A8(PartyMenu *partyMenu, int numItems, int selection, int state, int frameType) {
     u16 i;
     u16 tiles[8];
     const u8 *rect = sButtonRects[sButtonWindowIDs[numItems - 1][state][selection]];
@@ -1069,7 +1069,7 @@ static void sub_0207E3A8(PartyMenuStruct *partyMenu, int numItems, int selection
     FillBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, tiles[7], rect[0] + 1, rect[1] + rect[3] - 1, rect[2] - 2, 1, TILEMAP_FILL_OVWT_PAL);
 }
 
-void sub_0207E54C(PartyMenuStruct *partyMenu, int numItems, int selection, int state) {
+void sub_0207E54C(PartyMenu *partyMenu, int numItems, int selection, int state) {
     for (int i = 0; i < numItems; ++i) {
         if (selection == i) {
             sub_0207E3A8(partyMenu, numItems, i, state, 1);
@@ -1079,7 +1079,7 @@ void sub_0207E54C(PartyMenuStruct *partyMenu, int numItems, int selection, int s
     }
 }
 
-PartyMenuContextMenuCursor *PartyMenu_CreateContextMenuCursor(PartyMenuStruct *partyMenu, const PartyMenuContextMenu *template, int selection, HeapID heapId, int state) {
+PartyMenuContextMenuCursor *PartyMenu_CreateContextMenuCursor(PartyMenu *partyMenu, const PartyMenuContextMenu *template, int selection, HeapID heapId, int state) {
     PartyMenuContextMenuCursor *ret = AllocFromHeap(heapId, sizeof(PartyMenuContextMenuCursor));
     ret->menu = *template;
     ret->numItems = ret->menu.numItems;
@@ -1096,7 +1096,7 @@ PartyMenuContextMenuCursor *PartyMenu_CreateContextMenuCursor(PartyMenuStruct *p
     return ret;
 }
 
-void PartyMenu_CloseContextMenu(PartyMenuStruct *partyMenu, PartyMenuContextMenuCursor *cursor) {
+void PartyMenu_CloseContextMenu(PartyMenu *partyMenu, PartyMenuContextMenuCursor *cursor) {
     PartyMenu_HideContextMenu(partyMenu, cursor->numItems, cursor->state);
     FreeToHeap(cursor);
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_4 || partyMenu->args->context == PARTY_MENU_CONTEXT_SPIN_TRADE) {
@@ -1156,7 +1156,7 @@ static BOOL handlePartyContextMenuDpadInput(u8 *pSelection, int numItems, int di
     }
 }
 
-u32 PartyMenu_HandleInput_ContextMenu(PartyMenuStruct *partyMenu, PartyMenuContextMenuCursor *cursor) {
+u32 PartyMenu_HandleInput_ContextMenu(PartyMenu *partyMenu, PartyMenuContextMenuCursor *cursor) {
     PartyMenuContextButtonAnimData *animData = &partyMenu->contextMenuButtonAnim;
     BOOL dpadInputValid = FALSE;
 
@@ -1222,7 +1222,7 @@ u32 PartyMenu_HandleInput_ContextMenu(PartyMenuStruct *partyMenu, PartyMenuConte
     return LIST_NOTHING_CHOSEN;
 }
 
-u32 PartyMenu_HandleSubcontextMenuInput_TopLevel(PartyMenuStruct *partyMenu, PartyMenuContextMenuCursor *cursor) {
+u32 PartyMenu_HandleSubcontextMenuInput_TopLevel(PartyMenu *partyMenu, PartyMenuContextMenuCursor *cursor) {
     PartyMenuContextButtonAnimData *animData = &partyMenu->contextMenuButtonAnim;
     BOOL dpadInputValid = FALSE;
 

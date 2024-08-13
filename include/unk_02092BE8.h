@@ -29,7 +29,7 @@ typedef struct PokegearArgs{
     u8 matrixXCoord; //0x22
     u8 matrixYCoord; //0x23
     SaveData* saveData; //0x24
-    void *unk28; //Pointer to a Field System variable at offset 0x10C (currently unk_10C[0];)
+    void *menuInputStatePtr; //Pointer to a Field System variable at offset 0x10C (currently unk_10C[0];)
 } PokegearArgs;
 
 typedef struct UnkPokegearstruct_14{
