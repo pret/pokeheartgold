@@ -111,7 +111,8 @@ Static main
     Object asm/unk_0202C730.o
     Object src/coins.o
     Object src/save_trainer_card.o
-    Object asm/unk_0202CA24.o
+    Object src/unk_0202CA24.o
+    Object asm/unk_0202CA24_s.o
     Object src/seal_case.o
     Object src/igt.o
     Object src/sav_chatot.o
@@ -1116,6 +1117,7 @@ Overlay OVY_108
 {
     After main
     Object asm/overlay_108.o
+    Object asm/overlay_108_021E8850.o
 }
 Overlay OVY_109
 {

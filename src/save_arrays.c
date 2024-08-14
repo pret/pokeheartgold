@@ -29,7 +29,10 @@
 #include "save_special_ribbons.h"
 #include "save_rankings.h"
 #include "game_stats.h"
+#include "unk_0202CA24.h"
 
+// These macros are temporary. As the respective sources
+// are decompiled, the calls should be phased out.
 #define DECL_CHUNK(prefix) extern u32 prefix##_sizeof(void); extern void prefix##_Init(void *);
 #define DECL_CHUNK_EX(sizefn, initfn) extern u32 sizefn(void); extern void initfn(void *);
 
@@ -39,7 +42,6 @@ DECL_CHUNK(Save_Frontier)
 DECL_CHUNK_EX(sub_0202DB40, sub_0202DB44)
 DECL_CHUNK_EX(sub_0202E41C, sub_0202E424)
 DECL_CHUNK_EX(sub_0202C034, sub_0202C03C)
-DECL_CHUNK_EX(sub_0202CA24, sub_0202CA2C)
 DECL_CHUNK_EX(sub_0202EB30, sub_0202EB38)
 DECL_CHUNK_EX(sub_02031AF0, sub_02031AF4)
 DECL_CHUNK_EX(sub_0203170C, sub_02031710)

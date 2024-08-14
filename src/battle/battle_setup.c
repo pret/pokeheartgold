@@ -28,7 +28,7 @@ static void BattleSetup_SetParty(BattleSetup *setup, Party *party, int battlerId
 static void BattleSetup_SetProfile(BattleSetup *setup, PlayerProfile *profile, int battlerId);
 static void BattleSetup_SetChatotVoiceClip(BattleSetup *setup, SOUND_CHATOT *chatot, int battlerId);
 static void sub_0205230C(FieldSystem *fieldSystem, PlayerProfile *profile1, PlayerProfile *profile2);
-static Terrain sub_02052470(FieldSystem *fieldSystem, BattleBg battleBg);
+static Terrain FieldSystem_GetTerrainFromStandingTile(FieldSystem *fieldSystem, BattleBg battleBg);
 static void sub_02052504(BattleSetup *setup, FieldSystem *fieldSystem);
 
 BattleSetup *BattleSetup_New(HeapID heapId, u32 battleTypeFlags) {
@@ -180,7 +180,7 @@ static void BattleSetup_SetChatotVoiceClip(BattleSetup *setup, SOUND_CHATOT *cha
     Chatot_Copy(setup->chatot[battlerId], chatot);
 }
 
-void sub_02051D18(BattleSetup *setup, FieldSystem *fieldSystem, SaveData *saveData, u32 mapno, void *arg4, void *arg5) {
+void sub_02051D18(BattleSetup *setup, FieldSystem *fieldSystem, SaveData *saveData, u32 mapno, BagCursor *bagCursor, void *arg5) {
     PlayerProfile *profile;
     Party *party;
     Bag *bag;
@@ -240,7 +240,7 @@ void sub_02051D18(BattleSetup *setup, FieldSystem *fieldSystem, SaveData *saveDa
         setup->momsSavingsActive = FALSE;
     }
     setup->weatherType = LocalFieldData_GetWeatherType(local);
-    setup->bagCursor = arg4;
+    setup->bagCursor = bagCursor;
     setup->unk1B8 = arg5;
     setup->unk_12C = sub_0202CA44(saveData);
     setup->gameStats = Save_GameStats_Get(saveData);
@@ -481,7 +481,7 @@ static const Terrain _020FC4C0[] = {
     [BATTLE_BG_BATTLE_HALL]      = TERRAIN_BATTLE_HALL,
 };
 
-static Terrain sub_02052470(FieldSystem *fieldSystem, BattleBg battleBg) {
+static Terrain FieldSystem_GetTerrainFromStandingTile(FieldSystem *fieldSystem, BattleBg battleBg) {
     u8 behavior = GetMetatileBehaviorAt(fieldSystem, fieldSystem->location->x, fieldSystem->location->y);
 
     if (sub_0205B828(behavior)) {
@@ -521,7 +521,7 @@ static void sub_02052504(BattleSetup *setup, FieldSystem *fieldSystem) {
         setup->battleBg = BATTLE_BG_OCEAN;
     }
 
-    setup->terrain = sub_02052470(fieldSystem, setup->battleBg);
+    setup->terrain = FieldSystem_GetTerrainFromStandingTile(fieldSystem, setup->battleBg);
 }
 
 void sub_02052544(BattleSetup *setup) {

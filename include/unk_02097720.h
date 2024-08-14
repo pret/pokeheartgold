@@ -5,7 +5,7 @@
 #include "overlay_02.h"
 
 typedef struct UnkStruct_02097720 {
-    u32 unknown_0;
+    u32 state;
     u16* unknown_4;
     SafariDecorationArgs* safariDecorationArgs;
 } UnkStruct_02097720;

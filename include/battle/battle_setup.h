@@ -81,7 +81,7 @@ BattleSetup *BattleSetup_New_PalPark(HeapID heapId, int balls);
 BattleSetup *BattleSetup_New_Tutorial(HeapID heapId, FieldSystem *fieldSystem);
 void BattleSetup_Delete(BattleSetup *setup);
 void BattleSetup_AddMonToParty(BattleSetup *setup, Pokemon *mon, int battler);
-void sub_02051D18(BattleSetup *setup, FieldSystem *fieldSystem, SaveData *savedata, u32 mapno, void *arg4, void *arg5);
+void sub_02051D18(BattleSetup *setup, FieldSystem *fieldSystem, SaveData *savedata, u32 mapno, BagCursor *bagCursor, void *arg5);
 void BattleSetup_InitFromFieldSystem(BattleSetup *setup, FieldSystem *fieldSystem);
 void BattleSetup_InitForFixedLevelFacility(BattleSetup *setup, FieldSystem *fieldSystem, int level);
 void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8 *partySlots);
