@@ -14,9 +14,9 @@
 .public sub_0202C6F4
 .public sub_0202C7E0
 .public Save_FriendGroup_Get
-.public sub_0202CA44
-.public sub_0202CA8C
-.public sub_0202CA90
+.public Save_WiFiHistory_Get
+.public WifiHistory_GetPlayerCountry
+.public WiFiHistory_GetPlayerRegion
 .public sub_02034354
 .public sub_020343E4
 .public sub_02034420

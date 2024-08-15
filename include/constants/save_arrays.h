@@ -29,7 +29,7 @@
 #define SAVE_UNK_23              23
 #define SAVE_RANKINGS              24
 #define SAVE_UNK_25              25
-#define SAVE_UNK_26              26
+#define SAVE_WIFI_HISTORY              26
 #define SAVE_MYSTERY_GIFT        27
 #define SAVE_UNK_28              28
 #define SAVE_POKEATHLON_FRIENDSHIP_RECORDS              29

@@ -181,10 +181,10 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
         (SAVESIZEFN)sub_0202C034,
         (SAVEINITFN)sub_0202C03C
     }, {
-        SAVE_UNK_26,
+        SAVE_WIFI_HISTORY,
         0,
-        (SAVESIZEFN)sub_0202CA24,
-        (SAVEINITFN)sub_0202CA2C
+        (SAVESIZEFN)Save_WiFiHistory_sizeof,
+        (SAVEINITFN)Save_WiFiHistory_Init
     }, {
         SAVE_MYSTERY_GIFT,
         0,

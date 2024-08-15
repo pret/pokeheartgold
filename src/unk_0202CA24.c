@@ -1,92 +1,93 @@
+#include "constants/geonet_globe.h"
 #include "global.h"
 #include "unk_0202CA24.h"
 
-struct SaveUnk26 {
-    int unk_000;  // unused but type needed for alignment
-    u8 unk_004;
-    u8 unk_005;
-    u8 unk_006;
-    u8 unk_007[255 * 16];  // does not match as a 2d array
+struct SaveWiFiHistory {
+    u32 unk_000;  // unused but type needed for alignment
+    u8 seenNotJapanese;
+    u8 country;
+    u8 region;
+    u8 seenLocations[255 * 16];  // does not match as a 2d array
 };  // size: 0xFF8
 
-u32 sub_0202CA24(void) {
-    return sizeof(SaveUnk26);
+u32 Save_WiFiHistory_sizeof(void) {
+    return sizeof(SaveWiFiHistory);
 }
 
-void sub_0202CA2C(SaveUnk26 *saveUnk26) {
-    MI_CpuClear32(saveUnk26, sizeof(SaveUnk26));
-    SaveSubstruct_UpdateCRC(SAVE_UNK_26);
+void Save_WiFiHistory_Init(SaveWiFiHistory *wifiHistory) {
+    MI_CpuClear32(wifiHistory, sizeof(SaveWiFiHistory));
+    SaveSubstruct_UpdateCRC(SAVE_WIFI_HISTORY);
 }
 
-SaveUnk26 *sub_0202CA44(SaveData *saveData) {
-    SaveSubstruct_AssertCRC(SAVE_UNK_26);
-    return (SaveUnk26 *)SaveArray_Get(saveData, SAVE_UNK_26);
+SaveWiFiHistory *Save_WiFiHistory_Get(SaveData *saveData) {
+    SaveSubstruct_AssertCRC(SAVE_WIFI_HISTORY);
+    return (SaveWiFiHistory *)SaveArray_Get(saveData, SAVE_WIFI_HISTORY);
 }
 
-void sub_0202CA58(SaveUnk26 *saveUnk26, int a1, int a2) {
-    GF_ASSERT(a1 < 256);
-    GF_ASSERT(a2 < 64);
-    saveUnk26->unk_005 = a1;
-    saveUnk26->unk_006 = a2;
-    sub_0202CAE4(saveUnk26, a1, a2, 3);
-    SaveSubstruct_UpdateCRC(SAVE_UNK_26);
+void WiFiHistory_SetPlayerGlobeInfo(SaveWiFiHistory *wifiHistory, int country, int region) {
+    GF_ASSERT(country < 256);
+    GF_ASSERT(region < 64);
+    wifiHistory->country = country;
+    wifiHistory->region = region;
+    WiFiHistory_SetLocationSeenState(wifiHistory, country, region, 3);
+    SaveSubstruct_UpdateCRC(SAVE_WIFI_HISTORY);
 }
 
-u8 sub_0202CA8C(SaveUnk26 *saveUnk26) {
-    return saveUnk26->unk_005;
+u8 WifiHistory_GetPlayerCountry(SaveWiFiHistory *wifiHistory) {
+    return wifiHistory->country;
 }
 
-u8 sub_0202CA90(SaveUnk26 *saveUnk26) {
-    return saveUnk26->unk_006;
+u8 WiFiHistory_GetPlayerRegion(SaveWiFiHistory *wifiHistory) {
+    return wifiHistory->region;
 }
 
-int sub_0202CA94(SaveUnk26 *saveUnk26, int a1, int a2) {
-    GF_ASSERT(a1 < 256);
-    GF_ASSERT(a2 < 64);
-    if (a1 == 0) {
+int WiFiHistory_GetLocationSeenState(SaveWiFiHistory *wifiHistory, int country, int region) {
+    GF_ASSERT(country < 256);
+    GF_ASSERT(region < 64);
+    if (country == 0) {
         return 0;
     }
 
-    return (saveUnk26->unk_007[(a1 - 1) * 16 + a2 / 4] >> ((a2 % 4) * 2)) & 3;
+    return (wifiHistory->seenLocations[(country - 1) * 16 + region / 4] >> ((region % 4) * 2)) & 3;
 }
 
-void sub_0202CAE4(SaveUnk26 *saveUnk26, int a1, int a2, int a3) {
-    GF_ASSERT(a3 < 4);
-    GF_ASSERT(a1 < 256);
-    GF_ASSERT(a2 < 64);
-    if (a1 != 0) {
-        u8 *pVal = &saveUnk26->unk_007[(a1 - 1) * 16 + a2 / 4];
-        *pVal &= (3 << ((a2 % 4) * 2)) ^ 0xFF;
-        *pVal |= a3 << ((a2 % 4) * 2);
-        if (a1 != 103) {
-            sub_0202CB60(saveUnk26, 1);
+void WiFiHistory_SetLocationSeenState(SaveWiFiHistory *wifiHistory, int country, int region, int state) {
+    GF_ASSERT(state < 4);
+    GF_ASSERT(country < 256);
+    GF_ASSERT(region < 64);
+    if (country != 0) {
+        u8 *pVal = &wifiHistory->seenLocations[(country - 1) * 16 + region / 4];
+        *pVal &= (3 << ((region % 4) * 2)) ^ 0xFF;
+        *pVal |= state << ((region % 4) * 2);
+        if (country != COUNTRY_JAPAN) {
+            WiFiHistory_SetNonJapaneseFlag(wifiHistory, TRUE);
         }
-        SaveSubstruct_UpdateCRC(SAVE_UNK_26);
+        SaveSubstruct_UpdateCRC(SAVE_WIFI_HISTORY);
     }
 }
 
-u8 sub_0202CB5C(SaveUnk26 *saveUnk26) {
-    return saveUnk26->unk_004;
+u8 WiFiHistory_GetNonJapaneseFlag(SaveWiFiHistory *wifiHistory) {
+    return wifiHistory->seenNotJapanese;
 }
 
-void sub_0202CB60(SaveUnk26 *saveUnk26, int a1) {
-    saveUnk26->unk_004 = a1;
-    SaveSubstruct_UpdateCRC(SAVE_UNK_26);
+void WiFiHistory_SetNonJapaneseFlag(SaveWiFiHistory *wifiHistory, int flag) {
+    wifiHistory->seenNotJapanese = flag;
+    SaveSubstruct_UpdateCRC(SAVE_WIFI_HISTORY);
 }
 
-void sub_0202CB6C(SaveUnk26 *saveUnk26) {
+void WiFiHistory_UpgradeAllLocationsState(SaveWiFiHistory *wifiHistory) {
     int i;
     int j;
-    u8 r2;
+    u8 byte;
     for (i = 0; i < 255 * 16; ++i) {
-        r2 = saveUnk26->unk_007[i];
+        byte = wifiHistory->seenLocations[i];
         for (j = 0; j < 8; j += 2) {
-            if (((r2 >> j) & 3) == 1) {
-                r2 &= (3 << j) ^ 0xFF;
-                r2 |= (2 << j);
+            if (((byte >> j) & 3) == 1) {
+                byte &= (3 << j) ^ 0xFF;
+                byte |= (2 << j);
             }
         }
-        saveUnk26->unk_007[i] = r2;
+        wifiHistory->seenLocations[i] = byte;
     }
-    SaveSubstruct_UpdateCRC(SAVE_UNK_26);
+    SaveSubstruct_UpdateCRC(SAVE_WIFI_HISTORY);
 }

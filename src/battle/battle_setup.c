@@ -242,7 +242,7 @@ void sub_02051D18(BattleSetup *setup, FieldSystem *fieldSystem, SaveData *saveDa
     setup->weatherType = LocalFieldData_GetWeatherType(local);
     setup->bagCursor = bagCursor;
     setup->unk1B8 = arg5;
-    setup->unk_12C = sub_0202CA44(saveData);
+    setup->unk_12C = Save_WiFiHistory_Get(saveData);
     setup->gameStats = Save_GameStats_Get(saveData);
     setup->palPad = Save_PalPad_Get(saveData);
     setup->mapNumber = mapno;
@@ -294,7 +294,7 @@ void BattleSetup_InitForFixedLevelFacility(BattleSetup *setup, FieldSystem *fiel
     setup->timeOfDay = Field_GetTimeOfDay(fieldSystem);
     setup->bagCursor = fieldSystem->bagCursor;
     setup->unk1B8 = fieldSystem->unkB0;
-    setup->unk_12C = sub_0202CA44(fieldSystem->saveData);
+    setup->unk_12C = Save_WiFiHistory_Get(fieldSystem->saveData);
     setup->gameStats = Save_GameStats_Get(fieldSystem->saveData);
     setup->palPad = Save_PalPad_Get(fieldSystem->saveData);
     setup->mapNumber = fieldSystem->location->mapId;
@@ -365,7 +365,7 @@ void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8
     setup->timeOfDay = Field_GetTimeOfDay(fieldSystem);
     setup->bagCursor = fieldSystem->bagCursor;
     setup->unk1B8 = fieldSystem->unkB0;
-    setup->unk_12C = sub_0202CA44(fieldSystem->saveData);
+    setup->unk_12C = Save_WiFiHistory_Get(fieldSystem->saveData);
     setup->gameStats = Save_GameStats_Get(fieldSystem->saveData);
     setup->mapNumber = fieldSystem->location->mapId;
     setup->palPad = Save_PalPad_Get(fieldSystem->saveData);

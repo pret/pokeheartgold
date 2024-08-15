@@ -244,115 +244,115 @@ sLocationGmmDat_UnitedStates:
 sLocationGmmDat:
 	; Countries (130 options)
 	.byte 0x00, 0x12
-	.short 0x031E ; msg_0798
+	.short 0x031E ; NARC_msg_msg_0798_bin
 	.word sLocationGmmDat_World
 	.word 0x00000082
 
 	; Argentina (24 districts)
 	.byte 0x09, 0x00
-	.short 0x030C ; msg_0780
+	.short 0x030C ; NARC_msg_msg_0780_bin
 	.word sLocationGmmDat_Argentina
 	.word 0x00000018
 
 	; Australia (7 states)
 	.byte 0x0C, 0x01
-	.short 0x030D ; msg_0781
+	.short 0x030D ; NARC_msg_msg_0781_bin
 	.word sLocationGmmDat_Australia
 	.word 0x00000007
 
 	; Brazil (27 districts)
 	.byte 0x1C, 0x02
-	.short 0x030E ; msg_0782
+	.short 0x030E ; NARC_msg_msg_0782_bin
 	.word sLocationGmmDat_Brazil
 	.word 0x0000001B
 
 	; Canada (13 provinces)
 	.byte 0x24, 0x03
-	.short 0x030F ; msg_0783
+	.short 0x030F ; NARC_msg_msg_0783_bin
 	.word sLocationGmmDat_Canada
 	.word 0x0000000D
 
 	; China (31 states)
 	.byte 0x2B, 0x04
-	.short 0x0310 ; msg_0784
+	.short 0x0310 ; NARC_msg_msg_0784_bin
 	.word sLocationGmmDat_China
 	.word 0x0000001F
 
 	; Deutschland (16 states)
 	.byte 0x4D, 0x05
-	.short 0x0311 ; msg_0785
+	.short 0x0311 ; NARC_msg_msg_0785_bin
 	.word sLocationGmmDat_Germany
 	.word 0x00000010
 
 	; España (17 states)
 	.byte 0xC1, 0x06
-	.short 0x0312 ; msg_0786
+	.short 0x0312 ; NARC_msg_msg_0786_bin
 	.word sLocationGmmDat_Spain
 	.word 0x00000011
 
 	; Finland (6 states)
 	.byte 0x46, 0x07
-	.short 0x0313 ; msg_0787
+	.short 0x0313 ; NARC_msg_msg_0787_bin
 	.word sLocationGmmDat_Finland
 	.word 0x00000006
 
 	; France (22 states)
 	.byte 0x47, 0x08
-	.short 0x0314 ; msg_0788
+	.short 0x0314 ; NARC_msg_msg_0788_bin
 	.word sLocationGmmDat_France
 	.word 0x00000016
 
 	; Great Britain (12 regions)
 	.byte 0xDB, 0x09
-	.short 0x0315 ; msg_0789
+	.short 0x0315 ; NARC_msg_msg_0789_bin
 	.word sLocationGmmDat_GreatBritain
 	.word 0x0000000C
 
 	; India (35 states)
 	.byte 0x5E, 0x0A
-	.short 0x0316 ; msg_0790
+	.short 0x0316 ; NARC_msg_msg_0790_bin
 	.word sLocationGmmDat_India
 	.word 0x00000023
 
 	; Italy (20 states)
 	.byte 0x65, 0x0B
-	.short 0x0317 ; msg_0791
+	.short 0x0317 ; NARC_msg_msg_0791_bin
 	.word sLocationGmmDat_Italy
 	.word 0x00000014
 
 	; Japan (50 prefectures)
 	.byte 0x67, 0x0C
-	.short 0x0318 ; msg_0792
+	.short 0x0318 ; NARC_msg_msg_0792_bin
 	.word sLocationGmmDat_Japan
 	.word 0x00000032
 
 	; Norway (20 states)
 	.byte 0x9C, 0x0D
-	.short 0x0319 ; msg_0793
+	.short 0x0319 ; NARC_msg_msg_0793_bin
 	.word sLocationGmmDat_Norway
 	.word 0x00000014
 
 	; Poland (16 provinces)
 	.byte 0xA6, 0x0E
-	.short 0x031A ; msg_0794
+	.short 0x031A ; NARC_msg_msg_0794_bin
 	.word sLocationGmmDat_Poland
 	.word 0x00000010
 
 	; Russia (7 districts)
 	.byte 0xAC, 0x0F
-	.short 0x031B ; msg_0795
+	.short 0x031B ; NARC_msg_msg_0795_bin
 	.word sLocationGmmDat_Russia
 	.word 0x00000007
 
 	; Sweden (24 provinces)
 	.byte 0xC7, 0x10
-	.short 0x031C ; msg_0796
+	.short 0x031C ; NARC_msg_msg_0796_bin
 	.word sLocationGmmDat_Sweden
 	.word 0x00000018
 
 	; United States (50 states + DC)
 	.byte 0xDC, 0x11
-	.short 0x031D ; msg_0797
+	.short 0x031D ; NARC_msg_msg_0797_bin
 	.word sLocationGmmDat_UnitedStates
 	.word 0x00000033
 

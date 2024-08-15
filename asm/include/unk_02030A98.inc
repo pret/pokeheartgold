@@ -24,9 +24,9 @@
 .public Save_Misc_Const_Get
 .public SaveMisc_GetFavoriteMon
 .public SaveMisc_GetBattleGreeting
-.public sub_0202CA44
-.public sub_0202CA8C
-.public sub_0202CA90
+.public Save_WiFiHistory_Get
+.public WifiHistory_GetPlayerCountry
+.public WiFiHistory_GetPlayerRegion
 .public sub_0202D240
 .public sub_0202D254
 .public sub_0202D274

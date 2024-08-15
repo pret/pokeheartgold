@@ -14,7 +14,7 @@ sub_02069528: ; 0x02069528
 	bl Save_PlayerData_GetProfileAddr
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0202CA44
+	bl Save_WiFiHistory_Get
 	add r5, r0, #0
 	add r0, r6, #0
 	bl Save_FrontierData_Get
@@ -45,12 +45,12 @@ sub_02069528: ; 0x02069528
 	add r0, #0xb9
 	strb r1, [r0]
 	add r0, r5, #0
-	bl sub_0202CA8C
+	bl WifiHistory_GetPlayerCountry
 	add r1, r7, #0
 	add r1, #0xba
 	strb r0, [r1]
 	add r0, r5, #0
-	bl sub_0202CA90
+	bl WiFiHistory_GetPlayerRegion
 	add r1, r7, #0
 	add r1, #0xbb
 	strb r0, [r1]

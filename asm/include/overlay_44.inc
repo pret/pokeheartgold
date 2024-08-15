@@ -216,9 +216,9 @@
 .public sub_0202C46C
 .public sub_0202C4B0
 .public sub_0202C6F4
-.public sub_0202CA44
-.public sub_0202CA8C
-.public sub_0202CA90
+.public Save_WiFiHistory_Get
+.public WifiHistory_GetPlayerCountry
+.public WiFiHistory_GetPlayerRegion
 .public Save_Frontier_GetStatic
 .public FrontierSave_GetStat
 .public sub_02031188

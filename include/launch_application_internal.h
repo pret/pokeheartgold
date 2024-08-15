@@ -74,7 +74,7 @@ typedef struct WirelessTradeSelectMonArgs {
     Party *party;
     SavePalPad *palPad;
     SaveData *saveData;
-    SaveUnk26 *unk14;
+    SaveWiFiHistory *unk14;
     Options *options;
     GAME_STATS *gameStats;
     Pokedex *pokedex;

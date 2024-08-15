@@ -25,16 +25,16 @@ ov48_02258800: ; 0x02258800
 	add r4, r0, #0
 	bl memset
 	ldr r0, [r5, #4]
-	bl sub_0202CA44
+	bl Save_WiFiHistory_Get
 	str r0, [r4, #0xc]
 	ldr r0, [r5, #4]
 	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #0xc]
-	bl sub_0202CA8C
+	bl WifiHistory_GetPlayerCountry
 	str r0, [r4, #0x14]
 	ldr r0, [r4, #0xc]
-	bl sub_0202CA90
+	bl WiFiHistory_GetPlayerRegion
 	str r0, [r4, #0x18]
 	ldr r0, [r5, #8]
 	add r1, r5, #0

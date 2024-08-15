@@ -3,18 +3,18 @@
 
 #include "save.h"
 
-typedef struct SaveUnk26 SaveUnk26;
+typedef struct SaveWiFiHistory SaveWiFiHistory;
 
-u32 sub_0202CA24(void);
-void sub_0202CA2C(SaveUnk26 *saveUnk26);
-SaveUnk26 *sub_0202CA44(SaveData *saveData);
-void sub_0202CA58(SaveUnk26 *saveUnk26, int a1, int a2);
-u8 sub_0202CA8C(SaveUnk26 *saveUnk26);
-u8 sub_0202CA90(SaveUnk26 *saveUnk26);
-int sub_0202CA94(SaveUnk26 *saveUnk26, int a1, int a2);
-void sub_0202CAE4(SaveUnk26 *saveUnk26, int a1, int a2, int a3);
-u8 sub_0202CB5C(SaveUnk26 *saveUnk26);
-void sub_0202CB60(SaveUnk26 *saveUnk26, int a1);
-void sub_0202CB6C(SaveUnk26 *saveUnk26);
+u32 Save_WiFiHistory_sizeof(void);
+void Save_WiFiHistory_Init(SaveWiFiHistory *saveUnk26);
+SaveWiFiHistory *Save_WiFiHistory_Get(SaveData *saveData);
+void WiFiHistory_SetPlayerGlobeInfo(SaveWiFiHistory *saveUnk26, int a1, int a2);
+u8 WifiHistory_GetPlayerCountry(SaveWiFiHistory *saveUnk26);
+u8 WiFiHistory_GetPlayerRegion(SaveWiFiHistory *saveUnk26);
+int WiFiHistory_GetLocationSeenState(SaveWiFiHistory *saveUnk26, int a1, int a2);
+void WiFiHistory_SetLocationSeenState(SaveWiFiHistory *saveUnk26, int a1, int a2, int a3);
+u8 WiFiHistory_GetNonJapaneseFlag(SaveWiFiHistory *saveUnk26);
+void WiFiHistory_SetNonJapaneseFlag(SaveWiFiHistory *saveUnk26, int a1);
+void WiFiHistory_UpgradeAllLocationsState(SaveWiFiHistory *saveUnk26);
 
 #endif //POKEHEARTGOLD_UNK_0202CA24_H

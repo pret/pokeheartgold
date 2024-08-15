@@ -55,17 +55,17 @@ _021E5960:
 	add r0, r4, #0
 	bl OverlayManager_GetArgs
 	add r4, r0, #0
-	bl sub_0202CA44
+	bl Save_WiFiHistory_Get
 	str r0, [r5, #4]
-	bl sub_0202CA8C
+	bl WifiHistory_GetPlayerCountry
 	ldr r1, _021E5A18 ; =0x0000C324
 	str r0, [r5, r1]
 	ldr r0, [r5, #4]
-	bl sub_0202CA90
+	bl WiFiHistory_GetPlayerRegion
 	ldr r1, _021E5A1C ; =0x0000C328
 	str r0, [r5, r1]
 	ldr r0, [r5, #4]
-	bl sub_0202CB5C
+	bl WiFiHistory_GetNonJapaneseFlag
 	ldr r1, _021E5A20 ; =0x0000C334
 	str r0, [r5, r1]
 	add r0, r4, #0
@@ -591,7 +591,7 @@ _021E5DF8:
 	ldr r1, [r4, r2]
 	add r2, r2, #4
 	ldr r2, [r4, r2]
-	bl sub_0202CA58
+	bl WiFiHistory_SetPlayerGlobeInfo
 	ldr r0, _021E6040 ; =0x0000C32C
 	add r1, r0, #0
 	ldr r2, [r4, r0]
@@ -1142,7 +1142,7 @@ _021E6280:
 	ldrh r1, [r2, #0x10]
 	ldrh r2, [r2, #0x14]
 	ldr r0, [r4, #4]
-	bl sub_0202CA94
+	bl WiFiHistory_GetLocationSeenState
 	add r2, r4, r5
 	strh r0, [r2, #0x38]
 	add r0, sp, #0x38

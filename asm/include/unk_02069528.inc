@@ -5,9 +5,9 @@
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetTrainerGender
 .public PlayerProfile_GetAvatar
-.public sub_0202CA44
-.public sub_0202CA8C
-.public sub_0202CA90
+.public Save_WiFiHistory_Get
+.public WifiHistory_GetPlayerCountry
+.public WiFiHistory_GetPlayerRegion
 .public sub_0202D4DC
 .public sub_0202D564
 .public sub_0202D5DC

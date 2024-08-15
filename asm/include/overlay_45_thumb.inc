@@ -117,9 +117,9 @@
 .public Save_Pokedex_Get
 .public sub_0202C08C
 .public sub_0202C6F4
-.public sub_0202CA44
-.public sub_0202CA8C
-.public sub_0202CA90
+.public Save_WiFiHistory_Get
+.public WifiHistory_GetPlayerCountry
+.public WiFiHistory_GetPlayerRegion
 .public Save_GameStats_Get
 .public GameStats_Inc
 .public sub_020318E8

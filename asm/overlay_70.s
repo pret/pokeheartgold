@@ -15813,12 +15813,12 @@ _0223F730:
 	strh r0, [r5, r1]
 	ldr r0, [r4]
 	ldr r0, [r0, #0x18]
-	bl sub_0202CA8C
+	bl WifiHistory_GetPlayerCountry
 	ldr r1, _0223F798 ; =0x0000011E
 	strb r0, [r5, r1]
 	ldr r0, [r4]
 	ldr r0, [r0, #0x18]
-	bl sub_0202CA90
+	bl WiFiHistory_GetPlayerRegion
 	ldr r1, _0223F79C ; =0x0000011F
 	strb r0, [r5, r1]
 	ldr r0, [r4]

@@ -1247,7 +1247,7 @@ _0222A83C: .word 0x00000127
 	thumb_func_start ov80_0222A840
 ov80_0222A840: ; 0x0222A840
 	push {r3, lr}
-	bl sub_0202CA44
+	bl Save_WiFiHistory_Get
 	bl sub_02039F68
 	pop {r3, pc}
 	thumb_func_end ov80_0222A840

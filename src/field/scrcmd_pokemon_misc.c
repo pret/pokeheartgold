@@ -684,7 +684,7 @@ BOOL ScrCmd_700(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_BattleTowerSetUpMultiBattle(ScriptContext *ctx) {
-    void *data = sub_0202CA44(ctx->fieldSystem->saveData);
+    void *data = Save_WiFiHistory_Get(ctx->fieldSystem->saveData);
     sub_02039F68(data);
     return TRUE;
 }

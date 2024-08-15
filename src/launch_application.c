@@ -868,7 +868,7 @@ static void InitWirelessTradeSelectMonArgs(WirelessTradeSelectMonArgs *args, Fie
     args->profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
     args->party = SaveArray_Party_Get(fieldSystem->saveData);
     args->palPad = SaveArray_Get(fieldSystem->saveData, SAVE_PALPAD);
-    args->unk14 = sub_0202CA44(fieldSystem->saveData);
+    args->unk14 = Save_WiFiHistory_Get(fieldSystem->saveData);
     args->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     args->pokedex = Save_Pokedex_Get(fieldSystem->saveData);
     args->natDexEnabled = SaveArray_IsNatDexEnabled(fieldSystem->saveData);
@@ -1178,7 +1178,7 @@ void sub_0203F844(FieldSystem *fieldSystem, u16 a1) {
     args->pcStorage = SaveArray_PCStorage_Get(fieldSystem->saveData);
     args->pokedex = Save_Pokedex_Get(fieldSystem->saveData);
     args->unk14 = sub_0202C6F4(fieldSystem->saveData);
-    args->unk18 = sub_0202CA44(fieldSystem->saveData);
+    args->unk18 = Save_WiFiHistory_Get(fieldSystem->saveData);
     args->profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
     args->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     args->gameStats = Save_GameStats_Get(fieldSystem->saveData);

@@ -39,7 +39,7 @@
 .public Save_FriendGroup_Get
 .public sub_0202C88C
 .public Save_TrainerCard_Get
-.public sub_0202CA44
+.public Save_WiFiHistory_Get
 .public Save_GameStats_Get
 .public GameStats_Inc
 .public GameStats_GetCapped

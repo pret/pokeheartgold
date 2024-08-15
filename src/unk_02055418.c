@@ -78,7 +78,7 @@ void sub_02055508(FieldSystem* fieldSystem, int unkA) {
     Save_LCRNGAdvanceLotoID(fieldSystem->saveData, (u16) unkA);
     sub_02066D60(fieldSystem->saveData);
     sub_020674BC(fieldSystem->saveData);
-    sub_0202CB6C(sub_0202CA44(fieldSystem->saveData));
+    WiFiHistory_UpgradeAllLocationsState(Save_WiFiHistory_Get(fieldSystem->saveData));
     sub_020556B8(fieldSystem);
     sub_0202F294(SaveData_GetMomsSavingsAddr(fieldSystem->saveData), unkA);
     if (!unkFlag) {
