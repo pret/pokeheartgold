@@ -112,7 +112,6 @@ Static main
     Object src/coins.o
     Object src/save_trainer_card.o
     Object src/unk_0202CA24.o
-    Object asm/unk_0202CA24_s.o
     Object src/seal_case.o
     Object src/igt.o
     Object src/sav_chatot.o
