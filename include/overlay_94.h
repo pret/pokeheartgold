@@ -13,8 +13,8 @@ typedef struct UnkStruct_Overlay_94_B {
     u8 unk27;
 } UnkStruct_Overlay_94_B;
 
-void PartyMenu_InitIconFormChangeData(PartyMenu* unkPtr);
-BOOL PartyMenu_AnimateIconFormChange(PartyMenu* unkPtr);
+void PartyMenu_InitIconFormChangeData(PartyMenu* partyMenu);
+BOOL PartyMenu_AnimateIconFormChange(PartyMenu* partyMenu);
 
 #endif //POKEHEARTGOLD_OVY_94_H
 
