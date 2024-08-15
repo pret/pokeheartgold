@@ -155,10 +155,10 @@
 .public Bag_HasItem
 .public Save_Bag_Get
 .public sub_0207CAAC
-.public RatioToInt
-.public sub_020880B0
+.public CalculateHpBarPixelsLength
+.public CalculateHpBarColor
 .public sub_020880CC
-.public sub_0208AD64
+.public Pokemon_GetStatusIconId
 .public NNS_G2dGetUnpackedPaletteData
 .public G2x_SetBlendAlpha_
 .public MIi_CpuClear32

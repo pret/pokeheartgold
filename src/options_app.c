@@ -1181,17 +1181,17 @@ static void OptionsApp_SetupSpriteRenderer(OptionsApp_Data *data) {
     data->spriteRenderer = SpriteRenderer_Create(data->heapId);
     data->spriteGfxHandler = SpriteRenderer_CreateGfxHandler(data->spriteRenderer);
 
-    const Unk122_021E92FC unk1 = {
-        .unk0 = 0,
-        .unk4 = 0x80,
-        .unk8 = 0,
-        .unkC = 0x20,
-        .unk10 = 0,
-        .unk14 = 0x80,
-        .unk18 = 0,
-        .unk1C = 0x20,
+    const OamManagerParam unk1 = {
+        .fromOBJmain = 0,
+        .numOBJmain = 128,
+        .fromAffineMain = 0,
+        .numAffineMain = 32,
+        .fromOBJsub = 0,
+        .numOBJsub = 128,
+        .fromAffineSub = 0,
+        .numAffineSub = 32,
     };
-    const Unk122_021E92D0 unk2 = {
+    const OamCharTransferParam unk2 = {
         .maxTasks = 9,
         .sizeMain = 0x400,
         .sizeSub = 0x400,

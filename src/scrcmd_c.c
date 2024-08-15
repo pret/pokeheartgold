@@ -30,7 +30,7 @@
 #include "unk_02054648.h"
 #include "metatile_behavior.h"
 #include "unk_02055418.h"
-#include "unk_02078E30.h"
+#include "party_menu.h"
 #include "unk_020932A4.h"
 #include "unk_02092BE8.h"
 #include "unk_02097024.h"
@@ -1604,14 +1604,14 @@ BOOL ScrCmd_PartySelectUI(ScriptContext *ctx) {
 
 BOOL ScrCmd_566(ScriptContext *ctx) { //todo: trade screen
     PartyMenuArgs **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *partyMenu = PartyMenu_LaunchApp_Unk3(HEAP_ID_32, ctx->fieldSystem);
+    *partyMenu = PartyMenu_LaunchApp_InGameTrade(HEAP_ID_32, ctx->fieldSystem);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
 
 BOOL ScrCmd_350(ScriptContext *ctx) { //todo: union pokemon selection
     PartyMenuArgs **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *partyMenu = SelectPartyMonAndLearnMove(ctx->fieldSystem->taskman, HEAP_ID_32);
+    *partyMenu = TaskManager_LaunchPartyMenu_UnionRoomBattleSelect(ctx->fieldSystem->taskman, HEAP_ID_32);
     return TRUE;
 }
 
@@ -1640,9 +1640,9 @@ BOOL ScrCmd_635(ScriptContext *ctx) {
     if (partySlot == 7) {
         *r5 = 255;
     } else if (partySlot == 6) {
-        *r5 = partyMenu->unk_30[0];
+        *r5 = partyMenu->selectedOrder[0];
         (*r5)--;
-        *r6 = partyMenu->unk_30[1];
+        *r6 = partyMenu->selectedOrder[1];
         if (*r6 != 0) {
             (*r6)--;
         }
@@ -1663,11 +1663,11 @@ BOOL ScrCmd_639(ScriptContext *ctx) {
     if (partySlot == 7) {
         *r5 = 255;
     } else if (partySlot == 6) {
-        *r5 = partyMenu->unk_30[0];
+        *r5 = partyMenu->selectedOrder[0];
         (*r5)--;
-        *sp0 = partyMenu->unk_30[1];
+        *sp0 = partyMenu->selectedOrder[1];
         (*sp0)--;
-        *r7 = partyMenu->unk_30[2];
+        *r7 = partyMenu->selectedOrder[2];
         if (*r7 != 0) {
             (*r7)--;
         }
@@ -1688,11 +1688,11 @@ BOOL ScrCmd_645(ScriptContext *ctx) {
     if (partySlot == 7) {
         *r5 = 255;
     } else if (partySlot == 6) {
-        *r5 = partyMenu->unk_30[0];
+        *r5 = partyMenu->selectedOrder[0];
         (*r5)--;
-        *sp0 = partyMenu->unk_30[1];
+        *sp0 = partyMenu->selectedOrder[1];
         (*sp0)--;
-        *r7 = partyMenu->unk_30[2];
+        *r7 = partyMenu->selectedOrder[2];
         if (*r7 != 0) {
             (*r7)--;
         }
@@ -2123,7 +2123,7 @@ BOOL ScrCmd_NicknameInput(ScriptContext *ctx) {
     } else {
         mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), partyPos);
     }
-    GetMonData(mon, MON_DATA_NICKNAME, nickname);
+    GetMonData(mon, MON_DATA_NICKNAME_FLAT, nickname);
     var_ret = ScriptGetVarPointer(ctx);
     species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     CallTask_NamingScreen(ctx->taskman, NAME_SCREEN_POKEMON, species, POKEMON_NAME_LENGTH, partyPos, nickname, var_ret);

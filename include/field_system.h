@@ -164,7 +164,7 @@ struct FieldSystem {
     FollowMon followMon; // E4
     u8 unk104[4];
     FieldSystemUnk108 *unk108;
-    BOOL unk_10C;
+    BOOL menuInputState;  // Tracks whether the last menu input was touch or keypad
     u8 unk_110;
     u8 unk_111[3];
     GearPhoneRingManager *unk114;

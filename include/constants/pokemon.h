@@ -275,10 +275,10 @@
 #define MON_DATA_RESERVED_114                   114 // Plat
 #define MON_DATA_HGSS_EGG_MET_LOCATION          115
 #define MON_DATA_HGSS_MET_LOCATION              116
-#define MON_DATA_NICKNAME                       117
-#define MON_DATA_NICKNAME_2                     118 // ???
-#define MON_DATA_NICKNAME_3                     119 // ???
-#define MON_DATA_NICKNAME_4                     120
+#define MON_DATA_NICKNAME_FLAT                  117
+#define MON_DATA_NICKNAME_FLAT_COMPARE          118
+#define MON_DATA_NICKNAME_STRING                119
+#define MON_DATA_NICKNAME_STRING_COMPARE        120
 #define MON_DATA_UNK_121                        121
 #define MON_DATA_GAME_VERSION                   122
 #define MON_DATA_COOL_RIBBON                    123
@@ -334,7 +334,7 @@
 #define MON_DATA_SANITY_IS_EGG                  173
 #define MON_DATA_SPECIES_OR_EGG                 174 // If the Pokémon is in an Egg, return SPECIES_EGG.
 #define MON_DATA_IVS_WORD                       175
-#define MON_DATA_UNK_176                        176
+#define MON_DATA_NO_PRINT_GENDER                176
 #define MON_DATA_TYPE_1                         177
 #define MON_DATA_TYPE_2                         178
 #define MON_DATA_SPECIES_NAME                   179
@@ -346,6 +346,8 @@
 #define MON_DATA_SHINY_LEAF_E                   185
 #define MON_DATA_SHINY_LEAF_CROWN               186
 #define MON_DATA_MOOD                           187
+
+#define MON_DATA_NICKNAME (MON_DATA_NICKNAME_FLAT)
 
 #define OT_ID_PLAYER_ID       0
 #define OT_ID_PRESET          1

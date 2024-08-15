@@ -362,7 +362,7 @@ static BOOL TouchSaveApp_GetSaveConfirmation(TouchSaveAppData *data) {
 static BOOL TouchSaveApp_HandleSaveConfirmation(TouchSaveAppData *data) {
     switch (YesNoPrompt_HandleInputForSave(data->yesNoPrompt)) {
         case YESNORESPONSE_YES:
-            ov30_0225DC00(&data->fieldSystem->unk_10C, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
+            ov30_0225DC00(&data->fieldSystem->menuInputState, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
             YesNoPrompt_Destroy(data->yesNoPrompt);
             if (Save_FileExists(data->fieldSystem->saveData) == TRUE) {
                 data->state = TOUCHSAVEAPP_STATE_PRINT_OVERWRITE_MESSAGE;
@@ -371,7 +371,7 @@ static BOOL TouchSaveApp_HandleSaveConfirmation(TouchSaveAppData *data) {
             }
             break;
         case YESNORESPONSE_NO:
-            ov30_0225DC00(&data->fieldSystem->unk_10C, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
+            ov30_0225DC00(&data->fieldSystem->menuInputState, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
             YesNoPrompt_Destroy(data->yesNoPrompt);
             return TRUE;
         default:  // clang(-Wswitch)
@@ -400,12 +400,12 @@ static BOOL TouchSaveApp_GetOverwriteConfirmation(TouchSaveAppData *data) {
 static BOOL TouchSaveApp_HandleOverwriteConfirmation(TouchSaveAppData *data) {
     switch (YesNoPrompt_HandleInputForSave(data->yesNoPrompt)) {
         case YESNORESPONSE_YES:
-            ov30_0225DC00(&data->fieldSystem->unk_10C, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
+            ov30_0225DC00(&data->fieldSystem->menuInputState, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
             YesNoPrompt_Destroy(data->yesNoPrompt);
             data->state = TOUCHSAVEAPP_STATE_PRINT_SAVING_MESSAGE;
             break;
         case YESNORESPONSE_NO:
-            ov30_0225DC00(&data->fieldSystem->unk_10C, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
+            ov30_0225DC00(&data->fieldSystem->menuInputState, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
             YesNoPrompt_Destroy(data->yesNoPrompt);
             return TRUE;
         default:  // clang(-Wswitch)

@@ -24,7 +24,7 @@
 #include "unk_0204A3F4.h"
 #include "unk_0205BB1C.h"
 #include "unk_0205BFF0.h"
-#include "unk_02078E30.h"
+#include "party_menu.h"
 #include "unk_02088288.h"
 #include "unk_02091564.h"
 
@@ -38,7 +38,7 @@ typedef struct UnkStruct_0204FBDC {
     u32 state;
     u8 challengeType;
     u8 partySlot;
-    u8 unk06[3];
+    u8 selectedOrder[3];
     u8 filler[3];
     void **unk0c;
 } UnkStruct_0204FBDC;
@@ -202,19 +202,19 @@ static u32 sub_0204FC78(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID
     partyMenu->mailbox = Save_Mailbox_Get(fieldSystem->saveData);
     partyMenu->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     partyMenu->unk_25 = 0;
-    partyMenu->unk_24 = 23;
+    partyMenu->context = PARTY_MENU_CONTEXT_23;
     partyMenu->fieldSystem = fieldSystem;
     partyMenu->partySlot = a0->partySlot;
     for (u8 i = 0; i < 3; i++) {
-        partyMenu->unk_30[i] = a0->unk06[i];
+        partyMenu->selectedOrder[i] = a0->selectedOrder[i];
     }
-    partyMenu->unk_37 = 100;
-    partyMenu->unk_36_0 = 3;
-    partyMenu->unk_36_4 = 3;
-    partyMenu->unk20 = &(fieldSystem->unk_10C);
+    partyMenu->maxLevel = 100;
+    partyMenu->minMonsToSelect = 3;
+    partyMenu->maxMonsToSelect = 3;
+    partyMenu->menuInputStatePtr = &(fieldSystem->menuInputState);
     if (a0->challengeType == BATTLE_CASTLE_CHALLENGE_TYPE_MULTI) {
-        partyMenu->unk_36_0 = 2;
-        partyMenu->unk_36_4 = 2;
+        partyMenu->minMonsToSelect = 2;
+        partyMenu->maxMonsToSelect = 2;
     }
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, partyMenu);
     *(a0->unk0c) = partyMenu;
@@ -232,7 +232,7 @@ static u32 sub_0204FD50(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
         case 6:
             return 4;
     }
-    MI_CpuCopy8(partyMenu->unk_30, a0->unk06, sizeof(partyMenu->unk_30));
+    MI_CpuCopy8(partyMenu->selectedOrder, a0->selectedOrder, 3);
     a0->partySlot = partyMenu->partySlot;
     FreeToHeap(partyMenu);
     *(a0->unk0c) = NULL;

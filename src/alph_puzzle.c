@@ -530,9 +530,9 @@ static const WindowTemplate sWindowTemplates[3] = {
     {4, 4,  15, 24, 6, 3, 0x001},
 };
 
-static const Unk122_021E92FC ov110_021E6EA4 = {0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20};
+static const OamManagerParam ov110_021E6EA4 = {0, 128, 0, 32, 0, 128, 0, 32};
 
-static const Unk122_021E92D0 ov110_021E6DD0 = {5, 0, 0, GX_OBJVRAMMODE_CHAR_1D_32K, GX_OBJVRAMMODE_CHAR_1D_32K};
+static const OamCharTransferParam ov110_021E6DD0 = {5, 0, 0, GX_OBJVRAMMODE_CHAR_1D_32K, GX_OBJVRAMMODE_CHAR_1D_32K};
 
 static const u16 sResdatInfo[7] = {
     NARC_resdat_resdat_00000010_bin, // GF_GFX_RES_TYPE_CHAR
@@ -641,7 +641,7 @@ static void AlphPuzzle_ScreenOff(void) {
 }
 
 static void AlphPuzzle_InitTextOptionsAndPuzzleIndex(AlphPuzzleData *data) {
-    data->menuIgnoreTouchFlag = sub_020183F0(data->args->fieldSystemUnk10Cpointer);
+    data->menuIgnoreTouchFlag = sub_020183F0(data->args->menuInputStatePtr);
     Options *options = Save_PlayerData_GetOptionsAddr(data->args->saveData);
     data->textFrameDelay = Options_GetTextFrameDelay(options);
     data->frame = Options_GetFrame(options);
@@ -649,7 +649,7 @@ static void AlphPuzzle_InitTextOptionsAndPuzzleIndex(AlphPuzzleData *data) {
 }
 
 static void AlphPuzzle_Finish(AlphPuzzleData *data) {
-    sub_02018410(data->args->fieldSystemUnk10Cpointer, data->menuIgnoreTouchFlag);
+    sub_02018410(data->args->menuInputStatePtr, data->menuIgnoreTouchFlag);
     if (data->puzzleSolved) {
         Save_VarsFlags_SetAlphPuzzleFlag(Save_VarsFlags_Get(data->args->saveData), data->puzzleIndex);
     }

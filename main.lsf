@@ -269,11 +269,11 @@ Static main
     Object src/bag.o
     Object asm/unk_02078834.o
     Object asm/unk_02078DD8.o
-    Object asm/unk_02078E30.o
-    Object asm/unk_0207CB7C.o
-    Object asm/unk_0207EB24.o
-    Object asm/unk_0207F42C.o
-    Object asm/unk_02080BB4.o
+    Object src/party_menu.o
+    Object src/party_context_menu.o
+    Object src/party_menu_sprites.o
+    Object src/party_menu_list_items.o
+    Object src/party_menu_items.o
     Object asm/unk_02082908.o
     Object asm/unk_020850F4.o
     Object asm/unk_02085604.o

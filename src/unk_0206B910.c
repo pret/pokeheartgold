@@ -20,7 +20,7 @@
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
 #include "unk_0206B910.h"
-#include "unk_02078E30.h"
+#include "party_menu.h"
 #include "unk_02091054.h"
 #include "launch_application.h"
 
@@ -33,7 +33,7 @@ typedef struct UnkStruct_0206B984 {
     SealCase *sealCase;
     Options *options;
     SaveData *saveData;
-    void *unk2c;
+    void *menuInputStatePtr;
     u8 unk30;
     u8 unk31;
 } UnkStruct_0206B984;
@@ -84,7 +84,7 @@ void sub_0206B910(TaskManager *taskManager, SaveData *saveData) {
     memset(r4->unk04, 0, sizeof(UnkStruct_0206B984));
     r4->unk04->options = Save_PlayerData_GetOptionsAddr(saveData);
     r4->unk04->saveData = saveData;
-    r4->unk04->unk2c = &fieldSystem->unk_10C;
+    r4->unk04->menuInputStatePtr = &fieldSystem->menuInputState;
     r4->partyMenu = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
     memset(r4->partyMenu, 0, sizeof(PartyMenuArgs));
     TaskManager_Call(taskManager, sub_0206B984, r4);
@@ -100,7 +100,7 @@ static BOOL sub_0206B984(TaskManager *taskManager) {
         SealCase *sealCase = Save_SealCase_Get(r7->saveData);
         r6->sealCase = sealCase;
         r6->unk31 = 0;
-        r6->unk2c = &fieldSystem->unk_10C;
+        r6->menuInputStatePtr = &fieldSystem->menuInputState;
         Party *party = SaveArray_Party_Get(r7->saveData);
         r6->party = party;
         s32 partyCount = Party_GetCount(party);
@@ -137,10 +137,10 @@ static BOOL sub_0206B984(TaskManager *taskManager) {
         partyMenu->mailbox = Save_Mailbox_Get(r7->saveData);
         partyMenu->partySlot = 0;
         partyMenu->unk_25 = 0;
-        partyMenu->unk_24 = 15;
+        partyMenu->context = PARTY_MENU_CONTEXT_ATTACH_CAPSULE;
         partyMenu->options = r6->options;
         partyMenu->fieldSystem = fieldSystem;
-        partyMenu->unk20 = &(fieldSystem->unk_10C);
+        partyMenu->menuInputStatePtr = &(fieldSystem->menuInputState);
         CallApplicationAsTask(taskManager, &gOverlayTemplate_PartyMenu, partyMenu);
         r7->state = 4;
         break;

@@ -39,8 +39,8 @@ typedef struct UseMailArgs {
     u8 mailType;
     SaveData *saveData;
     Mail *mail;
-    MAILBOX *mailbox;
-    BOOL *unk1C;
+    Mailbox *mailbox;
+    BOOL *menuInputStatePtr;
 } UseMailArgs;
 
 EasyChatArgs *EasyChat_CreateArgs(u8 a0, u8 a1, SaveData *saveData, BOOL *a3, HeapID heapId);
@@ -74,7 +74,7 @@ UseMailArgs *sub_02090F38(SaveData *saveData, u8 mailType, HeapID heapId);
 u32 sub_02090F6C(UseMailArgs *args);
 BOOL sub_02090F70(UseMailArgs *args, Pokemon *mon);
 void sub_02090F90(UseMailArgs *args);
-int sub_02090FA8(MAILBOX *mailbox, Pokemon *mon, HeapID heapId);
+int Mailbox_MoveMessageFromMon(Mailbox *mailbox, Pokemon *mon, HeapID heapId);
 int sub_02091004(Mail *msgs, int i, Pokemon *mon, HeapID heapId);
 
 #endif //POKEHEARTGOLD_MAIL_MISC_H

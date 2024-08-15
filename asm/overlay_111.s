@@ -578,12 +578,12 @@ ov111_021E5D2C: ; 0x021E5D2C
 	add r0, r5, #0
 	add r1, r7, #0
 	mov r2, #0x30
-	bl RatioToInt
+	bl CalculateHpBarPixelsLength
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
 	mov r2, #0x30
-	bl sub_020880B0
+	bl CalculateHpBarColor
 	cmp r0, #4
 	bhi _021E5D90
 	add r0, r0, r0

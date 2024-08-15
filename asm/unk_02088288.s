@@ -3004,7 +3004,7 @@ _02089B14:
 	add r1, #0x4e
 	strh r0, [r1]
 	add r0, r5, #0
-	bl sub_0208AD64
+	bl Pokemon_GetStatusIconId
 	mov r1, #0xf
 	ldr r2, [r4, #0x50]
 	lsl r1, r1, #0x1c
@@ -3744,7 +3744,7 @@ sub_0208A0EC: ; 0x0208A0EC
 	add r1, r1, #2
 	ldrh r1, [r6, r1]
 	mov r2, #0x30
-	bl sub_020880B0
+	bl CalculateHpBarColor
 	cmp r0, #4
 	bhi _0208A126
 	add r0, r0, r0
@@ -3774,7 +3774,7 @@ _0208A126:
 	add r1, r1, #2
 	ldrh r1, [r6, r1]
 	mov r2, #0x30
-	bl RatioToInt
+	bl CalculateHpBarPixelsLength
 	add r4, r0, #0
 	add r0, r7, #0
 	add r0, #8
@@ -3858,7 +3858,7 @@ _0208A1C8:
 	add r0, r1, #0
 _0208A1CC:
 	mov r2, #0x38
-	bl RatioToInt
+	bl CalculateHpBarPixelsLength
 	add r4, r0, #0
 	mov r5, #0
 	mov r7, #0x13
@@ -5355,16 +5355,16 @@ sub_0208AD60: ; 0x0208AD60
 	bx lr
 	thumb_func_end sub_0208AD60
 
-	thumb_func_start sub_0208AD64
-sub_0208AD64: ; 0x0208AD64
+	thumb_func_start Pokemon_GetStatusIconId
+Pokemon_GetStatusIconId: ; 0x0208AD64
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	mov r1, #0xa0
+	mov r1, #MON_DATA_STATUS
 	mov r2, #0
 	bl GetMonData
 	add r4, r0, #0
 	add r0, r5, #0
-	mov r1, #0xa3
+	mov r1, #MON_DATA_HP
 	mov r2, #0
 	bl GetMonData
 	cmp r0, #0
@@ -5372,38 +5372,38 @@ sub_0208AD64: ; 0x0208AD64
 	mov r0, #6
 	pop {r3, r4, r5, pc}
 _0208AD84:
-	mov r0, #0x88
+	mov r0, #MON_STATUS_PSN_MASK|MON_STATUS_TOX_MASK
 	tst r0, r4
 	beq _0208AD8E
 	mov r0, #4
 	pop {r3, r4, r5, pc}
 _0208AD8E:
-	mov r0, #7
+	mov r0, #MON_STATUS_SLP_MASK
 	add r1, r4, #0
 	tst r1, r0
 	beq _0208AD9A
 	mov r0, #3
 	pop {r3, r4, r5, pc}
 _0208AD9A:
-	mov r1, #0x10
+	mov r1, #MON_STATUS_BRN_MASK
 	tst r1, r4
 	beq _0208ADA4
 	mov r0, #5
 	pop {r3, r4, r5, pc}
 _0208ADA4:
-	mov r1, #0x20
+	mov r1, #MON_STATUS_FRZ_MASK
 	tst r1, r4
 	beq _0208ADAE
 	mov r0, #2
 	pop {r3, r4, r5, pc}
 _0208ADAE:
-	mov r1, #0x40
+	mov r1, #MON_STATUS_PRZ_MASK
 	tst r1, r4
 	beq _0208ADB6
 	mov r0, #1
 _0208ADB6:
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0208AD64
+	thumb_func_end Pokemon_GetStatusIconId
 
 	thumb_func_start sub_0208ADB8
 sub_0208ADB8: ; 0x0208ADB8

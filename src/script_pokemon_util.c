@@ -181,7 +181,7 @@ BOOL ApplyPoisonStep(Party *party, u16 location) {
         if (hp == 1) {
             n_fainted++;
             MonApplyFriendshipMod(mon, FRIENDSHIP_EVENT_HEAL_FIELD_PSN, location);
-            ApplyMonMoodModifier(mon, 5);
+            ApplyMonMoodModifier(mon, MON_MOOD_MODIFIER_SURVIVED_PSN);
         }
         n_poisoned++;
     }

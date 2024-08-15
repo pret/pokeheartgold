@@ -54,7 +54,7 @@ static void sub_02092BE8(FieldSystem* sys, PokegearArgs* ptr, BOOL a2) {
     }
 
     ptr->playerGender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(sys)));
-    ptr->unk28 = &sys->unk_10C;
+    ptr->menuInputStatePtr = &sys->menuInputState;
     ptr->unk01 = sub_0203DF3C(sys);
     ptr->mapMusicID = FieldSystem_GetOverriddenMusicId(sys, ptr->mapID);
 

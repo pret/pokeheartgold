@@ -40,7 +40,7 @@
 #include "save_special_ribbons.h"
 #include "sav_system_info.h"
 #include "unk_0202CA24.h"
-#include "unk_02078E30.h"
+#include "party_menu.h"
 #include "unk_02088288.h"
 #include "unk_02092BE8.h"
 #include "unk_02097B78.h"
@@ -89,7 +89,7 @@ static inline PCBoxArgs *PCBoxAppData_New(ScriptContext *ctx) {
     PCBoxArgs *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(PCBoxArgs));
     ret->saveData = ctx->fieldSystem->saveData;
     ret->unk8 = ScriptReadByte(ctx);
-    ret->fieldSystemUnk10C = &ctx->fieldSystem->unk_10C;
+    ret->menuInputStatePtr = &ctx->fieldSystem->menuInputState;
     return ret;
 }
 
@@ -100,7 +100,7 @@ BerryPotsArgs *BerryPots_LaunchApp(FieldSystem *fieldSystem);
 UnownReportArgs *UnownReport_LaunchApp(FieldSystem *fieldSystem);
 PartyMenuArgs *PartyMenu_LaunchApp_Gracidea(FieldSystem *fieldSystem, HeapID heapId, u16 itemId);
 PartyMenuArgs *PartyMenu_LaunchApp_Unk2(HeapID heapId, FieldSystem *fieldSystem); //todo: party select screen
-PartyMenuArgs *PartyMenu_LaunchApp_Unk3(HeapID heapId, FieldSystem *fieldSystem); //todo: party trade screen
+PartyMenuArgs *PartyMenu_LaunchApp_InGameTrade(HeapID heapId, FieldSystem *fieldSystem); //todo: party trade screen
 PartyMenuArgs *SelectPartyMonAndLearnMove(TaskManager *taskManager, HeapID heapId); //todo: union party select screen
 int PartyMenuArgs_GetSlot(struct PartyMenuArgs *partyWork);
 int sub_0203E5F8(struct PartyMenuArgs *partyWork);
@@ -130,6 +130,7 @@ BagView *sub_0203E3FC(FieldSystem *fieldSystem, ItemCheckUseData *itemCheckUseDa
 void Bag_LaunchApp(FieldSystem *fieldSystem, BagView *bagView);
 void PokemonSummary_LearnForget_LaunchApp(FieldSystem *fieldSystem, PokemonSummaryArgs *pokemonSummayArgs);
 PokemonSummaryArgs *PokemonSummary_CreateArgs(FieldSystem *fieldSystem, HeapID heapId, int a2);
+PartyMenuArgs *TaskManager_LaunchPartyMenu_UnionRoomBattleSelect(TaskManager *taskman, HeapID heapId);
 PartyMenuArgs *PartyMenu_LaunchApp_Unk5(FieldSystem *fieldSystem, int partySlot);
 void EasyChat_LaunchApp(FieldSystem *fieldSystem, EasyChatArgs *args);
 PokegearArgs *PokegearTownMap_LaunchApp(FieldSystem *fieldSystem, int kind);

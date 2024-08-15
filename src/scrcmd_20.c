@@ -23,7 +23,7 @@
 #include "unk_02035900.h"
 #include "unk_0205BB1C.h"
 #include "unk_0205BFF0.h"
-#include "unk_02078E30.h"
+#include "party_menu.h"
 #include "unk_02088288.h"
 #include "unk_02091564.h"
 #include "constants/game_stats.h"
@@ -38,7 +38,7 @@ typedef struct UnkStruct_0204F284 {
     u32 state;
     u8 challengeType;
     u8 partySlot;
-    u8 unk06[2];
+    u8 selectedMons[2];
     void **unk08;
 } UnkStruct_0204F284;
 
@@ -309,29 +309,29 @@ static BOOL sub_0204F2B8(TaskManager *taskManager) {
 }
 
 static u32 sub_0204F320(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem, HeapID unused) {
-    PartyMenuArgs *partyMenu = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
-    MIi_CpuClearFast(0, (u32*)partyMenu, sizeof(PartyMenuArgs));
-    partyMenu->party = SaveArray_Party_Get(fieldSystem->saveData);
-    partyMenu->bag = Save_Bag_Get(fieldSystem->saveData);
-    partyMenu->mailbox = Save_Mailbox_Get(fieldSystem->saveData);
-    partyMenu->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
-    partyMenu->unk_25 = 0;
-    partyMenu->unk_24 = 22;
-    partyMenu->fieldSystem = fieldSystem;
-    partyMenu->partySlot = a0->partySlot;
+    PartyMenuArgs *partyMenuArgs = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
+    MIi_CpuClearFast(0, (u32*)partyMenuArgs, sizeof(PartyMenuArgs));
+    partyMenuArgs->party = SaveArray_Party_Get(fieldSystem->saveData);
+    partyMenuArgs->bag = Save_Bag_Get(fieldSystem->saveData);
+    partyMenuArgs->mailbox = Save_Mailbox_Get(fieldSystem->saveData);
+    partyMenuArgs->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
+    partyMenuArgs->unk_25 = 0;
+    partyMenuArgs->context = PARTY_MENU_CONTEXT_BATTLE_HALL;
+    partyMenuArgs->fieldSystem = fieldSystem;
+    partyMenuArgs->partySlot = a0->partySlot;
     for (u8 i = 0; i < 2; i++) {
-        partyMenu->unk_30[i] = a0->unk06[i];
+        partyMenuArgs->selectedOrder[i] = a0->selectedMons[i];
     }
-    partyMenu->unk_37 = 30;
-    partyMenu->unk_36_0 = 1;
-    partyMenu->unk_36_4 = 1;
-    partyMenu->unk20 = &fieldSystem->unk_10C;
-    if (a0->challengeType == 1) { // doubles
-        partyMenu->unk_36_0 = 2;
-        partyMenu->unk_36_4 = 2;
+    partyMenuArgs->maxLevel = 30;
+    partyMenuArgs->minMonsToSelect = 1;
+    partyMenuArgs->maxMonsToSelect = 1;
+    partyMenuArgs->menuInputStatePtr = &fieldSystem->menuInputState;
+    if (a0->challengeType == BATTLE_HALL_CHALLENGE_TYPE_DOUBLE) {
+        partyMenuArgs->minMonsToSelect = 2;
+        partyMenuArgs->maxMonsToSelect = 2;
     }
-    FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, partyMenu);
-    *(a0->unk08) = partyMenu;
+    FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, partyMenuArgs);
+    *(a0->unk08) = partyMenuArgs;
     return 1;
 }
 
@@ -346,7 +346,7 @@ static u32 sub_0204F3F8(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem) {
         case 6:
             return 4;
         default:
-            MI_CpuCopy8(partyMenu->unk_30, a0->unk06, 2);
+            MI_CpuCopy8(partyMenu->selectedOrder, a0->selectedMons, 2);
             a0->partySlot = partyMenu->partySlot;
             FreeToHeap(partyMenu);
             *(a0->unk08) = NULL;

@@ -11,7 +11,7 @@
 
 typedef struct Mailbox {
     Mail msgs[MAILBOX_MSG_COUNT];
-} MAILBOX;
+} Mailbox;
 
 Mail *Mail_New(HeapID heapId);
 void Mail_Copy(const Mail *src, Mail *dest);
@@ -30,14 +30,14 @@ u16 sub_0202B404(Mail *mail, u8 r1, u8 r4, u16 r3);
 u16 sub_0202B4E4(const Mail *mail);
 MailMessage *Mail_GetUnk20Array(Mail *mail, int i);
 void Mail_SetMessage(Mail *mail, const MailMessage *src, int i);
-MAILBOX *Save_Mailbox_Get(SaveData *saveData);
+Mailbox *Save_Mailbox_Get(SaveData *saveData);
 u32 Save_Mailbox_sizeof(void);
-void Save_Mailbox_Init(MAILBOX *mailbox);
+void Save_Mailbox_Init(Mailbox *mailbox);
 Mail *Mailbox_AllocAndFetchMailI(Mail *msgs, int n, int i, HeapID heapId);
-int Mailbox_GetFirstEmptySlotIdx(MAILBOX *mailbox);
+int Mailbox_GetFirstEmptySlotIdx(Mailbox *mailbox);
 void Mailbox_DeleteSlotI(Mail *msgs, int n, int i);
 void Mailbox_CopyMailToSlotI(Mail *msgs, int n, int i, const Mail *src);
-u32 Mailbox_CountMessages(MAILBOX *mailbox, int unused);
+u32 Mailbox_CountMessages(Mailbox *mailbox, int unused);
 void Mailbox_FetchMailToBuffer(Mail *msgs, int n, int i, Mail *dest);
 int MailArray_GetFirstEmptySlotIdx(Mail *msgs, int n);
 u32 MailArray_CountMessages(Mail *msgs, int n);

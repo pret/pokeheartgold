@@ -142,9 +142,9 @@ extern const Ov122_021E9278 ov122_021E9278;
 extern const u16 ov122_021E92A0[8];
 extern const u8 ov122_021E92B0[4][4];
 extern const struct GraphicsModes sVoltorbFlipBgModeSet;
-extern const Unk122_021E92D0 ov122_021E92D0;
+extern const OamCharTransferParam ov122_021E92D0;
 extern const SpriteResourceCountsListUnion ov122_021E92E4;
-extern const Unk122_021E92FC ov122_021E92FC;
+extern const OamManagerParam ov122_021E92FC;
 extern const Ov122_021E6C2C ov122_021E9344[4];
 extern const UnkTemplate_0200D748 ov122_021E9374;
 extern const UnkTemplate_0200D748 ov122_021E93A8;
@@ -1691,8 +1691,8 @@ static void ov122_021E79D0(VoltorbFlipAppWork *work) {
 
 static void ov122_021E7AEC(VoltorbFlipAppWork *work) {
     SpriteResourceCountsListUnion temp1 = ov122_021E92E4;
-    Unk122_021E92FC temp2 = ov122_021E92FC;
-    Unk122_021E92D0 temp3 = ov122_021E92D0;
+    OamManagerParam temp2 = ov122_021E92FC;
+    OamCharTransferParam temp3 = ov122_021E92D0;
     temp3.maxTasks = 0x80;
 
     work->unk144 = SpriteRenderer_Create(work->heapId);
@@ -1970,9 +1970,9 @@ static void ov122_021E8094(OVY_MANAGER *man) {
     work->heapId = HEAP_ID_VOLTORB_FLIP;
     work->options = args->options;
     work->coins = args->coins;
-    work->unkC = args->unk8;
+    work->menuInputStatePtr = args->menuInputStatePtr;
     work->profile = args->profile;
-    work->unk228 = sub_020183F0(work->unkC);
+    work->unk228 = sub_020183F0(work->menuInputStatePtr);
     work->unk229 = Options_GetFrame(work->options);
     work->unk22A = Options_GetTextFrameDelay(work->options);
 
