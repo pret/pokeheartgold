@@ -1,18 +1,19 @@
-#include "scrcmd.h"
-#include "save_vars_flags.h"
+#include "msgdata/msg.naix"
+
+#include "field_system.h"
 #include "filesystem.h"
 #include "item.h"
-#include "msgdata/msg.naix"
 #include "party.h"
 #include "player_data.h"
 #include "pokemon_storage_system.h"
-#include "save_arrays.h"
-#include "unk_0205B3DC.h"
-#include "unk_02068F84.h"
 #include "ribbon.h"
+#include "save_arrays.h"
+#include "save_vars_flags.h"
+#include "scrcmd.h"
 #include "sys_vars.h"
+#include "unk_0205B3DC.h"
 #include "unk_0205BB1C.h"
-#include "msgdata/msg.naix"
+#include "unk_02068F84.h"
 
 static String* _get_species_name(u16 species, HeapID heapId);
 

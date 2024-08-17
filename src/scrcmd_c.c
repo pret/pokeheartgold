@@ -1,108 +1,108 @@
 #define _IN_SCRCMD_C
 
-#include "scrcmd.h"
-#include "alph_puzzle.h"
-#include "bg_window.h"
-#include "certificates_app.h"
-#include "overlay_01.h"
-#include "overlay_01_02204ED8.h"
-#include "overlay_26.h"
-#include "overlay_03.h"
-#include "overlay_04.h"
-#include "overlay_67.h"
-#include "overlay_87.h"
-#include "overlay_103.h"
-#include "system.h"
-#include "task.h"
-#include "text.h"
-#include "render_window.h"
-#include "unk_02035900.h"
-#include "unk_0205A44C.h"
-#include "unk_020658D4.h"
-#include "render_text.h"
-#include "field_player_avatar.h"
-#include "unk_02062108.h"
-#include "map_object.h"
-#include "follow_mon.h"
-#include "save_follow_mon.h"
-#include "map_events.h"
-#include "unk_0205FD20.h"
-#include "unk_02054648.h"
-#include "metatile_behavior.h"
-#include "unk_02055418.h"
-#include "unk_02078E30.h"
-#include "unk_020932A4.h"
-#include "unk_02092BE8.h"
-#include "unk_02097024.h"
-#include "unk_020552A4.h"
-#include "unk_02078834.h"
-#include "unk_020961D8.h"
-#include "unk_02055244.h"
-#include "field_system.h"
-#include "fashion_case.h"
-#include "save_local_field_data.h"
-#include "unk_0206B910.h"
-#include "unk_02068FC8.h"
-#include "game_clear.h"
-#include "save_arrays.h"
-#include "unk_02037C94.h"
-#include "choose_starter.h"
-#include "unk_0206D494.h"
-#include "unk_0200FA24.h"
-#include "field_warp_tasks.h"
-#include "unk_02054E00.h"
-#include "field_roamer.h"
-#include "unk_02097F6C.h"
-#include "sys_flags.h"
-#include "sys_vars.h"
-#include "encounter.h"
-#include "pokedex.h"
-#include "unk_0205BB1C.h"
-#include "unk_020379A0.h"
-#include "easy_chat.h"
-#include "unk_02091564.h"
-#include "unk_0205AC88.h"
-#include "unk_02058AEC.h"
-#include "unk_0205B3DC.h"
-#include "blackout.h"
-#include "use_item_on_mon.h"
-#include "unk_02058034.h"
-#include "unk_02056D7C.h"
-#include "unk_02034B0C.h"
-#include "gymmick_init.h"
-#include "unk_02097D3C.h"
-#include "math_util.h"
-#include "game_stats.h"
-#include "safari_zone.h"
-#include "unk_02097268.h"
-#include "npc_trade.h"
-#include "script_pokemon_util.h"
-#include "unk_0202C034.h"
-#include "unk_0203A3B0.h"
-#include "unk_02067A80.h"
-#include "frontier/frontier.h"
-#include "unk_02056680.h"
-#include "trainer_memo.h"
-#include "daycare.h"
-#include "pokewalker.h"
-#include "unk_02095DF4.h"
-#include "field_take_photo.h"
-#include "unk_020977CC.h"
-#include "unk_020979A8.h"
-#include "unk_02097BE0.h"
-#include "sound_02004A44.h"
-#include "unk_020290B4.h"
-#include "launch_application.h"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0202.h"
 #include "constants/accessories.h"
 #include "constants/events.h"
 #include "constants/phone_contacts.h"
 #include "constants/trainers.h"
-#include "render_window.h"
-#include "overlay_01_021F1AFC.h"
-#include "frontier/frontier.h"
+
 #include "field/legend_cutscene_camera.h"
+#include "frontier/frontier.h"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0202.h"
+
+#include "alph_puzzle.h"
+#include "bg_window.h"
+#include "blackout.h"
+#include "certificates_app.h"
+#include "choose_starter.h"
+#include "daycare.h"
+#include "easy_chat.h"
+#include "encounter.h"
+#include "fashion_case.h"
+#include "field_player_avatar.h"
+#include "field_roamer.h"
+#include "field_system.h"
+#include "field_take_photo.h"
+#include "field_warp_tasks.h"
+#include "follow_mon.h"
+#include "game_clear.h"
+#include "game_stats.h"
+#include "gymmick_init.h"
+#include "launch_application.h"
+#include "map_events.h"
+#include "map_object.h"
+#include "math_util.h"
+#include "metatile_behavior.h"
+#include "npc_trade.h"
+#include "overlay_01.h"
+#include "overlay_01_021F1AFC.h"
+#include "overlay_01_02204ED8.h"
+#include "overlay_03.h"
+#include "overlay_04.h"
+#include "overlay_103.h"
+#include "overlay_26.h"
+#include "overlay_67.h"
+#include "overlay_87.h"
+#include "party_menu.h"
+#include "pokedex.h"
+#include "pokewalker.h"
+#include "render_text.h"
+#include "render_window.h"
+#include "safari_zone.h"
+#include "save_arrays.h"
+#include "save_follow_mon.h"
+#include "save_local_field_data.h"
+#include "scrcmd.h"
+#include "script_pokemon_util.h"
+#include "sound_02004A44.h"
+#include "sys_flags.h"
+#include "sys_vars.h"
+#include "system.h"
+#include "task.h"
+#include "text.h"
+#include "trainer_memo.h"
+#include "unk_0200FA24.h"
+#include "unk_020290B4.h"
+#include "unk_0202C034.h"
+#include "unk_02034B0C.h"
+#include "unk_02035900.h"
+#include "unk_020379A0.h"
+#include "unk_02037C94.h"
+#include "unk_0203A3B0.h"
+#include "unk_02054648.h"
+#include "unk_02054E00.h"
+#include "unk_02055244.h"
+#include "unk_020552A4.h"
+#include "unk_02055418.h"
+#include "unk_02056680.h"
+#include "unk_02056D7C.h"
+#include "unk_02058034.h"
+#include "unk_02058AEC.h"
+#include "unk_0205A44C.h"
+#include "unk_0205AC88.h"
+#include "unk_0205B3DC.h"
+#include "unk_0205BB1C.h"
+#include "unk_0205FD20.h"
+#include "unk_02062108.h"
+#include "unk_020658D4.h"
+#include "unk_02067A80.h"
+#include "unk_02068FC8.h"
+#include "unk_0206B910.h"
+#include "unk_0206D494.h"
+#include "unk_02078834.h"
+#include "unk_02091564.h"
+#include "unk_02092BE8.h"
+#include "unk_020932A4.h"
+#include "unk_02095DF4.h"
+#include "unk_020961D8.h"
+#include "unk_02097024.h"
+#include "unk_02097268.h"
+#include "unk_020977CC.h"
+#include "unk_020979A8.h"
+#include "unk_02097BE0.h"
+#include "unk_02097D3C.h"
+#include "unk_02097F6C.h"
+#include "use_item_on_mon.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
 FS_EXTERN_OVERLAY(npc_trade);
@@ -1604,14 +1604,14 @@ BOOL ScrCmd_PartySelectUI(ScriptContext *ctx) {
 
 BOOL ScrCmd_566(ScriptContext *ctx) { //todo: trade screen
     PartyMenuArgs **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *partyMenu = PartyMenu_LaunchApp_Unk3(HEAP_ID_32, ctx->fieldSystem);
+    *partyMenu = PartyMenu_LaunchApp_InGameTrade(HEAP_ID_32, ctx->fieldSystem);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
 
 BOOL ScrCmd_350(ScriptContext *ctx) { //todo: union pokemon selection
     PartyMenuArgs **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *partyMenu = SelectPartyMonAndLearnMove(ctx->fieldSystem->taskman, HEAP_ID_32);
+    *partyMenu = TaskManager_LaunchPartyMenu_UnionRoomBattleSelect(ctx->fieldSystem->taskman, HEAP_ID_32);
     return TRUE;
 }
 
@@ -1619,7 +1619,7 @@ BOOL ScrCmd_PartySelect(ScriptContext *ctx) { //todo: get selected pokemon slot
     u16 *dest_p = ScriptGetVarPointer(ctx);
     PartyMenuArgs **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     GF_ASSERT(*partyMenu != NULL);
-    *dest_p = sub_0203E5C8(*partyMenu);
+    *dest_p = PartyMenuArgs_GetSlot(*partyMenu);
     if (*dest_p == 7) {
         *dest_p = 255;
     }
@@ -1633,16 +1633,16 @@ BOOL ScrCmd_635(ScriptContext *ctx) {
     u16 *r6 = ScriptGetVarPointer(ctx);
     PartyMenuArgs **partyMenuPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     PartyMenuArgs *partyMenu;
-    int r0;
+    int partySlot;
     partyMenu = *partyMenuPtr;
     GF_ASSERT(*partyMenuPtr != NULL);
-    r0 = sub_0203E5C8(*partyMenuPtr);
-    if (r0 == 7) {
+    partySlot = PartyMenuArgs_GetSlot(*partyMenuPtr);
+    if (partySlot == 7) {
         *r5 = 255;
-    } else if (r0 == 6) {
-        *r5 = partyMenu->unk_30[0];
+    } else if (partySlot == 6) {
+        *r5 = partyMenu->selectedOrder[0];
         (*r5)--;
-        *r6 = partyMenu->unk_30[1];
+        *r6 = partyMenu->selectedOrder[1];
         if (*r6 != 0) {
             (*r6)--;
         }
@@ -1659,15 +1659,15 @@ BOOL ScrCmd_639(ScriptContext *ctx) {
     struct PartyMenuArgs **partyMenuPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     struct PartyMenuArgs *partyMenu = *partyMenuPtr;
     GF_ASSERT(partyMenu != NULL);
-    int r0 = sub_0203E5C8(*partyMenuPtr);
-    if (r0 == 7) {
+    int partySlot = PartyMenuArgs_GetSlot(*partyMenuPtr);
+    if (partySlot == 7) {
         *r5 = 255;
-    } else if (r0 == 6) {
-        *r5 = partyMenu->unk_30[0];
+    } else if (partySlot == 6) {
+        *r5 = partyMenu->selectedOrder[0];
         (*r5)--;
-        *sp0 = partyMenu->unk_30[1];
+        *sp0 = partyMenu->selectedOrder[1];
         (*sp0)--;
-        *r7 = partyMenu->unk_30[2];
+        *r7 = partyMenu->selectedOrder[2];
         if (*r7 != 0) {
             (*r7)--;
         }
@@ -1684,15 +1684,15 @@ BOOL ScrCmd_645(ScriptContext *ctx) {
     struct PartyMenuArgs **partyMenuPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     struct PartyMenuArgs *partyMenu = *partyMenuPtr;
     GF_ASSERT(partyMenu != NULL);
-    int r0 = sub_0203E5C8(*partyMenuPtr);
-    if (r0 == 7) {
+    int partySlot = PartyMenuArgs_GetSlot(*partyMenuPtr);
+    if (partySlot == 7) {
         *r5 = 255;
-    } else if (r0 == 6) {
-        *r5 = partyMenu->unk_30[0];
+    } else if (partySlot == 6) {
+        *r5 = partyMenu->selectedOrder[0];
         (*r5)--;
-        *sp0 = partyMenu->unk_30[1];
+        *sp0 = partyMenu->selectedOrder[1];
         (*sp0)--;
-        *r7 = partyMenu->unk_30[2];
+        *r7 = partyMenu->selectedOrder[2];
         if (*r7 != 0) {
             (*r7)--;
         }
@@ -1720,12 +1720,12 @@ BOOL ScrCmd_GetMoveSelection(ScriptContext *ctx) {
 BOOL ScrCmd_PokemonSummaryScreen(ScriptContext *ctx) {
     void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     u8 onlySkillsPanel = ScriptReadByte(ctx);
-    u16 r7 = ScriptGetVar(ctx);
-    u16 r3 = ScriptGetVar(ctx);
-    if (onlySkillsPanel == 1) {
-        *p_work = LearnForgetMove_LaunchApp(HEAP_ID_32, ctx->fieldSystem, r7, r3);
+    u16 partySlot = ScriptGetVar(ctx);
+    u16 moveToLearn = ScriptGetVar(ctx);
+    if (onlySkillsPanel == TRUE) {
+        *p_work = LearnForgetMove_LaunchApp(HEAP_ID_32, ctx->fieldSystem, partySlot, moveToLearn);
     } else {
-        *p_work = PokemonSummary_LaunchApp(HEAP_ID_32, ctx->fieldSystem, r7, r3);
+        *p_work = PokemonSummary_LaunchApp(HEAP_ID_32, ctx->fieldSystem, partySlot, moveToLearn);
     }
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
@@ -2123,7 +2123,7 @@ BOOL ScrCmd_NicknameInput(ScriptContext *ctx) {
     } else {
         mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), partyPos);
     }
-    GetMonData(mon, MON_DATA_NICKNAME, nickname);
+    GetMonData(mon, MON_DATA_NICKNAME_FLAT, nickname);
     var_ret = ScriptGetVarPointer(ctx);
     species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     CallTask_NamingScreen(ctx->taskman, NAME_SCREEN_POKEMON, species, POKEMON_NAME_LENGTH, partyPos, nickname, var_ret);
@@ -3962,7 +3962,7 @@ BOOL ScrCmd_552(ScriptContext *ctx) {
     u16 *r5 = ScriptGetVarPointer(ctx);
     struct PartyMenuArgs **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     GF_ASSERT(*partyMenu != NULL);
-    *r6 = sub_0203E5C8(*partyMenu);
+    *r6 = PartyMenuArgs_GetSlot(*partyMenu);
     if (*r6 == 7) {
         *r6 = 255;
     }

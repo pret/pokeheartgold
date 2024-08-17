@@ -1,6 +1,7 @@
-#include "scrcmd.h"
+#include "field_system.h"
 #include "pokedex.h"
 #include "save_local_field_data.h"
+#include "scrcmd.h"
 #include "sys_flags.h"
 
 BOOL ScrCmd_CheckPokedex(ScriptContext *ctx) {

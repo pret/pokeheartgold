@@ -14,8 +14,7 @@
 #include "pokemon_storage_system.h"
 #include "save_arrays.h"
 #include "save_palpad.h"
-#include "trainer_data.h"
-#include "unk_02067A60.h"
+#include "unk_020755E8.h"
 
 struct BattleSetupSub_138 {
     int unk_0;
@@ -58,7 +57,7 @@ struct BattleSetup { // declared in trainer_data.h
     u32 battleSpecial; // 18C
     int safariBalls; // 190
     int unk_194;
-    void *unk198;
+    EvolutionTaskData *evolutionTaskData;
     int unk_19C;
     int unk_1A0[4];
     u16 unk1B0;

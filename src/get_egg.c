@@ -1,22 +1,24 @@
-#include "global.h"
 #include "get_egg.h"
-#include "party.h"
+
+#include "constants/abilities.h"
+#include "constants/balls.h"
+#include "constants/items.h"
+#include "constants/map_sections.h"
+#include "constants/moves.h"
+
 #include "game_stats.h"
-#include "math_util.h"
 #include "gf_gfx_loader.h"
+#include "global.h"
 #include "item.h"
+#include "map_section.h"
+#include "math_util.h"
 #include "msgdata.h"
+#include "party.h"
+#include "script.h"
+#include "start_menu.h"
 #include "trainer_memo.h"
 #include "unk_02055418.h"
 #include "unk_02092BE8.h"
-#include "map_section.h"
-#include "script.h"
-#include "constants/moves.h"
-#include "constants/items.h"
-#include "constants/balls.h"
-#include "constants/map_sections.h"
-#include "constants/abilities.h"
-#include "unk_02055418.h"
 
 static u8 Save_Daycare_CountMonsInDaycare(Daycare *daycare);
 static int Save_Daycare_GetAvailableSlot(Daycare *daycare);
@@ -92,7 +94,7 @@ static void DaycareMon_CopyFromPartySlot(Party *party, int partyIdx, DaycareMon 
     daycareMail = DaycareMon_GetExtras(daycareMon);
     boxMon = DaycareMon_GetBoxMon(daycareMon);
     playerNamePtr = PlayerProfile_GetNamePtr(Save_PlayerData_GetProfileAddr(saveData));
-    GetMonData(partyMon, MON_DATA_NICKNAME, nickname);
+    GetMonData(partyMon, MON_DATA_NICKNAME_FLAT, nickname);
     if (BoxMonIsHoldingMail(Mon_GetBoxMon(partyMon))) {
         GetMonData(partyMon, MON_DATA_MAIL_STRUCT, DaycareMail_GetMailPtr(daycareMail));
     }
@@ -647,7 +649,7 @@ void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profi
     isEgg = TRUE;
     SetMonData(mon, MON_DATA_IS_EGG, &isEgg);
     name = GetSpeciesName(SPECIES_EGG, HEAP_ID_4);
-    SetMonData(mon, MON_DATA_NICKNAME_3, name);
+    SetMonData(mon, MON_DATA_NICKNAME_STRING, name);
     String_Delete(name);
     if (trainerMemoStrat == 4) {
         otId = PlayerProfile_GetTrainerID(profile);
@@ -691,7 +693,7 @@ static void SetBreedEggStats(Pokemon *mon, u16 species, Daycare *dayCare, u32 ot
     SetMonData(mon, MON_DATA_MET_LEVEL, &metLevel);
     SetMonData(mon, MON_DATA_FORM, &form);
     name = GetSpeciesName(SPECIES_EGG, HEAP_ID_4);
-    SetMonData(mon, MON_DATA_NICKNAME_3, name);
+    SetMonData(mon, MON_DATA_NICKNAME_STRING, name);
     String_Delete(name);
 }
 
@@ -1103,7 +1105,7 @@ void sub_0206D328(Pokemon *mon, HeapID heapId) {
     sub_0206D038(mon, heapId);
     SetMonData(mon, MON_DATA_IS_EGG, &isEgg);
     GetSpeciesNameIntoArray(GetMonData(mon, MON_DATA_SPECIES, NULL), HEAP_ID_DEFAULT, nickname);
-    SetMonData(mon, MON_DATA_NICKNAME, nickname);
+    SetMonData(mon, MON_DATA_NICKNAME_FLAT, nickname);
     SetMonData(mon, MON_DATA_HAS_NICKNAME, &hasNickname);
     SetMonData(mon, MON_DATA_POKEBALL, &pokeball);
     SetMonData(mon, MON_DATA_MET_LEVEL, &metLevel);

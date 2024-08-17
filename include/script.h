@@ -8,6 +8,7 @@
 #include "camera.h"
 #include "field_player_avatar.h"
 #include "field_system.h"
+#include "field_types_def.h"
 #include "gear_phone.h"
 #include "global.h"
 #include "list_menu_2d.h"

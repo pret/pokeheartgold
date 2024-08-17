@@ -1,8 +1,11 @@
-#include "global.h"
-#include "constants/items.h"
-#include "save.h"
 #include "bag.h"
+
+#include "constants/items.h"
+
+#include "bag_view.h"
+#include "global.h"
 #include "heap.h"
+#include "save.h"
 
 static u32 Bag_GetItemPocket(Bag *bag, u16 itemId, ItemSlot **itemSlots, u32 *countPtr, HeapID heapId);
 static ItemSlot *Pocket_GetItemSlotForAdd(ItemSlot *slots, u32 count, u16 itemId, u16 quantity, u16 maxQuantity);

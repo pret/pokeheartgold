@@ -1,9 +1,10 @@
+#include "field_system.h"
+#include "sav_chatot.h"
 #include "scrcmd.h"
-#include "unk_02005D10.h"
 #include "sound.h"
 #include "sound_02004A44.h"
+#include "unk_02005D10.h"
 #include "unk_02054E00.h"
-#include "sav_chatot.h"
 
 BOOL ScrNative_GetFadeTimer(ScriptContext *ctx);
 BOOL ScrNative_SEPlaying(ScriptContext *ctx);

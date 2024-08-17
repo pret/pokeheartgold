@@ -25,7 +25,7 @@ typedef struct AlphPuzzleArgs {
     u8 puzzle;
     u8 unk6; // unused
     u8 unk7; // unused
-    u32 *fieldSystemUnk10Cpointer;
+    BOOL *menuInputStatePtr;
     SaveData *saveData;
 } AlphPuzzleArgs;
 

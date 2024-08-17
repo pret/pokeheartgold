@@ -1,6 +1,9 @@
 #include "map_events.h"
-#include "filesystem.h"
+
 #include "encounter_tables_narc.h"
+#include "field_system.h"
+#include "filesystem.h"
+#include "global.h"
 #include "map_object.h"
 
 static void MapEvents_ReadFromNarc(MapEvents *events, u32 mapno);

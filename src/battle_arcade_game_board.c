@@ -1,37 +1,38 @@
-#include "global.h"
 #include "battle_arcade_game_board.h"
+
+#include "constants/sndseq.h"
+
+#include "frontier/overlay_80.h"
+#include "frontier/overlay_80_02238034.h"
+#include "msgdata/msg.naix"
+
 #include "filesystem.h"
 #include "font.h"
 #include "gf_gfx_loader.h"
 #include "gf_gfx_planes.h"
+#include "global.h"
 #include "math_util.h"
-#include "frontier/overlay_80.h"
-#include "frontier/overlay_80_02238034.h"
+#include "obj_char_transfer.h"
 #include "palette.h"
 #include "party.h"
-#include "system.h"
-#include "constants/sndseq.h"
-#include "unk_02030A98.h"
-#include "unk_02096910.h"
-#include "unk_020379A0.h"
-#include "unk_0200FA24.h"
-#include "unk_02035900.h"
-#include "unk_02009D48.h"
-#include "unk_0203A3B0.h"
-#include "unk_02035900.h"
-#include "unk_02005D10.h"
-#include "touchscreen.h"
-#include "unk_02022588.h"
-#include "obj_char_transfer.h"
-#include "unk_0200A090.h"
-#include "unk_02078E30.h"
-#include "vram_transfer_manager.h"
-#include "unk_0200B150.h"
+#include "party_menu.h"
 #include "pokemon.h"
-#include "unk_0200ACF0.h"
 #include "pokemon_icon_idx.h"
-
-#include "msgdata/msg.naix"
+#include "system.h"
+#include "touchscreen.h"
+#include "unk_02005D10.h"
+#include "unk_02009D48.h"
+#include "unk_0200A090.h"
+#include "unk_0200ACF0.h"
+#include "unk_0200B150.h"
+#include "unk_0200FA24.h"
+#include "unk_02022588.h"
+#include "unk_02030A98.h"
+#include "unk_02035900.h"
+#include "unk_020379A0.h"
+#include "unk_0203A3B0.h"
+#include "unk_02096910.h"
+#include "vram_transfer_manager.h"
 
 FS_EXTERN_OVERLAY(OVY_80);
 
@@ -1315,10 +1316,10 @@ static void GameBoard_LoadEventGraphics(GAME_BOARD_SUB_3E8 *work) {
 }
 
 static void ov84_0223F538(GAME_BOARD_SUB_3E8 *work) {
-    NARC *narc = NARC_New(NARC_a_0_2_1, HEAP_ID_GAME_BOARD);
+    NARC *narc = NARC_New(NARC_graphic_plist_gra, HEAP_ID_GAME_BOARD);
 
     work->resourceObj[2][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromOpenNarc(work->resourceMan[0], narc, sub_0207CA9C(), FALSE, 2, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_GAME_BOARD);
-    work->resourceObj[2][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_a_0_2_1, sub_0207CAA0(), FALSE, 2, NNS_G2D_VRAM_TYPE_2DMAIN, 3, HEAP_ID_GAME_BOARD);
+    work->resourceObj[2][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_graphic_plist_gra, sub_0207CAA0(), FALSE, 2, NNS_G2D_VRAM_TYPE_2DMAIN, 3, HEAP_ID_GAME_BOARD);
     work->resourceObj[2][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[2], narc, sub_0207CAA4(), FALSE, 2, GF_GFX_RES_TYPE_CELL, HEAP_ID_GAME_BOARD);
     work->resourceObj[2][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[3], narc, sub_0207CAA8(), FALSE, 2, GF_GFX_RES_TYPE_ANIM, HEAP_ID_GAME_BOARD);
 

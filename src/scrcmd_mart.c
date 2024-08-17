@@ -1,11 +1,13 @@
-#include "scrcmd.h"
-#include "mart.h"
-#include "save_vars_flags.h"
-#include "pokedex.h"
-#include "unk_02031904.h"
-#include "constants/items.h"
 #include "constants/decorations.h"
+#include "constants/items.h"
 #include "constants/seals.h"
+
+#include "field_system.h"
+#include "mart.h"
+#include "pokedex.h"
+#include "save_vars_flags.h"
+#include "scrcmd.h"
+#include "unk_02031904.h"
 
 struct BadgeMartItems {
     u16 item_id;

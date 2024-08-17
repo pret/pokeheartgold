@@ -1,31 +1,31 @@
-#include "global.h"
+#include "scrcmd_battle_castle.h"
+
 #include "assert.h"
 #include "bag.h"
 #include "field_player_avatar.h"
 #include "field_system.h"
 #include "fieldmap.h"
-#include "launch_application.h"
 #include "frontier_data.h"
 #include "game_stats.h"
+#include "global.h"
 #include "heap.h"
+#include "launch_application.h"
 #include "mail.h"
 #include "message_format.h"
 #include "party.h"
+#include "party_menu.h"
 #include "player_data.h"
 #include "pokedex_util.h"
-#include "save_special_ribbons.h"
 #include "save.h"
+#include "save_special_ribbons.h"
 #include "scrcmd.h"
-#include "scrcmd_battle_castle.h"
 #include "script.h"
 #include "task.h"
 #include "unk_02030A98.h"
 #include "unk_02035900.h"
-#include "unk_0203DFA4.h"
 #include "unk_0204A3F4.h"
 #include "unk_0205BB1C.h"
 #include "unk_0205BFF0.h"
-#include "unk_02078E30.h"
 #include "unk_02088288.h"
 #include "unk_02091564.h"
 
@@ -38,8 +38,8 @@ typedef enum BattleCastleChallengeType {
 typedef struct UnkStruct_0204FBDC {
     u32 state;
     u8 challengeType;
-    u8 unk05;
-    u8 unk06[3];
+    u8 partySlot;
+    u8 selectedOrder[3];
     u8 filler[3];
     void **unk0c;
 } UnkStruct_0204FBDC;
@@ -203,19 +203,19 @@ static u32 sub_0204FC78(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID
     partyMenu->mailbox = Save_Mailbox_Get(fieldSystem->saveData);
     partyMenu->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     partyMenu->unk_25 = 0;
-    partyMenu->unk_24 = 23;
+    partyMenu->context = PARTY_MENU_CONTEXT_23;
     partyMenu->fieldSystem = fieldSystem;
-    partyMenu->unk_26 = a0->unk05;
+    partyMenu->partySlot = a0->partySlot;
     for (u8 i = 0; i < 3; i++) {
-        partyMenu->unk_30[i] = a0->unk06[i];
+        partyMenu->selectedOrder[i] = a0->selectedOrder[i];
     }
-    partyMenu->unk_37 = 100;
-    partyMenu->unk_36_0 = 3;
-    partyMenu->unk_36_4 = 3;
-    partyMenu->unk20 = &(fieldSystem->unk_10C);
+    partyMenu->maxLevel = 100;
+    partyMenu->minMonsToSelect = 3;
+    partyMenu->maxMonsToSelect = 3;
+    partyMenu->menuInputStatePtr = &(fieldSystem->menuInputState);
     if (a0->challengeType == BATTLE_CASTLE_CHALLENGE_TYPE_MULTI) {
-        partyMenu->unk_36_0 = 2;
-        partyMenu->unk_36_4 = 2;
+        partyMenu->minMonsToSelect = 2;
+        partyMenu->maxMonsToSelect = 2;
     }
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, partyMenu);
     *(a0->unk0c) = partyMenu;
@@ -227,14 +227,14 @@ static u32 sub_0204FD50(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
         return TRUE;
     }
     PartyMenuArgs *partyMenu = *(a0->unk0c);
-    switch (partyMenu->unk_26) {
-        case 7:
-            return 4;
-        case 6:
-            return 4;
+    switch (partyMenu->partySlot) {
+    case 7:
+        return 4;
+    case 6:
+        return 4;
     }
-    MI_CpuCopy8(partyMenu->unk_30, a0->unk06, sizeof(partyMenu->unk_30));
-    a0->unk05 = partyMenu->unk_26;
+    MI_CpuCopy8(partyMenu->selectedOrder, a0->selectedOrder, 3);
+    a0->partySlot = partyMenu->partySlot;
     FreeToHeap(partyMenu);
     *(a0->unk0c) = NULL;
     return 2;
@@ -249,14 +249,14 @@ static u32 sub_0204FDA0(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID
     unk->natDexEnabled = SaveArray_IsNatDexEnabled(saveData);
     unk->unk2C = sub_02088288(saveData);
     unk->unk11 = 1;
-    unk->unk14 = a0->unk05;
+    unk->partySlot = a0->partySlot;
     unk->partyCount = Party_GetCount(unk->party);
-    unk->unk18 = 0;
+    unk->moveToLearn = 0;
     unk->unk12 = 0;
     unk->ribbons = Save_SpecialRibbons_Get(saveData);
     unk->isFlag982Set = sub_0208828C(saveData);
-    sub_02089D40((void*)unk, unk_020FC3A4);
-    sub_0208AD34((void*)unk, Save_PlayerData_GetProfileAddr(saveData));
+    sub_02089D40(unk, unk_020FC3A4);
+    sub_0208AD34(unk, Save_PlayerData_GetProfileAddr(saveData));
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PokemonSummary, unk);
     *(a0->unk0c) = unk;
     return 3;
@@ -267,7 +267,7 @@ static u32 sub_0204FE30(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
         return 3;
     }
     PokemonSummaryArgs *unk = *(a0->unk0c);
-    a0->unk05 = unk->unk14;
+    a0->partySlot = unk->partySlot;
     FreeToHeap(unk);
     *(a0->unk0c) = NULL;
     return 0;

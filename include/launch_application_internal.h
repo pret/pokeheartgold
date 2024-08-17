@@ -8,8 +8,8 @@
 typedef enum PartyMenuMoveSelectState {
     PMMS_OPEN_PARTY_MENU,
     PMMS_WAIT_PARTY_MENU,
-    PMMS_OPEN_FORGET_MOVE,
-    PMMS_WAIT_FORGET_MOVE,
+    PMMS_OPEN_SUMMARY,
+    PMMS_WAIT_SUMMARY,
     PMMS_FREE,
 } PartyMenuMoveSelectState;
 
@@ -58,7 +58,7 @@ typedef struct UnkStruct_0203F0D0 {
     PlayerProfile *profile;
     int *unk18;
     int unk1C;
-    u32 *unk20;
+    BOOL *menuInputStatePtr;
 } UnkStruct_0203F0D0;
 
 typedef struct UnkStruct_0203F134 {
@@ -101,7 +101,7 @@ typedef struct TradeSequenceArgs {
     TradeSequenceBackground bgType;
     int unk10;
     Options *options;
-    void *unk18;
+    EvolutionTaskData *evolutionTaskData;
     u8 unk1C[0x4];
 } TradeSequenceArgs;
 
@@ -145,11 +145,11 @@ typedef struct UnkStruct_0203F844 {
 
 typedef struct UnkStruct_0203E644 {
     u8 unk0[0x26];
-    u8 unk26;
+    u8 partySlot;
 } UnkStruct_0203E644;
 
 typedef struct PartyMenuMoveSelectData {
-    HeapID unk0;
+    HeapID heapId;
     UnkStruct_0203E644 *unk4;
     PokemonSummaryArgs *pokemonSummary;
 } PartyMenuMoveSelectData;

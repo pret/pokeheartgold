@@ -2,7 +2,7 @@
   "kind": "char",
   "graphics": [
     {
-      "narc": 21,
+      "narc": "NARC_graphic_plist_gra",
       "file": 2,
       "compressed": false,
       "id": 0,
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "narc": 21,
+      "narc": "NARC_graphic_plist_gra",
       "file": 7,
       "compressed": false,
       "id": 1,
@@ -22,7 +22,7 @@
       ]
     },
     {
-      "narc": 21,
+      "narc": "NARC_graphic_plist_gra",
       "file": 11,
       "compressed": false,
       "id": 2,
@@ -32,7 +32,7 @@
       ]
     },
     {
-      "narc": 39,
+      "narc": "NARC_a_0_3_9",
       "file": 64,
       "compressed": false,
       "id": 3,
@@ -42,7 +42,7 @@
       ]
     },
     {
-      "narc": 20,
+      "narc": "NARC_poketool_icongra_poke_icon",
       "file": 7,
       "compressed": false,
       "id": 4,
@@ -52,7 +52,7 @@
       ]
     },
     {
-      "narc": 20,
+      "narc": "NARC_poketool_icongra_poke_icon",
       "file": 7,
       "compressed": false,
       "id": 5,
@@ -62,7 +62,7 @@
       ]
     },
     {
-      "narc": 20,
+      "narc": "NARC_poketool_icongra_poke_icon",
       "file": 7,
       "compressed": false,
       "id": 6,
@@ -72,7 +72,7 @@
       ]
     },
     {
-      "narc": 20,
+      "narc": "NARC_poketool_icongra_poke_icon",
       "file": 7,
       "compressed": false,
       "id": 7,
@@ -82,7 +82,7 @@
       ]
     },
     {
-      "narc": 20,
+      "narc": "NARC_poketool_icongra_poke_icon",
       "file": 7,
       "compressed": false,
       "id": 8,
@@ -92,7 +92,7 @@
       ]
     },
     {
-      "narc": 20,
+      "narc": "NARC_poketool_icongra_poke_icon",
       "file": 7,
       "compressed": false,
       "id": 9,
@@ -102,7 +102,7 @@
       ]
     },
     {
-      "narc": 21,
+      "narc": "NARC_graphic_plist_gra",
       "file": 20,
       "compressed": false,
       "id": 10,
@@ -112,7 +112,7 @@
       ]
     },
     {
-      "narc": 15,
+      "narc": "NARC_a_0_1_5",
       "file": 29,
       "compressed": false,
       "id": 11,

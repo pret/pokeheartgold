@@ -8,7 +8,7 @@
 typedef struct UnkStruct_0203F074 {
     SaveData *saveData;
     FieldSystem *fieldSystem;
-    u32 *unk8;
+    BOOL *menuInputStatePtr;
 } UnkStruct_0203F074;
 
 BOOL ov103_021EC940(OVY_MANAGER *man, int *state);

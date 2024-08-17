@@ -138,7 +138,8 @@ struct FieldSystem {
     u16 unk7E;
     struct UnkStruct_02059E1C *unk80;
     struct UnkStruct_0205AC88 *unk84;
-    u8 filler_88[0xC];
+    u8 filler_88[0x8];
+    int unk90;
     BagCursor *bagCursor;
     u8 filler_98[0x4];
     void *unk9C;
@@ -152,18 +153,20 @@ struct FieldSystem {
     void *unkC0;
     int unkC4;
     FieldSystemUnkC8 *unk_C8;
-    u8 filler_CC[0x6];
+    u8 filler_CC[0x4];
+    u16 lastTouchMenuInput;
     u8 unkD2_0:6;
     u8 unkD2_6:1;
     u8 unkD2_7:1;
-    u8 filler_D3[0x5];
+    u8 unkD3;
+    u8 filler_D4[0x4];
     SysTask *unk_D8;
     FieldViewPhoto *viewPhotoTask;
-    u8 filler_E0[4];
+    int lastStartMenuAction;
     FollowMon followMon; // E4
     u8 unk104[4];
     FieldSystemUnk108 *unk108;
-    u32 unk_10C;
+    BOOL menuInputState; // Tracks whether the last menu input was touch or keypad
     u8 unk_110;
     u8 unk_111[3];
     GearPhoneRingManager *unk114;

@@ -1,7 +1,9 @@
-#include "global.h"
 #include "constants/items.h"
+
 #include "bag_cursor.h"
+#include "bag_view.h"
 #include "berry_pots_app.h"
+#include "global.h"
 #include "launch_application.h"
 #include "overlay_15.h"
 #include "overlay_16.h"
@@ -153,13 +155,13 @@ static u32 ov16_02201AA0(UnkStruct_ov16_0220196C *unk) {
             unused_02201BA0 = (u8*)ov16_02201B60;
 
             unk->bagView = Bag_CreateView(bag, ov16_02201B60, unk->heapId);
-            sub_0207789C(unk->bagView, unk->args->saveData, 6, unk->cursor2, unk->args->unk4);
+            sub_0207789C(unk->bagView, unk->args->saveData, 6, unk->cursor2, unk->args->menuInputStatePtr);
             break;
         case 2:
             unused_02201BA0 = (u8*)ov16_02201B64;
 
             unk->bagView = Bag_CreateView(bag, ov16_02201B64, unk->heapId);
-            sub_0207789C(unk->bagView, unk->args->saveData, 6, unk->cursor1, unk->args->unk4);
+            sub_0207789C(unk->bagView, unk->args->saveData, 6, unk->cursor1, unk->args->menuInputStatePtr);
             break;
         default:
             GF_ASSERT(FALSE);
@@ -175,7 +177,7 @@ static u32 ov16_02201B24(UnkStruct_ov16_0220196C *unk) {
         return 3;
     }
 
-    unk->unk16 = ((u8)sub_0207790C(unk->bagView) == 4) ? sub_02077904(unk->bagView) : 0xFFFF;
+    unk->unk16 = ((u8)sub_0207790C(unk->bagView) == 4) ? BagView_GetItemId(unk->bagView) : 0xFFFF;
     FreeToHeap(unk->bagView);
     unk->bagView = NULL;
 

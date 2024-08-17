@@ -1,7 +1,8 @@
 #ifndef POKEHEARTGOLD_UNK_02092BE8_H
 #define POKEHEARTGOLD_UNK_02092BE8_H
 
-#include "gear_phone.h"
+#include "field_system.h"
+#include "field_types_def.h"
 #include "save.h"
 #include "save_local_field_data.h"
 #include "save_vars_flags.h"
@@ -9,7 +10,7 @@
 #include "sys_task_api.h"
 
 typedef struct PokegearArgs {
-    u8 kind;
+    u8 kind; // 0x00
     u8 unk01; // One of the variables inside FieldSystem with offset 0x110 (currently unk_10C[1];)
     u16 mapMusicID; // 0x02 (surf-overriden)
     u8 unk04; // related to unk_var2 from UnkFieldSystemSub_114
@@ -20,11 +21,14 @@ typedef struct PokegearArgs {
     int y; // 0x0c
     u16 mapID; // 0x10
     u16 mapHeader; // 0x12
-    u8 filler_14[0xe];
+    BOOL unk_14;
+    int mapCursorX; // 0x18
+    int mapCursorY; // 0x1C
+    u16 unk_20;
     u8 matrixXCoord; // 0x22
     u8 matrixYCoord; // 0x23
     SaveData *saveData; // 0x24
-    void *unk28; // Pointer to a Field System variable at offset 0x10C (currently unk_10C[0];)
+    void *menuInputStatePtr; // 0x28
 } PokegearArgs;
 
 typedef struct UnkPokegearstruct_14 {

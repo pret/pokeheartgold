@@ -5,7 +5,7 @@
 
 typedef struct SaveFashionDataSub {
     u8 filler_00[0x40];
-    MAIL_MESSAGE mailMessage;
+    MailMessage mailMessage;
     u8 filler_48[0x2C];
 } SaveFashionDataSub; // size=0x74
 

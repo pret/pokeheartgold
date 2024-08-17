@@ -1,10 +1,13 @@
-#include "global.h"
 #include "save_local_field_data.h"
+
+#include "constants/scrcmd.h"
+
 #include "field_player_avatar.h"
+#include "field_system.h"
+#include "global.h"
 #include "map_object.h"
 #include "script_pokemon_util.h"
 #include "unk_0203BA5C.h"
-#include "constants/scrcmd.h"
 
 struct LocalFieldData {
     Location currentPosition;

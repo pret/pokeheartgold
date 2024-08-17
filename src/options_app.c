@@ -1,35 +1,38 @@
-#include "global.h"
+#include "options_app.h"
+
 #include <nitro/spi/ARM9/pm.h>
-#include "bg_window.h"
+
 #include "data/resdat.naix"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0045.h"
+
+#include "bg_window.h"
 #include "font.h"
 #include "gf_gfx_loader.h"
-#include "msgdata/msg/msg_0045.h"
+#include "global.h"
 #include "msgdata.h"
-#include "msgdata/msg.naix"
-#include "options_app.h"
 #include "options.h"
-#include "unk_02005D10.h"
-#include "unk_0200CF18.h"
-#include "unk_0200FA24.h"
-#include "unk_020183F0.h"
-#include "unk_02023694.h"
 #include "render_text.h"
 #include "render_window.h"
 #include "sound.h"
 #include "system.h"
 #include "touchscreen.h"
+#include "unk_02005D10.h"
+#include "unk_0200CF18.h"
+#include "unk_0200FA24.h"
+#include "unk_020183F0.h"
+#include "unk_02023694.h"
 #include "unk_0203A3B0.h"
 #include "vram_transfer_manager.h"
 
 // Not to be confused with `Options`, which is almost exactly the same, save for two members being swapped. SMH
 typedef struct OptionsApp_Options {
-    u16 textSpeed:4;
-    u16 soundMethod:2;
-    u16 battleScene:1;
-    u16 battleStyle:1;
-    u16 buttonMode:2;
-    u16 frame:5;
+    u16 textSpeed : 4;
+    u16 soundMethod : 2;
+    u16 battleScene : 1;
+    u16 battleStyle : 1;
+    u16 buttonMode : 2;
+    u16 frame : 5;
 } OptionsApp_Options;
 
 typedef struct OptionsApp_MenuEntry {
@@ -55,11 +58,11 @@ typedef struct OptionsApp_Data {
     u32 exitState;
     u32 setupAndFreeState;
     u32 fadeUnused; // unused, game writes 0 here when it's about to start a fade, but never reads from here
-    u32 unk10_0:2;
-    u32 currentMenuEntryId:3;
-    u32 unk10_5:16; // unused
-    u32 unk10_21:1;
-    u32 unk10_22:10; // unused
+    u32 unk10_0 : 2;
+    u32 currentMenuEntryId : 3;
+    u32 unk10_5 : 16; // unused
+    u32 unk10_21 : 1;
+    u32 unk10_22 : 10; // unused
     BgConfig *bgConfig;
     OptionsApp_Options options;
     Options *playerOptionsUnused; // unused copy of playerOptions
@@ -88,7 +91,13 @@ typedef struct OptionsApp_Data {
 } OptionsApp_Data; // size: 0x32c
 
 static const s8 sOptionsApp_UnkWindowWidthOffsets[MENU_ENTRY_COUNT] = {
-    0, 0, 0, 0, 0, -0x10, 0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -0x10,
+    0,
 };
 
 static const u32 sOptionsAppBgLayers[5] = {
@@ -383,52 +392,52 @@ BOOL OptionsMenu_Exit(OVY_MANAGER *manager, int *state) {
 BOOL OptionsMenu_Main(OVY_MANAGER *manager, int *state) {
     OptionsApp_Data *data = OverlayManager_GetData(manager);
     switch (data->exitState) {
-        case 0:
-            if (!ov54_021E5CE4(data)) {
-                return FALSE;
-            }
+    case 0:
+        if (!ov54_021E5CE4(data)) {
+            return FALSE;
+        }
 
+        data->fadeUnused = 0;
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapId);
+        OptionsApp_SetActiveButtonsXPosition(data);
+        sub_0200D020(data->spriteGfxHandler);
+        break;
+    case 1:
+        sub_0200D020(data->spriteGfxHandler);
+        if (!IsPaletteFadeFinished()) {
+            return FALSE;
+        }
+        break;
+    case 2:
+        if (data->unk10_0 != 0) {
+            sub_0200D020(data->spriteGfxHandler);
+            break;
+        }
+        OptionsApp_HandleInput(data);
+        sub_0200D020(data->spriteGfxHandler);
+        return FALSE;
+    case 3:
+        sub_0200D020(data->spriteGfxHandler);
+        if (!OptionsApp_ConfirmAndQuitButtonsAreDoneAnimating(data)) {
             data->fadeUnused = 0;
-            BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapId);
-            OptionsApp_SetActiveButtonsXPosition(data);
-            sub_0200D020(data->spriteGfxHandler);
+            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapId);
             break;
-        case 1:
-            sub_0200D020(data->spriteGfxHandler);
-            if (!IsPaletteFadeFinished()) {
-                return FALSE;
-            }
-            break;
-        case 2:
-            if (data->unk10_0 != 0) {
-                sub_0200D020(data->spriteGfxHandler);
-                break;
-            }
-            OptionsApp_HandleInput(data);
-            sub_0200D020(data->spriteGfxHandler);
+        }
+        return FALSE;
+    case 4:
+        if (TextPrinterCheckActive(data->textPrinter)) {
+            RemoveTextPrinter(data->textPrinter);
+        }
+        sub_0200D020(data->spriteGfxHandler);
+        if (!IsPaletteFadeFinished()) {
             return FALSE;
-        case 3:
-            sub_0200D020(data->spriteGfxHandler);
-            if (!OptionsApp_ConfirmAndQuitButtonsAreDoneAnimating(data)) {
-                data->fadeUnused = 0;
-                BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapId);
-                break;
-            }
-            return FALSE;
-        case 4:
-            if (TextPrinterCheckActive(data->textPrinter)) {
-                RemoveTextPrinter(data->textPrinter);
-            }
-            sub_0200D020(data->spriteGfxHandler);
-            if (!IsPaletteFadeFinished()) {
-                return FALSE;
-            }
-            break;
-        case 5:
-            if (ov54_021E5DBC(data)) {
-                return TRUE;
-            }
-            return FALSE;
+        }
+        break;
+    case 5:
+        if (ov54_021E5DBC(data)) {
+            return TRUE;
+        }
+        return FALSE;
     }
 
     data->exitState++;
@@ -459,44 +468,44 @@ static void OptionsApp_OnVBlank(OptionsApp_Data *data) {
 
 static BOOL ov54_021E5CE4(OptionsApp_Data *data) {
     switch (data->setupAndFreeState) {
-        case 0:
-            Main_SetVBlankIntrCB(NULL, NULL);
-            HBlankInterruptDisable();
+    case 0:
+        Main_SetVBlankIntrCB(NULL, NULL);
+        HBlankInterruptDisable();
 
-            GfGfx_DisableEngineAPlanes();
-            GfGfx_DisableEngineBPlanes();
-            GX_SetVisiblePlane(GX_PLANEMASK_NONE);
-            GXS_SetVisiblePlane(GX_PLANEMASK_NONE);
+        GfGfx_DisableEngineAPlanes();
+        GfGfx_DisableEngineBPlanes();
+        GX_SetVisiblePlane(GX_PLANEMASK_NONE);
+        GXS_SetVisiblePlane(GX_PLANEMASK_NONE);
 
-            OptionsApp_SetupGraphicsBanks();
+        OptionsApp_SetupGraphicsBanks();
 
-            GX_SetDispSelect(GX_DISP_SELECT_SUB_MAIN);
+        GX_SetDispSelect(GX_DISP_SELECT_SUB_MAIN);
 
-            sub_0200FBDC(0);
-            sub_0200FBDC(1);
+        sub_0200FBDC(0);
+        sub_0200FBDC(1);
 
-            OptionsApp_SetupBgConfig(data);
-            OptionsApp_SetupSpriteRenderer(data);
-            break;
+        OptionsApp_SetupBgConfig(data);
+        OptionsApp_SetupSpriteRenderer(data);
+        break;
 
-        case 1:
-            OptionsApp_SetupGraphicsData(data);
-            data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0045_bin, data->heapId);
-            OptionsApp_LoadMenuEntriesData(data);
-            break;
+    case 1:
+        OptionsApp_SetupGraphicsData(data);
+        data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0045_bin, data->heapId);
+        OptionsApp_LoadMenuEntriesData(data);
+        break;
 
-        case 2:
-            OptionsApp_SetupWindows(data);
-            OptionsApp_SetupInterfaceText(data);
-            GF_CreateVramTransferManager(32, data->heapId);
-            GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
-            sub_0203A964();
-            OptionsApp_SetupSprites(data);
+    case 2:
+        OptionsApp_SetupWindows(data);
+        OptionsApp_SetupInterfaceText(data);
+        GF_CreateVramTransferManager(32, data->heapId);
+        GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
+        sub_0203A964();
+        OptionsApp_SetupSprites(data);
 
-            Main_SetVBlankIntrCB((GFIntrCB)OptionsApp_OnVBlank, data);
-            data->setupAndFreeState = 0;
-            ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_ON);
-            return TRUE;
+        Main_SetVBlankIntrCB((GFIntrCB)OptionsApp_OnVBlank, data);
+        data->setupAndFreeState = 0;
+        ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_ON);
+        return TRUE;
     }
 
     data->setupAndFreeState++;
@@ -505,30 +514,30 @@ static BOOL ov54_021E5CE4(OptionsApp_Data *data) {
 
 static BOOL ov54_021E5DBC(OptionsApp_Data *data) {
     switch (data->setupAndFreeState) {
-        case 0:
-            GF_DestroyVramTransferManager();
-            OptionsApp_FreeWindows(data);
+    case 0:
+        GF_DestroyVramTransferManager();
+        OptionsApp_FreeWindows(data);
 
-            for (int i = 0; i < MENU_ENTRY_COUNT - 1; i++) {
-                for (int j = 0; j < data->menuEntries[i].numStrings; j++) {
-                    String_Delete(data->menuEntries[i].strings[j]);
-                }
+        for (int i = 0; i < MENU_ENTRY_COUNT - 1; i++) {
+            for (int j = 0; j < data->menuEntries[i].numStrings; j++) {
+                String_Delete(data->menuEntries[i].strings[j]);
             }
+        }
 
-            DestroyMsgData(data->msgData);
-            ov54_021E6000(data);
-            OptionsApp_FreeBgConfig(data);
-            OptionsApp_FreeSpriteRenderer(data);
-            break;
-        case 1:
-            Main_SetVBlankIntrCB(NULL, NULL);
-            HBlankInterruptDisable();
-            GfGfx_DisableEngineAPlanes();
-            GfGfx_DisableEngineBPlanes();
-            GX_SetVisiblePlane(GX_PLANEMASK_NONE);
-            GXS_SetVisiblePlane(GX_PLANEMASK_NONE);
-            data->setupAndFreeState = 0;
-            return TRUE;
+        DestroyMsgData(data->msgData);
+        ov54_021E6000(data);
+        OptionsApp_FreeBgConfig(data);
+        OptionsApp_FreeSpriteRenderer(data);
+        break;
+    case 1:
+        Main_SetVBlankIntrCB(NULL, NULL);
+        HBlankInterruptDisable();
+        GfGfx_DisableEngineAPlanes();
+        GfGfx_DisableEngineBPlanes();
+        GX_SetVisiblePlane(GX_PLANEMASK_NONE);
+        GXS_SetVisiblePlane(GX_PLANEMASK_NONE);
+        data->setupAndFreeState = 0;
+        return TRUE;
     }
 
     data->setupAndFreeState++;
@@ -772,23 +781,23 @@ static void ov54_021E6418(OptionsApp_Data *data, u16 menuEntryId) {
     FillWindowPixelRect(&data->windows.selectedOption, 0, 108 + sOptionsApp_UnkWindowWidthOffsets[menuEntryId], y, 384, 24);
 
     switch (menuEntryId) {
-        case MENU_ENTRY_FRAME:
-            u16 x = sOptionChoiceLabelXCoords[menuEntryId][0] - FontID_String_GetWidth(0, data->menuEntries[menuEntryId].strings[data->menuEntries[menuEntryId].value], 0) / 2;
-            AddTextPrinterParameterizedWithColor(&data->windows.selectedOption, 0, data->menuEntries[menuEntryId].strings[data->menuEntries[menuEntryId].value], x, y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
-            CopyWindowToVram(&data->windows.selectedOption);
-            OptionsApp_PrintTextFrameString(data, data->frameNumText, TRUE);
-            data->unk10_21 = TRUE;
-            return;
-        case MENU_ENTRY_SOUND_METHOD:
-            GF_SndSetMonoFlag(data->menuEntries[menuEntryId].value);
-            break;
-        case MENU_ENTRY_BUTTON_MODE:
-            Options_SetButtonModeOnMain(NULL, data->menuEntries[menuEntryId].value);
-            break;
-        case MENU_ENTRY_TEXT_SPEED:
-            Options_SetTextSpeed(data->playerOptions, data->menuEntries[menuEntryId].value);
-            OptionsApp_PrintTextFrameString(data, data->frameNumText, FALSE);
-            break;
+    case MENU_ENTRY_FRAME:
+        u16 x = sOptionChoiceLabelXCoords[menuEntryId][0] - FontID_String_GetWidth(0, data->menuEntries[menuEntryId].strings[data->menuEntries[menuEntryId].value], 0) / 2;
+        AddTextPrinterParameterizedWithColor(&data->windows.selectedOption, 0, data->menuEntries[menuEntryId].strings[data->menuEntries[menuEntryId].value], x, y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        CopyWindowToVram(&data->windows.selectedOption);
+        OptionsApp_PrintTextFrameString(data, data->frameNumText, TRUE);
+        data->unk10_21 = TRUE;
+        return;
+    case MENU_ENTRY_SOUND_METHOD:
+        GF_SndSetMonoFlag(data->menuEntries[menuEntryId].value);
+        break;
+    case MENU_ENTRY_BUTTON_MODE:
+        Options_SetButtonModeOnMain(NULL, data->menuEntries[menuEntryId].value);
+        break;
+    case MENU_ENTRY_TEXT_SPEED:
+        Options_SetTextSpeed(data->playerOptions, data->menuEntries[menuEntryId].value);
+        OptionsApp_PrintTextFrameString(data, data->frameNumText, FALSE);
+        break;
     }
 
     // if (data->menuEntries[menuEntryId].numStrings > 0)
@@ -801,6 +810,7 @@ static void ov54_021E6418(OptionsApp_Data *data, u16 menuEntryId) {
     CopyWindowToVram(&data->windows.selectedOption);
 }
 #else
+// clang-format off
 static asm void ov54_021E6418(OptionsApp_Data *data, u16 menuEntryId) {
     push {r3, r4, r5, r6, r7, lr}
     sub sp, #0x20
@@ -1013,6 +1023,7 @@ _021E65B2:
     add sp, #0x20
     pop {r3, r4, r5, r6, r7, pc}
 }
+// clang-format off
 #endif
 
 static void OptionsApp_UpdateMenuEntryCarousel(OptionsApp_Data *data, u32 menuEntryId, OptionsApp_MenuEntry *menuEntry, s32 offset) {
@@ -1181,17 +1192,17 @@ static void OptionsApp_SetupSpriteRenderer(OptionsApp_Data *data) {
     data->spriteRenderer = SpriteRenderer_Create(data->heapId);
     data->spriteGfxHandler = SpriteRenderer_CreateGfxHandler(data->spriteRenderer);
 
-    const Unk122_021E92FC unk1 = {
-        .unk0 = 0,
-        .unk4 = 0x80,
-        .unk8 = 0,
-        .unkC = 0x20,
-        .unk10 = 0,
-        .unk14 = 0x80,
-        .unk18 = 0,
-        .unk1C = 0x20,
+    const OamManagerParam unk1 = {
+        .fromOBJmain = 0,
+        .numOBJmain = 128,
+        .fromAffineMain = 0,
+        .numAffineMain = 32,
+        .fromOBJsub = 0,
+        .numOBJsub = 128,
+        .fromAffineSub = 0,
+        .numAffineSub = 32,
     };
-    const Unk122_021E92D0 unk2 = {
+    const OamCharTransferParam unk2 = {
         .maxTasks = 9,
         .sizeMain = 0x400,
         .sizeSub = 0x400,

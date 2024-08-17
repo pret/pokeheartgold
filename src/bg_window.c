@@ -934,7 +934,7 @@ void BG_FillCharDataRange(BgConfig *bgConfig, GFBgLayer bgId, u32 fillValue, u32
     FreeToHeap(buffer);
 }
 
-void BG_LoadPlttData(u32 location, const void *plttData, u32 size, u32 offset) {
+void BG_LoadPlttData(u32 location, const void *plttData, u16 size, u16 offset) {
     DC_FlushRange(plttData, size);
     if (location < GF_PAL_LOCATION_SUB_BG) {
         GX_LoadBGPltt(plttData, offset, size);

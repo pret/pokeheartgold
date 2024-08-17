@@ -1,15 +1,17 @@
-#include "scrcmd.h"
-#include "map_header.h"
-#include "pokedex.h"
-#include "script_pokemon_util.h"
-#include "player_data.h"
-#include "get_egg.h"
 #include "constants/balls.h"
+
+#include "field_system.h"
+#include "get_egg.h"
 #include "item.h"
-#include "save_arrays.h"
+#include "map_header.h"
 #include "npc_trade.h"
-#include "unk_0205BB1C.h"
+#include "player_data.h"
+#include "pokedex.h"
 #include "ribbon.h"
+#include "save_arrays.h"
+#include "scrcmd.h"
+#include "script_pokemon_util.h"
+#include "unk_0205BB1C.h"
 
 FS_EXTERN_OVERLAY(npc_trade);
 
@@ -27,7 +29,7 @@ BOOL ScrCmd_GiveMon(ScriptContext *ctx) {
 
     Party *party = SaveArray_Party_Get(fieldSystem->saveData);
     *retPtr = GiveMon(HEAP_ID_FIELD, fieldSystem->saveData, species, level, form, ability, heldItem, map, 24);
-  
+
     return FALSE;
 }
 
@@ -542,7 +544,7 @@ BOOL ScrCmd_KenyaCheckPartyOrMailbox(ScriptContext *ctx) {
         }
     }
 
-    MAILBOX *mailbox = Save_Mailbox_Get(fieldSystem->saveData);
+    Mailbox *mailbox = Save_Mailbox_Get(fieldSystem->saveData);
     i = 0;
     while (TRUE) {
         Mailbox_FetchMailToBuffer(mailbox->msgs, 0, i, mail);

@@ -247,7 +247,7 @@ u16 sub_0202B4E4(const Mail *mail) {
     return mail->form_flags;
 }
 
-MAIL_MESSAGE *Mail_GetUnk20Array(Mail *mail, int i) {
+MailMessage *Mail_GetUnk20Array(Mail *mail, int i) {
     if (i < NELEMS(mail->unk_20)) {
         return &mail->unk_20[i];
     } else {
@@ -255,28 +255,28 @@ MAIL_MESSAGE *Mail_GetUnk20Array(Mail *mail, int i) {
     }
 }
 
-void Mail_SetMessage(Mail *mail, const MAIL_MESSAGE *src, int i) {
+void Mail_SetMessage(Mail *mail, const MailMessage *src, int i) {
     if (i < NELEMS(mail->unk_20)) {
         MailMsg_Copy(&mail->unk_20[i], src);
     }
 }
 
-MAILBOX *Save_Mailbox_Get(SaveData *saveData) {
-    return (MAILBOX *)SaveArray_Get(saveData, SAVE_MAILBOX);
+Mailbox *Save_Mailbox_Get(SaveData *saveData) {
+    return (Mailbox *)SaveArray_Get(saveData, SAVE_MAILBOX);
 }
 
 u32 Save_Mailbox_sizeof(void) {
-    return sizeof(MAILBOX);
+    return sizeof(Mailbox);
 }
 
-void Save_Mailbox_Init(MAILBOX *mailbox) {
+void Save_Mailbox_Init(Mailbox *mailbox) {
     int i;
     for (i = 0; i < MAILBOX_MSG_COUNT; i++) {
         Mail_Init(&mailbox->msgs[i]);
     }
 }
 
-int Mailbox_GetFirstEmptySlotIdx(MAILBOX *mailbox) {
+int Mailbox_GetFirstEmptySlotIdx(Mailbox *mailbox) {
     return MailArray_GetFirstEmptySlotIdx(mailbox->msgs, MAILBOX_MSG_COUNT);
 }
 
@@ -294,7 +294,7 @@ void Mailbox_CopyMailToSlotI(Mail *msgs, int n, int i, const Mail *src) {
     }
 }
 
-u32 Mailbox_CountMessages(MAILBOX *mailbox, int unused) {
+u32 Mailbox_CountMessages(Mailbox *mailbox, int unused) {
     return MailArray_CountMessages(mailbox->msgs, MAILBOX_MSG_COUNT);
 }
 

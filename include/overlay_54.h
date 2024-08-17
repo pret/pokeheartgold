@@ -7,7 +7,7 @@
 typedef struct OptionsMenuArgs {
     u8 unk0[0x4];
     Options *options;
-    u32 *unk8;
+    BOOL *menuInputStatePtr;
 } OptionsMenuArgs;
 
 BOOL OptionsMenu_Init(OVY_MANAGER *man, int *state);

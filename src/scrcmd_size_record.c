@@ -1,8 +1,9 @@
+#include "dex_mon_measures.h"
+#include "field_system.h"
 #include "global.h"
 #include "pokemon.h"
-#include "scrcmd.h"
-#include "dex_mon_measures.h"
 #include "save_vars_flags.h"
+#include "scrcmd.h"
 #include "script_state_misc.h"
 
 static const u16 sBigMonSizeTable[][3] = {

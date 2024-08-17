@@ -12,7 +12,7 @@ typedef struct UnkStruct_0203F4F8 {
     struct UnkStruct_0205AC88 *unk4;
     Options *options;
     GAME_STATS *gameStats;
-    u32 *unk10;
+    BOOL *menuInputStatePtr;
 } UnkStruct_0203F4F8;
 
 BOOL ov73_021E5900(OVY_MANAGER *man, int *state);

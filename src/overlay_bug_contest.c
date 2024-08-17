@@ -1,16 +1,19 @@
-#include "global.h"
-#include "bug_contest.h"
-#include "pokedex.h"
-#include "math_util.h"
-#include "message_format.h"
-#include "wild_encounter.h"
-#include "pokemon_storage_system.h"
 #include "constants/items.h"
 #include "constants/trainer_class.h"
+
 #include "msgdata/msg/msg_0246.h"
+
+#include "bug_contest.h"
+#include "field_system.h"
+#include "global.h"
+#include "math_util.h"
+#include "message_format.h"
+#include "pokedex.h"
+#include "pokemon_storage_system.h"
+#include "save_arrays.h"
 #include "unk_02055418.h"
 #include "unk_0205BB1C.h"
-#include "save_arrays.h"
+#include "wild_encounter.h"
 
 const u16 sBugContestOpponentClasses[] = {
     TRAINERCLASS_BUG_CATCHER,      // Don
@@ -158,7 +161,7 @@ BOOL BugContest_BufferCaughtMonNick(BugContest *bugContest, MessageFormat *msgFm
     }
 
     string = String_New(POKEMON_NAME_LENGTH+1+1, bugContest->heapId);
-    GetMonData(bugContest->mon, MON_DATA_NICKNAME_3, string);
+    GetMonData(bugContest->mon, MON_DATA_NICKNAME_STRING, string);
     BufferString(msgFmt, slot, string, 2, 1, 2);
     String_Delete(string);
     return bugContest->party_cur_num >= PARTY_SIZE;

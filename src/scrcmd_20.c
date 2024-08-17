@@ -1,33 +1,34 @@
-#include "global.h"
+#include "scrcmd_20.h"
+
+#include "constants/game_stats.h"
+
 #include "assert.h"
 #include "bag.h"
 #include "field_player_avatar.h"
 #include "field_system.h"
-#include "launch_application.h"
 #include "fieldmap.h"
 #include "frontier_data.h"
 #include "game_stats.h"
+#include "global.h"
 #include "heap.h"
+#include "launch_application.h"
 #include "mail.h"
 #include "party.h"
+#include "party_menu.h"
 #include "player_data.h"
 #include "pokedex_util.h"
-#include "pokemon_storage_system.h"
 #include "pokemon.h"
+#include "pokemon_storage_system.h"
 #include "save_special_ribbons.h"
 #include "scrcmd.h"
-#include "scrcmd_20.h"
 #include "script.h"
 #include "task.h"
 #include "unk_02030A98.h"
 #include "unk_02035900.h"
-#include "unk_0203DFA4.h"
 #include "unk_0205BB1C.h"
 #include "unk_0205BFF0.h"
-#include "unk_02078E30.h"
 #include "unk_02088288.h"
 #include "unk_02091564.h"
-#include "constants/game_stats.h"
 
 typedef enum BattleHallChallengeType {
     BATTLE_HALL_CHALLENGE_TYPE_SINGLE,
@@ -38,8 +39,8 @@ typedef enum BattleHallChallengeType {
 typedef struct UnkStruct_0204F284 {
     u32 state;
     u8 challengeType;
-    u8 unk05;
-    u8 unk06[2];
+    u8 partySlot;
+    u8 selectedMons[2];
     void **unk08;
 } UnkStruct_0204F284;
 
@@ -310,29 +311,29 @@ static BOOL sub_0204F2B8(TaskManager *taskManager) {
 }
 
 static u32 sub_0204F320(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem, HeapID unused) {
-    PartyMenuArgs *partyMenu = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
-    MIi_CpuClearFast(0, (u32*)partyMenu, sizeof(PartyMenuArgs));
-    partyMenu->party = SaveArray_Party_Get(fieldSystem->saveData);
-    partyMenu->bag = Save_Bag_Get(fieldSystem->saveData);
-    partyMenu->mailbox = Save_Mailbox_Get(fieldSystem->saveData);
-    partyMenu->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
-    partyMenu->unk_25 = 0;
-    partyMenu->unk_24 = 22;
-    partyMenu->fieldSystem = fieldSystem;
-    partyMenu->unk_26 = a0->unk05;
+    PartyMenuArgs *partyMenuArgs = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
+    MIi_CpuClearFast(0, (u32 *)partyMenuArgs, sizeof(PartyMenuArgs));
+    partyMenuArgs->party = SaveArray_Party_Get(fieldSystem->saveData);
+    partyMenuArgs->bag = Save_Bag_Get(fieldSystem->saveData);
+    partyMenuArgs->mailbox = Save_Mailbox_Get(fieldSystem->saveData);
+    partyMenuArgs->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
+    partyMenuArgs->unk_25 = 0;
+    partyMenuArgs->context = PARTY_MENU_CONTEXT_BATTLE_HALL;
+    partyMenuArgs->fieldSystem = fieldSystem;
+    partyMenuArgs->partySlot = a0->partySlot;
     for (u8 i = 0; i < 2; i++) {
-        partyMenu->unk_30[i] = a0->unk06[i];
+        partyMenuArgs->selectedOrder[i] = a0->selectedMons[i];
     }
-    partyMenu->unk_37 = 30;
-    partyMenu->unk_36_0 = 1;
-    partyMenu->unk_36_4 = 1;
-    partyMenu->unk20 = &fieldSystem->unk_10C;
-    if (a0->challengeType == 1) { // doubles
-        partyMenu->unk_36_0 = 2;
-        partyMenu->unk_36_4 = 2;
+    partyMenuArgs->maxLevel = 30;
+    partyMenuArgs->minMonsToSelect = 1;
+    partyMenuArgs->maxMonsToSelect = 1;
+    partyMenuArgs->menuInputStatePtr = &fieldSystem->menuInputState;
+    if (a0->challengeType == BATTLE_HALL_CHALLENGE_TYPE_DOUBLE) {
+        partyMenuArgs->minMonsToSelect = 2;
+        partyMenuArgs->maxMonsToSelect = 2;
     }
-    FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, partyMenu);
-    *(a0->unk08) = partyMenu;
+    FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, partyMenuArgs);
+    *(a0->unk08) = partyMenuArgs;
     return 1;
 }
 
@@ -341,17 +342,17 @@ static u32 sub_0204F3F8(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem) {
         return 1;
     }
     PartyMenuArgs *partyMenu = *(a0->unk08);
-    switch (partyMenu->unk_26) {
-        case 7:
-            return 4;
-        case 6:
-            return 4;
-        default:
-            MI_CpuCopy8(partyMenu->unk_30, a0->unk06, 2);
-            a0->unk05 = partyMenu->unk_26;
-            FreeToHeap(partyMenu);
-            *(a0->unk08) = NULL;
-            return 2;
+    switch (partyMenu->partySlot) {
+    case 7:
+        return 4;
+    case 6:
+        return 4;
+    default:
+        MI_CpuCopy8(partyMenu->selectedOrder, a0->selectedMons, 2);
+        a0->partySlot = partyMenu->partySlot;
+        FreeToHeap(partyMenu);
+        *(a0->unk08) = NULL;
+        return 2;
     }
 }
 
@@ -364,9 +365,9 @@ static u32 sub_0204F448(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem, HeapID
     args->natDexEnabled = SaveArray_IsNatDexEnabled(saveData);
     args->unk2C = sub_02088288(saveData);
     args->unk11 = 1;
-    args->unk14 = a0->unk05;
+    args->partySlot = a0->partySlot;
     args->partyCount = Party_GetCount(args->party);
-    args->unk18 = 0;
+    args->moveToLearn = MOVE_NONE;
     args->unk12 = 0;
     args->ribbons = Save_SpecialRibbons_Get(saveData);
     args->isFlag982Set = sub_0208828C(saveData);
@@ -381,9 +382,9 @@ static u32 sub_0204F4D8(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem) {
     if (FieldSystem_ApplicationIsRunning(fieldSystem)) {
         return 3;
     }
-    PokemonSummaryArgs *r0 = *(a0->unk08);
-    a0->unk05 = r0->unk14;
-    FreeToHeap(r0);
+    PokemonSummaryArgs *pokemonSummaryArgs = *(a0->unk08);
+    a0->partySlot = pokemonSummaryArgs->partySlot;
+    FreeToHeap(pokemonSummaryArgs);
     *(a0->unk08) = NULL;
     return 0;
 }

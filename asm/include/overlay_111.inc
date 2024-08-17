@@ -109,8 +109,8 @@
 .public sub_02074490
 .public sub_0207449C
 .public sub_020744A8
-.public RatioToInt
-.public sub_020880B0
+.public CalculateHpBarPixelsLength
+.public CalculateHpBarColor
 .public NNS_G2dGetImageLocation
 .public GX_LoadOBJ
 .public GXS_LoadOBJ

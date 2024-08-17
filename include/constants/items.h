@@ -25,6 +25,7 @@
 #define BTLPOCKETLIST_BALLS          2
 #define BTLPOCKETLIST_BATTLE_ITEMS   3
 
+// todo
 #define BPOCKET_BALLS_F 0
 #define BPOCKET_
 

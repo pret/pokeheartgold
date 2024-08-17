@@ -1,13 +1,17 @@
-#include "global.h"
+#include "unk_0206B910.h"
+
 #include "assert.h"
 #include "bag.h"
 #include "field_player_avatar.h"
 #include "fieldmap.h"
+#include "global.h"
 #include "heap.h"
+#include "launch_application.h"
 #include "mail.h"
 #include "map_header.h"
 #include "overlay_57.h"
 #include "party.h"
+#include "party_menu.h"
 #include "player_data.h"
 #include "pokemon.h"
 #include "render_text.h"
@@ -19,10 +23,7 @@
 #include "unk_020379A0.h"
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
-#include "unk_0206B910.h"
-#include "unk_02078E30.h"
 #include "unk_02091054.h"
-#include "launch_application.h"
 
 FS_EXTERN_OVERLAY(OVY_57);
 
@@ -33,7 +34,7 @@ typedef struct UnkStruct_0206B984 {
     SealCase *sealCase;
     Options *options;
     SaveData *saveData;
-    void *unk2c;
+    void *menuInputStatePtr;
     u8 unk30;
     u8 unk31;
 } UnkStruct_0206B984;
@@ -84,7 +85,7 @@ void sub_0206B910(TaskManager *taskManager, SaveData *saveData) {
     memset(r4->unk04, 0, sizeof(UnkStruct_0206B984));
     r4->unk04->options = Save_PlayerData_GetOptionsAddr(saveData);
     r4->unk04->saveData = saveData;
-    r4->unk04->unk2c = &fieldSystem->unk_10C;
+    r4->unk04->menuInputStatePtr = &fieldSystem->menuInputState;
     r4->partyMenu = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
     memset(r4->partyMenu, 0, sizeof(PartyMenuArgs));
     TaskManager_Call(taskManager, sub_0206B984, r4);
@@ -100,7 +101,7 @@ static BOOL sub_0206B984(TaskManager *taskManager) {
         SealCase *sealCase = Save_SealCase_Get(r7->saveData);
         r6->sealCase = sealCase;
         r6->unk31 = 0;
-        r6->unk2c = &fieldSystem->unk_10C;
+        r6->menuInputStatePtr = &fieldSystem->menuInputState;
         Party *party = SaveArray_Party_Get(r7->saveData);
         r6->party = party;
         s32 partyCount = Party_GetCount(party);
@@ -135,20 +136,20 @@ static BOOL sub_0206B984(TaskManager *taskManager) {
         partyMenu->party = r6->party;
         partyMenu->bag = Save_Bag_Get(r7->saveData);
         partyMenu->mailbox = Save_Mailbox_Get(r7->saveData);
-        partyMenu->unk_26 = 0;
+        partyMenu->partySlot = 0;
         partyMenu->unk_25 = 0;
-        partyMenu->unk_24 = 15;
+        partyMenu->context = PARTY_MENU_CONTEXT_ATTACH_CAPSULE;
         partyMenu->options = r6->options;
         partyMenu->fieldSystem = fieldSystem;
-        partyMenu->unk20 = &(fieldSystem->unk_10C);
+        partyMenu->menuInputStatePtr = &(fieldSystem->menuInputState);
         CallApplicationAsTask(taskManager, &gOverlayTemplate_PartyMenu, partyMenu);
         r7->state = 4;
         break;
     case 4: {
         PartyMenuArgs *partyMenu = r7->partyMenu;
         u32 index = r7->unk04->unk30 + 1;
-        if (partyMenu->unk_26 != 7) {
-            Pokemon *mon = r7->unk04->mons[partyMenu->unk_26];
+        if (partyMenu->partySlot != 7) {
+            Pokemon *mon = r7->unk04->mons[partyMenu->partySlot];
             SetMonData(mon, MON_DATA_CAPSULE, &index);
             SetMonData(mon, MON_DATA_SEAL_COORDS, SealCase_GetCapsuleI(r6->sealCase, index - 1));
             sub_0209106C(SealOnCapsuleGetID(CapsuleGetSealI(SealCase_GetCapsuleI(r6->sealCase, index - 1), 0)));

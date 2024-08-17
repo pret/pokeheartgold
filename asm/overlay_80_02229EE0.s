@@ -678,7 +678,7 @@ _0222A42E:
 ov80_0222A43C: ; 0x0222A43C
 	push {r3, lr}
 	mov r2, #0x30
-	bl sub_020880B0
+	bl CalculateHpBarColor
 	cmp r0, #4
 	bhi _0222A46E
 	add r0, r0, r0

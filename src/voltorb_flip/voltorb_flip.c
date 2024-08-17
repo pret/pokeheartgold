@@ -1,9 +1,25 @@
-#include "global.h"
+#include "voltorb_flip/voltorb_flip.h"
+
+#include "constants/game_stats.h"
+#include "constants/sndseq.h"
+
+#include "application/voltorb_flip.naix"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0039.h"
+#include "voltorb_flip/voltorb_flip_data.h"
+#include "voltorb_flip/voltorb_flip_game.h"
+#include "voltorb_flip/voltorb_flip_input.h"
+#include "voltorb_flip/voltorb_flip_internal.h"
+#include "voltorb_flip/voltorb_flip_work.h"
+#include "voltorb_flip/voltorb_flip_workflow.h"
+
+#include "bg_window.h"
+#include "brightness.h"
 #include "coins.h"
 #include "font.h"
 #include "game_stats.h"
-#include "global.h"
 #include "gf_gfx_loader.h"
+#include "global.h"
 #include "list_menu_items.h"
 #include "math_util.h"
 #include "message_format.h"
@@ -11,32 +27,18 @@
 #include "overlay_manager.h"
 #include "player_data.h"
 #include "render_text.h"
+#include "render_window.h"
 #include "sound_02004A44.h"
 #include "system.h"
 #include "text.h"
+#include "touchscreen.h"
 #include "unk_02005D10.h"
 #include "unk_02009D48.h"
-#include "brightness.h"
 #include "unk_0200CF18.h"
-#include "render_window.h"
 #include "unk_0200FA24.h"
-#include "yes_no_prompt.h"
 #include "unk_020183F0.h"
 #include "unk_02023694.h"
-#include "touchscreen.h"
-#include "bg_window.h"
-#include "constants/sndseq.h"
-#include "constants/game_stats.h"
-#include "msgdata/msg/msg_0039.h"
-#include "voltorb_flip/voltorb_flip.h"
-#include "voltorb_flip/voltorb_flip_data.h"
-#include "voltorb_flip/voltorb_flip_game.h"
-#include "voltorb_flip/voltorb_flip_input.h"
-#include "voltorb_flip/voltorb_flip_internal.h"
-#include "voltorb_flip/voltorb_flip_work.h"
-#include "voltorb_flip/voltorb_flip_workflow.h"
-#include "msgdata/msg.naix"
-#include "application/voltorb_flip.naix"
+#include "yes_no_prompt.h"
 
 typedef enum CoinDisplay {
     COIN_DISPLAY_TOTAL,
@@ -142,9 +144,9 @@ extern const Ov122_021E9278 ov122_021E9278;
 extern const u16 ov122_021E92A0[8];
 extern const u8 ov122_021E92B0[4][4];
 extern const struct GraphicsModes sVoltorbFlipBgModeSet;
-extern const Unk122_021E92D0 ov122_021E92D0;
+extern const OamCharTransferParam ov122_021E92D0;
 extern const SpriteResourceCountsListUnion ov122_021E92E4;
-extern const Unk122_021E92FC ov122_021E92FC;
+extern const OamManagerParam ov122_021E92FC;
 extern const Ov122_021E6C2C ov122_021E9344[4];
 extern const UnkTemplate_0200D748 ov122_021E9374;
 extern const UnkTemplate_0200D748 ov122_021E93A8;
@@ -205,7 +207,7 @@ static void RenderAboutMemoScreen(VoltorbFlipAppWork *work) {
 
 static BOOL PrintAndAwaitMessage(WorkflowEngine *workflow, VoltorbFlipAppWork *work, int msgNo) {
     int state = CurrentTaskState(workflow);
-    switch(state) {
+    switch (state) {
     case 0:
         ov122_021E7888(&work->unk25C);
         PrintTextWindow(work, msgNo, 1);
@@ -223,7 +225,7 @@ static BOOL PrintAndAwaitMessage(WorkflowEngine *workflow, VoltorbFlipAppWork *w
 // Applies the wiper palette fade and calls callback to render the screen.
 static BOOL TutorialScreenTransition(WorkflowEngine *workflow, VoltorbFlipAppWork *work, RenderScreenCB cb) {
     int state = CurrentTaskState(workflow);
-    switch(state) {
+    switch (state) {
     case 0:
         BeginNormalPaletteFade(4, 20, 20, 0, 4, 1, work->heapId);
         IncrementTaskState(workflow);
@@ -324,8 +326,7 @@ BOOL PrintYouCanEarnEvenMoreCoins(WorkflowEngine *workflow, VoltorbFlipAppWork *
     }
 
     switch (state) {
-    case 0:
-    {
+    case 0: {
         BOOL printerFinished = IsPrinterFinished(work);
         if (printerFinished) {
             if (LevelsGained(work->game) > 0) {
@@ -355,7 +356,7 @@ BOOL PrintYouCanEarnEvenMoreCoins(WorkflowEngine *workflow, VoltorbFlipAppWork *
 
 BOOL ov122_021E5D24(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     int state = CurrentTaskState(workflow);
-    switch(state) {
+    switch (state) {
     case 0:
         BgClearTilemapBufferAndCommit(work->bgConfig, 3);
         IncrementTaskState(workflow);
@@ -499,8 +500,7 @@ BOOL AwaitBoardInteraction(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     switch (var1) {
     case 0:
         break;
-    case 1:
-    {
+    case 1: {
         int cardId = ov122_021E8DF0(work->unk240);
         if (IsCardFlipped(work->game, cardId)) {
             PlaySE(SEQ_SE_DP_BOX03);
@@ -544,8 +544,7 @@ BOOL ov122_021E6008(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
 BOOL PlaySuspensefulFanfare(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     int state = CurrentTaskState(workflow);
     switch (state) {
-    case 0:
-    {
+    case 0: {
         int var2 = ov122_021E8DF0(work->unk240);
         s16 col = var2 % 5;
         s16 row = var2 / 5;
@@ -600,8 +599,7 @@ BOOL AwaitCardFlipAndResult(WorkflowEngine *workflow, VoltorbFlipAppWork *work) 
             IncrementTaskState(workflow);
         }
         break;
-    case 1:
-    {
+    case 1: {
         int cardId = ov122_021E8DF0(work->unk240);
         CardType type = GetCardType(work->game, cardId);
 
@@ -710,8 +708,7 @@ BOOL PlayWinRoundFanfare(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
 BOOL AwardCoins(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     int state = CurrentTaskState(workflow);
     switch (state) {
-    case 0:
-    {
+    case 0: {
         int var2 = GamePayout(work->game);
         BufferIntegerAsString(work->msgFmt, 0, var2, 5, PRINTING_MODE_LEFT_ALIGN, 1);
         BufferPlayersName(work->msgFmt, 1, work->profile);
@@ -820,8 +817,7 @@ BOOL ov122_021E65FC(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     case 5:
     case 6:
     case 7:
-    case 8:
-    {
+    case 8: {
         int cardId = ov122_021E8DF0(work->unk240);
 
         u8 var3 = var1 - 5;
@@ -853,8 +849,7 @@ BOOL ov122_021E66FC(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
 BOOL ov122_021E6700(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     int var1 = ov122_021E8D74(work->unk240);
     switch (var1) {
-    case 1:
-    {
+    case 1: {
         int cardId = ov122_021E8DF0(work->unk240);
         int var3 = ov122_021E8E0C(work->unk240);
         if (TryToggleCardMemo(work, cardId, var3)) {
@@ -935,8 +930,7 @@ BOOL PrintAreYouSureYouWantToQuit(WorkflowEngine *workflow, VoltorbFlipAppWork *
 
     int state = CurrentTaskState(workflow);
     switch (state) {
-    case 0:
-    {
+    case 0: {
         int payout = GamePayout(work->game);
         if (payout == 0) {
             // "You haven’t found any Coins! Are you sure you..."
@@ -963,7 +957,7 @@ BOOL PrintAreYouSureYouWantToQuit(WorkflowEngine *workflow, VoltorbFlipAppWork *
 }
 
 BOOL ov122_021E6900(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
-    YesNoPromptTemplate temp1 = {0};
+    YesNoPromptTemplate temp1 = { 0 };
 
     temp1.bgConfig = work->bgConfig;
     temp1.bgId = 3;
@@ -980,8 +974,7 @@ BOOL ov122_021E6900(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
 BOOL AwaitQuitYesNoSelection(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     int var1 = YesNoPrompt_HandleInput(work->unk13C);
     switch (var1) {
-    case YESNORESPONSE_YES:
-    {
+    case YESNORESPONSE_YES: {
         int payout = GamePayout(work->game);
 
         SetRoundOutcome(work->game, ROUND_OUTCOME_QUIT);
@@ -1334,8 +1327,7 @@ static void ov122_021E70B8(Ov122_021E70B8 *a0, int a1, int a2, VoltorbFlipAppWor
     a0->unk13 = 5;
 
     switch (a2) {
-    case 0:
-    {
+    case 0: {
         int var1 = (a0->unk11 % 5) * 4 + 1;
         int var2 = (a0->unk11 / 5) * 4 + 1;
 
@@ -1485,9 +1477,8 @@ static void ov122_021E745C(VoltorbFlipAppWork *work) {
     sub_02018474(work->unk1C);
 }
 
-void ov122_021E7488(VoltorbFlipAppWork *a0, int a1)
-{
-    Ov122_021E7488 temp1 = {0};
+void ov122_021E7488(VoltorbFlipAppWork *a0, int a1) {
+    Ov122_021E7488 temp1 = { 0 };
     const MsgNoList *ptr = &sMenuMsgNos[a1];
     GF_ASSERT(a0->bgConfig != 0);
 
@@ -1691,8 +1682,8 @@ static void ov122_021E79D0(VoltorbFlipAppWork *work) {
 
 static void ov122_021E7AEC(VoltorbFlipAppWork *work) {
     SpriteResourceCountsListUnion temp1 = ov122_021E92E4;
-    Unk122_021E92FC temp2 = ov122_021E92FC;
-    Unk122_021E92D0 temp3 = ov122_021E92D0;
+    OamManagerParam temp2 = ov122_021E92FC;
+    OamCharTransferParam temp3 = ov122_021E92D0;
     temp3.maxTasks = 0x80;
 
     work->unk144 = SpriteRenderer_Create(work->heapId);
@@ -1733,6 +1724,7 @@ static void ov122_021E7BD4(VoltorbFlipAppWork *work) {
     SpriteRenderer_LoadAnimResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000017_bin, 1, 1);
 }
 #else
+// clang-format off
 asm void ov122_021E7BD4(VoltorbFlipAppWork *work) {
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
@@ -1827,7 +1819,8 @@ _021E7BE4:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 }
-#endif //NONMATCHING
+// clang-format on
+#endif // NONMATCHING
 
 static UnkImageStruct *ov122_021E7C9C(SpriteRenderer *a0, SpriteGfxHandler *a1, u16 a2, u16 a3, u16 a4, u16 a5) {
     UnkTemplate_0200D748 temp1 = ov122_021E9374;
@@ -1970,9 +1963,9 @@ static void ov122_021E8094(OVY_MANAGER *man) {
     work->heapId = HEAP_ID_VOLTORB_FLIP;
     work->options = args->options;
     work->coins = args->coins;
-    work->unkC = args->unk8;
+    work->menuInputStatePtr = args->menuInputStatePtr;
     work->profile = args->profile;
-    work->unk228 = sub_020183F0(work->unkC);
+    work->unk228 = sub_020183F0(work->menuInputStatePtr);
     work->unk229 = Options_GetFrame(work->options);
     work->unk22A = Options_GetTextFrameDelay(work->options);
 
@@ -2037,8 +2030,7 @@ BOOL VoltorbFlip_Init(OVY_MANAGER *man, int *state) {
         ov122_021E8094(man);
         *state += 1;
         break;
-    case 1:
-    {
+    case 1: {
         VoltorbFlipAppWork *work = OverlayManager_GetData(man);
         BeginNormalPaletteFade(0, 0x15, 0x15, 0, 6, 1, work->heapId);
         *state += 1;

@@ -11,7 +11,7 @@ typedef struct MoveRelearnerArgs {
     Pokemon *mon;
     PlayerProfile *profile;
     Options *options;
-    u32 *unkC;
+    BOOL *menuInputStatePtr;
     u16 *eligibleMoves;
     u8 filler_14[5];
     u8 type;

@@ -1,8 +1,11 @@
-#include "global.h"
 #include "field_system_rtc_weather.h"
+
+#include "constants/maps.h"
+
+#include "field_system.h"
+#include "global.h"
 #include "map_header.h"
 #include "unk_02055418.h"
-#include "constants/maps.h"
 
 const MonthDay DiamondDustDates[] = {
     { JANUARY, 1 },

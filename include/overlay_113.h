@@ -5,7 +5,7 @@
 #include "save.h"
 
 typedef struct UnownReportArgs {
-    u32 *unk0;
+    BOOL *menuInputStatePtr;
     SaveData *saveData;
 } UnownReportArgs;
 

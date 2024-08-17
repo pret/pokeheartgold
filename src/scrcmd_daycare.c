@@ -1,10 +1,11 @@
-#include "scrcmd.h"
 #include "bag.h"
-#include "map_object.h"
+#include "field_system.h"
 #include "get_egg.h"
+#include "map_object.h"
 #include "party.h"
 #include "player_data.h"
 #include "pokemon.h"
+#include "scrcmd.h"
 
 extern void ov01_021F9048(LocalMapObject* map_object);
 extern void FollowMon_SetObjectParams(LocalMapObject *mapObject, u16 species, u8 form, BOOL shiny);

@@ -1,14 +1,18 @@
+#include "start_menu.h"
 #define _IN_FIELDMAP_C
 
-#include "fieldmap.h"
-#include "map_header.h"
-#include "save_vars_flags.h"
-#include "map_events.h"
-#include "task.h"
-#include "map_object.h"
 #include "constants/std_script.h"
+
 #include "fielddata/script/scr_seq.naix"
 #include "msgdata/msg.naix"
+
+#include "field_system.h"
+#include "fieldmap.h"
+#include "map_events.h"
+#include "map_header.h"
+#include "map_object.h"
+#include "save_vars_flags.h"
+#include "task.h"
 
 struct ScriptBankMapping {
     u16 scriptIdLo;
@@ -329,7 +333,7 @@ void* FieldSysGetAttrAddr(FieldSystem *fieldSystem, enum ScriptEnvField field) {
 
 void sub_0204031C(FieldSystem *fieldSystem) {
     ScriptEnvironment *unk = TaskManager_GetEnvironment(fieldSystem->taskman);
-    if (sub_0203BC10(fieldSystem) == TRUE) {
+    if (FieldSystem_MapIsNotMysteryZone(fieldSystem) == TRUE) {
         unk->scrctx_end_cb = sub_0203BD64;
     }
 }

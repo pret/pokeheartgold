@@ -127,7 +127,7 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BattleContext *ctx, int battl
     PokedexData_UnloadAll(dexData);
     PokedexData_Delete(dexData);
 
-    GetMonData(mon, MON_DATA_NICKNAME, ctx->battleMons[battlerId].nickname);
+    GetMonData(mon, MON_DATA_NICKNAME_FLAT, ctx->battleMons[battlerId].nickname);
     GetMonData(mon, MON_DATA_OT_NAME, ctx->battleMons[battlerId].otName);
 
     ctx->battleMons[battlerId].unk78 = 0;
@@ -5353,7 +5353,7 @@ int ov12_02256748(BattleContext *ctx, int battlerId, int battlerType, BOOL encou
         ret = 0;
     }
 
-    color = sub_020880B0(ctx->battleMons[battlerId].hp, ctx->battleMons[battlerId].maxHp, 48);
+    color = CalculateHpBarColor(ctx->battleMons[battlerId].hp, ctx->battleMons[battlerId].maxHp, 48);
 
     if ((ctx->battleMons[battlerId].status & STATUS_ALL) || (color != 4 && color != 3)) {
         ret = 11;

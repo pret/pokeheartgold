@@ -1,19 +1,22 @@
-#include "global.h"
 #include "npc_trade.h"
-#include "pokemon.h"
+
+#include "constants/items.h"
+#include "constants/maps.h"
+#include "constants/npc_trade.h"
+
+#include "msgdata/msg.naix"
+
+#include "field_system.h"
 #include "gf_gfx_loader.h"
-#include "update_dex_received.h"
+#include "global.h"
 #include "item.h"
 #include "mail.h"
-#include "trainer_memo.h"
-#include "unk_0206D494.h"
-#include "unk_02055418.h"
 #include "map_header.h"
-#include "constants/maps.h"
-#include "constants/items.h"
-#include "constants/npc_trade.h"
+#include "pokemon.h"
+#include "trainer_memo.h"
 #include "unk_02055418.h"
-#include "msgdata/msg.naix"
+#include "unk_0206D494.h"
+#include "update_dex_received.h"
 
 static String *_GetNpcTradeName(HeapID heapId, s32 msgno);
 static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, NpcTradeNum tradeno, u32 mapno, u32 met_level_strat, HeapID heapId);
@@ -194,7 +197,7 @@ static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, NpcTra
 
     heapId_2 = (int)heapId;
     name = _GetNpcTradeName((HeapID)heapId_2, tradeno);
-    SetMonData(mon, MON_DATA_NICKNAME_3, name);
+    SetMonData(mon, MON_DATA_NICKNAME_STRING, name);
     String_Delete(name);
 
     nickname_flag = TRUE;

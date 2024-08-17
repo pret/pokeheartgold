@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_UNK_02082908_H
 #define POKEHEARTGOLD_UNK_02082908_H
 
+#include "options.h"
 #include "overlay_manager.h"
 #include "pm_string.h"
 
