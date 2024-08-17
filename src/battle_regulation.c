@@ -4,7 +4,6 @@
 #include "dex_mon_measures.h"
 #include "party.h"
 #include "pokemon.h"
-#include "unk_020290B4.h"
 
 static BOOL sub_02074C50(u16 *a0, u16 *a1, u16 *a2, int a3, int a4, int a5, int a6);
 
@@ -25,7 +24,7 @@ BOOL sub_0207496C(LinkBattleRuleset *ruleset, Pokemon *pokemon, PokedexData *pok
         return TRUE;
     }
 
-    int rule = LinkBattleRuleset_GetRuleValue(ruleset, 2);
+    int rule = LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_MAX_LEVEL);
     if (GetMonData(pokemon, MON_DATA_LEVEL, NULL) > rule) {
         return FALSE;
     }
@@ -33,14 +32,14 @@ BOOL sub_0207496C(LinkBattleRuleset *ruleset, Pokemon *pokemon, PokedexData *pok
         return FALSE;
     }
 
-    rule = LinkBattleRuleset_GetRuleValue(ruleset, 4);
+    rule = LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_BABY_CUP);
     if (rule == 0) {
         if (species != GetEggSpecies(species)) {
             return FALSE;
         }
     }
 
-    rule = LinkBattleRuleset_GetRuleValue(ruleset, 5);
+    rule = LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_HEIGHT_LIMIT);
     if (rule != 0) {
         int height = PokedexData_GetHeight(pokedex, species);
         if (rule > 0) {
@@ -54,7 +53,7 @@ BOOL sub_0207496C(LinkBattleRuleset *ruleset, Pokemon *pokemon, PokedexData *pok
         }
     }
 
-    rule = 10 * LinkBattleRuleset_GetRuleValue(ruleset, 7);
+    rule = 10 * LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_WEIGHT_LIMIT);
     if (rule != 0) {
         int weight = PokedexData_GetWeight(pokedex, species);
         if (rule > 0) {
@@ -68,12 +67,12 @@ BOOL sub_0207496C(LinkBattleRuleset *ruleset, Pokemon *pokemon, PokedexData *pok
         }
     }
 
-    rule = LinkBattleRuleset_GetRuleValue(ruleset, 13);
+    rule = LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_SOUL_DEW_CLAUSE);
     if (rule == 0x8000) {
         return SpeciesIsMythical(species) != TRUE;
     }
 
-    rule = LinkBattleRuleset_GetRuleValue(ruleset, 11);
+    rule = LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_UBERS_CLAUSE);
     if (rule == 0) {
         if (MonCheckFrontierIneligibility(pokemon)) {
             return FALSE;
@@ -83,7 +82,7 @@ BOOL sub_0207496C(LinkBattleRuleset *ruleset, Pokemon *pokemon, PokedexData *pok
     return TRUE;
 }
 
-int sub_02074A6C(LinkBattleRuleset *a0, Party *party, PokedexData *pokedex, u8 *selectedOrder) {
+int sub_02074A6C(LinkBattleRuleset *ruleset, Party *party, PokedexData *pokedex, u8 *selectedOrder) {
     Pokemon *mon;
     int rule;
     int numMons = 0;
@@ -93,7 +92,7 @@ int sub_02074A6C(LinkBattleRuleset *a0, Party *party, PokedexData *pokedex, u8 *
     u16 species[PARTY_SIZE];
     u16 heldItems[PARTY_SIZE];
 
-    if (a0 == NULL) {
+    if (ruleset == NULL) {
         return FALSE;
     }
 
@@ -104,7 +103,7 @@ int sub_02074A6C(LinkBattleRuleset *a0, Party *party, PokedexData *pokedex, u8 *
             ++numMons;
         }
     }
-    rule = LinkBattleRuleset_GetRuleValue(a0, 1);
+    rule = LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_PARTY_COUNT);
     if (numMons != rule) {
         return 4;
     }
@@ -112,7 +111,7 @@ int sub_02074A6C(LinkBattleRuleset *a0, Party *party, PokedexData *pokedex, u8 *
     for (i = 0; i < PARTY_SIZE; ++i) {
         if (selectedOrder[i] != 0) {
             mon = Party_GetMonByIndex(party, selectedOrder[i] - 1);
-            if (!sub_0207496C(a0, mon, pokedex)) {
+            if (!sub_0207496C(ruleset, mon, pokedex)) {
                 return 5;
             }
             species[i] = GetMonData(mon, MON_DATA_SPECIES, NULL);
@@ -120,12 +119,12 @@ int sub_02074A6C(LinkBattleRuleset *a0, Party *party, PokedexData *pokedex, u8 *
             totalLevel += GetMonData(mon, MON_DATA_LEVEL, NULL);
         }
     }
-    rule = LinkBattleRuleset_GetRuleValue(a0, 3);
+    rule = LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_MAX_TOTAL_LEVEL);
     if (totalLevel > rule && rule != 0) {
         return 1;
     }
 
-    rule = LinkBattleRuleset_GetRuleValue(a0, 13);
+    rule = LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_SOUL_DEW_CLAUSE);
     if (rule == 0x8000) {
         j = 0;
         for (i = 0; i < PARTY_SIZE; ++i) {
@@ -138,7 +137,7 @@ int sub_02074A6C(LinkBattleRuleset *a0, Party *party, PokedexData *pokedex, u8 *
         }
     }
 
-    rule = LinkBattleRuleset_GetRuleValue(a0, 10);
+    rule = LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_SPECIES_DUPE_CLAUSE);
     if (rule == 0 && numMons > 1) {
         for (i = 0; i < PARTY_SIZE - 1; ++i) {
             for (j = i + 1; j < PARTY_SIZE; ++j) {
@@ -149,7 +148,7 @@ int sub_02074A6C(LinkBattleRuleset *a0, Party *party, PokedexData *pokedex, u8 *
         }
     }
 
-    rule = LinkBattleRuleset_GetRuleValue(a0, 13);
+    rule = LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_SOUL_DEW_CLAUSE);
     if (rule == 0x8000) {
         for (i = 0; i < PARTY_SIZE; ++i) {
             if (heldItems[i] == ITEM_SOUL_DEW && species[i] != SPECIES_NONE && heldItems[i] != ITEM_NONE) {
@@ -158,7 +157,7 @@ int sub_02074A6C(LinkBattleRuleset *a0, Party *party, PokedexData *pokedex, u8 *
         }
     }
 
-    rule = LinkBattleRuleset_GetRuleValue(a0, 9);
+    rule = LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_ITEM_DUPE_CLAUSE);
     if (rule == 0 && numMons > 1) {
         for (i = 0; i < PARTY_SIZE - 1; ++i) {
             for (j = i + 1; j < PARTY_SIZE; ++j) {
@@ -222,7 +221,7 @@ int sub_02074CD0(LinkBattleRuleset *ruleset, Party *party, PokedexData *pokedex)
         }
     }
 
-    rule = LinkBattleRuleset_GetRuleValue(ruleset, 10);
+    rule = LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_SPECIES_DUPE_CLAUSE);
     if (rule == 0 && partyCount > 1) {
         for (i = 0; i < partyCount - 1; ++i) {
             for (j = i + 1; j < partyCount; ++j) {
@@ -238,7 +237,7 @@ int sub_02074CD0(LinkBattleRuleset *ruleset, Party *party, PokedexData *pokedex)
         }
     }
 
-    rule = LinkBattleRuleset_GetRuleValue(ruleset, 13);
+    rule = LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_SOUL_DEW_CLAUSE);
     if (rule == 0x8000) {
         numBannedMons = 0;
         for (i = 0; i < PARTY_SIZE; ++i) {
@@ -252,13 +251,13 @@ int sub_02074CD0(LinkBattleRuleset *ruleset, Party *party, PokedexData *pokedex)
         }
     }
 
-    rule = LinkBattleRuleset_GetRuleValue(ruleset, 1);
+    rule = LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_PARTY_COUNT);
     if (numLegalMons < rule) {
         return 4;
     }
     numLegalMons = rule;
 
-    rule = LinkBattleRuleset_GetRuleValue(ruleset, 3);
+    rule = LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_MAX_TOTAL_LEVEL);
     if (rule == 0) {
         return 0;
     }

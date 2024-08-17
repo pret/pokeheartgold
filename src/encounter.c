@@ -28,7 +28,7 @@
 #include "unk_02066EDC.h"
 #include "pal_park.h"
 #include "unk_0202FBCC.h"
-#include "unk_020290B4.h"
+#include "save_link_ruleset.h"
 #include "unk_02058034.h"
 #include "constants/battle.h"
 #include "constants/game_stats.h"

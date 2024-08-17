@@ -3,8 +3,7 @@
 
 #include "dex_mon_measures.h"
 #include "pokedex.h"
-
-typedef struct LinkBattleRuleset LinkBattleRuleset;
+#include "save_link_ruleset.h"
 
 PokedexData *sub_02074944(HeapID heapId);
 void sub_0207495C(PokedexData *pokedex);

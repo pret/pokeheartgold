@@ -91,7 +91,7 @@
 #include "unk_020979A8.h"
 #include "unk_02097BE0.h"
 #include "sound_02004A44.h"
-#include "unk_020290B4.h"
+#include "save_link_ruleset.h"
 #include "launch_application.h"
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0202.h"

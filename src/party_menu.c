@@ -14,7 +14,7 @@
 #include "unk_0200FA24.h"
 #include "unk_020183F0.h"
 #include "unk_020210A0.h"
-#include "unk_020290B4.h"
+#include "save_link_ruleset.h"
 #include "unk_02066EDC.h"
 #include "party_context_menu.h"
 #include "party_menu_list_items.h"

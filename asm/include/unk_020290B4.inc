@@ -9,9 +9,9 @@
 .public CopyU16ArrayToStringN
 .public SaveArray_Get
 .public sub_020290B4
-.public sub_020290B8
+.public Save_LinkBattleRuleset_sizeof
 .public sub_020290BC
-.public sub_020290C8
+.public Save_LinkBattleRuleset_Init
 .public sub_020290E4
 .public LinkBattleRuleset_GetRuleValue
 .public sub_020291A4

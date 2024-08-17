@@ -10,7 +10,7 @@
 #include "pokedex.h"
 #include "sys_vars.h"
 #include "fashion_case.h"
-#include "unk_020290B4.h"
+#include "save_link_ruleset.h"
 #include "pokewalker.h"
 #include "trainer_memo.h"
 #include "constants/map_sections.h"
@@ -371,11 +371,11 @@ static BOOL MGCheck_BattleRules(FieldSystem *fieldSys, MysteryGiftData *mgData) 
 }
 
 static void MGGive_BattleRules(FieldSystem *fieldSys, MysteryGiftData *mgData) {
-    sub_020291D4(fieldSys->saveData, FieldSystem_GetDataOfNextMG(fieldSys)->ruleset);
+    sub_020291D4(fieldSys->saveData, &FieldSystem_GetDataOfNextMG(fieldSys)->ruleset);
 }
 
 static void MGMessageSuccess_BattleRules(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
-    u16 *mgData = FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->ruleset;
+    LinkBattleRuleset *mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->ruleset;
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00010;
     BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));

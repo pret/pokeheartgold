@@ -15,7 +15,7 @@
 #include "unk_02037C94.h"
 #include "unk_02033AE0.h"
 #include "unk_0205B3DC.h"
-#include "unk_020290B4.h"
+#include "save_link_ruleset.h"
 #include "unk_020931C4.h"
 #include "unk_02092BE8.h"
 #include "unk_0206D494.h"
@@ -354,7 +354,7 @@ void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8
         FreeToHeap(pokemon);
     }
 
-    if (ruleset != NULL && LinkBattleRuleset_GetRuleValue(ruleset, 12)) {
+    if (ruleset != NULL && LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_12)) {
         setup->unk_194 = TRUE;
     }
     Save_Bag_Copy(bag, setup->bag);

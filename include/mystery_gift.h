@@ -3,6 +3,7 @@
 
 #include "pokemon_types_def.h"
 #include "photo_album.h"
+#include "save_link_ruleset.h"
 
 #define MG_TAG_INVALID           0
 #define MG_TAG_POKEMON           1
@@ -47,7 +48,7 @@ typedef union {
     MysteryGiftPokemonTag pokemon;
     Pokemon egg;
     u32 item;
-    u16 ruleset[16];
+    LinkBattleRuleset ruleset;
     int baseDecoration;
     MysteryGiftMonDecorationTag monDecoration;
     u8 pokewalkerCourse;

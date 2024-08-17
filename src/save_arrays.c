@@ -30,13 +30,13 @@
 #include "save_rankings.h"
 #include "game_stats.h"
 #include "save_wifi_history.h"
+#include "save_link_ruleset.h"
 
 // These macros are temporary. As the respective sources
 // are decompiled, the calls should be phased out.
 #define DECL_CHUNK(prefix) extern u32 prefix##_sizeof(void); extern void prefix##_Init(void *);
 #define DECL_CHUNK_EX(sizefn, initfn) extern u32 sizefn(void); extern void initfn(void *);
 
-DECL_CHUNK_EX(sub_020290B8, sub_020290C8)
 DECL_CHUNK(Save_FashionData)
 DECL_CHUNK(Save_Frontier)
 DECL_CHUNK_EX(sub_0202DB40, sub_0202DB44)
@@ -108,8 +108,8 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
     }, {
         SAVE_UNK_11,
         0,
-        (SAVESIZEFN)sub_020290B8,
-        (SAVEINITFN)sub_020290C8
+        (SAVESIZEFN)Save_LinkBattleRuleset_sizeof,
+        (SAVEINITFN)Save_LinkBattleRuleset_Init
     }, {
         SAVE_DRESSUP_DATA,
         0,
