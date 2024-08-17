@@ -1,6 +1,6 @@
-#include "constants/geonet_globe.h"
 #include "global.h"
-#include "unk_0202CA24.h"
+#include "save_wifi_history.h"
+#include "constants/geonet_globe.h"
 
 struct SaveWiFiHistory {
     u32 unk_000;  // unused but type needed for alignment

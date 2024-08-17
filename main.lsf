@@ -111,7 +111,7 @@ Static main
     Object asm/unk_0202C730.o
     Object src/coins.o
     Object src/save_trainer_card.o
-    Object src/unk_0202CA24.o
+    Object src/save_wifi_history.o
     Object src/seal_case.o
     Object src/igt.o
     Object src/sav_chatot.o
@@ -298,7 +298,7 @@ Static main
     Object src/dex_mon_measures.o
     Object asm/unk_02091564.o
     Object asm/unk_020915B0.o
-    Object asm/unk_02091664.o
+    Object src/location_gmm_dat.o
     Object src/move_relearner.o
     Object asm/unk_02091880.o
     Object asm/unk_02091CDC.o

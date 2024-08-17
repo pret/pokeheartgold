@@ -1,7 +1,7 @@
 #include "global.h"
 #include "player_data.h"
 #include "save.h"
-#include "unk_0202CA24.h"
+#include "save_wifi_history.h"
 #include "unk_0203170C.h"
 #include "math_util.h"
 

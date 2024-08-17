@@ -29,7 +29,7 @@
 #include "constants/moves.h"
 #include "unk_0200FA24.h"
 #include "unk_02005D10.h"
-#include "unk_0202CA24.h"
+#include "save_wifi_history.h"
 #include "follow_mon.h"
 #include "get_egg.h"
 #include "map_section.h"

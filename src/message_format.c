@@ -4,7 +4,7 @@
 #include "pokemon.h"
 #include "trainer_data.h"
 #include "pokemon_storage_system.h"
-#include "gts_globe.h"
+#include "location_gmm_dat.h"
 #include "easy_chat.h"
 #include "map_section.h"
 #include "friend_group.h"

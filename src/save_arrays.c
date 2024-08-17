@@ -29,7 +29,7 @@
 #include "save_special_ribbons.h"
 #include "save_rankings.h"
 #include "game_stats.h"
-#include "unk_0202CA24.h"
+#include "save_wifi_history.h"
 
 // These macros are temporary. As the respective sources
 // are decompiled, the calls should be phased out.

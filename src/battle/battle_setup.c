@@ -9,7 +9,7 @@
 #include "follow_mon.h"
 #include "unk_0205BB1C.h"
 #include "unk_02088288.h"
-#include "unk_0202CA24.h"
+#include "save_wifi_history.h"
 #include "sys_flags.h"
 #include "save_pokegear.h"
 #include "unk_02037C94.h"

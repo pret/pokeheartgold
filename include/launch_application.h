@@ -39,7 +39,7 @@
 #include "save_pokeathlon.h"
 #include "save_special_ribbons.h"
 #include "sav_system_info.h"
-#include "unk_0202CA24.h"
+#include "save_wifi_history.h"
 #include "party_menu.h"
 #include "unk_02088288.h"
 #include "unk_02092BE8.h"
