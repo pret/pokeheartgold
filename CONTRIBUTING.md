@@ -28,3 +28,22 @@ To run the formatter on the full source tree:
 ./format.sh
 ```
 
+### Nonmatching functions
+
+clang-format does not recognize the syntax for inline asm that is required by mwccarm, so it should be disabled for non-matching functions specifically. clang-format accepts directives via comments of the form `// clang-format [on|off]`. Example:
+
+```c
+#ifdef NONMATCHING
+void func() {
+    // ...
+}
+#else
+// clang-format off
+asm void func() {
+    push {lr}
+    // ...
+    pop {pc}
+}
+// clang-format on
+#endif // NONMATCHING
+```
