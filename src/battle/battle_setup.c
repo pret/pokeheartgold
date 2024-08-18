@@ -63,7 +63,7 @@ BattleSetup *BattleSetup_New(HeapID heapId, u32 battleTypeFlags) {
     setup->safariBalls = 0;
     setup->unk_12C = NULL;
     setup->gameStats = NULL;
-    setup->unk_194 = FALSE;
+    setup->fixedDamaageMovesBanned = FALSE;
     setup->bugContestMon = AllocMonZeroed(heapId);
 
     setup->unk_19C = RngSeedFromRTC();
@@ -355,7 +355,7 @@ void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8
     }
 
     if (ruleset != NULL && LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_DRAGON_RAGE_CLAUSE)) {
-        setup->unk_194 = TRUE;
+        setup->fixedDamaageMovesBanned = TRUE;
     }
     Save_Bag_Copy(bag, setup->bag);
     Pokedex_Copy(pokedex, setup->pokedex);

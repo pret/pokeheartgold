@@ -57,7 +57,7 @@ struct BattleSetup { //declared in trainer_data.h
     u8 filler_17C[0x10];
     u32 battleSpecial; //18C
     int safariBalls; // 190
-    BOOL unk_194;
+    BOOL fixedDamaageMovesBanned;
     EvolutionTaskData *unk198;
     int unk_19C;
     int unk_1A0[4];
