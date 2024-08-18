@@ -5434,7 +5434,7 @@ BOOL ScrCmd_833(ScriptContext *ctx) {
 
 BOOL ScrCmd_837(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    if (sub_020291A4(ctx->fieldSystem->saveData, 0)) {
+    if (sub_020291A4(ctx->fieldSystem->saveData, 0) != NULL) {
         *p_ret = TRUE;
     } else {
         *p_ret = FALSE;

@@ -32,7 +32,7 @@ BOOL sub_0207496C(LinkBattleRuleset *ruleset, Pokemon *pokemon, PokedexData *pok
         return FALSE;
     }
 
-    rule = LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_BABY_CUP);
+    rule = LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_EVOLVED_POKEMON);
     if (rule == 0) {
         if (species != GetEggSpecies(species)) {
             return FALSE;

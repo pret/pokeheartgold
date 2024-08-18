@@ -106,7 +106,7 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
         (SAVESIZEFN)Save_MapObjects_sizeof,
         (SAVEINITFN)Save_MapObjects_Init
     }, {
-        SAVE_UNK_11,
+        SAVE_LINK_BATTLE_RULESET,
         0,
         (SAVESIZEFN)Save_LinkBattleRuleset_sizeof,
         (SAVEINITFN)Save_LinkBattleRuleset_Init

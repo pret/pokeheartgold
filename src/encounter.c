@@ -2,6 +2,7 @@
 #include "battle/battle_setup.h"
 #include "encounter.h"
 #include "blackout.h"
+#include "link_ruleset_data.h"
 #include "map_object.h"
 #include "field_system.h"
 #include "field_warp_tasks.h"
@@ -28,7 +29,6 @@
 #include "unk_02066EDC.h"
 #include "pal_park.h"
 #include "unk_0202FBCC.h"
-#include "save_link_ruleset.h"
 #include "unk_02058034.h"
 #include "constants/battle.h"
 #include "constants/game_stats.h"
@@ -750,7 +750,7 @@ void CallTask_020508B8(TaskManager *taskManager, void *param1, u32 battleType) {
 }
 
 static u32 sub_02051474(void *param0, u32 battleType) {
-    u32 var = sub_02029264(param0);
+    int var = sub_02029264(param0);
     u32 mode;
 
     if (battleType & BATTLE_TYPE_MULTI) {

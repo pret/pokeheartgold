@@ -98,7 +98,7 @@ Static main
     Object src/sav_system_info.o
     Object src/player_data.o
     Object src/save_link_ruleset.o
-    Object asm/unk_020290B4.o
+    Object src/link_ruleset_data.o
     Object src/daycare.o
     Object src/pokedex.o
     Object src/save_misc.o
