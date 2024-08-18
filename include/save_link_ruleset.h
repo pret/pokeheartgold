@@ -19,7 +19,7 @@ typedef enum LinkBattleRule {
     LINKBATTLERULE_ITEM_DUPE_CLAUSE,
     LINKBATTLERULE_SPECIES_DUPE_CLAUSE,
     LINKBATTLERULE_UBERS_CLAUSE,
-    LINKBATTLERULE_12,
+    LINKBATTLERULE_DRAGON_RAGE_CLAUSE,
     LINKBATTLERULE_SOUL_DEW_CLAUSE,
 } LinkBattleRule;
 
@@ -27,16 +27,17 @@ typedef enum LinkBattleRule {
 
 typedef struct LinkBattleRuleset {
     u16 name[12];
-    u16 totalLevel;  // lower 12 bits hold level; bit 15 intended to ban soul dew
-    u8 partyCount;
-    u8 maxLevel;
-    s8 heightLimit;
-    s8 weightLimit;
-    u8 evolvedPokemon:1;
-    u8 ubersClause:1;
-    u8 speciesDupeClause:1;
-    u8 itemDupeClause:1;
-    u8 unk_1E_4:1;
+    u16 totalLevel;  // maximum sum of party levels
+                     // lower 12 bits hold level; bit 15 intended to ban soul dew
+    u8 partyCount;  // exact number of mons required
+    u8 maxLevel;  // max level for a single mon
+    s8 heightLimit;  // if positive: minimum mon height; if negative, absolute value is maximum mon height
+    s8 weightLimit;  // if positive: minimum mon weight; if negative, absolute value is maximum mon weight
+    u8 evolvedPokemon:1;  // if true, can only use unevolved pokemon
+    u8 ubersClause:1;  // if true, cannot use legendaries
+    u8 speciesDupeClause:1;  // if true, can't have two Pokemon of the same species
+    u8 itemDupeClause:1;  // if true, can't have two Pokemon holding the same item
+    u8 dragonRageClause:1;  // if true, fixed-damage moves like SonicBoom and Dragon Rage will always fail
 } LinkBattleRuleset;
 
 typedef struct Save_LinkBattleRuleset {

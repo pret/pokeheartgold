@@ -30,7 +30,7 @@ static LinkBattleRuleset _0210F704 = {
     .ubersClause = TRUE,
     .speciesDupeClause = TRUE,
     .itemDupeClause = TRUE,
-    .unk_1E_4 = FALSE,
+    .dragonRageClause = FALSE,
 };
 
 static LinkBattleRuleset _0210F724[] = {
@@ -45,7 +45,7 @@ static LinkBattleRuleset _0210F724[] = {
         .ubersClause = FALSE,
         .speciesDupeClause = FALSE,
         .itemDupeClause = FALSE,
-        .unk_1E_4 = FALSE,
+        .dragonRageClause = FALSE,
     },
     [STD_RULESET_FANCY] = {
         .name = {EOS},
@@ -58,7 +58,7 @@ static LinkBattleRuleset _0210F724[] = {
         .ubersClause = FALSE,
         .speciesDupeClause = FALSE,
         .itemDupeClause = FALSE,
-        .unk_1E_4 = FALSE,
+        .dragonRageClause = FALSE,
     },
     [STD_RULESET_LITTLE] = {
         .name = {EOS},
@@ -71,7 +71,7 @@ static LinkBattleRuleset _0210F724[] = {
         .ubersClause = FALSE,
         .speciesDupeClause = FALSE,
         .itemDupeClause = FALSE,
-        .unk_1E_4 = TRUE,
+        .dragonRageClause = TRUE,
     },
     [STD_RULESET_LIGHT] = {
         .name = {EOS},
@@ -84,7 +84,7 @@ static LinkBattleRuleset _0210F724[] = {
         .ubersClause = FALSE,
         .speciesDupeClause = FALSE,
         .itemDupeClause = FALSE,
-        .unk_1E_4 = FALSE,
+        .dragonRageClause = FALSE,
     },
     [STD_RULESET_DOUBLE] = {
         .name = {EOS},
@@ -97,7 +97,7 @@ static LinkBattleRuleset _0210F724[] = {
         .ubersClause = FALSE,
         .speciesDupeClause = FALSE,
         .itemDupeClause = FALSE,
-        .unk_1E_4 = FALSE,
+        .dragonRageClause = FALSE,
     },
     [STD_RULESET_STANDARD_2] = {
         .name = {EOS},
@@ -110,7 +110,7 @@ static LinkBattleRuleset _0210F724[] = {
         .ubersClause = FALSE,
         .speciesDupeClause = FALSE,
         .itemDupeClause = FALSE,
-        .unk_1E_4 = FALSE,
+        .dragonRageClause = FALSE,
     },
     [STD_RULESET_LIGHT_2] = {
         .name = {EOS},
@@ -123,7 +123,7 @@ static LinkBattleRuleset _0210F724[] = {
         .ubersClause = FALSE,
         .speciesDupeClause = FALSE,
         .itemDupeClause = FALSE,
-        .unk_1E_4 = FALSE,
+        .dragonRageClause = FALSE,
     },
     [STD_RULESET_DOUBLE_2] = {
         .name = {EOS},
@@ -136,7 +136,7 @@ static LinkBattleRuleset _0210F724[] = {
         .ubersClause = FALSE,
         .speciesDupeClause = FALSE,
         .itemDupeClause = FALSE,
-        .unk_1E_4 = FALSE,
+        .dragonRageClause = FALSE,
     },
     [STD_RULESET_DOUBLE_3] = {
         .name = {EOS},
@@ -149,7 +149,7 @@ static LinkBattleRuleset _0210F724[] = {
         .ubersClause = FALSE,
         .speciesDupeClause = FALSE,
         .itemDupeClause = FALSE,
-        .unk_1E_4 = FALSE,
+        .dragonRageClause = FALSE,
     },
     [STD_RULESET_GS] = {
         .name = {EOS},
@@ -162,7 +162,7 @@ static LinkBattleRuleset _0210F724[] = {
         .ubersClause = TRUE,
         .speciesDupeClause = FALSE,
         .itemDupeClause = FALSE,
-        .unk_1E_4 = FALSE,
+        .dragonRageClause = FALSE,
     },
 };
 LinkBattleRuleset *sub_020291E8(SaveData *saveData, int a1) {

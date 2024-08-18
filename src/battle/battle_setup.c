@@ -354,7 +354,7 @@ void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8
         FreeToHeap(pokemon);
     }
 
-    if (ruleset != NULL && LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_12)) {
+    if (ruleset != NULL && LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_DRAGON_RAGE_CLAUSE)) {
         setup->unk_194 = TRUE;
     }
     Save_Bag_Copy(bag, setup->bag);

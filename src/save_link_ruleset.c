@@ -73,8 +73,8 @@ int LinkBattleRuleset_GetRuleValue(LinkBattleRuleset *ruleset, LinkBattleRule ru
     case LINKBATTLERULE_UBERS_CLAUSE:
         ret = ruleset->ubersClause;
         break;
-    case LINKBATTLERULE_12:
-        ret = ruleset->unk_1E_4;
+    case LINKBATTLERULE_DRAGON_RAGE_CLAUSE:
+        ret = ruleset->dragonRageClause;
         break;
     case LINKBATTLERULE_SOUL_DEW_CLAUSE:
         ret = ruleset->totalLevel
