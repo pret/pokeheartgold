@@ -45,6 +45,6 @@ void sub_020291D4(SaveData *saveData, LinkBattleRuleset *rule);
 String *sub_020290E4(const LinkBattleRuleset *rule, HeapID heapId);
 BOOL sub_020291A4(SaveData *saveData, int a1);
 u32 sub_02029264(void *a0);
-int LinkBattleRuleset_GetRuleValue(LinkBattleRuleset *ruleset, int a1);
+int LinkBattleRuleset_GetRuleValue(LinkBattleRuleset *ruleset, LinkBattleRule rule);
 
 #endif //POKEHEARTGOLD_SAVE_LINK_RULESET_H

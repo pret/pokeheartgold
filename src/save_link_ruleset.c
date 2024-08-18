@@ -31,9 +31,9 @@ String *sub_020290E4(const LinkBattleRuleset *rule, HeapID heapId) {
     return ret;
 }
 
-int LinkBattleRuleset_GetRuleValue(LinkBattleRuleset *ruleset, int a1) {
+int LinkBattleRuleset_GetRuleValue(LinkBattleRuleset *ruleset, LinkBattleRule rule) {
     int ret = 0;
-    switch (a1) {
+    switch (rule) {
     case LINKBATTLERULE_NONE:
         break;
     case LINKBATTLERULE_PARTY_COUNT:

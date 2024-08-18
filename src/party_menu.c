@@ -1989,7 +1989,7 @@ static int sub_0207B7E0(PartyMenuStruct *partyMenu) {
             break;
         case 1: {
             String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00167);
-            BufferIntegerAsString(partyMenu->msgFormat, 0, LinkBattleRuleset_GetRuleValue(partyMenu->args->linkBattleRuleset, 3), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+            BufferIntegerAsString(partyMenu->msgFormat, 0, LinkBattleRuleset_GetRuleValue(partyMenu->args->linkBattleRuleset, LINKBATTLERULE_MAX_TOTAL_LEVEL), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
             StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
             String_Delete(string);
             PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
