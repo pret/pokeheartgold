@@ -9,7 +9,7 @@
 .public PlayerProfile_sizeof
 .public PlayerProfile_Copy
 .public PlayerProfile_GetTrainerID
-.public sub_020290B4
+.public LinkBattleRuleset_sizeof
 .public sub_02032B84
 .public sub_02032C1C
 .public sub_02032E24

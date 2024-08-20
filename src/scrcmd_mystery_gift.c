@@ -371,7 +371,7 @@ static BOOL MGCheck_BattleRules(FieldSystem *fieldSys, MysteryGiftData *mgData) 
 }
 
 static void MGGive_BattleRules(FieldSystem *fieldSys, MysteryGiftData *mgData) {
-    sub_020291D4(fieldSys->saveData, &FieldSystem_GetDataOfNextMG(fieldSys)->ruleset);
+    Save_LinkBattleRuleset_Set(fieldSys->saveData, &FieldSystem_GetDataOfNextMG(fieldSys)->ruleset);
 }
 
 static void MGMessageSuccess_BattleRules(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
@@ -379,7 +379,7 @@ static void MGMessageSuccess_BattleRules(struct GetMysteryGiftGmmState *gmmState
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00010;
     BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
-    String *rulesetName = sub_020290E4(mgData, HEAP_ID_32);
+    String *rulesetName = LinkBattleRuleset_CreateStringFromName(mgData, HEAP_ID_32);
     BufferString(gmmState->msgFormat, 1, rulesetName, 0, 1, 2);
     String_Delete(rulesetName);
 }

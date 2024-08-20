@@ -225,7 +225,7 @@ _02034470:
 	beq _0203450A
 	add r1, #0xc
 	add r1, r1, r5
-	bl sub_020290BC
+	bl LinkBattleRuleset_Copy
 _0203450A:
 	ldr r1, _0203451C ; =_021D4130
 	mov r0, #3

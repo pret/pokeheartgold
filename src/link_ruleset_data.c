@@ -4,7 +4,7 @@
 #include "link_ruleset_data.h"
 #include "msgdata/msg/msg_0182.h"
 
-static u8 _0210F6F8[] = {
+static u8 sRulesetIndexes[] = {
     STD_RULESET_STANDARD,
     STD_RULESET_FANCY,
     STD_RULESET_LITTLE,
@@ -19,7 +19,7 @@ static u8 _0210F6F8[] = {
     STD_RULESET_GS
 };
 
-static LinkBattleRuleset _0210F704 = {
+static LinkBattleRuleset sDefaultRuleset = {
     .name = {EOS},
     .totalLevel = 0,
     .partyCount = 6,
@@ -33,7 +33,7 @@ static LinkBattleRuleset _0210F704 = {
     .dragonRageClause = FALSE,
 };
 
-static LinkBattleRuleset _0210F724[] = {
+static LinkBattleRuleset sAlternateRulesets[] = {
     [STD_RULESET_STANDARD] = {
         .name = {EOS},
         .totalLevel = 0,
@@ -165,41 +165,41 @@ static LinkBattleRuleset _0210F724[] = {
         .dragonRageClause = FALSE,
     },
 };
-LinkBattleRuleset *sub_020291E8(SaveData *saveData, int a1) {
-    if (a1 == 5) {
+LinkBattleRuleset *sub_020291E8(SaveData *saveData, int index) {
+    if (index == 5) {
         Save_LinkBattleRuleset *linkBattleRuleset = SaveArray_Get(saveData, SAVE_LINK_BATTLE_RULESET);
         return &linkBattleRuleset->rules[0];
-    } else if (a1 == 10) {
+    } else if (index == 10) {
         return NULL;
-    } else if (a1 < NELEMS(_0210F6F8)) {
-        return &_0210F724[_0210F6F8[a1]];
+    } else if (index < NELEMS(sRulesetIndexes)) {
+        return &sAlternateRulesets[sRulesetIndexes[index]];
     } else {
         return NULL;
     }
 }
 
-void sub_0202921C(SaveData *saveData, int a1, String *a2, HeapID heapId) {
-    if (a1 == 5) {
-        LinkBattleRuleset *ruleset = sub_020291A4(saveData, 0);
-        sub_020290D4(ruleset, a2);
-    } else if (a1 < NELEMS(_0210F6F8)) {
+void sub_0202921C(SaveData *saveData, int index, String *string, HeapID heapId) {
+    if (index == 5) {
+        LinkBattleRuleset *ruleset = Save_LinkBattleRuleset_GetByIndex(saveData, 0);
+        LinkBattleRuleset_CopyNameToString(ruleset, string);
+    } else if (index < NELEMS(sRulesetIndexes)) {
         MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0182_bin, heapId);
-        ReadMsgDataIntoString(msgData, msg_0182_00083 + _0210F6F8[a1], a2);
+        ReadMsgDataIntoString(msgData, msg_0182_00083 + sRulesetIndexes[index], string);
         DestroyMsgData(msgData);
     }
 }
 LinkBattleRuleset *sub_0202925C(void) {
-    return &_0210F704;
+    return &sDefaultRuleset;
 }
 
 int sub_02029264(const LinkBattleRuleset *ruleset) {
     if (ruleset == NULL) {
         return 0xFF;
     }
-    for (int i = 0; i < NELEMS(_0210F724); ++i) {
-        if (memcmp(ruleset, &_0210F724[i], sizeof(LinkBattleRuleset)) == 0) {
-            for (int j = 0; j < NELEMS(_0210F6F8); ++j) {
-                if (i == _0210F6F8[j]) {
+    for (int i = 0; i < NELEMS(sAlternateRulesets); ++i) {
+        if (memcmp(ruleset, &sAlternateRulesets[i], sizeof(LinkBattleRuleset)) == 0) {
+            for (int j = 0; j < NELEMS(sRulesetIndexes); ++j) {
+                if (i == sRulesetIndexes[j]) {
                     return j;
                 }
             }

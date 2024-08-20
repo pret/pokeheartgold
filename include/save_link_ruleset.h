@@ -44,14 +44,14 @@ typedef struct Save_LinkBattleRuleset {
     LinkBattleRuleset rules[NUM_SAVE_LINK_BATTLE_RULESETS];
 } Save_LinkBattleRuleset;
 
-u32 sub_020290B4(void);
+u32 LinkBattleRuleset_sizeof(void);
 u32 Save_LinkBattleRuleset_sizeof(void);
-void sub_020290BC(const LinkBattleRuleset *src, LinkBattleRuleset *dst);
+void LinkBattleRuleset_Copy(const LinkBattleRuleset *src, LinkBattleRuleset *dst);
 void Save_LinkBattleRuleset_Init(Save_LinkBattleRuleset *ruleset);
-void sub_020290D4(const LinkBattleRuleset *rule, String *dest);
-String *sub_020290E4(const LinkBattleRuleset *rule, HeapID heapId);
-int LinkBattleRuleset_GetRuleValue(LinkBattleRuleset *ruleset, LinkBattleRule rule);
-LinkBattleRuleset *sub_020291A4(SaveData *saveData, int a1);
-void sub_020291D4(SaveData *saveData, const LinkBattleRuleset *rule);
+void LinkBattleRuleset_CopyNameToString(const LinkBattleRuleset *rule, String *dest);
+String *LinkBattleRuleset_CreateStringFromName(const LinkBattleRuleset *rule, HeapID heapId);
+int LinkBattleRuleset_GetRuleValue(const LinkBattleRuleset *ruleset, LinkBattleRule rule);
+LinkBattleRuleset *Save_LinkBattleRuleset_GetByIndex(SaveData *saveData, int a1);
+void Save_LinkBattleRuleset_Set(SaveData *saveData, const LinkBattleRuleset *rule);
 
 #endif //POKEHEARTGOLD_SAVE_LINK_RULESET_H

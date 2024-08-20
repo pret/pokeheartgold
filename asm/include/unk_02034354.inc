@@ -8,7 +8,7 @@
 .public PlayerProfile_Copy
 .public PlayerProfile_Init
 .public PlayerProfile_IsNameEmpty
-.public sub_020290BC
+.public LinkBattleRuleset_Copy
 .public sub_0202C08C
 .public sub_0202C4F0
 .public sub_0202C6F4

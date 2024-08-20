@@ -3925,7 +3925,7 @@ ov03_02255DB8: ; 0x02255DB8
 	ldr r0, [r0, #0xc]
 	mov r1, #0
 	add r4, #0x34
-	bl sub_020291A4
+	bl Save_LinkBattleRuleset_GetByIndex
 	mov r6, #5
 	cmp r0, #0
 	beq _02255DD4
