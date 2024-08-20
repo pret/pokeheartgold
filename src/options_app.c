@@ -765,255 +765,54 @@ static void OptionsApp_LoadMenuEntriesData(OptionsApp_Data *data) {
     data->menuEntries[MENU_ENTRY_6].value = 0;
 }
 
-// https://decomp.me/scratch/wtNBN
-#ifdef NONMATCHING
 static void ov54_021E6418(OptionsApp_Data *data, u16 menuEntryId) {
-    u32 y = menuEntryId * 24 + 5;
-    FillWindowPixelRect(&data->windows.selectedOption, 0, 108 + sOptionsApp_UnkWindowWidthOffsets[menuEntryId], y, 384, 24);
+    u32 selectedColor = MAKE_TEXT_COLOR(1, 2, 0);
+    u32 notSelectedColor = MAKE_TEXT_COLOR(15, 2, 0);
+    u32 color;
+    u16 i;
+    u8 frameDelay;
+    u16 x = 0;
+    FillWindowPixelRect(&data->windows.selectedOption, 0, 108 + sOptionsApp_UnkWindowWidthOffsets[menuEntryId], menuEntryId * 24 + 5, 384, 24);
 
     switch (menuEntryId) {
-        case MENU_ENTRY_FRAME:
-            u16 x = sOptionChoiceLabelXCoords[menuEntryId][0] - FontID_String_GetWidth(0, data->menuEntries[menuEntryId].strings[data->menuEntries[menuEntryId].value], 0) / 2;
-            AddTextPrinterParameterizedWithColor(&data->windows.selectedOption, 0, data->menuEntries[menuEntryId].strings[data->menuEntries[menuEntryId].value], x, y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
-            CopyWindowToVram(&data->windows.selectedOption);
-            OptionsApp_PrintTextFrameString(data, data->frameNumText, TRUE);
-            data->unk10_21 = TRUE;
-            return;
-        case MENU_ENTRY_SOUND_METHOD:
-            GF_SndSetMonoFlag(data->menuEntries[menuEntryId].value);
-            break;
-        case MENU_ENTRY_BUTTON_MODE:
-            Options_SetButtonModeOnMain(NULL, data->menuEntries[menuEntryId].value);
-            break;
-        case MENU_ENTRY_TEXT_SPEED:
-            Options_SetTextSpeed(data->playerOptions, data->menuEntries[menuEntryId].value);
-            OptionsApp_PrintTextFrameString(data, data->frameNumText, FALSE);
-            break;
+    case MENU_ENTRY_FRAME:
+        x = sOptionChoiceLabelXCoords[menuEntryId][0] - FontID_String_GetWidth(0, data->menuEntries[menuEntryId].strings[data->menuEntries[menuEntryId].value], 0) / 2;
+        AddTextPrinterParameterizedWithColor(&data->windows.selectedOption, 0, data->menuEntries[menuEntryId].strings[data->menuEntries[menuEntryId].value], x, menuEntryId * 24 + 5, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        CopyWindowToVram(&data->windows.selectedOption);
+        OptionsApp_PrintTextFrameString(data, data->frameNumText, TRUE);
+        data->unk10_21 = TRUE;
+        return;
+    case MENU_ENTRY_SOUND_METHOD:
+        GF_SndSetMonoFlag(data->menuEntries[menuEntryId].value);
+        break;
+    case MENU_ENTRY_BUTTON_MODE:
+        Options_SetButtonModeOnMain(NULL, data->menuEntries[menuEntryId].value);
+        break;
+    case MENU_ENTRY_TEXT_SPEED:
+        Options_SetTextSpeed(data->playerOptions, data->menuEntries[menuEntryId].value);
+        OptionsApp_PrintTextFrameString(data, data->frameNumText, FALSE);
+        break;
     }
 
-    // if (data->menuEntries[menuEntryId].numStrings > 0)
-    for (u16 i = 0; i < data->menuEntries[menuEntryId].numStrings; i++) {
-        u32 color = (i == data->menuEntries[menuEntryId].value) ? MAKE_TEXT_COLOR(1, 2, 0) : MAKE_TEXT_COLOR(15, 2, 0);
-        u16 x = sOptionChoiceLabelXCoords[menuEntryId][i] - (FontID_String_GetWidth(0, data->menuEntries[menuEntryId].strings[i], 0) / 2);
-        AddTextPrinterParameterizedWithColor(&data->windows.selectedOption, 0, data->menuEntries[menuEntryId].strings[i], x, y, TEXT_SPEED_NOTRANSFER, color, NULL);
+    x = 0;
+    for (i = 0; i < data->menuEntries[menuEntryId].numStrings; i++) {
+        if (i == data->menuEntries[menuEntryId].value) {
+            color = selectedColor;
+        } else {
+            color = notSelectedColor;
+        }
+        // required to match a double `bls` above
+        if (i == data->menuEntries[menuEntryId].numStrings - 1) {
+            frameDelay = TEXT_SPEED_NOTRANSFER;
+        } else {
+            frameDelay = TEXT_SPEED_NOTRANSFER;
+        }
+        x = sOptionChoiceLabelXCoords[menuEntryId][i] - (FontID_String_GetWidth(0, data->menuEntries[menuEntryId].strings[i], 0) / 2);
+        AddTextPrinterParameterizedWithColor(&data->windows.selectedOption, 0, data->menuEntries[menuEntryId].strings[i], x, menuEntryId * 24 + 5, frameDelay, color, NULL);
     }
 
     CopyWindowToVram(&data->windows.selectedOption);
 }
-#else
-static asm void ov54_021E6418(OptionsApp_Data *data, u16 menuEntryId) {
-    push {r3, r4, r5, r6, r7, lr}
-    sub sp, #0x20
-    add r6, r1, #0
-    str r0, [sp, #0x10]
-    ldr r2, =sOptionsApp_UnkWindowWidthOffsets
-    mov r1, #0x18
-    add r0, r6, #0
-    mul r0, r1
-    add r0, r0, #5
-    str r0, [sp, #0x14]
-    ldrsb r2, [r2, r6]
-    lsl r0, r1, #4
-    str r0, [sp]
-    ldr r3, [sp, #0x14]
-    ldr r0, [sp, #0x10]
-    add r2, #0x6c
-    lsl r2, r2, #0x10
-    lsl r3, r3, #0x10
-    str r1, [sp, #4]
-    add r0, #0x44
-    mov r1, #0
-    lsr r2, r2, #0x10
-    lsr r3, r3, #0x10
-    bl FillWindowPixelRect
-    cmp r6, #5
-    bhi _021E652E
-    add r0, r6, r6
-    add r0, pc
-    ldrh r0, [r0, #6]
-    lsl r0, r0, #0x10
-    asr r0, r0, #0x10
-    add pc, r0
-_021E645A: // jump table
-    DCD 0x00D200AC // _021E6508 - _021E645A - 2 ; case 0
-                   // _021E652E - _021E645A - 2 ; case 1
-    DCD 0x008200D2 // _021E652E - _021E645A - 2 ; case 2
-                   // _021E64DE - _021E645A - 2 ; case 3
-    DCD 0x000A0096 // _021E64F2 - _021E645A - 2 ; case 4
-                   // _021E6466 - _021E645A - 2 ; case 5
-_021E6466:
-    ldr r4, [sp, #0x10]
-    mov r0, #0x54
-    add r7, r6, #0
-    mul r7, r0
-    add r4, #0x86
-    ldr r0, [sp, #0x10]
-    ldrh r1, [r4, r7]
-    add r0, #0x88
-    add r5, r0, r7
-    lsl r1, r1, #2
-    mov r0, #0
-    ldr r1, [r5, r1]
-    add r2, r0, #0
-    bl FontID_String_GetWidth
-    mov r1, #6
-    add r2, r6, #0
-    mul r2, r1
-    ldr r1, =sOptionChoiceLabelXCoords
-    lsr r0, r0, #1
-    ldrh r1, [r1, r2]
-    sub r0, r1, r0
-    lsl r0, r0, #0x10
-    lsr r3, r0, #0x10
-    ldr r0, [sp, #0x14]
-    mov r1, #0
-    str r0, [sp]
-    mov r0, #0xff
-    str r0, [sp, #4]
-    ldr r0, =0x00010200
-    str r0, [sp, #8]
-    str r1, [sp, #0xc]
-    ldrh r2, [r4, r7]
-    ldr r0, [sp, #0x10]
-    lsl r2, r2, #2
-    ldr r2, [r5, r2]
-    add r0, #0x44
-    bl AddTextPrinterParameterizedWithColor
-    ldr r0, [sp, #0x10]
-    add r0, #0x44
-    bl CopyWindowToVram
-    ldr r0, [sp, #0x10]
-    mov r2, #0xc9
-    lsl r2, r2, #2
-    add r1, r0, #0
-    ldr r1, [r1, r2]
-    mov r2, #1
-    bl OptionsApp_PrintTextFrameString
-    ldr r0, [sp, #0x10]
-    ldr r1, [r0, #0x10]
-    mov r0, #2
-    lsl r0, r0, #0x14
-    orr r1, r0
-    ldr r0, [sp, #0x10]
-    add sp, #0x20
-    str r1, [r0, #0x10]
-    pop {r3, r4, r5, r6, r7, pc}
-_021E64DE:
-    mov r0, #0x54
-    add r1, r6, #0
-    mul r1, r0
-    ldr r0, [sp, #0x10]
-    add r0, r0, r1
-    add r0, #0x86
-    ldrh r0, [r0]
-    bl GF_SndSetMonoFlag
-    b _021E652E
-_021E64F2:
-    mov r1, #0x54
-    add r2, r6, #0
-    mul r2, r1
-    ldr r1, [sp, #0x10]
-    mov r0, #0
-    add r1, r1, r2
-    add r1, #0x86
-    ldrh r1, [r1]
-    bl Options_SetButtonModeOnMain
-    b _021E652E
-_021E6508:
-    mov r1, #0x54
-    add r2, r6, #0
-    mul r2, r1
-    ldr r1, [sp, #0x10]
-    ldr r0, [sp, #0x10]
-    add r1, r1, r2
-    add r1, #0x86
-    ldrh r1, [r1]
-    ldr r0, [r0, #0x24]
-    bl Options_SetTextSpeed
-    ldr r0, [sp, #0x10]
-    mov r2, #0xc9
-    lsl r2, r2, #2
-    add r1, r0, #0
-    ldr r1, [r1, r2]
-    mov r2, #0
-    bl OptionsApp_PrintTextFrameString
-_021E652E:
-    mov r0, #0x54
-    add r1, r6, #0
-    mul r1, r0
-    ldr r0, [sp, #0x10]
-    mov r4, #0
-    add r5, r0, r1
-    add r0, r5, #0
-    add r0, #0x84
-    ldrh r0, [r0]
-    cmp r0, #0
-    bls _021E65B2
-    bls _021E65B2
-    mov r0, #6
-    ldr r1, =sOptionChoiceLabelXCoords
-    mul r0, r6
-    add r0, r1, r0
-    str r0, [sp, #0x18]
-    ldr r0, [sp, #0x10]
-    str r0, [sp, #0x1c]
-    add r0, #0x44
-    str r0, [sp, #0x1c]
-_021E6558:
-    add r0, r5, #0
-    add r0, #0x86
-    ldrh r0, [r0]
-    cmp r4, r0
-    bne _021E6566
-    ldr r6, =0x00010200
-    b _021E6568
-_021E6566:
-    ldr r6, =0x000F0200
-_021E6568:
-    lsl r7, r4, #2
-    add r1, r5, r7
-    add r1, #0x88
-    mov r0, #0
-    ldr r1, [r1, #0]
-    add r2, r0, #0
-    bl FontID_String_GetWidth
-    ldr r1, [sp, #0x18]
-    lsl r2, r4, #1
-    ldrh r1, [r1, r2]
-    lsr r0, r0, #1
-    add r2, r5, r7
-    sub r0, r1, r0
-    lsl r0, r0, #0x10
-    lsr r3, r0, #0x10
-    ldr r0, [sp, #0x14]
-    add r2, #0x88
-    str r0, [sp]
-    mov r0, #0xff
-    str r0, [sp, #4]
-    str r6, [sp, #8]
-    mov r0, #0
-    str r0, [sp, #0xc]
-    ldr r0, [sp, #0x1c]
-    ldr r2, [r2, #0]
-    mov r1, #0
-    bl AddTextPrinterParameterizedWithColor
-    add r0, r4, #1
-    lsl r0, r0, #0x10
-    lsr r4, r0, #0x10
-    add r0, r5, #0
-    add r0, #0x84
-    ldrh r0, [r0]
-    cmp r4, r0
-    blo _021E6558
-_021E65B2:
-    ldr r0, [sp, #0x10]
-    add r0, #0x44
-    str r0, [sp, #0x10]
-    bl CopyWindowToVram
-    add sp, #0x20
-    pop {r3, r4, r5, r6, r7, pc}
-}
-#endif
 
 static void OptionsApp_UpdateMenuEntryCarousel(OptionsApp_Data *data, u32 menuEntryId, OptionsApp_MenuEntry *menuEntry, s32 offset) {
     if (menuEntryId == MENU_ENTRY_FRAME) {
