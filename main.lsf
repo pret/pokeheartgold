@@ -161,9 +161,6 @@ Static main
     Object src/field_system.o
     Object src/location_backup.o
     Object src/launch_application.o
-    Object src/launch_application_data1.o
-    Object src/launch_application_data2.o
-    Object asm/launch_application_data.o
     Object src/script.o
     Object src/fieldmap.o
     Object src/scrcmd_c.o

@@ -15,23 +15,37 @@
 #include "game_stats.h"
 #include "get_egg.h"
 #include "global.h"
-#include "launch_application_data.h"
 #include "launch_application_internal.h"
 #include "mail_misc.h"
 #include "overlay_02.h"
+#include "overlay_100.h"
+#include "overlay_101.h"
+#include "overlay_102.h"
 #include "overlay_103.h"
+#include "overlay_104.h"
+#include "overlay_105.h"
 #include "overlay_108.h"
 #include "overlay_109.h"
 #include "overlay_111.h"
 #include "overlay_113.h"
+#include "overlay_121.h"
 #include "overlay_14.h"
+#include "overlay_15.h"
 #include "overlay_16.h"
 #include "overlay_18.h"
+#include "overlay_37.h"
 #include "overlay_41.h"
 #include "overlay_43.h"
 #include "overlay_54.h"
+#include "overlay_55.h"
 #include "overlay_58.h"
+#include "overlay_64.h"
+#include "overlay_65.h"
 #include "overlay_67.h"
+#include "overlay_68.h"
+#include "overlay_69.h"
+#include "overlay_70.h"
+#include "overlay_71.h"
 #include "overlay_72.h"
 #include "overlay_73.h"
 #include "overlay_86.h"
@@ -40,6 +54,7 @@
 #include "overlay_99.h"
 #include "overlay_manager.h"
 #include "overlay_trainer_card.h"
+#include "overlay_trainer_card_signature.h"
 #include "party_menu.h"
 #include "pokedex_util.h"
 #include "save_local_field_data.h"
@@ -69,6 +84,52 @@
 #include "unk_020910D8.h"
 #include "unk_02092BE8.h"
 #include "unk_02097B78.h"
+
+FS_EXTERN_OVERLAY(certificates_app);
+FS_EXTERN_OVERLAY(credits);
+FS_EXTERN_OVERLAY(trainer_card);
+FS_EXTERN_OVERLAY(trainer_card_signature);
+FS_EXTERN_OVERLAY(voltorb_flip);
+FS_EXTERN_OVERLAY(OVY_12);
+FS_EXTERN_OVERLAY(OVY_14);
+FS_EXTERN_OVERLAY(OVY_15);
+FS_EXTERN_OVERLAY(OVY_16);
+FS_EXTERN_OVERLAY(OVY_18);
+FS_EXTERN_OVERLAY(OVY_37);
+FS_EXTERN_OVERLAY(OVY_39);
+FS_EXTERN_OVERLAY(OVY_41);
+FS_EXTERN_OVERLAY(OVY_43);
+FS_EXTERN_OVERLAY(options_app);
+FS_EXTERN_OVERLAY(OVY_55);
+FS_EXTERN_OVERLAY(OVY_58);
+FS_EXTERN_OVERLAY(OVY_61);
+FS_EXTERN_OVERLAY(OVY_63);
+FS_EXTERN_OVERLAY(OVY_64);
+FS_EXTERN_OVERLAY(OVY_65);
+FS_EXTERN_OVERLAY(OVY_67);
+FS_EXTERN_OVERLAY(OVY_68);
+FS_EXTERN_OVERLAY(OVY_69);
+FS_EXTERN_OVERLAY(OVY_70);
+FS_EXTERN_OVERLAY(OVY_71);
+FS_EXTERN_OVERLAY(OVY_72);
+FS_EXTERN_OVERLAY(OVY_73);
+FS_EXTERN_OVERLAY(OVY_86);
+FS_EXTERN_OVERLAY(OVY_87);
+FS_EXTERN_OVERLAY(OVY_96);
+FS_EXTERN_OVERLAY(OVY_99);
+FS_EXTERN_OVERLAY(OVY_100);
+FS_EXTERN_OVERLAY(OVY_101);
+FS_EXTERN_OVERLAY(OVY_102);
+FS_EXTERN_OVERLAY(OVY_103);
+FS_EXTERN_OVERLAY(OVY_104);
+FS_EXTERN_OVERLAY(OVY_105);
+FS_EXTERN_OVERLAY(OVY_106);
+FS_EXTERN_OVERLAY(OVY_108);
+FS_EXTERN_OVERLAY(OVY_109);
+FS_EXTERN_OVERLAY(OVY_110);
+FS_EXTERN_OVERLAY(OVY_111);
+FS_EXTERN_OVERLAY(OVY_113);
+FS_EXTERN_OVERLAY(OVY_121);
 
 static PartyMenuArgs *PartyMenu_CreateArgs(HeapID heapId, FieldSystem *fieldSystem, int a2, PartyMenuContext context);
 static BOOL Task_OpenPartyMenuForUnionRoomBattleSelect(TaskManager *taskman);
@@ -114,13 +175,17 @@ BOOL Battle_Exit(OVY_MANAGER *man, int *state) {
     return TRUE;
 }
 
+const OVY_MGR_TEMPLATE gOverlayTemplate_Battle = { Battle_Init, Battle_Main, Battle_Exit, FS_OVERLAY_ID(OVY_12) };
+
 void Battle_LaunchApp(FieldSystem *fieldSystem, BattleSetup *args) {
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_Battle, args);
 }
 
+static const u8 sAllPockets[] = { POCKET_ITEMS, POCKET_MEDICINE, POCKET_BALLS, POCKET_TMHMS, POCKET_BERRIES, POCKET_MAIL, POCKET_BATTLE_ITEMS, POCKET_KEY_ITEMS, 0xFF };
+
 void Bag_LaunchApp(FieldSystem *fieldSystem, BagView *args) {
-    const OVY_MGR_TEMPLATE *ptr = &sOverlayTemplate_Bag;
-    OVY_MGR_TEMPLATE template = *ptr;
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_Bag = { Bag_Init, Bag_Main, Bag_Exit, FS_OVERLAY_ID(OVY_15) };
+    OVY_MGR_TEMPLATE template = sOverlayTemplate_Bag;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
 
@@ -137,6 +202,10 @@ BagView *sub_0203E3FC(FieldSystem *fieldSystem, ItemCheckUseData *taskman) {
 }
 
 BagView *Bag_LaunchApp_WithPocket(FieldSystem *fieldSystem, u8 pocketType) {
+    static const u8 sBerryPocket[] = { POCKET_BERRIES, 0xFF };
+    static const u8 sItemPocket[] = { POCKET_ITEMS, 0xFF };
+    static const u8 *sPockets = NULL;
+
     Bag *bag = Save_Bag_Get(fieldSystem->saveData);
     switch (pocketType) {
     case POCKET_TYPE_ITEMS:
@@ -287,6 +356,7 @@ PartyMenuArgs *PartyMenu_LaunchApp_Unk5(FieldSystem *fieldSystem, int partySlot)
 }
 
 PokemonSummaryArgs *PokemonSummary_CreateArgs(FieldSystem *fieldSystem, HeapID heapId, int a2) {
+    static const u8 _020FA1B0[] = { 0x00, 0x01, 0x02, 0x03, 0x04 };
     SaveData *saveData = fieldSystem->saveData;
     PokemonSummaryArgs *args = AllocFromHeapAtEnd(heapId, sizeof(PokemonSummaryArgs));
     MI_CpuFill8(args, 0, sizeof(PokemonSummaryArgs));
@@ -310,6 +380,7 @@ PokemonSummaryArgs *PokemonSummary_CreateArgs(FieldSystem *fieldSystem, HeapID h
 }
 
 PokemonSummaryArgs *LearnForgetMove_LaunchApp(HeapID heapId, FieldSystem *fieldSystem, u8 partySlot, u16 moveToLearn) {
+    static const u8 _020FA1A8[] = { 0x01, 0x04 };
     PokemonSummaryArgs *args = AllocFromHeap(heapId, sizeof(PokemonSummaryArgs));
     MI_CpuFill8(args, 0, sizeof(PokemonSummaryArgs));
     args->party = SaveArray_Party_Get(fieldSystem->saveData);
@@ -333,6 +404,7 @@ u16 sub_0203E864(UnkStruct_0203E600 *a0) {
 }
 
 void PCBox_LaunchApp(FieldSystem *fieldSystem, PCBoxArgs *args) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_PCBox = { PCBox_Init, PCBox_Main, PCBox_Exit, FS_OVERLAY_ID(OVY_14) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_PCBox, args);
 }
 
@@ -419,15 +491,18 @@ void sub_0203E960(TaskManager *taskman, int a1, UnkStruct_0203E8C8 *a2, u16 *a3,
 }
 
 void EasyChat_LaunchApp(FieldSystem *fieldSystem, EasyChatArgs *args) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_EasyChat = { EasyChat_Init, EasyChat_Main, EasyChat_Exit, FS_OVERLAY_ID(OVY_102) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_EasyChat, args);
 }
 
 static void PokegearPhone_LaunchApp_Impl(FieldSystem *fieldSystem, PokegearArgs *args) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_Phone = { Phone_Init, Phone_Main, Phone_Exit, FS_OVERLAY_ID(OVY_100) };
     OVY_MGR_TEMPLATE template = sOverlayTemplate_Phone;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
 
 static void PokegearTownMap_LaunchApp_Impl(FieldSystem *fieldSystem, PokegearArgs *args) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_TownMap = { TownMap_Init, TownMap_Main, TownMap_Exit, FS_OVERLAY_ID(OVY_101) };
     OVY_MGR_TEMPLATE template = sOverlayTemplate_TownMap;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -450,6 +525,7 @@ PokegearArgs *PokegearTownMap_LaunchApp(FieldSystem *fieldSystem, int kind) {
 }
 
 static void SafariAreaCustomizer_LaunchApp_Impl(FieldSystem *fieldSystem, SafariAreaCustomizerArgs *args) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_SafariAreaCustomizer = { SafariAreaCustomizer_Init, SafariAreaCustomizer_Main, SafariAreaCustomizer_Exit, FS_OVERLAY_ID(OVY_108) };
     OVY_MGR_TEMPLATE template = sOverlayTemplate_SafariAreaCustomizer;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -464,6 +540,7 @@ SafariAreaCustomizerArgs *SafariAreaCustomizer_LaunchApp(FieldSystem *fieldSyste
 }
 
 static void SafariDecoration_LaunchApp_Impl(FieldSystem *fieldSystem, SafariDecorationArgs *args) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_SafariDecoration = { SafariDecoration_Init, SafariDecoration_Main, SafariDecoration_Exit, FS_OVERLAY_ID(OVY_108) };
     OVY_MGR_TEMPLATE template = sOverlayTemplate_SafariDecoration;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -475,6 +552,7 @@ SafariDecorationArgs *SafariDecoration_LaunchApp(FieldSystem *fieldSystem) {
 }
 
 static void PhotoAlbum_LaunchApp_Impl(FieldSystem *fieldSystem, PhotoAlbumArgs *args) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_PhotoAlbum = { PhotoAlbum_Init, PhotoAlbum_Main, PhotoAlbum_Exit, FS_OVERLAY_ID(OVY_109) };
     OVY_MGR_TEMPLATE template = sOverlayTemplate_PhotoAlbum;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -490,6 +568,7 @@ PhotoAlbumArgs *PhotoAlbum_LaunchApp(FieldSystem *fieldSystem, int unused, int i
 }
 
 static void AlphPuzzle_LaunchApp_Impl(FieldSystem *fieldSystem, AlphPuzzleArgs *args) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_AlphPuzzle = { AlphPuzzle_Init, AlphPuzzle_Main, AlphPuzzle_Exit, FS_OVERLAY_ID(OVY_110) };
     OVY_MGR_TEMPLATE template = sOverlayTemplate_AlphPuzzle;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -505,6 +584,7 @@ AlphPuzzleArgs *AlphPuzzle_LaunchApp(FieldSystem *fieldSystem, u8 puzzle) {
 }
 
 static void UnownReport_LaunchApp_Impl(FieldSystem *fieldSystem, UnownReportArgs *args) {
+    static const OVY_MGR_TEMPLATE gOverlayTemplate_UnownReport = { UnownReport_Init, UnownReport_Main, UnownReport_Exit, FS_OVERLAY_ID(OVY_113) };
     OVY_MGR_TEMPLATE template = gOverlayTemplate_UnownReport;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -519,6 +599,7 @@ UnownReportArgs *UnownReport_LaunchApp(FieldSystem *fieldSystem) {
 }
 
 static void BerryPots_LaunchApp_Impl(FieldSystem *fieldSystem, BerryPotsArgs *args) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_BerryPots = { BerryPots_Init, BerryPots_Main, BerryPots_Exit, FS_OVERLAY_ID(OVY_16) };
     OVY_MGR_TEMPLATE template = sOverlayTemplate_BerryPots;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -534,6 +615,7 @@ BerryPotsArgs *BerryPots_LaunchApp(FieldSystem *fieldSystem) {
 }
 
 static void ApricornBox_LaunchApp_Impl(FieldSystem *fieldSystem, ApricornBoxArgs *args) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_ApricornBox = { ApricornBox_Init, ApricornBox_Main, ApricornBox_Exit, FS_OVERLAY_ID(OVY_58) };
     OVY_MGR_TEMPLATE template = sOverlayTemplate_ApricornBox;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -567,6 +649,7 @@ ApricornBoxArgs *sub_0203ED80(FieldSystem *fieldSystem, u32 a1, u16 *a2) {
 }
 
 static void BugContestSwapMon_LaunchApp_Impl(FieldSystem *fieldSystem, BugContestSwapMonArgs *args) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_BugContestSwapMon = { BugContestSwapMon_Init, BugContestSwapMon_Main, BugContestSwapMon_Exit, FS_OVERLAY_ID(OVY_111) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_BugContestSwapMon, args);
 }
 
@@ -582,6 +665,7 @@ BugContestSwapMonArgs *BugContestSwapMon_LaunchApp(FieldSystem *fieldSystem, Pok
 }
 
 static void OptionsMenu_LaunchApp_Impl(FieldSystem *fieldSystem, OptionsMenuArgs *args) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_OptionsMenu = { OptionsMenu_Init, OptionsMenu_Main, OptionsMenu_Exit, FS_OVERLAY_ID(options_app) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_OptionsMenu, args);
 }
 
@@ -594,12 +678,11 @@ OptionsMenuArgs *OptionsMenu_LaunchApp(FieldSystem *fieldSystem) {
 }
 
 static BOOL sub_0203EE54(SaveData *saveData) {
-    return Save_VarsFlags_CheckFlagInArray(Save_VarsFlags_Get(saveData), FLAG_UNK_0EF) &&
-           Save_VarsFlags_CheckFlagInArray(Save_VarsFlags_Get(saveData), FLAG_UNK_0F0) &&
-           Save_VarsFlags_CheckFlagInArray(Save_VarsFlags_Get(saveData), FLAG_UNK_0F1);
+    return Save_VarsFlags_CheckFlagInArray(Save_VarsFlags_Get(saveData), FLAG_UNK_0EF) && Save_VarsFlags_CheckFlagInArray(Save_VarsFlags_Get(saveData), FLAG_UNK_0F0) && Save_VarsFlags_CheckFlagInArray(Save_VarsFlags_Get(saveData), FLAG_UNK_0F1);
 }
 
 static void PokeathlonCourseRecord_LaunchApp_Impl(FieldSystem *fieldSystem, PokeathlonCourseRecordArgs *args) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_PokeathlonCourseRecord = { PokeathlonCourseRecord_Init, PokeathlonCourseRecord_Main, PokeathlonCourseRecord_Exit, FS_OVERLAY_ID(OVY_99) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_PokeathlonCourseRecord, args);
 }
 
@@ -614,6 +697,7 @@ PokeathlonCourseRecordArgs *PokeathlonCourseRecord_LaunchApp(FieldSystem *fieldS
 }
 
 static void PokeathlonMedals_LaunchApp_Impl(FieldSystem *fieldSystem, PokeathlonMedalsArgs *args) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_PokeathlonMedals = { PokeathlonMedals_Init, PokeathlonMedals_Main, PokeathlonMedals_Exit, FS_OVERLAY_ID(OVY_99) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_PokeathlonMedals, args);
 }
 
@@ -631,6 +715,7 @@ PokeathlonMedalsArgs *PokeathlonMedals_LaunchApp(FieldSystem *fieldSystem) {
 }
 
 static void PokeathlonEventRecord_LaunchApp_Impl(FieldSystem *fieldSystem, PokeathlonEventRecordArgs *args) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_PokeathlonEventRecord = { PokeathlonEventRecord_Init, PokeathlonEventRecord_Main, PokeathlonEventRecord_Exit, FS_OVERLAY_ID(OVY_99) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_PokeathlonEventRecord, args);
 }
 
@@ -648,6 +733,7 @@ PokeathlonEventRecordArgs *PokeathlonEventRecord_LaunchApp(FieldSystem *fieldSys
 }
 
 static void PokeathlonUnk_LaunchApp_Impl(FieldSystem *fieldSystem, UnkStruct_0203EFA0 *args) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_PokeathlonUnkApp = { ov99_021E677C, ov99_021E6888, ov99_021E6840, FS_OVERLAY_ID(OVY_99) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_PokeathlonUnkApp, args);
 }
 
@@ -662,6 +748,7 @@ UnkStruct_0203EFA0 *PokeathlonUnk_LaunchApp(FieldSystem *fieldSystem) {
 }
 
 static void sub_0203EFD4(FieldSystem *fieldSystem, UseMailArgs *args) {
+    static const OVY_MGR_TEMPLATE _020FA434 = { ov55_UnkApp_Init, ov55_UnkApp_Main, ov55_UnkApp_Exit, FS_OVERLAY_ID(OVY_55) };
     args->menuInputStatePtr = &fieldSystem->menuInputState;
     FieldSystem_LaunchApplication(fieldSystem, &_020FA434, args);
 }
@@ -691,6 +778,7 @@ UseMailArgs *sub_0203F050(FieldSystem *fieldSystem, Pokemon *mon, HeapID heapId)
 }
 
 UnkStruct_0203F074 *sub_0203F074(FieldSystem *fieldSystem, HeapID heapId) {
+    static const OVY_MGR_TEMPLATE _020FA2F4 = { ov103_021EC940, ov103_021EC988, ov103_021EC9A4, FS_OVERLAY_ID(OVY_103) };
     UnkStruct_0203F074 *args = AllocFromHeap(heapId, sizeof(UnkStruct_0203F074));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
     args->fieldSystem = fieldSystem;
@@ -700,6 +788,7 @@ UnkStruct_0203F074 *sub_0203F074(FieldSystem *fieldSystem, HeapID heapId) {
 }
 
 void sub_0203F0A8(FieldSystem *fieldSystem, UnkOv67Args *args) {
+    static const OVY_MGR_TEMPLATE _020FA2E4 = { ov67_021E5900, ov67_021E5984, ov67_021E5968, FS_OVERLAY_ID(OVY_67) };
     OVY_MGR_TEMPLATE template = _020FA2E4;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
@@ -758,15 +847,21 @@ void sub_0203F198(TaskManager *taskman, u16 *ret, SaveData *saveData, u16 a3, u1
 }
 
 static BOOL sub_0203F1E8(FieldSystem *fieldSystem, UnkStruct_0203F0D0 *args) {
+    static OVY_MGR_TEMPLATE _0210F9AC = { ov41_02246DE0, ov41_02246F08, ov41_02247150, FS_OVERLAY_ID(OVY_41) };
     args->menuInputStatePtr = &fieldSystem->menuInputState;
     FieldSystem_LaunchApplication(fieldSystem, &_0210F9AC, args);
     return TRUE;
 }
 
 BOOL AccessoryPortrait_LaunchApp(FieldSystem *fieldSystem, FashionAppData *args) {
+    static OVY_MGR_TEMPLATE sOverlayTemplate_AccessoryPortrait = { AccessoryPortrait_Init, AccessoryPortrait_Main, AccessoryPortrait_Exit, FS_OVERLAY_ID(OVY_41) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_AccessoryPortrait, args);
     return TRUE;
 }
+
+static OVY_MGR_TEMPLATE sOverlayTemplate_WirelessTradeSelectMon = { WirelessTradeSelectMon_Init, WirelessTradeSelectMon_Main, WirelessTradeSelectMon_Exit, FS_OVERLAY_ID(OVY_65) };
+
+static const OVY_MGR_TEMPLATE sOverlayTemplate_TradeSequence = { TradeSequence_Init, TradeSequence_Main, TradeSequence_Exit, FS_OVERLAY_ID(OVY_71) };
 
 static void InitWirelessTradeSelectMonArgs(WirelessTradeSelectMonArgs *args, FieldSystem *fieldSystem) {
     args->profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
@@ -894,6 +989,9 @@ void CallTask_WirelessTrade(TaskManager *taskman) {
     TaskManager_Call(taskman, Task_WirelessTrade, data);
 }
 
+static const OVY_MGR_TEMPLATE _020FA2C4 = { ov37_021E5900, ov37_021E5A84, ov37_021E5B94, FS_OVERLAY_ID(OVY_37) };
+static const OVY_MGR_TEMPLATE _020FA2B4 = { ov73_021E5900, ov73_021E5AB8, ov73_021E5BAC, FS_OVERLAY_ID(OVY_73) };
+
 void sub_0203F4C8(FieldSystem *fieldSystem) {
     UnkStruct_0203F4C8 *args = AllocFromHeap(HEAP_ID_32, sizeof(UnkStruct_0203F4C8));
     args->unk0 = fieldSystem->unk84;
@@ -911,6 +1009,8 @@ UnkStruct_0203F4F8 *sub_0203F4F8(FieldSystem *fieldSystem) {
     FieldSystem_LaunchApplication(fieldSystem, &_020FA2B4, args);
     return args;
 }
+
+static const OVY_MGR_TEMPLATE sOverlayTemplate_PalPad = { PalPad_Init, PalPad_Main, PalPad_Exit, FS_OVERLAY_ID(OVY_43) };
 
 PalPadArgs *PalPad_LaunchApp(FieldSystem *fieldSystem, SaveData *saveData, HeapID heapId) {
     PalPadArgs *args = AllocFromHeap(heapId, sizeof(PalPadArgs));
@@ -1039,6 +1139,7 @@ void CallTask_NamingScreen(TaskManager *taskman, NameScreenType type, int specie
 }
 
 void TrainerCard_LaunchApp(FieldSystem *fieldSystem, TrainerCardAppArgs *args) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_TrainerCard = { TrainerCard_Init, TrainerCard_Main, TrainerCard_Exit, FS_OVERLAY_ID(trainer_card) };
     args->unk66C.menuInputStatePtr = &fieldSystem->menuInputState;
     args->unk66C.saveData = fieldSystem->saveData;
     args->unk66C.gameCleared = CheckGameClearFlag(Save_VarsFlags_Get(fieldSystem->saveData));
@@ -1047,22 +1148,26 @@ void TrainerCard_LaunchApp(FieldSystem *fieldSystem, TrainerCardAppArgs *args) {
 }
 
 int Pokedex_LaunchApp(FieldSystem *fieldSystem, PokedexArgs *args) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_Pokedex = { Pokedex_Init, Pokedex_Main, Pokedex_Exit, FS_OVERLAY_ID(OVY_18) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_Pokedex, args);
     return 1;
 }
 
 void ChooseStarter_LaunchApp(FieldSystem *fieldSystem, ChooseStarterArgs *args) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_ChooseStarter = { ChooseStarter_Init, ChooseStarter_Main, ChooseStarter_Exit, FS_OVERLAY_ID(OVY_61) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_ChooseStarter, args);
 }
 
 void TrainerCardSignature_LaunchApp(FieldSystem *fieldSystem) {
     Save_TrainerCard_Get(fieldSystem->saveData); // unused
 
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_TrainerCardSignature = { TrainerCardSignature_Init, TrainerCardSignature_Main, TrainerCardSignature_Exit, FS_OVERLAY_ID(trainer_card_signature) };
     OVY_MGR_TEMPLATE template = sOverlayTemplate_TrainerCardSignature;
     FieldSystem_LaunchApplication(fieldSystem, &template, fieldSystem->saveData);
 }
 
 void sub_0203F844(FieldSystem *fieldSystem, u16 a1) {
+    static const OVY_MGR_TEMPLATE _020FA264 = { ov70_02238430, ov70_022385C0, ov70_022386F4, FS_OVERLAY_ID(OVY_70) };
     OVY_MGR_TEMPLATE template = _020FA264;
 
     UnkStruct_0203F844 *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(UnkStruct_0203F844));
@@ -1086,6 +1191,7 @@ void sub_0203F844(FieldSystem *fieldSystem, u16 a1) {
 }
 
 NintendoWifiConnectArgs *NintendoWifiConnection_LaunchApp(FieldSystem *fieldSystem, u16 a1, u16 a2) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_NintendoWifiConnect = { NintendoWfc_Init, NintendoWfc_Main, NintendoWfc_Exit, FS_OVERLAY_ID(OVY_72) };
     OVY_MGR_TEMPLATE template = sOverlayTemplate_NintendoWifiConnect;
 
     NintendoWifiConnectArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(NintendoWifiConnectArgs));
@@ -1103,15 +1209,24 @@ NintendoWifiConnectArgs *NintendoWifiConnection_LaunchApp(FieldSystem *fieldSyst
     return args;
 }
 
+void LaunchApplication_DeadstrippedFunction(FieldSystem *fieldSystem) {
+    static const OVY_MGR_TEMPLATE _020FA444 = { ov73_021E7E4C, ov73_021E7FB8, ov73_021E808C, FS_OVERLAY_ID(OVY_72) };
+    FieldSystem_LaunchApplication(fieldSystem, &_020FA444, NULL);
+}
+
+static const OVY_MGR_TEMPLATE sOverlayTemplate_GeonetGlobe = { GeonetGlobe_Init, GeonetGlobe_Main, GeonetGlobe_Exit, FS_OVERLAY_ID(OVY_69) };
+
 void GeonetGlobe_LaunchApp(FieldSystem *fieldSystem) {
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_GeonetGlobe, fieldSystem->saveData);
 }
 
 void RegisterHallOfFame_LaunchApp(FieldSystem *fieldSystem, RegisterHallOfFameArgs *args) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_RegisterHallOfFame = { RegisterHallOfFame_Init, RegisterHallOfFame_Main, RegisterHallOfFame_Exit, FS_OVERLAY_ID(OVY_63) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_RegisterHallOfFame, args);
 }
 
 HallOfFame *HallOfFameShowcase_LaunchApp(FieldSystem *fieldSystem) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_HallOfFameShowcase = { HallOfFameShowcase_Init, HallOfFameShowcase_Main, HallOfFameShowcase_Exit, FS_OVERLAY_ID(OVY_64) };
     int loadResult;
     HallOfFame *hallOfFame = LoadHallOfFame(fieldSystem->saveData, HEAP_ID_FIELD, &loadResult);
     if (loadResult == 2) {
@@ -1123,11 +1238,13 @@ HallOfFame *HallOfFameShowcase_LaunchApp(FieldSystem *fieldSystem) {
 }
 
 void Credits_LaunchApp(FieldSystem *fieldSystem, CreditsArgs *args) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_Credits = { Credits_Init, Credits_Main, Credits_Exit, FS_OVERLAY_ID(credits) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_Credits, args);
 }
 
 void MoveRelearner_LaunchApp(FieldSystem *menuInputStatePtr, MoveRelearnerArgs *args) {
-    OVY_MGR_TEMPLATE template = sOverlayTemplate_MoveRelearner;
+    OVY_MGR_TEMPLATE template = { MoveRelearner_Init, MoveRelearner_Main, MoveRelearner_Exit, FS_OVERLAY_ID(OVY_68) };
+    ;
     args->menuInputStatePtr = &menuInputStatePtr->menuInputState;
     FieldSystem_LaunchApplication(menuInputStatePtr, &template, args);
 }
@@ -1146,6 +1263,7 @@ void HatchEggInParty(FieldSystem *fieldSystem) {
 }
 
 VoltorbFlipArgs *VoltorbFlip_LaunchApp(FieldSystem *fieldSystem, u32 luck) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_VoltorbFlip = { VoltorbFlip_Init, VoltorbFlip_Main, VoltorbFlip_Exit, FS_OVERLAY_ID(voltorb_flip) };
     VoltorbFlipArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(VoltorbFlipArgs));
     MI_CpuFill8(args, 0, sizeof(VoltorbFlipArgs));
     SaveData *saveData = FieldSystem_GetSaveData(fieldSystem);
@@ -1159,6 +1277,7 @@ VoltorbFlipArgs *VoltorbFlip_LaunchApp(FieldSystem *fieldSystem, u32 luck) {
 }
 
 CertificatesArgs *Certificates_LaunchApp(FieldSystem *fieldSystem, HeapID heapId, u16 certificateId) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_Certificates = { Certificates_Init, Certificates_Main, Certificates_Exit, FS_OVERLAY_ID(certificates_app) };
     CertificatesArgs *args = AllocFromHeap(heapId, sizeof(CertificatesArgs));
     args->certificateId = certificateId;
     args->saveData = fieldSystem->saveData;
@@ -1167,6 +1286,7 @@ CertificatesArgs *Certificates_LaunchApp(FieldSystem *fieldSystem, HeapID heapId
 }
 
 UnkStruct_0203FAB4 *sub_0203FAB4(FieldSystem *fieldSystem, u8 a1, u8 a2, u16 a3, HeapID heapId) {
+    static OVY_MGR_TEMPLATE _0210F9BC = { ov86_021E5900, ov86_021E5A40, ov86_021E5AA4, FS_OVERLAY_ID(OVY_86) };
     UnkStruct_0203FAB4 *args = AllocFromHeap(heapId, sizeof(UnkStruct_0203FAB4));
     args->unk4 = a1;
     args->unk5 = a2;
@@ -1198,6 +1318,8 @@ PartyMenuArgs *PartyMenu_LaunchApp_Gracidea(FieldSystem *fieldSystem, HeapID hea
 ScratchOffCardsArgs *ScratchOffCards_LaunchApp(FieldSystem *fieldSystem, HeapID heapId) {
     u32 size;
     u8 *ptr;
+
+    static OVY_MGR_TEMPLATE sOverlayTemplate_ScratchOffCards = { ScratchOffCards_Init, ScratchOffCards_Main, ScratchOffCards_Exit, FS_OVERLAY_ID(OVY_87) };
 
     ScratchOffCardsArgs *args = AllocFromHeap(heapId, sizeof(ScratchOffCardsArgs));
 
@@ -1233,6 +1355,7 @@ PokemonSummaryArgs *PokemonSummary_LaunchApp(HeapID heapId, FieldSystem *fieldSy
 }
 
 void sub_0203FC14(FieldSystem *fieldSystem, u16 a1, u16 a2) {
+    static const OVY_MGR_TEMPLATE _020FA1C4 = { sub_020192D0, sub_0201935C, sub_02019490, FS_OVERLAY_ID(OVY_39) };
     OVY_MGR_TEMPLATE template = _020FA1C4;
 
     UnkStruct_0203FC14 *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(UnkStruct_0203FC14));
@@ -1245,20 +1368,24 @@ void sub_0203FC14(FieldSystem *fieldSystem, u16 a1, u16 a2) {
 }
 
 void PokeathlonCourse_LaunchApp(FieldSystem *fieldSystem, PokeathlonCourseArgs *args) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_PokeathlonCourse = { PokeathlonCourse_Init, PokeathlonCourse_Main, PokeathlonCourse_Exit, FS_OVERLAY_ID(OVY_96) };
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_PokeathlonCourse, args);
 }
 
 void sub_0203FC68(FieldSystem *fieldSystem, void *args) {
+    static const OVY_MGR_TEMPLATE _020FA454 = { ov104_021E5900, ov104_021E59E4, ov104_021E5B14, FS_OVERLAY_ID(OVY_104) };
     OVY_MGR_TEMPLATE template = _020FA454;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
 
 void sub_0203FC90(FieldSystem *fieldSystem, void *args) {
+    static const OVY_MGR_TEMPLATE _020FA1D4 = { ov105_021E5900, ov105_021E59DC, ov105_021E5B14, FS_OVERLAY_ID(OVY_105) };
     OVY_MGR_TEMPLATE template = _020FA1D4;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
 
 LegendaryCinematicArgs *LegendaryCinematic_LaunchApp(FieldSystem *fieldSystem, UnkStruct_0203FCC4 *a1, u16 a2, u16 a3, HeapID heapId) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_LegendaryCinematic = { LegendaryCinematic_Init, LegendaryCinematic_Main, LegendaryCinematic_Exit, FS_OVERLAY_ID(OVY_106) };
     LegendaryCinematicArgs *args = AllocFromHeap(heapId, sizeof(LegendaryCinematicArgs));
     memset(args, 0, sizeof(LegendaryCinematicArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
@@ -1270,5 +1397,6 @@ LegendaryCinematicArgs *LegendaryCinematic_LaunchApp(FieldSystem *fieldSystem, U
 }
 
 void sub_0203FD08(FieldSystem *fieldSystem, UnkStruct_02097D48 *args) {
+    static const OVY_MGR_TEMPLATE _020FA494 = { ov121_021E5900, ov121_021E590C, ov121_021E59BC, FS_OVERLAY_ID(OVY_121) };
     FieldSystem_LaunchApplication(fieldSystem, &_020FA494, args);
 }

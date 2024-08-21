@@ -173,4 +173,8 @@ BOOL Battle_Init(OVY_MANAGER *man, int *state);
 BOOL Battle_Main(OVY_MANAGER *man, int *state);
 BOOL Battle_Exit(OVY_MANAGER *man, int *state);
 
+void LaunchApplication_DeadstrippedFunction(FieldSystem *fieldSystem);
+extern const OVY_MGR_TEMPLATE gOverlayTemplate_UnownReport;
+extern const OVY_MGR_TEMPLATE gOverlayTemplate_Battle;
+
 #endif // POKEHEARTGOLD_FIELD_LAUNCH_APPLICATION_H
