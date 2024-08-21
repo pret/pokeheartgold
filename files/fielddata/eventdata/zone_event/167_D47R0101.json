@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_D47R0101_counterm",
-      "ovid": "SPRITE_COUNTERM",
-      "mvt": 17,
+      "sprite_id": "SPRITE_COUNTERM",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D47R0101_000 + 1",
@@ -30,8 +30,8 @@
     },
     {
       "id": "obj_D47R0101_counterm_2",
-      "ovid": "SPRITE_COUNTERM",
-      "mvt": 15,
+      "sprite_id": "SPRITE_COUNTERM",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D47R0101_002 + 1",
@@ -47,8 +47,8 @@
     },
     {
       "id": "obj_D47R0101_counterm_3",
-      "ovid": "SPRITE_COUNTERM",
-      "mvt": 15,
+      "sprite_id": "SPRITE_COUNTERM",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D47R0101_001 + 1",
@@ -64,8 +64,8 @@
     },
     {
       "id": "obj_D47R0101_counterm_4",
-      "ovid": "SPRITE_COUNTERM",
-      "mvt": 15,
+      "sprite_id": "SPRITE_COUNTERM",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D47R0101_003 + 1",
@@ -81,8 +81,8 @@
     },
     {
       "id": "obj_D47R0101_counterm_5",
-      "ovid": "SPRITE_COUNTERM",
-      "mvt": 15,
+      "sprite_id": "SPRITE_COUNTERM",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D47R0101_004 + 1",
@@ -98,8 +98,8 @@
     },
     {
       "id": "obj_D47R0101_gsgentleman",
-      "ovid": "SPRITE_GSGENTLEMAN",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSGENTLEMAN",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D47R0101_010 + 1",
@@ -115,8 +115,8 @@
     },
     {
       "id": "obj_D47R0101_counterm_6",
-      "ovid": "SPRITE_COUNTERM",
-      "mvt": 16,
+      "sprite_id": "SPRITE_COUNTERM",
+      "movement": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D47R0101_011 + 1",

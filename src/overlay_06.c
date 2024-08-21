@@ -16,9 +16,9 @@ void ov06_0221BA1C(PaletteData *palData, int param_2, int unused, PaletteBufferI
     PaletteData_LoadPalette(palData, srcData, bufferId, paletteSlot * 16, 32);
 }
 
-ParticleSystem *ov06_0221BA40(HeapID heapId) {
+SPLEmitter *ov06_0221BA40(HeapID heapId) {
     void *particleHeap;
-    ParticleSystem *pPVar1;
+    SPLEmitter *pPVar1;
     Camera *pGVar2;
 
     particleHeap = AllocFromHeap(heapId, 0x4800);
@@ -30,9 +30,9 @@ ParticleSystem *ov06_0221BA40(HeapID heapId) {
     return pPVar1;
 }
 
-ParticleSystem *ov06_0221BA88(HeapID heapId) {
+SPLEmitter *ov06_0221BA88(HeapID heapId) {
     void *particleHeap;
-    ParticleSystem *pPVar1;
+    SPLEmitter *pPVar1;
     Camera *pGVar2;
 
     particleHeap = AllocFromHeap(heapId, 0x4200);
@@ -47,7 +47,7 @@ ParticleSystem *ov06_0221BA88(HeapID heapId) {
     return pPVar1;
 }
 
-void ov06_0221BAD8(ParticleSystem *param_1) {
+void ov06_0221BAD8(SPLEmitter *param_1) {
     void *pvVar1;
 
     pvVar1 = sub_020154D0(param_1);

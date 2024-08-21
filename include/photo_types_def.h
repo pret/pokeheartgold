@@ -25,8 +25,8 @@ typedef struct FieldTakePhoto {
     u16 savedDirection;
     u16 savedMapId;
     u8 filler_38[0x8];
-    PHOTO *pPhoto;
-    PHOTO photoBuf;
+    Photo *pPhoto;
+    Photo photoBuf;
     u16 shutterDelayCounter;
     u8 shutterState;
     u8 numObjects;
@@ -41,7 +41,7 @@ typedef struct FieldViewPhoto {
     u8 fieldSystemUnk70Bak;
     u8 whichPhoto;
     u8 numMons;
-    PHOTO pPhoto;
+    Photo pPhoto;
     ViewPhotoInputResponse input;
     u16 x;
     u16 y;
@@ -49,11 +49,11 @@ typedef struct FieldViewPhoto {
     u16 savedMapId;
     LocalMapObject *mapObjects[6];
     PhotoAlbumArgs *selectionFromAlbumApp;
-    PHOTO_ALBUM *photoAlbum;
+    PhotoAlbum *photoAlbum;
 } FieldViewPhoto;
 
 typedef struct PhotoAlbumScroll {
-    PHOTO *photo;
+    Photo *photo;
     u8 curPhoto;
     u8 numPhotos;
 } PhotoAlbumScroll;

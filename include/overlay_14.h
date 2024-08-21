@@ -6,7 +6,7 @@
 
 typedef struct PCBoxArgs {
     SaveData *saveData;
-    BOOL *fieldSystemUnk10C;
+    BOOL *menuInputStatePtr;
     int unk8;
 } PCBoxArgs;
 

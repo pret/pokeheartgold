@@ -21,25 +21,25 @@ typedef struct MailMessageTemplate {
     u16 ec_words[MAILMSG_FIELDS_MAX];
 } MailMessageTemplate;
 
-void MailMsg_Init(MAIL_MESSAGE *msg);
-BOOL MailMsg_Compare(const MAIL_MESSAGE *a, const MAIL_MESSAGE *b);
-void MailMsg_SetMsgBankAndNum(MAIL_MESSAGE *mailMessage, u16 msg_bank, u16 msg_no);
-void MailMsg_SetFieldI(MAIL_MESSAGE *mailMessage, u16 field_no, u16 ec_word);
-void MailMsg_Copy(MAIL_MESSAGE *dst, const MAIL_MESSAGE *src);
-void MailMsg_Init_WithBank(MAIL_MESSAGE *mailMessage, u16 msgBank);
-void MailMsg_Init_Default(MAIL_MESSAGE *mailMessage);
-void MailMsg_Init_FromTemplate(MAIL_MESSAGE *mailMessage, const MailMessageTemplate *template);
-String *MailMsg_GetExpandedString(const MAIL_MESSAGE *mailMessage, HeapID heapId);
-String *MailMsg_GetRawString(MAIL_MESSAGE *mailMessage, HeapID heapId);
-BOOL MailMsg_IsInit(MAIL_MESSAGE *mailMessage);
-BOOL MailMsg_AllFieldsAreInit(MAIL_MESSAGE *mailMessage);
+void MailMsg_Init(MailMessage *msg);
+BOOL MailMsg_Compare(const MailMessage *a, const MailMessage *b);
+void MailMsg_SetMsgBankAndNum(MailMessage *mailMessage, u16 msg_bank, u16 msg_no);
+void MailMsg_SetFieldI(MailMessage *mailMessage, u16 field_no, u16 ec_word);
+void MailMsg_Copy(MailMessage *dst, const MailMessage *src);
+void MailMsg_Init_WithBank(MailMessage *mailMessage, u16 msgBank);
+void MailMsg_Init_Default(MailMessage *mailMessage);
+void MailMsg_Init_FromTemplate(MailMessage *mailMessage, const MailMessageTemplate *template);
+String *MailMsg_GetExpandedString(const MailMessage *mailMessage, HeapID heapId);
+String *MailMsg_GetRawString(MailMessage *mailMessage, HeapID heapId);
+BOOL MailMsg_IsInit(MailMessage *mailMessage);
+BOOL MailMsg_AllFieldsAreInit(MailMessage *mailMessage);
 u32 MailMsg_NumFields(u16 msg_bank, u16 msg_no);
-u16 MailMsg_GetFieldI(const MAIL_MESSAGE *mailMessage, int field_no);
-u16 MailMsg_GetMsgBank(const MAIL_MESSAGE *mailMessage);
-u16 MailMsg_GetMsgNo(const MAIL_MESSAGE *mailMessage);
+u16 MailMsg_GetFieldI(const MailMessage *mailMessage, int field_no);
+u16 MailMsg_GetMsgBank(const MailMessage *mailMessage);
+u16 MailMsg_GetMsgNo(const MailMessage *mailMessage);
 u32 MailMsg_NumMsgsInBank(u16 msg_bank);
-void MailMsg_SetTrailingFieldsEmpty(MAIL_MESSAGE *mailMessage);
-String *MailMsg_GetExpandedString(const MAIL_MESSAGE *mailMessage, HeapID heapId);
+void MailMsg_SetTrailingFieldsEmpty(MailMessage *mailMessage);
+String *MailMsg_GetExpandedString(const MailMessage *mailMessage, HeapID heapId);
 
 #endif //PM_ASM
 

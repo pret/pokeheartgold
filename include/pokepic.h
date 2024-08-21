@@ -5,6 +5,56 @@
 #include "pokemon_types_def.h"
 #include "heap.h"
 
+typedef enum PokepicAttr {
+    POKEPIC_X,
+    POKEPIC_Y,
+    POKEPIC_Z,
+    POKEPIC_XOFFSET,
+    POKEPIC_YOFFSET,
+    POKEPIC_ZOFFSET,
+    POKEPIC_VANISHED,
+    POKEPIC_XROT,
+    POKEPIC_YROT,
+    POKEPIC_ZROT,
+    POKEPIC_XPIVOT,
+    POKEPIC_YPIVOT,
+    POKEPIC_AFFINEW,
+    POKEPIC_AFFINEH,
+    POKEPIC_VISIBLE,
+    POKEPIC_XOFF2,
+    POKEPIC_YOFF2,
+    POKEPIC_W,
+    POKEPIC_H,
+    POKEPIC_SHADOW_X,
+    POKEPIC_SHADOW_Y,
+    POKEPIC_SHADOW_XOFFSET,
+    POKEPIC_SHADOW_YOFFSET,
+    POKEPIC_ALPHA,
+    POKEPIC_DIFFUSE_R,
+    POKEPIC_DIFFUSE_G,
+    POKEPIC_DIFFUSE_B,
+    POKEPIC_AMBIENT_R,
+    POKEPIC_AMBIENT_G,
+    POKEPIC_AMBIENT_B,
+    POKEPIC_FADE,
+    POKEPIC_FADE_COLOR,
+    POKEPIC_FADE_BLDY,
+    POKEPIC_FADE_BLDY_TARGET,
+    POKEPIC_FADE_SPEED,
+    POKEPIC_HFLIP,
+    POKEPIC_VFLIP,
+    POKEPIC_NODRAW,
+    POKEPIC_ANIM_STEP,
+    POKEPIC_39,
+    POKEPIC_MOSAIC,
+    POKEPIC_SHADOW_H,
+    POKEPIC_SHADOW_PLTT,
+    POKEPIC_SHADOW_XADJ_REQ,
+    POKEPIC_SHADOW_YADJ_REQ,
+    POKEPIC_SHADOW_AFFINE,
+    POKEPIC_SHADOW_SIZE,
+} PokepicAttr;
+
 typedef struct PokepicAnimScript {
     s8 next;
     u8 duration;
@@ -14,8 +64,8 @@ typedef struct PokepicAnimScript {
 
 typedef struct PokepicAnim {
     u8 active;
-    u8 whichAnimStep;
-    u8 whichAnim;
+    u8 animStep;
+    u8 animId;
     u8 stepDelay;
     u8 loopTimers[10];
     PokepicAnimScript *animScript;
@@ -210,7 +260,7 @@ void PokepicManager_HandleLoadImgAndOrPltt(PokepicManager *pokepicManager);
 // If needG3Identity is TRUE, the GPU will receive Identity instructions for each pic and shadow to be drawn.
 void PokepicManager_SetNeedG3IdentityFlag(PokepicManager *pokepicManager, BOOL needG3Identity);
 
-// Returns TRUE if the Pokepic active flag is FALSE.
+// Returns TRUE if the Pokepic active flag is TRUE.
 BOOL Pokepic_IsActive(Pokepic *pokepic);
 
 // Sets the specified bits of pokepicManager->flags. Only bit 0 appears to be used.

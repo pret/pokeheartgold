@@ -37,8 +37,8 @@ typedef enum BattleCastleChallengeType {
 typedef struct UnkStruct_0204FBDC {
     u32 state;
     u8 challengeType;
-    u8 unk05;
-    u8 unk06[3];
+    u8 partySlot;
+    u8 selectedOrder[3];
     u8 filler[3];
     void **unk0c;
 } UnkStruct_0204FBDC;
@@ -204,9 +204,9 @@ static u32 sub_0204FC78(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID
     partyMenu->unk_25 = 0;
     partyMenu->context = PARTY_MENU_CONTEXT_23;
     partyMenu->fieldSystem = fieldSystem;
-    partyMenu->partySlot = a0->unk05;
+    partyMenu->partySlot = a0->partySlot;
     for (u8 i = 0; i < 3; i++) {
-        partyMenu->selectedOrder[i] = a0->unk06[i];
+        partyMenu->selectedOrder[i] = a0->selectedOrder[i];
     }
     partyMenu->maxLevel = 100;
     partyMenu->minMonsToSelect = 3;
@@ -232,8 +232,8 @@ static u32 sub_0204FD50(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
         case 6:
             return 4;
     }
-    MI_CpuCopy8(partyMenu->selectedOrder, a0->unk06, 3);
-    a0->unk05 = partyMenu->partySlot;
+    MI_CpuCopy8(partyMenu->selectedOrder, a0->selectedOrder, 3);
+    a0->partySlot = partyMenu->partySlot;
     FreeToHeap(partyMenu);
     *(a0->unk0c) = NULL;
     return 2;
@@ -248,9 +248,9 @@ static u32 sub_0204FDA0(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID
     unk->natDexEnabled = SaveArray_IsNatDexEnabled(saveData);
     unk->unk2C = sub_02088288(saveData);
     unk->unk11 = 1;
-    unk->partySlot = a0->unk05;
+    unk->partySlot = a0->partySlot;
     unk->partyCount = Party_GetCount(unk->party);
-    unk->unk18 = 0;
+    unk->moveToLearn = 0;
     unk->unk12 = 0;
     unk->ribbons = Save_SpecialRibbons_Get(saveData);
     unk->isFlag982Set = sub_0208828C(saveData);
@@ -266,7 +266,7 @@ static u32 sub_0204FE30(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
         return 3;
     }
     PokemonSummaryArgs *unk = *(a0->unk0c);
-    a0->unk05 = unk->partySlot;
+    a0->partySlot = unk->partySlot;
     FreeToHeap(unk);
     *(a0->unk0c) = NULL;
     return 0;

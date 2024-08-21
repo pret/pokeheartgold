@@ -16,7 +16,7 @@
 .public sub_0208828C
 .public sub_02089D40
 .public sub_0208AD34
-.public sub_02096820
+.public Frontier_LaunchApplication
 .public sub_02096A34
 .public sub_02096AAC
 .public sub_02096AF4

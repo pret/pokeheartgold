@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_T05R0701_gswoman6",
-      "ovid": "SPRITE_GSWOMAN6",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSWOMAN6",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T05R0701_000 + 1",
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_T05R0701_policeman",
-      "ovid": "SPRITE_POLICEMAN",
-      "mvt": 15,
+      "sprite_id": "SPRITE_POLICEMAN",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T05R0701_001 + 1",
@@ -55,8 +55,8 @@
     },
     {
       "id": "obj_T05R0701_gsgentleman",
-      "ovid": "SPRITE_GSGENTLEMAN",
-      "mvt": 20,
+      "sprite_id": "SPRITE_GSGENTLEMAN",
+      "movement": 20,
       "type": 0,
       "flag": "FLAG_UNK_258",
       "scr": "_EV_scr_seq_T05R0701_003 + 1",
@@ -72,8 +72,8 @@
     },
     {
       "id": "obj_T05R0701_gsman1",
-      "ovid": "SPRITE_GSMAN1",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSMAN1",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T05R0701_002 + 1",
@@ -89,8 +89,8 @@
     },
     {
       "id": "obj_T05R0701_gsman1_2",
-      "ovid": "SPRITE_GSMAN1",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSMAN1",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T05R0701_004 + 1",
@@ -106,8 +106,8 @@
     },
     {
       "id": "obj_T05R0701_gsgentleman_2",
-      "ovid": "SPRITE_GSGENTLEMAN",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSGENTLEMAN",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_HIDE_LAVENDER_RADIO_TOWER_DIRECTOR",
       "scr": "_EV_scr_seq_T05R0701_003 + 1",

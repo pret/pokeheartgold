@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_P01R0306_gsgentleman",
-      "ovid": "SPRITE_GSGENTLEMAN",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSGENTLEMAN",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_UNK_216",
       "scr": "_EV_scr_seq_P01R0306_000 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_P01R0306_gsmiddleman1",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 17,
       "type": 1,
       "flag": "FLAG_UNK_22A",
       "scr": "std_trainer(TRAINER_POKEFAN_M_COLIN)",
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_P01R0306_gsbabygirl1",
-      "ovid": "SPRITE_GSBABYGIRL1",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSBABYGIRL1",
+      "movement": 15,
       "type": 1,
       "flag": "FLAG_UNK_22A",
       "scr": "std_trainer(TRAINER_TWINS_MEG_AND_PEG)",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_P01R0306_gsbabygirl1_2",
-      "ovid": "SPRITE_GSBABYGIRL1",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSBABYGIRL1",
+      "movement": 15,
       "type": 1,
       "flag": "FLAG_UNK_22A",
       "scr": "std_trainer_2(TRAINER_TWINS_MEG_AND_PEG)",
@@ -71,8 +71,8 @@
     },
     {
       "id": "obj_P01R0306_gsbabygirl1_3",
-      "ovid": "SPRITE_GSBABYGIRL1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSBABYGIRL1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_UNK_218",
       "scr": "_EV_scr_seq_P01R0306_002 + 1",
@@ -88,8 +88,8 @@
     },
     {
       "id": "obj_P01R0306_gsassistantm",
-      "ovid": "SPRITE_GSASSISTANTM",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSASSISTANTM",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_UNK_22B",
       "scr": "std_trainer(TRAINER_SUPER_NERD_SHAWN)",
@@ -105,8 +105,8 @@
     },
     {
       "id": "obj_P01R0306_mystery_2",
-      "ovid": "SPRITE_MYSTERY_2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MYSTERY_2",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_UNK_22B",
       "scr": "std_trainer(TRAINER_PSYCHIC_M_RODNEY)",
@@ -122,8 +122,8 @@
     },
     {
       "id": "obj_P01R0306_middlewoman1_2",
-      "ovid": "SPRITE_MIDDLEWOMAN1_2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MIDDLEWOMAN1_2",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_UNK_22C",
       "scr": "std_trainer(TRAINER_POKEFAN_GEORGIA)",
@@ -139,8 +139,8 @@
     },
     {
       "id": "obj_P01R0306_gsmiddleman1_2",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_UNK_22C",
       "scr": "std_trainer(TRAINER_POKEFAN_M_JEREMY)",
