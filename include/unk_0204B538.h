@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_UNK_0204B538_H
 #define POKEHEARTGOLD_UNK_0204B538_H
 
+#include "field_types_def.h"
 #include "message_format.h"
 #include "scrcmd_9.h"
 

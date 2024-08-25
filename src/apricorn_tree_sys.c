@@ -1,7 +1,9 @@
 #include "global.h"
+
 #include "constants/apricorns.h"
-#include "save_misc_data.h"
+
 #include "apricorn_tree.h"
+#include "save_misc_data.h"
 
 static const u8 sTreeApricorns[NUM_APRICORN_TREE] = {
     APRICORN_BLK, // Route 1

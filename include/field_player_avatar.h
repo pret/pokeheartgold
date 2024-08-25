@@ -1,8 +1,9 @@
 #ifndef POKEHEARTGOLD_FIELD_PLAYER_AVATAR_H
 #define POKEHEARTGOLD_FIELD_PLAYER_AVATAR_H
 
-#include "field_types_def.h"
 #include "global.h"
+
+#include "field_types_def.h"
 #include "save.h"
 
 typedef struct PlayerSaveData {

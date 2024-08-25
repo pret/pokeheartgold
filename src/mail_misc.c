@@ -1,28 +1,31 @@
-#include "global.h"
-#include "save_vars_flags.h"
-#include "item.h"
-#include "mail.h"
 #include "mail_misc.h"
-#include "options.h"
-#include "player_data.h"
-#include "sys_flags.h"
-#include "unk_020183F0.h"
+
+#include "global.h"
+
 #include "constants/items.h"
 #include "constants/mail.h"
 #include "constants/pokemon.h"
 
+#include "item.h"
+#include "mail.h"
+#include "options.h"
+#include "player_data.h"
+#include "save_vars_flags.h"
+#include "sys_flags.h"
+#include "unk_020183F0.h"
+
 EasyChatArgs *EasyChat_CreateArgs(u8 args, u8 a1, SaveData *saveData, BOOL *a3, HeapID heapId) {
     EasyChatArgs *ptr = AllocFromHeap(heapId, sizeof(EasyChatArgs));
-    ptr->unk0 = args;
-    ptr->unk1 = a1;
-    ptr->pokedex = Save_Pokedex_Get(saveData);
-    ptr->easyChat = Save_EasyChat_Get(saveData);
-    ptr->gameCleared = CheckGameClearFlag(Save_VarsFlags_Get(saveData));
-    ptr->unk5 = 0;
-    ptr->unk2 = 1;
-    ptr->unk3 = 0;
-    ptr->frame = Options_GetFrame(Save_PlayerData_GetOptionsAddr(saveData));
-    ptr->unk24 = a3;
+    ptr->unk0         = args;
+    ptr->unk1         = a1;
+    ptr->pokedex      = Save_Pokedex_Get(saveData);
+    ptr->easyChat     = Save_EasyChat_Get(saveData);
+    ptr->gameCleared  = CheckGameClearFlag(Save_VarsFlags_Get(saveData));
+    ptr->unk5         = 0;
+    ptr->unk2         = 1;
+    ptr->unk3         = 0;
+    ptr->frame        = Options_GetFrame(Save_PlayerData_GetOptionsAddr(saveData));
+    ptr->unk24        = a3;
 
     if (args == 2) {
         MailMsg_Init_WithBank(&ptr->mailMessage, MAILMSG_BANK_0293_GMM);
@@ -74,7 +77,7 @@ u16 sub_02090D50(EasyChatArgs *args) {
 
 void sub_02090D54(EasyChatArgs *args, MsgBankMsgNo *msgBankMsgNo) {
     msgBankMsgNo->msgBank = args->unk1C[0];
-    msgBankMsgNo->msgNo = args->unk1C[1];
+    msgBankMsgNo->msgNo   = args->unk1C[1];
 }
 
 void sub_02090D60(EasyChatArgs *args, MailMessage *mailMessage) {
@@ -116,7 +119,7 @@ void sub_02090D8C(EasyChatArgs *args, MailMessage *msg1, MailMessage *msg2) {
         return;
     case 1:
         msg1->msg_bank = args->unk1C[0];
-        msg1->msg_no = args->unk1C[1];
+        msg1->msg_no   = args->unk1C[1];
         return;
     case 2:
         *msg2 = args->mailMessage;
@@ -167,14 +170,14 @@ UseMailArgs *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 mailType, 
 
     ptr->mailType = mailType;
     ptr->partyIdx = partyIdx;
-    ptr->mailbox = mailbox;
-    ptr->unk0 = 1;
-    ptr->unk8 = a1;
-    ptr->unkC = 0;
+    ptr->mailbox  = mailbox;
+    ptr->unk0     = 1;
+    ptr->unk8     = a1;
+    ptr->unkC     = 0;
     ptr->saveData = saveData;
 
     Mail *mail = Mail_New(heapId);
-    ptr->mail = mail;
+    ptr->mail  = mail;
     Mail_Init(mail);
     Mail_SetNewMessageDetails(ptr->mail, MAIL_NONE, partyIdx, saveData);
 
@@ -185,14 +188,14 @@ UseMailArgs *sub_02090EC0(SaveData *saveData, int n, u16 i, HeapID heapId) {
     UseMailArgs *ptr = AllocFromHeapAtEnd(heapId, sizeof(UseMailArgs));
     MI_CpuFill8(ptr, 0, sizeof(UseMailArgs));
 
-    ptr->unk0 = 0;
-    ptr->unk8 = n;
-    ptr->unkC = i;
+    ptr->unk0     = 0;
+    ptr->unk8     = n;
+    ptr->unkC     = i;
     ptr->saveData = saveData;
 
     Mailbox *mailbox = Save_Mailbox_Get(saveData);
-    ptr->mailbox = mailbox;
-    ptr->mail = Mailbox_AllocAndFetchMailI(&mailbox->msgs[0], n, i, heapId);
+    ptr->mailbox     = mailbox;
+    ptr->mail        = Mailbox_AllocAndFetchMailI(&mailbox->msgs[0], n, i, heapId);
 
     return ptr;
 }
@@ -201,11 +204,11 @@ UseMailArgs *sub_02090F00(SaveData *saveData, Pokemon *mon, HeapID heapId) {
     UseMailArgs *ptr = AllocFromHeapAtEnd(heapId, sizeof(UseMailArgs));
     MI_CpuFill8(ptr, 0, sizeof(UseMailArgs));
 
-    ptr->unk0 = 0;
+    ptr->unk0     = 0;
     ptr->saveData = saveData;
 
     Mail *mail = Mail_New(heapId);
-    ptr->mail = mail;
+    ptr->mail  = mail;
     GetMonData(mon, MON_DATA_MAIL_STRUCT, ptr->mail);
 
     return ptr;
@@ -215,11 +218,11 @@ UseMailArgs *sub_02090F38(SaveData *saveData, u8 mailType, HeapID heapId) {
     UseMailArgs *ptr = AllocFromHeapAtEnd(heapId, sizeof(UseMailArgs));
     MI_CpuFill8(ptr, 0, sizeof(UseMailArgs));
 
-    ptr->unk0 = 0;
+    ptr->unk0     = 0;
     ptr->saveData = saveData;
 
     Mail *mail = Mail_New(heapId);
-    ptr->mail = mail;
+    ptr->mail  = mail;
     Mail_SetType(mail, mailType);
 
     return ptr;
@@ -246,7 +249,7 @@ void sub_02090F90(UseMailArgs *args) {
 
 int Mailbox_MoveMessageFromMon(Mailbox *mailbox, Pokemon *mon, HeapID heapId) {
     int item = ITEM_NONE;
-    int idx = Mailbox_GetFirstEmptySlotIdx(mailbox);
+    int idx  = Mailbox_GetFirstEmptySlotIdx(mailbox);
 
     if (idx != -1) {
         Mail *mail = Mail_New(heapId);

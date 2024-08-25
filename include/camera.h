@@ -4,6 +4,7 @@
 #include <nitro/fx.h>
 
 #include "global.h"
+
 #include "heap.h"
 
 #define CAMERA_UPDATE_ENABLE_X 1
@@ -46,7 +47,7 @@ typedef struct CameraParam {
     CameraAngle angle;
     u8 perspectiveType;
     u16 perspective;
-    u8 dummy;  // because gf misaccounted for the previous field's alignment
+    u8 dummy; // because gf misaccounted for the previous field's alignment
 } CameraParam;
 
 typedef struct CameraLookAt {

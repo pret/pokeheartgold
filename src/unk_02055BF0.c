@@ -1,33 +1,35 @@
-#include "follow_mon.h"
+#include "unk_02055BF0.h"
+
+#include "constants/sndseq.h"
+
+#include "camera.h"
 #include "field_player_avatar.h"
 #include "field_warp_tasks.h"
+#include "follow_mon.h"
 #include "heap.h"
 #include "map_header.h"
+#include "map_preview_graphic.h"
 #include "metatile_behavior.h"
+#include "overlay_01.h"
+#include "overlay_01_021E90C0.h"
+#include "overlay_01_021F1AFC.h"
+#include "overlay_01_021F4704.h"
+#include "overlay_01_021FB4C0.h"
+#include "overlay_01_022031C0.h"
+#include "overlay_01_022053EC.h"
 #include "save_follow_mon.h"
 #include "script.h"
 #include "sound.h"
-#include "unk_02055BF0.h"
-#include "unk_0200FA24.h"
-#include "unk_02056680.h"
-#include "unk_02054E00.h"
-#include "unk_020552A4.h"
-#include "camera.h"
-#include "map_preview_graphic.h"
 #include "unk_02005D10.h"
-#include "unk_02062108.h"
+#include "unk_0200FA24.h"
 #include "unk_02054648.h"
-#include "overlay_01.h"
-#include "overlay_01_021E90C0.h"
-#include "overlay_01_022031C0.h"
-#include "overlay_01_021FB4C0.h"
-#include "overlay_01_022053EC.h"
-#include "overlay_01_021F4704.h"
-#include "overlay_01_021F1AFC.h"
+#include "unk_02054E00.h"
 #include "unk_02055244.h"
-#include "constants/sndseq.h"
+#include "unk_020552A4.h"
+#include "unk_02056680.h"
+#include "unk_02062108.h"
 
-typedef void (*FieldSystemFunc)(FieldSystem*);
+typedef void (*FieldSystemFunc)(FieldSystem *);
 
 BOOL sub_02055DBC(TaskManager *man);
 BOOL RoutineFieldFade(TaskManager *man);
@@ -38,19 +40,19 @@ extern FieldSystemFunc _020FC76C[9];
 
 void NewFieldFadeEnvironment(TaskManager *man, int pattern, int typeTop, int typeBottom, u16 colour, int duration, int framesPer, HeapID heapID) {
     FieldFadeEnvironment *sfenv = AllocFromHeap(heapID, sizeof(FieldFadeEnvironment));
-    sfenv->pattern = pattern;
-    sfenv->typeTop = typeTop;
-    sfenv->typeBottom = typeBottom;
-    sfenv->colour = colour;
-    sfenv->duration = duration;
-    sfenv->framesPer = framesPer;
-    sfenv->heapID = heapID;
-    sfenv->state = 0;
+    sfenv->pattern              = pattern;
+    sfenv->typeTop              = typeTop;
+    sfenv->typeBottom           = typeBottom;
+    sfenv->colour               = colour;
+    sfenv->duration             = duration;
+    sfenv->framesPer            = framesPer;
+    sfenv->heapID               = heapID;
+    sfenv->state                = 0;
     TaskManager_Call(man, RoutineFieldFade, sfenv);
 }
 
 BOOL RoutineFieldFade(TaskManager *man) {
-    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
+    FieldSystem *fieldSystem   = TaskManager_GetFieldSystem(man);
     FieldFadeEnvironment *fenv = TaskManager_GetEnvironment(man);
     switch (fenv->state) {
     case 0:
@@ -71,35 +73,34 @@ BOOL RoutineFieldFade(TaskManager *man) {
 
 void NewFieldTransitionEnvironment(FieldSystem *fieldSystem, int mapID, int warpID, int x, int y, int dir, u32 transNo) {
     FieldTransitionEnvironment *fenv = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldTransitionEnvironment));
-    fenv->state = 0;
-    fenv->transitionState = 0;
-    fenv->unk1 = 0;
-    fenv->location.mapId = mapID;
-    fenv->location.warpId = warpID;
-    fenv->location.x = x;
-    fenv->location.y = y;
-    fenv->location.direction = dir;
-    fenv->transitionNo = transNo;
+    fenv->state                      = 0;
+    fenv->transitionState            = 0;
+    fenv->unk1                       = 0;
+    fenv->location.mapId             = mapID;
+    fenv->location.warpId            = warpID;
+    fenv->location.x                 = x;
+    fenv->location.y                 = y;
+    fenv->location.direction         = dir;
+    fenv->transitionNo               = transNo;
     FieldSystem_CreateTask(fieldSystem, sub_02055DBC, fenv);
 }
 
 void sub_02055CD8(FieldSystem *fieldSystem, int mapID, int warpID, int x, int y, int dir) {
     FieldTransitionEnvironment *fenv = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldTransitionEnvironment));
-    fenv->state = 0;
-    fenv->transitionState = 0;
-    fenv->unk1 = 0;
-    fenv->location.mapId = mapID;
-    fenv->location.warpId = warpID;
-    fenv->location.x = x;
-    fenv->location.y = y;
-    fenv->location.direction = dir;
-    int var = 0;
-    int otherID = fieldSystem->location->mapId;
+    fenv->state                      = 0;
+    fenv->transitionState            = 0;
+    fenv->unk1                       = 0;
+    fenv->location.mapId             = mapID;
+    fenv->location.warpId            = warpID;
+    fenv->location.x                 = x;
+    fenv->location.y                 = y;
+    fenv->location.direction         = dir;
+    int var                          = 0;
+    int otherID                      = fieldSystem->location->mapId;
     if (MapHeader_IsCave(otherID)) {
         if (MapHeader_IsCave(mapID)) {
             var = 6;
-        }
-        else {
+        } else {
             if (sub_0203B5AC(mapID)) {
                 var = 5;
             } else if (sub_0203B58C(mapID)) {
@@ -133,15 +134,15 @@ void sub_02055CD8(FieldSystem *fieldSystem, int mapID, int warpID, int x, int y,
     FieldSystem_CreateTask(fieldSystem, sub_02055DBC, fenv);
 }
 
-//this function handles transition routines between maps
+// this function handles transition routines between maps
 BOOL sub_02055DBC(TaskManager *man) {
-    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
+    FieldSystem *fieldSystem        = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *env = TaskManager_GetEnvironment(man);
     switch (env->state) {
     case 0:
         env->transitionState = 0;
-        env->unk24 = NULL;
-        env->unk1 = 0;
+        env->unk24           = NULL;
+        env->unk1            = 0;
         if (FollowMon_IsActive(fieldSystem) && ov01_022057C4(fieldSystem) && PlayerAvatar_GetState(fieldSystem->playerAvatar) != PLAYER_STATE_CYCLING) {
             env->state = 9;
             break;
@@ -149,8 +150,8 @@ BOOL sub_02055DBC(TaskManager *man) {
     case 1:
         if (FollowMon_IsActive(fieldSystem) && !ov01_022057C4(fieldSystem) && PlayerAvatar_GetState(fieldSystem->playerAvatar) != PLAYER_STATE_CYCLING) {
             LocalMapObject *followMon = FollowMon_GetMapObject(fieldSystem);
-            int species = FollowMon_GetSpecies(followMon);
-            if(!FollowMon_GetPermissionBySpeciesAndMap(species, env->location.mapId)) {
+            int species               = FollowMon_GetSpecies(followMon);
+            if (!FollowMon_GetPermissionBySpeciesAndMap(species, env->location.mapId)) {
                 env->unk24 = ov01_0220329C(followMon, 1);
             }
         }
@@ -182,24 +183,24 @@ BOOL sub_02055DBC(TaskManager *man) {
         env->state++;
         break;
     case 6:
-        if(_020FC76C[env->transitionNo]) {
+        if (_020FC76C[env->transitionNo]) {
             Camera_SetHistoryUnk24(fieldSystem->camera, 0);
             _020FC76C[env->transitionNo](fieldSystem);
         }
         env->state++;
         break;
     case 7:
-        if(GF_SndGetFadeTimer() == 0) {
+        if (GF_SndGetFadeTimer() == 0) {
             sub_02055110(fieldSystem, env->location.mapId, 1);
-            if(!MapHeader_IsCave(env->destinationMapID)) { //this has gotta be for the pre-entering images right?
-                int index = MapPreviewGraphic_GetIndex(env->location.mapId); //this gets the index of the location in the list of maps that have map icons
+            if (!MapHeader_IsCave(env->destinationMapID)) { // this has gotta be for the pre-entering images right?
+                int index = MapPreviewGraphic_GetIndex(env->location.mapId); // this gets the index of the location in the list of maps that have map icons
                 if (index != 255) {
                     int parity = 0;
                     if (env->transitionNo == 8) {
                         parity = 1;
                     }
                     TIMEOFDAY time = GF_RTC_GetTimeOfDay();
-                    MapPreviewGraphic_BeginShowImage(man, index, time, parity); //this should set the specific map icon based on time?
+                    MapPreviewGraphic_BeginShowImage(man, index, time, parity); // this should set the specific map icon based on time?
                     env->state++;
                     ov01_021EFAF8(fieldSystem); //<= this func specifically gets and displays the area's icon and text
                     break;
@@ -209,9 +210,9 @@ BOOL sub_02055DBC(TaskManager *man) {
             env->transitionState = 0;
             TaskManager_Call(man, sMapEnterRoutines[env->transitionNo], env);
             LocalMapObject *followerMon = FollowMon_GetMapObject(fieldSystem);
-            if(FollowMon_IsActive(fieldSystem) && !FollowMon_GetPermission(fieldSystem)) {
+            if (FollowMon_IsActive(fieldSystem) && !FollowMon_GetPermission(fieldSystem)) {
                 sub_02069E84(followerMon, 1);
-                ov01_02205790(fieldSystem, (u8) PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
+                ov01_02205790(fieldSystem, (u8)PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
             }
             env->state++;
             break;
@@ -232,7 +233,7 @@ BOOL sub_02055DBC(TaskManager *man) {
 }
 
 BOOL sub_02056004(TaskManager *man) {
-    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
+    FieldSystem *fieldSystem         = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnvironment(man);
     switch (fenv->transitionState) {
     case 0:
@@ -247,7 +248,7 @@ BOOL sub_02056004(TaskManager *man) {
 }
 
 BOOL sub_02056040(TaskManager *man) {
-    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
+    FieldSystem *fieldSystem         = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnvironment(man);
     switch (fenv->transitionState) {
     case 0:
@@ -272,7 +273,7 @@ BOOL sub_02056040(TaskManager *man) {
 }
 
 BOOL sub_020560C4(TaskManager *man) {
-    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
+    FieldSystem *fieldSystem         = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnvironment(man);
     switch (fenv->transitionState) {
     case 0:
@@ -280,8 +281,7 @@ BOOL sub_020560C4(TaskManager *man) {
         ov01_021E90DC(GetPlayerXCoord(fieldSystem->playerAvatar), GetPlayerYCoord(fieldSystem->playerAvatar), fenv->unk18);
         fenv->transitionState++;
         break;
-    case 1:
-    {
+    case 1: {
         FieldEnvSubUnk18 *info = fenv->unk18;
         if (ov01_021E98F0(fieldSystem, info, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar))) {
             ov01_021E90D4(fenv->unk18);
@@ -296,7 +296,7 @@ BOOL sub_020560C4(TaskManager *man) {
 }
 
 BOOL sub_0205613C(TaskManager *man) {
-    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
+    FieldSystem *fieldSystem         = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnvironment(man);
     LocalMapObject *obj;
     switch (fenv->transitionState) {
@@ -310,10 +310,9 @@ BOOL sub_0205613C(TaskManager *man) {
             fenv->transitionState++;
         }
         break;
-    case 1:
-    {
+    case 1: {
         int dir = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
-        obj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
+        obj     = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
         if (dir == DIR_WEST) {
             MapObject_SetHeldMovement(obj, 10);
         } else if (dir == DIR_EAST) {
@@ -324,8 +323,7 @@ BOOL sub_0205613C(TaskManager *man) {
         fenv->transitionState++;
         break;
     }
-    case 2:
-    {
+    case 2: {
         obj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
         if (MapObject_IsMovementPaused(obj) == TRUE) {
             MapObject_ClearHeldMovementIfActive(obj);
@@ -347,7 +345,7 @@ BOOL sub_0205613C(TaskManager *man) {
 }
 
 BOOL sub_02056220(TaskManager *man) {
-    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
+    FieldSystem *fieldSystem         = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnvironment(man);
     PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
     switch (fenv->transitionState) {
@@ -362,22 +360,22 @@ BOOL sub_02056220(TaskManager *man) {
 }
 
 BOOL sub_02056268(TaskManager *man) {
-    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
+    FieldSystem *fieldSystem         = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnvironment(man);
     PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
     switch (fenv->transitionState) {
-        case 0:
-            TaskManager_Call(man, ov01_021E9EEC, ov01_021E9C30());
-            fenv->transitionState++;
-            break;
-        case 1:
-            return TRUE;
+    case 0:
+        TaskManager_Call(man, ov01_021E9EEC, ov01_021E9C30());
+        fenv->transitionState++;
+        break;
+    case 1:
+        return TRUE;
     }
     return FALSE;
 }
 
 BOOL sub_020562B0(TaskManager *man) {
-    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
+    FieldSystem *fieldSystem         = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnvironment(man);
     LocalMapObject *obj;
     FieldEnvSubUnk18 *fenv18;
@@ -388,9 +386,9 @@ BOOL sub_020562B0(TaskManager *man) {
         Field_PlayerAvatar_OrrTransitionFlags(fieldSystem->playerAvatar, 512);
         Field_PlayerAvatar_ApplyTransitionFlags(fieldSystem->playerAvatar);
         sub_0205F328(obj, FALSE);
-        fenv->unk18 =  AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldEnvSubUnk18));
-        fenv18 = fenv->unk18;
-        fenv18->state = 0;
+        fenv->unk18       = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldEnvSubUnk18));
+        fenv18            = fenv->unk18;
+        fenv18->state     = 0;
         fenv18->direction = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
         PlayerAvatar_ToggleAutomaticHeightUpdating(fieldSystem->playerAvatar, FALSE);
         ov01_021F6304(fieldSystem->unk2C);
@@ -424,11 +422,11 @@ BOOL sub_020562B0(TaskManager *man) {
     case 1:
         obj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
         VecFx32 pos;
-        fenv18 = fenv->unk18;
+        fenv18    = fenv->unk18;
         u32 state = fenv18->state;
         fenv18->state++;
         MapObject_GetPositionVec(obj, &pos);
-        if (fenv18->direction == DIR_SOUTH) { //Ladders
+        if (fenv18->direction == DIR_SOUTH) { // Ladders
             pos.y += 2048;
             pos.z -= 6144;
         } else {
@@ -455,7 +453,7 @@ BOOL sub_020562B0(TaskManager *man) {
 }
 
 BOOL sub_02056424(TaskManager *man) {
-    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
+    FieldSystem *fieldSystem         = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnvironment(man);
     LocalMapObject *obj;
     FieldEnvSubUnk18 *fenv18;
@@ -474,14 +472,14 @@ BOOL sub_02056424(TaskManager *man) {
             Field_PlayerAvatar_OrrTransitionFlags(fieldSystem->playerAvatar, 512);
             Field_PlayerAvatar_ApplyTransitionFlags(fieldSystem->playerAvatar);
             sub_0205F328(obj, 0);
-            fenv->unk18 = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldEnvSubUnk18));
+            fenv->unk18        = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldEnvSubUnk18));
             fenv->unk18->state = 0;
             PlayerAvatar_ToggleAutomaticHeightUpdating(fieldSystem->playerAvatar, FALSE);
             fenv->transitionState++;
         }
         break;
     case 2:
-        obj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
+        obj    = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
         fenv18 = fenv->unk18;
         fenv18->state++;
         VecFx32 pos;
@@ -508,7 +506,7 @@ BOOL sub_02056424(TaskManager *man) {
 }
 
 BOOL sub_02056530(TaskManager *man) {
-    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
+    FieldSystem *fieldSystem         = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnvironment(man);
     LocalMapObject *obj;
     switch (fenv->transitionState) {
@@ -527,8 +525,7 @@ BOOL sub_02056530(TaskManager *man) {
         ov01_021E90DC(GetPlayerXCoord(fieldSystem->playerAvatar), GetPlayerYCoord(fieldSystem->playerAvatar), fenv->unk18);
         fenv->transitionState++;
         break;
-    case 2:
-    {
+    case 2: {
         FieldEnvSubUnk18 *unk = fenv->unk18;
         if (ov01_021E9374(fieldSystem, unk)) {
             ov01_021E90D4(unk);
@@ -544,11 +541,10 @@ BOOL sub_02056530(TaskManager *man) {
 }
 
 BOOL sub_020565FC(TaskManager *man) {
-    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
+    FieldSystem *fieldSystem         = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnvironment(man);
     switch (fenv->transitionState) {
-    case 0:
-    {
+    case 0: {
         LocalMapObject *mapObj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
         if (sub_0205B70C(GetMetatileBehaviorAt(fieldSystem, GetPlayerXCoord(fieldSystem->playerAvatar), GetPlayerYCoord(fieldSystem->playerAvatar)))) {
             MapObject_SetVisible(mapObj, TRUE);

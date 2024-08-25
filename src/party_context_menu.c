@@ -1,9 +1,10 @@
 #include "party_context_menu.h"
 
+#include "global.h"
+
 #include "msgdata/msg/msg_0300.h"
 
 #include "font.h"
-#include "global.h"
 #include "party_menu_items.h"
 #include "party_menu_list_items.h"
 #include "render_text.h"
@@ -302,30 +303,30 @@ void PartyMenu_DisableMainScreenBlend_AfterYesNo(void) {
 static void PartyMenu_StartContextMenuButtonPressAnim_FromCursorObj(PartyMenu *partyMenu, PartyMenuContextMenuCursor *cursor, int followUpState) {
     PartyMenuContextButtonAnimData *animData = &partyMenu->contextMenuButtonAnim;
 
-    animData->autoAnimTimer = 0;
+    animData->autoAnimTimer   = 0;
     animData->buttonAnimState = 0;
-    animData->template = &cursor->menu;
-    animData->numItems = cursor->numItems;
-    animData->selection = cursor->selection;
-    animData->state = cursor->state;
-    animData->followUpState = followUpState;
-    animData->active = TRUE;
+    animData->template        = &cursor->menu;
+    animData->numItems        = cursor->numItems;
+    animData->selection       = cursor->selection;
+    animData->state           = cursor->state;
+    animData->followUpState   = followUpState;
+    animData->active          = TRUE;
 }
 
 void PartyMenu_StartContextMenuButtonAnim(PartyMenu *partyMenu, int selection, int followUpState, BOOL restartAnim) {
     PartyMenuContextButtonAnimData *animData = &partyMenu->contextMenuButtonAnim;
 
-    animData->autoAnimTimer = 0;
+    animData->autoAnimTimer   = 0;
     animData->buttonAnimState = 0;
-    animData->template = NULL;
-    animData->selection = selection;
-    animData->state = Get2dSpriteCurrentAnimSeqNo(partyMenu->sprites[selection]) & 2;
+    animData->template        = NULL;
+    animData->selection       = selection;
+    animData->state           = Get2dSpriteCurrentAnimSeqNo(partyMenu->sprites[selection]) & 2;
     if (restartAnim == TRUE) {
         Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[selection], 0);
         Set2dSpriteAnimSeqNo(partyMenu->sprites[selection], animData->state);
     }
     animData->followUpState = followUpState;
-    animData->active = TRUE;
+    animData->active        = TRUE;
 }
 
 BOOL PartyMenu_AnimateContextMenuButtonPress(PartyMenu *partyMenu) {
@@ -397,7 +398,7 @@ void PartyMenu_AddAllWindows(PartyMenu *partyMenu) {
     AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_39], &templates[47]);
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
         WindowTemplate template = sAdditionalWindowTemplates[0];
-        template.top = 22;
+        template.top            = 22;
         AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_31], &template);
     } else {
         AddWindow(partyMenu->bgConfig, &partyMenu->windows[PARTY_MENU_WINDOW_ID_31], &sAdditionalWindowTemplates[0]);
@@ -455,7 +456,7 @@ void PartyMenu_OpenContextMenu(PartyMenu *partyMenu, u8 *items, u8 numItems) {
     u16 i, numFieldMoves;
 
     partyMenu->listMenuItems = ListMenuItems_New(numItems, HEAP_ID_PARTY_MENU);
-    numFieldMoves = 0;
+    numFieldMoves            = 0;
     for (i = 0; i < numItems; ++i) {
         if (items[i] >= PARTY_MON_CONTEXT_MENU_FIELD_MOVES_BEGIN) {
             ListMenuItems_AddItem(partyMenu->listMenuItems, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_FIELD_MOVES_BEGIN + numFieldMoves], GetPartyMenuContextMenuActionFunc(items[i]));
@@ -465,10 +466,10 @@ void PartyMenu_OpenContextMenu(PartyMenu *partyMenu, u8 *items, u8 numItems) {
         }
     }
 
-    contextMenu.items = partyMenu->listMenuItems;
-    contextMenu.window = &partyMenu->levelUpStatsWindow[0];
-    contextMenu.unk_08 = 0;
-    contextMenu.unk_09 = 1;
+    contextMenu.items    = partyMenu->listMenuItems;
+    contextMenu.window   = &partyMenu->levelUpStatsWindow[0];
+    contextMenu.unk_08   = 0;
+    contextMenu.unk_09   = 1;
     contextMenu.numItems = numItems;
     contextMenu.unk_0B_0 = 0;
     contextMenu.unk_0B_4 = 0;
@@ -488,7 +489,7 @@ void sub_0207D1C8(PartyMenu *partyMenu) {
         ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00183, partyMenu->formattedStrBuf);
     } else {
         Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
-        String *msg = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00038);
+        String *msg  = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00038);
         BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, msg);
         String_Delete(msg);
@@ -786,15 +787,15 @@ void PartyMenu_CreateYesNoPrompt(PartyMenu *partyMenu) {
 
     partyMenu->yesNoPrompt = YesNoPrompt_Create(HEAP_ID_PARTY_MENU);
 
-    template.bgConfig = partyMenu->bgConfig;
-    template.bgId = GF_BG_LYR_MAIN_0;
-    template.tileStart = 0x260;
-    template.plttSlot = 11;
-    template.x = 25;
-    template.y = 10;
-    template.ignoreTouchFlag = FALSE;
+    template.bgConfig         = partyMenu->bgConfig;
+    template.bgId             = GF_BG_LYR_MAIN_0;
+    template.tileStart        = 0x260;
+    template.plttSlot         = 11;
+    template.x                = 25;
+    template.y                = 10;
+    template.ignoreTouchFlag  = FALSE;
     template.initialCursorPos = 0;
-    template.shapeParam = 0;
+    template.shapeParam       = 0;
     YesNoPrompt_InitFromTemplate(partyMenu->yesNoPrompt, &template);
     PartyMenu_SetBlendBrightness_ForYesNo();
 }
@@ -882,7 +883,7 @@ void PartyMenu_LevelUpPrintStatsChange(PartyMenu *partyMenu) {
     u32 i;
     Pokemon *mon;
 
-    mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+    mon      = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     stats[0] = GetMonData(mon, MON_DATA_MAXHP, NULL);
     stats[1] = GetMonData(mon, MON_DATA_ATK, NULL);
     stats[2] = GetMonData(mon, MON_DATA_DEF, NULL);
@@ -1002,20 +1003,20 @@ static void PartyMenu_PrintContextMenuItemText(PartyMenu *partyMenu, PartyMenuCo
     if (windowId == 7) {
         if (depressed == FALSE) {
             fillValue = 4;
-            color = MAKE_TEXT_COLOR(14, 15, 4);
+            color     = MAKE_TEXT_COLOR(14, 15, 4);
         } else {
             fillValue = 11;
-            color = MAKE_TEXT_COLOR(14, 15, 11);
+            color     = MAKE_TEXT_COLOR(14, 15, 11);
         }
         y = 4;
         x = FontID_String_GetCenterAlignmentX(4, contextMenu->items[selection].text, 0, GetWindowWidth(&partyMenu->contextMenuButtonWindows[windowId]) * 8);
     } else {
         if (depressed == FALSE) {
             fillValue = 4;
-            color = getButtonColorRaised(selection);
+            color     = getButtonColorRaised(selection);
         } else {
             fillValue = 11;
-            color = getButtonColorDepressed(selection);
+            color     = getButtonColorDepressed(selection);
         }
         y = 0;
     }
@@ -1074,11 +1075,11 @@ void sub_0207E54C(PartyMenu *partyMenu, int numItems, int selection, int state) 
 
 PartyMenuContextMenuCursor *PartyMenu_CreateContextMenuCursor(PartyMenu *partyMenu, const PartyMenuContextMenu *template, int selection, HeapID heapId, int state) {
     PartyMenuContextMenuCursor *ret = AllocFromHeap(heapId, sizeof(PartyMenuContextMenuCursor));
-    ret->menu = *template;
-    ret->numItems = ret->menu.numItems;
-    ret->prevSelection = selection;
-    ret->selection = selection;
-    ret->state = state;
+    ret->menu                       = *template;
+    ret->numItems                   = ret->menu.numItems;
+    ret->prevSelection              = selection;
+    ret->selection                  = selection;
+    ret->state                      = state;
     PartyMenu_ShowContextMenu(partyMenu, ret->menu.numItems, ret->state);
     sub_0207E358(partyMenu, &ret->menu, ret->menu.numItems, ret->prevSelection, ret->state);
     PartyMenu_SetBlendBrightness_ForYesNo();
@@ -1151,7 +1152,7 @@ static BOOL handlePartyContextMenuDpadInput(u8 *pSelection, int numItems, int di
 
 u32 PartyMenu_HandleInput_ContextMenu(PartyMenu *partyMenu, PartyMenuContextMenuCursor *cursor) {
     PartyMenuContextButtonAnimData *animData = &partyMenu->contextMenuButtonAnim;
-    BOOL dpadInputValid = FALSE;
+    BOOL dpadInputValid                      = FALSE;
 
     if (animData->active == TRUE) {
         if (PartyMenu_AnimateContextMenuButtonPress(partyMenu) == FALSE) {
@@ -1217,7 +1218,7 @@ u32 PartyMenu_HandleInput_ContextMenu(PartyMenu *partyMenu, PartyMenuContextMenu
 
 u32 PartyMenu_HandleSubcontextMenuInput_TopLevel(PartyMenu *partyMenu, PartyMenuContextMenuCursor *cursor) {
     PartyMenuContextButtonAnimData *animData = &partyMenu->contextMenuButtonAnim;
-    BOOL dpadInputValid = FALSE;
+    BOOL dpadInputValid                      = FALSE;
 
     if (animData->active == TRUE) {
         if (PartyMenu_AnimateContextMenuButtonPress(partyMenu) == FALSE) {

@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_UNK_0203170C_H
 #define POKEHEARTGOLD_UNK_0203170C_H
 
+#include "save.h"
+
 typedef struct {
     char unk0[0x33];
     u8 unk33;

@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_SCRIPT_H
 #define POKEHEARTGOLD_SCRIPT_H
 
+#include "global.h"
+
 #include "constants/vars.h"
 
 #include "bg_window.h"
@@ -10,7 +12,6 @@
 #include "field_system.h"
 #include "field_types_def.h"
 #include "gear_phone.h"
-#include "global.h"
 #include "list_menu_2d.h"
 #include "map_events_internal.h"
 #include "msgdata.h"

@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_ASCII_UTIL_H
 #define POKEHEARTGOLD_ASCII_UTIL_H
 
-#include "nitro/types.h"
+#include <nnsys.h>
 
 s32 Ascii_StrLen(const s8 *str);
 const s8 *Ascii_GetDelim(const s8 *src, s8 *dst, s32 c);

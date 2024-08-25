@@ -19,10 +19,10 @@ typedef enum RegisterItemResult {
 
 // Enum for argument "code" to GetItemUseErrorMessage
 typedef enum ItemUseError {
-    ITEMUSEERROR_OKAY = 0, // no error
+    ITEMUSEERROR_OKAY       = 0, // no error
     ITEMUSEERROR_NODISMOUNT = 1, // can't get off bike
     ITEMUSEERROR_NOFOLLOWER = 2, // have a companion
-    ITEMUSEERROR_NOTNOW = 3, // you're a member of team rocket
+    ITEMUSEERROR_NOTNOW     = 3, // you're a member of team rocket
 
     ITEMUSEERROR_OAKSWORDS = -1u,
 } ItemUseError;

@@ -1,5 +1,7 @@
-#include "global.h"
 #include "save_palpad.h"
+
+#include "global.h"
+
 #include "pm_string.h"
 
 u32 Save_PalPad_sizeof(void) {

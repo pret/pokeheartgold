@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_UNK_02016EDC_H
 
 #include "global.h"
+
 #include "pokepic.h"
 
 struct UnkStruct_02072914_sub {

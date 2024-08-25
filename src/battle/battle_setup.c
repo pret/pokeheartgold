@@ -1,12 +1,13 @@
 #include "battle/battle_setup.h"
 
+#include "global.h"
+
 #include "constants/battle.h"
 
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0445.h"
 
 #include "follow_mon.h"
-#include "global.h"
 #include "metatile_behavior.h"
 #include "msgdata.h"
 #include "save_local_field_data.h"
@@ -39,35 +40,35 @@ BattleSetup *BattleSetup_New(HeapID heapId, u32 battleTypeFlags) {
     int i;
     BattleSetup *setup = AllocFromHeap(heapId, sizeof(BattleSetup));
     MI_CpuClear8(setup, sizeof(BattleSetup));
-    setup->battleType = battleTypeFlags;
-    setup->battleSpecial = 0;
-    setup->winFlag = 0;
-    setup->battleBg = BATTLE_BG_GENERAL;
-    setup->terrain = TERRAIN_MAX;
-    setup->mapSection = 0;
-    setup->timeOfDay = RTC_TIMEOFDAY_MORN;
+    setup->battleType        = battleTypeFlags;
+    setup->battleSpecial     = 0;
+    setup->winFlag           = 0;
+    setup->battleBg          = BATTLE_BG_GENERAL;
+    setup->terrain           = TERRAIN_MAX;
+    setup->mapSection        = 0;
+    setup->timeOfDay         = RTC_TIMEOFDAY_MORN;
     setup->evolutionLocation = 0;
-    setup->unk_164 = 1;
-    setup->metBill = 1;
-    setup->weatherType = 0;
+    setup->unk_164           = 1;
+    setup->metBill           = 1;
+    setup->weatherType       = 0;
     for (i = 0; i < BATTLER_MAX; ++i) {
         setup->trainerId[i] = 0;
         MI_CpuClear32(&setup->trainer[i], sizeof(Trainer));
-        setup->party[i] = SaveArray_Party_Alloc(heapId);
+        setup->party[i]   = SaveArray_Party_Alloc(heapId);
         setup->profile[i] = PlayerProfile_New(heapId);
-        setup->chatot[i] = Chatot_New(heapId);
-        setup->unk1CC[i] = 0xFF;
+        setup->chatot[i]  = Chatot_New(heapId);
+        setup->unk1CC[i]  = 0xFF;
     }
-    setup->bag = Save_Bag_New(heapId);
-    setup->pokedex = Pokedex_New(heapId);
-    setup->options = Options_New(heapId);
-    setup->unk_134 = sub_02067A60(heapId);
-    setup->unk_10C = NULL;
-    setup->unk1B8 = NULL;
-    setup->safariBalls = 0;
-    setup->unk_12C = NULL;
-    setup->gameStats = NULL;
-    setup->unk_194 = 0;
+    setup->bag           = Save_Bag_New(heapId);
+    setup->pokedex       = Pokedex_New(heapId);
+    setup->options       = Options_New(heapId);
+    setup->unk_134       = sub_02067A60(heapId);
+    setup->unk_10C       = NULL;
+    setup->unk1B8        = NULL;
+    setup->safariBalls   = 0;
+    setup->unk_12C       = NULL;
+    setup->gameStats     = NULL;
+    setup->unk_194       = 0;
     setup->bugContestMon = AllocMonZeroed(heapId);
 
     {
@@ -113,9 +114,9 @@ BattleSetup *BattleSetup_New_PalPark(HeapID heapId, int balls) {
 
 BattleSetup *BattleSetup_New_Tutorial(HeapID heapId, FieldSystem *fieldSystem) {
     PlayerProfile *profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
-    Options *options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
-    BattleSetup *setup = BattleSetup_New(heapId, BATTLE_TYPE_TUTORIAL);
-    setup->saveData = fieldSystem->saveData;
+    Options *options       = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
+    BattleSetup *setup     = BattleSetup_New(heapId, BATTLE_TYPE_TUTORIAL);
+    setup->saveData        = fieldSystem->saveData;
     {
         MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0445_bin, heapId);
         {
@@ -140,11 +141,11 @@ BattleSetup *BattleSetup_New_Tutorial(HeapID heapId, FieldSystem *fieldSystem) {
         FreeToHeap(pokemon);
     }
     setup->unk1CC[BATTLER_PLAYER] = 0;
-    setup->storagePC = SaveArray_PCStorage_Get(fieldSystem->saveData);
-    setup->unk_10C = fieldSystem->bagCursor;
-    setup->unk1B8 = NULL;
-    setup->gameStats = Save_GameStats_Get(fieldSystem->saveData);
-    setup->mapNumber = fieldSystem->location->mapId;
+    setup->storagePC              = SaveArray_PCStorage_Get(fieldSystem->saveData);
+    setup->unk_10C                = fieldSystem->bagCursor;
+    setup->unk1B8                 = NULL;
+    setup->gameStats              = Save_GameStats_Get(fieldSystem->saveData);
+    setup->mapNumber              = fieldSystem->location->mapId;
     BattleSetup_SetAllySideBattlersToPlayer(setup);
     return setup;
 }
@@ -206,12 +207,12 @@ void sub_02051D18(BattleSetup *setup, FieldSystem *fieldSystem, SaveData *saveDa
     BattleBg battle_bg;
 
     profile = Save_PlayerData_GetProfileAddr(saveData);
-    party = SaveArray_Party_Get(saveData);
-    bag = Save_Bag_Get(saveData);
+    party   = SaveArray_Party_Get(saveData);
+    bag     = Save_Bag_Get(saveData);
     pokedex = Save_Pokedex_Get(saveData);
-    chatot = Save_Chatot_Get(saveData);
+    chatot  = Save_Chatot_Get(saveData);
     options = Save_PlayerData_GetOptionsAddr(saveData);
-    local = Save_LocalFieldData_Get(saveData);
+    local   = Save_LocalFieldData_Get(saveData);
 
     if (fieldSystem != NULL) {
         forceNite = FALSE;
@@ -228,8 +229,8 @@ void sub_02051D18(BattleSetup *setup, FieldSystem *fieldSystem, SaveData *saveDa
             setup->unk1CC[BATTLER_PLAYER] = Save_GetPartyLeadAlive(saveData);
         }
     } else {
-        setup->battleBg = MapHeader_GetBattleBg(mapno);
-        setup->terrain = TERRAIN_BUILDING;
+        setup->battleBg  = MapHeader_GetBattleBg(mapno);
+        setup->terrain   = TERRAIN_BUILDING;
         setup->timeOfDay = GF_RTC_GetTimeOfDayByHour(Save_SysInfo_RTC_Get(saveData)->time.hour);
     }
     BattleSetup_SetProfile(setup, profile, BATTLER_PLAYER);
@@ -243,24 +244,24 @@ void sub_02051D18(BattleSetup *setup, FieldSystem *fieldSystem, SaveData *saveDa
     Pokedex_Copy(pokedex, setup->pokedex);
     Options_Copy(options, setup->options);
     BattleSetup_SetChatotVoiceClip(setup, chatot, BATTLER_PLAYER);
-    setup->storagePC = SaveArray_PCStorage_Get(saveData);
-    setup->mapSection = MapHeader_GetMapSec(mapno);
+    setup->storagePC         = SaveArray_PCStorage_Get(saveData);
+    setup->mapSection        = MapHeader_GetMapSec(mapno);
     setup->evolutionLocation = MapHeader_GetMapEvolutionMethod(mapno);
-    setup->unk_164 = sub_02088288(saveData);
-    setup->metBill = CheckMetBill(Save_VarsFlags_Get(saveData));
+    setup->unk_164           = sub_02088288(saveData);
+    setup->metBill           = CheckMetBill(Save_VarsFlags_Get(saveData));
     if (MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(saveData), MOMS_BALANCE_GET, 0) < 999999) {
         setup->momsSavingsActive = Save_VarsFlags_MomsSavingsFlagCheck(Save_VarsFlags_Get(saveData));
     } else {
         setup->momsSavingsActive = FALSE;
     }
     setup->weatherType = LocalFieldData_GetWeatherType(local);
-    setup->unk_10C = arg4;
-    setup->unk1B8 = arg5;
-    setup->unk_12C = sub_0202CA44(saveData);
-    setup->gameStats = Save_GameStats_Get(saveData);
-    setup->palPad = Save_PalPad_Get(saveData);
-    setup->mapNumber = mapno;
-    setup->saveData = saveData;
+    setup->unk_10C     = arg4;
+    setup->unk1B8      = arg5;
+    setup->unk_12C     = sub_0202CA44(saveData);
+    setup->gameStats   = Save_GameStats_Get(saveData);
+    setup->palPad      = Save_PalPad_Get(saveData);
+    setup->mapNumber   = mapno;
+    setup->saveData    = saveData;
 }
 
 void BattleSetup_InitFromFieldSystem(BattleSetup *setup, FieldSystem *fieldSystem) {
@@ -277,14 +278,14 @@ void BattleSetup_InitForFixedLevelFacility(BattleSetup *setup, FieldSystem *fiel
     Options *options;
 
     profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
-    party = SaveArray_Party_Get(fieldSystem->saveData);
-    bag = Save_Bag_Get(fieldSystem->saveData);
+    party   = SaveArray_Party_Get(fieldSystem->saveData);
+    bag     = Save_Bag_Get(fieldSystem->saveData);
     pokedex = Save_Pokedex_Get(fieldSystem->saveData);
-    chatot = Save_Chatot_Get(fieldSystem->saveData);
+    chatot  = Save_Chatot_Get(fieldSystem->saveData);
     options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
 
     setup->battleBg = BATTLE_BG_BUILDING_1;
-    setup->terrain = TERRAIN_BUILDING;
+    setup->terrain  = TERRAIN_BUILDING;
     BattleSetup_SetProfile(setup, profile, BATTLER_PLAYER);
 
     Pokemon *pokemon = AllocMonZeroed(HEAP_ID_FIELD);
@@ -306,13 +307,13 @@ void BattleSetup_InitForFixedLevelFacility(BattleSetup *setup, FieldSystem *fiel
     BattleSetup_SetChatotVoiceClip(setup, chatot, BATTLER_PLAYER);
     setup->storagePC = SaveArray_PCStorage_Get(fieldSystem->saveData);
     setup->timeOfDay = Field_GetTimeOfDay(fieldSystem);
-    setup->unk_10C = fieldSystem->bagCursor;
-    setup->unk1B8 = fieldSystem->unkB0;
-    setup->unk_12C = sub_0202CA44(fieldSystem->saveData);
+    setup->unk_10C   = fieldSystem->bagCursor;
+    setup->unk1B8    = fieldSystem->unkB0;
+    setup->unk_12C   = sub_0202CA44(fieldSystem->saveData);
     setup->gameStats = Save_GameStats_Get(fieldSystem->saveData);
-    setup->palPad = Save_PalPad_Get(fieldSystem->saveData);
+    setup->palPad    = Save_PalPad_Get(fieldSystem->saveData);
     setup->mapNumber = fieldSystem->location->mapId;
-    setup->saveData = fieldSystem->saveData;
+    setup->saveData  = fieldSystem->saveData;
     BattleSetup_SetAllySideBattlersToPlayer(setup);
 }
 
@@ -324,15 +325,15 @@ void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8
     Options *options;
     void *fieldSystem_unkA4;
 
-    profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
-    bag = Save_Bag_Get(fieldSystem->saveData);
-    pokedex = Save_Pokedex_Get(fieldSystem->saveData);
-    chatot = Save_Chatot_Get(fieldSystem->saveData);
-    options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
+    profile           = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+    bag               = Save_Bag_Get(fieldSystem->saveData);
+    pokedex           = Save_Pokedex_Get(fieldSystem->saveData);
+    chatot            = Save_Chatot_Get(fieldSystem->saveData);
+    options           = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     fieldSystem_unkA4 = fieldSystem->unkA4;
 
     setup->battleBg = BATTLE_BG_BUILDING_1;
-    setup->terrain = TERRAIN_BUILDING;
+    setup->terrain  = TERRAIN_BUILDING;
     BattleSetup_SetProfile(setup, profile, BATTLER_PLAYER);
 
     if (a4 == NULL) {
@@ -377,17 +378,17 @@ void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8
     BattleSetup_SetChatotVoiceClip(setup, chatot, BATTLER_PLAYER);
     setup->storagePC = SaveArray_PCStorage_Get(fieldSystem->saveData);
     setup->timeOfDay = Field_GetTimeOfDay(fieldSystem);
-    setup->unk_10C = fieldSystem->bagCursor;
-    setup->unk1B8 = fieldSystem->unkB0;
-    setup->unk_12C = sub_0202CA44(fieldSystem->saveData);
+    setup->unk_10C   = fieldSystem->bagCursor;
+    setup->unk1B8    = fieldSystem->unkB0;
+    setup->unk_12C   = sub_0202CA44(fieldSystem->saveData);
     setup->gameStats = Save_GameStats_Get(fieldSystem->saveData);
     setup->mapNumber = fieldSystem->location->mapId;
-    setup->palPad = Save_PalPad_Get(fieldSystem->saveData);
-    setup->saveData = fieldSystem->saveData;
+    setup->palPad    = Save_PalPad_Get(fieldSystem->saveData);
+    setup->saveData  = fieldSystem->saveData;
 
     if (sub_0203401C(sub_0203993C())) {
-        int avatar = PlayerProfile_GetAvatar(profile);
-        int gender = PlayerProfile_GetTrainerGender(profile);
+        int avatar                                       = PlayerProfile_GetAvatar(profile);
+        int gender                                       = PlayerProfile_GetTrainerGender(profile);
         setup->trainer[BATTLER_PLAYER].data.trainerClass = GetUnionRoomAvatarAttrBySprite(gender, avatar, 1);
         CopyU16StringArray(setup->trainer[BATTLER_PLAYER].name, PlayerProfile_GetNamePtr(setup->profile[BATTLER_PLAYER]));
         setup->trainer[BATTLER_PLAYER2] = setup->trainer[BATTLER_PLAYER];
@@ -402,11 +403,11 @@ void sub_020522F0(BattleSetup *setup, FieldSystem *fieldSystem, void *a1) {
 
 static void sub_0205230C(FieldSystem *fieldSystem, PlayerProfile *profile1, PlayerProfile *profile2) {
     SaveVarsFlags *vars_flags = Save_VarsFlags_Get(fieldSystem->saveData);
-    MomsSavings *savings = SaveData_GetMomsSavingsAddr(fieldSystem->saveData);
+    MomsSavings *savings      = SaveData_GetMomsSavingsAddr(fieldSystem->saveData);
 
     if (Save_VarsFlags_MomsSavingsFlagCheck(vars_flags)) {
-        u32 money2 = PlayerProfile_GetMoney(profile2);
-        int delta = (int)(money2 - PlayerProfile_GetMoney(profile1)) / 4;
+        u32 money2         = PlayerProfile_GetMoney(profile2);
+        int delta          = (int)(money2 - PlayerProfile_GetMoney(profile1)) / 4;
         u32 savingsBalance = MomSavingsBalanceAction(savings, MOMS_BALANCE_GET, 0);
         u32 r1;
         if (delta > 0) {
@@ -433,8 +434,8 @@ void sub_0205239C(BattleSetup *setup, FieldSystem *fieldSystem) {
     u16 *balls_ptr;
 
     profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
-    party = SaveArray_Party_Get(fieldSystem->saveData);
-    bag = Save_Bag_Get(fieldSystem->saveData);
+    party   = SaveArray_Party_Get(fieldSystem->saveData);
+    bag     = Save_Bag_Get(fieldSystem->saveData);
     pokedex = Save_Pokedex_Get(fieldSystem->saveData);
 
     sub_0205230C(fieldSystem, profile, setup->profile[BATTLER_PLAYER]);
@@ -443,7 +444,7 @@ void sub_0205239C(BattleSetup *setup, FieldSystem *fieldSystem) {
     Save_Bag_Copy(setup->bag, bag);
     Pokedex_Copy(setup->pokedex, pokedex);
 
-    balls_ptr = NULL;
+    balls_ptr  = NULL;
     vars_flags = Save_VarsFlags_Get(fieldSystem->saveData);
     if (Save_VarsFlags_CheckSafariSysFlag(vars_flags)) {
         balls_ptr = LocalFieldData_GetSafariBallsCounter(Save_LocalFieldData_Get(fieldSystem->saveData));
@@ -462,37 +463,37 @@ void sub_02052444(BattleSetup *setup, FieldSystem *fieldSystem) {
     Pokedex *pokedex;
 
     profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
-    party = SaveArray_Party_Get(fieldSystem->saveData);
-    bag = Save_Bag_Get(fieldSystem->saveData);
+    party   = SaveArray_Party_Get(fieldSystem->saveData);
+    bag     = Save_Bag_Get(fieldSystem->saveData);
     pokedex = Save_Pokedex_Get(fieldSystem->saveData);
 
     Pokedex_Copy(setup->pokedex, pokedex);
 }
 
 static const Terrain _020FC4C0[] = {
-    [BATTLE_BG_GENERAL] = TERRAIN_PLAIN,
-    [BATTLE_BG_OCEAN] = TERRAIN_WATER,
-    [BATTLE_BG_CITY] = TERRAIN_BUILDING,
-    [BATTLE_BG_FOREST] = TERRAIN_GRASS,
-    [BATTLE_BG_MOUNTAIN] = TERRAIN_MOUNTAIN,
-    [BATTLE_BG_SNOW] = TERRAIN_SNOW,
-    [BATTLE_BG_BUILDING_1] = TERRAIN_BUILDING,
-    [BATTLE_BG_BUILDING_2] = TERRAIN_BUILDING,
-    [BATTLE_BG_BUILDING_3] = TERRAIN_BUILDING,
-    [BATTLE_BG_CAVE_1] = TERRAIN_CAVE,
-    [BATTLE_BG_CAVE_2] = TERRAIN_CAVE,
-    [BATTLE_BG_CAVE_3] = TERRAIN_CAVE,
-    [BATTLE_BG_WILL] = TERRAIN_WILL,
-    [BATTLE_BG_KOGA] = TERRAIN_KOGA,
-    [BATTLE_BG_BRUNO] = TERRAIN_BRUNO,
-    [BATTLE_BG_KAREN] = TERRAIN_KAREN,
-    [BATTLE_BG_LANCE] = TERRAIN_LANCE,
+    [BATTLE_BG_GENERAL]          = TERRAIN_PLAIN,
+    [BATTLE_BG_OCEAN]            = TERRAIN_WATER,
+    [BATTLE_BG_CITY]             = TERRAIN_BUILDING,
+    [BATTLE_BG_FOREST]           = TERRAIN_GRASS,
+    [BATTLE_BG_MOUNTAIN]         = TERRAIN_MOUNTAIN,
+    [BATTLE_BG_SNOW]             = TERRAIN_SNOW,
+    [BATTLE_BG_BUILDING_1]       = TERRAIN_BUILDING,
+    [BATTLE_BG_BUILDING_2]       = TERRAIN_BUILDING,
+    [BATTLE_BG_BUILDING_3]       = TERRAIN_BUILDING,
+    [BATTLE_BG_CAVE_1]           = TERRAIN_CAVE,
+    [BATTLE_BG_CAVE_2]           = TERRAIN_CAVE,
+    [BATTLE_BG_CAVE_3]           = TERRAIN_CAVE,
+    [BATTLE_BG_WILL]             = TERRAIN_WILL,
+    [BATTLE_BG_KOGA]             = TERRAIN_KOGA,
+    [BATTLE_BG_BRUNO]            = TERRAIN_BRUNO,
+    [BATTLE_BG_KAREN]            = TERRAIN_KAREN,
+    [BATTLE_BG_LANCE]            = TERRAIN_LANCE,
     [BATTLE_BG_DISTORTION_WORLD] = TERRAIN_DISTORTION_WORLD,
-    [BATTLE_BG_BATTLE_TOWER] = TERRAIN_BATTLE_TOWER,
-    [BATTLE_BG_BATTLE_FACTORY] = TERRAIN_BATTLE_FACTORY,
-    [BATTLE_BG_BATTLE_ARCADE] = TERRAIN_BATTLE_ARCADE,
-    [BATTLE_BG_BATTLE_CASTLE] = TERRAIN_BATTLE_CASTLE,
-    [BATTLE_BG_BATTLE_HALL] = TERRAIN_BATTLE_HALL,
+    [BATTLE_BG_BATTLE_TOWER]     = TERRAIN_BATTLE_TOWER,
+    [BATTLE_BG_BATTLE_FACTORY]   = TERRAIN_BATTLE_FACTORY,
+    [BATTLE_BG_BATTLE_ARCADE]    = TERRAIN_BATTLE_ARCADE,
+    [BATTLE_BG_BATTLE_CASTLE]    = TERRAIN_BATTLE_CASTLE,
+    [BATTLE_BG_BATTLE_HALL]      = TERRAIN_BATTLE_HALL,
 };
 
 static Terrain sub_02052470(FieldSystem *fieldSystem, BattleBg battleBg) {
@@ -529,7 +530,7 @@ static Terrain sub_02052470(FieldSystem *fieldSystem, BattleBg battleBg) {
 
 static void sub_02052504(BattleSetup *setup, FieldSystem *fieldSystem) {
     PlayerSaveData *player = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData));
-    setup->battleBg = MapHeader_GetBattleBg(fieldSystem->location->mapId);
+    setup->battleBg        = MapHeader_GetBattleBg(fieldSystem->location->mapId);
 
     if (player->unk4 == 2) {
         setup->battleBg = BATTLE_BG_OCEAN;

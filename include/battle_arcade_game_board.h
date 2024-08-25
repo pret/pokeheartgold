@@ -12,7 +12,7 @@
 #include "unk_02009D48.h"
 #include "unk_02023694.h"
 
-#define ARCADE_ENEMY_POKEMON_MAX    4
+#define ARCADE_ENEMY_POKEMON_MAX 4
 
 typedef struct GAME_BOARD_ARGS {
     SaveData *saveData;

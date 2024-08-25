@@ -1,5 +1,6 @@
-#include "global.h"
 #include "touch_hitbox_controller.h"
+
+#include "global.h"
 
 static void TouchHitboxControllerTemplate_Init(TouchHitboxControllerTemplate *template);
 static int sub_02026D88(TouchHitboxControllerTemplate *template, u32 unused, u32 touchNew);
@@ -11,10 +12,10 @@ TouchHitboxController *TouchHitboxController_Create(const TouchscreenHitbox *hit
 
     TouchHitboxController *controller = AllocFromHeap(heapId, sizeof(TouchHitboxController));
     if (controller != NULL) {
-        controller->hitboxes = hitboxes;
+        controller->hitboxes     = hitboxes;
         controller->numTemplates = numTemplates;
-        controller->callback = callback;
-        controller->callbackArg = callbackArg;
+        controller->callback     = callback;
+        controller->callbackArg  = callbackArg;
 
         controller->templates = AllocFromHeap(heapId, numTemplates * sizeof(TouchHitboxControllerTemplate));
         if (controller->templates != NULL) {
@@ -30,8 +31,8 @@ TouchHitboxController *TouchHitboxController_Create(const TouchscreenHitbox *hit
 }
 
 static void TouchHitboxControllerTemplate_Init(TouchHitboxControllerTemplate *template) {
-    template->unkCallbackNum = 0;
-    template->touchActive = FALSE;
+    template->unkCallbackNum  = 0;
+    template->touchActive     = FALSE;
     template->numFramesActive = 0;
 }
 
@@ -52,7 +53,7 @@ BOOL TouchHitboxController_IsTriggered(TouchHitboxController *controller) {
     u32 touchNew, touchHeld; // these are BOOLs but they have to be unsigned to match
 
     BOOL triggered = FALSE;
-    touchHeld = System_GetTouchHeld();
+    touchHeld      = System_GetTouchHeld();
     if (touchHeld) {
         touchNew = System_GetTouchNew();
         for (i = 0; i < controller->numTemplates; i++) {
@@ -109,6 +110,6 @@ static int sub_02026DA4(TouchHitboxControllerTemplate *template, u32 touchHeld, 
 }
 
 static void sub_02026DD8(TouchHitboxControllerTemplate *template, u8 a1) {
-    template->unkCallbackNum = a1;
+    template->unkCallbackNum  = a1;
     template->numFramesActive = 0;
 }

@@ -1,7 +1,10 @@
-#include "global.h"
 #include "save_pokegear.h"
-#include "math_util.h"
+
+#include "global.h"
+
 #include "constants/items.h"
+
+#include "math_util.h"
 
 static void InitGSPlayerMiscInternal(SavePokegear *pokegear);
 static void GSPlayerMisc_PhonebookInit(SavePokegear *pokegear);
@@ -24,13 +27,13 @@ MomsSavings *SaveData_GetMomsSavingsAddr(SaveData *saveData) {
 
 static void InitGSPlayerMiscInternal(SavePokegear *pokegear) {
     MI_CpuClear8(pokegear, sizeof(SavePokegear));
-    pokegear->unk_0 = 3;
-    pokegear->unk_4_18 = 0;
-    pokegear->unk_1 = 0;
-    pokegear->unk_3 = 128;
-    pokegear->unk_2 = pokegear->unk_3;
+    pokegear->unk_0           = 3;
+    pokegear->unk_4_18        = 0;
+    pokegear->unk_1           = 0;
+    pokegear->unk_3           = 128;
+    pokegear->unk_2           = pokegear->unk_3;
     pokegear->registeredCards = 0;
-    pokegear->unk_4_27 = 0;
+    pokegear->unk_4_27        = 0;
     GSPlayerMisc_PhonebookInit(pokegear);
     MomsSavingsInit(&pokegear->momsSavings);
 }
@@ -145,13 +148,13 @@ void RegisterPhoneNumberInPokeGear(SavePokegear *pokegear, u8 contact) {
     }
 
     if (GSPlayerMisc_IsGearNumberRegistered(pokegear, contact) == 0xFF) {
-        slot = GSPlayerMisc_FindEmptyGearPhonebookSlot(pokegear);
+        slot                             = GSPlayerMisc_FindEmptyGearPhonebookSlot(pokegear);
         pokegear->phoneContacts[slot].id = contact;
     }
 }
 
 PhoneContact *GSPlayerMisc_AllocAndCopyPhonebook(SavePokegear *pokegear, HeapID heapId) {
-    u8 num = GSPlayerMisc_FindEmptyGearPhonebookSlot(pokegear);
+    u8 num            = GSPlayerMisc_FindEmptyGearPhonebookSlot(pokegear);
     PhoneContact *ret = AllocFromHeap(heapId, num * sizeof(PhoneContact));
     MI_CpuCopy8(pokegear->phoneContacts, ret, num * sizeof(PhoneContact));
     return ret;
@@ -175,9 +178,9 @@ static MomsSavings *GSPlayerMisc_GetMomSavingsAddr(SavePokegear *pokegear) {
 }
 
 static void sub_0202EFC4(PhoneRematch *rematch) {
-    rematch->seeking = 0;
-    rematch->hasGift = 0;
-    rematch->unk_0_2 = 1;
+    rematch->seeking  = 0;
+    rematch->hasGift  = 0;
+    rematch->unk_0_2  = 1;
     rematch->giftItem = 0;
 }
 
@@ -211,7 +214,7 @@ void sub_0202F050(MomsSavings *momsSavings, u8 idx) {
         return;
     }
     byteno = idx / 8;
-    mask = 1 << (idx % 8);
+    mask   = 1 << (idx % 8);
     if (momsSavings->unk_14E[byteno] & mask) {
         momsSavings->unk_14E[byteno] ^= mask;
     }
@@ -393,7 +396,7 @@ BOOL sub_0202F370(UnkPokegearSub8 *unk) {
 void sub_0202F388(UnkPokegearSub8 *unk) {
     int i;
 
-    unk->unk_0 = 0;
+    unk->unk_0   = 0;
     unk->unk_2_0 = 15;
     unk->unk_2_4 = 15;
     unk->unk_2_8 = 15;
@@ -441,7 +444,7 @@ void sub_0202F434(struct UnkStruct_0202F3DC *src, UnkPokegearSub8 *dest) {
 
 void sub_0202F4B0(UnkPokegearSub8 *src, struct UnkStruct_0202F3DC *dest) {
     int i;
-    dest->unk_0 = src->unk_0;
+    dest->unk_0    = src->unk_0;
     dest->unk_4[0] = src->unk_2_0;
     dest->unk_4[1] = src->unk_2_4;
     dest->unk_4[2] = src->unk_2_8;

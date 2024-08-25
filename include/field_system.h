@@ -1,26 +1,25 @@
 #ifndef POKEHEARTGOLD_FIELD_SYSTEM_H
 #define POKEHEARTGOLD_FIELD_SYSTEM_H
 
+#include "field/overlay_01_021E66E4.h"
+
 #include "bag_cursor.h"
 #include "bg_window.h"
 #include "bug_contest_internal.h"
 #include "camera.h"
+#include "camera_translation.h"
+#include "field_types_def.h"
 #include "gear_phone.h"
 #include "map_events_internal.h"
 #include "map_matrix.h"
 #include "overlay_01_021EB1E8.h"
-#include "overlay_manager.h"
-#include "save_pokegear.h"
-#include "sys_task_api.h"
-#include "field/overlay_01_021E66E4.h"
-#include "camera_translation.h"
-#include "camera.h"
-#include "bg_window.h"
-#include "sys_task.h"
-#include "scrcmd_9.h"
-#include "photo_types_def.h"
-#include "field_types_def.h"
 #include "overlay_01_02204004.h"
+#include "overlay_manager.h"
+#include "photo_types_def.h"
+#include "save_pokegear.h"
+#include "scrcmd_9.h"
+#include "sys_task.h"
+#include "sys_task_api.h"
 
 typedef struct FollowMon {
     LocalMapObject *mapObject;
@@ -155,9 +154,9 @@ struct FieldSystem {
     FieldSystemUnkC8 *unk_C8;
     u8 filler_CC[0x4];
     u16 lastTouchMenuInput;
-    u8 unkD2_0:6;
-    u8 unkD2_6:1;
-    u8 unkD2_7:1;
+    u8 unkD2_0 : 6;
+    u8 unkD2_6 : 1;
+    u8 unkD2_7 : 1;
     u8 unkD3;
     u8 filler_D4[0x4];
     SysTask *unk_D8;
@@ -211,10 +210,10 @@ extern const OVY_MGR_TEMPLATE gApplication_NewGameFieldsys;
 extern const OVY_MGR_TEMPLATE gApplication_ContinueFieldsys;
 
 static inline void InitLocation(Location *location, int mapId, int warpId, int x, int y, int direction) {
-    location->mapId = mapId;
-    location->warpId = warpId;
-    location->x = x;
-    location->y = y;
+    location->mapId     = mapId;
+    location->warpId    = warpId;
+    location->x         = x;
+    location->y         = y;
     location->direction = direction;
 }
 

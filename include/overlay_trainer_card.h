@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_OVERLAY_TRAINER_CARD_H
 #define POKEHEARTGOLD_OVERLAY_TRAINER_CARD_H
 
+#include "overlay_manager.h"
 #include "save.h"
 
 #define HEAP_ID_TRAINER_CARD ((HeapID)94)

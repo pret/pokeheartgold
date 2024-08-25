@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_STRING_UTIL_H
 #define POKEHEARTGOLD_STRING_UTIL_H
 
+#include "global.h"
+
 typedef enum PrintingMode {
     PRINTING_MODE_LEFT_ALIGN,
     PRINTING_MODE_RIGHT_ALIGN,

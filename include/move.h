@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_MOVE_H
 #define POKEHEARTGOLD_MOVE_H
 
+#include "global.h"
+
 typedef struct MoveTbl {
     u16 effect;
     u8 category;

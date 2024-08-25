@@ -1,16 +1,19 @@
+#include "overlay_01_rock_smash_item.h"
+
 #include "global.h"
+
+#include "constants/abilities.h"
+#include "constants/items.h"
+
 #include "encounter.h"
-#include "follow_mon.h"
 #include "filesystem.h"
+#include "follow_mon.h"
 #include "math_util.h"
 #include "overlay_01_022001E4.h"
-#include "overlay_01_rock_smash_item.h"
 #include "overlay_02.h"
 #include "script.h"
 #include "task.h"
 #include "unk_020689C8.h"
-#include "constants/abilities.h"
-#include "constants/items.h"
 
 typedef struct {
     u16 odds;
@@ -59,7 +62,7 @@ static const u16 sRockSmashItems_RuinsOfAlph[] = {
     ITEM_OLD_AMBER,
     ITEM_MAX_REVIVE,
 };
-#endif //HEARTGOLD
+#endif // HEARTGOLD
 
 #ifdef HEARTGOLD
 static const u16 sRockSmashItems_CliffCave[] = {
@@ -83,7 +86,7 @@ static const u16 sRockSmashItems_CliffCave[] = {
     ITEM_ROOT_FOSSIL,
     ITEM_RARE_BONE,
 };
-#endif //HEARTGOLD
+#endif // HEARTGOLD
 
 static BOOL Task_RockSmashItemCheck(TaskManager *taskman);
 static BOOL CheckRockSmashItemDrop(FieldSystem *fieldSystem, RockSmashItemCheckWork *a1);
@@ -92,22 +95,22 @@ static int DrawRockSmashIdx(FieldSystem *fieldSystem);
 
 void FieldSystem_RockSmashItemCheck(FieldSystem *fieldSystem, int followMonKnowsHm, u16 *itemFound, u16 *item) {
     RockSmashItemCheckWork *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(RockSmashItemCheckWork));
-    env->followMonKnowsHM = followMonKnowsHm != 0;
-    env->itemFound = itemFound;
-    env->item = item;
-    *env->itemFound = FALSE;
-    *env->item = ITEM_NONE;
+    env->followMonKnowsHM       = followMonKnowsHm != 0;
+    env->itemFound              = itemFound;
+    env->item                   = item;
+    *env->itemFound             = FALSE;
+    *env->item                  = ITEM_NONE;
     TaskManager_Call(fieldSystem->taskman, Task_RockSmashItemCheck, env);
 }
 
 static BOOL Task_RockSmashItemCheck(TaskManager *taskman) {
     BattleSetup *setup;
-    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
+    FieldSystem *fieldSystem    = TaskManager_GetFieldSystem(taskman);
     RockSmashItemCheckWork *env = TaskManager_GetEnvironment(taskman);
 
     if (ov02_022470A0(fieldSystem, &setup)) {
         *env->itemFound = FALSE;
-        *env->item = ITEM_NONE;
+        *env->item      = ITEM_NONE;
         FreeToHeap(env);
         FieldSystem_StartForcedWildBattle(fieldSystem, taskman, setup);
         return FALSE;
@@ -119,7 +122,7 @@ static BOOL Task_RockSmashItemCheck(TaskManager *taskman) {
     }
 
     *env->itemFound = FALSE;
-    *env->item = ITEM_NONE;
+    *env->item      = ITEM_NONE;
     FreeToHeap(env);
     return TRUE;
 }
@@ -174,9 +177,9 @@ static BOOL CheckRockSmashItemDrop(FieldSystem *fieldSystem, RockSmashItemCheckW
 static BOOL Task_GetRockSmashItem(TaskManager *taskman) {
     LocalMapObject *obj;
 
-    u32 *state_p = TaskManager_GetStatePtr(taskman);
+    u32 *state_p                = TaskManager_GetStatePtr(taskman);
     RockSmashItemCheckWork *env = TaskManager_GetEnvironment(taskman);
-    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
+    FieldSystem *fieldSystem    = TaskManager_GetFieldSystem(taskman);
 
     switch (*state_p) {
     case 0:
@@ -194,8 +197,7 @@ static BOOL Task_GetRockSmashItem(TaskManager *taskman) {
             ++(*state_p);
         }
         break;
-    case 2:
-    {
+    case 2: {
         u32 idx = DrawRockSmashIdx(fieldSystem);
         if ((env->ability == ABILITY_SERENE_GRACE || env->ability == ABILITY_SUPER_LUCK) && idx < 7) {
             idx = (u8)(idx + 1);
@@ -216,12 +218,12 @@ static BOOL Task_GetRockSmashItem(TaskManager *taskman) {
         default:
             GF_ASSERT(FALSE);
             *env->itemFound = FALSE;
-            *env->item = ITEM_NONE;
+            *env->item      = ITEM_NONE;
             FreeToHeap(env);
             return TRUE;
         }
         *env->itemFound = TRUE;
-        *env->item = item;
+        *env->item      = item;
         FreeToHeap(env);
         return TRUE;
     }

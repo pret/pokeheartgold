@@ -5,4 +5,4 @@
 
 void ov01_021F902C(int a0, LocalMapObject *a1);
 
-#endif //POKEHEARTGOLD_OVERLAY_01_021F8D80_H
+#endif // POKEHEARTGOLD_OVERLAY_01_021F8D80_H

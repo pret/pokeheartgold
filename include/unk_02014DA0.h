@@ -18,7 +18,7 @@ void sub_02015354(NNSGfdTexKey texKey);
 void sub_02015394(NNSGfdPlttKey plttKey);
 void sub_02015494(SPLEmitter *emitter, int res_no, void (*fp_callback)(struct SPLEmitter *), void *arg);
 BOOL sub_020154B0(SPLEmitter *emitter);
-void* sub_02015504(void);
+void *sub_02015504(void);
 int sub_0201543C(void);
 void sub_02015460(void);
 void *sub_020154D0(SPLEmitter *emitter);

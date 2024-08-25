@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_FIELD_LEGEND_CUTSCENE_CAMERA_H
 
 #include "global.h"
+
 #include "field_system.h"
 
 void LegendCutscene_BeginClearBellAnim(FieldSystem *fieldSystem);
@@ -20,4 +21,4 @@ void LegendCutscene_BeginLugiaArrivesEffect(FieldSystem *fieldSystem);
 void LegendCutscene_EndLugiaArrivesEffect(FieldSystem *fieldSystem);
 void LegendCutscene_LugiaArrivesEffectCameraPan(FieldSystem *fieldSystem);
 
-#endif //POKEHEARTGOLD_FIELD_LEGEND_CUTSCENE_CAMERA_H
+#endif // POKEHEARTGOLD_FIELD_LEGEND_CUTSCENE_CAMERA_H

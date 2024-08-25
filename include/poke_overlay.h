@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_POKE_OVERLAY_H
 #define POKEHEARTGOLD_POKE_OVERLAY_H
 
+#include "global.h"
+
 typedef enum PMOverlayLoadType {
     OVY_LOAD_NORMAL,
     OVY_LOAD_NOINIT,

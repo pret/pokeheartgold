@@ -1,7 +1,9 @@
-#include "global.h"
 #include "hall_of_fame.h"
-#include "pokemon.h"
+
+#include "global.h"
+
 #include "party.h"
+#include "pokemon.h"
 
 #define ASSERT_HALL_OF_FAME(hof) ({                \
     GF_ASSERT(hof != NULL);                        \
@@ -27,8 +29,8 @@ void Save_HOF_Init(HallOfFame *hof) {
 void Save_HOF_RecordParty(HallOfFame *hof, Party *party, RTCDate *date) {
     ASSERT_HALL_OF_FAME(hof);
     if (hof->num_total < 9999) {
-        HOFTEAM *team = &hof->parties[hof->next_record];
-        int npokes = Party_GetCount(party);
+        HOFTEAM *team  = &hof->parties[hof->next_record];
+        int npokes     = Party_GetCount(party);
         String *string = String_New(POKEMON_NAME_LENGTH + 1, HEAP_ID_DEFAULT);
         int i, j;
 
@@ -36,17 +38,17 @@ void Save_HOF_RecordParty(HallOfFame *hof, Party *party, RTCDate *date) {
 
         for (i = 0, j = 0; i < npokes; i++) {
             Pokemon *mon = Party_GetMonByIndex(party, i);
-            BOOL lock = AcquireMonLock(mon);
+            BOOL lock    = AcquireMonLock(mon);
             if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
-                team->party[j].species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-                team->party[j].level = GetMonData(mon, MON_DATA_LEVEL, NULL);
-                team->party[j].form = GetMonData(mon, MON_DATA_FORM, NULL);
+                team->party[j].species     = GetMonData(mon, MON_DATA_SPECIES, NULL);
+                team->party[j].level       = GetMonData(mon, MON_DATA_LEVEL, NULL);
+                team->party[j].form        = GetMonData(mon, MON_DATA_FORM, NULL);
                 team->party[j].personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
-                team->party[j].otid = GetMonData(mon, MON_DATA_OTID, NULL);
-                team->party[j].moves[0] = GetMonData(mon, MON_DATA_MOVE1, NULL);
-                team->party[j].moves[1] = GetMonData(mon, MON_DATA_MOVE2, NULL);
-                team->party[j].moves[2] = GetMonData(mon, MON_DATA_MOVE3, NULL);
-                team->party[j].moves[3] = GetMonData(mon, MON_DATA_MOVE4, NULL);
+                team->party[j].otid        = GetMonData(mon, MON_DATA_OTID, NULL);
+                team->party[j].moves[0]    = GetMonData(mon, MON_DATA_MOVE1, NULL);
+                team->party[j].moves[1]    = GetMonData(mon, MON_DATA_MOVE2, NULL);
+                team->party[j].moves[2]    = GetMonData(mon, MON_DATA_MOVE3, NULL);
+                team->party[j].moves[3]    = GetMonData(mon, MON_DATA_MOVE4, NULL);
                 if (string != NULL) {
                     GetMonData(mon, MON_DATA_NICKNAME_STRING, string);
                     CopyStringToU16Array(string, team->party[j].nickname, POKEMON_NAME_LENGTH + 1);
@@ -54,15 +56,15 @@ void Save_HOF_RecordParty(HallOfFame *hof, Party *party, RTCDate *date) {
                     CopyStringToU16Array(string, team->party[j].otname, PLAYER_NAME_LENGTH + 1);
                 } else {
                     team->party[j].nickname[0] = EOS;
-                    team->party[j].otname[0] = EOS;
+                    team->party[j].otname[0]   = EOS;
                 }
                 j++;
             }
             ReleaseMonLock(mon, lock);
         }
-        team->year = date->year;
+        team->year  = date->year;
         team->month = date->month;
-        team->day = date->day;
+        team->day   = date->day;
         hof->next_record++;
         if (hof->next_record >= NUM_HOF_RECORDS) {
             hof->next_record = 0;
@@ -112,13 +114,13 @@ void Save_HOF_GetMonStatsByIndexPair(HallOfFame *hallOfFame, int teamNum, int mo
     ASSERT_HALL_OF_FAME(hallOfFame);
     GF_ASSERT(teamNum < NUM_HOF_RECORDS);
     team = HallOfFame_SeekBack(hallOfFame, teamNum);
-    mon = &team->party[monNum];
+    mon  = &team->party[monNum];
 
-    dest->species = mon->species;
-    dest->level = mon->level;
+    dest->species     = mon->species;
+    dest->level       = mon->level;
     dest->personality = mon->personality;
-    dest->otid = mon->otid;
-    dest->form = mon->form;
+    dest->otid        = mon->otid;
+    dest->form        = mon->form;
     CopyU16ArrayToString(dest->nickname, mon->nickname);
     CopyU16ArrayToString(dest->otname, mon->otname);
     for (i = 0; i < 4; i++) {
@@ -126,13 +128,13 @@ void Save_HOF_GetMonStatsByIndexPair(HallOfFame *hallOfFame, int teamNum, int mo
     }
 }
 
-void Save_HOF_GetClearDate(HallOfFame * hof, int num, RTCDate * dest) {
+void Save_HOF_GetClearDate(HallOfFame *hof, int num, RTCDate *dest) {
     HOFTEAM *party;
     ASSERT_HALL_OF_FAME(hof);
     GF_ASSERT(num < NUM_HOF_RECORDS);
-    party = HallOfFame_SeekBack(hof, num);
-    dest->year = party->year;
+    party       = HallOfFame_SeekBack(hof, num);
+    dest->year  = party->year;
     dest->month = party->month;
-    dest->day = party->day;
-    dest->week = RTC_WEEK_SUNDAY;
+    dest->day   = party->day;
+    dest->week  = RTC_WEEK_SUNDAY;
 }

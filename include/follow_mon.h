@@ -1,8 +1,8 @@
 #ifndef POKEHEARTGOLD_FOLLOW_MON_H
 #define POKEHEARTGOLD_FOLLOW_MON_H
 
-#include "map_object.h"
 #include "heap.h"
+#include "map_object.h"
 #include "map_object_manager.h"
 
 #define FOLLOW_MON_PARAM_SPECIES 0

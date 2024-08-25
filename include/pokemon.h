@@ -53,7 +53,7 @@ u32 GetBoxMonData(BoxPokemon *boxMon, int attr, void *ptr);
 void SetMonData(Pokemon *mon, int attr, const void *ptr);
 void SetBoxMonData(BoxPokemon *boxMon, int attr, const void *ptr);
 void AddMonData(Pokemon *mon, int attr, int amount);
-//void AddBoxMonData(BoxPokemon *boxMon, int attr, int amount);
+// void AddBoxMonData(BoxPokemon *boxMon, int attr, int amount);
 BASE_STATS *AllocAndLoadMonPersonal_HandleAlternateForm(int species, int form, HeapID heapId);
 BASE_STATS *AllocAndLoadMonPersonal(int species, HeapID heapId);
 int GetPersonalAttr(const BASE_STATS *baseStats, int attr);

@@ -1,9 +1,10 @@
 #ifndef POKEHEARTGOLD_SAVE_TRAINER_HOUSE_H
 #define POKEHEARTGOLD_SAVE_TRAINER_HOUSE_H
 
+#include "global.h"
+
 #include "constants/pokemon.h"
 
-#include "global.h"
 #include "pokemon_types_def.h"
 #include "save.h"
 

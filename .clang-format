@@ -5,7 +5,8 @@ LineEnding: LF
 ColumnLimit: 0
 
 AlignAfterOpenBracket: DontAlign
-AlignConsecutiveAssignments: None
+AlignConsecutiveAssignments:
+  Enabled: true
 AlignConsecutiveBitFields: None
 AlignConsecutiveDeclarations: None
 AlignConsecutiveMacros: Consecutive
@@ -59,18 +60,20 @@ IncludeBlocks: Regroup
 IncludeCategories:
   - Regex: '((<.+>)|("nitro/.*\.h"))'
     Priority: 1
-  - Regex: '"(consts|constants)/.*\.h"'
+  - Regex: '"global\.h"'
     Priority: 2
-  - Regex: '"(struct_(decls|defs))/.*\.h"'
+  - Regex: '"(consts|constants)/.*\.h"'
     Priority: 3
-  - Regex: '"(constdata|res)/.*\.(h|naix)"'
-    Priority: 6
-  - Regex: '"[[:alnum:]_]+/.*\.(h|naix)"'
+  - Regex: '"(struct_(decls|defs))/.*\.h"'
     Priority: 4
-  - Regex: '"[[:alnum:]_]+\.(h|naix)"'
-    Priority: 5
-  - Regex: '.*'
+  - Regex: '"(constdata|res)/.*\.(h|naix)"'
     Priority: 7
+  - Regex: '"[[:alnum:]_]+/.*\.(h|naix)"'
+    Priority: 5
+  - Regex: '"[[:alnum:]_]+\.(h|naix)"'
+    Priority: 6
+  - Regex: '.*'
+    Priority: 8
 
 InsertTrailingCommas: Wrapped
 InsertNewlineAtEOF: true

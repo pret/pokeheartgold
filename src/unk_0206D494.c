@@ -1,25 +1,32 @@
+#include "unk_0206D494.h"
+
 #include "global.h"
+
+#include "constants/npc_trade.h"
+
+#include "msgdata/msg.naix"
+
 #include "assert.h"
-#include "save_vars_flags.h"
-#include "map_object.h"
 #include "field_player_avatar.h"
 #include "field_system.h"
 #include "field_warp_tasks.h"
 #include "fieldmap.h"
-#include "launch_application.h"
 #include "gf_gfx_loader.h"
 #include "gymmick.h"
 #include "heap.h"
+#include "launch_application.h"
+#include "map_object.h"
 #include "metatile_behavior.h"
 #include "msgdata.h"
-#include "overlay_111.h"
 #include "npc_trade.h"
+#include "overlay_111.h"
 #include "player_data.h"
 #include "pm_string.h"
 #include "pokemon.h"
 #include "save_local_field_data.h"
 #include "save_misc_data.h"
 #include "save_trainer_house.h"
+#include "save_vars_flags.h"
 #include "scrcmd.h"
 #include "script.h"
 #include "sys_flags.h"
@@ -28,9 +35,6 @@
 #include "unk_02054648.h"
 #include "unk_0205FD20.h"
 #include "unk_02062108.h"
-#include "unk_0206D494.h"
-#include "constants/npc_trade.h"
-#include "msgdata/msg.naix"
 
 typedef struct UnkStruct_0206D494 {
     LocalMapObject *unk00;
@@ -60,62 +64,61 @@ BOOL sub_0206D494(FieldSystem *fieldSystem) {
     LocalMapObject *unk2 = sub_0206D590(unk1);
     if (unk2) {
         UnkStruct_0206D494 *unkStruct = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(UnkStruct_0206D494));
-        unkStruct->unk00 = unk2;
-        unkStruct->unk04 = NULL;
-        unkStruct->unk08 = MapObject_GetFacingDirection(unk1);
-        unkStruct->unk09 = 0;
+        unkStruct->unk00              = unk2;
+        unkStruct->unk04              = NULL;
+        unkStruct->unk08              = MapObject_GetFacingDirection(unk1);
+        unkStruct->unk09              = 0;
         FieldSystem_CreateTask(fieldSystem, sub_0206D4E4, unkStruct);
         PlaySE(SEQ_SE_GS_HYOUKAI_HIT);
         return TRUE;
-    }
-    else {
+    } else {
         return FALSE;
     }
 }
 
 static BOOL sub_0206D4E4(TaskManager *taskManager) {
-    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    FieldSystem *fieldSystem      = TaskManager_GetFieldSystem(taskManager);
     UnkStruct_0206D494 *unkStruct = TaskManager_GetEnvironment(taskManager);
-    u32 *state = TaskManager_GetStatePtr(taskManager);
+    u32 *state                    = TaskManager_GetStatePtr(taskManager);
     switch (*state) {
-        case 0:
-            if (MapObject_IsMovementPaused(sub_0205C600(fieldSystem->mapObjectManager))) {
-                PlaySE(SEQ_SE_GS_HYOUKAI_SUBERU);
+    case 0:
+        if (MapObject_IsMovementPaused(sub_0205C600(fieldSystem->mapObjectManager))) {
+            PlaySE(SEQ_SE_GS_HYOUKAI_SUBERU);
+            (*state)++;
+        }
+        break;
+    case 1:
+        if (sub_0206D688(unkStruct)) {
+            StopSE(SEQ_SE_GS_HYOUKAI_SUBERU, 0);
+            (*state)++;
+        }
+        break;
+    case 2:
+        if (MapObject_IsMovementPaused(unkStruct->unk00)) {
+            if (unkStruct->unk04 == NULL) {
+                (*state)++;
+            } else if (MapObject_IsMovementPaused(unkStruct->unk04)) {
                 (*state)++;
             }
-            break;
-        case 1:
-            if (sub_0206D688(unkStruct)) {
-                StopSE(SEQ_SE_GS_HYOUKAI_SUBERU, 0);
-                (*state)++;
-            }
-            break;
-        case 2:
-            if (MapObject_IsMovementPaused(unkStruct->unk00)) {
-                if (unkStruct->unk04 == NULL) {
-                    (*state)++;
-                } else if (MapObject_IsMovementPaused(unkStruct->unk04)) {
-                    (*state)++;
-                }
-            }
-            break;
-        case 3:
-            sub_0206D850(fieldSystem->playerAvatar);
-            FreeToHeap(unkStruct);
-            return TRUE;
+        }
+        break;
+    case 3:
+        sub_0206D850(fieldSystem->playerAvatar);
+        FreeToHeap(unkStruct);
+        return TRUE;
     }
     return FALSE;
 }
 
 static LocalMapObject *sub_0206D590(LocalMapObject *object) {
     MapObjectManager *manager = MapObject_GetManager(object);
-    u32 direction = MapObject_GetFacingDirection(object);
-    u32 x = MapObject_GetCurrentX(object);
-    u32 dx = GetDeltaXByFacingDirection(direction);
-    u32 height = MapObject_GetCurrentHeight(object);
-    u32 y = MapObject_GetCurrentY(object);
-    u32 dy = GetDeltaYByFacingDirection(direction);
-    LocalMapObject *obj = sub_0206D614(manager, x + dx, height, y + dy);
+    u32 direction             = MapObject_GetFacingDirection(object);
+    u32 x                     = MapObject_GetCurrentX(object);
+    u32 dx                    = GetDeltaXByFacingDirection(direction);
+    u32 height                = MapObject_GetCurrentHeight(object);
+    u32 y                     = MapObject_GetCurrentY(object);
+    u32 dy                    = GetDeltaYByFacingDirection(direction);
+    LocalMapObject *obj       = sub_0206D614(manager, x + dx, height, y + dy);
     if (obj) {
         if (MapObject_GetSpriteID(obj) != SPRITE_ICE) {
             return NULL;
@@ -132,10 +135,10 @@ static LocalMapObject *sub_0206D590(LocalMapObject *object) {
 
 static LocalMapObject *sub_0206D614(MapObjectManager *manager, u32 x, u32 a2, u32 y) {
     LocalMapObject *object = MapObjectManager_GetObjects(manager);
-    u32 count = MapObjectManager_GetObjectCount(manager);
+    u32 count              = MapObjectManager_GetObjectCount(manager);
     do {
         if (MapObject_GetFlagsBits(object, MAPOBJECTFLAG_ACTIVE)
-                && !MapObject_GetFlagsBits(object, MAPOBJECTFLAG_UNK18)) {
+            && !MapObject_GetFlagsBits(object, MAPOBJECTFLAG_UNK18)) {
             u32 curX = MapObject_GetCurrentX(object);
             u32 curY = MapObject_GetCurrentY(object);
             if (curX == x && curY == y) {
@@ -155,62 +158,61 @@ static LocalMapObject *sub_0206D614(MapObjectManager *manager, u32 x, u32 a2, u3
 
 static u32 sub_0206D688(UnkStruct_0206D494 *a0) {
     switch (a0->unk09) {
-        case 0:
-            if (MapObject_IsMovementPaused(a0->unk00)) {
-                u32 x = MapObject_GetCurrentX(a0->unk00);
-                u32 dx = GetDeltaXByFacingDirection(a0->unk08);
-                u32 height = MapObject_GetCurrentHeight(a0->unk00);
-                u32 y = MapObject_GetCurrentY(a0->unk00);
-                u32 dy = GetDeltaYByFacingDirection(a0->unk08);
-                u32 flags = sub_0206D7B8(a0->unk00, x + dx, height, y + dy);
-                if (flags & 2) {
-                    MapObjectManager *manager = MapObject_GetManager(a0->unk00);
-                    LocalMapObject *object = sub_0206D614(manager, x + dx, height, y + dy);
-                    if (!object) {
-                        GF_ASSERT(FALSE);
-                        return TRUE;
-                    }
-                    if (MapObject_GetSpriteID(object) == SPRITE_ICE) {
-                        a0->unk04 = object;
-                        MapObject_SetHeldMovement(a0->unk00, MOVEMENT_UNK_72);
-                        a0->unk09 = 2;
-                    } else {
-                        a0->unk04 = NULL;
-                        MapObject_SetHeldMovement(a0->unk00, MOVEMENT_UNK_72);
-                        a0->unk09 = 2;
-                    }
-                } else {
-                    if (flags & 1 || flags & 4) {
-                        return TRUE;
-                    }
-                    MapObject_SetHeldMovement(a0->unk00, MOVEMENT_UNK_71);
-                    a0->unk09 = 1;
-                }
-            }
-            break;
-        case 1:
-            if (MapObject_IsMovementPaused(a0->unk00)) {
-                u32 movement = sub_0206D81C(a0->unk08);
-                if (movement != MOVEMENT_NONE) {
-                    MapObject_SetHeldMovement(a0->unk00, movement);
-                }
-                else {
+    case 0:
+        if (MapObject_IsMovementPaused(a0->unk00)) {
+            u32 x      = MapObject_GetCurrentX(a0->unk00);
+            u32 dx     = GetDeltaXByFacingDirection(a0->unk08);
+            u32 height = MapObject_GetCurrentHeight(a0->unk00);
+            u32 y      = MapObject_GetCurrentY(a0->unk00);
+            u32 dy     = GetDeltaYByFacingDirection(a0->unk08);
+            u32 flags  = sub_0206D7B8(a0->unk00, x + dx, height, y + dy);
+            if (flags & 2) {
+                MapObjectManager *manager = MapObject_GetManager(a0->unk00);
+                LocalMapObject *object    = sub_0206D614(manager, x + dx, height, y + dy);
+                if (!object) {
                     GF_ASSERT(FALSE);
                     return TRUE;
                 }
-                a0->unk09 = 0;
-            }
-            break;
-        case 2:
-            if (MapObject_IsMovementPaused(a0->unk00)) {
-                PlaySE(SEQ_SE_GS_HYOUKAI_KETUGOU);
-                if (a0->unk04) {
-                    MapObject_SetHeldMovement(a0->unk04, MOVEMENT_FACE_UP);
+                if (MapObject_GetSpriteID(object) == SPRITE_ICE) {
+                    a0->unk04 = object;
+                    MapObject_SetHeldMovement(a0->unk00, MOVEMENT_UNK_72);
+                    a0->unk09 = 2;
+                } else {
+                    a0->unk04 = NULL;
+                    MapObject_SetHeldMovement(a0->unk00, MOVEMENT_UNK_72);
+                    a0->unk09 = 2;
                 }
-                MapObject_SetHeldMovement(a0->unk00, MOVEMENT_FACE_UP);
+            } else {
+                if (flags & 1 || flags & 4) {
+                    return TRUE;
+                }
+                MapObject_SetHeldMovement(a0->unk00, MOVEMENT_UNK_71);
+                a0->unk09 = 1;
+            }
+        }
+        break;
+    case 1:
+        if (MapObject_IsMovementPaused(a0->unk00)) {
+            u32 movement = sub_0206D81C(a0->unk08);
+            if (movement != MOVEMENT_NONE) {
+                MapObject_SetHeldMovement(a0->unk00, movement);
+            } else {
+                GF_ASSERT(FALSE);
                 return TRUE;
             }
-            break;
+            a0->unk09 = 0;
+        }
+        break;
+    case 2:
+        if (MapObject_IsMovementPaused(a0->unk00)) {
+            PlaySE(SEQ_SE_GS_HYOUKAI_KETUGOU);
+            if (a0->unk04) {
+                MapObject_SetHeldMovement(a0->unk04, MOVEMENT_FACE_UP);
+            }
+            MapObject_SetHeldMovement(a0->unk00, MOVEMENT_FACE_UP);
+            return TRUE;
+        }
+        break;
     }
     return FALSE;
 }
@@ -236,20 +238,20 @@ static u32 sub_0206D7B8(LocalMapObject *object, u32 x, u32 height, u32 y) {
 static u32 sub_0206D81C(u32 direction) {
     u32 movement = MOVEMENT_NONE;
     switch (direction) {
-        case DIR_NORTH:
-            movement = MOVEMENT_STEP_UP;
-            break;
-        case DIR_SOUTH:
-            movement = MOVEMENT_STEP_DOWN;
-            break;
-        case DIR_WEST:
-            movement = MOVEMENT_STEP_LEFT;
-            break;
-        case DIR_EAST:
-            movement = MOVEMENT_STEP_RIGHT;
-            break;
-        default:
-            GF_ASSERT(FALSE);
+    case DIR_NORTH:
+        movement = MOVEMENT_STEP_UP;
+        break;
+    case DIR_SOUTH:
+        movement = MOVEMENT_STEP_DOWN;
+        break;
+    case DIR_WEST:
+        movement = MOVEMENT_STEP_LEFT;
+        break;
+    case DIR_EAST:
+        movement = MOVEMENT_STEP_RIGHT;
+        break;
+    default:
+        GF_ASSERT(FALSE);
     }
     return movement;
 }
@@ -269,15 +271,15 @@ static void sub_0206D850(PlayerAvatar *playerAvatar) {
 
 BOOL MonIsInGameTradePoke(Pokemon *mon, NpcTradeNum tradeNum) {
     NPCTrade *trade = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeNum, FALSE, HEAP_ID_FIELD, TRUE);
-    BOOL result = MonIsInGameTradePokeInternal(mon, trade, tradeNum);
+    BOOL result     = MonIsInGameTradePokeInternal(mon, trade, tradeNum);
     FreeToHeap(trade);
     return result != FALSE;
 }
 
 BOOL MonIsFromTogepiEgg(Pokemon *mon, SaveData *saveData) {
     PlayerProfile *profile = Save_PlayerData_GetProfileAddr(saveData);
-    SAVE_MISC_DATA *misc = Save_Misc_Get(saveData);
-    u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    SAVE_MISC_DATA *misc   = Save_Misc_Get(saveData);
+    u16 species            = GetMonData(mon, MON_DATA_SPECIES, NULL);
     if (!(species == SPECIES_TOGEPI
             || species == SPECIES_TOGETIC
             || species == SPECIES_TOGEKISS)) {
@@ -348,9 +350,9 @@ static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTrade
         return FALSE;
     }
     MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0200_bin, HEAP_ID_FIELD);
-    String *monNickname = String_New(12, HEAP_ID_FIELD);
+    String *monNickname  = String_New(12, HEAP_ID_FIELD);
     GetMonData(mon, MON_DATA_NICKNAME_STRING, monNickname);
-    String *tradeNickname = NewString_ReadMsgData(messageData, tradeNum);
+    String *tradeNickname  = NewString_ReadMsgData(messageData, tradeNum);
     BOOL differentNickname = String_Compare(monNickname, tradeNickname);
     String_Delete(tradeNickname);
     String_Delete(monNickname);
@@ -360,7 +362,7 @@ static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTrade
     }
     String *monOtName = String_New(8, HEAP_ID_FIELD);
     GetMonData(mon, MON_DATA_OT_NAME_2, monOtName);
-    String *tradeOtName = NewString_ReadMsgData(messageData, NPC_TRADE_OT_NUM(tradeNum));
+    String *tradeOtName  = NewString_ReadMsgData(messageData, NPC_TRADE_OT_NUM(tradeNum));
     BOOL differentOtName = String_Compare(monOtName, tradeOtName);
     String_Delete(tradeOtName);
     String_Delete(monOtName);
@@ -390,10 +392,10 @@ void FieldSystem_IncrementBugContestTimer(FieldSystem *fieldSystem, int duration
 void BugContest_WarpToJudging(TaskManager *taskManager, FieldSystem *fieldSystem) {
     LocalFieldData *localFieldData = Save_LocalFieldData_Get(fieldSystem->saveData);
     Location warp;
-    warp.mapId = MAP_D22R0101; // national park
-    warp.warpId = -1;
-    warp.x = 46;
-    warp.y = 50;
+    warp.mapId     = MAP_D22R0101; // national park
+    warp.warpId    = -1;
+    warp.x         = 46;
+    warp.y         = 50;
     warp.direction = 0;
     LocalFieldData_SetDynamicWarp(localFieldData, &warp);
     sub_020537A8(taskManager, LocalFieldData_GetDynamicWarp(localFieldData));
@@ -407,41 +409,40 @@ void BugContest_PromptSwapPokemon(TaskManager *taskManager, Pokemon *mon) {
 }
 
 static BOOL Task_BugContest_PromptSwapPokemon(TaskManager *taskManager) {
-    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    FieldSystem *fieldSystem      = TaskManager_GetFieldSystem(taskManager);
     UnkStruct_0206DB94 *unkStruct = TaskManager_GetEnvironment(taskManager);
-    BugContest *contest = FieldSystem_BugContest_Get(fieldSystem);
-    u32 *state = TaskManager_GetStatePtr(taskManager);
+    BugContest *contest           = FieldSystem_BugContest_Get(fieldSystem);
+    u32 *state                    = TaskManager_GetStatePtr(taskManager);
     switch (*state) {
-        case 0:
-        {
-            u32 noPokemonCaught = contest->caught_poke == SPECIES_NONE;
-            unkStruct->unk08 = BugContestSwapMon_LaunchApp(fieldSystem, unkStruct->newlyCaughtMon, contest->mon, noPokemonCaught);
-            (*state)++;
-            break;
-        }
-        case 1:
-            if (FieldSystem_ApplicationIsRunning(fieldSystem) == FALSE) {
-                if (unkStruct->unk08->unk10 != contest->mon) {
-                    CopyPokemonToPokemon(unkStruct->newlyCaughtMon, contest->mon);
-                }
-                if (!contest->caught_poke) {
-                    contest->caught_poke = TRUE;
-                }
-                FreeToHeap(unkStruct->unk08);
-                FreeToHeap(unkStruct);
-                return TRUE;
+    case 0: {
+        u32 noPokemonCaught = contest->caught_poke == SPECIES_NONE;
+        unkStruct->unk08    = BugContestSwapMon_LaunchApp(fieldSystem, unkStruct->newlyCaughtMon, contest->mon, noPokemonCaught);
+        (*state)++;
+        break;
+    }
+    case 1:
+        if (FieldSystem_ApplicationIsRunning(fieldSystem) == FALSE) {
+            if (unkStruct->unk08->unk10 != contest->mon) {
+                CopyPokemonToPokemon(unkStruct->newlyCaughtMon, contest->mon);
             }
-            break;
+            if (!contest->caught_poke) {
+                contest->caught_poke = TRUE;
+            }
+            FreeToHeap(unkStruct->unk08);
+            FreeToHeap(unkStruct);
+            return TRUE;
+        }
+        break;
     }
     return FALSE;
 }
 
 BOOL ScrCmd_SetTrainerHouseSprite(ScriptContext *ctx) {
-    u16 trainerNum = ScriptGetVar(ctx);
-    u16 *hasTrainer = ScriptGetVarPointer(ctx);
-    u16 *spriteId = GetVarPointer(ctx->fieldSystem, VAR_OBJ_1 + trainerNum);
+    u16 trainerNum             = ScriptGetVar(ctx);
+    u16 *hasTrainer            = ScriptGetVarPointer(ctx);
+    u16 *spriteId              = GetVarPointer(ctx->fieldSystem, VAR_OBJ_1 + trainerNum);
     TrainerHouse *trainerHouse = Save_TrainerHouse_Get(ctx->fieldSystem->saveData);
-    *hasTrainer = TrainerHouseSet_CheckHasData(&trainerHouse->sets[trainerNum]);
+    *hasTrainer                = TrainerHouseSet_CheckHasData(&trainerHouse->sets[trainerNum]);
     if (*hasTrainer) {
         *spriteId = trainerHouse->sets[trainerNum].trainer.sprite;
     } else {
@@ -453,6 +454,6 @@ BOOL ScrCmd_SetTrainerHouseSprite(ScriptContext *ctx) {
 void FieldSystem_InitMystriStageGymmick(FieldSystem *fieldSystem) {
     Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
     Save_Gymmick_Init(gymmick, GYMMICK_SINJOH);
-    GymmickUnion *gymmickData = Save_Gymmick_AssertMagic_GetData(gymmick, GYMMICK_SINJOH);
+    GymmickUnion *gymmickData  = Save_Gymmick_AssertMagic_GetData(gymmick, GYMMICK_SINJOH);
     gymmickData->sinjoh.choice = 0;
 }

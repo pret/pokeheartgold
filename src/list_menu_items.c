@@ -1,5 +1,6 @@
-#include "global.h"
 #include "list_menu_items.h"
+
+#include "global.h"
 
 void ListMenuItems_DestroyMenuStrings(LISTMENUITEM *items);
 LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, HeapID *heapId_p);
@@ -9,10 +10,10 @@ LISTMENUITEM *ListMenuItems_New(u32 n, HeapID heapId) {
     LISTMENUITEM *ret = AllocFromHeap(heapId, (n + 1) * sizeof(LISTMENUITEM));
     if (ret != NULL) {
         for (i = 0; i < n; i++) {
-            ret[i].text = NULL;
+            ret[i].text  = NULL;
             ret[i].value = 0;
         }
-        ret[i].text = (String*)-1;
+        ret[i].text  = (String *)-1;
         ret[i].value = heapId;
     }
     return ret;
@@ -28,7 +29,7 @@ void ListMenuItems_AppendFromMsgData(LISTMENUITEM *items, MsgData *msgData, int 
 
     items = ListMenuItems_SeekEnd(items, &dummy);
     if (items != NULL) {
-        items->text = NewString_ReadMsgData(msgData, msgId);
+        items->text  = NewString_ReadMsgData(msgData, msgId);
         items->value = value;
     }
 }
@@ -38,7 +39,7 @@ void ListMenuItems_AddItem(LISTMENUITEM *items, String *string, int value) {
 
     items = ListMenuItems_SeekEnd(items, &heapId);
     if (items != NULL) {
-        items->text = String_Dup(string, heapId);
+        items->text  = String_Dup(string, heapId);
         items->value = value;
     }
 }

@@ -7,6 +7,7 @@
 
 #ifndef PM_ASM
 #include "global.h"
+
 #include "mail_message.h"
 #include "pm_string.h"
 #include "pokemon_types_def.h"

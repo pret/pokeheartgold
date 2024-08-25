@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_OVERLAY_57_H
 
 #include "global.h"
+
 #include "overlay_manager.h"
 
 int ov57_022378DC(OVY_MANAGER *manager, int *state);

@@ -1,7 +1,9 @@
+#include "message_printer.h"
+
 #include "global.h"
+
 #include "filesystem_files_def.h"
 #include "gf_gfx_loader.h"
-#include "message_printer.h"
 
 static const u16 _020F5C24[][2] = {
     { 0x0140, 0x0008 },
@@ -55,8 +57,7 @@ MessagePrinter *MessagePrinter_New(u32 foreground, u32 shadow, u32 background, H
     return messagePrinter;
 }
 
-void MessagePrinter_Delete(MessagePrinter *messagePrinter)
-{
+void MessagePrinter_Delete(MessagePrinter *messagePrinter) {
     if (messagePrinter != NULL) {
         if (messagePrinter->charData != NULL) {
             FreeToHeap(messagePrinter->charData);
@@ -69,15 +70,13 @@ void sub_0200CDAC(MessagePrinter *messagePrinter, u8 glyphId, Window *window, u3
     BlitBitmapRectToWindow(window, messagePrinter->ppCharData->pRawData + _020F5C24[glyphId][0], 0, 0, _020F5C24[glyphId][1], 8, x, y, _020F5C24[glyphId][1], 8);
 }
 
-void PrintUIntOnWindow(MessagePrinter *messagePrinter, u32 num, u32 ndigits, PrintingMode mode, Window *window, u32 x, u32 y)
-{
+void PrintUIntOnWindow(MessagePrinter *messagePrinter, u32 num, u32 ndigits, PrintingMode mode, Window *window, u32 x, u32 y) {
     ConvertUIntToDecimalString(messagePrinter->string, num, mode, ndigits);
     u32 i;
     for (i = 0; messagePrinter->string[i] != EOS; i++) {
         if (messagePrinter->string[i] >= CHAR_JP_0 && messagePrinter->string[i] <= CHAR_JP_9) {
             BlitBitmapRectToWindow(window, messagePrinter->ppCharData->pRawData + (messagePrinter->string[i] - CHAR_JP_0) * 32, 0, 0, 8, 8, x, y, 8, 8);
-        }
-        else {
+        } else {
             FillWindowPixelRect(window, messagePrinter->backgroundColor, x, y, 8, 8);
         }
         x += 8;

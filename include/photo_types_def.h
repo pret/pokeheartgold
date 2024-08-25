@@ -2,9 +2,10 @@
 #define GUARD_POKEHEARTGOLD_PHOTO_TYPES_DEF_H
 
 #include "global.h"
+
+#include "field_types_def.h"
 #include "overlay_109.h"
 #include "photo_album.h"
-#include "field_types_def.h"
 
 typedef enum ViewPhotoInputResponse {
     VIEW_PHOTO_INPUT_NOTHING,
@@ -17,7 +18,7 @@ typedef struct FieldTakePhoto {
     Location locationBuf;
     u8 state;
     u8 positionMonDelayCounter;
-    u8 unk_16;  // unused
+    u8 unk_16; // unused
     u8 curMon;
     LocalMapObject *mapObjects[6];
     u16 savedX;
@@ -58,4 +59,4 @@ typedef struct PhotoAlbumScroll {
     u8 numPhotos;
 } PhotoAlbumScroll;
 
-#endif //GUARD_POKEHEARTGOLD_PHOTO_TYPES_DEF_H
+#endif // GUARD_POKEHEARTGOLD_PHOTO_TYPES_DEF_H

@@ -1,5 +1,7 @@
-#include "global.h"
 #include "error_handling.h"
+
+#include "global.h"
+
 #include "error_message_reset.h"
 #include "unk_02037C94.h"
 

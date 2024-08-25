@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_SOUND_CHATOT_H
 
 #include "global.h"
+
 #include "sav_chatot.h"
 
 BOOL ChatotSoundMain(void);

@@ -1,7 +1,10 @@
-#include "global.h"
 #include "battle/overlay_12_0226BEC4.h"
+
+#include "global.h"
+
 #include "battle/battle_system.h"
 #include "battle/overlay_12_02266024.h"
+
 #include "heap.h"
 #include "sys_task.h"
 #include "unk_02005D10.h"
@@ -23,13 +26,13 @@ void ov12_0226BEF0(SysTask *task) {
 
 static void ov12_0226BF04(SysTask *task, void *_data) {
     UnkBattleStruct_0226BEC4 *data = _data;
-    u32 *unkPtr = ov12_0223A900(data->bsys);
-    
+    u32 *unkPtr                    = ov12_0223A900(data->bsys);
+
     switch (data->state) {
     case 0:
         GF_ASSERT(unkPtr != NULL);
         {
-            NARC *bgHandleNarc = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);
+            NARC *bgHandleNarc  = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);
             NARC *objHandleNarc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
             ov12_02266508(bgHandleNarc, objHandleNarc, unkPtr, 18, FALSE, NULL);
             NARC_Delete(bgHandleNarc);

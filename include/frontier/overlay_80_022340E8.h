@@ -1,10 +1,11 @@
 #ifndef POKEHEARTGOLD_OVERLAY_80_022340E8
 #define POKEHEARTGOLD_OVERLAY_80_022340E8
 
-#include "save.h"
-#include "battle_arcade_game_board.h"
 #include "frontier/frontier_map.h"
 #include "frontier/overlay_80_02229EE0.h"
+
+#include "battle_arcade_game_board.h"
+#include "save.h"
 
 typedef struct ArcadeContext {
     u32 unk0[2];

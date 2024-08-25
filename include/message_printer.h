@@ -1,8 +1,9 @@
 #ifndef POKEHEARTGOLD_MESSAGE_PRINTER_H
 #define POKEHEARTGOLD_MESSAGE_PRINTER_H
 
-#include "bg_window.h"
 #include "global.h"
+
+#include "bg_window.h"
 #include "string_util.h"
 
 typedef struct MessagePrinter {

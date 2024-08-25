@@ -2,6 +2,8 @@
 #define POKEHEARTGOLD_TRAINER_MEMO_H
 
 #include "heap.h"
+#include "message_format.h"
+#include "msgdata.h"
 #include "pokemon_types_def.h"
 
 // Each string in the notepad and which line it starts on.
