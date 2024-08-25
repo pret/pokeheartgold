@@ -1245,8 +1245,7 @@ void Credits_LaunchApp(FieldSystem *fieldSystem, CreditsArgs *args) {
 
 void MoveRelearner_LaunchApp(FieldSystem *menuInputStatePtr, MoveRelearnerArgs *args) {
     OVY_MGR_TEMPLATE template = { MoveRelearner_Init, MoveRelearner_Main, MoveRelearner_Exit, FS_OVERLAY_ID(OVY_68) };
-    ;
-    args->menuInputStatePtr = &menuInputStatePtr->menuInputState;
+    args->menuInputStatePtr   = &menuInputStatePtr->menuInputState;
     FieldSystem_LaunchApplication(menuInputStatePtr, &template, args);
 }
 

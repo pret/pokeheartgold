@@ -131,8 +131,8 @@ typedef struct AlphPuzzleData {
 } AlphPuzzleData;
 
 typedef struct AlphPuzzleInitTileData {
-    u8 index : 5;
-    u8 rotation : 2;
+    u8 index       : 5;
+    u8 rotation    : 2;
     u8 isImmovable : 1;
 } AlphPuzzleInitTileData;
 

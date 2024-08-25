@@ -273,8 +273,8 @@ typedef struct UnkTemplatePartyMenuContextMenu_0207E590 {
     u8 unk_08;
     u8 unk_09;
     u8 numItems;
-    u8 unk_0B_0 : 4;
-    u8 unk_0B_4 : 2;
+    u8 unk_0B_0      : 4;
+    u8 unk_0B_4      : 2;
     u8 scrollEnabled : 2;
 } PartyMenuContextMenu;
 
@@ -346,7 +346,7 @@ typedef struct PartyMenuContextButtonAnimData {
     PartyMenuContextMenu *template;
     u8 numItems;
     u8 selection;
-    u8 autoAnimTimer : 4;
+    u8 autoAnimTimer   : 4;
     u8 buttonAnimState : 4;
     u8 state;
     int followUpState;
@@ -360,10 +360,10 @@ typedef struct PartyMenuMonsDrawState {
     u16 maxHp; // 830
     u16 level; // 832
     u16 heldItem; // 834
-    u16 status : 12; // 836
+    u16 status                : 12; // 836
     u16 dontPrintGenderSymbol : 1;
-    u16 gender : 2;
-    u16 isContestCompatible : 1;
+    u16 gender                : 2;
+    u16 isContestCompatible   : 1;
     u8 isEgg; // 838
     u8 form; // 839
     u16 capsule; // 83A
@@ -425,8 +425,8 @@ struct PartyMenu {
     u8 unk_C61;
     u8 afterTextPrinterState;
     u8 softboiledDonorSlot : 6;
-    u8 secondCursorActive : 1;
-    u8 cancelDisabled : 1;
+    u8 secondCursorActive  : 1;
+    u8 cancelDisabled      : 1;
     u8 textPrinterId;
     u8 partyMonIndex; // 0xc65
     u8 unk_C66;

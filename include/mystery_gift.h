@@ -59,7 +59,7 @@ typedef struct UnkWonderCardSubstruct_104 {
     u16 name[36];
     u32 version; // 88
     u16 id; // 8C
-    u8 unique : 1; // 8E
+    u8 unique  : 1; // 8E
     u8 unk8E_1 : 1;
     u8 unk8E_2 : 1;
     u8 unk8E_3 : 1;
@@ -70,7 +70,7 @@ typedef struct UnkWonderCardSubstruct_104 {
 
 typedef struct {
     u16 tag;
-    u16 flag : 2;
+    u16 flag  : 2;
     u16 dummy : 14;
     MysteryGiftData data;
 } MysteryGift;

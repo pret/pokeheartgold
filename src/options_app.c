@@ -28,12 +28,12 @@
 
 // Not to be confused with `Options`, which is almost exactly the same, save for two members being swapped. SMH
 typedef struct OptionsApp_Options {
-    u16 textSpeed : 4;
+    u16 textSpeed   : 4;
     u16 soundMethod : 2;
     u16 battleScene : 1;
     u16 battleStyle : 1;
-    u16 buttonMode : 2;
-    u16 frame : 5;
+    u16 buttonMode  : 2;
+    u16 frame       : 5;
 } OptionsApp_Options;
 
 typedef struct OptionsApp_MenuEntry {
@@ -59,11 +59,11 @@ typedef struct OptionsApp_Data {
     u32 exitState;
     u32 setupAndFreeState;
     u32 fadeUnused; // unused, game writes 0 here when it's about to start a fade, but never reads from here
-    u32 unk10_0 : 2;
+    u32 unk10_0            : 2;
     u32 currentMenuEntryId : 3;
-    u32 unk10_5 : 16; // unused
-    u32 unk10_21 : 1;
-    u32 unk10_22 : 10; // unused
+    u32 unk10_5            : 16; // unused
+    u32 unk10_21           : 1;
+    u32 unk10_22           : 10; // unused
     BgConfig *bgConfig;
     OptionsApp_Options options;
     Options *playerOptionsUnused; // unused copy of playerOptions

@@ -19,7 +19,7 @@ typedef struct PlayerProfile {
     u8 avatar;
     u8 version;
     u8 gameClear : 1;
-    u8 natDex : 1;
+    u8 natDex    : 1;
     u8 dummy;
     u8 kantoBadges;
 } PlayerProfile;

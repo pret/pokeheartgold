@@ -20,7 +20,7 @@ struct HeapInfo {
 
 typedef struct MemoryBlock {
     u8 filler_00[12];
-    u32 heapId : 8;
+    u32 heapId    : 8;
     u32 filler_0D : 24;
 } MemoryBlock;
 

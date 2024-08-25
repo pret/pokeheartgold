@@ -20,7 +20,7 @@ typedef struct TrainerCardAppArgs {
 
 typedef struct {
     u8 unk0[4];
-    u8 unk4a : 4;
+    u8 unk4a           : 4;
     u8 signatureExists : 1;
     u8 unk5[0x63];
     u8 signature[0x600];

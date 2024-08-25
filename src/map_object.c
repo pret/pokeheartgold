@@ -1867,8 +1867,8 @@ LocalMapObject_UnkCallback sub_0205FB34(UnkLMOCallbackStruct2 *unk) {
 typedef struct ObjectEventGraphicsInfo {
     u16 sprite_no;
     u16 mmodel_no;
-    u16 unk4_0 : 5; // Unknown actual size
-    u16 unk4_5 : 5;
+    u16 unk4_0  : 5; // Unknown actual size
+    u16 unk4_5  : 5;
     u16 unk4_10 : 6; // Unknown actual size
 } ObjectEventGraphicsInfo;
 

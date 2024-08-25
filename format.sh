@@ -1,4 +1,4 @@
 #!/bin/sh
 set -e
 
-find . -name "*.{c,cpp,h,hpp}" -exec clang-format -i {} +
+find src include -name "*.c" -or -name "*.cpp" -or -name "*.h" -or -name "*.hpp" | xargs clang-format -i --verbose

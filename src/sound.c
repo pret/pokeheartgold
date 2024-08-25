@@ -61,7 +61,7 @@ struct SND_WORK {
     /* 0xBEC7A */ u16 unk_BEC7A;
     /* 0xBEC7C */ u32 unk_BEC7C;
     /* 0xBEC80 */ u32 micInitDone : 1;
-    /* 0xBEC80 */ u32 micCounter : 31;
+    /* 0xBEC80 */ u32 micCounter  : 31;
     /* 0xBEC84 */ u32 gbSoundsVolume;
 }; // size: 0xBEC88
 

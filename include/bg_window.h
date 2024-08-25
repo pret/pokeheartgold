@@ -73,7 +73,7 @@ typedef struct Window {
     u8 width;
     u8 height;
     u8 paletteNum;
-    u16 baseTile : 15;
+    u16 baseTile  : 15;
     u16 colorMode : 1;
     void *pixelBuffer;
 } Window;

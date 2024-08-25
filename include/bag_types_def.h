@@ -57,7 +57,7 @@ typedef struct BagViewPocket {
 typedef struct ItemCheckUseData {
     u32 mapId;
     int playerState;
-    u16 haveFollower : 1;
+    u16 haveFollower      : 1;
     u16 haveRocketCostume : 1;
     u16 facingTile;
     u16 standingTile;
