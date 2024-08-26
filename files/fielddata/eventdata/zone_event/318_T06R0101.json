@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_T06R0101_fishing_2",
-      "ovid": "SPRITE_FISHING_2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_FISHING_2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T06R0101_000 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_T06R0101_babyboy1_2",
-      "ovid": "SPRITE_BABYBOY1_2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BABYBOY1_2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T06R0101_001 + 1",

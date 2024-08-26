@@ -37,8 +37,8 @@
   "objects": [
     {
       "id": "obj_D24R0215_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D24R0215_STARDUST",
       "scr": "std_itemball_d24r0215_stardust",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_D24R0215_monstarball_2",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D24R0215_STAR_PIECE",
       "scr": "std_itemball_d24r0215_star_piece",
@@ -71,8 +71,8 @@
     },
     {
       "id": "obj_D24R0215_monstarball_3",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D24R0215_LEPPA_BERRY",
       "scr": "std_itemball_d24r0215_leppa_berry",
@@ -88,8 +88,8 @@
     },
     {
       "id": "obj_D24R0215_monstarball_4",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D24R0215_MYSTIC_WATER",
       "scr": "std_itemball_d24r0215_mystic_water",

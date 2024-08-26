@@ -53,8 +53,8 @@
   "objects": [
     {
       "id": "obj_T04_gsman1",
-      "ovid": "SPRITE_GSMAN1",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSMAN1",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T04_000 + 1",
@@ -70,8 +70,8 @@
     },
     {
       "id": "obj_T04_gswoman1",
-      "ovid": "SPRITE_GSWOMAN1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSWOMAN1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T04_002 + 1",
@@ -87,8 +87,8 @@
     },
     {
       "id": "obj_T04_tsure_poke_static_slowbro",
-      "ovid": "SPRITE_FOLLOWER_MON_STATIC_SLOWBRO",
-      "mvt": 2,
+      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_SLOWBRO",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T04_003 + 1",
@@ -104,8 +104,8 @@
     },
     {
       "id": "obj_T04_gsbigman",
-      "ovid": "SPRITE_GSBIGMAN",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSBIGMAN",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T04_004 + 1",
@@ -121,8 +121,8 @@
     },
     {
       "id": "obj_T04_gsman2",
-      "ovid": "SPRITE_GSMAN2",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSMAN2",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T04_001 + 1",
@@ -138,8 +138,8 @@
     },
     {
       "id": "obj_T04_gsboy1",
-      "ovid": "SPRITE_GSBOY1",
-      "mvt": 2,
+      "sprite_id": "SPRITE_GSBOY1",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T04_005 + 1",
@@ -155,8 +155,8 @@
     },
     {
       "id": "obj_T04_gsmiddleman1",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
       "scr": "_EV_scr_seq_T04_011 + 1",
@@ -172,8 +172,8 @@
     },
     {
       "id": "obj_T04_gsman1_2",
-      "ovid": "SPRITE_GSMAN1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSMAN1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_UNK_30F",
       "scr": "_EV_scr_seq_T04_013 + 1",

@@ -126,8 +126,8 @@ ov01_022040C0: ; 0x022040C0
 	.balign 4, 0
 	thumb_func_end ov01_022040C0
 
-	thumb_func_start ov01_022040D0
-ov01_022040D0: ; 0x022040D0
+	thumb_func_start Field3dObjectList_GetRenderObjectByID
+Field3dObjectList_GetRenderObjectByID: ; 0x022040D0
 	ldr r2, [r0]
 	ldrb r2, [r2, r1]
 	cmp r2, #0xff
@@ -139,7 +139,7 @@ ov01_022040D0: ; 0x022040D0
 _022040E0:
 	mov r0, #0
 	bx lr
-	thumb_func_end ov01_022040D0
+	thumb_func_end Field3dObjectList_GetRenderObjectByID
 
 	thumb_func_start ov01_022040E4
 ov01_022040E4: ; 0x022040E4
@@ -164,7 +164,7 @@ ov01_022040F8: ; 0x022040F8
 	beq _02204110
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov01_022040D0
+	bl Field3dObjectList_GetRenderObjectByID
 	pop {r3, r4, r5, pc}
 _02204110:
 	add r0, r5, #0

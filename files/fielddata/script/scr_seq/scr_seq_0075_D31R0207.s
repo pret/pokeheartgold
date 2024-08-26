@@ -93,7 +93,7 @@ scr_seq_D31R0207_007:
 	end
 
 _0142:
-	scrcmd_375 obj_player
+	make_object_visible obj_player
 	return
 
 _0148:

@@ -263,7 +263,7 @@ scr_seq_D24R0216_005:
 scr_seq_D24R0216_006:
 	compare VAR_UNK_40CE, 1
 	goto_if_ne _0387
-	scrcmd_375 obj_player
+	make_object_visible obj_player
 _0387:
 	end
 

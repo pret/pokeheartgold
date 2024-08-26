@@ -204,7 +204,7 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heapId, SaveData* saveDa
 
     // Put an email from your friend into your PC.
     friend_names_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0445_bin, HEAP_ID_3);
-    MAILBOX* mailbox = Save_Mailbox_Get(saveData);
+    Mailbox* mailbox = Save_Mailbox_Get(saveData);
     Pokemon *mon = AllocMonZeroed(HEAP_ID_3);
 
     CreateMon(mon, SPECIES_MARILL, 1, 0, FALSE, 0, OT_ID_PLAYER_ID, 0);
@@ -218,7 +218,7 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heapId, SaveData* saveDa
         mail = CreateKenyaMail(mon, MAIL_AIR, MON_MALE, author_name, 0);
     }
 
-    MAIL_MESSAGE mail_message;
+    MailMessage mail_message;
 
     for (i = 0; i < (s32)NELEMS(sMailMsgTemplates); i++) {
         MailMsg_Init_FromTemplate(&mail_message, &sMailMsgTemplates[i]);

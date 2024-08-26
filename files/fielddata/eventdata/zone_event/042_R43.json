@@ -29,8 +29,8 @@
   "objects": [
     {
       "id": "obj_R43_campboy_2",
-      "ovid": "SPRITE_CAMPBOY_2",
-      "mvt": 16,
+      "sprite_id": "SPRITE_CAMPBOY_2",
+      "movement": 16,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_CAMPER_SPENCER)",
@@ -46,8 +46,8 @@
     },
     {
       "id": "obj_R43_picnicgirl_2",
-      "ovid": "SPRITE_PICNICGIRL_2",
-      "mvt": 15,
+      "sprite_id": "SPRITE_PICNICGIRL_2",
+      "movement": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_PICNICKER_TIFFANY)",
@@ -63,8 +63,8 @@
     },
     {
       "id": "obj_R43_mania",
-      "ovid": "SPRITE_MANIA",
-      "mvt": 15,
+      "sprite_id": "SPRITE_MANIA",
+      "movement": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_POKE_MANIAC_BRENT)",
@@ -80,8 +80,8 @@
     },
     {
       "id": "obj_R43_mania_2",
-      "ovid": "SPRITE_MANIA",
-      "mvt": 4,
+      "sprite_id": "SPRITE_MANIA",
+      "movement": 4,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_POKE_MANIAC_BECKETT)",
@@ -97,8 +97,8 @@
     },
     {
       "id": "obj_R43_mania_3",
-      "ovid": "SPRITE_MANIA",
-      "mvt": 5,
+      "sprite_id": "SPRITE_MANIA",
+      "movement": 5,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_POKE_MANIAC_RON)",
@@ -114,8 +114,8 @@
     },
     {
       "id": "obj_R43_fishing_2",
-      "ovid": "SPRITE_FISHING_2",
-      "mvt": 17,
+      "sprite_id": "SPRITE_FISHING_2",
+      "movement": 17,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_FISHERMAN_MARVIN)",
@@ -131,8 +131,8 @@
     },
     {
       "id": "obj_R43_bonguri",
-      "ovid": "SPRITE_BONGURI",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BONGURI",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "std_apricorn_tree",
@@ -148,8 +148,8 @@
     },
     {
       "id": "obj_R43_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_R43_MAX_ETHER",
       "scr": "std_itemball_r43_max_ether",
@@ -165,8 +165,8 @@
     },
     {
       "id": "obj_R43_tree",
-      "ovid": "SPRITE_TREE",
-      "mvt": 0,
+      "sprite_id": "SPRITE_TREE",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_010",
       "scr": "std_field_cut",

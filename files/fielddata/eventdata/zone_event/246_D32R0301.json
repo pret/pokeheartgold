@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_D32R0301_bfsm",
-      "ovid": "SPRITE_BFSM",
-      "mvt": 15,
+      "sprite_id": "SPRITE_BFSM",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D32R0301_000 + 1",
@@ -30,8 +30,8 @@
     },
     {
       "id": "obj_D32R0301_bfsw1",
-      "ovid": "SPRITE_BFSW1",
-      "mvt": 15,
+      "sprite_id": "SPRITE_BFSW1",
+      "movement": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D32R0301_005 + 1",
@@ -47,8 +47,8 @@
     },
     {
       "id": "obj_D32R0301_gsboy2",
-      "ovid": "SPRITE_GSBOY2",
-      "mvt": 7,
+      "sprite_id": "SPRITE_GSBOY2",
+      "movement": 7,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D32R0301_009 + 1",
@@ -64,8 +64,8 @@
     },
     {
       "id": "obj_D32R0301_gswoman2",
-      "ovid": "SPRITE_GSWOMAN2",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSWOMAN2",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D32R0301_008 + 1",
@@ -81,8 +81,8 @@
     },
     {
       "id": "obj_D32R0301_policeman",
-      "ovid": "SPRITE_POLICEMAN",
-      "mvt": 3,
+      "sprite_id": "SPRITE_POLICEMAN",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D32R0301_012 + 1",
@@ -98,8 +98,8 @@
     },
     {
       "id": "obj_D32R0301_seaman_2",
-      "ovid": "SPRITE_SEAMAN_2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SEAMAN_2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D32R0301_007 + 1",
@@ -115,8 +115,8 @@
     },
     {
       "id": "obj_D32R0301_gswoman1",
-      "ovid": "SPRITE_GSWOMAN1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSWOMAN1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D32R0301_006 + 1",
@@ -132,8 +132,8 @@
     },
     {
       "id": "obj_D32R0301_gsgentleman",
-      "ovid": "SPRITE_GSGENTLEMAN",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSGENTLEMAN",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D32R0301_010 + 1",
@@ -149,8 +149,8 @@
     },
     {
       "id": "obj_D32R0301_gorggeousw",
-      "ovid": "SPRITE_GORGGEOUSW",
-      "mvt": 7,
+      "sprite_id": "SPRITE_GORGGEOUSW",
+      "movement": 7,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D32R0301_011 + 1",

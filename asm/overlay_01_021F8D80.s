@@ -144,7 +144,7 @@ ov01_021F8E70: ; 0x021F8E70
 	add r4, r2, #0
 	bl MapObject_GetFacingVec
 	add r0, r6, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	bl ov01_021FA298
 	cmp r0, #0xa
 	bne _021F8EDE
@@ -661,10 +661,10 @@ _021F9212:
 	add r0, r5, #0
 	bl FldObjSys_OpenMModelNarc
 	add r0, r5, #0
-	bl MapObjectManager_GetCount
+	bl MapObjectManager_GetObjectCount
 	str r0, [sp, #0x14]
 	add r0, r5, #0
-	bl MapObjectManager_GetHeapID
+	bl MapObjectManager_GetPriority
 	sub r0, r0, #1
 	str r0, [sp, #0x10]
 	add r0, r5, #0
@@ -740,7 +740,7 @@ ov01_021F92A0: ; 0x021F92A0
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0xe
-	bl MapObject_GetFlagsMask
+	bl MapObject_GetFlagsBits
 	cmp r0, #0
 	beq _021F92DA
 	add r0, r4, #0
@@ -799,7 +799,7 @@ _021F9314:
 	thumb_func_start ov01_021F9318
 ov01_021F9318: ; 0x021F9318
 	push {r3, lr}
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	bl ov01_021F9324
 	pop {r3, pc}
 	thumb_func_end ov01_021F9318
@@ -840,7 +840,7 @@ _021F935E:
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #8
-	bl MapObject_GetFlagsMask
+	bl MapObject_GetFlagsBits
 	cmp r0, #0
 	beq _021F9370
 	mov r0, #1

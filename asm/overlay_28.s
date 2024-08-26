@@ -56,7 +56,7 @@ ov28_0225D520: ; 0x0225D520
 	cmp r0, #1
 	beq _0225D59E
 	ldr r0, [sp, #8]
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	bl ov01_021F6BB0
 	cmp r0, #1
 	bne _0225D5A6
@@ -2472,7 +2472,7 @@ _0225E828:
 	bl FieldSystem_GetPlayerAvatar
 	bl PlayerAvatar_GetMapObject
 	add r4, r0, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	sub r0, #0xbc
 	cmp r0, #1
 	bhi _0225E858
@@ -2504,7 +2504,7 @@ _0225E860:
 	cmp r0, #1
 	beq _0225E88E
 	ldr r0, [sp]
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	bl ov01_021F6BB0
 	cmp r0, #1
 	bne _0225E890

@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_D17R0110_dancer",
-      "ovid": "SPRITE_DANCER",
-      "mvt": 0,
+      "sprite_id": "SPRITE_DANCER",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS",
       "scr": "_EV_scr_seq_D17R0110_001 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_D17R0110_dancer_2",
-      "ovid": "SPRITE_DANCER",
-      "mvt": 0,
+      "sprite_id": "SPRITE_DANCER",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS",
       "scr": "_EV_scr_seq_D17R0110_004 + 1",
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_D17R0110_dancer_3",
-      "ovid": "SPRITE_DANCER",
-      "mvt": 0,
+      "sprite_id": "SPRITE_DANCER",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS",
       "scr": "_EV_scr_seq_D17R0110_004 + 1",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_D17R0110_dancer_4",
-      "ovid": "SPRITE_DANCER",
-      "mvt": 0,
+      "sprite_id": "SPRITE_DANCER",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS",
       "scr": "_EV_scr_seq_D17R0110_004 + 1",
@@ -71,8 +71,8 @@
     },
     {
       "id": "obj_D17R0110_dancer_5",
-      "ovid": "SPRITE_DANCER",
-      "mvt": 0,
+      "sprite_id": "SPRITE_DANCER",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS",
       "scr": "_EV_scr_seq_D17R0110_004 + 1",
@@ -88,8 +88,8 @@
     },
     {
       "id": "obj_D17R0110_hou_obj01",
-      "ovid": "SPRITE_HOU_OBJ01",
-      "mvt": 0,
+      "sprite_id": "SPRITE_HOU_OBJ01",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_BELL_TOWER_HO_OH",
       "scr": "_EV_scr_seq_D17R0110_000 + 1",

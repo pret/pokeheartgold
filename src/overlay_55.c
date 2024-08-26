@@ -64,7 +64,7 @@ BOOL ov55_UnkApp_Init(OVY_MANAGER *manager, int *state) {
         overlayData->unk10->mailType = MAIL_GRASS;
     }
     overlayData->unk10->unk0 = args->unk0;
-    overlayData->unk10->unk8 = args->unk1C;
+    overlayData->unk10->unk8 = args->menuInputStatePtr;
     return TRUE;
 }
 
@@ -113,7 +113,7 @@ BOOL ov55_UnkApp_Main(OVY_MANAGER *manager, int *state) {
             return TRUE;
 
         case 3:
-            overlayData->unk8 = EasyChat_CreateArgs(2, 0, args->saveData, args->unk1C, overlayData->heapId);
+            overlayData->unk8 = EasyChat_CreateArgs(2, 0, args->saveData, args->menuInputStatePtr, overlayData->heapId);
             if (MailMsg_IsInit(&overlayData->unk10->mailMessages[overlayData->unk10->mailMessageIdx])) {
                 MailMsg_Copy(&overlayData->unk14, &overlayData->unk10->mailMessages[overlayData->unk10->mailMessageIdx]);
             } else {

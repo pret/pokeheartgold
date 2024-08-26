@@ -576,13 +576,13 @@ static void MGMessageFailure_PokewalkerCourse(struct GetMysteryGiftGmmState *gmm
 
 static BOOL MGCheck_MemorialPhoto(FieldSystem *fieldSys, MysteryGiftData *mgData) {
     Bag *bag = Save_Bag_Get(fieldSys->saveData);
-    PHOTO_ALBUM *album = Save_PhotoAlbum_Get(fieldSys->saveData);
+    PhotoAlbum *album = Save_PhotoAlbum_Get(fieldSys->saveData);
     return PhotoAlbum_GetNumSaved(album) < PHOTO_ALBUM_MAX;
 }
 
 static void MGGive_MemorialPhoto(FieldSystem *fieldSys, MysteryGiftData *unused) {
-    PHOTO *mgData = &FieldSystem_GetDataOfNextMG(fieldSys)->photo;
-    PHOTO_ALBUM *album = Save_PhotoAlbum_Get(FieldSystem_GetSaveData(fieldSys));
+    Photo *mgData = &FieldSystem_GetDataOfNextMG(fieldSys)->photo;
+    PhotoAlbum *album = Save_PhotoAlbum_Get(FieldSystem_GetSaveData(fieldSys));
     u8 slot = PhotoAlbum_GetIndexOfFirstEmptySlot(album);
     if (slot == 0xFF) {
         GF_ASSERT(FALSE);
@@ -592,14 +592,14 @@ static void MGGive_MemorialPhoto(FieldSystem *fieldSys, MysteryGiftData *unused)
 }
 
 static void MGMessageSuccess_MemorialPhoto(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
-    PHOTO *photo = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->photo;
+    Photo *photo = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->photo;
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00018;
     BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
 }
 
 static void MGMessageFailure_MemorialPhoto(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
-    PHOTO *photo = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->photo;
+    Photo *photo = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->photo;
     Bag *bag = Save_Bag_Get(gmmState->fieldSys->saveData);
     *pMsgBank = NARC_msg_msg_0209_bin;
     if (!Bag_HasItem(bag, ITEM_PHOTO_ALBUM, 1, HEAP_ID_FIELD)) {

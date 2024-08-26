@@ -44,7 +44,7 @@ BOOL Battle_Run(OVY_MANAGER *man, int *state) {
 
     switch (*state) {
     case BSTATE_INIT:
-        CreateHeap(HEAP_ID_3, HEAP_ID_BATTLE, 0xB0000);     
+        CreateHeap(HEAP_ID_3, HEAP_ID_BATTLE, 0xB0000);
         if ((setup->battleType & BATTLE_TYPE_LINK) && !(setup->battleSpecial & BATTLE_SPECIAL_RECORDING)) {
             *state = BSTATE_LINK_INIT;
         } else {
@@ -144,7 +144,7 @@ BOOL Battle_Run(OVY_MANAGER *man, int *state) {
         if (evolutionSpecies) {
             CreateHeap(HEAP_ID_3, HEAP_ID_EVOLUTION, 0x30000);
             mon = Party_GetMonByIndex(setup->party[BATTLER_PLAYER], selectedMonIndex);
-            setup->unk198 = sub_02075A7C(setup->party[BATTLER_PLAYER], mon, evolutionSpecies,
+            setup->evolutionTaskData = sub_02075A7C(setup->party[BATTLER_PLAYER], mon, evolutionSpecies,
                                         setup->options, setup->unk_164, setup->pokedex,
                                         setup->bag, setup->gameStats, evolutionCondition,
                                         3, HEAP_ID_EVOLUTION);
@@ -156,7 +156,7 @@ BOOL Battle_Run(OVY_MANAGER *man, int *state) {
     }
     case BSTATE_EVOLUTION_MAIN:
     {
-        void *data = setup->unk198;
+        void *data = setup->evolutionTaskData;
         if (sub_02075D3C(data) == TRUE) {
             sub_02075D4C(data);
             DestroyHeap(HEAP_ID_EVOLUTION);

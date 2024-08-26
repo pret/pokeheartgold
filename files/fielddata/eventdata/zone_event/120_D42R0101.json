@@ -29,8 +29,8 @@
   "objects": [
     {
       "id": "obj_D42R0101_sunglasses",
-      "ovid": "SPRITE_SUNGLASSES",
-      "mvt": 2,
+      "sprite_id": "SPRITE_SUNGLASSES",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_D42R0101_000 + 1",
@@ -46,8 +46,8 @@
     },
     {
       "id": "obj_D42R0101_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D42R0101_TM54",
       "scr": "std_itemball_d42r0101_tm54",
@@ -63,8 +63,8 @@
     },
     {
       "id": "obj_D42R0101_monstarball_2",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D42R0101_REVIVE",
       "scr": "std_itemball_d42r0101_revive",

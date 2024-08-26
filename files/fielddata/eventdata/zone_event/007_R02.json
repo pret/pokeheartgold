@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_R02_gsboy3",
-      "ovid": "SPRITE_GSBOY3",
-      "mvt": 15,
+      "sprite_id": "SPRITE_GSBOY3",
+      "movement": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BUG_CATCHER_ROB)",
@@ -30,8 +30,8 @@
     },
     {
       "id": "obj_R02_gsboy3_2",
-      "ovid": "SPRITE_GSBOY3",
-      "mvt": 8,
+      "sprite_id": "SPRITE_GSBOY3",
+      "movement": 8,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BUG_CATCHER_DOUG)",
@@ -47,8 +47,8 @@
     },
     {
       "id": "obj_R02_tree",
-      "ovid": "SPRITE_TREE",
-      "mvt": 0,
+      "sprite_id": "SPRITE_TREE",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_010",
       "scr": "std_field_cut",
@@ -64,8 +64,8 @@
     },
     {
       "id": "obj_R02_tree_2",
-      "ovid": "SPRITE_TREE",
-      "mvt": 0,
+      "sprite_id": "SPRITE_TREE",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_011",
       "scr": "std_field_cut",
@@ -81,8 +81,8 @@
     },
     {
       "id": "obj_R02_tree_3",
-      "ovid": "SPRITE_TREE",
-      "mvt": 0,
+      "sprite_id": "SPRITE_TREE",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_012",
       "scr": "std_field_cut",
@@ -98,8 +98,8 @@
     },
     {
       "id": "obj_R02_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_R02_ELIXIR",
       "scr": "std_itemball_r02_elixir",
