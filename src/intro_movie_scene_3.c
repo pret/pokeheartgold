@@ -65,25 +65,25 @@ static const int sMap3dResHeaderFileIds[3] = {
 
 static const int sMap3dObjFileIds[3][2] = {
     {
-        NARC_gs_opening_gs_opening_00000104_NSBCA,
-        NARC_gs_opening_gs_opening_00000105_NSBTA,
-    },
+     NARC_gs_opening_gs_opening_00000104_NSBCA,
+     NARC_gs_opening_gs_opening_00000105_NSBTA,
+     },
     {
-        NARC_gs_opening_gs_opening_00000101_NSBCA,
-        NARC_gs_opening_gs_opening_00000102_NSBTA,
-    },
+     NARC_gs_opening_gs_opening_00000101_NSBCA,
+     NARC_gs_opening_gs_opening_00000102_NSBTA,
+     },
     {
-        NARC_gs_opening_gs_opening_00000098_NSBCA,
-        NARC_gs_opening_gs_opening_00000099_NSBTA,
-    }
+     NARC_gs_opening_gs_opening_00000098_NSBCA,
+     NARC_gs_opening_gs_opening_00000099_NSBTA,
+     }
 };
 
 static const CameraParam sCameraParam = {
     FX32_CONST(410.922119140625),
     { 0xD602,
-        0x0000,
-        0x0000,
-        0 },
+                        0x0000,
+                        0x0000,
+                        0 },
     0,
     0x05C1,
     FALSE,
@@ -102,29 +102,29 @@ static const GXRgb sEdgeColors[8] = {
 
 static const VecFx32 sLightVectors[3][4] = {
     {
-        { FX32_CONST(-0.46923828125), FX32_CONST(-0.8662109375), FX32_CONST(-0.072265625) },
-        { 0, 0, 0 },
-        { 0, 0, FX32_ONE },
-        { 0, 0, FX32_ONE },
-    },
+     { FX32_CONST(-0.46923828125), FX32_CONST(-0.8662109375), FX32_CONST(-0.072265625) },
+     { 0, 0, 0 },
+     { 0, 0, FX32_ONE },
+     { 0, 0, FX32_ONE },
+     },
     {
-        { FX32_CONST(-0.46728515625), FX32_CONST(-0.8662109375), FX32_CONST(-0.072265625) },
-        { 0, 0, 0 },
-        { 0, 0, FX32_ONE },
-        { 0, 0, FX32_ONE },
-    },
+     { FX32_CONST(-0.46728515625), FX32_CONST(-0.8662109375), FX32_CONST(-0.072265625) },
+     { 0, 0, 0 },
+     { 0, 0, FX32_ONE },
+     { 0, 0, FX32_ONE },
+     },
     {
-        { FX32_CONST(-0.46728515625), FX32_CONST(-0.8662109375), FX32_CONST(-0.072265625) },
-        { 0, 0, 0 },
-        { 0, 0, FX32_ONE },
-        { 0, 0, FX32_ONE },
-    },
+     { FX32_CONST(-0.46728515625), FX32_CONST(-0.8662109375), FX32_CONST(-0.072265625) },
+     { 0, 0, 0 },
+     { 0, 0, FX32_ONE },
+     { 0, 0, FX32_ONE },
+     },
 };
 
 static const GXRgb sLightColors[3][4] = {
-    { RGB(22, 22, 20), RGB(0, 0, 0), RGB(0, 4, 9), RGB(0, 0, 0) },
+    { RGB(22, 22, 20), RGB(0, 0, 0), RGB(0,  4,  9), RGB(0, 0, 0) },
     { RGB(11, 11, 16), RGB(0, 0, 0), RGB(18, 10, 0), RGB(0, 0, 0) },
-    { RGB(19, 16, 12), RGB(0, 0, 0), RGB(16, 6, 0), RGB(0, 0, 0) },
+    { RGB(19, 16, 12), RGB(0, 0, 0), RGB(16, 6,  0), RGB(0, 0, 0) },
 };
 
 static const GXRgb sDiffUse[3] = {

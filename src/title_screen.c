@@ -723,19 +723,89 @@ static void TitleScreenAnim_SetCameraInitialPos(TitleScreenAnimData *animData) {
 }
 
 static const struct CameraScript sCameraScript_HG[5] = {
-    { { FX32_CONST(180), FX32_CONST(177), FX32_CONST(301) }, 10 },
-    { { FX32_CONST(335), FX32_CONST(-293), FX32_CONST(296) }, 5 },
-    { { FX32_CONST(180), FX32_CONST(177), FX32_CONST(301) }, 5 },
-    { { FX32_CONST(625), FX32_CONST(152), FX32_CONST(256) }, 10 },
-    { { FX32_CONST(0), FX32_CONST(0), FX32_CONST(0) }, 0 },
+    {
+     .pos = {
+            .x = FX32_CONST(180),
+            .y = FX32_CONST(177),
+            .z = FX32_CONST(301),
+        },
+     .duration = 10,
+     },
+    {
+     .pos = {
+            .x = FX32_CONST(335),
+            .y = FX32_CONST(-293),
+            .z = FX32_CONST(296),
+        },
+     .duration = 5,
+     },
+    {
+     .pos = {
+            .x = FX32_CONST(180),
+            .y = FX32_CONST(177),
+            .z = FX32_CONST(301),
+        },
+     .duration = 5,
+     },
+    {
+     .pos = {
+            .x = FX32_CONST(625),
+            .y = FX32_CONST(152),
+            .z = FX32_CONST(256),
+        },
+     .duration = 10,
+     },
+    {
+     .pos = {
+            .x = FX32_CONST(0),
+            .y = FX32_CONST(0),
+            .z = FX32_CONST(0),
+        },
+     .duration = 0,
+     },
 };
 
 static const struct CameraScript sCameraScript_SS[5] = {
-    { { FX32_CONST(105), FX32_CONST(162), FX32_CONST(291) }, 10 },
-    { { FX32_CONST(395), FX32_CONST(432), FX32_CONST(191) }, 5 },
-    { { FX32_CONST(105), FX32_CONST(162), FX32_CONST(291) }, 5 },
-    { { FX32_CONST(420), FX32_CONST(87), FX32_CONST(331) }, 10 },
-    { { FX32_CONST(0), FX32_CONST(0), FX32_CONST(0) }, 0 },
+    {
+     .pos = {
+            .x = FX32_CONST(105),
+            .y = FX32_CONST(162),
+            .z = FX32_CONST(291),
+        },
+     .duration = 10,
+     },
+    {
+     .pos = {
+            .x = FX32_CONST(395),
+            .y = FX32_CONST(432),
+            .z = FX32_CONST(191),
+        },
+     .duration = 5,
+     },
+    {
+     .pos = {
+            .x = FX32_CONST(105),
+            .y = FX32_CONST(162),
+            .z = FX32_CONST(291),
+        },
+     .duration = 5,
+     },
+    {
+     .pos = {
+            .x = FX32_CONST(420),
+            .y = FX32_CONST(87),
+            .z = FX32_CONST(331),
+        },
+     .duration = 10,
+     },
+    {
+     .pos = {
+            .x = FX32_CONST(0),
+            .y = FX32_CONST(0),
+            .z = FX32_CONST(0),
+        },
+     .duration = 0,
+     },
 };
 
 static fx32 fx32_abs(fx32 x) {

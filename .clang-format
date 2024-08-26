@@ -12,6 +12,7 @@ AlignConsecutiveBitFields:
 AlignConsecutiveDeclarations: None
 AlignConsecutiveMacros: Consecutive
 AlignTrailingComments: false
+AlignArrayOfStructures: Left
 
 AllowShortBlocksOnASingleLine: Empty
 AllowShortCaseLabelsOnASingleLine: false

@@ -121,12 +121,12 @@ typedef struct Coord2U16 {
 
 static const Coord2U16 sSoloPhotoMonCoordOffsets = { 1, -1 };
 static const Coord2U16 sPhotoMonCoordOffsets[]   = {
-    { 2, 0 },
-    { 1, -1 },
+    { 2,  0  },
+    { 1,  -1 },
     { -1, -1 },
-    { 3, -1 },
-    { 0, -2 },
-    { 2, -2 },
+    { 3,  -1 },
+    { 0,  -2 },
+    { 2,  -2 },
 };
 
 static PhotoCameraParam sCameraParam = {
@@ -135,14 +135,14 @@ static PhotoCameraParam sCameraParam = {
     .perspectiveType = 0,
     .perspective     = 0x230,
     .unk_10          = {
-        0x96,
-        0x384,
-    },
+                        0x96,
+                        0x384,
+                        },
     .lookAt = {
-        FX32_CONST(16.3125),
-        0,
-        FX32_CONST(-47),
-    },
+                        FX32_CONST(16.3125),
+                        0,
+                        FX32_CONST(-47),
+                        },
 };
 
 void FieldSystem_TakePhoto(FieldSystem *fieldSystem, u16 photo_id) {

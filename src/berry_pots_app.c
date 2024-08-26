@@ -88,23 +88,23 @@ static void ov17_02203460(BerryPotsAppData *data, u8 index);
 
 static const u8 ov17_02203D60[3][4] = {
     {
-        0,
-        2,
-        1,
-        0,
-    },
+     0,
+     2,
+     1,
+     0,
+     },
     {
-        0,
-        4,
-        3,
-        0,
-    },
+     0,
+     4,
+     3,
+     0,
+     },
     {
-        0,
-        6,
-        5,
-        0,
-    },
+     0,
+     6,
+     5,
+     0,
+     },
 };
 static const Ov122_021E9282 ov17_02203D6C = { 0x403, 0xB00, 0, 58, 31, 84 };
 static const u16 ov17_02203D78[7]         = {
@@ -130,9 +130,9 @@ static const OamCharTransferParam ov17_02203D98 = {
     GX_OBJVRAMMODE_CHAR_1D_32K,
 };
 static const WindowTemplate ov17_02203DC4[3] = {
-    { 2, 25, 21, 6, 2, 9, 0x1A2 },
-    { 0, 2, 19, 19, 4, 12, 0x0CA },
-    { 0, 2, 19, 27, 4, 12, 0x136 },
+    { 2, 25, 21, 6,  2, 9,  0x1A2 },
+    { 0, 2,  19, 19, 4, 12, 0x0CA },
+    { 0, 2,  19, 27, 4, 12, 0x136 },
 };
 static const SpriteResourceCountsListUnion ov17_02203DAC = {
     { 1, 1, 1, 1, 0, 0 }
@@ -240,10 +240,10 @@ static const GraphicsBanks ov17_02203ED0      = {
 };
 static const UnkStruct_0200D2B4 ov17_02203EF8[5] = {
     { 0, 224, 176, 0, 0, 15, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
-    { 0, 27, 96, 0, 2, 0, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
-    { 0, 31, 56, 0, 8, 1, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
-    { 0, 27, 99, 0, 4, 14, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
-    { 0, 27, 88, 0, 7, 12, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 }
+    { 0, 27,  96,  0, 2, 0,  0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
+    { 0, 31,  56,  0, 8, 1,  0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
+    { 0, 27,  99,  0, 4, 14, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
+    { 0, 27,  88,  0, 7, 12, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 }
 };
 
 void ov17_02201BC0(void) {

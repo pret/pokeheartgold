@@ -37,47 +37,47 @@ static const MailMessageTemplate TrainerHouse_DefaultLoseMessage = {
     .msg_bank  = MAILMSG_BANK_0292_GMM,
     .msg_no    = msg_0292_00000,
     .ec_groups = { EC_GROUP_GREETINGS, EC_GROUP_NONE },
-    .ec_words  = { msg_0287_thanks, 0 },
+    .ec_words  = { msg_0287_thanks,    0             },
 };
 
 static const MailMessageTemplate TrainerHouse_DefaultWinMessage = {
     .msg_bank  = MAILMSG_BANK_0296_GMM,
     .msg_no    = msg_0296_00007,
     .ec_groups = { EC_GROUP_TRAINER, EC_GROUP_NONE },
-    .ec_words  = { msg_0285_victory, 0 },
+    .ec_words  = { msg_0285_victory, 0             },
 };
 
 static const MailMessageTemplate TrainerHouse_DefaultIntroMessage = {
     .msg_bank  = MAILMSG_BANK_0294_GMM,
     .msg_no    = msg_0294_00003,
     .ec_groups = { EC_GROUP_TRAINER, EC_GROUP_NONE },
-    .ec_words  = { msg_0285_match, 0 },
+    .ec_words  = { msg_0285_match,   0             },
 };
 
 #define DUMMY_TRAINER_HOUSE_MON { \
     .language = GAME_LANGUAGE,    \
     .nickname = {                 \
-        EOS,                      \
-        EOS,                      \
-        EOS,                      \
-        EOS,                      \
-        EOS,                      \
-        EOS,                      \
-        EOS,                      \
-        EOS,                      \
-        EOS,                      \
-        EOS,                      \
-    },                            \
+                 EOS,                      \
+                 EOS,                      \
+                 EOS,                      \
+                 EOS,                      \
+                 EOS,                      \
+                 EOS,                      \
+                 EOS,                      \
+                 EOS,                      \
+                 EOS,                      \
+                 EOS,                      \
+                 },                            \
 }
 
 static const TrainerHouseSet ov25_02259D9C = {
     .trainer = {
-        .id       = 0,
-        .sprite   = SPRITE_MAN3,
-        .language = GAME_LANGUAGE,
-        .version  = GAME_VERSION,
-        .gender   = PLAYER_GENDER_MALE,
-        .otName   = {
+                .id       = 0,
+                .sprite   = SPRITE_MAN3,
+                .language = GAME_LANGUAGE,
+                .version  = GAME_VERSION,
+                .gender   = PLAYER_GENDER_MALE,
+                .otName   = {
             CHAR_JP_HIRA_HI,
             CHAR_JP_HIRA_KA,
             CHAR_JP_HIRA_RU,
@@ -89,7 +89,7 @@ static const TrainerHouseSet ov25_02259D9C = {
         }, // "ひかる"
     },
     .party = {
-        {
+                {
             .species = SPECIES_MEGANIUM, .item = ITEM_SITRUS_BERRY, .moves = { MOVE_LEECH_SEED, MOVE_PROTECT, MOVE_ENERGY_BALL, MOVE_TOXIC }, .otid = 0x11111111, .pid = 0x00000101, .hpIv = 20, .atkIv = 20, .defIv = 20, .spdIv = 20, .spAtkIv = 20, .spDefIv = 20, .hpEv = 255, .spDefEv = 255, .language = GAME_LANGUAGE, .ability = ABILITY_OVERGROW, .level = 50, .nickname = {
                                                                                                                                                                                                                                                                                                                                                                             CHAR_JP_KATA_ME,
                                                                                                                                                                                                                                                                                                                                                                             CHAR_JP_KATA_GA,
@@ -103,7 +103,7 @@ static const TrainerHouseSet ov25_02259D9C = {
                                                                                                                                                                                                                                                                                                                                                                             EOS,
                                                                                                                                                                                                                                                                                                                                                                         }, // "メガニウム"
         },
-        {
+                {
             .species = SPECIES_TYPHLOSION, .item = ITEM_SALAC_BERRY, .moves = { MOVE_ERUPTION, MOVE_SUBSTITUTE, MOVE_FLAMETHROWER, MOVE_FOCUS_BLAST }, .otid = 0x11111111, .pid = 0x00001010, .hpIv = 20, .atkIv = 20, .defIv = 20, .spdIv = 20, .spAtkIv = 20, .spDefIv = 20, .spdEv = 255, .spAtkEv = 255, .language = GAME_LANGUAGE, .ability = ABILITY_BLAZE, .level = 50, .nickname = {
                                                                                                                                                                                                                                                                                                                                                                                    CHAR_JP_KATA_BA,
                                                                                                                                                                                                                                                                                                                                                                                    CHAR_JP_KATA_KU,
@@ -117,7 +117,7 @@ static const TrainerHouseSet ov25_02259D9C = {
                                                                                                                                                                                                                                                                                                                                                                                    EOS,
                                                                                                                                                                                                                                                                                                                                                                                }, // "バクフーン"
         },
-        {
+                {
             .species = SPECIES_FERALIGATR, .item = ITEM_LUM_BERRY, .moves = { MOVE_DRAGON_DANCE, MOVE_WATERFALL, MOVE_ICE_PUNCH, MOVE_CRUNCH }, .otid = 0x11111111, .pid = 0x00000011, .hpIv = 20, .atkIv = 20, .defIv = 20, .spdIv = 20, .spAtkIv = 20, .spDefIv = 20, .hpEv = 255, .atkEv = 255, .language = GAME_LANGUAGE, .ability = ABILITY_TORRENT, .level = 50, .nickname = {
                                                                                                                                                                                                                                                                                                                                                                            CHAR_JP_KATA_O,
                                                                                                                                                                                                                                                                                                                                                                            CHAR_JP_HYPHEN,
@@ -131,10 +131,10 @@ static const TrainerHouseSet ov25_02259D9C = {
                                                                                                                                                                                                                                                                                                                                                                            EOS,
                                                                                                                                                                                                                                                                                                                                                                        }, // "オーダイル"
         },
-        DUMMY_TRAINER_HOUSE_MON,
-        DUMMY_TRAINER_HOUSE_MON,
-        DUMMY_TRAINER_HOUSE_MON,
-    },
+                DUMMY_TRAINER_HOUSE_MON,
+                DUMMY_TRAINER_HOUSE_MON,
+                DUMMY_TRAINER_HOUSE_MON,
+                },
 };
 
 static void TrainerHouse_SetNames(TrainerHouseSet *set);

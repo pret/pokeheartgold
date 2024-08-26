@@ -119,20 +119,20 @@ static const int sMenuEntryBorderYCoords[MENU_ENTRY_COUNT] = {
 
 static const u16 sOptionChoiceLabelXCoords[MENU_ENTRY_COUNT][3] = {
     { 124, 172, 220 },
-    { 124, 172, 0 },
-    { 132, 212, 0 },
-    { 132, 212, 0 },
-    { 132, 212, 0 },
-    { 172, 0, 0 },
-    { 0, 0, 0 },
+    { 124, 172, 0   },
+    { 132, 212, 0   },
+    { 132, 212, 0   },
+    { 132, 212, 0   },
+    { 172, 0,   0   },
+    { 0,   0,   0   },
 };
 
 static const int sActiveButtonXCoords[5][3] = {
     { 112, 160, 208 },
     { 112, 160, 208 },
-    { 112, 192, 0 },
-    { 112, 192, 0 },
-    { 112, 192, 0 },
+    { 112, 192, 0   },
+    { 112, 192, 0   },
+    { 112, 192, 0   },
 };
 
 static const TouchscreenHitbox sOptionsAppTouchscreenHitboxes[16] = {
@@ -155,150 +155,150 @@ static const TouchscreenHitbox sOptionsAppTouchscreenHitboxes[16] = {
 };
 
 static const u32 ov54_021E6DA8[15][2] = {
-    { MENU_ENTRY_TEXT_SPEED, 0 },
-    { MENU_ENTRY_TEXT_SPEED, 1 },
-    { MENU_ENTRY_TEXT_SPEED, 2 },
+    { MENU_ENTRY_TEXT_SPEED,   0 },
+    { MENU_ENTRY_TEXT_SPEED,   1 },
+    { MENU_ENTRY_TEXT_SPEED,   2 },
     { MENU_ENTRY_BATTLE_SCENE, 0 },
     { MENU_ENTRY_BATTLE_SCENE, 1 },
     { MENU_ENTRY_BATTLE_STYLE, 0 },
     { MENU_ENTRY_BATTLE_STYLE, 1 },
     { MENU_ENTRY_SOUND_METHOD, 0 },
     { MENU_ENTRY_SOUND_METHOD, 1 },
-    { MENU_ENTRY_BUTTON_MODE, 0 },
-    { MENU_ENTRY_BUTTON_MODE, 1 },
-    { MENU_ENTRY_FRAME, 3 },
-    { MENU_ENTRY_FRAME, 4 },
-    { MENU_ENTRY_6, 5 },
-    { MENU_ENTRY_6, 6 },
+    { MENU_ENTRY_BUTTON_MODE,  0 },
+    { MENU_ENTRY_BUTTON_MODE,  1 },
+    { MENU_ENTRY_FRAME,        3 },
+    { MENU_ENTRY_FRAME,        4 },
+    { MENU_ENTRY_6,            5 },
+    { MENU_ENTRY_6,            6 },
 };
 
 static const UnkStruct_0200D2B4 ov54_021E6EAC[9] = {
     {
-        .resourceSet = 0,
-        .x           = 112,
-        .y           = 24,
-        .z           = 0,
-        .animSeqNo   = 0,
-        .rotation    = 1,
-        .unk_10      = 0,
-        .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-        .unk_18      = 0,
-        .unk_1C      = 0,
-        .unk_20      = 0,
-        .unk_24      = 0,
-    },
+     .resourceSet = 0,
+     .x           = 112,
+     .y           = 24,
+     .z           = 0,
+     .animSeqNo   = 0,
+     .rotation    = 1,
+     .unk_10      = 0,
+     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .unk_18      = 0,
+     .unk_1C      = 0,
+     .unk_20      = 0,
+     .unk_24      = 0,
+     },
     {
-        .resourceSet = 0,
-        .x           = 112,
-        .y           = 48,
-        .z           = 0,
-        .animSeqNo   = 0,
-        .rotation    = 1,
-        .unk_10      = 0,
-        .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-        .unk_18      = 0,
-        .unk_1C      = 0,
-        .unk_20      = 0,
-        .unk_24      = 0,
-    },
+     .resourceSet = 0,
+     .x           = 112,
+     .y           = 48,
+     .z           = 0,
+     .animSeqNo   = 0,
+     .rotation    = 1,
+     .unk_10      = 0,
+     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .unk_18      = 0,
+     .unk_1C      = 0,
+     .unk_20      = 0,
+     .unk_24      = 0,
+     },
     {
-        .resourceSet = 0,
-        .x           = 112,
-        .y           = 72,
-        .z           = 0,
-        .animSeqNo   = 1,
-        .rotation    = 1,
-        .unk_10      = 0,
-        .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-        .unk_18      = 0,
-        .unk_1C      = 0,
-        .unk_20      = 0,
-        .unk_24      = 0,
-    },
+     .resourceSet = 0,
+     .x           = 112,
+     .y           = 72,
+     .z           = 0,
+     .animSeqNo   = 1,
+     .rotation    = 1,
+     .unk_10      = 0,
+     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .unk_18      = 0,
+     .unk_1C      = 0,
+     .unk_20      = 0,
+     .unk_24      = 0,
+     },
     {
-        .resourceSet = 0,
-        .x           = 112,
-        .y           = 96,
-        .z           = 0,
-        .animSeqNo   = 1,
-        .rotation    = 1,
-        .unk_10      = 0,
-        .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-        .unk_18      = 0,
-        .unk_1C      = 0,
-        .unk_20      = 0,
-        .unk_24      = 0,
-    },
+     .resourceSet = 0,
+     .x           = 112,
+     .y           = 96,
+     .z           = 0,
+     .animSeqNo   = 1,
+     .rotation    = 1,
+     .unk_10      = 0,
+     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .unk_18      = 0,
+     .unk_1C      = 0,
+     .unk_20      = 0,
+     .unk_24      = 0,
+     },
     {
-        .resourceSet = 0,
-        .x           = 112,
-        .y           = 120,
-        .z           = 0,
-        .animSeqNo   = 1,
-        .rotation    = 1,
-        .unk_10      = 0,
-        .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-        .unk_18      = 0,
-        .unk_1C      = 0,
-        .unk_20      = 0,
-        .unk_24      = 0,
-    },
+     .resourceSet = 0,
+     .x           = 112,
+     .y           = 120,
+     .z           = 0,
+     .animSeqNo   = 1,
+     .rotation    = 1,
+     .unk_10      = 0,
+     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .unk_18      = 0,
+     .unk_1C      = 0,
+     .unk_20      = 0,
+     .unk_24      = 0,
+     },
     {
-        .resourceSet = 1,
-        .x           = 115,
-        .y           = 144,
-        .z           = 0,
-        .animSeqNo   = 0,
-        .rotation    = 1,
-        .unk_10      = 0,
-        .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-        .unk_18      = 0,
-        .unk_1C      = 0,
-        .unk_20      = 0,
-        .unk_24      = 0,
-    },
+     .resourceSet = 1,
+     .x           = 115,
+     .y           = 144,
+     .z           = 0,
+     .animSeqNo   = 0,
+     .rotation    = 1,
+     .unk_10      = 0,
+     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .unk_18      = 0,
+     .unk_1C      = 0,
+     .unk_20      = 0,
+     .unk_24      = 0,
+     },
     {
-        .resourceSet = 2,
-        .x           = 213,
-        .y           = 144,
-        .z           = 0,
-        .animSeqNo   = 0,
-        .rotation    = 1,
-        .unk_10      = 0,
-        .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-        .unk_18      = 0,
-        .unk_1C      = 0,
-        .unk_20      = 0,
-        .unk_24      = 0,
-    },
+     .resourceSet = 2,
+     .x           = 213,
+     .y           = 144,
+     .z           = 0,
+     .animSeqNo   = 0,
+     .rotation    = 1,
+     .unk_10      = 0,
+     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .unk_18      = 0,
+     .unk_1C      = 0,
+     .unk_20      = 0,
+     .unk_24      = 0,
+     },
     {
-        .resourceSet = 3,
-        .x           = 188,
-        .y           = 170,
-        .z           = 0,
-        .animSeqNo   = 0,
-        .rotation    = 1,
-        .unk_10      = 1,
-        .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-        .unk_18      = 0,
-        .unk_1C      = 0,
-        .unk_20      = 0,
-        .unk_24      = 0,
-    },
+     .resourceSet = 3,
+     .x           = 188,
+     .y           = 170,
+     .z           = 0,
+     .animSeqNo   = 0,
+     .rotation    = 1,
+     .unk_10      = 1,
+     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .unk_18      = 0,
+     .unk_1C      = 0,
+     .unk_20      = 0,
+     .unk_24      = 0,
+     },
     {
-        .resourceSet = 3,
-        .x           = 116,
-        .y           = 170,
-        .z           = 0,
-        .animSeqNo   = 0,
-        .rotation    = 1,
-        .unk_10      = 1,
-        .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-        .unk_18      = 0,
-        .unk_1C      = 0,
-        .unk_20      = 0,
-        .unk_24      = 0,
-    },
+     .resourceSet = 3,
+     .x           = 116,
+     .y           = 170,
+     .z           = 0,
+     .animSeqNo   = 0,
+     .rotation    = 1,
+     .unk_10      = 1,
+     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .unk_18      = 0,
+     .unk_1C      = 0,
+     .unk_20      = 0,
+     .unk_24      = 0,
+     },
 };
 
 static void OptionsApp_SetupGraphicsBanks(void);
@@ -557,75 +557,75 @@ static void OptionsApp_SetupBgConfig(OptionsApp_Data *data) {
 
     BgTemplate templates[5] = {
         {
-            .x          = 0,
-            .y          = 0,
-            .bufferSize = 0x800,
-            .baseTile   = 0,
-            .size       = GF_BG_SCR_SIZE_256x256,
-            .colorMode  = GX_BG_COLORMODE_16,
-            .screenBase = GX_BG_SCRBASE_0xf800,
-            .charBase   = GX_BG_CHARBASE_0x00000,
-            .bgExtPltt  = GX_BG_EXTPLTT_01,
-            .priority   = 0,
-            .areaOver   = GX_BG_AREAOVER_XLU,
-            .mosaic     = FALSE,
-        },
+         .x          = 0,
+         .y          = 0,
+         .bufferSize = 0x800,
+         .baseTile   = 0,
+         .size       = GF_BG_SCR_SIZE_256x256,
+         .colorMode  = GX_BG_COLORMODE_16,
+         .screenBase = GX_BG_SCRBASE_0xf800,
+         .charBase   = GX_BG_CHARBASE_0x00000,
+         .bgExtPltt  = GX_BG_EXTPLTT_01,
+         .priority   = 0,
+         .areaOver   = GX_BG_AREAOVER_XLU,
+         .mosaic     = FALSE,
+         },
         {
-            .x          = 0,
-            .y          = 0,
-            .bufferSize = 0x800,
-            .baseTile   = 0,
-            .size       = GF_BG_SCR_SIZE_256x256,
-            .colorMode  = GX_BG_COLORMODE_16,
-            .screenBase = GX_BG_SCRBASE_0xf000,
-            .charBase   = GX_BG_CHARBASE_0x04000,
-            .bgExtPltt  = GX_BG_EXTPLTT_01,
-            .priority   = 1,
-            .areaOver   = GX_BG_AREAOVER_XLU,
-            .mosaic     = FALSE,
-        },
+         .x          = 0,
+         .y          = 0,
+         .bufferSize = 0x800,
+         .baseTile   = 0,
+         .size       = GF_BG_SCR_SIZE_256x256,
+         .colorMode  = GX_BG_COLORMODE_16,
+         .screenBase = GX_BG_SCRBASE_0xf000,
+         .charBase   = GX_BG_CHARBASE_0x04000,
+         .bgExtPltt  = GX_BG_EXTPLTT_01,
+         .priority   = 1,
+         .areaOver   = GX_BG_AREAOVER_XLU,
+         .mosaic     = FALSE,
+         },
         {
-            .x          = 0,
-            .y          = 0,
-            .bufferSize = 0x800,
-            .baseTile   = 0,
-            .size       = GF_BG_SCR_SIZE_256x256,
-            .colorMode  = GX_BG_COLORMODE_16,
-            .screenBase = GX_BG_SCRBASE_0xe800,
-            .charBase   = GX_BG_CHARBASE_0x00000,
-            .bgExtPltt  = GX_BG_EXTPLTT_01,
-            .priority   = 2,
-            .areaOver   = GX_BG_AREAOVER_XLU,
-            .mosaic     = FALSE,
-        },
+         .x          = 0,
+         .y          = 0,
+         .bufferSize = 0x800,
+         .baseTile   = 0,
+         .size       = GF_BG_SCR_SIZE_256x256,
+         .colorMode  = GX_BG_COLORMODE_16,
+         .screenBase = GX_BG_SCRBASE_0xe800,
+         .charBase   = GX_BG_CHARBASE_0x00000,
+         .bgExtPltt  = GX_BG_EXTPLTT_01,
+         .priority   = 2,
+         .areaOver   = GX_BG_AREAOVER_XLU,
+         .mosaic     = FALSE,
+         },
         {
-            .x          = 0,
-            .y          = 0,
-            .bufferSize = 0x800,
-            .baseTile   = 0,
-            .size       = GF_BG_SCR_SIZE_256x256,
-            .colorMode  = GX_BG_COLORMODE_16,
-            .screenBase = GX_BG_SCRBASE_0xf800,
-            .charBase   = GX_BG_CHARBASE_0x00000,
-            .bgExtPltt  = GX_BG_EXTPLTT_01,
-            .priority   = 1,
-            .areaOver   = GX_BG_AREAOVER_XLU,
-            .mosaic     = FALSE,
-        },
+         .x          = 0,
+         .y          = 0,
+         .bufferSize = 0x800,
+         .baseTile   = 0,
+         .size       = GF_BG_SCR_SIZE_256x256,
+         .colorMode  = GX_BG_COLORMODE_16,
+         .screenBase = GX_BG_SCRBASE_0xf800,
+         .charBase   = GX_BG_CHARBASE_0x00000,
+         .bgExtPltt  = GX_BG_EXTPLTT_01,
+         .priority   = 1,
+         .areaOver   = GX_BG_AREAOVER_XLU,
+         .mosaic     = FALSE,
+         },
         {
-            .x          = 0,
-            .y          = 0,
-            .bufferSize = 0x800,
-            .baseTile   = 0,
-            .size       = GF_BG_SCR_SIZE_256x256,
-            .colorMode  = GX_BG_COLORMODE_16,
-            .screenBase = GX_BG_SCRBASE_0xf000,
-            .charBase   = GX_BG_CHARBASE_0x08000,
-            .bgExtPltt  = GX_BG_EXTPLTT_01,
-            .priority   = 0,
-            .areaOver   = GX_BG_AREAOVER_XLU,
-            .mosaic     = FALSE,
-        },
+         .x          = 0,
+         .y          = 0,
+         .bufferSize = 0x800,
+         .baseTile   = 0,
+         .size       = GF_BG_SCR_SIZE_256x256,
+         .colorMode  = GX_BG_COLORMODE_16,
+         .screenBase = GX_BG_SCRBASE_0xf000,
+         .charBase   = GX_BG_CHARBASE_0x08000,
+         .bgExtPltt  = GX_BG_EXTPLTT_01,
+         .priority   = 0,
+         .areaOver   = GX_BG_AREAOVER_XLU,
+         .mosaic     = FALSE,
+         },
     };
 
     for (int i = 0; i < 5; i++) {
@@ -1024,7 +1024,7 @@ _021E65B2:
     add sp, #0x20
     pop {r3, r4, r5, r6, r7, pc}
 }
-// clang-format off
+// clang-format on
 #endif
 
 static void OptionsApp_UpdateMenuEntryCarousel(OptionsApp_Data *data, u32 menuEntryId, OptionsApp_MenuEntry *menuEntry, s32 offset) {
@@ -1107,55 +1107,55 @@ static void OptionsApp_HandleInput(OptionsApp_Data *data) {
     if (gSystem.touchNew != 0) {
         const int hitboxIndex = TouchscreenHitbox_FindRectAtTouchNew(sOptionsAppTouchscreenHitboxes);
         switch (hitboxIndex) {
-            case -1:
-                break;
+        case -1:
+            break;
 
-            case 13: // Confirm button
-                data->currentMenuEntryId = ov54_021E6DA8[hitboxIndex][0];
-                OptionsApp_SetActiveButtonsXPosition(data);
-                ov54_021E6A64(data);
-                data->unk10_0 = 1;
-                PlaySE(SEQ_SE_DP_SAVE);
-                data->unk320 = 1;
-                sub_02018410(data->unk20, 1);
-                data->menuEntries[data->currentMenuEntryId].value = 1;
-                ov54_021E69D4(data, data->currentMenuEntryId);
-                Set2dSpriteAnimSeqNo(data->sprites[8], 3);
-                break;
+        case 13: // Confirm button
+            data->currentMenuEntryId = ov54_021E6DA8[hitboxIndex][0];
+            OptionsApp_SetActiveButtonsXPosition(data);
+            ov54_021E6A64(data);
+            data->unk10_0 = 1;
+            PlaySE(SEQ_SE_DP_SAVE);
+            data->unk320 = 1;
+            sub_02018410(data->unk20, 1);
+            data->menuEntries[data->currentMenuEntryId].value = 1;
+            ov54_021E69D4(data, data->currentMenuEntryId);
+            Set2dSpriteAnimSeqNo(data->sprites[8], 3);
+            break;
 
-            case 14: // Quit button
-                data->currentMenuEntryId = ov54_021E6DA8[hitboxIndex][0];
-                OptionsApp_SetActiveButtonsXPosition(data);
-                ov54_021E6A64(data);
-                data->unk10_0 = 2;
-                PlaySE(SEQ_SE_GS_GEARCANCEL);
-                data->unk320 = 1;
-                sub_02018410(data->unk20, 1);
-                data->menuEntries[data->currentMenuEntryId].value = 0;
-                ov54_021E69D4(data, data->currentMenuEntryId);
-                Set2dSpriteAnimSeqNo(data->sprites[7], 3);
-                break;
+        case 14: // Quit button
+            data->currentMenuEntryId = ov54_021E6DA8[hitboxIndex][0];
+            OptionsApp_SetActiveButtonsXPosition(data);
+            ov54_021E6A64(data);
+            data->unk10_0 = 2;
+            PlaySE(SEQ_SE_GS_GEARCANCEL);
+            data->unk320 = 1;
+            sub_02018410(data->unk20, 1);
+            data->menuEntries[data->currentMenuEntryId].value = 0;
+            ov54_021E69D4(data, data->currentMenuEntryId);
+            Set2dSpriteAnimSeqNo(data->sprites[7], 3);
+            break;
 
-            default: {
-                data->currentMenuEntryId = ov54_021E6DA8[hitboxIndex][0];
-                OptionsApp_MenuEntry *entry = &data->menuEntries[data->currentMenuEntryId];
+        default: {
+            data->currentMenuEntryId    = ov54_021E6DA8[hitboxIndex][0];
+            OptionsApp_MenuEntry *entry = &data->menuEntries[data->currentMenuEntryId];
 
-                u32 value = ov54_021E6DA8[hitboxIndex][1];
-                if (value == 3) {
-                    OptionsApp_UpdateMenuEntryCarousel(data, data->currentMenuEntryId, entry, -1);
-                } else if (value == 4) {
-                    OptionsApp_UpdateMenuEntryCarousel(data, data->currentMenuEntryId, entry, 1);
-                } else {
-                    entry->value = value;
-                }
-                ov54_021E6418(data, data->currentMenuEntryId);
-                ov54_021E69D4(data, data->currentMenuEntryId);
-                OptionsApp_SetActiveButtonsXPosition(data);
-                ov54_021E6A64(data);
-                data->unk320 = 1;
-                PlaySE(SEQ_SE_DP_SELECT);
-                break;
+            u32 value = ov54_021E6DA8[hitboxIndex][1];
+            if (value == 3) {
+                OptionsApp_UpdateMenuEntryCarousel(data, data->currentMenuEntryId, entry, -1);
+            } else if (value == 4) {
+                OptionsApp_UpdateMenuEntryCarousel(data, data->currentMenuEntryId, entry, 1);
+            } else {
+                entry->value = value;
             }
+            ov54_021E6418(data, data->currentMenuEntryId);
+            ov54_021E69D4(data, data->currentMenuEntryId);
+            OptionsApp_SetActiveButtonsXPosition(data);
+            ov54_021E6A64(data);
+            data->unk320 = 1;
+            PlaySE(SEQ_SE_DP_SELECT);
+            break;
+        }
         }
     } else if (gSystem.newKeys != 0) {
         OptionsApp_HandleKeyInput(data, &data->menuEntries[data->currentMenuEntryId]);
@@ -1190,25 +1190,25 @@ static void OptionsApp_SetupSpriteRenderer(OptionsApp_Data *data) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 
-    data->spriteRenderer = SpriteRenderer_Create(data->heapId);
+    data->spriteRenderer   = SpriteRenderer_Create(data->heapId);
     data->spriteGfxHandler = SpriteRenderer_CreateGfxHandler(data->spriteRenderer);
 
     const OamManagerParam unk1 = {
-        .fromOBJmain = 0,
-        .numOBJmain = 128,
+        .fromOBJmain    = 0,
+        .numOBJmain     = 128,
         .fromAffineMain = 0,
-        .numAffineMain = 32,
-        .fromOBJsub = 0,
-        .numOBJsub = 128,
-        .fromAffineSub = 0,
-        .numAffineSub = 32,
+        .numAffineMain  = 32,
+        .fromOBJsub     = 0,
+        .numOBJsub      = 128,
+        .fromAffineSub  = 0,
+        .numAffineSub   = 32,
     };
     const OamCharTransferParam unk2 = {
-        .maxTasks = 9,
-        .sizeMain = 0x400,
-        .sizeSub = 0x400,
+        .maxTasks     = 9,
+        .sizeMain     = 0x400,
+        .sizeSub      = 0x400,
         .charModeMain = GX_OBJVRAMMODE_CHAR_1D_32K,
-        .charModeSub = GX_OBJVRAMMODE_CHAR_1D_32K,
+        .charModeSub  = GX_OBJVRAMMODE_CHAR_1D_32K,
     };
     sub_0200CF70(data->spriteRenderer, &unk1, &unk2, 32);
     sub_0200CFF4(data->spriteRenderer, data->spriteGfxHandler, 9);

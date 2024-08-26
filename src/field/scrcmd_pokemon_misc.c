@@ -938,8 +938,8 @@ BOOL ScrCmd_743(ScriptContext *ctx) {
 }
 
 static const u8 sFriendshipRoomStatuesPositions[3][2] = {
-    { 4, 10 },
-    { 7, 5 },
+    { 4,  10 },
+    { 7,  5  },
     { 10, 10 },
 };
 

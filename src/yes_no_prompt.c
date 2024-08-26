@@ -74,7 +74,7 @@ void YesNoPrompt_Destroy(YesNoPrompt *yesno) {
 
 static void YesNoPrompt_InitFromTemplate_Internal(YesNoPrompt *yesno, const YesNoPromptTemplate *template) {
     static const u8 dimensions[2][2] = {
-        { 6, 4 },
+        { 6,  4 },
         { 16, 6 },
     };
 

@@ -72,19 +72,19 @@ const OVY_MGR_TEMPLATE ov36_App_MainMenu_SelectOption_Continue = {
 
 static const MailMessageTemplate sMailMsgTemplates[2] = {
     {
-        // ADVENTURE! EXCITED!
+     // ADVENTURE! EXCITED!
         .msg_bank  = MAILMSG_BANK_0292_GMM,
-        .msg_no    = msg_0292_00004,
-        .ec_groups = { EC_GROUP_LIFESTYLE, EC_GROUP_FEELINGS },
-        .ec_words  = { EC_WORD_LIFESTYLE_ADVENTURE - EC_WORDS_LIFESTYLE_MIN, EC_WORD_FEELINGS_EXCITED - EC_WORDS_FEELINGS_MIN },
-    },
+     .msg_no    = msg_0292_00004,
+     .ec_groups = { EC_GROUP_LIFESTYLE, EC_GROUP_FEELINGS },
+     .ec_words  = { EC_WORD_LIFESTYLE_ADVENTURE - EC_WORDS_LIFESTYLE_MIN, EC_WORD_FEELINGS_EXCITED - EC_WORDS_FEELINGS_MIN },
+     },
     {
-        // I love POKEMON!
+     // I love POKEMON!
         .msg_bank  = MAILMSG_BANK_0293_GMM,
-        .msg_no    = msg_0293_00001,
-        .ec_groups = { EC_GROUP_UNION, 0xFF },
-        .ec_words  = { EC_WORD_UNION_POKEMON - EC_WORDS_UNION_MIN, 0 },
-    },
+     .msg_no    = msg_0293_00001,
+     .ec_groups = { EC_GROUP_UNION, 0xFF },
+     .ec_words  = { EC_WORD_UNION_POKEMON - EC_WORDS_UNION_MIN, 0 },
+     },
 };
 
 BOOL ov36_TitleScreen_NewGame_AppInit(OVY_MANAGER *man, int *state) {
