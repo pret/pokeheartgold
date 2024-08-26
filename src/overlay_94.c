@@ -20,33 +20,33 @@
 #include "msgdata/msg/msg_0300.h"
 #include "overlay_94.h"
 
-static void _DestroyLocalWork(struct PartyMenuStruct *unkPtr);
-static void _InitEffects(struct PartyMenuStruct *unkPtr);
-static void _CleanupEffects(struct PartyMenuStruct *unkPtr);
-static void _CreateParticleSystem(IconFormChangeData *unkPtr);
-static void _EmitParticles(IconFormChangeData *unkPtr);
-static void particleEmitCallback(struct SPLEmitter *unkPtr);
+static void _DestroyLocalWork(PartyMenu *partyMenu);
+static void _InitEffects(PartyMenu *partyMenu);
+static void _CleanupEffects(PartyMenu *partyMenu);
+static void _CreateParticleSystem(IconFormChangeData *partyMenu);
+static void _EmitParticles(IconFormChangeData *partyMenu);
+static void particleEmitCallback(SPLEmitter *partyMenu);
 static s32 _RunParticleSystem(void);
-static void _DestroyParticleSystem(IconFormChangeData *unkPtr);
+static void _DestroyParticleSystem(IconFormChangeData *partyMenu);
 static u32 texAlloc(u32 szByte, BOOL is4x4comp);
 static u32 plttAlloc(u32 szByte, BOOL is4pltt);
 
-void PartyMenu_InitIconFormChangeData(PartyMenuStruct *unkPtr) {
-    if (unkPtr->iconFormChange != NULL) {
+void PartyMenu_InitIconFormChangeData(PartyMenu *partyMenu) {
+    if (partyMenu->iconFormChange != NULL) {
         GF_ASSERT(FALSE);
     }
-    unkPtr->iconFormChange = AllocFromHeap(HEAP_ID_PARTY_MENU, sizeof(IconFormChangeData));
-    MI_CpuClear8(unkPtr->iconFormChange, sizeof(IconFormChangeData));
-    unkPtr->iconFormChange->partyMonIndex = unkPtr->partyMonIndex;
+    partyMenu->iconFormChange = AllocFromHeap(HEAP_ID_PARTY_MENU, sizeof(IconFormChangeData));
+    MI_CpuClear8(partyMenu->iconFormChange, sizeof(IconFormChangeData));
+    partyMenu->iconFormChange->partyMonIndex = partyMenu->partyMonIndex;
 }
 
 // TODO: Create NAIX
 #define NARC_particle_giratina 0
 #define NARC_particle_shaymin  1
 
-BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct *unkPtr) {
-    IconFormChangeData *work = unkPtr->iconFormChange;
-    Pokemon *mon = Party_GetMonByIndex(unkPtr->args->party, unkPtr->partyMonIndex);
+BOOL PartyMenu_AnimateIconFormChange(PartyMenu *partyMenu) {
+    IconFormChangeData *work = partyMenu->iconFormChange;
+    Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
 
     switch (work->state) {
     case 0:
@@ -67,7 +67,7 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct *unkPtr) {
             GF_ASSERT(FALSE);
             break;
         }
-        Pokedex_SetMonCaughtFlag(Save_Pokedex_Get(FieldSystem_GetSaveData(unkPtr->args->fieldSystem)), mon);
+        Pokedex_SetMonCaughtFlag(Save_Pokedex_Get(FieldSystem_GetSaveData(partyMenu->args->fieldSystem)), mon);
         work->state++;
         break;
     case 1:
@@ -75,7 +75,7 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct *unkPtr) {
         work->state++;
         break;
     case 3:
-        _InitEffects(unkPtr);
+        _InitEffects(partyMenu);
         work->state++;
         break;
     case 4:
@@ -86,7 +86,7 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct *unkPtr) {
     case 5:
         work->effectTimer++;
         if (work->effectTimer == work->duration) {
-            sub_0207ECE0(unkPtr, unkPtr->partyMonIndex);
+            sub_0207ECE0(partyMenu, partyMenu->partyMonIndex);
         }
         _RunParticleSystem();
         if (work->effectTimer > work->duration) {
@@ -96,7 +96,7 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct *unkPtr) {
         }
         break;
     case 6:
-        _CleanupEffects(unkPtr);
+        _CleanupEffects(partyMenu);
         work->state++;
         break;
     case 7:
@@ -110,18 +110,18 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct *unkPtr) {
         break;
     case 9:
     {
-        String *str = NewString_ReadMsgData(unkPtr->msgData, msg_0300_00188); //" changed Form!"
-        BufferBoxMonNickname(unkPtr->msgFormat, 0, Mon_GetBoxMon(mon));
-        StringExpandPlaceholders(unkPtr->msgFormat, unkPtr->formattedStrBuf, str);
+        String *str = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00188); //" changed Form!"
+        BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+        StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, str);
         String_Delete(str);
-        PartyMenu_PrintMessageOnWindow34(unkPtr, -1, TRUE);
+        PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
         work->state++;
         break;
     }
     case 10:
-        if (TextPrinterCheckActive(unkPtr->textPrinterId) == 0) {
-            _DestroyLocalWork(unkPtr);
-            unkPtr->args->selectedAction = 0;
+        if (TextPrinterCheckActive(partyMenu->textPrinterId) == 0) {
+            _DestroyLocalWork(partyMenu);
+            partyMenu->args->selectedAction = 0;
             return TRUE;
         }
         break;
@@ -129,45 +129,45 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct *unkPtr) {
     return FALSE;
 }
 
-static void _DestroyLocalWork(PartyMenuStruct *unkPtr) {
-    FreeToHeap(unkPtr->iconFormChange);
-    unkPtr->iconFormChange = 0;
+static void _DestroyLocalWork(PartyMenu *partyMenu) {
+    FreeToHeap(partyMenu->iconFormChange);
+    partyMenu->iconFormChange = 0;
 }
 
-static void _InitEffects(PartyMenuStruct *unkPtr) {
-    PartyMenu_Toggle3dEngine(unkPtr, PARTY_MENU_3D_ENGINE_ON);
-    _CreateParticleSystem(unkPtr->iconFormChange);
+static void _InitEffects(PartyMenu *partyMenu) {
+    PartyMenu_Toggle3dEngine(partyMenu, PARTY_MENU_3D_ENGINE_ON);
+    _CreateParticleSystem(partyMenu->iconFormChange);
     G2_SetBlendAlpha(0, 63, 31, 0);
 }
 
-static void _CleanupEffects(PartyMenuStruct *unkPtr) {
-    _DestroyParticleSystem(unkPtr->iconFormChange);
-    PartyMenu_Toggle3dEngine(unkPtr, PARTY_MENU_3D_ENGINE_OFF);
+static void _CleanupEffects(PartyMenu *partyMenu) {
+    _DestroyParticleSystem(partyMenu->iconFormChange);
+    PartyMenu_Toggle3dEngine(partyMenu, PARTY_MENU_3D_ENGINE_OFF);
     G2_BlendNone();
 }
 
-static void _CreateParticleSystem(IconFormChangeData *unkPtr) {
+static void _CreateParticleSystem(IconFormChangeData *partyMenu) {
     sub_02014DA0();
     void *particleHeap = AllocFromHeap(HEAP_ID_PARTY_MENU, PARTICLE_HEAP_SIZE);
 
-    unkPtr->particleSystem = sub_02014DB4(texAlloc, plttAlloc, particleHeap, PARTICLE_HEAP_SIZE, 1, HEAP_ID_PARTY_MENU);
+    partyMenu->particleSystem = sub_02014DB4(texAlloc, plttAlloc, particleHeap, PARTICLE_HEAP_SIZE, 1, HEAP_ID_PARTY_MENU);
 
-    Camera_SetPerspectiveClippingPlane(1 * FX32_ONE, 900 * FX32_ONE, sub_02015524(unkPtr->particleSystem));
+    Camera_SetPerspectiveClippingPlane(1 * FX32_ONE, 900 * FX32_ONE, sub_02015524(partyMenu->particleSystem));
 }
 
-static void _EmitParticles(IconFormChangeData *unkPtr) {
-    sub_0201526C(unkPtr->particleSystem, sub_02015264(NARC_a_2_0_6, unkPtr->fileId, HEAP_ID_PARTY_MENU), 0xA, 1);
+static void _EmitParticles(IconFormChangeData *partyMenu) {
+    sub_0201526C(partyMenu->particleSystem, sub_02015264(NARC_a_2_0_6, partyMenu->fileId, HEAP_ID_PARTY_MENU), 0xA, 1);
 
-    switch (unkPtr->species) {
+    switch (partyMenu->species) {
     case SPECIES_GIRATINA:
-        sub_02015494(unkPtr->particleSystem, 0, particleEmitCallback, unkPtr);
-        sub_02015494(unkPtr->particleSystem, 1, particleEmitCallback, unkPtr);
-        sub_02015494(unkPtr->particleSystem, 2, particleEmitCallback, unkPtr);
+        sub_02015494(partyMenu->particleSystem, 0, particleEmitCallback, partyMenu);
+        sub_02015494(partyMenu->particleSystem, 1, particleEmitCallback, partyMenu);
+        sub_02015494(partyMenu->particleSystem, 2, particleEmitCallback, partyMenu);
         PlaySE(SEQ_SE_PL_W467109);
         break;
     case SPECIES_SHAYMIN:
-        sub_02015494(unkPtr->particleSystem, 0, particleEmitCallback, unkPtr);
-        sub_02015494(unkPtr->particleSystem, 1, particleEmitCallback, unkPtr);
+        sub_02015494(partyMenu->particleSystem, 0, particleEmitCallback, partyMenu);
+        sub_02015494(partyMenu->particleSystem, 1, particleEmitCallback, partyMenu);
         PlaySE(SEQ_SE_PL_W363);
         break;
     }
@@ -182,7 +182,7 @@ static const fx32 sPartyMonSpritePositions[][2] = {
   { 5000, -4500 }
 };
 
-static void particleEmitCallback(struct SPLEmitter *emitter) {
+static void particleEmitCallback(SPLEmitter *emitter) {
     IconFormChangeData *unkA = sub_02015504();
     SPL_SetEmitterPositionX(emitter, sPartyMonSpritePositions[unkA->partyMonIndex][0]);
     SPL_SetEmitterPositionY(emitter, sPartyMonSpritePositions[unkA->partyMonIndex][1]);
@@ -199,9 +199,9 @@ static s32 _RunParticleSystem(void) {
     return val;
 }
 
-static void _DestroyParticleSystem(IconFormChangeData *unkPtr) {
-    void *unkA = sub_020154D0(unkPtr->particleSystem);
-    sub_02014EBC(unkPtr->particleSystem);
+static void _DestroyParticleSystem(IconFormChangeData *partyMenu) {
+    void *unkA = sub_020154D0(partyMenu->particleSystem);
+    sub_02014EBC(partyMenu->particleSystem);
     FreeToHeap(unkA);
 }
 

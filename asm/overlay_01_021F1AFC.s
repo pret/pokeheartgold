@@ -144,7 +144,7 @@ _021F1BF6:
 	add r0, r5, #0
 	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
-	bl MapObject_GetFieldSysPtr
+	bl MapObject_GetFieldSystem
 	mov r0, #1
 	mov r1, #0
 	str r0, [sp]
@@ -471,7 +471,7 @@ _021F1E64:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _021F1E74:
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	cmp r0, #0x54
 	beq _021F1E80
 	mov r0, #0
@@ -643,7 +643,7 @@ _021F1F96:
 	lsr r1, r1, #0x10
 	bl FieldSystem_FlagSet
 	add r0, r5, #0
-	bl DeleteMapObject
+	bl MapObject_Delete
 	mov r1, #0xa
 	add r2, r6, #0
 	mul r2, r1
@@ -1718,7 +1718,7 @@ ov01_021F2830: ; 0x021F2830
 	pop {r3, r4, r5, pc}
 _021F2842:
 	ldr r0, [r5, #0x14]
-	bl MapObject_GetNextFacing
+	bl MapObject_GetNextFacingDirection
 	add r4, r0, #0
 	ldr r0, [r5, #0x14]
 	add r1, r4, #0
@@ -2568,7 +2568,7 @@ ov01_021F2E94: ; 0x021F2E94
 	pop {r4, pc}
 _021F2EA6:
 	ldr r0, [r4, #0x3c]
-	bl MapObject_GetNextFacing
+	bl MapObject_GetNextFacingDirection
 	ldr r0, [r4, #0x3c]
 	bl sub_0205F504
 	lsl r0, r0, #0x18
@@ -2606,7 +2606,7 @@ ov01_021F2EDC: ; 0x021F2EDC
 	cmp r0, #0
 	bne _021F2F22
 	add r0, r5, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	sub r0, #0xc4
 	cmp r0, #1
 	bls _021F2F22
@@ -2639,7 +2639,7 @@ ov01_021F2F24: ; 0x021F2F24
 	cmp r0, #0
 	bne _021F2F6C
 	add r0, r5, #0
-	bl MapObject_GetGfxID
+	bl MapObject_GetSpriteID
 	cmp r0, #0xc4
 	beq _021F2F4E
 	cmp r0, #0xc5

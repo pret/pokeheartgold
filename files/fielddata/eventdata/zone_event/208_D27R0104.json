@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_EVERYWHERE_seaman_2",
-      "ovid": "SPRITE_SEAMAN_2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SEAMAN_2",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_SAILOR_KENT)",
@@ -30,8 +30,8 @@
     },
     {
       "id": "obj_EVERYWHERE_gsman2",
-      "ovid": "SPRITE_GSMAN2",
-      "mvt": 9,
+      "sprite_id": "SPRITE_GSMAN2",
+      "movement": 9,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BIRD_KEEPER_GS_DENIS)",
@@ -47,8 +47,8 @@
     },
     {
       "id": "obj_EVERYWHERE_gsman2_2",
-      "ovid": "SPRITE_GSMAN2",
-      "mvt": 8,
+      "sprite_id": "SPRITE_GSMAN2",
+      "movement": 8,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_BIRD_KEEPER_GS_THEO)",
@@ -64,8 +64,8 @@
     },
     {
       "id": "obj_EVERYWHERE_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D27R0104_ETHER",
       "scr": "std_itemball_d27r0104_ether",

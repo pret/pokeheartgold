@@ -6,7 +6,7 @@
 #define HEAP_ID_TRAINER_CARD        ((HeapID)94)
 
 typedef struct UnkStruct_0203F7C2 {
-    int *unk0;
+    int *menuInputStatePtr;
     SaveData *saveData;
     int unk8;
     BOOL gameCleared;

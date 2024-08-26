@@ -1730,7 +1730,7 @@ ov80_022332D0: ; 0x022332D0
 	sub sp, #0x14
 	add r5, r0, #0
 	add r6, r1, #0
-	bl ov80_0222AB34
+	bl FrontierSystem_GetFrontierMap
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0xa8

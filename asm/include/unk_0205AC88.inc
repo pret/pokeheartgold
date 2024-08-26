@@ -29,8 +29,8 @@
 .public GetPlayerYCoord
 .public PlayerAvatar_GetMapObject
 .public sub_0205E3AC
-.public GetMapObjectByID
-.public MapObject_ForceSetFacingDirection
+.public MapObjectManager_GetFirstActiveObjectByID
+.public MapObject_SetFacingDirectionDirect
 .public MapObject_SetXRange
 .public MapObject_SetYRange
 .public MapObject_SetVisible

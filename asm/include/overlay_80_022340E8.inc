@@ -67,9 +67,9 @@
 .public ov80_0222F324
 .public ov80_0222F3FC
 .public ov80_0222F440
-.public ov80_022340E8
-.public ov80_0223437C
-.public ov80_02234520
+.public BattleArcadeData_Alloc
+.public BattleArcadeData_Init
+.public BattleArcadeData_Free
 .public ov80_02234550
 .public ov80_02234588
 .public ov80_02234764
@@ -78,9 +78,9 @@
 .public ov80_022347A8
 .public ov80_022347B8
 .public ov80_022347C4
-.public ov80_022347E4
-.public ov80_022347EC
-.public ov80_02234848
+.public BattleArcade_SetPartyBeforeBattle
+.public BattleArcade_SetPartyAfterBattle
+.public BattleArcade_GetWonBattlePoints
 .public ov80_02234968
 .public ov80_02234A38
 .public ov80_02234A74

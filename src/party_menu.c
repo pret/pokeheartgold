@@ -43,17 +43,17 @@ typedef struct UnkStruct_0207A22C {
 
 static BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState);
 static BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState);
-static void PartyMenu_UpdateTopScreenPanelYCoordFrame(PartyMenuStruct *partyMenu);
-static int PartyMenu_Subtask_Init(PartyMenuStruct *partyMenu);
-static int PartyMenu_Subtask_MainNormal(PartyMenuStruct *partyMenu);
-static int PartyMenu_Subtask_UseItemSelectMon(PartyMenuStruct *partyMenu);
-static int PartyMenu_Subtask_GiveItemSelectMon(PartyMenuStruct *partyMenu);
-static int PartyMenu_Subtask_HandleSubcontextMenuInput(PartyMenuStruct *partyMenu);
-static int PartyMenu_Subtask_WaitTextPrinter(PartyMenuStruct *partyMenu);
-static int PartyMenu_Subtask_AfterMessageBeginExit(PartyMenuStruct *partyMenu);
-static int PartyMenu_Subtask_YesNoMenuInit(PartyMenuStruct *partyMenu);
-static int PartyMenu_Subtask_YesNoMenuHandleInput(PartyMenuStruct *partyMenu);
-static int PartyMenu_Subtask_UseTMHM(PartyMenuStruct *partyMenu);
+static void PartyMenu_UpdateTopScreenPanelYCoordFrame(PartyMenu *partyMenu);
+static int PartyMenu_Subtask_Init(PartyMenu *partyMenu);
+static int PartyMenu_Subtask_MainNormal(PartyMenu *partyMenu);
+static int PartyMenu_Subtask_UseItemSelectMon(PartyMenu *partyMenu);
+static int PartyMenu_Subtask_GiveItemSelectMon(PartyMenu *partyMenu);
+static int PartyMenu_Subtask_HandleSubcontextMenuInput(PartyMenu *partyMenu);
+static int PartyMenu_Subtask_WaitTextPrinter(PartyMenu *partyMenu);
+static int PartyMenu_Subtask_AfterMessageBeginExit(PartyMenu *partyMenu);
+static int PartyMenu_Subtask_YesNoMenuInit(PartyMenu *partyMenu);
+static int PartyMenu_Subtask_YesNoMenuHandleInput(PartyMenu *partyMenu);
+static int PartyMenu_Subtask_UseTMHM(PartyMenu *partyMenu);
 static BOOL PartyMenuApp_Exit(OVY_MANAGER *manager, int *pState);
 static void sub_020796B8(void *cbData);
 static void sub_02079700(void);
@@ -63,69 +63,69 @@ static void sub_020798C4(BgConfig *bgConfig);
 static GF3DVramMan *Create3dVramManForPartyMenu(HeapID heapId);
 static void Init3dVramManForPartyMenu(void);
 static void Delete3dVramManForPartyMenu(GF3DVramMan *gf3dVramMan);
-static void sub_02079A14(PartyMenuStruct *partyMenu, NARC *narc);
-static BOOL sub_0207A880(PartyMenuStruct *partyMenu, u8 partySlot);
-static PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager);
-static void sub_02079CE4(PartyMenuStruct *partyMenu);
-static void sub_02079D38(PartyMenuStruct *partyMenu);
-static u8 PartyMenu_IsMonDrawStateActive(PartyMenuStruct *partyMenu, u8 partySlot);
-static void PartyMenu_MonSuperContestEligibilityCheck(PartyMenuStruct *partyMenu, Pokemon *mon, u8 partySlot);
+static void sub_02079A14(PartyMenu *partyMenu, NARC *narc);
+static BOOL sub_0207A880(PartyMenu *partyMenu, u8 partySlot);
+static PartyMenu *sub_02079BD8(OVY_MANAGER *manager);
+static void sub_02079CE4(PartyMenu *partyMenu);
+static void sub_02079D38(PartyMenu *partyMenu);
+static u8 PartyMenu_IsMonDrawStateActive(PartyMenu *partyMenu, u8 partySlot);
+static void PartyMenu_MonSuperContestEligibilityCheck(PartyMenu *partyMenu, Pokemon *mon, u8 partySlot);
 static u32 Pokemon_CountRibbonsByCategory(Pokemon *mon, u8 contestStat);
-static void sub_0207A174(PartyMenuStruct *partyMenu, u8 partySlot, u8 x, u8 y, u8 a4);
-static void PartyMenu_DrawPanelsAndPush(PartyMenuStruct *partyMenu);
-static void PartyMenu_DrawPanels_Default(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
-static void PartyMenu_DrawPanels_UseEvoStone(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
-static void PartyMenu_DrawPanels_UseTMHM(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
-static void PartyMenu_Setup_SuperContestEntry(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
-static void PartyMenu_DrawPanels_FrontierFacilityEntry(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1);
-static void sub_0207A780(PartyMenuStruct *partyMenu, u8 partySlot, s16 x, s16 y);
-static void sub_0207A89C(PartyMenuStruct *partyMenu);
-static u8 sub_0207A8FC(PartyMenuStruct *partyMenu);
-static void PartyMenu_MoveCursorSpriteTo(PartyMenuStruct *partyMenu, int selection, int x, int y);
-static void PartyMenu_MoveCursorSpriteTo_WithSfx(PartyMenuStruct *partyMenu, int selection, int x, int y);
-static BOOL PartyMenu_HandleDpadInput(PartyMenuStruct *partyMenu);
-static u8 PartyMenu_GetSelectionInDirection(PartyMenuStruct *partyMenu, u8 *px, u8 *py, u8 direction);
-static u8 PartyMenu_GetNewSelectionFromTable(PartyMenuStruct *partyMenu, u8 *px, u8 *py, const u8 *table);
-static void sub_0207AC20(PartyMenuStruct *partyMenu);
-static int sub_0207AC70(PartyMenuStruct *partyMenu, BOOL a1);
-static int PartyMenu_GetTouchButtonInput(PartyMenuStruct *partyMenu);
-static u8 PartyMenu_HandleInput(PartyMenuStruct *partyMenu);
-static void sub_0207AFC4(PartyMenuStruct *partyMenu);
-static u8 sub_0207B0B0(PartyMenuStruct *partyMenu, u8 *buf);
-static u8 PartyMenu_SetContextMenuItems_GiveCapsule(PartyMenuStruct *partyMenu, u8 *buf);
-static u8 sub_0207B1C8(PartyMenuStruct *partyMenu, u8 *buf);
-static u8 sub_0207B200(PartyMenuStruct *partyMenu, u8 *buf);
-static u8 sub_0207B23C(PartyMenuStruct *partyMenu, u8 *buf);
-static u8 PartyMenu_SetContextMenuItems_SpinTrade(PartyMenuStruct *partyMenu, u8 *buf);
-static u8 PartyMenu_SetContextMenuItems_BattleHallEntry(PartyMenuStruct *partyMenu, u8 *buf);
-static u8 sub_0207B2DC(PartyMenuStruct *partyMenu, u8 *buf);
+static void sub_0207A174(PartyMenu *partyMenu, u8 partySlot, u8 x, u8 y, u8 a4);
+static void PartyMenu_DrawPanelsAndPush(PartyMenu *partyMenu);
+static void PartyMenu_DrawPanels_Default(PartyMenu *partyMenu, const UnkStruct_0207A22C *a1);
+static void PartyMenu_DrawPanels_UseEvoStone(PartyMenu *partyMenu, const UnkStruct_0207A22C *a1);
+static void PartyMenu_DrawPanels_UseTMHM(PartyMenu *partyMenu, const UnkStruct_0207A22C *a1);
+static void PartyMenu_Setup_SuperContestEntry(PartyMenu *partyMenu, const UnkStruct_0207A22C *a1);
+static void PartyMenu_DrawPanels_FrontierFacilityEntry(PartyMenu *partyMenu, const UnkStruct_0207A22C *a1);
+static void sub_0207A780(PartyMenu *partyMenu, u8 partySlot, s16 x, s16 y);
+static void sub_0207A89C(PartyMenu *partyMenu);
+static u8 sub_0207A8FC(PartyMenu *partyMenu);
+static void PartyMenu_MoveCursorSpriteTo(PartyMenu *partyMenu, int selection, int x, int y);
+static void PartyMenu_MoveCursorSpriteTo_WithSfx(PartyMenu *partyMenu, int selection, int x, int y);
+static BOOL PartyMenu_HandleDpadInput(PartyMenu *partyMenu);
+static u8 PartyMenu_GetSelectionInDirection(PartyMenu *partyMenu, u8 *px, u8 *py, u8 direction);
+static u8 PartyMenu_GetNewSelectionFromTable(PartyMenu *partyMenu, u8 *px, u8 *py, const u8 *table);
+static void sub_0207AC20(PartyMenu *partyMenu);
+static int sub_0207AC70(PartyMenu *partyMenu, BOOL a1);
+static int PartyMenu_GetTouchButtonInput(PartyMenu *partyMenu);
+static u8 PartyMenu_HandleInput(PartyMenu *partyMenu);
+static void sub_0207AFC4(PartyMenu *partyMenu);
+static u8 sub_0207B0B0(PartyMenu *partyMenu, u8 *buf);
+static u8 PartyMenu_SetContextMenuItems_GiveCapsule(PartyMenu *partyMenu, u8 *buf);
+static u8 sub_0207B1C8(PartyMenu *partyMenu, u8 *buf);
+static u8 sub_0207B200(PartyMenu *partyMenu, u8 *buf);
+static u8 sub_0207B23C(PartyMenu *partyMenu, u8 *buf);
+static u8 PartyMenu_SetContextMenuItems_SpinTrade(PartyMenu *partyMenu, u8 *buf);
+static u8 PartyMenu_SetContextMenuItems_BattleHallEntry(PartyMenu *partyMenu, u8 *buf);
+static u8 sub_0207B2DC(PartyMenu *partyMenu, u8 *buf);
 static u8 MoveId_GetFieldEffectId(u16 move);
-static int PartyMenu_SoftboiledTryTargetCheck(PartyMenuStruct *partyMenu);
-static void sub_0207B51C(PartyMenuStruct *partyMenu, u8 selection, BOOL active);
-static u8 sub_0207B600(PartyMenuStruct *partyMenu);
-static int sub_0207B7E0(PartyMenuStruct *partyMenu);
-static u8 sub_0207BA78(PartyMenuStruct *partyMenu);
-static u8 sub_0207BB14(PartyMenuStruct *partyMenu);
-static u8 sub_0207BB88(PartyMenuStruct *partyMenu);
+static int PartyMenu_SoftboiledTryTargetCheck(PartyMenu *partyMenu);
+static void sub_0207B51C(PartyMenu *partyMenu, u8 selection, BOOL active);
+static u8 sub_0207B600(PartyMenu *partyMenu);
+static int sub_0207B7E0(PartyMenu *partyMenu);
+static u8 sub_0207BA78(PartyMenu *partyMenu);
+static u8 sub_0207BB14(PartyMenu *partyMenu);
+static u8 sub_0207BB88(PartyMenu *partyMenu);
 static void sub_0207BBFC(u8 a0, s16 *px, s16 *py);
-static BOOL PartyMenu_Subtask_HandleContextMenuInput(PartyMenuStruct *partyMenu, int *pState);
-static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu);
-static u8 PartyMenu_SoftboiledTargetCheck(PartyMenuStruct *partyMenu);
-static BOOL PartyMenu_SoftboiledHPTransferStep(PartyMenuStruct *partyMenu, u8 partySlot, s8 delta);
-static u8 PartyMenu_GiveOrUseItemOnMon_HandleInput(PartyMenuStruct *partyMenu);
-static int PartyMenu_HandleUseItemOnMon(PartyMenuStruct *partyMenu);
-static u8 sub_0207C3D0(PartyMenuStruct *partyMenu);
-static int PartyMenu_Subtask_GiveItemToMon(PartyMenuStruct *partyMenu);
-static int sub_0207C5D4(PartyMenuStruct *partyMenu, Pokemon *mon, s32 *transformResult);
-static void PartyMenu_SwapMonHeldItem(PartyMenuStruct *partyMenu, Pokemon *mon, u32 oldItemId, u32 newItemId);
-static int PartyMenu_Subtask_PrintItemSwapMessage(PartyMenuStruct *partyMenu);
-static int PartyMenu_Subtask_PrintGiveGriseousOrbMessage(PartyMenuStruct *partyMenu);
-static int PartyMenu_Subtask_WaitGiveGriseiousOrbAnim(PartyMenuStruct *partyMenu);
-static int PartyMenu_Subtask_PrintAskSwitchItems(PartyMenuStruct *partyMenu);
-static int PartyMenu_Subtask_SwitchItemsHandleYesNoInput(PartyMenuStruct *partyMenu);
-static int PartyMenu_SwitchItemsDeclined(PartyMenuStruct *partyMenu);
-static int sub_0207C908(PartyMenuStruct *partyMenu);
-static int PartyMenu_HandleChooseMonForInGameTrade(PartyMenuStruct *partyMenu);
+static BOOL PartyMenu_Subtask_HandleContextMenuInput(PartyMenu *partyMenu, int *pState);
+static int PartyMenu_Subtask_Softboiled(PartyMenu *partyMenu);
+static u8 PartyMenu_SoftboiledTargetCheck(PartyMenu *partyMenu);
+static BOOL PartyMenu_SoftboiledHPTransferStep(PartyMenu *partyMenu, u8 partySlot, s8 delta);
+static u8 PartyMenu_GiveOrUseItemOnMon_HandleInput(PartyMenu *partyMenu);
+static int PartyMenu_HandleUseItemOnMon(PartyMenu *partyMenu);
+static u8 sub_0207C3D0(PartyMenu *partyMenu);
+static int PartyMenu_Subtask_GiveItemToMon(PartyMenu *partyMenu);
+static int PartyMenu_GiveItemToMon_HandleGriseousOrb(PartyMenu *partyMenu, Pokemon *mon, s32 *transformResult);
+static void PartyMenu_SwapMonHeldItem(PartyMenu *partyMenu, Pokemon *mon, u32 oldItemId, u32 newItemId);
+static int PartyMenu_Subtask_PrintItemSwapMessage(PartyMenu *partyMenu);
+static int PartyMenu_Subtask_PrintGiveGriseousOrbMessage(PartyMenu *partyMenu);
+static int PartyMenu_Subtask_WaitGiveGriseiousOrbAnim(PartyMenu *partyMenu);
+static int PartyMenu_Subtask_PrintAskSwitchItems(PartyMenu *partyMenu);
+static int PartyMenu_Subtask_SwitchItemsHandleYesNoInput(PartyMenu *partyMenu);
+static int PartyMenu_SwitchItemsDeclined(PartyMenu *partyMenu);
+static int PartyMenu_GiveOrSwapHeldItems(PartyMenu *partyMenu);
+static int PartyMenu_HandleChooseMonForInGameTrade(PartyMenu *partyMenu);
 
 const OVY_MGR_TEMPLATE gOverlayTemplate_PartyMenu = {
     PartyMenuApp_Init,
@@ -216,7 +216,7 @@ static const u16 sFieldMoves[PARTY_MON_CONTEXT_MENU_FIELD_MOVES_COUNT] = {
 };
 
 static BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
-    PartyMenuStruct *partyMenu;
+    PartyMenu *partyMenu;
     NARC * narc;
 
     Main_SetVBlankIntrCB(NULL, NULL);
@@ -283,7 +283,7 @@ static BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
 }
 
 static BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState) {
-    PartyMenuStruct *partyMenu = (PartyMenuStruct *)OverlayManager_GetData(manager);
+    PartyMenu *partyMenu = (PartyMenu *)OverlayManager_GetData(manager);
 
     switch (*pState) {
     case PARTY_MENU_STATE_INIT:
@@ -331,7 +331,7 @@ static BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState) {
         *pState = PartyMenu_Subtask_WaitGiveGriseiousOrbAnim(partyMenu);
         break;
     case PARTY_MENU_STATE_14:
-        *pState = sub_0207C908(partyMenu);
+        *pState = PartyMenu_GiveOrSwapHeldItems(partyMenu);
         break;
     case PARTY_MENU_STATE_HANDLE_SUBCONTEXT_MENU_INPUT:
         *pState = PartyMenu_Subtask_HandleSubcontextMenuInput(partyMenu);
@@ -418,11 +418,11 @@ static BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState) {
     return FALSE;
 }
 
-void PartyMenu_SetTopScreenSelectionPanelVisibility(PartyMenuStruct *partyMenu, BOOL show) {
+void PartyMenu_SetTopScreenSelectionPanelVisibility(PartyMenu *partyMenu, BOOL show) {
     partyMenu->topScreenPanelShow = show;
 }
 
-static void PartyMenu_UpdateTopScreenPanelYCoordFrame(PartyMenuStruct *partyMenu) {
+static void PartyMenu_UpdateTopScreenPanelYCoordFrame(PartyMenu *partyMenu) {
     if (partyMenu->topScreenPanelShow) {
         partyMenu->topScreenPanelYPos += 12;
         if (partyMenu->topScreenPanelYPos > 40) {
@@ -438,7 +438,7 @@ static void PartyMenu_UpdateTopScreenPanelYCoordFrame(PartyMenuStruct *partyMenu
     }
 }
 
-static int PartyMenu_Subtask_Init(PartyMenuStruct *partyMenu) {
+static int PartyMenu_Subtask_Init(PartyMenu *partyMenu) {
     if (IsPaletteFadeFinished() == TRUE) {
         if (partyMenu->args->context == PARTY_MENU_CONTEXT_USE_ITEM || partyMenu->args->context == PARTY_MENU_CONTEXT_EVO_STONE) {
             if (ItemId_IsReviveAll(partyMenu->args->itemId) == TRUE) {
@@ -468,7 +468,7 @@ static int PartyMenu_Subtask_Init(PartyMenuStruct *partyMenu) {
     }
 }
 
-static int PartyMenu_Subtask_MainNormal(PartyMenuStruct *partyMenu) {
+static int PartyMenu_Subtask_MainNormal(PartyMenu *partyMenu) {
     switch (PartyMenu_HandleInput(partyMenu)) {
     case 0:
         switch (partyMenu->args->context) {
@@ -502,7 +502,7 @@ static int PartyMenu_Subtask_MainNormal(PartyMenuStruct *partyMenu) {
     return PARTY_MENU_STATE_1;
 }
 
-static int PartyMenu_Subtask_UseItemSelectMon(PartyMenuStruct *partyMenu) {
+static int PartyMenu_Subtask_UseItemSelectMon(PartyMenu *partyMenu) {
     u8 x = PartyMenu_GiveOrUseItemOnMon_HandleInput(partyMenu);
     if (x == 0 || x == 2) {
         thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
@@ -515,7 +515,7 @@ static int PartyMenu_Subtask_UseItemSelectMon(PartyMenuStruct *partyMenu) {
     }
 }
 
-static int PartyMenu_Subtask_GiveItemSelectMon(PartyMenuStruct *partyMenu) {
+static int PartyMenu_Subtask_GiveItemSelectMon(PartyMenu *partyMenu) {
     u8 x = PartyMenu_GiveOrUseItemOnMon_HandleInput(partyMenu);
     if (x == 0 || x == 2) {
         thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
@@ -528,7 +528,7 @@ static int PartyMenu_Subtask_GiveItemSelectMon(PartyMenuStruct *partyMenu) {
     }
 }
 
-static int PartyMenu_Subtask_HandleSubcontextMenuInput(PartyMenuStruct *partyMenu) {
+static int PartyMenu_Subtask_HandleSubcontextMenuInput(PartyMenu *partyMenu) {
     u32 func = PartyMenu_HandleSubcontextMenuInput_TopLevel(partyMenu, partyMenu->contextMenuCursor);
     switch (func) {
     case LIST_CANCEL:
@@ -551,7 +551,7 @@ static int PartyMenu_Subtask_HandleSubcontextMenuInput(PartyMenuStruct *partyMen
     }
 }
 
-static int PartyMenu_Subtask_WaitTextPrinter(PartyMenuStruct *partyMenu) {
+static int PartyMenu_Subtask_WaitTextPrinter(PartyMenu *partyMenu) {
     if (TextPrinterCheckActive(partyMenu->textPrinterId) == FALSE) {
         return partyMenu->afterTextPrinterState;
     } else {
@@ -559,16 +559,16 @@ static int PartyMenu_Subtask_WaitTextPrinter(PartyMenuStruct *partyMenu) {
     }
 }
 
-static int PartyMenu_Subtask_AfterMessageBeginExit(PartyMenuStruct *partyMenu) {
+static int PartyMenu_Subtask_AfterMessageBeginExit(PartyMenu *partyMenu) {
     return PARTY_MENU_STATE_BEGIN_EXIT;
 }
 
-static int PartyMenu_Subtask_YesNoMenuInit(PartyMenuStruct *partyMenu) {
+static int PartyMenu_Subtask_YesNoMenuInit(PartyMenu *partyMenu) {
     PartyMenu_CreateYesNoPrompt(partyMenu);
     return PARTY_MENU_STATE_YES_NO_HANDLE_INPUT;
 }
 
-static int PartyMenu_Subtask_YesNoMenuHandleInput(PartyMenuStruct *partyMenu) {
+static int PartyMenu_Subtask_YesNoMenuHandleInput(PartyMenu *partyMenu) {
     switch (YesNoPrompt_HandleInput(partyMenu->yesNoPrompt)) {
     case YESNORESPONSE_YES:
         YesNoPrompt_Destroy(partyMenu->yesNoPrompt);
@@ -583,7 +583,7 @@ static int PartyMenu_Subtask_YesNoMenuHandleInput(PartyMenuStruct *partyMenu) {
     }
 }
 
-static int PartyMenu_Subtask_UseTMHM(PartyMenuStruct *partyMenu) {
+static int PartyMenu_Subtask_UseTMHM(PartyMenu *partyMenu) {
     u8 x = PartyMenu_GiveOrUseItemOnMon_HandleInput(partyMenu);
     if (x == 0 || x == 2) {
         thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
@@ -606,7 +606,7 @@ static int PartyMenu_Subtask_UseTMHM(PartyMenuStruct *partyMenu) {
 
 static BOOL PartyMenuApp_Exit(OVY_MANAGER *manager, int *pState) {
     u32 i;
-    PartyMenuStruct *partyMenu = (PartyMenuStruct *)OverlayManager_GetData(manager);
+    PartyMenu *partyMenu = (PartyMenu *)OverlayManager_GetData(manager);
     sub_02002B8C(FALSE);
     Main_SetVBlankIntrCB(NULL, NULL);
     PartyMenu_RemoveSpriteRenderer(partyMenu);
@@ -639,7 +639,7 @@ static BOOL PartyMenuApp_Exit(OVY_MANAGER *manager, int *pState) {
 }
 
 static void sub_020796B8(void *cbData) {
-    PartyMenuStruct *partyMenu = (PartyMenuStruct *)cbData;
+    PartyMenu *partyMenu = (PartyMenu *)cbData;
 
     BgSetPosTextAndCommit(partyMenu->bgConfig, GF_BG_LYR_SUB_0, BG_POS_OP_SET_Y, partyMenu->topScreenPanelYPos);
     BgSetPosTextAndCommit(partyMenu->bgConfig, GF_BG_LYR_SUB_2, BG_POS_OP_SET_Y, partyMenu->topScreenPanelYPos);
@@ -878,7 +878,7 @@ static void sub_020798C4(BgConfig *bgConfig) {
     FreeToHeapExplicit(HEAP_ID_PARTY_MENU, bgConfig);
 }
 
-void PartyMenu_Toggle3dEngine(PartyMenuStruct *partyMenu, PartyMenu3dEngineToggle toggle) {
+void PartyMenu_Toggle3dEngine(PartyMenu *partyMenu, PartyMenu3dEngineToggle toggle) {
     if (toggle == PARTY_MENU_3D_ENGINE_ON) {
         ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_OFF);
         FreeBgTilemapBuffer(partyMenu->bgConfig, GF_BG_LYR_MAIN_0);
@@ -912,7 +912,7 @@ static void Delete3dVramManForPartyMenu(GF3DVramMan *gf3dVramMan) {
     GF_3DVramMan_Delete(gf3dVramMan);
 }
 
-static void sub_02079A14(PartyMenuStruct *partyMenu, NARC *narc) {
+static void sub_02079A14(PartyMenu *partyMenu, NARC *narc) {
     GfGfxLoader_LoadCharDataFromOpenNarc(narc, NARC_plist_gra_plist_gra_00000015_NCGR, partyMenu->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
     GfGfxLoader_LoadScrnDataFromOpenNarc(narc, NARC_plist_gra_plist_gra_00000017_NSCR, partyMenu->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, HEAP_ID_PARTY_MENU);
 
@@ -943,10 +943,10 @@ static void sub_02079A14(PartyMenuStruct *partyMenu, NARC *narc) {
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB_BLACK);
 }
 
-static PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager) {
+static PartyMenu *sub_02079BD8(OVY_MANAGER *manager) {
     u32 i;
-    PartyMenuStruct *ret = (PartyMenuStruct *)OverlayManager_CreateAndGetData(manager, sizeof(PartyMenuStruct), HEAP_ID_PARTY_MENU);
-    memset(ret, 0, sizeof(PartyMenuStruct));
+    PartyMenu *ret = (PartyMenu *)OverlayManager_CreateAndGetData(manager, sizeof(PartyMenu), HEAP_ID_PARTY_MENU);
+    memset(ret, 0, sizeof(PartyMenu));
     ret->args = OverlayManager_GetArgs(manager);
     ret->bgConfig = BgConfig_Alloc(HEAP_ID_PARTY_MENU);
     if (ret->args->context == PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT && ret->args->linkBattleRuleset != NULL) {
@@ -971,7 +971,7 @@ static PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager) {
     return ret;
 }
 
-static void sub_02079CE4(PartyMenuStruct *partyMenu) {
+static void sub_02079CE4(PartyMenu *partyMenu) {
     if (partyMenu->args->context & 0x80) {
         partyMenu->cancelDisabled = TRUE;
         partyMenu->args->context ^= 0x80;
@@ -982,7 +982,7 @@ static void sub_02079CE4(PartyMenuStruct *partyMenu) {
     }
 }
 
-static void sub_02079D38(PartyMenuStruct *partyMenu) {
+static void sub_02079D38(PartyMenu *partyMenu) {
     u8 r4 = 3;
     if (partyMenu->args->unk_25 == 2) {
         partyMenu->unk_948 = _0210144C;
@@ -1008,14 +1008,14 @@ static void sub_02079D38(PartyMenuStruct *partyMenu) {
     sub_0207D998(partyMenu, r4);
 }
 
-static u8 PartyMenu_IsMonDrawStateActive(PartyMenuStruct *partyMenu, u8 partySlot) {
+static u8 PartyMenu_IsMonDrawStateActive(PartyMenu *partyMenu, u8 partySlot) {
     return partyMenu->monsDrawState[partySlot].active;
 }
 
-BOOL sub_02079E38(PartyMenuStruct *partyMenu, u8 partySlot) {
+BOOL sub_02079E38(PartyMenu *partyMenu, u8 partySlot) {
     Pokemon *mon;
     u32 unused;
-    u16 species;  // sp4
+    u16 species;
 
     (void)unused;
 
@@ -1049,7 +1049,7 @@ BOOL sub_02079E38(PartyMenuStruct *partyMenu, u8 partySlot) {
     return TRUE;
 }
 
-static void PartyMenu_MonSuperContestEligibilityCheck(PartyMenuStruct *partyMenu, Pokemon *mon, u8 partySlot) {
+static void PartyMenu_MonSuperContestEligibilityCheck(PartyMenu *partyMenu, Pokemon *mon, u8 partySlot) {
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_SUPER_CONTEST) {
         // Eggs and dead mons cannot compete
         if (partyMenu->monsDrawState[partySlot].isEgg == TRUE || partyMenu->monsDrawState[partySlot].hp == 0) {
@@ -1109,11 +1109,11 @@ static u32 Pokemon_CountRibbonsByCategory(Pokemon *mon, u8 contestStat) {
     return result;
 }
 
-u16 *sub_0207A16C(PartyMenuStruct *partyMenu) {
+u16 *sub_0207A16C(PartyMenu *partyMenu) {
     return &partyMenu->unk_3D4[0x36];
 }
 
-static void sub_0207A174(PartyMenuStruct *partyMenu, u8 partySlot, u8 x, u8 y, u8 a4) {
+static void sub_0207A174(PartyMenu *partyMenu, u8 partySlot, u8 x, u8 y, u8 a4) {
     void *src;
     if (partySlot == 0 || (partyMenu->args->unk_25 != 0 && partySlot == 1)) {
         src = partyMenu->unk_314;
@@ -1130,7 +1130,7 @@ static void sub_0207A174(PartyMenuStruct *partyMenu, u8 partySlot, u8 x, u8 y, u
     sub_0207A7F4(partyMenu, partySlot);
 }
 
-static void PartyMenu_DrawPanelsAndPush(PartyMenuStruct *partyMenu) {
+static void PartyMenu_DrawPanelsAndPush(PartyMenu *partyMenu) {
     const UnkStruct_0207A22C *r1 = partyMenu->args->unk_25 == 2 ? _0210150C[1] : _0210150C[0];
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_EVO_STONE) {
         PartyMenu_DrawPanels_UseEvoStone(partyMenu, r1);
@@ -1147,7 +1147,7 @@ static void PartyMenu_DrawPanelsAndPush(PartyMenuStruct *partyMenu) {
     ScheduleBgTilemapBufferTransfer(partyMenu->bgConfig, GF_BG_LYR_SUB_0);
 }
 
-static void PartyMenu_DrawPanels_Default(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
+static void PartyMenu_DrawPanels_Default(PartyMenu *partyMenu, const UnkStruct_0207A22C *a1) {
     NARC *narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
     for (u8 i = 0; i < PARTY_SIZE; ++i) {
         if (sub_02079E38(partyMenu, i) == TRUE) {
@@ -1171,7 +1171,7 @@ static void PartyMenu_DrawPanels_Default(PartyMenuStruct *partyMenu, const UnkSt
     NARC_Delete(narc);
 }
 
-static void PartyMenu_DrawPanels_UseEvoStone(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
+static void PartyMenu_DrawPanels_UseEvoStone(PartyMenu *partyMenu, const UnkStruct_0207A22C *a1) {
     NARC *narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
     for (u8 i = 0; i < PARTY_SIZE; ++i) {
         if (sub_02079E38(partyMenu, i) == TRUE) {
@@ -1191,7 +1191,7 @@ static void PartyMenu_DrawPanels_UseEvoStone(PartyMenuStruct *partyMenu, const U
     NARC_Delete(narc);
 }
 
-static void PartyMenu_DrawPanels_UseTMHM(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
+static void PartyMenu_DrawPanels_UseTMHM(PartyMenu *partyMenu, const UnkStruct_0207A22C *a1) {
     NARC *narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
     for (u8 i = 0; i < PARTY_SIZE; ++i) {
         if (sub_02079E38(partyMenu, i) == TRUE) {
@@ -1211,7 +1211,7 @@ static void PartyMenu_DrawPanels_UseTMHM(PartyMenuStruct *partyMenu, const UnkSt
     NARC_Delete(narc);
 }
 
-static void PartyMenu_Setup_SuperContestEntry(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
+static void PartyMenu_Setup_SuperContestEntry(PartyMenu *partyMenu, const UnkStruct_0207A22C *a1) {
     NARC *narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
     for (u8 i = 0; i < PARTY_SIZE; ++i) {
         if (sub_02079E38(partyMenu, i) == TRUE) {
@@ -1231,7 +1231,7 @@ static void PartyMenu_Setup_SuperContestEntry(PartyMenuStruct *partyMenu, const 
     NARC_Delete(narc);
 }
 
-static void PartyMenu_DrawPanels_FrontierFacilityEntry(PartyMenuStruct *partyMenu, const UnkStruct_0207A22C *a1) {
+static void PartyMenu_DrawPanels_FrontierFacilityEntry(PartyMenu *partyMenu, const UnkStruct_0207A22C *a1) {
     NARC *narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
     for (u8 i = 0; i < PARTY_SIZE; ++i) {
         if (sub_02079E38(partyMenu, i) == TRUE) {
@@ -1252,7 +1252,7 @@ static void PartyMenu_DrawPanels_FrontierFacilityEntry(PartyMenuStruct *partyMen
     NARC_Delete(narc);
 }
 
-static void sub_0207A780(PartyMenuStruct *partyMenu, u8 partySlot, s16 x, s16 y) {
+static void sub_0207A780(PartyMenu *partyMenu, u8 partySlot, s16 x, s16 y) {
     CopyToBgTilemapRect(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, x, y, 16, 6, partyMenu->unk_494, 0, 0, 16, 6);
     BgTilemapRectChangePalette(partyMenu->bgConfig, GF_BG_LYR_MAIN_2, x, y, 16, 6, 1);
     PartyMenu_DrawMonStatusIcon(partyMenu, partySlot, PARTY_MON_STATUS_ICON_OK);
@@ -1260,7 +1260,7 @@ static void sub_0207A780(PartyMenuStruct *partyMenu, u8 partySlot, s16 x, s16 y)
     PartyMenu_DrawMonCapsuleIcon(partyMenu, partySlot);
 }
 
-void sub_0207A7F4(PartyMenuStruct *partyMenu, u8 partySlot) {
+void sub_0207A7F4(PartyMenu *partyMenu, u8 partySlot) {
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partySlot);
     u8 paletteSlot;
     if (partyMenu->secondCursorActive == TRUE && (partySlot == partyMenu->partyMonIndex || partySlot == partyMenu->softboiledDonorSlot)) {
@@ -1280,11 +1280,11 @@ void sub_0207A7F4(PartyMenuStruct *partyMenu, u8 partySlot) {
     BG_LoadPlttData(GF_BG_LYR_MAIN_2, &partyMenu->hpBarPalettes[16 * paletteSlot], 0x10, (partySlot + 3) * 32);
 }
 
-static BOOL sub_0207A880(PartyMenuStruct *partyMenu, u8 partySlot) {
+static BOOL sub_0207A880(PartyMenu *partyMenu, u8 partySlot) {
     return partyMenu->args->unk_25 == 2 && (partySlot & 1);
 }
 
-static void sub_0207A89C(PartyMenuStruct *partyMenu) {
+static void sub_0207A89C(PartyMenu *partyMenu) {
     u8 x;
     u8 y;
     sub_02020A24(partyMenu->unk_948, &x, &y, 0, 0, partyMenu->partyMonIndex, 4);
@@ -1299,7 +1299,7 @@ static const u8 _021012CC[][6] = {
     { 5, 3, 1, 4, 2, 0 },
 };
 
-static u8 sub_0207A8FC(PartyMenuStruct *partyMenu) {
+static u8 sub_0207A8FC(PartyMenu *partyMenu) {
     if (PartyMenu_HandleDpadInput(partyMenu) == TRUE) {
         return 1;
     } else {
@@ -1307,7 +1307,7 @@ static u8 sub_0207A8FC(PartyMenuStruct *partyMenu) {
     }
 }
 
-static void PartyMenu_MoveCursorSpriteTo(PartyMenuStruct *partyMenu, int selection, int x, int y) {
+static void PartyMenu_MoveCursorSpriteTo(PartyMenu *partyMenu, int selection, int x, int y) {
     if (selection == PARTY_MON_SELECTION_CANCEL || selection == PARTY_MON_SELECTION_CONFIRM) {
         Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], FALSE);
     } else {
@@ -1321,14 +1321,14 @@ static void PartyMenu_MoveCursorSpriteTo(PartyMenuStruct *partyMenu, int selecti
     sub_0207B51C(partyMenu, partyMenu->partyMonIndex, TRUE);
 }
 
-static void PartyMenu_MoveCursorSpriteTo_WithSfx(PartyMenuStruct *partyMenu, int selection, int x, int y) {
+static void PartyMenu_MoveCursorSpriteTo_WithSfx(PartyMenu *partyMenu, int selection, int x, int y) {
     PartyMenu_MoveCursorSpriteTo(partyMenu, selection, x, y);
     PlaySE(SEQ_SE_DP_SELECT);
 }
 
 // Moves cursor sprite in response to dpad input.
 // Returns TRUE if the cursor was moved, FALSE otherwise
-static BOOL PartyMenu_HandleDpadInput(PartyMenuStruct *partyMenu) {
+static BOOL PartyMenu_HandleDpadInput(PartyMenu *partyMenu) {
     u8 newSelection;
     u8 direction;
     u8 x, y;
@@ -1376,7 +1376,7 @@ static BOOL PartyMenu_HandleDpadInput(PartyMenuStruct *partyMenu) {
     return FALSE;
 }
 
-static u8 PartyMenu_GetSelectionInDirection(PartyMenuStruct *partyMenu, u8 *px, u8 *py, u8 direction) {
+static u8 PartyMenu_GetSelectionInDirection(PartyMenu *partyMenu, u8 *px, u8 *py, u8 direction) {
     u8 result = partyMenu->partyMonIndex;
     while (TRUE) {
         result = sub_02020A24(partyMenu->unk_948, px, py, 0, 0, result, direction);
@@ -1390,7 +1390,7 @@ static u8 PartyMenu_GetSelectionInDirection(PartyMenuStruct *partyMenu, u8 *px, 
     return result;
 }
 
-static u8 PartyMenu_GetNewSelectionFromTable(PartyMenuStruct *partyMenu, u8 *px, u8 *py, const u8 *table) {
+static u8 PartyMenu_GetNewSelectionFromTable(PartyMenu *partyMenu, u8 *px, u8 *py, const u8 *table) {
     u8 i = 0;
     while (TRUE) {
         if (i == 6) {
@@ -1406,7 +1406,7 @@ static u8 PartyMenu_GetNewSelectionFromTable(PartyMenuStruct *partyMenu, u8 *px,
     return 0;
 }
 
-void sub_0207AB84(PartyMenuStruct *partyMenu, u8 partySlot) {
+void sub_0207AB84(PartyMenu *partyMenu, u8 partySlot) {
     if (partySlot == 6 || partySlot == 7) {
         Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], FALSE);
     } else {
@@ -1422,7 +1422,7 @@ void sub_0207AB84(PartyMenuStruct *partyMenu, u8 partySlot) {
     sub_0207B51C(partyMenu, partyMenu->partyMonIndex, TRUE);
 }
 
-static void sub_0207AC20(PartyMenuStruct *partyMenu) {
+static void sub_0207AC20(PartyMenu *partyMenu) {
     s16 x, y;
     switch (partyMenu->unk_C60) {
     case 0:
@@ -1438,7 +1438,7 @@ static void sub_0207AC20(PartyMenuStruct *partyMenu) {
     }
 }
 
-static int sub_0207AC70(PartyMenuStruct *partyMenu, BOOL a1) {
+static int sub_0207AC70(PartyMenu *partyMenu, BOOL a1) {
     G2_BlendNone();
     if (partyMenu->partyMonIndex == PARTY_MON_SELECTION_CANCEL) {
         return 4;
@@ -1480,7 +1480,7 @@ static int sub_0207AC70(PartyMenuStruct *partyMenu, BOOL a1) {
     return 5;
 }
 
-static int PartyMenu_GetTouchButtonInput(PartyMenuStruct *partyMenu) {
+static int PartyMenu_GetTouchButtonInput(PartyMenu *partyMenu) {
     int idx = 0;
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
         return TouchscreenHitbox_FindRectAtTouchNew(_02110104);
@@ -1492,7 +1492,7 @@ static int PartyMenu_GetTouchButtonInput(PartyMenuStruct *partyMenu) {
     }
 }
 
-static u8 PartyMenu_HandleInput(PartyMenuStruct *partyMenu) {
+static u8 PartyMenu_HandleInput(PartyMenu *partyMenu) {
     PartyMenuContextButtonAnimData *buttonAnimData = &partyMenu->contextMenuButtonAnim;
     u8 result;
 
@@ -1569,7 +1569,7 @@ static u8 PartyMenu_HandleInput(PartyMenuStruct *partyMenu) {
     return result;  // possible UB
 }
 
-static void sub_0207AFC4(PartyMenuStruct *partyMenu) {
+static void sub_0207AFC4(PartyMenu *partyMenu) {
     ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_32], TRUE);
     u8 *buf = AllocFromHeap(HEAP_ID_PARTY_MENU, 8);
     u8 numItems;
@@ -1607,7 +1607,7 @@ static void sub_0207AFC4(PartyMenuStruct *partyMenu) {
     thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
 }
 
-static u8 sub_0207B0B0(PartyMenuStruct *partyMenu, u8 *buf) {
+static u8 sub_0207B0B0(PartyMenu *partyMenu, u8 *buf) {
     Pokemon *pokemon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     u16 move;
     u8 fieldMoveIndex = 0;
@@ -1655,13 +1655,13 @@ static u8 sub_0207B0B0(PartyMenuStruct *partyMenu, u8 *buf) {
     return count;
 }
 
-static u8 PartyMenu_SetContextMenuItems_GiveCapsule(PartyMenuStruct *partyMenu, u8 *buf) {
+static u8 PartyMenu_SetContextMenuItems_GiveCapsule(PartyMenu *partyMenu, u8 *buf) {
     buf[0] = PARTY_MON_CONTEXT_MENU_SET;
     buf[1] = PARTY_MON_CONTEXT_MENU_QUIT;
     return 2;
 }
 
-static u8 sub_0207B1C8(PartyMenuStruct *partyMenu, u8 *buf) {
+static u8 sub_0207B1C8(PartyMenu *partyMenu, u8 *buf) {
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg == FALSE) {
         buf[0] = PARTY_MON_CONTEXT_MENU_STORE;
         buf[1] = PARTY_MON_CONTEXT_MENU_SUMMARY;
@@ -1674,7 +1674,7 @@ static u8 sub_0207B1C8(PartyMenuStruct *partyMenu, u8 *buf) {
     }
 }
 
-static u8 sub_0207B200(PartyMenuStruct *partyMenu, u8 *buf) {
+static u8 sub_0207B200(PartyMenu *partyMenu, u8 *buf) {
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].isContestCompatible == TRUE) {
         buf[0] = PARTY_MON_CONTEXT_MENU_CONTEST_ENTER;
         buf[1] = PARTY_MON_CONTEXT_MENU_SUMMARY;
@@ -1687,7 +1687,7 @@ static u8 sub_0207B200(PartyMenuStruct *partyMenu, u8 *buf) {
     }
 }
 
-static u8 sub_0207B23C(PartyMenuStruct *partyMenu, u8 *buf) {
+static u8 sub_0207B23C(PartyMenu *partyMenu, u8 *buf) {
     switch (sub_0207B364(partyMenu, partyMenu->partyMonIndex)) {
     case 0:
         buf[0] = PARTY_MON_CONTEXT_MENU_SUMMARY;
@@ -1708,7 +1708,7 @@ static u8 sub_0207B23C(PartyMenuStruct *partyMenu, u8 *buf) {
     return 0;
 }
 
-static u8 PartyMenu_SetContextMenuItems_BattleHallEntry(PartyMenuStruct *partyMenu, u8 *buf) {
+static u8 PartyMenu_SetContextMenuItems_BattleHallEntry(PartyMenu *partyMenu, u8 *buf) {
     switch (sub_0207B418(partyMenu, partyMenu->partyMonIndex)) {
     case 0:
         buf[0] = PARTY_MON_CONTEXT_MENU_SUMMARY;
@@ -1729,7 +1729,7 @@ static u8 PartyMenu_SetContextMenuItems_BattleHallEntry(PartyMenuStruct *partyMe
     return 0;
 }
 
-static u8 sub_0207B2DC(PartyMenuStruct *partyMenu, u8 *buf) {
+static u8 sub_0207B2DC(PartyMenu *partyMenu, u8 *buf) {
     switch (sub_0207B4A0(partyMenu, partyMenu->partyMonIndex)) {
     case 0:
         buf[0] = PARTY_MON_CONTEXT_MENU_SUMMARY;
@@ -1750,7 +1750,7 @@ static u8 sub_0207B2DC(PartyMenuStruct *partyMenu, u8 *buf) {
     return 0;
 }
 
-static u8 PartyMenu_SetContextMenuItems_SpinTrade(PartyMenuStruct *partyMenu, u8 *buf) {
+static u8 PartyMenu_SetContextMenuItems_SpinTrade(PartyMenu *partyMenu, u8 *buf) {
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg == TRUE) {
         buf[0] = PARTY_MON_CONTEXT_MENU_SUMMARY;
         buf[1] = PARTY_MON_CONTEXT_MENU_CONFIRM;
@@ -1763,7 +1763,7 @@ static u8 PartyMenu_SetContextMenuItems_SpinTrade(PartyMenuStruct *partyMenu, u8
     }
 }
 
-u8 sub_0207B364(PartyMenuStruct *partyMenu, u8 selection) {
+u8 sub_0207B364(PartyMenu *partyMenu, u8 selection) {
     u8 i;
 
     if (partyMenu->args->linkBattleRuleset != NULL) {
@@ -1788,7 +1788,7 @@ u8 sub_0207B364(PartyMenuStruct *partyMenu, u8 selection) {
     return 1;
 }
 
-u8 sub_0207B418(PartyMenuStruct *partyMenu, u8 selection) {
+u8 sub_0207B418(PartyMenu *partyMenu, u8 selection) {
     u8 i;
 
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL) {
@@ -1807,7 +1807,7 @@ u8 sub_0207B418(PartyMenuStruct *partyMenu, u8 selection) {
     return 1;
 }
 
-u8 sub_0207B4A0(PartyMenuStruct *partyMenu, u8 selection) {
+u8 sub_0207B4A0(PartyMenu *partyMenu, u8 selection) {
     u8 i;
 
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
@@ -1826,7 +1826,7 @@ u8 sub_0207B4A0(PartyMenuStruct *partyMenu, u8 selection) {
     return 1;
 }
 
-static void sub_0207B51C(PartyMenuStruct *partyMenu, u8 selection, BOOL active) {
+static void sub_0207B51C(PartyMenu *partyMenu, u8 selection, BOOL active) {
     u8 animSeqNo;
     if (selection == PARTY_MON_SELECTION_CANCEL) {
         animSeqNo = Get2dSpriteCurrentAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_8]);
@@ -1862,7 +1862,7 @@ int sub_0207B5EC(u8 a0, u8 partySlot) {
     return partySlot == 0 || (a0 != 0 && partySlot == 1);
 }
 
-static u8 sub_0207B600(PartyMenuStruct *partyMenu) {
+static u8 sub_0207B600(PartyMenu *partyMenu) {
     u8 result;
     PartyMenuContextButtonAnimData *buttonAnim = &partyMenu->contextMenuButtonAnim;
 
@@ -1952,7 +1952,7 @@ static u8 sub_0207B600(PartyMenuStruct *partyMenu) {
     return result;  // UB rist
 }
 
-static int sub_0207B7E0(PartyMenuStruct *partyMenu) {
+static int sub_0207B7E0(PartyMenu *partyMenu) {
     for (u8 i = 0; i < partyMenu->args->minMonsToSelect; ++i) {
         if (partyMenu->args->selectedOrder[i] == 0) {
             switch (partyMenu->args->maxMonsToSelect) {
@@ -2071,7 +2071,7 @@ static int sub_0207B7E0(PartyMenuStruct *partyMenu) {
     return PARTY_MENU_STATE_BEGIN_EXIT;
 }
 
-static u8 sub_0207BA78(PartyMenuStruct *partyMenu) {
+static u8 sub_0207BA78(PartyMenu *partyMenu) {
     for (u8 i = 0; i < PARTY_SIZE - 1; ++i) {
         if (partyMenu->args->selectedOrder[i] == 0) {
             break;
@@ -2092,7 +2092,7 @@ static u8 sub_0207BA78(PartyMenuStruct *partyMenu) {
     return 0;
 }
 
-static u8 sub_0207BB14(PartyMenuStruct *partyMenu) {
+static u8 sub_0207BB14(PartyMenu *partyMenu) {
     for (u8 i = 0; i < PARTY_SIZE - 1; ++i) {
         if (partyMenu->args->selectedOrder[i] == 0) {
             break;
@@ -2110,7 +2110,7 @@ static u8 sub_0207BB14(PartyMenuStruct *partyMenu) {
     return 0;
 }
 
-static u8 sub_0207BB88(PartyMenuStruct *partyMenu) {
+static u8 sub_0207BB88(PartyMenu *partyMenu) {
     for (u8 i = 0; i < PARTY_SIZE - 1; ++i) {
         if (partyMenu->args->selectedOrder[i] == 0) {
             break;
@@ -2142,7 +2142,7 @@ static void sub_0207BBFC(u8 a0, s16 *px, s16 *py) {
     *py = _021012B0[a0][1] * 8 + 20;
 }
 
-static BOOL PartyMenu_Subtask_HandleContextMenuInput(PartyMenuStruct *partyMenu, int *pState) {
+static BOOL PartyMenu_Subtask_HandleContextMenuInput(PartyMenu *partyMenu, int *pState) {
     u32 func = PartyMenu_HandleInput_ContextMenu(partyMenu, partyMenu->contextMenuCursor);
     switch (func) {
     case LIST_CANCEL:
@@ -2178,7 +2178,7 @@ static u8 MoveId_GetFieldEffectId(u16 move) {
     return 0xFF;
 }
 
-static int PartyMenu_SoftboiledTryTargetCheck(PartyMenuStruct *partyMenu) {
+static int PartyMenu_SoftboiledTryTargetCheck(PartyMenu *partyMenu) {
     switch (PartyMenu_SoftboiledTargetCheck(partyMenu)) {
     case 0:
         PlaySE(SEQ_SE_DP_KAIFUKU);
@@ -2201,7 +2201,7 @@ static int PartyMenu_SoftboiledTryTargetCheck(PartyMenuStruct *partyMenu) {
     return PARTY_MENU_STATE_SOFTBOILED;
 }
 
-static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
+static int PartyMenu_Subtask_Softboiled(PartyMenu *partyMenu) {
     PartyMenuContextButtonAnimData *buttonAnim = &partyMenu->contextMenuButtonAnim;
     if (buttonAnim->active == TRUE) {
         if (PartyMenu_AnimateContextMenuButtonPress(partyMenu) == FALSE) {
@@ -2294,7 +2294,7 @@ static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
     return PARTY_MENU_STATE_SOFTBOILED;
 }
 
-static u8 PartyMenu_SoftboiledTargetCheck(PartyMenuStruct *partyMenu) {
+static u8 PartyMenu_SoftboiledTargetCheck(PartyMenu *partyMenu) {
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg) {
         return 2;
     }
@@ -2308,7 +2308,7 @@ static u8 PartyMenu_SoftboiledTargetCheck(PartyMenuStruct *partyMenu) {
     return 0;
 }
 
-static BOOL PartyMenu_SoftboiledHPTransferStep(PartyMenuStruct *partyMenu, u8 partySlot, s8 delta) {
+static BOOL PartyMenu_SoftboiledHPTransferStep(PartyMenu *partyMenu, u8 partySlot, s8 delta) {
     partyMenu->monsDrawState[partySlot].hp += delta;
     ++partyMenu->levelUpStatsTmp[2];
     PartyMenu_ClearMonHpTextWindow(partyMenu, partySlot);
@@ -2325,7 +2325,7 @@ static BOOL PartyMenu_SoftboiledHPTransferStep(PartyMenuStruct *partyMenu, u8 pa
     return FALSE;
 }
 
-static u8 PartyMenu_GiveOrUseItemOnMon_HandleInput(PartyMenuStruct *partyMenu) {
+static u8 PartyMenu_GiveOrUseItemOnMon_HandleInput(PartyMenu *partyMenu) {
     PartyMenuContextButtonAnimData *buttonAnim = &partyMenu->contextMenuButtonAnim;
     if (buttonAnim->active == TRUE) {
         if (PartyMenu_AnimateContextMenuButtonPress(partyMenu) == FALSE) {
@@ -2399,7 +2399,7 @@ static u8 PartyMenu_GiveOrUseItemOnMon_HandleInput(PartyMenuStruct *partyMenu) {
     return sub_0207A8FC(partyMenu);
 }
 
-static int PartyMenu_HandleUseItemOnMon(PartyMenuStruct *partyMenu) {
+static int PartyMenu_HandleUseItemOnMon(PartyMenu *partyMenu) {
     ItemData *itemData = LoadItemDataOrGfx(partyMenu->args->itemId, ITEMNARC_PARAM, HEAP_ID_PARTY_MENU);
 
     if (partyMenu->args->itemId == ITEM_GRACIDEA && Mon_CanUseGracidea(Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex)) == TRUE) {
@@ -2440,7 +2440,7 @@ static int PartyMenu_HandleUseItemOnMon(PartyMenuStruct *partyMenu) {
     return PARTY_MENU_STATE_ITEM_USE_CB;
 }
 
-static u8 sub_0207C3D0(PartyMenuStruct *partyMenu) {
+static u8 sub_0207C3D0(PartyMenu *partyMenu) {
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem == ITEM_NONE) {
         return 0;
     } else if (ItemIdIsMail(partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem) == TRUE) {
@@ -2450,7 +2450,7 @@ static u8 sub_0207C3D0(PartyMenuStruct *partyMenu) {
     }
 }
 
-static int PartyMenu_Subtask_GiveItemToMon(PartyMenuStruct *partyMenu) {
+static int PartyMenu_Subtask_GiveItemToMon(PartyMenu *partyMenu) {
     int result = -1;
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     FieldSystem *fieldSystem = partyMenu->args->fieldSystem;
@@ -2480,7 +2480,7 @@ static int PartyMenu_Subtask_GiveItemToMon(PartyMenuStruct *partyMenu) {
                 return PARTY_MENU_STATE_BEGIN_EXIT;
             } else {
                 s32 sp0;
-                result = sub_0207C5D4(partyMenu, mon, &sp0);
+                result = PartyMenu_GiveItemToMon_HandleGriseousOrb(partyMenu, mon, &sp0);
                 ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00107, partyMenu->unformattedStrBuf);
                 BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
                 BufferItemName(partyMenu->msgFormat, 1, partyMenu->args->itemId);
@@ -2507,7 +2507,7 @@ static int PartyMenu_Subtask_GiveItemToMon(PartyMenuStruct *partyMenu) {
     return result;
 }
 
-static int sub_0207C5D4(PartyMenuStruct *partyMenu, Pokemon *mon, s32 *transformResult) {
+static int PartyMenu_GiveItemToMon_HandleGriseousOrb(PartyMenu *partyMenu, Pokemon *mon, s32 *transformResult) {
     u32 itemToBeHeld = partyMenu->args->itemId;
     Bag_TakeItem(partyMenu->args->bag, partyMenu->args->itemId, 1, HEAP_ID_PARTY_MENU);
     SetMonData(mon, MON_DATA_HELD_ITEM, &itemToBeHeld);
@@ -2522,7 +2522,7 @@ static int sub_0207C5D4(PartyMenuStruct *partyMenu, Pokemon *mon, s32 *transform
     }
 }
 
-static void PartyMenu_SwapMonHeldItem(PartyMenuStruct *partyMenu, Pokemon *mon, u32 oldItemId, u32 newItemId) {
+static void PartyMenu_SwapMonHeldItem(PartyMenu *partyMenu, Pokemon *mon, u32 oldItemId, u32 newItemId) {
     Bag_AddItem(partyMenu->args->bag, oldItemId, 1, HEAP_ID_PARTY_MENU);
     SetMonData(mon, MON_DATA_HELD_ITEM, &newItemId);
     Pokemon_UpdateArceusForm(mon);
@@ -2531,7 +2531,7 @@ static void PartyMenu_SwapMonHeldItem(PartyMenuStruct *partyMenu, Pokemon *mon, 
     PartyMenu_DrawMonHeldItemIcon(partyMenu, partyMenu->partyMonIndex, partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem);
 }
 
-static int PartyMenu_Subtask_PrintItemSwapMessage(PartyMenuStruct *partyMenu) {
+static int PartyMenu_Subtask_PrintItemSwapMessage(PartyMenu *partyMenu) {
     if (TextPrinterCheckActive(partyMenu->textPrinterId) == FALSE) {
         return PartyMenu_SwitchItemsDeclined(partyMenu);
     } else {
@@ -2539,7 +2539,7 @@ static int PartyMenu_Subtask_PrintItemSwapMessage(PartyMenuStruct *partyMenu) {
     }
 }
 
-static int PartyMenu_Subtask_PrintGiveGriseousOrbMessage(PartyMenuStruct *partyMenu) {
+static int PartyMenu_Subtask_PrintGiveGriseousOrbMessage(PartyMenu *partyMenu) {
     if (TextPrinterCheckActive(partyMenu->textPrinterId) == FALSE) {
         ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
         PartyMenu_FormChangeScene_Begin(partyMenu);
@@ -2549,7 +2549,7 @@ static int PartyMenu_Subtask_PrintGiveGriseousOrbMessage(PartyMenuStruct *partyM
     }
 }
 
-static int PartyMenu_Subtask_WaitGiveGriseiousOrbAnim(PartyMenuStruct *partyMenu) {
+static int PartyMenu_Subtask_WaitGiveGriseiousOrbAnim(PartyMenu *partyMenu) {
     if (PartyMenu_AnimateIconFormChange(partyMenu) == TRUE) {
         PartyMenu_FormChangeScene_End(partyMenu);
         return PARTY_MENU_STATE_PRINT_ITEM_SWAP_MESSAGE;
@@ -2558,7 +2558,7 @@ static int PartyMenu_Subtask_WaitGiveGriseiousOrbAnim(PartyMenuStruct *partyMenu
     }
 }
 
-static int PartyMenu_Subtask_PrintAskSwitchItems(PartyMenuStruct *partyMenu) {
+static int PartyMenu_Subtask_PrintAskSwitchItems(PartyMenu *partyMenu) {
     if (TextPrinterCheckActive(partyMenu->textPrinterId) == FALSE) {
         PartyMenu_CreateYesNoPrompt(partyMenu);
         return PARTY_MENU_STATE_YESNO_ASK_SWITCH_ITEMS;
@@ -2567,7 +2567,7 @@ static int PartyMenu_Subtask_PrintAskSwitchItems(PartyMenuStruct *partyMenu) {
     }
 }
 
-static int PartyMenu_Subtask_SwitchItemsHandleYesNoInput(PartyMenuStruct *partyMenu) {
+static int PartyMenu_Subtask_SwitchItemsHandleYesNoInput(PartyMenu *partyMenu) {
     int result;
     switch (YesNoPrompt_HandleInput(partyMenu->yesNoPrompt)) {
     case YESNORESPONSE_YES: {
@@ -2577,7 +2577,7 @@ static int PartyMenu_Subtask_SwitchItemsHandleYesNoInput(PartyMenuStruct *partyM
         int newItemId = partyMenu->args->itemId;
         int oldItemId = partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem;
         s32 giratinaResult;
-        result = sub_0207C5D4(partyMenu, mon, &giratinaResult);
+        result = PartyMenu_GiveItemToMon_HandleGriseousOrb(partyMenu, mon, &giratinaResult);
         if (!Bag_AddItem(partyMenu->args->bag, oldItemId, 1, HEAP_ID_PARTY_MENU)) {
             PartyMenu_SwapMonHeldItem(partyMenu, mon, newItemId, oldItemId);
             ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00084, partyMenu->formattedStrBuf);
@@ -2611,7 +2611,7 @@ static int PartyMenu_Subtask_SwitchItemsHandleYesNoInput(PartyMenuStruct *partyM
     return PARTY_MENU_STATE_YESNO_ASK_SWITCH_ITEMS;
 }
 
-static int PartyMenu_SwitchItemsDeclined(PartyMenuStruct *partyMenu) {
+static int PartyMenu_SwitchItemsDeclined(PartyMenu *partyMenu) {
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_10) {
         ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00029, TRUE);
@@ -2624,12 +2624,12 @@ static int PartyMenu_SwitchItemsDeclined(PartyMenuStruct *partyMenu) {
     }
 }
 
-static int sub_0207C908(PartyMenuStruct *partyMenu) {
+static int PartyMenu_GiveOrSwapHeldItems(PartyMenu *partyMenu) {
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     s32 giratinaResult;
     int newItem = partyMenu->args->itemId;
     int oldItem = partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem;
-    int manipulateItemResult = sub_0207C5D4(partyMenu, mon, &giratinaResult);
+    int manipulateItemResult = PartyMenu_GiveItemToMon_HandleGriseousOrb(partyMenu, mon, &giratinaResult);
     if (oldItem == ITEM_GRISEOUS_ORB && manipulateItemResult == PARTY_MENU_STATE_PRINT_ITEM_SWAP_MESSAGE && giratinaResult == 0) {
         manipulateItemResult = PARTY_MENU_STATE_PRINT_GIVE_GRISEOUS_ORB_MESSAGE;
     }
@@ -2654,7 +2654,7 @@ static int sub_0207C908(PartyMenuStruct *partyMenu) {
     return manipulateItemResult;
 }
 
-static int PartyMenu_HandleChooseMonForInGameTrade(PartyMenuStruct *partyMenu) {
+static int PartyMenu_HandleChooseMonForInGameTrade(PartyMenu *partyMenu) {
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].capsule == 0) {
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
         return PARTY_MENU_STATE_BEGIN_EXIT;
@@ -2702,22 +2702,22 @@ void sub_0207CAAC(HeapID heapId, u16 *a1, u16 *a2, u16 *a3) {
     FreeToHeap(pNscrFile);
 }
 
-void PartyMenu_DeleteContextMenuAndList(PartyMenuStruct *partyMenu) {
+void PartyMenu_DeleteContextMenuAndList(PartyMenu *partyMenu) {
     PartyMenu_CloseContextMenu(partyMenu, partyMenu->contextMenuCursor);
     ListMenuItems_Delete(partyMenu->listMenuItems);
 }
 
-void sub_0207CB3C(PartyMenuStruct *partyMenu, BOOL a1) {
+void sub_0207CB3C(PartyMenu *partyMenu, BOOL a1) {
     if (partyMenu->args->menuInputStatePtr != NULL) {
         sub_02018410(partyMenu->args->menuInputStatePtr, a1);
     }
 }
 
-void PartyMenu_FormChangeScene_Begin(PartyMenuStruct *partyMenu) {
+void PartyMenu_FormChangeScene_Begin(PartyMenu *partyMenu) {
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_94), OVY_LOAD_ASYNC);
     PartyMenu_InitIconFormChangeData(partyMenu);
 }
 
-void PartyMenu_FormChangeScene_End(PartyMenuStruct *partyMenu) {
+void PartyMenu_FormChangeScene_End(PartyMenu *partyMenu) {
     UnloadOverlayByID(FS_OVERLAY_ID(OVY_94));
 }

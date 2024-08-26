@@ -2967,13 +2967,13 @@ extern u8 sFlailDamageTable[6][2];
 
 BOOL BtlCmd_CalcFlailPower(BattleSystem *bsys, BattleContext *ctx) {
     int i;
-    int unkA;
+    int hpBarPixels;
 
     BattleScriptIncrementPointer(ctx, 1);
 
-    unkA = CalculateHpBarPixelsLength(ctx->battleMons[ctx->battlerIdAttacker].hp, ctx->battleMons[ctx->battlerIdAttacker].maxHp, 64);
+    hpBarPixels = CalculateHpBarPixelsLength(ctx->battleMons[ctx->battlerIdAttacker].hp, ctx->battleMons[ctx->battlerIdAttacker].maxHp, 64);
     for (i = 0; i < sizeof(sFlailDamageTable) / sizeof(sFlailDamageTable[0]); i++) {
-        if (unkA <= sFlailDamageTable[i][0]) {
+        if (hpBarPixels <= sFlailDamageTable[i][0]) {
             break;
         }
     }

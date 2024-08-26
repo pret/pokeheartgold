@@ -32497,7 +32497,7 @@ _021F5F4A:
 	ldrb r1, [r3, #1]
 	ldrh r0, [r5, r0]
 	ldrb r3, [r3]
-	bl GetMonPicHeightBySpeciesGenderForme
+	bl GetMonPicHeightBySpeciesGenderForm
 	add r2, r0, #0
 	lsl r0, r4, #2
 	add r1, r5, r0
@@ -33627,7 +33627,7 @@ _021F6872:
 	ldrh r0, [r5, r0]
 	ldrb r3, [r3]
 	add r2, r6, #0
-	bl GetMonPicHeightBySpeciesGenderForme
+	bl GetMonPicHeightBySpeciesGenderForm
 _021F6886:
 	cmp r4, #1
 	bne _021F68EC

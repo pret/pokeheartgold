@@ -1,7 +1,8 @@
 #ifndef POKEHEARTGOLD_PARTY_MENU_H
 #define POKEHEARTGOLD_PARTY_MENU_H
 
-#include "bag_types_def.h"
+#include "field_types_def.h"
+#include "pokemon_types_def.h"
 #include "constants/party_menu.h"
 #include "gf_3d_vramman.h"
 #include "mail.h"
@@ -9,6 +10,7 @@
 #include "pokedex.h"
 #include "task.h"
 #include "unk_02014DA0.h"
+#include "bag_types_def.h"
 #include "unk_02020654.h"
 #include "unk_0202E41C.h"
 #include "battle_regulation.h"
@@ -298,7 +300,7 @@ typedef struct FieldMoveCheckData {
 typedef struct PartyMenuArgs {
     Party *party;
     Bag *bag;
-    MAILBOX *mailbox;
+    Mailbox *mailbox;
     Options *options;
     UnkStruct_0202E474 *unk_10;
     LinkBattleRuleset *linkBattleRuleset;
@@ -331,12 +333,12 @@ typedef struct IconFormChangeData  {
     int species;
     int fileId;
     int partyMonIndex; //same information as B's unkc65
-    ParticleSystem* particleSystem;
+    SPLEmitter* particleSystem;
 } IconFormChangeData;
 
-typedef struct PartyMenuStruct PartyMenuStruct;
+typedef struct PartyMenu PartyMenu;
 
-typedef void (*PartyMonContextMenuActionFunc)(PartyMenuStruct *partyMenu, int *pState);
+typedef void (*PartyMonContextMenuActionFunc)(PartyMenu *partyMenu, int *pState);
 
 typedef struct PartyMenuContextButtonAnimData {
     PartyMenuContextMenu *template;
@@ -388,7 +390,7 @@ typedef struct PartyMenuSwapMonsData {
     u8 xOffset;
 } PartyMenuSwapMonsData;
 
-struct PartyMenuStruct {
+struct PartyMenu {
     BgConfig *bgConfig;
     Window windows[PARTY_MENU_WINDOW_ID_MAX];
     Window levelUpStatsWindow[1];  //0x284
@@ -414,9 +416,9 @@ struct PartyMenuStruct {
     PartyMenuMonsDrawState monsDrawState[PARTY_SIZE]; //0x828
     const UnkStruct_02020654 *unk_948;
     PartyMenuSwapMonsData swapMonsData;
-    int (*itemUseCallback)(PartyMenuStruct *);
-    int (*yesCallback)(PartyMenuStruct *);  //0xc58
-    int (*noCallback)(PartyMenuStruct *);  //0xc5c
+    int (*itemUseCallback)(PartyMenu *);
+    int (*yesCallback)(PartyMenu *);  //0xc58
+    int (*noCallback)(PartyMenu *);  //0xc5c
     u8 unk_C60;
     u8 unk_C61;
     u8 afterTextPrinterState;
@@ -445,11 +447,11 @@ struct PartyMenuStruct {
 typedef void (*FieldMoveUseFunc)(struct FieldMoveUseData *useData, const struct FieldMoveCheckData *sub);
 typedef u32 (*FieldMoveCheckFunc)(const struct FieldMoveCheckData *checkData);
 
-struct FieldUseMoveEnv {
+typedef struct FieldUseMoveEnv {
     u32 magic;
     LocalMapObject *facingObject;
     struct FieldMoveUseData useData;
-};
+} FieldUseMoveEnv;
 
 struct TeleportFieldEnv {
     Pokemon *mon;
@@ -458,30 +460,30 @@ struct TeleportFieldEnv {
 
 extern const OVY_MGR_TEMPLATE gOverlayTemplate_PartyMenu;
 
-void PartyMenu_SetTopScreenSelectionPanelVisibility(PartyMenuStruct *partyMenu, BOOL show);
+void PartyMenu_SetTopScreenSelectionPanelVisibility(PartyMenu *partyMenu, BOOL show);
 
 typedef enum PartyMenu3dEngineToggle {
     PARTY_MENU_3D_ENGINE_ON,
     PARTY_MENU_3D_ENGINE_OFF,
 } PartyMenu3dEngineToggle;
 
-void PartyMenu_Toggle3dEngine(PartyMenuStruct *partyMenu, PartyMenu3dEngineToggle toggle);
-BOOL sub_02079E38(PartyMenuStruct *partyMenu, u8 partySlot);
-u16 *sub_0207A16C(PartyMenuStruct *partyMenu);
-void sub_0207AB84(PartyMenuStruct *partyMenu, u8 partySlot);
-void sub_0207A7F4(PartyMenuStruct *partyMenu, u8 partySlot);
-u8 sub_0207B364(PartyMenuStruct *partyMenu, u8 selection);
-u8 sub_0207B418(PartyMenuStruct *partyMenu, u8 selection);
-u8 sub_0207B4A0(PartyMenuStruct *partyMenu, u8 selection);
+void PartyMenu_Toggle3dEngine(PartyMenu *partyMenu, PartyMenu3dEngineToggle toggle);
+BOOL sub_02079E38(PartyMenu *partyMenu, u8 partySlot);
+u16 *sub_0207A16C(PartyMenu *partyMenu);
+void sub_0207AB84(PartyMenu *partyMenu, u8 partySlot);
+void sub_0207A7F4(PartyMenu *partyMenu, u8 partySlot);
+u8 sub_0207B364(PartyMenu *partyMenu, u8 selection);
+u8 sub_0207B418(PartyMenu *partyMenu, u8 selection);
+u8 sub_0207B4A0(PartyMenu *partyMenu, u8 selection);
 int sub_0207B5EC(u8 a0, u8 partySlot);
 u32 sub_0207CA9C(void);
 u32 sub_0207CAA0(void);
 u32 sub_0207CAA4(void);
 u32 sub_0207CAA8(void);
 void sub_0207CAAC(HeapID heapId, u16 *a1, u16 *a2, u16 *a3);
-void PartyMenu_FormChangeScene_End(PartyMenuStruct *partyMenu);
-void PartyMenu_DeleteContextMenuAndList(PartyMenuStruct *partyMenu);
-void sub_0207CB3C(PartyMenuStruct *partyMenu, BOOL a1);
-void PartyMenu_FormChangeScene_Begin(PartyMenuStruct *partyMenu);
+void PartyMenu_FormChangeScene_End(PartyMenu *partyMenu);
+void PartyMenu_DeleteContextMenuAndList(PartyMenu *partyMenu);
+void sub_0207CB3C(PartyMenu *partyMenu, BOOL a1);
+void PartyMenu_FormChangeScene_Begin(PartyMenu *partyMenu);
 
 #endif //POKEHEARTGOLD_PARTY_MENU_H

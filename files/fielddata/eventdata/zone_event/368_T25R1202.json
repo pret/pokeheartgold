@@ -85,8 +85,8 @@
   "objects": [
     {
       "id": "obj_T25R1202_gsgirl2",
-      "ovid": "SPRITE_GSGIRL2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSGIRL2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1202_002 + 1",
@@ -102,8 +102,8 @@
     },
     {
       "id": "obj_T25R1202_gsbabygirl1",
-      "ovid": "SPRITE_GSBABYGIRL1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSBABYGIRL1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1202_008 + 1",
@@ -119,8 +119,8 @@
     },
     {
       "id": "obj_T25R1202_middlewoman1_2",
-      "ovid": "SPRITE_MIDDLEWOMAN1_2",
-      "mvt": 2,
+      "sprite_id": "SPRITE_MIDDLEWOMAN1_2",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1202_005 + 1",
@@ -136,8 +136,8 @@
     },
     {
       "id": "obj_T25R1202_gswoman1",
-      "ovid": "SPRITE_GSWOMAN1",
-      "mvt": 2,
+      "sprite_id": "SPRITE_GSWOMAN1",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1202_006 + 1",
@@ -153,8 +153,8 @@
     },
     {
       "id": "obj_T25R1202_gsgirl1",
-      "ovid": "SPRITE_GSGIRL1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSGIRL1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1202_007 + 1",
@@ -170,8 +170,8 @@
     },
     {
       "id": "obj_T25R1202_gsoldwoman1",
-      "ovid": "SPRITE_GSOLDWOMAN1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSOLDWOMAN1",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1202_004 + 1",
@@ -187,8 +187,8 @@
     },
     {
       "id": "obj_T25R1202_mount_2",
-      "ovid": "SPRITE_MOUNT_2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MOUNT_2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1202_001 + 1",
@@ -204,8 +204,8 @@
     },
     {
       "id": "obj_T25R1202_gswoman2",
-      "ovid": "SPRITE_GSWOMAN2",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSWOMAN2",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1202_003 + 1",
@@ -221,8 +221,8 @@
     },
     {
       "id": "obj_T25R1202_mystery_2",
-      "ovid": "SPRITE_MYSTERY_2",
-      "mvt": 2,
+      "sprite_id": "SPRITE_MYSTERY_2",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T25R1202_000 + 1",

@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_D24R0204_babyboy1_12",
-      "ovid": "SPRITE_BABYBOY1_12",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BABYBOY1_12",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_OPENED_ALPH_FLASH_SECRET_ROOM",
       "scr": "_EV_scr_seq_D24R0204_001 + 1",
@@ -30,8 +30,8 @@
     },
     {
       "id": "obj_D24R0204_babyboy1_13",
-      "ovid": "SPRITE_BABYBOY1_13",
-      "mvt": 0,
+      "sprite_id": "SPRITE_BABYBOY1_13",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_UNK_21E",
       "scr": 0,

@@ -7,7 +7,7 @@
 .public sub_0205F09C
 .public MapObject_GetID
 .public sub_0205F254
-.public MapObject_GetFieldSysPtr
+.public MapObject_GetFieldSystem
 .public MapObject_GetCurrentX
 .public MapObject_GetCurrentY
 .public MapObject_GetPositionVec

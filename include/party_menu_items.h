@@ -7,17 +7,17 @@
 #define LEARN_MOVE_CHECK_FULL          0xFE
 #define LEARN_MOVE_CHECK_INCOMPAT      0xFF
 
-void PartyMenu_SetItemUseFuncFromBagSelection(PartyMenuStruct *partyMenu);
-int PartyMenu_ItemUseFunc_WaitTextPrinterThenExit(PartyMenuStruct *partyMenu);
+void PartyMenu_SetItemUseFuncFromBagSelection(PartyMenu *partyMenu);
+int PartyMenu_ItemUseFunc_WaitTextPrinterThenExit(PartyMenu *partyMenu);
 BOOL ItemId_IsReviveAll(u16 itemId);
-int PartyMenu_Subtask_SacredAsh(PartyMenuStruct *partyMenu);
-int PartyMenu_ItemUseFunc_LevelUpDoLearnMove(PartyMenuStruct *partyMenu);
-u8 PartyMenu_CheckCanLearnTMHMMove(PartyMenuStruct *partyMenu, Pokemon *mon);
-int PartyMenu_HandleUseTMHMonMon(PartyMenuStruct *partyMenu);
-int PartyMenu_ItemUseFunc_TMHMDoLearnMove(PartyMenuStruct *partyMenu);
-int PartyMenu_Subtask_TMHMLearnMove(PartyMenuStruct *partyMenu);
-int PartyMenu_Subtask_SelectMove(PartyMenuStruct *partyMenu);
-void PartyMenu_SelectMoveForPpRestoreOrPpUp(PartyMenuStruct *partyMenu, BOOL isPpRestore);
-void PartyMenu_HandleAttachMailFromMailbox(PartyMenuStruct *partyMenu);
+int PartyMenu_Subtask_SacredAsh(PartyMenu *partyMenu);
+int PartyMenu_ItemUseFunc_LevelUpDoLearnMove(PartyMenu *partyMenu);
+u8 PartyMenu_CheckCanLearnTMHMMove(PartyMenu *partyMenu, Pokemon *mon);
+int PartyMenu_HandleUseTMHMonMon(PartyMenu *partyMenu);
+int PartyMenu_ItemUseFunc_TMHMDoLearnMove(PartyMenu *partyMenu);
+int PartyMenu_Subtask_TMHMLearnMove(PartyMenu *partyMenu);
+int PartyMenu_Subtask_SelectMove(PartyMenu *partyMenu);
+void PartyMenu_SelectMoveForPpRestoreOrPpUp(PartyMenu *partyMenu, BOOL isPpRestore);
+void PartyMenu_HandleAttachMailFromMailbox(PartyMenu *partyMenu);
 
 #endif //GUARD_POKEHEARTGOLD_PARTY_MENU_MOVES_H

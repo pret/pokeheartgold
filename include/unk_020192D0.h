@@ -5,6 +5,7 @@
 #include "field_system.h"
 #include "overlay_manager.h"
 #include "save.h"
+#include "unk_02020654.h"
 
 typedef struct UnkStruct_0203FC14 {
     FieldSystem *fieldSystem;

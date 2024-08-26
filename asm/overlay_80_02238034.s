@@ -172,8 +172,8 @@ _02238146:
 	.balign 4, 0
 	thumb_func_end BattleArcade_GetOpponentMonCount
 
-	thumb_func_start ov80_02238150
-ov80_02238150: ; 0x02238150
+	thumb_func_start BattleArcade_NewBattleSetup
+BattleArcade_NewBattleSetup: ; 0x02238150
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x50
 	add r7, r0, #0
@@ -396,7 +396,7 @@ _02238330:
 	add sp, #0x50
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov80_02238150
+	thumb_func_end BattleArcade_NewBattleSetup
 
 	thumb_func_start ov80_02238344
 ov80_02238344: ; 0x02238344

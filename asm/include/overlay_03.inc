@@ -240,7 +240,7 @@
 .public ov01_021F6AEC
 .public ov01_021F6B00
 .public ov01_021F6B10
-.public ov01_022040D0
+.public Field3dObjectList_GetRenderObjectByID
 .public ov02_0224E698
 .public ov02_0224E754
 .public ov03_02255BB0
