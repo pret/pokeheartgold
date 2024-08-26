@@ -482,7 +482,7 @@ typedef struct OpponentData {
     u32 unk0[6];
     u32 unk18;
     u32 *unk1C;
-    Pokepic *unk20;
+    Pokepic *pokepic;
     u32 *unk24;
     BattleHpBar hpBar;
     OpponentData_UnkSub_70 unk70;

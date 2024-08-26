@@ -49,7 +49,7 @@ _0064:
 	return
 scr_seq_0166_004:
 	end
-	scrcmd_375 0xFF
+	make_object_visible 0xFF
 	return
 scr_seq_0166_005:
 	simple_npc_msg msg_0043_00000

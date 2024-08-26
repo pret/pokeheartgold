@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_T26R0701_fishing_2",
-      "ovid": "SPRITE_FISHING_2",
-      "mvt": 3,
+      "sprite_id": "SPRITE_FISHING_2",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T26R0701_002 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_T26R0701_seaman_2",
-      "ovid": "SPRITE_SEAMAN_2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SEAMAN_2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T26R0701_000 + 1",
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_T26R0701_seaman_2_2",
-      "ovid": "SPRITE_SEAMAN_2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SEAMAN_2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T26R0701_001 + 1",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_T26R0701_gsmiddleman1",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
       "scr": "_EV_scr_seq_T26R0701_003 + 1",
@@ -71,8 +71,8 @@
     },
     {
       "id": "obj_T26R0701_gsleader6",
-      "ovid": "SPRITE_GSLEADER6",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSLEADER6",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_UNK_2CB",
       "scr": "_EV_scr_seq_T26R0701_005 + 1",
@@ -88,8 +88,8 @@
     },
     {
       "id": "obj_T26R0701_seaman_2_3",
-      "ovid": "SPRITE_SEAMAN_2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SEAMAN_2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_T26R0701_006 + 1",

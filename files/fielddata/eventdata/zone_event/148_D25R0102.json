@@ -21,8 +21,8 @@
   "objects": [
     {
       "id": "obj_D25R0102_mount_2",
-      "ovid": "SPRITE_MOUNT_2",
-      "mvt": 7,
+      "sprite_id": "SPRITE_MOUNT_2",
+      "movement": 7,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_HIKER_PHILLIP)",
@@ -38,8 +38,8 @@
     },
     {
       "id": "obj_D25R0102_mount_2_2",
-      "ovid": "SPRITE_MOUNT_2",
-      "mvt": 9,
+      "sprite_id": "SPRITE_MOUNT_2",
+      "movement": 9,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_HIKER_LEONARD)",
@@ -55,8 +55,8 @@
     },
     {
       "id": "obj_D25R0102_mania",
-      "ovid": "SPRITE_MANIA",
-      "mvt": 16,
+      "sprite_id": "SPRITE_MANIA",
+      "movement": 16,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_POKE_MANIAC_ANDREW)",
@@ -72,8 +72,8 @@
     },
     {
       "id": "obj_D25R0102_mania_2",
-      "ovid": "SPRITE_MANIA",
-      "mvt": 16,
+      "sprite_id": "SPRITE_MANIA",
+      "movement": 16,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_POKE_MANIAC_CALVIN)",
@@ -89,8 +89,8 @@
     },
     {
       "id": "obj_D25R0102_rock",
-      "ovid": "SPRITE_ROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_ROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_010",
       "scr": "std_field_strength",
@@ -106,8 +106,8 @@
     },
     {
       "id": "obj_D25R0102_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D25R0102_TM39",
       "scr": "std_itemball_d25r0102_tm39",
@@ -123,8 +123,8 @@
     },
     {
       "id": "obj_D25R0102_monstarball_2",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D25R0102_X_DEFENSE",
       "scr": "std_itemball_d25r0102_x_defense",

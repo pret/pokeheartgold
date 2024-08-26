@@ -641,7 +641,7 @@ static void AlphPuzzle_ScreenOff(void) {
 }
 
 static void AlphPuzzle_InitTextOptionsAndPuzzleIndex(AlphPuzzleData *data) {
-    data->menuIgnoreTouchFlag = sub_020183F0(data->args->fieldSystemUnk10Cpointer);
+    data->menuIgnoreTouchFlag = sub_020183F0(data->args->menuInputStatePtr);
     Options *options = Save_PlayerData_GetOptionsAddr(data->args->saveData);
     data->textFrameDelay = Options_GetTextFrameDelay(options);
     data->frame = Options_GetFrame(options);
@@ -649,7 +649,7 @@ static void AlphPuzzle_InitTextOptionsAndPuzzleIndex(AlphPuzzleData *data) {
 }
 
 static void AlphPuzzle_Finish(AlphPuzzleData *data) {
-    sub_02018410(data->args->fieldSystemUnk10Cpointer, data->menuIgnoreTouchFlag);
+    sub_02018410(data->args->menuInputStatePtr, data->menuIgnoreTouchFlag);
     if (data->puzzleSolved) {
         Save_VarsFlags_SetAlphPuzzleFlag(Save_VarsFlags_Get(data->args->saveData), data->puzzleIndex);
     }

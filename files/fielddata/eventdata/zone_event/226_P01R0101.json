@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_P01R0101_seaman_2",
-      "ovid": "SPRITE_SEAMAN_2",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SEAMAN_2",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_P01R0101_000 + 1",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_P01R0101_ookido",
-      "ovid": "SPRITE_OOKIDO",
-      "mvt": 0,
+      "sprite_id": "SPRITE_OOKIDO",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_OLIVINE_PORT_OAK",
       "scr": 0,
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_P01R0101_gswoman3",
-      "ovid": "SPRITE_GSWOMAN3",
-      "mvt": 17,
+      "sprite_id": "SPRITE_GSWOMAN3",
+      "movement": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_P01R0101_004 + 1",
@@ -54,8 +54,8 @@
     },
     {
       "id": "obj_P01R0101_gsboy2",
-      "ovid": "SPRITE_GSBOY2",
-      "mvt": 2,
+      "sprite_id": "SPRITE_GSBOY2",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
       "scr": "_EV_scr_seq_P01R0101_003 + 1",

@@ -3,8 +3,8 @@
   "objects": [
     {
       "id": "obj_D27R0105_gsgirl1",
-      "ovid": "SPRITE_GSGIRL1",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSGIRL1",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_UNK_1DB",
       "scr": "std_trainer(TRAINER_LASS_CONNIE)",
@@ -20,8 +20,8 @@
     },
     {
       "id": "obj_D27R0105_gsgentleman",
-      "ovid": "SPRITE_GSGENTLEMAN",
-      "mvt": 0,
+      "sprite_id": "SPRITE_GSGENTLEMAN",
+      "movement": 0,
       "type": 1,
       "flag": "FLAG_UNK_1DA",
       "scr": "std_trainer(TRAINER_GENTLEMAN_PRESTON)",
@@ -37,8 +37,8 @@
     },
     {
       "id": "obj_D27R0105_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_D27R0105_TM87",
       "scr": "std_itemball_d27r0105_tm87",

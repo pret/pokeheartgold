@@ -13,8 +13,8 @@
   "objects": [
     {
       "id": "obj_R10R0101_mount_2",
-      "ovid": "SPRITE_MOUNT_2",
-      "mvt": 20,
+      "sprite_id": "SPRITE_MOUNT_2",
+      "movement": 20,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_HIKER_JIM)",
@@ -30,8 +30,8 @@
     },
     {
       "id": "obj_R10R0101_gsmiddleman1",
-      "ovid": "SPRITE_GSMIDDLEMAN1",
-      "mvt": 9,
+      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "movement": 9,
       "type": 1,
       "flag": "FLAG_NOTHING",
       "scr": "std_trainer(TRAINER_POKEFAN_M_ROBERT)",
@@ -47,8 +47,8 @@
     },
     {
       "id": "obj_R10R0101_rock",
-      "ovid": "SPRITE_ROCK",
-      "mvt": 0,
+      "sprite_id": "SPRITE_ROCK",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_MAPTEMP_010",
       "scr": "std_field_strength",
@@ -64,8 +64,8 @@
     },
     {
       "id": "obj_R10R0101_monstarball",
-      "ovid": "SPRITE_MONSTARBALL",
-      "mvt": 0,
+      "sprite_id": "SPRITE_MONSTARBALL",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ITEMBALL_R10R0101_TM69",
       "scr": "std_itemball_r10r0101_tm69",

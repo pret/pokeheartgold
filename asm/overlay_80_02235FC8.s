@@ -396,7 +396,7 @@ _02236290:
 	ldr r1, _022362B4 ; =gOverlayTemplate_PartyMenu
 	ldr r2, [r5]
 	add r0, r6, #0
-	bl sub_02096820
+	bl Frontier_LaunchApplication
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	nop
@@ -568,7 +568,7 @@ ov80_02236330: ; 0x02236330
 	ldr r1, _02236418 ; =gOverlayTemplate_PokemonSummary
 	ldr r2, [r4]
 	add r0, r5, #0
-	bl sub_02096820
+	bl Frontier_LaunchApplication
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02236414: .word ov80_0223C040

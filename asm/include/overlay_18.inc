@@ -238,7 +238,7 @@
 .public GetMonBaseStat_HandleAlternateForm
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public GetMonSpriteCharAndPlttNarcIdsEx
-.public GetMonPicHeightBySpeciesGenderForme
+.public GetMonPicHeightBySpeciesGenderForm
 .public GetBattleMonIconNaixEx
 .public GetBattleMonIconPaletteEx
 .public sub_02074490

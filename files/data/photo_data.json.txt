@@ -5,9 +5,9 @@
 #include "constants/maps.h"
 #include "constants/sprites.h"
 
-u32 __size = sizeof(PHOTO_DAT);
+u32 __size = sizeof(PhotoData);
 
-const PHOTO_DAT __data[] = {
+const PhotoData __data[] = {
 ## for photo in photos
     {
         .mapId = {{photo.map}},

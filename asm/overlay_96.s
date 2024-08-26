@@ -57309,7 +57309,7 @@ _022017F2:
 	ldrh r3, [r3, #2]
 	lsl r3, r3, #0x18
 	lsr r3, r3, #0x18
-	bl GetMonPicHeightBySpeciesGenderForme
+	bl GetMonPicHeightBySpeciesGenderForm
 	lsl r1, r5, #0xc
 	str r1, [sp, #0x80]
 	mov r1, #0x5e
@@ -62031,7 +62031,7 @@ _02203E5E:
 	ldrb r1, [r6, #7]
 	lsl r3, r3, #0x18
 	lsr r3, r3, #0x18
-	bl GetMonPicHeightBySpeciesGenderForme
+	bl GetMonPicHeightBySpeciesGenderForm
 	mov r1, #0x5e
 	lsl r1, r1, #2
 	add r0, r0, r1

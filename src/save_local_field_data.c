@@ -1,10 +1,10 @@
 #include "global.h"
 #include "save_local_field_data.h"
 #include "field_player_avatar.h"
-#include "field_map_object.h"
-#include "field_system.h"
+#include "map_object.h"
 #include "script_pokemon_util.h"
 #include "unk_0203BA5C.h"
+#include "field_system.h"
 #include "constants/scrcmd.h"
 
 struct LocalFieldData {
@@ -141,7 +141,7 @@ void FieldSystem_RestoreMapObjectsFromSave(FieldSystem *fieldSystem) {
         if (species != SPECIES_SHAYMIN) {
             GF_ASSERT(FALSE);
         } else if (form == SHAYMIN_LAND) {
-            follower->gfxId = SPRITE_FOLLOWER_MON_SHAYMIN;
+            follower->spriteId = SPRITE_FOLLOWER_MON_SHAYMIN;
         }
     }
     MapObjectManager_RestoreFromSave(fieldSystem->mapObjectManager, unk->subs, 64);

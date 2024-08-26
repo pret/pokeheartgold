@@ -19,7 +19,7 @@ typedef struct UnkStruct_ov55_021E5B08 {
     u8 mailType;
     String *mailAuthorName;
     u16 unk18[3];
-    MAIL_MESSAGE mailMessages[3];
+    MailMessage mailMessages[3];
 } UnkStruct_ov55_021E5B08;
 
 typedef struct UnkStruct_ov55_021E5924 {
@@ -28,7 +28,7 @@ typedef struct UnkStruct_ov55_021E5924 {
     EasyChatArgs *unk8;
     OVY_MANAGER *unkC;
     UnkStruct_ov55_021E5B08 *unk10;
-    MAIL_MESSAGE unk14;
+    MailMessage unk14;
 } UnkStruct_ov55_021E5924;
 
 BOOL ov55_UnkApp_Init(OVY_MANAGER *manager, int *state);

@@ -245,8 +245,8 @@
   "objects": [
     {
       "id": "obj_D24R0205_gswoman1",
-      "ovid": "SPRITE_GSWOMAN1",
-      "mvt": 3,
+      "sprite_id": "SPRITE_GSWOMAN1",
+      "movement": 3,
       "type": 0,
       "flag": "FLAG_HIDE_RUINS_OF_ALPH_TOURISTS",
       "scr": "_EV_scr_seq_D24R0205_004 + 1",
@@ -262,8 +262,8 @@
     },
     {
       "id": "obj_D24R0205_gsbigman",
-      "ovid": "SPRITE_GSBIGMAN",
-      "mvt": 2,
+      "sprite_id": "SPRITE_GSBIGMAN",
+      "movement": 2,
       "type": 0,
       "flag": "FLAG_HIDE_RUINS_OF_ALPH_TOURISTS",
       "scr": "_EV_scr_seq_D24R0205_003 + 1",
@@ -279,8 +279,8 @@
     },
     {
       "id": "obj_D24R0205_gsoldman1",
-      "ovid": "SPRITE_GSOLDMAN1",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSOLDMAN1",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_HIDE_RUINS_OF_ALPH_TOURISTS",
       "scr": "_EV_scr_seq_D24R0205_005 + 1",
@@ -296,8 +296,8 @@
     },
     {
       "id": "obj_D24R0205_gsassistantm",
-      "ovid": "SPRITE_GSASSISTANTM",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSASSISTANTM",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS",
       "scr": 0,
@@ -313,8 +313,8 @@
     },
     {
       "id": "obj_D24R0205_gsassistantm_2",
-      "ovid": "SPRITE_GSASSISTANTM",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSASSISTANTM",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS",
       "scr": 0,
@@ -330,8 +330,8 @@
     },
     {
       "id": "obj_D24R0205_gsassistantm_3",
-      "ovid": "SPRITE_GSASSISTANTM",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSASSISTANTM",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS",
       "scr": 0,
@@ -347,8 +347,8 @@
     },
     {
       "id": "obj_D24R0205_gsassistantm_4",
-      "ovid": "SPRITE_GSASSISTANTM",
-      "mvt": 14,
+      "sprite_id": "SPRITE_GSASSISTANTM",
+      "movement": 14,
       "type": 0,
       "flag": "FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS",
       "scr": 0,
@@ -364,8 +364,8 @@
     },
     {
       "id": "obj_D24R0205_suit",
-      "ovid": "SPRITE_SUIT",
-      "mvt": 0,
+      "sprite_id": "SPRITE_SUIT",
+      "movement": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE",
       "scr": 0,
