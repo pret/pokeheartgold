@@ -577,7 +577,7 @@ BOOL FieldSystem_ShouldDrawStartMenuIcon(FieldSystem *fieldSystem, StartMenuIcon
 
 static void FieldSystem_ResetGearRingManagerIfNotSelectingSaveOrPokegear(FieldSystem *fieldSystem) {
     if (fieldSystem->lastStartMenuAction != START_MENU_ACTION_SAVE && fieldSystem->lastStartMenuAction != START_MENU_ACTION_POKEGEAR) {
-        sub_02092FA8(fieldSystem->unk114);
+        sub_02092FA8(fieldSystem->phoneRingManager);
     }
 }
 

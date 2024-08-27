@@ -12,6 +12,7 @@
 #include "font.h"
 #include "gf_gfx_loader.h"
 #include "overlay_01.h"
+#include "overlay_123.h"
 #include "render_text.h"
 #include "sys_task.h"
 #include "sys_task_api.h"
@@ -68,10 +69,6 @@ typedef struct TouchSaveAppData {
     WaitingIcon *waitingIcon;
     SysTask *savingMovementTask;
 } TouchSaveAppData; // size: 0x6C
-
-extern void *ov123_0225F4A8(void (*)(void));
-extern void *ov123_0225F520(void (*)(void));
-extern void *ov123_0225F610(void (*)(void));
 
 static void ov30_0225D700(SysTask *task, TouchSaveAppData *data);
 static void TouchSaveApp_SetupGraphics(TouchSaveAppData *data);

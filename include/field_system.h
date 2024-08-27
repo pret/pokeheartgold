@@ -168,7 +168,7 @@ struct FieldSystem {
     BOOL menuInputState; // Tracks whether the last menu input was touch or keypad
     u8 unk_110;
     u8 unk_111[3];
-    GearPhoneRingManager *unk114;
+    GearPhoneRingManager *phoneRingManager;
     BugContest *bugContest;
     u8 unk11C[0x8];
     u32 judgeStatPosition;

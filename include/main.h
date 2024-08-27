@@ -4,11 +4,11 @@
 #include "overlay_manager.h"
 #include "save.h"
 
-struct UnkStruct_02111868_sub {
+typedef struct UnkStruct_02111868_sub {
     int unk_00;
     u32 unk_04;
     SaveData *saveData;
-};
+} UnkStruct_02111868_sub;
 
 void NitroMain(void);
 void Main_ResetOverlayManager(void);

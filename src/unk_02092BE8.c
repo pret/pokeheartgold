@@ -112,7 +112,7 @@ void sub_02092DD8(GearPhoneRingManager *ptr) {
 }
 
 GearPhoneRingManager *FieldSystem_GetGearPhoneRingManager(FieldSystem *sys) {
-    return sys->unk114;
+    return sys->phoneRingManager;
 }
 
 void sub_02092DF4(GearPhoneRingManager *ptr) {
