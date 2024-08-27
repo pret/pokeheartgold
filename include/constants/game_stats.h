@@ -3,7 +3,7 @@
 
 #define GAME_STAT_UNK0                 0
 #define GAME_STAT_APRICORN_GET         1
-#define GAME_STAT_UNK2                 2
+#define GAME_STAT_SCORE                 2
 #define GAME_STAT_UNK5                 5
 #define GAME_STAT_UNK6                 6
 #define GAME_STAT_UNK8                 8 //wild battles?
@@ -31,5 +31,10 @@
 #define GAME_STAT_UNK98               98
 #define GAME_STAT_UNK100             100
 #define GAME_STAT_UNK114             114
+
+#define NUM_GAME_STATS_WORD           72
+#define NUM_GAME_STATS               149
+
+#define SCORE_EVENT_REGISTER_SPECIES_CAUGHT         21
 
 #endif //POKEHEARTGOLD_CONSTANTS_GAME_STATS_H

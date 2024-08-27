@@ -13,7 +13,7 @@ void UpdatePokedexWithReceivedSpecies(SaveData *saveData, Pokemon *mon) {
     if (!isEgg) {
         species = GetMonData(mon, MON_DATA_SPECIES, NULL);
         Pokedex *pokedex = Save_Pokedex_Get(saveData);
-        GAME_STATS *gameStats = Save_GameStats_Get(saveData);
+        GameStats *gameStats = Save_GameStats_Get(saveData);
         GameStats_IncSpeciesCaught(gameStats, pokedex, species);
         Pokedex_SetMonCaughtFlag(pokedex, mon);
         if (species == SPECIES_JIRACHI) {

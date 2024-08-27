@@ -572,7 +572,7 @@ struct BattleSystem {
     u32 *unk1CC;
     UnkBattleSystemSub1D0 unk1D0[4];
     UnkBattleSystemSub220 unk220;
-    GAME_STATS *gameStats;
+    GameStats *gameStats;
     u8 *unk230;
     u16 *unk234;
     u8 sendBuffer[0x1000];

@@ -17628,7 +17628,7 @@ ov70_02240500: ; 0x02240500
 	add r4, r1, #0
 	ldr r0, [r0, #0x28]
 	mov r1, #0x18
-	bl GameStats_AddSpecial
+	bl GameStats_AddScore
 	ldr r0, [r5]
 	mov r1, #0x19
 	ldr r0, [r0, #0x28]

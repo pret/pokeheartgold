@@ -102,7 +102,7 @@ BOOL ov55_UnkApp_Main(OVY_MANAGER *manager, int *state) {
             if (args->unk0 == 1) {
                 if (overlayData->unk10->unk0 == 3) {
                     ov55_021E5BC4(args->mail, overlayData->unk10);
-                    GameStats_AddSpecial(Save_GameStats_Get(args->saveData), GAME_STAT_UNK2);
+                    GameStats_AddScore(Save_GameStats_Get(args->saveData), GAME_STAT_SCORE);
                     GameStats_Inc(Save_GameStats_Get(args->saveData), GAME_STAT_UNK46);
                     args->unk4 = 1;
                 } else {

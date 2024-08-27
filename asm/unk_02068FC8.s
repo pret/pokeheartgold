@@ -62,7 +62,7 @@ sub_02068FC8: ; 0x02068FC8
 	bl Pokedex_IsEnabled
 	str r0, [sp, #0x3c]
 	add r0, r4, #0
-	bl GameStats_GetStat2
+	bl GameStats_GetScore
 	ldr r1, [sp, #0x38]
 	ldr r2, [sp, #0x30]
 	str r1, [sp]
