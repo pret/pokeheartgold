@@ -62,14 +62,14 @@ void PalPark_InitFromSave(FieldSystem* fieldSystem) {
 
 void PalPark_StopClock(FieldSystem* fieldSystem) {
     struct PalParkLocal* local = &sPalParkLocalState;
-    GAME_STATS* stats = Save_GameStats_Get(fieldSystem->saveData);
+    GameStats* stats = Save_GameStats_Get(fieldSystem->saveData);
     s64 elapsed = GF_RTC_TimeDelta(local->timestamp, GF_RTC_DateTimeToSec());
     if (elapsed < 1000) {
         local->timeRemainingFactor = 2 * (1000 - elapsed);
     } else {
         local->timeRemainingFactor = 0;
     }
-    GameStats_AddSpecial(stats, GAME_STAT_UNK17);
+    GameStats_AddScore(stats, GAME_STAT_UNK17);
 }
 
 BOOL PalPark_TryEncounter(FieldSystem* fieldSystem, int x, int z) {
@@ -121,7 +121,7 @@ static void InitPalParkMonsData(FieldSystem* fieldSystem, struct PalParkLocal* p
         palpark->mons[i].species = species = GetMonData(mon, MON_DATA_SPECIES, NULL);
         LoadMonPalParkStats(species, narc_data);
         if (narc_data[0] != 0) {
-            palpark->mons[i].area = narc_data[PPMONDAT_OFFSET_LAND_SECTOR];    
+            palpark->mons[i].area = narc_data[PPMONDAT_OFFSET_LAND_SECTOR];
         } else {
             palpark->mons[i].area = narc_data[PPMONDAT_OFFSET_WATER_SECTOR] + (int)(PP_ENCTYPE_WATER_MIN - PP_ENCTYPE_LAND_MIN);
         }

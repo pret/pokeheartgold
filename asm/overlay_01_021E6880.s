@@ -2010,7 +2010,7 @@ ov01_021E788C: ; 0x021E788C
 	bl GameStats_Inc
 	add r0, r5, #0
 	mov r1, #0xf
-	bl GameStats_AddSpecial
+	bl GameStats_AddScore
 	ldr r1, _021E78D4 ; =std_hatch_egg
 	add r0, r4, #0
 	mov r2, #0

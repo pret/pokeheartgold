@@ -62,7 +62,7 @@ typedef struct BerryPotsAppData {
     BerryPotsAppArgs *args;
     void *unk8;
     Bag *bag;
-    GAME_STATS *stats;
+    GameStats *stats;
     BerryPot *berryPots;
     struct GF_RTC_DateTime *berryDatetime;
     UnkStruct_ov16_022014A0 *berryGrowthProperties;

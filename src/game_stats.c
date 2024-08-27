@@ -2,7 +2,7 @@
 #include "math_util.h"
 #include "game_stats.h"
 
-struct GAME_STATS {
+struct GameStats {
     u32 statsWords[NUM_GAME_STATS_WORD];
     u16 statsHalf[77];
     u16 dummy;
@@ -10,14 +10,14 @@ struct GAME_STATS {
     u16 unk_1BE;
 };
 
-static void GameStats_Release(GAME_STATS *gameStats, int statIdx);
-static void GameStats_Acquire(GAME_STATS *gameStats, int statIdx);
-static u32 GameStats_GetValue(GAME_STATS *gameStats, int statIdx);
-static u32 GameStats_SetValue(GAME_STATS *gameStats, int statIdx, u32 value);
+static void GameStats_Release(GameStats *gameStats, int statIdx);
+static void GameStats_Acquire(GameStats *gameStats, int statIdx);
+static u32 GameStats_GetValue(GameStats *gameStats, int statIdx);
+static u32 GameStats_SetValue(GameStats *gameStats, int statIdx, u32 value);
 static u32 GameStats_GetMaxValue(int statIdx);
-static u16 GameStats_GetStdInc(int statIdx);
+static u16 GameStats_GetScoreIncrementByType(int statIdx);
 
-static u8 _0210F864[] = {
+static u8 sGameStatHasHighCap[] = {
     TRUE,
     TRUE,
     TRUE,
@@ -169,7 +169,7 @@ static u8 _0210F864[] = {
     FALSE,
 };
 
-static const u16 _020F67DC[] = {
+static const u16 sScoreIncrement[] = {
         1,
         1,
         1,
@@ -191,7 +191,7 @@ static const u16 _020F67DC[] = {
        11,
        11,
        11,
-       20,
+       20,  // SCORE_EVENT_MON_CATCH
        30,
        35,
        40,
@@ -213,41 +213,41 @@ static const u16 _020F67DC[] = {
 };
 
 u32 GameStats_sizeof(void) {
-    return sizeof(GAME_STATS);
+    return sizeof(GameStats);
 }
 
-void GameStats_Init(GAME_STATS *gameStats) {
-    MI_CpuClear32(gameStats, sizeof(GAME_STATS));
+void GameStats_Init(GameStats *gameStats) {
+    MI_CpuClear32(gameStats, sizeof(GameStats));
     gameStats->unk_1BE = OS_GetVBlankCount() | (OS_GetVBlankCount() << 8);
     GameStats_Release(gameStats, 2);
 }
 
-GAME_STATS *Save_GameStats_Get(SaveData *saveData) {
+GameStats *Save_GameStats_Get(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_GAMESTATS);
 }
 
-static inline void *GameStats_GetSecureRegion(GAME_STATS *gameStats) {
-    return (void *)((char *)gameStats + offsetof(GAME_STATS, statsWords) + 2 * sizeof(u32));
+static inline void *GameStats_GetSecureRegion(GameStats *gameStats) {
+    return (void *)((char *)gameStats + offsetof(GameStats, statsWords) + 2 * sizeof(u32));
 }
 
 static inline u32 GameStats_GetSecureRegionSize(void) {
-    return offsetof(GAME_STATS, unk_1BC) - (offsetof(GAME_STATS, statsWords) + 2 * sizeof(u32));
+    return offsetof(GameStats, unk_1BC) - (offsetof(GameStats, statsWords) + 2 * sizeof(u32));
 }
 
-static void GameStats_Release(GAME_STATS *gameStats, int statIdx) {
+static void GameStats_Release(GameStats *gameStats, int statIdx) {
     if (statIdx > 1) {
         gameStats->unk_1BC = Math_CalcArraySum(GameStats_GetSecureRegion(gameStats), GameStats_GetSecureRegionSize());
         _MonEncryptSegment(GameStats_GetSecureRegion(gameStats), GameStats_GetSecureRegionSize(), gameStats->unk_1BC + (gameStats->unk_1BE << 16));
     }
 }
 
-static void GameStats_Acquire(GAME_STATS *gameStats, int statIdx) {
+static void GameStats_Acquire(GameStats *gameStats, int statIdx) {
     if (statIdx > 1) {
         _MonDecryptSegment(GameStats_GetSecureRegion(gameStats), GameStats_GetSecureRegionSize(), gameStats->unk_1BC + (gameStats->unk_1BE << 16));
     }
 }
 
-static u32 GameStats_GetValue(GAME_STATS *gameStats, int statIdx) {
+static u32 GameStats_GetValue(GameStats *gameStats, int statIdx) {
     if (statIdx < NUM_GAME_STATS_WORD) {
         return gameStats->statsWords[statIdx];
     } else if (statIdx < NUM_GAME_STATS) {
@@ -258,7 +258,7 @@ static u32 GameStats_GetValue(GAME_STATS *gameStats, int statIdx) {
     }
 }
 
-static u32 GameStats_SetValue(GAME_STATS *gameStats, int statIdx, u32 value) {
+static u32 GameStats_SetValue(GameStats *gameStats, int statIdx, u32 value) {
     if (statIdx < NUM_GAME_STATS_WORD) {
         gameStats->statsWords[statIdx] = value;
     } else if (statIdx < NUM_GAME_STATS) {
@@ -272,13 +272,13 @@ static u32 GameStats_SetValue(GAME_STATS *gameStats, int statIdx, u32 value) {
 
 static u32 GameStats_GetMaxValue(int statIdx) {
     if (statIdx < NUM_GAME_STATS_WORD) {
-        if (_0210F864[statIdx]) {
+        if (sGameStatHasHighCap[statIdx]) {
             return 999999999;
         } else {
             return 999999;
         }
     } else if (statIdx < NUM_GAME_STATS) {
-        if (_0210F864[statIdx]) {
+        if (sGameStatHasHighCap[statIdx]) {
             return 65535;
         } else {
             return 9999;
@@ -289,11 +289,11 @@ static u32 GameStats_GetMaxValue(int statIdx) {
     }
 }
 
-static u16 GameStats_GetStdInc(int statIdx) {
-    return _020F67DC[statIdx];
+static u16 GameStats_GetScoreIncrementByType(int scoreType) {
+    return sScoreIncrement[scoreType];
 }
 
-u32 GameStats_SetCapped(GAME_STATS *gameStats, int statIdx, u32 value) {
+u32 GameStats_SetCapped(GameStats *gameStats, int statIdx, u32 value) {
     u32 limit = GameStats_GetMaxValue(statIdx);
     u32 ret;
     GameStats_Acquire(gameStats, statIdx);
@@ -306,7 +306,7 @@ u32 GameStats_SetCapped(GAME_STATS *gameStats, int statIdx, u32 value) {
     return ret;
 }
 
-u32 GameStats_UpdateBounded(GAME_STATS *gameStats, int statIdx, u32 value) {
+u32 GameStats_UpdateBounded(GameStats *gameStats, int statIdx, u32 value) {
     u32 limit = GameStats_GetMaxValue(statIdx);
     u32 ret;
     GameStats_Acquire(gameStats, statIdx);
@@ -323,7 +323,7 @@ u32 GameStats_UpdateBounded(GAME_STATS *gameStats, int statIdx, u32 value) {
     return ret;
 }
 
-u32 GameStats_Inc(GAME_STATS *gameStats, int statIdx) {
+u32 GameStats_Inc(GameStats *gameStats, int statIdx) {
     u32 limit = GameStats_GetMaxValue(statIdx);
     u32 ret;
     u32 value;
@@ -338,7 +338,7 @@ u32 GameStats_Inc(GAME_STATS *gameStats, int statIdx) {
     return ret;
 }
 
-u32 GameStats_Add(GAME_STATS *gameStats, int statIdx, u32 addend) {
+u32 GameStats_Add(GameStats *gameStats, int statIdx, u32 addend) {
     u32 limit = GameStats_GetMaxValue(statIdx);
     u32 ret;
     u32 value;
@@ -353,7 +353,7 @@ u32 GameStats_Add(GAME_STATS *gameStats, int statIdx, u32 addend) {
     return ret;
 }
 
-u32 GameStats_GetCapped(GAME_STATS *gameStats, int statIdx) {
+u32 GameStats_GetCapped(GameStats *gameStats, int statIdx) {
     u32 limit = GameStats_GetMaxValue(statIdx);
     u32 ret;
     GameStats_Acquire(gameStats, statIdx);
@@ -366,22 +366,22 @@ u32 GameStats_GetCapped(GAME_STATS *gameStats, int statIdx) {
     }
 }
 
-u32 GameStats_AddSpecial(GAME_STATS *gameStats, int statIdx) {
+u32 GameStats_AddScore(GameStats *gameStats, int statIdx) {
     GF_ASSERT(statIdx < 40);
-    u32 value = GameStats_GetCapped(gameStats, GAME_STAT_UNK2);
-    if (value + GameStats_GetStdInc(statIdx) > 99999999) {
-        return GameStats_SetCapped(gameStats, GAME_STAT_UNK2, 99999999);
+    u32 value = GameStats_GetCapped(gameStats, GAME_STAT_SCORE);
+    if (value + GameStats_GetScoreIncrementByType(statIdx) > 99999999) {
+        return GameStats_SetCapped(gameStats, GAME_STAT_SCORE, 99999999);
     } else {
-        return GameStats_Add(gameStats, GAME_STAT_UNK2, GameStats_GetStdInc(statIdx));
+        return GameStats_Add(gameStats, GAME_STAT_SCORE, GameStats_GetScoreIncrementByType(statIdx));
     }
 }
 
-u32 GameStats_GetStat2(GAME_STATS *gameStats) {
-    return GameStats_GetCapped(gameStats, GAME_STAT_UNK2);
+u32 GameStats_GetScore(GameStats *gameStats) {
+    return GameStats_GetCapped(gameStats, GAME_STAT_SCORE);
 }
 
-void GameStats_IncSpeciesCaught(GAME_STATS *gameStats, const Pokedex *pokedex, u16 species) {
+void GameStats_IncSpeciesCaught(GameStats *gameStats, const Pokedex *pokedex, u16 species) {
     if (!Pokedex_CheckMonCaughtFlag(pokedex, species)) {
-        GameStats_AddSpecial(gameStats, 21);
+        GameStats_AddScore(gameStats, SCORE_EVENT_REGISTER_SPECIES_CAUGHT);
     }
 }

@@ -1582,7 +1582,7 @@ ov52_021E8DC4: ; 0x021E8DC4
 _021E8DDE:
 	ldr r0, [r5, #8]
 	mov r1, #4
-	bl GameStats_AddSpecial
+	bl GameStats_AddScore
 	ldr r0, [r5, #8]
 	mov r1, #0x73
 	bl GameStats_Inc

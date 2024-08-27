@@ -24,7 +24,7 @@
 .public GetIGTMinutes
 .public Save_GameStats_Get
 .public GameStats_GetCapped
-.public GameStats_GetStat2
+.public GameStats_GetScore
 .public sub_0203107C
 .public sub_020310BC
 .public FieldSystem_GetSaveData
