@@ -274,8 +274,8 @@ UnkStruct_Fsys_A0 *sub_0204A824(SaveData *saveData, BOOL resumeFromPrevious, u32
     }
     unkStruct->unk11 = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(saveData));
     if (unkStruct->unk0f != 5) {
-        void *unk5            = sub_0203107C(saveData);
-        GAME_STATS *gameStats = Save_GameStats_Get(saveData);
+        void *unk5           = sub_0203107C(saveData);
+        GameStats *gameStats = Save_GameStats_Get(saveData);
         u16 unk0;
         if (unkStruct->unk0f == 6) {
             unk0 = Save_VarsFlags_GetVar4052(Save_VarsFlags_Get(saveData));
@@ -430,8 +430,8 @@ static void sub_0204ACA0(UnkStruct_Fsys_A0 *a0, SaveData *saveData, BOOL a2, u16
 }
 
 void sub_0204AD04(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
-    GAME_STATS *gameStats = Save_GameStats_Get(saveData);
-    void *unk00           = sub_0203107C(saveData);
+    GameStats *gameStats = Save_GameStats_Get(saveData);
+    void *unk00          = sub_0203107C(saveData);
     if (a0->unk0f == 5) {
         return;
     }
@@ -466,9 +466,9 @@ void sub_0204AE20(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     if (a0->unk0f == 5) {
         return;
     }
-    GAME_STATS *gameStats = Save_GameStats_Get(saveData);
-    void *unk00           = sub_0203107C(saveData);
-    u32 unk4              = a0->unk0f == 6 ? 112 : a0->unk0f * 2;
+    GameStats *gameStats = Save_GameStats_Get(saveData);
+    void *unk00          = sub_0203107C(saveData);
+    u32 unk4             = a0->unk0f == 6 ? 112 : a0->unk0f * 2;
     if (a0->unk0f == 6) {
         sub_020310BC(sub_0203107C(saveData), 100, sub_0205C268(100));
     } else {
@@ -487,7 +487,7 @@ void sub_0204AE20(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     if (a0->unk0f != 6) {
         GameStats_Add(gameStats, GAME_STAT_UNK16, 1);
     }
-    GameStats_AddSpecial(gameStats, GAME_STAT_UNK14);
+    GameStats_AddScore(gameStats, GAME_STAT_UNK14);
     sub_0204B318(a0);
     sub_0204ACA0(a0, saveData, 1, unk6);
 }

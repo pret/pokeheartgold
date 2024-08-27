@@ -3678,7 +3678,7 @@ BOOL ScrCmd_HallOfFameAnim(ScriptContext *ctx) {
 
 BOOL ScrCmd_AddSpecialGameStat(ScriptContext *ctx) {
     u16 statno = ScriptReadHalfword(ctx);
-    GameStats_AddSpecial(Save_GameStats_Get(ctx->fieldSystem->saveData), statno);
+    GameStats_AddScore(Save_GameStats_Get(ctx->fieldSystem->saveData), statno);
     return FALSE;
 }
 
@@ -4315,7 +4315,7 @@ u32 sub_020467A8(SaveData *saveData) {
 
 BOOL ScrCmd_AddSpecialGameStat2(ScriptContext *ctx) {
     u16 statno = ScriptReadHalfword(ctx);
-    GameStats_AddSpecial(Save_GameStats_Get(ctx->fieldSystem->saveData), statno);
+    GameStats_AddScore(Save_GameStats_Get(ctx->fieldSystem->saveData), statno);
     return FALSE;
 }
 

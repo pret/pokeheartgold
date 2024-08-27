@@ -217,7 +217,7 @@
 .public sub_0202BF00
 .public sub_0202BF04
 .public sub_0202BF08
-.public GameStats_AddSpecial
+.public GameStats_AddScore
 .public AllocMonZeroed
 .public GetMonData
 .public sub_02070130

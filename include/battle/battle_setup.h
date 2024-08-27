@@ -39,7 +39,7 @@ struct BattleSetup { // declared in trainer_data.h
     Options *options; // 130
     struct UnkStruct_02067A60 *unk_134;
     struct BattleSetupSub_138 unk138;
-    GAME_STATS *gameStats; // 144
+    GameStats *gameStats; // 144
     SavePalPad *palPad; // 148
     BattleBg battleBg; // 14C
     Terrain terrain;

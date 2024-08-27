@@ -54,7 +54,7 @@ typedef struct UnkStruct_0203F0D0 {
     SaveFashionDataSub *unk4;
     FashionCase *fashionCase;
     Options *options;
-    GAME_STATS *gameStats;
+    GameStats *gameStats;
     PlayerProfile *profile;
     int *unk18;
     int unk1C;
@@ -76,7 +76,7 @@ typedef struct WirelessTradeSelectMonArgs {
     SaveData *saveData;
     SaveUnk26 *unk14;
     Options *options;
-    GAME_STATS *gameStats;
+    GameStats *gameStats;
     Pokedex *pokedex;
     int unk24;
     int unk28;
@@ -135,7 +135,7 @@ typedef struct UnkStruct_0203F844 {
     PlayerProfile *profile;
     SaveData *saveData;
     Options *options;
-    GAME_STATS *gameStats;
+    GameStats *gameStats;
     Bag *bag;
     BOOL natDexEnabled;
     void *unk34;

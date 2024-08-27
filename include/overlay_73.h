@@ -11,7 +11,7 @@ typedef struct UnkStruct_0203F4F8 {
     SaveData *saveData;
     struct UnkStruct_0205AC88 *unk4;
     Options *options;
-    GAME_STATS *gameStats;
+    GameStats *gameStats;
     BOOL *menuInputStatePtr;
 } UnkStruct_0203F4F8;
 

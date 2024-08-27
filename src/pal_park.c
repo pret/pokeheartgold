@@ -66,14 +66,14 @@ void PalPark_InitFromSave(FieldSystem *fieldSystem) {
 
 void PalPark_StopClock(FieldSystem *fieldSystem) {
     struct PalParkLocal *local = &sPalParkLocalState;
-    GAME_STATS *stats          = Save_GameStats_Get(fieldSystem->saveData);
+    GameStats *stats           = Save_GameStats_Get(fieldSystem->saveData);
     s64 elapsed                = GF_RTC_TimeDelta(local->timestamp, GF_RTC_DateTimeToSec());
     if (elapsed < 1000) {
         local->timeRemainingFactor = 2 * (1000 - elapsed);
     } else {
         local->timeRemainingFactor = 0;
     }
-    GameStats_AddSpecial(stats, GAME_STAT_UNK17);
+    GameStats_AddScore(stats, GAME_STAT_UNK17);
 }
 
 BOOL PalPark_TryEncounter(FieldSystem *fieldSystem, int x, int z) {
