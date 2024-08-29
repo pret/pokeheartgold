@@ -1,9 +1,61 @@
 #ifndef POKEHEARTGOLD_POKEPIC_H
 #define POKEHEARTGOLD_POKEPIC_H
 
+#include "global.h"
+
 #include "filesystem_files_def.h"
-#include "pokemon_types_def.h"
 #include "heap.h"
+#include "pokemon_types_def.h"
+
+typedef enum PokepicAttr {
+    POKEPIC_X,
+    POKEPIC_Y,
+    POKEPIC_Z,
+    POKEPIC_XOFFSET,
+    POKEPIC_YOFFSET,
+    POKEPIC_ZOFFSET,
+    POKEPIC_VANISHED,
+    POKEPIC_XROT,
+    POKEPIC_YROT,
+    POKEPIC_ZROT,
+    POKEPIC_XPIVOT,
+    POKEPIC_YPIVOT,
+    POKEPIC_AFFINEW,
+    POKEPIC_AFFINEH,
+    POKEPIC_VISIBLE,
+    POKEPIC_XOFF2,
+    POKEPIC_YOFF2,
+    POKEPIC_W,
+    POKEPIC_H,
+    POKEPIC_SHADOW_X,
+    POKEPIC_SHADOW_Y,
+    POKEPIC_SHADOW_XOFFSET,
+    POKEPIC_SHADOW_YOFFSET,
+    POKEPIC_ALPHA,
+    POKEPIC_DIFFUSE_R,
+    POKEPIC_DIFFUSE_G,
+    POKEPIC_DIFFUSE_B,
+    POKEPIC_AMBIENT_R,
+    POKEPIC_AMBIENT_G,
+    POKEPIC_AMBIENT_B,
+    POKEPIC_FADE,
+    POKEPIC_FADE_COLOR,
+    POKEPIC_FADE_BLDY,
+    POKEPIC_FADE_BLDY_TARGET,
+    POKEPIC_FADE_SPEED,
+    POKEPIC_HFLIP,
+    POKEPIC_VFLIP,
+    POKEPIC_NODRAW,
+    POKEPIC_ANIM_STEP,
+    POKEPIC_39,
+    POKEPIC_MOSAIC,
+    POKEPIC_SHADOW_H,
+    POKEPIC_SHADOW_PLTT,
+    POKEPIC_SHADOW_XADJ_REQ,
+    POKEPIC_SHADOW_YADJ_REQ,
+    POKEPIC_SHADOW_AFFINE,
+    POKEPIC_SHADOW_SIZE,
+} PokepicAttr;
 
 typedef struct PokepicAnimScript {
     s8 next;
@@ -14,8 +66,8 @@ typedef struct PokepicAnimScript {
 
 typedef struct PokepicAnim {
     u8 active;
-    u8 whichAnimStep;
-    u8 whichAnim;
+    u8 animStep;
+    u8 animId;
     u8 stepDelay;
     u8 loopTimers[10];
     PokepicAnimScript *animScript;
@@ -45,33 +97,33 @@ typedef struct PokepicDrawParam {
     u8 fadeDelayCounter;
     u8 fadeDelayLength;
     u32 fadeTargetColor;
-    u32 diffuseR:5;
-    u32 diffuseG:5;
-    u32 diffuseB:5;
-    u32 ambientR:5;
-    u32 ambientG:5;
-    u32 ambientB:5;
-    u32 filler_2C_30:2;
-    u32 hasVanished:1;
-    u32 visible:1;
-    u32 alpha:5;
-    u32 unk_30_07:1;
-    u32 unk_30_08:1;
-    u32 hflip:1;
-    u32 vflip:1;
-    u32 dontDraw:1;
-    u32 fadeActive:1;
-    u32 mosaic:4;
-    u32 filler_30_11:15;
+    u32 diffuseR     : 5;
+    u32 diffuseG     : 5;
+    u32 diffuseB     : 5;
+    u32 ambientR     : 5;
+    u32 ambientG     : 5;
+    u32 ambientB     : 5;
+    u32 filler_2C_30 : 2;
+    u32 hasVanished  : 1;
+    u32 visible      : 1;
+    u32 alpha        : 5;
+    u32 unk_30_07    : 1;
+    u32 unk_30_08    : 1;
+    u32 hflip        : 1;
+    u32 vflip        : 1;
+    u32 dontDraw     : 1;
+    u32 fadeActive   : 1;
+    u32 mosaic       : 4;
+    u32 filler_30_11 : 15;
 } PokepicDrawParam;
 
 typedef struct PokepicShadow {
-    u16 palSlot:2;
-    u16 shouldAdjustX:1;
-    u16 shouldAdjustY:1;
-    u16 isAffine:1;
-    u16 size:2;
-    u16 filler_0_7:9;
+    u16 palSlot       : 2;
+    u16 shouldAdjustX : 1;
+    u16 shouldAdjustY : 1;
+    u16 isAffine      : 1;
+    u16 size          : 2;
+    u16 filler_0_7    : 9;
     s8 height;
     u8 filler_3[1];
     s16 x;
@@ -85,11 +137,11 @@ struct Pokepic;
 typedef void (*PokepicCallback)(struct Pokepic *, PokepicDrawParam *);
 
 typedef struct Pokepic {
-    u32 active:1;
-    u32 polygonId:6;
-    u32 needReloadChar:1;
-    u32 needReloadPltt:1;
-    u32 filler_00_09:23;
+    u32 active         : 1;
+    u32 polygonId      : 6;
+    u32 needReloadChar : 1;
+    u32 needReloadPltt : 1;
+    u32 filler_00_09   : 23;
     PokepicTemplate template;
     PokepicTemplate templateBak;
     PokepicDrawParam drawParam;
@@ -124,7 +176,7 @@ typedef struct PokepicManager {
     u8 needLoadPltt;
     u8 needG3Identity;
     u32 flags;
-} PokepicManager;  // size: 0x338
+} PokepicManager; // size: 0x338
 
 // Allocates PokepicManager and auxiliary buffers
 PokepicManager *PokepicManager_Create(HeapID heapId);
@@ -210,7 +262,7 @@ void PokepicManager_HandleLoadImgAndOrPltt(PokepicManager *pokepicManager);
 // If needG3Identity is TRUE, the GPU will receive Identity instructions for each pic and shadow to be drawn.
 void PokepicManager_SetNeedG3IdentityFlag(PokepicManager *pokepicManager, BOOL needG3Identity);
 
-// Returns TRUE if the Pokepic active flag is FALSE.
+// Returns TRUE if the Pokepic active flag is TRUE.
 BOOL Pokepic_IsActive(Pokepic *pokepic);
 
 // Sets the specified bits of pokepicManager->flags. Only bit 0 appears to be used.
@@ -225,4 +277,4 @@ void RawChardata_PlaceSpindaSpots(u8 *pRawData, u32 pid, BOOL isAnimated);
 // Reverses the -scanXXX arguments passed to nitrogfx
 void UnscanPokepic(u8 *pRawData, NarcId narcId);
 
-#endif //POKEHEARTGOLD_POKEPIC_H
+#endif // POKEHEARTGOLD_POKEPIC_H

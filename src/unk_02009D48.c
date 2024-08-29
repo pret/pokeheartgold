@@ -1,18 +1,20 @@
-#include "global.h"
 #include "unk_02009D48.h"
+
+#include "global.h"
+
+#include "obj_char_transfer.h"
 #include "unk_0200ACF0.h"
+#include "unk_0200B150.h"
+#include "unk_02022588.h"
 #include "unk_02023694.h"
 #include "unk_02025C44.h"
-#include "unk_0200B150.h"
-#include "obj_char_transfer.h"
-#include "unk_02022588.h"
 
 void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, int plttId, int cellId, int cellAnmId, int multiCellId, int multiCellAnmId, int transfer, int priority, GF_2DGfxResMan *charMan, GF_2DGfxResMan *plttMan, GF_2DGfxResMan *cellMan, GF_2DGfxResMan *cellAnmMan, GF_2DGfxResMan *multiCellMan, GF_2DGfxResMan *multiCellAnmMan) {
     GF_2DGfxResObj *charObj;
     GF_2DGfxResObj *plttObj;
     GF_2DGfxResObj *cellObj;
-    GF_2DGfxResObj *cellAnmObj = NULL;
-    GF_2DGfxResObj *multiCellObj = NULL;
+    GF_2DGfxResObj *cellAnmObj      = NULL;
+    GF_2DGfxResObj *multiCellObj    = NULL;
     GF_2DGfxResObj *multiCellAnmObj = NULL;
     NNSG2dImageProxy *proxy;
 
@@ -52,9 +54,9 @@ void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, 
         GF_ASSERT(proxy != NULL);
         hdr->charData = NULL;
     }
-    hdr->plttProxy = sub_0200B0F8(plttObj, proxy);
+    hdr->plttProxy  = sub_0200B0F8(plttObj, proxy);
     hdr->imageProxy = proxy;
-    hdr->cellData = GF2DGfxResObj_GetCellDataPtr(cellObj);
+    hdr->cellData   = GF2DGfxResObj_GetCellDataPtr(cellObj);
     if (cellAnmObj != NULL) {
         hdr->cellAnim = GF2DGfxResObj_GetAnimDataPtr(cellAnmObj);
     } else {
@@ -67,7 +69,7 @@ void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, 
         hdr->multiCellData = NULL;
         hdr->multiCellAnim = NULL;
     }
-    hdr->flag = transfer;
+    hdr->flag     = transfer;
     hdr->priority = priority;
 }
 
@@ -79,13 +81,11 @@ SpriteResourceHeaderList *SpriteResourceHeaderList_Create(const struct ResdatNar
     while (resdatNarcEntry[num].charId != -2) {
         num++;
     }
-    ret = AllocFromHeap(heapId, sizeof(SpriteResourceHeaderList));
+    ret          = AllocFromHeap(heapId, sizeof(SpriteResourceHeaderList));
     ret->headers = AllocFromHeap(heapId, sizeof(SpriteResourcesHeader) * num);
-    ret->num = num;
+    ret->num     = num;
     for (i = 0; i < ret->num; i++) {
-        CreateSpriteResourcesHeader(&ret->headers[i], resdatNarcEntry[i].charId, resdatNarcEntry[i].plttId, resdatNarcEntry[i].cellId, resdatNarcEntry[i].animId,
-                                    resdatNarcEntry[i].mcelId, resdatNarcEntry[i].manmId, resdatNarcEntry[i].xferFlag, resdatNarcEntry[i].priority, charMan, plttMan,
-                                    cellMan, animMan, mcelMan, manmMan);
+        CreateSpriteResourcesHeader(&ret->headers[i], resdatNarcEntry[i].charId, resdatNarcEntry[i].plttId, resdatNarcEntry[i].cellId, resdatNarcEntry[i].animId, resdatNarcEntry[i].mcelId, resdatNarcEntry[i].manmId, resdatNarcEntry[i].xferFlag, resdatNarcEntry[i].priority, charMan, plttMan, cellMan, animMan, mcelMan, manmMan);
     }
     return ret;
 }
@@ -105,17 +105,17 @@ SpriteList *G2dRenderer_Init(int a0, GF_G2dRenderer *renderer, HeapID heapId) {
     sub_02025C44(&renderer->rendererInstance, -FX32_ONE);
     rect.posTopLeft.x = 0;
     rect.posTopLeft.y = 0;
-    rect.sizeView.x = 255 * FX32_ONE;
-    rect.sizeView.y = 192 * FX32_ONE;
+    rect.sizeView.x   = 255 * FX32_ONE;
+    rect.sizeView.y   = 192 * FX32_ONE;
     sub_0200B27C(&renderer->renderSurface[0], &rect, 1, &renderer->rendererInstance);
     rect.posTopLeft.x = 0;
     rect.posTopLeft.y = 192 * FX32_ONE;
-    rect.sizeView.x = 255 * FX32_ONE;
-    rect.sizeView.y = 192 * FX32_ONE;
+    rect.sizeView.x   = 255 * FX32_ONE;
+    rect.sizeView.y   = 192 * FX32_ONE;
     sub_0200B27C(&renderer->renderSurface[1], &rect, 2, &renderer->rendererInstance);
-    param.unk_0 = a0;
+    param.unk_0            = a0;
     param.rendererInstance = &renderer->rendererInstance;
-    param.heapId = heapId;
+    param.heapId           = heapId;
     return SpriteList_Create(&param);
 }
 
@@ -124,8 +124,8 @@ void G2dRenderer_SetMainSurfaceCoords(struct GF_G2dRenderer *a0, fx32 x, fx32 y)
 
     rect.posTopLeft.x = x;
     rect.posTopLeft.y = y;
-    rect.sizeView.x = 255 * FX32_ONE;
-    rect.sizeView.y = 192 * FX32_ONE;
+    rect.sizeView.x   = 255 * FX32_ONE;
+    rect.sizeView.y   = 192 * FX32_ONE;
     sub_02025C88(&a0->renderSurface[0], &rect);
 }
 
@@ -134,8 +134,8 @@ void G2dRenderer_SetSubSurfaceCoords(struct GF_G2dRenderer *a0, fx32 x, fx32 y) 
 
     rect.posTopLeft.x = x;
     rect.posTopLeft.y = y;
-    rect.sizeView.x = 255 * FX32_ONE;
-    rect.sizeView.y = 192 * FX32_ONE;
+    rect.sizeView.x   = 255 * FX32_ONE;
+    rect.sizeView.y   = 192 * FX32_ONE;
     sub_02025C88(&a0->renderSurface[1], &rect);
 }
 

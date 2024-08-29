@@ -2,11 +2,12 @@
 #define POKEHEARTGOLD_OVERLAY_02_H
 
 #include "battle/battle_setup.h"
+#include "field/headbutt.h"
+
 #include "heap.h"
 #include "script.h"
-#include "sys_task.h"
 #include "start_menu.h"
-#include "field/headbutt.h"
+#include "sys_task.h"
 
 struct FieldLongWarpTaskData;
 
@@ -74,21 +75,6 @@ void FieldSystem_FollowMonInteract(FieldSystem *fieldSystem);
 BOOL ov02_02250780(FieldSystem *fieldSystem, u8 a1);
 void ov02_022507B4(FieldSystem *fieldSystem, u8 a1);
 void ov02_022508B4(FieldSystem *fieldSystem);
-void ov02_02250A60(FieldSystem *fieldSystem);
-void ov02_02250AC8(FieldSystem *fieldSystem);
-void ov02_02250AE8(FieldSystem *fieldSystem);
-void ov02_02250AFC(FieldSystem *fieldSystem, u8 a1);
-void ov02_02250B30(FieldSystem *fieldSystem);
-void ov02_02250B80(FieldSystem *fieldSystem);
-void ov02_02251424(FieldSystem *fieldSystem, u8 a1);
-void ov02_022514C8(FieldSystem *fieldSystem, u8 a1);
-void ov02_02251554(FieldSystem *fieldSystem);
-void ov02_022515A4(FieldSystem *fieldSystem);
-void ov02_022518E0(FieldSystem *fieldSystem);
-void ov02_02251B14(FieldSystem *fieldSystem);
-void ov02_02251CF0(FieldSystem *fieldSystem);
-void ov02_02251DC4(FieldSystem *fieldSystem);
-void ov02_02251DE8(FieldSystem *fieldSystem);
 void ov02_022523B4(TaskManager *taskManager);
 void ov02_02252534(FieldSystem *fieldSystem);
 void ov02_022529FC(FieldSystem *fieldSystem);
@@ -107,4 +93,4 @@ void OpenAlphHiddenRoom(TaskManager *man, u32 a1);
 int GetRadioMusicPlayingSeq(void);
 SafariDecorationArgs *SafariDecoration_CreateArgs(FieldSystem *fieldSystem, HeapID heapId);
 
-#endif //POKEHEARTGOLD_OVERLAY_02_H
+#endif // POKEHEARTGOLD_OVERLAY_02_H

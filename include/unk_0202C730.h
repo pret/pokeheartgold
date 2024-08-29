@@ -13,4 +13,4 @@ void sub_0202C824(SAV_FRIEND_GRP *group, int a1, u32 gender);
 void sub_0202C848(SAV_FRIEND_GRP *group, int a1, int a2);
 BOOL sub_0202C88C(SAV_FRIEND_GRP *group, u16 *a1);
 
-#endif //POKEHEARTGOLD_UNK_0202C730_H
+#endif // POKEHEARTGOLD_UNK_0202C730_H

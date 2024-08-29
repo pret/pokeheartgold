@@ -1,5 +1,7 @@
-#include "global.h"
 #include "overlay_06.h"
+
+#include "global.h"
+
 #include "palette.h"
 #include "unk_02026E30.h"
 
@@ -16,23 +18,23 @@ void ov06_0221BA1C(PaletteData *palData, int param_2, int unused, PaletteBufferI
     PaletteData_LoadPalette(palData, srcData, bufferId, paletteSlot * 16, 32);
 }
 
-ParticleSystem *ov06_0221BA40(HeapID heapId) {
+SPLEmitter *ov06_0221BA40(HeapID heapId) {
     void *particleHeap;
-    ParticleSystem *pPVar1;
+    SPLEmitter *pPVar1;
     Camera *pGVar2;
 
     particleHeap = AllocFromHeap(heapId, 0x4800);
-    pPVar1 = sub_02014DB4(ov06_0221BB14, ov06_0221BB30, particleHeap, 0x4800, TRUE, heapId);
-    pGVar2 = sub_02015524(pPVar1);
+    pPVar1       = sub_02014DB4(ov06_0221BB14, ov06_0221BB30, particleHeap, 0x4800, TRUE, heapId);
+    pGVar2       = sub_02015524(pPVar1);
     if (pGVar2 != NULL) {
         Camera_SetPerspectiveClippingPlane(1 * FX32_ONE, 900 * FX32_ONE, pGVar2);
     }
     return pPVar1;
 }
 
-ParticleSystem *ov06_0221BA88(HeapID heapId) {
+SPLEmitter *ov06_0221BA88(HeapID heapId) {
     void *particleHeap;
-    ParticleSystem *pPVar1;
+    SPLEmitter *pPVar1;
     Camera *pGVar2;
 
     particleHeap = AllocFromHeap(heapId, 0x4200);
@@ -47,7 +49,7 @@ ParticleSystem *ov06_0221BA88(HeapID heapId) {
     return pPVar1;
 }
 
-void ov06_0221BAD8(ParticleSystem *param_1) {
+void ov06_0221BAD8(SPLEmitter *param_1) {
     void *pvVar1;
 
     pvVar1 = sub_020154D0(param_1);
@@ -78,7 +80,7 @@ u32 ov06_0221BB14(u32 szByte, BOOL is4x4comp) {
     return (texKey << 16) >> 13;
 }
 
-u32 ov06_0221BB30(u32 szByte,BOOL is4pltt) {
+u32 ov06_0221BB30(u32 szByte, BOOL is4pltt) {
     NNSGfdPlttKey plttKey;
 
     plttKey = NNS_GfdDefaultFuncAllocPlttVram(szByte, is4pltt, 0);

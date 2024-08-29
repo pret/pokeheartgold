@@ -1,5 +1,7 @@
-#include "global.h"
 #include "touchscreen.h"
+
+#include "global.h"
+
 #include "system.h"
 
 static int TouchscreenHitbox_FindRectAtPoint(const TouchscreenHitbox *hitbox, u32 x, u32 y);

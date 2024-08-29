@@ -1,20 +1,23 @@
-#include "global.h"
 #include "npc_trade.h"
+
+#include "global.h"
+
+#include "constants/items.h"
+#include "constants/maps.h"
+#include "constants/npc_trade.h"
+
+#include "msgdata/msg.naix"
+
 #include "field_system.h"
-#include "pokemon.h"
 #include "gf_gfx_loader.h"
-#include "update_dex_received.h"
 #include "item.h"
 #include "mail.h"
-#include "trainer_memo.h"
-#include "unk_0206D494.h"
-#include "unk_02055418.h"
 #include "map_header.h"
-#include "constants/maps.h"
-#include "constants/items.h"
-#include "constants/npc_trade.h"
+#include "pokemon.h"
+#include "trainer_memo.h"
 #include "unk_02055418.h"
-#include "msgdata/msg.naix"
+#include "unk_0206D494.h"
+#include "update_dex_received.h"
 
 static String *_GetNpcTradeName(HeapID heapId, s32 msgno);
 static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, NpcTradeNum tradeno, u32 mapno, u32 met_level_strat, HeapID heapId);
@@ -27,10 +30,10 @@ NPCTradeAppData *NPCTradeApp_Init(HeapID heapId, NpcTradeNum tradeno) {
     ret = AllocFromHeap(heapId, sizeof(NPCTradeAppData));
     memset(ret, 0, sizeof(NPCTradeAppData));
     ret->trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeno, FALSE, heapId, FALSE);
-    ret->heapId = heapId;
-    ret->tradeno = tradeno;
-    ret->mon = AllocMonZeroed(heapId);
-    ret->profile = PlayerProfile_New(heapId);
+    ret->heapId    = heapId;
+    ret->tradeno   = tradeno;
+    ret->mon       = AllocMonZeroed(heapId);
+    ret->profile   = PlayerProfile_New(heapId);
     PlayerProfile_Init(ret->profile);
     {
         String *name;
@@ -59,17 +62,17 @@ void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, 
     Mail *mail;
     u8 mailno;
 
-    mon = AllocMonZeroed(HEAP_ID_FIELD);
+    mon       = AllocMonZeroed(HEAP_ID_FIELD);
     trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeno, FALSE, HEAP_ID_FIELD, TRUE);
     _CreateTradeMon(mon, trade_dat, level, (NpcTradeNum)tradeno, mapno, 7, HEAP_ID_FIELD);
     UpdatePokedexWithReceivedSpecies(fieldSystem->saveData, mon);
     party = SaveArray_Party_Get(fieldSystem->saveData);
     Party_AddMon(party, mon);
     if (tradeno == NPC_TRADE_KENYA_SPEAROW) {
-        kenya = Party_GetMonByIndex(party, Party_GetCount(party) - 1);
-        name = _GetNpcTradeName(HEAP_ID_FIELD, NPC_TRADE_OT_NUM(tradeno));
+        kenya  = Party_GetMonByIndex(party, Party_GetCount(party) - 1);
+        name   = _GetNpcTradeName(HEAP_ID_FIELD, NPC_TRADE_OT_NUM(tradeno));
         mailno = ItemToMailId(trade_dat->heldItem);
-        mail = CreateKenyaMail(mon, mailno, trade_dat->gender, name, trade_dat->otId);
+        mail   = CreateKenyaMail(mon, mailno, trade_dat->gender, name, trade_dat->otId);
         SetMonData(kenya, MON_DATA_MAIL_STRUCT, mail);
         String_Delete(name);
         FreeToHeap(mail);
@@ -85,12 +88,12 @@ Mail *NPCTrade_MakeKenyaMail(void) {
     Mail *mail;
     u8 mailno;
 
-    mon = AllocMonZeroed(HEAP_ID_FIELD);
+    mon       = AllocMonZeroed(HEAP_ID_FIELD);
     trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, 7, FALSE, HEAP_ID_FIELD, TRUE);
     _CreateTradeMon(mon, trade_dat, 20, NPC_TRADE_KENYA_SPEAROW, MAP_R35R0101, 7, HEAP_ID_FIELD);
-    name = _GetNpcTradeName(HEAP_ID_FIELD, NPC_TRADE_OT_NUM(NPC_TRADE_KENYA_SPEAROW));
+    name   = _GetNpcTradeName(HEAP_ID_FIELD, NPC_TRADE_OT_NUM(NPC_TRADE_KENYA_SPEAROW));
     mailno = ItemToMailId(trade_dat->heldItem);
-    mail = CreateKenyaMail(mon, mailno, trade_dat->gender, name, trade_dat->otId);
+    mail   = CreateKenyaMail(mon, mailno, trade_dat->gender, name, trade_dat->otId);
     String_Delete(name);
     FreeToHeap(trade_dat);
     FreeToHeap(mon);
@@ -105,7 +108,7 @@ int NPCTrade_CanGiveUpLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, u8 
     int i, n, party_count;
 
     party = SaveArray_Party_Get(fieldSystem->saveData);
-    mon = Party_GetMonByIndex(party, idx);
+    mon   = Party_GetMonByIndex(party, idx);
     if (!MonIsInGameTradePoke(mon, tradeno)) {
         return 1;
     }
@@ -115,7 +118,7 @@ int NPCTrade_CanGiveUpLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, u8 
         return 3;
     }
 
-    n = 0;
+    n           = 0;
     party_count = Party_GetCount(party);
     for (i = 0; i < party_count; i++) {
         cur_poke = Party_GetMonByIndex(party, i);
@@ -160,12 +163,12 @@ void NPCTrade_CreateTradeAnim(FieldSystem *fieldSystem, NPCTradeAppData *work, i
     _CreateTradeMon(work->mon, work->trade_dat, GetMonData(my_poke, MON_DATA_LEVEL, NULL), work->tradeno, fieldSystem->location->mapId, 1, work->heapId);
     CopyPokemonToPokemon(my_poke, my_mon_buf);
     CopyPokemonToPokemon(work->mon, trade_mon_buf);
-    anim_work->my_boxmon = Mon_GetBoxMon(my_mon_buf);
-    anim_work->trade_boxmon = Mon_GetBoxMon(trade_mon_buf);
+    anim_work->my_boxmon     = Mon_GetBoxMon(my_mon_buf);
+    anim_work->trade_boxmon  = Mon_GetBoxMon(trade_mon_buf);
     anim_work->trade_profile = work->profile;
-    anim_work->is_ingame = 1;
-    anim_work->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
-    time_of_day = Field_GetTimeOfDay(fieldSystem);
+    anim_work->is_ingame     = 1;
+    anim_work->options       = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
+    time_of_day              = Field_GetTimeOfDay(fieldSystem);
     if (time_of_day == RTC_TIMEOFDAY_MORN || time_of_day == RTC_TIMEOFDAY_DAY) {
         anim_work->time_of_day = 0;
     } else if (time_of_day == RTC_TIMEOFDAY_EVE) {
@@ -180,7 +183,7 @@ static String *_GetNpcTradeName(HeapID heapId, s32 msgno) {
     MsgData *msgData;
 
     msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0200_bin, heapId);
-    ret = NewString_ReadMsgData(msgData, msgno);
+    ret     = NewString_ReadMsgData(msgData, msgno);
     DestroyMsgData(msgData);
     return ret;
 }
@@ -194,7 +197,7 @@ static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, NpcTra
     CreateMon(mon, trade_dat->give_species, level, 32, TRUE, trade_dat->pid, OT_ID_PRESET, trade_dat->otId);
 
     heapId_2 = (int)heapId;
-    name = _GetNpcTradeName((HeapID)heapId_2, tradeno);
+    name     = _GetNpcTradeName((HeapID)heapId_2, tradeno);
     SetMonData(mon, MON_DATA_NICKNAME_STRING, name);
     String_Delete(name);
 

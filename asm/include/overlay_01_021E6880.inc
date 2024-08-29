@@ -12,7 +12,7 @@
 .public Save_GameStats_Get
 .public GameStats_Inc
 .public GameStats_GetCapped
-.public GameStats_AddSpecial
+.public GameStats_AddScore
 .public SaveData_GetMomsSavingsAddr
 .public sub_0202F08C
 .public Save_SafariZone_Get

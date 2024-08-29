@@ -1,5 +1,7 @@
-#include "global.h"
 #include "gf_gfx_planes.h"
+
+#include "global.h"
+
 #include "system.h"
 
 static u32 sEngineBPlanes = 0;

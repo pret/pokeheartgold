@@ -194,7 +194,7 @@
 .public Save_Chatot_Get
 .public Chatot_Invalidate
 .public GameStats_Inc
-.public GameStats_AddSpecial
+.public GameStats_AddScore
 .public Save_SpecialRibbons_Get
 .public sub_0202DB54
 .public sub_0202DB5C

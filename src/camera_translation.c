@@ -1,4 +1,5 @@
 #include "camera_translation.h"
+
 #include "sys_task_api.h"
 
 static void sysTask_MoveCameraAlongTrack(SysTask *unk, GFCameraTranslationWrapper *wrapper);
@@ -37,11 +38,11 @@ void SetCameraTranslationPath(GFCameraTranslationWrapper *wrapper, struct Camera
     if (!wrapper->active && duration != 0) {
         wrapper->active = TRUE;
         wrapper->target = *template;
-        angle = getBoundCameraAngle(wrapper);
-        target = getBoundCameraTarget(wrapper);
-        bindTarget = Camera_GetCurrentTarget(wrapper->camera);
+        angle           = getBoundCameraAngle(wrapper);
+        target          = getBoundCameraTarget(wrapper);
+        bindTarget      = Camera_GetCurrentTarget(wrapper->camera);
 
-        wrapper->init.angleX = angle.x;
+        wrapper->init.angleX           = angle.x;
         wrapper->init.perspectiveAngle = Camera_GetPerspectiveAngle(wrapper->camera);
         if (bindTarget != NULL) {
             VEC_Subtract(&target, bindTarget, &wrapper->init.position);
@@ -51,14 +52,14 @@ void SetCameraTranslationPath(GFCameraTranslationWrapper *wrapper, struct Camera
             wrapper->init.position.z = 0;
         }
         wrapper->init.distance = Camera_GetDistance(wrapper->camera);
-        wrapper->duration = duration;
-        wrapper->step = 0;
-        wrapper->task = SysTask_CreateOnMainQueue((SysTaskFunc)sysTask_MoveCameraAlongTrack, wrapper, 0);
+        wrapper->duration      = duration;
+        wrapper->step          = 0;
+        wrapper->task          = SysTask_CreateOnMainQueue((SysTaskFunc)sysTask_MoveCameraAlongTrack, wrapper, 0);
     }
 }
 
 u8 IsCameraTranslationFinished(GFCameraTranslationWrapper *wrapper) {
-    return (wrapper->active == FALSE);
+    return wrapper->active == FALSE;
 }
 
 static void sysTask_MoveCameraAlongTrack(SysTask *unk, GFCameraTranslationWrapper *wrapper) {
@@ -83,9 +84,9 @@ static void resetWrapper(GFCameraTranslationWrapper *wrapper) {
         wrapper->task = NULL;
     }
     wrapper->duration = 0;
-    wrapper->step = 0;
-    wrapper->mode = 0;
-    wrapper->active = FALSE;
+    wrapper->step     = 0;
+    wrapper->mode     = 0;
+    wrapper->active   = FALSE;
 }
 
 static void stepCamera(Camera *camera, struct CameraTranslationPathTemplate *first, struct CameraTranslationPathTemplate *last, u8 step, u8 duration) {
@@ -100,10 +101,10 @@ static void stepAngleX(Camera *camera, const u16 *first, const u16 *last, u8 ste
     u16 diff;
     int scaled;
     if (*last >= *first) {
-        diff = *last - *first;
+        diff   = *last - *first;
         scaled = (diff * step) / duration;
     } else {
-        diff = *first - *last;
+        diff   = *first - *last;
         scaled = -((diff * step) / duration);
     }
     cameraAngle.x = *first + scaled;
@@ -111,16 +112,16 @@ static void stepAngleX(Camera *camera, const u16 *first, const u16 *last, u8 ste
 }
 
 static void stepDistance(Camera *camera, const fx32 *first, const fx32 *last, u8 step, u8 duration) {
-    fx32 diff = *last - *first;
+    fx32 diff  = *last - *first;
     int scaled = (diff * step) / duration;
-    fx32 new = *first + scaled;
+    fx32 new   = *first + scaled;
     Camera_SetDistance(new, camera);
 }
 
 static void stepPerspective(Camera *camera, const u16 *first, const u16 *last, u8 step, u8 duration) {
-    int diff = *last - *first;
+    int diff   = *last - *first;
     int scaled = (diff * step) / duration;
-    int new = *first + scaled;
+    int new    = *first + scaled;
     Camera_SetPerspectiveAngle(new, camera);
 }
 

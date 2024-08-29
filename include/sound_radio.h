@@ -8,4 +8,4 @@ int SndRadio_GetSeqNo(void);
 void SndRadio_PausePlayer(BOOL flag);
 int SndRadio_CountPlayingSeq(void);
 
-#endif //POKEHEARTGOLD_SOUND_RADIO_H
+#endif // POKEHEARTGOLD_SOUND_RADIO_H

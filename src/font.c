@@ -1,9 +1,11 @@
-#include "global.h"
 #include "font.h"
-#include "text.h"
-#include "gf_gfx_loader.h"
+
+#include "global.h"
+
 #include "font_data.h"
+#include "gf_gfx_loader.h"
 #include "render_text.h"
+#include "text.h"
 
 struct FontWork {
     struct GlyphInfo glyph_buffer;
@@ -15,22 +17,22 @@ struct FontWork {
 static struct FontWork *sFontWork = NULL;
 
 static const u16 sFontArcParam[][2] = {
-    {0x0000, FALSE},
-    {0x0001, FALSE},
-    {0x0002, FALSE},
-    {0x0003, FALSE},
-    {0x0004, FALSE},
-    {0x000A, FALSE},
+    { 0x0000, FALSE },
+    { 0x0001, FALSE },
+    { 0x0002, FALSE },
+    { 0x0003, FALSE },
+    { 0x0004, FALSE },
+    { 0x000A, FALSE },
 };
 
 static const struct FontInfo sFontInfos[] = {
-    {0x0B, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02},
-    {0x0B, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02},
-    {0x0B, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02},
-    {0x0B, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02},
-    {0x0B, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02},
-    {0x0A, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02},
-    {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
+    { 0x0B, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02 },
+    { 0x0B, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02 },
+    { 0x0B, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02 },
+    { 0x0B, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02 },
+    { 0x0B, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02 },
+    { 0x0A, 0x10, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x02 },
+    { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 },
 };
 
 void FontWork_Init(void) {
@@ -40,8 +42,8 @@ void FontWork_Init(void) {
     sFontWork = &work;
 
     for (i = 0; i < FONT_NUM; i++) {
-        sFontWork->extraData[i] = NULL;
-        sFontWork->fontDataMan[i] = NULL;
+        sFontWork->extraData[i]        = NULL;
+        sFontWork->fontDataMan[i]      = NULL;
         sFontWork->fontDataRefCount[i] = 0;
     }
     SetFontsPointer(sFontInfos);
@@ -49,7 +51,7 @@ void FontWork_Init(void) {
 
 void FontID_Alloc(FontID fontId, HeapID heapId) {
     if (sFontWork->fontDataMan[fontId] == NULL) {
-        sFontWork->fontDataMan[fontId] = FontData_New(NARC_graphic_font, sFontArcParam[fontId][0], FONTARC_MODE_LAZY, sFontArcParam[fontId][1], heapId);
+        sFontWork->fontDataMan[fontId]      = FontData_New(NARC_graphic_font, sFontArcParam[fontId][0], FONTARC_MODE_LAZY, sFontArcParam[fontId][1], heapId);
         sFontWork->fontDataRefCount[fontId] = 1;
     } else {
         sFontWork->fontDataRefCount[fontId]++;
@@ -108,7 +110,7 @@ RenderResult FontID_RenderText(int fontId, TextPrinter *printer) {
     sub = (struct TextPrinterSubStruct *)printer->subStructFields;
 
     if (!sub->hasFontIdBeenSet) {
-        sub->fontId = fontId;
+        sub->fontId           = fontId;
         sub->hasFontIdBeenSet = TRUE;
     }
     return RenderText(printer);
@@ -169,7 +171,7 @@ u8 GetFontAttribute(FontID fontId, int attr) {
     return ret;
 }
 
-void LoadFontPal0(enum GFPalLoadLocation location, enum GFPalSlotOffset palSlotOffset, HeapID heapId) { //todo sync with diamond
+void LoadFontPal0(enum GFPalLoadLocation location, enum GFPalSlotOffset palSlotOffset, HeapID heapId) { // todo sync with diamond
     GfGfxLoader_GXLoadPal(NARC_graphic_font, 7, location, palSlotOffset, 0x20, heapId);
 }
 

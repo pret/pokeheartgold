@@ -1,6 +1,8 @@
-#include "global.h"
-#include "heap.h"
 #include "vram_transfer_manager.h"
+
+#include "global.h"
+
+#include "heap.h"
 
 static GF_VramTransferManager *sVramTransferManager;
 
@@ -11,8 +13,8 @@ void GF_CreateVramTransferManager(u32 taskMax, HeapID heapId) {
     GF_ASSERT(sVramTransferManager != NULL);
 
     sVramTransferManager->tasks = AllocFromHeap(heapId, taskMax * sizeof(NNSGfdVramTransferTask));
-    sVramTransferManager->nMax = taskMax;
-    sVramTransferManager->nCur = 0;
+    sVramTransferManager->nMax  = taskMax;
+    sVramTransferManager->nCur  = 0;
     NNS_GfdInitVramTransferManager(sVramTransferManager->tasks, sVramTransferManager->nMax);
 }
 
@@ -36,7 +38,9 @@ BOOL GF_CreateNewVramTransferTask(NNS_GFD_DST_TYPE type, u32 dstAddr, void *pSrc
 }
 
 void GF_RunVramTransferTasks(void) {
-    if (sVramTransferManager == NULL) return;
+    if (sVramTransferManager == NULL) {
+        return;
+    }
 
     NNS_GfdDoVramTransfer();
     sVramTransferManager->nCur = 0;

@@ -188,7 +188,7 @@
 .public GiveOrTakeSeal2
 .public SealCase_CountUniqueSeals
 .public Save_GameStats_Get
-.public GameStats_AddSpecial
+.public GameStats_AddScore
 .public AllocMonZeroed
 .public GetMonData
 .public SetMonData

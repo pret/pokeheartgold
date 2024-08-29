@@ -5,4 +5,4 @@
 
 void FieldSystem_AnimApricornTree(FieldSystem *fieldSystem, LocalMapObject *tree, u16 *a2);
 
-#endif //POKEHEARTGOLD_OVERLAY_01_APRICORN_TREE_ANIM_H
+#endif // POKEHEARTGOLD_OVERLAY_01_APRICORN_TREE_ANIM_H

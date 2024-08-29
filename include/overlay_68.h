@@ -7,4 +7,4 @@ BOOL MoveRelearner_Init(OVY_MANAGER *man, int *state);
 BOOL MoveRelearner_Main(OVY_MANAGER *man, int *state);
 BOOL MoveRelearner_Exit(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_OVY_68_H
+#endif // POKEHEARTGOLD_OVY_68_H

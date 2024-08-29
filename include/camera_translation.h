@@ -1,15 +1,15 @@
 #ifndef POKEHEARTGOLD_CAMERA_TRANSLATION_H
 #define POKEHEARTGOLD_CAMERA_TRANSLATION_H
 
-#include "sys_task_api.h"
 #include "camera.h"
+#include "sys_task_api.h"
 
-struct CameraTranslationPathTemplate {
+typedef struct CameraTranslationPathTemplate {
     u16 angleX;
     u16 perspectiveAngle;
     VecFx32 position;
     fx32 distance;
-};
+} CameraTranslationPathTemplate;
 
 typedef struct GFCameraTranslationWrapper {
     Camera *camera;
@@ -27,4 +27,4 @@ void DeleteCameraTranslationWrapper(GFCameraTranslationWrapper *wrapper);
 void SetCameraTranslationPath(GFCameraTranslationWrapper *wrapper, struct CameraTranslationPathTemplate *template, int duration);
 u8 IsCameraTranslationFinished(GFCameraTranslationWrapper *wrapper);
 
-#endif //POKEHEARTGOLD_CAMERA_TRANSLATION_H
+#endif // POKEHEARTGOLD_CAMERA_TRANSLATION_H

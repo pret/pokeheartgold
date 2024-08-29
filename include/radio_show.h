@@ -5,7 +5,7 @@
 
 struct RadioShowPokemonMusic {
     int unk0;
-    u8 nationalDex:1;
+    u8 nationalDex : 1;
     u8 msgno;
     u8 weekday;
     u8 songIdx; // 4 = random
@@ -102,7 +102,7 @@ struct RadioSys {
     u8 filler_54[0xD];
     u8 unk_61;
     u8 filler_62[0x4];
-    u8 unk_66_0:1;
+    u8 unk_66_0 : 1;
 };
 
-#endif //POKEHEARTGOLD_RADIO_SHOW_H
+#endif // POKEHEARTGOLD_RADIO_SHOW_H

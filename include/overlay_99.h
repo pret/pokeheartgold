@@ -47,4 +47,4 @@ BOOL ov99_021E677C(OVY_MANAGER *man, int *state);
 BOOL ov99_021E6888(OVY_MANAGER *man, int *state);
 BOOL ov99_021E6840(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_OVY_99_H
+#endif // POKEHEARTGOLD_OVY_99_H

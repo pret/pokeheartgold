@@ -1,5 +1,6 @@
-#include "global.h"
 #include "daycare.h"
+
+#include "global.h"
 
 u32 Save_Daycare_sizeof(void) {
     return sizeof(Daycare);
@@ -9,7 +10,7 @@ void Save_Daycare_Init(Daycare *daycare) {
     memset(daycare, 0, sizeof(Daycare));
     ZeroBoxMonData(&daycare->mons[0].mon);
     ZeroBoxMonData(&daycare->mons[1].mon);
-    daycare->egg_pid = 0;
+    daycare->egg_pid    = 0;
     daycare->egg_cycles = 0;
 }
 
@@ -66,8 +67,7 @@ BOOL Save_Daycare_MasudaCheck(Daycare *daycare) {
     // Uses language as a proxy for country, even though it
     // only accounts for European languages and Japanese.
     // If true, shiny odds are increased.
-    return GetBoxMonData(&daycare->mons[0].mon, MON_DATA_GAME_LANGUAGE, NULL) !=
-           GetBoxMonData(&daycare->mons[1].mon, MON_DATA_GAME_LANGUAGE, NULL);
+    return GetBoxMonData(&daycare->mons[0].mon, MON_DATA_GAME_LANGUAGE, NULL) != GetBoxMonData(&daycare->mons[1].mon, MON_DATA_GAME_LANGUAGE, NULL);
 }
 
 void DaycareMon_Copy(DaycareMon *dest, const DaycareMon *src) {
@@ -85,7 +85,7 @@ void DaycareMon_Extras_Init(DaycareMail *mail) {
         mail->nickname[i] = 0;
     }
 
-    mail->ot_name[0] = EOS;
+    mail->ot_name[0]  = EOS;
     mail->nickname[0] = EOS;
 }
 

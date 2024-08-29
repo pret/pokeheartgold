@@ -132,7 +132,7 @@
 .public Options_GetFrame
 .public Mail_New
 .public GameStats_Inc
-.public GameStats_AddSpecial
+.public GameStats_AddScore
 .public sub_0203A880
 .public AllocMonZeroed
 .public CalcMonLevelAndStats

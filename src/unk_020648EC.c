@@ -1,26 +1,28 @@
+#include "unk_020648EC.h"
+
 #include "global.h"
+
 #include "gymmick.h"
 #include "overlay_04.h"
 #include "save_misc_data.h"
 #include "scrcmd.h"
 #include "script.h"
-#include "unk_020648EC.h"
 
-typedef void (*FieldSystemFunc1)(FieldSystem*);
-typedef BOOL (*FieldSystemFunc2)(FieldSystem*, u32, u32, u32, u32);
+typedef void (*FieldSystemFunc1)(FieldSystem *);
+typedef BOOL (*FieldSystemFunc2)(FieldSystem *, u32, u32, u32, u32);
 
 static const FieldSystemFunc1 _020FE214[];
 static const FieldSystemFunc1 _020FE1EC[];
 static const FieldSystemFunc2 _020FE23C[];
 
-void sub_020648EC(FieldSystem* fieldSystem) {
+void sub_020648EC(FieldSystem *fieldSystem) {
     GymmickType type = Save_Gymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)));
     if (type != GYMMICK_NONE) {
         _020FE214[type](fieldSystem);
     }
 }
 
-void sub_02064910(FieldSystem* fieldSystem) {
+void sub_02064910(FieldSystem *fieldSystem) {
     GymmickType type = Save_Gymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)));
     if (type != GYMMICK_NONE) {
         FieldSystemFunc1 func = _020FE1EC[type];
@@ -32,7 +34,9 @@ void sub_02064910(FieldSystem* fieldSystem) {
 
 BOOL sub_02064938(FieldSystem *fieldSystem, u32 a1, u32 a2, u32 a3, u32 a4) {
     GymmickType type = Save_Gymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem)));
-    if (type == GYMMICK_NONE) return FALSE;
+    if (type == GYMMICK_NONE) {
+        return FALSE;
+    }
 
     FieldSystemFunc2 func = _020FE23C[type];
     if (func != NULL) {

@@ -14,7 +14,7 @@
 .public GameStats_Inc
 .public GameStats_Add
 .public GameStats_GetCapped
-.public GameStats_AddSpecial
-.public GameStats_GetStat2
+.public GameStats_AddScore
+.public GameStats_GetScore
 .public GameStats_IncSpeciesCaught
 .public MIi_CpuClear32

@@ -10,4 +10,4 @@ void ListMenuCursorSetColor(struct ListMenuCursor *cursor, u32 color);
 void DestroyListMenuCursorObj(struct ListMenuCursor *cursor);
 void ListMenuUpdateCursorObj(struct ListMenuCursor *cursor, Window *window, u8 x, u8 y);
 
-#endif //POKEHEARTGOLD_LIST_MENU_CURSOR_H
+#endif // POKEHEARTGOLD_LIST_MENU_CURSOR_H

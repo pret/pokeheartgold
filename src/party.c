@@ -1,13 +1,15 @@
-#include "global.h"
-#include "pokemon.h"
-#include "heap.h"
-#include "save.h"
 #include "party.h"
 
-#define PARTY_ASSERT_SLOT(party, slot) ({             \
-    GF_ASSERT(slot >= 0);                             \
-    GF_ASSERT(slot < (party)->core.curCount);        \
-    GF_ASSERT(slot < (party)->core.maxCount);        \
+#include "global.h"
+
+#include "heap.h"
+#include "pokemon.h"
+#include "save.h"
+
+#define PARTY_ASSERT_SLOT(party, slot) ({     \
+    GF_ASSERT(slot >= 0);                     \
+    GF_ASSERT(slot < (party)->core.curCount); \
+    GF_ASSERT(slot < (party)->core.maxCount); \
 })
 
 u32 SaveArray_Party_sizeof(void) {
@@ -18,7 +20,7 @@ u32 PartyCore_sizeof(void) {
     return sizeof(PartyCore);
 }
 
-Party * SaveArray_Party_Alloc(HeapID heapId) {
+Party *SaveArray_Party_Alloc(HeapID heapId) {
     Party *ret = AllocFromHeap(heapId, sizeof(Party));
     SaveArray_Party_Init(ret);
     return ret;
@@ -55,7 +57,7 @@ BOOL Party_RemoveMon(Party *party, int slot) {
     PARTY_ASSERT_SLOT(party, slot);
     GF_ASSERT(party->core.curCount > 0);
     for (; slot < party->core.curCount - 1; slot++) {
-        party->core.mons[slot] = party->core.mons[slot + 1];
+        party->core.mons[slot]    = party->core.mons[slot + 1];
         party->extra.unk_00[slot] = party->extra.unk_00[slot + 1];
     }
     ZeroMonData(&party->core.mons[slot]);
@@ -95,7 +97,7 @@ void Party_ResetUnkSubSlot(Party *party, int slot) {
 void Party_SafeCopyMonToSlot_ResetUnkSub(Party *party, int slot, Pokemon *src) {
     PARTY_ASSERT_SLOT(party, slot);
     {
-        BOOL valid = GetMonData(&party->core.mons[slot], MON_DATA_SPECIES_EXISTS, NULL) - GetMonData(src, MON_DATA_SPECIES_EXISTS, NULL);
+        BOOL valid             = GetMonData(&party->core.mons[slot], MON_DATA_SPECIES_EXISTS, NULL) - GetMonData(src, MON_DATA_SPECIES_EXISTS, NULL);
         party->core.mons[slot] = *src;
         MI_CpuClear8(&party->extra.unk_00[slot], sizeof(PartyExtraSub));
         party->core.curCount += valid;
@@ -108,13 +110,13 @@ BOOL Party_SwapSlots(Party *party, int slotA, int slotB) {
 
     PARTY_ASSERT_SLOT(party, slotA);
     PARTY_ASSERT_SLOT(party, slotB);
-    tmp_POKEMON = AllocFromHeap(HEAP_ID_DEFAULT, sizeof(Pokemon));
-    *tmp_POKEMON = party->core.mons[slotA];
+    tmp_POKEMON             = AllocFromHeap(HEAP_ID_DEFAULT, sizeof(Pokemon));
+    *tmp_POKEMON            = party->core.mons[slotA];
     party->core.mons[slotA] = party->core.mons[slotB];
     party->core.mons[slotB] = *tmp_POKEMON;
     FreeToHeap(tmp_POKEMON);
 
-    tmp_PartyExtraSub = party->extra.unk_00[slotA];
+    tmp_PartyExtraSub          = party->extra.unk_00[slotA];
     party->extra.unk_00[slotA] = party->extra.unk_00[slotB];
     party->extra.unk_00[slotB] = tmp_PartyExtraSub;
     return FALSE;
@@ -133,9 +135,9 @@ BOOL Party_HasMon(Party *party, u16 species) {
         }
     }
 
-    return (i != party->core.curCount);
+    return i != party->core.curCount;
 }
 
 Party *SaveArray_Party_Get(SaveData *saveData) {
-    return (Party *) SaveArray_Get(saveData, SAVE_PARTY);
+    return (Party *)SaveArray_Get(saveData, SAVE_PARTY);
 }

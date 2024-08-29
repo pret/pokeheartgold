@@ -1,8 +1,8 @@
 #ifndef POKEHEARTGOLD_LIST_MENU_2D_H
 #define POKEHEARTGOLD_LIST_MENU_2D_H
 
-#include "list_menu_items.h"
 #include "list_menu_cursor.h"
+#include "list_menu_items.h"
 
 struct ListMenu2DTemplate {
     LISTMENUITEM *items;
@@ -10,9 +10,9 @@ struct ListMenu2DTemplate {
     u8 fontId;
     u8 itemsWide;
     u8 itemsHigh;
-    u8 yTop:4;
-    u8 cursorType:2;
-    u8 enableWrap:2;
+    u8 yTop       : 4;
+    u8 cursorType : 2;
+    u8 enableWrap : 2;
 };
 
 struct ListMenu2D {
@@ -40,4 +40,4 @@ struct ListMenu2D *Std_CreateYesNoMenu(BgConfig *bgConfig, const WindowTemplate 
 int Handle2dMenuInput_DeleteOnFinish(struct ListMenu2D *menu, HeapID heapId);
 void Clear2dMenuWindowAndDelete(struct ListMenu2D *menu, HeapID heapId);
 
-#endif //POKEHEARTGOLD_LIST_MENU_2D_H
+#endif // POKEHEARTGOLD_LIST_MENU_2D_H

@@ -1,8 +1,9 @@
 #ifndef POKEHEARTGOLD_OVERLAY_12_0224E4FC_H
 #define POKEHEARTGOLD_OVERLAY_12_0224E4FC_H
 
-#include "battle/battle.h"
 #include "constants/battle.h"
+
+#include "battle/battle.h"
 
 void BattleSystem_GetBattleMon(BattleSystem *bsys, BattleContext *ctx, int battlerId, u8 monIndex);
 void BattleSystem_ReloadMonData(BattleSystem *bsys, BattleContext *ctx, int battlerId, int monIndex);
@@ -121,10 +122,10 @@ BOOL BattleController_TryEmitExitRecording(BattleSystem *bsys, BattleContext *ct
 int ov12_022581D4(BattleSystem *bsys, BattleContext *ctx, int var, int battlerId);
 void ov12_022582B8(BattleSystem *bsys, BattleContext *ctx, int var, int battlerId, int data);
 
-//The following functions are static, but the rest of the file is still being worked on
+// The following functions are static, but the rest of the file is still being worked on
 BOOL ov12_02251C74(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int index);
 
-//The following functions haven't been decompiled as of now, and are in fact in different files
+// The following functions haven't been decompiled as of now, and are in fact in different files
 void Link_CheckTimeout(BattleContext *ctx);
 BOOL CheckLegalMeFirstMove(BattleContext *ctx, u16 move);
 int Battler_GetRandomOpposingBattlerId(BattleSystem *bsys, BattleContext *ctx, int battlerId);

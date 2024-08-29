@@ -1,5 +1,6 @@
-#include "global.h"
 #include "sys_task.h"
+
+#include "global.h"
 
 void SysTaskQueue_InitTask(SysTaskQueue *queue, SysTask *task);
 void SysTaskQueue_InitStack(SysTaskQueue *queue);
@@ -11,9 +12,9 @@ SysTask *SysTaskQueue_InsertTaskCore(SysTaskQueue *queue, SysTaskFunc func, void
 void SysTaskQueue_InitTask(SysTaskQueue *queue, SysTask *task) {
     task->queue = queue;
     task->prev = task->next = &queue->headSentinel;
-    task->priority = 0;
-    task->data = NULL;
-    task->func = NULL;
+    task->priority          = 0;
+    task->data              = NULL;
+    task->func              = NULL;
 }
 
 void SysTaskQueue_InitStack(SysTaskQueue *queue) {
@@ -39,9 +40,9 @@ BOOL SysTaskQueue_DeleteTask(SysTaskQueue *queue, SysTask *task) {
     }
     task->queue = queue;
     task->prev = task->next = &queue->headSentinel;
-    task->priority = 0;
-    task->data = NULL;
-    task->func = NULL;
+    task->priority          = 0;
+    task->data              = NULL;
+    task->func              = NULL;
     --queue->activeCount;
     queue->taskStack[queue->activeCount] = task;
     return TRUE;
@@ -54,13 +55,13 @@ u32 SysTaskQueue_GetArenaSize(u32 num) {
 SysTaskQueue *SysTaskQueue_PlacementNew(u32 num, void *p_mem) {
     GF_ASSERT(p_mem != NULL);
 
-    SysTaskQueue *ret = (SysTaskQueue *)p_mem;
-    SysTask **taskStack = (SysTask **)&ret[1];
-    ret->taskStack = taskStack;
-    SysTask *taskList = (SysTask *)&taskStack[num];
-    ret->taskList = taskList;
-    ret->limit = num;
-    ret->activeCount = 0;
+    SysTaskQueue *ret    = (SysTaskQueue *)p_mem;
+    SysTask **taskStack  = (SysTask **)&ret[1];
+    ret->taskStack       = taskStack;
+    SysTask *taskList    = (SysTask *)&taskStack[num];
+    ret->taskList        = taskList;
+    ret->limit           = num;
+    ret->activeCount     = 0;
     ret->isInsertingTask = 0;
     SysTaskQueue_Init(ret);
     return ret;
@@ -70,10 +71,10 @@ void SysTaskQueue_Init(SysTaskQueue *queue) {
     SysTaskQueue_InitStack(queue);
     queue->headSentinel.queue = queue;
     queue->headSentinel.prev = queue->headSentinel.next = &queue->headSentinel;
-    queue->headSentinel.priority = 0;
-    queue->headSentinel.data = NULL;
-    queue->headSentinel.func = NULL;
-    queue->runningTask = queue->headSentinel.next;
+    queue->headSentinel.priority                        = 0;
+    queue->headSentinel.data                            = NULL;
+    queue->headSentinel.func                            = NULL;
+    queue->runningTask                                  = queue->headSentinel.next;
 }
 
 void SysTaskQueue_RunTasks(SysTaskQueue *queue) {
@@ -96,7 +97,7 @@ void SysTaskQueue_RunTasks(SysTaskQueue *queue) {
 
 SysTask *SysTaskQueue_InsertTask(SysTaskQueue *queue, SysTaskFunc func, void *data, u32 priority) {
     queue->isInsertingTask = TRUE;
-    SysTask *ret = SysTaskQueue_InsertTaskCore(queue, func, data, priority);
+    SysTask *ret           = SysTaskQueue_InsertTaskCore(queue, func, data, priority);
     queue->isInsertingTask = FALSE;
     return ret;
 }
@@ -108,8 +109,8 @@ SysTask *SysTaskQueue_InsertTaskCore(SysTaskQueue *queue, SysTaskFunc func, void
         return NULL;
     }
     ret->priority = priority;
-    ret->data = data;
-    ret->func = func;
+    ret->data     = data;
+    ret->func     = func;
 
     if (queue->runningTask->func != NULL) {
         if (queue->runningTask->priority <= priority) {
@@ -122,10 +123,10 @@ SysTask *SysTaskQueue_InsertTaskCore(SysTaskQueue *queue, SysTaskFunc func, void
     }
     for (tail = queue->headSentinel.next; tail != &queue->headSentinel; tail = tail->next) {
         if (tail->priority > ret->priority) {
-            ret->prev = tail->prev;
-            ret->next = tail;
+            ret->prev        = tail->prev;
+            ret->next        = tail;
             tail->prev->next = ret;
-            tail->prev = ret;
+            tail->prev       = ret;
             if (tail == queue->nextTask) {
                 queue->nextTask = ret;
             }
@@ -135,10 +136,10 @@ SysTask *SysTaskQueue_InsertTaskCore(SysTaskQueue *queue, SysTaskFunc func, void
     if (queue->nextTask == &queue->headSentinel) {
         queue->nextTask = ret;
     }
-    ret->prev = queue->headSentinel.prev;
-    ret->next = &queue->headSentinel;
+    ret->prev                      = queue->headSentinel.prev;
+    ret->next                      = &queue->headSentinel;
     queue->headSentinel.prev->next = ret;
-    queue->headSentinel.prev = ret;
+    queue->headSentinel.prev       = ret;
     return ret;
 }
 

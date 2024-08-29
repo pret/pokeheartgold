@@ -1,40 +1,42 @@
+#include "field_system.h"
+
+#include "constants/maps.h"
+
 #include "field_warp_tasks.h"
 #include "main.h"
 #include "map_events.h"
 #include "math_util.h"
+#include "overlay_01_021E6880.h"
+#include "overlay_01_021EF7A0.h"
+#include "overlay_01_021F1AFC.h"
+#include "overlay_01_021F3D38.h"
+#include "overlay_01_021F6830.h"
+#include "overlay_124.h"
+#include "overlay_35.h"
 #include "overlay_manager.h"
 #include "poke_overlay.h"
 #include "system.h"
-#include "overlay_35.h"
-#include "field_system.h"
+#include "unk_02035900.h"
+#include "unk_02056D7C.h"
+#include "unk_0205CB48.h"
 #include "unk_02092BB8.h"
 #include "unk_02092BE8.h"
-#include "unk_02056D7C.h"
-#include "unk_02035900.h"
-#include "unk_0205CB48.h"
-#include "overlay_01_021F6830.h"
-#include "overlay_01_021E6880.h"
-#include "overlay_01_021EF7A0.h"
-#include "overlay_01_021F3D38.h"
-#include "overlay_01_021F1AFC.h"
-#include "overlay_124.h"
-#include "constants/maps.h"
 
 FS_EXTERN_OVERLAY(intro_title);
 FS_EXTERN_OVERLAY(OVY_124);
 FS_EXTERN_OVERLAY(field);
 
 const OVY_MGR_TEMPLATE gApplication_NewGameFieldsys = {
-    .init = Field_NewGame_AppInit,
-    .exec = Field_AppExec,
-    .exit = Field_AppExit,
+    .init   = Field_NewGame_AppInit,
+    .exec   = Field_AppExec,
+    .exit   = Field_AppExit,
     .ovy_id = FS_OVERLAY_ID_NONE
 };
 
 const OVY_MGR_TEMPLATE gApplication_ContinueFieldsys = {
-    .init = Field_Continue_AppInit,
-    .exec = Field_AppExec,
-    .exit = Field_AppExit,
+    .init   = Field_Continue_AppInit,
+    .exec   = Field_AppExec,
+    .exit   = Field_AppExit,
     .ovy_id = FS_OVERLAY_ID_NONE
 };
 
@@ -49,7 +51,7 @@ static BOOL FieldSystem_Main(FieldSystem *fieldSystem);
 
 BOOL Field_Continue_AppInit(OVY_MANAGER *man, int *unused) {
     FieldSystemInitWork *args = OverlayManager_GetArgs(man);
-    sFieldSysPtr = FieldSystem_New(man);
+    sFieldSysPtr              = FieldSystem_New(man);
 
     if (args->unk4) {
         CallFieldTask_ContinueGame_CommError(sFieldSysPtr);
@@ -91,7 +93,7 @@ void sub_0203DEF0(FieldSystem *fieldSystem) {
 
     HandleLoadOverlay(FS_OVERLAY_ID(field), OVY_LOAD_ASYNC);
 
-    fieldSystem->unk6C = FALSE;
+    fieldSystem->unk6C      = FALSE;
     fieldSystem->unk0->unk8 = FALSE;
     fieldSystem->unk0->unk0 = OverlayManager_New(&ov01_02206378, fieldSystem, HEAP_ID_FIELD);
 }
@@ -112,15 +114,15 @@ void sub_0203DF64(FieldSystem *fieldSystem, int a1) {
 }
 
 BOOL sub_0203DF7C(FieldSystem *fieldSystem) {
-    return (fieldSystem->unk0->unk0 != NULL);
+    return fieldSystem->unk0->unk0 != NULL;
 }
 
 BOOL sub_0203DF8C(FieldSystem *fieldSystem) {
-    return (fieldSystem->unk0->unk0 != NULL && fieldSystem->unk6C);
+    return fieldSystem->unk0->unk0 != NULL && fieldSystem->unk6C;
 }
 
 BOOL sub_0203DFA4(FieldSystem *fieldSystem) {
-    return (fieldSystem->unk0->unk4 != NULL);
+    return fieldSystem->unk0->unk4 != NULL;
 }
 
 void FieldSystem_LaunchApplication(FieldSystem *fieldSystem, const OVY_MGR_TEMPLATE *template, void *parentWork) {
@@ -159,7 +161,7 @@ void FieldSystem_Delete(OVY_MANAGER *man) {
     Field_FreeMapEvents(fieldSystem);
     FreeToHeap(fieldSystem->bagCursor);
     sub_02092BD0(fieldSystem->unkA8);
-    sub_02092DD8(fieldSystem->unk114);
+    sub_02092DD8(fieldSystem->phoneRingManager);
     FreeToHeap(fieldSystem->unk0);
     OverlayManager_FreeData(man);
     DestroyHeap(HEAP_ID_89);
@@ -265,7 +267,7 @@ void sub_0203E15C(FieldSystem *fieldSystem) {
                 ov01_021F2F24(fieldSystem->playerAvatar);
                 ov01_021F6830(fieldSystem, 0, 1);
                 if (flag != 2) {
-                    sub_02092FA8(fieldSystem->unk114);
+                    sub_02092FA8(fieldSystem->phoneRingManager);
                 }
             } else {
                 if (gSystem.newKeys & PAD_BUTTON_A) {

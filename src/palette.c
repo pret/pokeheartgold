@@ -1,9 +1,12 @@
-#include <stdlib.h>
-#include "global.h"
 #include "palette.h"
+
+#include <stdlib.h>
+
+#include "global.h"
+
 #include "gf_gfx_loader.h"
-#include "unk_02026E84.h"
 #include "sys_task_api.h"
+#include "unk_02026E84.h"
 
 static u8 IsPaletteSelected(u16 toSelect, u16 bufferID);
 static void PaletteData_SetTransparentBit(PaletteData *data, u16 bufferID);
@@ -29,9 +32,9 @@ void PaletteData_Free(PaletteData *plttData) {
 }
 
 void PaletteData_SetBuffers(PaletteData *data, PaletteBufferId bufferID, u16 *opaque, u16 *transparent, u32 size) {
-    data->buffers[bufferID].opaque = opaque;
+    data->buffers[bufferID].opaque      = opaque;
     data->buffers[bufferID].transparent = transparent;
-    data->buffers[bufferID].size = size;
+    data->buffers[bufferID].size        = size;
 }
 
 void PaletteData_AllocBuffers(PaletteData *data, PaletteBufferId bufferID, u32 size, HeapID heapID) {
@@ -124,7 +127,7 @@ u16 *PaletteData_GetFadedBuf(PaletteData *data, PaletteBufferId bufferID) {
 
 u8 PaletteData_BeginPaletteFade(PaletteData *data, u16 toSelect, u16 opaqueBit, s8 wait, u8 cur, u8 end, u16 nextRGB) {
     u16 opaqueBitBak = opaqueBit;
-    u8 startTask = FALSE;
+    u8 startTask     = FALSE;
     u8 i;
 
     for (i = 0; i < PLTTBUF_MAX; ++i) {
@@ -147,7 +150,7 @@ u8 PaletteData_BeginPaletteFade(PaletteData *data, u16 toSelect, u16 opaqueBit, 
         if (!data->callbackFlag) {
             data->callbackFlag = TRUE;
             data->selectedFlag = 1;
-            data->forceExit = FALSE;
+            data->forceExit    = FALSE;
             SysTask_CreateOnMainQueue(SysTask_TimedPaletteFade, data, -2);
         }
     }
@@ -157,7 +160,7 @@ u8 PaletteData_BeginPaletteFade(PaletteData *data, u16 toSelect, u16 opaqueBit, 
 
 u8 PaletteData_ForceBeginPaletteFade(PaletteData *data, u16 toSelect, u16 opaqueBit, s8 wait, u8 cur, u8 end, u16 nextRGB) {
     u16 opaqueBitBak = opaqueBit;
-    u8 startTask = FALSE;
+    u8 startTask     = FALSE;
     u8 i;
 
     for (i = 0; i < PLTTBUF_MAX; ++i) {
@@ -180,7 +183,7 @@ u8 PaletteData_ForceBeginPaletteFade(PaletteData *data, u16 toSelect, u16 opaque
         if (!data->callbackFlag) {
             data->callbackFlag = TRUE;
             data->selectedFlag = 1;
-            data->forceExit = FALSE;
+            data->forceExit    = FALSE;
             SysTask_CreateOnMainQueue(SysTask_TimedPaletteFade, data, -2);
         }
     }
@@ -221,10 +224,10 @@ static void SelectedPaletteData_SetTimedFadeParams(SelectedPaletteData *selected
         selectedBit->wait = wait;
     }
     selectedBit->opaqueBit = opaqueBit;
-    selectedBit->cur = cur;
-    selectedBit->end = end;
-    selectedBit->nextRGB = nextRGB;
-    selectedBit->waitStep = selectedBit->wait;
+    selectedBit->cur       = cur;
+    selectedBit->end       = end;
+    selectedBit->nextRGB   = nextRGB;
+    selectedBit->waitStep  = selectedBit->wait;
     if (cur < end) {
         selectedBit->sign = 0;
     } else {
@@ -236,10 +239,10 @@ static void SysTask_TimedPaletteFade(SysTask *task, void *taskData) {
     PaletteData *data = (PaletteData *)taskData;
 
     if (data->forceExit == 1) {
-        data->forceExit = 0;
+        data->forceExit      = 0;
         data->transparentBit = 0;
         data->selectedBuffer = 0;
-        data->callbackFlag = 0;
+        data->callbackFlag   = 0;
         SysTask_Destroy(task);
         return;
     }
@@ -298,9 +301,9 @@ static void ApplyScheduledBlendStepToSinglePalette(u16 *opaque, u16 *transparent
     u32 i;
     u8 r, g, b;
     for (i = 0; i < size; ++i) {
-        r = BlendColor(opaque[i] & 0x1F, selectedBit->nextRGB & 0x1F, selectedBit->cur);
-        g = BlendColor((opaque[i] >> 5) & 0x1F, (selectedBit->nextRGB >> 5) & 0x1F, selectedBit->cur);
-        b = BlendColor((opaque[i] >> 10) & 0x1F, (selectedBit->nextRGB >> 10) & 0x1F, selectedBit->cur);
+        r              = BlendColor(opaque[i] & 0x1F, selectedBit->nextRGB & 0x1F, selectedBit->cur);
+        g              = BlendColor((opaque[i] >> 5) & 0x1F, (selectedBit->nextRGB >> 5) & 0x1F, selectedBit->cur);
+        b              = BlendColor((opaque[i] >> 10) & 0x1F, (selectedBit->nextRGB >> 10) & 0x1F, selectedBit->cur);
         transparent[i] = (b << 10) | (g << 5) | r;
     }
 }
@@ -423,7 +426,7 @@ void PaletteData_SetAutoTransparent(PaletteData *plttData, BOOL autoTransparent)
 }
 
 void PaletteData_SetSelectedBufferAll(PaletteData *plttData, BOOL a1) {
-    plttData->selectedFlag = a1 & 1;
+    plttData->selectedFlag   = a1 & 1;
     plttData->selectedBuffer = PLTTBUF_ALL_F;
 }
 
@@ -538,9 +541,9 @@ void BlendPalette(const u16 *src, u16 *dest, u16 size, u8 cur, u16 target) {
     b2 = ((RgbColor *)&target)->b;
 
     for (i = 0; i < size; ++i) {
-        r1 = ((RgbColor *)&src[i])->r;
-        g1 = ((RgbColor *)&src[i])->g;
-        b1 = ((RgbColor *)&src[i])->b;
+        r1      = ((RgbColor *)&src[i])->r;
+        g1      = ((RgbColor *)&src[i])->g;
+        b1      = ((RgbColor *)&src[i])->b;
         dest[i] = BlendColor(r1, r2, cur) | (BlendColor(g1, g2, cur) << 5) | (BlendColor(b1, b2, cur) << 10);
     }
 }
@@ -571,7 +574,7 @@ void TintPalette_GrayScale(u16 *palette, int count) {
         g = (*palette >> 5) & 0x1F;
         b = (*palette >> 10) & 0x1F;
         // 0.3 * red + 0.59 * g + 0.1133 * b
-        gray = (76 * r + 151 * g + 29 * b) >> 8;
+        gray       = (76 * r + 151 * g + 29 * b) >> 8;
         *palette++ = (gray << 10) | (gray << 5) | gray;
     }
 }
@@ -585,9 +588,9 @@ void TintPalette_CustomTone(u16 *palette, int count, int rTone, int gTone, int b
         b = (*palette >> 10) & 0x1F;
         // 0.3 * red + 0.59 * g + 0.1133 * b
         gray = (76 * r + 151 * g + 29 * b) >> 8;
-        r = (u16)(rTone * gray) >> 8;
-        g = (u16)(gTone * gray) >> 8;
-        b = (u16)(bTone * gray) >> 8;
+        r    = (u16)(rTone * gray) >> 8;
+        g    = (u16)(gTone * gray) >> 8;
+        b    = (u16)(bTone * gray) >> 8;
 
         if (r > 31) {
             r = 31;
@@ -637,7 +640,7 @@ static void FadePaletteTowardsColorStep(const u16 *src, u16 *dest, int duration,
 void PaletteData_FadePalettesTowardsColorStep(PaletteData *plttData, int transparentBit, int opaqueBit, int duration, int step, u16 target) {
     int i, j, r, g, b;
 
-    plttData->selectedFlag = 1;
+    plttData->selectedFlag   = 1;
     plttData->transparentBit = transparentBit;
 
     r = target & 0x1F;
@@ -647,7 +650,7 @@ void PaletteData_FadePalettesTowardsColorStep(PaletteData *plttData, int transpa
     for (i = 0; i < PLTTBUF_MAX; ++i) {
         if (plttData->buffers[i].transparent != NULL && (transparentBit >> i) & 1) {
             plttData->buffers[i].selected.opaqueBit = opaqueBit;
-            plttData->buffers[i].size = 0x200;
+            plttData->buffers[i].size               = 0x200;
             for (j = 0; j < 16; ++j) {
                 if ((opaqueBit >> j) & 1) {
                     FadePaletteTowardsColorStep(&plttData->buffers[i].opaque[j * 16], &plttData->buffers[i].transparent[j * 16], duration, step, r, g, b);

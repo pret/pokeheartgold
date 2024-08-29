@@ -1,12 +1,15 @@
-#include "global.h"
-#include "party.h"
-#include "update_dex_received.h"
-#include "unk_0206979C.h"
-#include "pokemon_mood.h"
 #include "script_pokemon_util.h"
-#include "get_egg.h"
-#include "constants/items.h"
+
+#include "global.h"
+
 #include "constants/battle.h"
+#include "constants/items.h"
+
+#include "get_egg.h"
+#include "party.h"
+#include "pokemon_mood.h"
+#include "unk_0206979C.h"
+#include "update_dex_received.h"
 
 static BOOL MonNotFaintedOrEgg(Pokemon *mon) {
     if (GetMonData(mon, MON_DATA_HP, NULL) == 0) {
@@ -23,7 +26,7 @@ BOOL GiveMon(HeapID heapId, SaveData *saveData, int species, int level, int form
     BOOL result;
 
     profile = Save_PlayerData_GetProfileAddr(saveData);
-    party = SaveArray_Party_Get(saveData);
+    party   = SaveArray_Party_Get(saveData);
     {
         mon = AllocMonZeroed(heapId);
         ZeroMonData(mon);
@@ -52,8 +55,8 @@ BOOL GiveEgg(HeapID heapId, SaveData *saveData, int species, u8 metLocation, Map
     BOOL result;
 
     profile = Save_PlayerData_GetProfileAddr(saveData);
-    party = SaveArray_Party_Get(saveData);
-    mon = AllocMonZeroed(HEAP_ID_32);
+    party   = SaveArray_Party_Get(saveData);
+    mon     = AllocMonZeroed(HEAP_ID_32);
     ZeroMonData(mon);
     SetEggStats(mon, species, metLocation, profile, 4, sub_02017FE4(mapsecType, maploc));
     result = Party_AddMon(party, mon);
@@ -77,9 +80,9 @@ int GetIdxOfFirstPartyMonWithMove(Party *party, u16 move) {
             continue;
         }
         if (GetMonData(mon, MON_DATA_MOVE1, NULL) == move
-         || GetMonData(mon, MON_DATA_MOVE2, NULL) == move
-         || GetMonData(mon, MON_DATA_MOVE3, NULL) == move
-         || GetMonData(mon, MON_DATA_MOVE4, NULL) == move) {
+            || GetMonData(mon, MON_DATA_MOVE2, NULL) == move
+            || GetMonData(mon, MON_DATA_MOVE3, NULL) == move
+            || GetMonData(mon, MON_DATA_MOVE4, NULL) == move) {
             return i;
         }
     }
@@ -163,14 +166,14 @@ BOOL ApplyPoisonStep(Party *party, u16 location) {
     Pokemon *mon;
 
     n_poisoned = 0;
-    n_fainted = 0;
-    n = Party_GetCount(party);
+    n_fainted  = 0;
+    n          = Party_GetCount(party);
     for (i = 0; i < n; i++) {
         mon = Party_GetMonByIndex(party, i);
         if (!MonNotFaintedOrEgg(mon)) {
             continue;
         }
-        if (!(GetMonData(mon, MON_DATA_STATUS, NULL) & ((STATUS_POISON | STATUS_BAD_POISON)))) {
+        if (!(GetMonData(mon, MON_DATA_STATUS, NULL) & (STATUS_POISON | STATUS_BAD_POISON))) {
             continue;
         }
         hp = GetMonData(mon, MON_DATA_HP, NULL);

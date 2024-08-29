@@ -2,14 +2,16 @@
 #define POKEHEARTGOLD_CAMERA_H
 
 #include <nitro/fx.h>
+
 #include "global.h"
+
 #include "heap.h"
 
 #define CAMERA_UPDATE_ENABLE_X 1
 #define CAMERA_UPDATE_ENABLE_Y 2
 #define CAMERA_UPDATE_ENABLE_Z 4
 
-#define CAMERA_PERSPECTIVE_TYPE_PERSPECTIVE 0
+#define CAMERA_PERSPECTIVE_TYPE_PERSPECTIVE  0
 #define CAMERA_PERSPECTIVE_TYPE_ORTHOGRAPHIC 1
 
 typedef struct CameraHistory {
@@ -45,7 +47,7 @@ typedef struct CameraParam {
     CameraAngle angle;
     u8 perspectiveType;
     u16 perspective;
-    u8 dummy;  // because gf misaccounted for the previous field's alignment
+    u8 dummy; // because gf misaccounted for the previous field's alignment
 } CameraParam;
 
 typedef struct CameraLookAt {
@@ -107,4 +109,4 @@ void Camera_SetLookAtCamTarget(const VecFx32 *target, Camera *camera);
 void Camera_SetLookAtCamPos(const VecFx32 *pos, Camera *camera);
 void Camera_SetHistoryUnk24(Camera *camera, BOOL param1);
 
-#endif //POKEHEARTGOLD_CAMERA_H
+#endif // POKEHEARTGOLD_CAMERA_H

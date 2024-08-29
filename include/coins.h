@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_COINS_H
 #define POKEHEARTGOLD_COINS_H
 
+#include "global.h"
+
 #define MAX_COINS 50000
 
 /*
@@ -44,4 +46,4 @@ BOOL GiveCoins(u16 *coins, u16 amount);
 BOOL CanGiveCoins(u16 *coins, u16 amount);
 BOOL TakeCoins(u16 *coins, u16 amount);
 
-#endif //POKEHEARTGOLD_COINS_H
+#endif // POKEHEARTGOLD_COINS_H

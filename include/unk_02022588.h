@@ -21,4 +21,4 @@ void sub_02022744(u32);
 NNSG2dImagePaletteProxy *sub_020227D4(int resID, NNSG2dImageProxy *imageProxy);
 NNSG2dImagePaletteProxy *sub_020227AC(int resID);
 
-#endif //POKEHEARTGOLD_UNK_02022588_H
+#endif // POKEHEARTGOLD_UNK_02022588_H

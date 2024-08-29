@@ -5,13 +5,13 @@
 
 typedef union TouchscreenHitbox {
     struct {
-        u8 top;      // min: 0
-        u8 bottom;   // max: 192
-        u8 left;     // min: 0
-        u8 right;    // max: 256 (encode as 0)
+        u8 top; // min: 0
+        u8 bottom; // max: 192
+        u8 left; // min: 0
+        u8 right; // max: 256 (encode as 0)
     } rect;
     struct {
-        u8 sentinel;  // 0xFE
+        u8 sentinel; // 0xFE
         u8 x;
         u8 y;
         u8 r;

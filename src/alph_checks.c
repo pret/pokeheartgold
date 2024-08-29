@@ -1,7 +1,9 @@
-#include "constants/maps.h"
 #include "alph_checks.h"
-#include "save_local_field_data.h"
+
+#include "constants/maps.h"
+
 #include "field_system.h"
+#include "save_local_field_data.h"
 
 BOOL CheckUseEscapeRopeInAlphChamber(FieldSystem *fieldSystem) {
     Location *position = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(fieldSystem->saveData));

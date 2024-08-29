@@ -1,5 +1,6 @@
-#include "global.h"
 #include "seal_case.h"
+
+#include "global.h"
 
 u32 Save_SealCase_sizeof(void) {
     return sizeof(SealCase);
@@ -85,7 +86,7 @@ BOOL GiveOrTakeSeal(SealCase *sealCase, int sealId, s16 quantity) {
     int num;
     int total;
 
-    num = SealCase_CountSealOccurrenceInUse(sealCase, sealId - SEAL_MIN);
+    num   = SealCase_CountSealOccurrenceInUse(sealCase, sealId - SEAL_MIN);
     total = num + sealCase->inventory.seals[sealId - SEAL_MIN];
 
     if (quantity < 0) {
@@ -109,7 +110,7 @@ BOOL GiveOrTakeSeal2(SealCase *sealCase, int sealId, s16 quantity) {
     int num;
     int total;
 
-    num = SealCase_CountSealOccurrenceInUse(sealCase, sealId - SEAL_MIN);
+    num   = SealCase_CountSealOccurrenceInUse(sealCase, sealId - SEAL_MIN);
     total = num;
 
     if (quantity < 0) {
@@ -136,7 +137,7 @@ BOOL SealCase_CheckSealQuantity(const SealCase *sealCase, int sealId, s16 quanti
     int num;
     int total;
 
-    num = SealCase_CountSealOccurrenceInUse(sealCase, sealId - SEAL_MIN);
+    num   = SealCase_CountSealOccurrenceInUse(sealCase, sealId - SEAL_MIN);
     total = num + sealCase->inventory.seals[sealId - SEAL_MIN];
 
     if (quantity < 0) {

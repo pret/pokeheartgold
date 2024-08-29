@@ -16,4 +16,4 @@ void sub_02018380(void);
 void sub_020183B0(void);
 void sub_0201838C(IGT *igt);
 
-#endif //POKEHEARTGOLD_UNK_02018380_H
+#endif // POKEHEARTGOLD_UNK_02018380_H

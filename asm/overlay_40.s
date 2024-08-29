@@ -8516,7 +8516,7 @@ ov40_0222FB28: ; 0x0222FB28
 	ldr r0, [r0, r1]
 	bl Save_GameStats_Get
 	add r1, r4, #0
-	bl GameStats_AddSpecial
+	bl GameStats_AddScore
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov40_0222FB28
@@ -23595,7 +23595,7 @@ _022374D0:
 	mov r2, #2
 	lsr r3, r3, #0x18
 	str r6, [sp]
-	bl GetMonPicHeightBySpeciesGenderForme
+	bl GetMonPicHeightBySpeciesGenderForm
 	ldr r0, [sp, #0x20]
 	ldr r2, [sp, #0x1c]
 	str r0, [sp]

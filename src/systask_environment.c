@@ -1,5 +1,7 @@
-#include "global.h"
 #include "systask_environment.h"
+
+#include "global.h"
+
 #include "sys_task.h"
 
 SysTask *CreateSysTaskAndEnvironment(SysTaskFunc function, u32 environmentSize, u32 priority, HeapID heapId) {

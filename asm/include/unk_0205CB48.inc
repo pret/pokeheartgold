@@ -81,12 +81,12 @@
 .public MapObject_ClearFlagsBits
 .public MapObject_SetFacingDirection
 .public MapObject_GetFacingDirection
-.public MapObject_SetNextFacing
-.public MapObject_GetNextFacing
+.public MapObject_SetNextFacingDirection
+.public MapObject_GetNextFacingDirection
 .public sub_0205F328
 .public MapObject_GetMovementCommand
 .public sub_0205F504
-.public MapObject_GetFieldSysPtr
+.public MapObject_GetFieldSystem
 .public MapObject_GetPrevX
 .public MapObject_GetPrevY
 .public MapObject_GetCurrentX

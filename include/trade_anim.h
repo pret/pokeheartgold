@@ -1,8 +1,8 @@
 #ifndef POKEHEARTGOLD_TRADE_ANIM_H
 #define POKEHEARTGOLD_TRADE_ANIM_H
 
-#include "pokemon_types_def.h"
 #include "player_data.h"
+#include "pokemon_types_def.h"
 
 typedef struct TRADE_ANIM_WORK {
     BoxPokemon *my_boxmon;
@@ -13,4 +13,4 @@ typedef struct TRADE_ANIM_WORK {
     Options *options;
 } TRADE_ANIM_WORK;
 
-#endif //POKEHEARTGOLD_TRADE_ANIM_H
+#endif // POKEHEARTGOLD_TRADE_ANIM_H

@@ -15,4 +15,4 @@ BOOL GF_CreateNewVramTransferTask(NNS_GFD_DST_TYPE type, u32 dstAddr, void *pSrc
 void GF_RunVramTransferTasks(void);
 u32 GF_GetNumPendingVramTransferTasks(void);
 
-#endif //POKEHEARTGOLD_VRAM_TRANSFER_MANAGER_H
+#endif // POKEHEARTGOLD_VRAM_TRANSFER_MANAGER_H

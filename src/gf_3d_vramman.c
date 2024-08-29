@@ -1,32 +1,33 @@
-#include "global.h"
 #include "gf_3d_vramman.h"
+
+#include "global.h"
+
 #include "gf_gfx_planes.h"
 
-#define GF_3D_MEM_BLOCK_PER_TEX          128
-#define GF_3D_TEX_SLOT_SIZE              0x20000
-#define GF_3D_MEM_BLOCK_PER_PLTT         256
-#define GF_3D_PLTT_SLOT_SIZE             0x2000
-
+#define GF_3D_MEM_BLOCK_PER_TEX  128
+#define GF_3D_TEX_SLOT_SIZE      0x20000
+#define GF_3D_MEM_BLOCK_PER_PLTT 256
+#define GF_3D_PLTT_SLOT_SIZE     0x2000
 
 GF3DVramMan *GF_3DVramMan_Create(HeapID heapId, int texMode, int numTex, int plttMode, int numPltt, GF3DVramManInitFunc initializer) {
     GF3DVramMan *ret;
     u32 texWorkSz, pltWorkSz;
 
-    ret = AllocFromHeap(heapId, sizeof(GF3DVramMan));
+    ret         = AllocFromHeap(heapId, sizeof(GF3DVramMan));
     ret->heapId = heapId;
 
     NNS_G3dInit();
     G3X_InitMtxStack();
     G3_SwapBuffers(GX_SORTMODE_AUTO, GX_BUFFERMODE_W);
     if (texMode == GF_3D_TEXALLOC_LNK) {
-        texWorkSz = NNS_GfdGetLnkTexVramManagerWorkSize(numTex * GF_3D_MEM_BLOCK_PER_TEX);
+        texWorkSz    = NNS_GfdGetLnkTexVramManagerWorkSize(numTex * GF_3D_MEM_BLOCK_PER_TEX);
         ret->texWork = AllocFromHeap(ret->heapId, texWorkSz);
         GF_3DVramMan_InitLinkedListTexVramManager(numTex * GF_3D_TEX_SLOT_SIZE, 0, ret->texWork, texWorkSz, TRUE);
     } else {
         GF_3DVramMan_InitFrameTexVramManager(numTex, TRUE);
     }
     if (plttMode == GF_3D_PLTTALLOC_LNK) {
-        pltWorkSz = NNS_GfdGetLnkPlttVramManagerWorkSize(numPltt * GF_3D_MEM_BLOCK_PER_PLTT);
+        pltWorkSz     = NNS_GfdGetLnkPlttVramManagerWorkSize(numPltt * GF_3D_MEM_BLOCK_PER_PLTT);
         ret->plttWork = AllocFromHeap(ret->heapId, pltWorkSz);
         GF_3DVramMan_InitLinkedListPlttVramManager(numPltt * GF_3D_PLTT_SLOT_SIZE, ret->plttWork, pltWorkSz, TRUE);
     } else {
@@ -54,7 +55,7 @@ void GF_3DVramMan_DefaultInitializer(void) {
     G3X_AlphaTest(FALSE, 0);
     G3X_AlphaBlend(FALSE);
     G3X_EdgeMarking(FALSE);
-    G3X_SetFog(FALSE, GX_FOGBLEND_COLOR_ALPHA, GX_FOGSLOPE_0x8000, 0 );
+    G3X_SetFog(FALSE, GX_FOGBLEND_COLOR_ALPHA, GX_FOGSLOPE_0x8000, 0);
     G3X_SetClearColor(RGB_BLACK, 0, GF_GX_CLEARCOLORDEPTH_MAX, 63, FALSE);
     G3_ViewPort(0, 0, 255, 191);
 }

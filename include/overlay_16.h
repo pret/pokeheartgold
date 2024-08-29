@@ -2,12 +2,12 @@
 #define POKEHEARTGOLD_OVERLAY_16_H
 
 #include "bag.h"
-#include "save_misc_data.h"
 #include "overlay_manager.h"
+#include "save_misc_data.h"
 
 typedef struct BerryPotsArgs {
     void *unk0;
-    BOOL *unk4;
+    BOOL *menuInputStatePtr;
     BagCursor *cursor;
     SaveData *saveData;
 } BerryPotsArgs;
