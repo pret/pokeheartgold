@@ -385,15 +385,11 @@ static void TitleScreen_AdvanceAnimObjsFrame(NNSG3dAnmObj **ppAnmObj, fx32 frame
 
 static void TitleScreenAnimObjs_Run(TitleScreenAnimObject *animObj) {
     MtxFx33 mtx = {
-        FX32_ONE,
-        0,
-        0,
-        0,
-        FX32_ONE,
-        0,
-        0,
-        0,
-        FX32_ONE,
+        .m = {
+              { FX32_ONE, 0, 0 },
+              { 0, FX32_ONE, 0 },
+              { 0, 0, FX32_ONE },
+              },
     };
 
     switch (animObj->state) {

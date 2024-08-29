@@ -26,13 +26,14 @@ struct GetMysteryGiftGmmState {
     MysteryGiftData *mgData;
 };
 
+// clang-format off
 struct ScriptMysteryGiftFuncs {
-    BOOL(*check)
-    (FieldSystem *, MysteryGiftData *);
+    BOOL (*check)(FieldSystem *, MysteryGiftData *);
     void (*give)(FieldSystem *, MysteryGiftData *);
     void (*messageSuccess)(struct GetMysteryGiftGmmState *, u16 *, u16 *);
     void (*messageFailure)(struct GetMysteryGiftGmmState *, u16 *, u16 *);
 };
+// clang-format on
 
 static void FieldSystem_InitGetMysteryGiftGmmState(struct GetMysteryGiftGmmState *state, FieldSystem *fieldSys, MessageFormat *msgFormat, MysteryGiftData *mgData);
 static int FieldSystem_GetTagOfNextMG(FieldSystem *fieldSys);

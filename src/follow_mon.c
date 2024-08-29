@@ -1510,7 +1510,6 @@ LocalMapObject *FollowMon_InitMapObject(MapObjectManager *mapObjectManager, int 
     ;
     Party *party   = SaveArray_Party_Get(fieldSystem->saveData);
     int partyCount = Party_GetCount(party);
-    ;
 
     FollowMon_Clear(&fieldSystem->followMon);
     Save_FollowMon_SetUnused2bitField(0, Save_FollowMon_Get(fieldSystem->saveData));

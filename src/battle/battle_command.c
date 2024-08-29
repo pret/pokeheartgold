@@ -1011,14 +1011,14 @@ BOOL BtlCmd_PlaySound(BattleSystem *bsys, BattleContext *ctx) {
 BOOL BtlCmd_CompareVarToValue(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    u32 operator= BattleScriptReadWord(ctx);
-    u32 varId = BattleScriptReadWord(ctx);
-    int cmp   = BattleScriptReadWord(ctx);
-    u32 adrs  = BattleScriptReadWord(ctx);
+    u32 opcode = BattleScriptReadWord(ctx);
+    u32 varId  = BattleScriptReadWord(ctx);
+    int cmp    = BattleScriptReadWord(ctx);
+    u32 adrs   = BattleScriptReadWord(ctx);
 
     int *var = BattleScriptGetVarPointer(bsys, ctx, varId);
 
-    switch (operator) {
+    switch (opcode) {
     case OPCODE_EQU:
         if (*var != cmp) {
             adrs = 0;
@@ -1066,15 +1066,15 @@ BOOL BtlCmd_CompareVarToValue(BattleSystem *bsys, BattleContext *ctx) {
 BOOL BtlCmd_CompareMonDataToValue(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    u32 operator= BattleScriptReadWord(ctx);
-    u32 side  = BattleScriptReadWord(ctx);
-    u32 varId = BattleScriptReadWord(ctx);
-    int cmp   = BattleScriptReadWord(ctx);
-    u32 adrs  = BattleScriptReadWord(ctx);
+    u32 opcode = BattleScriptReadWord(ctx);
+    u32 side   = BattleScriptReadWord(ctx);
+    u32 varId  = BattleScriptReadWord(ctx);
+    int cmp    = BattleScriptReadWord(ctx);
+    u32 adrs   = BattleScriptReadWord(ctx);
 
     int var = GetBattlerVar(ctx, GetBattlerIDBySide(bsys, ctx, side), varId, NULL);
 
-    switch (operator) {
+    switch (opcode) {
     case 0:
         if (var != cmp) {
             adrs = 0;
@@ -1454,13 +1454,13 @@ BOOL BtlCmd_SetMultiHit(BattleSystem *bsys, BattleContext *ctx) {
 BOOL BtlCmd_UpdateVar(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    int operator= BattleScriptReadWord(ctx);
-    int varId = BattleScriptReadWord(ctx);
-    int val   = BattleScriptReadWord(ctx);
+    int opcode = BattleScriptReadWord(ctx);
+    int varId  = BattleScriptReadWord(ctx);
+    int val    = BattleScriptReadWord(ctx);
 
     int *var = BattleScriptGetVarPointer(bsys, ctx, varId);
 
-    switch (operator) {
+    switch (opcode) {
     case OPCODE_SET:
         *var = val;
         break;
@@ -1695,14 +1695,14 @@ void BattlerSetAbility(BattleContext *ctx, u8 a1, u8 a2);
 BOOL BtlCmd_UpdateMonData(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    int operator= BattleScriptReadWord(ctx);
+    int opcode    = BattleScriptReadWord(ctx);
     int side      = BattleScriptReadWord(ctx);
     int varId     = BattleScriptReadWord(ctx);
     int val       = BattleScriptReadWord(ctx);
     int battlerId = GetBattlerIDBySide(bsys, ctx, side);
     int var       = GetBattlerVar(ctx, battlerId, varId, NULL);
 
-    switch (operator) {
+    switch (opcode) {
     case 7:
         var = val;
         break;
@@ -1847,14 +1847,14 @@ BOOL BtlCmd_Random(BattleSystem *bsys, BattleContext *ctx) {
 BOOL BtlCmd_UpdateVar2(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    int operator= BattleScriptReadWord(ctx);
-    int varId = BattleScriptReadWord(ctx);
-    int valId = BattleScriptReadWord(ctx);
+    int opcode = BattleScriptReadWord(ctx);
+    int varId  = BattleScriptReadWord(ctx);
+    int valId  = BattleScriptReadWord(ctx);
 
     int *var = BattleScriptGetVarPointer(bsys, ctx, varId);
     int *val = BattleScriptGetVarPointer(bsys, ctx, valId);
 
-    switch (operator) {
+    switch (opcode) {
     case 7:
         *var = *val;
         break;
@@ -1913,17 +1913,17 @@ BOOL BtlCmd_UpdateVar2(BattleSystem *bsys, BattleContext *ctx) {
 BOOL BtlCmd_UpdateMonDataFromVar(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    int operator= BattleScriptReadWord(ctx);
-    int side  = BattleScriptReadWord(ctx);
-    int varId = BattleScriptReadWord(ctx);
-    int valId = BattleScriptReadWord(ctx);
+    int opcode = BattleScriptReadWord(ctx);
+    int side   = BattleScriptReadWord(ctx);
+    int varId  = BattleScriptReadWord(ctx);
+    int valId  = BattleScriptReadWord(ctx);
 
     int battlerId = GetBattlerIDBySide(bsys, ctx, side);
 
     int var  = GetBattlerVar(ctx, battlerId, varId, NULL);
     int *val = BattleScriptGetVarPointer(bsys, ctx, valId);
 
-    switch (operator) {
+    switch (opcode) {
     case 7:
         var = *val;
         break;
@@ -1976,7 +1976,7 @@ BOOL BtlCmd_UpdateMonDataFromVar(BattleSystem *bsys, BattleContext *ctx) {
         break;
     }
 
-    if (operator!= 17) {
+    if (opcode != 17) {
         if (varId == BMON_DATA_ABILITY) {
             BattlerSetAbility(ctx, battlerId, var);
         }
@@ -2354,15 +2354,15 @@ BOOL BtlCmd_TryConversion(BattleSystem *bsys, BattleContext *ctx) {
 BOOL BtlCmd_CompareVarToVar(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    int operator= BattleScriptReadWord(ctx);
-    int varNo = BattleScriptReadWord(ctx);
-    int cmpNo = BattleScriptReadWord(ctx);
-    int adrs  = BattleScriptReadWord(ctx);
+    int opcode = BattleScriptReadWord(ctx);
+    int varNo  = BattleScriptReadWord(ctx);
+    int cmpNo  = BattleScriptReadWord(ctx);
+    int adrs   = BattleScriptReadWord(ctx);
 
     u32 *var = BattleScriptGetVarPointer(bsys, ctx, varNo);
     u32 *cmp = BattleScriptGetVarPointer(bsys, ctx, cmpNo);
 
-    switch (operator) {
+    switch (opcode) {
     case 0:
         if (*var != *cmp) {
             adrs = 0;
@@ -2410,16 +2410,16 @@ BOOL BtlCmd_CompareVarToVar(BattleSystem *bsys, BattleContext *ctx) {
 BOOL BtlCmd_CompareMonDataToVar(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    int operator= BattleScriptReadWord(ctx);
-    int side  = BattleScriptReadWord(ctx);
-    int varNo = BattleScriptReadWord(ctx);
-    int cmpNo = BattleScriptReadWord(ctx);
-    int adrs  = BattleScriptReadWord(ctx);
+    int opcode = BattleScriptReadWord(ctx);
+    int side   = BattleScriptReadWord(ctx);
+    int varNo  = BattleScriptReadWord(ctx);
+    int cmpNo  = BattleScriptReadWord(ctx);
+    int adrs   = BattleScriptReadWord(ctx);
 
     u32 var  = GetBattlerVar(ctx, GetBattlerIDBySide(bsys, ctx, side), varNo, NULL);
     u32 *cmp = BattleScriptGetVarPointer(bsys, ctx, cmpNo);
 
-    switch (operator) {
+    switch (opcode) {
     case 0:
         if (var != *cmp) {
             adrs = 0;
