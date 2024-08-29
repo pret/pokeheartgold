@@ -7,4 +7,4 @@
 Sprite *ov01_021F72DC(LocalMapObject *obj);
 void ov01_021F7918(LocalMapObject *obj);
 
-#endif //POKEHEARTGOLD_OVERLAY_01_021F72DC_H
+#endif // POKEHEARTGOLD_OVERLAY_01_021F72DC_H

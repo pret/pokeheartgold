@@ -3,4 +3,4 @@
 
 int GetCityNamesMsgdataIdByCountry(u32 countryId);
 
-#endif //POKEHEARTGOLD_GTS_GLOBE_H
+#endif // POKEHEARTGOLD_GTS_GLOBE_H

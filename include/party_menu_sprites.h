@@ -22,4 +22,4 @@ void sub_0207F2F8(PartyMenu *partyMenu);
 void PartyMenu_SetTopScreenSelectionPanelYDisplacement(PartyMenu *partyMenu, int dy);
 void PartyMenu_SetTopScreenMonIconSprite(PartyMenu *partyMenu, u8 selection);
 
-#endif //POKEHEARTGOLD_PARTY_MENU_SPRITES_H
+#endif // POKEHEARTGOLD_PARTY_MENU_SPRITES_H

@@ -6,4 +6,4 @@
 void ShowSaveDataReadError(HeapID heapId);
 void ShowGBACartRemovedError(HeapID heapId);
 
-#endif //POKEHEARTGOLD_SAVE_DATA_READ_ERROR_H
+#endif // POKEHEARTGOLD_SAVE_DATA_READ_ERROR_H

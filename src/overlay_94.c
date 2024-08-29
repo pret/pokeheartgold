@@ -1,24 +1,28 @@
+#include "overlay_94.h"
+
 #include "global.h"
+
+#include "constants/pokemon.h"
+#include "constants/sndseq.h"
+#include "constants/species.h"
+
+#include "msgdata/msg/msg_0300.h"
+
 #include "assert.h"
+#include "field_system.h"
 #include "heap.h"
 #include "party.h"
-#include "pokemon.h"
-#include "pokedex.h"
-#include "field_system.h"
-#include "scrcmd.h"
-#include "unk_02005D10.h"
-#include "unk_02014DA0.h"
 #include "party_context_menu.h"
-#include "party_menu_sprites.h"
 #include "party_menu.h"
 #include "party_menu_list_items.h"
-#include "unk_02026E30.h"
+#include "party_menu_sprites.h"
+#include "pokedex.h"
+#include "pokemon.h"
+#include "scrcmd.h"
 #include "text.h"
-#include "constants/pokemon.h"
-#include "constants/species.h"
-#include "constants/sndseq.h"
-#include "msgdata/msg/msg_0300.h"
-#include "overlay_94.h"
+#include "unk_02005D10.h"
+#include "unk_02014DA0.h"
+#include "unk_02026E30.h"
 
 static void _DestroyLocalWork(PartyMenu *partyMenu);
 static void _InitEffects(PartyMenu *partyMenu);
@@ -46,7 +50,7 @@ void PartyMenu_InitIconFormChangeData(PartyMenu *partyMenu) {
 
 BOOL PartyMenu_AnimateIconFormChange(PartyMenu *partyMenu) {
     IconFormChangeData *work = partyMenu->iconFormChange;
-    Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+    Pokemon *mon             = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
 
     switch (work->state) {
     case 0:
@@ -55,12 +59,12 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenu *partyMenu) {
         case SPECIES_GIRATINA:
             Mon_UpdateGiratinaForm(mon);
             work->duration = 65;
-            work->fileId = NARC_particle_giratina;
+            work->fileId   = NARC_particle_giratina;
             break;
         case SPECIES_SHAYMIN:
             Mon_UpdateShayminForm(mon, SHAYMIN_SKY);
             work->duration = 35;
-            work->fileId = NARC_particle_shaymin;
+            work->fileId   = NARC_particle_shaymin;
             break;
         case SPECIES_ROTOM:
         default:
@@ -108,8 +112,7 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenu *partyMenu) {
             work->state++;
         }
         break;
-    case 9:
-    {
+    case 9: {
         String *str = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00188); //" changed Form!"
         BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, str);
@@ -174,12 +177,12 @@ static void _EmitParticles(IconFormChangeData *partyMenu) {
 }
 
 static const fx32 sPartyMonSpritePositions[][2] = {
-  { -16500, 12000 },
-  { 5000, 11500 },
-  { -16500, 5000 },
-  { 5000, 3500 },
-  { -16500, -3000 },
-  { 5000, -4500 }
+    { -16500, 12000 },
+    { 5000,   11500 },
+    { -16500, 5000  },
+    { 5000,   3500  },
+    { -16500, -3000 },
+    { 5000,   -4500 }
 };
 
 static void particleEmitCallback(SPLEmitter *emitter) {

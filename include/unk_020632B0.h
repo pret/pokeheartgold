@@ -7,4 +7,4 @@ int sub_0206457C(FieldSystem *fieldSystem, LocalMapObject *localMapObject, Playe
 BOOL sub_02064598(void);
 void sub_020645AC(int a0);
 
-#endif //POKEHEARTGOLD_UNK_020632B0_H
+#endif // POKEHEARTGOLD_UNK_020632B0_H

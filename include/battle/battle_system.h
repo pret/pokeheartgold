@@ -1,9 +1,10 @@
 #ifndef POKEHEARTGOLD_BATTLE_SYSTEM_H
 #define POKEHEARTGOLD_BATTLE_SYSTEM_H
 
-#include "bag.h"
 #include "battle/battle.h"
 #include "battle/battle_setup.h"
+
+#include "bag.h"
 #include "pokemon.h"
 #include "text.h"
 

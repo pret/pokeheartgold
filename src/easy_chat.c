@@ -1,19 +1,14 @@
-#include "global.h"
 #include "easy_chat.h"
-#include "save.h"
-#include "math_util.h"
-#include "gf_gfx_loader.h"
-#include "filesystem.h"
-#include "msgdata/msg.naix"
-#include "constants/species.h"
-#include "constants/pokemon.h"
-#include "constants/moves.h"
-#include "constants/abilities.h"
 
+#include "global.h"
+
+#include "constants/abilities.h"
+#include "constants/moves.h"
+#include "constants/pokemon.h"
+#include "constants/species.h"
+
+#include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0237.h"
-#include "msgdata/msg/msg_0751.h"
-#include "msgdata/msg/msg_0735.h"
-#include "msgdata/msg/msg_0721.h"
 #include "msgdata/msg/msg_0285.h"
 #include "msgdata/msg/msg_0286.h"
 #include "msgdata/msg/msg_0287.h"
@@ -21,6 +16,14 @@
 #include "msgdata/msg/msg_0289.h"
 #include "msgdata/msg/msg_0290.h"
 #include "msgdata/msg/msg_0291.h"
+#include "msgdata/msg/msg_0721.h"
+#include "msgdata/msg/msg_0735.h"
+#include "msgdata/msg/msg_0751.h"
+
+#include "filesystem.h"
+#include "gf_gfx_loader.h"
+#include "math_util.h"
+#include "save.h"
 
 static const u16 sNarcMsgCounts[EC_GROUP_MAX] = {
     EC_WORDS_POKEMON_COUNT,
@@ -52,11 +55,11 @@ static const u16 sNarcMsgBanks[EC_GROUP_MAX] = {
 
 static const u8 sLanguageToGreetingMap[6][2] = {
     { LANGUAGE_JAPANESE, msg_0287_konnichiwa },
-    { LANGUAGE_ENGLISH,  msg_0287_hello },
-    { LANGUAGE_FRENCH,   msg_0287_bonjour},
-    { LANGUAGE_ITALIAN,  msg_0287_ciao },
-    { LANGUAGE_GERMAN,   msg_0287_hallo },
-    { LANGUAGE_SPANISH,  msg_0287_hola },
+    { LANGUAGE_ENGLISH,  msg_0287_hello      },
+    { LANGUAGE_FRENCH,   msg_0287_bonjour    },
+    { LANGUAGE_ITALIAN,  msg_0287_ciao       },
+    { LANGUAGE_GERMAN,   msg_0287_hallo      },
+    { LANGUAGE_SPANISH,  msg_0287_hola       },
 };
 
 // Several easy chat words are identical in
@@ -64,18 +67,18 @@ static const u8 sLanguageToGreetingMap[6][2] = {
 // This is a leftover from Diamond that is linked
 // simply because the routines that use it are
 // present in source but dead-stripped at link time.
-static const ecword_t sEasyChatHey[] = {EC_WORD_GREETINGS_HEY, EC_WORD_GREETINGS_HEY_2};
-static const ecword_t sEasyChatHuh_[] = {EC_WORD_GREETINGS_HUH_, EC_WORD_GREETINGS_HUH__2};
-static const ecword_t sEasyChatI[] = {EC_WORD_PEOPLE_I, EC_WORD_PEOPLE_I_2, EC_WORD_PEOPLE_I_3, EC_WORD_PEOPLE_I_4};
-static const ecword_t sEasyChatKids[] = {EC_WORD_PEOPLE_KIDS, EC_WORD_PEOPLE_KIDS_2};
-static const ecword_t sEasyChatNoWay[] = {EC_WORD_GREETINGS_NO_WAY, EC_WORD_FEELINGS_NO_WAY};
-static const ecword_t sEasyChatAnticipation[] = {EC_WORD_ABILITY(ABILITY_ANTICIPATION), EC_WORD_FEELINGS_ANTICIPATION};
-static const ecword_t sEasyChatYou[] = {EC_WORD_PEOPLE_YOU, EC_WORD_PEOPLE_YOU_2};
-static const ecword_t sEasyChatSimple[] = {EC_WORD_ABILITY(ABILITY_SIMPLE), EC_WORD_FEELINGS_SIMPLE};
-static const ecword_t sEasyChatWelcome[] = {EC_WORD_GREETINGS_WELCOME, EC_WORD_GREETINGS_WELCOME_2};
-static const ecword_t sEasyChatWow[] = {EC_WORD_GREETINGS_WOW, EC_WORD_GREETINGS_WOW_2};
-static const ecword_t sEasyChatPsychic[] = {EC_WORD_MOVE(MOVE_PSYCHIC), EC_WORD_TYPE(TYPE_PSYCHIC)};
-static const ecword_t sEasyChatOk[] = {EC_WORD_GREETINGS_OK, EC_WORD_GREETINGS_OK_2};
+static const ecword_t sEasyChatHey[]          = { EC_WORD_GREETINGS_HEY, EC_WORD_GREETINGS_HEY_2 };
+static const ecword_t sEasyChatHuh_[]         = { EC_WORD_GREETINGS_HUH_, EC_WORD_GREETINGS_HUH__2 };
+static const ecword_t sEasyChatI[]            = { EC_WORD_PEOPLE_I, EC_WORD_PEOPLE_I_2, EC_WORD_PEOPLE_I_3, EC_WORD_PEOPLE_I_4 };
+static const ecword_t sEasyChatKids[]         = { EC_WORD_PEOPLE_KIDS, EC_WORD_PEOPLE_KIDS_2 };
+static const ecword_t sEasyChatNoWay[]        = { EC_WORD_GREETINGS_NO_WAY, EC_WORD_FEELINGS_NO_WAY };
+static const ecword_t sEasyChatAnticipation[] = { EC_WORD_ABILITY(ABILITY_ANTICIPATION), EC_WORD_FEELINGS_ANTICIPATION };
+static const ecword_t sEasyChatYou[]          = { EC_WORD_PEOPLE_YOU, EC_WORD_PEOPLE_YOU_2 };
+static const ecword_t sEasyChatSimple[]       = { EC_WORD_ABILITY(ABILITY_SIMPLE), EC_WORD_FEELINGS_SIMPLE };
+static const ecword_t sEasyChatWelcome[]      = { EC_WORD_GREETINGS_WELCOME, EC_WORD_GREETINGS_WELCOME_2 };
+static const ecword_t sEasyChatWow[]          = { EC_WORD_GREETINGS_WOW, EC_WORD_GREETINGS_WOW_2 };
+static const ecword_t sEasyChatPsychic[]      = { EC_WORD_MOVE(MOVE_PSYCHIC), EC_WORD_TYPE(TYPE_PSYCHIC) };
+static const ecword_t sEasyChatOk[]           = { EC_WORD_GREETINGS_OK, EC_WORD_GREETINGS_OK_2 };
 
 typedef struct ECIdenticalPhrases {
     const ecword_t *data;
@@ -83,25 +86,25 @@ typedef struct ECIdenticalPhrases {
 } ECIdenticalPhrases;
 
 static const ECIdenticalPhrases sIdenticalPhrases[12] = {
-    {sEasyChatAnticipation, NELEMS(sEasyChatAnticipation)},
-    {sEasyChatHey, NELEMS(sEasyChatHey)},
-    {sEasyChatHuh_, NELEMS(sEasyChatHuh_)},
-    {sEasyChatI, NELEMS(sEasyChatI)},
-    {sEasyChatKids, NELEMS(sEasyChatKids)},
-    {sEasyChatNoWay, NELEMS(sEasyChatNoWay)},
-    {sEasyChatOk, NELEMS(sEasyChatOk)},
-    {sEasyChatPsychic, NELEMS(sEasyChatPsychic)},
-    {sEasyChatSimple, NELEMS(sEasyChatSimple)},
-    {sEasyChatWelcome, NELEMS(sEasyChatWelcome)},
-    {sEasyChatWow, NELEMS(sEasyChatWow)},
-    {sEasyChatYou, NELEMS(sEasyChatYou)},
+    { sEasyChatAnticipation, NELEMS(sEasyChatAnticipation) },
+    { sEasyChatHey,          NELEMS(sEasyChatHey)          },
+    { sEasyChatHuh_,         NELEMS(sEasyChatHuh_)         },
+    { sEasyChatI,            NELEMS(sEasyChatI)            },
+    { sEasyChatKids,         NELEMS(sEasyChatKids)         },
+    { sEasyChatNoWay,        NELEMS(sEasyChatNoWay)        },
+    { sEasyChatOk,           NELEMS(sEasyChatOk)           },
+    { sEasyChatPsychic,      NELEMS(sEasyChatPsychic)      },
+    { sEasyChatSimple,       NELEMS(sEasyChatSimple)       },
+    { sEasyChatWelcome,      NELEMS(sEasyChatWelcome)      },
+    { sEasyChatWow,          NELEMS(sEasyChatWow)          },
+    { sEasyChatYou,          NELEMS(sEasyChatYou)          },
 };
 
 EasyChatManager *EasyChatManager_New(HeapID heapId) {
     EasyChatManager *ret = AllocFromHeap(heapId, sizeof(EasyChatManager));
 
     for (s32 i = 0; i < EC_GROUP_MAX; i++) {
-        ret->heapId = heapId; // inadvertently inside the loop
+        ret->heapId     = heapId; // inadvertently inside the loop
         ret->msgData[i] = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, sNarcMsgBanks[i], heapId);
     }
     return ret;
@@ -158,7 +161,7 @@ BOOL GetCategoryAndMsgNoByECWordIdx(u16 ecWord, u32 *category, u32 *msgNo) {
         count += sNarcMsgCounts[bank];
         if (wordId < count) {
             *category = bank;
-            *msgNo = (wordId - (count - sNarcMsgCounts[bank]));
+            *msgNo    = (wordId - (count - sNarcMsgCounts[bank]));
             return TRUE;
         }
     }
@@ -174,7 +177,7 @@ void Save_EasyChat_Init(SaveEasyChat *saveEasyChat) {
     u32 i;
 
     saveEasyChat->greetings = 0;
-    saveEasyChat->trendy = 0;
+    saveEasyChat->trendy    = 0;
     for (i = 0; i < NELEMS(sLanguageToGreetingMap); i++) {
         if (sLanguageToGreetingMap[i][0] == GAME_LANGUAGE) {
             Save_EasyChat_SetGreetingFlag(saveEasyChat, sLanguageToGreetingMap[i][1]);

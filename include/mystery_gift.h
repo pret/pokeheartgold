@@ -1,19 +1,19 @@
 #ifndef POKEHEARTGOLD_MYSTERY_GIFT_H
 #define POKEHEARTGOLD_MYSTERY_GIFT_H
 
-#include "pokemon_types_def.h"
 #include "photo_album.h"
+#include "pokemon_types_def.h"
 
 #define MG_TAG_INVALID           0
 #define MG_TAG_POKEMON           1
 #define MG_TAG_EGG               2
 #define MG_TAG_ITEM              3
 #define MG_TAG_BATTLE_RULES      4
-#define MG_TAG_SECRET_BASE_DECO  5  // disabled in hgss
+#define MG_TAG_SECRET_BASE_DECO  5 // disabled in hgss
 #define MG_TAG_MON_DECO          6
 #define MG_TAG_MANAPHY_EGG       7
-#define MG_TAG_MEMBER_CARD       8  // disabled in hgss
-#define MG_TAG_OAKS_LETTER       9  // disabled in hgss
+#define MG_TAG_MEMBER_CARD       8 // disabled in hgss
+#define MG_TAG_OAKS_LETTER       9 // disabled in hgss
 #define MG_TAG_AZURE_FLUTE       10 // disabled in hgss
 #define MG_TAG_POKETCH_APP       11 // disabled in hgss
 #define MG_TAG_SECRET_KEY        12 // disabled in hgss
@@ -57,9 +57,9 @@ typedef union {
 
 typedef struct UnkWonderCardSubstruct_104 {
     u16 name[36];
-    u32 version;     // 88
-    u16 id;          // 8C
-    u8 unique  : 1;  // 8E
+    u32 version; // 88
+    u16 id; // 8C
+    u8 unique  : 1; // 8E
     u8 unk8E_1 : 1;
     u8 unk8E_2 : 1;
     u8 unk8E_3 : 1;
@@ -89,10 +89,10 @@ typedef struct {
 
 typedef struct {
     u8 receivedFlags[NUM_MYSTERY_GIFT_RECV_FLAGS / 8]; // 0000
-    MysteryGift gifts[NUM_SAVED_MYSTERY_GIFTS];        // 0100
-    WonderCard cards[NUM_SAVED_WONDER_CARDS];          // 0920
-    WonderCard specialWonderCard;                      // 1328
-} MysteryGiftSave;                                     // size = 0x1680
+    MysteryGift gifts[NUM_SAVED_MYSTERY_GIFTS]; // 0100
+    WonderCard cards[NUM_SAVED_WONDER_CARDS]; // 0920
+    WonderCard specialWonderCard; // 1328
+} MysteryGiftSave; // size = 0x1680
 
 // Save block API
 u32 Save_MysteryGift_sizeof(void);

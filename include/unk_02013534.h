@@ -5,4 +5,4 @@
 
 void *sub_02013534(int, HeapID);
 
-#endif //POKEHEARTGOLD_UNK_02013534_H
+#endif // POKEHEARTGOLD_UNK_02013534_H

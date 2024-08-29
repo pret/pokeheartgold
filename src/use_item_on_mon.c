@@ -1,12 +1,15 @@
-#include "global.h"
 #include "use_item_on_mon.h"
+
+#include "global.h"
+
+#include "constants/items.h"
+#include "constants/moves.h"
+
 #include "item.h"
+#include "move.h"
+#include "party.h"
 #include "pokemon.h"
 #include "pokemon_mood.h"
-#include "party.h"
-#include "constants/moves.h"
-#include "constants/items.h"
-#include "move.h"
 
 BOOL CanUseItemOnPokemon(Pokemon *mon, u16 itemID, s32 moveIdx, HeapID heapID) {
     int atkEv;
@@ -95,9 +98,9 @@ BOOL CanUseItemOnPokemon(Pokemon *mon, u16 itemID, s32 moveIdx, HeapID heapID) {
         }
     }
 
-    hpEv = GetMonData(mon, MON_DATA_HP_EV, NULL);
-    atkEv = GetMonData(mon, MON_DATA_ATK_EV, NULL);
-    defEv = GetMonData(mon, MON_DATA_DEF_EV, NULL);
+    hpEv    = GetMonData(mon, MON_DATA_HP_EV, NULL);
+    atkEv   = GetMonData(mon, MON_DATA_ATK_EV, NULL);
+    defEv   = GetMonData(mon, MON_DATA_DEF_EV, NULL);
     speedEv = GetMonData(mon, MON_DATA_SPEED_EV, NULL);
     spAtkEv = GetMonData(mon, MON_DATA_SPATK_EV, NULL);
     spDefEv = GetMonData(mon, MON_DATA_SPDEF_EV, NULL);
@@ -237,7 +240,7 @@ BOOL UseItemOnPokemon(Pokemon *mon, u16 itemID, u16 moveIdx, u16 location, HeapI
         return FALSE;
     }
 
-    hadEffect = FALSE;
+    hadEffect   = FALSE;
     effectFound = FALSE;
 
     sp58 = sp54 = GetMonData(mon, MON_DATA_STATUS, NULL);
@@ -338,7 +341,7 @@ BOOL UseItemOnPokemon(Pokemon *mon, u16 itemID, u16 moveIdx, u16 location, HeapI
     sp60 = GetMonData(mon, MON_DATA_SPEED_EV, NULL);
     sp64 = GetMonData(mon, MON_DATA_SPATK_EV, NULL);
     sp68 = GetMonData(mon, MON_DATA_SPDEF_EV, NULL);
-    if (GetMonData(mon, MON_DATA_SPECIES, NULL) != SPECIES_SHEDINJA &&GetItemAttr_PreloadedItemData(itemData, ITEMATTR_HP_EV_UP)) {
+    if (GetMonData(mon, MON_DATA_SPECIES, NULL) != SPECIES_SHEDINJA && GetItemAttr_PreloadedItemData(itemData, ITEMATTR_HP_EV_UP)) {
         sp70 = GetItemAttr_PreloadedItemData(itemData, ITEMATTR_HP_EV_UP_PARAM);
         sp6C = TryModEV(sp54, sp58 + sp5C + sp60 + sp64 + sp68, sp70);
         if (sp6C != -1) {
@@ -480,7 +483,7 @@ BOOL MonMoveCanRestorePP(Pokemon *mon, int moveIdx) {
         return FALSE;
     }
 
-    u8 pp = GetMonData(mon, MON_DATA_MOVE1PP + moveIdx, NULL);
+    u8 pp   = GetMonData(mon, MON_DATA_MOVE1PP + moveIdx, NULL);
     u8 ppUp = GetMonData(mon, MON_DATA_MOVE1PPUP + moveIdx, NULL);
     return (u8)(pp < GetMoveMaxPP(moveID, ppUp));
 }
@@ -491,10 +494,10 @@ BOOL MonMoveRestorePP(Pokemon *mon, int moveIdx, int ppRestore) {
         return FALSE;
     }
 
-    int ppAttr = MON_DATA_MOVE1PP + moveIdx;
-    u8 pp = GetMonData(mon, ppAttr, NULL);
+    int ppAttr   = MON_DATA_MOVE1PP + moveIdx;
+    u8 pp        = GetMonData(mon, ppAttr, NULL);
     int ppUpAttr = MON_DATA_MOVE1PPUP + moveIdx;
-    u8 maxPp = GetMoveMaxPP(move_id, GetMonData(mon, ppUpAttr, NULL));
+    u8 maxPp     = GetMoveMaxPP(move_id, GetMonData(mon, ppUpAttr, NULL));
     if (pp < maxPp) {
         if (ppRestore == PP_RESTORE_ALL) {
             pp = maxPp;
@@ -515,7 +518,7 @@ BOOL BoostMonMovePpUpBy(Pokemon *mon, int moveIdx, int nPpUp) {
     u8 pp;
 
     int ppUpAttr = MON_DATA_MOVE1PPUP + moveIdx;
-    u8 ppUp = GetMonData(mon, ppUpAttr, NULL);
+    u8 ppUp      = GetMonData(mon, ppUpAttr, NULL);
     if (ppUp == 3) {
         return FALSE;
     }
@@ -526,8 +529,8 @@ BOOL BoostMonMovePpUpBy(Pokemon *mon, int moveIdx, int nPpUp) {
     }
 
     int ppAttr = MON_DATA_MOVE1PP + moveIdx;
-    pp = GetMonData(mon, ppAttr, NULL);
-    u8 maxPp = GetMoveMaxPP(move, ppUp);
+    pp         = GetMonData(mon, ppAttr, NULL);
+    u8 maxPp   = GetMoveMaxPP(move, ppUp);
     if ((u32)(ppUp + nPpUp) > 3) {
         ppUp = 3;
     } else {
@@ -535,7 +538,7 @@ BOOL BoostMonMovePpUpBy(Pokemon *mon, int moveIdx, int nPpUp) {
     }
 
     u8 newMaxPp = GetMoveMaxPP(move, ppUp);
-    pp = pp + newMaxPp - maxPp;
+    pp          = pp + newMaxPp - maxPp;
     SetMonData(mon, ppUpAttr, &ppUp);
     SetMonData(mon, ppAttr, &pp);
 
@@ -596,15 +599,15 @@ BOOL CanItemModFriendship(Pokemon *mon, ItemData *itemData) {
     }
 
     if (friendship < 100) {
-        return (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_FRIENDSHIP_MOD_LO) && GetItemAttr_PreloadedItemData(itemData, ITEMATTR_FRIENDSHIP_MOD_LO_PARAM) > 0);
+        return GetItemAttr_PreloadedItemData(itemData, ITEMATTR_FRIENDSHIP_MOD_LO) && GetItemAttr_PreloadedItemData(itemData, ITEMATTR_FRIENDSHIP_MOD_LO_PARAM) > 0;
     }
 
     if (friendship >= 100 && friendship < 200) {
-        return (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_FRIENDSHIP_MOD_MED) && GetItemAttr_PreloadedItemData(itemData, ITEMATTR_FRIENDSHIP_MOD_MED_PARAM) > 0);
+        return GetItemAttr_PreloadedItemData(itemData, ITEMATTR_FRIENDSHIP_MOD_MED) && GetItemAttr_PreloadedItemData(itemData, ITEMATTR_FRIENDSHIP_MOD_MED_PARAM) > 0;
     }
 
     if (friendship >= 200 && friendship < 255) {
-        return (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_FRIENDSHIP_MOD_HI) && GetItemAttr_PreloadedItemData(itemData, ITEMATTR_FRIENDSHIP_MOD_HI_PARAM) > 0);
+        return GetItemAttr_PreloadedItemData(itemData, ITEMATTR_FRIENDSHIP_MOD_HI) && GetItemAttr_PreloadedItemData(itemData, ITEMATTR_FRIENDSHIP_MOD_HI_PARAM) > 0;
     }
 
     return FALSE;
@@ -646,7 +649,7 @@ BOOL DoItemFriendshipMod(Pokemon *mon, s32 friendship, s32 mod, u16 location, He
     return TRUE;
 }
 
-void HealParty(Party * party) {
+void HealParty(Party *party) {
     int i, j;
 
     int partyCount = Party_GetCount(party);

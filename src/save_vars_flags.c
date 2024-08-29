@@ -1,7 +1,8 @@
-#include "global.h"
 #include "save_vars_flags.h"
 
-static u8 sTempFlags[NUM_TEMP_FLAGS / 8] = {0};
+#include "global.h"
+
+static u8 sTempFlags[NUM_TEMP_FLAGS / 8] = { 0 };
 
 u32 Save_VarsFlags_sizeof(void) {
     return sizeof(SaveVarsFlags);

@@ -15,7 +15,7 @@ typedef struct {
 } SavePokeathlonFriendshipRecords;
 
 u32 sub_02031AF0(void);
-void sub_02031AF4(SavePokeathlonFriendshipRecords* unk);
-SavePokeathlonFriendshipRecords* sub_02031B00(SaveData* saveData);
+void sub_02031AF4(SavePokeathlonFriendshipRecords *unk);
+SavePokeathlonFriendshipRecords *sub_02031B00(SaveData *saveData);
 
-#endif //POKEHEARTGOLD_UNK_02031AF0_H
+#endif // POKEHEARTGOLD_UNK_02031AF0_H

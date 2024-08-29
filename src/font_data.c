@@ -1,7 +1,9 @@
-#include "global.h"
 #include "font_data.h"
-#include "text.h"
+
+#include "global.h"
+
 #include "string_control_code.h"
+#include "text.h"
 
 enum GlyphShape {
     GLYPHSHAPE_8x8,
@@ -75,8 +77,8 @@ void FontData_ModeSwitch(struct FontData *fontData, int mode, HeapID heapId) {
 
 static void FontData_Init(struct FontData *fontData, NarcId narcId, int fileId, BOOL isFixedWidth, HeapID heapId) {
     static const u8 _020F6324[][2] = {
-        {GLYPHSHAPE_8x8, GLYPHSHAPE_8x16},
-        {GLYPHSHAPE_16x8, GLYPHSHAPE_16x16}
+        { GLYPHSHAPE_8x8,  GLYPHSHAPE_8x16  },
+        { GLYPHSHAPE_16x8, GLYPHSHAPE_16x16 }
     };
     fontData->narc = NARC_New(narcId, heapId);
     if (fontData->narc != NULL) {
@@ -84,18 +86,18 @@ static void FontData_Init(struct FontData *fontData, NarcId narcId, int fileId, 
         NARC_ReadFromAbsolutePos(fontData->narc, fontData->gmifOffset, sizeof(struct FontHeader), &fontData->header);
         fontData->isFixedWidthFont = isFixedWidth;
         if (isFixedWidth) {
-            fontData->glyphWidths = NULL;
+            fontData->glyphWidths    = NULL;
             fontData->glyphWidthFunc = GetGlyphWidth_FixedWidth;
         } else {
             GF_ASSERT(fontData->header.widthDataStart != 0);
-            fontData->glyphWidths = AllocFromHeap(heapId, fontData->header.numGlyphs);
+            fontData->glyphWidths    = AllocFromHeap(heapId, fontData->header.numGlyphs);
             fontData->glyphWidthFunc = GetGlyphWidth_VariableWidth;
             NARC_ReadFromAbsolutePos(fontData->narc, fontData->gmifOffset + fontData->header.widthDataStart, fontData->header.numGlyphs, fontData->glyphWidths);
         }
         GF_ASSERT(fontData->header.glyphWidth <= 2 && fontData->header.glyphHeight <= 2);
-        fontData->glyphShape = (enum GlyphShape) _020F6324[fontData->header.glyphWidth - 1][fontData->header.glyphHeight - 1];
-        fontData->glyphSize = 16 * fontData->header.glyphWidth * fontData->header.glyphHeight;
-        fontData->fileId = fileId;
+        fontData->glyphShape = (enum GlyphShape)_020F6324[fontData->header.glyphWidth - 1][fontData->header.glyphHeight - 1];
+        fontData->glyphSize  = 16 * fontData->header.glyphWidth * fontData->header.glyphHeight;
+        fontData->fileId     = fileId;
     }
 }
 
@@ -118,8 +120,8 @@ static void InitFontResources(struct FontData *fontData, int mode, HeapID heapId
 }
 
 static void InitFontResources_FromPreloaded(struct FontData *fontData, HeapID heapId) {
-    u32 size = fontData->glyphSize * fontData->header.numGlyphs;
-    fontData->narcReadBuf = AllocFromHeap(heapId, size);
+    u32 size                  = fontData->glyphSize * fontData->header.numGlyphs;
+    fontData->narcReadBuf     = AllocFromHeap(heapId, size);
     fontData->uncompGlyphFunc = DecompressGlyphTiles_FromPreloaded;
     NARC_ReadFromMember(fontData->narc, fontData->fileId, fontData->header.headerSize, size, fontData->narcReadBuf);
 }
@@ -155,7 +157,7 @@ void TryLoadGlyph(struct FontData *fontData, u16 glyphId, struct GlyphInfo *ret)
 }
 
 static void DecompressGlyphTiles_FromPreloaded(struct FontData *fontData, u16 glyphId, struct GlyphInfo *ret) {
-    u32 offset = glyphId * fontData->glyphSize;
+    u32 offset   = glyphId * fontData->glyphSize;
     u8 *tileData = fontData->narcReadBuf;
     switch (fontData->glyphShape) {
     case GLYPHSHAPE_8x8:
@@ -176,7 +178,7 @@ static void DecompressGlyphTiles_FromPreloaded(struct FontData *fontData, u16 gl
         DecompressGlyphTile(tileData + offset + 0x30, ret->data + 0x60);
         break;
     }
-    ret->width = fontData->glyphWidthFunc(fontData, glyphId);
+    ret->width  = fontData->glyphWidthFunc(fontData, glyphId);
     ret->height = fontData->header.fixedHeight;
 }
 
@@ -201,7 +203,7 @@ static void DecompressGlyphTiles_LazyFromNarc(struct FontData *fontData, u16 gly
         DecompressGlyphTile(fontData->glyphReadBuf + 0x30, ret->data + 0x60);
         break;
     }
-    ret->width = fontData->glyphWidthFunc(fontData, glyphId);
+    ret->width  = fontData->glyphWidthFunc(fontData, glyphId);
     ret->height = fontData->header.fixedHeight;
 }
 

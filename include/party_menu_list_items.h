@@ -17,4 +17,4 @@ int PartyMenu_Subtask_SelectMonsErrorMsgClose(PartyMenu *partyMenu);
 int PartyMenu_HandleSetMonCapsule(PartyMenu *partyMenu);
 int sub_02080B74(PartyMenu *partyMenu);
 
-#endif //GUARD_POKEHEARTGOLD_UNK_0207F42C_H
+#endif // GUARD_POKEHEARTGOLD_UNK_0207F42C_H

@@ -1,19 +1,22 @@
-#include "global.h"
 #include "mail.h"
-#include "string_util.h"
+
+#include "global.h"
+
+#include "constants/easy_chat.h"
+#include "constants/mail.h"
+
+#include "msgdata/msg/msg_0292.h"
+#include "msgdata/msg/msg_0293.h"
+#include "msgdata/msg/msg_0294.h"
+#include "msgdata/msg/msg_0295.h"
+#include "msgdata/msg/msg_0296.h"
+
 #include "mail_message.h"
 #include "party.h"
 #include "player_data.h"
 #include "pokemon.h"
 #include "pokemon_icon_idx.h"
-#include "constants/mail.h"
-#include "constants/easy_chat.h"
-
-#include "msgdata/msg/msg_0294.h"
-#include "msgdata/msg/msg_0296.h"
-#include "msgdata/msg/msg_0292.h"
-#include "msgdata/msg/msg_0293.h"
-#include "msgdata/msg/msg_0295.h"
+#include "string_util.h"
 
 struct UnkStruct_020F67A4 {
     u16 base_icon;
@@ -25,25 +28,25 @@ struct UnkStruct_020F67A4 {
 
 static const struct UnkStruct_020F67A4 sFormOverrides[] = {
     { 0x1EE, 0x21C, SPECIES_GIRATINA, GIRATINA_ORIGIN },
-    { 0x1F3, 0x21D, SPECIES_SHAYMIN, SHAYMIN_SKY },
-    { 0x1E6, 0x21E, SPECIES_ROTOM, ROTOM_HEAT },
-    { 0x1E6, 0x21F, SPECIES_ROTOM, ROTOM_WASH },
-    { 0x1E6, 0x220, SPECIES_ROTOM, ROTOM_FROST },
-    { 0x1E6, 0x221, SPECIES_ROTOM, ROTOM_FAN },
-    { 0x1E6, 0x222, SPECIES_ROTOM, ROTOM_MOW },
+    { 0x1F3, 0x21D, SPECIES_SHAYMIN,  SHAYMIN_SKY     },
+    { 0x1E6, 0x21E, SPECIES_ROTOM,    ROTOM_HEAT      },
+    { 0x1E6, 0x21F, SPECIES_ROTOM,    ROTOM_WASH      },
+    { 0x1E6, 0x220, SPECIES_ROTOM,    ROTOM_FROST     },
+    { 0x1E6, 0x221, SPECIES_ROTOM,    ROTOM_FAN       },
+    { 0x1E6, 0x222, SPECIES_ROTOM,    ROTOM_MOW       },
 };
 
-int MailArray_GetFirstEmptySlotIdx(Mail* msgs, int nmsg);
-Mail* Mailbox_GetPtrToSlotI(Mail *msgs, int n, int i);
+int MailArray_GetFirstEmptySlotIdx(Mail *msgs, int nmsg);
+Mail *Mailbox_GetPtrToSlotI(Mail *msgs, int n, int i);
 u32 MailArray_CountMessages(Mail *msgs, int n);
 
 void Mail_Init(Mail *mail) {
     int i;
-    mail->author_otId = 0;
-    mail->author_gender = PLAYER_GENDER_MALE;
+    mail->author_otId     = 0;
+    mail->author_gender   = PLAYER_GENDER_MALE;
     mail->author_language = gGameLanguage;
-    mail->author_version = gGameVersion;
-    mail->mail_type = MAIL_NONE;
+    mail->author_version  = gGameVersion;
+    mail->mail_type       = MAIL_NONE;
     StringFillEOS(mail->author_name, PLAYER_NAME_LENGTH + 1);
     for (i = 0; i < 3; i++) {
         mail->mon_icons[i].raw = 0xFFFF;
@@ -71,11 +74,11 @@ void Mail_Copy(const Mail *src, Mail *dst) {
 BOOL Mail_Compare(const Mail *a, const Mail *b) {
     int i;
     if (a->author_otId != b->author_otId
-    || a->author_gender != b->author_gender
-    || a->author_language != b->author_language
-    || a->author_version != b->author_version
-    || a->mail_type != b->mail_type
-    || a->form_flags != b->form_flags) {
+        || a->author_gender != b->author_gender
+        || a->author_language != b->author_language
+        || a->author_version != b->author_version
+        || a->mail_type != b->mail_type
+        || a->form_flags != b->form_flags) {
         return FALSE;
     }
     if (StringNotEqual(a->author_name, b->author_name)) {
@@ -106,31 +109,31 @@ void Mail_SetNewMessageDetails(Mail *mail, u8 mailType, u8 mon_no, SaveData *sav
     Mail_Init(mail);
     mail->mail_type = mailType;
 
-    party = SaveArray_Party_Get(saveData);
+    party   = SaveArray_Party_Get(saveData);
     profile = Save_PlayerData_GetProfileAddr(saveData);
 
     CopyU16StringArray(mail->author_name, PlayerProfile_GetNamePtr(profile));
     mail->author_gender = PlayerProfile_GetTrainerGender(profile);
-    mail->author_otId = PlayerProfile_GetTrainerID(profile);
+    mail->author_otId   = PlayerProfile_GetTrainerID(profile);
 
     // Get the Pokemon icon data
     mail->form_flags = 0;
     for (i = mon_no, j = 0; i < Party_GetCount(party); i++) {
-        mon = Party_GetMonByIndex(party, i);
+        mon     = Party_GetMonByIndex(party, i);
         species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        isEgg = GetMonData(mon, MON_DATA_IS_EGG, NULL);
-        form = GetMonData(mon, MON_DATA_FORM, NULL);
-        icon = Pokemon_GetIconNaix(mon);
-        pal = GetMonIconPaletteEx(species, form, isEgg);
+        isEgg   = GetMonData(mon, MON_DATA_IS_EGG, NULL);
+        form    = GetMonData(mon, MON_DATA_FORM, NULL);
+        icon    = Pokemon_GetIconNaix(mon);
+        pal     = GetMonIconPaletteEx(species, form, isEgg);
 
         mail->mon_icons[j].icon = icon;
-        mail->mon_icons[j].pal = pal;
+        mail->mon_icons[j].pal  = pal;
         // Normal form conversion for icons added in Platinum or later.
         // Form numbers are saved to this buffer.
         for (k = 0; k < NELEMS(sFormOverrides); k++) {
             if (sFormOverrides[k].formed_icon == mail->mon_icons[j].icon && sFormOverrides[k].form == form) {
                 mail->mon_icons[j].icon = sFormOverrides[k].base_icon;
-                mail->mon_icons[j].pal = GetMonIconPaletteEx(species, 0, isEgg);
+                mail->mon_icons[j].pal  = GetMonIconPaletteEx(species, 0, isEgg);
                 mail->form_flags |= sFormOverrides[k].form << (j * 5);
                 break;
             }
@@ -153,7 +156,7 @@ Mail *CreateKenyaMail(Pokemon *mon, u8 mailType, u8 gender, String *name, u8 otI
     ret->mail_type = mailType;
     CopyStringToU16Array(name, ret->author_name, PLAYER_NAME_LENGTH + 1);
     ret->author_gender = gender;
-    ret->author_otId = otId;
+    ret->author_otId   = otId;
 
     // LETTER! Thank you!
     MailMsg_SetMsgBankAndNum(&ret->unk_20[0], 1, msg_0296_00007);
@@ -172,13 +175,13 @@ Mail *CreateKenyaMail(Pokemon *mon, u8 mailType, u8 gender, String *name, u8 otI
 
     ret->form_flags = 0;
 
-    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    isEgg = GetMonData(mon, MON_DATA_IS_EGG, NULL);
-    form = GetMonData(mon, MON_DATA_FORM, NULL);
-    r5 = Pokemon_GetIconNaix(mon);
-    r0 = GetMonIconPaletteEx(species, form, isEgg);
+    species                = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    isEgg                  = GetMonData(mon, MON_DATA_IS_EGG, NULL);
+    form                   = GetMonData(mon, MON_DATA_FORM, NULL);
+    r5                     = Pokemon_GetIconNaix(mon);
+    r0                     = GetMonIconPaletteEx(species, form, isEgg);
     ret->mon_icons[0].icon = r5;
-    ret->mon_icons[0].pal = r0;
+    ret->mon_icons[0].pal  = r0;
 
     return ret;
 }
@@ -221,13 +224,13 @@ u16 sub_0202B404(Mail *mail, u8 r1, u8 r4, u16 r3) {
         for (i = 0; i < NELEMS(sFormOverrides); i++) {
             if (sFormOverrides[i].base_icon == sp0.icon && sFormOverrides[i].form == ((r3 >> (5 * r1)) & 31)) {
                 sp0.icon = sFormOverrides[i].formed_icon;
-                sp0.pal = GetMonIconPaletteEx(sFormOverrides[i].species, sFormOverrides[i].form, FALSE);
+                sp0.pal  = GetMonIconPaletteEx(sFormOverrides[i].species, sFormOverrides[i].form, FALSE);
                 break;
             }
         }
         if (sp0.icon > 546) {
             sp0.icon = 7;
-            sp0.pal = 0;
+            sp0.pal  = 0;
         }
         switch (r4) {
         case 0:
@@ -300,7 +303,7 @@ u32 Mailbox_CountMessages(Mailbox *mailbox, int unused) {
 
 Mail *Mailbox_AllocAndFetchMailI(Mail *msgs, int n, int i, HeapID heapId) {
     const Mail *src = Mailbox_GetPtrToSlotI(msgs, n, i);
-    Mail *ret = Mail_New(heapId);
+    Mail *ret       = Mail_New(heapId);
     if (src != NULL) {
         Mail_Copy(src, ret);
     }

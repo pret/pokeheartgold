@@ -1,12 +1,13 @@
-#include "global.h"
 #include "unk_02091054.h"
+
+#include "global.h"
 
 typedef struct {
     u8 unk0;
     u8 unk1;
     u8 unk2;
-    u8 unk3_0:2;
-    u8 unk3_2:6;
+    u8 unk3_0 : 2;
+    u8 unk3_2 : 6;
 } Unk02091054;
 
 static const Unk02091054 _02105F04[81] = {

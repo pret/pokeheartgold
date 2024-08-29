@@ -70,4 +70,4 @@ BOOL Task_ReturnToMenuFromVSRecorder(TaskManager *taskManager);
 
 extern const u8 _020FA0B0[];
 
-#endif //POKEHEARTGOLD_UNK_0203BC10_H
+#endif // POKEHEARTGOLD_UNK_0203BC10_H

@@ -14,4 +14,4 @@ BOOL PCBox_Init(OVY_MANAGER *man, int *state);
 BOOL PCBox_Main(OVY_MANAGER *man, int *state);
 BOOL PCBox_Exit(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_OVY_14_H
+#endif // POKEHEARTGOLD_OVY_14_H

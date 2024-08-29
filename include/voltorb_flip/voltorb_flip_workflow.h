@@ -61,9 +61,9 @@ typedef struct WorkflowEngine {
     struct VoltorbFlipAppWork *work;
     u16 curWorkflow;
     u16 nextWorkflow;
-    u8 size;          // The number of workflows registered
+    u8 size; // The number of workflows registered
     u8 workflowState; // The internal state of the WorkflowEngine (as it manages Task transitions)
-    u8 taskState;     // The state of the Task that is currently being executed
+    u8 taskState; // The state of the Task that is currently being executed
 } WorkflowEngine;
 
 WorkflowEngine *CreateWorkflowEngine(HeapID, VoltorbFlipWorkflows *, int, struct VoltorbFlipAppWork *);
@@ -74,4 +74,4 @@ int CurrentWorkflow(WorkflowEngine *);
 int CurrentTaskState(WorkflowEngine *);
 int IncrementTaskState(WorkflowEngine *);
 
-#endif //POKEHEARTGOLD_VOLTORB_FLIP_WORKFLOW_H
+#endif // POKEHEARTGOLD_VOLTORB_FLIP_WORKFLOW_H

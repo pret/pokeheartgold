@@ -16,4 +16,4 @@ void ov01_021E90DC(u32 x, u32 y, FieldEnvSubUnk18 *a2);
 BOOL ov01_021E90E4(FieldSystem *fieldSystem, FieldEnvSubUnk18 *a1);
 BOOL ov01_021E9374(FieldSystem *fieldSystem, FieldEnvSubUnk18 *a1);
 
-#endif //POKEHEARTGOLD_OVERLAY_01_021E90C0_H
+#endif // POKEHEARTGOLD_OVERLAY_01_021E90C0_H

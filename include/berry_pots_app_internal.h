@@ -1,9 +1,9 @@
 #ifndef POKEHEARTGOLD_BERRY_POTS_APP_INTERNAL_H
 #define POKEHEARTGOLD_BERRY_POTS_APP_INTERNAL_H
-#include "unk_02023694.h"
 #include "game_stats.h"
-#include "overlay_16.h"
 #include "launch_application.h"
+#include "overlay_16.h"
+#include "unk_02023694.h"
 
 enum BerryPotsApp_022036FC_Action {
     BERRY_POTS_APP_022036FC_ACTION_0,

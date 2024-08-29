@@ -1,6 +1,8 @@
-#include "global.h"
 #include "brightness.h"
+
 #include <nitro/gx/g2.h>
+
+#include "global.h"
 
 static BrightnessData sMainScreenBrightnessData;
 static BrightnessData sSubScreenBrightnessData;
@@ -22,7 +24,7 @@ void DoBrightnessTransitionStep(BrightnessData *brightness) {
         }
     } else {
         brightness->currentBrightness = brightness->targetBrightness;
-        transitionFinished = TRUE;
+        transitionFinished            = TRUE;
     }
 
     if (brightness->screenMask & SCREEN_MASK_MAIN) {
@@ -39,13 +41,13 @@ void DoBrightnessTransitionStep(BrightnessData *brightness) {
 void InitBrightnessTransition(BrightnessData *brightnessData, u16 stepCount, s16 targetBrightness, s16 startBrightness, GXBlendPlaneMask surfaceMask, u32 screenMask) {
     GF_ASSERT(!brightnessData->transitionActive);
 
-    brightnessData->transitionActive = TRUE;
-    brightnessData->surfaceMask = (GXBlendPlaneMask)(u8)surfaceMask;
-    brightnessData->screenMask = (u8)screenMask;
-    brightnessData->stepCount = stepCount;
-    brightnessData->targetBrightness = targetBrightness;
+    brightnessData->transitionActive  = TRUE;
+    brightnessData->surfaceMask       = (GXBlendPlaneMask)(u8)surfaceMask;
+    brightnessData->screenMask        = (u8)screenMask;
+    brightnessData->stepCount         = stepCount;
+    brightnessData->targetBrightness  = targetBrightness;
     brightnessData->currentBrightness = startBrightness;
-    brightnessData->brightnessDiff = startBrightness - targetBrightness;
+    brightnessData->brightnessDiff    = startBrightness - targetBrightness;
 
     if (brightnessData->brightnessDiff > 0) {
         brightnessData->transitionDirection = -1;
@@ -54,9 +56,9 @@ void InitBrightnessTransition(BrightnessData *brightnessData, u16 stepCount, s16
         brightnessData->brightnessDiff *= -1;
     }
 
-    brightnessData->stepSizeInteger = brightnessData->brightnessDiff / stepCount;
+    brightnessData->stepSizeInteger    = brightnessData->brightnessDiff / stepCount;
     brightnessData->stepSizeFractional = brightnessData->brightnessDiff % stepCount;
-    brightnessData->fractionalCount = 0;
+    brightnessData->fractionalCount    = 0;
 }
 
 void StartBrightnessTransition(u16 stepCount, s16 targetBrightness, s16 startBrightness, GXBlendPlaneMask surfaceMask, u32 screenMask) {
@@ -90,7 +92,7 @@ void ScreenBrightnessData_InitAll(void) {
     MI_CpuFill8(&sSubScreenBrightnessData, 0, sizeof(BrightnessData));
 
     sMainScreenBrightnessData.transitionActive = FALSE;
-    sSubScreenBrightnessData.transitionActive = FALSE;
+    sSubScreenBrightnessData.transitionActive  = FALSE;
 }
 
 void InitScreenBrightnessData(u32 screenMask) {
@@ -134,6 +136,6 @@ BOOL IsBrightnessTransitionActive(u32 screenMask) {
 }
 
 void UpdateMainScreenBrightnessSurface(GXBlendPlaneMask mask1, GXBlendPlaneMask mask2) {
-    GXBlendPlaneMask mask = (GXBlendPlaneMask)(mask1 | mask2 << 8);
+    GXBlendPlaneMask mask                 = (GXBlendPlaneMask)(mask1 | mask2 << 8);
     sMainScreenBrightnessData.surfaceMask = mask;
 }

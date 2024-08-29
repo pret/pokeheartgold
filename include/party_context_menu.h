@@ -1,8 +1,8 @@
 #ifndef POKEHEARTGOLD_PARTY_CONTEXT_MENU_H
 #define POKEHEARTGOLD_PARTY_CONTEXT_MENU_H
 
-#include "party_menu.h"
 #include "list_menu.h"
+#include "party_menu.h"
 
 void PartyMenu_SetBlendBrightness_ForYesNo(void);
 void PartyMenu_DisableMainScreenBlend_AfterYesNo(void);
@@ -45,4 +45,4 @@ void PartyMenu_CloseContextMenu(PartyMenu *partyMenu, PartyMenuContextMenuCursor
 u32 PartyMenu_HandleInput_ContextMenu(PartyMenu *partyMenu, PartyMenuContextMenuCursor *a1);
 u32 PartyMenu_HandleSubcontextMenuInput_TopLevel(PartyMenu *partyMenu, PartyMenuContextMenuCursor *a1);
 
-#endif //POKEHEARTGOLD_PARTY_CONTEXT_MENU_H
+#endif // POKEHEARTGOLD_PARTY_CONTEXT_MENU_H

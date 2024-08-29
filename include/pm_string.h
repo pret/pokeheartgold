@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_STRING_H
 
 #include "constants/charcode.h"
+
 #include "heap.h"
 #include "string_util.h"
 
@@ -25,17 +26,17 @@ void String_AddChar(String *str, u16 _char);
 void CopyU16ArrayToString(String *dest, const u16 *src);
 void CopyU16ArrayToStringN(String *dest, const u16 *src, u32 n);
 u16 *String_cstr(String *string);
-void String16_FormatInteger(String * str, int num, u32 ndigits, PrintingMode strConvMode, BOOL whichCharset);
-void String_UpperCharN(String * str, int n);
-void String_Cat_HandleTrainerName(String * dest, String * src);
-void String16_FormatUnsignedLongLong(String * str, u64 num, u32 ndigits, PrintingMode strConvMode, BOOL whichCharset);
-s64 String_atoi(String * str, BOOL * flag);
-u16 String_GetLength(String * str);
-int String_CountLines(volatile String * str);
-void String_GetLineN(String * dest, volatile String * src, u32 n);
+void String16_FormatInteger(String *str, int num, u32 ndigits, PrintingMode strConvMode, BOOL whichCharset);
+void String_UpperCharN(String *str, int n);
+void String_Cat_HandleTrainerName(String *dest, String *src);
+void String16_FormatUnsignedLongLong(String *str, u64 num, u32 ndigits, PrintingMode strConvMode, BOOL whichCharset);
+s64 String_atoi(String *str, BOOL *flag);
+u16 String_GetLength(String *str);
+int String_CountLines(volatile String *str);
+void String_GetLineN(String *dest, volatile String *src, u32 n);
 void String_RadioAddStatic(String *string, u8 level);
-u16 * String_cstr(String * str);
-void String_Cat(String * dest, String * src);
-BOOL String_IsTrainerName(String * string);
+u16 *String_cstr(String *str);
+void String_Cat(String *dest, String *src);
+BOOL String_IsTrainerName(String *string);
 
-#endif //POKEHEARTGOLD_STRING_H
+#endif // POKEHEARTGOLD_STRING_H

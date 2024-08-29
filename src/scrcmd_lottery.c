@@ -1,34 +1,34 @@
-#include "scrcmd.h"
-#include "save_vars_flags.h"
-#include "sys_vars.h"
 #include "field_system.h"
 #include "save_arrays.h"
+#include "save_vars_flags.h"
+#include "scrcmd.h"
+#include "sys_vars.h"
 
 u8 LotoId_CountDigitsMatched(u16 lotoId, u16 otid);
 
 BOOL ScrCmd_BufferDeptStoreFloorNo(ScriptContext *ctx) {
     MessageFormat **msg = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
-    u8 fieldno = ScriptReadByte(ctx);
-    u8 floor = ScriptReadByte(ctx);
+    u8 fieldno          = ScriptReadByte(ctx);
+    u8 floor            = ScriptReadByte(ctx);
     BufferDeptStoreFloorNo(*msg, fieldno, floor);
     return FALSE;
 }
 
 BOOL ScrCmd_LotoIdGet(ScriptContext *ctx) {
     SaveVarsFlags *state = Save_VarsFlags_Get(ctx->fieldSystem->saveData);
-    u16 *retPtr = ScriptGetVarPointer(ctx);
-    u32 lotoId = Save_VarsFlags_GetLotoId(state);
-    *retPtr = lotoId;
+    u16 *retPtr          = ScriptGetVarPointer(ctx);
+    u32 lotoId           = Save_VarsFlags_GetLotoId(state);
+    *retPtr              = lotoId;
     return FALSE;
 }
 
 BOOL ScrCmd_LotoIdSearch(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    PCStorage *storage = SaveArray_PCStorage_Get(fieldSystem->saveData);
-    u16 *retPtr0 = ScriptGetVarPointer(ctx);
-    u16 *retPtr1 = ScriptGetVarPointer(ctx);
-    u16 *retPtr2 = ScriptGetVarPointer(ctx);
-    u16 lotoId = ScriptGetVar(ctx);
+    PCStorage *storage       = SaveArray_PCStorage_Get(fieldSystem->saveData);
+    u16 *retPtr0             = ScriptGetVarPointer(ctx);
+    u16 *retPtr1             = ScriptGetVarPointer(ctx);
+    u16 *retPtr2             = ScriptGetVarPointer(ctx);
+    u16 lotoId               = ScriptGetVar(ctx);
     u16 partyCount;
 
     u16 monDigit;
@@ -46,10 +46,10 @@ BOOL ScrCmd_LotoIdSearch(ScriptContext *ctx) {
     for (monDigit = 0, monPosition = 0, i = 0; i < partyCount; i++) {
         Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), i);
         if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
-            otid = GetMonData(mon, MON_DATA_OTID, NULL) & 0xffff;
+            otid       = GetMonData(mon, MON_DATA_OTID, NULL) & 0xffff;
             digitCount = LotoId_CountDigitsMatched(lotoId, otid);
             if (digitCount != 0 && monDigit < digitCount) {
-                monDigit = digitCount;
+                monDigit    = digitCount;
                 monPosition = i;
             }
         }
@@ -59,10 +59,10 @@ BOOL ScrCmd_LotoIdSearch(ScriptContext *ctx) {
         for (j = 0; j < MONS_PER_BOX; j++) {
             BoxPokemon *boxMon = PCStorage_GetMonByIndexPair(storage, ii, j);
             if (GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL) != 0 && !GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL)) {
-                otid = GetBoxMonData(boxMon, MON_DATA_OTID, NULL) & 0xffff;
+                otid       = GetBoxMonData(boxMon, MON_DATA_OTID, NULL) & 0xffff;
                 digitCount = LotoId_CountDigitsMatched(lotoId, otid);
                 if (digitCount != 0 && boxDigit < digitCount) {
-                    boxDigit = digitCount;
+                    boxDigit    = digitCount;
                     boxPosition = ii * MONS_PER_BOX + j;
                 }
             }
@@ -93,14 +93,14 @@ BOOL ScrCmd_LotoIdSet(ScriptContext *ctx) {
 }
 
 static u16 sLotoId = 0;
-static u16 sOtId = 0;
+static u16 sOtId   = 0;
 u8 LotoId_CountDigitsMatched(u16 lotoId, u16 otid) {
     u8 i;
     u8 count = 0;
 
     for (i = 0; i < 5; i++) {
         sLotoId = lotoId % 10;
-        sOtId = otid % 10;
+        sOtId   = otid % 10;
 
         if ((lotoId % 10) != (otid % 10)) {
             break;

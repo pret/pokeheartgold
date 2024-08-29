@@ -31,7 +31,7 @@ typedef struct ENC_DATA {
     /* 0x03 */ u8 encounterRate_oldRod;
     /* 0x04 */ u8 encounterRate_goodRod;
     /* 0x05 */ u8 encounterRate_superRod;
-               u8 dummy[2];
+    u8 dummy[2];
     /* 0x08 */ ENC_DATA_LAND landSlots;
     /* 0x5C */ u16 hoennSoundsSpecies[2];
     /* 0x60 */ u16 sinnohSoundsSpecies[2];
@@ -47,4 +47,4 @@ typedef struct ENC_DATA {
 };
 #endif
 
-#endif //POKEHEARTGOLD_WILD_ENCOUNTER_H
+#endif // POKEHEARTGOLD_WILD_ENCOUNTER_H

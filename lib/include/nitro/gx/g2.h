@@ -120,11 +120,11 @@ static inline void G2S_SetBlendAlpha(int plane1, int plane2, int ev1, int ev2) {
     G2x_SetBlendAlpha_((u32)&reg_G2S_DB_BLDCNT, plane1, plane2, ev1, ev2);
 }
 
-static inline void G2_SetBlendBrightness(int plane, int brightness) { //plane should be GXBlendPlaneMask but it doesn't match
+static inline void G2_SetBlendBrightness(int plane, int brightness) { // plane should be GXBlendPlaneMask but it doesn't match
     G2x_SetBlendBrightness_(&reg_G2_BLDCNT, plane, brightness);
 }
 
-static inline void G2S_SetBlendBrightness(int plane, int brightness) { //plane should be GXBlendPlaneMask but it doesn't match
+static inline void G2S_SetBlendBrightness(int plane, int brightness) { // plane should be GXBlendPlaneMask but it doesn't match
     G2x_SetBlendBrightness_(&reg_G2S_DB_BLDCNT, plane, brightness);
 }
 

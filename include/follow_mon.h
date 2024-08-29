@@ -1,11 +1,11 @@
 #ifndef POKEHEARTGOLD_FOLLOW_MON_H
 #define POKEHEARTGOLD_FOLLOW_MON_H
 
-#include "map_object.h"
 #include "heap.h"
+#include "map_object.h"
 #include "map_object_manager.h"
 
-#define FOLLOW_MON_PARAM_SPECIES    0
+#define FOLLOW_MON_PARAM_SPECIES 0
 
 LocalMapObject *FollowMon_InitMapObject(MapObjectManager *mapObjectManager, int x, int y, int direction, u32 mapNo);
 void FollowMon_ChangeMon(MapObjectManager *mapObjectManager, u32 mapNo);
@@ -41,4 +41,4 @@ int SpeciesToOverworldModelIndexOffset(int species);
 int OverworldModelLookupFormCount(int species);
 BOOL OverworldModelLookupHasFemaleForm(int species);
 
-#endif //POKEHEARTGOLD_FOLLOW_MON_H
+#endif // POKEHEARTGOLD_FOLLOW_MON_H

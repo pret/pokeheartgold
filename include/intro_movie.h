@@ -5,4 +5,4 @@
 
 extern const OVY_MGR_TEMPLATE gApplication_IntroMovie;
 
-#endif //POKEHEARTGOLD_INTRO_MOVIE_H
+#endif // POKEHEARTGOLD_INTRO_MOVIE_H

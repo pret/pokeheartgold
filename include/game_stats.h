@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_GAME_STATS_H
 
 #include "constants/game_stats.h"
+
 #include "pokedex.h"
 #include "save.h"
 
@@ -19,4 +20,4 @@ u32 GameStats_SetCapped(GameStats *gameStats, int statIdx, u32 value);
 u32 GameStats_UpdateBounded(GameStats *gameStats, int statIdx, u32 value);
 u32 GameStats_GetScore(GameStats *gameStat);
 
-#endif //POKEHEARTGOLD_GAME_STATS_H
+#endif // POKEHEARTGOLD_GAME_STATS_H

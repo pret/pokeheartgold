@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_FIELD_HEADBUTT_H
 #define POKEHEARTGOLD_FIELD_HEADBUTT_H
 
+#include "global.h"
+
 typedef struct HeadbuttSlot {
     u16 species;
     u8 minLevel;
@@ -16,4 +18,4 @@ typedef struct HeadbuttEncounterData {
     s16 treeCoords[][2];
 } HeadbuttEncounterData;
 
-#endif //POKEHEARTGOLD_FIELD_HEADBUTT_H
+#endif // POKEHEARTGOLD_FIELD_HEADBUTT_H

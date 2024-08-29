@@ -1,7 +1,6 @@
 #ifndef POKEHEARTGOLD_UNK_020290B4_H
 #define POKEHEARTGOLD_UNK_020290B4_H
 
-#include "save.h"
 #include "pm_string.h"
 #include "unk_02074944.h"
 

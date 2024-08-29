@@ -26,4 +26,4 @@ u32 sub_0202D908(SaveData *saveData);
 u32 sub_0202D928(SaveData *saveData);
 MailMessage *sub_0202D660(SaveData *saveData, u8 a1);
 
-#endif //POKEHEARTGOLD_UNK_0202D230_H
+#endif // POKEHEARTGOLD_UNK_0202D230_H

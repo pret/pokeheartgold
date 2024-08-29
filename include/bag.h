@@ -2,11 +2,13 @@
 #define POKEHEARTGOLD_BAG_H
 
 #include "constants/items.h"
+
+#include "bag_cursor.h"
+#include "bag_types_def.h"
+#include "bag_view.h"
+#include "heap.h"
 #include "item.h"
 #include "save.h"
-#include "heap.h"
-#include "bag_types_def.h"
-#include "bag_cursor.h"
 
 /*
  * u32 Save_Bag_sizeof(void)
@@ -207,4 +209,4 @@ ItemSlot *Bag_GetPocketSlotN(Bag *bag, u8 pocket, u32 slot);
  */
 Bag *Save_Bag_Get(SaveData *saveData);
 
-#endif //POKEHEARTGOLD_BAG_H
+#endif // POKEHEARTGOLD_BAG_H

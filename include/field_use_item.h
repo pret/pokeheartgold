@@ -1,15 +1,15 @@
 #ifndef POKEHEARTGOLD_FIELD_USE_ITEM_H
 #define POKEHEARTGOLD_FIELD_USE_ITEM_H
 
-#include "task.h"
-#include "party.h"
 #include "bag_types_def.h"
 #include "mail.h"
+#include "party.h"
+#include "task.h"
 #include "unk_0202E41C.h"
 
-#define USE_ITEM_TASK_MENU               0
-#define USE_ITEM_TASK_FIELD              1
-#define USE_ITEM_TASK_CHECK              2
+#define USE_ITEM_TASK_MENU  0
+#define USE_ITEM_TASK_FIELD 1
+#define USE_ITEM_TASK_CHECK 2
 
 struct AlphItemUseData {
     int scriptNo;
@@ -22,13 +22,13 @@ struct AlphItemUseData {
 typedef void *(*FieldApplicationWorkCtor)(FieldSystem *fieldSystem);
 
 typedef struct ItemFieldUseData {
-    FieldSystem *fieldSystem;      // 00
-    struct ItemCheckUseData dat;   // 04
+    FieldSystem *fieldSystem; // 00
+    struct ItemCheckUseData dat; // 04
     FieldApplicationWorkCtor ctor; // 1C
-    void *work;                    // 20
-    u16 itemId;                    // 24
-    u8 state;                      // 26
-    u8 no_app;                     // 27
+    void *work; // 20
+    u16 itemId; // 24
+    u8 state; // 26
+    u8 no_app; // 27
 } ItemFieldUseData;
 
 typedef struct ItemMenuUseData {
@@ -53,4 +53,4 @@ void ItemCheckUseData_Init(FieldSystem *fieldSystem, struct ItemCheckUseData *da
 BOOL Leftover_CanPlantBerry(const struct ItemCheckUseData *data);
 int UseRegisteredItemButtonInField(FieldSystem *fieldSystem, u8 slot);
 
-#endif //POKEHEARTGOLD_FIELD_USE_ITEM_H
+#endif // POKEHEARTGOLD_FIELD_USE_ITEM_H

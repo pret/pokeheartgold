@@ -1,15 +1,19 @@
 #define _IN_MAP_HEADER_C
 
+#include "map_header.h"
+
 #include "global.h"
+
 #include "constants/battle.h"
 #include "constants/map_sections.h"
 #include "constants/maps.h"
 #include "constants/sndseq.h"
-#include "fielddata/mapmatrix/map_matrix.naix"
+
 #include "fielddata/eventdata/zone_event.naix"
+#include "fielddata/mapmatrix/map_matrix.naix"
 #include "fielddata/script/scr_seq.naix"
-#include "map_header.h"
 #include "msgdata/msg.naix"
+
 #include "encounter_tables_narc.h"
 
 static const u16 sPokemonCenterMaps[] = {

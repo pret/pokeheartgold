@@ -1,9 +1,9 @@
 #ifndef POKEHEARTGOLD_LIST_MENU_H
 #define POKEHEARTGOLD_LIST_MENU_H
 
+#include "bg_window.h"
 #include "list_menu_cursor.h"
 #include "list_menu_items.h"
-#include "bg_window.h"
 
 struct ListMenu;
 
@@ -43,29 +43,29 @@ typedef struct ListMenuTemplate {
     /*0x14*/ u8 header_X;
     /*0x15*/ u8 item_X;
     /*0x16*/ u8 cursor_X;
-    /*0x17*/ u8 upText_Y:4;
-             u8 cursorPal:4;
-    /*0x18*/ u8 fillValue:4;
-             u8 cursorShadowPal:4;
-    /*0x1A*/ u16 lettersSpacing:3;
-             u16 itemVerticalPadding:4;
-             u16 scrollMultiple:2;
-             u16 fontId:6;
-             u16 cursorKind:1;
+    /*0x17*/ u8 upText_Y        : 4;
+    u8 cursorPal                : 4;
+    /*0x18*/ u8 fillValue       : 4;
+    u8 cursorShadowPal          : 4;
+    /*0x1A*/ u16 lettersSpacing : 3;
+    u16 itemVerticalPadding     : 4;
+    u16 scrollMultiple          : 2;
+    u16 fontId                  : 6;
+    u16 cursorKind              : 1;
     /*0x1C*/ u32 unk_1C;
 } ListMenuTemplate;
 
 typedef struct ListMenu {
     /*0x00*/ ListMenuTemplate template;
     // ListMenuOverride from gen 3
-    /*0x20*/ u8 cursorPal:4;
-    u8 fillValue:4;
-    /*0x21*/ u8 cursorShadowPal:4;
-    u8 unk_21_4:4;
-    /*0x22*/ u8 lettersSpacing:6;
+    /*0x20*/ u8 cursorPal       : 4;
+    u8 fillValue                : 4;
+    /*0x21*/ u8 cursorShadowPal : 4;
+    u8 unk_21_4                 : 4;
+    /*0x22*/ u8 lettersSpacing  : 6;
     /*0x23*/ u8 unk_23;
-    /*0x24*/ u8 fontId:7;
-    u8 overrideEnabled:1;
+    /*0x24*/ u8 fontId : 7;
+    u8 overrideEnabled : 1;
     /*0x28*/ struct ListMenuCursor *cursor;
     /*0x2c*/ u16 cursorPos;
     /*0x2e*/ u16 itemsAbove;
@@ -78,7 +78,7 @@ typedef struct ListMenu {
 
 struct ListMenu *ListMenuInit(const struct ListMenuTemplate *template, u16 cursorPos, u16 itemsAbove, HeapID heapId);
 s32 ListMenu_ProcessInput(struct ListMenu *list);
-void DestroyListMenu(struct ListMenu *list, u16 * cursorPos, u16 * itemsAbove);
+void DestroyListMenu(struct ListMenu *list, u16 *cursorPos, u16 *itemsAbove);
 void RedrawListMenu(struct ListMenu *list);
 void ListMenuOverrideSetColors(struct ListMenu *list, u8 cursorPal, u8 fillValue, u8 cursorShadowPal);
 void ListMenuGetCurrentItemArrayId(struct ListMenu *list, u16 *index_p);
@@ -86,4 +86,4 @@ void ListMenuGetScrollAndRow(struct ListMenu *list, u16 *cursorPos_p, u16 *items
 s32 ListMenuGetValueByArrayId(struct ListMenu *list, s32 index);
 s32 ListMenuGetTemplateField(struct ListMenu *list, enum ListMenuAttr attr);
 
-#endif //POKEHEARTGOLD_LIST_MENU_H
+#endif // POKEHEARTGOLD_LIST_MENU_H

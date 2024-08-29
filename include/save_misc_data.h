@@ -1,11 +1,11 @@
 #ifndef POKEHEARTGOLD_SAVE_MISC_DATA_H
 #define POKEHEARTGOLD_SAVE_MISC_DATA_H
 
-#include "save.h"
-#include "mail_message.h"
 #include "gf_rtc.h"
 #include "gymmick.h"
+#include "mail_message.h"
 #include "pm_string.h"
+#include "save.h"
 
 typedef struct APRICORN_TREE {
     u8 unk_0;
@@ -35,7 +35,7 @@ typedef struct BerryPot {
 #define MAX_APRICORN_TREE 128
 #define NUM_APRICORN_TREE 31
 
-#define MAX_BERRY_POT      4
+#define MAX_BERRY_POT 4
 
 typedef struct SAVE_MISC_DATA {
     APRICORN_TREE apricorn_trees[MAX_APRICORN_TREE];
@@ -46,10 +46,10 @@ typedef struct SAVE_MISC_DATA {
     u8 unk_0280[8]; // 3 chunks of size (4, 2, 2)
     u8 filler_0288[0x10];
     u16 favoriteMonSpecies;
-    u8 favoriteMonForm:7;
-    u8 favoriteMonIsEgg:1;
-    u8 extraChunksExist:1;
-    u8 unk_029B_1:4;
+    u8 favoriteMonForm  : 7;
+    u8 favoriteMonIsEgg : 1;
+    u8 extraChunksExist : 1;
+    u8 unk_029B_1       : 4;
     u8 filer_029C[4];
     MailMessage battleGreetingEC;
     u32 unk_02A8[2][5];
@@ -80,8 +80,8 @@ BOOL sub_0202AA44(SAVE_MISC_DATA *saveMiscData, int a1, int a2);
 void sub_0202AA9C(SAVE_MISC_DATA *saveMiscData, int a1);
 u8 sub_0202AAD4(SAVE_MISC_DATA *saveMiscData, int a1);
 void sub_0202AB18(SAVE_MISC_DATA *saveMiscData, u8 a1, u8 a2, u8 a3);
-void SaveMisc_SetTogepiPersonalityGender(SAVE_MISC_DATA * saveMiscData, int personality, u8 gender);
-void SaveMisc_GetTogepiPersonalityGender(SAVE_MISC_DATA * saveMiscData, int *personality, u8 *gender);
+void SaveMisc_SetTogepiPersonalityGender(SAVE_MISC_DATA *saveMiscData, int personality, u8 gender);
+void SaveMisc_GetTogepiPersonalityGender(SAVE_MISC_DATA *saveMiscData, int *personality, u8 *gender);
 void SaveMisc_GetBattleGreeting(SAVE_MISC_DATA *saveMiscData, MailMessage *mailMessage);
 void SaveMisc_SetBattleGreeting(SAVE_MISC_DATA *saveMiscData, MailMessage *mailMessage);
 void sub_0202AC0C(SAVE_MISC_DATA *saveMiscData, u8 *a1);
@@ -89,4 +89,4 @@ void sub_0202AC1C(SAVE_MISC_DATA *saveMiscData, u8 a1);
 void sub_0202AC38(SAVE_MISC_DATA *saveMiscData, int a1, u32 *a2, u32 *a3, u8 *a4);
 void sub_0202AC60(SAVE_MISC_DATA *saveMiscData, int a1, u32 a2, u32 a3, u8 a4);
 
-#endif //POKEHEARTGOLD_SAVE_MISC_DATA_H
+#endif // POKEHEARTGOLD_SAVE_MISC_DATA_H

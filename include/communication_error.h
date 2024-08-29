@@ -5,4 +5,4 @@
 
 void ShowCommunicationError(HeapID heapId, u32 error, u32 errorCode);
 
-#endif //POKEHEARTGOLD_COMMUNICATION_ERROR_H
+#endif // POKEHEARTGOLD_COMMUNICATION_ERROR_H

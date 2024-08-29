@@ -1,7 +1,10 @@
-#include "global.h"
 #include "save_trainer_house.h"
-#include "string_util.h"
+
+#include "global.h"
+
 #include "constants/species.h"
+
+#include "string_util.h"
 
 u32 Save_TrainerHouse_sizeof(void) {
     return sizeof(TrainerHouse);

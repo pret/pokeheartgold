@@ -1,7 +1,8 @@
-#include "global.h"
 #include "poke_overlay.h"
 
-#define OVY_MAX_PER_REGION            (8)
+#include "global.h"
+
+#define OVY_MAX_PER_REGION (8)
 
 typedef enum PMiOverlayRegion {
     OVY_REGION_MAIN,
@@ -48,12 +49,12 @@ static PMiOverlayRegion GetOverlayLoadDestination(FSOverlayID id) {
     u8 *start;
     GF_ASSERT(FS_LoadOverlayInfo(&info, MI_PROCESSOR_ARM9, id) == TRUE);
     start = (u8 *)HW_ITCM_IMAGE;
-    end = (u8 *)HW_ITCM_END;
+    end   = (u8 *)HW_ITCM_END;
     if (info.header.ram_address <= end && info.header.ram_address >= start) {
         return OVY_REGION_ITCM;
     }
     start = (u8 *)HW_DTCM;
-    end = start + HW_DTCM_SIZE;
+    end   = start + HW_DTCM_SIZE;
     if (info.header.ram_address <= end && info.header.ram_address >= start) {
         return OVY_REGION_DTCM;
     }
@@ -71,13 +72,13 @@ BOOL HandleLoadOverlay(FSOverlayID ovyId, PMOverlayLoadType loadType) {
         return FALSE;
     }
 
-    overlayRegion = GetOverlayLoadDestination(ovyId);
+    overlayRegion  = GetOverlayLoadDestination(ovyId);
     loadedOverlays = GetLoadedOverlaysInRegion(overlayRegion);
     for (i = 0; i < OVY_MAX_PER_REGION; i++) {
         if (loadedOverlays[i].active == FALSE) {
             PMiLoadedOverlay *ovy = &loadedOverlays[i];
-            ovy->active = TRUE;
-            ovy->id = ovyId;
+            ovy->active           = TRUE;
+            ovy->id               = ovyId;
             break;
         }
     }
@@ -118,8 +119,8 @@ BOOL HandleLoadOverlay(FSOverlayID ovyId, PMOverlayLoadType loadType) {
 }
 
 static BOOL CanOverlayBeLoaded(FSOverlayID ovyId) {
-    void * my_start, * my_end;
-    void * their_start, * their_end;
+    void *my_start, *my_end;
+    void *their_start, *their_end;
     int i;
     PMiLoadedOverlay *loadedOverlay;
 
@@ -151,7 +152,7 @@ static PMiLoadedOverlay *GetLoadedOverlaysInRegion(PMiOverlayRegion region) {
     }
 }
 
-static BOOL GetOverlayRamBounds(FSOverlayID ovyId, void ** start, void ** end) {
+static BOOL GetOverlayRamBounds(FSOverlayID ovyId, void **start, void **end) {
     FSOverlayInfo info;
 
     if (!FS_LoadOverlayInfo(&info, MI_PROCESSOR_ARM9, ovyId)) {
@@ -160,7 +161,7 @@ static BOOL GetOverlayRamBounds(FSOverlayID ovyId, void ** start, void ** end) {
     }
 
     *start = info.header.ram_address;
-    *end = (char *)*start + (info.header.ram_size + info.header.bss_size);
+    *end   = (char *)*start + (info.header.ram_size + info.header.bss_size);
     return TRUE;
 }
 

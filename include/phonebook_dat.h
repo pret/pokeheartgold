@@ -11,4 +11,4 @@ u8 LoadPhoneBookEntryI(u16 idx, struct PhoneBookEntry *dest, HeapID heapId);
 int GetPhoneMessageGmm(int idx);
 BOOL sub_02095FF8(int x);
 
-#endif //POKEHEARTGOLD_PHONEBOOK_DAT_H
+#endif // POKEHEARTGOLD_PHONEBOOK_DAT_H
