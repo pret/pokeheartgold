@@ -1,4 +1,5 @@
 #include "global.h"
+
 #include "gymmick.h"
 
 void Save_Gymmick_Clear(Gymmick *gymmick) {

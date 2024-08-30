@@ -5,4 +5,4 @@ int TrainerCardMainApp_Init(OVY_MANAGER *manager, int *state);
 int TrainerCardMainApp_Main(OVY_MANAGER *manager, int *state);
 int TrainerCardMainApp_Exit(OVY_MANAGER *manager, int *state);
 
-#endif //POKEHEARTGOLD_OVERLAY_TRAINER_CARD_MAIN_H
+#endif // POKEHEARTGOLD_OVERLAY_TRAINER_CARD_MAIN_H

@@ -1,9 +1,9 @@
 #ifndef POKEHEARTGOLD_VOLTORB_FLIP_DATA_H
 #define POKEHEARTGOLD_VOLTORB_FLIP_DATA_H
 
+#include "bg_window.h"
 #include "unk_0200CF18.h"
 #include "unk_020183F0.h"
-#include "bg_window.h"
 
 typedef struct Ov122_021E9278 {
     u8 unk0[5][2];
@@ -29,4 +29,4 @@ extern const u8 sMainMenuMsgNos[];
 extern const u8 sGameInfoMsgNos[];
 extern const u8 ov122_021E9270[];
 
-#endif //POKEHEARTGOLD_VOLTORB_FLIP_DATA_H
+#endif // POKEHEARTGOLD_VOLTORB_FLIP_DATA_H

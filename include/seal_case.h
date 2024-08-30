@@ -2,22 +2,23 @@
 #define POKEHEARTGOLD_SEAL_CASE_H
 
 #include "constants/seals.h"
+
 #include "save.h"
 
 /*
  * Structure for seal in-use
  */
 typedef struct SEAL {
-    u8 kind;           // ID of the seal
-    u8 x;              // X coordinate on the capsule
-    u8 y;              // Y coordinate on the capsule
+    u8 kind; // ID of the seal
+    u8 x;    // X coordinate on the capsule
+    u8 y;    // Y coordinate on the capsule
 } SEAL;
 
 /*
  * Capsule that you put on your ball
  */
 typedef struct CAPSULE {
-    SEAL seals[MAX_SEALS_ON_CAPSULE];  // The seals on the capsule
+    SEAL seals[MAX_SEALS_ON_CAPSULE]; // The seals on the capsule
 } CAPSULE;
 
 /*
@@ -31,8 +32,8 @@ typedef struct SEALBAG {
  * Seal case and capsules from the save file
  */
 typedef struct SealCase {
-    CAPSULE capsules[MAX_CAPSULES];    // Available capsules
-    SEALBAG inventory;                 // Available seals to put on capsules
+    CAPSULE capsules[MAX_CAPSULES]; // Available capsules
+    SEALBAG inventory;              // Available seals to put on capsules
 } SealCase;
 
 /*
@@ -221,4 +222,4 @@ int SealCase_CountUniqueSeals(const SealCase *sealCase);
  */
 int SealCase_CountSealOccurrenceAnywhere(const SealCase *sealCase, int sealId);
 
-#endif //POKEHEARTGOLD_SEAL_CASE_H
+#endif // POKEHEARTGOLD_SEAL_CASE_H

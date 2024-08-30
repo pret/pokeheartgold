@@ -1,5 +1,6 @@
-#include "global.h"
 #include "pokewalker.h"
+
+#include "global.h"
 
 static BOOL pokewalkerHasBoxmon(POKEWALKER *pokeWalker);
 
@@ -75,7 +76,7 @@ BOOL Pokewalker_TryGetBoxMon(POKEWALKER *pokeWalker, BoxPokemon *boxMon) {
 static BOOL pokewalkerHasBoxmon(POKEWALKER *pokeWalker) {
     // This is an annoying hack to get it matching.
     // Should just memcmp with (BoxPokemon){}
-    u8 * ptr = (u8 *)pokeWalker;
+    u8 *ptr = (u8 *)pokeWalker;
     int i;
 
     for (i = 0; i < (int)sizeof(BoxPokemon); i++) {
@@ -105,7 +106,7 @@ BOOL Pokewalker_CourseIsUnlocked(POKEWALKER *pokeWalker, int courseNo) {
     if (courseNo >= 32) {
         return FALSE;
     }
-    return ((pokeWalker->unlockedCourses >> courseNo) & 1);
+    return (pokeWalker->unlockedCourses >> courseNo) & 1;
 }
 
 void Pokewalker_UnlockCourse(POKEWALKER *pokeWalker, int courseNo) {

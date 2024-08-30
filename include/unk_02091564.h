@@ -5,4 +5,4 @@
 
 void sub_02091574(void *a0);
 
-#endif //POKEHEARTGOLD_UNK_02091564_H
+#endif // POKEHEARTGOLD_UNK_02091564_H

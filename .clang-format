@@ -1,0 +1,103 @@
+---
+BasedOnStyle: WebKit
+Language: Cpp
+LineEnding: LF
+ColumnLimit: 0
+
+AlignAfterOpenBracket: DontAlign
+AlignConsecutiveAssignments:
+  Enabled: true
+AlignConsecutiveBitFields:
+  Enabled: true
+AlignConsecutiveDeclarations: None
+AlignConsecutiveMacros: Consecutive
+AlignTrailingComments: true
+AlignArrayOfStructures: Left
+
+AllowShortBlocksOnASingleLine: Empty
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortEnumsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+
+BinPackArguments: false
+BinPackParameters: false
+BitFieldColonSpacing: Both
+
+InsertBraces: true
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterCaseLabel: false
+  AfterClass: false
+  AfterControlStatement: Never
+  AfterEnum: false
+  AfterFunction: false
+  AfterStruct: false
+  AfterUnion: false
+  BeforeElse: false
+  BeforeWhile: false
+  IndentBraces: false
+  SplitEmptyFunction: true
+  SplitEmptyRecord: false
+
+AlwaysBreakAfterReturnType: None
+BreakBeforeBinaryOperators: All
+BreakBeforeTernaryOperators: true
+BreakStringLiterals: true
+
+DerivePointerAlignment: false
+PointerAlignment: Right
+ReferenceAlignment: Right
+
+ContinuationIndentWidth: 4
+IndentCaseBlocks: false
+IndentCaseLabels: false
+IndentGotoLabels: false
+IndentPPDirectives: None
+IndentWidth: 4
+
+SortIncludes: CaseSensitive
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex: '((<.+>)|("nitro/.*\.h"))'
+    Priority: 1
+  - Regex: '"global\.h"'
+    Priority: 2
+  - Regex: '"(consts|constants)/.*\.h"'
+    Priority: 3
+  - Regex: '"(struct_(decls|defs))/.*\.h"'
+    Priority: 4
+  - Regex: '"(constdata|res)/.*\.(h|naix)"'
+    Priority: 7
+  - Regex: '"[[:alnum:]_]+/.*\.(h|naix)"'
+    Priority: 5
+  - Regex: '"[[:alnum:]_]+\.(h|naix)"'
+    Priority: 6
+  - Regex: '.*'
+    Priority: 8
+
+InsertTrailingCommas: Wrapped
+InsertNewlineAtEOF: true
+KeepEmptyLinesAtEOF: false
+MaxEmptyLinesToKeep: 1
+RemoveParentheses: ReturnStatement
+RemoveSemicolon: true
+
+# QualifierAlignment: Custom
+# QualifierOrder: [static, inline, const, volatile, type]
+
+SpaceAfterCStyleCast: false
+SpaceAfterLogicalNot: false
+SpaceAroundPointerQualifiers: Default
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeCaseColon: false
+SpaceBeforeParens: ControlStatements
+SpaceBeforeSquareBrackets: false
+SpaceInEmptyBlock: false
+SpaceInEmptyParentheses: false
+SpacesInContainerLiterals: true
+SpacesInLineCommentPrefix:
+  Minimum: 1
+  Maximum: -1
+SpacesInParens: Never

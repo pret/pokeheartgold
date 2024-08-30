@@ -3,4 +3,4 @@
 
 void PrintErrorMessageAndReset(void);
 
-#endif //POKEHEARTGOLD_ERROR_MESSAGE_RESET_H
+#endif // POKEHEARTGOLD_ERROR_MESSAGE_RESET_H

@@ -1,8 +1,8 @@
 #ifndef POKEHEARTGOLD_VOLTORB_FLIP_INTERNAL_H
 #define POKEHEARTGOLD_VOLTORB_FLIP_INTERNAL_H
 
-#include "voltorb_flip/voltorb_flip_workflow.h"
 #include "voltorb_flip/voltorb_flip_work.h"
+#include "voltorb_flip/voltorb_flip_workflow.h"
 
 BOOL ov122_021E5BA8(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
 BOOL ov122_021E5BE4(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
@@ -47,4 +47,4 @@ BOOL ov122_021E6900(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
 BOOL AwaitQuitYesNoSelection(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
 BOOL ov122_021E69DC(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
 
-#endif //POKEHEARTGOLD_VOLTORB_FLIP_INTERNAL_H
+#endif // POKEHEARTGOLD_VOLTORB_FLIP_INTERNAL_H

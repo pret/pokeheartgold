@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_UNK_0203170C_H
 #define POKEHEARTGOLD_UNK_0203170C_H
 
+#include "save.h"
+
 typedef struct {
     char unk0[0x33];
     u8 unk33;
@@ -37,4 +39,4 @@ u32 sub_020317BC(SaveData *saveData, u32 a1);
 s32 sub_0203186C(SaveData *saveData, Unk020317F4 *a1);
 void sub_0203189C(SaveData *saveData, Unk020317F4 *a1);
 
-#endif //POKEHEARTGOLD_UNK_0203170C_H
+#endif // POKEHEARTGOLD_UNK_0203170C_H

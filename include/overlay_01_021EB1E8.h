@@ -5,4 +5,4 @@ typedef struct UnkStruct_ov01_021EB1E8 UnkStruct_ov01_021EB1E8;
 
 void ov01_021EB1E8(UnkStruct_ov01_021EB1E8 *a0);
 
-#endif //POKEHEARTGOLD_OVERLAY_01_021EB1E8_H
+#endif // POKEHEARTGOLD_OVERLAY_01_021EB1E8_H

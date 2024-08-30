@@ -1,8 +1,8 @@
 #ifndef POKEHEARTGOLD_FONT_TYPES_DEF_H
 #define POKEHEARTGOLD_FONT_TYPES_DEF_H
 
-#include "pm_string.h"
 #include "bg_window.h"
+#include "pm_string.h"
 
 typedef u8 FontID;
 struct FontData;
@@ -53,8 +53,8 @@ typedef struct TextPrinter {
     u8 subStructFields[7]; // x20
     u8 active;
     u8 state;
-    u8 textSpeedBottom:7; // x29
-    u8 textSpeedTop:1;
+    u8 textSpeedBottom : 7; // x29
+    u8 textSpeedTop    : 1;
     u8 delayCounter;
     u8 scrollDistance;
     u8 id;
@@ -70,4 +70,4 @@ typedef enum RenderResult {
     RENDER_UPDATE,
 } RenderResult;
 
-#endif //POKEHEARTGOLD_FONT_TYPES_DEF_H
+#endif // POKEHEARTGOLD_FONT_TYPES_DEF_H

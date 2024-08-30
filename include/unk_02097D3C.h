@@ -18,4 +18,4 @@ typedef struct UnkStruct_02097D48 {
 // pageScrollParam = 3 * scroll + page
 void FieldSystem_LaunchTask_ViewRankingsApp(FieldSystem *fieldSystem, u8 pageScrollParam, u8 cursorPos);
 
-#endif //POKEHEARTGOLD_UNK_02097D3C_H
+#endif // POKEHEARTGOLD_UNK_02097D3C_H

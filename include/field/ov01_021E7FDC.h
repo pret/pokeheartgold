@@ -31,4 +31,4 @@ void UnkFieldSpriteRenderer_ov01_021E7FDC_Init(UnkStruct_ov01_021E7FDC *a0, cons
 void UnkFieldSpriteRenderer_ov01_021E7FDC_Release(UnkStruct_ov01_021E7FDC *a0);
 Sprite *ov01_021E81F0(UnkStruct_ov01_021E7FDC *a0, const SpriteTemplate_ov01_021E81F0 *a1);
 
-#endif //POKEHEARTGOLD_FIELD_OV01_021E7FDC_H
+#endif // POKEHEARTGOLD_FIELD_OV01_021E7FDC_H

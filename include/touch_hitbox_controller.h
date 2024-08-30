@@ -6,7 +6,7 @@
 
 typedef struct TouchHitboxControllerTemplate {
     u8 unkCallbackNum;
-    u8 touchActive; // FIXME: bool8
+    u8 touchActive;      // FIXME: bool8
     u16 numFramesActive; // unused, only read in one place to make sure it doesn't overflow
 } TouchHitboxControllerTemplate;
 
@@ -24,4 +24,4 @@ TouchHitboxController *TouchHitboxController_Create(const TouchscreenHitbox *hit
 BOOL TouchHitboxController_IsTriggered(TouchHitboxController *controller);
 void TouchHitboxController_Destroy(TouchHitboxController *controller);
 
-#endif //POKEHEARTGOLD_TOUCH_HITBOX_CONTROLLER_H
+#endif // POKEHEARTGOLD_TOUCH_HITBOX_CONTROLLER_H

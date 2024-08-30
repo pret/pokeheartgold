@@ -4,11 +4,11 @@
 #include "bg_window.h"
 #include "pokemon_types_def.h"
 
-typedef struct WaitingIcon WaitingIcon; //todo: copy from pokediamond
+typedef struct WaitingIcon WaitingIcon; // todo: copy from pokediamond
 struct PokepicManager;
 
-void LoadUserFrameGfx1(BgConfig* bg_config, GFBgLayer layer, u16 baseTile, u8 palette_num, u8 frame, HeapID heapId);
-void DrawFrameAndWindow1(Window* window, BOOL dont_copy_to_vram, u16 baseTile, u8 palette_num);
+void LoadUserFrameGfx1(BgConfig *bg_config, GFBgLayer layer, u16 baseTile, u8 palette_num, u8 frame, HeapID heapId);
+void DrawFrameAndWindow1(Window *window, BOOL dont_copy_to_vram, u16 baseTile, u8 palette_num);
 void LoadUserFrameGfx2(BgConfig *bgConfig, GFBgLayer layer, u16 baseTile, u8 paletteNum, u8 frame, HeapID heapId);
 void DrawFrameAndWindow2(Window *window, BOOL dont_copy_to_vram, u16 baseTile, u8 palette_num);
 void ClearFrameAndWindow2(Window *window, BOOL dont_copy_to_vram);
@@ -20,4 +20,4 @@ struct PokepicManager *DrawPokemonPicFromMon(BgConfig *bgConfig, GFBgLayer layer
 void sub_0200E398(BgConfig *bgConfig, u32 a1, u32 a2, u32 a3, HeapID heapId);
 u32 sub_0200E3D8(void);
 
-#endif //POKEHEARTGOLD_RENDER_WINDOW_H
+#endif // POKEHEARTGOLD_RENDER_WINDOW_H

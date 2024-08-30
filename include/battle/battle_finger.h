@@ -2,9 +2,10 @@
 #define POKEHEARTGOLD_BATTLE_FINGER_H
 
 #include "battle/battle.h"
+
 #include "sys_task_api.h"
 
-//This file handles the finger that comes up during the catching tutorial
+// This file handles the finger that comes up during the catching tutorial
 
 typedef struct BattleFinger {
     void *unk0;

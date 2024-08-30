@@ -1,7 +1,9 @@
 #include "sound_chatot.h"
-#include "sound.h"
+
 #include "constants/species.h"
+
 #include "math_util.h"
+#include "sound.h"
 #include "sound_02004A44.h"
 #include "unk_02005D10.h"
 
@@ -15,8 +17,7 @@ BOOL ChatotSoundMain(void) {
                 sub_02006DB8();
                 return TRUE;
             }
-        }
-        else {
+        } else {
             sub_02006DB8();
             return TRUE;
         }
@@ -95,16 +96,16 @@ void sub_02006DB8() {
 BOOL Chatot_StartRecording(void) {
     MICAutoParam st0;
 
-    st0.type = MIC_SAMPLING_TYPE_SIGNED_8BIT;
+    st0.type   = MIC_SAMPLING_TYPE_SIGNED_8BIT;
     st0.buffer = sub_020059D8();
-    st0.size = 2000;
+    st0.size   = 2000;
     if ((st0.size & 0x1f) != 0) {
         st0.size &= ~0x1f;
     }
-    st0.rate = HW_CPU_CLOCK_ARM7 / 2000;
-    st0.loop_enable = 0;
+    st0.rate          = HW_CPU_CLOCK_ARM7 / 2000;
+    st0.loop_enable   = 0;
     st0.full_callback = 0;
-    st0.full_arg = 0;
+    st0.full_arg      = 0;
 
     return GF_MIC_StartAutoSampling(&st0);
 }
@@ -119,7 +120,7 @@ void Chatot_SaveRecording(SOUND_CHATOT *a0) {
 
 void sub_02006E3C(u8 a0) {
     u8 *r0 = GF_SdatGetAttrPtr(31);
-    *r0 = a0;
+    *r0    = a0;
 }
 
 void sub_02006E4C(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3) {
@@ -127,8 +128,7 @@ void sub_02006E4C(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3) {
     BOOL ret;
     if (a0 == 0) {
         ret = sub_02006D04(*r0, a1, a2, a3);
-    }
-    else {
+    } else {
         ret = sub_02006D04(a0, a1, a2, a3);
     }
 
@@ -143,8 +143,7 @@ BOOL sub_02006EA0(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3, u8 a4) {
     BOOL ret;
     if (a0 == 0) {
         ret = sub_02006D04(*r0, a1, a2, a3);
-    }
-    else {
+    } else {
         ret = sub_02006D04(a0, a1, a2, a3);
     }
 
@@ -165,8 +164,7 @@ u32 sub_02006EFC(SOUND_CHATOT *chatot) {
     s8 r0 = Chatot_GetData(chatot)[15];
     if (r0 < -30) {
         return 1;
-    }
-    else if (r0 >= 30 && r0 < 128) {
+    } else if (r0 >= 30 && r0 < 128) {
         return 2;
     }
 

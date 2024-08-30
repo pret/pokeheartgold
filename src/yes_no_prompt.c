@@ -1,10 +1,13 @@
-#include "global.h"
 #include "yes_no_prompt.h"
+
+#include "global.h"
+
 #include "constants/sndseq.h"
+
 #include "gf_gfx_loader.h"
+#include "sys_task_api.h"
 #include "system.h"
 #include "unk_02005D10.h"
-#include "sys_task_api.h"
 
 struct UnkStruct_02016C28 {
     BgConfig *bgConfig;
@@ -71,21 +74,21 @@ void YesNoPrompt_Destroy(YesNoPrompt *yesno) {
 
 static void YesNoPrompt_InitFromTemplate_Internal(YesNoPrompt *yesno, const YesNoPromptTemplate *template) {
     static const u8 dimensions[2][2] = {
-        {6,  4},
-        {16, 6},
+        { 6,  4 },
+        { 16, 6 },
     };
 
-    yesno->bgConfig = template->bgConfig;
-    yesno->bgId = template->bgId;
-    yesno->x = template->x;
-    yesno->y = template->y;
+    yesno->bgConfig    = template->bgConfig;
+    yesno->bgId        = template->bgId;
+    yesno->x           = template->x;
+    yesno->y           = template->y;
     yesno->inTouchMode = FALSE;
     if (template->initialCursorPos < 2) {
         yesno->cursorPos = template->initialCursorPos;
     } else {
         yesno->cursorPos = 0;
     }
-    yesno->width = dimensions[template->shapeParam][0];
+    yesno->width  = dimensions[template->shapeParam][0];
     yesno->height = dimensions[template->shapeParam][1];
     YesNoPrompt_InitPixelDataFromTemplate(yesno, template);
     YesNoPrompt_InitPlttFromTemplate(yesno, template);
@@ -112,7 +115,7 @@ void YesNoPrompt_InitFromTemplateWithPalette(YesNoPrompt *yesno, const YesNoProm
 
 YesNoResponse YesNoPrompt_HandleInputForSave(YesNoPrompt *yesno) {
     yesno->lastTouchEvent = 8;
-    YesNoResponse result = YesNoPrompt_HandleInput(yesno);
+    YesNoResponse result  = YesNoPrompt_HandleInput(yesno);
     if (result == YESNORESPONSE_WAIT && yesno->lastTouchEvent == 0) {
         if (yesno->result == 0) {
             result = YESNORESPONSE_YES_TOUCH;
@@ -218,8 +221,8 @@ void YesNoPrompt_SetIgnoreTouch(YesNoPrompt *yesno, int a1) {
 static void YesNoPrompt_Init(YesNoPrompt *yesno, HeapID heapId) {
     memset(yesno, 0, sizeof(YesNoPrompt));
     yesno->buttonsAreInit = 0;
-    yesno->heapId = heapId;
-    yesno->result = 3;
+    yesno->heapId         = heapId;
+    yesno->result         = 3;
     yesno->lastTouchEvent = 8;
 }
 
@@ -240,14 +243,14 @@ static void YesNoPrompt_InitButtonsFromTemplate(YesNoPrompt *yesno, const YesNoP
         yesno->unk68[i] = (i + 1) * FX32_ONE;
     }
 
-    sp4.bgConfig = yesno->bgConfig;
-    sp4.bgId = yesno->bgId;
+    sp4.bgConfig         = yesno->bgConfig;
+    sp4.bgId             = yesno->bgId;
     sp4.screenDataNarcId = NARC_system_touch_subwindow;
-    sp4.baseTile = template->tileStart;
-    sp4.plttNum = template->plttSlot;
-    sp4.unk4 = yesno->unk68;
-    sp4.unk13 = 2;
-    sp4.x = yesno->x;
+    sp4.baseTile         = template->tileStart;
+    sp4.plttNum          = template->plttSlot;
+    sp4.unk4             = yesno->unk68;
+    sp4.unk13            = 2;
+    sp4.x                = yesno->x;
 
     u8 baseFileNo;
     if (template->shapeParam) {
@@ -269,10 +272,10 @@ static void YesNoPrompt_InitButtonsFromTemplate(YesNoPrompt *yesno, const YesNoP
 static void SetupTouchHitboxesController(YesNoPrompt *yesno, const YesNoPromptTemplate *template) {
     int i;
     for (i = 0; i < 2; ++i) {
-        yesno->hitboxes[i].rect.top = (yesno->y * 8) + (i * yesno->height * 8);
-        yesno->hitboxes[i].rect.left = (yesno->x * 8);
+        yesno->hitboxes[i].rect.top    = (yesno->y * 8) + (i * yesno->height * 8);
+        yesno->hitboxes[i].rect.left   = (yesno->x * 8);
         yesno->hitboxes[i].rect.bottom = (yesno->y * 8) + (i * yesno->height * 8) + (yesno->height * 8);
-        yesno->hitboxes[i].rect.right = (yesno->x * 8) + (yesno->width * 8);
+        yesno->hitboxes[i].rect.right  = (yesno->x * 8) + (yesno->width * 8);
     }
     yesno->touchHitboxController = TouchHitboxController_Create(yesno->hitboxes, 2, (TouchHitboxControllerCallback)YesNoButton_TouchHitboxCB, yesno, yesno->heapId);
 }
@@ -280,7 +283,7 @@ static void SetupTouchHitboxesController(YesNoPrompt *yesno, const YesNoPromptTe
 static void YesNoButton_TouchHitboxCB(u32 index, u32 event, YesNoPrompt *yesno) {
     yesno->lastTouchEvent = event;
     if (event == 0) {
-        yesno->result = index;
+        yesno->result         = index;
         YesNoPromptButton *r3 = &yesno->buttons[index];
         ScreenPushGraphicsRect(r3->bgConfig, r3->bgId, r3->screenDataPtrs[1], r3->x, r3->y);
         PlaySE(SEQ_SE_DP_BUTTON9);
@@ -289,13 +292,13 @@ static void YesNoButton_TouchHitboxCB(u32 index, u32 event, YesNoPrompt *yesno) 
 
 static void YesNoPromptButton_Draw(YesNoPromptButton *button, const struct UnkStruct_02016C28 *arg, HeapID heapId) {
     struct YesNoPromptSubstruct00_18 *r2 = &button->unk18;
-    r2->unk0 = arg->unk4;
-    r2->unk4 = arg->unk13;
-    r2->unk8 = 0;
-    button->bgConfig = arg->bgConfig;
-    button->bgId = arg->bgId;
-    button->x = arg->x;
-    button->y = arg->y;
+    r2->unk0                             = arg->unk4;
+    r2->unk4                             = arg->unk13;
+    r2->unk8                             = 0;
+    button->bgConfig                     = arg->bgConfig;
+    button->bgId                         = arg->bgId;
+    button->x                            = arg->x;
+    button->y                            = arg->y;
     for (int i = 0; i < 2; ++i) {
         button->scrnDataRaw[i] = GfGfxLoader_GetScrnData((NarcId)arg->screenDataNarcId, arg->scrnDataFileNo[i], TRUE, &button->screenDataPtrs[i], heapId);
         ScreenSetBaseTile(button->screenDataPtrs[i], arg->baseTile);
@@ -318,9 +321,9 @@ static SysTask *LoadPixelDataFromNarcAndScheduleTransfer(NarcId narcId, s32 file
     struct SysTaskState_02016DBC *buffer = (struct SysTaskState_02016DBC *)AllocFromHeap(heapId, sizeof(struct SysTaskState_02016DBC));
     memset(buffer, 0, sizeof(struct SysTaskState_02016DBC));
     buffer->charDataRaw = GfGfxLoader_GetCharData(narcId, fileId, TRUE, &buffer->charData, heapId);
-    buffer->bgConfig = bgConfig;
-    buffer->bgId = bgId;
-    buffer->tileStart = tileStart;
+    buffer->bgConfig    = bgConfig;
+    buffer->bgId        = bgId;
+    buffer->tileStart   = tileStart;
     return SysTask_CreateOnVWaitQueue(SysTask_LoadBGPixels, buffer, 0x80);
 }
 
@@ -328,9 +331,9 @@ static SysTask *LoadPlttFromNarcAndScheduleTransfer(NarcId narcId, s32 fileId, i
     struct SysTaskState_02016DF8 *buffer = (struct SysTaskState_02016DF8 *)AllocFromHeap(heapId, sizeof(struct SysTaskState_02016DF8));
     memset(buffer, 0, sizeof(struct SysTaskState_02016DF8));
     buffer->plttDataRaw = GfGfxLoader_GetPlttData(narcId, fileId, &buffer->plttData, heapId);
-    buffer->bgId = bgId;
-    buffer->offset = offset;
-    buffer->size = size;
+    buffer->bgId        = bgId;
+    buffer->offset      = offset;
+    buffer->size        = size;
     return SysTask_CreateOnVWaitQueue(SysTask_LoadBGPltt, buffer, 0x80);
 }
 

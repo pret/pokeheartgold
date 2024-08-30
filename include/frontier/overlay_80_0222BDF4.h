@@ -1,8 +1,9 @@
 #ifndef POKEHEARTGOLD_OVERLAY_80_0222BDF4_H
 #define POKEHEARTGOLD_OVERLAY_80_0222BDF4_H
 
-#include "message_format.h"
 #include "frontier/frontier_system.h"
+
+#include "message_format.h"
 
 typedef struct FrontierContext {
     FrontierSystem *frontierSystem;

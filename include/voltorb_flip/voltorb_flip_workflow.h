@@ -74,4 +74,4 @@ int CurrentWorkflow(WorkflowEngine *);
 int CurrentTaskState(WorkflowEngine *);
 int IncrementTaskState(WorkflowEngine *);
 
-#endif //POKEHEARTGOLD_VOLTORB_FLIP_WORKFLOW_H
+#endif // POKEHEARTGOLD_VOLTORB_FLIP_WORKFLOW_H

@@ -5,4 +5,4 @@
 
 void FieldSystem_Init(OVY_MANAGER *man, FieldSystem *fieldSystem);
 
-#endif //POKEHEARTGOLD_OVERLAY_124_H
+#endif // POKEHEARTGOLD_OVERLAY_124_H

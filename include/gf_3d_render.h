@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_GF_3D_RENDER_H
 
 #include "global.h"
+
 #include "heap.h"
 
 BOOL GF3dRender_ResTexIsLoaded(NNSG3dResTex *tex);

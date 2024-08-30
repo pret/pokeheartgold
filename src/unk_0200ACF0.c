@@ -1,5 +1,7 @@
-#include "global.h"
 #include "unk_0200ACF0.h"
+
+#include "global.h"
+
 #include "obj_char_transfer.h"
 #include "unk_02022588.h"
 
@@ -9,9 +11,9 @@ BOOL sub_0200ACF0(GF_2DGfxResObj *obj) {
 
     ObjCharTransferTaskTemplate template;
     template.charData = GF2DGfxResObj_GetCharDataPtr(obj);
-    template.vram = GF2DGfxResObj_GetLoadAddress(obj);
-    template.id = GF2DGfxResObj_GetResID(obj);
-    template.atEnd = FALSE;
+    template.vram     = GF2DGfxResObj_GetLoadAddress(obj);
+    template.id       = GF2DGfxResObj_GetResID(obj);
+    template.atEnd    = FALSE;
     return ObjCharTransfer_CreateTaskAndDoTransferFromTemplate(&template);
 }
 
@@ -30,9 +32,9 @@ BOOL sub_0200AD64(GF_2DGfxResObj *obj) {
 
     ObjCharTransferTaskTemplate template;
     template.charData = GF2DGfxResObj_GetCharDataPtr(obj);
-    template.vram = GF2DGfxResObj_GetLoadAddress(obj);
-    template.id = GF2DGfxResObj_GetResID(obj);
-    template.atEnd = FALSE;
+    template.vram     = GF2DGfxResObj_GetLoadAddress(obj);
+    template.id       = GF2DGfxResObj_GetResID(obj);
+    template.atEnd    = FALSE;
     return ObjCharTransfer_CreateTaskAndDoTransferFromTemplate_UpdateMappingTypeFromHW(&template);
 }
 
@@ -42,9 +44,9 @@ BOOL sub_0200ADA4(GF_2DGfxResObj *obj) {
 
     ObjCharTransferTaskTemplate template;
     template.charData = GF2DGfxResObj_GetCharDataPtr(obj);
-    template.vram = GF2DGfxResObj_GetLoadAddress(obj);
-    template.id = GF2DGfxResObj_GetResID(obj);
-    template.atEnd = TRUE;
+    template.vram     = GF2DGfxResObj_GetLoadAddress(obj);
+    template.id       = GF2DGfxResObj_GetResID(obj);
+    template.atEnd    = TRUE;
     return ObjCharTransfer_CreateTaskAndDoTransferFromTemplate(&template);
 }
 
@@ -63,9 +65,9 @@ BOOL sub_0200AE18(GF_2DGfxResObj *obj) {
 
     ObjCharTransferTaskTemplate template;
     template.charData = GF2DGfxResObj_GetCharDataPtr(obj);
-    template.vram = GF2DGfxResObj_GetLoadAddress(obj);
-    template.id = GF2DGfxResObj_GetResID(obj);
-    template.atEnd = TRUE;
+    template.vram     = GF2DGfxResObj_GetLoadAddress(obj);
+    template.id       = GF2DGfxResObj_GetResID(obj);
+    template.atEnd    = TRUE;
     return ObjCharTransfer_CreateTaskAndDoTransferFromTemplate_UpdateMappingTypeFromHW(&template);
 }
 
@@ -81,7 +83,7 @@ void sub_0200AE58(GF_2DGfxResObjList *charResObjList) {
 void sub_0200AE8C(GF_2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
 
-    int id = GF2DGfxResObj_GetResID(obj);
+    int id                        = GF2DGfxResObj_GetResID(obj);
     NNSG2dCharacterData *charData = GF2DGfxResObj_GetCharDataPtr(obj);
     ObjCharTransfer_ReplaceGraphicsFromChardataByResID(id, charData);
 }
@@ -117,9 +119,9 @@ NNSG2dImageProxy *sub_0200AF24(GF_2DGfxResObj *charResObj, GF_2DGfxResObj *cellR
     GF_ASSERT(cellResObj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(cellResObj) == GF_GFX_RES_TYPE_CELL);
 
-    int resID = GF2DGfxResObj_GetResID(charResObj);
+    int resID                    = GF2DGfxResObj_GetResID(charResObj);
     NNSG2dCellDataBank *cellData = GF2DGfxResObj_GetCellDataPtr(cellResObj);
-    ret = ObjCharTransfer_ResizeTaskByResID_GetProxyPtr(resID, cellData->pVramTransferData->szByteMax);
+    ret                          = ObjCharTransfer_ResizeTaskByResID_GetProxyPtr(resID, cellData->pVramTransferData->szByteMax);
     if (ret == NULL) {
         ret = ObjCharTransfer_CopyTransferTaskByProxyPtr(ObjCharTransfer_GetProxyPtrByResID(resID));
     }
@@ -137,9 +139,9 @@ BOOL sub_0200AF94(GF_2DGfxResObj *plttResObj) {
 
     UnkStruct_02022660 template;
     template.plttData = GF2DGfxResObj_GetPlttDataPtr(plttResObj);
-    template.vram = GF2DGfxResObj_GetLoadAddress(plttResObj);
-    template.id = GF2DGfxResObj_GetResID(plttResObj);
-    template.plttNum = GF2DGfxResObj_GetPlttNum(plttResObj);
+    template.vram     = GF2DGfxResObj_GetLoadAddress(plttResObj);
+    template.id       = GF2DGfxResObj_GetResID(plttResObj);
+    template.plttNum  = GF2DGfxResObj_GetPlttNum(plttResObj);
     return sub_02022660(&template);
 }
 
@@ -158,9 +160,9 @@ BOOL sub_0200B00C(GF_2DGfxResObj *plttResObj) {
 
     UnkStruct_02022660 template;
     template.plttData = GF2DGfxResObj_GetPlttDataPtr(plttResObj);
-    template.vram = GF2DGfxResObj_GetLoadAddress(plttResObj);
-    template.id = GF2DGfxResObj_GetResID(plttResObj);
-    template.plttNum = GF2DGfxResObj_GetPlttNum(plttResObj);
+    template.vram     = GF2DGfxResObj_GetLoadAddress(plttResObj);
+    template.id       = GF2DGfxResObj_GetResID(plttResObj);
+    template.plttNum  = GF2DGfxResObj_GetPlttNum(plttResObj);
     return sub_020226A4(&template);
 }
 
@@ -175,7 +177,7 @@ void sub_0200B050(GF_2DGfxResObjList *plttResObjList) {
 
 void sub_0200B084(GF_2DGfxResObj *plttResObj) {
     GF_ASSERT(plttResObj != NULL);
-    int resID = GF2DGfxResObj_GetResID(plttResObj);
+    int resID                   = GF2DGfxResObj_GetResID(plttResObj);
     NNSG2dPaletteData *plttData = GF2DGfxResObj_GetPlttDataPtr(plttResObj);
     sub_020226E4(resID, plttData);
 }
@@ -210,7 +212,7 @@ NNSG2dImagePaletteProxy *sub_0200B0F8(GF_2DGfxResObj *plttResObj, NNSG2dImagePro
 
 int sub_0200B12C(GF_2DGfxResObj *plttResObj, NNS_G2D_VRAM_TYPE vram) {
     NNSG2dImagePaletteProxy *plttProxy = sub_0200B0F8(plttResObj, NULL);
-    int location = NNS_G2dGetImagePaletteLocation(plttProxy, vram);
+    int location                       = NNS_G2dGetImagePaletteLocation(plttProxy, vram);
     if (location != -1) {
         location /= 32;
     }

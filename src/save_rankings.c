@@ -1,15 +1,18 @@
+#include "save_rankings.h"
+
+#include "global.h"
+
+#include "constants/game_stats.h"
+#include "constants/ranking.h"
+
 #include "friend_group.h"
 #include "game_stats.h"
-#include "global.h"
 #include "player_data.h"
 #include "save.h"
 #include "save_frontier.h"
 #include "string_util.h"
 #include "unk_0202C730.h"
 #include "unk_02030A98.h"
-#include "save_rankings.h"
-#include "constants/game_stats.h"
-#include "constants/ranking.h"
 
 struct SaveRankingsEntry {
     int groupId;
@@ -41,17 +44,17 @@ static void SaveRankings_GetSortedScoped(SaveRankings *saveRankings, int groupId
 
 static const u8 sPageOffsets[][2] = {
     { RANKINGS_RECORD_BATTLE_TOWER_COUNT, RANKINGS_RECORD_BATTLE_TOWER_BEGIN },
-    { RANKINGS_RECORD_POKEMON_COUNT, RANKINGS_RECORD_POKEMON_BEGIN },
-    { RANKINGS_RECORD_CONTEST_COUNT, RANKINGS_RECORD_CONTEST_BEGIN },
+    { RANKINGS_RECORD_POKEMON_COUNT,      RANKINGS_RECORD_POKEMON_BEGIN      },
+    { RANKINGS_RECORD_CONTEST_COUNT,      RANKINGS_RECORD_CONTEST_BEGIN      },
 };
 
 static const int sStatIDs[] = {
     // Battle Tower
-    0,  // Battle Tower singles
-    2,  // Battle Tower doubles
-    4,  // Battle Tower multi with NPC partner
-    6,  // Battle Tower multi with friend
-    8,  // Battle Tower WiFi
+    0, // Battle Tower singles
+    2, // Battle Tower doubles
+    4, // Battle Tower multi with NPC partner
+    6, // Battle Tower multi with friend
+    8, // Battle Tower WiFi
     GAME_STAT_BATTLE_TOWER_WIN_COUNT,
 
     // Adventure
@@ -76,7 +79,7 @@ u8 RankingsViewSys_GetFirstRecordIndexOnPage(int page) {
 
 static void SaveRankingsEntry_Init(SaveRankingsEntry *entry) {
     entry->groupId = 0;
-    entry->stat = 0;
+    entry->stat    = 0;
     StringFillEOS(entry->playerName, PLAYER_NAME_LENGTH + 1);
     SaveSubstruct_UpdateCRC(SAVE_RANKINGS);
 }
@@ -124,13 +127,13 @@ u32 Save_Rankings_GetMixingSize(void) {
 static u32 *Save_RankingSys_GetPlayerStats(SaveData *saveData, HeapID heapId) {
     int i;
     u32 val;
-    GAME_STATS *gameStats;
+    GameStats *gameStats;
     FRONTIER_SAVE *frontierSave;
     u32 *ret;
 
-    gameStats = Save_GameStats_Get(saveData);
+    gameStats    = Save_GameStats_Get(saveData);
     frontierSave = Save_Frontier_GetStatic(saveData);
-    ret = AllocFromHeapAtEnd(heapId, RANKINGS_COUNT * sizeof(u32));
+    ret          = AllocFromHeapAtEnd(heapId, RANKINGS_COUNT * sizeof(u32));
 
     for (i = 0; i < RANKINGS_COUNT; ++i) {
         switch (i) {
@@ -179,11 +182,11 @@ SaveRankingsEntry *Save_GetPlayerMixingRankingEntry(SaveData *saveData, HeapID h
     PlayerProfile *profile;
 
     profile = Save_PlayerData_GetProfileAddr(saveData);
-    ret = AllocFromHeapAtEnd(heapId, RANKINGS_COUNT * sizeof(SaveRankingsEntry));
+    ret     = AllocFromHeapAtEnd(heapId, RANKINGS_COUNT * sizeof(SaveRankingsEntry));
     MI_CpuClear8(ret, RANKINGS_COUNT * sizeof(SaveRankingsEntry));
     groupId = Save_FriendGroup_GetGroupId(Save_FriendGroup_Get(saveData), 1);
-    name = PlayerProfile_GetPlayerName_NewString(profile, heapId);
-    tmp = Save_RankingSys_GetPlayerStats(saveData, heapId);
+    name    = PlayerProfile_GetPlayerName_NewString(profile, heapId);
+    tmp     = Save_RankingSys_GetPlayerStats(saveData, heapId);
 
     for (i = 0; i < RANKINGS_COUNT; ++i) {
         ret[i].groupId = groupId;
@@ -259,7 +262,7 @@ static void SaveRankings_GetSorted(SaveRankings *saveRankings, SaveRankingsSortB
     for (i = 0; i < sortBuffer->rankingsTotalCount - 1; ++i) {
         for (j = sortBuffer->rankingsTotalCount - 1; j > i; --j) {
             if (sortBuffer->rankings[i]->stat < sortBuffer->rankings[j]->stat) {
-                SaveRankingsEntry *tmp = sortBuffer->rankings[i];
+                SaveRankingsEntry *tmp  = sortBuffer->rankings[i];
                 sortBuffer->rankings[i] = sortBuffer->rankings[j];
                 sortBuffer->rankings[j] = tmp;
             }
@@ -288,8 +291,8 @@ void Save_UpdateRankingsFromMixing(SaveData *saveData, u8 playerIdx, u8 countIn,
     SaveRankings *saveRankings;
 
     saveRankings = Save_Rankings_Get(saveData);
-    groupId = Save_FriendGroup_GetGroupId(Save_FriendGroup_Get(saveData), 1);
-    cnt = 0;
+    groupId      = Save_FriendGroup_GetGroupId(Save_FriendGroup_Get(saveData), 1);
+    cnt          = 0;
     for (i = 0; i < countIn; ++i) {
         if (i != playerIdx && ppEntries[i] != NULL) {
             filteredEntries[cnt++] = ppEntries[i];
@@ -312,15 +315,15 @@ ViewRankingsPage *Save_GetPlayerViewRankingPage(SaveData *saveData, int page, He
     PlayerProfile *profile;
 
     profile = Save_PlayerData_GetProfileAddr(saveData);
-    ret = AllocFromHeap(heapId, sizeof(ViewRankingsPage));
+    ret     = AllocFromHeap(heapId, sizeof(ViewRankingsPage));
     MI_CpuClear8(ret, sizeof(ViewRankingsPage));
-    groupId = Save_FriendGroup_GetGroupId(Save_FriendGroup_Get(saveData), 1);
-    tmp = Save_RankingSys_GetPlayerStats(saveData, heapId);
+    groupId    = Save_FriendGroup_GetGroupId(Save_FriendGroup_Get(saveData), 1);
+    tmp        = Save_RankingSys_GetPlayerStats(saveData, heapId);
     ret->count = RankingsViewSys_GetNumRecordsPerPage(page);
     pageOffset = RankingsViewSys_GetFirstRecordIndexOnPage(page);
     for (i = 0; i < ret->count; ++i) {
-        ret->entries[i].groupId = groupId;
-        ret->entries[i].stat = tmp[i + pageOffset];
+        ret->entries[i].groupId    = groupId;
+        ret->entries[i].stat       = tmp[i + pageOffset];
         ret->entries[i].playerName = PlayerProfile_GetPlayerName_NewString(profile, heapId);
     }
     FreeToHeap(tmp);
@@ -335,8 +338,8 @@ ViewRankingsPage *Save_GetReceivedViewRankingPage(SaveRankings *saveRankings, in
     MI_CpuClear8(ret, sizeof(ViewRankingsPage));
     for (i = 0; i < RANKINGS_PER_STAT; ++i) {
         if (SaveRankingsEntry_IsInit(&saveRankings->array[page][i])) {
-            ret->entries[ret->count].groupId = saveRankings->array[page][i].groupId;
-            ret->entries[ret->count].stat = saveRankings->array[page][i].stat;
+            ret->entries[ret->count].groupId    = saveRankings->array[page][i].groupId;
+            ret->entries[ret->count].stat       = saveRankings->array[page][i].stat;
             ret->entries[ret->count].playerName = String_New(PLAYER_NAME_LENGTH + 1, heapId);
             CopyU16ArrayToString(ret->entries[ret->count].playerName, saveRankings->array[page][i].playerName);
             ++ret->count;

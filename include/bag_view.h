@@ -1,11 +1,11 @@
 #ifndef POKEHEARTGOLD_BAG_VIEW_H
 #define POKEHEARTGOLD_BAG_VIEW_H
 
+#include "bag_cursor.h"
 #include "field_use_item.h"
 #include "item.h"
-#include "save.h"
-#include "bag_cursor.h"
 #include "player_data.h"
+#include "save.h"
 
 /*
  * BagView *BagView_New(u8 heapId)
@@ -87,4 +87,4 @@ BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, String *dest, u16 
  */
 void GetItemUseErrorMessage(PlayerProfile *playerProfile, String *dest, u16 itemId, enum ItemUseError code, HeapID heapId);
 
-#endif //POKEHEARTGOLD_BAG_VIEW_H
+#endif // POKEHEARTGOLD_BAG_VIEW_H

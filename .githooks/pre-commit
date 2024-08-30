@@ -1,0 +1,9 @@
+#!/bin/sh
+# Redirect output to stderr.
+exec 1>&2
+
+# Run clang-format on staged files; abort the commit if any files are changed
+if ! git clang-format --extensions c,cpp,h,hpp ; then
+    echo "linting made changes to source files; aborting commit"
+    exit 1
+fi

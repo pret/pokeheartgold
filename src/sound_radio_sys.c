@@ -1,8 +1,8 @@
 #include "sound.h"
 #include "sound_radio.h"
 
-int sRadioSeqNo = 0;
-NNSSndHandle sSndHandle = {NULL};
+int sRadioSeqNo         = 0;
+NNSSndHandle sSndHandle = { NULL };
 
 static void StopMusic(void) {
     GF_SndStopPlayerField();

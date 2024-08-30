@@ -6,11 +6,11 @@
 
 typedef struct PalPadArgs {
     SaveData *saveData;
-    BOOL *unk4;
+    BOOL *menuInputStatePtr;
 } PalPadArgs;
 
 BOOL PalPad_Init(OVY_MANAGER *man, int *state);
 BOOL PalPad_Main(OVY_MANAGER *man, int *state);
 BOOL PalPad_Exit(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_OVY_43_H
+#endif // POKEHEARTGOLD_OVY_43_H

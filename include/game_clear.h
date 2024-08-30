@@ -6,4 +6,4 @@
 BOOL sub_0205298C(TaskManager *taskman);
 void CallTask_GameClear(TaskManager *taskman, u16 vsTrainerRed);
 
-#endif //POKEHEARTGOLD_GAME_CLEAR_H
+#endif // POKEHEARTGOLD_GAME_CLEAR_H

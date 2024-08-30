@@ -1,6 +1,9 @@
-#include "constants/items.h"
-#include "global.h"
 #include "battle_regulation.h"
+
+#include "global.h"
+
+#include "constants/items.h"
+
 #include "dex_mon_measures.h"
 #include "party.h"
 #include "pokemon.h"
@@ -98,7 +101,7 @@ int sub_02074A6C(LinkBattleRuleset *a0, Party *party, PokedexData *pokedex, u8 *
     }
 
     for (i = 0; i < PARTY_SIZE; ++i) {
-        species[i] = SPECIES_NONE;
+        species[i]   = SPECIES_NONE;
         heldItems[i] = ITEM_NONE;
         if (selectedOrder[i] != 0) {
             ++numMons;
@@ -115,7 +118,7 @@ int sub_02074A6C(LinkBattleRuleset *a0, Party *party, PokedexData *pokedex, u8 *
             if (!sub_0207496C(a0, mon, pokedex)) {
                 return 5;
             }
-            species[i] = GetMonData(mon, MON_DATA_SPECIES, NULL);
+            species[i]   = GetMonData(mon, MON_DATA_SPECIES, NULL);
             heldItems[i] = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
             totalLevel += GetMonData(mon, MON_DATA_LEVEL, NULL);
         }
@@ -177,7 +180,7 @@ static BOOL sub_02074C50(u16 *species, u16 *levels, u16 *visited, int numMonsLef
     int cur_numMonsLeft = numMonsLeft;
     int i;
     int cur_totalLevel = totalLevel;
-    if (species[curIdx] != 0 && visited[curIdx]== 0) {
+    if (species[curIdx] != 0 && visited[curIdx] == 0) {
         cur_numMonsLeft -= levels[curIdx];
         if (cur_numMonsLeft < 0) {
             return FALSE;
@@ -209,13 +212,13 @@ int sub_02074CD0(LinkBattleRuleset *ruleset, Party *party, PokedexData *pokedex)
     int numLegalMons;
     int numBannedMons;
 
-    partyCount = Party_GetCount(party);
+    partyCount   = Party_GetCount(party);
     numLegalMons = partyCount;
     MI_CpuClear8(sp30, sizeof(sp30));
     for (i = 0; i < partyCount; ++i) {
-        mon = Party_GetMonByIndex(party, i);
+        mon        = Party_GetMonByIndex(party, i);
         species[i] = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        levels[i] = GetMonData(mon, MON_DATA_LEVEL, NULL);
+        levels[i]  = GetMonData(mon, MON_DATA_LEVEL, NULL);
         if (!sub_0207496C(ruleset, mon, pokedex)) {
             species[i] = SPECIES_NONE;
             --numLegalMons;

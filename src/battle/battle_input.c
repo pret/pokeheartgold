@@ -1,5 +1,7 @@
-#include "global.h"
 #include "battle/battle_input.h"
+
+#include "global.h"
+
 #include "gf_gfx_loader.h"
 #include "heap.h"
 #include "palette.h"

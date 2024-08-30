@@ -23,21 +23,21 @@ typedef enum PaletteBufferId {
     PLTTBUF_MAX,
 } PaletteBufferId;
 
-#define PLTTBUF_MAIN_BG_F                      (1<<PLTTBUF_MAIN_BG)
-#define PLTTBUF_SUB_BG_F                       (1<<PLTTBUF_SUB_BG)
-#define PLTTBUF_MAIN_OBJ_F                     (1<<PLTTBUF_MAIN_OBJ)
-#define PLTTBUF_SUB_OBJ_F                      (1<<PLTTBUF_SUB_OBJ)
-#define PLTTBUF_MAIN_EX_BG_0_F                 (1<<PLTTBUF_MAIN_EX_BG_0)
-#define PLTTBUF_MAIN_EX_BG_1_F                 (1<<PLTTBUF_MAIN_EX_BG_1)
-#define PLTTBUF_MAIN_EX_BG_2_F                 (1<<PLTTBUF_MAIN_EX_BG_2)
-#define PLTTBUF_MAIN_EX_BG_3_F                 (1<<PLTTBUF_MAIN_EX_BG_3)
-#define PLTTBUF_SUB_EX_BG_0_F                  (1<<PLTTBUF_SUB_EX_BG_0)
-#define PLTTBUF_SUB_EX_BG_1_F                  (1<<PLTTBUF_SUB_EX_BG_1)
-#define PLTTBUF_SUB_EX_BG_2_F                  (1<<PLTTBUF_SUB_EX_BG_2)
-#define PLTTBUF_SUB_EX_BG_3_F                  (1<<PLTTBUF_SUB_EX_BG_3)
-#define PLTTBUF_MAIN_EX_OBJ_F                  (1<<PLTTBUF_MAIN_EX_OBJ)
-#define PLTTBUF_SUB_EX_OBJ_F                   (1<<PLTTBUF_SUB_EX_OBJ)
-#define PLTTBUF_ALL_F                          ((1<<PLTTBUF_MAX)-1)
+#define PLTTBUF_MAIN_BG_F      (1 << PLTTBUF_MAIN_BG)
+#define PLTTBUF_SUB_BG_F       (1 << PLTTBUF_SUB_BG)
+#define PLTTBUF_MAIN_OBJ_F     (1 << PLTTBUF_MAIN_OBJ)
+#define PLTTBUF_SUB_OBJ_F      (1 << PLTTBUF_SUB_OBJ)
+#define PLTTBUF_MAIN_EX_BG_0_F (1 << PLTTBUF_MAIN_EX_BG_0)
+#define PLTTBUF_MAIN_EX_BG_1_F (1 << PLTTBUF_MAIN_EX_BG_1)
+#define PLTTBUF_MAIN_EX_BG_2_F (1 << PLTTBUF_MAIN_EX_BG_2)
+#define PLTTBUF_MAIN_EX_BG_3_F (1 << PLTTBUF_MAIN_EX_BG_3)
+#define PLTTBUF_SUB_EX_BG_0_F  (1 << PLTTBUF_SUB_EX_BG_0)
+#define PLTTBUF_SUB_EX_BG_1_F  (1 << PLTTBUF_SUB_EX_BG_1)
+#define PLTTBUF_SUB_EX_BG_2_F  (1 << PLTTBUF_SUB_EX_BG_2)
+#define PLTTBUF_SUB_EX_BG_3_F  (1 << PLTTBUF_SUB_EX_BG_3)
+#define PLTTBUF_MAIN_EX_OBJ_F  (1 << PLTTBUF_MAIN_EX_OBJ)
+#define PLTTBUF_SUB_EX_OBJ_F   (1 << PLTTBUF_SUB_EX_OBJ)
+#define PLTTBUF_ALL_F          ((1 << PLTTBUF_MAX) - 1)
 
 typedef enum PaletteSelector {
     PLTTSEL_TRANSPARENT,
@@ -46,9 +46,9 @@ typedef enum PaletteSelector {
 } PaletteSelector;
 
 typedef struct RgbColor {
-    u16 r : 5;
-    u16 g : 5;
-    u16 b : 5;
+    u16 r     : 5;
+    u16 g     : 5;
+    u16 b     : 5;
     u16 dummy : 1;
 } RgbColor;
 
@@ -56,14 +56,14 @@ typedef struct RgbColor {
 
 typedef struct SelectedPaletteData {
     u16 opaqueBit;
-    u16 wait : 6;
-    u16 cur : 5;
-    u16 end : 5;
-    u16 nextRGB : 15;
-    u16 sign : 1; // 0 - increase, 1 - decrease
-    u16 step : 4;
+    u16 wait     : 6;
+    u16 cur      : 5;
+    u16 end      : 5;
+    u16 nextRGB  : 15;
+    u16 sign     : 1; // 0 - increase, 1 - decrease
+    u16 step     : 4;
     u16 waitStep : 6;
-    u16 unk6_10 : 6;
+    u16 unk6_10  : 6;
 } SelectedPaletteData;
 
 typedef struct PaletteBuffer {
@@ -78,7 +78,7 @@ typedef struct PaletteData {
     u16 selectedFlag : 2;
     u16 selectedBuffer : PLTTBUF_MAX;
     u16 transparentBit : PLTTBUF_MAX;
-    u16 callbackFlag : 1;
+    u16 callbackFlag    : 1;
     u16 autoTransparent : 1;
     u8 forceExit;
     u8 unused[3];

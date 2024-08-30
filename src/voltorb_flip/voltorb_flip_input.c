@@ -1,21 +1,25 @@
+#include "voltorb_flip/voltorb_flip_input.h"
+
 #include "global.h"
+
+#include "constants/sndseq.h"
+
+#include "voltorb_flip/voltorb_flip.h"
+#include "voltorb_flip/voltorb_flip_data.h"
+
 #include "heap.h"
 #include "system.h"
+#include "touchscreen.h"
 #include "unk_02005D10.h"
 #include "unk_0200CF18.h"
 #include "unk_020192D0.h"
 #include "unk_02020654.h"
-#include "touchscreen.h"
-#include "constants/sndseq.h"
-#include "voltorb_flip/voltorb_flip.h"
-#include "voltorb_flip/voltorb_flip_data.h"
-#include "voltorb_flip/voltorb_flip_input.h"
 
 static void ov122_021E8E78(Ov122_021E8CFC *);
 static void ov122_021E8F58(Ov122_021E8CFC *);
 static int ov122_021E8F6C(Ov122_021E8CFC *);
 static int ov122_021E9020(Ov122_021E8CFC *);
-static void ov122_021E9108(Ov122_021E8CFC *, int );
+static void ov122_021E9108(Ov122_021E8CFC *, int);
 static void ov122_021E9134(Ov122_021E8CFC *);
 static void ov122_021E9154(Ov122_021E8CFC *, int);
 static void ov122_021E91AC(struct Ov122_021E8CFC *, u32, int, int);
@@ -125,7 +129,7 @@ static void ov122_021E8E78(Ov122_021E8CFC *a0) {
         a0->unkEx = var2;
     } else if ((gSystem.newAndRepeatedKeys & 0x40) != 0) {
         if (var1 == 4 && (u8)(a0->unkEy + 0xfe) <= 1) {
-                a0->unkEx = (a0->unkEy);
+            a0->unkEx = (a0->unkEy);
         } else {
             var2 = var1 - 2;
             if (var2 < 0) {
@@ -195,7 +199,7 @@ static int ov122_021E8F6C(Ov122_021E8CFC *a0) {
 }
 
 static int ov122_021E9020(Ov122_021E8CFC *a0) {
-    int var1 = sub_02019F74(a0->unk8);
+    int var1      = sub_02019F74(a0->unk8);
     u32 elementId = sub_02019D18(a0->unk8);
     sub_02019F74(a0->unk8);
 
@@ -274,7 +278,7 @@ static void ov122_021E9154(Ov122_021E8CFC *a0, int newFocus) {
         }
     } else if (newFocus == 25) {
         indicatorType = 7; // Open/close Memo button
-    } else  if (newFocus == 26) {
+    } else if (newFocus == 26) {
         indicatorType = 4; // Quit button
     } else {
         GF_ASSERT(FALSE);
@@ -303,7 +307,8 @@ void ov122_021E91D0(Ov122_021E8CFC *a0, int a1, int a2) {
     PlaySE(SEQ_SE_DP_SELECT);
 }
 
-void ov122_021E91F4(Ov122_021E8CFC *a0, int a1, int a2) {}
+void ov122_021E91F4(Ov122_021E8CFC *a0, int a1, int a2) {
+}
 
 void ov122_021E91F8(Ov122_021E8CFC *a0, int a1, int a2) {
     if (a1 == 27) {

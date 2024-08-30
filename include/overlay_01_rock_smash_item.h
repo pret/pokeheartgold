@@ -7,8 +7,8 @@
 #define ROCK_SMASH_TYPE_RUINS_OF_ALPH 1
 #define ROCK_SMASH_TYPE_CLIFF_CAVE    2
 
-#define NUM_ROCK_SMASH_TYPE           3
+#define NUM_ROCK_SMASH_TYPE 3
 
 void FieldSystem_RockSmashItemCheck(FieldSystem *fieldSystem, int followMonKnowsHm, u16 *itemFound, u16 *item);
 
-#endif //POKEHEARTGOLD_OVERLAY_01_ROCK_SMASH_ITEM_H
+#endif // POKEHEARTGOLD_OVERLAY_01_ROCK_SMASH_ITEM_H

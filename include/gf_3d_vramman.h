@@ -3,10 +3,10 @@
 
 #include "heap.h"
 
-#define GF_3D_TEXALLOC_LNK        0
-#define GF_3D_TEXALLOC_FRM        1
-#define GF_3D_PLTTALLOC_LNK       0
-#define GF_3D_PLTTALLOC_FRM       1
+#define GF_3D_TEXALLOC_LNK  0
+#define GF_3D_TEXALLOC_FRM  1
+#define GF_3D_PLTTALLOC_LNK 0
+#define GF_3D_PLTTALLOC_FRM 1
 
 typedef struct GF3DVramMan {
     HeapID heapId;
@@ -24,4 +24,4 @@ void GF_3DVramMan_InitLinkedListPlttVramManager(u32 szByte, void *pManagementWor
 void GF_3DVramMan_InitFrameTexVramManager(u16 numSlot, BOOL useAsDefault);
 void GF_3DVramMan_InitFramePlttVramManager(u32 numSlot, BOOL useAsDefault);
 
-#endif //POKEHEARTGOLD_GF_3D_VRAMMAN_H
+#endif // POKEHEARTGOLD_GF_3D_VRAMMAN_H

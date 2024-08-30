@@ -1,22 +1,23 @@
-#include "scrcmd.h"
-#include "bag.h"
-#include "field_system.h"
 #include "constants/items.h"
 #include "constants/species.h"
 
+#include "bag.h"
+#include "field_system.h"
+#include "scrcmd.h"
+
 static const u16 sFossilPokemonMap[7][2] = {
-    { ITEM_OLD_AMBER, SPECIES_AERODACTYL },
-    { ITEM_HELIX_FOSSIL, SPECIES_OMANYTE },
-    { ITEM_DOME_FOSSIL, SPECIES_KABUTO },
-    { ITEM_ROOT_FOSSIL, SPECIES_LILEEP },
-    { ITEM_CLAW_FOSSIL, SPECIES_ANORITH },
-    { ITEM_ARMOR_FOSSIL, SPECIES_SHIELDON },
-    { ITEM_SKULL_FOSSIL, SPECIES_CRANIDOS },
+    { ITEM_OLD_AMBER,    SPECIES_AERODACTYL },
+    { ITEM_HELIX_FOSSIL, SPECIES_OMANYTE    },
+    { ITEM_DOME_FOSSIL,  SPECIES_KABUTO     },
+    { ITEM_ROOT_FOSSIL,  SPECIES_LILEEP     },
+    { ITEM_CLAW_FOSSIL,  SPECIES_ANORITH    },
+    { ITEM_ARMOR_FOSSIL, SPECIES_SHIELDON   },
+    { ITEM_SKULL_FOSSIL, SPECIES_CRANIDOS   },
 };
 
-BOOL ScrCmd_CountFossils(ScriptContext* ctx) {
-    FieldSystem* sav_ptr = ctx->fieldSystem;
-    u16* ret_ptr = ScriptGetVarPointer(ctx);
+BOOL ScrCmd_CountFossils(ScriptContext *ctx) {
+    FieldSystem *sav_ptr = ctx->fieldSystem;
+    u16 *ret_ptr         = ScriptGetVarPointer(ctx);
 
     u8 i;
     u16 total;
@@ -28,8 +29,8 @@ BOOL ScrCmd_CountFossils(ScriptContext* ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GetFossilPokemon(ScriptContext* ctx) {
-    u16 *ret_ptr = ScriptGetVarPointer(ctx);
+BOOL ScrCmd_GetFossilPokemon(ScriptContext *ctx) {
+    u16 *ret_ptr  = ScriptGetVarPointer(ctx);
     u16 fossil_id = ScriptGetVar(ctx);
 
     *ret_ptr = 0;
@@ -43,11 +44,11 @@ BOOL ScrCmd_GetFossilPokemon(ScriptContext* ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GetFossilMinimumAmount(ScriptContext* ctx) {
-    FieldSystem* sav_ptr = ctx->fieldSystem;
-    u16* ret_ptr1 = ScriptGetVarPointer(ctx);
-    u16* ret_ptr2 = ScriptGetVarPointer(ctx);
-    u16 needed_amount = ScriptGetVar(ctx);
+BOOL ScrCmd_GetFossilMinimumAmount(ScriptContext *ctx) {
+    FieldSystem *sav_ptr = ctx->fieldSystem;
+    u16 *ret_ptr1        = ScriptGetVarPointer(ctx);
+    u16 *ret_ptr2        = ScriptGetVarPointer(ctx);
+    u16 needed_amount    = ScriptGetVar(ctx);
 
     *ret_ptr1 = 0;
     *ret_ptr2 = 0;

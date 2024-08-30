@@ -1,10 +1,10 @@
+#include "field_system.h"
+#include "sav_chatot.h"
 #include "scrcmd.h"
-#include "unk_02005D10.h"
 #include "sound.h"
 #include "sound_02004A44.h"
-#include "field_system.h"
+#include "unk_02005D10.h"
 #include "unk_02054E00.h"
-#include "sav_chatot.h"
 
 BOOL ScrNative_GetFadeTimer(ScriptContext *ctx);
 BOOL ScrNative_SEPlaying(ScriptContext *ctx);
@@ -12,9 +12,9 @@ BOOL ScrNative_WaitCry(ScriptContext *ctx);
 BOOL ScrNative_WaitFanfare(ScriptContext *ctx);
 
 BOOL ScrCmd_575(ScriptContext *ctx) {
-    u16 var0 = ScriptReadHalfword(ctx);
+    u16 var0    = ScriptReadHalfword(ctx);
     u16 *retPtr = ScriptGetVarPointer(ctx);
-    *retPtr = sub_02005F94(var0);
+    *retPtr     = sub_02005F94(var0);
     return FALSE;
 }
 
@@ -26,7 +26,7 @@ BOOL ScrCmd_PlayBGM(ScriptContext *ctx) {
 
 BOOL ScrCmd_StopBGM(ScriptContext *ctx) {
     u16 var0 = ScriptReadHalfword(ctx);
-    u16 bgm = GF_GetCurrentPlayingBGM();
+    u16 bgm  = GF_GetCurrentPlayingBGM();
     StopBGM(bgm, 0);
     return FALSE;
 }
@@ -44,7 +44,7 @@ BOOL ScrCmd_083(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_FadeOutBGM(ScriptContext *ctx) {
-    u16 seqno = ScriptReadHalfword(ctx);
+    u16 seqno  = ScriptReadHalfword(ctx);
     u16 length = ScriptReadHalfword(ctx);
     GF_SndStartFadeOutBGM(seqno, length);
     SetupNativeScript(ctx, ScrNative_GetFadeTimer);
@@ -98,7 +98,7 @@ BOOL ScrCmd_StopSE(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_WaitSE(ScriptContext *ctx) {
-    u16 sndseq = ScriptGetVar(ctx);
+    u16 sndseq   = ScriptGetVar(ctx);
     ctx->data[0] = sndseq;
     SetupNativeScript(ctx, ScrNative_SEPlaying);
     return TRUE;
@@ -152,7 +152,7 @@ BOOL ScrNative_WaitFanfare(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_ChatotHasCry(ScriptContext *ctx) {
-    u16 *retPtr = ScriptGetVarPointer(ctx);
+    u16 *retPtr          = ScriptGetVarPointer(ctx);
     SOUND_CHATOT *chatot = Save_Chatot_Get(ctx->fieldSystem->saveData);
     if (Chatot_CheckCry(chatot) == TRUE) {
         *retPtr = TRUE;
@@ -210,6 +210,6 @@ BOOL ScrCmd_665(ScriptContext *ctx) {
 
 BOOL ScrCmd_666(ScriptContext *ctx) {
     u16 *retPtr = ScriptGetVarPointer(ctx);
-    *retPtr = GF_GetCurrentPlayingBGM();
+    *retPtr     = GF_GetCurrentPlayingBGM();
     return FALSE;
 }

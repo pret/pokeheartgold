@@ -1,13 +1,13 @@
 #ifndef POKEHEARTGOLD_SAVE_ARRAYS_H
 #define POKEHEARTGOLD_SAVE_ARRAYS_H
 
+#include "hall_of_fame.h"
+#include "mystery_gift.h"
+#include "pokemon_storage_system.h"
 #include "save.h"
 #include "unk_0202E41C.h"
-#include "pokemon_storage_system.h"
-#include "mystery_gift.h"
 #include "unk_0202EB30.h"
 #include "unk_02030A98.h"
-#include "hall_of_fame.h"
 
 typedef u32 (*SAVESIZEFN)(void);
 typedef void (*SAVEINITFN)(void *);
@@ -49,4 +49,4 @@ void Save_ResetPCBoxModifiedFlags(SaveData *saveData);
 void Save_SetAllPCBoxesModified(SaveData *saveData);
 void sub_020271A0(SaveData *saveData);
 
-#endif //POKEHEARTGOLD_SAVE_ARRAYS_H
+#endif // POKEHEARTGOLD_SAVE_ARRAYS_H

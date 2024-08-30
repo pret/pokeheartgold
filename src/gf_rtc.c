@@ -1,5 +1,6 @@
-#include "global.h"
 #include "gf_rtc.h"
+
+#include "global.h"
 
 #define MAX_SECONDS (3155759999ll)
 
@@ -8,14 +9,14 @@ struct GFRtcWork {
     BOOL getDateTimeLock;
     s32 getDateTimeSleep;
     RTCResult getDateTimeErrorCode;
-    RTCDate date; // 10
-    RTCTime time; // 20
+    RTCDate date;       // 10
+    RTCTime time;       // 20
     RTCDate date_async; // 2C
     RTCTime time_async; // 3C
 
     // used for rendering photos
-    s32 frozenTimeState;  // 3: in photo state; 0: normal operation
-    RTCTime frozenTime;   // when frozenTimeState is 3, this is the time returned
+    s32 frozenTimeState; // 3: in photo state; 0: normal operation
+    RTCTime frozenTime;  // when frozenTimeState is 3, this is the time returned
 };
 
 struct GFRtcWork sRTCWork;
@@ -35,8 +36,8 @@ void GF_InitRTCWork(void) {
     RTC_Init();
     memset(&sRTCWork, 0, sizeof(sRTCWork));
     sRTCWork.getDateTimeSuccess = FALSE;
-    sRTCWork.getDateTimeLock = FALSE;
-    sRTCWork.getDateTimeSleep = 0;
+    sRTCWork.getDateTimeLock    = FALSE;
+    sRTCWork.getDateTimeSleep   = 0;
     GF_RTC_GetDateTime(&sRTCWork);
     GF_RTC_UnfreezeTimeInternal(&sRTCWork);
 }
@@ -49,24 +50,24 @@ void GF_RTC_UpdateOnFrame(void) {
 }
 
 static void GF_RTC_GetDateTime_Callback(RTCResult result, void *arg) {
-    struct GFRtcWork *work = arg;
+    struct GFRtcWork *work     = arg;
     work->getDateTimeErrorCode = result;
     GF_ASSERT(result == RTC_RESULT_SUCCESS);
     work->getDateTimeSuccess = TRUE;
-    work->date = work->date_async;
-    work->time = work->time_async;
-    work->getDateTimeLock = FALSE;
+    work->date               = work->date_async;
+    work->time               = work->time_async;
+    work->getDateTimeLock    = FALSE;
 }
 
 static void GF_RTC_GetDateTime(struct GFRtcWork *work) {
-    work->getDateTimeLock = TRUE;
+    work->getDateTimeLock      = TRUE;
     work->getDateTimeErrorCode = RTC_GetDateTimeAsync(&work->date_async, &work->time_async, GF_RTC_GetDateTime_Callback, work);
     GF_ASSERT(work->getDateTimeErrorCode == RTC_RESULT_SUCCESS);
 }
 
 static void GF_RTC_SetAndFreezeTimeInternal(struct GFRtcWork *work, s32 hour, s32 minute) {
-    work->frozenTimeState = 3;
-    work->frozenTime.hour = hour;
+    work->frozenTimeState   = 3;
+    work->frozenTime.hour   = hour;
     work->frozenTime.minute = minute;
 }
 
@@ -91,7 +92,7 @@ void GF_RTC_CopyDate(RTCDate *date) {
 }
 
 s32 GF_RTC_TimeToSec(void) {
-    RTCTime* time = getTime(&sRTCWork);
+    RTCTime *time = getTime(&sRTCWork);
     return 60 * time->minute + 3600 * time->hour + time->second;
 }
 
@@ -103,7 +104,7 @@ static inline BOOL IsLeapYear(s32 year) {
     return ((year % 4) == 0 && (year % 100) != 0) || ((year % 400) == 0);
 }
 
-s32 GF_RTC_GetDayOfYear(const RTCDate * date) {
+s32 GF_RTC_GetDayOfYear(const RTCDate *date) {
     s32 days;
     static const u16 sGF_DaysPerMonth[] = {
         0,   // Jan
@@ -121,19 +122,20 @@ s32 GF_RTC_GetDayOfYear(const RTCDate * date) {
     };
     days = date->day;
     days += sGF_DaysPerMonth[date->month - 1];
-    if (date->month >= 3 && IsLeapYear(date->year))
+    if (date->month >= 3 && IsLeapYear(date->year)) {
         days++;
-//    {
-//        int check;
-//        date_stack = *date;
-//        date_stack.month = 1;
-//        date_stack.day = 1;
-//        check = RTC_ConvertDateToDay(date) - RTC_ConvertDateToDay(&date_stack);
-//        if (check + 1 != days) {
-//            OS_Printf("%d(Nitro) != %d(InHouse)", check + 1, days);
-//        }
-//        GF_ASSERT(check + 1 == days);
-//    }
+    }
+    //    {
+    //        int check;
+    //        date_stack = *date;
+    //        date_stack.month = 1;
+    //        date_stack.day = 1;
+    //        check = RTC_ConvertDateToDay(date) - RTC_ConvertDateToDay(&date_stack);
+    //        if (check + 1 != days) {
+    //            OS_Printf("%d(Nitro) != %d(InHouse)", check + 1, days);
+    //        }
+    //        GF_ASSERT(check + 1 == days);
+    //    }
     return days;
 }
 
@@ -161,15 +163,34 @@ TimeOfDayWildParam GF_RTC_GetTimeOfDayWildParam(void) {
 
 TIMEOFDAY GF_RTC_GetTimeOfDayByHour(s32 hour) {
     static const u8 sTimeOfDayByHour[24] = {
-        RTC_TIMEOFDAY_LATE, RTC_TIMEOFDAY_LATE, RTC_TIMEOFDAY_LATE, RTC_TIMEOFDAY_LATE,
-        RTC_TIMEOFDAY_MORN, RTC_TIMEOFDAY_MORN, RTC_TIMEOFDAY_MORN, RTC_TIMEOFDAY_MORN, RTC_TIMEOFDAY_MORN, RTC_TIMEOFDAY_MORN,
-        RTC_TIMEOFDAY_DAY, RTC_TIMEOFDAY_DAY, RTC_TIMEOFDAY_DAY, RTC_TIMEOFDAY_DAY, RTC_TIMEOFDAY_DAY, RTC_TIMEOFDAY_DAY, RTC_TIMEOFDAY_DAY,
-        RTC_TIMEOFDAY_EVE, RTC_TIMEOFDAY_EVE, RTC_TIMEOFDAY_EVE,
-        RTC_TIMEOFDAY_NITE, RTC_TIMEOFDAY_NITE, RTC_TIMEOFDAY_NITE, RTC_TIMEOFDAY_NITE,
+        RTC_TIMEOFDAY_LATE,
+        RTC_TIMEOFDAY_LATE,
+        RTC_TIMEOFDAY_LATE,
+        RTC_TIMEOFDAY_LATE,
+        RTC_TIMEOFDAY_MORN,
+        RTC_TIMEOFDAY_MORN,
+        RTC_TIMEOFDAY_MORN,
+        RTC_TIMEOFDAY_MORN,
+        RTC_TIMEOFDAY_MORN,
+        RTC_TIMEOFDAY_MORN,
+        RTC_TIMEOFDAY_DAY,
+        RTC_TIMEOFDAY_DAY,
+        RTC_TIMEOFDAY_DAY,
+        RTC_TIMEOFDAY_DAY,
+        RTC_TIMEOFDAY_DAY,
+        RTC_TIMEOFDAY_DAY,
+        RTC_TIMEOFDAY_DAY,
+        RTC_TIMEOFDAY_EVE,
+        RTC_TIMEOFDAY_EVE,
+        RTC_TIMEOFDAY_EVE,
+        RTC_TIMEOFDAY_NITE,
+        RTC_TIMEOFDAY_NITE,
+        RTC_TIMEOFDAY_NITE,
+        RTC_TIMEOFDAY_NITE,
     };
 
     GF_ASSERT(hour >= 0 && hour < 24);
-    return (TIMEOFDAY) sTimeOfDayByHour[hour];
+    return (TIMEOFDAY)sTimeOfDayByHour[hour];
 }
 
 TimeOfDayWildParam GF_RTC_GetTimeOfDayWildParamByHour(s32 hour) {

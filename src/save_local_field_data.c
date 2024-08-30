@@ -1,11 +1,14 @@
-#include "global.h"
 #include "save_local_field_data.h"
+
+#include "global.h"
+
+#include "constants/scrcmd.h"
+
 #include "field_player_avatar.h"
+#include "field_system.h"
 #include "map_object.h"
 #include "script_pokemon_util.h"
 #include "unk_0203BA5C.h"
-#include "field_system.h"
-#include "constants/scrcmd.h"
 
 struct LocalFieldData {
     Location currentPosition;
@@ -128,16 +131,16 @@ void FieldSystem_SyncMapObjectsToSave(FieldSystem *fieldSystem) {
 }
 
 void FieldSystem_RestoreMapObjectsFromSave(FieldSystem *fieldSystem) {
-    struct SavedMapObjectList *unk = Save_MapObjects_Get(fieldSystem->saveData);
+    struct SavedMapObjectList *unk  = Save_MapObjects_Get(fieldSystem->saveData);
     struct SavedMapObject *follower = SaveMapObjects_SearchSpriteId(unk->subs, 64, SPRITE_FOLLOWER_MON_SHAYMIN_SKY);
     Pokemon *mon;
     int species;
     int form;
 
     if (follower != NULL && follower->objId == obj_partner_poke) {
-        mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(fieldSystem->saveData));
+        mon     = GetFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(fieldSystem->saveData));
         species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        form = GetMonData(mon, MON_DATA_FORM, NULL);
+        form    = GetMonData(mon, MON_DATA_FORM, NULL);
         if (species != SPECIES_SHAYMIN) {
             GF_ASSERT(FALSE);
         } else if (form == SHAYMIN_LAND) {

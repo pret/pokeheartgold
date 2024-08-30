@@ -33,4 +33,4 @@ struct SavedMapObjectList *Save_MapObjects_Get(SaveData *saveData);
 void FieldSystem_SyncMapObjectsToSave(FieldSystem *fieldSystem);
 void FieldSystem_RestoreMapObjectsFromSave(FieldSystem *fieldSystem);
 
-#endif //POKEHEARTGOLD_SAVE_LOCAL_FIELD_DATA_H
+#endif // POKEHEARTGOLD_SAVE_LOCAL_FIELD_DATA_H

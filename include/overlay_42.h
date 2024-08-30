@@ -3,4 +3,4 @@
 
 u32 ov42_02229248(u32 a0);
 
-#endif //POKEHEARTGOLD_OVY_42_H
+#endif // POKEHEARTGOLD_OVY_42_H

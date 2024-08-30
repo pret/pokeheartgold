@@ -1,6 +1,8 @@
-#include "demo/opening/gs_opening.naix"
-#include "gf_gfx_loader.h"
 #include "global.h"
+
+#include "demo/opening/gs_opening.naix"
+
+#include "gf_gfx_loader.h"
 #include "intro_movie_internal.h"
 #include "system.h"
 #include "unk_0200B150.h"
@@ -58,7 +60,7 @@ static void IntroMovie_Scene5_VBlankCB(void *pVoid) {
 }
 
 static void IntroMovie_Scene5_Init(IntroMovieOverlayData *data, IntroMovieScene5Data *sceneData) {
-    BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
+    BgConfig *bgConfig     = IntroMovie_GetBgConfig(data);
     gSystem.screensFlipped = TRUE;
     GfGfx_SwapDisplay();
     sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
@@ -77,13 +79,13 @@ static void IntroMovie_Scene5_Init(IntroMovieOverlayData *data, IntroMovieScene5
 #ifdef HEARTGOLD
 #define BG_SCROLL_SPEED -0x40
 #else
-#define BG_SCROLL_SPEED  0x40
+#define BG_SCROLL_SPEED 0x40
 #endif
 
 static BOOL IntroMovie_Scene5_Main(IntroMovieOverlayData *data, IntroMovieScene5Data *sceneData, int totalFrames) {
-    BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
+    BgConfig *bgConfig               = IntroMovie_GetBgConfig(data);
     IntroMovieBgLinearAnims *animCnt = IntroMovie_GetBgLinearAnimsController(data);
-    u8 stepTimer = IntroMovie_GetSceneStepTimer(data);
+    u8 stepTimer                     = IntroMovie_GetSceneStepTimer(data);
     switch (IntroMovie_GetSceneStep(data)) {
     case INTRO_SCENE5_WIPE_IN:
         BeginNormalPaletteFade(1, 9, 5, RGB_BLACK, 18, 1, HEAP_ID_INTRO_MOVIE);
@@ -147,68 +149,72 @@ static void IntroMovie_Scene5_InitBgs(IntroMovieOverlayData *data) {
 
     {
         BgTemplate bgTemplate = {
-            .x = 0, .y = 0,
+            .x          = 0,
+            .y          = 0,
             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-            .baseTile = 0,
-            .size = GF_BG_SCR_SIZE_256x256,
-            .colorMode = GX_BG_COLORMODE_16,
+            .baseTile   = 0,
+            .size       = GF_BG_SCR_SIZE_256x256,
+            .colorMode  = GX_BG_COLORMODE_16,
             .screenBase = GX_BG_SCRBASE_0x0000,
-            .charBase = GX_BG_CHARBASE_0x04000,
-            .bgExtPltt = GX_BG_EXTPLTT_01,
-            .priority = 1,
-            .areaOver = GX_BG_AREAOVER_XLU,
-            .mosaic = FALSE,
+            .charBase   = GX_BG_CHARBASE_0x04000,
+            .bgExtPltt  = GX_BG_EXTPLTT_01,
+            .priority   = 1,
+            .areaOver   = GX_BG_AREAOVER_XLU,
+            .mosaic     = FALSE,
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_1, &bgTemplate, 0);
     }
 
     {
         BgTemplate bgTemplate = {
-            .x = 0, .y = 0,
+            .x          = 0,
+            .y          = 0,
             .bufferSize = GF_BG_BUF_SIZE_256x512_4BPP,
-            .baseTile = 0,
-            .size = GF_BG_SCR_SIZE_256x512,
-            .colorMode = GX_BG_COLORMODE_16,
+            .baseTile   = 0,
+            .size       = GF_BG_SCR_SIZE_256x512,
+            .colorMode  = GX_BG_COLORMODE_16,
             .screenBase = GX_BG_SCRBASE_0x0800,
-            .charBase = GX_BG_CHARBASE_0x04000,
-            .bgExtPltt = GX_BG_EXTPLTT_01,
-            .priority = 2,
-            .areaOver = GX_BG_AREAOVER_XLU,
-            .mosaic = FALSE,
+            .charBase   = GX_BG_CHARBASE_0x04000,
+            .bgExtPltt  = GX_BG_EXTPLTT_01,
+            .priority   = 2,
+            .areaOver   = GX_BG_AREAOVER_XLU,
+            .mosaic     = FALSE,
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_2, &bgTemplate, 0);
     }
 
     {
         BgTemplate bgTemplate = {
-            .x = 0, .y = 0,
+            .x          = 0,
+            .y          = 0,
             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-            .baseTile = 0,
-            .size = GF_BG_SCR_SIZE_256x256,
-            .colorMode = GX_BG_COLORMODE_16,
+            .baseTile   = 0,
+            .size       = GF_BG_SCR_SIZE_256x256,
+            .colorMode  = GX_BG_COLORMODE_16,
             .screenBase = GX_BG_SCRBASE_0x0000,
-            .charBase = GX_BG_CHARBASE_0x04000,
-            .bgExtPltt = GX_BG_EXTPLTT_01,
-            .priority = 1,
-            .areaOver = GX_BG_AREAOVER_XLU,
-            .mosaic = FALSE,
+            .charBase   = GX_BG_CHARBASE_0x04000,
+            .bgExtPltt  = GX_BG_EXTPLTT_01,
+            .priority   = 1,
+            .areaOver   = GX_BG_AREAOVER_XLU,
+            .mosaic     = FALSE,
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_1, &bgTemplate, 0);
     }
 
     {
         BgTemplate bgTemplate = {
-            .x = 0, .y = 0,
+            .x          = 0,
+            .y          = 0,
             .bufferSize = GF_BG_BUF_SIZE_256x512_4BPP,
-            .baseTile = 0,
-            .size = GF_BG_SCR_SIZE_256x512,
-            .colorMode = GX_BG_COLORMODE_16,
+            .baseTile   = 0,
+            .size       = GF_BG_SCR_SIZE_256x512,
+            .colorMode  = GX_BG_COLORMODE_16,
             .screenBase = GX_BG_SCRBASE_0x0800,
-            .charBase = GX_BG_CHARBASE_0x04000,
-            .bgExtPltt = GX_BG_EXTPLTT_01,
-            .priority = 2,
-            .areaOver = GX_BG_AREAOVER_XLU,
-            .mosaic = FALSE,
+            .charBase   = GX_BG_CHARBASE_0x04000,
+            .bgExtPltt  = GX_BG_EXTPLTT_01,
+            .priority   = 2,
+            .areaOver   = GX_BG_AREAOVER_XLU,
+            .mosaic     = FALSE,
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_2, &bgTemplate, 0);
     }
@@ -232,8 +238,11 @@ static void IntroMovie_Scene5_EnableBgLayers(IntroMovieScene5Data *sceneData, Bg
     BgSetPosTextAndCommit(bgConfig, GF_BG_LYR_SUB_2, BG_POS_OP_SET_Y, 0xA0);
 }
 
-static void IntroMovie_Scene5_LoadSpriteGfx(IntroMovieOverlayData *data, IntroMovieScene5Data *sceneData) {}
+static void IntroMovie_Scene5_LoadSpriteGfx(IntroMovieOverlayData *data, IntroMovieScene5Data *sceneData) {
+}
 
-static void IntroMovie_Scene5_DestroySprites(IntroMovieOverlayData *data, IntroMovieScene5Data *sceneData) {}
+static void IntroMovie_Scene5_DestroySprites(IntroMovieOverlayData *data, IntroMovieScene5Data *sceneData) {
+}
 
-static void IntroMovie_Scene5_CreateSprites(IntroMovieOverlayData *data, IntroMovieScene5Data *sceneData) {}
+static void IntroMovie_Scene5_CreateSprites(IntroMovieOverlayData *data, IntroMovieScene5Data *sceneData) {
+}

@@ -1,9 +1,10 @@
 #ifndef POKEHEARTGOLD_FIELD_PLAYER_AVATAR_H
 #define POKEHEARTGOLD_FIELD_PLAYER_AVATAR_H
 
-#include "save.h"
 #include "global.h"
+
 #include "field_types_def.h"
+#include "save.h"
 
 typedef struct PlayerSaveData {
     u16 hasRunningShoes;
@@ -28,7 +29,7 @@ struct PlayerAvatar {
     u32 unk34;
     PlayerSaveData *playerSaveData;
     u32 unk3c;
-}; //size: 0x40
+}; // size: 0x40
 
 int sub_0205C268(u32 unkA);
 u8 sub_0205C278(void);
@@ -39,7 +40,7 @@ u8 sub_0205C310(u32 unkA);
 u8 sub_0205C350(u32 unkA);
 PlayerAvatar *sub_0205C390(MapObjectManager *man, int x, int y, int direction, int a4, int gender, int a6, struct PlayerSaveData *playerSaveData);
 PlayerAvatar *sub_0205C408(MapObjectManager *man, PlayerSaveData *playerSaveData, int gender);
-void sub_0205C46C(PlayerAvatar* avatar);
+void sub_0205C46C(PlayerAvatar *avatar);
 void PlayerAvatar_FreeToHeap(PlayerAvatar *avatar);
 void PlayerAvatar_DeleteFromMap(PlayerAvatar *avatar);
 PlayerAvatar *sub_0205C4E0();
@@ -121,4 +122,4 @@ u32 sub_0205CB2C(PlayerAvatar *avatar);
 u16 sub_0205CB38(PlayerAvatar *avatar);
 void sub_0205CB40(PlayerAvatar *avatar, u16 unkA);
 
-#endif //POKEHEARTGOLD_PlayerAvatar_H
+#endif // POKEHEARTGOLD_PlayerAvatar_H

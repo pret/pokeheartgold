@@ -11,8 +11,8 @@ typedef struct UnkStruct_0203F4F8 {
     SaveData *saveData;
     struct UnkStruct_0205AC88 *unk4;
     Options *options;
-    GAME_STATS *gameStats;
-    BOOL *unk10;
+    GameStats *gameStats;
+    BOOL *menuInputStatePtr;
 } UnkStruct_0203F4F8;
 
 BOOL ov73_021E5900(OVY_MANAGER *man, int *state);
@@ -23,4 +23,4 @@ BOOL ov73_021E7E4C(OVY_MANAGER *man, int *state);
 BOOL ov73_021E7FB8(OVY_MANAGER *man, int *state);
 BOOL ov73_021E808C(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_OVY_73_H
+#endif // POKEHEARTGOLD_OVY_73_H

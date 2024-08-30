@@ -16,7 +16,7 @@ struct UnkTaskEnv {
     void *work;
 };
 
-struct TaskManager { //declared in field_system.h
+struct TaskManager { // declared in field_system.h
     TaskManager *prev;
     TaskFunc func;
     u32 state;
@@ -41,4 +41,4 @@ void *TaskManager_GetEnvironment(TaskManager *taskManager);
 u32 *TaskManager_GetStatePtr(TaskManager *taskManager);
 u32 sub_02050658(TaskManager *taskManager);
 
-#endif //POKEHEARTGOLD_TASK_H
+#endif // POKEHEARTGOLD_TASK_H

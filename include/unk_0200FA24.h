@@ -11,4 +11,4 @@ void HandleFadeUpdateFrame(void);
 BOOL IsPaletteFadeFinished(void);
 void SetMasterBrightnessNeutral(u32 screen);
 
-#endif //POKEHEARTGOLD_UNK_0200FA24_H
+#endif // POKEHEARTGOLD_UNK_0200FA24_H
