@@ -7,21 +7,21 @@
  * Remembers the cursor position in the field bag view
  */
 typedef struct BagCursorField {
-    u8 scroll[8];        // How many items are off-screen above
-    u8 position[8];      // Cursor position within the screen
-    u16 pocket;          // Which pocket was last viewed
-    u16 padding;         // Silence warnings
+    u8 scroll[8];   // How many items are off-screen above
+    u8 position[8]; // Cursor position within the screen
+    u16 pocket;     // Which pocket was last viewed
+    u16 padding;    // Silence warnings
 } BagCursorField;
 
 /*
  * Remembers the cursor position in the battle bag view
  */
 typedef struct BagCursorBattle {
-    u8 scroll[5];         // How many items are off-screen above
-    u8 position[5];       // Cursor position within the screen
-    u16 lastUsedItem;     // ID of last used item
-    u16 lastUsedPocket;   // ID of pocket containing last used item
-    u16 pocket;           // Which pocket was last viewed
+    u8 scroll[5];       // How many items are off-screen above
+    u8 position[5];     // Cursor position within the screen
+    u16 lastUsedItem;   // ID of last used item
+    u16 lastUsedPocket; // ID of pocket containing last used item
+    u16 pocket;         // Which pocket was last viewed
 } BagCursorBattle;
 
 /*
@@ -122,7 +122,6 @@ u16 BagCursor_Battle_GetLastUsedItem(BagCursor *cursor);
  */
 u16 BagCursor_Battle_GetLastUsedPocket(BagCursor *cursor);
 
-
 /*
  * u16 BagCursor_Battle_GetPocket(BagCursor *cursor)
  *
@@ -176,4 +175,4 @@ void BagCursor_Battle_SetLastUsedItem(BagCursor *cursor, u16 itemId, u16 pocket)
  */
 void BagCursor_Battle_SetPocket(BagCursor *cursor, u16 pocket);
 
-#endif //POKEHEARTGOLD_BAG_CURSOR_H
+#endif // POKEHEARTGOLD_BAG_CURSOR_H

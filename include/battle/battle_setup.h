@@ -1,20 +1,21 @@
 #ifndef POKEHEARTGOLD_BATTLE_SETUP_H
 #define POKEHEARTGOLD_BATTLE_SETUP_H
 
-#include "field_types_def.h"
-#include "party.h"
-#include "player_data.h"
-#include "trainer_data.h"
+#include "constants/battle.h"
+
 #include "bag.h"
-#include "pokedex.h"
-#include "save_arrays.h"
-#include "pokemon_storage_system.h"
-#include "unk_02067A60.h"
+#include "field_types_def.h"
 #include "game_stats.h"
 #include "gf_rtc.h"
 #include "map_header.h"
+#include "party.h"
+#include "player_data.h"
+#include "pokedex.h"
+#include "pokemon_storage_system.h"
+#include "save_arrays.h"
 #include "save_palpad.h"
-#include "constants/battle.h"
+#include "trainer_data.h"
+#include "unk_02067A60.h"
 #include "unk_020755E8.h"
 
 struct BattleSetupSub_138 {
@@ -23,17 +24,17 @@ struct BattleSetupSub_138 {
     int unk_8;
 };
 
-struct BattleSetup { //declared in trainer_data.h
-    u32 battleType; // 0
-    Party *party[BATTLER_MAX]; // 4
-    int winFlag; // 14
-    int trainerId[BATTLER_MAX]; // 18
-    Trainer trainer[BATTLER_MAX]; // 28
+struct BattleSetup {                     // declared in trainer_data.h
+    u32 battleType;                      // 0
+    Party *party[BATTLER_MAX];           // 4
+    int winFlag;                         // 14
+    int trainerId[BATTLER_MAX];          // 18
+    Trainer trainer[BATTLER_MAX];        // 28
     PlayerProfile *profile[BATTLER_MAX]; // f8
-    Bag *bag; // 108
+    Bag *bag;                            // 108
     BagCursor *bagCursor;
-    Pokedex *pokedex; // 110
-    PCStorage *storagePC; // 114
+    Pokedex *pokedex;                  // 110
+    PCStorage *storagePC;              // 114
     SOUND_CHATOT *chatot[BATTLER_MAX]; // 118
     void *unk_128;
     void *unk_12C;
@@ -41,22 +42,22 @@ struct BattleSetup { //declared in trainer_data.h
     struct UnkStruct_02067A60 *unk_134;
     struct BattleSetupSub_138 unk138;
     GAME_STATS *gameStats; // 144
-    SavePalPad *palPad; // 148
-    BattleBg battleBg; // 14C
+    SavePalPad *palPad;    // 148
+    BattleBg battleBg;     // 14C
     Terrain terrain;
-    u32 mapSection; // 154
-    u32 mapNumber; // 158
-    TIMEOFDAY timeOfDay; // 15C
+    u32 mapSection;        // 154
+    u32 mapNumber;         // 158
+    TIMEOFDAY timeOfDay;   // 15C
     u32 evolutionLocation; // 160
     u32 unk_164;
-    BOOL metBill; // 168
+    BOOL metBill;          // 168
     int momsSavingsActive; // 16C
     u32 unk_170;
     u32 weatherType; // 174
     int levelUpFlag; // 178
     u8 filler_17C[0x10];
-    u32 battleSpecial; //18C
-    int safariBalls; // 190
+    u32 battleSpecial; // 18C
+    int safariBalls;   // 190
     BOOL fixedDamaageMovesBanned;
     EvolutionTaskData *unk198;
     int unk_19C;
@@ -94,4 +95,4 @@ BOOL IsBattleResultStaticWildWin(u32 a0);
 BOOL IsBattleResultLatiCaught(u32 a0);
 void BattleSetup_SetAllySideBattlersToPlayer(BattleSetup *setup);
 
-#endif //POKEHEARTGOLD_BATTLE_SETUP_H
+#endif // POKEHEARTGOLD_BATTLE_SETUP_H

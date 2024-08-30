@@ -10,4 +10,4 @@ void OamManager_Create(int, int, int, int, int, int, int, int, HeapID);
 void sub_0200B2E0(HeapID heapId);
 void sub_0200B2E8(HeapID heapId);
 
-#endif //POKEHEARTGOLD_UNK_0200B150_H
+#endif // POKEHEARTGOLD_UNK_0200B150_H

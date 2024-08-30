@@ -43,4 +43,4 @@ Field3dObjectTask *Field3dObjectTaskManager_CreateTask(Field3dObjectTaskManager 
 void Field3dObjectTask_Delete(Field3dObjectTask *task);
 void *Field3dObjectTask_GetData(Field3dObjectTask *task);
 
-#endif //POKEHEARTGOLD_FIELD_OVERLAY_01_021E66E4_H
+#endif // POKEHEARTGOLD_FIELD_OVERLAY_01_021E66E4_H

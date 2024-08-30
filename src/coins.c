@@ -1,5 +1,6 @@
-#include "global.h"
 #include "coins.h"
+
+#include "global.h"
 
 void InitCoins(u16 *coins) {
     *coins = 0;

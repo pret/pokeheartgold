@@ -1,18 +1,21 @@
 #include "battle/battle_022378C0.h"
-#include "battle/overlay_12_02266024.h"
-#include "battle/battle_system.h"
+
+#include "constants/game_stats.h"
+
 #include "battle/battle_input.h"
+#include "battle/battle_system.h"
+#include "battle/overlay_12_02266024.h"
+
+#include "filesystem_files_def.h"
 #include "gf_gfx_planes.h"
 #include "render_text.h"
-#include "system.h"
-#include "vram_transfer_manager.h"
-#include "unk_02037C94.h"
 #include "sound_02004A44.h"
-#include "unk_020379A0.h"
-#include "unk_020755E8.h"
+#include "system.h"
 #include "unk_02026E84.h"
-#include "constants/game_stats.h"
-#include "filesystem_files_def.h"
+#include "unk_020379A0.h"
+#include "unk_02037C94.h"
+#include "unk_020755E8.h"
+#include "vram_transfer_manager.h"
 
 FS_EXTERN_OVERLAY(OVY_5);
 FS_EXTERN_OVERLAY(OVY_6);
@@ -44,7 +47,7 @@ BOOL Battle_Run(OVY_MANAGER *man, int *state) {
 
     switch (*state) {
     case BSTATE_INIT:
-        CreateHeap(HEAP_ID_3, HEAP_ID_BATTLE, 0xB0000);     
+        CreateHeap(HEAP_ID_3, HEAP_ID_BATTLE, 0xB0000);
         if ((setup->battleType & BATTLE_TYPE_LINK) && !(setup->battleSpecial & BATTLE_SPECIAL_RECORDING)) {
             *state = BSTATE_LINK_INIT;
         } else {
@@ -132,8 +135,7 @@ BOOL Battle_Run(OVY_MANAGER *man, int *state) {
     case BSTATE_END_WAIT:
         *state = BSTATE_EXIT;
         break;
-    case BSTATE_EVOLUTION_INIT:
-    {
+    case BSTATE_EVOLUTION_INIT: {
         int selectedMonIndex;
         int evolutionSpecies;
         int evolutionCondition;
@@ -143,19 +145,15 @@ BOOL Battle_Run(OVY_MANAGER *man, int *state) {
 
         if (evolutionSpecies) {
             CreateHeap(HEAP_ID_3, HEAP_ID_EVOLUTION, 0x30000);
-            mon = Party_GetMonByIndex(setup->party[BATTLER_PLAYER], selectedMonIndex);
-            setup->unk198 = sub_02075A7C(setup->party[BATTLER_PLAYER], mon, evolutionSpecies,
-                                        setup->options, setup->unk_164, setup->pokedex,
-                                        setup->bag, setup->gameStats, evolutionCondition,
-                                        3, HEAP_ID_EVOLUTION);
-            *state = BSTATE_EVOLUTION_MAIN;
+            mon           = Party_GetMonByIndex(setup->party[BATTLER_PLAYER], selectedMonIndex);
+            setup->unk198 = sub_02075A7C(setup->party[BATTLER_PLAYER], mon, evolutionSpecies, setup->options, setup->unk_164, setup->pokedex, setup->bag, setup->gameStats, evolutionCondition, 3, HEAP_ID_EVOLUTION);
+            *state        = BSTATE_EVOLUTION_MAIN;
         } else {
             *state = BSTATE_EXIT;
         }
         break;
     }
-    case BSTATE_EVOLUTION_MAIN:
-    {
+    case BSTATE_EVOLUTION_MAIN: {
         void *data = setup->unk198;
         if (sub_02075D3C(data) == TRUE) {
             sub_02075D4C(data);
@@ -208,7 +206,7 @@ void ov12_02237BB8(BattleSystem *bsys) {
 
     ov12_0223BBF0(bsys, 0);
 
-    int size = sub_02026E9C();
+    int size   = sub_02026E9C();
     void *data = GetSubBgPlttAddr();
     MIi_CpuClear16(0, data, size);
 

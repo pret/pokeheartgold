@@ -1,9 +1,10 @@
 #ifndef POKEHEARTGOLD_POKEWALKER_H
 #define POKEHEARTGOLD_POKEWALKER_H
 
-#include "save.h"
-#include "pokemon.h"
 #include "constants/pokewalker_courses.h"
+
+#include "pokemon.h"
+#include "save.h"
 
 typedef struct POKEWALKER {
     u16 unk_000;
@@ -41,4 +42,4 @@ BOOL Pokewalker_CourseIsUnlocked(POKEWALKER *pokeWalker, int courseNo);
 u16 sub_02032764(POKEWALKER *pokeWalker);
 void sub_0203276C(POKEWALKER *pokeWalker);
 
-#endif //POKEHEARTGOLD_POKEWALKER_H
+#endif // POKEHEARTGOLD_POKEWALKER_H

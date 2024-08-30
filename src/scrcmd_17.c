@@ -1,13 +1,13 @@
-#include "scrcmd.h"
-#include "pokedex.h"
 #include "field_system.h"
+#include "pokedex.h"
 #include "save_local_field_data.h"
+#include "scrcmd.h"
 #include "sys_flags.h"
 
 BOOL ScrCmd_CheckPokedex(ScriptContext *ctx) {
     Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->saveData);
-    u16 *retPtr = ScriptGetVarPointer(ctx);
-    *retPtr = Pokedex_IsEnabled(pokedex);
+    u16 *retPtr      = ScriptGetVarPointer(ctx);
+    *retPtr          = Pokedex_IsEnabled(pokedex);
     return FALSE;
 }
 
@@ -18,23 +18,23 @@ BOOL ScrCmd_GivePokedex(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_CheckRunningShoes(ScriptContext *ctx) {
-    u16 *retPtr = ScriptGetVarPointer(ctx);
+    u16 *retPtr                    = ScriptGetVarPointer(ctx);
     LocalFieldData *localFieldData = Save_LocalFieldData_Get(ctx->fieldSystem->saveData);
-    struct PlayerSaveData *sub = LocalFieldData_GetPlayer(localFieldData);
-    *retPtr = PlayerSaveData_CheckRunningShoes(sub);
+    struct PlayerSaveData *sub     = LocalFieldData_GetPlayer(localFieldData);
+    *retPtr                        = PlayerSaveData_CheckRunningShoes(sub);
     return FALSE;
 }
 
 BOOL ScrCmd_GiveRunningShoes(ScriptContext *ctx) {
     LocalFieldData *localFieldData = Save_LocalFieldData_Get(ctx->fieldSystem->saveData);
-    struct PlayerSaveData *sub = LocalFieldData_GetPlayer(localFieldData);
+    struct PlayerSaveData *sub     = LocalFieldData_GetPlayer(localFieldData);
     PlayerSaveData_SetRunningShoesFlag(sub, TRUE);
     return FALSE;
 }
 
 BOOL ScrCmd_CheckBadge(ScriptContext *ctx) {
     u16 badgeIdx = ScriptGetVar(ctx);
-    u16 *ret = ScriptGetVarPointer(ctx);
+    u16 *ret     = ScriptGetVarPointer(ctx);
 
     GF_ASSERT(badgeIdx < 16);
     *ret = PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData), badgeIdx);
@@ -134,7 +134,7 @@ BOOL ScrCmd_306(ScriptContext *ctx) {
 
 BOOL ScrCmd_StrengthFlagAction(ScriptContext *ctx) {
     SaveVarsFlags *state = Save_VarsFlags_Get(ctx->fieldSystem->saveData);
-    u8 mode = ScriptReadByte(ctx);
+    u8 mode              = ScriptReadByte(ctx);
     switch (mode) {
     case FLAG_ACTION_SET:
         StrengthFlagAction(state, FLAG_ACTION_SET);
@@ -142,10 +142,9 @@ BOOL ScrCmd_StrengthFlagAction(ScriptContext *ctx) {
     case FLAG_ACTION_CLEAR:
         StrengthFlagAction(state, FLAG_ACTION_CLEAR);
         break;
-    case FLAG_ACTION_CHECK:
-    {
+    case FLAG_ACTION_CHECK: {
         u16 *ret = ScriptGetVarPointer(ctx);
-        *ret = StrengthFlagAction(state, FLAG_ACTION_CHECK);
+        *ret     = StrengthFlagAction(state, FLAG_ACTION_CHECK);
         break;
     }
     default:
@@ -156,7 +155,7 @@ BOOL ScrCmd_StrengthFlagAction(ScriptContext *ctx) {
 
 BOOL ScrCmd_FlashAction(ScriptContext *ctx) {
     SaveVarsFlags *state = Save_VarsFlags_Get(ctx->fieldSystem->saveData);
-    u8 mode = ScriptReadByte(ctx);
+    u8 mode              = ScriptReadByte(ctx);
     switch (mode) {
     case FLAG_ACTION_SET:
         SysFlagFlashSet(state);
@@ -164,10 +163,9 @@ BOOL ScrCmd_FlashAction(ScriptContext *ctx) {
     case FLAG_ACTION_CLEAR:
         SysFlagFlashClear(state);
         break;
-    case FLAG_ACTION_CHECK:
-    {
+    case FLAG_ACTION_CHECK: {
         u16 *ret = ScriptGetVarPointer(ctx);
-        *ret = SysFlagFlashCheck(state);
+        *ret     = SysFlagFlashCheck(state);
         break;
     }
     default:
@@ -179,7 +177,7 @@ BOOL ScrCmd_FlashAction(ScriptContext *ctx) {
 // Leftover from DPPt
 BOOL ScrCmd_DefogAction(ScriptContext *ctx) {
     SaveVarsFlags *state = Save_VarsFlags_Get(ctx->fieldSystem->saveData);
-    u8 mode = ScriptReadByte(ctx);
+    u8 mode              = ScriptReadByte(ctx);
     switch (mode) {
     case FLAG_ACTION_SET:
         SysFlagDefogSet(state);
@@ -187,10 +185,9 @@ BOOL ScrCmd_DefogAction(ScriptContext *ctx) {
     case FLAG_ACTION_CLEAR:
         SysFlagDefogClear(state);
         break;
-    case FLAG_ACTION_CHECK:
-    {
+    case FLAG_ACTION_CHECK: {
         u16 *ret = ScriptGetVarPointer(ctx);
-        *ret = SysFlagDefogCheck(state);
+        *ret     = SysFlagDefogCheck(state);
         break;
     }
     default:

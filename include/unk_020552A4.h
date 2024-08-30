@@ -5,4 +5,4 @@
 
 void CallTask_RestoreOverworld(TaskManager *taskManager);
 
-#endif //POKEHEARTGOLD_UNK_020552A4_H
+#endif // POKEHEARTGOLD_UNK_020552A4_H

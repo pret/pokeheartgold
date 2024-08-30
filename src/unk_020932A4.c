@@ -1,12 +1,13 @@
-#include "global.h"
 #include "unk_020932A4.h"
-#include "save_pokegear.h"
+
+#include "global.h"
+
 #include "gear_phone.h"
 #include "overlay_26.h"
+#include "save_pokegear.h"
 
-u16 PhoneBookTrainerGetRematchInfo(u8 idx, SaveData *saveData, struct PhoneBook *phoneBook, TimeOfDayWildParam timeOfDay)
-{    
-    MomsSavings *momsSavings = SaveData_GetMomsSavingsAddr(saveData);
+u16 PhoneBookTrainerGetRematchInfo(u8 idx, SaveData *saveData, struct PhoneBook *phoneBook, TimeOfDayWildParam timeOfDay) {
+    MomsSavings *momsSavings     = SaveData_GetMomsSavingsAddr(saveData);
     BOOL isSeekingPhoneRematches = PhoneRematches_IsSeeking(momsSavings, idx);
 
     if (!isSeekingPhoneRematches) {

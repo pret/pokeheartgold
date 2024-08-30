@@ -1,14 +1,16 @@
-#include "global.h"
 #include "save_wifi_history.h"
+
+#include "global.h"
+
 #include "constants/geonet_globe.h"
 
 struct SaveWiFiHistory {
-    u32 unk_000;  // unused but type needed for alignment
+    u32 unk_000; // unused but type needed for alignment
     u8 seenNotJapanese;
     u8 country;
     u8 region;
-    u8 seenLocations[255 * 16];  // does not match as a 2d array
-};  // size: 0xFF8
+    u8 seenLocations[255 * 16]; // does not match as a 2d array
+}; // size: 0xFF8
 
 u32 Save_WiFiHistory_sizeof(void) {
     return sizeof(SaveWiFiHistory);
@@ -28,7 +30,7 @@ void WiFiHistory_SetPlayerGlobeInfo(SaveWiFiHistory *wifiHistory, int country, i
     GF_ASSERT(country < 256);
     GF_ASSERT(region < 64);
     wifiHistory->country = country;
-    wifiHistory->region = region;
+    wifiHistory->region  = region;
     WiFiHistory_SetLocationSeenState(wifiHistory, country, region, 3);
     SaveSubstruct_UpdateCRC(SAVE_WIFI_HISTORY);
 }

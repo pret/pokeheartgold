@@ -1,5 +1,7 @@
 #include "battle/battle_02261FD4.h"
+
 #include "battle/battle_system.h"
+
 #include "math_util.h"
 #include "pokepic.h"
 

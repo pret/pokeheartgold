@@ -1,8 +1,8 @@
 #ifndef POKEHEARTGOLD_ITEM_H
 #define POKEHEARTGOLD_ITEM_H
 
-#include "pm_string.h"
 #include "heap.h"
+#include "pm_string.h"
 
 /*
  * Item slot in memory/save file.
@@ -11,49 +11,48 @@
  * Quantity must be no more than 99 for a TM/HM, or 999 in general.
  */
 typedef struct ItemSlot {
-    u16 id;          // from constants/items.h
-    u16 quantity;    // quantity of that item
+    u16 id;       // from constants/items.h
+    u16 quantity; // quantity of that item
 } ItemSlot;
 
 /*
  * Bit array describing the effects of using the item on a
  * party member.
  */
-typedef struct ItemPartyParam
-{
-    u8 slp_heal:1;
-    u8 psn_heal:1;
-    u8 brn_heal:1;
-    u8 frz_heal:1;
-    u8 prz_heal:1;
-    u8 cfs_heal:1;
-    u8 inf_heal:1;
-    u8 guard_spec:1;
-    u8 revive:1;
-    u8 revive_all:1;
-    u8 level_up:1;
-    u8 evolve:1;
-    u8 atk_stages:4;
-    u8 def_stages:4;
-    u8 spatk_stages:4;
-    u8 spdef_stages:4;
-    u8 speed_stages:4;
-    u8 accuracy_stages:4;
-    u8 critrate_stages:2;
-    u8 pp_up:1;
-    u8 pp_max:1;
-    u8 pp_restore:1;
-    u8 pp_restore_all:1;
-    u8 hp_restore:1;
-    u8 hp_ev_up:1;
-    u8 atk_ev_up:1;
-    u8 def_ev_up:1;
-    u8 speed_ev_up:1;
-    u8 spatk_ev_up:1;
-    u8 spdef_ev_up:1;
-    u8 friendship_mod_lo:1;
-    u8 friendship_mod_med:1;
-    u8 friendship_mod_hi:1;
+typedef struct ItemPartyParam {
+    u8 slp_heal           : 1;
+    u8 psn_heal           : 1;
+    u8 brn_heal           : 1;
+    u8 frz_heal           : 1;
+    u8 prz_heal           : 1;
+    u8 cfs_heal           : 1;
+    u8 inf_heal           : 1;
+    u8 guard_spec         : 1;
+    u8 revive             : 1;
+    u8 revive_all         : 1;
+    u8 level_up           : 1;
+    u8 evolve             : 1;
+    u8 atk_stages         : 4;
+    u8 def_stages         : 4;
+    u8 spatk_stages       : 4;
+    u8 spdef_stages       : 4;
+    u8 speed_stages       : 4;
+    u8 accuracy_stages    : 4;
+    u8 critrate_stages    : 2;
+    u8 pp_up              : 1;
+    u8 pp_max             : 1;
+    u8 pp_restore         : 1;
+    u8 pp_restore_all     : 1;
+    u8 hp_restore         : 1;
+    u8 hp_ev_up           : 1;
+    u8 atk_ev_up          : 1;
+    u8 def_ev_up          : 1;
+    u8 speed_ev_up        : 1;
+    u8 spatk_ev_up        : 1;
+    u8 spdef_ev_up        : 1;
+    u8 friendship_mod_lo  : 1;
+    u8 friendship_mod_med : 1;
+    u8 friendship_mod_hi  : 1;
     s8 hp_ev_up_param;
     s8 atk_ev_up_param;
     s8 def_ev_up_param;
@@ -71,8 +70,7 @@ typedef struct ItemPartyParam
 /*
  * Item parameter data, loaded from itemtool/itemdata/item_data.narc
  */
-typedef struct ItemData
-{
+typedef struct ItemData {
     u16 price;
     u8 holdEffect;
     u8 holdEffectParam;
@@ -80,11 +78,11 @@ typedef struct ItemData
     u8 flingEffect;
     u8 flingPower;
     u8 naturalGiftPower;
-    u16 naturalGiftType:5;
-    u16 prevent_toss:1;
-    u16 selectable:1;
-    u16 fieldPocket:4;
-    u16 battlePocket:5;
+    u16 naturalGiftType : 5;
+    u16 prevent_toss    : 1;
+    u16 selectable      : 1;
+    u16 fieldPocket     : 4;
+    u16 battlePocket    : 5;
     u8 fieldUseFunc;
     u8 battleUseFunc;
     u8 partyUse;
@@ -109,7 +107,6 @@ typedef struct ItemData
  * @param heapId:     Heap ID to allocate the temporary array from
  */
 void MoveItemSlotInList(ItemSlot *slots, int from, int to, int pocket, HeapID heapId);
-
 
 /*
  * int GetItemIndexMapping(u16 itemId, int attrNo)
@@ -379,4 +376,4 @@ ItemData *GetItemDataPtrFromArray(ItemData *itemData, u32 itemDataIdx);
  */
 BOOL ItemIdIsNotJohtoBall(u16 itemId);
 
-#endif //POKEHEARTGOLD_ITEM_H
+#endif // POKEHEARTGOLD_ITEM_H

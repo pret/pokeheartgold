@@ -3,7 +3,7 @@
 
 #include "save.h"
 
-#define HEAP_ID_TRAINER_CARD        ((HeapID)94)
+#define HEAP_ID_TRAINER_CARD ((HeapID)94)
 
 typedef struct UnkStruct_0203F7C2 {
     int *unk0;
@@ -19,8 +19,8 @@ typedef struct TrainerCardAppArgs {
 
 typedef struct {
     u8 unk0[4];
-    u8 unk4a:4;
-    u8 signatureExists:1;
+    u8 unk4a           : 4;
+    u8 signatureExists : 1;
     u8 unk5[0x63];
     u8 signature[0x600];
     u8 unk668[6];
@@ -40,4 +40,4 @@ BOOL TrainerCard_Init(OVY_MANAGER *man, int *state);
 BOOL TrainerCard_Main(OVY_MANAGER *man, int *state);
 BOOL TrainerCard_Exit(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_OVERLAY_TRAINER_CARD_H
+#endif // POKEHEARTGOLD_OVERLAY_TRAINER_CARD_H

@@ -1,28 +1,29 @@
 #include "global.h"
-#include "pokemon.h"
-#include "scrcmd.h"
+
 #include "dex_mon_measures.h"
 #include "field_system.h"
+#include "pokemon.h"
 #include "save_vars_flags.h"
+#include "scrcmd.h"
 #include "script_state_misc.h"
 
 static const u16 sBigMonSizeTable[][3] = {
-    {290,  1,       0},
-    {300,  1,      10},
-    {400,  2,     110},
-    {500,  4,     310},
-    {600,  20,    710},
-    {700,  50,   2710},
-    {800,  100,  7710},
-    {900,  150, 17710},
-    {1000, 150, 32710},
-    {1100, 100, 47710},
-    {1200, 50,  57710},
-    {1300, 20,  62710},
-    {1400, 5,   64710},
-    {1500, 2,   65210},
-    {1600, 1,   65410},
-    {1700, 1,   65510},
+    { 290,  1,   0     },
+    { 300,  1,   10    },
+    { 400,  2,   110   },
+    { 500,  4,   310   },
+    { 600,  20,  710   },
+    { 700,  50,  2710  },
+    { 800,  100, 7710  },
+    { 900,  150, 17710 },
+    { 1000, 150, 32710 },
+    { 1100, 100, 47710 },
+    { 1200, 50,  57710 },
+    { 1300, 20,  62710 },
+    { 1400, 5,   64710 },
+    { 1500, 2,   65210 },
+    { 1600, 1,   65410 },
+    { 1700, 1,   65510 },
 };
 
 static u32 GetMonSizeHash(Pokemon *mon) {
@@ -35,15 +36,15 @@ static u32 GetMonSizeHash(Pokemon *mon) {
     u16 spDefIv_lo;
     u16 ret, ret2;
 
-    pid_lo = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
-    hpIv_lo = GetMonData(mon, MON_DATA_HP_IV, NULL) & 0xF;
-    atkIv_lo = GetMonData(mon, MON_DATA_ATK_IV, NULL) & 0xF;
-    defIv_lo = GetMonData(mon, MON_DATA_DEF_IV, NULL) & 0xF;
-    spdIv_lo = GetMonData(mon, MON_DATA_SPEED_IV, NULL) & 0xF;
+    pid_lo     = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
+    hpIv_lo    = GetMonData(mon, MON_DATA_HP_IV, NULL) & 0xF;
+    atkIv_lo   = GetMonData(mon, MON_DATA_ATK_IV, NULL) & 0xF;
+    defIv_lo   = GetMonData(mon, MON_DATA_DEF_IV, NULL) & 0xF;
+    spdIv_lo   = GetMonData(mon, MON_DATA_SPEED_IV, NULL) & 0xF;
     spAtkIv_lo = GetMonData(mon, MON_DATA_SPATK_IV, NULL) & 0xF;
     spDefIv_lo = GetMonData(mon, MON_DATA_SPDEF_IV, NULL) & 0xF;
 
-    ret = ((spDefIv_lo ^ spAtkIv_lo) * spdIv_lo) ^ (pid_lo >> 8);
+    ret  = ((spDefIv_lo ^ spAtkIv_lo) * spdIv_lo) ^ (pid_lo >> 8);
     ret2 = ((atkIv_lo ^ defIv_lo) * hpIv_lo) ^ ((u8)pid_lo);
     return ret + (ret2 << 8);
 }
@@ -68,13 +69,13 @@ static u32 GetMonSize(int species, int rand) {
 }
 
 static void FormatSizeRecord(FieldSystem *fieldSystem, u8 idx0, u8 idx1, u16 species, u16 rand) {
-    MessageFormat ** msgFmt;
+    MessageFormat **msgFmt;
     u32 score;
     u32 r4;
 
     msgFmt = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
-    score = GetMonSize(species, rand);
-    r4 = LengthConvertToImperial(score);
+    score  = GetMonSize(species, rand);
+    r4     = LengthConvertToImperial(score);
     BufferIntegerAsString(*msgFmt, idx0, r4 / 10, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
     BufferIntegerAsString(*msgFmt, idx1, r4 % 10, 1, PRINTING_MODE_LEFT_ALIGN, TRUE);
 }
@@ -90,14 +91,14 @@ BOOL ScrCmd_SizeRecordCompare(ScriptContext *ctx) {
     FieldSystem *fieldSystem;
 
     fieldSystem = ctx->fieldSystem;
-    ret_p = ScriptGetVarPointer(ctx);
-    slot = ScriptGetVar(ctx);
-    mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), slot);
-    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    rand = GetMonSizeHash(mon);
-    cm1 = GetMonSize(species, rand);
-    record = Save_VarsFlags_GetFishingCompetitionLengthRecord(Save_VarsFlags_Get(fieldSystem->saveData));
-    cm2 = GetMonSize(species, record);
+    ret_p       = ScriptGetVarPointer(ctx);
+    slot        = ScriptGetVar(ctx);
+    mon         = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), slot);
+    species     = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    rand        = GetMonSizeHash(mon);
+    cm1         = GetMonSize(species, rand);
+    record      = Save_VarsFlags_GetFishingCompetitionLengthRecord(Save_VarsFlags_Get(fieldSystem->saveData));
+    cm2         = GetMonSize(species, record);
     {
         u32 in1 = LengthConvertToImperial(cm1);
         u32 in2 = LengthConvertToImperial(cm2);
@@ -121,8 +122,8 @@ BOOL ScrCmd_SizeRecordUpdate(ScriptContext *ctx) {
     FieldSystem *fieldSystem;
 
     fieldSystem = ctx->fieldSystem;
-    slot = ScriptGetVar(ctx);
-    mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), slot);
+    slot        = ScriptGetVar(ctx);
+    mon         = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), slot);
     Save_VarsFlags_SetFishingCompetitionLengthRecord(Save_VarsFlags_Get(fieldSystem->saveData), GetMonSizeHash(mon));
     return FALSE;
 }
@@ -135,10 +136,10 @@ BOOL ScrCmd_BufferRecordSize(ScriptContext *ctx) {
     vu16 rand;
 
     fieldSystem = ctx->fieldSystem;
-    idx0 = ScriptGetVar(ctx);
-    idx1 = ScriptGetVar(ctx);
-    species = ScriptGetVar(ctx);
-    rand = Save_VarsFlags_GetFishingCompetitionLengthRecord(Save_VarsFlags_Get(fieldSystem->saveData));
+    idx0        = ScriptGetVar(ctx);
+    idx1        = ScriptGetVar(ctx);
+    species     = ScriptGetVar(ctx);
+    rand        = Save_VarsFlags_GetFishingCompetitionLengthRecord(Save_VarsFlags_Get(fieldSystem->saveData));
     FormatSizeRecord(fieldSystem, idx0, idx1, species, rand);
     return FALSE;
 }
@@ -151,10 +152,10 @@ BOOL ScrCmd_BufferMonSize(ScriptContext *ctx) {
     u16 slot;
 
     fieldSystem = ctx->fieldSystem;
-    idx0 = ScriptGetVar(ctx);
-    idx1 = ScriptGetVar(ctx);
-    slot = ScriptGetVar(ctx);
-    mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), slot);
+    idx0        = ScriptGetVar(ctx);
+    idx1        = ScriptGetVar(ctx);
+    slot        = ScriptGetVar(ctx);
+    mon         = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), slot);
     FormatSizeRecord(fieldSystem, idx0, idx1, GetMonData(mon, MON_DATA_SPECIES, NULL), GetMonSizeHash(mon));
     return FALSE;
 }

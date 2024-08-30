@@ -3,4 +3,4 @@
 
 void sub_02027010(void);
 
-#endif //POKEHEARTGOLD_UNK_02027010_H
+#endif // POKEHEARTGOLD_UNK_02027010_H

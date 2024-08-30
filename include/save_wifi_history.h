@@ -17,4 +17,4 @@ u8 WiFiHistory_GetNonJapaneseFlag(SaveWiFiHistory *wifiHistory);
 void WiFiHistory_SetNonJapaneseFlag(SaveWiFiHistory *wifiHistory, int flag);
 void WiFiHistory_UpgradeAllLocationsState(SaveWiFiHistory *wifiHistory);
 
-#endif //POKEHEARTGOLD_UNK_0202CA24_H
+#endif // POKEHEARTGOLD_UNK_0202CA24_H

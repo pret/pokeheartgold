@@ -2,21 +2,22 @@
 #define POKEHEARTGOLD_SCRIPT_H
 
 #include "global.h"
-#include "map_events_internal.h"
-#include "field_types_def.h"
-#include "msgdata.h"
-#include "bg_window.h"
-#include "field_player_avatar.h"
-#include "gear_phone.h"
-#include "save_pokegear.h"
-#include "bug_contest_internal.h"
+
 #include "constants/vars.h"
-#include "overlay_manager.h"
-#include "sys_task_api.h"
-#include "list_menu_2d.h"
-#include "render_window.h"
+
+#include "bg_window.h"
+#include "bug_contest_internal.h"
 #include "camera.h"
+#include "field_player_avatar.h"
+#include "field_types_def.h"
+#include "gear_phone.h"
+#include "list_menu_2d.h"
+#include "map_events_internal.h"
+#include "msgdata.h"
+#include "overlay_manager.h"
 #include "render_window.h"
+#include "save_pokegear.h"
+#include "sys_task_api.h"
 
 #define SCRIPT_MODE_STOPPED  0
 #define SCRIPT_MODE_BYTECODE 1
@@ -30,7 +31,7 @@
 
 typedef struct ScriptContext ScriptContext;
 
-#define Unk80_10_C_MAGIC         (222271)
+#define Unk80_10_C_MAGIC (222271)
 
 typedef struct EngagedTrainer {
     int unk0;
@@ -70,11 +71,11 @@ typedef struct ScriptEnvironment {
     void *runningAppData;
     void *miscDataPtr;
     void *unk_B4;
-    void *unk_B8; //PlayerMovementState
+    void *unk_B8; // PlayerMovementState
     Window *pointsBox;
-    u8 padding[0xC]; //FIXME: ugly hack
+    u8 padding[0xC]; // FIXME: ugly hack
     Window *moneyBox;
-    u8 padding2[0xC]; //FIXME: ugly hack 2
+    u8 padding2[0xC]; // FIXME: ugly hack 2
     struct SaveStatsPrinter *saveStatsPrinter;
 } ScriptEnvironment;
 
@@ -118,7 +119,7 @@ typedef enum ScriptEnvField {
     SCRIPTENV_ENGAGED_TRAINER_1_ENCOUNTER_TYPE,
     SCRIPTENV_ENGAGED_TRAINER_1_EVENT,
     SCRIPTENV_ENGAGED_TRAINER_1_FIELD_18,
-    SCRIPTENV_POINTS_BOX, //differs from diamond due to athlete points
+    SCRIPTENV_POINTS_BOX, // differs from diamond due to athlete points
     SCRIPTENV_MONEY_BOX,
     SCRIPTENV_SAVE_STATS_PRINTER,
     SCRIPTENV_SPECIAL_VAR_8000,
@@ -138,13 +139,13 @@ typedef enum ScriptEnvField {
 } ScriptEnvField;
 
 struct UnkStruct_020FC5CC {
-    u32 unk0_00:4;
-    u32 unk0_04:4;
-    u32 unk0_08:4;
-    u32 unk0_0C:4;
-    u32 unk0_10:4;
-    u32 unk0_14:4;
-    u32 unk0_18:8;
+    u32 unk0_00 : 4;
+    u32 unk0_04 : 4;
+    u32 unk0_08 : 4;
+    u32 unk0_0C : 4;
+    u32 unk0_10 : 4;
+    u32 unk0_14 : 4;
+    u32 unk0_18 : 8;
     u8 unk_4;
     u8 unk_5;
     u8 unk_6;

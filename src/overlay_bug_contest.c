@@ -1,29 +1,32 @@
 #include "global.h"
-#include "bug_contest.h"
-#include "pokedex.h"
-#include "math_util.h"
-#include "field_system.h"
-#include "message_format.h"
-#include "wild_encounter.h"
-#include "pokemon_storage_system.h"
+
 #include "constants/items.h"
 #include "constants/trainer_class.h"
+
 #include "msgdata/msg/msg_0246.h"
+
+#include "bug_contest.h"
+#include "field_system.h"
+#include "math_util.h"
+#include "message_format.h"
+#include "pokedex.h"
+#include "pokemon_storage_system.h"
+#include "save_arrays.h"
 #include "unk_02055418.h"
 #include "unk_0205BB1C.h"
-#include "save_arrays.h"
+#include "wild_encounter.h"
 
 const u16 sBugContestOpponentClasses[] = {
-    TRAINERCLASS_BUG_CATCHER,      // Don
-    TRAINERCLASS_BUG_CATCHER,      // Ed
-    TRAINERCLASS_ACE_TRAINER_F,    // Abby
-    TRAINERCLASS_POKEFAN_M,        // William
-    TRAINERCLASS_BUG_CATCHER,      // Benny
-    TRAINERCLASS_CAMPER,           // Barry
-    TRAINERCLASS_PICNICKER,        // Cindy
-    TRAINERCLASS_BUG_CATCHER,      // Josh
-    TRAINERCLASS_YOUNGSTER,        // Samuel
-    TRAINERCLASS_SCHOOL_KID_M,     // Kipp
+    TRAINERCLASS_BUG_CATCHER,   // Don
+    TRAINERCLASS_BUG_CATCHER,   // Ed
+    TRAINERCLASS_ACE_TRAINER_F, // Abby
+    TRAINERCLASS_POKEFAN_M,     // William
+    TRAINERCLASS_BUG_CATCHER,   // Benny
+    TRAINERCLASS_CAMPER,        // Barry
+    TRAINERCLASS_PICNICKER,     // Cindy
+    TRAINERCLASS_BUG_CATCHER,   // Josh
+    TRAINERCLASS_YOUNGSTER,     // Samuel
+    TRAINERCLASS_SCHOOL_KID_M,  // Kipp
 };
 
 void BugContest_BackUpParty(BugContest *bugContest);
@@ -37,12 +40,12 @@ BugContest *BugContest_New(FieldSystem *fieldSystem, u32 weekday) {
 
     bugContest = (BugContest *)AllocFromHeap(HEAP_ID_3, sizeof(BugContest));
     MI_CpuClear8(bugContest, sizeof(BugContest));
-    bugContest->heapId = HEAP_ID_3;
-    bugContest->saveData = fieldSystem->saveData;
-    bugContest->sport_balls = 20;
-    bugContest->mon = AllocMonZeroed(bugContest->heapId);
+    bugContest->heapId       = HEAP_ID_3;
+    bugContest->saveData     = fieldSystem->saveData;
+    bugContest->sport_balls  = 20;
+    bugContest->mon          = AllocMonZeroed(bugContest->heapId);
     bugContest->national_dex = Pokedex_GetNatDexFlag(Save_Pokedex_Get(bugContest->saveData));
-    bugContest->day_of_week = weekday;
+    bugContest->day_of_week  = weekday;
     BugContest_BackUpParty(bugContest);
     BugContest_InitOpponents(bugContest);
     BugContest_InitEncounters(bugContest);
@@ -63,9 +66,9 @@ void BugContest_Judge(BugContest *bugContest) {
     BugContestant *player;
 
     // Judge the player's caught Pokemon
-    player = &bugContest->contestants[BUGCONTESTANT_PLAYER];
-    player->id = BUGCONTESTANT_PLAYER;
-    player->score = BugContest_JudgePlayerMon(bugContest, bugContest->mon);
+    player               = &bugContest->contestants[BUGCONTESTANT_PLAYER];
+    player->id           = BUGCONTESTANT_PLAYER;
+    player->score        = BugContest_JudgePlayerMon(bugContest, bugContest->mon);
     player->data.species = GetMonData(bugContest->mon, MON_DATA_SPECIES, NULL);
 
     // Init the rankings list
@@ -75,17 +78,17 @@ void BugContest_Judge(BugContest *bugContest) {
 
     // Sort the rankings list by selection sort
     for (i = 0; i < BUGCONTESTANT_COUNT - 1; i++) {
-        temp = bugContest->ranking[i];
+        temp    = bugContest->ranking[i];
         cur_max = i;
-        score = bugContest->contestants[bugContest->ranking[i]].score;
+        score   = bugContest->contestants[bugContest->ranking[i]].score;
         for (j = i + 1; j < BUGCONTESTANT_COUNT; j++) {
             score2 = bugContest->contestants[bugContest->ranking[j]].score;
             if (score2 >= score) {
                 cur_max = j;
-                score = score2;
+                score   = score2;
             }
         }
-        bugContest->ranking[i] = bugContest->ranking[cur_max];
+        bugContest->ranking[i]       = bugContest->ranking[cur_max];
         bugContest->ranking[cur_max] = temp;
     }
 
@@ -158,7 +161,7 @@ BOOL BugContest_BufferCaughtMonNick(BugContest *bugContest, MessageFormat *msgFm
         return FALSE;
     }
 
-    string = String_New(POKEMON_NAME_LENGTH+1+1, bugContest->heapId);
+    string = String_New(POKEMON_NAME_LENGTH + 1 + 1, bugContest->heapId);
     GetMonData(bugContest->mon, MON_DATA_NICKNAME_STRING, string);
     BufferString(msgFmt, slot, string, 2, 1, 2);
     String_Delete(string);
@@ -178,8 +181,8 @@ ENC_SLOT *BugContest_GetEncounterSlot(BugContest *bugContest, HeapID heapId) {
             break;
         }
     }
-    slot->species = bugContest->encounters[i].species;
-    modulo = bugContest->encounters[i].lvlmax - bugContest->encounters[i].lvlmin + 1;
+    slot->species   = bugContest->encounters[i].species;
+    modulo          = bugContest->encounters[i].lvlmax - bugContest->encounters[i].lvlmin + 1;
     slot->level_min = (LCRandom() % modulo) + bugContest->encounters[i].lvlmin;
     slot->level_max = 0;
     return slot;
@@ -191,7 +194,7 @@ void BugContest_BackUpParty(BugContest *bugContest) {
     bugContest->party_cur = SaveArray_Party_Get(bugContest->saveData);
     Party_Copy(bugContest->party_cur, bugContest->party_bak);
     bugContest->party_cur_num = Party_GetCount(bugContest->party_cur);
-    bugContest->lead_mon_idx = Save_GetPartyLeadAlive(bugContest->saveData);
+    bugContest->lead_mon_idx  = Save_GetPartyLeadAlive(bugContest->saveData);
     // You can only enter the contest with one pokemon, so
     // remove any Pokemon other than the first that can battle.
     for (i = 0; i < bugContest->party_cur_num - 1; i++) {
@@ -253,7 +256,7 @@ void BugContest_InitOpponents(BugContest *bugContest) {
         return;
     }
     flen = FS_GetLength(&file);
-    bin = AllocFromHeapAtEnd(bugContest->heapId, flen);
+    bin  = AllocFromHeapAtEnd(bugContest->heapId, flen);
     idxs = AllocFromHeapAtEnd(bugContest->heapId, 8);
     FS_ReadFile(&file, bin, flen);
     for (i = 0; i < BUGCONTESTANT_NPC_COUNT; i++) {
@@ -264,8 +267,8 @@ void BugContest_InitOpponents(BugContest *bugContest) {
             rand = LCRandom() % 10;
         } while (BugContest_ContestantIsRegisteredN(bugContest, rand, i));
         bugContest->contestants[i].id = rand;
-        curbin = &bin[8 * bugContest->contestants[i].id];
-        k = 0;
+        curbin                        = &bin[8 * bugContest->contestants[i].id];
+        k                             = 0;
         for (j = 0; j < 8; j++) {
             if (curbin[j].national && !bugContest->national_dex) {
                 continue;
@@ -276,7 +279,7 @@ void BugContest_InitOpponents(BugContest *bugContest) {
             idxs[k++] = j;
         }
         MI_CpuCopy8(&curbin[idxs[LCRandom() % k]], &bugContest->contestants[i].data, sizeof(BugContestantData));
-        score = (LCRandom() % (2 * bugContest->contestants[i].data.randmod)) - bugContest->contestants[i].data.randmod;
+        score                            = (LCRandom() % (2 * bugContest->contestants[i].data.randmod)) - bugContest->contestants[i].data.randmod;
         bugContest->contestants[i].score = score + bugContest->contestants[i].data.score;
     }
     FreeToHeap(idxs);
@@ -295,7 +298,7 @@ void BugContest_InitEncounters(BugContest *bugContest) {
         GF_ASSERT(0);
         return;
     }
-    flen = FS_GetLength(&file);
+    flen   = FS_GetLength(&file);
     bugmon = AllocFromHeapAtEnd(bugContest->heapId, flen);
     FS_ReadFile(&file, bugmon, flen);
     if (bugContest->national_dex) {

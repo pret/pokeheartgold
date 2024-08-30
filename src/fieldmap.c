@@ -1,16 +1,18 @@
 #include "start_menu.h"
 #define _IN_FIELDMAP_C
 
-#include "fieldmap.h"
-#include "map_header.h"
-#include "save_vars_flags.h"
-#include "map_events.h"
-#include "task.h"
-#include "map_object.h"
-#include "field_system.h"
 #include "constants/std_script.h"
+
 #include "fielddata/script/scr_seq.naix"
 #include "msgdata/msg.naix"
+
+#include "field_system.h"
+#include "fieldmap.h"
+#include "map_events.h"
+#include "map_header.h"
+#include "map_object.h"
+#include "save_vars_flags.h"
+#include "task.h"
 
 struct ScriptBankMapping {
     u16 scriptIdLo;
@@ -29,36 +31,36 @@ struct HiddenItemData {
 #include "data/fieldmap.h"
 
 const struct ScriptBankMapping sScriptBankMapping[30] = {
-    {_std_scratch_card,        NARC_scr_seq_scr_seq_0263_bin, NARC_msg_msg_0433_bin},
-    {_std_frontier_records,    NARC_scr_seq_scr_seq_0264_bin, NARC_msg_msg_0019_bin},
-    {_std_frontier_move_tutor, NARC_scr_seq_scr_seq_0002_bin, NARC_msg_msg_0748_bin},
-    {_std_bug_contest,         NARC_scr_seq_scr_seq_0151_bin, NARC_msg_msg_0246_bin},
-    {_std_trainer_house,       NARC_scr_seq_scr_seq_0952_bin, NARC_msg_msg_0726_bin},
-    {10300,                    NARC_scr_seq_scr_seq_0734_bin, NARC_msg_msg_0444_bin},
-    {_std_mystery_gift,        NARC_scr_seq_scr_seq_0144_bin, NARC_msg_msg_0209_bin},
-    {10150,                    NARC_scr_seq_scr_seq_0955_bin, NARC_msg_msg_0732_bin},
-    {_std_tv,                  NARC_scr_seq_scr_seq_0954_bin, NARC_msg_msg_0733_bin},
-    {_std_field_move,          NARC_scr_seq_scr_seq_0146_bin, NARC_msg_msg_0211_bin},
-    {_std_dex_evaluation,      NARC_scr_seq_scr_seq_0148_bin, NARC_msg_msg_0666_bin},
-    { 9900,                    NARC_scr_seq_scr_seq_0136_bin, NARC_msg_msg_0040_bin},
-    { _std_pokeathlon,         NARC_scr_seq_scr_seq_0167_bin, NARC_msg_msg_0312_bin},
-    { 9800,                    NARC_scr_seq_scr_seq_0166_bin, NARC_msg_msg_0043_bin},
-    { _std_following_mon,      NARC_scr_seq_scr_seq_0163_bin, NARC_msg_msg_0266_bin},
-    { _std_init,               NARC_scr_seq_scr_seq_0149_bin, NARC_msg_msg_0040_bin},
-    { _std_daycare,            NARC_scr_seq_scr_seq_0265_bin, NARC_msg_msg_0439_bin},
-    { _std_group,              NARC_scr_seq_scr_seq_0143_bin, NARC_msg_msg_0204_bin},
-    {_std_wifi_reception,      NARC_scr_seq_scr_seq_0164_bin, NARC_msg_msg_0267_bin},
-    {_std_colosseum,           NARC_scr_seq_scr_seq_0000_bin, NARC_msg_msg_0014_bin},
-    {_std_comm_reception,      NARC_scr_seq_scr_seq_0004_bin, NARC_msg_msg_0046_bin},
-    {_std_chatot,              NARC_scr_seq_scr_seq_0165_bin, NARC_msg_msg_0268_bin},
-    {_std_safari,              NARC_scr_seq_scr_seq_0262_bin, NARC_msg_msg_0427_bin},
-    {_std_hidden_item,         NARC_scr_seq_scr_seq_0145_bin, NARC_msg_msg_0210_bin}, // Hidden Items
-    {_std_item_ball,           NARC_scr_seq_scr_seq_0141_bin, NARC_msg_msg_0199_bin},
-    {_std_npc_trainer_2,       NARC_scr_seq_scr_seq_0953_bin, NARC_msg_msg_0040_bin},
-    {_std_npc_trainer,         NARC_scr_seq_scr_seq_0953_bin, NARC_msg_msg_0040_bin},
-    {_std_apricorn_tree,       NARC_scr_seq_scr_seq_0150_bin, NARC_msg_msg_0023_bin},
-    {_std_bookshelves,         NARC_scr_seq_scr_seq_0001_bin, NARC_msg_msg_0020_bin},
-    {_std_misc,                NARC_scr_seq_scr_seq_0003_bin, NARC_msg_msg_0040_bin},
+    { _std_scratch_card,        NARC_scr_seq_scr_seq_0263_bin, NARC_msg_msg_0433_bin },
+    { _std_frontier_records,    NARC_scr_seq_scr_seq_0264_bin, NARC_msg_msg_0019_bin },
+    { _std_frontier_move_tutor, NARC_scr_seq_scr_seq_0002_bin, NARC_msg_msg_0748_bin },
+    { _std_bug_contest,         NARC_scr_seq_scr_seq_0151_bin, NARC_msg_msg_0246_bin },
+    { _std_trainer_house,       NARC_scr_seq_scr_seq_0952_bin, NARC_msg_msg_0726_bin },
+    { 10300,                    NARC_scr_seq_scr_seq_0734_bin, NARC_msg_msg_0444_bin },
+    { _std_mystery_gift,        NARC_scr_seq_scr_seq_0144_bin, NARC_msg_msg_0209_bin },
+    { 10150,                    NARC_scr_seq_scr_seq_0955_bin, NARC_msg_msg_0732_bin },
+    { _std_tv,                  NARC_scr_seq_scr_seq_0954_bin, NARC_msg_msg_0733_bin },
+    { _std_field_move,          NARC_scr_seq_scr_seq_0146_bin, NARC_msg_msg_0211_bin },
+    { _std_dex_evaluation,      NARC_scr_seq_scr_seq_0148_bin, NARC_msg_msg_0666_bin },
+    { 9900,                     NARC_scr_seq_scr_seq_0136_bin, NARC_msg_msg_0040_bin },
+    { _std_pokeathlon,          NARC_scr_seq_scr_seq_0167_bin, NARC_msg_msg_0312_bin },
+    { 9800,                     NARC_scr_seq_scr_seq_0166_bin, NARC_msg_msg_0043_bin },
+    { _std_following_mon,       NARC_scr_seq_scr_seq_0163_bin, NARC_msg_msg_0266_bin },
+    { _std_init,                NARC_scr_seq_scr_seq_0149_bin, NARC_msg_msg_0040_bin },
+    { _std_daycare,             NARC_scr_seq_scr_seq_0265_bin, NARC_msg_msg_0439_bin },
+    { _std_group,               NARC_scr_seq_scr_seq_0143_bin, NARC_msg_msg_0204_bin },
+    { _std_wifi_reception,      NARC_scr_seq_scr_seq_0164_bin, NARC_msg_msg_0267_bin },
+    { _std_colosseum,           NARC_scr_seq_scr_seq_0000_bin, NARC_msg_msg_0014_bin },
+    { _std_comm_reception,      NARC_scr_seq_scr_seq_0004_bin, NARC_msg_msg_0046_bin },
+    { _std_chatot,              NARC_scr_seq_scr_seq_0165_bin, NARC_msg_msg_0268_bin },
+    { _std_safari,              NARC_scr_seq_scr_seq_0262_bin, NARC_msg_msg_0427_bin },
+    { _std_hidden_item,         NARC_scr_seq_scr_seq_0145_bin, NARC_msg_msg_0210_bin }, // Hidden Items
+    { _std_item_ball,           NARC_scr_seq_scr_seq_0141_bin, NARC_msg_msg_0199_bin },
+    { _std_npc_trainer_2,       NARC_scr_seq_scr_seq_0953_bin, NARC_msg_msg_0040_bin },
+    { _std_npc_trainer,         NARC_scr_seq_scr_seq_0953_bin, NARC_msg_msg_0040_bin },
+    { _std_apricorn_tree,       NARC_scr_seq_scr_seq_0150_bin, NARC_msg_msg_0023_bin },
+    { _std_bookshelves,         NARC_scr_seq_scr_seq_0001_bin, NARC_msg_msg_0020_bin },
+    { _std_misc,                NARC_scr_seq_scr_seq_0003_bin, NARC_msg_msg_0040_bin },
 };
 
 void StartMapSceneScript(FieldSystem *fieldSystem, u16 script, LocalMapObject *lastInteracted) {
@@ -69,25 +71,25 @@ void StartMapSceneScript(FieldSystem *fieldSystem, u16 script, LocalMapObject *l
 
 void FieldSystem_SetEngagedTrainer(FieldSystem *fieldSystem, LocalMapObject *obj, int a2, int a3, int a4, int trainerId, int encounterType, int idx) {
     ScriptEnvironment *env = TaskManager_GetEnvironment(fieldSystem->taskman);
-    EngagedTrainer *r0 = &env->engagedTrainers[idx];
-    r0->unk0 = a2;
-    r0->unk4 = a3;
-    r0->unk8 = a4;
-    r0->trainerId = trainerId;
-    r0->encounterType = encounterType;
-    r0->overworldEvent = obj;
+    EngagedTrainer *r0     = &env->engagedTrainers[idx];
+    r0->unk0               = a2;
+    r0->unk4               = a3;
+    r0->unk8               = a4;
+    r0->trainerId          = trainerId;
+    r0->encounterType      = encounterType;
+    r0->overworldEvent     = obj;
 }
 
 void QueueScript(TaskManager *taskman, u16 script, LocalMapObject *lastInteracted, void *a3) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
-    ScriptEnvironment *env = ScriptEnvironment_New();
+    ScriptEnvironment *env   = ScriptEnvironment_New();
     SetupScriptEngine(fieldSystem, env, script, lastInteracted, a3);
     TaskManager_Call(taskman, Task_RunScripts, env);
 }
 
 void StartScriptFromMenu(TaskManager *taskman, u16 script, LocalMapObject *lastInteracted) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
-    ScriptEnvironment *env = ScriptEnvironment_New();
+    ScriptEnvironment *env   = ScriptEnvironment_New();
     SetupScriptEngine(fieldSystem, env, script, lastInteracted, NULL);
     TaskManager_Jump(taskman, Task_RunScripts, env);
 }
@@ -97,16 +99,16 @@ BOOL Task_RunScripts(TaskManager *taskman) {
     FieldSystem *fieldSystem;
     ScriptEnvironment *env;
 
-    env = TaskManager_GetEnvironment(taskman);
+    env         = TaskManager_GetEnvironment(taskman);
     fieldSystem = TaskManager_GetFieldSystem(taskman);
 
     switch (env->state) {
     case 0:
-        env->scriptContexts[0] = CreateScriptContext(fieldSystem, env->activeScriptNumber);
+        env->scriptContexts[0]        = CreateScriptContext(fieldSystem, env->activeScriptNumber);
         env->activeScriptContextCount = 1;
-        env->msgfmt = MessageFormat_New_Custom(8, 64, HEAP_ID_FIELD);
-        env->stringBuffer0 = String_New(1024, HEAP_ID_FIELD);
-        env->stringBuffer1 = String_New(1024, HEAP_ID_FIELD);
+        env->msgfmt                   = MessageFormat_New_Custom(8, 64, HEAP_ID_FIELD);
+        env->stringBuffer0            = String_New(1024, HEAP_ID_FIELD);
+        env->stringBuffer1            = String_New(1024, HEAP_ID_FIELD);
         env->state++;
         // fallthrough
     case 1:
@@ -156,12 +158,12 @@ void DestroyScriptContext(ScriptContext *ctx) {
     FreeToHeap(ctx);
 }
 
-void SetupScriptEngine(FieldSystem *fieldSystem, ScriptEnvironment *env, u16 script, LocalMapObject *lastInteracted, void* a4) {
-    u16 *varLastInteracted = FieldSysGetAttrAddrInternal(env, SCRIPTENV_SPECIAL_VAR_LAST_INTERACTED);
-    env->facingDirection = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
-    env->lastInteracted = lastInteracted;
+void SetupScriptEngine(FieldSystem *fieldSystem, ScriptEnvironment *env, u16 script, LocalMapObject *lastInteracted, void *a4) {
+    u16 *varLastInteracted  = FieldSysGetAttrAddrInternal(env, SCRIPTENV_SPECIAL_VAR_LAST_INTERACTED);
+    env->facingDirection    = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
+    env->lastInteracted     = lastInteracted;
     env->activeScriptNumber = script;
-    env->unk_34 = a4;
+    env->unk_34             = a4;
     if (lastInteracted != NULL) {
         *varLastInteracted = MapObject_GetID(lastInteracted);
     }
@@ -183,7 +185,7 @@ void SetUpScriptContextForMap(FieldSystem *fieldSystem, ScriptContext *ctx, u16 
     u16 r6;
 
     ctx->fieldSystem = fieldSystem;
-    r6 = LoadScriptsAndMessagesByMapId(fieldSystem, ctx, scriptId);
+    r6               = LoadScriptsAndMessagesByMapId(fieldSystem, ctx, scriptId);
     SetupBytecodeScript(ctx, ctx->mapScripts);
     ScriptRunByIndex(ctx, r6);
     sub_0203FD68(ctx, fieldSystem->taskman);
@@ -209,12 +211,12 @@ u16 LoadScriptsAndMessagesByMapId(FieldSystem *fieldSystem, ScriptContext *ctx, 
 
 void LoadScriptsAndMessagesParameterized(FieldSystem *fieldSystem, ScriptContext *ctx, int scriptBank, u32 msgBank) {
     ctx->mapScripts = AllocAndReadWholeNarcMemberByIdPair(NARC_fielddata_script_scr_seq, scriptBank, HEAP_ID_FIELD);
-    ctx->msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msgBank, HEAP_ID_FIELD);
+    ctx->msgdata    = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msgBank, HEAP_ID_FIELD);
 }
 
 void LoadScriptsAndMessagesForCurrentMap(FieldSystem *fieldSystem, ScriptContext *ctx) {
     ctx->mapScripts = LoadScriptsForCurrentMap(fieldSystem->location->mapId);
-    ctx->msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, GetCurrentMapMessageBank(fieldSystem->location->mapId), HEAP_ID_FIELD);
+    ctx->msgdata    = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, GetCurrentMapMessageBank(fieldSystem->location->mapId), HEAP_ID_FIELD);
 }
 
 void *FieldSysGetAttrAddrInternal(ScriptEnvironment *environment, enum ScriptEnvField field) {
@@ -322,7 +324,7 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *environment, enum ScriptEnv
     }
 }
 
-void* FieldSysGetAttrAddr(FieldSystem *fieldSystem, enum ScriptEnvField field) {
+void *FieldSysGetAttrAddr(FieldSystem *fieldSystem, enum ScriptEnvField field) {
     ScriptEnvironment *unk = TaskManager_GetEnvironment(fieldSystem->taskman);
     GF_ASSERT(unk != NULL);
     GF_ASSERT(unk->check == Unk80_10_C_MAGIC);
@@ -399,7 +401,7 @@ void ClearTempFieldEventData(FieldSystem *fieldSystem) {
     u16 *vars;
 
     SaveVarsFlags *state = Save_VarsFlags_Get(fieldSystem->saveData);
-    flags = Save_VarsFlags_GetFlagAddr(state, MAPTEMP_FLAG_BASE);
+    flags                = Save_VarsFlags_GetFlagAddr(state, MAPTEMP_FLAG_BASE);
     memset(flags, 0, NUM_MAPTEMP_FLAGS / 8);
     vars = Save_VarsFlags_GetVarAddr(state, TEMP_VAR_BASE);
     memset(vars, 0, NUM_TEMP_VARS * 2);
@@ -409,7 +411,7 @@ void ClearDailyFlags(FieldSystem *fieldSystem) {
     u8 *flags;
 
     SaveVarsFlags *state = Save_VarsFlags_Get(fieldSystem->saveData);
-    flags = Save_VarsFlags_GetFlagAddr(state, DAILY_FLAG_BASE);
+    flags                = Save_VarsFlags_GetFlagAddr(state, DAILY_FLAG_BASE);
     memset(flags, 0, NUM_DAILY_FLAGS / 8);
 }
 
@@ -488,8 +490,8 @@ BOOL GetHiddenItemParams(ScriptEnvironment *env, u16 script) {
     var_8000 = FieldSysGetAttrAddrInternal(env, SCRIPTENV_SPECIAL_VAR_8000);
     var_8001 = FieldSysGetAttrAddrInternal(env, SCRIPTENV_SPECIAL_VAR_8001);
     var_8002 = FieldSysGetAttrAddrInternal(env, SCRIPTENV_SPECIAL_VAR_8002);
-    table = sHiddenItemParam;
-    idx = HiddenItemScriptNoToHiddenItemIdx(script);
+    table    = sHiddenItemParam;
+    idx      = HiddenItemScriptNoToHiddenItemIdx(script);
 
     for (i = 0; i < NELEMS(sHiddenItemParam); i++) {
         if (idx == table[i].index) {
@@ -507,7 +509,7 @@ BOOL GetHiddenItemParams(ScriptEnvironment *env, u16 script) {
     return TRUE;
 }
 
-HiddenItemResponse* AllocAndFetchNearbyHiddenItems(FieldSystem *fieldSystem, HeapID heapId) {
+HiddenItemResponse *AllocAndFetchNearbyHiddenItems(FieldSystem *fieldSystem, HeapID heapId) {
     HiddenItemResponse *ret;
     const BG_EVENT *bgEvents;
     int i;
@@ -520,28 +522,28 @@ HiddenItemResponse* AllocAndFetchNearbyHiddenItems(FieldSystem *fieldSystem, Hea
     int top;
     int bottom;
 
-    j = 0;
+    j       = 0;
     num_bgs = Field_GetNumBgEvents(fieldSystem);
     num_bgs++;
     ret = AllocFromHeap(heapId, num_bgs * sizeof(HiddenItemResponse));
     if (num_bgs == 1) {
         ret[0].unk4 = 0xFF;
-        ret[0].x = -1;
-        ret[0].y = -1;
+        ret[0].x    = -1;
+        ret[0].y    = -1;
         return ret;
     }
     bgEvents = Field_GetBgEvents(fieldSystem);
     if (bgEvents == NULL) {
         ret[0].unk4 = 0xFF;
-        ret[0].x = -1;
-        ret[0].y = -1;
+        ret[0].x    = -1;
+        ret[0].y    = -1;
         return ret;
     }
-    x = GetPlayerXCoord(fieldSystem->playerAvatar);
-    y = GetPlayerYCoord(fieldSystem->playerAvatar);
-    left = x - 17;
-    right = x + 17;
-    top = y - 17;
+    x      = GetPlayerXCoord(fieldSystem->playerAvatar);
+    y      = GetPlayerYCoord(fieldSystem->playerAvatar);
+    left   = x - 17;
+    right  = x + 17;
+    top    = y - 17;
     bottom = y + 17;
     if (left < 0) {
         left = 0;
@@ -553,22 +555,21 @@ HiddenItemResponse* AllocAndFetchNearbyHiddenItems(FieldSystem *fieldSystem, Hea
     // To fix, subtract 1 from num_bgs in the condition clause
     for (i = 0; i < num_bgs; i++) {
         if (bgEvents[i].type == 2
-        && !FieldSystem_FlagCheck(fieldSystem, HiddenItemScriptNoToFlagId(bgEvents[i].scr))) {
+            && !FieldSystem_FlagCheck(fieldSystem, HiddenItemScriptNoToFlagId(bgEvents[i].scr))) {
             if (bgEvents[i].x >= left
-               && bgEvents[i].x <= right
-               && bgEvents[i].y >= top
-               && bgEvents[i].y <= bottom
-            ) {
+                && bgEvents[i].x <= right
+                && bgEvents[i].y >= top
+                && bgEvents[i].y <= bottom) {
                 ret[j].unk4 = sub_02040578(bgEvents[i].scr);
-                ret[j].x = bgEvents[i].x - x;
-                ret[j].y = bgEvents[i].y - y;
+                ret[j].x    = bgEvents[i].x - x;
+                ret[j].y    = bgEvents[i].y - y;
                 j++;
             }
         }
     }
     ret[j].unk4 = 0xFF;
-    ret[j].x = -1;
-    ret[j].y = -1;
+    ret[j].x    = -1;
+    ret[j].y    = -1;
     return ret;
 }
 

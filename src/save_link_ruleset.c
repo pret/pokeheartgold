@@ -1,5 +1,6 @@
-#include "global.h"
 #include "save_link_ruleset.h"
+
+#include "global.h"
 
 u32 LinkBattleRuleset_sizeof(void) {
     return sizeof(LinkBattleRuleset);
@@ -78,10 +79,10 @@ int LinkBattleRuleset_GetRuleValue(const LinkBattleRuleset *ruleset, LinkBattleR
         break;
     case LINKBATTLERULE_SOUL_DEW_CLAUSE:
         ret = ruleset->totalLevel
-        #ifdef BUGFIX_SOUL_DEW_BAN
-        & FLAG_RULESET_BAN_SOUL_DEW
-        #endif //BUGFIX_SOUL_DEW_BAN
-        ;
+#ifdef BUGFIX_SOUL_DEW_BAN
+            & FLAG_RULESET_BAN_SOUL_DEW
+#endif // BUGFIX_SOUL_DEW_BAN
+            ;
         break;
     }
     return ret;

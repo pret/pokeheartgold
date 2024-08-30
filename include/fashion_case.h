@@ -19,11 +19,11 @@ typedef struct FashionCase {
     u8 padding_3C[4];
 } FashionCase;
 
-typedef struct SaveFashionData { //todo: rename to SaveFashionData
-    SaveFashionDataSub unk_000[11]; // 000
+typedef struct SaveFashionData {      // todo: rename to SaveFashionData
+    SaveFashionDataSub unk_000[11];   // 000
     SaveFashionDataSub3FC unk_3FC[5]; // 3FC
-    FashionCase fashionCase; // 7F4
-} SaveFashionData; // size=0x834
+    FashionCase fashionCase;          // 7F4
+} SaveFashionData;                    // size=0x834
 
 SaveFashionData *Save_FashionData_Get(SaveData *saveData);
 FashionCase *Save_FashionData_GetFashionCase(SaveFashionData *unk);
@@ -40,4 +40,4 @@ void FashionCase_GiveContestBackground(FashionCase *fashionCase, int id);
 int sub_0202BA5C(FashionCase *fashionCase, int a1);
 void sub_0202BB7C(FashionCase *fashionCase, int a1, int a2);
 
-#endif //POKEHEARTGOLD_FASHION_CASE_H
+#endif // POKEHEARTGOLD_FASHION_CASE_H

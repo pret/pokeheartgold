@@ -1,7 +1,10 @@
-#include "global.h"
 #include "move.h"
-#include "filesystem.h"
+
+#include "global.h"
+
 #include "constants/moves.h"
+
+#include "filesystem.h"
 
 void LoadMoveEntry(u16 moveId, MoveTbl *dest);
 u32 GetMoveTblAttr(MoveTbl *movedata, MoveAttr attrno);
@@ -25,7 +28,7 @@ u8 GetMoveMaxPP(u16 moveId, u8 ppUps) {
     return pp + ((pp * 20 * ppUps) / 100);
 }
 
-u32 GetMoveTblAttr(MoveTbl * moveTbl, MoveAttr attr) {
+u32 GetMoveTblAttr(MoveTbl *moveTbl, MoveAttr attr) {
     switch (attr) {
     case MOVEATTR_EFFECT:
         return moveTbl->effect;
@@ -56,6 +59,6 @@ u32 GetMoveTblAttr(MoveTbl * moveTbl, MoveAttr attr) {
     }
 }
 
-void LoadMoveEntry(u16 moveId, MoveTbl * moveTbl) {
+void LoadMoveEntry(u16 moveId, MoveTbl *moveTbl) {
     ReadWholeNarcMemberByIdPair(moveTbl, NARC_poketool_waza_waza_tbl, moveId);
 }

@@ -2,30 +2,31 @@
 #define POKEDIAMOND_POKEMON_H
 
 #include "pokemon_types_def.h"
-#include "unk_02016EDC.h"
 #include "unk_0200CF18.h"
+#include "unk_02016EDC.h"
 // Enums
 
-#include "constants/species.h"
 #include "constants/pokemon.h"
-#include "pm_string.h"
-#include "player_data.h"
-#include "sound_chatot.h"
+#include "constants/species.h"
+
 #include "filesystem.h"
+#include "player_data.h"
+#include "pm_string.h"
+#include "sound_chatot.h"
 
-#define LEVEL_UP_LEARNSET_END             0xFFFF
-#define LEVEL_UP_LEARNSET_MAX                 21
+#define LEVEL_UP_LEARNSET_END 0xFFFF
+#define LEVEL_UP_LEARNSET_MAX 21
 
-#define LEVEL_UP_LEARNSET_MOVEID_MASK     0x01FF
-#define LEVEL_UP_LEARNSET_MOVEID_SHIFT         0
-#define LEVEL_UP_LEARNSET_LEVEL_MASK      0xFE00
-#define LEVEL_UP_LEARNSET_LEVEL_SHIFT          9
+#define LEVEL_UP_LEARNSET_MOVEID_MASK  0x01FF
+#define LEVEL_UP_LEARNSET_MOVEID_SHIFT 0
+#define LEVEL_UP_LEARNSET_LEVEL_MASK   0xFE00
+#define LEVEL_UP_LEARNSET_LEVEL_SHIFT  9
 
 #define LEVEL_UP_LEARNSET_MOVE(x) ((u16)(((x) & LEVEL_UP_LEARNSET_MOVEID_MASK) >> LEVEL_UP_LEARNSET_MOVEID_SHIFT))
-#define LEVEL_UP_LEARNSET_LVL(x) (((x) & LEVEL_UP_LEARNSET_LEVEL_MASK) >> LEVEL_UP_LEARNSET_LEVEL_SHIFT)
+#define LEVEL_UP_LEARNSET_LVL(x)  (((x) & LEVEL_UP_LEARNSET_LEVEL_MASK) >> LEVEL_UP_LEARNSET_LEVEL_SHIFT)
 
-#define MOVE_APPEND_FULL    0xFFFFu
-#define MOVE_APPEND_KNOWN   0xFFFEu
+#define MOVE_APPEND_FULL  0xFFFFu
+#define MOVE_APPEND_KNOWN 0xFFFEu
 
 #define NUM_BANNED_BATTLE_FRONTIER 18
 
@@ -52,7 +53,7 @@ u32 GetBoxMonData(BoxPokemon *boxMon, int attr, void *ptr);
 void SetMonData(Pokemon *mon, int attr, const void *ptr);
 void SetBoxMonData(BoxPokemon *boxMon, int attr, const void *ptr);
 void AddMonData(Pokemon *mon, int attr, int amount);
-//void AddBoxMonData(BoxPokemon *boxMon, int attr, int amount);
+// void AddBoxMonData(BoxPokemon *boxMon, int attr, int amount);
 BASE_STATS *AllocAndLoadMonPersonal_HandleAlternateForm(int species, int form, HeapID heapId);
 BASE_STATS *AllocAndLoadMonPersonal(int species, HeapID heapId);
 int GetPersonalAttr(const BASE_STATS *baseStats, int attr);
@@ -208,4 +209,4 @@ void CalcMonPokeathlonPerformance(Pokemon *mon, struct PokeathlonTodayPerformanc
 void CalcBoxmonPokeathlonStars(struct PokeathlonPerformanceStars *dest, BoxPokemon *boxMon, const s8 *aprijuice, HeapID heapId);
 void CalcMonPokeathlonStars(struct PokeathlonPerformanceStars *dest, Pokemon *mon, const s8 *aprijuice, HeapID heapId);
 
-#endif //POKEDIAMOND_POKEMON_H
+#endif // POKEDIAMOND_POKEMON_H

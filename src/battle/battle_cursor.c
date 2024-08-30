@@ -1,5 +1,7 @@
-#include "global.h"
 #include "battle/battle_cursor.h"
+
+#include "global.h"
+
 #include "unk_0200CF18.h"
 
 static void BattleCursor_Update(SysTask *task, void *data);
@@ -21,16 +23,16 @@ void BattleCursor_FreeResources(SpriteGfxHandler *gfxHandler, u32 character, u32
 }
 
 static const UnkTemplate_0200D748 ov12_0226EBA0 = {
-    .x = 0,
-    .y = 0,
-    .z = 0,
-    .animation = 0,
+    .x              = 0,
+    .y              = 0,
+    .z              = 0,
+    .animation      = 0,
     .spritePriority = 0,
-    .pal = 0,
-    .vram = NNS_G2D_VRAM_TYPE_2DSUB,
-    .resIdList = {0, 0, 0, 0, -1, -1},
-    .bgPriority = 0,
-    .vramTransfer = 0
+    .pal            = 0,
+    .vram           = NNS_G2D_VRAM_TYPE_2DSUB,
+    .resIdList      = { 0, 0, 0, 0, -1, -1 },
+    .bgPriority     = 0,
+    .vramTransfer   = 0
 };
 
 BattleCursor *BattleCursor_New(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 a7, u32 a8) {
@@ -38,13 +40,13 @@ BattleCursor *BattleCursor_New(SpriteRenderer *renderer, SpriteGfxHandler *gfxHa
     UnkTemplate_0200D748 unkStruct;
     int i;
 
-    unkStruct = ov12_0226EBA0;
-    unkStruct.resIdList[0] = character;
-    unkStruct.resIdList[1] = pal;
-    unkStruct.resIdList[2] = cell;
-    unkStruct.resIdList[3] = animation;
+    unkStruct                = ov12_0226EBA0;
+    unkStruct.resIdList[0]   = character;
+    unkStruct.resIdList[1]   = pal;
+    unkStruct.resIdList[2]   = cell;
+    unkStruct.resIdList[3]   = animation;
     unkStruct.spritePriority = a7;
-    unkStruct.bgPriority = a8;
+    unkStruct.bgPriority     = a8;
 
     cursor = AllocFromHeap(heapId, sizeof(BattleCursor));
     MI_CpuFill8(cursor, 0, sizeof(BattleCursor));
@@ -87,7 +89,7 @@ void ov12_0226BA4C(BattleCursor *cursor, int x0, int y0, int x1, int y1, int x2,
 }
 
 void ov12_0226BAD4(BattleCursor *cursor, int x0, int y0, int x1, int y1, int x2, int y2, int x3, int y3) {
-    ov12_0226BA4C(cursor, x0, y0, x1, y1, x2, y2, x3, y3, (fx32) 0xC0000);
+    ov12_0226BA4C(cursor, x0, y0, x1, y1, x2, y2, x3, y3, (fx32)0xC0000);
 }
 
 void ov12_0226BAFC(BattleCursor *cursor, int left, int right, int top, int bottom) {

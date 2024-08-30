@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_GF_RTC_H
 
 #include <nitro/rtc/ARM9/api.h>
+
 #include "system.h"
 
 typedef enum RTC_TimeOfDay {
@@ -35,17 +36,17 @@ TimeOfDayWildParam GF_RTC_GetTimeOfDayWildParamByHour(s32 hour);
 void GF_InitRTCWork(void);
 void GF_RTC_UpdateOnFrame(void);
 s32 GF_RTC_TimeToSec(void);
-s32 GF_RTC_GetDayOfYear(const RTCDate * date);
+s32 GF_RTC_GetDayOfYear(const RTCDate *date);
 s64 GF_RTC_TimeDelta(s64 first, s64 last);
 void GF_RTC_UnfreezeTime(void);
 void GF_RTC_SetAndFreezeTime(s32 hour, s32 minute);
 
 // doesn't match as a static inline
-#define RngSeedFromRTC() ({ \
-    RTCDate date; \
-    RTCTime time; \
-    GF_RTC_CopyDateTime(&date, &time); \
+#define RngSeedFromRTC() ({                                                                                                                      \
+    RTCDate date;                                                                                                                                \
+    RTCTime time;                                                                                                                                \
+    GF_RTC_CopyDateTime(&date, &time);                                                                                                           \
     date.year + date.month * 0x100 * date.day * 0x10000 + time.hour * 0x10000 + (time.minute + time.second) * 0x1000000 + gSystem.vblankCounter; \
 })
 
-#endif //POKEHEARTGOLD_GF_RTC_H
+#endif // POKEHEARTGOLD_GF_RTC_H

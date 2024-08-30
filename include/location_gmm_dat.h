@@ -13,4 +13,4 @@ int LocationGmmDatGetEarthPlaceDatId(int index);
 const u8 *LocationGmmDatGetDistrictNameMsgIdsPtr(int index);
 int LocationGmmDatGetDistrictCount(int index);
 
-#endif //GUARD_POKEHEARTGOLD_LOCATION_GMM_DAT_H
+#endif // GUARD_POKEHEARTGOLD_LOCATION_GMM_DAT_H

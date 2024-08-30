@@ -4,23 +4,23 @@
 #include "unk_02009D48.h"
 
 typedef struct SpriteTemplate {
-    SpriteList *spriteList;               // 000
-    const SpriteResourcesHeader *header;  // 004
-    VecFx32 position;                     // 008
-    VecFx32 scale;                        // 014
-    u16 rotation;                         // 020
-    u32 priority;                         // 024
-    NNS_G2D_VRAM_TYPE whichScreen;        // 028
-    HeapID heapId;                        // 02C
+    SpriteList *spriteList;              // 000
+    const SpriteResourcesHeader *header; // 004
+    VecFx32 position;                    // 008
+    VecFx32 scale;                       // 014
+    u16 rotation;                        // 020
+    u32 priority;                        // 024
+    NNS_G2D_VRAM_TYPE whichScreen;       // 028
+    HeapID heapId;                       // 02C
 } SpriteTemplate;
 
 struct SpriteAnimationData {
-    const NNSG2dCellDataBank* cellBank;
-    const NNSG2dCellAnimBankData* animBankData;
+    const NNSG2dCellDataBank *cellBank;
+    const NNSG2dCellAnimBankData *animBankData;
     NNSG2dCellAnimation animation;
 };
 
-#define SPRITE_ANIMATION_DATA_WORD_COUNT  (sizeof(struct SpriteAnimationData)/4)
+#define SPRITE_ANIMATION_DATA_WORD_COUNT (sizeof(struct SpriteAnimationData) / 4)
 
 typedef struct Sprite {
     VecFx32 matrix;                                      // 000
@@ -104,4 +104,4 @@ NNSG2dImageProxy *Sprite_GetImageProxy(Sprite *sprite);
 int Sprite_IsCellAnimationRunning(Sprite *sprite);
 NNSG2dCellAnimation *Sprite_GetCellAnim(Sprite *sprite);
 
-#endif //POKEHEARTGOLD_UNK_02023694_H
+#endif // POKEHEARTGOLD_UNK_02023694_H

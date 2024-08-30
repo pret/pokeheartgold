@@ -1,8 +1,11 @@
-#include "global.h"
-#include "field_system.h"
 #include "location_backup.h"
-#include "save_local_field_data.h"
+
+#include "global.h"
+
 #include "constants/maps.h"
+
+#include "field_system.h"
+#include "save_local_field_data.h"
 
 static const Location sLocation_PlayerRoom = {
     .mapId     = MAP_T20R0202,
@@ -22,12 +25,12 @@ static const Location sLocation_OutsidePlayerHome = {
 
 void Location_SetToPlayerRoom(Location *dest) {
     const Location *src = &sLocation_PlayerRoom;
-    *dest = *src;
+    *dest               = *src;
 }
 
 void Location_SetToOutsidePlayerHome(Location *dest) {
     const Location *src = &sLocation_OutsidePlayerHome;
-    *dest = *src;
+    *dest               = *src;
 }
 
 void Save_SetPositionToPlayerRoom(SaveData *saveData) {

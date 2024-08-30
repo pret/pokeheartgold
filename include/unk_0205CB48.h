@@ -10,4 +10,4 @@ void sub_0205CF44(PlayerAvatar *playerAvatar);
 BOOL sub_0205CF60(PlayerAvatar *playerAvatar);
 void sub_0205CFBC(PlayerAvatar *playerAvatar, int direction);
 
-#endif //POKEHEARTGOLD_UNK_0205CB48_H
+#endif // POKEHEARTGOLD_UNK_0205CB48_H

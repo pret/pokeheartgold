@@ -10,4 +10,4 @@
  */
 void GF_AssertFail(void);
 
-#endif //POKEHEARTGOLD_ERROR_HANDLING_H
+#endif // POKEHEARTGOLD_ERROR_HANDLING_H

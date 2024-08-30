@@ -18,7 +18,7 @@ typedef struct PhoneBookEntry {
 
 struct PhoneBook {
     int count;
-    struct PhoneBookEntry * entries;
+    struct PhoneBookEntry *entries;
 };
 
-#endif //POKEHEARTGOLD_GEAR_PHONE_H
+#endif // POKEHEARTGOLD_GEAR_PHONE_H

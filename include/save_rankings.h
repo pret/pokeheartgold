@@ -4,7 +4,7 @@
 #include "pm_string.h"
 #include "save.h"
 
-#define RANKINGS_PER_STAT           6
+#define RANKINGS_PER_STAT 6
 
 typedef struct SaveRankingsEntry SaveRankingsEntry;
 typedef struct SaveRankings SaveRankings;
@@ -33,4 +33,4 @@ ViewRankingsPage *Save_GetPlayerViewRankingPage(SaveData *saveData, int page, He
 ViewRankingsPage *Save_GetReceivedViewRankingPage(SaveRankings *saveRankings, int page, HeapID heapId);
 void ViewRankingsPage_Delete(ViewRankingsPage *viewRankingsPage);
 
-#endif //GUARD_POKEHEARTGOLD_UNK_0202E4B0_H
+#endif // GUARD_POKEHEARTGOLD_UNK_0202E4B0_H

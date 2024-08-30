@@ -1,8 +1,9 @@
 #ifndef POKEHEARTGOLD_BRIGHTNESS_H
 #define POKEHEARTGOLD_BRIGHTNESS_H
 
-#include "global.h"
 #include <nitro/gx/g2.h>
+
+#include "global.h"
 
 #define SCREEN_MASK_MAIN 1
 #define SCREEN_MASK_SUB  2
@@ -32,4 +33,4 @@ void DoAllScreenBrightnessTransitionStep(void);
 BOOL IsBrightnessTransitionActive(u32 screenMask);
 void UpdateMainScreenBrightnessSurface(GXBlendPlaneMask mask1, GXBlendPlaneMask mask2);
 
-#endif //POKEHEARTGOLD_BRIGHTNESS_H
+#endif // POKEHEARTGOLD_BRIGHTNESS_H

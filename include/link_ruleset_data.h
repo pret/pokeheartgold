@@ -21,4 +21,4 @@ void sub_0202921C(SaveData *saveData, int a1, String *a2, HeapID heapId);
 LinkBattleRuleset *sub_0202925C(void);
 int sub_02029264(const LinkBattleRuleset *ruleset);
 
-#endif //POKEHEARTGOLD_LINK_RULESET_DATA_H
+#endif // POKEHEARTGOLD_LINK_RULESET_DATA_H

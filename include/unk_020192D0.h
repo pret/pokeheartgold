@@ -1,8 +1,8 @@
 #ifndef POKEHEARTGOLD_UNK_020192D0_H
 #define POKEHEARTGOLD_UNK_020192D0_H
 
-#include "heap.h"
 #include "field_system.h"
+#include "heap.h"
 #include "overlay_manager.h"
 #include "save.h"
 #include "unk_02020654.h"
@@ -25,4 +25,4 @@ BOOL sub_020192D0(OVY_MANAGER *man, int *state);
 BOOL sub_0201935C(OVY_MANAGER *man, int *state);
 BOOL sub_02019490(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_UNK_020192D0_H
+#endif // POKEHEARTGOLD_UNK_020192D0_H

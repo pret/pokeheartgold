@@ -1,34 +1,38 @@
-#include "constants/maps.h"
-#include "global.h"
-#include "bag.h"
 #include "party_menu.h"
-#include "gf_gfx_loader.h"
-#include "field_system.h"
+
+#include "global.h"
+
+#include "constants/maps.h"
+#include "constants/moves.h"
+
+#include "graphic/plist_gra.naix"
 #include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0300.h"
+
+#include "bag.h"
+#include "battle_regulation.h"
+#include "field_system.h"
 #include "font.h"
+#include "gf_gfx_loader.h"
 #include "overlay_94.h"
+#include "party_context_menu.h"
+#include "party_menu_items.h"
+#include "party_menu_list_items.h"
+#include "party_menu_sprites.h"
 #include "render_text.h"
+#include "save_link_ruleset.h"
 #include "sound_02004A44.h"
 #include "system.h"
 #include "unk_02005D10.h"
 #include "unk_0200FA24.h"
 #include "unk_020183F0.h"
 #include "unk_020210A0.h"
-#include "save_link_ruleset.h"
-#include "unk_02066EDC.h"
-#include "party_context_menu.h"
-#include "party_menu_list_items.h"
 #include "unk_0203A3B0.h"
-#include "party_menu_items.h"
+#include "unk_02066EDC.h"
 #include "unk_0208805C.h"
-#include "party_menu_sprites.h"
-#include "battle_regulation.h"
 #include "unk_02088288.h"
 #include "use_item_on_mon.h"
 #include "vram_transfer_manager.h"
-#include "constants/moves.h"
-#include "msgdata/msg/msg_0300.h"
-#include "graphic/plist_gra.naix"
 
 FS_EXTERN_OVERLAY(OVY_94);
 
@@ -136,20 +140,21 @@ const OVY_MGR_TEMPLATE gOverlayTemplate_PartyMenu = {
 
 static const UnkStruct_0207A22C _0210150C[2][6] = {
     {
-        { 0x0000, 0x0000, 0x001E, 0x0010, 0x0010, 0x000E },
-        { 0x0010, 0x0001, 0x009E, 0x0018, 0x0090, 0x0016 },
-        { 0x0000, 0x0006, 0x001E, 0x0040, 0x0010, 0x003E },
-        { 0x0010, 0x0007, 0x009E, 0x0048, 0x0090, 0x0046 },
-        { 0x0000, 0x000C, 0x001E, 0x0070, 0x0010, 0x006E },
-        { 0x0010, 0x000D, 0x009E, 0x0078, 0x0090, 0x0076 },
-    }, {
-        { 0x0000, 0x0000, 0x001E, 0x0010, 0x0010, 0x000E },
-        { 0x0010, 0x0000, 0x009E, 0x0010, 0x0090, 0x000E },
-        { 0x0000, 0x0006, 0x001E, 0x0040, 0x0010, 0x003E },
-        { 0x0010, 0x0006, 0x009E, 0x0040, 0x0090, 0x003E },
-        { 0x0000, 0x000C, 0x001E, 0x0070, 0x0010, 0x006E },
-        { 0x0010, 0x000C, 0x009E, 0x0070, 0x0090, 0x006E },
-    }
+     { 0x0000, 0x0000, 0x001E, 0x0010, 0x0010, 0x000E },
+     { 0x0010, 0x0001, 0x009E, 0x0018, 0x0090, 0x0016 },
+     { 0x0000, 0x0006, 0x001E, 0x0040, 0x0010, 0x003E },
+     { 0x0010, 0x0007, 0x009E, 0x0048, 0x0090, 0x0046 },
+     { 0x0000, 0x000C, 0x001E, 0x0070, 0x0010, 0x006E },
+     { 0x0010, 0x000D, 0x009E, 0x0078, 0x0090, 0x0076 },
+     },
+    {
+     { 0x0000, 0x0000, 0x001E, 0x0010, 0x0010, 0x000E },
+     { 0x0010, 0x0000, 0x009E, 0x0010, 0x0090, 0x000E },
+     { 0x0000, 0x0006, 0x001E, 0x0040, 0x0010, 0x003E },
+     { 0x0010, 0x0006, 0x009E, 0x0040, 0x0090, 0x003E },
+     { 0x0000, 0x000C, 0x001E, 0x0070, 0x0010, 0x006E },
+     { 0x0010, 0x000C, 0x009E, 0x0070, 0x0090, 0x006E },
+     }
 };
 
 static const UnkStruct_02020654 _0210140C[8] = {
@@ -217,7 +222,7 @@ static const u16 sFieldMoves[PARTY_MON_CONTEXT_MENU_FIELD_MOVES_COUNT] = {
 
 static BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
     PartyMenuStruct *partyMenu;
-    NARC * narc;
+    NARC *narc;
 
     Main_SetVBlankIntrCB(NULL, NULL);
     HBlankInterruptDisable();
@@ -231,7 +236,7 @@ static BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
     SetKeyRepeatTimers(4, 8);
     CreateHeap(HEAP_ID_3, HEAP_ID_PARTY_MENU, 0x30000);
 
-    narc = NARC_New(NARC_graphic_plist_gra, HEAP_ID_PARTY_MENU);
+    narc      = NARC_New(NARC_graphic_plist_gra, HEAP_ID_PARTY_MENU);
     partyMenu = sub_02079BD8(manager);
     BeginNormalPaletteFade(2, 3, 3, RGB_BLACK, 6, 1, HEAP_ID_PARTY_MENU);
     sub_02079CE4(partyMenu);
@@ -393,8 +398,7 @@ static BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState) {
         if (PartyMenu_AnimateIconFormChange(partyMenu) == TRUE) {
             PartyMenu_FormChangeScene_End(partyMenu);
             *pState = PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT;
-        }
-        else {
+        } else {
             *pState = PARTY_MENU_STATE_FORM_CHANGE_ANIM;
         }
         break;
@@ -591,7 +595,7 @@ static int PartyMenu_Subtask_UseTMHM(PartyMenuStruct *partyMenu) {
             return PartyMenu_HandleUseTMHMonMon(partyMenu);
         } else {
             PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
-            partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
+            partyMenu->args->selectedAction  = PARTY_MENU_ACTION_RETURN_0;
             partyMenu->afterTextPrinterState = PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT;
             ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00102, partyMenu->formattedStrBuf);
             return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
@@ -651,24 +655,25 @@ static void sub_020796B8(void *cbData) {
 
 static TouchscreenHitbox _02110128[][8] = {
     {
-        { .rect = { 0x00, 0x30, 0x00, 0x80 } },
-        { .rect = { 0x08, 0x38, 0x80, 0x00 } },
-        { .rect = { 0x30, 0x60, 0x00, 0x80 } },
-        { .rect = { 0x38, 0x68, 0x80, 0x00 } },
-        { .rect = { 0x60, 0x90, 0x00, 0x80 } },
-        { .rect = { 0x68, 0x98, 0x80, 0x00 } },
-        { .rect = { 0x98, 0xC0, 0xC8, 0x00 } },
-        { .rect = { TOUCHSCREEN_RECTLIST_END } },
-    }, {
-        { .rect = { 0x00, 0x30, 0x00, 0x80 } },
-        { .rect = { 0x00, 0x30, 0x80, 0x00 } },
-        { .rect = { 0x30, 0x60, 0x00, 0x80 } },
-        { .rect = { 0x30, 0x60, 0x80, 0x00 } },
-        { .rect = { 0x60, 0x90, 0x00, 0x80 } },
-        { .rect = { 0x60, 0x90, 0x80, 0x00 } },
-        { .rect = { 0x98, 0xC0, 0xC8, 0x00 } },
-        { .rect = { TOUCHSCREEN_RECTLIST_END } },
-    }
+     { .rect = { 0x00, 0x30, 0x00, 0x80 } },
+     { .rect = { 0x08, 0x38, 0x80, 0x00 } },
+     { .rect = { 0x30, 0x60, 0x00, 0x80 } },
+     { .rect = { 0x38, 0x68, 0x80, 0x00 } },
+     { .rect = { 0x60, 0x90, 0x00, 0x80 } },
+     { .rect = { 0x68, 0x98, 0x80, 0x00 } },
+     { .rect = { 0x98, 0xC0, 0xC8, 0x00 } },
+     { .rect = { TOUCHSCREEN_RECTLIST_END } },
+     },
+    {
+     { .rect = { 0x00, 0x30, 0x00, 0x80 } },
+     { .rect = { 0x00, 0x30, 0x80, 0x00 } },
+     { .rect = { 0x30, 0x60, 0x00, 0x80 } },
+     { .rect = { 0x30, 0x60, 0x80, 0x00 } },
+     { .rect = { 0x60, 0x90, 0x00, 0x80 } },
+     { .rect = { 0x60, 0x90, 0x80, 0x00 } },
+     { .rect = { 0x98, 0xC0, 0xC8, 0x00 } },
+     { .rect = { TOUCHSCREEN_RECTLIST_END } },
+     }
 };
 
 static TouchscreenHitbox _02110104[] = {
@@ -685,34 +690,34 @@ static TouchscreenHitbox _02110104[] = {
 
 static void sub_02079700(void) {
     GraphicsBanks graphicsBanks = {
-        .bg = GX_VRAM_BG_128_A,
-        .bgextpltt = GX_VRAM_BGEXTPLTT_NONE,
-        .subbg = GX_VRAM_SUB_BG_128_C,
-        .subbgextpltt = GX_VRAM_SUB_BGEXTPLTT_NONE,
-        .obj = GX_VRAM_OBJ_64_E,
-        .objextpltt = GX_VRAM_OBJEXTPLTT_NONE,
-        .subobj = GX_VRAM_SUB_OBJ_16_I,
+        .bg            = GX_VRAM_BG_128_A,
+        .bgextpltt     = GX_VRAM_BGEXTPLTT_NONE,
+        .subbg         = GX_VRAM_SUB_BG_128_C,
+        .subbgextpltt  = GX_VRAM_SUB_BGEXTPLTT_NONE,
+        .obj           = GX_VRAM_OBJ_64_E,
+        .objextpltt    = GX_VRAM_OBJEXTPLTT_NONE,
+        .subobj        = GX_VRAM_SUB_OBJ_16_I,
         .subobjextpltt = GX_VRAM_SUB_OBJEXTPLTT_NONE,
-        .tex = GX_VRAM_TEX_0_B,
-        .texpltt = GX_VRAM_TEXPLTT_01_FG,
+        .tex           = GX_VRAM_TEX_0_B,
+        .texpltt       = GX_VRAM_TEXPLTT_01_FG,
     };
     GfGfx_SetBanks(&graphicsBanks);
 }
 
 static void sub_02079720(BgConfig *bgConfig) {
     BgTemplate bgTemplate = {
-        .x = 0,
-        .y = 0,
+        .x          = 0,
+        .y          = 0,
         .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-        .baseTile = 0,
-        .size = GF_BG_SCR_SIZE_256x256,
-        .colorMode = GX_BG_COLORMODE_16,
+        .baseTile   = 0,
+        .size       = GF_BG_SCR_SIZE_256x256,
+        .colorMode  = GX_BG_COLORMODE_16,
         .screenBase = GX_BG_SCRBASE_0xf800,
-        .charBase = GX_BG_CHARBASE_0x00000,
-        .bgExtPltt = GX_BG_EXTPLTT_01,
-        .priority = 0,
-        .areaOver = GX_BG_AREAOVER_XLU,
-        .mosaic = 0,
+        .charBase   = GX_BG_CHARBASE_0x00000,
+        .bgExtPltt  = GX_BG_EXTPLTT_01,
+        .priority   = 0,
+        .areaOver   = GX_BG_AREAOVER_XLU,
+        .mosaic     = 0,
     };
     InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_0, &bgTemplate, GF_BG_TYPE_TEXT);
     BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_0);
@@ -721,9 +726,9 @@ static void sub_02079720(BgConfig *bgConfig) {
 static void sub_02079758(BgConfig *bgConfig) {
     {
         GraphicsModes graphicsModes = {
-            .dispMode = GX_DISPMODE_GRAPHICS,
-            .bgMode = GX_BGMODE_0,
-            .subMode = GX_BGMODE_0,
+            .dispMode  = GX_DISPMODE_GRAPHICS,
+            .bgMode    = GX_BGMODE_0,
+            .subMode   = GX_BGMODE_0,
             ._2d3dMode = GX_BG0_AS_2D,
         };
         SetBothScreensModesAndDisable(&graphicsModes);
@@ -731,18 +736,18 @@ static void sub_02079758(BgConfig *bgConfig) {
 
     {
         BgTemplate bgTemplate = {
-            .x = 0,
-            .y = 0,
+            .x          = 0,
+            .y          = 0,
             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-            .baseTile = 0,
-            .size = GF_BG_SCR_SIZE_256x256,
-            .colorMode = GX_BG_COLORMODE_16,
+            .baseTile   = 0,
+            .size       = GF_BG_SCR_SIZE_256x256,
+            .colorMode  = GX_BG_COLORMODE_16,
             .screenBase = GX_BG_SCRBASE_0xf800,
-            .charBase = GX_BG_CHARBASE_0x00000,
-            .bgExtPltt = GX_BG_EXTPLTT_01,
-            .priority = 0,
-            .areaOver = GX_BG_AREAOVER_XLU,
-            .mosaic = 0,
+            .charBase   = GX_BG_CHARBASE_0x00000,
+            .bgExtPltt  = GX_BG_EXTPLTT_01,
+            .priority   = 0,
+            .areaOver   = GX_BG_AREAOVER_XLU,
+            .mosaic     = 0,
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_0, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_0);
@@ -750,18 +755,18 @@ static void sub_02079758(BgConfig *bgConfig) {
 
     {
         BgTemplate bgTemplate = {
-            .x = 0,
-            .y = 0,
+            .x          = 0,
+            .y          = 0,
             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-            .baseTile = 0,
-            .size = GF_BG_SCR_SIZE_256x256,
-            .colorMode = GX_BG_COLORMODE_16,
+            .baseTile   = 0,
+            .size       = GF_BG_SCR_SIZE_256x256,
+            .colorMode  = GX_BG_COLORMODE_16,
             .screenBase = GX_BG_SCRBASE_0xf000,
-            .charBase = GX_BG_CHARBASE_0x00000,
-            .bgExtPltt = GX_BG_EXTPLTT_01,
-            .priority = 1,
-            .areaOver = GX_BG_AREAOVER_XLU,
-            .mosaic = 0,
+            .charBase   = GX_BG_CHARBASE_0x00000,
+            .bgExtPltt  = GX_BG_EXTPLTT_01,
+            .priority   = 1,
+            .areaOver   = GX_BG_AREAOVER_XLU,
+            .mosaic     = 0,
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_1, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_1);
@@ -769,18 +774,18 @@ static void sub_02079758(BgConfig *bgConfig) {
 
     {
         BgTemplate bgTemplate = {
-            .x = 0,
-            .y = 0,
+            .x          = 0,
+            .y          = 0,
             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-            .baseTile = 0,
-            .size = GF_BG_SCR_SIZE_256x256,
-            .colorMode = GX_BG_COLORMODE_16,
+            .baseTile   = 0,
+            .size       = GF_BG_SCR_SIZE_256x256,
+            .colorMode  = GX_BG_COLORMODE_16,
             .screenBase = GX_BG_SCRBASE_0xe800,
-            .charBase = GX_BG_CHARBASE_0x10000,
-            .bgExtPltt = GX_BG_EXTPLTT_01,
-            .priority = 2,
-            .areaOver = GX_BG_AREAOVER_XLU,
-            .mosaic = 0,
+            .charBase   = GX_BG_CHARBASE_0x10000,
+            .bgExtPltt  = GX_BG_EXTPLTT_01,
+            .priority   = 2,
+            .areaOver   = GX_BG_AREAOVER_XLU,
+            .mosaic     = 0,
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_2, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_2);
@@ -788,36 +793,36 @@ static void sub_02079758(BgConfig *bgConfig) {
 
     {
         BgTemplate bgTemplate = {
-            .x = 0,
-            .y = 0,
+            .x          = 0,
+            .y          = 0,
             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-            .baseTile = 0,
-            .size = GF_BG_SCR_SIZE_256x256,
-            .colorMode = GX_BG_COLORMODE_16,
+            .baseTile   = 0,
+            .size       = GF_BG_SCR_SIZE_256x256,
+            .colorMode  = GX_BG_COLORMODE_16,
             .screenBase = GX_BG_SCRBASE_0xe000,
-            .charBase = GX_BG_CHARBASE_0x10000,
-            .bgExtPltt = GX_BG_EXTPLTT_01,
-            .priority = 3,
-            .areaOver = GX_BG_AREAOVER_XLU,
-            .mosaic = 0,
+            .charBase   = GX_BG_CHARBASE_0x10000,
+            .bgExtPltt  = GX_BG_EXTPLTT_01,
+            .priority   = 3,
+            .areaOver   = GX_BG_AREAOVER_XLU,
+            .mosaic     = 0,
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_3, &bgTemplate, GF_BG_TYPE_TEXT);
     }
 
     {
         BgTemplate bgTemplate = {
-            .x = 0,
-            .y = 0,
+            .x          = 0,
+            .y          = 0,
             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-            .baseTile = 0,
-            .size = GF_BG_SCR_SIZE_256x256,
-            .colorMode = GX_BG_COLORMODE_16,
+            .baseTile   = 0,
+            .size       = GF_BG_SCR_SIZE_256x256,
+            .colorMode  = GX_BG_COLORMODE_16,
             .screenBase = GX_BG_SCRBASE_0xd800,
-            .charBase = GX_BG_CHARBASE_0x10000,
-            .bgExtPltt = GX_BG_EXTPLTT_01,
-            .priority = 0,
-            .areaOver = GX_BG_AREAOVER_XLU,
-            .mosaic = 0,
+            .charBase   = GX_BG_CHARBASE_0x10000,
+            .bgExtPltt  = GX_BG_EXTPLTT_01,
+            .priority   = 0,
+            .areaOver   = GX_BG_AREAOVER_XLU,
+            .mosaic     = 0,
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_2, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_2);
@@ -825,18 +830,18 @@ static void sub_02079758(BgConfig *bgConfig) {
 
     {
         BgTemplate bgTemplate = {
-            .x = 0,
-            .y = 0,
+            .x          = 0,
+            .y          = 0,
             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-            .baseTile = 0,
-            .size = GF_BG_SCR_SIZE_256x256,
-            .colorMode = GX_BG_COLORMODE_16,
+            .baseTile   = 0,
+            .size       = GF_BG_SCR_SIZE_256x256,
+            .colorMode  = GX_BG_COLORMODE_16,
             .screenBase = GX_BG_SCRBASE_0xf800,
-            .charBase = GX_BG_CHARBASE_0x08000,
-            .bgExtPltt = GX_BG_EXTPLTT_01,
-            .priority = 1,
-            .areaOver = GX_BG_AREAOVER_XLU,
-            .mosaic = 0,
+            .charBase   = GX_BG_CHARBASE_0x08000,
+            .bgExtPltt  = GX_BG_EXTPLTT_01,
+            .priority   = 1,
+            .areaOver   = GX_BG_AREAOVER_XLU,
+            .mosaic     = 0,
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_0, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_0);
@@ -844,18 +849,18 @@ static void sub_02079758(BgConfig *bgConfig) {
 
     {
         BgTemplate bgTemplate = {
-            .x = 0,
-            .y = 0,
+            .x          = 0,
+            .y          = 0,
             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-            .baseTile = 0,
-            .size = GF_BG_SCR_SIZE_256x256,
-            .colorMode = GX_BG_COLORMODE_16,
+            .baseTile   = 0,
+            .size       = GF_BG_SCR_SIZE_256x256,
+            .colorMode  = GX_BG_COLORMODE_16,
             .screenBase = GX_BG_SCRBASE_0xf000,
-            .charBase = GX_BG_CHARBASE_0x00000,
-            .bgExtPltt = GX_BG_EXTPLTT_01,
-            .priority = 2,
-            .areaOver = GX_BG_AREAOVER_XLU,
-            .mosaic = 0,
+            .charBase   = GX_BG_CHARBASE_0x00000,
+            .bgExtPltt  = GX_BG_EXTPLTT_01,
+            .priority   = 2,
+            .areaOver   = GX_BG_AREAOVER_XLU,
+            .mosaic     = 0,
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_1, &bgTemplate, GF_BG_TYPE_TEXT);
     }
@@ -884,7 +889,7 @@ void PartyMenu_Toggle3dEngine(PartyMenuStruct *partyMenu, PartyMenu3dEngineToggl
         FreeBgTilemapBuffer(partyMenu->bgConfig, GF_BG_LYR_MAIN_0);
         GX_SetGraphicsMode(GX_DISPMODE_GRAPHICS, GX_BGMODE_0, GX_BG0_AS_3D);
         partyMenu->gf3dVramMan = Create3dVramManForPartyMenu(HEAP_ID_PARTY_MENU);
-    } else {  // PARTY_MENU_3D_ENGINE_OFF
+    } else { // PARTY_MENU_3D_ENGINE_OFF
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);
         Delete3dVramManForPartyMenu(partyMenu->gf3dVramMan);
         GX_SetGraphicsMode(GX_DISPMODE_GRAPHICS, GX_BGMODE_0, GX_BG0_AS_2D);
@@ -947,27 +952,27 @@ static PartyMenuStruct *sub_02079BD8(OVY_MANAGER *manager) {
     u32 i;
     PartyMenuStruct *ret = (PartyMenuStruct *)OverlayManager_CreateAndGetData(manager, sizeof(PartyMenuStruct), HEAP_ID_PARTY_MENU);
     memset(ret, 0, sizeof(PartyMenuStruct));
-    ret->args = OverlayManager_GetArgs(manager);
+    ret->args     = OverlayManager_GetArgs(manager);
     ret->bgConfig = BgConfig_Alloc(HEAP_ID_PARTY_MENU);
     if (ret->args->context == PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT && ret->args->linkBattleRuleset != NULL) {
         ret->pokedex = sub_02074944(HEAP_ID_PARTY_MENU);
     } else {
         ret->pokedex = NULL;
     }
-    ret->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0300_bin, HEAP_ID_PARTY_MENU);
+    ret->msgData    = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0300_bin, HEAP_ID_PARTY_MENU);
     ret->msgPrinter = MessagePrinter_New(15, 14, 0, HEAP_ID_PARTY_MENU);
-    ret->msgFormat = MessageFormat_New(HEAP_ID_PARTY_MENU);
+    ret->msgFormat  = MessageFormat_New(HEAP_ID_PARTY_MENU);
     for (i = 0; i < PARTY_SIZE; ++i) {
         ret->monsDrawState[i].nickname = String_New(POKEMON_NAME_LENGTH + 1, HEAP_ID_PARTY_MENU);
     }
-    ret->formattedStrBuf = String_New(0x100, HEAP_ID_PARTY_MENU);
+    ret->formattedStrBuf   = String_New(0x100, HEAP_ID_PARTY_MENU);
     ret->unformattedStrBuf = String_New(0x100, HEAP_ID_PARTY_MENU);
     for (i = 0; i < 20; ++i) {
         ret->contextMenuStrings[i] = String_New(32, HEAP_ID_PARTY_MENU);
     }
     ret->topScreenPanelShow = FALSE;
-    ret->partyMonIndex = ret->args->partySlot;
-    ret->unk_C66 = ret->partyMonIndex;
+    ret->partyMonIndex      = ret->args->partySlot;
+    ret->unk_C66            = ret->partyMonIndex;
     return ret;
 }
 
@@ -1015,7 +1020,7 @@ static u8 PartyMenu_IsMonDrawStateActive(PartyMenuStruct *partyMenu, u8 partySlo
 BOOL sub_02079E38(PartyMenuStruct *partyMenu, u8 partySlot) {
     Pokemon *mon;
     u32 unused;
-    u16 species;  // sp4
+    u16 species; // sp4
 
     (void)unused;
 
@@ -1023,20 +1028,20 @@ BOOL sub_02079E38(PartyMenuStruct *partyMenu, u8 partySlot) {
     if (Party_GetCount(partyMenu->args->party) <= partySlot) {
         return FALSE;
     }
-    mon = Party_GetMonByIndex(partyMenu->args->party, partySlot);
+    mon     = Party_GetMonByIndex(partyMenu->args->party, partySlot);
     species = (u16)GetMonData(mon, MON_DATA_SPECIES, NULL);
     if (species == SPECIES_NONE) {
         return FALSE;
     }
     PartyMenu_BufferMonNickname(partyMenu, mon, partySlot);
-    partyMenu->monsDrawState[partySlot].species = species;
-    partyMenu->monsDrawState[partySlot].hp = (u16)GetMonData(mon, MON_DATA_HP, NULL);
-    partyMenu->monsDrawState[partySlot].maxHp = (u16)GetMonData(mon, MON_DATA_MAXHP, NULL);
-    partyMenu->monsDrawState[partySlot].level = (u16)GetMonData(mon, MON_DATA_LEVEL, NULL);
+    partyMenu->monsDrawState[partySlot].species  = species;
+    partyMenu->monsDrawState[partySlot].hp       = (u16)GetMonData(mon, MON_DATA_HP, NULL);
+    partyMenu->monsDrawState[partySlot].maxHp    = (u16)GetMonData(mon, MON_DATA_MAXHP, NULL);
+    partyMenu->monsDrawState[partySlot].level    = (u16)GetMonData(mon, MON_DATA_LEVEL, NULL);
     partyMenu->monsDrawState[partySlot].heldItem = (u16)GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
-    partyMenu->monsDrawState[partySlot].capsule = (u16)GetMonData(mon, MON_DATA_CAPSULE, NULL);
-    partyMenu->monsDrawState[partySlot].isEgg = (u8)GetMonData(mon, MON_DATA_IS_EGG, NULL);
-    partyMenu->monsDrawState[partySlot].form = (u8)GetMonData(mon, MON_DATA_FORM, NULL);
+    partyMenu->monsDrawState[partySlot].capsule  = (u16)GetMonData(mon, MON_DATA_CAPSULE, NULL);
+    partyMenu->monsDrawState[partySlot].isEgg    = (u8)GetMonData(mon, MON_DATA_IS_EGG, NULL);
+    partyMenu->monsDrawState[partySlot].form     = (u8)GetMonData(mon, MON_DATA_FORM, NULL);
     if (GetMonData(mon, MON_DATA_NO_PRINT_GENDER, NULL) == TRUE) {
         partyMenu->monsDrawState[partySlot].dontPrintGenderSymbol = FALSE;
     } else {
@@ -1076,31 +1081,31 @@ static u32 Pokemon_CountRibbonsByCategory(Pokemon *mon, u8 contestStat) {
     u32 result;
     switch (contestStat) {
     case COOL:
-        result  = GetMonData(mon, MON_DATA_COOL_RIBBON, NULL);
+        result = GetMonData(mon, MON_DATA_COOL_RIBBON, NULL);
         result += GetMonData(mon, MON_DATA_COOL_RIBBON_GREAT, NULL);
         result += GetMonData(mon, MON_DATA_COOL_RIBBON_ULTRA, NULL);
         result += GetMonData(mon, MON_DATA_COOL_RIBBON_MASTER, NULL);
         break;
     case BEAUTY:
-        result  = GetMonData(mon, MON_DATA_BEAUTY_RIBBON, NULL);
+        result = GetMonData(mon, MON_DATA_BEAUTY_RIBBON, NULL);
         result += GetMonData(mon, MON_DATA_BEAUTY_RIBBON_GREAT, NULL);
         result += GetMonData(mon, MON_DATA_BEAUTY_RIBBON_ULTRA, NULL);
         result += GetMonData(mon, MON_DATA_BEAUTY_RIBBON_MASTER, NULL);
         break;
     case CUTE:
-        result  = GetMonData(mon, MON_DATA_CUTE_RIBBON, NULL);
+        result = GetMonData(mon, MON_DATA_CUTE_RIBBON, NULL);
         result += GetMonData(mon, MON_DATA_CUTE_RIBBON_GREAT, NULL);
         result += GetMonData(mon, MON_DATA_CUTE_RIBBON_ULTRA, NULL);
         result += GetMonData(mon, MON_DATA_CUTE_RIBBON_MASTER, NULL);
         break;
     case SMART:
-        result  = GetMonData(mon, MON_DATA_SMART_RIBBON, NULL);
+        result = GetMonData(mon, MON_DATA_SMART_RIBBON, NULL);
         result += GetMonData(mon, MON_DATA_SMART_RIBBON_GREAT, NULL);
         result += GetMonData(mon, MON_DATA_SMART_RIBBON_ULTRA, NULL);
         result += GetMonData(mon, MON_DATA_SMART_RIBBON_MASTER, NULL);
         break;
     case TOUGH:
-        result  = GetMonData(mon, MON_DATA_TOUGH_RIBBON, NULL);
+        result = GetMonData(mon, MON_DATA_TOUGH_RIBBON, NULL);
         result += GetMonData(mon, MON_DATA_TOUGH_RIBBON_GREAT, NULL);
         result += GetMonData(mon, MON_DATA_TOUGH_RIBBON_ULTRA, NULL);
         result += GetMonData(mon, MON_DATA_TOUGH_RIBBON_MASTER, NULL);
@@ -1315,7 +1320,7 @@ static void PartyMenu_MoveCursorSpriteTo(PartyMenuStruct *partyMenu, int selecti
         Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], TRUE);
         Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], x, y);
     }
-    u8 oldPartyMonIndex = partyMenu->partyMonIndex;
+    u8 oldPartyMonIndex      = partyMenu->partyMonIndex;
     partyMenu->partyMonIndex = selection;
     sub_0207B51C(partyMenu, oldPartyMonIndex, FALSE);
     sub_0207B51C(partyMenu, partyMenu->partyMonIndex, TRUE);
@@ -1416,7 +1421,7 @@ void sub_0207AB84(PartyMenuStruct *partyMenu, u8 partySlot) {
         Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], TRUE);
         Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], x, y);
     }
-    u8 oldSlot = partyMenu->partyMonIndex;
+    u8 oldSlot               = partyMenu->partyMonIndex;
     partyMenu->partyMonIndex = partySlot;
     sub_0207B51C(partyMenu, oldSlot, FALSE);
     sub_0207B51C(partyMenu, partyMenu->partyMonIndex, TRUE);
@@ -1541,7 +1546,7 @@ static u8 PartyMenu_HandleInput(PartyMenuStruct *partyMenu) {
         if (gSystem.newKeys & PAD_BUTTON_A) {
             if (partyMenu->partyMonIndex == PARTY_MON_SELECTION_CONFIRM) {
                 PartyMenu_MoveCursorSpriteTo(partyMenu, partyMenu->partyMonIndex, partyMenu->unk_948[partyMenu->partyMonIndex].unk_0, partyMenu->unk_948[partyMenu->partyMonIndex].unk_1);
-                PartyMenu_StartContextMenuButtonAnim(partyMenu, PARTY_MENU_SPRITE_ID_9,  sub_0207AC70(partyMenu, FALSE), FALSE);
+                PartyMenu_StartContextMenuButtonAnim(partyMenu, PARTY_MENU_SPRITE_ID_9, sub_0207AC70(partyMenu, FALSE), FALSE);
                 return 5;
             } else if (partyMenu->partyMonIndex == PARTY_MON_SELECTION_CANCEL) {
                 PartyMenu_MoveCursorSpriteTo_WithSfx(partyMenu, partyMenu->partyMonIndex, partyMenu->unk_948[partyMenu->partyMonIndex].unk_0, partyMenu->unk_948[partyMenu->partyMonIndex].unk_1);
@@ -1566,7 +1571,7 @@ static u8 PartyMenu_HandleInput(PartyMenuStruct *partyMenu) {
             result = sub_0207A8FC(partyMenu);
         }
     }
-    return result;  // possible UB
+    return result; // possible UB
 }
 
 static void sub_0207AFC4(PartyMenuStruct *partyMenu) {
@@ -1891,7 +1896,7 @@ static u8 sub_0207B600(PartyMenuStruct *partyMenu) {
                 // UB: hits "return result;" but result was never initialized
                 break;
             }
-            u32 oldSelection = partyMenu->partyMonIndex;
+            u32 oldSelection         = partyMenu->partyMonIndex;
             partyMenu->partyMonIndex = selection;
             PlaySE(SEQ_SE_DP_SELECT);
             if (partyMenu->partyMonIndex == partyMenu->softboiledDonorSlot) {
@@ -1949,7 +1954,7 @@ static u8 sub_0207B600(PartyMenuStruct *partyMenu) {
         }
     }
 
-    return result;  // UB rist
+    return result; // UB rist
 }
 
 static int sub_0207B7E0(PartyMenuStruct *partyMenu) {
@@ -2129,11 +2134,11 @@ static u8 sub_0207BB88(PartyMenuStruct *partyMenu) {
 }
 
 static const u8 _021012B0[][2] = {
-    {  1,  3 },
-    { 26,  3 },
-    {  1, 10 },
+    { 1,  3  },
+    { 26, 3  },
+    { 1,  10 },
     { 26, 10 },
-    {  1, 17 },
+    { 1,  17 },
     { 26, 17 },
 };
 
@@ -2273,13 +2278,13 @@ static int PartyMenu_Subtask_Softboiled(PartyMenuStruct *partyMenu) {
     case 3:
         if (PartyMenu_SoftboiledHPTransferStep(partyMenu, partyMenu->partyMonIndex, 1) == TRUE) {
             Pokemon *pokemon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
-            String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00065);
+            String *string   = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00065);
             BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(pokemon));
             BufferIntegerAsString(partyMenu->msgFormat, 1, partyMenu->levelUpStatsTmp[2], 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
             StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
             String_Delete(string);
             PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
-            partyMenu->levelUpStatsTmp[1] = 4;
+            partyMenu->levelUpStatsTmp[1]    = 4;
             partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SOFTBOILED;
             return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
         }
@@ -2301,7 +2306,7 @@ static u8 PartyMenu_SoftboiledTargetCheck(PartyMenuStruct *partyMenu) {
     if (partyMenu->partyMonIndex == partyMenu->softboiledDonorSlot || partyMenu->monsDrawState[partyMenu->partyMonIndex].hp == 0 || partyMenu->monsDrawState[partyMenu->partyMonIndex].hp == partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp) {
         thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
         PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00120, TRUE);
-        partyMenu->levelUpStatsTmp[1] = 1;
+        partyMenu->levelUpStatsTmp[1]    = 1;
         partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SOFTBOILED;
         return 1;
     }
@@ -2317,7 +2322,7 @@ static BOOL PartyMenu_SoftboiledHPTransferStep(PartyMenuStruct *partyMenu, u8 pa
     PartyMenu_DrawMonHpBarOnWindow(partyMenu, partySlot);
     if (partyMenu->levelUpStatsTmp[0] == partyMenu->levelUpStatsTmp[2] || partyMenu->monsDrawState[partySlot].hp == partyMenu->monsDrawState[partySlot].maxHp) {
         Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partySlot);
-        u32 hp = partyMenu->monsDrawState[partySlot].hp;
+        u32 hp       = partyMenu->monsDrawState[partySlot].hp;
         SetMonData(mon, MON_DATA_HP, &hp);
         return TRUE;
     }
@@ -2403,7 +2408,7 @@ static int PartyMenu_HandleUseItemOnMon(PartyMenuStruct *partyMenu) {
     ItemData *itemData = LoadItemDataOrGfx(partyMenu->args->itemId, ITEMNARC_PARAM, HEAP_ID_PARTY_MENU);
 
     if (partyMenu->args->itemId == ITEM_GRACIDEA && Mon_CanUseGracidea(Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex)) == TRUE) {
-        partyMenu->args->species = SHAYMIN_SKY;  // SPECIES_BULBASAUR
+        partyMenu->args->species = SHAYMIN_SKY; // SPECIES_BULBASAUR
         FreeToHeap(itemData);
         PartyMenu_FormChangeScene_Begin(partyMenu);
         return PARTY_MENU_STATE_FORM_CHANGE_ANIM;
@@ -2423,8 +2428,8 @@ static int PartyMenu_HandleUseItemOnMon(PartyMenuStruct *partyMenu) {
     if (CanUseItemOnMonInParty(partyMenu->args->party, partyMenu->args->itemId, partyMenu->partyMonIndex, 0, HEAP_ID_PARTY_MENU) == TRUE) {
         Bag_TakeItem(partyMenu->args->bag, partyMenu->args->itemId, 1, HEAP_ID_PARTY_MENU);
         if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_EVOLVE)) {
-            Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
-            partyMenu->args->species = GetMonEvolution(NULL, mon, EVOCTX_ITEM_USE, partyMenu->args->itemId, &partyMenu->args->evoMethod);
+            Pokemon *mon                    = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+            partyMenu->args->species        = GetMonEvolution(NULL, mon, EVOCTX_ITEM_USE, partyMenu->args->itemId, &partyMenu->args->evoMethod);
             partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_EVO_ITEM_USE;
             FreeToHeap(itemData);
             return PARTY_MENU_STATE_BEGIN_EXIT;
@@ -2433,7 +2438,7 @@ static int PartyMenu_HandleUseItemOnMon(PartyMenuStruct *partyMenu) {
         }
     } else {
         PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00102, TRUE);
-        partyMenu->partyMonIndex = PARTY_MON_SELECTION_CONFIRM;
+        partyMenu->partyMonIndex   = PARTY_MON_SELECTION_CONFIRM;
         partyMenu->itemUseCallback = PartyMenu_ItemUseFunc_WaitTextPrinterThenExit;
     }
     FreeToHeap(itemData);
@@ -2451,8 +2456,8 @@ static u8 sub_0207C3D0(PartyMenuStruct *partyMenu) {
 }
 
 static int PartyMenu_Subtask_GiveItemToMon(PartyMenuStruct *partyMenu) {
-    int result = -1;
-    Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+    int result               = -1;
+    Pokemon *mon             = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     FieldSystem *fieldSystem = partyMenu->args->fieldSystem;
 
     if (partyMenu->args->itemId == ITEM_GRISEOUS_ORB) {
@@ -2512,7 +2517,7 @@ static int sub_0207C5D4(PartyMenuStruct *partyMenu, Pokemon *mon, s32 *transform
     Bag_TakeItem(partyMenu->args->bag, partyMenu->args->itemId, 1, HEAP_ID_PARTY_MENU);
     SetMonData(mon, MON_DATA_HELD_ITEM, &itemToBeHeld);
     Pokemon_UpdateArceusForm(mon);
-    *transformResult = Mon_UpdateGiratinaForm(mon);
+    *transformResult                                            = Mon_UpdateGiratinaForm(mon);
     partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem = partyMenu->args->itemId;
     PartyMenu_DrawMonHeldItemIcon(partyMenu, partyMenu->partyMonIndex, partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem);
     if (itemToBeHeld == ITEM_GRISEOUS_ORB && *transformResult != -1) {
@@ -2573,7 +2578,7 @@ static int PartyMenu_Subtask_SwitchItemsHandleYesNoInput(PartyMenuStruct *partyM
     case YESNORESPONSE_YES: {
         YesNoPrompt_Destroy(partyMenu->yesNoPrompt);
         PartyMenu_DisableMainScreenBlend_AfterYesNo();
-        Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+        Pokemon *mon  = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
         int newItemId = partyMenu->args->itemId;
         int oldItemId = partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem;
         s32 giratinaResult;
@@ -2627,8 +2632,8 @@ static int PartyMenu_SwitchItemsDeclined(PartyMenuStruct *partyMenu) {
 static int sub_0207C908(PartyMenuStruct *partyMenu) {
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     s32 giratinaResult;
-    int newItem = partyMenu->args->itemId;
-    int oldItem = partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem;
+    int newItem              = partyMenu->args->itemId;
+    int oldItem              = partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem;
     int manipulateItemResult = sub_0207C5D4(partyMenu, mon, &giratinaResult);
     if (oldItem == ITEM_GRISEOUS_ORB && manipulateItemResult == PARTY_MENU_STATE_PRINT_ITEM_SWAP_MESSAGE && giratinaResult == 0) {
         manipulateItemResult = PARTY_MENU_STATE_PRINT_GIVE_GRISEOUS_ORB_MESSAGE;
@@ -2661,8 +2666,8 @@ static int PartyMenu_HandleChooseMonForInGameTrade(PartyMenuStruct *partyMenu) {
     } else {
         thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
         PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00179, TRUE);
-        partyMenu->yesCallback = PartyMenu_ConfirmRemoveCapsuleYes;
-        partyMenu->noCallback = PartyMenu_ConfirmRemoveCapsuleNo;
+        partyMenu->yesCallback           = PartyMenu_ConfirmRemoveCapsuleYes;
+        partyMenu->noCallback            = PartyMenu_ConfirmRemoveCapsuleNo;
         partyMenu->afterTextPrinterState = PARTY_MENU_STATE_YES_NO_INIT;
         return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
     }

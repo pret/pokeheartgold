@@ -3,9 +3,9 @@
 
 #include "party_menu.h"
 
-#define LEARN_MOVE_CHECK_KNOWN         0xFD
-#define LEARN_MOVE_CHECK_FULL          0xFE
-#define LEARN_MOVE_CHECK_INCOMPAT      0xFF
+#define LEARN_MOVE_CHECK_KNOWN    0xFD
+#define LEARN_MOVE_CHECK_FULL     0xFE
+#define LEARN_MOVE_CHECK_INCOMPAT 0xFF
 
 void PartyMenu_SetItemUseFuncFromBagSelection(PartyMenuStruct *partyMenu);
 int PartyMenu_ItemUseFunc_WaitTextPrinterThenExit(PartyMenuStruct *partyMenu);
@@ -20,4 +20,4 @@ int PartyMenu_Subtask_SelectMove(PartyMenuStruct *partyMenu);
 void PartyMenu_SelectMoveForPpRestoreOrPpUp(PartyMenuStruct *partyMenu, BOOL isPpRestore);
 void PartyMenu_HandleAttachMailFromMailbox(PartyMenuStruct *partyMenu);
 
-#endif //GUARD_POKEHEARTGOLD_PARTY_MENU_MOVES_H
+#endif // GUARD_POKEHEARTGOLD_PARTY_MENU_MOVES_H

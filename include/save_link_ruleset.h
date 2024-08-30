@@ -4,7 +4,7 @@
 #include "pm_string.h"
 #include "save.h"
 
-#define NUM_SAVE_LINK_BATTLE_RULESETS       (1)
+#define NUM_SAVE_LINK_BATTLE_RULESETS (1)
 
 typedef enum LinkBattleRule {
     LINKBATTLERULE_NONE,
@@ -23,21 +23,21 @@ typedef enum LinkBattleRule {
     LINKBATTLERULE_SOUL_DEW_CLAUSE,
 } LinkBattleRule;
 
-#define FLAG_RULESET_BAN_SOUL_DEW         (0x8000)
+#define FLAG_RULESET_BAN_SOUL_DEW (0x8000)
 
 typedef struct LinkBattleRuleset {
     u16 name[12];
-    u16 totalLevel;  // maximum sum of party levels
-                     // lower 12 bits hold level; bit 15 intended to ban soul dew
-    u8 partyCount;  // exact number of mons required
-    u8 maxLevel;  // max level for a single mon
-    s8 heightLimit;  // if positive: minimum mon height; if negative, absolute value is maximum mon height
-    s8 weightLimit;  // if positive: minimum mon weight; if negative, absolute value is maximum mon weight
-    u8 evolvedPokemon:1;  // if true, can only use unevolved pokemon
-    u8 ubersClause:1;  // if true, cannot use legendaries
-    u8 speciesDupeClause:1;  // if true, can't have two Pokemon of the same species
-    u8 itemDupeClause:1;  // if true, can't have two Pokemon holding the same item
-    u8 dragonRageClause:1;  // if true, fixed-damage moves like SonicBoom and Dragon Rage will always fail
+    u16 totalLevel;           // maximum sum of party levels
+                              // lower 12 bits hold level; bit 15 intended to ban soul dew
+    u8 partyCount;            // exact number of mons required
+    u8 maxLevel;              // max level for a single mon
+    s8 heightLimit;           // if positive: minimum mon height; if negative, absolute value is maximum mon height
+    s8 weightLimit;           // if positive: minimum mon weight; if negative, absolute value is maximum mon weight
+    u8 evolvedPokemon    : 1; // if true, can only use unevolved pokemon
+    u8 ubersClause       : 1; // if true, cannot use legendaries
+    u8 speciesDupeClause : 1; // if true, can't have two Pokemon of the same species
+    u8 itemDupeClause    : 1; // if true, can't have two Pokemon holding the same item
+    u8 dragonRageClause  : 1; // if true, fixed-damage moves like SonicBoom and Dragon Rage will always fail
 } LinkBattleRuleset;
 
 typedef struct Save_LinkBattleRuleset {
@@ -54,4 +54,4 @@ int LinkBattleRuleset_GetRuleValue(const LinkBattleRuleset *ruleset, LinkBattleR
 LinkBattleRuleset *Save_LinkBattleRuleset_GetByIndex(SaveData *saveData, int a1);
 void Save_LinkBattleRuleset_Set(SaveData *saveData, const LinkBattleRuleset *rule);
 
-#endif //POKEHEARTGOLD_SAVE_LINK_RULESET_H
+#endif // POKEHEARTGOLD_SAVE_LINK_RULESET_H

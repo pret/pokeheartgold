@@ -1,9 +1,9 @@
 #ifndef POKEHEARTGOLD_UNK_02082908_H
 #define POKEHEARTGOLD_UNK_02082908_H
 
+#include "options.h"
 #include "overlay_manager.h"
 #include "pm_string.h"
-#include "options.h"
 
 extern const OVY_MGR_TEMPLATE _02102610;
 
@@ -21,4 +21,4 @@ typedef struct NamingScreenArgs {
 void sub_0208311C(NamingScreenArgs *a0);
 NamingScreenArgs *NamingScreen_CreateArgs(HeapID heapId, int kind, int param, int maxLen, Options *options, int *a5);
 
-#endif //POKEHEARTGOLD_UNK_02082908_H
+#endif // POKEHEARTGOLD_UNK_02082908_H

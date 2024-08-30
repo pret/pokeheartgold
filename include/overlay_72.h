@@ -4,8 +4,8 @@
 #include "frontier_data.h"
 #include "options.h"
 #include "overlay_manager.h"
-#include "save.h"
 #include "sav_system_info.h"
+#include "save.h"
 
 typedef struct NintendoWifiConnectArgs {
     FRONTIERDATA *frontierData;
@@ -24,4 +24,4 @@ BOOL NintendoWfc_Init(OVY_MANAGER *man, int *state);
 BOOL NintendoWfc_Main(OVY_MANAGER *man, int *state);
 BOOL NintendoWfc_Exit(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_OVY_72_H
+#endif // POKEHEARTGOLD_OVY_72_H
