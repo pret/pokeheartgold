@@ -137,7 +137,7 @@
 .public MI_CpuFill8
 .public memset
 .public gGameVersion
-.public _02102610
+.public sOverlayTemplate_NamingScreen
 .public gSystem
 .public ov36_App_InitGameState_AfterOakSpeech
 .public OakSpeech_Init

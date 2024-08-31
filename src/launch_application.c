@@ -1036,7 +1036,7 @@ static BOOL Task_NamingScreen(TaskManager *taskman) {
         data->state++;
         break;
     case 1:
-        CallApplicationAsTask(taskman, &_02102610, data->args);
+        CallApplicationAsTask(taskman, &sOverlayTemplate_NamingScreen, data->args);
         data->state++;
         break;
     case 2:
@@ -1075,15 +1075,15 @@ static void SetName(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     NamingScreenData *data   = TaskManager_GetEnvironment(taskman);
     switch (data->args->unk0) {
-    case 0:
+    case NAME_SCREEN_PLAYER:
         PlayerProfile *profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
         Save_Profile_PlayerName_Set(profile, data->args->unk1C);
         break;
-    case 3:
+    case NAME_SCREEN_RIVAL:
         SAVE_MISC_DATA *miscData = Save_Misc_Get(fieldSystem->saveData);
         Save_Misc_RivalName_Set(miscData, data->args->unk18);
         break;
-    case 1:
+    case NAME_SCREEN_POKEMON:
         Pokemon *mon;
         if (data->partyIdx == 0xff) {
             BugContest *contest = FieldSystem_BugContest_Get(fieldSystem);
@@ -1093,12 +1093,12 @@ static void SetName(TaskManager *taskman) {
         }
         SetMonData(mon, MON_DATA_NICKNAME_FLAT_COMPARE, data->args->unk1C);
         break;
-    case 5:
+    case NAME_SCREEN_GROUP:
         SAV_FRIEND_GRP *friendGroup = Save_FriendGroup_Get(fieldSystem->saveData);
         sub_0202C7F8(friendGroup, 0, 0, data->args->unk18);
         break;
-    case 2:
-    case 4:
+    case NAME_SCREEN_BOX:
+    case NAME_SCREEN_UNK4:
     default:
         break;
     }

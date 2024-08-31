@@ -192,7 +192,7 @@
 .public _ull_mod
 .public _s32_div_f
 .public _u32_div_f
-.public _02102610
+.public sOverlayTemplate_NamingScreen
 .public _02102620
 .public gSystem
 .public ov42_02227060

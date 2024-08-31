@@ -5479,8 +5479,8 @@ _02102422:
 	; File boundary
 
 	.balign 4, 0
-	.public _02102610
-_02102610:
+	.public sOverlayTemplate_NamingScreen
+sOverlayTemplate_NamingScreen:
 	.word sub_02082908, sub_02082B20, sub_02082EE8, 0xFFFFFFFF
 
 	.data

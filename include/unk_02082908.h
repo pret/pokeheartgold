@@ -5,11 +5,11 @@
 #include "overlay_manager.h"
 #include "pm_string.h"
 
-extern const OVY_MGR_TEMPLATE _02102610;
+extern const OVY_MGR_TEMPLATE sOverlayTemplate_NamingScreen;
 
 typedef struct NamingScreenArgs {
     int unk0;
-    u8 unk4[0x4];
+    int unk4;
     int form;
     u8 unkC[0x4];
     int gender;

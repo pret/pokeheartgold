@@ -292,7 +292,7 @@
 .public _fsub
 .public _s32_div_f
 .public _u32_div_f
-.public _02102610
+.public sOverlayTemplate_NamingScreen
 .public gOverlayTemplate_PokemonSummary
 .public gSystem
 .public PCBox_Init
