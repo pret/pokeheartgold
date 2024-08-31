@@ -33,18 +33,20 @@ typedef struct OaksSpeechData {
     u8 filler_0EC[0x34];
     NamingScreenArgs *namingScreenArgs_Player; // 0x120
     NamingScreenArgs *namingScreenArgs_Rival;  // 0x124
-    u8 filler_128[0x14];
+    int unk_128;
+    u8 filler_12C[0x10];
     int unk_13C;
     u8 filler_140[0x38];
     OaksSpeechData_Sub178 *unk_178;
     int unk_17C;
 } OaksSpeechData; // size: 0x180
 
+void ov53_021E5BCC(void *cbArg);
 void ov53_021E5BDC(OaksSpeechData *data);
 void ov53_021E5DE0(OaksSpeechData *data);
 void ov53_021E5EB8(OaksSpeechData *data);
 void ov53_021E5E6C(OaksSpeechData *data);
-void ov53_021E5BCC(void *cbArg);
+void ov53_021E65E0(OaksSpeechData *data);
 BOOL ov53_021E6F9C(OaksSpeechData *data);
 void ov53_021E7ECC(OaksSpeechData *data);
 void ov53_021E7F24(OaksSpeechData *data);
@@ -160,4 +162,93 @@ BOOL OakSpeech_Exit(OVY_MANAGER *ovyMan, int *pState) {
     RegisterMainOverlay(FS_OVERLAY_ID(OVY_36), &ov36_App_InitGameState_AfterOakSpeech);
     sub_02002B8C(FALSE);
     return TRUE;
+}
+
+void ov53_021E5BCC(void *cbArg) {
+    OaksSpeechData *data = cbArg;
+
+    DoScheduledBgGpuUpdates(data->bgConfig);
+    thunk_OamManager_ApplyAndResetBuffers();
+}
+
+void ov53_021E5BDC(OaksSpeechData *data) {
+    {
+        extern const GraphicsBanks ov53_021E8628;
+        GraphicsBanks graphicsBanks = ov53_021E8628;
+        GfGfx_SetBanks(&graphicsBanks);
+    }
+    data->bgConfig = BgConfig_Alloc(data->heapId);
+    {
+        extern const GraphicsModes ov53_021E8548;
+        GraphicsModes graphicsModes = ov53_021E8548;
+        SetBothScreensModesAndDisable(&graphicsModes);
+    }
+    {
+        extern const BgTemplate ov53_021E85CC;
+        BgTemplate bgTemplate = ov53_021E85CC;
+
+        bgTemplate.screenBase = GX_BG_SCRBASE_0x7800;
+        bgTemplate.charBase   = GX_BG_CHARBASE_0x18000;
+        InitBgFromTemplate(data->bgConfig, GF_BG_LYR_MAIN_0, &bgTemplate, GF_BG_TYPE_TEXT);
+        BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_MAIN_0);
+
+        bgTemplate.screenBase = GX_BG_SCRBASE_0x7000;
+        bgTemplate.charBase   = GX_BG_CHARBASE_0x14000;
+        InitBgFromTemplate(data->bgConfig, GF_BG_LYR_MAIN_1, &bgTemplate, GF_BG_TYPE_TEXT);
+        BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_MAIN_1);
+
+        bgTemplate.screenBase = GX_BG_SCRBASE_0x6800;
+        bgTemplate.charBase   = GX_BG_CHARBASE_0x10000;
+        InitBgFromTemplate(data->bgConfig, GF_BG_LYR_MAIN_2, &bgTemplate, GF_BG_TYPE_TEXT);
+        BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_MAIN_2);
+
+        bgTemplate.screenBase = GX_BG_SCRBASE_0x6000;
+        bgTemplate.charBase   = GX_BG_CHARBASE_0x0c000;
+        InitBgFromTemplate(data->bgConfig, GF_BG_LYR_MAIN_3, &bgTemplate, GF_BG_TYPE_TEXT);
+        BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_MAIN_3);
+
+        LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_MAIN_0, 0x3E2, 4, 0, data->heapId);
+        LoadUserFrameGfx1(data->bgConfig, GF_BG_LYR_MAIN_0, 0x3D9, 3, 0, data->heapId);
+        LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0xA0, data->heapId);
+        LoadFontPal1(GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0xC0, data->heapId);
+    }
+    {
+        extern const BgTemplate ov53_021E85E8;
+        BgTemplate bgTemplate = ov53_021E85E8;
+
+        bgTemplate.screenBase = GX_BG_SCRBASE_0x7800;
+        bgTemplate.charBase   = GX_BG_CHARBASE_0x18000;
+        InitBgFromTemplate(data->bgConfig, GF_BG_LYR_SUB_0, &bgTemplate, GF_BG_TYPE_TEXT);
+        BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_0);
+
+        bgTemplate.screenBase = GX_BG_SCRBASE_0x7000;
+        bgTemplate.charBase   = GX_BG_CHARBASE_0x14000;
+        InitBgFromTemplate(data->bgConfig, GF_BG_LYR_SUB_1, &bgTemplate, GF_BG_TYPE_TEXT);
+        BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_1);
+
+        bgTemplate.screenBase = GX_BG_SCRBASE_0x6800;
+        bgTemplate.charBase   = GX_BG_CHARBASE_0x10000;
+        InitBgFromTemplate(data->bgConfig, GF_BG_LYR_SUB_2, &bgTemplate, GF_BG_TYPE_TEXT);
+        BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_2);
+
+        bgTemplate.screenBase = GX_BG_SCRBASE_0x6000;
+        bgTemplate.charBase   = GX_BG_CHARBASE_0x0c000;
+        InitBgFromTemplate(data->bgConfig, GF_BG_LYR_SUB_3, &bgTemplate, GF_BG_TYPE_TEXT);
+        BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_3);
+
+        SetBgPriority(GF_BG_LYR_SUB_3, 3);
+        LoadFontPal0(GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0x1C0, data->heapId);
+        BG_ClearCharDataRange(GF_BG_LYR_SUB_0, 0x20, 0, data->heapId);
+    }
+
+    ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_OFF);
+    ToggleBgLayer(GF_BG_LYR_MAIN_1, GF_PLANE_TOGGLE_OFF);
+    ToggleBgLayer(GF_BG_LYR_MAIN_2, GF_PLANE_TOGGLE_OFF);
+    ToggleBgLayer(GF_BG_LYR_MAIN_3, GF_PLANE_TOGGLE_OFF);
+    ToggleBgLayer(GF_BG_LYR_SUB_0, GF_PLANE_TOGGLE_OFF);
+    ToggleBgLayer(GF_BG_LYR_SUB_1, GF_PLANE_TOGGLE_OFF);
+    ToggleBgLayer(GF_BG_LYR_SUB_2, GF_PLANE_TOGGLE_OFF);
+    ToggleBgLayer(GF_BG_LYR_SUB_3, GF_PLANE_TOGGLE_OFF);
+    ov53_021E65E0(data);
+    data->unk_128 = 0;
 }
