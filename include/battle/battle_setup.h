@@ -32,18 +32,18 @@ struct BattleSetup {                     // declared in trainer_data.h
     Trainer trainer[BATTLER_MAX];        // 28
     PlayerProfile *profile[BATTLER_MAX]; // f8
     Bag *bag;                            // 108
-    BagCursor *bagCursor;
-    Pokedex *pokedex;                  // 110
-    PCStorage *storagePC;              // 114
-    SOUND_CHATOT *chatot[BATTLER_MAX]; // 118
+    BagCursor *bagCursor;                // 10c
+    Pokedex *pokedex;                    // 110
+    PCStorage *storagePC;                // 114
+    SOUND_CHATOT *chatot[BATTLER_MAX];   // 118
     void *unk_128;
     void *unk_12C;
     Options *options; // 130
     struct UnkStruct_02067A60 *unk_134;
     struct BattleSetupSub_138 unk138;
-    GAME_STATS *gameStats; // 144
-    SavePalPad *palPad;    // 148
-    BattleBg battleBg;     // 14C
+    GameStats *gameStats; // 144
+    SavePalPad *palPad;   // 148
+    BattleBg battleBg;    // 14C
     Terrain terrain;
     u32 mapSection;        // 154
     u32 mapNumber;         // 158
@@ -59,7 +59,7 @@ struct BattleSetup {                     // declared in trainer_data.h
     u32 battleSpecial; // 18C
     int safariBalls;   // 190
     BOOL fixedDamaageMovesBanned;
-    EvolutionTaskData *unk198;
+    EvolutionTaskData *evolutionTaskData;
     int unk_19C;
     int unk_1A0[4];
     u16 unk1B0;
@@ -83,8 +83,11 @@ BattleSetup *BattleSetup_New_Tutorial(HeapID heapId, FieldSystem *fieldSystem);
 void BattleSetup_Delete(BattleSetup *setup);
 void BattleSetup_AddMonToParty(BattleSetup *setup, Pokemon *mon, int battler);
 void sub_02051D18(BattleSetup *setup, FieldSystem *fieldSystem, SaveData *savedata, u32 mapno, BagCursor *bagCursor, void *arg5);
-void BattleSetup_InitFromFieldSystem(BattleSetup *setup, FieldSystem *fieldSystem);
-void BattleSetup_InitForFixedLevelFacility(BattleSetup *setup, FieldSystem *fieldSystem, int level);
+void BattleSetup_InitFromFieldSystem(BattleSetup *setup,
+    FieldSystem *fieldSystem);
+void BattleSetup_InitForFixedLevelFacility(BattleSetup *setup,
+    FieldSystem *fieldSystem,
+    int level);
 void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8 *partySlots);
 void sub_020522F0(BattleSetup *setup, FieldSystem *fieldSystem, void *partySlots);
 void sub_0205239C(BattleSetup *setup, FieldSystem *fieldSystem);

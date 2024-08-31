@@ -127,7 +127,7 @@ u32 Save_Rankings_GetMixingSize(void) {
 static u32 *Save_RankingSys_GetPlayerStats(SaveData *saveData, HeapID heapId) {
     int i;
     u32 val;
-    GAME_STATS *gameStats;
+    GameStats *gameStats;
     FRONTIER_SAVE *frontierSave;
     u32 *ret;
 

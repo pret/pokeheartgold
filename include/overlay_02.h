@@ -6,6 +6,7 @@
 
 #include "heap.h"
 #include "script.h"
+#include "start_menu.h"
 #include "sys_task.h"
 
 struct FieldLongWarpTaskData;

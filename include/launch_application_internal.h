@@ -54,11 +54,11 @@ typedef struct UnkStruct_0203F0D0 {
     SaveFashionDataSub *unk4;
     FashionCase *fashionCase;
     Options *options;
-    GAME_STATS *gameStats;
+    GameStats *gameStats;
     PlayerProfile *profile;
     int *unk18;
     int unk1C;
-    BOOL *unk20;
+    BOOL *menuInputStatePtr;
 } UnkStruct_0203F0D0;
 
 typedef struct UnkStruct_0203F134 {
@@ -76,7 +76,7 @@ typedef struct WirelessTradeSelectMonArgs {
     SaveData *saveData;
     SaveWiFiHistory *unk14;
     Options *options;
-    GAME_STATS *gameStats;
+    GameStats *gameStats;
     Pokedex *pokedex;
     int unk24;
     int unk28;
@@ -101,7 +101,7 @@ typedef struct TradeSequenceArgs {
     TradeSequenceBackground bgType;
     int unk10;
     Options *options;
-    EvolutionTaskData *unk18;
+    EvolutionTaskData *evolutionTaskData;
     u8 unk1C[0x4];
 } TradeSequenceArgs;
 
@@ -135,7 +135,7 @@ typedef struct UnkStruct_0203F844 {
     PlayerProfile *profile;
     SaveData *saveData;
     Options *options;
-    GAME_STATS *gameStats;
+    GameStats *gameStats;
     Bag *bag;
     BOOL natDexEnabled;
     void *unk34;
@@ -145,7 +145,7 @@ typedef struct UnkStruct_0203F844 {
 
 typedef struct UnkStruct_0203E644 {
     u8 unk0[0x26];
-    u8 unk26;
+    u8 partySlot;
 } UnkStruct_0203E644;
 
 typedef struct PartyMenuMoveSelectData {

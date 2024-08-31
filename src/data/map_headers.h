@@ -1,3 +1,15 @@
+#include "constants/map_sections.h"
+#include "constants/maps.h"
+#include "constants/sndseq.h"
+
+#include "fielddata/eventdata/zone_event.naix"
+#include "fielddata/mapmatrix/map_matrix.naix"
+#include "fielddata/script/scr_seq.naix"
+#include "msgdata/msg.naix"
+
+#include "encounter_tables_narc.h"
+#include "map_header.h"
+
 #define _IN_MAP_HEADER_C
 
 static const MAP_HEADER sMapHeaders[] = {

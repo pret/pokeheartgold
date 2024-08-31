@@ -39,7 +39,7 @@ void FieldSystem_Init(OVY_MANAGER *man, FieldSystem *fieldSystem) {
     }
     fieldSystem->unkA8             = sub_02092BB8(HEAP_ID_FIELD);
     fieldSystem->unk108            = FieldSystem_UnkSub108_Alloc(HEAP_ID_FIELD);
-    fieldSystem->unk114            = GearPhoneRingManager_New(HEAP_ID_FIELD, fieldSystem);
+    fieldSystem->phoneRingManager  = GearPhoneRingManager_New(HEAP_ID_FIELD, fieldSystem);
     fieldSystem->judgeStatPosition = 0;
     if ((key + key2) % 4073) {
         ov124_02260D1C(fieldSystem);

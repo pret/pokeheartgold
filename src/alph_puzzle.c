@@ -448,27 +448,99 @@ static const GraphicsModes sGraphicsMode = {
 };
 
 static const BgTemplate sBgTemplate5 = {
-    0, 0, GF_BG_BUF_SIZE_256x256_4BPP, 0x000, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, GX_BG_SCRBASE_0xf000, GX_BG_CHARBASE_0x00000, GX_BG_EXTPLTT_01, 2, GX_BG_AREAOVER_XLU, 0, FALSE
+    0,
+    0,
+    GF_BG_BUF_SIZE_256x256_4BPP,
+    0x000,
+    GF_BG_SCR_SIZE_256x256,
+    GX_BG_COLORMODE_16,
+    GX_BG_SCRBASE_0xf000,
+    GX_BG_CHARBASE_0x00000,
+    GX_BG_EXTPLTT_01,
+    2,
+    GX_BG_AREAOVER_XLU,
+    0,
+    FALSE,
 };
 
 static const BgTemplate sBgTemplate1 = {
-    0, 0, GF_BG_BUF_SIZE_256x256_4BPP, 0x000, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, GX_BG_SCRBASE_0xf800, GX_BG_CHARBASE_0x10000, GX_BG_EXTPLTT_01, 1, GX_BG_AREAOVER_XLU, 0, FALSE
+    0,
+    0,
+    GF_BG_BUF_SIZE_256x256_4BPP,
+    0x000,
+    GF_BG_SCR_SIZE_256x256,
+    GX_BG_COLORMODE_16,
+    GX_BG_SCRBASE_0xf800,
+    GX_BG_CHARBASE_0x10000,
+    GX_BG_EXTPLTT_01,
+    1,
+    GX_BG_AREAOVER_XLU,
+    0,
+    FALSE,
 };
 
 static const BgTemplate sBgTemplate6 = {
-    0, 0, GF_BG_BUF_SIZE_256x256_4BPP, 0x000, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, GX_BG_SCRBASE_0xe800, GX_BG_CHARBASE_0x00000, GX_BG_EXTPLTT_01, 3, GX_BG_AREAOVER_XLU, 0, FALSE
+    0,
+    0,
+    GF_BG_BUF_SIZE_256x256_4BPP,
+    0x000,
+    GF_BG_SCR_SIZE_256x256,
+    GX_BG_COLORMODE_16,
+    GX_BG_SCRBASE_0xe800,
+    GX_BG_CHARBASE_0x00000,
+    GX_BG_EXTPLTT_01,
+    3,
+    GX_BG_AREAOVER_XLU,
+    0,
+    FALSE,
 };
 
 static const BgTemplate sBgTemplate2 = {
-    0, 0, GF_BG_BUF_SIZE_256x256_4BPP, 0x000, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, GX_BG_SCRBASE_0xf000, GX_BG_CHARBASE_0x00000, GX_BG_EXTPLTT_01, 2, GX_BG_AREAOVER_XLU, 0, FALSE
+    0,
+    0,
+    GF_BG_BUF_SIZE_256x256_4BPP,
+    0x000,
+    GF_BG_SCR_SIZE_256x256,
+    GX_BG_COLORMODE_16,
+    GX_BG_SCRBASE_0xf000,
+    GX_BG_CHARBASE_0x00000,
+    GX_BG_EXTPLTT_01,
+    2,
+    GX_BG_AREAOVER_XLU,
+    0,
+    FALSE,
 };
 
 static const BgTemplate sBgTemplate3 = {
-    0, 0, GF_BG_BUF_SIZE_256x256_4BPP, 0x000, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, GX_BG_SCRBASE_0xe800, GX_BG_CHARBASE_0x00000, GX_BG_EXTPLTT_01, 3, GX_BG_AREAOVER_XLU, 0, FALSE
+    0,
+    0,
+    GF_BG_BUF_SIZE_256x256_4BPP,
+    0x000,
+    GF_BG_SCR_SIZE_256x256,
+    GX_BG_COLORMODE_16,
+    GX_BG_SCRBASE_0xe800,
+    GX_BG_CHARBASE_0x00000,
+    GX_BG_EXTPLTT_01,
+    3,
+    GX_BG_AREAOVER_XLU,
+    0,
+    FALSE,
 };
 
 static const BgTemplate sBgTemplate4 = {
-    0, 0, GF_BG_BUF_SIZE_256x256_4BPP, 0x000, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, GX_BG_SCRBASE_0xf800, GX_BG_CHARBASE_0x10000, GX_BG_EXTPLTT_01, 0, GX_BG_AREAOVER_XLU, 0, FALSE
+    0,
+    0,
+    GF_BG_BUF_SIZE_256x256_4BPP,
+    0x000,
+    GF_BG_SCR_SIZE_256x256,
+    GX_BG_COLORMODE_16,
+    GX_BG_SCRBASE_0xf800,
+    GX_BG_CHARBASE_0x10000,
+    GX_BG_EXTPLTT_01,
+    0,
+    GX_BG_AREAOVER_XLU,
+    0,
+    FALSE,
 };
 
 static const WindowTemplate sWindowTemplates[3] = {
@@ -588,7 +660,7 @@ static void AlphPuzzle_ScreenOff(void) {
 }
 
 static void AlphPuzzle_InitTextOptionsAndPuzzleIndex(AlphPuzzleData *data) {
-    data->menuIgnoreTouchFlag = sub_020183F0(data->args->fieldSystemUnk10Cpointer);
+    data->menuIgnoreTouchFlag = sub_020183F0(data->args->menuInputStatePtr);
     Options *options          = Save_PlayerData_GetOptionsAddr(data->args->saveData);
     data->textFrameDelay      = Options_GetTextFrameDelay(options);
     data->frame               = Options_GetFrame(options);
@@ -596,7 +668,7 @@ static void AlphPuzzle_InitTextOptionsAndPuzzleIndex(AlphPuzzleData *data) {
 }
 
 static void AlphPuzzle_Finish(AlphPuzzleData *data) {
-    sub_02018410(data->args->fieldSystemUnk10Cpointer, data->menuIgnoreTouchFlag);
+    sub_02018410(data->args->menuInputStatePtr, data->menuIgnoreTouchFlag);
     if (data->puzzleSolved) {
         Save_VarsFlags_SetAlphPuzzleFlag(Save_VarsFlags_Get(data->args->saveData), data->puzzleIndex);
     }

@@ -735,7 +735,9 @@ static void BattleControllerPlayer_BeforeTurn(BattleSystem *bsys, BattleContext 
                     continue;
                 }
                 ctx->beforeTurnData++;
-                if (!(ctx->battleMons[battlerId].status & STATUS_SLEEP) && (GetBattlerSelectedMove(ctx, battlerId) == MOVE_FOCUS_PUNCH) && !CheckTruant(ctx, battlerId) && !ctx->turnData[battlerId].struggleFlag) {
+                if (!(ctx->battleMons[battlerId].status & STATUS_SLEEP)
+                    && (GetBattlerSelectedMove(ctx, battlerId) == MOVE_FOCUS_PUNCH)
+                    && !CheckTruant(ctx, battlerId) && !ctx->turnData[battlerId].struggleFlag) {
                     BattleController_EmitBlankMessage(bsys);
                     ctx->battlerIdTemp = battlerId;
                     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_TIGHTEN_FOCUS);

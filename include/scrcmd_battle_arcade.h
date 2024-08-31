@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_SCRCMD_BATTLE_HALL_H
 #define POKEHEARTGOLD_SCRCMD_BATTLE_HALL_H
 
+#include "global.h"
+
 typedef struct UnkStruct_02050060 {
     u8 state;
     u8 unk01;

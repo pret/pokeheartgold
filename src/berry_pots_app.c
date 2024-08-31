@@ -1031,7 +1031,7 @@ static void ov17_02202B98(BerryPotsAppData *data) {
     Sprite_Delete(unk->soilSpriteMaybe);
     unk->soilSpriteMaybe = NULL;
     Sprite_SetAnimCtrlCurrentFrame(data->sprites[data->unk7C + 3], 2);
-    GameStats_AddScore(data->stats, SCORE_INC_TYPE_0);
+    GameStats_AddScore(data->stats, SCORE_EVENT_0);
 }
 
 static void ov17_02202BF8(BerryPotsAppData *data) {

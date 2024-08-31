@@ -23,6 +23,7 @@
 #include "unk_02055418.h"
 #include "unk_0205B3DC.h"
 #include "unk_0205BB1C.h"
+#include "unk_02067A60.h"
 #include "unk_0206D494.h"
 #include "unk_02088288.h"
 #include "unk_02092BE8.h"

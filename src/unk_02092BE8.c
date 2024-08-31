@@ -56,10 +56,10 @@ static void sub_02092BE8(FieldSystem *sys, PokegearArgs *ptr, BOOL a2) {
         MapMatrix_Free(matrix);
     }
 
-    ptr->playerGender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(sys)));
-    ptr->unk28        = &sys->menuInputState;
-    ptr->unk01        = sub_0203DF3C(sys);
-    ptr->mapMusicID   = FieldSystem_GetOverriddenMusicId(sys, ptr->mapID);
+    ptr->playerGender      = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(sys)));
+    ptr->menuInputStatePtr = &sys->menuInputState;
+    ptr->unk01             = sub_0203DF3C(sys);
+    ptr->mapMusicID        = FieldSystem_GetOverriddenMusicId(sys, ptr->mapID);
 
     if (a2) {
         return;
@@ -112,7 +112,7 @@ void sub_02092DD8(GearPhoneRingManager *ptr) {
 }
 
 GearPhoneRingManager *FieldSystem_GetGearPhoneRingManager(FieldSystem *sys) {
-    return sys->unk114;
+    return sys->phoneRingManager;
 }
 
 void sub_02092DF4(GearPhoneRingManager *ptr) {

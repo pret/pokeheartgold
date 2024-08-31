@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_VOLTORB_FLIP_GAME_H
 #define POKEHEARTGOLD_VOLTORB_FLIP_GAME_H
 
+#include "heap.h"
+
 typedef enum CardType {
     CARD_TYPE_NONE,
     CARD_TYPE_ONE,

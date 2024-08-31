@@ -115,7 +115,7 @@ scr_seq_T27GYM0101_001:
 	npc_msg msg_0614_T27GYM0101_00001
 	give_badge BADGE_FOG
 	addvar VAR_UNK_4134, 1
-	add_special_game_stat SCORE_INC_TYPE_22
+	add_special_game_stat SCORE_EVENT_22
 	setflag FLAG_UNK_998
 	buffer_players_name 0
 	npc_msg msg_0614_T27GYM0101_00002

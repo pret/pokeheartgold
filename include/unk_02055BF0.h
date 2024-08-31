@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_UNK_02055BF0_H
 #define POKEHEARTGOLD_UNK_02055BF0_H
 
+#include "field_system.h"
 #include "task.h"
 #include "unk_0206793C.h"
 

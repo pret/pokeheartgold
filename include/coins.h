@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_COINS_H
 #define POKEHEARTGOLD_COINS_H
 
+#include "global.h"
+
 #define MAX_COINS 50000
 
 /*

@@ -1725,11 +1725,102 @@ static void ov122_021E7BD4(VoltorbFlipAppWork *work) {
     SpriteRenderer_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000017_bin, TRUE, 1);
 }
 #else
+// clang-format off
 asm void ov122_021E7BD4(VoltorbFlipAppWork *work) {
-    push { r3, r4, r5, r6, r7, lr } sub sp, #0x10 add r5, r0, #0 ldr r0, [ r5, #0x14 ] cmp r0, #0 bne _021E7BE4 bl GF_AssertFail _021E7BE4 : mov r0, #0x51 lsl r0, r0, #2 ldr r6, [ r5, r0 ] add r0, r0, #4 ldr r4, [ r5, r0 ] mov r1, #0 str r1, [sp] mov r0, #5 str r0, [ sp, #4 ] mov r7, #1 str r7, [ sp, #8 ] str r1, [ sp, #0xc ] ldr r2, [ r5, #0x14 ] add r0, r6, #0 add r1, r4, #0 mov r3, #0xa bl SpriteRenderer_LoadPlttResObjFromOpenNarc add r0, r7, #0 str r0, [sp] str r7, [ sp, #4 ] mov r0, #0 str r0, [ sp, #8 ] ldr r2, [ r5, #0x14 ] add r0, r6, #0 add r1, r4, #0 mov r3, #0xb bl SpriteRenderer_LoadCharResObjFromOpenNarc add r0, r7, #0 str r0, [sp] mov r0, #0 str r0, [ sp, #4 ] ldr r2, [ r5, #0x14 ] add r0, r6, #0 add r1, r4, #0 mov r3, #0xc bl SpriteRenderer_LoadCellResObjFromOpenNarc add r0, r7, #0 str r0, [sp] mov r0, #0 str r0, [ sp, #4 ] ldr r2, [ r5, #0x14 ] add r0, r6, #0 add r1, r4, #0 mov r3, #0xd bl SpriteRenderer_LoadAnimResObjFromOpenNarc mov r0, #0 str r0, [sp] mov r0, #1 mov r7, #2 str r0, [ sp, #4 ] str r7, [ sp, #8 ] str r0, [ sp, #0xc ] ldr r2, [ r5, #0x14 ] add r0, r6, #0 add r1, r4, #0 mov r3, #0xe bl SpriteRenderer_LoadPlttResObjFromOpenNarc mov r0, #1 str r0, [sp] str r7, [ sp, #4 ] str r0, [ sp, #8 ] ldr r2, [ r5, #0x14 ] add r0, r6, #0 add r1, r4, #0 mov r3, #0xf bl SpriteRenderer_LoadCharResObjFromOpenNarc mov r0, #1 str r0, [sp] str r0, [ sp, #4 ] ldr r2, [ r5, #0x14 ] add r0, r6, #0 add r1, r4, #0 mov r3, #0x10 bl SpriteRenderer_LoadCellResObjFromOpenNarc mov r0, #1 str r0, [sp] str r0, [ sp, #4 ] ldr r2, [ r5, #0x14 ] add r0, r6, #0 add r1, r4, #0 mov r3, #0x11 bl SpriteRenderer_LoadAnimResObjFromOpenNarc add sp, #0x10 pop {
-        r3, r4, r5, r6, r7, pc
-    }
+	push {r3, r4, r5, r6, r7, lr}
+	sub sp, #0x10
+	add r5, r0, #0
+	ldr r0, [r5, #0x14]
+	cmp r0, #0
+	bne _021E7BE4
+	bl GF_AssertFail
+_021E7BE4:
+	mov r0, #0x51
+	lsl r0, r0, #2
+	ldr r6, [r5, r0]
+	add r0, r0, #4
+	ldr r4, [r5, r0]
+	mov r1, #0
+	str r1, [sp]
+	mov r0, #5
+	str r0, [sp, #4]
+	mov r7, #1
+	str r7, [sp, #8]
+	str r1, [sp, #0xc]
+	ldr r2, [r5, #0x14]
+	add r0, r6, #0
+	add r1, r4, #0
+	mov r3, #0xa
+	bl SpriteRenderer_LoadPlttResObjFromOpenNarc
+	add r0, r7, #0
+	str r0, [sp]
+	str r7, [sp, #4]
+	mov r0, #0
+	str r0, [sp, #8]
+	ldr r2, [r5, #0x14]
+	add r0, r6, #0
+	add r1, r4, #0
+	mov r3, #0xb
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
+	add r0, r7, #0
+	str r0, [sp]
+	mov r0, #0
+	str r0, [sp, #4]
+	ldr r2, [r5, #0x14]
+	add r0, r6, #0
+	add r1, r4, #0
+	mov r3, #0xc
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
+	add r0, r7, #0
+	str r0, [sp]
+	mov r0, #0
+	str r0, [sp, #4]
+	ldr r2, [r5, #0x14]
+	add r0, r6, #0
+	add r1, r4, #0
+	mov r3, #0xd
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
+	mov r0, #0
+	str r0, [sp]
+	mov r0, #1
+	mov r7, #2
+	str r0, [sp, #4]
+	str r7, [sp, #8]
+	str r0, [sp, #0xc]
+	ldr r2, [r5, #0x14]
+	add r0, r6, #0
+	add r1, r4, #0
+	mov r3, #0xe
+	bl SpriteRenderer_LoadPlttResObjFromOpenNarc
+	mov r0, #1
+	str r0, [sp]
+	str r7, [sp, #4]
+	str r0, [sp, #8]
+	ldr r2, [r5, #0x14]
+	add r0, r6, #0
+	add r1, r4, #0
+	mov r3, #0xf
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
+	mov r0, #1
+	str r0, [sp]
+	str r0, [sp, #4]
+	ldr r2, [r5, #0x14]
+	add r0, r6, #0
+	add r1, r4, #0
+	mov r3, #0x10
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
+	mov r0, #1
+	str r0, [sp]
+	str r0, [sp, #4]
+	ldr r2, [r5, #0x14]
+	add r0, r6, #0
+	add r1, r4, #0
+	mov r3, #0x11
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
+	add sp, #0x10
+	pop {r3, r4, r5, r6, r7, pc}
 }
+// clang-format on
 #endif // NONMATCHING
 
 static UnkImageStruct *ov122_021E7C9C(SpriteRenderer *a0, SpriteGfxHandler *a1, u16 a2, u16 a3, u16 a4, u16 a5) {
@@ -1870,14 +1961,14 @@ static void ov122_021E8094(OVY_MANAGER *man) {
 
     VoltorbFlipAppWork *work = OverlayManager_CreateAndGetData(man, sizeof(VoltorbFlipAppWork), HEAP_ID_VOLTORB_FLIP);
     MI_CpuFill8(work, 0, sizeof(VoltorbFlipAppWork));
-    work->heapId  = HEAP_ID_VOLTORB_FLIP;
-    work->options = args->options;
-    work->coins   = args->coins;
-    work->unkC    = args->unk8;
-    work->profile = args->profile;
-    work->unk228  = sub_020183F0(work->unkC);
-    work->unk229  = Options_GetFrame(work->options);
-    work->unk22A  = Options_GetTextFrameDelay(work->options);
+    work->heapId            = HEAP_ID_VOLTORB_FLIP;
+    work->options           = args->options;
+    work->coins             = args->coins;
+    work->menuInputStatePtr = args->menuInputStatePtr;
+    work->profile           = args->profile;
+    work->unk228            = sub_020183F0(work->menuInputStatePtr);
+    work->unk229            = Options_GetFrame(work->options);
+    work->unk22A            = Options_GetTextFrameDelay(work->options);
 
     work->narc    = NARC_New(NARC_application_voltorb_flip, work->heapId);
     work->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0039_bin, work->heapId);
@@ -1910,7 +2001,7 @@ static void ov122_021E8094(OVY_MANAGER *man) {
     sub_02002B8C(TRUE);
 
     Main_SetVBlankIntrCB((GFIntrCB)ov122_021E8004, work);
-    GameStats_AddScore(Save_GameStats_Get(args->saveData), SCORE_INC_TYPE_6);
+    GameStats_AddScore(Save_GameStats_Get(args->saveData), SCORE_EVENT_6);
 }
 
 static void FreeOverlayData(OVY_MANAGER *man) {

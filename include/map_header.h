@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_MAP_HEADER_H
 #define POKEHEARTGOLD_MAP_HEADER_H
 
+#include "global.h"
+
 #include "constants/battle.h"
 
 #define MAP_FOLLOWMODE_PREVENT         0

@@ -539,7 +539,7 @@ BOOL ScrCmd_KenyaCheckPartyOrMailbox(ScriptContext *ctx) {
         }
     }
 
-    MAILBOX *mailbox = Save_Mailbox_Get(fieldSystem->saveData);
+    Mailbox *mailbox = Save_Mailbox_Get(fieldSystem->saveData);
     i                = 0;
     while (TRUE) {
         Mailbox_FetchMailToBuffer(mailbox->msgs, 0, i, mail);

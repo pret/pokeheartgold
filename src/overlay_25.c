@@ -205,13 +205,13 @@ static void TrainerHouse_SetNames(TrainerHouseSet *set) {
 BOOL ScrCmd_ShowTrainerHouseIntroMessage(ScriptContext *ctx) {
     u16 trainerNum             = ScriptGetVar(ctx);
     TrainerHouse *trainerHouse = Save_TrainerHouse_Get(ctx->fieldSystem->saveData);
-    MAIL_MESSAGE intro;
-    MAIL_MESSAGE temp;
+    MailMessage intro;
+    MailMessage temp;
     if (trainerNum == MAX_NUM_TRAINER_HOUSE_SETS) {
         MailMsg_Init_FromTemplate(&temp, &TrainerHouse_DefaultIntroMessage);
-        MI_CpuCopy16(&temp, &intro, sizeof(MAIL_MESSAGE));
+        MI_CpuCopy16(&temp, &intro, sizeof(MailMessage));
     } else {
-        MI_CpuCopy16(&(trainerHouse->sets[trainerNum].trainer.introMessage), &intro, sizeof(MAIL_MESSAGE));
+        MI_CpuCopy16(&(trainerHouse->sets[trainerNum].trainer.introMessage), &intro, sizeof(MailMessage));
     }
     ov01_021EF564(ctx, intro.msg_bank, intro.msg_no, intro.fields[0], intro.fields[1], TRUE);
     SetupNativeScript(ctx, ov01_021EF348);

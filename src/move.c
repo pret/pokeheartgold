@@ -6,9 +6,6 @@
 
 #include "filesystem.h"
 
-void LoadMoveEntry(u16 moveId, MoveTbl *dest);
-u32 GetMoveTblAttr(MoveTbl *movedata, MoveAttr attrno);
-
 void LoadMoveTbl(MoveTbl *dest) {
     ReadFromNarcMemberByIdPair(dest, NARC_poketool_waza_waza_tbl, 0, 0, (NUM_MOVES + 1) * sizeof(MoveTbl));
 }

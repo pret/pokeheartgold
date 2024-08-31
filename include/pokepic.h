@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_POKEPIC_H
 #define POKEHEARTGOLD_POKEPIC_H
 
+#include "global.h"
+
 #include "filesystem_files_def.h"
 #include "heap.h"
 #include "pokemon_types_def.h"

@@ -156,13 +156,13 @@ static u32 ov16_02201AA0(UnkStruct_ov16_0220196C *unk) {
         unused_02201BA0 = (u8 *)ov16_02201B60;
 
         unk->bagView = Bag_CreateView(bag, ov16_02201B60, unk->heapId);
-        sub_0207789C(unk->bagView, unk->args->saveData, 6, unk->cursor2, unk->args->unk4);
+        sub_0207789C(unk->bagView, unk->args->saveData, 6, unk->cursor2, unk->args->menuInputStatePtr);
         break;
     case 2:
         unused_02201BA0 = (u8 *)ov16_02201B64;
 
         unk->bagView = Bag_CreateView(bag, ov16_02201B64, unk->heapId);
-        sub_0207789C(unk->bagView, unk->args->saveData, 6, unk->cursor1, unk->args->unk4);
+        sub_0207789C(unk->bagView, unk->args->saveData, 6, unk->cursor1, unk->args->menuInputStatePtr);
         break;
     default:
         GF_ASSERT(FALSE);

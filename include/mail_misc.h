@@ -25,7 +25,7 @@ typedef struct {
     u32 frame;
     Pokedex *pokedex;
     SaveEasyChat *easyChat;
-    MAIL_MESSAGE mailMessage;
+    MailMessage mailMessage;
     u16 unk1C[0x4];
     BOOL *unk24;
 } EasyChatArgs;
@@ -39,22 +39,22 @@ typedef struct UseMailArgs {
     u8 mailType;
     SaveData *saveData;
     Mail *mail;
-    MAILBOX *mailbox;
-    BOOL *unk1C;
+    Mailbox *mailbox;
+    BOOL *menuInputStatePtr;
 } UseMailArgs;
 
 EasyChatArgs *EasyChat_CreateArgs(u8 a0, u8 a1, SaveData *saveData, BOOL *a3, HeapID heapId);
 void EasyChat_FreeArgs(EasyChatArgs *args);
 void sub_02090D14(EasyChatArgs *args, u16 a1);
 void sub_02090D18(EasyChatArgs *args, u16 a1, u16 a2);
-void sub_02090D20(EasyChatArgs *args, MAIL_MESSAGE *mailMessage);
+void sub_02090D20(EasyChatArgs *args, MailMessage *mailMessage);
 void sub_02090D34(EasyChatArgs *args);
 void sub_02090D40(EasyChatArgs *args);
 BOOL sub_02090D48(EasyChatArgs *args);
 BOOL sub_02090D4C(EasyChatArgs *args);
 u16 sub_02090D50(EasyChatArgs *args);
 void sub_02090D54(EasyChatArgs *args, MsgBankMsgNo *mailMessage);
-void sub_02090D60(EasyChatArgs *args, MAIL_MESSAGE *mailMessage);
+void sub_02090D60(EasyChatArgs *args, MailMessage *mailMessage);
 u8 sub_02090D70(EasyChatArgs *args);
 u8 sub_02090D74(EasyChatArgs *args);
 u32 sub_02090D78(EasyChatArgs *args);
@@ -62,9 +62,9 @@ Pokedex *sub_02090D7C(EasyChatArgs *args);
 SaveEasyChat *sub_02090D80(EasyChatArgs *args);
 u8 sub_02090D84(EasyChatArgs *args);
 u8 sub_02090D88(EasyChatArgs *args);
-void sub_02090D8C(EasyChatArgs *args, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2);
-BOOL sub_02090DC0(EasyChatArgs *args, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2);
-void sub_02090E04(EasyChatArgs *args, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2);
+void sub_02090D8C(EasyChatArgs *args, MailMessage *msg1, MailMessage *msg2);
+BOOL sub_02090DC0(EasyChatArgs *args, MailMessage *msg1, MailMessage *msg2);
+void sub_02090E04(EasyChatArgs *args, MailMessage *msg1, MailMessage *msg2);
 int sub_02090E44(EasyChatArgs *args);
 void sub_02090E5C(EasyChatArgs *args, u32 a1);
 UseMailArgs *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 mailType, HeapID heapId);
@@ -74,7 +74,7 @@ UseMailArgs *sub_02090F38(SaveData *saveData, u8 mailType, HeapID heapId);
 u32 sub_02090F6C(UseMailArgs *args);
 BOOL sub_02090F70(UseMailArgs *args, Pokemon *mon);
 void sub_02090F90(UseMailArgs *args);
-int Mailbox_MoveMessageFromMon(MAILBOX *mailbox, Pokemon *mon, HeapID heapId);
+int Mailbox_MoveMessageFromMon(Mailbox *mailbox, Pokemon *mon, HeapID heapId);
 int sub_02091004(Mail *msgs, int i, Pokemon *mon, HeapID heapId);
 
 #endif // POKEHEARTGOLD_MAIL_MISC_H

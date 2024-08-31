@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_UNK_METATILE_BEHAVIOR_H
 #define POKEHEARTGOLD_UNK_METATILE_BEHAVIOR_H
 
+#include "global.h"
+
 BOOL MetatileBehavior_IsEncounterGrass(u8 tile);
 BOOL sub_0205B6F4(u8 tile);
 BOOL sub_0205B700(u8 tile);

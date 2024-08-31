@@ -3,6 +3,8 @@
 
 #include "frontier/frontier_map.h"
 
+#include "message_format.h"
+
 typedef struct FrontierSystem {
     void *unk0;
     u8 unk4[0x40];

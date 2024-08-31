@@ -50,7 +50,7 @@ void sub_02090D18(EasyChatArgs *args, u16 a1, u16 a2) {
     args->unk1C[1] = a2;
 }
 
-void sub_02090D20(EasyChatArgs *args, MAIL_MESSAGE *mailMessage) {
+void sub_02090D20(EasyChatArgs *args, MailMessage *mailMessage) {
     args->mailMessage = *mailMessage;
 }
 
@@ -80,7 +80,7 @@ void sub_02090D54(EasyChatArgs *args, MsgBankMsgNo *msgBankMsgNo) {
     msgBankMsgNo->msgNo   = args->unk1C[1];
 }
 
-void sub_02090D60(EasyChatArgs *args, MAIL_MESSAGE *mailMessage) {
+void sub_02090D60(EasyChatArgs *args, MailMessage *mailMessage) {
     MailMsg_Copy(mailMessage, &args->mailMessage);
 }
 
@@ -112,7 +112,7 @@ u8 sub_02090D88(EasyChatArgs *args) {
     return args->unk5;
 }
 
-void sub_02090D8C(EasyChatArgs *args, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2) {
+void sub_02090D8C(EasyChatArgs *args, MailMessage *msg1, MailMessage *msg2) {
     switch (args->unk0) {
     case 0:
         msg1->msg_bank = args->unk1C[0];
@@ -127,7 +127,7 @@ void sub_02090D8C(EasyChatArgs *args, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2) {
     }
 }
 
-BOOL sub_02090DC0(EasyChatArgs *args, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2) {
+BOOL sub_02090DC0(EasyChatArgs *args, MailMessage *msg1, MailMessage *msg2) {
     switch (args->unk0) {
     case 0:
         return msg1->msg_bank == args->unk1C[0];
@@ -139,7 +139,7 @@ BOOL sub_02090DC0(EasyChatArgs *args, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2) {
     }
 }
 
-void sub_02090E04(EasyChatArgs *args, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2) {
+void sub_02090E04(EasyChatArgs *args, MailMessage *msg1, MailMessage *msg2) {
     args->unk3 = !sub_02090DC0(args, msg1, msg2);
     args->unk2 = 0;
 
@@ -164,7 +164,7 @@ void sub_02090E5C(EasyChatArgs *args, u32 a1) {
 }
 
 UseMailArgs *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 mailType, HeapID heapId) {
-    MAILBOX *mailbox = Save_Mailbox_Get(saveData);
+    Mailbox *mailbox = Save_Mailbox_Get(saveData);
     UseMailArgs *ptr = AllocFromHeapAtEnd(heapId, sizeof(UseMailArgs));
     MI_CpuFill8(ptr, 0, sizeof(UseMailArgs));
 
@@ -193,7 +193,7 @@ UseMailArgs *sub_02090EC0(SaveData *saveData, int n, u16 i, HeapID heapId) {
     ptr->unkC     = i;
     ptr->saveData = saveData;
 
-    MAILBOX *mailbox = Save_Mailbox_Get(saveData);
+    Mailbox *mailbox = Save_Mailbox_Get(saveData);
     ptr->mailbox     = mailbox;
     ptr->mail        = Mailbox_AllocAndFetchMailI(&mailbox->msgs[0], n, i, heapId);
 
@@ -247,7 +247,7 @@ void sub_02090F90(UseMailArgs *args) {
     FreeToHeap(args);
 }
 
-int Mailbox_MoveMessageFromMon(MAILBOX *mailbox, Pokemon *mon, HeapID heapId) {
+int Mailbox_MoveMessageFromMon(Mailbox *mailbox, Pokemon *mon, HeapID heapId) {
     int item = ITEM_NONE;
     int idx  = Mailbox_GetFirstEmptySlotIdx(mailbox);
 

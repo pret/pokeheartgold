@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_RIBBON_H
 #define POKEHEARTGOLD_RIBBON_H
 
+#include "global.h"
+
 typedef enum {
     RIBBONDAT_MONDATNO,
     RIBBONDAT_NCGR,

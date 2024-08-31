@@ -61,7 +61,7 @@ static const GraphicsModes ov78_021E67E0 = {
     ._2d3dMode = GX_BG0_AS_2D,
 };
 
-static const OamCharTransferParam ov78_021E67F0 = {
+static const OamCharTransferParam sOamTransferParam = {
     .maxTasks     = 0,
     .sizeMain     = 0x20000,
     .sizeSub      = 0x4000,
@@ -69,7 +69,7 @@ static const OamCharTransferParam ov78_021E67F0 = {
     .charModeSub  = GX_OBJVRAMMODE_CHAR_1D_32K,
 };
 
-static const SpriteResourceCountsListUnion ov78_021E6804 = {
+static const SpriteResourceCountsListUnion sSpriteResourceCounts = {
     .numChar = 3,
     .numPltt = 3,
     .numCell = 3,
@@ -93,7 +93,7 @@ static const BgTemplate ov78_021E681C = {
     .mosaic     = FALSE,
 };
 
-static const OamManagerParam ov78_021E6838 = {
+static const OamManagerParam sOamManagerParam = {
     .fromOBJmain    = 0,
     .numOBJmain     = 128,
     .fromAffineMain = 0,
@@ -595,13 +595,13 @@ static void CertificatesApp_SetupSpriteRenderer(CertificatesApp_Data *data) {
     data->spriteRenderer   = SpriteRenderer_Create(data->heapId);
     data->spriteGfxHandler = SpriteRenderer_CreateGfxHandler(data->spriteRenderer);
 
-    OamManagerParam unkTemplate1      = ov78_021E6838;
-    OamCharTransferParam unkTemplate2 = ov78_021E67F0;
-    unkTemplate2.maxTasks             = 0x20;
-    sub_0200CF70(data->spriteRenderer, &unkTemplate1, &unkTemplate2, 0x20);
+    OamManagerParam oamManagerParam       = sOamManagerParam;
+    OamCharTransferParam oamTransferParam = sOamTransferParam;
+    oamTransferParam.maxTasks             = 0x20;
+    sub_0200CF70(data->spriteRenderer, &oamManagerParam, &oamTransferParam, 0x20);
     sub_0200CFF4(data->spriteRenderer, data->spriteGfxHandler, 0x20);
 
-    SpriteResourceCountsListUnion counts = ov78_021E6804;
+    SpriteResourceCountsListUnion counts = sSpriteResourceCounts;
     SpriteRenderer_Init2DGfxResManagersFromCountsArray(data->spriteRenderer, data->spriteGfxHandler, &counts);
 
     G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(data->spriteRenderer), FX32_CONST(0), FX32_CONST(GX_LCD_SIZE_Y));

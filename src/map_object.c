@@ -1801,15 +1801,15 @@ u16 ObjectEvent_GetYCoord(ObjectEvent *template) {
 }
 
 ObjectEvent *ObjectEvent_GetById(u16 id, int num_templates, ObjectEvent *templates) {
-    int i                 = 0;
-    ObjectEvent *template = templates;
+    int i                = 0;
+    ObjectEvent *tmplate = templates;
     do {
-        if (!ObjectEvent_ScriptIDIsUnset(template) && id == ObjectEvent_GetID(template)) {
+        if (!ObjectEvent_ScriptIDIsUnset(tmplate) && id == ObjectEvent_GetID(tmplate)) {
             return templates + i;
         }
 
         i++;
-        template ++;
+        tmplate++;
     } while (i < num_templates);
 
     return NULL;

@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_SCRCMD_20_H
 #define POKEHEARTGOLD_SCRCMD_20_H
 
+#include "save.h"
+
 typedef struct UnkStruct_0204F1E4 {
     u8 state;
     u8 unk01;

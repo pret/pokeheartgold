@@ -40,7 +40,7 @@ typedef enum BattleHallChallengeType {
 typedef struct UnkStruct_0204F284 {
     u32 state;
     u8 challengeType;
-    u8 partyCursorLast;
+    u8 partySlot;
     u8 selectedMons[2];
     void **unk08;
 } UnkStruct_0204F284;
@@ -326,7 +326,7 @@ static u32 sub_0204F320(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem, HeapID
     partyMenuArgs->unk_25      = 0;
     partyMenuArgs->context     = PARTY_MENU_CONTEXT_BATTLE_HALL;
     partyMenuArgs->fieldSystem = fieldSystem;
-    partyMenuArgs->partySlot   = a0->partyCursorLast;
+    partyMenuArgs->partySlot   = a0->partySlot;
     for (u8 i = 0; i < 2; i++) {
         partyMenuArgs->selectedOrder[i] = a0->selectedMons[i];
     }
@@ -355,7 +355,7 @@ static u32 sub_0204F3F8(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem) {
         return 4;
     default:
         MI_CpuCopy8(partyMenu->selectedOrder, a0->selectedMons, 2);
-        a0->partyCursorLast = partyMenu->partySlot;
+        a0->partySlot = partyMenu->partySlot;
         FreeToHeap(partyMenu);
         *(a0->unk08) = NULL;
         return 2;
@@ -371,9 +371,9 @@ static u32 sub_0204F448(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem, HeapID
     args->natDexEnabled = SaveArray_IsNatDexEnabled(saveData);
     args->unk2C         = sub_02088288(saveData);
     args->unk11         = 1;
-    args->partySlot     = a0->partyCursorLast;
+    args->partySlot     = a0->partySlot;
     args->partyCount    = Party_GetCount(args->party);
-    args->unk18         = 0;
+    args->moveToLearn   = MOVE_NONE;
     args->unk12         = 0;
     args->ribbons       = Save_SpecialRibbons_Get(saveData);
     args->isFlag982Set  = sub_0208828C(saveData);
@@ -388,9 +388,9 @@ static u32 sub_0204F4D8(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem) {
     if (FieldSystem_ApplicationIsRunning(fieldSystem)) {
         return 3;
     }
-    PokemonSummaryArgs *r0 = *(a0->unk08);
-    a0->partyCursorLast    = r0->partySlot;
-    FreeToHeap(r0);
+    PokemonSummaryArgs *pokemonSummaryArgs = *(a0->unk08);
+    a0->partySlot                          = pokemonSummaryArgs->partySlot;
+    FreeToHeap(pokemonSummaryArgs);
     *(a0->unk08) = NULL;
     return 0;
 }

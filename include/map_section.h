@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_MAP_SECTION_H
 #define POKEHEARTGOLD_MAP_SECTION_H
 
+#include "global.h"
+
 typedef u16 mapsec_t;
 
 typedef enum MapsecType {

@@ -6,7 +6,7 @@
 
 typedef struct PalPadArgs {
     SaveData *saveData;
-    BOOL *unk4;
+    BOOL *menuInputStatePtr;
 } PalPadArgs;
 
 BOOL PalPad_Init(OVY_MANAGER *man, int *state);

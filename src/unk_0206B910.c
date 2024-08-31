@@ -35,7 +35,7 @@ typedef struct UnkStruct_0206B984 {
     SealCase *sealCase;
     Options *options;
     SaveData *saveData;
-    void *unk2c;
+    void *menuInputStatePtr;
     u8 unk30;
     u8 unk31;
 } UnkStruct_0206B984;
@@ -84,10 +84,10 @@ void sub_0206B910(TaskManager *taskManager, SaveData *saveData) {
     r4->saveData = saveData;
     r4->unk04    = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0206B984));
     memset(r4->unk04, 0, sizeof(UnkStruct_0206B984));
-    r4->unk04->options  = Save_PlayerData_GetOptionsAddr(saveData);
-    r4->unk04->saveData = saveData;
-    r4->unk04->unk2c    = &fieldSystem->menuInputState;
-    r4->partyMenu       = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
+    r4->unk04->options           = Save_PlayerData_GetOptionsAddr(saveData);
+    r4->unk04->saveData          = saveData;
+    r4->unk04->menuInputStatePtr = &fieldSystem->menuInputState;
+    r4->partyMenu                = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
     memset(r4->partyMenu, 0, sizeof(PartyMenuArgs));
     TaskManager_Call(taskManager, sub_0206B984, r4);
 }
@@ -99,14 +99,14 @@ static BOOL sub_0206B984(TaskManager *taskManager) {
     switch (r7->state) {
     case 0:
         CallTask_LeaveOverworld(taskManager);
-        SealCase *sealCase = Save_SealCase_Get(r7->saveData);
-        r6->sealCase       = sealCase;
-        r6->unk31          = 0;
-        r6->unk2c          = &fieldSystem->menuInputState;
-        Party *party       = SaveArray_Party_Get(r7->saveData);
-        r6->party          = party;
-        s32 partyCount     = Party_GetCount(party);
-        r6->partyCount     = partyCount;
+        SealCase *sealCase    = Save_SealCase_Get(r7->saveData);
+        r6->sealCase          = sealCase;
+        r6->unk31             = 0;
+        r6->menuInputStatePtr = &fieldSystem->menuInputState;
+        Party *party          = SaveArray_Party_Get(r7->saveData);
+        r6->party             = party;
+        s32 partyCount        = Party_GetCount(party);
+        r6->partyCount        = partyCount;
         s32 i;
         for (i = 0; i < partyCount; i++) {
             r6->mons[i] = Party_GetMonByIndex(r6->party, i);

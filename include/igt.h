@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_IGT_H
 #define POKEHEARTGOLD_IGT_H
 
+#include "global.h"
+
 typedef struct IGT {
     u16 hours;
     u8 minutes;

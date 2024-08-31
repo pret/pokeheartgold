@@ -276,8 +276,8 @@
 #define MON_DATA_HGSS_EGG_MET_LOCATION      115
 #define MON_DATA_HGSS_MET_LOCATION          116
 #define MON_DATA_NICKNAME_FLAT              117
-#define MON_DATA_NICKNAME_FLAT_COMPARE      118 // ???
-#define MON_DATA_NICKNAME_STRING            119 // ???
+#define MON_DATA_NICKNAME_FLAT_COMPARE      118
+#define MON_DATA_NICKNAME_STRING            119
 #define MON_DATA_NICKNAME_STRING_COMPARE    120
 #define MON_DATA_UNK_121                    121
 #define MON_DATA_GAME_VERSION               122

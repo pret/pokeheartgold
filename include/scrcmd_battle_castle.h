@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_SCRCMD_BATTLE_CASTLE_H
 #define POKEHEARTGOLD_SCRCMD_BATTLE_CASTLE_H
 
+#include "global.h"
+
 typedef struct UnkStruct_0204FB20 {
     u8 state;
     u8 unk01;
