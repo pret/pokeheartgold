@@ -3,11 +3,13 @@
 #include "global.h"
 
 #include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0219.h"
 
 #include "font.h"
 #include "gf_gfx_loader.h"
 #include "launch_application.h"
 #include "main.h"
+#include "math_util.h"
 #include "overlay_36.h"
 #include "overlay_manager.h"
 #include "player_data.h"
@@ -69,9 +71,11 @@ typedef struct OaksSpeechData {
     u16 unk_136;
     u8 filler_138[0x4];
     int unk_13C;
-    u8 filler_140[0x20];
+    int unk_140;
+    int unk_144;
+    u8 filler_148[0x18];
     OakSpeechData_Sub160 unk_160;
-    u8 filler_168[4];
+    int unk_168;
     int unk_16C;
     u8 filler_170[0x8];
     OaksSpeechData_Sub178 *unk_178;
@@ -99,6 +103,13 @@ void ov53_021E6824(OaksSpeechData *data, int a1);
 void ov53_021E6908(OakSpeechData_Sub160 *dest, int a1);
 void ov53_021E6928(OaksSpeechData *data, int a1);
 int ov53_021E6988(OaksSpeechData *data, int a1);
+u16 ov53_021E6B9C(u16 a0, s8 a1);
+void ov53_021E6BEC(OaksSpeechData *data, int a1);
+void ov53_021E6CB0(OaksSpeechData *data);
+BOOL ov53_021E6CE0(OaksSpeechData *data);
+void ov53_021E6DF0(OaksSpeechData *data);
+BOOL ov53_021E6E00(OaksSpeechData *data);
+int ov53_021E6E7C(OaksSpeechData *data);
 BOOL ov53_021E6F9C(OaksSpeechData *data);
 void ov53_021E7ECC(OaksSpeechData *data);
 void ov53_021E7F24(OaksSpeechData *data);
@@ -111,6 +122,7 @@ extern const WindowTemplate ov53_021E8500;
 extern const int ov53_021E86B0[][4];
 extern const WindowTemplate ov53_021E8680[][3];
 extern const int ov53_021E8604[][3];
+extern const int ov53_021E8508[];
 
 // note: this is an artifact from -ipa file
 extern const u32 ov53_021E84F8[];
@@ -852,5 +864,165 @@ int ov53_021E6988(OaksSpeechData *data, int a1) {
         }
     }
 
+    return ret;
+}
+
+u16 ov53_021E6B9C(u16 a0, s8 a1) {
+    int r = a0 & 0x1F;
+    int g = (a0 >> 5) & 0x1F;
+    int b = (a0 >> 10);
+
+    r += a1;
+    g += a1;
+    b += a1;
+
+    if (r > 31) {
+        r = 31;
+    } else if (r < 0) {
+        r = 0;
+    }
+    if (g > 31) {
+        g = 31;
+    } else if (g < 0) {
+        g = 0;
+    }
+    if (b > 31) {
+        b = 31;
+    } else if (b < 0) {
+        b = 0;
+    }
+    return (b << 10) | (g << 5) | r;
+}
+
+void ov53_021E6BEC(OaksSpeechData *data, int a1) {
+    int r4 = 0;
+    u16 sp0[2];
+
+    GF_ASSERT(data->unk_160.unk_3 == 0 || data->unk_160.unk_3 == 1);
+    if (a1 == 0) {
+        r4 = (GF_SinDeg((data->unk_168++) * 10) * 8) >> FX32_SHIFT;
+    } else {
+        data->unk_168 = 0;
+    }
+    sp0[0] = ov53_021E6B9C(data->unk_136, r4);
+    sp0[1] = ov53_021E6B9C(RGB(31, 7, 7), 0);
+    BG_LoadPlttData(6, sp0, 4, ov53_021E8508[data->unk_160.unk_3] * 2);
+    sp0[0] = data->unk_136;
+    sp0[1] = RGB(27, 28, 28);
+    BG_LoadPlttData(6, sp0, 4, ov53_021E8508[!data->unk_160.unk_3] * 2);
+}
+
+void ov53_021E6CB0(OaksSpeechData *data) {
+    u16 sp0[2];
+
+    sp0[0] = data->unk_136;
+    sp0[1] = RGB(27, 28, 28);
+    BG_LoadPlttData(6, sp0, 4, 0x18);
+    BG_LoadPlttData(6, sp0, 4, 0x1C);
+}
+
+BOOL ov53_021E6CE0(OaksSpeechData *data) {
+    BOOL ret = FALSE;
+    int r6;
+
+    extern const TouchscreenHitbox ov53_021E8530[3];
+    TouchscreenHitbox sp0[3];
+    ARRAY_ASSIGN(sp0, ov53_021E8530);
+
+    if (gSystem.touchNew) {
+        r6 = TouchscreenHitbox_FindRectAtTouchNew(sp0);
+        if (r6 != -1) {
+            data->unk_160.unk_3 = r6;
+            data->unk_160.unk_6 = 1;
+            data->unk_160.unk_5 = 2;
+            ov53_021E6BEC(data, 1);
+            PlaySE(SEQ_SE_DP_SELECT);
+            data->unk_17C = r6;
+            ret           = TRUE;
+        }
+    } else if (!data->unk_160.unk_2) {
+        if (gSystem.newKeys & (PAD_BUTTON_A | PAD_KEY_LEFT | PAD_KEY_RIGHT)) {
+            PlaySE(SEQ_SE_DP_SELECT);
+            data->unk_160.unk_2 = 1;
+            ov53_021E6BEC(data, 1);
+        }
+    } else {
+        ov53_021E6BEC(data, 0);
+        if (gSystem.newKeys & PAD_KEY_LEFT) {
+            if (data->unk_160.unk_3 != 0) {
+                --data->unk_160.unk_3;
+                PlaySE(SEQ_SE_DP_SELECT);
+            }
+        } else if (gSystem.newKeys & PAD_KEY_RIGHT) {
+            if (data->unk_160.unk_3 != data->unk_160.unk_1 - 1) {
+                ++data->unk_160.unk_3;
+                PlaySE(SEQ_SE_DP_SELECT);
+            }
+        } else if (gSystem.newKeys & PAD_BUTTON_A) {
+            data->unk_160.unk_2 = 0;
+            data->unk_160.unk_6 = 1;
+            data->unk_160.unk_5 = 2;
+            ov53_021E6BEC(data, 1);
+            PlaySE(SEQ_SE_DP_SELECT);
+            ret           = TRUE;
+            data->unk_17C = data->unk_160.unk_3;
+        }
+    }
+
+    return ret;
+}
+
+void ov53_021E6DF0(OaksSpeechData *data) {
+    data->unk_140 = 0;
+    data->unk_144 = 0;
+}
+
+BOOL ov53_021E6E00(OaksSpeechData *data) {
+    BOOL ret = FALSE;
+    int r1;
+
+    if (data->unk_144 != 0) {
+        --data->unk_144;
+    } else {
+        ++data->unk_140;
+        data->unk_144 = 8;
+    }
+    if (data->playerGender == PLAYER_GENDER_MALE) {
+        extern const int ov53_021E859C[6];
+        int sp28[6];
+        ARRAY_ASSIGN(sp28, ov53_021E859C);
+        r1 = sp28[data->unk_140];
+    } else {
+        extern const int ov53_021E85B4[6];
+        int sp10[6];
+        ARRAY_ASSIGN(sp10, ov53_021E85B4);
+        r1 = sp10[data->unk_140];
+    }
+    if (r1 == 0xFF) {
+        ret = TRUE;
+    } else {
+        GfGfxLoader_LoadCharData(NARC_a_1_2_0, r1, data->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, FALSE, data->heapId);
+    }
+
+    return ret;
+}
+
+int ov53_021E6E7C(OaksSpeechData *data) {
+    RTCDate date;
+    RTCTime time;
+    int ret = msg_0219_00001;
+    GF_RTC_CopyDateTime(&date, &time);
+    u32 time_hhmm = time.minute + time.hour * 100;
+    if (time_hhmm >= 400 && time_hhmm <= 1059) {
+        ret = msg_0219_00001;
+    } else if (time_hhmm >= 1100 && time_hhmm <= 1559) {
+        ret = msg_0219_00002;
+    } else if (time_hhmm >= 1600 && time_hhmm <= 1859) {
+        ret = msg_0219_00003;
+    } else if (time_hhmm >= 1900 && time_hhmm <= 2359) {
+        ret = msg_0219_00004;
+    } else if (time_hhmm >= 0 && time_hhmm <= 359) {
+        ret = msg_0219_00005;
+    }
     return ret;
 }
