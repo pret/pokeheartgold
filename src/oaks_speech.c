@@ -77,7 +77,9 @@ typedef struct OaksSpeechData {
     OakSpeechData_Sub160 unk_160;
     int unk_168;
     int unk_16C;
-    u8 filler_170[0x8];
+    u8 filler_170[0x4];
+    u16 unk_174;
+    s16 unk_176;
     OaksSpeechData_Sub178 *unk_178;
     int unk_17C;
 } OaksSpeechData; // size: 0x180
@@ -110,6 +112,7 @@ BOOL ov53_021E6CE0(OaksSpeechData *data);
 void ov53_021E6DF0(OaksSpeechData *data);
 BOOL ov53_021E6E00(OaksSpeechData *data);
 int ov53_021E6E7C(OaksSpeechData *data);
+BOOL ov53_021E6F00(OaksSpeechData *data, int a1, int a2);
 BOOL ov53_021E6F9C(OaksSpeechData *data);
 void ov53_021E7ECC(OaksSpeechData *data);
 void ov53_021E7F24(OaksSpeechData *data);
@@ -123,6 +126,7 @@ extern const int ov53_021E86B0[][4];
 extern const WindowTemplate ov53_021E8680[][3];
 extern const int ov53_021E8604[][3];
 extern const int ov53_021E8508[];
+extern const s16 ov53_021E853C[][3];
 
 // note: this is an artifact from -ipa file
 extern const u32 ov53_021E84F8[];
@@ -1025,4 +1029,33 @@ int ov53_021E6E7C(OaksSpeechData *data) {
         ret = msg_0219_00005;
     }
     return ret;
+}
+
+BOOL ov53_021E6F00(OaksSpeechData *data, int a1, int a2) {
+    switch (data->unk_174) {
+    case 0:
+        data->unk_174 = 1;
+        data->unk_176 = ov53_021E853C[a2][0];
+        break;
+    case 1:
+        data->unk_176 += ov53_021E853C[a2][2];
+        if (ov53_021E853C[a2][2] > 0) {
+            if (data->unk_176 >= ov53_021E853C[a2][1]) {
+                data->unk_176 = ov53_021E853C[a2][1];
+                data->unk_174 = 2;
+            }
+        } else {
+            if (data->unk_176 <= ov53_021E853C[a2][1]) {
+                data->unk_176 = ov53_021E853C[a2][1];
+                data->unk_174 = 2;
+            }
+        }
+        BgSetPosTextAndCommit(data->bgConfig, a1, BG_POS_OP_SET_X, data->unk_176);
+        break;
+    case 2:
+        data->unk_174 = 0;
+        return TRUE;
+    }
+
+    return FALSE;
 }
