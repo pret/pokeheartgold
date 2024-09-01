@@ -22,6 +22,17 @@ FS_EXTERN_OVERLAY(OVY_36);
 typedef struct OaksSpeechData_Sub178 {
 } OaksSpeechData_Sub178;
 
+typedef struct OakSpeechData_Sub160 {
+    u8 unk_0;
+    u8 unk_1;
+    u8 unk_2;
+    u8 unk_3;
+    u8 unk_4;
+    u8 unk_5;
+    u8 unk_6;
+    u8 unk_7;
+} OakSpeechData_Sub160;
+
 typedef struct OaksSpeechData {
     HeapID heapId;      // 0x000
     SaveData *saveData; // 0x004
@@ -58,7 +69,9 @@ typedef struct OaksSpeechData {
     u16 unk_136;
     u8 filler_138[0x4];
     int unk_13C;
-    u8 filler_140[0x2C];
+    u8 filler_140[0x20];
+    OakSpeechData_Sub160 unk_160;
+    u8 filler_168[4];
     int unk_16C;
     u8 filler_170[0x8];
     OaksSpeechData_Sub178 *unk_178;
@@ -83,6 +96,9 @@ void ov53_021E66A8(OaksSpeechData *data, int a1);
 void ov53_021E66E8(OaksSpeechData *data, int a1, int a2);
 void ov53_021E67C4(OaksSpeechData *data, int a1);
 void ov53_021E6824(OaksSpeechData *data, int a1);
+void ov53_021E6908(OakSpeechData_Sub160 *dest, int a1);
+void ov53_021E6928(OaksSpeechData *data, int a1);
+int ov53_021E6988(OaksSpeechData *data, int a1);
 BOOL ov53_021E6F9C(OaksSpeechData *data);
 void ov53_021E7ECC(OaksSpeechData *data);
 void ov53_021E7F24(OaksSpeechData *data);
@@ -92,6 +108,13 @@ void *ov53_021E80F4(BgConfig *bgConfig, int a1, int a2, int a3, int a4, HeapID h
 void ov53_021E814C(OaksSpeechData_Sub178 *a0);
 
 extern const WindowTemplate ov53_021E8500;
+extern const int ov53_021E86B0[][4];
+extern const WindowTemplate ov53_021E8680[][3];
+extern const int ov53_021E8604[][3];
+
+// note: this is an artifact from -ipa file
+extern const u32 ov53_021E84F8[];
+#define ov53_021E8520 ((const WindowTemplate *)((u32)ov53_021E84F8 + 0x28))
 
 BOOL OakSpeech_Init(OVY_MANAGER *ovyMan, int *pState) {
     CreateHeap(HEAP_ID_3, HEAP_ID_OAKS_SPEECH, 0x40000);
@@ -525,10 +548,6 @@ BOOL ov53_021E611C(OaksSpeechData *data, int msgNum, int waitButtonMode) {
     return ret;
 }
 
-// note: this is an artifact from -ipa file
-extern const u32 ov53_021E84F8[];
-#define ov53_021E8520 ((const WindowTemplate *)((u32)ov53_021E84F8 + 0x28))
-
 BOOL ov53_021E628C(OaksSpeechData *data, int msgNum, int a2, int a3, int a4) {
     BOOL ret = FALSE;
     WindowTemplate sp18;
@@ -609,8 +628,6 @@ BOOL ov53_021E628C(OaksSpeechData *data, int msgNum, int a2, int a3, int a4) {
 BOOL ov53_021E64B4(OaksSpeechData *data, int msgNum, int a2) {
     return ov53_021E628C(data, msgNum, a2, 0xFFFF, 0xFFFF);
 }
-
-extern const WindowTemplate ov53_021E8680[][3];
 
 void ov53_021E64C4(OaksSpeechData *data, int msg1, int msg2, int msg3, int numChoices) {
     int msgIds[3];
@@ -746,4 +763,94 @@ void ov53_021E6824(OaksSpeechData *data, int a1) {
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_SET_X, 0x00);
         }
     }
+}
+
+void ov53_021E6908(OakSpeechData_Sub160 *dest, int a1) {
+    dest->unk_3 = 0;
+    dest->unk_0 = 0;
+    dest->unk_1 = ov53_021E86B0[a1][1];
+    dest->unk_6 = 0;
+    dest->unk_4 = 0;
+    dest->unk_5 = 16;
+    dest->unk_2 = 0;
+}
+
+void ov53_021E6928(OaksSpeechData *data, int a1) {
+    data->unk_160.unk_0 = 0;
+    data->unk_160.unk_1 = ov53_021E86B0[a1][1];
+    data->unk_160.unk_4 = 0;
+    data->unk_160.unk_5 = 16;
+    GfGfxLoader_LoadScrnData(NARC_a_1_2_0, ov53_021E86B0[a1][0], data->bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, data->heapId);
+    GfGfxLoader_LoadCharData(NARC_a_1_2_0, 42, data->bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, data->heapId);
+}
+
+int ov53_021E6988(OaksSpeechData *data, int a1) {
+    int ret = -1;
+    int r6;
+
+    extern const TouchscreenHitbox ov53_021E8650[3][4];
+    TouchscreenHitbox sp0[3][4];
+    ARRAY_ASSIGN(sp0, ov53_021E8650);
+
+    if (data->unk_160.unk_6 != 0) {
+        ++data->unk_160.unk_6;
+        if (data->unk_160.unk_6 > 20) {
+            data->unk_160.unk_6 = 0;
+            ret                 = data->unk_160.unk_3;
+        }
+    } else if (gSystem.touchNew) {
+        r6 = TouchscreenHitbox_FindRectAtTouchNew(sp0[a1]);
+        if (r6 != -1) {
+            ov53_021E6928(data, a1);
+            ToggleBgLayer(GF_BG_LYR_SUB_1, GF_PLANE_TOGGLE_ON);
+            data->unk_160.unk_3 = r6;
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_SET_Y, ov53_021E8604[a1][data->unk_160.unk_3]);
+            data->unk_160.unk_6 = 1;
+            data->unk_160.unk_5 = 2;
+            PlaySE(SEQ_SE_DP_SELECT);
+        }
+    } else if (data->unk_160.unk_2 == 0) {
+        if (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B | PAD_KEY_UP | PAD_KEY_DOWN)) {
+            PlaySE(SEQ_SE_DP_SELECT);
+            ov53_021E6928(data, a1);
+            ToggleBgLayer(GF_BG_LYR_SUB_1, GF_PLANE_TOGGLE_ON);
+            data->unk_160.unk_2 = 1;
+        }
+    } else if (gSystem.newKeys & PAD_KEY_UP) {
+        if (data->unk_160.unk_3 != 0) {
+            --data->unk_160.unk_3;
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_SET_Y, ov53_021E8604[a1][data->unk_160.unk_3]);
+            PlaySE(SEQ_SE_DP_SELECT);
+        }
+    } else if (gSystem.newKeys & PAD_KEY_DOWN) {
+        if (data->unk_160.unk_3 != data->unk_160.unk_1 - 1) {
+            ++data->unk_160.unk_3;
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_SET_Y, ov53_021E8604[a1][data->unk_160.unk_3]);
+            PlaySE(SEQ_SE_DP_SELECT);
+        }
+    } else if (gSystem.newKeys & PAD_BUTTON_A) {
+        data->unk_160.unk_6 = 1;
+        data->unk_160.unk_5 = 2;
+        PlaySE(SEQ_SE_DP_SELECT);
+    } else if (gSystem.newKeys & PAD_BUTTON_B) {
+        data->unk_160.unk_3 = data->unk_160.unk_1 - 1;
+        data->unk_160.unk_6 = 1;
+        data->unk_160.unk_5 = 2;
+        ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_SET_Y, ov53_021E8604[a1][data->unk_160.unk_3]);
+        PlaySE(SEQ_SE_DP_SELECT);
+    }
+    if (data->unk_160.unk_6) {
+        ++data->unk_160.unk_4;
+        if (data->unk_160.unk_4 > data->unk_160.unk_5) {
+            data->unk_160.unk_7 ^= 1;
+            data->unk_160.unk_4 = 0;
+            if (data->unk_160.unk_7 != 0) {
+                ToggleBgLayer(GF_BG_LYR_SUB_1, GF_PLANE_TOGGLE_ON);
+            } else {
+                ToggleBgLayer(GF_BG_LYR_SUB_1, GF_PLANE_TOGGLE_OFF);
+            }
+        }
+    }
+
+    return ret;
 }
