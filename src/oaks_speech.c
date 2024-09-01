@@ -5,12 +5,14 @@
 #include "msgdata/msg.naix"
 
 #include "font.h"
+#include "gf_gfx_loader.h"
 #include "launch_application.h"
 #include "main.h"
 #include "overlay_36.h"
 #include "overlay_manager.h"
 #include "player_data.h"
 #include "render_text.h"
+#include "unk_02005D10.h"
 #include "unk_0200FA24.h"
 #include "unk_020163E0.h"
 #include "unk_02082908.h"
@@ -28,8 +30,10 @@ typedef struct OaksSpeechData {
     int unk_010;
     OVY_MANAGER *unk_014;
     BgConfig *bgConfig; // 0x018
-    Window windows[6];
-    u8 filler_07C[0x4];
+    Window window_0;
+    Window window_1;
+    Window windows_2thru6[4];
+    int unk_07C;
     int unk_080;
     u8 filler_084[0x50];
     SpriteGfxHandler *unk_0D4;
@@ -40,7 +44,8 @@ typedef struct OaksSpeechData {
     MsgData *msgData;
     int unk_104;
     int unk_108;
-    u8 filler_10C[0x8];
+    u32 textPrinter;
+    String *string; // 0x110
     UnkStruct_020163E0 *unk_114;
     MessageFormat *msgFormat;
     u8 filler_11C[0x4];
@@ -49,9 +54,13 @@ typedef struct OaksSpeechData {
     int unk_128;
     int unk_12C;
     int unk_130;
-    u8 filler_134[0x8];
+    u16 playerGender; // 0x134
+    u16 unk_136;
+    u8 filler_138[0x4];
     int unk_13C;
-    u8 filler_140[0x38];
+    u8 filler_140[0x2C];
+    int unk_16C;
+    u8 filler_170[0x8];
     OaksSpeechData_Sub178 *unk_178;
     int unk_17C;
 } OaksSpeechData; // size: 0x180
@@ -64,7 +73,16 @@ void ov53_021E5EB8(OaksSpeechData *data);
 BOOL ov53_021E5EDC(OaksSpeechData *data, int param, BOOL isFadeOut);
 BOOL ov53_021E60CC(OaksSpeechData *data, int a1);
 void ov53_021E60E8(OaksSpeechData *data, int bgId, int palette);
+BOOL ov53_021E611C(OaksSpeechData *data, int msgNum, int waitButtonMode);
+BOOL ov53_021E628C(OaksSpeechData *data, int msgNum, int a2, int a3, int a4);
+BOOL ov53_021E64B4(OaksSpeechData *data, int msgNum, int a2);
+void ov53_021E64C4(OaksSpeechData *data, int msg1, int msg2, int msg3, int a4);
+void ov53_021E65B4(OaksSpeechData *data);
 void ov53_021E65E0(OaksSpeechData *data);
+void ov53_021E66A8(OaksSpeechData *data, int a1);
+void ov53_021E66E8(OaksSpeechData *data, int a1, int a2);
+void ov53_021E67C4(OaksSpeechData *data, int a1);
+void ov53_021E6824(OaksSpeechData *data, int a1);
 BOOL ov53_021E6F9C(OaksSpeechData *data);
 void ov53_021E7ECC(OaksSpeechData *data);
 void ov53_021E7F24(OaksSpeechData *data);
@@ -72,6 +90,8 @@ void ov53_021E7FEC(OaksSpeechData *data);
 void ov53_021E8014(OaksSpeechData *data);
 void *ov53_021E80F4(BgConfig *bgConfig, int a1, int a2, int a3, int a4, HeapID heapId);
 void ov53_021E814C(OaksSpeechData_Sub178 *a0);
+
+extern const WindowTemplate ov53_021E8500;
 
 BOOL OakSpeech_Init(OVY_MANAGER *ovyMan, int *pState) {
     CreateHeap(HEAP_ID_3, HEAP_ID_OAKS_SPEECH, 0x40000);
@@ -453,4 +473,277 @@ BOOL ov53_021E60CC(OaksSpeechData *data, int a1) {
 void ov53_021E60E8(OaksSpeechData *data, int bgId, int palette) {
     BgTilemapRectChangePalette(data->bgConfig, bgId, 0, 0, 32, 24, palette);
     BgCommitTilemapBufferToVram(data->bgConfig, bgId);
+}
+
+BOOL ov53_021E611C(OaksSpeechData *data, int msgNum, int waitButtonMode) {
+    BOOL ret = FALSE;
+
+    switch (data->unk_104) {
+    case 0: {
+        AddWindow(data->bgConfig, &data->window_1, &ov53_021E8500);
+        FillWindowPixelRect(&data->window_1, 0xF, 0, 0, 216, 32);
+        DrawFrameAndWindow2(&data->window_1, FALSE, 0x3E2, 4);
+
+        TextFlags_SetCanABSpeedUpPrint(TRUE);
+        sub_02002B50(FALSE);
+
+        String *temp = String_New(0x400, data->heapId);
+        data->string = String_New(0x400, data->heapId);
+        ReadMsgDataIntoString(data->msgData, msgNum, temp);
+        BufferString(data->msgFormat, 0, data->namingScreenArgs_Player->unk18, data->playerGender, 1, 2);
+        BufferString(data->msgFormat, 1, data->namingScreenArgs_Rival->unk18, 0, 1, 2);
+        StringExpandPlaceholders(data->msgFormat, data->string, temp);
+        String_Delete(temp);
+
+        data->textPrinter = AddTextPrinterParameterized(&data->window_1, 1, data->string, 0, 0, Options_GetTextFrameDelay(data->options), NULL);
+        data->unk_104     = 1;
+        break;
+    }
+    case 1:
+        if (!TextPrinterCheckActive(data->textPrinter)) {
+            String_Delete(data->string);
+            data->unk_104 = 2;
+        }
+        break;
+    case 2:
+        if (waitButtonMode == 0) {
+            if ((gSystem.newKeys & PAD_BUTTON_A) == TRUE) {
+                data->unk_16C = 0;
+                PlaySE(SEQ_SE_DP_SELECT);
+                ret = TRUE;
+            }
+        } else {
+            ret = TRUE;
+        }
+        if (ret != FALSE) {
+            RemoveWindow(&data->window_1);
+            data->unk_104 = 0;
+        }
+        break;
+    }
+
+    return ret;
+}
+
+// note: this is an artifact from -ipa file
+extern const u32 ov53_021E84F8[];
+#define ov53_021E8520 ((const WindowTemplate *)((u32)ov53_021E84F8 + 0x28))
+
+BOOL ov53_021E628C(OaksSpeechData *data, int msgNum, int a2, int a3, int a4) {
+    BOOL ret = FALSE;
+    WindowTemplate sp18;
+
+    switch (data->unk_108) {
+    case 0:
+        ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_OFF);
+        data->string = String_New(0x400, data->heapId);
+        ReadMsgDataIntoString(data->msgData, msgNum, data->string);
+        if (a3 == 0xFFFF) {
+            a3 = (24 - (2 * String_CountLines(data->string))) / 2;
+        }
+        if (a4 == 0xFFFF) {
+            a4 = 2 * String_CountLines(data->string);
+        }
+        switch (a2) {
+        case 1:
+            sp18        = ov53_021E8520[0];
+            sp18.top    = a3;
+            sp18.height = a4;
+            AddWindow(data->bgConfig, &data->window_0, &sp18);
+            FillWindowPixelRect(&data->window_0, 0, 0, 0, 0xC0, 0xC0);
+            AddTextPrinterParameterizedWithColor(&data->window_0, 0, data->string, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+            break;
+        case 0:
+        case 2:
+        case 3:
+            sp18        = ov53_021E8520[1];
+            sp18.top    = a3;
+            sp18.height = a4;
+            if (a2 == 3) {
+                sp18.left += 4;
+            }
+            AddWindow(data->bgConfig, &data->window_0, &sp18);
+            FillWindowPixelRect(&data->window_0, 0, 0, 0, 0xC0, 0xC0);
+            AddTextPrinterParameterizedWithColor(&data->window_0, 0, data->string, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+            break;
+        }
+        String_Delete(data->string);
+        data->unk_108 = 1;
+        break;
+    case 1:
+        CopyWindowToVram(&data->window_0);
+        data->unk_108 = 2;
+        break;
+    case 2:
+        if (ov53_021E5EDC(data, GF_BG_LYR_MAIN_0, FALSE) == TRUE) {
+            data->unk_108 = 3;
+            if (a2 == 2) {
+                data->unk_108 = 4;
+                ret           = TRUE;
+            }
+        }
+        break;
+    case 3:
+        if ((gSystem.newKeys & PAD_BUTTON_A) == PAD_BUTTON_A || (gSystem.newKeys & PAD_BUTTON_B) == PAD_BUTTON_B) {
+            data->unk_16C = (gSystem.touchNew) ? TRUE : FALSE;
+            PlaySE(SEQ_SE_DP_SELECT);
+            data->unk_108 = 4;
+        }
+        break;
+    case 4:
+        if (ov53_021E5EDC(data, GF_BG_LYR_MAIN_0, TRUE) == TRUE) {
+            data->unk_108 = 5;
+        }
+        break;
+    case 5:
+        RemoveWindow(&data->window_0);
+        BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_MAIN_0);
+        data->unk_108 = 0;
+        ret           = TRUE;
+        break;
+    }
+
+    return ret;
+}
+
+BOOL ov53_021E64B4(OaksSpeechData *data, int msgNum, int a2) {
+    return ov53_021E628C(data, msgNum, a2, 0xFFFF, 0xFFFF);
+}
+
+extern const WindowTemplate ov53_021E8680[][3];
+
+void ov53_021E64C4(OaksSpeechData *data, int msg1, int msg2, int msg3, int numChoices) {
+    int msgIds[3];
+    int i;
+    int x;
+    int y;
+    String *string;
+
+    msgIds[0] = msg1;
+    msgIds[1] = msg2;
+    msgIds[2] = msg3;
+
+    data->unk_07C = numChoices;
+    if (numChoices == 2) {
+        y = 4;
+    }
+    if (numChoices == 3) {
+        y = 8;
+    }
+    for (i = 0; i < numChoices; ++i) {
+        string = String_New(0x400, data->heapId);
+        ReadMsgDataIntoString(data->msgData, msgIds[i], string);
+        x = FontID_String_GetWidth(0, string, 0);
+        AddWindow(data->bgConfig, &data->windows_2thru6[i], &ov53_021E8680[numChoices - 2][i]);
+        FillWindowPixelRect(&data->windows_2thru6[i], 0, 0, 0, 0xC0, 0xC0);
+        AddTextPrinterParameterizedWithColor(&data->windows_2thru6[i], 4, string, (ov53_021E8680[numChoices - 2][i].width * 8 - x) / 2, y, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 1, 0), NULL);
+        CopyWindowToVram(&data->windows_2thru6[i]);
+        String_Delete(string);
+    }
+}
+
+void ov53_021E65B4(OaksSpeechData *data) {
+    for (int i = 0; i < data->unk_07C; ++i) {
+        RemoveWindow(&data->windows_2thru6[i]);
+    }
+    BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_MAIN_0);
+}
+
+void ov53_021E65E0(OaksSpeechData *data) {
+    int plttId_Main;
+    int plttId_Sub;
+    NNSG2dPaletteData *plttData;
+    void *plttData_raw;
+
+    GfGfxLoader_LoadCharData(NARC_a_1_2_0, 0, data->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, data->heapId);
+    BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 0x20, 0, data->heapId);
+    GfGfxLoader_LoadCharData(NARC_a_1_2_0, 32, data->bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, data->heapId);
+    if (gGameVersion == VERSION_HEARTGOLD) {
+        plttId_Main = 1;
+        plttId_Sub  = 30;
+    } else {
+        plttId_Main = 2;
+        plttId_Sub  = 31;
+    }
+    GfGfxLoader_GXLoadPal(NARC_a_1_2_0, plttId_Main, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0x60, data->heapId);
+    GfGfxLoader_GXLoadPal(NARC_a_1_2_0, plttId_Sub, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0, 0xA0, data->heapId);
+
+    plttData_raw  = GfGfxLoader_GetPlttData(NARC_a_1_2_0, plttId_Sub, &plttData, data->heapId);
+    data->unk_136 = ((const u16 *)plttData->pRawData)[12];
+    FreeToHeap(plttData_raw);
+
+    ov53_021E66A8(data, 1);
+    ov53_021E66E8(data, 0, 0);
+    ov53_021E67C4(data, 0);
+    BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB_BLACK);
+    BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB_BLACK);
+}
+
+void ov53_021E66A8(OaksSpeechData *data, int a1) {
+    extern const int ov53_021E856C[6];
+    int sp10[6];
+    ARRAY_ASSIGN(sp10, ov53_021E856C);
+
+    if (a1 < 6) {
+        GfGfxLoader_LoadScrnData(NARC_a_1_2_0, sp10[a1], data->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, data->heapId);
+    }
+}
+
+void ov53_021E66E8(OaksSpeechData *data, int a1, int a2) {
+    extern const int ov53_021E86F0[10][2];
+    int sp10[10][2];
+    ARRAY_ASSIGN(sp10, ov53_021E86F0);
+
+    if (a1 != 0 && a2 < 12) { // possible typo?
+        GfGfxLoader_LoadCharData(NARC_a_1_2_0, sp10[a1][0], data->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, FALSE, data->heapId);
+        GfGfxLoader_GXLoadPal(NARC_a_1_2_0, sp10[a1][1], GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0xE0, 32, data->heapId);
+        GfGfxLoader_LoadScrnData(NARC_a_1_2_0, 9, data->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, FALSE, data->heapId);
+        ov53_021E60E8(data, GF_BG_LYR_MAIN_1, 7);
+    }
+
+    if (a2 != 0 && a2 < 12) {
+        GfGfxLoader_LoadCharData(NARC_a_1_2_0, sp10[a2][0], data->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, FALSE, data->heapId);
+        GfGfxLoader_GXLoadPal(NARC_a_1_2_0, sp10[a2][1], GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0x100, 32, data->heapId);
+        GfGfxLoader_LoadScrnData(NARC_a_1_2_0, 9, data->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, FALSE, data->heapId);
+        ov53_021E60E8(data, GF_BG_LYR_MAIN_2, 8);
+    }
+}
+
+void ov53_021E67C4(OaksSpeechData *data, int a1) {
+    extern const int ov53_021E8558[5];
+    int sp10[5];
+    ARRAY_ASSIGN(sp10, ov53_021E8558);
+
+    if (a1 < 5) {
+        GfGfxLoader_LoadScrnData(NARC_a_1_2_0, sp10[a1], data->bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, data->heapId);
+        if (a1 == 1) {
+            ov53_021E60E8(data, GF_BG_LYR_SUB_3, 3);
+        } else if (a1 == 2) {
+            ov53_021E60E8(data, GF_BG_LYR_SUB_3, 2);
+        }
+    }
+}
+
+void ov53_021E6824(OaksSpeechData *data, int a1) {
+    extern const int ov53_021E8584[3][2];
+    int sp10[3][2];
+    ARRAY_ASSIGN(sp10, ov53_021E8584);
+
+    GfGfxLoader_LoadScrnData(NARC_a_1_2_0, sp10[a1][0], data->bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, data->heapId);
+    ov53_021E60E8(data, GF_BG_LYR_SUB_2, 7);
+    GfGfxLoader_GXLoadPal(NARC_a_1_2_0, 33, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0xE0, 0x60, data->heapId);
+    BG_ClearCharDataRange(GF_BG_LYR_SUB_2, 0x20, 0, data->heapId);
+    GfGfxLoader_LoadCharData(NARC_a_1_2_0, sp10[a1][1], data->bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, data->heapId);
+    ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_SET_Y, 0);
+    if (a1 == 1) {
+        if (data->playerGender == PLAYER_GENDER_MALE) {
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_SUB_0, BG_POS_OP_SET_X, 0x88);
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_SUB_2, BG_POS_OP_SET_X, 0x88);
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_SET_X, 0x88);
+        } else {
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_SUB_0, BG_POS_OP_SET_X, 0x00);
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_SUB_2, BG_POS_OP_SET_X, 0x00);
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_SET_X, 0x00);
+        }
+    }
 }
