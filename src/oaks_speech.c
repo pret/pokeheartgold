@@ -5,15 +5,19 @@
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0219.h"
 
+#include "brightness.h"
 #include "font.h"
 #include "gf_gfx_loader.h"
 #include "launch_application.h"
 #include "main.h"
 #include "math_util.h"
+#include "oaks_speech_internal.h"
 #include "overlay_36.h"
 #include "overlay_manager.h"
 #include "player_data.h"
 #include "render_text.h"
+#include "sound.h"
+#include "sound_02004A44.h"
 #include "unk_02005D10.h"
 #include "unk_0200FA24.h"
 #include "unk_020163E0.h"
@@ -21,82 +25,19 @@
 
 FS_EXTERN_OVERLAY(OVY_36);
 
-typedef struct OaksSpeechData_Sub178 {
-} OaksSpeechData_Sub178;
-
-typedef struct OakSpeechData_Sub160 {
-    u8 unk_0;
-    u8 unk_1;
-    u8 unk_2;
-    u8 unk_3;
-    u8 unk_4;
-    u8 unk_5;
-    u8 unk_6;
-    u8 unk_7;
-} OakSpeechData_Sub160;
-
-typedef struct OaksSpeechData {
-    HeapID heapId;      // 0x000
-    SaveData *saveData; // 0x004
-    Options *options;   // 0x008
-    int unk_00C;
-    int unk_010;
-    OVY_MANAGER *unk_014;
-    BgConfig *bgConfig; // 0x018
-    Window window_0;
-    Window window_1;
-    Window windows_2thru6[4];
-    int unk_07C;
-    int unk_080;
-    u8 filler_084[0x50];
-    SpriteGfxHandler *unk_0D4;
-    int unk_0D8;
-    u8 filler_0DC[0xC];
-    int unk_0E8;
-    u8 filler_0EC[0x14];
-    MsgData *msgData;
-    int unk_104;
-    int unk_108;
-    u32 textPrinter;
-    String *string; // 0x110
-    UnkStruct_020163E0 *unk_114;
-    MessageFormat *msgFormat;
-    u8 filler_11C[0x4];
-    NamingScreenArgs *namingScreenArgs_Player; // 0x120
-    NamingScreenArgs *namingScreenArgs_Rival;  // 0x124
-    int unk_128;
-    int unk_12C;
-    int unk_130;
-    u16 playerGender; // 0x134
-    u16 unk_136;
-    u8 filler_138[0x4];
-    int unk_13C;
-    int unk_140;
-    int unk_144;
-    u8 filler_148[0x18];
-    OakSpeechData_Sub160 unk_160;
-    int unk_168;
-    int unk_16C;
-    u8 filler_170[0x4];
-    u16 unk_174;
-    s16 unk_176;
-    OaksSpeechData_Sub178 *unk_178;
-    int unk_17C;
-} OaksSpeechData; // size: 0x180
-
 void ov53_021E5BCC(void *cbArg);
 void ov53_021E5BDC(OaksSpeechData *data);
 void ov53_021E5DE0(OaksSpeechData *data);
 void ov53_021E5E6C(OaksSpeechData *data);
 void ov53_021E5EB8(OaksSpeechData *data);
 BOOL ov53_021E5EDC(OaksSpeechData *data, int param, BOOL isFadeOut);
-BOOL ov53_021E60CC(OaksSpeechData *data, int a1);
+BOOL OakSpeech_WaitFrames(OaksSpeechData *data, int a1);
 void ov53_021E60E8(OaksSpeechData *data, int bgId, int palette);
 BOOL ov53_021E611C(OaksSpeechData *data, int msgNum, int waitButtonMode);
 BOOL ov53_021E628C(OaksSpeechData *data, int msgNum, int a2, int a3, int a4);
 BOOL ov53_021E64B4(OaksSpeechData *data, int msgNum, int a2);
 void ov53_021E64C4(OaksSpeechData *data, int msg1, int msg2, int msg3, int a4);
-void ov53_021E65B4(OaksSpeechData *data);
+void OakSpeech_FreeWindows(OaksSpeechData *data);
 void ov53_021E65E0(OaksSpeechData *data);
 void ov53_021E66A8(OaksSpeechData *data, int a1);
 void ov53_021E66E8(OaksSpeechData *data, int a1, int a2);
@@ -111,15 +52,11 @@ void ov53_021E6CB0(OaksSpeechData *data);
 BOOL ov53_021E6CE0(OaksSpeechData *data);
 void ov53_021E6DF0(OaksSpeechData *data);
 BOOL ov53_021E6E00(OaksSpeechData *data);
-int ov53_021E6E7C(OaksSpeechData *data);
+int ov53_021E6E7C(void);
 BOOL ov53_021E6F00(OaksSpeechData *data, int a1, int a2);
 BOOL ov53_021E6F9C(OaksSpeechData *data);
-void ov53_021E7ECC(OaksSpeechData *data);
-void ov53_021E7F24(OaksSpeechData *data);
-void ov53_021E7FEC(OaksSpeechData *data);
-void ov53_021E8014(OaksSpeechData *data);
-void *ov53_021E80F4(BgConfig *bgConfig, int a1, int a2, int a3, int a4, HeapID heapId);
-void ov53_021E814C(OaksSpeechData_Sub178 *a0);
+void ov53_021E7D04(OaksSpeechData *data);
+void ov53_021E7D58(OaksSpeechData *data);
 
 extern const WindowTemplate ov53_021E8500;
 extern const int ov53_021E86B0[][4];
@@ -140,9 +77,9 @@ BOOL OakSpeech_Init(OVY_MANAGER *ovyMan, int *pState) {
     UnkStruct_02111868_sub *mainOvyArgs = OverlayManager_GetArgs(ovyMan);
     data->saveData                      = mainOvyArgs->saveData;
     data->options                       = Save_PlayerData_GetOptionsAddr(data->saveData);
-    data->unk_00C                       = 0;
+    data->state                         = 0;
     data->unk_010                       = 0;
-    data->unk_014                       = NULL;
+    data->overlayManager                = NULL;
     data->namingScreenArgs_Player       = NamingScreen_CreateArgs(HEAP_ID_OAKS_SPEECH, NAME_SCREEN_PLAYER, 0, PLAYER_NAME_LENGTH, data->options, NULL);
     data->namingScreenArgs_Rival        = NamingScreen_CreateArgs(HEAP_ID_OAKS_SPEECH, NAME_SCREEN_RIVAL, 0, PLAYER_NAME_LENGTH, data->options, NULL);
     data->unk_17C                       = 0;
@@ -171,7 +108,7 @@ BOOL OakSpeech_Main(OVY_MANAGER *ovyMan, int *pState) {
         BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_0);
         ov53_021E7F24(data);
         ov53_021E8014(data);
-        data->unk_178 = ov53_021E80F4(data->bgConfig, data->unk_0E8, 6, 4, 14, data->heapId);
+        data->unk_178 = ov53_021E80F4(data->bgConfig, data->sprites[0], 6, 4, 14, data->heapId);
         Main_SetVBlankIntrCB(ov53_021E5BCC, data);
         GfGfx_BothDispOn();
         *pState = 1;
@@ -182,7 +119,7 @@ BOOL OakSpeech_Main(OVY_MANAGER *ovyMan, int *pState) {
             BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapId);
             *pState = 2;
         }
-        if (data->unk_014) {
+        if (data->overlayManager) {
             BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapId);
             *pState = 3;
         }
@@ -208,10 +145,10 @@ BOOL OakSpeech_Main(OVY_MANAGER *ovyMan, int *pState) {
         }
         break;
     case 4:
-        if (OverlayManager_Run(data->unk_014) == TRUE) {
-            OverlayManager_Delete(data->unk_014);
-            data->unk_014 = NULL;
-            *pState       = 5;
+        if (OverlayManager_Run(data->overlayManager) == TRUE) {
+            OverlayManager_Delete(data->overlayManager);
+            data->overlayManager = NULL;
+            *pState              = 5;
         }
         break;
     case 5:
@@ -219,7 +156,7 @@ BOOL OakSpeech_Main(OVY_MANAGER *ovyMan, int *pState) {
         break;
     }
 
-    if (data->unk_014 == NULL && data->unk_0D4 != NULL) {
+    if (data->overlayManager == NULL && data->unk_0D4 != NULL) {
         sub_0200D020(data->unk_0D4);
     }
     return ret;
@@ -499,7 +436,7 @@ BOOL ov53_021E5EDC(OaksSpeechData *data, int param, BOOL isFadeOut) {
     return ret;
 }
 
-BOOL ov53_021E60CC(OaksSpeechData *data, int a1) {
+BOOL OakSpeech_WaitFrames(OaksSpeechData *data, int a1) {
     if (data->unk_13C < a1) {
         ++data->unk_13C;
         return FALSE;
@@ -675,7 +612,7 @@ void ov53_021E64C4(OaksSpeechData *data, int msg1, int msg2, int msg3, int numCh
     }
 }
 
-void ov53_021E65B4(OaksSpeechData *data) {
+void OakSpeech_FreeWindows(OaksSpeechData *data) {
     for (int i = 0; i < data->unk_07C; ++i) {
         RemoveWindow(&data->windows_2thru6[i]);
     }
@@ -1011,7 +948,7 @@ BOOL ov53_021E6E00(OaksSpeechData *data) {
     return ret;
 }
 
-int ov53_021E6E7C(OaksSpeechData *data) {
+int ov53_021E6E7C(void) {
     RTCDate date;
     RTCTime time;
     int ret = msg_0219_00001;
@@ -1058,4 +995,632 @@ BOOL ov53_021E6F00(OaksSpeechData *data, int a1, int a2) {
     }
 
     return FALSE;
+}
+
+BOOL ov53_021E6F9C(OaksSpeechData *data) {
+    BOOL ret = FALSE;
+
+    switch (data->state) {
+    case 0:
+        ToggleBgLayer(GF_BG_LYR_SUB_2, GF_PLANE_TOGGLE_OFF);
+        sub_02004EC4(2, SEQ_GS_POKEMON_THEME, 1);
+        StopBGM(SEQ_GS_POKEMON_THEME, 0);
+        PlayBGM(SEQ_GS_STARTING);
+        data->state = 7;
+        break;
+    case 7:
+        ov53_021E6824(data, 0);
+        ov53_021E66A8(data, 1);
+        ov53_021E67C4(data, 0);
+        ToggleBgLayer(GF_BG_LYR_MAIN_3, GF_PLANE_TOGGLE_ON);
+        ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_ON);
+        ToggleBgLayer(GF_BG_LYR_SUB_0, GF_PLANE_TOGGLE_ON);
+        ToggleBgLayer(GF_BG_LYR_SUB_3, GF_PLANE_TOGGLE_ON);
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapId);
+        data->state = 1;
+        break;
+    case 1:
+        if (IsPaletteFadeFinished() == TRUE && OakSpeech_WaitFrames(data, 40) == TRUE) {
+            data->state = 2;
+        }
+        break;
+    case 2:
+        if (ov53_021E64B4(data, msg_0219_00007, 2) == TRUE) {
+            ToggleBgLayer(GF_BG_LYR_SUB_2, GF_PLANE_TOGGLE_ON);
+            data->state = 3;
+            ov53_021E64C4(data, msg_0219_00044, msg_0219_00045, msg_0219_00046, 3);
+            data->unk_160.unk_2 = 0;
+            data->unk_160.unk_3 = 0;
+        }
+        break;
+    case 3:
+        if (ov53_021E6988(data, 0) != -1) {
+            data->state = 4;
+        }
+        break;
+    case 4:
+        if (ov53_021E64B4(data, msg_0219_00007, 2) == TRUE) {
+            OakSpeech_FreeWindows(data);
+            ToggleBgLayer(GF_BG_LYR_SUB_0, GF_PLANE_TOGGLE_OFF);
+            ToggleBgLayer(GF_BG_LYR_SUB_2, GF_PLANE_TOGGLE_OFF);
+            ToggleBgLayer(GF_BG_LYR_SUB_1, GF_PLANE_TOGGLE_OFF);
+            data->state = 5;
+        }
+        break;
+    case 5:
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapId);
+        data->state = 6;
+        break;
+    case 6:
+        if (IsPaletteFadeFinished() == TRUE) {
+            switch (data->unk_160.unk_3) {
+            case 0: // CONTROL INFO
+                data->state = 8;
+                break;
+            case 1: // ADVENTURE INFO
+                data->state = 34;
+                break;
+            case 2: // NO INFO NEEDED
+                data->state = 44;
+                break;
+            }
+        }
+        break;
+
+    // CONTROL INFO
+    case 8:
+        BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_0);
+        ov53_021E66A8(data, 1);
+        ov53_021E67C4(data, 1);
+        ov53_021E7E08(data, 1);
+        ToggleBgLayer(GF_BG_LYR_SUB_0, GF_PLANE_TOGGLE_ON);
+        ToggleBgLayer(GF_BG_LYR_SUB_3, GF_PLANE_TOGGLE_ON);
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapId);
+        data->state = 9;
+        break;
+    case 9:
+        if (IsPaletteFadeFinished() == TRUE) {
+            data->state = 11;
+        }
+        break;
+    case 11:
+        if (ov53_021E64B4(data, msg_0219_00009, 0) == TRUE) {
+            data->state = 12;
+        }
+        break;
+    case 12:
+        if (ov53_021E64B4(data, msg_0219_00010, 0) == TRUE) {
+            data->state = 13;
+        }
+        break;
+    case 13:
+        if (ov53_021E64B4(data, msg_0219_00011, 0) == TRUE) {
+            data->state = 14;
+        }
+        break;
+    case 14:
+        if (ov53_021E64B4(data, msg_0219_00012, 0) == TRUE) {
+            data->state = 15;
+        }
+        break;
+    case 15:
+        if (ov53_021E64B4(data, msg_0219_00023, 2) == TRUE) {
+            ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_ON);
+            data->state = 16;
+        }
+        break;
+    case 16:
+        if (ov53_021E611C(data, msg_0219_00025, 0) == TRUE) {
+            data->state = 17;
+        }
+        break;
+    case 17:
+        if (ov53_021E64B4(data, msg_0219_00013, 0) == TRUE) {
+            ov53_021E66A8(data, 2);
+            data->state = 18;
+        }
+        break;
+    case 18:
+        if (ov53_021E64B4(data, msg_0219_00014, 3) == TRUE) {
+            ov53_021E66A8(data, 1);
+            data->state = 19;
+        }
+        break;
+    case 19:
+        if (ov53_021E64B4(data, msg_0219_00015, 0) == TRUE) {
+            ov53_021E66A8(data, 3);
+            data->state = 20;
+        }
+        break;
+    case 20:
+        if (ov53_021E64B4(data, msg_0219_00016, 3) == TRUE) {
+            ov53_021E66A8(data, 4);
+            data->state = 21;
+        }
+        break;
+    case 21:
+        if (ov53_021E64B4(data, msg_0219_00017, 3) == TRUE) {
+            data->state = 22;
+            ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_ON);
+            ov53_021E66A8(data, 1);
+        }
+        break;
+    case 22:
+        if (ov53_021E611C(data, msg_0219_00026, 1) == TRUE) {
+            data->state = 23;
+        }
+        break;
+    case 23:
+        ov53_021E7E08(data, 0);
+        BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_0);
+        ov53_021E816C(data->unk_178, 7);
+        ov53_021E81F4(data->unk_178, NARC_msg_msg_0219_bin, msg_0219_00061, msg_0219_00062);
+        data->state = 24;
+        break;
+    case 24:
+        switch (ov53_021E8248(data->unk_178)) {
+        case YESNORESPONSE_YES:
+            data->state = 27;
+            break;
+        case YESNORESPONSE_NO:
+            data->state = 29;
+            break;
+        }
+        break;
+    case 27:
+        if (ov53_021E5EDC(data, GF_BG_LYR_SUB_2, TRUE) == TRUE) {
+            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapId);
+            data->state = 28;
+        }
+        break;
+    case 28:
+        if (IsPaletteFadeFinished() == TRUE) {
+            ov53_021E7D58(data);
+            data->state = 7;
+        }
+        break;
+    case 29:
+        if (ov53_021E5EDC(data, GF_BG_LYR_SUB_2, TRUE) == TRUE) {
+            ov53_021E7E08(data, 3);
+            ToggleBgLayer(GF_BG_LYR_SUB_2, GF_PLANE_TOGGLE_OFF);
+            ov53_021E7D58(data);
+            data->state = 8;
+        }
+        break;
+
+    // ADVENTURE INFO
+    case 34:
+        ov53_021E66A8(data, 5);
+        ov53_021E67C4(data, 2);
+        ov53_021E7D58(data);
+        ov53_021E7E08(data, 1);
+        ToggleBgLayer(GF_BG_LYR_SUB_0, GF_PLANE_TOGGLE_ON);
+        ToggleBgLayer(GF_BG_LYR_SUB_3, GF_PLANE_TOGGLE_ON);
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapId);
+        data->state = 35;
+        break;
+    case 35:
+        if (IsPaletteFadeFinished() == TRUE) {
+            data->state = 36;
+        }
+        break;
+    case 36:
+        if (ov53_021E64B4(data, msg_0219_00028, 1) == TRUE) {
+            data->state = 37;
+        }
+        break;
+    case 37:
+        if (ov53_021E64B4(data, msg_0219_00029, 1) == TRUE) {
+            data->state = 38;
+        }
+        break;
+    case 38:
+        if (ov53_021E64B4(data, msg_0219_00030, 1) == TRUE) {
+            data->state = 39;
+        }
+        break;
+    case 39:
+        if (ov53_021E64B4(data, msg_0219_00031, 1) == TRUE) {
+            data->state = 40;
+        }
+        break;
+    case 40:
+        if (ov53_021E64B4(data, msg_0219_00032, 1) == TRUE) {
+            data->state = 41;
+        }
+        break;
+    case 41:
+        if (ov53_021E64B4(data, msg_0219_00033, 1) == TRUE) {
+            data->state = 42;
+        }
+        break;
+    case 42:
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapId);
+        data->state = 43;
+        break;
+    case 43:
+        if (IsPaletteFadeFinished() == TRUE) {
+            ov53_021E7D58(data);
+            ov53_021E7E08(data, 0);
+            ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_ON);
+            data->state = 7;
+        }
+        break;
+
+    // NO INFO NEEDED
+    case 44:
+        ov53_021E7D58(data);
+        ov53_021E7E08(data, 1);
+        ov53_021E66A8(data, 0);
+        BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_1);
+        ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_ON);
+        ToggleBgLayer(GF_BG_LYR_MAIN_3, GF_PLANE_TOGGLE_OFF);
+        ToggleBgLayer(GF_BG_LYR_SUB_0, GF_PLANE_TOGGLE_ON);
+        ToggleBgLayer(GF_BG_LYR_SUB_3, GF_PLANE_TOGGLE_ON);
+        data->state = 45;
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapId);
+        break;
+    case 45:
+        if (IsPaletteFadeFinished() == TRUE && OakSpeech_WaitFrames(data, 40) == TRUE) {
+            data->state       = 46;
+            data->queuedMsgId = ov53_021E6E7C();
+        }
+        break;
+    case 46:
+        if (ov53_021E611C(data, data->queuedMsgId, 1) == TRUE) {
+            GF_SndStartFadeOutBGM(0, 6);
+            data->state = 47;
+        }
+        break;
+    case 47:
+        if (GF_SndGetFadeTimer() == 0) {
+            StopBGM(SEQ_GS_STARTING, 0);
+            PlayBGM(SEQ_GS_STARTING2);
+            ov53_021E66E8(data, 1, 0);
+            ToggleBgLayer(GF_BG_LYR_MAIN_3, GF_PLANE_TOGGLE_ON);
+            ToggleBgLayer(GF_BG_LYR_MAIN_1, GF_PLANE_TOGGLE_ON);
+            StartBrightnessTransition(16, 0, -16, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_OBJ), SCREEN_MASK_MAIN);
+            data->state = 48;
+        }
+        break;
+    case 48:
+        if (IsBrightnessTransitionActive(SCREEN_MASK_MAIN)) {
+            data->state = 49;
+        }
+        break;
+    case 49:
+        if (ov53_021E611C(data, msg_0219_00006, 1) == TRUE) {
+            data->state = 50;
+        }
+        break;
+    case 50:
+        if (ov53_021E6F00(data, 1, 0) == TRUE) {
+            data->state = 51;
+        }
+        break;
+    case 51:
+        if (ov53_021E611C(data, msg_0219_00034, 1) == TRUE) {
+            Set2dSpriteAnimSeqNo(data->sprites[1], 3);
+            Sprite_SetPalIndex(data->sprites[1], 5);
+            Set2dSpriteVisibleFlag(data->sprites[1], TRUE);
+            data->state = 52;
+        }
+        break;
+    case 52:
+        if (OakSpeech_WaitFrames(data, 30) == TRUE) {
+            StartBrightnessTransition(4, 0, 16, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BG0 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_OBJ), SCREEN_MASK_MAIN);
+            StartBrightnessTransition(4, 0, 16, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BG0 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_OBJ), SCREEN_MASK_SUB);
+            PlaySE(SEQ_SE_DP_BOWA2);
+            data->unk_140 = 0;
+            data->state   = 53;
+        }
+        break;
+    case 53:
+        if (IsBrightnessTransitionActive(SCREEN_MASK_MAIN) == TRUE && IsBrightnessTransitionActive(SCREEN_MASK_SUB) == TRUE) {
+            Set2dSpriteAnimSeqNo(data->sprites[1], 1);
+            Sprite_SetPalIndex(data->sprites[1], 4);
+            data->unk_140 = 16;
+            G2_SetBlendBrightness(GX_BLEND_PLANEMASK_OBJ, data->unk_140);
+            data->state = 54;
+        }
+        break;
+    case 54:
+        if (!Sprite_IsCellAnimationRunning(data->sprites[1])) {
+            --data->unk_140;
+            G2_SetBlendBrightness(GX_BLEND_PLANEMASK_OBJ, data->unk_140);
+            if (data->unk_140 == 0) {
+                Set2dSpriteAnimSeqNo(data->sprites[1], 2);
+                PlayCry(SPECIES_MARILL, 0);
+                data->state = 55;
+            }
+        }
+        break;
+    case 55:
+        if (OakSpeech_WaitFrames(data, 40) == TRUE) {
+            data->state = 56;
+        }
+        break;
+    case 56:
+        if (ov53_021E611C(data, msg_0219_00035, 1) == TRUE) {
+            data->state = 57;
+        }
+        break;
+    case 57:
+        if (ov53_021E5EDC(data, 101, TRUE) == TRUE) {
+            data->state = 58;
+        }
+        break;
+    case 58:
+        if (OakSpeech_WaitFrames(data, 30) == TRUE) {
+            data->state = 59;
+        }
+        break;
+    case 59:
+        if (ov53_021E6F00(data, 1, 1) == TRUE) {
+            data->state = 60;
+        }
+        break;
+    case 60:
+        if (ov53_021E611C(data, msg_0219_00036, 1) == TRUE) {
+            data->state         = 61;
+            data->unk_160.unk_3 = 0;
+            data->unk_160.unk_1 = 2;
+        }
+        break;
+    case 61:
+        if (ov53_021E611C(data, msg_0219_00037, 1) == TRUE) {
+            data->state = 62;
+            BeginNormalPaletteFade(4, 0, 0, RGB_BLACK, 6, 1, data->heapId);
+        }
+        break;
+    case 62:
+        if (IsPaletteFadeFinished() == TRUE) {
+            data->state = 63;
+        }
+        break;
+    case 63:
+        ov53_021E7E08(data, 0);
+        ToggleBgLayer(GF_BG_LYR_SUB_0, GF_PLANE_TOGGLE_OFF);
+        ov53_021E67C4(data, 4);
+        ov53_021E80B8(data, 2);
+        BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_2);
+        BeginNormalPaletteFade(4, 1, 1, RGB_BLACK, 6, 1, data->heapId);
+        data->state = 64;
+        break;
+    case 64:
+        if (IsPaletteFadeFinished() == TRUE) {
+            data->unk_160.unk_3 = data->unk_17C;
+            data->state         = 65;
+        }
+        break;
+    case 65:
+        if (ov53_021E6CE0(data)) {
+            data->state        = 66;
+            data->playerGender = data->unk_160.unk_3;
+        }
+        break;
+    case 66:
+        FillBgTilemapRect(data->bgConfig, GF_BG_LYR_SUB_3, 1, 16 * (data->unk_160.unk_3 ^ 1), 0, 16, 23, 0);
+        BgCommitTilemapBufferToVram(data->bgConfig, GF_BG_LYR_SUB_2);
+        BgCommitTilemapBufferToVram(data->bgConfig, GF_BG_LYR_SUB_3);
+        BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_0);
+        ov53_021E80B8(data, data->playerGender);
+        if (data->playerGender == PLAYER_GENDER_MALE) {
+            data->queuedMsgId = msg_0219_00038;
+        } else {
+            data->queuedMsgId = msg_0219_00039;
+        }
+        data->state = 67;
+        break;
+    case 67:
+        if (ov53_021E611C(data, data->queuedMsgId, 1) == TRUE) {
+            data->state = 68;
+        }
+        break;
+    case 68:
+        ov53_021E6908(&data->unk_160, 1);
+        ov53_021E6824(data, 1);
+        ov53_021E64C4(data, msg_0219_00047, msg_0219_00048, msg_0219_00000, 2);
+        data->state         = 69;
+        data->unk_160.unk_3 = 0;
+        break;
+
+    case 69:
+        ToggleBgLayer(GF_BG_LYR_SUB_0, GF_PLANE_TOGGLE_ON);
+        ToggleBgLayer(GF_BG_LYR_SUB_2, GF_PLANE_TOGGLE_ON);
+        if (ov53_021E6988(data, data->playerGender + 1) != -1) {
+            OakSpeech_FreeWindows(data);
+            data->state = 70;
+        }
+        break;
+    case 70:
+        switch (data->unk_160.unk_3) {
+        case 0: // Yes
+            data->state = 93;
+            break;
+        case 1: // No
+            data->state = 71;
+            BeginNormalPaletteFade(4, 0, 0, RGB_BLACK, 6, 1, data->heapId);
+            break;
+        }
+        break;
+
+    case 71:
+        if (IsPaletteFadeFinished() == TRUE) {
+
+            ToggleBgLayer(GF_BG_LYR_SUB_1, GF_PLANE_TOGGLE_OFF);
+            ToggleBgLayer(GF_BG_LYR_SUB_2, GF_PLANE_TOGGLE_OFF);
+            ov53_021E80B8(data, 3);
+            ov53_021E67C4(data, 1);
+            BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_0);
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_SUB_0, BG_POS_OP_SET_X, 0);
+            ov53_021E6CB0(data);
+            BeginNormalPaletteFade(4, 1, 1, RGB_BLACK, 6, 1, data->heapId);
+            data->state = 72;
+        }
+        break;
+    case 72:
+        if (IsPaletteFadeFinished() == TRUE) {
+            ov53_021E7E08(data, 1);
+            data->state = 61;
+        }
+        break;
+    case 93:
+        if (ov53_021E611C(data, msg_0219_00040, 1) == TRUE) {
+            data->state = 94;
+        }
+        break;
+
+    case 94:
+        if (OakSpeech_WaitFrames(data, 40)) {
+            data->state = 95;
+        }
+
+        break;
+
+    case 95:
+        String_SetEmpty(data->namingScreenArgs_Player->unk18);
+        data->namingScreenArgs_Player->unk4 = data->playerGender;
+        data->overlayManager                = OverlayManager_New(&sOverlayTemplate_NamingScreen, data->namingScreenArgs_Player, data->heapId);
+        data->state                         = 96;
+        break;
+
+    case 96:
+        ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_ON);
+        ToggleBgLayer(GF_BG_LYR_MAIN_1, GF_PLANE_TOGGLE_ON);
+        ToggleBgLayer(GF_BG_LYR_MAIN_3, GF_PLANE_TOGGLE_ON);
+        ToggleBgLayer(GF_BG_LYR_SUB_0, GF_PLANE_TOGGLE_ON);
+        ToggleBgLayer(GF_BG_LYR_SUB_3, GF_PLANE_TOGGLE_ON);
+        ToggleBgLayer(GF_BG_LYR_SUB_2, GF_PLANE_TOGGLE_ON);
+        BgSetPosTextAndCommit(data->bgConfig, GF_BG_LYR_MAIN_1, BG_POS_OP_SET_X, 0);
+        ov53_021E7D04(data);
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapId);
+        data->state = 97;
+        ov53_021E66E8(data, 1, 0);
+        ov53_021E80B8(data, data->playerGender);
+        if (data->playerGender == 0) {
+            data->queuedMsgId = msg_0219_00041;
+        } else {
+            data->queuedMsgId = msg_0219_00042;
+        }
+        break;
+
+    case 97:
+        if (ov53_021E611C(data, data->queuedMsgId, 1) == TRUE) {
+            data->state = 98;
+            ov53_021E6908(&data->unk_160, 1);
+        }
+        break;
+
+    case 98:
+        if (ov53_021E6988(data, data->playerGender + 1) != -1) {
+            OakSpeech_FreeWindows(data);
+            data->state = 99;
+        }
+        break;
+
+    case 99:
+        switch (data->unk_160.unk_3) {
+        case 0: // Yes
+            data->state = 100;
+            break;
+        case 1: // No
+            BeginNormalPaletteFade(4, 0, 0, RGB_BLACK, 6, 1, data->heapId);
+            data->state = 71;
+            break;
+        }
+        break;
+
+    case 100:
+        BeginNormalPaletteFade(4, 0, 0, RGB_BLACK, 6, 1, data->heapId);
+        data->state = 101;
+        break;
+
+    case 101:
+        if (IsPaletteFadeFinished() == TRUE) {
+            ToggleBgLayer(GF_BG_LYR_SUB_2, GF_PLANE_TOGGLE_OFF);
+            ToggleBgLayer(GF_BG_LYR_SUB_1, GF_PLANE_TOGGLE_OFF);
+            ov53_021E67C4(data, 1);
+            ov53_021E80B8(data, 3);
+            BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_0);
+            ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_SUB_0, BG_POS_OP_SET_X, 0);
+            ov53_021E7E08(data, 1);
+            BeginNormalPaletteFade(4, 1, 1, RGB_BLACK, 6, 1, data->heapId);
+            data->state = 102;
+        }
+
+        break;
+
+    case 102:
+        if (IsPaletteFadeFinished() == TRUE) {
+            data->state = 103;
+        }
+        break;
+
+    case 103:
+        if (ov53_021E611C(data, msg_0219_00043, 1) == TRUE) {
+            data->state = 110;
+        }
+        break;
+
+        // 104-109 don't exist
+
+    case 110:
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapId);
+        data->state = 111;
+        break;
+
+    case 111:
+        if (IsPaletteFadeFinished() == TRUE) {
+            data->state = 120;
+        }
+        break;
+
+        // 112-119 don't exist
+
+    case 120:
+        if (data->playerGender == 0) {
+            ov53_021E66E8(data, 2, 0);
+        } else {
+            ov53_021E66E8(data, 6, 0);
+        }
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapId);
+        data->state = 121;
+        ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_OFF);
+        break;
+
+    case 121:
+        if (IsPaletteFadeFinished() == TRUE) {
+            data->state = 123;
+        }
+        // Fallthrough into case 123
+
+        // 122 doesn't exist
+
+    case 123:
+        data->state = 124;
+        break;
+
+    case 124:
+        ov53_021E7E08(data, 0);
+        ov53_021E6DF0(data);
+        data->state = 125;
+        break;
+
+    case 125:
+        if (OakSpeech_WaitFrames(data, 30) == TRUE) {
+            PlaySE(SEQ_SE_GS_HERO_SHUKUSHOU);
+            data->state = 126;
+        }
+
+        break;
+
+    case 126:
+        if (ov53_021E6E00(data) == TRUE) {
+            ret = TRUE;
+        }
+        break;
+    }
+
+    return ret;
 }
