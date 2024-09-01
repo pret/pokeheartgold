@@ -2,6 +2,8 @@
 
 #include "global.h"
 
+#include "msgdata/msg.naix"
+
 #include "font.h"
 #include "launch_application.h"
 #include "main.h"
@@ -10,6 +12,7 @@
 #include "player_data.h"
 #include "render_text.h"
 #include "unk_0200FA24.h"
+#include "unk_020163E0.h"
 #include "unk_02082908.h"
 
 FS_EXTERN_OVERLAY(OVY_36);
@@ -25,16 +28,28 @@ typedef struct OaksSpeechData {
     int unk_010;
     OVY_MANAGER *unk_014;
     BgConfig *bgConfig; // 0x018
-    u8 filler_01C[0xB8];
+    Window windows[6];
+    u8 filler_07C[0x4];
+    int unk_080;
+    u8 filler_084[0x50];
     SpriteGfxHandler *unk_0D4;
     int unk_0D8;
     u8 filler_0DC[0xC];
     int unk_0E8;
-    u8 filler_0EC[0x34];
+    u8 filler_0EC[0x14];
+    MsgData *msgData;
+    int unk_104;
+    int unk_108;
+    u8 filler_10C[0x8];
+    UnkStruct_020163E0 *unk_114;
+    MessageFormat *msgFormat;
+    u8 filler_11C[0x4];
     NamingScreenArgs *namingScreenArgs_Player; // 0x120
     NamingScreenArgs *namingScreenArgs_Rival;  // 0x124
     int unk_128;
-    u8 filler_12C[0x10];
+    int unk_12C;
+    int unk_130;
+    u8 filler_134[0x8];
     int unk_13C;
     u8 filler_140[0x38];
     OaksSpeechData_Sub178 *unk_178;
@@ -44,8 +59,11 @@ typedef struct OaksSpeechData {
 void ov53_021E5BCC(void *cbArg);
 void ov53_021E5BDC(OaksSpeechData *data);
 void ov53_021E5DE0(OaksSpeechData *data);
-void ov53_021E5EB8(OaksSpeechData *data);
 void ov53_021E5E6C(OaksSpeechData *data);
+void ov53_021E5EB8(OaksSpeechData *data);
+BOOL ov53_021E5EDC(OaksSpeechData *data, int param, BOOL isFadeOut);
+BOOL ov53_021E60CC(OaksSpeechData *data, int a1);
+void ov53_021E60E8(OaksSpeechData *data, int bgId, int palette);
 void ov53_021E65E0(OaksSpeechData *data);
 BOOL ov53_021E6F9C(OaksSpeechData *data);
 void ov53_021E7ECC(OaksSpeechData *data);
@@ -251,4 +269,188 @@ void ov53_021E5BDC(OaksSpeechData *data) {
     ToggleBgLayer(GF_BG_LYR_SUB_3, GF_PLANE_TOGGLE_OFF);
     ov53_021E65E0(data);
     data->unk_128 = 0;
+}
+
+void ov53_021E5DE0(OaksSpeechData *data) {
+    ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_OFF);
+    ToggleBgLayer(GF_BG_LYR_MAIN_1, GF_PLANE_TOGGLE_OFF);
+    ToggleBgLayer(GF_BG_LYR_MAIN_2, GF_PLANE_TOGGLE_OFF);
+    ToggleBgLayer(GF_BG_LYR_MAIN_3, GF_PLANE_TOGGLE_OFF);
+    ToggleBgLayer(GF_BG_LYR_SUB_0, GF_PLANE_TOGGLE_OFF);
+    ToggleBgLayer(GF_BG_LYR_SUB_1, GF_PLANE_TOGGLE_OFF);
+    ToggleBgLayer(GF_BG_LYR_SUB_2, GF_PLANE_TOGGLE_OFF);
+    ToggleBgLayer(GF_BG_LYR_SUB_3, GF_PLANE_TOGGLE_OFF);
+    FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_MAIN_0);
+    FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_MAIN_1);
+    FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_MAIN_2);
+    FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_MAIN_3);
+    FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_SUB_0);
+    FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_SUB_1);
+    FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_SUB_2);
+    FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_SUB_3);
+    FreeToHeap(data->bgConfig);
+}
+
+void ov53_021E5E6C(OaksSpeechData *data) {
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0219_bin, data->heapId);
+    ResetAllTextPrinters();
+    data->unk_114   = sub_020163E0(NULL, PM_LCD_TOP, 6, data->heapId);
+    data->msgFormat = MessageFormat_New(data->heapId);
+    data->unk_104   = 0;
+    data->unk_108   = 0;
+    data->unk_080   = 0;
+}
+
+void ov53_021E5EB8(OaksSpeechData *data) {
+    MessageFormat_Delete(data->msgFormat);
+    sub_020164C4(data->unk_114);
+    DestroyMsgData(data->msgData);
+}
+
+BOOL ov53_021E5EDC(OaksSpeechData *data, int param, BOOL isFadeOut) {
+    BOOL ret = FALSE;
+    GXBlendPlaneMask plane;
+    PMLCDTarget screen;
+
+    switch (param) {
+    default:
+    case GF_BG_LYR_MAIN_0:
+        plane  = GX_BLEND_PLANEMASK_BG0;
+        screen = PM_LCD_TOP;
+        break;
+    case GF_BG_LYR_MAIN_1:
+        plane  = GX_BLEND_PLANEMASK_BG1;
+        screen = PM_LCD_TOP;
+        break;
+    case GF_BG_LYR_MAIN_2:
+        plane  = GX_BLEND_PLANEMASK_BG2;
+        screen = PM_LCD_TOP;
+        break;
+    case GF_BG_LYR_SUB_0:
+        plane  = GX_BLEND_PLANEMASK_BG0;
+        screen = PM_LCD_BOTTOM;
+        break;
+    case GF_BG_LYR_SUB_1:
+        plane  = GX_BLEND_PLANEMASK_BG1;
+        screen = PM_LCD_BOTTOM;
+        break;
+    case GF_BG_LYR_SUB_2:
+        plane  = GX_BLEND_PLANEMASK_BG2;
+        screen = PM_LCD_BOTTOM;
+        break;
+    case 101: // GF_BG_LYR_MAIN_OBJ
+        plane  = GX_BLEND_PLANEMASK_OBJ;
+        screen = PM_LCD_TOP;
+        break;
+    case 102: // GF_BG_LYR_SUB_OBJ
+        plane  = GX_BLEND_PLANEMASK_OBJ;
+        screen = PM_LCD_BOTTOM;
+        break;
+    }
+
+    switch (data->unk_128) {
+    case 0:
+        if (!isFadeOut) {
+            data->unk_12C = 0;
+            data->unk_130 = 16;
+            data->unk_128 = 1;
+            if (screen == 0) {
+                G2_SetBlendAlpha(
+                    plane,
+                    GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG3,
+                    data->unk_12C,
+                    data->unk_130);
+            } else {
+                G2S_SetBlendAlpha(
+                    plane,
+                    GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG3,
+                    data->unk_12C,
+                    data->unk_130);
+            }
+            if (param == 101) {
+                GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
+            } else if (param == 102) {
+                GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
+            } else {
+                ToggleBgLayer(param, GF_PLANE_TOGGLE_ON);
+            }
+        } else {
+            data->unk_12C = 16;
+            data->unk_130 = 0;
+            data->unk_128 = 2;
+        }
+        break;
+    case 1:
+        if (data->unk_130 != 0) {
+            ++data->unk_12C;
+            --data->unk_130;
+            if (screen == 0) {
+                G2_SetBlendAlpha(
+                    plane,
+                    GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG3,
+                    data->unk_12C,
+                    data->unk_130);
+            } else {
+                G2S_SetBlendAlpha(
+                    plane,
+                    GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG3,
+                    data->unk_12C,
+                    data->unk_130);
+            }
+        } else {
+            data->unk_128 = 3;
+        }
+        break;
+    case 2:
+        if (data->unk_12C != 0) {
+            --data->unk_12C;
+            ++data->unk_130;
+            if (screen == 0) {
+                G2_SetBlendAlpha(
+                    plane,
+                    GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG3,
+                    data->unk_12C,
+                    data->unk_130);
+            } else {
+                G2S_SetBlendAlpha(
+                    plane,
+                    GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG3,
+                    data->unk_12C,
+                    data->unk_130);
+            }
+        } else {
+            data->unk_128 = 3;
+            if (param == 101) {
+                GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
+            } else if (param == 102) {
+                GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
+            } else {
+                ToggleBgLayer(param, GF_PLANE_TOGGLE_OFF);
+            }
+        }
+        break;
+    case 3:
+        G2_BlendNone();
+        G2S_BlendNone();
+        ret           = TRUE;
+        data->unk_128 = 0;
+        break;
+    }
+
+    return ret;
+}
+
+BOOL ov53_021E60CC(OaksSpeechData *data, int a1) {
+    if (data->unk_13C < a1) {
+        ++data->unk_13C;
+        return FALSE;
+    } else {
+        data->unk_13C = 0;
+        return TRUE;
+    }
+}
+
+void ov53_021E60E8(OaksSpeechData *data, int bgId, int palette) {
+    BgTilemapRectChangePalette(data->bgConfig, bgId, 0, 0, 32, 24, palette);
+    BgCommitTilemapBufferToVram(data->bgConfig, bgId);
 }
