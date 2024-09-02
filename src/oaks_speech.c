@@ -474,7 +474,7 @@ BOOL OakSpeech_Main(OVY_MANAGER *ovyMan, int *pState) {
         BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_0);
         ov53_021E7F24(data);
         ov53_021E8014(data);
-        data->unk_178 = ov53_021E80F4(data->bgConfig, data->sprites[0], 6, 4, 14, data->heapId);
+        data->unk_178 = ov53_021E80F4(data->bgConfig, data->sprites[4], 6, 4, 14, data->heapId);
         Main_SetVBlankIntrCB(ov53_021E5BCC, data);
         GfGfx_BothDispOn();
         *pState = 1;
@@ -522,8 +522,8 @@ BOOL OakSpeech_Main(OVY_MANAGER *ovyMan, int *pState) {
         break;
     }
 
-    if (data->overlayManager == NULL && data->unk_0D4 != NULL) {
-        sub_0200D020(data->unk_0D4);
+    if (data->overlayManager == NULL && data->spriteGfxHandler != NULL) {
+        sub_0200D020(data->spriteGfxHandler);
     }
     return ret;
 }
@@ -1718,9 +1718,9 @@ static BOOL ov53_021E6F9C(OaksSpeechData *data) {
         break;
     case 51:
         if (ov53_021E611C(data, msg_0219_00034, 1) == TRUE) {
-            Set2dSpriteAnimSeqNo(data->sprites[1], 3);
-            Sprite_SetPalIndex(data->sprites[1], 5);
-            Set2dSpriteVisibleFlag(data->sprites[1], TRUE);
+            Set2dSpriteAnimSeqNo(data->sprites[5], 3);
+            Sprite_SetPalIndex(data->sprites[5], 5);
+            Set2dSpriteVisibleFlag(data->sprites[5], TRUE);
             data->state = 52;
         }
         break;
@@ -1735,19 +1735,19 @@ static BOOL ov53_021E6F9C(OaksSpeechData *data) {
         break;
     case 53:
         if (IsBrightnessTransitionActive(SCREEN_MASK_MAIN) == TRUE && IsBrightnessTransitionActive(SCREEN_MASK_SUB) == TRUE) {
-            Set2dSpriteAnimSeqNo(data->sprites[1], 1);
-            Sprite_SetPalIndex(data->sprites[1], 4);
+            Set2dSpriteAnimSeqNo(data->sprites[5], 1);
+            Sprite_SetPalIndex(data->sprites[5], 4);
             data->unk_140 = 16;
             G2_SetBlendBrightness(GX_BLEND_PLANEMASK_OBJ, data->unk_140);
             data->state = 54;
         }
         break;
     case 54:
-        if (!Sprite_IsCellAnimationRunning(data->sprites[1])) {
+        if (!Sprite_IsCellAnimationRunning(data->sprites[5])) {
             --data->unk_140;
             G2_SetBlendBrightness(GX_BLEND_PLANEMASK_OBJ, data->unk_140);
             if (data->unk_140 == 0) {
-                Set2dSpriteAnimSeqNo(data->sprites[1], 2);
+                Set2dSpriteAnimSeqNo(data->sprites[5], 2);
                 PlayCry(SPECIES_MARILL, 0);
                 data->state = 55;
             }
@@ -2081,20 +2081,20 @@ static void ov53_021E7E08(OaksSpeechData *data, int a1) {
     GF_ASSERT(data != NULL);
     switch (a1) {
     case 0:
-        GF_ASSERT(Get2dSpriteVisibleFlag(data->unk_0E4) == TRUE);
+        GF_ASSERT(Get2dSpriteVisibleFlag(data->sprites[3]) == TRUE);
         ov53_021E7DDC(data);
-        Set2dSpriteVisibleFlag(data->unk_0E4, FALSE);
+        Set2dSpriteVisibleFlag(data->sprites[3], FALSE);
         break;
     case 1:
-        GF_ASSERT(Get2dSpriteVisibleFlag(data->unk_0E4) == FALSE);
+        GF_ASSERT(Get2dSpriteVisibleFlag(data->sprites[3]) == FALSE);
         ov53_021E7D70(data);
-        Set2dSpriteVisibleFlag(data->unk_0E4, TRUE);
+        Set2dSpriteVisibleFlag(data->sprites[3], TRUE);
         break;
     case 2:
-        Set2dSpriteAnimSeqNo(data->unk_0E4, 1);
+        Set2dSpriteAnimSeqNo(data->sprites[3], 1);
         break;
     case 3:
-        Set2dSpriteAnimSeqNo(data->unk_0E4, 0);
+        Set2dSpriteAnimSeqNo(data->sprites[3], 0);
         break;
     default:
         GF_ASSERT(FALSE);
@@ -2103,12 +2103,12 @@ static void ov53_021E7E08(OaksSpeechData *data, int a1) {
 }
 
 static BOOL ov53_021E7E94(OaksSpeechData *data) {
-    return Get2dSpriteCurrentAnimSeqNo(data->unk_0E4) == TRUE;
+    return Get2dSpriteCurrentAnimSeqNo(data->sprites[3]) == TRUE;
 }
 
 static BOOL ov53_021E7EAC(OaksSpeechData *data) {
     GF_ASSERT(data != NULL);
-    return Get2dSpriteVisibleFlag(data->unk_0E4) == TRUE;
+    return Get2dSpriteVisibleFlag(data->sprites[3]) == TRUE;
 }
 
 static void ov53_021E7ECC(OaksSpeechData *data) {

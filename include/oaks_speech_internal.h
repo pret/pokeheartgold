@@ -38,13 +38,12 @@ typedef struct OaksSpeechData {
     Window window_5;
     int unk_07C;
     int unk_080;
-    u8 filler_084[0x50];
-    SpriteGfxHandler *unk_0D4;
-    int unk_0D8;
-    u8 filler_0DC[0x8];
-    Sprite *unk_0E4;
-    Sprite *sprites[6]; // 0xe8
-    MsgData *msgData;
+    u8 filler_084[0x4C];
+    SpriteRenderer *spriteRenderer;
+    SpriteGfxHandler *spriteGfxHandler;
+    Sprite *sprites[6]; // 0x0D8
+    u8 filler_0F0[0x10];
+    MsgData *msgData; // 0x100
     int unk_104;
     int unk_108;
     u32 textPrinter;
@@ -80,7 +79,7 @@ int OaksSpeech_DeadstrippedFunction2(int a0);
 void ov53_021E7F24(OaksSpeechData *data);
 void ov53_021E7FEC(OaksSpeechData *data);
 void ov53_021E8014(OaksSpeechData *data);
-void ov53_021E80B8(OaksSpeechData *a0, int a1);
+void ov53_021E80B8(OaksSpeechData *data, int a1);
 
 OaksSpeechData_Sub178 *ov53_021E80F4(BgConfig *bgConfig, Sprite *a1, int a2, int a3, int a4, HeapID heapId);
 void ov53_021E814C(OaksSpeechData_Sub178 *a0);
