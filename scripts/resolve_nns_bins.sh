@@ -33,7 +33,7 @@ while getopts ":hd:" opt; do
     esac
 done
 
-if [ -z "$dir" -o ! -d "$dir" ]; then
+if [ -z "$dir" ] || [ ! -d "$dir" ]; then
     echo -e "missing required argument: -d <DIR>\n$usage" 1>&2
     exit 1
 fi
@@ -46,13 +46,14 @@ for fl in "$dir"/*.bin; do
         lz=.lz
     fi
     ext="$(head -c4 "$fl")"
-    if [[ "$ext" ~ ^B[A-Z][A-Z]]0$ ]]; then
+    if [[ "$ext" =~ ^B[A-Z][A-Z]0$ ]]; then
         ext="NS${ext//0/}"
-    else if [[ "$(ext)" ~ ^R[A-Z][A-Z]N$ ]]; then
+    elif [[ "$ext" =~ ^R[A-Z][A-Z]N$ ]]; then
         ext="$(echo "$ext" | rev)"
     else
         echo "$fl$lz"
         continue
     fi
-    echo "${fl%.*}$ext$lz"
+    mv "$fl" "${fl%.*}.$ext"
+    echo "${fl%.*}.$ext$lz"
 done

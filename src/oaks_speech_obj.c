@@ -92,7 +92,7 @@ static const UnkStruct_0200D2B4 ov53_021E8784[] = {
      },
 };
 
-void ov53_021E7F24(OaksSpeechData *data) {
+void ov53_021E7F24(OakSpeechData *data) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     GF_CreateVramTransferManager(0x20, HEAP_ID_OAKS_SPEECH);
@@ -142,14 +142,14 @@ void ov53_021E7F24(OaksSpeechData *data) {
     }
 }
 
-void ov53_021E7FEC(OaksSpeechData *data) {
+void ov53_021E7FEC(OakSpeechData *data) {
     SpriteRenderer_RemoveGfxHandler(data->spriteRenderer, data->spriteGfxHandler);
     SpriteRenderer_Delete(data->spriteRenderer);
     GF_DestroyVramTransferManager();
     data->spriteGfxHandler = NULL;
 }
 
-void ov53_021E8014(OaksSpeechData *data) {
+void ov53_021E8014(OakSpeechData *data) {
     for (u16 i = 0; i < 6; ++i) {
         data->sprites[i] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler, &ov53_021E8784[i]);
     }
@@ -164,7 +164,7 @@ void ov53_021E8014(OaksSpeechData *data) {
     Set2dSpriteVisibleFlag(data->sprites[5], FALSE);
 }
 
-void ov53_021E80B8(OaksSpeechData *data, int a1) {
+void ov53_021E80B8(OakSpeechData *data, int a1) {
     BOOL r2 = FALSE;
     BOOL r4 = FALSE;
 
