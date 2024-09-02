@@ -803,7 +803,7 @@ Overlay OVY_53
     After main
     Object src/oaks_speech.o
     Object src/oaks_speech_obj.o
-    Object asm/overlay_53.o
+    Object src/oaks_speech_yesnomenu.o
 }
 Overlay options_app
 {

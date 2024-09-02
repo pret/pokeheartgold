@@ -22,6 +22,16 @@ typedef struct OakSpeechMultichoice {
 
 typedef struct OakSpeechData_Sub178 {
     HeapID heapId;
+    u8 filler_04[0x8];
+    BgConfig *bgConfig;
+    Sprite *sprite;
+    MessageFormat *msgFormat;
+    u8 unk_18;
+    u8 unk_19;
+    u8 unk_1A;
+    u8 unk_1B_0 : 4;
+    u8 unk_1B_4 : 4;
+    Window unk_1C[2];
 } OakSpeechData_Sub178;
 
 typedef struct OakSpeechData {
@@ -81,7 +91,7 @@ void ov53_021E7FEC(OakSpeechData *data);
 void ov53_021E8014(OakSpeechData *data);
 void ov53_021E80B8(OakSpeechData *data, int a1);
 
-OakSpeechData_Sub178 *ov53_021E80F4(BgConfig *bgConfig, Sprite *a1, int a2, int a3, int a4, HeapID heapId);
+OakSpeechData_Sub178 *ov53_021E80F4(BgConfig *bgConfig, Sprite *sprite, int a2, int a3, int a4, HeapID heapId);
 void ov53_021E814C(OakSpeechData_Sub178 *a0);
 void ov53_021E816C(OakSpeechData_Sub178 *a0, int a1);
 void ov53_021E81F4(OakSpeechData_Sub178 *a0, int msgBank, int msgId_Yes, int msgId_No);
