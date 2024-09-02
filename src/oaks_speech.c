@@ -2,6 +2,8 @@
 
 #include "global.h"
 
+#include "constants/species.h"
+
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0219.h"
 
@@ -16,58 +18,422 @@
 #include "overlay_manager.h"
 #include "player_data.h"
 #include "render_text.h"
+#include "render_window.h"
 #include "sound.h"
 #include "sound_02004A44.h"
+#include "text.h"
+#include "touchscreen.h"
 #include "unk_02005D10.h"
 #include "unk_0200FA24.h"
-#include "unk_020163E0.h"
 #include "unk_02082908.h"
+#include "yes_no_prompt.h"
 
 FS_EXTERN_OVERLAY(OVY_36);
 
-void ov53_021E5BCC(void *cbArg);
-void ov53_021E5BDC(OaksSpeechData *data);
-void ov53_021E5DE0(OaksSpeechData *data);
-void ov53_021E5E6C(OaksSpeechData *data);
-void ov53_021E5EB8(OaksSpeechData *data);
-BOOL ov53_021E5EDC(OaksSpeechData *data, int param, BOOL isFadeOut);
-BOOL OakSpeech_WaitFrames(OaksSpeechData *data, int a1);
-void ov53_021E60E8(OaksSpeechData *data, int bgId, int palette);
-BOOL ov53_021E611C(OaksSpeechData *data, int msgNum, int waitButtonMode);
-BOOL ov53_021E628C(OaksSpeechData *data, int msgNum, int a2, int a3, int a4);
-BOOL ov53_021E64B4(OaksSpeechData *data, int msgNum, int a2);
-void ov53_021E64C4(OaksSpeechData *data, int msg1, int msg2, int msg3, int a4);
-void OakSpeech_FreeWindows(OaksSpeechData *data);
-void ov53_021E65E0(OaksSpeechData *data);
-void ov53_021E66A8(OaksSpeechData *data, int a1);
-void ov53_021E66E8(OaksSpeechData *data, int a1, int a2);
-void ov53_021E67C4(OaksSpeechData *data, int a1);
-void ov53_021E6824(OaksSpeechData *data, int a1);
-void ov53_021E6908(OakSpeechData_Sub160 *dest, int a1);
-void ov53_021E6928(OaksSpeechData *data, int a1);
-int ov53_021E6988(OaksSpeechData *data, int a1);
-u16 ov53_021E6B9C(u16 a0, s8 a1);
-void ov53_021E6BEC(OaksSpeechData *data, int a1);
-void ov53_021E6CB0(OaksSpeechData *data);
-BOOL ov53_021E6CE0(OaksSpeechData *data);
-void ov53_021E6DF0(OaksSpeechData *data);
-BOOL ov53_021E6E00(OaksSpeechData *data);
-int ov53_021E6E7C(void);
-BOOL ov53_021E6F00(OaksSpeechData *data, int a1, int a2);
-BOOL ov53_021E6F9C(OaksSpeechData *data);
-void ov53_021E7D04(OaksSpeechData *data);
-void ov53_021E7D58(OaksSpeechData *data);
+static void ov53_021E5BCC(void *cbArg);
+static void ov53_021E5BDC(OaksSpeechData *data);
+static void ov53_021E5DE0(OaksSpeechData *data);
+static void ov53_021E5E6C(OaksSpeechData *data);
+static void ov53_021E5EB8(OaksSpeechData *data);
+static BOOL ov53_021E5EDC(OaksSpeechData *data, int param, BOOL isFadeOut);
+static BOOL OakSpeech_WaitFrames(OaksSpeechData *data, int a1);
+static void ov53_021E60E8(OaksSpeechData *data, int bgId, int palette);
+static BOOL ov53_021E611C(OaksSpeechData *data, int msgNum, int waitButtonMode);
+static BOOL ov53_021E628C(OaksSpeechData *data, int msgNum, int a2, int a3, int a4);
+static BOOL ov53_021E64B4(OaksSpeechData *data, int msgNum, int a2);
+static void ov53_021E64C4(OaksSpeechData *data, int msg1, int msg2, int msg3, int a4);
+static void OakSpeech_FreeWindows(OaksSpeechData *data);
+static void ov53_021E65E0(OaksSpeechData *data);
+static void ov53_021E66A8(OaksSpeechData *data, int a1);
+static void ov53_021E66E8(OaksSpeechData *data, int a1, int a2);
+static void ov53_021E67C4(OaksSpeechData *data, int a1);
+static void ov53_021E6824(OaksSpeechData *data, int a1);
+static void ov53_021E6908(OakSpeechData_Sub160 *dest, int a1);
+static void ov53_021E6928(OaksSpeechData *data, int a1);
+static int ov53_021E6988(OaksSpeechData *data, int a1);
+static u16 ov53_021E6B9C(u16 a0, s8 a1);
+static void ov53_021E6BEC(OaksSpeechData *data, int a1);
+static void ov53_021E6CB0(OaksSpeechData *data);
+static BOOL ov53_021E6CE0(OaksSpeechData *data);
+static void ov53_021E6DF0(OaksSpeechData *data);
+static BOOL ov53_021E6E00(OaksSpeechData *data);
+static int ov53_021E6E7C(void);
+static BOOL ov53_021E6F00(OaksSpeechData *data, int a1, int a2);
+static BOOL ov53_021E6F9C(OaksSpeechData *data);
+static void ov53_021E7D04(OaksSpeechData *data);
+static void ov53_021E7D58(OaksSpeechData *data);
+static void ov53_021E7D70(OaksSpeechData *data);
+static void ov53_021E7DDC(OaksSpeechData *data);
+static void ov53_021E7E08(OaksSpeechData *data, int a1);
+static BOOL ov53_021E7E94(OaksSpeechData *data);
+static BOOL ov53_021E7EAC(OaksSpeechData *data);
+static void ov53_021E7ECC(OaksSpeechData *data);
 
-extern const WindowTemplate ov53_021E8500;
-extern const int ov53_021E86B0[][4];
-extern const WindowTemplate ov53_021E8680[][3];
-extern const int ov53_021E8604[][3];
-extern const int ov53_021E8508[];
-extern const s16 ov53_021E853C[][3];
+static const int ov53_021E84F8[1] = {
+    4,
+};
 
-// note: this is an artifact from -ipa file
-extern const u32 ov53_021E84F8[];
-#define ov53_021E8520 ((const WindowTemplate *)((u32)ov53_021E84F8 + 0x28))
+static const int ov53_021E84FC[1] = {
+    4,
+};
+
+static const WindowTemplate ov53_021E8518 = {
+    .bgId     = GF_BG_LYR_SUB_0,
+    .left     = 24,
+    .top      = 20,
+    .width    = 7,
+    .height   = 2,
+    .palette  = 14,
+    .baseTile = 0x0A3,
+};
+
+static const WindowTemplate ov53_021E8500 = {
+    .bgId     = GF_BG_LYR_MAIN_0,
+    .left     = 2,
+    .top      = 19,
+    .width    = 27,
+    .height   = 4,
+    .palette  = 6,
+    .baseTile = 0x36D,
+};
+
+static const WindowTemplate ov53_021E8528 = {
+    .bgId     = GF_BG_LYR_MAIN_0,
+    .left     = 4,
+    .top      = 0,
+    .width    = 24,
+    .height   = 24,
+    .palette  = 5,
+    .baseTile = 0x12D,
+};
+
+static const int ov53_021E8508[] = {
+    12,
+    14,
+};
+
+static const TouchscreenHitbox ov53_021E8510[] = {
+    {
+     .rect = {
+            144,
+            191,
+            168,
+            255,
+        },
+     },
+    {
+     .rect = {
+            TOUCHSCREEN_RECTLIST_END,
+        },
+     },
+};
+
+static const WindowTemplate ov53_021E8520 = {
+    .bgId     = GF_BG_LYR_MAIN_0,
+    .left     = 4,
+    .top      = 0,
+    .width    = 24,
+    .height   = 24,
+    .palette  = 5,
+    .baseTile = 0x12D,
+};
+
+static const GraphicsBanks ov53_021E8628 = {
+    GX_VRAM_BG_128_A,
+    GX_VRAM_BGEXTPLTT_NONE,
+    GX_VRAM_SUB_BG_128_C,
+    GX_VRAM_SUB_BGEXTPLTT_NONE,
+    GX_VRAM_OBJ_128_B,
+    GX_VRAM_OBJEXTPLTT_NONE,
+    GX_VRAM_SUB_OBJ_16_I,
+    GX_VRAM_SUB_OBJEXTPLTT_NONE,
+    GX_VRAM_TEX_NONE,
+    GX_VRAM_TEXPLTT_NONE,
+};
+
+static const s16 ov53_021E853C[][3] = {
+    {
+     0,
+     -52,
+     -2,
+     },
+    {
+     -52,
+     0,
+     2,
+     },
+};
+
+static const TouchscreenHitbox ov53_021E8530[3] = {
+    {
+     .rect = {
+            25,
+            173,
+            18,
+            111,
+        },
+     },
+    {
+     .rect = {
+            25,
+            173,
+            144,
+            239,
+        },
+     },
+    {
+     .rect = {
+            TOUCHSCREEN_RECTLIST_END,
+        },
+     },
+};
+
+static const GraphicsModes ov53_021E8548 = {
+    GX_DISPMODE_GRAPHICS,
+    GX_BGMODE_0,
+    GX_BGMODE_0,
+    GX_BG0_AS_2D,
+};
+
+static const int ov53_021E8558[5] = {
+    44,
+    43,
+    43,
+    45,
+    51,
+};
+
+static const int ov53_021E856C[6] = {
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+};
+
+static const int ov53_021E8584[3][2] = {
+    {
+     47,
+     37,
+     },
+    {
+     48,
+     37,
+     },
+    {
+     46,
+     37,
+     },
+};
+
+static const int ov53_021E859C[6] = {
+    12,
+    22,
+    23,
+    24,
+    25,
+    0xFF,
+};
+
+static const int ov53_021E85B4[6] = {
+    17,
+    26,
+    27,
+    28,
+    29,
+    0xFF,
+};
+
+static const BgTemplate ov53_021E85CC = {
+    .x          = 0,
+    .y          = 0,
+    .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+    .baseTile   = 0,
+    .size       = GF_BG_SCR_SIZE_256x256,
+    .colorMode  = GX_BG_COLORMODE_16,
+    .screenBase = GX_BG_SCRBASE_0x0000,
+    .charBase   = GX_BG_CHARBASE_0x00000,
+    .bgExtPltt  = GX_BG_EXTPLTT_01,
+    .priority   = 1,
+    .areaOver   = GX_BG_AREAOVER_XLU,
+    .mosaic     = 0,
+};
+
+static const BgTemplate ov53_021E85E8 = {
+    .x          = 0,
+    .y          = 0,
+    .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+    .baseTile   = 0,
+    .size       = GF_BG_SCR_SIZE_256x256,
+    .colorMode  = GX_BG_COLORMODE_16,
+    .screenBase = GX_BG_SCRBASE_0x0000,
+    .charBase   = GX_BG_CHARBASE_0x00000,
+    .bgExtPltt  = GX_BG_EXTPLTT_01,
+    .priority   = 0,
+    .areaOver   = GX_BG_AREAOVER_XLU,
+    .mosaic     = 0,
+};
+
+static const int ov53_021E8604[][3] = {
+    {
+     0,
+     0x1c7,
+     0x18f,
+     },
+    {
+     0,
+     0x1af,
+     0,
+     },
+    {
+     0,
+     0x1af,
+     0,
+     },
+};
+
+static const TouchscreenHitbox ov53_021E8650[3][4] = {
+    {
+     {
+            .rect = {
+                20,
+                50,
+                50,
+                213,
+            },
+        },
+     {
+            .rect = {
+                76,
+                106,
+                50,
+                213,
+            },
+        },
+     {
+            .rect = {
+                132,
+                162,
+                50,
+                213,
+            },
+        },
+     {
+            {
+                TOUCHSCREEN_RECTLIST_END,
+            },
+        },
+     },
+    {
+     {
+            .rect = {
+                26,
+                83,
+                138,
+                253,
+            },
+        },
+     {
+            .rect = {
+                108,
+                164,
+                138,
+                253,
+            },
+        },
+     {
+            .rect = {
+                TOUCHSCREEN_RECTLIST_END,
+            },
+        },
+     },
+    {
+     {
+            .rect = {
+                26,
+                83,
+                10,
+                125,
+            },
+        },
+     {
+            .rect = {
+                108,
+                164,
+                10,
+                125,
+            },
+        },
+     {
+            .rect = {
+                TOUCHSCREEN_RECTLIST_END,
+            },
+        },
+     },
+};
+
+static const int ov53_021E86B0[][4] = {
+    {
+     49,
+     3,
+     },
+    {
+     50,
+     2,
+     },
+    {
+     50,
+     2,
+     },
+    {
+     52,
+     2,
+     },
+};
+
+static const int ov53_021E86F0[10][2] = {
+    {
+     0,
+     0,
+     },
+    {
+     10,
+     11,
+     },
+    {
+     12,
+     16,
+     },
+    {
+     13,
+     16,
+     },
+    {
+     14,
+     16,
+     },
+    {
+     15,
+     16,
+     },
+    {
+     17,
+     21,
+     },
+    {
+     18,
+     21,
+     },
+    {
+     19,
+     21,
+     },
+    {
+     20,
+     21,
+     },
+};
 
 BOOL OakSpeech_Init(OVY_MANAGER *ovyMan, int *pState) {
     CreateHeap(HEAP_ID_3, HEAP_ID_OAKS_SPEECH, 0x40000);
@@ -178,27 +544,36 @@ BOOL OakSpeech_Exit(OVY_MANAGER *ovyMan, int *pState) {
     return TRUE;
 }
 
-void ov53_021E5BCC(void *cbArg) {
+int OaksSpeech_DeadstrippedFunction1(int a0) {
+    int arr[1];
+    ARRAY_ASSIGN(arr, ov53_021E84F8);
+    return ov53_021E84F8[a0];
+}
+
+int OaksSpeech_DeadstrippedFunction2(int a0) {
+    int arr[1];
+    ARRAY_ASSIGN(arr, ov53_021E84FC);
+    return ov53_021E84FC[a0];
+}
+
+static void ov53_021E5BCC(void *cbArg) {
     OaksSpeechData *data = cbArg;
 
     DoScheduledBgGpuUpdates(data->bgConfig);
     thunk_OamManager_ApplyAndResetBuffers();
 }
 
-void ov53_021E5BDC(OaksSpeechData *data) {
+static void ov53_021E5BDC(OaksSpeechData *data) {
     {
-        extern const GraphicsBanks ov53_021E8628;
         GraphicsBanks graphicsBanks = ov53_021E8628;
         GfGfx_SetBanks(&graphicsBanks);
     }
     data->bgConfig = BgConfig_Alloc(data->heapId);
     {
-        extern const GraphicsModes ov53_021E8548;
         GraphicsModes graphicsModes = ov53_021E8548;
         SetBothScreensModesAndDisable(&graphicsModes);
     }
     {
-        extern const BgTemplate ov53_021E85CC;
         BgTemplate bgTemplate = ov53_021E85CC;
 
         bgTemplate.screenBase = GX_BG_SCRBASE_0x7800;
@@ -227,7 +602,6 @@ void ov53_021E5BDC(OaksSpeechData *data) {
         LoadFontPal1(GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0xC0, data->heapId);
     }
     {
-        extern const BgTemplate ov53_021E85E8;
         BgTemplate bgTemplate = ov53_021E85E8;
 
         bgTemplate.screenBase = GX_BG_SCRBASE_0x7800;
@@ -267,7 +641,7 @@ void ov53_021E5BDC(OaksSpeechData *data) {
     data->unk_128 = 0;
 }
 
-void ov53_021E5DE0(OaksSpeechData *data) {
+static void ov53_021E5DE0(OaksSpeechData *data) {
     ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_OFF);
     ToggleBgLayer(GF_BG_LYR_MAIN_1, GF_PLANE_TOGGLE_OFF);
     ToggleBgLayer(GF_BG_LYR_MAIN_2, GF_PLANE_TOGGLE_OFF);
@@ -287,7 +661,7 @@ void ov53_021E5DE0(OaksSpeechData *data) {
     FreeToHeap(data->bgConfig);
 }
 
-void ov53_021E5E6C(OaksSpeechData *data) {
+static void ov53_021E5E6C(OaksSpeechData *data) {
     data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0219_bin, data->heapId);
     ResetAllTextPrinters();
     data->unk_114   = sub_020163E0(NULL, PM_LCD_TOP, 6, data->heapId);
@@ -297,13 +671,13 @@ void ov53_021E5E6C(OaksSpeechData *data) {
     data->unk_080   = 0;
 }
 
-void ov53_021E5EB8(OaksSpeechData *data) {
+static void ov53_021E5EB8(OaksSpeechData *data) {
     MessageFormat_Delete(data->msgFormat);
     sub_020164C4(data->unk_114);
     DestroyMsgData(data->msgData);
 }
 
-BOOL ov53_021E5EDC(OaksSpeechData *data, int param, BOOL isFadeOut) {
+static BOOL ov53_021E5EDC(OaksSpeechData *data, int param, BOOL isFadeOut) {
     BOOL ret = FALSE;
     GXBlendPlaneMask plane;
     PMLCDTarget screen;
@@ -436,7 +810,7 @@ BOOL ov53_021E5EDC(OaksSpeechData *data, int param, BOOL isFadeOut) {
     return ret;
 }
 
-BOOL OakSpeech_WaitFrames(OaksSpeechData *data, int a1) {
+static BOOL OakSpeech_WaitFrames(OaksSpeechData *data, int a1) {
     if (data->unk_13C < a1) {
         ++data->unk_13C;
         return FALSE;
@@ -446,12 +820,12 @@ BOOL OakSpeech_WaitFrames(OaksSpeechData *data, int a1) {
     }
 }
 
-void ov53_021E60E8(OaksSpeechData *data, int bgId, int palette) {
+static void ov53_021E60E8(OaksSpeechData *data, int bgId, int palette) {
     BgTilemapRectChangePalette(data->bgConfig, bgId, 0, 0, 32, 24, palette);
     BgCommitTilemapBufferToVram(data->bgConfig, bgId);
 }
 
-BOOL ov53_021E611C(OaksSpeechData *data, int msgNum, int waitButtonMode) {
+static BOOL ov53_021E611C(OaksSpeechData *data, int msgNum, int waitButtonMode) {
     BOOL ret = FALSE;
 
     switch (data->unk_104) {
@@ -501,7 +875,7 @@ BOOL ov53_021E611C(OaksSpeechData *data, int msgNum, int waitButtonMode) {
     return ret;
 }
 
-BOOL ov53_021E628C(OaksSpeechData *data, int msgNum, int a2, int a3, int a4) {
+static BOOL ov53_021E628C(OaksSpeechData *data, int msgNum, int a2, int a3, int a4) {
     BOOL ret = FALSE;
     WindowTemplate sp18;
 
@@ -518,7 +892,7 @@ BOOL ov53_021E628C(OaksSpeechData *data, int msgNum, int a2, int a3, int a4) {
         }
         switch (a2) {
         case 1:
-            sp18        = ov53_021E8520[0];
+            sp18        = ov53_021E8520;
             sp18.top    = a3;
             sp18.height = a4;
             AddWindow(data->bgConfig, &data->window_0, &sp18);
@@ -528,7 +902,7 @@ BOOL ov53_021E628C(OaksSpeechData *data, int msgNum, int a2, int a3, int a4) {
         case 0:
         case 2:
         case 3:
-            sp18        = ov53_021E8520[1];
+            sp18        = ov53_021E8528;
             sp18.top    = a3;
             sp18.height = a4;
             if (a2 == 3) {
@@ -578,11 +952,63 @@ BOOL ov53_021E628C(OaksSpeechData *data, int msgNum, int a2, int a3, int a4) {
     return ret;
 }
 
-BOOL ov53_021E64B4(OaksSpeechData *data, int msgNum, int a2) {
+static BOOL ov53_021E64B4(OaksSpeechData *data, int msgNum, int a2) {
     return ov53_021E628C(data, msgNum, a2, 0xFFFF, 0xFFFF);
 }
 
-void ov53_021E64C4(OaksSpeechData *data, int msg1, int msg2, int msg3, int numChoices) {
+static const WindowTemplate ov53_021E8680[][3] = {
+    {
+     {
+            .bgId     = GF_BG_LYR_SUB_0,
+            .left     = 2,
+            .top      = 6,
+            .width    = 13,
+            .height   = 3,
+            .palette  = 14,
+            .baseTile = 0x001,
+        },
+     {
+            .bgId     = GF_BG_LYR_SUB_0,
+            .left     = 2,
+            .top      = 16,
+            .width    = 13,
+            .height   = 3,
+            .palette  = 14,
+            .baseTile = 0x036,
+        },
+     },
+    {
+     {
+            .bgId     = GF_BG_LYR_SUB_0,
+            .left     = 7,
+            .top      = 3,
+            .width    = 18,
+            .height   = 3,
+            .palette  = 14,
+            .baseTile = 0x001,
+        },
+     {
+            .bgId     = GF_BG_LYR_SUB_0,
+            .left     = 7,
+            .top      = 10,
+            .width    = 18,
+            .height   = 3,
+            .palette  = 14,
+            .baseTile = 0x037,
+        },
+     {
+            .bgId     = GF_BG_LYR_SUB_0,
+            .left     = 7,
+            .top      = 17,
+            .width    = 18,
+            .height   = 3,
+            .palette  = 14,
+            .baseTile = 0x06D,
+        },
+     },
+};
+
+static void ov53_021E64C4(OaksSpeechData *data, int msg1, int msg2, int msg3, int numChoices) {
     int msgIds[3];
     int i;
     int x;
@@ -604,22 +1030,22 @@ void ov53_021E64C4(OaksSpeechData *data, int msg1, int msg2, int msg3, int numCh
         string = String_New(0x400, data->heapId);
         ReadMsgDataIntoString(data->msgData, msgIds[i], string);
         x = FontID_String_GetWidth(0, string, 0);
-        AddWindow(data->bgConfig, &data->windows_2thru6[i], &ov53_021E8680[numChoices - 2][i]);
-        FillWindowPixelRect(&data->windows_2thru6[i], 0, 0, 0, 0xC0, 0xC0);
-        AddTextPrinterParameterizedWithColor(&data->windows_2thru6[i], 4, string, (ov53_021E8680[numChoices - 2][i].width * 8 - x) / 2, y, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 1, 0), NULL);
-        CopyWindowToVram(&data->windows_2thru6[i]);
+        AddWindow(data->bgConfig, &data->windows_2thru4[i], &ov53_021E8680[numChoices - 2][i]);
+        FillWindowPixelRect(&data->windows_2thru4[i], 0, 0, 0, 0xC0, 0xC0);
+        AddTextPrinterParameterizedWithColor(&data->windows_2thru4[i], 4, string, (ov53_021E8680[numChoices - 2][i].width * 8 - x) / 2, y, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 1, 0), NULL);
+        CopyWindowToVram(&data->windows_2thru4[i]);
         String_Delete(string);
     }
 }
 
-void OakSpeech_FreeWindows(OaksSpeechData *data) {
+static void OakSpeech_FreeWindows(OaksSpeechData *data) {
     for (int i = 0; i < data->unk_07C; ++i) {
-        RemoveWindow(&data->windows_2thru6[i]);
+        RemoveWindow(&data->windows_2thru4[i]);
     }
     BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_MAIN_0);
 }
 
-void ov53_021E65E0(OaksSpeechData *data) {
+static void ov53_021E65E0(OaksSpeechData *data) {
     int plttId_Main;
     int plttId_Sub;
     NNSG2dPaletteData *plttData;
@@ -649,8 +1075,7 @@ void ov53_021E65E0(OaksSpeechData *data) {
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB_BLACK);
 }
 
-void ov53_021E66A8(OaksSpeechData *data, int a1) {
-    extern const int ov53_021E856C[6];
+static void ov53_021E66A8(OaksSpeechData *data, int a1) {
     int sp10[6];
     ARRAY_ASSIGN(sp10, ov53_021E856C);
 
@@ -659,8 +1084,7 @@ void ov53_021E66A8(OaksSpeechData *data, int a1) {
     }
 }
 
-void ov53_021E66E8(OaksSpeechData *data, int a1, int a2) {
-    extern const int ov53_021E86F0[10][2];
+static void ov53_021E66E8(OaksSpeechData *data, int a1, int a2) {
     int sp10[10][2];
     ARRAY_ASSIGN(sp10, ov53_021E86F0);
 
@@ -679,8 +1103,7 @@ void ov53_021E66E8(OaksSpeechData *data, int a1, int a2) {
     }
 }
 
-void ov53_021E67C4(OaksSpeechData *data, int a1) {
-    extern const int ov53_021E8558[5];
+static void ov53_021E67C4(OaksSpeechData *data, int a1) {
     int sp10[5];
     ARRAY_ASSIGN(sp10, ov53_021E8558);
 
@@ -694,8 +1117,7 @@ void ov53_021E67C4(OaksSpeechData *data, int a1) {
     }
 }
 
-void ov53_021E6824(OaksSpeechData *data, int a1) {
-    extern const int ov53_021E8584[3][2];
+static void ov53_021E6824(OaksSpeechData *data, int a1) {
     int sp10[3][2];
     ARRAY_ASSIGN(sp10, ov53_021E8584);
 
@@ -718,7 +1140,7 @@ void ov53_021E6824(OaksSpeechData *data, int a1) {
     }
 }
 
-void ov53_021E6908(OakSpeechData_Sub160 *dest, int a1) {
+static void ov53_021E6908(OakSpeechData_Sub160 *dest, int a1) {
     dest->unk_3 = 0;
     dest->unk_0 = 0;
     dest->unk_1 = ov53_021E86B0[a1][1];
@@ -728,7 +1150,7 @@ void ov53_021E6908(OakSpeechData_Sub160 *dest, int a1) {
     dest->unk_2 = 0;
 }
 
-void ov53_021E6928(OaksSpeechData *data, int a1) {
+static void ov53_021E6928(OaksSpeechData *data, int a1) {
     data->unk_160.unk_0 = 0;
     data->unk_160.unk_1 = ov53_021E86B0[a1][1];
     data->unk_160.unk_4 = 0;
@@ -737,11 +1159,10 @@ void ov53_021E6928(OaksSpeechData *data, int a1) {
     GfGfxLoader_LoadCharData(NARC_a_1_2_0, 42, data->bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, data->heapId);
 }
 
-int ov53_021E6988(OaksSpeechData *data, int a1) {
+static int ov53_021E6988(OaksSpeechData *data, int a1) {
     int ret = -1;
     int r6;
 
-    extern const TouchscreenHitbox ov53_021E8650[3][4];
     TouchscreenHitbox sp0[3][4];
     ARRAY_ASSIGN(sp0, ov53_021E8650);
 
@@ -808,7 +1229,7 @@ int ov53_021E6988(OaksSpeechData *data, int a1) {
     return ret;
 }
 
-u16 ov53_021E6B9C(u16 a0, s8 a1) {
+static u16 ov53_021E6B9C(u16 a0, s8 a1) {
     int r = a0 & 0x1F;
     int g = (a0 >> 5) & 0x1F;
     int b = (a0 >> 10);
@@ -835,7 +1256,7 @@ u16 ov53_021E6B9C(u16 a0, s8 a1) {
     return (b << 10) | (g << 5) | r;
 }
 
-void ov53_021E6BEC(OaksSpeechData *data, int a1) {
+static void ov53_021E6BEC(OaksSpeechData *data, int a1) {
     int r4 = 0;
     u16 sp0[2];
 
@@ -853,7 +1274,7 @@ void ov53_021E6BEC(OaksSpeechData *data, int a1) {
     BG_LoadPlttData(6, sp0, 4, ov53_021E8508[!data->unk_160.unk_3] * 2);
 }
 
-void ov53_021E6CB0(OaksSpeechData *data) {
+static void ov53_021E6CB0(OaksSpeechData *data) {
     u16 sp0[2];
 
     sp0[0] = data->unk_136;
@@ -862,11 +1283,10 @@ void ov53_021E6CB0(OaksSpeechData *data) {
     BG_LoadPlttData(6, sp0, 4, 0x1C);
 }
 
-BOOL ov53_021E6CE0(OaksSpeechData *data) {
+static BOOL ov53_021E6CE0(OaksSpeechData *data) {
     BOOL ret = FALSE;
     int r6;
 
-    extern const TouchscreenHitbox ov53_021E8530[3];
     TouchscreenHitbox sp0[3];
     ARRAY_ASSIGN(sp0, ov53_021E8530);
 
@@ -913,12 +1333,12 @@ BOOL ov53_021E6CE0(OaksSpeechData *data) {
     return ret;
 }
 
-void ov53_021E6DF0(OaksSpeechData *data) {
+static void ov53_021E6DF0(OaksSpeechData *data) {
     data->unk_140 = 0;
     data->unk_144 = 0;
 }
 
-BOOL ov53_021E6E00(OaksSpeechData *data) {
+static BOOL ov53_021E6E00(OaksSpeechData *data) {
     BOOL ret = FALSE;
     int r1;
 
@@ -929,12 +1349,10 @@ BOOL ov53_021E6E00(OaksSpeechData *data) {
         data->unk_144 = 8;
     }
     if (data->playerGender == PLAYER_GENDER_MALE) {
-        extern const int ov53_021E859C[6];
         int sp28[6];
         ARRAY_ASSIGN(sp28, ov53_021E859C);
         r1 = sp28[data->unk_140];
     } else {
-        extern const int ov53_021E85B4[6];
         int sp10[6];
         ARRAY_ASSIGN(sp10, ov53_021E85B4);
         r1 = sp10[data->unk_140];
@@ -948,7 +1366,7 @@ BOOL ov53_021E6E00(OaksSpeechData *data) {
     return ret;
 }
 
-int ov53_021E6E7C(void) {
+static int ov53_021E6E7C(void) {
     RTCDate date;
     RTCTime time;
     int ret = msg_0219_00001;
@@ -968,7 +1386,7 @@ int ov53_021E6E7C(void) {
     return ret;
 }
 
-BOOL ov53_021E6F00(OaksSpeechData *data, int a1, int a2) {
+static BOOL ov53_021E6F00(OaksSpeechData *data, int a1, int a2) {
     switch (data->unk_174) {
     case 0:
         data->unk_174 = 1;
@@ -997,7 +1415,7 @@ BOOL ov53_021E6F00(OaksSpeechData *data, int a1, int a2) {
     return FALSE;
 }
 
-BOOL ov53_021E6F9C(OaksSpeechData *data) {
+static BOOL ov53_021E6F9C(OaksSpeechData *data) {
     BOOL ret = FALSE;
 
     switch (data->state) {
@@ -1623,4 +2041,87 @@ BOOL ov53_021E6F9C(OaksSpeechData *data) {
     }
 
     return ret;
+}
+
+static void ov53_021E7D04(OaksSpeechData *data) {
+    ov53_021E6824(data, 1);
+    ov53_021E67C4(data, 4);
+    ov53_021E64C4(data, msg_0219_00047, msg_0219_00048, 0, 2);
+    FillBgTilemapRect(data->bgConfig, GF_BG_LYR_SUB_3, 1, 16 * (data->playerGender ^ 1), 0, 16, 23, 0);
+    BgCommitTilemapBufferToVram(data->bgConfig, GF_BG_LYR_SUB_3);
+}
+
+static void ov53_021E7D58(OaksSpeechData *data) {
+    BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_MAIN_0);
+    BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_0);
+}
+
+static void ov53_021E7D70(OaksSpeechData *data) {
+    String *string = String_New(0x400, data->heapId);
+    Window *window = &data->window_5;
+
+    ReadMsgDataIntoString(data->msgData, msg_0219_00060, string);
+    AddWindow(data->bgConfig, window, &ov53_021E8518);
+    FillWindowPixelBuffer(window, 0);
+    AddTextPrinterParameterizedWithColor(window, 4, string, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 1, 0), NULL);
+    CopyWindowToVram(window);
+    RemoveWindow(window);
+    String_Delete(string);
+}
+
+static void ov53_021E7DDC(OaksSpeechData *data) {
+    Window *window = &data->window_5;
+    AddWindow(data->bgConfig, window, &ov53_021E8518);
+    FillWindowPixelBuffer(window, 0);
+    CopyWindowToVram(window);
+    RemoveWindow(window);
+}
+
+static void ov53_021E7E08(OaksSpeechData *data, int a1) {
+    GF_ASSERT(data != NULL);
+    switch (a1) {
+    case 0:
+        GF_ASSERT(Get2dSpriteVisibleFlag(data->unk_0E4) == TRUE);
+        ov53_021E7DDC(data);
+        Set2dSpriteVisibleFlag(data->unk_0E4, FALSE);
+        break;
+    case 1:
+        GF_ASSERT(Get2dSpriteVisibleFlag(data->unk_0E4) == FALSE);
+        ov53_021E7D70(data);
+        Set2dSpriteVisibleFlag(data->unk_0E4, TRUE);
+        break;
+    case 2:
+        Set2dSpriteAnimSeqNo(data->unk_0E4, 1);
+        break;
+    case 3:
+        Set2dSpriteAnimSeqNo(data->unk_0E4, 0);
+        break;
+    default:
+        GF_ASSERT(FALSE);
+        break;
+    }
+}
+
+static BOOL ov53_021E7E94(OaksSpeechData *data) {
+    return Get2dSpriteCurrentAnimSeqNo(data->unk_0E4) == TRUE;
+}
+
+static BOOL ov53_021E7EAC(OaksSpeechData *data) {
+    GF_ASSERT(data != NULL);
+    return Get2dSpriteVisibleFlag(data->unk_0E4) == TRUE;
+}
+
+static void ov53_021E7ECC(OaksSpeechData *data) {
+    int hitbox;
+    if (ov53_021E7EAC(data)) {
+        hitbox = TouchscreenHitbox_FindRectAtTouchHeld(ov53_021E8510);
+        if (hitbox == 0 && System_GetTouchNew()) {
+            gSystem.simulatedInputs = TRUE;
+            ov53_021E7E08(data, 2);
+        } else if (hitbox == 0 && ov53_021E7E94(data)) {
+            gSystem.simulatedInputs = TRUE;
+        } else {
+            ov53_021E7E08(data, 3);
+        }
+    }
 }

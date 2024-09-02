@@ -34,14 +34,16 @@ typedef struct OaksSpeechData {
     BgConfig *bgConfig; // 0x018
     Window window_0;
     Window window_1;
-    Window windows_2thru6[4];
+    Window windows_2thru4[3];
+    Window window_5;
     int unk_07C;
     int unk_080;
     u8 filler_084[0x50];
     SpriteGfxHandler *unk_0D4;
     int unk_0D8;
-    u8 filler_0DC[0xC];
-    Sprite *sprites[6];
+    u8 filler_0DC[0x8];
+    Sprite *unk_0E4;
+    Sprite *sprites[6]; // 0xe8
     MsgData *msgData;
     int unk_104;
     int unk_108;
@@ -72,8 +74,9 @@ typedef struct OaksSpeechData {
     int unk_17C;
 } OaksSpeechData; // size: 0x180
 
-void ov53_021E7E08(OaksSpeechData *data, int a1);
-void ov53_021E7ECC(OaksSpeechData *data);
+int OaksSpeech_DeadstrippedFunction1(int a0);
+int OaksSpeech_DeadstrippedFunction2(int a0);
+
 void ov53_021E7F24(OaksSpeechData *data);
 void ov53_021E7FEC(OaksSpeechData *data);
 void ov53_021E8014(OaksSpeechData *data);
