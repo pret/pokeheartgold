@@ -178,7 +178,7 @@
 .public Save_VarsFlags_FlypointFlagAction
 .public sub_02070D84
 .public NamingScreen_CreateArgs
-.public sub_0208311C
+.public NamingScreen_DeleteArgs
 .public sub_02085400
 .public sub_02085438
 .public DWC_CheckFriendKey

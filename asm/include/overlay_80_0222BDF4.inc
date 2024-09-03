@@ -162,7 +162,7 @@
 .public sub_0207CAA4
 .public sub_0207CAA8
 .public NamingScreen_CreateArgs
-.public sub_0208311C
+.public NamingScreen_DeleteArgs
 .public HealParty
 .public Frontier_GetLaunchParam
 .public sub_0209680C

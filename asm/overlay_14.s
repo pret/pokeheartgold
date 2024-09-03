@@ -6743,7 +6743,7 @@ ov14_021E8B80: ; 0x021E8B80
 	ldr r0, [r4, #0x14]
 	strh r0, [r5, #0x1c]
 	ldr r0, [r5, #0x18]
-	bl sub_0208311C
+	bl NamingScreen_DeleteArgs
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

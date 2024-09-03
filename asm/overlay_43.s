@@ -5849,7 +5849,7 @@ _0222CC64:
 	b _0222CD26
 _0222CC92:
 	ldr r0, [r4, #4]
-	bl sub_0208311C
+	bl NamingScreen_DeleteArgs
 	ldr r0, [r4, #8]
 	bl sub_02085438
 	add r0, r7, #0
@@ -5906,7 +5906,7 @@ _0222CD02:
 	b _0222CD26
 _0222CD12:
 	ldr r0, [r4, #4]
-	bl sub_0208311C
+	bl NamingScreen_DeleteArgs
 	add r0, r7, #0
 	add r1, r6, #0
 	bl ov43_0222A154

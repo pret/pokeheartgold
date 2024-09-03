@@ -987,8 +987,8 @@ NamingScreen_CreateArgs: ; 0x020830D8
 _02083118: .word 0x0000FFFF
 	thumb_func_end NamingScreen_CreateArgs
 
-	thumb_func_start sub_0208311C
-sub_0208311C: ; 0x0208311C
+	thumb_func_start NamingScreen_DeleteArgs
+NamingScreen_DeleteArgs: ; 0x0208311C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
@@ -1005,7 +1005,7 @@ _02083132:
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
-	thumb_func_end sub_0208311C
+	thumb_func_end NamingScreen_DeleteArgs
 
 	thumb_func_start sub_02083140
 sub_02083140: ; 0x02083140

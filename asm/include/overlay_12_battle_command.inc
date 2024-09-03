@@ -99,7 +99,7 @@
 .public Pokedex_IsNatDexEnabled
 .public GetItemAttr
 .public NamingScreen_CreateArgs
-.public sub_0208311C
+.public NamingScreen_DeleteArgs
 .public ApplyMonMoodModifier
 .public _s32_div_f
 .public _u32_div_f

@@ -17,7 +17,7 @@
 .public GetMonData
 .public SetMonData
 .public NamingScreen_CreateArgs
-.public sub_0208311C
+.public NamingScreen_DeleteArgs
 .public MonSetTrainerMemo
 .public CallTask_HatchEggInParty
 .public sub_02093134

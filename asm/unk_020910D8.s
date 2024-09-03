@@ -155,7 +155,7 @@ _020911FA:
 	bl SetMonData
 _0209120C:
 	ldr r0, [r4, #8]
-	bl sub_0208311C
+	bl NamingScreen_DeleteArgs
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]

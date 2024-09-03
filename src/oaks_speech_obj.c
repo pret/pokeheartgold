@@ -5,7 +5,7 @@
 #include "oaks_speech_internal.h"
 #include "vram_transfer_manager.h"
 
-static const UnkStruct_0200D2B4 ov53_021E8784[] = {
+static const UnkStruct_0200D2B4 sSpriteTemplates[] = {
     {
      .resourceSet = 0,
      .x           = 128,
@@ -92,7 +92,7 @@ static const UnkStruct_0200D2B4 ov53_021E8784[] = {
      },
 };
 
-void ov53_021E7F24(OakSpeechData *data) {
+void OakSpeech_InitSpriteEngine(OakSpeechData *data) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     GF_CreateVramTransferManager(0x20, HEAP_ID_OAKS_SPEECH);
@@ -142,16 +142,16 @@ void ov53_021E7F24(OakSpeechData *data) {
     }
 }
 
-void ov53_021E7FEC(OakSpeechData *data) {
+void OakSpeech_CleanupSpriteEngine(OakSpeechData *data) {
     SpriteRenderer_RemoveGfxHandler(data->spriteRenderer, data->spriteGfxHandler);
     SpriteRenderer_Delete(data->spriteRenderer);
     GF_DestroyVramTransferManager();
     data->spriteGfxHandler = NULL;
 }
 
-void ov53_021E8014(OakSpeechData *data) {
+void OakSpeech_CreateSprites(OakSpeechData *data) {
     for (u16 i = 0; i < 6; ++i) {
-        data->sprites[i] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler, &ov53_021E8784[i]);
+        data->sprites[i] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler, &sSpriteTemplates[i]);
     }
     Set2dSpriteVisibleFlag(data->sprites[0], FALSE);
     Set2dSpriteVisibleFlag(data->sprites[1], FALSE);
@@ -164,24 +164,24 @@ void ov53_021E8014(OakSpeechData *data) {
     Set2dSpriteVisibleFlag(data->sprites[5], FALSE);
 }
 
-void ov53_021E80B8(OakSpeechData *data, int a1) {
-    BOOL r2 = FALSE;
-    BOOL r4 = FALSE;
+void OakSpeech_SelectedGenderIndicatorSpritesAction(OakSpeechData *data, int action) {
+    BOOL sprite1Visible = FALSE;
+    BOOL sprite2Visible = FALSE;
 
-    if (a1 == 0) {
-        r2 = TRUE;
-        r4 = FALSE;
-    } else if (a1 == 1) {
-        r2 = FALSE;
-        r4 = TRUE;
-    } else if (a1 == 2) {
-        r2 = TRUE;
-        r4 = TRUE;
-    } else if (a1 == 3) {
-        r2 = FALSE;
-        r4 = FALSE;
+    if (action == GENDER_CURSOR_MALE) {
+        sprite1Visible = TRUE;
+        sprite2Visible = FALSE;
+    } else if (action == GENDER_CURSOR_FEMALE) {
+        sprite1Visible = FALSE;
+        sprite2Visible = TRUE;
+    } else if (action == GENDER_CURSOR_BOTH) {
+        sprite1Visible = TRUE;
+        sprite2Visible = TRUE;
+    } else if (action == GENDER_CURSOR_NEITHER) {
+        sprite1Visible = FALSE;
+        sprite2Visible = FALSE;
     }
 
-    Set2dSpriteVisibleFlag(data->sprites[1], r2);
-    Set2dSpriteVisibleFlag(data->sprites[2], r4);
+    Set2dSpriteVisibleFlag(data->sprites[1], sprite1Visible);
+    Set2dSpriteVisibleFlag(data->sprites[2], sprite2Visible);
 }

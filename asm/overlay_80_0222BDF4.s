@@ -1845,10 +1845,10 @@ _0222CB90: .word sOverlayTemplate_NamingScreen
 
 	thumb_func_start ov80_0222CB94
 ov80_0222CB94: ; 0x0222CB94
-	ldr r3, _0222CB98 ; =sub_0208311C
+	ldr r3, _0222CB98 ; =NamingScreen_DeleteArgs
 	bx r3
 	.balign 4, 0
-_0222CB98: .word sub_0208311C
+_0222CB98: .word NamingScreen_DeleteArgs
 	thumb_func_end ov80_0222CB94
 
 	thumb_func_start FrtCmd_108

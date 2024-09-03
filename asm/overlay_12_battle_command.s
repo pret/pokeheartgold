@@ -1250,7 +1250,7 @@ _02246E2A:
 	bl BattleSystem_GameStatIncrement
 _02246E5C:
 	add r0, r5, #0
-	bl sub_0208311C
+	bl NamingScreen_DeleteArgs
 	ldr r0, [r4, #0x50]
 	bl OverlayManager_Delete
 	ldr r0, [r4]

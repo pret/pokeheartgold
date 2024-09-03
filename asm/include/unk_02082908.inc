@@ -132,7 +132,7 @@
 .public GetMonIconPaletteEx
 .public sub_02074490
 .public NamingScreen_CreateArgs
-.public sub_0208311C
+.public NamingScreen_DeleteArgs
 .public NNS_G2dInitOamManagerModule
 .public G2x_SetBlendAlpha_
 .public GX_LoadOBJPltt
