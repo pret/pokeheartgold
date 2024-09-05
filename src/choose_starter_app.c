@@ -17,6 +17,7 @@
 #include "render_text.h"
 #include "render_window.h"
 #include "sound.h"
+#include "sprite.h"
 #include "system.h"
 #include "text.h"
 #include "touchscreen.h"
@@ -28,7 +29,6 @@
 #include "unk_02013FDC.h"
 #include "unk_02020B8C.h"
 #include "unk_02022588.h"
-#include "unk_02023694.h"
 #include "unk_02026E30.h"
 
 enum ChooseStarterInput {

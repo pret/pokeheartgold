@@ -30,6 +30,7 @@
 #include "render_text.h"
 #include "render_window.h"
 #include "sound_02004A44.h"
+#include "sprite.h"
 #include "system.h"
 #include "text.h"
 #include "touchscreen.h"
@@ -38,7 +39,6 @@
 #include "unk_0200CF18.h"
 #include "unk_0200FA24.h"
 #include "unk_020183F0.h"
-#include "unk_02023694.h"
 #include "yes_no_prompt.h"
 
 typedef enum CoinDisplay {

@@ -13,7 +13,7 @@ static const UnkStruct_0200D2B4 sSpriteTemplates[] = {
      .z           = 0,
      .animSeqNo   = 0,
      .rotation    = 2,
-     .unk_10      = 1,
+     .palIndex    = 1,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
      .unk_18      = 0,
      .unk_1C      = 0,
@@ -27,7 +27,7 @@ static const UnkStruct_0200D2B4 sSpriteTemplates[] = {
      .z           = 0,
      .animSeqNo   = 0,
      .rotation    = 0,
-     .unk_10      = 0,
+     .palIndex    = 0,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DSUB,
      .unk_18      = 0,
      .unk_1C      = 0,
@@ -41,7 +41,7 @@ static const UnkStruct_0200D2B4 sSpriteTemplates[] = {
      .z           = 0,
      .animSeqNo   = 0,
      .rotation    = 1,
-     .unk_10      = 1,
+     .palIndex    = 1,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DSUB,
      .unk_18      = 0,
      .unk_1C      = 0,
@@ -55,7 +55,7 @@ static const UnkStruct_0200D2B4 sSpriteTemplates[] = {
      .z           = 0,
      .animSeqNo   = 0,
      .rotation    = 0,
-     .unk_10      = 3,
+     .palIndex    = 3,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DSUB,
      .unk_18      = 0,
      .unk_1C      = 0,
@@ -69,7 +69,7 @@ static const UnkStruct_0200D2B4 sSpriteTemplates[] = {
      .z           = 0,
      .animSeqNo   = 1,
      .rotation    = 0,
-     .unk_10      = 4,
+     .palIndex    = 4,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DSUB,
      .unk_18      = 0,
      .unk_1C      = 0,
@@ -83,7 +83,7 @@ static const UnkStruct_0200D2B4 sSpriteTemplates[] = {
      .z           = 0,
      .animSeqNo   = 0,
      .rotation    = 0,
-     .unk_10      = 4,
+     .palIndex    = 4,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
      .unk_18      = 0,
      .unk_1C      = 0,
@@ -100,7 +100,6 @@ void OakSpeech_InitSpriteEngine(OakSpeechData *data) {
     data->spriteGfxHandler = SpriteRenderer_CreateGfxHandler(data->spriteRenderer);
 
     {
-        // extern const OamManagerParam ov53_021E8764;
         OamManagerParam oamManagerParam = {
             .fromOBJmain    = 0,
             .numOBJmain     = 128,
@@ -112,7 +111,6 @@ void OakSpeech_InitSpriteEngine(OakSpeechData *data) {
             .numAffineSub   = 32,
         };
 
-        // extern const OamCharTransferParam ov53_021E8750;
         OamCharTransferParam oamCharTransferParam = {
             .maxTasks     = 10,
             .sizeMain     = 0x400,
@@ -125,7 +123,7 @@ void OakSpeech_InitSpriteEngine(OakSpeechData *data) {
     }
 
     sub_0200CFF4(data->spriteRenderer, data->spriteGfxHandler, 10);
-    G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(data->spriteRenderer), 0, FX32_CONST(192));
+    G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(data->spriteRenderer), 0, FX32_CONST(GX_LCD_SIZE_Y));
 
     {
         // extern const u16 ov53_021E8740[7];

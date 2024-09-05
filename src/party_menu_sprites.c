@@ -409,7 +409,7 @@ void sub_0207EBE4(PartyMenu *partyMenu, u8 partySlot, u16 x, u16 y, NARC *narc) 
     sp1C.z                                                   = 0;
     sp1C.animSeqNo                                           = 0;
     sp1C.rotation                                            = 0;
-    sp1C.unk_10                                              = GetMonIconPaletteEx(partyMenu->monsDrawState[partySlot].species, partyMenu->monsDrawState[partySlot].form, isEgg) + 3;
+    sp1C.palIndex                                            = GetMonIconPaletteEx(partyMenu->monsDrawState[partySlot].species, partyMenu->monsDrawState[partySlot].form, isEgg) + 3;
     sp1C.whichScreen                                         = NNS_G2D_VRAM_TYPE_2DMAIN;
     sp1C.unk_18                                              = 0;
     sp1C.unk_1C                                              = 0;
@@ -417,7 +417,7 @@ void sub_0207EBE4(PartyMenu *partyMenu, u8 partySlot, u16 x, u16 y, NARC *narc) 
     sp1C.unk_24                                              = 0;
     partyMenu->monsDrawState[partySlot].iconSprite           = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sp1C);
     sp1C.whichScreen                                         = NNS_G2D_VRAM_TYPE_2DMAIN;
-    sp1C.unk_10                                              = GetMonIconPaletteEx(partyMenu->monsDrawState[partySlot].species, partyMenu->monsDrawState[partySlot].form, isEgg) + 1;
+    sp1C.palIndex                                            = GetMonIconPaletteEx(partyMenu->monsDrawState[partySlot].species, partyMenu->monsDrawState[partySlot].form, isEgg) + 1;
     sp1C.x                                                   = x;
     sp1C.y                                                   = y + 0x100;
     partyMenu->monsDrawState[partySlot].mainScreenIconSprite = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sp1C);
@@ -484,7 +484,7 @@ void sub_0207EF5C(PartyMenu *partyMenu, u8 partySlot, u16 x, u16 y) {
     sp0.y                                                     = y;
     sp0.z                                                     = 0;
     sp0.animSeqNo                                             = 0;
-    sp0.unk_10                                                = 0;
+    sp0.palIndex                                              = 0;
     sp0.unk_18                                                = 0;
     sp0.unk_1C                                                = 0;
     sp0.unk_20                                                = 0;

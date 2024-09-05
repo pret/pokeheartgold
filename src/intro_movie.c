@@ -12,13 +12,13 @@
 #include "math_util.h"
 #include "obj_char_transfer.h"
 #include "sound_02004A44.h"
+#include "sprite.h"
 #include "sys_task_api.h"
 #include "system.h"
 #include "title_screen.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
 #include "unk_02022588.h"
-#include "unk_02023694.h"
 
 enum IntroMovieOverlayState {
     INTRO_MOVIE_INIT,

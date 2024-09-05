@@ -1,6 +1,8 @@
 #ifndef NNSYS_G2D_FMT_G2D_ANIM_DATA_H_
 #define NNSYS_G2D_FMT_G2D_ANIM_DATA_H_
 
+#include <nitro.h>
+
 typedef enum NNSG2dAnimationPlayMode {
     NNS_G2D_ANIMATIONPLAYMODE_INVALID = 0x0,
     NNS_G2D_ANIMATIONPLAYMODE_FORWARD,
@@ -11,7 +13,7 @@ typedef enum NNSG2dAnimationPlayMode {
 } NNSG2dAnimationPlayMode;
 
 typedef struct NNSG2dAnimFrameData {
-    void* pContent;
+    void *pContent;
     u16 frames;
     u16 pad16;
 
@@ -29,11 +31,11 @@ typedef struct NNSG2dAnimSequenceData {
 typedef struct NNSG2dAnimBankData {
     u16 numSequences;
     u16 numTotalFrames;
-    NNSG2dAnimSequenceData* pSequenceArrayHead;
-    NNSG2dAnimFrameData* pFrameArrayHead;
-    void* pAnimContents;
-    void* pStringBank;
-    void* pExtendedData;
+    NNSG2dAnimSequenceData *pSequenceArrayHead;
+    NNSG2dAnimFrameData *pFrameArrayHead;
+    void *pAnimContents;
+    void *pStringBank;
+    void *pExtendedData;
 } NNSG2dAnimBankData;
 
-#endif //NNSYS_G2D_FMT_G2D_ANIM_DATA_H_
+#endif // NNSYS_G2D_FMT_G2D_ANIM_DATA_H_

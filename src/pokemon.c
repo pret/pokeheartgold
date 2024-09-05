@@ -19,11 +19,11 @@
 #include "party.h"
 #include "seal_case.h"
 #include "sound_02004A44.h"
+#include "sprite.h"
 #include "trainer_data.h"
 #include "trainer_memo.h"
 #include "unk_0200CF18.h"
 #include "unk_02016EDC.h"
-#include "unk_02023694.h"
 #include "unk_02078834.h"
 
 void MonEncryptSegment(void *data, u32 size, u32 key);

@@ -3,10 +3,10 @@
 #include "global.h"
 
 #include "obj_char_transfer.h"
+#include "sprite.h"
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_02022588.h"
-#include "unk_02023694.h"
 #include "unk_02025C44.h"
 
 void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, int plttId, int cellId, int cellAnmId, int multiCellId, int multiCellAnmId, int transfer, int priority, GF_2DGfxResMan *charMan, GF_2DGfxResMan *plttMan, GF_2DGfxResMan *cellMan, GF_2DGfxResMan *cellAnmMan, GF_2DGfxResMan *multiCellMan, GF_2DGfxResMan *multiCellAnmMan) {
@@ -113,7 +113,7 @@ SpriteList *G2dRenderer_Init(int a0, GF_G2dRenderer *renderer, HeapID heapId) {
     rect.sizeView.x   = 255 * FX32_ONE;
     rect.sizeView.y   = 192 * FX32_ONE;
     sub_0200B27C(&renderer->renderSurface[1], &rect, 2, &renderer->rendererInstance);
-    param.unk_0            = a0;
+    param.num              = a0;
     param.rendererInstance = &renderer->rendererInstance;
     param.heapId           = heapId;
     return SpriteList_Create(&param);

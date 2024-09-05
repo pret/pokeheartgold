@@ -1,6 +1,9 @@
 #ifndef NNSYS_G2D_G2D_RENDERERCORE_H_
 #define NNSYS_G2D_G2D_RENDERERCORE_H_
 
+#include <nnsys/g2d/fmt/g2d_Cell_data.h>
+#include <nnsys/g2d/g2d_Vec_data.h>
+
 #define MtxCache_NOT_AVAILABLE                  0xFFFF
 #define MtxCache_NOT_AVAILABLE_ForMemFill       0xFFFFFFFF
 #define NNS_G2D_NUMBER_OF_2DGRAPHICS_ENGINE     2
@@ -32,13 +35,13 @@ typedef enum NNSG2dRendererAffineTypeOverwiteMode {
     NNS_G2D_RND_AFFINE_OVERWRITE_DOUBLE
 } NNSG2dRendererAffineTypeOverwiteMode;
 
-typedef void(*NNSG2dRndCoreDrawCellCallBack)(struct NNSG2dRndCoreInstance* pRend, const NNSG2dCellData* pCell);
+typedef void (*NNSG2dRndCoreDrawCellCallBack)(struct NNSG2dRndCoreInstance *pRend, const NNSG2dCellData *pCell);
 
-typedef void(*NNSG2dRndCoreDrawOamCallBack)(struct NNSG2dRndCoreInstance* pRend, const NNSG2dCellData* pCell, u16 oamIdx);
+typedef void (*NNSG2dRndCoreDrawOamCallBack)(struct NNSG2dRndCoreInstance *pRend, const NNSG2dCellData *pCell, u16 oamIdx);
 
-typedef BOOL (*NNSG2dOamRegisterFunction) (const GXOamAttr* pOam, u16 affineIndex, BOOL bDoubleAffine);
+typedef BOOL (*NNSG2dOamRegisterFunction)(const GXOamAttr *pOam, u16 affineIndex, BOOL bDoubleAffine);
 
-typedef u16 (*NNSG2dAffineRegisterFunction) (const MtxFx22* mtx);
+typedef u16 (*NNSG2dAffineRegisterFunction)(const MtxFx22 *mtx);
 
 typedef struct NNSG2dRndCoreSurface {
     NNSG2dViewRect viewRect;
@@ -51,22 +54,26 @@ typedef struct NNSG2dRndCoreSurface {
 } NNSG2dRndCoreSurface;
 
 typedef struct NNSG2dRndCoreInstance {
-    NNSG2dRndCoreSurface* pCurrentTargetSurface;
+    NNSG2dRndCoreSurface *pCurrentTargetSurface;
     NNSG2dRendererAffineTypeOverwiteMode affineOverwriteMode;
-    const struct NNSG2dImageProxy* pImgProxy;
-    const struct NNSG2dImagePaletteProxy* pPltProxy;
+    const struct NNSG2dImageProxy *pImgProxy;
+    const struct NNSG2dImagePaletteProxy *pPltProxy;
     u32 base2DCharOffset;
     u32 baseTexAddr3D;
     u32 basePltAddr3D;
     NNSG2dOamRegisterFunction pFuncOamRegister;
     NNSG2dAffineRegisterFunction pFuncOamAffineRegister;
     u32 flipFlag;
-    NNSG2dRndCore2DMtxCache* pCurrentMtxCacheFor2D;
-    const MtxFx32* pCurrentMxt;
+    NNSG2dRndCore2DMtxCache *pCurrentMtxCacheFor2D;
+    const MtxFx32 *pCurrentMxt;
     BOOL bDrawEnable;
     fx32 zFor3DSoftwareSprite;
     GXOamAttr currentOam;
     MtxFx43 mtxFor3DGE;
 } NNSG2dRndCoreInstance;
 
-#endif //NNSYS_G2D_G2D_RENDERERCORE_H_
+void NNS_G2dSetRndCoreOamRegisterFunc(NNSG2dRndCoreInstance *pRnd, NNSG2dOamRegisterFunction pFuncOamRegister, NNSG2dAffineRegisterFunction pFuncOamAffineRegister);
+void NNS_G2dSetRndCoreAffineOverwriteMode(NNSG2dRndCoreInstance *pRnd, NNSG2dRendererAffineTypeOverwiteMode mode);
+void NNS_G2dSetRndCoreFlipMode(NNSG2dRndCoreInstance *pRnd, BOOL bFlipH, BOOL bFlipV);
+
+#endif // NNSYS_G2D_G2D_RENDERERCORE_H_

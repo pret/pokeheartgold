@@ -80,6 +80,8 @@ Static main
     Object src/gf_gfx_planes.o
     Object src/camera.o
     Object asm/unk_02023694.o
+    Object src/sprite.o
+    Object asm/sprite_s.o
     Object src/touchscreen.o
     Object src/timer3.o
     Object src/error_handling.o

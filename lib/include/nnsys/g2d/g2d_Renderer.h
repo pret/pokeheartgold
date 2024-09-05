@@ -1,14 +1,19 @@
 #ifndef NNSYS_G2D_G2D_RENDERER_H_
 #define NNSYS_G2D_G2D_RENDERER_H_
 
+#include <nnsys/g2d/fmt/g2d_Cell_data.h>
+#include <nnsys/g2d/g2d_PaletteTable.h>
+#include <nnsys/g2d/g2d_RendererCore.h>
+#include <nnsys/g2d/g2d_Vec_data.h>
+
 struct NNSG2dRendererInstance;
 struct NNSG2dRenderSurface;
 
-typedef BOOL(*NNSG2dRndCellCullingFunction)(const NNSG2dCellData* pCell, const MtxFx32* pMtx, const NNSG2dViewRect* pViewRec);
+typedef BOOL (*NNSG2dRndCellCullingFunction)(const NNSG2dCellData *pCell, const MtxFx32 *pMtx, const NNSG2dViewRect *pViewRec);
 
-typedef void(*NNSG2dRndDrawCellCallBack)(struct NNSG2dRendererInstance* pRend, struct NNSG2dRenderSurface* pSurface, const NNSG2dCellData* pCell, const MtxFx32* pMtx);
+typedef void (*NNSG2dRndDrawCellCallBack)(struct NNSG2dRendererInstance *pRend, struct NNSG2dRenderSurface *pSurface, const NNSG2dCellData *pCell, const MtxFx32 *pMtx);
 
-typedef void(*NNSG2dRndDrawOamCallBack)(struct NNSG2dRendererInstance* pRend, struct NNSG2dRenderSurface* pSurface, const NNSG2dCellData* pCell, u16 oamIdx, const MtxFx32* pMtx);
+typedef void (*NNSG2dRndDrawOamCallBack)(struct NNSG2dRendererInstance *pRend, struct NNSG2dRenderSurface *pSurface, const NNSG2dCellData *pCell, u16 oamIdx, const MtxFx32 *pMtx);
 
 typedef struct NNSG2dRenderSurface {
     union {
@@ -25,7 +30,7 @@ typedef struct NNSG2dRenderSurface {
     };
     NNSG2dOamRegisterFunction pFuncOamRegister;
     NNSG2dAffineRegisterFunction pFuncOamAffineRegister;
-    void* pNextSurface;
+    void *pNextSurface;
     NNSG2dRndCellCullingFunction pFuncVisibilityCulling;
     NNSG2dRndDrawCellCallBack pBeforeDrawCellBackFunc;
     NNSG2dRndDrawCellCallBack pAfterDrawCellBackFunc;
@@ -35,9 +40,9 @@ typedef struct NNSG2dRenderSurface {
 
 typedef struct NNSG2dRendererInstance {
     NNSG2dRndCoreInstance rendererCore;
-    NNSG2dRenderSurface* pTargetSurfaceList;
-    NNSG2dRenderSurface* pCurrentSurface;
-    const NNSG2dPaletteSwapTable* pPaletteSwapTbl;
+    NNSG2dRenderSurface *pTargetSurfaceList;
+    NNSG2dRenderSurface *pCurrentSurface;
+    const NNSG2dPaletteSwapTable *pPaletteSwapTbl;
     u32 opzHint;
     fx32 spriteZoffsetStep;
     u32 overwriteEnableFlag;
@@ -49,4 +54,4 @@ typedef struct NNSG2dRendererInstance {
     u16 pad16_;
 } NNSG2dRendererInstance;
 
-#endif //NNSYS_G2D_G2D_RENDERER_H_
+#endif // NNSYS_G2D_G2D_RENDERER_H_

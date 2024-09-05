@@ -16,13 +16,13 @@
 #include "render_text.h"
 #include "render_window.h"
 #include "sound.h"
+#include "sprite.h"
 #include "system.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
 #include "unk_0200CF18.h"
 #include "unk_0200FA24.h"
 #include "unk_020183F0.h"
-#include "unk_02023694.h"
 #include "unk_0203A3B0.h"
 #include "vram_transfer_manager.h"
 
@@ -180,7 +180,7 @@ static const UnkStruct_0200D2B4 ov54_021E6EAC[9] = {
      .z           = 0,
      .animSeqNo   = 0,
      .rotation    = 1,
-     .unk_10      = 0,
+     .palIndex    = 0,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
      .unk_18      = 0,
      .unk_1C      = 0,
@@ -194,7 +194,7 @@ static const UnkStruct_0200D2B4 ov54_021E6EAC[9] = {
      .z           = 0,
      .animSeqNo   = 0,
      .rotation    = 1,
-     .unk_10      = 0,
+     .palIndex    = 0,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
      .unk_18      = 0,
      .unk_1C      = 0,
@@ -208,7 +208,7 @@ static const UnkStruct_0200D2B4 ov54_021E6EAC[9] = {
      .z           = 0,
      .animSeqNo   = 1,
      .rotation    = 1,
-     .unk_10      = 0,
+     .palIndex    = 0,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
      .unk_18      = 0,
      .unk_1C      = 0,
@@ -222,7 +222,7 @@ static const UnkStruct_0200D2B4 ov54_021E6EAC[9] = {
      .z           = 0,
      .animSeqNo   = 1,
      .rotation    = 1,
-     .unk_10      = 0,
+     .palIndex    = 0,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
      .unk_18      = 0,
      .unk_1C      = 0,
@@ -236,7 +236,7 @@ static const UnkStruct_0200D2B4 ov54_021E6EAC[9] = {
      .z           = 0,
      .animSeqNo   = 1,
      .rotation    = 1,
-     .unk_10      = 0,
+     .palIndex    = 0,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
      .unk_18      = 0,
      .unk_1C      = 0,
@@ -250,7 +250,7 @@ static const UnkStruct_0200D2B4 ov54_021E6EAC[9] = {
      .z           = 0,
      .animSeqNo   = 0,
      .rotation    = 1,
-     .unk_10      = 0,
+     .palIndex    = 0,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
      .unk_18      = 0,
      .unk_1C      = 0,
@@ -264,7 +264,7 @@ static const UnkStruct_0200D2B4 ov54_021E6EAC[9] = {
      .z           = 0,
      .animSeqNo   = 0,
      .rotation    = 1,
-     .unk_10      = 0,
+     .palIndex    = 0,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
      .unk_18      = 0,
      .unk_1C      = 0,
@@ -278,7 +278,7 @@ static const UnkStruct_0200D2B4 ov54_021E6EAC[9] = {
      .z           = 0,
      .animSeqNo   = 0,
      .rotation    = 1,
-     .unk_10      = 1,
+     .palIndex    = 1,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
      .unk_18      = 0,
      .unk_1C      = 0,
@@ -292,7 +292,7 @@ static const UnkStruct_0200D2B4 ov54_021E6EAC[9] = {
      .z           = 0,
      .animSeqNo   = 0,
      .rotation    = 1,
-     .unk_10      = 1,
+     .palIndex    = 1,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
      .unk_18      = 0,
      .unk_1C      = 0,

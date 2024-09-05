@@ -20,10 +20,10 @@
 #include "pokemon_storage_system.h"
 #include "pokepic.h"
 #include "sav_chatot.h"
+#include "sprite.h"
 #include "sys_task_api.h"
 #include "trainer_data.h"
 #include "unk_0200CF18.h"
-#include "unk_02023694.h"
 
 typedef struct BattleMessage {
     u8 unk0;

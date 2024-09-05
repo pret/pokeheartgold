@@ -20,6 +20,7 @@
 #include "render_window.h"
 #include "save_misc_data.h"
 #include "sound_02004A44.h"
+#include "sprite.h"
 #include "system.h"
 #include "text.h"
 #include "touchscreen.h"
@@ -29,7 +30,6 @@
 #include "unk_0200FA24.h"
 #include "unk_020183F0.h"
 #include "unk_020210A0.h"
-#include "unk_02023694.h"
 #include "vram_transfer_manager.h"
 #include "yes_no_prompt.h"
 

@@ -12,6 +12,7 @@
 #include "overlay_manager.h"
 #include "sound.h"
 #include "sound_02004A44.h"
+#include "sprite.h"
 #include "sys_task_api.h"
 #include "system.h"
 #include "text.h"
@@ -21,7 +22,6 @@
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
 #include "unk_02022588.h"
-#include "unk_02023694.h"
 
 #ifdef HEARTGOLD
 #define GAME_TITLE_MSG_NO 0
