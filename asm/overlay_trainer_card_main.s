@@ -3976,12 +3976,12 @@ _021E7B6E:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	mov r0, #0x5b
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [sp, #0x2c]
 	ldrb r0, [r0, r4]
 	cmp r0, #0
@@ -3996,7 +3996,7 @@ _021E7BB0:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 _021E7BBC:
 	add r4, r4, #1
 	add r6, #8
@@ -4082,12 +4082,12 @@ _021E7C3C:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	mov r0, #0x1f
 	lsl r0, r0, #4
 	ldrb r1, [r7]
 	ldr r0, [r5, r0]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	mov r0, #0x1f
 	lsl r0, r0, #4
 	mov r1, #2
@@ -4098,7 +4098,7 @@ _021E7C3C:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add r6, r6, #1
 	add r4, r4, #2
 	add r5, r5, #4
@@ -4195,12 +4195,12 @@ ov51_021E7D44: ; 0x021E7D44
 	add r5, r0, r3
 	ldr r0, [r5, r4]
 	add r1, r2, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r5, r4]
 	bl Sprite_ResetAnimCtrlState
 	ldr r0, [r5, r4]
 	add r1, r6, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov51_021E7D44
 

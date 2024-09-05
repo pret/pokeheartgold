@@ -2497,7 +2497,7 @@ _021E6BE0:
 	add r1, sp, #0x68
 	ldrb r5, [r1, #0x1c]
 	add r1, r5, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add r0, r7, #0
 	add r1, r6, #0
 	bl sub_0200B12C

@@ -33,10 +33,10 @@
 .public sub_0202457C
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public sub_020247F4
-.public sub_02024804
-.public sub_02024818
-.public Set2dSpriteVisibleFlag
+.public Sprite_SetScale
+.public Sprite_SetScaleAndAffineType
+.public Sprite_SetRotation
+.public Sprite_SetVisibleFlag
 .public Sprite_SetPriority
 .public sub_02024B78
 .public String_New

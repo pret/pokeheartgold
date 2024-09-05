@@ -1270,9 +1270,9 @@ static Sprite *ov84_0223F374(GAME_BOARD_SUB_3E8 *work, u32 chara, u32 pal, u32 c
         }
 
         sprite = CreateSprite(&template);
-        Set2dSpriteAnimActiveFlag(sprite, 1);
-        sub_02024868(sprite, 1 * FX32_ONE);
-        Set2dSpriteAnimSeqNo(sprite, anim);
+        Sprite_SetAnimActiveFlag(sprite, 1);
+        Sprite_SetAnimFrame(sprite, 1 * FX32_ONE);
+        Sprite_SetAnimCtrlSeq(sprite, anim);
     }
 
     return sprite;
@@ -1402,7 +1402,7 @@ static void *BattleArcadeObj_Delete(BATTLE_ARCADE_OBJECT *obj) {
 }
 
 static void BattleArcadeObj_SetVisible(BATTLE_ARCADE_OBJECT *obj, int flag) {
-    Set2dSpriteVisibleFlag(obj->sprite, flag);
+    Sprite_SetVisibleFlag(obj->sprite, flag);
 }
 
 static void BattleArcadeObj_SetPos(BATTLE_ARCADE_OBJECT *obj, u16 x, u16 y) {
@@ -1419,8 +1419,8 @@ static void BattleArcadeObj_SetPos(BATTLE_ARCADE_OBJECT *obj, u16 x, u16 y) {
 }
 
 static void BattleArcadeObj_SetAnimation(BATTLE_ARCADE_OBJECT *obj, u32 val) {
-    sub_02024868(obj->sprite, FX32_ONE);
-    TryChange2dSpriteAnimSeqNo(obj->sprite, val);
+    Sprite_SetAnimFrame(obj->sprite, FX32_ONE);
+    Sprite_TryChangeAnimSeq(obj->sprite, val);
 }
 
 static void ov84_0223F894(BATTLE_ARCADE_OBJECT *obj, Pokemon *mon) {
@@ -1428,7 +1428,7 @@ static void ov84_0223F894(BATTLE_ARCADE_OBJECT *obj, Pokemon *mon) {
 }
 
 static void ov84_0223F8A8(BATTLE_ARCADE_OBJECT *obj, int flag) {
-    Set2dSpriteAnimActiveFlag(obj->sprite, flag);
+    Sprite_SetAnimActiveFlag(obj->sprite, flag);
 }
 
 extern WindowTemplate ov84_0223F9F8[2];

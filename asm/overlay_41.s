@@ -10952,14 +10952,14 @@ _0224AF48:
 	bl sub_02024714
 	mov r1, #1
 	str r0, [r5, #0x10]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [sp, #0x1c]
 	add r1, r6, r7
 	cmp r1, r0
 	blt _0224AF6C
 	ldr r0, [r5, #0x10]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 _0224AF6C:
 	add r6, r6, #1
 	add r4, #0x12
@@ -10994,7 +10994,7 @@ ov41_0224AF8C: ; 0x0224AF8C
 _0224AFA0:
 	ldr r0, [r4, #0x10]
 	mov r1, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, r5
@@ -11011,7 +11011,7 @@ _0224AFB2:
 _0224AFC0:
 	ldr r0, [r4, #0x10]
 	mov r1, #1
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	sub r6, r6, #1
 	sub r4, r4, #4
 	cmp r6, r5
@@ -11393,7 +11393,7 @@ _0224B2AE:
 _0224B2C0:
 	ldr r0, [r5, #0x10]
 	ldr r1, [sp, #4]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [sp, #4]
 	add r1, r0, #0
 	ldr r0, [sp]
@@ -11516,7 +11516,7 @@ _0224B396:
 	ldr r0, [r6, #0x10]
 	mov r1, #2
 	str r0, [r4, #4]
-	bl sub_0202487C
+	bl Sprite_SetAffineOverwriteType
 	ldr r2, [sp, #8]
 	str r5, [sp, #0xc]
 	lsl r0, r5, #0xc
@@ -11630,10 +11630,10 @@ ov41_0224B450: ; 0x0224B450
 	ldr r0, [r5, #0x24]
 	str r0, [sp, #0x14]
 	ldr r0, [r5, #4]
-	bl sub_020247F4
+	bl Sprite_SetScale
 	ldr r0, [r5, #8]
 	add r1, sp, #0xc
-	bl sub_020247F4
+	bl Sprite_SetScale
 	add r6, r5, #0
 	add r6, #0xc
 	add r3, sp, #0
@@ -12934,7 +12934,7 @@ _0224BE9C:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #5
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	mov r0, #3
 	lsl r0, r0, #0x10
 	str r0, [sp, #0x14]

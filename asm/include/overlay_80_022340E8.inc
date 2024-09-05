@@ -11,8 +11,8 @@
 .public ScheduleBgTilemapBufferTransfer
 .public LCRandom
 .public GfGfx_EngineATogglePlanes
-.public Set2dSpriteVisibleFlag
-.public Set2dSpriteAnimActiveFlag
+.public Sprite_SetVisibleFlag
+.public Sprite_SetAnimActiveFlag
 .public GF_AssertFail
 .public sub_02030E7C
 .public sub_02030E88

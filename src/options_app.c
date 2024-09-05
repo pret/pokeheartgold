@@ -827,9 +827,9 @@ static void ov54_021E6418(OptionsApp_Data *data, u16 menuEntryId) {
 static void OptionsApp_UpdateMenuEntryCarousel(OptionsApp_Data *data, u32 menuEntryId, OptionsApp_MenuEntry *menuEntry, s32 offset) {
     if (menuEntryId == MENU_ENTRY_FRAME) {
         if (offset == -1) {
-            Set2dSpriteAnimSeqNo(data->sprites[5], 1);
+            Sprite_SetAnimCtrlSeq(data->sprites[5], 1);
         } else if (offset == 1) {
-            Set2dSpriteAnimSeqNo(data->sprites[6], 1);
+            Sprite_SetAnimCtrlSeq(data->sprites[6], 1);
         }
     }
 
@@ -880,21 +880,21 @@ static void OptionsApp_HandleKeyInput(OptionsApp_Data *data, OptionsApp_MenuEntr
         if (data->menuEntries[data->currentMenuEntryId].value == 1) {
             sub_02018410(data->unk20, 0);
             PlaySE(SEQ_SE_DP_SAVE);
-            Set2dSpriteAnimSeqNo(data->sprites[8], 3);
+            Sprite_SetAnimCtrlSeq(data->sprites[8], 3);
             data->unk10_0 = 1;
         } else {
             sub_02018410(data->unk20, 0);
             PlaySE(SEQ_SE_GS_GEARCANCEL);
-            Set2dSpriteAnimSeqNo(data->sprites[7], 3);
+            Sprite_SetAnimCtrlSeq(data->sprites[7], 3);
             data->unk10_0 = 2;
         }
     } else if (gSystem.newKeys & PAD_BUTTON_B) {
         sub_02018410(data->unk20, 0);
         PlaySE(SEQ_SE_GS_GEARCANCEL);
         if (data->currentMenuEntryId == MENU_ENTRY_6 && data->menuEntries[data->currentMenuEntryId].value == 0) {
-            Set2dSpriteAnimSeqNo(data->sprites[7], 3);
+            Sprite_SetAnimCtrlSeq(data->sprites[7], 3);
         } else {
-            Set2dSpriteAnimSeqNo(data->sprites[7], 2);
+            Sprite_SetAnimCtrlSeq(data->sprites[7], 2);
         }
         data->unk10_0 = 2;
     }
@@ -917,7 +917,7 @@ static void OptionsApp_HandleInput(OptionsApp_Data *data) {
             sub_02018410(data->unk20, 1);
             data->menuEntries[data->currentMenuEntryId].value = 1;
             ov54_021E69D4(data, data->currentMenuEntryId);
-            Set2dSpriteAnimSeqNo(data->sprites[8], 3);
+            Sprite_SetAnimCtrlSeq(data->sprites[8], 3);
             break;
 
         case 14: // Quit button
@@ -930,7 +930,7 @@ static void OptionsApp_HandleInput(OptionsApp_Data *data) {
             sub_02018410(data->unk20, 1);
             data->menuEntries[data->currentMenuEntryId].value = 0;
             ov54_021E69D4(data, data->currentMenuEntryId);
-            Set2dSpriteAnimSeqNo(data->sprites[7], 3);
+            Sprite_SetAnimCtrlSeq(data->sprites[7], 3);
             break;
 
         default: {
@@ -963,16 +963,16 @@ static void ov54_021E69D4(OptionsApp_Data *data, u32 menuEntryId) {
     if (menuEntryId == MENU_ENTRY_6) {
         ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_OFF);
         if (data->menuEntries[menuEntryId].value == 0) {
-            Set2dSpriteAnimSeqNo(data->sprites[7], 1);
-            Set2dSpriteAnimSeqNo(data->sprites[8], 0);
+            Sprite_SetAnimCtrlSeq(data->sprites[7], 1);
+            Sprite_SetAnimCtrlSeq(data->sprites[8], 0);
         } else {
-            Set2dSpriteAnimSeqNo(data->sprites[7], 0);
-            Set2dSpriteAnimSeqNo(data->sprites[8], 1);
+            Sprite_SetAnimCtrlSeq(data->sprites[7], 0);
+            Sprite_SetAnimCtrlSeq(data->sprites[8], 1);
         }
     } else {
         BgSetPosTextAndCommit(data->bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_SET_Y, sMenuEntryBorderYCoords[data->currentMenuEntryId]);
-        Set2dSpriteAnimSeqNo(data->sprites[7], 0);
-        Set2dSpriteAnimSeqNo(data->sprites[8], 0);
+        Sprite_SetAnimCtrlSeq(data->sprites[7], 0);
+        Sprite_SetAnimCtrlSeq(data->sprites[8], 0);
         ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_ON);
     }
 }
@@ -1034,10 +1034,10 @@ static void OptionsApp_SetupSprites(OptionsApp_Data *data) {
     for (u16 i = 0; i < NELEMS(data->sprites); i++) {
         data->sprites[i] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler, &ov54_021E6EAC[i]);
         thunk_Sprite_SetPriority(data->sprites[i], 2);
-        Set2dSpriteAnimActiveFlag(data->sprites[i], TRUE);
+        Sprite_SetAnimActiveFlag(data->sprites[i], TRUE);
     }
 
-    Set2dSpriteVisibleFlag(data->sprites[7], TRUE);
+    Sprite_SetVisibleFlag(data->sprites[7], TRUE);
 }
 
 static void OptionsApp_SetActiveButtonsXPosition(OptionsApp_Data *data) {

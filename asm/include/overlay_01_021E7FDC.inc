@@ -32,7 +32,7 @@
 .public FreeToHeap
 .public SpriteList_Delete
 .public CreateSprite
-.public Set2dSpriteAnimSeqNo
+.public Sprite_SetAnimCtrlSeq
 .public Sprite_SetPalIndex
 .public sub_02024A48
 .public Sprite_GetPalIndex

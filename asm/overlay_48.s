@@ -4779,11 +4779,11 @@ _0225ABA0:
 	bl sub_02024714
 	str r0, [r7, #0x3c]
 	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	mov r1, #1
 	ldr r0, [r7, #0x3c]
 	lsl r1, r1, #0xc
-	bl sub_02024868
+	bl Sprite_SetAnimFrame
 	ldr r0, [sp, #0x40]
 	add r6, r6, #1
 	add r0, r0, #3
@@ -4953,7 +4953,7 @@ ov48_0225AD38: ; 0x0225AD38
 _0225AD40:
 	ldr r0, [r5, #0x3c]
 	add r1, r6, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0xc
@@ -5040,7 +5040,7 @@ _0225ADD0:
 	lsl r0, r0, #2
 	add r0, r5, r0
 	ldr r0, [r0, #0x3c]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov48_0225B010
@@ -5078,7 +5078,7 @@ _0225AE0C:
 	lsl r0, r0, #2
 	add r0, r5, r0
 	ldr r0, [r0, #0x3c]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 _0225AE36:
 	add r0, r6, #0
 	pop {r4, r5, r6, pc}

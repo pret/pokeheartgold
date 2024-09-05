@@ -99,7 +99,7 @@
 .public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
-.public Set2dSpriteAnimSeqNo
+.public Sprite_SetAnimCtrlSeq
 .public Sprite_ResetAnimCtrlState
 .public Sprite_SetPalIndex
 .public TouchscreenHitbox_FindRectAtTouchNew

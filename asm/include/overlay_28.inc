@@ -54,10 +54,10 @@
 .public CreateSprite
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public sub_0202481C
-.public Set2dSpriteVisibleFlag
-.public Set2dSpriteAnimSeqNo
-.public Get2dSpriteCurrentAnimSeqNo
+.public Sprite_SetRotationAndAffineType
+.public Sprite_SetVisibleFlag
+.public Sprite_SetAnimCtrlSeq
+.public Sprite_GetAnimationNumber
 .public sub_02024A48
 .public TouchscreenHitbox_FindHitboxAtTouchHeld
 .public TouchscreenHitbox_FindHitboxAtTouchNew

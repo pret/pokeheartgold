@@ -808,10 +808,10 @@ static BOOL ov17_022025B8(BerryPotsAppData *data) {
         data->unk80 = data->unk7C;
         data->unk81 = 0xFF;
         Sprite_SetPositionXY(data->sprites[2], (s16)(data->unk80 * 27 + 31), 56);
-        Set2dSpriteAnimSeqNo(data->sprites[2], 8);
+        Sprite_SetAnimCtrlSeq(data->sprites[2], 8);
         Sprite_ResetAnimCtrlState(data->sprites[2]);
-        Set2dSpriteAnimActiveFlag(data->sprites[2], TRUE);
-        Set2dSpriteVisibleFlag(data->sprites[2], TRUE);
+        Sprite_SetAnimActiveFlag(data->sprites[2], TRUE);
+        Sprite_SetVisibleFlag(data->sprites[2], TRUE);
         data->waitFrames = 0;
         data->state72++;
         break;
@@ -819,8 +819,8 @@ static BOOL ov17_022025B8(BerryPotsAppData *data) {
         if (data->waitFrames++ >= 15) {
             PlaySE(SEQ_SE_GS_MIZU);
             Sprite_ResetAnimCtrlState(data->sprites[2]);
-            Set2dSpriteAnimSeqNo(data->sprites[2], 9);
-            Set2dSpriteAnimActiveFlag(data->sprites[1], TRUE);
+            Sprite_SetAnimCtrlSeq(data->sprites[2], 9);
+            Sprite_SetAnimActiveFlag(data->sprites[1], TRUE);
             data->waitFrames = 0;
             data->state72++;
         }
@@ -838,7 +838,7 @@ static BOOL ov17_022025B8(BerryPotsAppData *data) {
         data->waitFrames = 0;
         if (data->unk81 == 0xFF) {
             StopSE(SEQ_SE_GS_MIZU, 2);
-            Set2dSpriteAnimSeqNo(data->sprites[2], 8);
+            Sprite_SetAnimCtrlSeq(data->sprites[2], 8);
             data->state72 = 4;
         } else {
             ov17_0220351C(data);
@@ -851,15 +851,15 @@ static BOOL ov17_022025B8(BerryPotsAppData *data) {
             data->waitFrames = 0;
             data->unk80      = data->unk81;
             data->unk81      = 0xFF;
-            Set2dSpriteAnimActiveFlag(data->sprites[1], TRUE);
+            Sprite_SetAnimActiveFlag(data->sprites[1], TRUE);
             data->state72 = 2;
         }
         break;
     case 4:
         if (data->waitFrames++ >= 15) {
             ov17_0220387C(data);
-            Set2dSpriteVisibleFlag(data->sprites[2], FALSE);
-            Set2dSpriteAnimActiveFlag(data->sprites[1], FALSE);
+            Sprite_SetVisibleFlag(data->sprites[2], FALSE);
+            Sprite_SetAnimActiveFlag(data->sprites[1], FALSE);
             data->waitFrames = 0;
             data->state72    = 0;
             return TRUE;
@@ -903,7 +903,7 @@ static BOOL ov17_0220279C(BerryPotsAppData *data) {
 }
 
 void ov17_02202850(BerryPotsAppData *data, u32 seqNo) {
-    Set2dSpriteAnimSeqNo(data->sprites[0], seqNo);
+    Sprite_SetAnimCtrlSeq(data->sprites[0], seqNo);
     Sprite_ResetAnimCtrlState(data->sprites[0]);
     FillWindowPixelBuffer(&data->windows[0], 0);
 
@@ -917,22 +917,22 @@ void ov17_022028B8(BerryPotsAppData *data) {
     u8 unk7C = data->unk7C;
     Sprite_SetPositionXY(data->sprites[1], (unk7C + 1) * 27, 96);
     if (data->unk20[unk7C].growthStage > BERRY_POT_GROWTH_STAGE_GROWING) {
-        Set2dSpriteAnimSeqNo(data->sprites[1], 3);
+        Sprite_SetAnimCtrlSeq(data->sprites[1], 3);
     } else {
-        Set2dSpriteAnimSeqNo(data->sprites[1], 2);
+        Sprite_SetAnimCtrlSeq(data->sprites[1], 2);
     }
 }
 
 static void ov17_02202900(BerryPotsAppData *data, BOOL visible) {
-    Set2dSpriteVisibleFlag(data->sprites[1], visible);
+    Sprite_SetVisibleFlag(data->sprites[1], visible);
 }
 
 static void ov17_02202910(BerryPotsAppData *data, BOOL active) {
-    Set2dSpriteAnimActiveFlag(data->sprites[1], active);
+    Sprite_SetAnimActiveFlag(data->sprites[1], active);
 
     for (int i = 0; i < MAX_BERRY_POT; i++) {
         if (data->unk20[i].soilSpriteMaybe != NULL && data->unk20[i].growthStage >= BERRY_POT_GROWTH_STAGE_SPROUTED) {
-            Set2dSpriteAnimActiveFlag(data->unk20[i].soilSpriteMaybe, active);
+            Sprite_SetAnimActiveFlag(data->unk20[i].soilSpriteMaybe, active);
         }
     }
 }
@@ -1002,12 +1002,12 @@ void ov17_02202A84(BerryPotsAppData *data, int index) {
     }
 
     sub->soilSpriteMaybe = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler1, &unkStruct);
-    Set2dSpriteVisibleFlag(sub->soilSpriteMaybe, TRUE);
+    Sprite_SetVisibleFlag(sub->soilSpriteMaybe, TRUE);
     if (sub->growthStage == BERRY_POT_GROWTH_STAGE_PLANTED) {
-        Set2dSpriteAnimActiveFlag(sub->soilSpriteMaybe, FALSE);
+        Sprite_SetAnimActiveFlag(sub->soilSpriteMaybe, FALSE);
         Sprite_SetAnimCtrlCurrentFrame(sub->soilSpriteMaybe, data->unk20[index].soilState);
     } else {
-        Set2dSpriteAnimActiveFlag(sub->soilSpriteMaybe, TRUE);
+        Sprite_SetAnimActiveFlag(sub->soilSpriteMaybe, TRUE);
     }
 
     Sprite_SetAnimCtrlCurrentFrame(data->sprites[index + 3], data->unk20[index].soilState);
@@ -1236,27 +1236,27 @@ static void BerryPotsApp_FreeSpriteSystem(BerryPotsAppData *data) {
 static void BerryPotsApp_SetupSprites(BerryPotsAppData *data) {
     for (int i = 0; i <= 1; i++) {
         data->sprites[i] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler1, &ov17_02203EF8[i]);
-        Set2dSpriteVisibleFlag(data->sprites[i], TRUE);
-        Set2dSpriteAnimActiveFlag(data->sprites[i], TRUE);
+        Sprite_SetVisibleFlag(data->sprites[i], TRUE);
+        Sprite_SetAnimActiveFlag(data->sprites[i], TRUE);
     }
 
     data->sprites[2] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler1, &ov17_02203EF8[2]);
-    Set2dSpriteVisibleFlag(data->sprites[2], FALSE);
-    Set2dSpriteAnimActiveFlag(data->sprites[2], FALSE);
+    Sprite_SetVisibleFlag(data->sprites[2], FALSE);
+    Sprite_SetAnimActiveFlag(data->sprites[2], FALSE);
 
     for (int i = 0; i < (int)NELEMS(data->unk20); i++) {
         u8 spriteIndex             = i + 3;
         data->sprites[spriteIndex] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler1, &ov17_02203EF8[3]);
         Sprite_SetPositionXY(data->sprites[spriteIndex], i * 27 + 27, 99);
         Sprite_SetAnimCtrlCurrentFrame(data->sprites[spriteIndex], data->unk20[i].soilState);
-        Set2dSpriteVisibleFlag(data->sprites[spriteIndex], TRUE);
-        Set2dSpriteAnimActiveFlag(data->sprites[spriteIndex], FALSE);
+        Sprite_SetVisibleFlag(data->sprites[spriteIndex], TRUE);
+        Sprite_SetAnimActiveFlag(data->sprites[spriteIndex], FALSE);
 
         spriteIndex                = i + 7;
         data->sprites[spriteIndex] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler1, &ov17_02203EF8[4]);
         Sprite_SetPositionXY(data->sprites[spriteIndex], i * 27 + 27, 88);
-        Set2dSpriteVisibleFlag(data->sprites[spriteIndex], FALSE);
-        Set2dSpriteAnimActiveFlag(data->sprites[spriteIndex], TRUE);
+        Sprite_SetVisibleFlag(data->sprites[spriteIndex], FALSE);
+        Sprite_SetAnimActiveFlag(data->sprites[spriteIndex], TRUE);
     }
 }
 

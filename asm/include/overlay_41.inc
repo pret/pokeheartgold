@@ -164,11 +164,11 @@
 .public sub_02024714
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public sub_020247F4
-.public Set2dSpriteVisibleFlag
-.public sub_0202487C
+.public Sprite_SetScale
+.public Sprite_SetVisibleFlag
+.public Sprite_SetAffineOverwriteType
 .public Sprite_GetMatrixPtr
-.public Set2dSpriteAnimSeqNo
+.public Sprite_SetAnimCtrlSeq
 .public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_SetPriority
 .public sub_02024A48

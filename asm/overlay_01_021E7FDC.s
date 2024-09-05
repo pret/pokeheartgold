@@ -341,7 +341,7 @@ _021E8228:
 _021E8278:
 	ldrh r1, [r4, #0xa]
 	add r0, r5, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r4, #0x18]
 	cmp r0, #1
 	beq _021E828E
@@ -912,7 +912,7 @@ _021E86A2:
 	add r5, r0, #0
 	ldrh r1, [r4, #6]
 	ldr r0, [r6]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r1, [r4, #0xc]
 	ldr r0, [r6]
 	add r1, r5, r1

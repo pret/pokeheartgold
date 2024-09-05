@@ -324,42 +324,42 @@ static void IntroMovie_Scene2_CreateSprites(IntroMovieOverlayData *data, IntroMo
 
     for (u8 i = 0; i < 10; ++i) {
         sceneData->flowerSprites[i] = CreateSprite(&spriteTemplate);
-        Set2dSpriteAnimActiveFlag(sceneData->flowerSprites[i], FALSE);
-        Set2dSpriteVisibleFlag(sceneData->flowerSprites[i], FALSE);
-        Set2dSpriteAnimSeqNo(sceneData->flowerSprites[i], anims[i]);
+        Sprite_SetAnimActiveFlag(sceneData->flowerSprites[i], FALSE);
+        Sprite_SetVisibleFlag(sceneData->flowerSprites[i], FALSE);
+        Sprite_SetAnimCtrlSeq(sceneData->flowerSprites[i], anims[i]);
     }
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(1, data, 1, NNS_G2D_VRAM_TYPE_2DMAIN, &spriteTemplate, &spriteHeader);
     spriteTemplate.position.x = 64 * FX32_ONE;
     spriteTemplate.position.y = -96 * FX32_ONE;
     sceneData->ethanSprite0   = CreateSprite(&spriteTemplate);
-    Set2dSpriteAnimActiveFlag(sceneData->ethanSprite0, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->ethanSprite0, TRUE);
-    Set2dSpriteAnimSeqNo(sceneData->ethanSprite0, 0);
+    Sprite_SetAnimActiveFlag(sceneData->ethanSprite0, FALSE);
+    Sprite_SetVisibleFlag(sceneData->ethanSprite0, TRUE);
+    Sprite_SetAnimCtrlSeq(sceneData->ethanSprite0, 0);
     sceneData->ethanSprite1 = CreateSprite(&spriteTemplate);
-    Set2dSpriteAnimActiveFlag(sceneData->ethanSprite1, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->ethanSprite1, TRUE);
-    Set2dSpriteAnimSeqNo(sceneData->ethanSprite1, 1);
+    Sprite_SetAnimActiveFlag(sceneData->ethanSprite1, FALSE);
+    Sprite_SetVisibleFlag(sceneData->ethanSprite1, TRUE);
+    Sprite_SetAnimCtrlSeq(sceneData->ethanSprite1, 1);
     sceneData->ethanSprite2 = CreateSprite(&spriteTemplate);
-    Set2dSpriteAnimActiveFlag(sceneData->ethanSprite2, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->ethanSprite2, TRUE);
-    Set2dSpriteAnimSeqNo(sceneData->ethanSprite2, 2);
+    Sprite_SetAnimActiveFlag(sceneData->ethanSprite2, FALSE);
+    Sprite_SetVisibleFlag(sceneData->ethanSprite2, TRUE);
+    Sprite_SetAnimCtrlSeq(sceneData->ethanSprite2, 2);
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(1, data, 1, NNS_G2D_VRAM_TYPE_2DMAIN, &spriteTemplate, &spriteHeader);
     spriteTemplate.position.x = 320 * FX32_ONE;
     spriteTemplate.position.y = -96 * FX32_ONE;
     sceneData->lyraSprite0    = CreateSprite(&spriteTemplate);
-    Set2dSpriteAnimActiveFlag(sceneData->lyraSprite0, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->lyraSprite0, TRUE);
-    Set2dSpriteAnimSeqNo(sceneData->lyraSprite0, 3);
+    Sprite_SetAnimActiveFlag(sceneData->lyraSprite0, FALSE);
+    Sprite_SetVisibleFlag(sceneData->lyraSprite0, TRUE);
+    Sprite_SetAnimCtrlSeq(sceneData->lyraSprite0, 3);
     sceneData->lyraSprite1 = CreateSprite(&spriteTemplate);
-    Set2dSpriteAnimActiveFlag(sceneData->lyraSprite1, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->lyraSprite1, TRUE);
-    Set2dSpriteAnimSeqNo(sceneData->lyraSprite1, 4);
+    Sprite_SetAnimActiveFlag(sceneData->lyraSprite1, FALSE);
+    Sprite_SetVisibleFlag(sceneData->lyraSprite1, TRUE);
+    Sprite_SetAnimCtrlSeq(sceneData->lyraSprite1, 4);
     sceneData->lyraSprite2 = CreateSprite(&spriteTemplate);
-    Set2dSpriteAnimActiveFlag(sceneData->lyraSprite2, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->lyraSprite2, TRUE);
-    Set2dSpriteAnimSeqNo(sceneData->lyraSprite2, 5);
+    Sprite_SetAnimActiveFlag(sceneData->lyraSprite2, FALSE);
+    Sprite_SetVisibleFlag(sceneData->lyraSprite2, TRUE);
+    Sprite_SetAnimCtrlSeq(sceneData->lyraSprite2, 5);
 }
 
 static void IntroMovie_Scene2_StartSpritePanEffect(IntroMovieScene2Data *sceneData, int whichSprites, int xSpeed, int ySpeed, int duration) {

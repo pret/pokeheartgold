@@ -4823,14 +4823,14 @@ _021E7E72:
 	bl CreateSprite
 	mov r1, #0
 	add r4, r0, #0
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0xc
-	bl sub_02024868
+	bl Sprite_SetAnimFrame
 	add r0, r4, #0
 	add r1, r5, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add r0, r4, #0
 	add sp, #0x80
 	pop {r3, r4, r5, pc}
@@ -4999,11 +4999,11 @@ ov87_021E7FC0: ; 0x021E7FC0
 
 	thumb_func_start ov87_021E7FD4
 ov87_021E7FD4: ; 0x021E7FD4
-	ldr r3, _021E7FDC ; =Set2dSpriteVisibleFlag
+	ldr r3, _021E7FDC ; =Sprite_SetVisibleFlag
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_021E7FDC: .word Set2dSpriteVisibleFlag
+_021E7FDC: .word Sprite_SetVisibleFlag
 	thumb_func_end ov87_021E7FD4
 
 	thumb_func_start ov87_021E7FE0
@@ -5070,34 +5070,34 @@ ov87_021E803C: ; 0x021E803C
 	mov r1, #1
 	ldr r0, [r5, #0xc]
 	lsl r1, r1, #0xc
-	bl sub_02024868
+	bl Sprite_SetAnimFrame
 	ldr r0, [r5, #0xc]
 	add r1, r4, #0
-	bl TryChange2dSpriteAnimSeqNo
+	bl Sprite_TryChangeAnimSeq
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov87_021E803C
 
 	thumb_func_start ov87_021E8058
 ov87_021E8058: ; 0x021E8058
-	ldr r3, _021E8064 ; =sub_02024804
+	ldr r3, _021E8064 ; =Sprite_SetScaleAndAffineType
 	ldr r0, [r0, #0xc]
 	ldr r1, _021E8068 ; =ov87_021E83A8
 	mov r2, #1
 	bx r3
 	nop
-_021E8064: .word sub_02024804
+_021E8064: .word Sprite_SetScaleAndAffineType
 _021E8068: .word ov87_021E83A8
 	thumb_func_end ov87_021E8058
 
 	thumb_func_start ov87_021E806C
 ov87_021E806C: ; 0x021E806C
-	ldr r3, _021E8074 ; =sub_02024804
+	ldr r3, _021E8074 ; =Sprite_SetScaleAndAffineType
 	ldr r0, [r0, #0xc]
 	mov r2, #2
 	bx r3
 	.balign 4, 0
-_021E8074: .word sub_02024804
+_021E8074: .word Sprite_SetScaleAndAffineType
 	thumb_func_end ov87_021E806C
 
 	thumb_func_start ov87_021E8078
@@ -5114,16 +5114,16 @@ ov87_021E8084: ; 0x021E8084
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	mov r1, #1
 	ldr r0, [r4, #0xc]
 	lsl r1, r1, #0xc
-	bl sub_02024868
+	bl Sprite_SetAnimFrame
 	ldr r0, [r4, #0xc]
-	bl Get2dSpriteCurrentAnimSeqNo
+	bl Sprite_GetAnimationNumber
 	add r1, r0, #0
 	ldr r0, [r4, #0xc]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	pop {r4, pc}
 	thumb_func_end ov87_021E8084
 

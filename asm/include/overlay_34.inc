@@ -52,11 +52,11 @@
 .public sub_0202457C
 .public CreateSprite
 .public Sprite_SetMatrix
-.public Set2dSpriteVisibleFlag
-.public Set2dSpriteAnimActiveFlag
-.public sub_020248C0
-.public Set2dSpriteAnimSeqNo
-.public Get2dSpriteCurrentAnimSeqNo
+.public Sprite_SetVisibleFlag
+.public Sprite_SetAnimActiveFlag
+.public Sprite_GetAnimActiveFlag
+.public Sprite_SetAnimCtrlSeq
+.public Sprite_GetAnimationNumber
 .public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_GetAnimCtrlCurrentFrame
 .public TouchscreenHitbox_FindRectAtTouchHeld

@@ -53,7 +53,7 @@
 .public CreateSprite
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Set2dSpriteVisibleFlag
+.public Sprite_SetVisibleFlag
 .public Sprite_GetMatrixPtr
 .public Sprite_SetAnimCtrlCurrentFrame
 .public GF_AssertFail

@@ -54,9 +54,9 @@
 .public CreateSprite
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Set2dSpriteVisibleFlag
-.public Set2dSpriteAnimSeqNo
-.public Sprite_TickCellOrMulticellAnimation
+.public Sprite_SetVisibleFlag
+.public Sprite_SetAnimCtrlSeq
+.public Sprite_TickAnimCtrlFrame
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public String_Delete
 .public GXS_SetGraphicsMode

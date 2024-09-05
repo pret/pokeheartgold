@@ -129,7 +129,7 @@ static BOOL IntroMovie_Scene1_Main(IntroMovieOverlayData *data, IntroMovieScene1
     case INTRO_SCENE1_APPEAR_BG_IMAGE: // Appear sunrise or sunset background
         GfGfx_EngineATogglePlanes((GXPlaneMask)(GX_PLANEMASK_BG1 | GX_PLANEMASK_BG2 | GX_PLANEMASK_BG3), GF_PLANE_TOGGLE_ON);
         GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_ON);
-        Set2dSpriteVisibleFlag(sceneData->sunSprite, TRUE);
+        Sprite_SetVisibleFlag(sceneData->sunSprite, TRUE);
         IntroMovie_AdvanceSceneStep(data);
         break;
     case INTRO_SCENE1_WAIT_START_BG_SCROLL: // Start scrolling background
@@ -338,18 +338,18 @@ static void IntroMovie_Scene1_CreateSprites(IntroMovieOverlayData *data, IntroMo
     spriteTemplate.position.x = 128 * FX32_ONE;
     spriteTemplate.position.y = 96 * FX32_ONE;
     sceneData->sunSprite      = CreateSprite(&spriteTemplate);
-    Set2dSpriteAnimActiveFlag(sceneData->sunSprite, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->sunSprite, FALSE);
-    Set2dSpriteAnimSeqNo(sceneData->sunSprite, 0);
+    Sprite_SetAnimActiveFlag(sceneData->sunSprite, FALSE);
+    Sprite_SetVisibleFlag(sceneData->sunSprite, FALSE);
+    Sprite_SetAnimCtrlSeq(sceneData->sunSprite, 0);
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(1, data, 0, NNS_G2D_VRAM_TYPE_2DMAIN, &spriteTemplate, &spriteResourcesHeader);
     spriteTemplate.position.x = 128 * FX32_ONE;
     spriteTemplate.position.y = 96 * FX32_ONE;
     sceneData->birdSprite     = CreateSprite(&spriteTemplate);
-    Set2dSpriteAnimActiveFlag(sceneData->birdSprite, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->birdSprite, FALSE);
-    Set2dSpriteAnimSeqNo(sceneData->birdSprite, 1);
-    sub_0202487C(sceneData->birdSprite, 2);
+    Sprite_SetAnimActiveFlag(sceneData->birdSprite, FALSE);
+    Sprite_SetVisibleFlag(sceneData->birdSprite, FALSE);
+    Sprite_SetAnimCtrlSeq(sceneData->birdSprite, 1);
+    Sprite_SetAffineOverwriteType(sceneData->birdSprite, 2);
 }
 
 HeapID _deadstrip_01(int idx);

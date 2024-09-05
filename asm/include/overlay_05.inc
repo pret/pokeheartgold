@@ -121,7 +121,7 @@
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_DisableEngineBPlanes
 .public Camera_SetPerspectiveClippingPlane
-.public Sprite_TickCellOrMulticellAnimation
+.public Sprite_TickAnimCtrlFrame
 .public GF_AssertFail
 .public String_New
 .public String_Delete

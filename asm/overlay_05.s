@@ -2544,7 +2544,7 @@ _0221CE68:
 	mov r1, #1
 	ldr r0, [r0]
 	lsl r1, r1, #0xc
-	bl Sprite_TickCellOrMulticellAnimation
+	bl Sprite_TickAnimCtrlFrame
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10

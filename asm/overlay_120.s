@@ -1367,7 +1367,7 @@ _0225F9EA:
 	bl ov01_021F0718
 	str r0, [r5]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, [r5]
 	mov r1, #0x10
 	bl Sprite_SetDrawPriority

@@ -39326,7 +39326,7 @@ _021F947A:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add sp, #0x70
 	pop {r3, r4, r5, r6, r7, pc}
 _021F948A:
@@ -39492,7 +39492,7 @@ ov18_021F95AC: ; 0x021F95AC
 _021F95B8:
 	ldr r0, [r5, r6]
 	add r1, r7, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add r4, r4, #1
 	add r5, #0x14
 	cmp r4, #4

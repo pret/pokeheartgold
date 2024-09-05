@@ -2273,7 +2273,7 @@ _0200F582:
 	ldr r0, [r4, r0]
 	mov r1, #1
 	ldr r0, [r0]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	b _0200F5A8
 _0200F594:
 	sub r0, #0xb
@@ -2292,7 +2292,7 @@ _0200F5A8:
 	mov r1, #1
 	ldr r0, [r0]
 	lsl r1, r1, #0xc
-	bl Sprite_TickCellOrMulticellAnimation
+	bl Sprite_TickAnimCtrlFrame
 	ldr r0, [r4]
 	bl sub_0202457C
 	pop {r3, r4, r5, pc}

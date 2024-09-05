@@ -711,7 +711,7 @@ static void StartMenu_CreateCursor(StartMenuTaskData *startMenu, u8 *a1, u32 a2,
     spriteTemplate.position.x  = FX32_CONST(100);
     spriteTemplate.position.y  = FX32_CONST(144);
     startMenu->cursorSprite    = CreateSprite(&spriteTemplate);
-    Set2dSpriteAnimActiveFlag(startMenu->cursorSprite, TRUE);
+    Sprite_SetAnimActiveFlag(startMenu->cursorSprite, TRUE);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 

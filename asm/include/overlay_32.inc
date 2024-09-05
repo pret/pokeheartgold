@@ -60,8 +60,8 @@
 .public CreateSprite
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Set2dSpriteAnimSeqNo
-.public Sprite_TickCellOrMulticellAnimation
+.public Sprite_SetAnimCtrlSeq
+.public Sprite_TickAnimCtrlFrame
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public String_New
 .public String_Delete

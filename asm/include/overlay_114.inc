@@ -8,9 +8,9 @@
 .public sub_0202457C
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public sub_020247F4
-.public Set2dSpriteVisibleFlag
-.public sub_0202487C
+.public Sprite_SetScale
+.public Sprite_SetVisibleFlag
+.public Sprite_SetAffineOverwriteType
 .public sub_02024B78
 .public G2x_SetBlendAlpha_
 .public memset

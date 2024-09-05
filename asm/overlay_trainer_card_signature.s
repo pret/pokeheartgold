@@ -1007,12 +1007,12 @@ ov52_021E888C: ; 0x021E888C
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	mov r0, #0x25
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	mov r0, #0x25
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -1434,11 +1434,11 @@ ov52_021E8CBC: ; 0x021E8CBC
 	bne _021E8CD0
 	ldrh r1, [r2, #4]
 	add r1, r1, #1
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	pop {r3, pc}
 _021E8CD0:
 	ldrh r1, [r2, #4]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	pop {r3, pc}
 	.balign 4, 0
 _021E8CD8: .word _021E94AC
@@ -1451,11 +1451,11 @@ ov52_021E8CDC: ; 0x021E8CDC
 	ldr r0, [r0]
 	bne _021E8CEC
 	mov r1, #1
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	pop {r3, pc}
 _021E8CEC:
 	mov r1, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	pop {r3, pc}
 	thumb_func_end ov52_021E8CDC
 
@@ -2509,14 +2509,14 @@ ov52_021E9488: ; 0x021E9488
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	pop {r3, pc}
 _021E949C:
 	mov r1, #0x25
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov52_021E9488

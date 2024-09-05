@@ -999,15 +999,15 @@ static void sub_02079D38(PartyMenu *partyMenu) {
         partyMenu->unk_948 = _0210140C;
     }
     if (partyMenu->args->context != PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT && partyMenu->args->context != PARTY_MENU_CONTEXT_17 && partyMenu->args->context != PARTY_MENU_CONTEXT_23 && partyMenu->args->context != PARTY_MENU_CONTEXT_BATTLE_HALL) {
-        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_8], FALSE);
-        Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], 0);
+        Sprite_SetVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_8], FALSE);
+        Sprite_SetAnimCtrlSeq(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], 0);
         s16 x, y;
         Sprite_GetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], &x, &y);
         Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], x, y - 8);
         r4 ^= 1;
     }
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_4 || partyMenu->args->context == PARTY_MENU_CONTEXT_SPIN_TRADE) {
-        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], FALSE);
+        Sprite_SetVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], FALSE);
         r4 ^= 2;
     }
     sub_0207D998(partyMenu, r4);
@@ -1293,7 +1293,7 @@ static void sub_0207A89C(PartyMenu *partyMenu) {
     u8 x;
     u8 y;
     sub_02020A24(partyMenu->unk_948, &x, &y, 0, 0, partyMenu->partyMonIndex, 4);
-    Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], sub_0207B5EC(partyMenu->args->unk_25, partyMenu->partyMonIndex));
+    Sprite_SetAnimCtrlSeq(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], sub_0207B5EC(partyMenu->args->unk_25, partyMenu->partyMonIndex));
     Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], x, y);
 }
 
@@ -1314,10 +1314,10 @@ static u8 sub_0207A8FC(PartyMenu *partyMenu) {
 
 static void PartyMenu_MoveCursorSpriteTo(PartyMenu *partyMenu, int selection, int x, int y) {
     if (selection == PARTY_MON_SELECTION_CANCEL || selection == PARTY_MON_SELECTION_CONFIRM) {
-        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], FALSE);
+        Sprite_SetVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], FALSE);
     } else {
-        Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], sub_0207B5EC(partyMenu->args->unk_25, selection));
-        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], TRUE);
+        Sprite_SetAnimCtrlSeq(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], sub_0207B5EC(partyMenu->args->unk_25, selection));
+        Sprite_SetVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], TRUE);
         Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], x, y);
     }
     u8 oldPartyMonIndex      = partyMenu->partyMonIndex;
@@ -1413,12 +1413,12 @@ static u8 PartyMenu_GetNewSelectionFromTable(PartyMenu *partyMenu, u8 *px, u8 *p
 
 void sub_0207AB84(PartyMenu *partyMenu, u8 partySlot) {
     if (partySlot == 6 || partySlot == 7) {
-        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], FALSE);
+        Sprite_SetVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], FALSE);
     } else {
         u8 x, y;
         sub_02020A24(partyMenu->unk_948, &x, &y, 0, 0, partyMenu->partyMonIndex, DIR_MAX);
-        Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], sub_0207B5EC(partyMenu->args->unk_25, partySlot));
-        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], TRUE);
+        Sprite_SetAnimCtrlSeq(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], sub_0207B5EC(partyMenu->args->unk_25, partySlot));
+        Sprite_SetVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], TRUE);
         Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], x, y);
     }
     u8 oldSlot               = partyMenu->partyMonIndex;
@@ -1834,30 +1834,30 @@ u8 sub_0207B4A0(PartyMenu *partyMenu, u8 selection) {
 static void sub_0207B51C(PartyMenu *partyMenu, u8 selection, BOOL active) {
     u8 animSeqNo;
     if (selection == PARTY_MON_SELECTION_CANCEL) {
-        animSeqNo = Get2dSpriteCurrentAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_8]);
+        animSeqNo = Sprite_GetAnimationNumber(partyMenu->sprites[PARTY_MENU_SPRITE_ID_8]);
         if (active == FALSE) {
             animSeqNo &= 2;
         } else {
             animSeqNo = (animSeqNo & 2) + 1;
         }
-        Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_8], animSeqNo);
+        Sprite_SetAnimCtrlSeq(partyMenu->sprites[PARTY_MENU_SPRITE_ID_8], animSeqNo);
     } else if (selection == PARTY_MON_SELECTION_CONFIRM) {
-        animSeqNo = Get2dSpriteCurrentAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9]);
+        animSeqNo = Sprite_GetAnimationNumber(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9]);
         if (active == FALSE) {
             animSeqNo &= 2;
         } else {
             animSeqNo = (animSeqNo & 2) + 1;
         }
-        Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], animSeqNo);
+        Sprite_SetAnimCtrlSeq(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], animSeqNo);
     } else {
         if (!active) {
             partyMenu->monsDrawState[selection].iconX -= 2;
             partyMenu->monsDrawState[selection].iconY -= 2;
-            Set2dSpriteAnimSeqNo(partyMenu->sprites[selection + PARTY_MENU_SPRITE_ID_BALL], 0);
+            Sprite_SetAnimCtrlSeq(partyMenu->sprites[selection + PARTY_MENU_SPRITE_ID_BALL], 0);
         } else {
             partyMenu->monsDrawState[selection].iconX += 2;
             partyMenu->monsDrawState[selection].iconY += 2;
-            Set2dSpriteAnimSeqNo(partyMenu->sprites[selection + PARTY_MENU_SPRITE_ID_BALL], 1);
+            Sprite_SetAnimCtrlSeq(partyMenu->sprites[selection + PARTY_MENU_SPRITE_ID_BALL], 1);
         }
         sub_0207A7F4(partyMenu, selection);
     }
@@ -1875,7 +1875,7 @@ static u8 sub_0207B600(PartyMenu *partyMenu) {
         if (PartyMenu_AnimateContextMenuButtonPress(partyMenu) == FALSE) {
             if (partyMenu->partyMonIndex != PARTY_MON_SELECTION_CONFIRM) {
                 Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], 0);
-                Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], 0);
+                Sprite_SetAnimCtrlSeq(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], 0);
             }
             return buttonAnim->followUpState;
         } else {
@@ -2212,7 +2212,7 @@ static int PartyMenu_Subtask_Softboiled(PartyMenu *partyMenu) {
         if (PartyMenu_AnimateContextMenuButtonPress(partyMenu) == FALSE) {
             if (partyMenu->partyMonIndex != PARTY_MON_SELECTION_CONFIRM) {
                 Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], 0);
-                Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], 0);
+                Sprite_SetAnimCtrlSeq(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], 0);
             }
             return buttonAnim->followUpState;
         } else {

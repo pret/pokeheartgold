@@ -607,26 +607,26 @@ static void IntroMovie_Scene3_CreateSprites(IntroMovieOverlayData *data, IntroMo
     template.position.x               = 128 * FX32_ONE;
     template.position.y               = 608 * FX32_ONE;
     sceneData->silverSilhouetteSprite = CreateSprite(&template);
-    Set2dSpriteAnimActiveFlag(sceneData->silverSilhouetteSprite, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->silverSilhouetteSprite, FALSE);
-    Set2dSpriteAnimSeqNo(sceneData->silverSilhouetteSprite, 0);
+    Sprite_SetAnimActiveFlag(sceneData->silverSilhouetteSprite, FALSE);
+    Sprite_SetVisibleFlag(sceneData->silverSilhouetteSprite, FALSE);
+    Sprite_SetAnimCtrlSeq(sceneData->silverSilhouetteSprite, 0);
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(3, data, 0, NNS_G2D_VRAM_TYPE_2DSUB, &template, &header);
     template.position.x     = 32 * FX32_ONE;
     template.position.y     = 608 * FX32_ONE;
     sceneData->eusineSprite = CreateSprite(&template);
-    Set2dSpriteAnimActiveFlag(sceneData->eusineSprite, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->eusineSprite, FALSE);
-    Set2dSpriteAnimSeqNo(sceneData->eusineSprite, 0);
+    Sprite_SetAnimActiveFlag(sceneData->eusineSprite, FALSE);
+    Sprite_SetVisibleFlag(sceneData->eusineSprite, FALSE);
+    Sprite_SetAnimCtrlSeq(sceneData->eusineSprite, 0);
 
     for (int i = 0; i < 3; ++i) {
         IntroMovie_BuildSpriteResourcesHeaderAndTemplate(3, data, 0, NNS_G2D_VRAM_TYPE_2DSUB, &template, &header);
         template.position.x        = 128 * FX32_ONE;
         template.position.y        = unownSpriteYcoords[i] * FX32_ONE;
         sceneData->unownSprites[i] = CreateSprite(&template);
-        Set2dSpriteAnimActiveFlag(sceneData->unownSprites[i], FALSE);
-        Set2dSpriteVisibleFlag(sceneData->unownSprites[i], FALSE);
-        Set2dSpriteAnimSeqNo(sceneData->unownSprites[i], unownSpriteAnimSeqNos[i]);
+        Sprite_SetAnimActiveFlag(sceneData->unownSprites[i], FALSE);
+        Sprite_SetVisibleFlag(sceneData->unownSprites[i], FALSE);
+        Sprite_SetAnimCtrlSeq(sceneData->unownSprites[i], unownSpriteAnimSeqNos[i]);
     }
 }
 

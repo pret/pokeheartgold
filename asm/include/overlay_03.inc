@@ -81,11 +81,11 @@
 .public sub_0202457C
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Set2dSpriteVisibleFlag
-.public Set2dSpriteAnimActiveFlag
-.public Get2dSpriteVisibleFlag
-.public Set2dSpriteAnimSeqNo
-.public Sprite_TickCellOrMulticellAnimation
+.public Sprite_SetVisibleFlag
+.public Sprite_SetAnimActiveFlag
+.public Sprite_GetVisibleFlag
+.public Sprite_SetAnimCtrlSeq
+.public Sprite_TickAnimCtrlFrame
 .public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_SetPriority
 .public Sprite_IsCellAnimationRunning

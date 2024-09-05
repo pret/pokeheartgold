@@ -5207,13 +5207,13 @@ _0225AE0E:
 	bl sub_02024714
 	str r0, [r5, #0x50]
 	add r1, r6, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r5, #0x50]
 	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	ldr r0, [r5, #0x50]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add r6, r6, #1
 	add r4, r4, #1
 	add r5, r5, #4
@@ -5509,7 +5509,7 @@ ov49_0225B014: ; 0x0225B014
 _0225B046:
 	ldr r0, [r5, #0x50]
 	add r1, r6, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2
@@ -5547,10 +5547,10 @@ ov49_0225B070: ; 0x0225B070
 	bne _0225B090
 	ldr r0, [r4, #0x50]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, [r4, #0x54]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add sp, #4
 	pop {r3, r4, pc}
 _0225B090:
@@ -5564,11 +5564,11 @@ _0225B090:
 	ldr r0, [r4, #0x50]
 	bne _0225B0AC
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	b _0225B0B2
 _0225B0AC:
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 _0225B0B2:
 	add r0, sp, #0
 	ldrh r1, [r0]
@@ -5578,12 +5578,12 @@ _0225B0B2:
 	ldr r0, [r4, #0x54]
 	blt _0225B0CA
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add sp, #4
 	pop {r3, r4, pc}
 _0225B0CA:
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add sp, #4
 	pop {r3, r4, pc}
 	thumb_func_end ov49_0225B070
@@ -7783,10 +7783,10 @@ _0225C082:
 	bl sub_02024714
 	ldr r1, [sp, #0x30]
 	str r0, [r5, #0x54]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r5, #0x54]
 	ldr r1, [sp, #0x94]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add sp, #0x7c
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov49_0225BFF0

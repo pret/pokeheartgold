@@ -158,9 +158,9 @@
 .public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
-.public Set2dSpriteVisibleFlag
-.public Set2dSpriteAnimActiveFlag
-.public Set2dSpriteAnimSeqNo
+.public Sprite_SetVisibleFlag
+.public Sprite_SetAnimActiveFlag
+.public Sprite_SetAnimCtrlSeq
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New

@@ -98,7 +98,7 @@ void sub_0202457C(SpriteList *spriteList) {
     Sprite *sprite = spriteList->dummy.next;
     while (sprite != &spriteList->dummy) {
         _020F6314[sprite->drawFlag](spriteList, sprite);
-        _020F631C[sprite->animationFrame](sprite);
+        _020F631C[sprite->animActive](sprite);
         sprite = sprite->next;
     }
 }
@@ -141,9 +141,9 @@ Sprite *CreateSprite(const SpriteTemplate *template) {
     sprite->overwrite    = 0x11;
     NNS_G2dSetRndCoreAffineOverwriteMode(&template->spriteList->renderer->rendererCore, (NNSG2dRendererAffineTypeOverwiteMode)sprite->affine);
     NNS_G2dSetRndCoreFlipMode(&template->spriteList->renderer->rendererCore, sprite->flip & 1, sprite->flip & 2);
-    sprite->drawFlag       = 1;
-    sprite->animationFrame = 0;
-    sprite->frame          = FX32_CONST(2);
+    sprite->drawFlag   = 1;
+    sprite->animActive = 0;
+    sprite->frame      = FX32_CONST(2);
     if (!sub_02024CD0(template->spriteList, template->header, sprite, template->heapId)) {
         Sprite_Delete(sprite);
         return NULL;
@@ -197,4 +197,58 @@ void Sprite_Delete(Sprite *sprite) {
 
     sprite->flag = 0;
     sub_0202512C(sprite->spriteList, sprite);
+}
+
+void Sprite_SetMatrix(Sprite *sprite, VecFx32 *vec) {
+    sprite->matrix = *vec;
+}
+
+void Sprite_SetAffineMatrix(Sprite *sprite, VecFx32 *vec) {
+    sprite->affineMatrix = *vec;
+}
+
+void Sprite_SetScale(Sprite *sprite, VecFx32 *vec) {
+    sprite->scale = *vec;
+}
+
+void Sprite_SetScaleAndAffineType(Sprite *sprite, VecFx32 *vec, u8 a2) {
+    Sprite_SetScale(sprite, vec);
+    Sprite_SetAffineOverwriteType(sprite, a2);
+}
+
+void Sprite_SetRotation(Sprite *sprite, u32 a1) {
+    sprite->rotation = a1;
+}
+
+void Sprite_SetRotationAndAffineType(Sprite *sprite, u32 a1, u8 a2) {
+    Sprite_SetRotation(sprite, a1);
+    Sprite_SetAffineOverwriteType(sprite, a2);
+}
+
+void Sprite_SetVisibleFlag(Sprite *sprite, BOOL flag) {
+    GF_ASSERT(sprite != NULL);
+    GF_ASSERT(flag < 2);
+    sprite->drawFlag = flag;
+}
+
+void Sprite_SetAnimActiveFlag(Sprite *sprite, BOOL flag) {
+    GF_ASSERT(sprite != NULL);
+    GF_ASSERT(flag < 2);
+    sprite->animActive = flag;
+}
+
+void Sprite_SetAnimFrame(Sprite *sprite, fx32 frame) {
+    GF_ASSERT(sprite != NULL);
+    sprite->frame = frame;
+}
+
+void Sprite_SetAffineOverwriteType(Sprite *sprite, u8 a1) {
+    GF_ASSERT(sprite != NULL);
+    sprite->affine = a1;
+}
+
+void Sprite_SetFlip_AffineOff(Sprite *sprite, u8 a1) {
+    GF_ASSERT(sprite != NULL);
+    sprite->flip   = a1;
+    sprite->affine = 0;
 }

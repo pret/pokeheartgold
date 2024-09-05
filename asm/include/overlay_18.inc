@@ -205,7 +205,7 @@
 .public sub_0202457C
 .public sub_02024714
 .public Sprite_Delete
-.public Set2dSpriteVisibleFlag
+.public Sprite_SetVisibleFlag
 .public sub_02024A48
 .public Sprite_GetImageProxy
 .public Sprite_GetPaletteProxy

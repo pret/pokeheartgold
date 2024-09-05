@@ -31,7 +31,7 @@
 .public sub_02024714
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Set2dSpriteVisibleFlag
+.public Sprite_SetVisibleFlag
 .public Sprite_GetMatrixPtr
 .public Sprite_SetPriority
 .public Sprite_SetPalIndex

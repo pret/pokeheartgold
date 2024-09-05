@@ -558,16 +558,16 @@ static void InitSprites(CreditsAppWork *work) {
         tmpl.priority   = 1;
         ptr->pokemon[i] = CreateSprite(&tmpl);
         GF_ASSERT(ptr->pokemon[i] != NULL);
-        Set2dSpriteAnimActiveFlag(ptr->pokemon[i], TRUE);
-        Set2dSpriteVisibleFlag(ptr->pokemon[i], TRUE);
-        Set2dSpriteAnimSeqNo(ptr->pokemon[i], 6);
+        Sprite_SetAnimActiveFlag(ptr->pokemon[i], TRUE);
+        Sprite_SetVisibleFlag(ptr->pokemon[i], TRUE);
+        Sprite_SetAnimCtrlSeq(ptr->pokemon[i], 6);
 
         tmpl.priority = 0;
         ptr->cloud[i] = CreateSprite(&tmpl);
         GF_ASSERT(ptr->cloud[i] != NULL);
-        Set2dSpriteAnimActiveFlag(ptr->cloud[i], TRUE);
-        Set2dSpriteVisibleFlag(ptr->cloud[i], FALSE);
-        Set2dSpriteAnimSeqNo(ptr->cloud[i], 7);
+        Sprite_SetAnimActiveFlag(ptr->cloud[i], TRUE);
+        Sprite_SetVisibleFlag(ptr->cloud[i], FALSE);
+        Sprite_SetAnimCtrlSeq(ptr->cloud[i], 7);
     }
 
     // Dancing Pokémon that start on bottom screen
@@ -584,15 +584,15 @@ static void InitSprites(CreditsAppWork *work) {
         tmpl.priority     = 1;
         u8 idx            = i + MONS_PER_SCREEN;
         ptr->pokemon[idx] = CreateSprite(&tmpl);
-        Set2dSpriteAnimActiveFlag(ptr->pokemon[idx], TRUE);
-        Set2dSpriteVisibleFlag(ptr->pokemon[idx], TRUE);
-        Set2dSpriteAnimSeqNo(ptr->pokemon[idx], 6);
+        Sprite_SetAnimActiveFlag(ptr->pokemon[idx], TRUE);
+        Sprite_SetVisibleFlag(ptr->pokemon[idx], TRUE);
+        Sprite_SetAnimCtrlSeq(ptr->pokemon[idx], 6);
 
         tmpl.priority   = 0;
         ptr->cloud[idx] = CreateSprite(&tmpl);
-        Set2dSpriteAnimActiveFlag(ptr->cloud[idx], TRUE);
-        Set2dSpriteVisibleFlag(ptr->cloud[idx], FALSE);
-        Set2dSpriteAnimSeqNo(ptr->cloud[idx], 7);
+        Sprite_SetAnimActiveFlag(ptr->cloud[idx], TRUE);
+        Sprite_SetVisibleFlag(ptr->cloud[idx], FALSE);
+        Sprite_SetAnimCtrlSeq(ptr->cloud[idx], 7);
     }
 
     InitCutsceneSprites(work);
@@ -726,8 +726,8 @@ static void HandleSceneTransition(CreditsAppWork *work) {
         break;
     case SCENE_TRANS_CLOUDS_APPEAR:
         for (u8 i = 0; i < TOTAL_DANCING_MONS; i++) {
-            Set2dSpriteVisibleFlag(ptr->cloud[i], TRUE);
-            Set2dSpriteAnimSeqNo(ptr->cloud[i], 7);
+            Sprite_SetVisibleFlag(ptr->cloud[i], TRUE);
+            Sprite_SetAnimCtrlSeq(ptr->cloud[i], 7);
         }
         ptr->transition.timer = 0;
         ptr->transition.state = SCENE_TRANS_SWITCH_BG;
@@ -738,7 +738,7 @@ static void HandleSceneTransition(CreditsAppWork *work) {
             ptr->transition.sceneIdxDup = (ptr->transition.sceneIdxDup + 1) % NUM_SCENES;
             u8 idx                      = ptr->transition.sceneIdxDup;
             for (u8 i = 0; i < TOTAL_DANCING_MONS; i++) {
-                Set2dSpriteAnimSeqNo(ptr->pokemon[i], sPokemonSpriteSeqNos[idx]);
+                Sprite_SetAnimCtrlSeq(ptr->pokemon[i], sPokemonSpriteSeqNos[idx]);
             }
 
             BG_LoadScreenTilemapData(work->bgConfig, 7, work->unk4B0[idx]->rawData, work->unk4B0[idx]->szByte);
@@ -761,7 +761,7 @@ static void HandleSceneTransition(CreditsAppWork *work) {
     case SCENE_TRANS_CLOUDS_DISSIPATE:
         if (++ptr->transition.timer >= 30) {
             for (u8 i = 0; i < TOTAL_DANCING_MONS; i++) {
-                Set2dSpriteVisibleFlag(ptr->cloud[i], FALSE);
+                Sprite_SetVisibleFlag(ptr->cloud[i], FALSE);
             }
             ptr->transition.timer = 0;
             ptr->transition.state = SCENE_TRANS_NONE;
@@ -807,8 +807,8 @@ static void HandleCutscenes(CreditsAppWork *work) {
 }
 
 static void ActivateSprite(Sprite *sprite) {
-    Set2dSpriteAnimActiveFlag(sprite, TRUE);
-    Set2dSpriteVisibleFlag(sprite, TRUE);
+    Sprite_SetAnimActiveFlag(sprite, TRUE);
+    Sprite_SetVisibleFlag(sprite, TRUE);
 }
 
 // Marks the scene transition for the SysTask callback.
@@ -1012,9 +1012,9 @@ static void CreateCutsceneSprite(CreditsAppWork *work, const CutsceneSpriteParam
     cutsceneSprite->sprite = sprite;
     GF_ASSERT(sprite != NULL);
 
-    Set2dSpriteAnimActiveFlag(cutsceneSprite->sprite, FALSE);
-    Set2dSpriteVisibleFlag(cutsceneSprite->sprite, FALSE);
-    Set2dSpriteAnimSeqNo(cutsceneSprite->sprite, spriteParam->animSeqNo);
+    Sprite_SetAnimActiveFlag(cutsceneSprite->sprite, FALSE);
+    Sprite_SetVisibleFlag(cutsceneSprite->sprite, FALSE);
+    Sprite_SetAnimCtrlSeq(cutsceneSprite->sprite, spriteParam->animSeqNo);
     cutsceneSprite->activateTime = spriteParam->activateTime;
     sprites->count++;
 }

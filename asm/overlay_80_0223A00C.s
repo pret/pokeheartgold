@@ -975,11 +975,11 @@ _0223A7C0:
 	ldr r0, [r4, #4]
 	mov r1, #2
 	ldr r0, [r0]
-	bl sub_0202487C
+	bl Sprite_SetAffineOverwriteType
 	ldr r0, [r4, #4]
 	mov r1, #1
 	ldr r0, [r0]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	mov r1, #2
 	lsl r1, r1, #0xc
 	add r0, r5, #0
@@ -1070,11 +1070,11 @@ _0223A876:
 	ldr r0, [r5, #4]
 	add r1, sp, #0xc
 	ldr r0, [r0]
-	bl sub_020247F4
+	bl Sprite_SetScale
 	ldr r0, [r5, #4]
 	mov r1, #1
 	ldr r0, [r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	bne _0223A8A8

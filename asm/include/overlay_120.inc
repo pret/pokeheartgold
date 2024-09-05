@@ -34,7 +34,7 @@
 .public GfGfx_EngineASetPlanes
 .public sub_0202457C
 .public Sprite_Delete
-.public Set2dSpriteVisibleFlag
+.public Sprite_SetVisibleFlag
 .public Sprite_SetPriority
 .public Sprite_SetDrawPriority
 .public GF_AssertFail

@@ -122,9 +122,9 @@
 .public sub_02024714
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Set2dSpriteVisibleFlag
-.public Set2dSpriteAnimActiveFlag
-.public sub_02024868
+.public Sprite_SetVisibleFlag
+.public Sprite_SetAnimActiveFlag
+.public Sprite_SetAnimFrame
 .public GF_AssertFail
 .public String_New
 .public String_Delete

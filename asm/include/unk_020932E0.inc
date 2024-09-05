@@ -62,11 +62,11 @@
 .public CreateSprite
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Set2dSpriteVisibleFlag
-.public Set2dSpriteAnimActiveFlag
+.public Sprite_SetVisibleFlag
+.public Sprite_SetAnimActiveFlag
 .public Sprite_GetMatrixPtr
-.public Get2dSpriteVisibleFlag
-.public Set2dSpriteAnimSeqNo
+.public Sprite_GetVisibleFlag
+.public Sprite_SetAnimCtrlSeq
 .public Sprite_SetPriority
 .public Sprite_SetPalIndex
 .public Sprite_SetDrawPriority

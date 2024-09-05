@@ -59,8 +59,8 @@
 .public SysTask_GetData
 .public GfGfx_EngineBTogglePlanes
 .public sub_0202457C
-.public Set2dSpriteAnimSeqNo
-.public Sprite_TickCellOrMulticellAnimation
+.public Sprite_SetAnimCtrlSeq
+.public Sprite_TickAnimCtrlFrame
 .public Sprite_GetAnimCtrlCurrentFrame
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public GetMonSpriteCharAndPlttNarcIdsEx

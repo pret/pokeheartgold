@@ -948,7 +948,7 @@ static int AlphPuzzleMainSeq_RotateTile_impl(AlphPuzzleData *data) {
     case 1: {
         u16 rotationOffset = (data->sceneTimer++) * 0x800;
         u16 rotation       = data->selectedTile->rotation * 0x4000 + rotationOffset;
-        sub_02024818(data->selectedTile->sprite, rotation);
+        Sprite_SetRotation(data->selectedTile->sprite, rotation);
         if (data->sceneTimer >= 8) {
             data->subState++;
         }
@@ -1236,11 +1236,11 @@ static void AlphPuzzle_CreateSprites(AlphPuzzleData *data) {
     int i;
     for (i = ALPH_SPRITE_INDEX_DROP_CURSOR; i <= ALPH_SPRITE_INDEX_PREV_CURSOR; i++) {
         data->sprites[i] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler, &sSpriteTemplates[i]);
-        sub_02024868(data->sprites[i], FX32_ONE);
+        Sprite_SetAnimFrame(data->sprites[i], FX32_ONE);
     }
-    Set2dSpriteVisibleFlag(data->sprites[ALPH_SPRITE_INDEX_DROP_CURSOR], TRUE);
-    Set2dSpriteVisibleFlag(data->sprites[ALPH_SPRITE_INDEX_PREV_CURSOR], FALSE);
-    Set2dSpriteAnimActiveFlag(data->sprites[ALPH_SPRITE_INDEX_DROP_CURSOR], TRUE);
+    Sprite_SetVisibleFlag(data->sprites[ALPH_SPRITE_INDEX_DROP_CURSOR], TRUE);
+    Sprite_SetVisibleFlag(data->sprites[ALPH_SPRITE_INDEX_PREV_CURSOR], FALSE);
+    Sprite_SetAnimActiveFlag(data->sprites[ALPH_SPRITE_INDEX_DROP_CURSOR], TRUE);
     sub_02024B78(data->sprites[ALPH_SPRITE_INDEX_PREV_CURSOR], GX_OAM_MODE_NORMAL);
     Sprite_SetPriority(data->sprites[ALPH_SPRITE_INDEX_PREV_CURSOR], 2);
     sub_02024B78(data->sprites[ALPH_SPRITE_INDEX_PREV_CURSOR], GX_OAM_MODE_XLU);
@@ -1248,10 +1248,10 @@ static void AlphPuzzle_CreateSprites(AlphPuzzleData *data) {
     for (i = 0; i < 16; i++) {
         u8 index             = i + ALPH_SPRITE_INDEX_TILE_00;
         data->sprites[index] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler, &sSpriteTemplates[ALPH_SPRITE_INDEX_TILE_00]);
-        Set2dSpriteVisibleFlag(data->sprites[index], 1);
-        Set2dSpriteAnimSeqNo(data->sprites[index], i);
+        Sprite_SetVisibleFlag(data->sprites[index], 1);
+        Sprite_SetAnimCtrlSeq(data->sprites[index], i);
         sub_02024B78(data->sprites[index], GX_OAM_MODE_NORMAL);
-        sub_0202487C(data->sprites[index], 2);
+        Sprite_SetAffineOverwriteType(data->sprites[index], 2);
         data->tileGrid[i].sprite = data->sprites[index];
         AlphPuzzle_PlaceTileInGrid(data, (u8)i, data->tileGrid[i].x, data->tileGrid[i].y, data->tileGrid[i].rotation);
     }
@@ -1277,12 +1277,12 @@ static BOOL AlphPuzzle_CheckComplete(AlphPuzzleData *data) {
 
 void AlphPuzzle_ToggleDropCursorSprite(AlphPuzzleData *data, int a1) {
     FillWindowPixelBuffer(data->window, 0);
-    Set2dSpriteAnimSeqNo(data->sprites[ALPH_SPRITE_INDEX_DROP_CURSOR], a1);
+    Sprite_SetAnimCtrlSeq(data->sprites[ALPH_SPRITE_INDEX_DROP_CURSOR], a1);
     if (a1 == 1) {
         Sprite_ResetAnimCtrlState(data->sprites[ALPH_SPRITE_INDEX_DROP_CURSOR]);
-        Set2dSpriteAnimActiveFlag(data->sprites[ALPH_SPRITE_INDEX_DROP_CURSOR], 1);
+        Sprite_SetAnimActiveFlag(data->sprites[ALPH_SPRITE_INDEX_DROP_CURSOR], 1);
     } else {
-        Set2dSpriteAnimActiveFlag(data->sprites[ALPH_SPRITE_INDEX_DROP_CURSOR], 0);
+        Sprite_SetAnimActiveFlag(data->sprites[ALPH_SPRITE_INDEX_DROP_CURSOR], 0);
     }
 
     u32 width = FontID_String_GetWidth(4, data->quitText, 0);
@@ -1379,7 +1379,7 @@ void AlphPuzzle_PlaceTileInGrid(AlphPuzzleData *data, s16 tileIndex, u8 x, u8 y,
     tile->y              = y;
     tile->rotation       = rotation;
     AlphPuzzle_SetSpritePosition_HandleRotation(tile, x * 32 + 48, y * 32 + 16);
-    sub_02024818(tile->sprite, (rotation % 4u) * 0x4000);
+    Sprite_SetRotation(tile->sprite, (rotation % 4u) * 0x4000);
 }
 
 static void AlphPuzzle_UpdateSelectedTile(AlphPuzzleData *data, u8 tileIndex, BOOL isSelecting) {
@@ -1388,13 +1388,13 @@ static void AlphPuzzle_UpdateSelectedTile(AlphPuzzleData *data, u8 tileIndex, BO
         data->selectedTile      = &data->tileGrid[data->selectedTileIndex];
         Sprite_SetDrawPriority(data->selectedTile->sprite, 0);
         Sprite_AddPositionXY(data->selectedTile->sprite, -2, -2);
-        Set2dSpriteVisibleFlag(data->sprites[ALPH_SPRITE_INDEX_PREV_CURSOR], 1);
+        Sprite_SetVisibleFlag(data->sprites[ALPH_SPRITE_INDEX_PREV_CURSOR], 1);
         Sprite_SetPositionXY(data->sprites[ALPH_SPRITE_INDEX_PREV_CURSOR], data->selectedTile->x * 32 + 48, data->selectedTile->y * 32 + 16);
         AlphPuzzle_ToggleDropCursorSprite(data, 2);
     } else {
         Sprite_SetDrawPriority(data->selectedTile->sprite, 2);
         AlphPuzzle_PlaceTileInGrid(data, data->selectedTileIndex, data->selectedTile->x, data->selectedTile->y, data->selectedTile->rotation);
-        Set2dSpriteVisibleFlag(data->sprites[ALPH_SPRITE_INDEX_PREV_CURSOR], 0);
+        Sprite_SetVisibleFlag(data->sprites[ALPH_SPRITE_INDEX_PREV_CURSOR], 0);
         AlphPuzzle_ToggleDropCursorSprite(data, 0);
         data->tileHoverTileX    = 0;
         data->tileHoverTileY    = 0;

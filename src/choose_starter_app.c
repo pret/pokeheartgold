@@ -1230,21 +1230,21 @@ static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData
     template.position.x          = 128 * FX32_ONE;
     template.position.y          = 288 * FX32_ONE;
     pMonSpriteData->sprites[idx] = CreateSprite(&template);
-    Set2dSpriteAnimActiveFlag(pMonSpriteData->sprites[idx], FALSE);
-    Set2dSpriteAnimSeqNo(pMonSpriteData->sprites[idx], 0);
-    Set2dSpriteVisibleFlag(pMonSpriteData->sprites[idx], FALSE);
+    Sprite_SetAnimActiveFlag(pMonSpriteData->sprites[idx], FALSE);
+    Sprite_SetAnimCtrlSeq(pMonSpriteData->sprites[idx], 0);
+    Sprite_SetVisibleFlag(pMonSpriteData->sprites[idx], FALSE);
 }
 
 static void setAllButSelectedMonSpritesInvisible(struct ChooseStarterAppWork *work) {
     setAllMonSpritesInvisible(&work->monSpriteData);
-    Set2dSpriteVisibleFlag(work->monSpriteData.sprites[work->curSelection], TRUE);
+    Sprite_SetVisibleFlag(work->monSpriteData.sprites[work->curSelection], TRUE);
 }
 
 static void setAllMonSpritesInvisible(struct StarterChooseMonSpriteData *a0) {
     int i;
 
     for (i = 0; i < 3; i++) {
-        Set2dSpriteVisibleFlag(a0->sprites[i], FALSE);
+        Sprite_SetVisibleFlag(a0->sprites[i], FALSE);
     }
 }
 

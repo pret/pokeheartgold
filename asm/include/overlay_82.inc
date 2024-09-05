@@ -110,12 +110,12 @@
 .public CreateSprite
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Set2dSpriteVisibleFlag
-.public Set2dSpriteAnimActiveFlag
-.public sub_02024868
+.public Sprite_SetVisibleFlag
+.public Sprite_SetAnimActiveFlag
+.public Sprite_SetAnimFrame
 .public Sprite_GetMatrixPtr
-.public Set2dSpriteAnimSeqNo
-.public TryChange2dSpriteAnimSeqNo
+.public Sprite_SetAnimCtrlSeq
+.public Sprite_TryChangeAnimSeq
 .public sub_02024AA8
 .public GF_AssertFail
 .public String_New

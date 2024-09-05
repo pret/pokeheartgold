@@ -151,15 +151,15 @@ void OakSpeech_CreateSprites(OakSpeechData *data) {
     for (u16 i = 0; i < 6; ++i) {
         data->sprites[i] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler, &sSpriteTemplates[i]);
     }
-    Set2dSpriteVisibleFlag(data->sprites[0], FALSE);
-    Set2dSpriteVisibleFlag(data->sprites[1], FALSE);
-    Set2dSpriteVisibleFlag(data->sprites[2], FALSE);
-    Set2dSpriteVisibleFlag(data->sprites[3], FALSE);
-    Set2dSpriteVisibleFlag(data->sprites[4], FALSE);
+    Sprite_SetVisibleFlag(data->sprites[0], FALSE);
+    Sprite_SetVisibleFlag(data->sprites[1], FALSE);
+    Sprite_SetVisibleFlag(data->sprites[2], FALSE);
+    Sprite_SetVisibleFlag(data->sprites[3], FALSE);
+    Sprite_SetVisibleFlag(data->sprites[4], FALSE);
     Sprite_SetPriority(data->sprites[3], 1);
-    Set2dSpriteAnimActiveFlag(data->sprites[5], 1);
-    sub_0202487C(data->sprites[5], 1);
-    Set2dSpriteVisibleFlag(data->sprites[5], FALSE);
+    Sprite_SetAnimActiveFlag(data->sprites[5], 1);
+    Sprite_SetAffineOverwriteType(data->sprites[5], 1);
+    Sprite_SetVisibleFlag(data->sprites[5], FALSE);
 }
 
 void OakSpeech_SelectedGenderIndicatorSpritesAction(OakSpeechData *data, int action) {
@@ -180,6 +180,6 @@ void OakSpeech_SelectedGenderIndicatorSpritesAction(OakSpeechData *data, int act
         sprite2Visible = FALSE;
     }
 
-    Set2dSpriteVisibleFlag(data->sprites[1], sprite1Visible);
-    Set2dSpriteVisibleFlag(data->sprites[2], sprite2Visible);
+    Sprite_SetVisibleFlag(data->sprites[1], sprite1Visible);
+    Sprite_SetVisibleFlag(data->sprites[2], sprite2Visible);
 }

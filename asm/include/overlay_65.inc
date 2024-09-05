@@ -128,10 +128,10 @@
 .public sub_0202457C
 .public CreateSprite
 .public Sprite_SetMatrix
-.public Set2dSpriteVisibleFlag
-.public Set2dSpriteAnimActiveFlag
-.public sub_02024890
-.public Set2dSpriteAnimSeqNo
+.public Sprite_SetVisibleFlag
+.public Sprite_SetAnimActiveFlag
+.public Sprite_SetFlip_AffineOff
+.public Sprite_SetAnimCtrlSeq
 .public Sprite_SetPalIndex
 .public Sprite_SetPalOffset
 .public Sprite_SetDrawPriority

@@ -181,9 +181,9 @@
 .public sub_0202457C
 .public sub_02024714
 .public Sprite_Delete
-.public Set2dSpriteVisibleFlag
-.public Set2dSpriteAnimActiveFlag
-.public Set2dSpriteAnimSeqNo
+.public Sprite_SetVisibleFlag
+.public Sprite_SetAnimActiveFlag
+.public Sprite_SetAnimCtrlSeq
 .public sub_02024AA8
 .public Sprite_GetImageProxy
 .public GF_AssertFail

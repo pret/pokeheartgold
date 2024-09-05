@@ -97,10 +97,10 @@
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_DisableEngineBPlanes
-.public Set2dSpriteVisibleFlag
-.public Set2dSpriteAnimActiveFlag
-.public sub_02024868
-.public Set2dSpriteAnimSeqNo
+.public Sprite_SetVisibleFlag
+.public Sprite_SetAnimActiveFlag
+.public Sprite_SetAnimFrame
+.public Sprite_SetAnimCtrlSeq
 .public Sprite_ResetAnimCtrlState
 .public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_SetPriority

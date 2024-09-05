@@ -33,7 +33,7 @@
 .public RemoveWindow
 .public GF_SinDegNoWrap
 .public AddTextPrinterParameterizedWithColorAndSpacing
-.public Set2dSpriteAnimActiveFlag
+.public Sprite_SetAnimActiveFlag
 .public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_GetImageProxy
 .public GF_AssertFail

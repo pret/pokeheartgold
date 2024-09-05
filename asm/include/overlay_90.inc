@@ -120,11 +120,11 @@
 .public sub_02024714
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Set2dSpriteVisibleFlag
-.public Set2dSpriteAnimActiveFlag
-.public sub_02024890
-.public Set2dSpriteAnimSeqNo
-.public Sprite_TickCellOrMulticellAnimation
+.public Sprite_SetVisibleFlag
+.public Sprite_SetAnimActiveFlag
+.public Sprite_SetFlip_AffineOff
+.public Sprite_SetAnimCtrlSeq
+.public Sprite_TickAnimCtrlFrame
 .public Sprite_GetAnimCtrlCurrentFrame
 .public Sprite_SetPriority
 .public Sprite_SetPalOffset

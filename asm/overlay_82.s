@@ -3864,14 +3864,14 @@ _0223FB96:
 	bl CreateSprite
 	mov r1, #1
 	add r4, r0, #0
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0xc
-	bl sub_02024868
+	bl Sprite_SetAnimFrame
 	add r0, r4, #0
 	add r1, r6, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add r0, r4, #0
 	add sp, #0x80
 	pop {r4, r5, r6, pc}
@@ -4004,11 +4004,11 @@ ov82_0223FC9C: ; 0x0223FC9C
 
 	thumb_func_start ov82_0223FCB0
 ov82_0223FCB0: ; 0x0223FCB0
-	ldr r3, _0223FCB8 ; =Set2dSpriteVisibleFlag
+	ldr r3, _0223FCB8 ; =Sprite_SetVisibleFlag
 	ldr r0, [r0, #0x10]
 	bx r3
 	nop
-_0223FCB8: .word Set2dSpriteVisibleFlag
+_0223FCB8: .word Sprite_SetVisibleFlag
 	thumb_func_end ov82_0223FCB0
 
 	thumb_func_start ov82_0223FCBC
@@ -4023,7 +4023,7 @@ ov82_0223FCBC: ; 0x0223FCBC
 	beq _0223FCD4
 	ldrb r1, [r1]
 	ldr r0, [r5, #0x10]
-	bl TryChange2dSpriteAnimSeqNo
+	bl Sprite_TryChangeAnimSeq
 _0223FCD4:
 	ldr r0, [r5, #0x10]
 	bl Sprite_GetMatrixPtr
@@ -4053,10 +4053,10 @@ ov82_0223FCFC: ; 0x0223FCFC
 	mov r1, #1
 	ldr r0, [r5, #0x10]
 	lsl r1, r1, #0xc
-	bl sub_02024868
+	bl Sprite_SetAnimFrame
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
-	bl TryChange2dSpriteAnimSeqNo
+	bl Sprite_TryChangeAnimSeq
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov82_0223FCFC

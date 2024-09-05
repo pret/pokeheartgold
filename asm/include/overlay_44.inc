@@ -171,11 +171,11 @@
 .public CreateSprite
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Set2dSpriteVisibleFlag
-.public Set2dSpriteAnimActiveFlag
-.public Set2dSpriteAnimSeqNo
-.public Get2dSpriteCurrentAnimSeqNo
-.public Sprite_TickCellOrMulticellAnimation
+.public Sprite_SetVisibleFlag
+.public Sprite_SetAnimActiveFlag
+.public Sprite_SetAnimCtrlSeq
+.public Sprite_GetAnimationNumber
+.public Sprite_TickAnimCtrlFrame
 .public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_GetAnimCtrlCurrentFrame
 .public Sprite_SetDrawPriority

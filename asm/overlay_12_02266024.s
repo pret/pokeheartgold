@@ -1167,7 +1167,7 @@ _02266A76:
 	ldr r0, _02266ABC ; =0x000005D8
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, _02266ABC ; =0x000005D8
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
@@ -1179,7 +1179,7 @@ _02266A76:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	mov r0, #0x5f
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -9672,7 +9672,7 @@ _0226AC84:
 	ldr r0, [r5, r1]
 	mov r1, #1
 	ldr r0, [r0]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	mov r0, #0x6f
 	lsl r0, r0, #4
 	mov r3, #0x11

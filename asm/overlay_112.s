@@ -21877,7 +21877,7 @@ ov112_021F0908: ; 0x021F0908
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r4, #0
 _021F092E:
 	add r0, r7, r4
@@ -21891,13 +21891,13 @@ _021F092E:
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r0, #0x67
 	lsl r0, r0, #2
 	lsl r1, r4, #1
 	ldr r0, [r6, r0]
 	add r1, r1, #1
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	b _021F0974
 _021F0958:
 	lsl r0, r4, #2
@@ -21906,12 +21906,12 @@ _021F0958:
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	lsl r1, r4, #1
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 _021F0974:
 	add r0, r4, #1
 	lsl r0, r0, #0x18
@@ -21935,7 +21935,7 @@ _021F098E:
 	add r0, r5, r0
 	ldr r0, [r0, r6]
 	add r1, r7, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -21945,7 +21945,7 @@ _021F098E:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov112_021F0980
@@ -22239,16 +22239,16 @@ ov112_021F0B9C: ; 0x021F0B9C
 	bl CreateSprite
 	mov r1, #1
 	add r4, r0, #0
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	ldr r1, [sp, #0x98]
 	add r0, r4, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add r0, r4, #0
 	mov r1, #1
 	bl Sprite_SetPriority
 	ldr r1, [sp, #0x9c]
 	add r0, r4, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add r0, r4, #0
 	add sp, #0x80
 	pop {r3, r4, r5, pc}

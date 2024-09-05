@@ -67,7 +67,7 @@ typedef struct Sprite {
     BOOL mosaic;                                         // 02c
     GXOamMode mode;                                      // 030
     u8 drawFlag;                                         // 034
-    u8 animationFrame;                                   // 035
+    u8 animActive;                                       // 035
     fx32 frame;                                          // 038
     SpriteList *spriteList;                              // 03c
     u32 animationData[SPRITE_ANIMATION_DATA_WORD_COUNT]; // 040
@@ -108,27 +108,27 @@ Sprite *CreateSprite(const SpriteTemplate *template);
 Sprite *sub_02024714(const SimpleSpriteTemplate *simpleTemplate);
 void Sprite_Delete(Sprite *sprite);
 void Sprite_SetMatrix(Sprite *sprite, VecFx32 *vec);
-void sub_020247E4(Sprite *sprite, VecFx32 *vec);
-void sub_020247F4(Sprite *sprite, VecFx32 *vec);
-void sub_02024804(Sprite *sprite, VecFx32 *vec, u8 a2);
-void sub_02024818(Sprite *sprite, u32 a1);
-void sub_0202481C(Sprite *sprite, u32 a1, u8 a2);
-void Set2dSpriteVisibleFlag(Sprite *sprite, BOOL flag);
-void Set2dSpriteAnimActiveFlag(Sprite *sprite, BOOL flag);
-void sub_02024868(Sprite *sprite, int a1);
-void sub_0202487C(Sprite *sprite, u8 a1);
-void sub_02024890(Sprite *sprite, u8 a1);
+void Sprite_SetAffineMatrix(Sprite *sprite, VecFx32 *vec);
+void Sprite_SetScale(Sprite *sprite, VecFx32 *vec);
+void Sprite_SetScaleAndAffineType(Sprite *sprite, VecFx32 *vec, u8 a2);
+void Sprite_SetRotation(Sprite *sprite, u32 a1);
+void Sprite_SetRotationAndAffineType(Sprite *sprite, u32 a1, u8 a2);
+void Sprite_SetVisibleFlag(Sprite *sprite, BOOL flag);
+void Sprite_SetAnimActiveFlag(Sprite *sprite, BOOL flag);
+void Sprite_SetAnimFrame(Sprite *sprite, fx32 frame);
+void Sprite_SetAffineOverwriteType(Sprite *sprite, u8 a1);
+void Sprite_SetFlip_AffineOff(Sprite *sprite, u8 a1);
 VecFx32 *Sprite_GetMatrixPtr(Sprite *sprite);
-VecFx32 *sub_020248B0(Sprite *sprite);
-u16 sub_020248B4(Sprite *sprite);
-BOOL Get2dSpriteVisibleFlag(Sprite *sprite);
-BOOL sub_020248C0(Sprite *sprite);
-u32 Get2dSpriteAnimSeqNo(Sprite *sprite);
-void Set2dSpriteAnimSeqNo(Sprite *sprite, int a1);
-void TryChange2dSpriteAnimSeqNo(Sprite *sprite, int a1);
+VecFx32 *Sprite_GetScalePtr(Sprite *sprite);
+u16 Sprite_GetRotation(Sprite *sprite);
+BOOL Sprite_GetVisibleFlag(Sprite *sprite);
+BOOL Sprite_GetAnimActiveFlag(Sprite *sprite);
+u32 Sprite_GetAnimCtrlSeq(Sprite *sprite);
+void Sprite_SetAnimCtrlSeq(Sprite *sprite, int a1);
+void Sprite_TryChangeAnimSeq(Sprite *sprite, int a1);
 void Sprite_ResetAnimCtrlState(Sprite *sprite);
-u16 Get2dSpriteCurrentAnimSeqNo(Sprite *sprite);
-void Sprite_TickCellOrMulticellAnimation(Sprite *sprite, fx32 a1);
+u16 Sprite_GetAnimationNumber(Sprite *sprite);
+void Sprite_TickAnimCtrlFrame(Sprite *sprite, fx32 a1);
 void Sprite_SetAnimCtrlCurrentFrame(Sprite *sprite, u16 a1);
 u16 Sprite_GetAnimCtrlCurrentFrame(Sprite *sprite);
 void Sprite_SetPriority(Sprite *sprite, u8 a1);

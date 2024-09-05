@@ -89,9 +89,9 @@
 .public GfGfx_DisableEngineBPlanes
 .public GfGfx_EngineBTogglePlanes
 .public Sprite_Delete
-.public Set2dSpriteVisibleFlag
-.public Set2dSpriteAnimActiveFlag
-.public Set2dSpriteAnimSeqNo
+.public Sprite_SetVisibleFlag
+.public Sprite_SetAnimActiveFlag
+.public Sprite_SetAnimCtrlSeq
 .public Sprite_ResetAnimCtrlState
 .public Sprite_SetPriority
 .public Sprite_IsCellAnimationRunning

@@ -88,7 +88,7 @@
 .public AddTextPrinterParameterizedWithColorAndSpacing
 .public sub_02021AC8
 .public sub_02021B5C
-.public Set2dSpriteAnimSeqNo
+.public Sprite_SetAnimCtrlSeq
 .public sub_02024AA8
 .public Sprite_GetImageProxy
 .public TouchscreenHitbox_FindRectAtTouchNew

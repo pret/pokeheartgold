@@ -78,9 +78,9 @@
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_DisableEngineBPlanes
 .public GfGfx_BothDispOn
-.public Set2dSpriteVisibleFlag
-.public Get2dSpriteVisibleFlag
-.public Set2dSpriteAnimSeqNo
+.public Sprite_SetVisibleFlag
+.public Sprite_GetVisibleFlag
+.public Sprite_SetAnimCtrlSeq
 .public Sprite_SetPriority
 .public Sprite_IsCellAnimationRunning
 .public TouchscreenHitbox_FindRectAtTouchNew

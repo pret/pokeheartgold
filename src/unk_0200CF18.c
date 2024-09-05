@@ -263,7 +263,7 @@ static Sprite *MyCreateSprite(SpriteRenderer *renderer, SpriteGfxHandler *gfxHan
     template.heapId      = renderer->heapId;
     ret                  = CreateSprite(&template);
     if (ret != NULL) {
-        Set2dSpriteAnimSeqNo(ret, animSeqNo);
+        Sprite_SetAnimCtrlSeq(ret, animSeqNo);
         switch (a10) {
         case 0:
             Sprite_SetPalIndex(ret, palIndex);
@@ -476,7 +476,7 @@ static UnkImageStruct *MyLoadResourcesAndCreateSprite(SpriteRenderer *renderer, 
     ret->sprite                = CreateSprite(&spriteTemplate);
     ret->vramTransfer          = unkTemplate->vramTransfer;
     if (ret->sprite != NULL) {
-        Set2dSpriteAnimSeqNo(ret->sprite, unkTemplate->animation);
+        Sprite_SetAnimCtrlSeq(ret->sprite, unkTemplate->animation);
         if (unkTemplate->pal != 0xFFFF) {
             paletteOffset = Sprite_GetPalIndex(ret->sprite);
             Sprite_SetPalIndex(ret->sprite, paletteOffset + unkTemplate->pal);
@@ -621,7 +621,7 @@ static BOOL MyUnloadPlttById(GF_2DGfxResMan *manager, GF_2DGfxResObjList *list, 
 }
 
 void TickSpriteAnimation1Frame(Sprite *sprite) {
-    Sprite_TickCellOrMulticellAnimation(sprite, FX32_ONE);
+    Sprite_TickAnimCtrlFrame(sprite, FX32_ONE);
 }
 
 void UnkImageStruct_TickSpriteAnimation1Frame(UnkImageStruct *unk) {
@@ -629,31 +629,31 @@ void UnkImageStruct_TickSpriteAnimation1Frame(UnkImageStruct *unk) {
 }
 
 void UnkImageStruct_TickSpriteAnimation2Frames(UnkImageStruct *unk) {
-    Sprite_TickCellOrMulticellAnimation(unk->sprite, 2 * FX32_ONE);
+    Sprite_TickAnimCtrlFrame(unk->sprite, 2 * FX32_ONE);
 }
 
 void UnkImageStruct_TickSpriteAnimationNFrames(UnkImageStruct *unk, fx32 frames) {
-    Sprite_TickCellOrMulticellAnimation(unk->sprite, frames);
+    Sprite_TickAnimCtrlFrame(unk->sprite, frames);
 }
 
 u32 UnkImageStruct_GetSpriteAnimSeqNo(UnkImageStruct *unk) {
-    return Get2dSpriteAnimSeqNo(unk->sprite);
+    return Sprite_GetAnimCtrlSeq(unk->sprite);
 }
 
 void UnkImageStruct_SetSpriteAnimSeqNo(UnkImageStruct *unk, int seqno) {
-    Set2dSpriteAnimSeqNo(unk->sprite, seqno);
+    Sprite_SetAnimCtrlSeq(unk->sprite, seqno);
 }
 
 void UnkImageStruct_TryChangeSpriteAnimSeqNo(UnkImageStruct *unk, int a1) {
-    TryChange2dSpriteAnimSeqNo(unk->sprite, a1);
+    Sprite_TryChangeAnimSeq(unk->sprite, a1);
 }
 
 u16 UnkImageStruct_GetSpriteCurrentAnimSeqNo(UnkImageStruct *unk) {
-    return Get2dSpriteCurrentAnimSeqNo(unk->sprite);
+    return Sprite_GetAnimationNumber(unk->sprite);
 }
 
 void thunk_Set2dSpriteAnimActiveFlag(Sprite *sprite, int a1) {
-    Set2dSpriteAnimActiveFlag(sprite, a1);
+    Sprite_SetAnimActiveFlag(sprite, a1);
 }
 
 void UnkImageStruct_SetSpriteAnimActiveFlag(UnkImageStruct *unk, int a1) {
@@ -661,7 +661,7 @@ void UnkImageStruct_SetSpriteAnimActiveFlag(UnkImageStruct *unk, int a1) {
 }
 
 void sub_0200DC84(Sprite *sprite, fx32 frame) {
-    sub_02024868(sprite, frame);
+    Sprite_SetAnimFrame(sprite, frame);
 }
 
 void sub_0200DC8C(UnkImageStruct *unk, fx32 frame) {
@@ -697,7 +697,7 @@ u16 UnkImageStruct_GetSpriteAnimCtrlCurrentFrame(UnkImageStruct *unk) {
 }
 
 void thunk_Set2dSpriteVisibleFlag(Sprite *sprite, int flag) {
-    Set2dSpriteVisibleFlag(sprite, flag);
+    Sprite_SetVisibleFlag(sprite, flag);
 }
 
 void UnkImageStruct_SetSpriteVisibleFlag(UnkImageStruct *unk, int flag) {
@@ -705,7 +705,7 @@ void UnkImageStruct_SetSpriteVisibleFlag(UnkImageStruct *unk, int flag) {
 }
 
 BOOL thunk_Get2dSpriteVisibleFlag(Sprite *sprite) {
-    return Get2dSpriteVisibleFlag(sprite);
+    return Sprite_GetVisibleFlag(sprite);
 }
 
 BOOL UnkImageStruct_GetSpriteVisibleFlag(UnkImageStruct *a0) {
@@ -873,7 +873,7 @@ void UnkImageStruct_GetSpritePrecisePositionXY(UnkImageStruct *unk, fx32 *x, fx3
 }
 
 void sub_0200DF90(Sprite *sprite, u8 a1) {
-    sub_0202487C(sprite, a1);
+    Sprite_SetAffineOverwriteType(sprite, a1);
 }
 
 void sub_0200DF98(UnkImageStruct *unk, u8 a1) {
@@ -881,10 +881,10 @@ void sub_0200DF98(UnkImageStruct *unk, u8 a1) {
 }
 
 void sub_0200DFA4(Sprite *sprite, f32 x, f32 y) {
-    VecFx32 *scale = sub_020248B0(sprite);
+    VecFx32 *scale = Sprite_GetScalePtr(sprite);
     scale->x       = FX_F32_TO_FX32(x);
     scale->y       = FX_F32_TO_FX32(y);
-    sub_020247F4(sprite, scale);
+    Sprite_SetScale(sprite, scale);
 }
 
 void sub_0200E024(UnkImageStruct *unk, f32 x, f32 y) {
@@ -892,7 +892,7 @@ void sub_0200E024(UnkImageStruct *unk, f32 x, f32 y) {
 }
 
 void sub_0200E030(Sprite *sprite, f32 *x, f32 *y) {
-    VecFx32 *scale = sub_020248B0(sprite);
+    VecFx32 *scale = Sprite_GetScalePtr(sprite);
     *x             = FX_FX32_TO_F32(scale->x);
     *y             = FX_FX32_TO_F32(scale->y);
 }
@@ -902,7 +902,7 @@ void sub_0200E060(UnkImageStruct *unk, f32 *x, f32 *y) {
 }
 
 void sub_0200E06C(Sprite *sprite, u16 a1) {
-    sub_02024818(sprite, a1);
+    Sprite_SetRotation(sprite, a1);
 }
 
 void sub_0200E074(UnkImageStruct *unk, u16 a1) {
@@ -910,9 +910,9 @@ void sub_0200E074(UnkImageStruct *unk, u16 a1) {
 }
 
 void sub_0200E080(Sprite *sprite, u16 a1) {
-    u16 rotation = sub_020248B4(sprite);
+    u16 rotation = Sprite_GetRotation(sprite);
     rotation += a1;
-    sub_02024818(sprite, rotation);
+    Sprite_SetRotation(sprite, rotation);
 }
 
 void sub_0200E098(UnkImageStruct *unk, u16 a1) {
@@ -920,7 +920,7 @@ void sub_0200E098(UnkImageStruct *unk, u16 a1) {
 }
 
 u16 sub_0200E0A4(Sprite *sprite) {
-    return sub_020248B4(sprite);
+    return Sprite_GetRotation(sprite);
 }
 
 u16 sub_0200E0AC(UnkImageStruct *unk) {
@@ -928,7 +928,7 @@ u16 sub_0200E0AC(UnkImageStruct *unk) {
 }
 
 void sub_0200E0B8(Sprite *sprite, u8 a1) {
-    sub_02024890(sprite, a1);
+    Sprite_SetFlip_AffineOff(sprite, a1);
 }
 
 void sub_0200E0C0(UnkImageStruct *unk, u8 a1) {
@@ -940,7 +940,7 @@ void sub_0200E0CC(UnkImageStruct *unk, s16 x, s16 y) {
     matrix.x = x * FX32_ONE;
     matrix.y = y * FX32_ONE;
     matrix.z = 0;
-    sub_020247E4(unk->sprite, &matrix);
+    Sprite_SetAffineMatrix(unk->sprite, &matrix);
 }
 
 void sub_0200E0E8(UnkImageStruct *unk, BOOL mosaic) {
