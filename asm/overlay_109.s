@@ -2865,7 +2865,7 @@ _021E6EEE:
 	mov r1, #1
 	ldr r0, [r0]
 	lsl r1, r1, #0xc
-	bl Sprite_SetAnimFrame
+	bl Sprite_SetAnimSpeed
 	add r7, r7, #1
 	add r4, #0x28
 	add r5, r5, #4

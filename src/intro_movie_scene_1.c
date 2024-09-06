@@ -337,7 +337,7 @@ static void IntroMovie_Scene1_CreateSprites(IntroMovieOverlayData *data, IntroMo
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(1, data, 1, NNS_G2D_VRAM_TYPE_2DMAIN, &spriteTemplate, &spriteResourcesHeader);
     spriteTemplate.position.x = 128 * FX32_ONE;
     spriteTemplate.position.y = 96 * FX32_ONE;
-    sceneData->sunSprite      = CreateSprite(&spriteTemplate);
+    sceneData->sunSprite      = Sprite_CreateAffine(&spriteTemplate);
     Sprite_SetAnimActiveFlag(sceneData->sunSprite, FALSE);
     Sprite_SetVisibleFlag(sceneData->sunSprite, FALSE);
     Sprite_SetAnimCtrlSeq(sceneData->sunSprite, 0);
@@ -345,7 +345,7 @@ static void IntroMovie_Scene1_CreateSprites(IntroMovieOverlayData *data, IntroMo
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(1, data, 0, NNS_G2D_VRAM_TYPE_2DMAIN, &spriteTemplate, &spriteResourcesHeader);
     spriteTemplate.position.x = 128 * FX32_ONE;
     spriteTemplate.position.y = 96 * FX32_ONE;
-    sceneData->birdSprite     = CreateSprite(&spriteTemplate);
+    sceneData->birdSprite     = Sprite_CreateAffine(&spriteTemplate);
     Sprite_SetAnimActiveFlag(sceneData->birdSprite, FALSE);
     Sprite_SetVisibleFlag(sceneData->birdSprite, FALSE);
     Sprite_SetAnimCtrlSeq(sceneData->birdSprite, 1);

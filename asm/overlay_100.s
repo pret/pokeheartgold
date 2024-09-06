@@ -2329,7 +2329,7 @@ ov100_021E6AB0: ; 0x021E6AB0
 	ldr r0, [r0, #0x10]
 	cmp r0, #0
 	beq _021E6ABC
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _021E6ABC:
 	pop {r3, pc}
 	.balign 4, 0
@@ -2485,7 +2485,7 @@ _021E6BE0:
 	ldr r0, [r5]
 	str r0, [sp, #0x60]
 	add r0, sp, #0x34
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x55
 	lsl r1, r1, #2
 	str r0, [r4]

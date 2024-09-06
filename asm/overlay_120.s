@@ -1154,7 +1154,7 @@ _0225F892:
 	cmp r0, #5
 	beq _0225F89E
 	ldr r0, [r4, #0x10]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _0225F89E:
 	add sp, #0x18
 	pop {r4, r5, r6, pc}

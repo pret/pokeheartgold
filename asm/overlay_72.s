@@ -978,7 +978,7 @@ _02238044:
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _02238050
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _02238050:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -1528,7 +1528,7 @@ _022384D4:
 	add r0, r1, r0
 	str r0, [sp, #0x38]
 	add r0, sp, #0x2c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	ldr r1, _02238644 ; =0x00000DF4
 	str r0, [r5, r1]
 	add r0, r1, #0
@@ -1560,7 +1560,7 @@ _022384D4:
 	ldr r0, _0223864C ; =0x00151000
 	str r0, [sp, #0x38]
 	add r0, sp, #0x2c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0xe
 	lsl r1, r1, #8
 	str r0, [r6, r1]
@@ -1583,7 +1583,7 @@ _022384D4:
 	ldr r0, _02238650 ; =0x00129000
 	str r0, [sp, #0x38]
 	add r0, sp, #0x2c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	ldr r1, _02238654 ; =0x00000E04
 	str r0, [r6, r1]
 	ldr r0, [r6, r1]
@@ -1611,7 +1611,7 @@ _02238592:
 	add r0, r1, r0
 	str r0, [sp, #0x38]
 	add r0, sp, #0x2c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	ldr r1, _0223865C ; =0x00000E08
 	str r0, [r5, r1]
 	add r0, r1, #0
@@ -1647,7 +1647,7 @@ _02238592:
 	ldr r0, _0223864C ; =0x00151000
 	str r0, [sp, #0x38]
 	add r0, sp, #0x2c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	ldr r1, _02238664 ; =0x00000E14
 	str r0, [r6, r1]
 	ldr r0, [r6, r1]

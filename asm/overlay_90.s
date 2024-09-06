@@ -991,7 +991,7 @@ ov90_02258EB4: ; 0x02258EB4
 	ldr r0, [sp, #0x2c]
 	str r0, [sp, #0x1c]
 	add r0, sp, #0
-	bl sub_02024714
+	bl Sprite_Create
 	add sp, #0x20
 	pop {r3, pc}
 	.balign 4, 0
@@ -1318,11 +1318,11 @@ ov90_02259158: ; 0x02259158
 
 	thumb_func_start ov90_02259170
 ov90_02259170: ; 0x02259170
-	ldr r3, _02259178 ; =sub_0202457C
+	ldr r3, _02259178 ; =SpriteList_RenderAndAnimateSprites
 	ldr r0, [r0]
 	bx r3
 	nop
-_02259178: .word sub_0202457C
+_02259178: .word SpriteList_RenderAndAnimateSprites
 	thumb_func_end ov90_02259170
 
 	thumb_func_start ov90_0225917C
@@ -7422,14 +7422,14 @@ _0225BFC8:
 	bne _0225BFDE
 	ldr r0, [r4, #0x30]
 	mov r1, #0
-	bl sub_02024AA8
+	bl Sprite_SetPalOffsetRespectVramOffset
 	b _0225BFEA
 _0225BFDE:
 	cmp r0, #4
 	bne _0225BFEA
 	ldr r0, [r4, #0x30]
 	mov r1, #1
-	bl sub_02024AA8
+	bl Sprite_SetPalOffsetRespectVramOffset
 _0225BFEA:
 	mov r0, #6
 	ldrsh r1, [r4, r0]
@@ -7450,7 +7450,7 @@ _0225BFFC:
 	add r0, r0, #1
 	strh r0, [r4, #4]
 	ldr r0, [r4, #0x30]
-	bl sub_02024AA8
+	bl Sprite_SetPalOffsetRespectVramOffset
 	add sp, #8
 	pop {r4, r5, r6, pc}
 _0225C018:

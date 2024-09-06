@@ -32,7 +32,7 @@
 .public LCRandom
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_EngineASetPlanes
-.public sub_0202457C
+.public SpriteList_RenderAndAnimateSprites
 .public Sprite_Delete
 .public Sprite_SetVisibleFlag
 .public Sprite_SetPriority

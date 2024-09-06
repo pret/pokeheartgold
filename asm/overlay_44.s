@@ -1041,7 +1041,7 @@ _0222A65A:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0222A668
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _0222A668:
 	mov r0, #0xe3
 	lsl r0, r0, #2
@@ -14828,7 +14828,7 @@ _0223153E:
 	ldr r0, [sp, #0x2c]
 	str r0, [r4, #0x2c]
 	ldr r0, [sp, #0x30]
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	ldr r1, _02231698 ; =0x00000D38
 	str r0, [r6, r1]
 	add r0, r1, #0
@@ -15701,7 +15701,7 @@ ov44_02231C60: ; 0x02231C60
 	cmp r1, #0
 	beq _02231C6E
 	ldr r0, [r0, #0x14]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _02231C6E:
 	pop {r3, pc}
 	thumb_func_end ov44_02231C60
@@ -16881,12 +16881,12 @@ ov44_022324B0: ; 0x022324B0
 	str r1, [sp, #0x14]
 	str r1, [sp, #0x18]
 	str r3, [sp, #0x2c]
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x17
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x5d
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -18467,7 +18467,7 @@ _0223308A:
 	add r0, #0x30
 	bl ov44_02233CCC
 	ldr r0, [r4, #0x48]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	mov r0, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}

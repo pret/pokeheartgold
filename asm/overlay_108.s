@@ -5554,7 +5554,7 @@ ov108_021E852C: ; 0x021E852C
 	ldr r0, [r0, #0x10]
 	cmp r0, #0
 	beq _021E8538
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _021E8538:
 	pop {r3, pc}
 	.balign 4, 0
@@ -5703,7 +5703,7 @@ _021E8636:
 	add r0, r5, #0
 	bl ov108_021E84F8
 	add r0, sp, #0x30
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	str r0, [r4]
 	cmp r0, #0
 	bne _021E866E

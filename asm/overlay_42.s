@@ -389,7 +389,7 @@ _02227344:
 	str r0, [sp, #0x34]
 _02227346:
 	add r0, sp, #0xc
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	str r0, [r4, #4]
 	mov r1, #6
 	ldrsh r1, [r6, r1]
@@ -467,7 +467,7 @@ _022273E0:
 	str r0, [sp, #0x34]
 _022273E2:
 	add r0, sp, #0xc
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	str r0, [r4, #8]
 	mov r1, #6
 	ldrsh r1, [r6, r1]

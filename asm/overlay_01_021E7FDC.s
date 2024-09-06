@@ -334,7 +334,7 @@ _021E8228:
 	ldrh r0, [r2, r3]
 	str r0, [sp, #0x44]
 	add r0, sp, #0x18
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	add r5, r0, #0
 	bne _021E8278
 	bl GF_AssertFail
@@ -347,7 +347,7 @@ _021E8278:
 	beq _021E828E
 	ldr r1, [r4, #0x10]
 	add r0, r5, #0
-	bl Sprite_SetPalIndexRespectOffset
+	bl Sprite_SetPalIndexRespectVramOffset
 _021E828E:
 	add r0, r5, #0
 	add sp, #0x48
@@ -904,7 +904,7 @@ _021E86A2:
 	ldrh r0, [r5, r0]
 	str r0, [sp, #0x70]
 	add r0, sp, #0x44
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	str r0, [r6]
 	cmp r0, #0
 	beq _021E86E6

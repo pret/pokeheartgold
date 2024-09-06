@@ -101,7 +101,7 @@
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized
 .public sub_02022808
-.public sub_02024AA8
+.public Sprite_SetPalOffsetRespectVramOffset
 .public Sprite_GetImageProxy
 .public Sprite_GetPaletteProxy
 .public System_GetTouchNew

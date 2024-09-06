@@ -2294,7 +2294,7 @@ _0200F5A8:
 	lsl r1, r1, #0xc
 	bl Sprite_TickAnimCtrlFrame
 	ldr r0, [r4]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0200F5C0: .word 0x0000016F
@@ -2430,7 +2430,7 @@ _0200F694:
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r4]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	mov r0, #0x10
 	mov r1, #1
 	bl GfGfx_EngineBTogglePlanes

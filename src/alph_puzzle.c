@@ -1236,7 +1236,7 @@ static void AlphPuzzle_CreateSprites(AlphPuzzleData *data) {
     int i;
     for (i = ALPH_SPRITE_INDEX_DROP_CURSOR; i <= ALPH_SPRITE_INDEX_PREV_CURSOR; i++) {
         data->sprites[i] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler, &sSpriteTemplates[i]);
-        Sprite_SetAnimFrame(data->sprites[i], FX32_ONE);
+        Sprite_SetAnimSpeed(data->sprites[i], FX32_ONE);
     }
     Sprite_SetVisibleFlag(data->sprites[ALPH_SPRITE_INDEX_DROP_CURSOR], TRUE);
     Sprite_SetVisibleFlag(data->sprites[ALPH_SPRITE_INDEX_PREV_CURSOR], FALSE);

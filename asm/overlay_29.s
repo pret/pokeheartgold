@@ -586,7 +586,7 @@ ov29_0225D970: ; 0x0225D970
 	lsl r2, r2, #2
 	add r4, r0, r2
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	str r0, [r4, r6]
 	ldrb r1, [r5, #3]
 	ldr r0, [r4, r6]
@@ -1203,7 +1203,7 @@ _0225DE98:
 	add r0, r4, #0
 	bl ov29_0225DB7C
 	ldr r0, [r4, #0x18]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0

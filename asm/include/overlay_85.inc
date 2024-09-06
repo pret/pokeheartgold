@@ -156,8 +156,8 @@
 .public Camera_SetLookAtCamUp
 .public Camera_Init_FromTargetDistanceAndAngle
 .public SpriteList_Delete
-.public sub_0202457C
-.public CreateSprite
+.public SpriteList_RenderAndAnimateSprites
+.public Sprite_CreateAffine
 .public Sprite_SetVisibleFlag
 .public Sprite_SetAnimActiveFlag
 .public Sprite_SetAnimCtrlSeq

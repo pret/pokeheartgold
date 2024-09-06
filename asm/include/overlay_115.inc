@@ -25,13 +25,13 @@
 .public ScheduleSetBgPosText
 .public AddTextPrinterParameterizedWithColor
 .public GfGfx_EngineATogglePlanes
-.public sub_0202457C
+.public SpriteList_RenderAndAnimateSprites
 .public Sprite_Delete
 .public Sprite_SetMatrix
 .public Sprite_SetScale
 .public Sprite_SetVisibleFlag
 .public Sprite_SetAnimActiveFlag
-.public Sprite_SetAnimFrame
+.public Sprite_SetAnimSpeed
 .public Sprite_SetAffineOverwriteType
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_SetPriority

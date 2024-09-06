@@ -4404,7 +4404,7 @@ _0225A7BC: .word ov49_0225A854
 ov49_0225A7C0: ; 0x0225A7C0
 	push {r3, lr}
 	ldr r0, [r0, #4]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	bl sub_02020674
 	pop {r3, pc}
 	.balign 4, 0
@@ -5204,7 +5204,7 @@ _0225AE0E:
 	lsl r0, r0, #0xc
 	str r0, [sp, #0x38]
 	add r0, sp, #0x2c
-	bl sub_02024714
+	bl Sprite_Create
 	str r0, [r5, #0x50]
 	add r1, r6, #0
 	bl Sprite_SetAnimCtrlSeq
@@ -7780,7 +7780,7 @@ _0225C082:
 	str r0, [sp, #0x44]
 	add r0, sp, #0x38
 	str r6, [sp, #0x54]
-	bl sub_02024714
+	bl Sprite_Create
 	ldr r1, [sp, #0x30]
 	str r0, [r5, #0x54]
 	bl Sprite_SetAnimCtrlSeq
@@ -8012,7 +8012,7 @@ _0225C30C:
 	add r0, r0, r1
 	str r0, [sp, #0x44]
 	add r0, sp, #0x38
-	bl sub_02024714
+	bl Sprite_Create
 	str r0, [r6, #0x68]
 	add sp, #0x94
 	pop {r4, r5, r6, r7, pc}
@@ -8569,10 +8569,10 @@ _0225C748:
 	add r0, r1, r0
 	str r0, [sp, #0x84]
 	add r0, sp, #0x78
-	bl sub_02024714
+	bl Sprite_Create
 	str r0, [r7, #0x7c]
 	ldrb r1, [r4, #1]
-	bl sub_02024AA8
+	bl Sprite_SetPalOffsetRespectVramOffset
 _0225C760:
 	ldr r0, [sp, #0x48]
 	add r6, r6, #1

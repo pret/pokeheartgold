@@ -49,8 +49,8 @@
 .public Camera_GetDistance
 .public SpriteList_Create
 .public SpriteList_Delete
-.public sub_0202457C
-.public CreateSprite
+.public SpriteList_RenderAndAnimateSprites
+.public Sprite_CreateAffine
 .public Sprite_Delete
 .public Sprite_SetMatrix
 .public Sprite_SetVisibleFlag

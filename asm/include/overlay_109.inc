@@ -99,7 +99,7 @@
 .public GfGfx_DisableEngineBPlanes
 .public Sprite_SetVisibleFlag
 .public Sprite_SetAnimActiveFlag
-.public Sprite_SetAnimFrame
+.public Sprite_SetAnimSpeed
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_ResetAnimCtrlState
 .public Sprite_SetAnimCtrlCurrentFrame

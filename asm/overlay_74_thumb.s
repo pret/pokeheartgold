@@ -8158,7 +8158,7 @@ _0222B0D6:
 	str r0, [sp, #0xc]
 _0222B114:
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	add r4, r0, #0
 	beq _0222B13C
 	mov r1, #1
@@ -14870,7 +14870,7 @@ _0222E79C:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0222E7A8
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _0222E7A8:
 	bl ov74_022358BC
 	ldr r0, _0222E7E8 ; =0x00003D48
@@ -17289,7 +17289,7 @@ _0222FB2C:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0222FB38
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _0222FB38:
 	bl ov74_022358BC
 	mov r0, #0x3d
@@ -22459,7 +22459,7 @@ _02232184:
 	cmp r0, #0
 	bne _022321B2
 	add r0, sp, #0x14
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x6a
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -22507,7 +22507,7 @@ _022321B2:
 	cmp r0, #0
 	bne _0223221C
 	add r0, sp, #0x14
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x6b
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -22584,7 +22584,7 @@ ov74_02232284: ; 0x02232284
 	mov r0, #0xa
 	str r0, [sp, #0x24]
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	add r4, r0, #0
 	mov r1, #1
 	bl Sprite_SetAnimActiveFlag
@@ -23814,7 +23814,7 @@ _02232C54:
 	lsl r0, r0, #0xc
 	str r0, [sp, #0x28]
 	add r0, sp, #0x1c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	ldr r1, _02232D94 ; =0x00000414
 	str r0, [r4, r1]
 	add r0, r1, #0
@@ -25296,7 +25296,7 @@ _02233896:
 	ldr r0, [r4, #0x28]
 	cmp r0, #0
 	beq _022338A0
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _022338A0:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -29732,7 +29732,7 @@ _0223591C:
 	ldr r0, [r4, #0x34]
 	cmp r0, #0
 	beq _02235926
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _02235926:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -29791,7 +29791,7 @@ _02235974:
 	str r0, [sp, #0xc]
 _0223598A:
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	add r4, r0, #0
 _02235992:
 	add r0, r4, #0

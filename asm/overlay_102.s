@@ -3943,7 +3943,7 @@ ov102_021E93E0: ; 0x021E93E0
 	ldr r0, [r4, #0x20]
 	bl DoScheduledBgGpuUpdates
 	ldr r0, [r4, #0x24]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	bl OamManager_ApplyAndResetBuffers
 	ldr r3, _021E9404 ; =0x027E0000
 	ldr r1, _021E9408 ; =0x00003FF8
@@ -5857,7 +5857,7 @@ _021EA2E2:
 	bl OS_DisableInterrupts
 	add r4, r0, #0
 	add r0, sp, #0
-	bl sub_02024714
+	bl Sprite_Create
 	add r5, r0, #0
 	add r0, r4, #0
 	bl OS_RestoreInterrupts
@@ -5869,7 +5869,7 @@ _021EA2E2:
 	mov r1, #1
 	add r0, r5, #0
 	lsl r1, r1, #0xc
-	bl Sprite_SetAnimFrame
+	bl Sprite_SetAnimSpeed
 _021EA30C:
 	add r0, r5, #0
 	add sp, #0x20

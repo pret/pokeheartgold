@@ -5997,7 +5997,7 @@ _02248920:
 	ldr r0, [r5, r0]
 	bl FreeToHeap
 	ldr r0, [r5, #8]
-	bl sub_02024544
+	bl SpriteList_DeleteAllSprites
 	ldr r0, [r5, #8]
 	bl SpriteList_Delete
 	pop {r3, r4, r5, r6, r7, pc}
@@ -6433,7 +6433,7 @@ _02248C2A:
 	mov r0, #4
 	str r0, [sp, #0x48]
 	add r0, sp, #0x2c
-	bl sub_02024714
+	bl Sprite_Create
 	add r4, r0, #0
 	bne _02248C92
 	bl GF_AssertFail
@@ -9468,7 +9468,7 @@ _0224A2EC:
 	ldr r0, [r6, r0]
 	bl Destroy2DGfxResObjMan
 	ldr r0, [r6, #0x70]
-	bl sub_02024544
+	bl SpriteList_DeleteAllSprites
 	ldr r0, [r6, #0x70]
 	bl SpriteList_Delete
 	pop {r3, r4, r5, r6, r7, pc}
@@ -9481,7 +9481,7 @@ ov02_0224A32C: ; 0x0224A32C
 	ldr r0, [r0, #0x70]
 	cmp r0, #0
 	beq _0224A338
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _0224A338:
 	pop {r3, pc}
 	.balign 4, 0
@@ -9570,7 +9570,7 @@ _0224A3BE:
 	mov r0, #4
 	str r0, [sp, #0x48]
 	add r0, sp, #0x2c
-	bl sub_02024714
+	bl Sprite_Create
 	add r4, r0, #0
 	bne _0224A3EA
 	bl GF_AssertFail
@@ -9641,7 +9641,7 @@ ov02_0224A450: ; 0x0224A450
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0xc
-	bl Sprite_SetAnimFrame
+	bl Sprite_SetAnimSpeed
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov02_0224A450
@@ -11818,7 +11818,7 @@ _0224B484:
 	ldr r0, [r5, #0x20]
 	cmp r0, #0
 	beq _0224B48E
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _0224B48E:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

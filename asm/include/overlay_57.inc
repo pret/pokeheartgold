@@ -157,7 +157,7 @@
 .public GfGfx_DisableEngineBPlanes
 .public GfGfx_EngineBTogglePlanes
 .public GfGfx_BothDispOn
-.public sub_02024AA8
+.public Sprite_SetPalOffsetRespectVramOffset
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public TouchscreenHitbox_TouchNewIsIn
 .public System_GetTouchHeld

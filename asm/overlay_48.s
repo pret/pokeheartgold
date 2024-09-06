@@ -1658,11 +1658,11 @@ ov48_022594A8: ; 0x022594A8
 
 	thumb_func_start ov48_022594D0
 ov48_022594D0: ; 0x022594D0
-	ldr r3, _022594D8 ; =sub_0202457C
+	ldr r3, _022594D8 ; =SpriteList_RenderAndAnimateSprites
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_022594D8: .word sub_0202457C
+_022594D8: .word SpriteList_RenderAndAnimateSprites
 	thumb_func_end ov48_022594D0
 
 	thumb_func_start ov48_022594DC
@@ -4776,14 +4776,14 @@ _0225ABA0:
 	add r0, sp, #0x64
 	bl CreateSpriteResourcesHeader
 	add r0, sp, #0x44
-	bl sub_02024714
+	bl Sprite_Create
 	str r0, [r7, #0x3c]
 	mov r1, #1
 	bl Sprite_SetAnimActiveFlag
 	mov r1, #1
 	ldr r0, [r7, #0x3c]
 	lsl r1, r1, #0xc
-	bl Sprite_SetAnimFrame
+	bl Sprite_SetAnimSpeed
 	ldr r0, [sp, #0x40]
 	add r6, r6, #1
 	add r0, r0, #3

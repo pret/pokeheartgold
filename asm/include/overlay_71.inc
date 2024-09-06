@@ -113,13 +113,13 @@
 .public Camera_AdjustAngleTarget
 .public Camera_GetLookAtCamPos
 .public SpriteList_Delete
-.public sub_0202457C
-.public sub_02024714
+.public SpriteList_RenderAndAnimateSprites
+.public Sprite_Create
 .public Sprite_Delete
 .public Sprite_SetMatrix
 .public Sprite_SetVisibleFlag
 .public Sprite_SetAnimActiveFlag
-.public Sprite_SetAnimFrame
+.public Sprite_SetAnimSpeed
 .public Sprite_GetMatrixPtr
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_SetPriority

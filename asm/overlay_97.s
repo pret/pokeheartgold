@@ -1295,7 +1295,7 @@ ov97_0221F010: ; 0x0221F010
 	ldr r0, [r0, #0x7c]
 	cmp r0, #0
 	beq _0221F01C
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _0221F01C:
 	pop {r3, pc}
 	.balign 4, 0
@@ -2658,7 +2658,7 @@ ov97_0221FAEC: ; 0x0221FAEC
 	add r0, r1, r0
 	str r0, [sp, #0x5c]
 	add r0, sp, #0x50
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #1
 	add r4, r0, #0
 	bl Sprite_SetAnimActiveFlag

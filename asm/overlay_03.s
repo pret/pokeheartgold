@@ -6272,7 +6272,7 @@ _0225704C:
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _02257060
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _02257060:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}

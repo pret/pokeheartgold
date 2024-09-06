@@ -18,7 +18,7 @@
 .public GfGfx_EngineATogglePlanes
 .public Camera_SetDistance
 .public Camera_GetDistance
-.public sub_0202457C
+.public SpriteList_RenderAndAnimateSprites
 .public Sprite_Delete
 .public Sprite_SetMatrix
 .public Sprite_SetScale

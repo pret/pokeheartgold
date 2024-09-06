@@ -29,7 +29,7 @@
 .public FillBgTilemapRect
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
-.public CreateSprite
+.public Sprite_CreateAffine
 .public Sprite_Delete
 .public Sprite_SetMatrix
 .public Sprite_SetVisibleFlag

@@ -43,10 +43,10 @@
 .public sub_02023FE4
 .public SpriteList_Create
 .public SpriteList_Delete
-.public sub_02024544
-.public sub_0202457C
-.public CreateSprite
-.public sub_02024714
+.public SpriteList_DeleteAllSprites
+.public SpriteList_RenderAndAnimateSprites
+.public Sprite_CreateAffine
+.public Sprite_Create
 .public Sprite_Delete
 .public Sprite_SetMatrix
 .public Sprite_SetAffineMatrix
@@ -56,7 +56,7 @@
 .public Sprite_SetRotationAndAffineType
 .public Sprite_SetVisibleFlag
 .public Sprite_SetAnimActiveFlag
-.public Sprite_SetAnimFrame
+.public Sprite_SetAnimSpeed
 .public Sprite_SetAffineOverwriteType
 .public Sprite_SetFlip_AffineOff
 .public Sprite_GetMatrixPtr
@@ -75,10 +75,10 @@
 .public Sprite_SetPriority
 .public Sprite_GetPriority
 .public Sprite_SetPalIndex
-.public Sprite_SetPalIndexRespectOffset
+.public Sprite_SetPalIndexRespectVramOffset
 .public Sprite_GetPalIndex
 .public Sprite_SetPalOffset
-.public sub_02024AA8
+.public Sprite_SetPalOffsetRespectVramOffset
 .public Sprite_GetPalOffset
 .public Sprite_SetDrawPriority
 .public Sprite_GetDrawPriority

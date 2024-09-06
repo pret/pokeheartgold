@@ -6711,7 +6711,7 @@ _021E8AE4:
 	pop {r4, pc}
 _021E8AF0:
 	ldr r0, [r4, #0x60]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	mov r0, #0
 	pop {r4, pc}
 	nop
@@ -7452,7 +7452,7 @@ _021E90F8:
 	lsl r0, r0, #0xc
 	str r0, [sp, #0x38]
 	add r0, sp, #0x2c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x8f
 	lsl r1, r1, #2
 	str r0, [r5, r1]

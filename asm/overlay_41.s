@@ -589,7 +589,7 @@ ov41_02246280: ; 0x02246280
 	mov r0, #0xe
 	str r0, [sp, #0x48]
 	add r0, sp, #0x2c
-	bl sub_02024714
+	bl Sprite_Create
 	add sp, #0x70
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -1726,11 +1726,11 @@ _02246B40:
 
 	thumb_func_start ov41_02246B5C
 ov41_02246B5C: ; 0x02246B5C
-	ldr r3, _02246B64 ; =sub_0202457C
+	ldr r3, _02246B64 ; =SpriteList_RenderAndAnimateSprites
 	ldr r0, [r0, #0x44]
 	bx r3
 	nop
-_02246B64: .word sub_0202457C
+_02246B64: .word SpriteList_RenderAndAnimateSprites
 	thumb_func_end ov41_02246B5C
 
 	thumb_func_start ov41_02246B68
@@ -9058,7 +9058,7 @@ _0224A126:
 	bl GF_AssertFail
 _0224A12E:
 	ldr r0, [r4]
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	str r0, [r5]
 	cmp r0, #0
 	bne _0224A13E
@@ -10949,7 +10949,7 @@ _0224AF48:
 	lsl r0, r4, #0xc
 	str r0, [sp, #0x30]
 	add r0, sp, #0x28
-	bl sub_02024714
+	bl Sprite_Create
 	mov r1, #1
 	str r0, [r5, #0x10]
 	bl Sprite_SetAnimCtrlSeq
@@ -11230,7 +11230,7 @@ _0224B174:
 	lsl r0, r4, #0xc
 	str r0, [sp, #0x24]
 	add r0, sp, #0x1c
-	bl sub_02024714
+	bl Sprite_Create
 	str r0, [r5, #0x10]
 	add r6, r6, #1
 	add r4, #0x18
@@ -11414,7 +11414,7 @@ _0224B2C0:
 	bgt _0224B302
 	ldr r0, [r5, #0x10]
 	mov r1, #1
-	bl Sprite_SetPalIndexRespectOffset
+	bl Sprite_SetPalIndexRespectVramOffset
 	cmp r7, #1
 	bne _0224B302
 	add r1, r6, #0

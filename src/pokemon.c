@@ -2708,7 +2708,7 @@ struct UnkImageStruct *sub_02070C24(SpriteRenderer *renderer, SpriteGfxHandler *
     spriteResourcesTemplate.resIdList[GF_GFX_RES_TYPE_ANIM] = resTag + 0x4E27;
     spriteResourcesTemplate.spritePriority                  = _020FF50C[resTag];
     object                                                  = SpriteRenderer_LoadResourcesAndCreateSprite(renderer, gfxHandler, &spriteResourcesTemplate);
-    sub_02024AA8(object->sprite, 0);
+    Sprite_SetPalOffsetRespectVramOffset(object->sprite, 0);
     UnkImageStruct_SetSpritePositionXY(object, x, y);
     UnkImageStruct_TickSpriteAnimation1Frame(object);
     UnkImageStruct_SetSpriteAnimActiveFlag(object, 1);

@@ -1609,7 +1609,7 @@ ov01_021F0718: ; 0x021F0718
 	str r0, [sp, #0x1c]
 	add r0, sp, #0
 	str r3, [sp, #0xc]
-	bl sub_02024714
+	bl Sprite_Create
 	add r4, r0, #0
 	bne _021F0746
 	bl GF_AssertFail

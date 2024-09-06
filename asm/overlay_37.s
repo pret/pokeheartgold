@@ -284,7 +284,7 @@ _021E5B68:
 	pop {r3, r4, r5, pc}
 _021E5B74:
 	ldr r0, [r4, #0x34]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
@@ -1190,7 +1190,7 @@ _021E62F8:
 	mov r0, #2
 	str r0, [sp, #0x5c]
 	add r0, sp, #0x34
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x76
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1230,7 +1230,7 @@ _021E6350:
 	lsl r0, r0, #0xc
 	str r0, [sp, #0x40]
 	add r0, sp, #0x34
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x92
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1273,7 +1273,7 @@ _021E63B0:
 	str r0, [sp, #0x40]
 	add r0, sp, #0x34
 	str r7, [sp, #0x3c]
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x21
 	lsl r1, r1, #4
 	str r0, [r5, r1]

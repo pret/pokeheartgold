@@ -887,7 +887,7 @@ ov32_0225DC0C: ; 0x0225DC0C
 	lsl r0, r3, #1
 	add r4, r4, r0
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	str r0, [r4, r6]
 	ldrb r1, [r5, #3]
 	ldr r0, [r4, r6]
@@ -1145,7 +1145,7 @@ _0225DE22:
 	mov r0, #0x53
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	pop {r4, pc}
 	thumb_func_end ov32_0225DDC4
 

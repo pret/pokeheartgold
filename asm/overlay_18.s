@@ -38108,7 +38108,7 @@ _021F8AA0:
 	add r0, r4, #0
 	add r0, #0xb4
 	ldr r0, [r0]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	add r0, r4, #0
 	bl ov18_021F8C68
 	add sp, #8
@@ -39228,7 +39228,7 @@ ov18_021F9370: ; 0x021F9370
 	lsl r0, r0, #0xe
 	str r0, [sp, #0x5c]
 	add r0, sp, #0x50
-	bl sub_02024714
+	bl Sprite_Create
 	mov r1, #0x81
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -39239,7 +39239,7 @@ ov18_021F9370: ; 0x021F9370
 	mov r0, #0x81
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl Sprite_SetPalIndexRespectOffset
+	bl Sprite_SetPalIndexRespectVramOffset
 	mov r0, #0x87
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -39308,7 +39308,7 @@ ov18_021F9370: ; 0x021F9370
 	lsl r0, r0, #0xe
 	str r0, [sp, #0x5c]
 	add r0, sp, #0x50
-	bl sub_02024714
+	bl Sprite_Create
 	mov r1, #0x86
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -39335,7 +39335,7 @@ _021F948A:
 	mov r0, #0x86
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl Sprite_SetPalIndexRespectOffset
+	bl Sprite_SetPalIndexRespectVramOffset
 	add sp, #0x70
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -39388,7 +39388,7 @@ ov18_021F94BC: ; 0x021F94BC
 	lsl r0, r1, #0x11
 	str r0, [sp, #0x30]
 	add r0, sp, #0x24
-	bl sub_02024714
+	bl Sprite_Create
 	mov r1, #0x1f
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -39440,7 +39440,7 @@ ov18_021F9518: ; 0x021F9518
 	lsl r0, r0, #0x10
 	str r0, [sp, #0x30]
 	add r0, sp, #0x24
-	bl sub_02024714
+	bl Sprite_Create
 	mov r1, #0x8b
 	lsl r1, r1, #2
 	str r0, [r5, r1]

@@ -91,8 +91,8 @@
 .public GfGfx_EngineBTogglePlanes
 .public GfGfx_SwapDisplay
 .public SpriteList_Delete
-.public sub_0202457C
-.public sub_02024714
+.public SpriteList_RenderAndAnimateSprites
+.public Sprite_Create
 .public Sprite_Delete
 .public Sprite_SetMatrix
 .public Sprite_SetVisibleFlag

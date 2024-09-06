@@ -664,7 +664,7 @@ ov28_0225DA1C: ; 0x0225DA1C
 	lsl r2, r2, #6
 	add r4, r0, r2
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	str r0, [r4, r6]
 	ldrb r1, [r5, #3]
 	ldr r0, [r4, r6]
@@ -990,7 +990,7 @@ _0225DCF6:
 	add r0, r4, #0
 	bl ov28_0225E9E0
 	ldr r0, [r4, #0x24]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	pop {r4, pc}
 	.balign 4, 0
 _0225DD1C: .word ov28_0225EA88
@@ -1909,7 +1909,7 @@ _0225E3F4:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	add r1, r1, #1
-	bl Sprite_SetPalIndexRespectOffset
+	bl Sprite_SetPalIndexRespectVramOffset
 	mov r0, #0x19
 	lsl r0, r0, #4
 	ldrh r1, [r6, #2]

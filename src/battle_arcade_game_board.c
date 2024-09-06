@@ -204,7 +204,7 @@ BOOL BattleArcadeGameBoard_Main(OVY_MANAGER *man, int *state) {
         work->unk13_0 ^= 1;
     }
 
-    sub_0202457C(work->unk3E8.spriteList);
+    SpriteList_RenderAndAnimateSprites(work->unk3E8.spriteList);
 
     return FALSE;
 }
@@ -1269,9 +1269,9 @@ static Sprite *ov84_0223F374(GAME_BOARD_SUB_3E8 *work, u32 chara, u32 pal, u32 c
             template.position.y += (GX_LCD_SIZE_Y * FX32_ONE);
         }
 
-        sprite = CreateSprite(&template);
+        sprite = Sprite_CreateAffine(&template);
         Sprite_SetAnimActiveFlag(sprite, 1);
-        Sprite_SetAnimFrame(sprite, 1 * FX32_ONE);
+        Sprite_SetAnimSpeed(sprite, 1 * FX32_ONE);
         Sprite_SetAnimCtrlSeq(sprite, anim);
     }
 
@@ -1419,12 +1419,12 @@ static void BattleArcadeObj_SetPos(BATTLE_ARCADE_OBJECT *obj, u16 x, u16 y) {
 }
 
 static void BattleArcadeObj_SetAnimation(BATTLE_ARCADE_OBJECT *obj, u32 val) {
-    Sprite_SetAnimFrame(obj->sprite, FX32_ONE);
+    Sprite_SetAnimSpeed(obj->sprite, FX32_ONE);
     Sprite_TryChangeAnimSeq(obj->sprite, val);
 }
 
 static void ov84_0223F894(BATTLE_ARCADE_OBJECT *obj, Pokemon *mon) {
-    sub_02024AA8(obj->sprite, Pokemon_GetIconPalette(mon));
+    Sprite_SetPalOffsetRespectVramOffset(obj->sprite, Pokemon_GetIconPalette(mon));
 }
 
 static void ov84_0223F8A8(BATTLE_ARCADE_OBJECT *obj, int flag) {

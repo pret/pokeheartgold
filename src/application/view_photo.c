@@ -173,7 +173,7 @@ static void SysTask_ViewPhoto(SysTask *task, void *taskData) {
         }
         break;
     }
-    sub_0202457C(viewPhoto->spriteRender.spriteList);
+    SpriteList_RenderAndAnimateSprites(viewPhoto->spriteRender.spriteList);
 }
 
 static void ViewPhotoSysTask_Setup(ViewPhotoSysTaskData *viewPhoto) {

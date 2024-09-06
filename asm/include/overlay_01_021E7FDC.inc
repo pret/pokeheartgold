@@ -31,10 +31,10 @@
 .public AllocFromHeap
 .public FreeToHeap
 .public SpriteList_Delete
-.public CreateSprite
+.public Sprite_CreateAffine
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_SetPalIndex
-.public Sprite_SetPalIndexRespectOffset
+.public Sprite_SetPalIndexRespectVramOffset
 .public Sprite_GetPalIndex
 .public GF_AssertFail
 .public _fadd

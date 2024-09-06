@@ -839,7 +839,7 @@ _0225F6EC:
 	cmp r0, #0xf
 	beq _0225F6F8
 	ldr r0, [r4, #0x44]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _0225F6F8:
 	mov r0, #0
 	add sp, #0x28
@@ -1835,7 +1835,7 @@ _0225FE80:
 	mov r1, #2
 	ldr r0, [r4, r0]
 	lsl r1, r1, #0xc
-	bl Sprite_SetAnimFrame
+	bl Sprite_SetAnimSpeed
 	mov r0, #0x9d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1846,7 +1846,7 @@ _0225FE80:
 	mov r1, #2
 	ldr r0, [r4, r0]
 	lsl r1, r1, #0xc
-	bl Sprite_SetAnimFrame
+	bl Sprite_SetAnimSpeed
 	ldr r0, [r6, #0x20]
 	mov r1, #0x98
 	bl ov01_021F0F08
@@ -2237,7 +2237,7 @@ _0226021C:
 	cmp r0, #0xe
 	beq _02260242
 	ldr r0, [r4, #0x5c]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	ldr r0, [r6]
 	cmp r0, #4
 	ble _02260242

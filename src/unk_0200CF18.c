@@ -93,7 +93,7 @@ void thunk_Sprite_Delete(Sprite *sprite) {
 
 void sub_0200D020(SpriteGfxHandler *gfxHandler) {
     GF_ASSERT(gfxHandler != NULL);
-    sub_0202457C(gfxHandler->spriteList);
+    SpriteList_RenderAndAnimateSprites(gfxHandler->spriteList);
 }
 
 void thunk_OamManager_ApplyAndResetBuffers(void) {
@@ -261,7 +261,7 @@ static Sprite *MyCreateSprite(SpriteRenderer *renderer, SpriteGfxHandler *gfxHan
     template.priority    = priority;
     template.whichScreen = whichScreen;
     template.heapId      = renderer->heapId;
-    ret                  = CreateSprite(&template);
+    ret                  = Sprite_CreateAffine(&template);
     if (ret != NULL) {
         Sprite_SetAnimCtrlSeq(ret, animSeqNo);
         switch (a10) {
@@ -271,7 +271,7 @@ static Sprite *MyCreateSprite(SpriteRenderer *renderer, SpriteGfxHandler *gfxHan
         case 1:
             break;
         case 2:
-            Sprite_SetPalIndexRespectOffset(ret, palIndex);
+            Sprite_SetPalIndexRespectVramOffset(ret, palIndex);
             break;
         }
     }
@@ -473,7 +473,7 @@ static UnkImageStruct *MyLoadResourcesAndCreateSprite(SpriteRenderer *renderer, 
     spriteTemplate.priority    = unkTemplate->spritePriority;
     spriteTemplate.whichScreen = unkTemplate->vram;
     spriteTemplate.heapId      = renderer->heapId;
-    ret->sprite                = CreateSprite(&spriteTemplate);
+    ret->sprite                = Sprite_CreateAffine(&spriteTemplate);
     ret->vramTransfer          = unkTemplate->vramTransfer;
     if (ret->sprite != NULL) {
         Sprite_SetAnimCtrlSeq(ret->sprite, unkTemplate->animation);
@@ -661,7 +661,7 @@ void UnkImageStruct_SetSpriteAnimActiveFlag(UnkImageStruct *unk, int a1) {
 }
 
 void sub_0200DC84(Sprite *sprite, fx32 frame) {
-    Sprite_SetAnimFrame(sprite, frame);
+    Sprite_SetAnimSpeed(sprite, frame);
 }
 
 void sub_0200DC8C(UnkImageStruct *unk, fx32 frame) {

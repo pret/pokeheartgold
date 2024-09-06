@@ -2854,7 +2854,7 @@ _02238E5C:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	ldr r0, [r0]
-	bl sub_02024AA8
+	bl Sprite_SetPalOffsetRespectVramOffset
 	mov r0, #0xc9
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

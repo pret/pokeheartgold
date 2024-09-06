@@ -399,7 +399,7 @@ _0225F35E:
 	cmp r0, #7
 	beq _0225F36A
 	ldr r0, [r4, #0x48]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _0225F36A:
 	add sp, #0x60
 	pop {r3, r4, r5, r6, r7, pc}
@@ -753,7 +753,7 @@ _0225F64E:
 	cmp r0, #7
 	beq _0225F65A
 	ldr r0, [r4, #0x2c]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _0225F65A:
 	add sp, #0x7c
 	pop {r4, r5, r6, r7, pc}
@@ -1207,7 +1207,7 @@ _0225FA00:
 	cmp r0, #7
 	beq _0225FA0C
 	ldr r0, [r4, #0x50]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _0225FA0C:
 	add sp, #0x58
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1873,7 +1873,7 @@ _0225FF68:
 	cmp r0, #7
 	beq _0225FF96
 	ldr r0, [r4]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _0225FF96:
 	add sp, #0x44
 	pop {r4, r5, r6, r7, pc}
@@ -2195,7 +2195,7 @@ _02260238:
 	cmp r0, #7
 	beq _02260244
 	ldr r0, [r4, #0x5c]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _02260244:
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2786,7 +2786,7 @@ _02260704:
 	cmp r0, #9
 	beq _02260728
 	ldr r0, [r4]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _02260728:
 	add sp, #0x44
 	pop {r4, r5, r6, r7, pc}

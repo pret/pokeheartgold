@@ -67,8 +67,8 @@
 .public AddTextPrinterParameterizedWithColor
 .public GfGfx_EngineBTogglePlanes
 .public SpriteList_Delete
-.public sub_0202457C
-.public CreateSprite
+.public SpriteList_RenderAndAnimateSprites
+.public Sprite_CreateAffine
 .public Sprite_SetMatrix
 .public Sprite_SetVisibleFlag
 .public Sprite_SetAnimActiveFlag
@@ -78,7 +78,7 @@
 .public Sprite_TryChangeAnimSeq
 .public Sprite_GetAnimationNumber
 .public Sprite_SetPriority
-.public sub_02024AA8
+.public Sprite_SetPalOffsetRespectVramOffset
 .public Sprite_IsCellAnimationRunning
 .public Sprite_SetOamMode
 .public TouchscreenHitbox_FindRectAtTouchHeld

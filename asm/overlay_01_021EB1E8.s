@@ -488,12 +488,12 @@ _021EB568: .word ov01_021EB56C
 
 	thumb_func_start ov01_021EB56C
 ov01_021EB56C: ; 0x021EB56C
-	ldr r3, _021EB574 ; =sub_0202457C
+	ldr r3, _021EB574 ; =SpriteList_RenderAndAnimateSprites
 	add r1, #0xf4
 	ldr r0, [r1]
 	bx r3
 	.balign 4, 0
-_021EB574: .word sub_0202457C
+_021EB574: .word SpriteList_RenderAndAnimateSprites
 	thumb_func_end ov01_021EB56C
 
 	thumb_func_start ov01_021EB578
@@ -1942,7 +1942,7 @@ ov01_021EC028: ; 0x021EC028
 _021EC032:
 	ldr r0, [r6, #8]
 	add r0, #0x10
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	str r0, [r5, #0x4c]
 	add r1, r7, #0
 	bl Sprite_SetVisibleFlag

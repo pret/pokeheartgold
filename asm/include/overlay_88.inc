@@ -70,7 +70,7 @@
 .public GfGfx_EngineBTogglePlanes
 .public GfGfx_SwapDisplay
 .public SpriteList_Delete
-.public sub_0202457C
+.public SpriteList_RenderAndAnimateSprites
 .public GF_AssertFail
 .public String_New
 .public String_Delete

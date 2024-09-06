@@ -21404,7 +21404,7 @@ ov112_021F050C: ; 0x021F050C
 	ldr r0, [r0, #0x78]
 	cmp r0, #0
 	beq _021F0518
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _021F0518:
 	pop {r3, pc}
 	.balign 4, 0
@@ -22236,7 +22236,7 @@ ov112_021F0B9C: ; 0x021F0B9C
 	add r0, r1, r0
 	str r0, [sp, #0x5c]
 	add r0, sp, #0x50
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #1
 	add r4, r0, #0
 	bl Sprite_SetAnimActiveFlag

@@ -467,7 +467,7 @@ _02082CCC:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	mov r0, #0
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
@@ -2161,7 +2161,7 @@ _02083AA8:
 	lsl r0, r0, #0xc
 	str r0, [sp, #0x38]
 	add r0, sp, #0x2c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0xcb
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -2234,7 +2234,7 @@ _02083B46:
 	lsl r0, r0, #0xc
 	str r0, [sp, #0x38]
 	add r0, sp, #0x2c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0xd9
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -2289,7 +2289,7 @@ sub_02083BB4: ; 0x02083BB4
 	lsl r0, r0, #0xe
 	str r0, [r5, #0xc]
 	add r0, r5, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0xe5
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -2385,7 +2385,7 @@ _02083C64:
 	lsl r0, r0, #0xc
 	str r0, [r5, #0xc]
 	add r0, r5, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0xe6
 	lsl r1, r1, #2
 	str r0, [r4, r1]

@@ -351,7 +351,7 @@ _02246C44: .word ov71_0224BBF4
 ov71_02246C48: ; 0x02246C48
 	push {r3, lr}
 	ldr r0, [r1, #0x18]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	bl OamManager_ApplyAndResetBuffers
 	ldr r3, _02246C64 ; =0x027E0000
 	ldr r1, _02246C68 ; =0x00003FF8
@@ -1289,7 +1289,7 @@ ov71_02247340: ; 0x02247340
 	mov r0, #0x38
 	str r0, [sp, #0x1c]
 	add r0, sp, #0
-	bl sub_02024714
+	bl Sprite_Create
 	add r4, r0, #0
 	beq _0224737C
 	mov r1, #1
@@ -1297,7 +1297,7 @@ ov71_02247340: ; 0x02247340
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0xc
-	bl Sprite_SetAnimFrame
+	bl Sprite_SetAnimSpeed
 _0224737C:
 	add r0, r4, #0
 	add sp, #0x20

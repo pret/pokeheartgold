@@ -159,9 +159,9 @@
 .public GfGfx_EngineBTogglePlanes
 .public GfGfx_SwapDisplay
 .public SpriteList_Delete
-.public sub_0202457C
-.public CreateSprite
-.public sub_02024714
+.public SpriteList_RenderAndAnimateSprites
+.public Sprite_CreateAffine
+.public Sprite_Create
 .public Sprite_Delete
 .public Sprite_SetMatrix
 .public Sprite_SetScale
@@ -171,7 +171,7 @@
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_SetPriority
-.public Sprite_SetPalIndexRespectOffset
+.public Sprite_SetPalIndexRespectVramOffset
 .public TouchscreenHitbox_TouchHeldIsIn
 .public System_GetTouchHeld
 .public System_GetTouchNew

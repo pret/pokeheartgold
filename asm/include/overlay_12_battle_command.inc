@@ -63,7 +63,7 @@
 .public sub_02021B5C
 .public ObjCharTransfer_PopTaskManager
 .public ObjCharTransfer_PushTaskManager
-.public sub_02024AA8
+.public Sprite_SetPalOffsetRespectVramOffset
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_Delete

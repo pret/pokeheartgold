@@ -271,7 +271,7 @@ _0223DF9A:
 	bl ov83_02241B30
 	ldr r0, _0223DFB8 ; =0x00000518
 	ldr r0, [r4, r0]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -10251,7 +10251,7 @@ _0224324C:
 	mov r0, #0xb2
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -18019,14 +18019,14 @@ _022471BE:
 	str r0, [sp, #0x38]
 _022471D4:
 	add r0, sp, #0x2c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #1
 	add r4, r0, #0
 	bl Sprite_SetAnimActiveFlag
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0xc
-	bl Sprite_SetAnimFrame
+	bl Sprite_SetAnimSpeed
 	ldr r1, [sp, #0x90]
 	add r0, r4, #0
 	bl Sprite_SetAnimCtrlSeq
@@ -18552,7 +18552,7 @@ ov83_022475EC: ; 0x022475EC
 	bl Pokemon_GetIconPalette
 	add r1, r0, #0
 	ldr r0, [r4, #4]
-	bl sub_02024AA8
+	bl Sprite_SetPalOffsetRespectVramOffset
 	pop {r4, pc}
 	thumb_func_end ov83_022475EC
 

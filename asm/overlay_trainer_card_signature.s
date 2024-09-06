@@ -208,7 +208,7 @@ _021E828E:
 	pop {r3, r4, r5, pc}
 _021E829A:
 	ldr r0, [r4, #0x3c]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1001,7 +1001,7 @@ ov52_021E888C: ; 0x021E888C
 	mov r1, #0x27
 	add r0, sp, #0x2c
 	str r1, [sp, #0x58]
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x25
 	lsl r1, r1, #4
 	str r0, [r4, r1]

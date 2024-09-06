@@ -774,11 +774,11 @@ _0222A4FC: .word gSystem + 0x60
 
 	thumb_func_start ov43_0222A500
 ov43_0222A500: ; 0x0222A500
-	ldr r3, _0222A508 ; =sub_0202457C
+	ldr r3, _0222A508 ; =SpriteList_RenderAndAnimateSprites
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_0222A508: .word sub_0202457C
+_0222A508: .word SpriteList_RenderAndAnimateSprites
 	thumb_func_end ov43_0222A500
 
 	thumb_func_start ov43_0222A50C
@@ -1686,7 +1686,7 @@ _0222AC44:
 	ldr r0, [sp, #4]
 	str r0, [r4, #0x2c]
 	add r0, r7, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x7d
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -1723,7 +1723,7 @@ _0222AC44:
 	ldr r0, [sp, #4]
 	str r0, [r1, #0x78]
 	ldr r0, _0222ACD8 ; =ov43_0222F1AC
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r2, #0x7f
 	ldr r1, [sp]
 	lsl r2, r2, #2
@@ -3502,7 +3502,7 @@ _0222BA6A:
 	str r7, [sp, #0x30]
 	str r0, [sp, #0x58]
 	add r0, sp, #0x2c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	ldr r1, [sp, #0x18]
 	add r1, #0xf8
 	str r0, [r1]

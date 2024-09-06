@@ -1838,7 +1838,7 @@ _022386BA:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _022386D2
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _022386D2:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -3551,7 +3551,7 @@ ov70_02239414: ; 0x02239414
 	lsl r0, r0, #0xc
 	str r0, [sp, #0x5c]
 	add r0, sp, #0x50
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	ldr r1, _022394A4 ; =0x00000DCC
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
@@ -5054,7 +5054,7 @@ ov70_0223A06C: ; 0x0223A06C
 	lsl r0, r0, #0xc
 	str r0, [sp, #0xc]
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0xee
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -6515,7 +6515,7 @@ ov70_0223AC98: ; 0x0223AC98
 	lsl r0, r0, #0xc
 	str r0, [sp, #0xc]
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0xee
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -8119,7 +8119,7 @@ ov70_0223B9C8: ; 0x0223B9C8
 	str r0, [sp, #0xc]
 	add r0, sp, #0
 	str r1, [sp, #8]
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	ldr r1, _0223BAA0 ; =0x00000DCC
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
@@ -8144,7 +8144,7 @@ ov70_0223B9C8: ; 0x0223B9C8
 	lsl r0, r0, #0x10
 	str r0, [sp, #0xc]
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0xdd
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -8163,7 +8163,7 @@ ov70_0223B9C8: ; 0x0223B9C8
 	lsl r0, r0, #0xc
 	str r0, [sp, #0xc]
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	ldr r1, _0223BAA4 ; =0x00000F04
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
@@ -8177,7 +8177,7 @@ ov70_0223B9C8: ; 0x0223B9C8
 	lsl r0, r0, #0xe
 	str r0, [sp, #8]
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	ldr r1, _0223BAA8 ; =0x00000F08
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
@@ -10923,7 +10923,7 @@ ov70_0223D058: ; 0x0223D058
 	lsl r0, r0, #0xc
 	str r0, [sp, #0xc]
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	ldr r1, _0223D1F4 ; =0x00000DCC
 	str r0, [r7, r1]
 	ldr r0, [r7, r1]
@@ -10964,7 +10964,7 @@ _0223D0CC:
 	mov r0, #0x14
 	str r0, [sp, #0x24]
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	ldr r1, _0223D1F8 ; =0x00000DD8
 	str r0, [r5, r1]
 	add r0, r1, #0
@@ -10994,7 +10994,7 @@ _0223D10A:
 	mov r0, #0xa
 	str r0, [sp, #0x24]
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0xe5
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -11027,7 +11027,7 @@ _0223D14E:
 	mov r0, #0xa
 	str r0, [sp, #0x24]
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	ldr r1, _0223D1FC ; =0x00000EC8
 	str r0, [r5, r1]
 	add r0, r1, #0
@@ -11054,7 +11054,7 @@ _0223D190:
 	lsl r0, r0, #0xc
 	str r0, [sp, #0xc]
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	ldr r1, _0223D204 ; =0x00000F04
 	str r0, [r5, r1]
 	add r0, r1, #0
@@ -14367,7 +14367,7 @@ ov70_0223EC0C: ; 0x0223EC0C
 	lsl r0, r0, #0x10
 	str r0, [sp, #0xc]
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0xdd
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -14386,7 +14386,7 @@ ov70_0223EC0C: ; 0x0223EC0C
 	lsl r0, r0, #0xc
 	str r0, [sp, #0xc]
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	ldr r1, _0223EC9C ; =0x00000F04
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
@@ -14400,7 +14400,7 @@ ov70_0223EC0C: ; 0x0223EC0C
 	lsl r0, r0, #0xe
 	str r0, [sp, #8]
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	ldr r1, _0223ECA0 ; =0x00000F08
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
@@ -18759,7 +18759,7 @@ ov70_02240D74: ; 0x02240D74
 	ldr r0, _02240EDC ; =0x00182000
 	str r0, [sp, #0x10]
 	add r0, sp, #4
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	ldr r1, _02240EE0 ; =0x00000EE4
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
@@ -18786,7 +18786,7 @@ ov70_02240D74: ; 0x02240D74
 	mov r7, #0xe
 _02240DD8:
 	add r0, sp, #4
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	ldr r1, _02240EE8 ; =0x00000EE8
 	str r0, [r4, r1]
 	add r0, r1, #0
@@ -18819,7 +18819,7 @@ _02240DD8:
 	cmp r0, #7
 	blt _02240DD8
 	add r0, sp, #4
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	ldr r1, _02240EEC ; =0x00000F0C
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
@@ -18843,7 +18843,7 @@ _02240DD8:
 	ldr r0, [r5, r0]
 	bl Sprite_SetPriority
 	add r0, sp, #4
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0xf1
 	lsl r1, r1, #4
 	str r0, [r5, r1]

@@ -5,7 +5,7 @@
 .public sub_0200FBF4
 .public AllocFromHeap
 .public GfGfx_EngineATogglePlanes
-.public sub_0202457C
+.public SpriteList_RenderAndAnimateSprites
 .public Sprite_Delete
 .public Sprite_SetMatrix
 .public Sprite_SetScale

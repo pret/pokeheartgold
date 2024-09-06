@@ -313,11 +313,11 @@ ov47_02258A60: ; 0x02258A60
 
 	thumb_func_start ov47_02258A80
 ov47_02258A80: ; 0x02258A80
-	ldr r3, _02258A88 ; =sub_0202457C
+	ldr r3, _02258A88 ; =SpriteList_RenderAndAnimateSprites
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_02258A88: .word sub_0202457C
+_02258A88: .word SpriteList_RenderAndAnimateSprites
 	thumb_func_end ov47_02258A80
 
 	thumb_func_start ov47_02258A8C
@@ -899,7 +899,7 @@ _02258E7A:
 	str r0, [sp, #0x44]
 	add r0, sp, #0x2c
 	str r6, [sp, #0x48]
-	bl sub_02024714
+	bl Sprite_Create
 	mov r1, #0
 	str r0, [r5, #0x14]
 	bl Sprite_SetVisibleFlag

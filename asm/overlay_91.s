@@ -2354,7 +2354,7 @@ _0225D6D0:
 	ldr r0, [r3]
 	str r0, [r2]
 	add r0, r5, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	str r0, [r4]
 	mov r1, #2
 	bl Sprite_SetAnimCtrlSeq
@@ -2367,7 +2367,7 @@ _0225D6D0:
 	mov r1, #6
 	ldr r0, [r4]
 	lsl r1, r1, #0xa
-	bl Sprite_SetAnimFrame
+	bl Sprite_SetAnimSpeed
 	mov r0, #0
 	str r0, [r4, #0xc]
 	add r7, r7, #1
@@ -5945,7 +5945,7 @@ _0225F162:
 	str r0, [sp, #0x44]
 	add r0, sp, #0x2c
 	str r6, [sp, #0x48]
-	bl sub_02024714
+	bl Sprite_Create
 	mov r1, #0
 	str r0, [r5, #0x34]
 	bl Sprite_SetVisibleFlag
@@ -6734,7 +6734,7 @@ ov91_0225F7A8: ; 0x0225F7A8
 	add r1, r0, #0
 	bl RequestSwap3DBuffers
 	ldr r0, [r4, #0x1c]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -8699,7 +8699,7 @@ ov91_022607C4: ; 0x022607C4
 	mov r0, #2
 	str r0, [sp, #0x28]
 	add r0, r3, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0
 	str r0, [r4]
 	bl Sprite_SetVisibleFlag
@@ -9286,7 +9286,7 @@ ov91_02260C48: ; 0x02260C48
 	mov r0, #2
 	str r0, [sp, #0x28]
 	add r0, r7, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	str r0, [r5, #4]
 	mov r1, #0
 	bl Sprite_SetVisibleFlag
@@ -9405,7 +9405,7 @@ ov91_02260D14: ; 0x02260D14
 	add r7, r4, #0
 _02260D50:
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	str r0, [r5, #4]
 	mov r1, #0
 	bl Sprite_SetVisibleFlag
@@ -10625,7 +10625,7 @@ _02261616:
 	str r0, [sp, #0x70]
 	str r0, [sp, #0x74]
 	add r0, sp, #0x5c
-	bl sub_02024714
+	bl Sprite_Create
 	mov r1, #0
 	str r0, [r5, #0x34]
 	bl Sprite_SetVisibleFlag

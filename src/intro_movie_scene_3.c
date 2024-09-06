@@ -606,7 +606,7 @@ static void IntroMovie_Scene3_CreateSprites(IntroMovieOverlayData *data, IntroMo
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(2, data, 0, NNS_G2D_VRAM_TYPE_2DSUB, &template, &header);
     template.position.x               = 128 * FX32_ONE;
     template.position.y               = 608 * FX32_ONE;
-    sceneData->silverSilhouetteSprite = CreateSprite(&template);
+    sceneData->silverSilhouetteSprite = Sprite_CreateAffine(&template);
     Sprite_SetAnimActiveFlag(sceneData->silverSilhouetteSprite, FALSE);
     Sprite_SetVisibleFlag(sceneData->silverSilhouetteSprite, FALSE);
     Sprite_SetAnimCtrlSeq(sceneData->silverSilhouetteSprite, 0);
@@ -614,7 +614,7 @@ static void IntroMovie_Scene3_CreateSprites(IntroMovieOverlayData *data, IntroMo
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(3, data, 0, NNS_G2D_VRAM_TYPE_2DSUB, &template, &header);
     template.position.x     = 32 * FX32_ONE;
     template.position.y     = 608 * FX32_ONE;
-    sceneData->eusineSprite = CreateSprite(&template);
+    sceneData->eusineSprite = Sprite_CreateAffine(&template);
     Sprite_SetAnimActiveFlag(sceneData->eusineSprite, FALSE);
     Sprite_SetVisibleFlag(sceneData->eusineSprite, FALSE);
     Sprite_SetAnimCtrlSeq(sceneData->eusineSprite, 0);
@@ -623,7 +623,7 @@ static void IntroMovie_Scene3_CreateSprites(IntroMovieOverlayData *data, IntroMo
         IntroMovie_BuildSpriteResourcesHeaderAndTemplate(3, data, 0, NNS_G2D_VRAM_TYPE_2DSUB, &template, &header);
         template.position.x        = 128 * FX32_ONE;
         template.position.y        = unownSpriteYcoords[i] * FX32_ONE;
-        sceneData->unownSprites[i] = CreateSprite(&template);
+        sceneData->unownSprites[i] = Sprite_CreateAffine(&template);
         Sprite_SetAnimActiveFlag(sceneData->unownSprites[i], FALSE);
         Sprite_SetVisibleFlag(sceneData->unownSprites[i], FALSE);
         Sprite_SetAnimCtrlSeq(sceneData->unownSprites[i], unownSpriteAnimSeqNos[i]);

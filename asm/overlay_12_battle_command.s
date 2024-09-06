@@ -3920,7 +3920,7 @@ ov12_02248228: ; 0x02248228
 	add r1, r0, #0
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0]
-	bl sub_02024AA8
+	bl Sprite_SetPalOffsetRespectVramOffset
 	ldr r0, [r5, #0x10]
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	mov r0, #1

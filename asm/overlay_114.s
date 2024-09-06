@@ -282,7 +282,7 @@ _0225F260:
 	cmp r0, #7
 	beq _0225F26C
 	ldr r0, [r5, #0x2c]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _0225F26C:
 	add sp, #0x44
 	pop {r4, r5, r6, r7, pc}
@@ -592,7 +592,7 @@ _0225F4E2:
 	cmp r0, #7
 	beq _0225F4EE
 	ldr r0, [r4]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _0225F4EE:
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}

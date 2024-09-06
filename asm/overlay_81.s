@@ -570,7 +570,7 @@ _0223E218:
 	mov r0, #0x71
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	mov r0, #0x6a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -9731,7 +9731,7 @@ _02242B04:
 	str r0, [sp, #0x38]
 _02242B1A:
 	add r0, sp, #0x2c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	add r4, r0, #0
 	mov r1, #1
 	bl Sprite_SetAnimActiveFlag
@@ -10129,11 +10129,11 @@ _02242E04: .word Sprite_SetPalIndex
 
 	thumb_func_start ov81_02242E08
 ov81_02242E08: ; 0x02242E08
-	ldr r3, _02242E10 ; =Sprite_SetPalIndexRespectOffset
+	ldr r3, _02242E10 ; =Sprite_SetPalIndexRespectVramOffset
 	ldr r0, [r0, #8]
 	bx r3
 	nop
-_02242E10: .word Sprite_SetPalIndexRespectOffset
+_02242E10: .word Sprite_SetPalIndexRespectVramOffset
 	thumb_func_end ov81_02242E08
 
 	thumb_func_start ov81_02242E14
@@ -10373,7 +10373,7 @@ ov81_02242F94: ; 0x02242F94
 	mov r1, #1
 	ldr r0, [r5, #0xc]
 	lsl r1, r1, #0xc
-	bl Sprite_SetAnimFrame
+	bl Sprite_SetAnimSpeed
 	ldr r0, [r5, #0xc]
 	add r1, r4, #0
 	bl Sprite_SetAnimCtrlSeq

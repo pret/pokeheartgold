@@ -487,7 +487,7 @@ _02013898:
 	ldr r0, [r5]
 	add r1, r7, #0
 	ldr r0, [r0, r4]
-	bl Sprite_SetPalIndexRespectOffset
+	bl Sprite_SetPalIndexRespectVramOffset
 	ldr r0, [r5, #4]
 	add r6, r6, #1
 	add r4, #0xc
@@ -545,7 +545,7 @@ _020138F8:
 	ldr r0, [r5]
 	add r1, r7, #0
 	ldr r0, [r0, r4]
-	bl sub_02024AA8
+	bl Sprite_SetPalOffsetRespectVramOffset
 	ldr r0, [r5, #4]
 	add r6, r6, #1
 	add r4, #0xc
@@ -1429,7 +1429,7 @@ _02013F4C:
 	add r0, r0, r1
 	str r0, [sp, #0x30]
 	add r0, sp, #0x24
-	bl sub_02024714
+	bl Sprite_Create
 	add sp, #0x44
 	pop {r4, r5, pc}
 	.balign 4, 0

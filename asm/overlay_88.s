@@ -383,11 +383,11 @@ ov88_02258AF4: ; 0x02258AF4
 
 	thumb_func_start ov88_02258B14
 ov88_02258B14: ; 0x02258B14
-	ldr r3, _02258B1C ; =sub_0202457C
+	ldr r3, _02258B1C ; =SpriteList_RenderAndAnimateSprites
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_02258B1C: .word sub_0202457C
+_02258B1C: .word SpriteList_RenderAndAnimateSprites
 	thumb_func_end ov88_02258B14
 
 	thumb_func_start ov88_02258B20

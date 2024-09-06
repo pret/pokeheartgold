@@ -89,7 +89,7 @@
 .public sub_02021AC8
 .public sub_02021B5C
 .public Sprite_SetAnimCtrlSeq
-.public sub_02024AA8
+.public Sprite_SetPalOffsetRespectVramOffset
 .public Sprite_GetImageProxy
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail

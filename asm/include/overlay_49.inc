@@ -178,13 +178,13 @@
 .public Camera_SetPerspectiveClippingPlane
 .public Camera_Init_FromTargetDistanceAndAngle
 .public SpriteList_Delete
-.public sub_0202457C
-.public sub_02024714
+.public SpriteList_RenderAndAnimateSprites
+.public Sprite_Create
 .public Sprite_Delete
 .public Sprite_SetVisibleFlag
 .public Sprite_SetAnimActiveFlag
 .public Sprite_SetAnimCtrlSeq
-.public sub_02024AA8
+.public Sprite_SetPalOffsetRespectVramOffset
 .public Sprite_GetImageProxy
 .public GF_AssertFail
 .public G3dResFileHeader_GetSizeWithoutTex

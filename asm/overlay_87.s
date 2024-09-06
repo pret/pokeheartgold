@@ -210,7 +210,7 @@ _021E5AB2:
 	mov r0, #0x5b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ScratchOffCards_Main
@@ -4820,14 +4820,14 @@ _021E7E6E:
 	str r0, [sp, #0x54]
 _021E7E72:
 	add r0, sp, #0x2c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0
 	add r4, r0, #0
 	bl Sprite_SetAnimActiveFlag
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0xc
-	bl Sprite_SetAnimFrame
+	bl Sprite_SetAnimSpeed
 	add r0, r4, #0
 	add r1, r5, #0
 	bl Sprite_SetAnimCtrlSeq
@@ -5070,7 +5070,7 @@ ov87_021E803C: ; 0x021E803C
 	mov r1, #1
 	ldr r0, [r5, #0xc]
 	lsl r1, r1, #0xc
-	bl Sprite_SetAnimFrame
+	bl Sprite_SetAnimSpeed
 	ldr r0, [r5, #0xc]
 	add r1, r4, #0
 	bl Sprite_TryChangeAnimSeq
@@ -5102,11 +5102,11 @@ _021E8074: .word Sprite_SetScaleAndAffineType
 
 	thumb_func_start ov87_021E8078
 ov87_021E8078: ; 0x021E8078
-	ldr r3, _021E8080 ; =Sprite_SetPalIndexRespectOffset
+	ldr r3, _021E8080 ; =Sprite_SetPalIndexRespectVramOffset
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_021E8080: .word Sprite_SetPalIndexRespectOffset
+_021E8080: .word Sprite_SetPalIndexRespectVramOffset
 	thumb_func_end ov87_021E8078
 
 	thumb_func_start ov87_021E8084
@@ -5118,7 +5118,7 @@ ov87_021E8084: ; 0x021E8084
 	mov r1, #1
 	ldr r0, [r4, #0xc]
 	lsl r1, r1, #0xc
-	bl Sprite_SetAnimFrame
+	bl Sprite_SetAnimSpeed
 	ldr r0, [r4, #0xc]
 	bl Sprite_GetAnimationNumber
 	add r1, r0, #0

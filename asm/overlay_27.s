@@ -196,7 +196,7 @@ _0225A12A:
 	add r0, r4, #0
 	bl ov27_0225A7FC
 	ldr r0, [r4, #0x18]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	ldr r2, _0225A174 ; =0x04001000
 	ldr r0, _0225A198 ; =0xFFFF1FFF
 	ldr r1, [r2]
@@ -567,7 +567,7 @@ _0225A44A:
 	add r0, r5, r0
 	bl ov27_0225BDFC
 	ldr r0, [r5, #0x18]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0225A45C: .word 0x04001050
@@ -2169,7 +2169,7 @@ _0225B0F4:
 	add r0, r0, r1
 	str r0, [sp, #0x48]
 	add r0, sp, #0x3c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x39
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -2247,7 +2247,7 @@ _0225B1A2:
 	add r0, r0, r1
 	str r0, [sp, #0x48]
 	add r0, sp, #0x3c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x39
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -2322,7 +2322,7 @@ _0225B246:
 	add r0, r0, r1
 	str r0, [sp, #0x48]
 	add r0, sp, #0x3c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0xf3
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -2370,7 +2370,7 @@ _0225B298:
 	mov r0, #0xea
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02024AA8
+	bl Sprite_SetPalOffsetRespectVramOffset
 	mov r0, #0xea
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -4660,7 +4660,7 @@ _0225C496:
 	mov r0, #0x86
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	pop {r4, pc}
 	nop
 _0225C4A4: .word 0x04001050
@@ -5159,7 +5159,7 @@ ov27_0225C80C: ; 0x0225C80C
 	mov r0, #8
 	str r0, [sp, #0x58]
 	add r0, sp, #0x2c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0xe2
 	lsl r1, r1, #2
 	str r0, [r5, r1]

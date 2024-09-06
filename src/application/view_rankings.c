@@ -434,7 +434,7 @@ static BOOL ViewRankingsApp_Main_Internal(ViewRankingsAppData *appData) {
 
 static void ViewRankingsApp_RunSpriteAnimations(ViewRankingsAppData *appData) {
     if (appData->spriteList != NULL) {
-        sub_0202457C(appData->spriteList);
+        SpriteList_RenderAndAnimateSprites(appData->spriteList);
     }
 }
 
@@ -646,7 +646,7 @@ static void ViewRankings_CreateSprites(ViewRankingsAppData *appData) {
 
     spriteTemplate.position.x = FX32_CONST(224);
     spriteTemplate.position.y = FX32_CONST(176);
-    sprite                    = CreateSprite(&spriteTemplate);
+    sprite                    = Sprite_CreateAffine(&spriteTemplate);
     Sprite_SetAnimActiveFlag(sprite, TRUE);
     Sprite_SetAnimCtrlSeq(sprite, 2);
     Sprite_SetPriority(sprite, 1);
@@ -655,7 +655,7 @@ static void ViewRankings_CreateSprites(ViewRankingsAppData *appData) {
 
     spriteTemplate.position.x = FX32_CONST(16);
     spriteTemplate.position.y = FX32_CONST(96);
-    sprite                    = CreateSprite(&spriteTemplate);
+    sprite                    = Sprite_CreateAffine(&spriteTemplate);
     Sprite_SetAnimActiveFlag(sprite, TRUE);
     Sprite_SetAnimCtrlSeq(sprite, 3);
     Sprite_SetVisibleFlag(sprite, TRUE);
@@ -663,7 +663,7 @@ static void ViewRankings_CreateSprites(ViewRankingsAppData *appData) {
 
     spriteTemplate.position.x = FX32_CONST(240);
     spriteTemplate.position.y = FX32_CONST(96);
-    sprite                    = CreateSprite(&spriteTemplate);
+    sprite                    = Sprite_CreateAffine(&spriteTemplate);
     Sprite_SetAnimActiveFlag(sprite, TRUE);
     Sprite_SetAnimCtrlSeq(sprite, 5);
     Sprite_SetVisibleFlag(sprite, TRUE);
@@ -671,7 +671,7 @@ static void ViewRankings_CreateSprites(ViewRankingsAppData *appData) {
 
     spriteTemplate.position.x = FX32_CONST(224);
     spriteTemplate.position.y = FX32_CONST(176);
-    sprite                    = CreateSprite(&spriteTemplate);
+    sprite                    = Sprite_CreateAffine(&spriteTemplate);
     Sprite_SetAnimActiveFlag(sprite, TRUE);
     Sprite_SetAnimCtrlSeq(sprite, 0);
     Sprite_SetVisibleFlag(sprite, TRUE);
@@ -679,7 +679,7 @@ static void ViewRankings_CreateSprites(ViewRankingsAppData *appData) {
 
     spriteTemplate.position.x = FX32_CONST(64);
     spriteTemplate.position.y = FX32_CONST(176);
-    sprite                    = CreateSprite(&spriteTemplate);
+    sprite                    = Sprite_CreateAffine(&spriteTemplate);
     Sprite_SetAnimActiveFlag(sprite, TRUE);
     Sprite_SetAnimCtrlSeq(sprite, 8);
     Sprite_SetVisibleFlag(sprite, TRUE);

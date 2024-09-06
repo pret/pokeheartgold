@@ -181,7 +181,7 @@ static void IntroMovie_SetGraphicsBanks(void) {
 }
 
 static void IntroMovie_HandleSpriteUpdates(IntroMovieOverlayData *data) {
-    sub_0202457C(data->spriteList);
+    SpriteList_RenderAndAnimateSprites(data->spriteList);
 }
 
 static void IntroMovie_InitSpriteGraphicsHW(IntroMovieOverlayData *data) {

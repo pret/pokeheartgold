@@ -384,7 +384,7 @@ BOOL Credits_Main(OVY_MANAGER *man, int *state) {
         }
         break;
     }
-    sub_0202457C(work->spriteList);
+    SpriteList_RenderAndAnimateSprites(work->spriteList);
     return FALSE;
 }
 
@@ -556,14 +556,14 @@ static void InitSprites(CreditsAppWork *work) {
 
         tmpl.position.y = (yIdx * 80 + 16) * FX32_ONE;
         tmpl.priority   = 1;
-        ptr->pokemon[i] = CreateSprite(&tmpl);
+        ptr->pokemon[i] = Sprite_CreateAffine(&tmpl);
         GF_ASSERT(ptr->pokemon[i] != NULL);
         Sprite_SetAnimActiveFlag(ptr->pokemon[i], TRUE);
         Sprite_SetVisibleFlag(ptr->pokemon[i], TRUE);
         Sprite_SetAnimCtrlSeq(ptr->pokemon[i], 6);
 
         tmpl.priority = 0;
-        ptr->cloud[i] = CreateSprite(&tmpl);
+        ptr->cloud[i] = Sprite_CreateAffine(&tmpl);
         GF_ASSERT(ptr->cloud[i] != NULL);
         Sprite_SetAnimActiveFlag(ptr->cloud[i], TRUE);
         Sprite_SetVisibleFlag(ptr->cloud[i], FALSE);
@@ -583,13 +583,13 @@ static void InitSprites(CreditsAppWork *work) {
         tmpl.position.y   = (yIdx * 80 + 272) * FX32_ONE;
         tmpl.priority     = 1;
         u8 idx            = i + MONS_PER_SCREEN;
-        ptr->pokemon[idx] = CreateSprite(&tmpl);
+        ptr->pokemon[idx] = Sprite_CreateAffine(&tmpl);
         Sprite_SetAnimActiveFlag(ptr->pokemon[idx], TRUE);
         Sprite_SetVisibleFlag(ptr->pokemon[idx], TRUE);
         Sprite_SetAnimCtrlSeq(ptr->pokemon[idx], 6);
 
         tmpl.priority   = 0;
-        ptr->cloud[idx] = CreateSprite(&tmpl);
+        ptr->cloud[idx] = Sprite_CreateAffine(&tmpl);
         Sprite_SetAnimActiveFlag(ptr->cloud[idx], TRUE);
         Sprite_SetVisibleFlag(ptr->cloud[idx], FALSE);
         Sprite_SetAnimCtrlSeq(ptr->cloud[idx], 7);
@@ -1008,7 +1008,7 @@ static void CreateCutsceneSprite(CreditsAppWork *work, const CutsceneSpriteParam
     tmpl.position.y = (spriteParam->yPos + 256) * FX32_ONE;
     tmpl.priority   = 1;
 
-    Sprite *sprite         = CreateSprite(&tmpl);
+    Sprite *sprite         = Sprite_CreateAffine(&tmpl);
     cutsceneSprite->sprite = sprite;
     GF_ASSERT(sprite != NULL);
 

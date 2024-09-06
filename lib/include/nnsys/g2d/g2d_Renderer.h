@@ -2,6 +2,9 @@
 #define NNSYS_G2D_G2D_RENDERER_H_
 
 #include <nnsys/g2d/fmt/g2d_Cell_data.h>
+#include <nnsys/g2d/g2d_CellAnimation.h>
+#include <nnsys/g2d/g2d_Image.h>
+#include <nnsys/g2d/g2d_MultiCellAnimation.h>
 #include <nnsys/g2d/g2d_PaletteTable.h>
 #include <nnsys/g2d/g2d_RendererCore.h>
 #include <nnsys/g2d/g2d_Vec_data.h>
@@ -63,5 +66,76 @@ typedef struct NNSG2dRendererInstance {
     u16 overwritePlttNoOffset;
     u16 pad16_;
 } NNSG2dRendererInstance;
+
+static inline void NNS_G2dSetRendererOverwriteEnable(NNSG2dRendererInstance *pRnd, NNSG2dRendererOverwriteParam flag) {
+    pRnd->overwriteEnableFlag |= flag;
+}
+
+static inline void NNS_G2dSetRendererOverwriteDisable(NNSG2dRendererInstance *pRnd, NNSG2dRendererOverwriteParam flag) {
+    pRnd->overwriteEnableFlag &= ~flag;
+}
+
+static inline BOOL NNS_G2dIsRendererOverwriteEnable(const NNSG2dRendererInstance *pRnd, NNSG2dRendererOverwriteParam flag) {
+    return (BOOL)(pRnd->overwriteEnableFlag & flag);
+}
+
+static inline void NNS_G2dSetRendererOverwritePriority(NNSG2dRendererInstance *pRend, u16 Priority) {
+    pRend->overwritePriority = Priority;
+}
+
+static inline u16 NNS_G2dGetRendererOverwritePriority(const NNSG2dRendererInstance *pRend) {
+    return pRend->overwritePriority;
+}
+
+static inline void NNS_G2dSetRendererOverwritePlttNo(NNSG2dRendererInstance *pRend, u16 plttNo) {
+    pRend->overwritePlttNo = plttNo;
+}
+
+static inline u16 NNS_G2dGetRendererOverwritePlttNo(const NNSG2dRendererInstance *pRend) {
+    return pRend->overwritePlttNo;
+}
+
+static inline void NNS_G2dSetRendererOverwritePlttNoOffset(NNSG2dRendererInstance *pRend, u16 plttNoOffset) {
+    pRend->overwritePlttNoOffset = plttNoOffset;
+}
+
+static inline u16 NNS_G2dGetRendererOverwritePlttNoOffset(const NNSG2dRendererInstance *pRend) {
+    return pRend->overwritePlttNoOffset;
+}
+
+static inline void NNS_G2dSetRendererOverwriteMosaicFlag(NNSG2dRendererInstance *pRend, BOOL overwriteMosaicFlag) {
+    pRend->overwriteMosaicFlag = overwriteMosaicFlag;
+}
+
+static inline BOOL NNS_G2dGetRendererOverwriteMosaicFlag(const NNSG2dRendererInstance *pRend) {
+    return pRend->overwriteMosaicFlag;
+}
+
+static inline void NNS_G2dSetRendererOverwriteOBJMode(NNSG2dRendererInstance *pRend, GXOamMode overwriteObjMode) {
+    pRend->overwriteObjMode = overwriteObjMode;
+}
+
+static inline GXOamMode NNS_G2dGetRendererOverwriteOBJMode(const NNSG2dRendererInstance *pRend) {
+    return pRend->overwriteObjMode;
+}
+
+void NNS_G2dSetRendererImageProxy(NNSG2dRendererInstance *pRend, const NNSG2dImageProxy *pImgProxy, const NNSG2dImagePaletteProxy *pPltProxy);
+
+void NNS_G2dBeginRendering(NNSG2dRendererInstance *pRendererInstance);
+void NNS_G2dBeginRenderingEx(NNSG2dRendererInstance *pRendererInstance, u32 opzHint);
+
+void NNS_G2dDrawCell(const NNSG2dCellData *pCell);
+void NNS_G2dDrawCellAnimation(const NNSG2dCellAnimation *pCellAnim);
+void NNS_G2dDrawMultiCell(const NNSG2dMultiCellInstance *pMC);
+void NNS_G2dDrawMultiCellAnimation(const NNSG2dMultiCellAnimation *pMCAnim);
+
+void NNS_G2dEndRendering();
+
+void NNS_G2dPushMtx();
+void NNS_G2dPopMtx();
+void NNS_G2dTranslate(fx32 x, fx32 y, fx32 z);
+void NNS_G2dSetTrans(fx32 x, fx32 y, fx32 z);
+void NNS_G2dScale(fx32 x, fx32 y, fx32 z);
+void NNS_G2dRotZ(fx32 sin, fx32 cos);
 
 #endif // NNSYS_G2D_G2D_RENDERER_H_

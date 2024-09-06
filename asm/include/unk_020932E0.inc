@@ -58,8 +58,8 @@
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_SwapDisplay
 .public SpriteList_Delete
-.public sub_0202457C
-.public CreateSprite
+.public SpriteList_RenderAndAnimateSprites
+.public Sprite_CreateAffine
 .public Sprite_Delete
 .public Sprite_SetMatrix
 .public Sprite_SetVisibleFlag

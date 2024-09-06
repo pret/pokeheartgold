@@ -644,7 +644,7 @@ static void init3dEngine(struct ChooseStarterAppWork *work) {
 }
 
 static void update3dObjectsMain(struct ChooseStarterAppWork *work) {
-    sub_0202457C(work->monSpriteData.spriteList);
+    SpriteList_RenderAndAnimateSprites(work->monSpriteData.spriteList);
     Thunk_G3X_Reset();
     NNS_G3dGePushMtx();
     Camera_PushLookAtToNNSGlb();
@@ -1229,7 +1229,7 @@ static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData
     template.heapId              = heapId;
     template.position.x          = 128 * FX32_ONE;
     template.position.y          = 288 * FX32_ONE;
-    pMonSpriteData->sprites[idx] = CreateSprite(&template);
+    pMonSpriteData->sprites[idx] = Sprite_CreateAffine(&template);
     Sprite_SetAnimActiveFlag(pMonSpriteData->sprites[idx], FALSE);
     Sprite_SetAnimCtrlSeq(pMonSpriteData->sprites[idx], 0);
     Sprite_SetVisibleFlag(pMonSpriteData->sprites[idx], FALSE);

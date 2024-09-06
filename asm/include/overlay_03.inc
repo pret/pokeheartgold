@@ -78,7 +78,7 @@
 .public Camera_Delete
 .public Camera_Copy
 .public Camera_SetStaticPtr
-.public sub_0202457C
+.public SpriteList_RenderAndAnimateSprites
 .public Sprite_Delete
 .public Sprite_SetMatrix
 .public Sprite_SetVisibleFlag

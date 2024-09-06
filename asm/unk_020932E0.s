@@ -891,7 +891,7 @@ sub_02093A40: ; 0x02093A40
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
 	beq _02093A4C
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _02093A4C:
 	pop {r3, pc}
 	.balign 4, 0
@@ -1113,7 +1113,7 @@ _02093BB8:
 	cmp r0, #0
 	bne _02093C0C
 	add r0, sp, #0x10
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	ldr r1, _02093CD4 ; =0x000007E8
 	str r0, [r4, r1]
 _02093C0C:
@@ -1816,7 +1816,7 @@ sub_0209417C: ; 0x0209417C
 	mov r0, #0xa
 	str r0, [sp, #0x24]
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	add r4, r0, #0
 	mov r1, #1
 	bl Sprite_SetAnimActiveFlag
@@ -1989,7 +1989,7 @@ _020942D8:
 	cmp r0, #0
 	bne _0209430C
 	add r0, sp, #0x18
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x66
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -2048,7 +2048,7 @@ _0209430C:
 	cmp r0, #0
 	bne _0209438E
 	add r0, sp, #0x18
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r2, #0x7b
 	ldr r1, [sp, #4]
 	lsl r2, r2, #4

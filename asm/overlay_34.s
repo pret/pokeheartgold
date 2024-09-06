@@ -103,7 +103,7 @@ _0225D5D0:
 	bl ov34_0225D558
 _0225D5E0:
 	ldr r0, [r4, #0x28]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	pop {r3, r4, r5, pc}
 _0225D5E8:
 	mov r1, #0
@@ -811,7 +811,7 @@ _0225DBBC:
 	add r0, r0, r1
 	str r0, [sp, #0x38]
 	add r0, sp, #0x2c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x66
 	lsl r1, r1, #2
 	str r0, [r5, r1]

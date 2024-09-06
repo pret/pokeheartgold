@@ -7336,7 +7336,7 @@ _021E8F30:
 	add r5, r1, #0
 	mul r5, r0
 	add r0, sp, #0x2c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x55
 	lsl r1, r1, #2
 	ldr r2, [r4, r1]
@@ -9921,7 +9921,7 @@ ov96_021EA214: ; 0x021EA214
 	add r0, sp, #0x38
 	str r1, [sp, #0x5c]
 	str r7, [sp, #0x60]
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	add r4, r0, #0
 	bne _021EA2A4
 	bl GF_AssertFail
@@ -10004,7 +10004,7 @@ ov96_021EA2C4: ; 0x021EA2C4
 	str r0, [sp, #0x60]
 	add r0, sp, #0x38
 	str r1, [sp, #0x5c]
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	add r4, r0, #0
 	bne _021EA354
 	bl GF_AssertFail
@@ -10087,7 +10087,7 @@ ov96_021EA374: ; 0x021EA374
 	str r0, [sp, #0x60]
 	add r0, sp, #0x38
 	str r1, [sp, #0x5c]
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	add r4, r0, #0
 	bne _021EA404
 	bl GF_AssertFail
@@ -10170,7 +10170,7 @@ ov96_021EA424: ; 0x021EA424
 	str r0, [sp, #0x60]
 	add r0, sp, #0x38
 	str r1, [sp, #0x5c]
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	add r4, r0, #0
 	bne _021EA4B4
 	bl GF_AssertFail
@@ -10253,7 +10253,7 @@ ov96_021EA4D4: ; 0x021EA4D4
 	str r0, [sp, #0x60]
 	add r0, sp, #0x38
 	str r1, [sp, #0x5c]
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	add r4, r0, #0
 	bne _021EA564
 	bl GF_AssertFail
@@ -10336,7 +10336,7 @@ ov96_021EA584: ; 0x021EA584
 	str r0, [sp, #0x60]
 	add r0, sp, #0x38
 	str r1, [sp, #0x5c]
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	add r4, r0, #0
 	bne _021EA614
 	bl GF_AssertFail
@@ -10419,7 +10419,7 @@ ov96_021EA634: ; 0x021EA634
 	str r0, [sp, #0x60]
 	add r0, sp, #0x38
 	str r1, [sp, #0x5c]
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	add r4, r0, #0
 	bne _021EA6C4
 	bl GF_AssertFail
@@ -10512,7 +10512,7 @@ _021EA6FA:
 	str r0, [sp, #0x60]
 	add r0, sp, #0x3c
 	str r4, [sp, #0x64]
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	add r4, r0, #0
 	bne _021EA784
 	bl GF_AssertFail
@@ -10596,7 +10596,7 @@ ov96_021EA7A4: ; 0x021EA7A4
 	mov r0, #1
 	str r0, [sp, #0x60]
 	add r0, sp, #0x38
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	add r4, r0, #0
 	bne _021EA836
 	bl GF_AssertFail
@@ -10992,7 +10992,7 @@ _021EAAEE:
 	add r0, sp, #0x38
 	str r1, [sp, #0x5c]
 	str r4, [sp, #0x60]
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	add r4, r0, #0
 	mov r1, #1
 	bl Sprite_SetAnimActiveFlag
@@ -12339,7 +12339,7 @@ _021EB420:
 	add r0, sp, #0x30
 	str r1, [sp, #0x54]
 	str r6, [sp, #0x58]
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	add r4, r0, #0
 	mov r1, #1
 	bl Sprite_SetAnimActiveFlag
@@ -12528,11 +12528,11 @@ ov96_021EB5B8: ; 0x021EB5B8
 
 	thumb_func_start ov96_021EB5BC
 ov96_021EB5BC: ; 0x021EB5BC
-	ldr r3, _021EB5C4 ; =sub_0202457C
+	ldr r3, _021EB5C4 ; =SpriteList_RenderAndAnimateSprites
 	ldr r0, [r0, #0x14]
 	bx r3
 	nop
-_021EB5C4: .word sub_0202457C
+_021EB5C4: .word SpriteList_RenderAndAnimateSprites
 	thumb_func_end ov96_021EB5BC
 
 	thumb_func_start ov96_021EB5C8
@@ -39211,11 +39211,11 @@ _021F87AE:
 ov96_021F87D0: ; 0x021F87D0
 	mov r1, #0x5f
 	lsl r1, r1, #2
-	ldr r3, _021F87DC ; =sub_0202457C
+	ldr r3, _021F87DC ; =SpriteList_RenderAndAnimateSprites
 	ldr r0, [r0, r1]
 	bx r3
 	nop
-_021F87DC: .word sub_0202457C
+_021F87DC: .word SpriteList_RenderAndAnimateSprites
 	thumb_func_end ov96_021F87D0
 
 	thumb_func_start ov96_021F87E0
@@ -39618,7 +39618,7 @@ ov96_021F8ACC: ; 0x021F8ACC
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	add r6, r2, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	add r4, r0, #0
 	mov r1, #1
 	bl Sprite_SetAnimActiveFlag
@@ -40252,7 +40252,7 @@ _021F8FB8:
 	bl Sprite_SetAnimCtrlSeq
 	ldr r1, [sp, #0x34]
 	add r0, r4, #0
-	bl Sprite_SetPalIndexRespectOffset
+	bl Sprite_SetPalIndexRespectVramOffset
 	add r0, r4, #0
 	mov r1, #2
 	bl Sprite_SetDrawPriority
@@ -46631,11 +46631,11 @@ ov96_021FC2E0: ; 0x021FC2E0
 
 	thumb_func_start ov96_021FC314
 ov96_021FC314: ; 0x021FC314
-	ldr r3, _021FC31C ; =sub_0202457C
+	ldr r3, _021FC31C ; =SpriteList_RenderAndAnimateSprites
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_021FC31C: .word sub_0202457C
+_021FC31C: .word SpriteList_RenderAndAnimateSprites
 	thumb_func_end ov96_021FC314
 
 	thumb_func_start ov96_021FC320
@@ -46825,7 +46825,7 @@ ov96_021FC450: ; 0x021FC450
 	str r0, [sp, #0x1c]
 _021FC498:
 	add r0, sp, #0x24
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x61
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -46839,7 +46839,7 @@ _021FC498:
 	add r1, r4, #0
 	bl Sprite_SetAnimCtrlSeq
 	add r0, sp, #0x24
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x62
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -46853,7 +46853,7 @@ _021FC498:
 	add r1, #0xc
 	bl Sprite_SetAnimCtrlSeq
 	add r0, sp, #0x24
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]

@@ -4215,7 +4215,7 @@ _02268356:
 	bl Pokemon_GetIconPalette
 	add r1, r0, #0
 	ldr r0, [r6]
-	bl sub_02024AA8
+	bl Sprite_SetPalOffsetRespectVramOffset
 	ldr r0, [sp, #0x10]
 	mov r7, #0
 	cmp r0, #0
@@ -4357,7 +4357,7 @@ _02268488:
 	bl Pokemon_GetIconPalette
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_02024AA8
+	bl Sprite_SetPalOffsetRespectVramOffset
 	add r0, r4, #0
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, _022684E0 ; =0x000006EC
