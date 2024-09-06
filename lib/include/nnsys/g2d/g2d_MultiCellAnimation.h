@@ -6,6 +6,7 @@
 #include <nnsys/g2d/fmt/g2d_SRTControl_data.h>
 #include <nnsys/g2d/g2d_Animation.h>
 #include <nnsys/g2d/g2d_CellAnimation.h>
+#include <nnsys/g2d/g2d_Node.h>
 
 typedef enum {
     NNS_G2D_MCTYPE_DONOT_SHARE_CELLANIM,
@@ -34,5 +35,7 @@ typedef struct NNSG2dMultiCellAnimation {
 void NNS_G2dSetAnimSequenceToMCAnimation(NNSG2dMultiCellAnimation *pMultiCellAnim, const NNSG2dMultiCellAnimSequence *pAnimSeq);
 void NNS_G2dTickMCAnimation(NNSG2dMultiCellAnimation *pMultiCellAnim, fx32 frames);
 void NNS_G2dSetMCAnimationCurrentFrame(NNSG2dMultiCellAnimation *pMultiCellAnim, u16 frameIndex);
+u16 NNS_G2dGetMCBankNumNodesRequired(const NNSG2dMultiCellDataBank *pMultiCellDataBank);
+void NNS_G2dInitMCAnimation(NNSG2dMultiCellAnimation *pMultiCellAnim, NNSG2dNode *pNodeArray, NNSG2dCellAnimation *pCellAnim, u16 numNode, const NNSG2dCellAnimBankData *pAnimBank, const NNSG2dCellDataBank *pCellDataBank, const NNSG2dMultiCellDataBank *pMultiCellDataBank);
 
 #endif // NNSYS_G2D_G2D_MULTICELLANIMATION_H_

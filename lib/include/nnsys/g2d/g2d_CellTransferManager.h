@@ -16,6 +16,7 @@ typedef struct NNSG2dCellTransferState {
     u32 szByte;
 } NNSG2dCellTransferState;
 
-NNS_G2dFreeCellTransferStateHandle(u32 handle);
+void NNS_G2dFreeCellTransferStateHandle(u32 handle);
+u32 NNS_G2dGetNewCellTransferStateHandle();
 
 #endif // NNS_G2D_G2D_CELL_TRANSFER_MANAGER_H

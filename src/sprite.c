@@ -5,18 +5,25 @@
 #include "math_util.h"
 #include "system.h"
 
-BOOL sub_02024544(SpriteList *spriteList);
-void sub_020245D4(SpriteList *spriteList);
-void sub_020245FC(Sprite *sprite);
+static void sub_020245D4(SpriteList *spriteList);
 static u32 Sprite_GetExAttrByAnimSeqAndFrame(const Sprite *sprite, u32 seq, u32 frame);
+static BOOL sub_02024CD0(SpriteList *spriteList, const SpriteResourcesHeader *resHdr, Sprite *sprite, HeapID heapId);
+static u32 sub_02024D78(const SpriteResourcesHeader *resHdr);
+static void sub_02024D90(const NNSG2dCellDataBank *cellData, Sprite *sprite);
+static void sub_02024D94(const NNSG2dCellAnimBankData *cellAnim, Sprite *sprite);
+static void sub_02024D98(const NNSG2dMultiCellDataBank *mcelData, Sprite *sprite);
+static void sub_02024DA0(const NNSG2dMultiCellAnimBankData *mcelAnim, Sprite *sprite);
+static void sub_02024DA8(Sprite *sprite, HeapID heapId);
+static void sub_02024DC8(const SpriteResourcesHeader *resHdr, Sprite *sprite, HeapID heapId);
+static void sub_02024E24(Sprite *sprite, HeapID heapId);
+static u32 sub_02024E84(NNSG2dImagePaletteProxy *proxy, NNS_G2D_VRAM_TYPE vramType);
 void sub_02024EB4(SpriteList *spriteList, Sprite *sprite);
+void sub_020245FC(Sprite *sprite);
 void sub_02025010(SpriteList *spriteList, Sprite *sprite);
 void sub_02025014(Sprite *sprite);
 void sub_02025020(Sprite *sprite);
 void sub_020250D8(SpriteList *spriteList);
 Sprite *sub_02025110(SpriteList *spriteList);
-BOOL sub_02024CD0(SpriteList *spriteList, const SpriteResourcesHeader *resHdr, Sprite *sprite, HeapID heapId);
-u8 sub_02024E84(NNSG2dImagePaletteProxy *proxy, NNS_G2D_VRAM_TYPE vramType);
 void SpriteList_InsertSprite(SpriteList *spriteList, Sprite *sprite);
 void Sprite_EjectFromList(Sprite *sprite);
 void sub_0202512C(SpriteList *spriteList, Sprite *sprite);
@@ -104,7 +111,7 @@ void sub_0202457C(SpriteList *spriteList) {
     }
 }
 
-void sub_020245D4(SpriteList *spriteList) {
+static void sub_020245D4(SpriteList *spriteList) {
     spriteList->sprites      = NULL;
     spriteList->numSprites   = 0;
     spriteList->stack        = NULL;
@@ -504,4 +511,98 @@ NNSG2dCellAnimation *Sprite_GetCellAnim(Sprite *sprite) {
     GF_ASSERT(sprite->flag != 2);
     SpriteAnimationData *animData = (SpriteAnimationData *)sprite->animationData;
     return &animData->animation;
+}
+
+static BOOL sub_02024CD0(SpriteList *spriteList, const SpriteResourcesHeader *resHdr, Sprite *sprite, HeapID heapId) {
+    sprite->flag         = sub_02024D78(resHdr);
+    sprite->imageProxy   = *resHdr->imageProxy;
+    sprite->paletteProxy = *resHdr->plttProxy;
+    sub_02024D90(resHdr->cellData, sprite);
+    if (resHdr->cellAnim != NULL) {
+        sub_02024D94(resHdr->cellAnim, sprite);
+    } else {
+        sub_02024D94(spriteList->animBank, sprite);
+    }
+    if (sprite->flag == 2) {
+        sub_02024D98(resHdr->multiCellData, sprite);
+        sub_02024DA0(resHdr->multiCellAnim, sprite);
+        sub_02024E24(sprite, heapId);
+    } else if (sprite->flag == 3) {
+        sub_02024DC8(resHdr, sprite, heapId);
+    } else {
+        sub_02024DA8(sprite, heapId);
+    }
+    sprite->priority = resHdr->priority;
+    return TRUE;
+}
+
+static u32 sub_02024D78(const SpriteResourcesHeader *resHdr) {
+    if (resHdr->multiCellData != NULL) {
+        return 2;
+    } else if (resHdr->flag == TRUE) {
+        return 3;
+    } else {
+        return 1;
+    }
+}
+
+static void sub_02024D90(const NNSG2dCellDataBank *cellData, Sprite *sprite) {
+    SpriteAnimationData *animData = (SpriteAnimationData *)sprite->animationData;
+    animData->cellBank            = cellData;
+}
+
+static void sub_02024D94(const NNSG2dCellAnimBankData *cellAnim, Sprite *sprite) {
+    SpriteAnimationData *animData = (SpriteAnimationData *)sprite->animationData;
+    animData->animBankData        = cellAnim;
+}
+
+static void sub_02024D98(const NNSG2dMultiCellDataBank *mcelData, Sprite *sprite) {
+    SpriteMultiAnimationData *animData = (SpriteMultiAnimationData *)sprite->animationData;
+    animData->multiCellBank            = mcelData;
+}
+
+static void sub_02024DA0(const NNSG2dMultiCellAnimBankData *mcelAnim, Sprite *sprite) {
+    SpriteMultiAnimationData *animData = (SpriteMultiAnimationData *)sprite->animationData;
+    animData->multiAnimBankData        = mcelAnim;
+}
+
+static void sub_02024DA8(Sprite *sprite, HeapID heapId) {
+    SpriteAnimationData *animData         = (SpriteAnimationData *)sprite->animationData;
+    const NNSG2dAnimSequenceData *animSeq = NNS_G2dGetAnimSequenceByIdx(animData->animBankData, 0);
+    NNS_G2dInitCellAnimation(&animData->animation, animSeq, animData->cellBank);
+}
+
+static void sub_02024DC8(const SpriteResourcesHeader *resHdr, Sprite *sprite, HeapID heapId) {
+    SpriteAnimationData2 *animData = (SpriteAnimationData2 *)sprite->animationData;
+    const NNSG2dCharacterData *charData;
+    animData->cellTransferStateHandle = NNS_G2dGetNewCellTransferStateHandle();
+    charData                          = resHdr->charData;
+    NNS_G2dInitCellAnimationVramTransfered(&animData->animation, NNS_G2dGetAnimSequenceByIdx(animData->animBankData, 0), animData->cellBank, animData->cellTransferStateHandle, -1, NNS_G2dGetImageLocation(&sprite->imageProxy, NNS_G2D_VRAM_TYPE_2DMAIN), NNS_G2dGetImageLocation(&sprite->imageProxy, NNS_G2D_VRAM_TYPE_2DSUB), charData->pRawData, NULL, charData->szByte);
+}
+
+static void sub_02024E24(Sprite *sprite, HeapID heapId) {
+    SpriteMultiAnimationData *animData         = (SpriteMultiAnimationData *)sprite->animationData;
+    const NNSG2dMultiCellAnimSequence *animSeq = NNS_G2dGetAnimSequenceByIdx(animData->multiAnimBankData, 0);
+    u16 numNodes                               = NNS_G2dGetMCBankNumNodesRequired(animData->multiCellBank);
+    animData->node                             = AllocFromHeap(heapId, numNodes * sizeof(NNSG2dNode));
+    animData->cellAnim                         = AllocFromHeap(heapId, numNodes * sizeof(NNSG2dCellAnimation));
+    NNS_G2dInitMCAnimation(&animData->animation, animData->node, animData->cellAnim, numNodes, animData->animBankData, animData->cellBank, animData->multiCellBank);
+    NNS_G2dSetAnimSequenceToMCAnimation(&animData->animation, animSeq);
+}
+
+static u32 sub_02024E84(NNSG2dImagePaletteProxy *proxy, NNS_G2D_VRAM_TYPE vramType) {
+    u32 plttSize;
+
+    if (proxy->bExtendedPlt) {
+        plttSize = 0x200;
+    } else if (proxy->fmt == GX_TEXFMT_PLTT256) {
+        plttSize = 0;
+    } else {
+        plttSize = 0x20;
+    }
+    if (plttSize != 0) {
+        return NNS_G2dGetImagePaletteLocation(proxy, vramType) / plttSize;
+    }
+
+    return 0;
 }

@@ -103,6 +103,7 @@ struct SpriteList {
 
 SpriteList *SpriteList_Create(SpriteListParam *param);
 BOOL SpriteList_Delete(SpriteList *spriteList);
+BOOL sub_02024544(SpriteList *spriteList);
 void sub_0202457C(SpriteList *spriteList);
 Sprite *CreateSprite(const SpriteTemplate *template);
 Sprite *sub_02024714(const SimpleSpriteTemplate *simpleTemplate);
