@@ -38,7 +38,7 @@
 .public Sprite_SetRotation
 .public Sprite_SetVisibleFlag
 .public Sprite_SetPriority
-.public sub_02024B78
+.public Sprite_SetOamMode
 .public String_New
 .public String_Delete
 .public G2x_SetBlendAlpha_

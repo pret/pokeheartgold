@@ -961,7 +961,7 @@ _0225F7E2:
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #2
@@ -1036,7 +1036,7 @@ _0225F894:
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #2

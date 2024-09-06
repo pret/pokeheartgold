@@ -1194,32 +1194,32 @@ _0225A912:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	mov r0, #0xf1
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	mov r0, #0xeb
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	mov r0, #0xed
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	mov r0, #0x3b
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	mov r0, #0xee
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	ldr r0, [r4, #0x10]
 	add r0, #0xd2
 	ldrb r0, [r0]
@@ -1250,7 +1250,7 @@ _0225A982:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 _0225A99A:
 	mov r0, #9
 	str r0, [sp]
@@ -2630,11 +2630,11 @@ _0225B4B6:
 	cmp r6, r4
 	beq _0225B4C8
 	add r1, r7, #0
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	b _0225B4CE
 _0225B4C8:
 	mov r1, #0
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 _0225B4CE:
 	add r4, r4, #1
 	add r5, r5, #4

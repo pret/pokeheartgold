@@ -80,7 +80,7 @@
 .public Sprite_SetPriority
 .public sub_02024AA8
 .public Sprite_IsCellAnimationRunning
-.public sub_02024B78
+.public Sprite_SetOamMode
 .public TouchscreenHitbox_FindRectAtTouchHeld
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchNew

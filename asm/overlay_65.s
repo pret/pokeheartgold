@@ -3335,7 +3335,7 @@ _0221D9EC:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	add r7, r7, #1
 	add r6, #8
 	add r4, r4, #4
@@ -3381,7 +3381,7 @@ _0221DA54:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	add r7, r7, #1
 	add r6, #8
 	add r4, r4, #4
@@ -3419,7 +3419,7 @@ _0221DABA:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	add r7, r7, #1
 	add r6, #8
 	add r4, r4, #4
@@ -3457,7 +3457,7 @@ _0221DB0C:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	add r7, r7, #1
 	add r6, #8
 	add r4, r4, #4

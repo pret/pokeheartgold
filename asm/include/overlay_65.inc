@@ -135,7 +135,7 @@
 .public Sprite_SetPalIndex
 .public Sprite_SetPalOffset
 .public Sprite_SetDrawPriority
-.public sub_02024B78
+.public Sprite_SetOamMode
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public String_New

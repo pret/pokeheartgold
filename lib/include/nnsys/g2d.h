@@ -4,6 +4,7 @@
 #include <nnsys/g2d/fmt/g2d_Anim_data.h>
 #include <nnsys/g2d/fmt/g2d_Cell_data.h>
 #include <nnsys/g2d/fmt/g2d_Character_data.h>
+#include <nnsys/g2d/fmt/g2d_Common_data.h>
 #include <nnsys/g2d/fmt/g2d_MultiCell_data.h>
 #include <nnsys/g2d/fmt/g2d_SRTControl_data.h>
 #include <nnsys/g2d/fmt/g2d_Screen_data.h>

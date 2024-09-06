@@ -70,7 +70,7 @@
 .public Sprite_SetPriority
 .public Sprite_SetPalIndex
 .public Sprite_SetDrawPriority
-.public sub_02024B78
+.public Sprite_SetOamMode
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchHeld
 .public System_GetTouchNew

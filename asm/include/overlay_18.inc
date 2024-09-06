@@ -209,7 +209,7 @@
 .public Sprite_SetPalIndexRespectOffset
 .public Sprite_GetImageProxy
 .public Sprite_GetPaletteProxy
-.public sub_02024BBC
+.public ClearMainOAM
 .public TouchscreenHitbox_FindRectAtTouchHeld
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public TouchscreenHitbox_FindHitboxAtTouchNew

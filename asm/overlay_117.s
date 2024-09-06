@@ -710,7 +710,7 @@ _0225F560:
 	bl Sprite_SetVisibleFlag
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	ldr r0, [r4]
 	mov r1, #0
 	bl Sprite_SetPriority

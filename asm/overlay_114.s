@@ -88,7 +88,7 @@ _0225F04E:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	mov r0, #0x10
 	mov r1, #1
 	bl GfGfx_EngineATogglePlanes
@@ -160,7 +160,7 @@ _0225F150:
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]

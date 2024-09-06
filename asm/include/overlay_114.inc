@@ -11,7 +11,7 @@
 .public Sprite_SetScale
 .public Sprite_SetVisibleFlag
 .public Sprite_SetAffineOverwriteType
-.public sub_02024B78
+.public Sprite_SetOamMode
 .public G2x_SetBlendAlpha_
 .public memset
 .public ov01_021EFCDC

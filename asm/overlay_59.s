@@ -2442,14 +2442,14 @@ _02239004:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	b _0223902C
 _02239020:
 	mov r0, #0x97
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 _0223902C:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -2483,7 +2483,7 @@ _02239062:
 _0223906A:
 	ldr r0, [r4, r7]
 	mov r1, #0
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #7

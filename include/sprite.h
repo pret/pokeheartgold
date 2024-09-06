@@ -148,12 +148,11 @@ NNSG2dImagePaletteProxy *Sprite_GetPaletteProxy(Sprite *sprite);
 void Sprite_SetMosaic(Sprite *sprite, BOOL a1);
 NNS_G2D_VRAM_TYPE Sprite_GetVramType(Sprite *sprite);
 int Sprite_IsCellAnimationRunning(Sprite *sprite);
-void sub_02024B78(Sprite *sprite, GXOamMode mode);
-GXOamMode sub_02024BAC(Sprite *sprite);
-void sub_02024BBC(HeapID heapId);
-void sub_02024BF4(HeapID heapId);
-u32 sub_02024C24(Sprite *sprite, u32 a1);
-u32 sub_02024C9C(Sprite *sprite);
+void Sprite_SetOamMode(Sprite *sprite, GXOamMode mode);
+GXOamMode Sprite_GetOamMode(Sprite *sprite);
+void ClearMainOAM(HeapID heapId);
+void ClearSubOAM(HeapID heapId);
+u32 Sprite_GetCurrentAnimFrameExAttr(Sprite *sprite);
 NNSG2dCellAnimation *Sprite_GetCellAnim(Sprite *sprite);
 
 #endif // POKEHEARTGOLD_SPRITE_H

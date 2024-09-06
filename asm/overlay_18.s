@@ -38737,7 +38737,7 @@ ov18_021F8FA0: ; 0x021F8FA0
 	add r1, #0xb4
 	str r0, [r1]
 	ldr r0, [r4, #0x14]
-	bl sub_02024BBC
+	bl ClearMainOAM
 	add r0, r4, #0
 	bl ov18_021F8F28
 	add r0, r4, #0

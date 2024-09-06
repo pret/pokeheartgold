@@ -948,7 +948,7 @@ void sub_0200E0E8(UnkImageStruct *unk, BOOL mosaic) {
 }
 
 void sub_0200E0F4(Sprite *sprite, GXOamMode mode) {
-    sub_02024B78(sprite, mode);
+    Sprite_SetOamMode(sprite, mode);
 }
 
 void sub_0200E0FC(UnkImageStruct *unk, GXOamMode mode) {
@@ -956,7 +956,7 @@ void sub_0200E0FC(UnkImageStruct *unk, GXOamMode mode) {
 }
 
 GXOamMode sub_0200E108(Sprite *sprite) {
-    return sub_02024BAC(sprite);
+    return Sprite_GetOamMode(sprite);
 }
 
 GXOamMode sub_0200E110(UnkImageStruct *unk) {
@@ -964,7 +964,7 @@ GXOamMode sub_0200E110(UnkImageStruct *unk) {
 }
 
 u32 sub_0200E11C(UnkImageStruct *unk) {
-    return sub_02024C9C(unk->sprite);
+    return Sprite_GetCurrentAnimFrameExAttr(unk->sprite);
 }
 
 BOOL sub_0200E128(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, NarcId narcId, int fileId, BOOL compressed, NNS_G2D_VRAM_TYPE vram, int resId) {

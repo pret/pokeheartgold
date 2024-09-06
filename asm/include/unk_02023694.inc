@@ -89,11 +89,11 @@
 .public Sprite_SetMosaic
 .public Sprite_GetVramType
 .public Sprite_IsCellAnimationRunning
-.public sub_02024B78
-.public sub_02024BAC
-.public sub_02024BBC
-.public sub_02024BF4
-.public sub_02024C9C
+.public Sprite_SetOamMode
+.public Sprite_GetOamMode
+.public ClearMainOAM
+.public ClearSubOAM
+.public Sprite_GetCurrentAnimFrameExAttr
 .public Sprite_GetCellAnim
 .public GF_AssertFail
 .public sub_02026DE0

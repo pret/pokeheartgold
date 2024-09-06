@@ -1516,7 +1516,7 @@ _02093EBE:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	ldr r0, [sp]
 	ldr r3, _02093F80 ; =0x00000888
 	lsl r1, r0, #4
@@ -2089,7 +2089,7 @@ _0209438E:
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
 	mov r1, #1
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	add sp, #0x48
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -2130,7 +2130,7 @@ _02094420:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	ldr r6, _02094514 ; =0x0000463C
 	ldrb r1, [r5, #0xf]
 	ldr r0, [r5, r6]
@@ -2173,14 +2173,14 @@ _0209444A:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	b _020944BA
 _02094486:
 	mov r0, #0x66
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	b _020944BA
 _02094494:
 	ldr r0, [sp, #0x20]
@@ -2309,14 +2309,14 @@ _0209456E:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	b _020945B6
 _020945AA:
 	mov r0, #0x66
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 _020945B6:
 	ldr r0, [sp, #0x1c]
 	add r4, r4, #1
@@ -3487,7 +3487,7 @@ _02094EC4:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	b _02094F08
 _02094F00:
 	ldr r0, [r0]
@@ -3582,7 +3582,7 @@ sub_02094F5C: ; 0x02094F5C
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	b _02094FE6
 _02094FBA:
 	mov r1, #0x34

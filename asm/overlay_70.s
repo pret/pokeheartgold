@@ -8136,7 +8136,7 @@ ov70_0223B9C8: ; 0x0223B9C8
 	ldr r0, _0223BAA0 ; =0x00000DCC
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	mov r0, #0xa
 	lsl r0, r0, #0x10
 	str r0, [sp, #8]

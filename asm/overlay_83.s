@@ -18731,7 +18731,7 @@ _02247752:
 	ldr r0, [r5]
 	add r1, r7, #0
 	ldr r0, [r0, #4]
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, r6

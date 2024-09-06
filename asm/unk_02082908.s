@@ -4321,7 +4321,7 @@ _02084B42:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	mov r3, #8
 	ldr r0, _02084C00 ; =0x04000050
 	b _02084C04
@@ -4923,7 +4923,7 @@ _0208502C:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 _02085038:
 	pop {r4, pc}
 	.balign 4, 0

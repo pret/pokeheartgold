@@ -115,7 +115,7 @@
 .public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_SetDrawPriority
 .public Sprite_IsCellAnimationRunning
-.public sub_02024B78
+.public Sprite_SetOamMode
 .public GF_AssertFail
 .public String_New
 .public String_Delete

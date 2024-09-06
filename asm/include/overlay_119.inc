@@ -29,7 +29,7 @@
 .public Sprite_GetMatrixPtr
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_SetDrawPriority
-.public sub_02024B78
+.public Sprite_SetOamMode
 .public G2x_SetBlendAlpha_
 .public memset
 .public ov01_021EFCDC

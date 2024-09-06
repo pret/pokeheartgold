@@ -8,6 +8,7 @@
 BOOL sub_02024544(SpriteList *spriteList);
 void sub_020245D4(SpriteList *spriteList);
 void sub_020245FC(Sprite *sprite);
+static u32 Sprite_GetExAttrByAnimSeqAndFrame(const Sprite *sprite, u32 seq, u32 frame);
 void sub_02024EB4(SpriteList *spriteList, Sprite *sprite);
 void sub_02025010(SpriteList *spriteList, Sprite *sprite);
 void sub_02025014(Sprite *sprite);
@@ -434,4 +435,73 @@ int Sprite_IsCellAnimationRunning(Sprite *sprite) {
     GF_ASSERT(sprite != NULL);
     SpriteAnimationData *animData = (SpriteAnimationData *)sprite->animationData;
     return NNS_G2dIsAnimCtrlActive(&animData->animation.animCtrl);
+}
+
+void Sprite_SetOamMode(Sprite *sprite, GXOamMode mode) {
+    GF_ASSERT(sprite != NULL);
+    sprite->mode = mode;
+    if (mode == GX_OAM_MODE_NORMAL) {
+        sprite->overwrite ^= NNS_G2D_RND_OVERWRITE_OBJMODE;
+    } else {
+        sprite->overwrite |= NNS_G2D_RND_OVERWRITE_OBJMODE;
+    }
+}
+
+GXOamMode Sprite_GetOamMode(Sprite *sprite) {
+    GF_ASSERT(sprite != NULL);
+    return sprite->mode;
+}
+
+void ClearMainOAM(HeapID heapId) {
+    void *buf = AllocFromHeap(heapId, HW_OAM_SIZE);
+    MI_CpuFill16(buf, 0x2c0, HW_OAM_SIZE);
+    DC_FlushRange(buf, HW_OAM_SIZE);
+    GX_LoadOAM(buf, 0, HW_OAM_SIZE);
+    FreeToHeap(buf);
+}
+
+void ClearSubOAM(HeapID heapId) {
+    void *buf = AllocFromHeap(heapId, HW_OAM_SIZE);
+    MI_CpuFill16(buf, 0x2c0, HW_OAM_SIZE);
+    GXS_LoadOAM(buf, 0, HW_OAM_SIZE);
+    FreeToHeap(buf);
+}
+
+static u32 Sprite_GetExAttrByAnimSeqAndFrame(const Sprite *sprite, u32 seq, u32 frame) {
+    const NNSG2dAnimBankData *animBank;
+    const NNSG2dUserExAnimAttrBank *userExAnimAttrBank;
+    const NNSG2dUserExAnimSequenceAttr *userExAnimSequenceAttr;
+    const NNSG2dUserExAnimFrameAttr *userExAnimFrameAttr;
+
+    if (sprite->flag == 1 || sprite->flag == 3) {
+        SpriteAnimationData *animData = (SpriteAnimationData *)sprite->animationData;
+        animBank                      = animData->animBankData;
+    } else {
+        SpriteMultiAnimationData *animData = (SpriteMultiAnimationData *)sprite->animationData;
+        animBank                           = animData->multiAnimBankData;
+    }
+    userExAnimAttrBank = NNS_G2dGetUserExAnimAttrBank(animBank);
+    if (userExAnimAttrBank != NULL) {
+        userExAnimSequenceAttr = NNS_G2dGetUserExAnimSequenceAttr(userExAnimAttrBank, seq);
+        if (userExAnimSequenceAttr != NULL) {
+            userExAnimFrameAttr = NNS_G2dGetUserExAnimFrameAttr(userExAnimSequenceAttr, frame);
+            if (userExAnimFrameAttr != NULL) {
+                return NNS_G2dGetUserExAnimFrmAttrValue(userExAnimFrameAttr);
+            }
+        }
+    }
+
+    return 0;
+}
+
+u32 Sprite_GetCurrentAnimFrameExAttr(Sprite *sprite) {
+    u32 animNum   = Sprite_GetAnimationNumber(sprite);
+    u32 animFrame = Sprite_GetAnimCtrlCurrentFrame(sprite);
+    return Sprite_GetExAttrByAnimSeqAndFrame(sprite, animNum, animFrame);
+}
+
+NNSG2dCellAnimation *Sprite_GetCellAnim(Sprite *sprite) {
+    GF_ASSERT(sprite->flag != 2);
+    SpriteAnimationData *animData = (SpriteAnimationData *)sprite->animationData;
+    return &animData->animation;
 }

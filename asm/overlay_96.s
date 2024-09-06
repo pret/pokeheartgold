@@ -28176,7 +28176,7 @@ _021F30CC:
 	bl ov96_021EB5B8
 	add r6, r0, #0
 	mov r1, #1
-	bl sub_02024B78
+	bl Sprite_SetOamMode
 	add r0, r6, #0
 	mov r1, #0x64
 	bl Sprite_SetDrawPriority

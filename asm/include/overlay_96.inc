@@ -268,7 +268,7 @@
 .public Sprite_GetPaletteProxy
 .public Sprite_GetVramType
 .public Sprite_IsCellAnimationRunning
-.public sub_02024B78
+.public Sprite_SetOamMode
 .public Sprite_GetCellAnim
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchHeld

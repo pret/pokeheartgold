@@ -10392,11 +10392,11 @@ _02242FB8: .word Sprite_SetPalIndex
 
 	thumb_func_start ov81_02242FBC
 ov81_02242FBC: ; 0x02242FBC
-	ldr r3, _02242FC4 ; =sub_02024B78
+	ldr r3, _02242FC4 ; =Sprite_SetOamMode
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_02242FC4: .word sub_02024B78
+_02242FC4: .word Sprite_SetOamMode
 	thumb_func_end ov81_02242FBC
 
 	thumb_func_start ov81_02242FC8

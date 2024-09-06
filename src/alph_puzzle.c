@@ -1241,16 +1241,16 @@ static void AlphPuzzle_CreateSprites(AlphPuzzleData *data) {
     Sprite_SetVisibleFlag(data->sprites[ALPH_SPRITE_INDEX_DROP_CURSOR], TRUE);
     Sprite_SetVisibleFlag(data->sprites[ALPH_SPRITE_INDEX_PREV_CURSOR], FALSE);
     Sprite_SetAnimActiveFlag(data->sprites[ALPH_SPRITE_INDEX_DROP_CURSOR], TRUE);
-    sub_02024B78(data->sprites[ALPH_SPRITE_INDEX_PREV_CURSOR], GX_OAM_MODE_NORMAL);
+    Sprite_SetOamMode(data->sprites[ALPH_SPRITE_INDEX_PREV_CURSOR], GX_OAM_MODE_NORMAL);
     Sprite_SetPriority(data->sprites[ALPH_SPRITE_INDEX_PREV_CURSOR], 2);
-    sub_02024B78(data->sprites[ALPH_SPRITE_INDEX_PREV_CURSOR], GX_OAM_MODE_XLU);
+    Sprite_SetOamMode(data->sprites[ALPH_SPRITE_INDEX_PREV_CURSOR], GX_OAM_MODE_XLU);
     sub_0200E248(data->spriteRenderer, data->spriteGfxHandler, NARC_application_annon_puzzle_gra, data->puzzleIndex + NARC_puzzle_gra_puzzle_gra_00000004_NCGR, 0, 1);
     for (i = 0; i < 16; i++) {
         u8 index             = i + ALPH_SPRITE_INDEX_TILE_00;
         data->sprites[index] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler, &sSpriteTemplates[ALPH_SPRITE_INDEX_TILE_00]);
         Sprite_SetVisibleFlag(data->sprites[index], 1);
         Sprite_SetAnimCtrlSeq(data->sprites[index], i);
-        sub_02024B78(data->sprites[index], GX_OAM_MODE_NORMAL);
+        Sprite_SetOamMode(data->sprites[index], GX_OAM_MODE_NORMAL);
         Sprite_SetAffineOverwriteType(data->sprites[index], 2);
         data->tileGrid[i].sprite = data->sprites[index];
         AlphPuzzle_PlaceTileInGrid(data, (u8)i, data->tileGrid[i].x, data->tileGrid[i].y, data->tileGrid[i].rotation);

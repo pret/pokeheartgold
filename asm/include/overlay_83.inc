@@ -156,7 +156,7 @@
 .public Sprite_GetImageProxy
 .public Sprite_GetPaletteProxy
 .public Sprite_IsCellAnimationRunning
-.public sub_02024B78
+.public Sprite_SetOamMode
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchNew
 .public GF_AssertFail
