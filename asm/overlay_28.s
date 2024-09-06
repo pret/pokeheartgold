@@ -1909,7 +1909,7 @@ _0225E3F4:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	add r1, r1, #1
-	bl sub_02024A48
+	bl Sprite_SetPalIndexRespectOffset
 	mov r0, #0x19
 	lsl r0, r0, #4
 	ldrh r1, [r6, #2]

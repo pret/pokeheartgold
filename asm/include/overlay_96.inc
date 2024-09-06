@@ -259,10 +259,10 @@
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_TryChangeAnimSeq
 .public Sprite_SetPalIndex
-.public sub_02024A48
+.public Sprite_SetPalIndexRespectOffset
 .public Sprite_SetPalOffset
 .public Sprite_SetDrawPriority
-.public sub_02024B00
+.public Sprite_SetImageProxy
 .public Sprite_GetImageProxy
 .public sub_02024B20
 .public Sprite_GetPaletteProxy

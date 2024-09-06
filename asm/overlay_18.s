@@ -39239,7 +39239,7 @@ ov18_021F9370: ; 0x021F9370
 	mov r0, #0x81
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02024A48
+	bl Sprite_SetPalIndexRespectOffset
 	mov r0, #0x87
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -39335,7 +39335,7 @@ _021F948A:
 	mov r0, #0x86
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02024A48
+	bl Sprite_SetPalIndexRespectOffset
 	add sp, #0x70
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

@@ -64,7 +64,7 @@
 .public Sprite_GetRotation
 .public Sprite_GetVisibleFlag
 .public Sprite_GetAnimActiveFlag
-.public Sprite_GetAnimCtrlSeq
+.public Sprite_GetNumAnimSeqs
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_TryChangeAnimSeq
 .public Sprite_ResetAnimCtrlState
@@ -75,14 +75,14 @@
 .public Sprite_SetPriority
 .public Sprite_GetPriority
 .public Sprite_SetPalIndex
-.public sub_02024A48
+.public Sprite_SetPalIndexRespectOffset
 .public Sprite_GetPalIndex
 .public Sprite_SetPalOffset
 .public sub_02024AA8
 .public Sprite_GetPalOffset
 .public Sprite_SetDrawPriority
 .public Sprite_GetDrawPriority
-.public sub_02024B00
+.public Sprite_SetImageProxy
 .public Sprite_GetImageProxy
 .public sub_02024B20
 .public Sprite_GetPaletteProxy

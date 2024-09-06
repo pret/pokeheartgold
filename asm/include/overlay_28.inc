@@ -58,7 +58,7 @@
 .public Sprite_SetVisibleFlag
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_GetAnimationNumber
-.public sub_02024A48
+.public Sprite_SetPalIndexRespectOffset
 .public TouchscreenHitbox_FindHitboxAtTouchHeld
 .public TouchscreenHitbox_FindHitboxAtTouchNew
 .public TouchscreenHitbox_TouchHeldIsIn

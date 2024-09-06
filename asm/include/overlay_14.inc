@@ -192,7 +192,7 @@
 .public GfGfx_EngineASetPlanes
 .public GfGfx_EngineBTogglePlanes
 .public GfGfx_EngineBSetPlanes
-.public sub_02024B00
+.public Sprite_SetImageProxy
 .public Sprite_GetImageProxy
 .public Sprite_GetPaletteProxy
 .public TouchscreenHitbox_FindRectAtTouchNew

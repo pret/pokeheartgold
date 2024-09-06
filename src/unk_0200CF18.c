@@ -271,7 +271,7 @@ static Sprite *MyCreateSprite(SpriteRenderer *renderer, SpriteGfxHandler *gfxHan
         case 1:
             break;
         case 2:
-            sub_02024A48(ret, palIndex);
+            Sprite_SetPalIndexRespectOffset(ret, palIndex);
             break;
         }
     }
@@ -637,7 +637,7 @@ void UnkImageStruct_TickSpriteAnimationNFrames(UnkImageStruct *unk, fx32 frames)
 }
 
 u32 UnkImageStruct_GetSpriteAnimSeqNo(UnkImageStruct *unk) {
-    return Sprite_GetAnimCtrlSeq(unk->sprite);
+    return Sprite_GetNumAnimSeqs(unk->sprite);
 }
 
 void UnkImageStruct_SetSpriteAnimSeqNo(UnkImageStruct *unk, int seqno) {

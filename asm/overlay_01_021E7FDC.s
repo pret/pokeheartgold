@@ -347,7 +347,7 @@ _021E8278:
 	beq _021E828E
 	ldr r1, [r4, #0x10]
 	add r0, r5, #0
-	bl sub_02024A48
+	bl Sprite_SetPalIndexRespectOffset
 _021E828E:
 	add r0, r5, #0
 	add sp, #0x48

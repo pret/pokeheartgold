@@ -34,7 +34,7 @@
 .public CreateSprite
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_SetPalIndex
-.public sub_02024A48
+.public Sprite_SetPalIndexRespectOffset
 .public Sprite_GetPalIndex
 .public GF_AssertFail
 .public _fadd

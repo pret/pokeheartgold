@@ -29181,7 +29181,7 @@ _021F4048:
 	str r1, [sp]
 	ldr r0, [r0]
 	ldr r1, [sp, #8]
-	bl sub_02024B00
+	bl Sprite_SetImageProxy
 	mov r0, #0x3f
 	ldr r1, [sp]
 	lsl r0, r0, #4

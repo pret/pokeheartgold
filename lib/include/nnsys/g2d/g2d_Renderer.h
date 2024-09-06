@@ -9,6 +9,16 @@
 struct NNSG2dRendererInstance;
 struct NNSG2dRenderSurface;
 
+typedef enum NNSG2dRendererOverwriteParam {
+    NNS_G2D_RND_OVERWRITE_NONE        = 0x0,
+    NNS_G2D_RND_OVERWRITE_PRIORITY    = 0x1,
+    NNS_G2D_RND_OVERWRITE_PLTTNO      = 0x2,
+    NNS_G2D_RND_OVERWRITE_MOSAIC      = 0x4,
+    NNS_G2D_RND_OVERWRITE_OBJMODE     = 0x8,
+    NNS_G2D_RND_OVERWRITE_PLTTNO_OFFS = 0x10,
+    NNS_G2D_RND_OVERWRITE_MAX
+} NNSG2dRendererOverwriteParam;
+
 typedef BOOL (*NNSG2dRndCellCullingFunction)(const NNSG2dCellData *pCell, const MtxFx32 *pMtx, const NNSG2dViewRect *pViewRec);
 
 typedef void (*NNSG2dRndDrawCellCallBack)(struct NNSG2dRendererInstance *pRend, struct NNSG2dRenderSurface *pSurface, const NNSG2dCellData *pCell, const MtxFx32 *pMtx);

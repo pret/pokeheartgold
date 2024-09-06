@@ -15,4 +15,8 @@ typedef struct NNSG2dCellAnimation {
     NNSG2dSRTControl srtCtrl;
 } NNSG2dCellAnimation;
 
+void NNS_G2dSetCellAnimationSequence(NNSG2dCellAnimation *pCellAnim, const NNSG2dAnimSequence *pAnimSeq);
+void NNS_G2dTickCellAnimation(NNSG2dCellAnimation *pCellAnim, fx32 frames);
+void NNS_G2dSetCellAnimationCurrentFrame(NNSG2dCellAnimation *pCellAnim, u16 frameIndex);
+
 #endif // NNSYS_G2D_G2D_CELLANIMATION_H_

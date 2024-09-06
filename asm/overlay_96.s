@@ -39710,7 +39710,7 @@ ov96_021F8AFC: ; 0x021F8AFC
 	bl NNS_G2dSetImagePaletteLocation
 	add r0, r4, #0
 	add r1, r7, #0
-	bl sub_02024B00
+	bl Sprite_SetImageProxy
 	ldr r1, [sp]
 	add r0, r4, #0
 	bl sub_02024B20
@@ -40252,7 +40252,7 @@ _021F8FB8:
 	bl Sprite_SetAnimCtrlSeq
 	ldr r1, [sp, #0x34]
 	add r0, r4, #0
-	bl sub_02024A48
+	bl Sprite_SetPalIndexRespectOffset
 	add r0, r4, #0
 	mov r1, #2
 	bl Sprite_SetDrawPriority

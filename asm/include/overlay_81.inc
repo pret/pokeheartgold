@@ -150,7 +150,7 @@
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_SetPalIndex
-.public sub_02024A48
+.public Sprite_SetPalIndexRespectOffset
 .public Sprite_GetImageProxy
 .public Sprite_IsCellAnimationRunning
 .public sub_02024B78

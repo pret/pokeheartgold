@@ -206,7 +206,7 @@
 .public sub_02024714
 .public Sprite_Delete
 .public Sprite_SetVisibleFlag
-.public sub_02024A48
+.public Sprite_SetPalIndexRespectOffset
 .public Sprite_GetImageProxy
 .public Sprite_GetPaletteProxy
 .public sub_02024BBC

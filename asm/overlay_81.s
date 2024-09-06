@@ -10129,11 +10129,11 @@ _02242E04: .word Sprite_SetPalIndex
 
 	thumb_func_start ov81_02242E08
 ov81_02242E08: ; 0x02242E08
-	ldr r3, _02242E10 ; =sub_02024A48
+	ldr r3, _02242E10 ; =Sprite_SetPalIndexRespectOffset
 	ldr r0, [r0, #8]
 	bx r3
 	nop
-_02242E10: .word sub_02024A48
+_02242E10: .word Sprite_SetPalIndexRespectOffset
 	thumb_func_end ov81_02242E08
 
 	thumb_func_start ov81_02242E14

@@ -124,7 +124,7 @@
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_TryChangeAnimSeq
 .public Sprite_GetAnimationNumber
-.public sub_02024A48
+.public Sprite_SetPalIndexRespectOffset
 .public Sprite_SetDrawPriority
 .public sub_02024B38
 .public Sprite_IsCellAnimationRunning

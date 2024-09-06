@@ -11414,7 +11414,7 @@ _0224B2C0:
 	bgt _0224B302
 	ldr r0, [r5, #0x10]
 	mov r1, #1
-	bl sub_02024A48
+	bl Sprite_SetPalIndexRespectOffset
 	cmp r7, #1
 	bne _0224B302
 	add r1, r6, #0

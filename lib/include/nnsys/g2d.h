@@ -8,6 +8,7 @@
 #include <nnsys/g2d/fmt/g2d_SRTControl_data.h>
 #include <nnsys/g2d/fmt/g2d_Screen_data.h>
 #include <nnsys/g2d/g2d_Animation.h>
+#include <nnsys/g2d/g2d_Animation_inline.h>
 #include <nnsys/g2d/g2d_CellAnimation.h>
 #include <nnsys/g2d/g2d_CellTransferManager.h>
 #include <nnsys/g2d/g2d_Image.h>

@@ -5102,11 +5102,11 @@ _021E8074: .word Sprite_SetScaleAndAffineType
 
 	thumb_func_start ov87_021E8078
 ov87_021E8078: ; 0x021E8078
-	ldr r3, _021E8080 ; =sub_02024A48
+	ldr r3, _021E8080 ; =Sprite_SetPalIndexRespectOffset
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_021E8080: .word sub_02024A48
+_021E8080: .word Sprite_SetPalIndexRespectOffset
 	thumb_func_end ov87_021E8078
 
 	thumb_func_start ov87_021E8084

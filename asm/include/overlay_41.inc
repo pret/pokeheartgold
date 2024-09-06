@@ -171,7 +171,7 @@
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_SetPriority
-.public sub_02024A48
+.public Sprite_SetPalIndexRespectOffset
 .public TouchscreenHitbox_TouchHeldIsIn
 .public System_GetTouchHeld
 .public System_GetTouchNew

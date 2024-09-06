@@ -35,7 +35,7 @@
 .public Sprite_GetMatrixPtr
 .public Sprite_SetPriority
 .public Sprite_SetPalIndex
-.public sub_02024A48
+.public Sprite_SetPalIndexRespectOffset
 .public Sprite_SetPalOffset
 .public sub_02024AA8
 .public Sprite_SetDrawPriority
