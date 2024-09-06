@@ -39713,7 +39713,7 @@ ov96_021F8AFC: ; 0x021F8AFC
 	bl Sprite_SetImageProxy
 	ldr r1, [sp]
 	add r0, r4, #0
-	bl sub_02024B20
+	bl Sprite_SetPaletteProxy
 	add r0, r4, #0
 	add r1, r5, #0
 	bl Sprite_SetPalOffset

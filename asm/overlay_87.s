@@ -5129,11 +5129,11 @@ ov87_021E8084: ; 0x021E8084
 
 	thumb_func_start ov87_021E80A8
 ov87_021E80A8: ; 0x021E80A8
-	ldr r3, _021E80B0 ; =sub_02024B38
+	ldr r3, _021E80B0 ; =Sprite_SetMosaic
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_021E80B0: .word sub_02024B38
+_021E80B0: .word Sprite_SetMosaic
 	thumb_func_end ov87_021E80A8
 
 	thumb_func_start ov87_021E80B4

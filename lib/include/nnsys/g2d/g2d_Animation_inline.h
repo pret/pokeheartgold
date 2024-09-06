@@ -8,4 +8,8 @@ static inline void NNS_G2dStartAnimCtrl(
     pAnimCtrl->bActive = TRUE;
 }
 
+static inline BOOL NNS_G2dIsAnimCtrlActive(const NNSG2dAnimController *pAnimCtrl) {
+    return pAnimCtrl->bActive;
+}
+
 #endif // NNSYS_G2D_G2D_ANIMATION_INLINE_H

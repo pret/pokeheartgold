@@ -944,7 +944,7 @@ void sub_0200E0CC(UnkImageStruct *unk, s16 x, s16 y) {
 }
 
 void sub_0200E0E8(UnkImageStruct *unk, BOOL mosaic) {
-    sub_02024B38(unk->sprite, mosaic);
+    Sprite_SetMosaic(unk->sprite, mosaic);
 }
 
 void sub_0200E0F4(Sprite *sprite, GXOamMode mode) {

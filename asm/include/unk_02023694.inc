@@ -84,9 +84,9 @@
 .public Sprite_GetDrawPriority
 .public Sprite_SetImageProxy
 .public Sprite_GetImageProxy
-.public sub_02024B20
+.public Sprite_SetPaletteProxy
 .public Sprite_GetPaletteProxy
-.public sub_02024B38
+.public Sprite_SetMosaic
 .public Sprite_GetVramType
 .public Sprite_IsCellAnimationRunning
 .public sub_02024B78

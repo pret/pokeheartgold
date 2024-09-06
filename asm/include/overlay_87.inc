@@ -126,7 +126,7 @@
 .public Sprite_GetAnimationNumber
 .public Sprite_SetPalIndexRespectOffset
 .public Sprite_SetDrawPriority
-.public sub_02024B38
+.public Sprite_SetMosaic
 .public Sprite_IsCellAnimationRunning
 .public TouchscreenHitbox_FindRectAtTouchHeld
 .public TouchscreenHitbox_FindRectAtTouchNew

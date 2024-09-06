@@ -404,3 +404,34 @@ u16 Sprite_GetDrawPriority(Sprite *sprite) {
 void Sprite_SetImageProxy(Sprite *sprite, NNSG2dImageProxy *proxy) {
     sprite->imageProxy = *proxy;
 }
+
+NNSG2dImageProxy *Sprite_GetImageProxy(Sprite *sprite) {
+    return &sprite->imageProxy;
+}
+
+void Sprite_SetPaletteProxy(Sprite *sprite, NNSG2dImagePaletteProxy *proxy) {
+    sprite->paletteProxy = *proxy;
+}
+
+NNSG2dImagePaletteProxy *Sprite_GetPaletteProxy(Sprite *sprite) {
+    return &sprite->paletteProxy;
+}
+
+void Sprite_SetMosaic(Sprite *sprite, BOOL a1) {
+    sprite->mosaic = a1;
+    if (a1 == TRUE) {
+        sprite->overwrite |= NNS_G2D_RND_OVERWRITE_MOSAIC;
+    } else {
+        sprite->overwrite ^= NNS_G2D_RND_OVERWRITE_MOSAIC;
+    }
+}
+
+NNS_G2D_VRAM_TYPE Sprite_GetVramType(Sprite *sprite) {
+    return sprite->type;
+}
+
+int Sprite_IsCellAnimationRunning(Sprite *sprite) {
+    GF_ASSERT(sprite != NULL);
+    SpriteAnimationData *animData = (SpriteAnimationData *)sprite->animationData;
+    return NNS_G2dIsAnimCtrlActive(&animData->animation.animCtrl);
+}
