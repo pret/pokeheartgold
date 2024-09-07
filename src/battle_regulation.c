@@ -22,7 +22,7 @@ void PokedexData_UnloadAndDelete(PokedexData *pokedex) {
     PokedexData_Delete(pokedex);
 }
 
-BOOL sub_0207496C(LinkBattleRuleset *ruleset, Pokemon *pokemon, PokedexData *pokedex) {
+BOOL LinkBattleRuleset_CheckDexBasedRules(LinkBattleRuleset *ruleset, Pokemon *pokemon, PokedexData *pokedex) {
     u16 species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
     if (ruleset == NULL) {
         return TRUE;
@@ -97,7 +97,7 @@ BattleRegulationComplianceMessage LinkBattleRuleset_GetPartySelectionComplianceM
     u16 heldItems[PARTY_SIZE];
 
     if (ruleset == NULL) {
-        return FALSE;
+        return BTL_REG_COMPLIANCE_OK;
     }
 
     for (i = 0; i < PARTY_SIZE; ++i) {
@@ -115,8 +115,8 @@ BattleRegulationComplianceMessage LinkBattleRuleset_GetPartySelectionComplianceM
     for (i = 0; i < PARTY_SIZE; ++i) {
         if (selectedOrder[i] != 0) {
             mon = Party_GetMonByIndex(party, selectedOrder[i] - 1);
-            if (!sub_0207496C(ruleset, mon, pokedex)) {
-                return 5;
+            if (!LinkBattleRuleset_CheckDexBasedRules(ruleset, mon, pokedex)) {
+                return BTL_REG_COMPLIANCE_FAIL_SPECIAL_CONSTRAINTS;
             }
             species[i]   = GetMonData(mon, MON_DATA_SPECIES, NULL);
             heldItems[i] = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
@@ -219,7 +219,7 @@ int sub_02074CD0(LinkBattleRuleset *ruleset, Party *party, PokedexData *pokedex)
         mon        = Party_GetMonByIndex(party, i);
         species[i] = GetMonData(mon, MON_DATA_SPECIES, NULL);
         levels[i]  = GetMonData(mon, MON_DATA_LEVEL, NULL);
-        if (!sub_0207496C(ruleset, mon, pokedex)) {
+        if (!LinkBattleRuleset_CheckDexBasedRules(ruleset, mon, pokedex)) {
             species[i] = SPECIES_NONE;
             --numLegalMons;
         }

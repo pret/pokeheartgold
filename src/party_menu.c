@@ -1772,7 +1772,7 @@ u8 sub_0207B364(PartyMenu *partyMenu, u8 selection) {
 
     if (partyMenu->args->linkBattleRuleset != NULL) {
         Pokemon *pokemon = Party_GetMonByIndex(partyMenu->args->party, selection);
-        if (sub_0207496C(partyMenu->args->linkBattleRuleset, pokemon, partyMenu->pokedex) == FALSE) {
+        if (LinkBattleRuleset_CheckDexBasedRules(partyMenu->args->linkBattleRuleset, pokemon, partyMenu->pokedex) == FALSE) {
             return 0;
         }
     }
@@ -2013,7 +2013,7 @@ static int PartyMenu_SelectedBattleTeamComplianceCheck(PartyMenu *partyMenu) {
             return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
         case BTL_REG_COMPLIANCE_FAIL_NUM_MONS:
             break;
-        case BTL_REG_COMPLIANCE_FAIL_5:
+        case BTL_REG_COMPLIANCE_FAIL_SPECIAL_CONSTRAINTS:
             break;
         case BTL_REG_COMPLIANCE_FAIL_TOO_MANY_LEGENDS:
             PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00168, TRUE);
