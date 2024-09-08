@@ -879,7 +879,7 @@ _02083016:
 	mov r1, #7
 	bl FreeBgTilemapBuffer
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	mov r0, #0x16
 	lsl r0, r0, #4
 	mov r1, #0xee
@@ -1781,9 +1781,9 @@ sub_0208377C: ; 0x0208377C
 	bl ObjCharTransfer_Init
 	mov r0, #0x14
 	mov r1, #0x12
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0

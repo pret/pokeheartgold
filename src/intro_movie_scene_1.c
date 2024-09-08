@@ -5,11 +5,11 @@
 #include "gf_gfx_loader.h"
 #include "intro_movie_internal.h"
 #include "obj_char_transfer.h"
+#include "obj_pltt_transfer.h"
 #include "system.h"
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
-#include "unk_02022588.h"
 
 enum IntroScene1State {
     INTRO_SCENE1_APPEAR_COPYRIGHT,
@@ -75,7 +75,7 @@ static void IntroMovie_Scene1_VBlankCB(void *pVoid) {
 static void IntroMovie_Scene1_Init(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     ObjCharTransfer_ClearBuffers();
-    sub_02022638();
+    ObjPlttTransfer_Reset();
     gSystem.screensFlipped = TRUE;
     GfGfx_SwapDisplay();
     IntroMovie_Scene1_InitBgs(data);

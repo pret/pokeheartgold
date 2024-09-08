@@ -25,7 +25,7 @@
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public G2dRenderer_SetSubSurfaceCoords
 .public G2dRenderer_SetObjCharTransferReservedRegion
-.public sub_0200A080
+.public G2dRenderer_SetPlttTransferReservedRegion
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public NewString_ReadMsgData

@@ -9,6 +9,7 @@
 #include "gf_gfx_loader.h"
 #include "msgdata.h"
 #include "obj_char_transfer.h"
+#include "obj_pltt_transfer.h"
 #include "overlay_manager.h"
 #include "sound.h"
 #include "sound_02004A44.h"
@@ -21,7 +22,6 @@
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
-#include "unk_02022588.h"
 
 #ifdef HEARTGOLD
 #define GAME_TITLE_MSG_NO 0
@@ -472,9 +472,9 @@ static void CreateOamAndObjResMgrs(CreditsAppWork *work) {
     GXS_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_128K);
     objCharTransferTemplate = sObjCharTransferTemplate;
     ObjCharTransfer_Init(&objCharTransferTemplate);
-    sub_02022588(0xd, HEAP_ID_CREDITS);
+    ObjPlttTransfer_Init(0xd, HEAP_ID_CREDITS);
     ObjCharTransfer_ClearBuffers();
-    sub_02022638();
+    ObjPlttTransfer_Reset();
     NNS_G2dInitOamManagerModule();
     OamManager_Create(0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20, HEAP_ID_CREDITS);
     work->spriteList = G2dRenderer_Init(0x28, &work->g2dRender, HEAP_ID_CREDITS);
@@ -494,7 +494,7 @@ static void FreeOamAndObjResMgrs(CreditsAppWork *work) {
     SpriteList_Delete(work->spriteList);
     OamManager_Free();
     ObjCharTransfer_Destroy();
-    sub_02022608();
+    ObjPlttTransfer_Destroy();
 }
 
 static void ov76_021E6170(CreditsAppWork *work) {

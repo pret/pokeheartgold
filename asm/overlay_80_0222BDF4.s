@@ -6836,7 +6836,7 @@ _0222F0DA:
 	ldr r0, [r6]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	lsl r7, r0, #4
 	mov r0, #2
 	str r0, [sp]

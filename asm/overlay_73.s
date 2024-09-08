@@ -335,7 +335,7 @@ _021E5BD8:
 	bl SpriteList_Delete
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	add r0, r6, #0
 	bl ov73_021E6400
 	add r0, r6, #0
@@ -884,9 +884,9 @@ ov73_021E6060: ; 0x021E6060
 	bl ObjCharTransfer_Init
 	mov r0, #0x14
 	mov r1, #0x32
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -5148,9 +5148,9 @@ ov73_021E8168: ; 0x021E8168
 	bl ObjCharTransfer_Init
 	mov r0, #0x14
 	mov r1, #0x96
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -5555,7 +5555,7 @@ _021E8496:
 	str r1, [r6, r0]
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021E84C0: .word 0x00000D34

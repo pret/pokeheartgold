@@ -100,7 +100,7 @@
 .public MTX22_2DAffine
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized
-.public sub_02022808
+.public ObjPlttTransfer_GetPaletteVramOffset
 .public Sprite_SetPalOffsetRespectVramOffset
 .public Sprite_GetImageProxy
 .public Sprite_GetPaletteProxy

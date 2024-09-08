@@ -4326,14 +4326,14 @@ _0225A636:
 	bl ObjCharTransfer_InitEx
 	mov r0, #0x18
 	add r1, r6, #0
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	mov r0, #1
 	mov r1, #0x10
 	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
-	bl sub_0200A080
+	bl G2dRenderer_SetPlttTransferReservedRegion
 	bl sub_0203A880
 	add r1, r5, #0
 	mov r0, #0x18
@@ -4450,7 +4450,7 @@ _0225A80E:
 	ldr r0, [r6, #4]
 	bl SpriteList_Delete
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	bl OamManager_Free
 	mov r0, #0x51
 	lsl r0, r0, #2

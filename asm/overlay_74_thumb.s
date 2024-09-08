@@ -21709,9 +21709,9 @@ ov74_02231BC0: ; 0x02231BC0
 	bl ObjCharTransfer_Init
 	mov r0, #0x14
 	mov r1, #0x4c
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -24132,7 +24132,7 @@ _02232EEE:
 	str r0, [r6, #0x28]
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	ldr r0, _02232F54 ; =0x0000E88C
 	ldr r0, [r6, r0]
 	bl YesNoPrompt_Destroy
@@ -29372,9 +29372,9 @@ ov74_0223563C: ; 0x0223563C
 	ldr r1, _02235678 ; =ov74_0223D454
 	mov r0, #0x1e
 	ldr r1, [r1, #8]
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -29885,7 +29885,7 @@ _02235A24:
 	str r1, [r0]
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB

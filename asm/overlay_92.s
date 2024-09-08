@@ -137,7 +137,7 @@ ov92_0225C5C4: ; 0x0225C5C4
 	mov r0, #1
 	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
-	bl sub_0200A080
+	bl G2dRenderer_SetPlttTransferReservedRegion
 	bl sub_0203A880
 	mov r0, #0x71
 	bl sub_0203A4AC

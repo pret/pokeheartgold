@@ -183,7 +183,7 @@ ov89_02258800: ; 0x02258800
 	mov r0, #1
 	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
-	bl sub_0200A080
+	bl G2dRenderer_SetPlttTransferReservedRegion
 	ldr r0, [r5, #0x1c]
 	bl SpriteRenderer_CreateGfxHandler
 	str r0, [r5, #0x20]

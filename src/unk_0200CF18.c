@@ -6,13 +6,13 @@
 #include "gf_gfx_loader.h"
 #include "heap.h"
 #include "obj_char_transfer.h"
+#include "obj_pltt_transfer.h"
 #include "palette.h"
 #include "sprite.h"
 #include "unk_02009D48.h"
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_02020654.h"
-#include "unk_02022588.h"
 
 static void SpriteGfxHandler_DeleteSpriteList(SpriteGfxHandler *gfxHandler);
 static void SpriteGfxHandler_DeleteResourceHeaderList(SpriteGfxHandler *gfxHandler);
@@ -68,14 +68,14 @@ BOOL sub_0200CF70(SpriteRenderer *renderer, const OamManagerParam *oamManagerPar
     transferTemplate.sizeSub  = oamTransferParam->sizeSub;
     transferTemplate.heapId   = renderer->heapId;
     ObjCharTransfer_InitEx(&transferTemplate, oamTransferParam->charModeMain, oamTransferParam->charModeSub);
-    sub_02022588(a3, renderer->heapId);
+    ObjPlttTransfer_Init(a3, renderer->heapId);
     NNS_G2dInitOamManagerModule();
     if (renderer->hasOamManager == TRUE) {
         OamManager_Create(oamManagerParam->fromOBJmain, oamManagerParam->numOBJmain, oamManagerParam->fromAffineMain, oamManagerParam->numAffineMain, oamManagerParam->fromOBJsub, oamManagerParam->numOBJsub, oamManagerParam->fromAffineSub, oamManagerParam->numAffineSub, renderer->heapId);
     }
     renderer->cellTransferState = sub_02020654(0x20, renderer->heapId);
     ObjCharTransfer_ClearBuffers();
-    sub_02022638();
+    ObjPlttTransfer_Reset();
     return TRUE;
 }
 
@@ -130,7 +130,7 @@ static void SpriteGfxHandler_DestroyResObjsAndMans(SpriteGfxHandler *gfxHandler)
 static void DeinitSpriteRenderer(SpriteRenderer *renderer) {
     sub_0202067C(renderer->cellTransferState);
     ObjCharTransfer_Destroy();
-    sub_02022608();
+    ObjPlttTransfer_Destroy();
     if (renderer->hasOamManager == TRUE) {
         OamManager_Free();
     }
@@ -609,7 +609,7 @@ static BOOL MyUnloadPlttById(GF_2DGfxResMan *manager, GF_2DGfxResObjList *list, 
         if (list->obj[i] != NULL) {
             u32 test_id = GF2DGfxResObj_GetResID(list->obj[i]);
             if (test_id == plttId) {
-                sub_02022744(plttId);
+                ObjPlttTransfer_FreeTaskByID(plttId);
                 DestroySingle2DGfxResObj(manager, list->obj[i]);
                 list->obj[i] = NULL;
                 --list->num;

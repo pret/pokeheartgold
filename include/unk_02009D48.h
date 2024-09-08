@@ -51,6 +51,6 @@ SpriteList *G2dRenderer_Init(int numSprites, GF_G2dRenderer *renderer, HeapID he
 void G2dRenderer_SetMainSurfaceCoords(GF_G2dRenderer *renderer, fx32 x, fx32 y);
 void G2dRenderer_SetSubSurfaceCoords(GF_G2dRenderer *renderer, fx32 x, fx32 y);
 void G2dRenderer_SetObjCharTransferReservedRegion(NNS_G2D_VRAM_TYPE vram, GXOBJVRamModeChar mode);
-void sub_0200A080(NNS_G2D_VRAM_TYPE type);
+void G2dRenderer_SetPlttTransferReservedRegion(NNS_G2D_VRAM_TYPE type);
 
 #endif // POKEHEARTGOLD_UNK_02009D48_H

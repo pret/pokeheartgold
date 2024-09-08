@@ -421,7 +421,7 @@ ov93_0225C768: ; 0x0225C768
 	mov r0, #1
 	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
-	bl sub_0200A080
+	bl G2dRenderer_SetPlttTransferReservedRegion
 	ldr r0, [r5, #0x24]
 	bl SpriteRenderer_CreateGfxHandler
 	str r0, [r5, #0x28]

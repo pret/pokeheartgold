@@ -21,7 +21,7 @@
 .public G2dRenderer_SetMainSurfaceCoords
 .public G2dRenderer_SetSubSurfaceCoords
 .public G2dRenderer_SetObjCharTransferReservedRegion
-.public sub_0200A080
+.public G2dRenderer_SetPlttTransferReservedRegion
 .public SpriteRenderer_Create
 .public SpriteRenderer_CreateGfxHandler
 .public SpriteRenderer_GetG2dRendererPtr

@@ -146,7 +146,7 @@
 .public GF_SinDeg
 .public LCRandom
 .public GF_CreateNewVramTransferTask
-.public sub_02022808
+.public ObjPlttTransfer_GetPaletteVramOffset
 .public Camera_SetAnglePos
 .public Camera_GetAngle
 .public Camera_SetLookAtCamTarget

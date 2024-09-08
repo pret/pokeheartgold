@@ -1124,9 +1124,9 @@ ov72_02238164: ; 0x02238164
 	bl ObjCharTransfer_Init
 	mov r0, #0x14
 	mov r1, #0x43
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -1938,7 +1938,7 @@ _0223882A:
 	str r1, [r6, r0]
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02238854: .word 0x00000D34

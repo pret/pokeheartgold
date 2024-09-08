@@ -1278,14 +1278,14 @@ ov90_022590CC: ; 0x022590CC
 	bl ObjCharTransfer_InitEx
 	ldr r0, [sp, #0x18]
 	add r1, r4, #0
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	mov r0, #1
 	mov r1, #0x10
 	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
-	bl sub_0200A080
+	bl G2dRenderer_SetPlttTransferReservedRegion
 	ldr r0, [sp, #0x14]
 	add r1, r5, #4
 	add r2, r4, #0
@@ -1310,7 +1310,7 @@ ov90_02259158: ; 0x02259158
 	ldr r0, [r0]
 	bl SpriteList_Delete
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	bl OamManager_Free
 	pop {r3, pc}
 	.balign 4, 0

@@ -119,6 +119,8 @@ static inline GXOamMode NNS_G2dGetRendererOverwriteOBJMode(const NNSG2dRendererI
     return pRend->overwriteObjMode;
 }
 
+void NNS_G2dInitRenderer(NNSG2dRendererInstance *pRend);
+
 void NNS_G2dSetRendererImageProxy(NNSG2dRendererInstance *pRend, const NNSG2dImageProxy *pImgProxy, const NNSG2dImagePaletteProxy *pPltProxy);
 
 void NNS_G2dBeginRendering(NNSG2dRendererInstance *pRendererInstance);
@@ -137,5 +139,9 @@ void NNS_G2dTranslate(fx32 x, fx32 y, fx32 z);
 void NNS_G2dSetTrans(fx32 x, fx32 y, fx32 z);
 void NNS_G2dScale(fx32 x, fx32 y, fx32 z);
 void NNS_G2dRotZ(fx32 sin, fx32 cos);
+
+static inline void NNS_G2dSetRendererSpriteZoffset(NNSG2dRendererInstance *pRend, fx32 spriteZoffset) {
+    pRend->spriteZoffsetStep = spriteZoffset;
+}
 
 #endif // NNSYS_G2D_G2D_RENDERER_H_

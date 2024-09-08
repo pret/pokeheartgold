@@ -137,7 +137,7 @@ ov97_0221E69C: ; 0x0221E69C
 	bl FontID_Release
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	ldr r0, [r4]
 	bl FreeToHeap
 	add r0, r4, #0
@@ -328,9 +328,9 @@ ov97_0221E834: ; 0x0221E834
 	bl ObjCharTransfer_Init
 	mov r0, #0x14
 	mov r1, #0x5c
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0

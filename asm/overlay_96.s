@@ -7804,9 +7804,9 @@ ov96_021E92B0: ; 0x021E92B0
 	bl ObjCharTransfer_InitEx
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov96_021E92B0
 
@@ -7815,7 +7815,7 @@ ov96_021E92D0: ; 0x021E92D0
 	push {r3, lr}
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	pop {r3, pc}
 	thumb_func_end ov96_021E92D0
 
@@ -23203,7 +23203,7 @@ ov96_021F095C: ; 0x021F095C
 	bl ov96_021E9C0C
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	mov r0, #0x77
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -32886,7 +32886,7 @@ _021F5598:
 	bl FontID_Release
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -40441,7 +40441,7 @@ ov96_021F9134: ; 0x021F9134
 	bl ov96_021EB5E8
 	str r0, [sp, #0x30]
 	mov r0, #0x68
-	bl sub_020227AC
+	bl ObjPlttTransfer_GetPlttProxyByID
 	str r0, [sp, #0x34]
 	ldr r0, [sp, #0x78]
 	str r0, [sp, #0x38]
@@ -47999,7 +47999,7 @@ ov96_021FCE10: ; 0x021FCE10
 	bl ov96_021E9C0C
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	mov r0, #0xf7
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -57765,7 +57765,7 @@ _02201BF0:
 	bl ov96_021E9C0C
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	ldr r0, _02201C80 ; =0x000005DC
 	ldr r0, [r4, r0]
 	bl ov96_022043B8
@@ -63932,7 +63932,7 @@ ov96_02204E58: ; 0x02204E58
 	bl ov96_021E9C0C
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	mov r0, #0xdb
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -89540,7 +89540,7 @@ _0221172E:
 	bl ov96_021E9C0C
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	ldr r0, _022117BC ; =0x0000074C
 	ldr r0, [r4, r0]
 	bl ov96_02214B7C

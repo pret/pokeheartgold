@@ -3852,7 +3852,7 @@ _0221D9C2:
 	ldr r0, [r7]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	mov r1, #2
 	str r1, [sp]
 	mov r1, #0x20
@@ -8749,7 +8749,7 @@ _0221FDB2:
 	ldr r0, [r6]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	mov r1, #2
 	str r1, [sp]
 	mov r1, #0x20
@@ -13387,7 +13387,7 @@ ov07_02221FF0: ; 0x02221FF0
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	pop {r3, pc}
@@ -20798,7 +20798,7 @@ ov07_02225838: ; 0x02225838
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	add r7, r0, #0
 	add r0, r5, #0
 	bl ov07_0221BFD0
@@ -25438,7 +25438,7 @@ _02227DBA:
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	ldr r0, [r4, #0xc]
@@ -25466,7 +25466,7 @@ _02227DBA:
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	ldr r0, [r4, #0xc]
@@ -25531,7 +25531,7 @@ _02227EAA:
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	ldr r0, [r4, #0xc]
@@ -25559,7 +25559,7 @@ _02227EAA:
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	ldr r0, [r4, #0xc]
@@ -26600,7 +26600,7 @@ ov07_02228750: ; 0x02228750
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	add r6, r0, #0
 	ldr r0, [r4, #4]
 	bl ov07_0221FA78
@@ -31777,7 +31777,7 @@ ov07_0222B130: ; 0x0222B130
 	ldr r0, [r5]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	add r6, r0, #0
 	ldr r0, [r4, #4]
 	bl ov07_0221FA78
@@ -31813,7 +31813,7 @@ ov07_0222B130: ; 0x0222B130
 	ldr r0, [r5]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	add r6, r0, #0
 	ldr r0, [r4, #4]
 	bl ov07_0221FA78
@@ -32214,7 +32214,7 @@ _0222B584:
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	add r4, r0, #0
 	ldr r0, [r5, #4]
 	bl ov07_0221BFD0
@@ -32363,7 +32363,7 @@ _0222B6AC:
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ov07_0221BFD0
@@ -32391,7 +32391,7 @@ _0222B6AC:
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ov07_0221BFD0

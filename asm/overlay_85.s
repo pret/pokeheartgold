@@ -2933,7 +2933,7 @@ ov85_021E6F6C: ; 0x021E6F6C
 	ldr r5, [r0, r1]
 	ldr r7, [r0, r2]
 	mov r0, #1
-	bl sub_0200A080
+	bl G2dRenderer_SetPlttTransferReservedRegion
 	mov r0, #0xd9
 	mov r1, #0x66
 	bl NARC_New
@@ -6751,7 +6751,7 @@ _021E8B34:
 	bl SpriteList_Delete
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	add r0, r6, #0
 	bl ov85_021E9288
 	ldr r0, [r6, #0x14]
@@ -7256,9 +7256,9 @@ ov85_021E8F58: ; 0x021E8F58
 	bl ObjCharTransfer_Init
 	mov r0, #0x14
 	mov r1, #0x66
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0

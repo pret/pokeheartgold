@@ -1006,9 +1006,9 @@ ov43_0222A690: ; 0x0222A690
 	bl ObjCharTransfer_InitEx
 	mov r0, #0x40
 	add r1, r7, #0
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	add r1, r6, #0
 	mov r0, #0x40
 	add r1, #0xbc
@@ -1194,7 +1194,7 @@ _0222A856:
 	ldr r0, [r7, #4]
 	bl SpriteList_Delete
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	bl OamManager_Free
 	bl GF_DestroyVramTransferManager
 	pop {r3, r4, r5, r6, r7, pc}

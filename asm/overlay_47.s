@@ -483,14 +483,14 @@ ov47_02258BB4: ; 0x02258BB4
 	bl ObjCharTransfer_InitEx
 	mov r0, #0x20
 	add r1, r6, #0
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	mov r0, #1
 	mov r1, #0x10
 	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
-	bl sub_0200A080
+	bl G2dRenderer_SetPlttTransferReservedRegion
 	add r1, r5, #0
 	mov r0, #0x20
 	add r1, #8
@@ -540,7 +540,7 @@ _02258C54:
 	cmp r4, #4
 	blt _02258C54
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	bl OamManager_Free
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov47_02258C44

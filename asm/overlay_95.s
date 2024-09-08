@@ -2181,7 +2181,7 @@ _021E69FA:
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	add r5, r0, #0
 	mov r3, #0
 	mov r6, #1
@@ -2427,7 +2427,7 @@ _021E6BFA:
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	add r5, r0, #0
 	mov r3, #0
 	mov r6, #1

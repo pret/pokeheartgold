@@ -6,12 +6,12 @@
 #include "intro_movie_internal.h"
 #include "math_util.h"
 #include "obj_char_transfer.h"
+#include "obj_pltt_transfer.h"
 #include "sys_task_api.h"
 #include "system.h"
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
-#include "unk_02022588.h"
 #include "unk_02026E30.h"
 
 enum IntroScene4State {
@@ -100,7 +100,7 @@ static void IntroMovie_Scene4_VBlankCB(void *pVoid) {
 static void IntroMovie_Scene4_Init(IntroMovieOverlayData *data, IntroMovieScene4Data *sceneData) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     ObjCharTransfer_ClearBuffers();
-    sub_02022638();
+    ObjPlttTransfer_Reset();
     gSystem.screensFlipped = TRUE;
     GfGfx_SwapDisplay();
     sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);

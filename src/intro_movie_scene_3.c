@@ -6,11 +6,11 @@
 #include "gf_gfx_loader.h"
 #include "intro_movie_internal.h"
 #include "obj_char_transfer.h"
+#include "obj_pltt_transfer.h"
 #include "system.h"
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
-#include "unk_02022588.h"
 #include "unk_02026E30.h"
 
 enum IntroScene3State {
@@ -186,7 +186,7 @@ static void IntroMovie_Scene3_VBlankCB(void *pVoid) {
 static void IntroMovie_Scene3_Init(IntroMovieOverlayData *data, IntroMovieScene3Data *sceneData) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     ObjCharTransfer_ClearBuffers();
-    sub_02022638();
+    ObjPlttTransfer_Reset();
     gSystem.screensFlipped = FALSE;
     GfGfx_SwapDisplay();
     IntroMovie_Scene3_InitBGLayers(data);

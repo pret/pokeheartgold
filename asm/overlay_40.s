@@ -101,12 +101,12 @@ ov40_0222B6E0: ; 0x0222B6E0
 	mov r0, #1
 	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
-	bl sub_0200A080
+	bl G2dRenderer_SetPlttTransferReservedRegion
 	ldr r1, _0222B92C ; =0x00200010
 	mov r0, #2
 	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #2
-	bl sub_0200A080
+	bl G2dRenderer_SetPlttTransferReservedRegion
 	bl sub_0203A880
 	mov r0, #1
 	mov r1, #0x6d

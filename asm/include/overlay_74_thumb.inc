@@ -143,9 +143,9 @@
 .public ObjCharTransfer_InitEx
 .public ObjCharTransfer_Destroy
 .public ObjCharTransfer_ClearBuffers
-.public sub_02022588
-.public sub_02022608
-.public sub_02022638
+.public ObjPlttTransfer_Init
+.public ObjPlttTransfer_Destroy
+.public ObjPlttTransfer_Reset
 .public GfGfx_SetBanks
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_EngineATogglePlanes

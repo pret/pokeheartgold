@@ -2094,9 +2094,9 @@ ov70_022388D0: ; 0x022388D0
 	bl ObjCharTransfer_Init
 	mov r0, #0x14
 	mov r1, #0x3d
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -2855,7 +2855,7 @@ _02238ECC:
 	str r1, [r6, r0]
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02238EF8: .word 0x00000D34

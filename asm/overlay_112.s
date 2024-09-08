@@ -18845,7 +18845,7 @@ ov112_021EF100: ; 0x021EF100
 	bl ov112_021F051C
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	ldr r0, [r4, #0x18]
 	bl FreeToHeap
 	add r0, r4, #0
@@ -18923,9 +18923,9 @@ ov112_021EF19C: ; 0x021EF19C
 	bl ObjCharTransfer_Init
 	mov r0, #0x14
 	mov r1, #0x9a
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0

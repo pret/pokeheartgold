@@ -46,7 +46,7 @@ struct ObjCharTransferTasksManager {
     u8 *blockBufSub;
 };
 
-ObjCharTransferTasksManager *sObjCharTransferTasksManager;
+static ObjCharTransferTasksManager *sObjCharTransferTasksManager;
 
 static BOOL ObjCharTransfer_TaskExistsByID(int resId);
 static void ObjCharTransferInternal_ResetAllTransferTasks(void);

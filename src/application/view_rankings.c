@@ -14,6 +14,7 @@
 #include "math_util.h"
 #include "msgdata.h"
 #include "obj_char_transfer.h"
+#include "obj_pltt_transfer.h"
 #include "player_data.h"
 #include "render_window.h"
 #include "save_rankings.h"
@@ -26,7 +27,6 @@
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
-#include "unk_02022588.h"
 #include "unk_02097D3C.h"
 #include "vram_transfer_manager.h"
 #include "yes_no_prompt.h"
@@ -348,7 +348,7 @@ BOOL ViewRankingsApp_Exit(OVY_MANAGER *man, int *pState) {
     FontID_Release(4);
     OamManager_Free();
     ObjCharTransfer_Destroy();
-    sub_02022608();
+    ObjPlttTransfer_Destroy();
     YesNoPrompt_Destroy(appData->yesNoPrompt);
     FreeToHeap(appData->touchscreenHitboxes);
     FreeToHeap(appData->bgConfig);
@@ -562,9 +562,9 @@ static void ViewRankings_InitObjCharTransfer(void) {
         .heapId   = HEAP_ID_9E
     };
     ObjCharTransfer_Init(&template);
-    sub_02022588(1, HEAP_ID_9E);
+    ObjPlttTransfer_Init(1, HEAP_ID_9E);
     ObjCharTransfer_ClearBuffers();
-    sub_02022638();
+    ObjPlttTransfer_Reset();
 }
 
 static void ViewRankings_CreateOamManager(void) {

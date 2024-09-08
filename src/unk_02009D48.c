@@ -3,10 +3,10 @@
 #include "global.h"
 
 #include "obj_char_transfer.h"
+#include "obj_pltt_transfer.h"
 #include "sprite.h"
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
-#include "unk_02022588.h"
 #include "unk_02025C44.h"
 
 void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, int plttId, int cellId, int cellAnmId, int multiCellId, int multiCellAnmId, int transfer, int priority, GF_2DGfxResMan *charMan, GF_2DGfxResMan *plttMan, GF_2DGfxResMan *cellMan, GF_2DGfxResMan *cellAnmMan, GF_2DGfxResMan *multiCellMan, GF_2DGfxResMan *multiCellAnmMan) {
@@ -164,6 +164,6 @@ void G2dRenderer_SetObjCharTransferReservedRegion(NNS_G2D_VRAM_TYPE vram, GXOBJV
     }
 }
 
-void sub_0200A080(NNS_G2D_VRAM_TYPE type) {
-    sub_020225E4(0xC000, type);
+void G2dRenderer_SetPlttTransferReservedRegion(NNS_G2D_VRAM_TYPE type) {
+    ObjPlttTransfer_SetReservedRegion(0xC000, type);
 }

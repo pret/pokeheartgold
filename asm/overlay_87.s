@@ -4874,7 +4874,7 @@ _021E7EC6:
 	bl SpriteList_Delete
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov87_021E7E98
@@ -4896,9 +4896,9 @@ ov87_021E7EF0: ; 0x021E7EF0
 	bl ObjCharTransfer_InitEx
 	mov r0, #0xe
 	mov r1, #0x7a
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0

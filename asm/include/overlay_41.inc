@@ -148,10 +148,10 @@
 .public ObjCharTransfer_ResetTransferTasksByResID
 .public sub_02021AC8
 .public sub_02021B5C
-.public sub_02022588
-.public sub_02022608
-.public sub_02022638
-.public sub_02022744
+.public ObjPlttTransfer_Init
+.public ObjPlttTransfer_Destroy
+.public ObjPlttTransfer_Reset
+.public ObjPlttTransfer_FreeTaskByID
 .public GfGfx_SetBanks
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_EngineATogglePlanes

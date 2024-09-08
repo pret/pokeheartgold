@@ -23,7 +23,7 @@
 .public CreateSpriteResourcesHeader
 .public G2dRenderer_Init
 .public G2dRenderer_SetObjCharTransferReservedRegion
-.public sub_0200A080
+.public G2dRenderer_SetPlttTransferReservedRegion
 .public Create2DGfxResObjMan
 .public Destroy2DGfxResObjMan
 .public AddCharResObjFromOpenNarc
@@ -83,9 +83,9 @@
 .public ObjCharTransfer_InitEx
 .public ObjCharTransfer_Destroy
 .public ObjCharTransfer_ClearBuffers
-.public sub_02022588
-.public sub_02022608
-.public sub_02022638
+.public ObjPlttTransfer_Init
+.public ObjPlttTransfer_Destroy
+.public ObjPlttTransfer_Reset
 .public GfGfx_SetBanks
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_EngineBTogglePlanes

@@ -2879,7 +2879,7 @@ _0223F5C8:
 	mov r1, #0x10
 	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
-	bl sub_0200A080
+	bl G2dRenderer_SetPlttTransferReservedRegion
 	bl sub_0203A880
 _0223F660:
 	mov r0, #0xa
@@ -12259,7 +12259,7 @@ _02244234:
 	mov r1, #0x10
 	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
-	bl sub_0200A080
+	bl G2dRenderer_SetPlttTransferReservedRegion
 	bl sub_0203A880
 _02244354:
 	mov r0, #0xa
@@ -18083,7 +18083,7 @@ _0224723A:
 	bl SpriteList_Delete
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov83_022471FC
@@ -18165,9 +18165,9 @@ ov83_022472DC: ; 0x022472DC
 	bl ObjCharTransfer_InitEx
 	mov r0, #0x20
 	mov r1, #0x6b
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0

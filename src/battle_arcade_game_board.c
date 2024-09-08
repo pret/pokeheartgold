@@ -14,6 +14,7 @@
 #include "gf_gfx_planes.h"
 #include "math_util.h"
 #include "obj_char_transfer.h"
+#include "obj_pltt_transfer.h"
 #include "palette.h"
 #include "party.h"
 #include "party_menu.h"
@@ -27,7 +28,6 @@
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
-#include "unk_02022588.h"
 #include "unk_02030A98.h"
 #include "unk_02035900.h"
 #include "unk_020379A0.h"
@@ -609,7 +609,7 @@ static void BattleArcadeGameBoard_InitObjects(GAME_BOARD_WORK *work) {
 
     if (sub_02037474()) {
         G2dRenderer_SetObjCharTransferReservedRegion(NNS_G2D_VRAM_TYPE_2DMAIN, GX_OBJVRAMMODE_CHAR_1D_32K);
-        sub_0200A080(NNS_G2D_VRAM_TYPE_2DMAIN);
+        G2dRenderer_SetPlttTransferReservedRegion(NNS_G2D_VRAM_TYPE_2DMAIN);
         sub_0203A880();
     }
 
@@ -1296,7 +1296,7 @@ static void ov84_0223F418(GAME_BOARD_SUB_3E8 *work) {
     SpriteList_Delete(work->spriteList);
     OamManager_Free();
     ObjCharTransfer_Destroy();
-    sub_02022608();
+    ObjPlttTransfer_Destroy();
 }
 
 extern ObjCharTransferTemplate ov84_0223F9E8;
@@ -1304,9 +1304,9 @@ extern ObjCharTransferTemplate ov84_0223F9E8;
 static void ov84_0223F480(void) {
     ObjCharTransferTemplate var = ov84_0223F9E8;
     ObjCharTransfer_InitEx(&var, GX_OBJVRAMMODE_CHAR_1D_32K, GX_OBJVRAMMODE_CHAR_1D_32K);
-    sub_02022588(14, HEAP_ID_GAME_BOARD);
+    ObjPlttTransfer_Init(14, HEAP_ID_GAME_BOARD);
     ObjCharTransfer_ClearBuffers();
-    sub_02022638();
+    ObjPlttTransfer_Reset();
 }
 
 static void GameBoard_LoadEventGraphics(GAME_BOARD_SUB_3E8 *work) {

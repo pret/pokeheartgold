@@ -76,7 +76,7 @@ Static main
     Object asm/unk_02020B8C.o
     Object asm/unk_020210A0.o
     Object src/obj_char_transfer.o
-    Object asm/unk_02022588.o
+    Object src/obj_pltt_transfer.o
     Object src/gf_gfx_planes.o
     Object src/camera.o
     Object asm/unk_02023694.o

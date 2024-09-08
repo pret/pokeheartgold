@@ -14,6 +14,7 @@
 #include "gf_gfx_loader.h"
 #include "launch_application.h"
 #include "obj_char_transfer.h"
+#include "obj_pltt_transfer.h"
 #include "render_text.h"
 #include "render_window.h"
 #include "sound.h"
@@ -28,7 +29,6 @@
 #include "unk_0200FA24.h"
 #include "unk_02013FDC.h"
 #include "unk_02020B8C.h"
-#include "unk_02022588.h"
 #include "unk_02026E30.h"
 
 enum ChooseStarterInput {
@@ -556,7 +556,7 @@ BOOL ChooseStarter_Exit(OVY_MANAGER *ovy, int *state) {
     Destroy2DGfxResObjMan(work->monSpriteData.animResMan);
     OamManager_Free();
     ObjCharTransfer_Destroy();
-    sub_02022608();
+    ObjPlttTransfer_Destroy();
     freeWindow(work->winTop);
     freeWindow(work->winBottom);
     FreeBgTilemapBuffer(work->bgConfig, 1);
@@ -620,9 +620,9 @@ static void createOamManager(HeapID heapId) {
         baseTrans.heapId = heapId;
         ObjCharTransfer_InitEx(&baseTrans, GX_OBJVRAMMODE_CHAR_1D_128K, GX_OBJVRAMMODE_CHAR_1D_32K);
     }
-    sub_02022588(3, heapId);
+    ObjPlttTransfer_Init(3, heapId);
     ObjCharTransfer_ClearBuffers();
-    sub_02022638();
+    ObjPlttTransfer_Reset();
 }
 
 static void init3dEngine(struct ChooseStarterAppWork *work) {

@@ -1537,7 +1537,7 @@ ov80_02239384: ; 0x02239384
 	mov r0, #1
 	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
-	bl sub_0200A080
+	bl G2dRenderer_SetPlttTransferReservedRegion
 	ldr r0, [r4, #0x34]
 	bl SpriteRenderer_CreateGfxHandler
 	str r0, [r4, #0x38]

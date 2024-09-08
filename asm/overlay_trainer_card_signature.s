@@ -262,7 +262,7 @@ _021E82FC:
 	bl SpriteList_Delete
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	add r0, r6, #0
 	bl ov52_021E8B94
 	mov r0, #2
@@ -718,9 +718,9 @@ ov52_021E86DC: ; 0x021E86DC
 	bl ObjCharTransfer_Init
 	mov r0, #0x14
 	mov r1, #0x27
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0

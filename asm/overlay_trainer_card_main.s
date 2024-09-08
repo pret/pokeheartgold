@@ -4171,7 +4171,7 @@ _021E7CF0:
 	bl SpriteList_Delete
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -4219,9 +4219,9 @@ ov51_021E7D68: ; 0x021E7D68
 	bl ObjCharTransfer_Init
 	mov r0, #2
 	mov r1, #0x19
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	mov r0, #0x19
 	bl sub_0200B2E0
 	mov r0, #0x19

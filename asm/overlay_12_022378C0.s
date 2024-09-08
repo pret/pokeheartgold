@@ -411,7 +411,7 @@ _02237FD8:
 	mov r0, #1
 	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
-	bl sub_0200A080
+	bl G2dRenderer_SetPlttTransferReservedRegion
 	add r0, r4, #0
 	add r0, #0x90
 	ldr r0, [r0]
