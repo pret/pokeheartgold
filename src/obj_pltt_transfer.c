@@ -35,10 +35,10 @@ static void ObjPlttTransfer_HandleError(void);
 static BOOL ObjPlttTransfer_TaskExistsByID(int resId);
 static void ObjPlttTransfer_FreeAllTasks(void);
 static void ObjPlttTransferTask_Reset(ObjPlttTransferTask *task);
-static BOOL ObjPlttTransfer_InitFromTemplate(const ObjPlttTransferTaskTemplate *a0, ObjPlttTransferTask *task);
+static BOOL ObjPlttTransfer_InitFromTemplate(const ObjPlttTransferTaskTemplate *template, ObjPlttTransferTask *task);
 static void ObjPlttTransferTask_Init(ObjPlttTransferTask *task);
-static BOOL ObjPlttTransfer_ReserveAndTransfer_HandleExtPltt(const ObjPlttTransferTaskTemplate *a0, ObjPlttTransferTask *task);
-static BOOL ObjCharTransfer_ReserveAndTransfer_ExtPlttBanned(const ObjPlttTransferTaskTemplate *a0, ObjPlttTransferTask *task);
+static BOOL ObjPlttTransfer_ReserveAndTransfer_HandleExtPltt(const ObjPlttTransferTaskTemplate *template, ObjPlttTransferTask *task);
+static BOOL ObjCharTransfer_ReserveAndTransfer_ExtPlttBanned(const ObjPlttTransferTaskTemplate *template, ObjPlttTransferTask *task);
 static ObjPlttTransferTask *ObjPlttTransfer_GetTaskByID(int resID);
 static void ObjPlttTransfer_GetExtPlttSize(void);
 static void ObjPlttTransferTask_PushToVRam_UpdateSzByte(ObjPlttTransferTask *task);
@@ -94,19 +94,19 @@ void ObjPlttTransfer_Reset(void) {
     ObjPlttTransfer_ReleaseAllBlocks(sObjPlttTransferTasksManager);
 }
 
-BOOL ObjPlttTransfer_CreateTaskAndDoTransferFromTemplate_HandleExtPltt(const ObjPlttTransferTaskTemplate *a0) {
+BOOL ObjPlttTransfer_CreateTaskAndDoTransferFromTemplate_HandleExtPltt(const ObjPlttTransferTaskTemplate *template) {
     ObjPlttTransferTask *task = ObjPlttTransfer_GetFreeTask();
     if (task == NULL) {
         GF_ASSERT(FALSE);
         return FALSE;
     }
 
-    if (!ObjPlttTransfer_InitFromTemplate(a0, task)) {
+    if (!ObjPlttTransfer_InitFromTemplate(template, task)) {
         return FALSE;
     }
 
-    if (!ObjPlttTransfer_ReserveAndTransfer_HandleExtPltt(a0, task)) {
-        ObjPlttTransfer_FreeTaskByID(a0->id);
+    if (!ObjPlttTransfer_ReserveAndTransfer_HandleExtPltt(template, task)) {
+        ObjPlttTransfer_FreeTaskByID(template->id);
         return FALSE;
     }
 
@@ -114,19 +114,19 @@ BOOL ObjPlttTransfer_CreateTaskAndDoTransferFromTemplate_HandleExtPltt(const Obj
     return TRUE;
 }
 
-BOOL ObjPlttTransfer_CreateTaskAndDoTransferFromTemplate_ExtPlttBanned(const ObjPlttTransferTaskTemplate *a0) {
+BOOL ObjPlttTransfer_CreateTaskAndDoTransferFromTemplate_ExtPlttBanned(const ObjPlttTransferTaskTemplate *template) {
     ObjPlttTransferTask *task = ObjPlttTransfer_GetFreeTask();
     if (task == NULL) {
         GF_ASSERT(FALSE);
         return FALSE;
     }
 
-    if (!ObjPlttTransfer_InitFromTemplate(a0, task)) {
+    if (!ObjPlttTransfer_InitFromTemplate(template, task)) {
         return FALSE;
     }
 
-    if (!ObjCharTransfer_ReserveAndTransfer_ExtPlttBanned(a0, task)) {
-        ObjPlttTransfer_FreeTaskByID(a0->id);
+    if (!ObjCharTransfer_ReserveAndTransfer_ExtPlttBanned(template, task)) {
+        ObjPlttTransfer_FreeTaskByID(template->id);
         return FALSE;
     }
 
@@ -221,16 +221,16 @@ static void ObjPlttTransferTask_Reset(ObjPlttTransferTask *task) {
     ObjPlttTransferTask_Init(task);
 }
 
-static BOOL ObjPlttTransfer_InitFromTemplate(const ObjPlttTransferTaskTemplate *a0, ObjPlttTransferTask *task) {
-    task->plttData = a0->plttData;
-    if (ObjPlttTransfer_TaskExistsByID(a0->id) == TRUE) {
+static BOOL ObjPlttTransfer_InitFromTemplate(const ObjPlttTransferTaskTemplate *template, ObjPlttTransferTask *task) {
+    task->plttData = template->plttData;
+    if (ObjPlttTransfer_TaskExistsByID(template->id) == TRUE) {
         GF_ASSERT(FALSE);
         return FALSE;
     }
-    task->resID    = a0->id;
-    task->vram     = a0->vram;
+    task->resID    = template->id;
+    task->vram     = template->vram;
     task->active   = TRUE;
-    task->plttSize = a0->plttNum;
+    task->plttSize = template->plttNum;
     return TRUE;
 }
 
@@ -240,7 +240,7 @@ static void ObjPlttTransferTask_Init(ObjPlttTransferTask *task) {
     NNS_G2dInitImagePaletteProxy(&task->plttProxy);
 }
 
-static BOOL ObjPlttTransfer_ReserveAndTransfer_HandleExtPltt(const ObjPlttTransferTaskTemplate *a0, ObjPlttTransferTask *task) {
+static BOOL ObjPlttTransfer_ReserveAndTransfer_HandleExtPltt(const ObjPlttTransferTaskTemplate *template, ObjPlttTransferTask *task) {
     u32 sizeMain;
     u32 sizeSub;
     u32 *pPosMain;
@@ -263,7 +263,7 @@ static BOOL ObjPlttTransfer_ReserveAndTransfer_HandleExtPltt(const ObjPlttTransf
     return TRUE;
 }
 
-static BOOL ObjCharTransfer_ReserveAndTransfer_ExtPlttBanned(const ObjPlttTransferTaskTemplate *a0, ObjPlttTransferTask *task) {
+static BOOL ObjCharTransfer_ReserveAndTransfer_ExtPlttBanned(const ObjPlttTransferTaskTemplate *template, ObjPlttTransferTask *task) {
     u32 loadAddrMain;
     u32 loadAddrSub;
     GF_ASSERT(!task->plttData->bExtendedPlt);
