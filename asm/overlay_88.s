@@ -595,7 +595,7 @@ ov88_02258C98: ; 0x02258C98
 	bl sub_02022638
 	ldr r1, _02258D34 ; =0x00200010
 	mov r0, #1
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
 	bl sub_0200A080
 	add r1, r5, #0

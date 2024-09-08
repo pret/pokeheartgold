@@ -4,8 +4,8 @@
 
 	.text
 
-	thumb_func_start sub_02025C44
-sub_02025C44: ; 0x02025C44
+	thumb_func_start GF_InitG2dRenderer
+GF_InitG2dRenderer: ; 0x02025C44
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -13,7 +13,7 @@ sub_02025C44: ; 0x02025C44
 	add r5, #0x80
 	str r4, [r5]
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02025C44
+	thumb_func_end GF_InitG2dRenderer
 
 	thumb_func_start sub_02025C54
 sub_02025C54: ; 0x02025C54
@@ -44,8 +44,8 @@ _02025C84:
 	.balign 4, 0
 	thumb_func_end sub_02025C54
 
-	thumb_func_start sub_02025C88
-sub_02025C88: ; 0x02025C88
+	thumb_func_start GF_SetG2dRendererSurface
+GF_SetG2dRendererSurface: ; 0x02025C88
 	add r3, r0, #0
 	add r2, r1, #0
 	ldmia r2!, {r0, r1}
@@ -54,7 +54,7 @@ sub_02025C88: ; 0x02025C88
 	stmia r3!, {r0, r1}
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_02025C88
+	thumb_func_end GF_SetG2dRendererSurface
 
 	thumb_func_start sub_02025C98
 sub_02025C98: ; 0x02025C98

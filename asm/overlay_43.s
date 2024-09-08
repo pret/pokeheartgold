@@ -4262,7 +4262,7 @@ ov43_0222C024: ; 0x0222C024
 	add r0, r4, #0
 	add r0, #8
 	add r1, r7, #0
-	bl sub_02025C88
+	bl GF_SetG2dRendererSurface
 	add r0, r5, #0
 	add r0, #0xb2
 	ldrh r0, [r0]
@@ -4337,7 +4337,7 @@ _0222C0CA:
 	add r0, r4, #0
 	add r0, #8
 	add r1, r7, #0
-	bl sub_02025C88
+	bl GF_SetG2dRendererSurface
 	mov r0, #0xb0
 	ldrsh r3, [r5, r0]
 	mov r0, #0x1f

@@ -411,7 +411,7 @@ ov01_021EB4B8: ; 0x021EB4B8
 	ldr r1, _021EB564 ; =0xFFFFF000
 	add r6, r0, #0
 	add r0, #0x14
-	bl sub_02025C44
+	bl GF_InitG2dRenderer
 	mov r0, #0
 	add r3, r6, #0
 	str r0, [sp, #0xc]

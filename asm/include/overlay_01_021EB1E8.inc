@@ -57,7 +57,7 @@
 .public Sprite_GetMatrixPtr
 .public Sprite_SetAnimCtrlCurrentFrame
 .public GF_AssertFail
-.public sub_02025C44
+.public GF_InitG2dRenderer
 .public PlayerAvatar_GetMapObject
 .public NNS_G2dGetUnpackedCharacterData
 .public NNS_G2dGetUnpackedPaletteData

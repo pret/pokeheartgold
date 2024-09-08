@@ -7017,7 +7017,7 @@ ov91_0225FA9C: ; 0x0225FA9C
 	bl sub_02022638
 	ldr r1, _0225FB44 ; =0x00200010
 	mov r0, #1
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
 	bl sub_0200A080
 	add r1, r7, #0

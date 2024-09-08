@@ -1535,7 +1535,7 @@ ov80_02239384: ; 0x02239384
 	bl sub_0200CF70
 	ldr r1, _022393E0 ; =0x00200010
 	mov r0, #1
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
 	bl sub_0200A080
 	ldr r0, [r4, #0x34]

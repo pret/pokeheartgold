@@ -5945,7 +5945,7 @@ _02240DBE:
 	beq _02240E26
 	mov r0, #1
 	mov r1, #0x10
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
 	bl sub_0200A080
 	bl sub_0203A880

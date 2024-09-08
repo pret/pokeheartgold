@@ -1890,7 +1890,7 @@ ov48_02259688: ; 0x02259688
 	bl sub_02022638
 	mov r0, #1
 	mov r1, #0x10
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
 	bl sub_0200A080
 	add r1, r5, #0

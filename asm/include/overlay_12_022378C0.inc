@@ -37,7 +37,7 @@
 .public PokepicManager_SetPlttBaseAddrAndSize
 .public PokepicManager_HandleLoadImgAndOrPltt
 .public G2dRenderer_SetSubSurfaceCoords
-.public sub_02009FE8
+.public G2dRenderer_SetObjCharTransferReservedRegion
 .public sub_0200A080
 .public NewMsgDataFromNarc
 .public DestroyMsgData

@@ -135,7 +135,7 @@ ov92_0225C5C4: ; 0x0225C5C4
 	bl GF_CreateVramTransferManager
 	ldr r1, _0225C938 ; =0x00200010
 	mov r0, #1
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
 	bl sub_0200A080
 	bl sub_0203A880

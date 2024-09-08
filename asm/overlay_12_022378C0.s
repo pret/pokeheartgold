@@ -409,7 +409,7 @@ _02237FD8:
 	bl sub_0200CF70
 	ldr r1, _0223831C ; =0x00100010
 	mov r0, #1
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
 	bl sub_0200A080
 	add r0, r4, #0

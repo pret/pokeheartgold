@@ -608,8 +608,8 @@ static void BattleArcadeGameBoard_InitObjects(GAME_BOARD_WORK *work) {
     work->button = BattleArcadeObject_Create(&work->unk3E8, 0, 0, 0, 2, 128, 96, 0, 0, 1);
 
     if (sub_02037474()) {
-        sub_02009FE8(NNS_G2D_VRAM_TYPE_2DMAIN, GX_OBJVRAMMODE_CHAR_1D_32K);
-        sub_0200A080(1);
+        G2dRenderer_SetObjCharTransferReservedRegion(NNS_G2D_VRAM_TYPE_2DMAIN, GX_OBJVRAMMODE_CHAR_1D_32K);
+        sub_0200A080(NNS_G2D_VRAM_TYPE_2DMAIN);
         sub_0203A880();
     }
 

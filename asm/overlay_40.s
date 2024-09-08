@@ -99,12 +99,12 @@ ov40_0222B6E0: ; 0x0222B6E0
 	bl ov40_0223D544
 	ldr r1, _0222B92C ; =0x00200010
 	mov r0, #1
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
 	bl sub_0200A080
 	ldr r1, _0222B92C ; =0x00200010
 	mov r0, #2
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #2
 	bl sub_0200A080
 	bl sub_0203A880

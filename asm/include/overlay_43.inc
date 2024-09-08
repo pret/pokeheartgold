@@ -144,7 +144,7 @@
 .public TouchscreenHitbox_FindHitboxAtTouchNew
 .public System_GetTouchNew
 .public GF_AssertFail
-.public sub_02025C88
+.public GF_SetG2dRendererSurface
 .public String_New
 .public String_Delete
 .public String_SetEmpty

@@ -181,7 +181,7 @@ ov89_02258800: ; 0x02258800
 	bl sub_0200CF70
 	ldr r1, _02258AEC ; =0x00200010
 	mov r0, #1
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
 	bl sub_0200A080
 	ldr r0, [r5, #0x1c]

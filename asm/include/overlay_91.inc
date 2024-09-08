@@ -17,7 +17,7 @@
 .public CreateSpriteResourcesHeader
 .public G2dRenderer_Init
 .public G2dRenderer_SetSubSurfaceCoords
-.public sub_02009FE8
+.public G2dRenderer_SetObjCharTransferReservedRegion
 .public sub_0200A080
 .public Create2DGfxResObjMan
 .public Destroy2DGfxResObjMan

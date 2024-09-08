@@ -2270,7 +2270,7 @@ ov44_0222AFE8: ; 0x0222AFE8
 	bl sub_02022638
 	ldr r1, _0222B02C ; =0x00200010
 	mov r0, #1
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
 	bl sub_0200A080
 	add sp, #0x10
@@ -19335,7 +19335,7 @@ ov44_0223376C: ; 0x0223376C
 	bl sub_02022638
 	ldr r1, _0223381C ; =0x00200010
 	mov r0, #1
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
 	bl sub_0200A080
 	add r1, r7, #0

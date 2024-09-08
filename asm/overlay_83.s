@@ -2877,7 +2877,7 @@ _0223F5C8:
 	beq _0223F660
 	mov r0, #1
 	mov r1, #0x10
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
 	bl sub_0200A080
 	bl sub_0203A880
@@ -12257,7 +12257,7 @@ _02244234:
 	beq _02244354
 	mov r0, #1
 	mov r1, #0x10
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
 	bl sub_0200A080
 	bl sub_0203A880

@@ -419,7 +419,7 @@ ov93_0225C768: ; 0x0225C768
 	bl sub_0200CF70
 	ldr r1, _0225CA70 ; =0x00100010
 	mov r0, #1
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
 	bl sub_0200A080
 	ldr r0, [r5, #0x24]
