@@ -901,7 +901,7 @@ static void VBlankTask_RegisterHallOfFame_IndividualMonsCongrats(SysTask *task, 
         data->subprocCallback = NULL;
     }
     DoScheduledBgGpuUpdates(data->bgConfig);
-    sub_0200D020(data->spriteGfxHandler);
+    SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler);
     thunk_OamManager_ApplyAndResetBuffers();
     OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
@@ -932,12 +932,12 @@ static void RegisterHallOfFame_CreateSpriteGfxHandlers(RegisterHallOfFameData *d
     {
         OamManagerParam sp2C      = ov63_0221FCB8;
         OamCharTransferParam sp18 = ov63_0221FB30;
-        sub_0200CF70(data->spriteRenderer, &sp2C, &sp18, 0x20);
+        SpriteRenderer_CreateOamCharPlttManagers(data->spriteRenderer, &sp2C, &sp18, 0x20);
     }
 
     {
         SpriteResourceCountsListUnion sp00 = sSpriteGfxHandlerCapacities;
-        sub_0200CFF4(data->spriteRenderer, data->spriteGfxHandler, 15);
+        SpriteRenderer_CreateSpriteList(data->spriteRenderer, data->spriteGfxHandler, 15);
         SpriteRenderer_Init2DGfxResManagersFromCountsArray(data->spriteRenderer, data->spriteGfxHandler, &sp00);
     }
     G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(data->spriteRenderer), 0, FX32_CONST(1024));
@@ -2265,7 +2265,7 @@ static void VBlankTask_RegisterHallOfFame_WholePartyCongrats(SysTask *task, void
     }
     RegisterHallOfFame_G3Commit(data);
     DoScheduledBgGpuUpdates(data->bgConfig);
-    sub_0200D020(data->spriteGfxHandler);
+    SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler);
     thunk_OamManager_ApplyAndResetBuffers();
     OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }

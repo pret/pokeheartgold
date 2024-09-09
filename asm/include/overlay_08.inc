@@ -39,8 +39,8 @@
 .public PrintUIntOnWindow
 .public sub_0200CE7C
 .public SpriteRenderer_CreateGfxHandler
-.public sub_0200CFF4
-.public sub_0200D020
+.public SpriteRenderer_CreateSpriteList
+.public SpriteGfxHandler_RenderAndAnimateSprites
 .public SpriteRenderer_Init2DGfxResManagersFromCountsArray
 .public SpriteRenderer_LoadCharResObjFromNarcId
 .public SpriteRenderer_LoadCharResObjFromOpenNarc

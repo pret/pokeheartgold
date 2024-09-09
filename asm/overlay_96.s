@@ -14473,11 +14473,11 @@ ov96_021EC490: ; 0x021EC490
 	add r1, sp, #0x14
 	add r2, sp, #0
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r0, [r4, #0x18]
 	ldr r1, [r4, #0x1c]
 	mov r2, #0x80
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	ldr r0, [r4, #0x18]
 	ldr r1, [r4, #0x1c]
 	add r2, sp, #0x34
@@ -16450,7 +16450,7 @@ ov96_021ED47C: ; 0x021ED47C
 	push {r3, lr}
 	bl ov96_021E5DC4
 	ldr r0, [r0, #0x1c]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	mov r0, #1
 	pop {r3, pc}
 	thumb_func_end ov96_021ED47C
@@ -20291,7 +20291,7 @@ ov96_021EF18C: ; 0x021EF18C
 	push {r3, lr}
 	bl ov96_021E5DC4
 	ldr r0, [r0, #0x14]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	mov r0, #1
 	pop {r3, pc}
 	thumb_func_end ov96_021EF18C
@@ -21134,11 +21134,11 @@ ov96_021EF818: ; 0x021EF818
 	add r1, sp, #0x14
 	add r2, sp, #0
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r0, [r4, #0x10]
 	ldr r1, [r4, #0x14]
 	mov r2, #4
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	ldr r0, [r4, #0x10]
 	ldr r1, [r4, #0x14]
 	add r2, sp, #0x34
@@ -32767,7 +32767,7 @@ ov96_021F54C0: ; 0x021F54C0
 	bl ov96_021E5DC4
 	ldr r0, [r0, #0x60]
 	bl ov96_021EB5BC
-	bl sub_02020674
+	bl thunk_UpdateCellTransferStateManager
 	mov r0, #1
 	pop {r3, pc}
 	thumb_func_end ov96_021F54C0
@@ -37722,7 +37722,7 @@ ov96_021F7C4C: ; 0x021F7C4C
 	add r0, r4, #0
 	add r0, #0x98
 	ldr r0, [r0]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	ldr r0, [r4, #0x1c]
 	bl ov96_021F87D0
 	mov r0, #1
@@ -38807,7 +38807,7 @@ ov96_021F8448: ; 0x021F8448
 	add r1, sp, #0x14
 	add r2, sp, #0
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	add r0, r4, #0
 	add r1, r4, #0
 	add r0, #0x94
@@ -38815,7 +38815,7 @@ ov96_021F8448: ; 0x021F8448
 	ldr r0, [r0]
 	ldr r1, [r1]
 	mov r2, #2
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	add r0, r4, #0
 	add r0, #0x94
 	add r4, #0x98
@@ -73172,7 +73172,7 @@ ov96_02209738: ; 0x02209738
 	push {r3, lr}
 	bl ov96_021E5DC4
 	ldr r0, [r0, #0xc]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	mov r0, #1
 	pop {r3, pc}
 	thumb_func_end ov96_02209738
@@ -73332,12 +73332,12 @@ ov96_02209840: ; 0x02209840
 	add r1, sp, #0x14
 	add r2, sp, #0
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	mov r2, #1
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
 	lsl r2, r2, #8
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
 	add r2, sp, #0x34
@@ -83291,7 +83291,7 @@ ov96_0220E5F4: ; 0x0220E5F4
 	bl GF_AssertFail
 _0220E602:
 	ldr r0, [r4, #0x10]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	mov r0, #1
 	pop {r4, pc}
 	thumb_func_end ov96_0220E5F4
@@ -83884,11 +83884,11 @@ ov96_0220EA08: ; 0x0220EA08
 	add r1, sp, #0x14
 	add r2, sp, #0
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4, #0x10]
 	mov r2, #0x80
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4, #0x10]
 	add r2, sp, #0x34
@@ -98648,7 +98648,7 @@ ov96_02215CD0: ; 0x02215CD0
 	bl GF_AssertFail
 _02215CDE:
 	ldr r0, [r4, #0xc]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	mov r0, #1
 	pop {r4, pc}
 	thumb_func_end ov96_02215CD0
@@ -99477,11 +99477,11 @@ ov96_022162F4: ; 0x022162F4
 	add r1, sp, #0x14
 	add r2, sp, #0
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
 	mov r2, #0x80
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
 	add r2, sp, #0x34

@@ -401,24 +401,24 @@ BOOL OptionsMenu_Main(OVY_MANAGER *manager, int *state) {
         data->fadeUnused = 0;
         BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapId);
         OptionsApp_SetActiveButtonsXPosition(data);
-        sub_0200D020(data->spriteGfxHandler);
+        SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler);
         break;
     case 1:
-        sub_0200D020(data->spriteGfxHandler);
+        SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler);
         if (!IsPaletteFadeFinished()) {
             return FALSE;
         }
         break;
     case 2:
         if (data->unk10_0 != 0) {
-            sub_0200D020(data->spriteGfxHandler);
+            SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler);
             break;
         }
         OptionsApp_HandleInput(data);
-        sub_0200D020(data->spriteGfxHandler);
+        SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler);
         return FALSE;
     case 3:
-        sub_0200D020(data->spriteGfxHandler);
+        SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler);
         if (!OptionsApp_ConfirmAndQuitButtonsAreDoneAnimating(data)) {
             data->fadeUnused = 0;
             BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapId);
@@ -429,7 +429,7 @@ BOOL OptionsMenu_Main(OVY_MANAGER *manager, int *state) {
         if (TextPrinterCheckActive(data->textPrinter)) {
             RemoveTextPrinter(data->textPrinter);
         }
-        sub_0200D020(data->spriteGfxHandler);
+        SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler);
         if (!IsPaletteFadeFinished()) {
             return FALSE;
         }
@@ -1007,8 +1007,8 @@ static void OptionsApp_SetupSpriteRenderer(OptionsApp_Data *data) {
         .charModeMain = GX_OBJVRAMMODE_CHAR_1D_32K,
         .charModeSub  = GX_OBJVRAMMODE_CHAR_1D_32K,
     };
-    sub_0200CF70(data->spriteRenderer, &unk1, &unk2, 32);
-    sub_0200CFF4(data->spriteRenderer, data->spriteGfxHandler, 9);
+    SpriteRenderer_CreateOamCharPlttManagers(data->spriteRenderer, &unk1, &unk2, 32);
+    SpriteRenderer_CreateSpriteList(data->spriteRenderer, data->spriteGfxHandler, 9);
 
     u16 fileIdList[7] = {
         NARC_resdat_resdat_00000022_bin,

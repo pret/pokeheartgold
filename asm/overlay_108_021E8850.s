@@ -134,7 +134,7 @@ _021E894E:
 	mov r0, #0x11
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	mov r0, #0xce
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -2739,7 +2739,7 @@ ov108_021E9E10: ; 0x021E9E10
 	ldr r0, [r4, r1]
 	ldr r1, _021E9E78 ; =ov108_021EABA8
 	mov r3, #1
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r0, _021E9E70 ; =0x0000043C
 	ldr r0, [r4, r0]
 	bl SpriteRenderer_CreateGfxHandler
@@ -2750,7 +2750,7 @@ ov108_021E9E10: ; 0x021E9E10
 	ldr r0, [r4, r0]
 	ldr r1, [r4, r1]
 	mov r2, #4
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	mov r3, #0
 	ldr r1, _021E9E70 ; =0x0000043C
 	str r3, [sp]

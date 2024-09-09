@@ -123,7 +123,7 @@ _021E59E0:
 _021E59E4:
 	add r5, #0x94
 	ldr r0, [r5]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end PhotoAlbum_Main
@@ -2734,7 +2734,7 @@ ov109_021E6DE4: ; 0x021E6DE4
 	ldr r1, _021E6E58 ; =ov109_021E79D0
 	ldr r2, _021E6E5C ; =ov109_021E78C8
 	mov r3, #3
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r0, [r4]
 	bl sub_0200B2E0
 	ldr r0, [r4]
@@ -2753,7 +2753,7 @@ ov109_021E6DE4: ; 0x021E6DE4
 	ldr r0, [r0]
 	ldr r1, [r1]
 	mov r2, #5
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	mov r0, #1
 	str r0, [sp]
 	add r0, r4, #0

@@ -95,9 +95,9 @@
 .public SpriteRenderer_Create
 .public SpriteRenderer_CreateGfxHandler
 .public SpriteRenderer_GetG2dRendererPtr
-.public sub_0200CF70
-.public sub_0200CFF4
-.public sub_0200D020
+.public SpriteRenderer_CreateOamCharPlttManagers
+.public SpriteRenderer_CreateSpriteList
+.public SpriteGfxHandler_RenderAndAnimateSprites
 .public thunk_OamManager_ApplyAndResetBuffers
 .public SpriteRenderer_Delete
 .public SpriteRenderer_Init2DGfxResManagersFromCountsArray
@@ -212,7 +212,7 @@
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks
 .public sub_02020654
-.public sub_02020674
+.public thunk_UpdateCellTransferStateManager
 .public sub_0202067C
 .public CalcAngleBetweenVecs
 .public sub_02020E80

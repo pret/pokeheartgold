@@ -5344,7 +5344,7 @@ ov108_021E838C: ; 0x021E838C
 	ldr r1, _021E83C0 ; =ov108_021EA9A0
 	ldr r2, _021E83C4 ; =ov108_021EA98C
 	mov r3, #4
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r0, [r4]
 	bl sub_0200B2E0
 	ldr r0, [r4]
@@ -5393,7 +5393,7 @@ ov108_021E83F0: ; 0x021E83F0
 	ldr r0, [r4, r0]
 	ldr r1, [r4, r1]
 	mov r2, #0x8c
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	mov r1, #0xd3
 	mov r0, #0
 	lsl r1, r1, #2
@@ -5456,7 +5456,7 @@ _021E847E:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E848C
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 _021E848C:
 	pop {r4, pc}
 	.balign 4, 0

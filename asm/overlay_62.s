@@ -532,7 +532,7 @@ ov62_021E5CF4: ; 0x021E5CF4
 	ldr r2, _021E5D4C ; =ov62_021E6668
 	mov r3, #0x20
 	str r0, [r5]
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	add r0, r4, #0
 	bl sub_0200B2E0
 	add r0, r4, #0
@@ -543,7 +543,7 @@ ov62_021E5CF4: ; 0x021E5CF4
 	ldr r0, [r5]
 	ldr r1, [r5, #4]
 	mov r2, #7
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	ldr r0, [r5]
 	ldr r1, [r5, #4]
 	ldr r2, _021E5D50 ; =ov62_021E667C
@@ -588,7 +588,7 @@ _021E5D6A:
 	cmp r4, #7
 	blo _021E5D6A
 	ldr r0, [r5, #4]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov62_021E5D64

@@ -630,7 +630,7 @@ BOOL AlphPuzzle_Main(OVY_MANAGER *man, int *state) {
     case ALPH_PUZZLE_STATE_END:
         return TRUE;
     }
-    sub_0200D020(data->spriteGfxHandler);
+    SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler);
     return FALSE;
 }
 
@@ -1203,11 +1203,11 @@ static void AlphPuzzle_DestroyWindows(AlphPuzzleData *data) {
 static void AlphPuzzle_InitSpriteGraphics(AlphPuzzleData *data) {
     GF_CreateVramTransferManager(32, data->heapId);
     data->spriteRenderer = SpriteRenderer_Create(data->heapId);
-    sub_0200CF70(data->spriteRenderer, &ov110_021E6EA4, &ov110_021E6DD0, 3);
+    SpriteRenderer_CreateOamCharPlttManagers(data->spriteRenderer, &ov110_021E6EA4, &ov110_021E6DD0, 3);
     sub_0200B2E0(data->heapId);
     sub_0200B2E8(data->heapId);
     data->spriteGfxHandler = SpriteRenderer_CreateGfxHandler(data->spriteRenderer);
-    sub_0200CFF4(data->spriteRenderer, data->spriteGfxHandler, ALPH_SPRITE_INDEX_MAX);
+    SpriteRenderer_CreateSpriteList(data->spriteRenderer, data->spriteGfxHandler, ALPH_SPRITE_INDEX_MAX);
     sub_0200D2A4(data->spriteRenderer, data->spriteGfxHandler, sResdatInfo, 2, 1);
 }
 

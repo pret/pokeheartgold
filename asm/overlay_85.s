@@ -2087,7 +2087,7 @@ ov85_021E67F4: ; 0x021E67F4
 	bl RequestSwap3DBuffers
 	ldr r0, _021E6850 ; =0x00000D98
 	ldr r0, [r4, r0]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r4, pc}
 	nop
 _021E6848: .word 0xFFFFF000
@@ -2879,7 +2879,7 @@ ov85_021E6ECC: ; 0x021E6ECC
 	ldr r0, [r4, r1]
 	add r1, sp, #0x2c
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r3, _021E6F64 ; =ov85_021EA594
 	add r2, sp, #0
 	ldmia r3!, {r0, r1}
@@ -2897,7 +2897,7 @@ ov85_021E6ECC: ; 0x021E6ECC
 	sub r0, r1, #4
 	ldr r0, [r4, r0]
 	ldr r1, [r4, r1]
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	cmp r0, #0
 	bne _021E6F3C
 	bl GF_AssertFail

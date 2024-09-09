@@ -16,11 +16,11 @@
 .public Create2DGfxResObjList
 .public Delete2DGfxResObjList
 .public GF2DGfxResObjExistsById
-.public sub_0200A8FC
-.public sub_0200A900
-.public sub_0200A908
-.public sub_0200A954
-.public sub_0200A96C
+.public GF2DGfxResHeader_sizeof
+.public GF2DGfxResHeader_GetByIndex
+.public GF2DGfxResHeader_Init
+.public GF2DGfxResHeader_Reset
+.public GF2dGfxResHeader_GetNumObjects
 .public sub_0200ADA4
 .public sub_0200ADE4
 .public sub_0200AED4

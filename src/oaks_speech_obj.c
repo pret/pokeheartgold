@@ -119,10 +119,10 @@ void OakSpeech_InitSpriteEngine(OakSpeechData *data) {
             .charModeSub  = GX_OBJVRAMMODE_CHAR_1D_32K,
         };
 
-        sub_0200CF70(data->spriteRenderer, &oamManagerParam, &oamCharTransferParam, 0x20);
+        SpriteRenderer_CreateOamCharPlttManagers(data->spriteRenderer, &oamManagerParam, &oamCharTransferParam, 0x20);
     }
 
-    sub_0200CFF4(data->spriteRenderer, data->spriteGfxHandler, 10);
+    SpriteRenderer_CreateSpriteList(data->spriteRenderer, data->spriteGfxHandler, 10);
     G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(data->spriteRenderer), 0, FX32_CONST(GX_LCD_SIZE_Y));
 
     {

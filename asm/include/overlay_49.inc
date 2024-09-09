@@ -157,7 +157,7 @@
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks
 .public sub_02020654
-.public sub_02020674
+.public thunk_UpdateCellTransferStateManager
 .public sub_0202067C
 .public ObjCharTransfer_InitEx
 .public ObjCharTransfer_Destroy

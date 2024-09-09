@@ -171,7 +171,7 @@ _021E5A74:
 	mov r0, #0x4d
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end HallOfFameShowcase_Main
@@ -493,7 +493,7 @@ ov64_021E5CD0: ; 0x021E5CD0
 	sub r0, r7, #4
 	ldr r0, [r5, r0]
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r3, _021E5FDC ; =ov64_021E6EE4
 	add r2, sp, #0x10
 	ldmia r3!, {r0, r1}
@@ -507,7 +507,7 @@ ov64_021E5CD0: ; 0x021E5CD0
 	add r1, r1, #4
 	ldr r1, [r5, r1]
 	mov r2, #0x12
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	sub r1, r7, #4
 	ldr r0, [r5, r1]
 	add r1, r1, #4

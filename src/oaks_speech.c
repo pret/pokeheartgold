@@ -631,7 +631,7 @@ BOOL OakSpeech_Main(OVY_MANAGER *ovyMan, int *pState) {
     }
 
     if (data->overlayManager == NULL && data->spriteGfxHandler != NULL) {
-        sub_0200D020(data->spriteGfxHandler);
+        SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler);
     }
     return ret;
 }

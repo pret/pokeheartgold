@@ -814,7 +814,7 @@ sub_02085BEC: ; 0x02085BEC
 	mov r0, #0xbd
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	nop

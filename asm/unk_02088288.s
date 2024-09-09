@@ -339,7 +339,7 @@ _0208854A:
 	mov r0, #1
 	lsl r0, r0, #0xa
 	ldr r0, [r5, r0]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add r0, r5, #0
 	bl sub_0208DEDC
 	mov r0, #0

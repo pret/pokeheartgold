@@ -40,7 +40,7 @@ _021E8004:
 _021E8006:
 	sub r0, r1, #2
 	strh r2, [r5, r0]
-	bl sub_0200A8FC
+	bl GF2DGfxResHeader_sizeof
 	mov r1, #0x16
 	lsl r1, r1, #4
 	ldrh r2, [r5, r1]
@@ -65,7 +65,7 @@ _021E8006:
 _021E803C:
 	ldr r1, [sp, #0x1c]
 	add r0, r7, #0
-	bl sub_0200A900
+	bl GF2DGfxResHeader_GetByIndex
 	str r0, [sp, #0x24]
 	mov r0, #1
 	str r0, [sp]
@@ -77,7 +77,7 @@ _021E803C:
 	ldr r1, [sp, #0x24]
 	str r0, [sp, #0x28]
 	add r2, r4, #0
-	bl sub_0200A908
+	bl GF2DGfxResHeader_Init
 	ldr r0, [sp, #0x28]
 	bl FreeToHeap
 	ldr r0, [sp, #0x1c]
@@ -98,8 +98,8 @@ _021E807A:
 _021E8082:
 	add r0, r7, #0
 	add r1, r6, #0
-	bl sub_0200A900
-	bl sub_0200A96C
+	bl GF2DGfxResHeader_GetByIndex
+	bl GF2dGfxResHeader_GetNumObjects
 	add r1, r6, #0
 	add r2, r4, #0
 	bl Create2DGfxResObjMan
@@ -125,9 +125,9 @@ _021E80B0:
 _021E80BA:
 	ldr r1, [sp, #0x14]
 	add r0, r7, #0
-	bl sub_0200A900
+	bl GF2DGfxResHeader_GetByIndex
 	str r0, [sp, #0x2c]
-	bl sub_0200A96C
+	bl GF2dGfxResHeader_GetNumObjects
 	add r1, r4, #0
 	bl Create2DGfxResObjList
 	mov r1, #0x52
@@ -159,8 +159,8 @@ _021E80FC:
 _021E8102:
 	add r0, r7, #0
 	add r1, r6, #0
-	bl sub_0200A900
-	bl sub_0200A954
+	bl GF2DGfxResHeader_GetByIndex
+	bl GF2DGfxResHeader_Reset
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldrh r0, [r5, r0]

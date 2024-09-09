@@ -57,7 +57,7 @@ GF_G2dRenderer *SpriteRenderer_GetG2dRendererPtr(SpriteRenderer *renderer) {
     return &renderer->renderer;
 }
 
-BOOL sub_0200CF70(SpriteRenderer *renderer, const OamManagerParam *oamManagerParam, const OamCharTransferParam *oamTransferParam, int a3) {
+BOOL SpriteRenderer_CreateOamCharPlttManagers(SpriteRenderer *renderer, const OamManagerParam *oamManagerParam, const OamCharTransferParam *oamTransferParam, int numPltts) {
     GF_ASSERT(renderer != NULL);
     if (renderer == NULL) {
         return FALSE;
@@ -68,7 +68,7 @@ BOOL sub_0200CF70(SpriteRenderer *renderer, const OamManagerParam *oamManagerPar
     transferTemplate.sizeSub  = oamTransferParam->sizeSub;
     transferTemplate.heapId   = renderer->heapId;
     ObjCharTransfer_InitEx(&transferTemplate, oamTransferParam->charModeMain, oamTransferParam->charModeSub);
-    ObjPlttTransfer_Init(a3, renderer->heapId);
+    ObjPlttTransfer_Init(numPltts, renderer->heapId);
     NNS_G2dInitOamManagerModule();
     if (renderer->hasOamManager == TRUE) {
         OamManager_Create(oamManagerParam->fromOBJmain, oamManagerParam->numOBJmain, oamManagerParam->fromAffineMain, oamManagerParam->numAffineMain, oamManagerParam->fromOBJsub, oamManagerParam->numOBJsub, oamManagerParam->fromAffineSub, oamManagerParam->numAffineSub, renderer->heapId);
@@ -79,11 +79,11 @@ BOOL sub_0200CF70(SpriteRenderer *renderer, const OamManagerParam *oamManagerPar
     return TRUE;
 }
 
-BOOL sub_0200CFF4(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, int a2) {
+BOOL SpriteRenderer_CreateSpriteList(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, int numSprites) {
     if (renderer == NULL || gfxHandler == NULL) {
         return FALSE;
     }
-    gfxHandler->spriteList = G2dRenderer_Init(a2, &renderer->renderer, renderer->heapId);
+    gfxHandler->spriteList = G2dRenderer_Init(numSprites, &renderer->renderer, renderer->heapId);
     return TRUE;
 }
 
@@ -91,7 +91,7 @@ void thunk_Sprite_Delete(Sprite *sprite) {
     Sprite_Delete(sprite);
 }
 
-void sub_0200D020(SpriteGfxHandler *gfxHandler) {
+void SpriteGfxHandler_RenderAndAnimateSprites(SpriteGfxHandler *gfxHandler) {
     GF_ASSERT(gfxHandler != NULL);
     SpriteList_RenderAndAnimateSprites(gfxHandler->spriteList);
 }
@@ -100,8 +100,8 @@ void thunk_OamManager_ApplyAndResetBuffers(void) {
     OamManager_ApplyAndResetBuffers();
 }
 
-void sub_0200D03C(void) {
-    sub_02020674();
+void SpriteRenderer_thunk_UpdateCellTransferStateManager(void) {
+    thunk_UpdateCellTransferStateManager();
 }
 
 static void SpriteGfxHandler_DeleteSpriteList(SpriteGfxHandler *gfxHandler) {
@@ -116,7 +116,7 @@ static void SpriteGfxHandler_DeleteResourceHeaderList(SpriteGfxHandler *gfxHandl
 
 static void SpriteGfxHandler_DestroyResObjsAndMans(SpriteGfxHandler *gfxHandler) {
     for (int i = 0; i < gfxHandler->numGfxResObjectTypes; ++i) {
-        sub_0200A954(sub_0200A900(gfxHandler->_2dGfxResHeader, i));
+        GF2DGfxResHeader_Reset(GF2DGfxResHeader_GetByIndex(gfxHandler->_2dGfxResHeader, i));
     }
     FreeToHeap(gfxHandler->_2dGfxResHeader);
     sub_0200AED4(gfxHandler->_2dGfxResObjList[0]);
@@ -171,24 +171,24 @@ static BOOL sub_0200D124(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler,
         numGfxResTypes = GF_GFX_RES_TYPE_MAX - 2;
     }
     gfxHandler->numGfxResObjectTypes = numGfxResTypes;
-    size                             = sub_0200A8FC();
+    size                             = GF2DGfxResHeader_sizeof();
     gfxHandler->_2dGfxResHeader      = AllocFromHeap(renderer->heapId, size * numGfxResTypes);
     narc                             = NARC_New(NARC_data_resdat, renderer->heapId);
 
     for (i = 0; i < numGfxResTypes; ++i) {
-        header = sub_0200A900(gfxHandler->_2dGfxResHeader, i);
+        header = GF2DGfxResHeader_GetByIndex(gfxHandler->_2dGfxResHeader, i);
         data   = GfGfxLoader_LoadFromOpenNarc(narc, fileIdList[i], FALSE, renderer->heapId, TRUE);
-        sub_0200A908((GF_2DGfxResHeaderNarcList *)data, header, renderer->heapId);
+        GF2DGfxResHeader_Init((GF_2DGfxResHeaderNarcList *)data, header, renderer->heapId);
         FreeToHeap(data);
     }
     for (i = 0; i < numGfxResTypes; ++i) {
-        header                      = sub_0200A900(gfxHandler->_2dGfxResHeader, i);
-        size                        = sub_0200A96C(header);
+        header                      = GF2DGfxResHeader_GetByIndex(gfxHandler->_2dGfxResHeader, i);
+        size                        = GF2dGfxResHeader_GetNumObjects(header);
         gfxHandler->_2dGfxResMan[i] = Create2DGfxResObjMan(size, (GfGfxResType)i, renderer->heapId);
     }
     for (i = 0; i < numGfxResTypes; ++i) {
-        header                          = sub_0200A900(gfxHandler->_2dGfxResHeader, i);
-        size                            = sub_0200A96C(header);
+        header                          = GF2DGfxResHeader_GetByIndex(gfxHandler->_2dGfxResHeader, i);
+        size                            = GF2dGfxResHeader_GetNumObjects(header);
         gfxHandler->_2dGfxResObjList[i] = Create2DGfxResObjList(size, renderer->heapId);
         gfxHandler->numGfxResObjects[i] = LoadAll2DGfxResObjsFromHeader(gfxHandler->_2dGfxResMan[i], header, gfxHandler->_2dGfxResObjList[i], renderer->heapId);
     }

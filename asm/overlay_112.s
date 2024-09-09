@@ -4150,7 +4150,7 @@ _021E78E4:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E78F0
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 _021E78F0:
 	mov r0, #0
 	add sp, #0xc
@@ -8869,13 +8869,13 @@ ov112_021EA230: ; 0x021EA230
 	sub r0, r7, #4
 	ldr r0, [r4, r0]
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	sub r1, r7, #4
 	ldr r0, [r4, r1]
 	add r1, r1, #4
 	ldr r1, [r4, r1]
 	mov r2, #0xd9
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	sub r1, r7, #4
 	ldr r0, [r4, r1]
 	add r1, r1, #4
@@ -24033,11 +24033,11 @@ ov112_021F196C: ; 0x021F196C
 	mov r3, #0x20
 	str r3, [sp, #0x18]
 	ldr r0, [r5, #0x68]
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r0, [r5, #0x68]
 	ldr r1, [r5, #0x6c]
 	mov r2, #0x20
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	ldr r4, _021F1A04 ; =ov112_021FF318
 	add r3, sp, #0
 	add r2, r3, #0
@@ -26774,7 +26774,7 @@ _021F2EC4:
 	bl GF_AssertFail
 _021F2ECE:
 	ldr r0, [r4, #0x6c]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #0x14]
 	bl DoScheduledBgGpuUpdates

@@ -115,7 +115,7 @@ _0221BACC:
 	mov r0, #0x65
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 _0221BAE6:
 	ldr r0, [r5]
 	add r0, #0x28
@@ -2422,14 +2422,14 @@ ov05_0221CD24: ; 0x0221CD24
 	ldr r0, [r5, r0]
 	add r2, r7, #0
 	mov r3, #0x10
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	mov r1, #0x19
 	lsl r1, r1, #4
 	ldr r0, [r5, r1]
 	add r1, r1, #4
 	ldr r1, [r5, r1]
 	add r2, r4, #0
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	mov r1, #0x19
 	lsl r1, r1, #4
 	ldr r0, [r5, r1]

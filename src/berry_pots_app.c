@@ -326,7 +326,7 @@ BOOL BerryPotsApp_Run(OVY_MANAGER *manager, int *state) {
         return TRUE;
     }
 
-    sub_0200D020(data->spriteGfxHandler1);
+    SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler1);
     return FALSE;
 }
 
@@ -1180,13 +1180,13 @@ static void BerryPotsApp_SetupSpriteRendererAndGfxHandler(BerryPotsAppData *data
     GF_CreateVramTransferManager(32, data->heapId);
 
     data->spriteRenderer = SpriteRenderer_Create(data->heapId);
-    sub_0200CF70(data->spriteRenderer, &ov17_02203E68, &ov17_02203D98, 8);
+    SpriteRenderer_CreateOamCharPlttManagers(data->spriteRenderer, &ov17_02203E68, &ov17_02203D98, 8);
 
     sub_0200B2E0(data->heapId);
     sub_0200B2E8(data->heapId);
 
     data->spriteGfxHandler1 = SpriteRenderer_CreateGfxHandler(data->spriteRenderer);
-    sub_0200CFF4(data->spriteRenderer, data->spriteGfxHandler1, 25);
+    SpriteRenderer_CreateSpriteList(data->spriteRenderer, data->spriteGfxHandler1, 25);
     sub_0200D2A4(data->spriteRenderer, data->spriteGfxHandler1, ov17_02203D78, 0, 0);
 
     data->itemIconNarc = NARC_New(NARC_itemtool_itemdata_item_icon, data->heapId);

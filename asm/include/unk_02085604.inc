@@ -2,7 +2,7 @@
 #pragma once
 .public PaletteData_LoadPalette
 .public PlaySE
-.public sub_0200D020
+.public SpriteGfxHandler_RenderAndAnimateSprites
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public UnkImageStruct_AddSpritePositionXY

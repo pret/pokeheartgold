@@ -418,7 +418,7 @@ static BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState) {
     sub_0207F2F8(partyMenu);
     sub_0207AC20(partyMenu);
     PartyMenu_UpdateTopScreenPanelYCoordFrame(partyMenu);
-    sub_0200D020(partyMenu->spriteGfxHandler);
+    SpriteGfxHandler_RenderAndAnimateSprites(partyMenu->spriteGfxHandler);
     return FALSE;
 }
 

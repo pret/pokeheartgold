@@ -151,7 +151,7 @@ _02237E5A:
 	mov r0, #0x25
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov59_02237DA8
@@ -3591,7 +3591,7 @@ ov59_02239938: ; 0x02239938
 	ldr r1, _022399A8 ; =ov59_0223C750
 	ldr r2, _022399AC ; =ov59_0223C678
 	mov r3, #3
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r0, [r4]
 	bl sub_0200B2E0
 	ldr r0, [r4]
@@ -3607,7 +3607,7 @@ ov59_02239938: ; 0x02239938
 	ldr r0, [r4, r0]
 	ldr r1, [r4, r1]
 	mov r2, #0xf
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	mov r3, #0
 	mov r1, #0x93
 	str r3, [sp]
@@ -5755,7 +5755,7 @@ _0223A9A2:
 	mov r0, #0x97
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	ldr r0, [r5, #0x78]
 	bl ov59_0223C304
 	mov r0, #0
@@ -7631,7 +7631,7 @@ ov59_0223B804: ; 0x0223B804
 	ldr r1, _0223B86C ; =ov59_0223CA20
 	ldr r2, _0223B870 ; =ov59_0223C988
 	mov r3, #3
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r0, [r4]
 	bl sub_0200B2E0
 	ldr r0, [r4]
@@ -7647,7 +7647,7 @@ ov59_0223B804: ; 0x0223B804
 	ldr r0, [r4, r0]
 	ldr r1, [r4, r1]
 	mov r2, #0x22
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	mov r3, #0
 	mov r1, #0x96
 	str r3, [sp]

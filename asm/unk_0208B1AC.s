@@ -61,13 +61,13 @@ sub_0208B1AC: ; 0x0208B1AC
 	sub r0, r7, #4
 	ldr r0, [r4, r0]
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	sub r1, r7, #4
 	ldr r0, [r4, r1]
 	add r1, r1, #4
 	ldr r1, [r4, r1]
 	mov r2, #0x73
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	ldr r3, _0208B254 ; =_02103A2C
 	add r2, sp, #0
 	mov r1, #7

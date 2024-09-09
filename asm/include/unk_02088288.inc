@@ -32,7 +32,7 @@
 .public StringExpandPlaceholders
 .public MessagePrinter_New
 .public MessagePrinter_Delete
-.public sub_0200D020
+.public SpriteGfxHandler_RenderAndAnimateSprites
 .public thunk_OamManager_ApplyAndResetBuffers
 .public thunk_Set2dSpriteVisibleFlag
 .public thunk_Sprite_SetPalIndex

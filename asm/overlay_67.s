@@ -1927,13 +1927,13 @@ ov67_021E6820: ; 0x021E6820
 	sub r0, r7, #4
 	ldr r0, [r5, r0]
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	sub r1, r7, #4
 	ldr r0, [r5, r1]
 	add r1, r1, #4
 	ldr r1, [r5, r1]
 	mov r2, #4
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	ldr r4, _021E6980 ; =ov67_021E6D90
 	add r3, sp, #0x10
 	add r2, r3, #0
@@ -2110,7 +2110,7 @@ _021E69E2:
 	mov r0, #0x12
 	lsl r0, r0, #6
 	ldr r0, [r7, r0]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021E69FC: .word 0x00000484

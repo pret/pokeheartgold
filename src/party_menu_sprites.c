@@ -375,8 +375,8 @@ void sub_0207EB24(PartyMenu *partyMenu) {
         GX_OBJVRAMMODE_CHAR_1D_32K,
         GX_OBJVRAMMODE_CHAR_1D_32K,
     };
-    sub_0200CF70(partyMenu->spriteRenderer, &oamManagerTemplate, &transferTemplate, 32);
-    sub_0200CFF4(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, 49);
+    SpriteRenderer_CreateOamCharPlttManagers(partyMenu->spriteRenderer, &oamManagerTemplate, &transferTemplate, 32);
+    SpriteRenderer_CreateSpriteList(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, 49);
     G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(partyMenu->spriteRenderer), 0, FX32_CONST(256));
 
     u16 _021018B4[7] = {

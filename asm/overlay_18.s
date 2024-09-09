@@ -6383,7 +6383,7 @@ _021E8C0E:
 	bl ov18_021F1004
 	ldr r0, _021E8C2C ; =0x0000066C
 	ldr r0, [r5, r0]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -22606,7 +22606,7 @@ ov18_021F1024: ; 0x021F1024
 	sub r0, r7, #4
 	ldr r0, [r4, r0]
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r3, _021F10C4 ; =_021FA380
 	add r2, sp, #0
 	ldmia r3!, {r0, r1}
@@ -22620,7 +22620,7 @@ ov18_021F1024: ; 0x021F1024
 	add r1, r1, #4
 	ldr r1, [r4, r1]
 	mov r2, #0x78
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	sub r1, r7, #4
 	ldr r0, [r4, r1]
 	add r1, r1, #4

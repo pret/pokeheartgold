@@ -178,7 +178,7 @@ ov89_02258800: ; 0x02258800
 	ldr r2, _02258AE8 ; =ov89_0225C9EC
 	mov r3, #0x20
 	str r0, [r5, #0x1c]
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r1, _02258AEC ; =0x00200010
 	mov r0, #1
 	bl G2dRenderer_SetObjCharTransferReservedRegion
@@ -190,7 +190,7 @@ ov89_02258800: ; 0x02258800
 	ldr r0, [r5, #0x1c]
 	ldr r1, [r5, #0x20]
 	mov r2, #0x80
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	ldr r0, [r5, #0x1c]
 	ldr r1, [r5, #0x20]
 	ldr r2, _02258AF0 ; =ov89_0225CA00
@@ -894,8 +894,8 @@ ov89_02258FF4: ; 0x02258FF4
 	add r0, r4, #0
 	bl ov89_02259C0C
 	ldr r0, [r4, #0x20]
-	bl sub_0200D020
-	bl sub_0200D03C
+	bl SpriteGfxHandler_RenderAndAnimateSprites
+	bl SpriteRenderer_thunk_UpdateCellTransferStateManager
 	mov r0, #0
 	add r1, r0, #0
 	bl RequestSwap3DBuffers
