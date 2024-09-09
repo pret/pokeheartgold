@@ -342,7 +342,7 @@ PartyMenuArgs *TaskManager_LaunchPartyMenu_UnionRoomBattleSelect(TaskManager *ta
     args->minMonsToSelect    = 2;
     args->maxMonsToSelect    = 2;
     args->maxLevel           = 30;
-    args->unk_14             = NULL;
+    args->linkBattleRuleset  = NULL;
 
     data->partyMenu = args;
     TaskManager_Call(taskman, Task_OpenPartyMenuForUnionRoomBattleSelect, data);

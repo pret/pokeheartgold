@@ -4,6 +4,7 @@
 #include "constants/party_menu.h"
 
 #include "bag_types_def.h"
+#include "battle_regulation.h"
 #include "field_types_def.h"
 #include "gf_3d_vramman.h"
 #include "mail.h"
@@ -14,7 +15,6 @@
 #include "unk_02014DA0.h"
 #include "unk_02020654.h"
 #include "unk_0202E41C.h"
-#include "unk_02074944.h"
 #include "yes_no_prompt.h"
 
 #define FIELD_MOVE_CHECK_TREE_F      0
@@ -305,7 +305,7 @@ typedef struct PartyMenuArgs {
     Mailbox *mailbox;
     Options *options;
     UnkStruct_0202E474 *unk_10;
-    UnkStruct_02074944 *unk_14;
+    LinkBattleRuleset *linkBattleRuleset;
     FieldMoveCheckData *fieldMoveCheckData;
     FieldSystem *fieldSystem;
     BOOL *menuInputStatePtr;
@@ -432,7 +432,7 @@ struct PartyMenu {
     u8 unk_C66;
     u8 levelUpLearnMovesLoopState;
     u16 levelUpStatsTmp[6];
-    Pokedex *pokedex; // 0xc74
+    PokedexData *pokedex; // 0xc74
     int topScreenPanelYPos;
     BOOL topScreenPanelShow;
     IconFormChangeData *iconFormChange; // C80

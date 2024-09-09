@@ -28,7 +28,6 @@
 #include "unk_020290B4.h"
 #include "unk_0203A3B0.h"
 #include "unk_02066EDC.h"
-#include "unk_02074944.h"
 #include "unk_0208805C.h"
 #include "unk_02088288.h"
 #include "use_item_on_mon.h"
@@ -107,9 +106,9 @@ static u8 MoveId_GetFieldEffectId(u16 move);
 static int PartyMenu_SoftboiledTryTargetCheck(PartyMenu *partyMenu);
 static void sub_0207B51C(PartyMenu *partyMenu, u8 selection, BOOL active);
 static u8 sub_0207B600(PartyMenu *partyMenu);
-static int sub_0207B7E0(PartyMenu *partyMenu);
+static int PartyMenu_SelectedBattleTeamComplianceCheck(PartyMenu *partyMenu);
 static u8 sub_0207BA78(PartyMenu *partyMenu);
-static u8 sub_0207BB14(PartyMenu *partyMenu);
+static u8 PartyMenu_CheckBattleHallTeamSameSpecies(PartyMenu *partyMenu);
 static u8 sub_0207BB88(PartyMenu *partyMenu);
 static void sub_0207BBFC(u8 a0, s16 *px, s16 *py);
 static BOOL PartyMenu_Subtask_HandleContextMenuInput(PartyMenu *partyMenu, int *pState);
@@ -490,7 +489,7 @@ static int PartyMenu_Subtask_MainNormal(PartyMenu *partyMenu) {
             return PARTY_MENU_STATE_HANDLE_CONTEXT_MENU_INPUT;
         }
     case 4:
-        return sub_0207B7E0(partyMenu);
+        return PartyMenu_SelectedBattleTeamComplianceCheck(partyMenu);
     case 3:
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
         return PARTY_MENU_STATE_BEGIN_EXIT;
@@ -630,7 +629,7 @@ static BOOL PartyMenuApp_Exit(OVY_MANAGER *manager, int *pState) {
     MessagePrinter_Delete(partyMenu->msgPrinter);
     MessageFormat_Delete(partyMenu->msgFormat);
     if (partyMenu->pokedex != NULL) {
-        sub_0207495C(partyMenu->pokedex);
+        PokedexData_UnloadAndDelete(partyMenu->pokedex);
     }
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_0) {
         sub_02004B10();
@@ -954,8 +953,8 @@ static PartyMenu *sub_02079BD8(OVY_MANAGER *manager) {
     memset(ret, 0, sizeof(PartyMenu));
     ret->args     = OverlayManager_GetArgs(manager);
     ret->bgConfig = BgConfig_Alloc(HEAP_ID_PARTY_MENU);
-    if (ret->args->context == PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT && ret->args->unk_14 != NULL) {
-        ret->pokedex = sub_02074944(HEAP_ID_PARTY_MENU);
+    if (ret->args->context == PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT && ret->args->linkBattleRuleset != NULL) {
+        ret->pokedex = PokedexData_CreateAndLoad(HEAP_ID_PARTY_MENU);
     } else {
         ret->pokedex = NULL;
     }
@@ -1771,9 +1770,9 @@ static u8 PartyMenu_SetContextMenuItems_SpinTrade(PartyMenu *partyMenu, u8 *buf)
 u8 sub_0207B364(PartyMenu *partyMenu, u8 selection) {
     u8 i;
 
-    if (partyMenu->args->unk_14 != NULL) {
+    if (partyMenu->args->linkBattleRuleset != NULL) {
         Pokemon *pokemon = Party_GetMonByIndex(partyMenu->args->party, selection);
-        if (sub_0207496C(partyMenu->args->unk_14, pokemon, partyMenu->pokedex) == FALSE) {
+        if (LinkBattleRuleset_CheckDexBasedRules(partyMenu->args->linkBattleRuleset, pokemon, partyMenu->pokedex) == FALSE) {
             return 0;
         }
     }
@@ -1957,7 +1956,7 @@ static u8 sub_0207B600(PartyMenu *partyMenu) {
     return result; // UB rist
 }
 
-static int sub_0207B7E0(PartyMenu *partyMenu) {
+static int PartyMenu_SelectedBattleTeamComplianceCheck(PartyMenu *partyMenu) {
     for (u8 i = 0; i < partyMenu->args->minMonsToSelect; ++i) {
         if (partyMenu->args->selectedOrder[i] == 0) {
             switch (partyMenu->args->maxMonsToSelect) {
@@ -1988,13 +1987,13 @@ static int sub_0207B7E0(PartyMenu *partyMenu) {
         }
     }
 
-    if (partyMenu->args->unk_14 != NULL) {
-        switch (sub_02074A6C(partyMenu->args->unk_14, partyMenu->args->party, partyMenu->pokedex, partyMenu->args->selectedOrder)) {
-        case 0:
+    if (partyMenu->args->linkBattleRuleset != NULL) {
+        switch (LinkBattleRuleset_GetPartySelectionComplianceMessage(partyMenu->args->linkBattleRuleset, partyMenu->args->party, partyMenu->pokedex, partyMenu->args->selectedOrder)) {
+        case BTL_REG_COMPLIANCE_OK:
             break;
-        case 1: {
+        case BTL_REG_COMPLIANCE_FAIL_MAX_TOTAL_LEVEL: {
             String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00167);
-            BufferIntegerAsString(partyMenu->msgFormat, 0, sub_020290FC(partyMenu->args->unk_14, 3), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+            BufferIntegerAsString(partyMenu->msgFormat, 0, LinkBattleRuleset_GetRuleValue(partyMenu->args->linkBattleRuleset, 3), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
             StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
             String_Delete(string);
             PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
@@ -2002,28 +2001,28 @@ static int sub_0207B7E0(PartyMenu *partyMenu) {
             PlaySE(SEQ_SE_DP_CUSTOM06);
             return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
         }
-        case 2:
+        case BTL_REG_COMPLIANCE_FAIL_SPECIES_DUPE:
             PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00165, TRUE);
             partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SELECT_MONS_ERROR_MSG_CLOSE;
             PlaySE(SEQ_SE_DP_CUSTOM06);
             return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
-        case 3:
+        case BTL_REG_COMPLIANCE_FAIL_ITEMS_DUPE:
             PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00166, TRUE);
             partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SELECT_MONS_ERROR_MSG_CLOSE;
             PlaySE(SEQ_SE_DP_CUSTOM06);
             return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
-        case 4:
+        case BTL_REG_COMPLIANCE_FAIL_NUM_MONS:
             break;
-        case 5:
+        case BTL_REG_COMPLIANCE_FAIL_SPECIAL_CONSTRAINTS:
             break;
-        case 6:
+        case BTL_REG_COMPLIANCE_FAIL_TOO_MANY_LEGENDS:
             PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00168, TRUE);
             partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SELECT_MONS_ERROR_MSG_CLOSE;
             PlaySE(SEQ_SE_DP_CUSTOM06);
             return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
-        case 7:
+        case BTL_REG_COMPLIANCE_FAIL_7:
             break;
-        case 8:
+        case BTL_REG_COMPLIANCE_FAIL_SOUL_DEW:
             PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00191, TRUE);
             partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SELECT_MONS_ERROR_MSG_CLOSE;
             PlaySE(SEQ_SE_DP_CUSTOM06);
@@ -2049,7 +2048,7 @@ static int sub_0207B7E0(PartyMenu *partyMenu) {
     }
 
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL) {
-        switch (sub_0207BB14(partyMenu)) {
+        switch (PartyMenu_CheckBattleHallTeamSameSpecies(partyMenu)) {
         case 0:
             break;
         case 1:
@@ -2097,7 +2096,7 @@ static u8 sub_0207BA78(PartyMenu *partyMenu) {
     return 0;
 }
 
-static u8 sub_0207BB14(PartyMenu *partyMenu) {
+static u8 PartyMenu_CheckBattleHallTeamSameSpecies(PartyMenu *partyMenu) {
     for (u8 i = 0; i < PARTY_SIZE - 1; ++i) {
         if (partyMenu->args->selectedOrder[i] == 0) {
             break;
