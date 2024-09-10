@@ -131,7 +131,7 @@ FS_EXTERN_OVERLAY(OVY_109);
 FS_EXTERN_OVERLAY(OVY_110);
 FS_EXTERN_OVERLAY(OVY_111);
 FS_EXTERN_OVERLAY(OVY_113);
-FS_EXTERN_OVERLAY(OVY_121);
+FS_EXTERN_OVERLAY(view_rankings_app);
 
 static PartyMenuArgs *PartyMenu_CreateArgs(HeapID heapId, FieldSystem *fieldSystem, int a2, PartyMenuContext context);
 static BOOL Task_OpenPartyMenuForUnionRoomBattleSelect(TaskManager *taskman);
@@ -1398,6 +1398,6 @@ LegendaryCinematicArgs *LegendaryCinematic_LaunchApp(FieldSystem *fieldSystem, U
 }
 
 void LaunchApp_ViewRankings(FieldSystem *fieldSystem, ViewRankingsArgs *args) {
-    static const OVY_MGR_TEMPLATE sViewRankingsAppTemplate = { ViewRankingsApp_Init, ViewRankingsApp_Main, ViewRankingsApp_Exit, FS_OVERLAY_ID(OVY_121) };
+    static const OVY_MGR_TEMPLATE sViewRankingsAppTemplate = { ViewRankingsApp_Init, ViewRankingsApp_Main, ViewRankingsApp_Exit, FS_OVERLAY_ID(view_rankings_app) };
     FieldSystem_LaunchApplication(fieldSystem, &sViewRankingsAppTemplate, args);
 }
