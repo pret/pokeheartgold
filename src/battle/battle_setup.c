@@ -66,7 +66,7 @@ BattleSetup *BattleSetup_New(HeapID heapId, u32 battleTypeFlags) {
     setup->bagCursor               = NULL;
     setup->unk1B8                  = NULL;
     setup->safariBalls             = 0;
-    setup->unk_12C                 = NULL;
+    setup->wifiHistory             = NULL;
     setup->gameStats               = NULL;
     setup->fixedDamaageMovesBanned = FALSE;
     setup->bugContestMon           = AllocMonZeroed(heapId);
@@ -247,7 +247,7 @@ void sub_02051D18(BattleSetup *setup, FieldSystem *fieldSystem, SaveData *saveDa
     setup->weatherType = LocalFieldData_GetWeatherType(local);
     setup->bagCursor   = bagCursor;
     setup->unk1B8      = arg5;
-    setup->unk_12C     = Save_WiFiHistory_Get(saveData);
+    setup->wifiHistory = Save_WiFiHistory_Get(saveData);
     setup->gameStats   = Save_GameStats_Get(saveData);
     setup->palPad      = Save_PalPad_Get(saveData);
     setup->mapNumber   = mapno;
@@ -295,15 +295,15 @@ void BattleSetup_InitForFixedLevelFacility(BattleSetup *setup, FieldSystem *fiel
     Pokedex_Copy(pokedex, setup->pokedex);
     Options_Copy(options, setup->options);
     BattleSetup_SetChatotVoiceClip(setup, chatot, BATTLER_PLAYER);
-    setup->storagePC = SaveArray_PCStorage_Get(fieldSystem->saveData);
-    setup->timeOfDay = Field_GetTimeOfDay(fieldSystem);
-    setup->bagCursor = fieldSystem->bagCursor;
-    setup->unk1B8    = fieldSystem->unkB0;
-    setup->unk_12C   = Save_WiFiHistory_Get(fieldSystem->saveData);
-    setup->gameStats = Save_GameStats_Get(fieldSystem->saveData);
-    setup->palPad    = Save_PalPad_Get(fieldSystem->saveData);
-    setup->mapNumber = fieldSystem->location->mapId;
-    setup->saveData  = fieldSystem->saveData;
+    setup->storagePC   = SaveArray_PCStorage_Get(fieldSystem->saveData);
+    setup->timeOfDay   = Field_GetTimeOfDay(fieldSystem);
+    setup->bagCursor   = fieldSystem->bagCursor;
+    setup->unk1B8      = fieldSystem->unkB0;
+    setup->wifiHistory = Save_WiFiHistory_Get(fieldSystem->saveData);
+    setup->gameStats   = Save_GameStats_Get(fieldSystem->saveData);
+    setup->palPad      = Save_PalPad_Get(fieldSystem->saveData);
+    setup->mapNumber   = fieldSystem->location->mapId;
+    setup->saveData    = fieldSystem->saveData;
     BattleSetup_SetAllySideBattlersToPlayer(setup);
 }
 
@@ -320,7 +320,7 @@ void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8
     pokedex = Save_Pokedex_Get(fieldSystem->saveData);
     chatot  = Save_Chatot_Get(fieldSystem->saveData);
     options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
-    ruleset = fieldSystem->unkA4;
+    ruleset = fieldSystem->linkBattleRuleset;
 
     setup->battleBg = BATTLE_BG_BUILDING_1;
     setup->terrain  = TERRAIN_BUILDING;
@@ -366,15 +366,15 @@ void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8
     Pokedex_Copy(pokedex, setup->pokedex);
     Options_Copy(options, setup->options);
     BattleSetup_SetChatotVoiceClip(setup, chatot, BATTLER_PLAYER);
-    setup->storagePC = SaveArray_PCStorage_Get(fieldSystem->saveData);
-    setup->timeOfDay = Field_GetTimeOfDay(fieldSystem);
-    setup->bagCursor = fieldSystem->bagCursor;
-    setup->unk1B8    = fieldSystem->unkB0;
-    setup->unk_12C   = Save_WiFiHistory_Get(fieldSystem->saveData);
-    setup->gameStats = Save_GameStats_Get(fieldSystem->saveData);
-    setup->mapNumber = fieldSystem->location->mapId;
-    setup->palPad    = Save_PalPad_Get(fieldSystem->saveData);
-    setup->saveData  = fieldSystem->saveData;
+    setup->storagePC   = SaveArray_PCStorage_Get(fieldSystem->saveData);
+    setup->timeOfDay   = Field_GetTimeOfDay(fieldSystem);
+    setup->bagCursor   = fieldSystem->bagCursor;
+    setup->unk1B8      = fieldSystem->unkB0;
+    setup->wifiHistory = Save_WiFiHistory_Get(fieldSystem->saveData);
+    setup->gameStats   = Save_GameStats_Get(fieldSystem->saveData);
+    setup->mapNumber   = fieldSystem->location->mapId;
+    setup->palPad      = Save_PalPad_Get(fieldSystem->saveData);
+    setup->saveData    = fieldSystem->saveData;
 
     if (sub_0203401C(sub_0203993C())) {
         int avatar                                       = PlayerProfile_GetAvatar(profile);

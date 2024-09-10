@@ -37,7 +37,7 @@ struct BattleSetup {                     // declared in trainer_data.h
     PCStorage *storagePC;                // 114
     SOUND_CHATOT *chatot[BATTLER_MAX];   // 118
     void *unk_128;
-    void *unk_12C;
+    void *wifiHistory;
     Options *options; // 130
     struct UnkStruct_02067A60 *unk_134;
     struct BattleSetupSub_138 unk138;
