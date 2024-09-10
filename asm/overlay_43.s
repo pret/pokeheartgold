@@ -3253,7 +3253,7 @@ _0222B856:
 	ldr r0, [sp, #0x10]
 	bl sub_0202C338
 	ldr r0, [r4, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	ldr r1, [sp, #0x14]
 	ldrb r1, [r5, r1]
 	bl sub_020311AC
@@ -8492,7 +8492,7 @@ ov43_0222E0E8: ; 0x0222E0E8
 	add r6, r0, #0
 	ldr r0, [r5, #4]
 	add r4, r2, #0
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r7, r0, #0
 	str r4, [sp]
 	mov r0, #0x1d
@@ -8519,7 +8519,7 @@ ov43_0222E0E8: ; 0x0222E0E8
 	mov r1, #0x64
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	str r4, [sp]
 	add r0, #0x22
 	str r0, [sp, #4]
@@ -8546,7 +8546,7 @@ ov43_0222E0E8: ; 0x0222E0E8
 	mov r1, #0x71
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov43_0222ABFC
@@ -8598,7 +8598,7 @@ ov43_0222E0E8: ; 0x0222E0E8
 	mov r1, #0x70
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov43_0222ABFC
@@ -8640,7 +8640,7 @@ ov43_0222E220: ; 0x0222E220
 	ldr r0, [r5, #4]
 	add r6, r3, #0
 	add r4, r2, #0
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	str r0, [sp, #0x24]
 	mov r0, #0x80
 	add r1, r6, #0
@@ -8705,7 +8705,7 @@ ov43_0222E220: ; 0x0222E220
 	mov r1, #0x66
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	cmp r0, #0
 	bne _0222E2C8
 	mov r0, #0x22
@@ -8734,7 +8734,7 @@ _0222E2CA:
 	mov r1, #0x73
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov43_0222ABFC
@@ -8762,7 +8762,7 @@ _0222E2CA:
 	mov r1, #0x75
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov43_0222ABFC
@@ -8805,7 +8805,7 @@ _0222E2CA:
 	mov r1, #0x72
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov43_0222ABFC
@@ -8833,7 +8833,7 @@ _0222E2CA:
 	mov r1, #0x74
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov43_0222ABFC
@@ -8894,7 +8894,7 @@ _0222E2CA:
 	mov r1, #0x68
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	cmp r0, #0
 	bne _0222E460
 	mov r0, #0x22
@@ -8923,7 +8923,7 @@ _0222E462:
 	mov r1, #0x77
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov43_0222ABFC
@@ -8951,7 +8951,7 @@ _0222E462:
 	mov r1, #0x79
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov43_0222ABFC
@@ -8994,7 +8994,7 @@ _0222E462:
 	mov r1, #0x76
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov43_0222ABFC
@@ -9022,7 +9022,7 @@ _0222E462:
 	mov r1, #0x78
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov43_0222ABFC
@@ -9065,7 +9065,7 @@ ov43_0222E5B4: ; 0x0222E5B4
 	ldr r0, [r5, #4]
 	add r6, r3, #0
 	add r4, r2, #0
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	str r0, [sp, #0x24]
 	mov r0, #0x80
 	add r1, r6, #0
@@ -9113,7 +9113,7 @@ ov43_0222E5B4: ; 0x0222E5B4
 	mov r1, #0x6c
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	cmp r0, #0
 	bne _0222E638
 	mov r0, #0x22
@@ -9142,7 +9142,7 @@ _0222E63A:
 	mov r1, #0x87
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov43_0222ABFC
@@ -9170,7 +9170,7 @@ _0222E63A:
 	mov r1, #0x88
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov43_0222ABFC
@@ -9213,7 +9213,7 @@ _0222E63A:
 	mov r1, #0x86
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov43_0222ABFC
@@ -9241,7 +9241,7 @@ _0222E63A:
 	mov r1, #0x8a
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov43_0222ABFC
@@ -9284,7 +9284,7 @@ ov43_0222E78C: ; 0x0222E78C
 	ldr r0, [r5, #4]
 	str r3, [sp, #0x24]
 	add r4, r2, #0
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	str r0, [sp, #0x28]
 	ldr r1, [sp, #0x24]
 	mov r0, #0x80
@@ -9315,7 +9315,7 @@ ov43_0222E78C: ; 0x0222E78C
 	mov r1, #0x7c
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	ldr r1, [sp, #0x24]
 	bl GetSpeciesName
 	str r0, [sp, #0x2c]
@@ -9340,7 +9340,7 @@ ov43_0222E78C: ; 0x0222E78C
 	mov r1, #0x6a
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	cmp r0, #0
 	bne _0222E826
 	mov r0, #0x22
@@ -9369,7 +9369,7 @@ _0222E828:
 	mov r1, #0x7b
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov43_0222ABFC
@@ -9413,7 +9413,7 @@ _0222E828:
 	mov r1, #0x7a
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov43_0222ABFC
@@ -9457,7 +9457,7 @@ ov43_0222E904: ; 0x0222E904
 	ldr r0, [r5, #4]
 	add r6, r3, #0
 	add r4, r2, #0
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	str r0, [sp, #0x24]
 	mov r0, #0x80
 	add r1, r6, #0
@@ -9488,7 +9488,7 @@ ov43_0222E904: ; 0x0222E904
 	mov r1, #0x6e
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	cmp r0, #0
 	bne _0222E964
 	mov r0, #0x22
@@ -9517,7 +9517,7 @@ _0222E966:
 	mov r1, #0x8f
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov43_0222ABFC
@@ -9561,7 +9561,7 @@ _0222E966:
 	mov r1, #0x8e
 	add r2, r5, r2
 	ldrb r2, [r2, #0x18]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov43_0222ABFC
@@ -9605,7 +9605,7 @@ ov43_0222EA40: ; 0x0222EA40
 	ldr r0, [r5, #4]
 	add r4, r2, #0
 	add r7, r3, #0
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	ldr r0, [r5, #4]
 	bl sub_0202C6F4
 	str r0, [sp, #0x24]

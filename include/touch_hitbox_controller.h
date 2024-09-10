@@ -6,7 +6,7 @@
 
 typedef struct TouchHitboxControllerTemplate {
     u8 unkCallbackNum;
-    u8 touchActive; // FIXME: bool8
+    u8 touchActive;      // FIXME: bool8
     u16 numFramesActive; // unused, only read in one place to make sure it doesn't overflow
 } TouchHitboxControllerTemplate;
 

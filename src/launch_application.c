@@ -4,6 +4,7 @@
 
 #include "constants/flags.h"
 
+#include "application/view_rankings.h"
 #include "battle/battle_022378C0.h"
 
 #include "alph_puzzle.h"
@@ -29,7 +30,6 @@
 #include "overlay_109.h"
 #include "overlay_111.h"
 #include "overlay_113.h"
-#include "overlay_121.h"
 #include "overlay_14.h"
 #include "overlay_15.h"
 #include "overlay_16.h"
@@ -62,6 +62,7 @@
 #include "save_pokeathlon.h"
 #include "save_special_ribbons.h"
 #include "save_trainer_card.h"
+#include "start_menu.h"
 #include "sys_flags.h"
 #include "trainer_data.h"
 #include "unk_020192D0.h"
@@ -130,7 +131,7 @@ FS_EXTERN_OVERLAY(OVY_109);
 FS_EXTERN_OVERLAY(OVY_110);
 FS_EXTERN_OVERLAY(OVY_111);
 FS_EXTERN_OVERLAY(OVY_113);
-FS_EXTERN_OVERLAY(OVY_121);
+FS_EXTERN_OVERLAY(view_rankings_app);
 
 static PartyMenuArgs *PartyMenu_CreateArgs(HeapID heapId, FieldSystem *fieldSystem, int a2, PartyMenuContext context);
 static BOOL Task_OpenPartyMenuForUnionRoomBattleSelect(TaskManager *taskman);
@@ -975,7 +976,7 @@ static BOOL Task_WirelessTrade(TaskManager *taskman) {
         data->wirelessTradeSelectMon.unk30++;
         data->state          = 2;
         GameStats *gameStats = Save_GameStats_Get(fieldSystem->saveData);
-        GameStats_AddScore(gameStats, GAME_STAT_UNK16);
+        GameStats_AddScore(gameStats, SCORE_EVENT_16);
         if (sub_02039998()) {
             GameStats_Inc(gameStats, GAME_STAT_UNK114);
         }
@@ -1396,7 +1397,7 @@ LegendaryCinematicArgs *LegendaryCinematic_LaunchApp(FieldSystem *fieldSystem, U
     return args;
 }
 
-void sub_0203FD08(FieldSystem *fieldSystem, UnkStruct_02097D48 *args) {
-    static const OVY_MGR_TEMPLATE _020FA494 = { ov121_021E5900, ov121_021E590C, ov121_021E59BC, FS_OVERLAY_ID(OVY_121) };
-    FieldSystem_LaunchApplication(fieldSystem, &_020FA494, args);
+void LaunchApp_ViewRankings(FieldSystem *fieldSystem, ViewRankingsArgs *args) {
+    static const OVY_MGR_TEMPLATE sViewRankingsAppTemplate = { ViewRankingsApp_Init, ViewRankingsApp_Main, ViewRankingsApp_Exit, FS_OVERLAY_ID(view_rankings_app) };
+    FieldSystem_LaunchApplication(fieldSystem, &sViewRankingsAppTemplate, args);
 }

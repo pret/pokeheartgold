@@ -68,9 +68,9 @@ typedef struct SavePokegear {
     u32 unk_4_27        : 2;
     u32 unk_4_29        : 3;
     UnkPokegearSub8List unk_8;
-    MomsSavings momsSavings; // 4B8
+    MomsSavings momsSavings;                        // 4B8
     PhoneContact phoneContacts[NUM_PHONE_CONTACTS]; // 60C
-} SavePokegear; // size=0x658
+} SavePokegear;                                     // size=0x658
 
 u32 SaveData_GSPlayerMisc_sizeof(void);
 SavePokegear *SaveData_GSPlayerMisc_Get(SaveData *saveData);

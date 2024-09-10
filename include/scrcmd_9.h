@@ -54,7 +54,7 @@ typedef struct UnkStruct_Fsys_A0 {
     HeapID heapId;
     u32 unk08;
     u8 unk0c;
-    u8 unk0d;
+    u8 curWinStreak;
     u8 unk0e;
     u8 unk0f;
     u8 unk10_0 : 1;

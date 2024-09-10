@@ -22,13 +22,13 @@ struct AlphItemUseData {
 typedef void *(*FieldApplicationWorkCtor)(FieldSystem *fieldSystem);
 
 typedef struct ItemFieldUseData {
-    FieldSystem *fieldSystem; // 00
-    struct ItemCheckUseData dat; // 04
+    FieldSystem *fieldSystem;      // 00
+    struct ItemCheckUseData dat;   // 04
     FieldApplicationWorkCtor ctor; // 1C
-    void *work; // 20
-    u16 itemId; // 24
-    u8 state; // 26
-    u8 no_app; // 27
+    void *work;                    // 20
+    u16 itemId;                    // 24
+    u8 state;                      // 26
+    u8 no_app;                     // 27
 } ItemFieldUseData;
 
 typedef struct ItemMenuUseData {

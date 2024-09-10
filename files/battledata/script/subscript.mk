@@ -13,7 +13,8 @@ $(BTL_SUBSCRIPT_SCRIPT_DEPS):
 
 $(BTL_SUBSCRIPT_SCRIPT_BINS): %.bin: %.s
 $(BTL_SUBSCRIPT_SCRIPT_BINS): %.bin: %.s %.d
-	$(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $*.o $<
+	@echo $(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $*.o $<
+	@$(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $*.o $< || { rm -f $*.d; exit 1; }
 	@$(call fixdep,$*.d)
 	@$(SED) -i 's/\.o/.bin/' $*.d
 	$(OBJCOPY) -O binary --file-alignment 4 $*.o $@

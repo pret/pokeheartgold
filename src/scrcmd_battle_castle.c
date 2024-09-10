@@ -76,7 +76,7 @@ BOOL ScrCmd_637(ScriptContext *ctx) {
         break;
     case 1: // Unused
         if (arg1 == 3) {
-            *result = sub_020310BC(sub_0203107C(ctx->fieldSystem->saveData), 108, sub_0205C268(108));
+            *result = FrontierSave_GetStat(Save_Frontier_GetStatic(ctx->fieldSystem->saveData), 108, sub_0205C268(108));
         } else {
             *result = sub_02030E58(unk0, 9, arg1, 0, 0);
         }
@@ -115,12 +115,12 @@ static void sub_0204FA14(SaveData *saveData, u32 a1, u8 a2) {
     unk = 0;
     sub_02030E18(a1, 9, a2, 0, &unk);
     if (a2 == 3) {
-        sub_02031108(sub_0203107C(saveData), 108, sub_0205C268(108), 0);
+        sub_02031108(Save_Frontier_GetStatic(saveData), 108, sub_0205C268(108), 0);
     }
-    sub_02031108(sub_0203107C(saveData), sub_0205C1A0(a2), sub_0205C268(sub_0205C1A0(a2)), 0);
-    sub_02031108(sub_0203107C(saveData), sub_0205C1F0(a2), sub_0205C268(sub_0205C1F0(a2)), 0);
+    sub_02031108(Save_Frontier_GetStatic(saveData), sub_0205C1A0(a2), sub_0205C268(sub_0205C1A0(a2)), 0);
+    sub_02031108(Save_Frontier_GetStatic(saveData), sub_0205C1F0(a2), sub_0205C268(sub_0205C1F0(a2)), 0);
     for (s32 i = 0; i < 3; i++) {
-        sub_02031108(sub_0203107C(saveData), sub_0205C174(a2, i), sub_0205C268(sub_0205C174(a2, i)), 1);
+        sub_02031108(Save_Frontier_GetStatic(saveData), sub_0205C174(a2, i), sub_0205C268(sub_0205C174(a2, i)), 1);
     }
 }
 

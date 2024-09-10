@@ -40,14 +40,14 @@ typedef struct SpriteRenderer {
     u32 numGfxHandlers;
     BOOL hasOamManager;
     NNSG2dCellTransferState *cellTransferState; // 00C
-    GF_G2dRenderer renderer; // 010
-} SpriteRenderer; // size: 0x138
+    GF_G2dRenderer renderer;                    // 010
+} SpriteRenderer;                               // size: 0x138
 
 typedef struct SpriteGfxHandler {
     SpriteList *spriteList;
-    SpriteResourceHeaderList *spriteHeaderList; // 4
-    GF_2DGfxResHeader *_2dGfxResHeader; // 8
-    GF_2DGfxResMan *_2dGfxResMan[GF_GFX_RES_TYPE_MAX]; // C
+    SpriteResourceHeaderList *spriteHeaderList;                // 4
+    GF_2DGfxResHeader *_2dGfxResHeader;                        // 8
+    GF_2DGfxResMan *_2dGfxResMan[GF_GFX_RES_TYPE_MAX];         // C
     GF_2DGfxResObjList *_2dGfxResObjList[GF_GFX_RES_TYPE_MAX]; // 24
     int numGfxResObjects[GF_GFX_RES_TYPE_MAX];
     int numGfxResObjectTypes;

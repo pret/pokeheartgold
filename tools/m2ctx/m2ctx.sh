@@ -13,11 +13,17 @@ else
 	SED="$(which sed)"
 fi
 
-
 generate-ctx () {
     # Remove any line containing a predefined macro. If not removed, mwccarm
     # generates compiler warnings.
-    grep "^#include " "$1" | $GCC $FLAGS $INCLUDES $DEFINES  -x c - | ${SED} '/__STDC__\|__STDC_VERSION__\|__STDC_VERSION__\|__STDC_HOSTED__/d' > $OUT_FILE
+
+    if [ "$OUT_FILE" = "-" ]; then
+        PIPE_CTX=
+    else
+        PIPE_CTX="> $OUT_FILE"
+    fi
+
+    grep "^#include " "$1" | $GCC $FLAGS $INCLUDES $DEFINES  -x c - | ${SED} '/__STDC__\|__STDC_VERSION__\|__STDC_VERSION__\|__STDC_HOSTED__/d' $PIPE_CTX
 }
 
 usage () {
@@ -38,6 +44,9 @@ while [[ $# -gt 0 ]]; do
     usage
     exit 0
     ;;
+  -o)
+    OUT_FILE="$2"
+    shift 2 ;;
   *)
     generate-ctx "$1"
     exit 0

@@ -9,14 +9,14 @@ struct GFRtcWork {
     BOOL getDateTimeLock;
     s32 getDateTimeSleep;
     RTCResult getDateTimeErrorCode;
-    RTCDate date; // 10
-    RTCTime time; // 20
+    RTCDate date;       // 10
+    RTCTime time;       // 20
     RTCDate date_async; // 2C
     RTCTime time_async; // 3C
 
     // used for rendering photos
     s32 frozenTimeState; // 3: in photo state; 0: normal operation
-    RTCTime frozenTime; // when frozenTimeState is 3, this is the time returned
+    RTCTime frozenTime;  // when frozenTimeState is 3, this is the time returned
 };
 
 struct GFRtcWork sRTCWork;
@@ -107,10 +107,10 @@ static inline BOOL IsLeapYear(s32 year) {
 s32 GF_RTC_GetDayOfYear(const RTCDate *date) {
     s32 days;
     static const u16 sGF_DaysPerMonth[] = {
-        0, // Jan
-        31, // Feb
-        59, // Mar
-        90, // Apr
+        0,   // Jan
+        31,  // Feb
+        59,  // Mar
+        90,  // Apr
         120, // May
         151, // Jun
         181, // Jul

@@ -21,14 +21,14 @@ typedef struct SPLEmitterFlag {
 } SPLEmitterFlag;
 
 typedef struct SPLEmitter {
-    struct SPLEmitter *p_next; // 0
-    struct SPLEmitter *p_prev; // 4
+    struct SPLEmitter *p_next;     // 0
+    struct SPLEmitter *p_prev;     // 4
     SPLParticleList act_ptcl_list; // 8
     SPLParticleList act_chld_list; // 14
-    SPLResource *p_res; // 20
-    SPLEmitterFlag flag; // 24
-    VecFx32 emtr_pos; // 28
-    VecFx32 emtr_vel; // 34
+    SPLResource *p_res;            // 20
+    SPLEmitterFlag flag;           // 24
+    VecFx32 emtr_pos;              // 28
+    VecFx32 emtr_vel;              // 34
     VecFx32 emtr_init_vel;
     u16 age;
     fx16 gen_num_dec;

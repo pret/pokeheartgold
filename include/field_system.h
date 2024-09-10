@@ -36,7 +36,7 @@ typedef struct FollowMon {
     u32 unk1C;
 } FollowMon;
 
-typedef struct GearPhoneRingManager {
+struct GearPhoneRingManager {
     u8 unk_var0_0 : 1;
     u8 unk_var0_1 : 1;
     u8 unk_var0_2 : 1;
@@ -52,17 +52,17 @@ typedef struct GearPhoneRingManager {
     s32 unk_varC;
     u16 unk_var10;
     u16 unk_var12;
-    s64 unk_var14; // Seconds? see sub_02092F30
-    PhoneBookEntry entry; // 0x1c
+    s64 unk_var14;              // Seconds? see sub_02092F30
+    PhoneBookEntry entry;       // 0x1c
     SavePokegear *pokegearData; // 0x30
-    MomsSavings *savingsData; // 0x34
-    SaveData *saveData; // 0x38
-    FieldSystem *sys; // 0x3c
+    MomsSavings *savingsData;   // 0x34
+    SaveData *saveData;         // 0x38
+    FieldSystem *sys;           // 0x3c
     struct PokegearRingingTask {
         SysTask *task;
         u8 counter;
     } gearRing;
-} GearPhoneRingManager; // size: 0x48
+}; // size: 0x48
 
 typedef struct FieldSystemUnk108 {
     u32 personality;

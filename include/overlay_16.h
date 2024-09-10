@@ -15,7 +15,7 @@ typedef struct BerryPotsArgs {
 typedef struct UnkStruct_ov16_022014A0 {
     u8 defaultGrowthTimeInHours;
     u8 defaultDrainRate;
-    u8 unk2; // yield multiplier?
+    u8 unk2;               // yield multiplier?
 } UnkStruct_ov16_022014A0; // size: 0x3
 
 UnkStruct_ov16_022014A0 *ov16_022014A0(HeapID heapId);

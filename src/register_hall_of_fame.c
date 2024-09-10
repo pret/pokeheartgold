@@ -168,20 +168,20 @@ typedef struct RegisterHofMon {
 
 typedef struct RegisterHallOfFameData {
     RegisterHallOfFameArgs *args; // 00000
-    SysTask *vblankTask; // 00004
+    SysTask *vblankTask;          // 00004
     BOOL(*subprocCallback)
     (struct RegisterHallOfFameData *);
     u16 subprocTimer;
     u16 subprocStage;
     BgConfig *bgConfig; // 00010
     Window windows[7];
-    MsgData *msgData; // 00084
+    MsgData *msgData;         // 00084
     MessageFormat *msgFormat; // 00088
     String *strbuf1;
     String *strbuf2;
     NARC *narcA101;
     NARC *narcA180;
-    SpriteRenderer *spriteRenderer; // 0009C
+    SpriteRenderer *spriteRenderer;     // 0009C
     SpriteGfxHandler *spriteGfxHandler; // 000A0
     UnkImageStruct *monPics[15];
     Camera *camera;
@@ -192,7 +192,7 @@ typedef struct RegisterHallOfFameData {
     RegisterHofMon mons[PARTY_SIZE];
     u32 numMons;
     RegisterHallOfFameScene currentScene; // 1304C
-    RegisterHallOfFameScene nextScene; // 13050
+    RegisterHallOfFameScene nextScene;    // 13050
     u16 sceneSubstep;
     u16 curMonIndex;
     f32 unk_13058;

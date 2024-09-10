@@ -382,7 +382,7 @@ typedef struct BattleContext {
     u8 unk_21A4[4];
     PlayerActions playerActions[4];
     u8 executionOrder[4]; // accounts for running, items, etc used in battler slots
-    u8 turnOrder[4]; // by pokemon speed, accounting for trick room
+    u8 turnOrder[4];      // by pokemon speed, accounting for trick room
     u32 effectiveSpeed[4];
     u8 linkBuffer[4][4][16];
     u8 battleBuffer[4][256];

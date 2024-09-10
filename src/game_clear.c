@@ -294,7 +294,7 @@ void CallTask_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
     PlayerProfile_SetGameClearFlag(profile);
 
     if (!env->vsTrainerRed) {
-        GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), 74);
+        GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK74);
     }
     TaskManager_Call(taskman, Task_GameClear, env);
 }

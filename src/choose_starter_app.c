@@ -150,7 +150,7 @@ struct StarterChooseMonSpriteData {
     GF_2DGfxResMan *plttResMan;
     GF_2DGfxResMan *cellResMan;
     GF_2DGfxResMan *animResMan;
-    GF_2DGfxResMan *multiCellResMan; // unused
+    GF_2DGfxResMan *multiCellResMan;    // unused
     GF_2DGfxResMan *multiCellAnmResMan; // unused
     struct StarterChooseMonObjResPtrs objs[3];
     void *charDatas[3];

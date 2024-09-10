@@ -76,7 +76,7 @@ BOOL ScrCmd_643(ScriptContext *ctx) {
         break;
     case 1: // Unused
         if (arg1 == 3) {
-            *result = sub_020310BC(sub_0203107C(ctx->fieldSystem->saveData), 110, sub_0205C268(110));
+            *result = FrontierSave_GetStat(Save_Frontier_GetStatic(ctx->fieldSystem->saveData), 110, sub_0205C268(110));
         } else {
             *result = sub_02030FE4(unk0, 8, arg1, 0, 0);
         }
@@ -115,9 +115,9 @@ static void sub_0204FFB0(SaveData *saveData, void *a1, u8 a2) {
     unk = 0;
     sub_02030FB0(a1, 8, a2, 0, &unk);
     if (a2 == 3) {
-        sub_02031108(sub_0203107C(saveData), 110, sub_0205C268(110), 0);
+        sub_02031108(Save_Frontier_GetStatic(saveData), 110, sub_0205C268(110), 0);
     }
-    sub_02031108(sub_0203107C(saveData), sub_0205C2C0(a2), sub_0205C268(sub_0205C2C0(a2)), 0);
+    sub_02031108(Save_Frontier_GetStatic(saveData), sub_0205C2C0(a2), sub_0205C268(sub_0205C2C0(a2)), 0);
 }
 
 BOOL ScrCmd_644(ScriptContext *ctx) {

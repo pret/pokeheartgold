@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_UNK_02030A98_H
 
 #include "save.h"
+#include "save_frontier.h"
 
 struct UnkStruct_02030A98 {
     u8 filler_000[0xBA0];
@@ -21,12 +22,12 @@ void *sub_02030E88(SaveData *saveData);
 void *sub_02030FA0(SaveData *saveData);
 void sub_02030FB0(void *, u32, u32, u32, u8 *);
 u32 sub_02030FE4(void *, u32, u8, u32, u32);
-void *sub_0203107C(SaveData *saveData);
-void sub_020310A0(SaveData *saveData);
-int sub_020310BC(void *, int, int);
-void sub_02031084(SaveData *saveData);
-u32 sub_02031108(void *, int, int, u16);
-void sub_0203126C(void *a0, u32 a1, u32 a2, u16 a3);
+FrontierSave *Save_Frontier_GetStatic(SaveData *saveData);
+void Save_Frontier_Load(SaveData *saveData);
+int FrontierSave_GetStat(FrontierSave *, int, int);
+void Save_Frontier_Commit(SaveData *saveData);
+u32 sub_02031108(FrontierSave *, int, int, u16);
+void sub_0203126C(FrontierSave *a0, u32 a1, u32 a2, u16 a3);
 u32 *sub_020312C4(SaveData *saveData, u32 a1, u32 *out);
 u32 sub_020312E0(SaveData *saveData, u32 *a1, u32 a2, u32 a3);
 u32 sub_02030E98(u32 a0);

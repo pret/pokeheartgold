@@ -558,8 +558,8 @@ static const u16 sResdatInfo[7] = {
     NARC_resdat_resdat_00000011_bin, // GF_GFX_RES_TYPE_PLTT
     NARC_resdat_resdat_00000009_bin, // GF_GFX_RES_TYPE_CELL
     NARC_resdat_resdat_00000008_bin, // GF_GFX_RES_TYPE_ANIM
-    0xFFFF, // GF_GFX_RES_TYPE_MCEL
-    0xFFFF, // GF_GFX_RES_TYPE_MANM
+    0xFFFF,                          // GF_GFX_RES_TYPE_MCEL
+    0xFFFF,                          // GF_GFX_RES_TYPE_MANM
     NARC_resdat_resdat_00000074_bin,
 };
 

@@ -19,11 +19,11 @@ typedef struct FashionCase {
     u8 padding_3C[4];
 } FashionCase;
 
-typedef struct SaveFashionData { // todo: rename to SaveFashionData
-    SaveFashionDataSub unk_000[11]; // 000
+typedef struct SaveFashionData {      // todo: rename to SaveFashionData
+    SaveFashionDataSub unk_000[11];   // 000
     SaveFashionDataSub3FC unk_3FC[5]; // 3FC
-    FashionCase fashionCase; // 7F4
-} SaveFashionData; // size=0x834
+    FashionCase fashionCase;          // 7F4
+} SaveFashionData;                    // size=0x834
 
 SaveFashionData *Save_FashionData_Get(SaveData *saveData);
 FashionCase *Save_FashionData_GetFashionCase(SaveFashionData *unk);

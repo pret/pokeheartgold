@@ -11,7 +11,7 @@ AlignConsecutiveBitFields:
   Enabled: true
 AlignConsecutiveDeclarations: None
 AlignConsecutiveMacros: Consecutive
-AlignTrailingComments: false
+AlignTrailingComments: true
 AlignArrayOfStructures: Left
 
 AllowShortBlocksOnASingleLine: Empty

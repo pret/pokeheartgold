@@ -17,16 +17,16 @@
 #include "wild_encounter.h"
 
 const u16 sBugContestOpponentClasses[] = {
-    TRAINERCLASS_BUG_CATCHER, // Don
-    TRAINERCLASS_BUG_CATCHER, // Ed
+    TRAINERCLASS_BUG_CATCHER,   // Don
+    TRAINERCLASS_BUG_CATCHER,   // Ed
     TRAINERCLASS_ACE_TRAINER_F, // Abby
-    TRAINERCLASS_POKEFAN_M, // William
-    TRAINERCLASS_BUG_CATCHER, // Benny
-    TRAINERCLASS_CAMPER, // Barry
-    TRAINERCLASS_PICNICKER, // Cindy
-    TRAINERCLASS_BUG_CATCHER, // Josh
-    TRAINERCLASS_YOUNGSTER, // Samuel
-    TRAINERCLASS_SCHOOL_KID_M, // Kipp
+    TRAINERCLASS_POKEFAN_M,     // William
+    TRAINERCLASS_BUG_CATCHER,   // Benny
+    TRAINERCLASS_CAMPER,        // Barry
+    TRAINERCLASS_PICNICKER,     // Cindy
+    TRAINERCLASS_BUG_CATCHER,   // Josh
+    TRAINERCLASS_YOUNGSTER,     // Samuel
+    TRAINERCLASS_SCHOOL_KID_M,  // Kipp
 };
 
 void BugContest_BackUpParty(BugContest *bugContest);

@@ -10,8 +10,8 @@
  */
 typedef struct SEAL {
     u8 kind; // ID of the seal
-    u8 x; // X coordinate on the capsule
-    u8 y; // Y coordinate on the capsule
+    u8 x;    // X coordinate on the capsule
+    u8 y;    // Y coordinate on the capsule
 } SEAL;
 
 /*
@@ -33,7 +33,7 @@ typedef struct SEALBAG {
  */
 typedef struct SealCase {
     CAPSULE capsules[MAX_CAPSULES]; // Available capsules
-    SEALBAG inventory; // Available seals to put on capsules
+    SEALBAG inventory;              // Available seals to put on capsules
 } SealCase;
 
 /*

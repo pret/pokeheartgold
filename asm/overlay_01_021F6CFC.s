@@ -508,7 +508,7 @@ ov01_021F7084: ; 0x021F7084
 	cmp r0, #0
 	bne _021F70DA
 	ldr r0, [r5, #0x34]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r1, r5, #0
 	add r1, #0x8c
 	ldr r1, [r1]

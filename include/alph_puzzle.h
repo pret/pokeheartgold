@@ -21,7 +21,7 @@ typedef enum AlphPuzzles {
 
 typedef struct AlphPuzzleArgs {
     void *unk_00; // unused
-    u8 unk4; // unused
+    u8 unk4;      // unused
     u8 puzzle;
     u8 unk6; // unused
     u8 unk7; // unused

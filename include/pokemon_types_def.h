@@ -123,7 +123,7 @@ typedef struct BoxPokemon {
     u16 box_lock               : 1;
     u16 checksum_fail          : 1;
     u16 Unused                 : 13; // Might be used for validity checks
-    /* 0x006 */ u16 checksum; // Stored checksum of pokemon
+    /* 0x006 */ u16 checksum;        // Stored checksum of pokemon
     /* 0x008 */ PokemonDataBlock substructs[4];
 } BoxPokemon;
 

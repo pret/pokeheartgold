@@ -532,10 +532,10 @@ _020672D4: .word sub_02067238
 sub_020672D8: ; 0x020672D8
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	mov r1, #0
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	str r0, [sp]
 	cmp r0, #0x14
 	bhs _020672F2
@@ -628,10 +628,10 @@ sub_02067398: ; 0x02067398
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	mov r1, #0
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	str r0, [sp, #8]
 	cmp r0, #0x14
 	bhs _020673B6

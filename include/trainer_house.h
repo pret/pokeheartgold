@@ -6,17 +6,17 @@
 typedef struct THOUSE_MON {
     u16 species : 11; // 0
     u16 form    : 5;
-    u16 item; // 2
-    u16 moves[4]; // 4
-    u32 otId; // C
-    u32 personality; // 10
-    u32 IVs; // 14
-    u8 EVs[6]; // 18
-    u8 ppUpFlags; // 1E
-    u8 language; // 1F
-    u8 ability; // 20
-    u8 friendship; // 21
-    u8 filler_22[2]; // 22
+    u16 item;                          // 2
+    u16 moves[4];                      // 4
+    u32 otId;                          // C
+    u32 personality;                   // 10
+    u32 IVs;                           // 14
+    u8 EVs[6];                         // 18
+    u8 ppUpFlags;                      // 1E
+    u8 language;                       // 1F
+    u8 ability;                        // 20
+    u8 friendship;                     // 21
+    u8 filler_22[2];                   // 22
     u16 nickname[POKEMON_NAME_LENGTH]; // 24
 } THOUSE_MON;
 

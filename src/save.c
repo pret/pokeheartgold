@@ -588,7 +588,7 @@ static BOOL Save_LoadDynamicRegion(SaveData *saveData) {
     pc_offs                    = saveData->saveSlotSpecs[1].offset;
     pc_size                    = PCStorage_GetSizeOfBox() * PCStorage_GetNumBoxes();
     saveData->pcStorageLastCRC = GF_CalcCRC16(data + pc_offs, pc_size);
-    sub_020310A0(saveData);
+    Save_Frontier_Load(saveData);
     sub_0202C6FC(saveData);
     return TRUE;
 }
@@ -613,7 +613,7 @@ static int Save_WriteChunkFooterAsync(SaveData *saveData, int idx, u8 slot) {
 static void Save_WriteManInit(SaveData *saveData, struct AsyncWriteManager *writeMan, int a2) {
 #pragma unused(a2)
     sub_0202C714(saveData);
-    sub_02031084(saveData);
+    Save_Frontier_Commit(saveData);
 
     writeMan->state           = 0;
     writeMan->state_sub       = 0;

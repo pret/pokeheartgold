@@ -3219,7 +3219,7 @@ BOOL ScrCmd_MakeObjectVisible(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_376(ScriptContext *ctx) { // todo: mail screen
+BOOL ScrCmd_376(ScriptContext *ctx) {                                                                // todo: mail screen
     UnkStruct_0203F074 **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); // MailAppData
     *p_work                     = sub_0203F074(ctx->fieldSystem, HEAP_ID_FIELD);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
@@ -3233,10 +3233,10 @@ BOOL ScrCmd_377(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_378(ScriptContext *ctx) {
-    u16 r4 = ScriptGetVar(ctx);
-    u16 r2 = ScriptGetVar(ctx);
-    sub_02097D3C(ctx->fieldSystem, r4, r2);
+BOOL ScrCmd_ViewRankings(ScriptContext *ctx) {
+    u16 pageScrollParam = ScriptGetVar(ctx);
+    u16 cursorPos       = ScriptGetVar(ctx);
+    FieldSystem_LaunchTask_ViewRankingsApp(ctx->fieldSystem, pageScrollParam, cursorPos);
     return TRUE;
 }
 

@@ -1,6 +1,9 @@
 #ifndef POKEHEARTGOLD_SPL_PARTICLE_H
 #define POKEHEARTGOLD_SPL_PARTICLE_H
 
+#include <nitro/fx.h>
+#include <nitro/gx.h>
+
 typedef struct SPLParticle {
     struct SPLParticle *p_next;
     struct SPLParticle *p_prev;

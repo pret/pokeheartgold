@@ -4248,7 +4248,7 @@ void sub_02072A98(Pokemon *mon, struct UnkPokemonStruct_02072A98 *dest) {
     PokemonDataBlockB *dbB; // sp4
     PokemonDataBlockC *dbC; // r7
     PokemonDataBlockD *dbD; // ip
-    BoxPokemon *boxMon; // r6
+    BoxPokemon *boxMon;     // r6
     int i;
 
     if (!mon->box.party_lock) {
@@ -4328,7 +4328,7 @@ void sub_02072D64(const struct UnkPokemonStruct_02072A98 *src, Pokemon *mon) {
     PokemonDataBlockB *dbB; // r6
     PokemonDataBlockC *dbC; // r7
     PokemonDataBlockD *dbD; // ip
-    BoxPokemon *boxMon; // sp4
+    BoxPokemon *boxMon;     // sp4
     int i;
 
     MI_CpuClearFast(mon, sizeof(Pokemon));

@@ -645,7 +645,7 @@ static void TitleScreenAnim_Load2dBgGfx(BgConfig *bgConfig, HeapID heapID, Title
     String_Delete(string);
     DestroyMsgData(msgData);
 
-    u16 color1 = RGB(27, 8, 0); // HeartGold
+    u16 color1 = RGB(27, 8, 0);  // HeartGold
     u16 color2 = RGB(0, 28, 31); // SoulSilver
     BG_LoadPlttData(3, &color1, sizeof(u16), 0x42);
     BG_LoadPlttData(3, &color2, sizeof(u16), 0x44);

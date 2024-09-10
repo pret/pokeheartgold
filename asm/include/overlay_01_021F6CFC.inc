@@ -25,7 +25,7 @@
 .public sub_0202C2DC
 .public sub_0202C338
 .public sub_0202C6F4
-.public sub_0203107C
+.public Save_Frontier_GetStatic
 .public sub_020311AC
 .public sub_02034818
 .public sub_02037454

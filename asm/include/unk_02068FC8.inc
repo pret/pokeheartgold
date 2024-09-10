@@ -25,8 +25,8 @@
 .public Save_GameStats_Get
 .public GameStats_GetCapped
 .public GameStats_GetScore
-.public sub_0203107C
-.public sub_020310BC
+.public Save_Frontier_GetStatic
+.public FrontierSave_GetStat
 .public FieldSystem_GetSaveData
 .public TrainerCard_LaunchApp
 .public Save_VarsFlags_Get

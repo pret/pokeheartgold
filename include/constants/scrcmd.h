@@ -5,6 +5,7 @@
 
 #include "constants/badge.h"
 #include "constants/flags.h"
+#include "constants/game_stats.h"
 #include "constants/global.fieldmap.h"
 #include "constants/global.h"
 #include "constants/items.h"
@@ -13,6 +14,7 @@
 #include "constants/moves.h"
 #include "constants/phone_contacts.h"
 #include "constants/pokemon.h"
+#include "constants/ranking.h"
 #include "constants/ribbon.h"
 #include "constants/sndseq.h"
 #include "constants/spawns.h"

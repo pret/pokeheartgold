@@ -34,11 +34,12 @@ typedef enum HeapID {
     HEAP_ID_GAME_BOARD            = 110,
     HEAP_ID_BERRY_POTS            = 130,
     HEAP_ID_BERRY_POTS_APP        = 131,
-    HEAP_ID_VOLTORB_FLIP          = 160
+    HEAP_ID_RANKINGS_APP          = 158,
+    HEAP_ID_VOLTORB_FLIP          = 160,
 } HeapID;
 
 typedef struct HeapParam {
-    u32 size; // maximum size of the heap
+    u32 size;        // maximum size of the heap
     OSArenaId arena; // where to allocate the heap from
 } HEAP_PARAM;
 

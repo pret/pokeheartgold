@@ -2940,7 +2940,7 @@ ov44_0222B528: ; 0x0222B528
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	bl sub_02031188
 	mov r0, #0xd2
 	mov r1, #0xe
@@ -13715,7 +13715,7 @@ ov44_02230C68: ; 0x02230C68
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	add r6, r1, #0
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r7, r0, #0
 	ldr r0, _02230D7C ; =0x00000B8D
 	mov r2, #0x5a
@@ -13743,7 +13743,7 @@ ov44_02230C68: ; 0x02230C68
 	add r0, r7, #0
 	mov r1, #0x7c
 	add r2, r4, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r1, r6, #0
 	bl GetSpeciesName
 	add r6, r0, #0
@@ -14179,10 +14179,10 @@ ov44_02231054: ; 0x02231054
 	add r6, r2, #0
 	add r7, r3, #0
 	add r4, r1, #0
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r1, r6, #0
 	add r2, r7, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 	ldr r0, [sp, #0x1c]
 	ldr r3, [sp, #0x18]
@@ -14208,12 +14208,12 @@ _02231096:
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	ldr r1, _022310C4 ; =ov44_022353D0
 	lsl r2, r4, #2
 	ldr r1, [r1, r2]
 	add r2, r7, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	cmp r0, #0
 	bne _022310B4
 	mov r1, #0x39

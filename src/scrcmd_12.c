@@ -1,3 +1,4 @@
+#include "field_system.h"
 #include "pal_park.h"
 #include "pokedex.h"
 #include "save_arrays.h"

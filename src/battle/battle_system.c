@@ -964,7 +964,7 @@ void ov12_0223BB44(BattleSystem *bsys) {
     if (bsys->battleSpecial & BATTLE_SPECIAL_RECORDING) {
         return;
     }
-    GameStats_AddScore(bsys->gameStats, GAME_STAT_UNK21);
+    GameStats_AddScore(bsys->gameStats, SCORE_EVENT_REGISTER_SPECIES_CAUGHT);
 }
 
 void ov12_0223BB64(BattleSystem *bsys, int a1) {

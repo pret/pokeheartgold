@@ -70,7 +70,7 @@ typedef struct SaveData {
     u8 dynamic_region[SAVE_PAGE_MAX * SAVE_SECTOR_SIZE];
     u32 saveCounter;
     struct SaveArrayHeader arrayHeaders[SAVE_BLOCK_NUM]; // 23014
-    struct SaveSlotSpec saveSlotSpecs[2]; // 232B4
+    struct SaveSlotSpec saveSlotSpecs[2];                // 232B4
     struct AsyncWriteManager asyncWriteMan;
     u32 lastGoodSaveSlot;
     u32 lastGoodSaveNo;

@@ -2134,10 +2134,10 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_378 arg0, arg1
+	.macro view_rankings scope, page, record
 	.short 378
-	.short \arg0
-	.short \arg1
+	.short \scope * 3 + \page
+	.short \record
 	.endm
 
 	.macro scrcmd_379 arg0

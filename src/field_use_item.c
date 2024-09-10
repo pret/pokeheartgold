@@ -27,6 +27,7 @@
 #include "script.h"
 #include "sound_02004A44.h"
 #include "sound_radio.h"
+#include "start_menu.h"
 #include "sys_flags.h"
 #include "system.h"
 #include "task.h"

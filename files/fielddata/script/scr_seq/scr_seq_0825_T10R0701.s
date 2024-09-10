@@ -38,7 +38,7 @@ scr_seq_T10R0701_000:
 	following_pokemon_movement 48
 	party_count_not_egg VAR_SPECIAL_RESULT
 	hall_of_fame_anim VAR_SPECIAL_RESULT
-	add_special_game_stat 23
+	add_special_game_stat SCORE_EVENT_23
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	call _01B4

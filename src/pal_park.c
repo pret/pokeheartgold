@@ -73,7 +73,7 @@ void PalPark_StopClock(FieldSystem *fieldSystem) {
     } else {
         local->timeRemainingFactor = 0;
     }
-    GameStats_AddScore(stats, GAME_STAT_UNK17);
+    GameStats_AddScore(stats, SCORE_EVENT_17);
 }
 
 BOOL PalPark_TryEncounter(FieldSystem *fieldSystem, int x, int z) {

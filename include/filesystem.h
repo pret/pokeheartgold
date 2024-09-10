@@ -10,10 +10,10 @@
  * FATB defines the regions within the FIMG to which the data are allocated.
  */
 typedef struct NARC {
-    FSFile file; // Open file handle
+    FSFile file;    // Open file handle
     u32 btaf_start; // Byte offset to the FATB chunk
     u32 gmif_start; // Byte offset to the FIMG chunk
-    u16 num_files; // Number of members in the archive
+    u16 num_files;  // Number of members in the archive
 } NARC;
 
 // Defines enum NarcId used in all public methods.

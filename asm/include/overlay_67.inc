@@ -97,8 +97,8 @@
 .public sub_0202D8E4
 .public Save_FrontierData_Get
 .public sub_0202D928
-.public sub_0203107C
-.public sub_020310BC
+.public Save_Frontier_GetStatic
+.public FrontierSave_GetStat
 .public MI_CpuCopy8
 .public memset
 .public gSystem

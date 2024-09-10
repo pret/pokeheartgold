@@ -83,7 +83,7 @@ typedef enum Terrain {
     TERRAIN_ICE,
     TERRAIN_BUILDING,
     TERRAIN_GREAT_MARSH, // unused
-    TERRAIN_UNKNOWN, // unused
+    TERRAIN_UNKNOWN,     // unused
     TERRAIN_WILL,
     TERRAIN_KOGA,
     TERRAIN_BRUNO,

@@ -33,15 +33,15 @@ typedef enum ItemUseError {
  * buttons. This is saved to flash.
  */
 typedef struct Bag {
-    ItemSlot items[NUM_BAG_ITEMS]; // General items
-    ItemSlot keyItems[NUM_BAG_KEY_ITEMS]; // Key items
-    ItemSlot TMsHMs[NUM_BAG_TMS_HMS]; // Move machines
-    ItemSlot mail[NUM_BAG_MAIL]; // Mail items
-    ItemSlot medicine[NUM_BAG_MEDICINE]; // Healing items
-    ItemSlot berries[NUM_BAG_BERRIES]; // Berries
-    ItemSlot balls[NUM_BAG_BALLS]; // Balls
+    ItemSlot items[NUM_BAG_ITEMS];              // General items
+    ItemSlot keyItems[NUM_BAG_KEY_ITEMS];       // Key items
+    ItemSlot TMsHMs[NUM_BAG_TMS_HMS];           // Move machines
+    ItemSlot mail[NUM_BAG_MAIL];                // Mail items
+    ItemSlot medicine[NUM_BAG_MEDICINE];        // Healing items
+    ItemSlot berries[NUM_BAG_BERRIES];          // Berries
+    ItemSlot balls[NUM_BAG_BALLS];              // Balls
     ItemSlot battleItems[NUM_BAG_BATTLE_ITEMS]; // Battle-only items
-    u16 registeredItems[2]; // IDs of registered key items
+    u16 registeredItems[2];                     // IDs of registered key items
 } Bag;
 
 /*
@@ -69,7 +69,7 @@ typedef struct ItemCheckUseData {
  * Data relevant to drawing the bag on screen
  */
 typedef struct BagView {
-    SaveData *saveData; // Persistent game state
+    SaveData *saveData;       // Persistent game state
     BagViewPocket pockets[8]; // Pocket information
     u8 unk64;
     u8 unk65;

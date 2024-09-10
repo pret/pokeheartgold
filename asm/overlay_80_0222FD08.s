@@ -83,7 +83,7 @@ _0222FDA2:
 	ldr r5, [r0]
 	ldr r0, _0222FEE8 ; =0x000004F8
 	ldr r0, [r5, r0]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r4, r0, #0
 	ldrb r0, [r5, #5]
 	ldrb r1, [r5, #4]
@@ -96,13 +96,13 @@ _0222FDA2:
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	strh r0, [r5, #0xc]
 	ldr r0, _0222FED8 ; =_0223DD40
 	ldr r4, [r0]
 	ldr r0, _0222FEE8 ; =0x000004F8
 	ldr r0, [r4, r0]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r6, r0, #0
 	ldrb r0, [r4, #5]
 	ldrb r1, [r4, #4]
@@ -115,7 +115,7 @@ _0222FDA2:
 	add r2, r0, #0
 	add r0, r6, #0
 	add r1, r7, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	b _0222FE12
 _0222FE0A:
 	ldr r0, _0222FED8 ; =_0223DD40
@@ -152,7 +152,7 @@ _0222FE1A:
 	ldr r5, [r0]
 	ldr r0, _0222FEE8 ; =0x000004F8
 	ldr r0, [r5, r0]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r6, r0, #0
 	ldrb r0, [r5, #5]
 	ldrb r1, [r5, #4]
@@ -165,13 +165,13 @@ _0222FE1A:
 	add r2, r0, #0
 	add r0, r6, #0
 	add r1, r7, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	strh r0, [r5, #0xc]
 	ldr r0, _0222FED8 ; =_0223DD40
 	ldr r4, [r0]
 	ldr r0, _0222FEE8 ; =0x000004F8
 	ldr r0, [r4, r0]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r6, r0, #0
 	ldrb r0, [r4, #5]
 	ldrb r1, [r4, #4]
@@ -184,7 +184,7 @@ _0222FE1A:
 	add r2, r0, #0
 	add r0, r6, #0
 	add r1, r7, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	strh r0, [r4, #8]
 _0222FEA8:
 	ldr r0, _0222FED8 ; =_0223DD40
@@ -949,7 +949,7 @@ ov80_0223049C: ; 0x0223049C
 	str r0, [sp]
 	ldr r0, _02230768 ; =0x000004F8
 	ldr r0, [r5, r0]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r4, r0, #0
 	ldrb r0, [r5, #4]
 	bl ov80_02236DD4
@@ -1026,7 +1026,7 @@ ov80_0223049C: ; 0x0223049C
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r6, r0, #0
 	ldrb r0, [r5, #5]
 	ldrb r1, [r5, #4]
@@ -1052,7 +1052,7 @@ ov80_0223049C: ; 0x0223049C
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r7, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	ldrh r1, [r5, #0xc]
 	cmp r1, r6
 	bne _022305E2
