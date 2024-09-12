@@ -1592,7 +1592,7 @@ sub_020314C4: ; 0x020314C4
 	bl Save_PlayerData_GetProfileAddr
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0202CA44
+	bl Save_WiFiHistory_Get
 	str r0, [sp]
 	add r0, r6, #0
 	bl Save_SysInfo_Get
@@ -1644,10 +1644,10 @@ sub_020314C4: ; 0x020314C4
 	orr r0, r1
 	strb r0, [r5, #0x1b]
 	ldr r0, [sp]
-	bl sub_0202CA8C
+	bl WifiHistory_GetPlayerCountry
 	strb r0, [r5, #0x17]
 	ldr r0, [sp]
-	bl sub_0202CA90
+	bl WiFiHistory_GetPlayerRegion
 	strb r0, [r5, #0x18]
 	ldr r0, _020315B4 ; =0x0000FFFF
 	mov r1, #0

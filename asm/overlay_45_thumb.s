@@ -3697,7 +3697,7 @@ ov45_0222B8A0: ; 0x0222B8A0
 	bl Save_Pokedex_Get
 	str r0, [sp, #0xc]
 	ldr r0, [sp]
-	bl sub_0202CA44
+	bl Save_WiFiHistory_Get
 	str r0, [sp, #0x10]
 	ldr r0, [sp]
 	bl Save_SysInfo_RTC_Get
@@ -3789,12 +3789,12 @@ _0222B958:
 	add r1, #0x5a
 	strh r0, [r1]
 	ldr r0, [sp, #0x10]
-	bl sub_0202CA8C
+	bl WifiHistory_GetPlayerCountry
 	add r1, r5, #0
 	add r1, #0x5c
 	strh r0, [r1]
 	ldr r0, [sp, #0x10]
-	bl sub_0202CA90
+	bl WiFiHistory_GetPlayerRegion
 	add r1, r5, #0
 	add r1, #0x5e
 	strb r0, [r1]
@@ -10194,7 +10194,7 @@ _0222E5F6:
 	ldr r1, [r1]
 	str r0, [r1, #4]
 	add r0, r6, #0
-	bl sub_0202CA44
+	bl Save_WiFiHistory_Get
 	ldr r6, _0222E67C ; =_022577C0
 	ldr r1, [r6]
 	str r0, [r1, #8]
@@ -12620,11 +12620,11 @@ ov45_0222F7B4: ; 0x0222F7B4
 	sub sp, #8
 	str r0, [sp, #4]
 	ldr r0, [r0, #8]
-	bl sub_0202CA8C
+	bl WifiHistory_GetPlayerCountry
 	add r4, r0, #0
 	ldr r0, [sp, #4]
 	ldr r0, [r0, #8]
-	bl sub_0202CA90
+	bl WiFiHistory_GetPlayerRegion
 	cmp r4, #0
 	bne _0222F7D4
 	add sp, #8

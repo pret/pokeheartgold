@@ -4,7 +4,6 @@
 #include "constants/battle.h"
 
 #include "bag.h"
-#include "field_system.h"
 #include "field_types_def.h"
 #include "game_stats.h"
 #include "gf_rtc.h"
@@ -15,7 +14,9 @@
 #include "pokemon_storage_system.h"
 #include "save_arrays.h"
 #include "save_palpad.h"
+#include "save_wifi_history.h"
 #include "trainer_data.h"
+#include "unk_02067A60.h"
 #include "unk_020755E8.h"
 
 struct BattleSetupSub_138 {
@@ -32,12 +33,12 @@ struct BattleSetup {                     // declared in trainer_data.h
     Trainer trainer[BATTLER_MAX];        // 28
     PlayerProfile *profile[BATTLER_MAX]; // f8
     Bag *bag;                            // 108
-    void *unk_10C;
-    Pokedex *pokedex;                  // 110
-    PCStorage *storagePC;              // 114
-    SOUND_CHATOT *chatot[BATTLER_MAX]; // 118
+    BagCursor *bagCursor;                // 10c
+    Pokedex *pokedex;                    // 110
+    PCStorage *storagePC;                // 114
+    SOUND_CHATOT *chatot[BATTLER_MAX];   // 118
     void *unk_128;
-    void *unk_12C;
+    SaveWiFiHistory *wifiHistory;
     Options *options; // 130
     struct UnkStruct_02067A60 *unk_134;
     struct BattleSetupSub_138 unk138;
@@ -50,7 +51,7 @@ struct BattleSetup {                     // declared in trainer_data.h
     TIMEOFDAY timeOfDay;   // 15C
     u32 evolutionLocation; // 160
     u32 unk_164;
-    u32 metBill;           // 168
+    BOOL metBill;          // 168
     int momsSavingsActive; // 16C
     u32 unk_170;
     u32 weatherType; // 174
@@ -58,7 +59,7 @@ struct BattleSetup {                     // declared in trainer_data.h
     u8 filler_17C[0x10];
     u32 battleSpecial; // 18C
     int safariBalls;   // 190
-    int unk_194;
+    BOOL fixedDamaageMovesBanned;
     EvolutionTaskData *evolutionTaskData;
     int unk_19C;
     int unk_1A0[4];
@@ -82,11 +83,14 @@ BattleSetup *BattleSetup_New_PalPark(HeapID heapId, int balls);
 BattleSetup *BattleSetup_New_Tutorial(HeapID heapId, FieldSystem *fieldSystem);
 void BattleSetup_Delete(BattleSetup *setup);
 void BattleSetup_AddMonToParty(BattleSetup *setup, Pokemon *mon, int battler);
-void sub_02051D18(BattleSetup *setup, FieldSystem *fieldSystem, SaveData *savedata, u32 mapno, void *arg4, void *arg5);
-void BattleSetup_InitFromFieldSystem(BattleSetup *setup, FieldSystem *fieldSystem);
-void BattleSetup_InitForFixedLevelFacility(BattleSetup *setup, FieldSystem *fieldSystem, int level);
-void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8 *a4);
-void sub_020522F0(BattleSetup *setup, FieldSystem *fieldSystem, void *a1);
+void sub_02051D18(BattleSetup *setup, FieldSystem *fieldSystem, SaveData *savedata, u32 mapno, BagCursor *bagCursor, void *arg5);
+void BattleSetup_InitFromFieldSystem(BattleSetup *setup,
+    FieldSystem *fieldSystem);
+void BattleSetup_InitForFixedLevelFacility(BattleSetup *setup,
+    FieldSystem *fieldSystem,
+    int level);
+void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8 *partySlots);
+void sub_020522F0(BattleSetup *setup, FieldSystem *fieldSystem, void *partySlots);
 void sub_0205239C(BattleSetup *setup, FieldSystem *fieldSystem);
 void sub_02052444(BattleSetup *setup, FieldSystem *fieldSystem);
 void sub_02052544(BattleSetup *setup);

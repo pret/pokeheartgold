@@ -5,7 +5,6 @@
 
 #include "bag_cursor.h"
 #include "bag_types_def.h"
-#include "bag_view.h"
 #include "heap.h"
 #include "item.h"
 #include "save.h"

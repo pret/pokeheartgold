@@ -47,7 +47,7 @@ sub_02034B0C: ; 0x02034B0C
 	ldr r0, [r1, r0]
 	mov r1, #0
 	bl MI_CpuFill8
-	bl sub_020290B4
+	bl LinkBattleRuleset_sizeof
 	add r1, r0, #0
 	mov r0, #0xf
 	bl AllocFromHeap
@@ -55,7 +55,7 @@ sub_02034B0C: ; 0x02034B0C
 	ldr r2, [r1, #8]
 	ldr r1, _02034BD8 ; =0x00000D7C
 	str r0, [r2, r1]
-	bl sub_020290B4
+	bl LinkBattleRuleset_sizeof
 	add r2, r0, #0
 	ldr r0, _02034BCC ; =_021D4134
 	ldr r1, [r0, #8]
@@ -1074,7 +1074,7 @@ sub_020352D8: ; 0x020352D8
 	ldr r1, [r0, #8]
 	ldr r0, _020353AC ; =0x00000D88
 	ldr r5, [r1, r0]
-	bl sub_020290B4
+	bl LinkBattleRuleset_sizeof
 	cmp r0, #0x20
 	ble _020352FE
 	bl GF_AssertFail
@@ -1090,7 +1090,7 @@ _0203530A:
 	add r0, r4, #0
 	add r1, #0x10
 	bl MI_CpuCopy8
-	bl sub_020290B4
+	bl LinkBattleRuleset_sizeof
 	add r2, r0, #0
 	ldr r0, _020353A8 ; =_021D4134
 	ldr r1, [r0, #8]
@@ -1808,7 +1808,7 @@ _02035850: .word 0x00000D68
 sub_02035854: ; 0x02035854
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_020290B4
+	bl LinkBattleRuleset_sizeof
 	ldr r1, _02035870 ; =_021D4134
 	add r2, r0, #0
 	ldr r3, [r1, #8]

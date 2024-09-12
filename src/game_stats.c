@@ -369,7 +369,7 @@ u32 GameStats_GetCapped(GameStats *gameStats, int statIdx) {
 }
 
 u32 GameStats_AddScore(GameStats *gameStats, int reason) {
-    GF_ASSERT(reason < SCORE_INC_TYPE_COUNT);
+    GF_ASSERT(reason < SCORE_EVENT_COUNT);
     u32 value = GameStats_GetCapped(gameStats, GAME_STAT_SCORE);
     if (value + GameStats_GetScoreMod(reason) > 99999999) {
         return GameStats_SetCapped(gameStats, GAME_STAT_SCORE, 99999999);

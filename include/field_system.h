@@ -4,6 +4,7 @@
 #include "field/overlay_01_021E66E4.h"
 
 #include "bag_cursor.h"
+#include "battle_regulation.h"
 #include "bg_window.h"
 #include "bug_contest_internal.h"
 #include "camera.h"
@@ -143,7 +144,7 @@ struct FieldSystem {
     u8 filler_98[0x4];
     void *unk9C;
     UnkStruct_Fsys_A0 *unkA0;
-    void *unkA4;
+    Save_LinkBattleRuleset *linkBattleRuleset;
     u32 *unkA8;
     u32 unkAC;
     void *unkB0;

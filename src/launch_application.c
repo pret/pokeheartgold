@@ -62,13 +62,13 @@
 #include "save_pokeathlon.h"
 #include "save_special_ribbons.h"
 #include "save_trainer_card.h"
+#include "save_wifi_history.h"
 #include "start_menu.h"
 #include "sys_flags.h"
 #include "trainer_data.h"
 #include "unk_020192D0.h"
 #include "unk_0202C034.h"
 #include "unk_0202C730.h"
-#include "unk_0202CA24.h"
 #include "unk_0202D230.h"
 #include "unk_0202DB34.h"
 #include "unk_02031904.h"
@@ -869,7 +869,7 @@ static void InitWirelessTradeSelectMonArgs(WirelessTradeSelectMonArgs *args, Fie
     args->profile        = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
     args->party          = SaveArray_Party_Get(fieldSystem->saveData);
     args->palPad         = SaveArray_Get(fieldSystem->saveData, SAVE_PALPAD);
-    args->unk14          = sub_0202CA44(fieldSystem->saveData);
+    args->wifiHistory    = Save_WiFiHistory_Get(fieldSystem->saveData);
     args->options        = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     args->pokedex        = Save_Pokedex_Get(fieldSystem->saveData);
     args->natDexEnabled  = SaveArray_IsNatDexEnabled(fieldSystem->saveData);
@@ -1179,7 +1179,7 @@ void sub_0203F844(FieldSystem *fieldSystem, u16 a1) {
     args->pcStorage          = SaveArray_PCStorage_Get(fieldSystem->saveData);
     args->pokedex            = Save_Pokedex_Get(fieldSystem->saveData);
     args->unk14              = sub_0202C6F4(fieldSystem->saveData);
-    args->unk18              = sub_0202CA44(fieldSystem->saveData);
+    args->wifiHistory        = Save_WiFiHistory_Get(fieldSystem->saveData);
     args->profile            = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
     args->options            = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     args->gameStats          = Save_GameStats_Get(fieldSystem->saveData);

@@ -135,9 +135,9 @@
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public sub_0202CA44
-.public sub_0202CA8C
-.public sub_0202CA90
+.public Save_WiFiHistory_Get
+.public WifiHistory_GetPlayerCountry
+.public WiFiHistory_GetPlayerRegion
 .public sub_0203A880
 .public LocationGmmDatCountGet
 .public LocationGmmDatGetCountryMsgNo

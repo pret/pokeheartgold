@@ -13,10 +13,10 @@
 #include "roamer.h"
 #include "sav_system_info.h"
 #include "save_misc_data.h"
+#include "save_wifi_history.h"
 #include "script.h"
 #include "sys_vars.h"
 #include "unk_0202C730.h"
-#include "unk_0202CA24.h"
 #include "unk_02031904.h"
 #include "unk_02031B0C.h"
 #include "unk_02066EDC.h"
@@ -81,7 +81,7 @@ void sub_02055508(FieldSystem *fieldSystem, int unkA) {
     Save_LCRNGAdvanceLotoID(fieldSystem->saveData, (u16)unkA);
     sub_02066D60(fieldSystem->saveData);
     sub_020674BC(fieldSystem->saveData);
-    sub_0202CB6C(sub_0202CA44(fieldSystem->saveData));
+    WiFiHistory_UpgradeAllLocationsState(Save_WiFiHistory_Get(fieldSystem->saveData));
     sub_020556B8(fieldSystem);
     sub_0202F294(SaveData_GetMomsSavingsAddr(fieldSystem->saveData), unkA);
     if (!unkFlag) {

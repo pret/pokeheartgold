@@ -45,7 +45,7 @@ BOOL ov12_02252218(BattleContext *ctx, int battlerId);
 u8 GetMonsHitCount(BattleSystem *bsys, BattleContext *ctx, u32 flag, int battlerId);
 int CreateNicknameTag(BattleContext *ctx, int battlerId);
 u16 GetBattlerSelectedMove(BattleContext *ctx, int battlerId);
-int CheckAbilityActive(BattleSystem *bsys, BattleContext *ctx, int a2, int a3, int ability);
+int CheckAbilityActive(BattleSystem *bsys, BattleContext *ctx, int flag, int battlerId, int ability);
 BOOL BattleCtx_IsIdenticalToCurrentMove(BattleContext *ctx, int moveNo);
 BOOL GetTypeEffectivnessData(BattleSystem *bsys, int index, u8 *typeMove, u8 *typeMon, u8 *eff);
 int CalculateTypeEffectiveness(u8 typeMove, u8 typeMon1, u8 typeMon2);

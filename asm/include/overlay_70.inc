@@ -189,8 +189,8 @@
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
 .public sub_0202C08C
-.public sub_0202CA8C
-.public sub_0202CA90
+.public WifiHistory_GetPlayerCountry
+.public WiFiHistory_GetPlayerRegion
 .public Save_Chatot_Get
 .public Chatot_Invalidate
 .public GameStats_Inc

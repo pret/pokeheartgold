@@ -13,12 +13,12 @@
 #include "pokedex.h"
 #include "pokewalker.h"
 #include "ribbon.h"
+#include "save_link_ruleset.h"
 #include "save_vars_flags.h"
 #include "scrcmd.h"
 #include "script_pokemon_util.h"
 #include "sys_vars.h"
 #include "trainer_memo.h"
-#include "unk_020290B4.h"
 
 struct GetMysteryGiftGmmState {
     FieldSystem *fieldSys;
@@ -28,7 +28,8 @@ struct GetMysteryGiftGmmState {
 
 // clang-format off
 struct ScriptMysteryGiftFuncs {
-    BOOL (*check)(FieldSystem *, MysteryGiftData *);
+    BOOL (*check)
+    (FieldSystem *, MysteryGiftData *);
     void (*give)(FieldSystem *, MysteryGiftData *);
     void (*messageSuccess)(struct GetMysteryGiftGmmState *, u16 *, u16 *);
     void (*messageFailure)(struct GetMysteryGiftGmmState *, u16 *, u16 *);
@@ -370,15 +371,15 @@ static BOOL MGCheck_BattleRules(FieldSystem *fieldSys, MysteryGiftData *mgData) 
 }
 
 static void MGGive_BattleRules(FieldSystem *fieldSys, MysteryGiftData *mgData) {
-    sub_020291D4(fieldSys->saveData, FieldSystem_GetDataOfNextMG(fieldSys)->ruleset);
+    Save_LinkBattleRuleset_Set(fieldSys->saveData, &FieldSystem_GetDataOfNextMG(fieldSys)->ruleset);
 }
 
 static void MGMessageSuccess_BattleRules(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
-    u16 *mgData = FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->ruleset;
-    *pMsgBank   = NARC_msg_msg_0209_bin;
-    *pMsgNum    = msg_0209_00010;
+    LinkBattleRuleset *mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->ruleset;
+    *pMsgBank                 = NARC_msg_msg_0209_bin;
+    *pMsgNum                  = msg_0209_00010;
     BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
-    String *rulesetName = sub_020290E4(mgData, HEAP_ID_32);
+    String *rulesetName = LinkBattleRuleset_CreateStringFromName(mgData, HEAP_ID_32);
     BufferString(gmmState->msgFormat, 1, rulesetName, 0, 1, 2);
     String_Delete(rulesetName);
 }

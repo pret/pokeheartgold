@@ -16,7 +16,7 @@
 
 #include "easy_chat.h"
 #include "friend_group.h"
-#include "gts_globe.h"
+#include "location_gmm_dat.h"
 #include "map_section.h"
 #include "msgdata.h"
 #include "pokemon.h"

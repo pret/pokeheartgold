@@ -51,6 +51,7 @@
 #include "safari_zone.h"
 #include "save_arrays.h"
 #include "save_follow_mon.h"
+#include "save_link_ruleset.h"
 #include "save_local_field_data.h"
 #include "scrcmd.h"
 #include "script_pokemon_util.h"
@@ -62,7 +63,6 @@
 #include "text.h"
 #include "trainer_memo.h"
 #include "unk_0200FA24.h"
-#include "unk_020290B4.h"
 #include "unk_0202C034.h"
 #include "unk_02034B0C.h"
 #include "unk_02035900.h"
@@ -5427,7 +5427,7 @@ BOOL ScrCmd_833(ScriptContext *ctx) {
 
 BOOL ScrCmd_837(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    if (sub_020291A4(ctx->fieldSystem->saveData, 0)) {
+    if (Save_LinkBattleRuleset_GetByIndex(ctx->fieldSystem->saveData, 0) != NULL) {
         *p_ret = TRUE;
     } else {
         *p_ret = FALSE;

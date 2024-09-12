@@ -222,10 +222,10 @@ static BOOL Task_UseItemInAlphChamber(TaskManager *taskManager) {
 
 static void ItemMenuUseFunc_HealingItem(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
 #pragma unused(dat2)
-    FieldSystem *fieldSystem     = TaskManager_GetFieldSystem(data->taskManager);
-    StartMenuTaskData *env       = TaskManager_GetEnvironment(data->taskManager);
-    struct PartyMenuArgs *usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct PartyMenuArgs));
-    memset(usedat, 0, sizeof(struct PartyMenuArgs));
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
+    StartMenuTaskData *env   = TaskManager_GetEnvironment(data->taskManager);
+    PartyMenuArgs *usedat    = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
+    memset(usedat, 0, sizeof(PartyMenuArgs));
     usedat->party              = SaveArray_Party_Get(fieldSystem->saveData);
     usedat->bag                = Save_Bag_Get(fieldSystem->saveData);
     usedat->mailbox            = Save_Mailbox_Get(fieldSystem->saveData);
@@ -345,10 +345,10 @@ static enum ItemUseError ItemCheckUseFunc_Bicycle(const struct ItemCheckUseData 
 
 static void ItemMenuUseFunc_TMHM(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
 #pragma unused(dat2)
-    FieldSystem *fieldSystem     = TaskManager_GetFieldSystem(data->taskManager);
-    StartMenuTaskData *env       = TaskManager_GetEnvironment(data->taskManager);
-    struct PartyMenuArgs *usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct PartyMenuArgs));
-    memset(usedat, 0, sizeof(struct PartyMenuArgs));
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
+    StartMenuTaskData *env   = TaskManager_GetEnvironment(data->taskManager);
+    PartyMenuArgs *usedat    = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
+    memset(usedat, 0, sizeof(PartyMenuArgs));
     usedat->party              = SaveArray_Party_Get(fieldSystem->saveData);
     usedat->bag                = Save_Bag_Get(fieldSystem->saveData);
     usedat->mailbox            = Save_Mailbox_Get(fieldSystem->saveData);
@@ -529,7 +529,7 @@ static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager) {
 static void ItemMenuUseFunc_EvoStone(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
     FieldSystem *fieldSystem;
     StartMenuTaskData *env;
-    struct PartyMenuArgs *usedat;
+    PartyMenuArgs *usedat;
 
     fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     if (data->itemId == ITEM_WATER_STONE && CheckUseWaterStoneInAlphChamber(fieldSystem)) {
@@ -537,8 +537,8 @@ static void ItemMenuUseFunc_EvoStone(struct ItemMenuUseData *data, const struct 
         return;
     }
     env    = TaskManager_GetEnvironment(data->taskManager);
-    usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct PartyMenuArgs));
-    memset(usedat, 0, sizeof(struct PartyMenuArgs));
+    usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
+    memset(usedat, 0, sizeof(PartyMenuArgs));
     usedat->party              = SaveArray_Party_Get(fieldSystem->saveData);
     usedat->bag                = Save_Bag_Get(fieldSystem->saveData);
     usedat->mailbox            = Save_Mailbox_Get(fieldSystem->saveData);

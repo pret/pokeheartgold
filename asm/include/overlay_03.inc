@@ -104,7 +104,7 @@
 .public PlayerProfile_GetMoney
 .public PlayerProfile_SubMoney
 .public LinkBattleRuleset_GetRuleValue
-.public sub_020291A4
+.public Save_LinkBattleRuleset_GetByIndex
 .public sub_020291E8
 .public sub_0202921C
 .public Options_GetFrame

@@ -3,6 +3,8 @@
 
 #include <nitro/rtc/ARM9/api.h>
 
+#include "system.h"
+
 typedef enum RTC_TimeOfDay {
     RTC_TIMEOFDAY_MORN = 0,
     RTC_TIMEOFDAY_DAY,
@@ -38,5 +40,13 @@ s32 GF_RTC_GetDayOfYear(const RTCDate *date);
 s64 GF_RTC_TimeDelta(s64 first, s64 last);
 void GF_RTC_UnfreezeTime(void);
 void GF_RTC_SetAndFreezeTime(s32 hour, s32 minute);
+
+// doesn't match as a static inline
+#define RngSeedFromRTC() ({                                                                                                                      \
+    RTCDate date;                                                                                                                                \
+    RTCTime time;                                                                                                                                \
+    GF_RTC_CopyDateTime(&date, &time);                                                                                                           \
+    date.year + date.month * 0x100 * date.day * 0x10000 + time.hour * 0x10000 + (time.minute + time.second) * 0x1000000 + gSystem.vblankCounter; \
+})
 
 #endif // POKEHEARTGOLD_GF_RTC_H

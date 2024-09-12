@@ -14,7 +14,7 @@
 #define SAVE_PALPAD                        8
 #define SAVE_MISC                          9
 #define SAVE_MAP_OBJECTS                   10
-#define SAVE_UNK_11                        11
+#define SAVE_LINK_BATTLE_RULESET           11
 #define SAVE_DRESSUP_DATA                  12
 #define SAVE_MAILBOX                       13
 #define SAVE_FRIEND_GROUP                  14
@@ -29,7 +29,7 @@
 #define SAVE_UNK_23                        23
 #define SAVE_RANKINGS                      24
 #define SAVE_UNK_25                        25
-#define SAVE_UNK_26                        26
+#define SAVE_WIFI_HISTORY                  26
 #define SAVE_MYSTERY_GIFT                  27
 #define SAVE_UNK_28                        28
 #define SAVE_POKEATHLON_FRIENDSHIP_RECORDS 29

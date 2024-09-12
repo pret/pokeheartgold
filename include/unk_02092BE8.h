@@ -3,6 +3,7 @@
 
 #include "field_system.h"
 #include "field_types_def.h"
+#include "gear_phone.h"
 #include "save.h"
 #include "save_local_field_data.h"
 #include "save_vars_flags.h"

@@ -3,6 +3,7 @@
 
 #include "dex_mon_measures.h"
 #include "pokedex.h"
+#include "save_link_ruleset.h"
 
 typedef enum BattleRegulationComplianceMessage {
     BTL_REG_COMPLIANCE_OK,
@@ -15,8 +16,6 @@ typedef enum BattleRegulationComplianceMessage {
     BTL_REG_COMPLIANCE_FAIL_7,
     BTL_REG_COMPLIANCE_FAIL_SOUL_DEW,
 } BattleRegulationComplianceMessage;
-
-typedef struct LinkBattleRuleset LinkBattleRuleset;
 
 PokedexData *PokedexData_CreateAndLoad(HeapID heapId);
 void PokedexData_UnloadAndDelete(PokedexData *pokedex);

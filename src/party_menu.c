@@ -10,6 +10,7 @@
 #include "msgdata/msg/msg_0300.h"
 
 #include "bag.h"
+#include "battle_regulation.h"
 #include "field_system.h"
 #include "font.h"
 #include "gf_gfx_loader.h"
@@ -19,13 +20,13 @@
 #include "party_menu_list_items.h"
 #include "party_menu_sprites.h"
 #include "render_text.h"
+#include "save_link_ruleset.h"
 #include "sound_02004A44.h"
 #include "system.h"
 #include "unk_02005D10.h"
 #include "unk_0200FA24.h"
 #include "unk_020183F0.h"
 #include "unk_020210A0.h"
-#include "unk_020290B4.h"
 #include "unk_0203A3B0.h"
 #include "unk_02066EDC.h"
 #include "unk_0208805C.h"
@@ -1993,7 +1994,7 @@ static int PartyMenu_SelectedBattleTeamComplianceCheck(PartyMenu *partyMenu) {
             break;
         case BTL_REG_COMPLIANCE_FAIL_MAX_TOTAL_LEVEL: {
             String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00167);
-            BufferIntegerAsString(partyMenu->msgFormat, 0, LinkBattleRuleset_GetRuleValue(partyMenu->args->linkBattleRuleset, 3), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+            BufferIntegerAsString(partyMenu->msgFormat, 0, LinkBattleRuleset_GetRuleValue(partyMenu->args->linkBattleRuleset, LINKBATTLERULE_MAX_TOTAL_LEVEL), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
             StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
             String_Delete(string);
             PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);

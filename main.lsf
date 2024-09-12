@@ -97,7 +97,8 @@ Static main
     Object src/save.o
     Object src/sav_system_info.o
     Object src/player_data.o
-    Object asm/unk_020290B4.o
+    Object src/save_link_ruleset.o
+    Object src/link_ruleset_data.o
     Object src/daycare.o
     Object src/pokedex.o
     Object src/save_misc.o
@@ -111,7 +112,7 @@ Static main
     Object asm/unk_0202C730.o
     Object src/coins.o
     Object src/save_trainer_card.o
-    Object asm/unk_0202CA24.o
+    Object src/save_wifi_history.o
     Object src/seal_case.o
     Object src/igt.o
     Object src/sav_chatot.o
@@ -298,7 +299,7 @@ Static main
     Object src/dex_mon_measures.o
     Object asm/unk_02091564.o
     Object asm/unk_020915B0.o
-    Object asm/unk_02091664.o
+    Object src/location_gmm_dat.o
     Object src/move_relearner.o
     Object asm/unk_02091880.o
     Object asm/unk_02091CDC.o
@@ -1116,6 +1117,7 @@ Overlay OVY_108
 {
     After main
     Object asm/overlay_108.o
+    Object asm/overlay_108_021E8850.o
 }
 Overlay OVY_109
 {

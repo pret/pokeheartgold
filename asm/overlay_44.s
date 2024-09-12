@@ -3185,7 +3185,7 @@ ov44_0222B778: ; 0x0222B778
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0202CA44
+	bl Save_WiFiHistory_Get
 	str r0, [sp, #8]
 	ldr r0, [sp, #0xc]
 	bl Party_GetCount
@@ -3247,11 +3247,11 @@ _0222B7F0:
 	ldr r1, [r5, #4]
 	strb r0, [r1, #0x1e]
 	ldr r0, [sp, #8]
-	bl sub_0202CA8C
+	bl WifiHistory_GetPlayerCountry
 	ldr r1, [r5, #4]
 	strb r0, [r1, #0x1f]
 	ldr r0, [sp, #8]
-	bl sub_0202CA90
+	bl WiFiHistory_GetPlayerRegion
 	ldr r1, [r5, #4]
 	add r1, #0x20
 	strb r0, [r1]

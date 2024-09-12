@@ -21,6 +21,7 @@
 #include "pokepic.h"
 #include "sav_chatot.h"
 #include "sys_task_api.h"
+#include "trainer_data.h"
 #include "unk_0200CF18.h"
 #include "unk_02023694.h"
 
@@ -136,7 +137,7 @@ typedef struct TrainerAIData {
     u8 unk9F[2];
     u16 unkA0[2];
     u8 unkA4[4];
-    MOVE moveData[NUM_MOVES + 1];
+    MoveTbl moveData[NUM_MOVES + 1];
     ItemData *itemData;
     u16 unk280[4];
     u16 unk288[4];
@@ -178,13 +179,14 @@ typedef struct UnkBattlemonSub {
     u32 magnetRiseTurns     : 3;
     u32 healBlockTurns      : 3;
     u32 embargoFlag         : 3;
-    u32 knockOffFlag        : 1; // unclear whether true mean knocked off or not knocked off based on current information on its usage
-    u32 metronomeTurns      : 4; // refers to the item, not the move
-    u32 micleBerryFlag      : 1;
-    u32 custapBerryFlag     : 1;
-    u32 quickClawFlag       : 1;
-    u32 meFirstFlag         : 1;
-    u32 unk4_2F             : 1; // unused
+    u32 knockOffFlag        : 1; // unclear whether true mean knocked off or not knocked
+                                 // off based on current information on its usage
+    u32 metronomeTurns  : 4;     // refers to the item, not the move
+    u32 micleBerryFlag  : 1;
+    u32 custapBerryFlag : 1;
+    u32 quickClawFlag   : 1;
+    u32 meFirstFlag     : 1;
+    u32 unk4_2F         : 1; // unused
     int rechargeCount;
     int fakeOutCount;
     int slowStartTurns;
@@ -381,7 +383,8 @@ typedef struct BattleContext {
     u8 unk_21A0[4];
     u8 unk_21A4[4];
     PlayerActions playerActions[4];
-    u8 executionOrder[4]; // accounts for running, items, etc used in battler slots
+    u8 executionOrder[4]; // accounts for running, items, etc used in battler
+                          // slots
     u8 turnOrder[4];      // by pokemon speed, accounting for trick room
     u32 effectiveSpeed[4];
     u8 linkBuffer[4][4][16];
@@ -623,11 +626,11 @@ struct BattleSystem {
     u16 unk2454[4];
     u16 unk245C[4];
     int unk2464[4];
-    u32 isRecordingPaused : 1,
-        unk2474_1         : 1,
-        unk2474_2         : 1,
-        unk2474_3         : 1,
-        unk2474_4         : 28;
+    u32 isRecordingPaused : 1;
+    u32 unk2474_1         : 1;
+    u32 unk2474_2         : 1;
+    u32 unk2474_3         : 1;
+    u32 unk2474_4         : 28;
     u32 unk2478;
     SysTask *unk247C;
     u8 chatotVoiceParam[4];
@@ -660,7 +663,8 @@ typedef struct {
     u16 unk10;
 } UnkBtlCmdStruct_CPM;
 
-// This is information used for selecting a target on the bottom screen in a double battle
+// This is information used for selecting a target on the bottom screen in a
+// double battle
 typedef struct TargetPokemon {
     u8 selectedMon;
     u8 gender    : 2;

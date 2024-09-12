@@ -5,7 +5,6 @@
 
 #include "bag_types_def.h"
 #include "battle_regulation.h"
-#include "field_types_def.h"
 #include "gf_3d_vramman.h"
 #include "mail.h"
 #include "message_printer.h"

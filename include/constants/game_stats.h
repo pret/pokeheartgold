@@ -81,6 +81,6 @@
 #define SCORE_EVENT_37                      37
 #define SCORE_EVENT_38                      38
 #define SCORE_EVENT_39                      39
-#define SCORE_INC_TYPE_COUNT                40
+#define SCORE_EVENT_COUNT                   40
 
 #endif // POKEHEARTGOLD_CONSTANTS_GAME_STATS_H

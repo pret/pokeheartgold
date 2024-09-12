@@ -1687,23 +1687,23 @@ static void ov122_021E7AEC(VoltorbFlipAppWork *work) {
     OamCharTransferParam temp3          = ov122_021E92D0;
     temp3.maxTasks                      = 0x80;
 
-    work->unk144 = SpriteRenderer_Create(work->heapId);
-    work->unk148 = SpriteRenderer_CreateGfxHandler(work->unk144);
+    work->spriteRenderer   = SpriteRenderer_Create(work->heapId);
+    work->spriteGfxHandler = SpriteRenderer_CreateGfxHandler(work->spriteRenderer);
 
-    sub_0200CF70(work->unk144, &temp2, &temp3, 32);
-    sub_0200CFF4(work->unk144, work->unk148, 0x80);
-    SpriteRenderer_Init2DGfxResManagersFromCountsArray(work->unk144, work->unk148, &temp1);
+    sub_0200CF70(work->spriteRenderer, &temp2, &temp3, 32);
+    sub_0200CFF4(work->spriteRenderer, work->spriteGfxHandler, 0x80);
+    SpriteRenderer_Init2DGfxResManagersFromCountsArray(work->spriteRenderer, work->spriteGfxHandler, &temp1);
 
-    G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(work->unk144), 0, 0x20c000);
+    G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(work->spriteRenderer), 0, 0x20c000);
 }
 
 static void ov122_021E7B94(VoltorbFlipAppWork *work) {
-    GF_ASSERT(work->unk144 != 0);
-    GF_ASSERT(work->unk148 != 0);
+    GF_ASSERT(work->spriteRenderer != 0);
+    GF_ASSERT(work->spriteGfxHandler != 0);
 
     ov122_021E7F48(work);
-    SpriteRenderer_UnloadResourcesAndRemoveGfxHandler(work->unk144, work->unk148);
-    SpriteRenderer_Delete(work->unk144);
+    SpriteRenderer_UnloadResourcesAndRemoveGfxHandler(work->spriteRenderer, work->spriteGfxHandler);
+    SpriteRenderer_Delete(work->spriteRenderer);
 }
 
 // decomp.me: https://decomp.me/scratch/w6ui6
@@ -1711,18 +1711,18 @@ static void ov122_021E7B94(VoltorbFlipAppWork *work) {
 static void ov122_021E7BD4(VoltorbFlipAppWork *work) {
     GF_ASSERT(work->narc != 0);
 
-    SpriteRenderer *var1   = work->unk144;
-    SpriteGfxHandler *var2 = work->unk148;
+    SpriteRenderer *renderer     = work->spriteRenderer;
+    SpriteGfxHandler *gfxHandler = work->spriteGfxHandler;
 
-    SpriteRenderer_LoadPlttResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000010_bin, 0, 5, 1, 0);
-    SpriteRenderer_LoadCharResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000011_bin, 1, 1, 0);
-    SpriteRenderer_LoadCellResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000012_bin, 1, 0);
-    SpriteRenderer_LoadAnimResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000013_bin, 1, 0);
+    SpriteRenderer_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000010_bin, FALSE, 5, NNS_G2D_VRAM_TYPE_2DMAIN, 0);
+    SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000011_bin, TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, 0);
+    SpriteRenderer_LoadCellResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000012_bin, TRUE, 0);
+    SpriteRenderer_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000013_bin, TRUE, 0);
 
-    SpriteRenderer_LoadPlttResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000014_bin, 0, 1, 2, 1);
-    SpriteRenderer_LoadCharResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000015_bin, 1, 2, 1);
-    SpriteRenderer_LoadCellResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000016_bin, 1, 1);
-    SpriteRenderer_LoadAnimResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000017_bin, 1, 1);
+    SpriteRenderer_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000014_bin, FALSE, 1, NNS_G2D_VRAM_TYPE_2DSUB, 1);
+    SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000015_bin, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, 1);
+    SpriteRenderer_LoadCellResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000016_bin, TRUE, 1);
+    SpriteRenderer_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000017_bin, TRUE, 1);
 }
 #else
 // clang-format off
@@ -1858,19 +1858,19 @@ static UnkImageStruct *ov122_021E7D04(SpriteRenderer *a0, SpriteGfxHandler *a1, 
 }
 
 static void ov122_021E7D6C(VoltorbFlipAppWork *work) {
-    work->unk14C[0]  = ov122_021E7C9C(work->unk144, work->unk148, 0, 0, 18, 1);
-    work->unk14C[1]  = ov122_021E7C9C(work->unk144, work->unk148, 0, 0, 0, 0);
-    work->unk14C[2]  = ov122_021E7C9C(work->unk144, work->unk148, 0xe0, 0x28, 5, 2);
-    work->unk14C[3]  = ov122_021E7C9C(work->unk144, work->unk148, 0xe0, 0xb0, 2, 2);
-    work->unk14C[4]  = ov122_021E7C9C(work->unk144, work->unk148, 0x80, 0x60, 20, 5);
-    work->unk14C[5]  = ov122_021E7C9C(work->unk144, work->unk148, 0xc8, 0x50, 12, 4);
-    work->unk14C[6]  = ov122_021E7C9C(work->unk144, work->unk148, 0xe0, 0x50, 15, 4);
-    work->unk14C[7]  = ov122_021E7C9C(work->unk144, work->unk148, 0xc8, 0x68, 14, 4);
-    work->unk14C[8]  = ov122_021E7C9C(work->unk144, work->unk148, 0xe0, 0x68, 13, 4);
-    work->unk14C[9]  = ov122_021E7C9C(work->unk144, work->unk148, 0xe0, 0x80, 16, 3);
-    work->unk14C[10] = ov122_021E7C9C(work->unk144, work->unk148, 0xc8, 0x50, 18, 1);
-    work->unk14C[11] = ov122_021E7D04(work->unk144, work->unk148, 0x48, 0x38, 0, 0);
-    work->unk14C[12] = ov122_021E7D04(work->unk144, work->unk148, 0x88, 0x28, 0, 0);
+    work->unk14C[0]  = ov122_021E7C9C(work->spriteRenderer, work->spriteGfxHandler, 0, 0, 18, 1);
+    work->unk14C[1]  = ov122_021E7C9C(work->spriteRenderer, work->spriteGfxHandler, 0, 0, 0, 0);
+    work->unk14C[2]  = ov122_021E7C9C(work->spriteRenderer, work->spriteGfxHandler, 0xe0, 0x28, 5, 2);
+    work->unk14C[3]  = ov122_021E7C9C(work->spriteRenderer, work->spriteGfxHandler, 0xe0, 0xb0, 2, 2);
+    work->unk14C[4]  = ov122_021E7C9C(work->spriteRenderer, work->spriteGfxHandler, 0x80, 0x60, 20, 5);
+    work->unk14C[5]  = ov122_021E7C9C(work->spriteRenderer, work->spriteGfxHandler, 0xc8, 0x50, 12, 4);
+    work->unk14C[6]  = ov122_021E7C9C(work->spriteRenderer, work->spriteGfxHandler, 0xe0, 0x50, 15, 4);
+    work->unk14C[7]  = ov122_021E7C9C(work->spriteRenderer, work->spriteGfxHandler, 0xc8, 0x68, 14, 4);
+    work->unk14C[8]  = ov122_021E7C9C(work->spriteRenderer, work->spriteGfxHandler, 0xe0, 0x68, 13, 4);
+    work->unk14C[9]  = ov122_021E7C9C(work->spriteRenderer, work->spriteGfxHandler, 0xe0, 0x80, 16, 3);
+    work->unk14C[10] = ov122_021E7C9C(work->spriteRenderer, work->spriteGfxHandler, 0xc8, 0x50, 18, 1);
+    work->unk14C[11] = ov122_021E7D04(work->spriteRenderer, work->spriteGfxHandler, 0x48, 0x38, 0, 0);
+    work->unk14C[12] = ov122_021E7D04(work->spriteRenderer, work->spriteGfxHandler, 0x88, 0x28, 0, 0);
 
     ov122_021E7F64(work->unk14C[12]->sprite, 0x20000);
 
@@ -1923,9 +1923,9 @@ static int MemoFlagToIdx(int memoFlag) {
 
 static void ov122_021E8004(VoltorbFlipAppWork *work) {
     GF_ASSERT(work != NULL);
-    GF_ASSERT(work->unk148 != NULL);
+    GF_ASSERT(work->spriteGfxHandler != NULL);
 
-    sub_0200D020(work->unk148);
+    sub_0200D020(work->spriteGfxHandler);
     thunk_OamManager_ApplyAndResetBuffers();
     DoScheduledBgGpuUpdates(work->bgConfig);
 

@@ -41,8 +41,8 @@ typedef struct VoltorbFlipAppWork {
     LISTMENUITEM *menuItems[2];
     void *unk13C;
     String *string;
-    SpriteRenderer *unk144;
-    SpriteGfxHandler *unk148;
+    SpriteRenderer *spriteRenderer;
+    SpriteGfxHandler *spriteGfxHandler;
     UnkImageStruct *unk14C[0xd];
     MsgData *msgData;
     MessageFormat *msgFmt;

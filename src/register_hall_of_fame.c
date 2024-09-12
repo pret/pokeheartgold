@@ -166,11 +166,14 @@ typedef struct RegisterHofMon {
     u16 plttBak[16];
 } RegisterHofMon;
 
-typedef struct RegisterHallOfFameData {
+typedef struct RegisterHallOfFameData RegisterHallOfFameData;
+
+typedef BOOL (*RegisterHallOfFameSubprocCallback)(RegisterHallOfFameData *);
+
+struct RegisterHallOfFameData {
     RegisterHallOfFameArgs *args; // 00000
     SysTask *vblankTask;          // 00004
-    BOOL(*subprocCallback)
-    (struct RegisterHallOfFameData *);
+    RegisterHallOfFameSubprocCallback subprocCallback;
     u16 subprocTimer;
     u16 subprocStage;
     BgConfig *bgConfig; // 00010
@@ -207,7 +210,7 @@ typedef struct RegisterHallOfFameData {
     int fadeDuration;
     u16 generateConfettiDelayLength;
     u16 generateConfettiDelayTimer;
-} RegisterHallOfFameData;
+};
 
 typedef struct RegisterHofSpotlightTaskData {
     GXDLInfo gxDlInfo;
@@ -270,8 +273,6 @@ typedef struct RegisterHofTaskData_IndivMonAnimAndCry {
     u16 isFrontpic;
     BOOL startCry;
 } RegisterHofTaskData_IndivMonAnimAndCry;
-
-typedef BOOL (*RegisterHallOfFameSubprocCallback)(RegisterHallOfFameData *);
 
 static void RegisterHallOfFame_SetGfxBanks(void);
 static void VBlankTask_RegisterHallOfFame_IndividualMonsCongrats(SysTask *task, void *taskData);
