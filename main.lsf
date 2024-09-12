@@ -1181,7 +1181,7 @@ Overlay OVY_120
     After OVY_31
     Object asm/overlay_120.o
 }
-Overlay OVY_121
+Overlay view_rankings_app
 {
     After main
     Object src/application/view_rankings.o

@@ -56,7 +56,7 @@ BOOL Battle_Run(OVY_MANAGER *man, int *state) {
         break;
     case BSTATE_LINK_INIT:
         ov12_022399D4(man, setup);
-        sub_02039F68(setup->unk_12C);
+        sub_02039F68(setup->wifiHistory);
         if (!sub_02039998()) {
             GameStats_Inc(setup->gameStats, GAME_STAT_UNK21);
             if (setup->battleType != 0x8F) {

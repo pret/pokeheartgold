@@ -828,7 +828,7 @@ void sub_02051598(FieldSystem *fieldSystem, void *param1, s32 battleType) {
     sub_020522F0(setup, fieldSystem, param1);
     sub_0202FBF0(fieldSystem->saveData, HEAP_ID_FIELD, &var);
 
-    setup->unk1B2 = sub_02051474(fieldSystem->unkA4, battleType);
+    setup->unk1B2 = sub_02051474(fieldSystem->linkBattleRuleset, battleType);
 
     encounter = Encounter_New(setup, BattleSetup_GetWildTransitionEffect(setup), BattleSetup_GetWildBattleMusic(setup), NULL);
 
@@ -843,7 +843,7 @@ void sub_020515FC(FieldSystem *fieldSystem, Party *party, s32 battleType) {
     sub_020520B0(setup, fieldSystem, party, NULL);
     sub_0202FBF0(fieldSystem->saveData, HEAP_ID_FIELD, &var);
 
-    setup->unk1B2 = sub_02051474(fieldSystem->unkA4, battleType);
+    setup->unk1B2 = sub_02051474(fieldSystem->linkBattleRuleset, battleType);
 
     encounter = Encounter_New(setup, BattleSetup_GetWildTransitionEffect(setup), BattleSetup_GetWildBattleMusic(setup), NULL);
 

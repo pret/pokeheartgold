@@ -199,8 +199,8 @@
 .public Party_GetCount
 .public Party_GetMonByIndex
 .public SaveArray_Party_Get
-.public sub_02074944
-.public sub_0207495C
+.public PokedexData_CreateAndLoad
+.public PokedexData_UnloadAndDelete
 .public sub_02074CD0
 .public sub_0207789C
 .public GetItemIndexMapping

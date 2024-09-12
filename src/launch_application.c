@@ -131,7 +131,7 @@ FS_EXTERN_OVERLAY(OVY_109);
 FS_EXTERN_OVERLAY(OVY_110);
 FS_EXTERN_OVERLAY(OVY_111);
 FS_EXTERN_OVERLAY(OVY_113);
-FS_EXTERN_OVERLAY(OVY_121);
+FS_EXTERN_OVERLAY(view_rankings_app);
 
 static PartyMenuArgs *PartyMenu_CreateArgs(HeapID heapId, FieldSystem *fieldSystem, int a2, PartyMenuContext context);
 static BOOL Task_OpenPartyMenuForUnionRoomBattleSelect(TaskManager *taskman);
@@ -869,7 +869,7 @@ static void InitWirelessTradeSelectMonArgs(WirelessTradeSelectMonArgs *args, Fie
     args->profile        = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
     args->party          = SaveArray_Party_Get(fieldSystem->saveData);
     args->palPad         = SaveArray_Get(fieldSystem->saveData, SAVE_PALPAD);
-    args->unk14          = Save_WiFiHistory_Get(fieldSystem->saveData);
+    args->wifiHistory    = Save_WiFiHistory_Get(fieldSystem->saveData);
     args->options        = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     args->pokedex        = Save_Pokedex_Get(fieldSystem->saveData);
     args->natDexEnabled  = SaveArray_IsNatDexEnabled(fieldSystem->saveData);
@@ -1179,7 +1179,7 @@ void sub_0203F844(FieldSystem *fieldSystem, u16 a1) {
     args->pcStorage          = SaveArray_PCStorage_Get(fieldSystem->saveData);
     args->pokedex            = Save_Pokedex_Get(fieldSystem->saveData);
     args->unk14              = sub_0202C6F4(fieldSystem->saveData);
-    args->unk18              = Save_WiFiHistory_Get(fieldSystem->saveData);
+    args->wifiHistory        = Save_WiFiHistory_Get(fieldSystem->saveData);
     args->profile            = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
     args->options            = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     args->gameStats          = Save_GameStats_Get(fieldSystem->saveData);
@@ -1398,6 +1398,6 @@ LegendaryCinematicArgs *LegendaryCinematic_LaunchApp(FieldSystem *fieldSystem, U
 }
 
 void LaunchApp_ViewRankings(FieldSystem *fieldSystem, ViewRankingsArgs *args) {
-    static const OVY_MGR_TEMPLATE sViewRankingsAppTemplate = { ViewRankingsApp_Init, ViewRankingsApp_Main, ViewRankingsApp_Exit, FS_OVERLAY_ID(OVY_121) };
+    static const OVY_MGR_TEMPLATE sViewRankingsAppTemplate = { ViewRankingsApp_Init, ViewRankingsApp_Main, ViewRankingsApp_Exit, FS_OVERLAY_ID(view_rankings_app) };
     FieldSystem_LaunchApplication(fieldSystem, &sViewRankingsAppTemplate, args);
 }
