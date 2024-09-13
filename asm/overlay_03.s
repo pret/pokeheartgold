@@ -4952,7 +4952,7 @@ _022565F6:
 	ldr r0, [r4, #0x20]
 	bl String_Delete
 	ldr r0, [r4, #0x6c]
-	bl sub_0207495C
+	bl PokedexData_UnloadAndDelete
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #1
@@ -5009,7 +5009,7 @@ ov03_02256644: ; 0x02256644
 	bl String_New
 	str r0, [r4, #0x20]
 	mov r0, #0xb
-	bl sub_02074944
+	bl PokedexData_CreateAndLoad
 	str r0, [r4, #0x6c]
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
@@ -5454,7 +5454,7 @@ ov03_02256A2C: ; 0x02256A2C
 	bl SaveArray_Party_Get
 	add r6, r0, #0
 	mov r0, #0xb
-	bl sub_02074944
+	bl PokedexData_CreateAndLoad
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0x10]
 	cmp r0, #0xa
@@ -5498,7 +5498,7 @@ _02256A84:
 	add r4, r0, #0
 _02256A94:
 	ldr r0, [sp, #0x14]
-	bl sub_0207495C
+	bl PokedexData_UnloadAndDelete
 	cmp r4, #7
 	bhi _02256B0E
 	add r0, r4, r4

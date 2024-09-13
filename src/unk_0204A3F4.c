@@ -274,8 +274,8 @@ UnkStruct_Fsys_A0 *sub_0204A824(SaveData *saveData, BOOL resumeFromPrevious, u32
     }
     unkStruct->unk11 = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(saveData));
     if (unkStruct->unk0f != 5) {
-        FRONTIER_SAVE *frontierSaveData = Save_Frontier_GetStatic(saveData);
-        GameStats *gameStats            = Save_GameStats_Get(saveData);
+        FrontierSave *frontierSaveData = Save_Frontier_GetStatic(saveData);
+        GameStats *gameStats           = Save_GameStats_Get(saveData);
         u16 unk0;
         if (unkStruct->unk0f == 6) {
             unk0 = Save_VarsFlags_GetVar4052(Save_VarsFlags_Get(saveData));
@@ -430,8 +430,8 @@ static void sub_0204ACA0(UnkStruct_Fsys_A0 *a0, SaveData *saveData, BOOL a2, u16
 }
 
 void sub_0204AD04(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
-    GameStats *gameStats            = Save_GameStats_Get(saveData);
-    FRONTIER_SAVE *frontierSaveData = Save_Frontier_GetStatic(saveData);
+    GameStats *gameStats           = Save_GameStats_Get(saveData);
+    FrontierSave *frontierSaveData = Save_Frontier_GetStatic(saveData);
     if (a0->unk0f == 5) {
         return;
     }
@@ -466,9 +466,9 @@ void sub_0204AE20(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     if (a0->unk0f == 5) {
         return;
     }
-    GameStats *gameStats            = Save_GameStats_Get(saveData);
-    FRONTIER_SAVE *frontierSaveData = Save_Frontier_GetStatic(saveData);
-    u32 unk4                        = a0->unk0f == 6 ? 112 : a0->unk0f * 2;
+    GameStats *gameStats           = Save_GameStats_Get(saveData);
+    FrontierSave *frontierSaveData = Save_Frontier_GetStatic(saveData);
+    u32 unk4                       = a0->unk0f == 6 ? 112 : a0->unk0f * 2;
     if (a0->unk0f == 6) {
         FrontierSave_GetStat(Save_Frontier_GetStatic(saveData), 100, sub_0205C268(100));
     } else {

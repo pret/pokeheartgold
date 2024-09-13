@@ -128,7 +128,7 @@ static u32 *Save_RankingSys_GetPlayerStats(SaveData *saveData, HeapID heapId) {
     int i;
     u32 val;
     GameStats *gameStats;
-    FRONTIER_SAVE *frontierSave;
+    FrontierSave *frontierSave;
     u32 *ret;
 
     gameStats    = Save_GameStats_Get(saveData);
