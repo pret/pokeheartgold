@@ -8,7 +8,7 @@
 extern const OVY_MGR_TEMPLATE sOverlayTemplate_NamingScreen;
 
 typedef struct NamingScreenArgs {
-    int unk0;
+    int kind;
     int playerGender;
     int monForm;
     u8 unkC[0x4];

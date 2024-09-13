@@ -1045,11 +1045,11 @@ static BOOL Task_NamingScreen(TaskManager *taskman) {
         break;
     case 3:
         NamingScreenArgs *args = data->args;
-        if (args->unk0 == 1) {
+        if (args->kind == 1) {
             if (String_Compare(args->nameInputString, data->unk10) == 0) {
                 data->args->unk14 = 1;
             }
-        } else if (args->unk0 == 5) {
+        } else if (args->kind == 5) {
             u16 *var2                   = String_cstr(args->nameInputString);
             SAV_FRIEND_GRP *friendGroup = Save_FriendGroup_Get(fieldSystem->saveData);
             if (sub_0202C88C(friendGroup, var2)) {
@@ -1074,7 +1074,7 @@ static BOOL Task_NamingScreen(TaskManager *taskman) {
 static void SetName(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     NamingScreenData *data   = TaskManager_GetEnvironment(taskman);
-    switch (data->args->unk0) {
+    switch (data->args->kind) {
     case NAME_SCREEN_PLAYER:
         PlayerProfile *profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
         Save_Profile_PlayerName_Set(profile, data->args->unk1C);

@@ -112,7 +112,6 @@ void OakSpeech_InitSpriteEngine(OakSpeechData *data) {
             .numAffineSub   = 32,
         };
 
-        // extern const OamCharTransferParam ov53_021E8750;
         OamCharTransferParam oamCharTransferParam = {
             .maxTasks     = 10,
             .sizeMain     = 0x400,
@@ -128,7 +127,6 @@ void OakSpeech_InitSpriteEngine(OakSpeechData *data) {
     G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(data->spriteRenderer), 0, FX32_CONST(192));
 
     {
-        // extern const u16 ov53_021E8740[7];
         u16 fileIdList[7] = {
             NARC_resdat_resdat_00000026_bin,
             NARC_resdat_resdat_00000027_bin,
