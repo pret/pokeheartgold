@@ -178,7 +178,7 @@
 .public Save_VarsFlags_FlypointFlagAction
 .public sub_02070D84
 .public NamingScreen_CreateArgs
-.public sub_0208311C
+.public NamingScreen_DeleteArgs
 .public sub_02085400
 .public sub_02085438
 .public DWC_CheckFriendKey
@@ -192,7 +192,7 @@
 .public _ull_mod
 .public _s32_div_f
 .public _u32_div_f
-.public _02102610
+.public sOverlayTemplate_NamingScreen
 .public _02102620
 .public gSystem
 .public ov42_02227060

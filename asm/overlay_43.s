@@ -5792,7 +5792,7 @@ _0222CBE2:
 	str r0, [r4, #8]
 	add r0, r7, #0
 	bl ov43_0222A1DC
-	ldr r0, _0222CD2C ; =_02102610
+	ldr r0, _0222CD2C ; =sOverlayTemplate_NamingScreen
 	ldr r1, [r4, #4]
 	add r2, r6, #0
 	bl OverlayManager_New
@@ -5849,7 +5849,7 @@ _0222CC64:
 	b _0222CD26
 _0222CC92:
 	ldr r0, [r4, #4]
-	bl sub_0208311C
+	bl NamingScreen_DeleteArgs
 	ldr r0, [r4, #8]
 	bl sub_02085438
 	add r0, r7, #0
@@ -5865,7 +5865,7 @@ _0222CCAC:
 	str r0, [r4, #4]
 	add r0, r7, #0
 	bl ov43_0222A1DC
-	ldr r0, _0222CD2C ; =_02102610
+	ldr r0, _0222CD2C ; =sOverlayTemplate_NamingScreen
 	ldr r1, [r4, #4]
 	add r2, r6, #0
 	bl OverlayManager_New
@@ -5906,7 +5906,7 @@ _0222CD02:
 	b _0222CD26
 _0222CD12:
 	ldr r0, [r4, #4]
-	bl sub_0208311C
+	bl NamingScreen_DeleteArgs
 	add r0, r7, #0
 	add r1, r6, #0
 	bl ov43_0222A154
@@ -5918,7 +5918,7 @@ _0222CD26:
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0222CD2C: .word _02102610
+_0222CD2C: .word sOverlayTemplate_NamingScreen
 _0222CD30: .word _02102620
 	thumb_func_end ov43_0222CBB4
 

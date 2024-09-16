@@ -162,7 +162,7 @@
 .public sub_0207CAA4
 .public sub_0207CAA8
 .public NamingScreen_CreateArgs
-.public sub_0208311C
+.public NamingScreen_DeleteArgs
 .public HealParty
 .public Frontier_GetLaunchParam
 .public sub_0209680C
@@ -180,7 +180,7 @@
 .public _s32_div_f
 .public _u32_div_f
 .public gOverlayTemplate_Battle
-.public _02102610
+.public sOverlayTemplate_NamingScreen
 .public gSystem
 .public ov00_021E6EBC
 .public _0223DC20

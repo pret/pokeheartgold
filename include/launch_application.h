@@ -53,7 +53,10 @@ typedef enum NameScreenType {
     NAME_SCREEN_POKEMON,
     NAME_SCREEN_BOX,
     NAME_SCREEN_RIVAL,
-    NAME_SCREEN_GROUP = 5,
+    NAME_SCREEN_UNK4,
+    NAME_SCREEN_GROUP,
+    NAME_SCREEN_UNK6,
+    NAME_SCREEN_UNK7,
 } NameScreenType;
 
 typedef enum PocketType {

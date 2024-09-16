@@ -801,7 +801,9 @@ Overlay trainer_card_signature
 Overlay OVY_53
 {
     After main
-    Object asm/overlay_53.o
+    Object src/oaks_speech.o
+    Object src/oaks_speech_obj.o
+    Object src/oaks_speech_yesnomenu.o
 }
 Overlay options_app
 {

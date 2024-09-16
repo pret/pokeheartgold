@@ -124,7 +124,7 @@ typedef enum NarcId {
     NARC_poketool_pokegra_height_o                          = 117,
     NARC_a_1_1_8                                            = 118,
     NARC_a_1_1_9                                            = 119,
-    NARC_a_1_2_0                                            = 120,
+    NARC_demo_intro_intro                                   = 120,
     NARC_a_1_2_1                                            = 121,
     NARC_a_1_2_2                                            = 122,
     NARC_a_1_2_3                                            = 123,

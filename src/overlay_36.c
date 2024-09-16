@@ -1,3 +1,5 @@
+#include "overlay_36.h"
+
 #include "global.h"
 
 #include "constants/easy_chat.h"
@@ -32,7 +34,7 @@
 #include "unk_0205B3DC.h"
 #include "unk_02066EDC.h"
 
-#define HEAPID_OV36 ((HeapID)75)
+#define HEAPID_OV36 (HEAP_ID_OV36)
 
 extern const OVY_MGR_TEMPLATE gApplication_OakSpeech;
 

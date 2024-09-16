@@ -6717,7 +6717,7 @@ ov14_021E8B3C: ; 0x021E8B3C
 	ldr r0, [r4, #4]
 	ldr r2, [r2, #0x18]
 	bl PCStorage_GetBoxName
-	ldr r0, _021E8B7C ; =_02102610
+	ldr r0, _021E8B7C ; =sOverlayTemplate_NamingScreen
 	ldr r1, [r4, #0x18]
 	mov r2, #9
 	bl OverlayManager_New
@@ -6726,7 +6726,7 @@ ov14_021E8B3C: ; 0x021E8B3C
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
-_021E8B7C: .word _02102610
+_021E8B7C: .word sOverlayTemplate_NamingScreen
 	thumb_func_end ov14_021E8B3C
 
 	thumb_func_start ov14_021E8B80
@@ -6743,7 +6743,7 @@ ov14_021E8B80: ; 0x021E8B80
 	ldr r0, [r4, #0x14]
 	strh r0, [r5, #0x1c]
 	ldr r0, [r5, #0x18]
-	bl sub_0208311C
+	bl NamingScreen_DeleteArgs
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
