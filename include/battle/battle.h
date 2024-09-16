@@ -626,8 +626,11 @@ struct BattleSystem {
     u16 unk2454[4];
     u16 unk245C[4];
     int unk2464[4];
-    u32 isRecordingPaused : 1, unk2474_1 : 1, unk2474_2 : 1, unk2474_3 : 1,
-        unk2474_4 : 28;
+    u32 isRecordingPaused : 1;
+    u32 unk2474_1         : 1;
+    u32 unk2474_2         : 1;
+    u32 unk2474_3         : 1;
+    u32 unk2474_4         : 28;
     u32 unk2478;
     SysTask *unk247C;
     u8 chatotVoiceParam[4];

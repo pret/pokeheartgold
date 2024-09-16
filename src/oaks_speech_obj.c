@@ -126,7 +126,6 @@ void OakSpeech_InitSpriteEngine(OakSpeechData *data) {
     G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(data->spriteRenderer), 0, FX32_CONST(GX_LCD_SIZE_Y));
 
     {
-        // extern const u16 ov53_021E8740[7];
         u16 fileIdList[7] = {
             NARC_resdat_resdat_00000026_bin,
             NARC_resdat_resdat_00000027_bin,

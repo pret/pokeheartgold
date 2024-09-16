@@ -14,6 +14,7 @@
 #include "pokemon_storage_system.h"
 #include "save_arrays.h"
 #include "save_palpad.h"
+#include "save_wifi_history.h"
 #include "trainer_data.h"
 #include "unk_02067A60.h"
 #include "unk_020755E8.h"
@@ -37,7 +38,7 @@ struct BattleSetup {                     // declared in trainer_data.h
     PCStorage *storagePC;                // 114
     SOUND_CHATOT *chatot[BATTLER_MAX];   // 118
     void *unk_128;
-    void *unk_12C;
+    SaveWiFiHistory *wifiHistory;
     Options *options; // 130
     struct UnkStruct_02067A60 *unk_134;
     struct BattleSetupSub_138 unk138;

@@ -5,6 +5,15 @@
 
 typedef struct SaveWiFiHistory SaveWiFiHistory;
 
+#define SAVE_WIFI_HISTORY_COUNTRY_MAX   255
+#define SAVE_WIFI_HISTORY_REGION_MAX    64
+#define SAVE_WIFI_HISTORY_STATE_UNSEEEN 0
+#define SAVE_WIFI_HISTORY_STATE_NEW     1
+#define SAVE_WIFI_HISTORY_STATE_OLD     2
+#define SAVE_WIFI_HISTORY_STATE_MINE    3
+#define SAVE_WIFI_HISTORY_STATE_MAX     4
+#define SAVE_WIFI_HISTORY_STATE_MASK    3
+
 u32 Save_WiFiHistory_sizeof(void);
 void Save_WiFiHistory_Init(SaveWiFiHistory *wifiHistory);
 SaveWiFiHistory *Save_WiFiHistory_Get(SaveData *saveData);
