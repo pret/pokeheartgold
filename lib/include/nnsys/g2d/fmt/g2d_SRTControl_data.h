@@ -1,6 +1,9 @@
 #ifndef NNSYS_G2D_FMT_G2D_SRTCONTROL_DATA_H
 #define NNSYS_G2D_FMT_G2D_SRTCONTROL_DATA_H
 
+#include <nitro.h>
+#include <nnsys/g2d/g2d_Vec_data.h>
+
 typedef enum {
     NNS_G2D_SRTCONTROLTYPE_INVALID,
     NNS_G2D_SRTCONTROLTYPE_SRT,
@@ -24,4 +27,4 @@ typedef struct {
     NNSG2dSRTData srtData;
 } NNSG2dSRTControl;
 
-#endif //NNSYS_G2D_FMT_G2D_SRTCONTROL_DATA_H
+#endif // NNSYS_G2D_FMT_G2D_SRTCONTROL_DATA_H

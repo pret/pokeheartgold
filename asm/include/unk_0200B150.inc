@@ -8,8 +8,8 @@
 .public sub_0200B2E8
 .public AllocFromHeap
 .public FreeToHeap
-.public sub_02024BBC
-.public sub_02024BF4
+.public ClearMainOAM
+.public ClearSubOAM
 .public GF_AssertFail
 .public sub_02025C54
 .public sub_02025C98

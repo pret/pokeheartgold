@@ -99,14 +99,14 @@ ov40_0222B6E0: ; 0x0222B6E0
 	bl ov40_0223D544
 	ldr r1, _0222B92C ; =0x00200010
 	mov r0, #1
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
-	bl sub_0200A080
+	bl G2dRenderer_SetPlttTransferReservedRegion
 	ldr r1, _0222B92C ; =0x00200010
 	mov r0, #2
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #2
-	bl sub_0200A080
+	bl G2dRenderer_SetPlttTransferReservedRegion
 	bl sub_0203A880
 	mov r0, #1
 	mov r1, #0x6d
@@ -621,7 +621,7 @@ ov40_0222BC68: ; 0x0222BC68
 	str r0, [r5]
 	ldr r0, [r4, #0x18]
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r3, _0222BD00 ; =ov40_02244C68
 	add r2, sp, #0
 	ldmia r3!, {r0, r1}
@@ -636,7 +636,7 @@ ov40_0222BC68: ; 0x0222BC68
 	ldr r0, [r4, #0x18]
 	ldr r1, [r4, #0x1c]
 	mov r2, #0xc0
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	cmp r0, #0
 	bne _0222BCD2
 	bl GF_AssertFail
@@ -8611,7 +8611,7 @@ ov40_0222FBBC: ; 0x0222FBBC
 	ldr r0, [r4, #0x64]
 	bl PokepicManager_HandleLoadImgAndOrPltt
 	ldr r0, [r4, #0x1c]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r0, _0222FBF4 ; =0x00000524
 	mov r1, #0

@@ -270,7 +270,7 @@ _0221C028:
 	bl ov08_0222145C
 	ldr r0, _0221C044 ; =0x00001FB4
 	ldr r0, [r4, r0]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add r0, r4, #0
 	bl ov08_022220FC
 _0221C03C:
@@ -8771,7 +8771,7 @@ ov08_0222061C: ; 0x0222061C
 	str r0, [r5, r1]
 	ldr r1, [r5, r1]
 	add r0, r4, #0
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	ldr r1, _02220664 ; =0x00001FB4
 	add r0, r4, #0
 	ldr r1, [r5, r1]
@@ -12907,7 +12907,7 @@ _02222756:
 	mov r0, #0xc3
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 _02222766:
 	pop {r4, pc}
 	.balign 4, 0
@@ -15685,7 +15685,7 @@ ov08_02223D34: ; 0x02223D34
 	ldr r1, [r5, r1]
 	add r0, r4, #0
 	mov r2, #0xc
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	mov r1, #0xc3
 	lsl r1, r1, #2
 	ldr r1, [r5, r1]

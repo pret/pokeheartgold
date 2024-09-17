@@ -2854,7 +2854,7 @@ _02238E5C:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	ldr r0, [r0]
-	bl sub_02024AA8
+	bl Sprite_SetPalOffsetRespectVramOffset
 	mov r0, #0xc9
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -3063,7 +3063,7 @@ ov57_02239058: ; 0x02239058
 	str r0, [r5]
 	ldr r0, [r4, #8]
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r3, _022390F0 ; =ov57_0223BD9C
 	add r2, sp, #0
 	ldmia r3!, {r0, r1}
@@ -3078,7 +3078,7 @@ ov57_02239058: ; 0x02239058
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
 	mov r2, #0x80
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	cmp r0, #0
 	bne _022390C2
 	bl GF_AssertFail
@@ -5133,7 +5133,7 @@ ov57_0223A0E0: ; 0x0223A0E0
 	add r4, #0xe0
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add r0, r5, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

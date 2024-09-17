@@ -1,6 +1,8 @@
 #ifndef NITRO_GX_GX_LOAD_H_
 #define NITRO_GX_GX_LOAD_H_
 
+#include <nitro/types.h>
+
 void GX_LoadBG0Scr(const void *pSrc, u32 offset, u32 szByte);
 void GX_LoadBG1Scr(const void *pSrc, u32 offset, u32 szByte);
 void GX_LoadBG2Scr(const void *pSrc, u32 offset, u32 szByte);
@@ -40,4 +42,7 @@ void GXS_LoadOBJExtPltt(const void *pSrc, u32 offset, u32 szByte);
 void GX_LoadOBJ(const void *pSrc, u32 offset, u32 szByte);
 void GXS_LoadOBJ(const void *pSrc, u32 offset, u32 szByte);
 
-#endif //NITRO_GX_GX_LOAD_H_
+void GX_LoadOAM(const void *pSrc, u32 offset, u32 szByte);
+void GXS_LoadOAM(const void *pSrc, u32 offset, u32 szByte);
+
+#endif // NITRO_GX_GX_LOAD_H_

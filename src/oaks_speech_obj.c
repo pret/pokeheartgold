@@ -13,7 +13,7 @@ static const UnkStruct_0200D2B4 sSpriteTemplates[] = {
      .z           = 0,
      .animSeqNo   = 0,
      .rotation    = 2,
-     .unk_10      = 1,
+     .palIndex    = 1,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
      .unk_18      = 0,
      .unk_1C      = 0,
@@ -27,7 +27,7 @@ static const UnkStruct_0200D2B4 sSpriteTemplates[] = {
      .z           = 0,
      .animSeqNo   = 0,
      .rotation    = 0,
-     .unk_10      = 0,
+     .palIndex    = 0,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DSUB,
      .unk_18      = 0,
      .unk_1C      = 0,
@@ -41,7 +41,7 @@ static const UnkStruct_0200D2B4 sSpriteTemplates[] = {
      .z           = 0,
      .animSeqNo   = 0,
      .rotation    = 1,
-     .unk_10      = 1,
+     .palIndex    = 1,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DSUB,
      .unk_18      = 0,
      .unk_1C      = 0,
@@ -55,7 +55,7 @@ static const UnkStruct_0200D2B4 sSpriteTemplates[] = {
      .z           = 0,
      .animSeqNo   = 0,
      .rotation    = 0,
-     .unk_10      = 3,
+     .palIndex    = 3,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DSUB,
      .unk_18      = 0,
      .unk_1C      = 0,
@@ -69,7 +69,7 @@ static const UnkStruct_0200D2B4 sSpriteTemplates[] = {
      .z           = 0,
      .animSeqNo   = 1,
      .rotation    = 0,
-     .unk_10      = 4,
+     .palIndex    = 4,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DSUB,
      .unk_18      = 0,
      .unk_1C      = 0,
@@ -83,7 +83,7 @@ static const UnkStruct_0200D2B4 sSpriteTemplates[] = {
      .z           = 0,
      .animSeqNo   = 0,
      .rotation    = 0,
-     .unk_10      = 4,
+     .palIndex    = 4,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
      .unk_18      = 0,
      .unk_1C      = 0,
@@ -100,7 +100,6 @@ void OakSpeech_InitSpriteEngine(OakSpeechData *data) {
     data->spriteGfxHandler = SpriteRenderer_CreateGfxHandler(data->spriteRenderer);
 
     {
-        // extern const OamManagerParam ov53_021E8764;
         OamManagerParam oamManagerParam = {
             .fromOBJmain    = 0,
             .numOBJmain     = 128,
@@ -120,11 +119,11 @@ void OakSpeech_InitSpriteEngine(OakSpeechData *data) {
             .charModeSub  = GX_OBJVRAMMODE_CHAR_1D_32K,
         };
 
-        sub_0200CF70(data->spriteRenderer, &oamManagerParam, &oamCharTransferParam, 0x20);
+        SpriteRenderer_CreateOamCharPlttManagers(data->spriteRenderer, &oamManagerParam, &oamCharTransferParam, 0x20);
     }
 
-    sub_0200CFF4(data->spriteRenderer, data->spriteGfxHandler, 10);
-    G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(data->spriteRenderer), 0, FX32_CONST(192));
+    SpriteRenderer_CreateSpriteList(data->spriteRenderer, data->spriteGfxHandler, 10);
+    G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(data->spriteRenderer), 0, FX32_CONST(GX_LCD_SIZE_Y));
 
     {
         u16 fileIdList[7] = {
@@ -151,15 +150,15 @@ void OakSpeech_CreateSprites(OakSpeechData *data) {
     for (u16 i = 0; i < 6; ++i) {
         data->sprites[i] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler, &sSpriteTemplates[i]);
     }
-    Set2dSpriteVisibleFlag(data->sprites[0], FALSE);
-    Set2dSpriteVisibleFlag(data->sprites[1], FALSE);
-    Set2dSpriteVisibleFlag(data->sprites[2], FALSE);
-    Set2dSpriteVisibleFlag(data->sprites[3], FALSE);
-    Set2dSpriteVisibleFlag(data->sprites[4], FALSE);
+    Sprite_SetVisibleFlag(data->sprites[0], FALSE);
+    Sprite_SetVisibleFlag(data->sprites[1], FALSE);
+    Sprite_SetVisibleFlag(data->sprites[2], FALSE);
+    Sprite_SetVisibleFlag(data->sprites[3], FALSE);
+    Sprite_SetVisibleFlag(data->sprites[4], FALSE);
     Sprite_SetPriority(data->sprites[3], 1);
-    Set2dSpriteAnimActiveFlag(data->sprites[5], 1);
-    sub_0202487C(data->sprites[5], 1);
-    Set2dSpriteVisibleFlag(data->sprites[5], FALSE);
+    Sprite_SetAnimActiveFlag(data->sprites[5], 1);
+    Sprite_SetAffineOverwriteType(data->sprites[5], 1);
+    Sprite_SetVisibleFlag(data->sprites[5], FALSE);
 }
 
 void OakSpeech_SelectedGenderIndicatorSpritesAction(OakSpeechData *data, int action) {
@@ -180,6 +179,6 @@ void OakSpeech_SelectedGenderIndicatorSpritesAction(OakSpeechData *data, int act
         sprite2Visible = FALSE;
     }
 
-    Set2dSpriteVisibleFlag(data->sprites[1], sprite1Visible);
-    Set2dSpriteVisibleFlag(data->sprites[2], sprite2Visible);
+    Sprite_SetVisibleFlag(data->sprites[1], sprite1Visible);
+    Sprite_SetVisibleFlag(data->sprites[2], sprite2Visible);
 }

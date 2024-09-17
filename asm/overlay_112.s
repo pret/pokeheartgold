@@ -4150,7 +4150,7 @@ _021E78E4:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E78F0
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 _021E78F0:
 	mov r0, #0
 	add sp, #0xc
@@ -8869,13 +8869,13 @@ ov112_021EA230: ; 0x021EA230
 	sub r0, r7, #4
 	ldr r0, [r4, r0]
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	sub r1, r7, #4
 	ldr r0, [r4, r1]
 	add r1, r1, #4
 	ldr r1, [r4, r1]
 	mov r2, #0xd9
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	sub r1, r7, #4
 	ldr r0, [r4, r1]
 	add r1, r1, #4
@@ -18845,7 +18845,7 @@ ov112_021EF100: ; 0x021EF100
 	bl ov112_021F051C
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	ldr r0, [r4, #0x18]
 	bl FreeToHeap
 	add r0, r4, #0
@@ -18923,9 +18923,9 @@ ov112_021EF19C: ; 0x021EF19C
 	bl ObjCharTransfer_Init
 	mov r0, #0x14
 	mov r1, #0x9a
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -21404,7 +21404,7 @@ ov112_021F050C: ; 0x021F050C
 	ldr r0, [r0, #0x78]
 	cmp r0, #0
 	beq _021F0518
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _021F0518:
 	pop {r3, pc}
 	.balign 4, 0
@@ -21877,7 +21877,7 @@ ov112_021F0908: ; 0x021F0908
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r4, #0
 _021F092E:
 	add r0, r7, r4
@@ -21891,13 +21891,13 @@ _021F092E:
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r0, #0x67
 	lsl r0, r0, #2
 	lsl r1, r4, #1
 	ldr r0, [r6, r0]
 	add r1, r1, #1
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	b _021F0974
 _021F0958:
 	lsl r0, r4, #2
@@ -21906,12 +21906,12 @@ _021F0958:
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	lsl r1, r4, #1
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 _021F0974:
 	add r0, r4, #1
 	lsl r0, r0, #0x18
@@ -21935,7 +21935,7 @@ _021F098E:
 	add r0, r5, r0
 	ldr r0, [r0, r6]
 	add r1, r7, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -21945,7 +21945,7 @@ _021F098E:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov112_021F0980
@@ -22236,19 +22236,19 @@ ov112_021F0B9C: ; 0x021F0B9C
 	add r0, r1, r0
 	str r0, [sp, #0x5c]
 	add r0, sp, #0x50
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #1
 	add r4, r0, #0
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	ldr r1, [sp, #0x98]
 	add r0, r4, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add r0, r4, #0
 	mov r1, #1
 	bl Sprite_SetPriority
 	ldr r1, [sp, #0x9c]
 	add r0, r4, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add r0, r4, #0
 	add sp, #0x80
 	pop {r3, r4, r5, pc}
@@ -24033,11 +24033,11 @@ ov112_021F196C: ; 0x021F196C
 	mov r3, #0x20
 	str r3, [sp, #0x18]
 	ldr r0, [r5, #0x68]
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r0, [r5, #0x68]
 	ldr r1, [r5, #0x6c]
 	mov r2, #0x20
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	ldr r4, _021F1A04 ; =ov112_021FF318
 	add r3, sp, #0
 	add r2, r3, #0
@@ -26774,7 +26774,7 @@ _021F2EC4:
 	bl GF_AssertFail
 _021F2ECE:
 	ldr r0, [r4, #0x6c]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #0x14]
 	bl DoScheduledBgGpuUpdates

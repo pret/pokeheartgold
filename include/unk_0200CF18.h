@@ -4,8 +4,8 @@
 #include "filesystem.h"
 #include "palette.h"
 #include "save.h"
+#include "sprite.h"
 #include "unk_02009D48.h"
-#include "unk_02023694.h"
 
 typedef struct UnkStruct_0200D2B4 {
     int resourceSet;
@@ -14,7 +14,7 @@ typedef struct UnkStruct_0200D2B4 {
     s16 z;
     u16 animSeqNo;
     int rotation;
-    int unk_10;
+    int palIndex;
     NNS_G2D_VRAM_TYPE whichScreen;
     int unk_18;
     int unk_1C;
@@ -87,12 +87,12 @@ typedef union SpriteResourceCountsListUnion {
 SpriteRenderer *SpriteRenderer_Create(HeapID);
 SpriteGfxHandler *SpriteRenderer_CreateGfxHandler(SpriteRenderer *);
 GF_G2dRenderer *SpriteRenderer_GetG2dRendererPtr(SpriteRenderer *);
-BOOL sub_0200CF70(SpriteRenderer *renderer, const OamManagerParam *oamManagerParam, const OamCharTransferParam *oamTransferParam, int a3);
-BOOL sub_0200CFF4(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, int);
+BOOL SpriteRenderer_CreateOamCharPlttManagers(SpriteRenderer *renderer, const OamManagerParam *oamManagerParam, const OamCharTransferParam *oamTransferParam, int a3);
+BOOL SpriteRenderer_CreateSpriteList(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, int);
 void thunk_Sprite_Delete(Sprite *sprite);
-void sub_0200D020(SpriteGfxHandler *gfxHandler);
+void SpriteGfxHandler_RenderAndAnimateSprites(SpriteGfxHandler *gfxHandler);
 void thunk_OamManager_ApplyAndResetBuffers(void);
-void sub_0200D03C(void);
+void SpriteRenderer_thunk_UpdateCellTransferStateManager(void);
 void SpriteRenderer_RemoveGfxHandler(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler);
 void SpriteRenderer_Delete(SpriteRenderer *);
 BOOL sub_0200D294(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, const u16 *fileIdList);

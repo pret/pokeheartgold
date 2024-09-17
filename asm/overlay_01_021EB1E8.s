@@ -411,7 +411,7 @@ ov01_021EB4B8: ; 0x021EB4B8
 	ldr r1, _021EB564 ; =0xFFFFF000
 	add r6, r0, #0
 	add r0, #0x14
-	bl sub_02025C44
+	bl GF_InitG2dRenderer
 	mov r0, #0
 	add r3, r6, #0
 	str r0, [sp, #0xc]
@@ -440,7 +440,7 @@ _021EB4EE:
 	stmia r5!, {r0}
 	cmp r4, #4
 	blt _021EB4EE
-	bl sub_0200A8FC
+	bl GF2DGfxResHeader_sizeof
 	add r1, r0, #0
 	mov r0, #4
 	lsl r1, r1, #2
@@ -488,19 +488,19 @@ _021EB568: .word ov01_021EB56C
 
 	thumb_func_start ov01_021EB56C
 ov01_021EB56C: ; 0x021EB56C
-	ldr r3, _021EB574 ; =sub_0202457C
+	ldr r3, _021EB574 ; =SpriteList_RenderAndAnimateSprites
 	add r1, #0xf4
 	ldr r0, [r1]
 	bx r3
 	.balign 4, 0
-_021EB574: .word sub_0202457C
+_021EB574: .word SpriteList_RenderAndAnimateSprites
 	thumb_func_end ov01_021EB56C
 
 	thumb_func_start ov01_021EB578
 ov01_021EB578: ; 0x021EB578
 	push {r3, r4, r5, lr}
 	add r5, r2, #0
-	bl sub_0200A900
+	bl GF2DGfxResHeader_GetByIndex
 	add r4, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -512,7 +512,7 @@ ov01_021EB578: ; 0x021EB578
 	add r5, r0, #0
 	add r1, r4, #0
 	mov r2, #4
-	bl sub_0200A908
+	bl GF2DGfxResHeader_Init
 	add r0, r5, #0
 	bl FreeToHeap
 	pop {r3, r4, r5, pc}
@@ -527,8 +527,8 @@ ov01_021EB5A4: ; 0x021EB5A4
 _021EB5AC:
 	ldr r0, [r6, #0x10]
 	add r1, r4, #0
-	bl sub_0200A900
-	bl sub_0200A954
+	bl GF2DGfxResHeader_GetByIndex
+	bl GF2DGfxResHeader_Reset
 	ldr r0, [r5]
 	bl Destroy2DGfxResObjMan
 	add r4, r4, #1
@@ -926,26 +926,26 @@ ov01_021EB898: ; 0x021EB898
 	add r6, r1, #0
 	add r7, r3, #0
 	ldr r5, [sp, #0x40]
-	bl sub_0200A900
+	bl GF2DGfxResHeader_GetByIndex
 	str r0, [sp, #0x18]
 	add r1, r4, #0
-	bl sub_0200A9B0
+	bl GF2DGfxResHeader_GetNarcMemberIdByIndex
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #0x18]
 	add r1, r4, #0
-	bl sub_0200A9DC
+	bl GF2DGfxResHeader_GetCompressFlagByIndex
 	str r0, [sp, #0x20]
 	ldr r0, [sp, #0x18]
 	add r1, r4, #0
-	bl sub_0200AA08
+	bl GF2DGfxResHeader_GetExDat0ByIndex
 	str r0, [sp, #0x24]
 	ldr r0, [sp, #0x18]
 	add r1, r4, #0
-	bl sub_0200AA3C
+	bl GF2DGfxResHeader_GetExDat1ByIndex
 	str r0, [sp, #0x28]
 	ldr r0, [sp, #0x18]
 	add r1, r4, #0
-	bl sub_0200A97C
+	bl GF2dGfxResHeader_GetObjIdByIndex
 	cmp r6, #3
 	bhi _021EB962
 	add r1, r6, r6
@@ -1942,10 +1942,10 @@ ov01_021EC028: ; 0x021EC028
 _021EC032:
 	ldr r0, [r6, #8]
 	add r0, #0x10
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	str r0, [r5, #0x4c]
 	add r1, r7, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, [r5, #0x4c]
 	cmp r0, #0
 	bne _021EC04C
@@ -2213,7 +2213,7 @@ _021EC22A:
 _021EC234:
 	ldr r0, [r4, #4]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021EC1F4
@@ -2279,7 +2279,7 @@ ov01_021EC29C: ; 0x021EC29C
 	str r1, [r0, #0x38]
 	ldr r0, [r4, #4]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add r0, r4, #0
 	bl ov01_021EC1E4
 	add r0, r4, #0

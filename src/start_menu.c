@@ -467,7 +467,7 @@ static BOOL Task_StartMenu(TaskManager *taskManager) {
         break;
     }
     if (startMenu->cursorActive) {
-        sub_0202457C(startMenu->spriteList);
+        SpriteList_RenderAndAnimateSprites(startMenu->spriteList);
     }
     return FALSE;
 }
@@ -710,8 +710,8 @@ static void StartMenu_CreateCursor(StartMenuTaskData *startMenu, u8 *a1, u32 a2,
     spriteTemplate.header      = &startMenu->spriteResourcesHeader; // second assign is necessary to match
     spriteTemplate.position.x  = FX32_CONST(100);
     spriteTemplate.position.y  = FX32_CONST(144);
-    startMenu->cursorSprite    = CreateSprite(&spriteTemplate);
-    Set2dSpriteAnimActiveFlag(startMenu->cursorSprite, TRUE);
+    startMenu->cursorSprite    = Sprite_CreateAffine(&spriteTemplate);
+    Sprite_SetAnimActiveFlag(startMenu->cursorSprite, TRUE);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 

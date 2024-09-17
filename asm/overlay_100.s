@@ -2124,7 +2124,7 @@ ov100_021E6914: ; 0x021E6914
 	ldr r0, [r0]
 	ldr r2, [r2, #0x78]
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r0, [r4]
 	bl sub_0200B2E0
 	ldr r0, [r4]
@@ -2176,7 +2176,7 @@ ov100_021E6978: ; 0x021E6978
 	ldr r0, [r0]
 	ldr r1, [r1]
 	ldr r2, [r2, r5]
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	mov r0, #0
 	str r0, [sp]
 	add r0, r4, #0
@@ -2222,7 +2222,7 @@ ov100_021E69E8: ; 0x021E69E8
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _021E69F6
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 _021E69F6:
 	pop {r3, pc}
 	thumb_func_end ov100_021E69E8
@@ -2329,7 +2329,7 @@ ov100_021E6AB0: ; 0x021E6AB0
 	ldr r0, [r0, #0x10]
 	cmp r0, #0
 	beq _021E6ABC
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _021E6ABC:
 	pop {r3, pc}
 	.balign 4, 0
@@ -2485,7 +2485,7 @@ _021E6BE0:
 	ldr r0, [r5]
 	str r0, [sp, #0x60]
 	add r0, sp, #0x34
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x55
 	lsl r1, r1, #2
 	str r0, [r4]
@@ -2497,7 +2497,7 @@ _021E6BE0:
 	add r1, sp, #0x68
 	ldrb r5, [r1, #0x1c]
 	add r1, r5, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add r0, r7, #0
 	add r1, r6, #0
 	bl sub_0200B12C

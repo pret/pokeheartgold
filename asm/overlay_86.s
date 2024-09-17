@@ -183,7 +183,7 @@ _021E5A8E:
 	mov r0, #0x23
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2651,7 +2651,7 @@ ov86_021E6E98: ; 0x021E6E98
 	sub r0, r7, #4
 	ldr r0, [r5, r0]
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r3, _021E6FE8 ; =ov86_021E7EEC
 	add r2, sp, #0x10
 	ldmia r3!, {r0, r1}
@@ -2665,7 +2665,7 @@ ov86_021E6E98: ; 0x021E6E98
 	add r1, r1, #4
 	ldr r1, [r5, r1]
 	mov r2, #2
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	sub r1, r7, #4
 	ldr r0, [r5, r1]
 	add r1, r1, #4

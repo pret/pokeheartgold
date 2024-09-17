@@ -313,11 +313,11 @@ ov47_02258A60: ; 0x02258A60
 
 	thumb_func_start ov47_02258A80
 ov47_02258A80: ; 0x02258A80
-	ldr r3, _02258A88 ; =sub_0202457C
+	ldr r3, _02258A88 ; =SpriteList_RenderAndAnimateSprites
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_02258A88: .word sub_0202457C
+_02258A88: .word SpriteList_RenderAndAnimateSprites
 	thumb_func_end ov47_02258A80
 
 	thumb_func_start ov47_02258A8C
@@ -483,14 +483,14 @@ ov47_02258BB4: ; 0x02258BB4
 	bl ObjCharTransfer_InitEx
 	mov r0, #0x20
 	add r1, r6, #0
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	mov r0, #1
 	mov r1, #0x10
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
-	bl sub_0200A080
+	bl G2dRenderer_SetPlttTransferReservedRegion
 	add r1, r5, #0
 	mov r0, #0x20
 	add r1, #8
@@ -540,7 +540,7 @@ _02258C54:
 	cmp r4, #4
 	blt _02258C54
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	bl OamManager_Free
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov47_02258C44
@@ -899,10 +899,10 @@ _02258E7A:
 	str r0, [sp, #0x44]
 	add r0, sp, #0x2c
 	str r6, [sp, #0x48]
-	bl sub_02024714
+	bl Sprite_Create
 	mov r1, #0
 	str r0, [r5, #0x14]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, [r4]
 	ldr r2, _02258F44 ; =ov47_02259E40
 	add r1, r5, #0
@@ -1257,7 +1257,7 @@ ov47_022591F8: ; 0x022591F8
 	add r4, r0, #0
 	ldr r0, [r4, #0x14]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r2, [r4, #0x10]
 	mov r1, #0xc
 	ldr r3, _02259218 ; =ov47_02259E78
@@ -1277,7 +1277,7 @@ ov47_0225921C: ; 0x0225921C
 	mov r1, #1
 	bx r3
 	.balign 4, 0
-_02259224: .word Set2dSpriteAnimActiveFlag
+_02259224: .word Sprite_SetAnimActiveFlag
 	thumb_func_end ov47_0225921C
 
 	thumb_func_start ov47_02259228

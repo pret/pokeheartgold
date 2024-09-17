@@ -3,7 +3,7 @@
 #include "global.h"
 
 #include "obj_char_transfer.h"
-#include "unk_02022588.h"
+#include "obj_pltt_transfer.h"
 
 BOOL sub_0200ACF0(GF_2DGfxResObj *obj) {
     GF_ASSERT(obj != NULL);
@@ -137,12 +137,12 @@ BOOL sub_0200AF94(GF_2DGfxResObj *plttResObj) {
     GF_ASSERT(plttResObj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(plttResObj) == GF_GFX_RES_TYPE_PLTT);
 
-    UnkStruct_02022660 template;
+    ObjPlttTransferTaskTemplate template;
     template.plttData = GF2DGfxResObj_GetPlttDataPtr(plttResObj);
     template.vram     = GF2DGfxResObj_GetLoadAddress(plttResObj);
     template.id       = GF2DGfxResObj_GetResID(plttResObj);
     template.plttNum  = GF2DGfxResObj_GetPlttNum(plttResObj);
-    return sub_02022660(&template);
+    return ObjPlttTransfer_CreateTaskAndDoTransferFromTemplate_HandleExtPltt(&template);
 }
 
 void sub_0200AFD8(GF_2DGfxResObjList *plttResObjList) {
@@ -158,12 +158,12 @@ BOOL sub_0200B00C(GF_2DGfxResObj *plttResObj) {
     GF_ASSERT(plttResObj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(plttResObj) == GF_GFX_RES_TYPE_PLTT);
 
-    UnkStruct_02022660 template;
+    ObjPlttTransferTaskTemplate template;
     template.plttData = GF2DGfxResObj_GetPlttDataPtr(plttResObj);
     template.vram     = GF2DGfxResObj_GetLoadAddress(plttResObj);
     template.id       = GF2DGfxResObj_GetResID(plttResObj);
     template.plttNum  = GF2DGfxResObj_GetPlttNum(plttResObj);
-    return sub_020226A4(&template);
+    return ObjPlttTransfer_CreateTaskAndDoTransferFromTemplate_ExtPlttBanned(&template);
 }
 
 void sub_0200B050(GF_2DGfxResObjList *plttResObjList) {
@@ -179,14 +179,14 @@ void sub_0200B084(GF_2DGfxResObj *plttResObj) {
     GF_ASSERT(plttResObj != NULL);
     int resID                   = GF2DGfxResObj_GetResID(plttResObj);
     NNSG2dPaletteData *plttData = GF2DGfxResObj_GetPlttDataPtr(plttResObj);
-    sub_020226E4(resID, plttData);
+    ObjPlttTransfer_CreateTransferTask(resID, plttData);
 }
 
 void sub_0200B0A8(GF_2DGfxResObj *plttResObj) {
     GF_ASSERT(plttResObj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(plttResObj) == GF_GFX_RES_TYPE_PLTT);
 
-    sub_02022744(GF2DGfxResObj_GetResID(plttResObj));
+    ObjPlttTransfer_FreeTaskByID(GF2DGfxResObj_GetResID(plttResObj));
 }
 
 void sub_0200B0CC(GF_2DGfxResObjList *plttResObjList) {
@@ -204,9 +204,9 @@ NNSG2dImagePaletteProxy *sub_0200B0F8(GF_2DGfxResObj *plttResObj, NNSG2dImagePro
 
     int resID = GF2DGfxResObj_GetResID(plttResObj);
     if (imageProxy != NULL) {
-        return sub_020227D4(resID, imageProxy);
+        return ObjPlttTransfer_GetPlttProxyByID_UpdateRefProxyExtFlag(resID, imageProxy);
     } else {
-        return sub_020227AC(resID);
+        return ObjPlttTransfer_GetPlttProxyByID(resID);
     }
 }
 

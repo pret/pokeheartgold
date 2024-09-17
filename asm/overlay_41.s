@@ -589,7 +589,7 @@ ov41_02246280: ; 0x02246280
 	mov r0, #0xe
 	str r0, [sp, #0x48]
 	add r0, sp, #0x2c
-	bl sub_02024714
+	bl Sprite_Create
 	add sp, #0x70
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -1651,9 +1651,9 @@ ov41_02246A94: ; 0x02246A94
 	bl ObjCharTransfer_InitEx
 	mov r0, #5
 	mov r1, #0xe
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
 	str r0, [sp]
@@ -1719,18 +1719,18 @@ _02246B40:
 	cmp r4, #4
 	blt _02246B40
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	bl OamManager_Free
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov41_02246B34
 
 	thumb_func_start ov41_02246B5C
 ov41_02246B5C: ; 0x02246B5C
-	ldr r3, _02246B64 ; =sub_0202457C
+	ldr r3, _02246B64 ; =SpriteList_RenderAndAnimateSprites
 	ldr r0, [r0, #0x44]
 	bx r3
 	nop
-_02246B64: .word sub_0202457C
+_02246B64: .word SpriteList_RenderAndAnimateSprites
 	thumb_func_end ov41_02246B5C
 
 	thumb_func_start ov41_02246B68
@@ -9058,7 +9058,7 @@ _0224A126:
 	bl GF_AssertFail
 _0224A12E:
 	ldr r0, [r4]
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	str r0, [r5]
 	cmp r0, #0
 	bne _0224A13E
@@ -9444,9 +9444,9 @@ _0224A3EC:
 	cmp r4, #5
 	blt _0224A3EC
 	mov r0, #0
-	bl sub_02022744
+	bl ObjPlttTransfer_FreeTaskByID
 	mov r0, #1
-	bl sub_02022744
+	bl ObjPlttTransfer_FreeTaskByID
 	mov r5, #0
 	add r4, r6, #0
 _0224A418:
@@ -10949,17 +10949,17 @@ _0224AF48:
 	lsl r0, r4, #0xc
 	str r0, [sp, #0x30]
 	add r0, sp, #0x28
-	bl sub_02024714
+	bl Sprite_Create
 	mov r1, #1
 	str r0, [r5, #0x10]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [sp, #0x1c]
 	add r1, r6, r7
 	cmp r1, r0
 	blt _0224AF6C
 	ldr r0, [r5, #0x10]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 _0224AF6C:
 	add r6, r6, #1
 	add r4, #0x12
@@ -10994,7 +10994,7 @@ ov41_0224AF8C: ; 0x0224AF8C
 _0224AFA0:
 	ldr r0, [r4, #0x10]
 	mov r1, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, r5
@@ -11011,7 +11011,7 @@ _0224AFB2:
 _0224AFC0:
 	ldr r0, [r4, #0x10]
 	mov r1, #1
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	sub r6, r6, #1
 	sub r4, r4, #4
 	cmp r6, r5
@@ -11230,7 +11230,7 @@ _0224B174:
 	lsl r0, r4, #0xc
 	str r0, [sp, #0x24]
 	add r0, sp, #0x1c
-	bl sub_02024714
+	bl Sprite_Create
 	str r0, [r5, #0x10]
 	add r6, r6, #1
 	add r4, #0x18
@@ -11393,7 +11393,7 @@ _0224B2AE:
 _0224B2C0:
 	ldr r0, [r5, #0x10]
 	ldr r1, [sp, #4]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [sp, #4]
 	add r1, r0, #0
 	ldr r0, [sp]
@@ -11414,7 +11414,7 @@ _0224B2C0:
 	bgt _0224B302
 	ldr r0, [r5, #0x10]
 	mov r1, #1
-	bl sub_02024A48
+	bl Sprite_SetPalIndexRespectVramOffset
 	cmp r7, #1
 	bne _0224B302
 	add r1, r6, #0
@@ -11516,7 +11516,7 @@ _0224B396:
 	ldr r0, [r6, #0x10]
 	mov r1, #2
 	str r0, [r4, #4]
-	bl sub_0202487C
+	bl Sprite_SetAffineOverwriteType
 	ldr r2, [sp, #8]
 	str r5, [sp, #0xc]
 	lsl r0, r5, #0xc
@@ -11630,10 +11630,10 @@ ov41_0224B450: ; 0x0224B450
 	ldr r0, [r5, #0x24]
 	str r0, [sp, #0x14]
 	ldr r0, [r5, #4]
-	bl sub_020247F4
+	bl Sprite_SetScale
 	ldr r0, [r5, #8]
 	add r1, sp, #0xc
-	bl sub_020247F4
+	bl Sprite_SetScale
 	add r6, r5, #0
 	add r6, #0xc
 	add r3, sp, #0
@@ -12934,7 +12934,7 @@ _0224BE9C:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #5
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	mov r0, #3
 	lsl r0, r0, #0x10
 	str r0, [sp, #0x14]

@@ -531,8 +531,8 @@ _02238B04:
 	cmp r6, #8
 	blt _02238AF4
 	ldr r0, [r7, #0x38]
-	bl sub_0200D020
-	bl sub_0200D03C
+	bl SpriteGfxHandler_RenderAndAnimateSprites
+	bl SpriteRenderer_thunk_UpdateCellTransferStateManager
 	bl ov80_02239A38
 	mov r0, #1
 	mov r1, #0
@@ -1532,19 +1532,19 @@ ov80_02239384: ; 0x02239384
 	ldr r2, _022393DC ; =ov80_0223D570
 	mov r3, #0x20
 	str r0, [r4, #0x34]
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r1, _022393E0 ; =0x00200010
 	mov r0, #1
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
-	bl sub_0200A080
+	bl G2dRenderer_SetPlttTransferReservedRegion
 	ldr r0, [r4, #0x34]
 	bl SpriteRenderer_CreateGfxHandler
 	str r0, [r4, #0x38]
 	ldr r0, [r4, #0x34]
 	ldr r1, [r4, #0x38]
 	mov r2, #0x80
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	ldr r0, [r4, #0x34]
 	ldr r1, [r4, #0x38]
 	ldr r2, _022393E4 ; =ov80_0223D584

@@ -173,7 +173,7 @@ static void SysTask_ViewPhoto(SysTask *task, void *taskData) {
         }
         break;
     }
-    sub_0202457C(viewPhoto->spriteRender.spriteList);
+    SpriteList_RenderAndAnimateSprites(viewPhoto->spriteRender.spriteList);
 }
 
 static void ViewPhotoSysTask_Setup(ViewPhotoSysTaskData *viewPhoto) {
@@ -385,18 +385,18 @@ static void ViewPhotoSysTask_CreateSprites(ViewPhotoSysTaskData *viewPhoto) {
     UnkFieldSpriteRenderer_ov01_021E7FDC_Init(&viewPhoto->spriteRender, ov19_0225A040, 3, viewPhoto->heapId);
     for (int i = 0; i < 3; ++i) {
         viewPhoto->sprites[i] = ov01_021E81F0(&viewPhoto->spriteRender, &ov19_0225A0C4[i]);
-        Set2dSpriteVisibleFlag(viewPhoto->sprites[i], TRUE);
-        Set2dSpriteAnimActiveFlag(viewPhoto->sprites[i], TRUE);
+        Sprite_SetVisibleFlag(viewPhoto->sprites[i], TRUE);
+        Sprite_SetAnimActiveFlag(viewPhoto->sprites[i], TRUE);
     }
     if (viewPhoto->scrollData.curPhoto == 0) {
-        Set2dSpriteAnimSeqNo(viewPhoto->sprites[1], 2);
+        Sprite_SetAnimCtrlSeq(viewPhoto->sprites[1], 2);
     } else {
-        Set2dSpriteAnimSeqNo(viewPhoto->sprites[1], 0);
+        Sprite_SetAnimCtrlSeq(viewPhoto->sprites[1], 0);
     }
     if (viewPhoto->scrollData.curPhoto >= viewPhoto->scrollData.numPhotos - 1) {
-        Set2dSpriteAnimSeqNo(viewPhoto->sprites[2], 5);
+        Sprite_SetAnimCtrlSeq(viewPhoto->sprites[2], 5);
     } else {
-        Set2dSpriteAnimSeqNo(viewPhoto->sprites[2], 3);
+        Sprite_SetAnimCtrlSeq(viewPhoto->sprites[2], 3);
     }
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
@@ -411,7 +411,7 @@ static void ViewPhotoSysTask_DeleteSprites(ViewPhotoSysTaskData *viewPhoto) {
 
 static void ViewPhotoSysTask_AnimateButtonSelect(ViewPhotoSysTaskData *viewPhoto, int spriteNo) {
     viewPhoto->animSpriteNo = spriteNo;
-    Set2dSpriteAnimSeqNo(viewPhoto->sprites[spriteNo], _0225A03C[spriteNo]);
+    Sprite_SetAnimCtrlSeq(viewPhoto->sprites[spriteNo], _0225A03C[spriteNo]);
     Sprite_ResetAnimCtrlState(viewPhoto->sprites[spriteNo]);
 }
 

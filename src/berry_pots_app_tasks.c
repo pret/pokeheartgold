@@ -228,7 +228,7 @@ static void ov17_022039A0(SysTask *task, SysTaskArgs_ov17_022039A0 *args) {
 
     switch (args->state) {
     case 0:
-        Set2dSpriteVisibleFlag(data->sprites[7 + args->potIndex], TRUE);
+        Sprite_SetVisibleFlag(data->sprites[7 + args->potIndex], TRUE);
         PlaySE(SEQ_SE_PL_EFF05);
         args->state++;
         break;
@@ -241,7 +241,7 @@ static void ov17_022039A0(SysTask *task, SysTaskArgs_ov17_022039A0 *args) {
         }
 
         if (args->unk5 >= 30) {
-            Set2dSpriteVisibleFlag(data->sprites[7 + args->potIndex], FALSE);
+            Sprite_SetVisibleFlag(data->sprites[7 + args->potIndex], FALSE);
 
             data->runningTasks--;
             FreeToHeap(args);
@@ -361,7 +361,7 @@ static BOOL ov17_02203B88(BerryPotsAppData *data) {
 
     if (unk) {
         data->unk81 = data->unk7C;
-        Set2dSpriteAnimActiveFlag(data->sprites[1], FALSE);
+        Sprite_SetAnimActiveFlag(data->sprites[1], FALSE);
         ov17_022028B8(data);
         return TRUE;
     }
@@ -383,7 +383,7 @@ static BOOL ov17_02203C20(BerryPotsAppData *data, BOOL *a1) {
     data->unk74 = 1;
     data->unk7C = unk;
     data->unk81 = data->unk7C;
-    Set2dSpriteAnimActiveFlag(data->sprites[1], FALSE);
+    Sprite_SetAnimActiveFlag(data->sprites[1], FALSE);
     ov17_022028B8(data);
 
     return TRUE;

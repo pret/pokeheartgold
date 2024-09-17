@@ -1,8 +1,8 @@
 #ifndef POKEHEARTGOLD_FIELD_OV01_021E7FDC_H
 #define POKEHEARTGOLD_FIELD_OV01_021E7FDC_H
 
+#include "sprite.h"
 #include "unk_02009D48.h"
-#include "unk_02023694.h"
 
 typedef struct UnkStruct_ov01_021E7FDC {
     SpriteList *spriteList;

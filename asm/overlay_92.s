@@ -135,9 +135,9 @@ ov92_0225C5C4: ; 0x0225C5C4
 	bl GF_CreateVramTransferManager
 	ldr r1, _0225C938 ; =0x00200010
 	mov r0, #1
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
-	bl sub_0200A080
+	bl G2dRenderer_SetPlttTransferReservedRegion
 	bl sub_0203A880
 	mov r0, #0x71
 	bl sub_0203A4AC
@@ -2223,7 +2223,7 @@ ov92_0225D7CC: ; 0x0225D7CC
 	str r0, [r5]
 	ldr r0, [r4, #0x50]
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r3, _0225D864 ; =ov92_022638D4
 	add r2, sp, #0
 	ldmia r3!, {r0, r1}
@@ -2238,7 +2238,7 @@ ov92_0225D7CC: ; 0x0225D7CC
 	ldr r0, [r4, #0x50]
 	ldr r1, [r4, #0x54]
 	mov r2, #0xff
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	cmp r0, #0
 	bne _0225D836
 	bl GF_AssertFail
@@ -2843,7 +2843,7 @@ _0225DCF0:
 	mov r1, #1
 	bl RequestSwap3DBuffers
 	ldr r0, [r5, #0x54]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	nop

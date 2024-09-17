@@ -3561,7 +3561,7 @@ ov07_0221D740: ; 0x0221D740
 	add r0, #0xac
 	ldr r0, [r0]
 	mov r2, #5
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	add r0, r4, #0
 	add r0, #0xc0
 	ldr r0, [r0]
@@ -3852,7 +3852,7 @@ _0221D9C2:
 	ldr r0, [r7]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	mov r1, #2
 	str r1, [sp]
 	mov r1, #0x20
@@ -3996,7 +3996,7 @@ _0221DADE:
 	cmp r0, #0
 	beq _0221DAF0
 	ldr r0, [r1, #4]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 _0221DAF0:
 	pop {r3, pc}
 	.balign 4, 0
@@ -7439,7 +7439,7 @@ _0221F472:
 	add r0, #0xac
 	ldr r0, [r0]
 	add r2, r7, #0
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	add r0, r5, #0
 	add r0, #0xc0
 	ldr r0, [r0]
@@ -8749,7 +8749,7 @@ _0221FDB2:
 	ldr r0, [r6]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	mov r1, #2
 	str r1, [sp]
 	mov r1, #0x20
@@ -13387,7 +13387,7 @@ ov07_02221FF0: ; 0x02221FF0
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	pop {r3, pc}
@@ -15910,7 +15910,7 @@ _0222315E:
 	add r2, r1, #0
 	bl Sprite_AddPositionXY
 	ldr r0, [r5, #0xc]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r4, r5, r6, pc}
 _022231A4:
 	ldr r0, [r5, #0x10]
@@ -16108,7 +16108,7 @@ _02223312:
 	blt _022232E8
 _0222331C:
 	ldr r0, [r5, #0x10]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 _02223322:
 	mov r0, #1
 	ldr r1, [r5, #0x28]
@@ -17489,7 +17489,7 @@ _02223DE8:
 	pop {r3, r4, r5, pc}
 _02223DFE:
 	ldr r0, [r4, #8]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov07_02223DC4
@@ -18165,7 +18165,7 @@ _0222432A:
 	pop {r4, r5, pc}
 _0222433C:
 	ldr r0, [r4, #4]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -18752,7 +18752,7 @@ ov07_022247C8: ; 0x022247C8
 	pop {r3, r4, r5, pc}
 _022247EA:
 	ldr r0, [r4, #4]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov07_022247C8
@@ -20798,7 +20798,7 @@ ov07_02225838: ; 0x02225838
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	add r7, r0, #0
 	add r0, r5, #0
 	bl ov07_0221BFD0
@@ -21670,7 +21670,7 @@ _02225F76:
 	ldr r0, _02225F90 ; =0x0400004D
 	strb r1, [r0]
 	ldr r0, [r4, #0xc]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r4, pc}
 	.balign 4, 0
 _02225F90: .word 0x0400004D
@@ -22717,7 +22717,7 @@ ov07_02226804: ; 0x02226804
 _0222682A:
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [r4, #0x10]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov07_02226804
@@ -22915,7 +22915,7 @@ _022269BE:
 	ldr r0, [r4, #0x1c]
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [r4, #0x10]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _022269CC: .word ov07_02236670
@@ -23006,7 +23006,7 @@ ov07_02226A68: ; 0x02226A68
 _02226A8E:
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [r4, #0x10]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov07_02226A68
@@ -23216,7 +23216,7 @@ _02226C36:
 	ldr r0, [r4, #0x1c]
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [r4, #0x10]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -23615,7 +23615,7 @@ _02226F16:
 	ldr r0, [r4, #0x1c]
 	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0xc]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	ldr r0, [r4, #4]
 	add r1, r5, #0
 	bl ov07_0221C448
@@ -23626,7 +23626,7 @@ _02226F6E:
 	ldr r0, [r4, #0x1c]
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [r4, #0xc]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02226F7C: .word 0xFFFF1FFF
@@ -23928,7 +23928,7 @@ _022271CA:
 	cmp r4, #4
 	blt _022271C0
 	ldr r0, [r6, #0xc]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov07_0222719C
@@ -24326,7 +24326,7 @@ _022274CE:
 	blt _022274CE
 _022274E6:
 	ldr r0, [r4, #0x10]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -25315,7 +25315,7 @@ _02227CEE:
 	pop {r3, r4, r5, r6, r7, pc}
 _02227D00:
 	ldr r0, [r5, #0x14]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -25438,7 +25438,7 @@ _02227DBA:
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	ldr r0, [r4, #0xc]
@@ -25466,7 +25466,7 @@ _02227DBA:
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	ldr r0, [r4, #0xc]
@@ -25531,7 +25531,7 @@ _02227EAA:
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	ldr r0, [r4, #0xc]
@@ -25559,7 +25559,7 @@ _02227EAA:
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	ldr r0, [r4, #0xc]
@@ -26534,7 +26534,7 @@ _02228730:
 	ldr r0, [r4, #0x10]
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [r4, #8]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r4, pc}
 	.balign 4, 0
 _02228744: .word 0x0400004A
@@ -26600,7 +26600,7 @@ ov07_02228750: ; 0x02228750
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	add r6, r0, #0
 	ldr r0, [r4, #4]
 	bl ov07_0221FA78
@@ -26904,7 +26904,7 @@ _02228A26:
 	pop {r4, r5, r6, r7, pc}
 _02228A42:
 	ldr r0, [r4, #0x14]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -27279,7 +27279,7 @@ _02228D26:
 	ldr r0, [r4, #0x18]
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [r4, #0x10]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r4, pc}
 _02228D52:
 	ldr r0, [r4, #0xc]
@@ -27877,7 +27877,7 @@ _022291B2:
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 _02229202:
 	ldr r0, [r4, #0xc]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #4
 	pop {r3, r4, pc}
 _0222920C:
@@ -27975,7 +27975,7 @@ _022292D4:
 	ldr r0, [r4, #0x38]
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [r4, #0x20]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov07_0222928C
@@ -28369,7 +28369,7 @@ _0222961A:
 	ldr r0, [r4, #0x40]
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [r4, #0x28]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #0x1c
 	pop {r4, r5, pc}
 	nop
@@ -29076,7 +29076,7 @@ _02229BDA:
 	blt _02229BDA
 _02229BF0:
 	ldr r0, [r4, #0x18]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 _02229BF6:
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
@@ -29372,7 +29372,7 @@ _02229E2E:
 	blt _02229E2E
 _02229E40:
 	ldr r0, [r5, #0x10]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02229E48: .word 0x04000052
@@ -29823,7 +29823,7 @@ _0222A1BC:
 	blt _0222A1BC
 _0222A1CE:
 	ldr r0, [r4, #0x14]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -30297,7 +30297,7 @@ _0222A570:
 	pop {r4, r5, r6, pc}
 _0222A580:
 	ldr r0, [r4, #0x10]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0222A588: .word 0x00000514
@@ -30607,7 +30607,7 @@ _0222A81C:
 	ldr r0, [r4, #0x20]
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [r4, #0x10]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	nop
@@ -30772,7 +30772,7 @@ _0222A95A:
 _0222A97C:
 	ldr r0, [sp, #4]
 	ldr r0, [r0, #0x10]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov07_0222A8EC
@@ -31153,7 +31153,7 @@ _0222AC76:
 	pop {r4, r5, r6, r7, pc}
 _0222AC96:
 	ldr r0, [r5, #0x10]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -31376,7 +31376,7 @@ _0222AE58:
 	ldr r0, [r4, #0x50]
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [r4, #0xc]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 _0222AE9A:
 	add sp, #0xc
 	pop {r4, r5, pc}
@@ -31685,7 +31685,7 @@ _0222B11E:
 	ldr r0, [r4, #0x28]
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [r4, #0xc]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -31777,7 +31777,7 @@ ov07_0222B130: ; 0x0222B130
 	ldr r0, [r5]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	add r6, r0, #0
 	ldr r0, [r4, #4]
 	bl ov07_0221FA78
@@ -31813,7 +31813,7 @@ ov07_0222B130: ; 0x0222B130
 	ldr r0, [r5]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	add r6, r0, #0
 	ldr r0, [r4, #4]
 	bl ov07_0221FA78
@@ -31907,7 +31907,7 @@ _0222B2F2:
 _0222B314:
 	ldr r0, [sp, #4]
 	ldr r0, [r0, #0x10]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov07_0222B2A8
@@ -32214,7 +32214,7 @@ _0222B584:
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	add r4, r0, #0
 	ldr r0, [r5, #4]
 	bl ov07_0221BFD0
@@ -32266,7 +32266,7 @@ _0222B60A:
 	ldr r0, [r5, #0x24]
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [r5, #0xc]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #0x1c
 	pop {r4, r5, pc}
 	nop
@@ -32363,7 +32363,7 @@ _0222B6AC:
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ov07_0221BFD0
@@ -32391,7 +32391,7 @@ _0222B6AC:
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ov07_0221BFD0
@@ -33184,7 +33184,7 @@ ov07_0222BD90: ; 0x0222BD90
 	mov r0, #0
 	str r0, [sp, #8]
 	ldr r0, [r4, #4]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	mov r1, #0
 	add r2, sp, #0
 _0222BDC4:
@@ -34056,7 +34056,7 @@ _0222C488:
 	pop {r3, r4, r5, r6, r7, pc}
 _0222C4AC:
 	ldr r0, [r4, #8]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0222C4B4: .word 0x04000052
@@ -34382,7 +34382,7 @@ _0222C762:
 	pop {r4, r5, pc}
 _0222C774:
 	ldr r0, [r4, #4]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -35009,7 +35009,7 @@ _0222CC9A:
 	pop {r3, r4, r5, pc}
 _0222CCAC:
 	ldr r0, [r4, #4]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	nop
@@ -35842,7 +35842,7 @@ _0222D39A:
 	pop {r4, r5, pc}
 _0222D3B2:
 	ldr r0, [r4, #8]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end ov07_0222D2B0
@@ -36236,7 +36236,7 @@ _0222D6BA:
 	pop {r3, r4, r5, r6, r7, pc}
 _0222D6D8:
 	ldr r0, [r4, #8]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov07_0222D60C
 
@@ -36554,7 +36554,7 @@ _0222D94E:
 	pop {r3, r4, r5, pc}
 _0222D966:
 	ldr r0, [r4, #8]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -36752,7 +36752,7 @@ _0222DAF8:
 	pop {r4, pc}
 _0222DB0A:
 	ldr r0, [r4, #4]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #8
 	pop {r4, pc}
 	thumb_func_end ov07_0222DA60
@@ -36835,7 +36835,7 @@ ov07_0222DB14: ; 0x0222DB14
 	ldr r1, _0222DBD4 ; =ov07_0222DA60
 	bl ov07_0221C410
 	ldr r0, [r4, #4]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -37010,7 +37010,7 @@ _0222DD02:
 	pop {r3, r4, r5, pc}
 _0222DD18:
 	ldr r0, [r4, #8]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov07_0222DCD8
 
@@ -37380,7 +37380,7 @@ _0222DFF8:
 	pop {r3, r4, r5, pc}
 _0222E010:
 	ldr r0, [r4, #8]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	nop
@@ -37737,7 +37737,7 @@ _0222E2C4:
 	pop {r4, r5, r6, r7, pc}
 _0222E2DC:
 	ldr r0, [r4, #8]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -38672,7 +38672,7 @@ _0222EA24:
 	pop {r3, r4, r5, pc}
 _0222EA3C:
 	ldr r0, [r4, #8]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -39501,7 +39501,7 @@ _0222F08A:
 	pop {r3, r4, r5, r6, r7, pc}
 _0222F0A8:
 	ldr r0, [r6, #8]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov07_0222EF88
 
@@ -39839,7 +39839,7 @@ _0222F356:
 	pop {r3, r4, r5, pc}
 _0222F36E:
 	ldr r0, [r4, #8]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov07_0222F210
@@ -40437,7 +40437,7 @@ _0222F830:
 	bl FreeToHeap
 _0222F83E:
 	ldr r0, [r4, #4]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #8
 	pop {r4, pc}
 	thumb_func_end ov07_0222F764
@@ -40775,7 +40775,7 @@ _0222FAFE:
 	pop {r3, r4, r5, r6, r7, pc}
 _0222FB1C:
 	ldr r0, [r4, #8]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov07_0222FA64
 
@@ -41128,7 +41128,7 @@ _0222FDDA:
 	pop {r3, r4, r5, r6, r7, pc}
 _0222FDFA:
 	ldr r0, [r4, #8]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov07_0222FD14
@@ -41451,7 +41451,7 @@ _0223006C:
 	pop {r3, r4, r5, r6, r7, pc}
 _0223008A:
 	ldr r0, [r6, #8]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov07_02230058
@@ -42220,7 +42220,7 @@ _022306B4:
 	pop {r3, r4, r5, pc}
 _022306CC:
 	ldr r0, [r4, #8]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -42558,7 +42558,7 @@ ov07_02230960: ; 0x02230960
 	pop {r3, r4, r5, pc}
 _0223098A:
 	ldr r0, [r4, #4]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov07_02230960
@@ -43236,7 +43236,7 @@ _02230EE6:
 	pop {r3, r4, r5, r6, r7, pc}
 _02230F04:
 	ldr r0, [r4, #0xc]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov07_02230E20
 
@@ -43459,7 +43459,7 @@ _022310BC:
 	pop {r3, r4, r5, pc}
 _022310D4:
 	ldr r0, [r4, #0xc]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -43691,7 +43691,7 @@ _0223127C:
 _0223129C:
 	ldr r0, [sp]
 	ldr r0, [r0, #8]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov07_02231234
@@ -43914,7 +43914,7 @@ _0223143E:
 	pop {r3, r4, r5, r6, r7, pc}
 _0223145E:
 	ldr r0, [r4, #8]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov07_02231378
@@ -44252,7 +44252,7 @@ _022316CA:
 	ldr r0, [r4, #0x3c]
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [r4, #0x24]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r3, r4, r5, pc}
 	nop
 _02231718: .word 0x04000050
@@ -49464,7 +49464,7 @@ ov07_02233D60: ; 0x02233D60
 	add r0, #0xdc
 	str r1, [r0]
 	ldr r0, [r4, #0x2c]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r4, pc}
 _02233D8A:
 	add r1, #0x98
@@ -49486,7 +49486,7 @@ _02233DA0:
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 _02233DAC:
 	ldr r0, [r4, #0x2c]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 _02233DB2:
 	pop {r4, pc}
 	.balign 4, 0
@@ -50204,7 +50204,7 @@ ov07_022342E4: ; 0x022342E4
 	ldr r0, [r0]
 	ldr r1, [r5, #0x2c]
 	mov r2, #0xa
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	add r0, r5, #0
 	add r0, #0xa8
 	ldr r0, [r0]

@@ -3,10 +3,10 @@
 #include "global.h"
 
 #include "obj_char_transfer.h"
+#include "obj_pltt_transfer.h"
+#include "sprite.h"
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
-#include "unk_02022588.h"
-#include "unk_02023694.h"
 #include "unk_02025C44.h"
 
 void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, int plttId, int cellId, int cellAnmId, int multiCellId, int multiCellAnmId, int transfer, int priority, GF_2DGfxResMan *charMan, GF_2DGfxResMan *plttMan, GF_2DGfxResMan *cellMan, GF_2DGfxResMan *cellAnmMan, GF_2DGfxResMan *multiCellMan, GF_2DGfxResMan *multiCellAnmMan) {
@@ -98,48 +98,48 @@ void SpriteResourceHeaderList_Destroy(SpriteResourceHeaderList *list) {
     FreeToHeap(list);
 }
 
-SpriteList *G2dRenderer_Init(int a0, GF_G2dRenderer *renderer, HeapID heapId) {
+SpriteList *G2dRenderer_Init(int numSprites, GF_G2dRenderer *renderer, HeapID heapId) {
     struct SpriteListParam param;
     NNSG2dViewRect rect;
 
-    sub_02025C44(&renderer->rendererInstance, -FX32_ONE);
+    GF_InitG2dRenderer(&renderer->rendererInstance, -FX32_ONE);
     rect.posTopLeft.x = 0;
     rect.posTopLeft.y = 0;
     rect.sizeView.x   = 255 * FX32_ONE;
     rect.sizeView.y   = 192 * FX32_ONE;
-    sub_0200B27C(&renderer->renderSurface[0], &rect, 1, &renderer->rendererInstance);
+    sub_0200B27C(&renderer->renderSurface[0], &rect, NNS_G2D_VRAM_TYPE_2DMAIN, &renderer->rendererInstance);
     rect.posTopLeft.x = 0;
     rect.posTopLeft.y = 192 * FX32_ONE;
     rect.sizeView.x   = 255 * FX32_ONE;
     rect.sizeView.y   = 192 * FX32_ONE;
-    sub_0200B27C(&renderer->renderSurface[1], &rect, 2, &renderer->rendererInstance);
-    param.unk_0            = a0;
+    sub_0200B27C(&renderer->renderSurface[1], &rect, NNS_G2D_VRAM_TYPE_2DSUB, &renderer->rendererInstance);
+    param.num              = numSprites;
     param.rendererInstance = &renderer->rendererInstance;
     param.heapId           = heapId;
     return SpriteList_Create(&param);
 }
 
-void G2dRenderer_SetMainSurfaceCoords(struct GF_G2dRenderer *a0, fx32 x, fx32 y) {
+void G2dRenderer_SetMainSurfaceCoords(GF_G2dRenderer *renderer, fx32 x, fx32 y) {
     struct NNSG2dViewRect rect;
 
     rect.posTopLeft.x = x;
     rect.posTopLeft.y = y;
     rect.sizeView.x   = 255 * FX32_ONE;
     rect.sizeView.y   = 192 * FX32_ONE;
-    sub_02025C88(&a0->renderSurface[0], &rect);
+    GF_SetG2dRendererSurface(&renderer->renderSurface[0], &rect);
 }
 
-void G2dRenderer_SetSubSurfaceCoords(struct GF_G2dRenderer *a0, fx32 x, fx32 y) {
+void G2dRenderer_SetSubSurfaceCoords(GF_G2dRenderer *renderer, fx32 x, fx32 y) {
     struct NNSG2dViewRect rect;
 
     rect.posTopLeft.x = x;
     rect.posTopLeft.y = y;
     rect.sizeView.x   = 255 * FX32_ONE;
     rect.sizeView.y   = 192 * FX32_ONE;
-    sub_02025C88(&a0->renderSurface[1], &rect);
+    GF_SetG2dRendererSurface(&renderer->renderSurface[1], &rect);
 }
 
-void sub_02009FE8(NNS_G2D_VRAM_TYPE vram, GXOBJVRamModeChar mode) {
+void G2dRenderer_SetObjCharTransferReservedRegion(NNS_G2D_VRAM_TYPE vram, GXOBJVRamModeChar mode) {
     switch (mode) {
     case GX_OBJVRAMMODE_CHAR_1D_32K:
         if (GX_GetBankForOBJ() == GX_VRAM_OBJ_16_G || GX_GetBankForOBJ() == GX_VRAM_OBJ_16_F) {
@@ -164,6 +164,6 @@ void sub_02009FE8(NNS_G2D_VRAM_TYPE vram, GXOBJVRamModeChar mode) {
     }
 }
 
-void sub_0200A080(u32 a0) {
-    sub_020225E4(0xC000, a0);
+void G2dRenderer_SetPlttTransferReservedRegion(NNS_G2D_VRAM_TYPE type) {
+    ObjPlttTransfer_SetReservedRegion(0xC000, type);
 }

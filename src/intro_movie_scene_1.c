@@ -5,11 +5,11 @@
 #include "gf_gfx_loader.h"
 #include "intro_movie_internal.h"
 #include "obj_char_transfer.h"
+#include "obj_pltt_transfer.h"
 #include "system.h"
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
-#include "unk_02022588.h"
 
 enum IntroScene1State {
     INTRO_SCENE1_APPEAR_COPYRIGHT,
@@ -75,7 +75,7 @@ static void IntroMovie_Scene1_VBlankCB(void *pVoid) {
 static void IntroMovie_Scene1_Init(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     ObjCharTransfer_ClearBuffers();
-    sub_02022638();
+    ObjPlttTransfer_Reset();
     gSystem.screensFlipped = TRUE;
     GfGfx_SwapDisplay();
     IntroMovie_Scene1_InitBgs(data);
@@ -129,7 +129,7 @@ static BOOL IntroMovie_Scene1_Main(IntroMovieOverlayData *data, IntroMovieScene1
     case INTRO_SCENE1_APPEAR_BG_IMAGE: // Appear sunrise or sunset background
         GfGfx_EngineATogglePlanes((GXPlaneMask)(GX_PLANEMASK_BG1 | GX_PLANEMASK_BG2 | GX_PLANEMASK_BG3), GF_PLANE_TOGGLE_ON);
         GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_ON);
-        Set2dSpriteVisibleFlag(sceneData->sunSprite, TRUE);
+        Sprite_SetVisibleFlag(sceneData->sunSprite, TRUE);
         IntroMovie_AdvanceSceneStep(data);
         break;
     case INTRO_SCENE1_WAIT_START_BG_SCROLL: // Start scrolling background
@@ -337,19 +337,19 @@ static void IntroMovie_Scene1_CreateSprites(IntroMovieOverlayData *data, IntroMo
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(1, data, 1, NNS_G2D_VRAM_TYPE_2DMAIN, &spriteTemplate, &spriteResourcesHeader);
     spriteTemplate.position.x = 128 * FX32_ONE;
     spriteTemplate.position.y = 96 * FX32_ONE;
-    sceneData->sunSprite      = CreateSprite(&spriteTemplate);
-    Set2dSpriteAnimActiveFlag(sceneData->sunSprite, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->sunSprite, FALSE);
-    Set2dSpriteAnimSeqNo(sceneData->sunSprite, 0);
+    sceneData->sunSprite      = Sprite_CreateAffine(&spriteTemplate);
+    Sprite_SetAnimActiveFlag(sceneData->sunSprite, FALSE);
+    Sprite_SetVisibleFlag(sceneData->sunSprite, FALSE);
+    Sprite_SetAnimCtrlSeq(sceneData->sunSprite, 0);
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(1, data, 0, NNS_G2D_VRAM_TYPE_2DMAIN, &spriteTemplate, &spriteResourcesHeader);
     spriteTemplate.position.x = 128 * FX32_ONE;
     spriteTemplate.position.y = 96 * FX32_ONE;
-    sceneData->birdSprite     = CreateSprite(&spriteTemplate);
-    Set2dSpriteAnimActiveFlag(sceneData->birdSprite, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->birdSprite, FALSE);
-    Set2dSpriteAnimSeqNo(sceneData->birdSprite, 1);
-    sub_0202487C(sceneData->birdSprite, 2);
+    sceneData->birdSprite     = Sprite_CreateAffine(&spriteTemplate);
+    Sprite_SetAnimActiveFlag(sceneData->birdSprite, FALSE);
+    Sprite_SetVisibleFlag(sceneData->birdSprite, FALSE);
+    Sprite_SetAnimCtrlSeq(sceneData->birdSprite, 1);
+    Sprite_SetAffineOverwriteType(sceneData->birdSprite, 2);
 }
 
 HeapID _deadstrip_01(int idx);
