@@ -9,12 +9,12 @@ typedef struct Ov122_021E8CFC {
     void *unk8;
     u8 unkC;
     u8 unkD;
-    u8 unkEx:4;
-    u8 unkEy:4;
-    u8 memoOpen:1;
-    u8 memoFocused:1;
-    u8 unkFz:1;
-    u8 unkFp:5;
+    u8 unkEx       : 4;
+    u8 unkEy       : 4;
+    u8 memoOpen    : 1;
+    u8 memoFocused : 1;
+    u8 unkFz       : 1;
+    u8 unkFp       : 5;
 } Ov122_021E8CFC;
 
 typedef void (*Ov122UnkCB)(struct Ov122_021E8CFC *a0, int a1, int a2);
@@ -39,4 +39,4 @@ void ov122_021E91F4(struct Ov122_021E8CFC *a0, int a1, int a2);
 void ov122_021E91F8(struct Ov122_021E8CFC *a0, int a1, int a2);
 void ov122_021E925C(struct Ov122_021E8CFC *a0, int a1, int a2);
 
-#endif //POKEHEARTGOLD_VOLTORB_FLIP_INPUT_H
+#endif // POKEHEARTGOLD_VOLTORB_FLIP_INPUT_H

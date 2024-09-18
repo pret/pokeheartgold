@@ -1,17 +1,17 @@
-#include "global.h"
 #include "move.h"
-#include "filesystem.h"
+
+#include "global.h"
+
 #include "constants/moves.h"
 
-void LoadMoveEntry(u16 moveId, MOVE *dest);
-u32 GetMoveTblAttr(MOVE *movedata, MoveAttr attrno);
+#include "filesystem.h"
 
-void LoadMoveTbl(MOVE *dest) {
-    ReadFromNarcMemberByIdPair(dest, NARC_poketool_waza_waza_tbl, 0, 0, (NUM_MOVES + 1) * sizeof(MOVE));
+void LoadMoveTbl(MoveTbl *dest) {
+    ReadFromNarcMemberByIdPair(dest, NARC_poketool_waza_waza_tbl, 0, 0, (NUM_MOVES + 1) * sizeof(MoveTbl));
 }
 
 u32 GetMoveAttr(u16 moveId, MoveAttr attrno) {
-    MOVE movedata;
+    MoveTbl movedata;
     LoadMoveEntry(moveId, &movedata);
     return GetMoveTblAttr(&movedata, attrno);
 }
@@ -25,7 +25,7 @@ u8 GetMoveMaxPP(u16 moveId, u8 ppUps) {
     return pp + ((pp * 20 * ppUps) / 100);
 }
 
-u32 GetMoveTblAttr(MOVE * moveTbl, MoveAttr attr) {
+u32 GetMoveTblAttr(MoveTbl *moveTbl, MoveAttr attr) {
     switch (attr) {
     case MOVEATTR_EFFECT:
         return moveTbl->effect;
@@ -56,6 +56,6 @@ u32 GetMoveTblAttr(MOVE * moveTbl, MoveAttr attr) {
     }
 }
 
-void LoadMoveEntry(u16 moveId, MOVE * moveTbl) {
+void LoadMoveEntry(u16 moveId, MoveTbl *moveTbl) {
     ReadWholeNarcMemberByIdPair(moveTbl, NARC_poketool_waza_waza_tbl, moveId);
 }

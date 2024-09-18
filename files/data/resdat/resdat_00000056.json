@@ -2,7 +2,7 @@
   "kind": "anim",
   "graphics": [
     {
-      "narc": 166,
+      "narc": "NARC_a_1_6_6",
       "file": 14,
       "compressed": false,
       "id": 0,

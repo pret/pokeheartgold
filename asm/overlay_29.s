@@ -586,11 +586,11 @@ ov29_0225D970: ; 0x0225D970
 	lsl r2, r2, #2
 	add r4, r0, r2
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	str r0, [r4, r6]
 	ldrb r1, [r5, #3]
 	ldr r0, [r4, r6]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add sp, #0x30
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -726,14 +726,14 @@ _0225DAD6:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	b _0225DAF6
 _0225DAEA:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 _0225DAF6:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -803,7 +803,7 @@ ov29_0225DB7C: ; 0x0225DB7C
 _0225DB8A:
 	ldr r0, [r5, r6]
 	add r1, r7, #0
-	bl Sprite_TickCellOrMulticellAnimation
+	bl Sprite_TickAnimCtrlFrame
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0xb
@@ -841,7 +841,7 @@ ov29_0225DB9C: ; 0x0225DB9C
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add sp, #0xc
 	pop {r4, r5, pc}
 _0225DBE0:
@@ -849,7 +849,7 @@ _0225DBE0:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #2
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end ov29_0225DB9C
@@ -1203,7 +1203,7 @@ _0225DE98:
 	add r0, r4, #0
 	bl ov29_0225DB7C
 	ldr r0, [r4, #0x18]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -1266,7 +1266,7 @@ ov29_0225DEF4: ; 0x0225DEF4
 	add r0, r0, r2
 	ldr r0, [r0, r3]
 	add r1, r1, #1
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	pop {r4, pc}
 	thumb_func_end ov29_0225DEF4
 
@@ -1287,7 +1287,7 @@ ov29_0225DF18: ; 0x0225DF18
 	add r0, r4, r0
 	sub r3, #0x60
 	ldr r0, [r0, r3]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add sp, #0xc
 	pop {r3, r4, pc}
 _0225DF3E:

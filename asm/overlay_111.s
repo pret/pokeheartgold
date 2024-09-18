@@ -578,12 +578,12 @@ ov111_021E5D2C: ; 0x021E5D2C
 	add r0, r5, #0
 	add r1, r7, #0
 	mov r2, #0x30
-	bl RatioToInt
+	bl CalculateHpBarPixelsLength
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
 	mov r2, #0x30
-	bl sub_020880B0
+	bl CalculateHpBarColor
 	cmp r0, #4
 	bhi _021E5D90
 	add r0, r0, r0
@@ -679,7 +679,7 @@ _021E5E04:
 	bl GF_AssertFail
 _021E5E0E:
 	ldr r0, [r4, #0x10]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #8]
 	bl DoScheduledBgGpuUpdates
@@ -1035,11 +1035,11 @@ ov111_021E60D4: ; 0x021E60D4
 	mov r3, #0x20
 	str r3, [sp, #0x18]
 	ldr r0, [r5, #0xc]
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r0, [r5, #0xc]
 	ldr r1, [r5, #0x10]
 	mov r2, #0x20
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	ldr r4, _021E616C ; =ov111_021E6BA0
 	add r3, sp, #0
 	add r2, r3, #0

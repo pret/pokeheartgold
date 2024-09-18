@@ -42,9 +42,9 @@
 .public NewString_ReadMsgData
 .public SpriteRenderer_Create
 .public SpriteRenderer_CreateGfxHandler
-.public sub_0200CF70
-.public sub_0200CFF4
-.public sub_0200D020
+.public SpriteRenderer_CreateOamCharPlttManagers
+.public SpriteRenderer_CreateSpriteList
+.public SpriteGfxHandler_RenderAndAnimateSprites
 .public thunk_OamManager_ApplyAndResetBuffers
 .public SpriteRenderer_Delete
 .public SpriteRenderer_Init2DGfxResManagersFromCountsArray
@@ -157,7 +157,7 @@
 .public GfGfx_DisableEngineBPlanes
 .public GfGfx_EngineBTogglePlanes
 .public GfGfx_BothDispOn
-.public sub_02024AA8
+.public Sprite_SetPalOffsetRespectVramOffset
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public TouchscreenHitbox_TouchNewIsIn
 .public System_GetTouchHeld
@@ -188,7 +188,7 @@
 .public GiveOrTakeSeal2
 .public SealCase_CountUniqueSeals
 .public Save_GameStats_Get
-.public GameStats_AddSpecial
+.public GameStats_AddScore
 .public AllocMonZeroed
 .public GetMonData
 .public SetMonData

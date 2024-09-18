@@ -1,13 +1,17 @@
-#include "global.h"
 #include "list_menu_2d.h"
+
+#include "global.h"
+
+#include "constants/sndseq.h"
+
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0191.h"
+
 #include "font.h"
+#include "render_window.h"
 #include "system.h"
 #include "text.h"
 #include "unk_02005D10.h"
-#include "render_window.h"
-#include "constants/sndseq.h"
-#include "msgdata/msg/msg_0191.h"
-#include "msgdata/msg.naix"
 
 static struct ListMenu2D *Create2dMenuInternalEx(const struct ListMenu2DTemplate *template, u8 x, u8 y, u8 initialSelection, u8 heapId, int cancelKey);
 static struct ListMenu2D *Create2dMenuInternal(const struct ListMenu2DTemplate *template, u8 x, u8 y, u8 initialSelection, u8 heapId, int cancelKey);
@@ -19,17 +23,17 @@ static void Draw2dMenuCursor(struct ListMenu2D *listMenu);
 static void Get2dMenuSelectionCoords(struct ListMenu2D *listMenu, u8 *x, u8 *y, u8 selectedIdx);
 
 static struct ListMenu2D *Create2dMenuInternalEx(const struct ListMenu2DTemplate *template, u8 x, u8 y, u8 initialSelection, u8 heapId, int cancelKey) {
-    struct ListMenu2D *ret = AllocFromHeap((HeapID) heapId, sizeof(struct ListMenu2D));
-    ret->template = *template;
-    ret->cursor = ListMenuCursorNew((HeapID)heapId);
-    ret->cancelKey = cancelKey;
-    ret->selectedIndex = initialSelection;
-    ret->maxItemWidth = Get2dMenuMaxItemWidth(ret);
-    ret->heapId = heapId;
-    ret->x = x;
-    ret->y = y;
-    ret->maxGlyphWidth = GetFontAttribute(template->fontId, 0) + GetFontAttribute(template->fontId, 2);
-    ret->maxGlyphHeight = GetFontAttribute(template->fontId, 1) + GetFontAttribute(template->fontId, 3);
+    struct ListMenu2D *ret = AllocFromHeap((HeapID)heapId, sizeof(struct ListMenu2D));
+    ret->template          = *template;
+    ret->cursor            = ListMenuCursorNew((HeapID)heapId);
+    ret->cancelKey         = cancelKey;
+    ret->selectedIndex     = initialSelection;
+    ret->maxItemWidth      = Get2dMenuMaxItemWidth(ret);
+    ret->heapId            = heapId;
+    ret->x                 = x;
+    ret->y                 = y;
+    ret->maxGlyphWidth     = GetFontAttribute(template->fontId, 0) + GetFontAttribute(template->fontId, 2);
+    ret->maxGlyphHeight    = GetFontAttribute(template->fontId, 1) + GetFontAttribute(template->fontId, 3);
     Print2dMenuItemTexts(ret);
     Draw2dMenuCursor(ret);
     return ret;
@@ -50,7 +54,7 @@ void Delete2dMenu(struct ListMenu2D *menu, u8 *ret_p) {
         *ret_p = menu->selectedIndex;
     }
     DestroyListMenuCursorObj(menu->cursor);
-    FreeToHeapExplicit((HeapID) menu->heapId, menu);
+    FreeToHeapExplicit((HeapID)menu->heapId, menu);
 }
 
 int Handle2dMenuInput(struct ListMenu2D *menu) {
@@ -177,13 +181,12 @@ static void Print2dMenuItemTexts(struct ListMenu2D *listMenu) {
     u8 dx;
     u8 x;
     FillWindowPixelBuffer(listMenu->template.window, GetFontAttribute(listMenu->template.fontId, 6));
-    x = listMenu->x;
+    x  = listMenu->x;
     dx = listMenu->maxItemWidth + listMenu->maxGlyphWidth * 2;
     for (i = 0; i < listMenu->template.itemsWide; i++) {
         for (j = 0; j < listMenu->template.itemsHigh; j++) {
             u8 y = listMenu->y + (listMenu->maxGlyphHeight + listMenu->template.yTop) * j;
-            AddTextPrinterParameterized(listMenu->template.window, listMenu->template.fontId, listMenu->template.items[j + i * listMenu->template.itemsHigh].text,
-                x, y, TEXT_SPEED_NOTRANSFER, NULL);
+            AddTextPrinterParameterized(listMenu->template.window, listMenu->template.fontId, listMenu->template.items[j + i * listMenu->template.itemsHigh].text, x, y, TEXT_SPEED_NOTRANSFER, NULL);
         }
         x += dx;
     }
@@ -204,17 +207,17 @@ static void Get2dMenuSelectionCoords(struct ListMenu2D *listMenu, u8 *x, u8 *y, 
 
 struct ListMenu2D *CreateYesNoMenu(BgConfig *bgConfig, const WindowTemplate *windowTemplate, u16 tileNum, u8 paletteNum, u8 initialSelection, HeapID heapId) {
     struct ListMenu2DTemplate menuTemplate;
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0191_bin, heapId);
+    MsgData *msgData    = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0191_bin, heapId);
     LISTMENUITEM *items = ListMenuItems_New(2, heapId);
     ListMenuItems_AppendFromMsgData(items, msgData, msg_0191_00042, 0);
     ListMenuItems_AppendFromMsgData(items, msgData, msg_0191_00043, LIST_CANCEL);
     DestroyMsgData(msgData);
-    menuTemplate.items = items;
-    menuTemplate.window = AllocWindows(heapId, 1);
-    menuTemplate.fontId = 0;
-    menuTemplate.itemsWide = 1;
-    menuTemplate.itemsHigh = 2;
-    menuTemplate.yTop = 0;
+    menuTemplate.items      = items;
+    menuTemplate.window     = AllocWindows(heapId, 1);
+    menuTemplate.fontId     = 0;
+    menuTemplate.itemsWide  = 1;
+    menuTemplate.itemsHigh  = 2;
+    menuTemplate.yTop       = 0;
     menuTemplate.cursorType = 0;
     menuTemplate.enableWrap = 0;
     AddWindow(bgConfig, menuTemplate.window, windowTemplate);

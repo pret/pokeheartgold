@@ -58,7 +58,7 @@ ov86_021E5900: ; 0x021E5900
 	lsl r0, r0, #2
 	str r1, [r5, r0]
 	ldr r0, [r5, r0]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	mov r1, #0x8a
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -183,7 +183,7 @@ _021E5A8E:
 	mov r0, #0x23
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1118,7 +1118,7 @@ _021E616A:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -1142,7 +1142,7 @@ _021E616A:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -1177,7 +1177,7 @@ _021E616A:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -1202,7 +1202,7 @@ _021E616A:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -1297,7 +1297,7 @@ ov86_021E62F4: ; 0x021E62F4
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -1322,7 +1322,7 @@ ov86_021E62F4: ; 0x021E62F4
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -1357,7 +1357,7 @@ ov86_021E62F4: ; 0x021E62F4
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -1382,7 +1382,7 @@ ov86_021E62F4: ; 0x021E62F4
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -1430,14 +1430,14 @@ _021E6490:
 	mov r1, #0x89
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_0205C268
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	b _021E64CE
 _021E64B4:
 	mov r1, #0x89
@@ -1543,7 +1543,7 @@ _021E6536:
 	mov r0, #0x89
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r4, r0, #0
 	ldrb r0, [r5, #6]
 	bl sub_0205C11C
@@ -1554,7 +1554,7 @@ _021E6536:
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	ldrh r1, [r5, #8]
 	cmp r1, r0
 	beq _021E65B2
@@ -1568,7 +1568,7 @@ _021E65B2:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 _021E65C8:
 	add r0, r5, #0
@@ -1775,7 +1775,7 @@ _021E6726:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 	add r0, r5, #0
 	mov r1, #0
@@ -1794,7 +1794,7 @@ _021E6726:
 	mov r0, #0x89
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r4, r0, #0
 	ldrb r0, [r5, #6]
 	bl sub_0205C1F0
@@ -1805,7 +1805,7 @@ _021E6726:
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 	add r0, r5, #0
 	mov r1, #0
@@ -1839,7 +1839,7 @@ _021E6726:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 	add r0, r5, #0
 	mov r1, #0
@@ -1859,7 +1859,7 @@ _021E6726:
 	mov r0, #0x89
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r4, r0, #0
 	ldrb r0, [r5, #6]
 	bl sub_0205C240
@@ -1870,7 +1870,7 @@ _021E6726:
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 	add r0, r5, #0
 	mov r1, #0
@@ -1916,14 +1916,14 @@ ov86_021E68B8: ; 0x021E68B8
 	mov r1, #0x89
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r4, r0, #0
 	mov r0, #0x6c
 	bl sub_0205C268
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0x6c
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	b _021E68F6
 _021E68E0:
 	mov r1, #0x89
@@ -2018,7 +2018,7 @@ _021E6958:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -2052,7 +2052,7 @@ _021E6958:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -2094,14 +2094,14 @@ ov86_021E6A34: ; 0x021E6A34
 	mov r1, #0x89
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r4, r0, #0
 	mov r0, #0x6e
 	bl sub_0205C268
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0x6e
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	b _021E6A72
 _021E6A5C:
 	mov r1, #0x89
@@ -2192,7 +2192,7 @@ _021E6ACC:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -2225,7 +2225,7 @@ _021E6ACC:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -2341,7 +2341,7 @@ ov86_021E6BA8: ; 0x021E6BA8
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -2375,7 +2375,7 @@ ov86_021E6BA8: ; 0x021E6BA8
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -2422,7 +2422,7 @@ ov86_021E6BA8: ; 0x021E6BA8
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -2456,7 +2456,7 @@ ov86_021E6BA8: ; 0x021E6BA8
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r2, #0xff
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -2651,7 +2651,7 @@ ov86_021E6E98: ; 0x021E6E98
 	sub r0, r7, #4
 	ldr r0, [r5, r0]
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r3, _021E6FE8 ; =ov86_021E7EEC
 	add r2, sp, #0x10
 	ldmia r3!, {r0, r1}
@@ -2665,7 +2665,7 @@ ov86_021E6E98: ; 0x021E6E98
 	add r1, r1, #4
 	ldr r1, [r5, r1]
 	mov r2, #2
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	sub r1, r7, #4
 	ldr r0, [r5, r1]
 	add r1, r1, #4

@@ -1133,7 +1133,7 @@ ov95_021E619C: ; 0x021E619C
 	str r0, [r5]
 	ldr r0, [r4, #0x50]
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r3, _021E6224 ; =ov95_021E755C
 	add r2, sp, #0
 	ldmia r3!, {r0, r1}
@@ -1148,7 +1148,7 @@ ov95_021E619C: ; 0x021E619C
 	ldr r0, [r4, #0x50]
 	ldr r1, [r4, #0x4c]
 	mov r2, #0xff
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	cmp r0, #0
 	bne _021E6206
 	bl GF_AssertFail
@@ -1598,7 +1598,7 @@ _021E6562:
 	mov r5, #0
 _021E6586:
 	ldr r0, [r4, #0x50]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add r0, r5, #0
 	add sp, #0x1c
 	pop {r3, r4, r5, r6, pc}
@@ -1879,7 +1879,7 @@ _021E67B4:
 	mov r5, #0
 _021E67D8:
 	ldr r0, [r4, #0x50]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	add r0, r5, #0
 	add sp, #0x1c
 	pop {r3, r4, r5, r6, pc}
@@ -2181,7 +2181,7 @@ _021E69FA:
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	add r5, r0, #0
 	mov r3, #0
 	mov r6, #1
@@ -2427,7 +2427,7 @@ _021E6BFA:
 	ldr r0, [r0]
 	bl Sprite_GetPaletteProxy
 	mov r1, #1
-	bl sub_02022808
+	bl ObjPlttTransfer_GetPaletteVramOffset
 	add r5, r0, #0
 	mov r3, #0
 	mov r6, #1

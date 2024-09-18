@@ -1,20 +1,30 @@
+#include "game_clear.h"
+
 #include "global.h"
-#include "save_vars_flags.h"
+
+#include "constants/sndseq.h"
+
+#include "credits/credits.h"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0040.h"
+
+#include "bg_window.h"
 #include "game_stats.h"
-#include "party.h"
+#include "hall_of_fame.h"
 #include "launch_application.h"
 #include "location_backup.h"
-#include "game_clear.h"
-#include "hall_of_fame.h"
-#include "register_hall_of_fame.h"
+#include "party.h"
 #include "player_data.h"
+#include "register_hall_of_fame.h"
+#include "render_window.h"
 #include "save_arrays.h"
 #include "save_local_field_data.h"
+#include "save_vars_flags.h"
 #include "sound.h"
+#include "sound_02004A44.h"
 #include "sys_flags.h"
 #include "task.h"
 #include "text.h"
-#include "sound_02004A44.h"
 #include "unk_02005D10.h"
 #include "unk_0200FA24.h"
 #include "unk_02054E00.h"
@@ -23,12 +33,6 @@
 #include "unk_0206793C.h"
 #include "unk_0206D494.h"
 #include "use_item_on_mon.h"
-#include "bg_window.h"
-#include "constants/sndseq.h"
-#include "credits/credits.h"
-#include "msgdata/msg/msg_0040.h"
-#include "render_window.h"
-#include "msgdata/msg.naix"
 
 #define WAIT_SE_SAVE_FRAMES   32
 #define SCREEN_FADEOUT_FRAMES 32
@@ -44,7 +48,7 @@ typedef struct {
     int printerId;
     int timer;
     BOOL vsTrainerRed;
-    int bgmVolume;      // also used as a timer
+    int bgmVolume; // also used as a timer
 } GameClearWork;
 
 static const GraphicsBanks sGameClearSaveBanksConfig = {
@@ -61,10 +65,10 @@ static const GraphicsBanks sGameClearSaveBanksConfig = {
 };
 
 static const struct GraphicsModes sGameClearSaveBgModeSet = {
-    .dispMode    = GX_DISPMODE_GRAPHICS,
-    .bgMode      = GX_BGMODE_0,
-    .subMode     = GX_BGMODE_0,
-    ._2d3dMode   = GX_BG0_AS_2D,
+    .dispMode  = GX_DISPMODE_GRAPHICS,
+    .bgMode    = GX_BGMODE_0,
+    .subMode   = GX_BGMODE_0,
+    ._2d3dMode = GX_BG0_AS_2D,
 };
 
 static const BgTemplate sGameClearSaveBgTemplate = {
@@ -93,7 +97,7 @@ static void GameClearSave_Free(FieldSystem *fieldSystem, GameClearWork *env);
 
 BOOL sub_0205298C(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
-    u32 *state = TaskManager_GetStatePtr(taskman);
+    u32 *state               = TaskManager_GetStatePtr(taskman);
 
     switch (*state) {
     case 0:
@@ -151,8 +155,8 @@ static void AddHallOfFameEntry(FieldSystem *fieldSystem, BOOL gameCleared) {
 // the game and launches the credits.
 static BOOL Task_GameClear(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
-    GameClearWork *env = TaskManager_GetEnvironment(taskman);
-    u32 *state = TaskManager_GetStatePtr(taskman);
+    GameClearWork *env       = TaskManager_GetEnvironment(taskman);
+    u32 *state               = TaskManager_GetStatePtr(taskman);
 
     switch (*state) {
     case 0:
@@ -265,19 +269,19 @@ void CallTask_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
     PlayerProfile *profile;
 
     fieldSystem = TaskManager_GetFieldSystem(taskman);
-    env = AllocFromHeap(HEAP_ID_32, sizeof(GameClearWork));
-    varsFlags = Save_VarsFlags_Get(fieldSystem->saveData);
-    profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+    env         = AllocFromHeap(HEAP_ID_32, sizeof(GameClearWork));
+    varsFlags   = Save_VarsFlags_Get(fieldSystem->saveData);
+    profile     = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
     dynamicWarp = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->saveData));
-    spawnWarp = LocalFieldData_GetSpecialSpawnWarpPtr(Save_LocalFieldData_Get(fieldSystem->saveData));
+    spawnWarp   = LocalFieldData_GetSpecialSpawnWarpPtr(Save_LocalFieldData_Get(fieldSystem->saveData));
 
-    env->gameCleared = CheckGameClearFlag(varsFlags);
+    env->gameCleared             = CheckGameClearFlag(varsFlags);
     env->hofCongratsArgs.profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
-    env->hofCongratsArgs.party = SaveArray_Party_Get(fieldSystem->saveData);
-    env->hofCongratsArgs.igt = Save_PlayerData_GetIGTAddr(fieldSystem->saveData);
-    env->creditsArgs.gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
+    env->hofCongratsArgs.party   = SaveArray_Party_Get(fieldSystem->saveData);
+    env->hofCongratsArgs.igt     = Save_PlayerData_GetIGTAddr(fieldSystem->saveData);
+    env->creditsArgs.gender      = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
     env->creditsArgs.gameCleared = CheckGameClearFlag(varsFlags);
-    env->vsTrainerRed = vsTrainerRed;
+    env->vsTrainerRed            = vsTrainerRed;
 
     if (!CheckGameClearFlag(varsFlags)) {
         FieldSystem_SetGameClearTime(fieldSystem);
@@ -290,14 +294,14 @@ void CallTask_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
     PlayerProfile_SetGameClearFlag(profile);
 
     if (!env->vsTrainerRed) {
-        GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), 74);
+        GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK74);
     }
     TaskManager_Call(taskman, Task_GameClear, env);
 }
 
 static void GameClearSave_InitGraphics(FieldSystem *fieldSystem, GameClearWork *env) {
-    env->bgConfig = BgConfig_Alloc(HEAP_ID_FIELD);
-    env->windowText = NULL;
+    env->bgConfig    = BgConfig_Alloc(HEAP_ID_FIELD);
+    env->windowText  = NULL;
     env->waitingIcon = NULL;
     InitWindow(&env->window);
     GfGfx_SetBanks(&sGameClearSaveBanksConfig);
@@ -312,10 +316,10 @@ static void GameClearSave_InitGraphics(FieldSystem *fieldSystem, GameClearWork *
 
 static void GameClearSave_PrintSaving(FieldSystem *fieldSystem, GameClearWork *env) {
     Options *options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
-    env->windowText = ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, NARC_msg_msg_0040_bin, msg_0040_00015, HEAP_ID_32);
+    env->windowText  = ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, NARC_msg_msg_0040_bin, msg_0040_00015, HEAP_ID_32);
     sub_0205B514(env->bgConfig, &env->window, 3);
     sub_0205B564(&env->window, options);
-    env->printerId = sub_0205B5B4(&env->window, env->windowText, options, 1);
+    env->printerId   = sub_0205B5B4(&env->window, env->windowText, options, 1);
     env->waitingIcon = WaitingIcon_New(&env->window, 0x000003e2);
 }
 
@@ -342,7 +346,7 @@ static void GameClearSave_PrintSaveStatus(FieldSystem *fieldSystem, GameClearWor
     }
     DestroyMsgData(msgData);
     Options *options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
-    env->printerId = sub_0205B5B4(&env->window, env->windowText, options, 1);
+    env->printerId   = sub_0205B5B4(&env->window, env->windowText, options, 1);
 }
 
 static void GameClearSave_Free(FieldSystem *fieldSystem, GameClearWork *env) {

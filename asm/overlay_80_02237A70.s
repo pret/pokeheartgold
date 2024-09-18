@@ -747,7 +747,7 @@ ov80_02237FA4: ; 0x02237FA4
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r1, r0, r6
 	ldr r0, _02238030 ; =0x0000270F
 	cmp r1, r0

@@ -845,7 +845,7 @@ ov12_02264E84: ; 0x02264E84
 	beq _02264E9E
 	ldr r0, [r0]
 	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	add r0, r4, #0
 	mov r1, #1
 	bl ov12_02264F00
@@ -871,7 +871,7 @@ ov12_02264EB4: ; 0x02264EB4
 	beq _02264ED8
 	ldr r0, [r0]
 	mov r1, #0
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	ldr r0, [r4, #8]
 	mov r1, #0
 	ldr r0, [r0]

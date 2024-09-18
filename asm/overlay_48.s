@@ -25,16 +25,16 @@ ov48_02258800: ; 0x02258800
 	add r4, r0, #0
 	bl memset
 	ldr r0, [r5, #4]
-	bl sub_0202CA44
+	bl Save_WiFiHistory_Get
 	str r0, [r4, #0xc]
 	ldr r0, [r5, #4]
 	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #0xc]
-	bl sub_0202CA8C
+	bl WifiHistory_GetPlayerCountry
 	str r0, [r4, #0x14]
 	ldr r0, [r4, #0xc]
-	bl sub_0202CA90
+	bl WiFiHistory_GetPlayerRegion
 	str r0, [r4, #0x18]
 	ldr r0, [r5, #8]
 	add r1, r5, #0
@@ -1658,11 +1658,11 @@ ov48_022594A8: ; 0x022594A8
 
 	thumb_func_start ov48_022594D0
 ov48_022594D0: ; 0x022594D0
-	ldr r3, _022594D8 ; =sub_0202457C
+	ldr r3, _022594D8 ; =SpriteList_RenderAndAnimateSprites
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_022594D8: .word sub_0202457C
+_022594D8: .word SpriteList_RenderAndAnimateSprites
 	thumb_func_end ov48_022594D0
 
 	thumb_func_start ov48_022594DC
@@ -1885,14 +1885,14 @@ ov48_02259688: ; 0x02259688
 	bl ObjCharTransfer_InitEx
 	mov r0, #0x20
 	add r1, r6, #0
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	mov r0, #1
 	mov r1, #0x10
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
-	bl sub_0200A080
+	bl G2dRenderer_SetPlttTransferReservedRegion
 	add r1, r5, #0
 	mov r0, #0x20
 	add r1, #8
@@ -1948,7 +1948,7 @@ _02259734:
 	cmp r4, #4
 	blt _02259734
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	bl OamManager_Free
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov48_02259724
@@ -4776,14 +4776,14 @@ _0225ABA0:
 	add r0, sp, #0x64
 	bl CreateSpriteResourcesHeader
 	add r0, sp, #0x44
-	bl sub_02024714
+	bl Sprite_Create
 	str r0, [r7, #0x3c]
 	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	mov r1, #1
 	ldr r0, [r7, #0x3c]
 	lsl r1, r1, #0xc
-	bl sub_02024868
+	bl Sprite_SetAnimSpeed
 	ldr r0, [sp, #0x40]
 	add r6, r6, #1
 	add r0, r0, #3
@@ -4953,7 +4953,7 @@ ov48_0225AD38: ; 0x0225AD38
 _0225AD40:
 	ldr r0, [r5, #0x3c]
 	add r1, r6, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0xc
@@ -5040,7 +5040,7 @@ _0225ADD0:
 	lsl r0, r0, #2
 	add r0, r5, r0
 	ldr r0, [r0, #0x3c]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov48_0225B010
@@ -5078,7 +5078,7 @@ _0225AE0C:
 	lsl r0, r0, #2
 	add r0, r5, r0
 	ldr r0, [r0, #0x3c]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 _0225AE36:
 	add r0, r6, #0
 	pop {r4, r5, r6, pc}

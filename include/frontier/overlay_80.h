@@ -3,4 +3,4 @@
 
 void sub_0202FC24(void);
 
-#endif //POKEHEARTGOLD_OVERLAY_80_H
+#endif // POKEHEARTGOLD_OVERLAY_80_H

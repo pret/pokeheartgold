@@ -4746,14 +4746,14 @@ sub_02039FB8: ; 0x02039FB8
 	add r5, r0, #0
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0202CA94
+	bl WiFiHistory_GetLocationSeenState
 	cmp r0, #0
 	bne _02039FD4
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
 	mov r3, #1
-	bl sub_0202CAE4
+	bl WiFiHistory_SetLocationSeenState
 _02039FD4:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

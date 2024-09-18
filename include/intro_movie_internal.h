@@ -1,11 +1,11 @@
 #ifndef POKEHEARTGOLD_INTRO_MOVIE_INTERNAL
 #define POKEHEARTGOLD_INTRO_MOVIE_INTERNAL
 
-#include "camera.h"
 #include "bg_window.h"
-#include "sys_task.h"
+#include "camera.h"
 #include "gf_3d_vramman.h"
-#include "unk_02023694.h"
+#include "sprite.h"
+#include "sys_task.h"
 #include "unk_02014DA0.h"
 
 enum IntroMovieSceneState {
@@ -67,7 +67,7 @@ typedef struct IntroMovieScene3MapRender {
 typedef struct IntroMovieScene3Data {
     u8 state;
     u8 needFreeGfx;
-    u8 unk_002;  // unreferenced
+    u8 unk_002; // unreferenced
     u8 silverBgAppearCounter;
     void *rivalGraphicSectionsRawData[4];
     void *rivalGraphicWholeRawData;
@@ -79,7 +79,7 @@ typedef struct IntroMovieScene3Data {
     Sprite *silverSilhouetteSprite;
     Sprite *eusineSprite;
     Sprite *unownSprites[3];
-    u8 filler_078[0x8];  // unused
+    u8 filler_078[0x8]; // unused
     Camera *camera;
     IntroMovieScene3MapRender mapRender[3];
     GF3DVramMan *gf3dVramMan;
@@ -236,4 +236,4 @@ void IntroMovie_AdvanceSceneStep(IntroMovieOverlayData *data);
 u8 IntroMovie_GetSceneStep(IntroMovieOverlayData *data);
 u8 IntroMovie_GetSceneStepTimer(IntroMovieOverlayData *data);
 
-#endif //POKEHEARTGOLD_INTRO_MOVIE_INTERNAL
+#endif // POKEHEARTGOLD_INTRO_MOVIE_INTERNAL

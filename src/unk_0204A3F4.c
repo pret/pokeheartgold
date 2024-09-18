@@ -1,15 +1,18 @@
+#include "unk_0204A3F4.h"
+
 #include "global.h"
+
 #include "assert.h"
 #include "field_player_avatar.h"
-#include "launch_application.h"
 #include "frontier_data.h"
 #include "game_stats.h"
 #include "heap.h"
+#include "launch_application.h"
 #include "math_util.h"
 #include "party.h"
 #include "player_data.h"
-#include "pokemon_storage_system.h"
 #include "pokemon.h"
+#include "pokemon_storage_system.h"
 #include "save_local_field_data.h"
 #include "save_vars_flags.h"
 #include "scrcmd_9.h"
@@ -17,7 +20,6 @@
 #include "sys_vars.h"
 #include "unk_0202D230.h"
 #include "unk_02030A98.h"
-#include "unk_0204A3F4.h"
 #include "unk_0204B538.h"
 #include "unk_02066EDC.h"
 
@@ -37,18 +39,18 @@ static const u8 _020FBF7C[] = { 0, 8, 9, 11, 12, 14, 15, 18 };
 
 static u32 sub_0204A3F4(u32 a0) {
     switch (a0) {
-        case 0:
-        case 4:
-        case 5:
-            return 3;
-        case 1:
-            return 4;
-        case 2:
-        case 3:
-        case 6:
-            return 2;
-        default:
-            return 0;
+    case 0:
+    case 4:
+    case 5:
+        return 3;
+    case 1:
+        return 4;
+    case 2:
+    case 3:
+    case 6:
+        return 2;
+    default:
+        return 0;
     }
 }
 
@@ -77,7 +79,7 @@ static BOOL sub_0204A450(SpeciesAndItem *mons, s32 size) {
     return TRUE;
 }
 
-static BOOL sub_0204A4A0(SpeciesAndItem* validMons, u32 numRequired, s32 numValid, s32 n) {
+static BOOL sub_0204A4A0(SpeciesAndItem *validMons, u32 numRequired, s32 numValid, s32 n) {
     // this assumes that numRequired is always either 2, 3, or 4
     SpeciesAndItem mons[4];
     MI_CpuClear8(mons, sizeof(SpeciesAndItem) * NELEMS(mons));
@@ -111,23 +113,22 @@ static BOOL sub_0204A4A0(SpeciesAndItem* validMons, u32 numRequired, s32 numVali
     return FALSE;
 }
 
-BOOL sub_0204A5B0(u16 numRequired, SaveData *saveData, BOOL checkDuplicateItems)
-{
+BOOL sub_0204A5B0(u16 numRequired, SaveData *saveData, BOOL checkDuplicateItems) {
     u8 i;
     u8 partyCount;
     u8 numValid;
     u16 species, item, form;
     Party *party = SaveArray_Party_Get(saveData);
-    partyCount = Party_GetCount(party);
+    partyCount   = Party_GetCount(party);
     if (partyCount < numRequired) {
         return FALSE;
     }
     SpeciesAndItem validMons[PARTY_SIZE];
     for (i = 0, numValid = 0; i < partyCount; i++) {
         Pokemon *mon = Party_GetMonByIndex(party, i);
-        species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
-        form = GetMonData(mon, MON_DATA_FORM, NULL);
+        species      = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        item         = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+        form         = GetMonData(mon, MON_DATA_FORM, NULL);
         if (!checkDuplicateItems) {
             item = ITEM_NONE;
         }
@@ -141,7 +142,7 @@ BOOL sub_0204A5B0(u16 numRequired, SaveData *saveData, BOOL checkDuplicateItems)
             continue;
         }
         validMons[numValid].species = species;
-        validMons[numValid].item = item;
+        validMons[numValid].item    = item;
         numValid++;
     }
     if (numValid < numRequired) {
@@ -163,13 +164,13 @@ u32 sub_0204A6A0(u32 a0) {
 }
 
 void sub_0204A6A8(FieldSystem *fieldSystem) {
-    Location *warp = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->saveData));
-    u32 y = GetPlayerYCoord(fieldSystem->playerAvatar);
-    u32 x = GetPlayerXCoord(fieldSystem->playerAvatar);
-    warp->mapId = fieldSystem->location->mapId;
-    warp->warpId = -1;
-    warp->x = x;
-    warp->y = y;
+    Location *warp  = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->saveData));
+    u32 y           = GetPlayerYCoord(fieldSystem->playerAvatar);
+    u32 x           = GetPlayerXCoord(fieldSystem->playerAvatar);
+    warp->mapId     = fieldSystem->location->mapId;
+    warp->warpId    = -1;
+    warp->x         = x;
+    warp->y         = y;
     warp->direction = DIR_NORTH;
     SetFlag966(Save_VarsFlags_Get(fieldSystem->saveData));
 }
@@ -182,9 +183,9 @@ u32 sub_0204A6F8(SaveData *saveData, u32 a1) {
     if (a1 == 5) {
         return FALSE;
     } else if (a1 == 6) {
-        return sub_020310BC(sub_0203107C(saveData), 113, sub_0205C268(113));
+        return FrontierSave_GetStat(Save_Frontier_GetStatic(saveData), 113, sub_0205C268(113));
     } else {
-        return sub_020310BC(sub_0203107C(saveData), 2 * a1 + 1, 0xff);
+        return FrontierSave_GetStat(Save_Frontier_GetStatic(saveData), 2 * a1 + 1, 0xff);
     }
 }
 
@@ -202,19 +203,19 @@ u16 sub_0204A750(SaveData *saveData) {
 }
 
 u32 sub_0204A764(SaveData *saveData) {
-    u32 unk = sub_0202D908(saveData);
+    u32 unk                    = sub_0202D908(saveData);
     FRONTIERDATA *frontierData = Save_FrontierData_Get(saveData);
-    u8 unk4 = sub_0202D284(unk, 0, 0);
+    u8 unk4                    = sub_0202D284(unk, 0, 0);
     if (unk4 == 5) {
         return unk4;
     }
     if (unk4 == 6) {
-        sub_02031108(sub_0203107C(saveData), 100, sub_0205C268(100), 0);
+        sub_02031108(Save_Frontier_GetStatic(saveData), 100, sub_0205C268(100), 0);
     } else {
         sub_0202D5DC(frontierData, unk4 + 8, 2);
     }
     sub_0202D57C(frontierData, unk4, 2);
-    sub_02031108(sub_0203107C(saveData), sub_0205C310(unk4), sub_0205C268(sub_0205C310(unk4)), 0);
+    sub_02031108(Save_Frontier_GetStatic(saveData), sub_0205C310(unk4), sub_0205C268(sub_0205C310(unk4)), 0);
     if (unk4 != 4 && unk4 != 6) {
         sub_020674E0(saveData);
     }
@@ -234,15 +235,15 @@ UnkStruct_Fsys_A0 *sub_0204A824(SaveData *saveData, BOOL resumeFromPrevious, u32
     UnkStruct_Fsys_A0 *unkStruct = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_Fsys_A0));
     MI_CpuClear8(unkStruct, sizeof(UnkStruct_Fsys_A0));
     unkStruct->heapId = HEAP_ID_FIELD;
-    unkStruct->unk70 = sub_0202D908(saveData);
-    unkStruct->unk74 = Save_FrontierData_Get(saveData);
-    unkStruct->unk00 = 0x12345678;
+    unkStruct->unk70  = sub_0202D908(saveData);
+    unkStruct->unk74  = Save_FrontierData_Get(saveData);
+    unkStruct->unk00  = 0x12345678;
     sub_0202D3E4(unkStruct->unk70, 0);
     if (!resumeFromPrevious) {
-        unkStruct->unk0f = a2;
-        unkStruct->unk0e = sub_0204A3F4(unkStruct->unk0f);
-        unkStruct->unk0c = 1;
-        unkStruct->unk0d = 0;
+        unkStruct->unk0f        = a2;
+        unkStruct->unk0e        = sub_0204A3F4(unkStruct->unk0f);
+        unkStruct->unk0c        = 1;
+        unkStruct->curWinStreak = 0;
         for (u16 i = 0; i < 4; i++) {
             unkStruct->unk2a[i] = 0xff;
         }
@@ -253,10 +254,10 @@ UnkStruct_Fsys_A0 *sub_0204A824(SaveData *saveData, BOOL resumeFromPrevious, u32
         u8 unk = unkStruct->unk0f;
         sub_0202D308(unkStruct->unk70, 0, &unk);
     } else {
-        unkStruct->unk0f = sub_0202D284(unkStruct->unk70, 0, 0);
-        unkStruct->unk0c = sub_0202D284(unkStruct->unk70, 1, 0);
-        unkStruct->unk0d = unkStruct->unk0c - 1;
-        unkStruct->unk0e = sub_0204A3F4(unkStruct->unk0f);
+        unkStruct->unk0f        = sub_0202D284(unkStruct->unk70, 0, 0);
+        unkStruct->unk0c        = sub_0202D284(unkStruct->unk70, 1, 0);
+        unkStruct->curWinStreak = unkStruct->unk0c - 1;
+        unkStruct->unk0e        = sub_0204A3F4(unkStruct->unk0f);
         sub_0202D284(unkStruct->unk70, 5, unkStruct->unk2a);
         sub_0202D284(unkStruct->unk70, 8, unkStruct->unk3e);
         unkStruct->unk08 = sub_0202D284(unkStruct->unk70, 10, 0);
@@ -273,8 +274,8 @@ UnkStruct_Fsys_A0 *sub_0204A824(SaveData *saveData, BOOL resumeFromPrevious, u32
     }
     unkStruct->unk11 = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(saveData));
     if (unkStruct->unk0f != 5) {
-        void *unk5 = sub_0203107C(saveData);
-        GAME_STATS *gameStats = Save_GameStats_Get(saveData);
+        FrontierSave *frontierSaveData = Save_Frontier_GetStatic(saveData);
+        GameStats *gameStats           = Save_GameStats_Get(saveData);
         u16 unk0;
         if (unkStruct->unk0f == 6) {
             unk0 = Save_VarsFlags_GetVar4052(Save_VarsFlags_Get(saveData));
@@ -284,14 +285,14 @@ UnkStruct_Fsys_A0 *sub_0204A824(SaveData *saveData, BOOL resumeFromPrevious, u32
         if (unk0 != 0) {
             u32 unk0;
             if (unkStruct->unk0f == 6) {
-                unk0 = sub_020310BC(unk5, 113, sub_0205C268(113));
+                unk0 = FrontierSave_GetStat(frontierSaveData, 113, sub_0205C268(113));
             } else {
-                unk0 = sub_020310BC(unk5, 2 * unkStruct->unk0f + 1, 0xff);
+                unk0 = FrontierSave_GetStat(frontierSaveData, 2 * unkStruct->unk0f + 1, 0xff);
             }
             unkStruct->unk1a = unk0;
             unkStruct->unk1c = sub_0202D57C(unkStruct->unk74, unkStruct->unk0f, 0);
         }
-        unkStruct->unk20 = GameStats_GetCapped(gameStats, GAME_STAT_UNK30);
+        unkStruct->unk20 = GameStats_GetCapped(gameStats, GAME_STAT_BATTLE_TOWER_WIN_COUNT);
     }
     if (unkStruct->unk0f == 6) {
         unkStruct->unk1c = sub_0202D5C4(unkStruct->unk74, 6, unkStruct->unk1a / 7);
@@ -338,8 +339,8 @@ u32 sub_0204AB10(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     Party *party = SaveArray_Party_Get(saveData);
     for (u16 i = 0; i < a0->unk0e; i++) {
         Pokemon *mon = Party_GetMonByIndex(party, a0->unk2a[i]);
-        species[i] = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        items[i] = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+        species[i]   = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        items[i]     = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
         if (i == 0) {
             continue;
         }
@@ -364,7 +365,7 @@ static BOOL sub_0204ABA0(u16 *a0, u32 a1, u16 a2) {
     return FALSE;
 }
 
-void sub_0204ABC8(UnkStruct_Fsys_A0* a0, SaveData *saveData) {
+void sub_0204ABC8(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     // saveData is unused
     s32 i;
     u32 unk;
@@ -372,7 +373,7 @@ void sub_0204ABC8(UnkStruct_Fsys_A0* a0, SaveData *saveData) {
     if (a0->unk0f == 2 || a0->unk0f == 6 || a0->unk0f == 3) {
         u32 temp;
         if ((a0->unk0f == 3 && a0->unk14 > a0->unk1c)
-                || (a0->unk0f == 6 && a0->unk14 > a0->unk1c)) {
+            || (a0->unk0f == 6 && a0->unk14 > a0->unk1c)) {
             temp = a0->unk14;
         } else {
             temp = a0->unk1c;
@@ -380,7 +381,7 @@ void sub_0204ABC8(UnkStruct_Fsys_A0* a0, SaveData *saveData) {
         sp00 = temp;
         for (i = 0; i < 14; i++) {
             do {
-                unk = sub_0204B73C(a0, sp00, i/2, a0->unk0f);
+                unk = sub_0204B73C(a0, sp00, i / 2, a0->unk0f);
             } while (sub_0204ABA0(a0->unk3e, unk, i));
             a0->unk3e[i] = unk;
         }
@@ -412,46 +413,46 @@ BOOL sub_0204AC7C(UnkStruct_Fsys_A0 *a0) {
 static void sub_0204ACA0(UnkStruct_Fsys_A0 *a0, SaveData *saveData, BOOL a2, u16 a3) {
     // a2 and a3 are unused
     switch (a0->unk0f) {
-        case 0:
-            sub_0204B470(a0, saveData, 0);
-            break;
-        case 1:
-            break;
-        case 4:
-            sub_0204B470(a0, saveData, 1);
-            sub_0202D3B0(a0->unk70, a0->unk28, a0->unk24, a0->unk26);
-            u8 unk = a0->unk0f;
-            sub_0202D308(a0->unk70, 0, &unk);
-            unk = a0->unk0c;
-            sub_0202D308(a0->unk70, 1, &unk);
-            sub_0202D4FC(a0->unk74, a0->unk70);
+    case 0:
+        sub_0204B470(a0, saveData, 0);
+        break;
+    case 1:
+        break;
+    case 4:
+        sub_0204B470(a0, saveData, 1);
+        sub_0202D3B0(a0->unk70, a0->unk28, a0->unk24, a0->unk26);
+        u8 unk = a0->unk0f;
+        sub_0202D308(a0->unk70, 0, &unk);
+        unk = a0->unk0c;
+        sub_0202D308(a0->unk70, 1, &unk);
+        sub_0202D4FC(a0->unk74, a0->unk70);
     }
 }
 
 void sub_0204AD04(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
-    GAME_STATS *gameStats = Save_GameStats_Get(saveData);
-    void *unk00 = sub_0203107C(saveData);
+    GameStats *gameStats           = Save_GameStats_Get(saveData);
+    FrontierSave *frontierSaveData = Save_Frontier_GetStatic(saveData);
     if (a0->unk0f == 5) {
         return;
     }
     u32 unk4 = a0->unk0f == 6 ? 112 : a0->unk0f * 2;
-    sub_020310BC(unk00, unk4, sub_0205C268(unk4));
-    sub_0203126C(unk00, unk4, sub_0205C268(unk4), a0->unk1a + a0->unk0d);
+    FrontierSave_GetStat(frontierSaveData, unk4, sub_0205C268(unk4));
+    sub_0203126C(frontierSaveData, unk4, sub_0205C268(unk4), a0->unk1a + a0->curWinStreak);
     if (a0->unk0f == 6) {
-        sub_020310BC(sub_0203107C(saveData), 100, sub_0205C268(100));
+        FrontierSave_GetStat(Save_Frontier_GetStatic(saveData), 100, sub_0205C268(100));
     } else {
         sub_0202D5DC(a0->unk74, a0->unk0f + 8, 0);
     }
-    u32 unk = sub_02031108(unk00, unk4 + 1, sub_0205C268(unk4 + 1), a0->unk1a + a0->unk0d);
+    u32 unk = sub_02031108(frontierSaveData, unk4 + 1, sub_0205C268(unk4 + 1), a0->unk1a + a0->curWinStreak);
     if (a0->unk0f == 6) {
-        sub_02031108(sub_0203107C(saveData), 100, sub_0205C268(100), 0);
+        sub_02031108(Save_Frontier_GetStatic(saveData), 100, sub_0205C268(100), 0);
     } else {
         sub_0202D5DC(a0->unk74, a0->unk0f + 8, 2);
     }
-    GameStats_Add(gameStats, GAME_STAT_UNK30, a0->unk0d);
+    GameStats_Add(gameStats, GAME_STAT_BATTLE_TOWER_WIN_COUNT, a0->curWinStreak);
     sub_0202D57C(a0->unk74, a0->unk0f, 2);
     if (a0->unk0f != 6) {
-        GameStats_Add(Save_GameStats_Get(saveData), GAME_STAT_UNK16, 1);
+        GameStats_Add(Save_GameStats_Get(saveData), GAME_STAT_BATTLE_TOWER_BATTLE_COUNT, 1);
     }
     sub_0204B318(a0);
     unk++;
@@ -465,28 +466,28 @@ void sub_0204AE20(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     if (a0->unk0f == 5) {
         return;
     }
-    GAME_STATS *gameStats = Save_GameStats_Get(saveData);
-    void *unk00 = sub_0203107C(saveData);
-    u32 unk4 = a0->unk0f == 6 ? 112 : a0->unk0f * 2;
+    GameStats *gameStats           = Save_GameStats_Get(saveData);
+    FrontierSave *frontierSaveData = Save_Frontier_GetStatic(saveData);
+    u32 unk4                       = a0->unk0f == 6 ? 112 : a0->unk0f * 2;
     if (a0->unk0f == 6) {
-        sub_020310BC(sub_0203107C(saveData), 100, sub_0205C268(100));
+        FrontierSave_GetStat(Save_Frontier_GetStatic(saveData), 100, sub_0205C268(100));
     } else {
         sub_0202D5DC(a0->unk74, a0->unk0f + 8, 0);
     }
-    u32 unk6 = sub_02031108(unk00, unk4 + 1, sub_0205C268(unk4 + 1), a0->unk1a + a0->unk0d);
+    u32 unk6 = sub_02031108(frontierSaveData, unk4 + 1, sub_0205C268(unk4 + 1), a0->unk1a + a0->curWinStreak);
     if (a0->unk0f == 6) {
-        sub_02031108(sub_0203107C(saveData), 100, sub_0205C268(100), 1);
+        sub_02031108(Save_Frontier_GetStatic(saveData), 100, sub_0205C268(100), 1);
     } else {
         sub_0202D5DC(a0->unk74, a0->unk0f + 8, 1);
     }
-    sub_020310BC(unk00, unk4, sub_0205C268(unk4));
-    sub_0203126C(unk00, unk4, sub_0205C268(unk4), unk6);
-    GameStats_Add(gameStats, GAME_STAT_UNK30, 7);
+    FrontierSave_GetStat(frontierSaveData, unk4, sub_0205C268(unk4));
+    sub_0203126C(frontierSaveData, unk4, sub_0205C268(unk4), unk6);
+    GameStats_Add(gameStats, GAME_STAT_BATTLE_TOWER_WIN_COUNT, 7);
     sub_0202D57C(a0->unk74, a0->unk0f, 3);
     if (a0->unk0f != 6) {
-        GameStats_Add(gameStats, GAME_STAT_UNK16, 1);
+        GameStats_Add(gameStats, GAME_STAT_BATTLE_TOWER_BATTLE_COUNT, 1);
     }
-    GameStats_AddSpecial(gameStats, GAME_STAT_UNK14);
+    GameStats_AddScore(gameStats, SCORE_EVENT_14);
     sub_0204B318(a0);
     sub_0204ACA0(a0, saveData, 1, unk6);
 }
@@ -574,38 +575,36 @@ BOOL sub_0204B0E0(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
 u32 sub_0204B120(UnkStruct_Fsys_A0 *a0, SaveData *saveData, u32 a2) {
     FRONTIERDATA *frontierData = Save_FrontierData_Get(saveData);
     switch (a2) {
-        case 0:
-            return sub_0202D488(frontierData, 0);
-        case 1:
-        {
-            sub_0202D5DC(frontierData, 4, 2);
-            s32 unk0 = sub_0202D488(frontierData, 0);
-            if (unk0 == 10) {
-                a0->unk10_4 = TRUE;
-                return 0;
-            }
-            sub_0202D488(frontierData, 3);
-            if (unk0 + 1 >= 5) {
-                a0->unk10_4 = TRUE;
-            }
-            return 1;
-        }
-        case 2:
-        {
-            u32 unk4 = sub_0202D450(frontierData, 3);
-            s32 unk0 = sub_0202D488(frontierData, 0);
-            if (unk0 == 1) {
-                return 0;
-            }
-            u32 index = unk0 - 1;
-            if (unk4 >= _020FBF8C[index]) {
-                sub_0202D488(frontierData, 4);
-                sub_0202D450(frontierData, 2);
-                sub_0202D5DC(frontierData, 4, 2);
-                return 1;
-            }
+    case 0:
+        return sub_0202D488(frontierData, 0);
+    case 1: {
+        sub_0202D5DC(frontierData, 4, 2);
+        s32 unk0 = sub_0202D488(frontierData, 0);
+        if (unk0 == 10) {
+            a0->unk10_4 = TRUE;
             return 0;
         }
+        sub_0202D488(frontierData, 3);
+        if (unk0 + 1 >= 5) {
+            a0->unk10_4 = TRUE;
+        }
+        return 1;
+    }
+    case 2: {
+        u32 unk4 = sub_0202D450(frontierData, 3);
+        s32 unk0 = sub_0202D488(frontierData, 0);
+        if (unk0 == 1) {
+            return 0;
+        }
+        u32 index = unk0 - 1;
+        if (unk4 >= _020FBF8C[index]) {
+            sub_0202D488(frontierData, 4);
+            sub_0202D450(frontierData, 2);
+            sub_0202D5DC(frontierData, 4, 2);
+            return 1;
+        }
+        return 0;
+    }
     }
     return 0;
 }
@@ -615,10 +614,10 @@ BOOL sub_0204B1CC(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
         return FALSE;
     }
     switch (a0->unk10_1) {
-        case 1:
-            return sub_0204B2B8(saveData, MON_DATA_ABILITY_RIBBON, a0);
-        case 2:
-            return sub_0204B2B8(saveData, MON_DATA_GREAT_ABILITY_RIBBON, a0);
+    case 1:
+        return sub_0204B2B8(saveData, MON_DATA_ABILITY_RIBBON, a0);
+    case 2:
+        return sub_0204B2B8(saveData, MON_DATA_GREAT_ABILITY_RIBBON, a0);
     }
     return FALSE;
 }
@@ -635,18 +634,18 @@ BOOL sub_0204B204(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     }
     u32 ribbon;
     switch (a0->unk0f) {
-        case 1:
-            ribbon = MON_DATA_DOUBLE_ABILITY_RIBBON;
-            break;
-        case 2:
-            ribbon = MON_DATA_MULTI_ABILITY_RIBBON;
-            break;
-        case 3:
-            ribbon = MON_DATA_PAIR_ABILITY_RIBBON;
-            break;
-        case 4:
-            ribbon = MON_DATA_WORLD_ABILITY_RIBBON;
-            break;
+    case 1:
+        ribbon = MON_DATA_DOUBLE_ABILITY_RIBBON;
+        break;
+    case 2:
+        ribbon = MON_DATA_MULTI_ABILITY_RIBBON;
+        break;
+    case 3:
+        ribbon = MON_DATA_PAIR_ABILITY_RIBBON;
+        break;
+    case 4:
+        ribbon = MON_DATA_WORLD_ABILITY_RIBBON;
+        break;
     }
     return sub_0204B2B8(saveData, ribbon, a0);
 }
@@ -654,7 +653,7 @@ BOOL sub_0204B204(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
 u16 sub_0204B258(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     u8 unk;
     if (a0->unk0f == 6) {
-        unk = sub_020310BC(sub_0203107C(saveData), 100, sub_0205C268(100));
+        unk = FrontierSave_GetStat(Save_Frontier_GetStatic(saveData), 100, sub_0205C268(100));
     } else {
         unk = sub_0202D5DC(a0->unk74, a0->unk0f + 8, 0);
     }
@@ -667,9 +666,9 @@ u16 sub_0204B258(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
 }
 
 static BOOL sub_0204B2B8(SaveData *saveData, u32 ribbon, UnkStruct_Fsys_A0 *a2) {
-    u8 value = TRUE;
+    u8 value     = TRUE;
     Party *party = SaveArray_Party_Get(saveData);
-    u8 count = 0;
+    u8 count     = 0;
     for (s32 i = 0; i < a2->unk0e; i++) {
         Pokemon *mon = Party_GetMonByIndex(party, a2->unk2a[i]);
         if (GetMonData(mon, ribbon, NULL) == FALSE) {
@@ -688,7 +687,7 @@ static u32 sub_0204B318(UnkStruct_Fsys_A0 *a0) {
     if (a0->unk0f == 5 || a0->unk0f == 0 || a0->unk0f == 6 || a0->unk0f == 4) {
         return FALSE;
     }
-    if ((u16)(a0->unk1a + a0->unk0d) < 50) {
+    if ((u16)(a0->unk1a + a0->curWinStreak) < 50) {
         return FALSE;
     }
     a0->unk10_4 = TRUE;
@@ -697,22 +696,22 @@ static u32 sub_0204B318(UnkStruct_Fsys_A0 *a0) {
 
 static void sub_0204B34C(UnkStruct_0204B470 *a0, Pokemon *mon) {
     a0->species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    a0->form = GetMonData(mon, MON_DATA_FORM, NULL);
-    a0->item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+    a0->form    = GetMonData(mon, MON_DATA_FORM, NULL);
+    a0->item    = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
     for (s32 i = 0; i < MAX_MON_MOVES; i++) {
         a0->moves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
         a0->ppUp |= GetMonData(mon, MON_DATA_MOVE1PPUP + i, NULL) << (i * 2);
     }
     a0->language = GetMonData(mon, MON_DATA_GAME_LANGUAGE, NULL);
-    a0->otId = GetMonData(mon, MON_DATA_OTID, NULL);
-    a0->pid = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
-    a0->ivsWord = GetMonData(mon, MON_DATA_IVS_WORD, NULL);
+    a0->otId     = GetMonData(mon, MON_DATA_OTID, NULL);
+    a0->pid      = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
+    a0->ivsWord  = GetMonData(mon, MON_DATA_IVS_WORD, NULL);
     for (s32 i = 0; i < NUM_STATS; i++) {
         a0->evs[i] = GetMonData(mon, MON_DATA_HP_EV + i, NULL);
     }
-    a0->ability = GetMonData(mon, MON_DATA_ABILITY, NULL);
+    a0->ability    = GetMonData(mon, MON_DATA_ABILITY, NULL);
     a0->friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
-    GetMonData(mon, MON_DATA_NICKNAME, a0->nickname);
+    GetMonData(mon, MON_DATA_NICKNAME_FLAT, a0->nickname);
 }
 
 static void sub_0204B470(UnkStruct_Fsys_A0 *a0, SaveData *saveData, u32 a2) {

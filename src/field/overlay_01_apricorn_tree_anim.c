@@ -1,23 +1,25 @@
+#include "overlay_01_apricorn_tree_anim.h"
+
+#include "constants/apricorns.h"
+#include "constants/scrcmd.h"
+#include "constants/sndseq.h"
+
 #include "map_object.h"
 #include "overlay_01_021F1AFC.h"
 #include "overlay_01_021F944C.h"
-#include "overlay_01_apricorn_tree_anim.h"
 #include "script.h"
 #include "task.h"
 #include "unk_02005D10.h"
 #include "unk_02055418.h"
 #include "unk_0205CB48.h"
 #include "unk_02062108.h"
-#include "constants/apricorns.h"
-#include "constants/scrcmd.h"
-#include "constants/sndseq.h"
 
-#define TREE_WIGGLE_FRAMES   16
-#define TREE_EXPEL_FRAMES     8
+#define TREE_WIGGLE_FRAMES 16
+#define TREE_EXPEL_FRAMES  8
 
 #define APRICORN_JUMP_FRAMES 16
 
-#define NUM_TREE_WIGGLES      2
+#define NUM_TREE_WIGGLES 2
 
 typedef struct {
     int state;
@@ -39,8 +41,22 @@ typedef struct {
 } AnimPlayerShakeTreeWork;
 
 static const s8 sApricornJumpDy[APRICORN_JUMP_FRAMES] = {
-     4,  3,  3,  2,  2,  1,  1,  0,
-     0, -1, -2, -3, -4, -5, -6, -7,
+    4,
+    3,
+    3,
+    2,
+    2,
+    1,
+    1,
+    0,
+    0,
+    -1,
+    -2,
+    -3,
+    -4,
+    -5,
+    -6,
+    -7,
 };
 
 static BOOL Task_AnimApricornTree(TaskManager *taskman);
@@ -52,7 +68,7 @@ void FieldSystem_AnimApricornTree(FieldSystem *fieldSystem, LocalMapObject *tree
     AnimApricornTreeWork *env = AllocFromHeap(HEAP_ID_32, sizeof(AnimApricornTreeWork));
     MI_CpuFill8(env, 0, sizeof(AnimApricornTreeWork));
     env->state = 0;
-    env->tree = tree;
+    env->tree  = tree;
     env->unk24 = a2;
 
     TaskManager_Call(fieldSystem->taskman, Task_AnimApricornTree, env);
@@ -65,14 +81,14 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
     VecFx32 pos;
     int apricornType;
 
-    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
+    FieldSystem *fieldSystem  = TaskManager_GetFieldSystem(taskman);
     AnimApricornTreeWork *env = TaskManager_GetEnvironment(taskman);
 
     switch (env->state) {
     case 0:
         if (!sub_02055708(fieldSystem, env->tree)) {
             *env->unk24 = 0;
-            env->state = 10;
+            env->state  = 10;
             break;
         }
         AnimPlayerShakeTreeWork *ptr = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(AnimPlayerShakeTreeWork));
@@ -84,11 +100,11 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
         sub_0205F328(env->tree, 1);
         env->treeWiggles = 0;
         env->wiggleTimer = TREE_WIGGLE_FRAMES;
-        env->state = 2;
+        env->state       = 2;
         PlaySE(SEQ_SE_GS_KI_YURERU);
         break;
     case 2:
-        if(--env->wiggleTimer <= 0) {
+        if (--env->wiggleTimer <= 0) {
             env->treeWiggles++;
             env->wiggleTimer = TREE_WIGGLE_FRAMES;
         }
@@ -100,17 +116,17 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
         if (sub_02055708(fieldSystem, env->tree)) {
             sub_02055760(fieldSystem, env->tree);
             *env->unk24 = 1;
-            env->state = 3;
+            env->state  = 3;
             break;
         }
         *env->unk24 = 0;
-        env->state = 10;
+        env->state  = 10;
         break;
     case 3:
-        direction = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
+        direction   = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
         env->jumpDx = 0;
         env->jumpDz = 0;
-        env->unk18 = 0;
+        env->unk18  = 0;
         switch (direction) {
         case DIR_NORTH:
             env->jumpDz = FX32_ONE;
@@ -211,9 +227,9 @@ static BOOL DoApricornJump(AnimApricornTreeWork *env) {
 }
 
 static BOOL Task_AnimPlayerShakeTree(TaskManager *taskman) {
-    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
-    LocalMapObject *playerObj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
-    u32 *state_p = TaskManager_GetStatePtr(taskman);
+    FieldSystem *fieldSystem     = TaskManager_GetFieldSystem(taskman);
+    LocalMapObject *playerObj    = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
+    u32 *state_p                 = TaskManager_GetStatePtr(taskman);
     AnimPlayerShakeTreeWork *env = TaskManager_GetEnvironment(taskman);
 
     switch (*state_p) {

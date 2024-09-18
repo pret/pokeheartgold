@@ -2,8 +2,9 @@
 #define POKEHEARTGOLD_FIELD_TYPES_DEF_H
 
 #include "global.h"
-#include "heap.h"
+
 #include "filesystem.h"
+#include "heap.h"
 #include "sys_task.h"
 
 typedef struct Location {
@@ -25,5 +26,6 @@ typedef struct BG_EVENT BG_EVENT;
 typedef struct ObjectEvent ObjectEvent;
 typedef struct WARP_EVENT WARP_EVENT;
 typedef struct COORD_EVENT COORD_EVENT;
+typedef struct GearPhoneRingManager GearPhoneRingManager;
 
-#endif //POKEHEARTGOLD_FIELD_TYPES_DEF_H
+#endif // POKEHEARTGOLD_FIELD_TYPES_DEF_H

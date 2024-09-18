@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_OPTIONS_APP_H
 #define POKEHEARTGOLD_OPTIONS_APP_H
 
+#include "options.h"
 #include "overlay_manager.h"
 
 typedef struct OptionsApp_Args {

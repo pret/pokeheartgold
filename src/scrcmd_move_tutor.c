@@ -1,6 +1,11 @@
 #include "global.h"
-#include "assert.h"
+
+#include "constants/species.h"
+
 #include "battle/battle_command.h"
+#include "msgdata/msg.naix"
+
+#include "assert.h"
 #include "field_player_avatar.h"
 #include "fieldmap.h"
 #include "heap.h"
@@ -9,13 +14,11 @@
 #include "overlay_01.h"
 #include "party.h"
 #include "pm_string.h"
-#include "pokemon_storage_system.h"
 #include "pokemon.h"
+#include "pokemon_storage_system.h"
 #include "scrcmd.h"
-#include "script_pokemon_util.h"
 #include "script.h"
-#include "constants/species.h"
-#include "msgdata/msg.naix"
+#include "script_pokemon_util.h"
 
 // Note: move tutors for Blast Burn, Hydro Cannon, Frenzy Plant
 // and Draco Meteor are handled separately in scr_seq_0948_T30R0601.s
@@ -84,7 +87,7 @@ static const TutorMove sTutorMoves[] = {
     { MOVE_SKY_ATTACK,    64, MOVE_TUTOR_NPC_FRONTIER_TOP_RIGHT    },
     { MOVE_BLOCK,         32, MOVE_TUTOR_NPC_FRONTIER_BOTTOM_RIGHT },
     { MOVE_BUG_BITE,      32, MOVE_TUTOR_NPC_FRONTIER_TOP_LEFT     },
-    { MOVE_HEADBUTT,       0, MOVE_TUTOR_NPC_HEADBUTT              },
+    { MOVE_HEADBUTT,      0,  MOVE_TUTOR_NPC_HEADBUTT              },
 };
 
 static u16 GetMoveTutorLearnsetIndex(u16 species, u8 form);
@@ -94,33 +97,33 @@ static BOOL ov01_0220305C(ScriptContext *ctx);
 
 // get number of pages needed to show learnable moves from move tutor
 BOOL ScrCmd_652(ScriptContext *ctx) {
-    u16 slot = ScriptGetVar(ctx);
-    u16 moveTutorNpc = ScriptGetVar(ctx);
-    u16 *result = ScriptGetVarPointer(ctx);
-    Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
-    Pokemon *mon = Party_GetMonByIndex(party, slot);
+    u16 slot              = ScriptGetVar(ctx);
+    u16 moveTutorNpc      = ScriptGetVar(ctx);
+    u16 *result           = ScriptGetVarPointer(ctx);
+    Party *party          = SaveArray_Party_Get(ctx->fieldSystem->saveData);
+    Pokemon *mon          = Party_GetMonByIndex(party, slot);
     u32 numLearnableMoves = GetLearnableTutorMoves(mon, moveTutorNpc, NULL);
     if (numLearnableMoves == 0) {
         *result = 0;
     } else if (numLearnableMoves <= 7) {
         *result = 1;
     } else {
-        *result = ((s32) numLearnableMoves / 6) + 1;
+        *result = ((s32)numLearnableMoves / 6) + 1;
     }
     return FALSE;
 }
 
 BOOL ScrCmd_TutorMoveTeachInSlot(ScriptContext *ctx) {
     u16 partySlot = ScriptGetVar(ctx);
-    u16 moveSlot = ScriptGetVar(ctx);
-    u16 move = ScriptGetVar(ctx);
-    Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
+    u16 moveSlot  = ScriptGetVar(ctx);
+    u16 move      = ScriptGetVar(ctx);
+    Party *party  = SaveArray_Party_Get(ctx->fieldSystem->saveData);
     PartyMonSetMoveInSlot(party, partySlot, moveSlot, move);
     return FALSE;
 }
 
 BOOL ScrCmd_TutorMoveGetPrice(ScriptContext *ctx) {
-    u16 move = ScriptGetVar(ctx);
+    u16 move    = ScriptGetVar(ctx);
     u16 *result = ScriptGetVarPointer(ctx);
     for (u32 i = 0; i < NELEMS(sTutorMoves); i++) {
         if (sTutorMoves[i].move == move) {
@@ -135,12 +138,12 @@ BOOL ScrCmd_TutorMoveGetPrice(ScriptContext *ctx) {
 
 // check if mon at given slot can learn from headbutt move tutor
 BOOL ScrCmd_656(ScriptContext *ctx) {
-    u16 slot = ScriptGetVar(ctx);
-    u16 *result = ScriptGetVarPointer(ctx);
-    Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
-    Pokemon *mon = Party_GetMonByIndex(party, slot);
+    u16 slot              = ScriptGetVar(ctx);
+    u16 *result           = ScriptGetVarPointer(ctx);
+    Party *party          = SaveArray_Party_Get(ctx->fieldSystem->saveData);
+    Pokemon *mon          = Party_GetMonByIndex(party, slot);
     u32 numLearnableMoves = GetLearnableTutorMoves(mon, MOVE_TUTOR_NPC_HEADBUTT, NULL);
-    *result = numLearnableMoves > 0 ? TRUE : FALSE;
+    *result               = numLearnableMoves > 0 ? TRUE : FALSE;
     return FALSE;
 }
 
@@ -148,45 +151,45 @@ static u16 GetMoveTutorLearnsetIndex(u16 species, u8 form) {
     u16 index;
     // subtract 2 because SPECIES_EGG and SPECIES_BAD_EGG are missing
     switch (species) {
-        case SPECIES_DEOXYS:
-            if (form == DEOXYS_ATTACK) {
-                index = SPECIES_DEOXYS_ATK - 2;
-            } else if (form == DEOXYS_DEFENSE) {
-                index = SPECIES_DEOXYS_DEF - 2;
-            } else if (form == DEOXYS_SPEED) {
-                index = SPECIES_DEOXYS_SPD - 2;
-            }
-            break;
-        case SPECIES_WORMADAM:
-            if (form == WORMADAM_SANDY) {
-                index = SPECIES_WORMADAM_SANDY - 2;
-            } else if (form == WORMADAM_TRASH) {
-                index = SPECIES_WORMADAM_TRASH - 2;
-            }
-            break;
-        case SPECIES_GIRATINA:
-            if (form == GIRATINA_ORIGIN) {
-                index = SPECIES_GIRATINA_ORIGIN - 2;
-            }
-            break;
-        case SPECIES_SHAYMIN:
-            if (form == SHAYMIN_SKY) {
-                index = SPECIES_SHAYMIN_SKY - 2;
-            }
-            break;
-        case SPECIES_ROTOM:
-            if (form == ROTOM_HEAT) {
-                index = SPECIES_ROTOM_HEAT - 2;
-            } else if (form == ROTOM_WASH) {
-                index = SPECIES_ROTOM_WASH - 2;
-            } else if (form == ROTOM_FROST) {
-                index = SPECIES_ROTOM_FROST - 2;
-            } else if (form == ROTOM_FAN) {
-                index = SPECIES_ROTOM_FAN - 2;
-            } else if (form == ROTOM_MOW) {
-                index = SPECIES_ROTOM_MOW - 2;
-            }
-            break;
+    case SPECIES_DEOXYS:
+        if (form == DEOXYS_ATTACK) {
+            index = SPECIES_DEOXYS_ATK - 2;
+        } else if (form == DEOXYS_DEFENSE) {
+            index = SPECIES_DEOXYS_DEF - 2;
+        } else if (form == DEOXYS_SPEED) {
+            index = SPECIES_DEOXYS_SPD - 2;
+        }
+        break;
+    case SPECIES_WORMADAM:
+        if (form == WORMADAM_SANDY) {
+            index = SPECIES_WORMADAM_SANDY - 2;
+        } else if (form == WORMADAM_TRASH) {
+            index = SPECIES_WORMADAM_TRASH - 2;
+        }
+        break;
+    case SPECIES_GIRATINA:
+        if (form == GIRATINA_ORIGIN) {
+            index = SPECIES_GIRATINA_ORIGIN - 2;
+        }
+        break;
+    case SPECIES_SHAYMIN:
+        if (form == SHAYMIN_SKY) {
+            index = SPECIES_SHAYMIN_SKY - 2;
+        }
+        break;
+    case SPECIES_ROTOM:
+        if (form == ROTOM_HEAT) {
+            index = SPECIES_ROTOM_HEAT - 2;
+        } else if (form == ROTOM_WASH) {
+            index = SPECIES_ROTOM_WASH - 2;
+        } else if (form == ROTOM_FROST) {
+            index = SPECIES_ROTOM_FROST - 2;
+        } else if (form == ROTOM_FAN) {
+            index = SPECIES_ROTOM_FAN - 2;
+        } else if (form == ROTOM_MOW) {
+            index = SPECIES_ROTOM_MOW - 2;
+        }
+        break;
     }
     return index - 1;
 }
@@ -197,10 +200,10 @@ static u16 GetLearnableTutorMoves(Pokemon *mon, u32 moveTutorNpc, u8 dest[]) {
     for (i = 0; i < MAX_MON_MOVES; i++) {
         currentMoves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
     }
-    u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    u32 form = GetMonData(mon, MON_DATA_FORM, NULL);
+    u32 species                 = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    u32 form                    = GetMonData(mon, MON_DATA_FORM, NULL);
     MoveTutorLearnset *learnset = GetMoveTutorLearnset(HEAP_ID_FIELD, GetMoveTutorLearnsetIndex(species, form));
-    u16 numLearnableMoves = 0;
+    u16 numLearnableMoves       = 0;
     for (j = 0; j < NELEMS(sTutorMoves); j++) {
         // this is equivalent to treating `learnset` as a bitfield of 64 bits
         // and then checking whether bit j is set
@@ -248,19 +251,19 @@ BOOL ScrCmd_MoveTutorChooseMove(ScriptContext *ctx) {
     s32 i;
     s32 numLearnableMoves;
     BOOL showNextButton;
-    FieldSystem *fieldSystem = ctx->fieldSystem;
+    FieldSystem *fieldSystem             = ctx->fieldSystem;
     struct UnkStruct_ov01_021EDC28 **unk = ov01_021F6B20(fieldSystem);
     u16 resultVarId;
     MsgData *messageData;
     u16 showAsTwoColumns;
     MessageFormat **messageFormat = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
-    u16 slot = ScriptGetVar(ctx);
-    u16 moveTutorNpc = ScriptGetVar(ctx);
-    u16 pageNum = ScriptGetVar(ctx);
-    resultVarId = ScriptReadHalfword(ctx);
-    ctx->data[0] = resultVarId;
-    Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), slot);
-    numLearnableMoves = GetLearnableTutorMoves(mon, moveTutorNpc, learnableMoves);
+    u16 slot                      = ScriptGetVar(ctx);
+    u16 moveTutorNpc              = ScriptGetVar(ctx);
+    u16 pageNum                   = ScriptGetVar(ctx);
+    resultVarId                   = ScriptReadHalfword(ctx);
+    ctx->data[0]                  = resultVarId;
+    Pokemon *mon                  = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), slot);
+    numLearnableMoves             = GetLearnableTutorMoves(mon, moveTutorNpc, learnableMoves);
     s32 numMovesToSkip;
     if (numLearnableMoves <= 7) {
         numMovesToSkip = 0;
@@ -278,13 +281,13 @@ BOOL ScrCmd_MoveTutorChooseMove(ScriptContext *ctx) {
         // appropriate value of pageNum is always passed in
         // for all instances where this function is called.
         numLearnableMoves = MAX_TUTOR_MOVES_PER_PAGE;
-        numMovesToSkip = 0;
+        numMovesToSkip    = 0;
     }
-    u16 *result = GetVarPointer(fieldSystem, resultVarId);
-    Window *window = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_WINDOW);
-    *unk = ov01_021EDF78(fieldSystem, 1, 1, 0, 1, result, *messageFormat, window, ctx->msgdata);
-    messageData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0750_bin, HEAP_ID_32);
-    String *string = String_New(0x10, HEAP_ID_32);
+    u16 *result      = GetVarPointer(fieldSystem, resultVarId);
+    Window *window   = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_WINDOW);
+    *unk             = ov01_021EDF78(fieldSystem, 1, 1, 0, 1, result, *messageFormat, window, ctx->msgdata);
+    messageData      = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0750_bin, HEAP_ID_32);
+    String *string   = String_New(0x10, HEAP_ID_32);
     showAsTwoColumns = (numLearnableMoves + showNextButton >= 4) ? 1 : 0;
     for (i = 0; i < numLearnableMoves; i++) {
         ReadMsgDataIntoString(messageData, sTutorMoves[learnableMoves[i + numMovesToSkip]].move, string);
@@ -305,9 +308,9 @@ BOOL ScrCmd_MoveTutorChooseMove(ScriptContext *ctx) {
 }
 
 static BOOL ov01_0220305C(ScriptContext *ctx) {
-    FieldSystem *fieldSystem = ctx->fieldSystem;
+    FieldSystem *fieldSystem             = ctx->fieldSystem;
     struct UnkStruct_ov01_021EDC28 **unk = ov01_021F6B20(fieldSystem);
-    u16 *result = GetVarPointer(fieldSystem, ctx->data[0]);
+    u16 *result                          = GetVarPointer(fieldSystem, ctx->data[0]);
     if (*result == 0xeeee) {
         return FALSE;
     }
@@ -317,16 +320,16 @@ static BOOL ov01_0220305C(ScriptContext *ctx) {
 
 // Unused
 BOOL ScrCmd_742(ScriptContext *ctx) {
-    u16 slot = ScriptGetVar(ctx);
-    u16 move = ScriptGetVar(ctx);
-    u16 *result = ScriptGetVarPointer(ctx);
-    *result = FALSE;
+    u16 slot     = ScriptGetVar(ctx);
+    u16 move     = ScriptGetVar(ctx);
+    u16 *result  = ScriptGetVarPointer(ctx);
+    *result      = FALSE;
     Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
     Pokemon *mon = Party_GetMonByIndex(party, slot);
-    u16 *unk = AllocFromHeapAtEnd(HEAP_ID_FIELD, 0x2c);
-    u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    u32 form = GetMonData(mon, MON_DATA_FORM, NULL);
-    s32 size = Species_LoadLearnsetTable(species, form, unk);
+    u16 *unk     = AllocFromHeapAtEnd(HEAP_ID_FIELD, 0x2c);
+    u32 species  = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    u32 form     = GetMonData(mon, MON_DATA_FORM, NULL);
+    s32 size     = Species_LoadLearnsetTable(species, form, unk);
     for (s32 i = 0; i < size; i++) {
         if (move == unk[i]) {
             *result = TRUE;

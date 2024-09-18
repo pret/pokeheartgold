@@ -1,21 +1,24 @@
-#include "global.h"
 #include "intro_movie.h"
-#include "intro_movie_internal.h"
+
+#include "global.h"
+
 #include "constants/sndseq.h"
+
 #include "bg_window.h"
 #include "brightness.h"
 #include "gf_gfx_planes.h"
+#include "intro_movie_internal.h"
 #include "main.h"
 #include "math_util.h"
+#include "obj_char_transfer.h"
+#include "obj_pltt_transfer.h"
 #include "sound_02004A44.h"
+#include "sprite.h"
 #include "sys_task_api.h"
 #include "system.h"
 #include "title_screen.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
-#include "obj_char_transfer.h"
-#include "unk_02022588.h"
-#include "unk_02023694.h"
 
 enum IntroMovieOverlayState {
     INTRO_MOVIE_INIT,
@@ -31,7 +34,7 @@ static void IntroMovie_HandleSpriteUpdates(IntroMovieOverlayData *data);
 static void IntroMovie_InitSpriteGraphicsHW(IntroMovieOverlayData *data);
 static void IntroMovie_TeardownSpritesManager(IntroMovieOverlayData *data);
 
-const OVY_MGR_TEMPLATE gApplication_IntroMovie = {IntroMovie_Init, IntroMovie_Main, IntroMovie_Exit, FS_OVERLAY_ID_NONE};
+const OVY_MGR_TEMPLATE gApplication_IntroMovie = { IntroMovie_Init, IntroMovie_Main, IntroMovie_Exit, FS_OVERLAY_ID_NONE };
 
 static BOOL (*sIntroMovieSceneFuncs[])(IntroMovieOverlayData *data, void *pVoid) = {
     IntroMovie_Scene1,
@@ -43,7 +46,7 @@ static BOOL (*sIntroMovieSceneFuncs[])(IntroMovieOverlayData *data, void *pVoid)
 
 HeapID _deadstrip_00(int idx);
 HeapID _deadstrip_00(int idx) {
-    static const HeapID sDeadstrippedRodata[2] = {HEAP_ID_INTRO_MOVIE, HEAP_ID_INTRO_MOVIE};
+    static const HeapID sDeadstrippedRodata[2] = { HEAP_ID_INTRO_MOVIE, HEAP_ID_INTRO_MOVIE };
     return sDeadstrippedRodata[idx];
 }
 
@@ -60,9 +63,9 @@ static BOOL IntroMovie_Init(OVY_MANAGER *man, int *state) {
 
     IntroMovieOverlayData *data = OverlayManager_CreateAndGetData(man, sizeof(IntroMovieOverlayData), HEAP_ID_INTRO_MOVIE);
     memset(data, 0, sizeof(IntroMovieOverlayData));
-    data->heapID = HEAP_ID_INTRO_MOVIE;
-    data->introSkipped = FALSE;
-    data->skipAllowed = FALSE;
+    data->heapID           = HEAP_ID_INTRO_MOVIE;
+    data->introSkipped     = FALSE;
+    data->skipAllowed      = FALSE;
     gSystem.screensFlipped = TRUE;
     GfGfx_SwapDisplay();
     data->savedLCRngSeed = GetLCRNGSeed();
@@ -77,7 +80,7 @@ static BOOL IntroMovie_Main(OVY_MANAGER *man, int *state) {
     IntroMovieOverlayData *data = OverlayManager_GetData(man);
     if (data->skipAllowed && ((gSystem.newKeys & PAD_BUTTON_A) || (gSystem.newKeys & PAD_BUTTON_START) || gSystem.touchNew)) {
         data->introSkipped = TRUE;
-        gSystem.unk70 = FALSE;
+        gSystem.unk70      = FALSE;
         sub_0200FBF4(PM_LCD_TOP, RGB_WHITE);
         sub_0200FBF4(PM_LCD_BOTTOM, RGB_WHITE);
     }
@@ -91,7 +94,7 @@ static BOOL IntroMovie_Main(OVY_MANAGER *man, int *state) {
     case INTRO_MOVIE_RUN:
         if (sIntroMovieSceneFuncs[data->sceneNumber](data, IntroMovie_GetSceneDataPtr(data))) {
             ++data->sceneNumber;
-            data->sceneStep = 0;
+            data->sceneStep  = 0;
             data->sceneTimer = 0;
             if (data->sceneNumber >= 5) {
                 ++(*state);
@@ -178,18 +181,18 @@ static void IntroMovie_SetGraphicsBanks(void) {
 }
 
 static void IntroMovie_HandleSpriteUpdates(IntroMovieOverlayData *data) {
-    sub_0202457C(data->spriteList);
+    SpriteList_RenderAndAnimateSprites(data->spriteList);
 }
 
 static void IntroMovie_InitSpriteGraphicsHW(IntroMovieOverlayData *data) {
     GX_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_32K);
     GXS_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_32K);
 
-    ObjCharTransferTemplate template = {10, 0, 0, HEAP_ID_INTRO_MOVIE};
+    ObjCharTransferTemplate template = { 10, 0, 0, HEAP_ID_INTRO_MOVIE };
     ObjCharTransfer_Init(&template);
-    sub_02022588(10, HEAP_ID_INTRO_MOVIE);
+    ObjPlttTransfer_Init(10, HEAP_ID_INTRO_MOVIE);
     ObjCharTransfer_ClearBuffers();
-    sub_02022638();
+    ObjPlttTransfer_Reset();
     NNS_G2dInitOamManagerModule();
     OamManager_Create(0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20, HEAP_ID_INTRO_MOVIE);
     data->spriteList = G2dRenderer_Init(20, &data->spriteRenderer, HEAP_ID_INTRO_MOVIE);
@@ -199,5 +202,5 @@ static void IntroMovie_TeardownSpritesManager(IntroMovieOverlayData *data) {
     SpriteList_Delete(data->spriteList);
     OamManager_Free();
     ObjCharTransfer_Destroy();
-    sub_02022608();
+    ObjPlttTransfer_Destroy();
 }

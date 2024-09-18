@@ -901,7 +901,7 @@ _021E62DE:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _021E62EA
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 _021E62EA:
 	ldr r0, [r4, #0x30]
 	bl PaletteData_GetSelectedBuffersBitmask
@@ -915,7 +915,7 @@ _021E62FA:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _021E6306
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 _021E6306:
 	ldrb r1, [r4, #0xc]
 	add r0, r4, #0
@@ -949,7 +949,7 @@ _021E6334:
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _021E634A
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 _021E634A:
 	add sp, #0xc
 	mov r0, #0
@@ -2015,7 +2015,7 @@ _021E6BC6:
 	add r1, r3, #0
 	ldr r0, [r0]
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	add r0, r5, #0
 	add r1, r5, #0
 	add r0, #0xb0
@@ -2023,7 +2023,7 @@ _021E6BC6:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	mov r2, #3
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	add r0, r5, #0
 	add r1, r5, #0
 	add r0, #0xb0

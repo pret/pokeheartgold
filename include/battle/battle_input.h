@@ -1,9 +1,10 @@
 #ifndef POKEHEARTGOLD_BATTLE_INPUT_H
 #define POKEHEARTGOLD_BATTLE_INPUT_H
 
-#include "battle/battle_system.h"
 #include "battle/battle_cursor.h"
 #include "battle/battle_finger.h"
+#include "battle/battle_system.h"
+
 #include "bg_window.h"
 #include "sys_task_api.h"
 
@@ -135,10 +136,10 @@ typedef struct BattleInputColor {
 } BattleInputColor;
 
 typedef struct BattleInputCurosrData {
-   u8 enabled;
-   u8 menuX;
-   u8 menuY;
-   u8 unused;
+    u8 enabled;
+    u8 menuX;
+    u8 menuY;
+    u8 unused;
 } BattleInputCurosrData;
 
 typedef struct BattleInputTutorial {
@@ -148,7 +149,7 @@ typedef struct BattleInputTutorial {
     u8 delay;
 } BattleInputTutorial;
 
-//At somepoint here my counting was off so some of the listed offsets may be wrong. Due to it being a big and poorly put together struct, it's difficult to find out where that is
+// At somepoint here my counting was off so some of the listed offsets may be wrong. Due to it being a big and poorly put together struct, it's difficult to find out where that is
 typedef struct BattleInput {
     BattleSystem *bsys;
     u8 *unk4;
@@ -203,7 +204,7 @@ typedef struct BattleInput {
 void ov12_0226604C(BgConfig *config);
 void ov12_022660A8(BgConfig *config);
 
-//static functions
+// static functions
 BattleInput *BattleInput_New();
 void ov12_022698C4(SysTask *task, void *data);
 void ov12_02269954(SysTask *task, void *data);

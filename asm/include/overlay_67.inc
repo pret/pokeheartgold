@@ -28,9 +28,9 @@
 .public SpriteRenderer_Create
 .public SpriteRenderer_CreateGfxHandler
 .public SpriteRenderer_GetG2dRendererPtr
-.public sub_0200CF70
-.public sub_0200CFF4
-.public sub_0200D020
+.public SpriteRenderer_CreateOamCharPlttManagers
+.public SpriteRenderer_CreateSpriteList
+.public SpriteGfxHandler_RenderAndAnimateSprites
 .public thunk_OamManager_ApplyAndResetBuffers
 .public SpriteRenderer_Delete
 .public SpriteRenderer_Init2DGfxResManagersFromCountsArray
@@ -97,8 +97,8 @@
 .public sub_0202D8E4
 .public Save_FrontierData_Get
 .public sub_0202D928
-.public sub_0203107C
-.public sub_020310BC
+.public Save_Frontier_GetStatic
+.public FrontierSave_GetStat
 .public MI_CpuCopy8
 .public memset
 .public gSystem

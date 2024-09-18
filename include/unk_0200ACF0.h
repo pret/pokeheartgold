@@ -26,4 +26,4 @@ void sub_0200B0CC(GF_2DGfxResObjList *plttResObjList);
 NNSG2dImagePaletteProxy *sub_0200B0F8(GF_2DGfxResObj *plttResObj, NNSG2dImageProxy *imageProxy);
 int sub_0200B12C(GF_2DGfxResObj *plttResObj, NNS_G2D_VRAM_TYPE vram);
 
-#endif //POKEHEARTGOLD_UNK_0200ACF0_H
+#endif // POKEHEARTGOLD_UNK_0200ACF0_H

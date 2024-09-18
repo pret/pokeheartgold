@@ -11,8 +11,8 @@
 .public ScheduleBgTilemapBufferTransfer
 .public LCRandom
 .public GfGfx_EngineATogglePlanes
-.public Set2dSpriteVisibleFlag
-.public Set2dSpriteAnimActiveFlag
+.public Sprite_SetVisibleFlag
+.public Sprite_SetAnimActiveFlag
 .public GF_AssertFail
 .public sub_02030E7C
 .public sub_02030E88
@@ -22,8 +22,8 @@
 .public sub_02030FA0
 .public sub_02030FB0
 .public sub_02030FE4
-.public sub_0203107C
-.public sub_020310BC
+.public Save_Frontier_GetStatic
+.public FrontierSave_GetStat
 .public sub_02031108
 .public sub_0203126C
 .public Save_VarsFlags_Get

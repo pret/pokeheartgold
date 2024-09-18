@@ -1,37 +1,38 @@
-#include "launch_application.h"
 #include "unk_02097720.h"
+
+#include "launch_application.h"
 #include "unk_020552A4.h"
 
 static BOOL sub_02097754(TaskManager *taskManager);
 
-void sub_02097720(TaskManager *taskManager, u16* unknownPtr) {
+void sub_02097720(TaskManager *taskManager, u16 *unknownPtr) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     UnkStruct_02097720 *data = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(UnkStruct_02097720));
     MI_CpuClear8(data, sizeof(UnkStruct_02097720));
-    data->unknown_0 = 0;
+    data->state     = 0;
     data->unknown_4 = unknownPtr;
     TaskManager_Call(taskManager, sub_02097754, data);
 }
 
-BOOL sub_02097754(TaskManager *taskManager) {
+static BOOL sub_02097754(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    UnkStruct_02097720* env = TaskManager_GetEnvironment(taskManager);
+    UnkStruct_02097720 *env  = TaskManager_GetEnvironment(taskManager);
 
-    switch (env->unknown_0) {
+    switch (env->state) {
     case 0:
         env->safariDecorationArgs = SafariDecoration_LaunchApp(fieldSystem);
-        env->unknown_0++;
+        env->state++;
         break;
     case 1:
         if (FieldSystem_ApplicationIsRunning(fieldSystem) == FALSE) {
             *env->unknown_4 = env->safariDecorationArgs->unk1C;
             FreeToHeap(env->safariDecorationArgs);
-            env->unknown_0++;
+            env->state++;
         }
         break;
     case 2:
         CallTask_RestoreOverworld(taskManager);
-        env->unknown_0++;
+        env->state++;
         break;
     case 3:
         FreeToHeap(env);

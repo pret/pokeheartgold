@@ -1,13 +1,15 @@
-#include "global.h"
 #include "save.h"
+
+#include "global.h"
+
 #include "heap.h"
-#include "save_misc_data.h"
-#include "save_arrays.h"
 #include "math_util.h"
+#include "save_arrays.h"
 #include "save_data_read_error.h"
 #include "save_data_write_error.h"
-#include "unk_0202C034.h"
+#include "save_misc_data.h"
 #include "system.h"
+#include "unk_0202C034.h"
 
 static BOOL saveWritten;
 static SaveData *sSaveDataPtr;
@@ -73,23 +75,23 @@ SaveData *SaveData_New(void) {
     MI_CpuClearFast(ret, sizeof(SaveData));
     sSaveDataPtr = ret;
 
-    ret->flashChipDetected = SaveDetectFlash();
-    ret->saveFileExists = FALSE;
-    ret->isNewGame = TRUE;
+    ret->flashChipDetected  = SaveDetectFlash();
+    ret->saveFileExists     = FALSE;
+    ret->isNewGame          = TRUE;
     ret->sectorCleanFlag[0] = 1;
     ret->sectorCleanFlag[1] = 1;
 
     SaveData_InitSubstructs(ret->arrayHeaders);
     SaveData_InitSlotSpecs(ret->saveSlotSpecs, ret->arrayHeaders);
 
-    status = Save_GetSaveFilesStatus(ret);
+    status           = Save_GetSaveFilesStatus(ret);
     ret->statusFlags = 0;
     switch (status) {
     case LOAD_STATUS_IS_GOOD:
     case LOAD_STATUS_SLOT_FAIL:
         Save_LoadDynamicRegion(ret);
         ret->saveFileExists = TRUE;
-        ret->isNewGame = FALSE;
+        ret->isNewGame      = FALSE;
         if (status == LOAD_STATUS_SLOT_FAIL) {
             ret->statusFlags |= 1;
         } else {
@@ -163,7 +165,7 @@ BOOL SaveData_TryLoadOnContinue(SaveData *saveData) {
     }
     if (Save_LoadDynamicRegion(saveData)) {
         saveData->saveFileExists = TRUE;
-        saveData->isNewGame = FALSE;
+        saveData->isNewGame      = FALSE;
         Save_CheckFrontierData(saveData, &sp4, &sp0);
         Save_ResetPCBoxModifiedFlags(saveData);
         return TRUE;
@@ -188,7 +190,7 @@ int SaveGameNormal(SaveData *saveData) {
     ret = _NowWriteFlash(saveData);
     if (ret == WRITE_STATUS_SUCCESS) {
         saveData->saveFileExists = TRUE;
-        saveData->isNewGame = FALSE;
+        saveData->isNewGame      = FALSE;
     }
     return ret;
 }
@@ -207,7 +209,7 @@ int Save_NowWriteFile_AfterMGInit(SaveData *saveData, int a1) {
 }
 
 void Save_InitDynamicRegion(SaveData *saveData) {
-    saveData->isNewGame = TRUE;
+    saveData->isNewGame          = TRUE;
     saveData->sectorCleanFlag[0] = 1;
     saveData->sectorCleanFlag[1] = 1;
     Save_InitDynamicRegion_Internal(saveData->dynamic_region, saveData->arrayHeaders);
@@ -319,7 +321,7 @@ static struct SaveChunkFooter *GetSaveSectorFooterPtr(SaveData *saveData, void *
     struct SaveSlotSpec *spec;
 
     spec = &saveData->saveSlotSpecs[idx];
-    ret = (u8 *)data + spec->offset;
+    ret  = (u8 *)data + spec->offset;
     GF_ASSERT(spec->size != 0);
     return (struct SaveChunkFooter *)(ret + spec->size - sizeof(struct SaveChunkFooter));
 }
@@ -329,7 +331,7 @@ static BOOL ValidateSaveSectorFooter(SaveData *saveData, void *data, int idx) {
     struct SaveChunkFooter *footer;
     u32 offset;
 
-    spec = &saveData->saveSlotSpecs[idx];
+    spec   = &saveData->saveSlotSpecs[idx];
     footer = GetSaveSectorFooterPtr(saveData, data, idx);
     offset = spec->offset;
     SaveFooterDebugPrn(footer);
@@ -348,7 +350,7 @@ static BOOL ValidateSaveSectorFooter(SaveData *saveData, void *data, int idx) {
 static void SaveSlotCheck_InitFromSavedat(struct SaveSlotCheck *check, SaveData *saveData, void *data, int idx) {
     struct SaveChunkFooter *footer;
 
-    footer = GetSaveSectorFooterPtr(saveData, data, idx);
+    footer       = GetSaveSectorFooterPtr(saveData, data, idx);
     check->valid = ValidateSaveSectorFooter(saveData, data, idx);
     if (check->valid) {
         check->count = footer->count;
@@ -362,14 +364,14 @@ static void SaveSlot_BuildFooter(SaveData *saveData, void *data, int idx) {
     struct SaveChunkFooter *footer;
     u32 offset;
 
-    spec = &saveData->saveSlotSpecs[idx];
-    footer = GetSaveSectorFooterPtr(saveData, data, idx);
-    offset = spec->offset;
+    spec          = &saveData->saveSlotSpecs[idx];
+    footer        = GetSaveSectorFooterPtr(saveData, data, idx);
+    offset        = spec->offset;
     footer->count = saveData->saveCounter;
-    footer->size = spec->size;
+    footer->size  = spec->size;
     footer->magic = SAVE_CHUNK_MAGIC;
-    footer->slot = idx;
-    footer->crc = SaveArray_CalcCRC16MinusFooter(saveData, (u8 *)data + offset, spec->size);
+    footer->slot  = idx;
+    footer->crc   = SaveArray_CalcCRC16MinusFooter(saveData, (u8 *)data + offset, spec->size);
     SaveFooterDebugPrn(footer);
 }
 
@@ -420,7 +422,7 @@ static u32 SaveSlotCheckCompare(struct SaveSlotCheck *first, struct SaveSlotChec
 
 static void Save_RecordWhichLatestGoodSector(SaveData *saveData, struct SaveSlotCheck *checks_main, struct SaveSlotCheck *checks_sub, int idx) {
 #pragma unused(checks_sub)
-    saveData->saveCounter = checks_main[idx].count;
+    saveData->saveCounter    = checks_main[idx].count;
     saveData->lastGoodSector = idx;
 }
 
@@ -461,7 +463,7 @@ static int Save_GetSaveFilesStatus(SaveData *saveData) {
     numGood_main = SaveSlotCheckCompare(&checks_main[0], &checks_main[1], &newer_main, &older_main);
     __older_main = older_main;
     __newer_main = newer_main;
-    numGood_sub = SaveSlotCheckCompare(&checks_sub[0], &checks_sub[1], &newer_sub, &older_sub);
+    numGood_sub  = SaveSlotCheckCompare(&checks_sub[0], &checks_sub[1], &newer_sub, &older_sub);
 
     DebugPrn_MirrorValid(checks_main[0].valid);
     DebugPrn_MirrorValid(checks_main[1].valid);
@@ -532,7 +534,7 @@ static void Save_CheckFrontierData(SaveData *saveData, int *err1, int *err2) {
     u8 sp04;
     int i;
 
-    misc = Save_Misc_Get(saveData);
+    misc  = Save_Misc_Get(saveData);
     *err1 = 1;
     *err2 = 1;
     if (Save_CheckExtraChunksExist(saveData)) {
@@ -583,10 +585,10 @@ static BOOL Save_LoadDynamicRegion(SaveData *saveData) {
     for (i = 0; i < SAVE_BLOCK_NUM; i++) {
         saveData->arrayHeaders[i].crc = GF_CalcCRC16(SaveArray_Get(saveData, i), saveData->arrayHeaders[i].size);
     }
-    pc_offs = saveData->saveSlotSpecs[1].offset;
-    pc_size = PCStorage_GetSizeOfBox() * PCStorage_GetNumBoxes();
+    pc_offs                    = saveData->saveSlotSpecs[1].offset;
+    pc_size                    = PCStorage_GetSizeOfBox() * PCStorage_GetNumBoxes();
     saveData->pcStorageLastCRC = GF_CalcCRC16(data + pc_offs, pc_size);
-    sub_020310A0(saveData);
+    Save_Frontier_Load(saveData);
     sub_0202C6FC(saveData);
     return TRUE;
 }
@@ -611,17 +613,17 @@ static int Save_WriteChunkFooterAsync(SaveData *saveData, int idx, u8 slot) {
 static void Save_WriteManInit(SaveData *saveData, struct AsyncWriteManager *writeMan, int a2) {
 #pragma unused(a2)
     sub_0202C714(saveData);
-    sub_02031084(saveData);
+    Save_Frontier_Commit(saveData);
 
-    writeMan->state = 0;
-    writeMan->state_sub = 0;
+    writeMan->state           = 0;
+    writeMan->state_sub       = 0;
     writeMan->rollbackCounter = 0;
-    writeMan->waitingAsync = FALSE;
+    writeMan->waitingAsync    = FALSE;
     writeMan->rollbackCounter = 1;
-    writeMan->count = saveData->saveCounter;
+    writeMan->count           = saveData->saveCounter;
     saveData->saveCounter++;
-    writeMan->unk_4 = 0;
-    writeMan->curSector = 0;
+    writeMan->unk_4      = 0;
+    writeMan->curSector  = 0;
     writeMan->numSectors = 2;
     Sys_SetSleepDisableFlag(1);
 }
@@ -630,7 +632,7 @@ static int HandleWriteSaveAsync_NormalData(SaveData *saveData, struct AsyncWrite
     BOOL result;
     switch (writeMan->state) {
     case 0:
-        writeMan->lockId = Save_WriteSlotAsync(saveData, writeMan->curSector, saveData->lastGoodSector == 0);
+        writeMan->lockId       = Save_WriteSlotAsync(saveData, writeMan->curSector, saveData->lastGoodSector == 0);
         writeMan->waitingAsync = TRUE;
         writeMan->state++;
         // fallthrough
@@ -648,7 +650,7 @@ static int HandleWriteSaveAsync_NormalData(SaveData *saveData, struct AsyncWrite
         }
         // fallthrough
     case 2:
-        writeMan->lockId = Save_WriteChunkFooterAsync(saveData, writeMan->curSector, saveData->lastGoodSector == 0);
+        writeMan->lockId       = Save_WriteChunkFooterAsync(saveData, writeMan->curSector, saveData->lastGoodSector == 0);
         writeMan->waitingAsync = TRUE;
         writeMan->state++;
         // fallthrough
@@ -671,7 +673,7 @@ static int HandleWriteSaveAsync_NormalData(SaveData *saveData, struct AsyncWrite
 
 static void Save_WriteManFinish(SaveData *saveData, struct AsyncWriteManager *writeMan, int a2) {
     saveData->numModifiedBoxes = 0;
-    saveData->nextBoxToWrite = 0;
+    saveData->nextBoxToWrite   = 0;
     if (a2 == 3) {
         if (writeMan->rollbackCounter) {
             saveData->saveCounter = writeMan->count;
@@ -681,9 +683,9 @@ static void Save_WriteManFinish(SaveData *saveData, struct AsyncWriteManager *wr
         saveData->pcStorageLastCRC = saveData->pcStorageCRC;
         Save_ResetPCBoxModifiedFlags(saveData);
         saveData->sectorCleanFlag[saveData->lastGoodSector == 0] = 0;
-        saveData->lastGoodSector = saveData->lastGoodSector == 0;
-        saveData->saveFileExists = TRUE;
-        saveData->isNewGame = FALSE;
+        saveData->lastGoodSector                                 = saveData->lastGoodSector == 0;
+        saveData->saveFileExists                                 = TRUE;
+        saveData->isNewGame                                      = FALSE;
     }
     Sys_ClearSleepDisableFlag(1);
 }
@@ -744,16 +746,16 @@ static void SaveData_InitSubstructs(struct SaveArrayHeader *arr_hdr) {
     const struct SaveChunkHeader *hdr;
     int adrs;
 
-    hdr = gSaveChunkHeaders;
+    hdr  = gSaveChunkHeaders;
     adrs = 0;
     GF_ASSERT(gNumSaveChunkHeaders == SAVE_BLOCK_NUM);
     for (i = 0; i < gNumSaveChunkHeaders; i++) {
         GF_ASSERT(i == hdr[i].id);
-        arr_hdr[i].id = hdr[i].id;
-        arr_hdr[i].size = GetSaveChunkSizePlusCRC(i);
+        arr_hdr[i].id     = hdr[i].id;
+        arr_hdr[i].size   = GetSaveChunkSizePlusCRC(i);
         arr_hdr[i].offset = adrs;
-        arr_hdr[i].crc = 0;
-        arr_hdr[i].slot = hdr[i].block;
+        arr_hdr[i].crc    = 0;
+        arr_hdr[i].slot   = hdr[i].block;
         adrs += arr_hdr[i].size;
         if (i == gNumSaveChunkHeaders - 1 || hdr[i].block != hdr[i + 1].block) {
             adrs += sizeof(struct SaveChunkFooter);
@@ -772,18 +774,18 @@ static void SaveData_InitSlotSpecs(struct SaveSlotSpec *slotSpecs, struct SaveAr
     int j;
 
     npage = 0;
-    adrs = 0;
-    j = 0;
+    adrs  = 0;
+    j     = 0;
     for (i = 0; i < 2; i++) {
-        slotSpecs[i].id = i;
+        slotSpecs[i].id   = i;
         slotSpecs[i].size = 0;
         for (; i == headers[j].slot && j < gNumSaveChunkHeaders; j++) {
             slotSpecs[i].size += headers[j].size;
         }
         slotSpecs[i].size += sizeof(struct SaveChunkFooter);
         slotSpecs[i].firstPage = npage;
-        slotSpecs[i].offset = adrs;
-        slotSpecs[i].numPages = (slotSpecs[i].size + SAVE_SECTOR_SIZE - 1) / SAVE_SECTOR_SIZE;
+        slotSpecs[i].offset    = adrs;
+        slotSpecs[i].numPages  = (slotSpecs[i].size + SAVE_SECTOR_SIZE - 1) / SAVE_SECTOR_SIZE;
         npage += slotSpecs[i].numPages;
         adrs += slotSpecs[i].size;
         if (adrs % 0x100 != 0) {
@@ -804,7 +806,7 @@ static void Save_InitDynamicRegion_Internal(u8 *dynamic_region, struct SaveArray
     MI_CpuClearFast(dynamic_region, SAVE_PAGE_MAX * SAVE_SECTOR_SIZE);
     for (i = 0; i < gNumSaveChunkHeaders; i++) {
         adrs = headers[i].offset;
-        ptr = dynamic_region + adrs;
+        ptr  = dynamic_region + adrs;
         MI_CpuClearFast(ptr, headers[i].size);
         chunkHeaders[i].initFunc(ptr);
     }
@@ -840,11 +842,11 @@ static void CreateChunkFooter(SaveData *saveData, void *data, int idx, u32 size)
 
     footer = (struct SaveArrayFooter *)((u8 *)data + size);
 
-    footer->magic = SAVE_CHUNK_MAGIC;
+    footer->magic  = SAVE_CHUNK_MAGIC;
     footer->saveno = saveData->lastGoodSaveNo + 1;
-    footer->size = size;
-    footer->idx = idx;
-    footer->crc = GF_CalcCRC16(data, size + offsetof(struct SaveArrayFooter, crc));
+    footer->size   = size;
+    footer->idx    = idx;
+    footer->crc    = GF_CalcCRC16(data, size + offsetof(struct SaveArrayFooter, crc));
 }
 
 static BOOL ValidateChunk(SaveData *saveData, void *data, int idx, u32 size) {
@@ -959,43 +961,43 @@ void *ReadExtraSaveChunk(SaveData *saveData, HeapID heapId, int idx, int *ret_p)
     GF_ASSERT(hdr->id == idx);
 
     size = hdr->sizeFunc() + sizeof(struct SaveArrayFooter);
-    ret = AllocFromHeap(heapId, size);
+    ret  = AllocFromHeap(heapId, size);
     FlashLoadChunk(hdr->sector * SAVE_SECTOR_SIZE, ret, size);
-    valid1 = ValidateChunk(saveData, ret, idx, hdr->sizeFunc());
+    valid1  = ValidateChunk(saveData, ret, idx, hdr->sizeFunc());
     saveno1 = SaveArray_GetFooterSaveNo(ret, hdr->sizeFunc());
     FlashLoadChunk((hdr->sector + 64) * SAVE_SECTOR_SIZE, ret, size);
-    valid2 = ValidateChunk(saveData, ret, idx, hdr->sizeFunc());
+    valid2  = ValidateChunk(saveData, ret, idx, hdr->sizeFunc());
     saveno2 = SaveArray_GetFooterSaveNo(ret, hdr->sizeFunc());
 
     *ret_p = 1;
     if (valid1 == TRUE && valid2 == FALSE) {
         saveData->lastGoodSaveSlot = 0;
-        saveData->lastGoodSaveNo = saveno1;
+        saveData->lastGoodSaveNo   = saveno1;
         FlashLoadChunk(hdr->sector * SAVE_SECTOR_SIZE, ret, size);
         return ret;
     }
     if (valid1 == FALSE && valid2 == TRUE) {
         saveData->lastGoodSaveSlot = 1;
-        saveData->lastGoodSaveNo = saveno2;
+        saveData->lastGoodSaveNo   = saveno2;
         FlashLoadChunk((hdr->sector + 64) * SAVE_SECTOR_SIZE, ret, size);
         return ret;
     }
     if (valid1 == TRUE && valid2 == TRUE) {
         if (SaveCounterCompare(saveno1, saveno2) != -1) {
             saveData->lastGoodSaveSlot = 0;
-            saveData->lastGoodSaveNo = saveno1;
+            saveData->lastGoodSaveNo   = saveno1;
             FlashLoadChunk(hdr->sector * SAVE_SECTOR_SIZE, ret, size);
             return ret;
         } else {
             saveData->lastGoodSaveSlot = 1;
-            saveData->lastGoodSaveNo = saveno2;
+            saveData->lastGoodSaveNo   = saveno2;
             FlashLoadChunk((hdr->sector + 64) * SAVE_SECTOR_SIZE, ret, size);
             return ret;
         }
     }
-    *ret_p = 2;
+    *ret_p                     = 2;
     saveData->lastGoodSaveSlot = 0;
-    saveData->lastGoodSaveNo = 0;
+    saveData->lastGoodSaveNo   = 0;
     return ret;
 }
 
@@ -1019,7 +1021,7 @@ void *sub_020284A4(SaveData *saveData, HeapID heapId, int idx, int *ret_p, int *
     hdr = &gExtraSaveChunkHeaders[idx];
     GF_ASSERT(hdr->id == idx);
     size = hdr->sizeFunc() + sizeof(struct SaveArrayFooter);
-    ret = AllocFromHeap(heapId, size);
+    ret  = AllocFromHeap(heapId, size);
     sub_020286B4(saveData, idx, &sp24, &sp20, &sp1C);
     FlashLoadChunk(hdr->sector * SAVE_SECTOR_SIZE, ret, size);
     valid1 = ValidateChunk(saveData, ret, idx, hdr->sizeFunc());
@@ -1027,7 +1029,7 @@ void *sub_020284A4(SaveData *saveData, HeapID heapId, int idx, int *ret_p, int *
     FlashLoadChunk((hdr->sector + 64) * SAVE_SECTOR_SIZE, ret, size);
     valid2 = ValidateChunk(saveData, ret, idx, hdr->sizeFunc());
     MI_CpuCopy8(ret, &sp28, sizeof(u32));
-    *ret_p = 1;
+    *ret_p  = 1;
     *ret2_p = 0;
     if (valid1 == TRUE && valid2 == FALSE && sp24 == sp2C) {
         if (sp1C == 1) {
@@ -1056,7 +1058,7 @@ void *sub_020284A4(SaveData *saveData, HeapID heapId, int idx, int *ret_p, int *
                 FlashLoadChunk((hdr->sector + 64) * SAVE_SECTOR_SIZE, ret, size);
                 return ret;
             }
-        } else{
+        } else {
             if (sp24 == sp28) {
                 FlashLoadChunk((hdr->sector + 64) * SAVE_SECTOR_SIZE, ret, size);
                 return ret;
@@ -1183,10 +1185,10 @@ BOOL SaveSubstruct_AssertCRC(int idx) {
     u16 *data_u16;
     u16 crc;
 
-    data = SaveArray_Get(SaveData_Get(), idx);
+    data     = SaveArray_Get(SaveData_Get(), idx);
     data_u16 = (u16 *)data;
-    size = GetSaveChunkSizePlusCRC(idx) - 4;
-    crc = GF_CalcCRC16(data, size);
+    size     = GetSaveChunkSizePlusCRC(idx) - 4;
+    crc      = GF_CalcCRC16(data, size);
     if (crc == data_u16[size / 2]) {
         return TRUE;
     }
@@ -1201,10 +1203,10 @@ void SaveSubstruct_UpdateCRC(int idx) {
     u16 *data_u16;
     u16 crc;
 
-    data = SaveArray_Get(SaveData_Get(), idx);
-    data_u16 = (u16 *)data;
-    size = GetSaveChunkSizePlusCRC(idx) - 4;
-    crc = GF_CalcCRC16(data, size);
+    data               = SaveArray_Get(SaveData_Get(), idx);
+    data_u16           = (u16 *)data;
+    size               = GetSaveChunkSizePlusCRC(idx) - 4;
+    crc                = GF_CalcCRC16(data, size);
     data_u16[size / 2] = crc;
 }
 
@@ -1216,21 +1218,21 @@ static int HandleWriteSaveAsync_PCBoxes(SaveData *saveData, struct AsyncWriteMan
     switch (writeMan->state) {
     case 0:
         saveData->newBoxModifiedFlags = Save_CalcPCBoxModifiedFlags(saveData);
-        saveData->numModifiedBoxes = PCModifiedFlags_CountModifiedBoxes(saveData->newBoxModifiedFlags);
-        saveData->nextBoxToWrite = 0;
-        r7 = PCStorage_GetSizeOfBox() * PCStorage_GetNumBoxes();
-        saveData->pcStorageCRC = GF_CalcCRC16(SaveArray_Get(saveData, SAVE_PCSTORAGE), r7);
+        saveData->numModifiedBoxes    = PCModifiedFlags_CountModifiedBoxes(saveData->newBoxModifiedFlags);
+        saveData->nextBoxToWrite      = 0;
+        r7                            = PCStorage_GetSizeOfBox() * PCStorage_GetNumBoxes();
+        saveData->pcStorageCRC        = GF_CalcCRC16(SaveArray_Get(saveData, SAVE_PCSTORAGE), r7);
         if (saveData->numModifiedBoxes == 0) {
             GF_ASSERT(saveData->pcStorageCRC == saveData->pcStorageLastCRC);
             sub_020271A0(saveData);
             if (saveData->pcStorageCRC != saveData->pcStorageLastCRC) {
-                saveData->numModifiedBoxes = PCStorage_GetNumBoxes();
+                saveData->numModifiedBoxes    = PCStorage_GetNumBoxes();
                 saveData->newBoxModifiedFlags = BOX_ALL_MODIFIED_FLAG;
                 Save_SetAllPCBoxesModified(saveData);
             }
         }
         writeMan->state_sub = 0;
-        data = saveData->dynamic_region;
+        data                = saveData->dynamic_region;
         SaveSlot_BuildFooter(saveData, data, writeMan->curSector);
         GetSaveSectorFooterPtr(saveData, data, writeMan->curSector);
         writeMan->state++;
@@ -1248,7 +1250,7 @@ static int HandleWriteSaveAsync_PCBoxes(SaveData *saveData, struct AsyncWriteMan
         }
         break;
     case 2:
-        writeMan->lockId = Save_WriteChunkFooterAsync(saveData, writeMan->curSector, saveData->lastGoodSector == 0);
+        writeMan->lockId       = Save_WriteChunkFooterAsync(saveData, writeMan->curSector, saveData->lastGoodSector == 0);
         writeMan->waitingAsync = 1;
         writeMan->state++;
         // fallthrough
@@ -1281,7 +1283,7 @@ static int Save_WritePCBoxes(SaveData *saveData, struct AsyncWriteManager *write
         }
         break;
     case 1:
-        writeMan->lockId = Save_WriteNextPCBox(saveData, &saveData->saveSlotSpecs[writeMan->curSector], saveData->lastGoodSector == 0);
+        writeMan->lockId       = Save_WriteNextPCBox(saveData, &saveData->saveSlotSpecs[writeMan->curSector], saveData->lastGoodSector == 0);
         writeMan->waitingAsync = 1;
         writeMan->state_sub++;
         // fallthrough
@@ -1296,14 +1298,14 @@ static int Save_WritePCBoxes(SaveData *saveData, struct AsyncWriteManager *write
         }
         break;
     case 3:
-        writeMan->lockId = Save_WritePCFooter(saveData, &saveData->saveSlotSpecs[writeMan->curSector], saveData->lastGoodSector == 0);
+        writeMan->lockId       = Save_WritePCFooter(saveData, &saveData->saveSlotSpecs[writeMan->curSector], saveData->lastGoodSector == 0);
         writeMan->waitingAsync = 1;
         writeMan->state_sub++;
         // fallthrough
     case 4:
         if (WaitFlashWrite(writeMan->lockId, writeMan->waitingAsync, &write_ok)) {
             writeMan->waitingAsync = 0;
-            writeMan->state_sub = 0;
+            writeMan->state_sub    = 0;
             if (!write_ok) {
                 return 0;
             }
@@ -1320,8 +1322,8 @@ static int Save_WriteNextPCBox(SaveData *saveData, struct SaveSlotSpec *spec, u8
     u32 offset;
 
     box_size = PCStorage_GetSizeOfBox();
-    offset = GetChunkOffsetFromCurrentSaveSlot(slot, spec);
-    boxno = PCModifiedFlags_GetIndexOfNthModifiedBox(saveData->newBoxModifiedFlags, saveData->nextBoxToWrite);
+    offset   = GetChunkOffsetFromCurrentSaveSlot(slot, spec);
+    boxno    = PCModifiedFlags_GetIndexOfNthModifiedBox(saveData->newBoxModifiedFlags, saveData->nextBoxToWrite);
     GF_ASSERT(boxno != 0xFF);
     return FlashWriteChunkInternal(offset + box_size * boxno, saveData->dynamic_region + spec->offset + box_size * boxno, box_size);
 }
@@ -1336,15 +1338,15 @@ static int Save_WritePCFooter(SaveData *saveData, struct SaveSlotSpec *spec, u8 
     u32 pc_size;
     u16 crc;
 
-    pc_size = PCStorage_GetSizeOfBox() * PCStorage_GetNumBoxes();
-    offset = GetChunkOffsetFromCurrentSaveSlot(slot, spec);
-    data = saveData->dynamic_region + spec->offset;
+    pc_size     = PCStorage_GetSizeOfBox() * PCStorage_GetNumBoxes();
+    offset      = GetChunkOffsetFromCurrentSaveSlot(slot, spec);
+    data        = saveData->dynamic_region + spec->offset;
     sector_size = spec->size - sizeof(struct SaveChunkFooter);
     GF_ASSERT(sector_size != 0);
     dynamic_region_ptr = saveData->dynamic_region;
-    spec_offset = spec->offset;
-    footer = GetSaveSectorFooterPtr(saveData, dynamic_region_ptr, 1);
-    crc = SaveArray_CalcCRC16MinusFooter(saveData, (u8 *)dynamic_region_ptr + spec_offset, spec->size);
+    spec_offset        = spec->offset;
+    footer             = GetSaveSectorFooterPtr(saveData, dynamic_region_ptr, 1);
+    crc                = SaveArray_CalcCRC16MinusFooter(saveData, (u8 *)dynamic_region_ptr + spec_offset, spec->size);
     GF_ASSERT(crc == footer->crc);
     return FlashWriteChunkInternal(offset + pc_size, data + pc_size, sector_size - pc_size);
 }

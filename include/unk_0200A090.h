@@ -71,7 +71,7 @@ typedef struct GF_2DGfxResHeaderNarc {
 
 typedef struct GF_2DGfxResHeaderNarcList {
     GfGfxResType type;
-    GF_2DGfxResHeaderNarc internal[];  // arbitrary length
+    GF_2DGfxResHeaderNarc internal[]; // arbitrary length
 } GF_2DGfxResHeaderNarcList;
 
 typedef struct GF_2DGfxResHeader {
@@ -119,16 +119,16 @@ NNSG2dAnimBankData *GF2DGfxResObj_GetMultiAnimDataPtr(GF_2DGfxResObj *obj);
 GfGfxResType GF2DGfxResObj_GetResType(GF_2DGfxResObj *obj);
 NNS_G2D_VRAM_TYPE GF2DGfxResObj_GetLoadAddress(GF_2DGfxResObj *obj);
 int GF2DGfxResObj_GetPlttNum(GF_2DGfxResObj *obj);
-u32 sub_0200A8FC(void);
-GF_2DGfxResHeader *sub_0200A900(GF_2DGfxResHeader *headers, int num);
-void sub_0200A908(const GF_2DGfxResHeaderNarcList *a0, GF_2DGfxResHeader *header, HeapID heapId);
-void sub_0200A954(GF_2DGfxResHeader *header);
-int sub_0200A96C(const GF_2DGfxResHeader *header);
-int sub_0200A97C(GF_2DGfxResHeader *header, int idx);
-int sub_0200A9B0(GF_2DGfxResHeader *header, int idx);
-BOOL sub_0200A9DC(GF_2DGfxResHeader *header, int idx);
-int sub_0200AA08(GF_2DGfxResHeader *header, int idx);
-int sub_0200AA3C(GF_2DGfxResHeader *header, int idx);
-void sub_0200AA9C(GF_2DGfxResObj *obj, GfGfxResType type, NNS_G2D_VRAM_TYPE vram, int pltt_num, HeapID heapId);
+u32 GF2DGfxResHeader_sizeof(void);
+GF_2DGfxResHeader *GF2DGfxResHeader_GetByIndex(GF_2DGfxResHeader *headers, int num);
+void GF2DGfxResHeader_Init(const GF_2DGfxResHeaderNarcList *a0, GF_2DGfxResHeader *header, HeapID heapId);
+void GF2DGfxResHeader_Reset(GF_2DGfxResHeader *header);
+int GF2dGfxResHeader_GetNumObjects(const GF_2DGfxResHeader *header);
+int GF2dGfxResHeader_GetObjIdByIndex(GF_2DGfxResHeader *header, int idx);
+int GF2DGfxResHeader_GetNarcMemberIdByIndex(GF_2DGfxResHeader *header, int idx);
+BOOL GF2DGfxResHeader_GetCompressFlagByIndex(GF_2DGfxResHeader *header, int idx);
+int GF2DGfxResHeader_GetExDat0ByIndex(GF_2DGfxResHeader *header, int idx);
+int GF2DGfxResHeader_GetExDat1ByIndex(GF_2DGfxResHeader *header, int idx);
+void GF2DGfxResObj_LoadExDat(GF_2DGfxResObj *obj, GfGfxResType type, NNS_G2D_VRAM_TYPE vram, int pltt_num, HeapID heapId);
 
-#endif //POKEHEARTGOLD_UNK_0200A090_H
+#endif // POKEHEARTGOLD_UNK_0200A090_H

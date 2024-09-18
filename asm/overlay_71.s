@@ -351,7 +351,7 @@ _02246C44: .word ov71_0224BBF4
 ov71_02246C48: ; 0x02246C48
 	push {r3, lr}
 	ldr r0, [r1, #0x18]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	bl OamManager_ApplyAndResetBuffers
 	ldr r3, _02246C64 ; =0x027E0000
 	ldr r1, _02246C68 ; =0x00003FF8
@@ -1289,15 +1289,15 @@ ov71_02247340: ; 0x02247340
 	mov r0, #0x38
 	str r0, [sp, #0x1c]
 	add r0, sp, #0
-	bl sub_02024714
+	bl Sprite_Create
 	add r4, r0, #0
 	beq _0224737C
 	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0xc
-	bl sub_02024868
+	bl Sprite_SetAnimSpeed
 _0224737C:
 	add r0, r4, #0
 	add sp, #0x20
@@ -2487,10 +2487,10 @@ ov71_02247C34: ; 0x02247C34
 	beq _02247C5A
 	ldr r0, [r4, #0x3c]
 	mov r1, #1
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r4, #0x3c]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r0, #1
 	pop {r4, pc}
 _02247C5A:
@@ -2730,10 +2730,10 @@ _02247E2A:
 	bl Pokepic_Delete
 	ldr r0, [r5, #0x40]
 	mov r1, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r5, #0x40]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -3002,10 +3002,10 @@ ov71_02247FF8: ; 0x02247FF8
 	bl Sprite_SetPriority
 	ldr r0, [r4, #0x3c]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, [r4, #0x40]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add sp, #0x70
 	pop {r4, pc}
 	thumb_func_end ov71_02247FF8
@@ -4310,16 +4310,16 @@ _02248AA2:
 	str r0, [r4, #0x20]
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r4, #0x20]
 	mov r1, #1
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, [r4, #0x20]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, [sp, #0x14]
 	add r4, #8
 	add r0, r0, #1
@@ -4530,12 +4530,12 @@ _02248C66:
 	mov r1, #1
 	add r0, r0, r4
 	ldr r0, [r0, #0x1c]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, [r5, #4]
 	mov r1, #1
 	add r0, r0, r4
 	ldr r0, [r0, #0x20]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 _02248CA6:
 	ldr r0, [r5, #4]
 	add r1, r7, #0
@@ -5767,10 +5767,10 @@ _022495FA:
 	bl PlaySE
 	ldr r0, [r5, #0x20]
 	mov r1, #3
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r5, #0x20]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -6164,7 +6164,7 @@ ov71_022498F0: ; 0x022498F0
 	bl ov71_02247340
 	mov r1, #0
 	str r0, [r4, #0x20]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add sp, #0x70
 	pop {r4, pc}
 	.balign 4, 0
@@ -7257,10 +7257,10 @@ _0224A1E6:
 	beq _0224A26A
 	ldr r0, [r5, #0x20]
 	mov r1, #3
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r5, #0x20]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -7682,7 +7682,7 @@ ov71_0224A510: ; 0x0224A510
 	bl ov71_02247340
 	mov r1, #0
 	str r0, [r4, #0x20]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add sp, #0x70
 	pop {r4, pc}
 	.balign 4, 0
@@ -9543,10 +9543,10 @@ ov71_0224B450: ; 0x0224B450
 	beq _0224B476
 	ldr r0, [r4, #0x40]
 	mov r1, #1
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r4, #0x40]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r0, #1
 	pop {r4, pc}
 _0224B476:
@@ -9591,10 +9591,10 @@ _0224B4AE:
 	bne _0224B576
 	ldr r0, [r4, #0x44]
 	mov r1, #2
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r4, #0x44]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, [r4, #0x78]
 	mov r1, #0
 	bl ov71_02247704
@@ -10093,10 +10093,10 @@ ov71_0224B848: ; 0x0224B848
 	bl Sprite_SetPriority
 	ldr r0, [r4, #0x40]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, [r4, #0x44]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add sp, #0x70
 	pop {r4, pc}
 	thumb_func_end ov71_0224B848

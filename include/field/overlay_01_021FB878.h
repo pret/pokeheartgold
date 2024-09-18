@@ -16,7 +16,7 @@ typedef struct Field3DModelAnimation {
     void *animRaw;
     NNSG3dAnmObj *animObj;
     int frame;
-    BOOL shouldRetainData;  // if FALSE, fileDataRaw is freed on unload
+    BOOL shouldRetainData; // if FALSE, fileDataRaw is freed on unload
 } Field3DModelAnimation;
 
 typedef struct Field3dObject {
@@ -42,4 +42,4 @@ void Field3dObject_Draw(Field3dObject *object);
 void Field3dObject_SetActiveFlag(Field3dObject *object, BOOL active);
 void Field3dObject_SetPosEx(Field3dObject *object, fx32 x, fx32 y, fx32 z);
 
-#endif //POKEHEARTGOLD_FIELD_OVERLAY_01_021FB878_H
+#endif // POKEHEARTGOLD_FIELD_OVERLAY_01_021FB878_H

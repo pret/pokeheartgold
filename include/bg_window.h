@@ -2,8 +2,9 @@
 #define POKEHEARTGOLD_BG_WINDOW_H
 
 #include "global.h"
-#include "heap.h"
+
 #include "gf_gfx_planes.h"
+#include "heap.h"
 
 typedef struct BgTemplate {
     u32 x;
@@ -72,7 +73,7 @@ typedef struct Window {
     u8 width;
     u8 height;
     u8 paletteNum;
-    u16 baseTile : 15;
+    u16 baseTile  : 15;
     u16 colorMode : 1;
     void *pixelBuffer;
 } Window;
@@ -99,16 +100,16 @@ enum GFPalLoadLocation {
 };
 
 enum GFPalSlotOffset {
-    GF_PAL_SLOT_0_OFFSET = 0x00,
-    GF_PAL_SLOT_1_OFFSET = 0x20,
-    GF_PAL_SLOT_2_OFFSET = 0x40,
-    GF_PAL_SLOT_3_OFFSET = 0x60,
-    GF_PAL_SLOT_4_OFFSET = 0x80,
-    GF_PAL_SLOT_5_OFFSET = 0xA0,
-    GF_PAL_SLOT_6_OFFSET = 0xC0,
-    GF_PAL_SLOT_7_OFFSET = 0xE0,
-    GF_PAL_SLOT_8_OFFSET = 0x100,
-    GF_PAL_SLOT_9_OFFSET = 0x120,
+    GF_PAL_SLOT_0_OFFSET  = 0x00,
+    GF_PAL_SLOT_1_OFFSET  = 0x20,
+    GF_PAL_SLOT_2_OFFSET  = 0x40,
+    GF_PAL_SLOT_3_OFFSET  = 0x60,
+    GF_PAL_SLOT_4_OFFSET  = 0x80,
+    GF_PAL_SLOT_5_OFFSET  = 0xA0,
+    GF_PAL_SLOT_6_OFFSET  = 0xC0,
+    GF_PAL_SLOT_7_OFFSET  = 0xE0,
+    GF_PAL_SLOT_8_OFFSET  = 0x100,
+    GF_PAL_SLOT_9_OFFSET  = 0x120,
     GF_PAL_SLOT_10_OFFSET = 0x140,
     GF_PAL_SLOT_11_OFFSET = 0x160,
     GF_PAL_SLOT_12_OFFSET = 0x180,
@@ -194,12 +195,12 @@ typedef struct GraphicsModes {
     GXBG0As _2d3dMode;
 } GraphicsModes;
 
-#define TILEMAP_COPY_SRC_FLAT       0  // Source dimensions are equal to dest dimensions
-#define TILEMAP_COPY_SRC_RECT       1  // Dest dimensions carve out a window from source
+#define TILEMAP_COPY_SRC_FLAT 0 // Source dimensions are equal to dest dimensions
+#define TILEMAP_COPY_SRC_RECT 1 // Dest dimensions carve out a window from source
 
 // Passed to FillBgTilemapRect(Text) mode arg. 0-15 = palette selection. 16,17 as defined.
-#define TILEMAP_FILL_KEEP_PAL      16  // Do not replace the selected palette index
-#define TILEMAP_FILL_OVWT_PAL      17  // Fill value includes palette
+#define TILEMAP_FILL_KEEP_PAL 16 // Do not replace the selected palette index
+#define TILEMAP_FILL_OVWT_PAL 17 // Fill value includes palette
 
 BgConfig *BgConfig_Alloc(HeapID heapId);
 HeapID BgConfig_GetHeapId(BgConfig *bgConfig);
@@ -222,7 +223,7 @@ void BG_LoadScreenTilemapData(BgConfig *bgConfig, u8 bgId, const void *data, u32
 void BG_LoadCharTilesData(BgConfig *bgConfig, u8 bgId, const void *data, u32 size, u32 tileStart);
 void BG_ClearCharDataRange(u8 bgId, u32 size, u32 offset, HeapID heapId);
 void BG_FillCharDataRange(BgConfig *bgConfig, GFBgLayer bgId, u32 fillValue, u32 ntiles, u32 offset);
-void BG_LoadPlttData(u32 location, const void *plttData, u32 size, u32 offset);
+void BG_LoadPlttData(u32 location, const void *plttData, u16 size, u16 offset);
 void BG_LoadBlankPltt(u32 location, u32 size, u32 offset, HeapID heapId);
 void BG_SetMaskColor(u8 bgId, u16 value);
 void LoadRectToBgTilemapRect(BgConfig *bgConfig, u8 bgId, const void *buffer, u8 destX, u8 destY, u8 width, u8 height);
@@ -246,7 +247,7 @@ BOOL WindowIsInUse(const Window *window);
 void AddWindowParameterized(BgConfig *bgConfig, Window *window, u8 bgId, u8 x, u8 y, u8 width, u8 height, u8 paletteNum, u16 baseTile);
 void AddTextWindowTopLeftCorner(BgConfig *bgConfig, Window *window, u8 width, u8 height, u16 baseTile, u8 paletteNum);
 void AddWindow(BgConfig *bgConfig, Window *window, const WindowTemplate *template);
-void RemoveWindow(Window* window);
+void RemoveWindow(Window *window);
 void WindowArray_Delete(Window *windows, s32 count);
 void CopyWindowToVram(Window *window);
 void ScheduleWindowCopyToVram(Window *window);
@@ -278,4 +279,4 @@ void ScheduleSetBgPosText(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustOp op, in
 void ScheduleSetBgAffineScale(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustOp op, int value);
 BOOL DoesPixelAtScreenXYMatchPtrVal(BgConfig *bgConfig, u8 bgId, u8 x, u8 y, u16 *src);
 
-#endif //POKEHEARTGOLD_BG_WINDOW_H
+#endif // POKEHEARTGOLD_BG_WINDOW_H

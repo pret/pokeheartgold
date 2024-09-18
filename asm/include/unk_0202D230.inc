@@ -45,7 +45,7 @@
 .public sub_0202D908
 .public Save_FrontierData_Get
 .public sub_0202D928
-.public sub_0203107C
+.public Save_Frontier_GetStatic
 .public MI_CpuFill8
 .public MI_CpuCopy8
 .public _s32_div_f

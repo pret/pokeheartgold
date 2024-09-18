@@ -68,7 +68,7 @@ _02030AE4:
 	thumb_func_start sub_02030AE8
 sub_02030AE8: ; 0x02030AE8
 	push {r3, lr}
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	ldr r1, _02030AF4 ; =0x00001618
 	add r0, r0, r1
 	pop {r3, pc}
@@ -89,7 +89,7 @@ _02030B00: .word MI_CpuFill8
 	thumb_func_start sub_02030B04
 sub_02030B04: ; 0x02030B04
 	push {r3, lr}
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	mov r1, #0x8e
 	lsl r1, r1, #4
 	add r0, r0, r1
@@ -310,7 +310,7 @@ _02030C58: .word MI_CpuFill8
 	thumb_func_start sub_02030C5C
 sub_02030C5C: ; 0x02030C5C
 	push {r3, lr}
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	ldr r1, _02030C68 ; =0x0000161C
 	add r0, r0, r1
 	pop {r3, pc}
@@ -380,7 +380,7 @@ _02030CC4: .word MI_CpuFill8
 	thumb_func_start sub_02030CC8
 sub_02030CC8: ; 0x02030CC8
 	push {r3, lr}
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	mov r1, #0x8e
 	lsl r1, r1, #4
 	add r0, r0, r1
@@ -583,7 +583,7 @@ _02030E04: .word MI_CpuFill8
 	thumb_func_start sub_02030E08
 sub_02030E08: ; 0x02030E08
 	push {r3, lr}
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	ldr r1, _02030E14 ; =0x00001620
 	add r0, r0, r1
 	pop {r3, pc}
@@ -667,7 +667,7 @@ _02030E84: .word MI_CpuFill8
 	thumb_func_start sub_02030E88
 sub_02030E88: ; 0x02030E88
 	push {r3, lr}
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	mov r1, #0x8e
 	lsl r1, r1, #4
 	add r0, r0, r1
@@ -848,7 +848,7 @@ _02030F9C: .word MI_CpuFill8
 	thumb_func_start sub_02030FA0
 sub_02030FA0: ; 0x02030FA0
 	push {r3, lr}
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	ldr r1, _02030FAC ; =0x00001624
 	add r0, r0, r1
 	pop {r3, pc}
@@ -905,16 +905,16 @@ _02030FF6:
 	.balign 4, 0
 	thumb_func_end sub_02030FE4
 
-	thumb_func_start sub_02031000
-sub_02031000: ; 0x02031000
+	thumb_func_start Save_Frontier_sizeof
+Save_Frontier_sizeof: ; 0x02031000
 	ldr r0, _02031004 ; =0x00001628
 	bx lr
 	.balign 4, 0
 _02031004: .word 0x00001628
-	thumb_func_end sub_02031000
+	thumb_func_end Save_Frontier_sizeof
 
-	thumb_func_start sub_02031008
-sub_02031008: ; 0x02031008
+	thumb_func_start Save_Frontier_Init
+Save_Frontier_Init: ; 0x02031008
 	push {r4, lr}
 	ldr r2, _02031058 ; =0x00001628
 	mov r1, #0
@@ -956,18 +956,18 @@ _0203106C: .word 0x0000161C
 _02031070: .word 0x00001620
 _02031074: .word 0x00001624
 _02031078: .word _021D2AFC
-	thumb_func_end sub_02031008
+	thumb_func_end Save_Frontier_Init
 
-	thumb_func_start sub_0203107C
-sub_0203107C: ; 0x0203107C
+	thumb_func_start Save_Frontier_GetStatic
+Save_Frontier_GetStatic: ; 0x0203107C
 	ldr r0, _02031080 ; =_021D2AFC
 	bx lr
 	.balign 4, 0
 _02031080: .word _021D2AFC
-	thumb_func_end sub_0203107C
+	thumb_func_end Save_Frontier_GetStatic
 
-	thumb_func_start sub_02031084
-sub_02031084: ; 0x02031084
+	thumb_func_start Save_Frontier_Commit
+Save_Frontier_Commit: ; 0x02031084
 	push {r3, lr}
 	mov r1, #0x13
 	bl SaveArray_Get
@@ -979,10 +979,10 @@ sub_02031084: ; 0x02031084
 	.balign 4, 0
 _02031098: .word _021D2AFC
 _0203109C: .word 0x00001628
-	thumb_func_end sub_02031084
+	thumb_func_end Save_Frontier_Commit
 
-	thumb_func_start sub_020310A0
-sub_020310A0: ; 0x020310A0
+	thumb_func_start Save_Frontier_Load
+Save_Frontier_Load: ; 0x020310A0
 	push {r3, lr}
 	mov r1, #0x13
 	bl SaveArray_Get
@@ -993,10 +993,10 @@ sub_020310A0: ; 0x020310A0
 	nop
 _020310B4: .word _021D2AFC
 _020310B8: .word 0x00001628
-	thumb_func_end sub_020310A0
+	thumb_func_end Save_Frontier_Load
 
-	thumb_func_start sub_020310BC
-sub_020310BC: ; 0x020310BC
+	thumb_func_start FrontierSave_GetStat
+FrontierSave_GetStat: ; 0x020310BC
 	push {r3, lr}
 	cmp r1, #0x70
 	bge _020310E6
@@ -1038,7 +1038,7 @@ _020310F6:
 	ldrh r0, [r0]
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_020310BC
+	thumb_func_end FrontierSave_GetStat
 
 	thumb_func_start sub_02031108
 sub_02031108: ; 0x02031108
@@ -1165,7 +1165,7 @@ _020311DC:
 	add r0, r6, #0
 	add r1, r4, #0
 	add r2, r5, #1
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r3, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
@@ -1210,7 +1210,7 @@ sub_02031228: ; 0x02031228
 	add r5, r0, #0
 	add r6, r1, #0
 	add r7, r2, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	add r0, r0, r4
 	lsl r0, r0, #0x10
 	lsr r3, r0, #0x10
@@ -1228,7 +1228,7 @@ sub_02031248: ; 0x02031248
 	add r6, r1, #0
 	add r7, r2, #0
 	add r4, r3, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	sub r3, r0, r4
 	bpl _0203125C
 	mov r3, #0
@@ -1249,7 +1249,7 @@ sub_0203126C: ; 0x0203126C
 	add r6, r1, #0
 	add r7, r2, #0
 	add r4, r3, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	cmp r0, r4
 	bhs _0203128C
 	add r0, r5, #0
@@ -1502,16 +1502,16 @@ _02031418:
 	pop {r4, r5, r6, r7, pc}
 _02031428:
 	add r0, r5, #0
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	ldr r2, [sp, #8]
 	str r0, [sp, #0x18]
 	add r1, r6, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0x18]
 	ldr r1, [sp, #4]
 	ldr r2, [sp, #8]
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	str r0, [sp, #0x10]
 	ldr r1, [sp, #0x34]
 	add r0, r5, #0
@@ -1592,7 +1592,7 @@ sub_020314C4: ; 0x020314C4
 	bl Save_PlayerData_GetProfileAddr
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0202CA44
+	bl Save_WiFiHistory_Get
 	str r0, [sp]
 	add r0, r6, #0
 	bl Save_SysInfo_Get
@@ -1644,10 +1644,10 @@ sub_020314C4: ; 0x020314C4
 	orr r0, r1
 	strb r0, [r5, #0x1b]
 	ldr r0, [sp]
-	bl sub_0202CA8C
+	bl WifiHistory_GetPlayerCountry
 	strb r0, [r5, #0x17]
 	ldr r0, [sp]
-	bl sub_0202CA90
+	bl WiFiHistory_GetPlayerRegion
 	strb r0, [r5, #0x18]
 	ldr r0, _020315B4 ; =0x0000FFFF
 	mov r1, #0

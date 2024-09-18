@@ -1,18 +1,18 @@
 #ifndef POKEHEARTGOLD_BATTLE_ARCADE_GAME_BOARD_H
 #define POKEHEARTGOLD_BATTLE_ARCADE_GAME_BOARD_H
 
-#include "msgdata.h"
+#include "bg_window.h"
 #include "message_format.h"
+#include "msgdata.h"
 #include "overlay_manager.h"
 #include "party.h"
 #include "player_data.h"
 #include "save.h"
 #include "save_frontier.h"
-#include "bg_window.h"
+#include "sprite.h"
 #include "unk_02009D48.h"
-#include "unk_02023694.h"
 
-#define ARCADE_ENEMY_POKEMON_MAX    4
+#define ARCADE_ENEMY_POKEMON_MAX 4
 
 typedef struct GAME_BOARD_ARGS {
     SaveData *saveData;
@@ -48,10 +48,10 @@ typedef struct GAME_BOARD_SUB_3B4 {
     u8 unk8;
     u8 unk9;
     u8 unkA;
-    u8 unkB_0:4;
-    u8 unkB_4:2;
-    u8 unkB_6:2;
-} GAME_BOARD_SUB_3B4; //size: 0xC
+    u8 unkB_0 : 4;
+    u8 unkB_4 : 2;
+    u8 unkB_6 : 2;
+} GAME_BOARD_SUB_3B4; // size: 0xC
 
 typedef struct GAME_BOARD_SUB_3C4 {
     void *unk0;
@@ -67,7 +67,7 @@ typedef struct GAME_BOARD_SUB_3E8 {
 
 typedef struct GAME_BOARD_WORK {
     OVY_MANAGER *man;
-    FRONTIER_SAVE *frontierSaveData;
+    FrontierSave *frontierSaveData;
     u8 substate;
     u8 type;
     u8 unkA;
@@ -79,8 +79,8 @@ typedef struct GAME_BOARD_WORK {
     u8 unk10;
     u8 unk11;
     u8 unk12;
-    u8 unk13_0:1;
-    u8 unk13_1:7;
+    u8 unk13_0 : 1;
+    u8 unk13_1 : 7;
     u8 unk14;
     u8 unk15;
     u16 cursorPosStart;
@@ -93,8 +93,8 @@ typedef struct GAME_BOARD_WORK {
     u8 boardHeight;
     u8 boardWidth;
     u8 boardArea;
-    u8 unk2F_0:1;
-    u8 unk2F_1:7;
+    u8 unk2F_0 : 1;
+    u8 unk2F_1 : 7;
     u8 unk30[4];
     u8 unk34[16];
     u8 unk44[32];

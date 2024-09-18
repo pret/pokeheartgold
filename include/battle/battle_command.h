@@ -4,7 +4,7 @@
 #include "battle/battle.h"
 #include "battle/battle_system.h"
 
-//Realistically these should all be static in battle_command.c, but there's an array in battle_command_data.s that needs these functions so we have to keep them public until that can be decompiled, and at the same time we don't want the compiler to allow for functions without declarations, hence the existance of this header file
+// Realistically these should all be static in battle_command.c, but there's an array in battle_command_data.s that needs these functions so we have to keep them public until that can be decompiled, and at the same time we don't want the compiler to allow for functions without declarations, hence the existance of this header file
 
 BOOL RunBattleScript(BattleSystem *bsys, BattleContext *ctx);
 BOOL BtlCmd_PlayEncounterAnimation(BattleSystem *bsys, BattleContext *ctx);

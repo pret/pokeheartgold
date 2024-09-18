@@ -42,7 +42,7 @@ scr_seq_T24GYM0101_000:
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
 	addvar VAR_UNK_4134, 1
-	add_special_game_stat 22
+	add_special_game_stat SCORE_EVENT_22
 	setvar VAR_UNK_4116, 1
 	compare VAR_UNK_4134, 3
 	goto_if_ne _00A6

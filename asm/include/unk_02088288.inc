@@ -32,7 +32,7 @@
 .public StringExpandPlaceholders
 .public MessagePrinter_New
 .public MessagePrinter_Delete
-.public sub_0200D020
+.public SpriteGfxHandler_RenderAndAnimateSprites
 .public thunk_OamManager_ApplyAndResetBuffers
 .public thunk_Set2dSpriteVisibleFlag
 .public thunk_Sprite_SetPalIndex
@@ -78,9 +78,9 @@
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_DisableEngineBPlanes
 .public GfGfx_BothDispOn
-.public Set2dSpriteVisibleFlag
-.public Get2dSpriteVisibleFlag
-.public Set2dSpriteAnimSeqNo
+.public Sprite_SetVisibleFlag
+.public Sprite_GetVisibleFlag
+.public Sprite_SetAnimCtrlSeq
 .public Sprite_SetPriority
 .public Sprite_IsCellAnimationRunning
 .public TouchscreenHitbox_FindRectAtTouchNew
@@ -117,8 +117,8 @@
 .public GetMoveMaxPP
 .public Party_GetMonByIndex
 .public MoveIsHM
-.public RatioToInt
-.public sub_020880B0
+.public CalculateHpBarPixelsLength
+.public CalculateHpBarColor
 .public sub_020880CC
 .public sub_02088288
 .public sub_0208828C
@@ -130,7 +130,7 @@
 .public sub_0208AD58
 .public sub_0208AD5C
 .public sub_0208AD60
-.public sub_0208AD64
+.public Pokemon_GetStatusIconId
 .public sub_0208B1AC
 .public sub_0208B258
 .public sub_0208B278

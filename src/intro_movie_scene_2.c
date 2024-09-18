@@ -1,15 +1,17 @@
-#include "gf_gfx_loader.h"
 #include "global.h"
+
+#include "demo/opening/gs_opening.naix"
+
+#include "gf_gfx_loader.h"
 #include "intro_movie_internal.h"
 #include "math_util.h"
-#include "system.h"
+#include "obj_char_transfer.h"
+#include "obj_pltt_transfer.h"
 #include "sys_task_api.h"
+#include "system.h"
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
-#include "obj_char_transfer.h"
-#include "unk_02022588.h"
-#include "demo/opening/gs_opening.naix"
 
 enum IntroScene2State {
     INTRO_SCENE2_START_FLYIN,
@@ -49,7 +51,7 @@ static const int sIntroMovie_Scene2_FlowerSpriteAppearTiming[10] = {
     48,
 };
 
-static const u8 sIntroMovieScene2SpriteResCounts[4] = {2, 2, 2, 2};
+static const u8 sIntroMovieScene2SpriteResCounts[4] = { 2, 2, 2, 2 };
 
 BOOL IntroMovie_Scene2(IntroMovieOverlayData *data, void *pVoid) {
     IntroMovieScene2Data *sceneData = (IntroMovieScene2Data *)pVoid;
@@ -87,7 +89,7 @@ static void IntroMovie_Scene2_Init(IntroMovieOverlayData *data, IntroMovieScene2
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_WHITE);
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     ObjCharTransfer_ClearBuffers();
-    sub_02022638();
+    ObjPlttTransfer_Reset();
     gSystem.screensFlipped = FALSE;
     GfGfx_SwapDisplay();
     IntroMovie_Scene2_InitBgs(data);
@@ -110,9 +112,9 @@ static void IntroMovie_Scene2_InitFlyoverGrassBgScrollAnims(IntroMovieOverlayDat
 }
 
 static BOOL IntroMovie_Scene2_Main(IntroMovieOverlayData *data, IntroMovieScene2Data *sceneData, int totalFrames) {
-    BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
+    BgConfig *bgConfig                 = IntroMovie_GetBgConfig(data);
     IntroMovieBgLinearAnims *bgAnimCnt = IntroMovie_GetBgLinearAnimsController(data);
-    u8 stepTimer = IntroMovie_GetSceneStepTimer(data);
+    u8 stepTimer                       = IntroMovie_GetSceneStepTimer(data);
     switch (IntroMovie_GetSceneStep(data)) {
     case INTRO_SCENE2_START_FLYIN:
         BeginNormalPaletteFade(0, 1, 1, RGB_WHITE, 3, 1, HEAP_ID_INTRO_MOVIE);
@@ -190,7 +192,7 @@ static void IntroMovie_Scene2_Exit(IntroMovieOverlayData *data, IntroMovieScene2
     IntroMovieBgLinearAnims *bgAnimCnt;
 
     bgAnimCnt = IntroMovie_GetBgLinearAnimsController(data);
-    bgConfig = IntroMovie_GetBgConfig(data);
+    bgConfig  = IntroMovie_GetBgConfig(data);
     Main_SetVBlankIntrCB(NULL, NULL);
     if (sceneData->needFreeGfx) {
         for (u8 i = 0; i < 2; ++i) {
@@ -224,68 +226,28 @@ static void IntroMovie_Scene2_InitBgs(IntroMovieOverlayData *data) {
 
     {
         BgTemplate bgTemplate = {
-            .x = 0, .y = 0,
-            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-            .baseTile = 0,
-            .size = GF_BG_SCR_SIZE_256x256,
-            .colorMode = GX_BG_COLORMODE_16,
-            .screenBase = GX_BG_SCRBASE_0x0000,
-            .charBase = GX_BG_CHARBASE_0x04000,
-            .bgExtPltt = GX_BG_EXTPLTT_01,
-            .priority = 0,
-            .areaOver = GX_BG_AREAOVER_XLU,
-            .mosaic = FALSE
+            .x = 0, .y = 0, .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP, .baseTile = 0, .size = GF_BG_SCR_SIZE_256x256, .colorMode = GX_BG_COLORMODE_16, .screenBase = GX_BG_SCRBASE_0x0000, .charBase = GX_BG_CHARBASE_0x04000, .bgExtPltt = GX_BG_EXTPLTT_01, .priority = 0, .areaOver = GX_BG_AREAOVER_XLU, .mosaic = FALSE
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_0, &bgTemplate, GX_BGMODE_0);
     }
 
     {
         BgTemplate bgTemplate = {
-            .x = 0, .y = 0,
-            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-            .baseTile = 0,
-            .size = GF_BG_SCR_SIZE_256x256,
-            .colorMode = GX_BG_COLORMODE_16,
-            .screenBase = GX_BG_SCRBASE_0x0000,
-            .charBase = GX_BG_CHARBASE_0x08000,
-            .bgExtPltt = GX_BG_EXTPLTT_01,
-            .priority = 0,
-            .areaOver = GX_BG_AREAOVER_XLU,
-            .mosaic = FALSE
+            .x = 0, .y = 0, .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP, .baseTile = 0, .size = GF_BG_SCR_SIZE_256x256, .colorMode = GX_BG_COLORMODE_16, .screenBase = GX_BG_SCRBASE_0x0000, .charBase = GX_BG_CHARBASE_0x08000, .bgExtPltt = GX_BG_EXTPLTT_01, .priority = 0, .areaOver = GX_BG_AREAOVER_XLU, .mosaic = FALSE
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_0, &bgTemplate, GX_BGMODE_0);
     }
 
     {
         BgTemplate bgTemplate = {
-            .x = 0, .y = 0,
-            .bufferSize = GF_BG_BUF_SIZE_512x512_4BPP,
-            .baseTile = 0,
-            .size = GF_BG_SCR_SIZE_512x512,
-            .colorMode = GX_BG_COLORMODE_16,
-            .screenBase = GX_BG_SCRBASE_0x0800,
-            .charBase = GX_BG_CHARBASE_0x08000,
-            .bgExtPltt = GX_BG_EXTPLTT_01,
-            .priority = 1,
-            .areaOver = GX_BG_AREAOVER_XLU,
-            .mosaic = FALSE
+            .x = 0, .y = 0, .bufferSize = GF_BG_BUF_SIZE_512x512_4BPP, .baseTile = 0, .size = GF_BG_SCR_SIZE_512x512, .colorMode = GX_BG_COLORMODE_16, .screenBase = GX_BG_SCRBASE_0x0800, .charBase = GX_BG_CHARBASE_0x08000, .bgExtPltt = GX_BG_EXTPLTT_01, .priority = 1, .areaOver = GX_BG_AREAOVER_XLU, .mosaic = FALSE
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_1, &bgTemplate, GX_BGMODE_0);
     }
 
     {
         BgTemplate bgTemplate = {
-            .x = 0, .y = 0,
-            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-            .baseTile = 0,
-            .size = GF_BG_SCR_SIZE_256x256,
-            .colorMode = GX_BG_COLORMODE_16,
-            .screenBase = GX_BG_SCRBASE_0x2800,
-            .charBase = GX_BG_CHARBASE_0x08000,
-            .bgExtPltt = GX_BG_EXTPLTT_01,
-            .priority = 2,
-            .areaOver = GX_BG_AREAOVER_XLU,
-            .mosaic = FALSE
+            .x = 0, .y = 0, .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP, .baseTile = 0, .size = GF_BG_SCR_SIZE_256x256, .colorMode = GX_BG_COLORMODE_16, .screenBase = GX_BG_SCRBASE_0x2800, .charBase = GX_BG_CHARBASE_0x08000, .bgExtPltt = GX_BG_EXTPLTT_01, .priority = 2, .areaOver = GX_BG_AREAOVER_XLU, .mosaic = FALSE
         };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_2, &bgTemplate, GX_BGMODE_0);
     }
@@ -306,7 +268,7 @@ static void IntroMovie_Scene2_LoadBgGfx(BgConfig *bgConfig) {
 
 static void IntroMovie_Scene2_LoadSpriteGfx(IntroMovieOverlayData *data, IntroMovieScene2Data *sceneData) {
     IntroMovie_CreateSpriteResourceManagers(data, sIntroMovieScene2SpriteResCounts);
-    GF_2DGfxResMan **resMen = IntroMovie_GetSpriteResourceManagersArray(data);
+    GF_2DGfxResMan **resMen                          = IntroMovie_GetSpriteResourceManagersArray(data);
     sceneData->spriteGfxRes[0][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(resMen[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000078_NCGR_lz, TRUE, 0, NNS_G2D_VRAM_TYPE_2DBOTH, HEAP_ID_INTRO_MOVIE);
     sceneData->spriteGfxRes[0][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(resMen[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000077_NCLR, FALSE, 0, NNS_G2D_VRAM_TYPE_2DBOTH, 1, HEAP_ID_INTRO_MOVIE);
     sceneData->spriteGfxRes[0][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(resMen[GF_GFX_RES_TYPE_CELL], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000080_NCER_lz, TRUE, 0, GF_GFX_RES_TYPE_CELL, HEAP_ID_INTRO_MOVIE);
@@ -344,7 +306,16 @@ static void IntroMovie_Scene2_CreateSprites(IntroMovieOverlayData *data, IntroMo
     SpriteResourcesHeader spriteHeader;
     SpriteTemplate spriteTemplate;
     u8 anims[10] = {
-        0, 1, 2, 3, 0, 1, 2, 3, 0, 1,
+        0,
+        1,
+        2,
+        3,
+        0,
+        1,
+        2,
+        3,
+        0,
+        1,
     };
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(0, data, 0, NNS_G2D_VRAM_TYPE_2DBOTH, &spriteTemplate, &spriteHeader);
@@ -352,70 +323,70 @@ static void IntroMovie_Scene2_CreateSprites(IntroMovieOverlayData *data, IntroMo
     spriteTemplate.position.y = 192 * FX32_ONE;
 
     for (u8 i = 0; i < 10; ++i) {
-        sceneData->flowerSprites[i] = CreateSprite(&spriteTemplate);
-        Set2dSpriteAnimActiveFlag(sceneData->flowerSprites[i], FALSE);
-        Set2dSpriteVisibleFlag(sceneData->flowerSprites[i], FALSE);
-        Set2dSpriteAnimSeqNo(sceneData->flowerSprites[i], anims[i]);
+        sceneData->flowerSprites[i] = Sprite_CreateAffine(&spriteTemplate);
+        Sprite_SetAnimActiveFlag(sceneData->flowerSprites[i], FALSE);
+        Sprite_SetVisibleFlag(sceneData->flowerSprites[i], FALSE);
+        Sprite_SetAnimCtrlSeq(sceneData->flowerSprites[i], anims[i]);
     }
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(1, data, 1, NNS_G2D_VRAM_TYPE_2DMAIN, &spriteTemplate, &spriteHeader);
     spriteTemplate.position.x = 64 * FX32_ONE;
     spriteTemplate.position.y = -96 * FX32_ONE;
-    sceneData->ethanSprite0 = CreateSprite(&spriteTemplate);
-    Set2dSpriteAnimActiveFlag(sceneData->ethanSprite0, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->ethanSprite0, TRUE);
-    Set2dSpriteAnimSeqNo(sceneData->ethanSprite0, 0);
-    sceneData->ethanSprite1 = CreateSprite(&spriteTemplate);
-    Set2dSpriteAnimActiveFlag(sceneData->ethanSprite1, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->ethanSprite1, TRUE);
-    Set2dSpriteAnimSeqNo(sceneData->ethanSprite1, 1);
-    sceneData->ethanSprite2 = CreateSprite(&spriteTemplate);
-    Set2dSpriteAnimActiveFlag(sceneData->ethanSprite2, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->ethanSprite2, TRUE);
-    Set2dSpriteAnimSeqNo(sceneData->ethanSprite2, 2);
+    sceneData->ethanSprite0   = Sprite_CreateAffine(&spriteTemplate);
+    Sprite_SetAnimActiveFlag(sceneData->ethanSprite0, FALSE);
+    Sprite_SetVisibleFlag(sceneData->ethanSprite0, TRUE);
+    Sprite_SetAnimCtrlSeq(sceneData->ethanSprite0, 0);
+    sceneData->ethanSprite1 = Sprite_CreateAffine(&spriteTemplate);
+    Sprite_SetAnimActiveFlag(sceneData->ethanSprite1, FALSE);
+    Sprite_SetVisibleFlag(sceneData->ethanSprite1, TRUE);
+    Sprite_SetAnimCtrlSeq(sceneData->ethanSprite1, 1);
+    sceneData->ethanSprite2 = Sprite_CreateAffine(&spriteTemplate);
+    Sprite_SetAnimActiveFlag(sceneData->ethanSprite2, FALSE);
+    Sprite_SetVisibleFlag(sceneData->ethanSprite2, TRUE);
+    Sprite_SetAnimCtrlSeq(sceneData->ethanSprite2, 2);
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(1, data, 1, NNS_G2D_VRAM_TYPE_2DMAIN, &spriteTemplate, &spriteHeader);
     spriteTemplate.position.x = 320 * FX32_ONE;
     spriteTemplate.position.y = -96 * FX32_ONE;
-    sceneData->lyraSprite0 = CreateSprite(&spriteTemplate);
-    Set2dSpriteAnimActiveFlag(sceneData->lyraSprite0, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->lyraSprite0, TRUE);
-    Set2dSpriteAnimSeqNo(sceneData->lyraSprite0, 3);
-    sceneData->lyraSprite1 = CreateSprite(&spriteTemplate);
-    Set2dSpriteAnimActiveFlag(sceneData->lyraSprite1, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->lyraSprite1, TRUE);
-    Set2dSpriteAnimSeqNo(sceneData->lyraSprite1, 4);
-    sceneData->lyraSprite2 = CreateSprite(&spriteTemplate);
-    Set2dSpriteAnimActiveFlag(sceneData->lyraSprite2, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->lyraSprite2, TRUE);
-    Set2dSpriteAnimSeqNo(sceneData->lyraSprite2, 5);
+    sceneData->lyraSprite0    = Sprite_CreateAffine(&spriteTemplate);
+    Sprite_SetAnimActiveFlag(sceneData->lyraSprite0, FALSE);
+    Sprite_SetVisibleFlag(sceneData->lyraSprite0, TRUE);
+    Sprite_SetAnimCtrlSeq(sceneData->lyraSprite0, 3);
+    sceneData->lyraSprite1 = Sprite_CreateAffine(&spriteTemplate);
+    Sprite_SetAnimActiveFlag(sceneData->lyraSprite1, FALSE);
+    Sprite_SetVisibleFlag(sceneData->lyraSprite1, TRUE);
+    Sprite_SetAnimCtrlSeq(sceneData->lyraSprite1, 4);
+    sceneData->lyraSprite2 = Sprite_CreateAffine(&spriteTemplate);
+    Sprite_SetAnimActiveFlag(sceneData->lyraSprite2, FALSE);
+    Sprite_SetVisibleFlag(sceneData->lyraSprite2, TRUE);
+    Sprite_SetAnimCtrlSeq(sceneData->lyraSprite2, 5);
 }
 
 static void IntroMovie_Scene2_StartSpritePanEffect(IntroMovieScene2Data *sceneData, int whichSprites, int xSpeed, int ySpeed, int duration) {
     IntroMovieScene2SpritePanController *spritePanEffect;
 
     if (whichSprites == 0) {
-        spritePanEffect = &sceneData->spritePanCnt[0];
+        spritePanEffect          = &sceneData->spritePanCnt[0];
         spritePanEffect->sprite0 = sceneData->ethanSprite0;
         spritePanEffect->sprite1 = sceneData->ethanSprite1;
         spritePanEffect->sprite2 = sceneData->ethanSprite2;
     } else {
-        spritePanEffect = &sceneData->spritePanCnt[1];
+        spritePanEffect          = &sceneData->spritePanCnt[1];
         spritePanEffect->sprite0 = sceneData->lyraSprite0;
         spritePanEffect->sprite1 = sceneData->lyraSprite1;
         spritePanEffect->sprite2 = sceneData->lyraSprite2;
     }
     GF_ASSERT(!spritePanEffect->active);
-    spritePanEffect->active = TRUE;
+    spritePanEffect->active   = TRUE;
     spritePanEffect->duration = duration;
-    spritePanEffect->counter = 0;
+    spritePanEffect->counter  = 0;
     spritePanEffect->finished = 0;
-    VecFx32 *mtx = Sprite_GetMatrixPtr(spritePanEffect->sprite0);
-    spritePanEffect->xOffset = mtx->x / FX32_ONE;
-    spritePanEffect->yOffset = mtx->y / FX32_ONE;
-    spritePanEffect->xSpeed = xSpeed;
-    spritePanEffect->ySpeed = ySpeed;
-    spritePanEffect->task = SysTask_CreateOnMainQueue(ov60_021E8B7C, spritePanEffect, 0);
+    VecFx32 *mtx              = Sprite_GetMatrixPtr(spritePanEffect->sprite0);
+    spritePanEffect->xOffset  = mtx->x / FX32_ONE;
+    spritePanEffect->yOffset  = mtx->y / FX32_ONE;
+    spritePanEffect->xSpeed   = xSpeed;
+    spritePanEffect->ySpeed   = ySpeed;
+    spritePanEffect->task     = SysTask_CreateOnMainQueue(ov60_021E8B7C, spritePanEffect, 0);
 }
 
 static BOOL IntroMovie_Scene2_WaitSpritePanEffect(IntroMovieScene2Data *sceneData, int whichSprites) {
@@ -438,7 +409,7 @@ static BOOL IntroMovie_Scene2_WaitSpritePanEffect(IntroMovieScene2Data *sceneDat
 
 static void ov60_021E8B7C(SysTask *task, void *pVoid) {
     IntroMovieScene2SpritePanController *spritePanCnt = (IntroMovieScene2SpritePanController *)pVoid;
-    VecFx32 sp4 = {0, 0, 0};
+    VecFx32 sp4                                       = { 0, 0, 0 };
     ++spritePanCnt->counter;
     int x = spritePanCnt->xSpeed * spritePanCnt->counter / spritePanCnt->duration;
     int y = spritePanCnt->ySpeed * spritePanCnt->counter / spritePanCnt->duration;
@@ -446,9 +417,9 @@ static void ov60_021E8B7C(SysTask *task, void *pVoid) {
     y += spritePanCnt->yOffset;
     if (spritePanCnt->counter >= spritePanCnt->duration) {
         SysTask_Destroy(spritePanCnt->task);
-        spritePanCnt->task = NULL;
+        spritePanCnt->task     = NULL;
         spritePanCnt->finished = TRUE;
-        spritePanCnt->active = FALSE;
+        spritePanCnt->active   = FALSE;
     }
     sp4.x = x * FX32_ONE;
     sp4.y = y * FX32_ONE;
@@ -459,6 +430,6 @@ static void ov60_021E8B7C(SysTask *task, void *pVoid) {
 
 HeapID _deadstrip_02(int idx);
 HeapID _deadstrip_02(int idx) {
-    static const HeapID sDeadstrippedRodata[1] = {HEAP_ID_INTRO_MOVIE};
+    static const HeapID sDeadstrippedRodata[1] = { HEAP_ID_INTRO_MOVIE };
     return sDeadstrippedRodata[0];
 }

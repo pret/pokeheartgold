@@ -39,8 +39,8 @@
 .public PrintUIntOnWindow
 .public sub_0200CE7C
 .public SpriteRenderer_CreateGfxHandler
-.public sub_0200CFF4
-.public sub_0200D020
+.public SpriteRenderer_CreateSpriteList
+.public SpriteGfxHandler_RenderAndAnimateSprites
 .public SpriteRenderer_Init2DGfxResManagersFromCountsArray
 .public SpriteRenderer_LoadCharResObjFromNarcId
 .public SpriteRenderer_LoadCharResObjFromOpenNarc
@@ -150,13 +150,13 @@
 .public sub_0207CAA0
 .public sub_0207CAA4
 .public sub_0207CAA8
-.public RatioToInt
-.public sub_020880B0
+.public CalculateHpBarPixelsLength
+.public CalculateHpBarColor
 .public sub_0208AD54
 .public sub_0208AD58
 .public sub_0208AD5C
 .public sub_0208AD60
-.public sub_0208AD64
+.public Pokemon_GetStatusIconId
 .public NNS_G2dGetUnpackedScreenData
 .public memcpy
 .public memset

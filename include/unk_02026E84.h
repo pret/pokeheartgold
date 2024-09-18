@@ -9,4 +9,4 @@ u16 *GetSubBgPlttAddr(void);
 u16 *GetMainObjPlttAddr(void);
 u16 *GetSubObjPlttAddr(void);
 
-#endif //POKEHEARTGOLD_UNK_02026E84_H
+#endif // POKEHEARTGOLD_UNK_02026E84_H

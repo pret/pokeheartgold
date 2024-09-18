@@ -1,17 +1,17 @@
 #ifndef POKEHEARTGOLD_MAIL_H
 #define POKEHEARTGOLD_MAIL_H
 
-#include "mail_message.h"
 #include "heap.h"
-#include "save.h"
-#include "pokemon_types_def.h"
+#include "mail_message.h"
 #include "pm_string.h"
+#include "pokemon_types_def.h"
+#include "save.h"
 
-#define MAILBOX_MSG_COUNT       (20)
+#define MAILBOX_MSG_COUNT (20)
 
 typedef struct Mailbox {
     Mail msgs[MAILBOX_MSG_COUNT];
-} MAILBOX;
+} Mailbox;
 
 Mail *Mail_New(HeapID heapId);
 void Mail_Copy(const Mail *src, Mail *dest);
@@ -28,19 +28,19 @@ u8 Mail_GetLanguage(const Mail *mail);
 u8 Mail_GetVersion(const Mail *mail);
 u16 sub_0202B404(Mail *mail, u8 r1, u8 r4, u16 r3);
 u16 sub_0202B4E4(const Mail *mail);
-MAIL_MESSAGE *Mail_GetUnk20Array(Mail *mail, int i);
-void Mail_SetMessage(Mail *mail, const MAIL_MESSAGE *src, int i);
-MAILBOX *Save_Mailbox_Get(SaveData *saveData);
+MailMessage *Mail_GetUnk20Array(Mail *mail, int i);
+void Mail_SetMessage(Mail *mail, const MailMessage *src, int i);
+Mailbox *Save_Mailbox_Get(SaveData *saveData);
 u32 Save_Mailbox_sizeof(void);
-void Save_Mailbox_Init(MAILBOX *mailbox);
+void Save_Mailbox_Init(Mailbox *mailbox);
 Mail *Mailbox_AllocAndFetchMailI(Mail *msgs, int n, int i, HeapID heapId);
-int Mailbox_GetFirstEmptySlotIdx(MAILBOX *mailbox);
+int Mailbox_GetFirstEmptySlotIdx(Mailbox *mailbox);
 void Mailbox_DeleteSlotI(Mail *msgs, int n, int i);
 void Mailbox_CopyMailToSlotI(Mail *msgs, int n, int i, const Mail *src);
-u32 Mailbox_CountMessages(MAILBOX *mailbox, int unused);
+u32 Mailbox_CountMessages(Mailbox *mailbox, int unused);
 void Mailbox_FetchMailToBuffer(Mail *msgs, int n, int i, Mail *dest);
 int MailArray_GetFirstEmptySlotIdx(Mail *msgs, int n);
 u32 MailArray_CountMessages(Mail *msgs, int n);
 Mail *CreateKenyaMail(Pokemon *mon, u8 mailType, u8 gender, String *name, u8 otId);
 
-#endif //POKEHEARTGOLD_MAIL_H
+#endif // POKEHEARTGOLD_MAIL_H

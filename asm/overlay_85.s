@@ -1750,7 +1750,7 @@ ov85_021E6594: ; 0x021E6594
 	ldr r0, [r0]
 	mov r1, #0x22
 	ldr r0, [r0, #0x28]
-	bl GameStats_AddSpecial
+	bl GameStats_AddScore
 	add r0, r4, #0
 	mov r1, #0xb
 	bl ov85_021E7194
@@ -2087,7 +2087,7 @@ ov85_021E67F4: ; 0x021E67F4
 	bl RequestSwap3DBuffers
 	ldr r0, _021E6850 ; =0x00000D98
 	ldr r0, [r4, r0]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r4, pc}
 	nop
 _021E6848: .word 0xFFFFF000
@@ -2879,7 +2879,7 @@ ov85_021E6ECC: ; 0x021E6ECC
 	ldr r0, [r4, r1]
 	add r1, sp, #0x2c
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r3, _021E6F64 ; =ov85_021EA594
 	add r2, sp, #0
 	ldmia r3!, {r0, r1}
@@ -2897,7 +2897,7 @@ ov85_021E6ECC: ; 0x021E6ECC
 	sub r0, r1, #4
 	ldr r0, [r4, r0]
 	ldr r1, [r4, r1]
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	cmp r0, #0
 	bne _021E6F3C
 	bl GF_AssertFail
@@ -2933,7 +2933,7 @@ ov85_021E6F6C: ; 0x021E6F6C
 	ldr r5, [r0, r1]
 	ldr r7, [r0, r2]
 	mov r0, #1
-	bl sub_0200A080
+	bl G2dRenderer_SetPlttTransferReservedRegion
 	mov r0, #0xd9
 	mov r1, #0x66
 	bl NARC_New
@@ -6711,7 +6711,7 @@ _021E8AE4:
 	pop {r4, pc}
 _021E8AF0:
 	ldr r0, [r4, #0x60]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	mov r0, #0
 	pop {r4, pc}
 	nop
@@ -6751,7 +6751,7 @@ _021E8B34:
 	bl SpriteList_Delete
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	add r0, r6, #0
 	bl ov85_021E9288
 	ldr r0, [r6, #0x14]
@@ -7256,9 +7256,9 @@ ov85_021E8F58: ; 0x021E8F58
 	bl ObjCharTransfer_Init
 	mov r0, #0x14
 	mov r1, #0x66
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -7452,24 +7452,24 @@ _021E90F8:
 	lsl r0, r0, #0xc
 	str r0, [sp, #0x38]
 	add r0, sp, #0x2c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x8f
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	mov r0, #0x8f
 	lsl r0, r0, #2
 	sub r1, r6, #1
 	lsl r1, r1, #1
 	ldr r0, [r5, r0]
 	add r1, #0x1b
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r5, r7]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add r6, r6, #1
 	add r4, r4, #4
 	add r5, r5, #4
@@ -8382,7 +8382,7 @@ ov85_021E9834: ; 0x021E9834
 	ldr r0, [r5, #0xc]
 	mov r1, #0x13
 	ldr r0, [r0, #0x28]
-	bl GameStats_AddSpecial
+	bl GameStats_AddScore
 	mov r0, #0x3b
 	lsl r0, r0, #4
 	add r0, r5, r0
@@ -9699,7 +9699,7 @@ _021EA1FA:
 	lsl r1, r1, #1
 	ldr r0, [r5, r0]
 	add r1, #0x26
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	b _021EA248
 _021EA22C:
 	ldr r0, [sp, #0xc]
@@ -9713,13 +9713,13 @@ _021EA22C:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r1, [sp, #4]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 _021EA248:
 	mov r0, #0x8f
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r0, #0xe7
 	mov r1, #2
 	lsl r0, r0, #2
@@ -9741,14 +9741,14 @@ _021EA262:
 	lsl r1, r1, #1
 	ldr r0, [r5, r0]
 	add r1, #0x27
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	b _021EA292
 _021EA286:
 	mov r0, #0x8f
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r7, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 _021EA292:
 	mov r0, #0xe7
 	mov r1, #0

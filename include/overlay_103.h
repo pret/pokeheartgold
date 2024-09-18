@@ -8,11 +8,11 @@
 typedef struct UnkStruct_0203F074 {
     SaveData *saveData;
     FieldSystem *fieldSystem;
-    u32 *unk8;
+    BOOL *menuInputStatePtr;
 } UnkStruct_0203F074;
 
 BOOL ov103_021EC940(OVY_MANAGER *man, int *state);
 BOOL ov103_021EC988(OVY_MANAGER *man, int *state);
 BOOL ov103_021EC9A4(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_OVY_103_H
+#endif // POKEHEARTGOLD_OVY_103_H

@@ -2,37 +2,12 @@
 #define POKEHEARTGOLD_BAG_H
 
 #include "constants/items.h"
+
+#include "bag_cursor.h"
+#include "bag_types_def.h"
+#include "heap.h"
 #include "item.h"
 #include "save.h"
-#include "heap.h"
-#include "bag_view.h"
-#include "bag_cursor.h"
-
-/*
- * Return value of Bag_TryRegisterItem
- */
-typedef enum RegisterItemResult {
-    REG_ITEM_FAIL,
-    REG_ITEM_SLOT1,
-    REG_ITEM_SLOT2,
-} RegisterItemResult;
-
-/*
- * The player's inventory. All items in all pockets,
- * and the two items registered to the touchscreen
- * buttons. This is saved to flash.
- */
-typedef struct Bag {
-    ItemSlot items[NUM_BAG_ITEMS];                // General items
-    ItemSlot keyItems[NUM_BAG_KEY_ITEMS];         // Key items
-    ItemSlot TMsHMs[NUM_BAG_TMS_HMS];             // Move machines
-    ItemSlot mail[NUM_BAG_MAIL];                  // Mail items
-    ItemSlot medicine[NUM_BAG_MEDICINE];          // Healing items
-    ItemSlot berries[NUM_BAG_BERRIES];            // Berries
-    ItemSlot balls[NUM_BAG_BALLS];                // Balls
-    ItemSlot battleItems[NUM_BAG_BATTLE_ITEMS];   // Battle-only items
-    u16 registeredItems[2];                        // IDs of registered key items
-} Bag;
 
 /*
  * u32 Save_Bag_sizeof(void)
@@ -233,4 +208,4 @@ ItemSlot *Bag_GetPocketSlotN(Bag *bag, u8 pocket, u32 slot);
  */
 Bag *Save_Bag_Get(SaveData *saveData);
 
-#endif //POKEHEARTGOLD_BAG_H
+#endif // POKEHEARTGOLD_BAG_H

@@ -1,8 +1,11 @@
-#include "global.h"
 #include "mystery_gift.h"
+
+#include "global.h"
+
+#include "constants/save_arrays.h"
+
 #include "save.h"
 #include "save_arrays.h"
-#include "constants/save_arrays.h"
 
 BOOL MysteryGiftTagIsValid(u32 tag);
 MysteryGift *SaveMysteryGift_GetByIdx(MysteryGiftSave *mg, int index);
@@ -60,7 +63,7 @@ BOOL SaveMysteryGift_TryInsertGift(MysteryGiftSave *mg, const MysteryGift *src, 
         if (!MysteryGiftTagIsValid(mg->gifts[i].tag)) {
             MI_CpuCopy8(src, &mg->gifts[i], sizeof(MysteryGift));
             mg->gifts[i].flag = cardIdx;
-            ret = TRUE;
+            ret               = TRUE;
             break;
         }
     }
@@ -108,7 +111,7 @@ BOOL SaveMysteryGift_TrySetSpecialCard(MysteryGiftSave *mg, const WonderCard *sr
 
 BOOL SaveMysteryGift_SetReceivedByIdx(MysteryGiftSave *mg, int index) {
     GF_ASSERT(index < NUM_SAVED_MYSTERY_GIFTS);
-    mg->gifts[index].tag = MG_TAG_INVALID;
+    mg->gifts[index].tag  = MG_TAG_INVALID;
     mg->gifts[index].flag = 0;
     SaveSubstruct_UpdateCRC(SAVE_MYSTERY_GIFT);
     return TRUE;
@@ -237,7 +240,7 @@ static MysteryGiftSave *sMysteryGiftSaveData;
 void SaveMGDataPtr_Begin(SaveData *saveData, HeapID heapId) {
     if (sMysteryGiftSaveData == NULL) {
 #ifdef MYSTERY_GIFT_SAVE_TRANSACTION_IMPL
-        u32 size = Save_MysteryGift_sizeof();
+        u32 size             = Save_MysteryGift_sizeof();
         sMysteryGiftSaveData = AllocFromHeap(heapId, size);
         GF_ASSERT(sMysteryGiftSaveData != NULL);
         MI_CpuCopy32(Save_MysteryGift_Get(saveData), sMysteryGiftSaveData, size);

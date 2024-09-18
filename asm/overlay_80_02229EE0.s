@@ -622,7 +622,7 @@ ov80_0222A3D4: ; 0x0222A3D4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl Get2dSpriteCurrentAnimSeqNo
+	bl Sprite_GetAnimationNumber
 	cmp r4, r0
 	beq _0222A3FC
 	add r0, r5, #0
@@ -630,11 +630,11 @@ ov80_0222A3D4: ; 0x0222A3D4
 	bl Sprite_SetAnimCtrlCurrentFrame
 	add r0, r5, #0
 	add r1, r4, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	mov r1, #1
 	add r0, r5, #0
 	lsl r1, r1, #0xc
-	bl Sprite_TickCellOrMulticellAnimation
+	bl Sprite_TickAnimCtrlFrame
 _0222A3FC:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -678,7 +678,7 @@ _0222A42E:
 ov80_0222A43C: ; 0x0222A43C
 	push {r3, lr}
 	mov r2, #0x30
-	bl sub_020880B0
+	bl CalculateHpBarColor
 	cmp r0, #4
 	bhi _0222A46E
 	add r0, r0, r0
@@ -1247,7 +1247,7 @@ _0222A83C: .word 0x00000127
 	thumb_func_start ov80_0222A840
 ov80_0222A840: ; 0x0222A840
 	push {r3, lr}
-	bl sub_0202CA44
+	bl Save_WiFiHistory_Get
 	bl sub_02039F68
 	pop {r3, pc}
 	thumb_func_end ov80_0222A840

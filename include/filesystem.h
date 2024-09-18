@@ -2,18 +2,18 @@
 #define POKEHEARTGOLD_FILESYSTEM_H
 
 #include <nitro/fs/file.h>
+
 #include "heap.h"
 
 /*
  * The NARC struct wraps NitroSDK type FSFile and manages the important offsets to the FATB and the FIMG chunks within the file.
  * FATB defines the regions within the FIMG to which the data are allocated.
  */
-typedef struct NARC
-{
-    FSFile file;        // Open file handle
-    u32 btaf_start;     // Byte offset to the FATB chunk
-    u32 gmif_start;     // Byte offset to the FIMG chunk
-    u16 num_files;      // Number of members in the archive
+typedef struct NARC {
+    FSFile file;    // Open file handle
+    u32 btaf_start; // Byte offset to the FATB chunk
+    u32 gmif_start; // Byte offset to the FIMG chunk
+    u16 num_files;  // Number of members in the archive
 } NARC;
 
 // Defines enum NarcId used in all public methods.
@@ -30,7 +30,7 @@ typedef struct NARC
  * @param narc_id:     Ident of NARC to read
  * @param file_id:     Index of FAT member within the NARC
  */
-void ReadWholeNarcMemberByIdPair(void * dest, NarcId narc_id, s32 file_id);
+void ReadWholeNarcMemberByIdPair(void *dest, NarcId narc_id, s32 file_id);
 
 /*
  * void * AllocAndReadWholeNarcMemberByIdPair(Narcid narc_id, s32 file_id, HeapID heapId)
@@ -45,8 +45,8 @@ void ReadWholeNarcMemberByIdPair(void * dest, NarcId narc_id, s32 file_id);
  *
  * @returns: Pointer to the allocated buffer which contains the data that was read.
  */
-void * AllocAndReadWholeNarcMemberByIdPair(NarcId narc_id, s32 file_id, HeapID heapId);
-void * AllocAtEndAndReadWholeNarcMemberByIdPair(NarcId narc_id, s32 file_id, HeapID heapId);
+void *AllocAndReadWholeNarcMemberByIdPair(NarcId narc_id, s32 file_id, HeapID heapId);
+void *AllocAtEndAndReadWholeNarcMemberByIdPair(NarcId narc_id, s32 file_id, HeapID heapId);
 
 /*
  * void ReadFromNarcMemberByIdPair(void * dest, NarcId narc_id, s32 file_id, u32 offset, u32 size)
@@ -59,7 +59,7 @@ void * AllocAtEndAndReadWholeNarcMemberByIdPair(NarcId narc_id, s32 file_id, Hea
  * @param offset:      Byte offset to start reading, relative to start of member, up to the end of member
  * @param size:        Number of bytes to read, up to the total size of member minus offset
  */
-void ReadFromNarcMemberByIdPair(void * dest, NarcId narc_id, s32 file_id, u32 offset, u32 size);
+void ReadFromNarcMemberByIdPair(void *dest, NarcId narc_id, s32 file_id, u32 offset, u32 size);
 
 /*
  * void * AllocAndReadFromNarcMemberByIdPair(Narcid narc_id, s32 file_id, HeapID heapId)
@@ -76,8 +76,8 @@ void ReadFromNarcMemberByIdPair(void * dest, NarcId narc_id, s32 file_id, u32 of
  *
  * @returns: Pointer to the allocated buffer which contains the data that was read.
  */
-void * AllocAndReadFromNarcMemberByIdPair(NarcId narc_id, s32 file_id, HeapID heapId, u32 offset, u32 size);
-void * AllocAtEndAndReadFromNarcMemberByIdPair(NarcId narc_id, s32 file_id, HeapID heapId, u32 offset, u32 size);
+void *AllocAndReadFromNarcMemberByIdPair(NarcId narc_id, s32 file_id, HeapID heapId, u32 offset, u32 size);
+void *AllocAtEndAndReadFromNarcMemberByIdPair(NarcId narc_id, s32 file_id, HeapID heapId, u32 offset, u32 size);
 
 /*
  * u32 GetNarcMemberSizeByIdPair(NarcId narc_id, s32 file_idx)
@@ -103,7 +103,7 @@ u32 GetNarcMemberSizeByIdPair(NarcId narc_id, s32 file_idx);
  *
  * @returns: Pointer to the newly-allocated NARC
  */
-NARC * NARC_New(NarcId narc_id, HeapID heapId);
+NARC *NARC_New(NarcId narc_id, HeapID heapId);
 
 /*
  * void NARC_Delete(NARC * narc)
@@ -112,7 +112,7 @@ NARC * NARC_New(NarcId narc_id, HeapID heapId);
  *
  * @param narc:        Pointer to the NARC
  */
-void NARC_Delete(NARC * narc);
+void NARC_Delete(NARC *narc);
 
 /*
  * void * NARC_AllocAndReadWholeMember(NARC * narc, u32 file_id, HeapID heapId)
@@ -125,7 +125,7 @@ void NARC_Delete(NARC * narc);
  *
  * @returns: Pointer to the allocated buffer which contains the data that was read.
  */
-void * NARC_AllocAndReadWholeMember(NARC * narc, u32 file_id, HeapID heapId);
+void *NARC_AllocAndReadWholeMember(NARC *narc, u32 file_id, HeapID heapId);
 
 /*
  * void * NARC_ReadWholeMember(NARC * narc, u32 file_id, void * dest)
@@ -136,7 +136,7 @@ void * NARC_AllocAndReadWholeMember(NARC * narc, u32 file_id, HeapID heapId);
  * @param file_id:     Index of FAT member within the NARC
  * @param dest:        Pointer to the destination buffer
  */
-void NARC_ReadWholeMember(NARC * narc, u32 file_id, void * dest);
+void NARC_ReadWholeMember(NARC *narc, u32 file_id, void *dest);
 
 /*
  * u32 NARC_GetMemberSize(NARC * narc, u32 file_id)
@@ -149,7 +149,7 @@ void NARC_ReadWholeMember(NARC * narc, u32 file_id, void * dest);
  *
  * @returns: Size in bytes of the member
  */
-u32 NARC_GetMemberSize(NARC * narc, u32 file_id);
+u32 NARC_GetMemberSize(NARC *narc, u32 file_id);
 
 /*
  * void NARC_ReadFromMember(NARC * narc, u32 file_id, u32 pos, u32 size, void * dest)
@@ -162,7 +162,7 @@ u32 NARC_GetMemberSize(NARC * narc, u32 file_id);
  * @param size:        Number of bytes to read, up to the total size of member minus offset
  * @param dest:        Pointer to destination buffer, should be large enough to hold the data
  */
-void NARC_ReadFromMember(NARC * narc, u32 file_id, u32 pos, u32 size, void * dest);
+void NARC_ReadFromMember(NARC *narc, u32 file_id, u32 pos, u32 size, void *dest);
 
 /*
  * void NARC_ReadFromAbsolutePos(NARC * narc, u32 pos, u32 size, void * dest)
@@ -174,7 +174,7 @@ void NARC_ReadFromMember(NARC * narc, u32 file_id, u32 pos, u32 size, void * des
  * @param size:        Number of bytes to read, up to the total size of member minus offset
  * @param dest:        Pointer to destination buffer, should be large enough to hold the data
  */
-void NARC_ReadFromAbsolutePos(NARC * narc, u32 pos, u32 size, void * dest);
+void NARC_ReadFromAbsolutePos(NARC *narc, u32 pos, u32 size, void *dest);
 
 /*
  * void NARC_GetMemberImageStartOffset(NARC * narc, u32 file_id, u32 * ret_p)
@@ -185,7 +185,7 @@ void NARC_ReadFromAbsolutePos(NARC * narc, u32 pos, u32 size, void * dest);
  * @param file_id:      Index of FAT member within the NARC
  * @param ret_p:        Pointer to u32 which will hold the return value of this routine
  */
-void NARC_GetMemberImageStartOffset(NARC * narc, u32 file_id, u32 * ret_p);
+void NARC_GetMemberImageStartOffset(NARC *narc, u32 file_id, u32 *ret_p);
 
 /*
  * void NARC_ReadFile(NARC * narc, u32 size, void * dest)
@@ -196,7 +196,7 @@ void NARC_GetMemberImageStartOffset(NARC * narc, u32 file_id, u32 * ret_p);
  * @param size:        Number of bytes to read, up to the total size of member minus offset
  * @param dest:        Pointer to destination buffer, should be large enough to hold the data
  */
-void NARC_ReadFile(NARC * narc, u32 size, void * dest);
+void NARC_ReadFile(NARC *narc, u32 size, void *dest);
 
 /*
  * u16 NARC_GetFileCount(NARC * narc)
@@ -207,6 +207,6 @@ void NARC_ReadFile(NARC * narc, u32 size, void * dest);
  *
  * @returns: Number of archive members
  */
-u16 NARC_GetFileCount(NARC * narc);
+u16 NARC_GetFileCount(NARC *narc);
 
-#endif //POKEHEARTGOLD_FILESYSTEM_H
+#endif // POKEHEARTGOLD_FILESYSTEM_H

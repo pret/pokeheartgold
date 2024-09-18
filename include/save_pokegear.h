@@ -1,14 +1,15 @@
 #ifndef POKEHEARTGOLD_SAVE_GS_PLAYER_MISC_H
 #define POKEHEARTGOLD_SAVE_GS_PLAYER_MISC_H
 
-#include "save.h"
 #include "constants/phone_contacts.h"
 #include "constants/pokegear_card.h"
 
-#define MOMS_BALANCE_GET      0
-#define MOMS_BALANCE_SET      1
-#define MOMS_BALANCE_ADD      2
-#define MOMS_BALANCE_SUB      3
+#include "save.h"
+
+#define MOMS_BALANCE_GET 0
+#define MOMS_BALANCE_SET 1
+#define MOMS_BALANCE_ADD 2
+#define MOMS_BALANCE_SUB 3
 
 #define MOMS_BALANCE_MAX 999999
 
@@ -17,9 +18,9 @@ typedef struct PhoneContact {
 } PhoneContact;
 
 typedef struct PhoneRematch {
-    u16 seeking:1;
-    u16 hasGift:1;
-    u16 unk_0_2:6;
+    u16 seeking : 1;
+    u16 hasGift : 1;
+    u16 unk_0_2 : 6;
     u16 giftItem;
 } PhoneRematch; // size=0x4
 
@@ -28,8 +29,8 @@ typedef struct MomsSavings {
     u16 unk_12C[5][2];
     u32 bankBalance; // 140
     u16 unk_144;
-    u8 unk_146_0:7;
-    u8 unk_146_7:1;
+    u8 unk_146_0 : 7;
+    u8 unk_146_7 : 1;
     u8 unk_147;
     u8 unk_148[6];
     u8 unk_14E[2];
@@ -38,10 +39,10 @@ typedef struct MomsSavings {
 
 typedef struct UnkPokegearSub8 {
     u16 unk_0;
-    u16 unk_2_0:4;
-    u16 unk_2_4:4;
-    u16 unk_2_8:4;
-    u16 unk_2_C:4;
+    u16 unk_2_0 : 4;
+    u16 unk_2_4 : 4;
+    u16 unk_2_8 : 4;
+    u16 unk_2_C : 4;
     u16 unk_4[4];
 } UnkPokegearSub8;
 
@@ -60,16 +61,16 @@ typedef struct SavePokegear {
     u8 unk_1;
     u8 unk_2;
     u8 unk_3;
-    u32 unk_4_0:9;
-    u32 unk_4_9:9;
-    u32 unk_4_18:7;
-    u32 registeredCards:2;
-    u32 unk_4_27:2;
-    u32 unk_4_29:3;
+    u32 unk_4_0         : 9;
+    u32 unk_4_9         : 9;
+    u32 unk_4_18        : 7;
+    u32 registeredCards : 2;
+    u32 unk_4_27        : 2;
+    u32 unk_4_29        : 3;
     UnkPokegearSub8List unk_8;
-    MomsSavings momsSavings; // 4B8
+    MomsSavings momsSavings;                        // 4B8
     PhoneContact phoneContacts[NUM_PHONE_CONTACTS]; // 60C
-} SavePokegear; // size=0x658
+} SavePokegear;                                     // size=0x658
 
 u32 SaveData_GSPlayerMisc_sizeof(void);
 SavePokegear *SaveData_GSPlayerMisc_Get(SaveData *saveData);
@@ -125,4 +126,4 @@ void sub_0202F500(UnkPokegearSub8List *list, u8 a1);
 BOOL sub_0202F514(UnkPokegearSub8List *list, struct UnkStruct_0202F3DC *a1, u8 a2);
 BOOL sub_0202F53C(UnkPokegearSub8List *list, struct UnkStruct_0202F3DC *a1, u8 a2, BOOL a3);
 
-#endif //POKEHEARTGOLD_SAVE_GS_PLAYER_MISC_H
+#endif // POKEHEARTGOLD_SAVE_GS_PLAYER_MISC_H

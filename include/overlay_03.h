@@ -21,4 +21,4 @@ void ov03_02258910(FieldSystem *fieldSystem);
 void ov03_02258CFC(TaskManager *taskManager, enum PokeathlonData data);
 u32 ov03_02256B40(int);
 
-#endif //POKEHEARTGOLD_OVERLAY_03_H
+#endif // POKEHEARTGOLD_OVERLAY_03_H

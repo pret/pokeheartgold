@@ -123,7 +123,7 @@ _021E59C6:
 	mov r0, #0xbe
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	bl thunk_OamManager_ApplyAndResetBuffers
 _021E59FA:
 	ldr r3, _021E5A0C ; =0x027E0000
@@ -6684,7 +6684,7 @@ ov14_021E8B1C: ; 0x021E8B1C
 	ldr r0, _021E8B38 ; =FS_OVERLAY_ID(OVY_15)
 	bl UnloadOverlayByID
 	ldr r0, [r4, #0x18]
-	bl sub_02077904
+	bl BagView_GetItemId
 	strh r0, [r4, #0x1c]
 	ldr r0, [r4, #0x18]
 	bl FreeToHeap
@@ -6717,7 +6717,7 @@ ov14_021E8B3C: ; 0x021E8B3C
 	ldr r0, [r4, #4]
 	ldr r2, [r2, #0x18]
 	bl PCStorage_GetBoxName
-	ldr r0, _021E8B7C ; =_02102610
+	ldr r0, _021E8B7C ; =sOverlayTemplate_NamingScreen
 	ldr r1, [r4, #0x18]
 	mov r2, #9
 	bl OverlayManager_New
@@ -6726,7 +6726,7 @@ ov14_021E8B3C: ; 0x021E8B3C
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
-_021E8B7C: .word _02102610
+_021E8B7C: .word sOverlayTemplate_NamingScreen
 	thumb_func_end ov14_021E8B3C
 
 	thumb_func_start ov14_021E8B80
@@ -6743,7 +6743,7 @@ ov14_021E8B80: ; 0x021E8B80
 	ldr r0, [r4, #0x14]
 	strh r0, [r5, #0x1c]
 	ldr r0, [r5, #0x18]
-	bl sub_0208311C
+	bl NamingScreen_DeleteArgs
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -26480,13 +26480,13 @@ ov14_021F2AC8: ; 0x021F2AC8
 	sub r0, r7, #4
 	ldr r0, [r4, r0]
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	sub r1, r7, #4
 	ldr r0, [r4, r1]
 	add r1, r1, #4
 	ldr r1, [r4, r1]
 	mov r2, #0x67
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	sub r1, r7, #4
 	ldr r0, [r4, r1]
 	add r1, r1, #4
@@ -29181,7 +29181,7 @@ _021F4048:
 	str r1, [sp]
 	ldr r0, [r0]
 	ldr r1, [sp, #8]
-	bl sub_02024B00
+	bl Sprite_SetImageProxy
 	mov r0, #0x3f
 	ldr r1, [sp]
 	lsl r0, r0, #4

@@ -321,7 +321,7 @@ _0226B00E:
 	ldr r0, [r5]
 	mov r1, #8
 	ldr r0, [r0]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	b _0226B05C
 _0226B044:
 	ldr r2, _0226B08C ; =ov12_0226EB20
@@ -333,7 +333,7 @@ _0226B044:
 	ldr r0, [r5]
 	mov r1, #7
 	ldr r0, [r0]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 _0226B05C:
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -679,7 +679,7 @@ _0226B2FE:
 	ldr r0, [r5]
 	ldr r1, [sp, #0x20]
 	ldr r0, [r0]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r5]
 	ldr r0, [r0]
 	bl TickSpriteAnimation1Frame
@@ -937,7 +937,7 @@ _0226B4E8:
 	add r1, #0x2e
 	ldrb r1, [r1]
 	ldr r0, [r0]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	mov r0, #0
 	strh r0, [r4, #0x28]
 	add r0, r4, #0

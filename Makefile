@@ -46,7 +46,7 @@ tidy:
 clean: tidy clean-filesystem clean-tools
 	@$(MAKE) -C lib/syscall clean
 	@$(MAKE) -C sub clean
-	$(RM) $(ICON_PNG:%.png=%.nbfp) $(ICON_PNG:%.png=%.nbfc)
+	$(RM) $(foreach bn,$(SUPPORTED_ROMS),$(bn)/icon.nbf[pc])
 
 SBIN_LZ        := $(SBIN)_LZ
 .PHONY: main_lz

@@ -11,7 +11,7 @@ typedef struct PhotoAlbumArgs {
     u8 unk3[0x2];
     u8 unk5;
     u8 unk6[0x2];
-    u32 *unk8;
+    BOOL *menuInputStatePtr;
     SaveData *saveData;
 } PhotoAlbumArgs;
 
@@ -19,4 +19,4 @@ BOOL PhotoAlbum_Init(OVY_MANAGER *man, int *state);
 BOOL PhotoAlbum_Main(OVY_MANAGER *man, int *state);
 BOOL PhotoAlbum_Exit(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_OVY_109_H
+#endif // POKEHEARTGOLD_OVY_109_H

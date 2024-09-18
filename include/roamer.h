@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_ROAMER_H
 
 #include "constants/roamer.h"
+
 #include "save.h"
 
 enum RoamerDataParam {
@@ -15,7 +16,7 @@ enum RoamerDataParam {
     ROAMER_DATA_ACTIVE       = 8,
 };
 
-typedef struct Roamer { //todo: this appears to be used for swarms as well
+typedef struct Roamer { // todo: this appears to be used for swarms as well
     u32 met_location;
     u32 ivs;
     u32 personality;
@@ -27,7 +28,7 @@ typedef struct Roamer { //todo: this appears to be used for swarms as well
     u8 dummy;
 } Roamer;
 
-typedef struct RoamerSaveData { //todo: this appears to be used for swarms as well
+typedef struct RoamerSaveData { // todo: this appears to be used for swarms as well
     u32 rand[2];
     u32 playerLocationHistory[2];
     Roamer data[ROAMER_MAX];
@@ -50,7 +51,7 @@ u32 PlayerLocationHistoryGetBack(RoamerSaveData *roamerSave);
 u8 Roamer_GetLocation(RoamerSaveData *roamerSave, int roamerId);
 void Roamer_SetLocation(RoamerSaveData *roamerSave, int roamerId, u8 a2);
 u8 GetRoamerIsActiveByIndex(RoamerSaveData *roamerSave, int roamerId);
-void RoamerMon_Init(Roamer ** roamer_p);
+void RoamerMon_Init(Roamer **roamer_p);
 Roamer *Roamers_GetRoamMonStats(RoamerSaveData *roamerSave, int roamerId);
 int GetRoamerData(Roamer *roamer, int a1);
 void SetRoamerData(Roamer *roamer, int a1, int val);
@@ -59,4 +60,4 @@ BOOL RoamerSave_RepelNotInUse(RoamerSaveData *roamerSave);
 void RoamerSave_SetFlute(RoamerSaveData *roamerSave, u8 flute);
 u8 RoamerSave_GetFlute(RoamerSaveData *roamerSave);
 
-#endif //POKEHEARTGOLD_ROAMER_H
+#endif // POKEHEARTGOLD_ROAMER_H

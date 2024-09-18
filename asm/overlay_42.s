@@ -389,7 +389,7 @@ _02227344:
 	str r0, [sp, #0x34]
 _02227346:
 	add r0, sp, #0xc
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	str r0, [r4, #4]
 	mov r1, #6
 	ldrsh r1, [r6, r1]
@@ -402,11 +402,11 @@ _02227346:
 	ldr r0, [r4, #4]
 	bne _0222736C
 	mov r1, #6
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	b _02227372
 _0222736C:
 	mov r1, #1
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 _02227372:
 	mov r0, #9
 	str r0, [r4, #0xc]
@@ -467,7 +467,7 @@ _022273E0:
 	str r0, [sp, #0x34]
 _022273E2:
 	add r0, sp, #0xc
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	str r0, [r4, #8]
 	mov r1, #6
 	ldrsh r1, [r6, r1]
@@ -576,12 +576,12 @@ ov42_02227490: ; 0x02227490
 	add r5, r0, #0
 	ldr r0, [r5, #4]
 	add r4, r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, [r5, #8]
 	cmp r0, #0
 	beq _022274A8
 	add r1, r4, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 _022274A8:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -589,11 +589,11 @@ _022274A8:
 
 	thumb_func_start ov42_022274AC
 ov42_022274AC: ; 0x022274AC
-	ldr r3, _022274B4 ; =Get2dSpriteVisibleFlag
+	ldr r3, _022274B4 ; =Sprite_GetVisibleFlag
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_022274B4: .word Get2dSpriteVisibleFlag
+_022274B4: .word Sprite_GetVisibleFlag
 	thumb_func_end ov42_022274AC
 
 	thumb_func_start ov42_022274B8
@@ -1756,34 +1756,34 @@ _02227D44: .word ov42_02229B48
 
 	thumb_func_start ov42_02227D48
 ov42_02227D48: ; 0x02227D48
-	ldr r3, _02227D50 ; =TryChange2dSpriteAnimSeqNo
+	ldr r3, _02227D50 ; =Sprite_TryChangeAnimSeq
 	str r1, [r0, #0x10]
 	ldr r0, [r0, #4]
 	bx r3
 	.balign 4, 0
-_02227D50: .word TryChange2dSpriteAnimSeqNo
+_02227D50: .word Sprite_TryChangeAnimSeq
 	thumb_func_end ov42_02227D48
 
 	thumb_func_start ov42_02227D54
 ov42_02227D54: ; 0x02227D54
-	ldr r3, _02227D60 ; =TryChange2dSpriteAnimSeqNo
+	ldr r3, _02227D60 ; =Sprite_TryChangeAnimSeq
 	str r1, [r0, #0x10]
 	ldr r0, [r0, #4]
 	mov r1, #4
 	bx r3
 	nop
-_02227D60: .word TryChange2dSpriteAnimSeqNo
+_02227D60: .word Sprite_TryChangeAnimSeq
 	thumb_func_end ov42_02227D54
 
 	thumb_func_start ov42_02227D64
 ov42_02227D64: ; 0x02227D64
-	ldr r3, _02227D70 ; =TryChange2dSpriteAnimSeqNo
+	ldr r3, _02227D70 ; =Sprite_TryChangeAnimSeq
 	str r1, [r0, #0x10]
 	ldr r0, [r0, #4]
 	add r1, r1, #5
 	bx r3
 	nop
-_02227D70: .word TryChange2dSpriteAnimSeqNo
+_02227D70: .word Sprite_TryChangeAnimSeq
 	thumb_func_end ov42_02227D64
 
 	thumb_func_start ov42_02227D74
@@ -1794,86 +1794,86 @@ ov42_02227D74: ; 0x02227D74
 	ldr r1, [r5, #0x10]
 	ldr r0, [r5, #4]
 	add r1, r1, #5
-	bl TryChange2dSpriteAnimSeqNo
+	bl Sprite_TryChangeAnimSeq
 	str r4, [r5, #0x10]
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov42_02227D74
 
 	thumb_func_start ov42_02227D88
 ov42_02227D88: ; 0x02227D88
-	ldr r3, _02227D94 ; =TryChange2dSpriteAnimSeqNo
+	ldr r3, _02227D94 ; =Sprite_TryChangeAnimSeq
 	str r1, [r0, #0x10]
 	ldr r0, [r0, #4]
 	add r1, #9
 	bx r3
 	nop
-_02227D94: .word TryChange2dSpriteAnimSeqNo
+_02227D94: .word Sprite_TryChangeAnimSeq
 	thumb_func_end ov42_02227D88
 
 	thumb_func_start ov42_02227D98
 ov42_02227D98: ; 0x02227D98
-	ldr r3, _02227DA4 ; =TryChange2dSpriteAnimSeqNo
+	ldr r3, _02227DA4 ; =Sprite_TryChangeAnimSeq
 	str r1, [r0, #0x10]
 	ldr r0, [r0, #4]
 	add r1, r1, #5
 	bx r3
 	nop
-_02227DA4: .word TryChange2dSpriteAnimSeqNo
+_02227DA4: .word Sprite_TryChangeAnimSeq
 	thumb_func_end ov42_02227D98
 
 	thumb_func_start ov42_02227DA8
 ov42_02227DA8: ; 0x02227DA8
-	ldr r3, _02227DB4 ; =TryChange2dSpriteAnimSeqNo
+	ldr r3, _02227DB4 ; =Sprite_TryChangeAnimSeq
 	str r1, [r0, #0x10]
 	ldr r0, [r0, #4]
 	add r1, r1, #5
 	bx r3
 	nop
-_02227DB4: .word TryChange2dSpriteAnimSeqNo
+_02227DB4: .word Sprite_TryChangeAnimSeq
 	thumb_func_end ov42_02227DA8
 
 	thumb_func_start ov42_02227DB8
 ov42_02227DB8: ; 0x02227DB8
-	ldr r3, _02227DC4 ; =TryChange2dSpriteAnimSeqNo
+	ldr r3, _02227DC4 ; =Sprite_TryChangeAnimSeq
 	str r1, [r0, #0x10]
 	ldr r0, [r0, #4]
 	add r1, r1, #5
 	bx r3
 	nop
-_02227DC4: .word TryChange2dSpriteAnimSeqNo
+_02227DC4: .word Sprite_TryChangeAnimSeq
 	thumb_func_end ov42_02227DB8
 
 	thumb_func_start ov42_02227DC8
 ov42_02227DC8: ; 0x02227DC8
-	ldr r3, _02227DD4 ; =TryChange2dSpriteAnimSeqNo
+	ldr r3, _02227DD4 ; =Sprite_TryChangeAnimSeq
 	str r1, [r0, #0x10]
 	ldr r0, [r0, #4]
 	add r1, r1, #5
 	bx r3
 	nop
-_02227DD4: .word TryChange2dSpriteAnimSeqNo
+_02227DD4: .word Sprite_TryChangeAnimSeq
 	thumb_func_end ov42_02227DC8
 
 	thumb_func_start ov42_02227DD8
 ov42_02227DD8: ; 0x02227DD8
-	ldr r3, _02227DE4 ; =Sprite_TickCellOrMulticellAnimation
+	ldr r3, _02227DE4 ; =Sprite_TickAnimCtrlFrame
 	mov r1, #2
 	ldr r0, [r0, #4]
 	lsl r1, r1, #0xc
 	bx r3
 	nop
-_02227DE4: .word Sprite_TickCellOrMulticellAnimation
+_02227DE4: .word Sprite_TickAnimCtrlFrame
 	thumb_func_end ov42_02227DD8
 
 	thumb_func_start ov42_02227DE8
 ov42_02227DE8: ; 0x02227DE8
-	ldr r3, _02227DF4 ; =Sprite_TickCellOrMulticellAnimation
+	ldr r3, _02227DF4 ; =Sprite_TickAnimCtrlFrame
 	mov r1, #2
 	ldr r0, [r0, #4]
 	lsl r1, r1, #0xc
 	bx r3
 	nop
-_02227DF4: .word Sprite_TickCellOrMulticellAnimation
+_02227DF4: .word Sprite_TickAnimCtrlFrame
 	thumb_func_end ov42_02227DE8
 
 	thumb_func_start ov42_02227DF8
@@ -1891,63 +1891,63 @@ ov42_02227DF8: ; 0x02227DF8
 _02227E0E:
 	ldr r1, [r1, #0x10]
 	add r1, r1, #5
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	pop {r3, pc}
 	thumb_func_end ov42_02227DF8
 
 	thumb_func_start ov42_02227E18
 ov42_02227E18: ; 0x02227E18
-	ldr r3, _02227E24 ; =Sprite_TickCellOrMulticellAnimation
+	ldr r3, _02227E24 ; =Sprite_TickAnimCtrlFrame
 	mov r1, #2
 	ldr r0, [r0, #4]
 	lsl r1, r1, #0xc
 	bx r3
 	nop
-_02227E24: .word Sprite_TickCellOrMulticellAnimation
+_02227E24: .word Sprite_TickAnimCtrlFrame
 	thumb_func_end ov42_02227E18
 
 	thumb_func_start ov42_02227E28
 ov42_02227E28: ; 0x02227E28
-	ldr r3, _02227E34 ; =Sprite_TickCellOrMulticellAnimation
+	ldr r3, _02227E34 ; =Sprite_TickAnimCtrlFrame
 	mov r1, #1
 	ldr r0, [r0, #4]
 	lsl r1, r1, #0xc
 	bx r3
 	nop
-_02227E34: .word Sprite_TickCellOrMulticellAnimation
+_02227E34: .word Sprite_TickAnimCtrlFrame
 	thumb_func_end ov42_02227E28
 
 	thumb_func_start ov42_02227E38
 ov42_02227E38: ; 0x02227E38
-	ldr r3, _02227E44 ; =Sprite_TickCellOrMulticellAnimation
+	ldr r3, _02227E44 ; =Sprite_TickAnimCtrlFrame
 	mov r1, #1
 	ldr r0, [r0, #4]
 	lsl r1, r1, #0xc
 	bx r3
 	nop
-_02227E44: .word Sprite_TickCellOrMulticellAnimation
+_02227E44: .word Sprite_TickAnimCtrlFrame
 	thumb_func_end ov42_02227E38
 
 	thumb_func_start ov42_02227E48
 ov42_02227E48: ; 0x02227E48
-	ldr r3, _02227E54 ; =Sprite_TickCellOrMulticellAnimation
+	ldr r3, _02227E54 ; =Sprite_TickAnimCtrlFrame
 	mov r1, #2
 	ldr r0, [r0, #4]
 	lsl r1, r1, #0xe
 	bx r3
 	nop
-_02227E54: .word Sprite_TickCellOrMulticellAnimation
+_02227E54: .word Sprite_TickAnimCtrlFrame
 	thumb_func_end ov42_02227E48
 
 	thumb_func_start ov42_02227E58
 ov42_02227E58: ; 0x02227E58
-	ldr r3, _02227E64 ; =Sprite_TickCellOrMulticellAnimation
+	ldr r3, _02227E64 ; =Sprite_TickAnimCtrlFrame
 	mov r1, #6
 	ldr r0, [r0, #4]
 	lsl r1, r1, #0xc
 	bx r3
 	nop
-_02227E64: .word Sprite_TickCellOrMulticellAnimation
+_02227E64: .word Sprite_TickAnimCtrlFrame
 	thumb_func_end ov42_02227E58
 
 	thumb_func_start ov42_02227E68

@@ -1,9 +1,11 @@
+#include "unk_0203170C.h"
+
 #include "global.h"
+
+#include "math_util.h"
 #include "player_data.h"
 #include "save.h"
-#include "unk_0202CA24.h"
-#include "unk_0203170C.h"
-#include "math_util.h"
+#include "save_wifi_history.h"
 
 u32 sub_0203170C(void) {
     return sizeof(Unk0203170C);
@@ -73,20 +75,20 @@ u32 sub_020317BC(SaveData *saveData, u32 a1) {
 }
 
 static void sub_020317F4(SaveData *saveData, Unk020317F4 *a1) {
-    void *ptr;
+    void *wifiHistory;
     Unk0203170C *ptr2;
-    PlayerProfile* profile;
+    PlayerProfile *profile;
 
-    ptr = sub_0202CA44(saveData);
-    profile = Save_PlayerData_GetProfileAddr(saveData);
-    ptr2 = sub_02031774(saveData);
+    wifiHistory = Save_WiFiHistory_Get(saveData);
+    profile     = Save_PlayerData_GetProfileAddr(saveData);
+    ptr2        = sub_02031774(saveData);
 
     MI_CpuClear8(a1, sizeof(Unk020317F4));
-    a1->version = GAME_VERSION;
+    a1->version  = GAME_VERSION;
     a1->language = GAME_LANGUAGE;
-    a1->unk2 = sub_0202CA8C(ptr);
-    a1->unk3 = sub_0202CA90(ptr);
-    a1->otId = PlayerProfile_GetTrainerID(profile);
+    a1->unk2     = WifiHistory_GetPlayerCountry(wifiHistory);
+    a1->unk3     = WiFiHistory_GetPlayerRegion(wifiHistory);
+    a1->otId     = PlayerProfile_GetTrainerID(profile);
     CopyU16StringArray(a1->name, PlayerProfile_GetNamePtr(profile));
     a1->unk18 = 0;
     strcpy(a1->unk24, ptr2->unk0);
@@ -100,7 +102,7 @@ s32 sub_0203186C(SaveData *saveData, Unk020317F4 *a1) {
 
     sub_020317F4(saveData, a1);
 
-    rand = LCRandom() % 1000;
+    rand      = LCRandom() % 1000;
     a1->unk60 = rand;
     a1->unk62 = 0xffff;
 

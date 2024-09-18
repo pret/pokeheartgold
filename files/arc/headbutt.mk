@@ -7,4 +7,6 @@ $(HEADBUTT_NARC): %.$(buildname).narc: %.json %.json.txt
 	$(O2NARC) $*.o $@ -n
 	@$(RM) -f $*.s $*.o
 
-FS_CLEAN_TARGETS += $(HEADBUTT_DIR).d
+FS_CLEAN_TARGETS += \
+	$(HEADBUTT_DIR).d \
+	$(foreach bn,$(SUPPORTED_ROMS),$(HEADBUTT_DIR).$(bn).na{rc,ix})

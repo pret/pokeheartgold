@@ -1,15 +1,16 @@
 #ifndef POKEHEARTGOLD_MYSTERY_GIFT_H
 #define POKEHEARTGOLD_MYSTERY_GIFT_H
 
-#include "pokemon_types_def.h"
 #include "photo_album.h"
+#include "pokemon_types_def.h"
+#include "save_link_ruleset.h"
 
 #define MG_TAG_INVALID           0
 #define MG_TAG_POKEMON           1
 #define MG_TAG_EGG               2
 #define MG_TAG_ITEM              3
 #define MG_TAG_BATTLE_RULES      4
-#define MG_TAG_SECRET_BASE_DECO  5  // disabled in hgss
+#define MG_TAG_SECRET_BASE_DECO  5 // disabled in hgss
 #define MG_TAG_MON_DECO          6
 #define MG_TAG_MANAPHY_EGG       7
 #define MG_TAG_MEMBER_CARD       8  // disabled in hgss
@@ -47,7 +48,7 @@ typedef union {
     MysteryGiftPokemonTag pokemon;
     Pokemon egg;
     u32 item;
-    u16 ruleset[16];
+    LinkBattleRuleset ruleset;
     int baseDecoration;
     MysteryGiftMonDecorationTag monDecoration;
     u8 pokewalkerCourse;
@@ -57,9 +58,9 @@ typedef union {
 
 typedef struct UnkWonderCardSubstruct_104 {
     u16 name[36];
-    u32 version;     // 88
-    u16 id;          // 8C
-    u8 unique  : 1;  // 8E
+    u32 version;    // 88
+    u16 id;         // 8C
+    u8 unique  : 1; // 8E
     u8 unk8E_1 : 1;
     u8 unk8E_2 : 1;
     u8 unk8E_3 : 1;

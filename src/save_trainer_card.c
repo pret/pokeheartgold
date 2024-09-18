@@ -1,5 +1,6 @@
-#include "global.h"
 #include "save_trainer_card.h"
+
+#include "global.h"
 
 u32 Save_TrainerCard_sizeof(void) {
     return sizeof(struct SaveTrainerCard);

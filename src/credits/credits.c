@@ -1,30 +1,33 @@
+#include "credits/credits.h"
+
 #include "global.h"
+
+#include "constants/sndseq.h"
+
+#include "bg_window.h"
 #include "font.h"
 #include "gf_gfx_loader.h"
 #include "msgdata.h"
+#include "obj_char_transfer.h"
+#include "obj_pltt_transfer.h"
 #include "overlay_manager.h"
 #include "sound.h"
+#include "sound_02004A44.h"
+#include "sprite.h"
+#include "sys_task_api.h"
 #include "system.h"
 #include "text.h"
-#include "sound_02004A44.h"
 #include "unk_02009D48.h"
 #include "unk_0200A090.h"
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
-#include "sys_task_api.h"
 #include "unk_0200FA24.h"
-#include "obj_char_transfer.h"
-#include "unk_02022588.h"
-#include "unk_02023694.h"
-#include "bg_window.h"
-#include "constants/sndseq.h"
-#include "credits/credits.h"
 
 #ifdef HEARTGOLD
 #define GAME_TITLE_MSG_NO 0
 #else
 #define GAME_TITLE_MSG_NO 1
-#endif //HEARTGOLD
+#endif // HEARTGOLD
 
 #define NUM_SCENES 6
 
@@ -222,8 +225,8 @@ BOOL Credits_Init(OVY_MANAGER *man, int *state) {
             GX_SetVisiblePlane(0);
             GXS_SetVisiblePlane(0);
             SetGXBanks();
-            work->args = OverlayManager_GetArgs(man);
-            work->skipCredits = FALSE;
+            work->args             = OverlayManager_GetArgs(man);
+            work->skipCredits      = FALSE;
             gSystem.screensFlipped = TRUE;
             GfGfx_SwapDisplay();
             CreateOamAndObjResMgrs(work);
@@ -240,7 +243,7 @@ BOOL Credits_Init(OVY_MANAGER *man, int *state) {
         InitBgLayers(work);
         InitSprites(work);
         work->pageWork.msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 0x1b8, HEAP_ID_CREDITS);
-        work->pageWork.string = String_New(256, HEAP_ID_CREDITS);
+        work->pageWork.string  = String_New(256, HEAP_ID_CREDITS);
         DisplayWindow(work);
         SetPageSysTasks(work);
 
@@ -272,8 +275,7 @@ BOOL Credits_Exit(OVY_MANAGER *man, int *state) {
         Main_SetVBlankIntrCB(NULL, NULL);
         *state += 1;
         break;
-    case 1:
-    {
+    case 1: {
         PageWork *ptr = &work->pageWork;
         RemoveWindow(&ptr->window);
         DestroyMsgData(ptr->msgData);
@@ -382,7 +384,7 @@ BOOL Credits_Main(OVY_MANAGER *man, int *state) {
         }
         break;
     }
-    sub_0202457C(work->spriteList);
+    SpriteList_RenderAndAnimateSprites(work->spriteList);
     return FALSE;
 }
 
@@ -438,8 +440,8 @@ static void FreeBG(CreditsAppWork *work) {
 }
 
 static void LoadBgGraphics(CreditsAppWork *work) {
-    ScrnFileIds temp1 = ov76_021E6EE8;
-    ScrnFileIds temp2 = ov76_021E6F00;
+    ScrnFileIds temp1  = ov76_021E6EE8;
+    ScrnFileIds temp2  = ov76_021E6F00;
     BgConfig *bgConfig = work->bgConfig;
 
     GfGfxLoader_LoadCharData(NARC_a_2_6_3, 5, bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_CREDITS);
@@ -470,15 +472,15 @@ static void CreateOamAndObjResMgrs(CreditsAppWork *work) {
     GXS_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_128K);
     objCharTransferTemplate = sObjCharTransferTemplate;
     ObjCharTransfer_Init(&objCharTransferTemplate);
-    sub_02022588(0xd, HEAP_ID_CREDITS);
+    ObjPlttTransfer_Init(0xd, HEAP_ID_CREDITS);
     ObjCharTransfer_ClearBuffers();
-    sub_02022638();
+    ObjPlttTransfer_Reset();
     NNS_G2dInitOamManagerModule();
     OamManager_Create(0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20, HEAP_ID_CREDITS);
     work->spriteList = G2dRenderer_Init(0x28, &work->g2dRender, HEAP_ID_CREDITS);
 
-    temp2 = ov76_021E6E88[3];
-    u8 *ptr =  (u8 *)&temp2;
+    temp2   = ov76_021E6E88[3];
+    u8 *ptr = (u8 *)&temp2;
 
     for (u8 i = GF_GFX_RES_TYPE_CHAR; i < GF_GFX_RES_TYPE_ANIM + 1; i++) {
         work->gf2dGfxResMan[i] = Create2DGfxResObjMan(ptr[i], (GfGfxResType)i, HEAP_ID_CREDITS);
@@ -492,29 +494,23 @@ static void FreeOamAndObjResMgrs(CreditsAppWork *work) {
     SpriteList_Delete(work->spriteList);
     OamManager_Free();
     ObjCharTransfer_Destroy();
-    sub_02022608();
+    ObjPlttTransfer_Destroy();
 }
 
 static void ov76_021E6170(CreditsAppWork *work) {
-    work->gf2dGfxResObj[GF_GFX_RES_TYPE_CHAR] =
-        AddCharResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CHAR], NARC_a_2_6_3, 1, TRUE, 1, NNS_G2D_VRAM_TYPE_2DBOTH, HEAP_ID_CREDITS);
-    work->gf2dGfxResObj[GF_GFX_RES_TYPE_PLTT] =
-        AddPlttResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_PLTT], NARC_a_2_6_3, 0, FALSE, 1, NNS_G2D_VRAM_TYPE_2DBOTH, 7, HEAP_ID_CREDITS);
-    work->gf2dGfxResObj[GF_GFX_RES_TYPE_CELL] =
-        AddCellOrAnimResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CELL], NARC_a_2_6_3, 2, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_CREDITS);
-    work->gf2dGfxResObj[GF_GFX_RES_TYPE_ANIM] =
-        AddCellOrAnimResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_ANIM], NARC_a_2_6_3, 3, TRUE, 1, GF_GFX_RES_TYPE_ANIM, HEAP_ID_CREDITS);
-    work->cutsceneWork.narc = NARC_New(NARC_a_2_6_3, HEAP_ID_CREDITS);
+    work->gf2dGfxResObj[GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CHAR], NARC_a_2_6_3, 1, TRUE, 1, NNS_G2D_VRAM_TYPE_2DBOTH, HEAP_ID_CREDITS);
+    work->gf2dGfxResObj[GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_PLTT], NARC_a_2_6_3, 0, FALSE, 1, NNS_G2D_VRAM_TYPE_2DBOTH, 7, HEAP_ID_CREDITS);
+    work->gf2dGfxResObj[GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CELL], NARC_a_2_6_3, 2, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_CREDITS);
+    work->gf2dGfxResObj[GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_ANIM], NARC_a_2_6_3, 3, TRUE, 1, GF_GFX_RES_TYPE_ANIM, HEAP_ID_CREDITS);
+    work->cutsceneWork.narc                   = NARC_New(NARC_a_2_6_3, HEAP_ID_CREDITS);
 
     CutsceneWork *cutsceneWork = &work->cutsceneWork;
-    NARC **narc = &cutsceneWork->narc;
-    cutsceneWork->gender = work->args->gender;
+    NARC **narc                = &cutsceneWork->narc;
+    cutsceneWork->gender       = work->args->gender;
 
     for (u8 i = 0; i < UNIQUE_SPRITES_PER_CUTSCENE; i++) {
-        work->cutsceneRsrs[i].charResObj =
-            AddCharResObjFromOpenNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CHAR], *narc, 20, TRUE, i + 2, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_CREDITS);
-        work->cutsceneRsrs[i].plttResObj =
-            AddPlttResObjFromOpenNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_PLTT], *narc, 149, FALSE, i + 2, NNS_G2D_VRAM_TYPE_2DMAIN, 1, HEAP_ID_CREDITS);
+        work->cutsceneRsrs[i].charResObj = AddCharResObjFromOpenNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CHAR], *narc, 20, TRUE, i + 2, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_CREDITS);
+        work->cutsceneRsrs[i].plttResObj = AddPlttResObjFromOpenNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_PLTT], *narc, 149, FALSE, i + 2, NNS_G2D_VRAM_TYPE_2DMAIN, 1, HEAP_ID_CREDITS);
     }
 
     sub_0200ACF0(work->gf2dGfxResObj[GF_GFX_RES_TYPE_CHAR]);
@@ -551,51 +547,52 @@ static void InitSprites(CreditsAppWork *work) {
     // Dancing Pokémon that start on top screen
     for (u8 i = 0; i < MONS_PER_SCREEN; i++) {
         if (i < MONS_PER_SCREEN / 2) {
-            yIdx = i;
+            yIdx            = i;
             tmpl.position.x = 16 * FX32_ONE;
         } else {
-            yIdx = i - 3;
+            yIdx            = i - 3;
             tmpl.position.x = 240 * FX32_ONE;
         }
 
         tmpl.position.y = (yIdx * 80 + 16) * FX32_ONE;
-        tmpl.priority = 1;
-        ptr->pokemon[i] = CreateSprite(&tmpl);
+        tmpl.priority   = 1;
+        ptr->pokemon[i] = Sprite_CreateAffine(&tmpl);
         GF_ASSERT(ptr->pokemon[i] != NULL);
-        Set2dSpriteAnimActiveFlag(ptr->pokemon[i], TRUE);
-        Set2dSpriteVisibleFlag(ptr->pokemon[i], TRUE);
-        Set2dSpriteAnimSeqNo(ptr->pokemon[i], 6);
+        Sprite_SetAnimActiveFlag(ptr->pokemon[i], TRUE);
+        Sprite_SetVisibleFlag(ptr->pokemon[i], TRUE);
+        Sprite_SetAnimCtrlSeq(ptr->pokemon[i], 6);
 
         tmpl.priority = 0;
-        ptr->cloud[i] = CreateSprite(&tmpl);
+        ptr->cloud[i] = Sprite_CreateAffine(&tmpl);
         GF_ASSERT(ptr->cloud[i] != NULL);
-        Set2dSpriteAnimActiveFlag(ptr->cloud[i], TRUE);
-        Set2dSpriteVisibleFlag(ptr->cloud[i], FALSE);
-        Set2dSpriteAnimSeqNo(ptr->cloud[i], 7);
+        Sprite_SetAnimActiveFlag(ptr->cloud[i], TRUE);
+        Sprite_SetVisibleFlag(ptr->cloud[i], FALSE);
+        Sprite_SetAnimCtrlSeq(ptr->cloud[i], 7);
     }
 
     // Dancing Pokémon that start on bottom screen
     for (u8 i = 0; i < MONS_PER_SCREEN; i++) {
         if (i < MONS_PER_SCREEN / 2) {
-            yIdx = i;
-            tmpl.position.x = 16 * FX32_ONE;;
+            yIdx            = i;
+            tmpl.position.x = 16 * FX32_ONE;
+            ;
         } else {
-            yIdx = i - 3;
+            yIdx            = i - 3;
             tmpl.position.x = 240 * FX32_ONE;
         }
-        tmpl.position.y = (yIdx * 80 + 272) * FX32_ONE;
-        tmpl.priority = 1;
-        u8 idx = i + MONS_PER_SCREEN;
-        ptr->pokemon[idx] = CreateSprite(&tmpl);
-        Set2dSpriteAnimActiveFlag(ptr->pokemon[idx], TRUE);
-        Set2dSpriteVisibleFlag(ptr->pokemon[idx], TRUE);
-        Set2dSpriteAnimSeqNo(ptr->pokemon[idx], 6);
+        tmpl.position.y   = (yIdx * 80 + 272) * FX32_ONE;
+        tmpl.priority     = 1;
+        u8 idx            = i + MONS_PER_SCREEN;
+        ptr->pokemon[idx] = Sprite_CreateAffine(&tmpl);
+        Sprite_SetAnimActiveFlag(ptr->pokemon[idx], TRUE);
+        Sprite_SetVisibleFlag(ptr->pokemon[idx], TRUE);
+        Sprite_SetAnimCtrlSeq(ptr->pokemon[idx], 6);
 
-        tmpl.priority = 0;
-        ptr->cloud[idx] = CreateSprite(&tmpl);
-        Set2dSpriteAnimActiveFlag(ptr->cloud[idx], TRUE);
-        Set2dSpriteVisibleFlag(ptr->cloud[idx], FALSE);
-        Set2dSpriteAnimSeqNo(ptr->cloud[idx], 7);
+        tmpl.priority   = 0;
+        ptr->cloud[idx] = Sprite_CreateAffine(&tmpl);
+        Sprite_SetAnimActiveFlag(ptr->cloud[idx], TRUE);
+        Sprite_SetVisibleFlag(ptr->cloud[idx], FALSE);
+        Sprite_SetAnimCtrlSeq(ptr->cloud[idx], 7);
     }
 
     InitCutsceneSprites(work);
@@ -605,57 +602,52 @@ static void InitSprites(CreditsAppWork *work) {
 
 static void InitDancingSpriteResources(int idx, CreditsAppWork *work, int sprtResPriority, NNS_G2D_VRAM_TYPE whichScreen, SpriteTemplate *tmpl, SpriteResourcesHeader *header) {
     CreateSpriteResourcesHeader(
-        header, idx, idx, idx, idx, -1, -1, FALSE, sprtResPriority,
-        work->gf2dGfxResMan[GF_GFX_RES_TYPE_CHAR],
-        work->gf2dGfxResMan[GF_GFX_RES_TYPE_PLTT],
-        work->gf2dGfxResMan[GF_GFX_RES_TYPE_CELL],
-        work->gf2dGfxResMan[GF_GFX_RES_TYPE_ANIM],
-        NULL, NULL);
+        header, idx, idx, idx, idx, -1, -1, FALSE, sprtResPriority, work->gf2dGfxResMan[GF_GFX_RES_TYPE_CHAR], work->gf2dGfxResMan[GF_GFX_RES_TYPE_PLTT], work->gf2dGfxResMan[GF_GFX_RES_TYPE_CELL], work->gf2dGfxResMan[GF_GFX_RES_TYPE_ANIM], NULL, NULL);
 
-    tmpl->spriteList = work->spriteList;
-    tmpl->header = header;
-    tmpl->position.x = 0;
-    tmpl->position.y = 0;
-    tmpl->position.z = 0;
-    tmpl->scale.x = FX32_ONE;
-    tmpl->scale.y = FX32_ONE;
-    tmpl->scale.z = FX32_ONE;
-    tmpl->rotation = 0;
-    tmpl->priority = 0;
+    tmpl->spriteList  = work->spriteList;
+    tmpl->header      = header;
+    tmpl->position.x  = 0;
+    tmpl->position.y  = 0;
+    tmpl->position.z  = 0;
+    tmpl->scale.x     = FX32_ONE;
+    tmpl->scale.y     = FX32_ONE;
+    tmpl->scale.z     = FX32_ONE;
+    tmpl->rotation    = 0;
+    tmpl->priority    = 0;
     tmpl->whichScreen = whichScreen;
-    tmpl->heapId = HEAP_ID_CREDITS;
+    tmpl->heapId      = HEAP_ID_CREDITS;
 }
 
 static void InitCutsceneSpriteResources(u8 idx, CreditsAppWork *work, u8 sprtResPriority, NNS_G2D_VRAM_TYPE whichScreen, SpriteTemplate *tmpl, SpriteResourcesHeader *header) {
     CutsceneSpriteGfx *ptr = &work->cutsceneWork.spriteGfx[idx];
 
-    header->charData = NULL;
-    header->plttProxy = ptr->plttProxy;
-    header->imageProxy = ptr->imageProxy;
-    header->cellData = ptr->cellDataBank;
-    header->cellAnim = ptr->animDataBank;
+    header->charData      = NULL;
+    header->plttProxy     = ptr->plttProxy;
+    header->imageProxy    = ptr->imageProxy;
+    header->cellData      = ptr->cellDataBank;
+    header->cellAnim      = ptr->animDataBank;
     header->multiCellData = NULL;
     header->multiCellAnim = NULL;
-    header->flag = 0;
-    header->priority = sprtResPriority;
+    header->flag          = 0;
+    header->priority      = sprtResPriority;
 
-    tmpl->spriteList = work->spriteList;
-    tmpl->header = header;
-    tmpl->position.x = 0;
-    tmpl->position.y = 0;
-    tmpl->position.z = 0;
-    tmpl->scale.x = FX32_ONE;
-    tmpl->scale.y = FX32_ONE;
-    tmpl->scale.z = FX32_ONE;
-    tmpl->rotation = 0;
-    tmpl->priority = 0;
+    tmpl->spriteList  = work->spriteList;
+    tmpl->header      = header;
+    tmpl->position.x  = 0;
+    tmpl->position.y  = 0;
+    tmpl->position.z  = 0;
+    tmpl->scale.x     = FX32_ONE;
+    tmpl->scale.y     = FX32_ONE;
+    tmpl->scale.z     = FX32_ONE;
+    tmpl->rotation    = 0;
+    tmpl->priority    = 0;
     tmpl->whichScreen = whichScreen;
-    tmpl->heapId = HEAP_ID_CREDITS;
+    tmpl->heapId      = HEAP_ID_CREDITS;
 }
 
 static void SetPageSysTasks(CreditsAppWork *work) {
-    PageWork *ptr = &work->pageWork;
-    ptr->pageDisplayWork.sysTask = SysTask_CreateOnVBlankQueue(TogglePageDisplayCB, &ptr->pageDisplayWork, 0);
+    PageWork *ptr                      = &work->pageWork;
+    ptr->pageDisplayWork.sysTask       = SysTask_CreateOnVBlankQueue(TogglePageDisplayCB, &ptr->pageDisplayWork, 0);
     work->pageWork.scrFlipWork.sysTask = SysTask_CreateOnVBlankQueue(FlipScreensCB, &work->pageWork.scrFlipWork, 1);
 }
 
@@ -673,8 +665,8 @@ static void HandlePageDisplay(CreditsAppWork *work) {
     PageWork *ptr;
     PageDisplayWork *ptr18;
 
-    ptr = &work->pageWork;
-    ptr18 = &ptr->pageDisplayWork;
+    ptr          = &work->pageWork;
+    ptr18        = &ptr->pageDisplayWork;
     newPageFrame = FALSE;
 
     if (ptr->pageState.page < NUM_CREDIT_PAGES) {
@@ -716,7 +708,7 @@ static void HandlePageDisplay(CreditsAppWork *work) {
 }
 
 static void HandleSceneTransition(CreditsAppWork *work) {
-    SceneWork *ptr = &work->sceneWork;
+    SceneWork *ptr       = &work->sceneWork;
     BOOL transitionFrame = FALSE;
 
     if (ptr->transition.sceneIdx >= NUM_SCENES - 1) {
@@ -734,8 +726,8 @@ static void HandleSceneTransition(CreditsAppWork *work) {
         break;
     case SCENE_TRANS_CLOUDS_APPEAR:
         for (u8 i = 0; i < TOTAL_DANCING_MONS; i++) {
-            Set2dSpriteVisibleFlag(ptr->cloud[i], TRUE);
-            Set2dSpriteAnimSeqNo(ptr->cloud[i], 7);
+            Sprite_SetVisibleFlag(ptr->cloud[i], TRUE);
+            Sprite_SetAnimCtrlSeq(ptr->cloud[i], 7);
         }
         ptr->transition.timer = 0;
         ptr->transition.state = SCENE_TRANS_SWITCH_BG;
@@ -744,9 +736,9 @@ static void HandleSceneTransition(CreditsAppWork *work) {
         // After 1 frame, switch out the background and dancing Pokémon
         if (++ptr->transition.timer >= 1) {
             ptr->transition.sceneIdxDup = (ptr->transition.sceneIdxDup + 1) % NUM_SCENES;
-            u8 idx = ptr->transition.sceneIdxDup;
+            u8 idx                      = ptr->transition.sceneIdxDup;
             for (u8 i = 0; i < TOTAL_DANCING_MONS; i++) {
-                Set2dSpriteAnimSeqNo(ptr->pokemon[i], sPokemonSpriteSeqNos[idx]);
+                Sprite_SetAnimCtrlSeq(ptr->pokemon[i], sPokemonSpriteSeqNos[idx]);
             }
 
             BG_LoadScreenTilemapData(work->bgConfig, 7, work->unk4B0[idx]->rawData, work->unk4B0[idx]->szByte);
@@ -769,7 +761,7 @@ static void HandleSceneTransition(CreditsAppWork *work) {
     case SCENE_TRANS_CLOUDS_DISSIPATE:
         if (++ptr->transition.timer >= 30) {
             for (u8 i = 0; i < TOTAL_DANCING_MONS; i++) {
-                Set2dSpriteVisibleFlag(ptr->cloud[i], FALSE);
+                Sprite_SetVisibleFlag(ptr->cloud[i], FALSE);
             }
             ptr->transition.timer = 0;
             ptr->transition.state = SCENE_TRANS_NONE;
@@ -815,13 +807,13 @@ static void HandleCutscenes(CreditsAppWork *work) {
 }
 
 static void ActivateSprite(Sprite *sprite) {
-    Set2dSpriteAnimActiveFlag(sprite, TRUE);
-    Set2dSpriteVisibleFlag(sprite, TRUE);
+    Sprite_SetAnimActiveFlag(sprite, TRUE);
+    Sprite_SetVisibleFlag(sprite, TRUE);
 }
 
 // Marks the scene transition for the SysTask callback.
 static void ov76_021E68C8(CreditsAppWork *work) {
-    ScreenFlipWork *ptr = &work->pageWork.scrFlipWork;
+    ScreenFlipWork *ptr  = &work->pageWork.scrFlipWork;
     ptr->transitionFrame = TRUE;
     ptr->count++;
 }
@@ -852,10 +844,10 @@ static void ov76_021E6944(PageDisplayWork *pageDisplay, BgConfig *bgConfig, BOOL
     G2S_SetWnd0InsidePlane(30, TRUE);
     G2S_SetWnd1InsidePlane(30, TRUE);
     G2S_SetWndOutsidePlane(28, TRUE);
-    pageDisplay->unk0 = 0;
+    pageDisplay->unk0      = 0;
     pageDisplay->rendering = TRUE;
-    pageDisplay->hidden = hidden;
-    pageDisplay->bgConfig = bgConfig;
+    pageDisplay->hidden    = hidden;
+    pageDisplay->bgConfig  = bgConfig;
 
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_ON);
 }
@@ -877,9 +869,9 @@ static void TogglePageDisplayCB(SysTask *task, void *taskData) {
     pageDisplay->unk0++;
     if (pageDisplay->hidden == FALSE) {
         temp2 = 0xff;
-        temp = (1 - pageDisplay->unk0) * temp2;
+        temp  = (1 - pageDisplay->unk0) * temp2;
     } else {
-        temp = 0;
+        temp  = 0;
         temp2 = (1 - pageDisplay->unk0) * 0xff;
     }
 
@@ -919,8 +911,8 @@ static void LoadPage(PageWork *ptr) {
     if (cur_lines_page == nextPage) {
         do {
             int msgno = sCreditMsgLines[ptr->pageState.line].msgno;
-            u8 xPos = sCreditMsgLines[ptr->pageState.line].x;
-            u8 yPos = sCreditMsgLines[ptr->pageState.line].y;
+            u8 xPos   = sCreditMsgLines[ptr->pageState.line].x;
+            u8 yPos   = sCreditMsgLines[ptr->pageState.line].y;
             ReadMsgDataIntoString(ptr->msgData, msgno, ptr->string);
             AddTextPrinterParameterizedWithColor(&ptr->window, 0, ptr->string, xPos, yPos, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
             if (++ptr->pageState.line >= NELEMS(sCreditMsgLines)) {
@@ -935,13 +927,13 @@ static void LoadPage(PageWork *ptr) {
 static void LoadCutsceneSpriteResources(CreditsAppWork *work) {
     CutsceneWork *cutsceneWork = &work->cutsceneWork;
     for (u8 i = 0; i < UNIQUE_SPRITES_PER_CUTSCENE; i++) {
-        GF_2DGfxResObj *charResObj = work->cutsceneRsrs[i].charResObj;
-        GF_2DGfxResObj *plttResObj = work->cutsceneRsrs[i].plttResObj;
-        NNSG2dImageProxy *imageProxy = sub_0200AF00(charResObj);
+        GF_2DGfxResObj *charResObj         = work->cutsceneRsrs[i].charResObj;
+        GF_2DGfxResObj *plttResObj         = work->cutsceneRsrs[i].plttResObj;
+        NNSG2dImageProxy *imageProxy       = sub_0200AF00(charResObj);
         NNSG2dImagePaletteProxy *plttProxy = sub_0200B0F8(plttResObj, imageProxy);
 
         cutsceneWork->spriteGfx[i].imageProxy = imageProxy;
-        cutsceneWork->spriteGfx[i].plttProxy = plttProxy;
+        cutsceneWork->spriteGfx[i].plttProxy  = plttProxy;
         cutsceneWork->spriteGfx[i].charOffset = NNS_G2dGetImageLocation(imageProxy, NNS_G2D_VRAM_TYPE_2DMAIN);
         cutsceneWork->spriteGfx[i].plttOffset = NNS_G2dGetImagePaletteLocation(plttProxy, NNS_G2D_VRAM_TYPE_2DMAIN);
     }
@@ -1005,24 +997,24 @@ static void CreateCutsceneSprite(CreditsAppWork *work, const CutsceneSpriteParam
     SpriteTemplate tmpl;
 
     InitCutsceneSpriteResources(spriteParam->spriteIdx, work, 3, NNS_G2D_VRAM_TYPE_2DMAIN, &tmpl, &header);
-    CutsceneSprites *sprites = &work->cutsceneWork.sprites;
-    int idx = sprites->count;
+    CutsceneSprites *sprites       = &work->cutsceneWork.sprites;
+    int idx                        = sprites->count;
     CutsceneSprite *cutsceneSprite = &sprites->sprite[idx];
-    cutsceneSprite->unk0 = 1;
-    cutsceneSprite->unk2 = spriteParam->unk0;
+    cutsceneSprite->unk0           = 1;
+    cutsceneSprite->unk2           = spriteParam->unk0;
 
     // Render on non-primary display screen
     tmpl.position.x = spriteParam->xPos * FX32_ONE;
     tmpl.position.y = (spriteParam->yPos + 256) * FX32_ONE;
-    tmpl.priority = 1;
+    tmpl.priority   = 1;
 
-    Sprite *sprite = CreateSprite(&tmpl);
+    Sprite *sprite         = Sprite_CreateAffine(&tmpl);
     cutsceneSprite->sprite = sprite;
     GF_ASSERT(sprite != NULL);
 
-    Set2dSpriteAnimActiveFlag(cutsceneSprite->sprite, FALSE);
-    Set2dSpriteVisibleFlag(cutsceneSprite->sprite, FALSE);
-    Set2dSpriteAnimSeqNo(cutsceneSprite->sprite, spriteParam->animSeqNo);
+    Sprite_SetAnimActiveFlag(cutsceneSprite->sprite, FALSE);
+    Sprite_SetVisibleFlag(cutsceneSprite->sprite, FALSE);
+    Sprite_SetAnimCtrlSeq(cutsceneSprite->sprite, spriteParam->animSeqNo);
     cutsceneSprite->activateTime = spriteParam->activateTime;
     sprites->count++;
 }
@@ -1030,7 +1022,7 @@ static void CreateCutsceneSprite(CreditsAppWork *work, const CutsceneSpriteParam
 // Initialize sprites for the current cutscene.
 static void InitCutsceneSprites(CreditsAppWork *work) {
     CutsceneWork *cutsceneWork = &work->cutsceneWork;
-    u8 idx = cutsceneWork->cutsceneIdx;
+    u8 idx                     = cutsceneWork->cutsceneIdx;
 
     if (idx >= 16) {
         return;
@@ -1057,7 +1049,7 @@ static void InitCutsceneSprites(CreditsAppWork *work) {
 static void FreeCutsceneSprites(CreditsAppWork *work) {
     u8 i;
     CutsceneWork *cutsceneWork = &work->cutsceneWork;
-    CutsceneSprites *sprites = &cutsceneWork->sprites;
+    CutsceneSprites *sprites   = &cutsceneWork->sprites;
 
     for (i = 0; i < 16; i++) {
         if (sprites->sprite[i].unk0 != 0) {

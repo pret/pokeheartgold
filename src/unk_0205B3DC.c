@@ -1,8 +1,12 @@
-#include "global.h"
 #include "unk_0205B3DC.h"
-#include "gf_gfx_loader.h"
+
+#include "global.h"
+
 #include "constants/sprites.h"
+
 #include "application/record/record.naix"
+
+#include "gf_gfx_loader.h"
 
 // Based on the lower 3 bits of your trainer ID,
 // you'll be offered a different set of 4 choices
@@ -23,23 +27,23 @@ static const u8 sPlayerAvatarIndexChoices[][4] = {
 // and... the same trainer class again?
 static const u8 sPlayerAvatarAttributes[][3] = {
     // Male
-    { SPRITE_BOY1, TRAINERCLASS_SCHOOL_KID_M, TRAINERCLASS_SCHOOL_KID_M },
-    { SPRITE_BOY3, TRAINERCLASS_BUG_CATCHER, TRAINERCLASS_BUG_CATCHER },
-    { SPRITE_MAN3, TRAINERCLASS_ACE_TRAINER_M, TRAINERCLASS_ACE_TRAINER_M },
-    { SPRITE_BADMAN, TRAINERCLASS_ROUGHNECK, TRAINERCLASS_ROUGHNECK },
-    { SPRITE_EXPLORE, TRAINERCLASS_RUIN_MANIAC, TRAINERCLASS_RUIN_MANIAC },
-    { SPRITE_FIGHTER, TRAINERCLASS_BLACK_BELT, TRAINERCLASS_BLACK_BELT },
-    { SPRITE_GORGGEOUSM, TRAINERCLASS_RICH_BOY, TRAINERCLASS_RICH_BOY },
-    { SPRITE_MYSTERY, TRAINERCLASS_PSYCHIC_M, TRAINERCLASS_PSYCHIC_M },
+    { SPRITE_BOY1,       TRAINERCLASS_SCHOOL_KID_M,  TRAINERCLASS_SCHOOL_KID_M  },
+    { SPRITE_BOY3,       TRAINERCLASS_BUG_CATCHER,   TRAINERCLASS_BUG_CATCHER   },
+    { SPRITE_MAN3,       TRAINERCLASS_ACE_TRAINER_M, TRAINERCLASS_ACE_TRAINER_M },
+    { SPRITE_BADMAN,     TRAINERCLASS_ROUGHNECK,     TRAINERCLASS_ROUGHNECK     },
+    { SPRITE_EXPLORE,    TRAINERCLASS_RUIN_MANIAC,   TRAINERCLASS_RUIN_MANIAC   },
+    { SPRITE_FIGHTER,    TRAINERCLASS_BLACK_BELT,    TRAINERCLASS_BLACK_BELT    },
+    { SPRITE_GORGGEOUSM, TRAINERCLASS_RICH_BOY,      TRAINERCLASS_RICH_BOY      },
+    { SPRITE_MYSTERY,    TRAINERCLASS_PSYCHIC_M,     TRAINERCLASS_PSYCHIC_M     },
     // Female
-    { SPRITE_GIRL1, TRAINERCLASS_LASS, TRAINERCLASS_LASS },
-    { SPRITE_GIRL2, TRAINERCLASS_BATTLE_GIRL, TRAINERCLASS_BATTLE_GIRL },
-    { SPRITE_WOMAN2, TRAINERCLASS_BEAUTY, TRAINERCLASS_BEAUTY },
-    { SPRITE_WOMAN3, TRAINERCLASS_ACE_TRAINER_F, TRAINERCLASS_ACE_TRAINER_F },
-    { SPRITE_IDOL, TRAINERCLASS_IDOL, TRAINERCLASS_IDOL },
-    { SPRITE_LADY, TRAINERCLASS_SOCIALITE, TRAINERCLASS_SOCIALITE },
-    { SPRITE_COWGIRL, TRAINERCLASS_COWGIRL, TRAINERCLASS_COWGIRL },
-    { SPRITE_GORGGEOUSW, TRAINERCLASS_LADY, TRAINERCLASS_LADY },
+    { SPRITE_GIRL1,      TRAINERCLASS_LASS,          TRAINERCLASS_LASS          },
+    { SPRITE_GIRL2,      TRAINERCLASS_BATTLE_GIRL,   TRAINERCLASS_BATTLE_GIRL   },
+    { SPRITE_WOMAN2,     TRAINERCLASS_BEAUTY,        TRAINERCLASS_BEAUTY        },
+    { SPRITE_WOMAN3,     TRAINERCLASS_ACE_TRAINER_F, TRAINERCLASS_ACE_TRAINER_F },
+    { SPRITE_IDOL,       TRAINERCLASS_IDOL,          TRAINERCLASS_IDOL          },
+    { SPRITE_LADY,       TRAINERCLASS_SOCIALITE,     TRAINERCLASS_SOCIALITE     },
+    { SPRITE_COWGIRL,    TRAINERCLASS_COWGIRL,       TRAINERCLASS_COWGIRL       },
+    { SPRITE_GORGGEOUSW, TRAINERCLASS_LADY,          TRAINERCLASS_LADY          },
 };
 
 void BufferUnionRoomAvatarChoicesNames(u32 trainerId, u32 playerGender, MessageFormat *msgFmt) {
@@ -59,7 +63,7 @@ int UnionRoomAvatarIdxToSprite(u32 trainerId, u32 playerGender, u32 choice) {
     int idx;
     int sprite;
 
-    idx = trainerId % 8;
+    idx    = trainerId % 8;
     sprite = sPlayerAvatarIndexChoices[idx][choice];
     return sPlayerAvatarAttributes[sprite + playerGender * 8][0];
 }
@@ -106,8 +110,8 @@ u16 *sub_0205B4A4(HeapID heapId) {
     int i;
 
     pltt_src = GfGfxLoader_GetPlttData(NARC_application_record_record, NARC_record_record_00000011_NCLR, &pPlttData, heapId);
-    ret = AllocFromHeap(heapId, 0x120 * 2);
-    plttRaw = pPlttData->pRawData;
+    ret      = AllocFromHeap(heapId, 0x120 * 2);
+    plttRaw  = pPlttData->pRawData;
     for (i = 0; i < 0x100; i++) {
         ret[i] = plttRaw[i];
     }

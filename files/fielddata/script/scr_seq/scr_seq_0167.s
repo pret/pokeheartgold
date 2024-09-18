@@ -378,7 +378,7 @@ _05CA:
 	npc_msg msg_0312_00020
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
-	add_special_game_stat 13
+	add_special_game_stat SCORE_EVENT_13
 	return
 
 _05ED:
@@ -1004,7 +1004,7 @@ _0F43:
 	setvar VAR_TEMP_x4009, 500
 	buffer_int 2, VAR_TEMP_x4009
 	npc_msg msg_0312_00022
-	add_special_game_stat 18
+	add_special_game_stat SCORE_EVENT_18
 	goto _0F76
 
 _0F68:

@@ -63,7 +63,7 @@
 .public sub_02021B5C
 .public ObjCharTransfer_PopTaskManager
 .public ObjCharTransfer_PushTaskManager
-.public sub_02024AA8
+.public Sprite_SetPalOffsetRespectVramOffset
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_Delete
@@ -99,12 +99,12 @@
 .public Pokedex_IsNatDexEnabled
 .public GetItemAttr
 .public NamingScreen_CreateArgs
-.public sub_0208311C
+.public NamingScreen_DeleteArgs
 .public ApplyMonMoodModifier
 .public _s32_div_f
 .public _u32_div_f
 .public gGameLanguage
-.public _02102610
+.public sOverlayTemplate_NamingScreen
 .public gSystem
 .public ov07_02232F58
 .public ov07_02232F60

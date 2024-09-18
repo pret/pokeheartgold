@@ -88,8 +88,8 @@
 .public AddTextPrinterParameterizedWithColorAndSpacing
 .public sub_02021AC8
 .public sub_02021B5C
-.public Set2dSpriteAnimSeqNo
-.public sub_02024AA8
+.public Sprite_SetAnimCtrlSeq
+.public Sprite_SetPalOffsetRespectVramOffset
 .public Sprite_GetImageProxy
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
@@ -117,7 +117,7 @@
 .public sub_02077868
 .public sub_02077870
 .public sub_0208805C
-.public sub_020880B0
+.public CalculateHpBarColor
 .public FX_ModS32
 .public G2x_SetBlendAlpha_
 .public MIi_CpuCopy16

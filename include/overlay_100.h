@@ -7,4 +7,4 @@ BOOL Phone_Init(OVY_MANAGER *man, int *state);
 BOOL Phone_Main(OVY_MANAGER *man, int *state);
 BOOL Phone_Exit(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_OVY_100_H
+#endif // POKEHEARTGOLD_OVY_100_H

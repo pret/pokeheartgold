@@ -6,7 +6,7 @@
 
 // Hey, you wanna join a GROUP?
 
-#define FGRP_MAX       (6)
+#define FGRP_MAX (6)
 
 typedef struct FriendGroup {
     u16 unk_0[8];
@@ -29,4 +29,4 @@ u8 sub_0202C83C(SAV_FRIEND_GRP *savFriendGrp, int grpno);
 u16 *sub_0202C7E0(SAV_FRIEND_GRP *savFriendGrp, int grpno, int nameType);
 u32 sub_0202C7DC(SAV_FRIEND_GRP *savFriendGrp);
 
-#endif //POKEHEARTGOLD_FRIEND_GROUP_H
+#endif // POKEHEARTGOLD_FRIEND_GROUP_H

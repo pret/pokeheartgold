@@ -24,15 +24,18 @@ typedef struct NNSG2dCallBackFunctor {
 } NNSG2dCallBackFunctor, NNSG2dAnimCallBackFunctor;
 
 typedef struct NNSG2dAnimController {
-    const NNSG2dAnimFrame* pCurrent;
-    const NNSG2dAnimFrame* pActiveCurrent;
+    const NNSG2dAnimFrame *pCurrent;
+    const NNSG2dAnimFrame *pActiveCurrent;
     BOOL bReverse;
     BOOL bActive;
     fx32 currentTime;
     fx32 speed;
     NNSG2dAnimationPlayMode overriddenPlayMode;
-    const NNSG2dAnimSequence* pAnimSequence;
+    const NNSG2dAnimSequence *pAnimSequence;
     NNSG2dAnimCallBackFunctor callbackFunctor;
 } NNSG2dAnimController;
 
-#endif //NNSYS_G2D_G2D_ANIMATION_H
+void NNS_G2dResetAnimCtrlState(NNSG2dAnimController *pAnimCtrl);
+u16 NNS_G2dGetAnimCtrlCurrentFrame(const NNSG2dAnimController *pAnimCtrl);
+
+#endif // NNSYS_G2D_G2D_ANIMATION_H

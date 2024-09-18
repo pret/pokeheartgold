@@ -30,7 +30,7 @@ scr_seq_0150_000:
 	npc_msg msg_0023_00003
 	wait_fanfare
 	give_apricorn_from_tree VAR_SPECIAL_x8000, 1, VAR_SPECIAL_RESULT
-	add_special_game_stat 1
+	add_special_game_stat SCORE_EVENT_1
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _007D
 	npc_msg msg_0023_00004

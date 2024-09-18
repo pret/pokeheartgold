@@ -5,4 +5,4 @@
 
 void sub_02097BE0(FieldSystem *fieldSystem, u16 scene);
 
-#endif //POKEHEARTGOLD_UNK_02097BE0_H
+#endif // POKEHEARTGOLD_UNK_02097BE0_H

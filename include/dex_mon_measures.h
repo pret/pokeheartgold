@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_DEX_MON_MEASURES_H
 #define POKEHEARTGOLD_DEX_MON_MEASURES_H
 
+#include "filesystem.h"
 #include "heap.h"
 
 typedef struct PokedexData {
@@ -51,4 +52,4 @@ static inline u32 SpeciesGetDexWeight(int species, HeapID heapId) {
 
 #define LengthConvertToImperial(metric) ((((metric) * 1000) / 254 + 5) / 10)
 
-#endif //POKEHEARTGOLD_DEX_MON_MEASURES_H
+#endif // POKEHEARTGOLD_DEX_MON_MEASURES_H

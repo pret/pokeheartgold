@@ -1,5 +1,7 @@
-#include "global.h"
 #include "sys_task_api.h"
+
+#include "global.h"
+
 #include "system.h"
 
 SysTask *SysTask_CreateOnMainQueue(SysTaskFunc func, void *data, u32 priority) {

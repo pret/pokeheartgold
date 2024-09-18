@@ -149,7 +149,7 @@ sub_02034434: ; 0x02034434
 	ldr r0, _0203451C ; =_021D4130
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
-	bl sub_0202CA44
+	bl Save_WiFiHistory_Get
 	add r6, r0, #0
 	ldr r0, _0203451C ; =_021D4130
 	ldr r1, [r0]
@@ -186,14 +186,14 @@ _02034470:
 	add r1, r1, r5
 	bl MI_CpuCopy8
 	add r0, r6, #0
-	bl sub_0202CA8C
+	bl WifiHistory_GetPlayerCountry
 	ldr r1, _0203451C ; =_021D4130
 	ldr r1, [r1]
 	add r1, r1, r5
 	add r1, #0x6f
 	strb r0, [r1]
 	add r0, r6, #0
-	bl sub_0202CA90
+	bl WiFiHistory_GetPlayerRegion
 	ldr r2, _0203451C ; =_021D4130
 	ldr r1, [r2]
 	add r1, r1, r5
@@ -225,7 +225,7 @@ _02034470:
 	beq _0203450A
 	add r1, #0xc
 	add r1, r1, r5
-	bl sub_020290BC
+	bl LinkBattleRuleset_Copy
 _0203450A:
 	ldr r1, _0203451C ; =_021D4130
 	mov r0, #3

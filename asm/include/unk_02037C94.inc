@@ -28,8 +28,8 @@
 .public sub_0202C270
 .public sub_0202C2B4
 .public sub_0202C6F4
-.public sub_0202CA94
-.public sub_0202CAE4
+.public WiFiHistory_GetLocationSeenState
+.public WiFiHistory_SetLocationSeenState
 .public sub_02033908
 .public sub_02033974
 .public sub_02033A0C

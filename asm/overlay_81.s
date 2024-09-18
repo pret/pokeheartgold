@@ -570,7 +570,7 @@ _0223E218:
 	mov r0, #0x71
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	mov r0, #0x6a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -5945,9 +5945,9 @@ _02240DBE:
 	beq _02240E26
 	mov r0, #1
 	mov r1, #0x10
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
-	bl sub_0200A080
+	bl G2dRenderer_SetPlttTransferReservedRegion
 	bl sub_0203A880
 _02240E26:
 	add r0, r5, #0
@@ -9731,13 +9731,13 @@ _02242B04:
 	str r0, [sp, #0x38]
 _02242B1A:
 	add r0, sp, #0x2c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	add r4, r0, #0
 	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	add r0, r4, #0
 	add r1, r6, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add r0, r4, #0
 	add sp, #0x80
 	pop {r4, r5, r6, pc}
@@ -9782,7 +9782,7 @@ _02242B66:
 	bl SpriteList_Delete
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov81_02242B38
@@ -9804,9 +9804,9 @@ ov81_02242B90: ; 0x02242B90
 	bl ObjCharTransfer_InitEx
 	mov r0, #8
 	mov r1, #0x64
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -10045,11 +10045,11 @@ ov81_02242D74: ; 0x02242D74
 
 	thumb_func_start ov81_02242D88
 ov81_02242D88: ; 0x02242D88
-	ldr r3, _02242D90 ; =Set2dSpriteVisibleFlag
+	ldr r3, _02242D90 ; =Sprite_SetVisibleFlag
 	ldr r0, [r0, #8]
 	bx r3
 	nop
-_02242D90: .word Set2dSpriteVisibleFlag
+_02242D90: .word Sprite_SetVisibleFlag
 	thumb_func_end ov81_02242D88
 
 	thumb_func_start ov81_02242D94
@@ -10114,7 +10114,7 @@ ov81_02242DE4: ; 0x02242DE4
 	bl Sprite_SetAnimCtrlCurrentFrame
 	ldr r0, [r5, #8]
 	add r1, r4, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov81_02242DE4
 
@@ -10129,11 +10129,11 @@ _02242E04: .word Sprite_SetPalIndex
 
 	thumb_func_start ov81_02242E08
 ov81_02242E08: ; 0x02242E08
-	ldr r3, _02242E10 ; =sub_02024A48
+	ldr r3, _02242E10 ; =Sprite_SetPalIndexRespectVramOffset
 	ldr r0, [r0, #8]
 	bx r3
 	nop
-_02242E10: .word sub_02024A48
+_02242E10: .word Sprite_SetPalIndexRespectVramOffset
 	thumb_func_end ov81_02242E08
 
 	thumb_func_start ov81_02242E14
@@ -10223,11 +10223,11 @@ ov81_02242EA4: ; 0x02242EA4
 
 	thumb_func_start ov81_02242EB8
 ov81_02242EB8: ; 0x02242EB8
-	ldr r3, _02242EC0 ; =Set2dSpriteVisibleFlag
+	ldr r3, _02242EC0 ; =Sprite_SetVisibleFlag
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_02242EC0: .word Set2dSpriteVisibleFlag
+_02242EC0: .word Sprite_SetVisibleFlag
 	thumb_func_end ov81_02242EB8
 
 	thumb_func_start ov81_02242EC4
@@ -10373,10 +10373,10 @@ ov81_02242F94: ; 0x02242F94
 	mov r1, #1
 	ldr r0, [r5, #0xc]
 	lsl r1, r1, #0xc
-	bl sub_02024868
+	bl Sprite_SetAnimSpeed
 	ldr r0, [r5, #0xc]
 	add r1, r4, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov81_02242F94
@@ -10392,11 +10392,11 @@ _02242FB8: .word Sprite_SetPalIndex
 
 	thumb_func_start ov81_02242FBC
 ov81_02242FBC: ; 0x02242FBC
-	ldr r3, _02242FC4 ; =sub_02024B78
+	ldr r3, _02242FC4 ; =Sprite_SetOamMode
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_02242FC4: .word sub_02024B78
+_02242FC4: .word Sprite_SetOamMode
 	thumb_func_end ov81_02242FBC
 
 	thumb_func_start ov81_02242FC8

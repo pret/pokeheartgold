@@ -81,7 +81,7 @@ _02234180:
 	ldr r0, _02234374 ; =ov80_0223DD4C
 	ldr r5, [r0]
 	ldr r0, [r5, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r4, r0, #0
 	ldr r0, _02234374 ; =ov80_0223DD4C
 	ldr r0, [r0]
@@ -94,7 +94,7 @@ _02234180:
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	strh r0, [r5, #0x18]
 	b _022341C0
 _022341B8:
@@ -160,7 +160,7 @@ _022341EC:
 	ldr r0, _02234374 ; =ov80_0223DD4C
 	ldr r5, [r0]
 	ldr r0, [r5, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r7, r0, #0
 	ldr r0, _02234374 ; =ov80_0223DD4C
 	ldr r0, [r0]
@@ -173,7 +173,7 @@ _022341EC:
 	add r2, r0, #0
 	ldr r1, [sp, #0x10]
 	add r0, r7, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	strh r0, [r5, #0x18]
 	ldrh r0, [r5, #0x18]
 	mov r1, #7
@@ -635,7 +635,7 @@ ov80_02234588: ; 0x02234588
 	mov r1, #1
 	bl sub_02030EB4
 	ldr r0, [r5, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r6, r0, #0
 	ldrb r0, [r5, #0x10]
 	bl sub_0205C2C0
@@ -651,7 +651,7 @@ ov80_02234588: ; 0x02234588
 	cmp r4, #2
 	beq _0223468E
 	ldr r0, [r5, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r4, r0, #0
 	ldrb r0, [r5, #0x10]
 	bl sub_0205C2E8
@@ -680,7 +680,7 @@ ov80_02234588: ; 0x02234588
 	cmp r0, #3
 	bne _0223468E
 	ldr r0, [r5, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r4, r0, #0
 	mov r0, #0x6e
 	bl sub_0205C268
@@ -1245,7 +1245,7 @@ _02234AA2:
 	str r0, [r6, #0x30]
 	ldr r0, [r0]
 	mov r1, #0
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	add r6, r6, #4
@@ -1276,7 +1276,7 @@ _02234AE2:
 	str r0, [r5, #0x40]
 	ldr r0, [r0]
 	mov r1, #0
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	ldr r0, [sp, #0xc]
 	add r6, r6, #1
 	add r4, r4, #4
@@ -1358,7 +1358,7 @@ ov80_02234B7C: ; 0x02234B7C
 	ldr r0, [r0, #0x30]
 	mov r1, #1
 	ldr r0, [r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	pop {r4, r5, r6, pc}
 _02234BA4:
 	lsl r0, r4, #2
@@ -1366,7 +1366,7 @@ _02234BA4:
 	ldr r0, [r0, #0x30]
 	mov r1, #0
 	ldr r0, [r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 _02234BB2:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov80_02234B7C
@@ -1389,7 +1389,7 @@ ov80_02234BB4: ; 0x02234BB4
 	ldr r0, [r0, #0x40]
 	mov r1, #1
 	ldr r0, [r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	pop {r4, r5, r6, pc}
 _02234BDC:
 	lsl r0, r4, #2
@@ -1397,7 +1397,7 @@ _02234BDC:
 	ldr r0, [r0, #0x40]
 	mov r1, #0
 	ldr r0, [r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 _02234BEA:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov80_02234BB4
@@ -1446,7 +1446,7 @@ _02234C1A:
 	ldr r0, [r5, #0x50]
 	mov r1, #0
 	ldr r0, [r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 _02234C4C:
 	ldr r0, [sp, #8]
 	add r6, r6, #1
@@ -1483,7 +1483,7 @@ _02234C66:
 	ldr r0, [r5, #0x60]
 	mov r1, #0
 	ldr r0, [r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 _02234C98:
 	ldr r0, [sp, #4]
 	add r6, r6, #1
@@ -1579,7 +1579,7 @@ ov80_02234D04: ; 0x02234D04
 	ldr r0, [r0, #0x50]
 	mov r1, #0
 	ldr r0, [r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	pop {r3, r4, r5, r6, r7, pc}
 _02234D52:
 	lsl r0, r4, #2
@@ -1587,7 +1587,7 @@ _02234D52:
 	ldr r0, [r0, #0x50]
 	mov r1, #1
 	ldr r0, [r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	pop {r3, r4, r5, r6, r7, pc}
 _02234D62:
 	lsl r0, r4, #2
@@ -1595,7 +1595,7 @@ _02234D62:
 	ldr r0, [r0, #0x50]
 	mov r1, #0
 	ldr r0, [r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	pop {r3, r4, r5, r6, r7, pc}
 _02234D72:
 	cmp r4, r0
@@ -1617,7 +1617,7 @@ _02234D72:
 	ldr r0, [r0, #0x60]
 	mov r1, #0
 	ldr r0, [r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	pop {r3, r4, r5, r6, r7, pc}
 _02234DA2:
 	lsl r0, r4, #2
@@ -1625,7 +1625,7 @@ _02234DA2:
 	ldr r0, [r0, #0x60]
 	mov r1, #1
 	ldr r0, [r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	pop {r3, r4, r5, r6, r7, pc}
 _02234DB2:
 	lsl r0, r4, #2
@@ -1633,7 +1633,7 @@ _02234DB2:
 	ldr r0, [r0, #0x60]
 	mov r1, #0
 	ldr r0, [r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 _02234DC0:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

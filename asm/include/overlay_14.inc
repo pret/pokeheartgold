@@ -53,9 +53,9 @@
 .public SpriteRenderer_Create
 .public SpriteRenderer_CreateGfxHandler
 .public SpriteRenderer_GetG2dRendererPtr
-.public sub_0200CF70
-.public sub_0200CFF4
-.public sub_0200D020
+.public SpriteRenderer_CreateOamCharPlttManagers
+.public SpriteRenderer_CreateSpriteList
+.public SpriteGfxHandler_RenderAndAnimateSprites
 .public thunk_OamManager_ApplyAndResetBuffers
 .public SpriteRenderer_Delete
 .public SpriteRenderer_Init2DGfxResManagersFromCountsArray
@@ -192,7 +192,7 @@
 .public GfGfx_EngineASetPlanes
 .public GfGfx_EngineBTogglePlanes
 .public GfGfx_EngineBSetPlanes
-.public sub_02024B00
+.public Sprite_SetImageProxy
 .public Sprite_GetImageProxy
 .public Sprite_GetPaletteProxy
 .public TouchscreenHitbox_FindRectAtTouchNew
@@ -262,7 +262,7 @@
 .public sub_0207769C
 .public sub_020776B4
 .public sub_0207789C
-.public sub_02077904
+.public BagView_GetItemId
 .public GetItemIndexMapping
 .public GetItemNameIntoString
 .public GetItemDescIntoString
@@ -272,7 +272,7 @@
 .public Bag_CreateView
 .public Save_Bag_Get
 .public NamingScreen_CreateArgs
-.public sub_0208311C
+.public NamingScreen_DeleteArgs
 .public sub_02088288
 .public sub_0208828C
 .public sub_02089D40
@@ -292,7 +292,7 @@
 .public _fsub
 .public _s32_div_f
 .public _u32_div_f
-.public _02102610
+.public sOverlayTemplate_NamingScreen
 .public gOverlayTemplate_PokemonSummary
 .public gSystem
 .public PCBox_Init

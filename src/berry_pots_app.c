@@ -1,33 +1,37 @@
-#include <nitro/rtc/ARM9/convert.h>
-#include "global.h"
 #include "berry_pots_app.h"
-#include "berry_pots_app_internal.h"
+
+#include <nitro/rtc/ARM9/convert.h>
+
+#include "global.h"
+
+#include "data/resdat.naix"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0248.h"
+
 #include "bag.h"
-#include "game_stats.h"
+#include "berry_pots_app_internal.h"
 #include "font.h"
+#include "game_stats.h"
 #include "gf_gfx_loader.h"
 #include "gf_gfx_planes.h"
 #include "gf_rtc.h"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0248.h"
+#include "launch_application.h"
 #include "overlay_16.h"
 #include "render_window.h"
 #include "save_misc_data.h"
 #include "sound_02004A44.h"
+#include "sprite.h"
 #include "system.h"
 #include "text.h"
+#include "touchscreen.h"
 #include "unk_02005D10.h"
+#include "unk_0200B150.h"
 #include "unk_0200CF18.h"
 #include "unk_0200FA24.h"
 #include "unk_020183F0.h"
-#include "touchscreen.h"
-#include "unk_02023694.h"
-#include "vram_transfer_manager.h"
 #include "unk_020210A0.h"
+#include "vram_transfer_manager.h"
 #include "yes_no_prompt.h"
-#include "unk_0200B150.h"
-#include "launch_application.h"
-#include "data/resdat.naix"
 
 struct UnkStruct_ov17_02203E88 {
     u32 unk0;
@@ -84,21 +88,33 @@ static void ov17_02203460(BerryPotsAppData *data, u8 index);
 
 static const u8 ov17_02203D60[3][4] = {
     {
-     0, 2,
-     1, 0,
+     0,
+     2,
+     1,
+     0,
      },
     {
-     0, 4,
-     3, 0,
+     0,
+     4,
+     3,
+     0,
      },
     {
-     0, 6,
-     5, 0,
+     0,
+     6,
+     5,
+     0,
      },
 };
-static const Ov122_021E9282 ov17_02203D6C = {0x403, 0xB00, 0, 58, 31, 84};
-static const u16 ov17_02203D78[7] = {
-    NARC_resdat_resdat_00000030_bin, NARC_resdat_resdat_00000031_bin, NARC_resdat_resdat_00000029_bin, NARC_resdat_resdat_00000028_bin, 0xFFFF, 0xFFFF, NARC_resdat_resdat_00000079_bin,
+static const Ov122_021E9282 ov17_02203D6C = { 0x403, 0xB00, 0, 58, 31, 84 };
+static const u16 ov17_02203D78[7]         = {
+    NARC_resdat_resdat_00000030_bin,
+    NARC_resdat_resdat_00000031_bin,
+    NARC_resdat_resdat_00000029_bin,
+    NARC_resdat_resdat_00000028_bin,
+    0xFFFF,
+    0xFFFF,
+    NARC_resdat_resdat_00000079_bin,
 };
 static const GraphicsModes ov17_02203D88 = {
     GX_DISPMODE_GRAPHICS,
@@ -106,55 +122,128 @@ static const GraphicsModes ov17_02203D88 = {
     GX_BGMODE_0,
     GX_BG0_AS_2D,
 };
-static const Unk122_021E92D0 ov17_02203D98 = {
-    0x8, 0x10000, 0x4000, GX_OBJVRAMMODE_CHAR_1D_32K, GX_OBJVRAMMODE_CHAR_1D_32K,
+static const OamCharTransferParam ov17_02203D98 = {
+    0x8,
+    0x10000,
+    0x4000,
+    GX_OBJVRAMMODE_CHAR_1D_32K,
+    GX_OBJVRAMMODE_CHAR_1D_32K,
 };
 static const WindowTemplate ov17_02203DC4[3] = {
-    {2, 25, 21, 6,  2, 9,  0x1A2},
-    {0, 2,  19, 19, 4, 12, 0x0CA},
-    {0, 2,  19, 27, 4, 12, 0x136},
+    { 2, 25, 21, 6,  2, 9,  0x1A2 },
+    { 0, 2,  19, 19, 4, 12, 0x0CA },
+    { 0, 2,  19, 27, 4, 12, 0x136 },
 };
 static const SpriteResourceCountsListUnion ov17_02203DAC = {
-    {1, 1, 1, 1, 0, 0}
+    { 1, 1, 1, 1, 0, 0 }
 };
 static const BgTemplate ov17_02203DDC = {
-    0, 0, GF_BG_BUF_SIZE_256x256_4BPP, 0x000, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, GX_BG_SCRBASE_0xf000, GX_BG_CHARBASE_0x00000, GX_BG_EXTPLTT_01, 3, GX_BG_AREAOVER_XLU, 0, FALSE,
+    0,
+    0,
+    GF_BG_BUF_SIZE_256x256_4BPP,
+    0x000,
+    GF_BG_SCR_SIZE_256x256,
+    GX_BG_COLORMODE_16,
+    GX_BG_SCRBASE_0xf000,
+    GX_BG_CHARBASE_0x00000,
+    GX_BG_EXTPLTT_01,
+    3,
+    GX_BG_AREAOVER_XLU,
+    0,
+    FALSE,
 };
 static const BgTemplate ov17_02203DF8 = {
-    0, 0, GF_BG_BUF_SIZE_256x256_4BPP, 0x000, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, GX_BG_SCRBASE_0xf800, GX_BG_CHARBASE_0x10000, GX_BG_EXTPLTT_01, 0, GX_BG_AREAOVER_XLU, 0, FALSE,
+    0,
+    0,
+    GF_BG_BUF_SIZE_256x256_4BPP,
+    0x000,
+    GF_BG_SCR_SIZE_256x256,
+    GX_BG_COLORMODE_16,
+    GX_BG_SCRBASE_0xf800,
+    GX_BG_CHARBASE_0x10000,
+    GX_BG_EXTPLTT_01,
+    0,
+    GX_BG_AREAOVER_XLU,
+    0,
+    FALSE,
 };
 static const BgTemplate ov17_02203E14 = {
-    0, 0, GF_BG_BUF_SIZE_256x256_4BPP, 0, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, GX_BG_SCRBASE_0xf000, GX_BG_CHARBASE_0x10000, GX_BG_EXTPLTT_01, 2, GX_BG_AREAOVER_XLU, 0, FALSE,
+    0,
+    0,
+    GF_BG_BUF_SIZE_256x256_4BPP,
+    0,
+    GF_BG_SCR_SIZE_256x256,
+    GX_BG_COLORMODE_16,
+    GX_BG_SCRBASE_0xf000,
+    GX_BG_CHARBASE_0x10000,
+    GX_BG_EXTPLTT_01,
+    2,
+    GX_BG_AREAOVER_XLU,
+    0,
+    FALSE,
 };
 static const BgTemplate ov17_02203E30 = {
-    0, 0, GF_BG_BUF_SIZE_256x256_4BPP, 0, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, GX_BG_SCRBASE_0xf800, GX_BG_CHARBASE_0x10000, GX_BG_EXTPLTT_01, 0, GX_BG_AREAOVER_XLU, 0, FALSE,
+    0,
+    0,
+    GF_BG_BUF_SIZE_256x256_4BPP,
+    0,
+    GF_BG_SCR_SIZE_256x256,
+    GX_BG_COLORMODE_16,
+    GX_BG_SCRBASE_0xf800,
+    GX_BG_CHARBASE_0x10000,
+    GX_BG_EXTPLTT_01,
+    0,
+    GX_BG_AREAOVER_XLU,
+    0,
+    FALSE,
 };
 static const BgTemplate ov17_02203E4C = {
-    0, 0, GF_BG_BUF_SIZE_256x256_4BPP, 0, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, GX_BG_SCRBASE_0xe800, GX_BG_CHARBASE_0x00000, GX_BG_EXTPLTT_01, 3, GX_BG_AREAOVER_XLU, 0, FALSE,
+    0,
+    0,
+    GF_BG_BUF_SIZE_256x256_4BPP,
+    0,
+    GF_BG_SCR_SIZE_256x256,
+    GX_BG_COLORMODE_16,
+    GX_BG_SCRBASE_0xe800,
+    GX_BG_CHARBASE_0x00000,
+    GX_BG_EXTPLTT_01,
+    3,
+    GX_BG_AREAOVER_XLU,
+    0,
+    FALSE,
 };
-static const Unk122_021E92FC ov17_02203E68 = {0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20};
+static const OamManagerParam ov17_02203E68 = { 0, 128, 0, 32, 0, 128, 0, 32 };
 
-static const u8 ov17_02203D5C[] = {4, 3, 1};
-static const u8 ov17_02203D58[] = {3, 1};
-static const u8 ov17_02203D50[] = {2, 1};
-static const u8 ov17_02203D54[] = {5, 1};
+static const u8 ov17_02203D5C[] = { 4, 3, 1 };
+static const u8 ov17_02203D58[] = { 3, 1 };
+static const u8 ov17_02203D50[] = { 2, 1 };
+static const u8 ov17_02203D54[] = { 5, 1 };
 
 static const struct UnkStruct_ov17_02203E88 ov17_02203E88[4] = {
-    {3, ov17_02203D5C},
-    {2, ov17_02203D58},
-    {2, ov17_02203D50},
-    {2, ov17_02203D54},
+    { 3, ov17_02203D5C },
+    { 2, ov17_02203D58 },
+    { 2, ov17_02203D50 },
+    { 2, ov17_02203D54 },
 };
-static const UnkStruct_0200D2B4 ov17_02203EA8 = {0, 27, 96, 0, 5, 13, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0};
-static const GraphicsBanks ov17_02203ED0 = {
-    GX_VRAM_BG_128_A, GX_VRAM_BGEXTPLTT_NONE, GX_VRAM_SUB_BG_128_C, GX_VRAM_SUB_BGEXTPLTT_NONE, GX_VRAM_OBJ_64_E, GX_VRAM_OBJEXTPLTT_NONE, GX_VRAM_SUB_OBJ_16_I, GX_VRAM_SUB_OBJEXTPLTT_NONE, GX_VRAM_TEX_NONE, GX_VRAM_TEXPLTT_NONE,
+static const UnkStruct_0200D2B4 ov17_02203EA8 = { 0, 27, 96, 0, 5, 13, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 };
+static const GraphicsBanks ov17_02203ED0      = {
+    GX_VRAM_BG_128_A,
+    GX_VRAM_BGEXTPLTT_NONE,
+    GX_VRAM_SUB_BG_128_C,
+    GX_VRAM_SUB_BGEXTPLTT_NONE,
+    GX_VRAM_OBJ_64_E,
+    GX_VRAM_OBJEXTPLTT_NONE,
+    GX_VRAM_SUB_OBJ_16_I,
+    GX_VRAM_SUB_OBJEXTPLTT_NONE,
+    GX_VRAM_TEX_NONE,
+    GX_VRAM_TEXPLTT_NONE,
 };
 static const UnkStruct_0200D2B4 ov17_02203EF8[5] = {
-    {0, 224, 176, 0, 0, 15, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0},
-    {0, 27,  96,  0, 2, 0,  0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0},
-    {0, 31,  56,  0, 8, 1,  0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0},
-    {0, 27,  99,  0, 4, 14, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0},
-    {0, 27,  88,  0, 7, 12, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0}
+    { 0, 224, 176, 0, 0, 15, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
+    { 0, 27,  96,  0, 2, 0,  0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
+    { 0, 31,  56,  0, 8, 1,  0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
+    { 0, 27,  99,  0, 4, 14, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
+    { 0, 27,  88,  0, 7, 12, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 }
 };
 
 void ov17_02201BC0(void) {
@@ -184,7 +273,7 @@ BOOL BerryPotsApp_Initialize(OVY_MANAGER *manager, int *state) {
         data = OverlayManager_CreateAndGetData(manager, sizeof(BerryPotsAppData), HEAP_ID_BERRY_POTS_APP);
         MI_CpuFill8(data, 0, sizeof(BerryPotsAppData));
         data->heapId = HEAP_ID_BERRY_POTS_APP;
-        data->args = OverlayManager_GetArgs(manager);
+        data->args   = OverlayManager_GetArgs(manager);
         BerryPotsApp_InitData(data);
 
         (*state)++;
@@ -237,7 +326,7 @@ BOOL BerryPotsApp_Run(OVY_MANAGER *manager, int *state) {
         return TRUE;
     }
 
-    sub_0200D020(data->spriteGfxHandler1);
+    SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler1);
     return FALSE;
 }
 
@@ -256,16 +345,16 @@ BOOL BerryPotsApp_Exit(OVY_MANAGER *manager, int *state) {
 }
 
 static void BerryPotsApp_InitData(BerryPotsAppData *data) {
-    data->unk74 = sub_020183F0(data->args->unk4->unk4);
-    Options *options = Save_PlayerData_GetOptionsAddr(data->args->unk4->savedata);
-    data->textFrameDelay = Options_GetTextFrameDelay(options);
-    data->frame = Options_GetFrame(options);
-    data->bag = Save_Bag_Get(data->args->unk4->savedata);
-    data->stats = Save_GameStats_Get(data->args->unk4->savedata);
+    data->unk74                 = sub_020183F0(data->args->unk4->unk4);
+    Options *options            = Save_PlayerData_GetOptionsAddr(data->args->unk4->savedata);
+    data->textFrameDelay        = Options_GetTextFrameDelay(options);
+    data->frame                 = Options_GetFrame(options);
+    data->bag                   = Save_Bag_Get(data->args->unk4->savedata);
+    data->stats                 = Save_GameStats_Get(data->args->unk4->savedata);
     data->berryGrowthProperties = ov16_022014A0(data->heapId);
-    data->berryPots = Save_BerryPots_Get(data->args->unk4->savedata);
-    data->berryDatetime = Save_BerryPotRTC_Get(data->args->unk4->savedata);
-    data->unk7C = (data->args->unk14 != 0) ? data->args->unk15 : 0;
+    data->berryPots             = Save_BerryPots_Get(data->args->unk4->savedata);
+    data->berryDatetime         = Save_BerryPotRTC_Get(data->args->unk4->savedata);
+    data->unk7C                 = (data->args->unk14 != 0) ? data->args->unk15 : 0;
     ov17_022023B0(data);
     data->totalBerryQuantity = GetTotalBerryQuantity(data->bag, data->heapId);
     data->totalMulchQuantity = GetTotalMulchQuantity(data->bag, data->heapId);
@@ -368,7 +457,7 @@ static u32 ov17_02201F18(BerryPotsAppData *data) {
             return 2;
         }
 
-        data->args->unk15 = data->unk7C;
+        data->args->unk15  = data->unk7C;
         data->args->itemId = 0xFFFF;
 
         if (unk == 0) {
@@ -418,9 +507,9 @@ static u32 ov17_02201FE8(BerryPotsAppData *data) {
             ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_1, 4, 0);
             return 8;
         } else {
-            data->args->unk15 = data->unk7C;
+            data->args->unk15  = data->unk7C;
             data->args->itemId = 0xFFFF;
-            data->args->unk14 = 2;
+            data->args->unk14  = 2;
             return 1;
         }
     }
@@ -462,7 +551,7 @@ static u32 ov17_02202094(BerryPotsAppData *data) {
         ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_13, 4, FALSE);
         data->state70++;
 
-            // fallthrough
+        // fallthrough
 
     default:
         if (!ov17_02202460(data)) {
@@ -538,7 +627,7 @@ static u32 ov17_02202184(BerryPotsAppData *data) {
         ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_15, data->unk7C, FALSE);
         data->state70++;
 
-            // fallthrough
+        // fallthrough
     case 5:
         if (ov17_02202460(data)) {
             ov17_02202B98(data);
@@ -627,7 +716,7 @@ static void ov17_022023B0(BerryPotsAppData *data) {
 }
 
 static u32 ov17_02202440(BerryPotsAppData *data) {
-    u8 unk14 = data->args->unk14;
+    u8 unk14          = data->args->unk14;
     data->args->unk14 = 0;
 
     if (unk14 == 0) {
@@ -719,10 +808,10 @@ static BOOL ov17_022025B8(BerryPotsAppData *data) {
         data->unk80 = data->unk7C;
         data->unk81 = 0xFF;
         Sprite_SetPositionXY(data->sprites[2], (s16)(data->unk80 * 27 + 31), 56);
-        Set2dSpriteAnimSeqNo(data->sprites[2], 8);
+        Sprite_SetAnimCtrlSeq(data->sprites[2], 8);
         Sprite_ResetAnimCtrlState(data->sprites[2]);
-        Set2dSpriteAnimActiveFlag(data->sprites[2], TRUE);
-        Set2dSpriteVisibleFlag(data->sprites[2], TRUE);
+        Sprite_SetAnimActiveFlag(data->sprites[2], TRUE);
+        Sprite_SetVisibleFlag(data->sprites[2], TRUE);
         data->waitFrames = 0;
         data->state72++;
         break;
@@ -730,8 +819,8 @@ static BOOL ov17_022025B8(BerryPotsAppData *data) {
         if (data->waitFrames++ >= 15) {
             PlaySE(SEQ_SE_GS_MIZU);
             Sprite_ResetAnimCtrlState(data->sprites[2]);
-            Set2dSpriteAnimSeqNo(data->sprites[2], 9);
-            Set2dSpriteAnimActiveFlag(data->sprites[1], TRUE);
+            Sprite_SetAnimCtrlSeq(data->sprites[2], 9);
+            Sprite_SetAnimActiveFlag(data->sprites[1], TRUE);
             data->waitFrames = 0;
             data->state72++;
         }
@@ -749,7 +838,7 @@ static BOOL ov17_022025B8(BerryPotsAppData *data) {
         data->waitFrames = 0;
         if (data->unk81 == 0xFF) {
             StopSE(SEQ_SE_GS_MIZU, 2);
-            Set2dSpriteAnimSeqNo(data->sprites[2], 8);
+            Sprite_SetAnimCtrlSeq(data->sprites[2], 8);
             data->state72 = 4;
         } else {
             ov17_0220351C(data);
@@ -760,19 +849,19 @@ static BOOL ov17_022025B8(BerryPotsAppData *data) {
     case 3:
         if (data->runningTasks == 0) {
             data->waitFrames = 0;
-            data->unk80 = data->unk81;
-            data->unk81 = 0xFF;
-            Set2dSpriteAnimActiveFlag(data->sprites[1], TRUE);
+            data->unk80      = data->unk81;
+            data->unk81      = 0xFF;
+            Sprite_SetAnimActiveFlag(data->sprites[1], TRUE);
             data->state72 = 2;
         }
         break;
     case 4:
         if (data->waitFrames++ >= 15) {
             ov17_0220387C(data);
-            Set2dSpriteVisibleFlag(data->sprites[2], FALSE);
-            Set2dSpriteAnimActiveFlag(data->sprites[1], FALSE);
+            Sprite_SetVisibleFlag(data->sprites[2], FALSE);
+            Sprite_SetAnimActiveFlag(data->sprites[1], FALSE);
             data->waitFrames = 0;
-            data->state72 = 0;
+            data->state72    = 0;
             return TRUE;
         }
         break;
@@ -785,7 +874,7 @@ static BOOL ov17_0220279C(BerryPotsAppData *data) {
     switch (data->state72) {
     case 0:
         ov17_02203460(data, data->unk7C);
-        data->unk7E = data->unk20[data->unk7C].quantityOrYieldMaybe;
+        data->unk7E      = data->unk20[data->unk7C].quantityOrYieldMaybe;
         data->waitFrames = 0;
         data->state72++;
         break;
@@ -806,7 +895,7 @@ static BOOL ov17_0220279C(BerryPotsAppData *data) {
         }
 
         data->waitFrames = 0;
-        data->state72 = 0;
+        data->state72    = 0;
         return TRUE;
     }
 
@@ -814,7 +903,7 @@ static BOOL ov17_0220279C(BerryPotsAppData *data) {
 }
 
 void ov17_02202850(BerryPotsAppData *data, u32 seqNo) {
-    Set2dSpriteAnimSeqNo(data->sprites[0], seqNo);
+    Sprite_SetAnimCtrlSeq(data->sprites[0], seqNo);
     Sprite_ResetAnimCtrlState(data->sprites[0]);
     FillWindowPixelBuffer(&data->windows[0], 0);
 
@@ -828,22 +917,22 @@ void ov17_022028B8(BerryPotsAppData *data) {
     u8 unk7C = data->unk7C;
     Sprite_SetPositionXY(data->sprites[1], (unk7C + 1) * 27, 96);
     if (data->unk20[unk7C].growthStage > BERRY_POT_GROWTH_STAGE_GROWING) {
-        Set2dSpriteAnimSeqNo(data->sprites[1], 3);
+        Sprite_SetAnimCtrlSeq(data->sprites[1], 3);
     } else {
-        Set2dSpriteAnimSeqNo(data->sprites[1], 2);
+        Sprite_SetAnimCtrlSeq(data->sprites[1], 2);
     }
 }
 
 static void ov17_02202900(BerryPotsAppData *data, BOOL visible) {
-    Set2dSpriteVisibleFlag(data->sprites[1], visible);
+    Sprite_SetVisibleFlag(data->sprites[1], visible);
 }
 
 static void ov17_02202910(BerryPotsAppData *data, BOOL active) {
-    Set2dSpriteAnimActiveFlag(data->sprites[1], active);
+    Sprite_SetAnimActiveFlag(data->sprites[1], active);
 
     for (int i = 0; i < MAX_BERRY_POT; i++) {
         if (data->unk20[i].soilSpriteMaybe != NULL && data->unk20[i].growthStage >= BERRY_POT_GROWTH_STAGE_SPROUTED) {
-            Set2dSpriteAnimActiveFlag(data->unk20[i].soilSpriteMaybe, active);
+            Sprite_SetAnimActiveFlag(data->unk20[i].soilSpriteMaybe, active);
         }
     }
 }
@@ -865,8 +954,8 @@ static void ov17_022029C8(BerryPotsAppData *data, u32 a1) {
     Ov122_021E7488 unk;
     MI_CpuFill8(&unk, 0, sizeof(Ov122_021E7488));
 
-    unk.unk0 = ov17_02203D6C;
-    unk.unkC = data->listMenuItems[a1];
+    unk.unk0  = ov17_02203D6C;
+    unk.unkC  = data->listMenuItems[a1];
     unk.unk10 = data->bgConfig;
     unk.unk14 = ov17_02203E88[a1].unk0;
 
@@ -908,17 +997,17 @@ void ov17_02202A84(BerryPotsAppData *data, int index) {
         break;
     default:
         unkStruct.resourceSet = index + 1;
-        unkStruct.animSeqNo = sub->growthStage - 3;
+        unkStruct.animSeqNo   = sub->growthStage - 3;
         break;
     }
 
     sub->soilSpriteMaybe = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler1, &unkStruct);
-    Set2dSpriteVisibleFlag(sub->soilSpriteMaybe, TRUE);
+    Sprite_SetVisibleFlag(sub->soilSpriteMaybe, TRUE);
     if (sub->growthStage == BERRY_POT_GROWTH_STAGE_PLANTED) {
-        Set2dSpriteAnimActiveFlag(sub->soilSpriteMaybe, FALSE);
+        Sprite_SetAnimActiveFlag(sub->soilSpriteMaybe, FALSE);
         Sprite_SetAnimCtrlCurrentFrame(sub->soilSpriteMaybe, data->unk20[index].soilState);
     } else {
-        Set2dSpriteAnimActiveFlag(sub->soilSpriteMaybe, TRUE);
+        Sprite_SetAnimActiveFlag(sub->soilSpriteMaybe, TRUE);
     }
 
     Sprite_SetAnimCtrlCurrentFrame(data->sprites[index + 3], data->unk20[index].soilState);
@@ -942,7 +1031,7 @@ static void ov17_02202B98(BerryPotsAppData *data) {
     Sprite_Delete(unk->soilSpriteMaybe);
     unk->soilSpriteMaybe = NULL;
     Sprite_SetAnimCtrlCurrentFrame(data->sprites[data->unk7C + 3], 2);
-    GameStats_AddSpecial(data->stats, GAME_STAT_UNK0);
+    GameStats_AddScore(data->stats, SCORE_EVENT_0);
 }
 
 static void ov17_02202BF8(BerryPotsAppData *data) {
@@ -1029,10 +1118,10 @@ void BerryPotsApp_FreeNarc(BerryPotsAppData *data) {
 static void BerryPotsApp_SetupText(BerryPotsAppData *data) {
     FontID_Alloc(4, data->heapId);
 
-    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0248_bin, data->heapId);
-    data->msgFmt = MessageFormat_New_Custom(16, 16, data->heapId);
+    data->msgData             = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0248_bin, data->heapId);
+    data->msgFmt              = MessageFormat_New_Custom(16, 16, data->heapId);
     data->currentStatusString = String_New(128, data->heapId);
-    data->cancelString = NewString_ReadMsgData(data->msgData, msg_0248_00000);
+    data->cancelString        = NewString_ReadMsgData(data->msgData, msg_0248_00000);
 
     for (int i = 0; i < (int)NELEMS(data->statusStrings); i++) {
         data->statusStrings[i] = NewString_ReadMsgData(data->msgData, msg_0248_00006 + i);
@@ -1073,7 +1162,7 @@ static void BerryPotsApp_FreeWindows(BerryPotsAppData *data) {
 static void BerryPotsApp_SetupListMenuItems(BerryPotsAppData *data) {
     for (int i = 0; i < (int)NELEMS(data->listMenuItems); i++) {
         const struct UnkStruct_ov17_02203E88 *unk = &ov17_02203E88[i];
-        data->listMenuItems[i] = ListMenuItems_New(unk->unk0, data->heapId);
+        data->listMenuItems[i]                    = ListMenuItems_New(unk->unk0, data->heapId);
         for (int j = 0; j < (int)unk->unk0; j++) {
             ListMenuItems_AppendFromMsgData(data->listMenuItems[i], data->msgData, unk->unk4[j], j);
         }
@@ -1091,19 +1180,19 @@ static void BerryPotsApp_SetupSpriteRendererAndGfxHandler(BerryPotsAppData *data
     GF_CreateVramTransferManager(32, data->heapId);
 
     data->spriteRenderer = SpriteRenderer_Create(data->heapId);
-    sub_0200CF70(data->spriteRenderer, &ov17_02203E68, &ov17_02203D98, 8);
+    SpriteRenderer_CreateOamCharPlttManagers(data->spriteRenderer, &ov17_02203E68, &ov17_02203D98, 8);
 
     sub_0200B2E0(data->heapId);
     sub_0200B2E8(data->heapId);
 
     data->spriteGfxHandler1 = SpriteRenderer_CreateGfxHandler(data->spriteRenderer);
-    sub_0200CFF4(data->spriteRenderer, data->spriteGfxHandler1, 25);
+    SpriteRenderer_CreateSpriteList(data->spriteRenderer, data->spriteGfxHandler1, 25);
     sub_0200D2A4(data->spriteRenderer, data->spriteGfxHandler1, ov17_02203D78, 0, 0);
 
     data->itemIconNarc = NARC_New(NARC_itemtool_itemdata_item_icon, data->heapId);
 
     SpriteResourceCountsListUnion counts = ov17_02203DAC;
-    data->spriteGfxHandler2 = SpriteRenderer_CreateGfxHandler(data->spriteRenderer);
+    data->spriteGfxHandler2              = SpriteRenderer_CreateGfxHandler(data->spriteRenderer);
     SpriteRenderer_Init2DGfxResManagersFromCountsArray(data->spriteRenderer, data->spriteGfxHandler2, &counts);
     sub_0200E2B4(data->spriteGfxHandler2, sub_0200E2B0(data->spriteGfxHandler1));
 
@@ -1147,27 +1236,27 @@ static void BerryPotsApp_FreeSpriteSystem(BerryPotsAppData *data) {
 static void BerryPotsApp_SetupSprites(BerryPotsAppData *data) {
     for (int i = 0; i <= 1; i++) {
         data->sprites[i] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler1, &ov17_02203EF8[i]);
-        Set2dSpriteVisibleFlag(data->sprites[i], TRUE);
-        Set2dSpriteAnimActiveFlag(data->sprites[i], TRUE);
+        Sprite_SetVisibleFlag(data->sprites[i], TRUE);
+        Sprite_SetAnimActiveFlag(data->sprites[i], TRUE);
     }
 
     data->sprites[2] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler1, &ov17_02203EF8[2]);
-    Set2dSpriteVisibleFlag(data->sprites[2], FALSE);
-    Set2dSpriteAnimActiveFlag(data->sprites[2], FALSE);
+    Sprite_SetVisibleFlag(data->sprites[2], FALSE);
+    Sprite_SetAnimActiveFlag(data->sprites[2], FALSE);
 
     for (int i = 0; i < (int)NELEMS(data->unk20); i++) {
-        u8 spriteIndex = i + 3;
+        u8 spriteIndex             = i + 3;
         data->sprites[spriteIndex] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler1, &ov17_02203EF8[3]);
         Sprite_SetPositionXY(data->sprites[spriteIndex], i * 27 + 27, 99);
         Sprite_SetAnimCtrlCurrentFrame(data->sprites[spriteIndex], data->unk20[i].soilState);
-        Set2dSpriteVisibleFlag(data->sprites[spriteIndex], TRUE);
-        Set2dSpriteAnimActiveFlag(data->sprites[spriteIndex], FALSE);
+        Sprite_SetVisibleFlag(data->sprites[spriteIndex], TRUE);
+        Sprite_SetAnimActiveFlag(data->sprites[spriteIndex], FALSE);
 
-        spriteIndex = i + 7;
+        spriteIndex                = i + 7;
         data->sprites[spriteIndex] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler1, &ov17_02203EF8[4]);
         Sprite_SetPositionXY(data->sprites[spriteIndex], i * 27 + 27, 88);
-        Set2dSpriteVisibleFlag(data->sprites[spriteIndex], FALSE);
-        Set2dSpriteAnimActiveFlag(data->sprites[spriteIndex], TRUE);
+        Sprite_SetVisibleFlag(data->sprites[spriteIndex], FALSE);
+        Sprite_SetAnimActiveFlag(data->sprites[spriteIndex], TRUE);
     }
 }
 
@@ -1200,14 +1289,14 @@ UnkImageStruct *ov17_022034C8(BerryPotsAppData *data, s16 x, s16 y, u8 unused) {
     UnkTemplate_0200D748 template;
     MI_CpuFill8(&template, 0, sizeof(UnkTemplate_0200D748));
 
-    template.x = x;
-    template.y = y;
-    template.z = 0;
-    template.animation = 0;
-    template.bgPriority = 2;
-    template.pal = 0;
-    template.vramTransfer = 0;
-    template.vram = NNS_G2D_VRAM_TYPE_2DMAIN;
+    template.x                               = x;
+    template.y                               = y;
+    template.z                               = 0;
+    template.animation                       = 0;
+    template.bgPriority                      = 2;
+    template.pal                             = 0;
+    template.vramTransfer                    = 0;
+    template.vram                            = NNS_G2D_VRAM_TYPE_2DMAIN;
     template.resIdList[GF_GFX_RES_TYPE_CHAR] = 4000;
     template.resIdList[GF_GFX_RES_TYPE_PLTT] = 4000;
     template.resIdList[GF_GFX_RES_TYPE_CELL] = 4000;

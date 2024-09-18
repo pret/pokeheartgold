@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_MOVE_H
 #define POKEHEARTGOLD_MOVE_H
 
+#include "global.h"
+
 typedef struct MoveTbl {
     u16 effect;
     u8 category;
@@ -12,10 +14,12 @@ typedef struct MoveTbl {
     u16 range;
     s8 priority;
     u8 unkB;
-    u8 unkC;
-    u8 contestType;
-    u8 padding[2];
-} MOVE;
+    struct {
+        u8 unkC;
+        u8 contestType;
+        u16 unk_E;
+    };
+} MoveTbl;
 
 typedef enum MoveAttr {
     MOVEATTR_EFFECT = 0,
@@ -34,8 +38,8 @@ typedef enum MoveAttr {
 
 u32 GetMoveAttr(u16 moveId, MoveAttr attrno);
 u8 GetMoveMaxPP(u16 moveId, u8 ppUps);
-void LoadMoveTbl(MOVE *dest);
-u32 GetMoveTblAttr(MOVE * moveTbl, MoveAttr attr);
-void LoadMoveEntry(u16 moveId, MOVE * moveTbl);
+void LoadMoveTbl(MoveTbl *dest);
+u32 GetMoveTblAttr(MoveTbl *moveTbl, MoveAttr attr);
+void LoadMoveEntry(u16 moveId, MoveTbl *moveTbl);
 
-#endif //POKEHEARTGOLD_MOVE_H
+#endif // POKEHEARTGOLD_MOVE_H

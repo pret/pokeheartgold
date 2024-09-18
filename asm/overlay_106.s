@@ -1435,7 +1435,7 @@ _021E63C2:
 	add r0, r4, #0
 	bl ov106_021E6668
 	ldr r0, [r4, #0xc]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -1627,7 +1627,7 @@ ov106_021E6520: ; 0x021E6520
 	str r0, [r3]
 	ldr r0, [r4, #8]
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r3, _021E6628 ; =ov106_021E6F5C
 	add r2, sp, #0x10
 	ldmia r3!, {r0, r1}
@@ -1639,7 +1639,7 @@ ov106_021E6520: ; 0x021E6520
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
 	mov r2, #1
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
 	add r2, sp, #0x10

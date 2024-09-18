@@ -2,6 +2,8 @@
 #define POKEHEARTGOLD_TRAINER_MEMO_H
 
 #include "heap.h"
+#include "message_format.h"
+#include "msgdata.h"
 #include "pokemon_types_def.h"
 
 // Each string in the notepad and which line it starts on.
@@ -33,4 +35,4 @@ BOOL MonMetadataMatchesEvent(u8 eventNo, Pokemon *mon, BOOL isMine);
 Unk0208E600 *sub_0208E600(Pokemon *a0, int a1, HeapID a2, int a3);
 void sub_0208E994(Unk0208E600 *a0);
 
-#endif //POKEHEARTGOLD_TRAINER_MEMO_H
+#endif // POKEHEARTGOLD_TRAINER_MEMO_H

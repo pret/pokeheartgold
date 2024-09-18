@@ -13,7 +13,7 @@ u16 GF_DegreeToSinCosIdx(u16 deg);
 fx32 GF_SinDegFX32(fx32 deg);
 fx32 GF_CosDegFX32(fx32 deg);
 u32 PRandom(u32 seed);
-void MTX22_2DAffine(MtxFx22 * mtx, u16 radians, fx32 x, fx32 y, u8 type);
+void MTX22_2DAffine(MtxFx22 *mtx, u16 radians, fx32 x, fx32 y, u8 type);
 u32 Math_CalcArraySum(const void *data, u32 size);
 u16 GF_CalcCRC16(const void *data, u32 size);
 void GF_CRC16Init(HeapID heapId);
@@ -36,13 +36,14 @@ static inline u16 LCRandRange(const u16 maximum) {
     }
 }
 
-#define SetVec(dest, vecx, vecy, vecz) { \
-    (dest).x = (vecx);             \
-    (dest).y = (vecy);             \
-    (dest).z = (vecz);             \
-}
+#define SetVec(dest, vecx, vecy, vecz) \
+    {                                  \
+        (dest).x = (vecx);             \
+        (dest).y = (vecy);             \
+        (dest).z = (vecz);             \
+    }
 
 #define SetVecFx16(dest, x, y, z) SetVec(dest, x, y, z)
 #define SetVecFx32(dest, x, y, z) SetVec(dest, x, y, z)
 
-#endif //POKEHEARTGOLD_MATH_UTIL_H
+#endif // POKEHEARTGOLD_MATH_UTIL_H

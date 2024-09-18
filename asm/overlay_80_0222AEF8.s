@@ -982,7 +982,7 @@ ov80_0222B5C8: ; 0x0222B5C8
 	add r0, r0, #2
 	strh r1, [r5, r0]
 	ldr r0, [r5, #4]
-	bl sub_0203107C
+	bl Save_Frontier_GetStatic
 	add r4, r0, #0
 	ldrb r0, [r5, #0x10]
 	bl sub_0205C1F0
@@ -993,7 +993,7 @@ ov80_0222B5C8: ; 0x0222B5C8
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_020310BC
+	bl FrontierSave_GetStat
 	ldr r1, _0222B624 ; =0x000003D6
 	mov r2, #0x28
 	strh r0, [r5, r1]

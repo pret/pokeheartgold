@@ -467,7 +467,7 @@ _021E5E96:
 _021E5EA8:
 	ldr r0, _021E5EBC ; =0x0000311C
 	ldr r0, [r4, r0]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	mov r0, #0
 	add sp, #0xc
 	pop {r4, r5, pc}
@@ -3969,19 +3969,19 @@ _021E7B6E:
 	lsl r0, r0, #0xc
 	str r0, [sp, #0x40]
 	add r0, sp, #0x34
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x5b
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	mov r0, #0x5b
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [sp, #0x2c]
 	ldrb r0, [r0, r4]
 	cmp r0, #0
@@ -3996,7 +3996,7 @@ _021E7BB0:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 _021E7BBC:
 	add r4, r4, #1
 	add r6, #8
@@ -4075,19 +4075,19 @@ _021E7C3C:
 	add r0, r1, r0
 	str r0, [sp, #0x38]
 	add r0, sp, #0x2c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x1f
 	lsl r1, r1, #4
 	str r0, [r5, r1]
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	mov r0, #0x1f
 	lsl r0, r0, #4
 	ldrb r1, [r7]
 	ldr r0, [r5, r0]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	mov r0, #0x1f
 	lsl r0, r0, #4
 	mov r1, #2
@@ -4098,7 +4098,7 @@ _021E7C3C:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add r6, r6, #1
 	add r4, r4, #2
 	add r5, r5, #4
@@ -4171,7 +4171,7 @@ _021E7CF0:
 	bl SpriteList_Delete
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -4195,12 +4195,12 @@ ov51_021E7D44: ; 0x021E7D44
 	add r5, r0, r3
 	ldr r0, [r5, r4]
 	add r1, r2, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r5, r4]
 	bl Sprite_ResetAnimCtrlState
 	ldr r0, [r5, r4]
 	add r1, r6, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov51_021E7D44
 
@@ -4219,9 +4219,9 @@ ov51_021E7D68: ; 0x021E7D68
 	bl ObjCharTransfer_Init
 	mov r0, #2
 	mov r1, #0x19
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	mov r0, #0x19
 	bl sub_0200B2E0
 	mov r0, #0x19

@@ -1187,7 +1187,7 @@ _02246DB0:
 	mov r2, #0
 	bl GetMonData
 	str r0, [r5, #0x10]
-	ldr r0, _0224706C ; =_02102610
+	ldr r0, _0224706C ; =sOverlayTemplate_NamingScreen
 	add r1, r5, #0
 	mov r2, #5
 	bl OverlayManager_New
@@ -1250,7 +1250,7 @@ _02246E2A:
 	bl BattleSystem_GameStatIncrement
 _02246E5C:
 	add r0, r5, #0
-	bl sub_0208311C
+	bl NamingScreen_DeleteArgs
 	ldr r0, [r4, #0x50]
 	bl OverlayManager_Delete
 	ldr r0, [r4]
@@ -1484,7 +1484,7 @@ _0224702E:
 _02247060: .word 0x0000FFFF
 _02247064: .word 0x0000219C
 _02247068: .word 0x00000496
-_0224706C: .word _02102610
+_0224706C: .word sOverlayTemplate_NamingScreen
 _02247070: .word 0x00000498
 _02247074:
 	add r0, r5, #0
@@ -3920,7 +3920,7 @@ ov12_02248228: ; 0x02248228
 	add r1, r0, #0
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0]
-	bl sub_02024AA8
+	bl Sprite_SetPalOffsetRespectVramOffset
 	ldr r0, [r5, #0x10]
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	mov r0, #1

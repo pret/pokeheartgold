@@ -93,15 +93,15 @@ _0202C7A8:
 	.balign 4, 0
 	thumb_func_end sub_0202C78C
 
-	thumb_func_start sub_0202C7B4
-sub_0202C7B4: ; 0x0202C7B4
+	thumb_func_start Save_FriendGroup_GetGroupId
+Save_FriendGroup_GetGroupId: ; 0x0202C7B4
 	mov r2, #0x2c
 	mul r2, r1
 	add r0, r0, r2
 	ldr r0, [r0, #0x24]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0202C7B4
+	thumb_func_end Save_FriendGroup_GetGroupId
 
 	thumb_func_start sub_0202C7C0
 sub_0202C7C0: ; 0x0202C7C0

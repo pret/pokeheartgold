@@ -1049,9 +1049,9 @@ ov01_021E61E0: ; 0x021E61E0
 	bl ObjCharTransfer_InitEx
 	mov r0, #0x14
 	mov r1, #4
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -1062,7 +1062,7 @@ _021E6210: .word ov01_022062DC
 ov01_021E6214: ; 0x021E6214
 	push {r3, lr}
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	pop {r3, pc}
 	thumb_func_end ov01_021E6214
 

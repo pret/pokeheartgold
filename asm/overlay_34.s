@@ -103,7 +103,7 @@ _0225D5D0:
 	bl ov34_0225D558
 _0225D5E0:
 	ldr r0, [r4, #0x28]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	pop {r3, r4, r5, pc}
 _0225D5E8:
 	mov r1, #0
@@ -811,19 +811,19 @@ _0225DBBC:
 	add r0, r0, r1
 	str r0, [sp, #0x38]
 	add r0, sp, #0x2c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x66
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	mov r0, #0x66
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add r4, r4, #1
 	add r6, r6, #4
 	add r5, r5, #4
@@ -1137,7 +1137,7 @@ _0225DE42:
 	ldr r0, [r4, r1]
 	add r1, #0xea
 	ldrh r1, [r4, r1]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, _0225DE90 ; =0x0000028A
 	ldrh r0, [r4, r0]
 	cmp r0, #0
@@ -2168,7 +2168,7 @@ ov34_0225E5EC: ; 0x0225E5EC
 	bl Sprite_GetAnimCtrlCurrentFrame
 	str r0, [sp]
 	ldr r0, [r4, r6]
-	bl Get2dSpriteCurrentAnimSeqNo
+	bl Sprite_GetAnimationNumber
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
 	ldr r0, [sp]
@@ -2180,7 +2180,7 @@ ov34_0225E5EC: ; 0x0225E5EC
 _0225E618:
 	ldr r0, [r4, r6]
 	add r1, r5, #4
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 _0225E620:
 	lsl r0, r5, #1
 	add r1, r7, r0
@@ -2213,7 +2213,7 @@ _0225E63A:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	mov r0, #0x2a
 	lsl r0, r0, #4
 	strh r7, [r4, r0]
@@ -2222,14 +2222,14 @@ _0225E662:
 	mov r0, #0x66
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020248C0
+	bl Sprite_GetAnimActiveFlag
 	cmp r0, #0
 	bne _0225E688
 	mov r0, #0x66
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	mov r0, #0x66
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]

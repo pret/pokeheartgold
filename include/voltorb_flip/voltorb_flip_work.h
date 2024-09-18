@@ -1,14 +1,15 @@
 #ifndef POKEHEARTGOLD_VOLTORB_FLIP_WORK_H
 #define POKEHEARTGOLD_VOLTORB_FLIP_WORK_H
 
+#include "voltorb_flip/voltorb_flip_game.h"
+#include "voltorb_flip/voltorb_flip_input.h"
+
+#include "bg_window.h"
 #include "heap.h"
 #include "list_menu_items.h"
 #include "options.h"
 #include "player_data.h"
 #include "unk_0200CF18.h"
-#include "bg_window.h"
-#include "voltorb_flip/voltorb_flip_game.h"
-#include "voltorb_flip/voltorb_flip_input.h"
 
 typedef struct Ov122_021E70B8 {
     BgConfig *bgConfig;
@@ -30,7 +31,7 @@ typedef struct VoltorbFlipAppWork {
     HeapID heapId;
     Options *options;
     u16 *coins;
-    u32 *unkC;
+    BOOL *menuInputStatePtr;
     PlayerProfile *profile;
     NARC *narc;
     BgConfig *bgConfig;
@@ -40,9 +41,9 @@ typedef struct VoltorbFlipAppWork {
     LISTMENUITEM *menuItems[2];
     void *unk13C;
     String *string;
-    SpriteRenderer* unk144;
-    SpriteGfxHandler* unk148;
-    UnkImageStruct* unk14C[0xd];
+    SpriteRenderer *spriteRenderer;
+    SpriteGfxHandler *spriteGfxHandler;
+    UnkImageStruct *unk14C[0xd];
     MsgData *msgData;
     MessageFormat *msgFmt;
     u16 unk188[10][8];
@@ -62,4 +63,4 @@ typedef struct VoltorbFlipAppWork {
     Ov122_021E7888 unk25C;
 } VoltorbFlipAppWork;
 
-#endif //POKEHEARTGOLD_VOLTORB_FLIP_WORK_H
+#endif // POKEHEARTGOLD_VOLTORB_FLIP_WORK_H

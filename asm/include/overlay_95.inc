@@ -50,9 +50,9 @@
 .public StringExpandPlaceholders
 .public SpriteRenderer_Create
 .public SpriteRenderer_CreateGfxHandler
-.public sub_0200CF70
-.public sub_0200CFF4
-.public sub_0200D020
+.public SpriteRenderer_CreateOamCharPlttManagers
+.public SpriteRenderer_CreateSpriteList
+.public SpriteGfxHandler_RenderAndAnimateSprites
 .public thunk_OamManager_ApplyAndResetBuffers
 .public SpriteRenderer_Delete
 .public SpriteRenderer_Init2DGfxResManagersFromCountsArray
@@ -128,7 +128,7 @@
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks
-.public sub_02022808
+.public ObjPlttTransfer_GetPaletteVramOffset
 .public GfGfx_SetBanks
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_EngineATogglePlanes

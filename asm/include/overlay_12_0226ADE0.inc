@@ -23,7 +23,7 @@
 .public SysTask_Destroy
 .public AllocFromHeap
 .public FreeToHeap
-.public Set2dSpriteAnimSeqNo
+.public Sprite_SetAnimCtrlSeq
 .public Sprite_SetAnimCtrlCurrentFrame
 .public GF_AssertFail
 .public G2x_SetBlendAlpha_

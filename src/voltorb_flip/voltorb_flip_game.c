@@ -1,9 +1,12 @@
+#include "voltorb_flip/voltorb_flip_game.h"
+
 #include "global.h"
-#include "heap.h"
-#include "math_util.h"
+
 #include "voltorb_flip/voltorb_flip.h"
 #include "voltorb_flip/voltorb_flip_data.h"
-#include "voltorb_flip/voltorb_flip_game.h"
+
+#include "heap.h"
+#include "math_util.h"
 
 static void AddRoundSummary(GameState *);
 static RoundSummary *PrevRoundSummary(GameState *);
@@ -95,7 +98,7 @@ void FlipCard(GameState *game, CardID cardId) {
     GF_ASSERT(card->flipped == FALSE);
 
     card->flipped = TRUE;
-    card->memo = 0;
+    card->memo    = 0;
 }
 
 // Returns TRUE if some amount was deducted.
@@ -129,7 +132,7 @@ CardType GetCardType(GameState *game, CardID cardId) {
 }
 
 int IsCardMemoFlagOn(GameState *game, CardID cardId, int memoFlag) {
-    Card *card = GetCard(game, cardId);
+    Card *card       = GetCard(game, cardId);
     int cardMemoFlag = card->memo & memoFlag;
     if (cardMemoFlag == memoFlag) {
         return 1;
@@ -139,7 +142,7 @@ int IsCardMemoFlagOn(GameState *game, CardID cardId, int memoFlag) {
 
 void ToggleCardMemo(GameState *game, CardID cardId, int memoFlag) {
     Card *card = GetCard(game, cardId);
-    int var2 = card->memo;
+    int var2   = card->memo;
     if (var2 & memoFlag) {
         card->memo -= memoFlag;
         return;
@@ -227,8 +230,8 @@ static void AddRoundSummary(GameState *game) {
     RoundSummary *round = &game->boardHistory[game->historyHead];
     round->roundOutcome = game->roundOutcome;
     round->cardsFlipped = game->cardsFlipped;
-    round->boardId = game->boardId;
-    round->level = game->level;
+    round->boardId      = game->boardId;
+    round->level        = game->level;
 
     game->historyHead = (game->historyHead + 1) % 5;
 }
@@ -268,7 +271,7 @@ static int CalcNextLevel(GameState *game) {
     RoundOutcome roundOutcome;
 
     RoundSummary *prevRound = PrevRoundSummary(game);
-    roundOutcome = prevRound->roundOutcome;
+    roundOutcome            = prevRound->roundOutcome;
 
     if (roundOutcome == ROUND_OUTCOME_WON && LEVEL_AT_LEAST(prevRound->boardId, 8)) {
         return 0; // Lv. 8
@@ -315,7 +318,7 @@ static int CalcNextLevel(GameState *game) {
 static void SelectBoardId(GameState *game) {
     int i;
 
-    int rand = (u32)MTRandom() % 100;
+    int rand  = (u32)MTRandom() % 100;
     int level = CalcNextLevel(game);
     GF_ASSERT(level < 8);
 
@@ -325,7 +328,7 @@ static void SelectBoardId(GameState *game) {
         }
         GF_ASSERT(i < 80);
     }
-    game->level = level;
+    game->level   = level;
     game->boardId = i;
 }
 
@@ -432,8 +435,8 @@ static BOOL RetryBoardGen(GameState *game) {
     int i;
     const BoardConfig *config;
 
-    u8 freeMultipliersPerCol[5] = {0};
-    u8 freeMultipliersPerRow[5] = {0};
+    u8 freeMultipliersPerCol[5] = { 0 };
+    u8 freeMultipliersPerRow[5] = { 0 };
 
     // Multiplier cards (x2 and x3) that you can get at no risk of detonating a
     // Voltorb.
@@ -444,8 +447,8 @@ static BOOL RetryBoardGen(GameState *game) {
     for (i = 0; i < 25; i++) {
         Card *card = GetCard(game, (u8)i);
         if (IS_MULTIPLIER_CARD(card->type)) {
-            int col = i % 5;
-            int row = i / 5;
+            int col           = i % 5;
+            int row           = i / 5;
             int voltorbsInCol = VoltorbsAlongAxis(game, AXIS_COL, col);
             int voltorbsInRow = VoltorbsAlongAxis(game, AXIS_ROW, row);
             if (voltorbsInRow == 0 || voltorbsInCol == 0) {
@@ -461,8 +464,7 @@ static BOOL RetryBoardGen(GameState *game) {
     }
 
     for (i = 0; i < 5; i++) {
-        if (config->maxFreeMultipliersPerRowCol <= freeMultipliersPerCol[i] ||
-            config->maxFreeMultipliersPerRowCol <= freeMultipliersPerRow[i]) {
+        if (config->maxFreeMultipliersPerRowCol <= freeMultipliersPerCol[i] || config->maxFreeMultipliersPerRowCol <= freeMultipliersPerRow[i]) {
             return TRUE;
         }
     }
@@ -474,8 +476,8 @@ static void GenerateBoard(GameState *game) {
     GF_ASSERT(game->boardId < 80);
 
     int voltorbs = sBoardConfigs[game->boardId].voltorbs;
-    int twos = sBoardConfigs[game->boardId].twos;
-    int threes = sBoardConfigs[game->boardId].threes;
+    int twos     = sBoardConfigs[game->boardId].twos;
+    int threes   = sBoardConfigs[game->boardId].threes;
 
     for (int i = 0; i < 1000; i++) {
         PlaceCardsOnBoard(game, CARD_TYPE_ONE, 25, FALSE);

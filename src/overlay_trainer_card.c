@@ -1,10 +1,12 @@
-#include "global.h"
-#include "overlay_manager.h"
 #include "overlay_trainer_card.h"
+
+#include "global.h"
+
+#include "overlay_manager.h"
 #include "overlay_trainer_card_main.h"
 #include "overlay_trainer_card_signature.h"
-#include "sound_02004A44.h"
 #include "save_trainer_card.h"
+#include "sound_02004A44.h"
 
 FS_EXTERN_OVERLAY(trainer_card_main);
 FS_EXTERN_OVERLAY(trainer_card_signature);
@@ -39,9 +41,9 @@ BOOL TrainerCard_Init(OVY_MANAGER *man, int *state) {
     TrainerCardAppState *data = OverlayManager_CreateAndGetData(man, sizeof(TrainerCardAppState), HEAP_ID_TRAINER_CARD);
     MI_CpuClear8(data, sizeof(TrainerCardAppState));
 
-    data->heapId = HEAP_ID_TRAINER_CARD;
+    data->heapId     = HEAP_ID_TRAINER_CARD;
     data->parentData = ptr;
-    data->unk10 = ptr;
+    data->unk10      = ptr;
     return TRUE;
 }
 
@@ -115,7 +117,7 @@ static int TCardAppRunStep_SignatureExec(TrainerCardAppState *work) {
         return TRAINERCARD_RUN_SIGNATURE_EXEC;
     }
 
-    ptr = Save_TrainerCard_Get(work->parentData->saveData);
+    ptr                               = Save_TrainerCard_Get(work->parentData->saveData);
     work->parentData->signatureExists = TrainerCard_SignatureExists(ptr);
     MI_CpuCopy8(TrainerCard_GetSignature(ptr), work->parentData->signature, sizeof(work->parentData->signature));
     return TRAINERCARD_RUN_INIT;

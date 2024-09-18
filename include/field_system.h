@@ -1,24 +1,26 @@
 #ifndef POKEHEARTGOLD_FIELD_SYSTEM_H
 #define POKEHEARTGOLD_FIELD_SYSTEM_H
 
+#include "field/overlay_01_021E66E4.h"
+
 #include "bag_cursor.h"
+#include "battle_regulation.h"
+#include "bg_window.h"
 #include "bug_contest_internal.h"
+#include "camera.h"
+#include "camera_translation.h"
+#include "field_types_def.h"
 #include "gear_phone.h"
 #include "map_events_internal.h"
 #include "map_matrix.h"
 #include "overlay_01_021EB1E8.h"
-#include "overlay_manager.h"
-#include "save_pokegear.h"
-#include "sys_task_api.h"
-#include "field/overlay_01_021E66E4.h"
-#include "camera_translation.h"
-#include "camera.h"
-#include "bg_window.h"
-#include "sys_task.h"
-#include "scrcmd_9.h"
-#include "photo_types_def.h"
-#include "field_types_def.h"
 #include "overlay_01_02204004.h"
+#include "overlay_manager.h"
+#include "photo_types_def.h"
+#include "save_pokegear.h"
+#include "scrcmd_9.h"
+#include "sys_task.h"
+#include "sys_task_api.h"
 
 typedef struct FollowMon {
     LocalMapObject *mapObject;
@@ -35,12 +37,12 @@ typedef struct FollowMon {
     u32 unk1C;
 } FollowMon;
 
-typedef struct GearPhoneRingManager {
-    u8 unk_var0_0:1;
-    u8 unk_var0_1:1;
-    u8 unk_var0_2:1;
-    u8 unk_var0_3:1;
-    u8 unk_var0_4:4;
+struct GearPhoneRingManager {
+    u8 unk_var0_0 : 1;
+    u8 unk_var0_1 : 1;
+    u8 unk_var0_2 : 1;
+    u8 unk_var0_3 : 1;
+    u8 unk_var0_4 : 4;
     u8 unk_var1;
     u8 unk_var2;
     u8 unk_var3;
@@ -51,17 +53,17 @@ typedef struct GearPhoneRingManager {
     s32 unk_varC;
     u16 unk_var10;
     u16 unk_var12;
-    s64 unk_var14; //Seconds? see sub_02092F30
-    PhoneBookEntry entry; //0x1c
-    SavePokegear *pokegearData; //0x30
-    MomsSavings *savingsData;//0x34
-    SaveData *saveData; //0x38
-    FieldSystem *sys; //0x3c
+    s64 unk_var14;              // Seconds? see sub_02092F30
+    PhoneBookEntry entry;       // 0x1c
+    SavePokegear *pokegearData; // 0x30
+    MomsSavings *savingsData;   // 0x34
+    SaveData *saveData;         // 0x38
+    FieldSystem *sys;           // 0x3c
     struct PokegearRingingTask {
         SysTask *task;
         u8 counter;
     } gearRing;
-} GearPhoneRingManager; //size: 0x48
+}; // size: 0x48
 
 typedef struct FieldSystemUnk108 {
     u32 personality;
@@ -86,8 +88,8 @@ struct FieldSystemUnkSub68 {
     Window unk0;
     u16 unk10;
     u8 unk12;
-    u8 unk13_0:7;
-    u8 unk13_7:1;
+    u8 unk13_0 : 7;
+    u8 unk13_7 : 1;
 };
 
 typedef struct FieldSystemUnkSub4 {
@@ -136,12 +138,13 @@ struct FieldSystem {
     u16 unk7E;
     struct UnkStruct_02059E1C *unk80;
     struct UnkStruct_0205AC88 *unk84;
-    u8 filler_88[0xC];
+    u8 filler_88[0x8];
+    int unk90;
     BagCursor *bagCursor;
     u8 filler_98[0x4];
     void *unk9C;
     UnkStruct_Fsys_A0 *unkA0;
-    void * unkA4;
+    Save_LinkBattleRuleset *linkBattleRuleset;
     u32 *unkA8;
     u32 unkAC;
     void *unkB0;
@@ -150,21 +153,23 @@ struct FieldSystem {
     void *unkC0;
     int unkC4;
     FieldSystemUnkC8 *unk_C8;
-    u8 filler_CC[0x6];
-    u8 unkD2_0:6;
-    u8 unkD2_6:1;
-    u8 unkD2_7:1;
-    u8 filler_D3[0x5];
+    u8 filler_CC[0x4];
+    u16 lastTouchMenuInput;
+    u8 unkD2_0 : 6;
+    u8 unkD2_6 : 1;
+    u8 unkD2_7 : 1;
+    u8 unkD3;
+    u8 filler_D4[0x4];
     SysTask *unk_D8;
     FieldViewPhoto *viewPhotoTask;
-    u8 filler_E0[4];
+    int lastStartMenuAction;
     FollowMon followMon; // E4
     u8 unk104[4];
     FieldSystemUnk108 *unk108;
-    u32 unk_10C;
+    BOOL menuInputState; // Tracks whether the last menu input was touch or keypad
     u8 unk_110;
     u8 unk_111[3];
-    GearPhoneRingManager *unk114;
+    GearPhoneRingManager *phoneRingManager;
     BugContest *bugContest;
     u8 unk11C[0x8];
     u32 judgeStatPosition;
@@ -206,11 +211,11 @@ extern const OVY_MGR_TEMPLATE gApplication_NewGameFieldsys;
 extern const OVY_MGR_TEMPLATE gApplication_ContinueFieldsys;
 
 static inline void InitLocation(Location *location, int mapId, int warpId, int x, int y, int direction) {
-    location->mapId = mapId;
-    location->warpId = warpId;
-    location->x = x;
-    location->y = y;
+    location->mapId     = mapId;
+    location->warpId    = warpId;
+    location->x         = x;
+    location->y         = y;
     location->direction = direction;
 }
 
-#endif //POKEHEARTGOLD_FIELD_SYSTEM_H
+#endif // POKEHEARTGOLD_FIELD_SYSTEM_H

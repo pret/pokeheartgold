@@ -2,14 +2,15 @@
 #define POKEHEARTGOLD_TRAINER_DATA_H
 
 #include "constants/pokemon.h"
-#include "constants/trainers.h"
 #include "constants/trainer_class.h"
+#include "constants/trainers.h"
 
 #ifndef PM_ASM
-#include "pm_string.h"
-#include "mail_message.h"
-#include "pokemon_types_def.h"
 #include "global.h"
+
+#include "mail_message.h"
+#include "pm_string.h"
+#include "pokemon_types_def.h"
 
 typedef enum TrainerAttr {
     TRATTR_TYPE,
@@ -98,8 +99,8 @@ typedef struct Trainer {
     struct TrainerData data;
     /*014*/ u16 name[PLAYER_NAME_LENGTH + 1];
     // Used in the Frontier
-    /*024*/ MAIL_MESSAGE winMessage;
-    /*02C*/ MAIL_MESSAGE loseMessage;
+    /*024*/ MailMessage winMessage;
+    /*02C*/ MailMessage loseMessage;
 } Trainer; // size=0x34
 
 typedef struct BattleSetup BattleSetup;
@@ -109,11 +110,11 @@ TrainerGender TrainerClass_GetGenderOrTrainerCount(int trainerClass);
 int TrainerData_GetAttr(u32 tr_idx, TrainerAttr attr_no);
 void EnemyTrainerSet_Init(BattleSetup *battleSetup, SaveData *saveData, HeapID heapId);
 BOOL TrainerMessageWithIdPairExists(u32 trainer_idx, u32 msg_id, HeapID heapId);
-void GetTrainerMessageByIdPair(u32 trainer_idx, u32 msg_id, String * str, HeapID heapId);
-void TrainerData_ReadTrPoke(u32 idx, TRPOKE * dest);
+void GetTrainerMessageByIdPair(u32 trainer_idx, u32 msg_id, String *str, HeapID heapId);
+void TrainerData_ReadTrPoke(u32 idx, TRPOKE *dest);
 void CreateNPCTrainerParty(BattleSetup *enemies, int party_id, HeapID heapId);
 void TrMon_OverridePidGender(int species, int form, int overrideParam, u32 *pid);
 void TrMon_FrustrationCheckAndSetFriendship(Pokemon *mon);
-#endif //PM_ASM
+#endif // PM_ASM
 
-#endif //POKEHEARTGOLD_TRAINER_DATA_H
+#endif // POKEHEARTGOLD_TRAINER_DATA_H

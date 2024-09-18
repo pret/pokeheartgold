@@ -2,12 +2,12 @@
 #define POKEHEARTGOLD_OVERLAY_16_H
 
 #include "bag.h"
-#include "save_misc_data.h"
 #include "overlay_manager.h"
+#include "save_misc_data.h"
 
 typedef struct BerryPotsArgs {
     void *unk0;
-    u32 *unk4;
+    BOOL *menuInputStatePtr;
     BagCursor *cursor;
     SaveData *saveData;
 } BerryPotsArgs;
@@ -15,7 +15,7 @@ typedef struct BerryPotsArgs {
 typedef struct UnkStruct_ov16_022014A0 {
     u8 defaultGrowthTimeInHours;
     u8 defaultDrainRate;
-    u8 unk2; // yield multiplier?
+    u8 unk2;               // yield multiplier?
 } UnkStruct_ov16_022014A0; // size: 0x3
 
 UnkStruct_ov16_022014A0 *ov16_022014A0(HeapID heapId);

@@ -10,7 +10,7 @@ typedef struct ApricornBoxArgs {
     u16 *unk8;
     u32 unkC;
     u32 unk10;
-    u32 *unk14;
+    BOOL *menuInputStatePtr;
     SaveData *saveData;
 } ApricornBoxArgs;
 
@@ -18,4 +18,4 @@ BOOL ApricornBox_Init(OVY_MANAGER *man, int *state);
 BOOL ApricornBox_Main(OVY_MANAGER *man, int *state);
 BOOL ApricornBox_Exit(OVY_MANAGER *man, int *state);
 
-#endif //POKEHEARTGOLD_OVY_58_H
+#endif // POKEHEARTGOLD_OVY_58_H

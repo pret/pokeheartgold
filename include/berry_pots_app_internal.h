@@ -1,9 +1,9 @@
 #ifndef POKEHEARTGOLD_BERRY_POTS_APP_INTERNAL_H
 #define POKEHEARTGOLD_BERRY_POTS_APP_INTERNAL_H
-#include "unk_02023694.h"
 #include "game_stats.h"
-#include "overlay_16.h"
 #include "launch_application.h"
+#include "overlay_16.h"
+#include "sprite.h"
 
 enum BerryPotsApp_022036FC_Action {
     BERRY_POTS_APP_022036FC_ACTION_0,
@@ -62,7 +62,7 @@ typedef struct BerryPotsAppData {
     BerryPotsAppArgs *args;
     void *unk8;
     Bag *bag;
-    GAME_STATS *stats;
+    GameStats *stats;
     BerryPot *berryPots;
     struct GF_RTC_DateTime *berryDatetime;
     UnkStruct_ov16_022014A0 *berryGrowthProperties;
