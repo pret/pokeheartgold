@@ -1,12 +1,14 @@
 #include "font.h"
 #include "gf_gfx_loader.h"
 #include "main.h"
+#include "math_util.h"
 #include "overlay_mic_test.h"
 #include "sound.h"
 #include "sound_02004A44.h"
 #include "system.h"
 #include "text.h"
 #include "title_screen.h"
+#include "touchscreen.h"
 #include "unk_0200FA24.h"
 #include "unk_02005D10.h"
 #include "unk_0200B150.h"
@@ -297,7 +299,7 @@ void MicTest_LoadResources(MicTestData *micTest) {
 void ov62_021E5FA0(MicTestData *micTest) {
     for (int i = 0; i < 7; i++) {
         if (micTest->unk8[i] != NULL) {
-            sub_0200D9DC(micTest->unk8[i]);
+            UnkImageStruct_Delete(micTest->unk8[i]);
         }
     }
     SpriteRenderer_UnloadResourcesAndRemoveGfxHandler(micTest->spriteRenderer, micTest->unk4);
@@ -546,9 +548,108 @@ u32 MicTest_GetVolumeBracket(u8 a0) {
 
 u32 ov62_021E63D0(MicTestData *micTest) {
     for (int i = 0; i < 3; i++) {
-        if (micTest->unk24[i].unk2C) {
+        if (micTest->unk24[i].task) {
             return 0;
         }
     }
     return 1;
+}
+
+BOOL ov62_021E63E8(MicTestData *micTest, HeapID heapId, s16 x, s16 y) {
+    UnkImageStruct *flag = 0;
+    MicTestSub_24 *args = NULL;
+    for (int i = 0; i < 3; i++) {
+        if (micTest->unk24[i].task == NULL) {
+            args = &micTest->unk24[i];
+            flag = micTest->unk8[i + 4];
+            break;
+        }
+    }
+
+    if (args != NULL) {
+        s32 rand1 = (LCRandom() * 0x1002 / 0x10000) + 0x1333;
+        s32 rand2 = (LCRandom() * 0x3E / 0x10000) + 0x3C;
+        s32 rand3 = (LCRandom() * 0x10 / 0x10000) + 6;
+        ov62_021E6480(flag, args, x, y, rand1, rand2, rand3, 1);
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+void ov62_021E6480(UnkImageStruct *a0, MicTestSub_24 *args, s16 x, s16 y, s32 z, s32 r1, s32 r2, BOOL a7) {
+    args->task = SysTask_CreateOnMainQueue(ov62_021E6570, args, 0);
+    MicTestSub_24 *data = SysTask_GetData(args->task);
+
+    data->unk0 = a0;
+    data->unk4 = a7;
+
+    data->unk8.x = FX32_CONST(x);
+    data->unk8.y = FX32_CONST(y);
+    data->unk8.z = 0;
+
+    s32 sine = GF_SinDegNoWrap(r1 + 90);
+    data->unk14.x = FX_MUL(z, sine);
+    sine = GF_SinDegNoWrap(r1);
+    data->unk14.y = -FX_MUL(z, sine);
+    data->unk14.z = 0;
+
+    data->unk20 = 0;
+    data->unk24 = FX32_CONST(6);
+    data->unk28 = r2;
+
+    UnkImageStruct_SetSpritePositionXY(data->unk0, x, y);
+}
+
+void ov62_021E6570(SysTask *task, void *_data) {
+    MicTestSub_24 *data = _data;
+
+    if (data->unk4) {
+        if (--data->unk4 == 0) {
+            UnkImageStruct_SetSpriteVisibleFlag(data->unk0, TRUE);
+        }
+        return;
+    }
+
+    VEC_Add(&data->unk8, &data->unk14, &data->unk8);
+
+    s16 x = data->unk8.x >> 12;
+    s16 y = data->unk8.y >> 12;
+    data->unk20 = data->unk20 + data->unk24;
+
+    while (data->unk20 > FX32_CONST(360)) {
+        data->unk20 -= FX32_CONST(360);
+    }
+    
+    x += GF_SinDegNoWrap(data->unk20 >> 12) * data->unk28 >> 12;
+    
+    UnkImageStruct_SetSpritePositionXY(data->unk0, x, y);
+    
+    if (y < -16) {
+        UnkImageStruct_SetSpriteVisibleFlag(data->unk0, FALSE);
+        SysTask_Destroy(task);
+        data->task = NULL;
+    }
+}
+
+void ov62_021E6600(MicTestData *micTest) {
+    for (int i = 0; i < 3; i++) {
+        if (micTest->unk24[i].task != NULL) {
+            SysTask_Destroy(micTest->unk24[i].task);
+            micTest->unk24[i].task = NULL;
+        }
+    }
+}
+
+extern TouchscreenHitbox _021E6650;
+
+int ov62_021E6620() {
+    return TouchscreenHitbox_FindRectAtTouchNew(&_021E6650);
+}
+
+int ov62_021E6630(MicTestData *data) {
+    if (ov62_021E6620() == 0 || (gSystem.newKeys & 2)) {
+        return TRUE;
+    }
+    return FALSE;
 }

@@ -36,14 +36,22 @@ struct MicTestTaskManager {
     u32 isFinished;
 };
 
+typedef struct MicTestSub_24 {
+    UnkImageStruct *unk0;
+    u32 unk4;
+    VecFx32 unk8;
+    VecFx32 unk14;
+    fx32 unk20;//angle?
+    fx32 unk24;//dTheta?
+    fx32 unk28;//magnitude?
+    SysTask *task;
+} MicTestSub_24;
+
 struct MicTestData {
     SpriteRenderer *spriteRenderer;
     SpriteGfxHandler *unk4;
     UnkImageStruct *unk8[7];
-    struct {
-        u8 unk0[0x2C];
-        u32 unk2C;
-    } unk24[3];
+    MicTestSub_24 unk24[3];
     u32 unkB4;
     MicTestSub_B8 unkB8;
     MicTestSub_F0 unkF0;
@@ -90,6 +98,10 @@ s32 MicTest_AverageMicInput(MicTestSub_F0 *a0);
 void MicTest_MicrophoneCallback(MICResult result, void *data);
 u32 MicTest_GetVolumeBracket(u8);
 u32 ov62_021E63D0(MicTestData *micTest);
+BOOL ov62_021E63E8(MicTestData *micTest, HeapID heapId, s16 x, s16 y);
+void ov62_021E6480(UnkImageStruct *a0, MicTestSub_24 *args, s16 x, s16 y, s32 z, s32 r1, s32 r2, BOOL a7);
+void ov62_021E6570(SysTask *, void *);
+int ov62_021E6620();
 
 //Still in asm
 void MicTest_LoadTextResources(MicTestSub_B8 *a0, HeapID heapId);
@@ -97,6 +109,6 @@ BOOL ov62_021E6630(MicTestData *micTest);
 void ov62_021E6600(MicTestData *micTest);
 
 
-void ov62_021E63E8(MicTestData *micTest, HeapID heapId, u32 a2, u32 a3);
+
 
 #endif //POKEHEARTGOLD_MIC_TEST_H
