@@ -7,11 +7,11 @@
 typedef u8 FontID;
 struct FontData;
 
-struct GlyphInfo {
+typedef struct GlyphInfo {
     u8 data[0x80];
     u8 width;
     u8 height;
-};
+} GlyphInfo;
 
 struct FontInfo {
     u8 maxLetterWidth;

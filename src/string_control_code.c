@@ -14,7 +14,7 @@ const u16 *MsgArray_SkipControlCode(const u16 *arr) {
     return arr;
 }
 
-u16 MsgArray_GetControlCode(const u16 *arr) {
+int MsgArray_GetControlCode(const u16 *arr) {
     GF_ASSERT(*arr == EXT_CTRL_CODE_BEGIN);
     return arr[1];
 }
@@ -24,7 +24,7 @@ BOOL MsgArray_ControlCodeIsStrVar(const u16 *arr) {
     return strcode == 0x100 || strcode == 0x300 || strcode == 0x400 || strcode == 0x3400;
 }
 
-u16 MsgArray_ControlCodeGetField(const u16 *arr, u32 fieldno) {
+int MsgArray_ControlCodeGetField(const u16 *arr, u32 fieldno) {
     GF_ASSERT(*arr == EXT_CTRL_CODE_BEGIN);
     GF_ASSERT(fieldno < arr[2]);
     arr += 3;
