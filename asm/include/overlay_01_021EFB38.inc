@@ -64,7 +64,7 @@
 .public GfGfx_EngineATogglePlanes
 .public Camera_SetPerspectiveClippingPlane
 .public SpriteList_Delete
-.public sub_02024714
+.public Sprite_Create
 .public GF_AssertFail
 .public NNS_G3dGlbSetBaseTrans
 .public NNS_G3dGlbSetBaseScale

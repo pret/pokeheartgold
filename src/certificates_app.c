@@ -320,7 +320,7 @@ static void CertificatesApp_OnVBlank(CertificatesApp_Data *data) {
 
     if (data->certificateId == CERTIFICATE_SHINY_LEAVES) {
         GF_ASSERT(data->spriteGfxHandler != NULL);
-        sub_0200D020(data->spriteGfxHandler);
+        SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler);
 
         thunk_OamManager_ApplyAndResetBuffers();
     }
@@ -598,8 +598,8 @@ static void CertificatesApp_SetupSpriteRenderer(CertificatesApp_Data *data) {
     OamManagerParam oamManagerParam       = sOamManagerParam;
     OamCharTransferParam oamTransferParam = sOamTransferParam;
     oamTransferParam.maxTasks             = 0x20;
-    sub_0200CF70(data->spriteRenderer, &oamManagerParam, &oamTransferParam, 0x20);
-    sub_0200CFF4(data->spriteRenderer, data->spriteGfxHandler, 0x20);
+    SpriteRenderer_CreateOamCharPlttManagers(data->spriteRenderer, &oamManagerParam, &oamTransferParam, 0x20);
+    SpriteRenderer_CreateSpriteList(data->spriteRenderer, data->spriteGfxHandler, 0x20);
 
     SpriteResourceCountsListUnion counts = sSpriteResourceCounts;
     SpriteRenderer_Init2DGfxResManagersFromCountsArray(data->spriteRenderer, data->spriteGfxHandler, &counts);

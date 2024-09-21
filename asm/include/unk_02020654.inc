@@ -4,7 +4,7 @@
 .public FreeToHeap
 .public GF_CreateNewVramTransferTask
 .public sub_02020654
-.public sub_02020674
+.public thunk_UpdateCellTransferStateManager
 .public sub_0202067C
 .public sub_0202068C
 .public sub_020206C8

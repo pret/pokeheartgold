@@ -1154,7 +1154,7 @@ _0225F892:
 	cmp r0, #5
 	beq _0225F89E
 	ldr r0, [r4, #0x10]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _0225F89E:
 	add sp, #0x18
 	pop {r4, r5, r6, pc}
@@ -1367,7 +1367,7 @@ _0225F9EA:
 	bl ov01_021F0718
 	str r0, [r5]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, [r5]
 	mov r1, #0x10
 	bl Sprite_SetDrawPriority

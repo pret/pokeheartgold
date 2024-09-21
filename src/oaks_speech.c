@@ -631,7 +631,7 @@ BOOL OakSpeech_Main(OVY_MANAGER *ovyMan, int *pState) {
     }
 
     if (data->overlayManager == NULL && data->spriteGfxHandler != NULL) {
-        sub_0200D020(data->spriteGfxHandler);
+        SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler);
     }
     return ret;
 }
@@ -1826,9 +1826,9 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
         break;
     case OAK_SPEECH_MAIN_STATE_THIS_WORLD_IS_INHABITED:
         if (OakSpeech_PrintDialogMsg(data, msg_0219_00034, 1) == TRUE) {
-            Set2dSpriteAnimSeqNo(data->sprites[5], 3);
+            Sprite_SetAnimCtrlSeq(data->sprites[5], 3);
             Sprite_SetPalIndex(data->sprites[5], 5);
-            Set2dSpriteVisibleFlag(data->sprites[5], TRUE);
+            Sprite_SetVisibleFlag(data->sprites[5], TRUE);
             data->state = OAK_SPEECH_MAIN_STATE_BALL_OPENING_FLASH;
         }
         break;
@@ -1843,7 +1843,7 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
         break;
     case OAK_SPEECH_MAIN_STATE_APPEAR_MARILL:
         if (IsBrightnessTransitionActive(SCREEN_MASK_MAIN) == TRUE && IsBrightnessTransitionActive(SCREEN_MASK_SUB) == TRUE) {
-            Set2dSpriteAnimSeqNo(data->sprites[5], 1);
+            Sprite_SetAnimCtrlSeq(data->sprites[5], 1);
             Sprite_SetPalIndex(data->sprites[5], 4);
             data->playerPicShrinkAnimStep = 16;
             G2_SetBlendBrightness(GX_BLEND_PLANEMASK_OBJ, data->playerPicShrinkAnimStep);
@@ -1855,7 +1855,7 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
             --data->playerPicShrinkAnimStep;
             G2_SetBlendBrightness(GX_BLEND_PLANEMASK_OBJ, data->playerPicShrinkAnimStep);
             if (data->playerPicShrinkAnimStep == 0) {
-                Set2dSpriteAnimSeqNo(data->sprites[5], 2);
+                Sprite_SetAnimCtrlSeq(data->sprites[5], 2);
                 PlayCry(SPECIES_MARILL, 0);
                 data->state = OAK_SPEECH_MAIN_STATE_WAIT_MARILL_CRY;
             }
@@ -2191,20 +2191,20 @@ static void OakSpeech_TouchToAdvanceButtonAction(OakSpeechData *data, int action
     GF_ASSERT(data != NULL);
     switch (action) {
     case TOUCHTOADVANCE_HIDE:
-        GF_ASSERT(Get2dSpriteVisibleFlag(data->sprites[3]) == TRUE);
+        GF_ASSERT(Sprite_GetVisibleFlag(data->sprites[3]) == TRUE);
         OakSpeech_HideTutorialTouchMsg(data);
-        Set2dSpriteVisibleFlag(data->sprites[3], FALSE);
+        Sprite_SetVisibleFlag(data->sprites[3], FALSE);
         break;
     case TOUCHTOADVANCE_SHOW:
-        GF_ASSERT(Get2dSpriteVisibleFlag(data->sprites[3]) == FALSE);
+        GF_ASSERT(Sprite_GetVisibleFlag(data->sprites[3]) == FALSE);
         OakSpeech_ShowTutorialTouchMsg(data);
-        Set2dSpriteVisibleFlag(data->sprites[3], TRUE);
+        Sprite_SetVisibleFlag(data->sprites[3], TRUE);
         break;
     case TOUCHTOADVANCE_PRESS:
-        Set2dSpriteAnimSeqNo(data->sprites[3], 1);
+        Sprite_SetAnimCtrlSeq(data->sprites[3], 1);
         break;
     case TOUCHTOADVANCE_RELEASE:
-        Set2dSpriteAnimSeqNo(data->sprites[3], 0);
+        Sprite_SetAnimCtrlSeq(data->sprites[3], 0);
         break;
     default:
         GF_ASSERT(FALSE);
@@ -2213,12 +2213,12 @@ static void OakSpeech_TouchToAdvanceButtonAction(OakSpeechData *data, int action
 }
 
 static BOOL OakSpeech_IsTouchToAdvanceButtonDepressed(OakSpeechData *data) {
-    return Get2dSpriteCurrentAnimSeqNo(data->sprites[3]) == 1;
+    return Sprite_GetAnimationNumber(data->sprites[3]) == 1;
 }
 
 static BOOL OakSpeech_IsTouchToAdvanceButtonActive(OakSpeechData *data) {
     GF_ASSERT(data != NULL);
-    return Get2dSpriteVisibleFlag(data->sprites[3]) == TRUE;
+    return Sprite_GetVisibleFlag(data->sprites[3]) == TRUE;
 }
 
 static void OakSpeech_HandleTouchToAdvanceButton(OakSpeechData *data) {

@@ -6,11 +6,11 @@
 #include "gf_gfx_loader.h"
 #include "intro_movie_internal.h"
 #include "obj_char_transfer.h"
+#include "obj_pltt_transfer.h"
 #include "system.h"
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
-#include "unk_02022588.h"
 #include "unk_02026E30.h"
 
 enum IntroScene3State {
@@ -186,7 +186,7 @@ static void IntroMovie_Scene3_VBlankCB(void *pVoid) {
 static void IntroMovie_Scene3_Init(IntroMovieOverlayData *data, IntroMovieScene3Data *sceneData) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     ObjCharTransfer_ClearBuffers();
-    sub_02022638();
+    ObjPlttTransfer_Reset();
     gSystem.screensFlipped = FALSE;
     GfGfx_SwapDisplay();
     IntroMovie_Scene3_InitBGLayers(data);
@@ -606,27 +606,27 @@ static void IntroMovie_Scene3_CreateSprites(IntroMovieOverlayData *data, IntroMo
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(2, data, 0, NNS_G2D_VRAM_TYPE_2DSUB, &template, &header);
     template.position.x               = 128 * FX32_ONE;
     template.position.y               = 608 * FX32_ONE;
-    sceneData->silverSilhouetteSprite = CreateSprite(&template);
-    Set2dSpriteAnimActiveFlag(sceneData->silverSilhouetteSprite, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->silverSilhouetteSprite, FALSE);
-    Set2dSpriteAnimSeqNo(sceneData->silverSilhouetteSprite, 0);
+    sceneData->silverSilhouetteSprite = Sprite_CreateAffine(&template);
+    Sprite_SetAnimActiveFlag(sceneData->silverSilhouetteSprite, FALSE);
+    Sprite_SetVisibleFlag(sceneData->silverSilhouetteSprite, FALSE);
+    Sprite_SetAnimCtrlSeq(sceneData->silverSilhouetteSprite, 0);
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(3, data, 0, NNS_G2D_VRAM_TYPE_2DSUB, &template, &header);
     template.position.x     = 32 * FX32_ONE;
     template.position.y     = 608 * FX32_ONE;
-    sceneData->eusineSprite = CreateSprite(&template);
-    Set2dSpriteAnimActiveFlag(sceneData->eusineSprite, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->eusineSprite, FALSE);
-    Set2dSpriteAnimSeqNo(sceneData->eusineSprite, 0);
+    sceneData->eusineSprite = Sprite_CreateAffine(&template);
+    Sprite_SetAnimActiveFlag(sceneData->eusineSprite, FALSE);
+    Sprite_SetVisibleFlag(sceneData->eusineSprite, FALSE);
+    Sprite_SetAnimCtrlSeq(sceneData->eusineSprite, 0);
 
     for (int i = 0; i < 3; ++i) {
         IntroMovie_BuildSpriteResourcesHeaderAndTemplate(3, data, 0, NNS_G2D_VRAM_TYPE_2DSUB, &template, &header);
         template.position.x        = 128 * FX32_ONE;
         template.position.y        = unownSpriteYcoords[i] * FX32_ONE;
-        sceneData->unownSprites[i] = CreateSprite(&template);
-        Set2dSpriteAnimActiveFlag(sceneData->unownSprites[i], FALSE);
-        Set2dSpriteVisibleFlag(sceneData->unownSprites[i], FALSE);
-        Set2dSpriteAnimSeqNo(sceneData->unownSprites[i], unownSpriteAnimSeqNos[i]);
+        sceneData->unownSprites[i] = Sprite_CreateAffine(&template);
+        Sprite_SetAnimActiveFlag(sceneData->unownSprites[i], FALSE);
+        Sprite_SetVisibleFlag(sceneData->unownSprites[i], FALSE);
+        Sprite_SetAnimCtrlSeq(sceneData->unownSprites[i], unownSpriteAnimSeqNos[i]);
     }
 }
 

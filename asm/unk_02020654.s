@@ -23,13 +23,13 @@ sub_02020654: ; 0x02020654
 _02020670: .word sub_02020684
 	thumb_func_end sub_02020654
 
-	thumb_func_start sub_02020674
-sub_02020674: ; 0x02020674
+	thumb_func_start thunk_UpdateCellTransferStateManager
+thunk_UpdateCellTransferStateManager: ; 0x02020674
 	ldr r3, _02020678 ; =NNS_G2dUpdateCellTransferStateManager
 	bx r3
 	.balign 4, 0
 _02020678: .word NNS_G2dUpdateCellTransferStateManager
-	thumb_func_end sub_02020674
+	thumb_func_end thunk_UpdateCellTransferStateManager
 
 	thumb_func_start sub_0202067C
 sub_0202067C: ; 0x0202067C

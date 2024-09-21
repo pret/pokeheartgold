@@ -1,6 +1,8 @@
 #ifndef NNSYS_G2D_G2D_VEC_DATA_H_
 #define NNSYS_G2D_G2D_VEC_DATA_H_
 
+#include <nitro.h>
+
 typedef struct NNSG2dSVec2 {
     s16 x;
     s16 y;
@@ -21,4 +23,4 @@ typedef union {
     fx32 a[6];
 } MtxFx32;
 
-#endif //NNSYS_G2D_G2D_VEC_DATA_H_
+#endif // NNSYS_G2D_G2D_VEC_DATA_H_

@@ -36,6 +36,7 @@
 #include "system.h"
 #include "unk_02005D10.h"
 #include "unk_0200FA24.h"
+#include "unk_02023694.h"
 #include "unk_02030A98.h"
 #include "unk_02031904.h"
 #include "unk_02031AF0.h"

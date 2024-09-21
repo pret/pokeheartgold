@@ -208,7 +208,7 @@ _021E828E:
 	pop {r3, r4, r5, pc}
 _021E829A:
 	ldr r0, [r4, #0x3c]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -262,7 +262,7 @@ _021E82FC:
 	bl SpriteList_Delete
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	add r0, r6, #0
 	bl ov52_021E8B94
 	mov r0, #2
@@ -718,9 +718,9 @@ ov52_021E86DC: ; 0x021E86DC
 	bl ObjCharTransfer_Init
 	mov r0, #0x14
 	mov r1, #0x27
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -1001,18 +1001,18 @@ ov52_021E888C: ; 0x021E888C
 	mov r1, #0x27
 	add r0, sp, #0x2c
 	str r1, [sp, #0x58]
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x25
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	mov r0, #0x25
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	mov r0, #0x25
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -1434,11 +1434,11 @@ ov52_021E8CBC: ; 0x021E8CBC
 	bne _021E8CD0
 	ldrh r1, [r2, #4]
 	add r1, r1, #1
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	pop {r3, pc}
 _021E8CD0:
 	ldrh r1, [r2, #4]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	pop {r3, pc}
 	.balign 4, 0
 _021E8CD8: .word _021E94AC
@@ -1451,11 +1451,11 @@ ov52_021E8CDC: ; 0x021E8CDC
 	ldr r0, [r0]
 	bne _021E8CEC
 	mov r1, #1
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	pop {r3, pc}
 _021E8CEC:
 	mov r1, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	pop {r3, pc}
 	thumb_func_end ov52_021E8CDC
 
@@ -2509,14 +2509,14 @@ ov52_021E9488: ; 0x021E9488
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	pop {r3, pc}
 _021E949C:
 	mov r1, #0x25
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov52_021E9488

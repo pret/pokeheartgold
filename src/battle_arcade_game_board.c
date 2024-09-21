@@ -14,6 +14,7 @@
 #include "gf_gfx_planes.h"
 #include "math_util.h"
 #include "obj_char_transfer.h"
+#include "obj_pltt_transfer.h"
 #include "palette.h"
 #include "party.h"
 #include "party_menu.h"
@@ -27,7 +28,6 @@
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
-#include "unk_02022588.h"
 #include "unk_02030A98.h"
 #include "unk_02035900.h"
 #include "unk_020379A0.h"
@@ -204,7 +204,7 @@ BOOL BattleArcadeGameBoard_Main(OVY_MANAGER *man, int *state) {
         work->unk13_0 ^= 1;
     }
 
-    sub_0202457C(work->unk3E8.spriteList);
+    SpriteList_RenderAndAnimateSprites(work->unk3E8.spriteList);
 
     return FALSE;
 }
@@ -608,8 +608,8 @@ static void BattleArcadeGameBoard_InitObjects(GAME_BOARD_WORK *work) {
     work->button = BattleArcadeObject_Create(&work->unk3E8, 0, 0, 0, 2, 128, 96, 0, 0, 1);
 
     if (sub_02037474()) {
-        sub_02009FE8(NNS_G2D_VRAM_TYPE_2DMAIN, GX_OBJVRAMMODE_CHAR_1D_32K);
-        sub_0200A080(1);
+        G2dRenderer_SetObjCharTransferReservedRegion(NNS_G2D_VRAM_TYPE_2DMAIN, GX_OBJVRAMMODE_CHAR_1D_32K);
+        G2dRenderer_SetPlttTransferReservedRegion(NNS_G2D_VRAM_TYPE_2DMAIN);
         sub_0203A880();
     }
 
@@ -1269,10 +1269,10 @@ static Sprite *ov84_0223F374(GAME_BOARD_SUB_3E8 *work, u32 chara, u32 pal, u32 c
             template.position.y += (GX_LCD_SIZE_Y * FX32_ONE);
         }
 
-        sprite = CreateSprite(&template);
-        Set2dSpriteAnimActiveFlag(sprite, 1);
-        sub_02024868(sprite, 1 * FX32_ONE);
-        Set2dSpriteAnimSeqNo(sprite, anim);
+        sprite = Sprite_CreateAffine(&template);
+        Sprite_SetAnimActiveFlag(sprite, 1);
+        Sprite_SetAnimSpeed(sprite, 1 * FX32_ONE);
+        Sprite_SetAnimCtrlSeq(sprite, anim);
     }
 
     return sprite;
@@ -1296,7 +1296,7 @@ static void ov84_0223F418(GAME_BOARD_SUB_3E8 *work) {
     SpriteList_Delete(work->spriteList);
     OamManager_Free();
     ObjCharTransfer_Destroy();
-    sub_02022608();
+    ObjPlttTransfer_Destroy();
 }
 
 extern ObjCharTransferTemplate ov84_0223F9E8;
@@ -1304,9 +1304,9 @@ extern ObjCharTransferTemplate ov84_0223F9E8;
 static void ov84_0223F480(void) {
     ObjCharTransferTemplate var = ov84_0223F9E8;
     ObjCharTransfer_InitEx(&var, GX_OBJVRAMMODE_CHAR_1D_32K, GX_OBJVRAMMODE_CHAR_1D_32K);
-    sub_02022588(14, HEAP_ID_GAME_BOARD);
+    ObjPlttTransfer_Init(14, HEAP_ID_GAME_BOARD);
     ObjCharTransfer_ClearBuffers();
-    sub_02022638();
+    ObjPlttTransfer_Reset();
 }
 
 static void GameBoard_LoadEventGraphics(GAME_BOARD_SUB_3E8 *work) {
@@ -1402,7 +1402,7 @@ static void *BattleArcadeObj_Delete(BATTLE_ARCADE_OBJECT *obj) {
 }
 
 static void BattleArcadeObj_SetVisible(BATTLE_ARCADE_OBJECT *obj, int flag) {
-    Set2dSpriteVisibleFlag(obj->sprite, flag);
+    Sprite_SetVisibleFlag(obj->sprite, flag);
 }
 
 static void BattleArcadeObj_SetPos(BATTLE_ARCADE_OBJECT *obj, u16 x, u16 y) {
@@ -1419,16 +1419,16 @@ static void BattleArcadeObj_SetPos(BATTLE_ARCADE_OBJECT *obj, u16 x, u16 y) {
 }
 
 static void BattleArcadeObj_SetAnimation(BATTLE_ARCADE_OBJECT *obj, u32 val) {
-    sub_02024868(obj->sprite, FX32_ONE);
-    TryChange2dSpriteAnimSeqNo(obj->sprite, val);
+    Sprite_SetAnimSpeed(obj->sprite, FX32_ONE);
+    Sprite_TryChangeAnimSeq(obj->sprite, val);
 }
 
 static void ov84_0223F894(BATTLE_ARCADE_OBJECT *obj, Pokemon *mon) {
-    sub_02024AA8(obj->sprite, Pokemon_GetIconPalette(mon));
+    Sprite_SetPalOffsetRespectVramOffset(obj->sprite, Pokemon_GetIconPalette(mon));
 }
 
 static void ov84_0223F8A8(BATTLE_ARCADE_OBJECT *obj, int flag) {
-    Set2dSpriteAnimActiveFlag(obj->sprite, flag);
+    Sprite_SetAnimActiveFlag(obj->sprite, flag);
 }
 
 extern WindowTemplate ov84_0223F9F8[2];

@@ -406,12 +406,12 @@ _02237FD8:
 	ldr r1, _02238314 ; =ov12_0226C060
 	ldr r2, _02238318 ; =ov12_0226C018
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r1, _0223831C ; =0x00100010
 	mov r0, #1
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
-	bl sub_0200A080
+	bl G2dRenderer_SetPlttTransferReservedRegion
 	add r0, r4, #0
 	add r0, #0x90
 	ldr r0, [r0]
@@ -426,7 +426,7 @@ _02237FD8:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	mov r2, #0x80
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	add r0, r4, #0
 	add r1, r4, #0
 	add r0, #0x90
@@ -3236,8 +3236,8 @@ _02239830:
 	bl PokepicManager_DrawAll
 	add r4, #0x94
 	ldr r0, [r4]
-	bl sub_0200D020
-	bl sub_0200D03C
+	bl SpriteGfxHandler_RenderAndAnimateSprites
+	bl SpriteRenderer_thunk_UpdateCellTransferStateManager
 	mov r0, #1
 	mov r1, #0
 	bl RequestSwap3DBuffers

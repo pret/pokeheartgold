@@ -37,8 +37,8 @@
 .public PokepicManager_SetPlttBaseAddrAndSize
 .public PokepicManager_HandleLoadImgAndOrPltt
 .public G2dRenderer_SetSubSurfaceCoords
-.public sub_02009FE8
-.public sub_0200A080
+.public G2dRenderer_SetObjCharTransferReservedRegion
+.public G2dRenderer_SetPlttTransferReservedRegion
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
@@ -49,11 +49,11 @@
 .public SpriteRenderer_Create
 .public SpriteRenderer_CreateGfxHandler
 .public SpriteRenderer_GetG2dRendererPtr
-.public sub_0200CF70
-.public sub_0200CFF4
-.public sub_0200D020
+.public SpriteRenderer_CreateOamCharPlttManagers
+.public SpriteRenderer_CreateSpriteList
+.public SpriteGfxHandler_RenderAndAnimateSprites
 .public thunk_OamManager_ApplyAndResetBuffers
-.public sub_0200D03C
+.public SpriteRenderer_thunk_UpdateCellTransferStateManager
 .public SpriteRenderer_Delete
 .public SpriteRenderer_Init2DGfxResManagersFromCountsArray
 .public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler

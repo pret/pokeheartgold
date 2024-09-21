@@ -887,11 +887,11 @@ ov32_0225DC0C: ; 0x0225DC0C
 	lsl r0, r3, #1
 	add r4, r4, r0
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	str r0, [r4, r6]
 	ldrb r1, [r5, #3]
 	ldr r0, [r4, r6]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add sp, #0x30
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -989,7 +989,7 @@ ov32_0225DD04: ; 0x0225DD04
 _0225DD12:
 	ldr r0, [r5, r6]
 	add r1, r7, #0
-	bl Sprite_TickCellOrMulticellAnimation
+	bl Sprite_TickAnimCtrlFrame
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -1025,7 +1025,7 @@ ov32_0225DD24: ; 0x0225DD24
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add sp, #0xc
 	pop {r4, r5, pc}
 _0225DD64:
@@ -1033,7 +1033,7 @@ _0225DD64:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end ov32_0225DD24
@@ -1145,7 +1145,7 @@ _0225DE22:
 	mov r0, #0x53
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	pop {r4, pc}
 	thumb_func_end ov32_0225DDC4
 
@@ -1390,7 +1390,7 @@ ov32_0225DFE8: ; 0x0225DFE8
 	mov r0, #0xa6
 	lsl r0, r0, #2
 	ldr r0, [r2, r0]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add sp, #0xc
 	pop {r3, r4, pc}
 _0225E00C:

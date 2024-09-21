@@ -76,11 +76,11 @@ ov98_0221E5E0: ; 0x0221E5E0
 	ldr r0, [r4, #4]
 	add r2, r7, #0
 	mov r3, #0x20
-	bl sub_0200CF70
+	bl SpriteRenderer_CreateOamCharPlttManagers
 	ldr r0, [r4, #4]
 	ldr r1, [r4, #8]
 	add r2, r5, #0
-	bl sub_0200CFF4
+	bl SpriteRenderer_CreateSpriteList
 	ldr r0, [r4, #4]
 	ldr r1, [r4, #8]
 	ldr r2, [sp]
@@ -147,7 +147,7 @@ ov98_0221E6CC: ; 0x0221E6CC
 	bl GF_AssertFail
 _0221E6D6:
 	ldr r0, [r4, #8]
-	bl sub_0200D020
+	bl SpriteGfxHandler_RenderAndAnimateSprites
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov98_0221E6CC

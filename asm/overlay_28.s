@@ -664,11 +664,11 @@ ov28_0225DA1C: ; 0x0225DA1C
 	lsl r2, r2, #6
 	add r4, r0, r2
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	str r0, [r4, r6]
 	ldrb r1, [r5, #3]
 	ldr r0, [r4, r6]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add sp, #0x30
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -743,12 +743,12 @@ ov28_0225DA74: ; 0x0225DA74
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #3
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0xb
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add sp, #0x44
 	pop {r4, r5, pc}
 _0225DB22:
@@ -756,12 +756,12 @@ _0225DB22:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #4
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #7
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add sp, #0x44
 	pop {r4, r5, pc}
 	nop
@@ -990,7 +990,7 @@ _0225DCF6:
 	add r0, r4, #0
 	bl ov28_0225E9E0
 	ldr r0, [r4, #0x24]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	pop {r4, pc}
 	.balign 4, 0
 _0225DD1C: .word ov28_0225EA88
@@ -1888,7 +1888,7 @@ ov28_0225E3BC: ; 0x0225E3BC
 _0225E3D0:
 	ldr r0, [r5, r6]
 	add r1, r7, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -1909,15 +1909,15 @@ _0225E3F4:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	add r1, r1, #1
-	bl sub_02024A48
+	bl Sprite_SetPalIndexRespectVramOffset
 	mov r0, #0x19
 	lsl r0, r0, #4
 	ldrh r1, [r6, #2]
 	ldr r0, [r5, r0]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r5, r7]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -1937,7 +1937,7 @@ ov28_0225E424: ; 0x0225E424
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #2
-	bl sub_0202481C
+	bl Sprite_SetRotationAndAffineType
 	pop {r4, pc}
 	thumb_func_end ov28_0225E424
 
@@ -2541,7 +2541,7 @@ ov28_0225E8B8: ; 0x0225E8B8
 	bl TouchscreenHitbox_TouchHeldIsIn
 	add r4, r0, #0
 	add r0, r5, #0
-	bl Get2dSpriteCurrentAnimSeqNo
+	bl Sprite_GetAnimationNumber
 	add r7, r0, #0
 	cmp r4, #1
 	bne _0225E8E6
@@ -2550,7 +2550,7 @@ ov28_0225E8B8: ; 0x0225E8B8
 	beq _0225E8E6
 	add r0, r5, #0
 	add r1, r6, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _0225E8E6:
@@ -2563,7 +2563,7 @@ _0225E8E6:
 _0225E8F2:
 	ldr r1, [sp]
 	add r0, r5, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2617,24 +2617,24 @@ _0225E952:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	pop {r4, r5, r6, pc}
 _0225E96C:
 	mov r0, #0x61
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, _0225E9DC ; =ov28_0225EA84
 	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #1
@@ -2649,24 +2649,24 @@ _0225E96C:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #4
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #7
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	b _0225E9D0
 _0225E9B8:
 	mov r0, #0x61
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #3
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0xb
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 _0225E9D0:
 	mov r1, #1
 	add r0, r6, #0
@@ -2693,12 +2693,12 @@ ov28_0225E9E0: ; 0x0225E9E0
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #8
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	mov r0, #0x63
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	pop {r4, pc}
 _0225EA10:
 	mov r0, #0x7d
@@ -2709,7 +2709,7 @@ _0225EA10:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r1, #0x63
 	lsl r1, r1, #2
 	ldr r0, _0225EA54 ; =ov28_0225EA80

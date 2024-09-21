@@ -11,14 +11,14 @@
 #include "main.h"
 #include "math_util.h"
 #include "obj_char_transfer.h"
+#include "obj_pltt_transfer.h"
 #include "sound_02004A44.h"
+#include "sprite.h"
 #include "sys_task_api.h"
 #include "system.h"
 #include "title_screen.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
-#include "unk_02022588.h"
-#include "unk_02023694.h"
 
 enum IntroMovieOverlayState {
     INTRO_MOVIE_INIT,
@@ -181,7 +181,7 @@ static void IntroMovie_SetGraphicsBanks(void) {
 }
 
 static void IntroMovie_HandleSpriteUpdates(IntroMovieOverlayData *data) {
-    sub_0202457C(data->spriteList);
+    SpriteList_RenderAndAnimateSprites(data->spriteList);
 }
 
 static void IntroMovie_InitSpriteGraphicsHW(IntroMovieOverlayData *data) {
@@ -190,9 +190,9 @@ static void IntroMovie_InitSpriteGraphicsHW(IntroMovieOverlayData *data) {
 
     ObjCharTransferTemplate template = { 10, 0, 0, HEAP_ID_INTRO_MOVIE };
     ObjCharTransfer_Init(&template);
-    sub_02022588(10, HEAP_ID_INTRO_MOVIE);
+    ObjPlttTransfer_Init(10, HEAP_ID_INTRO_MOVIE);
     ObjCharTransfer_ClearBuffers();
-    sub_02022638();
+    ObjPlttTransfer_Reset();
     NNS_G2dInitOamManagerModule();
     OamManager_Create(0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20, HEAP_ID_INTRO_MOVIE);
     data->spriteList = G2dRenderer_Init(20, &data->spriteRenderer, HEAP_ID_INTRO_MOVIE);
@@ -202,5 +202,5 @@ static void IntroMovie_TeardownSpritesManager(IntroMovieOverlayData *data) {
     SpriteList_Delete(data->spriteList);
     OamManager_Free();
     ObjCharTransfer_Destroy();
-    sub_02022608();
+    ObjPlttTransfer_Destroy();
 }

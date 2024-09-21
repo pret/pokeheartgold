@@ -27,7 +27,7 @@ if ! [ -f "$SRC" ]; then
     echo -e "error: $SRC: file not found\n$usage" 1>&2
     exit 255
 fi
-if [ -f "$DEST" -o -d "$DEST" ]; then
+if [ -f "$DEST" ] || [ -d "$DEST" ]; then
     echo -e "error: $DEST: file or directory exists\n$usage" 1>&2
     exit 255
 fi
@@ -60,4 +60,4 @@ read -r -a to_modify < <(git grep -lE "#include \"$SRC_PAT\"")
 git mv "$SRC_REL" "$DEST_REL"
 "$SED" -i -r "s#\"$SRC_PAT\"#\"$DEST_PAT\"#g" "${to_modify[@]}"
 find build -name "*.d" -exec "$SED" -i -r "s#\"$SRC_PAT\"#\"$DEST_PAT\"#g" {} +
-echo done
+echo 'done'

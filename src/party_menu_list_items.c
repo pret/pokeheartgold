@@ -332,8 +332,8 @@ static void PartyMonContextMenuAction_Switch(PartyMenu *partyMenu, int *pState) 
     s16 x, y;
     Sprite_GetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], &x, &y);
     Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], x, y);
-    Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], sub_0207B5EC(partyMenu->args->unk_25, partyMenu->softboiledDonorSlot) + 2);
-    Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], TRUE);
+    Sprite_SetAnimCtrlSeq(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], sub_0207B5EC(partyMenu->args->unk_25, partyMenu->softboiledDonorSlot) + 2);
+    Sprite_SetVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], TRUE);
     sub_0207A7F4(partyMenu, partyMenu->softboiledDonorSlot);
     ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
     PartyMenu_DeleteContextMenuAndList(partyMenu);
@@ -344,7 +344,7 @@ static void PartyMonContextMenuAction_Switch(PartyMenu *partyMenu, int *pState) 
 
 void sub_0207FBC8(PartyMenu *partyMenu) {
     partyMenu->secondCursorActive = 0;
-    Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], FALSE);
+    Sprite_SetVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], FALSE);
     if (partyMenu->partyMonIndex < PARTY_SIZE) {
         sub_0207A7F4(partyMenu, partyMenu->partyMonIndex);
     }
@@ -391,8 +391,8 @@ void sub_0207FC1C(PartyMenu *partyMenu) {
         memcpy(&partyMenu->swapMonsData.bg2Tilemaps[1][i * 16], &bg2Tilemap[sp0 + (sp4 + i) * 32], 0x20);
         memcpy(&partyMenu->swapMonsData.bg1Tilemaps[1][i * 16], &bg1Tilemap[sp0 + (sp4 + i) * 32], 0x20);
     }
-    Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], FALSE);
-    Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], FALSE);
+    Sprite_SetVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], FALSE);
+    Sprite_SetVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], FALSE);
 }
 
 BOOL sub_0207FD6C(PartyMenu *partyMenu) {
@@ -435,7 +435,7 @@ BOOL sub_0207FD6C(PartyMenu *partyMenu) {
         break;
     case 4:
         Party_SwapSlots(partyMenu->args->party, swapMonsData->slots[0], swapMonsData->slots[1]);
-        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], TRUE);
+        Sprite_SetVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], TRUE);
         swapMonsData->active          = 0;
         partyMenu->secondCursorActive = 0;
         sub_0207A7F4(partyMenu, partyMenu->partyMonIndex);
@@ -664,7 +664,7 @@ int PartyMenu_HandleSetMonCapsule(PartyMenu *partyMenu) {
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     if (GetMonData(mon, MON_DATA_CAPSULE, NULL) == 0) {
         ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00118, partyMenu->formattedStrBuf);
-        Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_MON1_CAPSULE + partyMenu->partyMonIndex], TRUE);
+        Sprite_SetVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_MON1_CAPSULE + partyMenu->partyMonIndex], TRUE);
     } else {
         ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00119, partyMenu->formattedStrBuf);
         partyMenu->partyMonIndex = 7;
@@ -816,8 +816,8 @@ static int PartyMonContextMenuAction_TransferHP(PartyMenu *partyMenu) {
     s16 x, y;
     Sprite_GetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], &x, &y);
     Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], x, y);
-    Set2dSpriteAnimSeqNo(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], sub_0207B5EC(partyMenu->args->unk_25, partyMenu->softboiledDonorSlot) + 2);
-    Set2dSpriteVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], TRUE);
+    Sprite_SetAnimCtrlSeq(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], sub_0207B5EC(partyMenu->args->unk_25, partyMenu->softboiledDonorSlot) + 2);
+    Sprite_SetVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], TRUE);
     sub_0207A7F4(partyMenu, partyMenu->softboiledDonorSlot);
     PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00037, TRUE);
     partyMenu->levelUpStatsTmp[1] = 0;

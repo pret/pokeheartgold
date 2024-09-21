@@ -6,12 +6,12 @@
 #include "intro_movie_internal.h"
 #include "math_util.h"
 #include "obj_char_transfer.h"
+#include "obj_pltt_transfer.h"
 #include "sys_task_api.h"
 #include "system.h"
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
-#include "unk_02022588.h"
 #include "unk_02026E30.h"
 
 enum IntroScene4State {
@@ -100,7 +100,7 @@ static void IntroMovie_Scene4_VBlankCB(void *pVoid) {
 static void IntroMovie_Scene4_Init(IntroMovieOverlayData *data, IntroMovieScene4Data *sceneData) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     ObjCharTransfer_ClearBuffers();
-    sub_02022638();
+    ObjPlttTransfer_Reset();
     gSystem.screensFlipped = TRUE;
     GfGfx_SwapDisplay();
     sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
@@ -446,35 +446,35 @@ static void IntroMovie_Scene4_CreateSprites(IntroMovieOverlayData *data, IntroMo
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(0, data, 0, NNS_G2D_VRAM_TYPE_2DSUB, &template, &header);
     template.position.x    = FX32_ONE * 128;
     template.position.y    = FX32_ONE * (0x100 + 96);
-    sceneData->hand1Sprite = CreateSprite(&template);
-    Set2dSpriteAnimActiveFlag(sceneData->hand1Sprite, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->hand1Sprite, FALSE);
-    Set2dSpriteAnimSeqNo(sceneData->hand1Sprite, 0);
+    sceneData->hand1Sprite = Sprite_CreateAffine(&template);
+    Sprite_SetAnimActiveFlag(sceneData->hand1Sprite, FALSE);
+    Sprite_SetVisibleFlag(sceneData->hand1Sprite, FALSE);
+    Sprite_SetAnimCtrlSeq(sceneData->hand1Sprite, 0);
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(0, data, 0, NNS_G2D_VRAM_TYPE_2DMAIN, &template, &header);
     template.position.x    = FX32_ONE * 128;
     template.position.y    = FX32_ONE * 96;
-    sceneData->hand2Sprite = CreateSprite(&template);
-    Set2dSpriteAnimActiveFlag(sceneData->hand2Sprite, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->hand2Sprite, FALSE);
-    Set2dSpriteAnimSeqNo(sceneData->hand2Sprite, 1);
+    sceneData->hand2Sprite = Sprite_CreateAffine(&template);
+    Sprite_SetAnimActiveFlag(sceneData->hand2Sprite, FALSE);
+    Sprite_SetVisibleFlag(sceneData->hand2Sprite, FALSE);
+    Sprite_SetAnimCtrlSeq(sceneData->hand2Sprite, 1);
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(0, data, 0, NNS_G2D_VRAM_TYPE_2DMAIN, &template, &header);
     template.position.x       = FX32_ONE * 128;
     template.position.y       = FX32_ONE * 96;
-    sceneData->sparklesSprite = CreateSprite(&template);
-    Set2dSpriteAnimActiveFlag(sceneData->sparklesSprite, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->sparklesSprite, FALSE);
-    Set2dSpriteAnimSeqNo(sceneData->sparklesSprite, 2);
+    sceneData->sparklesSprite = Sprite_CreateAffine(&template);
+    Sprite_SetAnimActiveFlag(sceneData->sparklesSprite, FALSE);
+    Sprite_SetVisibleFlag(sceneData->sparklesSprite, FALSE);
+    Sprite_SetAnimCtrlSeq(sceneData->sparklesSprite, 2);
 
     for (u8 i = 0; i < 3; ++i) {
         IntroMovie_BuildSpriteResourcesHeaderAndTemplate(monSpriteResIds[i], data, 0, NNS_G2D_VRAM_TYPE_2DMAIN, &template, &header);
         template.position.x          = FX32_ONE * 128;
         template.position.y          = FX32_ONE * 96;
-        sceneData->starterSprites[i] = CreateSprite(&template);
-        Set2dSpriteAnimActiveFlag(sceneData->starterSprites[i], FALSE);
-        Set2dSpriteVisibleFlag(sceneData->starterSprites[i], FALSE);
-        Set2dSpriteAnimSeqNo(sceneData->starterSprites[i], 0);
+        sceneData->starterSprites[i] = Sprite_CreateAffine(&template);
+        Sprite_SetAnimActiveFlag(sceneData->starterSprites[i], FALSE);
+        Sprite_SetVisibleFlag(sceneData->starterSprites[i], FALSE);
+        Sprite_SetAnimCtrlSeq(sceneData->starterSprites[i], 0);
     }
 }
 

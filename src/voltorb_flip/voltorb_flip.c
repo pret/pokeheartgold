@@ -30,6 +30,7 @@
 #include "render_text.h"
 #include "render_window.h"
 #include "sound_02004A44.h"
+#include "sprite.h"
 #include "system.h"
 #include "text.h"
 #include "touchscreen.h"
@@ -38,7 +39,6 @@
 #include "unk_0200CF18.h"
 #include "unk_0200FA24.h"
 #include "unk_020183F0.h"
-#include "unk_02023694.h"
 #include "yes_no_prompt.h"
 
 typedef enum CoinDisplay {
@@ -1690,8 +1690,8 @@ static void ov122_021E7AEC(VoltorbFlipAppWork *work) {
     work->spriteRenderer   = SpriteRenderer_Create(work->heapId);
     work->spriteGfxHandler = SpriteRenderer_CreateGfxHandler(work->spriteRenderer);
 
-    sub_0200CF70(work->spriteRenderer, &temp2, &temp3, 32);
-    sub_0200CFF4(work->spriteRenderer, work->spriteGfxHandler, 0x80);
+    SpriteRenderer_CreateOamCharPlttManagers(work->spriteRenderer, &temp2, &temp3, 32);
+    SpriteRenderer_CreateSpriteList(work->spriteRenderer, work->spriteGfxHandler, 0x80);
     SpriteRenderer_Init2DGfxResManagersFromCountsArray(work->spriteRenderer, work->spriteGfxHandler, &temp1);
 
     G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(work->spriteRenderer), 0, 0x20c000);
@@ -1925,7 +1925,7 @@ static void ov122_021E8004(VoltorbFlipAppWork *work) {
     GF_ASSERT(work != NULL);
     GF_ASSERT(work->spriteGfxHandler != NULL);
 
-    sub_0200D020(work->spriteGfxHandler);
+    SpriteGfxHandler_RenderAndAnimateSprites(work->spriteGfxHandler);
     thunk_OamManager_ApplyAndResetBuffers();
     DoScheduledBgGpuUpdates(work->bgConfig);
 

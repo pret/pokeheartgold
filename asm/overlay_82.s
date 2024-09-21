@@ -255,7 +255,7 @@ _0223DF54:
 _0223DF68:
 	add r4, #0xa8
 	ldr r0, [r4]
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov82_0223DE20
@@ -1676,9 +1676,9 @@ _0223EA3C:
 	beq _0223EB12
 	mov r0, #1
 	mov r1, #0x10
-	bl sub_02009FE8
+	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
-	bl sub_0200A080
+	bl G2dRenderer_SetPlttTransferReservedRegion
 	bl sub_0203A880
 _0223EB12:
 	mov r0, #0x69
@@ -3861,17 +3861,17 @@ _0223FB80:
 	str r0, [sp, #0x38]
 _0223FB96:
 	add r0, sp, #0x2c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #1
 	add r4, r0, #0
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0xc
-	bl sub_02024868
+	bl Sprite_SetAnimSpeed
 	add r0, r4, #0
 	add r1, r6, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add r0, r4, #0
 	add sp, #0x80
 	pop {r4, r5, r6, pc}
@@ -3915,7 +3915,7 @@ _0223FBEA:
 	bl SpriteList_Delete
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov82_0223FBBC
@@ -3937,9 +3937,9 @@ ov82_0223FC14: ; 0x0223FC14
 	bl ObjCharTransfer_InitEx
 	mov r0, #4
 	mov r1, #0x69
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -4004,11 +4004,11 @@ ov82_0223FC9C: ; 0x0223FC9C
 
 	thumb_func_start ov82_0223FCB0
 ov82_0223FCB0: ; 0x0223FCB0
-	ldr r3, _0223FCB8 ; =Set2dSpriteVisibleFlag
+	ldr r3, _0223FCB8 ; =Sprite_SetVisibleFlag
 	ldr r0, [r0, #0x10]
 	bx r3
 	nop
-_0223FCB8: .word Set2dSpriteVisibleFlag
+_0223FCB8: .word Sprite_SetVisibleFlag
 	thumb_func_end ov82_0223FCB0
 
 	thumb_func_start ov82_0223FCBC
@@ -4023,7 +4023,7 @@ ov82_0223FCBC: ; 0x0223FCBC
 	beq _0223FCD4
 	ldrb r1, [r1]
 	ldr r0, [r5, #0x10]
-	bl TryChange2dSpriteAnimSeqNo
+	bl Sprite_TryChangeAnimSeq
 _0223FCD4:
 	ldr r0, [r5, #0x10]
 	bl Sprite_GetMatrixPtr
@@ -4053,10 +4053,10 @@ ov82_0223FCFC: ; 0x0223FCFC
 	mov r1, #1
 	ldr r0, [r5, #0x10]
 	lsl r1, r1, #0xc
-	bl sub_02024868
+	bl Sprite_SetAnimSpeed
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
-	bl TryChange2dSpriteAnimSeqNo
+	bl Sprite_TryChangeAnimSeq
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov82_0223FCFC
@@ -4069,7 +4069,7 @@ ov82_0223FD18: ; 0x0223FD18
 	bl Pokemon_GetIconPalette
 	add r1, r0, #0
 	ldr r0, [r4, #0x10]
-	bl sub_02024AA8
+	bl Sprite_SetPalOffsetRespectVramOffset
 	pop {r4, pc}
 	thumb_func_end ov82_0223FD18
 

@@ -306,14 +306,14 @@ _02227276:
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Get2dSpriteCurrentAnimSeqNo
+	bl Sprite_GetAnimationNumber
 	lsr r0, r0, #1
 	beq _022272DA
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -354,14 +354,14 @@ _022272DA:
 	mov r0, #0x69
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl Get2dSpriteCurrentAnimSeqNo
+	bl Sprite_GetAnimationNumber
 	lsr r0, r0, #1
 	beq _02227328
 	mov r0, #0x69
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	mov r0, #0x69
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -1636,12 +1636,12 @@ ov74_02227CC8: ; 0x02227CC8
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	mov r0, #1
 	mov r1, #0x69
 	str r0, [sp]
@@ -1656,12 +1656,12 @@ ov74_02227CC8: ; 0x02227CC8
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r0, #0x69
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	add sp, #8
 	pop {r4, pc}
 	thumb_func_end ov74_02227CC8
@@ -3027,13 +3027,13 @@ _022287F2:
 	ldr r0, [r0, r1]
 	ldr r1, [sp, #8]
 	lsl r1, r1, #1
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	mov r1, #0x1a
 	ldr r0, [sp]
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
 	mov r1, #0
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	mov r1, #0x69
 	ldr r0, [sp]
 	lsl r1, r1, #2
@@ -3041,13 +3041,13 @@ _022287F2:
 	ldr r1, [sp, #4]
 	lsl r1, r1, #1
 	add r1, r1, #1
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	mov r1, #0x69
 	ldr r0, [sp]
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
 	mov r1, #0
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov74_0222879C
@@ -4900,7 +4900,7 @@ _0222977A:
 	ldr r0, _02229A08 ; =0x00003170
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, _02229A00 ; =0x000034D8
 	ldr r0, [r4, r0]
 	bl sub_0200F450
@@ -4994,7 +4994,7 @@ _0222983C:
 	ldr r0, _02229A08 ; =0x00003170
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add r0, r4, #0
 	bl ov74_02229084
 	mov r0, #0xb
@@ -5240,7 +5240,7 @@ _02229A4A:
 	ldr r0, _02229B58 ; =0x00003170
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, _02229B5C ; =0x000034D8
 	ldr r0, [r4, r0]
 	bl sub_0200F450
@@ -5290,7 +5290,7 @@ _02229AB8:
 	ldr r0, _02229B58 ; =0x00003170
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, _02229B5C ; =0x000034D8
 	ldr r0, [r4, r0]
 	cmp r0, #0
@@ -5919,7 +5919,7 @@ _02229F4E:
 	ldr r0, _02229F5C ; =0x000005C4
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -8158,20 +8158,20 @@ _0222B0D6:
 	str r0, [sp, #0xc]
 _0222B114:
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	add r4, r0, #0
 	beq _0222B13C
 	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	add r0, r4, #0
 	mov r1, #0
 	bl Sprite_SetPriority
 	add r0, r4, #0
 	mov r1, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add r0, r4, #0
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 _0222B13C:
 	add r0, r4, #0
 	add sp, #0x30
@@ -8189,7 +8189,7 @@ ov74_0222B144: ; 0x0222B144
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	mov r1, #2
-	bl TryChange2dSpriteAnimSeqNo
+	bl Sprite_TryChangeAnimSeq
 	ldr r0, _0222B198 ; =0x00003014
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -8197,7 +8197,7 @@ ov74_0222B144: ; 0x0222B144
 	ldr r0, _0222B198 ; =0x00003014
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, _0222B198 ; =0x00003014
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -8205,7 +8205,7 @@ ov74_0222B144: ; 0x0222B144
 	ldr r0, _0222B198 ; =0x00003014
 	mov r1, #2
 	ldr r0, [r4, r0]
-	bl sub_0202487C
+	bl Sprite_SetAffineOverwriteType
 	ldr r0, _0222B198 ; =0x00003014
 	ldr r0, [r4, r0]
 	bl Sprite_GetMatrixPtr
@@ -8230,7 +8230,7 @@ ov74_0222B19C: ; 0x0222B19C
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	mov r1, #4
-	bl TryChange2dSpriteAnimSeqNo
+	bl Sprite_TryChangeAnimSeq
 	ldr r0, _0222B1F0 ; =0x00003060
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -8238,7 +8238,7 @@ ov74_0222B19C: ; 0x0222B19C
 	ldr r0, _0222B1F0 ; =0x00003060
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, _0222B1F0 ; =0x00003060
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -8246,7 +8246,7 @@ ov74_0222B19C: ; 0x0222B19C
 	ldr r0, _0222B1F0 ; =0x00003060
 	mov r1, #2
 	ldr r0, [r4, r0]
-	bl sub_0202487C
+	bl Sprite_SetAffineOverwriteType
 	ldr r0, _0222B1F0 ; =0x00003060
 	ldr r0, [r4, r0]
 	bl Sprite_GetMatrixPtr
@@ -8306,13 +8306,13 @@ _0222B232:
 	cmp r0, #0
 	beq _0222B242
 	add r1, r6, #0
-	bl Sprite_TickCellOrMulticellAnimation
+	bl Sprite_TickAnimCtrlFrame
 _0222B242:
 	ldr r0, [r5, r7]
 	cmp r0, #0
 	beq _0222B24E
 	add r1, r6, #0
-	bl Sprite_TickCellOrMulticellAnimation
+	bl Sprite_TickAnimCtrlFrame
 _0222B24E:
 	add r4, r4, #1
 	add r5, #0x4c
@@ -8325,7 +8325,7 @@ _0222B24E:
 	beq _0222B268
 	mov r1, #2
 	lsl r1, r1, #0xc
-	bl Sprite_TickCellOrMulticellAnimation
+	bl Sprite_TickAnimCtrlFrame
 _0222B268:
 	ldr r1, _0222B284 ; =0x00003060
 	ldr r0, [sp]
@@ -8334,7 +8334,7 @@ _0222B268:
 	beq _0222B27A
 	mov r1, #2
 	lsl r1, r1, #0xc
-	bl Sprite_TickCellOrMulticellAnimation
+	bl Sprite_TickAnimCtrlFrame
 _0222B27A:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -8361,7 +8361,7 @@ _0222B292:
 	add r0, #0x94
 	ldr r0, [r0]
 	mov r1, #1
-	bl TryChange2dSpriteAnimSeqNo
+	bl Sprite_TryChangeAnimSeq
 	add r0, r5, #0
 	add r0, #0x94
 	ldr r0, [r0]
@@ -8395,7 +8395,7 @@ _0222B2CE:
 	add r0, #0x94
 	ldr r0, [r0]
 	mov r1, #1
-	bl TryChange2dSpriteAnimSeqNo
+	bl Sprite_TryChangeAnimSeq
 	add r0, r5, #0
 	add r0, #0x94
 	ldr r0, [r0]
@@ -8431,7 +8431,7 @@ _0222B316:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #5
-	bl TryChange2dSpriteAnimSeqNo
+	bl Sprite_TryChangeAnimSeq
 	ldr r0, [r5, r7]
 	mov r1, #0
 	bl Sprite_SetAnimCtrlCurrentFrame
@@ -8749,7 +8749,7 @@ _0222B5A0:
 	add r0, #0x94
 	ldr r0, [r0]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, _0222B5F4 ; =ov74_0222BA48
 	ldr r1, [sp]
 	mov r2, #6
@@ -8924,12 +8924,12 @@ _0222B6AC:
 	add r0, #0x94
 	ldr r0, [r0]
 	mov r1, #1
-	bl TryChange2dSpriteAnimSeqNo
+	bl Sprite_TryChangeAnimSeq
 	add r0, r5, #0
 	add r0, #0x94
 	ldr r0, [r0]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, _0222B75C ; =ov74_0222BA48
 	add r1, r7, #0
 	mov r2, #6
@@ -9151,7 +9151,7 @@ _0222B8C0:
 	ldr r0, _0222B944 ; =0x00001854
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, _0222B948 ; =ov74_0222BA48
 	add r1, r6, #0
 	mov r2, #6
@@ -9303,7 +9303,7 @@ ov74_0222BA48: ; 0x0222BA48
 	pop {r4, r5, r6, r7, pc}
 _0222BA66:
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, [r5, #0xc]
 	bl Sprite_GetMatrixPtr
 	add r3, r0, #0
@@ -10107,7 +10107,7 @@ _0222C0B4:
 	ldr r0, _0222C2D8 ; =0x00003014
 	mov r1, #4
 	ldr r0, [r4, r0]
-	bl TryChange2dSpriteAnimSeqNo
+	bl Sprite_TryChangeAnimSeq
 	b _0222C0EA
 _0222C0CC:
 	cmp r5, #0x1e
@@ -10115,7 +10115,7 @@ _0222C0CC:
 	ldr r0, _0222C2D8 ; =0x00003014
 	mov r1, #3
 	ldr r0, [r4, r0]
-	bl TryChange2dSpriteAnimSeqNo
+	bl Sprite_TryChangeAnimSeq
 	b _0222C0EA
 _0222C0DC:
 	cmp r5, #7
@@ -10123,7 +10123,7 @@ _0222C0DC:
 	ldr r0, _0222C2D8 ; =0x00003014
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 _0222C0EA:
 	cmp r6, #0
 	bne _0222C0F2
@@ -10253,13 +10253,13 @@ _0222C1CE:
 	str r1, [r0, #4]
 	ldr r0, _0222C2E4 ; =0x00003060
 	ldr r0, [r4, r0]
-	bl Get2dSpriteVisibleFlag
+	bl Sprite_GetVisibleFlag
 	cmp r0, #0
 	bne _0222C2D0
 	ldr r0, _0222C2E4 ; =0x00003060
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	b _0222C2D0
 _0222C202:
 	mov r0, #7
@@ -10306,7 +10306,7 @@ _0222C250:
 	ldr r0, _0222C2E4 ; =0x00003060
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	b _0222C27E
 _0222C260:
 	cmp r5, #0x1e
@@ -10314,7 +10314,7 @@ _0222C260:
 	ldr r0, _0222C2E4 ; =0x00003060
 	mov r1, #2
 	ldr r0, [r4, r0]
-	bl TryChange2dSpriteAnimSeqNo
+	bl Sprite_TryChangeAnimSeq
 	b _0222C27E
 _0222C270:
 	cmp r5, #7
@@ -10322,7 +10322,7 @@ _0222C270:
 	ldr r0, _0222C2E4 ; =0x00003060
 	mov r1, #3
 	ldr r0, [r4, r0]
-	bl TryChange2dSpriteAnimSeqNo
+	bl Sprite_TryChangeAnimSeq
 _0222C27E:
 	cmp r6, #0
 	beq _0222C2D0
@@ -13634,7 +13634,7 @@ _0222DD40:
 	cmp r0, #0
 	beq _0222DDD4
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	b _0222DDD4
 _0222DD6A:
 	ldr r0, [sp, #0xc]
@@ -14114,7 +14114,7 @@ _0222E118:
 _0222E11A:
 	ldr r0, _0222E1DC ; =0x00002DC4
 	ldr r0, [r5, r0]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, _0222E1D8 ; =0x00003D4C
 	ldr r0, [r5, r0]
 	cmp r0, #0
@@ -14126,7 +14126,7 @@ _0222E12E:
 _0222E130:
 	ldr r0, _0222E1E0 ; =0x00002DC8
 	ldr r0, [r5, r0]
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 _0222E138:
 	ldr r0, _0222E1D4 ; =gSystem
 	mov r4, #0
@@ -14870,7 +14870,7 @@ _0222E79C:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0222E7A8
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _0222E7A8:
 	bl ov74_022358BC
 	ldr r0, _0222E7E8 ; =0x00003D48
@@ -16535,7 +16535,7 @@ _0222F4E4:
 	cmp r0, #0
 	beq _0222F56E
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	b _0222F56E
 _0222F504:
 	ldr r0, [sp, #0xc]
@@ -17289,7 +17289,7 @@ _0222FB2C:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0222FB38
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _0222FB38:
 	bl ov74_022358BC
 	mov r0, #0x3d
@@ -21709,9 +21709,9 @@ ov74_02231BC0: ; 0x02231BC0
 	bl ObjCharTransfer_Init
 	mov r0, #0x14
 	mov r1, #0x4c
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -22330,7 +22330,7 @@ _02232016:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, _02232140 ; =0x0000E880
 	ldr r1, _02232144 ; =0x0000E884
 	ldr r0, [r6, r0]
@@ -22351,14 +22351,14 @@ _02232016:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	b _0223210A
 _022320CC:
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	b _0223210A
 _022320DA:
 	mov r0, #0
@@ -22376,12 +22376,12 @@ _022320DA:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 _0223210A:
 	ldr r0, [sp, #0xc]
 	add r7, r7, #1
@@ -22459,7 +22459,7 @@ _02232184:
 	cmp r0, #0
 	bne _022321B2
 	add r0, sp, #0x14
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x6a
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -22468,13 +22468,13 @@ _022321B2:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	mov r0, #0x6a
 	lsl r0, r0, #2
 	add r1, r4, #0
 	ldr r0, [r5, r0]
 	add r1, #0xa
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	mov r0, #0x6a
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -22484,7 +22484,7 @@ _022321B2:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r0, #0x6a
 	lsl r0, r0, #2
 	add r1, r4, #0
@@ -22507,7 +22507,7 @@ _022321B2:
 	cmp r0, #0
 	bne _0223221C
 	add r0, sp, #0x14
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	mov r1, #0x6b
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -22516,12 +22516,12 @@ _0223221C:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0x28
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -22531,7 +22531,7 @@ _0223221C:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -22584,19 +22584,19 @@ ov74_02232284: ; 0x02232284
 	mov r0, #0xa
 	str r0, [sp, #0x24]
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	add r4, r0, #0
 	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	add r0, r4, #0
 	add r1, r7, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add r0, r4, #0
 	mov r1, #1
 	bl Sprite_SetPriority
 	ldr r1, [sp, #0x48]
 	add r0, r4, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add r0, r4, #0
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
@@ -22858,7 +22858,7 @@ ov74_022324A0: ; 0x022324A0
 	ldr r0, [r1, r0]
 	cmp r0, #0
 	beq _022324CC
-	bl Get2dSpriteVisibleFlag
+	bl Sprite_GetVisibleFlag
 	cmp r0, #0
 	bne _022324CC
 	add sp, #0x14
@@ -22989,7 +22989,7 @@ _0223256A:
 	bl Sprite_SetMatrix
 	ldr r0, [r5, r7]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r1, #0xf3
 	add r3, r4, r7
 	lsl r1, r1, #2
@@ -23022,7 +23022,7 @@ _022325F0:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r2, #0
 	mov r1, #0xf3
 	mvn r2, r2
@@ -23070,14 +23070,14 @@ _02232636:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	b _02232668
 _0223265C:
 	mov r0, #0xf2
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 _02232668:
 	add r4, r4, #1
 	add r5, #0xc
@@ -23759,10 +23759,10 @@ _02232BE2:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	ldr r0, [r4, r7]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add r5, r5, #1
 	add r4, #0xc
 	cmp r5, #0x1e
@@ -23774,7 +23774,7 @@ _02232BE2:
 _02232C06:
 	ldr r0, [r4, r7]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add r5, r5, #1
 	add r4, #0xc
 	cmp r5, #6
@@ -23783,17 +23783,17 @@ _02232C06:
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r0, #0xee
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r0, #0xea
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r2, #0x61
 	lsl r2, r2, #2
 	add r0, sp, #0x1c
@@ -23814,18 +23814,18 @@ _02232C54:
 	lsl r0, r0, #0xc
 	str r0, [sp, #0x28]
 	add r0, sp, #0x1c
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	ldr r1, _02232D94 ; =0x00000414
 	str r0, [r4, r1]
 	add r0, r1, #0
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	ldr r0, _02232D94 ; =0x00000414
 	add r1, r7, #0
 	ldr r0, [r4, r0]
 	add r1, #0xa
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	ldr r0, _02232D94 ; =0x00000414
 	mov r1, #1
 	ldr r0, [r4, r0]
@@ -23833,7 +23833,7 @@ _02232C54:
 	ldr r0, _02232D94 ; =0x00000414
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r1, #0x3d
 	mov r2, #0xf3
 	lsl r1, r1, #4
@@ -23998,17 +23998,17 @@ _02232DCE:
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r0, #0xee
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r0, #0xea
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	mov r0, #0xf3
 	mov r5, #0
 	lsl r0, r0, #2
@@ -24132,7 +24132,7 @@ _02232EEE:
 	str r0, [r6, #0x28]
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	ldr r0, _02232F54 ; =0x0000E88C
 	ldr r0, [r6, r0]
 	bl YesNoPrompt_Destroy
@@ -25296,7 +25296,7 @@ _02233896:
 	ldr r0, [r4, #0x28]
 	cmp r0, #0
 	beq _022338A0
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _022338A0:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -29372,9 +29372,9 @@ ov74_0223563C: ; 0x0223563C
 	ldr r1, _02235678 ; =ov74_0223D454
 	mov r0, #0x1e
 	ldr r1, [r1, #8]
-	bl sub_02022588
+	bl ObjPlttTransfer_Init
 	bl ObjCharTransfer_ClearBuffers
-	bl sub_02022638
+	bl ObjPlttTransfer_Reset
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -29701,7 +29701,7 @@ ov74_022358C8: ; 0x022358C8
 	bne _02235918
 	sub r0, r0, #4
 	ldr r0, [r4, r0]
-	bl Get2dSpriteVisibleFlag
+	bl Sprite_GetVisibleFlag
 	cmp r0, #0
 	bne _022358FC
 	cmp r5, #0
@@ -29710,7 +29710,7 @@ ov74_022358C8: ; 0x022358C8
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 _022358FC:
 	mov r0, #0x82
 	lsl r0, r0, #2
@@ -29732,7 +29732,7 @@ _0223591C:
 	ldr r0, [r4, #0x34]
 	cmp r0, #0
 	beq _02235926
-	bl sub_0202457C
+	bl SpriteList_RenderAndAnimateSprites
 _02235926:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -29791,21 +29791,21 @@ _02235974:
 	str r0, [sp, #0xc]
 _0223598A:
 	add r0, sp, #0
-	bl CreateSprite
+	bl Sprite_CreateAffine
 	add r4, r0, #0
 _02235992:
 	add r0, r4, #0
 	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
+	bl Sprite_SetAnimActiveFlag
 	add r0, r4, #0
 	mov r1, #0
 	bl Sprite_SetPriority
 	ldr r1, [sp, #0x40]
 	add r0, r4, #0
-	bl Set2dSpriteAnimSeqNo
+	bl Sprite_SetAnimCtrlSeq
 	add r0, r4, #0
 	mov r1, #1
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add r0, r4, #0
 	add sp, #0x30
 	pop {r3, r4, r5, pc}
@@ -29885,7 +29885,7 @@ _02235A24:
 	str r1, [r0]
 	bl OamManager_Free
 	bl ObjCharTransfer_Destroy
-	bl sub_02022608
+	bl ObjPlttTransfer_Destroy
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -30453,7 +30453,7 @@ _02235EAE:
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
 	mov r1, #0
-	bl Set2dSpriteVisibleFlag
+	bl Sprite_SetVisibleFlag
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

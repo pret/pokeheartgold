@@ -218,18 +218,18 @@ _0200B2DC: .word sub_0200B358
 
 	thumb_func_start sub_0200B2E0
 sub_0200B2E0: ; 0x0200B2E0
-	ldr r3, _0200B2E4 ; =sub_02024BBC
+	ldr r3, _0200B2E4 ; =ClearMainOAM
 	bx r3
 	.balign 4, 0
-_0200B2E4: .word sub_02024BBC
+_0200B2E4: .word ClearMainOAM
 	thumb_func_end sub_0200B2E0
 
 	thumb_func_start sub_0200B2E8
 sub_0200B2E8: ; 0x0200B2E8
-	ldr r3, _0200B2EC ; =sub_02024BF4
+	ldr r3, _0200B2EC ; =ClearSubOAM
 	bx r3
 	.balign 4, 0
-_0200B2EC: .word sub_02024BF4
+_0200B2EC: .word ClearSubOAM
 	thumb_func_end sub_0200B2E8
 
 	thumb_func_start sub_0200B2F0
