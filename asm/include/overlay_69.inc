@@ -6,7 +6,7 @@
 .public Std_CreateYesNoMenu
 .public Handle2dMenuInput_DeleteOnFinish
 .public TextFlags_SetCanABSpeedUpPrint
-.public sub_02002B50
+.public TextFlags_SetAutoScrollParam
 .public sub_02002B8C
 .public FontID_Alloc
 .public FontID_Release

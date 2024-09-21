@@ -3,10 +3,10 @@
 .public sub_020027F0
 .public TextFlags_SetCanABSpeedUpPrint
 .public sub_02002B8C
-.public sub_02002BA8
+.public TextFlags_SetAlternateDownArrow
 .public sub_02002C04
-.public sub_02002C20
-.public sub_02002C40
+.public TextFlags_SetFastForwardTouchButtonHitbox
+.public TextFlags_UnsetFastForwardTouchButtonHitbox
 .public FontID_Alloc
 .public FontID_Release
 .public FontID_String_GetWidth

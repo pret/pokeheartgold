@@ -5,7 +5,7 @@
 .public DestroyListMenu
 .public ListMenuGetScrollAndRow
 .public TextFlags_SetCanABSpeedUpPrint
-.public sub_02002B50
+.public TextFlags_SetAutoScrollParam
 .public sub_02002B8C
 .public FontID_String_GetWidth
 .public LoadFontPal0

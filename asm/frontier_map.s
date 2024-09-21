@@ -177,7 +177,7 @@ _022386D4:
 	lsr r1, r1, #0x10
 	bl sub_02055198
 	mov r0, #1
-	bl sub_02002B50
+	bl TextFlags_SetAutoScrollParam
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
@@ -315,7 +315,7 @@ FrontierMap_Free: ; 0x0223885C
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
-	bl sub_02002B50
+	bl TextFlags_SetAutoScrollParam
 	mov r0, #0
 	bl sub_02002B8C
 	bl sub_0203A914

@@ -4999,7 +4999,7 @@ ov80_0222E344: ; 0x0222E344
 	add r4, r2, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	ldr r0, [sp, #0x20]
-	bl sub_02002B50
+	bl TextFlags_SetAutoScrollParam
 	cmp r4, #0
 	beq _0222E362
 	cmp r4, #0xff

@@ -17595,7 +17595,7 @@ _021F0026:
 	mov r0, #1
 	bl sub_02002B8C
 	ldr r0, _021F0038 ; =ov101_021F8400
-	bl sub_02002C20
+	bl TextFlags_SetFastForwardTouchButtonHitbox
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	nop
@@ -17621,7 +17621,7 @@ ov101_021F003C: ; 0x021F003C
 	bl CopyWindowToVram
 	mov r0, #0
 	bl sub_02002B8C
-	bl sub_02002C40
+	bl TextFlags_UnsetFastForwardTouchButtonHitbox
 	add r0, r4, #0
 	mov r1, #0
 	bl ov101_021F0464
@@ -18344,7 +18344,7 @@ _021F0628:
 	add r6, #0x44
 	strb r0, [r6]
 	mov r0, #1
-	bl sub_02002BA8
+	bl TextFlags_SetAlternateDownArrow
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	pop {r4, r5, r6, pc}
@@ -18373,7 +18373,7 @@ _021F0660:
 	ldr r0, [r6, #0x14]
 	bl DestroyMsgData
 	mov r0, #0
-	bl sub_02002BA8
+	bl TextFlags_SetAlternateDownArrow
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	pop {r4, r5, r6, pc}

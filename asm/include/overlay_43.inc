@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public TextFlags_SetCanABSpeedUpPrint
-.public sub_02002B50
+.public TextFlags_SetAutoScrollParam
 .public sub_02002B8C
 .public sub_02002C04
 .public FontID_Alloc

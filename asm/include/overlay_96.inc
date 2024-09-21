@@ -2,7 +2,7 @@
 #pragma once
 .public CopyU16StringArrayN
 .public TextFlags_SetCanABSpeedUpPrint
-.public sub_02002B50
+.public TextFlags_SetAutoScrollParam
 .public sub_02002B8C
 .public FontID_Alloc
 .public FontID_Release

@@ -764,7 +764,7 @@ ov43_0222A48C: ; 0x0222A48C
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
-	bl sub_02002B50
+	bl TextFlags_SetAutoScrollParam
 	mov r0, #0
 	bl sub_02002B8C
 	pop {r4, r5, r6, pc}

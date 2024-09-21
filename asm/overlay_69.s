@@ -106,7 +106,7 @@ _021E5960:
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
-	bl sub_02002B50
+	bl TextFlags_SetAutoScrollParam
 	mov r0, #0
 	bl sub_02002B8C
 	add r0, r5, #0

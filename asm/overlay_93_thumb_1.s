@@ -563,7 +563,7 @@ ov93_0225C768: ; 0x0225C768
 	mov r1, #1
 	bl GfGfx_EngineBTogglePlanes
 	mov r0, #1
-	bl sub_02002B50
+	bl TextFlags_SetAutoScrollParam
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
@@ -1075,7 +1075,7 @@ _0225CD72:
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
-	bl sub_02002B50
+	bl TextFlags_SetAutoScrollParam
 	mov r0, #0
 	bl sub_02002B8C
 	bl sub_0203A914

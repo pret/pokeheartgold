@@ -276,7 +276,7 @@ _02258A4A:
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
-	bl sub_02002B50
+	bl TextFlags_SetAutoScrollParam
 	mov r0, #0
 	bl sub_02002B8C
 	ldr r0, _02258AF8 ; =ov89_02258FF4
@@ -871,7 +871,7 @@ ov89_02258F00: ; 0x02258F00
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
-	bl sub_02002B50
+	bl TextFlags_SetAutoScrollParam
 	mov r0, #0
 	bl sub_02002B8C
 	bl sub_0203A914
