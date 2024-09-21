@@ -2503,7 +2503,7 @@ ov39_02228140: ; 0x02228140
 	mov r0, #0
 	bl TextFlags_SetAutoScrollParam
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, _02228304 ; =ov39_02228418
 	add r1, r5, #0
 	bl Main_SetVBlankIntrCB
@@ -2661,7 +2661,7 @@ _02228394:
 	mov r0, #0
 	bl TextFlags_SetAutoScrollParam
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	bl sub_0203A914
 	add r0, r5, #0
 	bl OverlayManager_FreeData

@@ -96,7 +96,7 @@ Bag_Init: ; 0x021F9380
 	add r0, r4, #0
 	bl ov15_021FE020
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	add r0, r4, #0
 	bl ov15_021FE4C8
 	add r0, r4, #0

@@ -16950,7 +16950,7 @@ _021EFB18:
 	add r0, #0x58
 	bl CopyWindowToVram
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	add r0, r4, #0
 	bl ov101_021F0B84
 	mov r0, #1
@@ -17593,7 +17593,7 @@ _021F001A:
 	bl ov101_021F1FF4
 _021F0026:
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, _021F0038 ; =ov101_021F8400
 	bl TextFlags_SetFastForwardTouchButtonHitbox
 	add r0, r4, #0
@@ -17620,7 +17620,7 @@ ov101_021F003C: ; 0x021F003C
 	add r0, #0x58
 	bl CopyWindowToVram
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	bl TextFlags_UnsetFastForwardTouchButtonHitbox
 	add r0, r4, #0
 	mov r1, #0
@@ -18273,7 +18273,7 @@ _021F0586:
 	cmp r6, #4
 	blt _021F0586
 	ldr r0, _021F05C8 ; =0x000003E1
-	bl sub_020027F0
+	bl TextPrinter_SetDownArrowBaseTile
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -22037,7 +22037,7 @@ ov101_021F2220: ; 0x021F2220
 	mov r0, #0
 	pop {r4, pc}
 _021F223A:
-	bl sub_02002C04
+	bl TextFlags_GetIsTouchSpeedingUpPrint
 	add r4, #0xaa
 	strb r0, [r4]
 	mov r0, #1

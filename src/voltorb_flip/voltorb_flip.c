@@ -1998,7 +1998,7 @@ static void ov122_021E8094(OVY_MANAGER *man) {
     sub_0200FBDC(0);
     sub_0200FBDC(1);
     TextFlags_SetCanABSpeedUpPrint(TRUE);
-    sub_02002B8C(TRUE);
+    TextFlags_SetCanTouchSpeedUpPrint(TRUE);
 
     Main_SetVBlankIntrCB((GFIntrCB)ov122_021E8004, work);
     GameStats_AddScore(Save_GameStats_Get(args->saveData), SCORE_EVENT_6);

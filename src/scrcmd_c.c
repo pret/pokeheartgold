@@ -850,7 +850,7 @@ BOOL ScrCmd_TrainerTips(ScriptContext *ctx) {
 
     TextFlags_SetCanABSpeedUpPrint(TRUE);
     TextFlags_SetAutoScrollParam(FALSE);
-    sub_02002B8C(FALSE);
+    TextFlags_SetCanTouchSpeedUpPrint(FALSE);
 
     Window *window  = ov01_021F3D80(fieldSystem->unk68);
     u8 text_speed   = Options_GetTextFrameDelay(Save_PlayerData_GetOptionsAddr(fieldSystem->saveData));

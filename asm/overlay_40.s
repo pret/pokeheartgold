@@ -88,7 +88,7 @@ ov40_0222B6E0: ; 0x0222B6E0
 	add r0, r4, #0
 	bl ov40_0222C360
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, _0222B928 ; =ov40_0222BD04
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
@@ -347,7 +347,7 @@ _0222B9FE:
 	ldr r0, [r5, #0x2c]
 	bl TouchHitboxController_Destroy
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r7, _0222BA88 ; =0x0000087C
 	mov r6, #0
 	add r4, r5, #0

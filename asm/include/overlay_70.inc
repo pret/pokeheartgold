@@ -2,7 +2,7 @@
 #pragma once
 .public Handle2dMenuInput_DeleteOnFinish
 .public CopyU16StringArrayN
-.public sub_02002B8C
+.public TextFlags_SetCanTouchSpeedUpPrint
 .public FontID_Alloc
 .public FontID_Release
 .public FontID_String_GetWidth

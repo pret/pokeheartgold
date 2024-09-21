@@ -768,7 +768,7 @@ _021E5E46:
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, _021E5F00 ; =ov111_021E5DF0
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB

@@ -130,7 +130,7 @@ _0223DE5C:
 	add r0, r4, #0
 	bl ov81_02240D64
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldrb r0, [r4, #9]
 	bl ov80_02237254
 	cmp r0, #1
@@ -660,7 +660,7 @@ _0223E2A8:
 	strh r2, [r0, #2]
 _0223E2CE:
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, _0223E30C ; =0x0000046C
 	ldr r0, [r4, r0]
 	bl ov81_02241BC8

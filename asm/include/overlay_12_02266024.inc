@@ -1,9 +1,9 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_02002BC4
-.public sub_02002BD4
-.public sub_02002BE4
-.public sub_02002BF4
+.public TextFlags_GetHasSpedUpInput
+.public TextFlags_ResetHasSpedUpInput
+.public TextFlags_GetHasContinuedInput
+.public TextFlags_ResetHasContinuedInput
 .public FontID_String_GetWidth
 .public PaletteData_LoadPalette
 .public PaletteData_LoadNarc

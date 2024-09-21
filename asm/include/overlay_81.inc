@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public Delete2dMenu
-.public sub_02002B8C
+.public TextFlags_SetCanTouchSpeedUpPrint
 .public FontID_Alloc
 .public FontID_Release
 .public FontID_String_GetWidth

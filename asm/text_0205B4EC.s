@@ -122,7 +122,7 @@ sub_0205B5B4: ; 0x0205B5B4
 	mov r0, #0
 	bl TextFlags_SetAutoScrollParam
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	add r0, r6, #0
 	bl Options_GetTextFrameDelay
 	mov r3, #0
@@ -151,7 +151,7 @@ sub_0205B5EC: ; 0x0205B5EC
 	ldr r0, [sp, #0x24]
 	bl TextFlags_SetAutoScrollParam
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r3, #0
 	str r3, [sp]
 	str r4, [sp, #4]

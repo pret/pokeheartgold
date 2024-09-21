@@ -1,10 +1,10 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_020027F0
+.public TextPrinter_SetDownArrowBaseTile
 .public TextFlags_SetCanABSpeedUpPrint
-.public sub_02002B8C
+.public TextFlags_SetCanTouchSpeedUpPrint
 .public TextFlags_SetAlternateDownArrow
-.public sub_02002C04
+.public TextFlags_GetIsTouchSpeedingUpPrint
 .public TextFlags_SetFastForwardTouchButtonHitbox
 .public TextFlags_UnsetFastForwardTouchButtonHitbox
 .public FontID_Alloc

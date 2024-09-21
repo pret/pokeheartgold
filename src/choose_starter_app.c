@@ -300,7 +300,7 @@ BOOL ChooseStarter_Init(OVY_MANAGER *ovy, int *state_p) {
     createMonSprites(work);
     TextFlags_SetCanABSpeedUpPrint(FALSE);
     TextFlags_SetAutoScrollParam(TRUE);
-    sub_02002B8C(FALSE);
+    TextFlags_SetCanTouchSpeedUpPrint(FALSE);
     return TRUE;
 }
 
@@ -541,7 +541,7 @@ BOOL ChooseStarter_Exit(OVY_MANAGER *ovy, int *state) {
 
     TextFlags_SetCanABSpeedUpPrint(FALSE);
     TextFlags_SetAutoScrollParam(FALSE);
-    sub_02002B8C(FALSE);
+    TextFlags_SetCanTouchSpeedUpPrint(FALSE);
     args->cursorPos = work->curSelection;
     Main_SetVBlankIntrCB(NULL, NULL);
     DeleteCameraTranslationWrapper(work->cameraTranslation);

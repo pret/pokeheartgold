@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_02002C60
-.public sub_02002C90
+.public TextFlags_BeginAutoScroll
+.public TextFlags_EndAutoScroll
 .public FontID_Alloc
 .public FontID_Release
 .public FontID_String_GetWidth

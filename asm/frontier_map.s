@@ -181,7 +181,7 @@ _022386D4:
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, _02238854 ; =FrontierMap_VBlank
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
@@ -317,7 +317,7 @@ FrontierMap_Free: ; 0x0223885C
 	mov r0, #0
 	bl TextFlags_SetAutoScrollParam
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	bl sub_0203A914
 	mov r1, #5
 	mov r2, #2

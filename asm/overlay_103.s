@@ -617,7 +617,7 @@ ov103_021ECE18: ; 0x021ECE18
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov103_021ECE18
@@ -627,7 +627,7 @@ ov103_021ECE54: ; 0x021ECE54
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r0, #0x23
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]

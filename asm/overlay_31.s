@@ -90,7 +90,7 @@ ov31_0225D520: ; 0x0225D520
 	mov r1, #1
 	bl GfGfx_EngineBTogglePlanes
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, _0225D608 ; =_0225EE40
 	bl TextFlags_SetFastForwardTouchButtonHitbox
 	add r0, r5, #0
@@ -239,7 +239,7 @@ ov31_0225D710: ; 0x0225D710
 	bl SysTask_GetData
 	add r4, r0, #0
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	add r0, r4, #0
 	bl ov31_0225DBA0
 	add r0, r4, #0

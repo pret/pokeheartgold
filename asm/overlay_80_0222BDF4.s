@@ -533,7 +533,7 @@ ov80_0222C17C: ; 0x0222C17C
 	cmp r0, #0
 	bne _0222C196
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r0, #1
 	pop {r3, pc}
 _0222C196:
@@ -5006,11 +5006,11 @@ ov80_0222E344: ; 0x0222E344
 	bne _0222E36A
 _0222E362:
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	b _0222E370
 _0222E36A:
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 _0222E370:
 	mov r3, #0
 	str r3, [sp]
@@ -7274,7 +7274,7 @@ ov80_0222F4D0: ; 0x0222F4D0
 	cmp r0, #0
 	bne _0222F4EA
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r0, #1
 	pop {r3, pc}
 _0222F4EA:
