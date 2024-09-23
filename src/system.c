@@ -107,7 +107,7 @@ void sub_0201A1B4(void) {
     while (heap_size_pre & 3) {
         heap_size_pre++;
     }
-    InitHeapSystem(sDefaultHeapSpec, NELEMS(sDefaultHeapSpec), 161, heap_size_pre);
+    InitHeapSystem(sDefaultHeapSpec, NELEMS(sDefaultHeapSpec), HEAP_ID_MAX, heap_size_pre);
 }
 
 void InitSystemForTheGame(void) {

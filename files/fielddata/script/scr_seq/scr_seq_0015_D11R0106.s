@@ -94,7 +94,7 @@ scr_seq_D11R0106_000:
 	setflag FLAG_UNK_265
 	setflag FLAG_HIDE_ROUTE_19_WORKMEN_CLOSED
 	clearflag FLAG_HIDE_ROUTE_19_WORKMEN_OPEN
-	add_special_game_stat SCORE_EVENT_22
+	add_special_game_stat SCORE_EVENT_BADGE_GET
 	setflag FLAG_UNK_13F
 	setflag FLAG_UNK_140
 	setflag FLAG_UNK_13C

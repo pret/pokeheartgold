@@ -943,7 +943,7 @@ static BOOL OakSpeech_PrintDialogMsg(OakSpeechData *data, int msgNum, int waitBu
         DrawFrameAndWindow2(&data->dialogWindow, FALSE, 0x3E2, 4);
 
         TextFlags_SetCanABSpeedUpPrint(TRUE);
-        TextFlags_SetAutoScrollParam(FALSE);
+        TextFlags_SetAutoScrollParam(AUTO_SCROLL_OFF);
 
         String *temp = String_New(0x400, data->heapId);
         data->string = String_New(0x400, data->heapId);

@@ -299,7 +299,7 @@ BOOL ChooseStarter_Init(OVY_MANAGER *ovy, int *state_p) {
     initBallModelPositions(work);
     createMonSprites(work);
     TextFlags_SetCanABSpeedUpPrint(FALSE);
-    TextFlags_SetAutoScrollParam(TRUE);
+    TextFlags_SetAutoScrollParam(AUTO_SCROLL_ENABLE);
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
     return TRUE;
 }
@@ -540,7 +540,7 @@ BOOL ChooseStarter_Exit(OVY_MANAGER *ovy, int *state) {
     struct ChooseStarterArgs *args    = OverlayManager_GetArgs(ovy);
 
     TextFlags_SetCanABSpeedUpPrint(FALSE);
-    TextFlags_SetAutoScrollParam(FALSE);
+    TextFlags_SetAutoScrollParam(AUTO_SCROLL_OFF);
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
     args->cursorPos = work->curSelection;
     Main_SetVBlankIntrCB(NULL, NULL);

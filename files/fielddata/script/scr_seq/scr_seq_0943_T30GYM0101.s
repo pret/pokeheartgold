@@ -101,7 +101,7 @@ scr_seq_T30GYM0101_000:
 	settrainerflag TRAINER_ACE_TRAINER_M_MIKE
 	settrainerflag TRAINER_ACE_TRAINER_F_FRAN
 	settrainerflag TRAINER_ACE_TRAINER_F_LOLA
-	add_special_game_stat SCORE_EVENT_22
+	add_special_game_stat SCORE_EVENT_BADGE_GET
 	setflag FLAG_UNK_0D1
 	setflag FLAG_HIDE_BLACKTHORN_DEN_GUARD_INFRONT
 	clearflag FLAG_HIDE_BLACKTHRON_DEN_GUARD_ASIDE

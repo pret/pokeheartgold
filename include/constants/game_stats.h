@@ -63,7 +63,7 @@
 #define SCORE_EVENT_19                      19
 #define SCORE_EVENT_20                      20
 #define SCORE_EVENT_REGISTER_SPECIES_CAUGHT 21
-#define SCORE_EVENT_22                      22
+#define SCORE_EVENT_BADGE_GET               22
 #define SCORE_EVENT_23                      23
 #define SCORE_EVENT_24                      24
 #define SCORE_EVENT_25                      25

@@ -7,7 +7,7 @@
 typedef struct OptionsApp_Args {
     u32 unk0;
     Options *options;
-    u32 *unk8;
+    BOOL *unk8;
 } OptionsApp_Args;
 
 BOOL OptionsMenu_Init(OVY_MANAGER *manager, int *state);

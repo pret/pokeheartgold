@@ -28,7 +28,7 @@ _0047:
 	setvar VAR_SPECIAL_x8005, 2
 	setvar VAR_SPECIAL_x8006, 2
 	callstd std_phone_call
-	setvar VAR_UNK_4134, 5
+	setvar VAR_MIDGAME_BADGES, 5
 	end
 
 scr_seq_T28_000:
