@@ -849,7 +849,7 @@ _02237E36:
 	mov r2, #1
 	bl sub_02004EC4
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r2, _02237F98 ; =0x04000304
 	ldrh r1, [r2]
 	lsr r0, r2, #0xb
@@ -1005,7 +1005,7 @@ NintendoWfc_Exit: ; 0x02238070
 	pop {r3, r4, r5, pc}
 _02238086:
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r0, #4
 	bl FontID_Release
 	ldr r0, [r4, #0x24]

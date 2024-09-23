@@ -348,7 +348,7 @@ BOOL OptionsMenu_Init(OVY_MANAGER *manager, int *state) {
     data->frameNumText        = String_New(40, data->heapId);
 
     TextFlags_SetCanABSpeedUpPrint(FALSE);
-    sub_02002B8C(FALSE);
+    TextFlags_SetCanTouchSpeedUpPrint(FALSE);
 
     sub_0200FBF4(PM_LCD_TOP, 0);
     sub_0200FBF4(PM_LCD_BOTTOM, 0);
@@ -382,7 +382,7 @@ BOOL OptionsMenu_Exit(OVY_MANAGER *manager, int *state) {
     String_Delete(data->frameNumText);
 
     TextFlags_SetCanABSpeedUpPrint(TRUE);
-    sub_02002B8C(TRUE);
+    TextFlags_SetCanTouchSpeedUpPrint(TRUE);
 
     OverlayManager_FreeData(manager);
     DestroyHeap(data->heapId);

@@ -4514,7 +4514,7 @@ ov27_0225C250: ; 0x0225C250
 	mov r1, #1
 	bl GfGfx_EngineBTogglePlanes
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	add r0, r6, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -4561,7 +4561,7 @@ _0225C3C4:
 	ldr r0, [r7, r0]
 	bl SpriteList_Delete
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	add r0, r7, #0
 	bl ov27_0225C930
 	mov r0, #4

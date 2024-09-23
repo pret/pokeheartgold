@@ -8,8 +8,8 @@
 .public Handle2dMenuInput_DeleteOnFinish
 .public Clear2dMenuWindowAndDelete
 .public TextFlags_SetCanABSpeedUpPrint
-.public sub_02002B50
-.public sub_02002B8C
+.public TextFlags_SetAutoScrollParam
+.public TextFlags_SetCanTouchSpeedUpPrint
 .public FontID_Alloc
 .public FontID_Release
 .public FontID_String_GetWidth

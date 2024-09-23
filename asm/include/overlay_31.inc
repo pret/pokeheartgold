@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_02002B8C
-.public sub_02002C20
+.public TextFlags_SetCanTouchSpeedUpPrint
+.public TextFlags_SetFastForwardTouchButtonHitbox
 .public FontID_String_GetWidth
 .public LoadFontPal0
 .public LoadFontPal1

@@ -276,9 +276,9 @@ _02258A4A:
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
-	bl sub_02002B50
+	bl TextFlags_SetAutoScrollParam
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, _02258AF8 ; =ov89_02258FF4
 	ldr r2, _02258AFC ; =0x0000EA60
 	add r1, r5, #0
@@ -871,9 +871,9 @@ ov89_02258F00: ; 0x02258F00
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
-	bl sub_02002B50
+	bl TextFlags_SetAutoScrollParam
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	bl sub_0203A914
 	add r0, r5, #0
 	bl OverlayManager_FreeData

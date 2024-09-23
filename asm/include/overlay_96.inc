@@ -2,8 +2,8 @@
 #pragma once
 .public CopyU16StringArrayN
 .public TextFlags_SetCanABSpeedUpPrint
-.public sub_02002B50
-.public sub_02002B8C
+.public TextFlags_SetAutoScrollParam
+.public TextFlags_SetCanTouchSpeedUpPrint
 .public FontID_Alloc
 .public FontID_Release
 .public LoadFontPal0

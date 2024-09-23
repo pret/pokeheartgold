@@ -2240,7 +2240,7 @@ _02246F76:
 	cmp r0, #1
 	bne _02246F9E
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, _02247138 ; =0x00000568
 	mov r1, #0x1b
 	add r0, r4, r0
@@ -2293,7 +2293,7 @@ _02246FD8:
 	mov r3, #0x30
 	bl ov41_0224AC08
 	add r0, r6, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]

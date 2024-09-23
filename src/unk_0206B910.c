@@ -222,7 +222,7 @@ BOOL ScrCmd_236(ScriptContext *ctx) {
 
 BOOL ScrCmd_237(ScriptContext *ctx) {
     void **unused = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
-    sub_02002C60(TRUE);
+    TextFlags_BeginAutoScroll(TRUE);
     return FALSE;
 }
 

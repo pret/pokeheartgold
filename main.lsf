@@ -14,7 +14,7 @@ Static main
     Object src/list_menu.o
     Object src/list_menu_2d.o
     Object src/string_util.o
-    Object asm/render_text.o
+    Object src/render_text.o
     Object src/font.o
     Object src/palette.o
     Object src/sound.o

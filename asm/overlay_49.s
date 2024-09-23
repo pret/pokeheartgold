@@ -2628,9 +2628,9 @@ _02259B02:
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
-	bl sub_02002B50
+	bl TextFlags_SetAutoScrollParam
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, [r5]
 	bl Save_PlayerData_GetProfileAddr
 	mov r1, #0xfd

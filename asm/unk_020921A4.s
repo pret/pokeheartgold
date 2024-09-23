@@ -35,7 +35,7 @@ sub_020921A4: ; 0x020921A4
 	ldr r0, [r0, #8]
 	str r0, [r4, #0x34]
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_020921A4
@@ -123,7 +123,7 @@ sub_02092288: ; 0x02092288
 	bl OverlayManager_GetData
 	ldr r4, [r0]
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	add r0, r4, #0

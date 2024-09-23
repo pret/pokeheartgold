@@ -116,17 +116,17 @@ _021E5986:
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
-	bl sub_02002B50
+	bl TextFlags_SetAutoScrollParam
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	b _021E5A10
 _021E59FE:
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #1
-	bl sub_02002B50
+	bl TextFlags_SetAutoScrollParam
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 _021E5A10:
 	add r0, r4, #0
 	mov r1, #0
@@ -352,9 +352,9 @@ _021E5BBC:
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
-	bl sub_02002B50
+	bl TextFlags_SetAutoScrollParam
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, _021E5C24 ; =0x00000614
 	ldr r0, [r4, r0]
 	bl ov96_021E9320

@@ -195,7 +195,7 @@ _021E5C2C:
 	mov r0, #4
 	bl sub_02021148
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r1, #0
@@ -505,7 +505,7 @@ TrainerCardMainApp_Exit: ; 0x021E5EC8
 	bl ov51_021E6644
 	bl sub_02021238
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	add r0, r4, #0

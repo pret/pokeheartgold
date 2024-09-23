@@ -253,8 +253,8 @@ _022662C0:
 _022662CA:
 	add r0, r4, #0
 	bl FreeToHeap
-	bl sub_02002BD4
-	bl sub_02002BF4
+	bl TextFlags_ResetHasSpedUpInput
+	bl TextFlags_ResetHasContinuedInput
 	ldr r0, _02266314 ; =ov12_02269954
 	ldr r2, _02266318 ; =0x0000D6D8
 	add r1, r6, #0
@@ -7045,12 +7045,12 @@ _02269950: .word 0x00000694
 ov12_02269954: ; 0x02269954
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
-	bl sub_02002BC4
+	bl TextFlags_GetHasSpedUpInput
 	add r6, r0, #0
-	bl sub_02002BE4
+	bl TextFlags_GetHasContinuedInput
 	add r7, r0, #0
-	bl sub_02002BD4
-	bl sub_02002BF4
+	bl TextFlags_ResetHasSpedUpInput
+	bl TextFlags_ResetHasContinuedInput
 	ldr r0, [r5]
 	bl BattleSystem_GetPaletteData
 	add r4, r0, #0

@@ -71,7 +71,7 @@ _021E80D6:
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0x14]
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #4
@@ -271,7 +271,7 @@ _021E82FC:
 	bl ov52_021E85A0
 	bl sub_02021238
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	ldr r0, [r6, #0x14]

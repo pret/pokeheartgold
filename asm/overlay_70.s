@@ -1682,7 +1682,7 @@ _02238446:
 _0223856E:
 	bl sub_02034D8C
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r0, #0
 	str r0, [r5]
 	add sp, #0x10
@@ -1888,7 +1888,7 @@ ov70_022386F4: ; 0x022386F4
 	bl ov70_0223887C
 	bl sub_02034DE0
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, [r4, #4]
 	bl FreeToHeap
 	ldr r0, [r4]

@@ -93,7 +93,7 @@ u8 AddTextPrinterParameterized(Window *window, FontID fontId, String *string, u3
     template.fgColor             = sFonts[fontId].fgColor;
     template.bgColor             = sFonts[fontId].bgColor;
     template.shadowColor         = sFonts[fontId].shadowColor;
-    template.unk18               = 0;
+    template.glyphTable          = 0;
     template.unk1A               = 0;
     template.unk1B               = 0xFF;
 
@@ -116,7 +116,7 @@ u8 AddTextPrinterParameterizedWithColor(Window *window, FontID fontId, String *s
     template.fgColor             = (color >> 16) & 0xFF;
     template.shadowColor         = (color >> 8) & 0xFF;
     template.bgColor             = (color >> 0) & 0xFF;
-    template.unk18               = 0;
+    template.glyphTable          = 0;
     template.unk1A               = 0;
     template.unk1B               = 0xFF;
 
@@ -139,7 +139,7 @@ u8 AddTextPrinterParameterizedWithColorAndSpacing(Window *window, int fontId, St
     template.fgColor             = (color >> 16) & 0xFF;
     template.shadowColor         = (color >> 8) & 0xFF;
     template.bgColor             = (color >> 0) & 0xFF;
-    template.unk18               = 0;
+    template.glyphTable          = 0;
     template.unk1A               = 0;
     template.unk1B               = 0xFF;
 

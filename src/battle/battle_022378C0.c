@@ -228,7 +228,7 @@ void ov12_02237BB8(BattleSystem *bsys) {
     NARC_Delete(unkNarcA);
     NARC_Delete(unkNarcB);
 
-    sub_020027F0(1);
+    TextPrinter_SetDownArrowBaseTile(1);
     ov12_0223A620(bsys);
 
     G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(bsys->unk90), 0, FX32_CONST(272));

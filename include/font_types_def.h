@@ -7,11 +7,11 @@
 typedef u8 FontID;
 struct FontData;
 
-struct GlyphInfo {
+typedef struct GlyphInfo {
     u8 data[0x80];
     u8 width;
     u8 height;
-};
+} GlyphInfo;
 
 struct FontInfo {
     u8 maxLetterWidth;
@@ -39,7 +39,7 @@ typedef struct TextPrinterTemplate {
     u16 letterSpacing, lineSpacing;
     u8 unk14;
     u8 fgColor, bgColor, shadowColor;
-    u16 unk18;
+    u16 glyphTable;
     u8 unk1A;
     u8 unk1B;
 } TextPrinterTemplate;

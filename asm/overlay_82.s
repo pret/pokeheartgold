@@ -86,7 +86,7 @@ _0223DE0E:
 	mov r0, #0
 	str r0, [r6]
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

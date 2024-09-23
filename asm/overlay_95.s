@@ -2681,7 +2681,7 @@ ov95_021E6D70: ; 0x021E6D70
 	add r0, r4, #4
 	bl ov95_021E619C
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, [r4, #4]
 	ldr r1, [r4, #0x54]
 	ldr r2, [r4, #0x50]
@@ -2805,7 +2805,7 @@ ov95_021E6F0C: ; 0x021E6F0C
 	ldr r0, [r4, #8]
 	bl PaletteData_Free
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, [r4, #4]
 	mov r1, #1
 	bl FreeBgTilemapBuffer
