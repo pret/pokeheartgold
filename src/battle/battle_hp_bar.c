@@ -5,6 +5,10 @@
 void ov12_02264824(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, NARC *narc, PaletteData *plttData, int barType);
 void ov12_022648EC(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, NARC *narc, PaletteData *plttData, int barType);
 UnkImageStruct *ov12_02264968(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, int barType);
+void ov12_02264B28(BattleHpBar *hpBar);
+void ov12_02264B4C(BattleHpBar *hpBar);
+void ov12_02264B60(BattleHpBar *hpBar);
+void ov12_02264B94(BattleHpBar *hpBar);
 const UnkTemplate_0200D748 *ov12_02265BB8(u8 barType);
 const UnkTemplate_0200D748 *ov12_02265C1C(u8 barType);
 void ov12_02264DCC(BattleHpBar *hpBar, int a1);
@@ -152,5 +156,43 @@ void ov12_0226498C(BattleHpBar *hpBar, u32 num, u32 flag) {
 
     if (flag & 0x2800) {
         ov12_022656CC(hpBar, flag);
+    }
+}
+
+void ov12_02264B28(BattleHpBar *hpBar) {
+    if (hpBar->sysTask != NULL) {
+        SysTask_Destroy(hpBar->sysTask);
+        hpBar->sysTask = NULL;
+    }
+    if (hpBar->unk4 != NULL) {
+        UnkImageStruct_Delete(hpBar->unk4);
+        hpBar->unk4 = NULL;
+    }
+}
+
+void ov12_02264B4C(BattleHpBar *hpBar) {
+    if (hpBar->unk8 != NULL) {
+        UnkImageStruct_Delete(hpBar->unk8);
+        hpBar->unk8 = NULL;
+    }
+}
+
+void ov12_02264B60(BattleHpBar *hpBar) {
+    const UnkTemplate_0200D748 *tmplate = ov12_02265BB8(hpBar->type);
+    ov12_0223A8E4(hpBar->bsys);
+    SpriteGfxHandler *gfxHandler = ov12_0223A8EC(hpBar->bsys);
+    SpriteGfxHandler_UnloadCharObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CHAR]);
+    SpriteGfxHandler_UnloadCellObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CELL]);
+    SpriteGfxHandler_UnloadAnimObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_ANIM]);
+}
+
+void ov12_02264B94(BattleHpBar *hpBar) {
+    const UnkTemplate_0200D748 *tmplate = ov12_02265C1C(hpBar->type);
+    if (tmplate != NULL) {
+        ov12_0223A8E4(hpBar->bsys);
+        SpriteGfxHandler *gfxHandler = ov12_0223A8EC(hpBar->bsys);
+        SpriteGfxHandler_UnloadCharObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CHAR]);
+        SpriteGfxHandler_UnloadCellObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CELL]);
+        SpriteGfxHandler_UnloadAnimObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_ANIM]);
     }
 }

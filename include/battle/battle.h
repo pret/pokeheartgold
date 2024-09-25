@@ -440,8 +440,8 @@ typedef struct BattleSystem BattleSystem;
 
 typedef struct BattleHpBar {
     u8 script;
-    void *unk4;
-    void *unk8;
+    UnkImageStruct *unk4;
+    UnkImageStruct *unk8;
     BattleSystem *bsys;
     void *unk10;
     s32 exp;
@@ -474,6 +474,7 @@ typedef struct BattleHpBar {
     u8 filler_4B[4];
     u8 unk_4F_0 : 3;
     u8 unk_4F_3 : 1;
+    SysTask *sysTask;
 } BattleHpBar;
 
 typedef struct OpponentData {
@@ -483,7 +484,6 @@ typedef struct OpponentData {
     Pokepic *pokepic;
     u32 *unk24;
     BattleHpBar hpBar;
-    u32 unk78;
     u32 *unk7C;
     void *unk80;
     u8 unk84[0x110];

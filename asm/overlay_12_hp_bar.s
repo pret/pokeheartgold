@@ -7,93 +7,10 @@
 	.extern ov12_02264824
 	.extern ov12_022648EC
 	.extern ov12_02264968
-
-	thumb_func_start ov12_02264B28
-ov12_02264B28: ; 0x02264B28
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, [r4, #0x50]
-	cmp r0, #0
-	beq _02264B3A
-	bl SysTask_Destroy
-	mov r0, #0
-	str r0, [r4, #0x50]
-_02264B3A:
-	ldr r0, [r4, #4]
-	cmp r0, #0
-	beq _02264B48
-	bl UnkImageStruct_Delete
-	mov r0, #0
-	str r0, [r4, #4]
-_02264B48:
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end ov12_02264B28
-
-	thumb_func_start ov12_02264B4C
-ov12_02264B4C: ; 0x02264B4C
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, [r4, #8]
-	cmp r0, #0
-	beq _02264B5E
-	bl UnkImageStruct_Delete
-	mov r0, #0
-	str r0, [r4, #8]
-_02264B5E:
-	pop {r4, pc}
-	thumb_func_end ov12_02264B4C
-
-	thumb_func_start ov12_02264B60
-ov12_02264B60: ; 0x02264B60
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r0, #0x25
-	ldrb r0, [r0]
-	bl ov12_02265BB8
-	add r4, r0, #0
-	ldr r0, [r5, #0xc]
-	bl ov12_0223A8E4
-	ldr r0, [r5, #0xc]
-	bl ov12_0223A8EC
-	ldr r1, [r4, #0x14]
-	add r5, r0, #0
-	bl SpriteGfxHandler_UnloadCharObjById
-	ldr r1, [r4, #0x1c]
-	add r0, r5, #0
-	bl SpriteGfxHandler_UnloadCellObjById
-	ldr r1, [r4, #0x20]
-	add r0, r5, #0
-	bl SpriteGfxHandler_UnloadAnimObjById
-	pop {r3, r4, r5, pc}
-	thumb_func_end ov12_02264B60
-
-	thumb_func_start ov12_02264B94
-ov12_02264B94: ; 0x02264B94
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r0, #0x25
-	ldrb r0, [r0]
-	bl ov12_02265C1C
-	add r4, r0, #0
-	beq _02264BC8
-	ldr r0, [r5, #0xc]
-	bl ov12_0223A8E4
-	ldr r0, [r5, #0xc]
-	bl ov12_0223A8EC
-	ldr r1, [r4, #0x14]
-	add r5, r0, #0
-	bl SpriteGfxHandler_UnloadCharObjById
-	ldr r1, [r4, #0x1c]
-	add r0, r5, #0
-	bl SpriteGfxHandler_UnloadCellObjById
-	ldr r1, [r4, #0x20]
-	add r0, r5, #0
-	bl SpriteGfxHandler_UnloadAnimObjById
-_02264BC8:
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ov12_02264B94
+	.extern ov12_02264B28
+	.extern ov12_02264B4C
+	.extern ov12_02264B60
+	.extern ov12_02264B94
 
 	thumb_func_start BattleHpBar_LoadResources
 BattleHpBar_LoadResources: ; 0x02264BCC
