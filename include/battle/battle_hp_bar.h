@@ -8,7 +8,10 @@ void BattleHpBar_LoadResources(BattleHpBar *hpBar);
 void BattleHpBar_FreeResources(BattleHpBar *hpBar);
 void ov12_02264C84(BattleHpBar *hpBar);
 int ov12_02264E00(BattleHpBar *hpBar);
-void ov12_02264EE0(BattleHpBar *hpBar, int a1);
+int ov12_02264E68(BattleHpBar *hpBar);
+void ov12_02264E84(BattleHpBar *hpBar);
+void ov12_02264EB4(BattleHpBar *hpBar);
+void ov12_02264EE0(BattleHpBar *hpBar, int prio);
 void BattleHpBar_SetEnabled(BattleHpBar *hpBar, BOOL a1);
 u8 ov12_02265B64(u8 a0, u32 battleType);
 

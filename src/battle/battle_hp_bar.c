@@ -11,6 +11,7 @@ void ov12_02264B60(BattleHpBar *hpBar);
 void ov12_02264B94(BattleHpBar *hpBar);
 void ov12_02264DCC(BattleHpBar *hpBar, int hp);
 void ov12_02264E34(BattleHpBar *hpBar, int a1);
+void ov12_02264F00(BattleHpBar *hpBar, int a1);
 void ov12_0226516C(BattleHpBar *hpBar);
 void ov12_022652D0(BattleHpBar *hpBar);
 void ov12_02265354(BattleHpBar *hpBar);
@@ -22,6 +23,8 @@ int ov12_022657E4(BattleHpBar *hpBar, int a1);
 void *ov12_02265B58(int a0);
 const UnkTemplate_0200D748 *ov12_02265BB8(u8 barType);
 const UnkTemplate_0200D748 *ov12_02265C1C(u8 barType);
+void ov12_02265D78(BattleHpBar *hpBar);
+void ov12_02265DA0(BattleHpBar *hpBar);
 void ov12_022655F0(BattleHpBar *hpBar, u32 flag);
 void ov12_022656CC(BattleHpBar *hpBar, u32 flag);
 
@@ -299,5 +302,56 @@ void ov12_02264E34(BattleHpBar *hpBar, int exp) {
     }
     if (hpBar->exp > hpBar->maxExp) {
         hpBar->exp = hpBar->maxExp;
+    }
+}
+
+int ov12_02264E68(BattleHpBar *hpBar) {
+    int ret = ov12_022657E4(hpBar, 1);
+    if (ret == -1) {
+        hpBar->exp -= hpBar->gainedExp;
+    }
+    return ret;
+}
+
+void ov12_02264E84(BattleHpBar *hpBar) {
+    if (hpBar->unk8 != NULL) {
+        Sprite_SetAnimActiveFlag(hpBar->unk8->sprite, TRUE);
+        ov12_02264F00(hpBar, 1);
+    }
+    if (!(BattleSystem_GetBattleType(hpBar->bsys) & (BATTLE_TYPE_PAL_PARK | BATTLE_TYPE_SAFARI))) {
+        ov12_02265D78(hpBar);
+    }
+}
+
+void ov12_02264EB4(BattleHpBar *hpBar) {
+    if (hpBar->unk8 != NULL) {
+        Sprite_SetAnimActiveFlag(hpBar->unk8->sprite, FALSE);
+        Sprite_SetAnimCtrlCurrentFrame(hpBar->unk8->sprite, 0);
+        ov12_02264F00(hpBar, 0);
+    }
+    ov12_02265DA0(hpBar);
+}
+
+void ov12_02264EE0(BattleHpBar *hpBar, int prio) {
+    if (hpBar->unk4 != NULL) {
+        UnkImageStruct_SetSpritePriority(hpBar->unk4, prio);
+        if (hpBar->unk8 != NULL) {
+            UnkImageStruct_SetSpritePriority(hpBar->unk8, prio);
+        }
+    }
+}
+
+void ov12_02264F00(BattleHpBar *hpBar, int a1) {
+    if (hpBar->unk8 != NULL) {
+        if (!(BattleSystem_GetBattleType(hpBar->bsys) & (BATTLE_TYPE_PAL_PARK | BATTLE_TYPE_SAFARI)) || a1 != TRUE) {
+            UnkImageStruct_SetSpriteVisibleFlag(hpBar->unk8, a1);
+        }
+    }
+}
+
+void BattleHpBar_SetEnabled(BattleHpBar *hpBar, BOOL a1) {
+    if (hpBar->unk4 != NULL) {
+        UnkImageStruct_SetSpriteVisibleFlag(hpBar->unk4, a1);
+        ov12_02264F00(hpBar, a1);
     }
 }
