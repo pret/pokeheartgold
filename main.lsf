@@ -36,7 +36,7 @@ Static main
     Object src/msgdata.o
     Object src/message_format.o
     Object src/message_printer.o
-    Object asm/unk_0200CE7C.o
+    Object src/unk_0200CE7C.o
     Object src/unk_0200CF18.o
     Object src/sys_task_api.o
     Object asm/render_window.o
@@ -581,6 +581,7 @@ Overlay OVY_12
     Object asm/overlay_12_battle_controller_opponent.o
     Object src/battle/battle_02261FD4.o
     Object asm/overlay_12_battle_controller.o
+    Object src/battle/battle_hp_bar.o
     Object asm/overlay_12_hp_bar.o
     Object asm/overlay_12_02265E28.o
     Object src/battle/battle_input.o

@@ -8,5 +8,6 @@ void BattleHpBar_FreeResources(BattleHpBar *hpBar);
 void BattleHpBar_SetEnabled(BattleHpBar *hpBar, BOOL a1);
 u8 ov12_02265B64(u8 a0, u32 battleType);
 void ov12_02264EE0(BattleHpBar *hpBar, int a1);
+void ov12_0226498C(BattleHpBar *hpBar);
 
 #endif
