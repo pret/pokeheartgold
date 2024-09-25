@@ -9,21 +9,22 @@ void ov12_02264B28(BattleHpBar *hpBar);
 void ov12_02264B4C(BattleHpBar *hpBar);
 void ov12_02264B60(BattleHpBar *hpBar);
 void ov12_02264B94(BattleHpBar *hpBar);
-const UnkTemplate_0200D748 *ov12_02265BB8(u8 barType);
-const UnkTemplate_0200D748 *ov12_02265C1C(u8 barType);
 void ov12_02264DCC(BattleHpBar *hpBar, int a1);
-void ov12_022657E4(BattleHpBar *hpBar, int a1);
-void ov12_02265474(BattleHpBar *hpBar, u32 num);
-void ov12_02265500(BattleHpBar *hpBar);
+void ov12_02264E34(BattleHpBar *hpBar, int a1);
+void ov12_0226516C(BattleHpBar *hpBar);
 void ov12_022652D0(BattleHpBar *hpBar);
 void ov12_02265354(BattleHpBar *hpBar);
-void ov12_0226516C(BattleHpBar *hpBar);
-void ov12_02264E34(BattleHpBar *hpBar, int a1);
-void ov12_022657E4(BattleHpBar *hpBar, int a1);
+void ov12_02265474(BattleHpBar *hpBar, u32 num);
+void ov12_02265500(BattleHpBar *hpBar);
 void ov12_02265560(BattleHpBar *hpBar);
 void ov12_022655B0(BattleHpBar *hpBar, int a1);
+void ov12_022657E4(BattleHpBar *hpBar, int a1);
+const UnkTemplate_0200D748 *ov12_02265BB8(u8 barType);
+const UnkTemplate_0200D748 *ov12_02265C1C(u8 barType);
 void ov12_022655F0(BattleHpBar *hpBar, u32 flag);
 void ov12_022656CC(BattleHpBar *hpBar, u32 flag);
+
+extern const s8 ov12_0226D368[];
 
 void ov12_02264824(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, NARC *narc, PaletteData *plttData, int barType) {
     const UnkTemplate_0200D748 *pRes = ov12_02265BB8(barType);
@@ -179,8 +180,8 @@ void ov12_02264B4C(BattleHpBar *hpBar) {
 
 void ov12_02264B60(BattleHpBar *hpBar) {
     const UnkTemplate_0200D748 *tmplate = ov12_02265BB8(hpBar->type);
-    ov12_0223A8E4(hpBar->bsys);
-    SpriteGfxHandler *gfxHandler = ov12_0223A8EC(hpBar->bsys);
+    SpriteRenderer *renderer            = ov12_0223A8E4(hpBar->bsys);
+    SpriteGfxHandler *gfxHandler        = ov12_0223A8EC(hpBar->bsys);
     SpriteGfxHandler_UnloadCharObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CHAR]);
     SpriteGfxHandler_UnloadCellObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CELL]);
     SpriteGfxHandler_UnloadAnimObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_ANIM]);
@@ -189,10 +190,33 @@ void ov12_02264B60(BattleHpBar *hpBar) {
 void ov12_02264B94(BattleHpBar *hpBar) {
     const UnkTemplate_0200D748 *tmplate = ov12_02265C1C(hpBar->type);
     if (tmplate != NULL) {
-        ov12_0223A8E4(hpBar->bsys);
+        SpriteRenderer *renderer     = ov12_0223A8E4(hpBar->bsys);
         SpriteGfxHandler *gfxHandler = ov12_0223A8EC(hpBar->bsys);
         SpriteGfxHandler_UnloadCharObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CHAR]);
         SpriteGfxHandler_UnloadCellObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CELL]);
         SpriteGfxHandler_UnloadAnimObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_ANIM]);
     }
+}
+
+void BattleHpBar_LoadResources(BattleHpBar *hpBar) {
+    NARC *narc                          = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
+    SpriteRenderer *renderer            = ov12_0223A8E4(hpBar->bsys);
+    SpriteGfxHandler *gfxHandler        = ov12_0223A8EC(hpBar->bsys);
+    PaletteData *plttData               = BattleSystem_GetPaletteData(hpBar->bsys);
+    const UnkTemplate_0200D748 *tmplate = ov12_02265BB8(hpBar->type);
+
+    ov12_02264824(renderer, gfxHandler, narc, plttData, hpBar->type);
+    hpBar->unk4 = ov12_02264968(renderer, gfxHandler, hpBar->type);
+    ov12_022648EC(renderer, gfxHandler, narc, plttData, hpBar->type);
+    if (hpBar->unk8 != NULL) {
+        Sprite_SetPositionXY(hpBar->unk8->sprite, tmplate->x - ov12_0226D368[hpBar->type], tmplate->y);
+    }
+    NARC_Delete(narc);
+}
+
+void BattleHpBar_FreeResources(BattleHpBar *hpBar) {
+    ov12_02264B28(hpBar);
+    ov12_02264B60(hpBar);
+    ov12_02264B4C(hpBar);
+    ov12_02264B94(hpBar);
 }

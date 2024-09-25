@@ -4,101 +4,6 @@
 
 	.text
 
-	.extern ov12_02264824
-	.extern ov12_022648EC
-	.extern ov12_02264968
-	.extern ov12_02264B28
-	.extern ov12_02264B4C
-	.extern ov12_02264B60
-	.extern ov12_02264B94
-
-	thumb_func_start BattleHpBar_LoadResources
-BattleHpBar_LoadResources: ; 0x02264BCC
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0xc
-	add r5, r0, #0
-	mov r0, #8
-	mov r1, #5
-	bl NARC_New
-	add r6, r0, #0
-	ldr r0, [r5, #0xc]
-	bl ov12_0223A8E4
-	add r7, r0, #0
-	ldr r0, [r5, #0xc]
-	bl ov12_0223A8EC
-	str r0, [sp, #4]
-	ldr r0, [r5, #0xc]
-	bl BattleSystem_GetPaletteData
-	str r0, [sp, #8]
-	add r0, r5, #0
-	add r0, #0x25
-	ldrb r0, [r0]
-	bl ov12_02265BB8
-	add r4, r0, #0
-	add r0, r5, #0
-	add r0, #0x25
-	ldrb r0, [r0]
-	ldr r1, [sp, #4]
-	ldr r3, [sp, #8]
-	str r0, [sp]
-	add r0, r7, #0
-	add r2, r6, #0
-	bl ov12_02264824
-	add r2, r5, #0
-	add r2, #0x25
-	ldrb r2, [r2]
-	ldr r1, [sp, #4]
-	add r0, r7, #0
-	bl ov12_02264968
-	str r0, [r5, #4]
-	add r0, r5, #0
-	add r0, #0x25
-	ldrb r0, [r0]
-	ldr r1, [sp, #4]
-	ldr r3, [sp, #8]
-	str r0, [sp]
-	add r0, r7, #0
-	add r2, r6, #0
-	bl ov12_022648EC
-	ldr r0, [r5, #8]
-	cmp r0, #0
-	beq _02264C5A
-	add r5, #0x25
-	ldrb r3, [r5]
-	ldr r2, _02264C64 ; =ov12_0226D368
-	mov r1, #0
-	ldrsh r1, [r4, r1]
-	ldrsb r2, [r2, r3]
-	ldr r0, [r0]
-	sub r1, r1, r2
-	mov r2, #2
-	lsl r1, r1, #0x10
-	ldrsh r2, [r4, r2]
-	asr r1, r1, #0x10
-	bl Sprite_SetPositionXY
-_02264C5A:
-	add r0, r6, #0
-	bl NARC_Delete
-	add sp, #0xc
-	pop {r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02264C64: .word ov12_0226D368
-	thumb_func_end BattleHpBar_LoadResources
-
-	thumb_func_start BattleHpBar_FreeResources
-BattleHpBar_FreeResources: ; 0x02264C68
-	push {r4, lr}
-	add r4, r0, #0
-	bl ov12_02264B28
-	add r0, r4, #0
-	bl ov12_02264B60
-	add r0, r4, #0
-	bl ov12_02264B4C
-	add r0, r4, #0
-	bl ov12_02264B94
-	pop {r4, pc}
-	thumb_func_end BattleHpBar_FreeResources
-
 	thumb_func_start ov12_02264C84
 ov12_02264C84: ; 0x02264C84
 	push {r4, r5, r6, lr}
@@ -2407,6 +2312,7 @@ _02265DEC:
 
     .rodata
 
+	.global ov12_0226D368
 ov12_0226D368: ; 0x0226D368
 	.byte 0x48, 0x00, 0x48, 0x00, 0x48, 0x00, 0x00, 0x00
 	.byte 0x40, 0x02, 0xC0, 0x00, 0x40, 0x03, 0xC0, 0x00, 0x00, 0x0A, 0xE0, 0x00, 0x00, 0x0B, 0xE0, 0x00
