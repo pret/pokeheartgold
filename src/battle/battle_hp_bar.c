@@ -1,10 +1,25 @@
 #include "battle/battle_hp_bar.h"
 
+#include "battle/battle_system.h"
+
 void ov12_02264824(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, NARC *narc, PaletteData *plttData, int barType);
 void ov12_022648EC(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, NARC *narc, PaletteData *plttData, int barType);
 UnkImageStruct *ov12_02264968(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, int barType);
 const UnkTemplate_0200D748 *ov12_02265BB8(u8 barType);
 const UnkTemplate_0200D748 *ov12_02265C1C(u8 barType);
+void ov12_02264DCC(BattleHpBar *hpBar, int a1);
+void ov12_022657E4(BattleHpBar *hpBar, int a1);
+void ov12_02265474(BattleHpBar *hpBar, u32 num);
+void ov12_02265500(BattleHpBar *hpBar);
+void ov12_022652D0(BattleHpBar *hpBar);
+void ov12_02265354(BattleHpBar *hpBar);
+void ov12_0226516C(BattleHpBar *hpBar);
+void ov12_02264E34(BattleHpBar *hpBar, int a1);
+void ov12_022657E4(BattleHpBar *hpBar, int a1);
+void ov12_02265560(BattleHpBar *hpBar);
+void ov12_022655B0(BattleHpBar *hpBar, int a1);
+void ov12_022655F0(BattleHpBar *hpBar, u32 flag);
+void ov12_022656CC(BattleHpBar *hpBar, u32 flag);
 
 void ov12_02264824(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, NARC *narc, PaletteData *plttData, int barType) {
     const UnkTemplate_0200D748 *pRes = ov12_02265BB8(barType);
@@ -36,4 +51,106 @@ UnkImageStruct *ov12_02264968(SpriteRenderer *renderer, SpriteGfxHandler *gfxHan
     UnkImageStruct *ret = SpriteRenderer_LoadResourcesAndCreateSprite(renderer, gfxHandler, pRes);
     TickSpriteAnimation1Frame(ret->sprite);
     return ret;
+}
+
+void ov12_0226498C(BattleHpBar *hpBar, u32 num, u32 flag) {
+    GF_ASSERT(hpBar->unk4 != NULL);
+    if (hpBar->type == 6) {
+        flag &= 0xC00;
+    } else if (hpBar->type == 7) {
+        flag &= 0x3000;
+    } else {
+        flag &= ~0x3C00;
+    }
+    switch (hpBar->type) {
+    case 1:
+    case 3:
+    case 5:
+        flag &= ~0x26;
+        break;
+    case 2:
+    case 4:
+        flag &= ~0x220;
+        if (hpBar->unk_4F_3 == 0) {
+            flag &= ~6;
+        } else {
+            flag &= ~1;
+        }
+        break;
+    case 0:
+        flag &= ~0x200;
+        break;
+    case 6:
+    case 7:
+        break;
+    }
+    if (BattleSystem_GetBattleType(hpBar->bsys) & BATTLE_TYPE_TRAINER) {
+        flag &= ~0x200;
+    }
+
+    if (flag & 1) {
+        ov12_02264DCC(hpBar, 0);
+        ov12_022657E4(hpBar, 0);
+    }
+
+    if (flag & 2) {
+        ov12_02265474(hpBar, num);
+    }
+
+    if (flag & 4) {
+        ov12_02265500(hpBar);
+    }
+
+    if (flag & 0x80 || flag & 0x40) {
+        ov12_022652D0(hpBar);
+    }
+
+    if (flag & 8) {
+        ov12_02265354(hpBar);
+    }
+
+    if (flag & 0x10) {
+        ov12_0226516C(hpBar);
+    }
+
+    if (flag & 0x20) {
+        ov12_02264E34(hpBar, 0);
+        ov12_022657E4(hpBar, 1);
+    }
+
+    if (flag & 0x200) {
+        ov12_02265560(hpBar);
+    }
+
+    if (flag & 0x100) {
+        switch (hpBar->unk_4A) {
+        case 0:
+        default:
+            ov12_022655B0(hpBar, 38);
+            break;
+        case 1:
+            ov12_022655B0(hpBar, 47);
+            break;
+        case 2:
+            ov12_022655B0(hpBar, 50);
+            break;
+        case 3:
+            ov12_022655B0(hpBar, 53);
+            break;
+        case 4:
+            ov12_022655B0(hpBar, 44);
+            break;
+        case 5:
+            ov12_022655B0(hpBar, 41);
+            break;
+        }
+    }
+
+    if (flag & 0x1400) {
+        ov12_022655F0(hpBar, flag);
+    }
+
+    if (flag & 0x2800) {
+        ov12_022656CC(hpBar, flag);
+    }
 }

@@ -52,8 +52,8 @@
 .public BattleSystem_GetPartyMon
 .public ov12_0223A8E4
 .public ov12_0223A8EC
-.public BattleSystem_GetHpFont
-.public BattleSystem_GetLevelFont
+.public BattleSystem_GetHpNumPrinter
+.public BattleSystem_GetLevelNumPrinter
 .public BattleSystem_GetMessageData
 .public BattleSystem_GetPaletteData
 .public BattleSystem_GetMessageFormat

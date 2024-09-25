@@ -23,6 +23,7 @@
 #include "sprite.h"
 #include "sys_task_api.h"
 #include "trainer_data.h"
+#include "unk_0200CE7C.h"
 #include "unk_0200CF18.h"
 
 typedef struct BattleMessage {
@@ -468,18 +469,12 @@ typedef struct BattleHpBar {
     u8 unk3F_3 : 1;
     void *unk40;
     u16 unk44;
+    u8 filler_46[0x4];
+    u8 unk_4A;
+    u8 filler_4B[4];
+    u8 unk_4F_0 : 3;
+    u8 unk_4F_3 : 1;
 } BattleHpBar;
-
-typedef struct OpponentData_UnkSub_70 {
-    s8 unk0;
-    s8 unk1;
-    s8 unk2;
-    s8 unk3;
-    s8 unk4;
-    s8 unk5;
-    s8 unk6;
-    u8 unk7;
-} OpponentData_UnkSub_70;
 
 typedef struct OpponentData {
     u32 unk0[6];
@@ -488,7 +483,6 @@ typedef struct OpponentData {
     Pokepic *pokepic;
     u32 *unk24;
     BattleHpBar hpBar;
-    OpponentData_UnkSub_70 unk70;
     u32 unk78;
     u32 *unk7C;
     void *unk80;
@@ -563,8 +557,8 @@ struct BattleSystem {
     UnkBattleSystemSub17C unk17C[2]; // Battle Background..?
     u32 *unk19C;
     u32 *unk1A0[2];
-    FontID *hpFont;
-    FontID *levelFont;
+    BattleNumberPrinter *hpNumPrinter;
+    BattleNumberPrinter *levelNumPrinter;
     void *msgIcon;
     Options *options;
     u32 *unk1B8;
@@ -574,15 +568,15 @@ struct BattleSystem {
     void *unk1C8; // related to animations
     u32 *unk1CC;
     UnkBattleSystemSub1D0 unk1D0[4];
-    UnkBattleSystemSub220 unk220;
+    UnkBattleSystemSub220 unk210;
     GameStats *gameStats;
-    u8 *unk230;
-    u16 *unk234;
+    u8 *unk220;
+    u16 *unk224;
     u8 sendBuffer[0x1000];
     u8 recvBuffer[0x1000];
-    u16 unk2238[0x70];
-    u16 unk2318[0x70];
-    u16 unk23E8; // labeling may be wrong before here
+    u16 unk2228[0x70];
+    u16 unk2308[0x70];
+    u16 unk23E8;
     u16 unk23EA;
     u16 unk23EC;
     u16 unk23EE;

@@ -8,223 +8,6 @@
 	.extern ov12_022648EC
 	.extern ov12_02264968
 
-	thumb_func_start ov12_0226498C
-ov12_0226498C: ; 0x0226498C
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	ldr r0, [r5, #4]
-	add r6, r1, #0
-	add r4, r2, #0
-	cmp r0, #0
-	bne _0226499E
-	bl GF_AssertFail
-_0226499E:
-	add r0, r5, #0
-	add r0, #0x25
-	ldrb r0, [r0]
-	cmp r0, #6
-	bne _022649B0
-	mov r1, #3
-	lsl r1, r1, #0xa
-	and r4, r1
-	b _022649C0
-_022649B0:
-	cmp r0, #7
-	bne _022649BC
-	mov r1, #3
-	lsl r1, r1, #0xc
-	and r4, r1
-	b _022649C0
-_022649BC:
-	ldr r1, _02264B1C ; =0xFFFFC3FF
-	and r4, r1
-_022649C0:
-	cmp r0, #7
-	bhi _02264A06
-	add r0, r0, r0
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_022649D0: ; jump table
-	.short _02264A02 - _022649D0 - 2 ; case 0
-	.short _022649E0 - _022649D0 - 2 ; case 1
-	.short _022649E6 - _022649D0 - 2 ; case 2
-	.short _022649E0 - _022649D0 - 2 ; case 3
-	.short _022649E6 - _022649D0 - 2 ; case 4
-	.short _022649E0 - _022649D0 - 2 ; case 5
-	.short _02264A06 - _022649D0 - 2 ; case 6
-	.short _02264A06 - _022649D0 - 2 ; case 7
-_022649E0:
-	mov r0, #0x26
-	bic r4, r0
-	b _02264A06
-_022649E6:
-	ldr r0, _02264B20 ; =0xFFFFFDDF
-	and r4, r0
-	add r0, r5, #0
-	add r0, #0x4f
-	ldrb r0, [r0]
-	lsl r0, r0, #0x1c
-	lsr r0, r0, #0x1f
-	bne _022649FC
-	mov r0, #6
-	bic r4, r0
-	b _02264A06
-_022649FC:
-	mov r0, #1
-	bic r4, r0
-	b _02264A06
-_02264A02:
-	ldr r0, _02264B24 ; =0xFFFFFDFF
-	and r4, r0
-_02264A06:
-	ldr r0, [r5, #0xc]
-	bl BattleSystem_GetBattleType
-	mov r1, #1
-	tst r0, r1
-	beq _02264A16
-	ldr r0, _02264B24 ; =0xFFFFFDFF
-	and r4, r0
-_02264A16:
-	mov r0, #1
-	tst r0, r4
-	beq _02264A2C
-	add r0, r5, #0
-	mov r1, #0
-	bl ov12_02264DCC
-	add r0, r5, #0
-	mov r1, #0
-	bl ov12_022657E4
-_02264A2C:
-	mov r0, #2
-	tst r0, r4
-	beq _02264A3A
-	add r0, r5, #0
-	add r1, r6, #0
-	bl ov12_02265474
-_02264A3A:
-	mov r0, #4
-	tst r0, r4
-	beq _02264A46
-	add r0, r5, #0
-	bl ov12_02265500
-_02264A46:
-	mov r0, #0x80
-	tst r0, r4
-	bne _02264A52
-	mov r0, #0x40
-	tst r0, r4
-	beq _02264A58
-_02264A52:
-	add r0, r5, #0
-	bl ov12_022652D0
-_02264A58:
-	mov r0, #8
-	tst r0, r4
-	beq _02264A64
-	add r0, r5, #0
-	bl ov12_02265354
-_02264A64:
-	mov r0, #0x10
-	tst r0, r4
-	beq _02264A70
-	add r0, r5, #0
-	bl ov12_0226516C
-_02264A70:
-	mov r0, #0x20
-	tst r0, r4
-	beq _02264A86
-	add r0, r5, #0
-	mov r1, #0
-	bl ov12_02264E34
-	add r0, r5, #0
-	mov r1, #1
-	bl ov12_022657E4
-_02264A86:
-	mov r0, #2
-	lsl r0, r0, #8
-	tst r0, r4
-	beq _02264A94
-	add r0, r5, #0
-	bl ov12_02265560
-_02264A94:
-	mov r0, #1
-	lsl r0, r0, #8
-	tst r0, r4
-	beq _02264AF8
-	add r0, r5, #0
-	add r0, #0x4a
-	ldrb r0, [r0]
-	cmp r0, #5
-	bhi _02264ABE
-	add r0, r0, r0
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_02264AB2: ; jump table
-	.short _02264ABE - _02264AB2 - 2 ; case 0
-	.short _02264AC8 - _02264AB2 - 2 ; case 1
-	.short _02264AD2 - _02264AB2 - 2 ; case 2
-	.short _02264ADC - _02264AB2 - 2 ; case 3
-	.short _02264AE6 - _02264AB2 - 2 ; case 4
-	.short _02264AF0 - _02264AB2 - 2 ; case 5
-_02264ABE:
-	add r0, r5, #0
-	mov r1, #0x26
-	bl ov12_022655B0
-	b _02264AF8
-_02264AC8:
-	add r0, r5, #0
-	mov r1, #0x2f
-	bl ov12_022655B0
-	b _02264AF8
-_02264AD2:
-	add r0, r5, #0
-	mov r1, #0x32
-	bl ov12_022655B0
-	b _02264AF8
-_02264ADC:
-	add r0, r5, #0
-	mov r1, #0x35
-	bl ov12_022655B0
-	b _02264AF8
-_02264AE6:
-	add r0, r5, #0
-	mov r1, #0x2c
-	bl ov12_022655B0
-	b _02264AF8
-_02264AF0:
-	add r0, r5, #0
-	mov r1, #0x29
-	bl ov12_022655B0
-_02264AF8:
-	mov r0, #5
-	lsl r0, r0, #0xa
-	tst r0, r4
-	beq _02264B08
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov12_022655F0
-_02264B08:
-	mov r0, #0xa
-	lsl r0, r0, #0xa
-	tst r0, r4
-	beq _02264B18
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov12_022656CC
-_02264B18:
-	pop {r4, r5, r6, pc}
-	nop
-_02264B1C: .word 0xFFFFC3FF
-_02264B20: .word 0xFFFFFDDF
-_02264B24: .word 0xFFFFFDFF
-	thumb_func_end ov12_0226498C
-
 	thumb_func_start ov12_02264B28
 ov12_02264B28: ; 0x02264B28
 	push {r4, lr}
@@ -1299,7 +1082,7 @@ ov12_02265354: ; 0x02265354
 	bl MI_CpuFill8
 	ldr r0, [sp, #4]
 	ldr r0, [r0, #0xc]
-	bl BattleSystem_GetLevelFont
+	bl BattleSystem_GetLevelNumPrinter
 	ldr r1, [sp, #4]
 	str r4, [sp]
 	add r1, #0x48
@@ -1427,7 +1210,7 @@ ov12_02265474: ; 0x02265474
 	add r4, r0, #0
 	bl MI_CpuFill8
 	ldr r0, [r5, #0xc]
-	bl BattleSystem_GetHpFont
+	bl BattleSystem_GetHpNumPrinter
 	str r4, [sp]
 	add r1, r6, #0
 	mov r2, #3
@@ -1488,7 +1271,7 @@ ov12_02265500: ; 0x02265500
 	add r4, r0, #0
 	bl MI_CpuFill8
 	ldr r0, [r5, #0xc]
-	bl BattleSystem_GetHpFont
+	bl BattleSystem_GetHpNumPrinter
 	str r4, [sp]
 	ldr r1, [r5, #0x2c]
 	mov r2, #3
