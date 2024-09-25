@@ -9,7 +9,7 @@ void ov12_02264B28(BattleHpBar *hpBar);
 void ov12_02264B4C(BattleHpBar *hpBar);
 void ov12_02264B60(BattleHpBar *hpBar);
 void ov12_02264B94(BattleHpBar *hpBar);
-void ov12_02264DCC(BattleHpBar *hpBar, int a1);
+void ov12_02264DCC(BattleHpBar *hpBar, int hp);
 void ov12_02264E34(BattleHpBar *hpBar, int a1);
 void ov12_0226516C(BattleHpBar *hpBar);
 void ov12_022652D0(BattleHpBar *hpBar);
@@ -18,13 +18,18 @@ void ov12_02265474(BattleHpBar *hpBar, u32 num);
 void ov12_02265500(BattleHpBar *hpBar);
 void ov12_02265560(BattleHpBar *hpBar);
 void ov12_022655B0(BattleHpBar *hpBar, int a1);
-void ov12_022657E4(BattleHpBar *hpBar, int a1);
+int ov12_022657E4(BattleHpBar *hpBar, int a1);
+void *ov12_02265B58(int a0);
 const UnkTemplate_0200D748 *ov12_02265BB8(u8 barType);
 const UnkTemplate_0200D748 *ov12_02265C1C(u8 barType);
 void ov12_022655F0(BattleHpBar *hpBar, u32 flag);
 void ov12_022656CC(BattleHpBar *hpBar, u32 flag);
 
 extern const s8 ov12_0226D368[];
+extern const u16 ov12_0226D408[][2];
+extern const u16 ov12_0226D3A8[][2];
+extern const u16 ov12_0226D3D8[][2];
+extern const u16 ov12_0226D6E0[][16];
 
 void ov12_02264824(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, NARC *narc, PaletteData *plttData, int barType) {
     const UnkTemplate_0200D748 *pRes = ov12_02265BB8(barType);
@@ -219,4 +224,80 @@ void BattleHpBar_FreeResources(BattleHpBar *hpBar) {
     ov12_02264B60(hpBar);
     ov12_02264B4C(hpBar);
     ov12_02264B94(hpBar);
+}
+
+void ov12_02264C84(BattleHpBar *hpBar) {
+    const u8 *src;
+    void *vramBaseAddr;
+    NNSG2dImageProxy *imgProxy;
+
+    switch (hpBar->type) {
+    case 2:
+    case 4:
+        hpBar->unk_4F_3 ^= 1;
+        vramBaseAddr = G2_GetOBJCharPtr();
+        imgProxy     = Sprite_GetImageProxy(hpBar->unk4->sprite);
+        if (hpBar->unk_4F_3 == 1) {
+            src = ov12_02265B58(70);
+            MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3A8[hpBar->type][0] + 0x20 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
+            src = ov12_02265B58(71);
+            MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3D8[hpBar->type][0] + 0x20 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
+            src = ov12_02265B58(69);
+            MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D408[hpBar->type][0] + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D408[hpBar->type][1]);
+            ov12_0226498C(hpBar, hpBar->hp, 6);
+        } else {
+            src = ov12_02265B58(66);
+            MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3A8[hpBar->type][0] + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D3A8[hpBar->type][1]);
+            src = ov12_02265B58(68);
+            MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3D8[hpBar->type][0] + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D3D8[hpBar->type][1]);
+            src = ov12_02265B58(38);
+            MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3D8[hpBar->type][0] + 0x20 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
+            ov12_0226498C(hpBar, hpBar->hp, 1);
+        }
+    }
+}
+
+void ov12_02264DCC(BattleHpBar *hpBar, int hp) {
+    hpBar->hpCalc = 0x80000000;
+    if (hpBar->hp + hp < 0) {
+        hp -= (hpBar->hp + hp);
+    }
+    if (hpBar->hp + hp > hpBar->maxHp) {
+        hp -= ((hpBar->hp + hp) - hpBar->maxHp);
+    }
+    hpBar->gainedHp = -hp;
+    if (hpBar->hp < 0) {
+        hpBar->hp = 0;
+    }
+    if (hpBar->hp > hpBar->maxHp) {
+        hpBar->hp = hpBar->maxHp;
+    }
+}
+
+int ov12_02264E00(BattleHpBar *hpBar) {
+    int r4 = ov12_022657E4(hpBar, 0);
+    if (r4 == -1) {
+        hpBar->hp -= hpBar->gainedHp;
+        ov12_0226498C(hpBar, hpBar->hp, 2);
+    } else {
+        ov12_0226498C(hpBar, r4, 2);
+    }
+    return r4;
+}
+
+void ov12_02264E34(BattleHpBar *hpBar, int exp) {
+    hpBar->expCalc = 0x80000000;
+    if (hpBar->exp + exp < 0) {
+        exp -= (hpBar->exp + exp);
+    }
+    if (hpBar->exp + exp > hpBar->maxExp) {
+        exp -= ((hpBar->exp + exp) - hpBar->maxExp);
+    }
+    hpBar->gainedExp = -exp;
+    if (hpBar->exp < 0) {
+        hpBar->exp = 0;
+    }
+    if (hpBar->exp > hpBar->maxExp) {
+        hpBar->exp = hpBar->maxExp;
+    }
 }
