@@ -15,7 +15,105 @@
 #include "unk_0200FA24.h"
 #include "vram_transfer_manager.h"
 
+typedef struct MicTestData MicTestData;
+typedef struct MicTestTaskManager MicTestTaskManager;
+
+typedef void (*MicTestTask)(MicTestTaskManager *, u32 *);
+
+typedef struct MicTestInput {
+    MICAutoParam mic;
+    void *unk1C;
+    s32 curVolume;
+    u32 unk24;
+    u32 unk28;
+    u32 unk2C;
+    u32 unk30;
+    u32 unk34;
+} MicTestInput;
+
+typedef struct MicTestSub_B8 {
+    BgConfig *bgConfig;
+    Window window[3];
+    MsgData *msgData;
+} MicTestSub_B8;
+
+struct MicTestTaskManager {
+    MicTestData *micTest;
+    MicTestTask task;
+    u32 state;
+    u32 isFinished;
+};
+
+typedef struct MicTestSub_24 {
+    UnkImageStruct *unk0;
+    u32 unk4;
+    VecFx32 unk8;
+    VecFx32 unk14;
+    fx32 unk20; // angle?
+    fx32 unk24; // dTheta?
+    fx32 unk28; // magnitude?
+    SysTask *task;
+} MicTestSub_24;
+
+struct MicTestData {
+    SpriteRenderer *spriteRenderer;
+    SpriteGfxHandler *gfxHandler;
+    UnkImageStruct *unk8[7];
+    MicTestSub_24 unk24[3];
+    u32 unkB4;
+    MicTestSub_B8 unkB8;
+    MicTestInput unkF0;
+    MicTestTaskManager taskMan;
+    HeapID heapId;
+};
+
 #define TS_HITBOX_MIC_TEST_RETURN 0
+
+static BOOL MicTest_Init(OVY_MANAGER *overlayMan, int *state);
+static BOOL MicTest_Exit(OVY_MANAGER *overlayMan, int *state);
+static BOOL MicTest_Main(OVY_MANAGER *overlayMan, int *state);
+static void MicTest_StartTask(MicTestTaskManager *a0, MicTestData *data, MicTestTask a2);
+static void MicTestTaskMan_Run(MicTestTaskManager *a0);
+static void MicTest_SetTask(MicTestTaskManager *a0, MicTestTask a1);
+static MicTestData *MicTestTaskMan_GetMicTestData(MicTestTaskManager *a0);
+static u32 MicTestTaskMan_IsFinished(MicTestTaskManager *a0);
+static void MicTestTaskMan_Finish(MicTestTaskManager *a0);
+static void MicTestTask_FadeIn(MicTestTaskManager *a0, u32 *state);
+static void ov62_021E5B04(MicTestTaskManager *a0, u32 *state);
+static void ov62_021E5B6C(MicTestTaskManager *a0, u32 *state);
+static void MicTestTask_FadeOut(MicTestTaskManager *taskMan, u32 *state);
+static void MicTestTask_End(MicTestTaskManager *taskMan, u32 *state);
+static void ov62_021E5C34(HeapID heapId);
+static void ov62_021E5C80();
+static void MicTest_SetBanks();
+static void MicTest_VBlankIntrCB(void *data);
+static void MicTest_InitSpriteRenderer(MicTestData *micTest, HeapID heapId);
+static void MicTest_DeleteSpriteRenderer(MicTestData *micTest);
+static void MicTest_UpdateAnimations(MicTestData *micTest);
+static void MicTest_LoadResources(MicTestData *micTest);
+static void ov62_021E5FA0(MicTestData *micTest);
+static void ov62_021E5FC4(MicTestData *micTest);
+static void ov62_021E5FD4(MicTestSub_B8 *a0, HeapID heapId);
+static void ov62_021E6024(MicTestSub_B8 *a0);
+static void ov62_021E6048(MicTestSub_B8 *a0);
+static void MicTest_LoadTextResources(MicTestSub_B8 *a0, HeapID heapId);
+static void ov62_021E60D4(MicTestSub_B8 *a0);
+static void ov62_021E60E4(MicTestSub_B8 *a0, HeapID heapId);
+static void ov62_021E6178(MicTestSub_B8 *a0);
+static void ov62_021E61AC(MicTestInput *input, HeapID heapId, MICCallback a2, MicTestData *micTest);
+static void ov62_021E61FC(MicTestInput *input);
+static void ov62_021E620C(MicTestInput *input);
+static void ov62_021E625C(MicTestInput *input);
+static void ov62_021E6278(MicTestInput *input);
+static s32 MicTest_AverageMicInput(MicTestInput *input);
+static void MicTest_MicrophoneCallback(MICResult result, void *data);
+static u32 MicTest_GetVolumeBracket(u8);
+static u32 ov62_021E63D0(MicTestData *micTest);
+static BOOL ov62_021E63E8(MicTestData *micTest, HeapID heapId, s16 x, s16 y);
+static void ov62_021E6480(UnkImageStruct *a0, MicTestSub_24 *args, s16 x, s16 y, s32 z, s32 r1, s32 r2, BOOL a7);
+static void ov62_021E6570(SysTask *, void *);
+static void MicTest_EndTasks(MicTestData *micTest);
+static int MicTest_CheckReturn(MicTestData *data);
 
 static const GraphicsBanks sMicTestGraphicsBanks = {
     .bg            = GX_VRAM_BG_128_A,
@@ -154,17 +252,15 @@ static const struct {
 
 const OVY_MGR_TEMPLATE gApplication_MicTest = { MicTest_Init, MicTest_Main, MicTest_Exit, FS_OVERLAY_ID_NONE };
 
-static void MicTestTask_FadeOut(MicTestTaskManager *taskMan, u32 *state);
-static void MicTestTask_End(MicTestTaskManager *taskMan, u32 *state);
-
-static void MicTest_EndTasks(MicTestData *micTest);
-static int MicTest_CheckReturn(MicTestData *data);
-
-BOOL MicTest_Init(OVY_MANAGER *overlayMan, int *state) {
+static BOOL MicTest_Init(OVY_MANAGER *overlayMan, int *state) {
     CreateHeap(HEAP_ID_3, HEAP_ID_MIC_TEST, 3 << 0x10);
+
     MicTestData *micTest = OverlayManager_CreateAndGetData(overlayMan, sizeof(MicTestData), HEAP_ID_MIC_TEST);
+
     MI_CpuFill8(micTest, 0, sizeof(MicTestData));
+
     micTest->heapId = HEAP_ID_MIC_TEST;
+
     ov62_021E5C34(micTest->heapId);
     MicTest_SetBanks();
     Main_SetVBlankIntrCB(MicTest_VBlankIntrCB, micTest);
@@ -172,19 +268,22 @@ BOOL MicTest_Init(OVY_MANAGER *overlayMan, int *state) {
     ov62_021E5FD4(&micTest->unkB8, micTest->heapId);
     MicTest_LoadTextResources(&micTest->unkB8, micTest->heapId);
     ov62_021E60E4(&micTest->unkB8, micTest->heapId);
-    ov62_021E5CF4(micTest, micTest->heapId);
+    MicTest_InitSpriteRenderer(micTest, micTest->heapId);
     MicTest_LoadResources(micTest);
     ov62_021E61AC(&micTest->unkF0, micTest->heapId, MicTest_MicrophoneCallback, micTest);
+
     MicTest_StartTask(&micTest->taskMan, micTest, MicTestTask_FadeIn);
+
     GF_SndStartFadeOutBGM(0, 10);
+
     return TRUE;
 }
 
-BOOL MicTest_Exit(OVY_MANAGER *overlayMan, int *state) {
+static BOOL MicTest_Exit(OVY_MANAGER *overlayMan, int *state) {
     MicTestData *micTest = OverlayManager_GetData(overlayMan);
     ov62_021E61FC(&micTest->unkF0);
     ov62_021E5FA0(micTest);
-    ov62_021E5D54(micTest);
+    MicTest_DeleteSpriteRenderer(micTest);
     ov62_021E6178(&micTest->unkB8);
     ov62_021E6024(&micTest->unkB8);
     ov62_021E5C80();
@@ -195,7 +294,7 @@ BOOL MicTest_Exit(OVY_MANAGER *overlayMan, int *state) {
     return TRUE;
 }
 
-BOOL MicTest_Main(OVY_MANAGER *overlayMan, int *state) {
+static BOOL MicTest_Main(OVY_MANAGER *overlayMan, int *state) {
     MicTestData *micTest = OverlayManager_GetData(overlayMan);
     if (MicTestTaskMan_IsFinished(&micTest->taskMan)) {
         return TRUE;
@@ -207,36 +306,36 @@ BOOL MicTest_Main(OVY_MANAGER *overlayMan, int *state) {
     return FALSE;
 }
 
-void MicTest_StartTask(MicTestTaskManager *taskMan, MicTestData *micTest, MicTestTask task) {
+static void MicTest_StartTask(MicTestTaskManager *taskMan, MicTestData *micTest, MicTestTask task) {
     taskMan->micTest    = micTest;
     taskMan->isFinished = FALSE;
     MicTest_SetTask(taskMan, task);
 }
 
-void MicTestTaskMan_Run(MicTestTaskManager *taskMan) {
+static void MicTestTaskMan_Run(MicTestTaskManager *taskMan) {
     if (MicTestTaskMan_IsFinished(taskMan) == 0) {
         taskMan->task(taskMan, &taskMan->state);
     }
 }
 
-void MicTest_SetTask(MicTestTaskManager *taskMan, MicTestTask task) {
+static void MicTest_SetTask(MicTestTaskManager *taskMan, MicTestTask task) {
     taskMan->task  = task;
     taskMan->state = 0;
 }
 
-MicTestData *MicTestTaskMan_GetMicTestData(MicTestTaskManager *taskMan) {
+static MicTestData *MicTestTaskMan_GetMicTestData(MicTestTaskManager *taskMan) {
     return taskMan->micTest;
 }
 
-u32 MicTestTaskMan_IsFinished(MicTestTaskManager *taskMan) {
+static u32 MicTestTaskMan_IsFinished(MicTestTaskManager *taskMan) {
     return taskMan->isFinished;
 }
 
-void MicTestTaskMan_Finish(MicTestTaskManager *taskMan) {
+static void MicTestTaskMan_Finish(MicTestTaskManager *taskMan) {
     taskMan->isFinished = TRUE;
 }
 
-void MicTestTask_FadeIn(MicTestTaskManager *taskMan, u32 *state) {
+static void MicTestTask_FadeIn(MicTestTaskManager *taskMan, u32 *state) {
     MicTestData *micTest = MicTestTaskMan_GetMicTestData(taskMan);
 
     switch (*state) {
@@ -257,7 +356,7 @@ void MicTestTask_FadeIn(MicTestTaskManager *taskMan, u32 *state) {
     }
 }
 
-void ov62_021E5B04(MicTestTaskManager *taskMan, u32 *state) {
+static void ov62_021E5B04(MicTestTaskManager *taskMan, u32 *state) {
     MicTestData *micTest = MicTestTaskMan_GetMicTestData(taskMan);
 
     switch (*state) {
@@ -284,7 +383,7 @@ void ov62_021E5B04(MicTestTaskManager *taskMan, u32 *state) {
     }
 }
 
-void ov62_021E5B6C(MicTestTaskManager *taskMan, u32 *state) {
+static void ov62_021E5B6C(MicTestTaskManager *taskMan, u32 *state) {
     MicTestData *micTest = MicTestTaskMan_GetMicTestData(taskMan);
 
     switch (*state) {
@@ -332,7 +431,7 @@ static void MicTestTask_End(MicTestTaskManager *taskMan, u32 *state) {
     MicTestTaskMan_Finish(taskMan);
 }
 
-void ov62_021E5C34(HeapID heapId) {
+static void ov62_021E5C34(HeapID heapId) {
     Main_SetVBlankIntrCB(NULL, NULL);
     HBlankInterruptDisable();
     GfGfx_DisableEngineAPlanes();
@@ -344,7 +443,7 @@ void ov62_021E5C34(HeapID heapId) {
     GF_CreateVramTransferManager(0x20, heapId);
 }
 
-void ov62_021E5C80() {
+static void ov62_021E5C80() {
     GF_DestroyVramTransferManager();
     Main_SetVBlankIntrCB(NULL, NULL);
     HBlankInterruptDisable();
@@ -354,7 +453,7 @@ void ov62_021E5C80() {
     GXS_SetVisiblePlane(0);
 }
 
-void MicTest_SetBanks() {
+static void MicTest_SetBanks() {
     GfGfx_SetBanks(&sMicTestGraphicsBanks);
 }
 
@@ -364,7 +463,7 @@ typedef struct UnkStruct_27E0000 {
     u32 unk_3FF8;
 } UnkStruct_27E0000;
 
-void MicTest_VBlankIntrCB(void *data) {
+static void MicTest_VBlankIntrCB(void *data) {
     MicTestData *micTest = data;
     NNS_GfdDoVramTransfer();
     ov62_021E5FC4(micTest);
@@ -373,7 +472,7 @@ void MicTest_VBlankIntrCB(void *data) {
     unkStruct->unk_3FF8 |= 1;
 }
 
-void ov62_021E5CF4(MicTestData *micTest, HeapID heapId) {
+static void MicTest_InitSpriteRenderer(MicTestData *micTest, HeapID heapId) {
     SpriteRenderer *spriteRender = SpriteRenderer_Create(heapId);
 
     micTest->spriteRenderer = spriteRender;
@@ -387,19 +486,19 @@ void ov62_021E5CF4(MicTestData *micTest, HeapID heapId) {
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
-void ov62_021E5D54(MicTestData *micTest) {
+void MicTest_DeleteSpriteRenderer(MicTestData *micTest) {
     SpriteRenderer_Delete(micTest->spriteRenderer);
     micTest->spriteRenderer = NULL;
 }
 
-void MicTest_UpdateAnimations(MicTestData *micTest) {
+static void MicTest_UpdateAnimations(MicTestData *micTest) {
     for (u16 i = 0; i < 7; i++) {
         UnkImageStruct_TickSpriteAnimation1Frame(micTest->unk8[i]);
     }
     SpriteGfxHandler_RenderAndAnimateSprites(micTest->gfxHandler);
 }
 
-void MicTest_LoadResources(MicTestData *micTest) {
+static void MicTest_LoadResources(MicTestData *micTest) {
     SpriteRenderer_LoadPlttResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 6, 0, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 0xA03);
     SpriteRenderer_LoadCellResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 8, 0, 0xA02);
     SpriteRenderer_LoadAnimResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 9, 0, 0xA04);
@@ -434,7 +533,7 @@ void MicTest_LoadResources(MicTestData *micTest) {
     micTest->unkB4 = 10;
 }
 
-void ov62_021E5FA0(MicTestData *micTest) {
+static void ov62_021E5FA0(MicTestData *micTest) {
     for (int i = 0; i < 7; i++) {
         if (micTest->unk8[i] != NULL) {
             UnkImageStruct_Delete(micTest->unk8[i]);
@@ -443,13 +542,13 @@ void ov62_021E5FA0(MicTestData *micTest) {
     SpriteRenderer_UnloadResourcesAndRemoveGfxHandler(micTest->spriteRenderer, micTest->gfxHandler);
 }
 
-void ov62_021E5FC4(MicTestData *micTest) {
+static void ov62_021E5FC4(MicTestData *micTest) {
     if (micTest->spriteRenderer != NULL) {
         thunk_OamManager_ApplyAndResetBuffers();
     }
 }
 
-void ov62_021E5FD4(MicTestSub_B8 *a0, HeapID heapId) {
+static void ov62_021E5FD4(MicTestSub_B8 *a0, HeapID heapId) {
     a0->bgConfig = BgConfig_Alloc(heapId);
     SetBothScreensModesAndDisable(&sMicTestGraphicsMode);
 
@@ -460,17 +559,17 @@ void ov62_021E5FD4(MicTestSub_B8 *a0, HeapID heapId) {
     }
 }
 
-void ov62_021E6024(MicTestSub_B8 *a0) {
+static void ov62_021E6024(MicTestSub_B8 *a0) {
     for (u32 i = 0; i < 5; i++) {
         FreeBgTilemapBuffer(a0->bgConfig, ov62_021E6728[i].unk1C);
     }
     FreeToHeap(a0->bgConfig);
 }
 
-void ov62_021E6048(MicTestSub_B8 *a0) {
+static void ov62_021E6048(MicTestSub_B8 *a0) {
 }
 
-void MicTest_LoadTextResources(MicTestSub_B8 *a0, HeapID heapId) {
+static void MicTest_LoadTextResources(MicTestSub_B8 *a0, HeapID heapId) {
     GfGfxLoader_GXLoadPal(NARC_a_1_7_6, 0, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_0_OFFSET, 32, heapId);
     GfGfxLoader_LoadCharData(NARC_a_1_7_6, 4, a0->bgConfig, GF_BG_LYR_SUB_1, 0, 0, 0, heapId);
     GfGfxLoader_LoadScrnData(NARC_a_1_7_6, 5, a0->bgConfig, GF_BG_LYR_SUB_1, 0, 0, 0, heapId);
@@ -480,13 +579,13 @@ void MicTest_LoadTextResources(MicTestSub_B8 *a0, HeapID heapId) {
     GfGfxLoader_LoadScrnData(NARC_a_1_7_6, 3, a0->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, 0, heapId);
 }
 
-void ov62_021E60D4(MicTestSub_B8 *a0) {
+static void ov62_021E60D4(MicTestSub_B8 *a0) {
     if (a0->bgConfig != NULL) {
         DoScheduledBgGpuUpdates(a0->bgConfig);
     }
 }
 
-void ov62_021E60E4(MicTestSub_B8 *a0, HeapID heapId) {
+static void ov62_021E60E4(MicTestSub_B8 *a0, HeapID heapId) {
     a0->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, 0xea, heapId);
 
     for (int i = 0; i < 3; i++) {
@@ -500,7 +599,7 @@ void ov62_021E60E4(MicTestSub_B8 *a0, HeapID heapId) {
     }
 }
 
-void ov62_021E6178(MicTestSub_B8 *a0) {
+static void ov62_021E6178(MicTestSub_B8 *a0) {
     for (int i = 0; i < 3; i++) {
         ClearWindowTilemapAndCopyToVram(&a0->window[i]);
         FillWindowPixelBuffer(&a0->window[i], 0);
@@ -510,75 +609,75 @@ void ov62_021E6178(MicTestSub_B8 *a0) {
     DestroyMsgData(a0->msgData);
 }
 
-void ov62_021E61AC(MicTestSub_F0 *a0, HeapID heapId, MICCallback a2, MicTestData *micTest) {
+static void ov62_021E61AC(MicTestInput *input, HeapID heapId, MICCallback a2, MicTestData *micTest) {
     Sys_SetSleepDisableFlag(8);
 
     void *data = AllocFromHeap(heapId, 0x120);
     MI_CpuFill8(data, 0, 0x120);
-    a0->unk1C = data;
+    input->unk1C = data;
 
-    a0->mic.type          = MIC_SAMPLING_TYPE_8BIT;
-    a0->mic.buffer        = (void *)((((u32)data) + 0x1F) & ~0x1F); //??????
-    a0->mic.size          = (1 << 8);
-    a0->mic.rate          = 0x1040;
-    a0->mic.loop_enable   = TRUE;
-    a0->mic.full_callback = a2;
-    a0->mic.full_arg      = micTest;
+    input->mic.type          = MIC_SAMPLING_TYPE_8BIT;
+    input->mic.buffer        = (void *)((((u32)data) + 0x1F) & ~0x1F); //??????
+    input->mic.size          = (1 << 8);
+    input->mic.rate          = 0x1040;
+    input->mic.loop_enable   = TRUE;
+    input->mic.full_callback = a2;
+    input->mic.full_arg      = micTest;
 
-    a0->unk34 = sub_02005518();
+    input->unk34 = sub_02005518();
 }
 
-void ov62_021E61FC(MicTestSub_F0 *a0) {
-    FreeToHeap(a0->unk1C);
+static void ov62_021E61FC(MicTestInput *input) {
+    FreeToHeap(input->unk1C);
     Sys_ClearSleepDisableFlag(8);
 }
 
-void ov62_021E620C(MicTestSub_F0 *a0) {
+static void ov62_021E620C(MicTestInput *input) {
     u32 next = sub_02005518();
 
-    if (next == 0 || a0->unk34 == 0) {
-        if (a0->unk30 == 0) {
-            if (a0->unk28) {
-                ov62_021E6278(a0);
-                a0->unk2C = 1;
+    if (next == 0 || input->unk34 == 0) {
+        if (input->unk30 == 0) {
+            if (input->unk28) {
+                ov62_021E6278(input);
+                input->unk2C = 1;
             }
-            a0->unk30 = 1;
+            input->unk30 = 1;
         }
 
-        if (next != 0 && a0->unk34 == 0) {
-            a0->unk30 = 0;
+        if (next != 0 && input->unk34 == 0) {
+            input->unk30 = 0;
 
-            if (a0->unk2C) {
-                ov62_021E625C(a0);
-                a0->unk2C = 0;
+            if (input->unk2C) {
+                ov62_021E625C(input);
+                input->unk2C = 0;
             }
         }
     }
 
-    a0->unk34 = next;
+    input->unk34 = next;
 }
 
-void ov62_021E625C(MicTestSub_F0 *a0) {
-    if (a0->unk30 == 0) {
-        GF_MIC_StartAutoSampling(&a0->mic);
-        a0->unk28 = 1;
+static void ov62_021E625C(MicTestInput *input) {
+    if (input->unk30 == 0) {
+        GF_MIC_StartAutoSampling(&input->mic);
+        input->unk28 = 1;
     } else {
-        a0->unk2C = 1;
+        input->unk2C = 1;
     }
 }
 
-void ov62_021E6278(MicTestSub_F0 *a0) {
+static void ov62_021E6278(MicTestInput *input) {
     GF_MIC_StopAutoSampling();
-    a0->unk28 = 0;
+    input->unk28 = 0;
 }
 
-s32 MicTest_AverageMicInput(MicTestSub_F0 *a0) {
+static s32 MicTest_AverageMicInput(MicTestInput *input) {
     int i;
     u8 *buffer;
 
     int cnt  = 0;
-    int size = a0->mic.size - 1;
-    buffer   = a0->mic.buffer;
+    int size = input->mic.size - 1;
+    buffer   = input->mic.buffer;
 
     for (i = 0; i < size; i++) {
         if (buffer[i] < 0x80) {
@@ -594,14 +693,14 @@ static struct {
     u32 unk0;
 } _021E68E0;
 
-void MicTest_MicrophoneCallback(MICResult result, void *data) {
+static void MicTest_MicrophoneCallback(MICResult result, void *data) {
     MicTestData *micTest = data;
 
     if (result != MIC_RESULT_SUCCESS) {
         return;
     }
 
-    MicTestSub_F0 *unkF0 = &micTest->unkF0;
+    MicTestInput *unkF0 = &micTest->unkF0;
 
     s32 volumeAvg = MicTest_AverageMicInput(unkF0);
     u32 volume;
@@ -642,7 +741,7 @@ void MicTest_MicrophoneCallback(MICResult result, void *data) {
     _021E68E0.unk0++;
 }
 
-u32 MicTest_GetVolumeBracket(u8 volume) {
+static u32 MicTest_GetVolumeBracket(u8 volume) {
     u32 ret;
 
     if (volume <= 0x8C) {
@@ -662,7 +761,7 @@ u32 MicTest_GetVolumeBracket(u8 volume) {
     return ret;
 }
 
-u32 ov62_021E63D0(MicTestData *micTest) {
+static u32 ov62_021E63D0(MicTestData *micTest) {
     for (int i = 0; i < 3; i++) {
         if (micTest->unk24[i].task) {
             return 0;
@@ -671,7 +770,7 @@ u32 ov62_021E63D0(MicTestData *micTest) {
     return 1;
 }
 
-BOOL ov62_021E63E8(MicTestData *micTest, HeapID heapId, s16 x, s16 y) {
+static BOOL ov62_021E63E8(MicTestData *micTest, HeapID heapId, s16 x, s16 y) {
     UnkImageStruct *flag = 0;
     MicTestSub_24 *args  = NULL;
     for (int i = 0; i < 3; i++) {
@@ -693,7 +792,7 @@ BOOL ov62_021E63E8(MicTestData *micTest, HeapID heapId, s16 x, s16 y) {
     return FALSE;
 }
 
-void ov62_021E6480(UnkImageStruct *a0, MicTestSub_24 *args, s16 x, s16 y, s32 z, s32 r1, s32 r2, BOOL a7) {
+static void ov62_021E6480(UnkImageStruct *a0, MicTestSub_24 *args, s16 x, s16 y, s32 z, s32 r1, s32 r2, BOOL a7) {
     args->task          = SysTask_CreateOnMainQueue(ov62_021E6570, args, 0);
     MicTestSub_24 *data = SysTask_GetData(args->task);
 
@@ -717,7 +816,7 @@ void ov62_021E6480(UnkImageStruct *a0, MicTestSub_24 *args, s16 x, s16 y, s32 z,
     UnkImageStruct_SetSpritePositionXY(data->unk0, x, y);
 }
 
-void ov62_021E6570(SysTask *task, void *_data) {
+static void ov62_021E6570(SysTask *task, void *_data) {
     MicTestSub_24 *data = _data;
 
     if (data->unk4) {
