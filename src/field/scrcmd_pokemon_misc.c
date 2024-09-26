@@ -939,9 +939,9 @@ BOOL ScrCmd_743(ScriptContext *ctx) {
 }
 
 static const u8 sFriendshipRoomStatuesPositions[3][2] = {
-    { 4,  10 },
-    { 7,  5  },
-    { 10, 10 },
+    {4,   10},
+    { 7,  5 },
+    { 10, 10},
 };
 
 BOOL ScrCmd_CreatePokeathlonFriendshipRoomStatues(ScriptContext *ctx) {
@@ -1163,8 +1163,8 @@ BOOL ScrCmd_RadioMusicIsPlaying(ScriptContext *ctx) {
 }
 
 static const int sSlotLuckDistribution[2][2] = {
-    { 7, 3 },
-    { 5, 2 },
+    {7,  3},
+    { 5, 2},
 };
 
 // Return value is unused outside of Japanese copies.

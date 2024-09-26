@@ -54,12 +54,12 @@ static const u16 sNarcMsgBanks[EC_GROUP_MAX] = {
 };
 
 static const u8 sLanguageToGreetingMap[6][2] = {
-    { LANGUAGE_JAPANESE, msg_0287_konnichiwa },
-    { LANGUAGE_ENGLISH,  msg_0287_hello      },
-    { LANGUAGE_FRENCH,   msg_0287_bonjour    },
-    { LANGUAGE_ITALIAN,  msg_0287_ciao       },
-    { LANGUAGE_GERMAN,   msg_0287_hallo      },
-    { LANGUAGE_SPANISH,  msg_0287_hola       },
+    {LANGUAGE_JAPANESE, msg_0287_konnichiwa},
+    { LANGUAGE_ENGLISH, msg_0287_hello     },
+    { LANGUAGE_FRENCH,  msg_0287_bonjour   },
+    { LANGUAGE_ITALIAN, msg_0287_ciao      },
+    { LANGUAGE_GERMAN,  msg_0287_hallo     },
+    { LANGUAGE_SPANISH, msg_0287_hola      },
 };
 
 // Several easy chat words are identical in
@@ -86,18 +86,18 @@ typedef struct ECIdenticalPhrases {
 } ECIdenticalPhrases;
 
 static const ECIdenticalPhrases sIdenticalPhrases[12] = {
-    { sEasyChatAnticipation, NELEMS(sEasyChatAnticipation) },
-    { sEasyChatHey,          NELEMS(sEasyChatHey)          },
-    { sEasyChatHuh_,         NELEMS(sEasyChatHuh_)         },
-    { sEasyChatI,            NELEMS(sEasyChatI)            },
-    { sEasyChatKids,         NELEMS(sEasyChatKids)         },
-    { sEasyChatNoWay,        NELEMS(sEasyChatNoWay)        },
-    { sEasyChatOk,           NELEMS(sEasyChatOk)           },
-    { sEasyChatPsychic,      NELEMS(sEasyChatPsychic)      },
-    { sEasyChatSimple,       NELEMS(sEasyChatSimple)       },
-    { sEasyChatWelcome,      NELEMS(sEasyChatWelcome)      },
-    { sEasyChatWow,          NELEMS(sEasyChatWow)          },
-    { sEasyChatYou,          NELEMS(sEasyChatYou)          },
+    {sEasyChatAnticipation, NELEMS(sEasyChatAnticipation)},
+    { sEasyChatHey,         NELEMS(sEasyChatHey)         },
+    { sEasyChatHuh_,        NELEMS(sEasyChatHuh_)        },
+    { sEasyChatI,           NELEMS(sEasyChatI)           },
+    { sEasyChatKids,        NELEMS(sEasyChatKids)        },
+    { sEasyChatNoWay,       NELEMS(sEasyChatNoWay)       },
+    { sEasyChatOk,          NELEMS(sEasyChatOk)          },
+    { sEasyChatPsychic,     NELEMS(sEasyChatPsychic)     },
+    { sEasyChatSimple,      NELEMS(sEasyChatSimple)      },
+    { sEasyChatWelcome,     NELEMS(sEasyChatWelcome)     },
+    { sEasyChatWow,         NELEMS(sEasyChatWow)         },
+    { sEasyChatYou,         NELEMS(sEasyChatYou)         },
 };
 
 EasyChatManager *EasyChatManager_New(HeapID heapId) {

@@ -1713,7 +1713,7 @@ static void ov122_021E7BD4(VoltorbFlipAppWork *work) {
 
     SpriteRenderer *renderer     = work->spriteRenderer;
     SpriteGfxHandler *gfxHandler = work->spriteGfxHandler;
-    
+
     SpriteRenderer_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000010_bin, FALSE, 5, NNS_G2D_VRAM_TYPE_2DMAIN, 0);
     SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000011_bin, TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, 0);
     SpriteRenderer_LoadCellResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000012_bin, TRUE, 0);

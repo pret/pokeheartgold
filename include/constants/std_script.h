@@ -79,11 +79,11 @@
 #define std_apricorn_tree  2800
 
 #define _std_npc_trainer     3000
-#define std_trainer(trainer) ((trainer) - FIRST_TRAINER_INDEX + _std_npc_trainer)
+#define std_trainer(trainer) ((trainer)-FIRST_TRAINER_INDEX + _std_npc_trainer)
 #define std_trainer_approach std_trainer(LAST_TRAINER_INDEX)
 
 #define _std_npc_trainer_2     5000
-#define std_trainer_2(trainer) ((trainer) - FIRST_TRAINER_INDEX + _std_npc_trainer_2)
+#define std_trainer_2(trainer) ((trainer)-FIRST_TRAINER_INDEX + _std_npc_trainer_2)
 
 #define _std_item_ball                     7000
 #define std_itemball_r29_potion            7000

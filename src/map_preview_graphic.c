@@ -54,7 +54,7 @@ typedef struct UnkStruct_0206A388 {
 } UnkStruct_0206A388;
 
 static MapPreviewGraphicData sMapPreviewGraphicData[] = {
-    // Dark Cave, North Side
+  // Dark Cave, North Side
     {
      .mapId   = MAP_D42R0101,
      .unused4 = 0,
@@ -82,7 +82,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 0,
      },
-    // Dark Cave, South Side
+ // Dark Cave, South Side
     {
      .mapId   = MAP_D42R0102,
      .unused4 = 0,
@@ -110,7 +110,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 0,
      },
-    // Sprout Tower
+ // Sprout Tower
     {
      .mapId   = MAP_D15R0101,
      .unused4 = 0,
@@ -138,7 +138,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 1,
      },
-    // Ruins of Alph 1
+ // Ruins of Alph 1
     {
      .mapId   = MAP_D24R0211,
      .unused4 = 0,
@@ -166,7 +166,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 2,
      },
-    // Ruins of Alph 2
+ // Ruins of Alph 2
     {
      .mapId   = MAP_D24R0217,
      .unused4 = 0,
@@ -194,7 +194,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 2,
      },
-    // Union Cave
+ // Union Cave
     {
      .mapId   = MAP_D25R0101,
      .unused4 = 0,
@@ -222,7 +222,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 3,
      },
-    // Slowpoke Well
+ // Slowpoke Well
     {
      .mapId   = MAP_D26R0101,
      .unused4 = 0,
@@ -250,7 +250,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 4,
      },
-    // Ilex Forest
+ // Ilex Forest
     {
      .mapId   = MAP_D36R0101,
      .unused4 = 0,
@@ -278,7 +278,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 5,
      },
-    // National Park
+ // National Park
     {
      .mapId   = MAP_D22R0101,
      .unused4 = 0,
@@ -306,7 +306,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 6,
      },
-    // Burned Tower
+ // Burned Tower
     {
      .mapId   = MAP_D18R0101,
      .unused4 = 0,
@@ -334,7 +334,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 7,
      },
-    // Bell Tower
+ // Bell Tower
     {
      .mapId   = MAP_D17R0101,
      .unused4 = 0,
@@ -362,7 +362,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 8,
      },
-    // Whirl Islands
+ // Whirl Islands
     {
      .mapId   = MAP_D40R0101,
      .unused4 = 0,
@@ -390,7 +390,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 9,
      },
-    // Mt Mortar
+ // Mt Mortar
     {
      .mapId   = MAP_D38R0101,
      .unused4 = 0,
@@ -418,7 +418,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 11,
      },
-    // Ice Path
+ // Ice Path
     {
      .mapId   = MAP_D39R0101,
      .unused4 = 0,
@@ -446,7 +446,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 12,
      },
-    // Dragon's Den
+ // Dragon's Den
     {
      .mapId   = MAP_D44R0101,
      .unused4 = 0,
@@ -474,7 +474,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 13,
      },
-    // Tohjo Falls
+ // Tohjo Falls
     {
      .mapId   = MAP_D45R0101,
      .unused4 = 0,
@@ -502,7 +502,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 14,
      },
-    // Victory Road South
+ // Victory Road South
     {
      .mapId   = MAP_D43R0101,
      .unused4 = 0,
@@ -530,7 +530,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 15,
      },
-    // Victory Road North
+ // Victory Road North
     {
      .mapId   = MAP_D43R0103,
      .unused4 = 0,
@@ -558,7 +558,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 15,
      },
-    // Viridian Forest
+ // Viridian Forest
     {
      .mapId   = MAP_D46R0101,
      .unused4 = 0,
@@ -586,7 +586,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 16,
      },
-    // Diglett Cave
+ // Diglett Cave
     {
      .mapId   = MAP_D01R0101,
      .unused4 = 0,
@@ -614,7 +614,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 17,
      },
-    // Rock Tunnel
+ // Rock Tunnel
     {
      .mapId   = MAP_D05R0101,
      .unused4 = 0,
@@ -642,7 +642,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 18,
      },
-    // Mt Moon
+ // Mt Moon
     {
      .mapId   = MAP_D02R0101,
      .unused4 = 0,
@@ -670,7 +670,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 20,
      },
-    // Seafoam Islands
+ // Seafoam Islands
     {
      .mapId   = MAP_D11R0101,
      .unused4 = 0,
@@ -698,7 +698,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 21,
      },
-    // Mt Silver
+ // Mt Silver
     {
      .mapId   = MAP_D41R0101,
      .unused4 = 0,
@@ -726,7 +726,7 @@ static MapPreviewGraphicData sMapPreviewGraphicData[] = {
         },
      .unused3C = 22,
      },
-    // Cerulean Cave
+ // Cerulean Cave
     {
      .mapId   = MAP_D03R0101,
      .unused4 = 0,

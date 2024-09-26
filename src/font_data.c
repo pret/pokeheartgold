@@ -77,8 +77,8 @@ void FontData_ModeSwitch(struct FontData *fontData, int mode, HeapID heapId) {
 
 static void FontData_Init(struct FontData *fontData, NarcId narcId, int fileId, BOOL isFixedWidth, HeapID heapId) {
     static const u8 _020F6324[][2] = {
-        { GLYPHSHAPE_8x8,  GLYPHSHAPE_8x16  },
-        { GLYPHSHAPE_16x8, GLYPHSHAPE_16x16 }
+        {GLYPHSHAPE_8x8,   GLYPHSHAPE_8x16 },
+        { GLYPHSHAPE_16x8, GLYPHSHAPE_16x16}
     };
     fontData->narc = NARC_New(narcId, heapId);
     if (fontData->narc != NULL) {

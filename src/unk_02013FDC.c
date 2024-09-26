@@ -157,12 +157,12 @@ static void sub_02014350(int srcWidth, int srcHeight, const UnkStruct_02014E30 *
 
 static void sub_02014374(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int width, int height, void *dest) {
     UnkStruct_02014E30 sp1C[6] = {
-        { 0, 0, 8, 8 },
-        { 8, 0, 2, 4 },
-        { 8, 4, 2, 4 },
-        { 0, 8, 4, 2 },
-        { 4, 8, 4, 2 },
-        { 8, 8, 2, 2 },
+        {0,  0, 8, 8},
+        { 8, 0, 2, 4},
+        { 8, 4, 2, 4},
+        { 0, 8, 4, 2},
+        { 4, 8, 4, 2},
+        { 8, 8, 2, 2},
     };
 
     int sp18   = 0;
@@ -200,12 +200,12 @@ void *sub_02014450(NarcId narcId, s32 fileId, HeapID heapId) {
 
 void sub_02014494(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int width, int height, void *dest, u32 pid, BOOL isAnimated, int whichFacing, int species) {
     UnkStruct_02014E30 sp2C[6] = {
-        { 0, 0, 8, 8 },
-        { 8, 0, 2, 4 },
-        { 8, 4, 2, 4 },
-        { 0, 8, 4, 2 },
-        { 4, 8, 4, 2 },
-        { 8, 8, 2, 2 },
+        {0,  0, 8, 8},
+        { 8, 0, 2, 4},
+        { 8, 4, 2, 4},
+        { 0, 8, 4, 2},
+        { 4, 8, 4, 2},
+        { 8, 8, 2, 2},
     };
 
     int sp28   = 0;

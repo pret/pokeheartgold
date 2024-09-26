@@ -125,7 +125,7 @@ static const UnkTemplate_0200D748 ov78_021E68B4 = {
     .spritePriority = 1,
     .pal            = 3,
     .vram           = NNS_G2D_VRAM_TYPE_2DBOTH,
-    .resIdList      = { 2, 2, 2, 2, 0, 0 },
+    .resIdList      = {2, 2, 2, 2, 0, 0},
     .bgPriority     = 0,
     .vramTransfer   = 0,
 };
@@ -151,15 +151,15 @@ static const UnkTemplate_0200D748 ov78_021E68E8 = {
     .spritePriority = 0,
     .pal            = 2,
     .vram           = NNS_G2D_VRAM_TYPE_2DBOTH,
-    .resIdList      = { 1, 1, 1, 1, 0, 0 },
+    .resIdList      = {1, 1, 1, 1, 0, 0},
     .bgPriority     = 0,
     .vramTransfer   = 0,
 };
 
 static s16 ov78_021E6920[3][2] = {
-    { 128, 16  },
-    { 116, 180 },
-    { 140, 180 },
+    {128,  16 },
+    { 116, 180},
+    { 140, 180},
 };
 
 static void CertificatesApp_OnVBlank(CertificatesApp_Data *data);

@@ -43,9 +43,9 @@ static void SaveRankings_GetSorted(SaveRankings *saveRankings, SaveRankingsSortB
 static void SaveRankings_GetSortedScoped(SaveRankings *saveRankings, int groupId, u8 statIdx, SaveRankingsEntry **filteredEntries, u8 filteredEntriesCnt, HeapID heapId);
 
 static const u8 sPageOffsets[][2] = {
-    { RANKINGS_RECORD_BATTLE_TOWER_COUNT, RANKINGS_RECORD_BATTLE_TOWER_BEGIN },
-    { RANKINGS_RECORD_POKEMON_COUNT,      RANKINGS_RECORD_POKEMON_BEGIN      },
-    { RANKINGS_RECORD_CONTEST_COUNT,      RANKINGS_RECORD_CONTEST_BEGIN      },
+    {RANKINGS_RECORD_BATTLE_TOWER_COUNT, RANKINGS_RECORD_BATTLE_TOWER_BEGIN},
+    { RANKINGS_RECORD_POKEMON_COUNT,     RANKINGS_RECORD_POKEMON_BEGIN     },
+    { RANKINGS_RECORD_CONTEST_COUNT,     RANKINGS_RECORD_CONTEST_BEGIN     },
 };
 
 static const int sStatIDs[] = {

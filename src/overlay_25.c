@@ -36,39 +36,40 @@
 static const MailMessageTemplate TrainerHouse_DefaultLoseMessage = {
     .msg_bank  = MAILMSG_BANK_0292_GMM,
     .msg_no    = msg_0292_00000,
-    .ec_groups = { EC_GROUP_GREETINGS, EC_GROUP_NONE },
-    .ec_words  = { msg_0287_thanks,    0             },
+    .ec_groups = {EC_GROUP_GREETINGS, EC_GROUP_NONE},
+    .ec_words  = { msg_0287_thanks,   0            },
 };
 
 static const MailMessageTemplate TrainerHouse_DefaultWinMessage = {
     .msg_bank  = MAILMSG_BANK_0296_GMM,
     .msg_no    = msg_0296_00007,
-    .ec_groups = { EC_GROUP_TRAINER, EC_GROUP_NONE },
-    .ec_words  = { msg_0285_victory, 0             },
+    .ec_groups = {EC_GROUP_TRAINER,  EC_GROUP_NONE},
+    .ec_words  = { msg_0285_victory, 0            },
 };
 
 static const MailMessageTemplate TrainerHouse_DefaultIntroMessage = {
     .msg_bank  = MAILMSG_BANK_0294_GMM,
     .msg_no    = msg_0294_00003,
-    .ec_groups = { EC_GROUP_TRAINER, EC_GROUP_NONE },
-    .ec_words  = { msg_0285_match,   0             },
+    .ec_groups = {EC_GROUP_TRAINER, EC_GROUP_NONE},
+    .ec_words  = { msg_0285_match,  0            },
 };
 
-#define DUMMY_TRAINER_HOUSE_MON { \
-    .language = GAME_LANGUAGE,    \
-    .nickname = {                 \
-                 EOS,                      \
-                 EOS,                      \
-                 EOS,                      \
-                 EOS,                      \
-                 EOS,                      \
-                 EOS,                      \
-                 EOS,                      \
-                 EOS,                      \
-                 EOS,                      \
-                 EOS,                      \
-                 },                            \
-}
+#define DUMMY_TRAINER_HOUSE_MON    \
+    {                              \
+        .language = GAME_LANGUAGE, \
+        .nickname = {              \
+            EOS,                   \
+            EOS,                   \
+            EOS,                   \
+            EOS,                   \
+            EOS,                   \
+            EOS,                   \
+            EOS,                   \
+            EOS,                   \
+            EOS,                   \
+            EOS,                   \
+        },                         \
+    }
 
 static const TrainerHouseSet ov25_02259D9C = {
     .trainer = {

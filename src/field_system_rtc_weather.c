@@ -9,14 +9,14 @@
 #include "unk_02055418.h"
 
 const MonthDay DiamondDustDates[] = {
-    { JANUARY,  1  },
-    { JANUARY,  31 },
-    { FEBRUARY, 1  },
-    { FEBRUARY, 29 },
-    { MARCH,    15 },
-    { OCTOBER,  10 },
-    { DECEMBER, 3  },
-    { DECEMBER, 31 },
+    {JANUARY,   1 },
+    { JANUARY,  31},
+    { FEBRUARY, 1 },
+    { FEBRUARY, 29},
+    { MARCH,    15},
+    { OCTOBER,  10},
+    { DECEMBER, 3 },
+    { DECEMBER, 31},
 }; //_020FA09C
 
 u32 FieldSystem_GetWeather_HandleDiamondDust(FieldSystem *fieldSystem, u32 mapId) {

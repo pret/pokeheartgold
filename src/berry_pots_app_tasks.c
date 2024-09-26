@@ -20,7 +20,7 @@ typedef struct SysTaskArgs_ov17_0220351C {
 } SysTaskArgs_ov17_0220351C;
 
 static const TouchscreenHitbox ov17_02203FC0 = {
-    .rect = { 160, 192, 192, 0 }
+    .rect = {160, 192, 192, 0}
 };
 
 static void ov17_022035A4(SysTask *task, SysTaskArgs_ov17_0220351C *args);

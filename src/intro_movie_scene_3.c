@@ -80,10 +80,10 @@ static const int sMap3dObjFileIds[3][2] = {
 
 static const CameraParam sCameraParam = {
     FX32_CONST(410.922119140625),
-    { 0xD602,
+    {0xD602,
                         0x0000,
                         0x0000,
-                        0 },
+                        0},
     0,
     0x05C1,
     FALSE,
@@ -122,9 +122,9 @@ static const VecFx32 sLightVectors[3][4] = {
 };
 
 static const GXRgb sLightColors[3][4] = {
-    { RGB(22, 22, 20), RGB(0, 0, 0), RGB(0,  4,  9), RGB(0, 0, 0) },
-    { RGB(11, 11, 16), RGB(0, 0, 0), RGB(18, 10, 0), RGB(0, 0, 0) },
-    { RGB(19, 16, 12), RGB(0, 0, 0), RGB(16, 6,  0), RGB(0, 0, 0) },
+    {RGB(22,  22, 20), RGB(0, 0, 0), RGB(0,  4,  9), RGB(0, 0, 0)},
+    { RGB(11, 11, 16), RGB(0, 0, 0), RGB(18, 10, 0), RGB(0, 0, 0)},
+    { RGB(19, 16, 12), RGB(0, 0, 0), RGB(16, 6,  0), RGB(0, 0, 0)},
 };
 
 static const GXRgb sDiffUse[3] = {

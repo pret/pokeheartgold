@@ -1,20 +1,166 @@
+#include "overlay_mic_test.h"
+
 #include "font.h"
 #include "gf_gfx_loader.h"
 #include "main.h"
 #include "math_util.h"
-#include "overlay_mic_test.h"
 #include "sound.h"
 #include "sound_02004A44.h"
 #include "system.h"
 #include "text.h"
 #include "title_screen.h"
 #include "touchscreen.h"
-#include "unk_0200FA24.h"
 #include "unk_02005D10.h"
 #include "unk_0200B150.h"
+#include "unk_0200FA24.h"
 #include "vram_transfer_manager.h"
 
-BOOL MicTest_Init(OVY_MANAGER *overlayMan) {
+#define TS_HITBOX_MIC_TEST_RETURN 0
+
+static const GraphicsBanks sMicTestGraphicsBanks = {
+    .bg            = GX_VRAM_BG_128_A,
+    .bgextpltt     = GX_VRAM_BGEXTPLTT_NONE,
+    .subbg         = GX_VRAM_SUB_BG_128_C,
+    .subbgextpltt  = GX_VRAM_SUB_BGEXTPLTT_NONE,
+    .obj           = GX_VRAM_OBJ_128_B,
+    .objextpltt    = GX_VRAM_OBJEXTPLTT_NONE,
+    .subobj        = GX_VRAM_SUB_OBJ_16_I,
+    .subobjextpltt = GX_VRAM_SUB_OBJEXTPLTT_NONE,
+    .tex           = GX_VRAM_TEX_NONE,
+    .texpltt       = GX_VRAM_TEXPLTT_NONE
+};
+
+static const struct {
+    BgTemplate bgTemplate;
+    u8 unk1C;
+    u8 unk1D;
+    u8 unk1E;
+    u8 unk1F;
+} ov62_021E6728[] = {
+    {
+     .bgTemplate = {
+            .x          = 0,
+            .y          = 0,
+            .bufferSize = 0x800,
+            .baseTile   = 0,
+            .size       = 1,
+            .colorMode  = 0,
+            .screenBase = 0x1F,
+            .charBase   = 0,
+            .bgExtPltt  = 0,
+            .priority   = 0,
+            .areaOver   = 0,
+            .dummy      = 0,
+            .mosaic     = 0 },
+     .unk1C = 0,
+     .unk1D = 0,
+     .unk1E = 0,
+     .unk1F = 0,
+     },
+    {
+     .bgTemplate = { .x = 0, .y = 0, .bufferSize = 0x800, .baseTile = 0, .size = 1, .colorMode = 0, .screenBase = 0x1E, .charBase = 1, .bgExtPltt = 0, .priority = 1, .areaOver = 0, .dummy = 0, .mosaic = 0 },
+     .unk1C      = 1,
+     .unk1D      = 0,
+     .unk1E      = 0,
+     .unk1F      = 0,
+     },
+    {
+     .bgTemplate = { .x = 0, .y = 0, .bufferSize = 0x800, .baseTile = 0, .size = 1, .colorMode = 0, .screenBase = 0x1D, .charBase = 2, .bgExtPltt = 0, .priority = 2, .areaOver = 0, .dummy = 0, .mosaic = 0 },
+     .unk1C      = 2,
+     .unk1D      = 0,
+     .unk1E      = 0,
+     .unk1F      = 0,
+     },
+    {
+     .bgTemplate = { .x = 0, .y = 0, .bufferSize = 0x800, .baseTile = 0, .size = 1, .colorMode = 0, .screenBase = 0x1F, .charBase = 0, .bgExtPltt = 0, .priority = 0, .areaOver = 0, .dummy = 0, .mosaic = 0 },
+     .unk1C      = 4,
+     .unk1D      = 0,
+     .unk1E      = 0,
+     .unk1F      = 0,
+     },
+    {
+     .bgTemplate = { .x = 0, .y = 0, .bufferSize = 0x800, .baseTile = 0, .size = 1, .colorMode = 0, .screenBase = 0x1E, .charBase = 1, .bgExtPltt = 0, .priority = 1, .areaOver = 0, .dummy = 0, .mosaic = 0 },
+     .unk1C      = 5,
+     .unk1D      = 0,
+     .unk1E      = 0,
+     .unk1F      = 0,
+     },
+};
+
+static const UnkTemplate_0200D748 ov62_021E67C8[5] = {
+    {.x = 0x40,  .y = 0x60, .z = 0, .animation = 0, .spritePriority = 0, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { 0xA01, 0xA03, 0xA02, 0xA04, 0, 0 }, .bgPriority = 0, .vramTransfer = 0},
+    { .x = 0xC0, .y = 0x60, .z = 0, .animation = 0, .spritePriority = 0, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { 0xA01, 0xA03, 0xA02, 0xA04, 0, 0 }, .bgPriority = 0, .vramTransfer = 0},
+    { .x = 0x80, .y = 0x60, .z = 0, .animation = 0, .spritePriority = 0, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { 0xB01, 0xB03, 0xB02, 0xB04, 0, 0 }, .bgPriority = 0, .vramTransfer = 0},
+    { .x = 0xD8, .y = 0xB0, .z = 0, .animation = 0, .spritePriority = 0, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DSUB,  .resIdList = { 0xD01, 0xD03, 0xD02, 0xD04, 1, 0 }, .bgPriority = 0, .vramTransfer = 0},
+    { .x = 0,    .y = 0,    .z = 0, .animation = 0, .spritePriority = 0, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { 0xC01, 0xC03, 0xC02, 0xC04, 0, 0 }, .bgPriority = 0, .vramTransfer = 0},
+};
+static const u32 ov62_021E6694[7] = { 0, 1, 2, 3, 4, 4, 4 };
+
+static const TouchscreenHitbox sMicTestTouchscreenHitboxes[] = {
+    { .rect = { 160, 192, 184, 248 } }, // Return
+    { .rect = { TOUCHSCREEN_RECTLIST_END } },
+};
+
+static const OamManagerParam sMicTestOamManParam = {
+    .fromOBJmain    = 0,
+    .numOBJmain     = 128,
+    .fromAffineMain = 0,
+    .numAffineMain  = 32,
+    .fromOBJsub     = 0,
+    .numOBJsub      = 128,
+    .fromAffineSub  = 0,
+    .numAffineSub   = 32
+};
+
+static const OamCharTransferParam ov62_021E6668 = {
+    7,
+    0x20000,
+    0x4000,
+    GX_OBJVRAMMODE_CHAR_1D_32K,
+    GX_OBJVRAMMODE_CHAR_1D_32K
+};
+
+static const SpriteResourceCountsListUnion sMicTestResCountList = {
+    .numChar = 32,
+    .numPltt = 32,
+    .numCell = 32,
+    .numAnim = 32,
+    .numMcel = 0,
+    .numManm = 0
+};
+
+static const GraphicsModes sMicTestGraphicsMode = {
+    .dispMode  = GX_DISPMODE_GRAPHICS,
+    .bgMode    = GX_BGMODE_0,
+    .subMode   = GX_BGMODE_0,
+    ._2d3dMode = GX_BG0_AS_2D
+};
+
+static const struct {
+    u8 bgId;
+    u8 x;
+    u8 y;
+    u8 width;
+    u8 height;
+    u8 palNum;
+    u16 baseTile;
+    u8 fontId;
+    u32 color;
+} ov62_021E66F8[3] = {
+    {.bgId = 0,  .x = 1,  .y = 1,  .width = 9,  .height = 3, .palNum = 0, .baseTile = 1,    .fontId = 0, .color = 0xF0200},
+    { .bgId = 4, .x = 5,  .y = 8,  .width = 22, .height = 5, .palNum = 0, .baseTile = 1,    .fontId = 0, .color = 0xF0200},
+    { .bgId = 4, .x = 24, .y = 21, .width = 6,  .height = 2, .palNum = 0, .baseTile = 0x6F, .fontId = 4, .color = 0xE0F00},
+};
+
+const OVY_MGR_TEMPLATE gApplication_MicTest = { MicTest_Init, MicTest_Main, MicTest_Exit, FS_OVERLAY_ID_NONE };
+
+static void MicTestTask_FadeOut(MicTestTaskManager *taskMan, u32 *state);
+static void MicTestTask_End(MicTestTaskManager *taskMan, u32 *state);
+
+static void MicTest_EndTasks(MicTestData *micTest);
+static int MicTest_CheckReturn(MicTestData *data);
+
+BOOL MicTest_Init(OVY_MANAGER *overlayMan, int *state) {
     CreateHeap(HEAP_ID_3, HEAP_ID_MIC_TEST, 3 << 0x10);
     MicTestData *micTest = OverlayManager_CreateAndGetData(overlayMan, sizeof(MicTestData), HEAP_ID_MIC_TEST);
     MI_CpuFill8(micTest, 0, sizeof(MicTestData));
@@ -34,7 +180,7 @@ BOOL MicTest_Init(OVY_MANAGER *overlayMan) {
     return TRUE;
 }
 
-BOOL MicTest_Exit(OVY_MANAGER *overlayMan) {
+BOOL MicTest_Exit(OVY_MANAGER *overlayMan, int *state) {
     MicTestData *micTest = OverlayManager_GetData(overlayMan);
     ov62_021E61FC(&micTest->unkF0);
     ov62_021E5FA0(micTest);
@@ -49,7 +195,7 @@ BOOL MicTest_Exit(OVY_MANAGER *overlayMan) {
     return TRUE;
 }
 
-BOOL MicTest_Main(OVY_MANAGER *overlayMan) {
+BOOL MicTest_Main(OVY_MANAGER *overlayMan, int *state) {
     MicTestData *micTest = OverlayManager_GetData(overlayMan);
     if (MicTestTaskMan_IsFinished(&micTest->taskMan)) {
         return TRUE;
@@ -62,7 +208,7 @@ BOOL MicTest_Main(OVY_MANAGER *overlayMan) {
 }
 
 void MicTest_StartTask(MicTestTaskManager *taskMan, MicTestData *micTest, MicTestTask task) {
-    taskMan->micTest = micTest;
+    taskMan->micTest    = micTest;
     taskMan->isFinished = FALSE;
     MicTest_SetTask(taskMan, task);
 }
@@ -74,7 +220,7 @@ void MicTestTaskMan_Run(MicTestTaskManager *taskMan) {
 }
 
 void MicTest_SetTask(MicTestTaskManager *taskMan, MicTestTask task) {
-    taskMan->task = task;
+    taskMan->task  = task;
     taskMan->state = 0;
 }
 
@@ -120,7 +266,7 @@ void ov62_021E5B04(MicTestTaskManager *taskMan, u32 *state) {
         (*state) = 1;
         break;
     case 1:
-        if (ov62_021E6630(micTest)) {
+        if (MicTest_CheckReturn(micTest)) {
             PlaySE(SEQ_SE_DP_SELECT);
             (*state) = 2;
         }
@@ -152,14 +298,14 @@ void ov62_021E5B6C(MicTestTaskManager *taskMan, u32 *state) {
         }
         break;
     case 2:
-        MicTest_SetTask(taskMan, ov62_021E5BB8);
+        MicTest_SetTask(taskMan, MicTestTask_FadeOut);
         break;
     default:
         GF_ASSERT(FALSE);
     }
 }
 
-void ov62_021E5BB8(MicTestTaskManager *taskMan, u32 *state) {
+static void MicTestTask_FadeOut(MicTestTaskManager *taskMan, u32 *state) {
     MicTestData *micTest = MicTestTaskMan_GetMicTestData(taskMan);
 
     switch (*state) {
@@ -173,16 +319,16 @@ void ov62_021E5BB8(MicTestTaskManager *taskMan, u32 *state) {
         }
         break;
     case 2:
-        MicTest_SetTask(taskMan, ov62_021E5C20);
+        MicTest_SetTask(taskMan, MicTestTask_End);
         break;
     default:
         GF_ASSERT(FALSE);
     }
 }
 
-void ov62_021E5C20(MicTestTaskManager *taskMan, u32 *state) {
+static void MicTestTask_End(MicTestTaskManager *taskMan, u32 *state) {
     MicTestData *micTest = MicTestTaskMan_GetMicTestData(taskMan);
-    ov62_021E6600(micTest);
+    MicTest_EndTasks(micTest);
     MicTestTaskMan_Finish(taskMan);
 }
 
@@ -208,19 +354,17 @@ void ov62_021E5C80() {
     GXS_SetVisiblePlane(0);
 }
 
-extern GraphicsBanks sMicTestGraphicsBanks;
-
 void MicTest_SetBanks() {
     GfGfx_SetBanks(&sMicTestGraphicsBanks);
 }
 
-//TODO: Is this a library struct?
+// TODO: Is this a library struct?
 typedef struct UnkStruct_27E0000 {
     u8 unk_0000[0x3FF8];
     u32 unk_3FF8;
 } UnkStruct_27E0000;
 
-void MicTest_VBlankIntrCB(void *data){
+void MicTest_VBlankIntrCB(void *data) {
     MicTestData *micTest = data;
     NNS_GfdDoVramTransfer();
     ov62_021E5FC4(micTest);
@@ -229,19 +373,16 @@ void MicTest_VBlankIntrCB(void *data){
     unkStruct->unk_3FF8 |= 1;
 }
 
-extern Unk122_021E92FC ov62_021E66B0;
-extern Unk122_021E92D0 ov62_021E6668;
-extern SpriteResourceCountsListUnion ov62_021E667C;
-
 void ov62_021E5CF4(MicTestData *micTest, HeapID heapId) {
     SpriteRenderer *spriteRender = SpriteRenderer_Create(heapId);
+
     micTest->spriteRenderer = spriteRender;
-    sub_0200CF70(spriteRender, &ov62_021E66B0, &ov62_021E6668, 0x20);
+    SpriteRenderer_CreateOamCharPlttManagers(spriteRender, &sMicTestOamManParam, &ov62_021E6668, 0x20);
     sub_0200B2E0(heapId);
     sub_0200B2E8(heapId);
-    micTest->unk4 = SpriteRenderer_CreateGfxHandler(micTest->spriteRenderer);
-    sub_0200CFF4(micTest->spriteRenderer, micTest->unk4, 7);
-    SpriteRenderer_Init2DGfxResManagersFromCountsArray(micTest->spriteRenderer, micTest->unk4, &ov62_021E667C);
+    micTest->gfxHandler = SpriteRenderer_CreateGfxHandler(micTest->spriteRenderer);
+    SpriteRenderer_CreateSpriteList(micTest->spriteRenderer, micTest->gfxHandler, 7);
+    SpriteRenderer_Init2DGfxResManagersFromCountsArray(micTest->spriteRenderer, micTest->gfxHandler, (SpriteResourceCountsListUnion *)&sMicTestResCountList);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
@@ -255,35 +396,32 @@ void MicTest_UpdateAnimations(MicTestData *micTest) {
     for (u16 i = 0; i < 7; i++) {
         UnkImageStruct_TickSpriteAnimation1Frame(micTest->unk8[i]);
     }
-    sub_0200D020(micTest->unk4);
+    SpriteGfxHandler_RenderAndAnimateSprites(micTest->gfxHandler);
 }
 
-extern UnkTemplate_0200D748 ov62_021E67C8[7];
-extern u32 ov62_021E6694[7];
-
 void MicTest_LoadResources(MicTestData *micTest) {
-    SpriteRenderer_LoadPlttResObjFromNarcId(micTest->spriteRenderer, micTest->unk4, NARC_a_1_7_6, 6, 0, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 0xA03);
-    SpriteRenderer_LoadCellResObjFromNarcId(micTest->spriteRenderer, micTest->unk4, NARC_a_1_7_6, 8, 0, 0xA02);
-    SpriteRenderer_LoadAnimResObjFromNarcId(micTest->spriteRenderer, micTest->unk4, NARC_a_1_7_6, 9, 0, 0xA04);
-    SpriteRenderer_LoadCharResObjFromNarcId(micTest->spriteRenderer, micTest->unk4, NARC_a_1_7_6, 7, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 0xa01);
-    
-    SpriteRenderer_LoadPlttResObjFromNarcId(micTest->spriteRenderer, micTest->unk4, NARC_a_1_7_6, 10, 0, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 0xB03);
-    SpriteRenderer_LoadCellResObjFromNarcId(micTest->spriteRenderer, micTest->unk4, NARC_a_1_7_6, 12, 0, 0xB02);
-    SpriteRenderer_LoadAnimResObjFromNarcId(micTest->spriteRenderer, micTest->unk4, NARC_a_1_7_6, 13, 0, 0xB04);
-    SpriteRenderer_LoadCharResObjFromNarcId(micTest->spriteRenderer, micTest->unk4, NARC_a_1_7_6, 11, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 0xB01);
+    SpriteRenderer_LoadPlttResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 6, 0, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 0xA03);
+    SpriteRenderer_LoadCellResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 8, 0, 0xA02);
+    SpriteRenderer_LoadAnimResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 9, 0, 0xA04);
+    SpriteRenderer_LoadCharResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 7, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 0xa01);
 
-    SpriteRenderer_LoadPlttResObjFromNarcId(micTest->spriteRenderer, micTest->unk4, NARC_a_1_7_6, 18, 0, 1, NNS_G2D_VRAM_TYPE_2DSUB, 0xD03);
-    SpriteRenderer_LoadCellResObjFromNarcId(micTest->spriteRenderer, micTest->unk4, NARC_a_1_7_6, 20, 0, 0xD02);
-    SpriteRenderer_LoadAnimResObjFromNarcId(micTest->spriteRenderer, micTest->unk4, NARC_a_1_7_6, 21, 0, 0xD04);
-    SpriteRenderer_LoadCharResObjFromNarcId(micTest->spriteRenderer, micTest->unk4, NARC_a_1_7_6, 19, 0, NNS_G2D_VRAM_TYPE_2DSUB, 0xD01);
+    SpriteRenderer_LoadPlttResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 10, 0, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 0xB03);
+    SpriteRenderer_LoadCellResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 12, 0, 0xB02);
+    SpriteRenderer_LoadAnimResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 13, 0, 0xB04);
+    SpriteRenderer_LoadCharResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 11, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 0xB01);
 
-    SpriteRenderer_LoadPlttResObjFromNarcId(micTest->spriteRenderer, micTest->unk4, NARC_a_1_7_6, 14, 0, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 0xC03);
-    SpriteRenderer_LoadCellResObjFromNarcId(micTest->spriteRenderer, micTest->unk4, NARC_a_1_7_6, 16, 0, 0xC02);
-    SpriteRenderer_LoadAnimResObjFromNarcId(micTest->spriteRenderer, micTest->unk4, NARC_a_1_7_6, 17, 0, 0xC04);
-    SpriteRenderer_LoadCharResObjFromNarcId(micTest->spriteRenderer, micTest->unk4, NARC_a_1_7_6, 15, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 0xC01);
+    SpriteRenderer_LoadPlttResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 18, 0, 1, NNS_G2D_VRAM_TYPE_2DSUB, 0xD03);
+    SpriteRenderer_LoadCellResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 20, 0, 0xD02);
+    SpriteRenderer_LoadAnimResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 21, 0, 0xD04);
+    SpriteRenderer_LoadCharResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 19, 0, NNS_G2D_VRAM_TYPE_2DSUB, 0xD01);
+
+    SpriteRenderer_LoadPlttResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 14, 0, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 0xC03);
+    SpriteRenderer_LoadCellResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 16, 0, 0xC02);
+    SpriteRenderer_LoadAnimResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 17, 0, 0xC04);
+    SpriteRenderer_LoadCharResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 15, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 0xC01);
 
     for (u16 i = 0; i < 7; i++) {
-        micTest->unk8[i] = SpriteRenderer_LoadResourcesAndCreateSprite(micTest->spriteRenderer, micTest->unk4, &ov62_021E67C8[ov62_021E6694[i]]);
+        micTest->unk8[i] = SpriteRenderer_LoadResourcesAndCreateSprite(micTest->spriteRenderer, micTest->gfxHandler, &ov62_021E67C8[ov62_021E6694[i]]);
         UnkImageStruct_SetSpriteAnimActiveFlag(micTest->unk8[i], TRUE);
     }
 
@@ -302,7 +440,7 @@ void ov62_021E5FA0(MicTestData *micTest) {
             UnkImageStruct_Delete(micTest->unk8[i]);
         }
     }
-    SpriteRenderer_UnloadResourcesAndRemoveGfxHandler(micTest->spriteRenderer, micTest->unk4);
+    SpriteRenderer_UnloadResourcesAndRemoveGfxHandler(micTest->spriteRenderer, micTest->gfxHandler);
 }
 
 void ov62_021E5FC4(MicTestData *micTest) {
@@ -311,18 +449,9 @@ void ov62_021E5FC4(MicTestData *micTest) {
     }
 }
 
-extern GraphicsModes ov62_021E6658;
-extern struct {
-    BgTemplate bgTemplate;
-    u8 unk1C;
-    u8 unk1D;
-    u8 unk1E;
-    u8 unk1F;
-} ov62_021E6728[5];
-
 void ov62_021E5FD4(MicTestSub_B8 *a0, HeapID heapId) {
     a0->bgConfig = BgConfig_Alloc(heapId);
-    SetBothScreensModesAndDisable(&ov62_021E6658);
+    SetBothScreensModesAndDisable(&sMicTestGraphicsMode);
 
     for (u32 i = 0; i < 5; i++) {
         InitBgFromTemplate(a0->bgConfig, ov62_021E6728[i].unk1C, &ov62_021E6728[i].bgTemplate, ov62_021E6728[i].unk1D);
@@ -339,7 +468,6 @@ void ov62_021E6024(MicTestSub_B8 *a0) {
 }
 
 void ov62_021E6048(MicTestSub_B8 *a0) {
-    
 }
 
 void MicTest_LoadTextResources(MicTestSub_B8 *a0, HeapID heapId) {
@@ -357,18 +485,6 @@ void ov62_021E60D4(MicTestSub_B8 *a0) {
         DoScheduledBgGpuUpdates(a0->bgConfig);
     }
 }
-
-extern struct {
-    u8 bgId;
-    u8 x;
-    u8 y;
-    u8 width;
-    u8 height;
-    u8 palNum;
-    u16 baseTile;
-    u8 fontId;
-    u32 color;
-} ov62_021E66F8[3];
 
 void ov62_021E60E4(MicTestSub_B8 *a0, HeapID heapId) {
     a0->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, 0xea, heapId);
@@ -396,19 +512,19 @@ void ov62_021E6178(MicTestSub_B8 *a0) {
 
 void ov62_021E61AC(MicTestSub_F0 *a0, HeapID heapId, MICCallback a2, MicTestData *micTest) {
     Sys_SetSleepDisableFlag(8);
-    
+
     void *data = AllocFromHeap(heapId, 0x120);
     MI_CpuFill8(data, 0, 0x120);
     a0->unk1C = data;
-    
-    a0->mic.type = MIC_SAMPLING_TYPE_8BIT;
-    a0->mic.buffer = (void *)((((u32)data) + 0x1F) & ~0x1F); //??????
-    a0->mic.size = (1 << 8);
-    a0->mic.rate = 0x1040;
-    a0->mic.loop_enable = TRUE;
+
+    a0->mic.type          = MIC_SAMPLING_TYPE_8BIT;
+    a0->mic.buffer        = (void *)((((u32)data) + 0x1F) & ~0x1F); //??????
+    a0->mic.size          = (1 << 8);
+    a0->mic.rate          = 0x1040;
+    a0->mic.loop_enable   = TRUE;
     a0->mic.full_callback = a2;
-    a0->mic.full_arg = micTest;
-    
+    a0->mic.full_arg      = micTest;
+
     a0->unk34 = sub_02005518();
 }
 
@@ -420,7 +536,7 @@ void ov62_021E61FC(MicTestSub_F0 *a0) {
 void ov62_021E620C(MicTestSub_F0 *a0) {
     u32 next = sub_02005518();
 
-    if (next == 0 || a0->unk34 == 0) { 
+    if (next == 0 || a0->unk34 == 0) {
         if (a0->unk30 == 0) {
             if (a0->unk28) {
                 ov62_021E6278(a0);
@@ -431,14 +547,14 @@ void ov62_021E620C(MicTestSub_F0 *a0) {
 
         if (next != 0 && a0->unk34 == 0) {
             a0->unk30 = 0;
-            
+
             if (a0->unk2C) {
                 ov62_021E625C(a0);
                 a0->unk2C = 0;
             }
         }
     }
-    
+
     a0->unk34 = next;
 }
 
@@ -459,11 +575,11 @@ void ov62_021E6278(MicTestSub_F0 *a0) {
 s32 MicTest_AverageMicInput(MicTestSub_F0 *a0) {
     int i;
     u8 *buffer;
-    
-    int cnt = 0;
+
+    int cnt  = 0;
     int size = a0->mic.size - 1;
-    buffer = a0->mic.buffer;
-    
+    buffer   = a0->mic.buffer;
+
     for (i = 0; i < size; i++) {
         if (buffer[i] < 0x80) {
             cnt += 0x100 - buffer[i];
@@ -474,13 +590,13 @@ s32 MicTest_AverageMicInput(MicTestSub_F0 *a0) {
     return cnt / size;
 }
 
-extern struct {
+static struct {
     u32 unk0;
 } _021E68E0;
 
 void MicTest_MicrophoneCallback(MICResult result, void *data) {
     MicTestData *micTest = data;
-    
+
     if (result != MIC_RESULT_SUCCESS) {
         return;
     }
@@ -489,16 +605,16 @@ void MicTest_MicrophoneCallback(MICResult result, void *data) {
 
     s32 volumeAvg = MicTest_AverageMicInput(unkF0);
     u32 volume;
-    
+
     if (unkF0->curVolume < volumeAvg) {
-        volume = MicTest_GetVolumeBracket(volumeAvg);
+        volume           = MicTest_GetVolumeBracket(volumeAvg);
         unkF0->curVolume = volumeAvg;
-        unkF0->unk24 = 1;
+        unkF0->unk24     = 1;
     } else {
         volume = MicTest_GetVolumeBracket(unkF0->curVolume);
         unkF0->curVolume -= 2;
     }
-    
+
     if (volume) {
         if (unkF0->unk24) {
             UnkImageStruct_SetSpriteAnimSeqNo(micTest->unk8[2], 1);
@@ -514,7 +630,7 @@ void MicTest_MicrophoneCallback(MICResult result, void *data) {
                 micTest->unkB4 = 10;
             }
         }
-        
+
         UnkImageStruct_SetSpriteAnimSeqNo(micTest->unk8[0], volume);
         UnkImageStruct_SetSpriteAnimSeqNo(micTest->unk8[1], volume);
     } else if (volume == 0) {
@@ -522,27 +638,27 @@ void MicTest_MicrophoneCallback(MICResult result, void *data) {
         UnkImageStruct_SetSpriteAnimSeqNo(micTest->unk8[0], 0);
         UnkImageStruct_SetSpriteAnimSeqNo(micTest->unk8[1], 0);
     }
-    
+
     _021E68E0.unk0++;
 }
 
-u32 MicTest_GetVolumeBracket(u8 a0) {
+u32 MicTest_GetVolumeBracket(u8 volume) {
     u32 ret;
 
-    if (a0 <= 0x8C) {
+    if (volume <= 0x8C) {
         ret = 0;
-    } else if (a0 >= 0x8D && a0 <= 0x98) {
+    } else if (volume >= 0x8D && volume <= 0x98) {
         ret = 1;
-    } else if (a0 >= 0x99 && a0 <= 0xA6) {
+    } else if (volume >= 0x99 && volume <= 0xA6) {
         ret = 2;
-    } else if (a0 >= 0xA7 && a0 <= 0xBB) {
+    } else if (volume >= 0xA7 && volume <= 0xBB) {
         ret = 3;
-    } else if (a0 >= 0xBC) {
+    } else if (volume >= 0xBC) {
         ret = 4;
     } else {
         GF_ASSERT(FALSE);
     }
- 
+
     return ret;
 }
 
@@ -557,7 +673,7 @@ u32 ov62_021E63D0(MicTestData *micTest) {
 
 BOOL ov62_021E63E8(MicTestData *micTest, HeapID heapId, s16 x, s16 y) {
     UnkImageStruct *flag = 0;
-    MicTestSub_24 *args = NULL;
+    MicTestSub_24 *args  = NULL;
     for (int i = 0; i < 3; i++) {
         if (micTest->unk24[i].task == NULL) {
             args = &micTest->unk24[i];
@@ -578,7 +694,7 @@ BOOL ov62_021E63E8(MicTestData *micTest, HeapID heapId, s16 x, s16 y) {
 }
 
 void ov62_021E6480(UnkImageStruct *a0, MicTestSub_24 *args, s16 x, s16 y, s32 z, s32 r1, s32 r2, BOOL a7) {
-    args->task = SysTask_CreateOnMainQueue(ov62_021E6570, args, 0);
+    args->task          = SysTask_CreateOnMainQueue(ov62_021E6570, args, 0);
     MicTestSub_24 *data = SysTask_GetData(args->task);
 
     data->unk0 = a0;
@@ -588,9 +704,9 @@ void ov62_021E6480(UnkImageStruct *a0, MicTestSub_24 *args, s16 x, s16 y, s32 z,
     data->unk8.y = FX32_CONST(y);
     data->unk8.z = 0;
 
-    s32 sine = GF_SinDegNoWrap(r1 + 90);
+    s32 sine      = GF_SinDegNoWrap(r1 + 90);
     data->unk14.x = FX_MUL(z, sine);
-    sine = GF_SinDegNoWrap(r1);
+    sine          = GF_SinDegNoWrap(r1);
     data->unk14.y = -FX_MUL(z, sine);
     data->unk14.z = 0;
 
@@ -613,18 +729,18 @@ void ov62_021E6570(SysTask *task, void *_data) {
 
     VEC_Add(&data->unk8, &data->unk14, &data->unk8);
 
-    s16 x = data->unk8.x >> 12;
-    s16 y = data->unk8.y >> 12;
+    s16 x       = data->unk8.x >> 12;
+    s16 y       = data->unk8.y >> 12;
     data->unk20 = data->unk20 + data->unk24;
 
     while (data->unk20 > FX32_CONST(360)) {
         data->unk20 -= FX32_CONST(360);
     }
-    
+
     x += GF_SinDegNoWrap(data->unk20 >> 12) * data->unk28 >> 12;
-    
+
     UnkImageStruct_SetSpritePositionXY(data->unk0, x, y);
-    
+
     if (y < -16) {
         UnkImageStruct_SetSpriteVisibleFlag(data->unk0, FALSE);
         SysTask_Destroy(task);
@@ -632,7 +748,7 @@ void ov62_021E6570(SysTask *task, void *_data) {
     }
 }
 
-void ov62_021E6600(MicTestData *micTest) {
+static void MicTest_EndTasks(MicTestData *micTest) {
     for (int i = 0; i < 3; i++) {
         if (micTest->unk24[i].task != NULL) {
             SysTask_Destroy(micTest->unk24[i].task);
@@ -641,14 +757,12 @@ void ov62_021E6600(MicTestData *micTest) {
     }
 }
 
-extern TouchscreenHitbox _021E6650;
-
-int ov62_021E6620() {
-    return TouchscreenHitbox_FindRectAtTouchNew(&_021E6650);
+static int MicTest_CheckTouchscreenInput() {
+    return TouchscreenHitbox_FindRectAtTouchNew(&sMicTestTouchscreenHitboxes[0]);
 }
 
-int ov62_021E6630(MicTestData *data) {
-    if (ov62_021E6620() == 0 || (gSystem.newKeys & 2)) {
+static int MicTest_CheckReturn(MicTestData *data) {
+    if (MicTest_CheckTouchscreenInput() == TS_HITBOX_MIC_TEST_RETURN || (gSystem.newKeys & 2)) {
         return TRUE;
     }
     return FALSE;

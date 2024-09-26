@@ -2396,19 +2396,19 @@ static BOOL ov12_0224BCA4(BattleSystem *bsys, BattleContext *ctx) {
 }
 
 static const u8 sHitChanceTable[13][2] = {
-    { 33,  100 },
-    { 36,  100 },
-    { 43,  100 },
-    { 50,  100 },
-    { 60,  100 },
-    { 75,  100 },
-    { 1,   1   },
-    { 133, 100 },
-    { 166, 100 },
-    { 2,   1   },
-    { 233, 100 },
-    { 133, 50  },
-    { 3,   1   }
+    {33,   100},
+    { 36,  100},
+    { 43,  100},
+    { 50,  100},
+    { 60,  100},
+    { 75,  100},
+    { 1,   1  },
+    { 133, 100},
+    { 166, 100},
+    { 2,   1  },
+    { 233, 100},
+    { 133, 50 },
+    { 3,   1  }
 };
 
 static BOOL BattleSystem_CheckMoveHit(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int move) {

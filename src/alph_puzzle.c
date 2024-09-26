@@ -195,10 +195,10 @@ static void Task_AlphPuzzle_WaitDropCursorAnimOnQuit(SysTask *task, void *_data)
 
 // Used to detect hovering over corners
 static const u8 sCornerCoords[4][2] = {
-    { 0, 0 },
-    { 5, 0 },
-    { 0, 5 },
-    { 5, 5 },
+    {0,  0},
+    { 5, 0},
+    { 0, 5},
+    { 5, 5},
 };
 
 // Region occupied by the QUIT button
@@ -208,10 +208,10 @@ static const TouchscreenHitbox sButtonHitboxes[] = {
 };
 
 static const s8 sTileRotationXYOffsets[4][2] = {
-    { 0,  0  },
-    { -1, 0  },
-    { -1, -1 },
-    { 0,  -1 },
+    {0,   0 },
+    { -1, 0 },
+    { -1, -1},
+    { 0,  -1},
 };
 
 #define ALPH_TILE_BLANK ((AlphPuzzleInitTileData) { 0, 0, FALSE })
@@ -544,9 +544,9 @@ static const BgTemplate sBgTemplate4 = {
 };
 
 static const WindowTemplate sWindowTemplates[3] = {
-    { 2, 26, 21, 6,  3, 3, 0x3EE },
-    { 0, 2,  19, 27, 4, 4, 0x05B },
-    { 4, 4,  15, 24, 6, 3, 0x001 },
+    {2,  26, 21, 6,  3, 3, 0x3EE},
+    { 0, 2,  19, 27, 4, 4, 0x05B},
+    { 4, 4,  15, 24, 6, 3, 0x001},
 };
 
 static const OamManagerParam ov110_021E6EA4 = { 0, 128, 0, 32, 0, 128, 0, 32 };
@@ -564,12 +564,12 @@ static const u16 sResdatInfo[7] = {
 };
 
 static const UnkStruct_0200D2B4 sSpriteTemplates[3] = {
-    // Drop cursor
-    { ALPH_SPRITE_RES_CURSORS,     208, 168, 0, 0, 3, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
-    // Origin cursor
-    { ALPH_SPRITE_RES_CURSORS,     208, 168, 0, 3, 1, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
-    // Tile
-    { ALPH_SPRITE_RES_PUZZLETILES, 208, 168, 0, 0, 2, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 }
+  // Drop cursor
+    {ALPH_SPRITE_RES_CURSORS,      208, 168, 0, 0, 3, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0},
+ // Origin cursor
+    { ALPH_SPRITE_RES_CURSORS,     208, 168, 0, 3, 1, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0},
+ // Tile
+    { ALPH_SPRITE_RES_PUZZLETILES, 208, 168, 0, 0, 2, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0}
 };
 
 static const u32 sQuitButtonTextColors[3] = {

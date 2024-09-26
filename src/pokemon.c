@@ -64,37 +64,37 @@ void sub_02072190(BoxPokemon *boxMon, PlayerProfile *a1, u32 pokeball, u32 a3, u
 #define DECRYPT_PTY(mon)       MonDecryptSegment(ENCRY_ARGS_PTY(mon))
 #define DECRYPT_BOX(boxMon)    MonDecryptSegment(ENCRY_ARGS_BOX(boxMon))
 #define CHECKSUM(boxMon)       CalcMonChecksum((u16 *)(boxMon)->substructs, sizeof((boxMon)->substructs))
-#define SHINY_CHECK(otid, pid) ((                                                                                                                      \
-                                    ((((otid) & 0xFFFF0000u) >> 16u)) ^ (((otid) & 0xFFFFu)) ^ ((((pid) & 0xFFFF0000u) >> 16u)) ^ (((pid) & 0xFFFFu))) \
+#define SHINY_CHECK(otid, pid) ((                                                                                                              \
+                                    (((otid) & 0xFFFF0000u) >> 16u) ^ ((otid) & 0xFFFFu) ^ (((pid) & 0xFFFF0000u) >> 16u) ^ ((pid) & 0xFFFFu)) \
     < 8u)
 #define CALC_UNOWN_LETTER(pid) ((u32)((((pid) & 0x3000000) >> 18) | (((pid) & 0x30000) >> 12) | (((pid) & 0x300) >> 6) | (((pid) & 0x3) >> 0)) % 28u)
 
 static const s8 sFlavorPreferencesByNature[NATURE_NUM][FLAVOR_MAX] = {
-    { 0,  0,  0,  0,  0  },
-    { 1,  0,  0,  0,  -1 },
-    { 1,  0,  -1, 0,  0  },
-    { 1,  -1, 0,  0,  0  },
-    { 1,  0,  0,  -1, 0  },
-    { -1, 0,  0,  0,  1  },
-    { 0,  0,  0,  0,  0  },
-    { 0,  0,  -1, 0,  1  },
-    { 0,  -1, 0,  0,  1  },
-    { 0,  0,  0,  -1, 1  },
-    { -1, 0,  1,  0,  0  },
-    { 0,  0,  1,  0,  -1 },
-    { 0,  0,  0,  0,  0  },
-    { 0,  -1, 1,  0,  0  },
-    { 0,  0,  1,  -1, 0  },
-    { -1, 1,  0,  0,  0  },
-    { 0,  1,  0,  0,  -1 },
-    { 0,  1,  -1, 0,  0  },
-    { 0,  0,  0,  0,  0  },
-    { 0,  1,  0,  -1, 0  },
-    { -1, 0,  0,  1,  0  },
-    { 0,  0,  0,  1,  -1 },
-    { 0,  0,  -1, 1,  0  },
-    { 0,  -1, 0,  1,  0  },
-    { 0,  0,  0,  0,  0  },
+    {0,   0,  0,  0,  0 },
+    { 1,  0,  0,  0,  -1},
+    { 1,  0,  -1, 0,  0 },
+    { 1,  -1, 0,  0,  0 },
+    { 1,  0,  0,  -1, 0 },
+    { -1, 0,  0,  0,  1 },
+    { 0,  0,  0,  0,  0 },
+    { 0,  0,  -1, 0,  1 },
+    { 0,  -1, 0,  0,  1 },
+    { 0,  0,  0,  -1, 1 },
+    { -1, 0,  1,  0,  0 },
+    { 0,  0,  1,  0,  -1},
+    { 0,  0,  0,  0,  0 },
+    { 0,  -1, 1,  0,  0 },
+    { 0,  0,  1,  -1, 0 },
+    { -1, 1,  0,  0,  0 },
+    { 0,  1,  0,  0,  -1},
+    { 0,  1,  -1, 0,  0 },
+    { 0,  0,  0,  0,  0 },
+    { 0,  1,  0,  -1, 0 },
+    { -1, 0,  0,  1,  0 },
+    { 0,  0,  0,  1,  -1},
+    { 0,  0,  -1, 1,  0 },
+    { 0,  -1, 0,  1,  0 },
+    { 0,  0,  0,  0,  0 },
 };
 
 void ZeroMonData(Pokemon *mon) {
@@ -1960,31 +1960,31 @@ u8 GetNatureFromPersonality(u32 pid) {
 }
 
 const s8 gNatureStatMods[NATURE_NUM][NUM_EV_STATS] = {
-    { 0,  0,  0,  0,  0  },
-    { 1,  -1, 0,  0,  0  },
-    { 1,  0,  -1, 0,  0  },
-    { 1,  0,  0,  -1, 0  },
-    { 1,  0,  0,  0,  -1 },
-    { -1, 1,  0,  0,  0  },
-    { 0,  0,  0,  0,  0  },
-    { 0,  1,  -1, 0,  0  },
-    { 0,  1,  0,  -1, 0  },
-    { 0,  1,  0,  0,  -1 },
-    { -1, 0,  1,  0,  0  },
-    { 0,  -1, 1,  0,  0  },
-    { 0,  0,  0,  0,  0  },
-    { 0,  0,  1,  -1, 0  },
-    { 0,  0,  1,  0,  -1 },
-    { -1, 0,  0,  1,  0  },
-    { 0,  -1, 0,  1,  0  },
-    { 0,  0,  -1, 1,  0  },
-    { 0,  0,  0,  0,  0  },
-    { 0,  0,  0,  1,  -1 },
-    { -1, 0,  0,  0,  1  },
-    { 0,  -1, 0,  0,  1  },
-    { 0,  0,  -1, 0,  1  },
-    { 0,  0,  0,  -1, 1  },
-    { 0,  0,  0,  0,  0  },
+    {0,   0,  0,  0,  0 },
+    { 1,  -1, 0,  0,  0 },
+    { 1,  0,  -1, 0,  0 },
+    { 1,  0,  0,  -1, 0 },
+    { 1,  0,  0,  0,  -1},
+    { -1, 1,  0,  0,  0 },
+    { 0,  0,  0,  0,  0 },
+    { 0,  1,  -1, 0,  0 },
+    { 0,  1,  0,  -1, 0 },
+    { 0,  1,  0,  0,  -1},
+    { -1, 0,  1,  0,  0 },
+    { 0,  -1, 1,  0,  0 },
+    { 0,  0,  0,  0,  0 },
+    { 0,  0,  1,  -1, 0 },
+    { 0,  0,  1,  0,  -1},
+    { -1, 0,  0,  1,  0 },
+    { 0,  -1, 0,  1,  0 },
+    { 0,  0,  -1, 1,  0 },
+    { 0,  0,  0,  0,  0 },
+    { 0,  0,  0,  1,  -1},
+    { -1, 0,  0,  0,  1 },
+    { 0,  -1, 0,  0,  1 },
+    { 0,  0,  -1, 0,  1 },
+    { 0,  0,  0,  -1, 1 },
+    { 0,  0,  0,  0,  0 },
 };
 
 u16 ModifyStatByNature(u8 nature, u16 n, u8 statIndex) {
@@ -2014,16 +2014,16 @@ u16 ModifyStatByNature(u8 nature, u16 n, u8 statIndex) {
 }
 
 static const s8 sFriendshipModTable[FRIENDSHIP_EVENT_NUM][FRIENDSHIP_TIER_NUM] = {
-    { 5,  3,  2   }, // FRIENDSHIP_EVENT_GROW_LEVEL
-    { 5,  3,  2   }, // FRIENDSHIP_EVENT_VITAMIN
-    { 1,  1,  0   }, // FRIENDSHIP_EVENT_BATTLE_ITEM
-    { 3,  2,  1   }, // FRIENDSHIP_EVENT_LEAGUE_BATTLE
-    { 1,  1,  0   }, // FRIENDSHIP_EVENT_LEARN_TMHM
-    { 1,  1,  1   }, // FRIENDSHIP_EVENT_WALKING
-    { -1, -1, -1  }, // FRIENDSHIP_EVENT_FAINT_SMALL
-    { -5, -5, -10 }, // FRIENDSHIP_EVENT_HEAL_FIELD_PSN
-    { -5, -5, -10 }, // FRIENDSHIP_EVENT_FAINT_LARGE
-    { 3,  2,  1   }, // FRIENDHSIP_EVENT_CONTEST_WIN
+    {5,   3,  2  }, // FRIENDSHIP_EVENT_GROW_LEVEL
+    { 5,  3,  2  }, // FRIENDSHIP_EVENT_VITAMIN
+    { 1,  1,  0  }, // FRIENDSHIP_EVENT_BATTLE_ITEM
+    { 3,  2,  1  }, // FRIENDSHIP_EVENT_LEAGUE_BATTLE
+    { 1,  1,  0  }, // FRIENDSHIP_EVENT_LEARN_TMHM
+    { 1,  1,  1  }, // FRIENDSHIP_EVENT_WALKING
+    { -1, -1, -1 }, // FRIENDSHIP_EVENT_FAINT_SMALL
+    { -5, -5, -10}, // FRIENDSHIP_EVENT_HEAL_FIELD_PSN
+    { -5, -5, -10}, // FRIENDSHIP_EVENT_FAINT_LARGE
+    { 3,  2,  1  }, // FRIENDHSIP_EVENT_CONTEST_WIN
 };
 
 void MonApplyFriendshipMod(Pokemon *mon, u8 kind, u16 location) {
@@ -2675,7 +2675,7 @@ u8 GetMonPicHeightBySpeciesGenderForm_PBR(u16 species, u8 gender, u8 whichFacing
 }
 
 static const struct UnkTemplate_0200D748 _020FF588 = {
-    0, 0, 0, 0, 0, 0, NNS_G2D_VRAM_TYPE_2DMAIN, { 0x4E2F, 0x4E2A, 0x4E27, 0x4E27, -1u, -1u },
+    0, 0, 0, 0, 0, 0, NNS_G2D_VRAM_TYPE_2DMAIN, {0x4E2F, 0x4E2A, 0x4E27, 0x4E27, -1u, -1u},
            2, 1
 };
 
@@ -3733,8 +3733,8 @@ void sub_02072190(BoxPokemon *boxMon, PlayerProfile *a1, u32 pokeball, u32 a3, u
 }
 
 static const u16 sItemOdds[2][2] = {
-    { 45, 95 },
-    { 20, 80 },
+    {45,  95},
+    { 20, 80},
 };
 
 void WildMonSetRandomHeldItem(Pokemon *mon, u32 a1, u32 a2) {
@@ -3949,38 +3949,38 @@ u32 CalcMonChecksum(void *_data, u32 size) {
 
 PokemonDataBlock *GetSubstruct(BoxPokemon *boxMon, u32 pid, u8 which) {
     static const u8 offsets[32][4] = {
-        { 0x00, 0x20, 0x40, 0x60 },
-        { 0x00, 0x20, 0x60, 0x40 },
-        { 0x00, 0x40, 0x20, 0x60 },
-        { 0x00, 0x60, 0x20, 0x40 },
-        { 0x00, 0x40, 0x60, 0x20 },
-        { 0x00, 0x60, 0x40, 0x20 },
-        { 0x20, 0x00, 0x40, 0x60 },
-        { 0x20, 0x00, 0x60, 0x40 },
-        { 0x40, 0x00, 0x20, 0x60 },
-        { 0x60, 0x00, 0x20, 0x40 },
-        { 0x40, 0x00, 0x60, 0x20 },
-        { 0x60, 0x00, 0x40, 0x20 },
-        { 0x20, 0x40, 0x00, 0x60 },
-        { 0x20, 0x60, 0x00, 0x40 },
-        { 0x40, 0x20, 0x00, 0x60 },
-        { 0x60, 0x20, 0x00, 0x40 },
-        { 0x40, 0x60, 0x00, 0x20 },
-        { 0x60, 0x40, 0x00, 0x20 },
-        { 0x20, 0x40, 0x60, 0x00 },
-        { 0x20, 0x60, 0x40, 0x00 },
-        { 0x40, 0x20, 0x60, 0x00 },
-        { 0x60, 0x20, 0x40, 0x00 },
-        { 0x40, 0x60, 0x20, 0x00 },
-        { 0x60, 0x40, 0x20, 0x00 },
-        { 0x00, 0x20, 0x40, 0x60 },
-        { 0x00, 0x20, 0x60, 0x40 },
-        { 0x00, 0x40, 0x20, 0x60 },
-        { 0x00, 0x60, 0x20, 0x40 },
-        { 0x00, 0x40, 0x60, 0x20 },
-        { 0x00, 0x60, 0x40, 0x20 },
-        { 0x20, 0x00, 0x40, 0x60 },
-        { 0x20, 0x00, 0x60, 0x40 },
+        {0x00,  0x20, 0x40, 0x60},
+        { 0x00, 0x20, 0x60, 0x40},
+        { 0x00, 0x40, 0x20, 0x60},
+        { 0x00, 0x60, 0x20, 0x40},
+        { 0x00, 0x40, 0x60, 0x20},
+        { 0x00, 0x60, 0x40, 0x20},
+        { 0x20, 0x00, 0x40, 0x60},
+        { 0x20, 0x00, 0x60, 0x40},
+        { 0x40, 0x00, 0x20, 0x60},
+        { 0x60, 0x00, 0x20, 0x40},
+        { 0x40, 0x00, 0x60, 0x20},
+        { 0x60, 0x00, 0x40, 0x20},
+        { 0x20, 0x40, 0x00, 0x60},
+        { 0x20, 0x60, 0x00, 0x40},
+        { 0x40, 0x20, 0x00, 0x60},
+        { 0x60, 0x20, 0x00, 0x40},
+        { 0x40, 0x60, 0x00, 0x20},
+        { 0x60, 0x40, 0x00, 0x20},
+        { 0x20, 0x40, 0x60, 0x00},
+        { 0x20, 0x60, 0x40, 0x00},
+        { 0x40, 0x20, 0x60, 0x00},
+        { 0x60, 0x20, 0x40, 0x00},
+        { 0x40, 0x60, 0x20, 0x00},
+        { 0x60, 0x40, 0x20, 0x00},
+        { 0x00, 0x20, 0x40, 0x60},
+        { 0x00, 0x20, 0x60, 0x40},
+        { 0x00, 0x40, 0x20, 0x60},
+        { 0x00, 0x60, 0x20, 0x40},
+        { 0x00, 0x40, 0x60, 0x20},
+        { 0x00, 0x60, 0x40, 0x20},
+        { 0x20, 0x00, 0x40, 0x60},
+        { 0x20, 0x00, 0x60, 0x40},
     };
 
     pid = ((pid & 0x3E000) >> 13);
@@ -4938,31 +4938,31 @@ static const u16 sPokeathlonPerformanceArcIdxs[] = {
 };
 
 static const s8 sPokeathlonPerformanceNatureMods[NATURE_NUM][5] = {
-    { 10,  0,   0,   0,   -10 },
-    { 35,  -35, 0,   0,   0   },
-    { 35,  0,   0,   0,   -35 },
-    { 35,  0,   0,   -35, 0   },
-    { 35,  0,   -35, 0,   0   },
-    { -35, 35,  0,   0,   0   },
-    { 0,   10,  0,   -10, 0   },
-    { 0,   35,  0,   0,   -35 },
-    { 0,   35,  0,   -35, 0   },
-    { 0,   35,  -35, 0,   0   },
-    { -35, 0,   0,   0,   35  },
-    { 0,   -35, 0,   0,   35  },
-    { 0,   0,   -10, 0,   10  },
-    { 0,   0,   0,   -35, 35  },
-    { 0,   0,   -35, 0,   35  },
-    { -35, 0,   0,   35,  0   },
-    { 0,   -35, 0,   35,  0   },
-    { 0,   0,   0,   35,  -35 },
-    { -10, 0,   0,   10,  0   },
-    { 0,   0,   -35, 35,  0   },
-    { -35, 0,   35,  0,   0   },
-    { 0,   -35, 35,  0,   0   },
-    { 0,   0,   35,  0,   -35 },
-    { 0,   0,   35,  -35, 0   },
-    { 0,   -10, 10,  0,   0   },
+    {10,   0,   0,   0,   -10},
+    { 35,  -35, 0,   0,   0  },
+    { 35,  0,   0,   0,   -35},
+    { 35,  0,   0,   -35, 0  },
+    { 35,  0,   -35, 0,   0  },
+    { -35, 35,  0,   0,   0  },
+    { 0,   10,  0,   -10, 0  },
+    { 0,   35,  0,   0,   -35},
+    { 0,   35,  0,   -35, 0  },
+    { 0,   35,  -35, 0,   0  },
+    { -35, 0,   0,   0,   35 },
+    { 0,   -35, 0,   0,   35 },
+    { 0,   0,   -10, 0,   10 },
+    { 0,   0,   0,   -35, 35 },
+    { 0,   0,   -35, 0,   35 },
+    { -35, 0,   0,   35,  0  },
+    { 0,   -35, 0,   35,  0  },
+    { 0,   0,   0,   35,  -35},
+    { -10, 0,   0,   10,  0  },
+    { 0,   0,   -35, 35,  0  },
+    { -35, 0,   35,  0,   0  },
+    { 0,   -35, 35,  0,   0  },
+    { 0,   0,   35,  0,   -35},
+    { 0,   0,   35,  -35, 0  },
+    { 0,   -10, 10,  0,   0  },
 };
 
 void CalcBoxMonPokeathlonPerformance(BoxPokemon *boxMon, struct PokeathlonTodayPerformance *dest) {

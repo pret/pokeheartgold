@@ -857,7 +857,6 @@ Overlay OVY_62
 {
     After main
     Object src/overlay_mic_test.o
-    Object asm/overlay_62.o
 }
 Overlay OVY_63
 {

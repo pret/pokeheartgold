@@ -69,20 +69,20 @@ static void ViewPhotoSysTask_PrintTextOnWindows(ViewPhotoSysTaskData *viewPhoto)
 static u8 Photo_CountValidMons(Photo *a0);
 
 static const WindowTemplate ov19_0225A04E[2] = {
-    { .bgId       = GF_BG_LYR_SUB_1,
+    {.bgId       = GF_BG_LYR_SUB_1,
      .left     = 24,
      .top      = 21,
      .width    = 8,
      .height   = 2,
      .palette  = 1,
-     .baseTile = 0x1F0 },
+     .baseTile = 0x1F0},
     { .bgId       = GF_BG_LYR_SUB_1,
      .left     = 1,
      .top      = 8,
      .width    = 28,
      .height   = 8,
      .palette  = 10,
-     .baseTile = 0x110 }
+     .baseTile = 0x110}
 };
 
 static const TouchscreenHitbox ov19_0225A05E[] = {

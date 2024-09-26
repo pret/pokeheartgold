@@ -27,13 +27,13 @@ struct UnkStruct_020F67A4 {
 };
 
 static const struct UnkStruct_020F67A4 sFormOverrides[] = {
-    { 0x1EE, 0x21C, SPECIES_GIRATINA, GIRATINA_ORIGIN },
-    { 0x1F3, 0x21D, SPECIES_SHAYMIN,  SHAYMIN_SKY     },
-    { 0x1E6, 0x21E, SPECIES_ROTOM,    ROTOM_HEAT      },
-    { 0x1E6, 0x21F, SPECIES_ROTOM,    ROTOM_WASH      },
-    { 0x1E6, 0x220, SPECIES_ROTOM,    ROTOM_FROST     },
-    { 0x1E6, 0x221, SPECIES_ROTOM,    ROTOM_FAN       },
-    { 0x1E6, 0x222, SPECIES_ROTOM,    ROTOM_MOW       },
+    {0x1EE,  0x21C, SPECIES_GIRATINA, GIRATINA_ORIGIN},
+    { 0x1F3, 0x21D, SPECIES_SHAYMIN,  SHAYMIN_SKY    },
+    { 0x1E6, 0x21E, SPECIES_ROTOM,    ROTOM_HEAT     },
+    { 0x1E6, 0x21F, SPECIES_ROTOM,    ROTOM_WASH     },
+    { 0x1E6, 0x220, SPECIES_ROTOM,    ROTOM_FROST    },
+    { 0x1E6, 0x221, SPECIES_ROTOM,    ROTOM_FAN      },
+    { 0x1E6, 0x222, SPECIES_ROTOM,    ROTOM_MOW      },
 };
 
 int MailArray_GetFirstEmptySlotIdx(Mail *msgs, int nmsg);

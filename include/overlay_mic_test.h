@@ -1,12 +1,13 @@
 #ifndef POKEHEARTGOLD_MIC_TEST_H
 #define POKEHEARTGOLD_MIC_TEST_H
 
+#include "bg_window.h"
 #include "msgdata.h"
 #include "overlay_manager.h"
 #include "system.h"
 #include "unk_0200CF18.h"
 
-//Should be static, but not fully decompiled yet
+// Should be static, but not fully decompiled yet
 typedef struct MicTestData MicTestData;
 typedef struct MicTestTaskManager MicTestTaskManager;
 
@@ -41,15 +42,15 @@ typedef struct MicTestSub_24 {
     u32 unk4;
     VecFx32 unk8;
     VecFx32 unk14;
-    fx32 unk20;//angle?
-    fx32 unk24;//dTheta?
-    fx32 unk28;//magnitude?
+    fx32 unk20; // angle?
+    fx32 unk24; // dTheta?
+    fx32 unk28; // magnitude?
     SysTask *task;
 } MicTestSub_24;
 
 struct MicTestData {
     SpriteRenderer *spriteRenderer;
-    SpriteGfxHandler *unk4;
+    SpriteGfxHandler *gfxHandler;
     UnkImageStruct *unk8[7];
     MicTestSub_24 unk24[3];
     u32 unkB4;
@@ -59,9 +60,9 @@ struct MicTestData {
     HeapID heapId;
 };
 
-BOOL MicTest_Init(OVY_MANAGER *overlayMan);
-BOOL MicTest_Exit(OVY_MANAGER *overlayMan);
-BOOL MicTest_Main(OVY_MANAGER *overlayMan);
+BOOL MicTest_Init(OVY_MANAGER *overlayMan, int *state);
+BOOL MicTest_Exit(OVY_MANAGER *overlayMan, int *state);
+BOOL MicTest_Main(OVY_MANAGER *overlayMan, int *state);
 void MicTest_StartTask(MicTestTaskManager *a0, MicTestData *data, MicTestTask a2);
 void MicTestTaskMan_Run(MicTestTaskManager *a0);
 void MicTest_SetTask(MicTestTaskManager *a0, MicTestTask a1);
@@ -103,12 +104,11 @@ void ov62_021E6480(UnkImageStruct *a0, MicTestSub_24 *args, s16 x, s16 y, s32 z,
 void ov62_021E6570(SysTask *, void *);
 int ov62_021E6620();
 
-//Still in asm
+// Still in asm
 void MicTest_LoadTextResources(MicTestSub_B8 *a0, HeapID heapId);
 BOOL ov62_021E6630(MicTestData *micTest);
 void ov62_021E6600(MicTestData *micTest);
 
+extern const OVY_MGR_TEMPLATE gApplication_MicTest;
 
-
-
-#endif //POKEHEARTGOLD_MIC_TEST_H
+#endif // POKEHEARTGOLD_MIC_TEST_H
