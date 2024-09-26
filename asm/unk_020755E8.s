@@ -907,7 +907,7 @@ sub_02075A7C: ; 0x02075A7C
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	bl sub_0203A880
 	add r0, r4, #0
 	add sp, #0x24
@@ -1024,7 +1024,7 @@ sub_02075D4C: ; 0x02075D4C
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, _02075E10 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]

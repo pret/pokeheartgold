@@ -1149,9 +1149,9 @@ _0225476A:
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
-	bl sub_02002B50
+	bl TextFlags_SetAutoScrollParam
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, _022547D0 ; =ov03_022598A0
 	mov r3, #0
 	ldr r2, [r0]

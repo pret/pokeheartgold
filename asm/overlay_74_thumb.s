@@ -24356,7 +24356,7 @@ ov74_022330D0: ; 0x022330D0
 	beq _0223310C
 	bl ov74_02232B18
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, _0223312C ; =ov74_0223C9B8
 	lsl r1, r4, #2
 	ldr r0, [r0, r1]
@@ -24384,7 +24384,7 @@ _0223310C:
 	cmp r0, #0
 	bne _02233126
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _02233126:
@@ -24405,7 +24405,7 @@ ov74_02233134: ; 0x02233134
 	beq _02233170
 	bl ov74_02232B18
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, _02233194 ; =ov74_0223C9B8
 	lsl r1, r4, #2
 	ldr r0, [r0, r1]
@@ -24435,7 +24435,7 @@ _02233170:
 	add r0, r5, #0
 	bl ov74_02232F5C
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _02233190:
@@ -24458,7 +24458,7 @@ ov74_0223319C: ; 0x0223319C
 	beq _022331DE
 	bl ov74_02232B18
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r1, #0x46
 	ldr r0, [r5, #8]
 	lsl r1, r1, #4
@@ -24488,7 +24488,7 @@ _022331DE:
 	cmp r0, #0
 	bne _0223321C
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _022331FC:
@@ -24502,7 +24502,7 @@ _022331FC:
 	beq _0223321C
 _0223320C:
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, _02233220 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #1

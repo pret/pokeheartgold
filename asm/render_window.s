@@ -799,7 +799,7 @@ DrawFrameAndWindow2: ; 0x0200E998
 	bl CopyWindowToVram
 _0200E9B2:
 	add r0, r6, #0
-	bl sub_020027F0
+	bl TextPrinter_SetDownArrowBaseTile
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end DrawFrameAndWindow2
@@ -1668,7 +1668,7 @@ _0200F094:
 	bl CopyWindowToVram
 _0200F0A0:
 	add r0, r6, #0
-	bl sub_020027F0
+	bl TextPrinter_SetDownArrowBaseTile
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

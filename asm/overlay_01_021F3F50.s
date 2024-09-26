@@ -558,9 +558,9 @@ ov01_021F4360: ; 0x021F4360
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
-	bl sub_02002B50
+	bl TextFlags_SetAutoScrollParam
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	add r0, r4, #0
 	ldr r1, [r4]
 	add r0, #0x1c

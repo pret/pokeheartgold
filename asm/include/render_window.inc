@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_020027F0
+.public TextPrinter_SetDownArrowBaseTile
 .public CreateSysTaskAndEnvironment
 .public DestroySysTaskAndEnvironment
 .public AllocAndReadWholeNarcMemberByIdPair

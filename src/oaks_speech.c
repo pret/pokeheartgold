@@ -558,7 +558,7 @@ BOOL OakSpeech_Init(OVY_MANAGER *ovyMan, int *pState) {
     data->namingScreenArgs_Rival        = NamingScreen_CreateArgs(HEAP_ID_OAKS_SPEECH, NAME_SCREEN_RIVAL, 0, PLAYER_NAME_LENGTH, data->options, NULL);
     data->lastChosenGender              = 0;
     data->frameDelayCounter             = 0;
-    sub_02002B8C(FALSE);
+    TextFlags_SetCanTouchSpeedUpPrint(FALSE);
     FontID_Alloc(4, data->heapId);
     return TRUE;
 }
@@ -648,7 +648,7 @@ BOOL OakSpeech_Exit(OVY_MANAGER *ovyMan, int *pState) {
     OverlayManager_FreeData(ovyMan);
     DestroyHeap(heapId);
     RegisterMainOverlay(FS_OVERLAY_ID(OVY_36), &ov36_App_InitGameState_AfterOakSpeech);
-    sub_02002B8C(FALSE);
+    TextFlags_SetCanTouchSpeedUpPrint(FALSE);
     return TRUE;
 }
 
@@ -943,7 +943,7 @@ static BOOL OakSpeech_PrintDialogMsg(OakSpeechData *data, int msgNum, int waitBu
         DrawFrameAndWindow2(&data->dialogWindow, FALSE, 0x3E2, 4);
 
         TextFlags_SetCanABSpeedUpPrint(TRUE);
-        sub_02002B50(FALSE);
+        TextFlags_SetAutoScrollParam(FALSE);
 
         String *temp = String_New(0x400, data->heapId);
         data->string = String_New(0x400, data->heapId);

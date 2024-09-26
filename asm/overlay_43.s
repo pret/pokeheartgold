@@ -494,7 +494,7 @@ _0222A2DE:
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov43_0222A290
@@ -507,7 +507,7 @@ ov43_0222A2F0: ; 0x0222A2F0
 	add r4, r1, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, [r4, #4]
 	ldr r1, [r5]
 	bl sub_02018410
@@ -764,9 +764,9 @@ ov43_0222A48C: ; 0x0222A48C
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
-	bl sub_02002B50
+	bl TextFlags_SetAutoScrollParam
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	pop {r4, r5, r6, pc}
 	nop
 _0222A4FC: .word gSystem + 0x60
@@ -1402,7 +1402,7 @@ ov43_0222A9F4: ; 0x0222A9F4
 	cmp r0, #1
 	bne _0222AA22
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	add r0, r5, #0
 	add r0, #0x84
 	ldr r0, [r0]
@@ -1422,7 +1422,7 @@ _0222AA22:
 	ldr r2, [r5, #0x78]
 	bl StringExpandPlaceholders
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r0, #4
 	str r0, [sp]
 	mov r0, #2
@@ -1457,7 +1457,7 @@ ov43_0222AA70: ; 0x0222AA70
 	cmp r0, #1
 	bne _0222AA98
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	add r0, r4, #0
 	add r0, #0x84
 	ldr r0, [r0]
@@ -2794,7 +2794,7 @@ ov43_0222B4BC: ; 0x0222B4BC
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0x38]
@@ -2836,8 +2836,8 @@ ov43_0222B534: ; 0x0222B534
 	cmp r0, #0
 	bne _0222B556
 	mov r0, #0
-	bl sub_02002B8C
-	bl sub_02002C04
+	bl TextFlags_SetCanTouchSpeedUpPrint
+	bl TextFlags_GetIsTouchSpeedingUpPrint
 	str r0, [r4]
 	mov r0, #1
 	pop {r4, pc}
@@ -4923,7 +4923,7 @@ ov43_0222C550: ; 0x0222C550
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r3, #0
 	add r0, r5, #0
 	add r2, r5, #0
@@ -4972,8 +4972,8 @@ ov43_0222C5D8: ; 0x0222C5D8
 	cmp r0, #0
 	bne _0222C5FC
 	mov r0, #0
-	bl sub_02002B8C
-	bl sub_02002C04
+	bl TextFlags_SetCanTouchSpeedUpPrint
+	bl TextFlags_GetIsTouchSpeedingUpPrint
 	str r0, [r4]
 	mov r0, #1
 	pop {r4, pc}

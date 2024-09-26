@@ -197,7 +197,7 @@ ov68_021E5A58: ; 0x021E5A58
 	and r0, r1
 	str r0, [r2]
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
 	bl sub_020183F0
@@ -277,7 +277,7 @@ ov68_021E5B14: ; 0x021E5B14
 	ldr r1, [r4, r1]
 	bl sub_02018410
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	bl GF_DestroyVramTransferManager
 	mov r0, #0
 	add r1, r0, #0

@@ -1635,7 +1635,7 @@ ov90_0225938C: ; 0x0225938C
 	bl Options_GetFrame
 	add r4, r0, #0
 	mov r0, #1
-	bl sub_02002C60
+	bl TextFlags_BeginAutoScroll
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -1724,7 +1724,7 @@ _0225943E:
 	add r6, #0x10
 	cmp r4, #2
 	blt _0225943E
-	bl sub_02002C90
+	bl TextFlags_EndAutoScroll
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov90_02259434

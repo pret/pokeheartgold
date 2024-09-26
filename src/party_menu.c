@@ -279,7 +279,7 @@ static BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
         thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
     }
     sub_0207A89C(partyMenu);
-    sub_02002B8C(TRUE);
+    TextFlags_SetCanTouchSpeedUpPrint(TRUE);
     Main_SetVBlankIntrCB(sub_020796B8, partyMenu);
     sub_0203A994(2);
     FontID_Alloc(4, HEAP_ID_PARTY_MENU);
@@ -611,7 +611,7 @@ static int PartyMenu_Subtask_UseTMHM(PartyMenu *partyMenu) {
 static BOOL PartyMenuApp_Exit(OVY_MANAGER *manager, int *pState) {
     u32 i;
     PartyMenu *partyMenu = (PartyMenu *)OverlayManager_GetData(manager);
-    sub_02002B8C(FALSE);
+    TextFlags_SetCanTouchSpeedUpPrint(FALSE);
     Main_SetVBlankIntrCB(NULL, NULL);
     PartyMenu_RemoveSpriteRenderer(partyMenu);
     PartyMenu_RemoveAllWindows(partyMenu);

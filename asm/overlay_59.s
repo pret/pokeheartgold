@@ -1159,7 +1159,7 @@ _022385C4:
 	mov r0, #1
 	str r0, [r4, #0x40]
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r0, #0xff
 	add r4, #0x47
 	strb r0, [r4]
@@ -1182,7 +1182,7 @@ _022385F4:
 	ldr r0, _02238618 ; =0x000005DC
 	bl PlaySE
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r0, #0xff
 	add r4, #0x47
 	strb r0, [r4]
@@ -2063,7 +2063,7 @@ ov59_02238CFC: ; 0x02238CFC
 	cmp r4, #0
 	beq _02238D4E
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r3, #0
 	str r3, [sp]
 	str r4, [sp, #4]
@@ -7443,7 +7443,7 @@ ov59_0223B68C: ; 0x0223B68C
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r3, [r6]
 	mov r0, #0
 	mov r1, #0x1b
@@ -7504,7 +7504,7 @@ ov59_0223B6FC: ; 0x0223B6FC
 	ldr r0, [r4, #0x5c]
 	bl DestroyMsgData
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #4

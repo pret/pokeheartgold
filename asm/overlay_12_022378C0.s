@@ -1109,9 +1109,9 @@ _022386C0:
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
-	bl sub_02002B50
+	bl TextFlags_SetAutoScrollParam
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, [r4, #8]
 	mov r1, #3
 	bl WindowArray_Delete
@@ -4950,19 +4950,19 @@ ov12_0223A620: ; 0x0223A620
 	beq _0223A648
 _0223A634:
 	mov r0, #1
-	bl sub_02002B50
+	bl TextFlags_SetAutoScrollParam
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	pop {r3, pc}
 _0223A648:
 	mov r0, #3
-	bl sub_02002B50
+	bl TextFlags_SetAutoScrollParam
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	pop {r3, pc}
 	.balign 4, 0
 _0223A65C: .word 0x00000404

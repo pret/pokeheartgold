@@ -5,8 +5,8 @@
 .public ListMenu_ProcessInput
 .public DestroyListMenu
 .public TextFlags_SetCanABSpeedUpPrint
-.public sub_02002B50
-.public sub_02002B8C
+.public TextFlags_SetAutoScrollParam
+.public TextFlags_SetCanTouchSpeedUpPrint
 .public FontID_String_GetWidth
 .public LoadFontPal1
 .public BlendPalette

@@ -2,8 +2,22 @@
 #define POKEHEARTGOLD_RENDER_TEXT_H
 
 #include "text.h"
+#include "touchscreen.h"
 
-struct TextPrinterSubStruct {
+typedef struct TextFlags {
+    u8 canABSpeedUpPrint      : 1;
+    u8 useAlternateDownArrow  : 1;
+    u8 autoScroll             : 1;
+    u8 forceMidTextSpeed      : 1;
+    u8 canTouchSpeedUpPrint   : 1;
+    u8 autoScrollCanSpeedUp   : 1;
+    u8 hasSpedUpInput         : 1;
+    u8 hasContinuedInput      : 1;
+    u8 touchIsSpeedingUpPrint : 1;
+    u8 touchHitboxActive      : 1;
+} TextFlags;
+
+typedef struct TextPrinterSubStruct {
     u8 fontId             : 4; // 0x14
     u8 hasPrintBeenSpedUp : 1;
     u8 unk                : 3;
@@ -11,13 +25,22 @@ struct TextPrinterSubStruct {
     u8 downArrowYPosIdx   : 2;
     u8 hasFontIdBeenSet   : 1;
     u8 autoScrollDelay    : 8;
-};
+} TextPrinterSubStruct;
 
 RenderResult RenderText(TextPrinter *printer);
 void TextFlags_SetCanABSpeedUpPrint(BOOL enable);
-void sub_020027F0(int a0);
-void sub_02002B50(u32 a0);
-void sub_02002B8C(BOOL enable);
-void sub_02002C60(BOOL a0);
+void TextPrinter_SetDownArrowBaseTile(int tile);
+void TextFlags_SetAutoScrollParam(int a0);
+void TextFlags_SetCanTouchSpeedUpPrint(BOOL enable);
+void TextFlags_SetAlternateDownArrow(BOOL enable);
+u8 TextFlags_GetHasSpedUpInput();
+void TextFlags_ResetHasSpedUpInput(void);
+u8 TextFlags_GetHasContinuedInput(void);
+void TextFlags_ResetHasContinuedInput(void);
+BOOL TextFlags_GetIsTouchSpeedingUpPrint(void);
+void TextFlags_SetFastForwardTouchButtonHitbox(const TouchscreenHitbox *hitbox);
+void TextFlags_UnsetFastForwardTouchButtonHitbox(void);
+void TextFlags_BeginAutoScroll(BOOL noSpeedUp);
+void TextFlags_EndAutoScroll(void);
 
 #endif // POKEHEARTGOLD_RENDER_TEXT_H

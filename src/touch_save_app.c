@@ -207,7 +207,7 @@ SysTask *ov30_0225D520(BgConfig *bgConfig, void *a1, FieldSystem *fieldSystem, v
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_ON);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 
-    sub_02002B8C(TRUE);
+    TextFlags_SetCanTouchSpeedUpPrint(TRUE);
 
     return task;
 }
@@ -224,7 +224,7 @@ void ov30_0225D64C(BgConfig *bgConfig, SysTask *task) {
     ov01_021F434C(data->unk40);
     ov01_021F43D0(data->unk40);
 
-    sub_02002B8C(FALSE);
+    TextFlags_SetCanTouchSpeedUpPrint(FALSE);
 
     if (ov123_0225F520(ov30_0225DC08)) {
         AllocFromHeapAtEnd(HEAP_ID_3, 1000);

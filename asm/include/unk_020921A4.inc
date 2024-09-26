@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public RegisterMainOverlay
-.public sub_02002B8C
+.public TextFlags_SetCanTouchSpeedUpPrint
 .public LoadFontPal0
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData

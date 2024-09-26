@@ -3999,7 +3999,7 @@ ov112_021E7768: ; 0x021E7768
 	add r0, r4, #0
 	bl ov112_021EA4F4
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	add r0, r4, #0
 	bl ov112_021E9C98
 	ldr r0, _021E77D8 ; =ov112_021E79A8
@@ -4173,7 +4173,7 @@ ov112_021E7910: ; 0x021E7910
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	add r0, r4, #0
 	bl ov112_021E77E4
 	add r0, r5, #0

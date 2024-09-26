@@ -1171,7 +1171,7 @@ ov44_0222A758: ; 0x0222A758
 _0222A780:
 	bl UnloadDwcOverlay
 	mov r0, #0
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	b _0222A792
 _0222A78C:
 	bl ov00_021E6EBC
@@ -10966,9 +10966,9 @@ _0222F5F8:
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
-	bl sub_02002B50
+	bl TextFlags_SetAutoScrollParam
 	mov r0, #1
-	bl sub_02002B8C
+	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r3, #0
 	str r3, [sp]
 	str r4, [sp, #4]
