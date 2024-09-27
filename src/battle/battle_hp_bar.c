@@ -12,6 +12,8 @@ void ov12_02264B94(BattleHpBar *hpBar);
 void ov12_02264DCC(BattleHpBar *hpBar, int hp);
 void ov12_02264E34(BattleHpBar *hpBar, int a1);
 void ov12_02264F00(BattleHpBar *hpBar, int a1);
+void ov12_02264F44(BattleHpBar *hpBar, int x, int y);
+void ov12_02265054(SysTask *task, void *data);
 void ov12_0226516C(BattleHpBar *hpBar);
 void ov12_022652D0(BattleHpBar *hpBar);
 void ov12_02265354(BattleHpBar *hpBar);
@@ -355,3 +357,235 @@ void BattleHpBar_SetEnabled(BattleHpBar *hpBar, BOOL a1) {
         ov12_02264F00(hpBar, a1);
     }
 }
+
+void ov12_02264F44(BattleHpBar *hpBar, int x, int y) {
+    GF_ASSERT(hpBar->unk4 != NULL);
+
+    const UnkTemplate_0200D748 *r4 = ov12_02265BB8(hpBar->type);
+    Sprite_SetPositionXY(hpBar->unk4->sprite, r4->x + x, r4->y + y);
+    if (hpBar->unk8 != NULL) {
+        Sprite_SetPositionXY(hpBar->unk8->sprite, r4->x + x - ov12_0226D368[hpBar->type], r4->y + y);
+    }
+}
+
+SysTask *ov12_02264FB0(BattleHpBar *hpBar, BOOL a1) {
+    GF_ASSERT(hpBar != NULL);
+    GF_ASSERT(hpBar->unk4 != NULL);
+    hpBar->unk_4F_1 = FALSE;
+    hpBar->unk_4F_0 = a1;
+    if (!a1) {
+        switch (hpBar->type) {
+        case 0:
+        case 2:
+        case 4:
+        case 6:
+        case 7:
+            ov12_02264F44(hpBar, 160, 0);
+            break;
+        default:
+            ov12_02264F44(hpBar, -160, 0);
+            break;
+        }
+    } else {
+        ov12_02264F44(hpBar, 0, 0);
+    }
+    return SysTask_CreateOnMainQueue(ov12_02265054, hpBar, 990);
+}
+
+#ifdef NONMATCHING // https://decomp.me/scratch/Q0zRs
+void ov12_02265054(SysTask *task, void *data) {
+    BattleHpBar *hpBar             = data;
+    int r4                         = 0;
+    const UnkTemplate_0200D748 *r6 = ov12_02265BB8(hpBar->type);
+    s16 x, y;
+
+    UnkImageStruct_GetSpritePositionXY(hpBar->unk4, &x, &y);
+
+    switch (hpBar->type) {
+    case 0:
+    case 2:
+    case 4:
+    case 6:
+    case 7:
+        if (!hpBar->unk_4F_0) {
+            x -= 24;
+            if (x < r6->x) {
+                x = r6->x;
+                ++r4;
+            }
+        } else {
+            x += 24;
+            if (x > r6->x + 160) {
+                x = r6->x + 160;
+                ++r4;
+            }
+        }
+        break;
+    default:
+        if (!hpBar->unk_4F_0) {
+            x += 24;
+            if (x > r6->x) {
+                x = r6->x;
+                ++r4;
+            }
+        } else {
+            x -= 24;
+            if (x < r6->x - 24) {
+                x = r6->x - 24;
+                ++r4;
+            }
+        }
+        break;
+    }
+    UnkImageStruct_SetSpritePositionXY(hpBar->unk4, x, y);
+    if (hpBar->unk8 != NULL) {
+        UnkImageStruct_SetSpritePositionXY(hpBar->unk8, x - ov12_0226D368[hpBar->type], y);
+    }
+    if (r4 > 0) {
+        hpBar->unk_4F_1 = TRUE;
+        SysTask_Destroy(task);
+    }
+}
+#else
+// clang-format off
+asm void ov12_02265054(SysTask *task, void *data) {
+	push {r3, r4, r5, r6, r7, lr}
+	add r5, r1, #0
+	add r7, r0, #0
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0]
+	mov r4, #0
+	bl ov12_02265BB8
+	add r6, r0, #0
+	add r1, sp, #0
+	ldr r0, [r5, #4]
+	add r1, #2
+	add r2, sp, #0
+	bl UnkImageStruct_GetSpritePositionXY
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0]
+	cmp r0, #7
+	bhi _022650DA
+	add r0, r0, r0
+	add r0, pc
+	ldrh r0, [r0, #6]
+	lsl r0, r0, #0x10
+	asr r0, r0, #0x10
+	add pc, r0
+_0226508A: // jump table
+    lsl r6, r1, #0
+    DCD 0x000E004E
+    DCD 0x000E004E
+    DCD 0x000E004E
+    lsl r6, r1, #0
+_0226509A:
+	add r0, r5, #0
+	add r0, #0x4f
+	ldrb r0, [r0]
+	lsl r0, r0, #0x1f
+	lsr r0, r0, #0x1f
+	add r0, sp, #0
+	bne _022650C0
+	mov r1, #2
+	ldrsh r2, [r0, r1]
+	sub r2, #0x18
+	strh r2, [r0, #2]
+	add r2, r4, #0
+	ldrsh r1, [r0, r1]
+	ldrsh r2, [r6, r2]
+	cmp r1, r2
+	bge _02265118
+	strh r2, [r0, #2]
+	add r4, r4, #1
+	b _02265118
+_022650C0:
+	mov r1, #2
+	ldrsh r2, [r0, r1]
+	add r2, #0x18
+	strh r2, [r0, #2]
+	add r2, r4, #0
+	ldrsh r2, [r6, r2]
+	ldrsh r1, [r0, r1]
+	add r2, #0xa0
+	cmp r1, r2
+	ble _02265118
+	strh r2, [r0, #2]
+	add r4, r4, #1
+	b _02265118
+_022650DA:
+	add r0, r5, #0
+	add r0, #0x4f
+	ldrb r0, [r0]
+	lsl r0, r0, #0x1f
+	lsr r0, r0, #0x1f
+	add r0, sp, #0
+	bne _02265100
+	mov r1, #2
+	ldrsh r2, [r0, r1]
+	add r2, #0x18
+	strh r2, [r0, #2]
+	mov r2, #0
+	ldrsh r1, [r0, r1]
+	ldrsh r2, [r6, r2]
+	cmp r1, r2
+	ble _02265118
+	strh r2, [r0, #2]
+	add r4, r4, #1
+	b _02265118
+_02265100:
+	mov r1, #2
+	ldrsh r2, [r0, r1]
+	sub r2, #0x18
+	strh r2, [r0, #2]
+	mov r2, #0
+	ldrsh r2, [r6, r2]
+	ldrsh r1, [r0, r1]
+	sub r2, #0x18
+	cmp r1, r2
+	bge _02265118
+	strh r2, [r0, #2]
+	add r4, r4, #1
+_02265118:
+	add r2, sp, #0
+	mov r1, #2
+	mov r3, #0
+	ldrsh r1, [r2, r1]
+	ldrsh r2, [r2, r3]
+	ldr r0, [r5, #4]
+	bl UnkImageStruct_SetSpritePositionXY
+	ldr r0, [r5, #8]
+	cmp r0, #0
+	beq _0226514C
+	add r6, sp, #0
+	mov r1, #2
+	ldrsh r3, [r6, r1]
+	add r1, r5, #0
+	add r1, #0x25
+	ldrb r2, [r1]
+	ldr r1, =ov12_0226D368
+	ldrsb r1, [r1, r2]
+	mov r2, #0
+	ldrsh r2, [r6, r2]
+	sub r1, r3, r1
+	lsl r1, r1, #0x10
+	asr r1, r1, #0x10
+	bl UnkImageStruct_SetSpritePositionXY
+_0226514C:
+	cmp r4, #0
+	ble _02265164
+	add r0, r5, #0
+	add r0, #0x4f
+	ldrb r1, [r0]
+	mov r0, #2
+	add r5, #0x4f
+	orr r0, r1
+	strb r0, [r5]
+	add r0, r7, #0
+	bl SysTask_Destroy
+_02265164:
+	pop {r3, r4, r5, r6, r7, pc}
+}
+//clang-format on
+#endif //NONMATCHING
