@@ -323,9 +323,9 @@ void ReadKeypadAndTouchpad(void) {
         adrs |= tmp;                      \
     }
 
-#define BUTTON_HIDE(adrs, pat)  \
-    {                           \
-        adrs &= (pat ^ 0xFFFF); \
+#define BUTTON_HIDE(adrs, pat)    \
+    {                             \
+        adrs &= ((pat) ^ 0xFFFF); \
     }
 
 void sub_0201A5E8(void) {
