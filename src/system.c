@@ -346,9 +346,9 @@ void sub_0201A5E8(void) {
         BUTTON_COPY(gSystem.newKeys, PAD_BUTTON_L, PAD_BUTTON_A);
         BUTTON_COPY(gSystem.heldKeys, PAD_BUTTON_L, PAD_BUTTON_A);
         BUTTON_COPY(gSystem.newAndRepeatedKeys, PAD_BUTTON_L, PAD_BUTTON_A);
-        BUTTON_HIDE(gSystem.newKeys, (PAD_BUTTON_L | PAD_BUTTON_R));
-        BUTTON_HIDE(gSystem.heldKeys, (PAD_BUTTON_L | PAD_BUTTON_R));
-        BUTTON_HIDE(gSystem.newAndRepeatedKeys, (PAD_BUTTON_L | PAD_BUTTON_R));
+        BUTTON_HIDE(gSystem.newKeys, PAD_BUTTON_L | PAD_BUTTON_R);
+        BUTTON_HIDE(gSystem.heldKeys, PAD_BUTTON_L | PAD_BUTTON_R);
+        BUTTON_HIDE(gSystem.newAndRepeatedKeys, PAD_BUTTON_L | PAD_BUTTON_R);
         break;
     }
 }

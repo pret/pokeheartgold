@@ -187,7 +187,7 @@ static LocalMapObject *CreateDaycareMonSpriteInternal(MapObjectManager *object_m
     MapObject_SetID(lmo, obj_daycare_poke_1 + dc_mon_idx);
     MapObject_SetType(lmo, 0);
     MapObject_SetFlagID(lmo, 0);
-    MapObject_SetScript(lmo, 0);
+    MapObject_SetScriptID(lmo, 0);
     MapObject_SetParam(lmo, 0, 2);
     FollowMon_SetObjectParams(lmo, species, (u32)form, shiny);
     MapObject_SetXRange(lmo, -1);
