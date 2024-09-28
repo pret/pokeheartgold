@@ -6,397 +6,6 @@
 
 	.extern ov12_02264F44
 
-	thumb_func_start ov12_02265B64
-ov12_02265B64: ; 0x02265B64
-	push {r3, lr}
-	cmp r0, #5
-	bhi _02265BB0
-	add r0, r0, r0
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_02265B76: ; jump table
-	.short _02265B82 - _02265B76 - 2 ; case 0
-	.short _02265B9C - _02265B76 - 2 ; case 1
-	.short _02265BA0 - _02265B76 - 2 ; case 2
-	.short _02265BA4 - _02265B76 - 2 ; case 3
-	.short _02265BA8 - _02265B76 - 2 ; case 4
-	.short _02265BAC - _02265B76 - 2 ; case 5
-_02265B82:
-	mov r0, #2
-	lsl r0, r0, #8
-	tst r0, r1
-	beq _02265B8E
-	mov r0, #7
-	pop {r3, pc}
-_02265B8E:
-	mov r0, #0x20
-	tst r0, r1
-	beq _02265B98
-	mov r0, #6
-	pop {r3, pc}
-_02265B98:
-	mov r0, #0
-	pop {r3, pc}
-_02265B9C:
-	mov r0, #1
-	pop {r3, pc}
-_02265BA0:
-	mov r0, #2
-	pop {r3, pc}
-_02265BA4:
-	mov r0, #3
-	pop {r3, pc}
-_02265BA8:
-	mov r0, #4
-	pop {r3, pc}
-_02265BAC:
-	mov r0, #5
-	pop {r3, pc}
-_02265BB0:
-	bl GF_AssertFail
-	mov r0, #0
-	pop {r3, pc}
-	thumb_func_end ov12_02265B64
-
-	thumb_func_start ov12_02265BB8
-ov12_02265BB8: ; 0x02265BB8
-	push {r3, lr}
-	cmp r0, #7
-	bhi _02265BF6
-	add r0, r0, r0
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_02265BCA: ; jump table
-	.short _02265BDA - _02265BCA - 2 ; case 0
-	.short _02265BDE - _02265BCA - 2 ; case 1
-	.short _02265BE2 - _02265BCA - 2 ; case 2
-	.short _02265BE6 - _02265BCA - 2 ; case 3
-	.short _02265BEA - _02265BCA - 2 ; case 4
-	.short _02265BEE - _02265BCA - 2 ; case 5
-	.short _02265BF2 - _02265BCA - 2 ; case 6
-	.short _02265BF2 - _02265BCA - 2 ; case 7
-_02265BDA:
-	ldr r0, _02265C00 ; =ov12_0226D5E4
-	pop {r3, pc}
-_02265BDE:
-	ldr r0, _02265C04 ; =ov12_0226D618
-	pop {r3, pc}
-_02265BE2:
-	ldr r0, _02265C08 ; =ov12_0226D4E0
-	pop {r3, pc}
-_02265BE6:
-	ldr r0, _02265C0C ; =ov12_0226D514
-	pop {r3, pc}
-_02265BEA:
-	ldr r0, _02265C10 ; =ov12_0226D57C
-	pop {r3, pc}
-_02265BEE:
-	ldr r0, _02265C14 ; =ov12_0226D64C
-	pop {r3, pc}
-_02265BF2:
-	ldr r0, _02265C18 ; =ov12_0226D5B0
-	pop {r3, pc}
-_02265BF6:
-	bl GF_AssertFail
-	mov r0, #0
-	pop {r3, pc}
-	nop
-_02265C00: .word ov12_0226D5E4
-_02265C04: .word ov12_0226D618
-_02265C08: .word ov12_0226D4E0
-_02265C0C: .word ov12_0226D514
-_02265C10: .word ov12_0226D57C
-_02265C14: .word ov12_0226D64C
-_02265C18: .word ov12_0226D5B0
-	thumb_func_end ov12_02265BB8
-
-	thumb_func_start ov12_02265C1C
-ov12_02265C1C: ; 0x02265C1C
-	push {r3, lr}
-	cmp r0, #7
-	bhi _02265C46
-	add r0, r0, r0
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_02265C2E: ; jump table
-	.short _02265C3E - _02265C2E - 2 ; case 0
-	.short _02265C42 - _02265C2E - 2 ; case 1
-	.short _02265C3E - _02265C2E - 2 ; case 2
-	.short _02265C42 - _02265C2E - 2 ; case 3
-	.short _02265C3E - _02265C2E - 2 ; case 4
-	.short _02265C42 - _02265C2E - 2 ; case 5
-	.short _02265C3E - _02265C2E - 2 ; case 6
-	.short _02265C3E - _02265C2E - 2 ; case 7
-_02265C3E:
-	ldr r0, _02265C50 ; =ov12_0226D548
-	pop {r3, pc}
-_02265C42:
-	mov r0, #0
-	pop {r3, pc}
-_02265C46:
-	bl GF_AssertFail
-	mov r0, #0
-	pop {r3, pc}
-	nop
-_02265C50: .word ov12_0226D548
-	thumb_func_end ov12_02265C1C
-
-	thumb_func_start ov12_02265C54
-ov12_02265C54: ; 0x02265C54
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	add r6, r1, #0
-	mov r0, #0
-	strb r0, [r6]
-	mov r0, #5
-	mov r1, #0xc
-	bl AllocFromHeap
-	mov r1, #0
-	mov r2, #0xc
-	add r4, r0, #0
-	bl MI_CpuFill8
-	mov r2, #0xfa
-	str r5, [r4]
-	ldr r0, _02265C84 ; =ov12_02265C88
-	add r1, r4, #0
-	lsl r2, r2, #2
-	str r6, [r4, #4]
-	bl SysTask_CreateOnMainQueue
-	pop {r4, r5, r6, pc}
-	nop
-_02265C84: .word ov12_02265C88
-	thumb_func_end ov12_02265C54
-
-	thumb_func_start ov12_02265C88
-ov12_02265C88: ; 0x02265C88
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	add r4, r1, #0
-	add r7, r0, #0
-	ldr r0, [r4]
-	ldr r0, [r0, #0xc]
-	bl ov12_0223A8EC
-	add r5, r0, #0
-	ldr r0, [r4]
-	ldr r0, [r0, #0xc]
-	bl BattleSystem_GetPaletteData
-	add r6, r0, #0
-	ldrb r0, [r4, #8]
-	cmp r0, #0
-	beq _02265CB4
-	cmp r0, #1
-	beq _02265CD2
-	cmp r0, #2
-	beq _02265D04
-	b _02265D38
-_02265CB4:
-	ldr r1, _02265D64 ; =0x00004E27
-	add r0, r5, #0
-	mov r2, #1
-	bl sub_0200D944
-	add r5, r0, #0
-	ldr r0, [r4]
-	add r1, r5, #0
-	ldr r0, [r0, #4]
-	bl UnkImageStruct_SetSpritePalIndex
-	strb r5, [r4, #9]
-	ldrb r0, [r4, #8]
-	add r0, r0, #1
-	strb r0, [r4, #8]
-_02265CD2:
-	mov r0, #0xa
-	ldrsb r1, [r4, r0]
-	add r1, r1, #2
-	strb r1, [r4, #0xa]
-	ldrsb r1, [r4, r0]
-	cmp r1, #0xa
-	blt _02265CE8
-	strb r0, [r4, #0xa]
-	ldrb r0, [r4, #8]
-	add r0, r0, #1
-	strb r0, [r4, #8]
-_02265CE8:
-	ldrb r0, [r4, #0xa]
-	mov r1, #2
-	mov r3, #0x10
-	str r0, [sp]
-	ldr r0, _02265D68 ; =0x000073A5
-	str r0, [sp, #4]
-	ldrb r2, [r4, #9]
-	add r0, r6, #0
-	lsl r2, r2, #0x14
-	lsr r2, r2, #0x10
-	bl PaletteData_BlendPalette
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-_02265D04:
-	mov r0, #0xa
-	ldrsb r1, [r4, r0]
-	sub r1, r1, #2
-	strb r1, [r4, #0xa]
-	ldrsb r0, [r4, r0]
-	cmp r0, #0
-	bgt _02265D1C
-	mov r0, #0
-	strb r0, [r4, #0xa]
-	ldrb r0, [r4, #8]
-	add r0, r0, #1
-	strb r0, [r4, #8]
-_02265D1C:
-	ldrb r0, [r4, #0xa]
-	mov r1, #2
-	mov r3, #0x10
-	str r0, [sp]
-	ldr r0, _02265D68 ; =0x000073A5
-	str r0, [sp, #4]
-	ldrb r2, [r4, #9]
-	add r0, r6, #0
-	lsl r2, r2, #0x14
-	lsr r2, r2, #0x10
-	bl PaletteData_BlendPalette
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-_02265D38:
-	ldr r1, _02265D6C ; =0x00004E26
-	add r0, r5, #0
-	mov r2, #1
-	bl sub_0200D944
-	add r1, r0, #0
-	ldr r0, [r4]
-	ldr r0, [r0, #4]
-	bl UnkImageStruct_SetSpritePalIndex
-	ldr r0, [r4, #4]
-	mov r1, #1
-	strb r1, [r0]
-	add r0, r4, #0
-	bl FreeToHeap
-	add r0, r7, #0
-	bl SysTask_Destroy
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_02265D64: .word 0x00004E27
-_02265D68: .word 0x000073A5
-_02265D6C: .word 0x00004E26
-	thumb_func_end ov12_02265C88
-
-	thumb_func_start ov12_02265D70
-ov12_02265D70: ; 0x02265D70
-	bx lr
-	.balign 4, 0
-	thumb_func_end ov12_02265D70
-
-	thumb_func_start ov12_02265D74
-ov12_02265D74: ; 0x02265D74
-	bx lr
-	.balign 4, 0
-	thumb_func_end ov12_02265D74
-
-	thumb_func_start ov12_02265D78
-ov12_02265D78: ; 0x02265D78
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, [r4, #0x50]
-	cmp r0, #0
-	bne _02265D96
-	add r0, r4, #0
-	mov r1, #0
-	add r0, #0x54
-	strh r1, [r0]
-	ldr r0, _02265D98 ; =ov12_02265DC4
-	ldr r2, _02265D9C ; =0x000003F2
-	add r1, r4, #0
-	bl SysTask_CreateOnMainQueue
-	str r0, [r4, #0x50]
-_02265D96:
-	pop {r4, pc}
-	.balign 4, 0
-_02265D98: .word ov12_02265DC4
-_02265D9C: .word 0x000003F2
-	thumb_func_end ov12_02265D78
-
-	thumb_func_start ov12_02265DA0
-ov12_02265DA0: ; 0x02265DA0
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, [r4, #0x50]
-	cmp r0, #0
-	beq _02265DB2
-	bl SysTask_Destroy
-	mov r0, #0
-	str r0, [r4, #0x50]
-_02265DB2:
-	add r0, r4, #0
-	mov r1, #0
-	add r0, #0x54
-	strh r1, [r0]
-	add r0, r4, #0
-	add r2, r1, #0
-	bl ov12_02264F44
-	pop {r4, pc}
-	thumb_func_end ov12_02265DA0
-
-	thumb_func_start ov12_02265DC4
-ov12_02265DC4: ; 0x02265DC4
-	push {r3, r4, r5, lr}
-	add r4, r1, #0
-	add r1, #0x54
-	ldrh r2, [r1]
-	add r1, r4, #0
-	add r1, #0x54
-	add r2, #0x14
-	strh r2, [r1]
-	add r1, r4, #0
-	add r1, #0x54
-	ldrh r2, [r1]
-	mov r1, #0x5a
-	add r0, r4, #0
-	lsl r1, r1, #2
-	add r0, #0x54
-	cmp r2, r1
-	blo _02265DEC
-	ldrh r2, [r0]
-	sub r1, r2, r1
-	strh r1, [r0]
-_02265DEC:
-	add r0, r4, #0
-	add r0, #0x54
-	ldrh r0, [r0]
-	bl GF_SinDegNoWrap
-	mov r2, #6
-	asr r1, r0, #0x1f
-	lsl r2, r2, #0xa
-	mov r3, #0
-	bl _ll_mul
-	mov r2, #2
-	add r3, r0, #0
-	add r5, r1, #0
-	mov r1, #0
-	lsl r2, r2, #0xa
-	add r0, r4, #0
-	add r3, r3, r2
-	adc r5, r1
-	lsl r2, r5, #0x14
-	lsr r3, r3, #0xc
-	orr r3, r2
-	asr r2, r3, #0xb
-	lsr r2, r2, #0x14
-	add r2, r3, r2
-	asr r2, r2, #0xc
-	bl ov12_02264F44
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ov12_02265DC4
-
     .rodata
 
 	.global ov12_0226D368
@@ -404,12 +13,14 @@ ov12_0226D368: ; 0x0226D368
 	.byte 0x48, 0x00, 0x48, 0x00, 0x48, 0x00
 
 	.balign 4, 0
+	.global ov12_0226D370
 ov12_0226D370:  // references are optimized out
 	.byte 0x40, 0x02, 0xC0, 0x00
 	.byte 0x40, 0x03, 0xC0, 0x00
 	.byte 0x00, 0x0A, 0xE0, 0x00
 	.byte 0x00, 0x0B, 0xE0, 0x00
 
+	.global ov12_0226D380
 ov12_0226D380:  // references are optimized out
 	.byte 0x40, 0x04, 0xC0, 0x00
 	.byte 0x40, 0x05, 0xC0, 0x00
@@ -506,48 +117,56 @@ ov12_0226D4B0: ; 0x0226D4B0
 	.byte 0x40, 0x0A, 0x40, 0x00, 0x40, 0x0B, 0x40, 0x00
 	.byte 0x20, 0x0A, 0x40, 0x00, 0x20, 0x0B, 0x40, 0x00
 
+	.global ov12_0226D4E0
 ov12_0226D4E0: ; 0x0226D4E0
 	.byte 0xC0, 0x00, 0x67, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0xC8, 0x00, 0x00, 0x00, 0x26, 0x4E, 0x00, 0x00, 0xC7, 0x00, 0x00, 0x00
 	.byte 0xC6, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
 
+	.global ov12_0226D514
 ov12_0226D514: ; 0x0226D514
 	.byte 0x40, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x19, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0xC2, 0x00, 0x00, 0x00, 0x26, 0x4E, 0x00, 0x00
 	.byte 0xC1, 0x00, 0x00, 0x00, 0xC0, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
+	.global ov12_0226D548
 ov12_0226D548: ; 0x0226D548
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x11, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0xB9, 0x00, 0x00, 0x00
 	.byte 0x26, 0x4E, 0x00, 0x00, 0xB8, 0x00, 0x00, 0x00, 0xB7, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
+	.global ov12_0226D57C
 ov12_0226D57C: ; 0x0226D57C
 	.byte 0xC6, 0x00, 0x84, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x1A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0xCB, 0x00, 0x00, 0x00, 0x26, 0x4E, 0x00, 0x00, 0xCA, 0x00, 0x00, 0x00, 0xC9, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
+	.global ov12_0226D5B0
 ov12_0226D5B0: ; 0x0226D5B0
 	.byte 0xC0, 0x00, 0x74, 0x00, 0x00, 0x00, 0x00, 0x00, 0x17, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0xFD, 0x00, 0x00, 0x00, 0x28, 0x4E, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00
 	.byte 0xFF, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
 
+	.global ov12_0226D5E4
 ov12_0226D5E4: ; 0x0226D5E4
 	.byte 0xC0, 0x00, 0x74, 0x00, 0x00, 0x00, 0x00, 0x00, 0x17, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0xBF, 0x00, 0x00, 0x00, 0x26, 0x4E, 0x00, 0x00
 	.byte 0xBE, 0x00, 0x00, 0x00, 0xBD, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
+	.global ov12_0226D618
 ov12_0226D618: ; 0x0226D618
 	.byte 0x3A, 0x00, 0x24, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x18, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0xBC, 0x00, 0x00, 0x00
 	.byte 0x26, 0x4E, 0x00, 0x00, 0xBB, 0x00, 0x00, 0x00, 0xBA, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
+	.global ov12_0226D64C
 ov12_0226D64C: ; 0x0226D64C
 	.byte 0x3A, 0x00, 0x2D, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x1B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
