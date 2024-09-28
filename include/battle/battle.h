@@ -447,7 +447,7 @@ typedef struct BattleHpBar {
     Window unk14;
     u8 battlerId;
     u8 type;
-    u8 unk26;
+    u8 monId;
     u8 unk27;
     s32 hp;
     s32 maxHp;

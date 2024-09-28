@@ -5,360 +5,7 @@
 	.text
 
 	.extern ov12_02264F44
-
-	thumb_func_start ov12_0226516C
-ov12_0226516C: ; 0x0226516C
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x34
-	add r5, r0, #0
-	ldr r0, [r5, #0xc]
-	bl BattleSystem_GetBgConfig
-	add r6, r0, #0
-	ldr r0, [r5, #0xc]
-	bl BattleSystem_GetMessageData
-	add r7, r0, #0
-	ldr r0, [r5, #0xc]
-	bl BattleSystem_GetMessageFormat
-	add r4, r0, #0
-	mov r0, #0x16
-	mov r1, #5
-	bl String_New
-	mov r1, #0xf1
-	str r0, [sp, #0x18]
-	add r0, r7, #0
-	lsl r1, r1, #2
-	bl NewString_ReadMsgData
-	add r1, r5, #0
-	add r2, r5, #0
-	add r1, #0x24
-	add r2, #0x26
-	str r0, [sp, #0x1c]
-	ldrb r1, [r1]
-	ldrb r2, [r2]
-	ldr r0, [r5, #0xc]
-	bl BattleSystem_GetPartyMon
-	bl Mon_GetBoxMon
-	add r2, r0, #0
-	add r0, r4, #0
-	mov r1, #0
-	bl BufferBoxMonNickname
-	ldr r1, [sp, #0x18]
-	ldr r2, [sp, #0x1c]
-	add r0, r4, #0
-	bl StringExpandPlaceholders
-	mov r0, #0
-	str r0, [sp]
-	mov r0, #0xf
-	str r0, [sp, #4]
-	add r0, r6, #0
-	add r1, sp, #0x24
-	mov r2, #8
-	mov r3, #2
-	bl AddTextWindowTopLeftCorner
-	mov r1, #0
-	str r1, [sp]
-	mov r0, #0xff
-	str r0, [sp, #4]
-	ldr r0, _022652AC ; =0x000E020F
-	ldr r2, [sp, #0x18]
-	str r0, [sp, #8]
-	str r1, [sp, #0xc]
-	str r1, [sp, #0x10]
-	str r1, [sp, #0x14]
-	add r0, sp, #0x24
-	add r3, r1, #0
-	bl AddTextPrinterParameterizedWithColorAndSpacing
-	ldr r0, [r5, #4]
-	ldr r6, [sp, #0x30]
-	ldr r0, [r0]
-	bl Sprite_GetImageProxy
-	add r4, r0, #0
-	mov r0, #1
-	lsl r0, r0, #8
-	add r0, r6, r0
-	str r0, [sp, #0x20]
-	add r0, r5, #0
-	add r0, #0x25
-	ldrb r0, [r0]
-	ldr r1, _022652B0 ; =ov12_0226D680
-	ldr r3, [r4, #4]
-	lsl r7, r0, #4
-	ldrh r2, [r1, r7]
-	mov r1, #0x19
-	lsl r1, r1, #0x16
-	add r1, r1, r2
-	ldr r2, _022652B4 ; =ov12_0226D682
-	add r0, r6, #0
-	ldrh r2, [r2, r7]
-	add r1, r3, r1
-	bl MIi_CpuCopy16
-	add r0, r5, #0
-	add r0, #0x25
-	ldrb r0, [r0]
-	ldr r1, _022652B8 ; =ov12_0226D684
-	ldr r3, [r4, #4]
-	lsl r7, r0, #4
-	ldrh r2, [r1, r7]
-	mov r1, #0x19
-	lsl r1, r1, #0x16
-	add r1, r1, r2
-	ldr r2, _022652BC ; =ov12_0226D686
-	ldr r0, [sp, #0x20]
-	ldrh r2, [r2, r7]
-	add r1, r3, r1
-	bl MIi_CpuCopy16
-	add r0, r5, #0
-	add r0, #0x25
-	ldrb r0, [r0]
-	ldr r3, _022652C0 ; =ov12_0226D688
-	ldr r1, [r4, #4]
-	lsl r2, r0, #4
-	ldr r0, _022652B4 ; =ov12_0226D682
-	ldrh r0, [r0, r2]
-	add r0, r6, r0
-	ldrh r6, [r3, r2]
-	mov r3, #0x19
-	lsl r3, r3, #0x16
-	add r3, r3, r6
-	add r1, r1, r3
-	ldr r3, _022652C4 ; =ov12_0226D68A
-	ldrh r2, [r3, r2]
-	bl MIi_CpuCopy16
-	add r5, #0x25
-	ldrb r0, [r5]
-	ldr r4, [r4, #4]
-	lsl r2, r0, #4
-	ldr r0, _022652BC ; =ov12_0226D686
-	ldrh r1, [r0, r2]
-	ldr r0, [sp, #0x20]
-	add r0, r0, r1
-	ldr r1, _022652C8 ; =ov12_0226D68C
-	ldrh r3, [r1, r2]
-	mov r1, #0x19
-	lsl r1, r1, #0x16
-	add r1, r1, r3
-	ldr r3, _022652CC ; =ov12_0226D68E
-	add r1, r4, r1
-	ldrh r2, [r3, r2]
-	bl MIi_CpuCopy16
-	add r0, sp, #0x24
-	bl RemoveWindow
-	ldr r0, [sp, #0x18]
-	bl String_Delete
-	ldr r0, [sp, #0x1c]
-	bl String_Delete
-	add sp, #0x34
-	pop {r4, r5, r6, r7, pc}
-	.balign 4, 0
-_022652AC: .word 0x000E020F
-_022652B0: .word ov12_0226D680
-_022652B4: .word ov12_0226D682
-_022652B8: .word ov12_0226D684
-_022652BC: .word ov12_0226D686
-_022652C0: .word ov12_0226D688
-_022652C4: .word ov12_0226D68A
-_022652C8: .word ov12_0226D68C
-_022652CC: .word ov12_0226D68E
-	thumb_func_end ov12_0226516C
-
-	thumb_func_start ov12_022652D0
-ov12_022652D0: ; 0x022652D0
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	add r0, #0x49
-	ldrb r0, [r0]
-	cmp r0, #0
-	bne _022652E2
-	mov r0, #0x4a
-	mov r4, #0x3e
-	b _022652F0
-_022652E2:
-	cmp r0, #1
-	bne _022652EC
-	mov r0, #0x48
-	mov r4, #0x3c
-	b _022652F0
-_022652EC:
-	mov r0, #0x4c
-	mov r4, #0x40
-_022652F0:
-	bl ov12_02265B58
-	str r0, [sp]
-	add r0, r4, #0
-	bl ov12_02265B58
-	add r7, r0, #0
-	ldr r0, [r5, #4]
-	ldr r0, [r0]
-	bl Sprite_GetImageProxy
-	add r4, r0, #0
-	add r0, r5, #0
-	add r0, #0x25
-	ldrb r0, [r0]
-	mov r6, #0x19
-	ldr r3, _02265344 ; =ov12_0226D4B0
-	lsl r2, r0, #3
-	ldrh r3, [r3, r2]
-	lsl r6, r6, #0x16
-	ldr r1, [r4, #4]
-	add r3, r6, r3
-	add r1, r1, r3
-	ldr r3, _02265348 ; =ov12_0226D4B2
-	add r0, r7, #0
-	ldrh r2, [r3, r2]
-	bl MIi_CpuCopy16
-	add r5, #0x25
-	ldrb r0, [r5]
-	ldr r1, _0226534C ; =ov12_0226D4B4
-	ldr r3, [r4, #4]
-	lsl r2, r0, #3
-	ldrh r1, [r1, r2]
-	ldr r0, [sp]
-	add r1, r6, r1
-	add r1, r3, r1
-	ldr r3, _02265350 ; =ov12_0226D4B6
-	ldrh r2, [r3, r2]
-	bl MIi_CpuCopy16
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02265344: .word ov12_0226D4B0
-_02265348: .word ov12_0226D4B2
-_0226534C: .word ov12_0226D4B4
-_02265350: .word ov12_0226D4B6
-	thumb_func_end ov12_022652D0
-
-	thumb_func_start ov12_02265354
-ov12_02265354: ; 0x02265354
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0xc
-	str r0, [sp, #4]
-	mov r0, #5
-	mov r1, #0x60
-	bl AllocFromHeap
-	add r4, r0, #0
-	mov r0, #5
-	mov r1, #0xc0
-	bl AllocFromHeap
-	add r7, r0, #0
-	add r0, r4, #0
-	mov r1, #0xff
-	mov r2, #0x60
-	bl MI_CpuFill8
-	ldr r0, [sp, #4]
-	ldr r0, [r0, #0xc]
-	bl BattleSystem_GetLevelNumPrinter
-	ldr r1, [sp, #4]
-	str r4, [sp]
-	add r1, #0x48
-	ldrb r1, [r1]
-	mov r2, #3
-	mov r3, #0
-	bl sub_0200CEB0
-	ldr r0, [sp, #4]
-	ldr r0, [r0, #4]
-	ldr r0, [r0]
-	bl Sprite_GetImageProxy
-	str r0, [sp, #8]
-	ldr r0, [sp, #4]
-	ldr r1, _02265464 ; =ov12_0226D420
-	add r0, #0x25
-	ldrb r0, [r0]
-	lsl r2, r0, #3
-	ldrh r3, [r1, r2]
-	mov r1, #0x19
-	lsl r1, r1, #0x16
-	ldr r0, [sp, #8]
-	add r1, r1, r3
-	ldr r3, _02265468 ; =ov12_0226D422
-	ldr r0, [r0, #4]
-	ldrh r2, [r3, r2]
-	add r0, r0, r1
-	add r1, r7, #0
-	bl MIi_CpuCopy16
-	ldr r0, [sp, #4]
-	ldr r1, _0226546C ; =ov12_0226D424
-	add r0, #0x25
-	ldrb r0, [r0]
-	lsl r2, r0, #3
-	ldrh r3, [r1, r2]
-	mov r1, #0x19
-	ldr r0, [sp, #8]
-	lsl r1, r1, #0x16
-	add r1, r1, r3
-	ldr r3, _02265470 ; =ov12_0226D426
-	ldr r0, [r0, #4]
-	ldrh r2, [r3, r2]
-	add r0, r0, r1
-	add r1, r7, #0
-	add r1, #0x60
-	bl MIi_CpuCopy16
-	mov r2, #0
-	add r1, r2, #0
-_022653E6:
-	mov r0, #0
-	add r3, r7, r1
-_022653EA:
-	ldrb r5, [r4, r2]
-	add r6, r4, r2
-	add r0, r0, #1
-	strb r5, [r3, #0x10]
-	ldrb r6, [r6, #0x10]
-	add r5, r3, #0
-	add r5, #0x60
-	strb r6, [r5]
-	add r2, r2, #1
-	add r3, r3, #1
-	cmp r0, #0x10
-	blt _022653EA
-	add r1, #0x20
-	add r2, #0x10
-	cmp r1, #0x60
-	blt _022653E6
-	ldr r0, [sp, #4]
-	ldr r1, [sp, #8]
-	add r0, #0x25
-	ldrb r0, [r0]
-	ldr r3, _02265464 ; =ov12_0226D420
-	ldr r1, [r1, #4]
-	lsl r2, r0, #3
-	ldrh r5, [r3, r2]
-	mov r3, #0x19
-	lsl r3, r3, #0x16
-	add r3, r3, r5
-	add r1, r1, r3
-	ldr r3, _02265468 ; =ov12_0226D422
-	add r0, r7, #0
-	ldrh r2, [r3, r2]
-	bl MIi_CpuCopy16
-	ldr r0, [sp, #4]
-	ldr r3, _0226546C ; =ov12_0226D424
-	add r0, #0x25
-	str r0, [sp, #4]
-	ldrb r0, [r0]
-	ldr r1, [sp, #8]
-	lsl r2, r0, #3
-	ldrh r5, [r3, r2]
-	mov r3, #0x19
-	lsl r3, r3, #0x16
-	add r0, r7, #0
-	ldr r1, [r1, #4]
-	add r3, r3, r5
-	add r1, r1, r3
-	ldr r3, _02265470 ; =ov12_0226D426
-	add r0, #0x60
-	ldrh r2, [r3, r2]
-	bl MIi_CpuCopy16
-	add r0, r4, #0
-	bl FreeToHeap
-	add r0, r7, #0
-	bl FreeToHeap
-	add sp, #0xc
-	pop {r4, r5, r6, r7, pc}
-	nop
-_02265464: .word ov12_0226D420
-_02265468: .word ov12_0226D422
-_0226546C: .word ov12_0226D424
-_02265470: .word ov12_0226D426
-	thumb_func_end ov12_02265354
+	.extern ov12_022652D0
 
 	thumb_func_start ov12_02265474
 ov12_02265474: ; 0x02265474
@@ -1703,19 +1350,14 @@ ov12_0226D408: ; 0x0226D408
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x60, 0x0C, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0x0C, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00
 
+	.global ov12_0226D420
 ov12_0226D420: ; 0x0226D420
-	.byte 0xA0, 0x0A
-
-ov12_0226D422: ; 0x0226D422
-	.byte 0x60, 0x00
-
-ov12_0226D424: ; 0x0226D424
-	.byte 0xA0, 0x0B
-
-ov12_0226D426: ; 0x0226D426
-	.byte 0x60, 0x00, 0x60, 0x0A, 0x60, 0x00, 0x60, 0x0B, 0x60, 0x00
-	.byte 0x80, 0x0A, 0x60, 0x00, 0x80, 0x0B, 0x60, 0x00, 0x60, 0x0A, 0x60, 0x00, 0x60, 0x0B, 0x60, 0x00
-	.byte 0x80, 0x0A, 0x60, 0x00, 0x80, 0x0B, 0x60, 0x00, 0x60, 0x0A, 0x60, 0x00, 0x60, 0x0B, 0x60, 0x00
+	.byte 0xA0, 0x0A, 0x60, 0x00, 0xA0, 0x0B, 0x60, 0x00
+	.byte 0x60, 0x0A, 0x60, 0x00, 0x60, 0x0B, 0x60, 0x00
+	.byte 0x80, 0x0A, 0x60, 0x00, 0x80, 0x0B, 0x60, 0x00
+	.byte 0x60, 0x0A, 0x60, 0x00, 0x60, 0x0B, 0x60, 0x00
+	.byte 0x80, 0x0A, 0x60, 0x00, 0x80, 0x0B, 0x60, 0x00
+	.byte 0x60, 0x0A, 0x60, 0x00, 0x60, 0x0B, 0x60, 0x00
 
 ov12_0226D450: ; 0x0226D450
 	.byte 0x00, 0x00
@@ -1739,19 +1381,14 @@ ov12_0226D482: ; 0x0226D482
 	.byte 0xE0, 0x04, 0x00, 0x00, 0x00, 0x0C, 0xC0, 0x00, 0xE0, 0x04, 0x20, 0x00, 0x00, 0x0C, 0xA0, 0x00
 	.byte 0xE0, 0x04, 0x00, 0x00, 0x00, 0x0C, 0xC0, 0x00, 0xE0, 0x04, 0x20, 0x00, 0x00, 0x0C, 0xA0, 0x00
 
+	.global ov12_0226D4B0
 ov12_0226D4B0: ; 0x0226D4B0
-	.byte 0x60, 0x0A
-
-ov12_0226D4B2: ; 0x0226D4B2
-	.byte 0x40, 0x00
-
-ov12_0226D4B4: ; 0x0226D4B4
-	.byte 0x60, 0x0B
-
-ov12_0226D4B6: ; 0x0226D4B6
-	.byte 0x40, 0x00, 0x20, 0x0A, 0x40, 0x00, 0x20, 0x0B, 0x40, 0x00
-	.byte 0x40, 0x0A, 0x40, 0x00, 0x40, 0x0B, 0x40, 0x00, 0x20, 0x0A, 0x40, 0x00, 0x20, 0x0B, 0x40, 0x00
-	.byte 0x40, 0x0A, 0x40, 0x00, 0x40, 0x0B, 0x40, 0x00, 0x20, 0x0A, 0x40, 0x00, 0x20, 0x0B, 0x40, 0x00
+	.byte 0x60, 0x0A, 0x40, 0x00, 0x60, 0x0B, 0x40, 0x00
+	.byte 0x20, 0x0A, 0x40, 0x00, 0x20, 0x0B, 0x40, 0x00
+	.byte 0x40, 0x0A, 0x40, 0x00, 0x40, 0x0B, 0x40, 0x00
+	.byte 0x20, 0x0A, 0x40, 0x00, 0x20, 0x0B, 0x40, 0x00
+	.byte 0x40, 0x0A, 0x40, 0x00, 0x40, 0x0B, 0x40, 0x00
+	.byte 0x20, 0x0A, 0x40, 0x00, 0x20, 0x0B, 0x40, 0x00
 
 ov12_0226D4E0: ; 0x0226D4E0
 	.byte 0xC0, 0x00, 0x67, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -1801,29 +1438,9 @@ ov12_0226D64C: ; 0x0226D64C
 	.byte 0xC5, 0x00, 0x00, 0x00, 0x26, 0x4E, 0x00, 0x00, 0xC4, 0x00, 0x00, 0x00, 0xC3, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
+	.global ov12_0226D680
 ov12_0226D680: ; 0x0226D680
-	.byte 0x60, 0x02
-
-ov12_0226D682: ; 0x0226D682
-	.byte 0xA0, 0x00
-
-ov12_0226D684: ; 0x0226D684
-	.byte 0x60, 0x03
-
-ov12_0226D686: ; 0x0226D686
-	.byte 0xA0, 0x00
-
-ov12_0226D688: ; 0x0226D688
-	.byte 0x00, 0x0A
-
-ov12_0226D68A: ; 0x0226D68A
-	.byte 0x60, 0x00
-
-ov12_0226D68C: ; 0x0226D68C
-	.byte 0x00, 0x0B
-
-ov12_0226D68E: ; 0x0226D68E
-	.byte 0x60, 0x00
+	.byte 0x60, 0x02, 0xA0, 0x00, 0x60, 0x03, 0xA0, 0x00, 0x00, 0x0A, 0x60, 0x00, 0x00, 0x0B, 0x60, 0x00
 	.byte 0x20, 0x02, 0xE0, 0x00, 0x20, 0x03, 0xE0, 0x00, 0x00, 0x0A, 0x20, 0x00, 0x00, 0x0B, 0x20, 0x00
 	.byte 0x40, 0x02, 0xC0, 0x00, 0x40, 0x03, 0xC0, 0x00, 0x00, 0x0A, 0x40, 0x00, 0x00, 0x0B, 0x40, 0x00
 	.byte 0x20, 0x02, 0xE0, 0x00, 0x20, 0x03, 0xE0, 0x00, 0x00, 0x0A, 0x20, 0x00, 0x00, 0x0B, 0x20, 0x00
