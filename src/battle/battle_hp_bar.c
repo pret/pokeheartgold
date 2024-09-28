@@ -3,6 +3,8 @@
 #include "battle/battle_system.h"
 #include "msgdata/msg/msg_0197.h"
 
+#include "unk_0208805C.h"
+
 typedef struct UnkStruct_ov12_0226D408 {
     u16 offset;
     u16 size;
@@ -31,9 +33,10 @@ void ov12_022655F0(BattleHpBar *hpBar, u32 flag);
 void ov12_022656CC(BattleHpBar *hpBar, u32 flag);
 int ov12_022657E4(BattleHpBar *hpBar, BOOL a1);
 void ov12_02265878(BattleHpBar *hpBar, u8 a1);
-int ov12_022659E0(s32 start, s32 end, s32 delta, s32 *pHpCalc, int a4, u16 a5);
-int ov12_02265B18(s32 exp, s32 gainedExp, s32 maxExp, int a3);
-void *ov12_02265B58(int a0);
+int ov12_022659E0(s32 maxHp, s32 hp, s32 deltaHP, s32 *pHpCalc, u8 a4, u16 a5);
+u8 ov12_02265A9C(s32 maxHp, s32 hp, s32 deltaHp, s32 *pHpCalc, u8 *a4, u8 a5);
+u32 ov12_02265B18(s32 exp, s32 gainedExp, s32 maxExp, u8 a3);
+const u8 *ov12_02265B58(int a0);
 const UnkTemplate_0200D748 *ov12_02265BB8(u8 barType);
 const UnkTemplate_0200D748 *ov12_02265C1C(u8 barType);
 void ov12_02265D78(BattleHpBar *hpBar);
@@ -69,11 +72,12 @@ extern const UnkStruct_ov12_0226D408 ov12_0226D3C0[];
 extern const UnkStruct_ov12_0226D408 ov12_0226D3D8[];
 extern const UnkStruct_ov12_0226D408 ov12_0226D3F0[];
 extern const UnkStruct_ov12_0226D408 ov12_0226D408[];
+extern const UnkStruct_ov12_0226D408 ov12_0226D480[][2];
 extern const UnkStruct_ov12_0226D408 ov12_0226D420[][2];
 extern const UnkStruct_ov12_0226D408 ov12_0226D450[][2];
 extern const UnkStruct_ov12_0226D408 ov12_0226D4B0[][2];
 extern const UnkStruct_ov12_0226D408 ov12_0226D680[][4];
-extern const u16 ov12_0226D6E0[][16];
+extern const u8 ov12_0226D6E0[][32];
 
 void ov12_02264824(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, NARC *narc, PaletteData *plttData, int barType) {
     const UnkTemplate_0200D748 *pRes = ov12_02265BB8(barType);
@@ -689,8 +693,8 @@ void ov12_022652D0(BattleHpBar *hpBar) {
         r0 = 76;
         r4 = 64;
     }
-    void *sp0                  = ov12_02265B58(r0);
-    void *r7                   = ov12_02265B58(r4);
+    const u8 *sp0              = ov12_02265B58(r0);
+    const u8 *r7               = ov12_02265B58(r4);
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->unk4->sprite);
     void *vramAddr             = G2_GetOBJCharPtr();
     MI_CpuCopy16(r7, (void *)((u32)vramAddr + ov12_0226D4B0[hpBar->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D4B0[hpBar->type][0].size);
@@ -748,7 +752,7 @@ void ov12_02265500(BattleHpBar *hpBar) {
 }
 
 void ov12_02265560(BattleHpBar *hpBar) {
-    u8 *r4;
+    const u8 *r4;
     if (hpBar->unk4B == 1) {
         r4 = ov12_02265B58(59);
     } else {
@@ -761,7 +765,7 @@ void ov12_02265560(BattleHpBar *hpBar) {
 }
 
 void ov12_022655B0(BattleHpBar *hpBar, int a1) {
-    u8 *r4                     = ov12_02265B58(a1);
+    const u8 *r4               = ov12_02265B58(a1);
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->unk4->sprite);
     void *vramAddr             = G2_GetOBJCharPtr();
 
@@ -1107,4 +1111,186 @@ int ov12_022657E4(BattleHpBar *hpBar, BOOL a1) {
         }
     }
     return ret;
+}
+
+void ov12_02265878(BattleHpBar *hpBar, u8 a1) {
+    u8 i;
+    u8 sp10[12];
+    u8 tmp;
+    const u8 *spC;
+    void *vramAddr;
+    NNSG2dImageProxy *imgProxy;
+    int r7;
+
+    vramAddr = G2_GetOBJCharPtr();
+    imgProxy = Sprite_GetImageProxy(hpBar->unk4->sprite);
+    switch (a1) {
+    case 0:
+        switch (sub_02088080(ov12_02265A9C(hpBar->maxHp, hpBar->hp, hpBar->gainedHp, &hpBar->hpCalc, sp10, 6), 0x30)) {
+        case 3:
+            tmp = 2;
+            break;
+        case 2:
+            tmp = 11;
+            break;
+        case 1:
+        default:
+            tmp = 20;
+            break;
+        }
+        spC = ov12_02265B58(tmp);
+        r7  = ov12_0226D480[hpBar->type][0].size / 32;
+        for (i = 0; i < 6; ++i) {
+            if (i < r7) {
+                MI_CpuCopy16(spC + sp10[i] * 32, (void *)((u32)vramAddr + ov12_0226D480[hpBar->type][0].offset + i * 32 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
+            } else {
+                MI_CpuCopy16(spC + sp10[i] * 32, (void *)((u32)vramAddr + ov12_0226D480[hpBar->type][1].offset + (i - r7) * 32 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
+            }
+        }
+        break;
+    case 1:
+        ov12_02265A9C(hpBar->maxExp, hpBar->exp, hpBar->gainedExp, &hpBar->expCalc, sp10, 12);
+        if (hpBar->unk48 == 100) {
+            for (i = 0; i < 12; ++i) {
+                sp10[i] = 0;
+            }
+        }
+        spC = ov12_02265B58(29);
+        for (i = 0; i < 12; ++i) {
+            if (i < 5) {
+                MI_CpuCopy16(spC + sp10[i] * 32, (void *)((u32)vramAddr + 0x660 + i * 32 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
+            } else {
+                MI_CpuCopy16(spC + sp10[i] * 32, (void *)((u32)vramAddr + 0xE00 + (i - 5) * 32 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
+            }
+        }
+        break;
+    }
+}
+
+int ov12_022659E0(s32 maxHp, s32 curHp, s32 deltaHp, s32 *pHpCalc, u8 a4, u16 a5) {
+    s32 r4;
+    s32 ret;
+    u8 r2;
+    s32 r0;
+
+    r2 = a4 * 8;
+    if (*pHpCalc == 0x80000000) {
+        if (maxHp < r2) {
+            *pHpCalc = curHp << 8;
+        } else {
+            *pHpCalc = curHp;
+        }
+    }
+    r4 = curHp - deltaHp;
+    if (r4 < 0) {
+        r4 = 0;
+    } else if (r4 > maxHp) {
+        r4 = maxHp;
+    }
+    if (maxHp < r2) {
+        if (r4 == (*pHpCalc >> 8) && (*pHpCalc & 0xFF) == 0) {
+            return -1;
+        }
+    } else {
+        if (r4 == *pHpCalc) {
+            return -1;
+        }
+    }
+    if (maxHp < r2) {
+        r0 = (maxHp << 8) / r2;
+        if (deltaHp < 0) {
+            *pHpCalc += r0;
+            ret = *pHpCalc >> 8;
+            if (ret >= r4) {
+                *pHpCalc = r4 << 8;
+                ret      = r4;
+            }
+        } else {
+            *pHpCalc -= r0;
+            ret = *pHpCalc >> 8;
+            if ((*pHpCalc & 0xFF) > 0) {
+                ++ret;
+            }
+            if (ret <= r4) {
+                *pHpCalc = r4 << 8;
+                ret      = r4;
+            }
+        }
+    } else {
+        if (deltaHp < 0) {
+            *pHpCalc += a5;
+            if (*pHpCalc > r4) {
+                *pHpCalc = r4;
+            }
+        } else {
+            *pHpCalc -= a5;
+            if (*pHpCalc < r4) {
+                *pHpCalc = r4;
+            }
+        }
+        ret = *pHpCalc;
+    }
+    return ret;
+}
+
+u8 ov12_02265A9C(s32 maxHp, s32 hp, s32 deltaHp, s32 *pHpCalc, u8 *a4, u8 a5) {
+    int i;
+    int r7;
+    u32 r2;
+    u32 r0;
+    u32 ret;
+
+    r7 = hp - deltaHp;
+    if (r7 < 0) {
+        r7 = 0;
+    } else if (r7 > maxHp) {
+        r7 = maxHp;
+    }
+    r2 = a5 * 8;
+    for (i = 0; i < a5; ++i) {
+        a4[i] = 0;
+    }
+    if (maxHp < r2) {
+        r0 = (*pHpCalc * r2 / maxHp) >> 8;
+    } else {
+        r0 = *pHpCalc * r2 / maxHp;
+    }
+    ret = r0;
+    if (r0 == 0 && r7 > 0) {
+        a4[0] = 1;
+        ret   = 1;
+    } else {
+        for (i = 0; i < a5; ++i) {
+            if (r0 >= 8) {
+                a4[i] = 8;
+                r0 -= 8;
+            } else {
+                a4[i] = r0;
+                break;
+            }
+        }
+    }
+    return ret;
+}
+
+u32 ov12_02265B18(s32 exp, s32 gainedExp, s32 maxExp, u8 a3) {
+    s8 r7, r0;
+    u8 r6;
+    s32 r4;
+
+    r6 = a3 * 8;
+
+    r4 = exp - gainedExp;
+    if (r4 < 0) {
+        r4 = 0;
+    } else if (r4 > maxExp) {
+        r4 = maxExp;
+    }
+    r7 = exp * r6 / maxExp;
+    r0 = r4 * r6 / maxExp;
+    return abs(r7 - r0);
+}
+
+const u8 *ov12_02265B58(int a0) {
+    return ov12_0226D6E0[a0];
 }

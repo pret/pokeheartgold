@@ -151,7 +151,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 # Build C utils on demand
-make -C "${MYDIR}" --no-print-directory "$mktgt"
+make -C "${MYDIR}" -q --no-print-directory "$mktgt"
 if [ "$mktgt" = "clean" ]; then
   rm -rf "${MYDIR}"/.bins "${MYDIR}"/.files
   exit 0
