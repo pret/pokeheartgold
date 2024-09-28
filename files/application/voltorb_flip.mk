@@ -22,4 +22,8 @@ VOLTORB_FLIP_FILES := \
 $(VOLTORB_FLIP_DIR).narc: $(addprefix $(VOLTORB_FLIP_DIR)/,$(VOLTORB_FLIP_FILES))
 	$(KNARC) -p $@ -d $(VOLTORB_FLIP_DIR) -i
 
-FS_CLEAN_TARGETS += $(VOLTORB_FLIP_DIR).narc
+clean-voltorb-flip:
+	$(RM) $(VOLTORB_FLIP_DIR).narc
+
+.PHONY: clean-voltorb-flip
+clean-filesystem: clean-voltorb-flip

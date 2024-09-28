@@ -16,6 +16,9 @@ GUINNESS_FILES := \
 $(GUINNESS_NARC): $(addprefix $(GUINNESS_DIR)/,$(GUINNESS_FILES))
 	$(KNARC) -p $@ -d $(GUINNESS_DIR) -i
 
-FS_CLEAN_TARGETS += \
-	$(GUINNESS_NARC) \
+clean-guinness:
+	$(RM) $(GUINNESS_NARC) \
 	$(addprefix $(GUINNESS_DIR)/,$(filter %.lz,$(GUINNESS_FILES)))
+
+.PHONY: clean-guinness
+clean-filesystem: clean-guinness

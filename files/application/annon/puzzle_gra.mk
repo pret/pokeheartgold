@@ -34,12 +34,16 @@ VERSION101_SOPC_NCGR_FILES += \
 	$(ALPH_PUZZLE_DIR)/puzzle_gra_00000000.NCLR \
 	$(ALPH_PUZZLE_DIR)/puzzle_gra_00000010.NCLR
 
-FS_CLEAN_TARGETS += $(ALPH_PUZZLE_DIR).narc \
-	$(ALPH_PUZZLE_DIR)/puzzle_gra_00000001.NCGR \
-	$(ALPH_PUZZLE_DIR)/puzzle_gra_00000004.NCGR \
-	$(ALPH_PUZZLE_DIR)/puzzle_gra_00000005.NCGR \
-	$(ALPH_PUZZLE_DIR)/puzzle_gra_00000006.NCGR \
-	$(ALPH_PUZZLE_DIR)/puzzle_gra_00000007.NCGR \
-	$(ALPH_PUZZLE_DIR)/puzzle_gra_00000000.NCLR \
-	$(ALPH_PUZZLE_DIR)/puzzle_gra_00000010.NCLR \
-	$(ALPH_PUZZLE_DIR)/puzzle_gra_00000011.NCGR
+clean-puzzle-gra:
+	$(RM) $(ALPH_PUZZLE_DIR).narc \
+		$(ALPH_PUZZLE_DIR)/puzzle_gra_00000001.NCGR \
+		$(ALPH_PUZZLE_DIR)/puzzle_gra_00000004.NCGR \
+		$(ALPH_PUZZLE_DIR)/puzzle_gra_00000005.NCGR \
+		$(ALPH_PUZZLE_DIR)/puzzle_gra_00000006.NCGR \
+		$(ALPH_PUZZLE_DIR)/puzzle_gra_00000007.NCGR \
+		$(ALPH_PUZZLE_DIR)/puzzle_gra_00000000.NCLR \
+		$(ALPH_PUZZLE_DIR)/puzzle_gra_00000010.NCLR \
+		$(ALPH_PUZZLE_DIR)/puzzle_gra_00000011.NCGR
+
+.PHONY: clean-puzzle-gra
+clean-filesystem: clean-puzzle-gra

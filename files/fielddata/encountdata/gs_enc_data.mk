@@ -9,4 +9,8 @@ $(ENCDATA_NARCS): MANIFEST = files/fielddata/encountdata/enc_data.txt
 $(ENCDATA_NARCS): %.narc: %.csv $(MANIFEST) $$(csvdep)
 	$(CSV2BIN) compile $< $@ $(MANIFEST) $(CSV2BINFLAGS)
 
-FS_CLEAN_TARGETS += $(ENCDATA_NARCS)
+clean-gs-enc-data:
+	$(RM) $(ENCDATA_NARCS)
+
+.PHONY: clean-gs-enc-data
+clean-filesystem: clean-gs-enc-data

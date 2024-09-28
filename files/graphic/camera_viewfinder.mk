@@ -11,7 +11,10 @@ VERSION101_SOPC_NCGR_FILES += $(CAMERA_VIEWFINDER_DIR)/camera_viewfinder.NCGR
 $(CAMERA_VIEWFINDER_NARC): %.narc: $(CAMERA_VIEWFINDER_SRCS_ABS)
 	$(KNARC) -p $@ -d $* -i
 
-FS_CLEAN_TARGETS += \
-	$(CAMERA_VIEWFINDER_NARC) \
+clean-camera-viewfinder:
+	$(RM) $(CAMERA_VIEWFINDER_NARC) \
 	$(CAMERA_VIEWFINDER_SRCS_ABS) \
 	$(CAMERA_VIEWFINDER_DIR)/camera_viewfinder.NCGR
+
+.PHONY: clean-camera-viewfinder
+clean-filesystem: clean-camera-viewfinder

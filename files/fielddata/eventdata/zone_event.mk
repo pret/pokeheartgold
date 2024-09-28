@@ -13,7 +13,11 @@ $(ZONE_EVENT_TEMPL):
 
 $(ZONE_EVENT_JSON): $(ZONE_EVENT_TEMPL)
 
-FS_CLEAN_TARGETS += $(ZONE_EVENT_NARC) $(ZONE_EVENT_BIN) $(ZONE_EVENT_DEPS)
+clean-zone-event:
+	$(RM) $(ZONE_EVENT_NARC) $(ZONE_EVENT_BIN) $(ZONE_EVENT_DEPS)
+
+.PHONY: clean-zone-event
+clean-filesystem: clean-zone-event
 
 $(ZONE_EVENT_BIN): MWASFLAGS += -DPM_ASM
 $(ZONE_EVENT_BIN): %.bin: %.json
