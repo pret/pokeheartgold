@@ -1,6 +1,7 @@
 #include "battle/battle_hp_bar.h"
 
 #include "battle/battle_system.h"
+#include "msgdata/msg/msg_0197.h"
 
 typedef struct UnkStruct_ov12_0226D408 {
     u16 offset;
@@ -26,14 +27,40 @@ void ov12_02265474(BattleHpBar *hpBar, u32 num);
 void ov12_02265500(BattleHpBar *hpBar);
 void ov12_02265560(BattleHpBar *hpBar);
 void ov12_022655B0(BattleHpBar *hpBar, int a1);
-int ov12_022657E4(BattleHpBar *hpBar, int a1);
+void ov12_022655F0(BattleHpBar *hpBar, u32 flag);
+void ov12_022656CC(BattleHpBar *hpBar, u32 flag);
+int ov12_022657E4(BattleHpBar *hpBar, BOOL a1);
+void ov12_02265878(BattleHpBar *hpBar, u8 a1);
+int ov12_022659E0(s32 start, s32 end, s32 delta, s32 *pHpCalc, int a4, u16 a5);
+int ov12_02265B18(s32 exp, s32 gainedExp, s32 maxExp, int a3);
 void *ov12_02265B58(int a0);
 const UnkTemplate_0200D748 *ov12_02265BB8(u8 barType);
 const UnkTemplate_0200D748 *ov12_02265C1C(u8 barType);
 void ov12_02265D78(BattleHpBar *hpBar);
 void ov12_02265DA0(BattleHpBar *hpBar);
-void ov12_022655F0(BattleHpBar *hpBar, u32 flag);
-void ov12_022656CC(BattleHpBar *hpBar, u32 flag);
+
+// static const s8 ov12_0226D368[] = {
+//     72,
+//     0,
+//     72,
+//     0,
+//     72,
+//     0,
+// };
+
+static const UnkStruct_ov12_0226D408 ov12_0226D370[] = {
+    { 0x240, 0xC0 },
+    { 0x340, 0xC0 },
+    { 0xA00, 0xE0 },
+    { 0xB00, 0xE0 },
+};
+
+static const UnkStruct_ov12_0226D408 ov12_0226D380[] = {
+    { 0x440, 0xC0 },
+    { 0x540, 0xC0 },
+    { 0xC00, 0xE0 },
+    { 0xD00, 0xE0 },
+};
 
 extern const s8 ov12_0226D368[];
 extern const UnkStruct_ov12_0226D408 ov12_0226D390[];
@@ -117,7 +144,7 @@ void ov12_0226498C(BattleHpBar *hpBar, u32 num, u32 flag) {
 
     if (flag & 1) {
         ov12_02264DCC(hpBar, 0);
-        ov12_022657E4(hpBar, 0);
+        ov12_022657E4(hpBar, FALSE);
     }
 
     if (flag & 2) {
@@ -142,7 +169,7 @@ void ov12_0226498C(BattleHpBar *hpBar, u32 num, u32 flag) {
 
     if (flag & 0x20) {
         ov12_02264E34(hpBar, 0);
-        ov12_022657E4(hpBar, 1);
+        ov12_022657E4(hpBar, TRUE);
     }
 
     if (flag & 0x200) {
@@ -292,7 +319,7 @@ void ov12_02264DCC(BattleHpBar *hpBar, int hp) {
 }
 
 int ov12_02264E00(BattleHpBar *hpBar) {
-    int r4 = ov12_022657E4(hpBar, 0);
+    int r4 = ov12_022657E4(hpBar, FALSE);
     if (r4 == -1) {
         hpBar->hp -= hpBar->gainedHp;
         ov12_0226498C(hpBar, hpBar->hp, 2);
@@ -320,7 +347,7 @@ void ov12_02264E34(BattleHpBar *hpBar, int exp) {
 }
 
 int ov12_02264E68(BattleHpBar *hpBar) {
-    int ret = ov12_022657E4(hpBar, 1);
+    int ret = ov12_022657E4(hpBar, TRUE);
     if (ret == -1) {
         hpBar->exp -= hpBar->gainedExp;
     }
@@ -466,7 +493,7 @@ asm void ov12_02265054(SysTask *task, void *data) {
 	add r7, r0, #0
 	add r0, r5, #0
 	add r0, #0x25
-	ldrb r0, [r0]
+	ldrb r0, [r0, #0]
 	mov r4, #0
 	bl ov12_02265BB8
 	add r6, r0, #0
@@ -477,7 +504,7 @@ asm void ov12_02265054(SysTask *task, void *data) {
 	bl UnkImageStruct_GetSpritePositionXY
 	add r0, r5, #0
 	add r0, #0x25
-	ldrb r0, [r0]
+	ldrb r0, [r0, #0]
 	cmp r0, #7
 	bhi _022650DA
 	add r0, r0, r0
@@ -495,7 +522,7 @@ _0226508A: // jump table
 _0226509A:
 	add r0, r5, #0
 	add r0, #0x4f
-	ldrb r0, [r0]
+	ldrb r0, [r0, #0]
 	lsl r0, r0, #0x1f
 	lsr r0, r0, #0x1f
 	add r0, sp, #0
@@ -529,7 +556,7 @@ _022650C0:
 _022650DA:
 	add r0, r5, #0
 	add r0, #0x4f
-	ldrb r0, [r0]
+	ldrb r0, [r0, #0]
 	lsl r0, r0, #0x1f
 	lsr r0, r0, #0x1f
 	add r0, sp, #0
@@ -575,7 +602,7 @@ _02265118:
 	ldrsh r3, [r6, r1]
 	add r1, r5, #0
 	add r1, #0x25
-	ldrb r2, [r1]
+	ldrb r2, [r1, #0]
 	ldr r1, =ov12_0226D368
 	ldrsb r1, [r1, r2]
 	mov r2, #0
@@ -589,11 +616,11 @@ _0226514C:
 	ble _02265164
 	add r0, r5, #0
 	add r0, #0x4f
-	ldrb r1, [r0]
+	ldrb r1, [r0, #0]
 	mov r0, #2
 	add r5, #0x4f
 	orr r0, r1
-	strb r0, [r5]
+	strb r0, [r5, #0]
 	add r0, r7, #0
 	bl SysTask_Destroy
 _02265164:
@@ -618,7 +645,7 @@ void ov12_0226516C(BattleHpBar *hpBar) {
     msgData   = BattleSystem_GetMessageData(hpBar->bsys);
     msgFormat = BattleSystem_GetMessageFormat(hpBar->bsys);
     string    = String_New(22, HEAP_ID_BATTLE);
-    string2   = NewString_ReadMsgData(msgData, 964);
+    string2   = NewString_ReadMsgData(msgData, msg_0197_00964);
 
     mon    = BattleSystem_GetPartyMon(hpBar->bsys, hpBar->battlerId, hpBar->monId);
     boxMon = Mon_GetBoxMon(mon);
@@ -739,4 +766,345 @@ void ov12_022655B0(BattleHpBar *hpBar, int a1) {
     void *vramAddr             = G2_GetOBJCharPtr();
 
     MI_CpuCopy16(r4, (void *)((u32)vramAddr + ov12_0226D390[hpBar->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D390[hpBar->type].size);
+}
+
+#ifdef NONMATCHING // scratch unavailable
+void ov12_022655F0(BattleHpBar *hpBar, u32 flag) {
+    BgConfig *bgConfig;
+    u8 *windowBuf;
+    NNSG2dImageProxy *imgProxy;
+    Window window;
+    MsgData *msgData;
+    String *string;
+
+    bgConfig = BattleSystem_GetBgConfig(hpBar->bsys);
+    msgData  = BattleSystem_GetMessageData(hpBar->bsys);
+
+    if (flag & 0x400) {
+        string = NewString_ReadMsgData(msgData, msg_0197_00950); // SAFARI BALLS
+    } else {
+        string = NewString_ReadMsgData(msgData, msg_0197_01220); // PARK BALLS
+    }
+    AddTextWindowTopLeftCorner(bgConfig, &window, 13, 2, 0, 15);
+    AddTextPrinterParameterizedWithColorAndSpacing(&window, 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(14, 2, 15), 0, 0, NULL);
+    windowBuf = window.pixelBuffer;
+
+    {
+        void *vramAddr;
+        u8 *ptr1;
+        u8 *ptr2;
+
+        vramAddr = G2_GetOBJCharPtr();
+        imgProxy = Sprite_GetImageProxy(hpBar->unk4->sprite);
+        ptr1     = vramAddr;
+        ptr2     = vramAddr + 0x1A0;
+        MI_CpuCopy16(ptr1, (void *)((u32)vramAddr + ov12_0226D370[0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D370[0].size);
+        MI_CpuCopy16(ptr2, (void *)((u32)vramAddr + ov12_0226D370[1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D370[1].size);
+        MI_CpuCopy16(ptr1 + ov12_0226D370[0].size, (void *)((u32)vramAddr + ov12_0226D370[2].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D370[2].size);
+        MI_CpuCopy16(ptr2 + ov12_0226D370[1].size, (void *)((u32)vramAddr + ov12_0226D370[3].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D370[3].size);
+    }
+
+    RemoveWindow(&window);
+    String_Delete(string);
+}
+#else
+// clang-format off
+asm void ov12_022655F0(BattleHpBar *hpBar, u32 flag) {
+    push {r3, r4, r5, r6, r7, lr}
+	sub sp, #0x28
+	add r4, r0, #0
+	ldr r0, [r4, #0xc]
+	add r5, r1, #0
+	bl BattleSystem_GetBgConfig
+	add r6, r0, #0
+	ldr r0, [r4, #0xc]
+	bl BattleSystem_GetMessageData
+	mov r1, #1
+	lsl r1, r1, #0xa
+	add r2, r5, #0
+	tst r2, r1
+	beq _02265618
+	sub r1, #0x4a
+	bl NewString_ReadMsgData
+	b _0226561E
+_02265618:
+	add r1, #0xc4
+	bl NewString_ReadMsgData
+_0226561E:
+	add r7, r0, #0
+	mov r0, #0
+	str r0, [sp, #0]
+	mov r0, #0xf
+	str r0, [sp, #4]
+	add r0, r6, #0
+	add r1, sp, #0x18
+	mov r2, #0xd
+	mov r3, #2
+	bl AddTextWindowTopLeftCorner
+	mov r1, #0
+	str r1, [sp, #0]
+	mov r0, #0xff
+	str r0, [sp, #4]
+	ldr r0, =0x000E020F
+	add r2, r7, #0
+	str r0, [sp, #8]
+	str r1, [sp, #0xc]
+	str r1, [sp, #0x10]
+	str r1, [sp, #0x14]
+	add r0, sp, #0x18
+	add r3, r1, #0
+	bl AddTextPrinterParameterizedWithColorAndSpacing
+	ldr r0, [r4, #4]
+	ldr r5, [sp, #0x24]
+	ldr r0, [r0, #0]
+	bl Sprite_GetImageProxy
+	add r4, r0, #0
+	mov r2, #0x1a
+	mov r6, #0x19
+	lsl r2, r2, #4
+	lsl r6, r6, #0x16
+	add r2, #0xa0
+	ldr r1, [r4, #4]
+	add r2, r6, r2
+	add r1, r1, r2
+	add r0, r5, #0
+	mov r2, #0xc0
+	bl MIi_CpuCopy16
+	mov r2, #0xd
+	mov r0, #0x1a
+	lsl r2, r2, #6
+	lsl r0, r0, #4
+	ldr r1, [r4, #4]
+	add r2, r6, r2
+	add r1, r1, r2
+	add r0, r5, r0
+	mov r2, #0xc0
+	bl MIi_CpuCopy16
+	mov r2, #0xa
+	lsl r2, r2, #8
+	add r0, r5, #0
+	ldr r1, [r4, #4]
+	add r2, r6, r2
+	add r1, r1, r2
+	add r0, #0xc0
+	mov r2, #0xe0
+	bl MIi_CpuCopy16
+	mov r0, #0x1a
+	mov r1, #0xb
+	lsl r0, r0, #4
+	lsl r1, r1, #8
+	add r0, r5, r0
+	ldr r2, [r4, #4]
+	add r1, r6, r1
+	add r1, r2, r1
+	add r0, #0xc0
+	mov r2, #0xe0
+	bl MIi_CpuCopy16
+	add r0, sp, #0x18
+	bl RemoveWindow
+	add r0, r7, #0
+	bl String_Delete
+	add sp, #0x28
+	pop {r3, r4, r5, r6, r7, pc}
+}
+// clang-format on
+#endif // NONMATCHING
+
+#ifdef NONMATCHING // scratch unavailable
+void ov12_022656CC(BattleHpBar *hpBar, u32 flag) {
+    BgConfig *bgConfig;
+    u8 *windowBuf;
+    NNSG2dImageProxy *imgProxy;
+    Window window;
+    MsgData *msgData;
+    MessageFormat *msgFormat;
+    String *string;
+    String *string2;
+
+    bgConfig  = BattleSystem_GetBgConfig(hpBar->bsys);
+    msgData   = BattleSystem_GetMessageData(hpBar->bsys);
+    msgFormat = BattleSystem_GetMessageFormat(hpBar->bsys);
+
+    string = String_New(30, HEAP_ID_BATTLE);
+    if (flag & 0x400) {
+        string2 = NewString_ReadMsgData(msgData, msg_0197_00951); // Left: $1
+    } else {
+        string2 = NewString_ReadMsgData(msgData, msg_0197_01221); // Left: $1
+    }
+    BufferIntegerAsString(msgFormat, 0, hpBar->unk27, 2, PRINTING_MODE_RIGHT_ALIGN, TRUE);
+    StringExpandPlaceholders(msgFormat, string, string2);
+    AddTextWindowTopLeftCorner(bgConfig, &window, 13, 2, 0, 15);
+    AddTextPrinterParameterizedWithColorAndSpacing(&window, 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(14, 2, 15), 0, 0, NULL);
+    windowBuf = window.pixelBuffer;
+
+    {
+        void *vramAddr;
+        u8 *ptr1;
+        u8 *ptr2;
+
+        vramAddr = G2_GetOBJCharPtr();
+        imgProxy = Sprite_GetImageProxy(hpBar->unk4->sprite);
+        ptr1     = vramAddr;
+        ptr2     = vramAddr + 0x1A0;
+        MI_CpuCopy16(ptr1, (void *)((u32)vramAddr + ov12_0226D380[0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D380[0].size);
+        MI_CpuCopy16(ptr2, (void *)((u32)vramAddr + ov12_0226D380[1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D380[1].size);
+        MI_CpuCopy16(ptr1 + ov12_0226D380[0].size, (void *)((u32)vramAddr + ov12_0226D380[2].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D380[2].size);
+        MI_CpuCopy16(ptr2 + ov12_0226D380[1].size, (void *)((u32)vramAddr + ov12_0226D380[3].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D380[3].size);
+    }
+
+    RemoveWindow(&window);
+    String_Delete(string);
+    String_Delete(string2);
+}
+#else
+// clang-format off
+asm void ov12_022656CC(BattleHpBar *hpBar, u32 flag) {
+    push {r4, r5, r6, r7, lr}
+	sub sp, #0x34
+	add r4, r0, #0
+	ldr r0, [r4, #0xc]
+	add r5, r1, #0
+	bl BattleSystem_GetBgConfig
+	str r0, [sp, #0x1c]
+	ldr r0, [r4, #0xc]
+	bl BattleSystem_GetMessageData
+	str r0, [sp, #0x20]
+	ldr r0, [r4, #0xc]
+	bl BattleSystem_GetMessageFormat
+	add r7, r0, #0
+	mov r0, #0x1e
+	mov r1, #5
+	bl String_New
+	mov r1, #1
+	add r6, r0, #0
+	lsl r1, r1, #0xa
+	add r0, r5, #0
+	tst r0, r1
+	beq _0226570C
+	ldr r0, [sp, #0x20]
+	sub r1, #0x49
+	bl NewString_ReadMsgData
+	str r0, [sp, #0x18]
+	b _02265716
+_0226570C:
+	ldr r0, [sp, #0x20]
+	add r1, #0xc5
+	bl NewString_ReadMsgData
+	str r0, [sp, #0x18]
+_02265716:
+	mov r0, #1
+	str r0, [sp, #0]
+	add r2, r4, #0
+	str r0, [sp, #4]
+	add r2, #0x27
+	ldrb r2, [r2, #0]
+	add r0, r7, #0
+	mov r1, #0
+	mov r3, #2
+	bl BufferIntegerAsString
+	ldr r2, [sp, #0x18]
+	add r0, r7, #0
+	add r1, r6, #0
+	bl StringExpandPlaceholders
+	mov r0, #0
+	str r0, [sp, #0]
+	mov r0, #0xf
+	str r0, [sp, #4]
+	ldr r0, [sp, #0x1c]
+	add r1, sp, #0x24
+	mov r2, #0xd
+	mov r3, #2
+	bl AddTextWindowTopLeftCorner
+	mov r1, #0
+	str r1, [sp, #0]
+	mov r0, #0xff
+	str r0, [sp, #4]
+	ldr r0, =0x000E020F
+	add r2, r6, #0
+	str r0, [sp, #8]
+	str r1, [sp, #0xc]
+	str r1, [sp, #0x10]
+	str r1, [sp, #0x14]
+	add r0, sp, #0x24
+	add r3, r1, #0
+	bl AddTextPrinterParameterizedWithColorAndSpacing
+	ldr r0, [r4, #4]
+	ldr r5, [sp, #0x30]
+	ldr r0, [r0, #0]
+	bl Sprite_GetImageProxy
+	add r4, r0, #0
+	mov r7, #0x19
+	mov r2, #0x11
+	lsl r7, r7, #0x16
+	lsl r2, r2, #6
+	ldr r1, [r4, #4]
+	add r2, r7, r2
+	add r1, r1, r2
+	add r0, r5, #0
+	mov r2, #0xc0
+	bl MIi_CpuCopy16
+	mov r2, #0x15
+	mov r0, #0x1a
+	lsl r2, r2, #6
+	lsl r0, r0, #4
+	ldr r1, [r4, #4]
+	add r2, r7, r2
+	add r1, r1, r2
+	add r0, r5, r0
+	mov r2, #0xc0
+	bl MIi_CpuCopy16
+	mov r2, #3
+	lsl r2, r2, #0xa
+	add r0, r5, #0
+	ldr r1, [r4, #4]
+	add r2, r7, r2
+	add r1, r1, r2
+	add r0, #0xc0
+	mov r2, #0xe0
+	bl MIi_CpuCopy16
+	mov r0, #0x1a
+	mov r1, #0xd
+	lsl r0, r0, #4
+	lsl r1, r1, #8
+	add r0, r5, r0
+	ldr r2, [r4, #4]
+	add r1, r7, r1
+	add r1, r2, r1
+	add r0, #0xc0
+	mov r2, #0xe0
+	bl MIi_CpuCopy16
+	add r0, sp, #0x24
+	bl RemoveWindow
+	add r0, r6, #0
+	bl String_Delete
+	ldr r0, [sp, #0x18]
+	bl String_Delete
+	add sp, #0x34
+	pop {r4, r5, r6, r7, pc}
+}
+// clang-format on
+#endif // NONMATCHING
+
+int ov12_022657E4(BattleHpBar *hpBar, BOOL a1) {
+    int ret;
+    if (!a1) {
+        ret = ov12_022659E0(hpBar->maxHp, hpBar->hp, hpBar->gainedHp, &hpBar->hpCalc, 6, 1);
+    } else {
+        int denom = ov12_02265B18(hpBar->exp, hpBar->gainedExp, hpBar->maxExp, 12);
+        if (denom == 0) {
+            denom = 1;
+        }
+        ret = ov12_022659E0(hpBar->maxExp, hpBar->exp, hpBar->gainedExp, &hpBar->expCalc, 12, abs(hpBar->gainedExp / denom));
+    }
+    if (a1 || hpBar->unk_4F_3 != TRUE) {
+        ov12_02265878(hpBar, a1);
+    }
+    if (ret == -1) {
+        if (!a1) {
+            hpBar->hpCalc = 0;
+        } else {
+            hpBar->expCalc = 0;
+        }
+    }
+    return ret;
 }
