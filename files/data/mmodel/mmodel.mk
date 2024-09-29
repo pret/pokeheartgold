@@ -5,4 +5,8 @@ MMODEL_NARC := $(MMODEL_ROOT).narc
 
 $(MMODEL_NARC): $(MMODEL_BINS)
 
-FS_CLEAN_TARGETS += $(MMODEL_NARC)
+clean-mmodel:
+	$(RM) $(MMODEL_NARC)
+
+.PHONY: clean-mmodel
+clean-filesystem: clean-mmodel

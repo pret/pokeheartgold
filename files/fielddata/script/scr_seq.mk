@@ -34,5 +34,8 @@ ifeq ($(COMPARE),1)
 	@$(SHA1SUM) --quiet -c $(PROJECT_ROOT)/scr_seq.sha1
 endif
 
-# Once this has been reversed, uncomment the below
-FS_CLEAN_TARGETS += $(SCRIPT_NARC) $(SCRIPT_BINS) $(SCRIPT_OBJS) $(SCRIPT_DEPS)
+clean-scr-seq:
+	$(RM) $(SCRIPT_NARC) $(SCRIPT_BINS) $(SCRIPT_OBJS) $(SCRIPT_DEPS)
+
+.PHONY: clean-scr-seq
+clean-filesystem: clean-scr-seq

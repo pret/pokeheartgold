@@ -27,4 +27,8 @@ endif
 
 $(MOVE_SCRIPT_NARC): $(MOVE_SCRIPT_BINS)
 
-FS_CLEAN_TARGETS += $(MOVE_SCRIPT_NARC) $(MOVE_SCRIPT_BINS) $(MOVE_SCRIPT_OBJS) $(MOVE_SCRIPT_DEPS)
+clean-move-seq:
+	$(RM) $(MOVE_SCRIPT_NARC) $(MOVE_SCRIPT_BINS) $(MOVE_SCRIPT_OBJS) $(MOVE_SCRIPT_DEPS)
+
+.PHONY: clean-move-seq
+clean-filesystem: clean-move-seq

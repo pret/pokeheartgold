@@ -10,5 +10,9 @@ $(WAZA_OSHIE_BIN): %.bin: %.json %.json.txt
 	$(WINE) $(MWAS) -DPM_ASM $(MWASFLAGS) -o $*.o $*.s
 	$(OBJCOPY) -O binary $*.o $@
 
-FS_CLEAN_TARGETS += $(WAZA_OSHIE_BIN) $(WAZA_OSHIE_S) $(WAZA_OSHIE_O)
+clean-waza-oshie:
+	$(RM) $(WAZA_OSHIE_BIN) $(WAZA_OSHIE_S) $(WAZA_OSHIE_O)
 FS_RULE_OVERRIDES += $(WAZA_OSHIE_BIN)
+
+.PHONY: clean-waza-oshie
+clean-filesystem: clean-waza-oshie
