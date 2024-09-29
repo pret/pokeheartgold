@@ -53,14 +53,189 @@ void ov12_02265D78(BattleHpBar *hpBar);
 void ov12_02265DA0(BattleHpBar *hpBar);
 void ov12_02265DC4(SysTask *task, void *data);
 
-// static const s8 ov12_0226D368[] = {
-//     72,
-//     0,
-//     72,
-//     0,
-//     72,
-//     0,
-// };
+ALIGN(4)
+static const s8 ov12_0226D368[] = {
+    72,
+    0,
+    72,
+    0,
+    72,
+    0,
+};
+
+static const UnkStruct_ov12_0226D408 ov12_0226D680[][4] = {
+    {
+     { 0x0260, 0x00A0 },
+     { 0x0360, 0x00A0 },
+     { 0x0A00, 0x0060 },
+     { 0x0B00, 0x0060 },
+     },
+    {
+     { 0x0220, 0x00E0 },
+     { 0x0320, 0x00E0 },
+     { 0x0A00, 0x0020 },
+     { 0x0B00, 0x0020 },
+     },
+    {
+     { 0x0240, 0x00C0 },
+     { 0x0340, 0x00C0 },
+     { 0x0A00, 0x0040 },
+     { 0x0B00, 0x0040 },
+     },
+    {
+     { 0x0220, 0x00E0 },
+     { 0x0320, 0x00E0 },
+     { 0x0A00, 0x0020 },
+     { 0x0B00, 0x0020 },
+     },
+    {
+     { 0x0240, 0x00C0 },
+     { 0x0340, 0x00C0 },
+     { 0x0A00, 0x0040 },
+     { 0x0B00, 0x0040 },
+     },
+    {
+     { 0x0220, 0x00E0 },
+     { 0x0320, 0x00E0 },
+     { 0x0A00, 0x0020 },
+     { 0x0B00, 0x0020 },
+     },
+};
+
+static const UnkStruct_ov12_0226D408 ov12_0226D4B0[][2] = {
+    {
+     { 0x0A60, 0x0040 },
+     { 0x0B60, 0x0040 },
+     },
+    {
+     { 0x0A20, 0x0040 },
+     { 0x0B20, 0x0040 },
+     },
+    {
+     { 0x0A40, 0x0040 },
+     { 0x0B40, 0x0040 },
+     },
+    {
+     { 0x0A20, 0x0040 },
+     { 0x0B20, 0x0040 },
+     },
+    {
+     { 0x0A40, 0x0040 },
+     { 0x0B40, 0x0040 },
+     },
+    {
+     { 0x0A20, 0x0040 },
+     { 0x0B20, 0x0040 },
+     },
+};
+
+static const UnkStruct_ov12_0226D408 ov12_0226D420[][2] = {
+    {
+     { 0x0AA0, 0x0060 },
+     { 0x0BA0, 0x0060 },
+     },
+    {
+     { 0x0A60, 0x0060 },
+     { 0x0B60, 0x0060 },
+     },
+    {
+     { 0x0A80, 0x0060 },
+     { 0x0B80, 0x0060 },
+     },
+    {
+     { 0x0A60, 0x0060 },
+     { 0x0B60, 0x0060 },
+     },
+    {
+     { 0x0A80, 0x0060 },
+     { 0x0B80, 0x0060 },
+     },
+    {
+     { 0x0A60, 0x0060 },
+     { 0x0B60, 0x0060 },
+     },
+};
+
+static const UnkStruct_ov12_0226D408 ov12_0226D450[][2] = {
+    {
+     { 0x0000, 0x0000 },
+     { 0x0D00, 0x0060 },
+     },
+    {
+     { 0x0620, 0x0060 },
+     { 0x0000, 0x0000 },
+     },
+    {
+     { 0x0000, 0x0000 },
+     { 0x0C00, 0x0060 },
+     },
+    {
+     { 0x0620, 0x0060 },
+     { 0x0000, 0x0000 },
+     },
+    {
+     { 0x0000, 0x0000 },
+     { 0x0C00, 0x0060 },
+     },
+    {
+     { 0x0620, 0x0060 },
+     { 0x0000, 0x0000 },
+     },
+};
+
+static const UnkStruct_ov12_0226D408 ov12_0226D3F0[] = {
+    { 0x0D80, 0x0060 },
+    { 0x06A0, 0x0060 },
+    { 0x0C80, 0x0060 },
+    { 0x06A0, 0x0060 },
+    { 0x0C80, 0x0060 },
+    { 0x06A0, 0x0060 },
+};
+
+static const UnkStruct_ov12_0226D408 ov12_0226D480[][2] = {
+    {
+     { 0x04E0, 0x0000 },
+     { 0x0C20, 0x00C0 },
+     },
+    {
+     { 0x04E0, 0x0020 },
+     { 0x0C00, 0x00A0 },
+     },
+    {
+     { 0x04E0, 0x0000 },
+     { 0x0C00, 0x00C0 },
+     },
+    {
+     { 0x04E0, 0x0020 },
+     { 0x0C00, 0x00A0 },
+     },
+    {
+     { 0x04E0, 0x0000 },
+     { 0x0C00, 0x00C0 },
+     },
+    {
+     { 0x04E0, 0x0020 },
+     { 0x0C00, 0x00A0 },
+     },
+};
+
+static const UnkStruct_ov12_0226D408 ov12_0226D3C0[] = {
+    { 0x0460, 0x0020 },
+    { 0x0420, 0x0020 },
+    { 0x0440, 0x0020 },
+    { 0x0420, 0x0020 },
+    { 0x0440, 0x0020 },
+    { 0x0420, 0x0020 },
+};
+
+static const UnkStruct_ov12_0226D408 ov12_0226D390[] = {
+    { 0x0480, 0x0060 },
+    { 0x0440, 0x0060 },
+    { 0x0460, 0x0060 },
+    { 0x0440, 0x0060 },
+    { 0x0460, 0x0060 },
+    { 0x0440, 0x0060 },
+};
 
 static const UnkStruct_ov12_0226D408 ov12_0226D370[] = {
     { 0x240, 0xC0 },
@@ -76,27 +251,194 @@ static const UnkStruct_ov12_0226D408 ov12_0226D380[] = {
     { 0xD00, 0xE0 },
 };
 
-extern const s8 ov12_0226D368[];
-extern const UnkStruct_ov12_0226D408 ov12_0226D390[];
-extern const UnkStruct_ov12_0226D408 ov12_0226D3A8[];
-extern const UnkStruct_ov12_0226D408 ov12_0226D3C0[];
-extern const UnkStruct_ov12_0226D408 ov12_0226D3D8[];
-extern const UnkStruct_ov12_0226D408 ov12_0226D3F0[];
-extern const UnkStruct_ov12_0226D408 ov12_0226D408[];
-extern const UnkStruct_ov12_0226D408 ov12_0226D480[][2];
-extern const UnkStruct_ov12_0226D408 ov12_0226D420[][2];
-extern const UnkStruct_ov12_0226D408 ov12_0226D450[][2];
-extern const UnkStruct_ov12_0226D408 ov12_0226D4B0[][2];
-extern const UnkStruct_ov12_0226D408 ov12_0226D680[][4];
-extern const u8 ov12_0226D6E0[][32];
-extern const UnkTemplate_0200D748 ov12_0226D5E4;
-extern const UnkTemplate_0200D748 ov12_0226D618;
-extern const UnkTemplate_0200D748 ov12_0226D4E0;
-extern const UnkTemplate_0200D748 ov12_0226D514;
-extern const UnkTemplate_0200D748 ov12_0226D57C;
-extern const UnkTemplate_0200D748 ov12_0226D64C;
-extern const UnkTemplate_0200D748 ov12_0226D5B0;
-extern const UnkTemplate_0200D748 ov12_0226D548;
+static const UnkStruct_ov12_0226D408 ov12_0226D3A8[] = {
+    { 0x0000, 0x0000 },
+    { 0x0000, 0x0000 },
+    { 0x04C0, 0x0040 },
+    { 0x0000, 0x0000 },
+    { 0x04C0, 0x0040 },
+    { 0x0000, 0x0000 },
+};
+
+static const UnkStruct_ov12_0226D408 ov12_0226D3D8[] = {
+    { 0x0000, 0x0000 },
+    { 0x0000, 0x0000 },
+    { 0x0CC0, 0x0020 },
+    { 0x0000, 0x0000 },
+    { 0x0CC0, 0x0020 },
+    { 0x0000, 0x0000 },
+};
+
+static const UnkStruct_ov12_0226D408 ov12_0226D408[] = {
+    { 0x0000, 0x0000 },
+    { 0x0000, 0x0000 },
+    { 0x0C60, 0x0020 },
+    { 0x0000, 0x0000 },
+    { 0x0C60, 0x0020 },
+    { 0x0000, 0x0000 },
+};
+
+static const UnkTemplate_0200D748 ov12_0226D5E4 = {
+    .x              = 0x00C0,
+    .y              = 0x0074,
+    .z              = 0x0000,
+    .animation      = 0x0000,
+    .spritePriority = 0x00000017,
+    .pal            = 0x00000000,
+    .vram           = NNS_G2D_VRAM_TYPE_2DMAIN,
+    .resIdList      = {
+                       0x000000BF,
+                       0x00004E26,
+                       0x000000BE,
+                       0x000000BD,
+                       0xFFFFFFFF,
+                       0xFFFFFFFF,
+                       },
+    .bgPriority   = 0x00000000,
+    .vramTransfer = 0x00000000
+};
+
+static const UnkTemplate_0200D748 ov12_0226D618 = {
+    .x              = 0x003A,
+    .y              = 0x0024,
+    .z              = 0x0000,
+    .animation      = 0x0000,
+    .spritePriority = 0x00000018,
+    .pal            = 0x00000000,
+    .vram           = NNS_G2D_VRAM_TYPE_2DMAIN,
+    .resIdList      = {
+                       0x000000BC,
+                       0x00004E26,
+                       0x000000BB,
+                       0x000000BA,
+                       0xFFFFFFFF,
+                       0xFFFFFFFF,
+                       },
+    .bgPriority   = 0x00000000,
+    .vramTransfer = 0x00000000
+};
+
+static const UnkTemplate_0200D748 ov12_0226D4E0 = {
+    .x              = 0x00C0,
+    .y              = 0x0067,
+    .z              = 0x0000,
+    .animation      = 0x0000,
+    .spritePriority = 0x0000001C,
+    .pal            = 0x00000000,
+    .vram           = NNS_G2D_VRAM_TYPE_2DMAIN,
+    .resIdList      = {
+                       0x000000C8,
+                       0x00004E26,
+                       0x000000C7,
+                       0x000000C6,
+                       0xFFFFFFFF,
+                       0xFFFFFFFF,
+                       },
+    .bgPriority   = 0x00000000,
+    .vramTransfer = 0x00000000
+};
+
+static const UnkTemplate_0200D748 ov12_0226D514 = {
+    .x              = 0x0040,
+    .y              = 0x0010,
+    .z              = 0x0000,
+    .animation      = 0x0000,
+    .spritePriority = 0x00000019,
+    .pal            = 0x00000000,
+    .vram           = NNS_G2D_VRAM_TYPE_2DMAIN,
+    .resIdList      = {
+                       0x000000C2,
+                       0x00004E26,
+                       0x000000C1,
+                       0x000000C0,
+                       0xFFFFFFFF,
+                       0xFFFFFFFF,
+                       },
+    .bgPriority   = 0x00000000,
+    .vramTransfer = 0x00000000
+};
+
+static const UnkTemplate_0200D748 ov12_0226D57C = {
+    .x              = 0x00C6,
+    .y              = 0x0084,
+    .z              = 0x0000,
+    .animation      = 0x0000,
+    .spritePriority = 0x0000001A,
+    .pal            = 0x00000000,
+    .vram           = NNS_G2D_VRAM_TYPE_2DMAIN,
+    .resIdList      = {
+                       0x000000CB,
+                       0x00004E26,
+                       0x000000CA,
+                       0x000000C9,
+                       0xFFFFFFFF,
+                       0xFFFFFFFF,
+                       },
+    .bgPriority   = 0x00000000,
+    .vramTransfer = 0x00000000
+};
+
+static const UnkTemplate_0200D748 ov12_0226D64C = {
+    .x              = 0x003A,
+    .y              = 0x002D,
+    .z              = 0x0000,
+    .animation      = 0x0000,
+    .spritePriority = 0x0000001B,
+    .pal            = 0x00000000,
+    .vram           = NNS_G2D_VRAM_TYPE_2DMAIN,
+    .resIdList      = {
+                       0x000000C5,
+                       0x00004E26,
+                       0x000000C4,
+                       0x000000C3,
+                       0xFFFFFFFF,
+                       0xFFFFFFFF,
+                       },
+    .bgPriority   = 0x00000000,
+    .vramTransfer = 0x00000000
+};
+
+static const UnkTemplate_0200D748 ov12_0226D548 = {
+    .x              = 0x0000,
+    .y              = 0x0000,
+    .z              = 0x0000,
+    .animation      = 0x0000,
+    .spritePriority = 0x00000011,
+    .pal            = 0x00000000,
+    .vram           = NNS_G2D_VRAM_TYPE_2DMAIN,
+    .resIdList      = {
+                       0x000000B9,
+                       0x00004E26,
+                       0x000000B8,
+                       0x000000B7,
+                       0xFFFFFFFF,
+                       0xFFFFFFFF,
+                       },
+    .bgPriority   = 0x00000000,
+    .vramTransfer = 0x00000000
+};
+
+static const UnkTemplate_0200D748 ov12_0226D5B0 = {
+    .x              = 0x00C0,
+    .y              = 0x0074,
+    .z              = 0x0000,
+    .animation      = 0x0000,
+    .spritePriority = 0x00000017,
+    .pal            = 0x00000000,
+    .vram           = NNS_G2D_VRAM_TYPE_2DMAIN,
+    .resIdList      = {
+                       0x000000FD,
+                       0x00004E28,
+                       0x000000FE,
+                       0x000000FF,
+                       0xFFFFFFFF,
+                       0xFFFFFFFF,
+                       },
+    .bgPriority   = 0x00000000,
+    .vramTransfer = 0x00000000
+};
+
+#include "battle/battle_hp_bar_data.h"
 
 void ov12_02264824(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, NARC *narc, PaletteData *plttData, int barType) {
     const UnkTemplate_0200D748 *pRes = ov12_02265BB8(barType);
@@ -271,17 +613,26 @@ void ov12_02264B94(BattleHpBar *hpBar) {
 }
 
 void BattleHpBar_LoadResources(BattleHpBar *hpBar) {
-    NARC *narc                          = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
-    SpriteRenderer *renderer            = ov12_0223A8E4(hpBar->bsys);
-    SpriteGfxHandler *gfxHandler        = ov12_0223A8EC(hpBar->bsys);
-    PaletteData *plttData               = BattleSystem_GetPaletteData(hpBar->bsys);
-    const UnkTemplate_0200D748 *tmplate = ov12_02265BB8(hpBar->type);
+    const UnkTemplate_0200D748 *tmplate;
+    SpriteRenderer *renderer;
+    SpriteGfxHandler *gfxHandler;
+    PaletteData *plttData;
+    NARC *narc;
+
+    narc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
+
+    renderer   = ov12_0223A8E4(hpBar->bsys);
+    gfxHandler = ov12_0223A8EC(hpBar->bsys);
+    plttData   = BattleSystem_GetPaletteData(hpBar->bsys);
+
+    tmplate = ov12_02265BB8(hpBar->type);
 
     ov12_02264824(renderer, gfxHandler, narc, plttData, hpBar->type);
     hpBar->unk4 = ov12_02264968(renderer, gfxHandler, hpBar->type);
+
     ov12_022648EC(renderer, gfxHandler, narc, plttData, hpBar->type);
     if (hpBar->unk8 != NULL) {
-        Sprite_SetPositionXY(hpBar->unk8->sprite, tmplate->x - ov12_0226D368[hpBar->type], tmplate->y);
+        Sprite_SetPositionXY(hpBar->unk8->sprite, tmplate->x - ov12_0226D368[hpBar->type], tmplate->y + 0);
     }
     NARC_Delete(narc);
 }
@@ -421,12 +772,17 @@ void BattleHpBar_SetEnabled(BattleHpBar *hpBar, BOOL a1) {
 }
 
 void ov12_02264F44(BattleHpBar *hpBar, int x, int y) {
+    const UnkTemplate_0200D748 *r4;
+
     GF_ASSERT(hpBar->unk4 != NULL);
 
-    const UnkTemplate_0200D748 *r4 = ov12_02265BB8(hpBar->type);
+    r4 = ov12_02265BB8(hpBar->type);
+
     Sprite_SetPositionXY(hpBar->unk4->sprite, r4->x + x, r4->y + y);
     if (hpBar->unk8 != NULL) {
-        Sprite_SetPositionXY(hpBar->unk8->sprite, r4->x + x - ov12_0226D368[hpBar->type], r4->y + y);
+        Sprite_SetPositionXY(hpBar->unk8->sprite,
+            r4->x + x - ov12_0226D368[hpBar->type],
+            r4->y + y + 0);
     }
 }
 
@@ -454,13 +810,14 @@ SysTask *ov12_02264FB0(BattleHpBar *hpBar, BOOL a1) {
     return SysTask_CreateOnMainQueue(ov12_02265054, hpBar, 990);
 }
 
-#ifdef NONMATCHING // https://decomp.me/scratch/Q0zRs
 void ov12_02265054(SysTask *task, void *data) {
-    BattleHpBar *hpBar             = data;
-    int r4                         = 0;
-    const UnkTemplate_0200D748 *r6 = ov12_02265BB8(hpBar->type);
+    BattleHpBar *hpBar = data;
     s16 x, y;
+    const UnkTemplate_0200D748 *r6;
+    int r4;
 
+    r4 = 0;
+    r6 = ov12_02265BB8(hpBar->type);
     UnkImageStruct_GetSpritePositionXY(hpBar->unk4, &x, &y);
 
     switch (hpBar->type) {
@@ -469,188 +826,47 @@ void ov12_02265054(SysTask *task, void *data) {
     case 4:
     case 6:
     case 7:
-        if (!hpBar->unk_4F_0) {
+        if (hpBar->unk_4F_0 == 0) {
             x -= 24;
             if (x < r6->x) {
                 x = r6->x;
-                ++r4;
+                r4++;
             }
         } else {
             x += 24;
             if (x > r6->x + 160) {
                 x = r6->x + 160;
-                ++r4;
+                r4++;
             }
         }
         break;
     default:
-        if (!hpBar->unk_4F_0) {
+        if (hpBar->unk_4F_0 == 0) {
             x += 24;
             if (x > r6->x) {
                 x = r6->x;
-                ++r4;
+                r4++;
             }
         } else {
             x -= 24;
             if (x < r6->x - 24) {
                 x = r6->x - 24;
-                ++r4;
+                r4++;
             }
         }
         break;
     }
     UnkImageStruct_SetSpritePositionXY(hpBar->unk4, x, y);
     if (hpBar->unk8 != NULL) {
-        UnkImageStruct_SetSpritePositionXY(hpBar->unk8, x - ov12_0226D368[hpBar->type], y);
+        UnkImageStruct_SetSpritePositionXY(hpBar->unk8, x - ov12_0226D368[hpBar->type], y + 0);
     }
+
     if (r4 > 0) {
         hpBar->unk_4F_1 = TRUE;
         SysTask_Destroy(task);
+        return;
     }
 }
-#else
-// clang-format off
-asm void ov12_02265054(SysTask *task, void *data) {
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	add r7, r0, #0
-	add r0, r5, #0
-	add r0, #0x25
-	ldrb r0, [r0, #0]
-	mov r4, #0
-	bl ov12_02265BB8
-	add r6, r0, #0
-	add r1, sp, #0
-	ldr r0, [r5, #4]
-	add r1, #2
-	add r2, sp, #0
-	bl UnkImageStruct_GetSpritePositionXY
-	add r0, r5, #0
-	add r0, #0x25
-	ldrb r0, [r0, #0]
-	cmp r0, #7
-	bhi _022650DA
-	add r0, r0, r0
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_0226508A: // jump table
-    lsl r6, r1, #0
-    DCD 0x000E004E
-    DCD 0x000E004E
-    DCD 0x000E004E
-    lsl r6, r1, #0
-_0226509A:
-	add r0, r5, #0
-	add r0, #0x4f
-	ldrb r0, [r0, #0]
-	lsl r0, r0, #0x1f
-	lsr r0, r0, #0x1f
-	add r0, sp, #0
-	bne _022650C0
-	mov r1, #2
-	ldrsh r2, [r0, r1]
-	sub r2, #0x18
-	strh r2, [r0, #2]
-	add r2, r4, #0
-	ldrsh r1, [r0, r1]
-	ldrsh r2, [r6, r2]
-	cmp r1, r2
-	bge _02265118
-	strh r2, [r0, #2]
-	add r4, r4, #1
-	b _02265118
-_022650C0:
-	mov r1, #2
-	ldrsh r2, [r0, r1]
-	add r2, #0x18
-	strh r2, [r0, #2]
-	add r2, r4, #0
-	ldrsh r2, [r6, r2]
-	ldrsh r1, [r0, r1]
-	add r2, #0xa0
-	cmp r1, r2
-	ble _02265118
-	strh r2, [r0, #2]
-	add r4, r4, #1
-	b _02265118
-_022650DA:
-	add r0, r5, #0
-	add r0, #0x4f
-	ldrb r0, [r0, #0]
-	lsl r0, r0, #0x1f
-	lsr r0, r0, #0x1f
-	add r0, sp, #0
-	bne _02265100
-	mov r1, #2
-	ldrsh r2, [r0, r1]
-	add r2, #0x18
-	strh r2, [r0, #2]
-	mov r2, #0
-	ldrsh r1, [r0, r1]
-	ldrsh r2, [r6, r2]
-	cmp r1, r2
-	ble _02265118
-	strh r2, [r0, #2]
-	add r4, r4, #1
-	b _02265118
-_02265100:
-	mov r1, #2
-	ldrsh r2, [r0, r1]
-	sub r2, #0x18
-	strh r2, [r0, #2]
-	mov r2, #0
-	ldrsh r2, [r6, r2]
-	ldrsh r1, [r0, r1]
-	sub r2, #0x18
-	cmp r1, r2
-	bge _02265118
-	strh r2, [r0, #2]
-	add r4, r4, #1
-_02265118:
-	add r2, sp, #0
-	mov r1, #2
-	mov r3, #0
-	ldrsh r1, [r2, r1]
-	ldrsh r2, [r2, r3]
-	ldr r0, [r5, #4]
-	bl UnkImageStruct_SetSpritePositionXY
-	ldr r0, [r5, #8]
-	cmp r0, #0
-	beq _0226514C
-	add r6, sp, #0
-	mov r1, #2
-	ldrsh r3, [r6, r1]
-	add r1, r5, #0
-	add r1, #0x25
-	ldrb r2, [r1, #0]
-	ldr r1, =ov12_0226D368
-	ldrsb r1, [r1, r2]
-	mov r2, #0
-	ldrsh r2, [r6, r2]
-	sub r1, r3, r1
-	lsl r1, r1, #0x10
-	asr r1, r1, #0x10
-	bl UnkImageStruct_SetSpritePositionXY
-_0226514C:
-	cmp r4, #0
-	ble _02265164
-	add r0, r5, #0
-	add r0, #0x4f
-	ldrb r1, [r0, #0]
-	mov r0, #2
-	add r5, #0x4f
-	orr r0, r1
-	strb r0, [r5, #0]
-	add r0, r7, #0
-	bl SysTask_Destroy
-_02265164:
-	pop {r3, r4, r5, r6, r7, pc}
-}
-// clang-format on
-#endif // NONMATCHING
 
 void ov12_0226516C(BattleHpBar *hpBar) {
     BgConfig *bgConfig;
@@ -791,7 +1007,6 @@ void ov12_022655B0(BattleHpBar *hpBar, int a1) {
     MI_CpuCopy16(r4, (void *)((u32)vramAddr + ov12_0226D390[hpBar->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D390[hpBar->type].size);
 }
 
-#ifdef NONMATCHING // scratch unavailable
 void ov12_022655F0(BattleHpBar *hpBar, u32 flag) {
     BgConfig *bgConfig;
     u8 *windowBuf;
@@ -819,8 +1034,8 @@ void ov12_022655F0(BattleHpBar *hpBar, u32 flag) {
 
         vramAddr = G2_GetOBJCharPtr();
         imgProxy = Sprite_GetImageProxy(hpBar->unk4->sprite);
-        ptr1     = vramAddr;
-        ptr2     = vramAddr + 0x1A0;
+        ptr1     = windowBuf;
+        ptr2     = windowBuf + 0x1A0;
         MI_CpuCopy16(ptr1, (void *)((u32)vramAddr + ov12_0226D370[0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D370[0].size);
         MI_CpuCopy16(ptr2, (void *)((u32)vramAddr + ov12_0226D370[1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D370[1].size);
         MI_CpuCopy16(ptr1 + ov12_0226D370[0].size, (void *)((u32)vramAddr + ov12_0226D370[2].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D370[2].size);
@@ -830,110 +1045,7 @@ void ov12_022655F0(BattleHpBar *hpBar, u32 flag) {
     RemoveWindow(&window);
     String_Delete(string);
 }
-#else
-// clang-format off
-asm void ov12_022655F0(BattleHpBar *hpBar, u32 flag) {
-    push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x28
-	add r4, r0, #0
-	ldr r0, [r4, #0xc]
-	add r5, r1, #0
-	bl BattleSystem_GetBgConfig
-	add r6, r0, #0
-	ldr r0, [r4, #0xc]
-	bl BattleSystem_GetMessageData
-	mov r1, #1
-	lsl r1, r1, #0xa
-	add r2, r5, #0
-	tst r2, r1
-	beq _02265618
-	sub r1, #0x4a
-	bl NewString_ReadMsgData
-	b _0226561E
-_02265618:
-	add r1, #0xc4
-	bl NewString_ReadMsgData
-_0226561E:
-	add r7, r0, #0
-	mov r0, #0
-	str r0, [sp, #0]
-	mov r0, #0xf
-	str r0, [sp, #4]
-	add r0, r6, #0
-	add r1, sp, #0x18
-	mov r2, #0xd
-	mov r3, #2
-	bl AddTextWindowTopLeftCorner
-	mov r1, #0
-	str r1, [sp, #0]
-	mov r0, #0xff
-	str r0, [sp, #4]
-	ldr r0, =0x000E020F
-	add r2, r7, #0
-	str r0, [sp, #8]
-	str r1, [sp, #0xc]
-	str r1, [sp, #0x10]
-	str r1, [sp, #0x14]
-	add r0, sp, #0x18
-	add r3, r1, #0
-	bl AddTextPrinterParameterizedWithColorAndSpacing
-	ldr r0, [r4, #4]
-	ldr r5, [sp, #0x24]
-	ldr r0, [r0, #0]
-	bl Sprite_GetImageProxy
-	add r4, r0, #0
-	mov r2, #0x1a
-	mov r6, #0x19
-	lsl r2, r2, #4
-	lsl r6, r6, #0x16
-	add r2, #0xa0
-	ldr r1, [r4, #4]
-	add r2, r6, r2
-	add r1, r1, r2
-	add r0, r5, #0
-	mov r2, #0xc0
-	bl MIi_CpuCopy16
-	mov r2, #0xd
-	mov r0, #0x1a
-	lsl r2, r2, #6
-	lsl r0, r0, #4
-	ldr r1, [r4, #4]
-	add r2, r6, r2
-	add r1, r1, r2
-	add r0, r5, r0
-	mov r2, #0xc0
-	bl MIi_CpuCopy16
-	mov r2, #0xa
-	lsl r2, r2, #8
-	add r0, r5, #0
-	ldr r1, [r4, #4]
-	add r2, r6, r2
-	add r1, r1, r2
-	add r0, #0xc0
-	mov r2, #0xe0
-	bl MIi_CpuCopy16
-	mov r0, #0x1a
-	mov r1, #0xb
-	lsl r0, r0, #4
-	lsl r1, r1, #8
-	add r0, r5, r0
-	ldr r2, [r4, #4]
-	add r1, r6, r1
-	add r1, r2, r1
-	add r0, #0xc0
-	mov r2, #0xe0
-	bl MIi_CpuCopy16
-	add r0, sp, #0x18
-	bl RemoveWindow
-	add r0, r7, #0
-	bl String_Delete
-	add sp, #0x28
-	pop {r3, r4, r5, r6, r7, pc}
-}
-// clang-format on
-#endif // NONMATCHING
 
-#ifdef NONMATCHING // scratch unavailable
 void ov12_022656CC(BattleHpBar *hpBar, u32 flag) {
     BgConfig *bgConfig;
     u8 *windowBuf;
@@ -967,8 +1079,8 @@ void ov12_022656CC(BattleHpBar *hpBar, u32 flag) {
 
         vramAddr = G2_GetOBJCharPtr();
         imgProxy = Sprite_GetImageProxy(hpBar->unk4->sprite);
-        ptr1     = vramAddr;
-        ptr2     = vramAddr + 0x1A0;
+        ptr1     = windowBuf;
+        ptr2     = windowBuf + 0x1A0;
         MI_CpuCopy16(ptr1, (void *)((u32)vramAddr + ov12_0226D380[0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D380[0].size);
         MI_CpuCopy16(ptr2, (void *)((u32)vramAddr + ov12_0226D380[1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D380[1].size);
         MI_CpuCopy16(ptr1 + ov12_0226D380[0].size, (void *)((u32)vramAddr + ov12_0226D380[2].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D380[2].size);
@@ -979,134 +1091,6 @@ void ov12_022656CC(BattleHpBar *hpBar, u32 flag) {
     String_Delete(string);
     String_Delete(string2);
 }
-#else
-// clang-format off
-asm void ov12_022656CC(BattleHpBar *hpBar, u32 flag) {
-    push {r4, r5, r6, r7, lr}
-	sub sp, #0x34
-	add r4, r0, #0
-	ldr r0, [r4, #0xc]
-	add r5, r1, #0
-	bl BattleSystem_GetBgConfig
-	str r0, [sp, #0x1c]
-	ldr r0, [r4, #0xc]
-	bl BattleSystem_GetMessageData
-	str r0, [sp, #0x20]
-	ldr r0, [r4, #0xc]
-	bl BattleSystem_GetMessageFormat
-	add r7, r0, #0
-	mov r0, #0x1e
-	mov r1, #5
-	bl String_New
-	mov r1, #1
-	add r6, r0, #0
-	lsl r1, r1, #0xa
-	add r0, r5, #0
-	tst r0, r1
-	beq _0226570C
-	ldr r0, [sp, #0x20]
-	sub r1, #0x49
-	bl NewString_ReadMsgData
-	str r0, [sp, #0x18]
-	b _02265716
-_0226570C:
-	ldr r0, [sp, #0x20]
-	add r1, #0xc5
-	bl NewString_ReadMsgData
-	str r0, [sp, #0x18]
-_02265716:
-	mov r0, #1
-	str r0, [sp, #0]
-	add r2, r4, #0
-	str r0, [sp, #4]
-	add r2, #0x27
-	ldrb r2, [r2, #0]
-	add r0, r7, #0
-	mov r1, #0
-	mov r3, #2
-	bl BufferIntegerAsString
-	ldr r2, [sp, #0x18]
-	add r0, r7, #0
-	add r1, r6, #0
-	bl StringExpandPlaceholders
-	mov r0, #0
-	str r0, [sp, #0]
-	mov r0, #0xf
-	str r0, [sp, #4]
-	ldr r0, [sp, #0x1c]
-	add r1, sp, #0x24
-	mov r2, #0xd
-	mov r3, #2
-	bl AddTextWindowTopLeftCorner
-	mov r1, #0
-	str r1, [sp, #0]
-	mov r0, #0xff
-	str r0, [sp, #4]
-	ldr r0, =0x000E020F
-	add r2, r6, #0
-	str r0, [sp, #8]
-	str r1, [sp, #0xc]
-	str r1, [sp, #0x10]
-	str r1, [sp, #0x14]
-	add r0, sp, #0x24
-	add r3, r1, #0
-	bl AddTextPrinterParameterizedWithColorAndSpacing
-	ldr r0, [r4, #4]
-	ldr r5, [sp, #0x30]
-	ldr r0, [r0, #0]
-	bl Sprite_GetImageProxy
-	add r4, r0, #0
-	mov r7, #0x19
-	mov r2, #0x11
-	lsl r7, r7, #0x16
-	lsl r2, r2, #6
-	ldr r1, [r4, #4]
-	add r2, r7, r2
-	add r1, r1, r2
-	add r0, r5, #0
-	mov r2, #0xc0
-	bl MIi_CpuCopy16
-	mov r2, #0x15
-	mov r0, #0x1a
-	lsl r2, r2, #6
-	lsl r0, r0, #4
-	ldr r1, [r4, #4]
-	add r2, r7, r2
-	add r1, r1, r2
-	add r0, r5, r0
-	mov r2, #0xc0
-	bl MIi_CpuCopy16
-	mov r2, #3
-	lsl r2, r2, #0xa
-	add r0, r5, #0
-	ldr r1, [r4, #4]
-	add r2, r7, r2
-	add r1, r1, r2
-	add r0, #0xc0
-	mov r2, #0xe0
-	bl MIi_CpuCopy16
-	mov r0, #0x1a
-	mov r1, #0xd
-	lsl r0, r0, #4
-	lsl r1, r1, #8
-	add r0, r5, r0
-	ldr r2, [r4, #4]
-	add r1, r7, r1
-	add r1, r2, r1
-	add r0, #0xc0
-	mov r2, #0xe0
-	bl MIi_CpuCopy16
-	add r0, sp, #0x24
-	bl RemoveWindow
-	add r0, r6, #0
-	bl String_Delete
-	ldr r0, [sp, #0x18]
-	bl String_Delete
-	add sp, #0x34
-	pop {r4, r5, r6, r7, pc}
-}
-// clang-format on
-#endif // NONMATCHING
 
 int ov12_022657E4(BattleHpBar *hpBar, BOOL a1) {
     int ret;
@@ -1311,7 +1295,7 @@ u32 ov12_02265B18(s32 exp, s32 gainedExp, s32 maxExp, u8 a3) {
 }
 
 const u8 *ov12_02265B58(int a0) {
-    return ov12_0226D6E0[a0];
+    return ov12_0226D6E0 + a0 * 32;
 }
 
 u8 ov12_02265B64(u8 a0, u32 battleType) {
