@@ -1,55 +1,23 @@
 #include "battle/battle_hp_bar.h"
 
+#include "global.h"
+
 #include "battle/battle_system.h"
 #include "msgdata/msg/msg_0197.h"
 
 #include "math_util.h"
 #include "unk_0208805C.h"
 
-typedef struct UnkStruct_ov12_0226D408 {
-    u16 offset;
-    u16 size;
-} UnkStruct_ov12_0226D408;
-
-typedef struct UnkStruct_ov12_02265C54 {
-    BattleHpBar *hpBar;
-    u8 *unk_4;
-    u8 unk_8;
-    u8 unk_9;
-    s8 unk_A;
-} UnkStruct_ov12_02265C54;
-
-static void ov12_02264824(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, NARC *narc, PaletteData *plttData, int barType);
-static void ov12_022648EC(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, NARC *narc, PaletteData *plttData, int barType);
-static UnkImageStruct *ov12_02264968(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, int barType);
-static void ov12_02264B28(BattleHpBar *hpBar);
-static void ov12_02264B4C(BattleHpBar *hpBar);
-static void ov12_02264B60(BattleHpBar *hpBar);
-static void ov12_02264B94(BattleHpBar *hpBar);
-static void ov12_02264F00(BattleHpBar *hpBar, int a1);
-static void ov12_02264F44(BattleHpBar *hpBar, int x, int y);
-static void ov12_02265054(SysTask *task, void *data);
-static void ov12_0226516C(BattleHpBar *hpBar);
-static void ov12_022652D0(BattleHpBar *hpBar);
-static void ov12_02265354(BattleHpBar *hpBar);
-static void ov12_02265474(BattleHpBar *hpBar, u32 num);
-static void ov12_02265500(BattleHpBar *hpBar);
-static void ov12_02265560(BattleHpBar *hpBar);
-static void ov12_022655B0(BattleHpBar *hpBar, int a1);
-static void ov12_022655F0(BattleHpBar *hpBar, u32 flag);
-static void ov12_022656CC(BattleHpBar *hpBar, u32 flag);
-static int ov12_022657E4(BattleHpBar *hpBar, BOOL a1);
-static void ov12_02265878(BattleHpBar *hpBar, u8 a1);
-static int ov12_022659E0(s32 maxHp, s32 hp, s32 deltaHP, s32 *pHpCalc, u8 a4, u16 a5);
-static u8 ov12_02265A9C(s32 maxHp, s32 hp, s32 deltaHp, s32 *pHpCalc, u8 *a4, u8 a5);
-static u32 ov12_02265B18(s32 exp, s32 gainedExp, s32 maxExp, u8 a3);
-static const u8 *ov12_02265B58(int a0);
-static const UnkTemplate_0200D748 *ov12_02265BB8(u8 barType);
-static const UnkTemplate_0200D748 *ov12_02265C1C(u8 barType);
-static void ov12_02265C88(SysTask *task, void *data);
-static void ov12_02265D78(BattleHpBar *hpBar);
-static void ov12_02265DA0(BattleHpBar *hpBar);
-static void ov12_02265DC4(SysTask *task, void *data);
+typedef enum HPBarType {
+    HP_BAR_TYPE_SINGLE_PLAYER,
+    HP_BAR_TYPE_SINGLE_ENEMY,
+    HP_BAR_TYPE_DOUBLE_PLAYER_LHS,
+    HP_BAR_TYPE_DOUBLE_ENEMY_LHS,
+    HP_BAR_TYPE_DOUBLE_PLAYER_RHS,
+    HP_BAR_TYPE_DOUBLE_ENEMY_RHS,
+    HP_BAR_TYPE_SAFARI,
+    HP_BAR_TYPE_PALPARK,
+} HPBarType;
 
 ALIGN(4)
 static const s8 ov12_0226D368[] = {
@@ -60,6 +28,11 @@ static const s8 ov12_0226D368[] = {
     72,
     0,
 };
+
+typedef struct UnkStruct_ov12_0226D408 {
+    u16 offset;
+    u16 size;
+} UnkStruct_ov12_0226D408;
 
 static const UnkStruct_ov12_0226D408 ov12_0226D680[][4] = {
     {
@@ -276,6 +249,38 @@ static const UnkStruct_ov12_0226D408 ov12_0226D408[] = {
     { 0x0000, 0x0000 },
 };
 
+static void ov12_02264824(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, NARC *narc, PaletteData *plttData, int barType);
+static void ov12_022648EC(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, NARC *narc, PaletteData *plttData, int barType);
+static UnkImageStruct *ov12_02264968(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, int barType);
+static void ov12_02264B28(BattleHpBar *hpBar);
+static void ov12_02264B4C(BattleHpBar *hpBar);
+static void ov12_02264B60(BattleHpBar *hpBar);
+static void ov12_02264B94(BattleHpBar *hpBar);
+static void ov12_02264F00(BattleHpBar *hpBar, int a1);
+static void ov12_02264F44(BattleHpBar *hpBar, int x, int y);
+static void ov12_02265054(SysTask *task, void *data);
+static void ov12_0226516C(BattleHpBar *hpBar);
+static void ov12_022652D0(BattleHpBar *hpBar);
+static void ov12_02265354(BattleHpBar *hpBar);
+static void ov12_02265474(BattleHpBar *hpBar, u32 num);
+static void ov12_02265500(BattleHpBar *hpBar);
+static void ov12_02265560(BattleHpBar *hpBar);
+static void ov12_022655B0(BattleHpBar *hpBar, int a1);
+static void ov12_022655F0(BattleHpBar *hpBar, u32 flag);
+static void ov12_022656CC(BattleHpBar *hpBar, u32 flag);
+static int ov12_022657E4(BattleHpBar *hpBar, BOOL a1);
+static void ov12_02265878(BattleHpBar *hpBar, u8 a1);
+static int ov12_022659E0(s32 maxHp, s32 hp, s32 deltaHP, s32 *pHpCalc, u8 a4, u16 a5);
+static u8 ov12_02265A9C(s32 maxHp, s32 hp, s32 deltaHp, s32 *pHpCalc, u8 *a4, u8 a5);
+static u32 ov12_02265B18(s32 exp, s32 gainedExp, s32 maxExp, u8 a3);
+static const u8 *ov12_02265B58(int a0);
+static const UnkTemplate_0200D748 *ov12_02265BB8(u8 barType);
+static const UnkTemplate_0200D748 *ov12_02265C1C(u8 barType);
+static void ov12_02265C88(SysTask *task, void *data);
+static void ov12_02265D78(BattleHpBar *hpBar);
+static void ov12_02265DA0(BattleHpBar *hpBar);
+static void ov12_02265DC4(SysTask *task, void *data);
+
 static const UnkTemplate_0200D748 ov12_0226D5E4 = {
     .x              = 0x00C0,
     .y              = 0x0074,
@@ -472,21 +477,21 @@ static UnkImageStruct *ov12_02264968(SpriteRenderer *renderer, SpriteGfxHandler 
 
 void ov12_0226498C(BattleHpBar *hpBar, u32 num, u32 flag) {
     GF_ASSERT(hpBar->unk4 != NULL);
-    if (hpBar->type == 6) {
+    if (hpBar->type == HP_BAR_TYPE_SAFARI) {
         flag &= 0xC00;
-    } else if (hpBar->type == 7) {
+    } else if (hpBar->type == HP_BAR_TYPE_PALPARK) {
         flag &= 0x3000;
     } else {
         flag &= ~0x3C00;
     }
     switch (hpBar->type) {
-    case 1:
-    case 3:
-    case 5:
+    case HP_BAR_TYPE_SINGLE_ENEMY:
+    case HP_BAR_TYPE_DOUBLE_ENEMY_LHS:
+    case HP_BAR_TYPE_DOUBLE_ENEMY_RHS:
         flag &= ~0x26;
         break;
-    case 2:
-    case 4:
+    case HP_BAR_TYPE_DOUBLE_PLAYER_LHS:
+    case HP_BAR_TYPE_DOUBLE_PLAYER_RHS:
         flag &= ~0x220;
         if (hpBar->unk_4F_3 == 0) {
             flag &= ~6;
@@ -494,11 +499,11 @@ void ov12_0226498C(BattleHpBar *hpBar, u32 num, u32 flag) {
             flag &= ~1;
         }
         break;
-    case 0:
+    case HP_BAR_TYPE_SINGLE_PLAYER:
         flag &= ~0x200;
         break;
-    case 6:
-    case 7:
+    case HP_BAR_TYPE_SAFARI:
+    case HP_BAR_TYPE_PALPARK:
         break;
     }
     if (BattleSystem_GetBattleType(hpBar->bsys) & BATTLE_TYPE_TRAINER) {
@@ -610,6 +615,7 @@ static void ov12_02264B94(BattleHpBar *hpBar) {
     }
 }
 
+#ifdef NONMATCHING
 void BattleHpBar_LoadResources(BattleHpBar *hpBar) {
     const UnkTemplate_0200D748 *tmplate;
     SpriteRenderer *renderer;
@@ -634,6 +640,79 @@ void BattleHpBar_LoadResources(BattleHpBar *hpBar) {
     }
     NARC_Delete(narc);
 }
+#else
+// clang-format off
+asm void BattleHpBar_LoadResources(BattleHpBar *hpBar) {
+    push {r4, r5, r6, r7, lr}
+	sub sp, #0xc
+	add r5, r0, #0
+	mov r0, #8
+	mov r1, #5
+	bl NARC_New
+	add r6, r0, #0
+	ldr r0, [r5, #0xc]
+	bl ov12_0223A8E4
+	add r7, r0, #0
+	ldr r0, [r5, #0xc]
+	bl ov12_0223A8EC
+	str r0, [sp, #4]
+	ldr r0, [r5, #0xc]
+	bl BattleSystem_GetPaletteData
+	str r0, [sp, #8]
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0, #0]
+	bl ov12_02265BB8
+	add r4, r0, #0
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0, #0]
+	ldr r1, [sp, #4]
+	ldr r3, [sp, #8]
+	str r0, [sp, #0]
+	add r0, r7, #0
+	add r2, r6, #0
+	bl ov12_02264824
+	add r2, r5, #0
+	add r2, #0x25
+	ldrb r2, [r2, #0]
+	ldr r1, [sp, #4]
+	add r0, r7, #0
+	bl ov12_02264968
+	str r0, [r5, #4]
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0, #0]
+	ldr r1, [sp, #4]
+	ldr r3, [sp, #8]
+	str r0, [sp, #0]
+	add r0, r7, #0
+	add r2, r6, #0
+	bl ov12_022648EC
+	ldr r0, [r5, #8]
+	cmp r0, #0
+	beq _02264C5A
+	add r5, #0x25
+	ldrb r3, [r5, #0]
+	ldr r2, =ov12_0226D368
+	mov r1, #0
+	ldrsh r1, [r4, r1]
+	ldrsb r2, [r2, r3]
+	ldr r0, [r0, #0]
+	sub r1, r1, r2
+	mov r2, #2
+	lsl r1, r1, #0x10
+	ldrsh r2, [r4, r2]
+	asr r1, r1, #0x10
+	bl Sprite_SetPositionXY
+_02264C5A:
+	add r0, r6, #0
+	bl NARC_Delete
+	add sp, #0xc
+	pop {r4, r5, r6, r7, pc}
+}
+// clang-format on
+#endif // NONMATCHING
 
 void BattleHpBar_FreeResources(BattleHpBar *hpBar) {
     ov12_02264B28(hpBar);
@@ -648,8 +727,8 @@ void ov12_02264C84(BattleHpBar *hpBar) {
     NNSG2dImageProxy *imgProxy;
 
     switch (hpBar->type) {
-    case 2:
-    case 4:
+    case HP_BAR_TYPE_DOUBLE_PLAYER_LHS:
+    case HP_BAR_TYPE_DOUBLE_PLAYER_RHS:
         hpBar->unk_4F_3 ^= 1;
         vramBaseAddr = G2_GetOBJCharPtr();
         imgProxy     = Sprite_GetImageProxy(hpBar->unk4->sprite);
@@ -769,6 +848,7 @@ void BattleHpBar_SetEnabled(BattleHpBar *hpBar, BOOL a1) {
     }
 }
 
+#ifdef NONMATCHING
 static void ov12_02264F44(BattleHpBar *hpBar, int x, int y) {
     const UnkTemplate_0200D748 *r4;
 
@@ -783,19 +863,74 @@ static void ov12_02264F44(BattleHpBar *hpBar, int x, int y) {
             r4->y + y + 0);
     }
 }
+#else
+// clang-format off
+asm static void ov12_02264F44(BattleHpBar *hpBar, int x, int y) {
+    push {r3, r4, r5, r6, r7, lr}
+	add r5, r0, #0
+	ldr r0, [r5, #4]
+	add r6, r1, #0
+	add r7, r2, #0
+	cmp r0, #0
+	bne _02264F56
+	bl GF_AssertFail
+_02264F56:
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0, #0]
+	bl ov12_02265BB8
+	add r4, r0, #0
+	mov r1, #0
+	mov r2, #2
+	ldrsh r1, [r4, r1]
+	ldrsh r2, [r4, r2]
+	ldr r0, [r5, #4]
+	add r1, r1, r6
+	add r2, r2, r7
+	lsl r1, r1, #0x10
+	lsl r2, r2, #0x10
+	ldr r0, [r0, #0]
+	asr r1, r1, #0x10
+	asr r2, r2, #0x10
+	bl Sprite_SetPositionXY
+	ldr r0, [r5, #8]
+	cmp r0, #0
+	beq _02264FA8
+	add r5, #0x25
+	ldrb r3, [r5, #0]
+	mov r1, #0
+	ldr r2, =ov12_0226D368
+	ldrsh r1, [r4, r1]
+	ldrsb r2, [r2, r3]
+	ldr r0, [r0, #0]
+	add r1, r1, r6
+	sub r1, r1, r2
+	mov r2, #2
+	ldrsh r2, [r4, r2]
+	lsl r1, r1, #0x10
+	asr r1, r1, #0x10
+	add r2, r2, r7
+	lsl r2, r2, #0x10
+	asr r2, r2, #0x10
+	bl Sprite_SetPositionXY
+_02264FA8:
+	pop {r3, r4, r5, r6, r7, pc}
+}
+// clang-format on
+#endif // NONMATCHING
 
-SysTask *ov12_02264FB0(BattleHpBar *hpBar, BOOL a1) {
+void ov12_02264FB0(BattleHpBar *hpBar, BOOL a1) {
     GF_ASSERT(hpBar != NULL);
     GF_ASSERT(hpBar->unk4 != NULL);
     hpBar->unk_4F_1 = FALSE;
     hpBar->unk_4F_0 = a1;
     if (!a1) {
         switch (hpBar->type) {
-        case 0:
-        case 2:
-        case 4:
-        case 6:
-        case 7:
+        case HP_BAR_TYPE_SINGLE_PLAYER:
+        case HP_BAR_TYPE_DOUBLE_PLAYER_LHS:
+        case HP_BAR_TYPE_DOUBLE_PLAYER_RHS:
+        case HP_BAR_TYPE_SAFARI:
+        case HP_BAR_TYPE_PALPARK:
             ov12_02264F44(hpBar, 160, 0);
             break;
         default:
@@ -805,9 +940,10 @@ SysTask *ov12_02264FB0(BattleHpBar *hpBar, BOOL a1) {
     } else {
         ov12_02264F44(hpBar, 0, 0);
     }
-    return SysTask_CreateOnMainQueue(ov12_02265054, hpBar, 990);
+    SysTask_CreateOnMainQueue(ov12_02265054, hpBar, 990);
 }
 
+#ifdef NONMATCHING
 static void ov12_02265054(SysTask *task, void *data) {
     BattleHpBar *hpBar = data;
     s16 x, y;
@@ -819,11 +955,11 @@ static void ov12_02265054(SysTask *task, void *data) {
     UnkImageStruct_GetSpritePositionXY(hpBar->unk4, &x, &y);
 
     switch (hpBar->type) {
-    case 0:
-    case 2:
-    case 4:
-    case 6:
-    case 7:
+    case HP_BAR_TYPE_SINGLE_PLAYER:
+    case HP_BAR_TYPE_DOUBLE_PLAYER_LHS:
+    case HP_BAR_TYPE_DOUBLE_PLAYER_RHS:
+    case HP_BAR_TYPE_SAFARI:
+    case HP_BAR_TYPE_PALPARK:
         if (hpBar->unk_4F_0 == 0) {
             x -= 24;
             if (x < r6->x) {
@@ -865,6 +1001,152 @@ static void ov12_02265054(SysTask *task, void *data) {
         return;
     }
 }
+#else
+// clang-format off
+asm static void ov12_02265054(SysTask *task, void *data) {
+    push {r3, r4, r5, r6, r7, lr}
+	add r5, r1, #0
+	add r7, r0, #0
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0, #0]
+	mov r4, #0
+	bl ov12_02265BB8
+	add r6, r0, #0
+	add r1, sp, #0
+	ldr r0, [r5, #4]
+	add r1, #2
+	add r2, sp, #0
+	bl UnkImageStruct_GetSpritePositionXY
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0, #0]
+	cmp r0, #7
+	bhi _022650DA
+	add r0, r0, r0
+	add r0, pc
+	ldrh r0, [r0, #6]
+	lsl r0, r0, #0x10
+	asr r0, r0, #0x10
+	add pc, r0
+_0226508A:
+	lsl r6, r1, #0  // .short _0226509A - _0226508A - 2 ; case 0
+	lsl r6, r1, #1  // .short _022650DA - _0226508A - 2 ; case 1
+	lsl r6, r1, #0  // .short _0226509A - _0226508A - 2 ; case 2
+	lsl r6, r1, #1  // .short _022650DA - _0226508A - 2 ; case 3
+	lsl r6, r1, #0  // .short _0226509A - _0226508A - 2 ; case 4
+	lsl r6, r1, #1  // .short _022650DA - _0226508A - 2 ; case 5
+	lsl r6, r1, #0  // .short _0226509A - _0226508A - 2 ; case 6
+	lsl r6, r1, #0  // .short _0226509A - _0226508A - 2 ; case 7
+_0226509A:
+	add r0, r5, #0
+	add r0, #0x4f
+	ldrb r0, [r0, #0]
+	lsl r0, r0, #0x1f
+	lsr r0, r0, #0x1f
+	add r0, sp, #0
+	bne _022650C0
+	mov r1, #2
+	ldrsh r2, [r0, r1]
+	sub r2, #0x18
+	strh r2, [r0, #2]
+	add r2, r4, #0
+	ldrsh r1, [r0, r1]
+	ldrsh r2, [r6, r2]
+	cmp r1, r2
+	bge _02265118
+	strh r2, [r0, #2]
+	add r4, r4, #1
+	b _02265118
+_022650C0:
+	mov r1, #2
+	ldrsh r2, [r0, r1]
+	add r2, #0x18
+	strh r2, [r0, #2]
+	add r2, r4, #0
+	ldrsh r2, [r6, r2]
+	ldrsh r1, [r0, r1]
+	add r2, #0xa0
+	cmp r1, r2
+	ble _02265118
+	strh r2, [r0, #2]
+	add r4, r4, #1
+	b _02265118
+_022650DA:
+	add r0, r5, #0
+	add r0, #0x4f
+	ldrb r0, [r0, #0]
+	lsl r0, r0, #0x1f
+	lsr r0, r0, #0x1f
+	add r0, sp, #0
+	bne _02265100
+	mov r1, #2
+	ldrsh r2, [r0, r1]
+	add r2, #0x18
+	strh r2, [r0, #2]
+	mov r2, #0
+	ldrsh r1, [r0, r1]
+	ldrsh r2, [r6, r2]
+	cmp r1, r2
+	ble _02265118
+	strh r2, [r0, #2]
+	add r4, r4, #1
+	b _02265118
+_02265100:
+	mov r1, #2
+	ldrsh r2, [r0, r1]
+	sub r2, #0x18
+	strh r2, [r0, #2]
+	mov r2, #0
+	ldrsh r2, [r6, r2]
+	ldrsh r1, [r0, r1]
+	sub r2, #0x18
+	cmp r1, r2
+	bge _02265118
+	strh r2, [r0, #2]
+	add r4, r4, #1
+_02265118:
+	add r2, sp, #0
+	mov r1, #2
+	mov r3, #0
+	ldrsh r1, [r2, r1]
+	ldrsh r2, [r2, r3]
+	ldr r0, [r5, #4]
+	bl UnkImageStruct_SetSpritePositionXY
+	ldr r0, [r5, #8]
+	cmp r0, #0
+	beq _0226514C
+	add r6, sp, #0
+	mov r1, #2
+	ldrsh r3, [r6, r1]
+	add r1, r5, #0
+	add r1, #0x25
+	ldrb r2, [r1, #0]
+	ldr r1, =ov12_0226D368
+	ldrsb r1, [r1, r2]
+	mov r2, #0
+	ldrsh r2, [r6, r2]
+	sub r1, r3, r1
+	lsl r1, r1, #0x10
+	asr r1, r1, #0x10
+	bl UnkImageStruct_SetSpritePositionXY
+_0226514C:
+	cmp r4, #0
+	ble _02265164
+	add r0, r5, #0
+	add r0, #0x4f
+	ldrb r1, [r0, #0]
+	mov r0, #2
+	add r5, #0x4f
+	orr r0, r1
+	strb r0, [r5, #0]
+	add r0, r7, #0
+	bl SysTask_Destroy
+_02265164:
+	pop {r3, r4, r5, r6, r7, pc}
+}
+// clang-format on
+#endif // NONMATCHING
 
 static void ov12_0226516C(BattleHpBar *hpBar) {
     BgConfig *bgConfig;
@@ -1323,26 +1605,35 @@ u8 ov12_02265B64(u8 a0, u32 battleType) {
 }
 
 static const UnkTemplate_0200D748 *ov12_02265BB8(u8 barType) {
+    const UnkTemplate_0200D748 *ret;
     switch (barType) {
     case 0:
-        return &ov12_0226D5E4;
+        ret = &ov12_0226D5E4;
+        break;
     case 1:
-        return &ov12_0226D618;
+        ret = &ov12_0226D618;
+        break;
     case 2:
-        return &ov12_0226D4E0;
+        ret = &ov12_0226D4E0;
+        break;
     case 3:
-        return &ov12_0226D514;
+        ret = &ov12_0226D514;
+        break;
     case 4:
-        return &ov12_0226D57C;
+        ret = &ov12_0226D57C;
+        break;
     case 5:
-        return &ov12_0226D64C;
+        ret = &ov12_0226D64C;
+        break;
     case 6:
     case 7:
-        return &ov12_0226D5B0;
+        ret = &ov12_0226D5B0;
+        break;
     default:
         GF_ASSERT(FALSE);
         return NULL;
     }
+    return ret;
 }
 
 static const UnkTemplate_0200D748 *ov12_02265C1C(u8 barType) {
@@ -1362,6 +1653,14 @@ static const UnkTemplate_0200D748 *ov12_02265C1C(u8 barType) {
         return NULL;
     }
 }
+
+typedef struct UnkStruct_ov12_02265C54 {
+    BattleHpBar *hpBar;
+    u8 *unk_4;
+    u8 unk_8;
+    u8 unk_9;
+    s8 unk_A;
+} UnkStruct_ov12_02265C54;
 
 SysTask *ov12_02265C54(BattleHpBar *hpBar, u8 *a1) {
     *a1                               = 0;
