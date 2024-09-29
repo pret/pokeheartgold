@@ -52,4 +52,8 @@ $(CHOOSE_STARTER_SUB_NARC): \
 	$(CHOOSE_STARTER_SUB_DIR)/choose_starter_sub_res_00000024.NCER \
 	$(CHOOSE_STARTER_SUB_DIR)/choose_starter_sub_res_00000025.NANR
 
-FS_CLEAN_TARGETS += $(CHOOSE_STARTER_MAIN_NARC) $(CHOOSE_STARTER_SUB_NARC)
+clean-choose-starter:
+	$(RM) $(CHOOSE_STARTER_MAIN_NARC) $(CHOOSE_STARTER_SUB_NARC)
+
+.PHONY: clean-choose-starter
+clean-filesystem: clean-choose-starter

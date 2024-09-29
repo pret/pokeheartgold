@@ -12,4 +12,8 @@ $(PPARK_NARC): %.narc: $(PPARK_JSON) $(PPARK_TEMPLATE)
 
 $(PPARK_JSON): | $(WORK_DIR)/include/global.h
 
-FS_CLEAN_TARGETS += $(PPARK_NARC) $(PPARK_NARC:%.narc=%.c) $(PPARK_NARC:%.narc=%.o)
+clean-ppark:
+	$(RM) $(PPARK_NARC) $(PPARK_NARC:%.narc=%.c) $(PPARK_NARC:%.narc=%.o)
+
+.PHONY: clean-ppark
+clean-filesystem: clean-ppark

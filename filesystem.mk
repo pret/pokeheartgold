@@ -544,4 +544,3 @@ clean-fs: clean-filesystem
 clean-filesystem:
 	$(RM) files/msgdata/msg/*.bin
 	$(RM) $(DIFF_ARCS) $(NAIXS)
-	$(RM) -r $(FS_CLEAN_TARGETS)

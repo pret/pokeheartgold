@@ -9,4 +9,8 @@ $(PERSONAL_NARC): %.narc: %.json %.json.txt | include/global.h
 	$(O2NARC) -n $*.o $@ -p 0
 	@$(RM) $*.o $*.c
 
-FS_CLEAN_TARGETS += $(PERSONAL_NARC)
+clean-personal:
+	$(RM) $(PERSONAL_NARC)
+
+.PHONY: clean-personal
+clean-filesystem: clean-personal

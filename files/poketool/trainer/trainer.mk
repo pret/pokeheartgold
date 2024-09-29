@@ -19,6 +19,10 @@ $(TRPOKE_NARC): %.narc: $(TRAINER_JSON) $(TRPOKE_TEMPLATE)
 $(TRDATA_NARC): MWCFLAGS += -include global.h
 $(TRAINER_JSON): | $(WORK_DIR)/include/global.h
 
-FS_CLEAN_TARGETS += $(TRDATA_NARC) $(TRPOKE_NARC) \
+clean-trainer:
+	$(RM) $(TRDATA_NARC) $(TRPOKE_NARC) \
 	$(TRDATA_NARC:%.narc=%.o) $(TRPOKE_NARC:%.narc=%.o) \
 	$(TRDATA_NARC:%.narc=%.c) $(TRPOKE_NARC:%.narc=%.s)
+
+.PHONY: clean-trainer
+clean-filesystem: clean-trainer

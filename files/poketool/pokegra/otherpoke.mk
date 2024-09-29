@@ -12,4 +12,8 @@ $(OTHERPOKE_NARC): %.narc: $(OTHERPOKE_PIC_FILES)
 	while read -r line; do $(GFX) $$line; done < $(OTHERPOKE_MAP_TXT)
 	$(KNARC) -d $(OTHERPOKE_BUILD_DIR) -p $@ -i
 
-FS_CLEAN_TARGETS += $(OTHERPOKE_NARC) $(OTHERPOKE_BUILD_DIR)
+clean-otherpoke:
+	$(RM) -r $(OTHERPOKE_NARC) $(OTHERPOKE_BUILD_DIR)
+
+.PHONY: clean-otherpoke
+clean-filesystem: clean-otherpoke

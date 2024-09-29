@@ -38,7 +38,11 @@ $(MSGFILE_H): %.h: %.bin
 $(FIRST_MSG_H_GEN): $(MSGFILE_H)
 	$(TOUCH_ONCE) $(FIRST_MSG_H_GEN)
 
-FS_CLEAN_TARGETS += $(MSGDATA_MSG_DIR).narc $(MSGFILE_BIN) $(MSGFILE_H) $(FIRST_MSG_H_GEN) $(TRNAME_GMM)
+clean-msg:
+	$(RM) $(MSGDATA_MSG_DIR).narc $(MSGFILE_BIN) $(MSGFILE_H) $(FIRST_MSG_H_GEN) $(TRNAME_GMM)
+
+.PHONY: clean-msg
+clean-filesystem: clean-msg
 
 files/msgdata/msg/msg_0000.bin: MSGENCFLAGS += -k 0xFEE8
 files/msgdata/msg/msg_0001.bin: MSGENCFLAGS += -k 0x9140
