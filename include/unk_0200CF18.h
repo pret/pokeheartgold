@@ -27,12 +27,12 @@ typedef struct UnkTemplate_0200D748 {
     s16 y;
     s16 z;
     u16 animation;
-    u32 spritePriority;
-    u32 pal;
+    int spritePriority;
+    int pal;
     NNS_G2D_VRAM_TYPE vram;
-    u32 resIdList[GF_GFX_RES_TYPE_MAX];
-    u32 bgPriority;
-    u32 vramTransfer;
+    int resIdList[GF_GFX_RES_TYPE_MAX];
+    int bgPriority;
+    int vramTransfer;
 } UnkTemplate_0200D748; // size=0x34
 
 typedef struct SpriteRenderer {

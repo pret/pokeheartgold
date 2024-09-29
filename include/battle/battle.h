@@ -439,7 +439,9 @@ typedef struct BattleContext {
 typedef struct BattleSystem BattleSystem;
 
 typedef struct BattleHpBar {
-    u8 script;
+    struct {
+        u8 script;
+    };
     UnkImageStruct *unk4;
     UnkImageStruct *unk8;
     BattleSystem *bsys;

@@ -7,6 +7,8 @@ void ov12_0226498C(BattleHpBar *hpBar, u32 num, u32 flag);
 void BattleHpBar_LoadResources(BattleHpBar *hpBar);
 void BattleHpBar_FreeResources(BattleHpBar *hpBar);
 void ov12_02264C84(BattleHpBar *hpBar);
+void ov12_02264DCC(BattleHpBar *hpBar, int hp);
+void ov12_02264E34(BattleHpBar *hpBar, int a1);
 int ov12_02264E00(BattleHpBar *hpBar);
 int ov12_02264E68(BattleHpBar *hpBar);
 void ov12_02264E84(BattleHpBar *hpBar);
