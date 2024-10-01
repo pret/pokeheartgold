@@ -2122,7 +2122,7 @@ GetEngagingTrainerParams: ; 0x0206426C
 	str r2, [r5]
 	str r3, [r5, #4]
 	add r0, r4, #0
-	bl MapObject_GetScript
+	bl MapObject_GetScriptID
 	str r0, [r5, #8]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
@@ -2471,7 +2471,7 @@ _02064500:
 	thumb_func_start MapObject_GetTrainerNum
 MapObject_GetTrainerNum: ; 0x02064508
 	push {r3, lr}
-	bl MapObject_GetScript
+	bl MapObject_GetScriptID
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl ScriptNumToTrainerNum

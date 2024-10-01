@@ -124,7 +124,7 @@
 .public sub_0205DD94
 .public MapObject_GetMovement
 .public MapObject_GetType
-.public MapObject_GetScript
+.public MapObject_GetScriptID
 .public sub_0205F504
 .public MapObjectManager_PauseAllMovement
 .public MapObject_UnpauseMovement

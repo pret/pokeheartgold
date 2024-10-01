@@ -1792,12 +1792,12 @@ void FillWindowPixelBuffer(Window *window, u8 fillValue) {
     if (window->bgConfig->bgs[window->bgId].tileSize == 0x20) {
         fillValue |= fillValue << 4;
     }
-    MI_CpuFillFast(window->pixelBuffer, ((fillValue << 24) | (fillValue << 16) | (fillValue << 8) | (fillValue << 0)), window->bgConfig->bgs[window->bgId].tileSize * window->width * window->height);
+    MI_CpuFillFast(window->pixelBuffer, (fillValue << 24) | (fillValue << 16) | (fillValue << 8) | (fillValue << 0), window->bgConfig->bgs[window->bgId].tileSize * window->width * window->height);
 }
 
 void FillWindowPixelBufferText_AssumeTileSize32(Window *window, u8 fillValue) {
     fillValue |= fillValue << 4;
-    MI_CpuFillFast(window->pixelBuffer, ((fillValue << 24) | (fillValue << 16) | (fillValue << 8) | (fillValue << 0)), 32 * window->width * window->height);
+    MI_CpuFillFast(window->pixelBuffer, (fillValue << 24) | (fillValue << 16) | (fillValue << 8) | (fillValue << 0), 32 * window->width * window->height);
 }
 
 void BlitBitmapRectToWindow(Window *window, void *src, u16 srcX, u16 srcY, u16 srcWidth, u16 srcHeight, u16 destX, u16 destY, u16 destWidth, u16 destHeight) {

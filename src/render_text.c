@@ -324,13 +324,13 @@ RenderResult RenderText(TextPrinter *printer) {
                 ScrollWindow(printer->template.window,
                     0,
                     printer->scrollDistance,
-                    (printer->template.bgColor | (printer->template.bgColor << 4)));
+                    printer->template.bgColor | (printer->template.bgColor << 4));
                 printer->scrollDistance = 0;
             } else {
                 ScrollWindow(printer->template.window,
                     0,
                     4,
-                    (printer->template.bgColor | (printer->template.bgColor << 4)));
+                    printer->template.bgColor | (printer->template.bgColor << 4));
 
                 printer->scrollDistance -= 4;
             }
@@ -413,34 +413,34 @@ static void TextPrinter_DrawDownArrow(TextPrinter *printer) {
 
     FillBgTilemapRect(printer->template.window->bgConfig,
         bg_id,
-        (baseTile + 18 + sDownArrowTileOffsets[subStruct->downArrowYPosIdx] * 4),
-        (x + width + 1),
-        (y + height),
+        baseTile + 18 + sDownArrowTileOffsets[subStruct->downArrowYPosIdx] * 4,
+        x + width + 1,
+        y + height,
         1,
         1,
         0x10);
 
     FillBgTilemapRect(printer->template.window->bgConfig,
         bg_id,
-        (baseTile + 19 + sDownArrowTileOffsets[subStruct->downArrowYPosIdx] * 4),
-        (x + width + 2),
-        (y + height),
+        baseTile + 19 + sDownArrowTileOffsets[subStruct->downArrowYPosIdx] * 4,
+        x + width + 2,
+        y + height,
         1,
         1,
         0x10);
     FillBgTilemapRect(printer->template.window->bgConfig,
         bg_id,
-        (baseTile + 20 + sDownArrowTileOffsets[subStruct->downArrowYPosIdx] * 4),
-        (x + width + 1),
-        (y + height + 1),
+        baseTile + 20 + sDownArrowTileOffsets[subStruct->downArrowYPosIdx] * 4,
+        x + width + 1,
+        y + height + 1,
         1,
         1,
         0x10);
     FillBgTilemapRect(printer->template.window->bgConfig,
         bg_id,
-        (baseTile + 21 + sDownArrowTileOffsets[subStruct->downArrowYPosIdx] * 4),
-        (x + width + 2),
-        (y + height + 1),
+        baseTile + 21 + sDownArrowTileOffsets[subStruct->downArrowYPosIdx] * 4,
+        x + width + 2,
+        y + height + 1,
         1,
         1,
         0x10);
@@ -464,17 +464,17 @@ static void TextPrinter_ClearDownArrow(TextPrinter *printer) {
 
     FillBgTilemapRect(printer->template.window->bgConfig,
         bg_id,
-        (baseTile + 10),
-        (x + width + 1),
-        (y + height),
+        baseTile + 10,
+        x + width + 1,
+        y + height,
         1,
         2,
         0x10);
     FillBgTilemapRect(printer->template.window->bgConfig,
         bg_id,
-        (baseTile + 11),
-        (x + width + 2),
-        (y + height),
+        baseTile + 11,
+        x + width + 2,
+        y + height,
         1,
         2,
         0x10);
