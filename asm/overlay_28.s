@@ -51,7 +51,7 @@ ov28_0225D520: ; 0x0225D520
 	add r1, sp, #8
 	bl FieldSystem_GetFacingObject
 	ldr r0, [sp, #8]
-	bl MapObject_GetScript
+	bl MapObject_GetScriptID
 	bl ov01_021F6BD0
 	cmp r0, #1
 	beq _0225D59E
@@ -2499,7 +2499,7 @@ _0225E860:
 	add r1, sp, #0
 	bl FieldSystem_GetFacingObject
 	ldr r0, [sp]
-	bl MapObject_GetScript
+	bl MapObject_GetScriptID
 	bl ov01_021F6BD0
 	cmp r0, #1
 	beq _0225E88E

@@ -782,7 +782,7 @@ _0225A5E6:
 	add r1, sp, #0
 	bl FieldSystem_GetFacingObject
 	ldr r0, [sp]
-	bl MapObject_GetScript
+	bl MapObject_GetScriptID
 	bl ov01_021F6BD0
 	cmp r0, #0
 	bne _0225A616

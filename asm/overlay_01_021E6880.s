@@ -515,7 +515,7 @@ _021E6C50:
 	beq _021E6C72
 	ldr r5, [sp]
 	add r0, r5, #0
-	bl MapObject_GetScript
+	bl MapObject_GetScriptID
 	add r1, r0, #0
 	lsl r1, r1, #0x10
 	add r0, r4, #0
@@ -776,7 +776,7 @@ _021E6E52:
 _021E6E88:
 	ldr r4, [sp]
 	add r0, r4, #0
-	bl MapObject_GetScript
+	bl MapObject_GetScriptID
 	add r1, r0, #0
 	lsl r1, r1, #0x10
 	add r0, r5, #0
@@ -883,7 +883,7 @@ _021E6F5A:
 	bl sub_020380B0
 	ldr r4, [sp]
 	add r0, r4, #0
-	bl MapObject_GetScript
+	bl MapObject_GetScriptID
 	add r1, r0, #0
 	lsl r1, r1, #0x10
 	add r0, r5, #0
@@ -978,7 +978,7 @@ _021E7022:
 	beq _021E7044
 	ldr r5, [sp]
 	add r0, r5, #0
-	bl MapObject_GetScript
+	bl MapObject_GetScriptID
 	add r1, r0, #0
 	lsl r1, r1, #0x10
 	add r0, r4, #0
