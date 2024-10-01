@@ -11,6 +11,5 @@ void MIi_CardDmaCopy32(u32 dmaNo, const void *src, void *dest, u32 size) {
     vu32 *dmaCntp;
     MIi_WAIT_BEFOREDMA(dmaCntp, dmaNo);
 
-    // TODO: control params, should be MI_CNT_CARDRECV32(4) | MI_DMA_CONTINUOUS_ON
-    MIi_DmaSetParams(dmaNo, (u32)src, (u32)dest, (u32)(0xaf000001));
+    MIi_DmaSetParams(dmaNo, (u32)src, (u32)dest, (u32)(MI_CNT_CARDRECV32(4) | MI_DMA_CONTINUOUS_ON));
 }

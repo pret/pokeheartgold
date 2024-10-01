@@ -9,6 +9,16 @@ typedef void (*MIDmaCallback)(void *);
 
 #define MI_DMA_MAX_NUM 3
 
+#ifdef SDK_ARM9
+#define MI_DMA_TIMING_MASK (7UL << 27)
+#define MI_DMA_TIMING_CARD (5UL << 27)
+#else
+#define MI_DMA_TIMING_MASK (3UL << 28)
+#define MI_DMA_TIMING_CARD (2UL << 28)
+#endif // SDK_ARM9
+
+#define MI_CNT_CARDRECV32(size) (MI_DMA_ENABLE | MI_DMA_TIMING_CARD | MI_DMA_SRC_FIX | MI_DMA_DEST_INC | MI_DMA_32BIT_BUS | ((size) / 4))
+
 #define REG_ADDR_DMA0CNT       0x40000b8
 #define REG_ADDR_DMA0_CLR_DATA 0x40000e0
 
@@ -17,12 +27,6 @@ typedef void (*MIDmaCallback)(void *);
 #define MI_CNT_COPY32(size)     (0x84000000 | ((size) / 4))
 #define MI_CNT_COPY32_IF(size)  (0xc4000000 | ((size) / 4))
 #define MI_CNT_COPY16(size)     (0x80000000 | ((size) / 2))
-
-#define MI_DMA_SRC_FIX (2UL << 23)
-#define MI_DMA_SRC_INC (0UL << 23)
-
-#define MI_DMA_16BIT_BUS (0UL << 26)
-#define MI_DMA_32BIT_BUS (1UL << 26)
 
 #define MIi_DMA_TIMING_ANY    (u32)(~0)
 #define MI_DMA_TIMING_H_BLANK (2UL << 27)
