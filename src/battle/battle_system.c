@@ -1042,7 +1042,7 @@ void BattleSystem_HpBar_Init(BattleSystem *bsys) {
     for (i = 0; i < bsys->maxBattlers; i++) {
         hpBar       = OpponentData_GetHpBar(bsys->opponentData[i]);
         hpBar->bsys = bsys;
-        hpBar->type = ov12_02265B64(ov12_02261258(bsys->opponentData[i]), BattleSystem_GetBattleType(bsys));
+        hpBar->type = BattleHpBar_Util_GetBarTypeFromBattlerSide(ov12_02261258(bsys->opponentData[i]), BattleSystem_GetBattleType(bsys));
         BattleHpBar_LoadResources(hpBar);
         BattleHpBar_SetEnabled(hpBar, FALSE);
     }

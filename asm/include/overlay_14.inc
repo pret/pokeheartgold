@@ -65,7 +65,7 @@
 .public SpriteRenderer_LoadAnimResObjFromNarcId
 .public SpriteRenderer_LoadResourcesAndCreateSprite
 .public SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
-.public sub_0200D934
+.public GfGfxHandler_GetPlttProxy
 .public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 .public UnkImageStruct_Delete
 .public UnkImageStruct_TickSpriteAnimation1Frame

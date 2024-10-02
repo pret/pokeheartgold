@@ -57,7 +57,7 @@
 .public SpriteRenderer_LoadCellResObjFromOpenNarc
 .public SpriteRenderer_LoadAnimResObjFromOpenNarc
 .public SpriteRenderer_LoadResourcesAndCreateSprite
-.public sub_0200D934
+.public GfGfxHandler_GetPlttProxy
 .public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 .public UnkImageStruct_Delete
 .public TickSpriteAnimation1Frame

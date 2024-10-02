@@ -930,7 +930,7 @@ static void LoadCutsceneSpriteResources(CreditsAppWork *work) {
         GF_2DGfxResObj *charResObj         = work->cutsceneRsrs[i].charResObj;
         GF_2DGfxResObj *plttResObj         = work->cutsceneRsrs[i].plttResObj;
         NNSG2dImageProxy *imageProxy       = sub_0200AF00(charResObj);
-        NNSG2dImagePaletteProxy *plttProxy = sub_0200B0F8(plttResObj, imageProxy);
+        NNSG2dImagePaletteProxy *plttProxy = GF_PlttResObj_GetPlttProxy(plttResObj, imageProxy);
 
         cutsceneWork->spriteGfx[i].imageProxy = imageProxy;
         cutsceneWork->spriteGfx[i].plttProxy  = plttProxy;

@@ -1738,7 +1738,7 @@ sub_02087090: ; 0x02087090
 	str r0, [sp, #0x34]
 	ldr r0, [r5, r1]
 	add r1, #0xf7
-	bl sub_0200D934
+	bl GfGfxHandler_GetPlttProxy
 	str r0, [sp, #0x38]
 	mov r1, #0
 	mov r0, #0xe2

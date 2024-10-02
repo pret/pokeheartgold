@@ -16,8 +16,8 @@ void ov12_02264EB4(BattleHpBar *hpBar);
 void ov12_02264EE0(BattleHpBar *hpBar, int prio);
 void BattleHpBar_SetEnabled(BattleHpBar *hpBar, BOOL a1);
 void ov12_02264FB0(BattleHpBar *hpBar, BOOL a1);
-u8 ov12_02265B64(u8 a0, u32 battleType);
-SysTask *ov12_02265C54(BattleHpBar *hpBar, u8 *a1);
+u8 BattleHpBar_Util_GetBarTypeFromBattlerSide(u8 a0, u32 battleType);
+SysTask *BattleHpBar_BeginExpBarFullFlashEffect(BattleHpBar *hpBar, u8 *a1);
 void ov12_02265D70(BattleHpBar *hpBar);
 void ov12_02265D74(BattleHpBar *hpBar);
 

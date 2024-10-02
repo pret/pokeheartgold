@@ -3418,7 +3418,7 @@ ov05_0221D530: ; 0x0221D530
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	ldr r1, _0221D5D4 ; =0x0000B807
-	bl sub_0200D934
+	bl GfGfxHandler_GetPlttProxy
 	mov r1, #0x3e
 	lsl r2, r6, #4
 	lsl r1, r1, #4

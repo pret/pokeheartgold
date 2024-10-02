@@ -345,7 +345,7 @@ s8 SpriteRenderer_LoadPlttResObjFromNarcId(SpriteRenderer *renderer, SpriteGfxHa
     if (obj != NULL) {
         GF_ASSERT(sub_0200B00C(obj) == TRUE);
         MyInsertResObjIntoList(gfxHandler->_2dGfxResObjList[GF_GFX_RES_TYPE_PLTT], obj);
-        return sub_0200B12C(obj, vram);
+        return GF_PlttResObj_GetVramSlotNum(obj, vram);
     }
     GF_ASSERT(0);
     return -1;
@@ -359,7 +359,7 @@ s8 SpriteRenderer_LoadPlttResObjFromOpenNarc(SpriteRenderer *renderer, SpriteGfx
     if (obj != NULL) {
         GF_ASSERT(sub_0200B00C(obj) == TRUE);
         MyInsertResObjIntoList(gfxHandler->_2dGfxResObjList[GF_GFX_RES_TYPE_PLTT], obj);
-        return sub_0200B12C(obj, vram);
+        return GF_PlttResObj_GetVramSlotNum(obj, vram);
     }
     GF_ASSERT(0);
     return -1;
@@ -487,12 +487,12 @@ static UnkImageStruct *MyLoadResourcesAndCreateSprite(SpriteRenderer *renderer, 
     return ret;
 }
 
-NNSG2dImagePaletteProxy *sub_0200D934(SpriteGfxHandler *gfxHandler, int id) {
-    return sub_0200B0F8(Get2DGfxResObjById(gfxHandler->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], id), NULL);
+NNSG2dImagePaletteProxy *GfGfxHandler_GetPlttProxy(SpriteGfxHandler *gfxHandler, int id) {
+    return GF_PlttResObj_GetPlttProxy(Get2DGfxResObjById(gfxHandler->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], id), NULL);
 }
 
-int sub_0200D944(SpriteGfxHandler *gfxHandler, int id, NNS_G2D_VRAM_TYPE vram) {
-    return sub_0200B12C(Get2DGfxResObjById(gfxHandler->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], id), vram);
+int GfGfxHandler_GetPlttNumById(SpriteGfxHandler *gfxHandler, int id, NNS_G2D_VRAM_TYPE vram) {
+    return GF_PlttResObj_GetVramSlotNum(Get2DGfxResObjById(gfxHandler->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], id), vram);
 }
 
 BOOL SpriteGfxHandler_UnloadCharObjById(SpriteGfxHandler *gfxHandler, u32 character) {

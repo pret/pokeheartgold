@@ -35,15 +35,15 @@ u8 CalculateHpBarPixelsLength(u32 hp, u32 maxHp, u8 pixelsWide) {
     return ret;
 }
 
-u8 sub_02088080(u32 hp, u32 pixelsWide) {
-    hp <<= 8;
+u8 HpBar_GetColorIdx(u32 pixelsCur, u32 pixelsWide) {
+    pixelsCur <<= 8;
     pixelsWide <<= 8;
 
-    if (hp > pixelsWide / 2) {
+    if (pixelsCur > pixelsWide / 2) {
         return 3; // green
-    } else if (hp > pixelsWide / 5) {
+    } else if (pixelsCur > pixelsWide / 5) {
         return 2; // yellow
-    } else if (hp > 0) {
+    } else if (pixelsCur > 0) {
         return 1; // red
     }
 
@@ -54,7 +54,7 @@ u8 CalculateHpBarColor(u16 hp, u16 maxHp, u32 pixelsWide) {
     if (hp == maxHp) {
         return 4;
     }
-    return sub_02088080(CalculateHpBarPixelsLength(hp, maxHp, pixelsWide), pixelsWide);
+    return HpBar_GetColorIdx(CalculateHpBarPixelsLength(hp, maxHp, pixelsWide), pixelsWide);
 }
 
 void sub_020880CC(u8 a0, HeapID heapId) {

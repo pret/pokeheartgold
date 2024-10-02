@@ -4534,7 +4534,7 @@ _02268602:
 	str r0, [sp, #0x54]
 	ldr r0, [sp, #0x20]
 	ldr r1, [sp, #0x98]
-	bl sub_0200D934
+	bl GfGfxHandler_GetPlttProxy
 	str r0, [sp, #0x58]
 	mov r0, #0
 	ldr r1, [sp, #0x34]

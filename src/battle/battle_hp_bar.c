@@ -19,6 +19,12 @@ typedef enum HPBarType {
     HP_BAR_TYPE_PALPARK,
 } HPBarType;
 
+#ifdef FAST_HP_BARS
+#define USE_SUBPIXELS_TEST (TRUE)
+#else
+#define USE_SUBPIXELS_TEST (maxHp < pixelsWide)
+#endif // FAST_HP_BARS
+
 ALIGN(4)
 static const s8 ov12_0226D368[] = {
     72,
@@ -36,176 +42,176 @@ typedef struct UnkStruct_ov12_0226D408 {
 
 static const UnkStruct_ov12_0226D408 ov12_0226D680[][4] = {
     {
-     { 0x0260, 0x00A0 },
-     { 0x0360, 0x00A0 },
-     { 0x0A00, 0x0060 },
-     { 0x0B00, 0x0060 },
+     { 0x260, 0xA0 },
+     { 0x360, 0xA0 },
+     { 0xA00, 0x60 },
+     { 0xB00, 0x60 },
      },
     {
-     { 0x0220, 0x00E0 },
-     { 0x0320, 0x00E0 },
-     { 0x0A00, 0x0020 },
-     { 0x0B00, 0x0020 },
+     { 0x220, 0xE0 },
+     { 0x320, 0xE0 },
+     { 0xA00, 0x20 },
+     { 0xB00, 0x20 },
      },
     {
-     { 0x0240, 0x00C0 },
-     { 0x0340, 0x00C0 },
-     { 0x0A00, 0x0040 },
-     { 0x0B00, 0x0040 },
+     { 0x240, 0xC0 },
+     { 0x340, 0xC0 },
+     { 0xA00, 0x40 },
+     { 0xB00, 0x40 },
      },
     {
-     { 0x0220, 0x00E0 },
-     { 0x0320, 0x00E0 },
-     { 0x0A00, 0x0020 },
-     { 0x0B00, 0x0020 },
+     { 0x220, 0xE0 },
+     { 0x320, 0xE0 },
+     { 0xA00, 0x20 },
+     { 0xB00, 0x20 },
      },
     {
-     { 0x0240, 0x00C0 },
-     { 0x0340, 0x00C0 },
-     { 0x0A00, 0x0040 },
-     { 0x0B00, 0x0040 },
+     { 0x240, 0xC0 },
+     { 0x340, 0xC0 },
+     { 0xA00, 0x40 },
+     { 0xB00, 0x40 },
      },
     {
-     { 0x0220, 0x00E0 },
-     { 0x0320, 0x00E0 },
-     { 0x0A00, 0x0020 },
-     { 0x0B00, 0x0020 },
+     { 0x220, 0xE0 },
+     { 0x320, 0xE0 },
+     { 0xA00, 0x20 },
+     { 0xB00, 0x20 },
      },
 };
 
 static const UnkStruct_ov12_0226D408 ov12_0226D4B0[][2] = {
     {
-     { 0x0A60, 0x0040 },
-     { 0x0B60, 0x0040 },
+     { 0xA60, 0x40 },
+     { 0xB60, 0x40 },
      },
     {
-     { 0x0A20, 0x0040 },
-     { 0x0B20, 0x0040 },
+     { 0xA20, 0x40 },
+     { 0xB20, 0x40 },
      },
     {
-     { 0x0A40, 0x0040 },
-     { 0x0B40, 0x0040 },
+     { 0xA40, 0x40 },
+     { 0xB40, 0x40 },
      },
     {
-     { 0x0A20, 0x0040 },
-     { 0x0B20, 0x0040 },
+     { 0xA20, 0x40 },
+     { 0xB20, 0x40 },
      },
     {
-     { 0x0A40, 0x0040 },
-     { 0x0B40, 0x0040 },
+     { 0xA40, 0x40 },
+     { 0xB40, 0x40 },
      },
     {
-     { 0x0A20, 0x0040 },
-     { 0x0B20, 0x0040 },
+     { 0xA20, 0x40 },
+     { 0xB20, 0x40 },
      },
 };
 
 static const UnkStruct_ov12_0226D408 ov12_0226D420[][2] = {
     {
-     { 0x0AA0, 0x0060 },
-     { 0x0BA0, 0x0060 },
+     { 0xAA0, 0x60 },
+     { 0xBA0, 0x60 },
      },
     {
-     { 0x0A60, 0x0060 },
-     { 0x0B60, 0x0060 },
+     { 0xA60, 0x60 },
+     { 0xB60, 0x60 },
      },
     {
-     { 0x0A80, 0x0060 },
-     { 0x0B80, 0x0060 },
+     { 0xA80, 0x60 },
+     { 0xB80, 0x60 },
      },
     {
-     { 0x0A60, 0x0060 },
-     { 0x0B60, 0x0060 },
+     { 0xA60, 0x60 },
+     { 0xB60, 0x60 },
      },
     {
-     { 0x0A80, 0x0060 },
-     { 0x0B80, 0x0060 },
+     { 0xA80, 0x60 },
+     { 0xB80, 0x60 },
      },
     {
-     { 0x0A60, 0x0060 },
-     { 0x0B60, 0x0060 },
+     { 0xA60, 0x60 },
+     { 0xB60, 0x60 },
      },
 };
 
 static const UnkStruct_ov12_0226D408 ov12_0226D450[][2] = {
     {
-     { 0x0000, 0x0000 },
-     { 0x0D00, 0x0060 },
+     { 0, 0 },
+     { 0xD00, 0x60 },
      },
     {
-     { 0x0620, 0x0060 },
-     { 0x0000, 0x0000 },
+     { 0x620, 0x60 },
+     { 0, 0 },
      },
     {
-     { 0x0000, 0x0000 },
-     { 0x0C00, 0x0060 },
+     { 0, 0 },
+     { 0xC00, 0x60 },
      },
     {
-     { 0x0620, 0x0060 },
-     { 0x0000, 0x0000 },
+     { 0x620, 0x60 },
+     { 0, 0 },
      },
     {
-     { 0x0000, 0x0000 },
-     { 0x0C00, 0x0060 },
+     { 0, 0 },
+     { 0xC00, 0x60 },
      },
     {
-     { 0x0620, 0x0060 },
-     { 0x0000, 0x0000 },
+     { 0x620, 0x60 },
+     { 0, 0 },
      },
 };
 
 static const UnkStruct_ov12_0226D408 ov12_0226D3F0[] = {
-    { 0x0D80, 0x0060 },
-    { 0x06A0, 0x0060 },
-    { 0x0C80, 0x0060 },
-    { 0x06A0, 0x0060 },
-    { 0x0C80, 0x0060 },
-    { 0x06A0, 0x0060 },
+    { 0xD80, 0x60 },
+    { 0x6A0, 0x60 },
+    { 0xC80, 0x60 },
+    { 0x6A0, 0x60 },
+    { 0xC80, 0x60 },
+    { 0x6A0, 0x60 },
 };
 
 static const UnkStruct_ov12_0226D408 ov12_0226D480[][2] = {
     {
-     { 0x04E0, 0x0000 },
-     { 0x0C20, 0x00C0 },
+     { 0x4E0, 0 },
+     { 0xC20, 0xC0 },
      },
     {
-     { 0x04E0, 0x0020 },
-     { 0x0C00, 0x00A0 },
+     { 0x4E0, 0x20 },
+     { 0xC00, 0xA0 },
      },
     {
-     { 0x04E0, 0x0000 },
-     { 0x0C00, 0x00C0 },
+     { 0x4E0, 0 },
+     { 0xC00, 0xC0 },
      },
     {
-     { 0x04E0, 0x0020 },
-     { 0x0C00, 0x00A0 },
+     { 0x4E0, 0x20 },
+     { 0xC00, 0xA0 },
      },
     {
-     { 0x04E0, 0x0000 },
-     { 0x0C00, 0x00C0 },
+     { 0x4E0, 0 },
+     { 0xC00, 0xC0 },
      },
     {
-     { 0x04E0, 0x0020 },
-     { 0x0C00, 0x00A0 },
+     { 0x4E0, 0x20 },
+     { 0xC00, 0xA0 },
      },
 };
 
 static const UnkStruct_ov12_0226D408 ov12_0226D3C0[] = {
-    { 0x0460, 0x0020 },
-    { 0x0420, 0x0020 },
-    { 0x0440, 0x0020 },
-    { 0x0420, 0x0020 },
-    { 0x0440, 0x0020 },
-    { 0x0420, 0x0020 },
+    { 0x460, 0x20 },
+    { 0x420, 0x20 },
+    { 0x440, 0x20 },
+    { 0x420, 0x20 },
+    { 0x440, 0x20 },
+    { 0x420, 0x20 },
 };
 
 static const UnkStruct_ov12_0226D408 ov12_0226D390[] = {
-    { 0x0480, 0x0060 },
-    { 0x0440, 0x0060 },
-    { 0x0460, 0x0060 },
-    { 0x0440, 0x0060 },
-    { 0x0460, 0x0060 },
-    { 0x0440, 0x0060 },
+    { 0x480, 0x60 },
+    { 0x440, 0x60 },
+    { 0x460, 0x60 },
+    { 0x440, 0x60 },
+    { 0x460, 0x60 },
+    { 0x440, 0x60 },
 };
 
 static const UnkStruct_ov12_0226D408 ov12_0226D370[] = {
@@ -223,30 +229,30 @@ static const UnkStruct_ov12_0226D408 ov12_0226D380[] = {
 };
 
 static const UnkStruct_ov12_0226D408 ov12_0226D3A8[] = {
-    { 0x0000, 0x0000 },
-    { 0x0000, 0x0000 },
-    { 0x04C0, 0x0040 },
-    { 0x0000, 0x0000 },
-    { 0x04C0, 0x0040 },
-    { 0x0000, 0x0000 },
+    { 0,     0    },
+    { 0,     0    },
+    { 0x4C0, 0x40 },
+    { 0,     0    },
+    { 0x4C0, 0x40 },
+    { 0,     0    },
 };
 
 static const UnkStruct_ov12_0226D408 ov12_0226D3D8[] = {
-    { 0x0000, 0x0000 },
-    { 0x0000, 0x0000 },
-    { 0x0CC0, 0x0020 },
-    { 0x0000, 0x0000 },
-    { 0x0CC0, 0x0020 },
-    { 0x0000, 0x0000 },
+    { 0,     0    },
+    { 0,     0    },
+    { 0xCC0, 0x20 },
+    { 0,     0    },
+    { 0xCC0, 0x20 },
+    { 0,     0    },
 };
 
 static const UnkStruct_ov12_0226D408 ov12_0226D408[] = {
-    { 0x0000, 0x0000 },
-    { 0x0000, 0x0000 },
-    { 0x0C60, 0x0020 },
-    { 0x0000, 0x0000 },
-    { 0x0C60, 0x0020 },
-    { 0x0000, 0x0000 },
+    { 0,     0    },
+    { 0,     0    },
+    { 0xC60, 0x20 },
+    { 0,     0    },
+    { 0xC60, 0x20 },
+    { 0,     0    },
 };
 
 static void ov12_02264824(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, NARC *narc, PaletteData *plttData, int barType);
@@ -266,185 +272,185 @@ static void ov12_02265474(BattleHpBar *hpBar, u32 num);
 static void ov12_02265500(BattleHpBar *hpBar);
 static void ov12_02265560(BattleHpBar *hpBar);
 static void ov12_022655B0(BattleHpBar *hpBar, int a1);
-static void ov12_022655F0(BattleHpBar *hpBar, u32 flag);
-static void ov12_022656CC(BattleHpBar *hpBar, u32 flag);
-static int ov12_022657E4(BattleHpBar *hpBar, BOOL a1);
-static void ov12_02265878(BattleHpBar *hpBar, u8 a1);
-static int ov12_022659E0(s32 maxHp, s32 hp, s32 deltaHP, s32 *pHpCalc, u8 a4, u16 a5);
-static u8 ov12_02265A9C(s32 maxHp, s32 hp, s32 deltaHp, s32 *pHpCalc, u8 *a4, u8 a5);
-static u32 ov12_02265B18(s32 exp, s32 gainedExp, s32 maxExp, u8 a3);
-static const u8 *ov12_02265B58(int a0);
-static const UnkTemplate_0200D748 *ov12_02265BB8(u8 barType);
-static const UnkTemplate_0200D748 *ov12_02265C1C(u8 barType);
-static void ov12_02265C88(SysTask *task, void *data);
+static void BattleHpBar_PrintSafariOrParkBallsString(BattleHpBar *hpBar, u32 flag);
+static void BattleHpBar_PrintNumRemainingSafariOrParkBalls(BattleHpBar *hpBar, u32 flag);
+static int ov12_022657E4(BattleHpBar *hpBar, BOOL isExp);
+static void ov12_02265878(BattleHpBar *hpBar, u8 isExp);
+static int BattleHpBar_CalculatePixelsChangeFrame(s32 maxHp, s32 curHp, s32 deltaHp, s32 *pHpCalc, u8 tilesWide, u16 hpChange);
+static u8 BattleHpBar_Util_MakeHpBarPixelBuffer(s32 maxHp, s32 hp, s32 deltaHp, s32 *pHpCalc, u8 *pixelBuf, u8 tilesWide);
+static u32 BattleHpBar_Util_GetPixelsToGain(s32 exp, s32 gainedExp, s32 maxExp, u8 tilesWide);
+static const u8 *BattleHpBar_Util_GetComponentRawGraphic(int componentId);
+static const UnkTemplate_0200D748 *BattleHpBar_Util_GetHpBoxSpriteTemplate(u8 barType);
+static const UnkTemplate_0200D748 *BattleHpBar_Util_GetArrowSpriteTemplate(u8 barType);
+static void Task_ExpBarFullFlash(SysTask *task, void *data);
 static void ov12_02265D78(BattleHpBar *hpBar);
 static void ov12_02265DA0(BattleHpBar *hpBar);
 static void ov12_02265DC4(SysTask *task, void *data);
 
-static const UnkTemplate_0200D748 ov12_0226D5E4 = {
-    .x              = 0x00C0,
-    .y              = 0x0074,
-    .z              = 0x0000,
-    .animation      = 0x0000,
-    .spritePriority = 0x00000017,
-    .pal            = 0x00000000,
+static const UnkTemplate_0200D748 sSpriteTemplate_HpBarSinglePlayer = {
+    .x              = 0xC0,
+    .y              = 0x74,
+    .z              = 0,
+    .animation      = 0,
+    .spritePriority = 0x17,
+    .pal            = 0,
     .vram           = NNS_G2D_VRAM_TYPE_2DMAIN,
     .resIdList      = {
-                       0x000000BF,
-                       0x00004E26,
-                       0x000000BE,
-                       0x000000BD,
-                       0xFFFFFFFF,
-                       0xFFFFFFFF,
+                       0xBF,
+                       20006,
+                       0xBE,
+                       0xBD,
+                       -1,
+                       -1,
                        },
-    .bgPriority   = 0x00000000,
-    .vramTransfer = 0x00000000
+    .bgPriority   = 0,
+    .vramTransfer = 0
 };
 
-static const UnkTemplate_0200D748 ov12_0226D618 = {
-    .x              = 0x003A,
-    .y              = 0x0024,
-    .z              = 0x0000,
-    .animation      = 0x0000,
-    .spritePriority = 0x00000018,
-    .pal            = 0x00000000,
+static const UnkTemplate_0200D748 sSpriteTemplate_HpBarSingleEnemy = {
+    .x              = 0x3A,
+    .y              = 0x24,
+    .z              = 0,
+    .animation      = 0,
+    .spritePriority = 0x18,
+    .pal            = 0,
     .vram           = NNS_G2D_VRAM_TYPE_2DMAIN,
     .resIdList      = {
-                       0x000000BC,
-                       0x00004E26,
-                       0x000000BB,
-                       0x000000BA,
-                       0xFFFFFFFF,
-                       0xFFFFFFFF,
+                       0xBC,
+                       20006,
+                       0xBB,
+                       0xBA,
+                       -1,
+                       -1,
                        },
-    .bgPriority   = 0x00000000,
-    .vramTransfer = 0x00000000
+    .bgPriority   = 0,
+    .vramTransfer = 0
 };
 
-static const UnkTemplate_0200D748 ov12_0226D4E0 = {
-    .x              = 0x00C0,
-    .y              = 0x0067,
-    .z              = 0x0000,
-    .animation      = 0x0000,
-    .spritePriority = 0x0000001C,
-    .pal            = 0x00000000,
+static const UnkTemplate_0200D748 sSpriteTemplate_HpBarDoublePlayerLHS = {
+    .x              = 0xC0,
+    .y              = 0x67,
+    .z              = 0,
+    .animation      = 0,
+    .spritePriority = 0x1C,
+    .pal            = 0,
     .vram           = NNS_G2D_VRAM_TYPE_2DMAIN,
     .resIdList      = {
-                       0x000000C8,
-                       0x00004E26,
-                       0x000000C7,
-                       0x000000C6,
-                       0xFFFFFFFF,
-                       0xFFFFFFFF,
+                       0xC8,
+                       20006,
+                       0xC7,
+                       0xC6,
+                       -1,
+                       -1,
                        },
-    .bgPriority   = 0x00000000,
-    .vramTransfer = 0x00000000
+    .bgPriority   = 0,
+    .vramTransfer = 0
 };
 
-static const UnkTemplate_0200D748 ov12_0226D514 = {
-    .x              = 0x0040,
-    .y              = 0x0010,
-    .z              = 0x0000,
-    .animation      = 0x0000,
-    .spritePriority = 0x00000019,
-    .pal            = 0x00000000,
+static const UnkTemplate_0200D748 sSpriteTemplate_HpBarDoubleEnemyLHS = {
+    .x              = 0x40,
+    .y              = 0x10,
+    .z              = 0,
+    .animation      = 0,
+    .spritePriority = 0x19,
+    .pal            = 0,
     .vram           = NNS_G2D_VRAM_TYPE_2DMAIN,
     .resIdList      = {
-                       0x000000C2,
-                       0x00004E26,
-                       0x000000C1,
-                       0x000000C0,
-                       0xFFFFFFFF,
-                       0xFFFFFFFF,
+                       0xC2,
+                       20006,
+                       0xC1,
+                       0xC0,
+                       -1,
+                       -1,
                        },
-    .bgPriority   = 0x00000000,
-    .vramTransfer = 0x00000000
+    .bgPriority   = 0,
+    .vramTransfer = 0
 };
 
-static const UnkTemplate_0200D748 ov12_0226D57C = {
-    .x              = 0x00C6,
-    .y              = 0x0084,
-    .z              = 0x0000,
-    .animation      = 0x0000,
-    .spritePriority = 0x0000001A,
-    .pal            = 0x00000000,
+static const UnkTemplate_0200D748 sSpriteTemplate_HpBarDoublePlayerRHS = {
+    .x              = 0xC6,
+    .y              = 0x84,
+    .z              = 0,
+    .animation      = 0,
+    .spritePriority = 0x1A,
+    .pal            = 0,
     .vram           = NNS_G2D_VRAM_TYPE_2DMAIN,
     .resIdList      = {
-                       0x000000CB,
-                       0x00004E26,
-                       0x000000CA,
-                       0x000000C9,
-                       0xFFFFFFFF,
-                       0xFFFFFFFF,
+                       0xCB,
+                       20006,
+                       0xCA,
+                       0xC9,
+                       -1,
+                       -1,
                        },
-    .bgPriority   = 0x00000000,
-    .vramTransfer = 0x00000000
+    .bgPriority   = 0,
+    .vramTransfer = 0
 };
 
-static const UnkTemplate_0200D748 ov12_0226D64C = {
-    .x              = 0x003A,
-    .y              = 0x002D,
-    .z              = 0x0000,
-    .animation      = 0x0000,
-    .spritePriority = 0x0000001B,
-    .pal            = 0x00000000,
+static const UnkTemplate_0200D748 sSpriteTemplate_HpBarDoubleEnemyRHS = {
+    .x              = 0x3A,
+    .y              = 0x2D,
+    .z              = 0,
+    .animation      = 0,
+    .spritePriority = 0x1B,
+    .pal            = 0,
     .vram           = NNS_G2D_VRAM_TYPE_2DMAIN,
     .resIdList      = {
-                       0x000000C5,
-                       0x00004E26,
-                       0x000000C4,
-                       0x000000C3,
-                       0xFFFFFFFF,
-                       0xFFFFFFFF,
+                       0xC5,
+                       20006,
+                       0xC4,
+                       0xC3,
+                       -1,
+                       -1,
                        },
-    .bgPriority   = 0x00000000,
-    .vramTransfer = 0x00000000
+    .bgPriority   = 0,
+    .vramTransfer = 0
 };
 
-static const UnkTemplate_0200D748 ov12_0226D548 = {
-    .x              = 0x0000,
-    .y              = 0x0000,
-    .z              = 0x0000,
-    .animation      = 0x0000,
-    .spritePriority = 0x00000011,
-    .pal            = 0x00000000,
+static const UnkTemplate_0200D748 sSpriteTemplate_Arrow = {
+    .x              = 0,
+    .y              = 0,
+    .z              = 0,
+    .animation      = 0,
+    .spritePriority = 0x11,
+    .pal            = 0,
     .vram           = NNS_G2D_VRAM_TYPE_2DMAIN,
     .resIdList      = {
-                       0x000000B9,
-                       0x00004E26,
-                       0x000000B8,
-                       0x000000B7,
-                       0xFFFFFFFF,
-                       0xFFFFFFFF,
+                       0xB9,
+                       20006,
+                       0xB8,
+                       0xB7,
+                       -1,
+                       -1,
                        },
-    .bgPriority   = 0x00000000,
-    .vramTransfer = 0x00000000
+    .bgPriority   = 0,
+    .vramTransfer = 0
 };
 
-static const UnkTemplate_0200D748 ov12_0226D5B0 = {
-    .x              = 0x00C0,
-    .y              = 0x0074,
-    .z              = 0x0000,
-    .animation      = 0x0000,
-    .spritePriority = 0x00000017,
-    .pal            = 0x00000000,
+static const UnkTemplate_0200D748 sSpriteTemplate_HpBarSafariOrPark = {
+    .x              = 0xC0,
+    .y              = 0x74,
+    .z              = 0,
+    .animation      = 0,
+    .spritePriority = 0x17,
+    .pal            = 0,
     .vram           = NNS_G2D_VRAM_TYPE_2DMAIN,
     .resIdList      = {
-                       0x000000FD,
-                       0x00004E28,
-                       0x000000FE,
-                       0x000000FF,
-                       0xFFFFFFFF,
-                       0xFFFFFFFF,
+                       0xFD,
+                       20008,
+                       0xFE,
+                       0xFF,
+                       -1,
+                       -1,
                        },
-    .bgPriority   = 0x00000000,
-    .vramTransfer = 0x00000000
+    .bgPriority   = 0,
+    .vramTransfer = 0
 };
 
 #include "battle/battle_hp_bar_data.h"
 
 static void ov12_02264824(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, NARC *narc, PaletteData *plttData, int barType) {
-    const UnkTemplate_0200D748 *pRes = ov12_02265BB8(barType);
+    const UnkTemplate_0200D748 *pRes = BattleHpBar_Util_GetHpBoxSpriteTemplate(barType);
 
     SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, pRes->resIdList[GF_GFX_RES_TYPE_CHAR], TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, pRes->resIdList[GF_GFX_RES_TYPE_CHAR]);
     sub_0200D68C(plttData, PLTTBUF_MAIN_OBJ, renderer, gfxHandler, narc, 71, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 20006);
@@ -457,7 +463,7 @@ static void ov12_02264824(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler
 }
 
 static void ov12_022648EC(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, NARC *narc, PaletteData *plttData, int barType) {
-    const UnkTemplate_0200D748 *pRes = ov12_02265C1C(barType);
+    const UnkTemplate_0200D748 *pRes = BattleHpBar_Util_GetArrowSpriteTemplate(barType);
 
     if (pRes != NULL) {
         SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, pRes->resIdList[GF_GFX_RES_TYPE_CHAR], TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, pRes->resIdList[GF_GFX_RES_TYPE_CHAR]);
@@ -468,7 +474,7 @@ static void ov12_022648EC(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler
 }
 
 static UnkImageStruct *ov12_02264968(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, int barType) {
-    const UnkTemplate_0200D748 *pRes = ov12_02265BB8(barType);
+    const UnkTemplate_0200D748 *pRes = BattleHpBar_Util_GetHpBoxSpriteTemplate(barType);
 
     UnkImageStruct *ret = SpriteRenderer_LoadResourcesAndCreateSprite(renderer, gfxHandler, pRes);
     TickSpriteAnimation1Frame(ret->sprite);
@@ -569,11 +575,11 @@ void ov12_0226498C(BattleHpBar *hpBar, u32 num, u32 flag) {
     }
 
     if (flag & 0x1400) {
-        ov12_022655F0(hpBar, flag);
+        BattleHpBar_PrintSafariOrParkBallsString(hpBar, flag);
     }
 
     if (flag & 0x2800) {
-        ov12_022656CC(hpBar, flag);
+        BattleHpBar_PrintNumRemainingSafariOrParkBalls(hpBar, flag);
     }
 }
 
@@ -596,7 +602,7 @@ static void ov12_02264B4C(BattleHpBar *hpBar) {
 }
 
 static void ov12_02264B60(BattleHpBar *hpBar) {
-    const UnkTemplate_0200D748 *tmplate = ov12_02265BB8(hpBar->type);
+    const UnkTemplate_0200D748 *tmplate = BattleHpBar_Util_GetHpBoxSpriteTemplate(hpBar->type);
     SpriteRenderer *renderer            = ov12_0223A8E4(hpBar->bsys);
     SpriteGfxHandler *gfxHandler        = ov12_0223A8EC(hpBar->bsys);
     SpriteGfxHandler_UnloadCharObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CHAR]);
@@ -605,7 +611,7 @@ static void ov12_02264B60(BattleHpBar *hpBar) {
 }
 
 static void ov12_02264B94(BattleHpBar *hpBar) {
-    const UnkTemplate_0200D748 *tmplate = ov12_02265C1C(hpBar->type);
+    const UnkTemplate_0200D748 *tmplate = BattleHpBar_Util_GetArrowSpriteTemplate(hpBar->type);
     if (tmplate != NULL) {
         SpriteRenderer *renderer     = ov12_0223A8E4(hpBar->bsys);
         SpriteGfxHandler *gfxHandler = ov12_0223A8EC(hpBar->bsys);
@@ -629,7 +635,7 @@ void BattleHpBar_LoadResources(BattleHpBar *hpBar) {
     gfxHandler = ov12_0223A8EC(hpBar->bsys);
     plttData   = BattleSystem_GetPaletteData(hpBar->bsys);
 
-    tmplate = ov12_02265BB8(hpBar->type);
+    tmplate = BattleHpBar_Util_GetHpBoxSpriteTemplate(hpBar->type);
 
     ov12_02264824(renderer, gfxHandler, narc, plttData, hpBar->type);
     hpBar->unk4 = ov12_02264968(renderer, gfxHandler, hpBar->type);
@@ -662,7 +668,7 @@ asm void BattleHpBar_LoadResources(BattleHpBar *hpBar) {
 	add r0, r5, #0
 	add r0, #0x25
 	ldrb r0, [r0, #0]
-	bl ov12_02265BB8
+	bl BattleHpBar_Util_GetHpBoxSpriteTemplate
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x25
@@ -733,19 +739,19 @@ void ov12_02264C84(BattleHpBar *hpBar) {
         vramBaseAddr = G2_GetOBJCharPtr();
         imgProxy     = Sprite_GetImageProxy(hpBar->unk4->sprite);
         if (hpBar->unk_4F_3 == 1) {
-            src = ov12_02265B58(70);
+            src = BattleHpBar_Util_GetComponentRawGraphic(70);
             MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3A8[hpBar->type].offset + 0x20 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
-            src = ov12_02265B58(71);
+            src = BattleHpBar_Util_GetComponentRawGraphic(71);
             MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3D8[hpBar->type].offset + 0x20 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
-            src = ov12_02265B58(69);
+            src = BattleHpBar_Util_GetComponentRawGraphic(69);
             MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D408[hpBar->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D408[hpBar->type].size);
             ov12_0226498C(hpBar, hpBar->hp, 6);
         } else {
-            src = ov12_02265B58(66);
+            src = BattleHpBar_Util_GetComponentRawGraphic(66);
             MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3A8[hpBar->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D3A8[hpBar->type].size);
-            src = ov12_02265B58(68);
+            src = BattleHpBar_Util_GetComponentRawGraphic(68);
             MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3D8[hpBar->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D3D8[hpBar->type].size);
-            src = ov12_02265B58(38);
+            src = BattleHpBar_Util_GetComponentRawGraphic(38);
             MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3D8[hpBar->type].offset + 0x20 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
             ov12_0226498C(hpBar, hpBar->hp, 1);
         }
@@ -854,7 +860,7 @@ static void ov12_02264F44(BattleHpBar *hpBar, int x, int y) {
 
     GF_ASSERT(hpBar->unk4 != NULL);
 
-    r4 = ov12_02265BB8(hpBar->type);
+    r4 = BattleHpBar_Util_GetHpBoxSpriteTemplate(hpBar->type);
 
     Sprite_SetPositionXY(hpBar->unk4->sprite, r4->x + x, r4->y + y);
     if (hpBar->unk8 != NULL) {
@@ -878,7 +884,7 @@ _02264F56:
 	add r0, r5, #0
 	add r0, #0x25
 	ldrb r0, [r0, #0]
-	bl ov12_02265BB8
+	bl BattleHpBar_Util_GetHpBoxSpriteTemplate
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #2
@@ -951,7 +957,7 @@ static void ov12_02265054(SysTask *task, void *data) {
     int r4;
 
     r4 = 0;
-    r6 = ov12_02265BB8(hpBar->type);
+    r6 = BattleHpBar_Util_GetHpBoxSpriteTemplate(hpBar->type);
     UnkImageStruct_GetSpritePositionXY(hpBar->unk4, &x, &y);
 
     switch (hpBar->type) {
@@ -1011,7 +1017,7 @@ asm static void ov12_02265054(SysTask *task, void *data) {
 	add r0, #0x25
 	ldrb r0, [r0, #0]
 	mov r4, #0
-	bl ov12_02265BB8
+	bl BattleHpBar_Util_GetHpBoxSpriteTemplate
 	add r6, r0, #0
 	add r1, sp, #0
 	ldr r0, [r5, #4]
@@ -1208,8 +1214,8 @@ static void ov12_022652D0(BattleHpBar *hpBar) {
         r0 = 76;
         r4 = 64;
     }
-    const u8 *sp0              = ov12_02265B58(r0);
-    const u8 *r7               = ov12_02265B58(r4);
+    const u8 *sp0              = BattleHpBar_Util_GetComponentRawGraphic(r0);
+    const u8 *r7               = BattleHpBar_Util_GetComponentRawGraphic(r4);
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->unk4->sprite);
     void *vramAddr             = G2_GetOBJCharPtr();
     MI_CpuCopy16(r7, (void *)((u32)vramAddr + ov12_0226D4B0[hpBar->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D4B0[hpBar->type][0].size);
@@ -1221,7 +1227,7 @@ static void ov12_02265354(BattleHpBar *hpBar) {
     u8 *r4 = AllocFromHeap(HEAP_ID_BATTLE, 0x60);
     u8 *r7 = AllocFromHeap(HEAP_ID_BATTLE, 0xC0);
     MI_CpuFill8(r4, 0xFF, 0x60);
-    sub_0200CEB0(BattleSystem_GetLevelNumPrinter(hpBar->bsys), hpBar->unk48, 3, PRINTING_MODE_LEFT_ALIGN, (void *)r4);
+    sub_0200CEB0(BattleSystem_GetLevelNumPrinter(hpBar->bsys), hpBar->level, 3, PRINTING_MODE_LEFT_ALIGN, (void *)r4);
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->unk4->sprite);
     void *vramAddr             = G2_GetOBJCharPtr();
     MI_CpuCopy16((void *)((u32)vramAddr + ov12_0226D420[hpBar->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), r7, ov12_0226D420[hpBar->type][0].size);
@@ -1269,9 +1275,9 @@ static void ov12_02265500(BattleHpBar *hpBar) {
 static void ov12_02265560(BattleHpBar *hpBar) {
     const u8 *r4;
     if (hpBar->unk4B == 1) {
-        r4 = ov12_02265B58(59);
+        r4 = BattleHpBar_Util_GetComponentRawGraphic(59);
     } else {
-        r4 = ov12_02265B58(38);
+        r4 = BattleHpBar_Util_GetComponentRawGraphic(38);
     }
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->unk4->sprite);
     void *vramAddr             = G2_GetOBJCharPtr();
@@ -1280,14 +1286,14 @@ static void ov12_02265560(BattleHpBar *hpBar) {
 }
 
 static void ov12_022655B0(BattleHpBar *hpBar, int a1) {
-    const u8 *r4               = ov12_02265B58(a1);
+    const u8 *r4               = BattleHpBar_Util_GetComponentRawGraphic(a1);
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->unk4->sprite);
     void *vramAddr             = G2_GetOBJCharPtr();
 
     MI_CpuCopy16(r4, (void *)((u32)vramAddr + ov12_0226D390[hpBar->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D390[hpBar->type].size);
 }
 
-static void ov12_022655F0(BattleHpBar *hpBar, u32 flag) {
+static void BattleHpBar_PrintSafariOrParkBallsString(BattleHpBar *hpBar, u32 flag) {
     BgConfig *bgConfig;
     u8 *windowBuf;
     NNSG2dImageProxy *imgProxy;
@@ -1326,7 +1332,7 @@ static void ov12_022655F0(BattleHpBar *hpBar, u32 flag) {
     String_Delete(string);
 }
 
-static void ov12_022656CC(BattleHpBar *hpBar, u32 flag) {
+static void BattleHpBar_PrintNumRemainingSafariOrParkBalls(BattleHpBar *hpBar, u32 flag) {
     BgConfig *bgConfig;
     u8 *windowBuf;
     NNSG2dImageProxy *imgProxy;
@@ -1372,22 +1378,24 @@ static void ov12_022656CC(BattleHpBar *hpBar, u32 flag) {
     String_Delete(string2);
 }
 
-static int ov12_022657E4(BattleHpBar *hpBar, BOOL a1) {
+static int ov12_022657E4(BattleHpBar *hpBar, BOOL isExp) {
     int ret;
-    if (!a1) {
-        ret = ov12_022659E0(hpBar->maxHp, hpBar->hp, hpBar->gainedHp, &hpBar->hpCalc, 6, 1);
+    if (isExp == FALSE) {
+        ret = BattleHpBar_CalculatePixelsChangeFrame(hpBar->maxHp, hpBar->hp, hpBar->gainedHp, &hpBar->hpCalc, 6, 1);
     } else {
-        int denom = ov12_02265B18(hpBar->exp, hpBar->gainedExp, hpBar->maxExp, 12);
+        // Supposedly this will make the exp bar move at a consistent speed regardless of the gauge size.
+        int denom = BattleHpBar_Util_GetPixelsToGain(hpBar->exp, hpBar->gainedExp, hpBar->maxExp, 12);
         if (denom == 0) {
             denom = 1;
         }
-        ret = ov12_022659E0(hpBar->maxExp, hpBar->exp, hpBar->gainedExp, &hpBar->expCalc, 12, abs(hpBar->gainedExp / denom));
+        ret = BattleHpBar_CalculatePixelsChangeFrame(hpBar->maxExp, hpBar->exp, hpBar->gainedExp, &hpBar->expCalc, 12, abs(hpBar->gainedExp / denom));
     }
-    if (a1 || hpBar->unk_4F_3 != TRUE) {
-        ov12_02265878(hpBar, a1);
+    if (isExp != FALSE || hpBar->unk_4F_3 != TRUE) {
+        ov12_02265878(hpBar, isExp);
     }
     if (ret == -1) {
-        if (!a1) {
+        // we done
+        if (isExp == FALSE) {
             hpBar->hpCalc = 0;
         } else {
             hpBar->expCalc = 0;
@@ -1396,119 +1404,125 @@ static int ov12_022657E4(BattleHpBar *hpBar, BOOL a1) {
     return ret;
 }
 
-static void ov12_02265878(BattleHpBar *hpBar, u8 a1) {
+static void ov12_02265878(BattleHpBar *hpBar, u8 isExp) {
     u8 i;
-    u8 sp10[12];
+    u8 pixelBuffer[12];
     u8 tmp;
-    const u8 *spC;
+    const u8 *src;
     void *vramAddr;
     NNSG2dImageProxy *imgProxy;
-    int r7;
+    int sizeTop;
 
     vramAddr = G2_GetOBJCharPtr();
     imgProxy = Sprite_GetImageProxy(hpBar->unk4->sprite);
-    switch (a1) {
-    case 0:
-        switch (sub_02088080(ov12_02265A9C(hpBar->maxHp, hpBar->hp, hpBar->gainedHp, &hpBar->hpCalc, sp10, 6), 0x30)) {
-        case 3:
+    switch (isExp) {
+    case FALSE:
+        // hp
+        switch (HpBar_GetColorIdx(BattleHpBar_Util_MakeHpBarPixelBuffer(hpBar->maxHp, hpBar->hp, hpBar->gainedHp, &hpBar->hpCalc, pixelBuffer, 6), 0x30)) {
+        case 3: // Green
             tmp = 2;
             break;
-        case 2:
+        case 2: // Yellow
             tmp = 11;
             break;
-        case 1:
+        case 1: // Red
         default:
             tmp = 20;
             break;
         }
-        spC = ov12_02265B58(tmp);
-        r7  = ov12_0226D480[hpBar->type][0].size / 32;
+        src     = BattleHpBar_Util_GetComponentRawGraphic(tmp);
+        sizeTop = ov12_0226D480[hpBar->type][0].size / 32;
         for (i = 0; i < 6; ++i) {
-            if (i < r7) {
-                MI_CpuCopy16(spC + sp10[i] * 32, (void *)((u32)vramAddr + ov12_0226D480[hpBar->type][0].offset + i * 32 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
+            if (i < sizeTop) {
+                MI_CpuCopy16(src + pixelBuffer[i] * 32, (void *)((u32)vramAddr + ov12_0226D480[hpBar->type][0].offset + i * 32 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
             } else {
-                MI_CpuCopy16(spC + sp10[i] * 32, (void *)((u32)vramAddr + ov12_0226D480[hpBar->type][1].offset + (i - r7) * 32 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
+                MI_CpuCopy16(src + pixelBuffer[i] * 32, (void *)((u32)vramAddr + ov12_0226D480[hpBar->type][1].offset + (i - sizeTop) * 32 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
             }
         }
         break;
-    case 1:
-        ov12_02265A9C(hpBar->maxExp, hpBar->exp, hpBar->gainedExp, &hpBar->expCalc, sp10, 12);
-        if (hpBar->unk48 == 100) {
+    case TRUE:
+        // exp
+        BattleHpBar_Util_MakeHpBarPixelBuffer(hpBar->maxExp, hpBar->exp, hpBar->gainedExp, &hpBar->expCalc, pixelBuffer, 12);
+        if (hpBar->level == 100) {
+            // Don't fill an exp bar for a level 100 mon
             for (i = 0; i < 12; ++i) {
-                sp10[i] = 0;
+                pixelBuffer[i] = 0;
             }
         }
-        spC = ov12_02265B58(29);
+        src = BattleHpBar_Util_GetComponentRawGraphic(29);
         for (i = 0; i < 12; ++i) {
             if (i < 5) {
-                MI_CpuCopy16(spC + sp10[i] * 32, (void *)((u32)vramAddr + 0x660 + i * 32 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
+                MI_CpuCopy16(src + pixelBuffer[i] * 32, (void *)((u32)vramAddr + 0x660 + i * 32 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
             } else {
-                MI_CpuCopy16(spC + sp10[i] * 32, (void *)((u32)vramAddr + 0xE00 + (i - 5) * 32 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
+                MI_CpuCopy16(src + pixelBuffer[i] * 32, (void *)((u32)vramAddr + 0xE00 + (i - 5) * 32 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
             }
         }
         break;
     }
 }
 
-static int ov12_022659E0(s32 maxHp, s32 curHp, s32 deltaHp, s32 *pHpCalc, u8 a4, u16 a5) {
-    s32 r4;
+static int BattleHpBar_CalculatePixelsChangeFrame(s32 maxHp, s32 curHp, s32 deltaHp, s32 *pHpCalc, u8 tilesWide, u16 hpChange) {
+    s32 nowHp;
     s32 ret;
-    u8 r2;
-    s32 r0;
+    u8 pixelsWide;
+    s32 hpPerPixel;
 
-    r2 = a4 * 8;
+    pixelsWide = tilesWide * 8;
     if (*pHpCalc == 0x80000000) {
-        if (maxHp < r2) {
+        // Initialize
+        if (USE_SUBPIXELS_TEST) {
             *pHpCalc = curHp << 8;
         } else {
             *pHpCalc = curHp;
         }
     }
-    r4 = curHp - deltaHp;
-    if (r4 < 0) {
-        r4 = 0;
-    } else if (r4 > maxHp) {
-        r4 = maxHp;
+    nowHp = curHp - deltaHp;
+    if (nowHp < 0) {
+        nowHp = 0;
+    } else if (nowHp > maxHp) {
+        nowHp = maxHp;
     }
-    if (maxHp < r2) {
-        if (r4 == (*pHpCalc >> 8) && (*pHpCalc & 0xFF) == 0) {
+    if (USE_SUBPIXELS_TEST) {
+        // Use subpixel mode
+        if (nowHp == (*pHpCalc >> 8) && (*pHpCalc & 0xFF) == 0) {
             return -1;
         }
     } else {
-        if (r4 == *pHpCalc) {
+        // Use integer pixel mode
+        if (nowHp == *pHpCalc) {
             return -1;
         }
     }
-    if (maxHp < r2) {
-        r0 = (maxHp << 8) / r2;
+    if (USE_SUBPIXELS_TEST) {
+        hpPerPixel = (maxHp << 8) / pixelsWide;
         if (deltaHp < 0) {
-            *pHpCalc += r0;
+            *pHpCalc += hpPerPixel;
             ret = *pHpCalc >> 8;
-            if (ret >= r4) {
-                *pHpCalc = r4 << 8;
-                ret      = r4;
+            if (ret >= nowHp) {
+                *pHpCalc = nowHp << 8;
+                ret      = nowHp;
             }
         } else {
-            *pHpCalc -= r0;
+            *pHpCalc -= hpPerPixel;
             ret = *pHpCalc >> 8;
             if ((*pHpCalc & 0xFF) > 0) {
                 ++ret;
             }
-            if (ret <= r4) {
-                *pHpCalc = r4 << 8;
-                ret      = r4;
+            if (ret <= nowHp) {
+                *pHpCalc = nowHp << 8;
+                ret      = nowHp;
             }
         }
     } else {
         if (deltaHp < 0) {
-            *pHpCalc += a5;
-            if (*pHpCalc > r4) {
-                *pHpCalc = r4;
+            *pHpCalc += hpChange;
+            if (*pHpCalc > nowHp) {
+                *pHpCalc = nowHp;
             }
         } else {
-            *pHpCalc -= a5;
-            if (*pHpCalc < r4) {
-                *pHpCalc = r4;
+            *pHpCalc -= hpChange;
+            if (*pHpCalc < nowHp) {
+                *pHpCalc = nowHp;
             }
         }
         ret = *pHpCalc;
@@ -1516,39 +1530,39 @@ static int ov12_022659E0(s32 maxHp, s32 curHp, s32 deltaHp, s32 *pHpCalc, u8 a4,
     return ret;
 }
 
-static u8 ov12_02265A9C(s32 maxHp, s32 hp, s32 deltaHp, s32 *pHpCalc, u8 *a4, u8 a5) {
+static u8 BattleHpBar_Util_MakeHpBarPixelBuffer(s32 maxHp, s32 hp, s32 deltaHp, s32 *pHpCalc, u8 *pixelBuf, u8 tilesWide) {
     int i;
-    int r7;
-    u32 r2;
-    u32 r0;
+    int targetHp;
+    u32 pixelsWide;
+    u32 curPixels;
     u32 ret;
 
-    r7 = hp - deltaHp;
-    if (r7 < 0) {
-        r7 = 0;
-    } else if (r7 > maxHp) {
-        r7 = maxHp;
+    targetHp = hp - deltaHp;
+    if (targetHp < 0) {
+        targetHp = 0;
+    } else if (targetHp > maxHp) {
+        targetHp = maxHp;
     }
-    r2 = a5 * 8;
-    for (i = 0; i < a5; ++i) {
-        a4[i] = 0;
+    pixelsWide = tilesWide * 8;
+    for (i = 0; i < tilesWide; ++i) {
+        pixelBuf[i] = 0;
     }
-    if (maxHp < r2) {
-        r0 = (*pHpCalc * r2 / maxHp) >> 8;
+    if (USE_SUBPIXELS_TEST) {
+        curPixels = (*pHpCalc * pixelsWide / maxHp) >> 8;
     } else {
-        r0 = *pHpCalc * r2 / maxHp;
+        curPixels = *pHpCalc * pixelsWide / maxHp;
     }
-    ret = r0;
-    if (r0 == 0 && r7 > 0) {
-        a4[0] = 1;
-        ret   = 1;
+    ret = curPixels;
+    if (curPixels == 0 && targetHp > 0) {
+        pixelBuf[0] = 1;
+        ret         = 1;
     } else {
-        for (i = 0; i < a5; ++i) {
-            if (r0 >= 8) {
-                a4[i] = 8;
-                r0 -= 8;
+        for (i = 0; i < tilesWide; ++i) {
+            if (curPixels >= 8) {
+                pixelBuf[i] = 8;
+                curPixels -= 8;
             } else {
-                a4[i] = r0;
+                pixelBuf[i] = curPixels;
                 break;
             }
         }
@@ -1556,78 +1570,78 @@ static u8 ov12_02265A9C(s32 maxHp, s32 hp, s32 deltaHp, s32 *pHpCalc, u8 *a4, u8
     return ret;
 }
 
-static u32 ov12_02265B18(s32 exp, s32 gainedExp, s32 maxExp, u8 a3) {
-    s8 r7, r0;
-    u8 r6;
-    s32 r4;
+static u32 BattleHpBar_Util_GetPixelsToGain(s32 exp, s32 gainedExp, s32 maxExp, u8 tilesWide) {
+    s8 curPixels, targetPixels;
+    u8 pixelsWide;
+    s32 targetExp;
 
-    r6 = a3 * 8;
+    pixelsWide = tilesWide * 8;
 
-    r4 = exp - gainedExp;
-    if (r4 < 0) {
-        r4 = 0;
-    } else if (r4 > maxExp) {
-        r4 = maxExp;
+    targetExp = exp - gainedExp;
+    if (targetExp < 0) {
+        targetExp = 0;
+    } else if (targetExp > maxExp) {
+        targetExp = maxExp;
     }
-    r7 = exp * r6 / maxExp;
-    r0 = r4 * r6 / maxExp;
-    return abs(r7 - r0);
+    curPixels    = exp * pixelsWide / maxExp;
+    targetPixels = targetExp * pixelsWide / maxExp;
+    return abs(curPixels - targetPixels);
 }
 
-static const u8 *ov12_02265B58(int a0) {
-    return ov12_0226D6E0 + a0 * 32;
+static const u8 *BattleHpBar_Util_GetComponentRawGraphic(int componentId) {
+    return gBattleHpBar_RawGraphicComponents + componentId * 32;
 }
 
-u8 ov12_02265B64(u8 a0, u32 battleType) {
-    switch (a0) {
+u8 BattleHpBar_Util_GetBarTypeFromBattlerSide(u8 bside, u32 battleType) {
+    switch (bside) {
     case 0:
         if (battleType & BATTLE_TYPE_PAL_PARK) {
-            return 7;
+            return HP_BAR_TYPE_PALPARK;
         }
         if (battleType & BATTLE_TYPE_SAFARI) {
-            return 6;
+            return HP_BAR_TYPE_SAFARI;
         }
-        return 0;
+        return HP_BAR_TYPE_SINGLE_PLAYER;
     case 1:
-        return 1;
+        return HP_BAR_TYPE_SINGLE_ENEMY;
     case 2:
-        return 2;
+        return HP_BAR_TYPE_DOUBLE_PLAYER_LHS;
     case 3:
-        return 3;
+        return HP_BAR_TYPE_DOUBLE_ENEMY_LHS;
     case 4:
-        return 4;
+        return HP_BAR_TYPE_DOUBLE_PLAYER_RHS;
     case 5:
-        return 5;
+        return HP_BAR_TYPE_DOUBLE_ENEMY_RHS;
     default:
         GF_ASSERT(FALSE);
-        return 0;
+        return HP_BAR_TYPE_SINGLE_PLAYER;
     }
 }
 
-static const UnkTemplate_0200D748 *ov12_02265BB8(u8 barType) {
+static const UnkTemplate_0200D748 *BattleHpBar_Util_GetHpBoxSpriteTemplate(u8 barType) {
     const UnkTemplate_0200D748 *ret;
     switch (barType) {
-    case 0:
-        ret = &ov12_0226D5E4;
+    case HP_BAR_TYPE_SINGLE_PLAYER:
+        ret = &sSpriteTemplate_HpBarSinglePlayer;
         break;
-    case 1:
-        ret = &ov12_0226D618;
+    case HP_BAR_TYPE_SINGLE_ENEMY:
+        ret = &sSpriteTemplate_HpBarSingleEnemy;
         break;
-    case 2:
-        ret = &ov12_0226D4E0;
+    case HP_BAR_TYPE_DOUBLE_PLAYER_LHS:
+        ret = &sSpriteTemplate_HpBarDoublePlayerLHS;
         break;
-    case 3:
-        ret = &ov12_0226D514;
+    case HP_BAR_TYPE_DOUBLE_ENEMY_LHS:
+        ret = &sSpriteTemplate_HpBarDoubleEnemyLHS;
         break;
-    case 4:
-        ret = &ov12_0226D57C;
+    case HP_BAR_TYPE_DOUBLE_PLAYER_RHS:
+        ret = &sSpriteTemplate_HpBarDoublePlayerRHS;
         break;
-    case 5:
-        ret = &ov12_0226D64C;
+    case HP_BAR_TYPE_DOUBLE_ENEMY_RHS:
+        ret = &sSpriteTemplate_HpBarDoubleEnemyRHS;
         break;
-    case 6:
-    case 7:
-        ret = &ov12_0226D5B0;
+    case HP_BAR_TYPE_SAFARI:
+    case HP_BAR_TYPE_PALPARK:
+        ret = &sSpriteTemplate_HpBarSafariOrPark;
         break;
     default:
         GF_ASSERT(FALSE);
@@ -1636,17 +1650,17 @@ static const UnkTemplate_0200D748 *ov12_02265BB8(u8 barType) {
     return ret;
 }
 
-static const UnkTemplate_0200D748 *ov12_02265C1C(u8 barType) {
+static const UnkTemplate_0200D748 *BattleHpBar_Util_GetArrowSpriteTemplate(u8 barType) {
     switch (barType) {
-    case 0:
-    case 2:
-    case 4:
-    case 6:
-    case 7:
-        return &ov12_0226D548;
-    case 1:
-    case 3:
-    case 5:
+    case HP_BAR_TYPE_SINGLE_PLAYER:
+    case HP_BAR_TYPE_DOUBLE_PLAYER_LHS:
+    case HP_BAR_TYPE_DOUBLE_PLAYER_RHS:
+    case HP_BAR_TYPE_SAFARI:
+    case HP_BAR_TYPE_PALPARK:
+        return &sSpriteTemplate_Arrow;
+    case HP_BAR_TYPE_SINGLE_ENEMY:
+    case HP_BAR_TYPE_DOUBLE_ENEMY_LHS:
+    case HP_BAR_TYPE_DOUBLE_ENEMY_RHS:
         return NULL;
     default:
         GF_ASSERT(FALSE);
@@ -1654,56 +1668,56 @@ static const UnkTemplate_0200D748 *ov12_02265C1C(u8 barType) {
     }
 }
 
-typedef struct UnkStruct_ov12_02265C54 {
+typedef struct BattleHpBarExpBarFullFlashEffectTaskData {
     BattleHpBar *hpBar;
-    u8 *unk_4;
-    u8 unk_8;
-    u8 unk_9;
-    s8 unk_A;
-} UnkStruct_ov12_02265C54;
+    u8 *pDoneFlag;
+    u8 state;
+    u8 plttNum;
+    s8 ev;
+} BattleHpBarExpBarFullFlashEffectTaskData;
 
-SysTask *ov12_02265C54(BattleHpBar *hpBar, u8 *a1) {
-    *a1                               = 0;
-    UnkStruct_ov12_02265C54 *taskData = AllocFromHeap(HEAP_ID_BATTLE, sizeof(UnkStruct_ov12_02265C54));
-    MI_CpuFill8(taskData, 0, sizeof(UnkStruct_ov12_02265C54));
-    taskData->hpBar = hpBar;
-    taskData->unk_4 = a1;
-    return SysTask_CreateOnMainQueue(ov12_02265C88, taskData, 1000);
+SysTask *BattleHpBar_BeginExpBarFullFlashEffect(BattleHpBar *hpBar, u8 *a1) {
+    *a1                                                = 0;
+    BattleHpBarExpBarFullFlashEffectTaskData *taskData = AllocFromHeap(HEAP_ID_BATTLE, sizeof(BattleHpBarExpBarFullFlashEffectTaskData));
+    MI_CpuFill8(taskData, 0, sizeof(BattleHpBarExpBarFullFlashEffectTaskData));
+    taskData->hpBar     = hpBar;
+    taskData->pDoneFlag = a1;
+    return SysTask_CreateOnMainQueue(Task_ExpBarFullFlash, taskData, 1000);
 }
 
-static void ov12_02265C88(SysTask *task, void *data) {
-    UnkStruct_ov12_02265C54 *taskData = data;
-    SpriteGfxHandler *gfxHandler      = ov12_0223A8EC(taskData->hpBar->bsys);
+static void Task_ExpBarFullFlash(SysTask *task, void *data) {
+    BattleHpBarExpBarFullFlashEffectTaskData *taskData = data;
+    SpriteGfxHandler *gfxHandler                       = ov12_0223A8EC(taskData->hpBar->bsys);
     int plttNum;
     PaletteData *plttData = BattleSystem_GetPaletteData(taskData->hpBar->bsys);
 
-    switch (taskData->unk_8) {
+    switch (taskData->state) {
     case 0:
-        plttNum = sub_0200D944(gfxHandler, 20007, NNS_G2D_VRAM_TYPE_2DMAIN);
+        plttNum = GfGfxHandler_GetPlttNumById(gfxHandler, 20007, NNS_G2D_VRAM_TYPE_2DMAIN);
         UnkImageStruct_SetSpritePalIndex(taskData->hpBar->unk4, plttNum);
-        taskData->unk_9 = plttNum;
-        ++taskData->unk_8;
+        taskData->plttNum = plttNum;
+        ++taskData->state;
         // break;
     case 1:
-        taskData->unk_A += 2;
-        if (taskData->unk_A >= 10) {
-            taskData->unk_A = 10;
-            ++taskData->unk_8;
+        taskData->ev += 2;
+        if (taskData->ev >= 10) {
+            taskData->ev = 10;
+            ++taskData->state;
         }
-        PaletteData_BlendPalette(plttData, PLTTBUF_MAIN_OBJ, 16 * taskData->unk_9, 0x10, taskData->unk_A, RGB(5, 29, 28));
+        PaletteData_BlendPalette(plttData, PLTTBUF_MAIN_OBJ, 16 * taskData->plttNum, 0x10, taskData->ev, RGB(5, 29, 28));
         break;
     case 2:
-        taskData->unk_A -= 2;
-        if (taskData->unk_A <= 0) {
-            taskData->unk_A = 0;
-            ++taskData->unk_8;
+        taskData->ev -= 2;
+        if (taskData->ev <= 0) {
+            taskData->ev = 0;
+            ++taskData->state;
         }
-        PaletteData_BlendPalette(plttData, PLTTBUF_MAIN_OBJ, 16 * taskData->unk_9, 0x10, taskData->unk_A, RGB(5, 29, 28));
+        PaletteData_BlendPalette(plttData, PLTTBUF_MAIN_OBJ, 16 * taskData->plttNum, 0x10, taskData->ev, RGB(5, 29, 28));
         break;
     default:
-        plttNum = sub_0200D944(gfxHandler, 20006, NNS_G2D_VRAM_TYPE_2DMAIN);
+        plttNum = GfGfxHandler_GetPlttNumById(gfxHandler, 20006, NNS_G2D_VRAM_TYPE_2DMAIN);
         UnkImageStruct_SetSpritePalIndex(taskData->hpBar->unk4, plttNum);
-        *taskData->unk_4 = 1;
+        *taskData->pDoneFlag = 1;
         FreeToHeap(taskData);
         SysTask_Destroy(task);
         break;

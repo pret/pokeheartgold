@@ -2558,7 +2558,7 @@ ov101_021E8AE4: ; 0x021E8AE4
 	mov r1, #0
 	add r0, #0x90
 	ldr r0, [r0]
-	bl sub_0200D934
+	bl GfGfxHandler_GetPlttProxy
 	str r0, [sp, #0x24]
 	mov r0, #0
 	str r0, [sp, #0x10]

@@ -20,7 +20,7 @@
 .public SpriteRenderer_LoadCellResObjFromOpenNarc
 .public SpriteRenderer_LoadAnimResObjFromOpenNarc
 .public SpriteRenderer_LoadResourcesAndCreateSprite
-.public sub_0200D934
+.public GfGfxHandler_GetPlttProxy
 .public UnkImageStruct_Delete
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public UnkImageStruct_SetSpriteAnimSeqNo

@@ -54,7 +54,7 @@ void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, 
         GF_ASSERT(proxy != NULL);
         hdr->charData = NULL;
     }
-    hdr->plttProxy  = sub_0200B0F8(plttObj, proxy);
+    hdr->plttProxy  = GF_PlttResObj_GetPlttProxy(plttObj, proxy);
     hdr->imageProxy = proxy;
     hdr->cellData   = GF2DGfxResObj_GetCellDataPtr(cellObj);
     if (cellAnmObj != NULL) {

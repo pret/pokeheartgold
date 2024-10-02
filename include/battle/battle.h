@@ -459,7 +459,7 @@ typedef struct BattleHpBar {
     s32 maxExp;
     s32 gainedExp;
     s32 expCalc;
-    u8 unk48;
+    u8 level;
     u8 unk49;
     u8 unk_4A;
     u8 unk4B;

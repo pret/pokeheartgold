@@ -1201,7 +1201,7 @@ static void loadOneMonObj(GF_2DGfxResMan *charResMan, GF_2DGfxResMan *plttResMan
     sub_0200ADA4(charResObj);
     sub_0200B00C(plttResObj);
     charProxy = sub_0200AF00(charResObj);
-    plttProxy = sub_0200B0F8(plttResObj, charProxy);
+    plttProxy = GF_PlttResObj_GetPlttProxy(plttResObj, charProxy);
     imageloc  = NNS_G2dGetImageLocation(charProxy, NNS_G2D_VRAM_TYPE_2DSUB);
     plttloc   = NNS_G2dGetImagePaletteLocation(plttProxy, NNS_G2D_VRAM_TYPE_2DSUB);
     DC_FlushRange(charData, 0xC80);

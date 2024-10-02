@@ -4025,7 +4025,7 @@ _022483C6:
 	str r0, [sp, #0x34]
 	ldr r1, _022484AC ; =0x00004E30
 	add r0, r4, #0
-	bl sub_0200D934
+	bl GfGfxHandler_GetPlttProxy
 	mov r1, #0
 	str r0, [sp, #0x38]
 	ldr r0, [sp, #0x60]

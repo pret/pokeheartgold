@@ -1975,11 +1975,11 @@ ov42_02227E78: ; 0x02227E78
 	str r0, [sp, #4]
 	add r0, r6, #0
 	mov r1, #1
-	bl sub_0200B12C
+	bl GF_PlttResObj_GetVramSlotNum
 	add r7, r0, #0
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_0200B12C
+	bl GF_PlttResObj_GetVramSlotNum
 	add r6, r0, #0
 	mov r0, #0
 	mvn r0, r0

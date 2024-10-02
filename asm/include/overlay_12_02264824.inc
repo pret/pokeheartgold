@@ -13,7 +13,7 @@
 .public SpriteRenderer_LoadCellResObjFromOpenNarc
 .public SpriteRenderer_LoadAnimResObjFromOpenNarc
 .public SpriteRenderer_LoadResourcesAndCreateSprite
-.public sub_0200D944
+.public GfGfxHandler_GetPlttNumById
 .public SpriteGfxHandler_UnloadCharObjById
 .public SpriteGfxHandler_UnloadCellObjById
 .public SpriteGfxHandler_UnloadAnimObjById
@@ -40,7 +40,7 @@
 .public String_New
 .public String_Delete
 .public Mon_GetBoxMon
-.public sub_02088080
+.public HpBar_GetColorIdx
 .public MIi_CpuCopy16
 .public MI_CpuFill8
 .public abs
@@ -70,7 +70,7 @@
 .public ov12_02264EE0
 .public BattleHpBar_SetEnabled
 .public ov12_02264FB0
-.public ov12_02265B64
-.public ov12_02265C54
+.public BattleHpBar_Util_GetBarTypeFromBattlerSide
+.public BattleHpBar_BeginExpBarFullFlashEffect
 .public ov12_02265D70
 .public ov12_02265D74

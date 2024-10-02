@@ -111,8 +111,8 @@ BOOL SpriteRenderer_LoadAnimResObjFromNarcId(SpriteRenderer *renderer, SpriteGfx
 BOOL SpriteRenderer_LoadAnimResObjFromOpenNarc(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, NARC *narc, int fileId, BOOL compressed, int resId);
 UnkImageStruct *SpriteRenderer_LoadResourcesAndCreateSprite(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, const UnkTemplate_0200D748 *unkTemplate);
 UnkImageStruct *SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, const UnkTemplate_0200D748 *unkTemplate, fx32 yOffset);
-NNSG2dImagePaletteProxy *sub_0200D934(SpriteGfxHandler *gfxHandler, int id);
-int sub_0200D944(SpriteGfxHandler *gfxHandler, int id, NNS_G2D_VRAM_TYPE vram);
+NNSG2dImagePaletteProxy *GfGfxHandler_GetPlttProxy(SpriteGfxHandler *gfxHandler, int id);
+int GfGfxHandler_GetPlttNumById(SpriteGfxHandler *gfxHandler, int id, NNS_G2D_VRAM_TYPE vram);
 BOOL SpriteGfxHandler_UnloadCharObjById(SpriteGfxHandler *gfxHandler, u32 character);
 BOOL SpriteGfxHandler_UnloadPlttObjById(SpriteGfxHandler *gfxHandler, u32 pal);
 BOOL SpriteGfxHandler_UnloadCellObjById(SpriteGfxHandler *gfxHandler, u32 cell);

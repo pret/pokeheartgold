@@ -7,7 +7,7 @@
 
 u16 sub_0208805C(int a0);
 u8 CalculateHpBarPixelsLength(u32 hp, u32 maxHp, u8 pixelsWide);
-u8 sub_02088080(u32 hp, u32 pixelsWide);
+u8 HpBar_GetColorIdx(u32 pixelsCur, u32 pixelsWide);
 u8 CalculateHpBarColor(u16 hp, u16 maxHp, u32 pixelsWide);
 void sub_020880CC(u8 a0, HeapID heapId);
 int sub_020881C0(s16 *a0, u16 a1);

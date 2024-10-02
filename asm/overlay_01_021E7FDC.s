@@ -525,7 +525,7 @@ _021E83CC:
 	bl ov01_021E847C
 	ldr r1, [sp, #0x2c]
 	add r0, r4, #0
-	bl sub_0200B12C
+	bl GF_PlttResObj_GetVramSlotNum
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 _021E83E4:

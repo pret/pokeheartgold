@@ -10689,7 +10689,7 @@ _022616FA:
 	ldr r0, [r4, #0x1c]
 	str r0, [sp, #0x34]
 	ldr r0, [r5, #0x60]
-	bl sub_0200B0F8
+	bl GF_PlttResObj_GetPlttProxy
 	str r0, [sp, #0x38]
 	ldr r0, [r5, #0x34]
 	str r0, [sp, #0x3c]

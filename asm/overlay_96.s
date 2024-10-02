@@ -6930,7 +6930,7 @@ _021E8C14:
 	ldr r0, [r6, r0]
 	add r0, r0, r5
 	ldr r0, [r0, #4]
-	bl sub_0200B0F8
+	bl GF_PlttResObj_GetPlttProxy
 	add r5, r0, #0
 	add r0, r7, #0
 	mov r1, #0x20
@@ -7071,7 +7071,7 @@ _021E8CC2:
 	str r0, [sp, #0x24]
 	ldr r0, [r4, #4]
 	ldr r1, [sp, #0x24]
-	bl sub_0200B0F8
+	bl GF_PlttResObj_GetPlttProxy
 	str r0, [sp, #0x28]
 	ldr r0, [r4]
 	bl GF2DGfxResObj_GetCharDataPtr
@@ -30732,7 +30732,7 @@ _021F4420:
 	add r7, r0, #0
 	ldr r0, [sp, #4]
 	add r1, r7, #0
-	bl sub_0200B0F8
+	bl GF_PlttResObj_GetPlttProxy
 	str r0, [sp, #0xc]
 	add r0, r7, #0
 	mov r1, #2
@@ -40043,7 +40043,7 @@ ov96_021F8DF4: ; 0x021F8DF4
 	mov r0, #0xb1
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200B0F8
+	bl GF_PlttResObj_GetPlttProxy
 	str r0, [sp, #0x34]
 	ldr r0, [sp, #0x78]
 	str r0, [sp, #0x38]
@@ -55972,7 +55972,7 @@ _02200D90:
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_0200B0F8
+	bl GF_PlttResObj_GetPlttProxy
 	str r0, [sp, #8]
 	ldr r1, [sp]
 	ldr r0, [sp, #4]
@@ -62143,7 +62143,7 @@ ov96_02203F50: ; 0x02203F50
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_0200B0F8
+	bl GF_PlttResObj_GetPlttProxy
 	str r0, [sp]
 	mov r4, #0
 _02203F80:
@@ -71471,7 +71471,7 @@ _022089E4:
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_0200B0F8
+	bl GF_PlttResObj_GetPlttProxy
 	str r0, [sp, #8]
 	ldr r1, [sp]
 	ldr r0, [sp, #4]
