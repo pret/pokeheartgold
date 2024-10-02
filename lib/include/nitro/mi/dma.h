@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_MI_DMA_H
-#define POKEHEARTGOLD_MI_DMA_H
+#ifndef NITRO_MI_DMA_H
+#define NITRO_MI_DMA_H
 
 #include <nitro/hw/io_reg.h>
 #include <nitro/mi/dma_shared.h>
@@ -86,4 +86,4 @@ void MI_SendGXCommandAsync(u32 dmaNo, const void *src, u32 commandLength, MIDmaC
 void MI_SendGXCommandFast(u32 dmaNo, const void *src, u32 commandLength);
 void MI_SendGXCommandAsyncFast(u32 dmaNo, const void *src, u32 commandLength, MIDmaCallback callback, void *arg);
 
-#endif // POKEHEARTGOLD_MI_DMA_H
+#endif // NITRO_MI_DMA_H

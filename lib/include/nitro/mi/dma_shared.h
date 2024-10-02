@@ -10,8 +10,8 @@
  * Include MI_dma.h from the specific proc's lib
  */
 
-#ifndef GUARD_DMA_SHARED_H
-#define GUARD_DMA_SHARED_H
+#ifndef NITRO_MI_DMA_SHARED_H
+#define NITRO_MI_DMA_SHARED_H
 
 #define REG_MI_DMA0CNT_E_MASK 0x80000000
 
@@ -34,4 +34,4 @@
 #define DMA_START_HBLANK  0x2000
 #define DMA_START_SPECIAL 0x3000
 
-#endif
+#endif // NITRO_MI_DMA_SHARED_H

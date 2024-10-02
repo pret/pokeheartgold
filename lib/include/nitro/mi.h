@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_MI_H
-#define POKEHEARTGOLD_MI_H
+#ifndef NITRO_MI_H
+#define NITRO_MI_H
 
 #include <nitro/mi/dma.h>
 #include <nitro/mi/dma_card.h>
@@ -10,4 +10,4 @@
 
 void MI_Init(void);
 
-#endif // POKEHEARTGOLD_MI_H
+#endif // NITRO_MI_H
