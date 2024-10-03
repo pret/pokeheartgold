@@ -123,8 +123,8 @@
 .public BattleSystem_GetPartySize
 .public BattleSystem_GetPartyMon
 .public ov12_0223A8D4
-.public ov12_0223A8E4
-.public ov12_0223A8EC
+.public BattleSystem_GetSpriteRenderer
+.public BattleSystem_GetGfxHandler
 .public ov12_0223A8F4
 .public BattleSystem_GetMessageData
 .public BattleSystem_GetPaletteData

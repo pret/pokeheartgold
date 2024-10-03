@@ -50,8 +50,8 @@
 .public BattleSystem_GetBgConfig
 .public BattleSystem_GetBattleType
 .public BattleSystem_GetPartyMon
-.public ov12_0223A8E4
-.public ov12_0223A8EC
+.public BattleSystem_GetSpriteRenderer
+.public BattleSystem_GetGfxHandler
 .public BattleSystem_GetHpNumPrinter
 .public BattleSystem_GetLevelNumPrinter
 .public BattleSystem_GetMessageData

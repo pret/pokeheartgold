@@ -26,7 +26,7 @@ typedef enum HPBarType {
 #endif // FAST_HP_BARS
 
 ALIGN(4)
-static const s8 ov12_0226D368[] = {
+static const s8 sHpBarArrowXOffsets[] = {
     72,
     0,
     72,
@@ -482,7 +482,7 @@ static UnkImageStruct *ov12_02264968(SpriteRenderer *renderer, SpriteGfxHandler 
 }
 
 void ov12_0226498C(BattleHpBar *hpBar, u32 num, u32 flag) {
-    GF_ASSERT(hpBar->unk4 != NULL);
+    GF_ASSERT(hpBar->boxObj != NULL);
     if (hpBar->type == HP_BAR_TYPE_SAFARI) {
         flag &= 0xC00;
     } else if (hpBar->type == HP_BAR_TYPE_PALPARK) {
@@ -588,23 +588,23 @@ static void ov12_02264B28(BattleHpBar *hpBar) {
         SysTask_Destroy(hpBar->sysTask);
         hpBar->sysTask = NULL;
     }
-    if (hpBar->unk4 != NULL) {
-        UnkImageStruct_Delete(hpBar->unk4);
-        hpBar->unk4 = NULL;
+    if (hpBar->boxObj != NULL) {
+        UnkImageStruct_Delete(hpBar->boxObj);
+        hpBar->boxObj = NULL;
     }
 }
 
 static void ov12_02264B4C(BattleHpBar *hpBar) {
-    if (hpBar->unk8 != NULL) {
-        UnkImageStruct_Delete(hpBar->unk8);
-        hpBar->unk8 = NULL;
+    if (hpBar->arrowObj != NULL) {
+        UnkImageStruct_Delete(hpBar->arrowObj);
+        hpBar->arrowObj = NULL;
     }
 }
 
 static void ov12_02264B60(BattleHpBar *hpBar) {
     const UnkTemplate_0200D748 *tmplate = BattleHpBar_Util_GetHpBoxSpriteTemplate(hpBar->type);
-    SpriteRenderer *renderer            = ov12_0223A8E4(hpBar->bsys);
-    SpriteGfxHandler *gfxHandler        = ov12_0223A8EC(hpBar->bsys);
+    SpriteRenderer *renderer            = BattleSystem_GetSpriteRenderer(hpBar->bsys);
+    SpriteGfxHandler *gfxHandler        = BattleSystem_GetGfxHandler(hpBar->bsys);
     SpriteGfxHandler_UnloadCharObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CHAR]);
     SpriteGfxHandler_UnloadCellObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CELL]);
     SpriteGfxHandler_UnloadAnimObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_ANIM]);
@@ -613,8 +613,8 @@ static void ov12_02264B60(BattleHpBar *hpBar) {
 static void ov12_02264B94(BattleHpBar *hpBar) {
     const UnkTemplate_0200D748 *tmplate = BattleHpBar_Util_GetArrowSpriteTemplate(hpBar->type);
     if (tmplate != NULL) {
-        SpriteRenderer *renderer     = ov12_0223A8E4(hpBar->bsys);
-        SpriteGfxHandler *gfxHandler = ov12_0223A8EC(hpBar->bsys);
+        SpriteRenderer *renderer     = BattleSystem_GetSpriteRenderer(hpBar->bsys);
+        SpriteGfxHandler *gfxHandler = BattleSystem_GetGfxHandler(hpBar->bsys);
         SpriteGfxHandler_UnloadCharObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CHAR]);
         SpriteGfxHandler_UnloadCellObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CELL]);
         SpriteGfxHandler_UnloadAnimObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_ANIM]);
@@ -631,18 +631,18 @@ void BattleHpBar_LoadResources(BattleHpBar *hpBar) {
 
     narc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
 
-    renderer   = ov12_0223A8E4(hpBar->bsys);
-    gfxHandler = ov12_0223A8EC(hpBar->bsys);
+    renderer   = BattleSystem_GetSpriteRenderer(hpBar->bsys);
+    gfxHandler = BattleSystem_GetGfxHandler(hpBar->bsys);
     plttData   = BattleSystem_GetPaletteData(hpBar->bsys);
 
     tmplate = BattleHpBar_Util_GetHpBoxSpriteTemplate(hpBar->type);
 
     ov12_02264824(renderer, gfxHandler, narc, plttData, hpBar->type);
-    hpBar->unk4 = ov12_02264968(renderer, gfxHandler, hpBar->type);
+    hpBar->boxObj = ov12_02264968(renderer, gfxHandler, hpBar->type);
 
     ov12_022648EC(renderer, gfxHandler, narc, plttData, hpBar->type);
-    if (hpBar->unk8 != NULL) {
-        Sprite_SetPositionXY(hpBar->unk8->sprite, tmplate->x - ov12_0226D368[hpBar->type], tmplate->y + 0);
+    if (hpBar->arrowObj != NULL) {
+        Sprite_SetPositionXY(hpBar->arrowObj->sprite, tmplate->x - sHpBarArrowXOffsets[hpBar->type], tmplate->y + 0);
     }
     NARC_Delete(narc);
 }
@@ -657,10 +657,10 @@ asm void BattleHpBar_LoadResources(BattleHpBar *hpBar) {
 	bl NARC_New
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
-	bl ov12_0223A8E4
+	bl BattleSystem_GetSpriteRenderer
 	add r7, r0, #0
 	ldr r0, [r5, #0xc]
-	bl ov12_0223A8EC
+	bl BattleSystem_GetGfxHandler
 	str r0, [sp, #4]
 	ldr r0, [r5, #0xc]
 	bl BattleSystem_GetPaletteData
@@ -700,7 +700,7 @@ asm void BattleHpBar_LoadResources(BattleHpBar *hpBar) {
 	beq _02264C5A
 	add r5, #0x25
 	ldrb r3, [r5, #0]
-	ldr r2, =ov12_0226D368
+	ldr r2, =sHpBarArrowXOffsets
 	mov r1, #0
 	ldrsh r1, [r4, r1]
 	ldrsb r2, [r2, r3]
@@ -737,7 +737,7 @@ void ov12_02264C84(BattleHpBar *hpBar) {
     case HP_BAR_TYPE_DOUBLE_PLAYER_RHS:
         hpBar->unk_4F_3 ^= 1;
         vramBaseAddr = G2_GetOBJCharPtr();
-        imgProxy     = Sprite_GetImageProxy(hpBar->unk4->sprite);
+        imgProxy     = Sprite_GetImageProxy(hpBar->boxObj->sprite);
         if (hpBar->unk_4F_3 == 1) {
             src = BattleHpBar_Util_GetComponentRawGraphic(70);
             MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3A8[hpBar->type].offset + 0x20 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
@@ -812,8 +812,8 @@ int ov12_02264E68(BattleHpBar *hpBar) {
 }
 
 void ov12_02264E84(BattleHpBar *hpBar) {
-    if (hpBar->unk8 != NULL) {
-        Sprite_SetAnimActiveFlag(hpBar->unk8->sprite, TRUE);
+    if (hpBar->arrowObj != NULL) {
+        Sprite_SetAnimActiveFlag(hpBar->arrowObj->sprite, TRUE);
         ov12_02264F00(hpBar, 1);
     }
     if (!(BattleSystem_GetBattleType(hpBar->bsys) & (BATTLE_TYPE_PAL_PARK | BATTLE_TYPE_SAFARI))) {
@@ -822,51 +822,51 @@ void ov12_02264E84(BattleHpBar *hpBar) {
 }
 
 void ov12_02264EB4(BattleHpBar *hpBar) {
-    if (hpBar->unk8 != NULL) {
-        Sprite_SetAnimActiveFlag(hpBar->unk8->sprite, FALSE);
-        Sprite_SetAnimCtrlCurrentFrame(hpBar->unk8->sprite, 0);
+    if (hpBar->arrowObj != NULL) {
+        Sprite_SetAnimActiveFlag(hpBar->arrowObj->sprite, FALSE);
+        Sprite_SetAnimCtrlCurrentFrame(hpBar->arrowObj->sprite, 0);
         ov12_02264F00(hpBar, 0);
     }
     ov12_02265DA0(hpBar);
 }
 
 void ov12_02264EE0(BattleHpBar *hpBar, int prio) {
-    if (hpBar->unk4 != NULL) {
-        UnkImageStruct_SetSpritePriority(hpBar->unk4, prio);
-        if (hpBar->unk8 != NULL) {
-            UnkImageStruct_SetSpritePriority(hpBar->unk8, prio);
+    if (hpBar->boxObj != NULL) {
+        UnkImageStruct_SetSpritePriority(hpBar->boxObj, prio);
+        if (hpBar->arrowObj != NULL) {
+            UnkImageStruct_SetSpritePriority(hpBar->arrowObj, prio);
         }
     }
 }
 
 static void ov12_02264F00(BattleHpBar *hpBar, int a1) {
-    if (hpBar->unk8 != NULL) {
+    if (hpBar->arrowObj != NULL) {
         if (!(BattleSystem_GetBattleType(hpBar->bsys) & (BATTLE_TYPE_PAL_PARK | BATTLE_TYPE_SAFARI)) || a1 != TRUE) {
-            UnkImageStruct_SetSpriteVisibleFlag(hpBar->unk8, a1);
+            UnkImageStruct_SetSpriteVisibleFlag(hpBar->arrowObj, a1);
         }
     }
 }
 
 void BattleHpBar_SetEnabled(BattleHpBar *hpBar, BOOL a1) {
-    if (hpBar->unk4 != NULL) {
-        UnkImageStruct_SetSpriteVisibleFlag(hpBar->unk4, a1);
+    if (hpBar->boxObj != NULL) {
+        UnkImageStruct_SetSpriteVisibleFlag(hpBar->boxObj, a1);
         ov12_02264F00(hpBar, a1);
     }
 }
 
 #ifdef NONMATCHING
 static void ov12_02264F44(BattleHpBar *hpBar, int x, int y) {
-    const UnkTemplate_0200D748 *r4;
+    const UnkTemplate_0200D748 *tmplate;
 
-    GF_ASSERT(hpBar->unk4 != NULL);
+    GF_ASSERT(hpBar->boxObj != NULL);
 
-    r4 = BattleHpBar_Util_GetHpBoxSpriteTemplate(hpBar->type);
+    tmplate = BattleHpBar_Util_GetHpBoxSpriteTemplate(hpBar->type);
 
-    Sprite_SetPositionXY(hpBar->unk4->sprite, r4->x + x, r4->y + y);
-    if (hpBar->unk8 != NULL) {
-        Sprite_SetPositionXY(hpBar->unk8->sprite,
-            r4->x + x - ov12_0226D368[hpBar->type],
-            r4->y + y + 0);
+    Sprite_SetPositionXY(hpBar->boxObj->sprite, tmplate->x + x, tmplate->y + y);
+    if (hpBar->arrowObj != NULL) {
+        Sprite_SetPositionXY(hpBar->arrowObj->sprite,
+            tmplate->x + x - sHpBarArrowXOffsets[hpBar->type],
+            tmplate->y + y + 0);
     }
 }
 #else
@@ -905,7 +905,7 @@ _02264F56:
 	add r5, #0x25
 	ldrb r3, [r5, #0]
 	mov r1, #0
-	ldr r2, =ov12_0226D368
+	ldr r2, =sHpBarArrowXOffsets
 	ldrsh r1, [r4, r1]
 	ldrsb r2, [r2, r3]
 	ldr r0, [r0, #0]
@@ -927,7 +927,7 @@ _02264FA8:
 
 void ov12_02264FB0(BattleHpBar *hpBar, BOOL a1) {
     GF_ASSERT(hpBar != NULL);
-    GF_ASSERT(hpBar->unk4 != NULL);
+    GF_ASSERT(hpBar->boxObj != NULL);
     hpBar->unk_4F_1 = FALSE;
     hpBar->unk_4F_0 = a1;
     if (!a1) {
@@ -958,7 +958,7 @@ static void ov12_02265054(SysTask *task, void *data) {
 
     r4 = 0;
     r6 = BattleHpBar_Util_GetHpBoxSpriteTemplate(hpBar->type);
-    UnkImageStruct_GetSpritePositionXY(hpBar->unk4, &x, &y);
+    UnkImageStruct_GetSpritePositionXY(hpBar->boxObj, &x, &y);
 
     switch (hpBar->type) {
     case HP_BAR_TYPE_SINGLE_PLAYER:
@@ -996,9 +996,9 @@ static void ov12_02265054(SysTask *task, void *data) {
         }
         break;
     }
-    UnkImageStruct_SetSpritePositionXY(hpBar->unk4, x, y);
-    if (hpBar->unk8 != NULL) {
-        UnkImageStruct_SetSpritePositionXY(hpBar->unk8, x - ov12_0226D368[hpBar->type], y + 0);
+    UnkImageStruct_SetSpritePositionXY(hpBar->boxObj, x, y);
+    if (hpBar->arrowObj != NULL) {
+        UnkImageStruct_SetSpritePositionXY(hpBar->arrowObj, x - sHpBarArrowXOffsets[hpBar->type], y + 0);
     }
 
     if (r4 > 0) {
@@ -1128,7 +1128,7 @@ _02265118:
 	add r1, r5, #0
 	add r1, #0x25
 	ldrb r2, [r1, #0]
-	ldr r1, =ov12_0226D368
+	ldr r1, =sHpBarArrowXOffsets
 	ldrsb r1, [r1, r2]
 	mov r2, #0
 	ldrsh r2, [r6, r2]
@@ -1187,7 +1187,7 @@ static void ov12_0226516C(BattleHpBar *hpBar) {
         u8 *pixelBuffer2;
 
         vramAddr     = G2_GetOBJCharPtr();
-        imgProxy     = Sprite_GetImageProxy(hpBar->unk4->sprite);
+        imgProxy     = Sprite_GetImageProxy(hpBar->boxObj->sprite);
         pixelBuffer  = srcBuf;
         pixelBuffer2 = srcBuf + 0x100;
 
@@ -1216,7 +1216,7 @@ static void ov12_022652D0(BattleHpBar *hpBar) {
     }
     const u8 *sp0              = BattleHpBar_Util_GetComponentRawGraphic(r0);
     const u8 *r7               = BattleHpBar_Util_GetComponentRawGraphic(r4);
-    NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->unk4->sprite);
+    NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->boxObj->sprite);
     void *vramAddr             = G2_GetOBJCharPtr();
     MI_CpuCopy16(r7, (void *)((u32)vramAddr + ov12_0226D4B0[hpBar->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D4B0[hpBar->type][0].size);
     MI_CpuCopy16(sp0, (void *)((u32)vramAddr + ov12_0226D4B0[hpBar->type][1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D4B0[hpBar->type][1].size);
@@ -1228,7 +1228,7 @@ static void ov12_02265354(BattleHpBar *hpBar) {
     u8 *r7 = AllocFromHeap(HEAP_ID_BATTLE, 0xC0);
     MI_CpuFill8(r4, 0xFF, 0x60);
     sub_0200CEB0(BattleSystem_GetLevelNumPrinter(hpBar->bsys), hpBar->level, 3, PRINTING_MODE_LEFT_ALIGN, (void *)r4);
-    NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->unk4->sprite);
+    NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->boxObj->sprite);
     void *vramAddr             = G2_GetOBJCharPtr();
     MI_CpuCopy16((void *)((u32)vramAddr + ov12_0226D420[hpBar->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), r7, ov12_0226D420[hpBar->type][0].size);
     MI_CpuCopy16((void *)((u32)vramAddr + ov12_0226D420[hpBar->type][1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), r7 + 0x60, ov12_0226D420[hpBar->type][1].size);
@@ -1253,7 +1253,7 @@ static void ov12_02265474(BattleHpBar *hpBar, u32 num) {
     u8 *r4 = AllocFromHeap(HEAP_ID_BATTLE, 0x60);
     MI_CpuFill8(r4, 0xFF, 0x60);
     sub_0200CEB0(BattleSystem_GetHpNumPrinter(hpBar->bsys), num, 3, PRINTING_MODE_RIGHT_ALIGN, (void *)r4);
-    NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->unk4->sprite);
+    NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->boxObj->sprite);
     void *vramAddr             = G2_GetOBJCharPtr();
 
     MI_CpuCopy16(r4, (void *)((u32)vramAddr + ov12_0226D450[hpBar->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D450[hpBar->type][0].size);
@@ -1265,7 +1265,7 @@ static void ov12_02265500(BattleHpBar *hpBar) {
     u8 *r4 = AllocFromHeap(HEAP_ID_BATTLE, 0x60);
     MI_CpuFill8(r4, 0xFF, 0x60);
     sub_0200CEB0(BattleSystem_GetHpNumPrinter(hpBar->bsys), hpBar->maxHp, 3, PRINTING_MODE_LEFT_ALIGN, (void *)r4);
-    NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->unk4->sprite);
+    NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->boxObj->sprite);
     void *vramAddr             = G2_GetOBJCharPtr();
 
     MI_CpuCopy16(r4, (void *)((u32)vramAddr + ov12_0226D3F0[hpBar->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D3F0[hpBar->type].size);
@@ -1279,7 +1279,7 @@ static void ov12_02265560(BattleHpBar *hpBar) {
     } else {
         r4 = BattleHpBar_Util_GetComponentRawGraphic(38);
     }
-    NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->unk4->sprite);
+    NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->boxObj->sprite);
     void *vramAddr             = G2_GetOBJCharPtr();
 
     MI_CpuCopy16(r4, (void *)((u32)vramAddr + ov12_0226D3C0[hpBar->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D3C0[hpBar->type].size);
@@ -1287,7 +1287,7 @@ static void ov12_02265560(BattleHpBar *hpBar) {
 
 static void ov12_022655B0(BattleHpBar *hpBar, int a1) {
     const u8 *r4               = BattleHpBar_Util_GetComponentRawGraphic(a1);
-    NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->unk4->sprite);
+    NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->boxObj->sprite);
     void *vramAddr             = G2_GetOBJCharPtr();
 
     MI_CpuCopy16(r4, (void *)((u32)vramAddr + ov12_0226D390[hpBar->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D390[hpBar->type].size);
@@ -1319,7 +1319,7 @@ static void BattleHpBar_PrintSafariOrParkBallsString(BattleHpBar *hpBar, u32 fla
         u8 *ptr2;
 
         vramAddr = G2_GetOBJCharPtr();
-        imgProxy = Sprite_GetImageProxy(hpBar->unk4->sprite);
+        imgProxy = Sprite_GetImageProxy(hpBar->boxObj->sprite);
         ptr1     = windowBuf;
         ptr2     = windowBuf + 0x1A0;
         MI_CpuCopy16(ptr1, (void *)((u32)vramAddr + ov12_0226D370[0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D370[0].size);
@@ -1364,7 +1364,7 @@ static void BattleHpBar_PrintNumRemainingSafariOrParkBalls(BattleHpBar *hpBar, u
         u8 *ptr2;
 
         vramAddr = G2_GetOBJCharPtr();
-        imgProxy = Sprite_GetImageProxy(hpBar->unk4->sprite);
+        imgProxy = Sprite_GetImageProxy(hpBar->boxObj->sprite);
         ptr1     = windowBuf;
         ptr2     = windowBuf + 0x1A0;
         MI_CpuCopy16(ptr1, (void *)((u32)vramAddr + ov12_0226D380[0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D380[0].size);
@@ -1414,7 +1414,7 @@ static void ov12_02265878(BattleHpBar *hpBar, u8 isExp) {
     int sizeTop;
 
     vramAddr = G2_GetOBJCharPtr();
-    imgProxy = Sprite_GetImageProxy(hpBar->unk4->sprite);
+    imgProxy = Sprite_GetImageProxy(hpBar->boxObj->sprite);
     switch (isExp) {
     case FALSE:
         // hp
@@ -1687,14 +1687,14 @@ SysTask *BattleHpBar_BeginExpBarFullFlashEffect(BattleHpBar *hpBar, u8 *a1) {
 
 static void Task_ExpBarFullFlash(SysTask *task, void *data) {
     BattleHpBarExpBarFullFlashEffectTaskData *taskData = data;
-    SpriteGfxHandler *gfxHandler                       = ov12_0223A8EC(taskData->hpBar->bsys);
+    SpriteGfxHandler *gfxHandler                       = BattleSystem_GetGfxHandler(taskData->hpBar->bsys);
     int plttNum;
     PaletteData *plttData = BattleSystem_GetPaletteData(taskData->hpBar->bsys);
 
     switch (taskData->state) {
     case 0:
         plttNum = GfGfxHandler_GetPlttNumById(gfxHandler, 20007, NNS_G2D_VRAM_TYPE_2DMAIN);
-        UnkImageStruct_SetSpritePalIndex(taskData->hpBar->unk4, plttNum);
+        UnkImageStruct_SetSpritePalIndex(taskData->hpBar->boxObj, plttNum);
         taskData->plttNum = plttNum;
         ++taskData->state;
         // break;
@@ -1716,7 +1716,7 @@ static void Task_ExpBarFullFlash(SysTask *task, void *data) {
         break;
     default:
         plttNum = GfGfxHandler_GetPlttNumById(gfxHandler, 20006, NNS_G2D_VRAM_TYPE_2DMAIN);
-        UnkImageStruct_SetSpritePalIndex(taskData->hpBar->unk4, plttNum);
+        UnkImageStruct_SetSpritePalIndex(taskData->hpBar->boxObj, plttNum);
         *taskData->pDoneFlag = 1;
         FreeToHeap(taskData);
         SysTask_Destroy(task);

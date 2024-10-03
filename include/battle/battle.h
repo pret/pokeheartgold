@@ -442,8 +442,8 @@ typedef struct BattleHpBar {
     struct {
         u8 script;
     };
-    UnkImageStruct *unk4;
-    UnkImageStruct *unk8;
+    UnkImageStruct *boxObj;
+    UnkImageStruct *arrowObj;
     BattleSystem *bsys;
     SysTask *unk10;
     Window unk14;
@@ -543,8 +543,8 @@ struct BattleSystem {
     SOUND_CHATOT *chatotVoice[4];
     u32 *unk88;
     u32 *unk8C;
-    SpriteRenderer *unk90;
-    SpriteGfxHandler *unk94;
+    SpriteRenderer *spriteRenderer;
+    SpriteGfxHandler *gfxHandler;
     u32 *unk98;
     u32 *unk9C;
     u16 trainerId[4];
