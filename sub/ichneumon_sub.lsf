@@ -49,5 +49,6 @@ Autoload WRAM
 Autoload EXT_WRAM
 {
 	Address 0x06000000
+	Object lib/asm/WM_sp.o
 	Object asm/sub.ext_wram.o
 }
