@@ -39,6 +39,7 @@ Autoload WRAM
 	Object lib/src/PXI_fifo.o
 	Object lib/src/EXI_genPort.o
 	Object lib/src/PAD_xyButton.o
+	Object lib/asm/SND_global.o
 	Object asm/sub.wram_1.o
 	Object asm/libsyscall.o
 	Object asm/sub.wram_2.o
@@ -49,5 +50,6 @@ Autoload WRAM
 Autoload EXT_WRAM
 {
 	Address 0x06000000
+	Object lib/asm/WM_sp.o
 	Object asm/sub.ext_wram.o
 }
