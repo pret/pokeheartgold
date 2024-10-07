@@ -294,7 +294,7 @@ _03BA:
 	goto_if_eq _03F5
 	get_party_lead_alive VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 172
+	compare VAR_TEMP_x4001, SPECIES_PICHU
 	goto_if_ne _03F5
 	get_partymon_form VAR_TEMP_x4000, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
@@ -519,7 +519,7 @@ _06D4:
 	buffer_players_name 0
 	gender_msgbox msg_0543_T20R0101_00019, msg_0543_T20R0101_00020
 	goto_if_no_item_space ITEM_POTION, 5, _0805
-	setvar VAR_SPECIAL_x8004, 17
+	setvar VAR_SPECIAL_x8004, ITEM_POTION
 	setvar VAR_SPECIAL_x8005, 5
 	callstd std_obtain_item_verbose
 	closemsg

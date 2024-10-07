@@ -72,7 +72,7 @@
 .public sub_0200AF00
 .public sub_0200AF94
 .public sub_0200B0A8
-.public sub_0200B0F8
+.public GF_PlttResObj_GetPlttProxy
 .public OamManager_Create
 .public OamManager_ApplyAndResetBuffers
 .public OamManager_Free

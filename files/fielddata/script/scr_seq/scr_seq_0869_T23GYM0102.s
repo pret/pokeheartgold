@@ -85,7 +85,7 @@ scr_seq_T23GYM0102_001:
 	settrainerflag TRAINER_BUG_CATCHER_BENNY
 	settrainerflag TRAINER_BUG_CATCHER_JOSH
 	settrainerflag TRAINER_TWINS_AMY_AND_MIMI
-	add_special_game_stat SCORE_EVENT_22
+	add_special_game_stat SCORE_EVENT_BADGE_GET
 	npc_msg msg_0567_T23GYM0102_00003
 _0136:
 	goto_if_no_item_space ITEM_TM89, 1, _016A

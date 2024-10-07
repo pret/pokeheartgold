@@ -14918,7 +14918,7 @@ _02231604:
 	str r0, [sp, #0x40]
 	ldr r0, _0223168C ; =0x00000D2C
 	ldr r0, [r5, r0]
-	bl sub_0200B0F8
+	bl GF_PlttResObj_GetPlttProxy
 	str r0, [sp, #0x44]
 	ldr r0, _022316A4 ; =0x00000D3C
 	ldr r1, [r5, r0]

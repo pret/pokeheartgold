@@ -23188,7 +23188,7 @@ ov18_021F14B4: ; 0x021F14B4
 	ldr r1, _021F14F8 ; =0x0000C550
 	mov r2, #1
 	add r6, r3, #0
-	bl sub_0200D944
+	bl GfGfxHandler_GetPlttNumById
 	mov r3, #1
 	add r7, r0, #0
 	str r3, [sp]
@@ -23262,7 +23262,7 @@ ov18_021F1534: ; 0x021F1534
 	ldr r1, _021F1594 ; =0x0000C551
 	ldr r0, [r5, r0]
 	mov r2, #2
-	bl sub_0200D944
+	bl GfGfxHandler_GetPlttNumById
 	add r6, r0, #0
 	ldr r1, [sp, #4]
 	add r0, r7, #0
@@ -24290,7 +24290,7 @@ ov18_021F1D98: ; 0x021F1D98
 	ldr r1, _021F1DE0 ; =0x0000C55B
 	ldr r0, [r6, r0]
 	mov r2, #2
-	bl sub_0200D944
+	bl GfGfxHandler_GetPlttNumById
 	add r1, r0, #0
 	ldr r0, [r5, r4]
 	bl UnkImageStruct_SetSpritePalIndex
@@ -24819,7 +24819,7 @@ ov18_021F21FC: ; 0x021F21FC
 	ldr r1, _021F226C ; =0x0000C558
 	ldr r0, [r5, r0]
 	mov r2, #2
-	bl sub_0200D944
+	bl GfGfxHandler_GetPlttNumById
 	add r6, r0, #0
 	ldr r0, [sp, #4]
 	bl ov18_021F9688
@@ -25113,7 +25113,7 @@ _021F248A:
 	ldr r1, _021F24D8 ; =0x0000C55A
 	ldr r0, [r7, r0]
 	mov r2, #2
-	bl sub_0200D944
+	bl GfGfxHandler_GetPlttNumById
 	add r1, r0, #0
 	mov r0, #0x67
 	lsl r0, r0, #4
@@ -26783,7 +26783,7 @@ _021F3214:
 	ldr r1, _021F3290 ; =0x0000C55A
 	ldr r0, [r5, r0]
 	mov r2, #2
-	bl sub_0200D944
+	bl GfGfxHandler_GetPlttNumById
 	add r1, r0, #0
 	mov r0, #0x67
 	lsl r0, r0, #4
@@ -38793,7 +38793,7 @@ ov18_021F8FF8: ; 0x021F8FF8
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_0200B12C
+	bl GF_PlttResObj_GetVramSlotNum
 	add r2, r0, #0
 	lsl r2, r2, #0x14
 	ldr r0, [r4, #4]
@@ -38883,7 +38883,7 @@ ov18_021F9068: ; 0x021F9068
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_0200B12C
+	bl GF_PlttResObj_GetVramSlotNum
 	add r2, r0, #0
 	lsl r2, r2, #0x14
 	ldr r0, [r4, #4]
@@ -38982,7 +38982,7 @@ ov18_021F9150: ; 0x021F9150
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
 	mov r1, #1
-	bl sub_0200B12C
+	bl GF_PlttResObj_GetVramSlotNum
 	add r2, r0, #0
 	lsl r2, r2, #0x14
 	ldr r0, [r5, #4]

@@ -23,6 +23,7 @@
 #include "sprite.h"
 #include "sys_task_api.h"
 #include "trainer_data.h"
+#include "unk_0200CE7C.h"
 #include "unk_0200CF18.h"
 
 typedef struct BattleMessage {
@@ -438,48 +439,40 @@ typedef struct BattleContext {
 typedef struct BattleSystem BattleSystem;
 
 typedef struct BattleHpBar {
-    u8 script;
-    void *unk4;
-    void *unk8;
+    struct {
+        u8 script;
+    };
+    UnkImageStruct *boxObj;
+    UnkImageStruct *arrowObj;
     BattleSystem *bsys;
-    void *unk10;
-    s32 exp;
-    s32 maxExp;
-    s32 damage;
-    s32 hpCalc;
+    SysTask *unk10;
+    Window unk14;
     u8 battlerId;
     u8 type;
-    u8 unk26;
+    u8 monId;
     u8 unk27;
     s32 hp;
     s32 maxHp;
+    s32 gainedHp;
+    s32 hpCalc;
+    s32 exp;
+    s32 maxExp;
     s32 gainedExp;
     s32 expCalc;
     u8 level;
-    u8 gender;
-    u8 status;
-    u8 unk3B;
-    u8 unk3C;
-    u8 unk3D;
-    u8 unk3E;
-    u8 unk3F_0 : 1;
-    u8 unk3F_1 : 1;
-    u8 unk3F_2 : 1;
-    u8 unk3F_3 : 1;
-    void *unk40;
-    u16 unk44;
+    u8 unk49;
+    u8 unk_4A;
+    u8 unk4B;
+    u8 unk4C;
+    u8 unk4D;
+    u8 unk4E;
+    u8 unk_4F_0 : 1;
+    u8 unk_4F_1 : 1;
+    u8 unk_4F_2 : 1;
+    u8 unk_4F_3 : 1;
+    SysTask *sysTask;
+    u16 unk54;
 } BattleHpBar;
-
-typedef struct OpponentData_UnkSub_70 {
-    s8 unk0;
-    s8 unk1;
-    s8 unk2;
-    s8 unk3;
-    s8 unk4;
-    s8 unk5;
-    s8 unk6;
-    u8 unk7;
-} OpponentData_UnkSub_70;
 
 typedef struct OpponentData {
     u32 unk0[6];
@@ -488,9 +481,6 @@ typedef struct OpponentData {
     Pokepic *pokepic;
     u32 *unk24;
     BattleHpBar hpBar;
-    OpponentData_UnkSub_70 unk70;
-    u32 unk78;
-    u32 *unk7C;
     void *unk80;
     u8 unk84[0x110];
     u8 unk194;
@@ -553,8 +543,8 @@ struct BattleSystem {
     SOUND_CHATOT *chatotVoice[4];
     u32 *unk88;
     u32 *unk8C;
-    SpriteRenderer *unk90;
-    SpriteGfxHandler *unk94;
+    SpriteRenderer *spriteRenderer;
+    SpriteGfxHandler *gfxHandler;
     u32 *unk98;
     u32 *unk9C;
     u16 trainerId[4];
@@ -563,8 +553,8 @@ struct BattleSystem {
     UnkBattleSystemSub17C unk17C[2]; // Battle Background..?
     u32 *unk19C;
     u32 *unk1A0[2];
-    FontID *hpFont;
-    FontID *levelFont;
+    BattleNumberPrinter *hpNumPrinter;
+    BattleNumberPrinter *levelNumPrinter;
     void *msgIcon;
     Options *options;
     u32 *unk1B8;
@@ -574,15 +564,15 @@ struct BattleSystem {
     void *unk1C8; // related to animations
     u32 *unk1CC;
     UnkBattleSystemSub1D0 unk1D0[4];
-    UnkBattleSystemSub220 unk220;
+    UnkBattleSystemSub220 unk210;
     GameStats *gameStats;
-    u8 *unk230;
-    u16 *unk234;
+    u8 *unk220;
+    u16 *unk224;
     u8 sendBuffer[0x1000];
     u8 recvBuffer[0x1000];
-    u16 unk2238[0x70];
-    u16 unk2318[0x70];
-    u16 unk23E8; // labeling may be wrong before here
+    u16 unk2228[0x70];
+    u16 unk2308[0x70];
+    u16 unk23E8;
     u16 unk23EA;
     u16 unk23EC;
     u16 unk23EE;

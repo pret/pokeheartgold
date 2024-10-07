@@ -3511,7 +3511,7 @@ _0222D2E6:
 	ldr r1, [sp, #0xc]
 	ldr r0, [r6, #0x1c]
 	ldr r1, [r1]
-	bl sub_0200D934
+	bl GfGfxHandler_GetPlttProxy
 	str r0, [sp, #0x58]
 	ldr r0, [r4]
 	add r1, sp, #0x20
@@ -3845,7 +3845,7 @@ _0222D5BE:
 	str r0, [sp, #0x24]
 	ldr r0, [r4, #8]
 	add r1, r6, #0
-	bl sub_0200D934
+	bl GfGfxHandler_GetPlttProxy
 	str r0, [sp, #0x28]
 	ldr r0, [r5, #4]
 	add r1, sp, #8

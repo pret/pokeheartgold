@@ -773,7 +773,7 @@ void PartyMenu_PrintMessageOnWindow34(PartyMenu *partyMenu, int msgId, BOOL draw
 
 void PartyMenu_PrintBufferedMessageOnWindow34(PartyMenu *partyMenu) {
     TextFlags_SetCanABSpeedUpPrint(TRUE);
-    TextFlags_SetAutoScrollParam(0);
+    TextFlags_SetAutoScrollParam(AUTO_SCROLL_OFF);
     partyMenu->textPrinterId = AddTextPrinterParameterized(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], 1, partyMenu->formattedStrBuf, 0, 0, Options_GetTextFrameDelay(partyMenu->args->options), TextPrinterCB_PartyMenuWin34Msg);
 }
 

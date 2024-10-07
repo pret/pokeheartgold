@@ -30846,7 +30846,7 @@ ov14_021F4D10: ; 0x021F4D10
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	ldr r1, _021F4E5C ; =0x0000C101
-	bl sub_0200D934
+	bl GfGfxHandler_GetPlttProxy
 	str r0, [sp, #0x14]
 	mov r0, #0xc6
 	lsl r0, r0, #2
@@ -30914,7 +30914,7 @@ ov14_021F4D10: ; 0x021F4D10
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	ldr r1, _021F4E5C ; =0x0000C101
-	bl sub_0200D934
+	bl GfGfxHandler_GetPlttProxy
 	str r0, [sp, #0x14]
 	mov r0, #0xc6
 	lsl r0, r0, #2

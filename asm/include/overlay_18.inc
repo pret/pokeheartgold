@@ -57,7 +57,7 @@
 .public sub_0200AEB0
 .public sub_0200B00C
 .public sub_0200B0A8
-.public sub_0200B12C
+.public GF_PlttResObj_GetVramSlotNum
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
@@ -91,7 +91,7 @@
 .public SpriteRenderer_LoadAnimResObjFromOpenNarc
 .public SpriteRenderer_LoadResourcesAndCreateSprite
 .public SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
-.public sub_0200D944
+.public GfGfxHandler_GetPlttNumById
 .public SpriteGfxHandler_UnloadCharObjById
 .public SpriteGfxHandler_UnloadPlttObjById
 .public SpriteGfxHandler_UnloadCellObjById

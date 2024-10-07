@@ -51,7 +51,7 @@ _006E:
 	takeitem ITEM_RAGECANDYBAR, 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0331_R05R0202_00004
 	closemsg
-	setvar VAR_SPECIAL_x8004, 391
+	setvar VAR_SPECIAL_x8004, TM_EXPLOSION
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_obtain_item_verbose
 _00BE:

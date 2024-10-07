@@ -2500,7 +2500,7 @@ _021E6BE0:
 	bl Sprite_SetAnimCtrlSeq
 	add r0, r7, #0
 	add r1, r6, #0
-	bl sub_0200B12C
+	bl GF_PlttResObj_GetVramSlotNum
 	ldr r1, _021E6C40 ; =ov100_021E770C
 	add r2, r0, #0
 	ldrb r1, [r1, r5]

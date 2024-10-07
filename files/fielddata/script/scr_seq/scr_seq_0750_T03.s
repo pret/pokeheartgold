@@ -59,7 +59,7 @@ _00B0:
 	get_game_version VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _00E6
-	setvar VAR_SPECIAL_x8004, 482
+	setvar VAR_SPECIAL_x8004, ITEM_SILVER_WING
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_obtain_item_verbose
 	setflag FLAG_UNK_094
@@ -68,7 +68,7 @@ _00B0:
 	goto _0102
 
 _00E6:
-	setvar VAR_SPECIAL_x8004, 483
+	setvar VAR_SPECIAL_x8004, ITEM_RAINBOW_WING
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_obtain_item_verbose
 	setflag FLAG_UNK_093

@@ -11,7 +11,7 @@
 .public PokepicManager_Delete
 .public Get2DGfxResObjById
 .public sub_0200AF00
-.public sub_0200B0F8
+.public GF_PlttResObj_GetPlttProxy
 .public UnkImageStruct_Delete
 .public SysTask_CreateOnVBlankQueue
 .public SysTask_CreateOnVWaitQueue

@@ -8,7 +8,7 @@
 	.byte 0
 
 scr_seq_T28_map_scripts_2:
-	.short VAR_UNK_4134, 4, _EV_scr_seq_T28_005 + 1
+	.short VAR_MIDGAME_BADGES, 4, _EV_scr_seq_T28_005 + 1
 	.short 0
 
 	.balign 4, 0

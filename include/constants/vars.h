@@ -320,7 +320,7 @@
 #define VAR_UNK_4131                       0x4131
 #define VAR_UNK_4132                       0x4132
 #define VAR_UNK_4133                       0x4133
-#define VAR_UNK_4134                       0x4134
+#define VAR_MIDGAME_BADGES                 0x4134
 #define VAR_UNK_4135                       0x4135
 #define VAR_UNK_4136                       0x4136
 #define VAR_UNK_4137                       0x4137

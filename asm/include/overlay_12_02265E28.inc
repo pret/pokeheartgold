@@ -17,8 +17,8 @@
 .public UnkImageStruct_SetSpriteVisibleFlag
 .public GF_AssertFail
 .public MIi_CpuClearFast
-.public ov12_0223A8E4
-.public ov12_0223A8EC
+.public BattleSystem_GetSpriteRenderer
+.public BattleSystem_GetGfxHandler
 .public BattleSystem_GetPaletteData
 .public ov12_0223B52C
 .public ov12_02265FC4

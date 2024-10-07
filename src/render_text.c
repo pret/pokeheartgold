@@ -583,10 +583,10 @@ void TextFlags_UnsetFastForwardTouchButtonHitbox(void) {
 void TextFlags_BeginAutoScroll(BOOL noSpeedUp) {
     if (noSpeedUp == FALSE) {
         TextFlags_SetCanABSpeedUpPrint(TRUE);
-        TextFlags_SetAutoScrollParam(3);
+        TextFlags_SetAutoScrollParam(AUTO_SCROLL_ENABLE | AUTO_SCROLL_SPEEDUP);
         TextFlags_SetCanTouchSpeedUpPrint(TRUE);
     } else {
-        TextFlags_SetAutoScrollParam(1);
+        TextFlags_SetAutoScrollParam(AUTO_SCROLL_ENABLE);
         TextFlags_SetCanABSpeedUpPrint(FALSE);
         TextFlags_SetCanTouchSpeedUpPrint(FALSE);
     }
@@ -594,6 +594,6 @@ void TextFlags_BeginAutoScroll(BOOL noSpeedUp) {
 
 void TextFlags_EndAutoScroll(void) {
     TextFlags_SetCanABSpeedUpPrint(FALSE);
-    TextFlags_SetAutoScrollParam(0);
+    TextFlags_SetAutoScrollParam(AUTO_SCROLL_OFF);
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
 }

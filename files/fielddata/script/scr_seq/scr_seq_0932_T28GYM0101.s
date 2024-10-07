@@ -86,9 +86,9 @@ scr_seq_T28GYM0101_000:
 	settrainerflag TRAINER_BOARDER_PATTON
 	npc_msg msg_0622_T28GYM0101_00001
 	give_badge BADGE_GLACIER
-	addvar VAR_UNK_4134, 1
-	add_special_game_stat SCORE_EVENT_22
-	compare VAR_UNK_4134, 3
+	addvar VAR_MIDGAME_BADGES, 1
+	add_special_game_stat SCORE_EVENT_BADGE_GET
+	compare VAR_MIDGAME_BADGES, 3
 	goto_if_ne _012F
 	setvar VAR_SCENE_ROCKET_TAKEOVER, 1
 _012F:

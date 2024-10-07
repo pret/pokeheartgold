@@ -157,8 +157,8 @@
 .public BattleSystem_GetPartyMon
 .public ov12_0223A8D4
 .public ov12_0223A8DC
-.public ov12_0223A8E4
-.public ov12_0223A8EC
+.public BattleSystem_GetSpriteRenderer
+.public BattleSystem_GetGfxHandler
 .public ov12_0223A8F4
 .public ov12_0223A900
 .public ov12_0223A908
@@ -272,8 +272,8 @@
 .public ov12_02264EB4
 .public BattleHpBar_SetEnabled
 .public ov12_02264FB0
-.public ov12_02265B64
-.public ov12_02265C54
+.public BattleHpBar_Util_GetBarTypeFromBattlerSide
+.public BattleHpBar_BeginExpBarFullFlashEffect
 .public ov12_02265D70
 .public ov12_02265D74
 .public ov12_02266508

@@ -107,12 +107,12 @@ u32 *ov12_0223A8DC(BattleSystem *bsys) {
     return bsys->unk8C;
 }
 
-SpriteRenderer *ov12_0223A8E4(BattleSystem *bsys) {
-    return bsys->unk90;
+SpriteRenderer *BattleSystem_GetSpriteRenderer(BattleSystem *bsys) {
+    return bsys->spriteRenderer;
 }
 
-SpriteGfxHandler *ov12_0223A8EC(BattleSystem *bsys) {
-    return bsys->unk94;
+SpriteGfxHandler *BattleSystem_GetGfxHandler(BattleSystem *bsys) {
+    return bsys->gfxHandler;
 }
 
 UnkBattleSystemSub17C *ov12_0223A8F4(BattleSystem *bsys, int index) {
@@ -131,12 +131,12 @@ void ov12_0223A914(BattleSystem *bsys, int index, u32 *a2) {
     bsys->unk1A0[index] = a2;
 }
 
-FontID *BattleSystem_GetHpFont(BattleSystem *bsys) {
-    return bsys->hpFont;
+BattleNumberPrinter *BattleSystem_GetHpNumPrinter(BattleSystem *bsys) {
+    return bsys->hpNumPrinter;
 }
 
-FontID *BattleSystem_GetLevelFont(BattleSystem *bsys) {
-    return bsys->levelFont;
+BattleNumberPrinter *BattleSystem_GetLevelNumPrinter(BattleSystem *bsys) {
+    return bsys->levelNumPrinter;
 }
 
 MsgData *BattleSystem_GetMessageData(BattleSystem *bsys) {
@@ -848,11 +848,11 @@ void BattleSystem_SetBackground(BattleSystem *bsys) {
     u32 *src;
     u32 *dst;
 
-    bsys->unk230 = AllocFromHeap(HEAP_ID_BATTLE, 0x10000);
-    bsys->unk234 = AllocFromHeap(HEAP_ID_BATTLE, 0x200);
+    bsys->unk220 = AllocFromHeap(HEAP_ID_BATTLE, 0x10000);
+    bsys->unk224 = AllocFromHeap(HEAP_ID_BATTLE, 0x200);
 
-    MIi_CpuCopy32((void *)0x6010000, (u32 *)bsys->unk230, 0x10000);
-    dst = (u32 *)bsys->unk234;
+    MIi_CpuCopy32((void *)0x6010000, (u32 *)bsys->unk220, 0x10000);
+    dst = (u32 *)bsys->unk224;
     src = (u32 *)PaletteData_GetUnfadedBuf(bsys->palette, PLTTBUF_MAIN_BG);
     MIi_CpuCopy32(src, dst, 0x200);
 
@@ -877,7 +877,7 @@ void BattleSystem_SetBackground(BattleSystem *bsys) {
                     data = (vram[0x700 + objY * 0x100 + objX * 0x20 + i / 2] & 0xF);
                 }
                 if (data) {
-                    bsys->unk230[bgY * 0x800 + bgX * 0x40 + i] = data + 0x70;
+                    bsys->unk220[bgY * 0x800 + bgX * 0x40 + i] = data + 0x70;
                 }
             }
         }
@@ -894,7 +894,7 @@ void BattleSystem_SetBackground(BattleSystem *bsys) {
             data = (vram[i / 2] & 0xF);
         }
         if (data) {
-            bsys->unk230[0x9800 + i] = data + 0x70;
+            bsys->unk220[0x9800 + i] = data + 0x70;
         }
     }
 
@@ -909,32 +909,32 @@ void BattleSystem_SetBackground(BattleSystem *bsys) {
                     data = (vram[0x400 + (objX / 8) * 0x400 + (objX % 8) * 0x20 + objY * 0x100 + i / 2] & 0xF);
                 }
                 if (data) {
-                    bsys->unk230[bgY * 0x800 + bgX * 0x40 + i] = data + 0x70;
+                    bsys->unk220[bgY * 0x800 + bgX * 0x40 + i] = data + 0x70;
                 }
             }
         }
     }
 
-    BG_LoadCharTilesData(bsys->bgConfig, 3, bsys->unk230, 0x10000, 0);
+    BG_LoadCharTilesData(bsys->bgConfig, 3, bsys->unk220, 0x10000, 0);
 
     ov12_02266008(&bsys->unk17C[0]);
     ov12_02266008(&bsys->unk17C[1]);
 }
 
 u8 *ov12_0223BAD0(BattleSystem *bsys) {
-    return bsys->unk230;
+    return bsys->unk220;
 }
 
 u16 *ov12_0223BAD8(BattleSystem *bsys) {
-    return bsys->unk234;
+    return bsys->unk224;
 }
 
 u16 *ov12_0223BAE0(BattleSystem *bsys) {
-    return &bsys->unk2238[0];
+    return &bsys->unk2228[0];
 }
 
 u16 *ov12_0223BAEC(BattleSystem *bsys) {
-    return &bsys->unk2318[0];
+    return &bsys->unk2308[0];
 }
 
 int BattleSystem_GetWeather(BattleSystem *bsys) {
@@ -1042,7 +1042,7 @@ void BattleSystem_HpBar_Init(BattleSystem *bsys) {
     for (i = 0; i < bsys->maxBattlers; i++) {
         hpBar       = OpponentData_GetHpBar(bsys->opponentData[i]);
         hpBar->bsys = bsys;
-        hpBar->type = ov12_02265B64(ov12_02261258(bsys->opponentData[i]), BattleSystem_GetBattleType(bsys));
+        hpBar->type = BattleHpBar_Util_GetBarTypeFromBattlerSide(ov12_02261258(bsys->opponentData[i]), BattleSystem_GetBattleType(bsys));
         BattleHpBar_LoadResources(hpBar);
         BattleHpBar_SetEnabled(hpBar, FALSE);
     }

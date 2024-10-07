@@ -34,7 +34,7 @@
 .public SpriteRenderer_LoadAnimResObjFromNarcId
 .public SpriteRenderer_LoadAnimResObjFromOpenNarc
 .public SpriteRenderer_LoadResourcesAndCreateSprite
-.public sub_0200D934
+.public GfGfxHandler_GetPlttProxy
 .public SpriteGfxHandler_UnloadCharObjById
 .public SpriteGfxHandler_UnloadPlttObjById
 .public SpriteGfxHandler_UnloadCellObjById
@@ -133,8 +133,8 @@
 .public BattleSystem_GetBattleType
 .public BattleSystem_GetOpponentData
 .public BattleSystem_GetPartyMon
-.public ov12_0223A8E4
-.public ov12_0223A8EC
+.public BattleSystem_GetSpriteRenderer
+.public BattleSystem_GetGfxHandler
 .public BattleSystem_GetMessageData
 .public BattleSystem_GetPaletteData
 .public BattleSystem_GetMessageFormat

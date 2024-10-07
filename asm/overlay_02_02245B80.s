@@ -10239,7 +10239,7 @@ ov02_0224A88C: ; 0x0224A88C
 	mov r1, #3
 	bl Get2DGfxResObjById
 	add r1, r6, #0
-	bl sub_0200B0F8
+	bl GF_PlttResObj_GetPlttProxy
 	mov r1, #1
 	bl NNS_G2dGetImagePaletteLocation
 	add r5, r0, #0

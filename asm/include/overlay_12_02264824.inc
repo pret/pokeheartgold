@@ -13,7 +13,7 @@
 .public SpriteRenderer_LoadCellResObjFromOpenNarc
 .public SpriteRenderer_LoadAnimResObjFromOpenNarc
 .public SpriteRenderer_LoadResourcesAndCreateSprite
-.public sub_0200D944
+.public GfGfxHandler_GetPlttNumById
 .public SpriteGfxHandler_UnloadCharObjById
 .public SpriteGfxHandler_UnloadCellObjById
 .public SpriteGfxHandler_UnloadAnimObjById
@@ -40,7 +40,7 @@
 .public String_New
 .public String_Delete
 .public Mon_GetBoxMon
-.public sub_02088080
+.public HpBar_GetColorIdx
 .public MIi_CpuCopy16
 .public MI_CpuFill8
 .public abs
@@ -50,10 +50,10 @@
 .public BattleSystem_GetBgConfig
 .public BattleSystem_GetBattleType
 .public BattleSystem_GetPartyMon
-.public ov12_0223A8E4
-.public ov12_0223A8EC
-.public BattleSystem_GetHpFont
-.public BattleSystem_GetLevelFont
+.public BattleSystem_GetSpriteRenderer
+.public BattleSystem_GetGfxHandler
+.public BattleSystem_GetHpNumPrinter
+.public BattleSystem_GetLevelNumPrinter
 .public BattleSystem_GetMessageData
 .public BattleSystem_GetPaletteData
 .public BattleSystem_GetMessageFormat
@@ -70,7 +70,7 @@
 .public ov12_02264EE0
 .public BattleHpBar_SetEnabled
 .public ov12_02264FB0
-.public ov12_02265B64
-.public ov12_02265C54
+.public BattleHpBar_Util_GetBarTypeFromBattlerSide
+.public BattleHpBar_BeginExpBarFullFlashEffect
 .public ov12_02265D70
 .public ov12_02265D74

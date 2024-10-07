@@ -782,7 +782,7 @@ _02258DDC:
 	str r0, [sp, #0xc]
 	add r0, r5, #0
 	str r6, [sp, #0x10]
-	bl ov12_0223A8E4
+	bl BattleSystem_GetSpriteRenderer
 	str r0, [sp, #0x1c]
 	add r0, r5, #0
 	bl BattleSystem_GetPaletteData
@@ -1927,10 +1927,10 @@ ov12_02259658: ; 0x02259658
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl ov12_0223A8E4
+	bl BattleSystem_GetSpriteRenderer
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov12_0223A8EC
+	bl BattleSystem_GetGfxHandler
 	add r7, r0, #0
 	add r0, r5, #0
 	bl BattleSystem_GetPaletteData
@@ -1955,7 +1955,7 @@ ov12_02259694: ; 0x02259694
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl ov12_0223A8EC
+	bl BattleSystem_GetGfxHandler
 	bl ov12_0226AE78
 	mov r1, #0x65
 	lsl r1, r1, #2
@@ -3678,7 +3678,7 @@ ov12_0225A414: ; 0x0225A414
 	add r1, r0, #0
 	ldr r0, _0225A4D4 ; =0x00000195
 	ldrb r0, [r6, r0]
-	bl ov12_02265B64
+	bl BattleHpBar_Util_GetBarTypeFromBattlerSide
 	add r1, r4, #0
 	add r1, #0x25
 	strb r0, [r1]
@@ -4445,7 +4445,7 @@ _0225A9F2:
 	add r1, r0, #0
 	ldr r0, _0225AA60 ; =0x00000195
 	ldrb r0, [r6, r0]
-	bl ov12_02265B64
+	bl BattleHpBar_Util_GetBarTypeFromBattlerSide
 	add r1, r4, #0
 	add r1, #0x25
 	strb r0, [r1]
@@ -5147,7 +5147,7 @@ ov12_0225AF74: ; 0x0225AF74
 	add r1, r0, #0
 	ldr r0, _0225B024 ; =0x00000195
 	ldrb r0, [r6, r0]
-	bl ov12_02265B64
+	bl BattleHpBar_Util_GetBarTypeFromBattlerSide
 	add r1, r4, #0
 	add r1, #0x25
 	strb r0, [r1]
@@ -7440,7 +7440,7 @@ _0225C1CC:
 	ldrh r0, [r0]
 	str r0, [sp, #0x68]
 	ldr r0, [r4]
-	bl ov12_0223A8E4
+	bl BattleSystem_GetSpriteRenderer
 	str r0, [sp, #0x74]
 	ldr r0, [r4]
 	bl BattleSystem_GetPaletteData
@@ -8544,7 +8544,7 @@ _0225CABE:
 	ldrh r0, [r0]
 	str r0, [sp, #0x60]
 	ldr r0, [r4]
-	bl ov12_0223A8E4
+	bl BattleSystem_GetSpriteRenderer
 	str r0, [sp, #0x6c]
 	ldr r0, [r4]
 	bl BattleSystem_GetPaletteData
@@ -8581,7 +8581,7 @@ _0225CB06:
 	ldrh r0, [r0]
 	str r0, [sp, #0x38]
 	ldr r0, [r4]
-	bl ov12_0223A8E4
+	bl BattleSystem_GetSpriteRenderer
 	str r0, [sp, #0x44]
 	ldr r0, [r4]
 	bl BattleSystem_GetPaletteData
@@ -9434,7 +9434,7 @@ _0225D1CA:
 	ldrb r0, [r4, #9]
 	str r0, [sp, #0x14]
 	ldr r0, [r4]
-	bl ov12_0223A8E4
+	bl BattleSystem_GetSpriteRenderer
 	str r0, [sp, #0x24]
 	ldr r0, [r4]
 	bl BattleSystem_GetPaletteData
@@ -9555,7 +9555,7 @@ _0225D2E4:
 	b _0225D62E
 _0225D2E6:
 	ldr r0, [r4]
-	bl ov12_0223A8EC
+	bl BattleSystem_GetGfxHandler
 	add r5, r0, #0
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x18]
@@ -9755,7 +9755,7 @@ _0225D48E:
 	b _0225D62E
 _0225D49C:
 	ldr r0, [r4]
-	bl ov12_0223A8EC
+	bl BattleSystem_GetGfxHandler
 	add r5, r0, #0
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x18]
@@ -9987,7 +9987,7 @@ _0225D664:
 	b _0225D870
 _0225D694:
 	ldr r0, [r5]
-	bl ov12_0223A8EC
+	bl BattleSystem_GetGfxHandler
 	add r4, r0, #0
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
@@ -10150,7 +10150,7 @@ _0225D7F2:
 	cmp r1, r0
 	bgt _0225D870
 	ldr r0, [r5]
-	bl ov12_0223A8EC
+	bl BattleSystem_GetGfxHandler
 	add r4, r0, #0
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
@@ -10275,7 +10275,7 @@ _0225D8DE:
 	pop {r3, r4, r5, r6, pc}
 _0225D90E:
 	ldr r0, [r5]
-	bl ov12_0223A8EC
+	bl BattleSystem_GetGfxHandler
 	add r4, r0, #0
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
@@ -13192,7 +13192,7 @@ _0225F070:
 	bl BattleSystem_GetBattleType
 	add r1, r0, #0
 	ldr r0, [sp, #0x18]
-	bl ov12_02265B64
+	bl BattleHpBar_Util_GetBarTypeFromBattlerSide
 	add r1, r5, #0
 	add r1, #0x25
 	strb r0, [r1]
@@ -15802,7 +15802,7 @@ ov12_02260584: ; 0x02260584
 _02260596:
 	ldr r0, [r4, #4]
 	add r1, #0xb
-	bl ov12_02265C54
+	bl BattleHpBar_BeginExpBarFullFlashEffect
 	ldr r0, _022605CC ; =0x0000070C
 	bl PlaySE
 	ldrb r0, [r4, #0xa]
@@ -16581,10 +16581,10 @@ _02260BEC:
 	ldr r7, [sp, #8]
 _02260BEE:
 	ldr r0, [r5]
-	bl ov12_0223A8E4
+	bl BattleSystem_GetSpriteRenderer
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl ov12_0223A8EC
+	bl BattleSystem_GetGfxHandler
 	str r4, [sp]
 	str r0, [sp, #4]
 	add r0, r5, #0
@@ -18560,10 +18560,10 @@ ov12_02261B2C: ; 0x02261B2C
 	add r4, r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl ov12_0223A8E4
+	bl BattleSystem_GetSpriteRenderer
 	str r0, [sp, #0x1c]
 	add r0, r5, #0
-	bl ov12_0223A8EC
+	bl BattleSystem_GetGfxHandler
 	str r0, [sp, #0x18]
 	add r0, r5, #0
 	bl BattleSystem_GetPaletteData
@@ -18627,7 +18627,7 @@ _02261BA8:
 	bl BattleSystem_GetPaletteData
 	str r0, [sp, #0x24]
 	ldr r0, [sp]
-	bl ov12_0223A8E4
+	bl BattleSystem_GetSpriteRenderer
 	add r5, sp, #0x1c
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #0xc]

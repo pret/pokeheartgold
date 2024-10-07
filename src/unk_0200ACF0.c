@@ -198,7 +198,7 @@ void sub_0200B0CC(GF_2DGfxResObjList *plttResObjList) {
     }
 }
 
-NNSG2dImagePaletteProxy *sub_0200B0F8(GF_2DGfxResObj *plttResObj, NNSG2dImageProxy *imageProxy) {
+NNSG2dImagePaletteProxy *GF_PlttResObj_GetPlttProxy(GF_2DGfxResObj *plttResObj, NNSG2dImageProxy *imageProxy) {
     GF_ASSERT(plttResObj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(plttResObj) == GF_GFX_RES_TYPE_PLTT);
 
@@ -210,8 +210,8 @@ NNSG2dImagePaletteProxy *sub_0200B0F8(GF_2DGfxResObj *plttResObj, NNSG2dImagePro
     }
 }
 
-int sub_0200B12C(GF_2DGfxResObj *plttResObj, NNS_G2D_VRAM_TYPE vram) {
-    NNSG2dImagePaletteProxy *plttProxy = sub_0200B0F8(plttResObj, NULL);
+int GF_PlttResObj_GetVramSlotNum(GF_2DGfxResObj *plttResObj, NNS_G2D_VRAM_TYPE vram) {
+    NNSG2dImagePaletteProxy *plttProxy = GF_PlttResObj_GetPlttProxy(plttResObj, NULL);
     int location                       = NNS_G2dGetImagePaletteLocation(plttProxy, vram);
     if (location != -1) {
         location /= 32;

@@ -58,7 +58,7 @@
 .public SpriteRenderer_GetG2dRendererPtr
 .public thunk_Sprite_Delete
 .public SpriteRenderer_CreateSprite
-.public sub_0200D934
+.public GfGfxHandler_GetPlttProxy
 .public thunk_Sprite_SetPriority
 .public thunk_Sprite_SetDrawPriority
 .public Sprite_SetPositionXY
