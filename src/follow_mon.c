@@ -1797,7 +1797,7 @@ BOOL FollowMon_IsVisible(FieldSystem *fieldSystem) {
 BOOL FollowMon_GetPermission(FieldSystem *fieldSystem) {
     u32 mapNo;
 
-    mapNo = Save_FollowMon_GetMapId(Save_FollowMon_Get(fieldSystem->saveData));
+    mapNo = Save_FollowMon_GetMapID(Save_FollowMon_Get(fieldSystem->saveData));
     return FollowMon_GetPermissionBySpeciesAndMap(FollowMon_GetSpecies(fieldSystem->followMon.mapObject), mapNo);
 }
 

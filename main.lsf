@@ -128,7 +128,7 @@ Static main
     Object src/save_rankings.o
     Object asm/unk_0202EB30.o
     Object src/update_dex_received.o
-    Object asm/unk_0202ED18.o
+    Object src/save_follow_mon.o
     Object src/save_pokegear.o
     Object src/safari_zone.o
     Object src/photo_album.o

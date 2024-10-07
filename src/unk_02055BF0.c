@@ -166,7 +166,7 @@ BOOL sub_02055DBC(TaskManager *man) {
         if (FollowMon_IsActive(fieldSystem) && ov01_022057C4(fieldSystem) && !FollowMon_GetPermission(fieldSystem)) {
             ov01_022057D0(fieldSystem);
         }
-        Save_FollowMon_SetMapId(fieldSystem->location->mapId, Save_FollowMon_Get(fieldSystem->saveData));
+        Save_FollowMon_SetMapID(fieldSystem->location->mapId, Save_FollowMon_Get(fieldSystem->saveData));
         env->destinationMapID = fieldSystem->location->mapId;
         env->state++;
         break;
