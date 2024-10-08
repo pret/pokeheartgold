@@ -118,21 +118,21 @@ static const int sMenuEntryBorderYCoords[MENU_ENTRY_COUNT] = {
 };
 
 static const u16 sOptionChoiceLabelXCoords[MENU_ENTRY_COUNT][3] = {
-    { 124, 172, 220 },
-    { 124, 172, 0   },
-    { 132, 212, 0   },
-    { 132, 212, 0   },
-    { 132, 212, 0   },
-    { 172, 0,   0   },
-    { 0,   0,   0   },
+    {124,  172, 220},
+    { 124, 172, 0  },
+    { 132, 212, 0  },
+    { 132, 212, 0  },
+    { 132, 212, 0  },
+    { 172, 0,   0  },
+    { 0,   0,   0  },
 };
 
 static const int sActiveButtonXCoords[5][3] = {
-    { 112, 160, 208 },
-    { 112, 160, 208 },
-    { 112, 192, 0   },
-    { 112, 192, 0   },
-    { 112, 192, 0   },
+    {112,  160, 208},
+    { 112, 160, 208},
+    { 112, 192, 0  },
+    { 112, 192, 0  },
+    { 112, 192, 0  },
 };
 
 static const TouchscreenHitbox sOptionsAppTouchscreenHitboxes[16] = {
@@ -155,21 +155,21 @@ static const TouchscreenHitbox sOptionsAppTouchscreenHitboxes[16] = {
 };
 
 static const u32 ov54_021E6DA8[15][2] = {
-    { MENU_ENTRY_TEXT_SPEED,   0 },
-    { MENU_ENTRY_TEXT_SPEED,   1 },
-    { MENU_ENTRY_TEXT_SPEED,   2 },
-    { MENU_ENTRY_BATTLE_SCENE, 0 },
-    { MENU_ENTRY_BATTLE_SCENE, 1 },
-    { MENU_ENTRY_BATTLE_STYLE, 0 },
-    { MENU_ENTRY_BATTLE_STYLE, 1 },
-    { MENU_ENTRY_SOUND_METHOD, 0 },
-    { MENU_ENTRY_SOUND_METHOD, 1 },
-    { MENU_ENTRY_BUTTON_MODE,  0 },
-    { MENU_ENTRY_BUTTON_MODE,  1 },
-    { MENU_ENTRY_FRAME,        3 },
-    { MENU_ENTRY_FRAME,        4 },
-    { MENU_ENTRY_6,            5 },
-    { MENU_ENTRY_6,            6 },
+    {MENU_ENTRY_TEXT_SPEED,    0},
+    { MENU_ENTRY_TEXT_SPEED,   1},
+    { MENU_ENTRY_TEXT_SPEED,   2},
+    { MENU_ENTRY_BATTLE_SCENE, 0},
+    { MENU_ENTRY_BATTLE_SCENE, 1},
+    { MENU_ENTRY_BATTLE_STYLE, 0},
+    { MENU_ENTRY_BATTLE_STYLE, 1},
+    { MENU_ENTRY_SOUND_METHOD, 0},
+    { MENU_ENTRY_SOUND_METHOD, 1},
+    { MENU_ENTRY_BUTTON_MODE,  0},
+    { MENU_ENTRY_BUTTON_MODE,  1},
+    { MENU_ENTRY_FRAME,        3},
+    { MENU_ENTRY_FRAME,        4},
+    { MENU_ENTRY_6,            5},
+    { MENU_ENTRY_6,            6},
 };
 
 static const UnkStruct_0200D2B4 ov54_021E6EAC[9] = {

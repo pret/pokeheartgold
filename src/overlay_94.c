@@ -177,12 +177,12 @@ static void _EmitParticles(IconFormChangeData *partyMenu) {
 }
 
 static const fx32 sPartyMonSpritePositions[][2] = {
-    { -16500, 12000 },
-    { 5000,   11500 },
-    { -16500, 5000  },
-    { 5000,   3500  },
-    { -16500, -3000 },
-    { 5000,   -4500 }
+    {-16500,  12000},
+    { 5000,   11500},
+    { -16500, 5000 },
+    { 5000,   3500 },
+    { -16500, -3000},
+    { 5000,   -4500}
 };
 
 static void particleEmitCallback(SPLEmitter *emitter) {

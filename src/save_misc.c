@@ -107,9 +107,9 @@ void SaveMisc_GetFavoriteMon(SAVE_MISC_DATA *saveMiscData, int *species, int *fo
 }
 
 static const u8 _020F677C[3][2] = {
-    { 0, 4 },
-    { 4, 2 },
-    { 6, 2 },
+    {0,  4},
+    { 4, 2},
+    { 6, 2},
 };
 
 BOOL sub_0202AA44(SAVE_MISC_DATA *saveMiscData, int a1, int a2) {

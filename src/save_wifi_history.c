@@ -12,7 +12,7 @@ struct SaveWiFiHistory {
     u8 country;
     u8 region;
     u8 seenLocations[SAVE_WIFI_HISTORY_COUNTRY_MAX * SAVE_WIFI_HISTORY_REGION_WIDTH]; // does not match as a 2d array
-}; // size: 0xFF8
+};                                                                                    // size: 0xFF8
 
 u32 Save_WiFiHistory_sizeof(void) {
     return sizeof(SaveWiFiHistory);

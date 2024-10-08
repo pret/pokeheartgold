@@ -30,7 +30,7 @@ static const UnkTemplate_0200D748 ov12_0226EBA0 = {
     .spritePriority = 0,
     .pal            = 0,
     .vram           = NNS_G2D_VRAM_TYPE_2DSUB,
-    .resIdList      = { 0, 0, 0, 0, -1, -1 },
+    .resIdList      = {0, 0, 0, 0, -1, -1},
     .bgPriority     = 0,
     .vramTransfer   = 0
 };

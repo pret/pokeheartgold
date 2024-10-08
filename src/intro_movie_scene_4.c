@@ -58,9 +58,9 @@ static void IntroMovie_Scene4_FlipScreensAtNextVBlank(IntroMovieScene4Data *scen
 static void Task_IntroMovie_Scene4_FlipScreens(SysTask *task, void *pVoid);
 
 static const int sStarterParticleResIds[3][3] = {
-    { 6, 7, 8 },
-    { 3, 4, 5 },
-    { 0, 1, 2 }
+    {6,  7, 8},
+    { 3, 4, 5},
+    { 0, 1, 2}
 };
 
 static const u8 sIntroMovieScene4SpriteResCounts[4] = { 4, 4, 4, 4 };

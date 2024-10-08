@@ -221,25 +221,25 @@ static const RecordPageParam sRecordPageParam_BattleTower[] = {
 };
 
 static const RecordPageParam sRecordPageParam_Pokemon[] = {
-    // mons fainted
+  // mons fainted
     {
      .max       = 999999,
      .numDigits = 6,
      .msgId     = msg_0421_00047,
      },
-    // mons caught
+ // mons caught
     {
      .max       = 999999,
      .numDigits = 6,
      .msgId     = msg_0421_00047,
      },
-    // eggs hatched
+ // eggs hatched
     {
      .max       = 999999,
      .numDigits = 6,
      .msgId     = msg_0421_00046,
      },
-    // fishing landed
+ // fishing landed
     {
      .max       = 999999,
      .numDigits = 6,

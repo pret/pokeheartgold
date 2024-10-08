@@ -130,12 +130,12 @@ static const OamCharTransferParam ov17_02203D98 = {
     GX_OBJVRAMMODE_CHAR_1D_32K,
 };
 static const WindowTemplate ov17_02203DC4[3] = {
-    { 2, 25, 21, 6,  2, 9,  0x1A2 },
-    { 0, 2,  19, 19, 4, 12, 0x0CA },
-    { 0, 2,  19, 27, 4, 12, 0x136 },
+    {2,  25, 21, 6,  2, 9,  0x1A2},
+    { 0, 2,  19, 19, 4, 12, 0x0CA},
+    { 0, 2,  19, 27, 4, 12, 0x136},
 };
 static const SpriteResourceCountsListUnion ov17_02203DAC = {
-    { 1, 1, 1, 1, 0, 0 }
+    {1, 1, 1, 1, 0, 0}
 };
 static const BgTemplate ov17_02203DDC = {
     0,
@@ -220,10 +220,10 @@ static const u8 ov17_02203D50[] = { 2, 1 };
 static const u8 ov17_02203D54[] = { 5, 1 };
 
 static const struct UnkStruct_ov17_02203E88 ov17_02203E88[4] = {
-    { 3, ov17_02203D5C },
-    { 2, ov17_02203D58 },
-    { 2, ov17_02203D50 },
-    { 2, ov17_02203D54 },
+    {3,  ov17_02203D5C},
+    { 2, ov17_02203D58},
+    { 2, ov17_02203D50},
+    { 2, ov17_02203D54},
 };
 static const UnkStruct_0200D2B4 ov17_02203EA8 = { 0, 27, 96, 0, 5, 13, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 };
 static const GraphicsBanks ov17_02203ED0      = {
@@ -239,11 +239,11 @@ static const GraphicsBanks ov17_02203ED0      = {
     GX_VRAM_TEXPLTT_NONE,
 };
 static const UnkStruct_0200D2B4 ov17_02203EF8[5] = {
-    { 0, 224, 176, 0, 0, 15, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
-    { 0, 27,  96,  0, 2, 0,  0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
-    { 0, 31,  56,  0, 8, 1,  0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
-    { 0, 27,  99,  0, 4, 14, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
-    { 0, 27,  88,  0, 7, 12, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 }
+    {0,  224, 176, 0, 0, 15, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0},
+    { 0, 27,  96,  0, 2, 0,  0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0},
+    { 0, 31,  56,  0, 8, 1,  0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0},
+    { 0, 27,  99,  0, 4, 14, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0},
+    { 0, 27,  88,  0, 7, 12, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0}
 };
 
 void ov17_02201BC0(void) {

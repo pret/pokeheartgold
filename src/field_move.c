@@ -71,20 +71,20 @@ static BOOL Task_UseHeadbuttInField(TaskManager *taskManager);
 static struct TeleportFieldEnv *sub_020689A4(HeapID heapId, u8 slotno, SaveData *saveData);
 
 static const struct FieldMoveFuncDat sFieldMoveFuncTable[] = {
-    { FieldMoveMenuUse_Cut,        FieldMoveMenuCheck_Cut        },
-    { FieldMoveMenuUse_Fly,        FieldMoveMenuCheck_Fly        },
-    { FieldMoveMenuUse_Surf,       FieldMoveMenuCheck_Surf       },
-    { FieldMoveMenuUse_Strength,   FieldMoveMenuCheck_Strength   },
-    { FieldMoveMenuUse_RockSmash,  FieldMoveMenuCheck_RockSmash  },
-    { FieldMoveMenuUse_Waterfall,  FieldMoveMenuCheck_Waterfall  },
-    { FieldMoveMenuUse_RockClimb,  FieldMoveMenuCheck_RockClimb  },
-    { FieldMoveMenuUse_Flash,      FieldMoveMenuCheck_Flash      },
-    { FieldMoveMenuUse_Teleport,   FieldMoveMenuCheck_Teleport   },
-    { FieldMoveMenuUse_Dig,        FieldMoveMenuCheck_Dig        },
-    { FieldMoveMenuUse_SweetScent, FieldMoveMenuCheck_SweetScent },
-    { FieldMoveMenuUse_Chatter,    FieldMoveMenuCheck_Chatter    },
-    { FieldMoveMenuUse_Whirlpool,  FieldMoveMenuCheck_Whirlpool  },
-    { FieldMoveMenuUse_Headbutt,   FieldMoveMenuCheck_Headbutt   },
+    {FieldMoveMenuUse_Cut,         FieldMoveMenuCheck_Cut       },
+    { FieldMoveMenuUse_Fly,        FieldMoveMenuCheck_Fly       },
+    { FieldMoveMenuUse_Surf,       FieldMoveMenuCheck_Surf      },
+    { FieldMoveMenuUse_Strength,   FieldMoveMenuCheck_Strength  },
+    { FieldMoveMenuUse_RockSmash,  FieldMoveMenuCheck_RockSmash },
+    { FieldMoveMenuUse_Waterfall,  FieldMoveMenuCheck_Waterfall },
+    { FieldMoveMenuUse_RockClimb,  FieldMoveMenuCheck_RockClimb },
+    { FieldMoveMenuUse_Flash,      FieldMoveMenuCheck_Flash     },
+    { FieldMoveMenuUse_Teleport,   FieldMoveMenuCheck_Teleport  },
+    { FieldMoveMenuUse_Dig,        FieldMoveMenuCheck_Dig       },
+    { FieldMoveMenuUse_SweetScent, FieldMoveMenuCheck_SweetScent},
+    { FieldMoveMenuUse_Chatter,    FieldMoveMenuCheck_Chatter   },
+    { FieldMoveMenuUse_Whirlpool,  FieldMoveMenuCheck_Whirlpool },
+    { FieldMoveMenuUse_Headbutt,   FieldMoveMenuCheck_Headbutt  },
 };
 
 static inline BOOL MoveUseCheck_SafariOrPalPark(const FieldMoveCheckData *checkData) {

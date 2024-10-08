@@ -121,12 +121,12 @@ typedef struct Coord2U16 {
 
 static const Coord2U16 sSoloPhotoMonCoordOffsets = { 1, -1 };
 static const Coord2U16 sPhotoMonCoordOffsets[]   = {
-    { 2,  0  },
-    { 1,  -1 },
-    { -1, -1 },
-    { 3,  -1 },
-    { 0,  -2 },
-    { 2,  -2 },
+    {2,   0 },
+    { 1,  -1},
+    { -1, -1},
+    { 3,  -1},
+    { 0,  -2},
+    { 2,  -2},
 };
 
 static PhotoCameraParam sCameraParam = {

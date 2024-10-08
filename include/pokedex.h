@@ -8,8 +8,8 @@
 #include "pokemon_types_def.h"
 #include "save.h"
 
-#define ROUND_UP(x, n) (((x) + (n) - 1) & ~((n) - 1))
-#define CEILDIV(x, n)  (((x) + (n) - 1) / (n))
+#define ROUND_UP(x, n) (((x) + (n)-1) & ~((n)-1))
+#define CEILDIV(x, n)  (((x) + (n)-1) / (n))
 
 // Deoxys form history is split between the
 // seen and caught flags because of space efficiency.

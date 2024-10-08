@@ -94,21 +94,21 @@ static void MGMessageSuccess_MemorialPhoto(struct GetMysteryGiftGmmState *gmmSta
 static void MGMessageFailure_MemorialPhoto(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum);
 
 static const struct ScriptMysteryGiftFuncs sScriptMysteryGiftActionTable[MG_TAG_MAX - 1] = {
-    { MGCheck_PartySpace,       MGGive_Mon,              MGMessageSuccess_GiveMon,          MGMessageFailure_GiveMon          },
-    { MGCheck_PartySpace,       MGGive_Egg,              MGMessageSuccess_Egg,              MGMessageFailure_GiveMon          },
-    { MGCheck_Item,             MGGive_Item,             MGMessageSuccess_Item,             MGMessageFailure_Item             },
-    { MGCheck_BattleRules,      MGGive_BattleRules,      MGMessageSuccess_BattleRules,      MGMessageFailure_BattleRules      },
-    { MGCheck_Decoration,       MGGive_Decoration,       MGMessageSuccess_Decoration,       MGMessageFailure_Decoration       },
-    { MGCheck_MonDeco,          MGGive_MonDeco,          MGMessageSuccess_MonDeco,          MGMessageFailure_MonDeco          },
-    { MGCheck_PartySpace,       MGGive_ManaphyEgg,       MGMessageSuccess_ManaphyEgg,       MGMessageFailure_GiveMon          },
-    { MGCheck_MemberCard,       MGGive_MemberCard,       MGMessageSuccess_MemberCard,       MGMessageFailure_MemberCard       },
-    { MGCheck_OaksLetter,       MGGive_OaksLetter,       MGMessageSuccess_OaksLetter,       MGMessageFailure_OaksLetter       },
-    { MGCheck_AzureFlute,       MGGive_AzureFlute,       MGMessageSuccess_AzureFlute,       MGMessageFailure_AzureFlute       },
-    { MGCheck_PoketchApp,       MGGive_PoketchApp,       MGMessageSuccess_PoketchApp,       MGMessageFailure_PoketchApp       },
-    { MGCheck_SecretKey,        MGGive_SecretKey,        MGMessageSuccess_SecretKey,        MGMessageFailure_SecretKey        },
-    { MGCheck_PartySpace,       MGGive_Mon,              MGMessageSuccess_GiveMon,          MGMessageFailure_GiveMon          },
-    { MGCheck_PokewalkerCourse, MGGive_PokewalkerCourse, MGMessageSuccess_PokewalkerCourse, MGMessageFailure_PokewalkerCourse },
-    { MGCheck_MemorialPhoto,    MGGive_MemorialPhoto,    MGMessageSuccess_MemorialPhoto,    MGMessageFailure_MemorialPhoto    },
+    {MGCheck_PartySpace,        MGGive_Mon,              MGMessageSuccess_GiveMon,          MGMessageFailure_GiveMon         },
+    { MGCheck_PartySpace,       MGGive_Egg,              MGMessageSuccess_Egg,              MGMessageFailure_GiveMon         },
+    { MGCheck_Item,             MGGive_Item,             MGMessageSuccess_Item,             MGMessageFailure_Item            },
+    { MGCheck_BattleRules,      MGGive_BattleRules,      MGMessageSuccess_BattleRules,      MGMessageFailure_BattleRules     },
+    { MGCheck_Decoration,       MGGive_Decoration,       MGMessageSuccess_Decoration,       MGMessageFailure_Decoration      },
+    { MGCheck_MonDeco,          MGGive_MonDeco,          MGMessageSuccess_MonDeco,          MGMessageFailure_MonDeco         },
+    { MGCheck_PartySpace,       MGGive_ManaphyEgg,       MGMessageSuccess_ManaphyEgg,       MGMessageFailure_GiveMon         },
+    { MGCheck_MemberCard,       MGGive_MemberCard,       MGMessageSuccess_MemberCard,       MGMessageFailure_MemberCard      },
+    { MGCheck_OaksLetter,       MGGive_OaksLetter,       MGMessageSuccess_OaksLetter,       MGMessageFailure_OaksLetter      },
+    { MGCheck_AzureFlute,       MGGive_AzureFlute,       MGMessageSuccess_AzureFlute,       MGMessageFailure_AzureFlute      },
+    { MGCheck_PoketchApp,       MGGive_PoketchApp,       MGMessageSuccess_PoketchApp,       MGMessageFailure_PoketchApp      },
+    { MGCheck_SecretKey,        MGGive_SecretKey,        MGMessageSuccess_SecretKey,        MGMessageFailure_SecretKey       },
+    { MGCheck_PartySpace,       MGGive_Mon,              MGMessageSuccess_GiveMon,          MGMessageFailure_GiveMon         },
+    { MGCheck_PokewalkerCourse, MGGive_PokewalkerCourse, MGMessageSuccess_PokewalkerCourse, MGMessageFailure_PokewalkerCourse},
+    { MGCheck_MemorialPhoto,    MGGive_MemorialPhoto,    MGMessageSuccess_MemorialPhoto,    MGMessageFailure_MemorialPhoto   },
 };
 
 static void FieldSystem_InitGetMysteryGiftGmmState(struct GetMysteryGiftGmmState *state, FieldSystem *fieldSys, MessageFormat *msgFormat, MysteryGiftData *mgData) {

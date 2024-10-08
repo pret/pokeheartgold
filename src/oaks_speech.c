@@ -494,49 +494,49 @@ static const int sMultichoiceMenuParam[][4] = {
 };
 
 static const int sBgPicNCGR_NCLR[10][2] = {
-    // undefined
+  // undefined
     {                             },
-    // Oak
+ // Oak
     {
      NARC_intro_intro_00000010_NCGR,
      NARC_intro_intro_00000011_NCLR,
      },
-    // Ethan 1
+ // Ethan 1
     {
      NARC_intro_intro_00000012_NCGR,
      NARC_intro_intro_00000016_NCLR,
      },
-    // Ethan 2
+ // Ethan 2
     {
      NARC_intro_intro_00000013_NCGR,
      NARC_intro_intro_00000016_NCLR,
      },
-    // Ethan 3
+ // Ethan 3
     {
      NARC_intro_intro_00000014_NCGR,
      NARC_intro_intro_00000016_NCLR,
      },
-    // Ethan 4
+ // Ethan 4
     {
      NARC_intro_intro_00000015_NCGR,
      NARC_intro_intro_00000016_NCLR,
      },
-    // Lyra 1
+ // Lyra 1
     {
      NARC_intro_intro_00000017_NCGR,
      NARC_intro_intro_00000021_NCLR,
      },
-    // Lyra 2
+ // Lyra 2
     {
      NARC_intro_intro_00000018_NCGR,
      NARC_intro_intro_00000021_NCLR,
      },
-    // Lyra 3
+ // Lyra 3
     {
      NARC_intro_intro_00000019_NCGR,
      NARC_intro_intro_00000021_NCLR,
      },
-    // Lyra 4
+ // Lyra 4
     {
      NARC_intro_intro_00000020_NCGR,
      NARC_intro_intro_00000021_NCLR,

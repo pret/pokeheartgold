@@ -224,18 +224,18 @@ static const CameraParam sCameraParam_SoulSilver[] = {
 };
 
 static const VecFx32 sCameraOffset_HeartGold[] = {
-    { -FX32_CONST(195), -FX32_CONST(148.605),         -FX32_CONST(45.19165) },
-    { FX32_CONST(198),  -FX32_CONST(148.605),         -FX32_CONST(45.19165) },
-    { 0,                -FX32_CONST(35.751708984375), -FX32_CONST(23.0476)  },
-    { 0,                FX32_CONST(495.6323),         FX32_CONST(28.73)     },
+    {-FX32_CONST(195), -FX32_CONST(148.605),         -FX32_CONST(45.19165)},
+    { FX32_CONST(198), -FX32_CONST(148.605),         -FX32_CONST(45.19165)},
+    { 0,               -FX32_CONST(35.751708984375), -FX32_CONST(23.0476) },
+    { 0,               FX32_CONST(495.6323),         FX32_CONST(28.73)    },
 };
 
 static const VecFx32 sCameraOffset_SoulSilver[] = {
-    { -FX32_CONST(127), 0, -FX32_CONST(208) },
-    { FX32_CONST(63),   0, -FX32_CONST(208) },
-    { 0,                0, -FX32_CONST(82)  },
-    { 0,                0, -FX32_CONST(433) },
-    { 0,                0, -FX32_CONST(225) },
+    {-FX32_CONST(127), 0, -FX32_CONST(208)},
+    { FX32_CONST(63),  0, -FX32_CONST(208)},
+    { 0,               0, -FX32_CONST(82) },
+    { 0,               0, -FX32_CONST(433)},
+    { 0,               0, -FX32_CONST(225)},
 };
 
 static const u8 sBg3TilemapFileIDs[] = {
