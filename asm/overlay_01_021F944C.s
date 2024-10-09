@@ -496,7 +496,7 @@ ov01_021F97BC: ; 0x021F97BC
 	bl MapObjectManager_GetObjectCount
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_0205F1AC
+	bl MapObjectManager_GetObjects2
 	ldr r7, _021F9804 ; =0x0000FFFF
 	str r0, [sp]
 _021F97D4:
@@ -516,7 +516,7 @@ _021F97D4:
 	pop {r3, r4, r5, r6, r7, pc}
 _021F97F4:
 	add r0, sp, #0
-	bl sub_0205F1C4
+	bl MapObjectArray_NextObject
 	sub r4, r4, #1
 	bne _021F97D4
 	mov r0, #0

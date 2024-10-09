@@ -50,8 +50,8 @@
 .public MapObjectManager_GetObjectCount
 .public MapObjectManager_GetPriority
 .public sub_0205F1A0
-.public sub_0205F1AC
-.public sub_0205F1C4
+.public MapObjectManager_GetObjects2
+.public MapObjectArray_NextObject
 .public FldObjSys_GetMModelNarc
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits

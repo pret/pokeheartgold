@@ -20395,7 +20395,7 @@ _0224F540:
 	strb r0, [r7]
 _0224F568:
 	add r0, sp, #0x10
-	bl sub_0205F1D0
+	bl MapObjectArray_NextObject2
 	ldr r0, [sp, #0xc]
 	add r1, r0, #1
 	ldr r0, [sp, #8]

@@ -151,7 +151,7 @@ static LocalMapObject *sub_0206D614(MapObjectManager *manager, u32 x, u32 a2, u3
                 }
             }
         }
-        sub_0205F1D0(&object);
+        MapObjectArray_NextObject2(&object);
     } while (--count);
     return NULL;
 }

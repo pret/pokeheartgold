@@ -32,13 +32,13 @@ typedef struct SavedMapObject {
 
 struct MapObjectManager { // declared field_system.h
     u32 flags;
-    u32 object_count;
+    u32 objectCount;
     u32 unk8;
     u32 priority;
     u8 unk10[4];
     NARC *mmodel_narc;
-    u8 unk18[4];
-    u8 unk1C[0x124 - 0x1C];
+    u32 unk18;
+    u8 unk1C[0x108];
     LocalMapObject *objects;
     FieldSystem *fieldSystem;
 }; // size: 0x12c
@@ -184,28 +184,18 @@ LocalMapObject *MapObjectManager_GetFirstActiveObjectWithMovement(MapObjectManag
 BOOL MapObjectManager_GetNextObjectWithFlagFromIndex(MapObjectManager *manager, LocalMapObject **objectDest, s32 *index, MapObjectFlagBits flag);
 u32 sub_0205F09C(LocalMapObject *object, u32 param1);
 BOOL sub_0205F0A8(LocalMapObject *object, u32 mapId, u32 flagId);
-BOOL sub_0205F0F8(LocalMapObject *object, u32 spriteId, u32 id, u32 a3);
-void sub_0205F12C(SysTask *task, LocalMapObject *object);
-void sub_0205F148(LocalMapObject *object);
-MapObjectManager *MapObjectManager_Get(MapObjectManager *manager);
-void MapObjectManager_SetObjectCount(MapObjectManager *, u32);
-u32 MapObjectManager_GetObjectCount(MapObjectManager *);
-void sub_0205F16C(MapObjectManager *manager);
-void sub_0205F174(MapObjectManager *manager);
+BOOL sub_0205F0F8(LocalMapObject *object, u32 spriteId, u32 mapId, u32 flagId);
+u32 MapObjectManager_GetObjectCount(MapObjectManager *manager);
 void MapObjectManager_SetFlagsBits(MapObjectManager *manager, u32 bits);
 void MapObjectManager_ClearFlagsBits(MapObjectManager *manager, u32 bits);
 u32 MapObjectManager_GetFlagsBitsMask(MapObjectManager *manager, u32 bits);
-void MapObjectManager_SetPriority(MapObjectManager *manager, u32 priority);
 u32 MapObjectManager_GetPriority(MapObjectManager *manager);
-void *sub_0205F1A0(MapObjectManager *);
-void MapObjectManager_SetObjects(MapObjectManager *manager, LocalMapObject *objects);
-LocalMapObject *sub_0205F1AC(MapObjectManager *manager);
-const LocalMapObject *MapObjectManager_GetConstObjects(MapObjectManager *);
-LocalMapObject *MapObjectManager_GetObjects(MapObjectManager *);
-void sub_0205F1C4(LocalMapObject **objects);
-void sub_0205F1D0(LocalMapObject **objects);
-void MapObjectManager_SetFieldSystemPtr(MapObjectManager *, FieldSystem *);
-FieldSystem *MapObjectManager_GetFieldSystemPtr(MapObjectManager *);
+void *sub_0205F1A0(MapObjectManager *manager);
+LocalMapObject *MapObjectManager_GetObjects2(MapObjectManager *manager);
+LocalMapObject *MapObjectManager_GetObjects(MapObjectManager *manager);
+void MapObjectArray_NextObject(LocalMapObject **objects);
+void MapObjectArray_NextObject2(LocalMapObject **objects);
+FieldSystem *MapObjectManager_GetFieldSystem(MapObjectManager *manager);
 void FldObjSys_SetMModelNarc(MapObjectManager *manager, NARC *mmodel_narc);
 NARC *FldObjSys_GetMModelNarc(MapObjectManager *manager);
 void MapObject_SetFlagsWord(LocalMapObject *object, u32 bits);

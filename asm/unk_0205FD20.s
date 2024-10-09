@@ -1865,7 +1865,7 @@ sub_02060BFC: ; 0x02060BFC
 	add r7, r3, #0
 	bl MapObject_GetManager
 	add r5, r0, #0
-	bl sub_0205F1AC
+	bl MapObjectManager_GetObjects2
 	str r0, [sp, #8]
 	add r0, r5, #0
 	bl MapObjectManager_GetObjectCount
@@ -1928,7 +1928,7 @@ _02060C8A:
 	pop {r4, r5, r6, r7, pc}
 _02060C94:
 	add r0, sp, #8
-	bl sub_0205F1C4
+	bl MapObjectArray_NextObject
 	ldr r0, [sp, #4]
 	sub r0, r0, #1
 	str r0, [sp, #4]
@@ -1948,7 +1948,7 @@ sub_02060CA8: ; 0x02060CA8
 	add r6, r3, #0
 	bl MapObject_GetManager
 	add r7, r0, #0
-	bl sub_0205F1AC
+	bl MapObjectManager_GetObjects2
 	str r0, [sp, #4]
 	add r0, r7, #0
 	bl MapObjectManager_GetObjectCount
@@ -2043,7 +2043,7 @@ _02060D7A:
 	pop {r3, r4, r5, r6, r7, pc}
 _02060D84:
 	add r0, sp, #4
-	bl sub_0205F1C4
+	bl MapObjectArray_NextObject
 	sub r7, r7, #1
 	bne _02060CC8
 	mov r0, #0

@@ -15,6 +15,8 @@ extern void sub_020611DC(LocalMapObject *object);
 extern BOOL sub_02061248(FieldSystem *fieldSystem, VecFx32 *, BOOL);
 extern void MapObject_ClearHeldMovement(LocalMapObject *object);
 extern void ov01_021FA2B8(LocalMapObject *object, BOOL set);
+extern void sub_0205FD30(LocalMapObject *object);
+extern void ov01_021F92A0(LocalMapObject *object);
 
 static MapObjectManager *MapObjectManager_New(u32 objectCount);
 static LocalMapObject *MapObject_CreateFromObjectEvent(MapObjectManager *manager, ObjectEvent *objectEvent, u32 mapNo);
@@ -37,6 +39,7 @@ static u32 sub_0205ED90(LocalMapObject *object, u32 flagId, u32 objectEventCount
 static LocalMapObject *MapObjectManager_GetFirstObjectWithID(MapObjectManager *manager, u32 objectId, u32 flagId);
 static void sub_0205EF48(LocalMapObject *object);
 static void sub_0205EF5C(LocalMapObject *object);
+static void sub_0205EF8C(LocalMapObject *object);
 static void MapObject_NoOp(LocalMapObject *object);
 static u32 FieldSystem_ResolveObjectSpriteID(FieldSystem *fieldSystem, s32 spriteId);
 static void sub_0205EFA4(LocalMapObject *object);
@@ -44,12 +47,20 @@ static void sub_0205EFB4(LocalMapObject *object);
 static BOOL MapObject_ScriptIDIsFFFF(LocalMapObject *object);
 static void sub_0205F014(LocalMapObject *object, ObjectEvent *objectEvent, u32 mapNo);
 static void sub_0205F058(LocalMapObject *object, u32 mapNo, ObjectEvent *objectEvent);
-
-static void sub_0205EF8C(LocalMapObject *object);
+static void sub_0205F12C(SysTask *task, LocalMapObject *object);
+static void sub_0205F148(LocalMapObject *object);
+static MapObjectManager *MapObjectManager_Get(MapObjectManager *manager);
+static void MapObjectManager_SetObjectCount(MapObjectManager *manager, u32 count);
+static void sub_0205F16C(MapObjectManager *manager);
+static void sub_0205F174(MapObjectManager *manager);
+static void MapObjectManager_SetPriority(MapObjectManager *manager, u32 priority);
+static void MapObjectManager_SetObjects(MapObjectManager *manager, LocalMapObject *objects);
+static LocalMapObject *MapObjectManager_GetObjects3(MapObjectManager *manager);
+static void MapObjectManager_SetFieldSystem(MapObjectManager *manager, FieldSystem *fieldSystem);
 
 MapObjectManager *MapObjectManager_Init(FieldSystem *fieldSystem, u32 objectCount, u32 priority) {
     MapObjectManager *ret = MapObjectManager_New(objectCount);
-    MapObjectManager_SetFieldSystemPtr(ret, fieldSystem);
+    MapObjectManager_SetFieldSystem(ret, fieldSystem);
     MapObjectManager_SetObjectCount(ret, objectCount);
     MapObjectManager_SetPriority(ret, priority);
 
@@ -125,7 +136,7 @@ static LocalMapObject *MapObject_CreateFromObjectEvent(MapObjectManager *manager
         return ret;
     }
 
-    MapObject_InitFromObjectEvent(ret, eventPtr, MapObjectManager_GetFieldSystemPtr(manager));
+    MapObject_InitFromObjectEvent(ret, eventPtr, MapObjectManager_GetFieldSystem(manager));
     sub_0205EC90(ret, manager);
     sub_0205F250(ret, mapNo);
     sub_0205EFA4(ret);
@@ -166,7 +177,7 @@ LocalMapObject *MapObject_CreateFromObjectEventWithId(MapObjectManager *manager,
     ObjectEvent *objectEvent = ObjectEvent_GetById(id, objectEventCount, (ObjectEvent *)events);
     if (objectEvent != NULL) {
         u32 flagId               = ObjectEvent_GetFlagID(objectEvent);
-        FieldSystem *fieldSystem = MapObjectManager_GetFieldSystemPtr(manager);
+        FieldSystem *fieldSystem = MapObjectManager_GetFieldSystem(manager);
         if (FieldSystem_FlagCheck(fieldSystem, (u16)flagId) == FALSE) {
             ret = MapObject_CreateFromObjectEvent(manager, objectEvent, mapNo);
         }
@@ -466,7 +477,7 @@ void MapObject_CreateFromMultipleObjectEvents(MapObjectManager *manager, u32 map
 }
 
 static void MapObject_CreateFromInitArgs(MapObjectInitArgs *args) {
-    FieldSystem *fieldSystem  = MapObjectManager_GetFieldSystemPtr(args->manager);
+    FieldSystem *fieldSystem  = MapObjectManager_GetFieldSystem(args->manager);
     ObjectEvent *objectEvents = args->objectEvents;
 
     do {
@@ -641,7 +652,7 @@ LocalMapObject *MapObjectManager_GetFirstActiveObjectByID(MapObjectManager *mana
     GF_ASSERT(manager != NULL);
 
     s32 count               = MapObjectManager_GetObjectCount(manager);
-    LocalMapObject *objects = (LocalMapObject *)MapObjectManager_GetConstObjects(manager);
+    LocalMapObject *objects = MapObjectManager_GetObjects3(manager);
     do {
         if (MapObject_TestFlagsBits(objects, MAPOBJECTFLAG_ACTIVE) == TRUE && MapObject_CheckFlag25(objects) == FALSE && MapObject_GetID(objects) == id) {
             return objects;
@@ -656,7 +667,7 @@ LocalMapObject *MapObjectManager_GetFirstActiveObjectByID(MapObjectManager *mana
 
 LocalMapObject *MapObjectManager_GetFirstActiveObjectWithMovement(MapObjectManager *manager, u32 movement) {
     s32 count               = MapObjectManager_GetObjectCount(manager);
-    LocalMapObject *objects = (LocalMapObject *)MapObjectManager_GetConstObjects(manager);
+    LocalMapObject *objects = MapObjectManager_GetObjects3(manager);
 
     do {
         if (MapObject_TestFlagsBits(objects, MAPOBJECTFLAG_ACTIVE) == TRUE && MapObject_GetMovement(objects) == movement) {
@@ -676,7 +687,7 @@ BOOL MapObjectManager_GetNextObjectWithFlagFromIndex(MapObjectManager *manager, 
         return FALSE;
     }
 
-    LocalMapObject *objects = (LocalMapObject *)MapObjectManager_GetConstObjects(manager);
+    LocalMapObject *objects = MapObjectManager_GetObjects3(manager);
     LocalMapObject *object  = objects + *index;
     do {
         (*index)++;
@@ -789,7 +800,7 @@ BOOL sub_0205F0A8(LocalMapObject *object, u32 mapId, u32 flagId) {
     return TRUE;
 }
 
-BOOL sub_0205F0F8(LocalMapObject *object, u32 spriteId, u32 id, u32 a3) {
+BOOL sub_0205F0F8(LocalMapObject *object, u32 spriteId, u32 mapId, u32 flagId) {
     if (!MapObject_TestFlagsBits(object, MAPOBJECTFLAG_ACTIVE)) {
         return FALSE;
     }
@@ -799,44 +810,40 @@ BOOL sub_0205F0F8(LocalMapObject *object, u32 spriteId, u32 id, u32 a3) {
         return FALSE;
     }
 
-    return sub_0205F0A8(object, id, a3);
+    return sub_0205F0A8(object, mapId, flagId);
 }
 
-extern void sub_0205FD30(LocalMapObject *);
-
-void sub_0205F12C(SysTask *task, LocalMapObject *object) {
+static void sub_0205F12C(SysTask *task, LocalMapObject *object) {
     sub_0205FD30(object);
     if (MapObject_IsInUse(object)) {
         sub_0205F148(object);
     }
 }
 
-extern void ov01_021F92A0(LocalMapObject *object);
-
-void sub_0205F148(LocalMapObject *object) {
+static void sub_0205F148(LocalMapObject *object) {
     if (sub_0205F5D4(MapObject_GetManager(object)) == TRUE) {
         ov01_021F92A0(object);
     }
 }
 
 // Likely a scrubbed debug func, but WTF is GF smoking?
-MapObjectManager *MapObjectManager_Get(MapObjectManager *manager) {
+static MapObjectManager *MapObjectManager_Get(MapObjectManager *manager) {
     return manager;
 }
 
-void MapObjectManager_SetObjectCount(MapObjectManager *manager, u32 count) {
-    manager->object_count = count;
+static void MapObjectManager_SetObjectCount(MapObjectManager *manager, u32 count) {
+    manager->objectCount = count;
 }
 
 u32 MapObjectManager_GetObjectCount(MapObjectManager *manager) {
-    return manager->object_count;
+    return manager->objectCount;
 }
 
-void sub_0205F16C(MapObjectManager *manager) {
+static void sub_0205F16C(MapObjectManager *manager) {
     manager->unk8++;
 }
 
-void sub_0205F174(MapObjectManager *manager) {
+static void sub_0205F174(MapObjectManager *manager) {
     manager->unk8--;
 }
 
@@ -852,7 +859,7 @@ u32 MapObjectManager_GetFlagsBitsMask(MapObjectManager *manager, u32 bits) {
     return manager->flags & bits;
 }
 
-void MapObjectManager_SetPriority(MapObjectManager *manager, u32 priority) {
+static void MapObjectManager_SetPriority(MapObjectManager *manager, u32 priority) {
     manager->priority = priority;
 }
 
@@ -860,39 +867,45 @@ u32 MapObjectManager_GetPriority(MapObjectManager *manager) {
     return manager->priority;
 }
 
+// type of unk18 is unknown, it's a u32 in MapObjectManager, but unsure what it's supposed to be
+// leaving return as a void * to reflect this
 void *sub_0205F1A0(MapObjectManager *manager) {
-    return manager->unk18;
+    return &manager->unk18;
 }
 
-void MapObjectManager_SetObjects(MapObjectManager *manager, LocalMapObject *objects) {
+static void MapObjectManager_SetObjects(MapObjectManager *manager, LocalMapObject *objects) {
     manager->objects = objects;
 }
 
-LocalMapObject *sub_0205F1AC(MapObjectManager *manager) {
+// the 2 here is bad, however this is *exactly* the same as the lower GetObjects
+LocalMapObject *MapObjectManager_GetObjects2(MapObjectManager *manager) {
     return manager->objects;
 }
 
-const LocalMapObject *MapObjectManager_GetConstObjects(MapObjectManager *manager) {
+// same as above
+static LocalMapObject *MapObjectManager_GetObjects3(MapObjectManager *manager) {
     return manager->objects;
 }
 
+// this one is the original because it's used the most
 LocalMapObject *MapObjectManager_GetObjects(MapObjectManager *manager) {
     return manager->objects;
 }
 
-void sub_0205F1C4(LocalMapObject **objects) {
+void MapObjectArray_NextObject(LocalMapObject **objects) {
     (*objects)++;
 }
 
-void sub_0205F1D0(LocalMapObject **objects) {
+// exactly the same as GetObjects2, bad naming, but exactly the same as the other one
+void MapObjectArray_NextObject2(LocalMapObject **objects) {
     (*objects)++;
 }
 
-void MapObjectManager_SetFieldSystemPtr(MapObjectManager *manager, FieldSystem *fieldSystem) {
+static void MapObjectManager_SetFieldSystem(MapObjectManager *manager, FieldSystem *fieldSystem) {
     manager->fieldSystem = fieldSystem;
 }
 
-FieldSystem *MapObjectManager_GetFieldSystemPtr(MapObjectManager *manager) {
+FieldSystem *MapObjectManager_GetFieldSystem(MapObjectManager *manager) {
     return manager->fieldSystem;
 }
 
@@ -1291,7 +1304,7 @@ u16 sub_0205F524(LocalMapObject *object) {
 }
 
 FieldSystem *MapObject_GetFieldSystem(LocalMapObject *object) {
-    return MapObjectManager_GetFieldSystemPtr(sub_0205F364(object));
+    return MapObjectManager_GetFieldSystem(sub_0205F364(object));
 }
 
 void *sub_0205F538(LocalMapObject *object) { // TODO: this is not void
