@@ -1036,7 +1036,7 @@ static BOOL Task_NamingScreen(TaskManager *taskman) {
         data->state++;
         break;
     case 1:
-        CallApplicationAsTask(taskman, &sOverlayTemplate_NamingScreen, data->args);
+        CallApplicationAsTask(taskman, &gOverlayTemplate_NamingScreen, data->args);
         data->state++;
         break;
     case 2:

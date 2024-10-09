@@ -144,6 +144,6 @@
 .public _s32_div_f
 .public gOverlayTemplate_Battle
 .public gNatureStatMods
-.public sOverlayTemplate_NamingScreen
+.public gOverlayTemplate_NamingScreen
 .public gSystem
 .public OS_IRQTable

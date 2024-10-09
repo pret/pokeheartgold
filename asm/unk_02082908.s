@@ -10,6 +10,7 @@
 
 	.public gOverlayTemplate_Battle
 	.public gNatureStatMods
+	.extern NamingScreenApp_Init
 
 	.bss
 
@@ -17,213 +18,6 @@ _021D43B0:
 	.space 0x4
 
 	.text
-
-	thumb_func_start sub_02082908
-sub_02082908: ; 0x02082908
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0xc
-	add r5, r1, #0
-	ldr r1, [r5]
-	add r6, r0, #0
-	cmp r1, #0
-	beq _0208291E
-	cmp r1, #1
-	bne _0208291C
-	b _02082A88
-_0208291C:
-	b _02082AC2
-_0208291E:
-	mov r0, #0
-	add r1, r0, #0
-	bl Main_SetVBlankIntrCB
-	bl HBlankInterruptDisable
-	bl GfGfx_DisableEngineAPlanes
-	bl GfGfx_DisableEngineBPlanes
-	mov r2, #1
-	lsl r2, r2, #0x1a
-	ldr r1, [r2]
-	ldr r0, _02082AC8 ; =0xFFFFE0FF
-	and r1, r0
-	str r1, [r2]
-	ldr r2, _02082ACC ; =0x04001000
-	ldr r1, [r2]
-	and r0, r1
-	str r0, [r2]
-	mov r2, #0xa
-	mov r0, #3
-	mov r1, #0x12
-	lsl r2, r2, #0xe
-	bl CreateHeap
-	ldr r1, _02082AD0 ; =0x000005D4
-	add r0, r6, #0
-	mov r2, #0x12
-	bl OverlayManager_CreateAndGetData
-	ldr r2, _02082AD0 ; =0x000005D4
-	mov r1, #0
-	add r4, r0, #0
-	bl memset
-	mov r0, #0x12
-	bl BgConfig_Alloc
-	mov r1, #0x16
-	lsl r1, r1, #4
-	str r0, [r4, r1]
-	mov r0, #0x1f
-	mov r1, #0x12
-	bl NARC_New
-	add r7, r0, #0
-	mov r0, #0x12
-	bl MessageFormat_New
-	mov r1, #0x5a
-	lsl r1, r1, #2
-	str r0, [r4, r1]
-	mov r0, #0
-	mov r1, #0x1b
-	mov r2, #0xf9
-	mov r3, #0x12
-	bl NewMsgDataFromNarc
-	mov r1, #0x5b
-	lsl r1, r1, #2
-	str r0, [r4, r1]
-	mov r0, #1
-	mov r1, #0x1b
-	mov r2, #0xfe
-	mov r3, #0x12
-	bl NewMsgDataFromNarc
-	mov r1, #0x17
-	lsl r1, r1, #4
-	str r0, [r4, r1]
-	mov r0, #1
-	mov r1, #0x1b
-	mov r2, #0xc5
-	mov r3, #0x12
-	bl NewMsgDataFromNarc
-	mov r1, #0x5d
-	lsl r1, r1, #2
-	str r0, [r4, r1]
-	mov r0, #4
-	mov r1, #8
-	bl SetKeyRepeatTimers
-	bl sub_02083184
-	mov r0, #0x16
-	lsl r0, r0, #4
-	ldr r0, [r4, r0]
-	bl sub_020831A4
-	add r0, r6, #0
-	bl OverlayManager_GetArgs
-	add r1, r0, #0
-	add r0, r4, #0
-	bl sub_02083160
-	add r0, r4, #0
-	add r1, r7, #0
-	bl sub_02083654
-	mov r0, #2
-	mov r1, #0x12
-	bl FontID_Alloc
-	ldr r0, _02082AD4 ; =sub_02083140
-	mov r1, #0
-	bl Main_SetVBlankIntrCB
-	add r0, r4, #0
-	add r1, r6, #0
-	bl sub_02083334
-	mov r0, #0
-	mov r1, #0x12
-	bl FontID_SetAccessDirect
-	bl sub_0208377C
-	add r0, r4, #0
-	add r1, r7, #0
-	bl sub_020837AC
-	add r0, r4, #0
-	bl sub_020839EC
-	add r0, r4, #0
-	add r1, r6, #0
-	add r2, r7, #0
-	bl sub_02083F9C
-	ldr r0, _02082AD8 ; =0x000004C4
-	mov r3, #0x5f
-	add r1, r4, r0
-	lsl r3, r3, #2
-	str r1, [sp]
-	ldr r1, [r4, r3]
-	add r2, r3, #0
-	str r1, [sp, #4]
-	sub r2, #0x24
-	sub r0, #0xcc
-	add r1, r4, #0
-	sub r3, #0x22
-	ldrh r2, [r4, r2]
-	add r0, r4, r0
-	add r1, #0xd8
-	add r3, r4, r3
-	bl sub_02084740
-	mov r1, #0
-	mov r0, #0x34
-	add r2, r1, #0
-	bl sub_02004EC4
-	mov r0, #0x10
-	str r0, [sp]
-	mov r1, #1
-	str r1, [sp, #4]
-	mov r0, #0x12
-	str r0, [sp, #8]
-	mov r0, #0
-	add r2, r1, #0
-	add r3, r0, #0
-	bl BeginNormalPaletteFade
-	mov r0, #1
-	bl sub_020832E4
-	ldr r0, _02082ADC ; =gSystem + 0x60
-	mov r1, #1
-	strb r1, [r0, #9]
-	bl GfGfx_SwapDisplay
-	add r0, r7, #0
-	bl NARC_Delete
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-	b _02082AC2
-_02082A88:
-	bl OverlayManager_GetData
-	add r4, r0, #0
-	ldr r0, [r4]
-	cmp r0, #1
-	bne _02082AA4
-	ldr r1, _02082AE0 ; =0x000004B8
-	ldr r2, [r4, #4]
-	ldr r0, [r4, r1]
-	add r1, #8
-	ldr r1, [r4, r1]
-	ldr r3, [r4, #8]
-	bl sub_02082AEC
-_02082AA4:
-	ldr r0, _02082AE4 ; =_021D43B0
-	mov r1, #1
-	str r4, [r0]
-	mov r0, #0
-	mov r2, #0xc
-	mov r3, #0x12
-	bl sub_020163E0
-	ldr r1, _02082AE8 ; =0x000005C4
-	add sp, #0xc
-	str r0, [r4, r1]
-	mov r0, #0
-	str r0, [r5]
-	mov r0, #1
-	pop {r4, r5, r6, r7, pc}
-_02082AC2:
-	mov r0, #0
-	add sp, #0xc
-	pop {r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02082AC8: .word 0xFFFFE0FF
-_02082ACC: .word 0x04001000
-_02082AD0: .word 0x000005D4
-_02082AD4: .word sub_02083140
-_02082AD8: .word 0x000004C4
-_02082ADC: .word gSystem + 0x60
-_02082AE0: .word 0x000004B8
-_02082AE4: .word _021D43B0
-_02082AE8: .word 0x000005C4
-	thumb_func_end sub_02082908
 
 	thumb_func_start sub_02082AEC
 sub_02082AEC: ; 0x02082AEC
@@ -251,8 +45,8 @@ sub_02082AEC: ; 0x02082AEC
 _02082B1C: .word 0x000057E0
 	thumb_func_end sub_02082AEC
 
-	thumb_func_start sub_02082B20
-sub_02082B20: ; 0x02082B20
+	thumb_func_start NamingScreenApp_Main
+NamingScreenApp_Main: ; 0x02082B20
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	add r5, r1, #0
@@ -479,7 +273,7 @@ _02082CE8: .word 0x00000458
 _02082CEC: .word 0x000005E2
 _02082CF0: .word 0x000004A8
 _02082CF4: .word 0x00000464
-	thumb_func_end sub_02082B20
+	thumb_func_end NamingScreenApp_Main
 
 	thumb_func_start sub_02082CF8
 sub_02082CF8: ; 0x02082CF8
@@ -736,8 +530,8 @@ _02082EE0: .word 0x000001DE
 _02082EE4: .word 0x0000FFFF
 	thumb_func_end sub_02082EC0
 
-	thumb_func_start sub_02082EE8
-sub_02082EE8: ; 0x02082EE8
+	thumb_func_start NamingScreenApp_Exit
+NamingScreenApp_Exit: ; 0x02082EE8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	str r0, [sp, #0x10]
@@ -949,7 +743,7 @@ _020830C8: .word 0x000004B4
 _020830CC: .word 0x000004BC
 _020830D0: .word 0xFFFF1FFF
 _020830D4: .word gSystem + 0x60
-	thumb_func_end sub_02082EE8
+	thumb_func_end NamingScreenApp_Exit
 
 	thumb_func_start NamingScreen_CreateArgs
 NamingScreen_CreateArgs: ; 0x020830D8
@@ -5476,12 +5270,10 @@ _02102422:
 	.short 0x0089, 0x008A, 0x008B
 	.short 0x008C, 0x008D, 0x008E
 
-	; File boundary
-
 	.balign 4, 0
-	.public sOverlayTemplate_NamingScreen
-sOverlayTemplate_NamingScreen:
-	.word sub_02082908, sub_02082B20, sub_02082EE8, 0xFFFFFFFF
+	.public gOverlayTemplate_NamingScreen
+gOverlayTemplate_NamingScreen:
+	.word NamingScreenApp_Init, NamingScreenApp_Main, NamingScreenApp_Exit, 0xFFFFFFFF
 
 	.data
 

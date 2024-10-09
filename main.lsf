@@ -273,6 +273,7 @@ Static main
     Object src/party_menu_sprites.o
     Object src/party_menu_list_items.o
     Object src/party_menu_items.o
+    Object src/naming_screen.o
     Object asm/unk_02082908.o
     Object asm/unk_020850F4.o
     Object asm/unk_02085604.o
