@@ -1506,7 +1506,7 @@ static const u16 sFemaleFlagLUT[] = {
 };
 
 LocalMapObject *FollowMon_InitMapObject(MapObjectManager *mapObjectManager, int x, int y, int direction, u32 mapNo) {
-    FieldSystem *fieldSystem = MapObjectManager_GetFieldSystemPtr(mapObjectManager);
+    FieldSystem *fieldSystem = MapObjectManager_GetFieldSystem(mapObjectManager);
     Party *party             = SaveArray_Party_Get(fieldSystem->saveData);
     int partyCount           = Party_GetCount(party);
 
@@ -1560,7 +1560,7 @@ LocalMapObject *FollowMon_InitMapObject(MapObjectManager *mapObjectManager, int 
 }
 
 void FollowMon_ChangeMon(MapObjectManager *mapObjectManager, u32 mapno) {
-    FieldSystem *fieldSystem = MapObjectManager_GetFieldSystemPtr(mapObjectManager);
+    FieldSystem *fieldSystem = MapObjectManager_GetFieldSystem(mapObjectManager);
     Party *party             = SaveArray_Party_Get(fieldSystem->saveData);
     int partyCount           = Party_GetCount(party);
 

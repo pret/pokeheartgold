@@ -44,7 +44,7 @@
 .public MapObjectManager_GetFirstActiveObjectByID
 .public MapObjectManager_GetObjectCount
 .public MapObjectManager_GetObjects
-.public sub_0205F1D0
+.public MapObjectArray_NextObject2
 .public MapObject_GetID
 .public MapObject_IsInUse
 .public MapObject_GetCurrentX

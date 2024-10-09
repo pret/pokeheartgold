@@ -10,7 +10,7 @@
 .public GF_AssertFail
 .public GetFirstAliveMonInParty_CrashIfNone
 .public MapObjectManager_GetFirstActiveObjectByID
-.public MapObjectManager_GetFieldSystemPtr
+.public MapObjectManager_GetFieldSystem
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
 .public MapObject_TestFlagsBits
