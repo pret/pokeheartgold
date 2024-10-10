@@ -1,3 +1,5 @@
+#include "naming_screen.h"
+
 #include "global.h"
 
 #include "msgdata/msg.naix"
@@ -25,7 +27,6 @@
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
 #include "unk_020163E0.h"
-#include "unk_02082908.h"
 
 typedef struct NamingScreenAppData {
     NameScreenType type;
@@ -402,4 +403,32 @@ BOOL NamingScreenApp_Exit(OVY_MANAGER *ovyMan, int *pState) {
     DestroyHeap(HEAP_ID_NAMING_SCREEN);
     GfGfx_SetMainDisplay(PM_LCD_TOP);
     return TRUE;
+}
+
+// -------------------------------
+// Public functions
+// -------------------------------
+
+NamingScreenArgs *NamingScreen_CreateArgs(HeapID heapId, int kind, int param, int maxLen, Options *options, int *a5) {
+    NamingScreenArgs *ret = AllocFromHeap(heapId, sizeof(NamingScreenArgs));
+    ret->kind             = kind;
+    ret->playerGender     = param;
+    ret->maxLen           = maxLen;
+    ret->unk14            = 0;
+    ret->unk1C[0]         = EOS;
+    ret->nameInputString  = String_New(32, heapId);
+    ret->unk44            = 0;
+    ret->unk48            = 0;
+    ret->monGender        = 0;
+    ret->options          = options;
+    ret->monForm          = 0;
+    ret->unk50            = a5;
+    return ret;
+}
+
+void NamingScreen_DeleteArgs(NamingScreenArgs *namingScreenArgs) {
+    GF_ASSERT(namingScreenArgs->nameInputString != NULL);
+    GF_ASSERT(namingScreenArgs != NULL); // UB: should check this first
+    String_Delete(namingScreenArgs->nameInputString);
+    FreeToHeap(namingScreenArgs);
 }

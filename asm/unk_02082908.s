@@ -18,62 +18,6 @@
 
 	.text
 
-	thumb_func_start NamingScreen_CreateArgs
-NamingScreen_CreateArgs: ; 0x020830D8
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	mov r1, #0x54
-	str r0, [sp]
-	add r6, r2, #0
-	add r7, r3, #0
-	bl AllocFromHeap
-	add r4, r0, #0
-	str r5, [r4]
-	str r6, [r4, #4]
-	str r7, [r4, #0xc]
-	mov r0, #0
-	str r0, [r4, #0x14]
-	ldr r0, _02083118 ; =0x0000FFFF
-	ldr r1, [sp]
-	strh r0, [r4, #0x1c]
-	mov r0, #0x20
-	bl String_New
-	str r0, [r4, #0x18]
-	mov r1, #0
-	str r1, [r4, #0x44]
-	str r1, [r4, #0x48]
-	ldr r0, [sp, #0x18]
-	str r1, [r4, #0x10]
-	str r0, [r4, #0x4c]
-	ldr r0, [sp, #0x1c]
-	str r1, [r4, #8]
-	str r0, [r4, #0x50]
-	add r0, r4, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02083118: .word 0x0000FFFF
-	thumb_func_end NamingScreen_CreateArgs
-
-	thumb_func_start NamingScreen_DeleteArgs
-NamingScreen_DeleteArgs: ; 0x0208311C
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, [r4, #0x18]
-	cmp r0, #0
-	bne _0208312A
-	bl GF_AssertFail
-_0208312A:
-	cmp r4, #0
-	bne _02083132
-	bl GF_AssertFail
-_02083132:
-	ldr r0, [r4, #0x18]
-	bl String_Delete
-	add r0, r4, #0
-	bl FreeToHeap
-	pop {r4, pc}
-	thumb_func_end NamingScreen_DeleteArgs
-
 	thumb_func_start sub_02083140
 sub_02083140: ; 0x02083140
 	push {r3, lr}

@@ -14,6 +14,7 @@
 #include "launch_application.h"
 #include "main.h"
 #include "math_util.h"
+#include "naming_screen.h"
 #include "oaks_speech_internal.h"
 #include "overlay_36.h"
 #include "overlay_manager.h"
@@ -26,7 +27,6 @@
 #include "touchscreen.h"
 #include "unk_02005D10.h"
 #include "unk_0200FA24.h"
-#include "unk_02082908.h"
 #include "yes_no_prompt.h"
 
 FS_EXTERN_OVERLAY(OVY_36);

@@ -3,11 +3,11 @@
 
 #include "bg_window.h"
 #include "msgdata.h"
+#include "naming_screen.h"
 #include "options.h"
 #include "overlay_manager.h"
 #include "unk_0200CF18.h"
 #include "unk_020163E0.h"
-#include "unk_02082908.h"
 
 #define GENDER_CURSOR_MALE    0
 #define GENDER_CURSOR_FEMALE  1

@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_UNK_02082908_H
-#define POKEHEARTGOLD_UNK_02082908_H
+#ifndef POKEHEARTGOLD_NAMING_SCREEN_H
+#define POKEHEARTGOLD_NAMING_SCREEN_H
 
 #include "options.h"
 #include "overlay_manager.h"
@@ -9,16 +9,20 @@ extern const OVY_MGR_TEMPLATE gOverlayTemplate_NamingScreen;
 
 typedef struct NamingScreenArgs {
     int kind;
-    int playerGender;
+    int playerGender; // monSpecies
     int monForm;
-    u8 unkC[0x4];
+    int maxLen;
     int monGender;
     int unk14;
     String *nameInputString;
-    u16 unk1C[PLAYER_NAME_LENGTH + 1];
+    u16 unk1C[20];
+    int unk44;
+    int unk48;
+    Options *options;
+    int *unk50;
 } NamingScreenArgs;
 
-void NamingScreen_DeleteArgs(NamingScreenArgs *namingScreenArgs);
 NamingScreenArgs *NamingScreen_CreateArgs(HeapID heapId, int kind, int param, int maxLen, Options *options, int *a5);
+void NamingScreen_DeleteArgs(NamingScreenArgs *namingScreenArgs);
 
-#endif // POKEHEARTGOLD_UNK_02082908_H
+#endif // POKEHEARTGOLD_NAMING_SCREEN_H
