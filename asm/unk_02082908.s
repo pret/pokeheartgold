@@ -18,247 +18,6 @@
 
 	.text
 
-	thumb_func_start sub_02083140
-sub_02083140: ; 0x02083140
-	push {r3, lr}
-	bl GF_RunVramTransferTasks
-	bl OamManager_ApplyAndResetBuffers
-	ldr r3, _02083158 ; =OS_IRQTable
-	ldr r1, _0208315C ; =0x00003FF8
-	mov r0, #1
-	ldr r2, [r3, r1]
-	orr r0, r2
-	str r0, [r3, r1]
-	pop {r3, pc}
-	.balign 4, 0
-_02083158: .word OS_IRQTable
-_0208315C: .word 0x00003FF8
-	thumb_func_end sub_02083140
-
-	thumb_func_start sub_02083160
-sub_02083160: ; 0x02083160
-	ldr r2, [r1]
-	str r2, [r0]
-	ldr r2, [r1, #4]
-	str r2, [r0, #4]
-	ldr r2, [r1, #8]
-	str r2, [r0, #8]
-	ldr r2, [r1, #0xc]
-	str r2, [r0, #0xc]
-	ldr r2, [r1, #0x10]
-	str r2, [r0, #0x10]
-	ldr r2, [r1, #0x4c]
-	str r2, [r0, #0x18]
-	ldr r2, [r1, #0x50]
-	mov r1, #0x5d
-	lsl r1, r1, #4
-	str r2, [r0, r1]
-	bx lr
-	.balign 4, 0
-	thumb_func_end sub_02083160
-
-	thumb_func_start sub_02083184
-sub_02083184: ; 0x02083184
-	push {r4, lr}
-	sub sp, #0x28
-	ldr r4, _020831A0 ; =_02102140
-	add r3, sp, #0
-	mov r2, #5
-_0208318E:
-	ldmia r4!, {r0, r1}
-	stmia r3!, {r0, r1}
-	sub r2, r2, #1
-	bne _0208318E
-	add r0, sp, #0
-	bl GfGfx_SetBanks
-	add sp, #0x28
-	pop {r4, pc}
-	.balign 4, 0
-_020831A0: .word _02102140
-	thumb_func_end sub_02083184
-
-	thumb_func_start sub_020831A4
-sub_020831A4: ; 0x020831A4
-	push {r3, r4, r5, lr}
-	sub sp, #0x80
-	ldr r5, _020832C8 ; =_02101D60
-	add r3, sp, #0x70
-	add r4, r0, #0
-	add r2, r3, #0
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	add r0, r2, #0
-	bl SetBothScreensModesAndDisable
-	ldr r5, _020832CC ; =_02101ED4
-	add r3, sp, #0x54
-	ldmia r5!, {r0, r1}
-	add r2, r3, #0
-	stmia r3!, {r0, r1}
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldr r0, [r5]
-	mov r1, #0
-	str r0, [r3]
-	add r0, r4, #0
-	add r3, r1, #0
-	bl InitBgFromTemplate
-	add r0, r4, #0
-	mov r1, #0
-	bl BgClearTilemapBufferAndCommit
-	ldr r5, _020832D0 ; =_02101FB4
-	add r3, sp, #0x38
-	ldmia r5!, {r0, r1}
-	add r2, r3, #0
-	stmia r3!, {r0, r1}
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldr r0, [r5]
-	mov r1, #1
-	str r0, [r3]
-	add r0, r4, #0
-	mov r3, #0
-	bl InitBgFromTemplate
-	add r0, r4, #0
-	mov r1, #1
-	bl BgClearTilemapBufferAndCommit
-	ldr r5, _020832D4 ; =_02102078
-	add r3, sp, #0x1c
-	ldmia r5!, {r0, r1}
-	add r2, r3, #0
-	stmia r3!, {r0, r1}
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldr r0, [r5]
-	mov r1, #2
-	str r0, [r3]
-	add r0, r4, #0
-	mov r3, #0
-	bl InitBgFromTemplate
-	add r0, r4, #0
-	mov r1, #2
-	bl BgClearTilemapBufferAndCommit
-	ldr r5, _020832D8 ; =_02101E10
-	add r3, sp, #0
-	ldmia r5!, {r0, r1}
-	add r2, r3, #0
-	stmia r3!, {r0, r1}
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldr r0, [r5]
-	mov r1, #4
-	str r0, [r3]
-	add r0, r4, #0
-	mov r3, #0
-	bl InitBgFromTemplate
-	add r0, r4, #0
-	mov r1, #4
-	bl BgClearTilemapBufferAndCommit
-	mov r0, #0
-	bl sub_020832E4
-	mov r0, #0
-	mov r1, #0x20
-	add r2, r0, #0
-	mov r3, #0x12
-	bl BG_ClearCharDataRange
-	mov r0, #4
-	mov r1, #0x20
-	mov r2, #0
-	mov r3, #0x12
-	bl BG_ClearCharDataRange
-	mov r0, #1
-	lsl r0, r0, #0x1a
-	add r4, r0, #0
-	ldr r2, [r0]
-	ldr r1, _020832DC ; =0xFFFF1FFF
-	add r4, #0x48
-	and r2, r1
-	lsr r1, r0, #0xd
-	orr r1, r2
-	str r1, [r0]
-	ldrh r3, [r4]
-	mov r2, #0x3f
-	mov r1, #0x14
-	bic r3, r2
-	orr r1, r3
-	mov r3, #0x20
-	orr r1, r3
-	strh r1, [r4]
-	add r4, r0, #0
-	add r4, #0x4a
-	ldrh r5, [r4]
-	mov r1, #0x1f
-	bic r5, r2
-	orr r1, r5
-	orr r1, r3
-	strh r1, [r4]
-	add r1, r0, #0
-	mov r2, #0xff
-	add r1, #0x40
-	strh r2, [r1]
-	mov r1, #0x40
-	add r0, #0x44
-	strh r1, [r0]
-	ldr r0, _020832E0 ; =0x04001050
-	mov r1, #0
-	strh r1, [r0]
-	add sp, #0x80
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_020832C8: .word _02101D60
-_020832CC: .word _02101ED4
-_020832D0: .word _02101FB4
-_020832D4: .word _02102078
-_020832D8: .word _02101E10
-_020832DC: .word 0xFFFF1FFF
-_020832E0: .word 0x04001050
-	thumb_func_end sub_020831A4
-
-	thumb_func_start sub_020832E4
-sub_020832E4: ; 0x020832E4
-	push {r4, lr}
-	add r4, r0, #0
-	lsl r1, r4, #0x18
-	mov r0, #1
-	lsr r1, r1, #0x18
-	bl GfGfx_EngineATogglePlanes
-	lsl r1, r4, #0x18
-	mov r0, #2
-	lsr r1, r1, #0x18
-	bl GfGfx_EngineATogglePlanes
-	lsl r1, r4, #0x18
-	mov r0, #4
-	lsr r1, r1, #0x18
-	bl GfGfx_EngineATogglePlanes
-	mov r0, #8
-	mov r1, #0
-	bl GfGfx_EngineATogglePlanes
-	lsl r1, r4, #0x18
-	mov r0, #0x10
-	lsr r1, r1, #0x18
-	bl GfGfx_EngineATogglePlanes
-	lsl r1, r4, #0x18
-	mov r0, #1
-	lsr r1, r1, #0x18
-	bl GfGfx_EngineBTogglePlanes
-	mov r0, #2
-	mov r1, #0
-	bl GfGfx_EngineBTogglePlanes
-	mov r0, #0x10
-	mov r1, #0
-	bl GfGfx_EngineBTogglePlanes
-	pop {r4, pc}
-	thumb_func_end sub_020832E4
-
 	thumb_func_start sub_02083334
 sub_02083334: ; 0x02083334
 	push {r3, r4, r5, r6, r7, lr}
@@ -4055,6 +3814,8 @@ _02101D4C:
 	.byte 0x29, 0x29, 0x29, 0x00
 _02101D54:
 	.byte 0x70, 0x00, 0x00, 0x00, 0x4C, 0x00, 0x00, 0x00, 0x48, 0x00, 0x00, 0x00
+
+	.global _02101D60
 _02101D60:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 _02101D70:
@@ -4064,8 +3825,6 @@ _02101D80:
 	.byte 0x03, 0x00, 0x2B, 0x00, 0x20, 0x00, 0x2F, 0x00, 0x01, 0x00, 0x2B, 0x00, 0x3F, 0x00, 0x09, 0x00
 	.byte 0x30, 0x00, 0xE2, 0x00, 0xFF, 0xFF, 0x8D, 0x00, 0x74, 0x00, 0x60, 0x00, 0x6A, 0x00, 0x2F, 0x00
 	.byte 0x01, 0x00, 0x2B, 0x00, 0x3F, 0x00, 0x09, 0x00, 0x30, 0x00, 0xE2, 0x00, 0xFF, 0xFF
-
-	; File boundary
 
 _02101DBE:
 	.byte 0x02, 0xE0
@@ -4078,6 +3837,8 @@ _02101DD8:
 _02101DF2:
 	.short 0x00E3, 0x00E4, 0x00F9, 0x00F8, 0x00E5, 0x00E6, 0x00F5
 	.short 0x00F6, 0x00F7, 0x00E7, 0x0001, 0x00EE, 0x00EF, 0xFFFF, 0x0000
+
+	.global _02101E10
 _02101E10:
 	.short 0x0000, 0x0000, 0x0000, 0x0000, 0x0800, 0x0000, 0x0000, 0x0000
 	.short 0x0001, 0x041F, 0x0000, 0x0000, 0x0000, 0x0000
@@ -4099,6 +3860,8 @@ _02101E9C:
 	.short 0x0135, 0x0136, 0x0137, 0x0138, 0x0139, 0x013A, 0x013B, 0x013C, 0x013D, 0x013E, 0x01DE, 0x01B3, 0x01BE, 0xFFFF
 _02101EB8:
 	.short 0x013F, 0x0140, 0x0141, 0x0142, 0x0143, 0x0144, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01BB, 0x01BC, 0xFFFF
+
+	.global _02101ED4
 _02101ED4:
 	.short 0x0000, 0x0000, 0x0000, 0x0000, 0x1000, 0x0000, 0x0000, 0x0000, 0x0003, 0x041E, 0x0100, 0x0000, 0x0000, 0x0000
 _02101EF0:
@@ -4115,6 +3878,8 @@ _02101F7C:
 	.short 0x00A2, 0x00A3, 0x00A4, 0x00A5, 0x00A6, 0x00A7, 0x00A8, 0x00A9, 0x00AA, 0x00AB, 0x0001, 0x00E1, 0x00E2, 0xFFFF
 _02101F98:
 	.short 0x01AD, 0x01AE, 0x01C4, 0x01C5, 0x01AB, 0x01AC, 0x01DE, 0x01DE, 0x01DE, 0x01BB, 0x01BC, 0x01DE, 0x01DE, 0xFFFF
+
+	.global _02101FB4
 _02101FB4:
 	.short 0x0000, 0x0000, 0x0000, 0x0000, 0x1000, 0x0000, 0x0000, 0x0000, 0x0003, 0x041C, 0x0200, 0x0000, 0x0000, 0x0000
 _02101FD0:
@@ -4129,10 +3894,10 @@ _02102040:
 	.short 0x01D3, 0x01D4, 0x01D5, 0x01D6, 0x01D7, 0x01D8, 0x01D9, 0x01DA, 0x01DD, 0x01DB, 0x01DC, 0x01DE, 0x01DE, 0xFFFF
 _0210205C:
 	.short 0x0159, 0x015A, 0x015B, 0x015C, 0x015D, 0x015E, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01BB, 0x01BC, 0xFFFF
+
+	.global _02102078
 _02102078:
 	.short 0x0000, 0x0000, 0x0000, 0x0000, 0x0800, 0x0000, 0x0000, 0x0000, 0x0001, 0x001A, 0x0300, 0x0000, 0x0000, 0x0000, 0x008E, 0x0062, 0x0093, 0x00A1, 0x002F, 0x0001, 0x007C, 0x0074, 0x0060, 0x007E, 0x00F1, 0x0091, 0x0030, 0x00E2, 0xFFFF
-
-	; File boundary
 
 	.balign 4, 0
 _021020B4:
@@ -4143,6 +3908,7 @@ _021020F8:
 	.short 0x0126, 0x0127, 0x0128, 0x0129, 0x012A, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0xFFFF
 _0210211C:
 	.short 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0xFFFF
+	.global _02102140
 _02102140:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -4526,5 +4292,3 @@ _021104F8:
 	.word _0210211C
 	.word _0210211C
 	.word _0210211C
-
-	; File boundary

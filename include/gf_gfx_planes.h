@@ -50,10 +50,10 @@ typedef struct GraphicsBanks {
 
 void GfGfx_SetBanks(const GraphicsBanks *banks);
 void GfGfx_DisableEngineAPlanes(void);
-void GfGfx_EngineATogglePlanes(GXPlaneMask planeMask, GFPlaneToggle enable);
+void GfGfx_EngineATogglePlanes(u8 planeMask, u8 enable);
 void GfGfx_EngineASetPlanes(u32 planes);
 void GfGfx_DisableEngineBPlanes(void);
-void GfGfx_EngineBTogglePlanes(GXPlaneMask planeMask, GFPlaneToggle enable);
+void GfGfx_EngineBTogglePlanes(u8 planeMask, u8 enable);
 void GfGfx_EngineBSetPlanes(u32 planes);
 void GfGfx_BothDispOn(void);
 void GfGfx_SwapDisplay(void);

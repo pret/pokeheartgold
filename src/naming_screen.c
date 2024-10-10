@@ -27,12 +27,16 @@
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
 #include "unk_020163E0.h"
+#include "vram_transfer_manager.h"
 
 typedef struct NamingScreenAppData {
     NameScreenType type;
     int unk_004;
     int unk_008;
-    u8 filler_00C[0x10];
+    int unk_00C;
+    int unk_010;
+    u8 filler_014[0x4];
+    Options *unk_018;
     int unk_01C;
     int unk_020;
     u8 filler_024[0xC];
@@ -93,7 +97,7 @@ typedef struct NamingScreenAppData {
     UnkStruct_020163E0 *unk_5C4;
     BOOL unk_5C8;
     int unk_5CC;
-    u8 filler_5D0[0x4];
+    int *unk_5D0;
 } NamingScreenAppData; // size: 0x5D4
 
 BOOL NamingScreenApp_Init(OVY_MANAGER *ovyMan, int *pState);
@@ -387,7 +391,7 @@ BOOL NamingScreenApp_Exit(OVY_MANAGER *ovyMan, int *pState) {
     ObjPlttTransfer_Destroy();
     sub_02083614(data->bgConfig, data->unk_3B8);
     FontID_SetAccessLazy(0);
-    GX_SetVisibleWnd(0);
+    GX_SetVisibleWnd(GX_WNDMASK_NONE);
     FontID_Release(2);
     if (data->unk_180 != NULL) {
         String_Delete(data->unk_180);
@@ -409,7 +413,7 @@ BOOL NamingScreenApp_Exit(OVY_MANAGER *ovyMan, int *pState) {
 // Public functions
 // -------------------------------
 
-NamingScreenArgs *NamingScreen_CreateArgs(HeapID heapId, int kind, int param, int maxLen, Options *options, int *a5) {
+NamingScreenArgs *NamingScreen_CreateArgs(HeapID heapId, NameScreenType kind, int param, int maxLen, Options *options, int *a5) {
     NamingScreenArgs *ret = AllocFromHeap(heapId, sizeof(NamingScreenArgs));
     ret->kind             = kind;
     ret->playerGender     = param;
@@ -431,4 +435,87 @@ void NamingScreen_DeleteArgs(NamingScreenArgs *namingScreenArgs) {
     GF_ASSERT(namingScreenArgs != NULL); // UB: should check this first
     String_Delete(namingScreenArgs->nameInputString);
     FreeToHeap(namingScreenArgs);
+}
+
+// -------------------------------
+// Back to private scope
+// -------------------------------
+
+void sub_02083140(void *param) {
+    GF_RunVramTransferTasks();
+    OamManager_ApplyAndResetBuffers();
+    OS_SetIrqCheckFlag(OS_IE_V_BLANK);
+}
+
+void sub_02083160(NamingScreenAppData *data, NamingScreenArgs *args) {
+    data->type    = args->kind;
+    data->unk_004 = args->playerGender;
+    data->unk_008 = args->monForm;
+    data->unk_00C = args->maxLen;
+    data->unk_010 = args->monGender;
+    data->unk_018 = args->options;
+    data->unk_5D0 = args->unk50;
+}
+
+void sub_02083184(void) {
+    extern const GraphicsBanks _02102140;
+    GraphicsBanks graphicsBanks = _02102140;
+    GfGfx_SetBanks(&graphicsBanks);
+}
+
+void sub_020831A4(BgConfig *bgConfig) {
+    {
+        extern const GraphicsModes _02101D60;
+        GraphicsModes graphicsModes = _02101D60;
+        SetBothScreensModesAndDisable(&graphicsModes);
+    }
+
+    {
+        extern const BgTemplate _02101ED4;
+        BgTemplate bgTemplate = _02101ED4;
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_0, &bgTemplate, GF_BG_TYPE_TEXT);
+        BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_0);
+    }
+
+    {
+        extern const BgTemplate _02101FB4;
+        BgTemplate bgTemplate = _02101FB4;
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_1, &bgTemplate, GF_BG_TYPE_TEXT);
+        BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_1);
+    }
+
+    {
+        extern const BgTemplate _02102078;
+        BgTemplate bgTemplate = _02102078;
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_2, &bgTemplate, GF_BG_TYPE_TEXT);
+        BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_2);
+    }
+
+    {
+        extern const BgTemplate _02101E10;
+        BgTemplate bgTemplate = _02101E10;
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_0, &bgTemplate, GF_BG_TYPE_TEXT);
+        BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_0);
+    }
+
+    sub_020832E4(0);
+    BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 0x20, 0, HEAP_ID_NAMING_SCREEN);
+    BG_ClearCharDataRange(GF_BG_LYR_SUB_0, 0x20, 0, HEAP_ID_NAMING_SCREEN);
+    GX_SetVisibleWnd(GX_WNDMASK_W0);
+    G2_SetWnd0InsidePlane(GX_WND_PLANEMASK_BG2 | GX_WND_PLANEMASK_OBJ, 1);
+    G2_SetWndOutsidePlane(GX_WND_PLANEMASK_BG0 | GX_WND_PLANEMASK_BG1 | GX_WND_PLANEMASK_BG2 | GX_WND_PLANEMASK_BG3 | GX_WND_PLANEMASK_OBJ,
+        1);
+    G2_SetWnd0Position(0, 0, 255, 64);
+    G2S_BlendNone();
+}
+
+void sub_020832E4(int a0) {
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, a0);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, a0);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, a0);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_OFF);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, a0);
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG0, a0);
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
 }

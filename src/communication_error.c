@@ -148,7 +148,7 @@ void ShowCommunicationError(HeapID heapId, u32 error, u32 errorCode) {
     GfGfx_SwapDisplay();
     G2_BlendNone();
     G2S_BlendNone();
-    GX_SetVisibleWnd(0);
+    GX_SetVisibleWnd(GX_WNDMASK_NONE);
     GXS_SetVisibleWnd(0);
     GfGfx_SetBanks(&sCommunicationErrorGraphicsBanks);
 
