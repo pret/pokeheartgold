@@ -10,6 +10,7 @@
 #include "bg_window.h"
 #include "filesystem.h"
 #include "font.h"
+#include "gf_gfx_loader.h"
 #include "gf_gfx_planes.h"
 #include "launch_application.h"
 #include "math_util.h"
@@ -78,9 +79,7 @@ typedef struct NamingScreenAppData {
     Sprite *unk_34C;
     u8 filler_350[0x4C];
     SysTask *unk_39C[7];
-    u8 unk_3B8[0x40];
-    u8 unk_3F8[0x50];
-    Window unk_448;
+    Window unk_3B8[10];
     int unk_458;
     int unk_45C;
     int unk_460;
@@ -119,7 +118,7 @@ void sub_020831A4(BgConfig *bgConfig);
 void sub_020832E4(GFPlaneToggle enable);
 void sub_02083334(NamingScreenAppData *data, OVY_MANAGER *ovyMan);
 void sub_020834FC(NamingScreenAppData *data, OVY_MANAGER *ovyMan);
-void sub_02083614(BgConfig *bgConfig, void *a1);
+void sub_02083614(BgConfig *bgConfig, Window *a1);
 void sub_02083654(NamingScreenAppData *data, NARC *narc);
 void sub_0208377C(void);
 void sub_020837AC(NamingScreenAppData *data, NARC *narc);
@@ -128,7 +127,7 @@ void sub_02083D34(BgConfig *bgConfig, void *a1, void *a2, int a3, int *a4, VecFx
 void sub_02083F9C(NamingScreenAppData *data, OVY_MANAGER *ovyMan, NARC *narc);
 void sub_0208423C(VecFx32 *a0, int a1);
 void sub_0208432C(NamingScreenAppData *data);
-void sub_02084740(void *a0, u16 *a1, u16 a2, void *a3, void *a4, String *a5);
+void sub_02084740(Window *a0, u16 *a1, u16 a2, void *a3, void *a4, String *a5);
 void sub_02084830(u16 (*a0)[13], int a1);
 int sub_02084884(NamingScreenAppData *data, int key, BOOL a2);
 void sub_02084F3C(void *a0, void *a1, int a2);
@@ -173,7 +172,7 @@ BOOL NamingScreenApp_Init(OVY_MANAGER *ovyMan, int *pState) {
         sub_020837AC(data, narc);
         sub_020839EC(data);
         sub_02083F9C(data, ovyMan, narc);
-        sub_02084740(data->unk_3F8, data->unk_0D8, data->unk_158, &data->unk_15A, data->unk_4C4, data->unk_17C);
+        sub_02084740(&data->unk_3B8[4], data->unk_0D8, data->unk_158, &data->unk_15A, data->unk_4C4, data->unk_17C);
         sub_02004EC4(0x34, 0, 0);
         BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 16, 1, HEAP_ID_NAMING_SCREEN);
         sub_020832E4(GF_PLANE_TOGGLE_ON);
@@ -236,10 +235,10 @@ BOOL NamingScreenApp_Main(OVY_MANAGER *ovyMan, int *pState) {
             break;
         case 5:
             sub_020834FC(data, ovyMan);
-            FillWindowPixelBuffer(&data->unk_448, 15);
-            DrawFrameAndWindow2(&data->unk_448, FALSE, 256, 10);
-            data->unk_458 = AddTextPrinterParameterized(&data->unk_448, 1, data->unk_180, 0, 0, 1, NULL);
-            CopyWindowToVram(&data->unk_448);
+            FillWindowPixelBuffer(&data->unk_3B8[9], 15);
+            DrawFrameAndWindow2(&data->unk_3B8[9], FALSE, 256, 10);
+            data->unk_458 = AddTextPrinterParameterized(&data->unk_3B8[9], 1, data->unk_180, 0, 0, 1, NULL);
+            CopyWindowToVram(&data->unk_3B8[9]);
             data->unk_45C = 6;
             break;
         case 6:
@@ -602,4 +601,37 @@ void sub_020834FC(NamingScreenAppData *data, OVY_MANAGER *ovyMan) {
         data->unk_014 = 1;
         String_Delete(string);
     }
+}
+
+void sub_02083614(BgConfig *bgConfig, Window *a1) {
+    for (int i = 0; i < 10; ++i) {
+        RemoveWindow(&a1[i]);
+    }
+    FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_SUB_0);
+    FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_2);
+    FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_1);
+    FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_0);
+    FreeToHeapExplicit(HEAP_ID_NAMING_SCREEN, bgConfig);
+}
+
+void sub_02083654(NamingScreenAppData *data, NARC *narc) {
+    BgConfig *bgConfig = data->bgConfig;
+
+    GfGfxLoader_GXLoadPalFromOpenNarc(narc, 0, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0x60, HEAP_ID_NAMING_SCREEN);
+    GfGfxLoader_GXLoadPal(NARC_a_0_1_4, 71, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0, 0x20, HEAP_ID_NAMING_SCREEN);
+    BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB_BLACK);
+
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 2, bgConfig, GF_BG_LYR_MAIN_2, 0, 0x2000, TRUE, HEAP_ID_NAMING_SCREEN);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 4, bgConfig, GF_BG_LYR_MAIN_2, 0, 0x600, TRUE, HEAP_ID_NAMING_SCREEN);
+
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 2, bgConfig, GF_BG_LYR_MAIN_1, 0, 0x2000, TRUE, HEAP_ID_NAMING_SCREEN);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 6, bgConfig, GF_BG_LYR_MAIN_1, 0, 0x380, TRUE, HEAP_ID_NAMING_SCREEN);
+
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 7, bgConfig, GF_BG_LYR_MAIN_0, 0, 0x380, TRUE, HEAP_ID_NAMING_SCREEN);
+
+    LoadFontPal1(GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0x180, HEAP_ID_NAMING_SCREEN);
+    LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_SUB_0, 0x100, 10, Options_GetFrame(data->unk_018), HEAP_ID_NAMING_SCREEN);
+    LoadFontPal1(GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0x180, HEAP_ID_NAMING_SCREEN);
+
+    data->unk_4AC = GfGfxLoader_GetCharDataFromOpenNarc(narc, 16, TRUE, &data->unk_4B0, HEAP_ID_NAMING_SCREEN);
 }
