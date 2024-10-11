@@ -18,354 +18,6 @@
 
 	.text
 
-	thumb_func_start sub_02083334
-sub_02083334: ; 0x02083334
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x10
-	add r4, r0, #0
-	add r0, r1, #0
-	bl OverlayManager_GetArgs
-	add r7, r0, #0
-	ldr r0, _020834E4 ; =0x0000045C
-	mov r1, #4
-	str r1, [r4, r0]
-	add r0, #0xc
-	add r0, r4, r0
-	mov r1, #0
-	bl sub_0208423C
-	ldr r6, _020834E8 ; =0x00000464
-	mov r0, #0x16
-	ldr r3, [r4, r6]
-	mov r5, #0xc
-	lsl r0, r0, #4
-	lsl r1, r3, #0x18
-	mul r5, r3
-	add r3, r4, r5
-	add r5, r6, #4
-	ldr r0, [r4, r0]
-	ldr r3, [r3, r5]
-	lsr r1, r1, #0x18
-	mov r2, #0
-	bl BgSetPosTextAndCommit
-	ldr r3, [r4, r6]
-	mov r5, #0xc
-	mov r0, #0x16
-	lsl r0, r0, #4
-	lsl r1, r3, #0x18
-	mul r5, r3
-	add r3, r4, r5
-	add r6, #8
-	ldr r0, [r4, r0]
-	ldr r3, [r3, r6]
-	lsr r1, r1, #0x18
-	mov r2, #3
-	bl BgSetPosTextAndCommit
-	ldr r6, _020834E8 ; =0x00000464
-	mov r0, #1
-	ldr r1, [r4, r6]
-	mov r5, #0xc
-	add r3, r1, #0
-	eor r3, r0
-	mov r0, #0x16
-	lsl r0, r0, #4
-	lsl r1, r3, #0x18
-	mul r5, r3
-	add r3, r4, r5
-	add r5, r6, #4
-	ldr r0, [r4, r0]
-	ldr r3, [r3, r5]
-	lsr r1, r1, #0x18
-	mov r2, #0
-	bl BgSetPosTextAndCommit
-	ldr r1, [r4, r6]
-	mov r0, #1
-	add r3, r1, #0
-	eor r3, r0
-	mov r5, #0xc
-	mov r0, #0x16
-	lsl r0, r0, #4
-	lsl r1, r3, #0x18
-	mul r5, r3
-	add r3, r4, r5
-	add r6, #8
-	ldr r0, [r4, r0]
-	ldr r3, [r3, r6]
-	lsr r1, r1, #0x18
-	mov r2, #3
-	bl BgSetPosTextAndCommit
-	mov r1, #0x46
-	ldr r0, _020834EC ; =0x0000FFFF
-	lsl r1, r1, #2
-	strh r0, [r4, r1]
-	ldr r0, [r7, #0x18]
-	cmp r0, #0
-	beq _020833E8
-	add r1, r4, r1
-	mov r2, #0x20
-	bl CopyStringToU16Array
-_020833E8:
-	add r1, r4, #0
-	mov r0, #1
-	add r1, #0xd8
-	mov r2, #0x40
-	bl MIi_CpuClear16
-	ldr r0, [r4]
-	cmp r0, #1
-	bne _0208342E
-	mov r0, #0x12
-	bl AllocMonZeroed
-	mov r3, #0xa
-	str r3, [sp]
-	str r3, [sp, #4]
-	str r3, [sp, #8]
-	str r3, [sp, #0xc]
-	ldr r1, [r4, #4]
-	add r5, r0, #0
-	mov r2, #5
-	bl CreateMon
-	add r0, r5, #0
-	bl Mon_GetBoxMon
-	add r2, r0, #0
-	mov r0, #0x5a
-	lsl r0, r0, #2
-	ldr r0, [r4, r0]
-	mov r1, #0
-	bl BufferBoxMonSpeciesName
-	add r0, r5, #0
-	bl FreeToHeap
-_0208342E:
-	ldr r0, [r7, #0x44]
-	cmp r0, #0
-	beq _02083438
-	mov r0, #1
-	str r0, [r4, #0x14]
-_02083438:
-	ldr r2, [r4]
-	mov r1, #0x5a
-	lsl r1, r1, #2
-	lsl r3, r2, #2
-	ldr r2, _020834F0 ; =_021020B4
-	ldr r0, [r4, r1]
-	add r1, r1, #4
-	ldr r2, [r2, r3]
-	ldr r1, [r4, r1]
-	mov r3, #0x12
-	bl ReadMsgData_ExpandPlaceholders
-	mov r1, #0x5e
-	lsl r1, r1, #2
-	str r0, [r4, r1]
-	add r0, r1, #0
-	sub r0, #0x10
-	sub r1, #0xc
-	ldr r0, [r4, r0]
-	ldr r1, [r4, r1]
-	mov r2, #9
-	mov r3, #0x12
-	bl ReadMsgData_ExpandPlaceholders
-	mov r1, #0x5f
-	lsl r1, r1, #2
-	str r0, [r4, r1]
-	sub r1, #0x10
-	ldr r0, [r4, r1]
-	mov r1, #7
-	bl NewString_ReadMsgData
-	mov r1, #0x61
-	lsl r1, r1, #2
-	str r0, [r4, r1]
-	sub r1, #0x6c
-	add r0, r4, r1
-	bl StringLength
-	mov r1, #0x56
-	lsl r1, r1, #2
-	strh r0, [r4, r1]
-	mov r0, #0
-	mov r2, #1
-	str r0, [r4, #0x1c]
-	str r2, [r4, #0x20]
-	sub r1, r2, #2
-	str r1, [r4, #0x24]
-	str r1, [r4, #0x28]
-	str r2, [r4, #0x30]
-	ldr r2, _020834F4 ; =0x00000484
-	str r0, [r4, #0x34]
-	str r1, [r4, r2]
-	add r1, r2, #4
-	str r0, [r4, r1]
-	add r2, #8
-	str r0, [r4, r2]
-	ldr r1, [r4, #0xc]
-	ldr r2, _020834EC ; =0x0000FFFF
-	lsl r1, r1, #1
-	add r1, r4, r1
-	add r1, #0xd8
-	strh r2, [r1]
-	mov r1, #0x49
-	add r3, r4, #0
-	add r2, r0, #0
-	lsl r1, r1, #4
-_020834BE:
-	add r0, r0, #1
-	str r2, [r3, r1]
-	add r3, r3, #4
-	cmp r0, #7
-	blt _020834BE
-	ldr r0, [r4]
-	cmp r0, #4
-	bne _020834D8
-	ldr r0, _020834F8 ; =0x0000049C
-	mov r1, #1
-	add sp, #0x10
-	str r1, [r4, r0]
-	pop {r3, r4, r5, r6, r7, pc}
-_020834D8:
-	mov r0, #0x49
-	mov r1, #1
-	lsl r0, r0, #4
-	str r1, [r4, r0]
-	add sp, #0x10
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_020834E4: .word 0x0000045C
-_020834E8: .word 0x00000464
-_020834EC: .word 0x0000FFFF
-_020834F0: .word _021020B4
-_020834F4: .word 0x00000484
-_020834F8: .word 0x0000049C
-	thumb_func_end sub_02083334
-
-	thumb_func_start sub_020834FC
-sub_020834FC: ; 0x020834FC
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x14
-	add r5, r0, #0
-	add r0, r1, #0
-	bl OverlayManager_GetArgs
-	add r4, r0, #0
-	ldr r0, [r4, #0x44]
-	cmp r0, #0
-	beq _0208360C
-	mov r0, #0xc8
-	mov r1, #0x12
-	bl String_New
-	add r7, r0, #0
-	mov r0, #6
-	mov r1, #0
-	lsl r0, r0, #6
-	str r1, [r5, r0]
-	ldr r0, [r4, #0x48]
-	bl PCStorage_GetActiveBox
-	add r6, r0, #0
-	ldr r0, [r4, #0x48]
-	bl PCStorage_FindFirstBoxWithEmptySlot
-	str r0, [sp, #0x10]
-	mov r0, #0x5a
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	ldr r2, [r4, #0x48]
-	mov r1, #1
-	add r3, r6, #0
-	bl BufferPCBoxName
-	ldr r0, [sp, #0x10]
-	cmp r6, r0
-	beq _02083560
-	mov r0, #0x5a
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	ldr r2, [r4, #0x48]
-	ldr r3, [sp, #0x10]
-	mov r1, #2
-	bl BufferPCBoxName
-	ldr r0, [r4, #0x44]
-	add r0, r0, #2
-	str r0, [r4, #0x44]
-	b _02083570
-_02083560:
-	mov r0, #0x5a
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	ldr r2, [r4, #0x48]
-	mov r1, #2
-	add r3, r6, #0
-	bl BufferPCBoxName
-_02083570:
-	mov r0, #0x56
-	lsl r0, r0, #2
-	ldrh r0, [r5, r0]
-	cmp r0, #0
-	beq _02083586
-	add r0, r5, #0
-	add r0, #0xd8
-	bl sub_02082EC0
-	cmp r0, #0
-	beq _020835BC
-_02083586:
-	mov r0, #0x12
-	bl AllocMonZeroed
-	mov r3, #0
-	str r3, [sp]
-	str r3, [sp, #4]
-	str r3, [sp, #8]
-	str r3, [sp, #0xc]
-	ldr r1, [r5, #4]
-	add r6, r0, #0
-	mov r2, #1
-	bl CreateMon
-	add r0, r6, #0
-	bl Mon_GetBoxMon
-	add r2, r0, #0
-	mov r0, #0x5a
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	mov r1, #0
-	bl BufferBoxMonSpeciesName
-	add r0, r6, #0
-	bl FreeToHeap
-	b _020835EA
-_020835BC:
-	mov r1, #0x56
-	lsl r1, r1, #2
-	ldrh r1, [r5, r1]
-	ldr r0, _02083610 ; =0x0000FFFF
-	lsl r1, r1, #1
-	add r1, r5, r1
-	add r1, #0xd8
-	strh r0, [r1]
-	add r1, r5, #0
-	add r0, r7, #0
-	add r1, #0xd8
-	bl CopyU16ArrayToString
-	mov r1, #0
-	str r1, [sp]
-	mov r0, #0x5a
-	str r1, [sp, #4]
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	add r2, r7, #0
-	add r3, r1, #0
-	bl BufferString
-_020835EA:
-	mov r1, #0x5a
-	lsl r1, r1, #2
-	ldr r0, [r5, r1]
-	add r1, #0xc
-	ldr r1, [r5, r1]
-	ldr r2, [r4, #0x44]
-	mov r3, #0x12
-	bl ReadMsgData_ExpandPlaceholders
-	mov r1, #6
-	lsl r1, r1, #6
-	str r0, [r5, r1]
-	mov r0, #1
-	str r0, [r5, #0x14]
-	add r0, r7, #0
-	bl String_Delete
-_0208360C:
-	add sp, #0x14
-	pop {r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02083610: .word 0x0000FFFF
-	thumb_func_end sub_020834FC
-
 	thumb_func_start sub_02083614
 sub_02083614: ; 0x02083614
 	push {r4, r5, r6, lr}
@@ -3816,8 +3468,8 @@ _02101D54:
 	.byte 0x70, 0x00, 0x00, 0x00, 0x4C, 0x00, 0x00, 0x00, 0x48, 0x00, 0x00, 0x00
 
 	.global _02101D60
-_02101D60:
-	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+_02101D60: // GraphicsModes
+	.word 0x00000001, 0x00000000, 0x00000000, 0x00000000
 _02101D70:
 	.byte 0x14, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00
 _02101D80:
@@ -3839,9 +3491,10 @@ _02101DF2:
 	.short 0x00F6, 0x00F7, 0x00E7, 0x0001, 0x00EE, 0x00EF, 0xFFFF, 0x0000
 
 	.global _02101E10
-_02101E10:
-	.short 0x0000, 0x0000, 0x0000, 0x0000, 0x0800, 0x0000, 0x0000, 0x0000
-	.short 0x0001, 0x041F, 0x0000, 0x0000, 0x0000, 0x0000
+_02101E10: // BgTemplate
+	.word 0x00000000, 0x00000000, 0x00000800, 0x00000000
+	.byte 0x01, 0x00, 0x1F, 0x04, 0x00, 0x00, 0x00, 0x00
+	.word 0x00000000
 _02101E2C:
 	.short 0x01DE, 0x01DE
 	.short 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE
@@ -3862,8 +3515,10 @@ _02101EB8:
 	.short 0x013F, 0x0140, 0x0141, 0x0142, 0x0143, 0x0144, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01BB, 0x01BC, 0xFFFF
 
 	.global _02101ED4
-_02101ED4:
-	.short 0x0000, 0x0000, 0x0000, 0x0000, 0x1000, 0x0000, 0x0000, 0x0000, 0x0003, 0x041E, 0x0100, 0x0000, 0x0000, 0x0000
+_02101ED4: // BgTemplate
+	.word 0x00000000, 0x00000000, 0x00001000, 0x00000000
+	.byte 0x03, 0x00, 0x1E, 0x04, 0x00, 0x01, 0x00, 0x00
+	.word 0x00000000
 _02101EF0:
 	.short 0x0145, 0x0146, 0x0147, 0x0148, 0x0149, 0x014A, 0x014B, 0x014C, 0x014D, 0x014E, 0x01DE, 0x01AD, 0x01AE, 0xFFFF
 _02101F0C:
@@ -3880,8 +3535,10 @@ _02101F98:
 	.short 0x01AD, 0x01AE, 0x01C4, 0x01C5, 0x01AB, 0x01AC, 0x01DE, 0x01DE, 0x01DE, 0x01BB, 0x01BC, 0x01DE, 0x01DE, 0xFFFF
 
 	.global _02101FB4
-_02101FB4:
-	.short 0x0000, 0x0000, 0x0000, 0x0000, 0x1000, 0x0000, 0x0000, 0x0000, 0x0003, 0x041C, 0x0200, 0x0000, 0x0000, 0x0000
+_02101FB4: // BgTemplate
+	.word 0x00000000, 0x00000000, 0x00001000, 0x00000000
+	.byte 0x03, 0x00, 0x1C, 0x04, 0x00, 0x02, 0x00, 0x00
+	.word 0x00000000
 _02101FD0:
 	.short 0x01B4, 0x01B5, 0x01B2, 0x01B3, 0x01B9, 0x01BA, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0xFFFF
 _02101FEC:
@@ -3896,12 +3553,18 @@ _0210205C:
 	.short 0x0159, 0x015A, 0x015B, 0x015C, 0x015D, 0x015E, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01BB, 0x01BC, 0xFFFF
 
 	.global _02102078
-_02102078:
-	.short 0x0000, 0x0000, 0x0000, 0x0000, 0x0800, 0x0000, 0x0000, 0x0000, 0x0001, 0x001A, 0x0300, 0x0000, 0x0000, 0x0000, 0x008E, 0x0062, 0x0093, 0x00A1, 0x002F, 0x0001, 0x007C, 0x0074, 0x0060, 0x007E, 0x00F1, 0x0091, 0x0030, 0x00E2, 0xFFFF
+_02102078:  // BgTemplate
+	.word 0x00000000, 0x00000000, 0x00000800, 0x00000000
+	.byte 0x01, 0x00, 0x1A, 0x00, 0x00, 0x03, 0x00, 0x00
+	.word 0x00000000
+
+_02102094:
+	.short 0x008E, 0x0062, 0x0093, 0x00A1, 0x002F, 0x0001, 0x007C, 0x0074, 0x0060, 0x007E, 0x00F1, 0x0091, 0x0030, 0x00E2, 0xFFFF
 
 	.balign 4, 0
+	.global _021020B4
 _021020B4:
-	.short 0x0000, 0x0000, 0x0001, 0x0000, 0x0002, 0x0000, 0x0003, 0x0000, 0x0004, 0x0000, 0x0005, 0x0000, 0x0006, 0x0000, 0x0008, 0x0000
+	.word 0x00000000, 0x00000001, 0x00000002, 0x00000003, 0x00000004, 0x00000005, 0x00000006, 0x00000008
 _021020D4:
 	.short 0x0121, 0x0122, 0x0123, 0x0124, 0x0125, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0xFFFF
 _021020F8:
@@ -3909,10 +3572,10 @@ _021020F8:
 _0210211C:
 	.short 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0xFFFF
 	.global _02102140
-_02102140:
-	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+_02102140: // GraphicsBanks
+	.word 0x00000001, 0x00000000, 0x00000004, 0x00000000
+	.word 0x00000002, 0x00000000, 0x00000100, 0x00000000
+	.word 0x00000000, 0x00000000
 _02102168:
 	.word  0,  0
 	.word  0, -1

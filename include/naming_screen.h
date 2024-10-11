@@ -18,7 +18,7 @@ typedef struct NamingScreenArgs {
     String *nameInputString;
     u16 unk1C[20];
     int unk44;
-    int unk48;
+    PCStorage *unk48;
     Options *options;
     int *unk50;
 } NamingScreenArgs;

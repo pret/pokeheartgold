@@ -35,11 +35,13 @@ typedef struct NamingScreenAppData {
     int unk_008;
     int unk_00C;
     int unk_010;
-    u8 filler_014[0x4];
+    int unk_014;
     Options *unk_018;
     int unk_01C;
     int unk_020;
-    u8 filler_024[0xC];
+    int unk_024;
+    int unk_028;
+    int unk_02C;
     int unk_030;
     int unk_034;
     u8 unk_038[0x2];
@@ -82,11 +84,13 @@ typedef struct NamingScreenAppData {
     int unk_458;
     int unk_45C;
     int unk_460;
-    u8 unk_464[4];
-    u8 unk_468[4];
-    u8 filler_46C[0x24];
-    int unk_490[6];
-    int unk_4A8;
+    int unk_464;
+    VecFx32 unk_468[2];
+    u8 filler_480[4];
+    int unk_484;
+    int unk_488;
+    int unk_48C;
+    int unk_490[7];
     void *unk_4AC;
     NNSG2dCharacterData *unk_4B0;
     void *unk_4B4;
@@ -112,7 +116,7 @@ BOOL sub_02082EC0(const u16 *s);
 void sub_02083160(NamingScreenAppData *data, NamingScreenArgs *args);
 void sub_02083184(void);
 void sub_020831A4(BgConfig *bgConfig);
-void sub_020832E4(int a0);
+void sub_020832E4(GFPlaneToggle enable);
 void sub_02083334(NamingScreenAppData *data, OVY_MANAGER *ovyMan);
 void sub_020834FC(NamingScreenAppData *data, OVY_MANAGER *ovyMan);
 void sub_02083614(BgConfig *bgConfig, void *a1);
@@ -120,8 +124,9 @@ void sub_02083654(NamingScreenAppData *data, NARC *narc);
 void sub_0208377C(void);
 void sub_020837AC(NamingScreenAppData *data, NARC *narc);
 void sub_020839EC(NamingScreenAppData *data);
-void sub_02083D34(BgConfig *bgConfig, void *a1, void *a2, int a3, void *a4, void *a5, void *a6, const u16 *a7);
+void sub_02083D34(BgConfig *bgConfig, void *a1, void *a2, int a3, int *a4, VecFx32 *a5, void *a6, const u16 *a7);
 void sub_02083F9C(NamingScreenAppData *data, OVY_MANAGER *ovyMan, NARC *narc);
+void sub_0208423C(VecFx32 *a0, int a1);
 void sub_0208432C(NamingScreenAppData *data);
 void sub_02084740(void *a0, u16 *a1, u16 a2, void *a3, void *a4, String *a5);
 void sub_02084830(u16 (*a0)[13], int a1);
@@ -131,6 +136,8 @@ void sub_02084FCC(NamingScreenAppData *data);
 void sub_02084500(void *a0);
 
 static NamingScreenAppData *_021D43B0;
+
+extern const int _021020B4[8];
 
 BOOL NamingScreenApp_Init(OVY_MANAGER *ovyMan, int *pState) {
     NamingScreenAppData *data;
@@ -169,7 +176,7 @@ BOOL NamingScreenApp_Init(OVY_MANAGER *ovyMan, int *pState) {
         sub_02084740(data->unk_3F8, data->unk_0D8, data->unk_158, &data->unk_15A, data->unk_4C4, data->unk_17C);
         sub_02004EC4(0x34, 0, 0);
         BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 16, 1, HEAP_ID_NAMING_SCREEN);
-        sub_020832E4(1);
+        sub_020832E4(GF_PLANE_TOGGLE_ON);
         GfGfx_SetMainDisplay(PM_LCD_BOTTOM);
         NARC_Delete(narc);
         ++(*pState);
@@ -238,7 +245,7 @@ BOOL NamingScreenApp_Main(OVY_MANAGER *ovyMan, int *pState) {
         case 6:
             if (!TextPrinterCheckActive(data->unk_458)) {
                 PlaySE(SEQ_SE_DP_PIRORIRO);
-                ++data->unk_4A8;
+                ++data->unk_490[6];
                 data->unk_5CC = 0;
                 data->unk_45C = 7;
             }
@@ -251,7 +258,7 @@ BOOL NamingScreenApp_Main(OVY_MANAGER *ovyMan, int *pState) {
             }
             break;
         }
-        sub_02083D34(data->bgConfig, data->unk_3B8, &data->unk_45C, data->unk_460, data->unk_464, data->unk_468, data->unk_32C, data->unk_4B0->pRawData);
+        sub_02083D34(data->bgConfig, data->unk_3B8, &data->unk_45C, data->unk_460, &data->unk_464, data->unk_468, data->unk_32C, data->unk_4B0->pRawData);
         sub_02084F3C(data->unk_490, data->unk_32C, data->unk_460);
         sub_02084500(data->unk_038);
         break;
@@ -498,7 +505,7 @@ void sub_020831A4(BgConfig *bgConfig) {
         BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_0);
     }
 
-    sub_020832E4(0);
+    sub_020832E4(GF_PLANE_TOGGLE_OFF);
     BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 0x20, 0, HEAP_ID_NAMING_SCREEN);
     BG_ClearCharDataRange(GF_BG_LYR_SUB_0, 0x20, 0, HEAP_ID_NAMING_SCREEN);
     GX_SetVisibleWnd(GX_WNDMASK_W0);
@@ -509,13 +516,90 @@ void sub_020831A4(BgConfig *bgConfig) {
     G2S_BlendNone();
 }
 
-void sub_020832E4(int a0) {
-    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, a0);
-    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, a0);
-    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, a0);
+void sub_020832E4(GFPlaneToggle enable) {
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, enable);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, enable);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, enable);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_OFF);
-    GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, a0);
-    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG0, a0);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, enable);
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG0, enable);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
+}
+
+void sub_02083334(NamingScreenAppData *data, OVY_MANAGER *ovyMan) {
+    NamingScreenArgs *args = OverlayManager_GetArgs(ovyMan);
+
+    data->unk_45C = 4;
+    sub_0208423C(data->unk_468, 0);
+    BgSetPosTextAndCommit(data->bgConfig, data->unk_464, BG_POS_OP_SET_X, data->unk_468[data->unk_464].x);
+    BgSetPosTextAndCommit(data->bgConfig, data->unk_464, BG_POS_OP_SET_Y, data->unk_468[data->unk_464].y);
+    BgSetPosTextAndCommit(data->bgConfig, data->unk_464 ^ 1, BG_POS_OP_SET_X, data->unk_468[data->unk_464 ^ 1].x);
+    BgSetPosTextAndCommit(data->bgConfig, data->unk_464 ^ 1, BG_POS_OP_SET_Y, data->unk_468[data->unk_464 ^ 1].y);
+    data->unk_118[0] = EOS;
+    if (args->nameInputString != NULL) {
+        CopyStringToU16Array(args->nameInputString, data->unk_118, 32);
+    }
+    MI_CpuFill16(data->unk_0D8, 1, sizeof(data->unk_0D8));
+    if (data->type == NAME_SCREEN_POKEMON) {
+        Pokemon *mon = AllocMonZeroed(HEAP_ID_NAMING_SCREEN);
+        CreateMon(mon, data->unk_004, 5, 10, 10, 10, 10, 10);
+        BufferBoxMonSpeciesName(data->msgFormat, 0, Mon_GetBoxMon(mon));
+        FreeToHeap(mon);
+    }
+    if (args->unk44) {
+        data->unk_014 = 1;
+    }
+    data->unk_178                = ReadMsgData_ExpandPlaceholders(data->msgFormat, data->msgData_249, _021020B4[data->type], HEAP_ID_NAMING_SCREEN);
+    data->unk_17C                = ReadMsgData_ExpandPlaceholders(data->msgFormat, data->msgData_249, msg_0249_00009, HEAP_ID_NAMING_SCREEN);
+    data->unk_184                = NewString_ReadMsgData(data->msgData_249, msg_0249_00007);
+    data->unk_158                = StringLength(data->unk_118);
+    data->unk_01C                = 0;
+    data->unk_020                = 1;
+    data->unk_024                = -1;
+    data->unk_028                = -1;
+    data->unk_030                = 1;
+    data->unk_034                = 0;
+    data->unk_484                = -1;
+    data->unk_488                = 0;
+    data->unk_48C                = 0;
+    data->unk_0D8[data->unk_00C] = EOS;
+    for (int i = 0; i < 7; ++i) {
+        data->unk_490[i] = 0;
+    }
+    if (data->type == NAME_SCREEN_UNK4) {
+        data->unk_490[3] = 1;
+    } else {
+        data->unk_490[0] = 1;
+    }
+}
+
+void sub_020834FC(NamingScreenAppData *data, OVY_MANAGER *ovyMan) {
+    NamingScreenArgs *args = OverlayManager_GetArgs(ovyMan);
+    if (args->unk44 != 0) {
+        String *string    = String_New(200, HEAP_ID_NAMING_SCREEN);
+        data->unk_180     = NULL;
+        int boxno         = PCStorage_GetActiveBox(args->unk48);
+        int nextOpenBoxNo = PCStorage_FindFirstBoxWithEmptySlot(args->unk48);
+        BufferPCBoxName(data->msgFormat, 1, args->unk48, boxno);
+        if (boxno != nextOpenBoxNo) {
+            BufferPCBoxName(data->msgFormat, 2, args->unk48, nextOpenBoxNo);
+            args->unk44 += 2;
+        } else {
+            BufferPCBoxName(data->msgFormat, 2, args->unk48, boxno);
+        }
+        if (data->unk_158 == 0 || sub_02082EC0(data->unk_0D8)) {
+            Pokemon *mon = AllocMonZeroed(HEAP_ID_NAMING_SCREEN);
+            CreateMon(mon, data->unk_004, 1, 0, 0, 0, 0, 0);
+            BufferBoxMonSpeciesName(data->msgFormat, 0, Mon_GetBoxMon(mon));
+            FreeToHeap(mon);
+        } else {
+            data->unk_0D8[data->unk_158] = EOS;
+            CopyU16ArrayToString(string, data->unk_0D8);
+            BufferString(data->msgFormat, 0, string, 0, 0, 0);
+        }
+        data->unk_180 = ReadMsgData_ExpandPlaceholders(data->msgFormat, data->msgData_197, args->unk44, HEAP_ID_NAMING_SCREEN);
+        data->unk_014 = 1;
+        String_Delete(string);
+    }
 }
