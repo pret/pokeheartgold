@@ -64,16 +64,9 @@ typedef struct NamingScreenAppData {
     String *unk_180;
     String *unk_184;
     SpriteList *unk_188;
-    u8 unk_18C[0x128];
+    GF_G2dRenderer unk_18C;
     GF_2DGfxResMan *unk_2B4[4];
-    GF_2DGfxResObj *unk_2C4;
-    GF_2DGfxResObj *unk_2C8;
-    GF_2DGfxResObj *unk_2CC;
-    GF_2DGfxResObj *unk_2D0;
-    GF_2DGfxResObj *unk_2D4;
-    GF_2DGfxResObj *unk_2D8;
-    GF_2DGfxResObj *unk_2DC;
-    GF_2DGfxResObj *unk_2E0;
+    GF_2DGfxResObj *unk_2C4[2][4];
     u8 filler_2E4[0x48];
     u8 unk_32C[0x20];
     Sprite *unk_34C;
@@ -378,10 +371,10 @@ BOOL NamingScreenApp_Exit(OVY_MANAGER *ovyMan, int *pState) {
     for (int i = 0; i < 7; ++i) {
         DestroySysTaskAndEnvironment(data->unk_39C[i]);
     }
-    sub_0200AEB0(data->unk_2C4);
-    sub_0200AEB0(data->unk_2D4);
-    sub_0200B0A8(data->unk_2C8);
-    sub_0200B0A8(data->unk_2D8);
+    sub_0200AEB0(data->unk_2C4[PM_LCD_TOP][GF_GFX_RES_TYPE_CHAR]);
+    sub_0200AEB0(data->unk_2C4[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_CHAR]);
+    sub_0200B0A8(data->unk_2C4[PM_LCD_TOP][GF_GFX_RES_TYPE_PLTT]);
+    sub_0200B0A8(data->unk_2C4[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_PLTT]);
     for (int i = 0; i < 4; ++i) {
         Destroy2DGfxResObjMan(data->unk_2B4[i]);
     }
@@ -634,4 +627,47 @@ void sub_02083654(NamingScreenAppData *data, NARC *narc) {
     LoadFontPal1(GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0x180, HEAP_ID_NAMING_SCREEN);
 
     data->unk_4AC = GfGfxLoader_GetCharDataFromOpenNarc(narc, 16, TRUE, &data->unk_4B0, HEAP_ID_NAMING_SCREEN);
+}
+
+void sub_0208377C(void) {
+    extern const ObjCharTransferTemplate _02101D70;
+    ObjCharTransferTemplate tmplate = _02101D70;
+    ObjCharTransfer_Init(&tmplate);
+    ObjPlttTransfer_Init(20, HEAP_ID_NAMING_SCREEN);
+    ObjCharTransfer_ClearBuffers();
+    ObjPlttTransfer_Reset();
+}
+
+void sub_020837AC(NamingScreenAppData *data, NARC *narc) {
+    NNS_G2dInitOamManagerModule();
+    GX_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_32K);
+    GXS_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_32K);
+    OamManager_Create(0, 128, 0, 32, 0, 128, 0, 32, HEAP_ID_NAMING_SCREEN);
+    data->unk_188 = G2dRenderer_Init(44, &data->unk_18C, HEAP_ID_NAMING_SCREEN);
+    G2dRenderer_SetSubSurfaceCoords(&data->unk_18C, 0, FX32_CONST(256));
+
+    for (int i = 0; i < 4; ++i) {
+        data->unk_2B4[i] = Create2DGfxResObjMan(2, (GfGfxResType)i, HEAP_ID_NAMING_SCREEN);
+    }
+
+    data->unk_2C4[PM_LCD_TOP][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromOpenNarc(data->unk_2B4[GF_GFX_RES_TYPE_CHAR], narc, 10, TRUE, 0, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_NAMING_SCREEN);
+    data->unk_2C4[PM_LCD_TOP][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromOpenNarc(data->unk_2B4[GF_GFX_RES_TYPE_PLTT], narc, 1, FALSE, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 9, HEAP_ID_NAMING_SCREEN);
+    data->unk_2C4[PM_LCD_TOP][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromOpenNarc(data->unk_2B4[GF_GFX_RES_TYPE_CELL], narc, 12, TRUE, 0, GF_GFX_RES_TYPE_CELL, HEAP_ID_NAMING_SCREEN);
+    data->unk_2C4[PM_LCD_TOP][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromOpenNarc(data->unk_2B4[GF_GFX_RES_TYPE_ANIM], narc, 14, TRUE, 0, GF_GFX_RES_TYPE_ANIM, HEAP_ID_NAMING_SCREEN);
+    if (data->type == NAME_SCREEN_POKEMON) {
+        data->unk_4B4 = GfGfxLoader_GetCharData(NARC_poketool_icongra_poke_icon, GetMonIconNaixEx(data->unk_004, FALSE, data->unk_008), FALSE, &data->unk_4B8, HEAP_ID_NAMING_SCREEN);
+        DC_FlushRange(data->unk_4B8, 0x200);
+        data->unk_4BC = GfGfxLoader_GetPlttData(NARC_poketool_icongra_poke_icon, sub_02074490(), &data->unk_4C0, HEAP_ID_NAMING_SCREEN);
+        DC_FlushRange(data->unk_4C0, 0x80);
+    }
+
+    data->unk_2C4[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromOpenNarc(data->unk_2B4[GF_GFX_RES_TYPE_CHAR], narc, 11, TRUE, 1, NNS_G2D_VRAM_TYPE_2DSUB, HEAP_ID_NAMING_SCREEN);
+    data->unk_2C4[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromOpenNarc(data->unk_2B4[GF_GFX_RES_TYPE_PLTT], narc, 1, FALSE, 1, NNS_G2D_VRAM_TYPE_2DSUB, 3, HEAP_ID_NAMING_SCREEN);
+    data->unk_2C4[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromOpenNarc(data->unk_2B4[GF_GFX_RES_TYPE_CELL], narc, 13, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_NAMING_SCREEN);
+    data->unk_2C4[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromOpenNarc(data->unk_2B4[GF_GFX_RES_TYPE_ANIM], narc, 15, TRUE, 1, GF_GFX_RES_TYPE_ANIM, HEAP_ID_NAMING_SCREEN);
+
+    sub_0200ACF0(data->unk_2C4[PM_LCD_TOP][GF_GFX_RES_TYPE_CHAR]);
+    sub_0200ACF0(data->unk_2C4[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_CHAR]);
+    sub_0200AF94(data->unk_2C4[PM_LCD_TOP][GF_GFX_RES_TYPE_PLTT]);
+    sub_0200AF94(data->unk_2C4[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_PLTT]);
 }
