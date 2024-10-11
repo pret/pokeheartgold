@@ -127,7 +127,7 @@ ov01_02200900: ; 0x02200900
 	bl MapObject_GetID
 	str r0, [r5, #0x14]
 	add r0, r4, #0
-	bl sub_0205F254
+	bl MapObject_GetMapID
 	str r0, [r5, #0x18]
 	mov r0, #1
 	pop {r3, r4, r5, pc}

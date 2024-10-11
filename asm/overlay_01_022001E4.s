@@ -568,7 +568,7 @@ ov01_0220059C: ; 0x0220059C
 	bl MapObject_GetID
 	str r0, [r4, #8]
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F254
+	bl MapObject_GetMapID
 	str r0, [r4, #0xc]
 	mov r0, #6
 	lsl r0, r0, #0xc

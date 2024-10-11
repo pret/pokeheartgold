@@ -8,7 +8,7 @@
 .public sub_0205F09C
 .public sub_0205F0F8
 .public MapObject_GetID
-.public sub_0205F254
+.public MapObject_GetMapID
 .public MapObject_GetSpriteID
 .public MapObject_GetFacingDirection
 .public sub_0205F484

@@ -10,7 +10,7 @@
 .public sub_0205F09C
 .public sub_0205F0A8
 .public MapObject_GetID
-.public sub_0205F254
+.public MapObject_GetMapID
 .public sub_0205F504
 .public MapObject_GetCurrentX
 .public MapObject_GetCurrentY

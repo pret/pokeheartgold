@@ -126,7 +126,7 @@ ov01_021FDAC0: ; 0x021FDAC0
 	bl MapObject_GetID
 	str r0, [r4]
 	ldr r0, [r4, #0x20]
-	bl sub_0205F254
+	bl MapObject_GetMapID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x20]
 	bl MapObject_GetSpriteID
@@ -776,7 +776,7 @@ ov01_021FDFD4: ; 0x021FDFD4
 	bl MapObject_GetID
 	str r0, [r4]
 	ldr r0, [r4, #0x20]
-	bl sub_0205F254
+	bl MapObject_GetMapID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x20]
 	bl MapObject_GetSpriteID

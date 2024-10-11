@@ -13,7 +13,7 @@ typedef struct SavedMapObject {
     s8 initialFacing;
     s8 currentFacing;
     s8 nextFacing;
-    u16 unk10;
+    u16 mapId;
     u16 spriteId;
     u16 type;
     u16 flagId;
@@ -36,7 +36,7 @@ struct MapObjectManager { // declared field_system.h
     u32 unk8;
     u32 priority;
     u8 unk10[4];
-    NARC *mmodel_narc;
+    NARC *mapModelNarc;
     u32 unk18;
     u8 unk1C[0x108];
     LocalMapObject *objects;
@@ -48,8 +48,8 @@ typedef void (*LocalMapObject_UnkCallback)(LocalMapObject *object);
 struct LocalMapObject { // declared field_system.h
     /*0x000*/ u32 flags;
     /*0x004*/ u32 flags2;
-    /*0x008*/ int id;
-    /*0x00C*/ int unkC; // some kind of flag ID
+    /*0x008*/ u32 id;
+    /*0x00C*/ u32 mapId;
     /*0x010*/ int spriteId;
     /*0x014*/ int movement;
     /*0x018*/ int type;
@@ -163,7 +163,7 @@ typedef struct MapObjectInitArgs {
 // FIXME: Some of these declarations are static and don't belong in here.
 MapObjectManager *MapObjectManager_Init(FieldSystem *fieldSystem, u32 objectCount, u32 priority);
 void MapObjectManager_Delete(MapObjectManager *manager);
-void sub_0205E104(MapObjectManager *manager, u32 unused, u32 flagId, u32 objectCount, ObjectEvent *objectEvents);
+void sub_0205E104(MapObjectManager *manager, u32 unused, u32 mapId, u32 objectCount, ObjectEvent *objectEvents);
 LocalMapObject *MapObject_Create(MapObjectManager *manager, u32 x, u32 z, u32 direction, u32 sprite, u32 movement, u32 mapNo);
 LocalMapObject *MapObject_CreateWithParams(MapObjectManager *manager, u32 x, u32 y, u32 direction, u32 sprite, u32 movement, u32 mapNo, u32 param0, u32 param1, u32 param2);
 LocalMapObject *MapObject_CreateFromObjectEventWithId(MapObjectManager *mapObjectManager, u16 objectId, u32 numObjects, u32 mapId, const ObjectEvent *templates);
@@ -183,8 +183,8 @@ LocalMapObject *MapObjectManager_GetFirstActiveObjectByID(MapObjectManager *mana
 LocalMapObject *MapObjectManager_GetFirstActiveObjectWithMovement(MapObjectManager *manager, u32 movement);
 BOOL MapObjectManager_GetNextObjectWithFlagFromIndex(MapObjectManager *manager, LocalMapObject **objectDest, s32 *index, MapObjectFlagBits flag);
 u32 sub_0205F09C(LocalMapObject *object, u32 param1);
-BOOL sub_0205F0A8(LocalMapObject *object, u32 mapId, u32 flagId);
-BOOL sub_0205F0F8(LocalMapObject *object, u32 spriteId, u32 mapId, u32 flagId);
+BOOL sub_0205F0A8(LocalMapObject *object, u32 objectId, u32 mapId);
+BOOL sub_0205F0F8(LocalMapObject *object, u32 spriteId, u32 objectId, u32 mapId);
 u32 MapObjectManager_GetObjectCount(MapObjectManager *manager);
 void MapObjectManager_SetFlagsBits(MapObjectManager *manager, u32 bits);
 void MapObjectManager_ClearFlagsBits(MapObjectManager *manager, u32 bits);
@@ -196,21 +196,16 @@ LocalMapObject *MapObjectManager_GetObjects(MapObjectManager *manager);
 void MapObjectArray_NextObject(LocalMapObject **objects);
 void MapObjectArray_NextObject2(LocalMapObject **objects);
 FieldSystem *MapObjectManager_GetFieldSystem(MapObjectManager *manager);
-void FldObjSys_SetMModelNarc(MapObjectManager *manager, NARC *mmodel_narc);
-NARC *FldObjSys_GetMModelNarc(MapObjectManager *manager);
-void MapObject_SetFlagsWord(LocalMapObject *object, u32 bits);
-u32 MapObject_GetFlagsWord(LocalMapObject *object);
+void MapObjectManager_SetMapModelNarc(MapObjectManager *manager, NARC *mapModelNarc);
+NARC *MapObjectManager_GetMapModelNarc(MapObjectManager *manager);
+u32 MapObject_GetFlags(LocalMapObject *object);
 void MapObject_SetFlagsBits(LocalMapObject *mapObject, MapObjectFlagBits bits);
 void MapObject_ClearFlagsBits(LocalMapObject *mapObject, MapObjectFlagBits bits);
-u32 MapObject_GetFlagsBits(LocalMapObject *object, MapObjectFlagBits mask);
+u32 MapObject_GetFlagsBitsMask(LocalMapObject *object, MapObjectFlagBits bits);
 BOOL MapObject_TestFlagsBits(LocalMapObject *object, MapObjectFlagBits bits);
-void MapObject_SetFlags2Word(LocalMapObject *object, u32 bits);
-u32 MapObject_GetFlags2Word(LocalMapObject *object);
-u32 MapObject_GetFlags2Mask(LocalMapObject *object, u32 mask);
-void MapObject_SetID(LocalMapObject *mapObject, u32 id);
-u32 MapObject_GetID(LocalMapObject *obj);
-void sub_0205F250(LocalMapObject *object, u32 a1);
-u32 sub_0205F254(LocalMapObject *obj);
+void MapObject_SetID(LocalMapObject *object, u32 id);
+u32 MapObject_GetID(LocalMapObject *object);
+u32 MapObject_GetMapID(LocalMapObject *obj);
 void MapObject_SetSpriteID(LocalMapObject *mapObject, u32 spriteId);
 u32 MapObject_GetSpriteID(LocalMapObject *mapObject);
 void MapObject_SetMovement(LocalMapObject *object, u32 movement);

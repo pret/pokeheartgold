@@ -715,7 +715,7 @@ FldObjSys_OpenMModelNarc: ; 0x021F927C
 	bl NARC_New
 	add r1, r0, #0
 	add r0, r4, #0
-	bl FldObjSys_SetMModelNarc
+	bl MapObjectManager_SetMapModelNarc
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end FldObjSys_OpenMModelNarc
@@ -723,7 +723,7 @@ FldObjSys_OpenMModelNarc: ; 0x021F927C
 	thumb_func_start FldObjSys_CloseMModelNarc
 FldObjSys_CloseMModelNarc: ; 0x021F9294
 	push {r3, lr}
-	bl FldObjSys_GetMModelNarc
+	bl MapObjectManager_GetMapModelNarc
 	bl NARC_Delete
 	pop {r3, pc}
 	thumb_func_end FldObjSys_CloseMModelNarc
@@ -740,7 +740,7 @@ ov01_021F92A0: ; 0x021F92A0
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0xe
-	bl MapObject_GetFlagsBits
+	bl MapObject_GetFlagsBitsMask
 	cmp r0, #0
 	beq _021F92DA
 	add r0, r4, #0
@@ -840,7 +840,7 @@ _021F935E:
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #8
-	bl MapObject_GetFlagsBits
+	bl MapObject_GetFlagsBitsMask
 	cmp r0, #0
 	beq _021F9370
 	mov r0, #1
@@ -855,7 +855,7 @@ ReadMModelFromNarcInternal: ; 0x021F9374
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r5, r2, #0
-	bl FldObjSys_GetMModelNarc
+	bl MapObjectManager_GetMapModelNarc
 	add r1, r4, #0
 	add r6, r0, #0
 	bl NARC_GetMemberSize

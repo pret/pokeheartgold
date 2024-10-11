@@ -17,9 +17,9 @@
 .public MapObjectManager_GetNextObjectWithFlagFromIndex
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
-.public MapObject_GetFlagsBits
+.public MapObject_GetFlagsBitsMask
 .public MapObject_TestFlagsBits
-.public sub_0205F254
+.public MapObject_GetMapID
 .public MapObject_GetType
 .public MapObject_GetFacingDirection
 .public sub_0205F328

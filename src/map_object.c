@@ -35,8 +35,8 @@ static void sub_0205EC90(LocalMapObject *object, MapObjectManager *manager);
 static void sub_0205ECE0(LocalMapObject *object);
 static void sub_0205ED18(LocalMapObject *object);
 static void MapObject_Clear(LocalMapObject *object);
-static u32 sub_0205ED90(LocalMapObject *object, u32 flagId, u32 objectEventCount, ObjectEvent *objectEvents);
-static LocalMapObject *MapObjectManager_GetFirstObjectWithID(MapObjectManager *manager, u32 objectId, u32 flagId);
+static u32 sub_0205ED90(LocalMapObject *object, u32 mapId, u32 objectEventCount, ObjectEvent *objectEvents);
+static LocalMapObject *MapObjectManager_GetFirstObjectWithIDAndMap(MapObjectManager *manager, u32 mapId, u32 flagId);
 static void sub_0205EF48(LocalMapObject *object);
 static void sub_0205EF5C(LocalMapObject *object);
 static void sub_0205EF8C(LocalMapObject *object);
@@ -57,6 +57,11 @@ static void MapObjectManager_SetPriority(MapObjectManager *manager, u32 priority
 static void MapObjectManager_SetObjects(MapObjectManager *manager, LocalMapObject *objects);
 static LocalMapObject *MapObjectManager_GetObjects3(MapObjectManager *manager);
 static void MapObjectManager_SetFieldSystem(MapObjectManager *manager, FieldSystem *fieldSystem);
+static void MapObject_SetFlags(LocalMapObject *object, u32 flags);
+static void MapObject_SetFlags2(LocalMapObject *object, u32 flags);
+static u32 MapObject_GetFlags2(LocalMapObject *object);
+static u32 MapObject_GetFlags2BitsMask(LocalMapObject *object, u32 bits);
+static void MapObject_SetMapID(LocalMapObject *object, u32 mapId);
 
 MapObjectManager *MapObjectManager_Init(FieldSystem *fieldSystem, u32 objectCount, u32 priority) {
     MapObjectManager *ret = MapObjectManager_New(objectCount);
@@ -72,15 +77,15 @@ void MapObjectManager_Delete(MapObjectManager *manager) {
     FreeToHeapExplicit(HEAP_ID_FIELD, manager);
 }
 
-void sub_0205E104(MapObjectManager *manager, u32 unused, u32 flagId, u32 objectCount, ObjectEvent *objectEvents) {
+void sub_0205E104(MapObjectManager *manager, u32 unused, u32 mapId, u32 objectCount, ObjectEvent *objectEvents) {
     u32 count               = MapObjectManager_GetObjectCount(manager);
     LocalMapObject *objects = MapObjectManager_GetObjects(manager);
 
     for (; count != 0; count--) {
         if (MapObject_IsInUse(objects) == TRUE) {
-            switch (sub_0205ED90(objects, flagId, objectCount, objectEvents)) {
+            switch (sub_0205ED90(objects, mapId, objectCount, objectEvents)) {
             case 0:
-                if (sub_0205F254(objects) != flagId && !MapObject_TestFlagsBits(objects, MAPOBJECTFLAG_UNK10)) {
+                if (MapObject_GetMapID(objects) != mapId && !MapObject_TestFlagsBits(objects, MAPOBJECTFLAG_UNK10)) {
                     MapObject_Remove(objects);
                 }
                 break;
@@ -124,7 +129,7 @@ static LocalMapObject *MapObject_CreateFromObjectEvent(MapObjectManager *manager
             return ret;
         }
     } else {
-        ret = MapObjectManager_GetFirstObjectWithID(manager, objectId, ObjectEvent_GetFlagID_AssertScriptIDIsUnset(eventPtr));
+        ret = MapObjectManager_GetFirstObjectWithIDAndMap(manager, objectId, ObjectEvent_GetFlagID_AssertScriptIDIsUnset(eventPtr));
         if (ret != NULL) {
             sub_0205F058(ret, mapNo, eventPtr);
             return ret;
@@ -138,7 +143,7 @@ static LocalMapObject *MapObject_CreateFromObjectEvent(MapObjectManager *manager
 
     MapObject_InitFromObjectEvent(ret, eventPtr, MapObjectManager_GetFieldSystem(manager));
     sub_0205EC90(ret, manager);
-    sub_0205F250(ret, mapNo);
+    MapObject_SetMapID(ret, mapNo);
     sub_0205EFA4(ret);
     sub_0205EFB4(ret);
     MapObject_SetFlagsBits(ret, MAPOBJECTFLAG_UNK2);
@@ -219,7 +224,7 @@ void MapObject_Delete(LocalMapObject *object) {
 
 void sub_0205E420(LocalMapObject *object) {
     if (sub_0205F5D4(MapObject_GetManager(object)) == TRUE) {
-        if (MapObject_GetFlagsBits(object, MAPOBJECTFLAG_UNK14) != 0) {
+        if (MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_UNK14) != 0) {
             sub_0205F498(object);
         }
         MapObject_ClearFlagsBits(object, MAPOBJECTFLAG_UNK14);
@@ -238,7 +243,7 @@ void MapObjectManager_RemoveAllActiveObjects(MapObjectManager *manager) {
     LocalMapObject *objects = MapObjectManager_GetObjects(manager);
 
     do { // BUG: does not check for if count is zero, and will always execute at least once
-        if (MapObject_GetFlagsBits(objects, MAPOBJECTFLAG_ACTIVE) != 0) {
+        if (MapObject_GetFlagsBitsMask(objects, MAPOBJECTFLAG_ACTIVE) != 0) {
             MapObject_Remove(objects);
         }
 
@@ -255,7 +260,7 @@ void sub_0205E4C8(MapObjectManager *manager) {
     LocalMapObject *objects = MapObjectManager_GetObjects(manager);
 
     do {
-        if (MapObject_GetFlagsBits(objects, MAPOBJECTFLAG_ACTIVE) != 0 && MapObject_GetFlagsBits(objects, MAPOBJECTFLAG_UNK14) != 0) {
+        if (MapObject_GetFlagsBitsMask(objects, MAPOBJECTFLAG_ACTIVE) != 0 && MapObject_GetFlagsBitsMask(objects, MAPOBJECTFLAG_UNK14) != 0) {
             sub_0205F4AC(objects);
             MapObject_NoOp(objects);
         }
@@ -349,10 +354,10 @@ void MapObjectManager_RestoreFromSave(MapObjectManager *manager, SavedMapObject 
 }
 
 static void SavedMapObject_InitFromLocalMapObject(FieldSystem *fieldSystem, LocalMapObject *localObject, SavedMapObject *savedObject) {
-    savedObject->flags         = MapObject_GetFlagsWord(localObject);
-    savedObject->flags2        = MapObject_GetFlags2Word(localObject);
+    savedObject->flags         = MapObject_GetFlags(localObject);
+    savedObject->flags2        = MapObject_GetFlags2(localObject);
     savedObject->objId         = MapObject_GetID(localObject);
-    savedObject->unk10         = sub_0205F254(localObject);
+    savedObject->mapId         = MapObject_GetMapID(localObject);
     savedObject->spriteId      = MapObject_GetSpriteID(localObject);
     savedObject->movement      = MapObject_GetMovement(localObject);
     savedObject->type          = MapObject_GetType(localObject);
@@ -391,10 +396,10 @@ static void SavedMapObject_InitFromLocalMapObject(FieldSystem *fieldSystem, Loca
 }
 
 static void LocalMapObject_InitFromSavedMapObject(LocalMapObject *localObject, SavedMapObject *savedObject) {
-    MapObject_SetFlagsWord(localObject, savedObject->flags);
-    MapObject_SetFlags2Word(localObject, savedObject->flags2);
+    MapObject_SetFlags(localObject, savedObject->flags);
+    MapObject_SetFlags2(localObject, savedObject->flags2);
     MapObject_SetID(localObject, savedObject->objId);
-    sub_0205F250(localObject, savedObject->unk10);
+    MapObject_SetMapID(localObject, savedObject->mapId);
     MapObject_SetSpriteID(localObject, savedObject->spriteId);
     MapObject_SetMovement(localObject, savedObject->movement);
     MapObject_SetType(localObject, savedObject->type);
@@ -497,7 +502,7 @@ static LocalMapObject *MapObjectManager_GetFirstInactiveObject(MapObjectManager 
     LocalMapObject *objects = MapObjectManager_GetObjects(manager);
 
     do {
-        if (MapObject_GetFlagsBits(objects, MAPOBJECTFLAG_ACTIVE) == 0) {
+        if (MapObject_GetFlagsBitsMask(objects, MAPOBJECTFLAG_ACTIVE) == 0) {
             return objects;
         }
 
@@ -610,22 +615,25 @@ static void MapObject_Clear(LocalMapObject *object) {
     memset(object, 0, sizeof(LocalMapObject));
 }
 
-static u32 sub_0205ED90(LocalMapObject *object, u32 flagId, u32 objectEventCount, ObjectEvent *objectEvents) {
+static u32 sub_0205ED90(LocalMapObject *object, u32 mapId, u32 objectEventCount, ObjectEvent *objectEvents) {
     for (; objectEventCount != 0; objectEventCount--, objectEvents++) {
         if (ObjectEvent_GetID(objectEvents) != MapObject_GetID(object)) {
             continue;
         }
 
         if (ObjectEvent_ScriptIDIsUnset(objectEvents) == TRUE) {
-            u16 flagIdUnset = ObjectEvent_GetFlagID_AssertScriptIDIsUnset(objectEvents);
+            u16 flagId = ObjectEvent_GetFlagID_AssertScriptIDIsUnset(objectEvents);
             if (MapObject_CheckFlag25(object) == TRUE) { // this and the one below cannot be combined as it doesn't match
-                if (sub_0205F544(object) == flagIdUnset) {
+                if (sub_0205F544(object) == flagId) {
                     return 1;
                 }
-            } else if (sub_0205F254(object) == flagIdUnset) {
+                // I'm assume that sometimes the ObjectEvent flags equals the mapId to signify that
+                // this is a map-wide event etc.
+            } else if (MapObject_GetMapID(object) == flagId) {
                 return 2;
             }
-        } else if (MapObject_CheckFlag25(object) == TRUE && sub_0205F544(object) == flagId) {
+            // this is indeed a weird comparsion, but I checked, it's correct
+        } else if (MapObject_CheckFlag25(object) == TRUE && sub_0205F544(object) == mapId) {
             return 2;
         }
     }
@@ -633,14 +641,12 @@ static u32 sub_0205ED90(LocalMapObject *object, u32 flagId, u32 objectEventCount
     return 0;
 }
 
-// TODO: this also gets based on the second param, which is currently labelled as flagId, but is not
-// see the note attached to sub_0205F254
-static LocalMapObject *MapObjectManager_GetFirstObjectWithID(MapObjectManager *manager, u32 objectId, u32 flagId) {
+static LocalMapObject *MapObjectManager_GetFirstObjectWithIDAndMap(MapObjectManager *manager, u32 objectId, u32 mapId) {
     s32 index = 0;
     LocalMapObject *object;
 
     while (MapObjectManager_GetNextObjectWithFlagFromIndex(manager, &object, &index, MAPOBJECTFLAG_ACTIVE) == TRUE) {
-        if (MapObject_GetID(object) == objectId && sub_0205F254(object) == flagId) {
+        if (MapObject_GetID(object) == objectId && MapObject_GetMapID(object) == mapId) {
             return object;
         }
     }
@@ -692,7 +698,7 @@ BOOL MapObjectManager_GetNextObjectWithFlagFromIndex(MapObjectManager *manager, 
     do {
         (*index)++;
 
-        if (flag == (MapObjectFlagBits)MapObject_GetFlagsBits(object, flag)) {
+        if (flag == (MapObjectFlagBits)MapObject_GetFlagsBitsMask(object, flag)) {
             *objectDest = object;
             return TRUE;
         }
@@ -726,7 +732,7 @@ static u32 FieldSystem_ResolveObjectSpriteID(FieldSystem *fieldSystem, s32 sprit
 }
 
 static void sub_0205EF8C(LocalMapObject *object) {
-    if (MapObject_GetFlagsBits(object, MAPOBJECTFLAG_UNK12) != 0) {
+    if (MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_UNK12) != 0) {
         sub_02061070(object);
     }
 }
@@ -760,7 +766,7 @@ static void sub_0205F014(LocalMapObject *object, ObjectEvent *objectEvent, u32 m
     GF_ASSERT(MapObject_CheckFlag25(object) == TRUE);
 
     MapObject_SetFlag25(object, FALSE);
-    sub_0205F250(object, mapNo);
+    MapObject_SetMapID(object, mapNo);
     MapObject_SetScriptID(object, ObjectEvent_GetScriptID(objectEvent));
     MapObject_SetFlagID(object, ObjectEvent_GetFlagID(objectEvent));
 }
@@ -771,28 +777,28 @@ static void sub_0205F058(LocalMapObject *object, u32 mapNo, ObjectEvent *objectE
     MapObject_SetFlag25(object, TRUE);
     MapObject_SetScriptID(object, ObjectEvent_GetScriptID(objectEvent));
     MapObject_SetFlagID(object, ObjectEvent_GetFlagID_AssertScriptIDIsUnset(objectEvent));
-    sub_0205F250(object, mapNo);
+    MapObject_SetMapID(object, mapNo);
 }
 
 u32 sub_0205F09C(LocalMapObject *object, u32 param1) {
     return (u32)(sub_0205F538(object) + param1);
 }
 
-BOOL sub_0205F0A8(LocalMapObject *object, u32 mapId, u32 flagId) {
+BOOL sub_0205F0A8(LocalMapObject *object, u32 objectId, u32 mapId) {
     if (!MapObject_TestFlagsBits(object, MAPOBJECTFLAG_ACTIVE)) {
         return FALSE;
     }
 
-    if (MapObject_GetID(object) != mapId) {
+    if (MapObject_GetID(object) != objectId) {
         return FALSE;
     }
 
-    if (sub_0205F254(object) != flagId) {
+    if (MapObject_GetMapID(object) != mapId) {
         if (!MapObject_CheckFlag25(object)) {
             return FALSE;
         }
 
-        if (sub_0205F544(object) != flagId) {
+        if (sub_0205F544(object) != mapId) {
             return FALSE;
         }
     }
@@ -800,7 +806,7 @@ BOOL sub_0205F0A8(LocalMapObject *object, u32 mapId, u32 flagId) {
     return TRUE;
 }
 
-BOOL sub_0205F0F8(LocalMapObject *object, u32 spriteId, u32 mapId, u32 flagId) {
+BOOL sub_0205F0F8(LocalMapObject *object, u32 spriteId, u32 objectId, u32 mapId) {
     if (!MapObject_TestFlagsBits(object, MAPOBJECTFLAG_ACTIVE)) {
         return FALSE;
     }
@@ -810,7 +816,7 @@ BOOL sub_0205F0F8(LocalMapObject *object, u32 spriteId, u32 mapId, u32 flagId) {
         return FALSE;
     }
 
-    return sub_0205F0A8(object, mapId, flagId);
+    return sub_0205F0A8(object, objectId, mapId);
 }
 
 static void sub_0205F12C(SysTask *task, LocalMapObject *object) {
@@ -909,20 +915,20 @@ FieldSystem *MapObjectManager_GetFieldSystem(MapObjectManager *manager) {
     return manager->fieldSystem;
 }
 
-void FldObjSys_SetMModelNarc(MapObjectManager *manager, NARC *mmodel_narc) {
-    manager->mmodel_narc = mmodel_narc;
+void MapObjectManager_SetMapModelNarc(MapObjectManager *manager, NARC *mapModelNarc) {
+    manager->mapModelNarc = mapModelNarc;
 }
 
-NARC *FldObjSys_GetMModelNarc(MapObjectManager *manager) {
-    GF_ASSERT(manager->mmodel_narc != NULL);
-    return manager->mmodel_narc;
+NARC *MapObjectManager_GetMapModelNarc(MapObjectManager *manager) {
+    GF_ASSERT(manager->mapModelNarc != NULL);
+    return manager->mapModelNarc;
 }
 
-void MapObject_SetFlagsWord(LocalMapObject *object, u32 bits) {
-    object->flags = bits;
+static void MapObject_SetFlags(LocalMapObject *object, u32 flags) {
+    object->flags = flags;
 }
 
-u32 MapObject_GetFlagsWord(LocalMapObject *object) {
+u32 MapObject_GetFlags(LocalMapObject *object) {
     return object->flags;
 }
 
@@ -934,24 +940,24 @@ void MapObject_ClearFlagsBits(LocalMapObject *object, MapObjectFlagBits bits) {
     object->flags &= ~bits;
 }
 
-u32 MapObject_GetFlagsBits(LocalMapObject *object, MapObjectFlagBits mask) {
-    return object->flags & mask;
+u32 MapObject_GetFlagsBitsMask(LocalMapObject *object, MapObjectFlagBits bits) {
+    return object->flags & bits;
 }
 
 BOOL MapObject_TestFlagsBits(LocalMapObject *object, MapObjectFlagBits bits) {
     return (object->flags & bits) != 0;
 }
 
-void MapObject_SetFlags2Word(LocalMapObject *object, u32 bits) {
-    object->flags2 = bits;
+static void MapObject_SetFlags2(LocalMapObject *object, u32 flags) {
+    object->flags2 = flags;
 }
 
-u32 MapObject_GetFlags2Word(LocalMapObject *object) {
+static u32 MapObject_GetFlags2(LocalMapObject *object) {
     return object->flags2;
 }
 
-u32 MapObject_GetFlags2Mask(LocalMapObject *object, u32 mask) {
-    return object->flags2 & mask;
+static u32 MapObject_GetFlags2BitsMask(LocalMapObject *object, u32 bits) {
+    return object->flags2 & bits;
 }
 
 void MapObject_SetID(LocalMapObject *object, u32 id) {
@@ -962,23 +968,12 @@ u32 MapObject_GetID(LocalMapObject *object) {
     return object->id;
 }
 
-/*
- * Something is very wrong here. One of the variables is mislabelled or misnamed.
- * Both of the following two functions access LMO's unkC, Initially I thought to
- * rename unkC to objectEventFlags, as in MapObjectManager_GetFirstObjectWithID
- * sub_0205F254 is used to compare to OE's flags in MapObject_CreateFromObjectEvent.
- * However, sub_0205F250 is often used (again in MapObject_CreateFromObjectEvent) for
- * assignment of the mapNo to unkC, which of course conflicts with the other
- * established uses for unkC. Someone with more understanding of this, potentially
- * from binary land may do better than me at figuring out what is going on here
- * - red031000
- */
-void sub_0205F250(LocalMapObject *object, u32 a1) {
-    object->unkC = a1;
+static void MapObject_SetMapID(LocalMapObject *object, u32 mapId) {
+    object->mapId = mapId;
 }
 
-u32 sub_0205F254(LocalMapObject *object) {
-    return object->unkC;
+u32 MapObject_GetMapID(LocalMapObject *object) {
+    return object->mapId;
 }
 
 void MapObject_SetSpriteID(LocalMapObject *object, u32 spriteId) {
@@ -1035,7 +1030,7 @@ void MapObject_SetFacingDirectionDirect(LocalMapObject *object, u32 direction) {
 }
 
 void MapObject_SetFacingDirection(LocalMapObject *object, u32 direction) {
-    if (MapObject_GetFlagsBits(object, MAPOBJECTFLAG_UNK7) == 0) {
+    if (MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_UNK7) == 0) {
         object->currentFacingBak = object->currentFacing;
         object->currentFacing    = direction;
     }
@@ -1461,7 +1456,7 @@ BOOL sub_0205F73C(LocalMapObject *object) {
         return FALSE;
     }
 
-    if (MapObject_GetFlagsBits(object, MAPOBJECTFLAG_UNK14) != 0) {
+    if (MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_UNK14) != 0) {
         return TRUE;
     }
 
@@ -1477,7 +1472,7 @@ void MapObject_SetIgnoreHeights(LocalMapObject *object, BOOL set) {
 }
 
 BOOL MapObject_CheckIgnoreHeights(LocalMapObject *object) {
-    return MapObject_GetFlagsBits(object, MAPOBJECTFLAG_IGNORE_HEIGHTS) != 0;
+    return MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_IGNORE_HEIGHTS) != 0;
 }
 
 void MapObject_SetFlag10(LocalMapObject *object, BOOL set) {
@@ -1497,7 +1492,7 @@ void MapObject_SetFlag25(LocalMapObject *object, BOOL set) {
 }
 
 BOOL MapObject_CheckFlag25(LocalMapObject *object) {
-    return MapObject_GetFlagsBits(object, MAPOBJECTFLAG_UNK25) != 0;
+    return MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_UNK25) != 0;
 }
 
 void MapObject_SetFlag26(LocalMapObject *object, BOOL set) {
@@ -1509,7 +1504,7 @@ void MapObject_SetFlag26(LocalMapObject *object, BOOL set) {
 }
 
 BOOL MapObject_CheckFlag26(LocalMapObject *object) {
-    return MapObject_GetFlagsBits(object, MAPOBJECTFLAG_UNK26) != 0;
+    return MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_UNK26) != 0;
 }
 
 void MapObject_SetFlag28(LocalMapObject *object, BOOL set) {
@@ -1521,7 +1516,7 @@ void MapObject_SetFlag28(LocalMapObject *object, BOOL set) {
 }
 
 BOOL MapObject_CheckFlag28(LocalMapObject *object) {
-    return MapObject_GetFlagsBits(object, MAPOBJECTFLAG_UNK28) != 0;
+    return MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_UNK28) != 0;
 }
 
 void MapObject_SetFlag24(LocalMapObject *object, BOOL set) {
@@ -1533,11 +1528,11 @@ void MapObject_SetFlag24(LocalMapObject *object, BOOL set) {
 }
 
 BOOL MapObject_CheckFlag24(LocalMapObject *object) {
-    return MapObject_GetFlagsBits(object, MAPOBJECTFLAG_UNK24) != 0;
+    return MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_UNK24) != 0;
 }
 
 BOOL MapObject_CheckFlag4(LocalMapObject *object) {
-    return MapObject_GetFlagsBits(object, MAPOBJECTFLAG_UNK4) != 0;
+    return MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_UNK4) != 0;
 }
 
 void MapObject_SetFlag29(LocalMapObject *object, BOOL set) {
@@ -1549,11 +1544,11 @@ void MapObject_SetFlag29(LocalMapObject *object, BOOL set) {
 }
 
 BOOL MapObject_CheckFlag29(LocalMapObject *object) {
-    return MapObject_GetFlagsBits(object, MAPOBJECTFLAG_UNK29) != 0;
+    return MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_UNK29) != 0;
 }
 
 BOOL sub_0205F8D0(LocalMapObject *object) {
-    return MapObject_GetFlags2Mask(object, 1 << 2) != FALSE;
+    return MapObject_GetFlags2BitsMask(object, 1 << 2) != FALSE;
 }
 
 u32 MapObject_GetInitialX(LocalMapObject *object) {
@@ -1906,7 +1901,7 @@ LocalMapObject *sub_0205FB58(MapObjectManager *manager, u32 x, u32 y, BOOL a3) {
 
     LocalMapObject *object = objects;
     do {
-        if (MapObject_GetFlagsBits(object, MAPOBJECTFLAG_ACTIVE) != 0) {
+        if (MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_ACTIVE) != 0) {
             if (a3 && x == MapObject_GetPrevX(object) && y == MapObject_GetPrevY(object)) {
                 return object;
             }

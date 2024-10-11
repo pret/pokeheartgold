@@ -9,7 +9,7 @@
 .public sub_0205DE98
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
-.public MapObject_GetFlagsBits
+.public MapObject_GetFlagsBitsMask
 .public MapObject_GetMovement
 .public MapObject_GetType
 .public MapObject_GetInitialFacingDirection

@@ -10,7 +10,7 @@
 .public sub_0205F0F8
 .public MapObject_TestFlagsBits
 .public MapObject_GetID
-.public sub_0205F254
+.public MapObject_GetMapID
 .public MapObject_GetSpriteID
 .public MapObject_GetFieldSystem
 .public MapObject_CheckFlag26

@@ -8,7 +8,7 @@
 .public MapObjectManager_GetPriority
 .public MapObject_TestFlagsBits
 .public MapObject_GetID
-.public sub_0205F254
+.public MapObject_GetMapID
 .public MapObject_GetSpriteID
 .public MapObject_GetFacingDirection
 .public sub_0205F544

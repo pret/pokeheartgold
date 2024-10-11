@@ -78,16 +78,16 @@ static BOOL ov01_021FFFCC(void *a0, UnkOv01_021FFFCD *a1) {
     UnkOv01_021FFFCC *ptr     = sub_02068D98(a0);
     LocalMapObject *mapObject = ptr->unk0.unkC;
 
-    a1->unk10 = ptr->unk0;
-    a1->unk8  = MapObject_GetID(mapObject);
-    a1->unkC  = sub_0205F254(mapObject);
+    a1->unk10            = ptr->unk0;
+    a1->localMapObjectId = MapObject_GetID(mapObject);
+    a1->mapId            = MapObject_GetMapID(mapObject);
     return TRUE;
 }
 
 static BOOL ov01_021FFFFC(void *a0, UnkOv01_021FFFCD *a1) {
     LocalMapObject *mapObject = a1->unk10.unkC;
 
-    BOOL val = sub_0205F0A8(mapObject, a1->unk8, a1->unkC);
+    BOOL val = sub_0205F0A8(mapObject, a1->localMapObjectId, a1->mapId);
     if (val == TRUE) {
         return sub_02066420(mapObject, 0);
     }

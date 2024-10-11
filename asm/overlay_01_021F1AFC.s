@@ -616,7 +616,7 @@ ov01_021F1F8C: ; 0x021F1F8C
 	mov r6, #0
 _021F1F96:
 	add r0, r5, #0
-	bl sub_0205F254
+	bl MapObject_GetMapID
 	ldrh r1, [r4]
 	cmp r1, r0
 	bne _021F1FF4

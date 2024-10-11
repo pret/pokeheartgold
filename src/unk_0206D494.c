@@ -137,8 +137,8 @@ static LocalMapObject *sub_0206D614(MapObjectManager *manager, u32 x, u32 a2, u3
     LocalMapObject *object = MapObjectManager_GetObjects(manager);
     u32 count              = MapObjectManager_GetObjectCount(manager);
     do {
-        if (MapObject_GetFlagsBits(object, MAPOBJECTFLAG_ACTIVE)
-            && !MapObject_GetFlagsBits(object, MAPOBJECTFLAG_UNK18)) {
+        if (MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_ACTIVE)
+            && !MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_UNK18)) {
             u32 curX = MapObject_GetCurrentX(object);
             u32 curY = MapObject_GetCurrentY(object);
             if (curX == x && curY == y) {

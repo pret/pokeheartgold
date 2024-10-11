@@ -242,7 +242,7 @@ ov01_02203BB4: ; 0x02203BB4
 	bl MapObject_GetID
 	str r0, [r4, #8]
 	ldr r0, [r4, #0x38]
-	bl sub_0205F254
+	bl MapObject_GetMapID
 	str r0, [r4, #0xc]
 	mov r0, #6
 	lsl r0, r0, #0xc

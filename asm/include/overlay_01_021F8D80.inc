@@ -18,11 +18,11 @@
 .public MapObjectManager_GetFlagsBitsMask
 .public MapObjectManager_GetPriority
 .public sub_0205F1A0
-.public FldObjSys_SetMModelNarc
-.public FldObjSys_GetMModelNarc
+.public MapObjectManager_SetMapModelNarc
+.public MapObjectManager_GetMapModelNarc
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
-.public MapObject_GetFlagsBits
+.public MapObject_GetFlagsBitsMask
 .public MapObject_TestFlagsBits
 .public MapObject_GetSpriteID
 .public MapObject_SetFacingDirection

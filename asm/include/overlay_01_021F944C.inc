@@ -52,10 +52,10 @@
 .public sub_0205F1A0
 .public MapObjectManager_GetObjects2
 .public MapObjectArray_NextObject
-.public FldObjSys_GetMModelNarc
+.public MapObjectManager_GetMapModelNarc
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
-.public MapObject_GetFlagsBits
+.public MapObject_GetFlagsBitsMask
 .public MapObject_TestFlagsBits
 .public MapObject_GetID
 .public MapObject_GetSpriteID

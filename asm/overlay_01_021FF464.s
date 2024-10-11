@@ -159,7 +159,7 @@ ov01_021FF54C: ; 0x021FF54C
 	bl MapObject_GetID
 	str r0, [r4, #8]
 	ldr r0, [r4, #0x20]
-	bl sub_0205F254
+	bl MapObject_GetMapID
 	str r0, [r4, #0xc]
 	add r0, r5, #0
 	add r1, sp, #0

@@ -254,7 +254,7 @@ ov01_021FD328: ; 0x021FD328
 	bl sub_0205F544
 	b _021FD368
 _021FD364:
-	bl sub_0205F254
+	bl MapObject_GetMapID
 _021FD368:
 	str r0, [r4, #8]
 	add r4, #0xc

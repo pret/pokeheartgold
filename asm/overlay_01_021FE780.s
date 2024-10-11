@@ -155,7 +155,7 @@ ov01_021FE868: ; 0x021FE868
 	bl MapObject_GetID
 	str r0, [r5, #0xc]
 	add r0, r4, #0
-	bl sub_0205F254
+	bl MapObject_GetMapID
 	str r0, [r5, #0x10]
 	ldr r0, [r7]
 	str r0, [r5, #8]

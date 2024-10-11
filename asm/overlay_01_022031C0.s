@@ -239,7 +239,7 @@ _02203374:
 	bl MapObject_GetID
 	str r0, [r4, #8]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F254
+	bl MapObject_GetMapID
 	add r6, r4, #0
 	add r3, sp, #0
 	add r6, #0x18
@@ -557,7 +557,7 @@ _022035F4:
 	bl MapObject_GetID
 	str r0, [r4, #8]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F254
+	bl MapObject_GetMapID
 	add r6, r4, #0
 	add r3, sp, #0
 	add r6, #0x18
@@ -833,7 +833,7 @@ _02203838:
 	bl MapObject_GetID
 	str r0, [r4, #8]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F254
+	bl MapObject_GetMapID
 	add r6, r4, #0
 	add r3, sp, #0
 	add r6, #0x18

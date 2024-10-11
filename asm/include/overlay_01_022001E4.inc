@@ -8,7 +8,7 @@
 .public GF_AssertFail
 .public sub_0205F0A8
 .public MapObject_GetID
-.public sub_0205F254
+.public MapObject_GetMapID
 .public sub_0205F538
 .public MapObject_GetPositionVec
 .public MapObject_GetFacingVec

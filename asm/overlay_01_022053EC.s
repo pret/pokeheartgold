@@ -699,7 +699,7 @@ ov01_0220589C: ; 0x0220589C
 	add r7, r0, #0
 	add r0, r6, #0
 	bl MapObject_GetManager
-	bl FldObjSys_GetMModelNarc
+	bl MapObjectManager_GetMapModelNarc
 	add r1, r7, #0
 	mov r2, #0xb
 	bl NARC_AllocAndReadWholeMember
@@ -1362,7 +1362,7 @@ _02205E12:
 	bl ov01_02206088
 	add r7, r0, #0
 	ldr r0, [r5, #0x3c]
-	bl FldObjSys_GetMModelNarc
+	bl MapObjectManager_GetMapModelNarc
 	add r1, r7, #0
 	mov r2, #0xb
 	bl NARC_AllocAndReadWholeMember
@@ -1756,7 +1756,7 @@ _02206142:
 	bl ov01_02206088
 	add r7, r0, #0
 	ldr r0, [r6, #0x3c]
-	bl FldObjSys_GetMModelNarc
+	bl MapObjectManager_GetMapModelNarc
 	add r1, r7, #0
 	mov r2, #0xb
 	bl NARC_AllocAndReadWholeMember

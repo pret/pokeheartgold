@@ -410,7 +410,7 @@ ov01_021FD6C8: ; 0x021FD6C8
 	bl sub_0205F544
 	b _021FD70E
 _021FD70A:
-	bl sub_0205F254
+	bl MapObject_GetMapID
 _021FD70E:
 	str r0, [r4, #8]
 	mov r0, #1
@@ -506,7 +506,7 @@ ov01_021FD784: ; 0x021FD784
 	bl sub_0205F544
 	b _021FD7CA
 _021FD7C6:
-	bl sub_0205F254
+	bl MapObject_GetMapID
 _021FD7CA:
 	str r0, [r4, #8]
 	mov r0, #1
