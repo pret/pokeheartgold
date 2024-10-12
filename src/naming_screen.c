@@ -34,7 +34,7 @@ typedef struct NamingScreenAppData {
     NameScreenType type;
     int unk_004;
     int unk_008;
-    int unk_00C;
+    int maxLen;
     int unk_010;
     int unk_014;
     Options *unk_018;
@@ -67,10 +67,11 @@ typedef struct NamingScreenAppData {
     GF_G2dRenderer unk_18C;
     GF_2DGfxResMan *unk_2B4[4];
     GF_2DGfxResObj *unk_2C4[2][4];
-    u8 filler_2E4[0x48];
-    u8 unk_32C[0x20];
-    Sprite *unk_34C;
-    u8 filler_350[0x4C];
+    SpriteResourcesHeader unk_2E4;
+    SpriteResourcesHeader unk_308;
+    Sprite *unk_32C[14];
+    Sprite *unk_364[12];
+    Sprite *unk_394[2];
     SysTask *unk_39C[7];
     Window unk_3B8[10];
     int unk_458;
@@ -115,21 +116,25 @@ void sub_02083614(BgConfig *bgConfig, Window *a1);
 void sub_02083654(NamingScreenAppData *data, NARC *narc);
 void sub_0208377C(void);
 void sub_020837AC(NamingScreenAppData *data, NARC *narc);
+void sub_020839B8(SysTask *task, void *taskData);
 void sub_020839EC(NamingScreenAppData *data);
-void sub_02083D34(BgConfig *bgConfig, void *a1, void *a2, int a3, int *a4, VecFx32 *a5, void *a6, const u16 *a7);
+void sub_02083BB4(NamingScreenAppData *data, SpriteTemplate *tmplate);
+void sub_02083D34(BgConfig *bgConfig, Window *a1, int *a2, int a3, int *a4, VecFx32 *a5, Sprite **a6, const u16 *a7);
 void sub_02083F9C(NamingScreenAppData *data, OVY_MANAGER *ovyMan, NARC *narc);
 void sub_0208423C(VecFx32 *a0, int a1);
 void sub_0208432C(NamingScreenAppData *data);
 void sub_02084740(Window *a0, u16 *a1, u16 a2, void *a3, void *a4, String *a5);
 void sub_02084830(u16 (*a0)[13], int a1);
 int sub_02084884(NamingScreenAppData *data, int key, BOOL a2);
-void sub_02084F3C(void *a0, void *a1, int a2);
+void sub_02084E18(Sprite **sprites, int a1);
+void sub_02084F3C(int *a0, Sprite **a1, int a2);
 void sub_02084FCC(NamingScreenAppData *data);
 void sub_02084500(void *a0);
 
 static NamingScreenAppData *_021D43B0;
 
 extern const int _021020B4[8];
+extern const int _021021E8[][4];
 
 BOOL NamingScreenApp_Init(OVY_MANAGER *ovyMan, int *pState) {
     NamingScreenAppData *data;
@@ -270,8 +275,8 @@ int sub_02082CF8(NamingScreenAppData *data, int a1) {
 
     sub_0208432C(data);
     if (gSystem.newKeys & PAD_BUTTON_SELECT) {
-        if (!Sprite_GetVisibleFlag(data->unk_34C)) {
-            Sprite_SetVisibleFlag(data->unk_34C, TRUE);
+        if (!Sprite_GetVisibleFlag(data->unk_32C[8])) {
+            Sprite_SetVisibleFlag(data->unk_32C[8], TRUE);
             return ret;
         }
         if (data->type != 4) {
@@ -450,7 +455,7 @@ void sub_02083160(NamingScreenAppData *data, NamingScreenArgs *args) {
     data->type    = args->kind;
     data->unk_004 = args->playerGender;
     data->unk_008 = args->monForm;
-    data->unk_00C = args->maxLen;
+    data->maxLen  = args->maxLen;
     data->unk_010 = args->monGender;
     data->unk_018 = args->options;
     data->unk_5D0 = args->unk50;
@@ -542,20 +547,20 @@ void sub_02083334(NamingScreenAppData *data, OVY_MANAGER *ovyMan) {
     if (args->unk44) {
         data->unk_014 = 1;
     }
-    data->unk_178                = ReadMsgData_ExpandPlaceholders(data->msgFormat, data->msgData_249, _021020B4[data->type], HEAP_ID_NAMING_SCREEN);
-    data->unk_17C                = ReadMsgData_ExpandPlaceholders(data->msgFormat, data->msgData_249, msg_0249_00009, HEAP_ID_NAMING_SCREEN);
-    data->unk_184                = NewString_ReadMsgData(data->msgData_249, msg_0249_00007);
-    data->unk_158                = StringLength(data->unk_118);
-    data->unk_01C                = 0;
-    data->unk_020                = 1;
-    data->unk_024                = -1;
-    data->unk_028                = -1;
-    data->unk_030                = 1;
-    data->unk_034                = 0;
-    data->unk_484                = -1;
-    data->unk_488                = 0;
-    data->unk_48C                = 0;
-    data->unk_0D8[data->unk_00C] = EOS;
+    data->unk_178               = ReadMsgData_ExpandPlaceholders(data->msgFormat, data->msgData_249, _021020B4[data->type], HEAP_ID_NAMING_SCREEN);
+    data->unk_17C               = ReadMsgData_ExpandPlaceholders(data->msgFormat, data->msgData_249, msg_0249_00009, HEAP_ID_NAMING_SCREEN);
+    data->unk_184               = NewString_ReadMsgData(data->msgData_249, msg_0249_00007);
+    data->unk_158               = StringLength(data->unk_118);
+    data->unk_01C               = 0;
+    data->unk_020               = 1;
+    data->unk_024               = -1;
+    data->unk_028               = -1;
+    data->unk_030               = 1;
+    data->unk_034               = 0;
+    data->unk_484               = -1;
+    data->unk_488               = 0;
+    data->unk_48C               = 0;
+    data->unk_0D8[data->maxLen] = EOS;
     for (int i = 0; i < 7; ++i) {
         data->unk_490[i] = 0;
     }
@@ -671,3 +676,289 @@ void sub_020837AC(NamingScreenAppData *data, NARC *narc) {
     sub_0200AF94(data->unk_2C4[PM_LCD_TOP][GF_GFX_RES_TYPE_PLTT]);
     sub_0200AF94(data->unk_2C4[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_PLTT]);
 }
+
+typedef struct SysTaskData_020839B8 {
+    Sprite *sprite;
+    Sprite *sprite2;
+    fx32 dx;
+    int i;
+} SysTaskData_020839B8;
+
+void sub_020839B8(SysTask *task, void *taskData) {
+    SysTaskData_020839B8 *data = taskData;
+    VecFx32 *pMatrix           = Sprite_GetMatrixPtr(data->sprite);
+    VecFx32 matrix;
+    matrix.x = pMatrix->x + data->dx;
+    matrix.y = FX32_ONE * _021021E8[data->i][1];
+    matrix.z = 0;
+    Sprite_SetMatrix(data->sprite2, &matrix);
+}
+
+#ifdef NONMATCHING
+void sub_020839EC(NamingScreenAppData *data) {
+    int i;
+    CreateSpriteResourcesHeader(&data->unk_2E4, 0, 0, 0, 0, -1, -1, 0, 1, data->unk_2B4[GF_GFX_RES_TYPE_CHAR], data->unk_2B4[GF_GFX_RES_TYPE_PLTT], data->unk_2B4[GF_GFX_RES_TYPE_CELL], data->unk_2B4[GF_GFX_RES_TYPE_ANIM], NULL, NULL);
+    CreateSpriteResourcesHeader(&data->unk_308, 1, 1, 1, 1, -1, -1, 0, 0, data->unk_2B4[GF_GFX_RES_TYPE_CHAR], data->unk_2B4[GF_GFX_RES_TYPE_PLTT], data->unk_2B4[GF_GFX_RES_TYPE_CELL], data->unk_2B4[GF_GFX_RES_TYPE_ANIM], NULL, NULL);
+    {
+        SpriteTemplate spriteTemplate;
+        spriteTemplate.spriteList  = data->unk_188;
+        spriteTemplate.header      = &data->unk_2E4;
+        spriteTemplate.position.x  = FX32_CONST(32);
+        spriteTemplate.position.y  = FX32_CONST(96);
+        spriteTemplate.position.z  = 0;
+        spriteTemplate.scale.x     = FX32_ONE;
+        spriteTemplate.scale.y     = FX32_ONE;
+        spriteTemplate.scale.z     = FX32_ONE;
+        spriteTemplate.rotation    = 0;
+        spriteTemplate.priority    = 1;
+        spriteTemplate.whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN;
+        spriteTemplate.heapId      = HEAP_ID_NAMING_SCREEN;
+
+        for (i = 0; i < 9; ++i) {
+            spriteTemplate.position.x = _021021E8[i][0] * FX32_ONE;
+            spriteTemplate.position.y = _021021E8[i][1] * FX32_ONE;
+            data->unk_32C[i]          = Sprite_CreateAffine(&spriteTemplate);
+            Sprite_SetAnimActiveFlag(data->unk_32C[i], TRUE);
+            Sprite_SetAnimCtrlSeq(data->unk_32C[i], _021021E8[i][2]);
+            Sprite_SetDrawPriority(data->unk_32C[i], _021021E8[i][3]);
+        }
+        Sprite_SetVisibleFlag(data->unk_32C[4], FALSE);
+        for (i = 0; i < 7; ++i) {
+            data->unk_39C[i]               = CreateSysTaskAndEnvironment(sub_020839B8, sizeof(SysTaskData_020839B8), 5, HEAP_ID_NAMING_SCREEN);
+            SysTaskData_020839B8 *taskData = SysTask_GetData(data->unk_39C[i]);
+            taskData->sprite               = data->unk_32C[7];
+            taskData->sprite2              = data->unk_32C[i];
+            taskData->dx                   = _021021E8[i][0] * FX32_ONE;
+            taskData->i                    = i;
+        }
+        // regswap: data->maxLen should be r2, instead r0
+        for (i = 0; i < data->maxLen; ++i) {
+            spriteTemplate.position.x = FX32_ONE * (80 + i * 12);
+            spriteTemplate.position.y = FX32_ONE * 39;
+            data->unk_364[i]          = Sprite_CreateAffine(&spriteTemplate);
+            Sprite_SetAnimActiveFlag(data->unk_364[i], TRUE);
+            Sprite_SetAnimCtrlSeq(data->unk_364[i], 43);
+        }
+        sub_02084E18(data->unk_364, data->unk_158);
+        sub_02083BB4(data, &spriteTemplate);
+    }
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
+}
+#else
+// clang-format off
+asm void sub_020839EC(NamingScreenAppData *data) {
+    push {r4, r5, r6, r7, lr}
+	sub sp, #0x5c
+	mov r1, #0
+	add r6, r0, #0
+	str r1, [sp]
+	sub r0, r1, #1
+	str r0, [sp, #4]
+	str r0, [sp, #8]
+	mov r2, #0xad
+	str r1, [sp, #0xc]
+	mov r0, #1
+	lsl r2, r2, #2
+	str r0, [sp, #0x10]
+	ldr r0, [r6, r2]
+	add r3, r1, #0
+	str r0, [sp, #0x14]
+	add r0, r2, #4
+	ldr r0, [r6, r0]
+	str r0, [sp, #0x18]
+	add r0, r2, #0
+	add r0, #8
+	ldr r0, [r6, r0]
+	str r0, [sp, #0x1c]
+	add r0, r2, #0
+	add r0, #0xc
+	ldr r0, [r6, r0]
+	add r2, #0x30
+	str r0, [sp, #0x20]
+	str r1, [sp, #0x24]
+	add r0, r6, r2
+	add r2, r1, #0
+	str r1, [sp, #0x28]
+	bl CreateSpriteResourcesHeader
+	mov r1, #1
+	mov r3, #0xad
+	str r1, [sp]
+	sub r0, r1, #2
+	str r0, [sp, #4]
+	str r0, [sp, #8]
+	mov r0, #0
+	str r0, [sp, #0xc]
+	str r0, [sp, #0x10]
+	lsl r3, r3, #2
+	ldr r2, [r6, r3]
+	str r2, [sp, #0x14]
+	add r2, r3, #4
+	ldr r2, [r6, r2]
+	str r2, [sp, #0x18]
+	add r2, r3, #0
+	add r2, #8
+	ldr r2, [r6, r2]
+	str r2, [sp, #0x1c]
+	add r2, r3, #0
+	add r2, #0xc
+	ldr r2, [r6, r2]
+	add r3, #0x54
+	str r2, [sp, #0x20]
+	str r0, [sp, #0x24]
+	str r0, [sp, #0x28]
+	add r0, r6, r3
+	add r2, r1, #0
+	add r3, r1, #0
+	bl CreateSpriteResourcesHeader
+	mov r0, #0x62
+	lsl r0, r0, #2
+	ldr r0, [r6, r0]
+	mov r1, #2
+	str r0, [sp, #0x2c]
+	mov r0, #0xb9
+	lsl r0, r0, #2
+	add r0, r6, r0
+	str r0, [sp, #0x30]
+	mov r0, #6
+	lsl r1, r1, #0x10
+	lsl r0, r0, #0x10
+	str r0, [sp, #0x38]
+	lsr r0, r1, #5
+	mov r7, #0
+	str r1, [sp, #0x34]
+	str r7, [sp, #0x3c]
+	str r0, [sp, #0x40]
+	str r0, [sp, #0x44]
+	str r0, [sp, #0x48]
+	add r0, sp, #0x2c
+	strh r7, [r0, #0x20]
+	mov r0, #1
+	str r0, [sp, #0x50]
+	str r0, [sp, #0x54]
+	mov r0, #0x12
+	ldr r4, =_021021E8
+	str r0, [sp, #0x58]
+	add r5, r6, #0
+_02083AA8:
+	ldr r0, [r4, #0]
+	lsl r0, r0, #0xc
+	str r0, [sp, #0x34]
+	ldr r0, [r4, #4]
+	lsl r0, r0, #0xc
+	str r0, [sp, #0x38]
+	add r0, sp, #0x2c
+	bl Sprite_CreateAffine
+	mov r1, #0xcb
+	lsl r1, r1, #2
+	str r0, [r5, r1]
+	add r0, r1, #0
+	ldr r0, [r5, r0]
+	mov r1, #1
+	bl Sprite_SetAnimActiveFlag
+	mov r0, #0xcb
+	lsl r0, r0, #2
+	ldr r0, [r5, r0]
+	ldr r1, [r4, #8]
+	bl Sprite_SetAnimCtrlSeq
+	mov r0, #0xcb
+	lsl r0, r0, #2
+	ldr r0, [r5, r0]
+	ldr r1, [r4, #0xc]
+	bl Sprite_SetDrawPriority
+	add r7, r7, #1
+	add r4, #0x10
+	add r5, r5, #4
+	cmp r7, #9
+	blt _02083AA8
+	mov r0, #0xcf
+	lsl r0, r0, #2
+	ldr r0, [r6, r0]
+	mov r1, #0
+	bl Sprite_SetVisibleFlag
+	ldr r7, =_021021E8
+	mov r5, #0
+	add r4, r6, #0
+_02083AFE:
+	ldr r0, =sub_020839B8
+	mov r1, #0x10
+	mov r2, #5
+	mov r3, #0x12
+	bl CreateSysTaskAndEnvironment
+	mov r1, #0xe7
+	lsl r1, r1, #2
+	str r0, [r4, r1]
+	add r0, r1, #0
+	ldr r0, [r4, r0]
+	bl SysTask_GetData
+	mov r1, #0xd2
+	lsl r1, r1, #2
+	ldr r1, [r6, r1]
+	str r1, [r0]
+	mov r1, #0xcb
+	lsl r1, r1, #2
+	ldr r1, [r4, r1]
+	add r4, r4, #4
+	str r1, [r0, #4]
+	ldr r1, [r7, #0]
+	add r7, #0x10
+	lsl r1, r1, #0xc
+	str r1, [r0, #8]
+	str r5, [r0, #0xc]
+	add r5, r5, #1
+	cmp r5, #7
+	blt _02083AFE
+	ldr r2, [r6, #0xc]
+	mov r7, #0
+	cmp r2, #0
+	ble _02083B7E
+	mov r5, #0x50
+	add r4, r6, #0
+_02083B46:
+	lsl r0, r5, #0xc
+	str r0, [sp, #0x34]
+	mov r0, #0x27
+	lsl r0, r0, #0xc
+	str r0, [sp, #0x38]
+	add r0, sp, #0x2c
+	bl Sprite_CreateAffine
+	mov r1, #0xd9
+	lsl r1, r1, #2
+	str r0, [r4, r1]
+	add r0, r1, #0
+	ldr r0, [r4, r0]
+	mov r1, #1
+	bl Sprite_SetAnimActiveFlag
+	mov r0, #0xd9
+	lsl r0, r0, #2
+	ldr r0, [r4, r0]
+	mov r1, #0x2b
+	bl Sprite_SetAnimCtrlSeq
+	ldr r2, [r6, #0xc]
+	add r7, r7, #1
+	add r5, #0xc
+	add r4, r4, #4
+	cmp r7, r2
+	blt _02083B46
+_02083B7E:
+	mov r1, #0x56
+	lsl r1, r1, #2
+	mov r0, #0xd9
+	lsl r0, r0, #2
+	ldrh r1, [r6, r1]
+	add r0, r6, r0
+	bl sub_02084E18
+	add r0, r6, #0
+	add r1, sp, #0x2c
+	bl sub_02083BB4
+	mov r0, #0x10
+	mov r1, #1
+	bl GfGfx_EngineATogglePlanes
+	mov r0, #0x10
+	mov r1, #1
+	bl GfGfx_EngineBTogglePlanes
+	add sp, #0x5c
+	pop {r4, r5, r6, r7, pc}
+}
+// clang-format on
+#endif // NONMATCHING

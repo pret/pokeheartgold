@@ -15,254 +15,9 @@
 	.extern NamingScreenApp_Exit
 	.extern sub_02082E28
 	.extern sub_02082EC0
+	.extern sub_020839B8
 
 	.text
-
-	thumb_func_start sub_020839B8
-sub_020839B8: ; 0x020839B8
-	push {r3, r4, lr}
-	sub sp, #0xc
-	add r4, r1, #0
-	ldr r0, [r4]
-	bl Sprite_GetMatrixPtr
-	ldr r1, [r0]
-	ldr r0, [r4, #8]
-	add r0, r1, r0
-	str r0, [sp]
-	ldr r0, [r4, #0xc]
-	lsl r1, r0, #4
-	ldr r0, _020839E8 ; =_021021E8 + 4
-	ldr r0, [r0, r1]
-	add r1, sp, #0
-	lsl r0, r0, #0xc
-	str r0, [sp, #4]
-	mov r0, #0
-	str r0, [sp, #8]
-	ldr r0, [r4, #4]
-	bl Sprite_SetMatrix
-	add sp, #0xc
-	pop {r3, r4, pc}
-	.balign 4, 0
-_020839E8: .word _021021E8 + 4
-	thumb_func_end sub_020839B8
-
-	thumb_func_start sub_020839EC
-sub_020839EC: ; 0x020839EC
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x5c
-	mov r1, #0
-	add r6, r0, #0
-	str r1, [sp]
-	sub r0, r1, #1
-	str r0, [sp, #4]
-	str r0, [sp, #8]
-	mov r2, #0xad
-	str r1, [sp, #0xc]
-	mov r0, #1
-	lsl r2, r2, #2
-	str r0, [sp, #0x10]
-	ldr r0, [r6, r2]
-	add r3, r1, #0
-	str r0, [sp, #0x14]
-	add r0, r2, #4
-	ldr r0, [r6, r0]
-	str r0, [sp, #0x18]
-	add r0, r2, #0
-	add r0, #8
-	ldr r0, [r6, r0]
-	str r0, [sp, #0x1c]
-	add r0, r2, #0
-	add r0, #0xc
-	ldr r0, [r6, r0]
-	add r2, #0x30
-	str r0, [sp, #0x20]
-	str r1, [sp, #0x24]
-	add r0, r6, r2
-	add r2, r1, #0
-	str r1, [sp, #0x28]
-	bl CreateSpriteResourcesHeader
-	mov r1, #1
-	mov r3, #0xad
-	str r1, [sp]
-	sub r0, r1, #2
-	str r0, [sp, #4]
-	str r0, [sp, #8]
-	mov r0, #0
-	str r0, [sp, #0xc]
-	str r0, [sp, #0x10]
-	lsl r3, r3, #2
-	ldr r2, [r6, r3]
-	str r2, [sp, #0x14]
-	add r2, r3, #4
-	ldr r2, [r6, r2]
-	str r2, [sp, #0x18]
-	add r2, r3, #0
-	add r2, #8
-	ldr r2, [r6, r2]
-	str r2, [sp, #0x1c]
-	add r2, r3, #0
-	add r2, #0xc
-	ldr r2, [r6, r2]
-	add r3, #0x54
-	str r2, [sp, #0x20]
-	str r0, [sp, #0x24]
-	str r0, [sp, #0x28]
-	add r0, r6, r3
-	add r2, r1, #0
-	add r3, r1, #0
-	bl CreateSpriteResourcesHeader
-	mov r0, #0x62
-	lsl r0, r0, #2
-	ldr r0, [r6, r0]
-	mov r1, #2
-	str r0, [sp, #0x2c]
-	mov r0, #0xb9
-	lsl r0, r0, #2
-	add r0, r6, r0
-	str r0, [sp, #0x30]
-	mov r0, #6
-	lsl r1, r1, #0x10
-	lsl r0, r0, #0x10
-	str r0, [sp, #0x38]
-	lsr r0, r1, #5
-	mov r7, #0
-	str r1, [sp, #0x34]
-	str r7, [sp, #0x3c]
-	str r0, [sp, #0x40]
-	str r0, [sp, #0x44]
-	str r0, [sp, #0x48]
-	add r0, sp, #0x2c
-	strh r7, [r0, #0x20]
-	mov r0, #1
-	str r0, [sp, #0x50]
-	str r0, [sp, #0x54]
-	mov r0, #0x12
-	ldr r4, _02083BAC ; =_021021E8
-	str r0, [sp, #0x58]
-	add r5, r6, #0
-_02083AA8:
-	ldr r0, [r4]
-	lsl r0, r0, #0xc
-	str r0, [sp, #0x34]
-	ldr r0, [r4, #4]
-	lsl r0, r0, #0xc
-	str r0, [sp, #0x38]
-	add r0, sp, #0x2c
-	bl Sprite_CreateAffine
-	mov r1, #0xcb
-	lsl r1, r1, #2
-	str r0, [r5, r1]
-	add r0, r1, #0
-	ldr r0, [r5, r0]
-	mov r1, #1
-	bl Sprite_SetAnimActiveFlag
-	mov r0, #0xcb
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	ldr r1, [r4, #8]
-	bl Sprite_SetAnimCtrlSeq
-	mov r0, #0xcb
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	ldr r1, [r4, #0xc]
-	bl Sprite_SetDrawPriority
-	add r7, r7, #1
-	add r4, #0x10
-	add r5, r5, #4
-	cmp r7, #9
-	blt _02083AA8
-	mov r0, #0xcf
-	lsl r0, r0, #2
-	ldr r0, [r6, r0]
-	mov r1, #0
-	bl Sprite_SetVisibleFlag
-	ldr r7, _02083BAC ; =_021021E8
-	mov r5, #0
-	add r4, r6, #0
-_02083AFE:
-	ldr r0, _02083BB0 ; =sub_020839B8
-	mov r1, #0x10
-	mov r2, #5
-	mov r3, #0x12
-	bl CreateSysTaskAndEnvironment
-	mov r1, #0xe7
-	lsl r1, r1, #2
-	str r0, [r4, r1]
-	add r0, r1, #0
-	ldr r0, [r4, r0]
-	bl SysTask_GetData
-	mov r1, #0xd2
-	lsl r1, r1, #2
-	ldr r1, [r6, r1]
-	str r1, [r0]
-	mov r1, #0xcb
-	lsl r1, r1, #2
-	ldr r1, [r4, r1]
-	add r4, r4, #4
-	str r1, [r0, #4]
-	ldr r1, [r7]
-	add r7, #0x10
-	lsl r1, r1, #0xc
-	str r1, [r0, #8]
-	str r5, [r0, #0xc]
-	add r5, r5, #1
-	cmp r5, #7
-	blt _02083AFE
-	ldr r2, [r6, #0xc]
-	mov r7, #0
-	cmp r2, #0
-	ble _02083B7E
-	mov r5, #0x50
-	add r4, r6, #0
-_02083B46:
-	lsl r0, r5, #0xc
-	str r0, [sp, #0x34]
-	mov r0, #0x27
-	lsl r0, r0, #0xc
-	str r0, [sp, #0x38]
-	add r0, sp, #0x2c
-	bl Sprite_CreateAffine
-	mov r1, #0xd9
-	lsl r1, r1, #2
-	str r0, [r4, r1]
-	add r0, r1, #0
-	ldr r0, [r4, r0]
-	mov r1, #1
-	bl Sprite_SetAnimActiveFlag
-	mov r0, #0xd9
-	lsl r0, r0, #2
-	ldr r0, [r4, r0]
-	mov r1, #0x2b
-	bl Sprite_SetAnimCtrlSeq
-	ldr r2, [r6, #0xc]
-	add r7, r7, #1
-	add r5, #0xc
-	add r4, r4, #4
-	cmp r7, r2
-	blt _02083B46
-_02083B7E:
-	mov r1, #0x56
-	lsl r1, r1, #2
-	mov r0, #0xd9
-	lsl r0, r0, #2
-	ldrh r1, [r6, r1]
-	add r0, r6, r0
-	bl sub_02084E18
-	add r0, r6, #0
-	add r1, sp, #0x2c
-	bl sub_02083BB4
-	mov r0, #0x10
-	mov r1, #1
-	bl GfGfx_EngineATogglePlanes
-	mov r0, #0x10
-	mov r1, #1
-	bl GfGfx_EngineBTogglePlanes
-	add sp, #0x5c
-	pop {r4, r5, r6, r7, pc}
-	nop
-_02083BAC: .word _021021E8
-_02083BB0: .word sub_020839B8
-	thumb_func_end sub_020839EC
 
 	thumb_func_start sub_02083BB4
 sub_02083BB4: ; 0x02083BB4
@@ -2821,7 +2576,7 @@ _02084F7E:
 	blt _02084F48
 _02084F86:
 	ldr r4, [sp]
-	ldr r5, _02084FC8 ; =_02102238
+	ldr r5, _02084FC8 ; =_021021E8 + 0x50
 	mov r7, #5
 	add r4, #0x14
 	add r6, #0x14
@@ -2854,7 +2609,7 @@ _02084FB0:
 	.balign 4, 0
 _02084FC0: .word _021021E8
 _02084FC4: .word _021021E8 + 8
-_02084FC8: .word _02102238
+_02084FC8: .word _021021E8 + 0x50
 	thumb_func_end sub_02084F3C
 
 	thumb_func_start sub_02084FCC
@@ -3177,18 +2932,19 @@ _021021B8:
 	.short 0x0088, 0x0087
 	.short 0x008B, 0x008A
 	.short 0x008E, 0x008D
+
+	.global _021021E8
 _021021E8:
-	.byte 0x04, 0x00, 0x00, 0x00, 0x44, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.byte 0x24, 0x00, 0x00, 0x00, 0x44, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.byte 0x44, 0x00, 0x00, 0x00, 0x44, 0x00, 0x00, 0x00, 0x0D, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-_02102218:
-	.byte 0x00, 0x00, 0x00, 0x00, 0xC8, 0x00, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.byte 0x65, 0x00, 0x00, 0x00, 0x44, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-_02102238:
-	.byte 0x88, 0x00, 0x00, 0x00, 0x44, 0x00, 0x00, 0x00, 0x17, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.byte 0xB0, 0x00, 0x00, 0x00, 0x44, 0x00, 0x00, 0x00, 0x19, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.byte 0x16, 0x00, 0x00, 0x00, 0x38, 0x00, 0x00, 0x00, 0x25, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
-	.byte 0x1A, 0x00, 0x00, 0x00, 0x5B, 0x00, 0x00, 0x00, 0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x00000004, 0x00000044, 0x00000003, 0x00000001
+	.word 0x00000024, 0x00000044, 0x00000008, 0x00000001
+	.word 0x00000044, 0x00000044, 0x0000000D, 0x00000001
+	.word 0x00000000, 0x000000C8, 0x00000012, 0x00000001
+	.word 0x00000065, 0x00000044, 0x00000014, 0x00000001
+	.word 0x00000088, 0x00000044, 0x00000017, 0x00000001
+	.word 0x000000B0, 0x00000044, 0x00000019, 0x00000001
+	.word 0x00000016, 0x00000038, 0x00000025, 0x00000002
+	.word 0x0000001A, 0x0000005B, 0x00000027, 0x00000000
+
 _02102278:
 	.byte 0x19, 0x3C
 	.short 0x00
@@ -3403,6 +3159,7 @@ _02102278:
 	.byte 0xDC, 0xA4
 	.short 0x0002
 	.byte 0x0C, 0x05
+
 _02102422:
 	.short 0x0003, 0x0001, 0x0002
 	.short 0x0005, 0x0001, 0x0004
