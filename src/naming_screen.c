@@ -45,7 +45,7 @@ typedef struct NamingScreenAppData {
     int unk_02C;
     int unk_030;
     int unk_034;
-    u8 unk_038[0x2];
+    u16 unk_038;
     u16 unk_03A[6][13];
     u8 filler_0D6[2];
     u16 unk_0D8[0x20];
@@ -121,11 +121,12 @@ void sub_020839EC(NamingScreenAppData *data);
 void sub_02083BB4(NamingScreenAppData *data, SpriteTemplate *tmplate);
 void sub_02083CAC(SysTask *task, void *taskData);
 void sub_02083D34(BgConfig *bgConfig, Window *windows, int *pState, int pageNum, GFBgLayer *pBgId, VecFx32 *posVecs, Sprite **pSprites, void *pRawData);
-void sub_02083F18(Window *window, int unused, String *msg);
-void sub_02083F48(Window *window, int unused, String *msg);
+void sub_02083F18(Window *window, NameScreenType unused, String *msg);
+void sub_02083F48(Window *window, NameScreenType unused, String *msg);
 void sub_02083F9C(NamingScreenAppData *data, OVY_MANAGER *ovyMan, NARC *narc);
-sub_0208421C(BgConfig *bgConfig, GFBgLayer bgId, VecFx32 *pos);
+void sub_0208421C(BgConfig *bgConfig, GFBgLayer bgId, VecFx32 *pos);
 void sub_0208423C(VecFx32 *posVecs, GFBgLayer bgId);
+int sub_02084264(int val, int lo, int hi);
 void sub_0208432C(NamingScreenAppData *data);
 void sub_02084E54(Window *window, u16 fillVal, int pageNum, u32 textColor, u8 *pRawData);
 void sub_02084740(Window *a0, u16 *a1, u16 a2, void *a3, void *a4, String *a5);
@@ -134,7 +135,8 @@ int sub_02084884(NamingScreenAppData *data, int key, BOOL a2);
 void sub_02084E18(Sprite **sprites, int a1);
 void sub_02084F3C(int *a0, Sprite **a1, int a2);
 void sub_02084FCC(NamingScreenAppData *data);
-void sub_02084500(void *a0);
+void sub_02084500(u16 *a0);
+void sub_02084540(Window *window, const u16 *rawChars, int a2, int a3, int a4, int a5, u32 color, int a7);
 
 static NamingScreenAppData *_021D43B0;
 
@@ -263,7 +265,7 @@ BOOL NamingScreenApp_Main(OVY_MANAGER *ovyMan, int *pState) {
         }
         sub_02083D34(data->bgConfig, data->unk_3B8, &data->unk_45C, data->unk_460, &data->unk_464, data->unk_468, data->unk_32C, data->unk_4B0->pRawData);
         sub_02084F3C(data->unk_490, data->unk_32C, data->unk_460);
-        sub_02084500(data->unk_038);
+        sub_02084500(&data->unk_038);
         break;
     case 3:
         if (IsPaletteFadeFinished()) {
@@ -1110,13 +1112,13 @@ void sub_02083D34(BgConfig *bgConfig, Window *windows, int *pState, int pageNum,
     }
 }
 
-void sub_02083F18(Window *window, int unused, String *msg) {
+void sub_02083F18(Window *window, NameScreenType unused, String *msg) {
     DrawFrameAndWindow2(window, FALSE, 0x100, 10);
     AddTextPrinterParameterized(window, 1, msg, 0, 0, TEXT_SPEED_INSTANT, NULL);
     CopyWindowToVram(window);
 }
 
-void sub_02083F48(Window *window, int unused, String *msg) {
+void sub_02083F48(Window *window, NameScreenType unused, String *msg) {
     int x           = 16;
     int width       = FontID_String_GetWidth(0, msg, 0);
     int windowWidth = GetWindowWidth(window) * 8;
@@ -1126,4 +1128,75 @@ void sub_02083F48(Window *window, int unused, String *msg) {
     FillWindowPixelBuffer(window, 1);
     AddTextPrinterParameterizedWithColor(window, 0, msg, x, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
     CopyWindowToVram(window);
+}
+
+void sub_02083F9C(NamingScreenAppData *data, OVY_MANAGER *ovyMan, NARC *narc) {
+    AddWindowParameterized(data->bgConfig, &data->unk_3B8[0], GF_BG_LYR_MAIN_0, 2, 1, 26, 12, 1, 0x100);
+    AddWindowParameterized(data->bgConfig, &data->unk_3B8[1], GF_BG_LYR_MAIN_1, 2, 1, 26, 12, 1, 0x238);
+
+    if (data->type == NAME_SCREEN_UNK4) {
+        GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 9, data->bgConfig, GF_BG_LYR_MAIN_1, 0, 0x380, TRUE, HEAP_ID_NAMING_SCREEN);
+        data->unk_460 = 4;
+        sub_02084830(data->unk_03A, 4);
+        sub_02084E54(&data->unk_3B8[1], 0x0A0A, 4, MAKE_TEXT_COLOR(14, 15, 0), data->unk_4B0->pRawData);
+    } else {
+        data->unk_460 = 0;
+        sub_02084830(data->unk_03A, 0);
+        sub_02084E54(&data->unk_3B8[1], 0x0404, 0, MAKE_TEXT_COLOR(14, 15, 0), data->unk_4B0->pRawData);
+    }
+
+    AddWindowParameterized(data->bgConfig, &data->unk_3B8[2], GF_BG_LYR_MAIN_2, 7, 2, 22, 2, 0, 0x370);
+
+    int win3Width = (data->maxLen * 12) / 8 + 1;
+    AddWindowParameterized(data->bgConfig, &data->unk_3B8[3], GF_BG_LYR_MAIN_2, 10, 3, win3Width, 2, 0, 0x39C);
+    FillWindowPixelBuffer(&data->unk_3B8[3], 1);
+
+    AddWindowParameterized(data->bgConfig, &data->unk_3B8[8], GF_BG_LYR_MAIN_2, win3Width + 9, 3, 7, 2, 0, 0x3C0);
+    FillWindowPixelBuffer(&data->unk_3B8[8], 1);
+
+    if (data->type == NAME_SCREEN_GROUP) {
+        sub_02083F48(&data->unk_3B8[8], data->type, data->unk_184);
+        CopyWindowToVram(&data->unk_3B8[8]);
+    }
+
+    AddWindowParameterized(data->bgConfig, &data->unk_3B8[9], GF_BG_LYR_SUB_0, 2, 19, 27, 4, 12, 0x084);
+    FillWindowPixelBuffer(&data->unk_3B8[9], 15);
+    sub_02083F18(&data->unk_3B8[9], data->type, data->unk_178);
+
+    OverlayManager_GetArgs(ovyMan);
+
+    if (data->unk_118[0] != EOS) {
+        CopyU16StringArray(data->unk_0D8, data->unk_118);
+        sub_02084540(&data->unk_3B8[3], data->unk_0D8, 0, 0, 12, 0, MAKE_TEXT_COLOR(14, 15, 1), 0);
+    }
+
+    for (int i = 0; i < 3; ++i) {
+        AddWindowParameterized(data->bgConfig, &data->unk_3B8[i + 4], GF_BG_LYR_MAIN_2, 0, 0, 2, 2, 0, 0x078);
+        FillWindowPixelBuffer(&data->unk_3B8[i + 4], 0);
+    }
+
+    AddWindowParameterized(data->bgConfig, &data->unk_3B8[7], GF_BG_LYR_MAIN_2, 0, 0, 16, 2, 0, 0x084);
+    FillWindowPixelBuffer(&data->unk_3B8[7], 0);
+}
+
+void sub_0208421C(BgConfig *bgConfig, GFBgLayer bgId, VecFx32 *pos) {
+    SetBgPriority(bgId, 1);
+    SetBgPriority(bgId ^ 1, 2);
+}
+
+void sub_0208423C(VecFx32 *posVecs, GFBgLayer bgId) {
+    posVecs[bgId].x     = 238;
+    posVecs[bgId].y     = -80;
+    posVecs[bgId ^ 1].x = -11;
+    posVecs[bgId ^ 1].y = -80;
+}
+
+int sub_02084264(int val, int lo, int hi) {
+    if (val >= hi) {
+        val = lo;
+    }
+    if (val < lo) {
+        val = hi - 1;
+    }
+    return val;
 }
