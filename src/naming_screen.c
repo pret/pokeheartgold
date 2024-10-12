@@ -77,7 +77,7 @@ typedef struct NamingScreenAppData {
     int unk_458;
     int unk_45C;
     int unk_460;
-    int unk_464;
+    GFBgLayer unk_464;
     VecFx32 unk_468[2];
     u8 filler_480[4];
     int unk_484;
@@ -119,10 +119,15 @@ void sub_020837AC(NamingScreenAppData *data, NARC *narc);
 void sub_020839B8(SysTask *task, void *taskData);
 void sub_020839EC(NamingScreenAppData *data);
 void sub_02083BB4(NamingScreenAppData *data, SpriteTemplate *tmplate);
-void sub_02083D34(BgConfig *bgConfig, Window *a1, int *a2, int a3, int *a4, VecFx32 *a5, Sprite **a6, const u16 *a7);
+void sub_02083CAC(SysTask *task, void *taskData);
+void sub_02083D34(BgConfig *bgConfig, Window *windows, int *pState, int pageNum, GFBgLayer *pBgId, VecFx32 *posVecs, Sprite **pSprites, void *pRawData);
+void sub_02083F18(Window *window, int unused, String *msg);
+void sub_02083F48(Window *window, int unused, String *msg);
 void sub_02083F9C(NamingScreenAppData *data, OVY_MANAGER *ovyMan, NARC *narc);
-void sub_0208423C(VecFx32 *a0, int a1);
+sub_0208421C(BgConfig *bgConfig, GFBgLayer bgId, VecFx32 *pos);
+void sub_0208423C(VecFx32 *posVecs, GFBgLayer bgId);
 void sub_0208432C(NamingScreenAppData *data);
+void sub_02084E54(Window *window, u16 fillVal, int pageNum, u32 textColor, u8 *pRawData);
 void sub_02084740(Window *a0, u16 *a1, u16 a2, void *a3, void *a4, String *a5);
 void sub_02084830(u16 (*a0)[13], int a1);
 int sub_02084884(NamingScreenAppData *data, int key, BOOL a2);
@@ -135,6 +140,7 @@ static NamingScreenAppData *_021D43B0;
 
 extern const int _021020B4[8];
 extern const int _021021E8[][4];
+extern const u8 _02101D40[];
 
 BOOL NamingScreenApp_Init(OVY_MANAGER *ovyMan, int *pState) {
     NamingScreenAppData *data;
@@ -528,7 +534,7 @@ void sub_02083334(NamingScreenAppData *data, OVY_MANAGER *ovyMan) {
     NamingScreenArgs *args = OverlayManager_GetArgs(ovyMan);
 
     data->unk_45C = 4;
-    sub_0208423C(data->unk_468, 0);
+    sub_0208423C(data->unk_468, GF_BG_LYR_MAIN_0);
     BgSetPosTextAndCommit(data->bgConfig, data->unk_464, BG_POS_OP_SET_X, data->unk_468[data->unk_464].x);
     BgSetPosTextAndCommit(data->bgConfig, data->unk_464, BG_POS_OP_SET_Y, data->unk_468[data->unk_464].y);
     BgSetPosTextAndCommit(data->bgConfig, data->unk_464 ^ 1, BG_POS_OP_SET_X, data->unk_468[data->unk_464 ^ 1].x);
@@ -962,3 +968,162 @@ _02083B7E:
 }
 // clang-format on
 #endif // NONMATCHING
+
+void sub_02083BB4(NamingScreenAppData *data, SpriteTemplate *tmplate) {
+    tmplate->position.x = FX32_CONST(24);
+    tmplate->position.y = FX32_CONST(8);
+    data->unk_394[0]    = Sprite_CreateAffine(tmplate);
+    Sprite_SetAnimActiveFlag(data->unk_394[0], TRUE);
+
+    switch (data->type) {
+    case NAME_SCREEN_PLAYER:
+        if (data->unk_004 == PLAYER_GENDER_MALE) {
+            Sprite_SetAnimCtrlSeq(data->unk_394[0], 48);
+        } else {
+            Sprite_SetAnimCtrlSeq(data->unk_394[0], 49);
+        }
+        break;
+    case NAME_SCREEN_RIVAL:
+        Sprite_SetAnimCtrlSeq(data->unk_394[0], 51);
+        break;
+    case NAME_SCREEN_UNK6:
+        Sprite_SetAnimCtrlSeq(data->unk_394[0], 55);
+        break;
+    case NAME_SCREEN_GROUP:
+        Sprite_SetAnimCtrlSeq(data->unk_394[0], 54);
+        break;
+    case NAME_SCREEN_UNK4:
+    case NAME_SCREEN_UNK7:
+        Sprite_SetAnimCtrlSeq(data->unk_394[0], 53);
+        break;
+    case NAME_SCREEN_BOX:
+        Sprite_SetAnimCtrlSeq(data->unk_394[0], 47);
+        break;
+    case NAME_SCREEN_POKEMON:
+        Sprite_SetAnimCtrlSeq(data->unk_394[0], 50);
+        if (data->unk_010 != 2) {
+            tmplate->position.x = (13 * data->maxLen + 80) * FX32_ONE;
+            tmplate->position.y = FX32_CONST(27);
+            data->unk_394[1]    = Sprite_CreateAffine(tmplate);
+            if (data->unk_010 == 0) {
+                Sprite_SetAnimCtrlSeq(data->unk_394[1], 45);
+            } else {
+                Sprite_SetAnimCtrlSeq(data->unk_394[1], 46);
+            }
+        }
+        break;
+    }
+}
+
+typedef struct SysTaskData_02083CAC {
+    Sprite *sprite;
+    int state;
+    fx32 x;
+    int y;
+} SysTaskData_02083CAC;
+
+void sub_02083CAC(SysTask *task, void *taskData) {
+    SysTaskData_02083CAC *data = taskData;
+
+    VecFx32 matrix;
+
+    matrix.y = data->y;
+    matrix.z = 0;
+    switch (data->state) {
+    case 0:
+        matrix.x = data->x + FX32_CONST(4);
+        Sprite_SetMatrix(data->sprite, &matrix);
+        break;
+    case 2:
+        matrix.x = data->x - FX32_CONST(3);
+        Sprite_SetMatrix(data->sprite, &matrix);
+        break;
+    case 4:
+        matrix.x = data->x + FX32_CONST(2);
+        Sprite_SetMatrix(data->sprite, &matrix);
+        break;
+    case 6:
+        matrix.x = data->x;
+        Sprite_SetMatrix(data->sprite, &matrix);
+        DestroySysTaskAndEnvironment(task); // invalidates data
+        break;
+    }
+    ++data->state; // UB: potential use after free
+}
+
+void sub_02083D34(BgConfig *bgConfig, Window *windows, int *pState, int pageNum, GFBgLayer *pBgId, VecFx32 *posVecs, Sprite **pSprites, void *pRawData) {
+    GFBgLayer bgId_prev = *pBgId;
+    GFBgLayer bgId_curr = (GFBgLayer)(bgId_prev ^ 1);
+
+    switch (*pState) {
+    case 0: {
+        u16 fillVal = _02101D40[pageNum] | (_02101D40[pageNum] << 4);
+        GfGfxLoader_LoadScrnData(NARC_a_0_3_1, pageNum + 6, bgConfig, bgId_prev, 0, 0x380, TRUE, HEAP_ID_NAMING_SCREEN);
+        sub_0208423C(posVecs, bgId_prev);
+        sub_02084E54(&windows[bgId_prev], fillVal, pageNum, MAKE_TEXT_COLOR(14, 15, 0), pRawData);
+        ++(*pState);
+        break;
+    }
+    case 1:
+        BgSetPosTextAndCommit(bgConfig, bgId_prev, BG_POS_OP_SET_X, 238);
+        BgSetPosTextAndCommit(bgConfig, bgId_prev, BG_POS_OP_SET_Y, -80);
+        ++*(pState);
+        break;
+    case 2:
+        posVecs[bgId_prev].x -= 24;
+        if (posVecs[bgId_prev].x < -1) {
+            SysTaskData_02083CAC *data;
+            SysTask *task;
+
+            task                 = CreateSysTaskAndEnvironment(sub_02083CAC, sizeof(SysTaskData_02083CAC), 0, HEAP_ID_NAMING_SCREEN);
+            data                 = SysTask_GetData(task);
+            data->sprite         = pSprites[7];
+            data->state          = 0;
+            data->x              = Sprite_GetMatrixPtr(pSprites[7])->x;
+            data->y              = Sprite_GetMatrixPtr(pSprites[7])->y;
+            posVecs[bgId_prev].x = -11;
+            ++(*pState);
+        }
+        posVecs[bgId_curr].y -= 10;
+        if (posVecs[bgId_curr].y < -196) {
+            posVecs[bgId_curr].y = -196;
+        }
+        BgSetPosTextAndCommit(bgConfig, bgId_prev, BG_POS_OP_SET_X, posVecs[bgId_prev].x);
+        BgSetPosTextAndCommit(bgConfig, bgId_curr, BG_POS_OP_SET_Y, posVecs[bgId_curr].y);
+        break;
+    case 3:
+        posVecs[bgId_curr].y -= 10;
+        if (posVecs[bgId_curr].y < -196) {
+            posVecs[bgId_curr].y = -196;
+        }
+        BgSetPosTextAndCommit(bgConfig, bgId_prev, BG_POS_OP_SET_X, posVecs[bgId_prev].x);
+        BgSetPosTextAndCommit(bgConfig, bgId_curr, BG_POS_OP_SET_Y, posVecs[bgId_curr].y);
+        if (posVecs[bgId_prev].x == -11 && posVecs[bgId_curr].y == -196) {
+            ++(*pState);
+            (*pBgId) ^= 1;
+            sub_0208421C(bgConfig, *pBgId, posVecs);
+            PlaySE(SEQ_SE_DP_NAMEIN_01);
+        }
+        break;
+    case 4:
+        break;
+    }
+}
+
+void sub_02083F18(Window *window, int unused, String *msg) {
+    DrawFrameAndWindow2(window, FALSE, 0x100, 10);
+    AddTextPrinterParameterized(window, 1, msg, 0, 0, TEXT_SPEED_INSTANT, NULL);
+    CopyWindowToVram(window);
+}
+
+void sub_02083F48(Window *window, int unused, String *msg) {
+    int x           = 16;
+    int width       = FontID_String_GetWidth(0, msg, 0);
+    int windowWidth = GetWindowWidth(window) * 8;
+    if (width + 16 > windowWidth) {
+        x = windowWidth - width;
+    }
+    FillWindowPixelBuffer(window, 1);
+    AddTextPrinterParameterizedWithColor(window, 0, msg, x, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
+    CopyWindowToVram(window);
+}
