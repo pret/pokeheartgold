@@ -98,6 +98,14 @@ typedef struct NamingScreenAppData {
     BOOL *unk_5D0;
 } NamingScreenAppData; // size: 0x5D4
 
+typedef struct UnkStruct_02102278 {
+    u8 x;
+    u8 y;
+    u16 unk_2_0 : 2;
+    u8 unk_4_0  : 5;
+    u8 unk_4_5  : 5;
+} UnkStruct_02102278;
+
 BOOL NamingScreenApp_Init(OVY_MANAGER *ovyMan, int *pState);
 void sub_02082AEC(NNSG2dCharacterData *pCharData, NNSG2dPaletteData *pPlttData, int species, int form);
 BOOL NamingScreenApp_Main(OVY_MANAGER *ovyMan, int *pState);
@@ -161,6 +169,10 @@ extern const int _02101D54[];
 extern const u16 _02102422[][3];
 extern const u16 *_021104E4[];
 extern const u16 *_021104F8[][5];
+extern const u16 _021021B8[][2];
+extern const u16 _02102190[][2];
+extern const u8 _02101D44[];
+extern const UnkStruct_02102278 _02102278[];
 
 BOOL NamingScreenApp_Init(OVY_MANAGER *ovyMan, int *pState) {
     NamingScreenAppData *data;
@@ -1429,6 +1441,173 @@ BOOL sub_02084C98(int a0, int a1, u16 *a2, int a3) {
         for (j = 0; j < 3; ++j) {
             if (key == _02102422[i][j] && key != 1) {
                 a2[a3 - 1] = sub_02084C78(_02102422[i], j);
+                return TRUE;
+            }
+        }
+    }
+
+    return FALSE;
+}
+
+BOOL sub_02084D04(int a0, int a1, int a2, int a3, u16 *a4, int a5) {
+    int i;
+    u16 key;
+
+    if (a5 == 0 || a4[a5 - 1] == 1) {
+        return FALSE;
+    }
+    key = a4[a5 - 1];
+    for (i = a0; i < a1; ++i) {
+        if (key == _02102422[i][0]) {
+            a4[a5 - 1] = _02102422[i][a2];
+            return TRUE;
+        }
+    }
+    for (i = a0; i < a1; ++i) {
+        if (key == _02102422[i][a2]) {
+            a4[a5 - 1] = _02102422[i][0];
+            return TRUE;
+        }
+    }
+    switch (a3) {
+    case 0xD001:
+        for (i = 0; i < 12u; ++i) {
+            if (key == _021021B8[i][0]) {
+                a4[a5 - 1] = _021021B8[i][1];
+                return TRUE;
+            }
+        }
+        break;
+    case 0xD002:
+        for (i = 0; i < 10u; ++i) {
+            if (key == _02102190[i][0]) {
+                a4[a5 - 1] = _02102190[i][1];
+                return TRUE;
+            }
+        }
+        break;
+    case 0xE006:
+        if (key == 0x26) {
+            a4[a5 - 1] = 0x24;
+            return TRUE;
+        }
+        if (key == 0x76) {
+            a4[a5 - 1] = 0x74;
+            return TRUE;
+        }
+        break;
+    }
+
+    return FALSE;
+}
+
+void sub_02084E18(Sprite **sprites, int a1, int maxLen) {
+    for (int i = 0; i < maxLen; ++i) {
+        Sprite_SetAnimCtrlSeq(sprites[i], 43);
+    }
+    if (a1 != maxLen) {
+        Sprite_SetAnimCtrlSeq(sprites[a1], 44);
+    }
+}
+
+void sub_02084E54(Window *window, u16 fillVal, int pageNum, u32 textColor, u8 *pRawData) {
+    FillWindowPixelBuffer(window, fillVal);
+
+    for (int i = 0; i < 6; ++i) {
+        FillWindowPixelRect(window, _02101D44[pageNum], 32 * i + 16, 0, 16, 19);
+        FillWindowPixelRect(window, _02101D44[pageNum], 32 * i + 16, 38, 16, 19);
+        FillWindowPixelRect(window, _02101D44[pageNum], 32 * i + 16, 76, 16, 19);
+    }
+
+    for (int i = 0; i < 7; ++i) {
+        FillWindowPixelRect(window, _02101D44[pageNum], 32 * i, 19, 16, 19);
+        FillWindowPixelRect(window, _02101D44[pageNum], 32 * i, 57, 16, 19);
+    }
+
+    for (int i = 0; i < 5; ++i) {
+        sub_02084540(window, _021104F8[pageNum][i], 0, 19 * i + 4, 16, TEXT_SPEED_NOTRANSFER, textColor, pRawData);
+    }
+
+    CopyWindowToVram(window);
+}
+
+void sub_02084F3C(int *a0, Sprite **a1, int a2) {
+    for (int i = 0; i < 3; ++i) {
+        if (a0[i] != 0) {
+            for (int j = 0; j < 3; ++j) {
+                Sprite_SetAnimCtrlSeq(a1[j], _021021E8[j][2]);
+            }
+            Sprite_SetAnimCtrlSeq(a1[i], _021021E8[i][2] - 3);
+            break;
+        }
+    }
+    for (int i = 5; i < 7; ++i) {
+        if (a0[i] != 0) {
+            Sprite_SetAnimCtrlSeq(a1[i], _021021E8[i][2] + 1);
+        }
+    }
+    for (int i = 0; i < 7; ++i) {
+        a0[i] = 0;
+    }
+}
+
+void sub_02084FCC(NamingScreenAppData *data) {
+    if (Sprite_IsCellAnimationRunning(data->unk_32C[8])) {
+        return;
+    }
+
+    if (data->unk_158 == data->maxLen) {
+        data->cursorX = 12;
+        data->cursorY = 0;
+        Sprite_SetAnimCtrlSeq(data->unk_32C[8], 39);
+        data->unk_034 = 0;
+    } else {
+        Sprite_SetAnimCtrlSeq(data->unk_32C[8], 39);
+    }
+    if (!data->unk_030) {
+        Sprite_SetVisibleFlag(data->unk_32C[8], FALSE);
+    } else {
+        sub_02084430(data, 0);
+    }
+    Sprite_SetOamMode(data->unk_32C[8], GX_OAM_MODE_NORMAL);
+}
+
+BOOL sub_0208503C(NamingScreenAppData *data) {
+    int i;
+    int ip = 0;
+    u8 x;
+    u8 y;
+    u8 x0;
+    u8 y0;
+    u8 dx;
+    u8 dy;
+    if (data->type == NAME_SCREEN_UNK4) {
+        ip = 4;
+    }
+    if (gSystem.touchNew) {
+        x = gSystem.touchX;
+        y = gSystem.touchY;
+
+        for (i = ip; i < 71u; ++i) {
+            x0 = _02102278[i].x;
+            y0 = _02102278[i].y;
+            switch (_02102278[i].unk_2_0) {
+            case 0:
+                dx = 31;
+                dy = 22;
+                break;
+            case 1:
+                dx = 32;
+                dy = 22;
+                break;
+            case 2:
+                dx = 16;
+                dy = 19;
+                break;
+            }
+            if (x >= x0 && y >= y0 && x <= x0 + dx && y <= y0 + dy) {
+                data->cursorX = _02102278[i].unk_4_0;
+                data->cursorY = _02102278[i].unk_4_5;
                 return TRUE;
             }
         }
