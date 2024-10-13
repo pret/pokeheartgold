@@ -1568,7 +1568,6 @@ static void sub_02084740(Window *a0, u16 *a1, u16 a2, u16 *a3, void *a4, String 
     sub_02084664(a0, a3, a4, a5);
 }
 
-#ifdef NONMATCHING
 static void sub_02084830(u16 (*a0)[13], const int a1) {
     int i;
     int j;
@@ -1582,53 +1581,6 @@ static void sub_02084830(u16 (*a0)[13], const int a1) {
         }
     }
 }
-#else
-// clang-format off
-static asm void sub_02084830(u16 (*a0)[13], const int a1) {
-	push {r4, r5, r6, r7}
-	mov r4, #0
-	ldr r3, =_021104E4
-	add r5, r4, #0
-	add r6, r0, #0
-	lsl r2, r1, #2
-_0208483C:
-	ldr r7, [r3, r2]
-	add r4, r4, #1
-	ldrh r7, [r7, r5]
-	add r5, r5, #2
-	strh r7, [r6, #0]
-	add r6, r6, #2
-	cmp r4, #0xd
-	blt _0208483C
-	mov r3, #0x14
-	ldr r4, =_021104F8
-	mul r3, r1
-	mov r2, #0
-	add r3, r4, r3
-	add r1, r2, #0
-_02084858:
-	add r6, r1, #0
-	add r4, r1, #0
-	add r5, r0, #0
-_0208485E:
-	ldr r7, [r3, #0]
-	add r6, r6, #1
-	ldrh r7, [r7, r4]
-	add r4, r4, #2
-	strh r7, [r5, #0x1a]
-	add r5, r5, #2
-	cmp r6, #0xd
-	blt _0208485E
-	add r2, r2, #1
-	add r3, r3, #4
-	add r0, #0x1a
-	cmp r2, #5
-	blt _02084858
-	pop {r4, r5, r6, r7}
-	bx lr
-}
-// clang-format on
-#endif // NONMATCHING
 
 static int sub_02084884(NamingScreenAppData *data, u16 key, BOOL a2) {
     if (key == 0xD003 || key == 0xD004) {
