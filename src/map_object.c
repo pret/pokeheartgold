@@ -64,6 +64,10 @@ static u32 MapObject_GetFlags2BitsMask(LocalMapObject *object, u32 bits);
 static void MapObject_SetMapID(LocalMapObject *object, u32 mapId);
 static void MapObject_SetMovement(LocalMapObject *object, u32 movement);
 static void MapObject_SetInitialFacingDirection(LocalMapObject *object, u32 initialFacing);
+static void sub_0205F338(LocalMapObject *object, SysTask *sysTask);
+static SysTask *sub_0205F340(LocalMapObject *object);
+static void sub_0205F348(LocalMapObject *object);
+static void MapObject_SetManager(LocalMapObject *object, MapObjectManager *manager);
 
 MapObjectManager *MapObjectManager_Init(FieldSystem *fieldSystem, u32 objectCount, u32 priority) {
     MapObjectManager *ret = MapObjectManager_New(objectCount);
@@ -1107,27 +1111,27 @@ s32 MapObject_GetYRange(LocalMapObject *object) {
     return object->yRange;
 }
 
-void sub_0205F328(LocalMapObject *object, u32 a1) {
-    object->unkA0 = a1;
+void sub_0205F328(LocalMapObject *object, u32 param1) {
+    object->unkA0 = param1;
 }
 
 u32 sub_0205F330(LocalMapObject *object) {
     return object->unkA0;
 }
 
-void sub_0205F338(LocalMapObject *object, SysTask *a1) {
-    object->unkB0 = a1;
+static void sub_0205F338(LocalMapObject *object, SysTask *sysTask) {
+    object->unkB0 = sysTask;
 }
 
-SysTask *sub_0205F340(LocalMapObject *object) {
+static SysTask *sub_0205F340(LocalMapObject *object) {
     return object->unkB0;
 }
 
-void sub_0205F348(LocalMapObject *object) {
+static void sub_0205F348(LocalMapObject *object) {
     SysTask_Destroy(sub_0205F340(object));
 }
 
-void MapObject_SetManager(LocalMapObject *object, MapObjectManager *manager) {
+static void MapObject_SetManager(LocalMapObject *object, MapObjectManager *manager) {
     object->manager = manager;
 }
 
