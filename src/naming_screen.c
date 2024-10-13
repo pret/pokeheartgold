@@ -27,6 +27,7 @@
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
+#include "unk_02013534.h"
 #include "unk_020163E0.h"
 #include "vram_transfer_manager.h"
 
@@ -38,8 +39,8 @@ typedef struct NamingScreenAppData {
     int unk_010;
     int unk_014;
     Options *unk_018;
-    int unk_01C;
-    int unk_020;
+    int cursorX;
+    int cursorY;
     int unk_024;
     int unk_028;
     int unk_02C;
@@ -127,22 +128,35 @@ void sub_02083F9C(NamingScreenAppData *data, OVY_MANAGER *ovyMan, NARC *narc);
 void sub_0208421C(BgConfig *bgConfig, GFBgLayer bgId, VecFx32 *pos);
 void sub_0208423C(VecFx32 *posVecs, GFBgLayer bgId);
 int sub_02084264(int val, int lo, int hi);
+void sub_02084274(NamingScreenAppData *data, int a1);
 void sub_0208432C(NamingScreenAppData *data);
+void sub_02084430(NamingScreenAppData *data, int a1);
 void sub_02084E54(Window *window, u16 fillVal, int pageNum, u32 textColor, u8 *pRawData);
-void sub_02084740(Window *a0, u16 *a1, u16 a2, void *a3, void *a4, String *a5);
-void sub_02084830(u16 (*a0)[13], int a1);
+void sub_02084500(u16 *a0);
+void sub_02084540(Window *window, const u16 *rawChars, int x, int y, int spacing, int textSpeed, u32 color, u8 *buttonPixels);
+void *sub_02084640(Window *window, String *string, FontID fontId, u32 color);
+void sub_02084664(Window *windows, const u16 *a1, void *a2, String *a3);
+void sub_02084740(Window *a0, u16 *a1, u16 a2, u16 *a3, void *a4, String *a5);
+void sub_02084830(u16 (*a0)[13], const int a1);
 int sub_02084884(NamingScreenAppData *data, int key, BOOL a2);
 void sub_02084E18(Sprite **sprites, int a1);
 void sub_02084F3C(int *a0, Sprite **a1, int a2);
 void sub_02084FCC(NamingScreenAppData *data);
-void sub_02084500(u16 *a0);
-void sub_02084540(Window *window, const u16 *rawChars, int a2, int a3, int a4, int a5, u32 color, int a7);
+BOOL sub_0208503C(NamingScreenAppData *data);
 
 static NamingScreenAppData *_021D43B0;
 
 extern const int _021020B4[8];
 extern const int _021021E8[][4];
 extern const u8 _02101D40[];
+extern const int _02102168[][2];
+extern const u16 _02101D80[];
+extern const u8 _02101D4C[];
+extern const u8 _02101D3C[];
+extern const int _02101D54[];
+extern const u16 _02102422[][3];
+extern const u16 *_021104E4[];
+extern const u16 *_021104F8[][5];
 
 BOOL NamingScreenApp_Init(OVY_MANAGER *ovyMan, int *pState) {
     NamingScreenAppData *data;
@@ -302,10 +316,10 @@ int sub_02082CF8(NamingScreenAppData *data, int a1) {
         sub_02084830(data->unk_03A, data->unk_460);
         PlaySE(SEQ_SE_DP_SYU03);
     } else if (gSystem.newKeys & PAD_BUTTON_A) {
-        ret           = sub_02084884(data, data->unk_03A[data->unk_020][data->unk_01C], TRUE);
+        ret           = sub_02084884(data, data->unk_03A[data->cursorY][data->cursorX], TRUE);
         data->unk_030 = 1;
     } else if (data->unk_5C8 == TRUE) {
-        ret = sub_02084884(data, data->unk_03A[data->unk_020][data->unk_01C], FALSE);
+        ret = sub_02084884(data, data->unk_03A[data->cursorY][data->cursorX], FALSE);
     } else if (gSystem.newKeys & PAD_BUTTON_B) {
         ret = sub_02084884(data, 0xE007, TRUE);
     } else if (gSystem.newKeys & PAD_BUTTON_R) {
@@ -559,8 +573,8 @@ void sub_02083334(NamingScreenAppData *data, OVY_MANAGER *ovyMan) {
     data->unk_17C               = ReadMsgData_ExpandPlaceholders(data->msgFormat, data->msgData_249, msg_0249_00009, HEAP_ID_NAMING_SCREEN);
     data->unk_184               = NewString_ReadMsgData(data->msgData_249, msg_0249_00007);
     data->unk_158               = StringLength(data->unk_118);
-    data->unk_01C               = 0;
-    data->unk_020               = 1;
+    data->cursorX               = 0;
+    data->cursorY               = 1;
     data->unk_024               = -1;
     data->unk_028               = -1;
     data->unk_030               = 1;
@@ -1167,7 +1181,7 @@ void sub_02083F9C(NamingScreenAppData *data, OVY_MANAGER *ovyMan, NARC *narc) {
 
     if (data->unk_118[0] != EOS) {
         CopyU16StringArray(data->unk_0D8, data->unk_118);
-        sub_02084540(&data->unk_3B8[3], data->unk_0D8, 0, 0, 12, 0, MAKE_TEXT_COLOR(14, 15, 1), 0);
+        sub_02084540(&data->unk_3B8[3], data->unk_0D8, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
     }
 
     for (int i = 0; i < 3; ++i) {
@@ -1200,3 +1214,297 @@ int sub_02084264(int val, int lo, int hi) {
     }
     return val;
 }
+
+void sub_02084274(NamingScreenAppData *data, int a1) {
+    if (a1 == 0) {
+        return;
+    }
+
+    u16 sp0  = data->unk_03A[data->cursorY][data->cursorX];
+    int newX = sub_02084264(data->cursorX + _02102168[a1][0], 0, 13);
+    int newY = sub_02084264(data->cursorY + _02102168[a1][1], 0, 6);
+    while (data->unk_03A[newY][newX] == 0xD004 || (data->unk_03A[newY][newX] == sp0 && data->unk_03A[newY][newX] > 0xE001)) {
+        if (data->unk_028 == 0 && data->unk_03A[newY][newX] == 0xD004 && _02102168[a1][1] != 0) {
+            newX = sub_02084264(newX + data->unk_02C, 0, 13);
+        } else {
+            newX = sub_02084264(newX + _02102168[a1][0], 0, 13);
+            newY = sub_02084264(newY + _02102168[a1][1], 0, 6);
+        }
+    }
+    data->cursorX = newX;
+    data->cursorY = newY;
+}
+
+void sub_0208432C(NamingScreenAppData *data) {
+    int r4  = 0;
+    int r6  = 0;
+    BOOL r7 = FALSE;
+    if (!Sprite_GetVisibleFlag(data->unk_32C[8])) {
+        r7 = TRUE;
+    }
+
+    if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
+        PlaySE(SEQ_SE_DP_SELECT);
+        Sprite_SetVisibleFlag(data->unk_32C[8], TRUE);
+        r6 = 1;
+        ++r4;
+    }
+    if (gSystem.newAndRepeatedKeys & PAD_KEY_DOWN) {
+        PlaySE(SEQ_SE_DP_SELECT);
+        Sprite_SetVisibleFlag(data->unk_32C[8], TRUE);
+        r6 = 2;
+        ++r4;
+    }
+    if (gSystem.newAndRepeatedKeys & PAD_KEY_LEFT) {
+        PlaySE(SEQ_SE_DP_SELECT);
+        Sprite_SetVisibleFlag(data->unk_32C[8], TRUE);
+        r6 = 3;
+        ++r4;
+    }
+    if (gSystem.newAndRepeatedKeys & PAD_KEY_RIGHT) {
+        PlaySE(SEQ_SE_DP_SELECT);
+        Sprite_SetVisibleFlag(data->unk_32C[8], TRUE);
+        r6 = 4;
+        ++r4;
+    }
+    if (gSystem.newKeys & PAD_BUTTON_START) {
+        PlaySE(SEQ_SE_DP_SELECT);
+        Sprite_SetVisibleFlag(data->unk_32C[8], TRUE);
+        data->cursorX = 12;
+        data->cursorY = 0;
+        ++r4;
+    }
+    data->unk_5C8 = sub_0208503C(data);
+    if (data->unk_5C8 == TRUE) {
+        r6 = 0;
+        ++r4;
+    }
+    if (r7 == TRUE) {
+        r4 = 0;
+        sub_02084430(data, r6);
+    }
+    if (r4) {
+        sub_02084274(data, r6);
+        sub_02084430(data, r6);
+    }
+}
+
+void sub_02084430(NamingScreenAppData *data, int a1) {
+    if (data->cursorY != 0) {
+        if (data->unk_028 == 0 && data->unk_028 != data->cursorY) {
+            Sprite_SetAnimCtrlSeq(data->unk_32C[8], 39);
+        }
+        if (a1 != 0) {
+            Sprite_SetAnimCtrlSeq(data->unk_32C[8], 39);
+        }
+
+        VecFx32 vec;
+        vec.x = (data->cursorX * 16 + 26) * FX32_ONE;
+        vec.y = ((data->cursorY - 1) * 19 + 91) * FX32_ONE;
+        // vec.z = 0;
+        Sprite_SetMatrix(data->unk_32C[8], &vec);
+    } else {
+        int buttonId = data->unk_03A[data->cursorY][data->cursorX] - 0xE002;
+        VecFx32 vec;
+
+        vec.x = _02101D80[buttonId] * FX32_ONE;
+        vec.y = FX32_CONST(68);
+        // vec.z = 0;
+        Sprite_SetAnimCtrlSeq(data->unk_32C[8], _02101D4C[buttonId]);
+        Sprite_SetMatrix(data->unk_32C[8], &vec);
+    }
+
+    data->unk_038 = 180;
+    Sprite_SetAnimCtrlCurrentFrame(data->unk_32C[8], 0);
+    data->unk_024 = data->cursorX;
+    data->unk_028 = data->cursorY;
+    if (_02102168[a1][0] != 0) {
+        data->unk_02C = _02102168[a1][0];
+    }
+}
+
+void sub_02084500(u16 *a0) {
+    *a0 += 20;
+    if (*a0 > 360) {
+        *a0 = 0;
+    }
+    int val = ((GF_SinDeg(*a0) * 10) / FX32_ONE) + 15;
+    u16 col = RGB(29, val, 0);
+    GX_LoadOBJPltt(&col, 0x3A, sizeof(col));
+}
+
+void sub_02084540(Window *window, const u16 *rawChars, int x, int y, int spacing, int textSpeed, u32 color, u8 *buttonPixels) {
+    int i = 0;
+    int width;
+    int centerX;
+    u16 sp38[2];
+    String *string = String_New(2, HEAP_ID_NAMING_SCREEN);
+    while (rawChars[i] != EOS) {
+        if (rawChars[i] == 0xD001 || rawChars[i] == 0xD002 || rawChars[i] == 0xD003) {
+            u16 buttonId = rawChars[i] - 0xD001;
+            BlitBitmapRectToWindow(window, buttonPixels + (buttonId * 256) / 2, 0, 0, 12, 12, x + i * spacing, y + 2, 12, 12);
+        } else if (rawChars[i] == 0xD004) {
+            ++i;
+            continue;
+        } else {
+            sp38[0] = rawChars[i];
+            sp38[1] = EOS;
+            width   = FontID_FlatArray_GetWidth(0, sp38, 0);
+            CopyU16ArrayToString(string, sp38);
+            centerX = x + i * spacing + ((spacing - width) / 2);
+            AddTextPrinterParameterizedWithColor(window, 0, string, centerX, y, textSpeed, color, NULL);
+        }
+        ++i;
+    }
+    String_Delete(string);
+}
+
+void *sub_02084640(Window *window, String *string, FontID fontId, u32 color) {
+    AddTextPrinterParameterizedWithColor(window, fontId, string, 0, 0, TEXT_SPEED_NOTRANSFER, color, NULL);
+    return window->pixelBuffer;
+}
+
+void sub_02084664(Window *windows, const u16 *a1, void *a2, String *a3) {
+    u16 spC[21];
+    u16 i;
+    void *ptr;
+    String *string;
+
+    FillWindowPixelBuffer(&windows[3], 0);
+    ptr = sub_02084640(&windows[3], a3, 2, MAKE_TEXT_COLOR(13, 14, 15));
+    DC_FlushRange(ptr, 0x800);
+
+    for (i = 0; i < 4; ++i) {
+        sub_02013A50(&windows[3], 4, 2, i * 4, 0, a2);
+        DC_FlushRange(a2, 0x100);
+        GXS_LoadOBJ(a2, _02101D3C[i] * 32, 0x100);
+    }
+
+    string = String_New(21, HEAP_ID_NAMING_SCREEN);
+    for (i = 0; i < 3; ++i) {
+        spC[0] = a1[i];
+        spC[1] = EOS;
+
+        FillWindowPixelBuffer(&windows[i], 0);
+        CopyU16ArrayToString(string, spC);
+        ptr = sub_02084640(&windows[i], string, 2, MAKE_TEXT_COLOR(13, 14, 15));
+        DC_FlushRange(ptr, 0x80);
+        GXS_LoadOBJ(ptr, _02101D54[i] * 32, 0x80);
+    }
+
+    String_Delete(string);
+}
+
+void sub_02084740(Window *a0, u16 *a1, u16 a2, u16 *a3, void *a4, String *a5) {
+    int i;
+    int j;
+    u16 character;
+
+    if (a2 == 0) {
+        character = 0xD003;
+    } else {
+        character = a1[a2 - 1];
+    }
+
+    switch (character) {
+    case 0xD001:
+    case 0xD002:
+    case 0xD003:
+    case 0xD004:
+    case 0xE002:
+    case 0xE003:
+    case 0xE004:
+    case 0xE005:
+    case 0xE006:
+    case 0xE007:
+    case 0xE008:
+        character = 1;
+        break;
+    }
+
+    for (i = 0; i < 3; ++i) {
+        a3[i] = 1;
+    }
+
+    a3[0] = character;
+    if (character != 1) {
+        for (i = 0; i < 82u; ++i) {
+            if (character == _02102422[i][0]) {
+                for (j = 0; j < 3; ++j) {
+                    a3[j] = _02102422[i][j];
+                }
+                break;
+            }
+            if (character == _02102422[i][2]) {
+                for (j = 0; j < 3; ++j) {
+                    a3[j] = _02102422[i][j];
+                }
+                break;
+            }
+        }
+    }
+
+    sub_02084664(a0, a3, a4, a5);
+}
+
+#ifdef NONMATCHING
+void sub_02084830(u16 (*a0)[13], const int a1) {
+    int i;
+    int j;
+
+    for (i = 0; i < 13; ++i) {
+        a0[0][i] = _021104E4[a1][i];
+    }
+    for (j = 0; j < 5; ++j) {
+        for (i = 0; i < 13; ++i) {
+            a0[j + 1][i] = _021104F8[a1][j][i];
+        }
+    }
+}
+#else
+// clang-format off
+asm void sub_02084830(u16 (*a0)[13], const int a1) {
+	push {r4, r5, r6, r7}
+	mov r4, #0
+	ldr r3, =_021104E4
+	add r5, r4, #0
+	add r6, r0, #0
+	lsl r2, r1, #2
+_0208483C:
+	ldr r7, [r3, r2]
+	add r4, r4, #1
+	ldrh r7, [r7, r5]
+	add r5, r5, #2
+	strh r7, [r6, #0]
+	add r6, r6, #2
+	cmp r4, #0xd
+	blt _0208483C
+	mov r3, #0x14
+	ldr r4, =_021104F8
+	mul r3, r1
+	mov r2, #0
+	add r3, r4, r3
+	add r1, r2, #0
+_02084858:
+	add r6, r1, #0
+	add r4, r1, #0
+	add r5, r0, #0
+_0208485E:
+	ldr r7, [r3, #0]
+	add r6, r6, #1
+	ldrh r7, [r7, r4]
+	add r4, r4, #2
+	strh r7, [r5, #0x1a]
+	add r5, r5, #2
+	cmp r6, #0xd
+	blt _0208485E
+	add r2, r2, #1
+	add r3, r3, #4
+	add r0, #0x1a
+	cmp r2, #5
+	blt _02084858
+	pop {r4, r5, r6, r7}
+	bx lr
+}
+// clang-format on
+#endif // NONMATCHING
