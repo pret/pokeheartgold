@@ -20,7 +20,7 @@ typedef struct NamingScreenArgs {
     int unk44;
     PCStorage *unk48;
     Options *options;
-    int *unk50;
+    BOOL *unk50;
 } NamingScreenArgs;
 
 NamingScreenArgs *NamingScreen_CreateArgs(HeapID heapId, NameScreenType kind, int param, int maxLen, Options *options, int *a5);

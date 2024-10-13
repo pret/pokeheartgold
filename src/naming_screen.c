@@ -29,6 +29,7 @@
 #include "unk_0200FA24.h"
 #include "unk_02013534.h"
 #include "unk_020163E0.h"
+#include "unk_020183F0.h"
 #include "vram_transfer_manager.h"
 
 typedef struct NamingScreenAppData {
@@ -52,8 +53,7 @@ typedef struct NamingScreenAppData {
     u16 unk_0D8[0x20];
     u16 unk_118[0x20];
     u16 unk_158;
-    u16 unk_15A;
-    u8 filler_15C[0x4];
+    u16 unk_15A[3];
     BgConfig *bgConfig; // 0x160
     u8 filler_164[4];
     MessageFormat *msgFormat; // 0x168
@@ -95,7 +95,7 @@ typedef struct NamingScreenAppData {
     UnkStruct_020163E0 *unk_5C4;
     BOOL unk_5C8;
     int unk_5CC;
-    int *unk_5D0;
+    BOOL *unk_5D0;
 } NamingScreenAppData; // size: 0x5D4
 
 BOOL NamingScreenApp_Init(OVY_MANAGER *ovyMan, int *pState);
@@ -131,15 +131,19 @@ int sub_02084264(int val, int lo, int hi);
 void sub_02084274(NamingScreenAppData *data, int a1);
 void sub_0208432C(NamingScreenAppData *data);
 void sub_02084430(NamingScreenAppData *data, int a1);
-void sub_02084E54(Window *window, u16 fillVal, int pageNum, u32 textColor, u8 *pRawData);
 void sub_02084500(u16 *a0);
 void sub_02084540(Window *window, const u16 *rawChars, int x, int y, int spacing, int textSpeed, u32 color, u8 *buttonPixels);
 void *sub_02084640(Window *window, String *string, FontID fontId, u32 color);
 void sub_02084664(Window *windows, const u16 *a1, void *a2, String *a3);
 void sub_02084740(Window *a0, u16 *a1, u16 a2, u16 *a3, void *a4, String *a5);
 void sub_02084830(u16 (*a0)[13], const int a1);
-int sub_02084884(NamingScreenAppData *data, int key, BOOL a2);
-void sub_02084E18(Sprite **sprites, int a1);
+int sub_02084884(NamingScreenAppData *data, u16 key, BOOL a2);
+void sub_02084C58(NamingScreenAppData *data, BOOL a1);
+int sub_02084C78(const u16 *a0, int a1);
+BOOL sub_02084C98(int a0, int a1, u16 *a2, int a3);
+BOOL sub_02084D04(int a0, int a1, int a2, int a3, u16 *a4, int a5);
+void sub_02084E18(Sprite **sprites, int a1, int maxLen);
+void sub_02084E54(Window *window, u16 fillVal, int pageNum, u32 textColor, u8 *pRawData);
 void sub_02084F3C(int *a0, Sprite **a1, int a2);
 void sub_02084FCC(NamingScreenAppData *data);
 BOOL sub_0208503C(NamingScreenAppData *data);
@@ -192,7 +196,7 @@ BOOL NamingScreenApp_Init(OVY_MANAGER *ovyMan, int *pState) {
         sub_020837AC(data, narc);
         sub_020839EC(data);
         sub_02083F9C(data, ovyMan, narc);
-        sub_02084740(&data->unk_3B8[4], data->unk_0D8, data->unk_158, &data->unk_15A, data->unk_4C4, data->unk_17C);
+        sub_02084740(&data->unk_3B8[4], data->unk_0D8, data->unk_158, data->unk_15A, data->unk_4C4, data->unk_17C);
         sub_02004EC4(0x34, 0, 0);
         BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 16, 1, HEAP_ID_NAMING_SCREEN);
         sub_020832E4(GF_PLANE_TOGGLE_ON);
@@ -716,7 +720,6 @@ void sub_020839B8(SysTask *task, void *taskData) {
     Sprite_SetMatrix(data->sprite2, &matrix);
 }
 
-#ifdef NONMATCHING
 void sub_020839EC(NamingScreenAppData *data) {
     int i;
     CreateSpriteResourcesHeader(&data->unk_2E4, 0, 0, 0, 0, -1, -1, 0, 1, data->unk_2B4[GF_GFX_RES_TYPE_CHAR], data->unk_2B4[GF_GFX_RES_TYPE_PLTT], data->unk_2B4[GF_GFX_RES_TYPE_CELL], data->unk_2B4[GF_GFX_RES_TYPE_ANIM], NULL, NULL);
@@ -761,229 +764,12 @@ void sub_020839EC(NamingScreenAppData *data) {
             Sprite_SetAnimActiveFlag(data->unk_364[i], TRUE);
             Sprite_SetAnimCtrlSeq(data->unk_364[i], 43);
         }
-        sub_02084E18(data->unk_364, data->unk_158);
+        sub_02084E18(data->unk_364, data->unk_158, data->maxLen);
         sub_02083BB4(data, &spriteTemplate);
     }
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
-#else
-// clang-format off
-asm void sub_020839EC(NamingScreenAppData *data) {
-    push {r4, r5, r6, r7, lr}
-	sub sp, #0x5c
-	mov r1, #0
-	add r6, r0, #0
-	str r1, [sp]
-	sub r0, r1, #1
-	str r0, [sp, #4]
-	str r0, [sp, #8]
-	mov r2, #0xad
-	str r1, [sp, #0xc]
-	mov r0, #1
-	lsl r2, r2, #2
-	str r0, [sp, #0x10]
-	ldr r0, [r6, r2]
-	add r3, r1, #0
-	str r0, [sp, #0x14]
-	add r0, r2, #4
-	ldr r0, [r6, r0]
-	str r0, [sp, #0x18]
-	add r0, r2, #0
-	add r0, #8
-	ldr r0, [r6, r0]
-	str r0, [sp, #0x1c]
-	add r0, r2, #0
-	add r0, #0xc
-	ldr r0, [r6, r0]
-	add r2, #0x30
-	str r0, [sp, #0x20]
-	str r1, [sp, #0x24]
-	add r0, r6, r2
-	add r2, r1, #0
-	str r1, [sp, #0x28]
-	bl CreateSpriteResourcesHeader
-	mov r1, #1
-	mov r3, #0xad
-	str r1, [sp]
-	sub r0, r1, #2
-	str r0, [sp, #4]
-	str r0, [sp, #8]
-	mov r0, #0
-	str r0, [sp, #0xc]
-	str r0, [sp, #0x10]
-	lsl r3, r3, #2
-	ldr r2, [r6, r3]
-	str r2, [sp, #0x14]
-	add r2, r3, #4
-	ldr r2, [r6, r2]
-	str r2, [sp, #0x18]
-	add r2, r3, #0
-	add r2, #8
-	ldr r2, [r6, r2]
-	str r2, [sp, #0x1c]
-	add r2, r3, #0
-	add r2, #0xc
-	ldr r2, [r6, r2]
-	add r3, #0x54
-	str r2, [sp, #0x20]
-	str r0, [sp, #0x24]
-	str r0, [sp, #0x28]
-	add r0, r6, r3
-	add r2, r1, #0
-	add r3, r1, #0
-	bl CreateSpriteResourcesHeader
-	mov r0, #0x62
-	lsl r0, r0, #2
-	ldr r0, [r6, r0]
-	mov r1, #2
-	str r0, [sp, #0x2c]
-	mov r0, #0xb9
-	lsl r0, r0, #2
-	add r0, r6, r0
-	str r0, [sp, #0x30]
-	mov r0, #6
-	lsl r1, r1, #0x10
-	lsl r0, r0, #0x10
-	str r0, [sp, #0x38]
-	lsr r0, r1, #5
-	mov r7, #0
-	str r1, [sp, #0x34]
-	str r7, [sp, #0x3c]
-	str r0, [sp, #0x40]
-	str r0, [sp, #0x44]
-	str r0, [sp, #0x48]
-	add r0, sp, #0x2c
-	strh r7, [r0, #0x20]
-	mov r0, #1
-	str r0, [sp, #0x50]
-	str r0, [sp, #0x54]
-	mov r0, #0x12
-	ldr r4, =_021021E8
-	str r0, [sp, #0x58]
-	add r5, r6, #0
-_02083AA8:
-	ldr r0, [r4, #0]
-	lsl r0, r0, #0xc
-	str r0, [sp, #0x34]
-	ldr r0, [r4, #4]
-	lsl r0, r0, #0xc
-	str r0, [sp, #0x38]
-	add r0, sp, #0x2c
-	bl Sprite_CreateAffine
-	mov r1, #0xcb
-	lsl r1, r1, #2
-	str r0, [r5, r1]
-	add r0, r1, #0
-	ldr r0, [r5, r0]
-	mov r1, #1
-	bl Sprite_SetAnimActiveFlag
-	mov r0, #0xcb
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	ldr r1, [r4, #8]
-	bl Sprite_SetAnimCtrlSeq
-	mov r0, #0xcb
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	ldr r1, [r4, #0xc]
-	bl Sprite_SetDrawPriority
-	add r7, r7, #1
-	add r4, #0x10
-	add r5, r5, #4
-	cmp r7, #9
-	blt _02083AA8
-	mov r0, #0xcf
-	lsl r0, r0, #2
-	ldr r0, [r6, r0]
-	mov r1, #0
-	bl Sprite_SetVisibleFlag
-	ldr r7, =_021021E8
-	mov r5, #0
-	add r4, r6, #0
-_02083AFE:
-	ldr r0, =sub_020839B8
-	mov r1, #0x10
-	mov r2, #5
-	mov r3, #0x12
-	bl CreateSysTaskAndEnvironment
-	mov r1, #0xe7
-	lsl r1, r1, #2
-	str r0, [r4, r1]
-	add r0, r1, #0
-	ldr r0, [r4, r0]
-	bl SysTask_GetData
-	mov r1, #0xd2
-	lsl r1, r1, #2
-	ldr r1, [r6, r1]
-	str r1, [r0]
-	mov r1, #0xcb
-	lsl r1, r1, #2
-	ldr r1, [r4, r1]
-	add r4, r4, #4
-	str r1, [r0, #4]
-	ldr r1, [r7, #0]
-	add r7, #0x10
-	lsl r1, r1, #0xc
-	str r1, [r0, #8]
-	str r5, [r0, #0xc]
-	add r5, r5, #1
-	cmp r5, #7
-	blt _02083AFE
-	ldr r2, [r6, #0xc]
-	mov r7, #0
-	cmp r2, #0
-	ble _02083B7E
-	mov r5, #0x50
-	add r4, r6, #0
-_02083B46:
-	lsl r0, r5, #0xc
-	str r0, [sp, #0x34]
-	mov r0, #0x27
-	lsl r0, r0, #0xc
-	str r0, [sp, #0x38]
-	add r0, sp, #0x2c
-	bl Sprite_CreateAffine
-	mov r1, #0xd9
-	lsl r1, r1, #2
-	str r0, [r4, r1]
-	add r0, r1, #0
-	ldr r0, [r4, r0]
-	mov r1, #1
-	bl Sprite_SetAnimActiveFlag
-	mov r0, #0xd9
-	lsl r0, r0, #2
-	ldr r0, [r4, r0]
-	mov r1, #0x2b
-	bl Sprite_SetAnimCtrlSeq
-	ldr r2, [r6, #0xc]
-	add r7, r7, #1
-	add r5, #0xc
-	add r4, r4, #4
-	cmp r7, r2
-	blt _02083B46
-_02083B7E:
-	mov r1, #0x56
-	lsl r1, r1, #2
-	mov r0, #0xd9
-	lsl r0, r0, #2
-	ldrh r1, [r6, r1]
-	add r0, r6, r0
-	bl sub_02084E18
-	add r0, r6, #0
-	add r1, sp, #0x2c
-	bl sub_02083BB4
-	mov r0, #0x10
-	mov r1, #1
-	bl GfGfx_EngineATogglePlanes
-	mov r0, #0x10
-	mov r1, #1
-	bl GfGfx_EngineBTogglePlanes
-	add sp, #0x5c
-	pop {r4, r5, r6, r7, pc}
-}
-// clang-format on
-#endif // NONMATCHING
 
 void sub_02083BB4(NamingScreenAppData *data, SpriteTemplate *tmplate) {
     tmplate->position.x = FX32_CONST(24);
@@ -1508,3 +1294,145 @@ _0208485E:
 }
 // clang-format on
 #endif // NONMATCHING
+
+int sub_02084884(NamingScreenAppData *data, u16 key, BOOL a2) {
+    if (key == 0xD003 || key == 0xD004) {
+        key = 1;
+    }
+    if (data->type == NAME_SCREEN_UNK4) {
+        if (key == 0xE002 || key == 0xE003 || key == 0xE004 || key == 0xE005) {
+            key = 1;
+        }
+    }
+    if (!Sprite_GetVisibleFlag(data->unk_32C[8]) && gSystem.touchNew == 0) {
+        Sprite_SetVisibleFlag(data->unk_32C[8], TRUE);
+        return 2;
+    }
+
+    switch (key) {
+    case 0xD001:
+        if (sub_02084D04(0x2A, 0x52, 1, 0xD001, data->unk_0D8, data->unk_158)) {
+            FillWindowPixelBuffer(&data->unk_3B8[3], 1);
+            sub_02084540(&data->unk_3B8[3], data->unk_0D8, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
+            PlaySE(SEQ_SE_DP_BOX02);
+        }
+        break;
+    case 0xD002:
+        if (sub_02084D04(0x48, 0x52, 2, 0xD002, data->unk_0D8, data->unk_158)) {
+            FillWindowPixelBuffer(&data->unk_3B8[3], 1);
+            sub_02084540(&data->unk_3B8[3], data->unk_0D8, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
+            PlaySE(SEQ_SE_DP_BOX02);
+        }
+        break;
+    case 0xE006:
+        if (sub_02084C98(0, 0x52, data->unk_0D8, data->unk_158)) {
+            FillWindowPixelBuffer(&data->unk_3B8[3], 1);
+            sub_02084540(&data->unk_3B8[3], data->unk_0D8, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
+            ++data->unk_490[4];
+            PlaySE(SEQ_SE_DP_BOX02);
+        }
+        break;
+    case 0xE002:
+    case 0xE003:
+    case 0xE004:
+    case 0xE005:
+        if (data->unk_460 != key - 0xE002) {
+            data->unk_45C = 0;
+            data->unk_460 = key - 0xE002;
+            sub_02084830(data->unk_03A, data->unk_460);
+            ++data->unk_490[key - 0xE002];
+            PlaySE(SEQ_SE_DP_SYU03);
+        }
+        break;
+    case 0xE007:
+        if (data->unk_158 != 0) {
+            data->unk_0D8[data->unk_158 - 1] = EOS;
+            --data->unk_158;
+            FillWindowPixelBuffer(&data->unk_3B8[3], 1);
+            if (data->unk_158 == 0) {
+                CopyWindowToVram(&data->unk_3B8[3]);
+            } else {
+                sub_02084540(&data->unk_3B8[3], data->unk_0D8, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
+            }
+            sub_02084740(&data->unk_3B8[4], data->unk_0D8, data->unk_158, data->unk_15A, data->unk_4C4, data->unk_17C);
+            sub_02084E18(data->unk_364, data->unk_158, data->maxLen);
+            ++data->unk_490[5];
+            PlaySE(SEQ_SE_DP_SELECT);
+        }
+        break;
+    case 0xE008:
+        sub_020164C4(data->unk_5C4);
+        if (data->unk_014 == 0) {
+            PlaySE(SEQ_SE_DP_PIRORIRO);
+            ++data->unk_490[6];
+            BeginNormalPaletteFade(2, 0, 0, RGB_BLACK, 16, 1, HEAP_ID_NAMING_SCREEN);
+            sub_02084C58(data, a2);
+            return 3;
+        } else {
+            data->unk_45C = 5;
+        }
+        break;
+    default:
+        if (data->unk_460 == 4 && key == 1) {
+            return 2;
+        }
+        if (data->unk_158 != data->maxLen) {
+            data->unk_0D8[data->unk_158] = key;
+            FillWindowPixelBuffer(&data->unk_3B8[3], 1);
+            sub_02084540(&data->unk_3B8[3], data->unk_0D8, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
+            ++data->unk_158;
+            sub_02084E18(data->unk_364, data->unk_158, data->maxLen);
+            PlaySE(SEQ_SE_DP_BOX02);
+            Sprite_SetVisibleFlag(data->unk_32C[8], TRUE);
+            Sprite_SetOamMode(data->unk_32C[8], GX_OAM_MODE_XLU);
+            G2_SetBlendAlpha(0, GX_BLEND_PLANEMASK_BG0 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2, 8, 8);
+            Sprite_SetAnimCtrlSeq(data->unk_32C[8], 60);
+            if (data->unk_158 == data->maxLen) {
+                data->unk_034 = 1;
+            }
+            sub_02084740(&data->unk_3B8[4], data->unk_0D8, data->unk_158, data->unk_15A, data->unk_4C4, data->unk_17C);
+        }
+        break;
+    }
+
+    return 2;
+}
+
+void sub_02084C58(NamingScreenAppData *data, BOOL a1) {
+    if (data->unk_5D0 != NULL) {
+        if (a1 == TRUE) {
+            sub_02018410(data->unk_5D0, FALSE);
+        } else {
+            sub_02018410(data->unk_5D0, TRUE);
+        }
+    }
+}
+
+// DANGER: Can spin infinitely here
+int sub_02084C78(const u16 *a0, int a1) {
+    do {
+        a1 = sub_02084264(a1 + 1, 0, 3);
+    } while (a0[a1] == 1);
+    return a0[a1];
+}
+
+BOOL sub_02084C98(int a0, int a1, u16 *a2, int a3) {
+    int i;
+    int j;
+    u16 key;
+
+    if (a3 == 0) {
+        return FALSE;
+    }
+    key = a2[a3 - 1];
+    for (i = a0; i < a1; ++i) {
+        for (j = 0; j < 3; ++j) {
+            if (key == _02102422[i][j] && key != 1) {
+                a2[a3 - 1] = sub_02084C78(_02102422[i], j);
+                return TRUE;
+            }
+        }
+    }
+
+    return FALSE;
+}
