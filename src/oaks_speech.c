@@ -641,7 +641,7 @@ BOOL OakSpeech_Exit(OVY_MANAGER *ovyMan, int *pState) {
     HeapID heapId       = data->heapId;
     FontID_Release(4);
     PlayerName_StringToFlat(Save_PlayerData_GetProfileAddr(data->saveData), data->namingScreenArgs_Player->nameInputString);
-    PlayerProfile_SetTrainerGender(Save_PlayerData_GetProfileAddr(data->saveData), data->namingScreenArgs_Player->playerGender);
+    PlayerProfile_SetTrainerGender(Save_PlayerData_GetProfileAddr(data->saveData), data->namingScreenArgs_Player->playerGenderOrMonSpecies);
     Save_Misc_RivalName_Set(Save_Misc_Get(data->saveData), data->namingScreenArgs_Rival->nameInputString);
     NamingScreen_DeleteArgs(data->namingScreenArgs_Player);
     NamingScreen_DeleteArgs(data->namingScreenArgs_Rival);
@@ -2008,9 +2008,9 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
 
     case OAK_SPEECH_MAIN_STATE_PROMPT_NAME_LAUNCH_NAMING_SCREEN:
         String_SetEmpty(data->namingScreenArgs_Player->nameInputString);
-        data->namingScreenArgs_Player->playerGender = data->playerGender;
-        data->overlayManager                        = OverlayManager_New(&gOverlayTemplate_NamingScreen, data->namingScreenArgs_Player, data->heapId);
-        data->state                                 = OAK_SPEECH_MAIN_STATE_PROMPT_NAME_RESTORE_GRAPHICS_AFTER;
+        data->namingScreenArgs_Player->playerGenderOrMonSpecies = data->playerGender;
+        data->overlayManager                                    = OverlayManager_New(&gOverlayTemplate_NamingScreen, data->namingScreenArgs_Player, data->heapId);
+        data->state                                             = OAK_SPEECH_MAIN_STATE_PROMPT_NAME_RESTORE_GRAPHICS_AFTER;
         break;
 
     case OAK_SPEECH_MAIN_STATE_PROMPT_NAME_RESTORE_GRAPHICS_AFTER:

@@ -1047,21 +1047,21 @@ static BOOL Task_NamingScreen(TaskManager *taskman) {
         NamingScreenArgs *args = data->args;
         if (args->kind == 1) {
             if (String_Compare(args->nameInputString, data->unk10) == 0) {
-                data->args->unk14 = 1;
+                data->args->needsHandling = 1;
             }
         } else if (args->kind == 5) {
             u16 *var2                   = String_cstr(args->nameInputString);
             SAV_FRIEND_GRP *friendGroup = Save_FriendGroup_Get(fieldSystem->saveData);
             if (sub_0202C88C(friendGroup, var2)) {
-                data->args->unk14 = 2;
+                data->args->needsHandling = 2;
             }
         }
-        if (data->args->unk14 == 0) {
+        if (data->args->needsHandling == 0) {
             SetName(taskman);
         }
         u16 *retVar = data->retVar;
         if (data->retVar != NULL) {
-            *retVar = data->args->unk14;
+            *retVar = data->args->needsHandling;
         }
         NamingScreen_DeleteArgs(data->args);
         String_Delete(data->unk10);
@@ -1077,7 +1077,7 @@ static void SetName(TaskManager *taskman) {
     switch (data->args->kind) {
     case NAME_SCREEN_PLAYER:
         PlayerProfile *profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
-        Save_Profile_PlayerName_Set(profile, data->args->unk1C);
+        Save_Profile_PlayerName_Set(profile, data->args->nameInputFlat);
         break;
     case NAME_SCREEN_RIVAL:
         SAVE_MISC_DATA *miscData = Save_Misc_Get(fieldSystem->saveData);
@@ -1091,7 +1091,7 @@ static void SetName(TaskManager *taskman) {
         } else {
             mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), data->partyIdx);
         }
-        SetMonData(mon, MON_DATA_NICKNAME_FLAT_COMPARE, data->args->unk1C);
+        SetMonData(mon, MON_DATA_NICKNAME_FLAT_COMPARE, data->args->nameInputFlat);
         break;
     case NAME_SCREEN_GROUP:
         SAV_FRIEND_GRP *friendGroup = Save_FriendGroup_Get(fieldSystem->saveData);

@@ -10,20 +10,20 @@ extern const OVY_MGR_TEMPLATE gOverlayTemplate_NamingScreen;
 
 typedef struct NamingScreenArgs {
     NameScreenType kind;
-    int playerGender; // monSpecies
+    int playerGenderOrMonSpecies; // monSpecies
     int monForm;
     int maxLen;
     int monGender;
-    int unk14;
+    BOOL needsHandling;
     String *nameInputString;
-    u16 unk1C[20];
-    int unk44;
-    PCStorage *unk48;
+    u16 nameInputFlat[20];
+    int battleMsgId;
+    PCStorage *pcStorage;
     Options *options;
-    BOOL *unk50;
+    BOOL *pMenuInputState;
 } NamingScreenArgs;
 
-NamingScreenArgs *NamingScreen_CreateArgs(HeapID heapId, NameScreenType kind, int param, int maxLen, Options *options, int *a5);
+NamingScreenArgs *NamingScreen_CreateArgs(HeapID heapId, NameScreenType kind, int param, int maxLen, Options *options, BOOL *pMenuInputState);
 void NamingScreen_DeleteArgs(NamingScreenArgs *namingScreenArgs);
 
 #endif // POKEHEARTGOLD_NAMING_SCREEN_H

@@ -250,11 +250,57 @@
 #define CHAR_y 349
 #define CHAR_z 350
 
+#define CHAR_EXCL     427
+#define CHAR_QMARK    428
+#define CHAR_COMMA    429
+#define CHAR_PERIOD   430
 #define CHAR_ELLIPSIS 431
+#define CHAR_CTRDOT   432
 
-#define CHAR_HYPHEN 446
+#define CHAR_SLASH  433
+#define CHAR_LAPOST 434 // left single quote
+#define CHAR_RAPOST 435 // right single quote (apostrophe)
+#define CHAR_LDQUOT 436 // left double quote
+#define CHAR_RDQUOT 437 // right double quote
 
-#define CHAR_SPACE 478
+#define CHAR_LPAREN   441
+#define CHAR_RPAREN   442
+#define CHAR_MALE     443
+#define CHAR_FEMALE   444
+#define CHAR_PLUS     445
+#define CHAR_HYPHEN   446
+#define CHAR_ASTERISK 447
+#define CHAR_HASH     448
+#define CHAR_EQUALS   449
+
+#define CHAR_TILDE        451
+#define CHAR_COLON        452
+#define CHAR_SEMICOLON    453
+#define CHAR_SPADE_SUIT   454
+#define CHAR_CLUB_SUIT    455
+#define CHAR_HEART_SUIT   456
+#define CHAR_DIAMOND_SUIT 457
+#define CHAR_STAR         458
+#define CHAR_CIRCLE_DOT   459
+#define CHAR_CIRCLE       460
+#define CHAR_SQUARE       461
+#define CHAR_TRIANGLE     462
+#define CHAR_DIAMOND      463
+#define CHAR_AT           464
+#define CHAR_MUSIC_NOTE   465
+#define CHAR_PERCENT      466
+#define CHAR_SUN          467
+#define CHAR_TREBLE_CLEF  468
+#define CHAR_UMBRELLA     469
+#define CHAR_SNOWMAN      470
+#define CHAR_SMILEY       471
+#define CHAR_LAUGHING     472
+#define CHAR_ANGUISH      473
+#define CHAR_ANGRY        474
+#define CHAR_UP_ARROW     475
+#define CHAR_DOWN_ARROW   476
+#define CHAR_SNORING      477
+#define CHAR_SPACE        478
 
 #define CHAR_NARROW_SPACE 482
 
