@@ -4,7 +4,7 @@
 .public sub_0205F09C
 .public MapObject_TestFlagsBits
 .public MapObject_GetFacingDirection
-.public MapObject_GetPreviousFacing
+.public MapObject_GetPreviousFacingDirection
 .public MapObject_GetPrevX
 .public MapObject_GetPrevY
 .public MapObject_GetPosVecYCoord

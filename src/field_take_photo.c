@@ -479,7 +479,7 @@ static LocalMapObject *createSpecialMapObject(MapObjectManager *objectMan, int s
     GF_ASSERT(ret != NULL);
     MapObject_SetID(ret, localId);
     MapObject_SetType(ret, 0);
-    MapObject_SetFlagID(ret, 0);
+    MapObject_SetEventFlag(ret, 0);
     MapObject_SetXRange(ret, -1);
     MapObject_SetYRange(ret, -1);
     MapObject_SetFlagsBits(ret, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK10 | MAPOBJECTFLAG_UNK13));

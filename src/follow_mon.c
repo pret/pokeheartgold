@@ -1901,7 +1901,7 @@ static LocalMapObject *FollowMon_CreateMapObject(MapObjectManager *mapObjectMana
     GF_ASSERT(mapObject != NULL);
     MapObject_SetID(mapObject, obj_partner_poke);
     MapObject_SetType(mapObject, 0);
-    MapObject_SetFlagID(mapObject, 0);
+    MapObject_SetEventFlag(mapObject, 0);
     MapObject_SetScriptID(mapObject, std_following_mon);
     MapObject_SetParam(mapObject, 0, 2);
     FollowMon_SetObjectParams(mapObject, species, form, shiny);

@@ -636,7 +636,7 @@ _021F1F96:
 	cmp r1, r0
 	bne _021F1FF4
 	add r0, r5, #0
-	bl MapObject_GetFlagID
+	bl MapObject_GetEventFlag
 	add r1, r0, #0
 	lsl r1, r1, #0x10
 	add r0, r7, #0

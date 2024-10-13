@@ -983,7 +983,7 @@ static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectManager, u8 unkA
 
     MapObject_SetID(mapObj, unkA + 0xf6);
     MapObject_SetType(mapObj, 0);
-    MapObject_SetFlagID(mapObj, 0);
+    MapObject_SetEventFlag(mapObj, 0);
     MapObject_SetScriptID(mapObj, 0);
     MapObject_SetParam(mapObj, 0, 2);
     sub_02069F0C(mapObj, species, (u8)form, FALSE, spriteId);
