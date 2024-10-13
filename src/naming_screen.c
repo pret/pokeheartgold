@@ -107,72 +107,312 @@ typedef struct UnkStruct_02102278 {
 } UnkStruct_02102278;
 
 BOOL NamingScreenApp_Init(OVY_MANAGER *ovyMan, int *pState);
-void sub_02082AEC(NNSG2dCharacterData *pCharData, NNSG2dPaletteData *pPlttData, int species, int form);
+static void sub_02082AEC(NNSG2dCharacterData *pCharData, NNSG2dPaletteData *pPlttData, int species, int form);
 BOOL NamingScreenApp_Main(OVY_MANAGER *ovyMan, int *pState);
-int sub_02082CF8(NamingScreenAppData *data, int a1);
-void sub_02082E28(NamingScreenAppData *data, NamingScreenArgs *args);
-BOOL sub_02082EC0(const u16 *s);
+static int sub_02082CF8(NamingScreenAppData *data, int a1);
+static void sub_02082E28(NamingScreenAppData *data, NamingScreenArgs *args);
+static BOOL sub_02082EC0(const u16 *s);
 BOOL NamingScreenApp_Exit(OVY_MANAGER *ovyMan, int *pState);
-void sub_02083140(void *param);
-BOOL sub_02082EC0(const u16 *s);
-void sub_02083160(NamingScreenAppData *data, NamingScreenArgs *args);
-void sub_02083184(void);
-void sub_020831A4(BgConfig *bgConfig);
-void sub_020832E4(GFPlaneToggle enable);
-void sub_02083334(NamingScreenAppData *data, OVY_MANAGER *ovyMan);
-void sub_020834FC(NamingScreenAppData *data, OVY_MANAGER *ovyMan);
-void sub_02083614(BgConfig *bgConfig, Window *a1);
-void sub_02083654(NamingScreenAppData *data, NARC *narc);
-void sub_0208377C(void);
-void sub_020837AC(NamingScreenAppData *data, NARC *narc);
-void sub_020839B8(SysTask *task, void *taskData);
-void sub_020839EC(NamingScreenAppData *data);
-void sub_02083BB4(NamingScreenAppData *data, SpriteTemplate *tmplate);
-void sub_02083CAC(SysTask *task, void *taskData);
-void sub_02083D34(BgConfig *bgConfig, Window *windows, int *pState, int pageNum, GFBgLayer *pBgId, VecFx32 *posVecs, Sprite **pSprites, void *pRawData);
-void sub_02083F18(Window *window, NameScreenType unused, String *msg);
-void sub_02083F48(Window *window, NameScreenType unused, String *msg);
-void sub_02083F9C(NamingScreenAppData *data, OVY_MANAGER *ovyMan, NARC *narc);
-void sub_0208421C(BgConfig *bgConfig, GFBgLayer bgId, VecFx32 *pos);
-void sub_0208423C(VecFx32 *posVecs, GFBgLayer bgId);
-int sub_02084264(int val, int lo, int hi);
-void sub_02084274(NamingScreenAppData *data, int a1);
-void sub_0208432C(NamingScreenAppData *data);
-void sub_02084430(NamingScreenAppData *data, int a1);
-void sub_02084500(u16 *a0);
-void sub_02084540(Window *window, const u16 *rawChars, int x, int y, int spacing, int textSpeed, u32 color, u8 *buttonPixels);
-void *sub_02084640(Window *window, String *string, FontID fontId, u32 color);
-void sub_02084664(Window *windows, const u16 *a1, void *a2, String *a3);
-void sub_02084740(Window *a0, u16 *a1, u16 a2, u16 *a3, void *a4, String *a5);
-void sub_02084830(u16 (*a0)[13], const int a1);
-int sub_02084884(NamingScreenAppData *data, u16 key, BOOL a2);
-void sub_02084C58(NamingScreenAppData *data, BOOL a1);
-int sub_02084C78(const u16 *a0, int a1);
-BOOL sub_02084C98(int a0, int a1, u16 *a2, int a3);
-BOOL sub_02084D04(int a0, int a1, int a2, int a3, u16 *a4, int a5);
-void sub_02084E18(Sprite **sprites, int a1, int maxLen);
-void sub_02084E54(Window *window, u16 fillVal, int pageNum, u32 textColor, u8 *pRawData);
-void sub_02084F3C(int *a0, Sprite **a1, int a2);
-void sub_02084FCC(NamingScreenAppData *data);
-BOOL sub_0208503C(NamingScreenAppData *data);
+static void sub_02083140(void *param);
+static BOOL sub_02082EC0(const u16 *s);
+static void sub_02083160(NamingScreenAppData *data, NamingScreenArgs *args);
+static void sub_02083184(void);
+static void sub_020831A4(BgConfig *bgConfig);
+static void sub_020832E4(GFPlaneToggle enable);
+static void sub_02083334(NamingScreenAppData *data, OVY_MANAGER *ovyMan);
+static void sub_020834FC(NamingScreenAppData *data, OVY_MANAGER *ovyMan);
+static void sub_02083614(BgConfig *bgConfig, Window *a1);
+static void sub_02083654(NamingScreenAppData *data, NARC *narc);
+static void sub_0208377C(void);
+static void sub_020837AC(NamingScreenAppData *data, NARC *narc);
+static void sub_020839B8(SysTask *task, void *taskData);
+static void sub_020839EC(NamingScreenAppData *data);
+static void sub_02083BB4(NamingScreenAppData *data, SpriteTemplate *tmplate);
+static void sub_02083CAC(SysTask *task, void *taskData);
+static void sub_02083D34(BgConfig *bgConfig, Window *windows, int *pState, int pageNum, GFBgLayer *pBgId, VecFx32 *posVecs, Sprite **pSprites, void *pRawData);
+static void sub_02083F18(Window *window, NameScreenType unused, String *msg);
+static void sub_02083F48(Window *window, NameScreenType unused, String *msg);
+static void sub_02083F9C(NamingScreenAppData *data, OVY_MANAGER *ovyMan, NARC *narc);
+static void sub_0208421C(BgConfig *bgConfig, GFBgLayer bgId, VecFx32 *pos);
+static void sub_0208423C(VecFx32 *posVecs, GFBgLayer bgId);
+static int sub_02084264(int val, int lo, int hi);
+static void sub_02084274(NamingScreenAppData *data, int a1);
+static void sub_0208432C(NamingScreenAppData *data);
+static void sub_02084430(NamingScreenAppData *data, int a1);
+static void sub_02084500(u16 *a0);
+static void sub_02084540(Window *window, const u16 *rawChars, int x, int y, int spacing, int textSpeed, u32 color, u8 *buttonPixels);
+static void *sub_02084640(Window *window, String *string, FontID fontId, u32 color);
+static void sub_02084664(Window *windows, const u16 *a1, void *a2, String *a3);
+static void sub_02084740(Window *a0, u16 *a1, u16 a2, u16 *a3, void *a4, String *a5);
+static void sub_02084830(u16 (*a0)[13], const int a1);
+static int sub_02084884(NamingScreenAppData *data, u16 key, BOOL a2);
+static void sub_02084C58(NamingScreenAppData *data, BOOL a1);
+static int sub_02084C78(const u16 *a0, int a1);
+static BOOL sub_02084C98(int a0, int a1, u16 *a2, int a3);
+static BOOL sub_02084D04(int a0, int a1, int a2, int a3, u16 *a4, int a5);
+static void sub_02084E18(Sprite **sprites, int a1, int maxLen);
+static void sub_02084E54(Window *window, u16 fillVal, int pageNum, u32 textColor, u8 *pRawData);
+static void sub_02084F3C(int *a0, Sprite **a1, int a2);
+static void sub_02084FCC(NamingScreenAppData *data);
+static BOOL sub_0208503C(NamingScreenAppData *data);
 
 static NamingScreenAppData *_021D43B0;
 
-extern const int _021020B4[8];
-extern const int _021021E8[][4];
-extern const u8 _02101D40[];
-extern const int _02102168[][2];
-extern const u16 _02101D80[];
-extern const u8 _02101D4C[];
-extern const u8 _02101D3C[];
-extern const int _02101D54[];
-extern const u16 _02102422[][3];
-extern const u16 *_021104E4[];
-extern const u16 *_021104F8[][5];
-extern const u16 _021021B8[][2];
-extern const u16 _02102190[][2];
-extern const u8 _02101D44[];
-extern const UnkStruct_02102278 _02102278[];
+static const int _021021E8[][4] = {
+    { 0x04, 0x44, 0x03, 0x01 },
+    { 0x24, 0x44, 0x08, 0x01 },
+    { 0x44, 0x44, 0x0D, 0x01 },
+    { 0x00, 0xC8, 0x12, 0x01 },
+    { 0x65, 0x44, 0x14, 0x01 },
+    { 0x88, 0x44, 0x17, 0x01 },
+    { 0xB0, 0x44, 0x19, 0x01 },
+    { 0x16, 0x38, 0x25, 0x02 },
+    { 0x1A, 0x5B, 0x27, 0x00 },
+};
+
+static const u16 _02101DBE[] = { 0xE002, 0xE002, 0xE003, 0xE003, 0xE004, 0xE004, 0xD004, 0xD004, 0xE007, 0xE007, 0xE007, 0xE008, 0xE008 };
+
+static const u16 _02101DD8[] = { 0xD004, 0xD004, 0xD004, 0xD004, 0xD004, 0xD004, 0xD004, 0xD004, 0xE007, 0xE007, 0xE007, 0xE008, 0xE008 };
+
+static const u16 *_021104E4[] = {
+    _02101DBE,
+    _02101DBE,
+    _02101DBE,
+    _02101DBE,
+    _02101DD8,
+};
+
+static const u16 _02101D80[] = {
+    0x0019,
+    0x0039,
+    0x0059,
+    0x0061,
+    0x007A,
+    0x009E,
+    0x00C6,
+    0x0000,
+};
+
+static const u8 _02101D4C[] = {
+    0x28,
+    0x28,
+    0x28,
+    0x28,
+    0x29,
+    0x29,
+    0x29,
+};
+
+static const u16 _02101E80[] = { 0x012B, 0x012C, 0x012D, 0x012E, 0x012F, 0x0130, 0x0131, 0x0132, 0x0133, 0x0134, 0x01DE, 0x01AD, 0x01AE, 0xFFFF };
+
+static const u16 _02101E9C[] = { 0x0135, 0x0136, 0x0137, 0x0138, 0x0139, 0x013A, 0x013B, 0x013C, 0x013D, 0x013E, 0x01DE, 0x01B3, 0x01BE, 0xFFFF };
+
+static const u16 _02101EB8[] = { 0x013F, 0x0140, 0x0141, 0x0142, 0x0143, 0x0144, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01BB, 0x01BC, 0xFFFF };
+
+static const u16 _02101E2C[] = { 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0xFFFF };
+
+static const u16 _02101E64[] = { 0x0121, 0x0122, 0x0123, 0x0124, 0x0125, 0x0126, 0x0127, 0x0128, 0x0129, 0x012A, 0x01DE, 0x01DE, 0x01DE, 0xFFFF };
+
+static const u16 _02101EF0[] = { 0x0145, 0x0146, 0x0147, 0x0148, 0x0149, 0x014A, 0x014B, 0x014C, 0x014D, 0x014E, 0x01DE, 0x01AD, 0x01AE, 0xFFFF };
+
+static const u16 _02101F0C[] = { 0x014F, 0x0150, 0x0151, 0x0152, 0x0153, 0x0154, 0x0155, 0x0156, 0x0157, 0x0158, 0x01DE, 0x01B3, 0x01BE, 0xFFFF };
+
+static const u16 _0210205C[] = { 0x0159, 0x015A, 0x015B, 0x015C, 0x015D, 0x015E, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01BB, 0x01BC, 0xFFFF };
+
+static const u16 _02101F60[] = { 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0xFFFF };
+
+static const u16 _02102024[] = { 0x0121, 0x0122, 0x0123, 0x0124, 0x0125, 0x0126, 0x0127, 0x0128, 0x0129, 0x012A, 0x01DE, 0x01DE, 0x01DE, 0xFFFF };
+
+static const u16 _02101F98[] = { 0x01AD, 0x01AE, 0x01C4, 0x01C5, 0x01AB, 0x01AC, 0x01DE, 0x01DE, 0x01DE, 0x01BB, 0x01BC, 0x01DE, 0x01DE, 0xFFFF };
+
+static const u16 _02101FD0[] = { 0x01B4, 0x01B5, 0x01B2, 0x01B3, 0x01B9, 0x01BA, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0x01DE, 0xFFFF };
+
+static const u16 _02101FEC[] = { 0x01AF, 0x01B0, 0x01C3, 0x01D0, 0x01C0, 0x01D2, 0x01BD, 0x01BE, 0x01BF, 0x01B1, 0x01C1, 0x01DE, 0x01DE, 0xFFFF };
+
+static const u16 _02102008[] = { 0x01CB, 0x01CC, 0x01CD, 0x01CE, 0x01CF, 0x01C6, 0x01C8, 0x01C9, 0x01C7, 0x01CA, 0x01D1, 0x01DE, 0x01DE, 0xFFFF };
+
+static const u16 _02102040[] = { 0x01D3, 0x01D4, 0x01D5, 0x01D6, 0x01D7, 0x01D8, 0x01D9, 0x01DA, 0x01DD, 0x01DB, 0x01DC, 0x01DE, 0x01DE, 0xFFFF };
+
+static const u16 _02101F7C[] = { 0x00A2, 0x00A3, 0x00A4, 0x00A5, 0x00A6, 0x00A7, 0x00A8, 0x00A9, 0x00AA, 0x00AB, 0x0001, 0x00E1, 0x00E2, 0xFFFF };
+
+static const u16 _02101DF2[] = { 0x00E3, 0x00E4, 0x00F9, 0x00F8, 0x00E5, 0x00E6, 0x00F5, 0x00F6, 0x00F7, 0x00E7, 0x0001, 0x00EE, 0x00EF, 0xFFFF };
+
+static const u16 _02101F44[] = { 0x00E8, 0x00E9, 0x00EA, 0x00EB, 0x00EC, 0x00ED, 0x00F0, 0x00F1, 0x00F2, 0x00F3, 0x00F4, 0x0106, 0x0104, 0xFFFF };
+
+static const u16 _02101F28[] = { 0x00FF, 0x0100, 0x0101, 0x0102, 0x0103, 0x00FC, 0x00FA, 0x00FD, 0x00FB, 0x00FE, 0x0105, 0x0001, 0x0001, 0xFFFF };
+
+static const u16 _02101E48[] = { 0x0107, 0x0108, 0x0109, 0x010A, 0x010B, 0x010C, 0x010D, 0x010E, 0x0111, 0x010F, 0x0110, 0x0001, 0x0001, 0xFFFF };
+
+static const u16 _021020D4[] = { 0x0121, 0x0122, 0x0123, 0x0124, 0x0125, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0xFFFF };
+
+static const u16 _021020F8[] = { 0x0126, 0x0127, 0x0128, 0x0129, 0x012A, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0xFFFF };
+
+static const u16 _0210211C[] = { 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0xFFFF };
+
+static const u16 *_021104F8[][5] = {
+    { _02101E80, _02101E9C, _02101EB8, _02101E2C, _02101E64 },
+    { _02101EF0, _02101F0C, _0210205C, _02101F60, _02102024 },
+    { _02101F98, _02101FD0, _02101FEC, _02102008, _02102040 },
+    { _02101F7C, _02101DF2, _02101F44, _02101F28, _02101E48 },
+    { _021020D4, _021020F8, _0210211C, _0210211C, _0210211C },
+};
+
+static const u16 _02102422[][3] = {
+    { 0x0003, 0x0001, 0x0002 },
+    { 0x0005, 0x0001, 0x0004 },
+    { 0x0007, 0x0001, 0x0006 },
+    { 0x0009, 0x0001, 0x0008 },
+    { 0x000B, 0x0001, 0x000A },
+    { 0x0053, 0x0001, 0x0052 },
+    { 0x0055, 0x0001, 0x0054 },
+    { 0x0057, 0x0001, 0x0056 },
+    { 0x0059, 0x0001, 0x0058 },
+    { 0x005B, 0x0001, 0x005A },
+    { 0x0045, 0x0001, 0x0044 },
+    { 0x0047, 0x0001, 0x0046 },
+    { 0x0049, 0x0001, 0x0048 },
+    { 0x0095, 0x0001, 0x0094 },
+    { 0x0097, 0x0001, 0x0096 },
+    { 0x0099, 0x0001, 0x0098 },
+    { 0x00AC, 0x0001, 0x00C6 },
+    { 0x00AD, 0x0001, 0x00C7 },
+    { 0x00AE, 0x0001, 0x00C8 },
+    { 0x00AF, 0x0001, 0x00C9 },
+    { 0x00B0, 0x0001, 0x00CA },
+    { 0x00B1, 0x0001, 0x00CB },
+    { 0x00B2, 0x0001, 0x00CC },
+    { 0x00B3, 0x0001, 0x00CD },
+    { 0x00B4, 0x0001, 0x00CE },
+    { 0x00B5, 0x0001, 0x00CF },
+    { 0x00B6, 0x0001, 0x00D0 },
+    { 0x00B7, 0x0001, 0x00D1 },
+    { 0x00B8, 0x0001, 0x00D2 },
+    { 0x00B9, 0x0001, 0x00D3 },
+    { 0x00BA, 0x0001, 0x00D4 },
+    { 0x00BB, 0x0001, 0x00D5 },
+    { 0x00BC, 0x0001, 0x00D6 },
+    { 0x00BD, 0x0001, 0x00D7 },
+    { 0x00BE, 0x0001, 0x00D8 },
+    { 0x00BF, 0x0001, 0x00D9 },
+    { 0x00C0, 0x0001, 0x00DA },
+    { 0x00C1, 0x0001, 0x00DB },
+    { 0x00C2, 0x0001, 0x00DC },
+    { 0x00C3, 0x0001, 0x00DD },
+    { 0x00C4, 0x0001, 0x00DE },
+    { 0x00C5, 0x0001, 0x00DF },
+    { 0x0025, 0x0026, 0x0024 },
+    { 0x0075, 0x0076, 0x0074 },
+    { 0x000C, 0x000D, 0x0001 },
+    { 0x000E, 0x000F, 0x0001 },
+    { 0x0010, 0x0011, 0x0001 },
+    { 0x0012, 0x0013, 0x0001 },
+    { 0x0014, 0x0015, 0x0001 },
+    { 0x0016, 0x0017, 0x0001 },
+    { 0x0018, 0x0019, 0x0001 },
+    { 0x001A, 0x001B, 0x0001 },
+    { 0x001C, 0x001D, 0x0001 },
+    { 0x001E, 0x001F, 0x0001 },
+    { 0x0020, 0x0021, 0x0001 },
+    { 0x0022, 0x0023, 0x0001 },
+    { 0x0027, 0x0028, 0x0001 },
+    { 0x0029, 0x002A, 0x0001 },
+    { 0x005C, 0x005D, 0x0001 },
+    { 0x005E, 0x005F, 0x0001 },
+    { 0x0060, 0x0061, 0x0001 },
+    { 0x0062, 0x0063, 0x0001 },
+    { 0x0064, 0x0065, 0x0001 },
+    { 0x0066, 0x0067, 0x0001 },
+    { 0x0068, 0x0069, 0x0001 },
+    { 0x006A, 0x006B, 0x0001 },
+    { 0x006C, 0x006D, 0x0001 },
+    { 0x006E, 0x006F, 0x0001 },
+    { 0x0070, 0x0071, 0x0001 },
+    { 0x0072, 0x0073, 0x0001 },
+    { 0x0077, 0x0078, 0x0001 },
+    { 0x0079, 0x007A, 0x0001 },
+    { 0x0030, 0x0031, 0x0032 },
+    { 0x0033, 0x0034, 0x0035 },
+    { 0x0036, 0x0037, 0x0038 },
+    { 0x0039, 0x003A, 0x003B },
+    { 0x003C, 0x003D, 0x003E },
+    { 0x0080, 0x0081, 0x0082 },
+    { 0x0083, 0x0084, 0x0085 },
+    { 0x0086, 0x0087, 0x0088 },
+    { 0x0089, 0x008A, 0x008B },
+    { 0x008C, 0x008D, 0x008E },
+};
+
+static const u16 _021021B8[][2] = {
+    { 0x0024, 0x0026 },
+    { 0x0074, 0x0076 },
+    { 0x0032, 0x0031 },
+    { 0x0035, 0x0034 },
+    { 0x0038, 0x0037 },
+    { 0x003B, 0x003A },
+    { 0x003E, 0x003D },
+    { 0x0082, 0x0081 },
+    { 0x0085, 0x0084 },
+    { 0x0088, 0x0087 },
+    { 0x008B, 0x008A },
+    { 0x008E, 0x008D },
+};
+
+static const u16 _02102190[][2] = {
+    { 0x0031, 0x0032 },
+    { 0x0034, 0x0035 },
+    { 0x0037, 0x0038 },
+    { 0x003A, 0x003B },
+    { 0x003D, 0x003E },
+    { 0x0081, 0x0082 },
+    { 0x0084, 0x0085 },
+    { 0x0087, 0x0088 },
+    { 0x008A, 0x008B },
+    { 0x008D, 0x008E },
+};
+
+static const int _02101D54[] = {
+    0x00000070,
+    0x0000004C,
+    0x00000048,
+};
+
+static const u8 _02101D40[] = {
+    0x04,
+    0x07,
+    0x0D,
+    0x0A,
+};
+
+const u16 _02101D90[] = { 0x0003, 0x002B, 0x0020, 0x002F, 0x0001, 0x002B, 0x003F, 0x0009, 0x0030, 0x00E2, 0xFFFF };
+
+// ポケモンの ニックネ－ムは？
+const u16 _02102094[] = { 0x008E, 0x0062, 0x0093, 0x00A1, 0x002F, 0x0001, 0x007C, 0x0074, 0x0060, 0x007E, 0x00F1, 0x0091, 0x0030, 0x00E2, 0xFFFF };
+
+const u16 _02101DA6[] = { 0x008D, 0x0074, 0x0060, 0x006A, 0x002F, 0x0001, 0x002B, 0x003F, 0x0009, 0x0030, 0x00E2, 0xFFFF };
+
+static const u16 *sDeadstrippedPointersTable[] = {
+    _02101D90,
+    _02102094,
+    _02101DA6,
+};
+
+static const int _021020B4[] = {
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    8,
+};
+
+const OVY_MGR_TEMPLATE gOverlayTemplate_NamingScreen = {
+    NamingScreenApp_Init,
+    NamingScreenApp_Main,
+    NamingScreenApp_Exit,
+    FS_OVERLAY_ID_NONE,
+};
 
 BOOL NamingScreenApp_Init(OVY_MANAGER *ovyMan, int *pState) {
     NamingScreenAppData *data;
@@ -230,7 +470,7 @@ BOOL NamingScreenApp_Init(OVY_MANAGER *ovyMan, int *pState) {
     return FALSE;
 }
 
-void sub_02082AEC(NNSG2dCharacterData *pCharData, NNSG2dPaletteData *pPlttData, int species, int form) {
+static void sub_02082AEC(NNSG2dCharacterData *pCharData, NNSG2dPaletteData *pPlttData, int species, int form) {
     GX_LoadOBJ(pCharData->pRawData, 0x57E0, 0x200);
     const u16 *rawPltt = pPlttData->pRawData;
     u32 plttNo         = GetMonIconPaletteEx(species, form, FALSE);
@@ -308,7 +548,7 @@ BOOL NamingScreenApp_Main(OVY_MANAGER *ovyMan, int *pState) {
     return FALSE;
 }
 
-int sub_02082CF8(NamingScreenAppData *data, int a1) {
+static int sub_02082CF8(NamingScreenAppData *data, int a1) {
     int ret = a1;
 
     sub_0208432C(data);
@@ -354,7 +594,7 @@ int sub_02082CF8(NamingScreenAppData *data, int a1) {
 #define FIRST_DEFAULT_NAME_RIVAL  msg_0254_00085
 #endif // HEARTGOLD
 
-void sub_02082E28(NamingScreenAppData *data, NamingScreenArgs *args) {
+static void sub_02082E28(NamingScreenAppData *data, NamingScreenArgs *args) {
     String *string;
 
     if (data->type == NAME_SCREEN_PLAYER) {
@@ -377,7 +617,7 @@ void sub_02082E28(NamingScreenAppData *data, NamingScreenArgs *args) {
     }
 }
 
-BOOL sub_02082EC0(const u16 *s) {
+static BOOL sub_02082EC0(const u16 *s) {
     BOOL ret = TRUE;
     int i;
 
@@ -483,13 +723,13 @@ void NamingScreen_DeleteArgs(NamingScreenArgs *namingScreenArgs) {
 // Back to private scope
 // -------------------------------
 
-void sub_02083140(void *param) {
+static void sub_02083140(void *param) {
     GF_RunVramTransferTasks();
     OamManager_ApplyAndResetBuffers();
     OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
-void sub_02083160(NamingScreenAppData *data, NamingScreenArgs *args) {
+static void sub_02083160(NamingScreenAppData *data, NamingScreenArgs *args) {
     data->type    = args->kind;
     data->unk_004 = args->playerGender;
     data->unk_008 = args->monForm;
@@ -499,42 +739,110 @@ void sub_02083160(NamingScreenAppData *data, NamingScreenArgs *args) {
     data->unk_5D0 = args->unk50;
 }
 
-void sub_02083184(void) {
-    extern const GraphicsBanks _02102140;
+static void sub_02083184(void) {
+    static const GraphicsBanks _02102140 = {
+        GX_VRAM_BG_128_A,
+        GX_VRAM_BGEXTPLTT_NONE,
+        GX_VRAM_SUB_BG_128_C,
+        GX_VRAM_SUB_BGEXTPLTT_NONE,
+        GX_VRAM_OBJ_128_B,
+        GX_VRAM_OBJEXTPLTT_NONE,
+        GX_VRAM_SUB_OBJ_16_I,
+        GX_VRAM_SUB_OBJEXTPLTT_NONE,
+        GX_VRAM_TEX_NONE,
+        GX_VRAM_TEXPLTT_NONE,
+    };
     GraphicsBanks graphicsBanks = _02102140;
     GfGfx_SetBanks(&graphicsBanks);
 }
 
-void sub_020831A4(BgConfig *bgConfig) {
+static void sub_020831A4(BgConfig *bgConfig) {
     {
-        extern const GraphicsModes _02101D60;
+        static const GraphicsModes _02101D60 = {
+            GX_DISPMODE_GRAPHICS,
+            GX_BGMODE_0,
+            GX_BGMODE_0,
+            GX_BG0_AS_2D,
+        };
         GraphicsModes graphicsModes = _02101D60;
         SetBothScreensModesAndDisable(&graphicsModes);
     }
 
     {
-        extern const BgTemplate _02101ED4;
+        static const BgTemplate _02101ED4 = {
+            .x          = 0x00000000,
+            .y          = 0x00000000,
+            .bufferSize = GF_BG_BUF_SIZE_512x256_4BPP,
+            .baseTile   = 0x00000000,
+            .size       = GF_BG_SCR_SIZE_512x256,
+            .colorMode  = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xf000,
+            .charBase   = GX_BG_CHARBASE_0x10000,
+            .bgExtPltt  = GX_BG_EXTPLTT_01,
+            .priority   = 1,
+            .areaOver   = GX_BG_AREAOVER_XLU,
+            .mosaic     = 0x00000000,
+        };
         BgTemplate bgTemplate = _02101ED4;
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_0, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_0);
     }
 
     {
-        extern const BgTemplate _02101FB4;
+        static const BgTemplate _02101FB4 = {
+            .x          = 0x00000000,
+            .y          = 0x00000000,
+            .bufferSize = GF_BG_BUF_SIZE_512x256_4BPP,
+            .baseTile   = 0x00000000,
+            .size       = GF_BG_SCR_SIZE_512x256,
+            .colorMode  = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xe000,
+            .charBase   = GX_BG_CHARBASE_0x10000,
+            .bgExtPltt  = GX_BG_EXTPLTT_01,
+            .priority   = 2,
+            .areaOver   = GX_BG_AREAOVER_XLU,
+            .mosaic     = 0x00000000,
+        };
         BgTemplate bgTemplate = _02101FB4;
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_1, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_1);
     }
 
     {
-        extern const BgTemplate _02102078;
+        static const BgTemplate _02102078 = {
+            .x          = 0x00000000,
+            .y          = 0x00000000,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile   = 0x00000000,
+            .size       = GF_BG_SCR_SIZE_256x256,
+            .colorMode  = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xd000,
+            .charBase   = GX_BG_CHARBASE_0x00000,
+            .bgExtPltt  = GX_BG_EXTPLTT_01,
+            .priority   = 3,
+            .areaOver   = GX_BG_AREAOVER_XLU,
+            .mosaic     = 0x00000000,
+        };
         BgTemplate bgTemplate = _02102078;
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_2, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_2);
     }
 
     {
-        extern const BgTemplate _02101E10;
+        static const BgTemplate _02101E10 = {
+            .x          = 0x00000000,
+            .y          = 0x00000000,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile   = 0x00000000,
+            .size       = GF_BG_SCR_SIZE_256x256,
+            .colorMode  = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xf800,
+            .charBase   = GX_BG_CHARBASE_0x10000,
+            .bgExtPltt  = GX_BG_EXTPLTT_01,
+            .priority   = 0,
+            .areaOver   = GX_BG_AREAOVER_XLU,
+            .mosaic     = 0x00000000,
+        };
         BgTemplate bgTemplate = _02101E10;
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_0, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_0);
@@ -551,7 +859,7 @@ void sub_020831A4(BgConfig *bgConfig) {
     G2S_BlendNone();
 }
 
-void sub_020832E4(GFPlaneToggle enable) {
+static void sub_020832E4(GFPlaneToggle enable) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, enable);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, enable);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, enable);
@@ -562,7 +870,7 @@ void sub_020832E4(GFPlaneToggle enable) {
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
 }
 
-void sub_02083334(NamingScreenAppData *data, OVY_MANAGER *ovyMan) {
+static void sub_02083334(NamingScreenAppData *data, OVY_MANAGER *ovyMan) {
     NamingScreenArgs *args = OverlayManager_GetArgs(ovyMan);
 
     data->unk_45C = 4;
@@ -609,7 +917,7 @@ void sub_02083334(NamingScreenAppData *data, OVY_MANAGER *ovyMan) {
     }
 }
 
-void sub_020834FC(NamingScreenAppData *data, OVY_MANAGER *ovyMan) {
+static void sub_020834FC(NamingScreenAppData *data, OVY_MANAGER *ovyMan) {
     NamingScreenArgs *args = OverlayManager_GetArgs(ovyMan);
     if (args->unk44 != 0) {
         String *string    = String_New(200, HEAP_ID_NAMING_SCREEN);
@@ -639,7 +947,7 @@ void sub_020834FC(NamingScreenAppData *data, OVY_MANAGER *ovyMan) {
     }
 }
 
-void sub_02083614(BgConfig *bgConfig, Window *a1) {
+static void sub_02083614(BgConfig *bgConfig, Window *a1) {
     for (int i = 0; i < 10; ++i) {
         RemoveWindow(&a1[i]);
     }
@@ -650,7 +958,7 @@ void sub_02083614(BgConfig *bgConfig, Window *a1) {
     FreeToHeapExplicit(HEAP_ID_NAMING_SCREEN, bgConfig);
 }
 
-void sub_02083654(NamingScreenAppData *data, NARC *narc) {
+static void sub_02083654(NamingScreenAppData *data, NARC *narc) {
     BgConfig *bgConfig = data->bgConfig;
 
     GfGfxLoader_GXLoadPalFromOpenNarc(narc, 0, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0x60, HEAP_ID_NAMING_SCREEN);
@@ -672,8 +980,13 @@ void sub_02083654(NamingScreenAppData *data, NARC *narc) {
     data->unk_4AC = GfGfxLoader_GetCharDataFromOpenNarc(narc, 16, TRUE, &data->unk_4B0, HEAP_ID_NAMING_SCREEN);
 }
 
-void sub_0208377C(void) {
-    extern const ObjCharTransferTemplate _02101D70;
+static void sub_0208377C(void) {
+    static const ObjCharTransferTemplate _02101D70 = {
+        .maxTasks = 20,
+        .sizeMain = 0x800,
+        .sizeSub  = 0x800,
+        .heapId   = HEAP_ID_NAMING_SCREEN,
+    };
     ObjCharTransferTemplate tmplate = _02101D70;
     ObjCharTransfer_Init(&tmplate);
     ObjPlttTransfer_Init(20, HEAP_ID_NAMING_SCREEN);
@@ -681,7 +994,7 @@ void sub_0208377C(void) {
     ObjPlttTransfer_Reset();
 }
 
-void sub_020837AC(NamingScreenAppData *data, NARC *narc) {
+static void sub_020837AC(NamingScreenAppData *data, NARC *narc) {
     NNS_G2dInitOamManagerModule();
     GX_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_32K);
     GXS_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_32K);
@@ -722,7 +1035,7 @@ typedef struct SysTaskData_020839B8 {
     int i;
 } SysTaskData_020839B8;
 
-void sub_020839B8(SysTask *task, void *taskData) {
+static void sub_020839B8(SysTask *task, void *taskData) {
     SysTaskData_020839B8 *data = taskData;
     VecFx32 *pMatrix           = Sprite_GetMatrixPtr(data->sprite);
     VecFx32 matrix;
@@ -732,7 +1045,7 @@ void sub_020839B8(SysTask *task, void *taskData) {
     Sprite_SetMatrix(data->sprite2, &matrix);
 }
 
-void sub_020839EC(NamingScreenAppData *data) {
+static void sub_020839EC(NamingScreenAppData *data) {
     int i;
     CreateSpriteResourcesHeader(&data->unk_2E4, 0, 0, 0, 0, -1, -1, 0, 1, data->unk_2B4[GF_GFX_RES_TYPE_CHAR], data->unk_2B4[GF_GFX_RES_TYPE_PLTT], data->unk_2B4[GF_GFX_RES_TYPE_CELL], data->unk_2B4[GF_GFX_RES_TYPE_ANIM], NULL, NULL);
     CreateSpriteResourcesHeader(&data->unk_308, 1, 1, 1, 1, -1, -1, 0, 0, data->unk_2B4[GF_GFX_RES_TYPE_CHAR], data->unk_2B4[GF_GFX_RES_TYPE_PLTT], data->unk_2B4[GF_GFX_RES_TYPE_CELL], data->unk_2B4[GF_GFX_RES_TYPE_ANIM], NULL, NULL);
@@ -783,7 +1096,7 @@ void sub_020839EC(NamingScreenAppData *data) {
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
-void sub_02083BB4(NamingScreenAppData *data, SpriteTemplate *tmplate) {
+static void sub_02083BB4(NamingScreenAppData *data, SpriteTemplate *tmplate) {
     tmplate->position.x = FX32_CONST(24);
     tmplate->position.y = FX32_CONST(8);
     data->unk_394[0]    = Sprite_CreateAffine(tmplate);
@@ -836,7 +1149,7 @@ typedef struct SysTaskData_02083CAC {
     int y;
 } SysTaskData_02083CAC;
 
-void sub_02083CAC(SysTask *task, void *taskData) {
+static void sub_02083CAC(SysTask *task, void *taskData) {
     SysTaskData_02083CAC *data = taskData;
 
     VecFx32 matrix;
@@ -865,7 +1178,7 @@ void sub_02083CAC(SysTask *task, void *taskData) {
     ++data->state; // UB: potential use after free
 }
 
-void sub_02083D34(BgConfig *bgConfig, Window *windows, int *pState, int pageNum, GFBgLayer *pBgId, VecFx32 *posVecs, Sprite **pSprites, void *pRawData) {
+static void sub_02083D34(BgConfig *bgConfig, Window *windows, int *pState, int pageNum, GFBgLayer *pBgId, VecFx32 *posVecs, Sprite **pSprites, void *pRawData) {
     GFBgLayer bgId_prev = *pBgId;
     GFBgLayer bgId_curr = (GFBgLayer)(bgId_prev ^ 1);
 
@@ -924,13 +1237,13 @@ void sub_02083D34(BgConfig *bgConfig, Window *windows, int *pState, int pageNum,
     }
 }
 
-void sub_02083F18(Window *window, NameScreenType unused, String *msg) {
+static void sub_02083F18(Window *window, NameScreenType unused, String *msg) {
     DrawFrameAndWindow2(window, FALSE, 0x100, 10);
     AddTextPrinterParameterized(window, 1, msg, 0, 0, TEXT_SPEED_INSTANT, NULL);
     CopyWindowToVram(window);
 }
 
-void sub_02083F48(Window *window, NameScreenType unused, String *msg) {
+static void sub_02083F48(Window *window, NameScreenType unused, String *msg) {
     int x           = 16;
     int width       = FontID_String_GetWidth(0, msg, 0);
     int windowWidth = GetWindowWidth(window) * 8;
@@ -942,7 +1255,7 @@ void sub_02083F48(Window *window, NameScreenType unused, String *msg) {
     CopyWindowToVram(window);
 }
 
-void sub_02083F9C(NamingScreenAppData *data, OVY_MANAGER *ovyMan, NARC *narc) {
+static void sub_02083F9C(NamingScreenAppData *data, OVY_MANAGER *ovyMan, NARC *narc) {
     AddWindowParameterized(data->bgConfig, &data->unk_3B8[0], GF_BG_LYR_MAIN_0, 2, 1, 26, 12, 1, 0x100);
     AddWindowParameterized(data->bgConfig, &data->unk_3B8[1], GF_BG_LYR_MAIN_1, 2, 1, 26, 12, 1, 0x238);
 
@@ -991,19 +1304,27 @@ void sub_02083F9C(NamingScreenAppData *data, OVY_MANAGER *ovyMan, NARC *narc) {
     FillWindowPixelBuffer(&data->unk_3B8[7], 0);
 }
 
-void sub_0208421C(BgConfig *bgConfig, GFBgLayer bgId, VecFx32 *pos) {
+static void sub_0208421C(BgConfig *bgConfig, GFBgLayer bgId, VecFx32 *pos) {
     SetBgPriority(bgId, 1);
     SetBgPriority(bgId ^ 1, 2);
 }
 
-void sub_0208423C(VecFx32 *posVecs, GFBgLayer bgId) {
+static void sub_0208423C(VecFx32 *posVecs, GFBgLayer bgId) {
     posVecs[bgId].x     = 238;
     posVecs[bgId].y     = -80;
     posVecs[bgId ^ 1].x = -11;
     posVecs[bgId ^ 1].y = -80;
 }
 
-int sub_02084264(int val, int lo, int hi) {
+static const int _02102168[][2] = {
+    { 0,  0  },
+    { 0,  -1 },
+    { 0,  1  },
+    { -1, 0  },
+    { 1,  0  },
+};
+
+static int sub_02084264(int val, int lo, int hi) {
     if (val >= hi) {
         val = lo;
     }
@@ -1013,7 +1334,7 @@ int sub_02084264(int val, int lo, int hi) {
     return val;
 }
 
-void sub_02084274(NamingScreenAppData *data, int a1) {
+static void sub_02084274(NamingScreenAppData *data, int a1) {
     if (a1 == 0) {
         return;
     }
@@ -1033,7 +1354,7 @@ void sub_02084274(NamingScreenAppData *data, int a1) {
     data->cursorY = newY;
 }
 
-void sub_0208432C(NamingScreenAppData *data) {
+static void sub_0208432C(NamingScreenAppData *data) {
     int r4  = 0;
     int r6  = 0;
     BOOL r7 = FALSE;
@@ -1087,7 +1408,7 @@ void sub_0208432C(NamingScreenAppData *data) {
     }
 }
 
-void sub_02084430(NamingScreenAppData *data, int a1) {
+static void sub_02084430(NamingScreenAppData *data, int a1) {
     if (data->cursorY != 0) {
         if (data->unk_028 == 0 && data->unk_028 != data->cursorY) {
             Sprite_SetAnimCtrlSeq(data->unk_32C[8], 39);
@@ -1121,7 +1442,7 @@ void sub_02084430(NamingScreenAppData *data, int a1) {
     }
 }
 
-void sub_02084500(u16 *a0) {
+static void sub_02084500(u16 *a0) {
     *a0 += 20;
     if (*a0 > 360) {
         *a0 = 0;
@@ -1131,7 +1452,7 @@ void sub_02084500(u16 *a0) {
     GX_LoadOBJPltt(&col, 0x3A, sizeof(col));
 }
 
-void sub_02084540(Window *window, const u16 *rawChars, int x, int y, int spacing, int textSpeed, u32 color, u8 *buttonPixels) {
+static void sub_02084540(Window *window, const u16 *rawChars, int x, int y, int spacing, int textSpeed, u32 color, u8 *buttonPixels) {
     int i = 0;
     int width;
     int centerX;
@@ -1157,12 +1478,14 @@ void sub_02084540(Window *window, const u16 *rawChars, int x, int y, int spacing
     String_Delete(string);
 }
 
-void *sub_02084640(Window *window, String *string, FontID fontId, u32 color) {
+static const u8 _02101D3C[] = { 0x60, 0x68, 0x50, 0x58 };
+
+static void *sub_02084640(Window *window, String *string, FontID fontId, u32 color) {
     AddTextPrinterParameterizedWithColor(window, fontId, string, 0, 0, TEXT_SPEED_NOTRANSFER, color, NULL);
     return window->pixelBuffer;
 }
 
-void sub_02084664(Window *windows, const u16 *a1, void *a2, String *a3) {
+static void sub_02084664(Window *windows, const u16 *a1, void *a2, String *a3) {
     u16 spC[21];
     u16 i;
     void *ptr;
@@ -1193,7 +1516,7 @@ void sub_02084664(Window *windows, const u16 *a1, void *a2, String *a3) {
     String_Delete(string);
 }
 
-void sub_02084740(Window *a0, u16 *a1, u16 a2, u16 *a3, void *a4, String *a5) {
+static void sub_02084740(Window *a0, u16 *a1, u16 a2, u16 *a3, void *a4, String *a5) {
     int i;
     int j;
     u16 character;
@@ -1246,7 +1569,7 @@ void sub_02084740(Window *a0, u16 *a1, u16 a2, u16 *a3, void *a4, String *a5) {
 }
 
 #ifdef NONMATCHING
-void sub_02084830(u16 (*a0)[13], const int a1) {
+static void sub_02084830(u16 (*a0)[13], const int a1) {
     int i;
     int j;
 
@@ -1261,7 +1584,7 @@ void sub_02084830(u16 (*a0)[13], const int a1) {
 }
 #else
 // clang-format off
-asm void sub_02084830(u16 (*a0)[13], const int a1) {
+static asm void sub_02084830(u16 (*a0)[13], const int a1) {
 	push {r4, r5, r6, r7}
 	mov r4, #0
 	ldr r3, =_021104E4
@@ -1307,7 +1630,7 @@ _0208485E:
 // clang-format on
 #endif // NONMATCHING
 
-int sub_02084884(NamingScreenAppData *data, u16 key, BOOL a2) {
+static int sub_02084884(NamingScreenAppData *data, u16 key, BOOL a2) {
     if (key == 0xD003 || key == 0xD004) {
         key = 1;
     }
@@ -1410,7 +1733,7 @@ int sub_02084884(NamingScreenAppData *data, u16 key, BOOL a2) {
     return 2;
 }
 
-void sub_02084C58(NamingScreenAppData *data, BOOL a1) {
+static void sub_02084C58(NamingScreenAppData *data, BOOL a1) {
     if (data->unk_5D0 != NULL) {
         if (a1 == TRUE) {
             sub_02018410(data->unk_5D0, FALSE);
@@ -1421,14 +1744,14 @@ void sub_02084C58(NamingScreenAppData *data, BOOL a1) {
 }
 
 // DANGER: Can spin infinitely here
-int sub_02084C78(const u16 *a0, int a1) {
+static int sub_02084C78(const u16 *a0, int a1) {
     do {
         a1 = sub_02084264(a1 + 1, 0, 3);
     } while (a0[a1] == 1);
     return a0[a1];
 }
 
-BOOL sub_02084C98(int a0, int a1, u16 *a2, int a3) {
+static BOOL sub_02084C98(int a0, int a1, u16 *a2, int a3) {
     int i;
     int j;
     u16 key;
@@ -1449,7 +1772,7 @@ BOOL sub_02084C98(int a0, int a1, u16 *a2, int a3) {
     return FALSE;
 }
 
-BOOL sub_02084D04(int a0, int a1, int a2, int a3, u16 *a4, int a5) {
+static BOOL sub_02084D04(int a0, int a1, int a2, int a3, u16 *a4, int a5) {
     int i;
     u16 key;
 
@@ -1501,7 +1824,7 @@ BOOL sub_02084D04(int a0, int a1, int a2, int a3, u16 *a4, int a5) {
     return FALSE;
 }
 
-void sub_02084E18(Sprite **sprites, int a1, int maxLen) {
+static void sub_02084E18(Sprite **sprites, int a1, int maxLen) {
     for (int i = 0; i < maxLen; ++i) {
         Sprite_SetAnimCtrlSeq(sprites[i], 43);
     }
@@ -1510,7 +1833,9 @@ void sub_02084E18(Sprite **sprites, int a1, int maxLen) {
     }
 }
 
-void sub_02084E54(Window *window, u16 fillVal, int pageNum, u32 textColor, u8 *pRawData) {
+static const u8 _02101D44[] = { 0x03, 0x06, 0x0C, 0x09, 0x09 };
+
+static void sub_02084E54(Window *window, u16 fillVal, int pageNum, u32 textColor, u8 *pRawData) {
     FillWindowPixelBuffer(window, fillVal);
 
     for (int i = 0; i < 6; ++i) {
@@ -1531,7 +1856,7 @@ void sub_02084E54(Window *window, u16 fillVal, int pageNum, u32 textColor, u8 *p
     CopyWindowToVram(window);
 }
 
-void sub_02084F3C(int *a0, Sprite **a1, int a2) {
+static void sub_02084F3C(int *a0, Sprite **a1, int a2) {
     for (int i = 0; i < 3; ++i) {
         if (a0[i] != 0) {
             for (int j = 0; j < 3; ++j) {
@@ -1551,7 +1876,7 @@ void sub_02084F3C(int *a0, Sprite **a1, int a2) {
     }
 }
 
-void sub_02084FCC(NamingScreenAppData *data) {
+static void sub_02084FCC(NamingScreenAppData *data) {
     if (Sprite_IsCellAnimationRunning(data->unk_32C[8])) {
         return;
     }
@@ -1572,7 +1897,81 @@ void sub_02084FCC(NamingScreenAppData *data) {
     Sprite_SetOamMode(data->unk_32C[8], GX_OAM_MODE_NORMAL);
 }
 
-BOOL sub_0208503C(NamingScreenAppData *data) {
+static const UnkStruct_02102278 _02102278[] = {
+    { .x = 0x19, .y = 0x3C, .unk_2_0 = 0, .unk_4_0 = 0,  .unk_4_5 = 0 },
+    { .x = 0x39, .y = 0x3C, .unk_2_0 = 0, .unk_4_0 = 2,  .unk_4_5 = 0 },
+    { .x = 0x59, .y = 0x3C, .unk_2_0 = 0, .unk_4_0 = 4,  .unk_4_5 = 0 },
+    { .x = 0x00, .y = 0xC0, .unk_2_0 = 0, .unk_4_0 = 4,  .unk_4_5 = 0 },
+    { .x = 0x9D, .y = 0x3C, .unk_2_0 = 1, .unk_4_0 = 8,  .unk_4_5 = 0 },
+    { .x = 0xC5, .y = 0x3C, .unk_2_0 = 1, .unk_4_0 = 11, .unk_4_5 = 0 },
+    { .x = 0x1C, .y = 0x58, .unk_2_0 = 2, .unk_4_0 = 0,  .unk_4_5 = 1 },
+    { .x = 0x2C, .y = 0x58, .unk_2_0 = 2, .unk_4_0 = 1,  .unk_4_5 = 1 },
+    { .x = 0x3C, .y = 0x58, .unk_2_0 = 2, .unk_4_0 = 2,  .unk_4_5 = 1 },
+    { .x = 0x4C, .y = 0x58, .unk_2_0 = 2, .unk_4_0 = 3,  .unk_4_5 = 1 },
+    { .x = 0x5C, .y = 0x58, .unk_2_0 = 2, .unk_4_0 = 4,  .unk_4_5 = 1 },
+    { .x = 0x6C, .y = 0x58, .unk_2_0 = 2, .unk_4_0 = 5,  .unk_4_5 = 1 },
+    { .x = 0x7C, .y = 0x58, .unk_2_0 = 2, .unk_4_0 = 6,  .unk_4_5 = 1 },
+    { .x = 0x8C, .y = 0x58, .unk_2_0 = 2, .unk_4_0 = 7,  .unk_4_5 = 1 },
+    { .x = 0x9C, .y = 0x58, .unk_2_0 = 2, .unk_4_0 = 8,  .unk_4_5 = 1 },
+    { .x = 0xAC, .y = 0x58, .unk_2_0 = 2, .unk_4_0 = 9,  .unk_4_5 = 1 },
+    { .x = 0xBC, .y = 0x58, .unk_2_0 = 2, .unk_4_0 = 10, .unk_4_5 = 1 },
+    { .x = 0xCC, .y = 0x58, .unk_2_0 = 2, .unk_4_0 = 11, .unk_4_5 = 1 },
+    { .x = 0xDC, .y = 0x58, .unk_2_0 = 2, .unk_4_0 = 12, .unk_4_5 = 1 },
+    { .x = 0x1C, .y = 0x6B, .unk_2_0 = 2, .unk_4_0 = 0,  .unk_4_5 = 2 },
+    { .x = 0x2C, .y = 0x6B, .unk_2_0 = 2, .unk_4_0 = 1,  .unk_4_5 = 2 },
+    { .x = 0x3C, .y = 0x6B, .unk_2_0 = 2, .unk_4_0 = 2,  .unk_4_5 = 2 },
+    { .x = 0x4C, .y = 0x6B, .unk_2_0 = 2, .unk_4_0 = 3,  .unk_4_5 = 2 },
+    { .x = 0x5C, .y = 0x6B, .unk_2_0 = 2, .unk_4_0 = 4,  .unk_4_5 = 2 },
+    { .x = 0x6C, .y = 0x6B, .unk_2_0 = 2, .unk_4_0 = 5,  .unk_4_5 = 2 },
+    { .x = 0x7C, .y = 0x6B, .unk_2_0 = 2, .unk_4_0 = 6,  .unk_4_5 = 2 },
+    { .x = 0x8C, .y = 0x6B, .unk_2_0 = 2, .unk_4_0 = 7,  .unk_4_5 = 2 },
+    { .x = 0x9C, .y = 0x6B, .unk_2_0 = 2, .unk_4_0 = 8,  .unk_4_5 = 2 },
+    { .x = 0xAC, .y = 0x6B, .unk_2_0 = 2, .unk_4_0 = 9,  .unk_4_5 = 2 },
+    { .x = 0xBC, .y = 0x6B, .unk_2_0 = 2, .unk_4_0 = 10, .unk_4_5 = 2 },
+    { .x = 0xCC, .y = 0x6B, .unk_2_0 = 2, .unk_4_0 = 11, .unk_4_5 = 2 },
+    { .x = 0xDC, .y = 0x6B, .unk_2_0 = 2, .unk_4_0 = 12, .unk_4_5 = 2 },
+    { .x = 0x1C, .y = 0x7E, .unk_2_0 = 2, .unk_4_0 = 0,  .unk_4_5 = 3 },
+    { .x = 0x2C, .y = 0x7E, .unk_2_0 = 2, .unk_4_0 = 1,  .unk_4_5 = 3 },
+    { .x = 0x3C, .y = 0x7E, .unk_2_0 = 2, .unk_4_0 = 2,  .unk_4_5 = 3 },
+    { .x = 0x4C, .y = 0x7E, .unk_2_0 = 2, .unk_4_0 = 3,  .unk_4_5 = 3 },
+    { .x = 0x5C, .y = 0x7E, .unk_2_0 = 2, .unk_4_0 = 4,  .unk_4_5 = 3 },
+    { .x = 0x6C, .y = 0x7E, .unk_2_0 = 2, .unk_4_0 = 5,  .unk_4_5 = 3 },
+    { .x = 0x7C, .y = 0x7E, .unk_2_0 = 2, .unk_4_0 = 6,  .unk_4_5 = 3 },
+    { .x = 0x8C, .y = 0x7E, .unk_2_0 = 2, .unk_4_0 = 7,  .unk_4_5 = 3 },
+    { .x = 0x9C, .y = 0x7E, .unk_2_0 = 2, .unk_4_0 = 8,  .unk_4_5 = 3 },
+    { .x = 0xAC, .y = 0x7E, .unk_2_0 = 2, .unk_4_0 = 9,  .unk_4_5 = 3 },
+    { .x = 0xBC, .y = 0x7E, .unk_2_0 = 2, .unk_4_0 = 10, .unk_4_5 = 3 },
+    { .x = 0xCC, .y = 0x7E, .unk_2_0 = 2, .unk_4_0 = 11, .unk_4_5 = 3 },
+    { .x = 0xDC, .y = 0x7E, .unk_2_0 = 2, .unk_4_0 = 12, .unk_4_5 = 3 },
+    { .x = 0x1C, .y = 0x91, .unk_2_0 = 2, .unk_4_0 = 0,  .unk_4_5 = 4 },
+    { .x = 0x2C, .y = 0x91, .unk_2_0 = 2, .unk_4_0 = 1,  .unk_4_5 = 4 },
+    { .x = 0x3C, .y = 0x91, .unk_2_0 = 2, .unk_4_0 = 2,  .unk_4_5 = 4 },
+    { .x = 0x4C, .y = 0x91, .unk_2_0 = 2, .unk_4_0 = 3,  .unk_4_5 = 4 },
+    { .x = 0x5C, .y = 0x91, .unk_2_0 = 2, .unk_4_0 = 4,  .unk_4_5 = 4 },
+    { .x = 0x6C, .y = 0x91, .unk_2_0 = 2, .unk_4_0 = 5,  .unk_4_5 = 4 },
+    { .x = 0x7C, .y = 0x91, .unk_2_0 = 2, .unk_4_0 = 6,  .unk_4_5 = 4 },
+    { .x = 0x8C, .y = 0x91, .unk_2_0 = 2, .unk_4_0 = 7,  .unk_4_5 = 4 },
+    { .x = 0x9C, .y = 0x91, .unk_2_0 = 2, .unk_4_0 = 8,  .unk_4_5 = 4 },
+    { .x = 0xAC, .y = 0x91, .unk_2_0 = 2, .unk_4_0 = 9,  .unk_4_5 = 4 },
+    { .x = 0xBC, .y = 0x91, .unk_2_0 = 2, .unk_4_0 = 10, .unk_4_5 = 4 },
+    { .x = 0xCC, .y = 0x91, .unk_2_0 = 2, .unk_4_0 = 11, .unk_4_5 = 4 },
+    { .x = 0xDC, .y = 0x91, .unk_2_0 = 2, .unk_4_0 = 12, .unk_4_5 = 4 },
+    { .x = 0x1C, .y = 0xA4, .unk_2_0 = 2, .unk_4_0 = 0,  .unk_4_5 = 5 },
+    { .x = 0x2C, .y = 0xA4, .unk_2_0 = 2, .unk_4_0 = 1,  .unk_4_5 = 5 },
+    { .x = 0x3C, .y = 0xA4, .unk_2_0 = 2, .unk_4_0 = 2,  .unk_4_5 = 5 },
+    { .x = 0x4C, .y = 0xA4, .unk_2_0 = 2, .unk_4_0 = 3,  .unk_4_5 = 5 },
+    { .x = 0x5C, .y = 0xA4, .unk_2_0 = 2, .unk_4_0 = 4,  .unk_4_5 = 5 },
+    { .x = 0x6C, .y = 0xA4, .unk_2_0 = 2, .unk_4_0 = 5,  .unk_4_5 = 5 },
+    { .x = 0x7C, .y = 0xA4, .unk_2_0 = 2, .unk_4_0 = 6,  .unk_4_5 = 5 },
+    { .x = 0x8C, .y = 0xA4, .unk_2_0 = 2, .unk_4_0 = 7,  .unk_4_5 = 5 },
+    { .x = 0x9C, .y = 0xA4, .unk_2_0 = 2, .unk_4_0 = 8,  .unk_4_5 = 5 },
+    { .x = 0xAC, .y = 0xA4, .unk_2_0 = 2, .unk_4_0 = 9,  .unk_4_5 = 5 },
+    { .x = 0xBC, .y = 0xA4, .unk_2_0 = 2, .unk_4_0 = 10, .unk_4_5 = 5 },
+    { .x = 0xCC, .y = 0xA4, .unk_2_0 = 2, .unk_4_0 = 11, .unk_4_5 = 5 },
+    { .x = 0xDC, .y = 0xA4, .unk_2_0 = 2, .unk_4_0 = 12, .unk_4_5 = 5 },
+};
+
+static BOOL sub_0208503C(NamingScreenAppData *data) {
     int i;
     int ip = 0;
     u8 x;
