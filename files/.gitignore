@@ -13,6 +13,7 @@ a/0/2/0
 a/0/2/1
 a/0/2/7
 a/0/3/0
+a/0/3/1
 a/0/3/2
 a/0/3/3
 a/0/3/4
@@ -78,4 +79,5 @@ data/photo_data.narc
 graphic/camera_viewfinder.narc
 application/guinness.narc
 demo/intro/intro.narc
+data/namein.narc
 *.NCLR

@@ -2,6 +2,7 @@
 
 #include "global.h"
 
+#include "data/namein.naix"
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0197.h"
 #include "msgdata/msg/msg_0249.h"
@@ -99,7 +100,7 @@ typedef struct NamingScreenAppData {
     GF_2DGfxResObj *gfxResObjs[2][4];
     SpriteResourcesHeader spriteResHdr_Main;
     SpriteResourcesHeader spriteResHdr_Sub;
-    Sprite *sprites1[14];
+    Sprite *uiSprites[14];
     Sprite *textEntrySprites[12];
     Sprite *iconSprites[2];
     SysTask *tasks[7];
@@ -113,7 +114,7 @@ typedef struct NamingScreenAppData {
     int unk_484; // set but never used
     int unk_488; // set but never used
     int unk_48C; // set but never used
-    int spriteStates[7];
+    BOOL spriteAnimUpdateReq[7];
     void *unk_4AC;
     NNSG2dCharacterData *charData;
     void *unk_4B4;
@@ -130,9 +131,9 @@ typedef struct NamingScreenAppData {
 typedef struct UnkStruct_02102278 {
     u8 x;
     u8 y;
-    u16 sizeParam : 2;
-    u8 cursorX    : 5;
-    u8 cursorY    : 5;
+    u16 sizeParam : 2; // GameFreak tried to be size-efficient here, but
+    u8 cursorX    : 5; // messed up the data types.
+    u8 cursorY    : 5; // cursorX and cursorY should both be u16.
 } NamingScreenTouchHitboxDef;
 
 BOOL NamingScreenApp_Init(OVY_MANAGER *ovyMan, int *pState);
@@ -179,15 +180,20 @@ static int NamingScreen_SearchJpConvTableForNonSpace(const u16 *table, int pos);
 static BOOL sub_02084C98(int a0, int a1, u16 *a2, int a3);
 static BOOL sub_02084D04(int a0, int a1, int a2, int a3, u16 *a4, int a5);
 static void sub_02084E18(Sprite **sprites, int cursorPos, int maxLen);
-static void sub_02084E54(Window *window, u16 fillVal, int pageNum, u32 textColor, u8 *pRawData);
-static void sub_02084F3C(int *spriteStates, Sprite **sprites, int pageNum);
+static void NamingScreen_DrawKeyboardOnWindow(Window *window, u16 fillVal, int pageNum, u32 textColor, u8 *pRawData);
+static void NamingScreen_UpdateSpritesAnims(BOOL *req, Sprite **sprites, int pageNum);
 static void NamingScreen_PlaceCursorSprite(NamingScreenAppData *data);
 static BOOL NamingScreen_HandleTouchInput(NamingScreenAppData *data);
 
 // set but never referenced, never cleaned up
 static NamingScreenAppData *sAppData;
 
-static const int _021021E8[][4] = {
+// sprite params
+// [0]: x coord
+// [1]: y coord
+// [2]: anim
+// [3]: priority
+static const int sUISpritesParam[][4] = {
     { 0x04, 0x44, 0x03, 0x01 },
     { 0x24, 0x44, 0x08, 0x01 },
     { 0x44, 0x44, 0x0D, 0x01 },
@@ -211,25 +217,27 @@ static const u16 *sKeyboardHomeRowLayoutPtrs[] = {
     sKeyboardHomeRow_Numpad,
 };
 
-static const u16 _02101D80[] = {
-    0x0019,
-    0x0039,
-    0x0059,
-    0x0061,
-    0x007A,
-    0x009E,
-    0x00C6,
+// x coordinates
+static const u16 sHomeRowCursorXCoords[] = {
+    0x0019, // Upper
+    0x0039, // Lower
+    0x0059, // Symbols
+    0x0061, // JP Symbols
+    0x007A, // Numpad
+    0x009E, // Back
+    0x00C6, // OK
     0x0000,
 };
 
-static const u8 _02101D4C[] = {
-    0x28,
-    0x28,
-    0x28,
-    0x28,
-    0x29,
-    0x29,
-    0x29,
+// anim ids
+static const u8 sHomeRowCursorAnimIDs[] = {
+    0x28, // Upper
+    0x28, // Lower
+    0x28, // Symbols
+    0x28, // JP Symbols
+    0x29, // Numpad
+    0x29, // Back
+    0x29, // OK
 };
 
 static const u16 sKeyboardRow_Upper_1[] = { CHAR_A, CHAR_B, CHAR_C, CHAR_D, CHAR_E, CHAR_F, CHAR_G, CHAR_H, CHAR_I, CHAR_J, CHAR_SPACE, CHAR_COMMA, CHAR_PERIOD, EOS };
@@ -286,7 +294,7 @@ static const u16 *sKeyboardLayoutPtrs[][5] = {
     { sKeyboardRow_Numpad_1,  sKeyboardRow_Numpad_2,  sKeyboardRow_Numpad_345, sKeyboardRow_Numpad_345, sKeyboardRow_Numpad_345 },
 };
 
-// These arrays are used to convert Japanese characters in response to pressing select.
+// These arrays are used to convert Japanese characters in response to pressing R.
 static const u16 sJpCharConvTable[][3] = {
     { CHAR_JP_HIRA_A,  CHAR_JP_SPACE,   CHAR_JP_HIRA_A_SMALL  },
     { CHAR_JP_HIRA_I,  CHAR_JP_SPACE,   CHAR_JP_HIRA_I_SMALL  },
@@ -372,7 +380,7 @@ static const u16 sJpCharConvTable[][3] = {
     { CHAR_JP_KATA_HO, CHAR_JP_KATA_BO, CHAR_JP_KATA_PO       },
 };
 
-static const u16 _021021B8[][2] = {
+static const u16 sDakutenTable[][2] = {
     { CHAR_JP_HIRA_TU_SMALL, CHAR_JP_HIRA_DU },
     { CHAR_JP_KATA_TU_SMALL, CHAR_JP_KATA_DU },
     { CHAR_JP_HIRA_PA,       CHAR_JP_HIRA_BA },
@@ -387,7 +395,7 @@ static const u16 _021021B8[][2] = {
     { CHAR_JP_KATA_PO,       CHAR_JP_KATA_BO },
 };
 
-static const u16 _02102190[][2] = {
+static const u16 sHandakutenTable[][2] = {
     { CHAR_JP_HIRA_BA, CHAR_JP_HIRA_PA },
     { CHAR_JP_HIRA_BI, CHAR_JP_HIRA_PI },
     { CHAR_JP_HIRA_BU, CHAR_JP_HIRA_PU },
@@ -400,13 +408,14 @@ static const u16 _02102190[][2] = {
     { CHAR_JP_KATA_BO, CHAR_JP_KATA_PO },
 };
 
-static const int _02101D54[] = {
+// offsets for GXS_LoadOBJ
+static const int sSpriteGfxOffsets[] = {
     0x00000070,
     0x0000004C,
     0x00000048,
 };
 
-static const u8 _02101D40[] = {
+static const u8 sKeyboardFrameColors[] = {
     0x04,
     0x07,
     0x0D,
@@ -429,6 +438,7 @@ static const u16 *sDeadstrippedPointersTable[] = {
     sPrompt_BoxName,
 };
 
+// These are the GMMs that replace the above.
 static const int _021020B4[] = {
     msg_0249_00000,
     msg_0249_00001,
@@ -463,7 +473,7 @@ BOOL NamingScreenApp_Init(OVY_MANAGER *ovyMan, int *pState) {
         data = OverlayManager_CreateAndGetData(ovyMan, sizeof(NamingScreenAppData), HEAP_ID_NAMING_SCREEN);
         memset(data, 0, sizeof(NamingScreenAppData));
         data->bgConfig    = BgConfig_Alloc(HEAP_ID_NAMING_SCREEN);
-        narc              = NARC_New(NARC_a_0_3_1, HEAP_ID_NAMING_SCREEN);
+        narc              = NARC_New(NARC_data_namein, HEAP_ID_NAMING_SCREEN);
         data->msgFormat   = MessageFormat_New(HEAP_ID_NAMING_SCREEN);
         data->msgData_249 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0249_bin, HEAP_ID_NAMING_SCREEN);
         data->msgData_254 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0254_bin, HEAP_ID_NAMING_SCREEN);
@@ -523,7 +533,7 @@ BOOL NamingScreenApp_Main(OVY_MANAGER *ovyMan, int *pState) {
     case NS_MAIN_STATE_FINISH_INIT:
         ++data->delayCounter;
         NamingScreen_PlaceCursorSprite(data);
-        sub_02084F3C(data->spriteStates, data->sprites1, data->pageNum);
+        NamingScreen_UpdateSpritesAnims(data->spriteAnimUpdateReq, data->uiSprites, data->pageNum);
         if (data->delayCounter > 5) {
             *pState            = NS_MAIN_STATE_INPUT_LOOP;
             data->delayCounter = 0;
@@ -553,7 +563,7 @@ BOOL NamingScreenApp_Main(OVY_MANAGER *ovyMan, int *pState) {
         case 6:
             if (!TextPrinterCheckActive(data->battleMessageTextPrinterId)) {
                 PlaySE(SEQ_SE_DP_PIRORIRO);
-                ++data->spriteStates[6];
+                ++data->spriteAnimUpdateReq[6];
                 data->delayCounter    = 0;
                 data->pageSwitchState = 7;
             }
@@ -566,8 +576,8 @@ BOOL NamingScreenApp_Main(OVY_MANAGER *ovyMan, int *pState) {
             }
             break;
         }
-        NamingScreen_HandlePageSwitch(data->bgConfig, data->windows, &data->pageSwitchState, data->pageNum, &data->unk_464, data->bgPosVecs, data->sprites1, data->charData->pRawData);
-        sub_02084F3C(data->spriteStates, data->sprites1, data->pageNum);
+        NamingScreen_HandlePageSwitch(data->bgConfig, data->windows, &data->pageSwitchState, data->pageNum, &data->unk_464, data->bgPosVecs, data->uiSprites, data->charData->pRawData);
+        NamingScreen_UpdateSpritesAnims(data->spriteAnimUpdateReq, data->uiSprites, data->pageNum);
         NamingScreen_PaletteGlowEffect(&data->unk_038);
         break;
     case NS_MAIN_STATE_WAIT_FADE_OUT:
@@ -586,8 +596,8 @@ static NamingScreenMainState NamingScreen_HandleInput(NamingScreenAppData *data,
 
     NamingScreen_GetPlayerInput(data);
     if (gSystem.newKeys & PAD_BUTTON_SELECT) {
-        if (!Sprite_GetVisibleFlag(data->sprites1[8])) {
-            Sprite_SetVisibleFlag(data->sprites1[8], TRUE);
+        if (!Sprite_GetVisibleFlag(data->uiSprites[8])) {
+            Sprite_SetVisibleFlag(data->uiSprites[8], TRUE);
             return ret;
         }
         if (data->type != NAME_SCREEN_UNK4) {
@@ -596,12 +606,12 @@ static NamingScreenMainState NamingScreen_HandleInput(NamingScreenAppData *data,
             if (data->pageNum >= 3) {
                 data->pageNum = 0;
             }
-            ++data->spriteStates[data->pageNum];
+            ++data->spriteAnimUpdateReq[data->pageNum];
             NamingScreen_LoadKeyboardLayout(data->keyboard, data->pageNum);
             PlaySE(SEQ_SE_DP_SYU03);
             data->kbCursor.showCursor = TRUE;
         }
-        ++data->spriteStates[data->pageNum];
+        ++data->spriteAnimUpdateReq[data->pageNum];
         NamingScreen_LoadKeyboardLayout(data->keyboard, data->pageNum);
         PlaySE(SEQ_SE_DP_SYU03);
     } else if (gSystem.newKeys & PAD_BUTTON_A) {
@@ -939,12 +949,12 @@ static void NamingScreen_InitKeyboardAndEntryCursors(NamingScreenAppData *data, 
     data->unk_48C                = 0;
     data->entryBuf[data->maxLen] = EOS;
     for (int i = 0; i < 7; ++i) {
-        data->spriteStates[i] = 0;
+        data->spriteAnimUpdateReq[i] = 0;
     }
     if (data->type == NAME_SCREEN_UNK4) {
-        data->spriteStates[3] = 1;
+        data->spriteAnimUpdateReq[3] = 1;
     } else {
-        data->spriteStates[0] = 1;
+        data->spriteAnimUpdateReq[0] = 1;
     }
 }
 
@@ -992,23 +1002,23 @@ static void NamingScreen_UnloadBgGfx(BgConfig *bgConfig, Window *windows) {
 static void NamingScreen_CreateBgConfigAndLoadGfx(NamingScreenAppData *data, NARC *narc) {
     BgConfig *bgConfig = data->bgConfig;
 
-    GfGfxLoader_GXLoadPalFromOpenNarc(narc, 0, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0x60, HEAP_ID_NAMING_SCREEN);
+    GfGfxLoader_GXLoadPalFromOpenNarc(narc, NARC_namein_namein_00000000_NCLR, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0x60, HEAP_ID_NAMING_SCREEN);
     GfGfxLoader_GXLoadPal(NARC_a_0_1_4, 71, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0, 0x20, HEAP_ID_NAMING_SCREEN);
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB_BLACK);
 
-    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 2, bgConfig, GF_BG_LYR_MAIN_2, 0, 0x2000, TRUE, HEAP_ID_NAMING_SCREEN);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 4, bgConfig, GF_BG_LYR_MAIN_2, 0, 0x600, TRUE, HEAP_ID_NAMING_SCREEN);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, NARC_namein_namein_00000002_NCGR_lz, bgConfig, GF_BG_LYR_MAIN_2, 0, 0x2000, TRUE, HEAP_ID_NAMING_SCREEN);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, NARC_namein_namein_00000004_NSCR_lz, bgConfig, GF_BG_LYR_MAIN_2, 0, 0x600, TRUE, HEAP_ID_NAMING_SCREEN);
 
-    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 2, bgConfig, GF_BG_LYR_MAIN_1, 0, 0x2000, TRUE, HEAP_ID_NAMING_SCREEN);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 6, bgConfig, GF_BG_LYR_MAIN_1, 0, 0x380, TRUE, HEAP_ID_NAMING_SCREEN);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, NARC_namein_namein_00000002_NCGR_lz, bgConfig, GF_BG_LYR_MAIN_1, 0, 0x2000, TRUE, HEAP_ID_NAMING_SCREEN);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, NARC_namein_namein_00000006_NSCR_lz, bgConfig, GF_BG_LYR_MAIN_1, 0, 0x380, TRUE, HEAP_ID_NAMING_SCREEN);
 
-    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 7, bgConfig, GF_BG_LYR_MAIN_0, 0, 0x380, TRUE, HEAP_ID_NAMING_SCREEN);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, NARC_namein_namein_00000007_NSCR_lz, bgConfig, GF_BG_LYR_MAIN_0, 0, 0x380, TRUE, HEAP_ID_NAMING_SCREEN);
 
     LoadFontPal1(GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0x180, HEAP_ID_NAMING_SCREEN);
     LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_SUB_0, 0x100, 10, Options_GetFrame(data->options), HEAP_ID_NAMING_SCREEN);
     LoadFontPal1(GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0x180, HEAP_ID_NAMING_SCREEN);
 
-    data->unk_4AC = GfGfxLoader_GetCharDataFromOpenNarc(narc, 16, TRUE, &data->charData, HEAP_ID_NAMING_SCREEN);
+    data->unk_4AC = GfGfxLoader_GetCharDataFromOpenNarc(narc, NARC_namein_namein_00000016_NCGR_lz, TRUE, &data->charData, HEAP_ID_NAMING_SCREEN);
 }
 
 static void NamingScreen_InitObjCharPlttTransfer(void) {
@@ -1036,10 +1046,10 @@ static void NamingScreen_LoadObjGfx(NamingScreenAppData *data, NARC *narc) {
         data->gfxResMen[i] = Create2DGfxResObjMan(2, (GfGfxResType)i, HEAP_ID_NAMING_SCREEN);
     }
 
-    data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromOpenNarc(data->gfxResMen[GF_GFX_RES_TYPE_CHAR], narc, 10, TRUE, 0, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_NAMING_SCREEN);
-    data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromOpenNarc(data->gfxResMen[GF_GFX_RES_TYPE_PLTT], narc, 1, FALSE, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 9, HEAP_ID_NAMING_SCREEN);
-    data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromOpenNarc(data->gfxResMen[GF_GFX_RES_TYPE_CELL], narc, 12, TRUE, 0, GF_GFX_RES_TYPE_CELL, HEAP_ID_NAMING_SCREEN);
-    data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromOpenNarc(data->gfxResMen[GF_GFX_RES_TYPE_ANIM], narc, 14, TRUE, 0, GF_GFX_RES_TYPE_ANIM, HEAP_ID_NAMING_SCREEN);
+    data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromOpenNarc(data->gfxResMen[GF_GFX_RES_TYPE_CHAR], narc, NARC_namein_namein_00000010_NCGR_lz, TRUE, 0, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_NAMING_SCREEN);
+    data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromOpenNarc(data->gfxResMen[GF_GFX_RES_TYPE_PLTT], narc, NARC_namein_namein_00000001_NCLR, FALSE, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 9, HEAP_ID_NAMING_SCREEN);
+    data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromOpenNarc(data->gfxResMen[GF_GFX_RES_TYPE_CELL], narc, NARC_namein_namein_00000012_NCER_lz, TRUE, 0, GF_GFX_RES_TYPE_CELL, HEAP_ID_NAMING_SCREEN);
+    data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromOpenNarc(data->gfxResMen[GF_GFX_RES_TYPE_ANIM], narc, NARC_namein_namein_00000014_NANR_lz, TRUE, 0, GF_GFX_RES_TYPE_ANIM, HEAP_ID_NAMING_SCREEN);
     if (data->type == NAME_SCREEN_POKEMON) {
         data->unk_4B4 = GfGfxLoader_GetCharData(NARC_poketool_icongra_poke_icon, GetMonIconNaixEx(data->playerGenderOrMonSpecies, FALSE, data->monForm), FALSE, &data->monIconCharData, HEAP_ID_NAMING_SCREEN);
         DC_FlushRange(data->monIconCharData, 0x200);
@@ -1047,10 +1057,10 @@ static void NamingScreen_LoadObjGfx(NamingScreenAppData *data, NARC *narc) {
         DC_FlushRange(data->plttData, 0x80);
     }
 
-    data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromOpenNarc(data->gfxResMen[GF_GFX_RES_TYPE_CHAR], narc, 11, TRUE, 1, NNS_G2D_VRAM_TYPE_2DSUB, HEAP_ID_NAMING_SCREEN);
-    data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromOpenNarc(data->gfxResMen[GF_GFX_RES_TYPE_PLTT], narc, 1, FALSE, 1, NNS_G2D_VRAM_TYPE_2DSUB, 3, HEAP_ID_NAMING_SCREEN);
-    data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromOpenNarc(data->gfxResMen[GF_GFX_RES_TYPE_CELL], narc, 13, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_NAMING_SCREEN);
-    data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromOpenNarc(data->gfxResMen[GF_GFX_RES_TYPE_ANIM], narc, 15, TRUE, 1, GF_GFX_RES_TYPE_ANIM, HEAP_ID_NAMING_SCREEN);
+    data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromOpenNarc(data->gfxResMen[GF_GFX_RES_TYPE_CHAR], narc, NARC_namein_namein_00000011_NCGR_lz, TRUE, 1, NNS_G2D_VRAM_TYPE_2DSUB, HEAP_ID_NAMING_SCREEN);
+    data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromOpenNarc(data->gfxResMen[GF_GFX_RES_TYPE_PLTT], narc, NARC_namein_namein_00000001_NCLR, FALSE, 1, NNS_G2D_VRAM_TYPE_2DSUB, 3, HEAP_ID_NAMING_SCREEN);
+    data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromOpenNarc(data->gfxResMen[GF_GFX_RES_TYPE_CELL], narc, NARC_namein_namein_00000013_NCER_lz, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_NAMING_SCREEN);
+    data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromOpenNarc(data->gfxResMen[GF_GFX_RES_TYPE_ANIM], narc, NARC_namein_namein_00000015_NANR_lz, TRUE, 1, GF_GFX_RES_TYPE_ANIM, HEAP_ID_NAMING_SCREEN);
 
     sub_0200ACF0(data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_CHAR]);
     sub_0200ACF0(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_CHAR]);
@@ -1070,7 +1080,7 @@ static void SysTask_NamingScreen_SubspritePosController(SysTask *task, void *tas
     VecFx32 *pMatrix                     = Sprite_GetMatrixPtr(data->parent);
     VecFx32 matrix;
     matrix.x = pMatrix->x + data->dx;
-    matrix.y = FX32_ONE * _021021E8[data->i][1];
+    matrix.y = FX32_ONE * sUISpritesParam[data->i][1];
     matrix.z = 0;
     Sprite_SetMatrix(data->child, &matrix);
 }
@@ -1095,20 +1105,20 @@ static void NamingScreen_CreateSprites(NamingScreenAppData *data) {
         spriteTemplate.heapId      = HEAP_ID_NAMING_SCREEN;
 
         for (i = 0; i < 9; ++i) {
-            spriteTemplate.position.x = _021021E8[i][0] * FX32_ONE;
-            spriteTemplate.position.y = _021021E8[i][1] * FX32_ONE;
-            data->sprites1[i]         = Sprite_CreateAffine(&spriteTemplate);
-            Sprite_SetAnimActiveFlag(data->sprites1[i], TRUE);
-            Sprite_SetAnimCtrlSeq(data->sprites1[i], _021021E8[i][2]);
-            Sprite_SetDrawPriority(data->sprites1[i], _021021E8[i][3]);
+            spriteTemplate.position.x = sUISpritesParam[i][0] * FX32_ONE;
+            spriteTemplate.position.y = sUISpritesParam[i][1] * FX32_ONE;
+            data->uiSprites[i]        = Sprite_CreateAffine(&spriteTemplate);
+            Sprite_SetAnimActiveFlag(data->uiSprites[i], TRUE);
+            Sprite_SetAnimCtrlSeq(data->uiSprites[i], sUISpritesParam[i][2]);
+            Sprite_SetDrawPriority(data->uiSprites[i], sUISpritesParam[i][3]);
         }
-        Sprite_SetVisibleFlag(data->sprites1[4], FALSE);
+        Sprite_SetVisibleFlag(data->uiSprites[4], FALSE);
         for (i = 0; i < 7; ++i) {
             data->tasks[i]                           = CreateSysTaskAndEnvironment(SysTask_NamingScreen_SubspritePosController, sizeof(SubspritePosControllerTaskData), 5, HEAP_ID_NAMING_SCREEN);
             SubspritePosControllerTaskData *taskData = SysTask_GetData(data->tasks[i]);
-            taskData->parent                         = data->sprites1[7];
-            taskData->child                          = data->sprites1[i];
-            taskData->dx                             = _021021E8[i][0] * FX32_ONE;
+            taskData->parent                         = data->uiSprites[7];
+            taskData->child                          = data->uiSprites[i];
+            taskData->dx                             = sUISpritesParam[i][0] * FX32_ONE;
             taskData->i                              = i;
         }
         // regswap: data->maxLen should be r2, instead r0
@@ -1216,10 +1226,10 @@ static void NamingScreen_HandlePageSwitch(BgConfig *bgConfig, Window *windows, i
 
     switch (*pState) {
     case 0: {
-        u16 fillVal = _02101D40[pageNum] | (_02101D40[pageNum] << 4);
-        GfGfxLoader_LoadScrnData(NARC_a_0_3_1, pageNum + 6, bgConfig, bgId_prev, 0, 0x380, TRUE, HEAP_ID_NAMING_SCREEN);
+        u16 fillVal = sKeyboardFrameColors[pageNum] | (sKeyboardFrameColors[pageNum] << 4);
+        GfGfxLoader_LoadScrnData(NARC_data_namein, pageNum + 6, bgConfig, bgId_prev, 0, 0x380, TRUE, HEAP_ID_NAMING_SCREEN);
         NamingScreen_SetPagePgPosVecs(posVecs, bgId_prev);
-        sub_02084E54(&windows[bgId_prev], fillVal, pageNum, MAKE_TEXT_COLOR(14, 15, 0), pRawData);
+        NamingScreen_DrawKeyboardOnWindow(&windows[bgId_prev], fillVal, pageNum, MAKE_TEXT_COLOR(14, 15, 0), pRawData);
         ++(*pState);
         break;
     }
@@ -1293,14 +1303,14 @@ static void NamingScreen_InitWindows(NamingScreenAppData *data, OVY_MANAGER *ovy
     AddWindowParameterized(data->bgConfig, &data->windows[1], GF_BG_LYR_MAIN_1, 2, 1, 26, 12, 1, 0x238);
 
     if (data->type == NAME_SCREEN_UNK4) {
-        GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 9, data->bgConfig, GF_BG_LYR_MAIN_1, 0, 0x380, TRUE, HEAP_ID_NAMING_SCREEN);
+        GfGfxLoader_LoadScrnDataFromOpenNarc(narc, NARC_namein_namein_00000009_NSCR_lz, data->bgConfig, GF_BG_LYR_MAIN_1, 0, 0x380, TRUE, HEAP_ID_NAMING_SCREEN);
         data->pageNum = 4;
         NamingScreen_LoadKeyboardLayout(data->keyboard, 4);
-        sub_02084E54(&data->windows[1], 0x0A0A, 4, MAKE_TEXT_COLOR(14, 15, 0), data->charData->pRawData);
+        NamingScreen_DrawKeyboardOnWindow(&data->windows[1], 0x0A0A, 4, MAKE_TEXT_COLOR(14, 15, 0), data->charData->pRawData);
     } else {
         data->pageNum = 0;
         NamingScreen_LoadKeyboardLayout(data->keyboard, 0);
-        sub_02084E54(&data->windows[1], 0x0404, 0, MAKE_TEXT_COLOR(14, 15, 0), data->charData->pRawData);
+        NamingScreen_DrawKeyboardOnWindow(&data->windows[1], 0x0404, 0, MAKE_TEXT_COLOR(14, 15, 0), data->charData->pRawData);
     }
 
     AddWindowParameterized(data->bgConfig, &data->windows[2], GF_BG_LYR_MAIN_2, 7, 2, 22, 2, 0, 0x370);
@@ -1394,37 +1404,37 @@ static void NamingScreen_GetPlayerInput(NamingScreenAppData *data) {
     int doUpdateCursor           = 0;
     int dpadMovement             = 0;
     BOOL buttonInputIsTransition = FALSE;
-    if (!Sprite_GetVisibleFlag(data->sprites1[8])) {
+    if (!Sprite_GetVisibleFlag(data->uiSprites[8])) {
         buttonInputIsTransition = TRUE;
     }
 
     if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
         PlaySE(SEQ_SE_DP_SELECT);
-        Sprite_SetVisibleFlag(data->sprites1[8], TRUE);
+        Sprite_SetVisibleFlag(data->uiSprites[8], TRUE);
         dpadMovement = 1;
         ++doUpdateCursor;
     }
     if (gSystem.newAndRepeatedKeys & PAD_KEY_DOWN) {
         PlaySE(SEQ_SE_DP_SELECT);
-        Sprite_SetVisibleFlag(data->sprites1[8], TRUE);
+        Sprite_SetVisibleFlag(data->uiSprites[8], TRUE);
         dpadMovement = 2;
         ++doUpdateCursor;
     }
     if (gSystem.newAndRepeatedKeys & PAD_KEY_LEFT) {
         PlaySE(SEQ_SE_DP_SELECT);
-        Sprite_SetVisibleFlag(data->sprites1[8], TRUE);
+        Sprite_SetVisibleFlag(data->uiSprites[8], TRUE);
         dpadMovement = 3;
         ++doUpdateCursor;
     }
     if (gSystem.newAndRepeatedKeys & PAD_KEY_RIGHT) {
         PlaySE(SEQ_SE_DP_SELECT);
-        Sprite_SetVisibleFlag(data->sprites1[8], TRUE);
+        Sprite_SetVisibleFlag(data->uiSprites[8], TRUE);
         dpadMovement = 4;
         ++doUpdateCursor;
     }
     if (gSystem.newKeys & PAD_BUTTON_START) {
         PlaySE(SEQ_SE_DP_SELECT);
-        Sprite_SetVisibleFlag(data->sprites1[8], TRUE);
+        Sprite_SetVisibleFlag(data->uiSprites[8], TRUE);
         data->kbCursor.x = 12;
         data->kbCursor.y = 0;
         ++doUpdateCursor;
@@ -1447,30 +1457,30 @@ static void NamingScreen_GetPlayerInput(NamingScreenAppData *data) {
 static void NamingScreen_UpdateCursorSpritePosition(NamingScreenAppData *data, int dpadMovement) {
     if (data->kbCursor.y != 0) {
         if (data->kbCursor.prevY == 0 && data->kbCursor.prevY != data->kbCursor.y) {
-            Sprite_SetAnimCtrlSeq(data->sprites1[8], 39);
+            Sprite_SetAnimCtrlSeq(data->uiSprites[8], 39);
         }
         if (dpadMovement != 0) {
-            Sprite_SetAnimCtrlSeq(data->sprites1[8], 39);
+            Sprite_SetAnimCtrlSeq(data->uiSprites[8], 39);
         }
 
         VecFx32 vec;
         vec.x = (data->kbCursor.x * 16 + 26) * FX32_ONE;
         vec.y = ((data->kbCursor.y - 1) * 19 + 91) * FX32_ONE;
         // vec.z = 0;
-        Sprite_SetMatrix(data->sprites1[8], &vec);
+        Sprite_SetMatrix(data->uiSprites[8], &vec);
     } else {
         int buttonId = data->keyboard[data->kbCursor.y][data->kbCursor.x] - NAME_SCREEN_BUTTON_PAGE_UPPER;
         VecFx32 vec;
 
-        vec.x = _02101D80[buttonId] * FX32_ONE;
+        vec.x = sHomeRowCursorXCoords[buttonId] * FX32_ONE;
         vec.y = FX32_CONST(68);
         // vec.z = 0;
-        Sprite_SetAnimCtrlSeq(data->sprites1[8], _02101D4C[buttonId]);
-        Sprite_SetMatrix(data->sprites1[8], &vec);
+        Sprite_SetAnimCtrlSeq(data->uiSprites[8], sHomeRowCursorAnimIDs[buttonId]);
+        Sprite_SetMatrix(data->uiSprites[8], &vec);
     }
 
     data->unk_038 = 180;
-    Sprite_SetAnimCtrlCurrentFrame(data->sprites1[8], 0);
+    Sprite_SetAnimCtrlCurrentFrame(data->uiSprites[8], 0);
     data->kbCursor.prevX = data->kbCursor.x;
     data->kbCursor.prevY = data->kbCursor.y;
     if (sDpadMovementCoordDeltas[dpadMovement][0] != 0) {
@@ -1547,7 +1557,7 @@ static void NamingScreen_PrintCharacterOnWindowAndOBJ(Window *windows, const u16
         CopyU16ArrayToString(string2, spC);
         ptr = NamingScreen_PrintStringOnWindow_GetPixelBuffer(&windows[i], string2, 2, MAKE_TEXT_COLOR(13, 14, 15));
         DC_FlushRange(ptr, 0x80);
-        GXS_LoadOBJ(ptr, _02101D54[i] * 32, 0x80);
+        GXS_LoadOBJ(ptr, sSpriteGfxOffsets[i] * 32, 0x80);
     }
 
     String_Delete(string2);
@@ -1628,8 +1638,8 @@ static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppDa
             key = CHAR_JP_SPACE;
         }
     }
-    if (!Sprite_GetVisibleFlag(data->sprites1[8]) && gSystem.touchNew == 0) {
-        Sprite_SetVisibleFlag(data->sprites1[8], TRUE);
+    if (!Sprite_GetVisibleFlag(data->uiSprites[8]) && gSystem.touchNew == 0) {
+        Sprite_SetVisibleFlag(data->uiSprites[8], TRUE);
         return NS_MAIN_STATE_INPUT_LOOP;
     }
 
@@ -1652,7 +1662,7 @@ static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppDa
         if (sub_02084C98(0, 0x52, data->entryBuf, data->textCursorPos)) {
             FillWindowPixelBuffer(&data->windows[3], 1);
             NamingScreen_BlitRawCharactersToWindow(&data->windows[3], data->entryBuf, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
-            ++data->spriteStates[4];
+            ++data->spriteAnimUpdateReq[4];
             PlaySE(SEQ_SE_DP_BOX02);
         }
         break;
@@ -1664,7 +1674,7 @@ static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppDa
             data->pageSwitchState = 0;
             data->pageNum         = key - NAME_SCREEN_BUTTON_PAGE_UPPER;
             NamingScreen_LoadKeyboardLayout(data->keyboard, data->pageNum);
-            ++data->spriteStates[key - NAME_SCREEN_BUTTON_PAGE_UPPER];
+            ++data->spriteAnimUpdateReq[key - NAME_SCREEN_BUTTON_PAGE_UPPER];
             PlaySE(SEQ_SE_DP_SYU03);
         }
         break;
@@ -1680,7 +1690,7 @@ static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppDa
             }
             NamingScreen_PrintLastCharacterOfEntryBuf(&data->windows[4], data->entryBuf, data->textCursorPos, data->unk_15A, data->charBuf, data->unkJapaneseString);
             sub_02084E18(data->textEntrySprites, data->textCursorPos, data->maxLen);
-            ++data->spriteStates[5];
+            ++data->spriteAnimUpdateReq[5];
             PlaySE(SEQ_SE_DP_SELECT);
         }
         break;
@@ -1688,7 +1698,7 @@ static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppDa
         sub_020164C4(data->unk_5C4);
         if (!data->printedFromBattleGMM) {
             PlaySE(SEQ_SE_DP_PIRORIRO);
-            ++data->spriteStates[6];
+            ++data->spriteAnimUpdateReq[6];
             BeginNormalPaletteFade(2, 0, 0, RGB_BLACK, 16, 1, HEAP_ID_NAMING_SCREEN);
             NamingScreen_UpdateFieldMenuInputState(data, isButtonInput);
             return NS_MAIN_STATE_WAIT_FADE_OUT;
@@ -1707,10 +1717,10 @@ static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppDa
             ++data->textCursorPos;
             sub_02084E18(data->textEntrySprites, data->textCursorPos, data->maxLen);
             PlaySE(SEQ_SE_DP_BOX02);
-            Sprite_SetVisibleFlag(data->sprites1[8], TRUE);
-            Sprite_SetOamMode(data->sprites1[8], GX_OAM_MODE_XLU);
+            Sprite_SetVisibleFlag(data->uiSprites[8], TRUE);
+            Sprite_SetOamMode(data->uiSprites[8], GX_OAM_MODE_XLU);
             G2_SetBlendAlpha(0, GX_BLEND_PLANEMASK_BG0 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2, 8, 8);
-            Sprite_SetAnimCtrlSeq(data->sprites1[8], 60);
+            Sprite_SetAnimCtrlSeq(data->uiSprites[8], 60);
             if (data->textCursorPos == data->maxLen) {
                 data->kbCursor.unk18 = TRUE;
             }
@@ -1784,16 +1794,16 @@ static BOOL sub_02084D04(int a0, int a1, int a2, int a3, u16 *a4, int a5) {
     switch (a3) {
     case NAME_SCREEN_CONTROL_DAKU:
         for (i = 0; i < 12u; ++i) {
-            if (key == _021021B8[i][0]) {
-                a4[a5 - 1] = _021021B8[i][1];
+            if (key == sDakutenTable[i][0]) {
+                a4[a5 - 1] = sDakutenTable[i][1];
                 return TRUE;
             }
         }
         break;
     case NAME_SCREEN_CONTROL_HANDAKU:
         for (i = 0; i < 10u; ++i) {
-            if (key == _02102190[i][0]) {
-                a4[a5 - 1] = _02102190[i][1];
+            if (key == sHandakutenTable[i][0]) {
+                a4[a5 - 1] = sHandakutenTable[i][1];
                 return TRUE;
             }
         }
@@ -1822,20 +1832,20 @@ static void sub_02084E18(Sprite **sprites, int cursorPos, int maxLen) {
     }
 }
 
-static const u8 _02101D44[] = { 0x03, 0x06, 0x0C, 0x09, 0x09 };
+static const u8 sKeyboardFillValues[] = { 0x03, 0x06, 0x0C, 0x09, 0x09 };
 
-static void sub_02084E54(Window *window, u16 fillVal, int pageNum, u32 textColor, u8 *pRawData) {
+static void NamingScreen_DrawKeyboardOnWindow(Window *window, u16 fillVal, int pageNum, u32 textColor, u8 *pRawData) {
     FillWindowPixelBuffer(window, fillVal);
 
     for (int i = 0; i < 6; ++i) {
-        FillWindowPixelRect(window, _02101D44[pageNum], 32 * i + 16, 0, 16, 19);
-        FillWindowPixelRect(window, _02101D44[pageNum], 32 * i + 16, 38, 16, 19);
-        FillWindowPixelRect(window, _02101D44[pageNum], 32 * i + 16, 76, 16, 19);
+        FillWindowPixelRect(window, sKeyboardFillValues[pageNum], 32 * i + 16, 0, 16, 19);
+        FillWindowPixelRect(window, sKeyboardFillValues[pageNum], 32 * i + 16, 38, 16, 19);
+        FillWindowPixelRect(window, sKeyboardFillValues[pageNum], 32 * i + 16, 76, 16, 19);
     }
 
     for (int i = 0; i < 7; ++i) {
-        FillWindowPixelRect(window, _02101D44[pageNum], 32 * i, 19, 16, 19);
-        FillWindowPixelRect(window, _02101D44[pageNum], 32 * i, 57, 16, 19);
+        FillWindowPixelRect(window, sKeyboardFillValues[pageNum], 32 * i, 19, 16, 19);
+        FillWindowPixelRect(window, sKeyboardFillValues[pageNum], 32 * i, 57, 16, 19);
     }
 
     for (int i = 0; i < 5; ++i) {
@@ -1845,45 +1855,45 @@ static void sub_02084E54(Window *window, u16 fillVal, int pageNum, u32 textColor
     CopyWindowToVram(window);
 }
 
-static void sub_02084F3C(int *spriteStates, Sprite **sprites, int pageNum) {
+static void NamingScreen_UpdateSpritesAnims(BOOL *req, Sprite **sprites, int pageNum) {
     for (int i = 0; i < 3; ++i) {
-        if (spriteStates[i] != 0) {
+        if (req[i]) {
             for (int j = 0; j < 3; ++j) {
-                Sprite_SetAnimCtrlSeq(sprites[j], _021021E8[j][2]);
+                Sprite_SetAnimCtrlSeq(sprites[j], sUISpritesParam[j][2]);
             }
-            Sprite_SetAnimCtrlSeq(sprites[i], _021021E8[i][2] - 3);
+            Sprite_SetAnimCtrlSeq(sprites[i], sUISpritesParam[i][2] - 3);
             break;
         }
     }
     for (int i = 5; i < 7; ++i) {
-        if (spriteStates[i] != 0) {
-            Sprite_SetAnimCtrlSeq(sprites[i], _021021E8[i][2] + 1);
+        if (req[i]) {
+            Sprite_SetAnimCtrlSeq(sprites[i], sUISpritesParam[i][2] + 1);
         }
     }
     for (int i = 0; i < 7; ++i) {
-        spriteStates[i] = 0;
+        req[i] = FALSE;
     }
 }
 
 static void NamingScreen_PlaceCursorSprite(NamingScreenAppData *data) {
-    if (Sprite_IsCellAnimationRunning(data->sprites1[8])) {
+    if (Sprite_IsCellAnimationRunning(data->uiSprites[8])) {
         return;
     }
 
     if (data->textCursorPos == data->maxLen) {
         data->kbCursor.x = 12;
         data->kbCursor.y = 0;
-        Sprite_SetAnimCtrlSeq(data->sprites1[8], 39);
+        Sprite_SetAnimCtrlSeq(data->uiSprites[8], 39);
         data->kbCursor.unk18 = FALSE;
     } else {
-        Sprite_SetAnimCtrlSeq(data->sprites1[8], 39);
+        Sprite_SetAnimCtrlSeq(data->uiSprites[8], 39);
     }
     if (!data->kbCursor.showCursor) {
-        Sprite_SetVisibleFlag(data->sprites1[8], FALSE);
+        Sprite_SetVisibleFlag(data->uiSprites[8], FALSE);
     } else {
         NamingScreen_UpdateCursorSpritePosition(data, 0);
     }
-    Sprite_SetOamMode(data->sprites1[8], GX_OAM_MODE_NORMAL);
+    Sprite_SetOamMode(data->uiSprites[8], GX_OAM_MODE_NORMAL);
 }
 
 static const NamingScreenTouchHitboxDef sTouchHitboxDef[] = {
