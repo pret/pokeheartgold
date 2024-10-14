@@ -65,7 +65,7 @@ typedef struct NamingScreenCursor {
     int prevY;
     int deltaX;
     BOOL showCursor; // always TRUE
-    BOOL unk18;
+    BOOL ignoreInput;
 } NamingScreenCursor;
 
 typedef struct NamingScreenAppData {
@@ -77,7 +77,7 @@ typedef struct NamingScreenAppData {
     BOOL printedFromBattleGMM; // logic that makes this TRUE is unreachable
     Options *options;
     NamingScreenCursor kbCursor;
-    u16 unk_038;
+    u16 plttGlowEffectAngle;
     u16 keyboard[6][13];
     u8 filler_0D6[2];
     u16 entryBuf[0x20];
@@ -93,7 +93,7 @@ typedef struct NamingScreenAppData {
     String *promptString;
     String *unkJapaneseString;
     String *battleMsgString;
-    String *unk_184;
+    String *unk_184; // set to a message that was not localized
     SpriteList *spriteList;
     GF_G2dRenderer g2dRender;
     GF_2DGfxResMan *gfxResMen[4];
@@ -108,18 +108,18 @@ typedef struct NamingScreenAppData {
     int battleMessageTextPrinterId;
     int pageSwitchState;
     int pageNum;
-    GFBgLayer unk_464;
+    GFBgLayer activeKeyboardBgId; // alternates between main 0/1
     VecFx32 bgPosVecs[2];
     int unk_480; // unused
     int unk_484; // set but never used
     int unk_488; // set but never used
     int unk_48C; // set but never used
     BOOL spriteAnimUpdateReq[7];
-    void *unk_4AC;
+    void *charDataRaw;
     NNSG2dCharacterData *charData;
-    void *unk_4B4;
+    void *monIconCharDaraRaw;
     NNSG2dCharacterData *monIconCharData;
-    void *unk_4BC;
+    void *plttDataRaw;
     NNSG2dPaletteData *plttData;
     u8 charBuf[0x100];
     UnkStruct_020163E0 *unk_5C4;
@@ -551,7 +551,7 @@ BOOL NamingScreenApp_Main(OVY_MANAGER *ovyMan, int *pState) {
         case 3:
             break;
         case 4:
-            if (data->kbCursor.unk18 == 0) {
+            if (!data->kbCursor.ignoreInput) {
                 *pState = NamingScreen_HandleInput(data, (NamingScreenMainState)*pState);
             }
             NamingScreen_PlaceCursorSprite(data);
@@ -580,9 +580,9 @@ BOOL NamingScreenApp_Main(OVY_MANAGER *ovyMan, int *pState) {
             }
             break;
         }
-        NamingScreen_HandlePageSwitch(data->bgConfig, data->windows, &data->pageSwitchState, data->pageNum, &data->unk_464, data->bgPosVecs, data->uiSprites, data->charData->pRawData);
+        NamingScreen_HandlePageSwitch(data->bgConfig, data->windows, &data->pageSwitchState, data->pageNum, &data->activeKeyboardBgId, data->bgPosVecs, data->uiSprites, data->charData->pRawData);
         NamingScreen_UpdateSpritesAnims(data->spriteAnimUpdateReq, data->uiSprites, data->pageNum);
-        NamingScreen_PaletteGlowEffect(&data->unk_038);
+        NamingScreen_PaletteGlowEffect(&data->plttGlowEffectAngle);
         break;
     case NS_MAIN_STATE_WAIT_FADE_OUT:
         if (IsPaletteFadeFinished()) {
@@ -713,10 +713,10 @@ BOOL NamingScreenApp_Exit(OVY_MANAGER *ovyMan, int *pState) {
     }
     SpriteList_Delete(data->spriteList);
     OamManager_Free();
-    FreeToHeapExplicit(HEAP_ID_NAMING_SCREEN, data->unk_4AC);
+    FreeToHeapExplicit(HEAP_ID_NAMING_SCREEN, data->charDataRaw);
     if (data->type == NAME_SCREEN_POKEMON) {
-        FreeToHeapExplicit(HEAP_ID_NAMING_SCREEN, data->unk_4B4);
-        FreeToHeapExplicit(HEAP_ID_NAMING_SCREEN, data->unk_4BC);
+        FreeToHeapExplicit(HEAP_ID_NAMING_SCREEN, data->monIconCharDaraRaw);
+        FreeToHeapExplicit(HEAP_ID_NAMING_SCREEN, data->plttDataRaw);
     }
     FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_SUB_3);
     ObjCharTransfer_Destroy();
@@ -920,10 +920,10 @@ static void NamingScreen_InitKeyboardAndEntryCursors(NamingScreenAppData *data, 
 
     data->pageSwitchState = 4;
     NamingScreen_SetPagePgPosVecs(data->bgPosVecs, GF_BG_LYR_MAIN_0);
-    BgSetPosTextAndCommit(data->bgConfig, data->unk_464, BG_POS_OP_SET_X, data->bgPosVecs[data->unk_464].x);
-    BgSetPosTextAndCommit(data->bgConfig, data->unk_464, BG_POS_OP_SET_Y, data->bgPosVecs[data->unk_464].y);
-    BgSetPosTextAndCommit(data->bgConfig, data->unk_464 ^ 1, BG_POS_OP_SET_X, data->bgPosVecs[data->unk_464 ^ 1].x);
-    BgSetPosTextAndCommit(data->bgConfig, data->unk_464 ^ 1, BG_POS_OP_SET_Y, data->bgPosVecs[data->unk_464 ^ 1].y);
+    BgSetPosTextAndCommit(data->bgConfig, data->activeKeyboardBgId, BG_POS_OP_SET_X, data->bgPosVecs[data->activeKeyboardBgId].x);
+    BgSetPosTextAndCommit(data->bgConfig, data->activeKeyboardBgId, BG_POS_OP_SET_Y, data->bgPosVecs[data->activeKeyboardBgId].y);
+    BgSetPosTextAndCommit(data->bgConfig, data->activeKeyboardBgId ^ 1, BG_POS_OP_SET_X, data->bgPosVecs[data->activeKeyboardBgId ^ 1].x);
+    BgSetPosTextAndCommit(data->bgConfig, data->activeKeyboardBgId ^ 1, BG_POS_OP_SET_Y, data->bgPosVecs[data->activeKeyboardBgId ^ 1].y);
     data->entryBufBak[0] = EOS;
     if (args->nameInputString != NULL) {
         CopyStringToU16Array(args->nameInputString, data->entryBufBak, 32);
@@ -947,7 +947,7 @@ static void NamingScreen_InitKeyboardAndEntryCursors(NamingScreenAppData *data, 
     data->kbCursor.prevX         = -1;
     data->kbCursor.prevY         = -1;
     data->kbCursor.showCursor    = TRUE;
-    data->kbCursor.unk18         = FALSE;
+    data->kbCursor.ignoreInput   = FALSE;
     data->unk_484                = -1;
     data->unk_488                = 0;
     data->unk_48C                = 0;
@@ -1022,7 +1022,7 @@ static void NamingScreen_CreateBgConfigAndLoadGfx(NamingScreenAppData *data, NAR
     LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_SUB_0, 0x100, 10, Options_GetFrame(data->options), HEAP_ID_NAMING_SCREEN);
     LoadFontPal1(GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0x180, HEAP_ID_NAMING_SCREEN);
 
-    data->unk_4AC = GfGfxLoader_GetCharDataFromOpenNarc(narc, NARC_namein_namein_00000016_NCGR_lz, TRUE, &data->charData, HEAP_ID_NAMING_SCREEN);
+    data->charDataRaw = GfGfxLoader_GetCharDataFromOpenNarc(narc, NARC_namein_namein_00000016_NCGR_lz, TRUE, &data->charData, HEAP_ID_NAMING_SCREEN);
 }
 
 static void NamingScreen_InitObjCharPlttTransfer(void) {
@@ -1055,9 +1055,9 @@ static void NamingScreen_LoadObjGfx(NamingScreenAppData *data, NARC *narc) {
     data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromOpenNarc(data->gfxResMen[GF_GFX_RES_TYPE_CELL], narc, NARC_namein_namein_00000012_NCER_lz, TRUE, 0, GF_GFX_RES_TYPE_CELL, HEAP_ID_NAMING_SCREEN);
     data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromOpenNarc(data->gfxResMen[GF_GFX_RES_TYPE_ANIM], narc, NARC_namein_namein_00000014_NANR_lz, TRUE, 0, GF_GFX_RES_TYPE_ANIM, HEAP_ID_NAMING_SCREEN);
     if (data->type == NAME_SCREEN_POKEMON) {
-        data->unk_4B4 = GfGfxLoader_GetCharData(NARC_poketool_icongra_poke_icon, GetMonIconNaixEx(data->playerGenderOrMonSpecies, FALSE, data->monForm), FALSE, &data->monIconCharData, HEAP_ID_NAMING_SCREEN);
+        data->monIconCharDaraRaw = GfGfxLoader_GetCharData(NARC_poketool_icongra_poke_icon, GetMonIconNaixEx(data->playerGenderOrMonSpecies, FALSE, data->monForm), FALSE, &data->monIconCharData, HEAP_ID_NAMING_SCREEN);
         DC_FlushRange(data->monIconCharData, 0x200);
-        data->unk_4BC = GfGfxLoader_GetPlttData(NARC_poketool_icongra_poke_icon, sub_02074490(), &data->plttData, HEAP_ID_NAMING_SCREEN);
+        data->plttDataRaw = GfGfxLoader_GetPlttData(NARC_poketool_icongra_poke_icon, sub_02074490(), &data->plttData, HEAP_ID_NAMING_SCREEN);
         DC_FlushRange(data->plttData, 0x80);
     }
 
@@ -1125,7 +1125,6 @@ static void NamingScreen_CreateSprites(NamingScreenAppData *data) {
             taskData->dx                             = sUISpritesParam[i][0] * FX32_ONE;
             taskData->i                              = i;
         }
-        // regswap: data->maxLen should be r2, instead r0
         for (i = 0; i < data->maxLen; ++i) {
             spriteTemplate.position.x = FX32_ONE * (80 + i * 12);
             spriteTemplate.position.y = FX32_ONE * 39;
@@ -1483,7 +1482,7 @@ static void NamingScreen_UpdateCursorSpritePosition(NamingScreenAppData *data, i
         Sprite_SetMatrix(data->uiSprites[8], &vec);
     }
 
-    data->unk_038 = 180;
+    data->plttGlowEffectAngle = 180;
     Sprite_SetAnimCtrlCurrentFrame(data->uiSprites[8], 0);
     data->kbCursor.prevX = data->kbCursor.x;
     data->kbCursor.prevY = data->kbCursor.y;
@@ -1537,7 +1536,7 @@ static void *NamingScreen_PrintStringOnWindow_GetPixelBuffer(Window *window, Str
 }
 
 static void NamingScreen_PrintCharacterOnWindowAndOBJ(Window *windows, const u16 *tmpBuf, void *charBuf, String *string) {
-    u16 spC[21];
+    u16 curCharBuf[21];
     u16 i;
     void *ptr;
     String *string2;
@@ -1554,11 +1553,11 @@ static void NamingScreen_PrintCharacterOnWindowAndOBJ(Window *windows, const u16
 
     string2 = String_New(21, HEAP_ID_NAMING_SCREEN);
     for (i = 0; i < 3; ++i) {
-        spC[0] = tmpBuf[i];
-        spC[1] = EOS;
+        curCharBuf[0] = tmpBuf[i];
+        curCharBuf[1] = EOS;
 
         FillWindowPixelBuffer(&windows[i], 0);
-        CopyU16ArrayToString(string2, spC);
+        CopyU16ArrayToString(string2, curCharBuf);
         ptr = NamingScreen_PrintStringOnWindow_GetPixelBuffer(&windows[i], string2, 2, MAKE_TEXT_COLOR(13, 14, 15));
         DC_FlushRange(ptr, 0x80);
         GXS_LoadOBJ(ptr, sSpriteGfxOffsets[i] * 32, 0x80);
@@ -1726,7 +1725,7 @@ static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppDa
             G2_SetBlendAlpha(0, GX_BLEND_PLANEMASK_BG0 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2, 8, 8);
             Sprite_SetAnimCtrlSeq(data->uiSprites[8], 60);
             if (data->textCursorPos == data->maxLen) {
-                data->kbCursor.unk18 = TRUE;
+                data->kbCursor.ignoreInput = TRUE;
             }
             NamingScreen_PrintLastCharacterOfEntryBuf(&data->windows[4], data->entryBuf, data->textCursorPos, data->tmpBuf, data->charBuf, data->unkJapaneseString);
         }
@@ -1888,7 +1887,7 @@ static void NamingScreen_PlaceCursorSprite(NamingScreenAppData *data) {
         data->kbCursor.x = 12;
         data->kbCursor.y = 0;
         Sprite_SetAnimCtrlSeq(data->uiSprites[8], 39);
-        data->kbCursor.unk18 = FALSE;
+        data->kbCursor.ignoreInput = FALSE;
     } else {
         Sprite_SetAnimCtrlSeq(data->uiSprites[8], 39);
     }
