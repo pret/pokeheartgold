@@ -32,20 +32,18 @@
 #include "unk_020183F0.h"
 #include "vram_transfer_manager.h"
 
-enum {
-    NAME_SCREEN_BUTTON_D001             = 0xD001,
-    NAME_SCREEN_BUTTON_D002             = 0xD002,
-    NAME_SCREEN_BUTTON_D003             = 0xD003,
-    NAME_SCREEN_BUTTON_D004             = 0xD004,
-    NAME_SCREEN_BUTTON_E001             = 0xE001,
-    NAME_SCREEN_BUTTON_PAGE_UPPER       = 0xE002,
-    NAME_SCREEN_BUTTON_PAGE_LOWER       = 0xE003,
-    NAME_SCREEN_BUTTON_PAGE_SYMBOLS     = 0xE004,
-    NAME_SCREEN_BUTTON_PAGE_JP_UNUSED   = 0xE005,
-    NAME_SCREEN_BUTTON_PAGE_JP_UNUSED_2 = 0xE006,
-    NAME_SCREEN_BUTTON_E007             = 0xE007,
-    NAME_SCREEN_BUTTON_E008             = 0xE008,
-};
+#define NAME_SCREEN_CONTROL_DAKU            0xD001 // unused
+#define NAME_SCREEN_CONTROL_HANDAKU         0xD002 // unused
+#define NAME_SCREEN_CONTROL_SPACE           0xD003 // unused
+#define NAME_SCREEN_CONTROL_SKIP            0xD004 // unused but because it's greyed out
+#define NAME_SCREEN_BUTTON_START            0xE001
+#define NAME_SCREEN_BUTTON_PAGE_UPPER       0xE002
+#define NAME_SCREEN_BUTTON_PAGE_LOWER       0xE003
+#define NAME_SCREEN_BUTTON_PAGE_SYMBOLS     0xE004
+#define NAME_SCREEN_BUTTON_PAGE_JP_UNUSED   0xE005
+#define NAME_SCREEN_BUTTON_PAGE_JP_UNUSED_2 0xE006
+#define NAME_SCREEN_BUTTON_BACK             0xE007
+#define NAME_SCREEN_BUTTON_OK               0xE008
 
 typedef struct NamingScreenAppData {
     NameScreenType type;
@@ -186,16 +184,16 @@ static const int _021021E8[][4] = {
     { 0x1A, 0x5B, 0x27, 0x00 },
 };
 
-static const u16 _02101DBE[] = { NAME_SCREEN_BUTTON_PAGE_UPPER, NAME_SCREEN_BUTTON_PAGE_UPPER, NAME_SCREEN_BUTTON_PAGE_LOWER, NAME_SCREEN_BUTTON_PAGE_LOWER, NAME_SCREEN_BUTTON_PAGE_SYMBOLS, NAME_SCREEN_BUTTON_PAGE_SYMBOLS, NAME_SCREEN_BUTTON_D004, NAME_SCREEN_BUTTON_D004, NAME_SCREEN_BUTTON_E007, NAME_SCREEN_BUTTON_E007, NAME_SCREEN_BUTTON_E007, NAME_SCREEN_BUTTON_E008, NAME_SCREEN_BUTTON_E008 };
+static const u16 sKeyboardHomeRow_All[] = { NAME_SCREEN_BUTTON_PAGE_UPPER, NAME_SCREEN_BUTTON_PAGE_UPPER, NAME_SCREEN_BUTTON_PAGE_LOWER, NAME_SCREEN_BUTTON_PAGE_LOWER, NAME_SCREEN_BUTTON_PAGE_SYMBOLS, NAME_SCREEN_BUTTON_PAGE_SYMBOLS, NAME_SCREEN_CONTROL_SKIP, NAME_SCREEN_CONTROL_SKIP, NAME_SCREEN_BUTTON_BACK, NAME_SCREEN_BUTTON_BACK, NAME_SCREEN_BUTTON_BACK, NAME_SCREEN_BUTTON_OK, NAME_SCREEN_BUTTON_OK };
 
-static const u16 _02101DD8[] = { NAME_SCREEN_BUTTON_D004, NAME_SCREEN_BUTTON_D004, NAME_SCREEN_BUTTON_D004, NAME_SCREEN_BUTTON_D004, NAME_SCREEN_BUTTON_D004, NAME_SCREEN_BUTTON_D004, NAME_SCREEN_BUTTON_D004, NAME_SCREEN_BUTTON_D004, NAME_SCREEN_BUTTON_E007, NAME_SCREEN_BUTTON_E007, NAME_SCREEN_BUTTON_E007, NAME_SCREEN_BUTTON_E008, NAME_SCREEN_BUTTON_E008 };
+static const u16 sKeyboardHomeRow_Numpad[] = { NAME_SCREEN_CONTROL_SKIP, NAME_SCREEN_CONTROL_SKIP, NAME_SCREEN_CONTROL_SKIP, NAME_SCREEN_CONTROL_SKIP, NAME_SCREEN_CONTROL_SKIP, NAME_SCREEN_CONTROL_SKIP, NAME_SCREEN_CONTROL_SKIP, NAME_SCREEN_CONTROL_SKIP, NAME_SCREEN_BUTTON_BACK, NAME_SCREEN_BUTTON_BACK, NAME_SCREEN_BUTTON_BACK, NAME_SCREEN_BUTTON_OK, NAME_SCREEN_BUTTON_OK };
 
 static const u16 *sKeyboardHomeRowLayoutPtrs[] = {
-    _02101DBE,
-    _02101DBE,
-    _02101DBE,
-    _02101DBE,
-    _02101DD8,
+    sKeyboardHomeRow_All,
+    sKeyboardHomeRow_All,
+    sKeyboardHomeRow_All,
+    sKeyboardHomeRow_All,
+    sKeyboardHomeRow_Numpad,
 };
 
 static const u16 _02101D80[] = {
@@ -249,141 +247,142 @@ static const u16 sKeyboardRow_Symbols_4[] = { CHAR_CIRCLE_DOT, CHAR_CIRCLE, CHAR
 
 static const u16 sKeyboardRow_Symbols_5[] = { CHAR_SUN, CHAR_TREBLE_CLEF, CHAR_UMBRELLA, CHAR_SNOWMAN, CHAR_SMILEY, CHAR_LAUGHING, CHAR_ANGUISH, CHAR_ANGRY, CHAR_SNORING, CHAR_UP_ARROW, CHAR_DOWN_ARROW, CHAR_SPACE, CHAR_SPACE, EOS };
 
-static const u16 sKeyboardRow_FullWidthEN_1[] = { 0x00A2, 0x00A3, 0x00A4, 0x00A5, 0x00A6, 0x00A7, 0x00A8, 0x00A9, 0x00AA, 0x00AB, CHAR_JP_SPACE, 0x00E1, 0x00E2, EOS };
+static const u16 sKeyboardRow_JPMisc_1[] = { CHAR_JP_0, CHAR_JP_1, CHAR_JP_2, CHAR_JP_3, CHAR_JP_4, CHAR_JP_5, CHAR_JP_6, CHAR_JP_7, CHAR_JP_8, CHAR_JP_9, CHAR_JP_SPACE, CHAR_JP_EXCLAM_MARK, CHAR_JP_QUESTION_MARK, EOS };
 
-static const u16 sKeyboardRow_FullWidthEN_2[] = { 0x00E3, 0x00E4, 0x00F9, 0x00F8, 0x00E5, 0x00E6, 0x00F5, 0x00F6, 0x00F7, 0x00E7, CHAR_JP_SPACE, 0x00EE, 0x00EF, EOS };
+static const u16 sKeyboardRow_JPMisc_2[] = { CHAR_JP_COMMA, CHAR_JP_FULLSTOP, CHAR_JP_HW_COMMA, CHAR_JP_HW_PERIOD, CHAR_JP_ELLIPSIS, CHAR_JP_CENTER_DOT, CHAR_JP_TILDE, CHAR_JP_HW_COLON, CHAR_JP_HW_SEMICOLON, CHAR_JP_SLASH, CHAR_JP_SPACE, CHAR_JP_OTOKO, CHAR_JP_ONNA, EOS };
 
-static const u16 sKeyboardRow_FullWidthEN_3[] = { 0x00E8, 0x00E9, 0x00EA, 0x00EB, 0x00EC, 0x00ED, 0x00F0, 0x00F1, 0x00F2, 0x00F3, 0x00F4, 0x0106, 0x0104, EOS };
+static const u16 sKeyboardRow_JPMisc_3[] = { CHAR_JP_OPEN_QUOT, CHAR_JP_CLOSE_QUOT, CHAR_JP_OPEN_DQUOT, CHAR_JP_CLOSE_DQUOT, CHAR_JP_OPEN_PAREN, CHAR_JP_CLOSE_PAREN, CHAR_JP_PLUS, CHAR_JP_HYPHEN, CHAR_JP_MULT, CHAR_JP_DIV, CHAR_JP_EQUAL, CHAR_JP_PERCENT, CHAR_JP_AT, EOS };
 
-static const u16 sKeyboardRow_FullWidthEN_4[] = { 0x00FF, 0x0100, 0x0101, 0x0102, 0x0103, 0x00FC, 0x00FA, 0x00FD, 0x00FB, 0x00FE, 0x0105, CHAR_JP_SPACE, CHAR_JP_SPACE, EOS };
+static const u16 sKeyboardRow_JPMisc_4[] = { CHAR_JP_CIRCLE_DOT, CHAR_JP_CIRCLE, CHAR_JP_SQUARE, CHAR_JP_TRIANGLE, CHAR_JP_DIAMOND, CHAR_JP_HEART_SUIT, CHAR_JP_SPADE_SUIT, CHAR_JP_DIAMOND_SUIT, CHAR_JP_CLUB_SUIT, CHAR_JP_STAR, CHAR_JP_MUSIC_NOTE, CHAR_JP_SPACE, CHAR_JP_SPACE, EOS };
 
-static const u16 sKeyboardRow_FullWidthEN_5[] = { 0x0107, 0x0108, 0x0109, 0x010A, 0x010B, 0x010C, 0x010D, 0x010E, 0x0111, 0x010F, 0x0110, CHAR_JP_SPACE, CHAR_JP_SPACE, EOS };
+static const u16 sKeyboardRow_JPMisc_5[] = { CHAR_JP_SUN, CHAR_JP_TREBLE_CLEF, CHAR_JP_UMBRELLA, CHAR_JP_SNOWMAN, CHAR_JP_SMILEY, CHAR_JP_LAUGHING, CHAR_JP_ANGUISH, CHAR_JP_ANGRY, CHAR_JP_SNORING, CHAR_JP_UP_ARROW, CHAR_JP_DOWN_ARROW, CHAR_JP_SPACE, CHAR_JP_SPACE, EOS };
 
-static const u16 sKeyboardRow_Numpad_1[] = { 0x0121, 0x0122, 0x0123, 0x0124, 0x0125, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, EOS };
+static const u16 sKeyboardRow_Numpad_1[] = { CHAR_0, CHAR_1, CHAR_2, CHAR_3, CHAR_4, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, EOS };
 
-static const u16 sKeyboardRow_Numpad_2[] = { 0x0126, 0x0127, 0x0128, 0x0129, 0x012A, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, EOS };
+static const u16 sKeyboardRow_Numpad_2[] = { CHAR_5, CHAR_6, CHAR_7, CHAR_8, CHAR_9, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, EOS };
 
 static const u16 sKeyboardRow_Numpad_345[] = { CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, EOS };
 
 static const u16 *sKeyboardLayoutPtrs[][5] = {
-    { sKeyboardRow_Upper_1,       sKeyboardRow_Upper_2,       sKeyboardRow_Upper_3,       sKeyboardRow_Upper_4,       sKeyboardRow_Upper_5       },
-    { sKeyboardRow_Lower_1,       sKeyboardRow_Lower_2,       sKeyboardRow_Lower_3,       sKeyboardRow_Lower_4,       sKeyboardRow_Lower_5       },
-    { sKeyboardRow_Symbols_1,     sKeyboardRow_Symbols_2,     sKeyboardRow_Symbols_3,     sKeyboardRow_Symbols_4,     sKeyboardRow_Symbols_5     },
-    { sKeyboardRow_FullWidthEN_1, sKeyboardRow_FullWidthEN_2, sKeyboardRow_FullWidthEN_3, sKeyboardRow_FullWidthEN_4, sKeyboardRow_FullWidthEN_5 },
-    { sKeyboardRow_Numpad_1,      sKeyboardRow_Numpad_2,      sKeyboardRow_Numpad_345,    sKeyboardRow_Numpad_345,    sKeyboardRow_Numpad_345    },
+    { sKeyboardRow_Upper_1,   sKeyboardRow_Upper_2,   sKeyboardRow_Upper_3,    sKeyboardRow_Upper_4,    sKeyboardRow_Upper_5    },
+    { sKeyboardRow_Lower_1,   sKeyboardRow_Lower_2,   sKeyboardRow_Lower_3,    sKeyboardRow_Lower_4,    sKeyboardRow_Lower_5    },
+    { sKeyboardRow_Symbols_1, sKeyboardRow_Symbols_2, sKeyboardRow_Symbols_3,  sKeyboardRow_Symbols_4,  sKeyboardRow_Symbols_5  },
+    { sKeyboardRow_JPMisc_1,  sKeyboardRow_JPMisc_2,  sKeyboardRow_JPMisc_3,   sKeyboardRow_JPMisc_4,   sKeyboardRow_JPMisc_5   },
+    { sKeyboardRow_Numpad_1,  sKeyboardRow_Numpad_2,  sKeyboardRow_Numpad_345, sKeyboardRow_Numpad_345, sKeyboardRow_Numpad_345 },
 };
 
+// These arrays are used to convert Japanese characters in response to pressing select.
 static const u16 _02102422[][3] = {
-    { 0x0003, CHAR_JP_SPACE, 0x0002        },
-    { 0x0005, CHAR_JP_SPACE, 0x0004        },
-    { 0x0007, CHAR_JP_SPACE, 0x0006        },
-    { 0x0009, CHAR_JP_SPACE, 0x0008        },
-    { 0x000B, CHAR_JP_SPACE, 0x000A        },
-    { 0x0053, CHAR_JP_SPACE, 0x0052        },
-    { 0x0055, CHAR_JP_SPACE, 0x0054        },
-    { 0x0057, CHAR_JP_SPACE, 0x0056        },
-    { 0x0059, CHAR_JP_SPACE, 0x0058        },
-    { 0x005B, CHAR_JP_SPACE, 0x005A        },
-    { 0x0045, CHAR_JP_SPACE, 0x0044        },
-    { 0x0047, CHAR_JP_SPACE, 0x0046        },
-    { 0x0049, CHAR_JP_SPACE, 0x0048        },
-    { 0x0095, CHAR_JP_SPACE, 0x0094        },
-    { 0x0097, CHAR_JP_SPACE, 0x0096        },
-    { 0x0099, CHAR_JP_SPACE, 0x0098        },
-    { 0x00AC, CHAR_JP_SPACE, 0x00C6        },
-    { 0x00AD, CHAR_JP_SPACE, 0x00C7        },
-    { 0x00AE, CHAR_JP_SPACE, 0x00C8        },
-    { 0x00AF, CHAR_JP_SPACE, 0x00C9        },
-    { 0x00B0, CHAR_JP_SPACE, 0x00CA        },
-    { 0x00B1, CHAR_JP_SPACE, 0x00CB        },
-    { 0x00B2, CHAR_JP_SPACE, 0x00CC        },
-    { 0x00B3, CHAR_JP_SPACE, 0x00CD        },
-    { 0x00B4, CHAR_JP_SPACE, 0x00CE        },
-    { 0x00B5, CHAR_JP_SPACE, 0x00CF        },
-    { 0x00B6, CHAR_JP_SPACE, 0x00D0        },
-    { 0x00B7, CHAR_JP_SPACE, 0x00D1        },
-    { 0x00B8, CHAR_JP_SPACE, 0x00D2        },
-    { 0x00B9, CHAR_JP_SPACE, 0x00D3        },
-    { 0x00BA, CHAR_JP_SPACE, 0x00D4        },
-    { 0x00BB, CHAR_JP_SPACE, 0x00D5        },
-    { 0x00BC, CHAR_JP_SPACE, 0x00D6        },
-    { 0x00BD, CHAR_JP_SPACE, 0x00D7        },
-    { 0x00BE, CHAR_JP_SPACE, 0x00D8        },
-    { 0x00BF, CHAR_JP_SPACE, 0x00D9        },
-    { 0x00C0, CHAR_JP_SPACE, 0x00DA        },
-    { 0x00C1, CHAR_JP_SPACE, 0x00DB        },
-    { 0x00C2, CHAR_JP_SPACE, 0x00DC        },
-    { 0x00C3, CHAR_JP_SPACE, 0x00DD        },
-    { 0x00C4, CHAR_JP_SPACE, 0x00DE        },
-    { 0x00C5, CHAR_JP_SPACE, 0x00DF        },
-    { 0x0025, 0x0026,        0x0024        },
-    { 0x0075, 0x0076,        0x0074        },
-    { 0x000C, 0x000D,        CHAR_JP_SPACE },
-    { 0x000E, 0x000F,        CHAR_JP_SPACE },
-    { 0x0010, 0x0011,        CHAR_JP_SPACE },
-    { 0x0012, 0x0013,        CHAR_JP_SPACE },
-    { 0x0014, 0x0015,        CHAR_JP_SPACE },
-    { 0x0016, 0x0017,        CHAR_JP_SPACE },
-    { 0x0018, 0x0019,        CHAR_JP_SPACE },
-    { 0x001A, 0x001B,        CHAR_JP_SPACE },
-    { 0x001C, 0x001D,        CHAR_JP_SPACE },
-    { 0x001E, 0x001F,        CHAR_JP_SPACE },
-    { 0x0020, 0x0021,        CHAR_JP_SPACE },
-    { 0x0022, 0x0023,        CHAR_JP_SPACE },
-    { 0x0027, 0x0028,        CHAR_JP_SPACE },
-    { 0x0029, 0x002A,        CHAR_JP_SPACE },
-    { 0x005C, 0x005D,        CHAR_JP_SPACE },
-    { 0x005E, 0x005F,        CHAR_JP_SPACE },
-    { 0x0060, 0x0061,        CHAR_JP_SPACE },
-    { 0x0062, 0x0063,        CHAR_JP_SPACE },
-    { 0x0064, 0x0065,        CHAR_JP_SPACE },
-    { 0x0066, 0x0067,        CHAR_JP_SPACE },
-    { 0x0068, 0x0069,        CHAR_JP_SPACE },
-    { 0x006A, 0x006B,        CHAR_JP_SPACE },
-    { 0x006C, 0x006D,        CHAR_JP_SPACE },
-    { 0x006E, 0x006F,        CHAR_JP_SPACE },
-    { 0x0070, 0x0071,        CHAR_JP_SPACE },
-    { 0x0072, 0x0073,        CHAR_JP_SPACE },
-    { 0x0077, 0x0078,        CHAR_JP_SPACE },
-    { 0x0079, 0x007A,        CHAR_JP_SPACE },
-    { 0x0030, 0x0031,        0x0032        },
-    { 0x0033, 0x0034,        0x0035        },
-    { 0x0036, 0x0037,        0x0038        },
-    { 0x0039, 0x003A,        0x003B        },
-    { 0x003C, 0x003D,        0x003E        },
-    { 0x0080, 0x0081,        0x0082        },
-    { 0x0083, 0x0084,        0x0085        },
-    { 0x0086, 0x0087,        0x0088        },
-    { 0x0089, 0x008A,        0x008B        },
-    { 0x008C, 0x008D,        0x008E        },
+    { CHAR_JP_HIRA_A,  CHAR_JP_SPACE,   CHAR_JP_HIRA_A_SMALL  },
+    { CHAR_JP_HIRA_I,  CHAR_JP_SPACE,   CHAR_JP_HIRA_I_SMALL  },
+    { CHAR_JP_HIRA_U,  CHAR_JP_SPACE,   CHAR_JP_HIRA_U_SMALL  },
+    { CHAR_JP_HIRA_E,  CHAR_JP_SPACE,   CHAR_JP_HIRA_E_SMALL  },
+    { CHAR_JP_HIRA_O,  CHAR_JP_SPACE,   CHAR_JP_HIRA_O_SMALL  },
+    { CHAR_JP_KATA_A,  CHAR_JP_SPACE,   CHAR_JP_KATA_A_SMALL  },
+    { CHAR_JP_KATA_I,  CHAR_JP_SPACE,   CHAR_JP_KATA_I_SMALL  },
+    { CHAR_JP_KATA_U,  CHAR_JP_SPACE,   CHAR_JP_KATA_U_SMALL  },
+    { CHAR_JP_KATA_E,  CHAR_JP_SPACE,   CHAR_JP_KATA_E_SMALL  },
+    { CHAR_JP_KATA_O,  CHAR_JP_SPACE,   CHAR_JP_KATA_O_SMALL  },
+    { CHAR_JP_HIRA_YA, CHAR_JP_SPACE,   CHAR_JP_HIRA_YA_SMALL },
+    { CHAR_JP_HIRA_YU, CHAR_JP_SPACE,   CHAR_JP_HIRA_YU_SMALL },
+    { CHAR_JP_HIRA_YO, CHAR_JP_SPACE,   CHAR_JP_HIRA_YO_SMALL },
+    { CHAR_JP_KATA_YA, CHAR_JP_SPACE,   CHAR_JP_KATA_YA_SMALL },
+    { CHAR_JP_KATA_YU, CHAR_JP_SPACE,   CHAR_JP_KATA_YU_SMALL },
+    { CHAR_JP_KATA_YO, CHAR_JP_SPACE,   CHAR_JP_KATA_YO_SMALL },
+    { CHAR_JP_A,       CHAR_JP_SPACE,   CHAR_JP_a             },
+    { CHAR_JP_B,       CHAR_JP_SPACE,   CHAR_JP_b             },
+    { CHAR_JP_C,       CHAR_JP_SPACE,   CHAR_JP_c             },
+    { CHAR_JP_D,       CHAR_JP_SPACE,   CHAR_JP_d             },
+    { CHAR_JP_E,       CHAR_JP_SPACE,   CHAR_JP_e             },
+    { CHAR_JP_F,       CHAR_JP_SPACE,   CHAR_JP_f             },
+    { CHAR_JP_G,       CHAR_JP_SPACE,   CHAR_JP_g             },
+    { CHAR_JP_H,       CHAR_JP_SPACE,   CHAR_JP_h             },
+    { CHAR_JP_I,       CHAR_JP_SPACE,   CHAR_JP_i             },
+    { CHAR_JP_J,       CHAR_JP_SPACE,   CHAR_JP_j             },
+    { CHAR_JP_K,       CHAR_JP_SPACE,   CHAR_JP_k             },
+    { CHAR_JP_L,       CHAR_JP_SPACE,   CHAR_JP_l             },
+    { CHAR_JP_M,       CHAR_JP_SPACE,   CHAR_JP_m             },
+    { CHAR_JP_N,       CHAR_JP_SPACE,   CHAR_JP_n             },
+    { CHAR_JP_O,       CHAR_JP_SPACE,   CHAR_JP_o             },
+    { CHAR_JP_P,       CHAR_JP_SPACE,   CHAR_JP_p             },
+    { CHAR_JP_Q,       CHAR_JP_SPACE,   CHAR_JP_q             },
+    { CHAR_JP_R,       CHAR_JP_SPACE,   CHAR_JP_r             },
+    { CHAR_JP_S,       CHAR_JP_SPACE,   CHAR_JP_s             },
+    { CHAR_JP_T,       CHAR_JP_SPACE,   CHAR_JP_t             },
+    { CHAR_JP_U,       CHAR_JP_SPACE,   CHAR_JP_u             },
+    { CHAR_JP_V,       CHAR_JP_SPACE,   CHAR_JP_v             },
+    { CHAR_JP_W,       CHAR_JP_SPACE,   CHAR_JP_w             },
+    { CHAR_JP_X,       CHAR_JP_SPACE,   CHAR_JP_x             },
+    { CHAR_JP_Y,       CHAR_JP_SPACE,   CHAR_JP_y             },
+    { CHAR_JP_Z,       CHAR_JP_SPACE,   CHAR_JP_z             },
+    { CHAR_JP_HIRA_TU, CHAR_JP_HIRA_DU, CHAR_JP_HIRA_TU_SMALL },
+    { CHAR_JP_KATA_TU, CHAR_JP_KATA_DU, CHAR_JP_KATA_TU_SMALL },
+    { CHAR_JP_HIRA_KA, CHAR_JP_HIRA_GA, CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_KI, CHAR_JP_HIRA_GI, CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_KU, CHAR_JP_HIRA_GU, CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_KE, CHAR_JP_HIRA_GE, CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_KO, CHAR_JP_HIRA_GO, CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_SA, CHAR_JP_HIRA_ZA, CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_SI, CHAR_JP_HIRA_ZI, CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_SU, CHAR_JP_HIRA_ZU, CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_SE, CHAR_JP_HIRA_ZE, CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_SO, CHAR_JP_HIRA_ZO, CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_TA, CHAR_JP_HIRA_DA, CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_TI, CHAR_JP_HIRA_DI, CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_TE, CHAR_JP_HIRA_DE, CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_TO, CHAR_JP_HIRA_DO, CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_KA, CHAR_JP_KATA_GA, CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_KI, CHAR_JP_KATA_GI, CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_KU, CHAR_JP_KATA_GU, CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_KE, CHAR_JP_KATA_GE, CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_KO, CHAR_JP_KATA_GO, CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_SA, CHAR_JP_KATA_ZA, CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_SI, CHAR_JP_KATA_ZI, CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_SU, CHAR_JP_KATA_ZU, CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_SE, CHAR_JP_KATA_ZE, CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_SO, CHAR_JP_KATA_ZO, CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_TA, CHAR_JP_KATA_DA, CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_TI, CHAR_JP_KATA_DI, CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_TE, CHAR_JP_KATA_DE, CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_TO, CHAR_JP_KATA_DO, CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_HA, CHAR_JP_HIRA_BA, CHAR_JP_HIRA_PA       },
+    { CHAR_JP_HIRA_HI, CHAR_JP_HIRA_BI, CHAR_JP_HIRA_PI       },
+    { CHAR_JP_HIRA_HU, CHAR_JP_HIRA_BU, CHAR_JP_HIRA_PU       },
+    { CHAR_JP_HIRA_HE, CHAR_JP_HIRA_BE, CHAR_JP_HIRA_PE       },
+    { CHAR_JP_HIRA_HO, CHAR_JP_HIRA_BO, CHAR_JP_HIRA_PO       },
+    { CHAR_JP_KATA_HA, CHAR_JP_KATA_BA, CHAR_JP_KATA_PA       },
+    { CHAR_JP_KATA_HI, CHAR_JP_KATA_BI, CHAR_JP_KATA_PI       },
+    { CHAR_JP_KATA_HU, CHAR_JP_KATA_BU, CHAR_JP_KATA_PU       },
+    { CHAR_JP_KATA_HE, CHAR_JP_KATA_BE, CHAR_JP_KATA_PE       },
+    { CHAR_JP_KATA_HO, CHAR_JP_KATA_BO, CHAR_JP_KATA_PO       },
 };
 
 static const u16 _021021B8[][2] = {
-    { 0x0024, 0x0026 },
-    { 0x0074, 0x0076 },
-    { 0x0032, 0x0031 },
-    { 0x0035, 0x0034 },
-    { 0x0038, 0x0037 },
-    { 0x003B, 0x003A },
-    { 0x003E, 0x003D },
-    { 0x0082, 0x0081 },
-    { 0x0085, 0x0084 },
-    { 0x0088, 0x0087 },
-    { 0x008B, 0x008A },
-    { 0x008E, 0x008D },
+    { CHAR_JP_HIRA_TU_SMALL, CHAR_JP_HIRA_DU },
+    { CHAR_JP_KATA_TU_SMALL, CHAR_JP_KATA_DU },
+    { CHAR_JP_HIRA_PA,       CHAR_JP_HIRA_BA },
+    { CHAR_JP_HIRA_PI,       CHAR_JP_HIRA_BI },
+    { CHAR_JP_HIRA_PU,       CHAR_JP_HIRA_BU },
+    { CHAR_JP_HIRA_PE,       CHAR_JP_HIRA_BE },
+    { CHAR_JP_HIRA_PO,       CHAR_JP_HIRA_BO },
+    { CHAR_JP_KATA_PA,       CHAR_JP_KATA_BA },
+    { CHAR_JP_KATA_PI,       CHAR_JP_KATA_BI },
+    { CHAR_JP_KATA_PU,       CHAR_JP_KATA_BU },
+    { CHAR_JP_KATA_PE,       CHAR_JP_KATA_BE },
+    { CHAR_JP_KATA_PO,       CHAR_JP_KATA_BO },
 };
 
 static const u16 _02102190[][2] = {
-    { 0x0031, 0x0032 },
-    { 0x0034, 0x0035 },
-    { 0x0037, 0x0038 },
-    { 0x003A, 0x003B },
-    { 0x003D, 0x003E },
-    { 0x0081, 0x0082 },
-    { 0x0084, 0x0085 },
-    { 0x0087, 0x0088 },
-    { 0x008A, 0x008B },
-    { 0x008D, 0x008E },
+    { CHAR_JP_HIRA_BA, CHAR_JP_HIRA_PA },
+    { CHAR_JP_HIRA_BI, CHAR_JP_HIRA_PI },
+    { CHAR_JP_HIRA_BU, CHAR_JP_HIRA_PU },
+    { CHAR_JP_HIRA_BE, CHAR_JP_HIRA_PE },
+    { CHAR_JP_HIRA_BO, CHAR_JP_HIRA_PO },
+    { CHAR_JP_KATA_BA, CHAR_JP_KATA_PA },
+    { CHAR_JP_KATA_BI, CHAR_JP_KATA_PI },
+    { CHAR_JP_KATA_BU, CHAR_JP_KATA_PU },
+    { CHAR_JP_KATA_BE, CHAR_JP_KATA_PE },
+    { CHAR_JP_KATA_BO, CHAR_JP_KATA_PO },
 };
 
 static const int _02101D54[] = {
@@ -399,17 +398,20 @@ static const u8 _02101D40[] = {
     0x0A,
 };
 
-const u16 _02101D90[] = { 0x0003, 0x002B, 0x0020, 0x002F, CHAR_JP_SPACE, 0x002B, 0x003F, 0x0009, 0x0030, 0x00E2, EOS };
+// These were intended for the Japanese build, but their purpose was replaced with GMM.
+// The arrays still appear in the final English ROM.
+const u16 sPrompt_YourName[] = { CHAR_JP_HIRA_A, CHAR_JP_HIRA_NA, CHAR_JP_HIRA_TA, CHAR_JP_HIRA_NO, CHAR_JP_SPACE, CHAR_JP_HIRA_NA, CHAR_JP_HIRA_MA, CHAR_JP_HIRA_E, CHAR_JP_HIRA_HA, CHAR_JP_QUESTION_MARK, EOS };
 
-// ポケモンの ニックネ－ムは？
-const u16 _02102094[] = { 0x008E, 0x0062, 0x0093, 0x00A1, 0x002F, CHAR_JP_SPACE, 0x007C, 0x0074, 0x0060, 0x007E, 0x00F1, 0x0091, 0x0030, 0x00E2, EOS };
+const u16 sPrompt_PokemonsNickname[] = { CHAR_JP_KATA_PO, CHAR_JP_KATA_KE, CHAR_JP_KATA_MO, CHAR_JP_KATA_N_, CHAR_JP_HIRA_NO, CHAR_JP_SPACE, CHAR_JP_KATA_NI, CHAR_JP_KATA_TU_SMALL, CHAR_JP_KATA_KU, CHAR_JP_KATA_NE, CHAR_JP_HYPHEN, CHAR_JP_KATA_MU, CHAR_JP_HIRA_HA, CHAR_JP_QUESTION_MARK, EOS };
 
-const u16 _02101DA6[] = { 0x008D, 0x0074, 0x0060, 0x006A, 0x002F, CHAR_JP_SPACE, 0x002B, 0x003F, 0x0009, 0x0030, 0x00E2, EOS };
+const u16 sPrompt_BoxName[] = { CHAR_JP_KATA_BO, CHAR_JP_KATA_TU_SMALL, CHAR_JP_KATA_KU, CHAR_JP_KATA_SU, CHAR_JP_HIRA_NO, CHAR_JP_SPACE, CHAR_JP_HIRA_NA, CHAR_JP_HIRA_MA, CHAR_JP_HIRA_E, CHAR_JP_HIRA_HA, CHAR_JP_QUESTION_MARK, EOS };
 
+// Required to force the above three arrays to appear in the final ROM.
+// This pointer array does not appear in the final ROM.
 static const u16 *sDeadstrippedPointersTable[] = {
-    _02101D90,
-    _02102094,
-    _02101DA6,
+    sPrompt_YourName,
+    sPrompt_PokemonsNickname,
+    sPrompt_BoxName,
 };
 
 static const int _021020B4[] = {
@@ -593,7 +595,7 @@ static int sub_02082CF8(NamingScreenAppData *data, int a1) {
     } else if (data->isTouchInput == TRUE) {
         ret = sub_02084884(data, data->keyboard[data->cursorY][data->cursorX], FALSE);
     } else if (gSystem.newKeys & PAD_BUTTON_B) {
-        ret = sub_02084884(data, NAME_SCREEN_BUTTON_E007, TRUE);
+        ret = sub_02084884(data, NAME_SCREEN_BUTTON_BACK, TRUE);
     } else if (gSystem.newKeys & PAD_BUTTON_R) {
         ret = sub_02084884(data, NAME_SCREEN_BUTTON_PAGE_JP_UNUSED_2, TRUE);
     }
@@ -1352,8 +1354,8 @@ static void sub_02084274(NamingScreenAppData *data, int dpadMovement) {
     u16 sp0  = data->keyboard[data->cursorY][data->cursorX];
     int newX = sub_02084264(data->cursorX + _02102168[dpadMovement][0], 0, 13);
     int newY = sub_02084264(data->cursorY + _02102168[dpadMovement][1], 0, 6);
-    while (data->keyboard[newY][newX] == NAME_SCREEN_BUTTON_D004 || (data->keyboard[newY][newX] == sp0 && data->keyboard[newY][newX] > NAME_SCREEN_BUTTON_E001)) {
-        if (data->unk_028 == 0 && data->keyboard[newY][newX] == NAME_SCREEN_BUTTON_D004 && _02102168[dpadMovement][1] != 0) {
+    while (data->keyboard[newY][newX] == NAME_SCREEN_CONTROL_SKIP || (data->keyboard[newY][newX] == sp0 && data->keyboard[newY][newX] > NAME_SCREEN_BUTTON_START)) {
+        if (data->unk_028 == 0 && data->keyboard[newY][newX] == NAME_SCREEN_CONTROL_SKIP && _02102168[dpadMovement][1] != 0) {
             newX = sub_02084264(newX + data->unk_02C, 0, 13);
         } else {
             newX = sub_02084264(newX + _02102168[dpadMovement][0], 0, 13);
@@ -1469,10 +1471,10 @@ static void sub_02084540(Window *window, const u16 *rawChars, int x, int y, int 
     u16 sp38[2];
     String *string = String_New(2, HEAP_ID_NAMING_SCREEN);
     while (rawChars[i] != EOS) {
-        if (rawChars[i] == NAME_SCREEN_BUTTON_D001 || rawChars[i] == NAME_SCREEN_BUTTON_D002 || rawChars[i] == NAME_SCREEN_BUTTON_D003) {
-            u16 buttonId = rawChars[i] - NAME_SCREEN_BUTTON_D001;
+        if (rawChars[i] == NAME_SCREEN_CONTROL_DAKU || rawChars[i] == NAME_SCREEN_CONTROL_HANDAKU || rawChars[i] == NAME_SCREEN_CONTROL_SPACE) {
+            u16 buttonId = rawChars[i] - NAME_SCREEN_CONTROL_DAKU;
             BlitBitmapRectToWindow(window, buttonPixels + (buttonId * 256) / 2, 0, 0, 12, 12, x + i * spacing, y + 2, 12, 12);
-        } else if (rawChars[i] == NAME_SCREEN_BUTTON_D004) {
+        } else if (rawChars[i] == NAME_SCREEN_CONTROL_SKIP) {
             ++i;
             continue;
         } else {
@@ -1532,23 +1534,23 @@ static void NamingScreen_PrintLastCharacterOfEntryBuf(Window *window, u16 *entry
     u16 character;
 
     if (cursorPos == 0) {
-        character = NAME_SCREEN_BUTTON_D003;
+        character = NAME_SCREEN_CONTROL_SPACE;
     } else {
         character = entryBuf[cursorPos - 1];
     }
 
     switch (character) {
-    case NAME_SCREEN_BUTTON_D001:
-    case NAME_SCREEN_BUTTON_D002:
-    case NAME_SCREEN_BUTTON_D003:
-    case NAME_SCREEN_BUTTON_D004:
+    case NAME_SCREEN_CONTROL_DAKU:
+    case NAME_SCREEN_CONTROL_HANDAKU:
+    case NAME_SCREEN_CONTROL_SPACE:
+    case NAME_SCREEN_CONTROL_SKIP:
     case NAME_SCREEN_BUTTON_PAGE_UPPER:
     case NAME_SCREEN_BUTTON_PAGE_LOWER:
     case NAME_SCREEN_BUTTON_PAGE_SYMBOLS:
     case NAME_SCREEN_BUTTON_PAGE_JP_UNUSED:
     case NAME_SCREEN_BUTTON_PAGE_JP_UNUSED_2:
-    case NAME_SCREEN_BUTTON_E007:
-    case NAME_SCREEN_BUTTON_E008:
+    case NAME_SCREEN_BUTTON_BACK:
+    case NAME_SCREEN_BUTTON_OK:
         character = 1;
         break;
     }
@@ -1593,7 +1595,7 @@ static void NamingScreen_LoadKeyboardLayout(u16 (*keyboard)[13], const int pageN
 }
 
 static int sub_02084884(NamingScreenAppData *data, u16 key, BOOL isButtonInput) {
-    if (key == NAME_SCREEN_BUTTON_D003 || key == NAME_SCREEN_BUTTON_D004) {
+    if (key == NAME_SCREEN_CONTROL_SPACE || key == NAME_SCREEN_CONTROL_SKIP) {
         key = CHAR_JP_SPACE;
     }
     if (data->type == NAME_SCREEN_UNK4) {
@@ -1607,15 +1609,15 @@ static int sub_02084884(NamingScreenAppData *data, u16 key, BOOL isButtonInput) 
     }
 
     switch (key) {
-    case NAME_SCREEN_BUTTON_D001:
-        if (sub_02084D04(0x2A, 0x52, 1, NAME_SCREEN_BUTTON_D001, data->entryBuf, data->textCursorPos)) {
+    case NAME_SCREEN_CONTROL_DAKU:
+        if (sub_02084D04(0x2A, 0x52, 1, NAME_SCREEN_CONTROL_DAKU, data->entryBuf, data->textCursorPos)) {
             FillWindowPixelBuffer(&data->windows[3], 1);
             sub_02084540(&data->windows[3], data->entryBuf, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
             PlaySE(SEQ_SE_DP_BOX02);
         }
         break;
-    case NAME_SCREEN_BUTTON_D002:
-        if (sub_02084D04(0x48, 0x52, 2, NAME_SCREEN_BUTTON_D002, data->entryBuf, data->textCursorPos)) {
+    case NAME_SCREEN_CONTROL_HANDAKU:
+        if (sub_02084D04(0x48, 0x52, 2, NAME_SCREEN_CONTROL_HANDAKU, data->entryBuf, data->textCursorPos)) {
             FillWindowPixelBuffer(&data->windows[3], 1);
             sub_02084540(&data->windows[3], data->entryBuf, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
             PlaySE(SEQ_SE_DP_BOX02);
@@ -1641,7 +1643,7 @@ static int sub_02084884(NamingScreenAppData *data, u16 key, BOOL isButtonInput) 
             PlaySE(SEQ_SE_DP_SYU03);
         }
         break;
-    case NAME_SCREEN_BUTTON_E007:
+    case NAME_SCREEN_BUTTON_BACK:
         if (data->textCursorPos != 0) {
             data->entryBuf[data->textCursorPos - 1] = EOS;
             --data->textCursorPos;
@@ -1657,7 +1659,7 @@ static int sub_02084884(NamingScreenAppData *data, u16 key, BOOL isButtonInput) 
             PlaySE(SEQ_SE_DP_SELECT);
         }
         break;
-    case NAME_SCREEN_BUTTON_E008:
+    case NAME_SCREEN_BUTTON_OK:
         sub_020164C4(data->unk_5C4);
         if (data->unk_014 == 0) {
             PlaySE(SEQ_SE_DP_PIRORIRO);
@@ -1755,7 +1757,7 @@ static BOOL sub_02084D04(int a0, int a1, int a2, int a3, u16 *a4, int a5) {
         }
     }
     switch (a3) {
-    case NAME_SCREEN_BUTTON_D001:
+    case NAME_SCREEN_CONTROL_DAKU:
         for (i = 0; i < 12u; ++i) {
             if (key == _021021B8[i][0]) {
                 a4[a5 - 1] = _021021B8[i][1];
@@ -1763,7 +1765,7 @@ static BOOL sub_02084D04(int a0, int a1, int a2, int a3, u16 *a4, int a5) {
             }
         }
         break;
-    case NAME_SCREEN_BUTTON_D002:
+    case NAME_SCREEN_CONTROL_HANDAKU:
         for (i = 0; i < 10u; ++i) {
             if (key == _02102190[i][0]) {
                 a4[a5 - 1] = _02102190[i][1];
