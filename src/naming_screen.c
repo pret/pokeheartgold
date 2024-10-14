@@ -83,7 +83,7 @@ typedef struct NamingScreenAppData {
     u16 entryBuf[0x20];
     u16 entryBufBak[0x20];
     u16 textCursorPos;
-    u16 unk_15A[3];
+    u16 tmpBuf[3];
     BgConfig *bgConfig;       // 0x160
     BOOL unk_164;             // unused
     MessageFormat *msgFormat; // 0x168
@@ -177,9 +177,9 @@ static void NamingScreen_LoadKeyboardLayout(u16 (*keyboard)[13], const int pageN
 static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppData *data, u16 key, BOOL isButtonInput);
 static void NamingScreen_UpdateFieldMenuInputState(NamingScreenAppData *data, BOOL toggle);
 static int NamingScreen_SearchJpConvTableForNonSpace(const u16 *table, int pos);
-static BOOL sub_02084C98(int a0, int a1, u16 *a2, int a3);
-static BOOL sub_02084D04(int a0, int a1, int a2, int a3, u16 *a4, int a5);
-static void sub_02084E18(Sprite **sprites, int cursorPos, int maxLen);
+static BOOL NamingScreen_JP_FlipAlphaCase(int tableStart, int tableEnd, u16 *pmCharBuf, int cursorPos);
+static BOOL NamingScreen_JP_FlipDiacritic(int tableStart, int tableEnd, int convColno, int mode, u16 *pmCharBuf, int cursorPos);
+static void NamingScreen_UpdateSprite_HighlightedCharacterInInputBuffer(Sprite **sprites, int cursorPos, int maxLen);
 static void NamingScreen_DrawKeyboardOnWindow(Window *window, u16 fillVal, int pageNum, u32 textColor, u8 *pRawData);
 static void NamingScreen_UpdateSpritesAnims(BOOL *req, Sprite **sprites, int pageNum);
 static void NamingScreen_PlaceCursorSprite(NamingScreenAppData *data);
@@ -380,6 +380,10 @@ static const u16 sJpCharConvTable[][3] = {
     { CHAR_JP_KATA_HO, CHAR_JP_KATA_BO, CHAR_JP_KATA_PO       },
 };
 
+#define CHARCONVTBL_ALPHA_BEGIN   0
+#define CHARCONVTBL_DAKU_BEGIN    42
+#define CHARCONVTBL_HANDAKU_BEGIN 72
+
 static const u16 sDakutenTable[][2] = {
     { CHAR_JP_HIRA_TU_SMALL, CHAR_JP_HIRA_DU },
     { CHAR_JP_KATA_TU_SMALL, CHAR_JP_KATA_DU },
@@ -491,7 +495,7 @@ BOOL NamingScreenApp_Init(OVY_MANAGER *ovyMan, int *pState) {
         NamingScreen_LoadObjGfx(data, narc);
         NamingScreen_CreateSprites(data);
         NamingScreen_InitWindows(data, ovyMan, narc);
-        NamingScreen_PrintLastCharacterOfEntryBuf(&data->windows[4], data->entryBuf, data->textCursorPos, data->unk_15A, data->charBuf, data->unkJapaneseString);
+        NamingScreen_PrintLastCharacterOfEntryBuf(&data->windows[4], data->entryBuf, data->textCursorPos, data->tmpBuf, data->charBuf, data->unkJapaneseString);
         sub_02004EC4(0x34, 0, 0); // sound-related
         BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 16, 1, HEAP_ID_NAMING_SCREEN);
         NamingScreen_ToggleGfxPlanes(GF_PLANE_TOGGLE_ON);
@@ -1129,7 +1133,7 @@ static void NamingScreen_CreateSprites(NamingScreenAppData *data) {
             Sprite_SetAnimActiveFlag(data->textEntrySprites[i], TRUE);
             Sprite_SetAnimCtrlSeq(data->textEntrySprites[i], 43);
         }
-        sub_02084E18(data->textEntrySprites, data->textCursorPos, data->maxLen);
+        NamingScreen_UpdateSprite_HighlightedCharacterInInputBuffer(data->textEntrySprites, data->textCursorPos, data->maxLen);
         NamingScreen_CreateIconSprite(data, &spriteTemplate);
     }
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
@@ -1645,21 +1649,21 @@ static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppDa
 
     switch (key) {
     case NAME_SCREEN_CONTROL_DAKU:
-        if (sub_02084D04(0x2A, 0x52, 1, NAME_SCREEN_CONTROL_DAKU, data->entryBuf, data->textCursorPos)) {
+        if (NamingScreen_JP_FlipDiacritic(CHARCONVTBL_DAKU_BEGIN, NELEMS(sJpCharConvTable), 1, NAME_SCREEN_CONTROL_DAKU, data->entryBuf, data->textCursorPos)) {
             FillWindowPixelBuffer(&data->windows[3], 1);
             NamingScreen_BlitRawCharactersToWindow(&data->windows[3], data->entryBuf, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
             PlaySE(SEQ_SE_DP_BOX02);
         }
         break;
     case NAME_SCREEN_CONTROL_HANDAKU:
-        if (sub_02084D04(0x48, 0x52, 2, NAME_SCREEN_CONTROL_HANDAKU, data->entryBuf, data->textCursorPos)) {
+        if (NamingScreen_JP_FlipDiacritic(CHARCONVTBL_HANDAKU_BEGIN, NELEMS(sJpCharConvTable), 2, NAME_SCREEN_CONTROL_HANDAKU, data->entryBuf, data->textCursorPos)) {
             FillWindowPixelBuffer(&data->windows[3], 1);
             NamingScreen_BlitRawCharactersToWindow(&data->windows[3], data->entryBuf, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
             PlaySE(SEQ_SE_DP_BOX02);
         }
         break;
     case NAME_SCREEN_BUTTON_PAGE_JP_UNUSED_2:
-        if (sub_02084C98(0, 0x52, data->entryBuf, data->textCursorPos)) {
+        if (NamingScreen_JP_FlipAlphaCase(CHARCONVTBL_ALPHA_BEGIN, NELEMS(sJpCharConvTable), data->entryBuf, data->textCursorPos)) {
             FillWindowPixelBuffer(&data->windows[3], 1);
             NamingScreen_BlitRawCharactersToWindow(&data->windows[3], data->entryBuf, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
             ++data->spriteAnimUpdateReq[4];
@@ -1688,8 +1692,8 @@ static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppDa
             } else {
                 NamingScreen_BlitRawCharactersToWindow(&data->windows[3], data->entryBuf, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
             }
-            NamingScreen_PrintLastCharacterOfEntryBuf(&data->windows[4], data->entryBuf, data->textCursorPos, data->unk_15A, data->charBuf, data->unkJapaneseString);
-            sub_02084E18(data->textEntrySprites, data->textCursorPos, data->maxLen);
+            NamingScreen_PrintLastCharacterOfEntryBuf(&data->windows[4], data->entryBuf, data->textCursorPos, data->tmpBuf, data->charBuf, data->unkJapaneseString);
+            NamingScreen_UpdateSprite_HighlightedCharacterInInputBuffer(data->textEntrySprites, data->textCursorPos, data->maxLen);
             ++data->spriteAnimUpdateReq[5];
             PlaySE(SEQ_SE_DP_SELECT);
         }
@@ -1715,7 +1719,7 @@ static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppDa
             FillWindowPixelBuffer(&data->windows[3], 1);
             NamingScreen_BlitRawCharactersToWindow(&data->windows[3], data->entryBuf, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
             ++data->textCursorPos;
-            sub_02084E18(data->textEntrySprites, data->textCursorPos, data->maxLen);
+            NamingScreen_UpdateSprite_HighlightedCharacterInInputBuffer(data->textEntrySprites, data->textCursorPos, data->maxLen);
             PlaySE(SEQ_SE_DP_BOX02);
             Sprite_SetVisibleFlag(data->uiSprites[8], TRUE);
             Sprite_SetOamMode(data->uiSprites[8], GX_OAM_MODE_XLU);
@@ -1724,7 +1728,7 @@ static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppDa
             if (data->textCursorPos == data->maxLen) {
                 data->kbCursor.unk18 = TRUE;
             }
-            NamingScreen_PrintLastCharacterOfEntryBuf(&data->windows[4], data->entryBuf, data->textCursorPos, data->unk_15A, data->charBuf, data->unkJapaneseString);
+            NamingScreen_PrintLastCharacterOfEntryBuf(&data->windows[4], data->entryBuf, data->textCursorPos, data->tmpBuf, data->charBuf, data->unkJapaneseString);
         }
         break;
     }
@@ -1749,20 +1753,20 @@ static int NamingScreen_SearchJpConvTableForNonSpace(const u16 *table, int pos) 
     return table[pos];
 }
 
-static BOOL sub_02084C98(int a0, int a1, u16 *a2, int a3) {
+static BOOL NamingScreen_JP_FlipAlphaCase(int tableStart, int tableEnd, u16 *pmCharBuf, int cursorPos) {
     int i;
     int j;
     u16 key;
 
-    if (a3 == 0) {
+    if (cursorPos == 0) {
         return FALSE;
     }
-    key = a2[a3 - 1];
-    for (i = a0; i < a1; ++i) {
+    key = pmCharBuf[cursorPos - 1];
+    for (i = tableStart; i < tableEnd; ++i) {
         for (j = 0; j < 3; ++j) {
             // This whole loop could be bypassed by simply checking whether key is space up-front
             if (key == sJpCharConvTable[i][j] && key != CHAR_JP_SPACE) {
-                a2[a3 - 1] = NamingScreen_SearchJpConvTableForNonSpace(sJpCharConvTable[i], j);
+                pmCharBuf[cursorPos - 1] = NamingScreen_SearchJpConvTableForNonSpace(sJpCharConvTable[i], j);
                 return TRUE;
             }
         }
@@ -1771,50 +1775,50 @@ static BOOL sub_02084C98(int a0, int a1, u16 *a2, int a3) {
     return FALSE;
 }
 
-static BOOL sub_02084D04(int a0, int a1, int a2, int a3, u16 *a4, int a5) {
+static BOOL NamingScreen_JP_FlipDiacritic(int tableStart, int tableEnd, int convColno, int mode, u16 *pmCharBuf, int cursorPos) {
     int i;
     u16 key;
 
-    if (a5 == 0 || a4[a5 - 1] == 1) {
+    if (cursorPos == 0 || pmCharBuf[cursorPos - 1] == CHAR_JP_SPACE) {
         return FALSE;
     }
-    key = a4[a5 - 1];
-    for (i = a0; i < a1; ++i) {
+    key = pmCharBuf[cursorPos - 1];
+    for (i = tableStart; i < tableEnd; ++i) {
         if (key == sJpCharConvTable[i][0]) {
-            a4[a5 - 1] = sJpCharConvTable[i][a2];
+            pmCharBuf[cursorPos - 1] = sJpCharConvTable[i][convColno];
             return TRUE;
         }
     }
-    for (i = a0; i < a1; ++i) {
-        if (key == sJpCharConvTable[i][a2]) {
-            a4[a5 - 1] = sJpCharConvTable[i][0];
+    for (i = tableStart; i < tableEnd; ++i) {
+        if (key == sJpCharConvTable[i][convColno]) {
+            pmCharBuf[cursorPos - 1] = sJpCharConvTable[i][0];
             return TRUE;
         }
     }
-    switch (a3) {
+    switch (mode) {
     case NAME_SCREEN_CONTROL_DAKU:
-        for (i = 0; i < 12u; ++i) {
+        for (i = 0; i < NELEMS(sDakutenTable); ++i) {
             if (key == sDakutenTable[i][0]) {
-                a4[a5 - 1] = sDakutenTable[i][1];
+                pmCharBuf[cursorPos - 1] = sDakutenTable[i][1];
                 return TRUE;
             }
         }
         break;
     case NAME_SCREEN_CONTROL_HANDAKU:
-        for (i = 0; i < 10u; ++i) {
+        for (i = 0; i < NELEMS(sHandakutenTable); ++i) {
             if (key == sHandakutenTable[i][0]) {
-                a4[a5 - 1] = sHandakutenTable[i][1];
+                pmCharBuf[cursorPos - 1] = sHandakutenTable[i][1];
                 return TRUE;
             }
         }
         break;
     case NAME_SCREEN_BUTTON_PAGE_JP_UNUSED_2:
-        if (key == 0x26) {
-            a4[a5 - 1] = 0x24;
+        if (key == CHAR_JP_HIRA_DU) {
+            pmCharBuf[cursorPos - 1] = CHAR_JP_HIRA_TU_SMALL;
             return TRUE;
         }
-        if (key == 0x76) {
-            a4[a5 - 1] = 0x74;
+        if (key == CHAR_JP_KATA_DU) {
+            pmCharBuf[cursorPos - 1] = CHAR_JP_KATA_TU_SMALL;
             return TRUE;
         }
         break;
@@ -1823,7 +1827,7 @@ static BOOL sub_02084D04(int a0, int a1, int a2, int a3, u16 *a4, int a5) {
     return FALSE;
 }
 
-static void sub_02084E18(Sprite **sprites, int cursorPos, int maxLen) {
+static void NamingScreen_UpdateSprite_HighlightedCharacterInInputBuffer(Sprite **sprites, int cursorPos, int maxLen) {
     for (int i = 0; i < maxLen; ++i) {
         Sprite_SetAnimCtrlSeq(sprites[i], 43);
     }
