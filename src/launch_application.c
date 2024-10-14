@@ -1047,21 +1047,21 @@ static BOOL Task_NamingScreen(TaskManager *taskman) {
         NamingScreenArgs *args = data->args;
         if (args->kind == 1) {
             if (String_Compare(args->nameInputString, data->unk10) == 0) {
-                data->args->needsHandling = 1;
+                data->args->noInput = 1;
             }
         } else if (args->kind == 5) {
             u16 *var2                   = String_cstr(args->nameInputString);
             SAV_FRIEND_GRP *friendGroup = Save_FriendGroup_Get(fieldSystem->saveData);
             if (sub_0202C88C(friendGroup, var2)) {
-                data->args->needsHandling = 2;
+                data->args->noInput = 2;
             }
         }
-        if (data->args->needsHandling == 0) {
+        if (data->args->noInput == 0) {
             SetName(taskman);
         }
         u16 *retVar = data->retVar;
         if (data->retVar != NULL) {
-            *retVar = data->args->needsHandling;
+            *retVar = data->args->noInput;
         }
         NamingScreen_DeleteArgs(data->args);
         String_Delete(data->unk10);

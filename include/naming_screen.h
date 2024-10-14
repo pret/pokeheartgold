@@ -14,7 +14,7 @@ typedef struct NamingScreenArgs {
     int monForm;
     int maxLen;
     int monGender;
-    BOOL needsHandling;
+    BOOL noInput;
     String *nameInputString;
     u16 nameInputFlat[20];
     int battleMsgId;

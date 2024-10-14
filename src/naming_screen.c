@@ -45,26 +45,42 @@
 #define NAME_SCREEN_BUTTON_BACK             0xE007
 #define NAME_SCREEN_BUTTON_OK               0xE008
 
+typedef enum NamingScreenInitState {
+    NS_INIT_STATE_LOAD_GFX,
+    NS_INIT_STATE_LOAD_MON_ICON,
+} NamingScreenInitState;
+
+typedef enum NamingScreenMainState {
+    NS_MAIN_STATE_WAIT_FADE_IN,
+    NS_MAIN_STATE_FINISH_INIT,
+    NS_MAIN_STATE_INPUT_LOOP,
+    NS_MAIN_STATE_WAIT_FADE_OUT,
+} NamingScreenMainState;
+
+typedef struct NamingScreenCursor {
+    int x;
+    int y;
+    int prevX;
+    int prevY;
+    int deltaX;
+    BOOL showCursor; // always TRUE
+    BOOL unk18;
+} NamingScreenCursor;
+
 typedef struct NamingScreenAppData {
     NameScreenType type;
     int playerGenderOrMonSpecies;
     int monForm;
     int maxLen;
     int monGender;
-    int unk_014;
+    BOOL printedFromBattleGMM; // logic that makes this TRUE is unreachable
     Options *options;
-    int cursorX;
-    int cursorY;
-    int unk_024;
-    int unk_028;
-    int unk_02C;
-    int unk_030;
-    int unk_034;
+    NamingScreenCursor kbCursor;
     u16 unk_038;
     u16 keyboard[6][13];
     u8 filler_0D6[2];
     u16 entryBuf[0x20];
-    u16 unk_118[0x20];
+    u16 entryBufBak[0x20];
     u16 textCursorPos;
     u16 unk_15A[3];
     BgConfig *bgConfig;       // 0x160
@@ -85,7 +101,7 @@ typedef struct NamingScreenAppData {
     SpriteResourcesHeader spriteResHdr_Sub;
     Sprite *sprites1[14];
     Sprite *textEntrySprites[12];
-    Sprite *sprites3[2];
+    Sprite *iconSprites[2];
     SysTask *tasks[7];
     Window windows[10];
     int unk_458;
@@ -122,43 +138,42 @@ typedef struct UnkStruct_02102278 {
 BOOL NamingScreenApp_Init(OVY_MANAGER *ovyMan, int *pState);
 static void NamingScreen_LoadMonIcon(NNSG2dCharacterData *pCharData, NNSG2dPaletteData *pPlttData, int species, int form);
 BOOL NamingScreenApp_Main(OVY_MANAGER *ovyMan, int *pState);
-static int sub_02082CF8(NamingScreenAppData *data, int a1);
-static void sub_02082E28(NamingScreenAppData *data, NamingScreenArgs *args);
-static BOOL sub_02082EC0(const u16 *s);
+static NamingScreenMainState NamingScreen_HandleInput(NamingScreenAppData *data, NamingScreenMainState a1);
+static void NamingScreen_SetDefaultName(NamingScreenAppData *data, NamingScreenArgs *args);
+static BOOL NamingScreen_PMCharArrayIsAllSpaces(const u16 *s);
 BOOL NamingScreenApp_Exit(OVY_MANAGER *ovyMan, int *pState);
 static void NamingScreen_VBlankCB(void *param);
-static BOOL sub_02082EC0(const u16 *s);
 static void NamingScreen_InitFromArgs(NamingScreenAppData *data, NamingScreenArgs *args);
 static void NamingScreen_SetGraphicsBanks(void);
 static void NamingScreen_SetBgModesAndInitBuffers(BgConfig *bgConfig);
 static void NamingScreen_ToggleGfxPlanes(GFPlaneToggle enable);
 static void NamingScreen_InitKeyboardAndEntryCursors(NamingScreenAppData *data, OVY_MANAGER *ovyMan);
-static void sub_020834FC(NamingScreenAppData *data, OVY_MANAGER *ovyMan);
+static void NamingScreen_PrepareBattleMessage(NamingScreenAppData *data, OVY_MANAGER *ovyMan);
 static void NamingScreen_UnloadBgGfx(BgConfig *bgConfig, Window *windows);
 static void NamingScreen_CreateBgConfigAndLoadGfx(NamingScreenAppData *data, NARC *narc);
 static void NamingScreen_InitObjCharPlttTransfer(void);
 static void NamingScreen_LoadObjGfx(NamingScreenAppData *data, NARC *narc);
-static void sub_020839B8(SysTask *task, void *taskData);
+static void SysTask_NamingScreen_SubspritePosController(SysTask *task, void *taskData);
 static void NamingScreen_CreateSprites(NamingScreenAppData *data);
-static void sub_02083BB4(NamingScreenAppData *data, SpriteTemplate *tmplate);
-static void sub_02083CAC(SysTask *task, void *taskData);
+static void NamingScreen_CreateIconSprite(NamingScreenAppData *data, SpriteTemplate *tmplate);
+static void SysTask_NamingScreen_WiggleEffect(SysTask *task, void *taskData);
 static void sub_02083D34(BgConfig *bgConfig, Window *windows, int *pState, int pageNum, GFBgLayer *pBgId, VecFx32 *posVecs, Sprite **pSprites, void *pRawData);
 static void sub_02083F18(Window *window, NameScreenType unused, String *msg);
 static void sub_02083F48(Window *window, NameScreenType unused, String *msg);
 static void NamingScreen_InitWindows(NamingScreenAppData *data, OVY_MANAGER *ovyMan, NARC *narc);
 static void sub_0208421C(BgConfig *bgConfig, GFBgLayer bgId, VecFx32 *pos);
 static void sub_0208423C(VecFx32 *posVecs, GFBgLayer bgId);
-static int sub_02084264(int val, int lo, int hi);
-static void sub_02084274(NamingScreenAppData *data, int dpadMovement);
-static void sub_0208432C(NamingScreenAppData *data);
+static int NamingScreen_WrapAroundWithinInterval(int val, int lo, int hi);
+static void NamingScreen_MoveKeyboardCursor(NamingScreenAppData *data, int dpadMovement);
+static void NamingScreen_GetPlayerInput(NamingScreenAppData *data);
 static void NamingScreen_UpdateCursorSpritePosition(NamingScreenAppData *data, int dpadMovement);
 static void sub_02084500(u16 *a0);
-static void sub_02084540(Window *window, const u16 *rawChars, int x, int y, int spacing, int textSpeed, u32 color, u8 *buttonPixels);
+static void NamingScreen_BlitRawCharactersToWindow(Window *window, const u16 *rawChars, int x, int y, int spacing, int textSpeed, u32 color, u8 *buttonPixels);
 static void *NamingScreen_PrintStringOnWindow_GetPixelBuffer(Window *window, String *string, FontID fontId, u32 color);
 static void NamingScreen_PrintCharacterOnWindowAndOBJ(Window *windows, const u16 *tmpBuf, void *charBuf, String *string);
 static void NamingScreen_PrintLastCharacterOfEntryBuf(Window *window, u16 *entryBuf, u16 cursorPos, u16 *tmpBuf, void *charBuf, String *string);
 static void NamingScreen_LoadKeyboardLayout(u16 (*a0)[13], const int a1);
-static int sub_02084884(NamingScreenAppData *data, u16 key, BOOL isButtonInput);
+static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppData *data, u16 key, BOOL isButtonInput);
 static void NamingScreen_UpdateFieldMenuInputState(NamingScreenAppData *data, BOOL toggle);
 static int sub_02084C78(const u16 *a0, int a1);
 static BOOL sub_02084C98(int a0, int a1, u16 *a2, int a3);
@@ -435,8 +450,8 @@ const OVY_MGR_TEMPLATE gOverlayTemplate_NamingScreen = {
 BOOL NamingScreenApp_Init(OVY_MANAGER *ovyMan, int *pState) {
     NamingScreenAppData *data;
     NARC *narc;
-    switch (*pState) {
-    case 0:
+    switch ((NamingScreenInitState)*pState) {
+    case NS_INIT_STATE_LOAD_GFX:
         Main_SetVBlankIntrCB(NULL, NULL);
         HBlankInterruptDisable();
         GfGfx_DisableEngineAPlanes();
@@ -474,14 +489,14 @@ BOOL NamingScreenApp_Init(OVY_MANAGER *ovyMan, int *pState) {
         NARC_Delete(narc);
         ++(*pState);
         break;
-    case 1:
+    case NS_INIT_STATE_LOAD_MON_ICON:
         data = OverlayManager_GetData(ovyMan);
         if (data->type == NAME_SCREEN_POKEMON) {
             NamingScreen_LoadMonIcon(data->monIconCharData, data->plttData, data->playerGenderOrMonSpecies, data->monForm);
         }
         sAppData      = data;
         data->unk_5C4 = sub_020163E0(NULL, PM_LCD_BOTTOM, 12, HEAP_ID_NAMING_SCREEN);
-        *pState       = 0;
+        *pState       = NS_MAIN_STATE_WAIT_FADE_IN;
         return TRUE;
     }
 
@@ -498,23 +513,23 @@ static void NamingScreen_LoadMonIcon(NNSG2dCharacterData *pCharData, NNSG2dPalet
 BOOL NamingScreenApp_Main(OVY_MANAGER *ovyMan, int *pState) {
     NamingScreenAppData *data = OverlayManager_GetData(ovyMan);
 
-    switch (*pState) {
-    case 0:
+    switch ((NamingScreenMainState)*pState) {
+    case NS_MAIN_STATE_WAIT_FADE_IN:
         if (IsPaletteFadeFinished()) {
-            *pState            = 1;
+            *pState            = NS_MAIN_STATE_FINISH_INIT;
             data->delayCounter = 0;
         }
         break;
-    case 1:
+    case NS_MAIN_STATE_FINISH_INIT:
         ++data->delayCounter;
         NamingScreen_PlaceCursorSprite(data);
         sub_02084F3C(data->spriteStates, data->sprites1, data->pageNum);
         if (data->delayCounter > 5) {
-            *pState            = 2;
+            *pState            = NS_MAIN_STATE_INPUT_LOOP;
             data->delayCounter = 0;
         }
         break;
-    case 2:
+    case NS_MAIN_STATE_INPUT_LOOP:
         switch (data->unk_45C) {
         case 0:
         case 1:
@@ -522,13 +537,13 @@ BOOL NamingScreenApp_Main(OVY_MANAGER *ovyMan, int *pState) {
         case 3:
             break;
         case 4:
-            if (data->unk_034 == 0) {
-                *pState = sub_02082CF8(data, *pState);
+            if (data->kbCursor.unk18 == 0) {
+                *pState = NamingScreen_HandleInput(data, (NamingScreenMainState)*pState);
             }
             NamingScreen_PlaceCursorSprite(data);
             break;
         case 5:
-            sub_020834FC(data, ovyMan);
+            NamingScreen_PrepareBattleMessage(data, ovyMan);
             FillWindowPixelBuffer(&data->windows[9], 15);
             DrawFrameAndWindow2(&data->windows[9], FALSE, 256, 10);
             data->unk_458 = AddTextPrinterParameterized(&data->windows[9], 1, data->battleMsgString, 0, 0, 1, NULL);
@@ -547,7 +562,7 @@ BOOL NamingScreenApp_Main(OVY_MANAGER *ovyMan, int *pState) {
             ++data->delayCounter;
             if (data->delayCounter > 30) {
                 BeginNormalPaletteFade(2, 0, 0, RGB_BLACK, 16, 1, HEAP_ID_NAMING_SCREEN);
-                *pState = 3;
+                *pState = NS_MAIN_STATE_WAIT_FADE_OUT;
             }
             break;
         }
@@ -555,7 +570,7 @@ BOOL NamingScreenApp_Main(OVY_MANAGER *ovyMan, int *pState) {
         sub_02084F3C(data->spriteStates, data->sprites1, data->pageNum);
         sub_02084500(&data->unk_038);
         break;
-    case 3:
+    case NS_MAIN_STATE_WAIT_FADE_OUT:
         if (IsPaletteFadeFinished()) {
             return TRUE;
         }
@@ -566,16 +581,16 @@ BOOL NamingScreenApp_Main(OVY_MANAGER *ovyMan, int *pState) {
     return FALSE;
 }
 
-static int sub_02082CF8(NamingScreenAppData *data, int a1) {
-    int ret = a1;
+static NamingScreenMainState NamingScreen_HandleInput(NamingScreenAppData *data, NamingScreenMainState a1) {
+    NamingScreenMainState ret = a1;
 
-    sub_0208432C(data);
+    NamingScreen_GetPlayerInput(data);
     if (gSystem.newKeys & PAD_BUTTON_SELECT) {
         if (!Sprite_GetVisibleFlag(data->sprites1[8])) {
             Sprite_SetVisibleFlag(data->sprites1[8], TRUE);
             return ret;
         }
-        if (data->type != 4) {
+        if (data->type != NAME_SCREEN_UNK4) {
             data->unk_45C = 0;
             ++data->pageNum;
             if (data->pageNum >= 3) {
@@ -584,20 +599,20 @@ static int sub_02082CF8(NamingScreenAppData *data, int a1) {
             ++data->spriteStates[data->pageNum];
             NamingScreen_LoadKeyboardLayout(data->keyboard, data->pageNum);
             PlaySE(SEQ_SE_DP_SYU03);
-            data->unk_030 = 1;
+            data->kbCursor.showCursor = TRUE;
         }
         ++data->spriteStates[data->pageNum];
         NamingScreen_LoadKeyboardLayout(data->keyboard, data->pageNum);
         PlaySE(SEQ_SE_DP_SYU03);
     } else if (gSystem.newKeys & PAD_BUTTON_A) {
-        ret           = sub_02084884(data, data->keyboard[data->cursorY][data->cursorX], TRUE);
-        data->unk_030 = 1;
+        ret                       = NamingScreen_HandleCharacterInput(data, data->keyboard[data->kbCursor.y][data->kbCursor.x], TRUE);
+        data->kbCursor.showCursor = TRUE;
     } else if (data->isTouchInput == TRUE) {
-        ret = sub_02084884(data, data->keyboard[data->cursorY][data->cursorX], FALSE);
+        ret = NamingScreen_HandleCharacterInput(data, data->keyboard[data->kbCursor.y][data->kbCursor.x], FALSE);
     } else if (gSystem.newKeys & PAD_BUTTON_B) {
-        ret = sub_02084884(data, NAME_SCREEN_BUTTON_BACK, TRUE);
+        ret = NamingScreen_HandleCharacterInput(data, NAME_SCREEN_BUTTON_BACK, TRUE);
     } else if (gSystem.newKeys & PAD_BUTTON_R) {
-        ret = sub_02084884(data, NAME_SCREEN_BUTTON_PAGE_JP_UNUSED_2, TRUE);
+        ret = NamingScreen_HandleCharacterInput(data, NAME_SCREEN_BUTTON_PAGE_JP_UNUSED_2, TRUE);
     }
     return ret;
 }
@@ -612,7 +627,8 @@ static int sub_02082CF8(NamingScreenAppData *data, int a1) {
 #define FIRST_DEFAULT_NAME_RIVAL  msg_0254_00085
 #endif // HEARTGOLD
 
-static void sub_02082E28(NamingScreenAppData *data, NamingScreenArgs *args) {
+// Called when the input is empty
+static void NamingScreen_SetDefaultName(NamingScreenAppData *data, NamingScreenArgs *args) {
     String *string;
 
     if (data->type == NAME_SCREEN_PLAYER) {
@@ -631,11 +647,12 @@ static void sub_02082E28(NamingScreenAppData *data, NamingScreenArgs *args) {
         String_Delete(string);
         CopyStringToU16Array(args->nameInputString, args->nameInputFlat, 10);
     } else {
-        args->needsHandling = TRUE;
+        // Remaining cases have their own separate handlers.
+        args->noInput = TRUE;
     }
 }
 
-static BOOL sub_02082EC0(const u16 *s) {
+static BOOL NamingScreen_PMCharArrayIsAllSpaces(const u16 *s) {
     BOOL ret = TRUE;
     int i;
 
@@ -645,6 +662,7 @@ static BOOL sub_02082EC0(const u16 *s) {
         }
         if (s[i] != CHAR_SPACE) {
             ret = FALSE;
+            // break;
         }
     }
     return ret;
@@ -661,10 +679,10 @@ BOOL NamingScreenApp_Exit(OVY_MANAGER *ovyMan, int *pState) {
         // wtf
         FreeToHeap(mon);
     }
-    if (data->textCursorPos == 0 || !StringNotEqual(data->entryBuf, data->unk_118) || sub_02082EC0(data->entryBuf)) {
-        sub_02082E28(data, args);
+    if (data->textCursorPos == 0 || !StringNotEqual(data->entryBuf, data->entryBufBak) || NamingScreen_PMCharArrayIsAllSpaces(data->entryBuf)) {
+        NamingScreen_SetDefaultName(data, args);
     } else {
-        CopyU16StringArray(data->unk_118, data->entryBuf);
+        CopyU16StringArray(data->entryBufBak, data->entryBuf);
         CopyU16StringArray(args->nameInputFlat, data->entryBuf);
         CopyU16ArrayToString(args->nameInputString, data->entryBuf);
     }
@@ -718,7 +736,7 @@ NamingScreenArgs *NamingScreen_CreateArgs(HeapID heapId, NameScreenType kind, in
     ret->kind                     = kind;
     ret->playerGenderOrMonSpecies = param;
     ret->maxLen                   = maxLen;
-    ret->needsHandling            = FALSE;
+    ret->noInput                  = FALSE;
     ret->nameInputFlat[0]         = EOS;
     ret->nameInputString          = String_New(32, heapId);
     ret->battleMsgId              = 0;
@@ -892,9 +910,9 @@ static void NamingScreen_InitKeyboardAndEntryCursors(NamingScreenAppData *data, 
     BgSetPosTextAndCommit(data->bgConfig, data->unk_464, BG_POS_OP_SET_Y, data->bgPosVecs[data->unk_464].y);
     BgSetPosTextAndCommit(data->bgConfig, data->unk_464 ^ 1, BG_POS_OP_SET_X, data->bgPosVecs[data->unk_464 ^ 1].x);
     BgSetPosTextAndCommit(data->bgConfig, data->unk_464 ^ 1, BG_POS_OP_SET_Y, data->bgPosVecs[data->unk_464 ^ 1].y);
-    data->unk_118[0] = EOS;
+    data->entryBufBak[0] = EOS;
     if (args->nameInputString != NULL) {
-        CopyStringToU16Array(args->nameInputString, data->unk_118, 32);
+        CopyStringToU16Array(args->nameInputString, data->entryBufBak, 32);
     }
     MI_CpuFill16(data->entryBuf, 1, sizeof(data->entryBuf));
     if (data->type == NAME_SCREEN_POKEMON) {
@@ -904,18 +922,18 @@ static void NamingScreen_InitKeyboardAndEntryCursors(NamingScreenAppData *data, 
         FreeToHeap(mon);
     }
     if (args->battleMsgId != 0) {
-        data->unk_014 = 1;
+        data->printedFromBattleGMM = TRUE;
     }
     data->promptString           = ReadMsgData_ExpandPlaceholders(data->msgFormat, data->msgData_249, _021020B4[data->type], HEAP_ID_NAMING_SCREEN);
     data->unkJapaneseString      = ReadMsgData_ExpandPlaceholders(data->msgFormat, data->msgData_249, msg_0249_00009, HEAP_ID_NAMING_SCREEN);
     data->unk_184                = NewString_ReadMsgData(data->msgData_249, msg_0249_00007);
-    data->textCursorPos          = StringLength(data->unk_118);
-    data->cursorX                = 0;
-    data->cursorY                = 1;
-    data->unk_024                = -1;
-    data->unk_028                = -1;
-    data->unk_030                = 1;
-    data->unk_034                = 0;
+    data->textCursorPos          = StringLength(data->entryBufBak);
+    data->kbCursor.x             = 0;
+    data->kbCursor.y             = 1;
+    data->kbCursor.prevX         = -1;
+    data->kbCursor.prevY         = -1;
+    data->kbCursor.showCursor    = TRUE;
+    data->kbCursor.unk18         = FALSE;
     data->unk_484                = -1;
     data->unk_488                = 0;
     data->unk_48C                = 0;
@@ -930,7 +948,7 @@ static void NamingScreen_InitKeyboardAndEntryCursors(NamingScreenAppData *data, 
     }
 }
 
-static void sub_020834FC(NamingScreenAppData *data, OVY_MANAGER *ovyMan) {
+static void NamingScreen_PrepareBattleMessage(NamingScreenAppData *data, OVY_MANAGER *ovyMan) {
     NamingScreenArgs *args = OverlayManager_GetArgs(ovyMan);
     if (args->battleMsgId != 0) {
         String *string        = String_New(200, HEAP_ID_NAMING_SCREEN);
@@ -944,7 +962,7 @@ static void sub_020834FC(NamingScreenAppData *data, OVY_MANAGER *ovyMan) {
         } else {
             BufferPCBoxName(data->msgFormat, 2, args->pcStorage, boxno);
         }
-        if (data->textCursorPos == 0 || sub_02082EC0(data->entryBuf)) {
+        if (data->textCursorPos == 0 || NamingScreen_PMCharArrayIsAllSpaces(data->entryBuf)) {
             Pokemon *mon = AllocMonZeroed(HEAP_ID_NAMING_SCREEN);
             CreateMon(mon, data->playerGenderOrMonSpecies, 1, 0, 0, 0, 0, 0);
             BufferBoxMonSpeciesName(data->msgFormat, 0, Mon_GetBoxMon(mon));
@@ -954,8 +972,8 @@ static void sub_020834FC(NamingScreenAppData *data, OVY_MANAGER *ovyMan) {
             CopyU16ArrayToString(string, data->entryBuf);
             BufferString(data->msgFormat, 0, string, 0, 0, 0);
         }
-        data->battleMsgString = ReadMsgData_ExpandPlaceholders(data->msgFormat, data->msgData_197, args->battleMsgId, HEAP_ID_NAMING_SCREEN);
-        data->unk_014         = 1;
+        data->battleMsgString      = ReadMsgData_ExpandPlaceholders(data->msgFormat, data->msgData_197, args->battleMsgId, HEAP_ID_NAMING_SCREEN);
+        data->printedFromBattleGMM = TRUE;
         String_Delete(string);
     }
 }
@@ -1040,21 +1058,21 @@ static void NamingScreen_LoadObjGfx(NamingScreenAppData *data, NARC *narc) {
     sub_0200AF94(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_PLTT]);
 }
 
-typedef struct SysTaskData_020839B8 {
-    Sprite *sprite;
-    Sprite *sprite2;
+typedef struct SubspritePosControllerTaskData {
+    Sprite *parent;
+    Sprite *child;
     fx32 dx;
     int i;
-} SysTaskData_020839B8;
+} SubspritePosControllerTaskData;
 
-static void sub_020839B8(SysTask *task, void *taskData) {
-    SysTaskData_020839B8 *data = taskData;
-    VecFx32 *pMatrix           = Sprite_GetMatrixPtr(data->sprite);
+static void SysTask_NamingScreen_SubspritePosController(SysTask *task, void *taskData) {
+    SubspritePosControllerTaskData *data = taskData;
+    VecFx32 *pMatrix                     = Sprite_GetMatrixPtr(data->parent);
     VecFx32 matrix;
     matrix.x = pMatrix->x + data->dx;
     matrix.y = FX32_ONE * _021021E8[data->i][1];
     matrix.z = 0;
-    Sprite_SetMatrix(data->sprite2, &matrix);
+    Sprite_SetMatrix(data->child, &matrix);
 }
 
 static void NamingScreen_CreateSprites(NamingScreenAppData *data) {
@@ -1086,12 +1104,12 @@ static void NamingScreen_CreateSprites(NamingScreenAppData *data) {
         }
         Sprite_SetVisibleFlag(data->sprites1[4], FALSE);
         for (i = 0; i < 7; ++i) {
-            data->tasks[i]                 = CreateSysTaskAndEnvironment(sub_020839B8, sizeof(SysTaskData_020839B8), 5, HEAP_ID_NAMING_SCREEN);
-            SysTaskData_020839B8 *taskData = SysTask_GetData(data->tasks[i]);
-            taskData->sprite               = data->sprites1[7];
-            taskData->sprite2              = data->sprites1[i];
-            taskData->dx                   = _021021E8[i][0] * FX32_ONE;
-            taskData->i                    = i;
+            data->tasks[i]                           = CreateSysTaskAndEnvironment(SysTask_NamingScreen_SubspritePosController, sizeof(SubspritePosControllerTaskData), 5, HEAP_ID_NAMING_SCREEN);
+            SubspritePosControllerTaskData *taskData = SysTask_GetData(data->tasks[i]);
+            taskData->parent                         = data->sprites1[7];
+            taskData->child                          = data->sprites1[i];
+            taskData->dx                             = _021021E8[i][0] * FX32_ONE;
+            taskData->i                              = i;
         }
         // regswap: data->maxLen should be r2, instead r0
         for (i = 0; i < data->maxLen; ++i) {
@@ -1102,67 +1120,69 @@ static void NamingScreen_CreateSprites(NamingScreenAppData *data) {
             Sprite_SetAnimCtrlSeq(data->textEntrySprites[i], 43);
         }
         sub_02084E18(data->textEntrySprites, data->textCursorPos, data->maxLen);
-        sub_02083BB4(data, &spriteTemplate);
+        NamingScreen_CreateIconSprite(data, &spriteTemplate);
     }
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
-static void sub_02083BB4(NamingScreenAppData *data, SpriteTemplate *tmplate) {
-    tmplate->position.x = FX32_CONST(24);
-    tmplate->position.y = FX32_CONST(8);
-    data->sprites3[0]   = Sprite_CreateAffine(tmplate);
-    Sprite_SetAnimActiveFlag(data->sprites3[0], TRUE);
+static void NamingScreen_CreateIconSprite(NamingScreenAppData *data, SpriteTemplate *tmplate) {
+    tmplate->position.x  = FX32_CONST(24);
+    tmplate->position.y  = FX32_CONST(8);
+    data->iconSprites[0] = Sprite_CreateAffine(tmplate);
+    Sprite_SetAnimActiveFlag(data->iconSprites[0], TRUE);
 
     switch (data->type) {
     case NAME_SCREEN_PLAYER:
         if (data->playerGenderOrMonSpecies == PLAYER_GENDER_MALE) {
-            Sprite_SetAnimCtrlSeq(data->sprites3[0], 48);
+            Sprite_SetAnimCtrlSeq(data->iconSprites[0], 48);
         } else {
-            Sprite_SetAnimCtrlSeq(data->sprites3[0], 49);
+            Sprite_SetAnimCtrlSeq(data->iconSprites[0], 49);
         }
         break;
     case NAME_SCREEN_RIVAL:
-        Sprite_SetAnimCtrlSeq(data->sprites3[0], 51);
+        Sprite_SetAnimCtrlSeq(data->iconSprites[0], 51);
         break;
     case NAME_SCREEN_UNK6:
-        Sprite_SetAnimCtrlSeq(data->sprites3[0], 55);
+        Sprite_SetAnimCtrlSeq(data->iconSprites[0], 55);
         break;
     case NAME_SCREEN_GROUP:
-        Sprite_SetAnimCtrlSeq(data->sprites3[0], 54);
+        Sprite_SetAnimCtrlSeq(data->iconSprites[0], 54);
         break;
     case NAME_SCREEN_UNK4:
     case NAME_SCREEN_UNK7:
-        Sprite_SetAnimCtrlSeq(data->sprites3[0], 53);
+        Sprite_SetAnimCtrlSeq(data->iconSprites[0], 53);
         break;
     case NAME_SCREEN_BOX:
-        Sprite_SetAnimCtrlSeq(data->sprites3[0], 47);
+        Sprite_SetAnimCtrlSeq(data->iconSprites[0], 47);
         break;
     case NAME_SCREEN_POKEMON:
-        Sprite_SetAnimCtrlSeq(data->sprites3[0], 50);
+        Sprite_SetAnimCtrlSeq(data->iconSprites[0], 50);
         if (data->monGender != 2) {
-            tmplate->position.x = (13 * data->maxLen + 80) * FX32_ONE;
-            tmplate->position.y = FX32_CONST(27);
-            data->sprites3[1]   = Sprite_CreateAffine(tmplate);
+            tmplate->position.x  = (13 * data->maxLen + 80) * FX32_ONE;
+            tmplate->position.y  = FX32_CONST(27);
+            data->iconSprites[1] = Sprite_CreateAffine(tmplate);
             if (data->monGender == 0) {
-                Sprite_SetAnimCtrlSeq(data->sprites3[1], 45);
+                Sprite_SetAnimCtrlSeq(data->iconSprites[1], 45);
             } else {
-                Sprite_SetAnimCtrlSeq(data->sprites3[1], 46);
+                Sprite_SetAnimCtrlSeq(data->iconSprites[1], 46);
             }
         }
         break;
     }
 }
 
-typedef struct SysTaskData_02083CAC {
+typedef struct WiggleEffectTaskData {
     Sprite *sprite;
     int state;
     fx32 x;
     int y;
-} SysTaskData_02083CAC;
+} WiggleEffectTaskData;
 
-static void sub_02083CAC(SysTask *task, void *taskData) {
-    SysTaskData_02083CAC *data = taskData;
+static void SysTask_NamingScreen_WiggleEffect(SysTask *task, void *taskData) {
+    WiggleEffectTaskData
+        *data
+        = taskData;
 
     VecFx32 matrix;
 
@@ -1211,10 +1231,11 @@ static void sub_02083D34(BgConfig *bgConfig, Window *windows, int *pState, int p
     case 2:
         posVecs[bgId_prev].x -= 24;
         if (posVecs[bgId_prev].x < -1) {
-            SysTaskData_02083CAC *data;
+            WiggleEffectTaskData
+                *data;
             SysTask *task;
 
-            task                 = CreateSysTaskAndEnvironment(sub_02083CAC, sizeof(SysTaskData_02083CAC), 0, HEAP_ID_NAMING_SCREEN);
+            task                 = CreateSysTaskAndEnvironment(SysTask_NamingScreen_WiggleEffect, sizeof(WiggleEffectTaskData), 0, HEAP_ID_NAMING_SCREEN);
             data                 = SysTask_GetData(task);
             data->sprite         = pSprites[7];
             data->state          = 0;
@@ -1302,9 +1323,9 @@ static void NamingScreen_InitWindows(NamingScreenAppData *data, OVY_MANAGER *ovy
 
     OverlayManager_GetArgs(ovyMan);
 
-    if (data->unk_118[0] != EOS) {
-        CopyU16StringArray(data->entryBuf, data->unk_118);
-        sub_02084540(&data->windows[3], data->entryBuf, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
+    if (data->entryBufBak[0] != EOS) {
+        CopyU16StringArray(data->entryBuf, data->entryBufBak);
+        NamingScreen_BlitRawCharactersToWindow(&data->windows[3], data->entryBuf, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
     }
 
     for (int i = 0; i < 3; ++i) {
@@ -1336,7 +1357,9 @@ static const int _02102168[][2] = {
     { 1,  0  },
 };
 
-static int sub_02084264(int val, int lo, int hi) {
+// If val is outside the range, clamp to the opposite side of that range
+// The interval is right half open.
+static int NamingScreen_WrapAroundWithinInterval(int val, int lo, int hi) {
     if (val >= hi) {
         val = lo;
     }
@@ -1346,32 +1369,33 @@ static int sub_02084264(int val, int lo, int hi) {
     return val;
 }
 
-static void sub_02084274(NamingScreenAppData *data, int dpadMovement) {
+static void NamingScreen_MoveKeyboardCursor(NamingScreenAppData *data, int dpadMovement) {
+    // Only run this logic if the keyboard cursor is moving in response to dpad input.
     if (dpadMovement == 0) {
         return;
     }
 
-    u16 sp0  = data->keyboard[data->cursorY][data->cursorX];
-    int newX = sub_02084264(data->cursorX + _02102168[dpadMovement][0], 0, 13);
-    int newY = sub_02084264(data->cursorY + _02102168[dpadMovement][1], 0, 6);
-    while (data->keyboard[newY][newX] == NAME_SCREEN_CONTROL_SKIP || (data->keyboard[newY][newX] == sp0 && data->keyboard[newY][newX] > NAME_SCREEN_BUTTON_START)) {
-        if (data->unk_028 == 0 && data->keyboard[newY][newX] == NAME_SCREEN_CONTROL_SKIP && _02102168[dpadMovement][1] != 0) {
-            newX = sub_02084264(newX + data->unk_02C, 0, 13);
+    u16 prevKey = data->keyboard[data->kbCursor.y][data->kbCursor.x];
+    int newX    = NamingScreen_WrapAroundWithinInterval(data->kbCursor.x + _02102168[dpadMovement][0], 0, 13);
+    int newY    = NamingScreen_WrapAroundWithinInterval(data->kbCursor.y + _02102168[dpadMovement][1], 0, 6);
+    while (data->keyboard[newY][newX] == NAME_SCREEN_CONTROL_SKIP || (data->keyboard[newY][newX] == prevKey && data->keyboard[newY][newX] > NAME_SCREEN_BUTTON_START)) {
+        if (data->kbCursor.prevY == 0 && data->keyboard[newY][newX] == NAME_SCREEN_CONTROL_SKIP && _02102168[dpadMovement][1] != 0) {
+            newX = NamingScreen_WrapAroundWithinInterval(newX + data->kbCursor.deltaX, 0, 13);
         } else {
-            newX = sub_02084264(newX + _02102168[dpadMovement][0], 0, 13);
-            newY = sub_02084264(newY + _02102168[dpadMovement][1], 0, 6);
+            newX = NamingScreen_WrapAroundWithinInterval(newX + _02102168[dpadMovement][0], 0, 13);
+            newY = NamingScreen_WrapAroundWithinInterval(newY + _02102168[dpadMovement][1], 0, 6);
         }
     }
-    data->cursorX = newX;
-    data->cursorY = newY;
+    data->kbCursor.x = newX;
+    data->kbCursor.y = newY;
 }
 
-static void sub_0208432C(NamingScreenAppData *data) {
-    int doUpdateCursor = 0;
-    int dpadMovement   = 0;
-    BOOL r7            = FALSE;
+static void NamingScreen_GetPlayerInput(NamingScreenAppData *data) {
+    int doUpdateCursor           = 0;
+    int dpadMovement             = 0;
+    BOOL buttonInputIsTransition = FALSE;
     if (!Sprite_GetVisibleFlag(data->sprites1[8])) {
-        r7 = TRUE;
+        buttonInputIsTransition = TRUE;
     }
 
     if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
@@ -1401,8 +1425,8 @@ static void sub_0208432C(NamingScreenAppData *data) {
     if (gSystem.newKeys & PAD_BUTTON_START) {
         PlaySE(SEQ_SE_DP_SELECT);
         Sprite_SetVisibleFlag(data->sprites1[8], TRUE);
-        data->cursorX = 12;
-        data->cursorY = 0;
+        data->kbCursor.x = 12;
+        data->kbCursor.y = 0;
         ++doUpdateCursor;
     }
     data->isTouchInput = NamingScreen_HandleTouchInput(data);
@@ -1410,19 +1434,19 @@ static void sub_0208432C(NamingScreenAppData *data) {
         dpadMovement = 0;
         ++doUpdateCursor;
     }
-    if (r7 == TRUE) {
+    if (buttonInputIsTransition == TRUE) {
         doUpdateCursor = 0;
         NamingScreen_UpdateCursorSpritePosition(data, dpadMovement);
     }
     if (doUpdateCursor) {
-        sub_02084274(data, dpadMovement);
+        NamingScreen_MoveKeyboardCursor(data, dpadMovement);
         NamingScreen_UpdateCursorSpritePosition(data, dpadMovement);
     }
 }
 
 static void NamingScreen_UpdateCursorSpritePosition(NamingScreenAppData *data, int dpadMovement) {
-    if (data->cursorY != 0) {
-        if (data->unk_028 == 0 && data->unk_028 != data->cursorY) {
+    if (data->kbCursor.y != 0) {
+        if (data->kbCursor.prevY == 0 && data->kbCursor.prevY != data->kbCursor.y) {
             Sprite_SetAnimCtrlSeq(data->sprites1[8], 39);
         }
         if (dpadMovement != 0) {
@@ -1430,12 +1454,12 @@ static void NamingScreen_UpdateCursorSpritePosition(NamingScreenAppData *data, i
         }
 
         VecFx32 vec;
-        vec.x = (data->cursorX * 16 + 26) * FX32_ONE;
-        vec.y = ((data->cursorY - 1) * 19 + 91) * FX32_ONE;
+        vec.x = (data->kbCursor.x * 16 + 26) * FX32_ONE;
+        vec.y = ((data->kbCursor.y - 1) * 19 + 91) * FX32_ONE;
         // vec.z = 0;
         Sprite_SetMatrix(data->sprites1[8], &vec);
     } else {
-        int buttonId = data->keyboard[data->cursorY][data->cursorX] - NAME_SCREEN_BUTTON_PAGE_UPPER;
+        int buttonId = data->keyboard[data->kbCursor.y][data->kbCursor.x] - NAME_SCREEN_BUTTON_PAGE_UPPER;
         VecFx32 vec;
 
         vec.x = _02101D80[buttonId] * FX32_ONE;
@@ -1447,10 +1471,10 @@ static void NamingScreen_UpdateCursorSpritePosition(NamingScreenAppData *data, i
 
     data->unk_038 = 180;
     Sprite_SetAnimCtrlCurrentFrame(data->sprites1[8], 0);
-    data->unk_024 = data->cursorX;
-    data->unk_028 = data->cursorY;
+    data->kbCursor.prevX = data->kbCursor.x;
+    data->kbCursor.prevY = data->kbCursor.y;
     if (_02102168[dpadMovement][0] != 0) {
-        data->unk_02C = _02102168[dpadMovement][0];
+        data->kbCursor.deltaX = _02102168[dpadMovement][0];
     }
 }
 
@@ -1464,24 +1488,25 @@ static void sub_02084500(u16 *a0) {
     GX_LoadOBJPltt(&col, 0x3A, sizeof(col));
 }
 
-static void sub_02084540(Window *window, const u16 *rawChars, int x, int y, int spacing, int textSpeed, u32 color, u8 *buttonPixels) {
+static void NamingScreen_BlitRawCharactersToWindow(Window *window, const u16 *rawChars, int x, int y, int spacing, int textSpeed, u32 color, u8 *buttonPixels) {
     int i = 0;
     int width;
     int centerX;
-    u16 sp38[2];
+    u16 pmCharBuf[2];
     String *string = String_New(2, HEAP_ID_NAMING_SCREEN);
     while (rawChars[i] != EOS) {
         if (rawChars[i] == NAME_SCREEN_CONTROL_DAKU || rawChars[i] == NAME_SCREEN_CONTROL_HANDAKU || rawChars[i] == NAME_SCREEN_CONTROL_SPACE) {
+            // This is unreachable outside of Japan.
             u16 buttonId = rawChars[i] - NAME_SCREEN_CONTROL_DAKU;
             BlitBitmapRectToWindow(window, buttonPixels + (buttonId * 256) / 2, 0, 0, 12, 12, x + i * spacing, y + 2, 12, 12);
         } else if (rawChars[i] == NAME_SCREEN_CONTROL_SKIP) {
             ++i;
             continue;
         } else {
-            sp38[0] = rawChars[i];
-            sp38[1] = EOS;
-            width   = FontID_FlatArray_GetWidth(0, sp38, 0);
-            CopyU16ArrayToString(string, sp38);
+            pmCharBuf[0] = rawChars[i];
+            pmCharBuf[1] = EOS;
+            width        = FontID_FlatArray_GetWidth(0, pmCharBuf, 0);
+            CopyU16ArrayToString(string, pmCharBuf);
             centerX = x + i * spacing + ((spacing - width) / 2);
             AddTextPrinterParameterizedWithColor(window, 0, string, centerX, y, textSpeed, color, NULL);
         }
@@ -1551,16 +1576,16 @@ static void NamingScreen_PrintLastCharacterOfEntryBuf(Window *window, u16 *entry
     case NAME_SCREEN_BUTTON_PAGE_JP_UNUSED_2:
     case NAME_SCREEN_BUTTON_BACK:
     case NAME_SCREEN_BUTTON_OK:
-        character = 1;
+        character = CHAR_JP_SPACE;
         break;
     }
 
     for (i = 0; i < 3; ++i) {
-        tmpBuf[i] = 1;
+        tmpBuf[i] = CHAR_JP_SPACE;
     }
 
     tmpBuf[0] = character;
-    if (character != 1) {
+    if (character != CHAR_JP_SPACE) {
         for (i = 0; i < NELEMS(_02102422); ++i) {
             if (character == _02102422[i][0]) {
                 for (j = 0; j < 3; ++j) {
@@ -1594,7 +1619,7 @@ static void NamingScreen_LoadKeyboardLayout(u16 (*keyboard)[13], const int pageN
     }
 }
 
-static int sub_02084884(NamingScreenAppData *data, u16 key, BOOL isButtonInput) {
+static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppData *data, u16 key, BOOL isButtonInput) {
     if (key == NAME_SCREEN_CONTROL_SPACE || key == NAME_SCREEN_CONTROL_SKIP) {
         key = CHAR_JP_SPACE;
     }
@@ -1605,28 +1630,28 @@ static int sub_02084884(NamingScreenAppData *data, u16 key, BOOL isButtonInput) 
     }
     if (!Sprite_GetVisibleFlag(data->sprites1[8]) && gSystem.touchNew == 0) {
         Sprite_SetVisibleFlag(data->sprites1[8], TRUE);
-        return 2;
+        return NS_MAIN_STATE_INPUT_LOOP;
     }
 
     switch (key) {
     case NAME_SCREEN_CONTROL_DAKU:
         if (sub_02084D04(0x2A, 0x52, 1, NAME_SCREEN_CONTROL_DAKU, data->entryBuf, data->textCursorPos)) {
             FillWindowPixelBuffer(&data->windows[3], 1);
-            sub_02084540(&data->windows[3], data->entryBuf, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
+            NamingScreen_BlitRawCharactersToWindow(&data->windows[3], data->entryBuf, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
             PlaySE(SEQ_SE_DP_BOX02);
         }
         break;
     case NAME_SCREEN_CONTROL_HANDAKU:
         if (sub_02084D04(0x48, 0x52, 2, NAME_SCREEN_CONTROL_HANDAKU, data->entryBuf, data->textCursorPos)) {
             FillWindowPixelBuffer(&data->windows[3], 1);
-            sub_02084540(&data->windows[3], data->entryBuf, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
+            NamingScreen_BlitRawCharactersToWindow(&data->windows[3], data->entryBuf, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
             PlaySE(SEQ_SE_DP_BOX02);
         }
         break;
     case NAME_SCREEN_BUTTON_PAGE_JP_UNUSED_2:
         if (sub_02084C98(0, 0x52, data->entryBuf, data->textCursorPos)) {
             FillWindowPixelBuffer(&data->windows[3], 1);
-            sub_02084540(&data->windows[3], data->entryBuf, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
+            NamingScreen_BlitRawCharactersToWindow(&data->windows[3], data->entryBuf, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
             ++data->spriteStates[4];
             PlaySE(SEQ_SE_DP_BOX02);
         }
@@ -1651,7 +1676,7 @@ static int sub_02084884(NamingScreenAppData *data, u16 key, BOOL isButtonInput) 
             if (data->textCursorPos == 0) {
                 CopyWindowToVram(&data->windows[3]);
             } else {
-                sub_02084540(&data->windows[3], data->entryBuf, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
+                NamingScreen_BlitRawCharactersToWindow(&data->windows[3], data->entryBuf, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
             }
             NamingScreen_PrintLastCharacterOfEntryBuf(&data->windows[4], data->entryBuf, data->textCursorPos, data->unk_15A, data->charBuf, data->unkJapaneseString);
             sub_02084E18(data->textEntrySprites, data->textCursorPos, data->maxLen);
@@ -1661,24 +1686,24 @@ static int sub_02084884(NamingScreenAppData *data, u16 key, BOOL isButtonInput) 
         break;
     case NAME_SCREEN_BUTTON_OK:
         sub_020164C4(data->unk_5C4);
-        if (data->unk_014 == 0) {
+        if (!data->printedFromBattleGMM) {
             PlaySE(SEQ_SE_DP_PIRORIRO);
             ++data->spriteStates[6];
             BeginNormalPaletteFade(2, 0, 0, RGB_BLACK, 16, 1, HEAP_ID_NAMING_SCREEN);
             NamingScreen_UpdateFieldMenuInputState(data, isButtonInput);
-            return 3;
+            return NS_MAIN_STATE_WAIT_FADE_OUT;
         } else {
             data->unk_45C = 5;
         }
         break;
     default:
         if (data->pageNum == 4 && key == CHAR_JP_SPACE) {
-            return 2;
+            return NS_MAIN_STATE_INPUT_LOOP;
         }
         if (data->textCursorPos != data->maxLen) {
             data->entryBuf[data->textCursorPos] = key;
             FillWindowPixelBuffer(&data->windows[3], 1);
-            sub_02084540(&data->windows[3], data->entryBuf, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
+            NamingScreen_BlitRawCharactersToWindow(&data->windows[3], data->entryBuf, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
             ++data->textCursorPos;
             sub_02084E18(data->textEntrySprites, data->textCursorPos, data->maxLen);
             PlaySE(SEQ_SE_DP_BOX02);
@@ -1687,14 +1712,14 @@ static int sub_02084884(NamingScreenAppData *data, u16 key, BOOL isButtonInput) 
             G2_SetBlendAlpha(0, GX_BLEND_PLANEMASK_BG0 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2, 8, 8);
             Sprite_SetAnimCtrlSeq(data->sprites1[8], 60);
             if (data->textCursorPos == data->maxLen) {
-                data->unk_034 = 1;
+                data->kbCursor.unk18 = TRUE;
             }
             NamingScreen_PrintLastCharacterOfEntryBuf(&data->windows[4], data->entryBuf, data->textCursorPos, data->unk_15A, data->charBuf, data->unkJapaneseString);
         }
         break;
     }
 
-    return 2;
+    return NS_MAIN_STATE_INPUT_LOOP;
 }
 
 static void NamingScreen_UpdateFieldMenuInputState(NamingScreenAppData *data, BOOL toggle) {
@@ -1710,8 +1735,8 @@ static void NamingScreen_UpdateFieldMenuInputState(NamingScreenAppData *data, BO
 // DANGER: Can spin infinitely here
 static int sub_02084C78(const u16 *a0, int a1) {
     do {
-        a1 = sub_02084264(a1 + 1, 0, 3);
-    } while (a0[a1] == 1);
+        a1 = NamingScreen_WrapAroundWithinInterval(a1 + 1, 0, 3);
+    } while (a0[a1] == CHAR_JP_SPACE);
     return a0[a1];
 }
 
@@ -1814,7 +1839,7 @@ static void sub_02084E54(Window *window, u16 fillVal, int pageNum, u32 textColor
     }
 
     for (int i = 0; i < 5; ++i) {
-        sub_02084540(window, sKeyboardLayoutPtrs[pageNum][i], 0, 19 * i + 4, 16, TEXT_SPEED_NOTRANSFER, textColor, pRawData);
+        NamingScreen_BlitRawCharactersToWindow(window, sKeyboardLayoutPtrs[pageNum][i], 0, 19 * i + 4, 16, TEXT_SPEED_NOTRANSFER, textColor, pRawData);
     }
 
     CopyWindowToVram(window);
@@ -1846,14 +1871,14 @@ static void NamingScreen_PlaceCursorSprite(NamingScreenAppData *data) {
     }
 
     if (data->textCursorPos == data->maxLen) {
-        data->cursorX = 12;
-        data->cursorY = 0;
+        data->kbCursor.x = 12;
+        data->kbCursor.y = 0;
         Sprite_SetAnimCtrlSeq(data->sprites1[8], 39);
-        data->unk_034 = 0;
+        data->kbCursor.unk18 = FALSE;
     } else {
         Sprite_SetAnimCtrlSeq(data->sprites1[8], 39);
     }
-    if (!data->unk_030) {
+    if (!data->kbCursor.showCursor) {
         Sprite_SetVisibleFlag(data->sprites1[8], FALSE);
     } else {
         NamingScreen_UpdateCursorSpritePosition(data, 0);
@@ -1969,8 +1994,8 @@ static BOOL NamingScreen_HandleTouchInput(NamingScreenAppData *data) {
                 break;
             }
             if (x >= x0 && y >= y0 && x <= x0 + dx && y <= y0 + dy) {
-                data->cursorX = sTouchHitboxDef[i].cursorX;
-                data->cursorY = sTouchHitboxDef[i].cursorY;
+                data->kbCursor.x = sTouchHitboxDef[i].cursorX;
+                data->kbCursor.y = sTouchHitboxDef[i].cursorY;
                 return TRUE;
             }
         }
