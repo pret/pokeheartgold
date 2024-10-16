@@ -58,6 +58,17 @@ typedef enum NamingScreenMainState {
     NS_MAIN_STATE_WAIT_FADE_OUT,
 } NamingScreenMainState;
 
+typedef enum NamingScreenPageSwitchState {
+    NS_PAGESWITCH_STATE_DRAW_NEW_PAGE,
+    NS_PAGESWITCH_STATE_SET_INIT_POS,
+    NS_PAGESWITCH_STATE_MOVE_BGS,
+    NS_PAGESWITCH_STATE_FINISH_BGS,
+    NS_PAGESWITCH_STATE_IDLE,
+    NS_PAGESWITCH_STATE_PRINT_BATTLE_MESSAGE,
+    NS_PAGESWITCH_STATE_WAIT_BATTLE_MESSAGE,
+    NS_PAGESWITCH_STATE_DELAY_AND_FADE_OUT,
+} NamingScreenPageSwitchState;
+
 typedef struct NamingScreenCursor {
     int x;
     int y;
@@ -545,34 +556,34 @@ BOOL NamingScreenApp_Main(OVY_MANAGER *ovyMan, int *pState) {
         break;
     case NS_MAIN_STATE_INPUT_LOOP:
         switch (data->pageSwitchState) {
-        case 0:
-        case 1:
-        case 2:
-        case 3:
+        case NS_PAGESWITCH_STATE_DRAW_NEW_PAGE:
+        case NS_PAGESWITCH_STATE_SET_INIT_POS:
+        case NS_PAGESWITCH_STATE_MOVE_BGS:
+        case NS_PAGESWITCH_STATE_FINISH_BGS:
             break;
-        case 4:
+        case NS_PAGESWITCH_STATE_IDLE:
             if (!data->kbCursor.ignoreInput) {
                 *pState = NamingScreen_HandleInput(data, (NamingScreenMainState)*pState);
             }
             NamingScreen_PlaceCursorSprite(data);
             break;
-        case 5:
+        case NS_PAGESWITCH_STATE_PRINT_BATTLE_MESSAGE:
             NamingScreen_PrepareBattleMessage(data, ovyMan);
             FillWindowPixelBuffer(&data->windows[9], 15);
             DrawFrameAndWindow2(&data->windows[9], FALSE, 256, 10);
             data->battleMessageTextPrinterId = AddTextPrinterParameterized(&data->windows[9], 1, data->battleMsgString, 0, 0, 1, NULL);
             CopyWindowToVram(&data->windows[9]);
-            data->pageSwitchState = 6;
+            data->pageSwitchState = NS_PAGESWITCH_STATE_WAIT_BATTLE_MESSAGE;
             break;
-        case 6:
+        case NS_PAGESWITCH_STATE_WAIT_BATTLE_MESSAGE:
             if (!TextPrinterCheckActive(data->battleMessageTextPrinterId)) {
                 PlaySE(SEQ_SE_DP_PIRORIRO);
                 ++data->spriteAnimUpdateReq[6];
                 data->delayCounter    = 0;
-                data->pageSwitchState = 7;
+                data->pageSwitchState = NS_PAGESWITCH_STATE_DELAY_AND_FADE_OUT;
             }
             break;
-        case 7:
+        case NS_PAGESWITCH_STATE_DELAY_AND_FADE_OUT:
             ++data->delayCounter;
             if (data->delayCounter > 30) {
                 BeginNormalPaletteFade(2, 0, 0, RGB_BLACK, 16, 1, HEAP_ID_NAMING_SCREEN);
@@ -605,7 +616,7 @@ static NamingScreenMainState NamingScreen_HandleInput(NamingScreenAppData *data,
             return ret;
         }
         if (data->type != NAME_SCREEN_UNK4) {
-            data->pageSwitchState = 0;
+            data->pageSwitchState = NS_PAGESWITCH_STATE_DRAW_NEW_PAGE;
             ++data->pageNum;
             if (data->pageNum >= 3) {
                 data->pageNum = 0;
@@ -918,7 +929,7 @@ static void NamingScreen_ToggleGfxPlanes(GFPlaneToggle enable) {
 static void NamingScreen_InitKeyboardAndEntryCursors(NamingScreenAppData *data, OVY_MANAGER *ovyMan) {
     NamingScreenArgs *args = OverlayManager_GetArgs(ovyMan);
 
-    data->pageSwitchState = 4;
+    data->pageSwitchState = NS_PAGESWITCH_STATE_IDLE;
     NamingScreen_SetPagePgPosVecs(data->bgPosVecs, GF_BG_LYR_MAIN_0);
     BgSetPosTextAndCommit(data->bgConfig, data->activeKeyboardBgId, BG_POS_OP_SET_X, data->bgPosVecs[data->activeKeyboardBgId].x);
     BgSetPosTextAndCommit(data->bgConfig, data->activeKeyboardBgId, BG_POS_OP_SET_Y, data->bgPosVecs[data->activeKeyboardBgId].y);
@@ -1228,7 +1239,7 @@ static void NamingScreen_HandlePageSwitch(BgConfig *bgConfig, Window *windows, i
     GFBgLayer bgId_curr = (GFBgLayer)(bgId_prev ^ 1);
 
     switch (*pState) {
-    case 0: {
+    case NS_PAGESWITCH_STATE_DRAW_NEW_PAGE: {
         u16 fillVal = sKeyboardFrameColors[pageNum] | (sKeyboardFrameColors[pageNum] << 4);
         GfGfxLoader_LoadScrnData(NARC_data_namein, pageNum + 6, bgConfig, bgId_prev, 0, 0x380, TRUE, HEAP_ID_NAMING_SCREEN);
         NamingScreen_SetPagePgPosVecs(posVecs, bgId_prev);
@@ -1236,12 +1247,12 @@ static void NamingScreen_HandlePageSwitch(BgConfig *bgConfig, Window *windows, i
         ++(*pState);
         break;
     }
-    case 1:
+    case NS_PAGESWITCH_STATE_SET_INIT_POS:
         BgSetPosTextAndCommit(bgConfig, bgId_prev, BG_POS_OP_SET_X, 238);
         BgSetPosTextAndCommit(bgConfig, bgId_prev, BG_POS_OP_SET_Y, -80);
         ++*(pState);
         break;
-    case 2:
+    case NS_PAGESWITCH_STATE_MOVE_BGS:
         posVecs[bgId_prev].x -= 24;
         if (posVecs[bgId_prev].x < -1) {
             WiggleEffectTaskData
@@ -1264,7 +1275,7 @@ static void NamingScreen_HandlePageSwitch(BgConfig *bgConfig, Window *windows, i
         BgSetPosTextAndCommit(bgConfig, bgId_prev, BG_POS_OP_SET_X, posVecs[bgId_prev].x);
         BgSetPosTextAndCommit(bgConfig, bgId_curr, BG_POS_OP_SET_Y, posVecs[bgId_curr].y);
         break;
-    case 3:
+    case NS_PAGESWITCH_STATE_FINISH_BGS:
         posVecs[bgId_curr].y -= 10;
         if (posVecs[bgId_curr].y < -196) {
             posVecs[bgId_curr].y = -196;
@@ -1278,7 +1289,7 @@ static void NamingScreen_HandlePageSwitch(BgConfig *bgConfig, Window *windows, i
             PlaySE(SEQ_SE_DP_NAMEIN_01);
         }
         break;
-    case 4:
+    case NS_PAGESWITCH_STATE_IDLE:
         break;
     }
 }
@@ -1674,7 +1685,7 @@ static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppDa
     case NAME_SCREEN_BUTTON_PAGE_SYMBOLS:
     case NAME_SCREEN_BUTTON_PAGE_JP_UNUSED:
         if (data->pageNum != key - NAME_SCREEN_BUTTON_PAGE_UPPER) {
-            data->pageSwitchState = 0;
+            data->pageSwitchState = NS_PAGESWITCH_STATE_DRAW_NEW_PAGE;
             data->pageNum         = key - NAME_SCREEN_BUTTON_PAGE_UPPER;
             NamingScreen_LoadKeyboardLayout(data->keyboard, data->pageNum);
             ++data->spriteAnimUpdateReq[key - NAME_SCREEN_BUTTON_PAGE_UPPER];
@@ -1706,7 +1717,7 @@ static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppDa
             NamingScreen_UpdateFieldMenuInputState(data, isButtonInput);
             return NS_MAIN_STATE_WAIT_FADE_OUT;
         } else {
-            data->pageSwitchState = 5;
+            data->pageSwitchState = NS_PAGESWITCH_STATE_PRINT_BATTLE_MESSAGE;
         }
         break;
     default:
