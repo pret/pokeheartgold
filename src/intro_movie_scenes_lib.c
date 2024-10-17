@@ -325,7 +325,7 @@ void Task_IntroMovie_WindowPanEffect(SysTask *task, void *pVoid) {
 
 void IntroMovie_WindowsOn_SetInsideOutsidePlanes(int winIn, int winOut, u8 topScreenEffect, u8 bottomScreenEffect, int whichScreen) {
     if (whichScreen) {
-        GX_SetVisibleWnd(3); // both
+        GX_SetVisibleWnd(GX_WNDMASK_W0 | GX_WNDMASK_W1);
         G2_SetWnd0InsidePlane(winIn, topScreenEffect);
         G2_SetWnd1InsidePlane(winIn, topScreenEffect);
         G2_SetWndOutsidePlane(winOut, topScreenEffect);
@@ -374,7 +374,7 @@ int IntroMovie_GetTotalFrameCount(IntroMovieOverlayData *data) {
 void IntroMovie_InitBgAnimGxState(IntroMovieOverlayData *data) {
     G2_BlendNone();
     G2S_BlendNone();
-    GX_SetVisibleWnd(0);
+    GX_SetVisibleWnd(GX_WNDMASK_NONE);
     GXS_SetVisibleWnd(0);
     for (int i = 0; i < 8; ++i) {
         BgSetPosTextAndCommit(data->bgConfig, i, BG_POS_OP_SET_X, 0);
@@ -456,7 +456,7 @@ void Task_IntroMovie_CircleWipeEffect(SysTask *task, void *pVoid) {
             sub_0200FBF4(screen, RGB_BLACK);
         } else {
             if (effectData->whichScreen) {
-                GX_SetVisibleWnd(0);
+                GX_SetVisibleWnd(GX_WNDMASK_NONE);
             } else {
                 GXS_SetVisibleWnd(0);
             }

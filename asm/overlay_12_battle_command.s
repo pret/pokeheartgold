@@ -1187,7 +1187,7 @@ _02246DB0:
 	mov r2, #0
 	bl GetMonData
 	str r0, [r5, #0x10]
-	ldr r0, _0224706C ; =sOverlayTemplate_NamingScreen
+	ldr r0, _0224706C ; =gOverlayTemplate_NamingScreen
 	add r1, r5, #0
 	mov r2, #5
 	bl OverlayManager_New
@@ -1484,7 +1484,7 @@ _0224702E:
 _02247060: .word 0x0000FFFF
 _02247064: .word 0x0000219C
 _02247068: .word 0x00000496
-_0224706C: .word sOverlayTemplate_NamingScreen
+_0224706C: .word gOverlayTemplate_NamingScreen
 _02247070: .word 0x00000498
 _02247074:
 	add r0, r5, #0

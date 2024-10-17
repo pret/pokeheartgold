@@ -124,7 +124,7 @@ void SetScreenModeAndDisable(const struct GraphicsModes *gfxModes, enum GFScreen
     }
 }
 
-void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *template, u8 bgType, GFPlaneToggle enable) {
+void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *template, u8 bgType, u8 enable) {
     u8 screenSize = TranslateGFBgModePairToGXScreenSize((enum GFBgScreenSize) template->size, (enum GFBgType)bgType);
 
     switch (bgId) {
@@ -624,7 +624,7 @@ void SetBgPriority(u8 bgId, u16 priority) {
     }
 }
 
-void ToggleBgLayer(u8 bgId, GFPlaneToggle toggle) {
+void ToggleBgLayer(u8 bgId, u8 toggle) {
     switch (bgId) {
     case GF_BG_LYR_MAIN_0:
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, toggle);

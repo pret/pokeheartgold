@@ -8,7 +8,7 @@
 	.include "unk_020910D8.inc"
 	.include "global.inc"
 
-	.public sOverlayTemplate_NamingScreen
+	.public gOverlayTemplate_NamingScreen
 
 	.text
 
@@ -136,7 +136,7 @@ _0209119A:
 	bl GetMonData
 	ldr r1, [r4, #8]
 	str r0, [r1, #8]
-	ldr r1, _0209123C ; =sOverlayTemplate_NamingScreen
+	ldr r1, _0209123C ; =gOverlayTemplate_NamingScreen
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	bl CallApplicationAsTask
@@ -178,7 +178,7 @@ _02091232:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02091238: .word _02106048
-_0209123C: .word sOverlayTemplate_NamingScreen
+_0209123C: .word gOverlayTemplate_NamingScreen
 	thumb_func_end Task_HatchEggInParty
 
 	thumb_func_start CallTask_HatchEggInParty

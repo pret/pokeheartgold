@@ -7,7 +7,7 @@
 	.include "unk_02091564.inc"
 	.include "global.inc"
 
-	.public sOverlayTemplate_NamingScreen
+	.public gOverlayTemplate_NamingScreen
 
 	.text
 

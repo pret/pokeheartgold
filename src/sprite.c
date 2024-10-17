@@ -398,7 +398,7 @@ u8 Sprite_GetPalOffset(Sprite *sprite) {
     return sprite->palOffset;
 }
 
-void Sprite_SetDrawPriority(Sprite *sprite, u16 priority) {
+void Sprite_SetDrawPriority(Sprite *sprite, u32 priority) {
     SpriteList *spriteList = sprite->spriteList;
     sprite->drawPriority   = priority;
     Sprite_EjectFromList(sprite);
