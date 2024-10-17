@@ -47,3 +47,23 @@ asm void func() {
 // clang-format on
 #endif // NONMATCHING
 ```
+
+### Ubuntu (WSL) Installation
+
+On older versions of Ubuntu, clang-format will default to earlier versions.
+To install clang-format-18 on Ubuntu (WSL), run the following:
+```sh
+wget https://apt.llvm.org/llvm.sh
+chmod +x llvm.sh
+sudo ./llvm.sh 18
+sudo apt install clang-format-18
+```
+And then create a symbolic link:
+```sh
+ln -s /usr/bin/clang-format-18 /usr/bin/clang-format
+```
+
+If you're using the pre-commit hook, you also want to set up a symlink for git:
+```sh
+git config alias.clang-format clang-format-18
+```
