@@ -186,11 +186,11 @@ static const struct {
 };
 
 static const UnkTemplate_0200D748 ov62_021E67C8[5] = {
-    {.x = 0x40,  .y = 0x60, .z = 0, .animation = 0, .spritePriority = 0, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { 0xA01, 0xA03, 0xA02, 0xA04, 0, 0 }, .bgPriority = 0, .vramTransfer = 0},
-    { .x = 0xC0, .y = 0x60, .z = 0, .animation = 0, .spritePriority = 0, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { 0xA01, 0xA03, 0xA02, 0xA04, 0, 0 }, .bgPriority = 0, .vramTransfer = 0},
-    { .x = 0x80, .y = 0x60, .z = 0, .animation = 0, .spritePriority = 0, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { 0xB01, 0xB03, 0xB02, 0xB04, 0, 0 }, .bgPriority = 0, .vramTransfer = 0},
-    { .x = 0xD8, .y = 0xB0, .z = 0, .animation = 0, .spritePriority = 0, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DSUB,  .resIdList = { 0xD01, 0xD03, 0xD02, 0xD04, 1, 0 }, .bgPriority = 0, .vramTransfer = 0},
-    { .x = 0,    .y = 0,    .z = 0, .animation = 0, .spritePriority = 0, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { 0xC01, 0xC03, 0xC02, 0xC04, 0, 0 }, .bgPriority = 0, .vramTransfer = 0},
+    { .x = 0x40, .y = 0x60, .z = 0, .animation = 0, .spritePriority = 0, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { 0xA01, 0xA03, 0xA02, 0xA04, 0, 0 }, .bgPriority = 0, .vramTransfer = 0 },
+    { .x = 0xC0, .y = 0x60, .z = 0, .animation = 0, .spritePriority = 0, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { 0xA01, 0xA03, 0xA02, 0xA04, 0, 0 }, .bgPriority = 0, .vramTransfer = 0 },
+    { .x = 0x80, .y = 0x60, .z = 0, .animation = 0, .spritePriority = 0, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { 0xB01, 0xB03, 0xB02, 0xB04, 0, 0 }, .bgPriority = 0, .vramTransfer = 0 },
+    { .x = 0xD8, .y = 0xB0, .z = 0, .animation = 0, .spritePriority = 0, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DSUB,  .resIdList = { 0xD01, 0xD03, 0xD02, 0xD04, 1, 0 }, .bgPriority = 0, .vramTransfer = 0 },
+    { .x = 0,    .y = 0,    .z = 0, .animation = 0, .spritePriority = 0, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { 0xC01, 0xC03, 0xC02, 0xC04, 0, 0 }, .bgPriority = 0, .vramTransfer = 0 },
 };
 static const u32 ov62_021E6694[7] = { 0, 1, 2, 3, 4, 4, 4 };
 
@@ -245,9 +245,9 @@ static const struct {
     u8 fontId;
     u32 color;
 } ov62_021E66F8[3] = {
-    {.bgId = 0,  .x = 1,  .y = 1,  .width = 9,  .height = 3, .palNum = 0, .baseTile = 1,    .fontId = 0, .color = 0xF0200},
-    { .bgId = 4, .x = 5,  .y = 8,  .width = 22, .height = 5, .palNum = 0, .baseTile = 1,    .fontId = 0, .color = 0xF0200},
-    { .bgId = 4, .x = 24, .y = 21, .width = 6,  .height = 2, .palNum = 0, .baseTile = 0x6F, .fontId = 4, .color = 0xE0F00},
+    { .bgId = 0, .x = 1,  .y = 1,  .width = 9,  .height = 3, .palNum = 0, .baseTile = 1,    .fontId = 0, .color = 0xF0200 },
+    { .bgId = 4, .x = 5,  .y = 8,  .width = 22, .height = 5, .palNum = 0, .baseTile = 1,    .fontId = 0, .color = 0xF0200 },
+    { .bgId = 4, .x = 24, .y = 21, .width = 6,  .height = 2, .palNum = 0, .baseTile = 0x6F, .fontId = 4, .color = 0xE0F00 },
 };
 
 const OVY_MGR_TEMPLATE gApplication_MicTest = { MicTest_Init, MicTest_Main, MicTest_Exit, FS_OVERLAY_ID_NONE };

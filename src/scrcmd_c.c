@@ -132,13 +132,13 @@ static const WindowTemplate _020FAC94 = {
 };
 
 static const u8 sConditionTable[6][3] = {
-  //<  =  >
-    {1,  0, 0}, // lt
-    { 0, 1, 0}, // eq
-    { 0, 0, 1}, // gt
-    { 1, 1, 0}, // le
-    { 0, 1, 1}, // ge
-    { 1, 0, 1}, // ne
+    //<  =  >
+    { 1, 0, 0 }, // lt
+    { 0, 1, 0 }, // eq
+    { 0, 0, 1 }, // gt
+    { 1, 1, 0 }, // le
+    { 0, 1, 1 }, // ge
+    { 1, 0, 1 }, // ne
 };
 
 static u8 _021D415C;
@@ -4755,9 +4755,9 @@ BOOL ScrCmd_OpenPhotoAlbum(ScriptContext *ctx) {
 BOOL ScrCmd_PlaceStarterBallsInElmsLab(ScriptContext *ctx) {
     FieldSystem *fieldSystem    = ctx->fieldSystem;
     const VecFx32 ballCoords[3] = {
-        {FX32_CONST(131),  0, FX32_CONST(65)},
-        { FX32_CONST(141), 0, FX32_CONST(65)},
-        { FX32_CONST(136), 0, FX32_CONST(72)},
+        { FX32_CONST(131), 0, FX32_CONST(65) },
+        { FX32_CONST(141), 0, FX32_CONST(65) },
+        { FX32_CONST(136), 0, FX32_CONST(72) },
     };
     int n, i;
 

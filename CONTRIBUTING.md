@@ -12,7 +12,7 @@ This repository includes an opinionated `clang-format` specification to ensure t
 
 ### Requirements
 
-- `clang-format@17` or newer
+- `clang-format@18` or newer
 
 ### Usage
 

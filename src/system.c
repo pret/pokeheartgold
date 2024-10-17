@@ -84,10 +84,10 @@ void HBlankIntrRegsToggle(BOOL enable) {
 }
 
 static const struct HeapParam sDefaultHeapSpec[] = {
-    {0xD200,    OS_ARENA_MAIN},
-    { 0x23600,  OS_ARENA_MAIN},
-    { 0x10,     OS_ARENA_MAIN},
-    { 0x11D000, OS_ARENA_MAIN},
+    { 0xD200,   OS_ARENA_MAIN },
+    { 0x23600,  OS_ARENA_MAIN },
+    { 0x10,     OS_ARENA_MAIN },
+    { 0x11D000, OS_ARENA_MAIN },
 };
 
 void sub_0201A1B4(void) {
