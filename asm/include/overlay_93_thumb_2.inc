@@ -15,8 +15,8 @@
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public NewString_ReadMsgData
 .public SpriteRenderer_LoadResourcesAndCreateSprite
-.public sub_0200D934
-.public sub_0200D944
+.public GfGfxHandler_GetPlttProxy
+.public GfGfxHandler_GetPlttNumById
 .public UnkImageStruct_Delete
 .public TickSpriteAnimation1Frame
 .public UnkImageStruct_TickSpriteAnimationNFrames

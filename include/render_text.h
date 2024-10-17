@@ -27,10 +27,15 @@ typedef struct TextPrinterSubStruct {
     u8 autoScrollDelay    : 8;
 } TextPrinterSubStruct;
 
+// Argument to TextFlags_SetAutoScrollParam
+#define AUTO_SCROLL_OFF     0
+#define AUTO_SCROLL_ENABLE  (1 << 0)
+#define AUTO_SCROLL_SPEEDUP (1 << 1)
+
 RenderResult RenderText(TextPrinter *printer);
 void TextFlags_SetCanABSpeedUpPrint(BOOL enable);
 void TextPrinter_SetDownArrowBaseTile(int tile);
-void TextFlags_SetAutoScrollParam(int a0);
+void TextFlags_SetAutoScrollParam(int param);
 void TextFlags_SetCanTouchSpeedUpPrint(BOOL enable);
 void TextFlags_SetAlternateDownArrow(BOOL enable);
 u8 TextFlags_GetHasSpedUpInput();

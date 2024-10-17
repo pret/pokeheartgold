@@ -58,7 +58,7 @@
 .public SpriteRenderer_Delete
 .public sub_0200D2A4
 .public SpriteRenderer_CreateSprite
-.public sub_0200D934
+.public GfGfxHandler_GetPlttProxy
 .public UnkImageStruct_Delete
 .public thunk_Set2dSpriteVisibleFlag
 .public thunk_Sprite_SetPriority

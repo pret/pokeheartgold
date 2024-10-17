@@ -41,7 +41,7 @@
 .public sub_0200AF00
 .public sub_0200B00C
 .public sub_0200B0A8
-.public sub_0200B0F8
+.public GF_PlttResObj_GetPlttProxy
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public NewString_ReadMsgData

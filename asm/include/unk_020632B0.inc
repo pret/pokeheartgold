@@ -30,7 +30,7 @@
 .public MapObject_SetSpriteID
 .public MapObject_GetMovement
 .public MapObject_GetType
-.public MapObject_GetScript
+.public MapObject_GetScriptID
 .public MapObject_SetFacingDirection
 .public MapObject_GetFacingDirection
 .public MapObject_SetOrQueueFacing

@@ -1,19 +1,19 @@
 #ifndef NITRO_GX_GX_H_
 #define NITRO_GX_GX_H_
 
-#include <nitro/types.h>
 #include <nitro/hw/io_reg.h>
+#include <nitro/types.h>
 
 #define GX_LCD_SIZE_X 256
 #define GX_LCD_SIZE_Y 192
 
 typedef enum {
     GX_DISPMODE_GRAPHICS = 0x01,
-    GX_DISPMODE_VRAM_A = 0x02,
-    GX_DISPMODE_VRAM_B = 0x06,
-    GX_DISPMODE_VRAM_C = 0x0a,
-    GX_DISPMODE_VRAM_D = 0x0e,
-    GX_DISPMODE_MMEM = 0x03
+    GX_DISPMODE_VRAM_A   = 0x02,
+    GX_DISPMODE_VRAM_B   = 0x06,
+    GX_DISPMODE_VRAM_C   = 0x0a,
+    GX_DISPMODE_VRAM_D   = 0x0e,
+    GX_DISPMODE_MMEM     = 0x03
 } GXDispMode;
 
 typedef enum {
@@ -54,22 +54,18 @@ typedef enum {
 } GXBGCharOffset;
 
 typedef enum {
-    GX_OBJVRAMMODE_CHAR_2D = (0 << REG_GX_DISPCNT_OBJMAP_SHIFT) | (0 << REG_GX_DISPCNT_EXOBJ_SHIFT),
-    GX_OBJVRAMMODE_CHAR_1D_32K =
-    (1 << REG_GX_DISPCNT_OBJMAP_SHIFT) | (0 << REG_GX_DISPCNT_EXOBJ_SHIFT),
-    GX_OBJVRAMMODE_CHAR_1D_64K =
-    (1 << REG_GX_DISPCNT_OBJMAP_SHIFT) | (1 << REG_GX_DISPCNT_EXOBJ_SHIFT),
-    GX_OBJVRAMMODE_CHAR_1D_128K =
-    (1 << REG_GX_DISPCNT_OBJMAP_SHIFT) | (2 << REG_GX_DISPCNT_EXOBJ_SHIFT),
-    GX_OBJVRAMMODE_CHAR_1D_256K =
-    (1 << REG_GX_DISPCNT_OBJMAP_SHIFT) | (3 << REG_GX_DISPCNT_EXOBJ_SHIFT)
+    GX_OBJVRAMMODE_CHAR_2D      = (0 << REG_GX_DISPCNT_OBJMAP_SHIFT) | (0 << REG_GX_DISPCNT_EXOBJ_SHIFT),
+    GX_OBJVRAMMODE_CHAR_1D_32K  = (1 << REG_GX_DISPCNT_OBJMAP_SHIFT) | (0 << REG_GX_DISPCNT_EXOBJ_SHIFT),
+    GX_OBJVRAMMODE_CHAR_1D_64K  = (1 << REG_GX_DISPCNT_OBJMAP_SHIFT) | (1 << REG_GX_DISPCNT_EXOBJ_SHIFT),
+    GX_OBJVRAMMODE_CHAR_1D_128K = (1 << REG_GX_DISPCNT_OBJMAP_SHIFT) | (2 << REG_GX_DISPCNT_EXOBJ_SHIFT),
+    GX_OBJVRAMMODE_CHAR_1D_256K = (1 << REG_GX_DISPCNT_OBJMAP_SHIFT) | (3 << REG_GX_DISPCNT_EXOBJ_SHIFT)
 } GXOBJVRamModeChar;
 
 typedef enum {
     GX_POWER_OFF = 0,
 
     GX_POWER_2D_MAIN = 1 << REG_GX_POWCNT_E2DG_SHIFT,
-    GX_POWER_2D_SUB = 1 << REG_GX_POWCNT_E2DGB_SHIFT,
+    GX_POWER_2D_SUB  = 1 << REG_GX_POWCNT_E2DGB_SHIFT,
 
     GX_POWER_RE = 1 << REG_GX_POWCNT_RE_SHIFT,
     GX_POWER_GE = 1 << REG_GX_POWCNT_GE_SHIFT,
@@ -97,6 +93,13 @@ typedef enum {
     GX_PLANEMASK_ALL = GX_PLANEMASK_BG0 | GX_PLANEMASK_BG1 | GX_PLANEMASK_BG2 | GX_PLANEMASK_BG3 | GX_PLANEMASK_OBJ,
 } GXPlaneMask;
 
+typedef enum {
+    GX_WNDMASK_NONE = 0x00,
+    GX_WNDMASK_W0   = 0x01,
+    GX_WNDMASK_W1   = 0x02,
+    GX_WNDMASK_OW   = 0x04
+} GXWndMask;
+
 void GX_SetGraphicsMode(GXDispMode dispMode, GXBGMode bgMode, GXBG0As bg0_2d3d);
 void GXS_SetGraphicsMode(GXBGMode bgMode);
 
@@ -123,15 +126,12 @@ static inline void GX_SetVCountEqVal(s32 val) {
     reg_GX_DISPSTAT = (u16)(reg_GX_DISPSTAT & (REG_GX_DISPSTAT_VBLK_MASK | REG_GX_DISPSTAT_HBLK_MASK | REG_GX_DISPSTAT_LYC_MASK | REG_GX_DISPSTAT_VBI_MASK | REG_GX_DISPSTAT_HBI_MASK | REG_GX_DISPSTAT_VQI_MASK) | ((val & 0xFF) << 8) | ((val & 0x100) >> 1));
 }
 
-static inline void GX_SetBGScrOffset(GXBGScrOffset offset)
-{
-    reg_GX_DISPCNT = (u32)((reg_GX_DISPCNT & ~REG_GX_DISPCNT_BGSCREENOFFSET_MASK) |
-                           (offset << REG_GX_DISPCNT_BGSCREENOFFSET_SHIFT));
+static inline void GX_SetBGScrOffset(GXBGScrOffset offset) {
+    reg_GX_DISPCNT = (u32)((reg_GX_DISPCNT & ~REG_GX_DISPCNT_BGSCREENOFFSET_MASK) | (offset << REG_GX_DISPCNT_BGSCREENOFFSET_SHIFT));
 }
 
 static inline void GX_SetBGCharOffset(GXBGCharOffset offset) {
-    reg_GX_DISPCNT = (u32)((reg_GX_DISPCNT & ~REG_GX_DISPCNT_BGCHAROFFSET_MASK) |
-                           (offset << REG_GX_DISPCNT_BGCHAROFFSET_SHIFT));
+    reg_GX_DISPCNT = (u32)((reg_GX_DISPCNT & ~REG_GX_DISPCNT_BGCHAROFFSET_MASK) | (offset << REG_GX_DISPCNT_BGCHAROFFSET_SHIFT));
 }
 
 s32 GX_VBlankIntr(BOOL enable);
@@ -196,4 +196,4 @@ static inline int GXS_GetMasterBrightness(void) {
     return GXx_GetMasterBrightness_(&reg_GXS_DB_MASTER_BRIGHT);
 }
 
-#endif //NITRO_GX_GX_H_
+#endif // NITRO_GX_GX_H_

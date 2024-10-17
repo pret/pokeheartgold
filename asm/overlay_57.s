@@ -2004,7 +2004,7 @@ ov57_022387E0: ; 0x022387E0
 	add r0, #0xe0
 	ldr r0, [r0]
 	ldr r1, _022388E0 ; =0x00007530
-	bl sub_0200D934
+	bl GfGfxHandler_GetPlttProxy
 	str r0, [sp, #0x38]
 	mov r2, #0
 	mov r0, #0x9b

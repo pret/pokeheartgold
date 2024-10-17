@@ -3607,7 +3607,7 @@ ov108_021E756C: ; 0x021E756C
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_0200D934
+	bl GfGfxHandler_GetPlttProxy
 	str r0, [sp, #0x1c]
 	mov r0, #3
 	str r0, [sp, #0x30]

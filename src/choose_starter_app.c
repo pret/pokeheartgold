@@ -299,7 +299,7 @@ BOOL ChooseStarter_Init(OVY_MANAGER *ovy, int *state_p) {
     initBallModelPositions(work);
     createMonSprites(work);
     TextFlags_SetCanABSpeedUpPrint(FALSE);
-    TextFlags_SetAutoScrollParam(TRUE);
+    TextFlags_SetAutoScrollParam(AUTO_SCROLL_ENABLE);
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
     return TRUE;
 }
@@ -540,7 +540,7 @@ BOOL ChooseStarter_Exit(OVY_MANAGER *ovy, int *state) {
     struct ChooseStarterArgs *args    = OverlayManager_GetArgs(ovy);
 
     TextFlags_SetCanABSpeedUpPrint(FALSE);
-    TextFlags_SetAutoScrollParam(FALSE);
+    TextFlags_SetAutoScrollParam(AUTO_SCROLL_OFF);
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
     args->cursorPos = work->curSelection;
     Main_SetVBlankIntrCB(NULL, NULL);
@@ -1201,7 +1201,7 @@ static void loadOneMonObj(GF_2DGfxResMan *charResMan, GF_2DGfxResMan *plttResMan
     sub_0200ADA4(charResObj);
     sub_0200B00C(plttResObj);
     charProxy = sub_0200AF00(charResObj);
-    plttProxy = sub_0200B0F8(plttResObj, charProxy);
+    plttProxy = GF_PlttResObj_GetPlttProxy(plttResObj, charProxy);
     imageloc  = NNS_G2dGetImageLocation(charProxy, NNS_G2D_VRAM_TYPE_2DSUB);
     plttloc   = NNS_G2dGetImagePaletteLocation(plttProxy, NNS_G2D_VRAM_TYPE_2DSUB);
     DC_FlushRange(charData, 0xC80);

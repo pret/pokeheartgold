@@ -849,7 +849,7 @@ BOOL ScrCmd_TrainerTips(ScriptContext *ctx) {
     StringExpandPlaceholders(*msg_fmt, *unk, *tmp_str);
 
     TextFlags_SetCanABSpeedUpPrint(TRUE);
-    TextFlags_SetAutoScrollParam(FALSE);
+    TextFlags_SetAutoScrollParam(AUTO_SCROLL_OFF);
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
 
     Window *window  = ov01_021F3D80(fieldSystem->unk68);

@@ -116,4 +116,8 @@ LEGEND_DEMO_FILES := \
 $(LEGEND_DEMO_NARC): $(addprefix $(LEGEND_DEMO_DIR)/,$(LEGEND_DEMO_FILES))
 	$(KNARC) -d $(LEGEND_DEMO_DIR) -p $@ -i
 
-FS_CLEAN_TARGETS += $(LEGEND_DEMO_NARC)
+clean-legend-demo:
+	$(RM) $(LEGEND_DEMO_NARC)
+
+.PHONY: clean-legend-demo
+clean-filesystem: clean-legend-demo

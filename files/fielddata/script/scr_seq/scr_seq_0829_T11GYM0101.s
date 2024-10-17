@@ -61,7 +61,7 @@ scr_seq_T11GYM0101_000:
 	goto_if_eq _0156
 	give_badge BADGE_MARSH
 	addvar VAR_UNK_4135, 1
-	add_special_game_stat SCORE_EVENT_22
+	add_special_game_stat SCORE_EVENT_BADGE_GET
 	setflag FLAG_UNK_998
 	settrainerflag TRAINER_PSYCHIC_M_FRANKLIN
 	settrainerflag TRAINER_PSYCHIC_M_JARED

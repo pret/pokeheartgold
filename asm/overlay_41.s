@@ -9928,7 +9928,7 @@ ov41_0224A734: ; 0x0224A734
 	ldr r0, [r4, #0x4c]
 	bl Get2DGfxResObjById
 	mov r1, #0
-	bl sub_0200B0F8
+	bl GF_PlttResObj_GetPlttProxy
 	str r0, [sp, #0x98]
 	ldr r0, [sp, #0xb8]
 	mov r1, #1

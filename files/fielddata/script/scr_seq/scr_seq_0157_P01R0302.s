@@ -58,117 +58,117 @@ _008F:
 	closemsg
 	compare VAR_UNK_4101, 0
 	goto_if_ne _00B3
-	setvar VAR_SPECIAL_x8004, 298
+	setvar VAR_SPECIAL_x8004, ITEM_FLAME_PLATE
 	setvar VAR_SPECIAL_x8005, 1
 	goto _0296
 
 _00B3:
 	compare VAR_UNK_4101, 1
 	goto_if_ne _00D2
-	setvar VAR_SPECIAL_x8004, 299
+	setvar VAR_SPECIAL_x8004, ITEM_SPLASH_PLATE
 	setvar VAR_SPECIAL_x8005, 1
 	goto _0296
 
 _00D2:
 	compare VAR_UNK_4101, 2
 	goto_if_ne _00F1
-	setvar VAR_SPECIAL_x8004, 300
+	setvar VAR_SPECIAL_x8004, ITEM_ZAP_PLATE
 	setvar VAR_SPECIAL_x8005, 1
 	goto _0296
 
 _00F1:
 	compare VAR_UNK_4101, 3
 	goto_if_ne _0110
-	setvar VAR_SPECIAL_x8004, 301
+	setvar VAR_SPECIAL_x8004, ITEM_MEADOW_PLATE
 	setvar VAR_SPECIAL_x8005, 1
 	goto _0296
 
 _0110:
 	compare VAR_UNK_4101, 4
 	goto_if_ne _012F
-	setvar VAR_SPECIAL_x8004, 302
+	setvar VAR_SPECIAL_x8004, ITEM_ICICLE_PLATE
 	setvar VAR_SPECIAL_x8005, 1
 	goto _0296
 
 _012F:
 	compare VAR_UNK_4101, 5
 	goto_if_ne _014E
-	setvar VAR_SPECIAL_x8004, 303
+	setvar VAR_SPECIAL_x8004, ITEM_FIST_PLATE
 	setvar VAR_SPECIAL_x8005, 1
 	goto _0296
 
 _014E:
 	compare VAR_UNK_4101, 6
 	goto_if_ne _016D
-	setvar VAR_SPECIAL_x8004, 304
+	setvar VAR_SPECIAL_x8004, ITEM_TOXIC_PLATE
 	setvar VAR_SPECIAL_x8005, 1
 	goto _0296
 
 _016D:
 	compare VAR_UNK_4101, 7
 	goto_if_ne _018C
-	setvar VAR_SPECIAL_x8004, 305
+	setvar VAR_SPECIAL_x8004, ITEM_EARTH_PLATE
 	setvar VAR_SPECIAL_x8005, 1
 	goto _0296
 
 _018C:
 	compare VAR_UNK_4101, 8
 	goto_if_ne _01AB
-	setvar VAR_SPECIAL_x8004, 306
+	setvar VAR_SPECIAL_x8004, ITEM_SKY_PLATE
 	setvar VAR_SPECIAL_x8005, 1
 	goto _0296
 
 _01AB:
 	compare VAR_UNK_4101, 9
 	goto_if_ne _01CA
-	setvar VAR_SPECIAL_x8004, 307
+	setvar VAR_SPECIAL_x8004, ITEM_MIND_PLATE
 	setvar VAR_SPECIAL_x8005, 1
 	goto _0296
 
 _01CA:
 	compare VAR_UNK_4101, 10
 	goto_if_ne _01E9
-	setvar VAR_SPECIAL_x8004, 308
+	setvar VAR_SPECIAL_x8004, ITEM_INSECT_PLATE
 	setvar VAR_SPECIAL_x8005, 1
 	goto _0296
 
 _01E9:
 	compare VAR_UNK_4101, 11
 	goto_if_ne _0208
-	setvar VAR_SPECIAL_x8004, 309
+	setvar VAR_SPECIAL_x8004, ITEM_STONE_PLATE
 	setvar VAR_SPECIAL_x8005, 1
 	goto _0296
 
 _0208:
 	compare VAR_UNK_4101, 12
 	goto_if_ne _0227
-	setvar VAR_SPECIAL_x8004, 310
+	setvar VAR_SPECIAL_x8004, ITEM_SPOOKY_PLATE
 	setvar VAR_SPECIAL_x8005, 1
 	goto _0296
 
 _0227:
 	compare VAR_UNK_4101, 13
 	goto_if_ne _0246
-	setvar VAR_SPECIAL_x8004, 311
+	setvar VAR_SPECIAL_x8004, ITEM_DRACO_PLATE
 	setvar VAR_SPECIAL_x8005, 1
 	goto _0296
 
 _0246:
 	compare VAR_UNK_4101, 14
 	goto_if_ne _0265
-	setvar VAR_SPECIAL_x8004, 312
+	setvar VAR_SPECIAL_x8004, ITEM_DREAD_PLATE
 	setvar VAR_SPECIAL_x8005, 1
 	goto _0296
 
 _0265:
 	compare VAR_UNK_4101, 15
 	goto_if_ne _0284
-	setvar VAR_SPECIAL_x8004, 313
+	setvar VAR_SPECIAL_x8004, ITEM_IRON_PLATE
 	setvar VAR_SPECIAL_x8005, 1
 	goto _0296
 
 _0284:
-	setvar VAR_SPECIAL_x8004, 92
+	setvar VAR_SPECIAL_x8004, ITEM_NUGGET
 	setvar VAR_SPECIAL_x8005, 1
 	goto _029C
 

@@ -13,4 +13,8 @@ $(DATA_RESDAT_BIN): %.bin: %.json $(DATA_RESDAT_DIR).json.txt | $(WORK_DIR)/incl
 $(DATA_RESDAT_NARC): $(DATA_RESDAT_BIN)
 	$(KNARC) -d $(DATA_RESDAT_DIR) -p $@ -i
 
-FS_CLEAN_TARGETS += $(DATA_RESDAT_NARC) $(DATA_RESDAT_BIN)
+clean-resdat:
+	$(RM) $(DATA_RESDAT_NARC) $(DATA_RESDAT_BIN)
+
+.PHONY: clean-resdat
+clean-filesystem: clean-resdat

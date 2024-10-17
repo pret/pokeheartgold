@@ -849,7 +849,7 @@ _0223A6D6:
 	str r0, [sp, #0x54]
 	ldr r0, [sp, #0x20]
 	ldr r1, [sp, #0x98]
-	bl sub_0200D934
+	bl GfGfxHandler_GetPlttProxy
 	mov r1, #0
 	str r0, [sp, #0x58]
 	ldr r0, [sp, #0x34]

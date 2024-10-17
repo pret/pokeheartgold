@@ -17,6 +17,7 @@ typedef enum HeapID {
     HEAP_ID_10,
     HEAP_ID_FIELD,
     HEAP_ID_PARTY_MENU,
+    HEAP_ID_NAMING_SCREEN         = 18,
     HEAP_ID_20                    = 20,
     HEAP_ID_26                    = 26,
     HEAP_ID_TITLE_SCREEN          = 30,
@@ -39,6 +40,7 @@ typedef enum HeapID {
     HEAP_ID_BERRY_POTS_APP        = 131,
     HEAP_ID_RANKINGS_APP          = 158,
     HEAP_ID_VOLTORB_FLIP          = 160,
+    HEAP_ID_MAX,
 } HeapID;
 
 typedef struct HeapParam {

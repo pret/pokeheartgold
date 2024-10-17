@@ -41,7 +41,7 @@
 .public sub_0200B00C
 .public sub_0200B084
 .public sub_0200B0CC
-.public sub_0200B12C
+.public GF_PlttResObj_GetVramSlotNum
 .public sub_0200B2E0
 .public sub_0200B2E8
 .public SpriteRenderer_Create

@@ -27,7 +27,7 @@
 .public sub_0200B00C
 .public sub_0200B050
 .public sub_0200B0CC
-.public sub_0200B12C
+.public GF_PlttResObj_GetVramSlotNum
 .public AllocFromHeap
 .public FreeToHeap
 .public SpriteList_Delete

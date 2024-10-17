@@ -658,7 +658,7 @@ ov90_02258C74: ; 0x02258C74
 	ldr r1, _02258C88 ; =0x00001388
 	bl Get2DGfxResObjById
 	mov r1, #1
-	bl sub_0200B12C
+	bl GF_PlttResObj_GetVramSlotNum
 	pop {r3, pc}
 	nop
 _02258C88: .word 0x00001388

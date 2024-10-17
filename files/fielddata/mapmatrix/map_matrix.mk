@@ -1,3 +1,7 @@
 FIELDDATA_MAPMATRIX_MAP_MATRIX_DIR := files/fielddata/mapmatrix/map_matrix
 
-FS_CLEAN_TARGETS += $(FIELDDATA_MAPMATRIX_MAP_MATRIX_DIR).narc
+clean-map-matrix:
+	$(RM) $(FIELDDATA_MAPMATRIX_MAP_MATRIX_DIR).narc
+
+.PHONY: clean-map-matrix
+clean-filesystem: clean-map-matrix

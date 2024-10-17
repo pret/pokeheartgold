@@ -336,7 +336,7 @@ static BOOL IntroMovie_Scene3_Main(IntroMovieOverlayData *data, IntroMovieScene3
         break;
     case INTRO_SCENE3_LOAD_ROCKETS:
         if (IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_SUB_2)) {
-            GX_SetVisibleWnd(0);
+            GX_SetVisibleWnd(GX_WNDMASK_NONE);
             GXS_SetVisibleWnd(0);
             GfGfxLoader_LoadCharData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000041_NCGR_lz, bgConfig, GF_BG_LYR_SUB_3, 0, 0x4000, TRUE, HEAP_ID_INTRO_MOVIE);
             IntroMovie_AdvanceSceneStep(data);

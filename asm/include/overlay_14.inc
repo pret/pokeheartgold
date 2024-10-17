@@ -65,7 +65,7 @@
 .public SpriteRenderer_LoadAnimResObjFromNarcId
 .public SpriteRenderer_LoadResourcesAndCreateSprite
 .public SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
-.public sub_0200D934
+.public GfGfxHandler_GetPlttProxy
 .public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 .public UnkImageStruct_Delete
 .public UnkImageStruct_TickSpriteAnimation1Frame
@@ -292,7 +292,7 @@
 .public _fsub
 .public _s32_div_f
 .public _u32_div_f
-.public sOverlayTemplate_NamingScreen
+.public gOverlayTemplate_NamingScreen
 .public gOverlayTemplate_PokemonSummary
 .public gSystem
 .public PCBox_Init

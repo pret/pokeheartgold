@@ -67,7 +67,7 @@ typedef struct OptionsApp_Data {
     BgConfig *bgConfig;
     OptionsApp_Options options;
     Options *playerOptionsUnused; // unused copy of playerOptions
-    u32 *unk20;
+    BOOL *unk20;
     Options *playerOptions;
     MsgData *msgData;
     u8 filler2C[0x8];

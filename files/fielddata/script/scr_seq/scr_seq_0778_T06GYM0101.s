@@ -290,7 +290,7 @@ scr_seq_T06GYM0101_023:
 	goto_if_eq _03DD
 	give_badge BADGE_THUNDER
 	addvar VAR_UNK_4135, 1
-	add_special_game_stat SCORE_EVENT_22
+	add_special_game_stat SCORE_EVENT_BADGE_GET
 	setflag FLAG_UNK_31A
 	hide_person obj_T06GYM0101_stop
 	hide_person obj_T06GYM0101_stop_2

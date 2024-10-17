@@ -107,7 +107,7 @@ scr_seq_T07GYM0101_000:
 	goto_if_eq _01BB
 	give_badge BADGE_RAINBOW
 	addvar VAR_UNK_4135, 1
-	add_special_game_stat SCORE_EVENT_22
+	add_special_game_stat SCORE_EVENT_BADGE_GET
 	settrainerflag TRAINER_TWINS_JO_AND_ZOE
 	settrainerflag TRAINER_LASS_MICHELLE
 	settrainerflag TRAINER_PICNICKER_TANYA

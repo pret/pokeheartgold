@@ -147,7 +147,7 @@ int Sprite_GetPalIndex(Sprite *sprite);
 void Sprite_SetPalOffset(Sprite *sprite, u8 offset);
 void Sprite_SetPalOffsetRespectVramOffset(Sprite *sprite, u8 offset);
 u8 Sprite_GetPalOffset(Sprite *sprite);
-void Sprite_SetDrawPriority(Sprite *sprite, u16 priority);
+void Sprite_SetDrawPriority(Sprite *sprite, u32 priority);
 u16 Sprite_GetDrawPriority(Sprite *sprite);
 void Sprite_SetImageProxy(Sprite *sprite, NNSG2dImageProxy *proxy);
 NNSG2dImageProxy *Sprite_GetImageProxy(Sprite *sprite);

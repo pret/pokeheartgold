@@ -189,7 +189,7 @@ static BOOL IntroMovie_Scene4_Main(IntroMovieOverlayData *data, IntroMovieScene4
             IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->hand2Sprite, FALSE);
             GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
             GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
-            GX_SetVisibleWnd(0);
+            GX_SetVisibleWnd(GX_WNDMASK_NONE);
             GXS_SetVisibleWnd(0);
             IntroMovie_AdvanceSceneStep(data);
         }

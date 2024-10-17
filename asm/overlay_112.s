@@ -22288,7 +22288,7 @@ ov112_021F0C50: ; 0x021F0C50
 	add r6, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_0200B0F8
+	bl GF_PlttResObj_GetPlttProxy
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #2

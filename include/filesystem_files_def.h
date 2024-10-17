@@ -35,7 +35,7 @@ typedef enum NarcId {
     NARC_a_0_2_8                                            = 28,
     NARC_a_0_2_9                                            = 29,
     NARC_a_0_3_0                                            = 30,
-    NARC_a_0_3_1                                            = 31,
+    NARC_data_namein                                        = 31,
     NARC_fielddata_eventdata_zone_event                     = 32,
     NARC_poketool_personal_wotbl                            = 33,
     NARC_poketool_personal_evo                              = 34,

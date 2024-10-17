@@ -1797,7 +1797,7 @@ BOOL FollowMon_IsVisible(FieldSystem *fieldSystem) {
 BOOL FollowMon_GetPermission(FieldSystem *fieldSystem) {
     u32 mapNo;
 
-    mapNo = Save_FollowMon_GetMapId(Save_FollowMon_Get(fieldSystem->saveData));
+    mapNo = Save_FollowMon_GetMapID(Save_FollowMon_Get(fieldSystem->saveData));
     return FollowMon_GetPermissionBySpeciesAndMap(FollowMon_GetSpecies(fieldSystem->followMon.mapObject), mapNo);
 }
 
@@ -1902,7 +1902,7 @@ static LocalMapObject *FollowMon_CreateMapObject(MapObjectManager *mapObjectMana
     MapObject_SetID(mapObject, obj_partner_poke);
     MapObject_SetType(mapObject, 0);
     MapObject_SetFlagID(mapObject, 0);
-    MapObject_SetScript(mapObject, std_following_mon);
+    MapObject_SetScriptID(mapObject, std_following_mon);
     MapObject_SetParam(mapObject, 0, 2);
     FollowMon_SetObjectParams(mapObject, species, form, shiny);
     MapObject_SetXRange(mapObject, -1);

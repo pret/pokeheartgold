@@ -519,7 +519,7 @@ scr_seq_T08GYM0101_001:
 	setvar VAR_TEMP_x400B, 0
 	give_badge BADGE_SOUL
 	addvar VAR_UNK_4135, 1
-	add_special_game_stat SCORE_EVENT_22
+	add_special_game_stat SCORE_EVENT_BADGE_GET
 	settrainerflag TRAINER_PICNICKER_CINDY
 	settrainerflag TRAINER_CAMPER_BARRY
 	settrainerflag TRAINER_LASS_LINDA

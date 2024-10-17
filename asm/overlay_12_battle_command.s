@@ -323,7 +323,7 @@ _02246636:
 	ldr r0, [r4, #0x2c]
 	str r0, [sp, #0x140]
 	ldr r0, [r4]
-	bl ov12_0223A8E4
+	bl BattleSystem_GetSpriteRenderer
 	str r0, [sp, #0x14c]
 	ldr r0, [r4]
 	bl BattleSystem_GetPaletteData
@@ -1187,7 +1187,7 @@ _02246DB0:
 	mov r2, #0
 	bl GetMonData
 	str r0, [r5, #0x10]
-	ldr r0, _0224706C ; =sOverlayTemplate_NamingScreen
+	ldr r0, _0224706C ; =gOverlayTemplate_NamingScreen
 	add r1, r5, #0
 	mov r2, #5
 	bl OverlayManager_New
@@ -1484,7 +1484,7 @@ _0224702E:
 _02247060: .word 0x0000FFFF
 _02247064: .word 0x0000219C
 _02247068: .word 0x00000496
-_0224706C: .word sOverlayTemplate_NamingScreen
+_0224706C: .word gOverlayTemplate_NamingScreen
 _02247070: .word 0x00000498
 _02247074:
 	add r0, r5, #0
@@ -3799,10 +3799,10 @@ ov12_02248228: ; 0x02248228
 	bl BattleSystem_GetBgConfig
 	str r0, [sp, #0x1c]
 	add r0, r7, #0
-	bl ov12_0223A8E4
+	bl BattleSystem_GetSpriteRenderer
 	add r6, r0, #0
 	add r0, r7, #0
-	bl ov12_0223A8EC
+	bl BattleSystem_GetGfxHandler
 	add r4, r0, #0
 	add r0, r7, #0
 	bl BattleSystem_GetPaletteData
@@ -4025,7 +4025,7 @@ _022483C6:
 	str r0, [sp, #0x34]
 	ldr r1, _022484AC ; =0x00004E30
 	add r0, r4, #0
-	bl sub_0200D934
+	bl GfGfxHandler_GetPlttProxy
 	mov r1, #0
 	str r0, [sp, #0x38]
 	ldr r0, [sp, #0x60]
@@ -4077,7 +4077,7 @@ _022484D0: .word 0x00010200
 ov12_022484D4: ; 0x022484D4
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
-	bl ov12_0223A8EC
+	bl BattleSystem_GetGfxHandler
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl UnkImageStruct_Delete

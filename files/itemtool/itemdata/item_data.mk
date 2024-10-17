@@ -9,4 +9,8 @@ $(ITEMDATA_NARC): %.narc: %.csv $(MANIFEST) $$(csvdep)
 
 $(ITEMICON_NARC): $(wildcard files/itemtool/itemdata/item_icon/*.{NANR,NCLR,NCGR,NCER})
 
-FS_CLEAN_TARGETS += $(ITEMDATA_NARC) $(ITEMICON_NARC)
+clean-itemdata:
+	$(RM) $(ITEMDATA_NARC) $(ITEMICON_NARC)
+
+.PHONY: clean-itemdata
+clean-filesystem: clean-itemdata

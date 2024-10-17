@@ -772,13 +772,13 @@ void CallTask_02050960(TaskManager *taskManager, s32 target, s32 maxLevel, u32 f
     u32 mode;
 
     if (flag == 0) {
-        setup = BattleSetup_New(HEAP_ID_FIELD, (BATTLE_TYPE_LINK | BATTLE_TYPE_TRAINER));
+        setup = BattleSetup_New(HEAP_ID_FIELD, BATTLE_TYPE_LINK | BATTLE_TYPE_TRAINER);
         mode  = 0;
     } else if (flag == 1) {
-        setup = BattleSetup_New(HEAP_ID_FIELD, (BATTLE_TYPE_LINK | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TRAINER));
+        setup = BattleSetup_New(HEAP_ID_FIELD, BATTLE_TYPE_LINK | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TRAINER);
         mode  = 7;
     } else {
-        setup = BattleSetup_New(HEAP_ID_FIELD, (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_MULTI | BATTLE_TYPE_LINK | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TRAINER));
+        setup = BattleSetup_New(HEAP_ID_FIELD, BATTLE_TYPE_FRONTIER | BATTLE_TYPE_MULTI | BATTLE_TYPE_LINK | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TRAINER);
 
         // these don't seem right
         setup->trainerId[BATTLER_ENEMY]  = TRAINER_RIVAL_SILVER;

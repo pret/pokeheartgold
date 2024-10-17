@@ -72,4 +72,8 @@ INTRO_DEMO_FILES := \
 $(INTRO_DEMO_NARC): $(addprefix $(INTRO_DEMO_DIR)/,$(INTRO_DEMO_FILES))
 	$(KNARC) -p $@ -d $(INTRO_DEMO_DIR) -i
 
-FS_CLEAN_TARGETS += $(INTRO_DEMO_NARC)
+clean-intro:
+	$(RM) $(INTRO_DEMO_NARC)
+
+.PHONY: clean-intro
+clean-filesystem: clean-intro

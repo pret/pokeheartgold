@@ -5,4 +5,4 @@
 .public sub_020912AC
 .public sub_020912D0
 .public _u32_div_f
-.public sOverlayTemplate_NamingScreen
+.public gOverlayTemplate_NamingScreen

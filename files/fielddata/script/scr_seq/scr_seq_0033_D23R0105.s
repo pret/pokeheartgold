@@ -126,7 +126,7 @@ _01DA:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _021D
 	npc_msg msg_0069_D23R0105_00004
-	setvar VAR_SPECIAL_x8004, 476
+	setvar VAR_SPECIAL_x8004, ITEM_BASEMENT_KEY
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_obtain_item_verbose
 	closemsg

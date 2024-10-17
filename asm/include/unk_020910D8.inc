@@ -21,7 +21,7 @@
 .public MonSetTrainerMemo
 .public CallTask_HatchEggInParty
 .public sub_02093134
-.public sOverlayTemplate_NamingScreen
+.public gOverlayTemplate_NamingScreen
 .public ov95_021E6D70
 .public ov95_021E6E88
 .public ov95_021E6F0C

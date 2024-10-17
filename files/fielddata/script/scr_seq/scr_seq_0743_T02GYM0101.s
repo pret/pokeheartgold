@@ -55,7 +55,7 @@ scr_seq_T02GYM0101_000:
 	give_badge BADGE_EARTH
 	addvar VAR_UNK_4135, 1
 	setflag FLAG_UNK_998
-	add_special_game_stat SCORE_EVENT_22
+	add_special_game_stat SCORE_EVENT_BADGE_GET
 	settrainerflag TRAINER_ACE_TRAINER_M_ARABELLA
 	settrainerflag TRAINER_ACE_TRAINER_F_SALMA
 	settrainerflag TRAINER_ACE_TRAINER_M_BONITA

@@ -2222,7 +2222,7 @@ ov93_02260CF8: ; 0x02260CF8
 	ldr r0, [r7, #0x28]
 	ldr r1, _02260E10 ; =0x00002716
 	mov r2, #2
-	bl sub_0200D944
+	bl GfGfxHandler_GetPlttNumById
 	str r0, [sp, #0xc]
 	mov r0, #0
 	str r0, [sp, #0x18]
@@ -2372,7 +2372,7 @@ ov93_02260E1C: ; 0x02260E1C
 	ldr r0, [r5, #0x28]
 	ldr r1, _02260F08 ; =0x00002716
 	mov r2, #2
-	bl sub_0200D944
+	bl GfGfxHandler_GetPlttNumById
 	str r0, [sp, #4]
 	mov r0, #0
 	str r0, [sp, #0x10]
@@ -4569,7 +4569,7 @@ _02261F42:
 	str r0, [sp, #0x48]
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x98]
-	bl sub_0200D934
+	bl GfGfxHandler_GetPlttProxy
 	str r0, [sp, #0x4c]
 	mov r0, #0
 	str r0, [sp, #0x50]

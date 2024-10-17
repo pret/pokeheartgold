@@ -32,4 +32,8 @@ PLIST_GRA_FILES := \
 
 $(PLIST_GRA_NARC): $(addprefix $(PLIST_GRA_DIR)/,$(PLIST_GRAPFILES))
 
-FS_CLEAN_TARGETS += $(PLIST_GRA_NARC)
+clean-plist-gra:
+	$(RM) $(PLIST_GRA_NARC)
+
+.PHONY: clean-plist-gra
+clean-filesystem: clean-plist-gra

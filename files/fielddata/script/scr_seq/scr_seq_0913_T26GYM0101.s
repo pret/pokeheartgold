@@ -133,9 +133,9 @@ scr_seq_T26GYM0101_000:
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
 	give_badge BADGE_MINERAL
-	addvar VAR_UNK_4134, 1
-	add_special_game_stat SCORE_EVENT_22
-	compare VAR_UNK_4134, 3
+	addvar VAR_MIDGAME_BADGES, 1
+	add_special_game_stat SCORE_EVENT_BADGE_GET
+	compare VAR_MIDGAME_BADGES, 3
 	goto_if_ne _01CB
 	setvar VAR_SCENE_ROCKET_TAKEOVER, 1
 _01CB:

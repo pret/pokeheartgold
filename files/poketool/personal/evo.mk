@@ -11,4 +11,8 @@ $(EVO_NARC): %.narc: $(EVO_JSON) $(EVO_TEMPLATE)
 $(EVO_NARC): MWCFLAGS += -include global.h
 $(EVO_JSON): | $(WORK_DIR)/include/global.h
 
-FS_CLEAN_TARGETS += $(EVO_NARC) $(EVO_NARC:%.narc=%.c) $(EVO_NARC:%.narc=%.o)
+clean-evo:
+	$(RM) $(EVO_NARC) $(EVO_NARC:%.narc=%.c) $(EVO_NARC:%.narc=%.o)
+
+.PHONY: clean-evo
+clean-filesystem: clean-evo

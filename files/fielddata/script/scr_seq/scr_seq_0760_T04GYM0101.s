@@ -216,7 +216,7 @@ scr_seq_T04GYM0101_000:
 	goto_if_eq _035E
 	give_badge BADGE_CASCADE
 	addvar VAR_UNK_4135, 1
-	add_special_game_stat SCORE_EVENT_22
+	add_special_game_stat SCORE_EVENT_BADGE_GET
 	settrainerflag TRAINER_SWIMMER_F_DIANA
 	settrainerflag TRAINER_SWIMMER_F_BRIANA
 	settrainerflag TRAINER_SWIMMER_F_JOY

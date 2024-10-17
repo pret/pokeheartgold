@@ -3,11 +3,15 @@ PMS_AIKOTOBA_S    := $(PMS_AIKOTOBA_STEM).s
 PMS_AIKOTOBA_O    := $(PMS_AIKOTOBA_STEM).o
 PMS_AIKOTOBA_NARC := $(PMS_AIKOTOBA_STEM).narc
 
-FS_CLEAN_TARGETS += $(PMS_AIKOTOBA_NARC) $(PMS_AIKOTOBA_O)
+PMS_AIKOTOBA_DEP  := $(PMS_AIKOTOBA_S:%.s=%.d)
 
+clean-pms-aikotoba:
+	$(RM) $(PMS_AIKOTOBA_NARC) $(PMS_AIKOTOBA_O) $(PMS_AIKOTOBA_DEP)
+
+.PHONY: clean-pms-aikotoba
+clean-filesystem: clean-pms-aikotoba
 
 ifeq ($(NODEP),)
-PMS_AIKOTOBA_DEP  := $(PMS_AIKOTOBA_S:%.s=%.d)
 $(PMS_AIKOTOBA_NARC): %.narc: %.s
 $(PMS_AIKOTOBA_NARC): %.narc: %.s %.d
 	@echo gen  $@
@@ -22,7 +26,6 @@ $(PMS_AIKOTOBA_NARC): %.narc: %.s %.d
 $(PMS_AIKOTOBA_DEP):
 
 include $(wildcard $(PMS_AIKOTOBA_DEP))
-FS_CLEAN_TARGETS += $(PMS_AIKOTOBA_DEP)
 else
 $(PMS_AIKOTOBA_NARC): %.narc: %.s
 	@echo gen  $@
