@@ -13,9 +13,10 @@ env:
   CALCROM_DISCORD_WEBHOOK_AVATAR_URL: "https://i.imgur.com/38BQHdd.png"
   CALCROM_DISCORD_WEBHOOK_USERNAME: OK
   CALCROM_WEBHOOK_URL: ${{ secrets.WEBHOOKURL }}
+  COMPARE: 1
 
 jobs:
-  build-heartgold:
+  build:
     runs-on: ubuntu-22.04
 
     steps:
@@ -33,42 +34,37 @@ jobs:
           sudo apt update
           sudo apt -y --allow-downgrades install --install-recommends winehq-stable
 
-    steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Build ROM
-        env:
-          GAME_VERSION: SOULSILVER
-          GAME_LANGUAGE: ENGLISH
-          GAME_REVISION: 0
-          NONMATCHING: 0
-          COMPARE: 1
-          BUILD_OUT: build/soulsilver.us/
-        uses: ./.github/workflows/build-rom
+      - name: Setup Repo
+        run: |
+          mkdir -p ~/download
+          cd ~/download
+          wget https://github.com/pret/pokeheartgold/raw/workflows/assets/mwccarm.zip
+          wget https://github.com/pret/pokeheartgold/raw/workflows/assets/NitroSDK-3_2-060901.7z
+          unzip mwccarm.zip
+          mv mwccarm $GITHUB_WORKSPACE/tools
+          7z x NitroSDK-3_2-060901.7z
+          mv NitroSDK-3_2-060901/tools/bin $GITHUB_WORKSPACE/tools
+          mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM7-TS.lcf.template $GITHUB_WORKSPACE/sub/
+          mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM9-TS.lcf.template $GITHUB_WORKSPACE/
+          mv NitroSDK-3_2-060901/include/nitro/specfiles/mwldarm.response.template $GITHUB_WORKSPACE/
+        working-directory: ~
 
-  build-nonmatching-heartgold:
-    runs-on: ubuntu-22.04
+      - name: Set Swap Space
+        uses: pierotofy/set-swap-space@master
+        with:
+          swap-size-gb: 19
 
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-
-      - name: Build ROM
+      - name: Build HeartGold
         env:
           GAME_VERSION: HEARTGOLD
           GAME_LANGUAGE: ENGLISH
           GAME_REVISION: 0
         run: make -j4
 
-  build-nonmatching-soulsilver:
-    runs-on: ubuntu-22.04
-
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-
-      - name: Build ROM
+      - name: Build SoulSilver
         env:
           GAME_VERSION: SOULSILVER
           GAME_LANGUAGE: ENGLISH
@@ -76,18 +72,34 @@ jobs:
         run: make -j4
 
       - name: Webhook
+        if: ${{ github.event_name == 'push' }}
         run: |
           sudo chmod 755 $GITHUB_WORKSPACE/.github/calcrom/webhook.sh
           $GITHUB_WORKSPACE/.github/calcrom/webhook.sh pokeheartgold "$CALCROM_WEBHOOK_URL"
         continue-on-error: true
 
+      - name: Post error archive
+        if: failure()
+        continue-on-error: true
+        run: find . -maxdepth 2 -type d \( -name build -or -name files \) -exec tar -czvhf failure.tar.gz {} +
+
+      - name: Post error upload
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pokeheartgold-failure-${{ github.run_id }}
+          path: failure.tar.gz
+          retention-days: 1
+
       - name: Checkout xMAP
+        if: ${{ github.event_name == 'push' }}
         uses: actions/checkout@v4
         with:
           path: 'xmap'
           ref: 'xmap'
 
       - name: Move xMAP
+        if: ${{ github.event_name == 'push' }}
         run: |
           mkdir -p xmap
           cp build/heartgold.us/*.xMAP xmap/heartgoldus.xMAP
@@ -95,6 +107,7 @@ jobs:
           echo "XMAP_COMMIT_MSG=$( git log --format=%s ${GITHUB_SHA} )" >> $GITHUB_ENV
 
       - name: Update xMAP
+        if: ${{ github.event_name == 'push' }}
         uses: EndBug/add-and-commit@v9
         with:
           cwd: "./xmap"
