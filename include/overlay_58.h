@@ -3,6 +3,7 @@
 
 #include "overlay_manager.h"
 #include "save.h"
+#include "unk_020183F0.h"
 
 typedef struct ApricornBoxArgs {
     u8 unk0;
@@ -10,7 +11,7 @@ typedef struct ApricornBoxArgs {
     u16 *unk8;
     u32 unkC;
     u32 unk10;
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
     SaveData *saveData;
 } ApricornBoxArgs;
 

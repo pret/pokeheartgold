@@ -3,11 +3,12 @@
 
 #include "options.h"
 #include "overlay_manager.h"
+#include "unk_020183F0.h"
 
 typedef struct OptionsMenuArgs {
     u8 unk0[0x4];
     Options *options;
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
 } OptionsMenuArgs;
 
 BOOL OptionsMenu_Init(OVY_MANAGER *man, int *state);

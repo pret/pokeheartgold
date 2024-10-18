@@ -67,7 +67,7 @@ typedef struct OptionsApp_Data {
     BgConfig *bgConfig;
     OptionsApp_Options options;
     Options *playerOptionsUnused; // unused copy of playerOptions
-    BOOL *unk20;
+    MenuInputStateMgr *menuInputPtr;
     Options *playerOptions;
     MsgData *msgData;
     u8 filler2C[0x8];
@@ -340,11 +340,11 @@ BOOL OptionsMenu_Init(OVY_MANAGER *manager, int *state) {
     data->options.buttonMode  = Options_GetButtonMode(args->options);
     data->options.frame       = Options_GetFrame(args->options);
 
-    data->unk20               = args->unk8;
+    data->menuInputPtr        = args->unk8;
     data->playerOptionsUnused = args->options;
     data->heapId              = HEAP_ID_OPTIONS_APP;
     data->playerOptions       = args->options;
-    data->unk320              = sub_020183F0(data->unk20);
+    data->unk320              = MenuInputStateMgr_GetState(data->menuInputPtr);
     data->frameNumText        = String_New(40, data->heapId);
 
     TextFlags_SetCanABSpeedUpPrint(FALSE);
@@ -878,18 +878,18 @@ static void OptionsApp_HandleKeyInput(OptionsApp_Data *data, OptionsApp_MenuEntr
         PlaySE(SEQ_SE_DP_SELECT);
     } else if ((gSystem.newKeys & PAD_BUTTON_A) && data->currentMenuEntryId == MENU_ENTRY_6) {
         if (data->menuEntries[data->currentMenuEntryId].value == 1) {
-            sub_02018410(data->unk20, 0);
+            MenuInputStateMgr_SetState(data->menuInputPtr, MENU_INPUT_STATE_BUTTONS);
             PlaySE(SEQ_SE_DP_SAVE);
             Sprite_SetAnimCtrlSeq(data->sprites[8], 3);
             data->unk10_0 = 1;
         } else {
-            sub_02018410(data->unk20, 0);
+            MenuInputStateMgr_SetState(data->menuInputPtr, MENU_INPUT_STATE_BUTTONS);
             PlaySE(SEQ_SE_GS_GEARCANCEL);
             Sprite_SetAnimCtrlSeq(data->sprites[7], 3);
             data->unk10_0 = 2;
         }
     } else if (gSystem.newKeys & PAD_BUTTON_B) {
-        sub_02018410(data->unk20, 0);
+        MenuInputStateMgr_SetState(data->menuInputPtr, MENU_INPUT_STATE_BUTTONS);
         PlaySE(SEQ_SE_GS_GEARCANCEL);
         if (data->currentMenuEntryId == MENU_ENTRY_6 && data->menuEntries[data->currentMenuEntryId].value == 0) {
             Sprite_SetAnimCtrlSeq(data->sprites[7], 3);
@@ -914,7 +914,7 @@ static void OptionsApp_HandleInput(OptionsApp_Data *data) {
             data->unk10_0 = 1;
             PlaySE(SEQ_SE_DP_SAVE);
             data->unk320 = 1;
-            sub_02018410(data->unk20, 1);
+            MenuInputStateMgr_SetState(data->menuInputPtr, MENU_INPUT_STATE_TOUCH);
             data->menuEntries[data->currentMenuEntryId].value = 1;
             ov54_021E69D4(data, data->currentMenuEntryId);
             Sprite_SetAnimCtrlSeq(data->sprites[8], 3);
@@ -927,7 +927,7 @@ static void OptionsApp_HandleInput(OptionsApp_Data *data) {
             data->unk10_0 = 2;
             PlaySE(SEQ_SE_GS_GEARCANCEL);
             data->unk320 = 1;
-            sub_02018410(data->unk20, 1);
+            MenuInputStateMgr_SetState(data->menuInputPtr, MENU_INPUT_STATE_TOUCH);
             data->menuEntries[data->currentMenuEntryId].value = 0;
             ov54_021E69D4(data, data->currentMenuEntryId);
             Sprite_SetAnimCtrlSeq(data->sprites[7], 3);

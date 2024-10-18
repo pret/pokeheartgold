@@ -471,7 +471,7 @@ ov43_0222A290: ; 0x0222A290
 	bl String_New
 	str r0, [r5, #0x5c]
 	ldr r0, [r4, #4]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	str r0, [r5]
 	ldr r0, [r5, #4]
 	bl Save_PlayerData_GetOptionsAddr
@@ -510,7 +510,7 @@ ov43_0222A2F0: ; 0x0222A2F0
 	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, [r4, #4]
 	ldr r1, [r5]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	ldr r0, [r5, #0x58]
 	bl String_Delete
 	ldr r0, [r5, #0x5c]

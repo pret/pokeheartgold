@@ -3,9 +3,10 @@
 
 #include "overlay_manager.h"
 #include "save.h"
+#include "unk_020183F0.h"
 
 typedef struct UnownReportArgs {
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
     SaveData *saveData;
 } UnownReportArgs;
 

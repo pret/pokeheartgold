@@ -3,6 +3,7 @@
 
 #include "overlay_manager.h"
 #include "save.h"
+#include "unk_020183F0.h"
 
 typedef struct PhotoAlbumArgs {
     u8 unk0;
@@ -11,7 +12,7 @@ typedef struct PhotoAlbumArgs {
     u8 unk3[0x2];
     u8 unk5;
     u8 unk6[0x2];
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
     SaveData *saveData;
 } PhotoAlbumArgs;
 

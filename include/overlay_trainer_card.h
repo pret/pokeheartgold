@@ -3,11 +3,12 @@
 
 #include "overlay_manager.h"
 #include "save.h"
+#include "unk_020183F0.h"
 
 #define HEAP_ID_TRAINER_CARD ((HeapID)94)
 
 typedef struct UnkStruct_0203F7C2 {
-    int *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
     SaveData *saveData;
     int unk8;
     BOOL gameCleared;

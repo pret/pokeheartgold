@@ -945,12 +945,12 @@ ov14_021E6048: ; 0x021E6048
 	bne _021E6064
 	ldr r0, [r0, #4]
 	mov r1, #0
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	pop {r4, pc}
 _021E6064:
 	ldr r0, [r0, #4]
 	mov r1, #1
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov14_021E6048

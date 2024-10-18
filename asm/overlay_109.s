@@ -192,7 +192,7 @@ ov109_021E5A70: ; 0x021E5A70
 	add r5, r0, #0
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #8]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	str r0, [r5, #0xc]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0xc]
@@ -296,7 +296,7 @@ ov109_021E5B40: ; 0x021E5B40
 	ldr r0, [r4, #0x10]
 	ldr r1, [r4, #0xc]
 	ldr r0, [r0, #8]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov109_021E5B40

@@ -110,8 +110,8 @@
 .public sub_02016EDC
 .public sub_02016F2C
 .public sub_02017068
-.public sub_020183F0
-.public sub_02018410
+.public MenuInputStateMgr_GetState
+.public MenuInputStateMgr_SetState
 .public sub_02018424
 .public sub_02018474
 .public sub_020185FC

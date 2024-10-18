@@ -9,6 +9,7 @@
 #include "save.h"
 #include "task.h"
 #include "unk_0200CF18.h"
+#include "unk_020183F0.h"
 #include "yes_no_prompt.h"
 
 typedef enum AlphPuzzles {
@@ -25,7 +26,7 @@ typedef struct AlphPuzzleArgs {
     u8 puzzle;
     u8 unk6; // unused
     u8 unk7; // unused
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
     SaveData *saveData;
 } AlphPuzzleArgs;
 

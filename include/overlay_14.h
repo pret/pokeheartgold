@@ -3,10 +3,11 @@
 
 #include "overlay_manager.h"
 #include "save.h"
+#include "unk_020183F0.h"
 
 typedef struct PCBoxArgs {
     SaveData *saveData;
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
     int unk8;
 } PCBoxArgs;
 

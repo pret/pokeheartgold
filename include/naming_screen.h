@@ -20,10 +20,10 @@ typedef struct NamingScreenArgs {
     int battleMsgId;
     PCStorage *pcStorage;
     Options *options;
-    BOOL *pMenuInputState;
+    MenuInputStateMgr *pMenuInputState;
 } NamingScreenArgs;
 
-NamingScreenArgs *NamingScreen_CreateArgs(HeapID heapId, NameScreenType kind, int param, int maxLen, Options *options, BOOL *pMenuInputState);
+NamingScreenArgs *NamingScreen_CreateArgs(HeapID heapId, NameScreenType kind, int param, int maxLen, Options *options, MenuInputStateMgr *pMenuInputState);
 void NamingScreen_DeleteArgs(NamingScreenArgs *namingScreenArgs);
 
 #endif // POKEHEARTGOLD_NAMING_SCREEN_H

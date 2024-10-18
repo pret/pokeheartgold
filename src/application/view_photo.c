@@ -26,7 +26,7 @@ typedef enum ViewPhotoTaskState {
 typedef struct ViewPhotoSysTaskData {
     HeapID heapId;
     int state;
-    int lastInputWasTouch;
+    MenuInputState lastInputWasTouch;
     ViewPhotoInputResponse lastInput;
     SaveData *saveData;
     FieldSystem *fieldSystem;
@@ -140,7 +140,7 @@ SysTask *FieldSystem_CreateViewPhotoTask(FieldSystem *fieldSystem) {
     viewPhoto->bgConfig          = fieldSystem->bgConfig;
     viewPhoto->saveData          = fieldSystem->saveData;
     viewPhoto->parent            = fieldSystem->viewPhotoTask;
-    viewPhoto->lastInputWasTouch = sub_020183F0(&fieldSystem->menuInputState);
+    viewPhoto->lastInputWasTouch = MenuInputStateMgr_GetState(&fieldSystem->menuInputState);
     FieldViewPhoto_GetAlbumScrollParam(viewPhoto->parent, &viewPhoto->scrollData);
     return SysTask_CreateOnMainQueue(SysTask_ViewPhoto, viewPhoto, 1);
 }
@@ -148,7 +148,7 @@ SysTask *FieldSystem_CreateViewPhotoTask(FieldSystem *fieldSystem) {
 void FieldSystem_DestroyViewPhotoTask(FieldSystem *fieldSystem) {
     ViewPhotoSysTaskData *viewPhoto = (ViewPhotoSysTaskData *)SysTask_GetData(fieldSystem->unk_D8);
 
-    sub_02018410(&fieldSystem->menuInputState, viewPhoto->lastInputWasTouch);
+    MenuInputStateMgr_SetState(&fieldSystem->menuInputState, viewPhoto->lastInputWasTouch);
     ViewPhotoSysTask_Teardown(viewPhoto);
     FreeToHeap(viewPhoto);
     SysTask_Destroy(fieldSystem->unk_D8);
@@ -198,10 +198,10 @@ static ViewPhotoInputResponse ViewPhotoSysTask_HandleInput(ViewPhotoSysTaskData 
     if (response == VIEW_PHOTO_INPUT_NOTHING) {
         response = ViewPhotoSysTask_GetKeyInput(viewPhoto);
         if (response == VIEW_PHOTO_INPUT_NOTHING) {
-            viewPhoto->lastInputWasTouch = FALSE;
+            viewPhoto->lastInputWasTouch = MENU_INPUT_STATE_BUTTONS;
         }
     } else {
-        viewPhoto->lastInputWasTouch = TRUE;
+        viewPhoto->lastInputWasTouch = MENU_INPUT_STATE_TOUCH;
     }
     switch (response) {
     case VIEW_PHOTO_INPUT_END:

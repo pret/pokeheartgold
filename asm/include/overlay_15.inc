@@ -82,7 +82,7 @@
 .public YesNoPrompt_Destroy
 .public YesNoPrompt_InitFromTemplate
 .public YesNoPrompt_HandleInput
-.public sub_02018410
+.public MenuInputStateMgr_SetState
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
 .public SetKeyRepeatTimers

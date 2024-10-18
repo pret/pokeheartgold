@@ -10,6 +10,7 @@
 #include "options.h"
 #include "player_data.h"
 #include "unk_0200CF18.h"
+#include "unk_020183F0.h"
 
 typedef struct Ov122_021E70B8 {
     BgConfig *bgConfig;
@@ -31,7 +32,7 @@ typedef struct VoltorbFlipAppWork {
     HeapID heapId;
     Options *options;
     u16 *coins;
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
     PlayerProfile *profile;
     NARC *narc;
     BgConfig *bgConfig;

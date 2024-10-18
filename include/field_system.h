@@ -21,6 +21,7 @@
 #include "scrcmd_9.h"
 #include "sys_task.h"
 #include "sys_task_api.h"
+#include "unk_020183F0.h"
 
 typedef struct FollowMon {
     LocalMapObject *mapObject;
@@ -166,7 +167,7 @@ struct FieldSystem {
     FollowMon followMon; // E4
     u8 unk104[4];
     FieldSystemUnk108 *unk108;
-    BOOL menuInputState; // Tracks whether the last menu input was touch or keypad
+    MenuInputStateMgr menuInputState; // Tracks whether the last menu input was touch or keypad
     u8 unk_110;
     u8 unk_111[3];
     GearPhoneRingManager *phoneRingManager;

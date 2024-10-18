@@ -2728,7 +2728,7 @@ _0225EA10:
 	lsl r0, r0, #2
 	add r0, r1, r0
 	mov r1, #1
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 _0225EA50:
 	pop {r4, pc}
 	nop

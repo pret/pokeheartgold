@@ -611,7 +611,7 @@ static BOOL Task_StartMenu_HandleInput(TaskManager *taskManager) {
 static BOOL StartMenu_HandleKeyInput(TaskManager *taskManager, FieldSystem *fieldSystem, StartMenuTaskData *startMenu) {
     if (fieldSystem->unkD3 < startMenu->numActiveButtons) {
         PlaySE(SEQ_SE_DP_SELECT);
-        sub_02018410(&fieldSystem->menuInputState, 0);
+        MenuInputStateMgr_SetState(&fieldSystem->menuInputState, MENU_INPUT_STATE_BUTTONS);
         startMenu->selectedIndex = fieldSystem->unkD3;
         if (sStartMenuActions[startMenu->selectionToAction[startMenu->selectedIndex]].func == STARTMENUTASKFUNC_CANCEL) {
             startMenu->state = START_MENU_STATE_CLOSE;
@@ -632,7 +632,7 @@ static BOOL StartMenu_HandleKeyInput(TaskManager *taskManager, FieldSystem *fiel
 
 static BOOL StartMenu_HandleTouchInput(TaskManager *taskManager, FieldSystem *fieldSystem, StartMenuTaskData *startMenu) {
     if (fieldSystem->lastTouchMenuInput != 0) {
-        sub_02018410(&fieldSystem->menuInputState, 1);
+        MenuInputStateMgr_SetState(&fieldSystem->menuInputState, MENU_INPUT_STATE_TOUCH);
     }
     switch (fieldSystem->lastTouchMenuInput) {
     case 1:
@@ -742,7 +742,7 @@ static void Task_StartMenu_WaitApp(TaskManager *taskManager) {
 
     if (!FieldSystem_ApplicationIsRunning(fieldSystem)) {
         startMenu->atexit_TaskFunc(taskManager);
-        if (startMenu->state == START_MENU_STATE_RETURN && sub_020183F0(&fieldSystem->menuInputState) == TRUE) {
+        if (startMenu->state == START_MENU_STATE_RETURN && MenuInputStateMgr_GetState(&fieldSystem->menuInputState) == TRUE) {
             startMenu->state = START_MENU_STATE_10;
         }
     }

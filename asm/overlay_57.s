@@ -48,7 +48,7 @@ ov57_022378DC: ; 0x022378DC
 	str r0, [r4, r1]
 	ldr r0, [r4]
 	ldr r0, [r0, #0x2c]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r1, _02237AE8 ; =0x0000040C
 	str r0, [r4, r1]
 	mov r0, #0x34
@@ -413,7 +413,7 @@ ov57_02237B20: ; 0x02237B20
 	ldr r1, _02237C9C ; =0x0000040C
 	ldr r0, [r0, #0x2c]
 	ldr r1, [r4, r1]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	bl sub_02021238

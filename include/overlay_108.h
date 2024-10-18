@@ -3,10 +3,11 @@
 
 #include "overlay_manager.h"
 #include "save.h"
+#include "unk_020183F0.h"
 
 typedef struct SafariAreaCustomizerArgs {
     SaveData *saveData;
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
     u8 unk8[0x1c];
 } SafariAreaCustomizerArgs;
 

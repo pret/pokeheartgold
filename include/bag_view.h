@@ -27,7 +27,7 @@ BagView *BagView_New(u8 heapId);
  */
 u32 BagView_sizeof(void);
 void sub_02077894(BagView *bagView, u8 a1);
-void sub_0207789C(BagView *bagView, SaveData *save, u8 a2, BagCursor *cursor, BOOL *a4);
+void sub_0207789C(BagView *bagView, SaveData *save, u8 a2, BagCursor *cursor, MenuInputStateMgr *menuInputStateMgr);
 
 /*
  * void BagView_SetItem(BagView *bagView, ItemSlot *slots, u8 pocketId, u8 position)

@@ -345,7 +345,7 @@ BOOL BerryPotsApp_Exit(OVY_MANAGER *manager, int *state) {
 }
 
 static void BerryPotsApp_InitData(BerryPotsAppData *data) {
-    data->unk74                 = sub_020183F0(data->args->unk4->unk4);
+    data->fieldMenuState        = MenuInputStateMgr_GetState(data->args->unk4->menuInputPtr);
     Options *options            = Save_PlayerData_GetOptionsAddr(data->args->unk4->savedata);
     data->textFrameDelay        = Options_GetTextFrameDelay(options);
     data->frame                 = Options_GetFrame(options);
@@ -363,7 +363,7 @@ static void BerryPotsApp_InitData(BerryPotsAppData *data) {
 
 static void ov17_02201DD8(BerryPotsAppData *data) {
     FreeToHeap(data->berryGrowthProperties);
-    sub_02018410(data->args->unk4->unk4, data->unk74);
+    MenuInputStateMgr_SetState(data->args->unk4->menuInputPtr, data->fieldMenuState);
 }
 
 static BOOL ov17_02201DF0(BerryPotsAppData *data) {
@@ -733,12 +733,12 @@ static u32 ov17_02202440(BerryPotsAppData *data) {
 static BOOL ov17_02202460(BerryPotsAppData *data) {
     if (System_GetTouchNew() != 0) {
         PlaySE(SEQ_SE_DP_SELECT);
-        data->unk74 = 1;
+        data->fieldMenuState = MENU_INPUT_STATE_TOUCH;
         return TRUE;
     }
 
     if (gSystem.newKeys & (PAD_BUTTON_Y | PAD_BUTTON_X | PAD_KEY_DOWN | PAD_KEY_UP | PAD_KEY_LEFT | PAD_KEY_RIGHT | PAD_BUTTON_B | PAD_BUTTON_A)) {
-        data->unk74 = 0;
+        data->fieldMenuState = MENU_INPUT_STATE_BUTTONS;
     }
 
     if (gSystem.newKeys & (PAD_BUTTON_B | PAD_BUTTON_A)) {
@@ -959,14 +959,14 @@ static void ov17_022029C8(BerryPotsAppData *data, u32 a1) {
     unk.unk10 = data->bgConfig;
     unk.unk14 = ov17_02203E88[a1].unk0;
 
-    data->unk1A8 = sub_020185FC(data->unk8C, &unk, (u8)data->unk74, 0xf, 16 - (unk.unk14 * 3), 0xe, 0);
+    data->unk1A8 = sub_020185FC(data->unk8C, &unk, (u8)data->fieldMenuState, 0xf, 16 - (unk.unk14 * 3), 0xe, 0);
 }
 
 static int ov17_02202A50(BerryPotsAppData *data) {
     int r4 = sub_020186A4(data->unk1A8);
     int r0 = -1;
     if (r4 != -1) {
-        data->unk74 = sub_02018674(data->unk1A8);
+        data->fieldMenuState = (MenuInputState)sub_02018674(data->unk1A8);
         sub_02018680(data->unk1A8);
         r0 = r4;
     }

@@ -3,6 +3,7 @@
 
 #include "player_data.h"
 #include "pokemon_types_def.h"
+#include "unk_020183F0.h"
 
 #define MOVE_RELEARNER_TUTOR   0
 #define MOVE_RELEARNER_RELEARN 1
@@ -11,7 +12,7 @@ typedef struct MoveRelearnerArgs {
     Pokemon *mon;
     PlayerProfile *profile;
     Options *options;
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
     u16 *eligibleMoves;
     u8 filler_14[5];
     u8 type;

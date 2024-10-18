@@ -5,6 +5,7 @@
 #include "player_data.h"
 #include "pokemon_types_def.h"
 #include "save_special_ribbons.h"
+#include "unk_020183F0.h"
 
 extern struct OVY_MGR_TEMPLATE gOverlayTemplate_PokemonSummary;
 
@@ -26,7 +27,7 @@ typedef struct PokemonSummaryArgs {
     u8 unk24[0x4];
     int unk28;
     int unk2C;
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
     BOOL isFlag982Set;
     u8 unk38[0x4];
 } PokemonSummaryArgs;

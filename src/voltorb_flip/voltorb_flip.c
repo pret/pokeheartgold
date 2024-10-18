@@ -26,7 +26,6 @@
 #include "message_format.h"
 #include "options.h"
 #include "overlay_manager.h"
-#include "player_data.h"
 #include "render_text.h"
 #include "render_window.h"
 #include "sound_02004A44.h"
@@ -39,6 +38,7 @@
 #include "unk_0200CF18.h"
 #include "unk_0200FA24.h"
 #include "unk_020183F0.h"
+#include "unk_02018424.h"
 #include "yes_no_prompt.h"
 
 typedef enum CoinDisplay {
@@ -1966,7 +1966,7 @@ static void ov122_021E8094(OVY_MANAGER *man) {
     work->coins             = args->coins;
     work->menuInputStatePtr = args->menuInputStatePtr;
     work->profile           = args->profile;
-    work->unk228            = sub_020183F0(work->menuInputStatePtr);
+    work->unk228            = MenuInputStateMgr_GetState(work->menuInputStatePtr);
     work->unk229            = Options_GetFrame(work->options);
     work->unk22A            = Options_GetTextFrameDelay(work->options);
 

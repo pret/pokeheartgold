@@ -143,7 +143,7 @@ ov108_021E59E4: ; 0x021E59E4
 	ldr r1, _021E5A3C ; =0x000184DD
 	strb r0, [r5, r1]
 	ldr r0, [r4, #4]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	str r0, [r5, #0x10]
 	ldr r0, _021E5A40 ; =0x000184E8
 	mov r1, #0
@@ -183,7 +183,7 @@ ov108_021E5A48: ; 0x021E5A48
 	ldr r0, [r4, #0x14]
 	ldr r1, [r4, #0x10]
 	ldr r0, [r0, #4]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	pop {r4, pc}
 	.balign 4, 0
 _021E5A74: .word 0x000184E8

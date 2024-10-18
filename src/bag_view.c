@@ -17,6 +17,7 @@
 #include "player_data.h"
 #include "save.h"
 #include "seal_case.h"
+#include "unk_020183F0.h"
 
 static u16 GetCoinCount(SaveData *saveData);
 static u32 GetSealCount(SaveData *saveData);
@@ -38,12 +39,12 @@ void sub_02077894(BagView *bagView, u8 a1) {
     bagView->unk65 = a1;
 }
 
-void sub_0207789C(BagView *bagView, SaveData *save, u8 a2, BagCursor *cursor, BOOL *a4) {
+void sub_0207789C(BagView *bagView, SaveData *save, u8 a2, BagCursor *cursor, MenuInputStateMgr *menuInputStateMgr) {
     sub_02077894(bagView, a2);
-    bagView->saveData = save;
-    bagView->unk78    = a4;
-    bagView->cursor   = cursor;
-    bagView->itemId   = ITEM_NONE;
+    bagView->saveData          = save;
+    bagView->menuInputStateMgr = menuInputStateMgr;
+    bagView->cursor            = cursor;
+    bagView->itemId            = ITEM_NONE;
 }
 
 void BagView_SetItem(BagView *bagView, ItemSlot *slots, u8 pocketId, u8 position) {

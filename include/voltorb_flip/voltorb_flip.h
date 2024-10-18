@@ -5,11 +5,12 @@
 #include "overlay_manager.h"
 #include "player_data.h"
 #include "save.h"
+#include "unk_020183F0.h"
 
 typedef struct VoltorbFlipArgs {
     Options *options;
     u16 *coins;
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
     PlayerProfile *profile;
     SaveData *saveData;
 } VoltorbFlipArgs;

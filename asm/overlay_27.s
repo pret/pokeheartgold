@@ -161,7 +161,7 @@ ov27_02259F80: ; 0x02259F80
 	mov r0, #0x43
 	lsl r0, r0, #2
 	add r0, r5, r0
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	cmp r0, #0
 	bne _0225A102
 	add r0, r5, #0
@@ -942,7 +942,7 @@ _0225A722:
 	mov r0, #0x43
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	cmp r0, #0
 	bne _0225A74C
 	add r0, r5, #0
@@ -964,7 +964,7 @@ _0225A75C:
 	mov r0, #0x43
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	cmp r0, #1
 	bne _0225A792
 	mov r0, #1

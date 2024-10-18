@@ -4,12 +4,13 @@
 #include "overlay_manager.h"
 #include "player_data.h"
 #include "pokedex.h"
+#include "unk_020183F0.h"
 
 typedef struct PokedexArgs {
     Pokedex *pokedex;
     PlayerProfile *playerProfile;
     u32 *unk_08;
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
     int x;
     int y;
     u16 mapId;

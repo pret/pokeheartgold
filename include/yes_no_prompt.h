@@ -5,6 +5,7 @@
 #include "heap.h"
 #include "palette.h"
 #include "touch_hitbox_controller.h"
+#include "unk_020183F0.h"
 
 typedef enum YesNoResponse {
     YESNORESPONSE_WAIT = 0,
@@ -72,7 +73,7 @@ void YesNoPrompt_InitFromTemplate(YesNoPrompt *, const YesNoPromptTemplate *);
 void YesNoPrompt_InitFromTemplateWithPalette(YesNoPrompt *, const YesNoPromptTemplate *, PaletteData *);
 YesNoResponse YesNoPrompt_HandleInputForSave(YesNoPrompt *);
 YesNoResponse YesNoPrompt_HandleInput(YesNoPrompt *);
-int YesNoPrompt_IsInTouchMode(YesNoPrompt *);
+MenuInputState YesNoPrompt_IsInTouchMode(YesNoPrompt *);
 void YesNoPrompt_SetIgnoreTouch(YesNoPrompt *yesno, int a1);
 
 #endif // POKEHEARTGOLD_YES_NO_PROMPT_H

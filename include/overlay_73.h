@@ -6,13 +6,14 @@
 #include "overlay_manager.h"
 #include "save.h"
 #include "script.h"
+#include "unk_020183F0.h"
 
 typedef struct UnkStruct_0203F4F8 {
     SaveData *saveData;
     struct UnkStruct_0205AC88 *unk4;
     Options *options;
     GameStats *gameStats;
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
 } UnkStruct_0203F4F8;
 
 BOOL ov73_021E5900(OVY_MANAGER *man, int *state);

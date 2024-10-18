@@ -3,10 +3,11 @@
 
 #include "overlay_manager.h"
 #include "save.h"
+#include "unk_020183F0.h"
 
 typedef struct PalPadArgs {
     SaveData *saveData;
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
 } PalPadArgs;
 
 BOOL PalPad_Init(OVY_MANAGER *man, int *state);

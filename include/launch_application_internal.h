@@ -58,7 +58,7 @@ typedef struct UnkStruct_0203F0D0 {
     PlayerProfile *profile;
     int *unk18;
     int unk1C;
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
 } UnkStruct_0203F0D0;
 
 typedef struct UnkStruct_0203F134 {

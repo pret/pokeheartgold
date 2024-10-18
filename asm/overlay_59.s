@@ -185,7 +185,7 @@ ov59_02237E94: ; 0x02237E94
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x14]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	str r0, [r5, #0x40]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
@@ -255,13 +255,13 @@ _02237F24:
 ov59_02237F28: ; 0x02237F28
 	add r1, r0, #0
 	ldr r0, [r1, #4]
-	ldr r3, _02237F38 ; =sub_02018410
+	ldr r3, _02237F38 ; =MenuInputStateMgr_SetState
 	ldr r0, [r0, #4]
 	ldr r1, [r1, #0x40]
 	ldr r0, [r0, #0x14]
 	bx r3
 	nop
-_02237F38: .word sub_02018410
+_02237F38: .word MenuInputStateMgr_SetState
 	thumb_func_end ov59_02237F28
 
 	thumb_func_start ov59_02237F3C
@@ -5792,7 +5792,7 @@ ov59_0223A9E4: ; 0x0223A9E4
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x14]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	str r0, [r5, #0x44]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
@@ -5861,7 +5861,7 @@ ov59_0223AA6C: ; 0x0223AA6C
 	ldr r1, [r4, #0x44]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x14]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	add r0, r4, #0
 	add r0, #0x4a
 	ldrb r1, [r0]
