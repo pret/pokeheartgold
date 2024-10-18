@@ -22,13 +22,22 @@ typedef struct Ov122_021E7488 {
     u8 unk15[0x3];
 } Ov122_021E7488;
 
-int sub_020183F0(BOOL *);
+typedef struct UnkStruct_02018424 {
+    HeapID heapId;
+    NNSG2dCharacterData *pCharData;
+    NNSG2dPaletteData *pPlttData;
+    void *charDataRaw;
+    void *plttDataRaw;
+    int unk_14;
+} UnkStruct_02018424;
+
+int sub_020183F0(BOOL *a0);
 void sub_02018410(BOOL *a0, BOOL a1);
-void *sub_02018424(HeapID, int);
-void sub_02018474(void *);
-void *sub_020185FC(void *, Ov122_021E7488 *, s32, u8, u8, u8, u8);
-int sub_020186A4(void *);
-u8 sub_02018674(void *);
-void sub_02018680(void *);
+UnkStruct_02018424 *sub_02018424(HeapID heapId, int a1);
+void sub_02018474(UnkStruct_02018424 *a0);
+void *sub_020185FC(UnkStruct_02018424 *, Ov122_021E7488 *, s32, u8, u8, u8, u8);
+int sub_020186A4(UnkStruct_02018424 *);
+u8 sub_02018674(UnkStruct_02018424 *);
+void sub_02018680(UnkStruct_02018424 *);
 
 #endif // POKEHEARTGOLD_UNK_020183F0_H

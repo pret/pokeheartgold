@@ -4,6 +4,7 @@
 #include "launch_application.h"
 #include "overlay_16.h"
 #include "sprite.h"
+#include "unk_020183F0.h"
 
 enum BerryPotsApp_022036FC_Action {
     BERRY_POTS_APP_022036FC_ACTION_0,
@@ -83,7 +84,7 @@ typedef struct BerryPotsAppData {
     u16 totalBerryQuantity;
     u16 totalMulchQuantity;
     BgConfig *bgConfig;
-    void *unk8C;
+    UnkStruct_02018424 *unk8C;
     u8 unk90[12];
     MsgData *msgData;
     MessageFormat *msgFmt;
