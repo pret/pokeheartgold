@@ -106,7 +106,7 @@ static const u8 ov17_02203D60[3][4] = {
      0,
      },
 };
-static const Ov122_021E9282 ov17_02203D6C = { 0x403, 0xB00, 0, 58, 31, 84 };
+static const Ov122_021E9282 ov17_02203D6C = { 1, 1, 4, 0, 11, 0, 0, 58, 31, 84 };
 static const u16 ov17_02203D78[7]         = {
     NARC_resdat_resdat_00000030_bin,
     NARC_resdat_resdat_00000031_bin,
