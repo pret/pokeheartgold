@@ -954,10 +954,10 @@ static void ov17_022029C8(BerryPotsAppData *data, u32 a1) {
     Ov122_021E7488 unk;
     MI_CpuFill8(&unk, 0, sizeof(Ov122_021E7488));
 
-    unk.unk0  = ov17_02203D6C;
-    unk.unkC  = data->listMenuItems[a1];
-    unk.unk10 = data->bgConfig;
-    unk.unk14 = ov17_02203E88[a1].unk0;
+    unk.unk0          = ov17_02203D6C;
+    unk.listMenuItems = data->listMenuItems[a1];
+    unk.bgConfig      = data->bgConfig;
+    unk.unk14         = ov17_02203E88[a1].unk0;
 
     data->unk1A8 = sub_020185FC(data->unk8C, &unk, (u8)data->fieldMenuState, 0xf, 16 - (unk.unk14 * 3), 0xe, 0);
 }
