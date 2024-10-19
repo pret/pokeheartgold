@@ -68,6 +68,11 @@ static void sub_0205F338(LocalMapObject *object, SysTask *sysTask);
 static SysTask *sub_0205F340(LocalMapObject *object);
 static void sub_0205F348(LocalMapObject *object);
 static void MapObject_SetManager(LocalMapObject *object, MapObjectManager *manager);
+static MapObjectManager *MapObject_GetManagerFromManager(LocalMapObject *object);
+static void sub_0205F414(LocalMapObject *object, LocalMapObject_UnkCallback callback);
+static void sub_0205F428(LocalMapObject *object, LocalMapObject_UnkCallback callback);
+static void sub_0205F43C(LocalMapObject *object, LocalMapObject_UnkCallback callback);
+static void sub_0205F444(LocalMapObject *object);
 
 MapObjectManager *MapObjectManager_Init(FieldSystem *fieldSystem, u32 objectCount, u32 priority) {
     MapObjectManager *ret = MapObjectManager_New(objectCount);
@@ -217,7 +222,7 @@ void MapObject_Remove(LocalMapObject *object) {
     }
     sub_0205F444(object);
     sub_0205F348(object);
-    sub_0205F174(sub_0205F364(object));
+    sub_0205F174(MapObject_GetManagerFromManager(object));
     MapObject_Clear(object);
 }
 
@@ -1139,7 +1144,7 @@ MapObjectManager *MapObject_GetManager(LocalMapObject *object) {
     return object->manager;
 }
 
-MapObjectManager *sub_0205F364(LocalMapObject *object) {
+static MapObjectManager *MapObject_GetManagerFromManager(LocalMapObject *object) {
     return MapObjectManager_Get(object->manager);
 }
 
@@ -1191,7 +1196,7 @@ u8 *sub_0205F40C(LocalMapObject *object) {
     return object->unk108;
 }
 
-void sub_0205F414(LocalMapObject *object, LocalMapObject_UnkCallback callback) {
+static void sub_0205F414(LocalMapObject *object, LocalMapObject_UnkCallback callback) {
     object->unkB8 = callback;
 }
 
@@ -1199,7 +1204,7 @@ void sub_0205F41C(LocalMapObject *object) {
     object->unkB8(object);
 }
 
-void sub_0205F428(LocalMapObject *object, LocalMapObject_UnkCallback callback) {
+static void sub_0205F428(LocalMapObject *object, LocalMapObject_UnkCallback callback) {
     object->unkBC = callback;
 }
 
@@ -1207,11 +1212,11 @@ void sub_0205F430(LocalMapObject *object) {
     object->unkBC(object);
 }
 
-void sub_0205F43C(LocalMapObject *object, LocalMapObject_UnkCallback callback) {
+static void sub_0205F43C(LocalMapObject *object, LocalMapObject_UnkCallback callback) {
     object->unkC0 = callback;
 }
 
-void sub_0205F444(LocalMapObject *object) {
+static void sub_0205F444(LocalMapObject *object) {
     object->unkC0(object);
 }
 
@@ -1305,7 +1310,7 @@ u16 sub_0205F524(LocalMapObject *object) {
 }
 
 FieldSystem *MapObject_GetFieldSystem(LocalMapObject *object) {
-    return MapObjectManager_GetFieldSystem(sub_0205F364(object));
+    return MapObjectManager_GetFieldSystem(MapObject_GetManagerFromManager(object));
 }
 
 void *sub_0205F538(LocalMapObject *object) { // TODO: this is not void
