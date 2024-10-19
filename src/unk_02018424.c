@@ -6,7 +6,7 @@
 
 #include "gf_gfx_loader.h"
 
-UnkStruct_020185FC *sub_02018498(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, int a7, int a8, int a9, int a10);
+UnkStruct_020185FC *sub_02018498(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, UnkFunc_020185FC a7, void *a8, BOOL a9, int a10);
 u8 sub_0201881C(LISTMENUITEM *listMenuItem, u8 a1, int a2, int a3);
 void sub_02018890(UnkStruct_020185FC *a0);
 void sub_02018744(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, int a2, int a3);
@@ -35,7 +35,7 @@ void sub_02018474(UnkStruct_02018424 *a0) {
     FreeToHeap(a0);
 }
 
-UnkStruct_020185FC *sub_02018498(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, int a7, int a8, int a9, int a10) {
+UnkStruct_020185FC *sub_02018498(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, UnkFunc_020185FC a7, void *a8, BOOL a9, int a10) {
     UnkStruct_020185FC *ret = AllocFromHeap(a0->heapId, sizeof(UnkStruct_020185FC));
     MI_CpuClear8(ret, sizeof(UnkStruct_020185FC));
     MI_CpuCopy8(a1, &ret->unk_04, sizeof(Ov122_021E7488));
@@ -86,4 +86,16 @@ UnkStruct_020185FC *sub_02018498(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 
     sub_02018FE8(ret, SEQ_SE_DP_SELECT);
     sub_02018FFC(ret, 0);
     return ret;
+}
+
+UnkStruct_020185FC *sub_020185FC(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6) {
+    return sub_02018498(a0, a1, a2, a3, a4, a5, a6, NULL, NULL, FALSE, 0);
+}
+
+UnkStruct_020185FC *sub_02018620(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, int a7) {
+    return sub_02018498(a0, a1, a2, a3, a4, a5, a6, NULL, NULL, FALSE, a7);
+}
+
+UnkStruct_020185FC *sub_02018648(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, UnkFunc_020185FC a7, void *a8, BOOL a9) {
+    return sub_02018498(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, 0);
 }

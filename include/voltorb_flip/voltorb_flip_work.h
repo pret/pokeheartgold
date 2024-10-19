@@ -11,6 +11,7 @@
 #include "player_data.h"
 #include "unk_0200CF18.h"
 #include "unk_020183F0.h"
+#include "unk_02018424.h"
 
 typedef struct Ov122_021E70B8 {
     BgConfig *bgConfig;
@@ -37,7 +38,7 @@ typedef struct VoltorbFlipAppWork {
     NARC *narc;
     BgConfig *bgConfig;
     void *unk1C;
-    void *unk20;
+    UnkStruct_020185FC *unk20;
     Window windows[17];
     LISTMENUITEM *menuItems[2];
     void *unk13C;

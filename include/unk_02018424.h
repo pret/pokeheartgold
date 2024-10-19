@@ -35,7 +35,11 @@ typedef struct UnkStruct_02018424 {
     int unk_14;
 } UnkStruct_02018424;
 
-typedef struct UnkStruct_020185FC {
+typedef struct UnkStruct_020185FC UnkStruct_020185FC;
+
+typedef void (*UnkFunc_020185FC)(UnkStruct_020185FC *a0, u8 a1, void *a2, int a3);
+
+struct UnkStruct_020185FC {
     UnkStruct_02018424 *unk_00;
     Ov122_021E7488 unk_04;
     u8 filler_18[8];
@@ -47,14 +51,16 @@ typedef struct UnkStruct_020185FC {
     u8 unk_28;
     u8 unk_29;
     HeapID unk_2C;
-    int unk_30;
-    int unk_34;
-} UnkStruct_020185FC;
+    UnkFunc_020185FC unk_30;
+    void *unk_34;
+};
 
 UnkStruct_02018424 *sub_02018424(HeapID heapId, int a1);
 void sub_02018474(UnkStruct_02018424 *a0);
-void *sub_020185FC(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, s32 a2, u8 a3, u8 a4, u8 a5, u8 a6);
-int sub_020186A4(UnkStruct_02018424 *);
-u8 sub_02018674(UnkStruct_02018424 *);
-void sub_02018680(UnkStruct_02018424 *);
+UnkStruct_020185FC *sub_020185FC(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6);
+UnkStruct_020185FC *sub_02018620(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, int a7);
+UnkStruct_020185FC *sub_02018648(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, UnkFunc_020185FC a7, void *a8, BOOL a9);
+int sub_020186A4(UnkStruct_020185FC *);
+u8 sub_02018674(UnkStruct_020185FC *);
+void sub_02018680(UnkStruct_020185FC *);
 #endif // GUARD_POKEHEARTGOLD_UNK_02108424_H

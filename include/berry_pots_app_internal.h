@@ -104,7 +104,7 @@ typedef struct BerryPotsAppData {
     NARC *itemIconNarc;
     NARC *berryPotsAppNarc;
     LISTMENUITEM *listMenuItems[4];
-    void *unk1A8;
+    UnkStruct_020185FC *unk1A8;
 } BerryPotsAppData;
 
 void ov17_022028B8(BerryPotsAppData *data);
