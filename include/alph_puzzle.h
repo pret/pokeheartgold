@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_ALPH_PUZZLE_H
 
 #include "bg_window.h"
+#include "menu_input_state.h"
 #include "message_format.h"
 #include "msgdata.h"
 #include "overlay_manager.h"
@@ -9,7 +10,6 @@
 #include "save.h"
 #include "task.h"
 #include "unk_0200CF18.h"
-#include "unk_020183F0.h"
 #include "yes_no_prompt.h"
 
 typedef enum AlphPuzzles {

@@ -23,6 +23,7 @@
 #include "gf_gfx_loader.h"
 #include "list_menu_items.h"
 #include "math_util.h"
+#include "menu_input_state.h"
 #include "message_format.h"
 #include "options.h"
 #include "overlay_manager.h"
@@ -33,12 +34,11 @@
 #include "system.h"
 #include "text.h"
 #include "touchscreen.h"
+#include "touchscreen_list_menu.h"
 #include "unk_02005D10.h"
 #include "unk_02009D48.h"
 #include "unk_0200CF18.h"
 #include "unk_0200FA24.h"
-#include "unk_020183F0.h"
-#include "unk_02018424.h"
 #include "yes_no_prompt.h"
 
 typedef enum CoinDisplay {

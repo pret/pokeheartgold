@@ -1,4 +1,4 @@
-#include "unk_020183F0.h"
+#include "menu_input_state.h"
 
 #include "global.h"
 

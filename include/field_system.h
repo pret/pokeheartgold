@@ -13,6 +13,7 @@
 #include "gear_phone.h"
 #include "map_events_internal.h"
 #include "map_matrix.h"
+#include "menu_input_state.h"
 #include "overlay_01_021EB1E8.h"
 #include "overlay_01_02204004.h"
 #include "overlay_manager.h"
@@ -21,7 +22,6 @@
 #include "scrcmd_9.h"
 #include "sys_task.h"
 #include "sys_task_api.h"
-#include "unk_020183F0.h"
 
 typedef struct FollowMon {
     LocalMapObject *mapObject;

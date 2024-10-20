@@ -7,11 +7,11 @@
 #include "bg_window.h"
 #include "heap.h"
 #include "list_menu_items.h"
+#include "menu_input_state.h"
 #include "options.h"
 #include "player_data.h"
+#include "touchscreen_list_menu.h"
 #include "unk_0200CF18.h"
-#include "unk_020183F0.h"
-#include "unk_02018424.h"
 
 typedef struct Ov122_021E70B8 {
     BgConfig *bgConfig;

@@ -1,11 +1,11 @@
 #ifndef POKEHEARTGOLD_VOLTORB_FLIP_H
 #define POKEHEARTGOLD_VOLTORB_FLIP_H
 
+#include "menu_input_state.h"
 #include "options.h"
 #include "overlay_manager.h"
 #include "player_data.h"
 #include "save.h"
-#include "unk_020183F0.h"
 
 typedef struct VoltorbFlipArgs {
     Options *options;

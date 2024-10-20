@@ -1,5 +1,5 @@
-#ifndef GUARD_POKEHEARTGOLD_UNK_02108424_H
-#define GUARD_POKEHEARTGOLD_UNK_02108424_H
+#ifndef GUARD_POKEHEARTGOLD_TOUCHSCREEN_LIST_MENU_H
+#define GUARD_POKEHEARTGOLD_TOUCHSCREEN_LIST_MENU_H
 
 #include "bg_window.h"
 #include "heap.h"
@@ -70,4 +70,4 @@ void TouchscreenListMenu_Destroy(TouchscreenListMenu *menu);
 void TouchscreenListMenu_DestroyButtons(TouchscreenListMenu *menu);
 int TouchscreenListMenu_HandleInput(TouchscreenListMenu *menu);
 
-#endif // GUARD_POKEHEARTGOLD_UNK_02108424_H
+#endif // GUARD_POKEHEARTGOLD_TOUCHSCREEN_LIST_MENU_H

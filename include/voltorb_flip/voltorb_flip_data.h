@@ -2,7 +2,7 @@
 #define POKEHEARTGOLD_VOLTORB_FLIP_DATA_H
 
 #include "bg_window.h"
-#include "unk_02018424.h"
+#include "touchscreen_list_menu.h"
 
 typedef struct Ov122_021E9278 {
     u8 unk0[5][2];

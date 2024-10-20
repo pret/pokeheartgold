@@ -8,11 +8,11 @@
 
 #include "item.h"
 #include "mail.h"
+#include "menu_input_state.h"
 #include "options.h"
 #include "player_data.h"
 #include "save_vars_flags.h"
 #include "sys_flags.h"
-#include "unk_020183F0.h"
 
 EasyChatArgs *EasyChat_CreateArgs(u8 args, u8 a1, SaveData *saveData, MenuInputStateMgr *menuInputStateMgr, HeapID heapId) {
     EasyChatArgs *ptr = AllocFromHeap(heapId, sizeof(EasyChatArgs));

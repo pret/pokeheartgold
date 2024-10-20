@@ -1,9 +1,9 @@
 #ifndef POKEHEARTGOLD_MOVE_RELEARNER_H
 #define POKEHEARTGOLD_MOVE_RELEARNER_H
 
+#include "menu_input_state.h"
 #include "player_data.h"
 #include "pokemon_types_def.h"
-#include "unk_020183F0.h"
 
 #define MOVE_RELEARNER_TUTOR   0
 #define MOVE_RELEARNER_RELEARN 1

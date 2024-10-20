@@ -5,10 +5,10 @@
 #include "heap.h"
 #include "mail.h"
 #include "mail_message.h"
+#include "menu_input_state.h"
 #include "pokedex.h"
 #include "pokemon.h"
 #include "save.h"
-#include "unk_020183F0.h"
 
 typedef struct MsgBankMsgNo {
     u16 msgBank;

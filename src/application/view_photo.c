@@ -9,12 +9,12 @@
 #include "field_take_photo.h"
 #include "font.h"
 #include "gf_gfx_loader.h"
+#include "menu_input_state.h"
 #include "message_format.h"
 #include "system.h"
 #include "text.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
-#include "unk_020183F0.h"
 #include "unk_02068F84.h"
 
 typedef enum ViewPhotoTaskState {

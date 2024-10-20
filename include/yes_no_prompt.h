@@ -3,9 +3,9 @@
 
 #include "bg_window.h"
 #include "heap.h"
+#include "menu_input_state.h"
 #include "palette.h"
 #include "touch_hitbox_controller.h"
-#include "unk_020183F0.h"
 
 typedef enum YesNoResponse {
     YESNORESPONSE_WAIT = 0,

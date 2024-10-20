@@ -6,8 +6,8 @@
 #include "bag_cursor.h"
 #include "field_types_def.h"
 #include "item.h"
+#include "menu_input_state.h"
 #include "save.h"
-#include "unk_020183F0.h"
 
 /*
  * Return value of Bag_TryRegisterItem

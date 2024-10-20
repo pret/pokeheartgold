@@ -1,11 +1,11 @@
 #ifndef POKEHEARTGOLD_UNK_02088288_H
 #define POKEHEARTGOLD_UNK_02088288_H
 
+#include "menu_input_state.h"
 #include "options.h"
 #include "player_data.h"
 #include "pokemon_types_def.h"
 #include "save_special_ribbons.h"
-#include "unk_020183F0.h"
 
 extern struct OVY_MGR_TEMPLATE gOverlayTemplate_PokemonSummary;
 

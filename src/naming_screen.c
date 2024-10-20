@@ -15,6 +15,7 @@
 #include "gf_gfx_planes.h"
 #include "launch_application.h"
 #include "math_util.h"
+#include "menu_input_state.h"
 #include "message_format.h"
 #include "msgdata.h"
 #include "obj_char_transfer.h"
@@ -30,7 +31,6 @@
 #include "unk_0200FA24.h"
 #include "unk_02013534.h"
 #include "unk_020163E0.h"
-#include "unk_020183F0.h"
 #include "vram_transfer_manager.h"
 
 #define NAME_SCREEN_CONTROL_DAKU            0xD001 // unused

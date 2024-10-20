@@ -11,6 +11,7 @@
 #include "field_system.h"
 #include "font.h"
 #include "gf_gfx_loader.h"
+#include "menu_input_state.h"
 #include "overlay_01.h"
 #include "overlay_123.h"
 #include "render_text.h"
@@ -20,7 +21,6 @@
 #include "task.h"
 #include "text.h"
 #include "unk_02005D10.h"
-#include "unk_020183F0.h"
 #include "yes_no_prompt.h"
 
 FS_EXTERN_OVERLAY(OVY_123);

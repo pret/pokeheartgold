@@ -1,9 +1,9 @@
 #ifndef POKEHEARTGOLD_OVY_58_H
 #define POKEHEARTGOLD_OVY_58_H
 
+#include "menu_input_state.h"
 #include "overlay_manager.h"
 #include "save.h"
-#include "unk_020183F0.h"
 
 typedef struct ApricornBoxArgs {
     u8 unk0;

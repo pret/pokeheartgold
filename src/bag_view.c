@@ -12,12 +12,12 @@
 #include "fashion_case.h"
 #include "frontier_data.h"
 #include "heap.h"
+#include "menu_input_state.h"
 #include "message_format.h"
 #include "msgdata.h"
 #include "player_data.h"
 #include "save.h"
 #include "seal_case.h"
-#include "unk_020183F0.h"
 
 static u16 GetCoinCount(SaveData *saveData);
 static u32 GetSealCount(SaveData *saveData);

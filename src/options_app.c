@@ -11,6 +11,7 @@
 #include "bg_window.h"
 #include "font.h"
 #include "gf_gfx_loader.h"
+#include "menu_input_state.h"
 #include "msgdata.h"
 #include "options.h"
 #include "render_text.h"
@@ -22,7 +23,6 @@
 #include "unk_02005D10.h"
 #include "unk_0200CF18.h"
 #include "unk_0200FA24.h"
-#include "unk_020183F0.h"
 #include "unk_0203A3B0.h"
 #include "vram_transfer_manager.h"
 

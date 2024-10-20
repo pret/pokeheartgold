@@ -1,9 +1,9 @@
 #ifndef POKEHEARTGOLD_OVY_54_H
 #define POKEHEARTGOLD_OVY_54_H
 
+#include "menu_input_state.h"
 #include "options.h"
 #include "overlay_manager.h"
-#include "unk_020183F0.h"
 
 typedef struct OptionsMenuArgs {
     u8 unk0[0x4];

@@ -2,11 +2,11 @@
 #define POKEHEARTGOLD_OVY_73_H
 
 #include "game_stats.h"
+#include "menu_input_state.h"
 #include "options.h"
 #include "overlay_manager.h"
 #include "save.h"
 #include "script.h"
-#include "unk_020183F0.h"
 
 typedef struct UnkStruct_0203F4F8 {
     SaveData *saveData;

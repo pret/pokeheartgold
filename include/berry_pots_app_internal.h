@@ -5,7 +5,7 @@
 #include "launch_application.h"
 #include "overlay_16.h"
 #include "sprite.h"
-#include "unk_02018424.h"
+#include "touchscreen_list_menu.h"
 
 enum BerryPotsApp_022036FC_Action {
     BERRY_POTS_APP_022036FC_ACTION_0,

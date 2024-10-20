@@ -1,9 +1,9 @@
 #ifndef POKEHEARTGOLD_OVERLAY_TRAINER_CARD_H
 #define POKEHEARTGOLD_OVERLAY_TRAINER_CARD_H
 
+#include "menu_input_state.h"
 #include "overlay_manager.h"
 #include "save.h"
-#include "unk_020183F0.h"
 
 #define HEAP_ID_TRAINER_CARD ((HeapID)94)
 

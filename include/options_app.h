@@ -1,9 +1,9 @@
 #ifndef POKEHEARTGOLD_OPTIONS_APP_H
 #define POKEHEARTGOLD_OPTIONS_APP_H
 
+#include "menu_input_state.h"
 #include "options.h"
 #include "overlay_manager.h"
-#include "unk_020183F0.h"
 
 typedef struct OptionsApp_Args {
     u32 unk0;
