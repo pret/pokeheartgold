@@ -1487,7 +1487,7 @@ void ov122_021E7488(VoltorbFlipAppWork *a0, int a1) {
 
     temp1.listMenuItems = a0->menuItems[a1];
     temp1.bgConfig      = a0->bgConfig;
-    temp1.unk14         = ptr->size;
+    temp1.numWindows    = ptr->size;
 
     a0->unk20 = sub_020185FC(a0->unk1C, &temp1, a0->unk228, 17, 17 - ptr->size * 3, 13, 0);
 }

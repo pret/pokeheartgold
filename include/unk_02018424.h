@@ -15,7 +15,7 @@ typedef struct Ov122_021E9282 {
     u8 plttOffset;
     u8 unk4;
     u8 unk5;
-    u16 unk6;
+    u16 baseTile;
     u16 charOffset;
     u16 unkA;
 } Ov122_021E9282;
@@ -24,7 +24,7 @@ typedef struct Ov122_021E7488 {
     Ov122_021E9282 unk0;
     LISTMENUITEM *listMenuItems;
     BgConfig *bgConfig;
-    u8 unk14;
+    u8 numWindows;
     u8 unk15[0x3];
 } Ov122_021E7488;
 
@@ -48,11 +48,11 @@ struct UnkStruct_020185FC {
     TouchscreenHitbox *touchscreenHitboxes;
     u8 unk_24;
     u8 unk_25;
-    u8 unk_26;
+    u8 width;
     u8 unk_27_0 : 1;
     u8 unk_27_1 : 7;
-    u8 unk_28;
-    u8 unk_29;
+    u8 x;
+    u8 y;
     u8 unk_2A;
     u8 unk_2B;
     HeapID heapId;

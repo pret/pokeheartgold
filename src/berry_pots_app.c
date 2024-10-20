@@ -957,9 +957,9 @@ static void ov17_022029C8(BerryPotsAppData *data, u32 a1) {
     unk.unk0          = ov17_02203D6C;
     unk.listMenuItems = data->listMenuItems[a1];
     unk.bgConfig      = data->bgConfig;
-    unk.unk14         = ov17_02203E88[a1].unk0;
+    unk.numWindows    = ov17_02203E88[a1].unk0;
 
-    data->unk1A8 = sub_020185FC(data->unk8C, &unk, (u8)data->fieldMenuState, 0xf, 16 - (unk.unk14 * 3), 0xe, 0);
+    data->unk1A8 = sub_020185FC(data->unk8C, &unk, (u8)data->fieldMenuState, 0xf, 16 - (unk.numWindows * 3), 0xe, 0);
 }
 
 static int ov17_02202A50(BerryPotsAppData *data) {

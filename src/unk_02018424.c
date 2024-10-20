@@ -49,41 +49,41 @@ UnkStruct_020185FC *sub_02018498(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 
     MI_CpuClear8(ret, sizeof(UnkStruct_020185FC));
     MI_CpuCopy8(a1, &ret->unk_04, sizeof(Ov122_021E7488));
     ret->unk_00 = a0;
-    if (a6 < ret->unk_04.unk14) {
+    if (a6 < ret->unk_04.numWindows) {
         ret->unk_24 = a6;
     }
     ret->unk_25      = 0;
     ret->heapId      = a0->heapId;
-    ret->unk_29      = a4;
+    ret->y           = a4;
     ret->unk_24      = a6;
     ret->unk_27_1    = a2;
     ret->callback    = a7;
     ret->callbackArg = a8;
     ret->unk_27_0    = a9;
     if (a5 == 0) {
-        ret->unk_26 = sub_0201881C(a1->listMenuItems, ret->unk_04.unk14, 4, ret->unk_04.unk0.unk1);
+        ret->width = sub_0201881C(a1->listMenuItems, ret->unk_04.numWindows, 4, ret->unk_04.unk0.unk1);
     } else {
-        ret->unk_26 = a5;
+        ret->width = a5;
     }
     switch (a10) {
     default:
         GF_ASSERT(FALSE);
     case 0:
-        ret->unk_28 = a3;
+        ret->x = a3;
         break;
     case 1:
-        ret->unk_26 = (ret->unk_26 + 1) & ~1;
-        if (a3 - (ret->unk_26 + 2) / 2 < 0) {
-            ret->unk_28 = 0;
+        ret->width = (ret->width + 1) & ~1;
+        if (a3 - (ret->width + 2) / 2 < 0) {
+            ret->x = 0;
         } else {
-            ret->unk_28 = a3 - (ret->unk_26 + 2) / 2;
+            ret->x = a3 - (ret->width + 2) / 2;
         }
         break;
     case 2:
-        if (a3 - (ret->unk_26 + 2) < 0) {
-            ret->unk_28 = 0;
+        if (a3 - (ret->width + 2) < 0) {
+            ret->x = 0;
         } else {
-            ret->unk_28 = a3 - (ret->unk_26 + 2);
+            ret->x = a3 - (ret->width + 2);
         }
         break;
     }
@@ -214,4 +214,27 @@ u8 sub_0201881C(LISTMENUITEM *listMenuItem, u8 a1, FontID a2, u8 a3) {
     } else {
         return maxWidth / 8 + 1;
     }
+}
+
+void sub_02018890(UnkStruct_020185FC *a0) {
+    int i;
+    u16 tilesPerWindow;
+    a0->windows             = AllocWindows(a0->heapId, a0->unk_04.numWindows);
+    a0->touchscreenHitboxes = AllocFromHeap(a0->heapId, (a0->unk_04.numWindows + 1) * sizeof(TouchscreenHitbox));
+    MI_CpuClear8(a0->touchscreenHitboxes, (a0->unk_04.numWindows + 1) * sizeof(TouchscreenHitbox));
+    tilesPerWindow = a0->width * 2;
+    for (i = 0; i < a0->unk_04.numWindows; ++i) {
+        AddWindowParameterized(a0->unk_04.bgConfig, &a0->windows[i], a0->unk_04.unk0.bgId, a0->x + 1, a0->y + 1 + 3 * i, a0->width, 2, a0->unk_04.unk0.plttOffset, a0->unk_04.unk0.baseTile + tilesPerWindow * i);
+        FillWindowPixelBuffer(&a0->windows[i], 3);
+        a0->touchscreenHitboxes[i].rect.top    = (a0->y + 1) * 8 + 24 * i;
+        a0->touchscreenHitboxes[i].rect.bottom = a0->touchscreenHitboxes[i].rect.top + 16;
+        a0->touchscreenHitboxes[i].rect.left   = (a0->x + 1) * 8;
+        a0->touchscreenHitboxes[i].rect.right  = a0->touchscreenHitboxes[i].rect.left + a0->width * 8;
+    }
+    a0->touchscreenHitboxes[i].rect.top = TOUCHSCREEN_RECTLIST_END;
+}
+
+void sub_02018998(UnkStruct_020185FC *a0) {
+    FreeToHeap(a0->touchscreenHitboxes);
+    WindowArray_Delete(a0->windows, a0->unk_04.numWindows);
 }
