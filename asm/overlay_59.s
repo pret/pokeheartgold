@@ -2294,7 +2294,7 @@ ov59_02238E98: ; 0x02238E98
 	ldr r0, [r4, #0x58]
 	lsl r2, r2, #0x18
 	lsr r2, r2, #0x18
-	bl sub_020185FC
+	bl TouchscreenListMenu_Create
 	mov r1, #0xa6
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -2314,7 +2314,7 @@ ov59_02238F24: ; 0x02238F24
 	mov r0, #0xa6
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020186A4
+	bl TouchscreenListMenu_HandleInput
 	add r4, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -2323,12 +2323,12 @@ ov59_02238F24: ; 0x02238F24
 	mov r0, #0xa6
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02018674
+	bl TouchscreenListMenu_WasLastInputTouch
 	str r0, [r5, #0x40]
 	mov r0, #0xa6
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02018680
+	bl TouchscreenListMenu_Destroy
 	add r0, r4, #0
 _02238F54:
 	pop {r3, r4, r5, pc}
@@ -3619,7 +3619,7 @@ ov59_02239938: ; 0x02239938
 	bl sub_0200D2A4
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_02018424
+	bl TouchscreenListMenuSpawner_Create
 	str r0, [r4, #0x58]
 	add sp, #4
 	pop {r3, r4, pc}
@@ -3634,7 +3634,7 @@ ov59_022399B4: ; 0x022399B4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x58]
-	bl sub_02018474
+	bl TouchscreenListMenuSpawner_Destroy
 	mov r1, #0x93
 	lsl r1, r1, #2
 	ldr r0, [r4, r1]

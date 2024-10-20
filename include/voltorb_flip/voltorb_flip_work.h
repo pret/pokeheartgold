@@ -38,7 +38,7 @@ typedef struct VoltorbFlipAppWork {
     NARC *narc;
     BgConfig *bgConfig;
     void *unk1C;
-    UnkStruct_020185FC *unk20;
+    TouchscreenListMenu *menu;
     Window windows[17];
     LISTMENUITEM *menuItems[2];
     void *unk13C;

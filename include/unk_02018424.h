@@ -7,10 +7,10 @@
 #include "palette.h"
 #include "touchscreen.h"
 
-typedef struct Ov122_021E9282 {
+typedef struct TouchscreenListMenuTemplate {
     u8 wrapAround : 1;
-    u8 unk0_1     : 7;
-    u8 unk1;
+    u8 centered   : 7;
+    u8 xOffset;
     u8 bgId;
     u8 plttOffset;
     u8 unk4;
@@ -18,32 +18,32 @@ typedef struct Ov122_021E9282 {
     u16 baseTile;
     u16 charOffset;
     u16 unkA;
-} Ov122_021E9282;
+} TouchscreenListMenuTemplate;
 
-typedef struct Ov122_021E7488 {
-    Ov122_021E9282 unk0;
+typedef struct TouchscreenListMenuHeader {
+    TouchscreenListMenuTemplate template;
     LISTMENUITEM *listMenuItems;
     BgConfig *bgConfig;
     u8 numWindows;
     u8 unk15[0x3];
-} Ov122_021E7488;
+} TouchscreenListMenuHeader;
 
-typedef struct UnkStruct_02018424 {
+typedef struct TouchscreenListMenuSpawner {
     HeapID heapId;
     NNSG2dCharacterData *pCharData;
     NNSG2dPaletteData *pPlttData;
     void *charDataRaw;
     void *plttDataRaw;
     PaletteData *paletteData;
-} UnkStruct_02018424;
+} TouchscreenListMenuSpawner;
 
-typedef struct UnkStruct_020185FC UnkStruct_020185FC;
+typedef struct TouchscreenListMenu TouchscreenListMenu;
 
-typedef void (*UnkFunc_020185FC)(UnkStruct_020185FC *a0, u8 a1, void *a2, int a3);
+typedef void (*TouchscreenListMenuCallback)(TouchscreenListMenu *menu, u8 cursorPos, void *callbackArg, int event);
 
-struct UnkStruct_020185FC {
-    UnkStruct_02018424 *unk_00;
-    Ov122_021E7488 unk_04;
+struct TouchscreenListMenu {
+    TouchscreenListMenuSpawner *spawner;
+    TouchscreenListMenuHeader header;
     Window *windows;
     TouchscreenHitbox *touchscreenHitboxes;
     u8 cursorPos;
@@ -56,18 +56,18 @@ struct UnkStruct_020185FC {
     u8 selection;
     u8 animTimer;
     HeapID heapId;
-    UnkFunc_020185FC callback;
+    TouchscreenListMenuCallback callback;
     void *callbackArg;
 };
 
-UnkStruct_02018424 *sub_02018424(HeapID heapId, PaletteData *a1);
-void sub_02018474(UnkStruct_02018424 *a0);
-UnkStruct_020185FC *sub_020185FC(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6);
-UnkStruct_020185FC *sub_02018620(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, int a7);
-UnkStruct_020185FC *sub_02018648(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, UnkFunc_020185FC a7, void *a8, BOOL a9);
-void sub_02018694(UnkStruct_020185FC *a0);
-u8 sub_02018674(UnkStruct_020185FC *a0);
-void sub_02018680(UnkStruct_020185FC *a0);
-int sub_020186A4(UnkStruct_020185FC *a0);
+TouchscreenListMenuSpawner *TouchscreenListMenuSpawner_Create(HeapID heapId, PaletteData *paletteData);
+void TouchscreenListMenuSpawner_Destroy(TouchscreenListMenuSpawner *spawner);
+TouchscreenListMenu *TouchscreenListMenu_Create(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection);
+TouchscreenListMenu *TouchscreenListMenu_CreateWithAlignment(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, int alignment);
+TouchscreenListMenu *TouchscreenListMenu_CreateWithCallback(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, TouchscreenListMenuCallback callback, void *callbackArg, BOOL silent);
+u8 TouchscreenListMenu_WasLastInputTouch(TouchscreenListMenu *menu);
+void TouchscreenListMenu_Destroy(TouchscreenListMenu *menu);
+void TouchscreenListMenu_DestroyButtons(TouchscreenListMenu *menu);
+int TouchscreenListMenu_HandleInput(TouchscreenListMenu *menu);
 
 #endif // GUARD_POKEHEARTGOLD_UNK_02108424_H

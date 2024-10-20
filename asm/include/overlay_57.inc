@@ -112,11 +112,11 @@
 .public sub_02017068
 .public MenuInputStateMgr_GetState
 .public MenuInputStateMgr_SetState
-.public sub_02018424
-.public sub_02018474
-.public sub_020185FC
-.public sub_02018680
-.public sub_020186A4
+.public TouchscreenListMenuSpawner_Create
+.public TouchscreenListMenuSpawner_Destroy
+.public TouchscreenListMenu_Create
+.public TouchscreenListMenu_Destroy
+.public TouchscreenListMenu_HandleInput
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
 .public CreateHeap

@@ -6,7 +6,7 @@
 
 typedef struct Ov122_021E9278 {
     u8 unk0[5][2];
-    Ov122_021E9282 unkA;
+    TouchscreenListMenuTemplate menuTemplate;
 } Ov122_021E9278;
 
 typedef struct MsgNoList {

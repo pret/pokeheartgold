@@ -2641,7 +2641,7 @@ _02238D04:
 	mov r3, #0x16
 	lsl r2, r2, #0x18
 	lsr r2, r2, #0x18
-	bl sub_020185FC
+	bl TouchscreenListMenu_Create
 	mov r1, #0x93
 	lsl r1, r1, #2
 	str r0, [r7, r1]
@@ -2667,7 +2667,7 @@ ov57_02238D80: ; 0x02238D80
 	ldr r0, _02238DA8 ; =0x0000040C
 	str r2, [r4, r0]
 	ldr r0, [r4, r1]
-	bl sub_02018680
+	bl TouchscreenListMenu_Destroy
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -3093,7 +3093,7 @@ _022390C2:
 _022390D4:
 	ldr r1, [r4, #0x14]
 	mov r0, #0x34
-	bl sub_02018424
+	bl TouchscreenListMenuSpawner_Create
 	mov r1, #0x5d
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -3112,7 +3112,7 @@ ov57_022390F4: ; 0x022390F4
 	mov r0, #0x5d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02018474
+	bl TouchscreenListMenuSpawner_Destroy
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
 	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
@@ -5287,7 +5287,7 @@ _0223A256:
 	mov r0, #0x93
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_020186A4
+	bl TouchscreenListMenu_HandleInput
 	add r1, r0, #0
 	mov r0, #1
 	mvn r0, r0

@@ -85,7 +85,7 @@ typedef struct BerryPotsAppData {
     u16 totalBerryQuantity;
     u16 totalMulchQuantity;
     BgConfig *bgConfig;
-    UnkStruct_02018424 *unk8C;
+    TouchscreenListMenuSpawner *menuSpawner;
     u8 unk90[12];
     MsgData *msgData;
     MessageFormat *msgFmt;
@@ -104,7 +104,7 @@ typedef struct BerryPotsAppData {
     NARC *itemIconNarc;
     NARC *berryPotsAppNarc;
     LISTMENUITEM *listMenuItems[4];
-    UnkStruct_020185FC *unk1A8;
+    TouchscreenListMenu *menu;
 } BerryPotsAppData;
 
 void ov17_022028B8(BerryPotsAppData *data);

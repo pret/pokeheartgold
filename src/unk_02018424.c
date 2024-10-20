@@ -13,25 +13,25 @@
 #include "text.h"
 #include "unk_02005D10.h"
 
-static UnkStruct_020185FC *sub_02018498(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, UnkFunc_020185FC a7, void *a8, BOOL a9, int a10);
-static void sub_02018744(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, PaletteData *paletteData, HeapID heapId);
-static void sub_020187C0(SysTask *task, void *taskData);
-static u8 sub_0201881C(LISTMENUITEM *listMenuItem, u8 a1, FontID a2, u8 a3);
-static void sub_02018890(UnkStruct_020185FC *a0);
-static void sub_02018998(UnkStruct_020185FC *a0);
-static void sub_020189AC(UnkStruct_020185FC *a0);
-static void sub_02018C90(UnkStruct_020185FC *a0);
-static void sub_02018D0C(UnkStruct_020185FC *a0, u8 a1, BOOL a2);
-static void sub_02018D90(UnkStruct_020185FC *a0);
-static void sub_02018DF4(UnkStruct_020185FC *a0, int a1);
-static int sub_02018E08(UnkStruct_020185FC *a0, BOOL *flagRet);
-static int sub_02018E8C(UnkStruct_020185FC *a0);
-static void sub_02018FE8(UnkStruct_020185FC *a0, u16 sndseq);
-static void sub_02018FFC(UnkStruct_020185FC *a0, int a1);
+static TouchscreenListMenu *TouchscreenListMenu_CreateInternal(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, TouchscreenListMenuCallback callback, void *callbackArg, BOOL silent, int alignment);
+static void TouchscreenListMenuSpawner_ScheduleLoadGraphicsToVram(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, PaletteData *paletteData, HeapID heapId);
+static void Task_LoadTouchscreenListMenuGraphicsToVram(SysTask *task, void *taskData);
+static u8 TouchscreenListMenu_GetItemsTextMaxWidth(LISTMENUITEM *listMenuItem, u8 num, FontID fontId, u8 margin);
+static void TouchscreenListMenu_CreateWindows(TouchscreenListMenu *menu);
+static void TouchscreenListMenu_DeleteWindows(TouchscreenListMenu *menu);
+static void TouchscreenListMenu_DrawButtons(TouchscreenListMenu *menu);
+static void TouchscreenListMenu_PrintOptions(TouchscreenListMenu *menu);
+static void TouchscreenListMenu_ToggleButtonPalette(TouchscreenListMenu *menu, u8 index, BOOL selected);
+static void TouchscreenListMenu_EraseTilemap(TouchscreenListMenu *menu);
+static void TouchscreenListMenu_DrawButtonsAndTransfer(TouchscreenListMenu *menu, u8 cursorPos);
+static int TouchscreenListMenu_HandleTouchInput(TouchscreenListMenu *menu, BOOL *flagRet);
+static int TouchscreenListMenu_HandleKeyInput(TouchscreenListMenu *menu);
+static void TouchscreenListMenu_PlaySE(TouchscreenListMenu *menu, u16 sndseq);
+static void TouchscreenListMenu_InvokeCallback(TouchscreenListMenu *menu, int a1);
 
-UnkStruct_02018424 *sub_02018424(HeapID heapId, PaletteData *paletteData) {
-    UnkStruct_02018424 *ret = AllocFromHeap(heapId, sizeof(UnkStruct_02018424));
-    MI_CpuClear8(ret, sizeof(UnkStruct_02018424));
+TouchscreenListMenuSpawner *TouchscreenListMenuSpawner_Create(HeapID heapId, PaletteData *paletteData) {
+    TouchscreenListMenuSpawner *ret = AllocFromHeap(heapId, sizeof(TouchscreenListMenuSpawner));
+    MI_CpuClear8(ret, sizeof(TouchscreenListMenuSpawner));
     ret->heapId      = heapId;
     ret->charDataRaw = GfGfxLoader_LoadFromNarc(NARC_data_sbox_gra, NARC_sbox_gra_sbox_gra_00000001_NCGR, FALSE, heapId, FALSE);
     NNS_G2dGetUnpackedBGCharacterData(ret->charDataRaw, &ret->pCharData);
@@ -41,23 +41,23 @@ UnkStruct_02018424 *sub_02018424(HeapID heapId, PaletteData *paletteData) {
     return ret;
 }
 
-void sub_02018474(UnkStruct_02018424 *a0) {
-    FreeToHeap(a0->plttDataRaw);
-    FreeToHeap(a0->charDataRaw);
-    MI_CpuFill8(a0, 0, sizeof(UnkStruct_02018424));
-    FreeToHeap(a0);
+void TouchscreenListMenuSpawner_Destroy(TouchscreenListMenuSpawner *spawner) {
+    FreeToHeap(spawner->plttDataRaw);
+    FreeToHeap(spawner->charDataRaw);
+    MI_CpuFill8(spawner, 0, sizeof(TouchscreenListMenuSpawner));
+    FreeToHeap(spawner);
 }
 
-static UnkStruct_020185FC *sub_02018498(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, UnkFunc_020185FC callback, void *callbackArg, BOOL silent, int alignment) {
-    UnkStruct_020185FC *ret = AllocFromHeap(a0->heapId, sizeof(UnkStruct_020185FC));
-    MI_CpuClear8(ret, sizeof(UnkStruct_020185FC));
-    MI_CpuCopy8(a1, &ret->unk_04, sizeof(Ov122_021E7488));
-    ret->unk_00 = a0;
-    if (selection < ret->unk_04.numWindows) {
+static TouchscreenListMenu *TouchscreenListMenu_CreateInternal(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, TouchscreenListMenuCallback callback, void *callbackArg, BOOL silent, int alignment) {
+    TouchscreenListMenu *ret = AllocFromHeap(spawner->heapId, sizeof(TouchscreenListMenu));
+    MI_CpuClear8(ret, sizeof(TouchscreenListMenu));
+    MI_CpuCopy8(header, &ret->header, sizeof(TouchscreenListMenuHeader));
+    ret->spawner = spawner;
+    if (selection < ret->header.numWindows) {
         ret->cursorPos = selection;
     }
     ret->animActive  = 0;
-    ret->heapId      = a0->heapId;
+    ret->heapId      = spawner->heapId;
     ret->y           = y;
     ret->cursorPos   = selection;
     ret->isTouch     = isTouch;
@@ -65,7 +65,7 @@ static UnkStruct_020185FC *sub_02018498(UnkStruct_02018424 *a0, Ov122_021E7488 *
     ret->callbackArg = callbackArg;
     ret->silent      = silent;
     if (width == 0) {
-        ret->width = sub_0201881C(a1->listMenuItems, ret->unk_04.numWindows, 4, ret->unk_04.unk0.unk1);
+        ret->width = TouchscreenListMenu_GetItemsTextMaxWidth(header->listMenuItems, ret->header.numWindows, 4, ret->header.template.xOffset);
     } else {
         ret->width = width;
     }
@@ -91,102 +91,102 @@ static UnkStruct_020185FC *sub_02018498(UnkStruct_02018424 *a0, Ov122_021E7488 *
         }
         break;
     }
-    sub_02018890(ret);
-    sub_02018744(a0, &ret->unk_04, ret->unk_00->paletteData, ret->heapId);
-    sub_020189AC(ret);
-    sub_02018C90(ret);
-    sub_02018DF4(ret, ret->cursorPos);
-    sub_02018FE8(ret, SEQ_SE_DP_SELECT);
-    sub_02018FFC(ret, 0);
+    TouchscreenListMenu_CreateWindows(ret);
+    TouchscreenListMenuSpawner_ScheduleLoadGraphicsToVram(spawner, &ret->header, ret->spawner->paletteData, ret->heapId);
+    TouchscreenListMenu_DrawButtons(ret);
+    TouchscreenListMenu_PrintOptions(ret);
+    TouchscreenListMenu_DrawButtonsAndTransfer(ret, ret->cursorPos);
+    TouchscreenListMenu_PlaySE(ret, SEQ_SE_DP_SELECT);
+    TouchscreenListMenu_InvokeCallback(ret, 0);
     return ret;
 }
 
-UnkStruct_020185FC *sub_020185FC(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 isTouch, u8 x, u8 y, u8 width, u8 selection) {
-    return sub_02018498(a0, a1, isTouch, x, y, width, selection, NULL, NULL, FALSE, 0);
+TouchscreenListMenu *TouchscreenListMenu_Create(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection) {
+    return TouchscreenListMenu_CreateInternal(spawner, header, isTouch, x, y, width, selection, NULL, NULL, FALSE, 0);
 }
 
-UnkStruct_020185FC *sub_02018620(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, int alignment) {
-    return sub_02018498(a0, a1, isTouch, x, y, width, selection, NULL, NULL, FALSE, alignment);
+TouchscreenListMenu *TouchscreenListMenu_CreateWithAlignment(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, int alignment) {
+    return TouchscreenListMenu_CreateInternal(spawner, header, isTouch, x, y, width, selection, NULL, NULL, FALSE, alignment);
 }
 
-UnkStruct_020185FC *sub_02018648(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, UnkFunc_020185FC callback, void *callbackArg, BOOL silent) {
-    return sub_02018498(a0, a1, isTouch, x, y, width, selection, callback, callbackArg, silent, 0);
+TouchscreenListMenu *TouchscreenListMenu_CreateWithCallback(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, TouchscreenListMenuCallback callback, void *callbackArg, BOOL silent) {
+    return TouchscreenListMenu_CreateInternal(spawner, header, isTouch, x, y, width, selection, callback, callbackArg, silent, 0);
 }
 
-u8 sub_02018674(UnkStruct_020185FC *a0) {
-    return a0->isTouch;
+u8 TouchscreenListMenu_WasLastInputTouch(TouchscreenListMenu *menu) {
+    return menu->isTouch;
 }
 
-void sub_02018680(UnkStruct_020185FC *a0) {
-    MI_CpuClear8(a0, sizeof(UnkStruct_020185FC));
-    FreeToHeap(a0);
+void TouchscreenListMenu_Destroy(TouchscreenListMenu *menu) {
+    MI_CpuClear8(menu, sizeof(TouchscreenListMenu));
+    FreeToHeap(menu);
 }
 
-void sub_02018694(UnkStruct_020185FC *a0) {
-    sub_02018D90(a0);
-    sub_02018998(a0);
+void TouchscreenListMenu_DestroyButtons(TouchscreenListMenu *menu) {
+    TouchscreenListMenu_EraseTilemap(menu);
+    TouchscreenListMenu_DeleteWindows(menu);
 }
 
-int sub_020186A4(UnkStruct_020185FC *a0) {
-    if (a0->animActive == 1) {
-        if (a0->animTimer == 0) {
-            sub_02018694(a0);
-            return a0->unk_04.listMenuItems[a0->selection].value;
+int TouchscreenListMenu_HandleInput(TouchscreenListMenu *menu) {
+    if (menu->animActive == 1) {
+        if (menu->animTimer == 0) {
+            TouchscreenListMenu_DestroyButtons(menu);
+            return menu->header.listMenuItems[menu->selection].value;
         }
-        if (a0->animTimer % 2 == 0) {
-            if ((a0->animTimer / 2) % 2 == 0) {
-                sub_02018D0C(a0, a0->selection, 1);
+        if (menu->animTimer % 2 == 0) {
+            if ((menu->animTimer / 2) % 2 == 0) {
+                TouchscreenListMenu_ToggleButtonPalette(menu, menu->selection, 1);
             } else {
-                sub_02018D0C(a0, a0->selection, 0);
+                TouchscreenListMenu_ToggleButtonPalette(menu, menu->selection, 0);
             }
         }
-        --a0->animTimer;
+        --menu->animTimer;
         return -1;
     }
 
     BOOL isTouch;
-    int input = sub_02018E08(a0, &isTouch);
+    int input = TouchscreenListMenu_HandleTouchInput(menu, &isTouch);
     if (!isTouch) {
-        input = sub_02018E8C(a0);
+        input = TouchscreenListMenu_HandleKeyInput(menu);
     }
     if (input == LIST_CANCEL) {
-        sub_02018694(a0);
+        TouchscreenListMenu_DestroyButtons(menu);
         return input;
     }
 
     return -1;
 }
 
-typedef struct UnkTaskData_sub_020187C0 {
+typedef struct TaskData_TouchscreenListMenuGraphicsLoad {
     BgConfig *bgConfig;
     u8 bgId;
     u8 plttOffset;
     u16 charOffset;
     NNSG2dCharacterData *pCharData;
     NNSG2dPaletteData *pPlttData;
-} UnkTaskData_sub_020187C0;
+} TaskData_TouchscreenListMenuGraphicsLoad;
 
-static void sub_02018744(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, PaletteData *plttData, HeapID heapId) {
-    UnkTaskData_sub_020187C0 *taskData = AllocFromHeapAtEnd(heapId, sizeof(UnkTaskData_sub_020187C0));
-    MI_CpuClear8(taskData, sizeof(UnkTaskData_sub_020187C0));
-    taskData->pCharData  = a0->pCharData;
-    taskData->pPlttData  = a0->pPlttData;
-    taskData->bgConfig   = a1->bgConfig;
-    taskData->bgId       = a1->unk0.bgId;
-    taskData->charOffset = a1->unk0.charOffset;
-    taskData->plttOffset = a1->unk0.plttOffset;
-    SysTask_CreateOnVWaitQueue(sub_020187C0, taskData, 128);
+static void TouchscreenListMenuSpawner_ScheduleLoadGraphicsToVram(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, PaletteData *plttData, HeapID heapId) {
+    TaskData_TouchscreenListMenuGraphicsLoad *taskData = AllocFromHeapAtEnd(heapId, sizeof(TaskData_TouchscreenListMenuGraphicsLoad));
+    MI_CpuClear8(taskData, sizeof(TaskData_TouchscreenListMenuGraphicsLoad));
+    taskData->pCharData  = spawner->pCharData;
+    taskData->pPlttData  = spawner->pPlttData;
+    taskData->bgConfig   = header->bgConfig;
+    taskData->bgId       = header->template.bgId;
+    taskData->charOffset = header->template.charOffset;
+    taskData->plttOffset = header->template.plttOffset;
+    SysTask_CreateOnVWaitQueue(Task_LoadTouchscreenListMenuGraphicsToVram, taskData, 128);
     if (plttData != NULL) {
-        if (a1->unk0.bgId < GF_BG_LYR_SUB_0) {
-            PaletteData_LoadPalette(plttData, taskData->pPlttData->pRawData, PLTTBUF_MAIN_BG, a1->unk0.plttOffset * 16, 0x20);
+        if (header->template.bgId < GF_BG_LYR_SUB_0) {
+            PaletteData_LoadPalette(plttData, taskData->pPlttData->pRawData, PLTTBUF_MAIN_BG, header->template.plttOffset * 16, 0x20);
         } else {
-            PaletteData_LoadPalette(plttData, taskData->pPlttData->pRawData, PLTTBUF_SUB_BG, a1->unk0.plttOffset * 16, 0x20);
+            PaletteData_LoadPalette(plttData, taskData->pPlttData->pRawData, PLTTBUF_SUB_BG, header->template.plttOffset * 16, 0x20);
         }
     }
 }
 
-static void sub_020187C0(SysTask *task, void *taskData) {
-    UnkTaskData_sub_020187C0 *data = taskData;
+static void Task_LoadTouchscreenListMenuGraphicsToVram(SysTask *task, void *taskData) {
+    TaskData_TouchscreenListMenuGraphicsLoad *data = taskData;
 
     DC_FlushRange(data->pCharData->pRawData, data->pCharData->szByte);
     BG_LoadCharTilesData(data->bgConfig, data->bgId, data->pCharData->pRawData, data->pCharData->szByte, data->charOffset);
@@ -202,17 +202,17 @@ static void sub_020187C0(SysTask *task, void *taskData) {
     FreeToHeap(taskData);
 }
 
-static u8 sub_0201881C(LISTMENUITEM *listMenuItem, u8 a1, FontID a2, u8 a3) {
+static u8 TouchscreenListMenu_GetItemsTextMaxWidth(LISTMENUITEM *listMenuItem, u8 num, FontID fontId, u8 margin) {
     u8 maxWidth = 0;
-    for (int i = 0; i < a1; ++i) {
+    for (int i = 0; i < num; ++i) {
         GF_ASSERT(listMenuItem[i].text != NULL);
         GF_ASSERT(listMenuItem[i].text != (void *)LIST_NOTHING_CHOSEN);
-        u8 width = FontID_String_GetWidth(a2, listMenuItem[i].text, 0);
+        u8 width = FontID_String_GetWidth(fontId, listMenuItem[i].text, 0);
         if (width > maxWidth) {
             maxWidth = width;
         }
     }
-    maxWidth += a3 * 2;
+    maxWidth += margin * 2;
     if (maxWidth % 8 == 0) {
         return maxWidth / 8;
     } else {
@@ -220,102 +220,102 @@ static u8 sub_0201881C(LISTMENUITEM *listMenuItem, u8 a1, FontID a2, u8 a3) {
     }
 }
 
-static void sub_02018890(UnkStruct_020185FC *a0) {
+static void TouchscreenListMenu_CreateWindows(TouchscreenListMenu *menu) {
     int i;
     u16 tilesPerWindow;
-    a0->windows             = AllocWindows(a0->heapId, a0->unk_04.numWindows);
-    a0->touchscreenHitboxes = AllocFromHeap(a0->heapId, (a0->unk_04.numWindows + 1) * sizeof(TouchscreenHitbox));
-    MI_CpuClear8(a0->touchscreenHitboxes, (a0->unk_04.numWindows + 1) * sizeof(TouchscreenHitbox));
-    tilesPerWindow = a0->width * 2;
-    for (i = 0; i < a0->unk_04.numWindows; ++i) {
-        AddWindowParameterized(a0->unk_04.bgConfig, &a0->windows[i], a0->unk_04.unk0.bgId, a0->x + 1, a0->y + 1 + 3 * i, a0->width, 2, a0->unk_04.unk0.plttOffset, a0->unk_04.unk0.baseTile + tilesPerWindow * i);
-        FillWindowPixelBuffer(&a0->windows[i], 3);
-        a0->touchscreenHitboxes[i].rect.top    = (a0->y + 1) * 8 + 24 * i;
-        a0->touchscreenHitboxes[i].rect.bottom = a0->touchscreenHitboxes[i].rect.top + 16;
-        a0->touchscreenHitboxes[i].rect.left   = (a0->x + 1) * 8;
-        a0->touchscreenHitboxes[i].rect.right  = a0->touchscreenHitboxes[i].rect.left + a0->width * 8;
+    menu->windows             = AllocWindows(menu->heapId, menu->header.numWindows);
+    menu->touchscreenHitboxes = AllocFromHeap(menu->heapId, (menu->header.numWindows + 1) * sizeof(TouchscreenHitbox));
+    MI_CpuClear8(menu->touchscreenHitboxes, (menu->header.numWindows + 1) * sizeof(TouchscreenHitbox));
+    tilesPerWindow = menu->width * 2;
+    for (i = 0; i < menu->header.numWindows; ++i) {
+        AddWindowParameterized(menu->header.bgConfig, &menu->windows[i], menu->header.template.bgId, menu->x + 1, menu->y + 1 + 3 * i, menu->width, 2, menu->header.template.plttOffset, menu->header.template.baseTile + tilesPerWindow * i);
+        FillWindowPixelBuffer(&menu->windows[i], 3);
+        menu->touchscreenHitboxes[i].rect.top    = (menu->y + 1) * 8 + 24 * i;
+        menu->touchscreenHitboxes[i].rect.bottom = menu->touchscreenHitboxes[i].rect.top + 16;
+        menu->touchscreenHitboxes[i].rect.left   = (menu->x + 1) * 8;
+        menu->touchscreenHitboxes[i].rect.right  = menu->touchscreenHitboxes[i].rect.left + menu->width * 8;
     }
-    a0->touchscreenHitboxes[i].rect.top = TOUCHSCREEN_RECTLIST_END;
+    menu->touchscreenHitboxes[i].rect.top = TOUCHSCREEN_RECTLIST_END;
 }
 
-static void sub_02018998(UnkStruct_020185FC *a0) {
-    FreeToHeap(a0->touchscreenHitboxes);
-    WindowArray_Delete(a0->windows, a0->unk_04.numWindows);
+static void TouchscreenListMenu_DeleteWindows(TouchscreenListMenu *menu) {
+    FreeToHeap(menu->touchscreenHitboxes);
+    WindowArray_Delete(menu->windows, menu->header.numWindows);
 }
 
-static void sub_020189AC(UnkStruct_020185FC *a0) {
+static void TouchscreenListMenu_DrawButtons(TouchscreenListMenu *menu) {
     int i;
-    int r4;
-    int sp10;
+    int tileNum;
+    int lastIndex;
 
-    sp10 = a0->unk_04.numWindows - 1;
+    lastIndex = menu->header.numWindows - 1;
 
     // top row
-    r4 = a0->unk_04.unk0.charOffset;
-    if (a0->cursorPos == 0) {
-        r4 += 12;
+    tileNum = menu->header.template.charOffset;
+    if (menu->cursorPos == 0) {
+        tileNum += 12;
     }
-    FillBgTilemapRect(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId, r4, a0->x, a0->y, 1, 1, a0->unk_04.unk0.plttOffset);
-    FillBgTilemapRect(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId, r4 + 1, a0->x + 1, a0->y, a0->width, 1, a0->unk_04.unk0.plttOffset);
-    FillBgTilemapRect(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId, r4 + 2, a0->x + a0->width + 1, a0->y, 1, 1, a0->unk_04.unk0.plttOffset);
+    FillBgTilemapRect(menu->header.bgConfig, menu->header.template.bgId, tileNum, menu->x, menu->y, 1, 1, menu->header.template.plttOffset);
+    FillBgTilemapRect(menu->header.bgConfig, menu->header.template.bgId, tileNum + 1, menu->x + 1, menu->y, menu->width, 1, menu->header.template.plttOffset);
+    FillBgTilemapRect(menu->header.bgConfig, menu->header.template.bgId, tileNum + 2, menu->x + menu->width + 1, menu->y, 1, 1, menu->header.template.plttOffset);
 
     // bottom row
-    r4 = a0->unk_04.unk0.charOffset + 9;
-    if (a0->cursorPos == sp10) {
-        r4 += 12;
+    tileNum = menu->header.template.charOffset + 9;
+    if (menu->cursorPos == lastIndex) {
+        tileNum += 12;
     }
-    FillBgTilemapRect(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId, r4, a0->x, a0->y + a0->unk_04.numWindows * 3, 1, 1, a0->unk_04.unk0.plttOffset);
-    FillBgTilemapRect(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId, r4 + 1, a0->x + 1, a0->y + a0->unk_04.numWindows * 3, a0->width, 1, a0->unk_04.unk0.plttOffset);
-    FillBgTilemapRect(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId, r4 + 2, a0->x + a0->width + 1, a0->y + a0->unk_04.numWindows * 3, 1, 1, a0->unk_04.unk0.plttOffset);
+    FillBgTilemapRect(menu->header.bgConfig, menu->header.template.bgId, tileNum, menu->x, menu->y + menu->header.numWindows * 3, 1, 1, menu->header.template.plttOffset);
+    FillBgTilemapRect(menu->header.bgConfig, menu->header.template.bgId, tileNum + 1, menu->x + 1, menu->y + menu->header.numWindows * 3, menu->width, 1, menu->header.template.plttOffset);
+    FillBgTilemapRect(menu->header.bgConfig, menu->header.template.bgId, tileNum + 2, menu->x + menu->width + 1, menu->y + menu->header.numWindows * 3, 1, 1, menu->header.template.plttOffset);
 
     // between each button
-    for (i = 0; i < a0->unk_04.numWindows - 1; ++i) {
-        r4 = a0->unk_04.unk0.charOffset + 6;
-        if ((a0->cursorPos == 0 && i == 0) || a0->cursorPos == i) {
-            r4 += 12;
-        } else if ((a0->cursorPos == sp10 && i == sp10 - 1) || a0->cursorPos == i + 1) {
-            r4 += 18;
+    for (i = 0; i < menu->header.numWindows - 1; ++i) {
+        tileNum = menu->header.template.charOffset + 6;
+        if ((menu->cursorPos == 0 && i == 0) || menu->cursorPos == i) {
+            tileNum += 12;
+        } else if ((menu->cursorPos == lastIndex && i == lastIndex - 1) || menu->cursorPos == i + 1) {
+            tileNum += 18;
         }
-        FillBgTilemapRect(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId, r4, a0->x, a0->y + i * 3 + 3, 1, 1, a0->unk_04.unk0.plttOffset);
-        FillBgTilemapRect(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId, r4 + 1, a0->x + 1, a0->y + i * 3 + 3, a0->width, 1, a0->unk_04.unk0.plttOffset);
-        FillBgTilemapRect(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId, r4 + 2, a0->x + a0->width + 1, a0->y + i * 3 + 3, 1, 1, a0->unk_04.unk0.plttOffset);
+        FillBgTilemapRect(menu->header.bgConfig, menu->header.template.bgId, tileNum, menu->x, menu->y + i * 3 + 3, 1, 1, menu->header.template.plttOffset);
+        FillBgTilemapRect(menu->header.bgConfig, menu->header.template.bgId, tileNum + 1, menu->x + 1, menu->y + i * 3 + 3, menu->width, 1, menu->header.template.plttOffset);
+        FillBgTilemapRect(menu->header.bgConfig, menu->header.template.bgId, tileNum + 2, menu->x + menu->width + 1, menu->y + i * 3 + 3, 1, 1, menu->header.template.plttOffset);
     }
 
     // left and right borders
-    for (i = 0; i < a0->unk_04.numWindows; ++i) {
-        r4 = a0->unk_04.unk0.charOffset + 3;
-        if (a0->cursorPos == i) {
-            r4 += 12;
+    for (i = 0; i < menu->header.numWindows; ++i) {
+        tileNum = menu->header.template.charOffset + 3;
+        if (menu->cursorPos == i) {
+            tileNum += 12;
         }
-        FillBgTilemapRect(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId, r4, a0->x, a0->y + i * 3 + 1, 1, 2, a0->unk_04.unk0.plttOffset);
-        FillBgTilemapRect(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId, r4 + 2, a0->x + a0->width + 1, a0->y + i * 3 + 1, 1, 2, a0->unk_04.unk0.plttOffset);
+        FillBgTilemapRect(menu->header.bgConfig, menu->header.template.bgId, tileNum, menu->x, menu->y + i * 3 + 1, 1, 2, menu->header.template.plttOffset);
+        FillBgTilemapRect(menu->header.bgConfig, menu->header.template.bgId, tileNum + 2, menu->x + menu->width + 1, menu->y + i * 3 + 1, 1, 2, menu->header.template.plttOffset);
     }
 }
 
-static void sub_02018C90(UnkStruct_020185FC *a0) {
+static void TouchscreenListMenu_PrintOptions(TouchscreenListMenu *menu) {
     int i;
     u32 x;
     u32 width;
 
-    width = a0->width * 8;
-    for (i = 0; i < a0->unk_04.numWindows; ++i) {
-        if (a0->unk_04.unk0.unk0_1 == 0) {
-            x = a0->unk_04.unk0.unk1;
+    width = menu->width * 8;
+    for (i = 0; i < menu->header.numWindows; ++i) {
+        if (menu->header.template.centered == 0) {
+            x = menu->header.template.xOffset;
         } else {
-            x = (width - FontID_String_GetWidth(4, a0->unk_04.listMenuItems[i].text, 0)) / 2;
+            x = (width - FontID_String_GetWidth(4, menu->header.listMenuItems[i].text, 0)) / 2;
         }
-        AddTextPrinterParameterizedWithColor(&a0->windows[i], 4, a0->unk_04.listMenuItems[i].text, x, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 3), NULL);
-        ScheduleWindowCopyToVram(&a0->windows[i]);
+        AddTextPrinterParameterizedWithColor(&menu->windows[i], 4, menu->header.listMenuItems[i].text, x, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 3), NULL);
+        ScheduleWindowCopyToVram(&menu->windows[i]);
     }
-    ScheduleBgTilemapBufferTransfer(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId);
+    ScheduleBgTilemapBufferTransfer(menu->header.bgConfig, menu->header.template.bgId);
 }
 
-static void sub_02018D0C(UnkStruct_020185FC *a0, u8 a1, BOOL a2) {
+static void TouchscreenListMenu_ToggleButtonPalette(TouchscreenListMenu *menu, u8 index, BOOL selected) {
     u32 x;
     u32 width;
     u32 textColor;
     u8 fillValue;
-    if (a2) {
+    if (selected) {
         textColor = MAKE_TEXT_COLOR(4, 5, 6);
         fillValue = 6;
     } else {
@@ -323,107 +323,107 @@ static void sub_02018D0C(UnkStruct_020185FC *a0, u8 a1, BOOL a2) {
         fillValue = 3;
     }
 
-    width = a0->width * 8;
-    if (a0->unk_04.unk0.unk0_1 == 0) {
-        x = a0->unk_04.unk0.unk1;
+    width = menu->width * 8;
+    if (menu->header.template.centered == 0) {
+        x = menu->header.template.xOffset;
     } else {
-        x = (width - FontID_String_GetWidth(4, a0->unk_04.listMenuItems[a1].text, 0)) / 2;
+        x = (width - FontID_String_GetWidth(4, menu->header.listMenuItems[index].text, 0)) / 2;
     }
-    FillWindowPixelBuffer(&a0->windows[a1], fillValue);
-    AddTextPrinterParameterizedWithColor(&a0->windows[a1], 4, a0->unk_04.listMenuItems[a1].text, x, 0, TEXT_SPEED_NOTRANSFER, textColor, NULL);
-    ScheduleWindowCopyToVram(&a0->windows[a1]);
+    FillWindowPixelBuffer(&menu->windows[index], fillValue);
+    AddTextPrinterParameterizedWithColor(&menu->windows[index], 4, menu->header.listMenuItems[index].text, x, 0, TEXT_SPEED_NOTRANSFER, textColor, NULL);
+    ScheduleWindowCopyToVram(&menu->windows[index]);
 }
 
-static void sub_02018D90(UnkStruct_020185FC *a0) {
-    for (int i = 0; i < a0->unk_04.numWindows; ++i) {
-        ClearWindowTilemapAndScheduleTransfer(&a0->windows[i]);
+static void TouchscreenListMenu_EraseTilemap(TouchscreenListMenu *menu) {
+    for (int i = 0; i < menu->header.numWindows; ++i) {
+        ClearWindowTilemapAndScheduleTransfer(&menu->windows[i]);
     }
-    FillBgTilemapRect(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId, 0, a0->x, a0->y, a0->width + 2, a0->unk_04.numWindows * 3 + 1, a0->unk_04.unk0.plttOffset);
-    ScheduleBgTilemapBufferTransfer(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId);
+    FillBgTilemapRect(menu->header.bgConfig, menu->header.template.bgId, 0, menu->x, menu->y, menu->width + 2, menu->header.numWindows * 3 + 1, menu->header.template.plttOffset);
+    ScheduleBgTilemapBufferTransfer(menu->header.bgConfig, menu->header.template.bgId);
 }
 
-static void sub_02018DF4(UnkStruct_020185FC *a0, int a1) {
-    sub_020189AC(a0);
-    ScheduleBgTilemapBufferTransfer(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId);
+static void TouchscreenListMenu_DrawButtonsAndTransfer(TouchscreenListMenu *menu, u8 cursorPos) {
+    TouchscreenListMenu_DrawButtons(menu);
+    ScheduleBgTilemapBufferTransfer(menu->header.bgConfig, menu->header.template.bgId);
 }
 
-static int sub_02018E08(UnkStruct_020185FC *a0, BOOL *flagRet) {
-    int hitbox = TouchscreenHitbox_FindRectAtTouchNew(a0->touchscreenHitboxes);
+static int TouchscreenListMenu_HandleTouchInput(TouchscreenListMenu *menu, BOOL *flagRet) {
+    int hitbox = TouchscreenHitbox_FindRectAtTouchNew(menu->touchscreenHitboxes);
     if (hitbox == -1) {
         *flagRet = FALSE;
         return -1;
     }
-    *flagRet      = TRUE;
-    a0->cursorPos = hitbox;
-    sub_02018D0C(a0, hitbox, TRUE);
-    sub_020189AC(a0);
-    ScheduleBgTilemapBufferTransfer(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId);
-    a0->animActive = 1;
-    a0->animTimer  = 8;
-    a0->selection  = hitbox;
-    a0->isTouch    = 1;
-    sub_02018FE8(a0, SEQ_SE_DP_SELECT);
-    sub_02018FFC(a0, 2);
+    *flagRet        = TRUE;
+    menu->cursorPos = hitbox;
+    TouchscreenListMenu_ToggleButtonPalette(menu, hitbox, TRUE);
+    TouchscreenListMenu_DrawButtons(menu);
+    ScheduleBgTilemapBufferTransfer(menu->header.bgConfig, menu->header.template.bgId);
+    menu->animActive = 1;
+    menu->animTimer  = 8;
+    menu->selection  = hitbox;
+    menu->isTouch    = 1;
+    TouchscreenListMenu_PlaySE(menu, SEQ_SE_DP_SELECT);
+    TouchscreenListMenu_InvokeCallback(menu, 2);
     return -1;
 }
 
-static int sub_02018E8C(UnkStruct_020185FC *a0) {
+static int TouchscreenListMenu_HandleKeyInput(TouchscreenListMenu *menu) {
     u8 prev;
 
     if (gSystem.newKeys & (PAD_BUTTON_X | PAD_BUTTON_Y | PAD_KEY_UP | PAD_KEY_DOWN | PAD_KEY_LEFT | PAD_KEY_RIGHT | PAD_BUTTON_A | PAD_BUTTON_B)) {
-        a0->isTouch = 0;
+        menu->isTouch = 0;
     }
     if (gSystem.newKeys & PAD_BUTTON_B) {
-        sub_02018FE8(a0, SEQ_SE_DP_SELECT);
-        sub_02018FFC(a0, 3);
+        TouchscreenListMenu_PlaySE(menu, SEQ_SE_DP_SELECT);
+        TouchscreenListMenu_InvokeCallback(menu, 3);
         return LIST_CANCEL;
     }
     if (gSystem.newKeys & PAD_BUTTON_A) {
-        sub_02018D0C(a0, a0->cursorPos, TRUE);
-        a0->animActive = 1;
-        a0->animTimer  = 8;
-        a0->selection  = a0->cursorPos;
-        sub_02018FE8(a0, SEQ_SE_DP_SELECT);
-        sub_02018FFC(a0, 2);
+        TouchscreenListMenu_ToggleButtonPalette(menu, menu->cursorPos, TRUE);
+        menu->animActive = 1;
+        menu->animTimer  = 8;
+        menu->selection  = menu->cursorPos;
+        TouchscreenListMenu_PlaySE(menu, SEQ_SE_DP_SELECT);
+        TouchscreenListMenu_InvokeCallback(menu, 2);
         return -1;
     }
-    prev = a0->cursorPos;
+    prev = menu->cursorPos;
     if (gSystem.newKeys & PAD_KEY_UP) {
-        if (a0->unk_04.unk0.wrapAround) {
-            a0->cursorPos = (a0->cursorPos + (a0->unk_04.numWindows - 1)) % a0->unk_04.numWindows;
-        } else if (a0->cursorPos > 0) {
-            --a0->cursorPos;
+        if (menu->header.template.wrapAround) {
+            menu->cursorPos = (menu->cursorPos + (menu->header.numWindows - 1)) % menu->header.numWindows;
+        } else if (menu->cursorPos > 0) {
+            --menu->cursorPos;
         }
-        if (prev != a0->cursorPos) {
-            sub_02018FE8(a0, SEQ_SE_DP_SELECT);
-            sub_02018FFC(a0, 1);
-            sub_02018DF4(a0, a0->cursorPos);
+        if (prev != menu->cursorPos) {
+            TouchscreenListMenu_PlaySE(menu, SEQ_SE_DP_SELECT);
+            TouchscreenListMenu_InvokeCallback(menu, 1);
+            TouchscreenListMenu_DrawButtonsAndTransfer(menu, menu->cursorPos);
         }
     }
     if (gSystem.newKeys & PAD_KEY_DOWN) {
-        if (a0->unk_04.unk0.wrapAround) {
-            a0->cursorPos = (a0->cursorPos + 1) % a0->unk_04.numWindows;
-        } else if (a0->cursorPos < a0->unk_04.numWindows - 1) {
-            ++a0->cursorPos;
+        if (menu->header.template.wrapAround) {
+            menu->cursorPos = (menu->cursorPos + 1) % menu->header.numWindows;
+        } else if (menu->cursorPos < menu->header.numWindows - 1) {
+            ++menu->cursorPos;
         }
-        if (prev != a0->cursorPos) {
-            sub_02018FE8(a0, SEQ_SE_DP_SELECT);
-            sub_02018FFC(a0, 1);
-            sub_02018DF4(a0, a0->cursorPos);
+        if (prev != menu->cursorPos) {
+            TouchscreenListMenu_PlaySE(menu, SEQ_SE_DP_SELECT);
+            TouchscreenListMenu_InvokeCallback(menu, 1);
+            TouchscreenListMenu_DrawButtonsAndTransfer(menu, menu->cursorPos);
         }
     }
 
     return -1;
 }
 
-static void sub_02018FE8(UnkStruct_020185FC *a0, u16 sndseq) {
-    if (!a0->silent) {
+static void TouchscreenListMenu_PlaySE(TouchscreenListMenu *menu, u16 sndseq) {
+    if (!menu->silent) {
         PlaySE(sndseq);
     }
 }
 
-static void sub_02018FFC(UnkStruct_020185FC *a0, int a1) {
-    if (a0->callback != NULL) {
-        a0->callback(a0, a0->cursorPos, a0->callbackArg, a1);
+static void TouchscreenListMenu_InvokeCallback(TouchscreenListMenu *menu, int event) {
+    if (menu->callback != NULL) {
+        menu->callback(menu, menu->cursorPos, menu->callbackArg, event);
     }
 }

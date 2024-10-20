@@ -15,5 +15,5 @@ const Ov122_021E9278 ov122_021E9278 = {
              { 0x6E, 0x0E },
              { 0x6B, 0x0B },
              },
-    .unkA = { 1, 1, 0, GF_BG_LYR_MAIN_3, 11, 0, 0, 58, 31, 104 },
+    .menuTemplate = { 1, 1, 0, GF_BG_LYR_MAIN_3, 11, 0, 0, 58, 31, 104 },
 };
