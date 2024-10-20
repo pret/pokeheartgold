@@ -8,8 +8,8 @@
 #include "touchscreen.h"
 
 typedef struct Ov122_021E9282 {
-    u8 unk0_0 : 1;
-    u8 unk0_1 : 7;
+    u8 wrapAround : 1;
+    u8 unk0_1     : 7;
     u8 unk1;
     u8 bgId;
     u8 plttOffset;
@@ -46,15 +46,15 @@ struct UnkStruct_020185FC {
     Ov122_021E7488 unk_04;
     Window *windows;
     TouchscreenHitbox *touchscreenHitboxes;
-    u8 unk_24;
-    u8 unk_25;
+    u8 cursorPos;
+    u8 animActive;
     u8 width;
-    u8 unk_27_0 : 1;
-    u8 unk_27_1 : 7;
+    u8 silent  : 1;
+    u8 isTouch : 7;
     u8 x;
     u8 y;
-    u8 unk_2A;
-    u8 unk_2B;
+    u8 selection;
+    u8 animTimer;
     HeapID heapId;
     UnkFunc_020185FC callback;
     void *callbackArg;

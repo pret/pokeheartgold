@@ -4,6 +4,8 @@
 
 #include "constants/sndseq.h"
 
+#include "data/sbox_gra.naix"
+
 #include "font.h"
 #include "gf_gfx_loader.h"
 #include "palette.h"
@@ -11,31 +13,31 @@
 #include "text.h"
 #include "unk_02005D10.h"
 
-UnkStruct_020185FC *sub_02018498(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, UnkFunc_020185FC a7, void *a8, BOOL a9, int a10);
-void sub_02018744(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, PaletteData *paletteData, HeapID heapId);
-void sub_020187C0(SysTask *task, void *taskData);
-u8 sub_0201881C(LISTMENUITEM *listMenuItem, u8 a1, FontID a2, u8 a3);
-void sub_02018890(UnkStruct_020185FC *a0);
-void sub_02018998(UnkStruct_020185FC *a0);
-void sub_020189AC(UnkStruct_020185FC *a0);
-void sub_02018C90(UnkStruct_020185FC *a0);
-void sub_02018D0C(UnkStruct_020185FC *a0, u8 a1, BOOL a2);
-void sub_02018D90(UnkStruct_020185FC *a0);
-void sub_02018DF4(UnkStruct_020185FC *a0, int a1);
-int sub_02018E08(UnkStruct_020185FC *a0, BOOL *a1);
-int sub_02018E8C(UnkStruct_020185FC *a0);
-void sub_02018FE8(UnkStruct_020185FC *a0, u16 a1);
-void sub_02018FFC(UnkStruct_020185FC *a0, int a1);
+static UnkStruct_020185FC *sub_02018498(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, UnkFunc_020185FC a7, void *a8, BOOL a9, int a10);
+static void sub_02018744(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, PaletteData *paletteData, HeapID heapId);
+static void sub_020187C0(SysTask *task, void *taskData);
+static u8 sub_0201881C(LISTMENUITEM *listMenuItem, u8 a1, FontID a2, u8 a3);
+static void sub_02018890(UnkStruct_020185FC *a0);
+static void sub_02018998(UnkStruct_020185FC *a0);
+static void sub_020189AC(UnkStruct_020185FC *a0);
+static void sub_02018C90(UnkStruct_020185FC *a0);
+static void sub_02018D0C(UnkStruct_020185FC *a0, u8 a1, BOOL a2);
+static void sub_02018D90(UnkStruct_020185FC *a0);
+static void sub_02018DF4(UnkStruct_020185FC *a0, int a1);
+static int sub_02018E08(UnkStruct_020185FC *a0, BOOL *flagRet);
+static int sub_02018E8C(UnkStruct_020185FC *a0);
+static void sub_02018FE8(UnkStruct_020185FC *a0, u16 sndseq);
+static void sub_02018FFC(UnkStruct_020185FC *a0, int a1);
 
-UnkStruct_02018424 *sub_02018424(HeapID heapId, PaletteData *a1) {
+UnkStruct_02018424 *sub_02018424(HeapID heapId, PaletteData *paletteData) {
     UnkStruct_02018424 *ret = AllocFromHeap(heapId, sizeof(UnkStruct_02018424));
     MI_CpuClear8(ret, sizeof(UnkStruct_02018424));
     ret->heapId      = heapId;
-    ret->charDataRaw = GfGfxLoader_LoadFromNarc(NARC_a_1_6_5, 1, FALSE, heapId, FALSE);
+    ret->charDataRaw = GfGfxLoader_LoadFromNarc(NARC_data_sbox_gra, NARC_sbox_gra_sbox_gra_00000001_NCGR, FALSE, heapId, FALSE);
     NNS_G2dGetUnpackedBGCharacterData(ret->charDataRaw, &ret->pCharData);
-    ret->plttDataRaw = GfGfxLoader_LoadFromNarc(NARC_a_1_6_5, 0, FALSE, heapId, FALSE);
+    ret->plttDataRaw = GfGfxLoader_LoadFromNarc(NARC_data_sbox_gra, NARC_sbox_gra_sbox_gra_00000000_NCLR, FALSE, heapId, FALSE);
     NNS_G2dGetUnpackedPaletteData(ret->plttDataRaw, &ret->pPlttData);
-    ret->paletteData = a1;
+    ret->paletteData = paletteData;
     return ret;
 }
 
@@ -46,46 +48,46 @@ void sub_02018474(UnkStruct_02018424 *a0) {
     FreeToHeap(a0);
 }
 
-UnkStruct_020185FC *sub_02018498(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, UnkFunc_020185FC a7, void *a8, BOOL a9, int a10) {
+static UnkStruct_020185FC *sub_02018498(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, UnkFunc_020185FC callback, void *callbackArg, BOOL silent, int alignment) {
     UnkStruct_020185FC *ret = AllocFromHeap(a0->heapId, sizeof(UnkStruct_020185FC));
     MI_CpuClear8(ret, sizeof(UnkStruct_020185FC));
     MI_CpuCopy8(a1, &ret->unk_04, sizeof(Ov122_021E7488));
     ret->unk_00 = a0;
-    if (a6 < ret->unk_04.numWindows) {
-        ret->unk_24 = a6;
+    if (selection < ret->unk_04.numWindows) {
+        ret->cursorPos = selection;
     }
-    ret->unk_25      = 0;
+    ret->animActive  = 0;
     ret->heapId      = a0->heapId;
-    ret->y           = a4;
-    ret->unk_24      = a6;
-    ret->unk_27_1    = a2;
-    ret->callback    = a7;
-    ret->callbackArg = a8;
-    ret->unk_27_0    = a9;
-    if (a5 == 0) {
+    ret->y           = y;
+    ret->cursorPos   = selection;
+    ret->isTouch     = isTouch;
+    ret->callback    = callback;
+    ret->callbackArg = callbackArg;
+    ret->silent      = silent;
+    if (width == 0) {
         ret->width = sub_0201881C(a1->listMenuItems, ret->unk_04.numWindows, 4, ret->unk_04.unk0.unk1);
     } else {
-        ret->width = a5;
+        ret->width = width;
     }
-    switch (a10) {
+    switch (alignment) {
     default:
         GF_ASSERT(FALSE);
     case 0:
-        ret->x = a3;
+        ret->x = x;
         break;
     case 1:
         ret->width = (ret->width + 1) & ~1;
-        if (a3 - (ret->width + 2) / 2 < 0) {
+        if (x - (ret->width + 2) / 2 < 0) {
             ret->x = 0;
         } else {
-            ret->x = a3 - (ret->width + 2) / 2;
+            ret->x = x - (ret->width + 2) / 2;
         }
         break;
     case 2:
-        if (a3 - (ret->width + 2) < 0) {
+        if (x - (ret->width + 2) < 0) {
             ret->x = 0;
         } else {
-            ret->x = a3 - (ret->width + 2);
+            ret->x = x - (ret->width + 2);
         }
         break;
     }
@@ -93,26 +95,26 @@ UnkStruct_020185FC *sub_02018498(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 
     sub_02018744(a0, &ret->unk_04, ret->unk_00->paletteData, ret->heapId);
     sub_020189AC(ret);
     sub_02018C90(ret);
-    sub_02018DF4(ret, ret->unk_24);
+    sub_02018DF4(ret, ret->cursorPos);
     sub_02018FE8(ret, SEQ_SE_DP_SELECT);
     sub_02018FFC(ret, 0);
     return ret;
 }
 
-UnkStruct_020185FC *sub_020185FC(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6) {
-    return sub_02018498(a0, a1, a2, a3, a4, a5, a6, NULL, NULL, FALSE, 0);
+UnkStruct_020185FC *sub_020185FC(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 isTouch, u8 x, u8 y, u8 width, u8 selection) {
+    return sub_02018498(a0, a1, isTouch, x, y, width, selection, NULL, NULL, FALSE, 0);
 }
 
-UnkStruct_020185FC *sub_02018620(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, int a7) {
-    return sub_02018498(a0, a1, a2, a3, a4, a5, a6, NULL, NULL, FALSE, a7);
+UnkStruct_020185FC *sub_02018620(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, int alignment) {
+    return sub_02018498(a0, a1, isTouch, x, y, width, selection, NULL, NULL, FALSE, alignment);
 }
 
-UnkStruct_020185FC *sub_02018648(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, UnkFunc_020185FC a7, void *a8, BOOL a9) {
-    return sub_02018498(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, 0);
+UnkStruct_020185FC *sub_02018648(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, UnkFunc_020185FC callback, void *callbackArg, BOOL silent) {
+    return sub_02018498(a0, a1, isTouch, x, y, width, selection, callback, callbackArg, silent, 0);
 }
 
 u8 sub_02018674(UnkStruct_020185FC *a0) {
-    return a0->unk_27_1;
+    return a0->isTouch;
 }
 
 void sub_02018680(UnkStruct_020185FC *a0) {
@@ -126,30 +128,30 @@ void sub_02018694(UnkStruct_020185FC *a0) {
 }
 
 int sub_020186A4(UnkStruct_020185FC *a0) {
-    if (a0->unk_25 == 1) {
-        if (a0->unk_2B == 0) {
+    if (a0->animActive == 1) {
+        if (a0->animTimer == 0) {
             sub_02018694(a0);
-            return a0->unk_04.listMenuItems[a0->unk_2A].value;
+            return a0->unk_04.listMenuItems[a0->selection].value;
         }
-        if (a0->unk_2B % 2 == 0) {
-            if ((a0->unk_2B / 2) % 2 == 0) {
-                sub_02018D0C(a0, a0->unk_2A, 1);
+        if (a0->animTimer % 2 == 0) {
+            if ((a0->animTimer / 2) % 2 == 0) {
+                sub_02018D0C(a0, a0->selection, 1);
             } else {
-                sub_02018D0C(a0, a0->unk_2A, 0);
+                sub_02018D0C(a0, a0->selection, 0);
             }
         }
-        --a0->unk_2B;
+        --a0->animTimer;
         return -1;
     }
 
-    int sp0;
-    int r4 = sub_02018E08(a0, &sp0);
-    if (sp0 == 0) {
-        r4 = sub_02018E8C(a0);
+    BOOL isTouch;
+    int input = sub_02018E08(a0, &isTouch);
+    if (!isTouch) {
+        input = sub_02018E8C(a0);
     }
-    if (r4 == -2) {
+    if (input == LIST_CANCEL) {
         sub_02018694(a0);
-        return r4;
+        return input;
     }
 
     return -1;
@@ -164,7 +166,7 @@ typedef struct UnkTaskData_sub_020187C0 {
     NNSG2dPaletteData *pPlttData;
 } UnkTaskData_sub_020187C0;
 
-void sub_02018744(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, PaletteData *plttData, HeapID heapId) {
+static void sub_02018744(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, PaletteData *plttData, HeapID heapId) {
     UnkTaskData_sub_020187C0 *taskData = AllocFromHeapAtEnd(heapId, sizeof(UnkTaskData_sub_020187C0));
     MI_CpuClear8(taskData, sizeof(UnkTaskData_sub_020187C0));
     taskData->pCharData  = a0->pCharData;
@@ -183,7 +185,7 @@ void sub_02018744(UnkStruct_02018424 *a0, Ov122_021E7488 *a1, PaletteData *plttD
     }
 }
 
-void sub_020187C0(SysTask *task, void *taskData) {
+static void sub_020187C0(SysTask *task, void *taskData) {
     UnkTaskData_sub_020187C0 *data = taskData;
 
     DC_FlushRange(data->pCharData->pRawData, data->pCharData->szByte);
@@ -200,7 +202,7 @@ void sub_020187C0(SysTask *task, void *taskData) {
     FreeToHeap(taskData);
 }
 
-u8 sub_0201881C(LISTMENUITEM *listMenuItem, u8 a1, FontID a2, u8 a3) {
+static u8 sub_0201881C(LISTMENUITEM *listMenuItem, u8 a1, FontID a2, u8 a3) {
     u8 maxWidth = 0;
     for (int i = 0; i < a1; ++i) {
         GF_ASSERT(listMenuItem[i].text != NULL);
@@ -218,7 +220,7 @@ u8 sub_0201881C(LISTMENUITEM *listMenuItem, u8 a1, FontID a2, u8 a3) {
     }
 }
 
-void sub_02018890(UnkStruct_020185FC *a0) {
+static void sub_02018890(UnkStruct_020185FC *a0) {
     int i;
     u16 tilesPerWindow;
     a0->windows             = AllocWindows(a0->heapId, a0->unk_04.numWindows);
@@ -236,12 +238,12 @@ void sub_02018890(UnkStruct_020185FC *a0) {
     a0->touchscreenHitboxes[i].rect.top = TOUCHSCREEN_RECTLIST_END;
 }
 
-void sub_02018998(UnkStruct_020185FC *a0) {
+static void sub_02018998(UnkStruct_020185FC *a0) {
     FreeToHeap(a0->touchscreenHitboxes);
     WindowArray_Delete(a0->windows, a0->unk_04.numWindows);
 }
 
-void sub_020189AC(UnkStruct_020185FC *a0) {
+static void sub_020189AC(UnkStruct_020185FC *a0) {
     int i;
     int r4;
     int sp10;
@@ -250,7 +252,7 @@ void sub_020189AC(UnkStruct_020185FC *a0) {
 
     // top row
     r4 = a0->unk_04.unk0.charOffset;
-    if (a0->unk_24 == 0) {
+    if (a0->cursorPos == 0) {
         r4 += 12;
     }
     FillBgTilemapRect(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId, r4, a0->x, a0->y, 1, 1, a0->unk_04.unk0.plttOffset);
@@ -259,7 +261,7 @@ void sub_020189AC(UnkStruct_020185FC *a0) {
 
     // bottom row
     r4 = a0->unk_04.unk0.charOffset + 9;
-    if (a0->unk_24 == sp10) {
+    if (a0->cursorPos == sp10) {
         r4 += 12;
     }
     FillBgTilemapRect(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId, r4, a0->x, a0->y + a0->unk_04.numWindows * 3, 1, 1, a0->unk_04.unk0.plttOffset);
@@ -269,9 +271,9 @@ void sub_020189AC(UnkStruct_020185FC *a0) {
     // between each button
     for (i = 0; i < a0->unk_04.numWindows - 1; ++i) {
         r4 = a0->unk_04.unk0.charOffset + 6;
-        if ((a0->unk_24 == 0 && i == 0) || a0->unk_24 == i) {
+        if ((a0->cursorPos == 0 && i == 0) || a0->cursorPos == i) {
             r4 += 12;
-        } else if ((a0->unk_24 == sp10 && i == sp10 - 1) || a0->unk_24 == i + 1) {
+        } else if ((a0->cursorPos == sp10 && i == sp10 - 1) || a0->cursorPos == i + 1) {
             r4 += 18;
         }
         FillBgTilemapRect(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId, r4, a0->x, a0->y + i * 3 + 3, 1, 1, a0->unk_04.unk0.plttOffset);
@@ -282,7 +284,7 @@ void sub_020189AC(UnkStruct_020185FC *a0) {
     // left and right borders
     for (i = 0; i < a0->unk_04.numWindows; ++i) {
         r4 = a0->unk_04.unk0.charOffset + 3;
-        if (a0->unk_24 == i) {
+        if (a0->cursorPos == i) {
             r4 += 12;
         }
         FillBgTilemapRect(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId, r4, a0->x, a0->y + i * 3 + 1, 1, 2, a0->unk_04.unk0.plttOffset);
@@ -290,7 +292,7 @@ void sub_020189AC(UnkStruct_020185FC *a0) {
     }
 }
 
-void sub_02018C90(UnkStruct_020185FC *a0) {
+static void sub_02018C90(UnkStruct_020185FC *a0) {
     int i;
     u32 x;
     u32 width;
@@ -308,7 +310,7 @@ void sub_02018C90(UnkStruct_020185FC *a0) {
     ScheduleBgTilemapBufferTransfer(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId);
 }
 
-void sub_02018D0C(UnkStruct_020185FC *a0, u8 a1, BOOL a2) {
+static void sub_02018D0C(UnkStruct_020185FC *a0, u8 a1, BOOL a2) {
     u32 x;
     u32 width;
     u32 textColor;
@@ -332,7 +334,7 @@ void sub_02018D0C(UnkStruct_020185FC *a0, u8 a1, BOOL a2) {
     ScheduleWindowCopyToVram(&a0->windows[a1]);
 }
 
-void sub_02018D90(UnkStruct_020185FC *a0) {
+static void sub_02018D90(UnkStruct_020185FC *a0) {
     for (int i = 0; i < a0->unk_04.numWindows; ++i) {
         ClearWindowTilemapAndScheduleTransfer(&a0->windows[i]);
     }
@@ -340,88 +342,88 @@ void sub_02018D90(UnkStruct_020185FC *a0) {
     ScheduleBgTilemapBufferTransfer(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId);
 }
 
-void sub_02018DF4(UnkStruct_020185FC *a0, int a1) {
+static void sub_02018DF4(UnkStruct_020185FC *a0, int a1) {
     sub_020189AC(a0);
     ScheduleBgTilemapBufferTransfer(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId);
 }
 
-int sub_02018E08(UnkStruct_020185FC *a0, BOOL *a1) {
+static int sub_02018E08(UnkStruct_020185FC *a0, BOOL *flagRet) {
     int hitbox = TouchscreenHitbox_FindRectAtTouchNew(a0->touchscreenHitboxes);
     if (hitbox == -1) {
-        *a1 = FALSE;
+        *flagRet = FALSE;
         return -1;
     }
-    *a1        = TRUE;
-    a0->unk_24 = hitbox;
+    *flagRet      = TRUE;
+    a0->cursorPos = hitbox;
     sub_02018D0C(a0, hitbox, TRUE);
     sub_020189AC(a0);
     ScheduleBgTilemapBufferTransfer(a0->unk_04.bgConfig, a0->unk_04.unk0.bgId);
-    a0->unk_25   = 1;
-    a0->unk_2B   = 8;
-    a0->unk_2A   = hitbox;
-    a0->unk_27_1 = 1;
+    a0->animActive = 1;
+    a0->animTimer  = 8;
+    a0->selection  = hitbox;
+    a0->isTouch    = 1;
     sub_02018FE8(a0, SEQ_SE_DP_SELECT);
     sub_02018FFC(a0, 2);
     return -1;
 }
 
-int sub_02018E8C(UnkStruct_020185FC *a0) {
+static int sub_02018E8C(UnkStruct_020185FC *a0) {
     u8 prev;
 
     if (gSystem.newKeys & (PAD_BUTTON_X | PAD_BUTTON_Y | PAD_KEY_UP | PAD_KEY_DOWN | PAD_KEY_LEFT | PAD_KEY_RIGHT | PAD_BUTTON_A | PAD_BUTTON_B)) {
-        a0->unk_27_1 = 0;
+        a0->isTouch = 0;
     }
     if (gSystem.newKeys & PAD_BUTTON_B) {
         sub_02018FE8(a0, SEQ_SE_DP_SELECT);
         sub_02018FFC(a0, 3);
-        return -2;
+        return LIST_CANCEL;
     }
     if (gSystem.newKeys & PAD_BUTTON_A) {
-        sub_02018D0C(a0, a0->unk_24, TRUE);
-        a0->unk_25 = 1;
-        a0->unk_2B = 8;
-        a0->unk_2A = a0->unk_24;
+        sub_02018D0C(a0, a0->cursorPos, TRUE);
+        a0->animActive = 1;
+        a0->animTimer  = 8;
+        a0->selection  = a0->cursorPos;
         sub_02018FE8(a0, SEQ_SE_DP_SELECT);
         sub_02018FFC(a0, 2);
         return -1;
     }
-    prev = a0->unk_24;
+    prev = a0->cursorPos;
     if (gSystem.newKeys & PAD_KEY_UP) {
-        if (a0->unk_04.unk0.unk0_0) {
-            a0->unk_24 = (a0->unk_24 + (a0->unk_04.numWindows - 1)) % a0->unk_04.numWindows;
-        } else if (a0->unk_24 > 0) {
-            --a0->unk_24;
+        if (a0->unk_04.unk0.wrapAround) {
+            a0->cursorPos = (a0->cursorPos + (a0->unk_04.numWindows - 1)) % a0->unk_04.numWindows;
+        } else if (a0->cursorPos > 0) {
+            --a0->cursorPos;
         }
-        if (prev != a0->unk_24) {
+        if (prev != a0->cursorPos) {
             sub_02018FE8(a0, SEQ_SE_DP_SELECT);
             sub_02018FFC(a0, 1);
-            sub_02018DF4(a0, a0->unk_24);
+            sub_02018DF4(a0, a0->cursorPos);
         }
     }
     if (gSystem.newKeys & PAD_KEY_DOWN) {
-        if (a0->unk_04.unk0.unk0_0) {
-            a0->unk_24 = (a0->unk_24 + 1) % a0->unk_04.numWindows;
-        } else if (a0->unk_24 < a0->unk_04.numWindows - 1) {
-            ++a0->unk_24;
+        if (a0->unk_04.unk0.wrapAround) {
+            a0->cursorPos = (a0->cursorPos + 1) % a0->unk_04.numWindows;
+        } else if (a0->cursorPos < a0->unk_04.numWindows - 1) {
+            ++a0->cursorPos;
         }
-        if (prev != a0->unk_24) {
+        if (prev != a0->cursorPos) {
             sub_02018FE8(a0, SEQ_SE_DP_SELECT);
             sub_02018FFC(a0, 1);
-            sub_02018DF4(a0, a0->unk_24);
+            sub_02018DF4(a0, a0->cursorPos);
         }
     }
 
     return -1;
 }
 
-void sub_02018FE8(UnkStruct_020185FC *a0, u16 a1) {
-    if (!a0->unk_27_0) {
-        PlaySE(a1);
+static void sub_02018FE8(UnkStruct_020185FC *a0, u16 sndseq) {
+    if (!a0->silent) {
+        PlaySE(sndseq);
     }
 }
 
-void sub_02018FFC(UnkStruct_020185FC *a0, int a1) {
+static void sub_02018FFC(UnkStruct_020185FC *a0, int a1) {
     if (a0->callback != NULL) {
-        a0->callback(a0, a0->unk_24, a0->callbackArg, a1);
+        a0->callback(a0, a0->cursorPos, a0->callbackArg, a1);
     }
 }
