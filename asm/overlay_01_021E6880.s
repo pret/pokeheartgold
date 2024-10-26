@@ -116,7 +116,7 @@ ov01_021E6928: ; 0x021E6928
 	bl ov01_021E6880
 	add r0, r4, #0
 	bl FieldSystem_GetPlayerAvatar
-	bl PlayerAvatar_CheckRunningShoesLock
+	bl sub_0205CB38
 	cmp r0, #0
 	beq _021E694E
 	mov r0, #2

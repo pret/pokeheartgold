@@ -732,7 +732,7 @@ _020572BC:
 	cmp r0, #0
 	beq _020572CE
 	bl FieldSystem_GetPlayerAvatar
-	bl PlayerAvatar_CheckRunningShoesLock
+	bl sub_0205CB38
 	cmp r0, #0
 	beq _020572CE
 	mov r4, #1
