@@ -115,7 +115,7 @@ ov01_02203EA0: ; 0x02203EA0
 	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0205F09C
+	bl MapObject_GetPriorityPlusValue
 	add r1, sp, #0x2c
 	str r1, [sp]
 	str r0, [sp, #4]

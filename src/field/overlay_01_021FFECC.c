@@ -70,7 +70,7 @@ void ov01_021FFF5C(LocalMapObject *mapObject, int a1) {
     temp2.unkC             = mapObject;
     temp2.unk10            = ov01_021FFF50(val1, a1);
 
-    int val3 = sub_0205F09C(mapObject, 2);
+    int val3 = MapObject_GetPriorityPlusValue(mapObject, 2);
     ov01_021F1620(fieldSystem, &ov01_02209280, &temp, 0, &temp2, val3);
 }
 

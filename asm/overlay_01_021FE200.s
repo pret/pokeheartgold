@@ -327,7 +327,7 @@ ov01_021FE3F8: ; 0x021FE3F8
 	str r0, [sp, #0x18]
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0205F09C
+	bl MapObject_GetPriorityPlusValue
 	add r7, r0, #0
 	add r0, r5, #0
 	bl ov01_021F146C

@@ -46,7 +46,7 @@
 .public sub_0205E38C
 .public sub_0205E420
 .public MapObjectManager_GetNextObjectWithFlagFromIndex
-.public sub_0205F09C
+.public MapObject_GetPriorityPlusValue
 .public MapObjectManager_GetObjectCount
 .public MapObjectManager_GetPriority
 .public sub_0205F1A0

@@ -227,7 +227,7 @@ ov01_021FF070: ; 0x021FF070
 	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0205F09C
+	bl MapObject_GetPriorityPlusValue
 	add r1, sp, #8
 	str r1, [sp]
 	str r0, [sp, #4]
@@ -295,7 +295,7 @@ _021FF134:
 	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0205F09C
+	bl MapObject_GetPriorityPlusValue
 	add r1, sp, #0xc
 	str r1, [sp]
 	str r0, [sp, #4]

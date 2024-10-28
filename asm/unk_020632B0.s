@@ -161,7 +161,7 @@ _020633B2:
 	ldr r0, [sp]
 	bl sub_0205F328
 	ldr r0, [sp]
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	ldr r0, [sp]
 	bl MapObject_CheckVisible
 	cmp r0, #0
@@ -431,7 +431,7 @@ _02063624:
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r5, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	add r0, r5, #0
 	bl MapObject_CheckVisible
 	cmp r0, #0

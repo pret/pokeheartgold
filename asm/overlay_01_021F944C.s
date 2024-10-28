@@ -3193,7 +3193,7 @@ _021FAAAA:
 	bne _021FAB4A
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_0205F09C
+	bl MapObject_GetPriorityPlusValue
 	str r0, [sp, #0xc]
 	add r0, r6, #0
 	mov r1, #1

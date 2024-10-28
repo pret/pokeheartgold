@@ -2,7 +2,7 @@
 #pragma once
 .public GF3dRender_DrawModel
 .public Camera_GetLookAtCamPos
-.public sub_0205F09C
+.public MapObject_GetPriorityPlusValue
 .public MapObject_GetPositionVec
 .public sub_02068D74
 .public sub_02068D90

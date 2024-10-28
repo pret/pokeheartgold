@@ -550,7 +550,7 @@ sub_0206247C: ; 0x0206247C
 	add r0, r4, #0
 	bl sub_02060F78
 	add r0, r4, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_0206247C
@@ -620,7 +620,7 @@ sub_020624CC: ; 0x020624CC
 	mov r1, #4
 	bl MapObject_SetFlagsBits
 	add r0, r5, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end sub_020624CC
@@ -658,7 +658,7 @@ _02062540:
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r5, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1061,7 +1061,7 @@ sub_020627B0: ; 0x020627B0
 	add r0, r5, #0
 	bl sub_02060F78
 	add r0, r5, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_020627B0
 
@@ -1087,7 +1087,7 @@ _020627FE:
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r4, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	mov r0, #1
 	pop {r4, pc}
 	thumb_func_end MapObjectMovementCmd040_Step1
@@ -1353,7 +1353,7 @@ _02062992:
 	add r0, r5, #0
 	bl sub_0205F328
 	add r0, r5, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	add r0, r5, #0
 	bl MapObject_CheckVisible
 	cmp r0, #0
@@ -1464,7 +1464,7 @@ _02062A68:
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r5, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	add r0, r5, #0
 	bl MapObject_CheckVisible
 	cmp r0, #0
@@ -1882,7 +1882,7 @@ sub_02062D54: ; 0x02062D54
 	bl sub_0205F3C0
 	str r4, [r0]
 	add r0, r5, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end sub_02062D54
@@ -1901,7 +1901,7 @@ MapObjectMovementCmd064_Step1: ; 0x02062D6C
 	pop {r4, pc}
 _02062D82:
 	add r0, r4, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	mov r0, #1
 	pop {r4, pc}
 	thumb_func_end MapObjectMovementCmd064_Step1
@@ -1982,7 +1982,7 @@ MapObjectMovementCmd067_Step0: ; 0x02062DE0
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r4, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -2020,7 +2020,7 @@ MapObjectMovementCmd067_Step1: ; 0x02062E04
 	pop {r4, r5, pc}
 _02062E40:
 	add r0, r5, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, pc}
@@ -2041,7 +2041,7 @@ MapObjectMovementCmd068_Step0: ; 0x02062E4C
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r4, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -2080,7 +2080,7 @@ _02062E92:
 	pop {r4, r5, pc}
 _02062EB2:
 	add r0, r5, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, pc}
@@ -2095,7 +2095,7 @@ MapObjectMovementCmd069_Step0: ; 0x02062EC0
 	lsl r1, r1, #8
 	bl MapObject_SetFlagsBits
 	add r0, r4, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -2109,7 +2109,7 @@ MapObjectMovementCmd070_Step0: ; 0x02062ED8
 	lsl r1, r1, #8
 	bl MapObject_ClearFlagsBits
 	add r0, r4, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -2122,7 +2122,7 @@ MapObjectMovementCmd071_Step0: ; 0x02062EF0
 	mov r1, #0x80
 	bl MapObject_SetFlagsBits
 	add r0, r4, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	mov r0, #1
 	pop {r4, pc}
 	thumb_func_end MapObjectMovementCmd071_Step0
@@ -2134,7 +2134,7 @@ MapObjectMovementCmd072_Step0: ; 0x02062F04
 	mov r1, #0x80
 	bl MapObject_ClearFlagsBits
 	add r0, r4, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	mov r0, #1
 	pop {r4, pc}
 	thumb_func_end MapObjectMovementCmd072_Step0
@@ -2147,7 +2147,7 @@ MapObjectMovementCmd073_Step0: ; 0x02062F18
 	lsl r1, r1, #8
 	bl MapObject_SetFlagsBits
 	add r0, r4, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -2161,7 +2161,7 @@ MapObjectMovementCmd074_Step0: ; 0x02062F30
 	lsl r1, r1, #8
 	bl MapObject_ClearFlagsBits
 	add r0, r4, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -2182,7 +2182,7 @@ sub_02062F48: ; 0x02062F48
 	bl ov01_02200540
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_02062F48
 
@@ -2199,7 +2199,7 @@ MapObjectMovementCmd075_Step1: ; 0x02062F6C
 	ldr r0, [r4, #4]
 	bl sub_02068B48
 	add r0, r5, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _02062F90:
@@ -2250,7 +2250,7 @@ sub_02062FAC: ; 0x02062FAC
 	mov r1, #4
 	bl MapObject_SetFlagsBits
 	add r0, r5, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end sub_02062FAC
@@ -2295,7 +2295,7 @@ _02063026:
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r5, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_02062FEC
@@ -2490,7 +2490,7 @@ MapObjectMovementCmd100_Step0: ; 0x02063154
 	mov r1, #9
 	bl sub_0205F328
 	add r0, r4, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end MapObjectMovementCmd100_Step0
@@ -2512,7 +2512,7 @@ MapObjectMovementCmd100_Step1: ; 0x02063170
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r4, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 _02063198:
 	mov r0, #0
 	pop {r4, pc}
@@ -2548,7 +2548,7 @@ _020631B6:
 	lsl r1, r1, #0x14
 	bl MapObject_ClearFlagsBits
 	add r0, r4, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	mov r0, #0
 	add sp, #0xc
 	pop {r3, r4, pc}
@@ -2596,7 +2596,7 @@ _02063228:
 	add r0, r5, #0
 	bl sub_02066438
 	add r0, r5, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, pc}
@@ -2615,7 +2615,7 @@ MapObjectMovementCmd102_Step0: ; 0x02063258
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r4, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end MapObjectMovementCmd102_Step0
@@ -2630,7 +2630,7 @@ MapObjectMovementCmd104_Step0: ; 0x02063274
 	mov r1, #1
 	bl sub_0205F328
 	add r0, r4, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end MapObjectMovementCmd104_Step0
@@ -2649,7 +2649,7 @@ MapObjectMovementCmd102_Step1: ; 0x02063290
 	pop {r4, pc}
 _020632A6:
 	add r0, r4, #0
-	bl MapObject_IncMovementStep
+	bl MapObject_IncrementMovementStep
 	mov r0, #1
 	pop {r4, pc}
 	thumb_func_end MapObjectMovementCmd102_Step1

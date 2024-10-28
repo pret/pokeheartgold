@@ -4,7 +4,7 @@
 .public sub_02023E50
 .public sub_02023F04
 .public sub_02023F70
-.public sub_0205F09C
+.public MapObject_GetPriorityPlusValue
 .public MapObject_GetID
 .public MapObject_GetMapID
 .public MapObject_GetFieldSystem

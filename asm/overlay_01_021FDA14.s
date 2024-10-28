@@ -90,7 +90,7 @@ ov01_021FDA74: ; 0x021FDA74
 	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0205F09C
+	bl MapObject_GetPriorityPlusValue
 	add r1, sp, #8
 	str r1, [sp]
 	str r0, [sp, #4]
@@ -740,7 +740,7 @@ ov01_021FDF88: ; 0x021FDF88
 	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0205F09C
+	bl MapObject_GetPriorityPlusValue
 	add r1, sp, #8
 	str r1, [sp]
 	str r0, [sp, #4]

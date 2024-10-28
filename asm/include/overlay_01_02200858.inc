@@ -7,7 +7,7 @@
 .public sub_0205B73C
 .public PlayerAvatar_GetFacingDirection
 .public PlayerAvatar_GetMapObject
-.public sub_0205F09C
+.public MapObject_GetPriorityPlusValue
 .public sub_0205F0A8
 .public MapObject_GetID
 .public MapObject_GetMapID

@@ -73,6 +73,14 @@ static void sub_0205F414(LocalMapObject *object, LocalMapObject_UnkCallback call
 static void sub_0205F428(LocalMapObject *object, LocalMapObject_UnkCallback callback);
 static void sub_0205F43C(LocalMapObject *object, LocalMapObject_UnkCallback callback);
 static void sub_0205F444(LocalMapObject *object);
+static void sub_0205F450(LocalMapObject *object);
+static void sub_0205F468(LocalMapObject *object, LocalMapObject_UnkCallback callback);
+static void sub_0205F470(LocalMapObject *object);
+static void sub_0205F490(LocalMapObject *object, LocalMapObject_UnkCallback callback);
+static void sub_0205F498(LocalMapObject *object);
+static void sub_0205F4A4(LocalMapObject *object, LocalMapObject_UnkCallback callback);
+static void sub_0205F4AC(LocalMapObject *object);
+static void sub_0205F4B8(LocalMapObject *object, LocalMapObject_UnkCallback callback);
 
 MapObjectManager *MapObjectManager_Init(FieldSystem *fieldSystem, u32 objectCount, u32 priority) {
     MapObjectManager *ret = MapObjectManager_New(objectCount);
@@ -791,8 +799,8 @@ static void sub_0205F058(LocalMapObject *object, u32 mapNo, ObjectEvent *objectE
     MapObject_SetMapID(object, mapNo);
 }
 
-u32 sub_0205F09C(LocalMapObject *object, u32 param1) {
-    return (u32)(sub_0205F538(object) + param1);
+u32 MapObject_GetPriorityPlusValue(LocalMapObject *object, u32 value) {
+    return (u32)((void *)MapObject_GetPriority(object) + value); // MUST be cast to void * to match
 }
 
 BOOL sub_0205F0A8(LocalMapObject *object, u32 objectId, u32 mapId) {
@@ -1220,16 +1228,16 @@ static void sub_0205F444(LocalMapObject *object) {
     object->unkC0(object);
 }
 
-void sub_0205F450(LocalMapObject *object) {
+static void sub_0205F450(LocalMapObject *object) {
     UnkLMOCallbackStruct *unk = sub_0205FB00(MapObject_GetMovement(object));
     unk->unk10(object);
 }
 
-void sub_0205F468(LocalMapObject *object, LocalMapObject_UnkCallback callback) {
+static void sub_0205F468(LocalMapObject *object, LocalMapObject_UnkCallback callback) {
     object->unkC4 = callback;
 }
 
-void sub_0205F470(LocalMapObject *object) {
+static void sub_0205F470(LocalMapObject *object) {
     object->unkC4(object);
 }
 
@@ -1241,23 +1249,23 @@ void sub_0205F484(LocalMapObject *object) {
     object->unkC8(object);
 }
 
-void sub_0205F490(LocalMapObject *object, LocalMapObject_UnkCallback callback) {
+static void sub_0205F490(LocalMapObject *object, LocalMapObject_UnkCallback callback) {
     object->unkCC = callback;
 }
 
-void sub_0205F498(LocalMapObject *object) {
+static void sub_0205F498(LocalMapObject *object) {
     object->unkCC(object);
 }
 
-void sub_0205F4A4(LocalMapObject *object, LocalMapObject_UnkCallback callback) {
+static void sub_0205F4A4(LocalMapObject *object, LocalMapObject_UnkCallback callback) {
     object->unkD0 = callback;
 }
 
-void sub_0205F4AC(LocalMapObject *object) {
+static void sub_0205F4AC(LocalMapObject *object) {
     object->unkD0(object);
 }
 
-void sub_0205F4B8(LocalMapObject *object, LocalMapObject_UnkCallback callback) {
+static void sub_0205F4B8(LocalMapObject *object, LocalMapObject_UnkCallback callback) {
     object->unkD4 = callback;
 }
 
@@ -1277,7 +1285,7 @@ void MapObject_SetMovementStep(LocalMapObject *object, u32 step) {
     object->movementStep = step;
 }
 
-void MapObject_IncMovementStep(LocalMapObject *object) {
+void MapObject_IncrementMovementStep(LocalMapObject *object) {
     object->movementStep++;
 }
 
@@ -1285,24 +1293,24 @@ u32 MapObject_GetMovementStep(LocalMapObject *object) {
     return object->movementStep;
 }
 
-void sub_0205F4FC(LocalMapObject *object, u16 a1) {
-    object->unkAC = a1;
+void sub_0205F4FC(LocalMapObject *object, u16 param1) {
+    object->unkAC = param1;
 }
 
 u16 sub_0205F504(LocalMapObject *object) {
     return object->unkAC;
 }
 
-void sub_0205F50C(LocalMapObject *object, u16 a1) {
-    object->unkAE = a1;
+void sub_0205F50C(LocalMapObject *object, u16 param1) {
+    object->unkAE = param1;
 }
 
 u16 sub_0205F514(LocalMapObject *object) {
     return object->unkAE;
 }
 
-void sub_0205F51C(LocalMapObject *object, u16 a1) {
-    object->unk128 = a1;
+void sub_0205F51C(LocalMapObject *object, u16 param1) {
+    object->unk128 = param1;
 }
 
 u16 sub_0205F524(LocalMapObject *object) {
@@ -1313,8 +1321,8 @@ FieldSystem *MapObject_GetFieldSystem(LocalMapObject *object) {
     return MapObjectManager_GetFieldSystem(MapObject_GetManagerFromManager(object));
 }
 
-void *sub_0205F538(LocalMapObject *object) { // TODO: this is not void
-    return (void *)MapObjectManager_GetPriority(MapObject_GetManager(object));
+u32 MapObject_GetPriority(LocalMapObject *object) {
+    return MapObjectManager_GetPriority(MapObject_GetManager(object));
 }
 
 u32 sub_0205F544(LocalMapObject *object) {
@@ -1322,6 +1330,7 @@ u32 sub_0205F544(LocalMapObject *object) {
     return MapObject_GetEventFlag(object);
 }
 
+// todo: enum
 void sub_0205F55C(MapObjectManager *manager) {
     MapObjectManager_SetFlagsBits(manager, (1 << 2) | (1 << 1));
 }

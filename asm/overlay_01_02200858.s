@@ -90,7 +90,7 @@ ov01_022008B4: ; 0x022008B4
 	add r0, r4, #0
 	mov r1, #2
 	str r5, [sp, #0x1c]
-	bl sub_0205F09C
+	bl MapObject_GetPriorityPlusValue
 	add r1, sp, #0x14
 	str r1, [sp]
 	str r0, [sp, #4]

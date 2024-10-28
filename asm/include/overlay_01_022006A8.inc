@@ -2,7 +2,7 @@
 #pragma once
 .public sub_02023DA4
 .public sub_02023E50
-.public sub_0205F09C
+.public MapObject_GetPriorityPlusValue
 .public sub_0205F0A8
 .public MapObject_GetID
 .public MapObject_GetMapID

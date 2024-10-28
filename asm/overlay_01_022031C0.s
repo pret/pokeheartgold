@@ -159,7 +159,7 @@ ov01_0220329C: ; 0x0220329C
 	bl MapObject_GetPositionVec
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_0205F09C
+	bl MapObject_GetPriorityPlusValue
 	cmp r5, #0
 	add r1, sp, #8
 	bne _0220330A

@@ -5,7 +5,7 @@
 .public sub_02023E78
 .public sub_02023FB0
 .public GF_AssertFail
-.public sub_0205F09C
+.public MapObject_GetPriorityPlusValue
 .public sub_0205F0F8
 .public MapObject_GetID
 .public MapObject_GetMapID
