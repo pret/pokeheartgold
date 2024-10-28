@@ -2,22 +2,29 @@
 
 #include "get_egg.h"
 #include "naming_screen.h"
+#include "overlay_95.h"
 #include "trainer_memo.h"
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
 
+typedef enum HatchEggTaskState {
+    HATCHEGGTASKSTATE_LEAVE_OVERWORLD,
+    HATCHEGGTASKSTATE_OPEN_HATCH_APP,
+    HATCHEGGTASKSTATE_UPDATE_MON_INFO,
+    HATCHEGGTASKSTATE_OPEN_NAMING_SCREEN,
+    HATCHEGGTASKSTATE_SET_MON_NAME,
+    HATCHEGGTASKSTATE_LOAD_OVERWORLD,
+    HATCHEGGTASKSTATE_EXIT,
+} HatchEggTaskState;
+
 typedef struct HatchEggTaskData {
-    u32 state;
+    HatchEggTaskState state;
     BOOL wantToNameNewMon;
     NamingScreenArgs *namingScreenArgs;
     UnkStruct_02091240 unkC;
 } HatchEggTaskData;
 
 FS_EXTERN_OVERLAY(OVY_95);
-extern BOOL ov95_021E6D70(OVY_MANAGER *, int *);
-extern BOOL ov95_021E6E88(OVY_MANAGER *, int *);
-extern BOOL ov95_021E6F0C(OVY_MANAGER *, int *);
-
 static const OVY_MGR_TEMPLATE _02106048 = {
     .init   = ov95_021E6D70,
     .exec   = ov95_021E6E88,
@@ -29,22 +36,22 @@ static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
     HatchEggTaskData *data = TaskManager_GetEnvironment(taskManager);
 
     switch (data->state) {
-    case 0: // Leave overworld
+    case HATCHEGGTASKSTATE_LEAVE_OVERWORLD:
         sub_0206D328(data->unkC.mon, HEAP_ID_FIELD);
         CallTask_LeaveOverworld(taskManager);
         data->state++;
         break;
-    case 1: // Open the egg hatch app
+    case HATCHEGGTASKSTATE_OPEN_HATCH_APP:
         CallApplicationAsTask(taskManager, &_02106048, data);
         data->state++;
         break;
-    case 2: { // Update egg status, add in mapsec for hatch location, update Pokedex if necessary
+    case HATCHEGGTASKSTATE_UPDATE_MON_INFO: {
         FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
         Pokemon *pokemon         = data->unkC.mon;
         PlayerProfile *profile   = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem));
 
         u32 mapsec = MapHeader_GetMapSec(fieldSystem->location->mapId);
-        u32 isEgg  = 0;
+        BOOL isEgg = FALSE;
         SetMonData(pokemon, MON_DATA_IS_EGG, &isEgg);
         MonSetTrainerMemo(pokemon, profile, 6, mapsec, HEAP_ID_FIELD);
         SetMonData(pokemon, MON_DATA_SPECIES_NAME, NULL);
@@ -52,14 +59,14 @@ static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
         UpdatePokedexWithReceivedSpecies(FieldSystem_GetSaveData(fieldSystem), data->unkC.mon);
 
         if (data->wantToNameNewMon == TRUE) {
-            data->state = 3;
+            data->state = HATCHEGGTASKSTATE_OPEN_NAMING_SCREEN;
         } else {
-            data->state = 5;
+            data->state = HATCHEGGTASKSTATE_LOAD_OVERWORLD;
         }
 
         break;
     }
-    case 3: { // Open the naming screen app
+    case HATCHEGGTASKSTATE_OPEN_NAMING_SCREEN: {
         FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
 
         u32 species                       = GetMonData(data->unkC.mon, MON_DATA_SPECIES, NULL);
@@ -72,18 +79,18 @@ static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
         data->state++;
         break;
     }
-    case 4: // Set mon's new name
+    case HATCHEGGTASKSTATE_SET_MON_NAME:
         if (!data->namingScreenArgs->noInput) {
             SetMonData(data->unkC.mon, MON_DATA_NICKNAME_STRING_COMPARE, data->namingScreenArgs->nameInputString);
         }
         NamingScreen_DeleteArgs(data->namingScreenArgs);
         data->state++;
         break;
-    case 5: // Load overworld back in
+    case HATCHEGGTASKSTATE_LOAD_OVERWORLD:
         CallTask_RestoreOverworld(taskManager);
         data->state++;
         break;
-    case 6: // Done
+    case HATCHEGGTASKSTATE_EXIT:
         FreeToHeap(data);
         return TRUE;
     }

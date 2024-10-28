@@ -17,6 +17,7 @@
 #include "frontier_data.h"
 #include "game_stats.h"
 #include "get_egg.h"
+#include "hatch_egg_task.h"
 #include "launch_application_internal.h"
 #include "mail_misc.h"
 #include "naming_screen.h"
@@ -83,7 +84,6 @@
 #include "unk_020755E8.h"
 #include "unk_02087A78.h"
 #include "unk_02088288.h"
-#include "unk_020910D8.h"
 #include "unk_02092BE8.h"
 #include "unk_02097B78.h"
 
