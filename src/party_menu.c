@@ -91,7 +91,7 @@ static BOOL PartyMenu_HandleDpadInput(PartyMenu *partyMenu);
 static u8 PartyMenu_GetSelectionInDirection(PartyMenu *partyMenu, u8 *px, u8 *py, u8 direction);
 static u8 PartyMenu_GetNewSelectionFromTable(PartyMenu *partyMenu, u8 *px, u8 *py, const u8 *table);
 static void sub_0207AC20(PartyMenu *partyMenu);
-static int sub_0207AC70(PartyMenu *partyMenu, MenuInputState a1);
+static int sub_0207AC70(PartyMenu *partyMenu, MenuInputState menuInputState);
 static int PartyMenu_GetTouchButtonInput(PartyMenu *partyMenu);
 static u8 PartyMenu_HandleInput(PartyMenu *partyMenu);
 static void sub_0207AFC4(PartyMenu *partyMenu);
@@ -1443,14 +1443,14 @@ static void sub_0207AC20(PartyMenu *partyMenu) {
     }
 }
 
-static int sub_0207AC70(PartyMenu *partyMenu, MenuInputState a1) {
+static int sub_0207AC70(PartyMenu *partyMenu, MenuInputState menuInputState) {
     G2_BlendNone();
     if (partyMenu->partyMonIndex == PARTY_MON_SELECTION_CANCEL) {
         return 4;
     } else if (partyMenu->partyMonIndex == PARTY_MON_SELECTION_CONFIRM) {
         PlaySE(SEQ_SE_GS_GEARCANCEL);
         if (!partyMenu->cancelDisabled) {
-            sub_0207CB3C(partyMenu, a1);
+            sub_0207CB3C(partyMenu, menuInputState);
             return 3;
         }
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_3 || partyMenu->args->context == PARTY_MENU_CONTEXT_INGAME_TRADE) {
@@ -2712,9 +2712,9 @@ void PartyMenu_DeleteContextMenuAndList(PartyMenu *partyMenu) {
     ListMenuItems_Delete(partyMenu->listMenuItems);
 }
 
-void sub_0207CB3C(PartyMenu *partyMenu, MenuInputState a1) {
+void sub_0207CB3C(PartyMenu *partyMenu, MenuInputState menuInputState) {
     if (partyMenu->args->menuInputStatePtr != NULL) {
-        MenuInputStateMgr_SetState(partyMenu->args->menuInputStatePtr, a1);
+        MenuInputStateMgr_SetState(partyMenu->args->menuInputStatePtr, menuInputState);
     }
 }
 

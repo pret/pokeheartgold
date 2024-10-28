@@ -86,7 +86,7 @@ typedef struct OptionsApp_Data {
     SpriteGfxHandler *spriteGfxHandler;
     Sprite *sprites[9];
     u8 filler2FC[36];
-    u32 unk320;
+    u32 menuInputState;
     String *frameNumText;
     u8 textPrinter;
 } OptionsApp_Data; // size: 0x32c
@@ -340,11 +340,11 @@ BOOL OptionsMenu_Init(OVY_MANAGER *manager, int *state) {
     data->options.buttonMode  = Options_GetButtonMode(args->options);
     data->options.frame       = Options_GetFrame(args->options);
 
-    data->menuInputPtr        = args->unk8;
+    data->menuInputPtr        = args->menuInputStateMgr;
     data->playerOptionsUnused = args->options;
     data->heapId              = HEAP_ID_OPTIONS_APP;
     data->playerOptions       = args->options;
-    data->unk320              = MenuInputStateMgr_GetState(data->menuInputPtr);
+    data->menuInputState      = MenuInputStateMgr_GetState(data->menuInputPtr);
     data->frameNumText        = String_New(40, data->heapId);
 
     TextFlags_SetCanABSpeedUpPrint(FALSE);
@@ -913,7 +913,7 @@ static void OptionsApp_HandleInput(OptionsApp_Data *data) {
             ov54_021E6A64(data);
             data->unk10_0 = 1;
             PlaySE(SEQ_SE_DP_SAVE);
-            data->unk320 = 1;
+            data->menuInputState = 1;
             MenuInputStateMgr_SetState(data->menuInputPtr, MENU_INPUT_STATE_TOUCH);
             data->menuEntries[data->currentMenuEntryId].value = 1;
             ov54_021E69D4(data, data->currentMenuEntryId);
@@ -926,7 +926,7 @@ static void OptionsApp_HandleInput(OptionsApp_Data *data) {
             ov54_021E6A64(data);
             data->unk10_0 = 2;
             PlaySE(SEQ_SE_GS_GEARCANCEL);
-            data->unk320 = 1;
+            data->menuInputState = 1;
             MenuInputStateMgr_SetState(data->menuInputPtr, MENU_INPUT_STATE_TOUCH);
             data->menuEntries[data->currentMenuEntryId].value = 0;
             ov54_021E69D4(data, data->currentMenuEntryId);
@@ -949,7 +949,7 @@ static void OptionsApp_HandleInput(OptionsApp_Data *data) {
             ov54_021E69D4(data, data->currentMenuEntryId);
             OptionsApp_SetActiveButtonsXPosition(data);
             ov54_021E6A64(data);
-            data->unk320 = 1;
+            data->menuInputState = 1;
             PlaySE(SEQ_SE_DP_SELECT);
             break;
         }
