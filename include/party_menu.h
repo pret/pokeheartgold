@@ -307,7 +307,7 @@ typedef struct PartyMenuArgs {
     LinkBattleRuleset *linkBattleRuleset;
     FieldMoveCheckData *fieldMoveCheckData;
     FieldSystem *fieldSystem;
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
     u8 context;
     u8 unk_25;
     u8 partySlot;
@@ -484,7 +484,7 @@ u32 sub_0207CAA8(void);
 void sub_0207CAAC(HeapID heapId, u16 *a1, u16 *a2, u16 *a3);
 void PartyMenu_FormChangeScene_End(PartyMenu *partyMenu);
 void PartyMenu_DeleteContextMenuAndList(PartyMenu *partyMenu);
-void sub_0207CB3C(PartyMenu *partyMenu, BOOL a1);
+void sub_0207CB3C(PartyMenu *partyMenu, MenuInputState menuInputState);
 void PartyMenu_FormChangeScene_Begin(PartyMenu *partyMenu);
 
 #endif // POKEHEARTGOLD_PARTY_MENU_H

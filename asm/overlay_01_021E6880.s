@@ -225,7 +225,7 @@ _021E6A06:
 	lsl r0, r0, #2
 	add r0, r4, r0
 	mov r1, #0
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	mov r0, #2
 	ldrh r1, [r5]
 	lsl r0, r0, #8

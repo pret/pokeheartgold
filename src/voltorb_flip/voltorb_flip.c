@@ -23,10 +23,10 @@
 #include "gf_gfx_loader.h"
 #include "list_menu_items.h"
 #include "math_util.h"
+#include "menu_input_state.h"
 #include "message_format.h"
 #include "options.h"
 #include "overlay_manager.h"
-#include "player_data.h"
 #include "render_text.h"
 #include "render_window.h"
 #include "sound_02004A44.h"
@@ -34,11 +34,11 @@
 #include "system.h"
 #include "text.h"
 #include "touchscreen.h"
+#include "touchscreen_list_menu.h"
 #include "unk_02005D10.h"
 #include "unk_02009D48.h"
 #include "unk_0200CF18.h"
 #include "unk_0200FA24.h"
-#include "unk_020183F0.h"
 #include "yes_no_prompt.h"
 
 typedef enum CoinDisplay {
@@ -1190,12 +1190,12 @@ static void ov122_021E6E34(u16 *a0, int a1) {
     }
 }
 
-static void ov122_021E6E60(BgConfig *a0, GameState *game, int cardId, int a3) {
+static void ov122_021E6E60(BgConfig *bgConfig, GameState *game, int cardId, int a3) {
     u16 temp1[9];
 
-    int var1 = (cardId % 5) * 4 + 1;
-    int var2 = (cardId / 5) * 4 + 1;
-    int var3 = GetCardType(game, cardId);
+    int x        = (cardId % 5) * 4 + 1;
+    int y        = (cardId / 5) * 4 + 1;
+    int cardType = GetCardType(game, cardId);
 
     switch (a3) {
     case 0:
@@ -1205,16 +1205,16 @@ static void ov122_021E6E60(BgConfig *a0, GameState *game, int cardId, int a3) {
         ov122_021E6E34(temp1, 26);
         break;
     case 2:
-        ov122_021E6E34(temp1, ov122_021E6E10(var3, 0));
+        ov122_021E6E34(temp1, ov122_021E6E10(cardType, 0));
         break;
     case 3:
-        ov122_021E6E34(temp1, ov122_021E6E10(var3, 1));
+        ov122_021E6E34(temp1, ov122_021E6E10(cardType, 1));
         break;
     default:
         GF_ASSERT(FALSE);
     }
 
-    LoadRectToBgTilemapRect(a0, 0, temp1, var1, var2, 3, 3);
+    LoadRectToBgTilemapRect(bgConfig, 0, temp1, x, y, 3, 3);
 }
 
 static void ov122_021E6F04(BgConfig *a0, GameState *game, int cardId, int a3) {
@@ -1458,7 +1458,7 @@ static BOOL TryToggleCardMemo(VoltorbFlipAppWork *work, int cardId, int a2) {
 }
 
 static void ov122_021E73FC(VoltorbFlipAppWork *work) {
-    work->unk1C = sub_02018424(work->heapId, 0);
+    work->unk1C = TouchscreenListMenuSpawner_Create(work->heapId, 0);
 
     for (int i = 0; i < 2; i++) {
         work->menuItems[i] = ListMenuItems_New(sMenuMsgNos[i].size, work->heapId);
@@ -1475,31 +1475,31 @@ static void ov122_021E745C(VoltorbFlipAppWork *work) {
         ListMenuItems_Delete(work->menuItems[i]);
         work->menuItems[i] = NULL;
     }
-    sub_02018474(work->unk1C);
+    TouchscreenListMenuSpawner_Destroy(work->unk1C);
 }
 
 void ov122_021E7488(VoltorbFlipAppWork *a0, int a1) {
-    Ov122_021E7488 temp1 = { 0 };
-    const MsgNoList *ptr = &sMenuMsgNos[a1];
+    TouchscreenListMenuHeader temp1 = { 0 };
+    const MsgNoList *ptr            = &sMenuMsgNos[a1];
     GF_ASSERT(a0->bgConfig != 0);
 
-    temp1.unk0 = ov122_021E9278.unkA;
+    temp1.template = ov122_021E9278.menuTemplate;
 
-    temp1.unkC  = a0->menuItems[a1];
-    temp1.unk10 = a0->bgConfig;
-    temp1.unk14 = ptr->size;
+    temp1.listMenuItems = a0->menuItems[a1];
+    temp1.bgConfig      = a0->bgConfig;
+    temp1.numWindows    = ptr->size;
 
-    a0->unk20 = sub_020185FC(a0->unk1C, &temp1, a0->unk228, 17, 17 - ptr->size * 3, 13, 0);
+    a0->menu = TouchscreenListMenu_Create(a0->unk1C, &temp1, a0->unk228, 17, 17 - ptr->size * 3, 13, 0);
 }
 
 static int ov122_021E7514(VoltorbFlipAppWork *work) {
-    int var1 = sub_020186A4(work->unk20);
+    int var1 = TouchscreenListMenu_HandleInput(work->menu);
     if (var1 == -1) {
         return -1;
     }
 
-    work->unk228 = sub_02018674(work->unk20);
-    sub_02018680(work->unk20);
+    work->unk228 = TouchscreenListMenu_WasLastInputTouch(work->menu);
+    TouchscreenListMenu_Destroy(work->menu);
     return var1;
 }
 
@@ -1966,7 +1966,7 @@ static void ov122_021E8094(OVY_MANAGER *man) {
     work->coins             = args->coins;
     work->menuInputStatePtr = args->menuInputStatePtr;
     work->profile           = args->profile;
-    work->unk228            = sub_020183F0(work->menuInputStatePtr);
+    work->unk228            = MenuInputStateMgr_GetState(work->menuInputStatePtr);
     work->unk229            = Options_GetFrame(work->options);
     work->unk22A            = Options_GetTextFrameDelay(work->options);
 

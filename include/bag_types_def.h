@@ -6,6 +6,7 @@
 #include "bag_cursor.h"
 #include "field_types_def.h"
 #include "item.h"
+#include "menu_input_state.h"
 #include "save.h"
 
 /*
@@ -82,7 +83,7 @@ typedef struct BagView {
     u8 unk75;
     u16 unk76_0 : 1;
     u16 unk76_1 : 15;
-    BOOL *unk78;
+    MenuInputStateMgr *menuInputStateMgr;
 } BagView; // size: 0x7C
 
 #endif // POKEHEARTGOLD_BAG_TYPES_DEF_H

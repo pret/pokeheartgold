@@ -9,12 +9,12 @@
 #include "field_take_photo.h"
 #include "font.h"
 #include "gf_gfx_loader.h"
+#include "menu_input_state.h"
 #include "message_format.h"
 #include "system.h"
 #include "text.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
-#include "unk_020183F0.h"
 #include "unk_02068F84.h"
 
 typedef enum ViewPhotoTaskState {
@@ -26,7 +26,7 @@ typedef enum ViewPhotoTaskState {
 typedef struct ViewPhotoSysTaskData {
     HeapID heapId;
     int state;
-    int lastInputWasTouch;
+    MenuInputState menuInputState;
     ViewPhotoInputResponse lastInput;
     SaveData *saveData;
     FieldSystem *fieldSystem;
@@ -135,12 +135,12 @@ static const u8 _0225A03C[3] = { 9, 1, 4 };
 SysTask *FieldSystem_CreateViewPhotoTask(FieldSystem *fieldSystem) {
     ViewPhotoSysTaskData *viewPhoto = AllocFromHeap(HEAP_ID_FIELD, sizeof(ViewPhotoSysTaskData));
     MI_CpuClear8(viewPhoto, sizeof(ViewPhotoSysTaskData));
-    viewPhoto->heapId            = HEAP_ID_FIELD;
-    viewPhoto->fieldSystem       = fieldSystem;
-    viewPhoto->bgConfig          = fieldSystem->bgConfig;
-    viewPhoto->saveData          = fieldSystem->saveData;
-    viewPhoto->parent            = fieldSystem->viewPhotoTask;
-    viewPhoto->lastInputWasTouch = sub_020183F0(&fieldSystem->menuInputState);
+    viewPhoto->heapId         = HEAP_ID_FIELD;
+    viewPhoto->fieldSystem    = fieldSystem;
+    viewPhoto->bgConfig       = fieldSystem->bgConfig;
+    viewPhoto->saveData       = fieldSystem->saveData;
+    viewPhoto->parent         = fieldSystem->viewPhotoTask;
+    viewPhoto->menuInputState = MenuInputStateMgr_GetState(&fieldSystem->menuInputState);
     FieldViewPhoto_GetAlbumScrollParam(viewPhoto->parent, &viewPhoto->scrollData);
     return SysTask_CreateOnMainQueue(SysTask_ViewPhoto, viewPhoto, 1);
 }
@@ -148,7 +148,7 @@ SysTask *FieldSystem_CreateViewPhotoTask(FieldSystem *fieldSystem) {
 void FieldSystem_DestroyViewPhotoTask(FieldSystem *fieldSystem) {
     ViewPhotoSysTaskData *viewPhoto = (ViewPhotoSysTaskData *)SysTask_GetData(fieldSystem->unk_D8);
 
-    sub_02018410(&fieldSystem->menuInputState, viewPhoto->lastInputWasTouch);
+    MenuInputStateMgr_SetState(&fieldSystem->menuInputState, viewPhoto->menuInputState);
     ViewPhotoSysTask_Teardown(viewPhoto);
     FreeToHeap(viewPhoto);
     SysTask_Destroy(fieldSystem->unk_D8);
@@ -198,10 +198,10 @@ static ViewPhotoInputResponse ViewPhotoSysTask_HandleInput(ViewPhotoSysTaskData 
     if (response == VIEW_PHOTO_INPUT_NOTHING) {
         response = ViewPhotoSysTask_GetKeyInput(viewPhoto);
         if (response == VIEW_PHOTO_INPUT_NOTHING) {
-            viewPhoto->lastInputWasTouch = FALSE;
+            viewPhoto->menuInputState = MENU_INPUT_STATE_BUTTONS;
         }
     } else {
-        viewPhoto->lastInputWasTouch = TRUE;
+        viewPhoto->menuInputState = MENU_INPUT_STATE_TOUCH;
     }
     switch (response) {
     case VIEW_PHOTO_INPUT_END:

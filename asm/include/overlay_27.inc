@@ -40,7 +40,7 @@
 .public BufferIntegerAsString
 .public Sprite_SetPositionXY_CustomScreenYOffset
 .public IsPaletteFadeFinished
-.public sub_020183F0
+.public MenuInputStateMgr_GetState
 .public CreateHeap
 .public DestroyHeap
 .public AllocFromHeapAtEnd

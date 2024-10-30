@@ -41,6 +41,7 @@ a/1/4/1
 a/1/5/0
 a/1/5/2
 a/1/6/3
+a/1/6/5
 a/1/6/9
 a/1/7/2
 a/1/7/4
@@ -80,4 +81,5 @@ graphic/camera_viewfinder.narc
 application/guinness.narc
 demo/intro/intro.narc
 data/namein.narc
+data/sbox_gra.narc
 *.NCLR

@@ -4,7 +4,7 @@
 .public PlaySE
 .public sub_02006088
 .public StopSE
-.public sub_02018410
+.public MenuInputStateMgr_SetState
 .public GF_AssertFail
 .public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_TestBadgeFlag

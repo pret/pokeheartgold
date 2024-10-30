@@ -166,7 +166,7 @@ ov108_021E8968: ; 0x021E8968
 	bl Options_GetFrame
 	strb r0, [r5, #0x19]
 	ldr r0, [r4, #4]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	str r0, [r5, #0x10]
 	str r4, [r5, #0x1c]
 	ldr r0, [r4, #0x20]
@@ -308,7 +308,7 @@ _021E8AAE:
 	ldr r0, [r4, #0x1c]
 	ldr r1, [r4, #0x10]
 	ldr r0, [r0, #4]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	pop {r4, pc}
 	nop
 _021E8AD0: .word 0x00000431

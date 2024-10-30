@@ -5,6 +5,7 @@
 
 #include "bg_window.h"
 #include "gf_gfx_planes.h"
+#include "unk_0200CF18.h"
 
 const u16 ov122_021E92A0[] = {
     0x00A0,

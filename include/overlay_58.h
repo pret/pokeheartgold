@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_OVY_58_H
 #define POKEHEARTGOLD_OVY_58_H
 
+#include "menu_input_state.h"
 #include "overlay_manager.h"
 #include "save.h"
 
@@ -10,7 +11,7 @@ typedef struct ApricornBoxArgs {
     u16 *unk8;
     u32 unkC;
     u32 unk10;
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
     SaveData *saveData;
 } ApricornBoxArgs;
 

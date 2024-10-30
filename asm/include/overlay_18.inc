@@ -123,8 +123,8 @@
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_02014510
-.public sub_020183F0
-.public sub_02018410
+.public MenuInputStateMgr_GetState
+.public MenuInputStateMgr_SetState
 .public sub_0201956C
 .public sub_020195C0
 .public sub_020195F4

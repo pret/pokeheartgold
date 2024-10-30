@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_VOLTORB_FLIP_H
 #define POKEHEARTGOLD_VOLTORB_FLIP_H
 
+#include "menu_input_state.h"
 #include "options.h"
 #include "overlay_manager.h"
 #include "player_data.h"
@@ -9,7 +10,7 @@
 typedef struct VoltorbFlipArgs {
     Options *options;
     u16 *coins;
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
     PlayerProfile *profile;
     SaveData *saveData;
 } VoltorbFlipArgs;

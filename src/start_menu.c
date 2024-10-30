@@ -17,6 +17,7 @@
 #include "launch_application.h"
 #include "map_header.h"
 #include "map_object.h"
+#include "menu_input_state.h"
 #include "overlay_01.h"
 #include "overlay_01_021F6830.h"
 #include "pokedex.h"
@@ -29,7 +30,6 @@
 #include "unk_02005D10.h"
 #include "unk_0200ACF0.h"
 #include "unk_0200FA24.h"
-#include "unk_020183F0.h"
 #include "unk_02034B0C.h"
 #include "unk_02037C94.h"
 #include "unk_02054E00.h"
@@ -611,7 +611,7 @@ static BOOL Task_StartMenu_HandleInput(TaskManager *taskManager) {
 static BOOL StartMenu_HandleKeyInput(TaskManager *taskManager, FieldSystem *fieldSystem, StartMenuTaskData *startMenu) {
     if (fieldSystem->unkD3 < startMenu->numActiveButtons) {
         PlaySE(SEQ_SE_DP_SELECT);
-        sub_02018410(&fieldSystem->menuInputState, 0);
+        MenuInputStateMgr_SetState(&fieldSystem->menuInputState, MENU_INPUT_STATE_BUTTONS);
         startMenu->selectedIndex = fieldSystem->unkD3;
         if (sStartMenuActions[startMenu->selectionToAction[startMenu->selectedIndex]].func == STARTMENUTASKFUNC_CANCEL) {
             startMenu->state = START_MENU_STATE_CLOSE;
@@ -632,7 +632,7 @@ static BOOL StartMenu_HandleKeyInput(TaskManager *taskManager, FieldSystem *fiel
 
 static BOOL StartMenu_HandleTouchInput(TaskManager *taskManager, FieldSystem *fieldSystem, StartMenuTaskData *startMenu) {
     if (fieldSystem->lastTouchMenuInput != 0) {
-        sub_02018410(&fieldSystem->menuInputState, 1);
+        MenuInputStateMgr_SetState(&fieldSystem->menuInputState, MENU_INPUT_STATE_TOUCH);
     }
     switch (fieldSystem->lastTouchMenuInput) {
     case 1:
@@ -742,7 +742,7 @@ static void Task_StartMenu_WaitApp(TaskManager *taskManager) {
 
     if (!FieldSystem_ApplicationIsRunning(fieldSystem)) {
         startMenu->atexit_TaskFunc(taskManager);
-        if (startMenu->state == START_MENU_STATE_RETURN && sub_020183F0(&fieldSystem->menuInputState) == TRUE) {
+        if (startMenu->state == START_MENU_STATE_RETURN && MenuInputStateMgr_GetState(&fieldSystem->menuInputState) == TRUE) {
             startMenu->state = START_MENU_STATE_10;
         }
     }

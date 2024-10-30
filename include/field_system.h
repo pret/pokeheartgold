@@ -13,6 +13,7 @@
 #include "gear_phone.h"
 #include "map_events_internal.h"
 #include "map_matrix.h"
+#include "menu_input_state.h"
 #include "overlay_01_021EB1E8.h"
 #include "overlay_01_02204004.h"
 #include "overlay_manager.h"
@@ -166,7 +167,7 @@ struct FieldSystem {
     FollowMon followMon; // E4
     u8 unk104[4];
     FieldSystemUnk108 *unk108;
-    BOOL menuInputState; // Tracks whether the last menu input was touch or keypad
+    MenuInputStateMgr menuInputState; // Tracks whether the last menu input was touch or keypad
     u8 unk_110;
     u8 unk_111[3];
     GearPhoneRingManager *phoneRingManager;

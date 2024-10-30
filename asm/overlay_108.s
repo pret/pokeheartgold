@@ -143,7 +143,7 @@ ov108_021E59E4: ; 0x021E59E4
 	ldr r1, _021E5A3C ; =0x000184DD
 	strb r0, [r5, r1]
 	ldr r0, [r4, #4]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	str r0, [r5, #0x10]
 	ldr r0, _021E5A40 ; =0x000184E8
 	mov r1, #0
@@ -183,7 +183,7 @@ ov108_021E5A48: ; 0x021E5A48
 	ldr r0, [r4, #0x14]
 	ldr r1, [r4, #0x10]
 	ldr r0, [r0, #4]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	pop {r4, pc}
 	.balign 4, 0
 _021E5A74: .word 0x000184E8
@@ -621,7 +621,7 @@ ov108_021E5DB8: ; 0x021E5DB8
 	add r5, r0, #0
 	ldr r0, _021E5E5C ; =0x000004BC
 	ldr r0, [r5, r0]
-	bl sub_020186A4
+	bl TouchscreenListMenu_HandleInput
 	add r6, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -637,7 +637,7 @@ _021E5DD2:
 	ldrb r1, [r1]
 	lsl r1, r1, #0x18
 	lsr r4, r1, #0x19
-	bl sub_02018680
+	bl TouchscreenListMenu_Destroy
 	ldr r0, [r5, #0x10]
 	cmp r4, r0
 	beq _021E5DFC
@@ -2260,7 +2260,7 @@ ov108_021E6A58: ; 0x021E6A58
 	ldr r0, [r4, r0]
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_020185FC
+	bl TouchscreenListMenu_Create
 	ldr r1, _021E6AFC ; =0x000004BC
 	ldr r2, _021E6AF4 ; =0x000184DF
 	str r0, [r4, r1]
@@ -3256,7 +3256,7 @@ ov108_021E72CC: ; 0x021E72CC
 	bl ov108_021E83F0
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_02018424
+	bl TouchscreenListMenuSpawner_Create
 	mov r1, #0xd1
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -3281,7 +3281,7 @@ ov108_021E730C: ; 0x021E730C
 	mov r0, #0xd1
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02018474
+	bl TouchscreenListMenuSpawner_Destroy
 	add r0, r4, #0
 	bl ov108_021E844C
 	mov r0, #0xd2

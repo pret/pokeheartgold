@@ -2092,7 +2092,7 @@ ov41_02246DE0: ; 0x02246DE0
 	ldr r0, [r5, #0x20]
 	cmp r0, #0
 	beq _02246E3E
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r1, _02246EF8 ; =0x000006EC
 	b _02246E42
 _02246E3E:
@@ -2508,7 +2508,7 @@ _0224719C:
 	beq _022471AA
 	ldr r1, _02247230 ; =0x000006EC
 	ldr r1, [r4, r1]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 _022471AA:
 	ldr r0, _02247234 ; =0x000006B8
 	ldr r0, [r4, r0]

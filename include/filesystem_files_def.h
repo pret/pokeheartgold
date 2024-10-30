@@ -169,7 +169,7 @@ typedef enum NarcId {
     NARC_a_1_6_2                                            = 162,
     NARC_data_gs_areawindow                                 = 163,
     NARC_a_1_6_4                                            = 164,
-    NARC_a_1_6_5                                            = 165,
+    NARC_data_sbox_gra                                      = 165,
     NARC_a_1_6_6                                            = 166,
     NARC_a_1_6_7                                            = 167,
     NARC_a_1_6_8                                            = 168,

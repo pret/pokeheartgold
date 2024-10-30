@@ -28,7 +28,7 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public NewString_ReadMsgData
-.public sub_02018410
+.public MenuInputStateMgr_SetState
 .public CreateHeap
 .public DestroyHeap
 .public FreeToHeap

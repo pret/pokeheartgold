@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_UNK_02088288_H
 #define POKEHEARTGOLD_UNK_02088288_H
 
+#include "menu_input_state.h"
 #include "options.h"
 #include "player_data.h"
 #include "pokemon_types_def.h"
@@ -26,7 +27,7 @@ typedef struct PokemonSummaryArgs {
     u8 unk24[0x4];
     int unk28;
     int unk2C;
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
     BOOL isFlag982Set;
     u8 unk38[0x4];
 } PokemonSummaryArgs;

@@ -39,7 +39,7 @@
 .public LoadUserFrameGfx2
 .public IsPaletteFadeFinished
 .public sub_02016EDC
-.public sub_02018410
+.public MenuInputStateMgr_SetState
 .public sub_0201956C
 .public sub_020195C0
 .public sub_020195F4

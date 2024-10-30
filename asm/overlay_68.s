@@ -200,7 +200,7 @@ ov68_021E5A58: ; 0x021E5A58
 	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	mov r1, #0x6d
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -275,7 +275,7 @@ ov68_021E5B14: ; 0x021E5B14
 	lsl r1, r1, #2
 	ldr r0, [r0, #0xc]
 	ldr r1, [r4, r1]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	mov r0, #0
 	bl TextFlags_SetCanTouchSpeedUpPrint
 	bl GF_DestroyVramTransferManager
