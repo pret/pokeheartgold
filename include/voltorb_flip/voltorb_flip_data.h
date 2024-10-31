@@ -2,12 +2,11 @@
 #define POKEHEARTGOLD_VOLTORB_FLIP_DATA_H
 
 #include "bg_window.h"
-#include "unk_0200CF18.h"
-#include "unk_020183F0.h"
+#include "touchscreen_list_menu.h"
 
 typedef struct Ov122_021E9278 {
     u8 unk0[5][2];
-    Ov122_021E9282 unkA;
+    TouchscreenListMenuTemplate menuTemplate;
 } Ov122_021E9278;
 
 typedef struct MsgNoList {

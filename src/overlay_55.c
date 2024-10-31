@@ -67,8 +67,8 @@ BOOL ov55_UnkApp_Init(OVY_MANAGER *manager, int *state) {
     if (overlayData->unk10->mailType >= NUM_MAIL) {
         overlayData->unk10->mailType = MAIL_GRASS;
     }
-    overlayData->unk10->unk0 = args->unk0;
-    overlayData->unk10->unk8 = args->menuInputStatePtr;
+    overlayData->unk10->unk0              = args->unk0;
+    overlayData->unk10->menuInputStateMgr = args->menuInputStatePtr;
     return TRUE;
 }
 

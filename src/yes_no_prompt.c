@@ -201,8 +201,8 @@ YesNoResponse YesNoPrompt_HandleInput(YesNoPrompt *yesno) {
     return YESNORESPONSE_WAIT;
 }
 
-BOOL YesNoPrompt_IsInTouchMode(YesNoPrompt *yesno) {
-    return yesno->inTouchMode;
+MenuInputState YesNoPrompt_IsInTouchMode(YesNoPrompt *yesno) {
+    return (MenuInputState)yesno->inTouchMode;
 }
 
 void YesNoPrompt_Reset(YesNoPrompt *yesno) {

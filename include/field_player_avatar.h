@@ -8,7 +8,7 @@
 
 typedef struct PlayerSaveData {
     u16 hasRunningShoes;
-    u16 unk2;
+    u16 runningShoesLock;
     u32 unk4;
 } PlayerSaveData;
 
@@ -119,7 +119,7 @@ void sub_0205CAF4(PlayerAvatar *avatar);
 BOOL sub_0205CB00(PlayerAvatar *avatar);
 void sub_0205CB14(PlayerAvatar *avatar, BOOL unkA);
 u32 sub_0205CB2C(PlayerAvatar *avatar);
-u16 sub_0205CB38(PlayerAvatar *avatar);
-void sub_0205CB40(PlayerAvatar *avatar, u16 unkA);
+u16 PlayerAvatar_CheckRunningShoesLock(PlayerAvatar *avatar);
+void PlayerAvatar_SetRunningShoesLock(PlayerAvatar *avatar, u16 lock);
 
 #endif // POKEHEARTGOLD_PlayerAvatar_H

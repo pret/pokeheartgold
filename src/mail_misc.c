@@ -8,13 +8,13 @@
 
 #include "item.h"
 #include "mail.h"
+#include "menu_input_state.h"
 #include "options.h"
 #include "player_data.h"
 #include "save_vars_flags.h"
 #include "sys_flags.h"
-#include "unk_020183F0.h"
 
-EasyChatArgs *EasyChat_CreateArgs(u8 args, u8 a1, SaveData *saveData, BOOL *a3, HeapID heapId) {
+EasyChatArgs *EasyChat_CreateArgs(u8 args, u8 a1, SaveData *saveData, MenuInputStateMgr *menuInputStateMgr, HeapID heapId) {
     EasyChatArgs *ptr = AllocFromHeap(heapId, sizeof(EasyChatArgs));
     ptr->unk0         = args;
     ptr->unk1         = a1;
@@ -25,7 +25,7 @@ EasyChatArgs *EasyChat_CreateArgs(u8 args, u8 a1, SaveData *saveData, BOOL *a3, 
     ptr->unk2         = 1;
     ptr->unk3         = 0;
     ptr->frame        = Options_GetFrame(Save_PlayerData_GetOptionsAddr(saveData));
-    ptr->unk24        = a3;
+    ptr->menuInputPtr = menuInputStateMgr;
 
     if (args == 2) {
         MailMsg_Init_WithBank(&ptr->mailMessage, MAILMSG_BANK_0293_GMM);
@@ -152,15 +152,15 @@ void sub_02090E04(EasyChatArgs *args, MailMessage *msg1, MailMessage *msg2) {
 }
 
 int sub_02090E44(EasyChatArgs *args) {
-    if (args == NULL || args->unk24 == 0) {
+    if (args == NULL || args->menuInputPtr == 0) {
         return 0;
     }
 
-    return sub_020183F0(args->unk24);
+    return MenuInputStateMgr_GetState(args->menuInputPtr);
 }
 
-void sub_02090E5C(EasyChatArgs *args, u32 a1) {
-    sub_02018410(args->unk24, a1);
+void sub_02090E5C(EasyChatArgs *args, MenuInputState a1) {
+    MenuInputStateMgr_SetState(args->menuInputPtr, a1);
 }
 
 UseMailArgs *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 mailType, HeapID heapId) {

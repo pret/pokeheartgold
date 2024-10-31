@@ -11,6 +11,7 @@
 #include "field_system.h"
 #include "font.h"
 #include "gf_gfx_loader.h"
+#include "menu_input_state.h"
 #include "overlay_01.h"
 #include "overlay_123.h"
 #include "render_text.h"
@@ -20,7 +21,6 @@
 #include "task.h"
 #include "text.h"
 #include "unk_02005D10.h"
-#include "unk_020183F0.h"
 #include "yes_no_prompt.h"
 
 FS_EXTERN_OVERLAY(OVY_123);
@@ -94,7 +94,7 @@ static BOOL TouchSaveApp_PrintSavedMessage(TouchSaveAppData *data);
 static BOOL TouchSaveApp_SaveSucceeded(TouchSaveAppData *data);
 static BOOL TouchSaveApp_CloseApp(TouchSaveAppData *data);
 static BOOL TouchSaveApp_ShouldPrintAlternateSavingMessage(TouchSaveAppData *data);
-static void ov30_0225DC00(BOOL *a0, u32 a1);
+static void TouchSaveApp_SetMenuInputState(MenuInputStateMgr *stateMgr, MenuInputState state);
 static void ov30_0225DC08(void);
 static void ov30_0225DC18(void);
 static void ov30_0225DC28(void);
@@ -363,7 +363,7 @@ static BOOL TouchSaveApp_GetSaveConfirmation(TouchSaveAppData *data) {
 static BOOL TouchSaveApp_HandleSaveConfirmation(TouchSaveAppData *data) {
     switch (YesNoPrompt_HandleInputForSave(data->yesNoPrompt)) {
     case YESNORESPONSE_YES:
-        ov30_0225DC00(&data->fieldSystem->menuInputState, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
+        TouchSaveApp_SetMenuInputState(&data->fieldSystem->menuInputState, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
         YesNoPrompt_Destroy(data->yesNoPrompt);
         if (Save_FileExists(data->fieldSystem->saveData) == TRUE) {
             data->state = TOUCHSAVEAPP_STATE_PRINT_OVERWRITE_MESSAGE;
@@ -372,7 +372,7 @@ static BOOL TouchSaveApp_HandleSaveConfirmation(TouchSaveAppData *data) {
         }
         break;
     case YESNORESPONSE_NO:
-        ov30_0225DC00(&data->fieldSystem->menuInputState, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
+        TouchSaveApp_SetMenuInputState(&data->fieldSystem->menuInputState, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
         YesNoPrompt_Destroy(data->yesNoPrompt);
         return TRUE;
     default: // clang(-Wswitch)
@@ -401,12 +401,12 @@ static BOOL TouchSaveApp_GetOverwriteConfirmation(TouchSaveAppData *data) {
 static BOOL TouchSaveApp_HandleOverwriteConfirmation(TouchSaveAppData *data) {
     switch (YesNoPrompt_HandleInputForSave(data->yesNoPrompt)) {
     case YESNORESPONSE_YES:
-        ov30_0225DC00(&data->fieldSystem->menuInputState, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
+        TouchSaveApp_SetMenuInputState(&data->fieldSystem->menuInputState, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
         YesNoPrompt_Destroy(data->yesNoPrompt);
         data->state = TOUCHSAVEAPP_STATE_PRINT_SAVING_MESSAGE;
         break;
     case YESNORESPONSE_NO:
-        ov30_0225DC00(&data->fieldSystem->menuInputState, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
+        TouchSaveApp_SetMenuInputState(&data->fieldSystem->menuInputState, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
         YesNoPrompt_Destroy(data->yesNoPrompt);
         return TRUE;
     default: // clang(-Wswitch)
@@ -497,8 +497,8 @@ static BOOL TouchSaveApp_ShouldPrintAlternateSavingMessage(TouchSaveAppData *dat
     return Save_NumModifiedPCBoxesIsMany(data->fieldSystem->saveData);
 }
 
-static void ov30_0225DC00(BOOL *a0, u32 a1) {
-    sub_02018410(a0, a1);
+static void TouchSaveApp_SetMenuInputState(MenuInputStateMgr *stateMgr, MenuInputState state) {
+    MenuInputStateMgr_SetState(stateMgr, state);
 }
 
 static void ov30_0225DC08(void) {

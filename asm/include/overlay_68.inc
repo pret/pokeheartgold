@@ -76,8 +76,8 @@
 .public YesNoPrompt_HandleInput
 .public YesNoPrompt_IsInTouchMode
 .public YesNoPrompt_Reset
-.public sub_020183F0
-.public sub_02018410
+.public MenuInputStateMgr_GetState
+.public MenuInputStateMgr_SetState
 .public sub_02019BA4
 .public sub_02019BDC
 .public sub_02019D18

@@ -70,7 +70,7 @@ TrainerCardMainApp_Init: ; 0x021E5AC0
 	ldr r1, [r0]
 	ldr r0, _021E5D50 ; =0x0000066C
 	ldr r0, [r1, r0]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r1, _021E5D54 ; =0x0000310C
 	str r0, [r4, r1]
 	add r0, r4, #0
@@ -515,7 +515,7 @@ TrainerCardMainApp_Exit: ; 0x021E5EC8
 	ldr r0, [r1, r0]
 	ldr r1, _021E5F60 ; =0x0000310C
 	ldr r1, [r4, r1]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0

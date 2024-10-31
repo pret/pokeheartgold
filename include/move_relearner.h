@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_MOVE_RELEARNER_H
 #define POKEHEARTGOLD_MOVE_RELEARNER_H
 
+#include "menu_input_state.h"
 #include "player_data.h"
 #include "pokemon_types_def.h"
 
@@ -11,7 +12,7 @@ typedef struct MoveRelearnerArgs {
     Pokemon *mon;
     PlayerProfile *profile;
     Options *options;
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
     u16 *eligibleMoves;
     u8 filler_14[5];
     u8 type;

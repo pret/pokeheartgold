@@ -414,7 +414,7 @@ static BOOL sub_0203E878(TaskManager *taskman) {
     MsgBankMsgNo msgBankMsgNo;
     MailMessage mailMessage;
 
-    int *state               = TaskManager_GetStatePtr(taskman);
+    int *state               = (int *)TaskManager_GetStatePtr(taskman);
     UnkStruct_0203E878 *data = TaskManager_GetEnvironment(taskman);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     switch (*state) {
@@ -953,7 +953,7 @@ static BOOL Task_WirelessTrade(TaskManager *taskman) {
         break;
     case WIRELESS_TRADE_STATE_5:
         int heldItem = GetMonData(data->wirelessTradeSelectMon.unk3C, MON_DATA_HELD_ITEM, NULL);
-        int species  = GetMonEvolution(NULL, data->wirelessTradeSelectMon.unk3C, EVOCTX_TRADE, heldItem, &evolutionCondition);
+        int species  = GetMonEvolution(NULL, data->wirelessTradeSelectMon.unk3C, EVOCTX_TRADE, heldItem, (int *)&evolutionCondition);
         if (species != SPECIES_NONE) {
             CreateHeap(HEAP_ID_3, HEAP_ID_26, 0x30000);
             data->tradeSequence.evolutionTaskData = sub_02075A7C(NULL, data->wirelessTradeSelectMon.unk3C, species, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData), sub_02088288(fieldSystem->saveData), Save_Pokedex_Get(fieldSystem->saveData), Save_Bag_Get(fieldSystem->saveData), Save_GameStats_Get(fieldSystem->saveData), evolutionCondition, 4, HEAP_ID_26);

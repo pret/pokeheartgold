@@ -11,7 +11,7 @@ typedef struct UnkStruct_ov55_021E5B08 {
     u16 unk0;
     u8 mailMessageIdx;
     Options *options;
-    u32 *unk8;
+    MenuInputStateMgr *menuInputStateMgr;
     u32 mailOTID;
     u8 unk10;
     u8 mailLanguage;

@@ -1,12 +1,13 @@
 #ifndef POKEHEARTGOLD_OVY_108_H
 #define POKEHEARTGOLD_OVY_108_H
 
+#include "menu_input_state.h"
 #include "overlay_manager.h"
 #include "save.h"
 
 typedef struct SafariAreaCustomizerArgs {
     SaveData *saveData;
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
     u8 unk8[0x1c];
 } SafariAreaCustomizerArgs;
 

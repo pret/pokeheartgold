@@ -1,12 +1,13 @@
 #ifndef POKEHEARTGOLD_OVY_14_H
 #define POKEHEARTGOLD_OVY_14_H
 
+#include "menu_input_state.h"
 #include "overlay_manager.h"
 #include "save.h"
 
 typedef struct PCBoxArgs {
     SaveData *saveData;
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
     int unk8;
 } PCBoxArgs;
 

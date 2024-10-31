@@ -69,11 +69,11 @@
 .public YesNoPrompt_InitFromTemplate
 .public YesNoPrompt_HandleInput
 .public YesNoPrompt_Reset
-.public sub_02018424
-.public sub_02018474
-.public sub_020185FC
-.public sub_02018680
-.public sub_020186A4
+.public TouchscreenListMenuSpawner_Create
+.public TouchscreenListMenuSpawner_Destroy
+.public TouchscreenListMenu_Create
+.public TouchscreenListMenu_Destroy
+.public TouchscreenListMenu_HandleInput
 .public sub_0201956C
 .public sub_020195C0
 .public sub_020195F4

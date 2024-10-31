@@ -1,11 +1,12 @@
 #ifndef POKEHEARTGOLD_OVY_113_H
 #define POKEHEARTGOLD_OVY_113_H
 
+#include "menu_input_state.h"
 #include "overlay_manager.h"
 #include "save.h"
 
 typedef struct UnownReportArgs {
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
     SaveData *saveData;
 } UnownReportArgs;
 

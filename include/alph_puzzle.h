@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_ALPH_PUZZLE_H
 
 #include "bg_window.h"
+#include "menu_input_state.h"
 #include "message_format.h"
 #include "msgdata.h"
 #include "overlay_manager.h"
@@ -25,7 +26,7 @@ typedef struct AlphPuzzleArgs {
     u8 puzzle;
     u8 unk6; // unused
     u8 unk7; // unused
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
     SaveData *saveData;
 } AlphPuzzleArgs;
 

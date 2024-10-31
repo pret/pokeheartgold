@@ -7,8 +7,10 @@
 #include "bg_window.h"
 #include "heap.h"
 #include "list_menu_items.h"
+#include "menu_input_state.h"
 #include "options.h"
 #include "player_data.h"
+#include "touchscreen_list_menu.h"
 #include "unk_0200CF18.h"
 
 typedef struct Ov122_021E70B8 {
@@ -31,12 +33,12 @@ typedef struct VoltorbFlipAppWork {
     HeapID heapId;
     Options *options;
     u16 *coins;
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
     PlayerProfile *profile;
     NARC *narc;
     BgConfig *bgConfig;
     void *unk1C;
-    void *unk20;
+    TouchscreenListMenu *menu;
     Window windows[17];
     LISTMENUITEM *menuItems[2];
     void *unk13C;

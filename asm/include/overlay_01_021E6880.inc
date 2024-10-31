@@ -4,7 +4,7 @@
 .public PlaySE
 .public sub_02006088
 .public StopSE
-.public sub_02018410
+.public MenuInputStateMgr_SetState
 .public GF_AssertFail
 .public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_TestBadgeFlag
@@ -117,7 +117,7 @@
 .public PlayerAvatar_GetState
 .public FieldSystem_GetPlayerAvatar
 .public sub_0205CA38
-.public sub_0205CB38
+.public PlayerAvatar_CheckRunningShoesLock
 .public sub_0205CF44
 .public sub_0205CF60
 .public sub_0205CFBC

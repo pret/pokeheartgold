@@ -15,6 +15,7 @@
 #include "gf_gfx_planes.h"
 #include "launch_application.h"
 #include "math_util.h"
+#include "menu_input_state.h"
 #include "message_format.h"
 #include "msgdata.h"
 #include "obj_char_transfer.h"
@@ -30,7 +31,6 @@
 #include "unk_0200FA24.h"
 #include "unk_02013534.h"
 #include "unk_020163E0.h"
-#include "unk_020183F0.h"
 #include "vram_transfer_manager.h"
 
 #define NAME_SCREEN_CONTROL_DAKU            0xD001 // unused
@@ -136,7 +136,7 @@ typedef struct NamingScreenAppData {
     UnkStruct_020163E0 *unk_5C4;
     BOOL isTouchInput;
     int delayCounter;
-    BOOL *pMenuInputState;
+    MenuInputStateMgr *pMenuInputState;
 } NamingScreenAppData; // size: 0x5D4
 
 typedef struct UnkStruct_02102278 {
@@ -756,7 +756,7 @@ BOOL NamingScreenApp_Exit(OVY_MANAGER *ovyMan, int *pState) {
 // Public functions
 // -------------------------------
 
-NamingScreenArgs *NamingScreen_CreateArgs(HeapID heapId, NameScreenType kind, int param, int maxLen, Options *options, BOOL *pMenuInputState) {
+NamingScreenArgs *NamingScreen_CreateArgs(HeapID heapId, NameScreenType kind, int param, int maxLen, Options *options, MenuInputStateMgr *pMenuInputState) {
     NamingScreenArgs *ret         = AllocFromHeap(heapId, sizeof(NamingScreenArgs));
     ret->kind                     = kind;
     ret->playerGenderOrMonSpecies = param;
@@ -1749,9 +1749,9 @@ static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppDa
 static void NamingScreen_UpdateFieldMenuInputState(NamingScreenAppData *data, BOOL toggle) {
     if (data->pMenuInputState != NULL) {
         if (toggle == TRUE) {
-            sub_02018410(data->pMenuInputState, FALSE);
+            MenuInputStateMgr_SetState(data->pMenuInputState, MENU_INPUT_STATE_BUTTONS);
         } else {
-            sub_02018410(data->pMenuInputState, TRUE);
+            MenuInputStateMgr_SetState(data->pMenuInputState, MENU_INPUT_STATE_TOUCH);
         }
     }
 }
