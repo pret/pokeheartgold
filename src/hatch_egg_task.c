@@ -25,7 +25,7 @@ typedef struct HatchEggTaskData {
 } HatchEggTaskData;
 
 FS_EXTERN_OVERLAY(OVY_95);
-static const OVY_MGR_TEMPLATE _02106048 = {
+static const OVY_MGR_TEMPLATE sApplication_HatchEgg = {
     .init   = ov95_021E6D70,
     .exec   = ov95_021E6E88,
     .exit   = ov95_021E6F0C,
@@ -42,7 +42,7 @@ static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
         data->state++;
         break;
     case HATCHEGGTASKSTATE_OPEN_HATCH_APP:
-        CallApplicationAsTask(taskManager, &_02106048, data);
+        CallApplicationAsTask(taskManager, &sApplication_HatchEgg, data);
         data->state++;
         break;
     case HATCHEGGTASKSTATE_UPDATE_MON_INFO: {
