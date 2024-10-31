@@ -1,5 +1,8 @@
 #include "overlay_mic_test.h"
 
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0234.h"
+
 #include "font.h"
 #include "gf_gfx_loader.h"
 #include "main.h"
@@ -128,13 +131,15 @@ static const GraphicsBanks sMicTestGraphicsBanks = {
     .texpltt       = GX_VRAM_TEXPLTT_NONE
 };
 
-static const struct {
+typedef struct UnkStruct_021E6728 {
     BgTemplate bgTemplate;
-    u8 unk1C;
+    u8 bgId;
     u8 unk1D;
     u8 unk1E;
     u8 unk1F;
-} ov62_021E6728[] = {
+} UnkStruct_021E6728;
+
+static const UnkStruct_021E6728 ov62_021E6728[] = {
     {
      .bgTemplate = {
             .x          = 0,
@@ -149,48 +154,160 @@ static const struct {
             .priority   = 0,
             .areaOver   = 0,
             .dummy      = 0,
-            .mosaic     = 0 },
-     .unk1C = 0,
+            .mosaic     = 0,
+        },
+     .bgId  = 0,
      .unk1D = 0,
      .unk1E = 0,
      .unk1F = 0,
      },
     {
-     .bgTemplate = { .x = 0, .y = 0, .bufferSize = 0x800, .baseTile = 0, .size = 1, .colorMode = 0, .screenBase = 0x1E, .charBase = 1, .bgExtPltt = 0, .priority = 1, .areaOver = 0, .dummy = 0, .mosaic = 0 },
-     .unk1C      = 1,
-     .unk1D      = 0,
-     .unk1E      = 0,
-     .unk1F      = 0,
+     .bgTemplate = {
+            .x          = 0,
+            .y          = 0,
+            .bufferSize = 0x800,
+            .baseTile   = 0,
+            .size       = 1,
+            .colorMode  = 0,
+            .screenBase = 0x1E,
+            .charBase   = 1,
+            .bgExtPltt  = 0,
+            .priority   = 1,
+            .areaOver   = 0,
+            .dummy      = 0,
+            .mosaic     = 0,
+        },
+     .bgId  = 1,
+     .unk1D = 0,
+     .unk1E = 0,
+     .unk1F = 0,
      },
     {
-     .bgTemplate = { .x = 0, .y = 0, .bufferSize = 0x800, .baseTile = 0, .size = 1, .colorMode = 0, .screenBase = 0x1D, .charBase = 2, .bgExtPltt = 0, .priority = 2, .areaOver = 0, .dummy = 0, .mosaic = 0 },
-     .unk1C      = 2,
-     .unk1D      = 0,
-     .unk1E      = 0,
-     .unk1F      = 0,
+     .bgTemplate = {
+            .x          = 0,
+            .y          = 0,
+            .bufferSize = 0x800,
+            .baseTile   = 0,
+            .size       = 1,
+            .colorMode  = 0,
+            .screenBase = 0x1D,
+            .charBase   = 2,
+            .bgExtPltt  = 0,
+            .priority   = 2,
+            .areaOver   = 0,
+            .dummy      = 0,
+            .mosaic     = 0,
+        },
+     .bgId  = 2,
+     .unk1D = 0,
+     .unk1E = 0,
+     .unk1F = 0,
      },
     {
-     .bgTemplate = { .x = 0, .y = 0, .bufferSize = 0x800, .baseTile = 0, .size = 1, .colorMode = 0, .screenBase = 0x1F, .charBase = 0, .bgExtPltt = 0, .priority = 0, .areaOver = 0, .dummy = 0, .mosaic = 0 },
-     .unk1C      = 4,
-     .unk1D      = 0,
-     .unk1E      = 0,
-     .unk1F      = 0,
+     .bgTemplate = {
+            .x          = 0,
+            .y          = 0,
+            .bufferSize = 0x800,
+            .baseTile   = 0,
+            .size       = 1,
+            .colorMode  = 0,
+            .screenBase = 0x1F,
+            .charBase   = 0,
+            .bgExtPltt  = 0,
+            .priority   = 0,
+            .areaOver   = 0,
+            .dummy      = 0,
+            .mosaic     = 0,
+        },
+     .bgId  = 4,
+     .unk1D = 0,
+     .unk1E = 0,
+     .unk1F = 0,
      },
     {
-     .bgTemplate = { .x = 0, .y = 0, .bufferSize = 0x800, .baseTile = 0, .size = 1, .colorMode = 0, .screenBase = 0x1E, .charBase = 1, .bgExtPltt = 0, .priority = 1, .areaOver = 0, .dummy = 0, .mosaic = 0 },
-     .unk1C      = 5,
-     .unk1D      = 0,
-     .unk1E      = 0,
-     .unk1F      = 0,
+     .bgTemplate = {
+            .x          = 0,
+            .y          = 0,
+            .bufferSize = 0x800,
+            .baseTile   = 0,
+            .size       = 1,
+            .colorMode  = 0,
+            .screenBase = 0x1E,
+            .charBase   = 1,
+            .bgExtPltt  = 0,
+            .priority   = 1,
+            .areaOver   = 0,
+            .dummy      = 0,
+            .mosaic     = 0,
+        },
+     .bgId  = 5,
+     .unk1D = 0,
+     .unk1E = 0,
+     .unk1F = 0,
      },
 };
 
 static const UnkTemplate_0200D748 ov62_021E67C8[5] = {
-    { .x = 0x40, .y = 0x60, .z = 0, .animation = 0, .spritePriority = 0, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { 0xA01, 0xA03, 0xA02, 0xA04, 0, 0 }, .bgPriority = 0, .vramTransfer = 0 },
-    { .x = 0xC0, .y = 0x60, .z = 0, .animation = 0, .spritePriority = 0, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { 0xA01, 0xA03, 0xA02, 0xA04, 0, 0 }, .bgPriority = 0, .vramTransfer = 0 },
-    { .x = 0x80, .y = 0x60, .z = 0, .animation = 0, .spritePriority = 0, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { 0xB01, 0xB03, 0xB02, 0xB04, 0, 0 }, .bgPriority = 0, .vramTransfer = 0 },
-    { .x = 0xD8, .y = 0xB0, .z = 0, .animation = 0, .spritePriority = 0, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DSUB,  .resIdList = { 0xD01, 0xD03, 0xD02, 0xD04, 1, 0 }, .bgPriority = 0, .vramTransfer = 0 },
-    { .x = 0,    .y = 0,    .z = 0, .animation = 0, .spritePriority = 0, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { 0xC01, 0xC03, 0xC02, 0xC04, 0, 0 }, .bgPriority = 0, .vramTransfer = 0 },
+    {
+     .x              = 0x40,
+     .y              = 0x60,
+     .z              = 0,
+     .animation      = 0,
+     .spritePriority = 0,
+     .pal            = 0,
+     .vram           = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .resIdList      = { 0xA01, 0xA03, 0xA02, 0xA04, 0, 0 },
+     .bgPriority     = 0,
+     .vramTransfer   = 0,
+     },
+    {
+     .x              = 0xC0,
+     .y              = 0x60,
+     .z              = 0,
+     .animation      = 0,
+     .spritePriority = 0,
+     .pal            = 0,
+     .vram           = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .resIdList      = { 0xA01, 0xA03, 0xA02, 0xA04, 0, 0 },
+     .bgPriority     = 0,
+     .vramTransfer   = 0,
+     },
+    {
+     .x              = 0x80,
+     .y              = 0x60,
+     .z              = 0,
+     .animation      = 0,
+     .spritePriority = 0,
+     .pal            = 0,
+     .vram           = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .resIdList      = { 0xB01, 0xB03, 0xB02, 0xB04, 0, 0 },
+     .bgPriority     = 0,
+     .vramTransfer   = 0,
+     },
+    {
+     .x              = 0xD8,
+     .y              = 0xB0,
+     .z              = 0,
+     .animation      = 0,
+     .spritePriority = 0,
+     .pal            = 0,
+     .vram           = NNS_G2D_VRAM_TYPE_2DSUB,
+     .resIdList      = { 0xD01, 0xD03, 0xD02, 0xD04, 1, 0 },
+     .bgPriority     = 0,
+     .vramTransfer   = 0,
+     },
+    {
+     .x              = 0,
+     .y              = 0,
+     .z              = 0,
+     .animation      = 0,
+     .spritePriority = 0,
+     .pal            = 0,
+     .vram           = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .resIdList      = { 0xC01, 0xC03, 0xC02, 0xC04, 0, 0 },
+     .bgPriority     = 0,
+     .vramTransfer   = 0,
+     },
 };
 static const u32 ov62_021E6694[7] = { 0, 1, 2, 3, 4, 4, 4 };
 
@@ -234,7 +351,7 @@ static const GraphicsModes sMicTestGraphicsMode = {
     ._2d3dMode = GX_BG0_AS_2D
 };
 
-static const struct {
+typedef struct MicTestTextBox {
     u8 bgId;
     u8 x;
     u8 y;
@@ -244,16 +361,42 @@ static const struct {
     u16 baseTile;
     u8 fontId;
     u32 color;
-} ov62_021E66F8[3] = {
-    { .bgId = 0, .x = 1,  .y = 1,  .width = 9,  .height = 3, .palNum = 0, .baseTile = 1,    .fontId = 0, .color = 0xF0200 },
-    { .bgId = 4, .x = 5,  .y = 8,  .width = 22, .height = 5, .palNum = 0, .baseTile = 1,    .fontId = 0, .color = 0xF0200 },
-    { .bgId = 4, .x = 24, .y = 21, .width = 6,  .height = 2, .palNum = 0, .baseTile = 0x6F, .fontId = 4, .color = 0xE0F00 },
+} MicTestTextBox;
+
+static const MicTestTextBox sMicTestTextBoxes[3] = {
+    { .bgId       = 0,
+     .x        = 1,
+     .y        = 1,
+     .width    = 9,
+     .height   = 3,
+     .palNum   = 0,
+     .baseTile = 1,
+     .fontId   = 0,
+     .color    = MAKE_TEXT_COLOR(15, 2,  0) },
+    { .bgId       = 4,
+     .x        = 5,
+     .y        = 8,
+     .width    = 22,
+     .height   = 5,
+     .palNum   = 0,
+     .baseTile = 1,
+     .fontId   = 0,
+     .color    = MAKE_TEXT_COLOR(15, 2,  0) },
+    { .bgId       = 4,
+     .x        = 24,
+     .y        = 21,
+     .width    = 6,
+     .height   = 2,
+     .palNum   = 0,
+     .baseTile = 0x6F,
+     .fontId   = 4,
+     .color    = MAKE_TEXT_COLOR(14, 15, 0) },
 };
 
 const OVY_MGR_TEMPLATE gApplication_MicTest = { MicTest_Init, MicTest_Main, MicTest_Exit, FS_OVERLAY_ID_NONE };
 
 static BOOL MicTest_Init(OVY_MANAGER *overlayMan, int *state) {
-    CreateHeap(HEAP_ID_3, HEAP_ID_MIC_TEST, 3 << 0x10);
+    CreateHeap(HEAP_ID_3, HEAP_ID_MIC_TEST, 0x30000);
 
     MicTestData *micTest = OverlayManager_CreateAndGetData(overlayMan, sizeof(MicTestData), HEAP_ID_MIC_TEST);
 
@@ -335,20 +478,26 @@ static void MicTestTaskMan_Finish(MicTestTaskManager *taskMan) {
     taskMan->isFinished = TRUE;
 }
 
+enum {
+    MICTEST_FADE_IN_STATE_START,
+    MICTEST_FADE_IN_STATE_WAIT,
+    MICTEST_FADE_IN_STATE_END
+};
+
 static void MicTestTask_FadeIn(MicTestTaskManager *taskMan, u32 *state) {
     MicTestData *micTest = MicTestTaskMan_GetMicTestData(taskMan);
 
     switch (*state) {
-    case 0:
-        BeginNormalPaletteFade(0, 1, 1, 0, 6, 1, micTest->heapId);
-        *state = 1;
+    case MICTEST_FADE_IN_STATE_START:
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, micTest->heapId);
+        *state = MICTEST_FADE_IN_STATE_WAIT;
         break;
-    case 1:
+    case MICTEST_FADE_IN_STATE_WAIT:
         if (IsPaletteFadeFinished()) {
-            *state = 2;
+            *state = MICTEST_FADE_IN_STATE_END;
         }
         break;
-    case 2:
+    case MICTEST_FADE_IN_STATE_END:
         MicTest_SetTask(taskMan, ov62_021E5B04);
         break;
     default:
@@ -404,20 +553,26 @@ static void ov62_021E5B6C(MicTestTaskManager *taskMan, u32 *state) {
     }
 }
 
+enum {
+    MICTEST_FADE_OUT_STATE_START,
+    MICTEST_FADE_OUT_STATE_WAIT,
+    MICTEST_FADE_OUT_STATE_END,
+};
+
 static void MicTestTask_FadeOut(MicTestTaskManager *taskMan, u32 *state) {
     MicTestData *micTest = MicTestTaskMan_GetMicTestData(taskMan);
 
     switch (*state) {
-    case 0:
-        BeginNormalPaletteFade(0, 0, 0, 0, 6, 1, micTest->heapId);
-        (*state) = 1;
+    case MICTEST_FADE_OUT_STATE_START:
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, micTest->heapId);
+        (*state) = MICTEST_FADE_OUT_STATE_WAIT;
         break;
-    case 1:
+    case MICTEST_FADE_OUT_STATE_WAIT:
         if (IsPaletteFadeFinished()) {
-            (*state) = 2;
+            (*state) = MICTEST_FADE_OUT_STATE_END;
         }
         break;
-    case 2:
+    case MICTEST_FADE_OUT_STATE_END:
         MicTest_SetTask(taskMan, MicTestTask_End);
         break;
     default:
@@ -553,15 +708,15 @@ static void ov62_021E5FD4(MicTestSub_B8 *a0, HeapID heapId) {
     SetBothScreensModesAndDisable(&sMicTestGraphicsMode);
 
     for (u32 i = 0; i < 5; i++) {
-        InitBgFromTemplate(a0->bgConfig, ov62_021E6728[i].unk1C, &ov62_021E6728[i].bgTemplate, ov62_021E6728[i].unk1D);
-        BgClearTilemapBufferAndCommit(a0->bgConfig, ov62_021E6728[i].unk1C);
-        BG_ClearCharDataRange(ov62_021E6728[i].unk1C, 32, 0, heapId);
+        InitBgFromTemplate(a0->bgConfig, ov62_021E6728[i].bgId, &ov62_021E6728[i].bgTemplate, ov62_021E6728[i].unk1D);
+        BgClearTilemapBufferAndCommit(a0->bgConfig, ov62_021E6728[i].bgId);
+        BG_ClearCharDataRange(ov62_021E6728[i].bgId, 32, 0, heapId);
     }
 }
 
 static void ov62_021E6024(MicTestSub_B8 *a0) {
     for (u32 i = 0; i < 5; i++) {
-        FreeBgTilemapBuffer(a0->bgConfig, ov62_021E6728[i].unk1C);
+        FreeBgTilemapBuffer(a0->bgConfig, ov62_021E6728[i].bgId);
     }
     FreeToHeap(a0->bgConfig);
 }
@@ -586,14 +741,14 @@ static void ov62_021E60D4(MicTestSub_B8 *a0) {
 }
 
 static void ov62_021E60E4(MicTestSub_B8 *a0, HeapID heapId) {
-    a0->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, 0xea, heapId);
+    a0->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0234_bin, heapId);
 
     for (int i = 0; i < 3; i++) {
-        AddWindowParameterized(a0->bgConfig, &a0->window[i], ov62_021E66F8[i].bgId, ov62_021E66F8[i].x, ov62_021E66F8[i].y, ov62_021E66F8[i].width, ov62_021E66F8[i].height, ov62_021E66F8[i].palNum, ov62_021E66F8[i].baseTile);
+        AddWindowParameterized(a0->bgConfig, &a0->window[i], sMicTestTextBoxes[i].bgId, sMicTestTextBoxes[i].x, sMicTestTextBoxes[i].y, sMicTestTextBoxes[i].width, sMicTestTextBoxes[i].height, sMicTestTextBoxes[i].palNum, sMicTestTextBoxes[i].baseTile);
         FillWindowPixelBuffer(&a0->window[i], 0);
         ClearWindowTilemap(&a0->window[i]);
         String *str = NewString_ReadMsgData(a0->msgData, i);
-        AddTextPrinterParameterizedWithColor(&a0->window[i], ov62_021E66F8[i].fontId, str, 0, 0, 0xFF, ov62_021E66F8[i].color, 0);
+        AddTextPrinterParameterizedWithColor(&a0->window[i], sMicTestTextBoxes[i].fontId, str, 0, 0, 0xFF, sMicTestTextBoxes[i].color, 0);
         String_Delete(str);
         CopyWindowToVram(&a0->window[i]);
     }
@@ -617,8 +772,8 @@ static void ov62_021E61AC(MicTestInput *input, HeapID heapId, MICCallback a2, Mi
     input->unk1C = data;
 
     input->mic.type          = MIC_SAMPLING_TYPE_8BIT;
-    input->mic.buffer        = (void *)((((u32)data) + 0x1F) & ~0x1F); //??????
-    input->mic.size          = (1 << 8);
+    input->mic.buffer        = (void *)((((u32)data) + 0x1F) & ~0x1F); // alignment to 32-bit boundary
+    input->mic.size          = 256;
     input->mic.rate          = 0x1040;
     input->mic.loop_enable   = TRUE;
     input->mic.full_callback = a2;
@@ -744,15 +899,15 @@ static void MicTest_MicrophoneCallback(MICResult result, void *data) {
 static u32 MicTest_GetVolumeBracket(u8 volume) {
     u32 ret;
 
-    if (volume <= 0x8C) {
+    if (volume <= 140) {
         ret = 0;
-    } else if (volume >= 0x8D && volume <= 0x98) {
+    } else if (volume >= 141 && volume <= 152) {
         ret = 1;
-    } else if (volume >= 0x99 && volume <= 0xA6) {
+    } else if (volume >= 153 && volume <= 166) {
         ret = 2;
-    } else if (volume >= 0xA7 && volume <= 0xBB) {
+    } else if (volume >= 167 && volume <= 187) {
         ret = 3;
-    } else if (volume >= 0xBC) {
+    } else if (volume >= 188) {
         ret = 4;
     } else {
         GF_ASSERT(FALSE);
@@ -782,9 +937,9 @@ static BOOL ov62_021E63E8(MicTestData *micTest, HeapID heapId, s16 x, s16 y) {
     }
 
     if (args != NULL) {
-        s32 rand1 = (LCRandom() * 0x1002 / 0x10000) + 0x1333;
-        s32 rand2 = (LCRandom() * 0x3E / 0x10000) + 0x3C;
-        s32 rand3 = (LCRandom() * 0x10 / 0x10000) + 6;
+        s32 rand1 = (LCRandom() * 4098 / 0x10000) + 4915;
+        s32 rand2 = (LCRandom() * 62 / 0x10000) + 60;
+        s32 rand3 = (LCRandom() * 16 / 0x10000) + 6;
         ov62_021E6480(flag, args, x, y, rand1, rand2, rand3, 1);
         return TRUE;
     }
@@ -828,15 +983,15 @@ static void ov62_021E6570(SysTask *task, void *_data) {
 
     VEC_Add(&data->unk8, &data->unk14, &data->unk8);
 
-    s16 x       = data->unk8.x >> 12;
-    s16 y       = data->unk8.y >> 12;
+    s16 x       = data->unk8.x >> FX32_SHIFT;
+    s16 y       = data->unk8.y >> FX32_SHIFT;
     data->unk20 = data->unk20 + data->unk24;
 
     while (data->unk20 > FX32_CONST(360)) {
         data->unk20 -= FX32_CONST(360);
     }
 
-    x += GF_SinDegNoWrap(data->unk20 >> 12) * data->unk28 >> 12;
+    x += GF_SinDegNoWrap(data->unk20 >> FX32_SHIFT) * data->unk28 >> FX32_SHIFT;
 
     UnkImageStruct_SetSpritePositionXY(data->unk0, x, y);
 
@@ -861,7 +1016,7 @@ static int MicTest_CheckTouchscreenInput() {
 }
 
 static int MicTest_CheckReturn(MicTestData *data) {
-    if (MicTest_CheckTouchscreenInput() == TS_HITBOX_MIC_TEST_RETURN || (gSystem.newKeys & 2)) {
+    if (MicTest_CheckTouchscreenInput() == TS_HITBOX_MIC_TEST_RETURN || (gSystem.newKeys & PAD_BUTTON_B)) {
         return TRUE;
     }
     return FALSE;
