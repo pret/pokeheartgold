@@ -523,7 +523,8 @@ Overlay OVY_2
     After field
     Object asm/overlay_02_02245B80.o
     Object src/field/legend_cutscene_camera.o
-    Object asm/overlay_02_02251E74.o
+    Object src/overlay_02_02251E74.o
+    Object asm/overlay_02_02251E74_s.o
 }
 Overlay OVY_3
 {

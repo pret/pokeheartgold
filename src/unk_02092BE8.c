@@ -6,6 +6,8 @@
 #include "constants/phone_contacts.h"
 #include "constants/sndseq.h"
 
+#include "overlay_2/overlay_02_02251E74.h"
+
 #include "field_system.h"
 #include "map_header.h"
 #include "overlay_02.h"

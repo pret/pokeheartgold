@@ -9,6 +9,7 @@
 #include "frontier/frontier.h"
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0202.h"
+#include "overlay_2/overlay_02_02251E74.h"
 
 #include "alph_puzzle.h"
 #include "bg_window.h"

@@ -49,7 +49,6 @@ BOOL Task_FieldTeleport(TaskManager *taskManager);
 BOOL Task_FieldDig(TaskManager *taskManager);
 BOOL ov02_0224C1F8(TaskManager *taskManager);
 void *ov02_0224C1D8(FieldSystem *fieldSystem, int a1, int a2);
-u8 ov02_02251EE8(GearPhoneRingManager *a0, u8 *a1);
 
 // TODO: define the struct, figure out what a1 is
 void *ov02_02249458(FieldSystem *fieldSystem, int a1, Pokemon *mon, int gender);
@@ -70,7 +69,6 @@ void ov02_0224BFCC(FieldSystem *fieldSystem, u8 a1);
 void ov02_0224CDB0(FieldSystem *fieldSystem, u8 a1);
 void ov02_0224E074(FieldSystem *fieldSystem, u16 *p_ret, int a2, HeapID heapId);
 void ov02_0224E0BC(LocalMapObject *obj1, LocalMapObject *obj2, TaskManager *taskManager);
-void ov02_02251EB8(GearPhoneRingManager *phoneRingManager, u8 a1, u8 a2, u8 a3, u8 a4, u8 a5);
 void FieldSystem_FollowMonInteract(FieldSystem *fieldSystem);
 BOOL ov02_02250780(FieldSystem *fieldSystem, u8 a1);
 void ov02_022507B4(FieldSystem *fieldSystem, u8 a1);
