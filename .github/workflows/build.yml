@@ -2,7 +2,7 @@ name: build
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
   workflow_dispatch:
 
@@ -113,3 +113,4 @@ jobs:
           cwd: "./xmap"
           add: "*.xMAP"
           message: ${{ env.XMAP_COMMIT_MSG }}
+
