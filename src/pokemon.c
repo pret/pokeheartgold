@@ -64,8 +64,8 @@ void sub_02072190(BoxPokemon *boxMon, PlayerProfile *a1, u32 pokeball, u32 a3, u
 #define DECRYPT_PTY(mon)       MonDecryptSegment(ENCRY_ARGS_PTY(mon))
 #define DECRYPT_BOX(boxMon)    MonDecryptSegment(ENCRY_ARGS_BOX(boxMon))
 #define CHECKSUM(boxMon)       CalcMonChecksum((u16 *)(boxMon)->substructs, sizeof((boxMon)->substructs))
-#define SHINY_CHECK(otid, pid) ((                                                                                                                      \
-                                    ((((otid) & 0xFFFF0000u) >> 16u)) ^ (((otid) & 0xFFFFu)) ^ ((((pid) & 0xFFFF0000u) >> 16u)) ^ (((pid) & 0xFFFFu))) \
+#define SHINY_CHECK(otid, pid) ((                                                                                                              \
+                                    (((otid) & 0xFFFF0000u) >> 16u) ^ ((otid) & 0xFFFFu) ^ (((pid) & 0xFFFF0000u) >> 16u) ^ ((pid) & 0xFFFFu)) \
     < 8u)
 #define CALC_UNOWN_LETTER(pid) ((u32)((((pid) & 0x3000000) >> 18) | (((pid) & 0x30000) >> 12) | (((pid) & 0x300) >> 6) | (((pid) & 0x3) >> 0)) % 28u)
 
