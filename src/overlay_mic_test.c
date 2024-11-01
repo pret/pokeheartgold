@@ -612,19 +612,12 @@ static void MicTest_SetBanks() {
     GfGfx_SetBanks(&sMicTestGraphicsBanks);
 }
 
-// TODO: Is this a library struct?
-typedef struct UnkStruct_27E0000 {
-    u8 unk_0000[0x3FF8];
-    u32 unk_3FF8;
-} UnkStruct_27E0000;
-
 static void MicTest_VBlankIntrCB(void *data) {
     MicTestData *micTest = data;
     NNS_GfdDoVramTransfer();
     ov62_021E5FC4(micTest);
     ov62_021E60D4(&micTest->unkB8);
-    UnkStruct_27E0000 *unkStruct = (UnkStruct_27E0000 *)(0x27e0000);
-    unkStruct->unk_3FF8 |= 1;
+    OS_SetIrqCheckFlag(OS_IE_VBLANK);
 }
 
 static void MicTest_InitSpriteRenderer(MicTestData *micTest, HeapID heapId) {
