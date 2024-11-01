@@ -54,21 +54,20 @@ static const MailMessageTemplate TrainerHouse_DefaultIntroMessage = {
     .ec_words  = { msg_0285_match,   0             },
 };
 
-#define DUMMY_TRAINER_HOUSE_MON    \
-    {                              \
-        .language = GAME_LANGUAGE, \
-        .nickname = {              \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     },                         \
+#define DUMMY_TRAINER_HOUSE_MON { \
+    .language = GAME_LANGUAGE,    \
+    .nickname = {                 \
+                 EOS,                      \
+                 EOS,                      \
+                 EOS,                      \
+                 EOS,                      \
+                 EOS,                      \
+                 EOS,                      \
+                 EOS,                      \
+                 EOS,                      \
+                 EOS,                      \
+                 EOS,                      \
+                 },                            \
 }
 
 static const TrainerHouseSet ov25_02259D9C = {
