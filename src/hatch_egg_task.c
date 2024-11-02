@@ -26,9 +26,9 @@ typedef struct HatchEggTaskData {
 
 FS_EXTERN_OVERLAY(OVY_95);
 static const OVY_MGR_TEMPLATE sApplication_HatchEgg = {
-    .init   = ov95_021E6D70,
-    .exec   = ov95_021E6E88,
-    .exit   = ov95_021E6F0C,
+    .init   = HatchEggApp_Init,
+    .exec   = HatchEggApp_Main,
+    .exit   = HatchEggApp_Exit,
     .ovy_id = FS_OVERLAY_ID(OVY_95),
 };
 
