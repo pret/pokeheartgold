@@ -168,6 +168,6 @@
 .public NNS_GfdDefaultFuncAllocTexVram
 .public NNS_GfdDefaultFuncAllocPlttVram
 .public gSystem
-.public ov95_021E6D70
-.public ov95_021E6E88
-.public ov95_021E6F0C
+.public HatchEggApp_Init
+.public HatchEggApp_Main
+.public HatchEggApp_Exit

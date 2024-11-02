@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_UNK_020910D8_H
-#define POKEHEARTGOLD_UNK_020910D8_H
+#ifndef POKEHEARTGOLD_HATCH_EGG_TASK_H
+#define POKEHEARTGOLD_HATCH_EGG_TASK_H
 
 #include "options.h"
 #include "player_data.h"
@@ -15,4 +15,4 @@ typedef struct UnkStruct_02091240 {
 
 void CallTask_HatchEggInParty(TaskManager *taskman, UnkStruct_02091240 *a1);
 
-#endif // POKEHEARTGOLD_UNK_020910D8_H
+#endif // POKEHEARTGOLD_HATCH_EGG_TASK_H
