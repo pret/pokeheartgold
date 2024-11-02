@@ -36,7 +36,7 @@
 .public PlayerAvatar_GetMapObject
 .public MapObject_Remove
 .public sub_0205F1A0
-.public FldObjSys_GetMModelNarc
+.public MapObjectManager_GetMapModelNarc
 .public MapObject_GetID
 .public MapObject_GetSpriteID
 .public MapObject_SetFacingDirection

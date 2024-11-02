@@ -211,7 +211,7 @@ ov01_021FD2EC: ; 0x021FD2EC
 	mov r1, #2
 	str r4, [sp, #0xc]
 	str r5, [sp, #0x10]
-	bl sub_0205F09C
+	bl MapObject_GetPriorityPlusValue
 	add r1, sp, #8
 	str r1, [sp]
 	str r0, [sp, #4]
@@ -254,7 +254,7 @@ ov01_021FD328: ; 0x021FD328
 	bl sub_0205F544
 	b _021FD368
 _021FD364:
-	bl sub_0205F254
+	bl MapObject_GetMapID
 _021FD368:
 	str r0, [r4, #8]
 	add r4, #0xc

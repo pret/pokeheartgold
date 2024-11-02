@@ -133,7 +133,7 @@ ov01_021FF8F0: ; 0x021FF8F0
 	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0205F09C
+	bl MapObject_GetPriorityPlusValue
 	add r1, sp, #8
 	str r1, [sp]
 	str r0, [sp, #4]
@@ -201,7 +201,7 @@ _021FF9B4:
 	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0205F09C
+	bl MapObject_GetPriorityPlusValue
 	add r1, sp, #0xc
 	str r1, [sp]
 	str r0, [sp, #4]
@@ -241,7 +241,7 @@ _021FFA08:
 	bl MapObject_GetID
 	str r0, [r4, #8]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F254
+	bl MapObject_GetMapID
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #0x18]
 	lsl r0, r0, #0x10

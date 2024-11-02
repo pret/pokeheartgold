@@ -45,7 +45,7 @@
 .public sub_0205F3E8
 .public sub_0205F40C
 .public sub_0205F484
-.public MapObject_IncMovementStep
+.public MapObject_IncrementMovementStep
 .public MapObject_GetFieldSystem
 .public MapObject_IsSingleMovementActive
 .public MapObject_CheckVisible

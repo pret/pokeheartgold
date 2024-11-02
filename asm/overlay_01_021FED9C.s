@@ -104,7 +104,7 @@ ov01_021FEE04: ; 0x021FEE04
 	str r0, [sp, #0x14]
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0205F09C
+	bl MapObject_GetPriorityPlusValue
 	add r1, sp, #8
 	str r1, [sp]
 	str r0, [sp, #4]

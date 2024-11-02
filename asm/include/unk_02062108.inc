@@ -21,7 +21,7 @@
 .public MapObject_SetMovementCommand
 .public MapObject_GetMovementCommand
 .public MapObject_SetMovementStep
-.public MapObject_IncMovementStep
+.public MapObject_IncrementMovementStep
 .public MapObject_GetMovementStep
 .public MapObject_CheckVisible
 .public MapObject_SetFacingVec

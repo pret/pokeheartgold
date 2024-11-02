@@ -30,12 +30,12 @@
 .public sub_0205BA70
 .public sub_0205BA94
 .public MapObjectManager_GetObjectCount
-.public sub_0205F1AC
-.public sub_0205F1C4
-.public MapObject_GetFlagsWord
+.public MapObjectManager_GetObjects2
+.public MapObjectArray_NextObject
+.public MapObject_GetFlags
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
-.public MapObject_GetFlagsBits
+.public MapObject_GetFlagsBitsMask
 .public MapObject_TestFlagsBits
 .public MapObject_GetID
 .public MapObject_GetSpriteID

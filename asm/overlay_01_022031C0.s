@@ -159,7 +159,7 @@ ov01_0220329C: ; 0x0220329C
 	bl MapObject_GetPositionVec
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_0205F09C
+	bl MapObject_GetPriorityPlusValue
 	cmp r5, #0
 	add r1, sp, #8
 	bne _0220330A
@@ -239,7 +239,7 @@ _02203374:
 	bl MapObject_GetID
 	str r0, [r4, #8]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F254
+	bl MapObject_GetMapID
 	add r6, r4, #0
 	add r3, sp, #0
 	add r6, #0x18
@@ -557,7 +557,7 @@ _022035F4:
 	bl MapObject_GetID
 	str r0, [r4, #8]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F254
+	bl MapObject_GetMapID
 	add r6, r4, #0
 	add r3, sp, #0
 	add r6, #0x18
@@ -833,7 +833,7 @@ _02203838:
 	bl MapObject_GetID
 	str r0, [r4, #8]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F254
+	bl MapObject_GetMapID
 	add r6, r4, #0
 	add r3, sp, #0
 	add r6, #0x18

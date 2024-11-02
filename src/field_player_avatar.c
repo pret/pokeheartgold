@@ -220,7 +220,7 @@ void CreatePlayerAvatarMapObject(PlayerAvatar *avatar, MapObjectManager *man, u3
     }
     MapObject_SetID(mapObj, 255);
     MapObject_SetType(mapObj, 0);
-    MapObject_SetFlagID(mapObj, 0);
+    MapObject_SetEventFlag(mapObj, 0);
     MapObject_SetScriptID(mapObj, 0);
     MapObject_SetParam(mapObj, 0, 0);
     MapObject_SetParam(mapObj, 0, 1);

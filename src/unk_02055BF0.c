@@ -385,7 +385,7 @@ BOOL sub_020562B0(TaskManager *man) {
         MapObject_ClearHeldMovementIfActive(obj);
         Field_PlayerAvatar_OrrTransitionFlags(fieldSystem->playerAvatar, 512);
         Field_PlayerAvatar_ApplyTransitionFlags(fieldSystem->playerAvatar);
-        sub_0205F328(obj, FALSE);
+        sub_0205F328(obj, 0);
         fenv->unk18       = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldEnvSubUnk18));
         fenv18            = fenv->unk18;
         fenv18->state     = 0;

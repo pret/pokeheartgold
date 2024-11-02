@@ -3,6 +3,6 @@
 
 #include "field_system.h"
 
-FieldSystem *MapObjectManager_GetFieldSystemPtr(MapObjectManager *mapObjectManager);
+FieldSystem *MapObjectManager_GetFieldSystem(MapObjectManager *mapObjectManager);
 
 #endif // POKEHEARTGOLD_MAP_OBJECT_MANAGER_H

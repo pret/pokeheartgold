@@ -13,10 +13,10 @@
 .public sub_02023F70
 .public sub_02023FC0
 .public PlayerAvatar_GetMapObject
-.public sub_0205F09C
+.public MapObject_GetPriorityPlusValue
 .public sub_0205F0A8
 .public MapObject_GetID
-.public sub_0205F254
+.public MapObject_GetMapID
 .public MapObject_GetSpriteID
 .public MapObject_GetFacingDirection
 .public MapObject_GetManager

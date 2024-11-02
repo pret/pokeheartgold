@@ -90,7 +90,7 @@ ov01_022008B4: ; 0x022008B4
 	add r0, r4, #0
 	mov r1, #2
 	str r5, [sp, #0x1c]
-	bl sub_0205F09C
+	bl MapObject_GetPriorityPlusValue
 	add r1, sp, #0x14
 	str r1, [sp]
 	str r0, [sp, #4]
@@ -127,7 +127,7 @@ ov01_02200900: ; 0x02200900
 	bl MapObject_GetID
 	str r0, [r5, #0x14]
 	add r0, r4, #0
-	bl sub_0205F254
+	bl MapObject_GetMapID
 	str r0, [r5, #0x18]
 	mov r0, #1
 	pop {r3, r4, r5, pc}

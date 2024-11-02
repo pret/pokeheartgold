@@ -125,7 +125,7 @@ ov01_021FF74C: ; 0x021FF74C
 	bl sub_020611C8
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0205F09C
+	bl MapObject_GetPriorityPlusValue
 	add r1, sp, #0x14
 	str r1, [sp]
 	str r0, [sp, #4]
@@ -158,7 +158,7 @@ ov01_021FF7B0: ; 0x021FF7B0
 	bl MapObject_GetID
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x1c]
-	bl sub_0205F254
+	bl MapObject_GetMapID
 	str r0, [r4, #8]
 	add r0, r5, #0
 	add r1, sp, #0

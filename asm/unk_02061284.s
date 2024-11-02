@@ -2055,7 +2055,7 @@ _020620AE:
 	ldr r4, [r1, r0]
 	add r0, r7, #0
 	mov r1, #0x80
-	bl MapObject_GetFlagsBits
+	bl MapObject_GetFlagsBitsMask
 	cmp r0, #0
 	beq _020620DC
 	mov r0, #1

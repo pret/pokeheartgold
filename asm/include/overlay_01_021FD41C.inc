@@ -3,12 +3,12 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public GF_RTC_GetTimeOfDay
-.public sub_0205F09C
+.public MapObject_GetPriorityPlusValue
 .public sub_0205F0F8
 .public MapObjectManager_GetPriority
 .public MapObject_TestFlagsBits
 .public MapObject_GetID
-.public sub_0205F254
+.public MapObject_GetMapID
 .public MapObject_GetSpriteID
 .public MapObject_GetFacingDirection
 .public sub_0205F544

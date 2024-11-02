@@ -2155,7 +2155,7 @@ _02254F62:
 	bl NNS_G3dMdlSetMdlFogEnableFlagAll
 _02254F7C:
 	add r0, r7, #0
-	bl sub_0205F1D0
+	bl MapObjectArray_NextObject2
 	add r4, r4, #1
 	cmp r4, r5
 	blt _02254F62

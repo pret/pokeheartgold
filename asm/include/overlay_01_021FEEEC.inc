@@ -6,11 +6,11 @@
 .public sub_02023F04
 .public sub_02023F1C
 .public sub_02023F70
-.public sub_0205F09C
+.public MapObject_GetPriorityPlusValue
 .public sub_0205F0F8
 .public MapObject_TestFlagsBits
 .public MapObject_GetID
-.public sub_0205F254
+.public MapObject_GetMapID
 .public MapObject_GetSpriteID
 .public MapObject_GetFacingDirection
 .public MapObject_GetCurrentX
