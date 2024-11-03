@@ -2587,8 +2587,8 @@ _021E6D68: .word 0x00000815
 _021E6D6C: .word 0x0000FFFF
 	thumb_func_end ov95_021E6B74
 
-	thumb_func_start ov95_021E6D70
-ov95_021E6D70: ; 0x021E6D70
+	thumb_func_start HatchEggApp_Init
+HatchEggApp_Init: ; 0x021E6D70
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -2699,10 +2699,10 @@ ov95_021E6D70: ; 0x021E6D70
 	pop {r4, r5, pc}
 	.balign 4, 0
 _021E6E84: .word ov95_021E5B24
-	thumb_func_end ov95_021E6D70
+	thumb_func_end HatchEggApp_Init
 
-	thumb_func_start ov95_021E6E88
-ov95_021E6E88: ; 0x021E6E88
+	thumb_func_start HatchEggApp_Main
+HatchEggApp_Main: ; 0x021E6E88
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -2768,10 +2768,10 @@ _021E6F04:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E6F08: .word 0x000001EA
-	thumb_func_end ov95_021E6E88
+	thumb_func_end HatchEggApp_Main
 
-	thumb_func_start ov95_021E6F0C
-ov95_021E6F0C: ; 0x021E6F0C
+	thumb_func_start HatchEggApp_Exit
+HatchEggApp_Exit: ; 0x021E6F0C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -2838,7 +2838,7 @@ ov95_021E6F0C: ; 0x021E6F0C
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov95_021E6F0C
+	thumb_func_end HatchEggApp_Exit
 
 	thumb_func_start ov95_021E6FC4
 ov95_021E6FC4: ; 0x021E6FC4
