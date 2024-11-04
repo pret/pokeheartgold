@@ -322,7 +322,7 @@ ov01_02205604: ; 0x02205604
 	bl MapObject_GetCurrentX
 	str r0, [r4]
 	add r0, r7, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	str r0, [r5]
 	cmp r6, #3
 	bhi _0220565C
@@ -373,10 +373,10 @@ ov01_02205664: ; 0x02205664
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	add r0, r7, #0
-	bl MapObject_GetPrevX
+	bl MapObject_GetPreviousX
 	str r0, [r4]
 	add r0, r7, #0
-	bl MapObject_GetPrevY
+	bl MapObject_GetPreviousZ
 	str r0, [r5]
 	cmp r6, #3
 	bhi _022056BC
@@ -428,7 +428,7 @@ ov01_022056C4: ; 0x022056C4
 	bl MapObject_GetCurrentX
 	add r4, r0, #0
 	add r0, r6, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	add r2, r0, #0
 	cmp r5, #5
 	bhi _02205716
@@ -823,7 +823,7 @@ ov01_022059AC: ; 0x022059AC
 	bl GetPlayerXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetFacingDirection
@@ -922,7 +922,7 @@ _02205A80:
 	b _02205AE6
 _02205A94:
 	add r0, r5, #0
-	bl sub_0205F714
+	bl MapObject_CheckMovementPaused
 	cmp r0, #0
 	beq _02205AAA
 	add r0, r5, #0
@@ -1225,7 +1225,7 @@ ov01_02205CF0: ; 0x02205CF0
 	str r0, [sp]
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetMapObject
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	add r7, r0, #0
 	add r0, r5, #0
 	bl FollowMon_GetMapObject
@@ -1233,7 +1233,7 @@ ov01_02205CF0: ; 0x02205CF0
 	add r6, r0, #0
 	add r0, r5, #0
 	bl FollowMon_GetMapObject
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	ldr r1, [sp]
 	cmp r6, r1
 	bne _02205D38
@@ -1609,13 +1609,13 @@ ov01_02206028: ; 0x02206028
 	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	ldr r0, [sp]
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	add r7, r0, #0
 	add r0, r5, #0
 	bl MapObject_GetCurrentX
 	add r4, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	sub r6, r6, r4
 	sub r4, r7, r0
 	ldr r0, [sp]
@@ -1904,13 +1904,13 @@ _02206278:
 	bl MapObject_GetCurrentX
 	add r5, r0, #0
 	add r0, r4, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	add r4, r0, #0
 	add r0, r7, #0
 	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	add r0, r7, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	cmp r5, r6
 	bne _022062B4
 	add r1, r4, #1

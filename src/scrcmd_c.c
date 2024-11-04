@@ -1148,8 +1148,8 @@ BOOL ScrCmd_ApplyMovement(ScriptContext *ctx) {
 BOOL ScrCmd_563(ScriptContext *ctx) {
     u16 person = ScriptGetVar(ctx);
     u16 x      = ScriptGetVar(ctx);
-    u16 y      = ScriptGetVar(ctx);
-    u16 now_x, now_y;
+    u16 z      = ScriptGetVar(ctx);
+    u16 now_x, now_z;
     int i;
     LocalMapObject *object = sub_02041C70(ctx->fieldSystem, person);
     MovementScriptCommand *cmd;
@@ -1159,7 +1159,7 @@ BOOL ScrCmd_563(ScriptContext *ctx) {
     GF_ASSERT(object != NULL);
     cmd   = AllocFromHeap(HEAP_ID_4, 64 * sizeof(MovementScriptCommand));
     now_x = MapObject_GetCurrentX(object);
-    now_y = MapObject_GetCurrentY(object);
+    now_z = MapObject_GetCurrentZ(object);
     i     = 0;
     if (now_x < x) {
         cmd[i].command = MOVEMENT_STEP_RIGHT;
@@ -1170,13 +1170,13 @@ BOOL ScrCmd_563(ScriptContext *ctx) {
         cmd[i].length  = now_x - x;
         i++;
     }
-    if (now_y < y) {
+    if (now_z < z) {
         cmd[i].command = MOVEMENT_STEP_UP;
-        cmd[i].length  = y - now_y;
+        cmd[i].length  = z - now_z;
         i++;
-    } else if (now_y > y) {
+    } else if (now_z > z) {
         cmd[i].command = MOVEMENT_STEP_DOWN;
-        cmd[i].length  = now_y - y;
+        cmd[i].length  = now_z - z;
         i++;
     }
     cmd[i].command = MOVEMENT_STEP_END;
@@ -1261,7 +1261,7 @@ BOOL ScrCmd_LockAll(ScriptContext *ctx) {
     if (*p_lastInteracted == NULL) {
         MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
         followingPoke = FollowMon_GetMapObject(fieldSystem);
-        if (FollowMon_IsActive(fieldSystem) && MapObject_IsSingleMovementActive(followingPoke)) {
+        if (FollowMon_IsActive(fieldSystem) && MapObject_CheckSingleMovement(followingPoke)) {
             MapObject_UnpauseMovement(followingPoke);
             SetupNativeScript(ctx, _WaitFollowMonPaused);
             return TRUE;
@@ -1306,7 +1306,7 @@ static BOOL _WaitMovementPauseBeforeMsg(ScriptContext *ctx) {
     }
 
     if (_CheckMovementPauseWaitFlag(4)) {
-        if (MapObject_IsSingleMovementActive(*p_lastInteracted) == FALSE) {
+        if (MapObject_CheckSingleMovement(*p_lastInteracted) == FALSE) {
             MapObject_PauseMovement(*p_lastInteracted);
             _ClearMovementPauseWaitFlag(4);
         }
@@ -1314,7 +1314,7 @@ static BOOL _WaitMovementPauseBeforeMsg(ScriptContext *ctx) {
 
     if (_CheckMovementPauseWaitFlag(2)) {
         unk = MapObjectManager_GetFirstActiveObjectWithMovement(fieldSystem->mapObjectManager, 0x30);
-        if (MapObject_IsSingleMovementActive(unk) == FALSE) {
+        if (MapObject_CheckSingleMovement(unk) == FALSE) {
             MapObject_PauseMovement(unk);
             _ClearMovementPauseWaitFlag(2);
         }
@@ -1322,7 +1322,7 @@ static BOOL _WaitMovementPauseBeforeMsg(ScriptContext *ctx) {
 
     if (_CheckMovementPauseWaitFlag(8)) {
         unk = sub_020660C0(*p_lastInteracted);
-        if (MapObject_IsSingleMovementActive(unk) == FALSE) {
+        if (MapObject_CheckSingleMovement(unk) == FALSE) {
             MapObject_PauseMovement(unk);
             _ClearMovementPauseWaitFlag(8);
         }
@@ -1333,7 +1333,7 @@ static BOOL _WaitMovementPauseBeforeMsg(ScriptContext *ctx) {
 
 BOOL _WaitFollowMonPaused(ScriptContext *ctx) {
     LocalMapObject *tsurePoke = FollowMon_GetMapObject(ctx->fieldSystem);
-    if (MapObject_IsSingleMovementActive(tsurePoke) == FALSE) {
+    if (MapObject_CheckSingleMovement(tsurePoke) == FALSE) {
         MapObject_PauseMovement(tsurePoke);
         return TRUE;
     }
@@ -1358,17 +1358,17 @@ BOOL ScrCmd_LockLastTalked(ScriptContext *ctx) {
         MapObject_UnpauseMovement(playerObject);
     }
 
-    if (MapObject_IsSingleMovementActive(*p_lastInteracted) != FALSE) {
+    if (MapObject_CheckSingleMovement(*p_lastInteracted) != FALSE) {
         _SetMovementPauseWaitFlag(4);
         MapObject_UnpauseMovement(*p_lastInteracted);
     }
 
-    if (unk != NULL && FollowMon_IsActive(fieldSystem) && MapObject_IsSingleMovementActive(unk) == FALSE) {
+    if (unk != NULL && FollowMon_IsActive(fieldSystem) && MapObject_CheckSingleMovement(unk) == FALSE) {
         _SetMovementPauseWaitFlag(2);
         MapObject_UnpauseMovement(unk);
     }
 
-    if (unk2 != NULL && MapObject_IsSingleMovementActive(unk2) != FALSE) {
+    if (unk2 != NULL && MapObject_CheckSingleMovement(unk2) != FALSE) {
         _SetMovementPauseWaitFlag(8);
         MapObject_UnpauseMovement(unk2);
     }
@@ -1514,7 +1514,7 @@ BOOL ScrCmd_GetPlayerCoords(ScriptContext *ctx) {
     u16 *p_y                 = ScriptGetVarPointer(ctx);
 
     *p_x = GetPlayerXCoord(fieldSystem->playerAvatar);
-    *p_y = GetPlayerYCoord(fieldSystem->playerAvatar);
+    *p_y = GetPlayerZCoord(fieldSystem->playerAvatar);
     return FALSE;
 }
 
@@ -1523,14 +1523,14 @@ BOOL ScrCmd_GetPersonCoords(ScriptContext *ctx) {
     u16 personId             = ScriptGetVar(ctx);
     LocalMapObject *object   = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, personId);
     u16 *p_x                 = ScriptGetVarPointer(ctx);
-    u16 *p_y                 = ScriptGetVarPointer(ctx);
+    u16 *p_z                 = ScriptGetVarPointer(ctx);
 
     if (object != NULL) {
         *p_x = MapObject_GetCurrentX(object);
-        *p_y = MapObject_GetCurrentY(object);
+        *p_z = MapObject_GetCurrentZ(object);
     } else {
         *p_x = 255;
-        *p_y = 255;
+        *p_z = 255;
         GF_ASSERT(personId == obj_partner_poke);
     }
     return FALSE;
@@ -1562,7 +1562,7 @@ BOOL ScrCmd_108(ScriptContext *ctx) {
     u16 objectId           = ScriptGetVar(ctx);
     LocalMapObject *object = MapObjectManager_GetFirstActiveObjectByID(ctx->fieldSystem->mapObjectManager, objectId);
     u8 arg                 = ScriptReadByte(ctx);
-    MapObject_SetFlag10(object, arg);
+    MapObject_SetKeep(object, (BOOL)arg);
     return FALSE;
 }
 
@@ -2978,11 +2978,11 @@ BOOL ScrCmd_MovePerson(ScriptContext *ctx) {
 BOOL ScrCmd_MovePersonFacing(ScriptContext *ctx) {
     u16 objectId           = ScriptGetVar(ctx);
     u16 x                  = ScriptGetVar(ctx);
-    u16 height             = ScriptGetVar(ctx);
     u16 y                  = ScriptGetVar(ctx);
+    u16 z                  = ScriptGetVar(ctx);
     u16 direction          = ScriptGetVar(ctx);
     LocalMapObject *object = MapObjectManager_GetFirstActiveObjectByID(ctx->fieldSystem->mapObjectManager, objectId);
-    sub_0205FC2C(object, x, height, y, direction);
+    sub_0205FC2C(object, x, y, z, direction);
     sub_02061070(object);
     return FALSE;
 }
@@ -3187,12 +3187,12 @@ BOOL ScrCmd_ViridianGymInit(ScriptContext *ctx) {
 BOOL ScrCmd_GetPlayerXYZ(ScriptContext *ctx) {
     FieldSystem *fieldSystem  = ctx->fieldSystem;
     u16 *p_x                  = ScriptGetVarPointer(ctx);
-    u16 *p_h                  = ScriptGetVarPointer(ctx);
     u16 *p_y                  = ScriptGetVarPointer(ctx);
+    u16 *p_z                  = ScriptGetVarPointer(ctx);
     LocalMapObject *playerObj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
     *p_x                      = MapObject_GetCurrentX(playerObj);
-    *p_h                      = MapObject_GetCurrentHeight(playerObj) / 2;
-    *p_y                      = MapObject_GetCurrentY(playerObj);
+    *p_y                      = MapObject_GetCurrentY(playerObj) / 2;
+    *p_z                      = MapObject_GetCurrentZ(playerObj);
     return FALSE;
 }
 
@@ -4464,13 +4464,13 @@ BOOL ScrCmd_FollowMonFacePlayer(ScriptContext *ctx) {
             int facingDirection      = PlayerAvatar_GetFacingDirection(FieldSystem_GetPlayerAvatar(ctx->fieldSystem));
             int playerX              = MapObject_GetCurrentX(myObject);
             int deltaX               = GetDeltaXByFacingDirection(facingDirection) * 2;
-            int playerElev           = MapObject_GetCurrentHeight(myObject);
-            int playerY              = MapObject_GetCurrentY(myObject);
+            s32 playerY              = MapObject_GetCurrentY(myObject);
+            int playerZ              = MapObject_GetCurrentZ(myObject);
             int deltaY               = GetDeltaYByFacingDirection(facingDirection) * 2;
-            u8 facingTile            = GetMetatileBehaviorAt(ctx->fieldSystem, playerX + deltaX, playerY + deltaY);
+            u8 facingTile            = GetMetatileBehaviorAt(ctx->fieldSystem, playerX + deltaX, playerZ + deltaY);
             VecFx32 posVec;
             MapObject_GetPositionVec(myObject, &posVec);
-            if (sub_020549A8(ctx->fieldSystem, &posVec, playerX + deltaX, playerY + deltaY, 0) || MetatileBehavior_IsSurfableWater(facingTile) || sub_02060BFC(myObject, playerX + deltaX, playerElev, playerY + deltaY)) {
+            if (sub_020549A8(ctx->fieldSystem, &posVec, playerX + deltaX, playerZ + deltaY, 0) || MetatileBehavior_IsSurfableWater(facingTile) || sub_02060BFC(myObject, playerX + deltaX, playerY, playerZ + deltaY)) {
                 doFace = FALSE;
             }
         }

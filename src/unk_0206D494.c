@@ -115,10 +115,10 @@ static LocalMapObject *sub_0206D590(LocalMapObject *object) {
     u32 direction             = MapObject_GetFacingDirection(object);
     u32 x                     = MapObject_GetCurrentX(object);
     u32 dx                    = GetDeltaXByFacingDirection(direction);
-    u32 height                = MapObject_GetCurrentHeight(object);
     u32 y                     = MapObject_GetCurrentY(object);
+    u32 z                     = MapObject_GetCurrentZ(object);
     u32 dy                    = GetDeltaYByFacingDirection(direction);
-    LocalMapObject *obj       = sub_0206D614(manager, x + dx, height, y + dy);
+    LocalMapObject *obj       = sub_0206D614(manager, x + dx, y, z + dy);
     if (obj) {
         if (MapObject_GetSpriteID(obj) != SPRITE_ICE) {
             return NULL;
@@ -140,13 +140,13 @@ static LocalMapObject *sub_0206D614(MapObjectManager *manager, u32 x, u32 a2, u3
         if (MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_ACTIVE)
             && !MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_UNK18)) {
             u32 curX = MapObject_GetCurrentX(object);
-            u32 curY = MapObject_GetCurrentY(object);
-            if (curX == x && curY == y) {
-                s32 height = MapObject_GetCurrentHeight(object) - a2;
-                if (height < 0) {
-                    height = -height;
+            u32 curZ = MapObject_GetCurrentZ(object);
+            if (curX == x && curZ == y) {
+                s32 y = MapObject_GetCurrentY(object) - a2;
+                if (y < 0) {
+                    y = -y;
                 }
-                if (height < 2) {
+                if (y < 2) {
                     return object;
                 }
             }
@@ -160,15 +160,15 @@ static u32 sub_0206D688(UnkStruct_0206D494 *a0) {
     switch (a0->unk09) {
     case 0:
         if (MapObject_IsMovementPaused(a0->unk00)) {
-            u32 x      = MapObject_GetCurrentX(a0->unk00);
-            u32 dx     = GetDeltaXByFacingDirection(a0->unk08);
-            u32 height = MapObject_GetCurrentHeight(a0->unk00);
-            u32 y      = MapObject_GetCurrentY(a0->unk00);
-            u32 dy     = GetDeltaYByFacingDirection(a0->unk08);
-            u32 flags  = sub_0206D7B8(a0->unk00, x + dx, height, y + dy);
+            u32 x     = MapObject_GetCurrentX(a0->unk00);
+            u32 dx    = GetDeltaXByFacingDirection(a0->unk08);
+            u32 y     = MapObject_GetCurrentY(a0->unk00);
+            u32 z     = MapObject_GetCurrentZ(a0->unk00);
+            u32 dy    = GetDeltaYByFacingDirection(a0->unk08);
+            u32 flags = sub_0206D7B8(a0->unk00, x + dx, y, z + dy);
             if (flags & 2) {
                 MapObjectManager *manager = MapObject_GetManager(a0->unk00);
-                LocalMapObject *object    = sub_0206D614(manager, x + dx, height, y + dy);
+                LocalMapObject *object    = sub_0206D614(manager, x + dx, y, z + dy);
                 if (!object) {
                     GF_ASSERT(FALSE);
                     return TRUE;

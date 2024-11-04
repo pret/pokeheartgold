@@ -5,8 +5,8 @@
 .public MapObject_TestFlagsBits
 .public MapObject_GetFacingDirection
 .public MapObject_GetPreviousFacingDirection
-.public MapObject_GetPrevX
-.public MapObject_GetPrevY
+.public MapObject_GetPreviousX
+.public MapObject_GetPreviousZ
 .public MapObject_GetPosVecYCoord
 .public sub_020611C8
 .public sub_02068D90

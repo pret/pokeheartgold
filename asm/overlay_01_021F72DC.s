@@ -388,12 +388,12 @@ _021F7524:
 	add r0, r5, #0
 	bl MapObject_SetPreviousX
 	add r0, r5, #0
-	bl MapObject_GetCurrentHeight
+	bl MapObject_GetCurrentY
 	add r1, r0, #0
 	add r0, r5, #0
-	bl MapObject_SetPreviousHeight
+	bl MapObject_SetPreviousY
 	add r0, r5, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	add r1, r0, #0
 	mov r0, #2
 	lsl r2, r1, #0x10
@@ -401,7 +401,7 @@ _021F7524:
 	add r0, r2, r0
 	str r0, [sp, #0x38]
 	add r0, r5, #0
-	bl MapObject_SetPreviousY
+	bl MapObject_SetPreviousZ
 	add r0, r5, #0
 	add r1, sp, #0x30
 	bl MapObject_SetPositionVec

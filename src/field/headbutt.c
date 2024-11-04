@@ -199,11 +199,11 @@ static void GetCoordsOfFacingTree(FieldSystem *fieldSystem, u32 *x, u32 *y) {
     if (FollowMon_IsActive(fieldSystem)) {
         LocalMapObject *object = FollowMon_GetMapObject(fieldSystem);
         u32 followingMonX      = MapObject_GetCurrentX(object);
-        u32 followingMonY      = MapObject_GetCurrentY(object);
-        if (inFrontX == followingMonX && inFrontY == followingMonY) {
+        u32 followingMonZ      = MapObject_GetCurrentZ(object);
+        if (inFrontX == followingMonX && inFrontY == followingMonZ) {
             u8 dir   = MapObject_GetFacingDirection(object);
             inFrontX = GetDeltaXByFacingDirection(dir) + followingMonX;
-            inFrontY = GetDeltaYByFacingDirection(dir) + followingMonY;
+            inFrontY = GetDeltaYByFacingDirection(dir) + followingMonZ;
         }
     }
     *x = inFrontX;

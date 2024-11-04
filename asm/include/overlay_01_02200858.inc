@@ -13,7 +13,7 @@
 .public MapObject_GetMapID
 .public sub_0205F504
 .public MapObject_GetCurrentX
-.public MapObject_GetCurrentY
+.public MapObject_GetCurrentZ
 .public MapObject_GetPositionVec
 .public GetDeltaXByFacingDirection
 .public GetDeltaYByFacingDirection

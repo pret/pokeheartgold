@@ -1474,7 +1474,7 @@ GetInteractedMetatileScript: ; 0x021E7418
 	bl GetPlayerXCoord
 	add r7, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
@@ -1731,7 +1731,7 @@ _021E7672:
 	bl GetPlayerXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -2280,7 +2280,7 @@ PlayerAvatar_GetStandingTileCoords: ; 0x021E7AB8
 	bl GetPlayerXCoord
 	str r0, [r4]
 	ldr r0, [r5, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	str r0, [r6]
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -2847,7 +2847,7 @@ ov01_021E7F00: ; 0x021E7F00
 	bl GetPlayerXCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	add r2, r0, #0
 	cmp r4, #0
 	beq _021E7F2C

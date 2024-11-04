@@ -996,10 +996,10 @@ _0205D2FC:
 	cmp r0, #0
 	beq _0205D33C
 	add r0, r4, #0
-	bl MapObject_GetPrevX
+	bl MapObject_GetPreviousX
 	add r6, r0, #0
 	add r0, r4, #0
-	bl MapObject_GetPrevY
+	bl MapObject_GetPreviousZ
 	add r5, #0xe4
 	add r2, r0, #0
 	add r0, r7, #0
@@ -1260,7 +1260,7 @@ _0205D4DE:
 	bl GetDeltaXByFacingDirection
 	str r0, [sp, #0xc]
 	add r0, r5, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	str r0, [sp, #0x10]
 	add r0, r7, #0
 	bl GetDeltaYByFacingDirection
@@ -1361,10 +1361,10 @@ _0205D5CE:
 	bl MapObject_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetPrevX
+	bl MapObject_GetPreviousX
 	add r6, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetPrevY
+	bl MapObject_GetPreviousZ
 	add r4, #0xe4
 	add r2, r0, #0
 	add r0, r7, #0
@@ -1992,10 +1992,10 @@ sub_0205DAA8: ; 0x0205DAA8
 	bl GetDeltaXByFacingDirection
 	str r0, [sp, #0x14]
 	add r0, r5, #0
-	bl MapObject_GetCurrentHeight
+	bl MapObject_GetCurrentY
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #4]
 	bl GetDeltaYByFacingDirection
@@ -2091,7 +2091,7 @@ sub_0205DB68: ; 0x0205DB68
 	bl GetDeltaXByFacingDirection
 	add r7, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	add r5, r0, #0
 	add r0, r4, #0
 	bl GetDeltaYByFacingDirection
@@ -2158,7 +2158,7 @@ sub_0205DBF4: ; 0x0205DBF4
 	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	str r0, [sp]
 	ldr r2, [sp]
 	add r0, r7, #0
@@ -2247,7 +2247,7 @@ sub_0205DCA0: ; 0x0205DCA0
 	bl GetDeltaXByFacingDirection
 	add r7, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	str r0, [sp, #4]
 	add r0, r4, #0
 	bl GetDeltaYByFacingDirection
@@ -2294,7 +2294,7 @@ sub_0205DCFC: ; 0x0205DCFC
 	bl GetDeltaXByFacingDirection
 	add r7, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	str r0, [sp, #4]
 	add r0, r4, #0
 	bl GetDeltaYByFacingDirection
@@ -2725,7 +2725,7 @@ sub_0205DFFC: ; 0x0205DFFC
 	add r0, r4, r0
 	str r0, [r6]
 	ldr r0, [sp]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	add r4, r0, #0
 	add r0, r5, #0
 	bl GetDeltaYByFacingDirection

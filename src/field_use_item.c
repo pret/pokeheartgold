@@ -152,7 +152,7 @@ void ItemCheckUseData_Init(FieldSystem *fieldSystem, struct ItemCheckUseData *da
     dat->playerState       = PlayerAvatar_GetState(fieldSystem->playerAvatar);
 
     x                 = GetPlayerXCoord(fieldSystem->playerAvatar);
-    y                 = GetPlayerYCoord(fieldSystem->playerAvatar);
+    y                 = GetPlayerZCoord(fieldSystem->playerAvatar);
     dat->standingTile = GetMetatileBehaviorAt(fieldSystem, x, y);
 
     switch (PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar)) {

@@ -244,7 +244,7 @@
 .public sub_0205BB04
 .public PlayerAvatar_GetFacingDirection
 .public GetPlayerXCoord
-.public GetPlayerYCoord
+.public GetPlayerZCoord
 .public PlayerAvatar_GetPositionVec
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_GetState
@@ -264,12 +264,12 @@
 .public MapObject_GetManager
 .public sub_0205F484
 .public MapObject_GetFieldSystem
-.public MapObject_IsInUse
+.public MapObject_CheckActive
 .public MapObject_SetVisible
 .public MapObject_PauseMovement
 .public MapObject_UnpauseMovement
 .public MapObject_GetCurrentX
-.public MapObject_GetCurrentY
+.public MapObject_GetCurrentZ
 .public MapObject_GetPositionVec
 .public MapObject_SetPositionVec
 .public GetDeltaXByFacingDirection

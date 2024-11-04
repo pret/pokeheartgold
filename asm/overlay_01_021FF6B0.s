@@ -118,7 +118,7 @@ ov01_021FF74C: ; 0x021FF74C
 	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	add r1, r0, #0
 	add r0, r6, #0
 	add r2, sp, #8

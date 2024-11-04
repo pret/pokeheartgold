@@ -32,7 +32,7 @@
 .public GetMetatileBehaviorAt
 .public PlayerAvatar_GetFacingDirection
 .public GetPlayerXCoord
-.public GetPlayerYCoord
+.public GetPlayerZCoord
 .public PlayerAvatar_GetMapObject
 .public MapObject_Remove
 .public sub_0205F1A0
@@ -48,11 +48,11 @@
 .public MapObject_CheckVisible
 .public MapObject_PauseMovement
 .public MapObject_UnpauseMovement
-.public sub_0205F714
-.public MapObject_GetPrevX
-.public MapObject_GetPrevY
+.public MapObject_CheckMovementPaused
+.public MapObject_GetPreviousX
+.public MapObject_GetPreviousZ
 .public MapObject_GetCurrentX
-.public MapObject_GetCurrentY
+.public MapObject_GetCurrentZ
 .public MapObject_GetPositionVec
 .public MapObject_SetPositionVec
 .public sub_0205FBC0

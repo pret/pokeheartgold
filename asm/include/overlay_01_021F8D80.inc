@@ -35,7 +35,7 @@
 .public sub_0205F5D4
 .public MapObject_CheckFlag14
 .public MapObject_SetVisible
-.public sub_0205F714
+.public MapObject_CheckMovementPaused
 .public MapObject_CheckFlag4
 .public MapObject_GetPositionVec
 .public MapObject_GetFacingVec

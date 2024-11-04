@@ -34,7 +34,7 @@
 .public sub_0205BAC4
 .public PlayerAvatar_GetFacingDirection
 .public GetPlayerXCoord
-.public GetPlayerYCoord
+.public GetPlayerZCoord
 .public PlayerAvatar_GetPositionVec
 .public PlayerAvatar_GetPositionVecConst
 .public PlayerAvatar_GetMapObject
@@ -46,12 +46,12 @@
 .public MapObjectManager_GetObjects
 .public MapObjectArray_NextObject2
 .public MapObject_GetID
-.public MapObject_IsInUse
+.public MapObject_CheckActive
 .public MapObject_GetCurrentX
 .public MapObject_SetCurrentX
-.public MapObject_SetCurrentHeight
-.public MapObject_GetCurrentY
 .public MapObject_SetCurrentY
+.public MapObject_GetCurrentZ
+.public MapObject_SetCurrentZ
 .public MapObject_GetPositionVec
 .public MapObject_SetPositionVec
 .public sub_02060F78

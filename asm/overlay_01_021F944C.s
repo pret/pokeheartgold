@@ -503,7 +503,7 @@ _021F97D4:
 	ldr r0, [sp]
 	cmp r0, r5
 	beq _021F97F4
-	bl MapObject_IsInUse
+	bl MapObject_CheckActive
 	cmp r0, #1
 	bne _021F97F4
 	ldr r0, [sp]
@@ -3279,7 +3279,7 @@ ov01_021FAB9C: ; 0x021FAB9C
 	pop {r4, r5, r6, pc}
 _021FABB0:
 	add r0, r4, #0
-	bl MapObject_IsInUse
+	bl MapObject_CheckActive
 	cmp r0, #0
 	beq _021FABC4
 	add r0, r4, #0

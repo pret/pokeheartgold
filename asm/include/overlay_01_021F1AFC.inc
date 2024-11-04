@@ -33,7 +33,7 @@
 .public sub_0205BA30
 .public PlayerAvatar_GetFacingDirection
 .public GetPlayerXCoord
-.public GetPlayerYCoord
+.public GetPlayerZCoord
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_SetState
 .public PlayerAvatar_GetState
@@ -67,9 +67,9 @@
 .public MapObject_CheckFlag28
 .public MapObject_GetCurrentX
 .public MapObject_SetCurrentX
-.public MapObject_SetCurrentHeight
-.public MapObject_GetCurrentY
 .public MapObject_SetCurrentY
+.public MapObject_GetCurrentZ
+.public MapObject_SetCurrentZ
 .public MapObject_GetPositionVec
 .public MapObject_SetPositionVec
 .public sub_0205FB58

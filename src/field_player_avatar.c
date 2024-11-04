@@ -159,7 +159,7 @@ PlayerAvatar *sub_0205C408(MapObjectManager *man, PlayerSaveData *playerSaveData
     sub_0205C500(avatar, state, gender, playerSaveData);
     LocalMapObject *mapObj = sub_0205C640(man);
     MapObject_SetSpriteID(mapObj, PlayerAvatar_GetSpriteByStateAndGender(state, gender));
-    MapObject_SetFlagsBits(mapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_UNK10));
+    MapObject_SetFlagsBits(mapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_KEEP));
     MapObject_ClearFlagsBits(mapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7));
     MapObject_SetFlag29(mapObj, TRUE);
     sub_0205C6D8(avatar, mapObj);
@@ -175,9 +175,9 @@ void sub_0205C46C(PlayerAvatar *avatar) {
     ov01_022008B4(avatar);
     if (PlayerAvatar_GetState(avatar) == PLAYER_STATE_SURFING) {
         int x   = GetPlayerXCoord(avatar);
-        int y   = GetPlayerYCoord(avatar);
+        int z   = GetPlayerZCoord(avatar);
         int dir = PlayerAvatar_GetFacingDirection(avatar);
-        sub_0205C78C(avatar, ov01_021FE7DC(mapObj, x, y, dir, 1));
+        sub_0205C78C(avatar, ov01_021FE7DC(mapObj, x, z, dir, 1));
     }
 }
 
@@ -227,7 +227,7 @@ void CreatePlayerAvatarMapObject(PlayerAvatar *avatar, MapObjectManager *man, u3
     MapObject_SetParam(mapObj, 0, 2);
     MapObject_SetXRange(mapObj, -1);
     MapObject_SetYRange(mapObj, -1);
-    MapObject_SetFlagsBits(mapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_UNK10));
+    MapObject_SetFlagsBits(mapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_KEEP));
     MapObject_ClearFlagsBits(mapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7));
     MapObject_SetFlag29(mapObj, TRUE);
     sub_0205C6D8(avatar, mapObj);
@@ -268,16 +268,16 @@ int GetPlayerXCoord(PlayerAvatar *avatar) {
     return MapObject_GetCurrentX(PlayerAvatar_GetMapObject(avatar));
 }
 
-int GetPlayerYCoord(PlayerAvatar *avatar) {
-    return MapObject_GetCurrentY(PlayerAvatar_GetMapObject(avatar));
+int GetPlayerZCoord(PlayerAvatar *avatar) {
+    return MapObject_GetCurrentZ(PlayerAvatar_GetMapObject(avatar));
 }
 
 int GetPlayerLastXCoord(PlayerAvatar *avatar) {
-    return MapObject_GetPrevX(PlayerAvatar_GetMapObject(avatar));
+    return MapObject_GetPreviousX(PlayerAvatar_GetMapObject(avatar));
 }
 
-int GetPlayerLastYCoord(PlayerAvatar *avatar) {
-    return MapObject_GetPrevY(PlayerAvatar_GetMapObject(avatar));
+int GetPlayerLastZCoord(PlayerAvatar *avatar) {
+    return MapObject_GetPreviousZ(PlayerAvatar_GetMapObject(avatar));
 }
 
 void PlayerAvatar_GetPositionVec(PlayerAvatar *avatar, VecFx32 *vec) {

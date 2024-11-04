@@ -61,7 +61,7 @@
 .public PlayerAvatar_GetFacingDirection
 .public PlayerAvatar_SetFacingDirection
 .public GetPlayerXCoord
-.public GetPlayerYCoord
+.public GetPlayerZCoord
 .public sub_0205C6CC
 .public sub_0205C6D4
 .public PlayerAvatar_GetMapObject
@@ -75,7 +75,7 @@
 .public MapObjectManager_GetFirstActiveObjectByID
 .public MapObject_SetID
 .public MapObject_SetCurrentX
-.public MapObject_SetCurrentY
+.public MapObject_SetCurrentZ
 .public sub_0205FC2C
 .public GetDeltaXByFacingDirection
 .public GetDeltaYByFacingDirection

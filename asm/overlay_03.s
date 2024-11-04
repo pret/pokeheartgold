@@ -9615,7 +9615,7 @@ ScrCmd_720: ; 0x02258A18
 	bl GetDeltaXByFacingDirection
 	add r7, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	bl GetDeltaYByFacingDirection

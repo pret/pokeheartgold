@@ -1907,7 +1907,7 @@ static LocalMapObject *FollowMon_CreateMapObject(MapObjectManager *mapObjectMana
     FollowMon_SetObjectParams(mapObject, species, form, shiny);
     MapObject_SetXRange(mapObject, -1);
     MapObject_SetYRange(mapObject, -1);
-    MapObject_SetFlagsBits(mapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_UNK10));
+    MapObject_SetFlagsBits(mapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_KEEP));
     MapObject_ClearFlagsBits(mapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7));
     MapObject_SetFlag29(mapObject, TRUE);
     sub_02069DC8(mapObject, TRUE);

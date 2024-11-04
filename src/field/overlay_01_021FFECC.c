@@ -57,9 +57,9 @@ void ov01_021FFF5C(LocalMapObject *mapObject, int a1) {
     TaskManager *taskman     = ov01_021F1468(fieldSystem);
 
     int x = MapObject_GetCurrentX(mapObject);
-    int y = MapObject_GetCurrentY(mapObject);
+    int z = MapObject_GetCurrentZ(mapObject);
 
-    sub_020611C8(x, y, &temp);
+    sub_020611C8(x, z, &temp);
     sub_0206121C(taskman, &temp);
 
     temp2.unk0 = a1;

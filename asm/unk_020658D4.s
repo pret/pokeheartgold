@@ -27,7 +27,7 @@ sub_020658D4: ; 0x020658D4
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r4, #0
-	bl MapObject_SingleMovementSetInactive
+	bl MapObject_ClearSingleMovement
 	add r0, r4, #0
 	mov r1, #0
 	bl MapObject_ClearFlag18
@@ -168,7 +168,7 @@ sub_020659CC: ; 0x020659CC
 	bl sub_0205F394
 	add r6, r0, #0
 	add r0, r5, #0
-	bl MapObject_SingleMovementSetInactive
+	bl MapObject_ClearSingleMovement
 	add r0, r5, #0
 	bl MapObject_ClearFlag3
 	add r0, r5, #0
@@ -197,10 +197,10 @@ sub_020659CC: ; 0x020659CC
 	bl MapObject_GetCurrentX
 	add r4, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetCurrentHeight
+	bl MapObject_GetCurrentY
 	add r6, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	add r7, r0, #0
 	add r0, r5, #0
 	bl MapObject_GetFacingDirection
@@ -222,7 +222,7 @@ sub_02065A4C: ; 0x02065A4C
 	bl MapObject_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
-	bl MapObject_SingleMovementSetInactive
+	bl MapObject_ClearSingleMovement
 	add r0, r5, #0
 	bl MapObject_ClearFlag3
 	mov r0, #1
@@ -248,7 +248,7 @@ _02065A76:
 	cmp r1, r0
 	bne _02065B12
 	add r0, r5, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	add r1, r4, #0
 	add r1, #0xf0
 	ldr r1, [r1]
@@ -333,7 +333,7 @@ _02065B4C:
 	bl sub_020664D8
 _02065B52:
 	add r0, r5, #0
-	bl MapObject_SingleMovementSetActive
+	bl MapObject_SetSingleMovement
 	mov r1, #3
 	add r0, r1, #0
 	add r0, #0xfd
@@ -355,7 +355,7 @@ sub_02065B70: ; 0x02065B70
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl MapObject_SingleMovementSetInactive
+	bl MapObject_ClearSingleMovement
 	add r0, r5, #0
 	bl MapObject_ClearFlag3
 	add r0, r5, #0
@@ -394,7 +394,7 @@ _02065BC8:
 	cmp r0, #1
 	bne _02065BE2
 	add r0, r5, #0
-	bl MapObject_SingleMovementSetActive
+	bl MapObject_SetSingleMovement
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
@@ -411,7 +411,7 @@ sub_02065BE8: ; 0x02065BE8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl MapObject_SingleMovementSetInactive
+	bl MapObject_ClearSingleMovement
 	add r0, r5, #0
 	bl MapObject_ClearFlag3
 	add r0, r5, #0
@@ -427,7 +427,7 @@ sub_02065BE8: ; 0x02065BE8
 	cmp r0, #1
 	bne _02065C26
 	add r0, r5, #0
-	bl MapObject_SingleMovementSetActive
+	bl MapObject_SetSingleMovement
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
@@ -448,7 +448,7 @@ sub_02065C2C: ; 0x02065C2C
 	cmp r0, #1
 	bne _02065C44
 	add r0, r5, #0
-	bl MapObject_SingleMovementSetInactive
+	bl MapObject_ClearSingleMovement
 	mov r0, #0
 	strb r0, [r4]
 _02065C44:
@@ -471,7 +471,7 @@ sub_02065C48: ; 0x02065C48
 	cmp r0, #2
 	blo _02065C78
 	add r0, r5, #0
-	bl MapObject_SingleMovementSetInactive
+	bl MapObject_ClearSingleMovement
 	mov r0, #0
 	strb r0, [r4]
 	strb r0, [r4, #3]
@@ -563,7 +563,7 @@ sub_02065CFC: ; 0x02065CFC
 	bl GetPlayerXCoord
 	strh r0, [r5, #4]
 	add r0, r4, #0
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	strh r0, [r5, #6]
 	mov r0, #0xff
 	strh r0, [r5, #8]
@@ -582,7 +582,7 @@ sub_02065D24: ; 0x02065D24
 	bl GetPlayerXCoord
 	add r4, r0, #0
 	add r0, r6, #0
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	mov r1, #4
 	ldrsh r1, [r5, r1]
 	cmp r4, r1
@@ -609,7 +609,7 @@ sub_02065D58: ; 0x02065D58
 	bl GetPlayerXCoord
 	strh r0, [r5, #4]
 	add r0, r4, #0
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	strh r0, [r5, #6]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -704,13 +704,13 @@ sub_02065DF4: ; 0x02065DF4
 	bl MapObject_GetCurrentX
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	str r0, [sp, #4]
 	add r0, r7, #0
 	bl GetPlayerLastXCoord
 	str r0, [sp]
 	add r0, r7, #0
-	bl GetPlayerLastYCoord
+	bl GetPlayerLastZCoord
 	add r6, r0, #0
 	ldr r1, [sp, #8]
 	ldr r0, [sp]
@@ -856,13 +856,13 @@ sub_02065F44: ; 0x02065F44
 	bl MapObject_GetCurrentX
 	str r0, [sp]
 	add r0, r5, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	add r7, r0, #0
 	add r0, r4, #0
 	bl GetPlayerLastXCoord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl GetPlayerLastYCoord
+	bl GetPlayerLastZCoord
 	add r4, r0, #0
 	ldr r0, [sp]
 	cmp r0, r6
@@ -910,11 +910,11 @@ sub_02065FBC: ; 0x02065FBC
 	add r0, r5, #0
 	bl MapObject_GetCurrentX
 	add r0, r5, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	add r0, r4, #0
 	bl GetPlayerLastXCoord
 	add r0, r4, #0
-	bl GetPlayerLastYCoord
+	bl GetPlayerLastZCoord
 	add r0, r5, #0
 	bl sub_02065DB4
 	add r1, r0, #0
@@ -943,7 +943,7 @@ sub_02065FFC: ; 0x02065FFC
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r5, #0
-	bl MapObject_SingleMovementSetInactive
+	bl MapObject_ClearSingleMovement
 	mov r0, #0
 	strb r0, [r4, #1]
 	pop {r3, r4, r5, pc}
@@ -996,7 +996,7 @@ sub_02066064: ; 0x02066064
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl MapObject_SingleMovementSetInactive
+	bl MapObject_ClearSingleMovement
 	add r0, r5, #0
 	bl MapObject_ClearFlag3
 	add r0, r5, #0
@@ -1010,7 +1010,7 @@ sub_02066064: ; 0x02066064
 	cmp r0, #1
 	bne _0206609C
 	add r0, r5, #0
-	bl MapObject_SingleMovementSetActive
+	bl MapObject_SetSingleMovement
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
@@ -1033,7 +1033,7 @@ sub_020660A0: ; 0x020660A0
 	pop {r3, r4, r5, pc}
 _020660B2:
 	add r0, r5, #0
-	bl MapObject_SingleMovementSetInactive
+	bl MapObject_ClearSingleMovement
 	mov r0, #0
 	strb r0, [r4]
 	pop {r3, r4, r5, pc}
@@ -1186,7 +1186,7 @@ sub_020661CC: ; 0x020661CC
 	bl MapObject_GetCurrentX
 	strh r0, [r5, #2]
 	add r0, r4, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	strh r0, [r5, #4]
 	mov r0, #0xff
 	strh r0, [r5, #6]
@@ -1203,20 +1203,20 @@ sub_020661F0: ; 0x020661F0
 	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	add r0, r4, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	add r7, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetPrevX
+	bl MapObject_GetPreviousX
 	add r4, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetPrevY
+	bl MapObject_GetPreviousZ
 	cmp r6, r4
 	bne _0206621A
 	cmp r7, r0
 	beq _02066236
 _0206621A:
 	add r0, r5, #0
-	bl MapObject_IsSingleMovementActive
+	bl MapObject_CheckSingleMovement
 	cmp r0, #1
 	beq _02066232
 	mov r1, #0x61
@@ -1243,19 +1243,19 @@ sub_0206623C: ; 0x0206623C
 	bl MapObject_GetCurrentX
 	add r4, r0, #0
 	ldr r0, [sp]
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	add r6, r0, #0
 	ldr r0, [r5, #8]
 	bl MapObject_GetCurrentX
 	str r0, [sp, #8]
 	ldr r0, [r5, #8]
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	add r7, r0, #0
 	ldr r0, [r5, #8]
-	bl MapObject_GetPrevX
+	bl MapObject_GetPreviousX
 	str r0, [sp, #4]
 	ldr r0, [r5, #8]
-	bl MapObject_GetPrevY
+	bl MapObject_GetPreviousZ
 	add r3, r0, #0
 	ldr r0, [sp, #8]
 	cmp r4, r0
@@ -1311,7 +1311,7 @@ sub_020662C4: ; 0x020662C4
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r4, #0
-	bl MapObject_SingleMovementSetInactive
+	bl MapObject_ClearSingleMovement
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0x14
@@ -1450,7 +1450,7 @@ sub_020663B4: ; 0x020663B4
 	bl sub_02066420
 _020663CE:
 	add r0, r5, #0
-	bl MapObject_SingleMovementSetInactive
+	bl MapObject_ClearSingleMovement
 	add r0, r5, #0
 	bl MapObject_ClearFlag3
 	ldrb r0, [r4]
@@ -1610,7 +1610,7 @@ sub_020664D8: ; 0x020664D8
 	bl MapObject_GetCurrentX
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	add r2, r0, #0
 	ldr r1, [sp, #8]
 	add r0, r4, #0

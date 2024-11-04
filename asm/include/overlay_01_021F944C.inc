@@ -62,7 +62,7 @@
 .public MapObject_GetManager
 .public sub_0205F484
 .public sub_0205F4C0
-.public MapObject_IsInUse
+.public MapObject_CheckActive
 .public MapObject_CheckFlag24
 .public MapObject_GetPositionVec
 .public sub_02060FA8

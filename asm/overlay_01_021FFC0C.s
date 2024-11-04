@@ -305,7 +305,7 @@ _021FFE50:
 	bl MapObject_GetCurrentX
 	add r4, r0, #0
 	add r0, r7, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	ldr r1, [r5, #0x18]
 	cmp r1, r4
 	bne _021FFE6A

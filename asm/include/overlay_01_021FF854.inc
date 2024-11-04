@@ -14,8 +14,8 @@
 .public MapObject_GetSpriteID
 .public MapObject_GetFacingDirection
 .public MapObject_GetCurrentX
-.public MapObject_GetCurrentHeight
 .public MapObject_GetCurrentY
+.public MapObject_GetCurrentZ
 .public MapObject_GetPositionVec
 .public MapObject_GetPosVecYCoord
 .public sub_0206121C

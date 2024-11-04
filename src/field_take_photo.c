@@ -152,7 +152,7 @@ void FieldSystem_TakePhoto(FieldSystem *fieldSystem, u16 photo_id) {
     takePhoto->positionMonDelayCounter = 0;
     takePhoto->curMon                  = 0;
     takePhoto->savedX                  = GetPlayerXCoord(fieldSystem->playerAvatar);
-    takePhoto->savedY                  = GetPlayerYCoord(fieldSystem->playerAvatar);
+    takePhoto->savedY                  = GetPlayerZCoord(fieldSystem->playerAvatar);
     takePhoto->savedDirection          = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
     takePhoto->savedMapId              = fieldSystem->location->mapId;
     if (FollowMon_IsActive(fieldSystem)) {
@@ -173,7 +173,7 @@ void FieldSystem_ViewSavedPhotos(FieldSystem *fieldSystem) {
     FieldViewPhoto *photo = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldViewPhoto));
     MI_CpuFill8(photo, 0, sizeof(FieldViewPhoto));
     photo->x              = GetPlayerXCoord(fieldSystem->playerAvatar);
-    photo->y              = GetPlayerYCoord(fieldSystem->playerAvatar);
+    photo->y              = GetPlayerZCoord(fieldSystem->playerAvatar);
     photo->savedDirection = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
     photo->savedMapId     = fieldSystem->location->mapId;
     photo->photoAlbum     = Save_PhotoAlbum_Get(fieldSystem->saveData);
@@ -482,7 +482,7 @@ static LocalMapObject *createSpecialMapObject(MapObjectManager *objectMan, int s
     MapObject_SetEventFlag(ret, 0);
     MapObject_SetXRange(ret, -1);
     MapObject_SetYRange(ret, -1);
-    MapObject_SetFlagsBits(ret, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK10 | MAPOBJECTFLAG_UNK13));
+    MapObject_SetFlagsBits(ret, (MapObjectFlagBits)(MAPOBJECTFLAG_KEEP | MAPOBJECTFLAG_UNK13));
     MapObject_ClearFlagsBits(ret, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK7 | MAPOBJECTFLAG_UNK8));
     MapObject_SetFlag29(ret, TRUE);
     return ret;
@@ -799,9 +799,9 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
             sub_0205FBC0(followMon, &takePhoto->followMonPositionVecBak, takePhoto->followMonFacingDirectionBak);
 
             int playerX = MapObject_GetCurrentX(playerObj);
-            int playerZ = MapObject_GetCurrentY(playerObj);
+            int playerZ = MapObject_GetCurrentZ(playerObj);
             int followX = MapObject_GetCurrentX(followMon);
-            int followZ = MapObject_GetCurrentY(followMon);
+            int followZ = MapObject_GetCurrentZ(followMon);
 
             if (playerX == followX && playerZ == followZ) {
                 sub_02069DC8(followMon, TRUE);

@@ -744,7 +744,7 @@ ov01_021F92A0: ; 0x021F92A0
 	cmp r0, #0
 	beq _021F92DA
 	add r0, r4, #0
-	bl sub_0205F714
+	bl MapObject_CheckMovementPaused
 	cmp r0, #0
 	beq _021F92D4
 	add r0, r4, #0
@@ -827,7 +827,7 @@ _021F9340: .word ov01_02206D00
 ov01_021F9344: ; 0x021F9344
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205F714
+	bl MapObject_CheckMovementPaused
 	cmp r0, #1
 	bne _021F935E
 	add r0, r4, #0

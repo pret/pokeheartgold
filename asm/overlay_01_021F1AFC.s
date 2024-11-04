@@ -631,7 +631,7 @@ _021F1F96:
 	cmp r1, r0
 	bne _021F1FF4
 	add r0, r5, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	ldrh r1, [r4, #4]
 	cmp r1, r0
 	bne _021F1FF4
@@ -949,7 +949,7 @@ _021F222A:
 	bl GetDeltaXByFacingDirection
 	add r6, r0, #0
 	ldr r0, [r4, #0x20]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	add r7, r0, #0
 	ldr r0, [r4, #4]
 	bl GetDeltaYByFacingDirection
@@ -1608,7 +1608,7 @@ ov01_021F2758: ; 0x021F2758
 	bl GetDeltaXByFacingDirection
 	add r6, r0, #0
 	ldr r0, [r5, #0x10]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	add r7, r0, #0
 	ldr r0, [r5, #4]
 	bl GetDeltaYByFacingDirection
@@ -1949,7 +1949,7 @@ ov01_021F29E4: ; 0x021F29E4
 	lsl r0, r0, #1
 	add r4, r4, r0
 	ldr r0, [r5, #0x3c]
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	add r6, r0, #0
 	mov r0, #0
 	bl GetDeltaYByFacingDirection
@@ -2129,10 +2129,10 @@ _021F2B56:
 	bl MapObject_SetCurrentX
 	ldr r0, [r4, #0x3c]
 	ldr r1, [r4, #0x10]
-	bl MapObject_SetCurrentHeight
+	bl MapObject_SetCurrentY
 	ldr r0, [r4, #0x3c]
 	ldr r1, [r4, #0x14]
-	bl MapObject_SetCurrentY
+	bl MapObject_SetCurrentZ
 	ldr r0, [r4, #0x3c]
 	bl sub_02060F78
 	ldr r0, [r4, #0x50]
@@ -2197,7 +2197,7 @@ ov01_021F2BC8: ; 0x021F2BC8
 	lsl r0, r0, #1
 	add r4, r4, r0
 	ldr r0, [r5, #0x3c]
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	add r6, r0, #0
 	mov r0, #1
 	bl GetDeltaYByFacingDirection
@@ -2380,10 +2380,10 @@ _021F2D3C:
 	bl MapObject_SetCurrentX
 	ldr r0, [r4, #0x3c]
 	ldr r1, [r4, #0x10]
-	bl MapObject_SetCurrentHeight
+	bl MapObject_SetCurrentY
 	ldr r0, [r4, #0x3c]
 	ldr r1, [r4, #0x14]
-	bl MapObject_SetCurrentY
+	bl MapObject_SetCurrentZ
 	ldr r0, [r4, #0x3c]
 	bl sub_02060F78
 	ldr r0, [r4, #0x50]
@@ -2830,7 +2830,7 @@ ov01_021F3094: ; 0x021F3094
 	bl GetDeltaXByFacingDirection
 	add r7, r0, #0
 	add r0, r4, #0
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	str r0, [sp]
 	add r0, r5, #0
 	bl GetDeltaYByFacingDirection

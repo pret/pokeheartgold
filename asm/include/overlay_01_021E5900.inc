@@ -80,7 +80,7 @@
 .public sub_0205C46C
 .public PlayerAvatar_GetFacingDirection
 .public GetPlayerXCoord
-.public GetPlayerYCoord
+.public GetPlayerZCoord
 .public PlayerAvatar_GetPositionVecConst
 .public sub_0205E104
 .public sub_0205E4C8

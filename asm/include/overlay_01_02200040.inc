@@ -9,7 +9,7 @@
 .public MapObject_GetMapID
 .public MapObject_GetFieldSystem
 .public MapObject_GetCurrentX
-.public MapObject_GetCurrentY
+.public MapObject_GetCurrentZ
 .public MapObject_GetPositionVec
 .public sub_020611C8
 .public sub_02068D98

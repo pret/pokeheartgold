@@ -198,7 +198,7 @@ _022009A4:
 	bl GetDeltaXByFacingDirection
 	add r7, r0, #0
 	add r0, r6, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	str r0, [sp, #8]
 	ldr r0, [r5, #4]
 	bl GetDeltaYByFacingDirection

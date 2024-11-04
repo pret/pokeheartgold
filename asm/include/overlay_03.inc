@@ -189,7 +189,7 @@
 .public IsPrintFinished
 .public PlayerAvatar_GetFacingDirection
 .public GetPlayerXCoord
-.public GetPlayerYCoord
+.public GetPlayerZCoord
 .public GetDeltaXByFacingDirection
 .public GetDeltaYByFacingDirection
 .public sub_020669B4

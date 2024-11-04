@@ -3,7 +3,7 @@
 .public LCRandom
 .public GF_AssertFail
 .public GetPlayerXCoord
-.public GetPlayerYCoord
+.public GetPlayerZCoord
 .public PlayerAvatar_GetMapObject
 .public FieldSystem_GetPlayerAvatar
 .public sub_0205DE98
@@ -25,13 +25,13 @@
 .public sub_0205F370
 .public sub_0205F394
 .public MapObject_GetFieldSystem
-.public MapObject_SingleMovementSetActive
-.public MapObject_SingleMovementSetInactive
+.public MapObject_SetSingleMovement
+.public MapObject_ClearSingleMovement
 .public MapObject_ClearFlag3
 .public MapObject_GetInitialX
-.public MapObject_GetInitialY
+.public MapObject_GetInitialZ
 .public MapObject_GetCurrentX
-.public MapObject_GetCurrentY
+.public MapObject_GetCurrentZ
 .public sub_0205F9D0
 .public sub_02060BB8
 .public GetDeltaXByFacingDirection

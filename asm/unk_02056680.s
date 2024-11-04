@@ -33,7 +33,7 @@ _020566A2:
 	bl GetPlayerXCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	add r1, r0, #0
 	ldr r2, [r4, #0x18]
 	add r0, r6, #0
@@ -186,7 +186,7 @@ _020567D8:
 	bl GetPlayerXCoord
 	str r0, [sp]
 	ldr r0, [r5, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	add r1, r0, #0
 	ldr r0, [sp]
 	add r2, r7, #0
@@ -577,7 +577,7 @@ sub_02056AEC: ; 0x02056AEC
 	bl GetPlayerXCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0

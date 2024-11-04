@@ -15,8 +15,8 @@
 .public sub_0205B700
 .public PlayerAvatar_GetFacingDirection
 .public GetPlayerXCoord
-.public GetPlayerYCoord
+.public GetPlayerZCoord
 .public PlayerAvatar_GetMapObject
-.public MapObject_CheckFlag19Is0
+.public MapObject_CheckFlag19Disabled
 .public sub_0205F9D0
 .public sub_0205FB58

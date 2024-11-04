@@ -293,7 +293,7 @@ static void sub_02053324(FieldSystem *fieldSystem) {
 static void _CopyPlayerPosToLocationWorkFacingSouth(Location *location, FieldSystem *fieldSystem) {
     int x, y;
 
-    y = GetPlayerYCoord(fieldSystem->playerAvatar);
+    y = GetPlayerZCoord(fieldSystem->playerAvatar);
     x = GetPlayerXCoord(fieldSystem->playerAvatar);
 
     InitLocation(location, fieldSystem->location->mapId, -1, x, y, DIR_SOUTH);

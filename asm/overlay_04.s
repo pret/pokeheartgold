@@ -1590,14 +1590,14 @@ _02254AE0:
 	bl MapObject_SetCurrentX
 	add r0, r7, #0
 	mov r1, #0
-	bl MapObject_SetCurrentHeight
+	bl MapObject_SetCurrentY
 	ldr r1, [r4, #0x28]
 	mov r2, #0x1b
 	ldrh r1, [r1, #2]
 	ldrsb r2, [r4, r2]
 	add r0, r7, #0
 	add r1, r1, r2
-	bl MapObject_SetCurrentY
+	bl MapObject_SetCurrentZ
 	add r0, r7, #0
 	bl sub_02060F78
 	add r0, r7, #0
@@ -1615,7 +1615,7 @@ _02254AE0:
 	bl MapObject_SetCurrentX
 	add r0, r7, #0
 	mov r1, #0
-	bl MapObject_SetCurrentHeight
+	bl MapObject_SetCurrentY
 	ldr r1, [r4, #0x28]
 	add r0, r7, #0
 	ldrh r3, [r1, #2]
@@ -1624,7 +1624,7 @@ _02254AE0:
 	mov r1, #1
 	sub r1, r1, r2
 	add r1, r3, r1
-	bl MapObject_SetCurrentY
+	bl MapObject_SetCurrentZ
 	add r0, r7, #0
 	bl sub_02060F78
 _02254B52:
@@ -2145,7 +2145,7 @@ ov04_02254F44: ; 0x02254F44
 	add r7, sp, #0
 _02254F62:
 	ldr r0, [sp]
-	bl MapObject_IsInUse
+	bl MapObject_CheckActive
 	cmp r0, #1
 	bne _02254F7C
 	ldr r0, [sp]
@@ -2316,7 +2316,7 @@ _022550B4:
 	bl GetPlayerXCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	add r2, r0, #0
 	lsl r1, r6, #0x10
 	lsl r2, r2, #0x10
@@ -3857,7 +3857,7 @@ _02255BA6:
 	bl MapObject_GetCurrentX
 	add r5, r0, #0
 	add r0, r6, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	add r2, r0, #0
 	lsl r1, r5, #0x10
 	lsl r2, r2, #0x10
@@ -4201,7 +4201,7 @@ _02255E5E:
 	lsr r1, r1, #0x10
 	add r1, r2, r1
 	asr r1, r1, #0x10
-	bl MapObject_SetCurrentY
+	bl MapObject_SetCurrentZ
 	add r0, r6, #0
 	bl sub_02060F78
 	add r0, r7, #0

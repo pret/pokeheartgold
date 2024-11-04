@@ -311,10 +311,10 @@ ov01_021FE3F8: ; 0x021FE3F8
 	sub sp, #0x38
 	add r5, r0, #0
 	add r4, r1, #0
-	bl MapObject_GetPrevX
+	bl MapObject_GetPreviousX
 	str r0, [sp, #0xc]
 	add r0, r5, #0
-	bl MapObject_GetPrevY
+	bl MapObject_GetPreviousZ
 	str r0, [sp, #0x10]
 	add r0, r5, #0
 	bl MapObject_GetPosVecYCoord

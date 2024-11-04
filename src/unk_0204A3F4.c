@@ -165,7 +165,7 @@ u32 sub_0204A6A0(u32 a0) {
 
 void sub_0204A6A8(FieldSystem *fieldSystem) {
     Location *warp  = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->saveData));
-    u32 y           = GetPlayerYCoord(fieldSystem->playerAvatar);
+    u32 y           = GetPlayerZCoord(fieldSystem->playerAvatar);
     u32 x           = GetPlayerXCoord(fieldSystem->playerAvatar);
     warp->mapId     = fieldSystem->location->mapId;
     warp->warpId    = -1;

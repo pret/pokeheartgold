@@ -25,11 +25,11 @@
 .public sub_0205F40C
 .public sub_0205F484
 .public MapObject_SetPreviousX
-.public MapObject_SetPreviousHeight
 .public MapObject_SetPreviousY
+.public MapObject_SetPreviousZ
 .public MapObject_GetCurrentX
-.public MapObject_GetCurrentHeight
 .public MapObject_GetCurrentY
+.public MapObject_GetCurrentZ
 .public MapObject_GetPositionVec
 .public MapObject_SetPositionVec
 .public MapObject_GetFacingVec
