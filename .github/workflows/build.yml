@@ -113,4 +113,3 @@ jobs:
           cwd: "./xmap"
           add: "*.xMAP"
           message: ${{ env.XMAP_COMMIT_MSG }}
-
