@@ -2221,9 +2221,7 @@ BOOL ov12_02251C74(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarge
 
     return ret;
 }
-// regswaps :
-// sTypeEffectiveness[i][1] [0xc] <-> &(ctx + battlerId*sizeof(BATTLEMON)) [0x18]
-// movePower[0x14] <-> ctx->battleMons[battlerIdTarget]? [0x18]
+
 int ov12_02251D28(BattleSystem *bsys, BattleContext *ctx, int moveNo, int moveTypeDefault, int battlerIdAttacker, int battlerIdTarget, int damage, u32 *moveStatusFlag) {
     int i;
     int seffectMod; // this variable is not used but is required to match

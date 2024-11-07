@@ -88,7 +88,7 @@ void ov02_02247F30(FieldSystem *fieldSystem, u16 mon, u8 level, BOOL shiny, Batt
 void ov02_02246714(TaskManager *man, u32 a1, u32 a2, u32 a3, u32 a4);
 void ov02_022469B4(TaskManager *man, LocalMapObject *obj1, LocalMapObject *obj2);
 void OpenAlphHiddenRoom(TaskManager *man, u32 a1);
-int GetRadioMusicPlayingSeq(void);
+
 SafariDecorationArgs *SafariDecoration_CreateArgs(FieldSystem *fieldSystem, HeapID heapId);
 
 #endif // POKEHEARTGOLD_OVERLAY_02_H
