@@ -66,7 +66,7 @@
 .public sub_0205C6D4
 .public PlayerAvatar_GetMapObject
 .public FieldSystem_GetPlayerAvatar
-.public sub_0205CB38
+.public PlayerAvatar_CheckRunningShoesLock
 .public sub_0205DE38
 .public sub_0205DF0C
 .public sub_0205DFC8

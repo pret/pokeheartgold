@@ -7,7 +7,7 @@
 
 typedef struct BerryPotsArgs {
     void *unk0;
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
     BagCursor *cursor;
     SaveData *saveData;
 } BerryPotsArgs;

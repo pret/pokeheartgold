@@ -37,7 +37,7 @@
 .public sub_02091598
 .public sub_020915A0
 .public sub_020915A4
-.public sOverlayTemplate_NamingScreen
+.public gOverlayTemplate_NamingScreen
 .public gApplication_OakSpeech
 .public OakSpeech_Init
 .public OakSpeech_Main

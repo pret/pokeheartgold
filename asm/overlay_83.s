@@ -608,7 +608,7 @@ _0223E254:
 	mov r0, #0x21
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl sub_020186A4
+	bl TouchscreenListMenu_HandleInput
 	ldr r1, _0223E4F8 ; =0x000005DC
 	add r5, r0, #0
 	bl ov83_022477B0
@@ -662,7 +662,7 @@ _0223E2D2:
 	mov r0, #0x21
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl sub_020186A4
+	bl TouchscreenListMenu_HandleInput
 	ldr r1, _0223E4F8 ; =0x000005DC
 	add r5, r0, #0
 	bl ov83_022477B0
@@ -1136,7 +1136,7 @@ _0223E714:
 	mov r0, #0x21
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl sub_020186A4
+	bl TouchscreenListMenu_HandleInput
 	ldr r1, _0223E8EC ; =0x000005DC
 	add r5, r0, #0
 	bl ov83_022477B0
@@ -7010,7 +7010,7 @@ ov83_02241730: ; 0x02241730
 	mov r0, #0x21
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl sub_02018694
+	bl TouchscreenListMenu_DestroyButtons
 	add r0, r4, #0
 	bl ov83_02242D5C
 _0224174E:
@@ -10585,7 +10585,7 @@ _022434D8:
 _022434F6:
 	ldr r0, _022437F4 ; =0x000005F8
 	ldr r0, [r4, r0]
-	bl sub_020186A4
+	bl TouchscreenListMenu_HandleInput
 	ldr r1, _022437F0 ; =0x000005DC
 	add r5, r0, #0
 	bl ov83_022477B0
@@ -10796,7 +10796,7 @@ _022436B8:
 _022436D4:
 	ldr r0, _022437F4 ; =0x000005F8
 	ldr r0, [r4, r0]
-	bl sub_020186A4
+	bl TouchscreenListMenu_HandleInput
 	ldr r1, _022437F0 ; =0x000005DC
 	add r5, r0, #0
 	bl ov83_022477B0
@@ -11001,7 +11001,7 @@ _02243892:
 _022438AE:
 	ldr r0, _02243BAC ; =0x000005F8
 	ldr r0, [r4, r0]
-	bl sub_020186A4
+	bl TouchscreenListMenu_HandleInput
 	ldr r1, _02243BB0 ; =0x000005DC
 	add r5, r0, #0
 	bl ov83_022477B0
@@ -14407,7 +14407,7 @@ ov83_02245390: ; 0x02245390
 	bne _022453AC
 	ldr r0, _022453B8 ; =0x000005F8
 	ldr r0, [r4, r0]
-	bl sub_02018694
+	bl TouchscreenListMenu_DestroyButtons
 	add r0, r4, #0
 	bl ov83_02246C70
 _022453AC:
@@ -19498,19 +19498,19 @@ _02247CB4: .word ov83_02248570
 
 	thumb_func_start ov83_02247CB8
 ov83_02247CB8: ; 0x02247CB8
-	ldr r3, _02247CC0 ; =sub_02018424
+	ldr r3, _02247CC0 ; =TouchscreenListMenuSpawner_Create
 	mov r0, #0x6b
 	bx r3
 	nop
-_02247CC0: .word sub_02018424
+_02247CC0: .word TouchscreenListMenuSpawner_Create
 	thumb_func_end ov83_02247CB8
 
 	thumb_func_start ov83_02247CC4
 ov83_02247CC4: ; 0x02247CC4
-	ldr r3, _02247CC8 ; =sub_02018474
+	ldr r3, _02247CC8 ; =TouchscreenListMenuSpawner_Destroy
 	bx r3
 	.balign 4, 0
-_02247CC8: .word sub_02018474
+_02247CC8: .word TouchscreenListMenuSpawner_Destroy
 	thumb_func_end ov83_02247CC4
 
 	thumb_func_start ov83_02247CCC
@@ -19525,17 +19525,17 @@ ov83_02247CCC: ; 0x02247CCC
 	str r2, [sp, #4]
 	mov r2, #0
 	str r2, [sp, #8]
-	bl sub_020185FC
+	bl TouchscreenListMenu_Create
 	add sp, #0xc
 	pop {r3, r4, pc}
 	thumb_func_end ov83_02247CCC
 
 	thumb_func_start ov83_02247CE8
 ov83_02247CE8: ; 0x02247CE8
-	ldr r3, _02247CEC ; =sub_02018680
+	ldr r3, _02247CEC ; =TouchscreenListMenu_Destroy
 	bx r3
 	.balign 4, 0
-_02247CEC: .word sub_02018680
+_02247CEC: .word TouchscreenListMenu_Destroy
 	thumb_func_end ov83_02247CE8
 
 	thumb_func_start ov83_02247CF0

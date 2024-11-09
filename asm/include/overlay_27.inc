@@ -40,7 +40,7 @@
 .public BufferIntegerAsString
 .public Sprite_SetPositionXY_CustomScreenYOffset
 .public IsPaletteFadeFinished
-.public sub_020183F0
+.public MenuInputStateMgr_GetState
 .public CreateHeap
 .public DestroyHeap
 .public AllocFromHeapAtEnd
@@ -112,8 +112,8 @@
 .public PlayerAvatar_GetState
 .public PlayerSaveData_CheckRunningShoes
 .public FieldSystem_GetPlayerAvatar
-.public sub_0205CB38
-.public sub_0205CB40
+.public PlayerAvatar_CheckRunningShoesLock
+.public PlayerAvatar_SetRunningShoesLock
 .public MapObject_GetSpriteID
 .public MapObject_GetScriptID
 .public sub_0205F330

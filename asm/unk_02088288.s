@@ -5414,7 +5414,7 @@ sub_0208ADB8: ; 0x0208ADB8
 	ldr r0, [r0, #0x30]
 	cmp r0, #0
 	beq _0208ADCA
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 _0208ADCA:
 	pop {r3, pc}
 	thumb_func_end sub_0208ADB8

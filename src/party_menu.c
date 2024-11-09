@@ -14,6 +14,7 @@
 #include "field_system.h"
 #include "font.h"
 #include "gf_gfx_loader.h"
+#include "menu_input_state.h"
 #include "overlay_94.h"
 #include "party_context_menu.h"
 #include "party_menu_items.h"
@@ -25,7 +26,6 @@
 #include "system.h"
 #include "unk_02005D10.h"
 #include "unk_0200FA24.h"
-#include "unk_020183F0.h"
 #include "unk_020210A0.h"
 #include "unk_0203A3B0.h"
 #include "unk_02066EDC.h"
@@ -91,7 +91,7 @@ static BOOL PartyMenu_HandleDpadInput(PartyMenu *partyMenu);
 static u8 PartyMenu_GetSelectionInDirection(PartyMenu *partyMenu, u8 *px, u8 *py, u8 direction);
 static u8 PartyMenu_GetNewSelectionFromTable(PartyMenu *partyMenu, u8 *px, u8 *py, const u8 *table);
 static void sub_0207AC20(PartyMenu *partyMenu);
-static int sub_0207AC70(PartyMenu *partyMenu, BOOL a1);
+static int sub_0207AC70(PartyMenu *partyMenu, MenuInputState menuInputState);
 static int PartyMenu_GetTouchButtonInput(PartyMenu *partyMenu);
 static u8 PartyMenu_HandleInput(PartyMenu *partyMenu);
 static void sub_0207AFC4(PartyMenu *partyMenu);
@@ -1443,14 +1443,14 @@ static void sub_0207AC20(PartyMenu *partyMenu) {
     }
 }
 
-static int sub_0207AC70(PartyMenu *partyMenu, BOOL a1) {
+static int sub_0207AC70(PartyMenu *partyMenu, MenuInputState menuInputState) {
     G2_BlendNone();
     if (partyMenu->partyMonIndex == PARTY_MON_SELECTION_CANCEL) {
         return 4;
     } else if (partyMenu->partyMonIndex == PARTY_MON_SELECTION_CONFIRM) {
         PlaySE(SEQ_SE_GS_GEARCANCEL);
         if (!partyMenu->cancelDisabled) {
-            sub_0207CB3C(partyMenu, a1);
+            sub_0207CB3C(partyMenu, menuInputState);
             return 3;
         }
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_3 || partyMenu->args->context == PARTY_MENU_CONTEXT_INGAME_TRADE) {
@@ -1523,7 +1523,7 @@ static u8 PartyMenu_HandleInput(PartyMenu *partyMenu) {
                 break;
             }
             PartyMenu_MoveCursorSpriteTo(partyMenu, selection, partyMenu->unk_948[selection].unk_0, partyMenu->unk_948[selection].unk_1);
-            return sub_0207AC70(partyMenu, TRUE);
+            return sub_0207AC70(partyMenu, MENU_INPUT_STATE_TOUCH);
         case PARTY_MON_SELECTION_CANCEL:
             if (partyMenu->cancelDisabled) {
                 // UB: hits "return result;" but result was never initialized
@@ -1532,33 +1532,33 @@ static u8 PartyMenu_HandleInput(PartyMenu *partyMenu) {
             PlaySE(SEQ_SE_GS_GEARCANCEL);
             PartyMenu_SetTopScreenSelectionPanelVisibility(partyMenu, FALSE);
             partyMenu->partyMonIndex = PARTY_MON_SELECTION_CONFIRM;
-            sub_0207CB3C(partyMenu, TRUE);
+            sub_0207CB3C(partyMenu, MENU_INPUT_STATE_TOUCH);
             G2_BlendNone();
             PartyMenu_MoveCursorSpriteTo(partyMenu, 7, partyMenu->unk_948[7].unk_0, partyMenu->unk_948[7].unk_1);
             PartyMenu_StartContextMenuButtonAnim(partyMenu, PARTY_MENU_SPRITE_ID_9, PARTY_MENU_STATE_3, TRUE);
             return 5;
         case PARTY_MON_SELECTION_CONFIRM:
             PartyMenu_MoveCursorSpriteTo_WithSfx(partyMenu, 6, partyMenu->unk_948[6].unk_0, partyMenu->unk_948[6].unk_1);
-            PartyMenu_StartContextMenuButtonAnim(partyMenu, PARTY_MENU_SPRITE_ID_8, sub_0207AC70(partyMenu, TRUE), TRUE);
+            PartyMenu_StartContextMenuButtonAnim(partyMenu, PARTY_MENU_SPRITE_ID_8, sub_0207AC70(partyMenu, MENU_INPUT_STATE_TOUCH), TRUE);
             return 5;
         }
     } else {
         if (gSystem.newKeys & PAD_BUTTON_A) {
             if (partyMenu->partyMonIndex == PARTY_MON_SELECTION_CONFIRM) {
                 PartyMenu_MoveCursorSpriteTo(partyMenu, partyMenu->partyMonIndex, partyMenu->unk_948[partyMenu->partyMonIndex].unk_0, partyMenu->unk_948[partyMenu->partyMonIndex].unk_1);
-                PartyMenu_StartContextMenuButtonAnim(partyMenu, PARTY_MENU_SPRITE_ID_9, sub_0207AC70(partyMenu, FALSE), FALSE);
+                PartyMenu_StartContextMenuButtonAnim(partyMenu, PARTY_MENU_SPRITE_ID_9, sub_0207AC70(partyMenu, MENU_INPUT_STATE_BUTTONS), FALSE);
                 return 5;
             } else if (partyMenu->partyMonIndex == PARTY_MON_SELECTION_CANCEL) {
                 PartyMenu_MoveCursorSpriteTo_WithSfx(partyMenu, partyMenu->partyMonIndex, partyMenu->unk_948[partyMenu->partyMonIndex].unk_0, partyMenu->unk_948[partyMenu->partyMonIndex].unk_1);
-                PartyMenu_StartContextMenuButtonAnim(partyMenu, PARTY_MENU_SPRITE_ID_8, sub_0207AC70(partyMenu, FALSE), FALSE);
+                PartyMenu_StartContextMenuButtonAnim(partyMenu, PARTY_MENU_SPRITE_ID_8, sub_0207AC70(partyMenu, MENU_INPUT_STATE_BUTTONS), FALSE);
                 return 5;
             } else {
-                return sub_0207AC70(partyMenu, FALSE);
+                return sub_0207AC70(partyMenu, MENU_INPUT_STATE_BUTTONS);
             }
         } else if ((gSystem.newKeys & PAD_BUTTON_B) && !partyMenu->cancelDisabled) {
             PlaySE(SEQ_SE_GS_GEARCANCEL);
             PartyMenu_SetTopScreenSelectionPanelVisibility(partyMenu, FALSE);
-            sub_0207CB3C(partyMenu, FALSE);
+            sub_0207CB3C(partyMenu, MENU_INPUT_STATE_BUTTONS);
             G2_BlendNone();
             if (partyMenu->partyMonIndex == PARTY_MON_SELECTION_CONFIRM) {
                 PartyMenu_StartContextMenuButtonAnim(partyMenu, PARTY_MENU_SPRITE_ID_9, PARTY_MENU_STATE_3, FALSE);
@@ -2712,9 +2712,9 @@ void PartyMenu_DeleteContextMenuAndList(PartyMenu *partyMenu) {
     ListMenuItems_Delete(partyMenu->listMenuItems);
 }
 
-void sub_0207CB3C(PartyMenu *partyMenu, BOOL a1) {
+void sub_0207CB3C(PartyMenu *partyMenu, MenuInputState menuInputState) {
     if (partyMenu->args->menuInputStatePtr != NULL) {
-        sub_02018410(partyMenu->args->menuInputStatePtr, a1);
+        MenuInputStateMgr_SetState(partyMenu->args->menuInputStatePtr, menuInputState);
     }
 }
 

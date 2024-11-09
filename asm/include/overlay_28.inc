@@ -28,7 +28,7 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public NewString_ReadMsgData
-.public sub_02018410
+.public MenuInputStateMgr_SetState
 .public CreateHeap
 .public DestroyHeap
 .public FreeToHeap
@@ -74,8 +74,8 @@
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_GetState
 .public FieldSystem_GetPlayerAvatar
-.public sub_0205CB38
-.public sub_0205CB40
+.public PlayerAvatar_CheckRunningShoesLock
+.public PlayerAvatar_SetRunningShoesLock
 .public MapObject_GetSpriteID
 .public MapObject_GetScriptID
 .public sub_0205F330

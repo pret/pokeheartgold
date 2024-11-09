@@ -6743,12 +6743,12 @@ _021E8F20:
 	bne _021E8F34
 	ldr r0, [r0, #0xc]
 	mov r1, #1
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	b _021E8F3C
 _021E8F34:
 	ldr r0, [r0, #0xc]
 	mov r1, #0
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 _021E8F3C:
 	mov r0, #0x25
 	lsl r0, r0, #6
@@ -7394,7 +7394,7 @@ _021E9486:
 	ldr r0, [r4]
 	mov r1, #1
 	ldr r0, [r0, #0xc]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	add r0, r4, #0
 	mov r1, #0x18
 	mov r2, #8
@@ -7406,7 +7406,7 @@ _021E94A0:
 	ldr r0, [r4]
 	mov r1, #0
 	ldr r0, [r0, #0xc]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	add r0, r4, #0
 	mov r1, #0x18
 	mov r2, #8
@@ -8489,7 +8489,7 @@ _021E9DBC:
 _021E9DC2:
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021E9F24 ; =0x000008E9
 	bl PlaySE
 	mov r0, #2
@@ -8506,7 +8506,7 @@ _021E9DC2:
 _021E9DE8:
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021E9F24 ; =0x000008E9
 	bl PlaySE
 	mov r0, #2
@@ -8523,7 +8523,7 @@ _021E9DE8:
 _021E9E0E:
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021E9F24 ; =0x000008E9
 	bl PlaySE
 	mov r0, #2
@@ -8540,7 +8540,7 @@ _021E9E0E:
 _021E9E34:
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021E9F24 ; =0x000008E9
 	bl PlaySE
 	mov r0, #2
@@ -8557,7 +8557,7 @@ _021E9E34:
 _021E9E5A:
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021E9F24 ; =0x000008E9
 	bl PlaySE
 	mov r0, #2
@@ -8574,7 +8574,7 @@ _021E9E5A:
 _021E9E80:
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021E9F24 ; =0x000008E9
 	bl PlaySE
 	mov r0, #2
@@ -8591,7 +8591,7 @@ _021E9E80:
 _021E9EA6:
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021E9F24 ; =0x000008E9
 	bl PlaySE
 	mov r3, #4
@@ -8607,7 +8607,7 @@ _021E9EA6:
 _021E9ECA:
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021E9F24 ; =0x000008E9
 	bl PlaySE
 	add r0, r4, #0
@@ -8620,7 +8620,7 @@ _021E9ECA:
 _021E9EE8:
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021E9F24 ; =0x000008E9
 	bl PlaySE
 	add r0, r4, #0
@@ -9777,7 +9777,7 @@ _021EA87C:
 _021EA886:
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EA954 ; =0x000008E9
 	bl PlaySE
 	add r0, r4, #0
@@ -9787,7 +9787,7 @@ _021EA886:
 _021EA89E:
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EA954 ; =0x000008E9
 	bl PlaySE
 	add r0, r4, #0
@@ -9797,7 +9797,7 @@ _021EA89E:
 _021EA8B6:
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EA954 ; =0x000008E9
 	bl PlaySE
 	add r0, r4, #0
@@ -9807,7 +9807,7 @@ _021EA8B6:
 _021EA8CE:
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EA954 ; =0x000008E9
 	bl PlaySE
 	add r0, r4, #0
@@ -9817,7 +9817,7 @@ _021EA8CE:
 _021EA8E6:
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EA954 ; =0x000008E9
 	bl PlaySE
 	add r0, r4, #0
@@ -9827,7 +9827,7 @@ _021EA8E6:
 _021EA8FE:
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EA954 ; =0x000008E9
 	bl PlaySE
 	add r0, r4, #0
@@ -9837,7 +9837,7 @@ _021EA8FE:
 _021EA916:
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EA954 ; =0x000008E9
 	bl PlaySE
 	add r0, r4, #0
@@ -9930,7 +9930,7 @@ _021EA9AC:
 _021EA9C2:
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EAA18 ; =0x000008E9
 	bl PlaySE
 	add r0, r5, #0
@@ -9956,7 +9956,7 @@ _021EA9DE:
 _021EA9FC:
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EAA18 ; =0x000008E9
 	bl PlaySE
 	add r0, r5, #0
@@ -10046,7 +10046,7 @@ _021EAA90:
 _021EAAA2:
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EAB70 ; =0x000008E9
 	bl PlaySE
 	add r0, r4, #0
@@ -10113,7 +10113,7 @@ _021EAB1A:
 _021EAB24:
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EAB70 ; =0x000008E9
 	bl PlaySE
 	add r0, r4, #0
@@ -10245,7 +10245,7 @@ _021EAC0E:
 _021EAC26:
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EAD68 ; =0x000008E9
 	bl PlaySE
 	ldr r0, _021EAD5C ; =0x00000868
@@ -10290,7 +10290,7 @@ _021EAC82:
 	beq _021EAD56
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EAD68 ; =0x000008E9
 	bl PlaySE
 	mov r0, #2
@@ -10312,7 +10312,7 @@ _021EACAE:
 	bls _021EAD56
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EAD68 ; =0x000008E9
 	bl PlaySE
 	mov r0, #1
@@ -10334,7 +10334,7 @@ _021EACDE:
 	bhs _021EAD56
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EAD68 ; =0x000008E9
 	bl PlaySE
 	mov r0, #4
@@ -10354,7 +10354,7 @@ _021EAD0E:
 	beq _021EAD56
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EAD68 ; =0x000008E9
 	bl PlaySE
 	mov r0, #3
@@ -10867,7 +10867,7 @@ _021EB10A:
 _021EB124:
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EB264 ; =0x000008E9
 	bl PlaySE
 	ldr r0, _021EB25C ; =0x00000868
@@ -10912,7 +10912,7 @@ _021EB180:
 	beq _021EB258
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EB264 ; =0x000008E9
 	bl PlaySE
 	mov r0, #2
@@ -10934,7 +10934,7 @@ _021EB1AC:
 	bls _021EB258
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EB264 ; =0x000008E9
 	bl PlaySE
 	mov r0, #1
@@ -10957,7 +10957,7 @@ _021EB1DC:
 	bhs _021EB258
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EB264 ; =0x000008E9
 	bl PlaySE
 	mov r0, #4
@@ -10978,7 +10978,7 @@ _021EB20E:
 	beq _021EB258
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EB264 ; =0x000008E9
 	bl PlaySE
 	mov r0, #3
@@ -11359,7 +11359,7 @@ _021EB50C:
 _021EB522:
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EB578 ; =0x000008E9
 	bl PlaySE
 	add r0, r5, #0
@@ -11385,7 +11385,7 @@ _021EB53E:
 _021EB55C:
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EB578 ; =0x000008E9
 	bl PlaySE
 	add r0, r5, #0
@@ -11461,7 +11461,7 @@ _021EB5D0:
 _021EB5E6:
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EB63C ; =0x000008E9
 	bl PlaySE
 	add r0, r5, #0
@@ -11487,7 +11487,7 @@ _021EB602:
 _021EB620:
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	ldr r0, _021EB63C ; =0x000008E9
 	bl PlaySE
 	add r0, r5, #0
@@ -34370,7 +34370,7 @@ ov18_021F6E2C: ; 0x021F6E2C
 	ldr r0, [r4]
 	mov r1, #0
 	ldr r0, [r0, #0xc]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	ldr r0, _021F6E50 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #8
@@ -34435,7 +34435,7 @@ ov18_021F6EAC: ; 0x021F6EAC
 	ldr r0, [r4]
 	mov r1, #1
 	ldr r0, [r0, #0xc]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	pop {r4, pc}
 	thumb_func_end ov18_021F6EAC
 
@@ -34480,7 +34480,7 @@ ov18_021F6F08: ; 0x021F6F08
 	ldr r0, [r4]
 	mov r1, #0
 	ldr r0, [r0, #0xc]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	ldr r0, _021F6F30 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #8
@@ -34547,7 +34547,7 @@ ov18_021F6F8C: ; 0x021F6F8C
 	ldr r0, [r4]
 	mov r1, #1
 	ldr r0, [r0, #0xc]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	pop {r4, pc}
 	thumb_func_end ov18_021F6F8C
 
@@ -34592,7 +34592,7 @@ ov18_021F6FE8: ; 0x021F6FE8
 	ldr r0, [r4]
 	mov r1, #0
 	ldr r0, [r0, #0xc]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	ldr r0, _021F7010 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #8
@@ -34740,7 +34740,7 @@ ov18_021F7104: ; 0x021F7104
 	ldr r0, [r5]
 	mov r1, #1
 	ldr r0, [r0, #0xc]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	ldr r0, _021F7120 ; =0x0000189C
 	str r4, [r5, r0]
 	pop {r3, r4, r5, pc}
@@ -34789,7 +34789,7 @@ ov18_021F716C: ; 0x021F716C
 	ldr r0, [r4]
 	mov r1, #0
 	ldr r0, [r0, #0xc]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	ldr r0, _021F7194 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #8
@@ -35017,7 +35017,7 @@ ov18_021F7334: ; 0x021F7334
 	ldr r0, [r5]
 	mov r1, #1
 	ldr r0, [r0, #0xc]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	ldr r0, _021F7350 ; =0x0000189C
 	str r4, [r5, r0]
 	pop {r3, r4, r5, pc}
@@ -35070,7 +35070,7 @@ ov18_021F739C: ; 0x021F739C
 	ldr r0, [r5]
 	mov r1, #0
 	ldr r0, [r0, #0xc]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	ldr r1, _021F743C ; =gSystem
 	mov r0, #8
 	ldr r2, [r1, #0x48]
@@ -35120,7 +35120,7 @@ _021F73F8:
 	ldr r0, [r5]
 	mov r1, #1
 	ldr r0, [r0, #0xc]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	ldr r0, _021F7438 ; =0x00001864
 	lsr r4, r6, #1
 	lsl r1, r4, #0x18
@@ -35213,7 +35213,7 @@ ov18_021F74C4: ; 0x021F74C4
 	ldr r0, [r4]
 	mov r1, #1
 	ldr r0, [r0, #0xc]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	pop {r4, pc}
 	thumb_func_end ov18_021F74C4
 
@@ -35262,7 +35262,7 @@ ov18_021F7520: ; 0x021F7520
 	ldr r0, [r5]
 	mov r1, #0
 	ldr r0, [r0, #0xc]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	ldr r1, _021F75C0 ; =gSystem
 	mov r0, #8
 	ldr r2, [r1, #0x48]
@@ -35312,7 +35312,7 @@ _021F757C:
 	ldr r0, [r5]
 	mov r1, #1
 	ldr r0, [r0, #0xc]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	ldr r0, _021F75BC ; =0x00001864
 	lsr r4, r6, #1
 	lsl r1, r4, #0x18
@@ -35405,7 +35405,7 @@ ov18_021F7648: ; 0x021F7648
 	ldr r0, [r4]
 	mov r1, #1
 	ldr r0, [r0, #0xc]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	pop {r4, pc}
 	thumb_func_end ov18_021F7648
 
@@ -35459,7 +35459,7 @@ ov18_021F76B0: ; 0x021F76B0
 	ldr r0, [r4]
 	mov r1, #0
 	ldr r0, [r0, #0xc]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	ldr r0, _021F76D8 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #8
@@ -35526,7 +35526,7 @@ ov18_021F7734: ; 0x021F7734
 	ldr r0, [r4]
 	mov r1, #1
 	ldr r0, [r0, #0xc]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	pop {r4, pc}
 	thumb_func_end ov18_021F7734
 
@@ -35571,7 +35571,7 @@ ov18_021F7790: ; 0x021F7790
 	ldr r0, [r4]
 	mov r1, #0
 	ldr r0, [r0, #0xc]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	ldr r0, _021F77B8 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #8
@@ -35795,7 +35795,7 @@ ov18_021F7954: ; 0x021F7954
 	ldr r0, [r5]
 	mov r1, #1
 	ldr r0, [r0, #0xc]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	ldr r0, _021F7970 ; =0x0000189C
 	str r4, [r5, r0]
 	pop {r3, r4, r5, pc}

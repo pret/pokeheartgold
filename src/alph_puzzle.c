@@ -12,6 +12,7 @@
 #include "font.h"
 #include "gf_gfx_loader.h"
 #include "gf_gfx_planes.h"
+#include "menu_input_state.h"
 #include "options.h"
 #include "palette.h"
 #include "player_data.h"
@@ -27,7 +28,6 @@
 #include "unk_0200B150.h"
 #include "unk_0200CF18.h"
 #include "unk_0200FA24.h"
-#include "unk_020183F0.h"
 #include "unk_020210A0.h"
 #include "vram_transfer_manager.h"
 #include "yes_no_prompt.h"
@@ -92,7 +92,7 @@ typedef struct AlphPuzzleTile {
 
 typedef struct AlphPuzzleData {
     HeapID heapId;
-    int menuIgnoreTouchFlag;
+    MenuInputState menuInputState;
     int unkState;
     u16 subState;
     u16 sceneTimer;
@@ -660,15 +660,15 @@ static void AlphPuzzle_ScreenOff(void) {
 }
 
 static void AlphPuzzle_InitTextOptionsAndPuzzleIndex(AlphPuzzleData *data) {
-    data->menuIgnoreTouchFlag = sub_020183F0(data->args->menuInputStatePtr);
-    Options *options          = Save_PlayerData_GetOptionsAddr(data->args->saveData);
-    data->textFrameDelay      = Options_GetTextFrameDelay(options);
-    data->frame               = Options_GetFrame(options);
-    data->puzzleIndex         = data->args->puzzle;
+    data->menuInputState = MenuInputStateMgr_GetState(data->args->menuInputStatePtr);
+    Options *options     = Save_PlayerData_GetOptionsAddr(data->args->saveData);
+    data->textFrameDelay = Options_GetTextFrameDelay(options);
+    data->frame          = Options_GetFrame(options);
+    data->puzzleIndex    = data->args->puzzle;
 }
 
 static void AlphPuzzle_Finish(AlphPuzzleData *data) {
-    sub_02018410(data->args->menuInputStatePtr, data->menuIgnoreTouchFlag);
+    MenuInputStateMgr_SetState(data->args->menuInputStatePtr, data->menuInputState);
     if (data->puzzleSolved) {
         Save_VarsFlags_SetAlphPuzzleFlag(Save_VarsFlags_Get(data->args->saveData), data->puzzleIndex);
     }
@@ -782,7 +782,7 @@ static int AlphPuzzle_CheckInput(AlphPuzzleData *data) {
         return ALPH_PUZZLE_STATE_WAIT_FOR_INPUT;
     }
     if (TouchscreenHitbox_FindRectAtTouchNew(sButtonHitboxes) == TS_HITBOX_ALPH_QUIT) {
-        data->menuIgnoreTouchFlag = 1;
+        data->menuInputState = MENU_INPUT_STATE_TOUCH;
         AlphPuzzle_CreateQuitTask(data);
         PlaySE(SEQ_SE_DP_SELECT);
         return ALPH_PUZZLE_STATE_QUIT;
@@ -793,7 +793,7 @@ static int AlphPuzzle_CheckInput(AlphPuzzleData *data) {
     }
     AlphPuzzle_UpdateSelectedTile(data, tileIndex, TRUE);
     PlaySE(SEQ_SE_GS_SEKIBAN_SENTAKU);
-    data->menuIgnoreTouchFlag = 1;
+    data->menuInputState = MENU_INPUT_STATE_TOUCH;
     return ALPH_PUZZLE_STATE_PICKUP_TILE;
 }
 
@@ -1342,7 +1342,7 @@ static void AlphPuzzle_Quit_CreateYesNoPrompt(AlphPuzzleData *data) {
     unkStruct.bgId             = 0;
     unkStruct.x                = 25;
     unkStruct.y                = 10;
-    unkStruct.ignoreTouchFlag  = data->menuIgnoreTouchFlag;
+    unkStruct.ignoreTouchFlag  = data->menuInputState;
     unkStruct.initialCursorPos = 1;
     unkStruct.shapeParam       = 0;
     YesNoPrompt_InitFromTemplateWithPalette(data->yesNoPrompt, &unkStruct, data->palette);
@@ -1360,7 +1360,7 @@ static AlphPuzzleStates AlphPuzzle_Quit_HandleYesNoPrompt(AlphPuzzleData *data) 
     default:
         return ALPH_PUZZLE_STATE_QUIT;
     }
-    data->menuIgnoreTouchFlag = YesNoPrompt_IsInTouchMode(data->yesNoPrompt);
+    data->menuInputState = YesNoPrompt_IsInTouchMode(data->yesNoPrompt);
     YesNoPrompt_Reset(data->yesNoPrompt);
     ClearFrameAndWindow2(&data->window[ALPH_WINDOW_CONFIRM_QUIT], 1);
     FillWindowPixelBuffer(&data->window[ALPH_WINDOW_CONFIRM_QUIT], 0);

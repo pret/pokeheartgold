@@ -8520,7 +8520,7 @@ ov15_021FD774: ; 0x021FD774
 	ldr r0, [r0, #0x78]
 	cmp r0, #0
 	beq _021FD786
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 _021FD786:
 	pop {r3, pc}
 	thumb_func_end ov15_021FD774

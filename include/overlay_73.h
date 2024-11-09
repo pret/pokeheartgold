@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_OVY_73_H
 
 #include "game_stats.h"
+#include "menu_input_state.h"
 #include "options.h"
 #include "overlay_manager.h"
 #include "save.h"
@@ -12,7 +13,7 @@ typedef struct UnkStruct_0203F4F8 {
     struct UnkStruct_0205AC88 *unk4;
     Options *options;
     GameStats *gameStats;
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
 } UnkStruct_0203F4F8;
 
 BOOL ov73_021E5900(OVY_MANAGER *man, int *state);

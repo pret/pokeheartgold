@@ -104,7 +104,7 @@
 .public _s32_div_f
 .public _u32_div_f
 .public gGameLanguage
-.public sOverlayTemplate_NamingScreen
+.public gOverlayTemplate_NamingScreen
 .public gSystem
 .public ov07_02232F58
 .public ov07_02232F60

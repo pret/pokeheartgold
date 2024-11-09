@@ -1,9 +1,11 @@
 #ifndef POKEHEARTGOLD_BERRY_POTS_APP_INTERNAL_H
 #define POKEHEARTGOLD_BERRY_POTS_APP_INTERNAL_H
+
 #include "game_stats.h"
 #include "launch_application.h"
 #include "overlay_16.h"
 #include "sprite.h"
+#include "touchscreen_list_menu.h"
 
 enum BerryPotsApp_022036FC_Action {
     BERRY_POTS_APP_022036FC_ACTION_0,
@@ -27,7 +29,7 @@ enum BerryPotsApp_022036FC_Action {
 
 typedef struct BerryPotsAppArgs_UnkSub4 {
     u8 unk0[4];
-    u32 *unk4;
+    MenuInputStateMgr *menuInputPtr;
     u8 unk8[4];
     SaveData *savedata;
 } BerryPotsAppArgs_UnkSub4;
@@ -69,7 +71,7 @@ typedef struct BerryPotsAppData {
     BerryPotsAppData_UnkSub20 unk20[MAX_BERRY_POT];
     u16 state70;
     u16 state72;
-    u32 unk74;
+    MenuInputState fieldMenuState;
     u8 textFrameDelay;
     u8 frame;
     u8 unk7A;
@@ -83,7 +85,7 @@ typedef struct BerryPotsAppData {
     u16 totalBerryQuantity;
     u16 totalMulchQuantity;
     BgConfig *bgConfig;
-    void *unk8C;
+    TouchscreenListMenuSpawner *menuSpawner;
     u8 unk90[12];
     MsgData *msgData;
     MessageFormat *msgFmt;
@@ -102,7 +104,7 @@ typedef struct BerryPotsAppData {
     NARC *itemIconNarc;
     NARC *berryPotsAppNarc;
     LISTMENUITEM *listMenuItems[4];
-    void *unk1A8;
+    TouchscreenListMenu *menu;
 } BerryPotsAppData;
 
 void ov17_022028B8(BerryPotsAppData *data);

@@ -32,7 +32,7 @@
 .public YesNoPrompt_Destroy
 .public YesNoPrompt_InitFromTemplate
 .public YesNoPrompt_HandleInputForSave
-.public sub_020183F0
+.public MenuInputStateMgr_GetState
 .public CreateHeap
 .public DestroyHeap
 .public FreeToHeap

@@ -471,7 +471,7 @@ ov43_0222A290: ; 0x0222A290
 	bl String_New
 	str r0, [r5, #0x5c]
 	ldr r0, [r4, #4]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	str r0, [r5]
 	ldr r0, [r5, #4]
 	bl Save_PlayerData_GetOptionsAddr
@@ -510,7 +510,7 @@ ov43_0222A2F0: ; 0x0222A2F0
 	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, [r4, #4]
 	ldr r1, [r5]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	ldr r0, [r5, #0x58]
 	bl String_Delete
 	ldr r0, [r5, #0x5c]
@@ -1298,7 +1298,7 @@ ov43_0222A8C0: ; 0x0222A8C0
 	str r0, [r1]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_02018424
+	bl TouchscreenListMenuSpawner_Create
 	str r0, [r5, #0x5c]
 	add r0, r4, #0
 	bl YesNoPrompt_Create
@@ -1315,7 +1315,7 @@ ov43_0222A960: ; 0x0222A960
 	ldr r0, [r4, #0x60]
 	bl YesNoPrompt_Destroy
 	ldr r0, [r4, #0x5c]
-	bl sub_02018474
+	bl TouchscreenListMenuSpawner_Destroy
 	ldr r0, [r4, #0x7c]
 	bl String_Delete
 	add r0, r4, #0
@@ -4451,7 +4451,7 @@ _0222C1B4:
 	add r1, sp, #0x28
 	lsr r2, r2, #0x18
 	mov r3, #0xd
-	bl sub_02018648
+	bl TouchscreenListMenu_CreateWithCallback
 	add r1, r6, #0
 	add r1, #0xec
 	str r0, [r1]
@@ -4498,7 +4498,7 @@ _0222C23C:
 	add r0, r5, #0
 	add r0, #0xec
 	ldr r0, [r0]
-	bl sub_020186A4
+	bl TouchscreenListMenu_HandleInput
 	add r4, r0, #0
 	cmp r4, #3
 	beq _0222C25E
@@ -4522,12 +4522,12 @@ _0222C268:
 	add r0, r5, #0
 	add r0, #0xec
 	ldr r0, [r0]
-	bl sub_02018674
+	bl TouchscreenListMenu_WasLastInputTouch
 	str r0, [r7]
 	add r0, r5, #0
 	add r0, #0xec
 	ldr r0, [r0]
-	bl sub_02018680
+	bl TouchscreenListMenu_Destroy
 	cmp r4, #2
 	bne _0222C2A0
 	add r0, r6, #0
@@ -5792,7 +5792,7 @@ _0222CBE2:
 	str r0, [r4, #8]
 	add r0, r7, #0
 	bl ov43_0222A1DC
-	ldr r0, _0222CD2C ; =sOverlayTemplate_NamingScreen
+	ldr r0, _0222CD2C ; =gOverlayTemplate_NamingScreen
 	ldr r1, [r4, #4]
 	add r2, r6, #0
 	bl OverlayManager_New
@@ -5865,7 +5865,7 @@ _0222CCAC:
 	str r0, [r4, #4]
 	add r0, r7, #0
 	bl ov43_0222A1DC
-	ldr r0, _0222CD2C ; =sOverlayTemplate_NamingScreen
+	ldr r0, _0222CD2C ; =gOverlayTemplate_NamingScreen
 	ldr r1, [r4, #4]
 	add r2, r6, #0
 	bl OverlayManager_New
@@ -5918,7 +5918,7 @@ _0222CD26:
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0222CD2C: .word sOverlayTemplate_NamingScreen
+_0222CD2C: .word gOverlayTemplate_NamingScreen
 _0222CD30: .word _02102620
 	thumb_func_end ov43_0222CBB4
 

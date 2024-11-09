@@ -410,6 +410,7 @@ $(eval $(call arc_strip_name,files/itemtool/itemdata/item_icon.narc,files/a/0/1/
 $(eval $(call arc_strip_name,files/graphic/plist_gra.narc,files/a/0/2/1))
 $(eval $(call arc_strip_name,files/msgdata/msg.narc,files/a/0/2/7))
 $(eval $(call arc_strip_name,files/battledata/script/effect_script.narc,files/a/0/3/0))
+$(eval $(call arc_strip_name,files/data/namein.narc,files/a/0/3/1))
 $(eval $(call arc_strip_name,files/fielddata/eventdata/zone_event.narc,files/a/0/3/2))
 $(eval $(call arc_strip_name,files/poketool/personal/wotbl.narc,files/a/0/3/3))
 $(eval $(call arc_strip_name,files/poketool/personal/evo.narc,files/a/0/3/4))
@@ -437,6 +438,7 @@ $(eval $(call arc_strip_name,files/fielddata/tsurepoke/tp_param.narc,files/a/1/4
 $(eval $(call arc_strip_name,files/fielddata/graphic/preview_graphic/preview_graphic.narc,files/a/1/5/0))
 $(eval $(call arc_strip_name,files/system/touch_subwindow.narc,files/a/1/5/2))
 $(eval $(call arc_strip_name,files/data/gs_areawindow.narc,files/a/1/6/3))
+$(eval $(call arc_strip_name,files/data/sbox_gra.narc,files/a/1/6/5))
 $(eval $(call arc_strip_name,files/poketool/personal/performance.narc,files/a/1/6/9))
 $(eval $(call arc_strip_name,files/application/annon/puzzle_gra.narc,files/a/1/7/2))
 $(eval $(call arc_strip_name,files/demo/legend.narc,files/a/1/7/4))
@@ -519,6 +521,8 @@ include files/data/photo_data.mk
 include files/graphic/camera_viewfinder.mk
 include files/application/guinness.mk
 include files/demo/intro/intro.mk
+include files/data/namein.mk
+include files/data/sbox_gra.mk
 
 $(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
 

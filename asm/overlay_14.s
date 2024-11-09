@@ -945,12 +945,12 @@ ov14_021E6048: ; 0x021E6048
 	bne _021E6064
 	ldr r0, [r0, #4]
 	mov r1, #0
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	pop {r4, pc}
 _021E6064:
 	ldr r0, [r0, #4]
 	mov r1, #1
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov14_021E6048
@@ -6717,7 +6717,7 @@ ov14_021E8B3C: ; 0x021E8B3C
 	ldr r0, [r4, #4]
 	ldr r2, [r2, #0x18]
 	bl PCStorage_GetBoxName
-	ldr r0, _021E8B7C ; =sOverlayTemplate_NamingScreen
+	ldr r0, _021E8B7C ; =gOverlayTemplate_NamingScreen
 	ldr r1, [r4, #0x18]
 	mov r2, #9
 	bl OverlayManager_New
@@ -6726,7 +6726,7 @@ ov14_021E8B3C: ; 0x021E8B3C
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
-_021E8B7C: .word sOverlayTemplate_NamingScreen
+_021E8B7C: .word gOverlayTemplate_NamingScreen
 	thumb_func_end ov14_021E8B3C
 
 	thumb_func_start ov14_021E8B80

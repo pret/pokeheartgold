@@ -113,7 +113,7 @@
 .public YesNoPrompt_InitFromTemplate
 .public YesNoPrompt_HandleInput
 .public YesNoPrompt_Reset
-.public sub_02018410
+.public MenuInputStateMgr_SetState
 .public sub_0201956C
 .public sub_020195C0
 .public sub_020195F4
@@ -292,7 +292,7 @@
 .public _fsub
 .public _s32_div_f
 .public _u32_div_f
-.public sOverlayTemplate_NamingScreen
+.public gOverlayTemplate_NamingScreen
 .public gOverlayTemplate_PokemonSummary
 .public gSystem
 .public PCBox_Init

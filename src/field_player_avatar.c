@@ -443,9 +443,9 @@ void sub_0205C7B4(PlayerAvatar *avatar) {
 }
 
 void PlayerSaveData_Init(struct PlayerSaveData *playerSaveData) {
-    playerSaveData->hasRunningShoes = 0;
-    playerSaveData->unk2            = 0;
-    playerSaveData->unk4            = 0;
+    playerSaveData->hasRunningShoes  = 0;
+    playerSaveData->runningShoesLock = 0;
+    playerSaveData->unk4             = 0;
 }
 
 BOOL PlayerSaveData_CheckRunningShoes(struct PlayerSaveData *playerSaveData) {
@@ -724,10 +724,10 @@ u32 sub_0205CB2C(PlayerAvatar *avatar) {
     return sub_0205C73C(avatar, 128);
 }
 
-u16 sub_0205CB38(PlayerAvatar *avatar) {
-    return avatar->playerSaveData->unk2;
+u16 PlayerAvatar_CheckRunningShoesLock(PlayerAvatar *avatar) {
+    return avatar->playerSaveData->runningShoesLock;
 }
 
-void sub_0205CB40(PlayerAvatar *avatar, u16 unkA) {
-    avatar->playerSaveData->unk2 = unkA;
+void PlayerAvatar_SetRunningShoesLock(PlayerAvatar *avatar, u16 lock) {
+    avatar->playerSaveData->runningShoesLock = lock;
 }

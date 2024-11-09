@@ -55,8 +55,8 @@
 .public sub_0200FBF4
 .public YesNoPrompt_Create
 .public YesNoPrompt_Destroy
-.public sub_020183F0
-.public sub_02018410
+.public MenuInputStateMgr_GetState
+.public MenuInputStateMgr_SetState
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
 .public CreateHeap

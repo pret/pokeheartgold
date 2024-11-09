@@ -10024,7 +10024,7 @@ ov03_02258D88: ; 0x02258D88
 	lsl r0, r0, #2
 	add r0, r1, r0
 	mov r1, #1
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	mov r0, #1
 	pop {r4, pc}
 _02258DAC:
@@ -10038,7 +10038,7 @@ _02258DAC:
 	lsl r0, r0, #2
 	add r0, r1, r0
 	mov r1, #0
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 _02258DC4:
 	ldr r0, _02258DE0 ; =gSystem
 	ldr r1, [r0, #0x48]

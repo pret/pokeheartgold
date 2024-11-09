@@ -301,7 +301,7 @@ static u32 ov17_02203AD4(BerryPotsAppData *data) {
     BOOL flag = FALSE;
 
     if (gSystem.newKeys & (PAD_BUTTON_Y | PAD_BUTTON_X | PAD_KEY_DOWN | PAD_KEY_UP | PAD_KEY_LEFT | PAD_KEY_RIGHT | PAD_BUTTON_B | PAD_BUTTON_A)) {
-        data->unk74 = 0;
+        data->fieldMenuState = MENU_INPUT_STATE_BUTTONS;
     }
 
     u32 newKeys = gSystem.newKeys;
@@ -335,8 +335,8 @@ static u32 ov17_02203B68(BerryPotsAppData *data, BOOL *a1) {
         return 2;
     }
 
-    *a1         = TRUE;
-    data->unk74 = 1;
+    *a1                  = TRUE;
+    data->fieldMenuState = MENU_INPUT_STATE_TOUCH;
     return ov17_02203A74(data, unk);
 }
 
@@ -348,7 +348,7 @@ static BOOL ov17_02203B88(BerryPotsAppData *data) {
     }
 
     if (gSystem.newKeys & (PAD_BUTTON_Y | PAD_BUTTON_X | PAD_KEY_DOWN | PAD_KEY_UP | PAD_KEY_LEFT | PAD_KEY_RIGHT | PAD_BUTTON_B | PAD_BUTTON_A)) {
-        data->unk74 = 0;
+        data->fieldMenuState = MENU_INPUT_STATE_BUTTONS;
     }
 
     if (gSystem.newKeys & PAD_KEY_LEFT) {
@@ -379,10 +379,10 @@ static BOOL ov17_02203C20(BerryPotsAppData *data, BOOL *a1) {
         return FALSE;
     }
 
-    *a1         = TRUE;
-    data->unk74 = 1;
-    data->unk7C = unk;
-    data->unk81 = data->unk7C;
+    *a1                  = TRUE;
+    data->fieldMenuState = MENU_INPUT_STATE_TOUCH;
+    data->unk7C          = unk;
+    data->unk81          = data->unk7C;
     Sprite_SetAnimActiveFlag(data->sprites[1], FALSE);
     ov17_022028B8(data);
 

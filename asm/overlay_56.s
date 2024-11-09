@@ -54,7 +54,7 @@ ov56_021E5C20: ; 0x021E5C20
 	bl TextFlags_SetCanABSpeedUpPrint
 	ldr r0, [r4, #0x1c]
 	ldr r0, [r0, #8]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	strb r0, [r4, #0xa]
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -89,7 +89,7 @@ ov56_021E5CB4: ; 0x021E5CB4
 	ldrb r1, [r4, #0xa]
 	ldr r0, [r0, #8]
 	ldr r5, [r4]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	add r0, r6, #0
 	bl OverlayManager_FreeData
 	add r0, r5, #0

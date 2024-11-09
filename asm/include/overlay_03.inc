@@ -46,7 +46,7 @@
 .public ListMenuItems_Delete
 .public ListMenuItems_AppendFromMsgData
 .public ListMenuItems_AddItem
-.public sub_02018410
+.public MenuInputStateMgr_SetState
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
 .public FreeToHeap

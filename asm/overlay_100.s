@@ -1486,7 +1486,7 @@ Phone_Init: ; 0x021E642C
 	strb r0, [r4, #5]
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0x28]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #0x28]
 	bl sub_0202EE7C
@@ -1643,7 +1643,7 @@ Phone_Exit: ; 0x021E65BC
 	ldr r0, [r4, #0x20]
 	ldr r1, [r4, #0xc]
 	ldr r0, [r0, #0x28]
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 	ldr r4, [r4]
 	add r0, r5, #0
 	bl OverlayManager_FreeData

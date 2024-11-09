@@ -2,8 +2,8 @@
 #define POKEHEARTGOLD_FIELD_LAUNCH_APPLICATION_INTERNAL_H
 
 #include "launch_application.h"
+#include "naming_screen.h"
 #include "unk_0202C034.h"
-#include "unk_02082908.h"
 
 typedef enum PartyMenuMoveSelectState {
     PMMS_OPEN_PARTY_MENU,
@@ -58,7 +58,7 @@ typedef struct UnkStruct_0203F0D0 {
     PlayerProfile *profile;
     int *unk18;
     int unk1C;
-    BOOL *menuInputStatePtr;
+    MenuInputStateMgr *menuInputStatePtr;
 } UnkStruct_0203F0D0;
 
 typedef struct UnkStruct_0203F134 {

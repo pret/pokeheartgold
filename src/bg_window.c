@@ -124,7 +124,7 @@ void SetScreenModeAndDisable(const struct GraphicsModes *gfxModes, enum GFScreen
     }
 }
 
-void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *template, u8 bgType, GFPlaneToggle enable) {
+void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *template, u8 bgType, u8 enable) {
     u8 screenSize = TranslateGFBgModePairToGXScreenSize((enum GFBgScreenSize) template->size, (enum GFBgType)bgType);
 
     switch (bgId) {
@@ -624,7 +624,7 @@ void SetBgPriority(u8 bgId, u16 priority) {
     }
 }
 
-void ToggleBgLayer(u8 bgId, GFPlaneToggle toggle) {
+void ToggleBgLayer(u8 bgId, u8 toggle) {
     switch (bgId) {
     case GF_BG_LYR_MAIN_0:
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, toggle);
@@ -1384,8 +1384,8 @@ u8 GetBgPriority(BgConfig *bgConfig, u8 bgId) {
     return 0;
 }
 
-#define GetPixelAddressFromBlit4bpp(ptr, x, y, width) ((u8 *)((ptr) + (((x) >> 1) & 3) + (((x) << 2) & 0x3FE0) + ((((y) << 2) & 0x3FE0) * (width)) + (((u32)(((y) << 2) & 0x1C)))))
-#define GetPixelAddressFromBlit8bpp(ptr, x, y, width) ((u8 *)((ptr) + ((x) & 7) + (((x) << 3) & 0x7FC0) + ((((y) << 3) & 0x7FC0) * (width)) + (((u32)(((y) << 3) & 0x38)))))
+#define GetPixelAddressFromBlit4bpp(ptr, x, y, width) ((u8 *)((ptr) + (((x) >> 1) & 3) + (((x) << 2) & 0x3FE0) + ((((y) << 2) & 0x3FE0) * (width)) + ((u32)(((y) << 2) & 0x1C))))
+#define GetPixelAddressFromBlit8bpp(ptr, x, y, width) ((u8 *)((ptr) + ((x) & 7) + (((x) << 3) & 0x7FC0) + ((((y) << 3) & 0x7FC0) * (width)) + ((u32)(((y) << 3) & 0x38))))
 #define ConvertPixelsToTiles(x)                       (((x) + ((x) & 7)) >> 3)
 
 void BlitBitmapRect4Bit(const Bitmap *src, const Bitmap *dest, u16 srcX, u16 srcY, u16 destX, u16 destY, u16 width, u16 height, u16 colorKey) {

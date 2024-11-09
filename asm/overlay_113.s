@@ -203,7 +203,7 @@ ov113_021E5A7C: ; 0x021E5A7C
 	add r5, r0, #0
 	ldr r0, [r5, #4]
 	ldr r0, [r0]
-	bl sub_020183F0
+	bl MenuInputStateMgr_GetState
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
@@ -311,12 +311,12 @@ _021E5B52:
 ov113_021E5B60: ; 0x021E5B60
 	add r1, r0, #0
 	ldr r0, [r1, #4]
-	ldr r3, _021E5B6C ; =sub_02018410
+	ldr r3, _021E5B6C ; =MenuInputStateMgr_SetState
 	ldr r0, [r0]
 	ldr r1, [r1, #0x14]
 	bx r3
 	.balign 4, 0
-_021E5B6C: .word sub_02018410
+_021E5B6C: .word MenuInputStateMgr_SetState
 	thumb_func_end ov113_021E5B60
 
 	thumb_func_start ov113_021E5B70

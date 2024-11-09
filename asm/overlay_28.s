@@ -736,7 +736,7 @@ ov28_0225DA74: ; 0x0225DA74
 	bl ov28_0225DA1C
 	ldr r0, [r5, #0x18]
 	bl FieldSystem_GetPlayerAvatar
-	bl sub_0205CB38
+	bl PlayerAvatar_CheckRunningShoesLock
 	cmp r0, #0
 	bne _0225DB22
 	mov r0, #0x61
@@ -2642,7 +2642,7 @@ _0225E96C:
 	ldr r0, [r5, #0x18]
 	bl FieldSystem_GetPlayerAvatar
 	add r6, r0, #0
-	bl sub_0205CB38
+	bl PlayerAvatar_CheckRunningShoesLock
 	add r4, r0, #0
 	bne _0225E9B8
 	mov r0, #0x61
@@ -2671,7 +2671,7 @@ _0225E9D0:
 	mov r1, #1
 	add r0, r6, #0
 	eor r1, r4
-	bl sub_0205CB40
+	bl PlayerAvatar_SetRunningShoesLock
 _0225E9DA:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -2728,7 +2728,7 @@ _0225EA10:
 	lsl r0, r0, #2
 	add r0, r1, r0
 	mov r1, #1
-	bl sub_02018410
+	bl MenuInputStateMgr_SetState
 _0225EA50:
 	pop {r4, pc}
 	nop

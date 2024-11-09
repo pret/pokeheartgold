@@ -36,7 +36,7 @@ void GfGfx_DisableEngineAPlanes(void) {
     sEngineAPlanes = 0;
 }
 
-void GfGfx_EngineATogglePlanes(GXPlaneMask planeMask, GFPlaneToggle enable) {
+void GfGfx_EngineATogglePlanes(u8 planeMask, u8 enable) {
     if (enable == GF_PLANE_TOGGLE_ON) {
         if (sEngineAPlanes & planeMask) {
             return;
@@ -59,7 +59,7 @@ void GfGfx_DisableEngineBPlanes(void) {
     sEngineBPlanes = 0;
 }
 
-void GfGfx_EngineBTogglePlanes(GXPlaneMask planeMask, GFPlaneToggle enable) {
+void GfGfx_EngineBTogglePlanes(u8 planeMask, u8 enable) {
     if (enable == GF_PLANE_TOGGLE_ON) {
         if (sEngineBPlanes & planeMask) {
             return;

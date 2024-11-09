@@ -1829,7 +1829,7 @@ FrtCmd_052: ; 0x0222CB54
 	bl NamingScreen_CreateArgs
 	add r2, r0, #0
 	ldr r0, _0222CB8C ; =ov80_0222CB94
-	ldr r1, _0222CB90 ; =sOverlayTemplate_NamingScreen
+	ldr r1, _0222CB90 ; =gOverlayTemplate_NamingScreen
 	str r0, [sp]
 	ldr r0, [r4]
 	mov r3, #0
@@ -1840,7 +1840,7 @@ FrtCmd_052: ; 0x0222CB54
 	pop {r4, pc}
 	.balign 4, 0
 _0222CB8C: .word ov80_0222CB94
-_0222CB90: .word sOverlayTemplate_NamingScreen
+_0222CB90: .word gOverlayTemplate_NamingScreen
 	thumb_func_end FrtCmd_052
 
 	thumb_func_start ov80_0222CB94
