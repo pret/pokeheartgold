@@ -7,7 +7,7 @@
 .public MapObject_GetPreviousFacingDirection
 .public MapObject_GetPreviousX
 .public MapObject_GetPreviousZ
-.public MapObject_GetPosVecYCoord
+.public MapObject_GetPositionVectorYCoord
 .public sub_020611C8
 .public sub_02068D90
 .public sub_02068D98

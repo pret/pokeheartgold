@@ -1810,7 +1810,7 @@ sub_02060B90: ; 0x02060B90
 	add r5, r0, #0
 	add r7, r2, #0
 	add r4, r3, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	ldr r0, [sp, #0x28]
 	str r4, [sp]
 	str r0, [sp, #4]
@@ -2399,7 +2399,7 @@ sub_0206101C: ; 0x0206101C
 	add r1, sp, #0
 	add r6, r0, #0
 	add r4, r2, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	cmp r5, #3
 	bhi _02061062
 	add r0, r5, r5
@@ -2435,7 +2435,7 @@ _0206105C:
 _02061062:
 	add r0, r6, #0
 	add r1, sp, #0
-	bl MapObject_SetPositionVec
+	bl MapObject_SetPositionVector
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -2447,7 +2447,7 @@ sub_02061070: ; 0x02061070
 	sub sp, #0x18
 	add r1, sp, #0xc
 	add r5, r0, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r3, sp, #0xc
 	ldmia r3!, {r0, r1}
 	add r2, sp, #0
@@ -2481,7 +2481,7 @@ _020610A2:
 	add r1, sp, #0xc
 	str r0, [sp, #0x10]
 	add r0, r5, #0
-	bl MapObject_SetPositionVec
+	bl MapObject_SetPositionVector
 	add r0, r5, #0
 	bl MapObject_GetCurrentY
 	add r1, r0, #0

@@ -210,10 +210,10 @@ ov01_022007F8: ; 0x022007F8
 _0220081A:
 	add r0, r4, #0
 	add r1, sp, #0xc
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r4, #0
 	add r1, sp, #0
-	bl MapObject_GetFacingVec
+	bl MapObject_CopyFacingVector
 	ldr r1, [sp, #0xc]
 	ldr r0, [sp]
 	add r0, r1, r0

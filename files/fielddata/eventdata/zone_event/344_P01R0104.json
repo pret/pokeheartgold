@@ -2,47 +2,47 @@
   "header": "fielddata/script/scr_seq/event_P01R0104.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_p01r0104_iron",
+      "scriptId": "std_hiddenitem_p01r0104_iron",
       "type": 2,
       "x": 26,
-      "y": 20,
-      "z": 0,
+      "z": 20,
+      "y": 0,
       "dir": 4
     }
   ],
   "objects": [
     {
       "id": "obj_P01R0104_seaman_2",
-      "sprite_id": "SPRITE_SEAMAN_2",
+      "spriteId": "SPRITE_SEAMAN_2",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_P01R0104_000 + 1",
-      "dirn": 1,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_P01R0104_000 + 1",
+      "facingDirection": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 23,
-      "y": 19,
-      "z": 0
+      "z": 19,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 12,
-      "y": 12,
+      "z": 12,
       "header": "MAP_P01R0103",
       "anchor": 1,
-      "height": 0
+      "y": 0
     },
     {
       "x": 23,
-      "y": 17,
+      "z": 17,
       "header": "MAP_P01R0301",
       "anchor": 12,
-      "height": 0
+      "y": 0
     }
   ]
 }

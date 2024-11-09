@@ -3218,7 +3218,7 @@ _021FAB26:
 _021FAB28:
 	add r0, r6, #0
 	add r1, sp, #0x20
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r6, #0
 	bl ov01_021F146C
 	ldr r1, [sp, #0xc]

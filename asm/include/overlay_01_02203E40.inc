@@ -3,7 +3,7 @@
 .public GF3dRender_DrawModel
 .public Camera_GetLookAtCamPos
 .public MapObject_GetPriorityPlusValue
-.public MapObject_GetPositionVec
+.public MapObject_CopyPositionVector
 .public sub_02068D74
 .public sub_02068D90
 .public sub_02068D98

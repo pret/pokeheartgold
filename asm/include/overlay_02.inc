@@ -270,8 +270,8 @@
 .public MapObject_UnpauseMovement
 .public MapObject_GetCurrentX
 .public MapObject_GetCurrentZ
-.public MapObject_GetPositionVec
-.public MapObject_SetPositionVec
+.public MapObject_CopyPositionVector
+.public MapObject_SetPositionVector
 .public GetDeltaXByFacingDirection
 .public GetDeltaYByFacingDirection
 .public MapObject_AreBitsSetForMovementScriptInit

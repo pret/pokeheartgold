@@ -634,7 +634,7 @@ BOOL ScrCmd_699(ScriptContext *ctx) {
     mapObjectManager = fieldSystem->mapObjectManager;
 
     playerObj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
-    MapObject_GetPositionVec(playerObj, &vec);
+    MapObject_CopyPositionVector(playerObj, &vec);
 
     y = vec.y;
 
@@ -644,9 +644,9 @@ BOOL ScrCmd_699(ScriptContext *ctx) {
         }
         MapObject_SetFlagsBits(curObj, MAPOBJECTFLAG_UNK13);
         if (MapObject_TestFlagsBits(curObj, MAPOBJECTFLAG_UNK12) == TRUE) {
-            MapObject_GetPositionVec(curObj, &vec);
+            MapObject_CopyPositionVector(curObj, &vec);
             vec.y = y;
-            MapObject_SetPositionVec(curObj, &vec);
+            MapObject_SetPositionVector(curObj, &vec);
             MapObject_SetCurrentY(curObj, (y >> 3) / FX32_ONE);
         }
         sprite = ov01_021F72DC(curObj);

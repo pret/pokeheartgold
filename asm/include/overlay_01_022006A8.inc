@@ -7,8 +7,8 @@
 .public MapObject_GetID
 .public MapObject_GetMapID
 .public MapObject_GetFieldSystem
-.public MapObject_GetPositionVec
-.public MapObject_GetFacingVec
+.public MapObject_CopyPositionVector
+.public MapObject_CopyFacingVector
 .public sub_02068D98
 .public sub_02068DA8
 .public ov01_021F1430

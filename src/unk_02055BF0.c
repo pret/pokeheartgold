@@ -425,14 +425,14 @@ BOOL sub_020562B0(TaskManager *man) {
         fenv18    = fenv->unk18;
         u32 state = fenv18->state;
         fenv18->state++;
-        MapObject_GetPositionVec(obj, &pos);
+        MapObject_CopyPositionVector(obj, &pos);
         if (fenv18->direction == DIR_SOUTH) { // Ladders
             pos.y += 2048;
             pos.z -= 6144;
         } else {
             pos.y += 8192;
         }
-        MapObject_SetPositionVec(obj, &pos);
+        MapObject_SetPositionVector(obj, &pos);
         if (fenv18->state >= 16) {
             fenv->transitionState++;
         }
@@ -483,9 +483,9 @@ BOOL sub_02056424(TaskManager *man) {
         fenv18 = fenv->unk18;
         fenv18->state++;
         VecFx32 pos;
-        MapObject_GetPositionVec(obj, &pos);
+        MapObject_CopyPositionVector(obj, &pos);
         pos.y -= 8192;
-        MapObject_SetPositionVec(obj, &pos);
+        MapObject_SetPositionVector(obj, &pos);
         if (fenv18->state >= 16) {
             fenv->transitionState++;
         }

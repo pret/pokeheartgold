@@ -113,7 +113,7 @@ ov01_021FF74C: ; 0x021FF74C
 	add r0, r5, #0
 	add r1, sp, #8
 	str r5, [sp, #0x20]
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r5, #0
 	bl MapObject_GetCurrentX
 	add r6, r0, #0

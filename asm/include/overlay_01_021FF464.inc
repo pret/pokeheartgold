@@ -14,8 +14,8 @@
 .public MapObject_GetSpriteID
 .public MapObject_GetFieldSystem
 .public MapObject_CheckFlag26
-.public MapObject_GetPositionVec
-.public MapObject_GetFacingVec
+.public MapObject_CopyPositionVector
+.public MapObject_CopyFacingVector
 .public sub_02068D90
 .public sub_02068D98
 .public sub_02068DA8

@@ -2,75 +2,75 @@
   "header": "fielddata/script/scr_seq/event_D02R0101.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d02r0101_revive",
+      "scriptId": "std_hiddenitem_d02r0101_revive",
       "type": 2,
       "x": 24,
-      "y": 7,
-      "z": 0,
+      "z": 7,
+      "y": 0,
       "dir": 4
     }
   ],
   "objects": [
     {
       "id": "obj_D02R0101_gsrivel",
-      "sprite_id": "SPRITE_GSRIVEL",
+      "spriteId": "SPRITE_GSRIVEL",
       "movement": 16,
       "type": 0,
-      "flag": "FLAG_UNK_25C",
-      "scr": 0,
-      "dirn": 2,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_UNK_25C",
+      "scriptId": 0,
+      "facingDirection": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 10,
-      "y": 4,
-      "z": 0
+      "z": 4,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 4,
-      "y": 4,
+      "z": 4,
       "header": "MAP_R03",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 22,
-      "y": 23,
+      "z": 23,
       "header": "MAP_R04",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 17,
-      "y": 4,
+      "z": 4,
       "header": "MAP_D02R0102",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 22,
-      "y": 16,
+      "z": 16,
       "header": "MAP_D02R0102",
       "anchor": 3,
-      "height": 0
+      "y": 0
     },
     {
       "x": 22,
-      "y": 15,
+      "z": 15,
       "header": "MAP_D02R0102",
       "anchor": 3,
-      "height": 0
+      "y": 0
     },
     {
       "x": 17,
-      "y": 3,
+      "z": 3,
       "header": "MAP_D02R0102",
       "anchor": 0,
-      "height": 0
+      "y": 0
     }
   ]
 }

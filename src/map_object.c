@@ -5,11 +5,15 @@
 #include "constants/sprites.h"
 
 #include "field_player_avatar.h"
+#include "fieldmap.h"
 #include "filesystem.h"
 #include "heap.h"
 #include "overlay_01_021F944C.h"
 #include "sys_task_api.h"
 #include "unk_0205FD20.h"
+
+extern UnkLMOCallbackStruct *_020FD1F4[57];
+extern UnkLMOCallbackStruct2 *ov01_02209A38[20];
 
 extern void sub_020611DC(LocalMapObject *object);
 extern BOOL sub_02061248(FieldSystem *fieldSystem, VecFx32 *, BOOL);
@@ -17,6 +21,9 @@ extern void MapObject_ClearHeldMovement(LocalMapObject *object);
 extern void ov01_021FA2B8(LocalMapObject *object, BOOL set);
 extern void sub_0205FD30(LocalMapObject *object);
 extern void ov01_021F92A0(LocalMapObject *object);
+extern ObjectEventGraphicsInfo *ObjectEvent_GetGraphicsInfo(u32 spriteId);
+extern void sub_02060F78(LocalMapObject *object);
+extern void sub_0205FD20(LocalMapObject *object);
 
 static MapObjectManager *MapObjectManager_New(u32 objectCount);
 static LocalMapObject *MapObject_CreateFromObjectEvent(MapObjectManager *manager, ObjectEvent *objectEvent, u32 mapNo);
@@ -30,13 +37,13 @@ static LocalMapObject *MapObjectManager_GetFirstInactiveObject(MapObjectManager 
 static LocalMapObject *sub_0205EA98(MapObjectManager *manager, u32 id, u32 mapNo);
 static void sub_0205EAF0(MapObjectManager *manager, LocalMapObject *object);
 static void MapObject_InitFromObjectEvent(LocalMapObject *object, ObjectEvent *objectEvent, FieldSystem *fieldSystem);
-static void MapObject_SetPositionVecFromObjectEvent(LocalMapObject *object, ObjectEvent *objectEvent);
+static void MapObject_SetPositionVectorFromObjectEvent(LocalMapObject *object, ObjectEvent *objectEvent);
 static void sub_0205EC90(LocalMapObject *object, MapObjectManager *manager);
 static void sub_0205ECE0(LocalMapObject *object);
 static void sub_0205ED18(LocalMapObject *object);
 static void MapObject_Clear(LocalMapObject *object);
 static u32 sub_0205ED90(LocalMapObject *object, u32 mapId, u32 objectEventCount, ObjectEvent *objectEvents);
-static LocalMapObject *MapObjectManager_GetFirstObjectWithIDAndMap(MapObjectManager *manager, u32 mapId, u32 flagId);
+static LocalMapObject *MapObjectManager_GetFirstObjectWithIDAndMap(MapObjectManager *manager, u32 objectId, u32 mapId);
 static void sub_0205EF48(LocalMapObject *object);
 static void sub_0205EF5C(LocalMapObject *object);
 static void sub_0205EF8C(LocalMapObject *object);
@@ -86,6 +93,45 @@ static void MapObject_SetFlag25(LocalMapObject *object, BOOL set);
 static void MapObject_SetInitialX(LocalMapObject *object, u32 initialX);
 static void MapObject_SetInitialY(LocalMapObject *object, u32 initialY);
 static void MapObject_SetInitialZ(LocalMapObject *object, u32 initialZ);
+static void ObjectEvent_SetID(ObjectEvent *objectEvent, u16 id);
+static u16 ObjectEvent_GetID(ObjectEvent *objectEvent);
+static void ObjectEvent_SetSpriteID(ObjectEvent *objectEvent, u32 spriteId);
+static u16 ObjectEvent_GetSpriteID(ObjectEvent *objectEvent);
+static void ObjectEvent_SetMovement(ObjectEvent *objectEvent, u32 movement);
+static u16 ObjectEvent_GetMovement(ObjectEvent *objectEvent);
+static void ObjectEvent_SetType(ObjectEvent *objectEvent, u16 type);
+static u16 ObjectEvent_GetType(ObjectEvent *objectEvent);
+static void ObjectEvent_SetEventFlag(ObjectEvent *objectEvent, u16 eventFlag);
+static u16 ObjectEvent_GetEventFlag(ObjectEvent *objectEvent);
+static void ObjectEvent_SetScriptID(ObjectEvent *objectEvent, u16 scriptId);
+static u16 ObjectEvent_GetScriptID(ObjectEvent *objectEvent);
+static void ObjectEvent_SetFacingDirection(ObjectEvent *objectEvent, u32 facingDirection);
+static s16 ObjectEvent_GetFacingDirection(ObjectEvent *objectEvent);
+static void ObjectEvent_SetParam(ObjectEvent *objectEvent, s32 value, u32 param);
+static u16 ObjectEvent_GetParam(ObjectEvent *objectEvent, u32 param);
+static void ObjectEvent_SetXRange(ObjectEvent *objectEvent, s16 xRange);
+static s16 ObjectEvent_GetXRange(ObjectEvent *objectEvent);
+static void ObjectEvent_SetYRange(ObjectEvent *objectEvent, s16 yRange);
+static s16 ObjectEvent_GetYRange(ObjectEvent *objectEvent);
+static void ObjectEvent_SetXCoord(ObjectEvent *objectEvent, u32 x);
+static u16 ObjectEvent_GetXCoord(ObjectEvent *template);
+static void ObjectEvent_SetYCoord(ObjectEvent *objectEvent, u32 y);
+static u32 ObjectEvent_GetYCoord(ObjectEvent *objectEvent);
+static void ObjectEvent_SetZCoord(ObjectEvent *objectEvent, u32 z);
+static u16 ObjectEvent_GetZCoord(ObjectEvent *objectEvent);
+static ObjectEvent *ObjectEvent_GetByID(u16 id, s32 objectEventCount, ObjectEvent *objectEvents);
+static BOOL ObjectEvent_ScriptIDIsUnset(ObjectEvent *objectEvent);
+static u16 ObjectEvent_GetEventFlag_AssertScriptIDIsUnset(ObjectEvent *template);
+static UnkLMOCallbackStruct *sub_0205FB00(u32 movement);
+static LocalMapObject_UnkCallback sub_0205FB18(UnkLMOCallbackStruct *callbackStruct);
+static LocalMapObject_UnkCallback sub_0205FB1C(UnkLMOCallbackStruct *callbackStruct);
+static LocalMapObject_UnkCallback sub_0205FB20(UnkLMOCallbackStruct *callbackStruct);
+static LocalMapObject_UnkCallback sub_0205FB24(UnkLMOCallbackStruct2 *callbackStruct);
+static LocalMapObject_UnkCallback sub_0205FB28(UnkLMOCallbackStruct2 *callbackStruct);
+static LocalMapObject_UnkCallback sub_0205FB2C(UnkLMOCallbackStruct2 *callbackStruct);
+static LocalMapObject_UnkCallback sub_0205FB30(UnkLMOCallbackStruct2 *callbackStruct);
+static LocalMapObject_UnkCallback sub_0205FB34(UnkLMOCallbackStruct2 *callbackStruct);
+static UnkLMOCallbackStruct2 *sub_0205FB38(u32 spriteId);
 
 MapObjectManager *MapObjectManager_Init(FieldSystem *fieldSystem, u32 objectCount, u32 priority) {
     MapObjectManager *ret = MapObjectManager_New(objectCount);
@@ -153,7 +199,7 @@ static LocalMapObject *MapObject_CreateFromObjectEvent(MapObjectManager *manager
             return ret;
         }
     } else {
-        ret = MapObjectManager_GetFirstObjectWithIDAndMap(manager, objectId, ObjectEvent_GetFlagID_AssertScriptIDIsUnset(eventPtr));
+        ret = MapObjectManager_GetFirstObjectWithIDAndMap(manager, objectId, ObjectEvent_GetEventFlag_AssertScriptIDIsUnset(eventPtr));
         if (ret != NULL) {
             sub_0205F058(ret, mapNo, eventPtr);
             return ret;
@@ -182,32 +228,33 @@ LocalMapObject *MapObject_Create(MapObjectManager *manager, u32 x, u32 y, u32 di
 
 LocalMapObject *MapObject_CreateWithParams(MapObjectManager *manager, u32 x, u32 y, u32 direction, u32 sprite, u32 movement, u32 mapNo, u32 param0, u32 param1, u32 param2) {
     ObjectEvent objectEvent;
-    ObjectEvent_SetId(&objectEvent, 0);
-    ObjectEvent_SetSprite(&objectEvent, sprite);
+    ObjectEvent_SetID(&objectEvent, 0);
+    ObjectEvent_SetSpriteID(&objectEvent, sprite);
     ObjectEvent_SetMovement(&objectEvent, movement);
     ObjectEvent_SetType(&objectEvent, 0);
-    ObjectEvent_SetFlagId(&objectEvent, 0);
-    ObjectEvent_SetScript(&objectEvent, 0);
-    ObjectEvent_SetFacing(&objectEvent, direction);
+    ObjectEvent_SetEventFlag(&objectEvent, 0);
+    ObjectEvent_SetScriptID(&objectEvent, 0);
+    ObjectEvent_SetFacingDirection(&objectEvent, direction);
     ObjectEvent_SetParam(&objectEvent, param0, 0);
     ObjectEvent_SetParam(&objectEvent, param1, 1);
     ObjectEvent_SetParam(&objectEvent, param2, 2);
     ObjectEvent_SetXRange(&objectEvent, 0);
     ObjectEvent_SetYRange(&objectEvent, 0);
     ObjectEvent_SetXCoord(&objectEvent, x);
-    ObjectEvent_SetYCoord(&objectEvent, y);
-    ObjectEvent_SetHeight(&objectEvent, 0);
+    ObjectEvent_SetZCoord(&objectEvent, y);
+    ObjectEvent_SetYCoord(&objectEvent, 0);
 
     return MapObject_CreateFromObjectEvent(manager, &objectEvent, mapNo);
 }
 
 LocalMapObject *MapObject_CreateFromObjectEventWithId(MapObjectManager *manager, u16 id, u32 objectEventCount, u32 mapNo, const ObjectEvent *events) {
     LocalMapObject *ret      = NULL;
-    ObjectEvent *objectEvent = ObjectEvent_GetById(id, objectEventCount, (ObjectEvent *)events);
+    ObjectEvent *objectEvent = ObjectEvent_GetByID(id, objectEventCount, (ObjectEvent *)events);
     if (objectEvent != NULL) {
-        u32 flagId               = ObjectEvent_GetFlagID(objectEvent);
+        // casts and typing required to match
+        u32 eventFlag            = ObjectEvent_GetEventFlag(objectEvent);
         FieldSystem *fieldSystem = MapObjectManager_GetFieldSystem(manager);
-        if (FieldSystem_FlagCheck(fieldSystem, (u16)flagId) == FALSE) {
+        if (FieldSystem_FlagCheck(fieldSystem, (u16)eventFlag) == FALSE) {
             ret = MapObject_CreateFromObjectEvent(manager, objectEvent, mapNo);
         }
     }
@@ -404,13 +451,13 @@ static void SavedMapObject_InitFromLocalMapObject(FieldSystem *fieldSystem, Loca
 
     VecFx32 coords;
     sub_020611C8(savedObject->currentX, savedObject->currentZ, &coords); // some kind of x y vec copy with convertion between int and fx32
-    coords.y = MapObject_GetPosVecYCoord(localObject);
+    coords.y = MapObject_GetPositionVectorYCoord(localObject);
 
     if (!sub_02061248(fieldSystem, &coords, MapObject_CheckFlag29(localObject))) {
-        savedObject->vecY = MapObject_GetPosVecYCoord(localObject);
+        savedObject->vecY = MapObject_GetPositionVectorYCoord(localObject);
     } else {
         if (MapObject_CheckIgnoreHeights(localObject) == TRUE) {
-            coords.y = MapObject_GetPosVecYCoord(localObject);
+            coords.y = MapObject_GetPositionVectorYCoord(localObject);
         }
         savedObject->vecY = coords.y;
     }
@@ -446,7 +493,7 @@ static void LocalMapObject_InitFromSavedMapObject(LocalMapObject *localObject, S
 
     VecFx32 coords = {};
     coords.y       = savedObject->vecY;
-    MapObject_SetPositionVec(localObject, &coords);
+    MapObject_SetPositionVector(localObject, &coords);
 
     memcpy(sub_0205F394(localObject), savedObject->unk30, 16);
     memcpy(sub_0205F3BC(localObject), savedObject->unk40, 16);
@@ -472,7 +519,7 @@ static void sub_0205E934(LocalMapObject *object) {
 
 static void MapObject_ConvertXZToPositionVec(LocalMapObject *object) {
     VecFx32 position;
-    MapObject_GetPositionVec(object, &position);
+    MapObject_CopyPositionVector(object, &position);
 
     u32 x      = MapObject_GetCurrentX(object);
     position.x = x * FX32_CONST(16) + FX32_CONST(8);
@@ -484,7 +531,7 @@ static void MapObject_ConvertXZToPositionVec(LocalMapObject *object) {
     position.z = z * FX32_CONST(16) + FX32_CONST(8);
     MapObject_SetPreviousZ(object, z);
 
-    MapObject_SetPositionVec(object, &position);
+    MapObject_SetPositionVector(object, &position);
 }
 
 void MapObject_CreateFromMultipleObjectEvents(MapObjectManager *manager, u32 mapNo, u32 objectEventCount, ObjectEvent *objectEvents) {
@@ -510,7 +557,7 @@ static void MapObject_CreateFromInitArgs(MapObjectInitArgs *args) {
     ObjectEvent *objectEvents = args->objectEvents;
 
     do {
-        GF_ASSERT((ObjectEvent_ScriptIDIsUnset(objectEvents) != TRUE && FieldSystem_FlagCheck(fieldSystem, objectEvents->flag) != FALSE) || MapObject_CreateFromObjectEvent(args->manager, objectEvents, args->mapNo) != NULL);
+        GF_ASSERT((ObjectEvent_ScriptIDIsUnset(objectEvents) != TRUE && FieldSystem_FlagCheck(fieldSystem, objectEvents->eventFlag) != FALSE) || MapObject_CreateFromObjectEvent(args->manager, objectEvents, args->mapNo) != NULL);
 
         objectEvents++;
         args->index++;
@@ -568,19 +615,19 @@ static void MapObject_InitFromObjectEvent(LocalMapObject *object, ObjectEvent *o
     MapObject_SetSpriteID(object, FieldSystem_ResolveObjectSpriteID(fieldSystem, ObjectEvent_GetSpriteID(objectEvent)));
     MapObject_SetMovement(object, ObjectEvent_GetMovement(objectEvent));
     MapObject_SetType(object, ObjectEvent_GetType(objectEvent));
-    MapObject_SetEventFlag(object, ObjectEvent_GetFlagID(objectEvent));
+    MapObject_SetEventFlag(object, ObjectEvent_GetEventFlag(objectEvent));
     MapObject_SetScriptID(object, ObjectEvent_GetScriptID(objectEvent));
-    MapObject_SetInitialFacingDirection(object, ObjectEvent_GetInitialFacingDirection(objectEvent));
+    MapObject_SetInitialFacingDirection(object, ObjectEvent_GetFacingDirection(objectEvent));
     MapObject_SetParam(object, ObjectEvent_GetParam(objectEvent, 0), 0);
     MapObject_SetParam(object, ObjectEvent_GetParam(objectEvent, 1), 1);
     MapObject_SetParam(object, ObjectEvent_GetParam(objectEvent, 2), 2);
     MapObject_SetXRange(object, ObjectEvent_GetXRange(objectEvent));
     MapObject_SetYRange(object, ObjectEvent_GetYRange(objectEvent));
 
-    MapObject_SetPositionVecFromObjectEvent(object, objectEvent);
+    MapObject_SetPositionVectorFromObjectEvent(object, objectEvent);
 }
 
-static void MapObject_SetPositionVecFromObjectEvent(LocalMapObject *object, ObjectEvent *objectEvent) {
+static void MapObject_SetPositionVectorFromObjectEvent(LocalMapObject *object, ObjectEvent *objectEvent) {
     VecFx32 coords;
 
     u16 x    = ObjectEvent_GetXCoord(objectEvent);
@@ -589,19 +636,19 @@ static void MapObject_SetPositionVecFromObjectEvent(LocalMapObject *object, Obje
     MapObject_SetPreviousX(object, x);
     MapObject_SetCurrentX(object, x);
 
-    coords.y = ObjectEvent_GetHeight(objectEvent);
+    coords.y = ObjectEvent_GetYCoord(objectEvent);
     u32 y    = (coords.y >> 3) / FX32_ONE;
     MapObject_SetInitialY(object, y);
     MapObject_SetPreviousY(object, y);
     MapObject_SetCurrentY(object, y);
 
-    u16 z    = ObjectEvent_GetYCoord(objectEvent);
+    u16 z    = ObjectEvent_GetZCoord(objectEvent);
     coords.z = z * FX32_CONST(16) + FX32_CONST(8);
     MapObject_SetInitialZ(object, z);
     MapObject_SetPreviousZ(object, z);
     MapObject_SetCurrentZ(object, z);
 
-    MapObject_SetPositionVec(object, &coords);
+    MapObject_SetPositionVector(object, &coords);
 }
 
 static void sub_0205EC90(LocalMapObject *object, MapObjectManager *manager) { // setup facing and flags? also sets manager?
@@ -646,14 +693,14 @@ static u32 sub_0205ED90(LocalMapObject *object, u32 mapId, u32 objectEventCount,
         }
 
         if (ObjectEvent_ScriptIDIsUnset(objectEvents) == TRUE) {
-            u16 flagId = ObjectEvent_GetFlagID_AssertScriptIDIsUnset(objectEvents);
+            u16 eventFlag = ObjectEvent_GetEventFlag_AssertScriptIDIsUnset(objectEvents);
             if (MapObject_CheckFlag25(object) == TRUE) { // this and the one below cannot be combined as it doesn't match
-                if (sub_0205F544(object) == flagId) {
+                if (sub_0205F544(object) == eventFlag) {
                     return 1;
                 }
                 // I'm assume that sometimes the ObjectEvent flags equals the mapId to signify that
                 // this is a map-wide event etc.
-            } else if (MapObject_GetMapID(object) == flagId) {
+            } else if (MapObject_GetMapID(object) == eventFlag) {
                 return 2;
             }
             // this is indeed a weird comparsion, but I checked, it's correct
@@ -792,7 +839,7 @@ static void sub_0205F014(LocalMapObject *object, ObjectEvent *objectEvent, u32 m
     MapObject_SetFlag25(object, FALSE);
     MapObject_SetMapID(object, mapNo);
     MapObject_SetScriptID(object, ObjectEvent_GetScriptID(objectEvent));
-    MapObject_SetEventFlag(object, ObjectEvent_GetFlagID(objectEvent));
+    MapObject_SetEventFlag(object, ObjectEvent_GetEventFlag(objectEvent));
 }
 
 static void sub_0205F058(LocalMapObject *object, u32 mapNo, ObjectEvent *objectEvent) {
@@ -800,7 +847,7 @@ static void sub_0205F058(LocalMapObject *object, u32 mapNo, ObjectEvent *objectE
 
     MapObject_SetFlag25(object, TRUE);
     MapObject_SetScriptID(object, ObjectEvent_GetScriptID(objectEvent));
-    MapObject_SetEventFlag(object, ObjectEvent_GetFlagID_AssertScriptIDIsUnset(objectEvent));
+    MapObject_SetEventFlag(object, ObjectEvent_GetEventFlag_AssertScriptIDIsUnset(objectEvent));
     MapObject_SetMapID(object, mapNo);
 }
 
@@ -1657,121 +1704,121 @@ void MapObject_AddCurrentZ(LocalMapObject *object, u32 currentZ) {
     object->currentZ += currentZ;
 }
 
-void MapObject_GetPositionVec(LocalMapObject *object, VecFx32 *pos_vec_dest) {
-    *pos_vec_dest = object->positionVec;
+void MapObject_CopyPositionVector(LocalMapObject *object, VecFx32 *positionVector) {
+    *positionVector = object->positionVector;
 }
 
-void MapObject_SetPositionVec(LocalMapObject *object, VecFx32 *pos_vec) {
-    object->positionVec = *pos_vec;
+void MapObject_SetPositionVector(LocalMapObject *object, VecFx32 *pos_vec) {
+    object->positionVector = *pos_vec;
 }
 
-VecFx32 *MapObject_GetPositionVecPtr(LocalMapObject *object) {
-    return &object->positionVec;
+VecFx32 *MapObject_GetPositionVector(LocalMapObject *object) {
+    return &object->positionVector;
 }
 
-fx32 MapObject_GetPosVecYCoord(LocalMapObject *object) {
-    return object->positionVec.y;
+fx32 MapObject_GetPositionVectorYCoord(LocalMapObject *object) {
+    return object->positionVector.y;
 }
 
-void MapObject_GetFacingVec(LocalMapObject *object, VecFx32 *face_vec_dest) {
-    *face_vec_dest = object->facingVec;
+void MapObject_CopyFacingVector(LocalMapObject *object, VecFx32 *facingVector) {
+    *facingVector = object->facingVector;
 }
 
-void MapObject_SetFacingVec(LocalMapObject *object, VecFx32 *face_vec) {
-    object->facingVec = *face_vec;
+void MapObject_SetFacingVector(LocalMapObject *object, VecFx32 *facingVector) {
+    object->facingVector = *facingVector;
 }
 
-VecFx32 *MapObject_GetFacingVecPtr(LocalMapObject *object) {
-    return &object->facingVec;
+VecFx32 *MapObject_GetFacingVector(LocalMapObject *object) {
+    return &object->facingVector;
 }
 
-void sub_0205F990(LocalMapObject *object, VecFx32 *a1_dest) {
-    *a1_dest = object->unk88;
+void sub_0205F990(LocalMapObject *object, VecFx32 *vector) {
+    *vector = object->unk88;
 }
 
-void sub_0205F9A0(LocalMapObject *object, const VecFx32 *a1) {
-    object->unk88 = *a1;
+void sub_0205F9A0(LocalMapObject *object, VecFx32 *vector) {
+    object->unk88 = *vector;
 }
 
-void sub_0205F9B0(LocalMapObject *object, VecFx32 *a1_dest) {
-    *a1_dest = object->unk94;
+void sub_0205F9B0(LocalMapObject *object, VecFx32 *vector) {
+    *vector = object->unk94;
 }
 
-void sub_0205F9C0(LocalMapObject *object, VecFx32 *a1) {
-    object->unk94 = *a1;
+void sub_0205F9C0(LocalMapObject *object, VecFx32 *vector) {
+    object->unk94 = *vector;
 }
 
-u32 sub_0205F9D0(LocalMapObject *object) {
-    fx32 y = MapObject_GetPosVecYCoord(object);
+u32 MapObject_GetPositionVectorYCoordUInt(LocalMapObject *object) {
+    fx32 y = MapObject_GetPositionVectorYCoord(object);
     return (y >> 3) / FX32_ONE;
 }
 
-void ObjectEvent_SetId(ObjectEvent *template, u16 id) {
-    template->id = id;
+static void ObjectEvent_SetID(ObjectEvent *objectEvent, u16 id) {
+    objectEvent->id = id;
 }
 
-u16 ObjectEvent_GetID(ObjectEvent *template) {
-    return template->id;
+static u16 ObjectEvent_GetID(ObjectEvent *objectEvent) {
+    return objectEvent->id;
 }
 
-void ObjectEvent_SetSprite(ObjectEvent *template, u32 sprite) {
-    template->spriteId = sprite;
+static void ObjectEvent_SetSpriteID(ObjectEvent *objectEvent, u32 spriteId) {
+    objectEvent->spriteId = spriteId;
 }
 
-u16 ObjectEvent_GetSpriteID(ObjectEvent *template) {
-    return template->spriteId;
+static u16 ObjectEvent_GetSpriteID(ObjectEvent *objectEvent) {
+    return objectEvent->spriteId;
 }
 
-void ObjectEvent_SetMovement(ObjectEvent *template, u32 movement) {
-    template->movement = movement;
+static void ObjectEvent_SetMovement(ObjectEvent *objectEvent, u32 movement) {
+    objectEvent->movement = movement;
 }
 
-u16 ObjectEvent_GetMovement(ObjectEvent *template) {
-    return template->movement;
+static u16 ObjectEvent_GetMovement(ObjectEvent *objectEvent) {
+    return objectEvent->movement;
 }
 
-void ObjectEvent_SetType(ObjectEvent *template, u16 type) {
-    template->type = type;
+static void ObjectEvent_SetType(ObjectEvent *objectEvent, u16 type) {
+    objectEvent->type = type;
 }
 
-u16 ObjectEvent_GetType(ObjectEvent *template) {
-    return template->type;
+static u16 ObjectEvent_GetType(ObjectEvent *objectEvent) {
+    return objectEvent->type;
 }
 
-void ObjectEvent_SetFlagId(ObjectEvent *template, u16 flag) {
-    template->flag = flag;
+static void ObjectEvent_SetEventFlag(ObjectEvent *objectEvent, u16 eventFlag) {
+    objectEvent->eventFlag = eventFlag;
 }
 
-u16 ObjectEvent_GetFlagID(ObjectEvent *template) {
-    return template->flag;
+static u16 ObjectEvent_GetEventFlag(ObjectEvent *objectEvent) {
+    return objectEvent->eventFlag;
 }
 
-void ObjectEvent_SetScript(ObjectEvent *template, u16 script) {
-    template->scr = script;
+static void ObjectEvent_SetScriptID(ObjectEvent *objectEvent, u16 scriptId) {
+    objectEvent->scriptId = scriptId;
 }
 
-u16 ObjectEvent_GetScriptID(ObjectEvent *template) {
-    return template->scr;
+static u16 ObjectEvent_GetScriptID(ObjectEvent *objectEvent) {
+    return objectEvent->scriptId;
 }
 
-void ObjectEvent_SetFacing(ObjectEvent *template, u32 direction) {
-    template->dirn = direction;
+static void ObjectEvent_SetFacingDirection(ObjectEvent *objectEvent, u32 facingDirection) {
+    objectEvent->facingDirection = facingDirection;
 }
 
-s16 ObjectEvent_GetInitialFacingDirection(ObjectEvent *template) {
-    return template->dirn;
+static s16 ObjectEvent_GetFacingDirection(ObjectEvent *objectEvent) {
+    return objectEvent->facingDirection;
 }
 
-void ObjectEvent_SetParam(ObjectEvent *template, u32 value, int param) {
+static void ObjectEvent_SetParam(ObjectEvent *objectEvent, s32 value, u32 param) {
     switch (param) {
     case 0:
-        template->eye = value;
+        objectEvent->param[0] = value;
         return;
     case 1:
-        template->unk10 = value;
+        objectEvent->param[1] = value;
         return;
     case 2:
-        template->tsure_poke_color = value;
+        objectEvent->param[2] = value;
         return;
     default:
         GF_ASSERT(FALSE);
@@ -1779,174 +1826,159 @@ void ObjectEvent_SetParam(ObjectEvent *template, u32 value, int param) {
     }
 }
 
-u16 ObjectEvent_GetParam(ObjectEvent *template, int param) {
+static u16 ObjectEvent_GetParam(ObjectEvent *objectEvent, u32 param) {
     switch (param) {
     case 0:
-        return template->eye;
+        return objectEvent->param[0];
     case 1:
-        return template->unk10;
+        return objectEvent->param[1];
     case 2:
-        return template->tsure_poke_color;
+        return objectEvent->param[2];
     default:
         GF_ASSERT(FALSE);
         return 0;
     }
 }
 
-void ObjectEvent_SetXRange(ObjectEvent *template, s16 x_range) {
-    template->xrange = x_range;
+static void ObjectEvent_SetXRange(ObjectEvent *objectEvent, s16 xRange) {
+    objectEvent->xRange = xRange;
 }
 
-s16 ObjectEvent_GetXRange(ObjectEvent *template) {
-    return template->xrange;
+static s16 ObjectEvent_GetXRange(ObjectEvent *objectEvent) {
+    return objectEvent->xRange;
 }
 
-void ObjectEvent_SetYRange(ObjectEvent *template, s16 y_range) {
-    template->yrange = y_range;
+static void ObjectEvent_SetYRange(ObjectEvent *objectEvent, s16 yRange) {
+    objectEvent->yRange = yRange;
 }
 
-s16 ObjectEvent_GetYRange(ObjectEvent *template) {
-    return template->yrange;
+static s16 ObjectEvent_GetYRange(ObjectEvent *objectEvent) {
+    return objectEvent->yRange;
 }
 
-void ObjectEvent_SetXCoord(ObjectEvent *template, u32 x) {
-    template->x = x;
+static void ObjectEvent_SetXCoord(ObjectEvent *objectEvent, u32 x) {
+    objectEvent->x = x;
 }
 
-u16 ObjectEvent_GetXCoord(ObjectEvent *template) {
-    return template->x;
+static u16 ObjectEvent_GetXCoord(ObjectEvent *objectEvent) {
+    return objectEvent->x;
 }
 
-void ObjectEvent_SetHeight(ObjectEvent *template, u32 height) {
-    template->z = height;
+static void ObjectEvent_SetYCoord(ObjectEvent *objectEvent, u32 y) {
+    objectEvent->y = y;
 }
 
-u32 ObjectEvent_GetHeight(ObjectEvent *template) {
-    return template->z;
+static u32 ObjectEvent_GetYCoord(ObjectEvent *objectEvent) {
+    return objectEvent->y;
 }
 
-void ObjectEvent_SetYCoord(ObjectEvent *template, u32 y) {
-    template->y = y;
+static void ObjectEvent_SetZCoord(ObjectEvent *objectEvent, u32 z) {
+    objectEvent->z = z;
 }
 
-u16 ObjectEvent_GetYCoord(ObjectEvent *template) {
-    return template->y;
+static u16 ObjectEvent_GetZCoord(ObjectEvent *objectEvent) {
+    return objectEvent->z;
 }
 
-ObjectEvent *ObjectEvent_GetById(u16 id, int num_templates, ObjectEvent *templates) {
-    int i                = 0;
-    ObjectEvent *tmplate = templates;
+static ObjectEvent *ObjectEvent_GetByID(u16 id, s32 objectEventCount, ObjectEvent *objectEvents) {
+    s32 i                    = 0;
+    ObjectEvent *objectEvent = objectEvents;
     do {
-        if (!ObjectEvent_ScriptIDIsUnset(tmplate) && id == ObjectEvent_GetID(tmplate)) {
-            return templates + i;
+        if (!ObjectEvent_ScriptIDIsUnset(objectEvent) && id == ObjectEvent_GetID(objectEvent)) {
+            return objectEvents + i;
         }
 
         i++;
-        tmplate++;
-    } while (i < num_templates);
+        objectEvent++;
+    } while (i < objectEventCount);
 
     return NULL;
 }
 
-BOOL ObjectEvent_ScriptIDIsUnset(ObjectEvent *template) {
-    u16 script = (u16)(u32)ObjectEvent_GetScriptID(template);
+static BOOL ObjectEvent_ScriptIDIsUnset(ObjectEvent *objectEvent) {
+    // casts required to match
+    u16 script = (u16)(u32)ObjectEvent_GetScriptID(objectEvent);
     return script == 0xFFFF;
 }
 
-u16 ObjectEvent_GetFlagID_AssertScriptIDIsUnset(ObjectEvent *template) {
+static u16 ObjectEvent_GetEventFlag_AssertScriptIDIsUnset(ObjectEvent *template) {
     GF_ASSERT(ObjectEvent_ScriptIDIsUnset(template) == TRUE);
-    return ObjectEvent_GetFlagID(template);
+    return ObjectEvent_GetEventFlag(template);
 }
 
-extern UnkLMOCallbackStruct *_020FD1F4[57];
-
-UnkLMOCallbackStruct *sub_0205FB00(u32 movement) {
+static UnkLMOCallbackStruct *sub_0205FB00(u32 movement) {
     GF_ASSERT(movement < NELEMS(_020FD1F4));
     return _020FD1F4[movement];
 }
 
-LocalMapObject_UnkCallback sub_0205FB18(UnkLMOCallbackStruct *unk) {
-    return unk->unk4;
+static LocalMapObject_UnkCallback sub_0205FB18(UnkLMOCallbackStruct *callbackStruct) {
+    return callbackStruct->unk4;
 }
 
-LocalMapObject_UnkCallback sub_0205FB1C(UnkLMOCallbackStruct *unk) {
-    return unk->unk8;
+static LocalMapObject_UnkCallback sub_0205FB1C(UnkLMOCallbackStruct *callbackStruct) {
+    return callbackStruct->unk8;
 }
 
-LocalMapObject_UnkCallback sub_0205FB20(UnkLMOCallbackStruct *unk) {
-    return unk->unkC;
+static LocalMapObject_UnkCallback sub_0205FB20(UnkLMOCallbackStruct *callbackStruct) {
+    return callbackStruct->unkC;
 }
 
-LocalMapObject_UnkCallback sub_0205FB24(UnkLMOCallbackStruct2 *unk) {
-    return unk->unk0;
+static LocalMapObject_UnkCallback sub_0205FB24(UnkLMOCallbackStruct2 *callbackStruct) {
+    return callbackStruct->unk0;
 }
 
-LocalMapObject_UnkCallback sub_0205FB28(UnkLMOCallbackStruct2 *unk) {
-    return unk->unk4;
+static LocalMapObject_UnkCallback sub_0205FB28(UnkLMOCallbackStruct2 *callbackStruct) {
+    return callbackStruct->unk4;
 }
 
-LocalMapObject_UnkCallback sub_0205FB2C(UnkLMOCallbackStruct2 *unk) {
-    return unk->unk8;
+static LocalMapObject_UnkCallback sub_0205FB2C(UnkLMOCallbackStruct2 *callbackStruct) {
+    return callbackStruct->unk8;
 }
 
-LocalMapObject_UnkCallback sub_0205FB30(UnkLMOCallbackStruct2 *unk) {
-    return unk->unkC;
+static LocalMapObject_UnkCallback sub_0205FB30(UnkLMOCallbackStruct2 *callbackStruct) {
+    return callbackStruct->unkC;
 }
 
-LocalMapObject_UnkCallback sub_0205FB34(UnkLMOCallbackStruct2 *unk) {
-    return unk->unk10;
+static LocalMapObject_UnkCallback sub_0205FB34(UnkLMOCallbackStruct2 *callbackStruct) {
+    return callbackStruct->unk10;
 }
 
-typedef struct ObjectEventGraphicsInfo {
-    u16 sprite_no;
-    u16 mmodel_no;
-    u16 unk4_0  : 5; // Unknown actual size
-    u16 unk4_5  : 5;
-    u16 unk4_10 : 6; // Unknown actual size
-} ObjectEventGraphicsInfo;
-
-extern ObjectEventGraphicsInfo *GetObjectEventGfxInfoPtr(u32 spriteId);
-extern UnkLMOCallbackStruct2 *ov01_02209A38[20];
-
-UnkLMOCallbackStruct2 *sub_0205FB38(u32 spriteId) {
-    ObjectEventGraphicsInfo *unk = GetObjectEventGfxInfoPtr(spriteId);
-    if (unk == NULL) {
+static UnkLMOCallbackStruct2 *sub_0205FB38(u32 spriteId) {
+    ObjectEventGraphicsInfo *graphicsInfo = ObjectEvent_GetGraphicsInfo(spriteId);
+    if (graphicsInfo == NULL) {
         return NULL;
     }
 
-    return ov01_02209A38[unk->unk4_5];
+    return ov01_02209A38[graphicsInfo->unk4_5];
 }
 
-LocalMapObject *sub_0205FB58(MapObjectManager *manager, u32 x, u32 z, BOOL a3) {
+LocalMapObject *MapObjectManager_GetFirstObjectWithXAndZ(MapObjectManager *manager, u32 x, u32 z, BOOL checkPrevious) {
     u32 count               = MapObjectManager_GetObjectCount(manager);
     LocalMapObject *objects = MapObjectManager_GetObjects(manager);
 
-    LocalMapObject *object = objects;
     do {
-        if (MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_ACTIVE) != 0) {
-            if (a3 && x == MapObject_GetPreviousX(object) && z == MapObject_GetPreviousZ(object)) {
-                return object;
+        if (MapObject_GetFlagsBitsMask(objects, MAPOBJECTFLAG_ACTIVE) != 0) {
+            if (checkPrevious && x == MapObject_GetPreviousX(objects) && z == MapObject_GetPreviousZ(objects)) {
+                return objects;
             }
 
-            if (x == MapObject_GetCurrentX(object) && z == MapObject_GetCurrentZ(object)) {
-                return object;
+            if (x == MapObject_GetCurrentX(objects) && z == MapObject_GetCurrentZ(objects)) {
+                return objects;
             }
         }
 
-        object++;
+        objects++;
         count--;
     } while (count > 0);
 
     return NULL;
 }
 
-extern void sub_02060F78(LocalMapObject *object);
-
-void sub_0205FBC0(LocalMapObject *object, VecFx32 *position_vec, u32 direction) {
-    MapObject_SetCurrentX(object, (position_vec->x >> 4) / FX32_ONE);
-    MapObject_SetCurrentY(object, (position_vec->y >> 3) / FX32_ONE);
-    MapObject_SetCurrentZ(object, (position_vec->z >> 4) / FX32_ONE);
-    MapObject_SetPositionVec(object, position_vec);
+void LocalMapObject_SetPositionFromVectorAndDirection(LocalMapObject *object, VecFx32 *positionVector, u32 direction) {
+    MapObject_SetCurrentX(object, (positionVector->x >> 4) / FX32_ONE);
+    MapObject_SetCurrentY(object, (positionVector->y >> 3) / FX32_ONE);
+    MapObject_SetCurrentZ(object, (positionVector->z >> 4) / FX32_ONE);
+    MapObject_SetPositionVector(object, positionVector);
     sub_02060F78(object);
     MapObject_SetFacingDirectionDirect(object, direction);
     MapObject_ClearHeldMovement(object);
@@ -1954,16 +1986,16 @@ void sub_0205FBC0(LocalMapObject *object, VecFx32 *position_vec, u32 direction) 
     MapObject_ClearFlagsBits(object, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK3 | MAPOBJECTFLAG_SINGLE_MOVEMENT));
 }
 
-void sub_0205FC2C(LocalMapObject *object, u32 x, u32 y, u32 z, u32 direction) {
-    VecFx32 position_vec;
-    position_vec.x = x * (16 * FX32_ONE) + (8 * FX32_ONE);
+void MapObject_SetPositionFromXYZAndDirection(LocalMapObject *object, u32 x, u32 y, u32 z, u32 direction) {
+    VecFx32 positionVector;
+    positionVector.x = x * (16 * FX32_ONE) + (8 * FX32_ONE);
     MapObject_SetCurrentX(object, x);
-    position_vec.y = y * (8 * FX32_ONE);
+    positionVector.y = y * (8 * FX32_ONE);
     MapObject_SetCurrentY(object, y);
-    position_vec.z = z * (16 * FX32_ONE) + (8 * FX32_ONE);
+    positionVector.z = z * (16 * FX32_ONE) + (8 * FX32_ONE);
     MapObject_SetCurrentZ(object, z);
 
-    MapObject_SetPositionVec(object, &position_vec);
+    MapObject_SetPositionVector(object, &positionVector);
     sub_02060F78(object);
     MapObject_SetFacingDirectionDirect(object, direction);
     MapObject_SetFlagsBits(object, MAPOBJECTFLAG_UNK2);
@@ -1978,7 +2010,7 @@ void sub_0205FC94(LocalMapObject *object, u32 movement) {
     sub_0205FD20(object);
 }
 
-/*static*/ void sub_0205FCB4(LocalMapObject *object) {
+void sub_0205FCB4(LocalMapObject *object) {
 }
 
 void sub_0205FCB8(LocalMapObject *object) {
@@ -2003,16 +2035,15 @@ void sub_0205FCD0(LocalMapObject *object) {
 }
 
 void sub_0205FCD4(LocalMapObject *object) {
-    u32 spriteId               = MapObject_GetSpriteID(object);
-    UnkLMOCallbackStruct2 *unk = (spriteId == 0x2000) ? (UnkLMOCallbackStruct2 *)&ov01_0220724C : sub_0205FB38(spriteId);
-    sub_0205F47C(object, sub_0205FB28(unk));
+    u32 spriteId                          = MapObject_GetSpriteID(object);
+    UnkLMOCallbackStruct2 *callbackStruct = (spriteId == 0x2000) ? (UnkLMOCallbackStruct2 *)&ov01_0220724C : sub_0205FB38(spriteId);
+    sub_0205F47C(object, sub_0205FB28(callbackStruct));
 }
 
-SavedMapObject *SaveMapObjects_SearchSpriteId(SavedMapObject *list, u32 num_objects, u16 sprite_id) {
-    SavedMapObject *object = list;
-    for (; num_objects > 0; object++, num_objects--) {
-        if ((object->flags & MAPOBJECTFLAG_ACTIVE) != 0 && object->spriteId == sprite_id) {
-            return object;
+SavedMapObject *SaveMapObject_GetFirstObjectWithSpriteID(SavedMapObject *objects, u32 count, u16 spriteId) {
+    for (; count > 0; objects++, count--) {
+        if ((objects->flags & MAPOBJECTFLAG_ACTIVE) != 0 && objects->spriteId == spriteId) {
+            return objects;
         }
     }
 

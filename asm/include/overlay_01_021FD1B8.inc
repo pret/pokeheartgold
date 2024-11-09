@@ -8,8 +8,8 @@
 .public MapObject_GetSpriteID
 .public sub_0205F544
 .public MapObject_CheckFlag25
-.public MapObject_GetPositionVec
-.public MapObject_GetFacingVec
+.public MapObject_CopyPositionVector
+.public MapObject_CopyFacingVector
 .public sub_02068D98
 .public sub_02068DA8
 .public sub_02068DB8

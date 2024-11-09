@@ -317,7 +317,7 @@ ov01_021FE3F8: ; 0x021FE3F8
 	bl MapObject_GetPreviousZ
 	str r0, [sp, #0x10]
 	add r0, r5, #0
-	bl MapObject_GetPosVecYCoord
+	bl MapObject_GetPositionVectorYCoord
 	add r6, r0, #0
 	add r0, r5, #0
 	bl MapObject_GetFacingDirection

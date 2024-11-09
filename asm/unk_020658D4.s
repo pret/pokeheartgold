@@ -209,7 +209,7 @@ sub_020659CC: ; 0x020659CC
 	add r1, r4, #0
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0205FC2C
+	bl MapObject_SetPositionFromXYZAndDirection
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end sub_020659CC
@@ -1325,7 +1325,7 @@ sub_020662C4: ; 0x020662C4
 	add r1, r2, #0
 	str r0, [r3]
 	add r0, r4, #0
-	bl MapObject_SetFacingVec
+	bl MapObject_SetFacingVector
 	add sp, #0xc
 	pop {r4, r5, pc}
 	nop
@@ -1423,7 +1423,7 @@ sub_02066370: ; 0x02066370
 	add r1, r2, #0
 	str r0, [r3]
 	add r0, r4, #0
-	bl MapObject_SetFacingVec
+	bl MapObject_SetFacingVector
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0x14

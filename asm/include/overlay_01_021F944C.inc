@@ -64,7 +64,7 @@
 .public sub_0205F4C0
 .public MapObject_CheckActive
 .public MapObject_CheckFlag24
-.public MapObject_GetPositionVec
+.public MapObject_CopyPositionVector
 .public sub_02060FA8
 .public sub_02068B48
 .public NNS_G3dMdlGetMdlFogEnableFlag

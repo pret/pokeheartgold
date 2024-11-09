@@ -3,46 +3,46 @@
   "objects": [
     {
       "id": "obj_T25R0801_gsbigman",
-      "sprite_id": "SPRITE_GSBIGMAN",
+      "spriteId": "SPRITE_GSBIGMAN",
       "movement": 16,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T25R0801_000 + 1",
-      "dirn": 2,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 1,
-      "yrange": 1,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_T25R0801_000 + 1",
+      "facingDirection": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 1,
+      "yRange": 1,
       "x": 8,
-      "y": 6,
-      "z": 0
+      "z": 6,
+      "y": 0
     },
     {
       "id": "obj_T25R0801_gsgirl1",
-      "sprite_id": "SPRITE_GSGIRL1",
+      "spriteId": "SPRITE_GSGIRL1",
       "movement": 3,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T25R0801_001 + 1",
-      "dirn": 1,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 1,
-      "yrange": 1,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_T25R0801_001 + 1",
+      "facingDirection": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 1,
+      "yRange": 1,
       "x": 2,
-      "y": 5,
-      "z": 0
+      "z": 5,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 4,
-      "y": 8,
+      "z": 8,
       "header": "MAP_T25",
       "anchor": 14,
-      "height": 0
+      "y": 0
     }
   ]
 }

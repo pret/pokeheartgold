@@ -5,11 +5,11 @@
 #include "wild_encounter.h"
 
 struct BG_EVENT {
-    u16 scr;
+    u16 scriptId;
     u16 type;
     int x;
-    int y;
     int z;
+    int y;
     u16 dir;
 };
 
@@ -18,34 +18,32 @@ struct ObjectEvent {
     u16 spriteId;
     u16 movement;
     u16 type;
-    u16 flag;
-    u16 scr;
-    s16 dirn;
-    u16 eye;
-    u16 unk10;
-    u16 tsure_poke_color;
-    s16 xrange;
-    s16 yrange;
+    u16 eventFlag;
+    u16 scriptId;
+    s16 facingDirection;
+    u16 param[3];
+    s16 xRange;
+    s16 yRange;
     u16 x;
-    u16 y;
-    s32 z;
+    u16 z;
+    s32 y;
 };
 
 struct WARP_EVENT {
     u16 x;
-    u16 y;
+    u16 z;
     u16 header;
     u16 anchor;
-    u32 height;
+    u32 y;
 };
 
 struct COORD_EVENT {
-    u16 scr;
+    u16 scriptId;
     s16 x;
-    s16 y;
+    s16 z;
     u16 w;
     u16 h;
-    u16 z;
+    u16 y;
     u16 val;
     u16 var;
 };

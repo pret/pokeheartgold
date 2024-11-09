@@ -80,10 +80,10 @@ sub_0203DBD4: ; 0x0203DBD4
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	bl PlayerAvatar_GetMapObject
-	bl sub_0205F9D0
+	bl MapObject_GetPositionVectorYCoordUInt
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F9D0
+	bl MapObject_GetPositionVectorYCoordUInt
 	cmp r4, r0
 	bne _0203DBF0
 	mov r0, #1
@@ -150,7 +150,7 @@ _0203DC52:
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	mov r3, #0
-	bl sub_0205FB58
+	bl MapObjectManager_GetFirstObjectWithXAndZ
 	str r0, [r6]
 	add sp, #8
 	pop {r4, r5, r6, pc}

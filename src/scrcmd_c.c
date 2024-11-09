@@ -1436,7 +1436,7 @@ BOOL ScrCmd_102(ScriptContext *ctx) {
     sub_02061070(*p_cameraObj);
     MapObject_SetVisible(*p_cameraObj, TRUE);
     MapObject_ClearFlag18(*p_cameraObj, FALSE);
-    pos = MapObject_GetPositionVecPtr(*p_cameraObj);
+    pos = MapObject_GetPositionVector(*p_cameraObj);
     ov01_021F62E8(pos, ctx->fieldSystem->unk2C);
     Camera_SetFixedTarget(pos, ctx->fieldSystem->camera);
     return FALSE;
@@ -1446,7 +1446,7 @@ BOOL ScrCmd_103(ScriptContext *ctx) {
     LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_CAMERA_TARGET);
     VecFx32 *pos;
     MapObject_Remove(*p_cameraObj);
-    pos = MapObject_GetPositionVecPtr(MapObjectManager_GetFirstActiveObjectByID(ctx->fieldSystem->mapObjectManager, obj_player));
+    pos = MapObject_GetPositionVector(MapObjectManager_GetFirstActiveObjectByID(ctx->fieldSystem->mapObjectManager, obj_player));
     ov01_021F62E8(pos, ctx->fieldSystem->unk2C);
     Camera_SetFixedTarget(pos, ctx->fieldSystem->camera);
     return FALSE;
@@ -2982,7 +2982,7 @@ BOOL ScrCmd_MovePersonFacing(ScriptContext *ctx) {
     u16 z                  = ScriptGetVar(ctx);
     u16 direction          = ScriptGetVar(ctx);
     LocalMapObject *object = MapObjectManager_GetFirstActiveObjectByID(ctx->fieldSystem->mapObjectManager, objectId);
-    sub_0205FC2C(object, x, y, z, direction);
+    MapObject_SetPositionFromXYZAndDirection(object, x, y, z, direction);
     sub_02061070(object);
     return FALSE;
 }
@@ -4469,7 +4469,7 @@ BOOL ScrCmd_FollowMonFacePlayer(ScriptContext *ctx) {
             int deltaY               = GetDeltaYByFacingDirection(facingDirection) * 2;
             u8 facingTile            = GetMetatileBehaviorAt(ctx->fieldSystem, playerX + deltaX, playerZ + deltaY);
             VecFx32 posVec;
-            MapObject_GetPositionVec(myObject, &posVec);
+            MapObject_CopyPositionVector(myObject, &posVec);
             if (sub_020549A8(ctx->fieldSystem, &posVec, playerX + deltaX, playerZ + deltaY, 0) || MetatileBehavior_IsSurfableWater(facingTile) || sub_02060BFC(myObject, playerX + deltaX, playerY, playerZ + deltaY)) {
                 doFace = FALSE;
             }

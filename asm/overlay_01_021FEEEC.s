@@ -224,7 +224,7 @@ ov01_021FF070: ; 0x021FF070
 	add r0, r5, #0
 	add r1, sp, #0x2c
 	str r5, [sp, #0x20]
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r5, #0
 	mov r1, #2
 	bl MapObject_GetPriorityPlusValue
@@ -292,7 +292,7 @@ _021FF134:
 	add r0, r5, #0
 	add r1, sp, #0x30
 	str r5, [sp, #0x24]
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r5, #0
 	mov r1, #2
 	bl MapObject_GetPriorityPlusValue
@@ -344,7 +344,7 @@ _021FF188:
 	lsl r0, r0, #0x10
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x30]
-	bl MapObject_GetPosVecYCoord
+	bl MapObject_GetPositionVectorYCoord
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x24]
 	add r1, sp, #0

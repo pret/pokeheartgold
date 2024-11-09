@@ -129,7 +129,7 @@ _021FFCBC:
 	lsl r0, r0, #0x10
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x30]
-	bl MapObject_GetPosVecYCoord
+	bl MapObject_GetPositionVectorYCoord
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x24]
 	add r1, sp, #0

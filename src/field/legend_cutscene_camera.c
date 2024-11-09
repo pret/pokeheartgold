@@ -362,7 +362,7 @@ static void Field3dObjectTaskInit_ClearBellCutscene(Field3dObjectTask *task, Fie
     modelAnimListSetFrameIndex(kimonoDanceObjData->cornerBellAnims, 1, 0);
 
     VecFx32 pos;
-    MapObject_GetPositionVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &pos);
+    MapObject_CopyPositionVector(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &pos);
     Field3dObject_SetPosEx(&kimonoDanceObjData->clearBellRisingObject, pos.x, pos.y, pos.z);
     Field3dObject_SetPosEx(&kimonoDanceObjData->clearBellObject, pos.x, pos.y, pos.z);
     if (kimonoDanceObjData->gameVersion == VERSION_SOULSILVER) {
@@ -507,7 +507,7 @@ static void loadEyeGlimmer3dModel(HeapID heapId, FieldSystem *fieldSystem, Legen
     modelAnimListSetFrameIndex(taskData->anims, 3, 0);
 
     VecFx32 pos;
-    MapObject_GetPositionVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &pos);
+    MapObject_CopyPositionVector(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &pos);
     pos.y += FX32_CONST(100);
     pos.z -= FX32_CONST(350);
     Field3dObject_SetPosEx(&taskData->object, pos.x, pos.y, pos.z);
@@ -697,7 +697,7 @@ static BOOL Task_BirdFinalApproach(TaskManager *taskman) {
         modelAnimListSetFrameIndex(taskData->anims, 3, 0);
         {
             VecFx32 pos;
-            MapObject_GetPositionVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &pos);
+            MapObject_CopyPositionVector(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &pos);
             if (taskData->gameVersion == VERSION_HEARTGOLD) {
                 pos.y += FX32_CONST(40);
                 pos.z -= FX32_CONST(16);
@@ -710,7 +710,7 @@ static BOOL Task_BirdFinalApproach(TaskManager *taskman) {
         break;
     case BIRD_FINAL_APPROACH_TASK_STATE_CORRECT_POS: {
         VecFx32 pos;
-        MapObject_GetPositionVec(mapObject, &pos);
+        MapObject_CopyPositionVector(mapObject, &pos);
         taskData->yEnd = pos.y;
         if (taskData->gameVersion == VERSION_HEARTGOLD) {
             taskData->yDelta = FX32_CONST(120);
@@ -718,7 +718,7 @@ static BOOL Task_BirdFinalApproach(TaskManager *taskman) {
             taskData->yDelta = FX32_CONST(160);
         }
         pos.y += taskData->yDelta;
-        MapObject_SetPositionVec(mapObject, &pos);
+        MapObject_SetPositionVector(mapObject, &pos);
     }
         MapObject_SetVisible(mapObject, FALSE);
         taskData->delayTimer             = 0;
@@ -737,14 +737,14 @@ static BOOL Task_BirdFinalApproach(TaskManager *taskman) {
         {
             VecFx32 pos;
             BOOL snapped = FALSE;
-            MapObject_GetPositionVec(mapObject, &pos);
+            MapObject_CopyPositionVector(mapObject, &pos);
             taskData->yDelta -= FX32_ONE;
             if (taskData->yDelta <= 0) {
                 taskData->yDelta = 0;
                 snapped          = TRUE;
             }
             pos.y = taskData->yEnd + taskData->yDelta;
-            MapObject_SetPositionVec(mapObject, &pos);
+            MapObject_SetPositionVector(mapObject, &pos);
             if (snapped) {
                 taskData->delayTimer = 0;
                 ++(*pState);
@@ -822,7 +822,7 @@ static void beginWavesEffect(FieldSystem *fieldSystem) {
     modelAnimListSetFrameIndex(wavesEffectData->anims, 2, 0);
 
     VecFx32 pos;
-    MapObject_GetPositionVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &pos);
+    MapObject_CopyPositionVector(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &pos);
     Field3dObject_SetPosEx(&wavesEffectData->object, pos.x, pos.y, pos.z);
     taskData->task = SysTask_CreateOnMainQueue(Task_WavesEffect, taskData, 0);
 }

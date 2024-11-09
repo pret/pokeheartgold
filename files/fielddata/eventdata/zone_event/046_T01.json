@@ -2,112 +2,112 @@
   "header": "fielddata/script/scr_seq/event_T01.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_T01_005 + 1",
+      "scriptId": "_EV_scr_seq_T01_005 + 1",
       "type": 1,
       "x": 1042,
-      "y": 363,
-      "z": 0,
+      "z": 363,
+      "y": 0,
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T01_003 + 1",
+      "scriptId": "_EV_scr_seq_T01_003 + 1",
       "type": 1,
       "x": 1031,
-      "y": 363,
-      "z": 0,
+      "z": 363,
+      "y": 0,
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T01_004 + 1",
+      "scriptId": "_EV_scr_seq_T01_004 + 1",
       "type": 1,
       "x": 1045,
-      "y": 378,
-      "z": 0,
+      "z": 378,
+      "y": 0,
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T01_002 + 1",
+      "scriptId": "_EV_scr_seq_T01_002 + 1",
       "type": 1,
       "x": 1036,
-      "y": 369,
-      "z": 0,
+      "z": 369,
+      "y": 0,
       "dir": 4
     }
   ],
   "objects": [
     {
       "id": "obj_T01_gswoman1",
-      "sprite_id": "SPRITE_GSWOMAN1",
+      "spriteId": "SPRITE_GSWOMAN1",
       "movement": 5,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T01_000 + 1",
-      "dirn": 2,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 1,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_T01_000 + 1",
+      "facingDirection": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 1,
+      "yRange": 0,
       "x": 1040,
-      "y": 367,
-      "z": 0
+      "z": 367,
+      "y": 0
     },
     {
       "id": "obj_T01_gsbigman",
-      "sprite_id": "SPRITE_GSBIGMAN",
+      "spriteId": "SPRITE_GSBIGMAN",
       "movement": 2,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T01_001 + 1",
-      "dirn": 1,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_T01_001 + 1",
+      "facingDirection": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 1044,
-      "y": 380,
-      "z": 0
+      "z": 380,
+      "y": 0
     },
     {
       "id": "obj_T01_gsmiddleman1",
-      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "spriteId": "SPRITE_GSMIDDLEMAN1",
       "movement": 14,
       "type": 0,
-      "flag": "FLAG_HIDE_CAMERON",
-      "scr": "_EV_scr_seq_T01_006 + 1",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_CAMERON",
+      "scriptId": "_EV_scr_seq_T01_006 + 1",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 1031,
-      "y": 371,
-      "z": 0
+      "z": 371,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 1033,
-      "y": 363,
+      "z": 363,
       "header": "MAP_T01R0101",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 1044,
-      "y": 363,
+      "z": 363,
       "header": "MAP_T01R0201",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 1045,
-      "y": 373,
+      "z": 373,
       "header": "MAP_T01R0301",
       "anchor": 0,
-      "height": 0
+      "y": 0
     }
   ]
 }

@@ -13,8 +13,8 @@
 .public MapObject_GetFacingDirection
 .public sub_0205F484
 .public MapObject_SetVisible
-.public MapObject_GetPositionVec
-.public MapObject_SetPositionVec
+.public MapObject_CopyPositionVector
+.public MapObject_SetPositionVector
 .public sub_0206121C
 .public sub_02068D98
 .public sub_02068DA8

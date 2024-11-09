@@ -39,7 +39,7 @@
 .public MapObject_GetInitialX
 .public MapObject_GetInitialY
 .public MapObject_GetInitialZ
-.public sub_0205FC2C
+.public MapObject_SetPositionFromXYZAndDirection
 .public sub_0205FC94
 .public MapObject_AreBitsSetForMovementScriptInit
 .public MapObject_SetHeldMovement

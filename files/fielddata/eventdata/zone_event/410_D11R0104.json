@@ -2,275 +2,275 @@
   "header": "fielddata/script/scr_seq/event_D11R0104.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d11r0104_max_revive",
+      "scriptId": "std_hiddenitem_d11r0104_max_revive",
       "type": 2,
       "x": 38,
-      "y": 27,
-      "z": 0,
+      "z": 27,
+      "y": 0,
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d11r0104_rare_candy",
+      "scriptId": "std_hiddenitem_d11r0104_rare_candy",
       "type": 2,
       "x": 10,
-      "y": 9,
-      "z": 0,
+      "z": 9,
+      "y": 0,
       "dir": 4
     }
   ],
   "objects": [
     {
       "id": "obj_EVERYWHERE_rock",
-      "sprite_id": "SPRITE_ROCK",
+      "spriteId": "SPRITE_ROCK",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_MAPTEMP_010",
-      "scr": "std_field_strength",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_MAPTEMP_010",
+      "scriptId": "std_field_strength",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 30,
-      "y": 12,
-      "z": 0
+      "z": 12,
+      "y": 0
     },
     {
       "id": "obj_EVERYWHERE_ice",
-      "sprite_id": "SPRITE_ICE",
+      "spriteId": "SPRITE_ICE",
       "movement": 15,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": 0,
-      "dirn": 1,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": 0,
+      "facingDirection": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 28,
-      "y": 23,
-      "z": 0
+      "z": 23,
+      "y": 0
     },
     {
       "id": "obj_EVERYWHERE_ice_2",
-      "sprite_id": "SPRITE_ICE",
+      "spriteId": "SPRITE_ICE",
       "movement": 15,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": 0,
-      "dirn": 1,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": 0,
+      "facingDirection": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 30,
-      "y": 23,
-      "z": 0
+      "z": 23,
+      "y": 0
     },
     {
       "id": "obj_EVERYWHERE_ice_3",
-      "sprite_id": "SPRITE_ICE",
+      "spriteId": "SPRITE_ICE",
       "movement": 15,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": 0,
-      "dirn": 1,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": 0,
+      "facingDirection": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 32,
-      "y": 23,
-      "z": 0
+      "z": 23,
+      "y": 0
     },
     {
       "id": "obj_EVERYWHERE_ice_4",
-      "sprite_id": "SPRITE_ICE",
+      "spriteId": "SPRITE_ICE",
       "movement": 15,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": 0,
-      "dirn": 1,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": 0,
+      "facingDirection": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 12,
-      "y": 12,
-      "z": 0
+      "z": 12,
+      "y": 0
     },
     {
       "id": "obj_EVERYWHERE_ice_5",
-      "sprite_id": "SPRITE_ICE",
+      "spriteId": "SPRITE_ICE",
       "movement": 15,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": 0,
-      "dirn": 1,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": 0,
+      "facingDirection": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 15,
-      "y": 12,
-      "z": 0
+      "z": 12,
+      "y": 0
     },
     {
       "id": "obj_EVERYWHERE_ice_6",
-      "sprite_id": "SPRITE_ICE",
+      "spriteId": "SPRITE_ICE",
       "movement": 15,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": 0,
-      "dirn": 1,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": 0,
+      "facingDirection": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 14,
-      "y": 15,
-      "z": 0
+      "z": 15,
+      "y": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball",
-      "sprite_id": "SPRITE_MONSTARBALL",
+      "spriteId": "SPRITE_MONSTARBALL",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_HIDE_ITEMBALL_D11R0104_REVIVE",
-      "scr": "std_itemball_d11r0104_revive",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_ITEMBALL_D11R0104_REVIVE",
+      "scriptId": "std_itemball_d11r0104_revive",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 21,
-      "y": 22,
-      "z": 0
+      "z": 22,
+      "y": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball_2",
-      "sprite_id": "SPRITE_MONSTARBALL",
+      "spriteId": "SPRITE_MONSTARBALL",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_HIDE_ITEMBALL_D11R0104_BIG_PEARL",
-      "scr": "std_itemball_d11r0104_big_pearl",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_ITEMBALL_D11R0104_BIG_PEARL",
+      "scriptId": "std_itemball_d11r0104_big_pearl",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 21,
-      "y": 11,
-      "z": 0
+      "z": 11,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 43,
-      "y": 13,
+      "z": 13,
       "header": "MAP_D11R0103",
       "anchor": 4,
-      "height": 0
+      "y": 0
     },
     {
       "x": 42,
-      "y": 25,
+      "z": 25,
       "header": "MAP_D11R0103",
       "anchor": 5,
-      "height": 0
+      "y": 0
     },
     {
       "x": 23,
-      "y": 15,
+      "z": 15,
       "header": "MAP_D11R0103",
       "anchor": 6,
-      "height": 0
+      "y": 0
     },
     {
       "x": 4,
-      "y": 25,
+      "z": 25,
       "header": "MAP_D11R0103",
       "anchor": 7,
-      "height": 0
+      "y": 0
     },
     {
       "x": 44,
-      "y": 22,
+      "z": 22,
       "header": "MAP_D11R0105",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 37,
-      "y": 23,
+      "z": 23,
       "header": "MAP_D11R0105",
       "anchor": 1,
-      "height": 0
+      "y": 0
     },
     {
       "x": 32,
-      "y": 4,
+      "z": 4,
       "header": "MAP_D11R0105",
       "anchor": 2,
-      "height": 0
+      "y": 0
     },
     {
       "x": 27,
-      "y": 13,
+      "z": 13,
       "header": "MAP_D11R0105",
       "anchor": 3,
-      "height": 0
+      "y": 0
     },
     {
       "x": 11,
-      "y": 20,
+      "z": 20,
       "header": "MAP_D11R0105",
       "anchor": 4,
-      "height": 0
+      "y": 0
     },
     {
       "x": 5,
-      "y": 5,
+      "z": 5,
       "header": "MAP_D11R0105",
       "anchor": 5,
-      "height": 0
+      "y": 0
     },
     {
       "x": 42,
-      "y": 24,
+      "z": 24,
       "header": "MAP_D11R0103",
       "anchor": 5,
-      "height": 0
+      "y": 0
     },
     {
       "x": 43,
-      "y": 12,
+      "z": 12,
       "header": "MAP_D11R0103",
       "anchor": 4,
-      "height": 0
+      "y": 0
     },
     {
       "x": 23,
-      "y": 14,
+      "z": 14,
       "header": "MAP_D11R0103",
       "anchor": 6,
-      "height": 0
+      "y": 0
     },
     {
       "x": 4,
-      "y": 24,
+      "z": 24,
       "header": "MAP_D11R0103",
       "anchor": 7,
-      "height": 0
+      "y": 0
     }
   ]
 }

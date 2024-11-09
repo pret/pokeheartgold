@@ -98,44 +98,44 @@ class NamedStruct(struct.Struct):
 
 
 BgEvent = NamedStruct('BgEvent', '<HHLLLL', (
-    'scr',
+    'scriptId',
     'type',
     'x',
-    'y',
     'z',
+    'y',
     'dir'
 ))
 ObjectEvent = NamedStruct('ObjectEvent', '<HHHHHHhHHHhhHHl', (
     'id',
-    'sprite_id',
+    'spriteId',
     'movement',
     'type',
-    'flag',
-    'scr',
-    'dirn',
-    'eye',
-    'unk10',
-    'tsure_poke_color',
-    'xrange',
-    'yrange',
+    'eventFlag',
+    'scriptId',
+    'facingDirection',
+    'param0',
+    'param1',
+    'param2',
+    'xRange',
+    'yRange',
     'x',
-    'y',
     'z',
+    'y',
 ))
 WarpEvent = NamedStruct('WarpEvent', '<HHHHL', (
     'x',
-    'y',
+    'z',
     'header',
     'anchor',
-    'height',
+    'y',
 ))
 CoordEvent = NamedStruct('CoordEvent', '<HHHHHHHH', (
-    'scr',
+    'scriptId',
     'x',
-    'y',
+    'z',
     'w',
     'h',
-    'z',
+    'y',
     'val',
     'var',
 ))
@@ -379,11 +379,11 @@ class NormalScriptParser(ScriptParserBase):
         if bgs:
             ret['bgs'] = [
                 {
-                    'scr': scr_get(bg.scr),
+                    'scriptId': scr_get(bg.scriptId),
                     'type': bg.type,
                     'x': bg.x,
-                    'y': bg.y,
                     'z': bg.z,
+                    'y': bg.y,
                     'dir': bg.dir
                 } for bg in bgs
             ]
@@ -391,7 +391,7 @@ class NormalScriptParser(ScriptParserBase):
             obj_prefix = self.prefix.replace('scr_seq_', 'obj_')
             seen_objects = collections.Counter()
             for obj in obs:
-                sprite = self.constants['sprites'][obj.sprite_id].replace('SPRITE_', '').lower()
+                sprite = self.constants['sprites'][obj.spriteId].replace('SPRITE_', '').lower()
                 obj_name = f'{obj_prefix}_{sprite}'
                 seen_objects[obj_name] += 1
                 if seen_objects[obj_name] > 1:
@@ -401,41 +401,41 @@ class NormalScriptParser(ScriptParserBase):
             ret['objects'] = [
                 {
                     'id': self.objects[i + 2][1],
-                    'sprite_id': self.constants['sprites'][ob.sprite_id],
+                    'spriteId': self.constants['sprites'][ob.spriteId],
                     'movement': ob.movement,
                     'type': ob.type,
-                    'flag': self.constants['flag'][ob.flag],
-                    'scr': scr_get(ob.scr),
-                    'dirn': ob.dirn,
-                    'eye': ob.eye,
-                    'unk10': ob.unk10,
-                    'tsure_poke_color': ob.tsure_poke_color,
-                    'xrange': ob.xrange,
-                    'yrange': ob.yrange,
+                    'eventFlag': self.constants['eventFlag'][ob.eventFlag],
+                    'scriptId': scr_get(ob.scriptId),
+                    'facingDirection': ob.facingDirection,
+                    'param0': ob.param0,
+                    'param1': ob.param1,
+                    'param2': ob.param2,
+                    'xRange': ob.xRange,
+                    'yRange': ob.yRange,
                     'x': ob.x,
-                    'y': ob.y,
                     'z': ob.z,
+                    'y': ob.y,
                 } for i, ob in enumerate(obs)
             ]
         if wps:
             ret['warps'] = [
                 {
                     'x': wp.x,
-                    'y': wp.y,
+                    'z': wp.z,
                     'header': self.constants['maps'].get(wp.header, wp.header),
                     'anchor': wp.anchor,
-                    'height': wp.height,
+                    'y': wp.y,
                 } for wp in wps
             ]
         if cds:
             ret['coords'] = [
                 {
-                    'scr': scr_get(cd.scr),
+                    'scriptId': scr_get(cd.scriptId),
                     'x': cd.x,
-                    'y': cd.y,
+                    'z': cd.z,
                     'w': cd.w,
                     'h': cd.h,
-                    'z': cd.z,
+                    'y': cd.y,
                     'val': cd.val,
                     'var': self.constants['var'][cd.var]
                 } for cd in cds

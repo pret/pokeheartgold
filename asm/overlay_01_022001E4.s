@@ -525,10 +525,10 @@ ov01_02200540: ; 0x02200540
 	add r0, r5, #0
 	add r1, sp, #0x14
 	str r5, [sp, #0x2c]
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r5, #0
 	add r1, sp, #8
-	bl MapObject_GetFacingVec
+	bl MapObject_CopyFacingVector
 	add r0, sp, #0x14
 	add r1, sp, #8
 	add r2, r0, #0

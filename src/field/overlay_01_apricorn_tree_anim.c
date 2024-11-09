@@ -148,9 +148,9 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
         apricornType = FieldSystem_ApricornTree_TryGetApricorn(fieldSystem, env->tree) - 1;
         GF_ASSERT(apricornType >= APRICORN_NONE);
         env->apricorn = CreateJumpingApricornObj(fieldSystem->mapObjectManager, SPRITE_BONMI_R + apricornType, posX, posZ);
-        MapObject_GetPositionVec(env->apricorn, &pos);
+        MapObject_CopyPositionVector(env->apricorn, &pos);
         pos.y += 12 * FX32_ONE;
-        MapObject_SetPositionVec(env->apricorn, &pos);
+        MapObject_SetPositionVector(env->apricorn, &pos);
         env->state = 5;
         break;
     case 5:
@@ -213,11 +213,11 @@ static LocalMapObject *CreateJumpingApricornObj(MapObjectManager *taskman, u32 s
 
 static BOOL DoApricornJump(AnimApricornTreeWork *env) {
     VecFx32 pos;
-    MapObject_GetPositionVec(env->apricorn, &pos);
+    MapObject_CopyPositionVector(env->apricorn, &pos);
     pos.y += sApricornJumpDy[env->jumpTimer] * FX32_ONE;
     pos.x += env->jumpDx;
     pos.z += env->jumpDz;
-    MapObject_SetPositionVec(env->apricorn, &pos);
+    MapObject_SetPositionVector(env->apricorn, &pos);
 
     if (++env->jumpTimer >= APRICORN_JUMP_FRAMES) {
         MapObject_Remove(env->apricorn);

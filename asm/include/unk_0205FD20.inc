@@ -84,8 +84,8 @@
 .public MapObject_AddCurrentY
 .public MapObject_GetCurrentZ
 .public MapObject_AddCurrentZ
-.public MapObject_GetPositionVec
-.public MapObject_SetPositionVec
+.public MapObject_CopyPositionVector
+.public MapObject_SetPositionVector
 .public sub_0205F9C0
 .public sub_0205FD20
 .public sub_0205FD30

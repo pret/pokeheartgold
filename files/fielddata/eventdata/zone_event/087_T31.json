@@ -2,72 +2,72 @@
   "header": "fielddata/script/scr_seq/event_T31.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_t31_full_restore",
+      "scriptId": "std_hiddenitem_t31_full_restore",
       "type": 2,
       "x": 827,
-      "y": 263,
-      "z": 0,
+      "z": 263,
+      "y": 0,
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T31_002 + 1",
+      "scriptId": "_EV_scr_seq_T31_002 + 1",
       "type": 1,
       "x": 810,
-      "y": 262,
-      "z": 0,
+      "z": 262,
+      "y": 0,
       "dir": 4
     }
   ],
   "objects": [
     {
       "id": "obj_T31_monstarball",
-      "sprite_id": "SPRITE_MONSTARBALL",
+      "spriteId": "SPRITE_MONSTARBALL",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_HIDE_ITEMBALL_T31_REAPER_CLOTH",
-      "scr": "std_itemball_t31_reaper_cloth",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_ITEMBALL_T31_REAPER_CLOTH",
+      "scriptId": "std_itemball_t31_reaper_cloth",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 808,
-      "y": 277,
-      "z": 0
+      "z": 277,
+      "y": 0
     },
     {
       "id": "obj_T31_gsmiddleman1",
-      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "spriteId": "SPRITE_GSMIDDLEMAN1",
       "movement": 14,
       "type": 0,
-      "flag": "FLAG_HIDE_CAMERON",
-      "scr": "_EV_scr_seq_T31_000 + 1",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_CAMERON",
+      "scriptId": "_EV_scr_seq_T31_000 + 1",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 820,
-      "y": 271,
-      "z": 0
+      "z": 271,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 811,
-      "y": 260,
+      "z": 260,
       "header": "MAP_D41R0101",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 820,
-      "y": 265,
+      "z": 265,
       "header": "MAP_T31PC0101",
       "anchor": 0,
-      "height": 0
+      "y": 0
     }
   ]
 }

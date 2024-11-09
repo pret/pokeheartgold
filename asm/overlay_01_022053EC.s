@@ -479,7 +479,7 @@ ov01_02205720: ; 0x02205720
 	add r1, sp, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	cmp r4, #3
 	bhi _02205776
 	add r0, r4, r4
@@ -524,7 +524,7 @@ _02205776:
 	add r0, r5, #0
 	add r1, sp, #0
 	add r2, r6, #0
-	bl sub_0205FBC0
+	bl LocalMapObject_SetPositionFromVectorAndDirection
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov01_02205720
@@ -553,11 +553,11 @@ ov01_02205790: ; 0x02205790
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r1, sp, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r6, #0
 	add r1, sp, #0
 	add r2, r4, #0
-	bl sub_0205FBC0
+	bl LocalMapObject_SetPositionFromVectorAndDirection
 _022057BE:
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
@@ -884,11 +884,11 @@ ov01_02205A34: ; 0x02205A34
 	bl FollowMon_GetMapObject
 	add r4, r0, #0
 	add r1, sp, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r4, #0
 	add r1, sp, #0
 	str r5, [sp, #4]
-	bl MapObject_SetPositionVec
+	bl MapObject_SetPositionVector
 _02205A5C:
 	add sp, #0xc
 	pop {r4, r5, pc}
@@ -1130,7 +1130,7 @@ _02205C14:
 _02205C38:
 	add r0, r6, #0
 	add r1, sp, #0x24
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	ldrb r2, [r4, #1]
 	add r1, sp, #8
 	ldr r0, [sp, #0x2c]
@@ -1150,7 +1150,7 @@ _02205C38:
 	add r0, r2, r0
 	str r0, [sp, #0x28]
 	add r0, r6, #0
-	bl MapObject_SetPositionVec
+	bl MapObject_SetPositionVector
 	ldrb r0, [r4, #1]
 	add r0, r0, #1
 	strb r0, [r4, #1]

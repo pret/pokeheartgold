@@ -220,7 +220,7 @@ static u32 sub_0206D688(UnkStruct_0206D494 *a0) {
 static u32 sub_0206D7B8(LocalMapObject *object, u32 x, u32 height, u32 y) {
     u32 unk;
     VecFx32 position;
-    MapObject_GetPositionVec(object, &position);
+    MapObject_CopyPositionVector(object, &position);
     u32 flags = 0;
     if (sub_020549F4(MapObject_GetFieldSystem(object), &position, x, y, &unk) == 1) {
         flags |= 1;

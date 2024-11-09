@@ -132,7 +132,7 @@ void FieldSystem_SyncMapObjectsToSave(FieldSystem *fieldSystem) {
 
 void FieldSystem_RestoreMapObjectsFromSave(FieldSystem *fieldSystem) {
     struct SavedMapObjectList *unk  = Save_MapObjects_Get(fieldSystem->saveData);
-    struct SavedMapObject *follower = SaveMapObjects_SearchSpriteId(unk->subs, 64, SPRITE_FOLLOWER_MON_SHAYMIN_SKY);
+    struct SavedMapObject *follower = SaveMapObject_GetFirstObjectWithSpriteID(unk->subs, 64, SPRITE_FOLLOWER_MON_SHAYMIN_SKY);
     Pokemon *mon;
     int species;
     int form;

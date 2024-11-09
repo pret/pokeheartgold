@@ -2,126 +2,126 @@
   "header": "fielddata/script/scr_seq/event_R02R0101.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_R02R0101_000 + 1",
+      "scriptId": "_EV_scr_seq_R02R0101_000 + 1",
       "type": 1,
       "x": 1047,
-      "y": 139,
-      "z": 0,
+      "z": 139,
+      "y": 0,
       "dir": 4
     }
   ],
   "objects": [
     {
       "id": "obj_R02R0101_gsboy3",
-      "sprite_id": "SPRITE_GSBOY3",
+      "spriteId": "SPRITE_GSBOY3",
       "movement": 8,
       "type": 1,
-      "flag": "FLAG_NOTHING",
-      "scr": "std_trainer(TRAINER_BUG_CATCHER_ED)",
-      "dirn": 1,
-      "eye": 3,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "std_trainer(TRAINER_BUG_CATCHER_ED)",
+      "facingDirection": 1,
+      "param0": 3,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 1029,
-      "y": 131,
-      "z": 0
+      "z": 131,
+      "y": 0
     },
     {
       "id": "obj_R02R0101_tree",
-      "sprite_id": "SPRITE_TREE",
+      "spriteId": "SPRITE_TREE",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_MAPTEMP_010",
-      "scr": "std_field_cut",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_MAPTEMP_010",
+      "scriptId": "std_field_cut",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 1034,
-      "y": 137,
-      "z": 0
+      "z": 137,
+      "y": 0
     },
     {
       "id": "obj_R02R0101_monstarball",
-      "sprite_id": "SPRITE_MONSTARBALL",
+      "spriteId": "SPRITE_MONSTARBALL",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_HIDE_ITEMBALL_R02R0101_CARBOS",
-      "scr": "std_itemball_r02r0101_carbos",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_ITEMBALL_R02R0101_CARBOS",
+      "scriptId": "std_itemball_r02r0101_carbos",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 1053,
-      "y": 129,
-      "z": 0
+      "z": 129,
+      "y": 0
     },
     {
       "id": "obj_R02R0101_bonguri",
-      "sprite_id": "SPRITE_BONGURI",
+      "spriteId": "SPRITE_BONGURI",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "std_apricorn_tree",
-      "dirn": 0,
-      "eye": 1,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "std_apricorn_tree",
+      "facingDirection": 0,
+      "param0": 1,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 1052,
-      "y": 157,
-      "z": 0
+      "z": 157,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 1028,
-      "y": 138,
+      "z": 138,
       "header": "MAP_R02R0501",
       "anchor": 1,
-      "height": 0
+      "y": 0
     },
     {
       "x": 1029,
-      "y": 138,
+      "z": 138,
       "header": "MAP_R02R0501",
       "anchor": 1,
-      "height": 0
+      "y": 0
     },
     {
       "x": 1050,
-      "y": 183,
+      "z": 183,
       "header": "MAP_R02R0301",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 1051,
-      "y": 183,
+      "z": 183,
       "header": "MAP_R02R0301",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 1048,
-      "y": 137,
+      "z": 137,
       "header": "MAP_D01R0101",
       "anchor": 7,
-      "height": 0
+      "y": 0
     },
     {
       "x": 1047,
-      "y": 155,
+      "z": 155,
       "header": "MAP_R02R0201",
       "anchor": 0,
-      "height": 0
+      "y": 0
     }
   ]
 }

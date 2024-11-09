@@ -2570,7 +2570,7 @@ _02057FB6:
 	ldr r0, [sp, #0xc]
 	mov r2, #0
 	add r3, r7, #0
-	bl sub_0205FC2C
+	bl MapObject_SetPositionFromXYZAndDirection
 _02058010:
 	add r6, r6, #1
 	add r4, r4, #4

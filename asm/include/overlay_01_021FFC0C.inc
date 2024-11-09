@@ -15,7 +15,7 @@
 .public MapObject_GetFacingDirection
 .public MapObject_GetCurrentX
 .public MapObject_GetCurrentZ
-.public MapObject_GetPosVecYCoord
+.public MapObject_GetPositionVectorYCoord
 .public sub_0206121C
 .public sub_02068D90
 .public sub_02068D98

@@ -911,9 +911,9 @@ static int sub_0206A694(UnkStruct_0206A388 *unk, FieldSystem *fsys) {
         VecFx32 pos;
         player = PlayerAvatar_GetMapObject(fsys->playerAvatar);
         unkSub->unk2++;
-        MapObject_GetPositionVec(player, &pos);
+        MapObject_CopyPositionVector(player, &pos);
         pos.y -= 2 * FX32_ONE;
-        MapObject_SetPositionVec(player, &pos);
+        MapObject_SetPositionVector(player, &pos);
         if (unkSub->unk2 >= 16) {
             PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(fsys->playerAvatar, TRUE);
             unkSub->state++;

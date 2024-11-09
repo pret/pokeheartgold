@@ -41,8 +41,8 @@
 .public MapObject_GetCurrentX
 .public MapObject_GetCurrentY
 .public MapObject_GetCurrentZ
-.public MapObject_SetFacingVec
-.public sub_0205FC2C
+.public MapObject_SetFacingVector
+.public MapObject_SetPositionFromXYZAndDirection
 .public GetDeltaXByFacingDirection
 .public GetDeltaYByFacingDirection
 .public sub_02061200

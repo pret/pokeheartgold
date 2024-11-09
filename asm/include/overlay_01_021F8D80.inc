@@ -37,9 +37,9 @@
 .public MapObject_SetVisible
 .public MapObject_CheckMovementPaused
 .public MapObject_CheckFlag4
-.public MapObject_GetPositionVec
-.public MapObject_GetFacingVec
-.public MapObject_SetFacingVec
+.public MapObject_CopyPositionVector
+.public MapObject_CopyFacingVector
+.public MapObject_SetFacingVector
 .public sub_0205F990
 .public sub_0205F9A0
 .public sub_0205F9B0
@@ -60,7 +60,7 @@
 .public ov01_021F91F8
 .public ov01_021F9250
 .public ov01_021F92A0
-.public GetObjectEventGfxInfoPtr
+.public ObjectEvent_GetGraphicsInfo
 .public GetMoveModelNoBySpriteId
 .public ov01_021F9318
 .public ov01_021F9344

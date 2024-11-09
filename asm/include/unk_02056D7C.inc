@@ -76,7 +76,7 @@
 .public MapObject_SetID
 .public MapObject_SetCurrentX
 .public MapObject_SetCurrentZ
-.public sub_0205FC2C
+.public MapObject_SetPositionFromXYZAndDirection
 .public GetDeltaXByFacingDirection
 .public GetDeltaYByFacingDirection
 .public sub_0206234C

@@ -30,11 +30,11 @@
 .public MapObject_GetCurrentX
 .public MapObject_GetCurrentY
 .public MapObject_GetCurrentZ
-.public MapObject_GetPositionVec
-.public MapObject_SetPositionVec
-.public MapObject_GetFacingVec
-.public MapObject_SetFacingVec
-.public MapObject_GetFacingVecPtr
+.public MapObject_CopyPositionVector
+.public MapObject_SetPositionVector
+.public MapObject_CopyFacingVector
+.public MapObject_SetFacingVector
+.public MapObject_GetFacingVector
 .public sub_0205FCD4
 .public MapObject_ClearHeldMovement
 .public sub_02064084

@@ -16,8 +16,8 @@
 .public MapObject_GetCurrentX
 .public MapObject_GetCurrentY
 .public MapObject_GetCurrentZ
-.public MapObject_GetPositionVec
-.public MapObject_GetPosVecYCoord
+.public MapObject_CopyPositionVector
+.public MapObject_GetPositionVectorYCoord
 .public sub_0206121C
 .public sub_02068D90
 .public sub_02068D98

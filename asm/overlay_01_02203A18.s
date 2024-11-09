@@ -66,10 +66,10 @@ _02203A6E:
 	str r1, [r0, #4]
 	add r0, r5, #0
 	add r1, sp, #0x14
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r5, #0
 	add r1, sp, #8
-	bl MapObject_GetFacingVec
+	bl MapObject_CopyFacingVector
 	mov r0, #0
 	str r0, [sp, #0xc]
 	add r0, sp, #0x14
@@ -355,10 +355,10 @@ ov01_02203CB8: ; 0x02203CB8
 _02203CD4:
 	add r0, r5, #0
 	add r1, sp, #0x24
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r5, #0
 	add r1, sp, #0x18
-	bl MapObject_GetFacingVec
+	bl MapObject_CopyFacingVector
 	add r0, r5, #0
 	add r1, sp, #0xc
 	bl sub_0205F990

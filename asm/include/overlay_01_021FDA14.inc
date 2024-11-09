@@ -23,8 +23,8 @@
 .public MapObject_GetFieldSystem
 .public MapObject_CheckVisible
 .public MapObject_CheckFlag24
-.public MapObject_GetPositionVec
-.public MapObject_GetFacingVec
+.public MapObject_CopyPositionVector
+.public MapObject_CopyFacingVector
 .public sub_0206121C
 .public sub_02068D18
 .public sub_02068D90

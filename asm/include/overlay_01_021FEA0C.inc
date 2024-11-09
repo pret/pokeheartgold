@@ -4,7 +4,7 @@
 .public GF_AssertFail
 .public MapObject_GetPriorityPlusValue
 .public MapObject_GetFieldSystem
-.public MapObject_GetPositionVec
+.public MapObject_CopyPositionVector
 .public sub_0205F9A0
 .public sub_0206121C
 .public sub_02068D74

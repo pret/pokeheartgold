@@ -3,29 +3,29 @@
   "objects": [
     {
       "id": "obj_T07R0107_gswoman6",
-      "sprite_id": "SPRITE_GSWOMAN6",
+      "spriteId": "SPRITE_GSWOMAN6",
       "movement": 17,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T07R0107_000 + 1",
-      "dirn": 3,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_T07R0107_000 + 1",
+      "facingDirection": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 1,
-      "y": 6,
-      "z": 0
+      "z": 6,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 3,
-      "y": 6,
+      "z": 6,
       "header": 4095,
       "anchor": 256,
-      "height": 0
+      "y": 0
     }
   ]
 }

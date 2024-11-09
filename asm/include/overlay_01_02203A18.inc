@@ -21,8 +21,8 @@
 .public MapObject_GetID
 .public MapObject_GetMapID
 .public MapObject_GetPriority
-.public MapObject_GetPositionVec
-.public MapObject_GetFacingVec
+.public MapObject_CopyPositionVector
+.public MapObject_CopyFacingVector
 .public sub_0205F990
 .public sub_0205F9B0
 .public sub_02068D90

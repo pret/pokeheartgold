@@ -2,151 +2,151 @@
   "header": "fielddata/script/scr_seq/event_D11R0105.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d11r0105_zinc",
+      "scriptId": "std_hiddenitem_d11r0105_zinc",
       "type": 2,
       "x": 27,
-      "y": 22,
-      "z": 0,
+      "z": 22,
+      "y": 0,
       "dir": 4
     }
   ],
   "objects": [
     {
       "id": "obj_D11R0105_monstarball",
-      "sprite_id": "SPRITE_MONSTARBALL",
+      "spriteId": "SPRITE_MONSTARBALL",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_HIDE_ITEMBALL_D11R0105_ULTRA_BALL",
-      "scr": "std_itemball_d11r0105_ultra_ball",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_ITEMBALL_D11R0105_ULTRA_BALL",
+      "scriptId": "std_itemball_d11r0105_ultra_ball",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 29,
-      "y": 4,
-      "z": 0
+      "z": 4,
+      "y": 0
     },
     {
       "id": "obj_D11R0105_monstarball_2",
-      "sprite_id": "SPRITE_MONSTARBALL",
+      "spriteId": "SPRITE_MONSTARBALL",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_HIDE_ITEMBALL_D11R0105_TM13",
-      "scr": "std_itemball_d11r0105_tm13",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_ITEMBALL_D11R0105_TM13",
+      "scriptId": "std_itemball_d11r0105_tm13",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 42,
-      "y": 8,
-      "z": 0
+      "z": 8,
+      "y": 0
     },
     {
       "id": "obj_D11R0105_tsure_poke_static_articuno",
-      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_ARTICUNO",
+      "spriteId": "SPRITE_FOLLOWER_MON_STATIC_ARTICUNO",
       "movement": 15,
       "type": 0,
-      "flag": "FLAG_HIDE_SEAFOAM_ISLAND_ARTICUNO",
-      "scr": "_EV_scr_seq_D11R0105_000 + 1",
-      "dirn": 1,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_SEAFOAM_ISLAND_ARTICUNO",
+      "scriptId": "_EV_scr_seq_D11R0105_000 + 1",
+      "facingDirection": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 27,
-      "y": 22,
-      "z": 0
+      "z": 22,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 45,
-      "y": 22,
+      "z": 22,
       "header": "MAP_D11R0104",
       "anchor": 4,
-      "height": 0
+      "y": 0
     },
     {
       "x": 38,
-      "y": 23,
+      "z": 23,
       "header": "MAP_D11R0104",
       "anchor": 5,
-      "height": 0
+      "y": 0
     },
     {
       "x": 33,
-      "y": 4,
+      "z": 4,
       "header": "MAP_D11R0104",
       "anchor": 6,
-      "height": 0
+      "y": 0
     },
     {
       "x": 28,
-      "y": 13,
+      "z": 13,
       "header": "MAP_D11R0104",
       "anchor": 7,
-      "height": 0
+      "y": 0
     },
     {
       "x": 12,
-      "y": 19,
+      "z": 19,
       "header": "MAP_D11R0104",
       "anchor": 8,
-      "height": 0
+      "y": 0
     },
     {
       "x": 6,
-      "y": 5,
+      "z": 5,
       "header": "MAP_D11R0104",
       "anchor": 9,
-      "height": 0
+      "y": 0
     },
     {
       "x": 38,
-      "y": 22,
+      "z": 22,
       "header": "MAP_D11R0104",
       "anchor": 5,
-      "height": 0
+      "y": 0
     },
     {
       "x": 33,
-      "y": 3,
+      "z": 3,
       "header": "MAP_D11R0104",
       "anchor": 6,
-      "height": 0
+      "y": 0
     },
     {
       "x": 28,
-      "y": 12,
+      "z": 12,
       "header": "MAP_D11R0104",
       "anchor": 7,
-      "height": 0
+      "y": 0
     },
     {
       "x": 12,
-      "y": 18,
+      "z": 18,
       "header": "MAP_D11R0104",
       "anchor": 8,
-      "height": 0
+      "y": 0
     },
     {
       "x": 6,
-      "y": 4,
+      "z": 4,
       "header": "MAP_D11R0104",
       "anchor": 9,
-      "height": 0
+      "y": 0
     },
     {
       "x": 45,
-      "y": 21,
+      "z": 21,
       "header": "MAP_D11R0104",
       "anchor": 4,
-      "height": 0
+      "y": 0
     }
   ]
 }

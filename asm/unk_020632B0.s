@@ -142,7 +142,7 @@ _020633B2:
 	ldr r1, [r4, #8]
 	ldr r0, [sp]
 	add r1, #0x10
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0x14]
 	str r0, [r4, #4]
@@ -259,7 +259,7 @@ _020634CC:
 _020634D0:
 	add r0, r5, #0
 	add r1, sp, #8
-	bl MapObject_SetPositionVec
+	bl MapObject_SetPositionVector
 	ldr r0, [r4, #8]
 	ldrb r1, [r0]
 	ldrb r0, [r4, #2]
@@ -324,7 +324,7 @@ _02063550:
 	str r0, [sp, #8]
 	add r0, r5, #0
 	add r1, sp, #8
-	bl MapObject_SetFacingVec
+	bl MapObject_SetFacingVector
 	add r0, r5, #0
 	add r1, sp, #8
 	bl sub_0205F9A0
@@ -417,7 +417,7 @@ _02063624:
 	str r0, [sp, #0x10]
 	add r0, r5, #0
 	add r1, sp, #8
-	bl MapObject_SetPositionVec
+	bl MapObject_SetPositionVector
 	add r0, r5, #0
 	bl sub_02061070
 	ldr r1, _0206367C ; =0x00020008

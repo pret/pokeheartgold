@@ -3,17 +3,17 @@
   "warps": [
     {
       "x": 3,
-      "y": 19,
+      "z": 19,
       "header": "MAP_T27R0201",
       "anchor": 1,
-      "height": 0
+      "y": 0
     },
     {
       "x": 6,
-      "y": 3,
+      "z": 3,
       "header": "MAP_D17R1101",
       "anchor": 0,
-      "height": 0
+      "y": 0
     }
   ]
 }

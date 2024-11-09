@@ -281,11 +281,11 @@ int GetPlayerLastZCoord(PlayerAvatar *avatar) {
 }
 
 void PlayerAvatar_GetPositionVec(PlayerAvatar *avatar, VecFx32 *vec) {
-    MapObject_GetPositionVec(PlayerAvatar_GetMapObject(avatar), vec);
+    MapObject_CopyPositionVector(PlayerAvatar_GetMapObject(avatar), vec);
 }
 
 VecFx32 *PlayerAvatar_GetPositionVecConst(PlayerAvatar *avatar) {
-    return MapObject_GetPositionVecPtr(PlayerAvatar_GetMapObjectConst(avatar));
+    return MapObject_GetPositionVector(PlayerAvatar_GetMapObjectConst(avatar));
 }
 
 void sub_0205C6C8(PlayerAvatar *avatar, u32 unkA) {
@@ -484,7 +484,7 @@ void sub_0205C800(PlayerAvatar *avatar, int state) {
 }
 
 void sub_0205C810(PlayerAvatar *avatar, VecFx32 *pos, u32 dir) {
-    sub_0205FBC0(PlayerAvatar_GetMapObject(avatar), pos, dir);
+    LocalMapObject_SetPositionFromVectorAndDirection(PlayerAvatar_GetMapObject(avatar), pos, dir);
     sub_0205C6C8(avatar, 0);
     sub_0205C6D0(avatar, 0);
 }
@@ -492,9 +492,9 @@ void sub_0205C810(PlayerAvatar *avatar, VecFx32 *pos, u32 dir) {
 void sub_0205C838(PlayerAvatar *avatar, int unkA) {
     LocalMapObject *mapObj = PlayerAvatar_GetMapObject(avatar);
     VecFx32 vec;
-    MapObject_GetPositionVec(mapObj, &vec);
+    MapObject_CopyPositionVector(mapObj, &vec);
     vec.y = unkA;
-    MapObject_SetPositionVec(mapObj, &vec);
+    MapObject_SetPositionVector(mapObj, &vec);
 }
 
 void PlayerAvatar_ToggleAutomaticHeightUpdating(PlayerAvatar *avatar, u8 state) {

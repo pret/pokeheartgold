@@ -888,7 +888,7 @@ sub_0205D240: ; 0x0205D240
 	add r6, r0, #0
 	add r0, r4, #0
 	add r1, sp, #0xc
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r4, sp, #0xc
 	add r3, sp, #0
 	ldmia r4!, {r0, r1}
@@ -2002,7 +2002,7 @@ sub_0205DAA8: ; 0x0205DAA8
 	str r0, [sp, #0x10]
 	add r0, r5, #0
 	add r1, sp, #0x1c
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	ldr r1, [sp, #0x14]
 	ldr r6, [sp, #0xc]
 	ldr r3, [sp, #0x10]

@@ -70,9 +70,9 @@
 .public MapObject_SetCurrentY
 .public MapObject_GetCurrentZ
 .public MapObject_SetCurrentZ
-.public MapObject_GetPositionVec
-.public MapObject_SetPositionVec
-.public sub_0205FB58
+.public MapObject_CopyPositionVector
+.public MapObject_SetPositionVector
+.public MapObjectManager_GetFirstObjectWithXAndZ
 .public sub_0205FC94
 .public sub_02060BB8
 .public GetDeltaXByFacingDirection

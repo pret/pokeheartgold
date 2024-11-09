@@ -18,5 +18,5 @@
 .public GetPlayerZCoord
 .public PlayerAvatar_GetMapObject
 .public MapObject_CheckFlag19Disabled
-.public sub_0205F9D0
-.public sub_0205FB58
+.public MapObject_GetPositionVectorYCoordUInt
+.public MapObjectManager_GetFirstObjectWithXAndZ

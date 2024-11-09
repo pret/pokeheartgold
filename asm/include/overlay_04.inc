@@ -52,8 +52,8 @@
 .public MapObject_SetCurrentY
 .public MapObject_GetCurrentZ
 .public MapObject_SetCurrentZ
-.public MapObject_GetPositionVec
-.public MapObject_SetPositionVec
+.public MapObject_CopyPositionVector
+.public MapObject_SetPositionVector
 .public sub_02060F78
 .public MapObject_AreBitsSetForMovementScriptInit
 .public MapObject_SetHeldMovement

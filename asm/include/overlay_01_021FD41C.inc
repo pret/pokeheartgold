@@ -14,7 +14,7 @@
 .public sub_0205F544
 .public sub_0205F5E8
 .public MapObject_CheckFlag25
-.public MapObject_GetPositionVec
+.public MapObject_CopyPositionVector
 .public sub_02068D90
 .public sub_02068D98
 .public sub_02068DA8

@@ -32,7 +32,7 @@
 .public MapObject_GetInitialZ
 .public MapObject_GetCurrentX
 .public MapObject_GetCurrentZ
-.public sub_0205F9D0
+.public MapObject_GetPositionVectorYCoordUInt
 .public sub_02060BB8
 .public GetDeltaXByFacingDirection
 .public GetDeltaYByFacingDirection

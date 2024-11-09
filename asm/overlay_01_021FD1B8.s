@@ -291,10 +291,10 @@ ov01_021FD37C: ; 0x021FD37C
 _021FD39E:
 	add r0, r6, #0
 	add r1, sp, #0xc
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r6, #0
 	add r1, sp, #0
-	bl MapObject_GetFacingVec
+	bl MapObject_CopyFacingVector
 	ldr r1, [sp]
 	ldr r0, [r4, #0xc]
 	ldr r2, [sp, #0xc]

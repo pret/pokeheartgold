@@ -1792,10 +1792,10 @@ _02061ED8:
 _02061EE2:
 	add r0, r6, #0
 	bl PlayerAvatar_GetMapObject
-	bl sub_0205F9D0
+	bl MapObject_GetPositionVectorYCoordUInt
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F9D0
+	bl MapObject_GetPositionVectorYCoordUInt
 	cmp r4, r0
 	beq _02061EFE
 	mov r0, #0

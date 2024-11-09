@@ -2,54 +2,54 @@
   "header": "fielddata/script/scr_seq/event_D17R0103.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d17r0103_max_potion",
+      "scriptId": "std_hiddenitem_d17r0103_max_potion",
       "type": 2,
       "x": 16,
-      "y": 8,
-      "z": 0,
+      "z": 8,
+      "y": 0,
       "dir": 4
     }
   ],
   "objects": [
     {
       "id": "obj_EVERYWHERE_monstarball",
-      "sprite_id": "SPRITE_MONSTARBALL",
+      "spriteId": "SPRITE_MONSTARBALL",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_HIDE_ITEMBALL_D17R0103_FULL_HEAL",
-      "scr": "std_itemball_d17r0103_full_heal",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_ITEMBALL_D17R0103_FULL_HEAL",
+      "scriptId": "std_itemball_d17r0103_full_heal",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 6,
-      "y": 25,
-      "z": 0
+      "z": 25,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 15,
-      "y": 25,
+      "z": 25,
       "header": "MAP_D17R0102",
       "anchor": 1,
-      "height": 0
+      "y": 0
     },
     {
       "x": 24,
-      "y": 8,
+      "z": 8,
       "header": "MAP_D17R0104",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 24,
-      "y": 7,
+      "z": 7,
       "header": "MAP_D17R0104",
       "anchor": 0,
-      "height": 0
+      "y": 0
     }
   ]
 }

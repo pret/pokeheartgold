@@ -14,7 +14,7 @@
 .public sub_0205F504
 .public MapObject_GetCurrentX
 .public MapObject_GetCurrentZ
-.public MapObject_GetPositionVec
+.public MapObject_CopyPositionVector
 .public GetDeltaXByFacingDirection
 .public GetDeltaYByFacingDirection
 .public sub_020611C8

@@ -7543,12 +7543,12 @@ ov02_022494C4: ; 0x022494C4
 	ldr r0, [r0, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r1, sp, #0xc
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	mov r0, #0x82
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, sp, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	ldr r1, [sp]
 	ldr r0, [sp, #0xc]
 	sub r0, r1, r0
@@ -12226,7 +12226,7 @@ ov02_0224B784: ; 0x0224B784
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, sp, #0xc
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, sp, #8
 	str r0, [sp]
 	mov r0, #0x83
@@ -15374,7 +15374,7 @@ ov02_0224CFD8: ; 0x0224CFD8
 	bl MapObjectManager_GetFirstActiveObjectByID
 	add r6, r0, #0
 	add r1, sp, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r6, #0
 	bl MapObject_GetCurrentX
 	add r5, r0, #0
@@ -17511,7 +17511,7 @@ ov02_0224DF1C: ; 0x0224DF1C
 	ldr r0, [r4, r0]
 	bl FollowMon_GetMapObject
 	add r1, sp, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	mov r5, #0
 	add r1, r4, #0
 _0224DF5A:
@@ -21532,7 +21532,7 @@ ov02_0224FD9C: ; 0x0224FD9C
 	add r5, r0, #0
 	add r0, r4, #0
 	add r1, sp, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	mov r0, #2
 	ldrsb r0, [r5, r0]
 	cmp r0, #0
@@ -21568,7 +21568,7 @@ _0224FDDC:
 _0224FDEC:
 	add r0, r4, #0
 	add r1, sp, #0
-	bl MapObject_SetPositionVec
+	bl MapObject_SetPositionVector
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end ov02_0224FD9C
@@ -21892,7 +21892,7 @@ _02250040:
 	lsl r1, r1, #4
 	ldr r0, [r0]
 	add r1, r4, r1
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r5, #0
 	add r0, #0xe4
 	ldr r0, [r0]
@@ -21961,7 +21961,7 @@ _022500AE:
 	lsl r1, r1, #4
 	ldr r0, [r0]
 	add r1, r4, r1
-	bl MapObject_SetPositionVec
+	bl MapObject_SetPositionVector
 	ldr r1, _0225010C ; =0x0000087C
 	add r0, r5, #0
 	add r0, #0xe4

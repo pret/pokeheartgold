@@ -92,7 +92,7 @@
 .public MapObject_GetCurrentX
 .public MapObject_GetCurrentY
 .public MapObject_GetCurrentZ
-.public MapObject_GetPositionVec
+.public MapObject_CopyPositionVector
 .public sub_02060BFC
 .public sub_02060D94
 .public sub_02060DEC

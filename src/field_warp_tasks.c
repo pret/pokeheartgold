@@ -150,7 +150,7 @@ static void sub_02052F94(FieldSystem *fieldSystem, Location *location) {
     if (fieldSystem->location->warpId != -1) {
         warp                     = Field_GetWarpEventI(fieldSystem, fieldSystem->location->warpId);
         fieldSystem->location->x = warp->x;
-        fieldSystem->location->y = warp->y;
+        fieldSystem->location->y = warp->z;
         if (warp->anchor == 0x100) {
             *LocalFieldData_GetDynamicWarp(localFieldData) = *LocalFieldData_GetEntrancePosition(localFieldData);
         }

@@ -113,7 +113,7 @@ _021FE826:
 	add r1, sp, #0x14
 	str r0, [r2]
 	add r0, r5, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r5, #0
 	add r1, sp, #8
 	bl sub_0205F9A0
@@ -258,7 +258,7 @@ _021FE936:
 	bl sub_0205F9A0
 	add r0, r4, #0
 	add r1, sp, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	mov r0, #1
 	ldr r1, [r5, #0x1c]
 	lsl r0, r0, #0xc

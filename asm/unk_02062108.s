@@ -1434,7 +1434,7 @@ _02062A30:
 	str r1, [sp, #0x14]
 	add r0, r5, #0
 	add r1, sp, #0xc
-	bl MapObject_SetFacingVec
+	bl MapObject_SetFacingVector
 	mov r0, #0xd
 	ldrsb r1, [r4, r0]
 	sub r1, r1, #1
@@ -1452,7 +1452,7 @@ _02062A68:
 	str r0, [r1, #4]
 	str r0, [r1, #8]
 	add r0, r5, #0
-	bl MapObject_SetFacingVec
+	bl MapObject_SetFacingVector
 	ldr r1, _02062AB4 ; =0x00020028
 	add r0, r5, #0
 	bl MapObject_SetFlagsBits
@@ -2007,7 +2007,7 @@ MapObjectMovementCmd067_Step1: ; 0x02062E04
 	ldr r0, [r4]
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl MapObject_SetFacingVec
+	bl MapObject_SetFacingVector
 	ldr r1, [r4]
 	asr r0, r1, #0xe
 	lsr r0, r0, #0x11
@@ -2071,7 +2071,7 @@ _02062E92:
 	ldr r0, [r4]
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl MapObject_SetFacingVec
+	bl MapObject_SetFacingVector
 	ldr r0, [r4]
 	cmp r0, #0
 	ble _02062EB2
@@ -2537,7 +2537,7 @@ _020631B6:
 	str r0, [r1, #4]
 	str r0, [r1, #8]
 	add r0, r4, #0
-	bl MapObject_SetFacingVec
+	bl MapObject_SetFacingVector
 	add r0, r4, #0
 	bl ov01_022000DC
 	ldr r1, _020631EC ; =0x00010004
@@ -2575,7 +2575,7 @@ MapObjectMovementCmd101_Step1: ; 0x020631F0
 	ldr r0, [r2, r0]
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl MapObject_SetFacingVec
+	bl MapObject_SetFacingVector
 	ldr r0, [r4]
 	add r0, r0, #2
 	str r0, [r4]
@@ -2589,7 +2589,7 @@ _02063228:
 	str r0, [sp, #4]
 	add r0, r5, #0
 	add r1, sp, #0
-	bl MapObject_SetFacingVec
+	bl MapObject_SetFacingVector
 	ldr r1, _02063254 ; =0x00020028
 	add r0, r5, #0
 	bl MapObject_SetFlagsBits

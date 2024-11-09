@@ -670,7 +670,7 @@ _0205B16C:
 	add r0, r4, #0
 	add r1, r7, #0
 	add r3, r6, #0
-	bl sub_0205FC2C
+	bl MapObject_SetPositionFromXYZAndDirection
 	add r0, r4, #0
 	mov r1, #1
 	bl MapObject_SetFacingDirectionDirect
