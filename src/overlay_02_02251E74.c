@@ -26,7 +26,7 @@
 
 String *GetPhoneBookEntryName(GearPhoneRingManager *gearPhone, HeapID heapId) {
     String *str;
-    if (!gearPhone->unk_var0_0 || gearPhone->unk_var2 >= 0x4b) {
+    if (!gearPhone->unk_var0_0 || gearPhone->unk_var2 >= 75) {
         str = String_New(8, heapId);
     } else {
         int phoneMsg     = GetPhoneMessageGmm(gearPhone->unk_var2);
@@ -38,7 +38,7 @@ String *GetPhoneBookEntryName(GearPhoneRingManager *gearPhone, HeapID heapId) {
 }
 
 void ov02_02251EB8(GearPhoneRingManager *gearPhone, u8 a1, u8 a2, u8 a3, u8 a4, u8 a5) {
-    if (a1 >= 0x4b) {
+    if (a1 >= 75) {
         gearPhone->unk_var2    = 0xFF;
         gearPhone->unk_arr5[0] = 0xFF;
         gearPhone->unk_arr5[1] = 0;
@@ -55,7 +55,7 @@ void ov02_02251EB8(GearPhoneRingManager *gearPhone, u8 a1, u8 a2, u8 a3, u8 a4, 
 
 u8 ov02_02251EE8(GearPhoneRingManager *gearPhone, u8 *a1) {
     MI_CpuFill8(a1, 0, 5);
-    if (gearPhone->unk_var2 >= 0x4b) {
+    if (gearPhone->unk_var2 >= 75) {
         GF_ASSERT(FALSE);
         a1[0] = 0xFF;
         return 0xFF;
@@ -183,15 +183,241 @@ u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 map
     return ret;
 }
 #else
-//clang-format off
+// clang-format off
 extern u32 _u32_div_f(u32 a1, u32 a2);
 extern s32 _s32_div_f(s32 a1, s32 a2);
 asm u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId) {
-    push { r3, r4, r5, r6, r7, lr } sub sp, #0x30 str r0, [ sp, #8 ] ldr r0, [ r0, #0x38 ] add r6, r1, #0 str r2, [ sp, #0xc ] bl Save_VarsFlags_Get str r0, [ sp, #0x1c ] ldr r0, [ sp, #8 ] ldr r0, [ r0, #0x38 ] bl Save_PlayerData_GetProfileAddr ldr r0, [ sp, #8 ] ldr r0, [ r0, #0x38 ] bl Save_Misc_Get str r0, [ sp, #0x18 ] ldr r0, [ sp, #8 ] ldr r0, [ r0, #0x30 ] bl GSPlayerMisc_FindEmptyGearPhonebookSlot str r0, [ sp, #0x2c ] ldr r0, [ sp, #8 ] mov r1, #4 ldr r0, [ r0, #0x30 ] bl GSPlayerMisc_AllocAndCopyPhonebook str r0, [ sp, #0x20 ] ldr r1, [ sp, #0x2c ] mov r0, #4 bl AllocFromHeapAtEnd ldr r2, [ sp, #0x2c ] mov r1, #0xff add r4, r0, #0 bl MI_CpuFill8 bl LCRandom mov r1, #0xfa lsl r1, r1, #2 bl _s32_div_f lsl r0, r1, #0x10 lsr r1, r0, #0x10 mov r0, #0x7d lsl r0, r0, #2 cmp r1, r0 bhs _02252046 mov r0, #0 str r0, [ sp, #0x24 ] b _02252058 _02252046 : mov r0, #0x32 lsl r0, r0, #4 cmp r1, r0 bhs _02252054 mov r0, #1 str r0, [ sp, #0x24 ] b _02252058 _02252054 : mov r0, #2 str r0, [ sp, #0x24 ] _02252058 : ldr r0, [ sp, #0x2c ] mov r7, #0 add r2, r7, #0 cmp r0, #0 bls _022520A2 _02252062 : ldr r0, [ sp, #0x20 ] mov r1, #0x14 ldrb r3, [ r0, r2 ] ldr r0, [ r6, #4 ] mul r1, r3 add r5, r0, r1 ldrb r1, [ r5, #0xf ] ldr r0, [ sp, #0x24 ] cmp r0, r1 bne _02252096 ldrb r0, [ r5, #1 ] cmp r0, #0 beq _0225208C cmp r0, #0xc beq _0225208C cmp r0, #0xb beq _0225208C cmp r0, #0xa beq _0225208C cmp r0, #0xe bne _02252096 _0225208C : add r1, r7, #1 add r0, r7, #0 lsl r1, r1, #0x18 lsr r7, r1, #0x18 strb r3, [ r4, r0 ] _02252096 : add r0, r2, #1 lsl r0, r0, #0x18 lsr r2, r0, #0x18 ldr r0, [ sp, #0x2c ] cmp r2, r0 blo _02252062 _022520A2 : cmp r7, #0 bne _022520B8 ldr r0, [ sp, #0x20 ] bl FreeToHeap add r0, r4, #0 bl FreeToHeap add sp, #0x30 mov r0, #0 pop { r3, r4, r5, r6, r7, pc } _022520B8 : ldr r0, [ sp, #0x20 ] ldr r2, [ sp, #0x2c ] mov r1, #0xff bl MI_CpuFill8 ldr r0, [ sp, #8 ] ldr r0, [ r0, #0x38 ] bl Save_SysInfo_RTC_Get ldr r0, [ r0, #0x14 ] lsl r0, r0, #0x18 lsr r0, r0, #0x18 str r0, [ sp, #0x14 ] ldr r0, [ sp, #0x1c ] bl Save_VarsFlags_CheckBugContestFlag lsl r0, r0, #0x18 lsr r0, r0, #0x18 str r0, [ sp, #0x10 ] mov r0, #0 str r0, [ sp, #0x28 ] ldr r0, [ sp, #0x18 ] ldr r1, [ sp, #0x24 ] bl sub_0202AAD4 cmp r0, r7 bne _022520F6 ldr r0, [ sp, #0x18 ] ldr r1, [ sp, #0x24 ] bl sub_0202AA9C _022520F6 : mov r5, #0 cmp r7, #0 bls _02252164 _022520FC : ldrb r2, [ r4, r5 ] mov r1, #0x14 ldr r0, [ r6, #4 ] mul r1, r2 add r0, r0, r1 ldrh r1, [ r0, #6 ] ldr r0, [ sp, #0xc ] cmp r0, r1 beq _0225215A ldr r0, [ sp, #0x18 ] ldr r1, [ sp, #0x24 ] bl sub_0202AA44 cmp r0, #0 bne _0225215A ldrb r0, [ r4, r5 ] cmp r0, #8 bne _02252134 ldr r0, [ sp, #0x14 ] bl sub_02095FF8 cmp r0, #0 bne _0225215A ldr r0, [ sp, #0x1c ] bl Save_VarsFlags_IsInRocketTakeover cmp r0, #0 bne _0225215A _02252134 : ldrb r1, [ r4, r5 ] mov r2, #0x14 ldr r0, [ r6, #4 ] mul r2, r1 add r0, r0, r2 ldrh r0, [ r0, #6 ] cmp r0, #0x60 bne _0225214A ldr r0, [ sp, #0x10 ] cmp r0, #0 bne _0225215A _0225214A : ldr r0, [ sp, #0x28 ] add r2, r0, #0 add r2, r2, #1 lsl r2, r2, #0x18 lsr r2, r2, #0x18 str r2, [ sp, #0x28 ] ldr r2, [ sp, #0x20 ] strb r1, [ r2, r0 ] _0225215A : add r0, r5, #1 lsl r0, r0, #0x18 lsr r5, r0, #0x18 cmp r5, r7 blo _022520FC _02252164 : ldr r0, [ sp, #0x28 ] cmp r0, #0 beq _022521AC bl MTRandom ldr r2, [ sp, #0x28 ] mov r1, #0x64 mul r1, r2 bl _u32_div_f add r0, r1, #0 mov r1, #0x64 bl _u32_div_f add r1, r0, #0 lsl r1, r1, #0x10 lsr r1, r1, #0x10 mov r0, #0 lsl r1, r1, #0x18 str r0, [sp] lsr r2, r1, #0x18 str r0, [ sp, #4 ] ldr r1, [ sp, #0x20 ] ldr r0, [ sp, #8 ] ldrb r1, [ r1, r2 ] ldr r2, [ sp, #0x24 ] add r3, r7, #0 bl ov02_02251EB8 ldr r0, [ sp, #8 ] bl sub_02092DF4 ldr r0, [ sp, #8 ] mov r1, #1 bl ov02_022522AC _022521AC : ldr r0, [ sp, #0x20 ] bl FreeToHeap add r0, r4, #0 bl FreeToHeap ldr r0, [ sp, #0x28 ] add sp, #0x30 pop {
-        r3, r4, r5, r6, r7, pc
-    }
+    push {r3, r4, r5, r6, r7, lr}
+	sub sp, #0x30
+	str r0, [sp, #8]
+	ldr r0, [r0, #0x38]
+	add r6, r1, #0
+	str r2, [sp, #0xc]
+	bl Save_VarsFlags_Get
+	str r0, [sp, #0x1c]
+	ldr r0, [sp, #8]
+	ldr r0, [r0, #0x38]
+	bl Save_PlayerData_GetProfileAddr
+	ldr r0, [sp, #8]
+	ldr r0, [r0, #0x38]
+	bl Save_Misc_Get
+	str r0, [sp, #0x18]
+	ldr r0, [sp, #8]
+	ldr r0, [r0, #0x30]
+	bl GSPlayerMisc_FindEmptyGearPhonebookSlot
+	str r0, [sp, #0x2c]
+	ldr r0, [sp, #8]
+	mov r1, #4
+	ldr r0, [r0, #0x30]
+	bl GSPlayerMisc_AllocAndCopyPhonebook
+	str r0, [sp, #0x20]
+	ldr r1, [sp, #0x2c]
+	mov r0, #4
+	bl AllocFromHeapAtEnd
+	ldr r2, [sp, #0x2c]
+	mov r1, #0xff
+	add r4, r0, #0
+	bl MI_CpuFill8
+	bl LCRandom
+	mov r1, #0xfa
+	lsl r1, r1, #2
+	bl _s32_div_f
+	lsl r0, r1, #0x10
+	lsr r1, r0, #0x10
+	mov r0, #0x7d
+	lsl r0, r0, #2
+	cmp r1, r0
+	bhs _02252046
+	mov r0, #0
+	str r0, [sp, #0x24]
+	b _02252058
+_02252046:
+	mov r0, #0x32
+	lsl r0, r0, #4
+	cmp r1, r0
+	bhs _02252054
+	mov r0, #1
+	str r0, [sp, #0x24]
+	b _02252058
+_02252054:
+	mov r0, #2
+	str r0, [sp, #0x24]
+_02252058:
+	ldr r0, [sp, #0x2c]
+	mov r7, #0
+	add r2, r7, #0
+	cmp r0, #0
+	bls _022520A2
+_02252062:
+	ldr r0, [sp, #0x20]
+	mov r1, #0x14
+	ldrb r3, [r0, r2]
+	ldr r0, [r6, #4]
+	mul r1, r3
+	add r5, r0, r1
+	ldrb r1, [r5, #0xf]
+	ldr r0, [sp, #0x24]
+	cmp r0, r1
+	bne _02252096
+	ldrb r0, [r5, #1]
+	cmp r0, #0
+	beq _0225208C
+	cmp r0, #0xc
+	beq _0225208C
+	cmp r0, #0xb
+	beq _0225208C
+	cmp r0, #0xa
+	beq _0225208C
+	cmp r0, #0xe
+	bne _02252096
+_0225208C:
+	add r1, r7, #1
+	add r0, r7, #0
+	lsl r1, r1, #0x18
+	lsr r7, r1, #0x18
+	strb r3, [r4, r0]
+_02252096:
+	add r0, r2, #1
+	lsl r0, r0, #0x18
+	lsr r2, r0, #0x18
+	ldr r0, [sp, #0x2c]
+	cmp r2, r0
+	blo _02252062
+_022520A2:
+	cmp r7, #0
+	bne _022520B8
+	ldr r0, [sp, #0x20]
+	bl FreeToHeap
+	add r0, r4, #0
+	bl FreeToHeap
+	add sp, #0x30
+	mov r0, #0
+	pop {r3, r4, r5, r6, r7, pc}
+_022520B8:
+	ldr r0, [sp, #0x20]
+	ldr r2, [sp, #0x2c]
+	mov r1, #0xff
+	bl MI_CpuFill8
+	ldr r0, [sp, #8]
+	ldr r0, [r0, #0x38]
+	bl Save_SysInfo_RTC_Get
+	ldr r0, [r0, #0x14]
+	lsl r0, r0, #0x18
+	lsr r0, r0, #0x18
+	str r0, [sp, #0x14]
+	ldr r0, [sp, #0x1c]
+	bl Save_VarsFlags_CheckBugContestFlag
+	lsl r0, r0, #0x18
+	lsr r0, r0, #0x18
+	str r0, [sp, #0x10]
+	mov r0, #0
+	str r0, [sp, #0x28]
+	ldr r0, [sp, #0x18]
+	ldr r1, [sp, #0x24]
+	bl sub_0202AAD4
+	cmp r0, r7
+	bne _022520F6
+	ldr r0, [sp, #0x18]
+	ldr r1, [sp, #0x24]
+	bl sub_0202AA9C
+_022520F6:
+	mov r5, #0
+	cmp r7, #0
+	bls _02252164
+_022520FC:
+	ldrb r2, [r4, r5]
+	mov r1, #0x14
+	ldr r0, [r6, #4]
+	mul r1, r2
+	add r0, r0, r1
+	ldrh r1, [r0, #6]
+	ldr r0, [sp, #0xc]
+	cmp r0, r1
+	beq _0225215A
+	ldr r0, [sp, #0x18]
+	ldr r1, [sp, #0x24]
+	bl sub_0202AA44
+	cmp r0, #0
+	bne _0225215A
+	ldrb r0, [r4, r5]
+	cmp r0, #8
+	bne _02252134
+	ldr r0, [sp, #0x14]
+	bl sub_02095FF8
+	cmp r0, #0
+	bne _0225215A
+	ldr r0, [sp, #0x1c]
+	bl Save_VarsFlags_IsInRocketTakeover
+	cmp r0, #0
+	bne _0225215A
+_02252134:
+	ldrb r1, [r4, r5]
+	mov r2, #0x14
+	ldr r0, [r6, #4]
+	mul r2, r1
+	add r0, r0, r2
+	ldrh r0, [r0, #6]
+	cmp r0, #0x60
+	bne _0225214A
+	ldr r0, [sp, #0x10]
+	cmp r0, #0
+	bne _0225215A
+_0225214A:
+	ldr r0, [sp, #0x28]
+	add r2, r0, #0
+	add r2, r2, #1
+	lsl r2, r2, #0x18
+	lsr r2, r2, #0x18
+	str r2, [sp, #0x28]
+	ldr r2, [sp, #0x20]
+	strb r1, [r2, r0]
+_0225215A:
+	add r0, r5, #1
+	lsl r0, r0, #0x18
+	lsr r5, r0, #0x18
+	cmp r5, r7
+	blo _022520FC
+_02252164:
+	ldr r0, [sp, #0x28]
+	cmp r0, #0
+	beq _022521AC
+	bl MTRandom
+	ldr r2, [sp, #0x28]
+	mov r1, #0x64
+	mul r1, r2
+	bl _u32_div_f
+	add r0, r1, #0
+	mov r1, #0x64
+	bl _u32_div_f
+	add r1, r0, #0
+	lsl r1, r1, #0x10
+	lsr r1, r1, #0x10
+	mov r0, #0
+	lsl r1, r1, #0x18
+	str r0, [sp]
+	lsr r2, r1, #0x18
+	str r0, [sp, #4]
+	ldr r1, [sp, #0x20]
+	ldr r0, [sp, #8]
+	ldrb r1, [r1, r2]
+	ldr r2, [sp, #0x24]
+	add r3, r7, #0
+	bl ov02_02251EB8
+	ldr r0, [sp, #8]
+	bl sub_02092DF4
+	ldr r0, [sp, #8]
+	mov r1, #1
+	bl ov02_022522AC
+_022521AC:
+	ldr r0, [sp, #0x20]
+	bl FreeToHeap
+	add r0, r4, #0
+	bl FreeToHeap
+	ldr r0, [sp, #0x28]
+	add sp, #0x30
+	pop {r3, r4, r5, r6, r7, pc}
 }
-//clang-format on
+// clang-format on
 #endif
 
 typedef struct UnkStruct_02253C86 {
@@ -425,7 +651,7 @@ BOOL ov02_0225255C(TaskManager *taskMan) {
         }
     }
     if (data->unkF0) {
-        ov02_022529C4(&data->unk2C);
+        ov02_022529C4(&data->animations[0]);
     }
     if (data->unkF1) {
         Field3dObject_Draw(&data->object3d);
@@ -472,4 +698,70 @@ void ov02_02252764(UnkStruct_02252534 *a0, UnkStruct_02253CE0 *a1) {
     a0->unkEC = a1->unk8;
     a0->unkE8 = a1->unk4;
     SysTask_CreateOnMainQueue(ov02_0225286C, a0, 1);
+}
+
+extern const VecFx32 ov02_02253CD4;
+
+BOOL ov02_022527B0(UnkStruct_02252534 *data) {
+    VecFx32 vec;
+    MtxFx33 rotMatrix;
+    VecFx32 vec2   = ov02_02253CD4;
+    Camera *camera = data->fieldSystem->camera;
+
+    data->unkE6++;
+    int e6 = data->unkE6;
+    int e8 = data->unkE8;
+
+    int angle = data->unkEC - data->unkEA;
+    angle *= e6;
+    angle /= e8;
+    angle += data->unkEA;
+    u16 index = ((data->unkE0 * e6) / e8) + data->unkE4;
+    MTX_RotZ33(&rotMatrix, FX_SinIdx(index), FX_CosIdx(index));
+    MTX_MultVec33(&vec2, &rotMatrix, &vec);
+    Camera_SetLookAtCamUp(&vec, camera);
+    Camera_SetPerspectiveAngle(angle, camera);
+    return data->unkE6 >= data->unkE8;
+}
+
+void ov02_0225286C(SysTask *task, void *_data) {
+    UnkStruct_02252534 *data = _data;
+    if (ov02_022527B0(data)) {
+        data->unk3 = 1;
+        SysTask_Destroy(task);
+    }
+}
+
+BOOL ov02_02252888(UnkStruct_02252534 *data) {
+    return data->unk3 != 0;
+}
+
+extern const u32 ov02_02253CEC[3];
+
+void ov02_02252898(UnkStruct_02252534 *data) {
+    u32 unk[3];
+    unk = ov02_02253CEC;
+    GF_ExpHeap_FndInitAllocator(&data->alloc, HEAP_ID_4, 32);
+    Field3dModel_LoadFromFilesystem(&data->model, NARC_demo_legend, 75, HEAP_ID_4);
+    for (u8 i = 0; i < 3; i++) {
+        Field3dModelAnimation_LoadFromFilesystem(&data->animations[i], &data->model, NARC_demo_legend, unk[i], HEAP_ID_4, &data->alloc);
+    }
+    Field3dObject_InitFromModel(&data->object3d, &data->model);
+    for (u8 i = 0; i < 3; i++) {
+        Field3dObject_AddAnimation(&data->object3d, &data->animations[i]);
+    }
+    Field3dObject_SetActiveFlag(&data->object3d, 1);
+    ov02_022529A0(&data->animations[0], 0);
+    LocalMapObject *followMonObj = FollowMon_GetMapObject(data->fieldSystem);
+    VecFx32 pos;
+    MapObject_GetPositionVec(followMonObj, &pos);
+    Field3dObject_SetPosEx(&data->object3d, pos.x, pos.y, pos.z);
+    data->unkF1 = 1;
+}
+
+void ov02_0225296C(UnkStruct_02252534 *data) {
+    for (u8 i = 0; i < 3; i++) {
+        Field3dModelAnimation_Unload(&data->animations[i], &data->alloc);
+    }
+    Field3dModel_Unload(&data->model);
 }

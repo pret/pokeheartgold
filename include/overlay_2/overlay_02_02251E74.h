@@ -29,12 +29,12 @@ typedef struct UnkStruct_02252534 {
     u8 unk2;
     u8 unk3;
     u32 unk4;
-    FieldSystem *fieldSystem;
-    u8 unkC[0x20];
-    u32 unk2C;
-    u8 unk30[0x38];
+    FieldSystem *fieldSystem; // 0x8
+    NNSFndAllocator alloc;    // 0xC
+    Field3dModel model;       // 0x1C
+    Field3DModelAnimation animations[3];
     Field3dObject object3d;
-    u32 unkE0;
+    s32 unkE0;
     u16 unkE4;
     u16 unkE6;
     u16 unkE8;
@@ -57,13 +57,15 @@ void ov02_022526C8(UnkStruct_02252534 *data);
 BOOL ov02_022526EC(UnkStruct_02252534 *data);
 void ov02_022526FC(SysTask *task, void *data);
 void ov02_02252764(UnkStruct_02252534 *a0, UnkStruct_02253CE0 *a1);
-
-// the following functions are static and not decompiled
-void ov02_02252898(UnkStruct_02252534 *data);
-void ov02_0225296C(UnkStruct_02252534 *data);
-void ov01_021F46DC(u32 *a0);
-void ov02_022529C4(u32 *a0);
+BOOL ov02_022527B0(UnkStruct_02252534 *data);
 void ov02_0225286C(SysTask *task, void *data);
 BOOL ov02_02252888(UnkStruct_02252534 *data);
+void ov02_02252898(UnkStruct_02252534 *data);
+void ov02_0225296C(UnkStruct_02252534 *data);
+
+// the following functions are static and not decompiled
+void ov01_021F46DC(u32 *a0);
+void ov02_022529C4(Field3DModelAnimation *animations);
+void ov02_022529A0(Field3DModelAnimation *animations, u32 a1);
 
 #endif // POKEHEARTGOLD_OVERLAY_02_02251E74_H
