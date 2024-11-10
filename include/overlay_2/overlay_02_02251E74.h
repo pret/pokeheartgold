@@ -18,16 +18,16 @@ int GetRadioMusicPlayingSeq(void);
 BOOL ov02_02252334(FieldSystem *fieldSystem);
 void ov02_022523B4(TaskManager *taskMan);
 BOOL ov02_022523D0(TaskManager *taskMan);
-void ov02_02252534(FieldSystem *fieldSystem);
+void FieldSystem_BeginCelebiTimeTravelCutsceneTask(FieldSystem *fieldSystem);
 
 // the following is as of yet not decompiled
-BOOL ov02_0225255C(TaskManager *taskMan);
+BOOL Task_CelebiTimeTravelCutscene(TaskManager *taskMan);
 
 // the following functions are static
-typedef struct UnkStruct_02252534 {
+typedef struct CelebiTimeTravelCutsceneTaskData {
     u16 unk0;
     u8 unk2;
-    u8 unk3;
+    u8 isSwirlFinished;
     u32 unk4;
     FieldSystem *fieldSystem; // 0x8
     NNSFndAllocator alloc;    // 0xC
@@ -38,14 +38,14 @@ typedef struct UnkStruct_02252534 {
     u16 unkE4;
     u16 unkE6;
     u16 unkE8;
-    u16 unkEA;
+    u16 perspective;
     u16 unkEC;
     u16 unkEE;
     u8 unkF0;
     u8 unkF1;
     u8 unkF2;
     u8 unkF3;
-} UnkStruct_02252534;
+} CelebiTimeTravelCutsceneTaskData;
 
 typedef struct UnkStruct_02253CE0 {
     u32 unk0;
@@ -53,15 +53,15 @@ typedef struct UnkStruct_02253CE0 {
     u16 unk8;
     u16 unkA;
 } UnkStruct_02253CE0;
-void ov02_022526C8(UnkStruct_02252534 *data);
-BOOL ov02_022526EC(UnkStruct_02252534 *data);
-void ov02_022526FC(SysTask *task, void *data);
-void ov02_02252764(UnkStruct_02252534 *a0, UnkStruct_02253CE0 *a1);
-BOOL ov02_022527B0(UnkStruct_02252534 *data);
-void ov02_0225286C(SysTask *task, void *data);
-BOOL ov02_02252888(UnkStruct_02252534 *data);
-void ov02_02252898(UnkStruct_02252534 *data);
-void ov02_0225296C(UnkStruct_02252534 *data);
+void CelebiCutscene_StartSwirlTask(CelebiTimeTravelCutsceneTaskData *data);
+BOOL ov02_022526EC(CelebiTimeTravelCutsceneTaskData *data);
+void Task_CelebiCutsceneSwirl(SysTask *task, void *data);
+void CelebiCutscene_InitSwirlData(CelebiTimeTravelCutsceneTaskData *a0, UnkStruct_02253CE0 *a1);
+BOOL CelebiCutscene_SwirlEffect(CelebiTimeTravelCutsceneTaskData *data);
+void Task_CelebiCutsceneSwirlEffect(SysTask *task, void *data);
+BOOL CelebiCutscene_IsSwirlFinished(CelebiTimeTravelCutsceneTaskData *data);
+void CelebiCutscene_LoadResources(CelebiTimeTravelCutsceneTaskData *data);
+void CelebiCutscene_UnloadResources(CelebiTimeTravelCutsceneTaskData *data);
 
 // the following functions are static and not decompiled
 void ov01_021F46DC(u32 *a0);

@@ -598,27 +598,27 @@ BOOL ov02_022523D0(TaskManager *taskMan) {
     return FALSE;
 }
 
-void ov02_02252534(FieldSystem *fieldSystem) {
-    UnkStruct_02252534 *ptr = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(UnkStruct_02252534));
-    MI_CpuFill8(ptr, 0, sizeof(UnkStruct_02252534));
+void FieldSystem_BeginCelebiTimeTravelCutsceneTask(FieldSystem *fieldSystem) {
+    CelebiTimeTravelCutsceneTaskData *ptr = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(CelebiTimeTravelCutsceneTaskData));
+    MI_CpuFill8(ptr, 0, sizeof(CelebiTimeTravelCutsceneTaskData));
     ptr->fieldSystem = fieldSystem;
-    TaskManager_Call(fieldSystem->taskman, ov02_0225255C, ptr);
+    TaskManager_Call(fieldSystem->taskman, Task_CelebiTimeTravelCutscene, ptr);
 }
 
-BOOL ov02_0225255C(TaskManager *taskMan) {
+BOOL Task_CelebiTimeTravelCutscene(TaskManager *taskMan) {
     int *state               = TaskManager_GetStatePtr(taskMan);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskMan);
-    UnkStruct_02252534 *data = TaskManager_GetEnvironment(taskMan);
+    CelebiTimeTravelCutsceneTaskData *data = TaskManager_GetEnvironment(taskMan);
     switch (*state) {
     case 0:
-        BeginNormalPaletteFade(3, 0, 0, 0x7FFF, 4, 1, HEAP_ID_4);
+        BeginNormalPaletteFade(3, 0, 0, RGB_WHITE, 4, 1, HEAP_ID_4);
         (*state)++;
         break;
     case 1:
         if (IsPaletteFadeFinished()) {
-            ov02_02252898(data);
+            CelebiCutscene_LoadResources(data);
             sub_02069DC8(FollowMon_GetMapObject(data->fieldSystem), 1);
-            BeginNormalPaletteFade(3, 1, 0, 0x7FFF, 4, 1, HEAP_ID_4);
+            BeginNormalPaletteFade(3, 1, 0, RGB_WHITE, 4, 1, HEAP_ID_4);
             (*state)++;
         }
         break;
@@ -631,20 +631,20 @@ BOOL ov02_0225255C(TaskManager *taskMan) {
         break;
     case 3:
         if (++data->unkF2 >= 30) {
-            ov02_022526C8(data);
+            CelebiCutscene_StartSwirlTask(data);
             data->unkF2 = 0;
             (*state)++;
         }
         break;
     case 4:
         if (++data->unkF2 >= 80) {
-            BeginNormalPaletteFade(0, 0, 0, 0x7FFF, 30, 1, HEAP_ID_4);
+            BeginNormalPaletteFade(0, 0, 0, RGB_WHITE, 30, 1, HEAP_ID_4);
             (*state)++;
         }
         break;
     case 5:
         if (IsPaletteFadeFinished() && ov02_022526EC(data)) {
-            ov02_0225296C(data);
+            CelebiCutscene_UnloadResources(data);
             ov01_021F46DC(&data->unk4);
             FreeToHeap(data);
             return TRUE;
@@ -660,49 +660,49 @@ BOOL ov02_0225255C(TaskManager *taskMan) {
     return FALSE;
 }
 
-void ov02_022526C8(UnkStruct_02252534 *data) {
+void CelebiCutscene_StartSwirlTask(CelebiTimeTravelCutsceneTaskData *data) {
     data->unk4 = ov01_021F467C(3, 13);
-    SysTask_CreateOnMainQueue(ov02_022526FC, data, 0);
+    SysTask_CreateOnMainQueue(Task_CelebiCutsceneSwirl, data, 0);
     data->unk2 = 0;
 }
 
-BOOL ov02_022526EC(UnkStruct_02252534 *data) {
+BOOL ov02_022526EC(CelebiTimeTravelCutsceneTaskData *data) {
     return data->unk2 != 0;
 }
 
 extern const UnkStruct_02253CE0 ov02_02253CE0;
 
-void ov02_022526FC(SysTask *task, void *_data) {
-    UnkStruct_02252534 *data = _data;
+void Task_CelebiCutsceneSwirl(SysTask *task, void *_data) {
+    CelebiTimeTravelCutsceneTaskData *data = _data;
     switch (data->unkEE) {
     case 0:
         UnkStruct_02253CE0 unk = ov02_02253CE0;
         unk.unk8               = Camera_GetPerspectiveAngle(data->fieldSystem->camera);
-        ov02_02252764(data, &unk);
+        CelebiCutscene_InitSwirlData(data, &unk);
         data->unkEE++;
         break;
     case 1:
-        if (ov02_02252888(data)) {
+        if (CelebiCutscene_IsSwirlFinished(data)) {
             data->unk2 = 1;
             SysTask_Destroy(task);
         }
     }
 }
 
-void ov02_02252764(UnkStruct_02252534 *a0, UnkStruct_02253CE0 *a1) {
-    a0->unk3  = 0;
-    a0->unkE6 = 0;
-    a0->unkE0 = a1->unk0;
-    a0->unkE4 = a0->unk0;
-    a0->unkEA = Camera_GetPerspectiveAngle(a0->fieldSystem->camera);
-    a0->unkEC = a1->unk8;
-    a0->unkE8 = a1->unk4;
-    SysTask_CreateOnMainQueue(ov02_0225286C, a0, 1);
+void CelebiCutscene_InitSwirlData(CelebiTimeTravelCutsceneTaskData *data, UnkStruct_02253CE0 *a1) {
+    data->isSwirlFinished = FALSE;
+    data->unkE6           = 0;
+    data->unkE0           = a1->unk0;
+    data->unkE4           = data->unk0;
+    data->perspective     = Camera_GetPerspectiveAngle(data->fieldSystem->camera);
+    data->unkEC           = a1->unk8;
+    data->unkE8           = a1->unk4;
+    SysTask_CreateOnMainQueue(Task_CelebiCutsceneSwirlEffect, data, 1);
 }
 
 extern const VecFx32 ov02_02253CD4;
 
-BOOL ov02_022527B0(UnkStruct_02252534 *data) {
+BOOL CelebiCutscene_SwirlEffect(CelebiTimeTravelCutsceneTaskData *data) {
     VecFx32 vec;
     MtxFx33 rotMatrix;
     VecFx32 vec2   = ov02_02253CD4;
@@ -712,10 +712,10 @@ BOOL ov02_022527B0(UnkStruct_02252534 *data) {
     int e6 = data->unkE6;
     int e8 = data->unkE8;
 
-    int angle = data->unkEC - data->unkEA;
+    int angle = data->unkEC - data->perspective;
     angle *= e6;
     angle /= e8;
-    angle += data->unkEA;
+    angle += data->perspective;
     u16 index = ((data->unkE0 * e6) / e8) + data->unkE4;
     MTX_RotZ33(&rotMatrix, FX_SinIdx(index), FX_CosIdx(index));
     MTX_MultVec33(&vec2, &rotMatrix, &vec);
@@ -724,27 +724,27 @@ BOOL ov02_022527B0(UnkStruct_02252534 *data) {
     return data->unkE6 >= data->unkE8;
 }
 
-void ov02_0225286C(SysTask *task, void *_data) {
-    UnkStruct_02252534 *data = _data;
-    if (ov02_022527B0(data)) {
-        data->unk3 = 1;
+void Task_CelebiCutsceneSwirlEffect(SysTask *task, void *_data) {
+    CelebiTimeTravelCutsceneTaskData *data = _data;
+    if (CelebiCutscene_SwirlEffect(data)) {
+        data->isSwirlFinished = TRUE;
         SysTask_Destroy(task);
     }
 }
 
-BOOL ov02_02252888(UnkStruct_02252534 *data) {
-    return data->unk3 != 0;
+BOOL CelebiCutscene_IsSwirlFinished(CelebiTimeTravelCutsceneTaskData *data) {
+    return data->isSwirlFinished != FALSE;
 }
 
-extern const u32 ov02_02253CEC[3];
+extern const u32 sCelebiCutsceneAnimationFiles[3]; // file ids 76-78
 
-void ov02_02252898(UnkStruct_02252534 *data) {
-    u32 unk[3];
-    unk = ov02_02253CEC;
+void CelebiCutscene_LoadResources(CelebiTimeTravelCutsceneTaskData *data) {
+    u32 files[3];
+    files = sCelebiCutsceneAnimationFiles;
     GF_ExpHeap_FndInitAllocator(&data->alloc, HEAP_ID_4, 32);
     Field3dModel_LoadFromFilesystem(&data->model, NARC_demo_legend, 75, HEAP_ID_4);
     for (u8 i = 0; i < 3; i++) {
-        Field3dModelAnimation_LoadFromFilesystem(&data->animations[i], &data->model, NARC_demo_legend, unk[i], HEAP_ID_4, &data->alloc);
+        Field3dModelAnimation_LoadFromFilesystem(&data->animations[i], &data->model, NARC_demo_legend, files[i], HEAP_ID_4, &data->alloc);
     }
     Field3dObject_InitFromModel(&data->object3d, &data->model);
     for (u8 i = 0; i < 3; i++) {
@@ -759,7 +759,7 @@ void ov02_02252898(UnkStruct_02252534 *data) {
     data->unkF1 = 1;
 }
 
-void ov02_0225296C(UnkStruct_02252534 *data) {
+void CelebiCutscene_UnloadResources(CelebiTimeTravelCutsceneTaskData *data) {
     for (u8 i = 0; i < 3; i++) {
         Field3dModelAnimation_Unload(&data->animations[i], &data->alloc);
     }

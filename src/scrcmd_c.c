@@ -5323,7 +5323,7 @@ BOOL ScrCmd_806(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_810(ScriptContext *ctx) {
-    ov02_02252534(ctx->fieldSystem);
+    FieldSystem_BeginCelebiTimeTravelCutsceneTask(ctx->fieldSystem);
     return TRUE;
 }
 
