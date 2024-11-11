@@ -33,9 +33,9 @@ TouchscreenListMenuSpawner *TouchscreenListMenuSpawner_Create(HeapID heapId, Pal
     TouchscreenListMenuSpawner *ret = AllocFromHeap(heapId, sizeof(TouchscreenListMenuSpawner));
     MI_CpuClear8(ret, sizeof(TouchscreenListMenuSpawner));
     ret->heapId      = heapId;
-    ret->charDataRaw = GfGfxLoader_LoadFromNarc(NARC_data_sbox_gra, NARC_sbox_gra_sbox_gra_00000001_NCGR, FALSE, heapId, FALSE);
+    ret->charDataRaw = GfGfxLoader_LoadFromNarc(NARC_data_sbox_gra, NARC_sbox_gra_sbox_gra_NCGR, FALSE, heapId, FALSE);
     NNS_G2dGetUnpackedBGCharacterData(ret->charDataRaw, &ret->pCharData);
-    ret->plttDataRaw = GfGfxLoader_LoadFromNarc(NARC_data_sbox_gra, NARC_sbox_gra_sbox_gra_00000000_NCLR, FALSE, heapId, FALSE);
+    ret->plttDataRaw = GfGfxLoader_LoadFromNarc(NARC_data_sbox_gra, NARC_sbox_gra_sbox_gra_NCLR, FALSE, heapId, FALSE);
     NNS_G2dGetUnpackedPaletteData(ret->plttDataRaw, &ret->pPlttData);
     ret->paletteData = paletteData;
     return ret;
