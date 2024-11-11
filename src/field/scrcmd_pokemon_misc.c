@@ -625,7 +625,7 @@ BOOL ScrCmd_699(ScriptContext *ctx) {
     LocalMapObject *playerObj;
     LocalMapObject *curObj;
     Sprite *sprite;
-    int height;
+    s32 y;
     VecFx32 vec;
 
     unkVar = 0;
@@ -634,9 +634,9 @@ BOOL ScrCmd_699(ScriptContext *ctx) {
     mapObjectManager = fieldSystem->mapObjectManager;
 
     playerObj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
-    MapObject_GetPositionVec(playerObj, &vec);
+    MapObject_CopyPositionVector(playerObj, &vec);
 
-    height = vec.y;
+    y = vec.y;
 
     while (MapObjectManager_GetNextObjectWithFlagFromIndex(mapObjectManager, &curObj, &unkVar, MAPOBJECTFLAG_ACTIVE) == TRUE) {
         if (curObj == playerObj) {
@@ -644,10 +644,10 @@ BOOL ScrCmd_699(ScriptContext *ctx) {
         }
         MapObject_SetFlagsBits(curObj, MAPOBJECTFLAG_UNK13);
         if (MapObject_TestFlagsBits(curObj, MAPOBJECTFLAG_UNK12) == TRUE) {
-            MapObject_GetPositionVec(curObj, &vec);
-            vec.y = height;
-            MapObject_SetPositionVec(curObj, &vec);
-            MapObject_SetCurrentHeight(curObj, (height >> 3) / FX32_ONE);
+            MapObject_CopyPositionVector(curObj, &vec);
+            vec.y = y;
+            MapObject_SetPositionVector(curObj, &vec);
+            MapObject_SetCurrentY(curObj, (y >> 3) / FX32_ONE);
         }
         sprite = ov01_021F72DC(curObj);
         if (sprite) {
@@ -983,7 +983,7 @@ static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectManager, u8 unkA
 
     MapObject_SetID(mapObj, unkA + 0xf6);
     MapObject_SetType(mapObj, 0);
-    MapObject_SetFlagID(mapObj, 0);
+    MapObject_SetEventFlag(mapObj, 0);
     MapObject_SetScriptID(mapObj, 0);
     MapObject_SetParam(mapObj, 0, 2);
     sub_02069F0C(mapObj, species, (u8)form, FALSE, spriteId);

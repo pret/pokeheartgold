@@ -1506,7 +1506,7 @@ static const u16 sFemaleFlagLUT[] = {
 };
 
 LocalMapObject *FollowMon_InitMapObject(MapObjectManager *mapObjectManager, int x, int y, int direction, u32 mapNo) {
-    FieldSystem *fieldSystem = MapObjectManager_GetFieldSystemPtr(mapObjectManager);
+    FieldSystem *fieldSystem = MapObjectManager_GetFieldSystem(mapObjectManager);
     Party *party             = SaveArray_Party_Get(fieldSystem->saveData);
     int partyCount           = Party_GetCount(party);
 
@@ -1560,7 +1560,7 @@ LocalMapObject *FollowMon_InitMapObject(MapObjectManager *mapObjectManager, int 
 }
 
 void FollowMon_ChangeMon(MapObjectManager *mapObjectManager, u32 mapno) {
-    FieldSystem *fieldSystem = MapObjectManager_GetFieldSystemPtr(mapObjectManager);
+    FieldSystem *fieldSystem = MapObjectManager_GetFieldSystem(mapObjectManager);
     Party *party             = SaveArray_Party_Get(fieldSystem->saveData);
     int partyCount           = Party_GetCount(party);
 
@@ -1901,13 +1901,13 @@ static LocalMapObject *FollowMon_CreateMapObject(MapObjectManager *mapObjectMana
     GF_ASSERT(mapObject != NULL);
     MapObject_SetID(mapObject, obj_partner_poke);
     MapObject_SetType(mapObject, 0);
-    MapObject_SetFlagID(mapObject, 0);
+    MapObject_SetEventFlag(mapObject, 0);
     MapObject_SetScriptID(mapObject, std_following_mon);
     MapObject_SetParam(mapObject, 0, 2);
     FollowMon_SetObjectParams(mapObject, species, form, shiny);
     MapObject_SetXRange(mapObject, -1);
     MapObject_SetYRange(mapObject, -1);
-    MapObject_SetFlagsBits(mapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_UNK10));
+    MapObject_SetFlagsBits(mapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_KEEP));
     MapObject_ClearFlagsBits(mapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7));
     MapObject_SetFlag29(mapObject, TRUE);
     sub_02069DC8(mapObject, TRUE);

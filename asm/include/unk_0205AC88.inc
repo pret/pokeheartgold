@@ -26,7 +26,7 @@
 .public sub_0205AD3C
 .public sub_0205B27C
 .public GetPlayerXCoord
-.public GetPlayerYCoord
+.public GetPlayerZCoord
 .public PlayerAvatar_GetMapObject
 .public sub_0205E3AC
 .public MapObjectManager_GetFirstActiveObjectByID
@@ -37,9 +37,9 @@
 .public MapObject_ClearFlag18
 .public MapObject_SetFlag19
 .public MapObject_GetInitialX
-.public MapObject_GetInitialHeight
 .public MapObject_GetInitialY
-.public sub_0205FC2C
+.public MapObject_GetInitialZ
+.public MapObject_SetPositionFromXYZAndDirection
 .public sub_0205FC94
 .public MapObject_AreBitsSetForMovementScriptInit
 .public MapObject_SetHeldMovement

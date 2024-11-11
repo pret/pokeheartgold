@@ -2,48 +2,48 @@
   "header": "fielddata/script/scr_seq/event_D41R0105.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d41r0105_ultra_ball",
+      "scriptId": "std_hiddenitem_d41r0105_ultra_ball",
       "type": 2,
       "x": 18,
-      "y": 1,
-      "z": 0,
+      "z": 1,
+      "y": 0,
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d41r0105_hyper_potion",
+      "scriptId": "std_hiddenitem_d41r0105_hyper_potion",
       "type": 2,
       "x": 2,
-      "y": 1,
-      "z": 0,
+      "z": 1,
+      "y": 0,
       "dir": 4
     }
   ],
   "objects": [
     {
       "id": "obj_D41R0105_tsure_poke_static_moltres",
-      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_MOLTRES",
+      "spriteId": "SPRITE_FOLLOWER_MON_STATIC_MOLTRES",
       "movement": 15,
       "type": 0,
-      "flag": "FLAG_HIDE_MT_SILVER_CAVE_MOLTRES",
-      "scr": "_EV_scr_seq_D41R0105_000 + 1",
-      "dirn": 1,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_MT_SILVER_CAVE_MOLTRES",
+      "scriptId": "_EV_scr_seq_D41R0105_000 + 1",
+      "facingDirection": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 10,
-      "y": 9,
-      "z": 0
+      "z": 9,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 10,
-      "y": 22,
+      "z": 22,
       "header": "MAP_D41R0101",
       "anchor": 1,
-      "height": 0
+      "y": 0
     }
   ]
 }

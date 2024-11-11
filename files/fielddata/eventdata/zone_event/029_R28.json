@@ -2,79 +2,79 @@
   "header": "fielddata/script/scr_seq/event_R28.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_r28_rare_candy",
+      "scriptId": "std_hiddenitem_r28_rare_candy",
       "type": 2,
       "x": 874,
-      "y": 262,
-      "z": 0,
+      "z": 262,
+      "y": 0,
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_R28_001 + 1",
+      "scriptId": "_EV_scr_seq_R28_001 + 1",
       "type": 1,
       "x": 882,
-      "y": 266,
-      "z": 0,
+      "z": 266,
+      "y": 0,
       "dir": 4
     }
   ],
   "objects": [
     {
       "id": "obj_R28_monstarball",
-      "sprite_id": "SPRITE_MONSTARBALL",
+      "spriteId": "SPRITE_MONSTARBALL",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_HIDE_ITEMBALL_R28_TM35",
-      "scr": "std_itemball_r28_tm35",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_ITEMBALL_R28_TM35",
+      "scriptId": "std_itemball_r28_tm35",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 865,
-      "y": 264,
-      "z": 0
+      "z": 264,
+      "y": 0
     },
     {
       "id": "obj_R28_tree",
-      "sprite_id": "SPRITE_TREE",
+      "spriteId": "SPRITE_TREE",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_MAPTEMP_011",
-      "scr": "std_field_cut",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_MAPTEMP_011",
+      "scriptId": "std_field_cut",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 840,
-      "y": 267,
-      "z": 0
+      "z": 267,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 887,
-      "y": 266,
+      "z": 266,
       "header": "MAP_R22R0101",
       "anchor": 3,
-      "height": 0
+      "y": 0
     },
     {
       "x": 887,
-      "y": 267,
+      "z": 267,
       "header": "MAP_R22R0101",
       "anchor": 3,
-      "height": 0
+      "y": 0
     },
     {
       "x": 851,
-      "y": 263,
+      "z": 263,
       "header": "MAP_R28R0101",
       "anchor": 0,
-      "height": 0
+      "y": 0
     }
   ]
 }

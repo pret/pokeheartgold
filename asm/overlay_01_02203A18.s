@@ -66,10 +66,10 @@ _02203A6E:
 	str r1, [r0, #4]
 	add r0, r5, #0
 	add r1, sp, #0x14
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r5, #0
 	add r1, sp, #8
-	bl MapObject_GetFacingVec
+	bl MapObject_CopyFacingVector
 	mov r0, #0
 	str r0, [sp, #0xc]
 	add r0, sp, #0x14
@@ -77,7 +77,7 @@ _02203A6E:
 	add r2, r0, #0
 	bl VEC_Add
 	add r0, r5, #0
-	bl sub_0205F538
+	bl MapObject_GetPriority
 	add r1, r0, #1
 	add r0, sp, #0x20
 	str r0, [sp]
@@ -242,7 +242,7 @@ ov01_02203BB4: ; 0x02203BB4
 	bl MapObject_GetID
 	str r0, [r4, #8]
 	ldr r0, [r4, #0x38]
-	bl sub_0205F254
+	bl MapObject_GetMapID
 	str r0, [r4, #0xc]
 	mov r0, #6
 	lsl r0, r0, #0xc
@@ -355,10 +355,10 @@ ov01_02203CB8: ; 0x02203CB8
 _02203CD4:
 	add r0, r5, #0
 	add r1, sp, #0x24
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r5, #0
 	add r1, sp, #0x18
-	bl MapObject_GetFacingVec
+	bl MapObject_CopyFacingVector
 	add r0, r5, #0
 	add r1, sp, #0xc
 	bl sub_0205F990

@@ -2,126 +2,126 @@
   "header": "fielddata/script/scr_seq/event_D27R0104.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d27r0104_hyper_potion",
+      "scriptId": "std_hiddenitem_d27r0104_hyper_potion",
       "type": 2,
       "x": 5,
-      "y": 14,
-      "z": 0,
+      "z": 14,
+      "y": 0,
       "dir": 4
     }
   ],
   "objects": [
     {
       "id": "obj_EVERYWHERE_seaman_2",
-      "sprite_id": "SPRITE_SEAMAN_2",
+      "spriteId": "SPRITE_SEAMAN_2",
       "movement": 0,
       "type": 1,
-      "flag": "FLAG_NOTHING",
-      "scr": "std_trainer(TRAINER_SAILOR_KENT)",
-      "dirn": 1,
-      "eye": 4,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "std_trainer(TRAINER_SAILOR_KENT)",
+      "facingDirection": 1,
+      "param0": 4,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 11,
-      "y": 13,
-      "z": 0
+      "z": 13,
+      "y": 0
     },
     {
       "id": "obj_EVERYWHERE_gsman2",
-      "sprite_id": "SPRITE_GSMAN2",
+      "spriteId": "SPRITE_GSMAN2",
       "movement": 9,
       "type": 1,
-      "flag": "FLAG_NOTHING",
-      "scr": "std_trainer(TRAINER_BIRD_KEEPER_GS_DENIS)",
-      "dirn": 3,
-      "eye": 6,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "std_trainer(TRAINER_BIRD_KEEPER_GS_DENIS)",
+      "facingDirection": 3,
+      "param0": 6,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 1,
-      "y": 8,
-      "z": 0
+      "z": 8,
+      "y": 0
     },
     {
       "id": "obj_EVERYWHERE_gsman2_2",
-      "sprite_id": "SPRITE_GSMAN2",
+      "spriteId": "SPRITE_GSMAN2",
       "movement": 8,
       "type": 1,
-      "flag": "FLAG_NOTHING",
-      "scr": "std_trainer(TRAINER_BIRD_KEEPER_GS_THEO)",
-      "dirn": 2,
-      "eye": 5,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "std_trainer(TRAINER_BIRD_KEEPER_GS_THEO)",
+      "facingDirection": 2,
+      "param0": 5,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 12,
-      "y": 4,
-      "z": 0
+      "z": 4,
+      "y": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball",
-      "sprite_id": "SPRITE_MONSTARBALL",
+      "spriteId": "SPRITE_MONSTARBALL",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_HIDE_ITEMBALL_D27R0104_ETHER",
-      "scr": "std_itemball_d27r0104_ether",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_ITEMBALL_D27R0104_ETHER",
+      "scriptId": "std_itemball_d27r0104_ether",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 14,
-      "y": 13,
-      "z": 0
+      "z": 13,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 13,
-      "y": 7,
+      "z": 7,
       "header": "MAP_D27R0102",
       "anchor": 1,
-      "height": 0
+      "y": 0
     },
     {
       "x": 10,
-      "y": 7,
+      "z": 7,
       "header": "MAP_D27R0105",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 10,
-      "y": 6,
+      "z": 6,
       "header": "MAP_D27R0105",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 6,
-      "y": 7,
+      "z": 7,
       "header": "MAP_D27R0105",
       "anchor": 1,
-      "height": 0
+      "y": 0
     },
     {
       "x": 6,
-      "y": 6,
+      "z": 6,
       "header": "MAP_D27R0105",
       "anchor": 1,
-      "height": 0
+      "y": 0
     },
     {
       "x": 8,
-      "y": 18,
+      "z": 18,
       "header": "MAP_D27R0103",
       "anchor": 0,
-      "height": 0
+      "y": 0
     }
   ]
 }

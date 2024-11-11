@@ -4,7 +4,7 @@
 #include "field_system.h"
 
 void ov01_022057D0(FieldSystem *fieldSystem);
-void ov01_02205990(int a0, int x, int y, FollowMon *mon);
+void ov01_02205990(int a0, int x, int z, FollowMon *mon);
 BOOL ov01_0220553C(LocalMapObject *mapObject);
 
 #endif // POKEHEARTGOLD_OVERLAY_01_022053EC_H

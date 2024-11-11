@@ -123,7 +123,7 @@ void *PartyMenu_GetFieldMoveFunc(u16 funcType, u16 fieldMoveIdx) {
 
 void FieldSystem_MakeFieldMoveCheckData(FieldSystem *fieldSystem, FieldMoveCheckData *checkData) {
     LocalMapObject *facingObject;
-    int x, y;
+    int x, z;
     u32 standingTile, facingTile;
 
     checkData->fieldSystem = fieldSystem;
@@ -146,11 +146,11 @@ void FieldSystem_MakeFieldMoveCheckData(FieldSystem *fieldSystem, FieldMoveCheck
         }
     }
     x            = GetPlayerXCoord(fieldSystem->playerAvatar);
-    y            = GetPlayerYCoord(fieldSystem->playerAvatar);
-    standingTile = GetMetatileBehaviorAt(fieldSystem, x, y);
+    z            = GetPlayerZCoord(fieldSystem->playerAvatar);
+    standingTile = GetMetatileBehaviorAt(fieldSystem, x, z);
 
-    PlayerAvatar_GetCoordsInFront(fieldSystem->playerAvatar, &x, &y);
-    facingTile = GetMetatileBehaviorAt(fieldSystem, x, y);
+    PlayerAvatar_GetCoordsInFront(fieldSystem->playerAvatar, &x, &z);
+    facingTile = GetMetatileBehaviorAt(fieldSystem, x, z);
 
     if (Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors(fieldSystem->playerAvatar, standingTile, facingTile)) {
         checkData->flag |= (1 << FIELD_MOVE_CHECK_WATER_F);

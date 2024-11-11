@@ -253,7 +253,7 @@ BOOL sub_02056040(TaskManager *man) {
     switch (fenv->transitionState) {
     case 0:
         fenv->unk18 = ov01_021E90C0();
-        ov01_021E90DC(GetPlayerXCoord(fieldSystem->playerAvatar), GetPlayerYCoord(fieldSystem->playerAvatar), fenv->unk18);
+        ov01_021E90DC(GetPlayerXCoord(fieldSystem->playerAvatar), GetPlayerZCoord(fieldSystem->playerAvatar), fenv->unk18);
         fenv->transitionState++;
         break;
     case 1:
@@ -278,7 +278,7 @@ BOOL sub_020560C4(TaskManager *man) {
     switch (fenv->transitionState) {
     case 0:
         fenv->unk18 = ov01_021E90C0();
-        ov01_021E90DC(GetPlayerXCoord(fieldSystem->playerAvatar), GetPlayerYCoord(fieldSystem->playerAvatar), fenv->unk18);
+        ov01_021E90DC(GetPlayerXCoord(fieldSystem->playerAvatar), GetPlayerZCoord(fieldSystem->playerAvatar), fenv->unk18);
         fenv->transitionState++;
         break;
     case 1: {
@@ -385,7 +385,7 @@ BOOL sub_020562B0(TaskManager *man) {
         MapObject_ClearHeldMovementIfActive(obj);
         Field_PlayerAvatar_OrrTransitionFlags(fieldSystem->playerAvatar, 512);
         Field_PlayerAvatar_ApplyTransitionFlags(fieldSystem->playerAvatar);
-        sub_0205F328(obj, FALSE);
+        sub_0205F328(obj, 0);
         fenv->unk18       = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldEnvSubUnk18));
         fenv18            = fenv->unk18;
         fenv18->state     = 0;
@@ -414,7 +414,7 @@ BOOL sub_020562B0(TaskManager *man) {
                 break;
             }
             if (flag) {
-                ov01_02205990(var, MapObject_GetPrevX(obj), MapObject_GetPrevY(obj), &fieldSystem->followMon);
+                ov01_02205990(var, MapObject_GetPreviousX(obj), MapObject_GetPreviousZ(obj), &fieldSystem->followMon);
             }
         }
         fenv->transitionState++;
@@ -425,14 +425,14 @@ BOOL sub_020562B0(TaskManager *man) {
         fenv18    = fenv->unk18;
         u32 state = fenv18->state;
         fenv18->state++;
-        MapObject_GetPositionVec(obj, &pos);
+        MapObject_CopyPositionVector(obj, &pos);
         if (fenv18->direction == DIR_SOUTH) { // Ladders
             pos.y += 2048;
             pos.z -= 6144;
         } else {
             pos.y += 8192;
         }
-        MapObject_SetPositionVec(obj, &pos);
+        MapObject_SetPositionVector(obj, &pos);
         if (fenv18->state >= 16) {
             fenv->transitionState++;
         }
@@ -483,9 +483,9 @@ BOOL sub_02056424(TaskManager *man) {
         fenv18 = fenv->unk18;
         fenv18->state++;
         VecFx32 pos;
-        MapObject_GetPositionVec(obj, &pos);
+        MapObject_CopyPositionVector(obj, &pos);
         pos.y -= 8192;
-        MapObject_SetPositionVec(obj, &pos);
+        MapObject_SetPositionVector(obj, &pos);
         if (fenv18->state >= 16) {
             fenv->transitionState++;
         }
@@ -512,7 +512,7 @@ BOOL sub_02056530(TaskManager *man) {
     switch (fenv->transitionState) {
     case 0:
         obj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
-        if (sub_0205B70C(GetMetatileBehaviorAt(fieldSystem, GetPlayerXCoord(fieldSystem->playerAvatar), GetPlayerYCoord(fieldSystem->playerAvatar)))) {
+        if (sub_0205B70C(GetMetatileBehaviorAt(fieldSystem, GetPlayerXCoord(fieldSystem->playerAvatar), GetPlayerZCoord(fieldSystem->playerAvatar)))) {
             MapObject_SetVisible(obj, TRUE);
             fenv->transitionState = 1;
             break;
@@ -522,7 +522,7 @@ BOOL sub_02056530(TaskManager *man) {
         break;
     case 1:
         fenv->unk18 = ov01_021E90C0();
-        ov01_021E90DC(GetPlayerXCoord(fieldSystem->playerAvatar), GetPlayerYCoord(fieldSystem->playerAvatar), fenv->unk18);
+        ov01_021E90DC(GetPlayerXCoord(fieldSystem->playerAvatar), GetPlayerZCoord(fieldSystem->playerAvatar), fenv->unk18);
         fenv->transitionState++;
         break;
     case 2: {
@@ -546,7 +546,7 @@ BOOL sub_020565FC(TaskManager *man) {
     switch (fenv->transitionState) {
     case 0: {
         LocalMapObject *mapObj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
-        if (sub_0205B70C(GetMetatileBehaviorAt(fieldSystem, GetPlayerXCoord(fieldSystem->playerAvatar), GetPlayerYCoord(fieldSystem->playerAvatar)))) {
+        if (sub_0205B70C(GetMetatileBehaviorAt(fieldSystem, GetPlayerXCoord(fieldSystem->playerAvatar), GetPlayerZCoord(fieldSystem->playerAvatar)))) {
             MapObject_SetVisible(mapObj, TRUE);
             fenv->transitionState = 1;
             TaskManager_Jump(man, sub_02056530, fenv);

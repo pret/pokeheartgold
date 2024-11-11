@@ -313,7 +313,7 @@ ov01_021FD064: ; 0x021FD064
 	add r0, r6, #0
 	bl FollowMon_GetMapObject
 	add r1, sp, #8
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r4, #0
 	ldr r1, [sp, #8]
 	ldr r2, [sp, #0xc]

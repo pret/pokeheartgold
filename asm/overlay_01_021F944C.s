@@ -496,14 +496,14 @@ ov01_021F97BC: ; 0x021F97BC
 	bl MapObjectManager_GetObjectCount
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_0205F1AC
+	bl MapObjectManager_GetObjects2
 	ldr r7, _021F9804 ; =0x0000FFFF
 	str r0, [sp]
 _021F97D4:
 	ldr r0, [sp]
 	cmp r0, r5
 	beq _021F97F4
-	bl MapObject_IsInUse
+	bl MapObject_CheckActive
 	cmp r0, #1
 	bne _021F97F4
 	ldr r0, [sp]
@@ -516,7 +516,7 @@ _021F97D4:
 	pop {r3, r4, r5, r6, r7, pc}
 _021F97F4:
 	add r0, sp, #0
-	bl sub_0205F1C4
+	bl MapObjectArray_NextObject
 	sub r4, r4, #1
 	bne _021F97D4
 	mov r0, #0
@@ -642,7 +642,7 @@ _021F98F8:
 	mov r0, #0x41
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl FldObjSys_GetMModelNarc
+	bl MapObjectManager_GetMapModelNarc
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -2095,7 +2095,7 @@ ov01_021FA2D4: ; 0x021FA2D4
 	push {r3, lr}
 	mov r1, #1
 	lsl r1, r1, #0x16
-	bl MapObject_GetFlagsBits
+	bl MapObject_GetFlagsBitsMask
 	cmp r0, #0
 	beq _021FA2E6
 	mov r0, #1
@@ -3193,7 +3193,7 @@ _021FAAAA:
 	bne _021FAB4A
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_0205F09C
+	bl MapObject_GetPriorityPlusValue
 	str r0, [sp, #0xc]
 	add r0, r6, #0
 	mov r1, #1
@@ -3218,7 +3218,7 @@ _021FAB26:
 _021FAB28:
 	add r0, r6, #0
 	add r1, sp, #0x20
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r6, #0
 	bl ov01_021F146C
 	ldr r1, [sp, #0xc]
@@ -3279,7 +3279,7 @@ ov01_021FAB9C: ; 0x021FAB9C
 	pop {r4, r5, r6, pc}
 _021FABB0:
 	add r0, r4, #0
-	bl MapObject_IsInUse
+	bl MapObject_CheckActive
 	cmp r0, #0
 	beq _021FABC4
 	add r0, r4, #0

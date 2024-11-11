@@ -36,6 +36,7 @@
 #include "unk_0203DB6C.h"
 #include "unk_02054648.h"
 #include "unk_02054E00.h"
+#include "unk_02062108.h"
 #include "unk_02066EDC.h"
 
 struct ItemUseFuncDat {
@@ -152,7 +153,7 @@ void ItemCheckUseData_Init(FieldSystem *fieldSystem, struct ItemCheckUseData *da
     dat->playerState       = PlayerAvatar_GetState(fieldSystem->playerAvatar);
 
     x                 = GetPlayerXCoord(fieldSystem->playerAvatar);
-    y                 = GetPlayerYCoord(fieldSystem->playerAvatar);
+    y                 = GetPlayerZCoord(fieldSystem->playerAvatar);
     dat->standingTile = GetMetatileBehaviorAt(fieldSystem, x, y);
 
     switch (PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar)) {

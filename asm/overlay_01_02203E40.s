@@ -92,7 +92,7 @@ ov01_02203EA0: ; 0x02203EA0
 	str r5, [sp, #0x34]
 	add r0, r5, #0
 	add r1, sp, #0x14
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	ldr r1, [r6, #0x24]
 	add r0, sp, #8
 	bl Camera_GetLookAtCamPos
@@ -112,10 +112,10 @@ ov01_02203EA0: ; 0x02203EA0
 	bl VEC_Normalize
 	add r0, r5, #0
 	add r1, sp, #0x20
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0205F09C
+	bl MapObject_GetPriorityPlusValue
 	add r1, sp, #0x2c
 	str r1, [sp]
 	str r0, [sp, #4]
@@ -184,7 +184,7 @@ ov01_02203F6C: ; 0x02203F6C
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	add r1, sp, #0xc
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	ldr r0, [r4, #0x10]
 	add r4, #0x14
 	add r1, r4, #0

@@ -3,84 +3,84 @@
   "objects": [
     {
       "id": "obj_D15R0102_bozu",
-      "sprite_id": "SPRITE_BOZU",
+      "spriteId": "SPRITE_BOZU",
       "movement": 15,
       "type": 1,
-      "flag": "FLAG_NOTHING",
-      "scr": "std_trainer(TRAINER_SAGE_NICO)",
-      "dirn": 1,
-      "eye": 2,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "std_trainer(TRAINER_SAGE_NICO)",
+      "facingDirection": 1,
+      "param0": 2,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 20,
-      "y": 13,
-      "z": 0
+      "z": 13,
+      "y": 0
     },
     {
       "id": "obj_D15R0102_bozu_2",
-      "sprite_id": "SPRITE_BOZU",
+      "spriteId": "SPRITE_BOZU",
       "movement": 16,
       "type": 1,
-      "flag": "FLAG_NOTHING",
-      "scr": "std_trainer(TRAINER_SAGE_EDMOND)",
-      "dirn": 2,
-      "eye": 6,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "std_trainer(TRAINER_SAGE_EDMOND)",
+      "facingDirection": 2,
+      "param0": 6,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 13,
-      "y": 27,
-      "z": 0
+      "z": 27,
+      "y": 0
     },
     {
       "id": "obj_D15R0102_monstarball",
-      "sprite_id": "SPRITE_MONSTARBALL",
+      "spriteId": "SPRITE_MONSTARBALL",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_HIDE_ITEMBALL_D15R0102_X_ACCURACY",
-      "scr": "std_itemball_d15r0102_x_accuracy",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_ITEMBALL_D15R0102_X_ACCURACY",
+      "scriptId": "std_itemball_d15r0102_x_accuracy",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 6,
-      "y": 9,
-      "z": 0
+      "z": 9,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 11,
-      "y": 14,
+      "z": 14,
       "header": "MAP_D15R0101",
       "anchor": 1,
-      "height": 0
+      "y": 0
     },
     {
       "x": 24,
-      "y": 9,
+      "z": 9,
       "header": "MAP_D15R0101",
       "anchor": 2,
-      "height": 0
+      "y": 0
     },
     {
       "x": 6,
-      "y": 16,
+      "z": 16,
       "header": "MAP_D15R0101",
       "anchor": 3,
-      "height": 0
+      "y": 0
     },
     {
       "x": 15,
-      "y": 27,
+      "z": 27,
       "header": "MAP_D15R0103",
       "anchor": 0,
-      "height": 0
+      "y": 0
     }
   ]
 }

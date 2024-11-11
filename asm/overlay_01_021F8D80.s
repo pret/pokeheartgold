@@ -35,7 +35,7 @@ ov01_021F8D80: ; 0x021F8D80
 	beq _021F8DBA
 	add r0, r5, #0
 	add r1, sp, #8
-	bl MapObject_GetFacingVec
+	bl MapObject_CopyFacingVector
 	mov r0, #0x14
 	ldrsb r0, [r4, r0]
 	lsl r0, r0, #0xc
@@ -52,7 +52,7 @@ _021F8DBA:
 _021F8DC8:
 	add r0, r5, #0
 	add r1, sp, #8
-	bl MapObject_GetFacingVec
+	bl MapObject_CopyFacingVector
 	mov r0, #0
 	str r0, [sp, #8]
 	str r0, [sp, #0x10]
@@ -129,7 +129,7 @@ _021F8E56:
 _021F8E64:
 	add r0, r5, #0
 	add r1, sp, #8
-	bl MapObject_SetFacingVec
+	bl MapObject_SetFacingVector
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021F8D80
@@ -142,7 +142,7 @@ ov01_021F8E70: ; 0x021F8E70
 	add r6, r0, #0
 	add r1, sp, #0
 	add r4, r2, #0
-	bl MapObject_GetFacingVec
+	bl MapObject_CopyFacingVector
 	add r0, r6, #0
 	bl MapObject_GetSpriteID
 	bl ov01_021FA298
@@ -715,7 +715,7 @@ FldObjSys_OpenMModelNarc: ; 0x021F927C
 	bl NARC_New
 	add r1, r0, #0
 	add r0, r4, #0
-	bl FldObjSys_SetMModelNarc
+	bl MapObjectManager_SetMapModelNarc
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end FldObjSys_OpenMModelNarc
@@ -723,7 +723,7 @@ FldObjSys_OpenMModelNarc: ; 0x021F927C
 	thumb_func_start FldObjSys_CloseMModelNarc
 FldObjSys_CloseMModelNarc: ; 0x021F9294
 	push {r3, lr}
-	bl FldObjSys_GetMModelNarc
+	bl MapObjectManager_GetMapModelNarc
 	bl NARC_Delete
 	pop {r3, pc}
 	thumb_func_end FldObjSys_CloseMModelNarc
@@ -740,11 +740,11 @@ ov01_021F92A0: ; 0x021F92A0
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0xe
-	bl MapObject_GetFlagsBits
+	bl MapObject_GetFlagsBitsMask
 	cmp r0, #0
 	beq _021F92DA
 	add r0, r4, #0
-	bl sub_0205F714
+	bl MapObject_CheckMovementPaused
 	cmp r0, #0
 	beq _021F92D4
 	add r0, r4, #0
@@ -758,8 +758,8 @@ _021F92DA:
 	pop {r4, pc}
 	thumb_func_end ov01_021F92A0
 
-	thumb_func_start GetObjectEventGfxInfoPtr
-GetObjectEventGfxInfoPtr: ; 0x021F92DC
+	thumb_func_start ObjectEvent_GetGraphicsInfo
+ObjectEvent_GetGraphicsInfo: ; 0x021F92DC
 	push {r3, lr}
 	ldr r3, _021F92FC ; =ov01_022074A8
 	ldr r1, _021F9300 ; =0x0000FFFF
@@ -780,12 +780,12 @@ _021F92EC:
 	.balign 4, 0
 _021F92FC: .word ov01_022074A8
 _021F9300: .word 0x0000FFFF
-	thumb_func_end GetObjectEventGfxInfoPtr
+	thumb_func_end ObjectEvent_GetGraphicsInfo
 
 	thumb_func_start GetMoveModelNoBySpriteId
 GetMoveModelNoBySpriteId: ; 0x021F9304
 	push {r3, lr}
-	bl GetObjectEventGfxInfoPtr
+	bl ObjectEvent_GetGraphicsInfo
 	cmp r0, #0
 	bne _021F9314
 	mov r0, #0
@@ -807,7 +807,7 @@ ov01_021F9318: ; 0x021F9318
 	thumb_func_start ov01_021F9324
 ov01_021F9324: ; 0x021F9324
 	push {r3, lr}
-	bl GetObjectEventGfxInfoPtr
+	bl ObjectEvent_GetGraphicsInfo
 	cmp r0, #0
 	bne _021F9332
 	mov r0, #0
@@ -827,7 +827,7 @@ _021F9340: .word ov01_02206D00
 ov01_021F9344: ; 0x021F9344
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205F714
+	bl MapObject_CheckMovementPaused
 	cmp r0, #1
 	bne _021F935E
 	add r0, r4, #0
@@ -840,7 +840,7 @@ _021F935E:
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #8
-	bl MapObject_GetFlagsBits
+	bl MapObject_GetFlagsBitsMask
 	cmp r0, #0
 	beq _021F9370
 	mov r0, #1
@@ -855,7 +855,7 @@ ReadMModelFromNarcInternal: ; 0x021F9374
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r5, r2, #0
-	bl FldObjSys_GetMModelNarc
+	bl MapObjectManager_GetMapModelNarc
 	add r1, r4, #0
 	add r6, r0, #0
 	bl NARC_GetMemberSize
@@ -886,10 +886,10 @@ ov01_021F93AC: ; 0x021F93AC
 	add r4, r1, #0
 	add r5, r0, #0
 	add r1, sp, #0x24
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r5, #0
 	add r1, sp, #0x18
-	bl MapObject_GetFacingVec
+	bl MapObject_CopyFacingVector
 	add r0, r5, #0
 	add r1, sp, #0xc
 	bl sub_0205F990

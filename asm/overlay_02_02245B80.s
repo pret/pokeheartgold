@@ -2215,7 +2215,7 @@ _02246CA0:
 	bl GetPlayerXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -2802,7 +2802,7 @@ ov02_02247170: ; 0x02247170
 	bl GetPlayerXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -7543,12 +7543,12 @@ ov02_022494C4: ; 0x022494C4
 	ldr r0, [r0, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r1, sp, #0xc
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	mov r0, #0x82
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, sp, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	ldr r1, [sp]
 	ldr r0, [sp, #0xc]
 	sub r0, r1, r0
@@ -12226,7 +12226,7 @@ ov02_0224B784: ; 0x0224B784
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, sp, #0xc
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, sp, #8
 	str r0, [sp]
 	mov r0, #0x83
@@ -15374,12 +15374,12 @@ ov02_0224CFD8: ; 0x0224CFD8
 	bl MapObjectManager_GetFirstActiveObjectByID
 	add r6, r0, #0
 	add r1, sp, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r6, #0
 	bl MapObject_GetCurrentX
 	add r5, r0, #0
 	add r0, r6, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	add r4, r0, #0
 	add r0, r6, #0
 	bl MapObject_GetFacingDirection
@@ -15436,7 +15436,7 @@ ov02_0224D044: ; 0x0224D044
 	bl GetPlayerXCoord
 	add r5, r0, #0
 	add r0, r6, #0
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	add r4, r0, #0
 	add r0, r6, #0
 	bl PlayerAvatar_GetFacingDirection
@@ -17511,7 +17511,7 @@ ov02_0224DF1C: ; 0x0224DF1C
 	ldr r0, [r4, r0]
 	bl FollowMon_GetMapObject
 	add r1, sp, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	mov r5, #0
 	add r1, r4, #0
 _0224DF5A:
@@ -17790,7 +17790,7 @@ _0224E156:
 	bl MapObject_GetCurrentX
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #4]
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #4]
 	bl MapObject_GetFacingDirection
@@ -17799,7 +17799,7 @@ _0224E156:
 	bl MapObject_GetCurrentX
 	str r0, [r4, #0x18]
 	ldr r0, [r4, #8]
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	str r0, [r4, #0x1c]
 	add r0, r4, #0
 	add r1, r4, #0
@@ -18068,7 +18068,7 @@ ov02_0224E340: ; 0x0224E340
 	bl GetPlayerXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov02_0224E31C
@@ -18129,7 +18129,7 @@ _0224E3BE:
 	bl GetPlayerXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	str r0, [sp, #8]
 	add r0, r7, #0
 	bl GetDeltaXByFacingDirection
@@ -18321,7 +18321,7 @@ _0224E52A:
 	asr r0, r0, #0x10
 	str r0, [sp, #0x14]
 	ldr r0, [r5, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	lsl r0, r0, #0x10
 	asr r7, r0, #0x10
 	ldr r0, [r5, #0x40]
@@ -18500,7 +18500,7 @@ ov02_0224E698: ; 0x0224E698
 	lsl r0, r0, #0x10
 	asr r6, r0, #0x10
 	ldr r0, [r5, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	lsl r0, r0, #0x10
 	asr r4, r0, #0x10
 	ldr r0, [r5, #0x40]
@@ -18595,7 +18595,7 @@ ov02_0224E754: ; 0x0224E754
 	bl GetDeltaXByFacingDirection
 	add r7, r5, r0
 	ldr r0, [r4, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	add r5, r0, #0
 	add r0, r6, #0
 	bl GetDeltaYByFacingDirection
@@ -20325,7 +20325,7 @@ ov02_0224F4BC: ; 0x0224F4BC
 	bl GetPlayerXCoord
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	str r0, [sp]
 	ldr r0, [r4, #0x3c]
 	bl MapObjectManager_GetObjectCount
@@ -20342,14 +20342,14 @@ ov02_0224F4BC: ; 0x0224F4BC
 	add r7, #0xc
 _0224F4FC:
 	ldr r0, [sp, #0x10]
-	bl MapObject_IsInUse
+	bl MapObject_CheckActive
 	cmp r0, #1
 	bne _0224F568
 	ldr r0, [sp, #0x10]
 	bl MapObject_GetCurrentX
 	add r4, r0, #0
 	ldr r0, [sp, #0x10]
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	ldr r1, [sp, #4]
 	sub r6, r1, r4
 	ldr r1, [sp]
@@ -20395,7 +20395,7 @@ _0224F540:
 	strb r0, [r7]
 _0224F568:
 	add r0, sp, #0x10
-	bl sub_0205F1D0
+	bl MapObjectArray_NextObject2
 	ldr r0, [sp, #0xc]
 	add r1, r0, #1
 	ldr r0, [sp, #8]
@@ -20488,7 +20488,7 @@ ov02_0224F5FC: ; 0x0224F5FC
 	add r6, r0, #0
 	add r0, r5, #0
 	bl FollowMon_GetMapObject
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
@@ -21532,7 +21532,7 @@ ov02_0224FD9C: ; 0x0224FD9C
 	add r5, r0, #0
 	add r0, r4, #0
 	add r1, sp, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	mov r0, #2
 	ldrsb r0, [r5, r0]
 	cmp r0, #0
@@ -21568,7 +21568,7 @@ _0224FDDC:
 _0224FDEC:
 	add r0, r4, #0
 	add r1, sp, #0
-	bl MapObject_SetPositionVec
+	bl MapObject_SetPositionVector
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end ov02_0224FD9C
@@ -21721,7 +21721,7 @@ ov02_0224FF04: ; 0x0224FF04
 	bl MapObject_GetCurrentX
 	str r0, [r4]
 	add r0, r7, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	str r0, [r5]
 	cmp r6, #3
 	bhi _0224FF54
@@ -21892,7 +21892,7 @@ _02250040:
 	lsl r1, r1, #4
 	ldr r0, [r0]
 	add r1, r4, r1
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r5, #0
 	add r0, #0xe4
 	ldr r0, [r0]
@@ -21961,7 +21961,7 @@ _022500AE:
 	lsl r1, r1, #4
 	ldr r0, [r0]
 	add r1, r4, r1
-	bl MapObject_SetPositionVec
+	bl MapObject_SetPositionVector
 	ldr r1, _0225010C ; =0x0000087C
 	add r0, r5, #0
 	add r0, #0xe4

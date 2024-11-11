@@ -7,11 +7,11 @@
 ## if exists("bgs")
 	.word {{ length(bgs) }};
 ## for bg in bgs
-	.short {{ bg.scr }}
+	.short {{ bg.scriptId }}
 	.short {{ bg.type }}
 	.word {{ bg.x }}
-	.word {{ bg.y }}
 	.word {{ bg.z }}
+	.word {{ bg.y }}
 	.word {{ bg.dir }}
 ## endfor
 ## else
@@ -21,20 +21,20 @@
 	.word {{ length(objects) }}
 ## for object in objects
 	.short {{ object.id }}
-	.short {{ object.sprite_id }}
+	.short {{ object.spriteId }}
 	.short {{ object.movement }}
 	.short {{ object.type }}
-	.short {{ object.flag }}
-	.short {{ object.scr }}
-	.short {{ object.dirn }}
-	.short {{ object.eye }}
-	.short {{ object.unk10 }}
-	.short {{ object.tsure_poke_color }}
-	.short {{ object.xrange }}
-	.short {{ object.yrange }}
+	.short {{ object.eventFlag }}
+	.short {{ object.scriptId }}
+	.short {{ object.facingDirection }}
+	.short {{ object.param0 }}
+	.short {{ object.param1 }}
+	.short {{ object.param2 }}
+	.short {{ object.xRange }}
+	.short {{ object.yRange }}
 	.short {{ object.x }}
-	.short {{ object.y }}
-	.word {{ object.z }}
+	.short {{ object.z }}
+	.word {{ object.y }}
 ## endfor
 ## else
 	.word 0
@@ -43,10 +43,10 @@
 	.word {{ length(warps) }}
 ## for warp in warps
 	.short {{ warp.x }}
-	.short {{ warp.y }}
+	.short {{ warp.z }}
 	.short {{ warp.header }}
 	.short {{ warp.anchor }}
-	.word {{ warp.height }}
+	.word {{ warp.y }}
 ## endfor
 ## else
 	.word 0
@@ -54,12 +54,12 @@
 ## if exists("coords")
 	.word {{ length(coords) }}
 ## for coord in coords
-	.short {{ coord.scr }}
+	.short {{ coord.scriptId }}
 	.short {{ coord.x }}
-	.short {{ coord.y }}
+	.short {{ coord.z }}
 	.short {{ coord.w }}
 	.short {{ coord.h }}
-	.short {{ coord.z }}
+	.short {{ coord.y }}
 	.short {{ coord.val }}
 	.short {{ coord.var }}
 ## endfor

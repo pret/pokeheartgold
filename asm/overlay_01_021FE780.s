@@ -113,14 +113,14 @@ _021FE826:
 	add r1, sp, #0x14
 	str r0, [r2]
 	add r0, r5, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r5, #0
 	add r1, sp, #8
 	bl sub_0205F9A0
 _021FE842:
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0205F09C
+	bl MapObject_GetPriorityPlusValue
 	add r1, sp, #0x20
 	str r1, [sp]
 	str r0, [sp, #4]
@@ -155,7 +155,7 @@ ov01_021FE868: ; 0x021FE868
 	bl MapObject_GetID
 	str r0, [r5, #0xc]
 	add r0, r4, #0
-	bl sub_0205F254
+	bl MapObject_GetMapID
 	str r0, [r5, #0x10]
 	ldr r0, [r7]
 	str r0, [r5, #8]
@@ -258,7 +258,7 @@ _021FE936:
 	bl sub_0205F9A0
 	add r0, r4, #0
 	add r1, sp, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	mov r0, #1
 	ldr r1, [r5, #0x1c]
 	lsl r0, r0, #0xc

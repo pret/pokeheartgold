@@ -201,10 +201,10 @@ ov01_021FF070: ; 0x021FF070
 	bl MapObject_GetCurrentX
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl MapObject_GetCurrentHeight
+	bl MapObject_GetCurrentY
 	str r0, [sp, #0xc]
 	add r0, r5, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	str r0, [sp, #0x10]
 	mov r1, #0
 	add r0, sp, #8
@@ -224,10 +224,10 @@ ov01_021FF070: ; 0x021FF070
 	add r0, r5, #0
 	add r1, sp, #0x2c
 	str r5, [sp, #0x20]
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0205F09C
+	bl MapObject_GetPriorityPlusValue
 	add r1, sp, #8
 	str r1, [sp]
 	str r0, [sp, #4]
@@ -254,7 +254,7 @@ ov01_021FF0E4: ; 0x021FF0E4
 	add r7, r0, #0
 	add r0, r5, #0
 	str r4, [sp, #0xc]
-	bl MapObject_GetCurrentHeight
+	bl MapObject_GetCurrentY
 	str r0, [sp, #0x10]
 	add r0, r5, #0
 	str r6, [sp, #0x14]
@@ -263,7 +263,7 @@ ov01_021FF0E4: ; 0x021FF0E4
 	add r0, sp, #0xc
 	strh r1, [r0, #0x1c]
 	add r0, r5, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	sub r1, r0, r6
 	add r0, sp, #0xc
 	strh r1, [r0, #0x1e]
@@ -292,10 +292,10 @@ _021FF134:
 	add r0, r5, #0
 	add r1, sp, #0x30
 	str r5, [sp, #0x24]
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0205F09C
+	bl MapObject_GetPriorityPlusValue
 	add r1, sp, #0xc
 	str r1, [sp]
 	str r0, [sp, #4]
@@ -335,7 +335,7 @@ _021FF188:
 	bl MapObject_GetID
 	str r0, [r4, #8]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F254
+	bl MapObject_GetMapID
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #0x18]
 	lsl r0, r0, #0x10
@@ -344,7 +344,7 @@ _021FF188:
 	lsl r0, r0, #0x10
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x30]
-	bl MapObject_GetPosVecYCoord
+	bl MapObject_GetPositionVectorYCoord
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x24]
 	add r1, sp, #0
@@ -515,7 +515,7 @@ _021FF30C:
 	ldrsh r1, [r4, r1]
 	sub r7, r0, r1
 	add r0, r6, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	mov r1, #0x36
 	ldrsh r1, [r4, r1]
 	sub r1, r0, r1

@@ -24,7 +24,7 @@ DATA_NAMEIN_FILES := \
 $(DATA_NAMEIN_NARC): $(addprefix $(DATA_NAMEIN_DIR)/,$(DATA_NAMEIN_FILES))
 
 clean-data-namein:
-	$(RM) $(filter %.lz,$(addprefix $(DATA_NAMEIN_DIR)/,$(DATA_NAMEIN_FILES)))
+	$(RM) $(DATA_NAMEIN_NARC) $(filter %.lz,$(addprefix $(DATA_NAMEIN_DIR)/,$(DATA_NAMEIN_FILES)))
 
 .PHONY: clean-data-namein
 clean-filesystem: clean-data-namein

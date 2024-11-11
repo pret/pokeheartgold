@@ -57,9 +57,9 @@ void ov01_021FFF5C(LocalMapObject *mapObject, int a1) {
     TaskManager *taskman     = ov01_021F1468(fieldSystem);
 
     int x = MapObject_GetCurrentX(mapObject);
-    int y = MapObject_GetCurrentY(mapObject);
+    int z = MapObject_GetCurrentZ(mapObject);
 
-    sub_020611C8(x, y, &temp);
+    sub_020611C8(x, z, &temp);
     sub_0206121C(taskman, &temp);
 
     temp2.unk0 = a1;
@@ -70,7 +70,7 @@ void ov01_021FFF5C(LocalMapObject *mapObject, int a1) {
     temp2.unkC             = mapObject;
     temp2.unk10            = ov01_021FFF50(val1, a1);
 
-    int val3 = sub_0205F09C(mapObject, 2);
+    int val3 = MapObject_GetPriorityPlusValue(mapObject, 2);
     ov01_021F1620(fieldSystem, &ov01_02209280, &temp, 0, &temp2, val3);
 }
 
@@ -78,16 +78,16 @@ static BOOL ov01_021FFFCC(void *a0, UnkOv01_021FFFCD *a1) {
     UnkOv01_021FFFCC *ptr     = sub_02068D98(a0);
     LocalMapObject *mapObject = ptr->unk0.unkC;
 
-    a1->unk10 = ptr->unk0;
-    a1->unk8  = MapObject_GetID(mapObject);
-    a1->unkC  = sub_0205F254(mapObject);
+    a1->unk10            = ptr->unk0;
+    a1->localMapObjectId = MapObject_GetID(mapObject);
+    a1->mapId            = MapObject_GetMapID(mapObject);
     return TRUE;
 }
 
 static BOOL ov01_021FFFFC(void *a0, UnkOv01_021FFFCD *a1) {
     LocalMapObject *mapObject = a1->unk10.unkC;
 
-    BOOL val = sub_0205F0A8(mapObject, a1->unk8, a1->unkC);
+    BOOL val = sub_0205F0A8(mapObject, a1->localMapObjectId, a1->mapId);
     if (val == TRUE) {
         return sub_02066420(mapObject, 0);
     }

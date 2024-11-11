@@ -776,7 +776,7 @@ static BOOL Task_StartMenu_OpenPokedex(TaskManager *taskManager) {
     pokedexArgs->unk_08            = fieldSystem->unkA8;
     pokedexArgs->menuInputStatePtr = &fieldSystem->menuInputState;
     int x                          = GetPlayerXCoord(fieldSystem->playerAvatar);
-    int y                          = GetPlayerYCoord(fieldSystem->playerAvatar);
+    int y                          = GetPlayerZCoord(fieldSystem->playerAvatar);
     pokedexArgs->mapMatrixId       = MapMatrix_GetMapHeader(fieldSystem->mapMatrix, x / 32, y / 32);
     pokedexArgs->mapId             = position->mapId;
     if (MapHeader_MapIsOnMainMatrix(pokedexArgs->mapMatrixId)) {

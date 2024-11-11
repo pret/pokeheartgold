@@ -2,90 +2,90 @@
   "header": "fielddata/script/scr_seq/event_D24R0102.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_D24R0102_003 + 1",
+      "scriptId": "_EV_scr_seq_D24R0102_003 + 1",
       "type": 0,
       "x": 3,
-      "y": 3,
-      "z": 0,
+      "z": 3,
+      "y": 0,
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0102_004 + 1",
+      "scriptId": "_EV_scr_seq_D24R0102_004 + 1",
       "type": 0,
       "x": 10,
-      "y": 3,
-      "z": 0,
+      "z": 3,
+      "y": 0,
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0102_004 + 1",
+      "scriptId": "_EV_scr_seq_D24R0102_004 + 1",
       "type": 0,
       "x": 11,
-      "y": 3,
-      "z": 0,
+      "z": 3,
+      "y": 0,
       "dir": 4
     }
   ],
   "objects": [
     {
       "id": "obj_D24R0102_suit",
-      "sprite_id": "SPRITE_SUIT",
+      "spriteId": "SPRITE_SUIT",
       "movement": 15,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_D24R0102_000 + 1",
-      "dirn": 1,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_D24R0102_000 + 1",
+      "facingDirection": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 1,
-      "y": 4,
-      "z": 0
+      "z": 4,
+      "y": 0
     },
     {
       "id": "obj_D24R0102_gsassistantm",
-      "sprite_id": "SPRITE_GSASSISTANTM",
+      "spriteId": "SPRITE_GSASSISTANTM",
       "movement": 17,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_D24R0102_002 + 1",
-      "dirn": 3,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_D24R0102_002 + 1",
+      "facingDirection": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 9,
-      "y": 7,
-      "z": 0
+      "z": 7,
+      "y": 0
     },
     {
       "id": "obj_D24R0102_gsassistantm_2",
-      "sprite_id": "SPRITE_GSASSISTANTM",
+      "spriteId": "SPRITE_GSASSISTANTM",
       "movement": 14,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_D24R0102_001 + 1",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_D24R0102_001 + 1",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 8,
-      "y": 4,
-      "z": 0
+      "z": 4,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 4,
-      "y": 12,
+      "z": 12,
       "header": "MAP_D24R0101",
       "anchor": 10,
-      "height": 0
+      "y": 0
     }
   ]
 }

@@ -3,29 +3,29 @@
   "objects": [
     {
       "id": "obj_D52R0103_tsure_poke_static_rayquaza",
-      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_RAYQUAZA",
+      "spriteId": "SPRITE_FOLLOWER_MON_STATIC_RAYQUAZA",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_HIDE_EMBEDDED_TOWER_RAYQUAZA",
-      "scr": "_EV_scr_seq_D52R0103_000 + 1",
-      "dirn": 1,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_EMBEDDED_TOWER_RAYQUAZA",
+      "scriptId": "_EV_scr_seq_D52R0103_000 + 1",
+      "facingDirection": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 16,
-      "y": 11,
-      "z": 0
+      "z": 11,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 16,
-      "y": 29,
+      "z": 29,
       "header": "MAP_R47",
       "anchor": 6,
-      "height": 0
+      "y": 0
     }
   ]
 }

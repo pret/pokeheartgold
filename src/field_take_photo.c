@@ -152,12 +152,12 @@ void FieldSystem_TakePhoto(FieldSystem *fieldSystem, u16 photo_id) {
     takePhoto->positionMonDelayCounter = 0;
     takePhoto->curMon                  = 0;
     takePhoto->savedX                  = GetPlayerXCoord(fieldSystem->playerAvatar);
-    takePhoto->savedY                  = GetPlayerYCoord(fieldSystem->playerAvatar);
+    takePhoto->savedY                  = GetPlayerZCoord(fieldSystem->playerAvatar);
     takePhoto->savedDirection          = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
     takePhoto->savedMapId              = fieldSystem->location->mapId;
     if (FollowMon_IsActive(fieldSystem)) {
         LocalMapObject *followMonObj = FollowMon_GetMapObject(fieldSystem);
-        MapObject_GetPositionVec(followMonObj, &takePhoto->followMonPositionVecBak);
+        MapObject_CopyPositionVector(followMonObj, &takePhoto->followMonPositionVecBak);
         takePhoto->followMonFacingDirectionBak = MapObject_GetFacingDirection(followMonObj);
     }
     if (PhotoAlbum_GetIndexOfFirstEmptySlot(Save_PhotoAlbum_Get(FieldSystem_GetSaveData(fieldSystem))) != 0xFF) {
@@ -173,7 +173,7 @@ void FieldSystem_ViewSavedPhotos(FieldSystem *fieldSystem) {
     FieldViewPhoto *photo = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldViewPhoto));
     MI_CpuFill8(photo, 0, sizeof(FieldViewPhoto));
     photo->x              = GetPlayerXCoord(fieldSystem->playerAvatar);
-    photo->y              = GetPlayerYCoord(fieldSystem->playerAvatar);
+    photo->y              = GetPlayerZCoord(fieldSystem->playerAvatar);
     photo->savedDirection = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
     photo->savedMapId     = fieldSystem->location->mapId;
     photo->photoAlbum     = Save_PhotoAlbum_Get(fieldSystem->saveData);
@@ -376,9 +376,9 @@ static BOOL FieldTask_DoViewPhoto(TaskManager *taskManager) {
         }
         {
             VecFx32 facingVec;
-            MapObject_GetFacingVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &facingVec);
+            MapObject_CopyFacingVector(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &facingVec);
             facingVec.y -= FX32_CONST(2);
-            MapObject_SetFacingVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &facingVec);
+            MapObject_SetFacingVector(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &facingVec);
         }
         ++taskData->state;
         break;
@@ -411,9 +411,9 @@ static BOOL FieldTask_DoViewPhoto(TaskManager *taskManager) {
                 ov01_021F902C(1, mapObject);
             }
             VecFx32 facingVec;
-            MapObject_GetFacingVec(mapObject, &facingVec);
+            MapObject_CopyFacingVector(mapObject, &facingVec);
             facingVec.y -= FX32_CONST(2);
-            MapObject_SetFacingVec(mapObject, &facingVec);
+            MapObject_SetFacingVector(mapObject, &facingVec);
             sub_0205F484(mapObject);
         }
         ++taskData->placeObjectCounter;
@@ -430,9 +430,9 @@ static BOOL FieldTask_DoViewPhoto(TaskManager *taskManager) {
         break;
     case FIELD_PHOTO_DO_VIEW_STATE_7: {
         VecFx32 facingVec;
-        MapObject_GetFacingVec(taskData->parent->mapObjects[0], &facingVec);
+        MapObject_CopyFacingVector(taskData->parent->mapObjects[0], &facingVec);
         facingVec.y -= FX32_CONST(2);
-        MapObject_SetFacingVec(taskData->parent->mapObjects[0], &facingVec);
+        MapObject_SetFacingVector(taskData->parent->mapObjects[0], &facingVec);
         sub_0205F484(taskData->parent->mapObjects[0]);
         taskData->state = FIELD_PHOTO_DO_VIEW_STATE_8;
         break;
@@ -451,9 +451,9 @@ static BOOL FieldTask_DoViewPhoto(TaskManager *taskManager) {
     case FIELD_PHOTO_DO_VIEW_STATE_9:
         if (taskData->parent->mapObjects[1] != NULL) {
             VecFx32 facingVec;
-            MapObject_GetFacingVec(taskData->parent->mapObjects[1], &facingVec);
+            MapObject_CopyFacingVector(taskData->parent->mapObjects[1], &facingVec);
             facingVec.y -= FX32_CONST(2);
-            MapObject_SetFacingVec(taskData->parent->mapObjects[1], &facingVec);
+            MapObject_SetFacingVector(taskData->parent->mapObjects[1], &facingVec);
             sub_0205F484(taskData->parent->mapObjects[1]);
             LocalMapObject *mapObject = taskData->parent->mapObjects[1];
             if (ov01_0220553C(mapObject)) {
@@ -479,10 +479,10 @@ static LocalMapObject *createSpecialMapObject(MapObjectManager *objectMan, int s
     GF_ASSERT(ret != NULL);
     MapObject_SetID(ret, localId);
     MapObject_SetType(ret, 0);
-    MapObject_SetFlagID(ret, 0);
+    MapObject_SetEventFlag(ret, 0);
     MapObject_SetXRange(ret, -1);
     MapObject_SetYRange(ret, -1);
-    MapObject_SetFlagsBits(ret, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK10 | MAPOBJECTFLAG_UNK13));
+    MapObject_SetFlagsBits(ret, (MapObjectFlagBits)(MAPOBJECTFLAG_KEEP | MAPOBJECTFLAG_UNK13));
     MapObject_ClearFlagsBits(ret, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK7 | MAPOBJECTFLAG_UNK8));
     MapObject_SetFlag29(ret, TRUE);
     return ret;
@@ -619,9 +619,9 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
         sub_0206B82C(fieldSystem->playerAvatar, takePhoto->pPhoto->avatarStateBak, profileGender);
         {
             VecFx32 facingVec;
-            MapObject_GetFacingVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &facingVec);
+            MapObject_CopyFacingVector(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &facingVec);
             facingVec.y -= FX32_CONST(2);
-            MapObject_SetFacingVec(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &facingVec);
+            MapObject_SetFacingVector(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar), &facingVec);
         }
         if (takePhoto->pPhoto->subjectSpriteId) {
             takePhoto->state      = TAKE_PHOTO_STATE_NPC_PHOTO_PLACE_NPC;
@@ -651,9 +651,9 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
                     ov01_021F902C(1, mapObject);
                 }
                 VecFx32 facingVec;
-                MapObject_GetFacingVec(mapObject, &facingVec);
+                MapObject_CopyFacingVector(mapObject, &facingVec);
                 facingVec.y -= FX32_CONST(2);
-                MapObject_SetFacingVec(mapObject, &facingVec);
+                MapObject_SetFacingVector(mapObject, &facingVec);
                 sub_0205F484(mapObject);
             }
             takePhoto->positionMonDelayCounter = 0;
@@ -672,9 +672,9 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
     case TAKE_PHOTO_STATE_NPC_PHOTO_ADJUST_NPC:
         if (takePhoto->positionMonDelayCounter++ > 4) {
             VecFx32 facingVec;
-            MapObject_GetFacingVec(takePhoto->mapObjects[0], &facingVec);
+            MapObject_CopyFacingVector(takePhoto->mapObjects[0], &facingVec);
             facingVec.y -= FX32_CONST(2);
-            MapObject_SetFacingVec(takePhoto->mapObjects[0], &facingVec);
+            MapObject_SetFacingVector(takePhoto->mapObjects[0], &facingVec);
             sub_0205F484(takePhoto->mapObjects[0]);
             takePhoto->positionMonDelayCounter = 0;
             takePhoto->state                   = TAKE_PHOTO_STATE_NPC_PHOTO_PLACE_MON;
@@ -700,9 +700,9 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
                     ov01_021F902C(1, mapObject);
                 }
                 VecFx32 facingVec;
-                MapObject_GetFacingVec(mapObject, &facingVec);
+                MapObject_CopyFacingVector(mapObject, &facingVec);
                 facingVec.y -= FX32_CONST(2);
-                MapObject_SetFacingVec(mapObject, &facingVec);
+                MapObject_SetFacingVector(mapObject, &facingVec);
                 sub_0205F484(mapObject);
             }
             takePhoto->positionMonDelayCounter = 0;
@@ -796,12 +796,12 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
         if (FollowMon_IsActive(fieldSystem) && PlayerAvatar_GetState(fieldSystem->playerAvatar) != PLAYER_STATE_CYCLING) {
             LocalMapObject *followMon = FollowMon_GetMapObject(fieldSystem);
             LocalMapObject *playerObj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
-            sub_0205FBC0(followMon, &takePhoto->followMonPositionVecBak, takePhoto->followMonFacingDirectionBak);
+            LocalMapObject_SetPositionFromVectorAndDirection(followMon, &takePhoto->followMonPositionVecBak, takePhoto->followMonFacingDirectionBak);
 
             int playerX = MapObject_GetCurrentX(playerObj);
-            int playerZ = MapObject_GetCurrentY(playerObj);
+            int playerZ = MapObject_GetCurrentZ(playerObj);
             int followX = MapObject_GetCurrentX(followMon);
-            int followZ = MapObject_GetCurrentY(followMon);
+            int followZ = MapObject_GetCurrentZ(followMon);
 
             if (playerX == followX && playerZ == followZ) {
                 sub_02069DC8(followMon, TRUE);
