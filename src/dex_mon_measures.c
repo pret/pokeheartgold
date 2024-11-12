@@ -38,7 +38,7 @@ void PokedexData_LoadAll(struct PokedexData *zkn, int mode, HeapID heapId) {
     GF_ASSERT(zkn->height == NULL);
     GF_ASSERT(zkn->weight == NULL);
 
-    narc        = NARC_New(GetPokedexDataNarcID(), heapId);
+    narc = NARC_New(GetPokedexDataNarcID(), heapId);
     zkn->height = ZknNarc_LoadHeight(narc, heapId);
     zkn->weight = ZknNarc_LoadWeight(narc, heapId);
 
@@ -112,11 +112,11 @@ static void sub_020914E8(NARC *narc, u32 **a1, u32 **a2, HeapID heapId) {
 
 void SetDexBanksByGiratinaForm(int form) {
     if (form == 0) {
-        sDataNarcId    = NARC_application_zukanlist_zukan_data_zukan_data_gira;
+        sDataNarcId = NARC_application_zukanlist_zukan_data_zukan_data_gira;
         sWeightMsgBank = NARC_msg_msg_0813_bin;
         sHeightMsgBank = NARC_msg_msg_0815_bin;
     } else {
-        sDataNarcId    = NARC_application_zukanlist_zukan_data_zukan_data;
+        sDataNarcId = NARC_application_zukanlist_zukan_data_zukan_data;
         sWeightMsgBank = NARC_msg_msg_0812_bin;
         sHeightMsgBank = NARC_msg_msg_0814_bin;
     }

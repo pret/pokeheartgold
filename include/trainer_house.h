@@ -5,7 +5,7 @@
 
 typedef struct THOUSE_MON {
     u16 species : 11; // 0
-    u16 form    : 5;
+    u16 form : 5;
     u16 item;                          // 2
     u16 moves[4];                      // 4
     u32 otId;                          // C

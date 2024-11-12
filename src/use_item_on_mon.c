@@ -98,9 +98,9 @@ BOOL CanUseItemOnPokemon(Pokemon *mon, u16 itemID, s32 moveIdx, HeapID heapID) {
         }
     }
 
-    hpEv    = GetMonData(mon, MON_DATA_HP_EV, NULL);
-    atkEv   = GetMonData(mon, MON_DATA_ATK_EV, NULL);
-    defEv   = GetMonData(mon, MON_DATA_DEF_EV, NULL);
+    hpEv = GetMonData(mon, MON_DATA_HP_EV, NULL);
+    atkEv = GetMonData(mon, MON_DATA_ATK_EV, NULL);
+    defEv = GetMonData(mon, MON_DATA_DEF_EV, NULL);
     speedEv = GetMonData(mon, MON_DATA_SPEED_EV, NULL);
     spAtkEv = GetMonData(mon, MON_DATA_SPATK_EV, NULL);
     spDefEv = GetMonData(mon, MON_DATA_SPDEF_EV, NULL);
@@ -240,7 +240,7 @@ BOOL UseItemOnPokemon(Pokemon *mon, u16 itemID, u16 moveIdx, u16 location, HeapI
         return FALSE;
     }
 
-    hadEffect   = FALSE;
+    hadEffect = FALSE;
     effectFound = FALSE;
 
     sp58 = sp54 = GetMonData(mon, MON_DATA_STATUS, NULL);
@@ -483,7 +483,7 @@ BOOL MonMoveCanRestorePP(Pokemon *mon, int moveIdx) {
         return FALSE;
     }
 
-    u8 pp   = GetMonData(mon, MON_DATA_MOVE1PP + moveIdx, NULL);
+    u8 pp = GetMonData(mon, MON_DATA_MOVE1PP + moveIdx, NULL);
     u8 ppUp = GetMonData(mon, MON_DATA_MOVE1PPUP + moveIdx, NULL);
     return (u8)(pp < GetMoveMaxPP(moveID, ppUp));
 }
@@ -494,10 +494,10 @@ BOOL MonMoveRestorePP(Pokemon *mon, int moveIdx, int ppRestore) {
         return FALSE;
     }
 
-    int ppAttr   = MON_DATA_MOVE1PP + moveIdx;
-    u8 pp        = GetMonData(mon, ppAttr, NULL);
+    int ppAttr = MON_DATA_MOVE1PP + moveIdx;
+    u8 pp = GetMonData(mon, ppAttr, NULL);
     int ppUpAttr = MON_DATA_MOVE1PPUP + moveIdx;
-    u8 maxPp     = GetMoveMaxPP(move_id, GetMonData(mon, ppUpAttr, NULL));
+    u8 maxPp = GetMoveMaxPP(move_id, GetMonData(mon, ppUpAttr, NULL));
     if (pp < maxPp) {
         if (ppRestore == PP_RESTORE_ALL) {
             pp = maxPp;
@@ -518,7 +518,7 @@ BOOL BoostMonMovePpUpBy(Pokemon *mon, int moveIdx, int nPpUp) {
     u8 pp;
 
     int ppUpAttr = MON_DATA_MOVE1PPUP + moveIdx;
-    u8 ppUp      = GetMonData(mon, ppUpAttr, NULL);
+    u8 ppUp = GetMonData(mon, ppUpAttr, NULL);
     if (ppUp == 3) {
         return FALSE;
     }
@@ -529,8 +529,8 @@ BOOL BoostMonMovePpUpBy(Pokemon *mon, int moveIdx, int nPpUp) {
     }
 
     int ppAttr = MON_DATA_MOVE1PP + moveIdx;
-    pp         = GetMonData(mon, ppAttr, NULL);
-    u8 maxPp   = GetMoveMaxPP(move, ppUp);
+    pp = GetMonData(mon, ppAttr, NULL);
+    u8 maxPp = GetMoveMaxPP(move, ppUp);
     if ((u32)(ppUp + nPpUp) > 3) {
         ppUp = 3;
     } else {
@@ -538,7 +538,7 @@ BOOL BoostMonMovePpUpBy(Pokemon *mon, int moveIdx, int nPpUp) {
     }
 
     u8 newMaxPp = GetMoveMaxPP(move, ppUp);
-    pp          = pp + newMaxPp - maxPp;
+    pp = pp + newMaxPp - maxPp;
     SetMonData(mon, ppUpAttr, &ppUp);
     SetMonData(mon, ppAttr, &pp);
 

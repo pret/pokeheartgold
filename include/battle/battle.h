@@ -56,34 +56,34 @@ typedef struct FieldConditionData {
 } FieldConditionData;
 
 typedef struct SideConditionData {
-    u32 reflectBattler           : 2;
-    u32 reflectTurns             : 3;
-    u32 lightScreenBattler       : 2;
-    u32 lightScreenTurns         : 3;
-    u32 mistBattler              : 2;
-    u32 mistTurns                : 3;
-    u32 safeguardBattler         : 2;
-    u32 safeguardTurns           : 3;
-    u32 followMeFlag             : 1;
-    u32 battlerIdFollowMe        : 2;
+    u32 reflectBattler : 2;
+    u32 reflectTurns : 3;
+    u32 lightScreenBattler : 2;
+    u32 lightScreenTurns : 3;
+    u32 mistBattler : 2;
+    u32 mistTurns : 3;
+    u32 safeguardBattler : 2;
+    u32 safeguardTurns : 3;
+    u32 followMeFlag : 1;
+    u32 battlerIdFollowMe : 2;
     u32 battlerBitKnockedOffItem : 6;
-    u32 unk0_1D                  : 3;
-    u32 spikesLayers             : 2;
-    u32 toxicSpikesLayers        : 2;
-    u32 unk4_4                   : 28;
+    u32 unk0_1D : 3;
+    u32 spikesLayers : 2;
+    u32 toxicSpikesLayers : 2;
+    u32 unk4_4 : 28;
 } SideConditionData;
 
 typedef struct TurnData {
-    u32 struggleFlag    : 1;
-    u32 unk0_1          : 1;
-    u32 protectFlag     : 1;
+    u32 struggleFlag : 1;
+    u32 unk0_1 : 1;
+    u32 protectFlag : 1;
     u32 helpingHandFlag : 1;
-    u32 magicCoatFlag   : 1;
-    u32 snatchFlag      : 1;
-    u32 roostFlag       : 1;
-    u32 runFlag         : 2; // 1 - Fled using item, 2 - Fled using ability
-    u32 endureFlag      : 1;
-    u32 unk0_A          : 22;
+    u32 magicCoatFlag : 1;
+    u32 snatchFlag : 1;
+    u32 roostFlag : 1;
+    u32 runFlag : 2; // 1 - Fled using item, 2 - Fled using ability
+    u32 endureFlag : 1;
+    u32 unk0_A : 22;
     int physicalDamage[4];
     int battlerIdPhysicalDamage;
     int battlerBitPhysicalDamage;
@@ -96,14 +96,14 @@ typedef struct TurnData {
 } TurnData;
 
 typedef struct SelfTurnData {
-    u32 ignorePressure   : 1;
+    u32 ignorePressure : 1;
     u32 lightningRodFlag : 1;
-    u32 stormDrainFlag   : 1;
-    u32 moldBreakerFlag  : 1;
-    u32 trickRoomFlag    : 1;
-    u32 endureItemFlag   : 1;
-    u32 rolloutCount     : 3;
-    u32 unk0_9           : 23;
+    u32 stormDrainFlag : 1;
+    u32 moldBreakerFlag : 1;
+    u32 trickRoomFlag : 1;
+    u32 endureItemFlag : 1;
+    u32 rolloutCount : 3;
+    u32 unk0_9 : 23;
     int physicalDamage;
     int battlerIdPhysicalAttacker;
     int specialDamage;
@@ -145,49 +145,49 @@ typedef struct TrainerAIData {
 } TrainerAIData;
 
 typedef struct MoveFailFlags {
-    u32 paralysis   : 1;
-    u32 noEffect    : 1;
-    u32 imprison    : 1;
+    u32 paralysis : 1;
+    u32 noEffect : 1;
+    u32 imprison : 1;
     u32 infatuation : 1;
-    u32 disabled    : 1;
-    u32 unk0_5      : 1;
-    u32 flinch      : 1;
-    u32 confusion   : 1;
-    u32 gravity     : 1;
-    u32 healBlock   : 1;
-    u32 unused      : 21;
+    u32 disabled : 1;
+    u32 unk0_5 : 1;
+    u32 flinch : 1;
+    u32 confusion : 1;
+    u32 gravity : 1;
+    u32 healBlock : 1;
+    u32 unused : 21;
 } MoveFailFlags;
 
 typedef struct UnkBattlemonSub {
-    u32 disabledTurns       : 3;
-    u32 encoredTurns        : 3;
-    u32 isCharged           : 2;
-    u32 tauntTurns          : 3;
+    u32 disabledTurns : 3;
+    u32 encoredTurns : 3;
+    u32 isCharged : 2;
+    u32 tauntTurns : 3;
     u32 protectSuccessTurns : 2;
-    u32 perishSongTurns     : 2;
-    u32 rolloutCount        : 3;
-    u32 furyCutterCount     : 3;
-    u32 stockpileCount      : 3;
-    u32 stockpileDefCount   : 3;
+    u32 perishSongTurns : 2;
+    u32 rolloutCount : 3;
+    u32 furyCutterCount : 3;
+    u32 stockpileCount : 3;
+    u32 stockpileDefCount : 3;
     u32 stockpileSpDefCount : 3;
-    u32 truantFlag          : 1;
-    u32 flashFire           : 1;
-    u32 battlerIdLockOn     : 2;
-    u32 mimicedMoveIndex    : 4;
-    u32 battlerIdBinding    : 2;
-    u32 battlerIdMeanLook   : 2;
-    u32 lastResortCount     : 3;
-    u32 magnetRiseTurns     : 3;
-    u32 healBlockTurns      : 3;
-    u32 embargoFlag         : 3;
-    u32 knockOffFlag        : 1; // unclear whether true mean knocked off or not knocked
-                                 // off based on current information on its usage
-    u32 metronomeTurns  : 4;     // refers to the item, not the move
-    u32 micleBerryFlag  : 1;
+    u32 truantFlag : 1;
+    u32 flashFire : 1;
+    u32 battlerIdLockOn : 2;
+    u32 mimicedMoveIndex : 4;
+    u32 battlerIdBinding : 2;
+    u32 battlerIdMeanLook : 2;
+    u32 lastResortCount : 3;
+    u32 magnetRiseTurns : 3;
+    u32 healBlockTurns : 3;
+    u32 embargoFlag : 3;
+    u32 knockOffFlag : 1;   // unclear whether true mean knocked off or not knocked
+                            // off based on current information on its usage
+    u32 metronomeTurns : 4; // refers to the item, not the move
+    u32 micleBerryFlag : 1;
     u32 custapBerryFlag : 1;
-    u32 quickClawFlag   : 1;
-    u32 meFirstFlag     : 1;
-    u32 unk4_2F         : 1; // unused
+    u32 quickClawFlag : 1;
+    u32 meFirstFlag : 1;
+    u32 unk4_2F : 1; // unused
     int rechargeCount;
     int fakeOutCount;
     int slowStartTurns;
@@ -212,34 +212,34 @@ typedef struct BattleMon {
     u16 spAtk;
     u16 spDef;
     u16 moves[MAX_MON_MOVES];
-    u32 hpIV        : 5;
-    u32 atkIV       : 5;
-    u32 defIV       : 5;
-    u32 speedIV     : 5;
-    u32 spAtkIV     : 5;
-    u32 spDefIV     : 5;
-    u32 isEgg       : 1;
+    u32 hpIV : 5;
+    u32 atkIV : 5;
+    u32 defIV : 5;
+    u32 speedIV : 5;
+    u32 spAtkIV : 5;
+    u32 spDefIV : 5;
+    u32 isEgg : 1;
     u32 hasNickname : 1;
     s8 statChanges[NUM_BATTLE_STATS];
     int weight;
     u8 type1;
     u8 type2;
-    u8 form    : 5;
-    u8 shiny   : 1;
+    u8 form : 5;
+    u8 shiny : 1;
     u8 unk26_6 : 2;
     u8 ability;
-    u32 sendOutFlag      : 1;
-    u32 intimidateFlag   : 1;
-    u32 traceFlag        : 1;
-    u32 downloadFlag     : 1;
+    u32 sendOutFlag : 1;
+    u32 intimidateFlag : 1;
+    u32 traceFlag : 1;
+    u32 downloadFlag : 1;
     u32 anticipationFlag : 1;
-    u32 forewarnFlag     : 1;
-    u32 slowStartFlag    : 1;
-    u32 slowStartEnded   : 1;
-    u32 friskFlag        : 1;
-    u32 moldBreakerFlag  : 1;
-    u32 pressureFlag     : 1;
-    u32 unk28_B          : 21;
+    u32 forewarnFlag : 1;
+    u32 slowStartFlag : 1;
+    u32 slowStartEnded : 1;
+    u32 friskFlag : 1;
+    u32 moldBreakerFlag : 1;
+    u32 pressureFlag : 1;
+    u32 unk28_B : 21;
     u8 movePPCur[MAX_MON_MOVES];
     u8 movePP[MAX_MON_MOVES];
     u8 level;
@@ -257,7 +257,7 @@ typedef struct BattleMon {
     u16 unk76;
     u8 unk78;
     u8 msgFlag;
-    u8 gender    : 4;
+    u8 gender : 4;
     u8 metGender : 4;
     u8 ball;
     u32 moveEffectFlags;
@@ -433,7 +433,7 @@ typedef struct BattleContext {
     u8 unk_314C[4];
     int battlersOnField;
     u32 battleContinueFlag : 1;
-    u32 unused             : 31;
+    u32 unused : 31;
 } BattleContext;
 
 typedef struct BattleSystem BattleSystem;
@@ -583,10 +583,10 @@ struct BattleSystem {
     u8 unk23FC;
     u8 unk23FD;
     u8 unk23FE;
-    u8 unk240F_0            : 1;
-    u8 unk240F_1            : 1;
-    u8 unk240E_F            : 1;
-    u8 criticalHpMusic      : 2;
+    u8 unk240F_0 : 1;
+    u8 unk240F_1 : 1;
+    u8 unk240E_F : 1;
+    u8 criticalHpMusic : 2;
     u8 criticalHpMusicDelay : 3;
     Terrain terrain;
     int unk2404;
@@ -617,10 +617,10 @@ struct BattleSystem {
     u16 unk245C[4];
     int unk2464[4];
     u32 isRecordingPaused : 1;
-    u32 unk2474_1         : 1;
-    u32 unk2474_2         : 1;
-    u32 unk2474_3         : 1;
-    u32 unk2474_4         : 28;
+    u32 unk2474_1 : 1;
+    u32 unk2474_2 : 1;
+    u32 unk2474_3 : 1;
+    u32 unk2474_4 : 28;
     u32 unk2478;
     SysTask *unk247C;
     u8 chatotVoiceParam[4];
@@ -657,8 +657,8 @@ typedef struct {
 // double battle
 typedef struct TargetPokemon {
     u8 selectedMon;
-    u8 gender    : 2;
-    u8 hide      : 1;
+    u8 gender : 2;
+    u8 hide : 1;
     u8 unused1_3 : 5;
     u8 status;
     u8 unused3;

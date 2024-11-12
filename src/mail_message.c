@@ -38,7 +38,7 @@ void MailMsg_Init(MailMessage *mailMessage) {
 void MailMsg_Init_WithBank(MailMessage *mailMessage, u16 msgBank) {
     int i;
     mailMessage->msg_bank = msgBank;
-    mailMessage->msg_no   = 0;
+    mailMessage->msg_no = 0;
     for (i = 0; i < MAILMSG_FIELDS_MAX; i++) {
         mailMessage->fields[i] = EC_WORD_NULL;
     }
@@ -76,7 +76,7 @@ String *MailMsg_GetExpandedString(const MailMessage *mailMessage, HeapID heapId)
     }
 
     msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, sMessageBanks[mailMessage->msg_bank], heapId);
-    string  = ReadMsgData_ExpandPlaceholders(msgFmt, msgData, mailMessage->msg_no, heapId);
+    string = ReadMsgData_ExpandPlaceholders(msgFmt, msgData, mailMessage->msg_no, heapId);
     DestroyMsgData(msgData);
     MessageFormat_Delete(msgFmt);
     return string;
@@ -110,9 +110,9 @@ u32 MailMsg_NumFields(u16 msg_bank, u16 msg_no) {
 
     GF_ASSERT(msg_bank < NELEMS(sMessageBanks));
     GF_ASSERT(msg_no < MailMsg_NumMsgsInBank(msg_bank));
-    msg      = ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, sMessageBanks[msg_bank], msg_no, HEAP_ID_DEFAULT);
+    msg = ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, sMessageBanks[msg_bank], msg_no, HEAP_ID_DEFAULT);
     msg_cstr = String_cstr(msg);
-    ret      = 0;
+    ret = 0;
     while (*msg_cstr != EOS) {
         if (*msg_cstr == EXT_CTRL_CODE_BEGIN) {
             if (MsgArray_ControlCodeIsStrVar(msg_cstr)) {
@@ -164,7 +164,7 @@ u32 MailMsg_NumMsgsInBank(u16 msg_bank) {
 void MailMsg_SetMsgBankAndNum(MailMessage *mailMessage, u16 msg_bank, u16 msg_no) {
     GF_ASSERT(msg_bank < NELEMS(sMessageBanks));
     mailMessage->msg_bank = msg_bank;
-    mailMessage->msg_no   = msg_no;
+    mailMessage->msg_no = msg_no;
 }
 
 void MailMsg_SetFieldI(MailMessage *mailMessage, u16 field_no, u16 ec_word) {

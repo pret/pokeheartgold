@@ -14,7 +14,7 @@ void Save_BerryPots_Init(BerryPot *berryPots) {
     MI_CpuClear8(berryPots, MAX_BERRY_POT * sizeof(BerryPot));
     for (i = 0; i < MAX_BERRY_POT; i++) {
         berryPots[i].growthStage = BERRY_POT_GROWTH_STAGE_NONE;
-        berryPots[i].berryId     = 0;
+        berryPots[i].berryId = 0;
     }
 }
 
@@ -37,7 +37,7 @@ void Save_Misc_Init(SAVE_MISC_DATA *saveMiscData) {
     MI_CpuFill16(saveMiscData->rivalName, EOS, PLAYER_NAME_LENGTH + 1);
     MI_CpuFill8(saveMiscData->unk_0280, 0xFF, 8);
     MailMsg_Init_WithBank(&saveMiscData->battleGreetingEC, MAILMSG_BANK_0295_GMM);
-    saveMiscData->battleGreetingEC.msg_no    = msg_0295_00000;
+    saveMiscData->battleGreetingEC.msg_no = msg_0295_00000;
     saveMiscData->battleGreetingEC.fields[0] = GetECWordIndexByPair(NARC_msg_msg_0287_bin, msg_0287_regards);
     saveMiscData->battleGreetingEC.fields[1] = EC_WORD_NULL;
     for (i = 0; i < 5; i++) {
@@ -96,14 +96,14 @@ BOOL SaveMisc_CheckExtraChunksExist(SAVE_MISC_DATA *saveMiscData) {
 
 void SaveMisc_SetFavoriteMon(SAVE_MISC_DATA *saveMiscData, int species, int form, int isEgg) {
     saveMiscData->favoriteMonSpecies = species;
-    saveMiscData->favoriteMonForm    = form;
-    saveMiscData->favoriteMonIsEgg   = isEgg;
+    saveMiscData->favoriteMonForm = form;
+    saveMiscData->favoriteMonIsEgg = isEgg;
 }
 
 void SaveMisc_GetFavoriteMon(SAVE_MISC_DATA *saveMiscData, int *species, int *form, int *isEgg) {
     *species = saveMiscData->favoriteMonSpecies;
-    *form    = saveMiscData->favoriteMonForm;
-    *isEgg   = saveMiscData->favoriteMonIsEgg;
+    *form = saveMiscData->favoriteMonForm;
+    *isEgg = saveMiscData->favoriteMonIsEgg;
 }
 
 static const u8 _020F677C[3][2] = {
@@ -179,12 +179,12 @@ void sub_0202AB18(SAVE_MISC_DATA *saveMiscData, u8 a1, u8 a2, u8 a3) {
 
 void SaveMisc_SetTogepiPersonalityGender(SAVE_MISC_DATA *saveMiscData, int personality, u8 gender) {
     saveMiscData->togepiEggPersonality = personality;
-    saveMiscData->togepiEggGender      = gender;
+    saveMiscData->togepiEggGender = gender;
 }
 
 void SaveMisc_GetTogepiPersonalityGender(SAVE_MISC_DATA *saveMiscData, int *personality, u8 *gender) {
     *personality = saveMiscData->togepiEggPersonality;
-    *gender      = saveMiscData->togepiEggGender;
+    *gender = saveMiscData->togepiEggGender;
 }
 
 void SaveMisc_GetBattleGreeting(SAVE_MISC_DATA *saveMiscData, MailMessage *mailMessage) {
@@ -212,5 +212,5 @@ void sub_0202AC38(SAVE_MISC_DATA *saveMiscData, int a1, u32 *a2, u32 *a3, u8 *a4
 void sub_0202AC60(SAVE_MISC_DATA *saveMiscData, int a1, u32 a2, u32 a3, u8 a4) {
     saveMiscData->unk_02A8[0][a1 - 1] = a2;
     saveMiscData->unk_02A8[1][a1 - 1] = a3;
-    saveMiscData->unk_02D0[a1 - 1]    = a4;
+    saveMiscData->unk_02D0[a1 - 1] = a4;
 }

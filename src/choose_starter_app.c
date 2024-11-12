@@ -32,51 +32,51 @@
 #include "unk_02026E30.h"
 
 enum ChooseStarterInput {
-    CHOOSE_STARTER_INPUT_NONE                   = 0,
-    CHOOSE_STARTER_INPUT_CYCLE_CLOCKWISE        = 1,
+    CHOOSE_STARTER_INPUT_NONE = 0,
+    CHOOSE_STARTER_INPUT_CYCLE_CLOCKWISE = 1,
     CHOOSE_STARTER_INPUT_CYCLE_COUNTERCLOCKWISE = 2,
-    CHOOSE_STARTER_INPUT_CONTINUE_LEFT          = 3,
-    CHOOSE_STARTER_INPUT_CONTINUE_RIGHT         = 4,
-    CHOOSE_STARTER_INPUT_SELECT_BALL_INIT       = 5,
-    CHOOSE_STARTER_INPUT_CHOSE_STARTER          = 6,
-    CHOOSE_STARTER_INPUT_CONFIRM_CHOICE         = 7,
-    CHOOSE_STARTER_INPUT_BACKED_OUT             = 8,
+    CHOOSE_STARTER_INPUT_CONTINUE_LEFT = 3,
+    CHOOSE_STARTER_INPUT_CONTINUE_RIGHT = 4,
+    CHOOSE_STARTER_INPUT_SELECT_BALL_INIT = 5,
+    CHOOSE_STARTER_INPUT_CHOSE_STARTER = 6,
+    CHOOSE_STARTER_INPUT_CONFIRM_CHOICE = 7,
+    CHOOSE_STARTER_INPUT_BACKED_OUT = 8,
 };
 
 enum ChooseStarterAppState {
-    CHOOSE_STARTER_STATE_INIT              = 0,
-    CHOOSE_STARTER_STATE_WAIT_FADE_IN      = 1,
-    CHOOSE_STARTER_STATE_START_INIT_MSG    = 2,
-    CHOOSE_STARTER_STATE_CONFIRM_MSG       = 3,
-    CHOOSE_STARTER_STATE_WAIT_INIT_MSG     = 4,
-    CHOOSE_STARTER_STATE_HANDLE_INPUT      = 5,
-    CHOOSE_STARTER_STATE_ROTATE_MACHINE    = 6,
-    CHOOSE_STARTER_STATE_ZOOM_IN           = 7,
-    CHOOSE_STARTER_STATE_WAIT_ZOOM_IN      = 8,
-    CHOOSE_STARTER_STATE_BACK_OUT          = 9,
+    CHOOSE_STARTER_STATE_INIT = 0,
+    CHOOSE_STARTER_STATE_WAIT_FADE_IN = 1,
+    CHOOSE_STARTER_STATE_START_INIT_MSG = 2,
+    CHOOSE_STARTER_STATE_CONFIRM_MSG = 3,
+    CHOOSE_STARTER_STATE_WAIT_INIT_MSG = 4,
+    CHOOSE_STARTER_STATE_HANDLE_INPUT = 5,
+    CHOOSE_STARTER_STATE_ROTATE_MACHINE = 6,
+    CHOOSE_STARTER_STATE_ZOOM_IN = 7,
+    CHOOSE_STARTER_STATE_WAIT_ZOOM_IN = 8,
+    CHOOSE_STARTER_STATE_BACK_OUT = 9,
     CHOOSE_STARTER_STATE_ZOOM_AND_FADE_OUT = 10,
-    CHOOSE_STARTER_STATE_WAIT_FADE_OUT     = 11,
-    CHOOSE_STARTER_STATE_WAIT_AND_EXIT     = 12,
+    CHOOSE_STARTER_STATE_WAIT_FADE_OUT = 11,
+    CHOOSE_STARTER_STATE_WAIT_AND_EXIT = 12,
 };
 
 #define WOBBLE_STATE_NORMAL 0
 #define WOBBLE_STATE_PAUSE  2
 
 enum ChooseStarter3dResNum {
-    CS_3DRES_BALL_EF   = 0,
-    CS_3DRES_TABLETOP  = 1,
+    CS_3DRES_BALL_EF = 0,
+    CS_3DRES_TABLETOP = 1,
     CS_3DRES_TURNTABLE = 2,
-    CS_3DRES_BALLS     = 3,
+    CS_3DRES_BALLS = 3,
     CS_3DRES_MAX
 };
 
 enum ChooseStarterModel {
     CS_MODEL_TT_BALL_EF = 0,
-    CS_MODEL_TABLETOP   = 1,
-    CS_MODEL_TURNTABLE  = 2,
-    CS_MODEL_BALL1      = 3,
-    CS_MODEL_BALL2      = 4,
-    CS_MODEL_BALL3      = 5,
+    CS_MODEL_TABLETOP = 1,
+    CS_MODEL_TURNTABLE = 2,
+    CS_MODEL_BALL1 = 3,
+    CS_MODEL_BALL2 = 4,
+    CS_MODEL_BALL3 = 5,
     CS_MODEL_MAX
 };
 
@@ -84,9 +84,9 @@ enum ChooseStarterAnim {
     CS_ANIM_BALL1_ROCK = 0,
     CS_ANIM_BALL2_ROCK = 1,
     CS_ANIM_BALL3_ROCK = 2,
-    CS_ANIM_BALL_OPEN  = 3,
+    CS_ANIM_BALL_OPEN = 3,
     CS_ANIM_TT_BALL_EF = 4,
-    CS_ANIM_TURNTABLE  = 5, // material anim
+    CS_ANIM_TURNTABLE = 5, // material anim
     CS_ANIM_MAX
 };
 
@@ -258,7 +258,7 @@ BOOL ChooseStarter_Init(OVY_MANAGER *ovy, int *state_p) {
     MI_CpuClear8(work, sizeof(struct ChooseStarterAppWork));
     work->heapId = HEAP_ID_CHOOSE_STARTER;
     GF_ExpHeap_FndInitAllocator(&work->allocator, HEAP_ID_CHOOSE_STARTER, 0x20);
-    args        = OverlayManager_GetArgs(ovy);
+    args = OverlayManager_GetArgs(ovy);
     work->frame = Options_GetFrame(args->options);
     for (i = 0; i < 3; i++) {
         work->choices[i] = &args->starters[i];
@@ -274,9 +274,9 @@ BOOL ChooseStarter_Init(OVY_MANAGER *ovy, int *state_p) {
     {
         struct GraphicsModes bgModeSet;
 
-        bgModeSet.dispMode  = GX_DISPMODE_GRAPHICS;
-        bgModeSet.bgMode    = GX_BGMODE_0;
-        bgModeSet.subMode   = GX_BGMODE_1;
+        bgModeSet.dispMode = GX_DISPMODE_GRAPHICS;
+        bgModeSet.bgMode = GX_BGMODE_0;
+        bgModeSet.subMode = GX_BGMODE_1;
         bgModeSet._2d3dMode = GX_BG0_AS_3D;
 
         SetBothScreensModesAndDisable(&bgModeSet);
@@ -293,7 +293,7 @@ BOOL ChooseStarter_Init(OVY_MANAGER *ovy, int *state_p) {
     loadBgGraphics(work->bgConfig, work->heapId);
     createObjResMans(work);
     initObjRenderers(work);
-    work->camera            = Camera_New(work->heapId);
+    work->camera = Camera_New(work->heapId);
     work->cameraTranslation = CreateCameraTranslationWrapper(work->heapId, work->camera);
     initCameraPosition(work);
     initBallModelPositions(work);
@@ -312,7 +312,7 @@ static const int sSpecies[] = {
 
 BOOL ChooseStarter_Main(OVY_MANAGER *ovy, int *state) {
     struct ChooseStarterAppWork *work = OverlayManager_GetData(ovy);
-    int cameraPathSel                 = CAMERA_PATH_NULL;
+    int cameraPathSel = CAMERA_PATH_NULL;
     int input;
     switch (*state) {
     case CHOOSE_STARTER_STATE_INIT:
@@ -350,7 +350,7 @@ BOOL ChooseStarter_Main(OVY_MANAGER *ovy, int *state) {
         }
         String_Delete(work->strbuf);
         work->strbuf = NULL;
-        *state       = CHOOSE_STARTER_STATE_HANDLE_INPUT;
+        *state = CHOOSE_STARTER_STATE_HANDLE_INPUT;
         break;
     case CHOOSE_STARTER_STATE_HANDLE_INPUT:
         if (!IsCameraTranslationFinished(work->cameraTranslation)) {
@@ -383,13 +383,13 @@ BOOL ChooseStarter_Main(OVY_MANAGER *ovy, int *state) {
         case CHOOSE_STARTER_INPUT_CYCLE_CLOCKWISE:
         case CHOOSE_STARTER_INPUT_CONTINUE_LEFT:
             work->rotationSpeed = FX16_CONST(-0.5);
-            *state              = CHOOSE_STARTER_STATE_ROTATE_MACHINE;
+            *state = CHOOSE_STARTER_STATE_ROTATE_MACHINE;
             PlaySE_SetPitch(0x607, -0x200);
             break;
         case CHOOSE_STARTER_INPUT_CYCLE_COUNTERCLOCKWISE:
         case CHOOSE_STARTER_INPUT_CONTINUE_RIGHT:
             work->rotationSpeed = FX16_CONST(0.5);
-            *state              = CHOOSE_STARTER_STATE_ROTATE_MACHINE;
+            *state = CHOOSE_STARTER_STATE_ROTATE_MACHINE;
             PlaySE_SetPitch(0x607, -0x200);
             break;
         case CHOOSE_STARTER_INPUT_CONFIRM_CHOICE:
@@ -402,7 +402,7 @@ BOOL ChooseStarter_Main(OVY_MANAGER *ovy, int *state) {
             addAnmObjToRenderObj(&work->_3dObjRender[work->curSelection + 3], &work->_3dObjAnm[CS_ANIM_BALL_OPEN]);
             addAnmObjToRenderObj(&work->_3dObjRender[CS_MODEL_TT_BALL_EF], &work->_3dObjAnm[CS_ANIM_TT_BALL_EF]);
             work->_3dObjRender[CS_MODEL_TT_BALL_EF].active = TRUE;
-            *state                                         = CHOOSE_STARTER_STATE_ZOOM_AND_FADE_OUT;
+            *state = CHOOSE_STARTER_STATE_ZOOM_AND_FADE_OUT;
             break;
         case CHOOSE_STARTER_INPUT_BACKED_OUT:
             if (work->state == SELECT_STATE_CONFIRM) {
@@ -412,7 +412,7 @@ BOOL ChooseStarter_Main(OVY_MANAGER *ovy, int *state) {
                 GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
                 setAllMonSpritesInvisible(&work->monSpriteData);
                 work->state = SELECT_STATE_NULL;
-                *state      = CHOOSE_STARTER_STATE_BACK_OUT;
+                *state = CHOOSE_STARTER_STATE_BACK_OUT;
             }
             break;
         }
@@ -434,7 +434,7 @@ BOOL ChooseStarter_Main(OVY_MANAGER *ovy, int *state) {
         }
         setAllButSelectedMonSpritesInvisible(work);
         work->state = SELECT_STATE_INSPECT;
-        *state      = CHOOSE_STARTER_STATE_HANDLE_INPUT;
+        *state = CHOOSE_STARTER_STATE_HANDLE_INPUT;
         break;
     case CHOOSE_STARTER_STATE_ZOOM_IN:
         if (!yRotateSelectedBall(work, BALL_Y_ANGLE_OUT, BALL_Y_ANGLE_IN)) {
@@ -450,7 +450,7 @@ BOOL ChooseStarter_Main(OVY_MANAGER *ovy, int *state) {
             break;
         }
         work->state = SELECT_STATE_CONFIRM;
-        *state      = CHOOSE_STARTER_STATE_CONFIRM_MSG;
+        *state = CHOOSE_STARTER_STATE_CONFIRM_MSG;
         break;
     case CHOOSE_STARTER_STATE_BACK_OUT:
         if (!yRotateSelectedBall(work, BALL_Y_ANGLE_IN, BALL_Y_ANGLE_OUT)) {
@@ -465,10 +465,10 @@ BOOL ChooseStarter_Main(OVY_MANAGER *ovy, int *state) {
         {
             struct CameraTranslationPathTemplate template;
 
-            template.angleX           = CAM_ANGLE_X_OUT;
+            template.angleX = CAM_ANGLE_X_OUT;
             template.perspectiveAngle = CAM_PERSP_OUT;
-            template.position         = CAM_POSITION_OUT;
-            template.distance         = CAM_DISTANCE_OUT;
+            template.position = CAM_POSITION_OUT;
+            template.distance = CAM_DISTANCE_OUT;
 
             SetCameraTranslationPath(work->cameraTranslation, &template, 8);
         }
@@ -494,17 +494,17 @@ BOOL ChooseStarter_Main(OVY_MANAGER *ovy, int *state) {
 
         if (cameraPathSel != CAMERA_PATH_NULL) {
             if (cameraPathSel == CAMERA_PATH_OUT) {
-                template.angleX           = CAM_ANGLE_X_OUT;
+                template.angleX = CAM_ANGLE_X_OUT;
                 template.perspectiveAngle = CAM_PERSP_OUT;
-                template.position         = CAM_POSITION_OUT;
-                template.distance         = CAM_DISTANCE_OUT;
-                work->ballWobbleState     = BALL_ROCK_AMPLITUDE_BOTH;
+                template.position = CAM_POSITION_OUT;
+                template.distance = CAM_DISTANCE_OUT;
+                work->ballWobbleState = BALL_ROCK_AMPLITUDE_BOTH;
             } else {
-                template.angleX           = CAM_ANGLE_X_IN;
+                template.angleX = CAM_ANGLE_X_IN;
                 template.perspectiveAngle = CAM_PERSP_IN;
-                template.position         = CAM_POSITION_IN;
-                template.distance         = CAM_DISTANCE_IN;
-                work->ballWobbleState     = BALL_ROCK_AMPLITUDE_SMALL;
+                template.position = CAM_POSITION_IN;
+                template.distance = CAM_DISTANCE_IN;
+                work->ballWobbleState = BALL_ROCK_AMPLITUDE_SMALL;
             }
             SetCameraTranslationPath(work->cameraTranslation, &template, 8);
         }
@@ -537,7 +537,7 @@ BOOL ChooseStarter_Main(OVY_MANAGER *ovy, int *state) {
 
 BOOL ChooseStarter_Exit(OVY_MANAGER *ovy, int *state) {
     struct ChooseStarterAppWork *work = OverlayManager_GetData(ovy);
-    struct ChooseStarterArgs *args    = OverlayManager_GetArgs(ovy);
+    struct ChooseStarterArgs *args = OverlayManager_GetArgs(ovy);
 
     TextFlags_SetCanABSpeedUpPrint(FALSE);
     TextFlags_SetAutoScrollParam(AUTO_SCROLL_OFF);
@@ -765,11 +765,11 @@ static void initCameraPosition(struct ChooseStarterAppWork *work) {
 
 static void createObjResMans(struct ChooseStarterAppWork *work) {
     struct StarterChooseMonSpriteData *pMonSpriteData = &work->monSpriteData;
-    pMonSpriteData->spriteList                        = G2dRenderer_Init(3, &pMonSpriteData->g2dRender, work->heapId);
-    pMonSpriteData->charResMan                        = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_CHAR, work->heapId);
-    pMonSpriteData->plttResMan                        = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_PLTT, work->heapId);
-    pMonSpriteData->cellResMan                        = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_CELL, work->heapId);
-    pMonSpriteData->animResMan                        = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_ANIM, work->heapId);
+    pMonSpriteData->spriteList = G2dRenderer_Init(3, &pMonSpriteData->g2dRender, work->heapId);
+    pMonSpriteData->charResMan = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_CHAR, work->heapId);
+    pMonSpriteData->plttResMan = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_PLTT, work->heapId);
+    pMonSpriteData->cellResMan = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_CELL, work->heapId);
+    pMonSpriteData->animResMan = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_ANIM, work->heapId);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
@@ -793,11 +793,11 @@ static void initObjRenderers(struct ChooseStarterAppWork *work) {
         init3dModelRender(&work->_3dObjRender[i + CS_MODEL_BALL1], &work->_3dObjRes[CS_3DRES_BALLS]);
     }
     work->_3dObjRender[CS_MODEL_TT_BALL_EF].active = FALSE;
-    work->_3dObjRender[CS_MODEL_TURNTABLE].active  = TRUE;
-    work->_3dObjRender[CS_MODEL_TABLETOP].active   = TRUE;
-    work->_3dObjRender[CS_MODEL_BALL1].active      = TRUE;
-    work->_3dObjRender[CS_MODEL_BALL2].active      = TRUE;
-    work->_3dObjRender[CS_MODEL_BALL3].active      = TRUE;
+    work->_3dObjRender[CS_MODEL_TURNTABLE].active = TRUE;
+    work->_3dObjRender[CS_MODEL_TABLETOP].active = TRUE;
+    work->_3dObjRender[CS_MODEL_BALL1].active = TRUE;
+    work->_3dObjRender[CS_MODEL_BALL2].active = TRUE;
+    work->_3dObjRender[CS_MODEL_BALL3].active = TRUE;
     loadAnmFromNarc(NARC_choose_starter_main_res_07_tt_turntable_NSBTA, work->heapId, &work->allocator, &work->_3dObjRes[CS_3DRES_TURNTABLE], &work->_3dObjAnm[CS_ANIM_TURNTABLE]);
     loadAnmFromNarc(NARC_choose_starter_main_res_06_ball_rock_NSBCA, work->heapId, &work->allocator, &work->_3dObjRes[CS_3DRES_BALLS], &work->_3dObjAnm[CS_ANIM_BALL1_ROCK]);
     loadAnmFromNarc(NARC_choose_starter_main_res_06_ball_rock_NSBCA, work->heapId, &work->allocator, &work->_3dObjRes[CS_3DRES_BALLS], &work->_3dObjAnm[CS_ANIM_BALL2_ROCK]);
@@ -829,8 +829,8 @@ static void freeAll3dResHeader(struct ChooseStarterAppWork *work) {
 static void load3dModelResourceFromNarc(struct ChooseStarter3dRes *res, int fileId, HeapID heapId) {
     res->header = GfGfxLoader_LoadFromNarc(NARC_application_choose_starter_choose_starter_main_res, fileId, FALSE, heapId, FALSE);
     res->mdlSet = NNS_G3dGetMdlSet(res->header);
-    res->mdl    = NNS_G3dGetMdlByIdx(res->mdlSet, 0);
-    res->tex    = NNS_G3dGetTex(res->header);
+    res->mdl = NNS_G3dGetMdlByIdx(res->mdlSet, 0);
+    res->tex = NNS_G3dGetTex(res->header);
     GF3dRender_AllocAndLoadTexResources(res->tex);
 }
 
@@ -842,7 +842,7 @@ static void init3dModelRender(struct ChooseStarterRnd *rnd, struct ChooseStarter
 static void loadAnmFromNarc(int fileId, HeapID heapId, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm) {
     void *pAnm;
     anm->hdr = GfGfxLoader_LoadFromNarc(NARC_application_choose_starter_choose_starter_main_res, fileId, FALSE, heapId, FALSE);
-    pAnm     = NNS_G3dGetAnmByIdx(anm->hdr, 0);
+    pAnm = NNS_G3dGetAnmByIdx(anm->hdr, 0);
     anm->obj = NNS_G3dAllocAnmObj(allocator, pAnm, res->mdl);
     NNS_G3dAnmObjInit(anm->obj, pAnm, res->mdl, res->tex);
 }
@@ -856,7 +856,7 @@ static void removeAnmObjFromRenderObj(struct ChooseStarterRnd *rnd, struct Choos
 }
 
 static BOOL advance3dAnmFrameAndCheckFinished(struct ChooseStarterAnm *anm) {
-    BOOL ret   = FALSE;
+    BOOL ret = FALSE;
     fx32 frame = anm->obj->frame + FX32_ONE;
 
     if (frame != NNS_G3dAnmObjGetNumFrame(anm->obj)) {
@@ -933,7 +933,7 @@ static void initBallModelPositions(struct ChooseStarterAppWork *work) {
     int i;
     u16 trigIdx;
     u8 ballIdx = work->curSelection;
-    int angle  = 0;
+    int angle = 0;
 
     for (i = 0; i < 3; i++) {
         trigIdx = angle / 3; // 0, 120, 240 degrees
@@ -945,7 +945,7 @@ static void initBallModelPositions(struct ChooseStarterAppWork *work) {
         rendererScaleVecSet(&work->_3dObjRender[ballIdx + 3], FX32_ONE, FX32_ONE, FX32_ONE);
         work->_3dObjRender[ballIdx + CS_MODEL_BALL1].yRotAngle = trigIdx;
         work->_3dObjRender[ballIdx + CS_MODEL_BALL1].xRotAngle = 0;
-        ballIdx                                                = (ballIdx + 1) % 3;
+        ballIdx = (ballIdx + 1) % 3;
         angle += 0x10000; // 360 degrees
     }
 }
@@ -1008,7 +1008,7 @@ static void reinitBallModelPosInDirection(struct ChooseStarterAppWork *work, int
 }
 
 static void makeAndDrawWindows(struct ChooseStarterAppWork *work) {
-    work->winTop    = AllocWindows(work->heapId, 1);
+    work->winTop = AllocWindows(work->heapId, 1);
     work->winBottom = AllocWindows(work->heapId, 1);
     AddWindowParameterized(work->bgConfig, work->winTop, 4, 2, 19, 27, 4, 2, 0x01F);
     AddWindowParameterized(work->bgConfig, work->winBottom, 1, 1, 19, 29, 4, 2, 0x01F);
@@ -1084,7 +1084,7 @@ static int getInput(struct ChooseStarterAppWork *work) {
             } else {
                 // This counts as the "nav" input.
                 work->state = SELECT_STATE_INSPECT;
-                ret         = CHOOSE_STARTER_INPUT_SELECT_BALL_INIT;
+                ret = CHOOSE_STARTER_INPUT_SELECT_BALL_INIT;
             }
         } else if (gSystem.newKeys & PAD_BUTTON_B) {
             // B button declines the selection
@@ -1129,7 +1129,7 @@ static int getInput(struct ChooseStarterAppWork *work) {
             } else {
                 if (num == work->curSelection) {
                     work->state = SELECT_STATE_INSPECT;
-                    ret         = CHOOSE_STARTER_INPUT_SELECT_BALL_INIT;
+                    ret = CHOOSE_STARTER_INPUT_SELECT_BALL_INIT;
                 } else {
                     ret = getRotateDirection(num, work->curSelection, work->ballWobbleState);
                 }
@@ -1202,8 +1202,8 @@ static void loadOneMonObj(GF_2DGfxResMan *charResMan, GF_2DGfxResMan *plttResMan
     sub_0200B00C(plttResObj);
     charProxy = sub_0200AF00(charResObj);
     plttProxy = GF_PlttResObj_GetPlttProxy(plttResObj, charProxy);
-    imageloc  = NNS_G2dGetImageLocation(charProxy, NNS_G2D_VRAM_TYPE_2DSUB);
-    plttloc   = NNS_G2dGetImagePaletteLocation(plttProxy, NNS_G2D_VRAM_TYPE_2DSUB);
+    imageloc = NNS_G2dGetImageLocation(charProxy, NNS_G2D_VRAM_TYPE_2DSUB);
+    plttloc = NNS_G2dGetImagePaletteLocation(plttProxy, NNS_G2D_VRAM_TYPE_2DSUB);
     DC_FlushRange(charData, 0xC80);
     GXS_LoadOBJ(charData, imageloc, 0xC80);
     DC_FlushRange(plttData, 0x20);
@@ -1215,20 +1215,20 @@ static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData
     struct SpriteTemplate template;
 
     CreateSpriteResourcesHeader(&header, idx, idx, idx, idx, -1, -1, FALSE, 0, pMonSpriteData->charResMan, pMonSpriteData->plttResMan, pMonSpriteData->cellResMan, pMonSpriteData->animResMan, NULL, NULL);
-    template.spriteList          = pMonSpriteData->spriteList;
-    template.header              = &header;
-    template.position.x          = 0;
-    template.position.y          = 0;
-    template.position.z          = 0;
-    template.scale.x             = FX32_ONE;
-    template.scale.y             = FX32_ONE;
-    template.scale.z             = FX32_ONE;
-    template.rotation            = 0;
-    template.whichScreen         = NNS_G2D_VRAM_TYPE_2DSUB;
-    template.priority            = 0;
-    template.heapId              = heapId;
-    template.position.x          = 128 * FX32_ONE;
-    template.position.y          = 288 * FX32_ONE;
+    template.spriteList = pMonSpriteData->spriteList;
+    template.header = &header;
+    template.position.x = 0;
+    template.position.y = 0;
+    template.position.z = 0;
+    template.scale.x = FX32_ONE;
+    template.scale.y = FX32_ONE;
+    template.scale.z = FX32_ONE;
+    template.rotation = 0;
+    template.whichScreen = NNS_G2D_VRAM_TYPE_2DSUB;
+    template.priority = 0;
+    template.heapId = heapId;
+    template.position.x = 128 * FX32_ONE;
+    template.position.y = 288 * FX32_ONE;
     pMonSpriteData->sprites[idx] = Sprite_CreateAffine(&template);
     Sprite_SetAnimActiveFlag(pMonSpriteData->sprites[idx], FALSE);
     Sprite_SetAnimCtrlSeq(pMonSpriteData->sprites[idx], 0);
@@ -1255,7 +1255,7 @@ static BOOL yRotateSelectedBall(struct ChooseStarterAppWork *work, fx32 from, fx
     work->ballTransStep++;
     angle = calcBallTranslationArcStep(&from, &to, work->ballTransStep, CAM_MOVE_STEP_MAX);
     {
-        VecFx32 translVec  = { 0, 14 * FX32_ONE, 32 * FX32_ONE };
+        VecFx32 translVec = { 0, 14 * FX32_ONE, 32 * FX32_ONE };
         VecFx32 subtrahend = { 0, 14 * FX32_ONE, 32 * FX32_ONE };
         subtrahend.y += FX32_CONST(13.453);
         VEC_Subtract(&translVec, &subtrahend, &translVec);
@@ -1277,10 +1277,10 @@ static u16 calcBallTranslationArcStep(const fx32 *from, const fx32 *to, int step
     u16 ret;
     int addend;
     if (*to >= *from) {
-        ret    = *to - *from;
+        ret = *to - *from;
         addend = (ret * step) / max;
     } else {
-        ret    = *from - *to;
+        ret = *from - *to;
         addend = -((ret * step) / max);
     }
     return *from + addend;

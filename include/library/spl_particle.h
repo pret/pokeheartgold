@@ -16,12 +16,12 @@ typedef struct SPLParticle {
     u16 life_rate_diff_loop;
     u16 life_rate_diff_noloop;
     struct {
-        u16 tex_no           : 8;
+        u16 tex_no : 8;
         u16 life_rate_offset : 8;
     } etc;
     struct {
-        u16 base_alp          : 5;
-        u16 anm_alp           : 5;
+        u16 base_alp : 5;
+        u16 anm_alp : 5;
         u16 current_polygonID : 6;
     } alp;
     fx32 base_scl;

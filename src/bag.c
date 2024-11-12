@@ -48,10 +48,10 @@ RegisterItemResult Bag_TryRegisterItem(Bag *bag, u16 itemId) {
 
     if (bag->registeredItems[0] == ITEM_NONE) {
         bag->registeredItems[0] = itemId;
-        result                  = REG_ITEM_SLOT1;
+        result = REG_ITEM_SLOT1;
     } else if (bag->registeredItems[1] == ITEM_NONE) {
         bag->registeredItems[1] = itemId;
-        result                  = REG_ITEM_SLOT2;
+        result = REG_ITEM_SLOT2;
     }
     return result;
 }
@@ -74,35 +74,35 @@ static u32 Bag_GetItemPocket(Bag *bag, u16 itemId, ItemSlot **itemSlots, u32 *co
     switch (pocket) {
     case POCKET_KEY_ITEMS:
         *itemSlots = bag->keyItems;
-        *countPtr  = NUM_BAG_KEY_ITEMS;
+        *countPtr = NUM_BAG_KEY_ITEMS;
         break;
     case POCKET_ITEMS:
         *itemSlots = bag->items;
-        *countPtr  = NUM_BAG_ITEMS;
+        *countPtr = NUM_BAG_ITEMS;
         break;
     case POCKET_BERRIES:
         *itemSlots = bag->berries;
-        *countPtr  = NUM_BAG_BERRIES;
+        *countPtr = NUM_BAG_BERRIES;
         break;
     case POCKET_MEDICINE:
         *itemSlots = bag->medicine;
-        *countPtr  = NUM_BAG_MEDICINE;
+        *countPtr = NUM_BAG_MEDICINE;
         break;
     case POCKET_BALLS:
         *itemSlots = bag->balls;
-        *countPtr  = NUM_BAG_BALLS;
+        *countPtr = NUM_BAG_BALLS;
         break;
     case POCKET_BATTLE_ITEMS:
         *itemSlots = bag->battleItems;
-        *countPtr  = NUM_BAG_BATTLE_ITEMS;
+        *countPtr = NUM_BAG_BATTLE_ITEMS;
         break;
     case POCKET_MAIL:
         *itemSlots = bag->mail;
-        *countPtr  = NUM_BAG_MAIL;
+        *countPtr = NUM_BAG_MAIL;
         break;
     case POCKET_TMHMS:
         *itemSlots = bag->TMsHMs;
-        *countPtr  = NUM_BAG_TMS_HMS;
+        *countPtr = NUM_BAG_TMS_HMS;
         break;
     }
     return pocket;
@@ -277,8 +277,8 @@ u16 Pocket_GetQuantity(ItemSlot *slots, u32 count, u16 itemId) {
 
 static void SwapItemSlots(ItemSlot *a, ItemSlot *b) {
     ItemSlot c = *a;
-    *a         = *b;
-    *b         = c;
+    *a = *b;
+    *b = c;
 }
 
 static void PocketCompaction(ItemSlot *slots, u32 count) {
@@ -391,7 +391,7 @@ BagCursor *BagCursor_New(HeapID heapId) {
 
 void BagCursor_Field_PocketGetPosition(BagCursor *cursor, u32 pocket, u8 *position, u8 *scroll) {
     *position = cursor->field.position[pocket];
-    *scroll   = cursor->field.scroll[pocket];
+    *scroll = cursor->field.scroll[pocket];
 }
 
 u16 BagCursor_Field_GetPocket(BagCursor *cursor) {
@@ -400,7 +400,7 @@ u16 BagCursor_Field_GetPocket(BagCursor *cursor) {
 
 void BagCursor_Field_PocketSetPosition(BagCursor *cursor, u32 pocket, u8 position, u8 scroll) {
     cursor->field.position[pocket] = position;
-    cursor->field.scroll[pocket]   = scroll;
+    cursor->field.scroll[pocket] = scroll;
 }
 
 void BagCursor_Field_SetPocket(BagCursor *cursor, u16 pocket) {
@@ -409,7 +409,7 @@ void BagCursor_Field_SetPocket(BagCursor *cursor, u16 pocket) {
 
 void BagCursor_Battle_PocketGetPosition(BagCursor *cursor, u32 pocket, u8 *position, u8 *scroll) {
     *position = cursor->battle.position[pocket];
-    *scroll   = cursor->battle.scroll[pocket];
+    *scroll = cursor->battle.scroll[pocket];
 }
 
 u16 BagCursor_Battle_GetLastUsedItem(BagCursor *cursor) {
@@ -426,7 +426,7 @@ u16 BagCursor_Battle_GetPocket(BagCursor *cursor) {
 
 void BagCursor_Battle_PocketSetPosition(BagCursor *cursor, u32 pocket, u8 position, u8 scroll) {
     cursor->battle.position[pocket] = position;
-    cursor->battle.scroll[pocket]   = scroll;
+    cursor->battle.scroll[pocket] = scroll;
 }
 
 void BagCursor_Battle_Init(BagCursor *cursor) {
@@ -437,7 +437,7 @@ void BagCursor_Battle_Init(BagCursor *cursor) {
 }
 
 void BagCursor_Battle_SetLastUsedItem(BagCursor *cursor, u16 itemId, u16 pocket) {
-    cursor->battle.lastUsedItem   = itemId;
+    cursor->battle.lastUsedItem = itemId;
     cursor->battle.lastUsedPocket = pocket;
 }
 

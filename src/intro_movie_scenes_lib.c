@@ -53,13 +53,13 @@ void IntroMovie_BuildSpriteResourcesHeaderAndTemplate(int resId, IntroMovieOverl
         NULL,
         NULL);
     template->spriteList = data->spriteList;
-    template->header     = header;
+    template->header = header;
     SetVec(template->position, 0, 0, 0);
     SetVec(template->scale, FX32_ONE, FX32_ONE, FX32_ONE);
-    template->rotation    = 0;
-    template->priority    = 0;
+    template->rotation = 0;
+    template->priority = 0;
     template->whichScreen = whichScreen;
-    template->heapId      = HEAP_ID_INTRO_MOVIE;
+    template->heapId = HEAP_ID_INTRO_MOVIE;
 }
 
 void IntroMovie_RendererSetSurfaceCoords(IntroMovieOverlayData *data, int mainx, int mainy, int subx, int suby) {
@@ -68,15 +68,15 @@ void IntroMovie_RendererSetSurfaceCoords(IntroMovieOverlayData *data, int mainx,
 }
 
 void IntroMovie_StartBlendFadeEffect(IntroMovieBgBlendAnim *data, int plane1, int plane2, u8 duration, int direction, int screen) {
-    data->counter   = 0;
-    data->ev        = 0;
-    data->finished  = 0;
+    data->counter = 0;
+    data->ev = 0;
+    data->finished = 0;
     data->topScreen = screen;
-    data->plane1    = plane1;
-    data->plane2    = plane2;
-    data->duration  = duration;
+    data->plane1 = plane1;
+    data->plane2 = plane2;
+    data->duration = duration;
     data->direction = direction;
-    data->task      = SysTask_CreateOnMainQueue(Task_IntroMovie_BlendFadeEffect, data, 0);
+    data->task = SysTask_CreateOnMainQueue(Task_IntroMovie_BlendFadeEffect, data, 0);
 }
 
 void Task_IntroMovie_BlendFadeEffect(SysTask *task, void *pVoid) {
@@ -87,7 +87,7 @@ void Task_IntroMovie_BlendFadeEffect(SysTask *task, void *pVoid) {
     if (data->ev >= 31) {
         data->ev = 31;
         SysTask_Destroy(data->task);
-        data->task     = NULL;
+        data->task = NULL;
         data->finished = 1;
     }
     int ev;
@@ -119,16 +119,16 @@ void IntroMovie_StartBgScroll_VBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim 
     }
 
     obj->bgConfig = bgConfig;
-    obj->bgId     = bgId;
-    obj->counter  = 0;
+    obj->bgId = bgId;
+    obj->counter = 0;
     obj->finished = FALSE;
     obj->duration = duration;
-    obj->xOrig    = Bg_GetXpos(bgConfig, bgId);
-    obj->yOrig    = Bg_GetYpos(bgConfig, bgId);
-    obj->xChange  = xChange;
-    obj->yChange  = yChange;
-    obj->active   = TRUE;
-    obj->task     = SysTask_CreateOnVBlankQueue(Task_IntroMovie_BgScroll_VBlank, obj, 0);
+    obj->xOrig = Bg_GetXpos(bgConfig, bgId);
+    obj->yOrig = Bg_GetYpos(bgConfig, bgId);
+    obj->xChange = xChange;
+    obj->yChange = yChange;
+    obj->active = TRUE;
+    obj->task = SysTask_CreateOnVBlankQueue(Task_IntroMovie_BgScroll_VBlank, obj, 0);
 }
 
 void IntroMovie_StartBgScroll_NotVBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, GFBgLayer bgId, s16 xChange, s16 yChange, int duration) {
@@ -147,16 +147,16 @@ void IntroMovie_StartBgScroll_NotVBlank(BgConfig *bgConfig, IntroMovieBgScrollAn
     }
 
     obj->bgConfig = bgConfig;
-    obj->bgId     = bgId;
-    obj->counter  = 0;
+    obj->bgId = bgId;
+    obj->counter = 0;
     obj->finished = FALSE;
     obj->duration = duration;
-    obj->xOrig    = Bg_GetXpos(bgConfig, bgId);
-    obj->yOrig    = Bg_GetYpos(bgConfig, bgId);
-    obj->xChange  = xChange;
-    obj->yChange  = yChange;
-    obj->active   = TRUE;
-    obj->task     = SysTask_CreateOnMainQueue(Task_IntroMovie_BgScroll_NotVBlank, obj, 0);
+    obj->xOrig = Bg_GetXpos(bgConfig, bgId);
+    obj->yOrig = Bg_GetYpos(bgConfig, bgId);
+    obj->xChange = xChange;
+    obj->yChange = yChange;
+    obj->active = TRUE;
+    obj->task = SysTask_CreateOnMainQueue(Task_IntroMovie_BgScroll_NotVBlank, obj, 0);
 }
 
 void Task_IntroMovie_BgScroll_VBlank(SysTask *task, void *pVoid) {
@@ -175,9 +175,9 @@ void Task_IntroMovie_BgScroll_VBlank(SysTask *task, void *pVoid) {
         y += data->yOrig;
         if (data->counter >= data->duration) {
             SysTask_Destroy(data->task);
-            data->task     = NULL;
+            data->task = NULL;
             data->finished = TRUE;
-            data->active   = FALSE;
+            data->active = FALSE;
         }
     }
     BgSetPosTextAndCommit(data->bgConfig, data->bgId, BG_POS_OP_SET_X, x);
@@ -200,9 +200,9 @@ void Task_IntroMovie_BgScroll_NotVBlank(SysTask *task, void *pVoid) {
         y += data->yOrig;
         if (data->counter >= data->duration) {
             SysTask_Destroy(data->task);
-            data->task     = NULL;
+            data->task = NULL;
             data->finished = TRUE;
-            data->active   = FALSE;
+            data->active = FALSE;
         }
     }
     ScheduleSetBgPosText(data->bgConfig, data->bgId, BG_POS_OP_SET_X, x);
@@ -210,7 +210,7 @@ void Task_IntroMovie_BgScroll_NotVBlank(SysTask *task, void *pVoid) {
 }
 
 BOOL IntroMovie_WaitBgScrollAnim(IntroMovieBgScrollAnim *data, GFBgLayer bgId) {
-    BOOL ret                    = FALSE;
+    BOOL ret = FALSE;
     IntroMovieBgScrollAnim *obj = &data[IntroMovie_BgLayerToScrollEffectSlot(bgId)];
     if (!obj->active) {
         return TRUE;
@@ -225,9 +225,9 @@ void IntroMovie_CancelBgScrollAnim(IntroMovieBgScrollAnim *data, GFBgLayer bgId)
     IntroMovieBgScrollAnim *obj = &data[IntroMovie_BgLayerToScrollEffectSlot(bgId)];
     if (obj->active) {
         SysTask_Destroy(obj->task);
-        obj->task     = NULL;
+        obj->task = NULL;
         obj->finished = TRUE;
-        obj->active   = FALSE;
+        obj->active = FALSE;
     }
 }
 
@@ -272,16 +272,16 @@ IntroMovieBgWindowAnim *IntroMovie_StartWindowPanEffect(IntroMovieBgWindowAnim *
         return NULL;
     }
     IntroMovieBgWindowAnim *ret = whichScreen == 0 ? &data[1] : &data[0];
-    ret->param                  = *param;
-    ret->duration               = duration;
-    ret->counter                = 0;
-    ret->finished               = TRUE;
-    ret->active                 = TRUE;
-    ret->whichScreen            = whichScreen;
-    ret->x1                     = param->x1Start;
-    ret->y1                     = param->y1Start;
-    ret->x2                     = param->x2Start;
-    ret->y2                     = param->y2Start;
+    ret->param = *param;
+    ret->duration = duration;
+    ret->counter = 0;
+    ret->finished = TRUE;
+    ret->active = TRUE;
+    ret->whichScreen = whichScreen;
+    ret->x1 = param->x1Start;
+    ret->y1 = param->y1Start;
+    ret->x2 = param->x2Start;
+    ret->y2 = param->y2Start;
     IntroMovie_SetBgWindowsPosition(param->x1Start, param->y1Start, param->x2Start, param->y2Start, whichScreen);
     ret->task = SysTask_CreateOnVBlankQueue(Task_IntroMovie_WindowPanEffect, ret, 0);
     return ret;
@@ -297,26 +297,26 @@ BOOL IntroMovie_WaitWindowPanEffect(IntroMovieBgWindowAnim *data, int a1) {
 
 #define SCALE_POS(start, end, pos, duration) ({ \
     int diff = (end) - (start);                 \
-    diff     = diff * (pos) / (duration);       \
+    diff = diff * (pos) / (duration);           \
     (start) + diff;                             \
 })
 
 void Task_IntroMovie_WindowPanEffect(SysTask *task, void *pVoid) {
     IntroMovieBgWindowAnim *data = (IntroMovieBgWindowAnim *)pVoid;
     ++data->counter;
-    int x1   = SCALE_POS(data->param.x1Start, data->param.x1End, data->counter, data->duration);
-    int y1   = SCALE_POS(data->param.y1Start, data->param.y1End, data->counter, data->duration);
-    int x2   = SCALE_POS(data->param.x2Start, data->param.x2End, data->counter, data->duration);
-    int y2   = SCALE_POS(data->param.y2Start, data->param.y2End, data->counter, data->duration);
+    int x1 = SCALE_POS(data->param.x1Start, data->param.x1End, data->counter, data->duration);
+    int y1 = SCALE_POS(data->param.y1Start, data->param.y1End, data->counter, data->duration);
+    int x2 = SCALE_POS(data->param.x2Start, data->param.x2End, data->counter, data->duration);
+    int y2 = SCALE_POS(data->param.y2Start, data->param.y2End, data->counter, data->duration);
     data->x1 = x1;
     data->y1 = y1;
     data->x2 = x2;
     data->y2 = y2;
     if (data->counter >= data->duration) {
         SysTask_Destroy(data->task);
-        data->task     = NULL;
+        data->task = NULL;
         data->finished = TRUE;
-        data->active   = FALSE;
+        data->active = FALSE;
     }
     IntroMovie_SetBgWindowsPosition(x1, y1, x2, y2, data->whichScreen);
 }
@@ -383,26 +383,26 @@ void IntroMovie_InitBgAnimGxState(IntroMovieOverlayData *data) {
 }
 
 void IntroMovie_BeginCircleWipeEffect(IntroMovieOverlayData *data, int kind, BOOL isTopScreen, int duration) {
-    int winIn                              = 0x1F;
+    int winIn = 0x1F;
     IntroMovieCircleWipeEffect *effectData = &data->circleWipeEffect;
-    BOOL setBrightnessNeutral              = FALSE;
-    PMLCDTarget screenId                   = PM_LCD_BOTTOM;
-    int winOut                             = 0;
-    effectData->active                     = TRUE;
-    effectData->finished                   = FALSE;
-    effectData->duration                   = duration;
-    effectData->counter                    = 0;
-    effectData->whichScreen                = isTopScreen;
-    effectData->x                          = FX16_ONE;
-    effectData->y                          = 0;
-    effectData->kind                       = kind;
+    BOOL setBrightnessNeutral = FALSE;
+    PMLCDTarget screenId = PM_LCD_BOTTOM;
+    int winOut = 0;
+    effectData->active = TRUE;
+    effectData->finished = FALSE;
+    effectData->duration = duration;
+    effectData->counter = 0;
+    effectData->whichScreen = isTopScreen;
+    effectData->x = FX16_ONE;
+    effectData->y = 0;
+    effectData->kind = kind;
     int bgId;
     int color;
     if (isTopScreen) {
-        bgId     = GF_BG_LYR_MAIN_0;
+        bgId = GF_BG_LYR_MAIN_0;
         screenId = PM_LCD_TOP;
     } else {
-        bgId     = GF_BG_LYR_SUB_0;
+        bgId = GF_BG_LYR_SUB_0;
         screenId = PM_LCD_BOTTOM;
     }
     if (effectData->kind == 0 || effectData->kind == 1) {
@@ -412,8 +412,8 @@ void IntroMovie_BeginCircleWipeEffect(IntroMovieOverlayData *data, int kind, BOO
     }
     BG_SetMaskColor(bgId, color);
     if (effectData->kind == 0 || effectData->kind == 2) {
-        winIn                = 0;
-        winOut               = 0x1F;
+        winIn = 0;
+        winOut = 0x1F;
         setBrightnessNeutral = TRUE;
     }
     IntroMovie_SetBgWindowsPosition(0, 0, 255, 192, isTopScreen);
@@ -439,15 +439,15 @@ BOOL IntroMovie_WaitCircleWipeEffect(IntroMovieOverlayData *data) {
 void Task_IntroMovie_CircleWipeEffect(SysTask *task, void *pVoid) {
     IntroMovieCircleWipeEffect *effectData = (IntroMovieCircleWipeEffect *)pVoid;
 
-    u16 idx       = FX_DEG_TO_IDX(180 * FX32_ONE) * effectData->counter / effectData->duration;
+    u16 idx = FX_DEG_TO_IDX(180 * FX32_ONE) * effectData->counter / effectData->duration;
     effectData->x = FX_CosIdx(idx);
     effectData->y = FX_SinIdx(idx);
     ++effectData->counter;
     if (effectData->counter >= effectData->duration) {
         SysTask_Destroy(effectData->task);
-        effectData->task     = NULL;
+        effectData->task = NULL;
         effectData->finished = TRUE;
-        effectData->active   = FALSE;
+        effectData->active = FALSE;
 
         u8 screen = effectData->whichScreen == 0 ? PM_LCD_BOTTOM : PM_LCD_TOP;
         if (effectData->kind == 1) {

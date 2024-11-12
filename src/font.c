@@ -42,8 +42,8 @@ void FontWork_Init(void) {
     sFontWork = &work;
 
     for (i = 0; i < FONT_NUM; i++) {
-        sFontWork->extraData[i]        = NULL;
-        sFontWork->fontDataMan[i]      = NULL;
+        sFontWork->extraData[i] = NULL;
+        sFontWork->fontDataMan[i] = NULL;
         sFontWork->fontDataRefCount[i] = 0;
     }
     SetFontsPointer(sFontInfos);
@@ -51,7 +51,7 @@ void FontWork_Init(void) {
 
 void FontID_Alloc(FontID fontId, HeapID heapId) {
     if (sFontWork->fontDataMan[fontId] == NULL) {
-        sFontWork->fontDataMan[fontId]      = FontData_New(NARC_graphic_font, sFontArcParam[fontId][0], FONTARC_MODE_LAZY, sFontArcParam[fontId][1], heapId);
+        sFontWork->fontDataMan[fontId] = FontData_New(NARC_graphic_font, sFontArcParam[fontId][0], FONTARC_MODE_LAZY, sFontArcParam[fontId][1], heapId);
         sFontWork->fontDataRefCount[fontId] = 1;
     } else {
         sFontWork->fontDataRefCount[fontId]++;
@@ -110,7 +110,7 @@ RenderResult FontID_RenderText(int fontId, TextPrinter *printer) {
     sub = (struct TextPrinterSubStruct *)printer->subStructFields;
 
     if (!sub->hasFontIdBeenSet) {
-        sub->fontId           = fontId;
+        sub->fontId = fontId;
         sub->hasFontIdBeenSet = TRUE;
     }
     return RenderText(printer);

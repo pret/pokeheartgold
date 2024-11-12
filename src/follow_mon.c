@@ -1507,8 +1507,8 @@ static const u16 sFemaleFlagLUT[] = {
 
 LocalMapObject *FollowMon_InitMapObject(MapObjectManager *mapObjectManager, int x, int y, int direction, u32 mapNo) {
     FieldSystem *fieldSystem = MapObjectManager_GetFieldSystem(mapObjectManager);
-    Party *party             = SaveArray_Party_Get(fieldSystem->saveData);
-    int partyCount           = Party_GetCount(party);
+    Party *party = SaveArray_Party_Get(fieldSystem->saveData);
+    int partyCount = Party_GetCount(party);
 
     FollowMon_Clear(&fieldSystem->followMon);
     Save_FollowMon_SetUnused2bitField(0, Save_FollowMon_Get(fieldSystem->saveData));
@@ -1521,16 +1521,16 @@ LocalMapObject *FollowMon_InitMapObject(MapObjectManager *mapObjectManager, int 
         } else {
             mon = GetFirstAliveMonInParty_CrashIfNone(party);
         }
-        int species                      = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        int species = GetMonData(mon, MON_DATA_SPECIES, NULL);
         fieldSystem->followMon.mapObject = NULL;
 
         if (FollowMon_GetPermissionBySpeciesAndMap(species, mapNo)) {
-            int form   = GetMonData(mon, MON_DATA_FORM, NULL);
+            int form = GetMonData(mon, MON_DATA_FORM, NULL);
             int gender = GetMonData(mon, MON_DATA_GENDER, NULL); // must be int to match, even though gender is u8
-            int shiny  = MonIsShiny(mon);
+            int shiny = MonIsShiny(mon);
 
             fieldSystem->followMon.mapObject = FollowMon_CreateMapObject(mapObjectManager, species, form, gender, direction, x, y, shiny);
-            fieldSystem->followMon.active    = TRUE;
+            fieldSystem->followMon.active = TRUE;
 
             FieldSystem_SetFollowerPokeParam(fieldSystem, species, form, shiny, gender);
             FieldSystem_UnkSub108_Set(fieldSystem->unk108, mon, species, GetMonData(mon, MON_DATA_PERSONALITY, NULL));
@@ -1561,14 +1561,14 @@ LocalMapObject *FollowMon_InitMapObject(MapObjectManager *mapObjectManager, int 
 
 void FollowMon_ChangeMon(MapObjectManager *mapObjectManager, u32 mapno) {
     FieldSystem *fieldSystem = MapObjectManager_GetFieldSystem(mapObjectManager);
-    Party *party             = SaveArray_Party_Get(fieldSystem->saveData);
-    int partyCount           = Party_GetCount(party);
+    Party *party = SaveArray_Party_Get(fieldSystem->saveData);
+    int partyCount = Party_GetCount(party);
 
     FollowMon_Clear(&fieldSystem->followMon);
 
     if (partyCount != 0) {
         Pokemon *mon = GetFirstAliveMonInParty_CrashIfNone(party);
-        int species  = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        int species = GetMonData(mon, MON_DATA_SPECIES, NULL);
         int form;
         u8 gender;
         int shiny;
@@ -1583,11 +1583,11 @@ void FollowMon_ChangeMon(MapObjectManager *mapObjectManager, u32 mapno) {
             if (followPokeObj == NULL) {
                 fieldSystem->followMon.unk15 = 1;
             } else {
-                form                             = GetMonData(mon, MON_DATA_FORM, NULL);
-                gender                           = GetMonGender(mon);
-                shiny                            = MonIsShiny(mon);
+                form = GetMonData(mon, MON_DATA_FORM, NULL);
+                gender = GetMonGender(mon);
+                shiny = MonIsShiny(mon);
                 fieldSystem->followMon.mapObject = followPokeObj;
-                fieldSystem->followMon.active    = TRUE;
+                fieldSystem->followMon.active = TRUE;
 
                 FieldSystem_SetFollowerPokeParam(fieldSystem, species, form, shiny, gender);
                 FollowMon_SetObjectParams(followPokeObj, species, form, shiny);
@@ -1619,17 +1619,17 @@ void FollowMon_ChangeMon(MapObjectManager *mapObjectManager, u32 mapno) {
             followPokeObj = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, obj_partner_poke);
 
             if (followPokeObj != NULL) {
-                form   = GetMonData(mon, MON_DATA_FORM, NULL);
+                form = GetMonData(mon, MON_DATA_FORM, NULL);
                 gender = GetMonGender(mon);
-                shiny  = MonIsShiny(mon);
+                shiny = MonIsShiny(mon);
 
                 FieldSystem_SetFollowerPokeParam(fieldSystem, species, form, shiny, gender);
                 FollowMon_SetObjectParams(followPokeObj, species, form, shiny);
                 MapObject_SetSpriteID(followPokeObj, FollowMon_GetSpriteID(species, form, gender));
 
                 fieldSystem->followMon.mapObject = followPokeObj;
-                fieldSystem->followMon.active    = TRUE;
-                fieldSystem->followMon.unk15     = 1;
+                fieldSystem->followMon.active = TRUE;
+                fieldSystem->followMon.unk15 = 1;
             }
         }
     }
@@ -1674,10 +1674,10 @@ void sub_02069DC8(LocalMapObject *mapObject, BOOL enableBit) {
 
 void sub_02069DEC(LocalMapObject *mapObject, BOOL enableBit) {
     int value = MapObject_GetParam(mapObject, 2);
-    u8 flag0  = value & 1;
+    u8 flag0 = value & 1;
     u32 flag1 = enableBit;
     u32 flag2 = value >> 2;
-    value     = flag2 << 2;
+    value = flag2 << 2;
     value |= flag1 << 1;
     value |= flag0 << 0;
     MapObject_SetParam(mapObject, value, 2);
@@ -1705,7 +1705,7 @@ void sub_02069E50(LocalMapObject *mapObject, u8 a1) {
 
     param = MapObject_GetParam(mapObject, 2);
 
-    b     = param & 0x3FF;
+    b = param & 0x3FF;
     param = (a1 << 10) | (u8)b;
 
     MapObject_SetParam(mapObject, param, 2);
@@ -1754,9 +1754,9 @@ void sub_02069F0C(LocalMapObject *mapObject, int species, u8 form, BOOL shiny, i
 
 void FieldSystem_SetFollowerPokeParam(FieldSystem *fieldSystem, int species, u8 form, BOOL shiny, u8 gender) {
     fieldSystem->followMon.species = species;
-    fieldSystem->followMon.shiny   = shiny;
-    fieldSystem->followMon.form    = form;
-    fieldSystem->followMon.gender  = gender;
+    fieldSystem->followMon.shiny = shiny;
+    fieldSystem->followMon.form = form;
+    fieldSystem->followMon.gender = gender;
 }
 
 u8 FollowMon_GetSizeParamBySpecies(int species) {
@@ -1838,18 +1838,18 @@ void sub_0206A054(FieldSystem *fieldSystem) {
 }
 
 static void FollowMon_Clear(FollowMon *followMon) {
-    followMon->active    = FALSE;
+    followMon->active = FALSE;
     followMon->mapObject = NULL;
-    followMon->unk4      = 0;
-    followMon->unk1C     = 0;
-    followMon->unk8      = 0;
-    followMon->unkC      = 0;
-    followMon->unk15     = 0;
+    followMon->unk4 = 0;
+    followMon->unk1C = 0;
+    followMon->unk8 = 0;
+    followMon->unkC = 0;
+    followMon->unk15 = 0;
 }
 
 static void FollowMon_SetObjectShiny(LocalMapObject *mapObject, BOOL enable) {
     int param = MapObject_GetParam(mapObject, 2);
-    param     = (u32)(param >> 1) << 1; // u32 needed to match
+    param = (u32)(param >> 1) << 1; // u32 needed to match
     if (enable) {
         param |= 1;
     }
@@ -1879,7 +1879,7 @@ static BOOL FollowMon_DiglettPermissionCheck(int mapNo) {
 static void FollowMon_SetObjectForm(LocalMapObject *mapObject, int species, u8 form) {
     u8 data[4];
 
-    int offset    = SpeciesToOverworldModelIndexOffset(species);
+    int offset = SpeciesToOverworldModelIndexOffset(species);
     int formCount = OverworldModelLookupFormCount(species);
 
     if (formCount > 0) {
@@ -1920,10 +1920,10 @@ FieldSystemUnk108 *FieldSystem_UnkSub108_Alloc(HeapID heapId) {
 
     ret = AllocFromHeap(heapId, sizeof(FieldSystemUnk108));
     MI_CpuClear8(ret, sizeof(FieldSystemUnk108));
-    ret->species      = 0;
-    ret->personality  = 0;
+    ret->species = 0;
+    ret->personality = 0;
     ret->isRegistered = FALSE;
-    ret->mon          = 0;
+    ret->mon = 0;
     return ret;
 }
 
@@ -1967,11 +1967,11 @@ s8 FieldSystem_UnkSub108_GetMonMood(FieldSystemUnk108 *unk) {
 void FieldSystem_UnkSub108_Set(FieldSystemUnk108 *a0, Pokemon *mon, u16 species, u32 personality) {
     s8 mood;
     if (species != SPECIES_NONE && (a0->isRegistered == FALSE || a0->species != species || a0->personality != personality)) {
-        a0->species      = species;
-        a0->personality  = personality;
-        mood             = 0;
+        a0->species = species;
+        a0->personality = personality;
+        mood = 0;
         a0->isRegistered = TRUE;
-        a0->mon          = mon;
+        a0->mon = mon;
         SetMonData(mon, MON_DATA_MOOD, &mood);
     }
 }

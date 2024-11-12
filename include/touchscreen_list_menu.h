@@ -9,7 +9,7 @@
 
 typedef struct TouchscreenListMenuTemplate {
     u8 wrapAround : 1;
-    u8 centered   : 7;
+    u8 centered : 7;
     u8 xOffset;
     u8 bgId;
     u8 plttOffset;
@@ -49,7 +49,7 @@ struct TouchscreenListMenu {
     u8 cursorPos;
     u8 animActive;
     u8 width;
-    u8 silent  : 1;
+    u8 silent : 1;
     u8 isTouch : 7;
     u8 x;
     u8 y;

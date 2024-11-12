@@ -23,7 +23,7 @@ typedef enum Workflow {
     WORKFLOW_UNK_16,
 
     WORKFLOW_TERMINATE = 65534,
-    WORKFLOW_NONE      = 65535,
+    WORKFLOW_NONE = 65535,
 } Workflow;
 
 typedef BOOL (*VoltorbFlipTask)(struct WorkflowEngine *a0, VoltorbFlipAppWork *a1);

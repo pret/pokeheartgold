@@ -5,26 +5,26 @@
 #include "touchscreen.h"
 
 typedef struct TextFlags {
-    u8 canABSpeedUpPrint      : 1;
-    u8 useAlternateDownArrow  : 1;
-    u8 autoScroll             : 1;
-    u8 forceMidTextSpeed      : 1;
-    u8 canTouchSpeedUpPrint   : 1;
-    u8 autoScrollCanSpeedUp   : 1;
-    u8 hasSpedUpInput         : 1;
-    u8 hasContinuedInput      : 1;
+    u8 canABSpeedUpPrint : 1;
+    u8 useAlternateDownArrow : 1;
+    u8 autoScroll : 1;
+    u8 forceMidTextSpeed : 1;
+    u8 canTouchSpeedUpPrint : 1;
+    u8 autoScrollCanSpeedUp : 1;
+    u8 hasSpedUpInput : 1;
+    u8 hasContinuedInput : 1;
     u8 touchIsSpeedingUpPrint : 1;
-    u8 touchHitboxActive      : 1;
+    u8 touchHitboxActive : 1;
 } TextFlags;
 
 typedef struct TextPrinterSubStruct {
-    u8 fontId             : 4; // 0x14
+    u8 fontId : 4; // 0x14
     u8 hasPrintBeenSpedUp : 1;
-    u8 unk                : 3;
-    u8 downArrowDelay     : 5;
-    u8 downArrowYPosIdx   : 2;
-    u8 hasFontIdBeenSet   : 1;
-    u8 autoScrollDelay    : 8;
+    u8 unk : 3;
+    u8 downArrowDelay : 5;
+    u8 downArrowYPosIdx : 2;
+    u8 hasFontIdBeenSet : 1;
+    u8 autoScrollDelay : 8;
 } TextPrinterSubStruct;
 
 // Argument to TextFlags_SetAutoScrollParam

@@ -12,11 +12,11 @@ u32 Save_Roamers_sizeof(void) {
 
 void Save_Roamers_Init(RoamerSaveData *roamer) {
     memset(roamer, 0, sizeof(RoamerSaveData));
-    roamer->rand[0]     = MTRandom();
-    roamer->rand[1]     = MTRandom();
-    roamer->outbreak    = FALSE;
-    roamer->repelSteps  = 0;
-    roamer->unk_66      = 0;
+    roamer->rand[0] = MTRandom();
+    roamer->rand[1] = MTRandom();
+    roamer->outbreak = FALSE;
+    roamer->repelSteps = 0;
+    roamer->unk_66 = 0;
     roamer->flutePlayed = 0;
 }
 
@@ -43,7 +43,7 @@ RoamerSaveData *Save_Roamers_Get(SaveData *saveData) {
 
 void RoamerSave_SetOutbreakActive(SaveData *saveData) {
     RoamerSaveData *roamer = Save_Roamers_Get(saveData);
-    roamer->outbreak       = TRUE;
+    roamer->outbreak = TRUE;
 }
 
 u8 RoamerSave_OutbreakActive(RoamerSaveData *roamerSave) {

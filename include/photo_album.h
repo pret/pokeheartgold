@@ -9,7 +9,7 @@
 typedef struct PhotoMon {
     u16 species;
     u8 form;
-    u8 shiny  : 1;
+    u8 shiny : 1;
     u8 gender : 1;
 } PhotoMon;
 

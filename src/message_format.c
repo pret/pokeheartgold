@@ -36,7 +36,7 @@ MessageFormat *MessageFormat_New_Custom(u32 nstr, u32 len, HeapID heapId) {
     GF_ASSERT(len != 0);
     ret = AllocFromHeapAtEnd(heapId, sizeof(MessageFormat));
     if (ret != NULL) {
-        ret->count  = nstr;
+        ret->count = nstr;
         ret->heapId = heapId;
         ret->buffer = String_New(len, heapId);
         if (ret->buffer != NULL) {
@@ -109,7 +109,7 @@ void BufferRivalsName(MessageFormat *msgFmt, u32 fieldno, SaveData *saveData) {
 
 void BufferFriendsName(MessageFormat *msgFmt, u32 fieldno, SaveData *saveData) {
     PlayerProfile *playerProfile = Save_PlayerData_GetProfileAddr(saveData);
-    MsgData *msgData             = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0445_bin, msgFmt->heapId);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0445_bin, msgFmt->heapId);
     if (PlayerProfile_GetTrainerGender(playerProfile) == PLAYER_GENDER_MALE) {
         ReadMsgDataIntoString(msgData, msg_0445_00001, msgFmt->buffer); // Lyra
     } else {
@@ -267,7 +267,7 @@ void BufferLandmarkName(MessageFormat *msgFmt, u32 fieldno, u32 landmarkId) {
     if (msgData != NULL) {
         if (landmarkId == 0 || landmarkId >= MsgDataGetCount(msgData)) {
             DestroyMsgData(msgData);
-            msgData    = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0280_bin, msgFmt->heapId);
+            msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0280_bin, msgFmt->heapId);
             landmarkId = 2;
         }
         ReadMsgDataIntoString(msgData, landmarkId, msgFmt->buffer);
@@ -410,7 +410,7 @@ void BufferLocationName(MessageFormat *msgFmt, u32 fieldno, u32 mapsecId) {
         NARC_msg_msg_0280_bin,
     };
     u32 locationBank = sub_02017FAC(mapsecId);
-    u32 locationId   = sub_02017FCC(mapsecId);
+    u32 locationId = sub_02017FCC(mapsecId);
     MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msgBanks[locationBank], msgFmt->heapId);
     int msgBank;
     if (msgData != NULL) {
@@ -421,10 +421,10 @@ void BufferLocationName(MessageFormat *msgFmt, u32 fieldno, u32 mapsecId) {
         } else {
             DestroyMsgData(msgData);
             if (locationBank == 0 && locationId == 0) {
-                msgBank    = NARC_msg_msg_0281_bin;
+                msgBank = NARC_msg_msg_0281_bin;
                 locationId = MAPLOC(METLOC_MYSTERY_ZONE);
             } else {
-                msgBank    = NARC_msg_msg_0280_bin;
+                msgBank = NARC_msg_msg_0280_bin;
                 locationId = MAPLOC(METLOC_FARAWAY_PLACE);
             }
             msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msgBank, msgFmt->heapId);
@@ -466,9 +466,9 @@ void BufferContestBackgroundName(MessageFormat *msgFmt, u32 fieldno, u32 bgId) {
 
 void BufferGroupName(MessageFormat *msgFmt, SaveData *saveData, s32 groupId, s32 fieldno, s32 nameType) {
     SAV_FRIEND_GRP *friendGrp = Save_FriendGroup_Get(saveData);
-    u8 sp10                   = sub_0202C830(friendGrp, groupId);
-    u8 r7                     = sub_0202C83C(friendGrp, groupId);
-    String *dest              = String_New(64, HEAP_ID_4);
+    u8 sp10 = sub_0202C830(friendGrp, groupId);
+    u8 r7 = sub_0202C83C(friendGrp, groupId);
+    String *dest = String_New(64, HEAP_ID_4);
     CopyU16ArrayToString(dest, sub_0202C7E0(friendGrp, groupId, nameType));
     BufferString(msgFmt, fieldno, dest, sp10, 1, r7);
     String_Delete(dest);
@@ -667,7 +667,7 @@ void StringExpandPlaceholders(MessageFormat *msgFmt, String *dest, String *src) 
                 cstr = MsgArray_SkipControlCode(cstr);
             } else {
                 const u16 *before = cstr;
-                cstr              = MsgArray_SkipControlCode(cstr);
+                cstr = MsgArray_SkipControlCode(cstr);
                 while (before < cstr) {
                     String_AddChar(dest, *before++);
                 }

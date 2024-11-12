@@ -174,7 +174,7 @@ void UpdatePlayerLocationHistoryIfAnyRoamersActive(RoamerSaveData *roamers, u32 
 void Save_CreateRoamerByID(SaveData *saveData, u8 idx) {
     PlayerProfile *profile;
     RoamerSaveData *roamerSave = Save_Roamers_Get(saveData);
-    Roamer *roamerStats        = Roamers_GetRoamMonStats(roamerSave, idx);
+    Roamer *roamerStats = Roamers_GetRoamMonStats(roamerSave, idx);
     Pokemon *mon;
     u16 species;
     u8 level;
@@ -182,19 +182,19 @@ void Save_CreateRoamerByID(SaveData *saveData, u8 idx) {
     switch (idx) {
     case ROAMER_RAIKOU:
         species = SPECIES_RAIKOU;
-        level   = 40;
+        level = 40;
         break;
     case ROAMER_ENTEI:
         species = SPECIES_ENTEI;
-        level   = 40;
+        level = 40;
         break;
     case ROAMER_LATIAS:
         species = SPECIES_LATIAS;
-        level   = 35;
+        level = 35;
         break;
     case ROAMER_LATIOS:
         species = SPECIES_LATIOS;
-        level   = 35;
+        level = 35;
         break;
     default:
         GF_ASSERT(0);
@@ -205,7 +205,7 @@ void Save_CreateRoamerByID(SaveData *saveData, u8 idx) {
     SetRoamerData(roamerStats, ROAMER_DATA_LEVEL, level);
 
     profile = Save_PlayerData_GetProfileAddr(saveData);
-    mon     = AllocMonZeroed((HeapID)4);
+    mon = AllocMonZeroed((HeapID)4);
     ZeroMonData(mon);
     CreateMon(mon, species, level, 32, FALSE, 0, OT_ID_PRESET, PlayerProfile_GetTrainerID_VisibleHalf(profile));
     SetRoamerData(roamerStats, ROAMER_DATA_STATUS, 0);
@@ -247,7 +247,7 @@ static void RoamerLocationSetRandom(RoamerSaveData *roamer, u8 roamer_idx, u32 l
         loc_min = ROAMER_LOC_KANTO_START;
     }
     do {
-        loc_cur_rand    = (LCRandom() % loc_num) + loc_min;
+        loc_cur_rand = (LCRandom() % loc_num) + loc_min;
         roamer_test_loc = sRoamerLocations[loc_cur_rand];
     } while (roamer_test_loc == last_loc || roamer_test_loc == roamer_cur_loc);
     ApplyRoamerLocation(roamer, roamer_idx, loc_cur_rand, roamer_test_loc);
@@ -261,9 +261,9 @@ static void RoamerLocationUpdateEx(RoamerSaveData *roamer, u8 roamer_idx, u32 la
     const struct RoamerAdjacency *adj;
 
     roamer_last_loc = Roamer_GetLocation(roamer, roamer_idx);
-    adj             = &sRoamerAdjacencyTable[roamer_last_loc];
+    adj = &sRoamerAdjacencyTable[roamer_last_loc];
     if (adj->count == 1) {
-        roamer_next_loc   = adj->neighbors[0];
+        roamer_next_loc = adj->neighbors[0];
         roamer_next_mapno = sRoamerLocations[roamer_next_loc];
         if (roamer_next_mapno == last_loc) {
             RoamerLocationSetRandom(roamer, roamer_idx, last_loc);
@@ -272,8 +272,8 @@ static void RoamerLocationUpdateEx(RoamerSaveData *roamer, u8 roamer_idx, u32 la
         }
     } else {
         while (1) {
-            sel_idx           = LCRandRange(adj->count);
-            roamer_next_loc   = adj->neighbors[sel_idx];
+            sel_idx = LCRandRange(adj->count);
+            roamer_next_loc = adj->neighbors[sel_idx];
             roamer_next_mapno = sRoamerLocations[roamer_next_loc];
             if (roamer_next_mapno != last_loc) {
                 ApplyRoamerLocation(roamer, roamer_idx, roamer_next_loc, roamer_next_mapno);

@@ -52,40 +52,40 @@ static void Continue_LoadSaveData_HandleError(HeapID heapId, SaveData *saveData)
 static void NewGame_InitSaveData(HeapID heapId, SaveData *saveData);
 
 const OVY_MGR_TEMPLATE ov36_App_MainMenu_SelectOption_NewGame = {
-    .init   = ov36_TitleScreen_NewGame_AppInit,
-    .exec   = ov36_TitleScreen_NewGame_AppExec,
-    .exit   = ov36_TitleScreen_NewGame_AppExit,
+    .init = ov36_TitleScreen_NewGame_AppInit,
+    .exec = ov36_TitleScreen_NewGame_AppExec,
+    .exit = ov36_TitleScreen_NewGame_AppExit,
     .ovy_id = FS_OVERLAY_ID_NONE,
 };
 
 const OVY_MGR_TEMPLATE ov36_App_InitGameState_AfterOakSpeech = {
-    .init   = ov36_App_InitGameState_AfterOakSpeech_AppInit,
-    .exec   = ov36_App_InitGameState_AfterOakSpeech_AppExec,
-    .exit   = ov36_App_InitGameState_AfterOakSpeech_AppExit,
+    .init = ov36_App_InitGameState_AfterOakSpeech_AppInit,
+    .exec = ov36_App_InitGameState_AfterOakSpeech_AppExec,
+    .exit = ov36_App_InitGameState_AfterOakSpeech_AppExit,
     .ovy_id = FS_OVERLAY_ID_NONE,
 };
 
 const OVY_MGR_TEMPLATE ov36_App_MainMenu_SelectOption_Continue = {
-    .init   = ov36_App_MainMenu_SelectOption_Continue_AppInit,
-    .exec   = ov36_App_MainMenu_SelectOption_Continue_AppExec,
-    .exit   = ov36_App_MainMenu_SelectOption_Continue_AppExit,
+    .init = ov36_App_MainMenu_SelectOption_Continue_AppInit,
+    .exec = ov36_App_MainMenu_SelectOption_Continue_AppExec,
+    .exit = ov36_App_MainMenu_SelectOption_Continue_AppExit,
     .ovy_id = FS_OVERLAY_ID_NONE,
 };
 
 static const MailMessageTemplate sMailMsgTemplates[2] = {
     {
      // ADVENTURE! EXCITED!
-        .msg_bank  = MAILMSG_BANK_0292_GMM,
-     .msg_no    = msg_0292_00004,
+        .msg_bank = MAILMSG_BANK_0292_GMM,
+     .msg_no = msg_0292_00004,
      .ec_groups = { EC_GROUP_LIFESTYLE, EC_GROUP_FEELINGS },
-     .ec_words  = { EC_WORD_LIFESTYLE_ADVENTURE - EC_WORDS_LIFESTYLE_MIN, EC_WORD_FEELINGS_EXCITED - EC_WORDS_FEELINGS_MIN },
+     .ec_words = { EC_WORD_LIFESTYLE_ADVENTURE - EC_WORDS_LIFESTYLE_MIN, EC_WORD_FEELINGS_EXCITED - EC_WORDS_FEELINGS_MIN },
      },
     {
      // I love POKEMON!
-        .msg_bank  = MAILMSG_BANK_0293_GMM,
-     .msg_no    = msg_0293_00001,
+        .msg_bank = MAILMSG_BANK_0293_GMM,
+     .msg_no = msg_0293_00001,
      .ec_groups = { EC_GROUP_UNION, 0xFF },
-     .ec_words  = { EC_WORD_UNION_POKEMON - EC_WORDS_UNION_MIN, 0 },
+     .ec_words = { EC_WORD_UNION_POKEMON - EC_WORDS_UNION_MIN, 0 },
      },
 };
 
@@ -124,7 +124,7 @@ BOOL ov36_App_InitGameState_AfterOakSpeech_AppInit(OVY_MANAGER *man, int *state)
 BOOL ov36_App_InitGameState_AfterOakSpeech_AppExec(OVY_MANAGER *man, int *state) {
 #pragma unused(state)
     struct UnkStruct_02111868_sub *unk_work = OverlayManager_GetArgs(man);
-    SaveData *saveData                      = unk_work->saveData;
+    SaveData *saveData = unk_work->saveData;
     InitGameStateAfterOakSpeech_Internal(HEAPID_OV36, saveData, TRUE);
     sub_0201838C(Save_PlayerData_GetIGTAddr(saveData));
 
@@ -149,8 +149,8 @@ BOOL ov36_App_MainMenu_SelectOption_Continue_AppInit(OVY_MANAGER *man, int *stat
 
 BOOL ov36_App_MainMenu_SelectOption_Continue_AppExec(OVY_MANAGER *man, int *state) {
     struct UnkStruct_02111868_sub *unk_work = OverlayManager_GetArgs(man);
-    SaveData *saveData                      = unk_work->saveData;
-    SysInfo *sys_info                       = Save_SysInfo_Get(saveData);
+    SaveData *saveData = unk_work->saveData;
+    SysInfo *sys_info = Save_SysInfo_Get(saveData);
 
     Continue_LoadSaveData_HandleError(HEAPID_OV36, saveData);
 
@@ -189,7 +189,7 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heapId, SaveData *saveDa
     sub_020674BC(saveData);
 
     PlayerProfile *profile = Save_PlayerData_GetProfileAddr(saveData);
-    u32 rand               = MTRandom();
+    u32 rand = MTRandom();
 
     if (set_trainer_id) {
         PlayerProfile_SetTrainerID(profile, rand);
@@ -209,18 +209,18 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heapId, SaveData *saveDa
 
     // Put an email from your friend into your PC.
     friend_names_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0445_bin, HEAP_ID_3);
-    Mailbox *mailbox     = Save_Mailbox_Get(saveData);
-    Pokemon *mon         = AllocMonZeroed(HEAP_ID_3);
+    Mailbox *mailbox = Save_Mailbox_Get(saveData);
+    Pokemon *mon = AllocMonZeroed(HEAP_ID_3);
 
     CreateMon(mon, SPECIES_MARILL, 1, 0, FALSE, 0, OT_ID_PLAYER_ID, 0);
 
     Mail *mail;
     if (PlayerProfile_GetTrainerGender(profile) == PLAYER_GENDER_MALE) {
         author_name = NewString_ReadMsgData(friend_names_msgdata, msg_0445_00001);
-        mail        = CreateKenyaMail(mon, MAIL_AIR, MON_FEMALE, author_name, 0);
+        mail = CreateKenyaMail(mon, MAIL_AIR, MON_FEMALE, author_name, 0);
     } else {
         author_name = NewString_ReadMsgData(friend_names_msgdata, msg_0445_00000);
-        mail        = CreateKenyaMail(mon, MAIL_AIR, MON_MALE, author_name, 0);
+        mail = CreateKenyaMail(mon, MAIL_AIR, MON_MALE, author_name, 0);
     }
 
     MailMessage mail_message;

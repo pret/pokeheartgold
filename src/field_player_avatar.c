@@ -155,7 +155,7 @@ PlayerAvatar *sub_0205C390(MapObjectManager *man, int x, int y, int direction, i
 
 PlayerAvatar *sub_0205C408(MapObjectManager *man, PlayerSaveData *playerSaveData, int gender) {
     PlayerAvatar *avatar = sub_0205C4E0();
-    int state            = sub_0205C7EC(playerSaveData);
+    int state = sub_0205C7EC(playerSaveData);
     sub_0205C500(avatar, state, gender, playerSaveData);
     LocalMapObject *mapObj = sub_0205C640(man);
     MapObject_SetSpriteID(mapObj, PlayerAvatar_GetSpriteByStateAndGender(state, gender));
@@ -174,8 +174,8 @@ void sub_0205C46C(PlayerAvatar *avatar) {
     MapObject_GetManager(mapObj);
     ov01_022008B4(avatar);
     if (PlayerAvatar_GetState(avatar) == PLAYER_STATE_SURFING) {
-        int x   = GetPlayerXCoord(avatar);
-        int z   = GetPlayerZCoord(avatar);
+        int x = GetPlayerXCoord(avatar);
+        int z = GetPlayerZCoord(avatar);
         int dir = PlayerAvatar_GetFacingDirection(avatar);
         sub_0205C78C(avatar, ov01_021FE7DC(mapObj, x, z, dir, 1));
     }
@@ -234,7 +234,7 @@ void CreatePlayerAvatarMapObject(PlayerAvatar *avatar, MapObjectManager *man, u3
 }
 
 LocalMapObject *sub_0205C600(MapObjectManager *man) {
-    int y                  = 0;
+    int y = 0;
     LocalMapObject *mapObj = 0;
     while (MapObjectManager_GetNextObjectWithFlagFromIndex(man, &mapObj, &y, MAPOBJECTFLAG_ACTIVE)) {
         if (MapObject_GetMovement(mapObj) == TRUE) {
@@ -377,7 +377,7 @@ void sub_0205C74C(PlayerAvatar *avatar) {
 }
 
 int sub_0205C758(PlayerAvatar *avatar, int unkB, int unkC) {
-    int var       = avatar->unk24 + unkB;
+    int var = avatar->unk24 + unkB;
     avatar->unk24 = var;
     if (var > unkC) {
         avatar->unk24 = unkC;
@@ -443,9 +443,9 @@ void sub_0205C7B4(PlayerAvatar *avatar) {
 }
 
 void PlayerSaveData_Init(struct PlayerSaveData *playerSaveData) {
-    playerSaveData->hasRunningShoes  = 0;
+    playerSaveData->hasRunningShoes = 0;
     playerSaveData->runningShoesLock = 0;
-    playerSaveData->unk4             = 0;
+    playerSaveData->unk4 = 0;
 }
 
 BOOL PlayerSaveData_CheckRunningShoes(struct PlayerSaveData *playerSaveData) {

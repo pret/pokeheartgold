@@ -61,7 +61,7 @@ struct SND_WORK {
     /* 0xBEC7A */ u16 unk_BEC7A;
     /* 0xBEC7C */ u32 unk_BEC7C;
     /* 0xBEC80 */ u32 micInitDone : 1;
-    /* 0xBEC80 */ u32 micCounter  : 31;
+    /* 0xBEC80 */ u32 micCounter : 31;
     /* 0xBEC84 */ u32 gbSoundsVolume;
 }; // size: 0xBEC88
 
@@ -92,7 +92,7 @@ void InitSoundData(SOUND_CHATOT *chatot, Options *options) {
     sSndHeapFreeSize = NNS_SndHeapGetSize(work->heap);
     GF_SndHeapGetFreeSize();
     sub_02004898(work);
-    _02111950      = 0;
+    _02111950 = 0;
     work->myChatot = chatot;
     GF_SndSetMonoFlag(options->soundMethod);
 }
@@ -185,9 +185,9 @@ void GF_SndCallback(void) {
 void GF_SndSetState(u32 state) {
     SND_WORK *work;
 
-    work            = GetSoundDataPointer();
+    work = GetSoundDataPointer();
     work->unk_BEBEC = 0;
-    _0211194C       = state;
+    _0211194C = state;
 }
 
 BOOL GF_SndIsFanfarePlaying(void) {
@@ -339,7 +339,7 @@ int GF_Snd_SaveState(int *level_p) {
     SND_WORK *work;
     int level;
 
-    work  = GetSoundDataPointer();
+    work = GetSoundDataPointer();
     level = NNS_SndHeapSaveState(work->heap);
     GF_ASSERT(level != -1);
     if (level_p != NULL) {
@@ -360,7 +360,7 @@ void GF_Snd_LoadState(int level) {
 void GF_SndHeapGetFreeSize(void) {
     SND_WORK *work;
 
-    work             = GetSoundDataPointer();
+    work = GetSoundDataPointer();
     sSndHeapFreeSize = NNS_SndHeapGetFreeSize(work->heap);
 }
 
@@ -369,7 +369,7 @@ BOOL GF_Snd_LoadGroup(int groupNo) {
     SND_WORK *work;
 
     work = GetSoundDataPointer();
-    ret  = NNS_SndArcLoadGroup(groupNo, work->heap);
+    ret = NNS_SndArcLoadGroup(groupNo, work->heap);
     GF_SndHeapGetFreeSize();
     return ret;
 }
@@ -379,7 +379,7 @@ BOOL GF_Snd_LoadSeq(int seqNo) {
     SND_WORK *work;
 
     work = GetSoundDataPointer();
-    ret  = NNS_SndArcLoadSeq(seqNo, work->heap);
+    ret = NNS_SndArcLoadSeq(seqNo, work->heap);
     GF_SndHeapGetFreeSize();
     return ret;
 }
@@ -389,7 +389,7 @@ BOOL GF_Snd_LoadSeqEx(int seqNo, u32 loadFlag) {
     SND_WORK *work;
 
     work = GetSoundDataPointer();
-    ret  = NNS_SndArcLoadSeqEx(seqNo, loadFlag, work->heap);
+    ret = NNS_SndArcLoadSeqEx(seqNo, loadFlag, work->heap);
     GF_SndHeapGetFreeSize();
     return ret;
 }
@@ -399,7 +399,7 @@ BOOL GF_Snd_LoadWaveArc(int waveArcNo) {
     SND_WORK *work;
 
     work = GetSoundDataPointer();
-    ret  = NNS_SndArcLoadWaveArc(waveArcNo, work->heap);
+    ret = NNS_SndArcLoadWaveArc(waveArcNo, work->heap);
     GF_SndHeapGetFreeSize();
     return ret;
 }
@@ -409,7 +409,7 @@ BOOL GF_Snd_LoadBank(int bankNo) {
     SND_WORK *work;
 
     work = GetSoundDataPointer();
-    ret  = NNS_SndArcLoadBank(bankNo, work->heap);
+    ret = NNS_SndArcLoadBank(bankNo, work->heap);
     GF_SndHeapGetFreeSize();
     return ret;
 }
@@ -504,14 +504,14 @@ BOOL GF_SndWorkMicCounterFull(void) {
 void GF_SndWorkMicCounterReset(void) {
     SND_WORK *work;
 
-    work             = GetSoundDataPointer();
+    work = GetSoundDataPointer();
     work->micCounter = 0;
 }
 
 void GF_SndWorkSetGbSoundsVolume(u8 a0) {
     SND_WORK *work;
 
-    work                 = GetSoundDataPointer();
+    work = GetSoundDataPointer();
     work->gbSoundsVolume = a0;
 }
 

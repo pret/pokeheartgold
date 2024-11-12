@@ -50,7 +50,7 @@ void PartyMenu_InitIconFormChangeData(PartyMenu *partyMenu) {
 
 BOOL PartyMenu_AnimateIconFormChange(PartyMenu *partyMenu) {
     IconFormChangeData *work = partyMenu->iconFormChange;
-    Pokemon *mon             = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
+    Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
 
     switch (work->state) {
     case 0:
@@ -59,12 +59,12 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenu *partyMenu) {
         case SPECIES_GIRATINA:
             Mon_UpdateGiratinaForm(mon);
             work->duration = 65;
-            work->fileId   = NARC_particle_giratina;
+            work->fileId = NARC_particle_giratina;
             break;
         case SPECIES_SHAYMIN:
             Mon_UpdateShayminForm(mon, SHAYMIN_SKY);
             work->duration = 35;
-            work->fileId   = NARC_particle_shaymin;
+            work->fileId = NARC_particle_shaymin;
             break;
         case SPECIES_ROTOM:
         default:

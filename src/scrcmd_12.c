@@ -12,7 +12,7 @@
 
 BOOL ScrCmd_MomGiftCheck(ScriptContext *ctx) {
     u16 sp;
-    u16 *retPtr              = ScriptGetVarPointer(ctx);
+    u16 *retPtr = ScriptGetVarPointer(ctx);
     MomsSavings *momsSavings = SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData);
     if (sub_0202F224(momsSavings, 0, &sp) == 0) {
         *retPtr = FALSE;
@@ -24,7 +24,7 @@ BOOL ScrCmd_MomGiftCheck(ScriptContext *ctx) {
 
 BOOL ScrCmd_PalParkAction(ScriptContext *ctx) {
     SaveVarsFlags *script = Save_VarsFlags_Get(ctx->fieldSystem->saveData);
-    u16 var0              = ScriptGetVar(ctx);
+    u16 var0 = ScriptGetVar(ctx);
     if (var0 == 2) {
         Save_VarsFlags_SetPalParkSysFlag(script);
         PalPark_ClearState(ctx->fieldSystem);
@@ -42,8 +42,8 @@ BOOL ScrCmd_PalParkAction(ScriptContext *ctx) {
 
 BOOL ScrCmd_509(ScriptContext *ctx) {
     struct MigratedPokemonSav *unkStruct = Save_MigratedPokemon_Get(ctx->fieldSystem->saveData);
-    Pokemon *mon                         = AllocMonZeroed(HEAP_ID_32);
-    u16 *retPtr                          = ScriptGetVarPointer(ctx);
+    Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
+    u16 *retPtr = ScriptGetVarPointer(ctx);
     if (sub_0202EC98(unkStruct) == PARTY_SIZE) {
         *retPtr = TRUE;
     } else {
@@ -55,10 +55,10 @@ BOOL ScrCmd_509(ScriptContext *ctx) {
 
 BOOL ScrCmd_510(ScriptContext *ctx) {
     struct MigratedPokemonSav *unkStruct = Save_MigratedPokemon_Get(ctx->fieldSystem->saveData);
-    PCStorage *storage                   = SaveArray_PCStorage_Get(ctx->fieldSystem->saveData);
-    Pokemon *mon                         = AllocMonZeroed(HEAP_ID_32);
-    PlayerProfile *profile               = Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData);
-    Pokedex *pokedex                     = Save_Pokedex_Get(ctx->fieldSystem->saveData);
+    PCStorage *storage = SaveArray_PCStorage_Get(ctx->fieldSystem->saveData);
+    Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
+    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->saveData);
     int i;
 
     for (i = 0; i < PARTY_SIZE; i++) {
@@ -75,7 +75,7 @@ BOOL ScrCmd_510(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_PalParkScoreGet(ScriptContext *ctx) {
-    u16 var0    = ScriptGetVar(ctx);
+    u16 var0 = ScriptGetVar(ctx);
     u16 *retPtr = ScriptGetVarPointer(ctx);
 
     switch (var0) {
@@ -92,7 +92,7 @@ BOOL ScrCmd_PalParkScoreGet(ScriptContext *ctx) {
         int val0 = PalPark_CalcTimeScore(ctx->fieldSystem);
         int val1 = PalPark_CalcSpeciesScore(ctx->fieldSystem);
         int val2 = PalPark_CalcTypesScore(ctx->fieldSystem);
-        *retPtr  = val1 + val2 + val0;
+        *retPtr = val1 + val2 + val0;
         break;
     }
     }

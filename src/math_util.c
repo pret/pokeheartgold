@@ -8,8 +8,8 @@
 
 u32 sMTRNG_State[624];
 u32 sLCRNG_State;
-int sMTRNG_Cycles              = 625;
-u32 sMTRNG_XOR[2]              = { 0, 0x9908B0DF };
+int sMTRNG_Cycles = 625;
+u32 sMTRNG_XOR[2] = { 0, 0x9908B0DF };
 MATHCRC16Table *sCRC16TablePtr = NULL;
 
 fx32 GF_SinDegNoWrap(u16 deg) {
@@ -94,15 +94,15 @@ u32 MTRandom(void) {
         }
 
         for (i = 0; i < 227; i++) {
-            val             = (sMTRNG_State[i] & 0x80000000) | (sMTRNG_State[i + 1] & 0x7fffffff);
+            val = (sMTRNG_State[i] & 0x80000000) | (sMTRNG_State[i + 1] & 0x7fffffff);
             sMTRNG_State[i] = sMTRNG_State[i + 397] ^ (val >> 1) ^ sMTRNG_XOR[val & 0x1];
         }
         for (; i < 623; i++) {
-            val             = (sMTRNG_State[i] & 0x80000000) | (sMTRNG_State[i + 1] & 0x7fffffff);
+            val = (sMTRNG_State[i] & 0x80000000) | (sMTRNG_State[i + 1] & 0x7fffffff);
             sMTRNG_State[i] = sMTRNG_State[i + -227] ^ (val >> 1) ^ sMTRNG_XOR[val & 0x1];
         }
 
-        val               = (sMTRNG_State[623] & 0x80000000) | (sMTRNG_State[0] & 0x7fffffff);
+        val = (sMTRNG_State[623] & 0x80000000) | (sMTRNG_State[0] & 0x7fffffff);
         sMTRNG_State[623] = sMTRNG_State[396] ^ (val >> 1) ^ sMTRNG_XOR[val & 0x1];
 
         sMTRNG_Cycles = 0;
@@ -130,7 +130,7 @@ void MTX22_2DAffine(MtxFx22 *mtx, u16 radians, fx32 x, fx32 y, u8 type) {
 
 u32 Math_CalcArraySum(const void *data, u32 size) {
     const u8 *data8 = (const u8 *)data;
-    u32 sum         = 0;
+    u32 sum = 0;
     int i;
     for (i = 0; i < size; i++) {
         sum += *data8++;

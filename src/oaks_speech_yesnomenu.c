@@ -15,7 +15,7 @@ struct OakSpeechYesNo {
     u8 buttonPalette;
     u8 backgroundBgId;
     u8 buttonBgId;
-    u8 state  : 4;
+    u8 state : 4;
     u8 result : 4;
     Window windows[2];
 };
@@ -30,15 +30,15 @@ static BOOL OakSpeechYesNo_WaitCursorSpriteAnim(OakSpeechYesNo *yesnoMenu);
 OakSpeechYesNo *OakSpeechYesNo_Create(BgConfig *bgConfig, Sprite *sprite, int backgroundBgId, int buttonBgId, int buttonPalette, HeapID heapId) {
     GF_ASSERT(bgConfig != NULL);
     volatile HeapID heapId_2 = heapId;
-    OakSpeechYesNo *ret      = AllocFromHeap(heapId, sizeof(OakSpeechYesNo));
+    OakSpeechYesNo *ret = AllocFromHeap(heapId, sizeof(OakSpeechYesNo));
     MI_CpuClear8(ret, sizeof(OakSpeechYesNo));
-    ret->heapId         = heapId;
-    ret->bgConfig       = bgConfig;
-    ret->sprite         = sprite;
+    ret->heapId = heapId;
+    ret->bgConfig = bgConfig;
+    ret->sprite = sprite;
     ret->backgroundBgId = backgroundBgId;
-    ret->buttonBgId     = buttonBgId;
-    ret->buttonPalette  = buttonPalette;
-    ret->msgFormat      = MessageFormat_New(heapId_2);
+    ret->buttonBgId = buttonBgId;
+    ret->buttonPalette = buttonPalette;
+    ret->msgFormat = MessageFormat_New(heapId_2);
     Sprite_SetAnimActiveFlag(sprite, 1);
     OakSpeechYesNo_CreateWindows(ret);
     return ret;
@@ -57,8 +57,8 @@ void OakSpeechYesNo_SetBackgroundPalette(OakSpeechYesNo *yesnoMenu, int palette)
     HeapID heapId;
 
     heapId = yesnoMenu->heapId;
-    bgId   = yesnoMenu->backgroundBgId;
-    narc   = NARC_New(NARC_a_2_3_7, heapId);
+    bgId = yesnoMenu->backgroundBgId;
+    narc = NARC_New(NARC_a_2_3_7, heapId);
     GfGfxLoader_GXLoadPalFromOpenNarc(narc, 0, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)(32 * palette), 0x20, heapId);
     GfGfxLoader_LoadCharDataFromOpenNarc(narc, 1, yesnoMenu->bgConfig, (GFBgLayer)bgId, 0, 0, FALSE, heapId);
     GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 10, yesnoMenu->bgConfig, (GFBgLayer)bgId, 0, 0, FALSE, heapId);
@@ -71,7 +71,7 @@ void OakSpeechYesNo_SetBackgroundPalette(OakSpeechYesNo *yesnoMenu, int palette)
 void OakSpeechYesNo_Start(OakSpeechYesNo *yesnoMenu, int msgBank, int msgId_Yes, int msgId_No) {
     OakSpeechYesNo_PrintMessageOnWindow(yesnoMenu, &yesnoMenu->windows[0], msgId_Yes, msgBank);
     OakSpeechYesNo_PrintMessageOnWindow(yesnoMenu, &yesnoMenu->windows[1], msgId_No, msgBank);
-    yesnoMenu->state  = 0;
+    yesnoMenu->state = 0;
     yesnoMenu->result = YESNORESPONSE_YES;
     OakSpeechYesNo_SetCursorSpritePos(yesnoMenu);
     ToggleBgLayer(yesnoMenu->backgroundBgId, GF_PLANE_TOGGLE_ON);
@@ -118,7 +118,7 @@ static void OakSpeechYesNo_RemoveWindows(OakSpeechYesNo *yesnoMenu) {
 
 static void OakSpeechYesNo_PrintMessageOnWindow(OakSpeechYesNo *yesnoMenu, Window *window, int msgId, int msgBank) {
     MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msgBank, yesnoMenu->heapId);
-    String *string   = ReadMsgData_ExpandPlaceholders(yesnoMenu->msgFormat, msgData, msgId, yesnoMenu->heapId);
+    String *string = ReadMsgData_ExpandPlaceholders(yesnoMenu->msgFormat, msgData, msgId, yesnoMenu->heapId);
     FillWindowPixelBuffer(window, 0);
     AddTextPrinterParameterizedWithColor(window, 4, string, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 1, 0), NULL);
     CopyWindowToVram(window);
@@ -179,17 +179,17 @@ static const TouchscreenHitbox sHitboxes[] = {
 };
 
 static BOOL OakSpeechYesNo_HandleInput(OakSpeechYesNo *yesnoMenu) {
-    BOOL ret   = FALSE;
+    BOOL ret = FALSE;
     int hitbox = TouchscreenHitbox_FindRectAtTouchNew(sHitboxes);
     if (hitbox != -1) {
         PlaySE(SEQ_SE_DP_SELECT);
         switch (hitbox) {
         case 0:
-            ret               = TRUE;
+            ret = TRUE;
             yesnoMenu->result = YESNORESPONSE_YES;
             break;
         case 1:
-            ret               = TRUE;
+            ret = TRUE;
             yesnoMenu->result = YESNORESPONSE_NO;
             break;
         default:
@@ -215,7 +215,7 @@ static BOOL OakSpeechYesNo_HandleInput(OakSpeechYesNo *yesnoMenu) {
         }
         ret = TRUE;
     } else if (gSystem.newKeys & PAD_BUTTON_B) {
-        ret               = TRUE;
+        ret = TRUE;
         yesnoMenu->result = YESNORESPONSE_NO;
     }
     if (ret) {

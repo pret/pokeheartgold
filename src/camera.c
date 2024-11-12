@@ -18,7 +18,7 @@ extern void Camera_OffsetLookAtPosAndTarget(const VecFx32 *delta, Camera *camera
 extern fx16 CalcAngleBetweenVecs(VecFx32 *a, VecFx32 *b);
 
 static void Camera_CalcLookAtPosFromTargetAndAngle(Camera *camera) {
-    u16 negx                = -camera->angle.x;
+    u16 negx = -camera->angle.x;
     camera->lookAt.camPos.x = FX_Mul(FX_Mul(FX_SinIdx(camera->angle.y), camera->distance), FX_CosIdx(camera->angle.x));
     camera->lookAt.camPos.z = FX_Mul(FX_Mul(FX_CosIdx(camera->angle.y), camera->distance), FX_CosIdx(camera->angle.x));
     camera->lookAt.camPos.y = FX_Mul(FX_SinIdx(negx), camera->distance);
@@ -26,7 +26,7 @@ static void Camera_CalcLookAtPosFromTargetAndAngle(Camera *camera) {
 }
 
 static void Camera_CalcLookAtTargetFromPosAndAngle(Camera *camera) {
-    u16 negx                   = -camera->angle.x;
+    u16 negx = -camera->angle.x;
     camera->lookAt.camTarget.x = -FX_Mul(FX_Mul(FX_SinIdx(camera->angle.y), camera->distance), FX_CosIdx(camera->angle.x));
     camera->lookAt.camTarget.z = -FX_Mul(FX_Mul(FX_CosIdx(camera->angle.y), camera->distance), FX_CosIdx(camera->angle.x));
     camera->lookAt.camTarget.y = -FX_Mul(FX_SinIdx(negx), camera->distance);
@@ -34,20 +34,20 @@ static void Camera_CalcLookAtTargetFromPosAndAngle(Camera *camera) {
 }
 
 static void Camera_InitInternal(u16 perspectiveAngle, Camera *camera) {
-    camera->perspectiveAngle    = perspectiveAngle;
+    camera->perspectiveAngle = perspectiveAngle;
     camera->perspective.fovySin = FX_SinIdx(perspectiveAngle);
     camera->perspective.fovyCos = FX_CosIdx(perspectiveAngle);
-    camera->perspective.aspect  = FX32_CONST(1.33333333); // 4x3
-    camera->perspective.near    = FX32_CONST(150);
-    camera->perspective.far     = FX32_CONST(900);
-    camera->lookAt.camUp.x      = 0;
-    camera->lookAt.camUp.y      = FX32_ONE;
-    camera->lookAt.camUp.z      = 0;
-    camera->curTarget           = NULL;
-    camera->enableOffsetX       = FALSE;
-    camera->enableOffsetY       = FALSE;
-    camera->enableOffsetZ       = FALSE;
-    camera->history             = NULL;
+    camera->perspective.aspect = FX32_CONST(1.33333333); // 4x3
+    camera->perspective.near = FX32_CONST(150);
+    camera->perspective.far = FX32_CONST(900);
+    camera->lookAt.camUp.x = 0;
+    camera->lookAt.camUp.y = FX32_ONE;
+    camera->lookAt.camUp.z = 0;
+    camera->curTarget = NULL;
+    camera->enableOffsetX = FALSE;
+    camera->enableOffsetY = FALSE;
+    camera->enableOffsetZ = FALSE;
+    camera->history = NULL;
 }
 
 static void Camera_VecResetCoordsIfOffsetComponentNotEnabled(Camera *camera, VecFx32 *vec) {
@@ -68,7 +68,7 @@ static void Camera_GetVecFromSomeRingBufferMaybe(Camera *camera, const VecFx32 *
     } else if (camera->history->unk24 == FALSE) {
         *vecDest = *vecDefault;
     } else {
-        s32 *idxPtr  = &camera->history->readIdx;
+        s32 *idxPtr = &camera->history->readIdx;
         s32 *idx2Ptr = &camera->history->writeIdx;
         if (!camera->history->overrideEnabled) {
             *vecDest = *vecDefault;
@@ -78,9 +78,9 @@ static void Camera_GetVecFromSomeRingBufferMaybe(Camera *camera, const VecFx32 *
         } else {
             *vecDest = camera->history->vecs[camera->history->readIdx];
         }
-        *idxPtr                         = (*idxPtr + 1) % camera->history->count;
+        *idxPtr = (*idxPtr + 1) % camera->history->count;
         camera->history->vecs[*idx2Ptr] = *vecDefault;
-        *idx2Ptr                        = (*idx2Ptr + 1) % camera->history->count;
+        *idx2Ptr = (*idx2Ptr + 1) % camera->history->count;
         if (!camera->history->enableUpdateX) {
             vecDest->x = vecDefault->x;
         }
@@ -99,20 +99,20 @@ void Camera_History_New(s32 count, s32 initialWriteIdx, s32 updateEnableFlags, H
     }
     GF_ASSERT(initialWriteIdx + 1 <= count);
     CameraHistory *history = AllocFromHeap(heapId, sizeof(CameraHistory));
-    history->vecs          = AllocFromHeap(heapId, sizeof(VecFx32) * count);
+    history->vecs = AllocFromHeap(heapId, sizeof(VecFx32) * count);
     for (s32 i = 0; i < count; i++) {
         history->vecs[i].x = 0;
         history->vecs[i].y = 0;
         history->vecs[i].z = 0;
     }
-    history->count           = count;
-    history->readIdx         = 0;
-    history->writeIdx        = initialWriteIdx;
-    history->writeIdxInit    = initialWriteIdx;
+    history->count = count;
+    history->readIdx = 0;
+    history->writeIdx = initialWriteIdx;
+    history->writeIdxInit = initialWriteIdx;
     history->overrideEnabled = FALSE;
-    history->enableUpdateX   = FALSE;
-    history->enableUpdateY   = FALSE;
-    history->enableUpdateZ   = FALSE;
+    history->enableUpdateX = FALSE;
+    history->enableUpdateY = FALSE;
+    history->enableUpdateZ = FALSE;
     if (updateEnableFlags & CAMERA_UPDATE_ENABLE_X) {
         history->enableUpdateX = TRUE;
     }
@@ -122,7 +122,7 @@ void Camera_History_New(s32 count, s32 initialWriteIdx, s32 updateEnableFlags, H
     if (updateEnableFlags & CAMERA_UPDATE_ENABLE_Z) {
         history->enableUpdateZ = TRUE;
     }
-    history->unk24  = TRUE;
+    history->unk24 = TRUE;
     camera->history = history;
 }
 
@@ -175,15 +175,15 @@ void Camera_SetLookAtCamUp(VecFx32 *camUp, Camera *camera) {
 }
 
 void Camera_SetFixedTarget(VecFx32 *target, Camera *camera) {
-    camera->curTarget     = target;
-    camera->lastTarget    = *target;
+    camera->curTarget = target;
+    camera->lastTarget = *target;
     camera->enableOffsetX = TRUE;
     camera->enableOffsetY = TRUE;
     camera->enableOffsetZ = TRUE;
 }
 
 void Camera_ClearFixedTarget(Camera *camera) {
-    camera->curTarget     = NULL;
+    camera->curTarget = NULL;
     camera->enableOffsetX = FALSE;
     camera->enableOffsetY = FALSE;
     camera->enableOffsetZ = FALSE;
@@ -191,22 +191,22 @@ void Camera_ClearFixedTarget(Camera *camera) {
 
 void Camera_SetPerspectiveClippingPlane(fx32 near, fx32 far, Camera *camera) {
     camera->perspective.near = near;
-    camera->perspective.far  = far,
+    camera->perspective.far = far,
     Camera_ApplyPerspectiveType(camera->perspectiveType, camera);
 }
 
 void Camera_Init_FromTargetDistanceAndAngle(VecFx32 *target, fx32 distance, const CameraAngle *angle, u16 perspectiveAngle, u8 perspectiveType, BOOL setReference, Camera *camera) {
     Camera_InitInternal(perspectiveAngle, camera);
     camera->lookAt.camTarget = *target;
-    camera->distance         = distance;
-    camera->angle            = *angle;
+    camera->distance = distance;
+    camera->angle = *angle;
     Camera_CalcLookAtPosFromTargetAndAngle(camera);
     Camera_ApplyPerspectiveType(perspectiveType, camera);
     if (!setReference) {
         return;
     }
-    camera->curTarget     = target;
-    camera->lastTarget    = *target;
+    camera->curTarget = target;
+    camera->lastTarget = *target;
     camera->enableOffsetX = TRUE;
     camera->enableOffsetY = TRUE;
     camera->enableOffsetZ = TRUE;
@@ -215,8 +215,8 @@ void Camera_Init_FromTargetDistanceAndAngle(VecFx32 *target, fx32 distance, cons
 void Camera_Init_FromPosDistanceAndAngle(VecFx32 *pos, fx32 distance, CameraAngle *angle, u16 perspectiveAngle, u8 perspectiveType, Camera *camera) {
     Camera_InitInternal(perspectiveAngle, camera);
     camera->lookAt.camPos = *pos;
-    camera->distance      = distance;
-    camera->angle         = *angle;
+    camera->distance = distance;
+    camera->angle = *angle;
     Camera_CalcLookAtTargetFromPosAndAngle(camera);
     Camera_ApplyPerspectiveType(perspectiveType, camera);
 }
@@ -226,28 +226,28 @@ void Camera_Init_FromTargetAndPos(const VecFx32 *target, const VecFx32 *pos, u16
     Camera_InitInternal(perspectiveAngle, camera);
 
     camera->lookAt.camTarget = *target;
-    camera->lookAt.camPos    = *pos;
+    camera->lookAt.camPos = *pos;
 
     VEC_Subtract(pos, target, &vec_from_pos_to_target);
     camera->distance = VEC_Mag(&vec_from_pos_to_target);
-    VecFx32 sp24     = { 0, 0, 0 }; // unused
-    VecFx32 sp18     = { 0, 0, 0 }; // unused
-    VecFx32 sp0C     = { 0, 0, 0 };
+    VecFx32 sp24 = { 0, 0, 0 }; // unused
+    VecFx32 sp18 = { 0, 0, 0 }; // unused
+    VecFx32 sp0C = { 0, 0, 0 };
     VecFx32 sp00;
 
-    sp00.x          = 0;
-    sp00.y          = 0;
-    sp00.z          = FX32_ONE;
-    sp0C            = vec_from_pos_to_target;
-    sp0C.y          = 0;
+    sp00.x = 0;
+    sp00.y = 0;
+    sp00.z = FX32_ONE;
+    sp0C = vec_from_pos_to_target;
+    sp0C.y = 0;
     camera->angle.y = CalcAngleBetweenVecs(&sp00, &sp0C);
 
-    sp00.x          = FX32_ONE;
-    sp00.y          = 0;
-    sp00.z          = 0;
-    sp0C.x          = vec_from_pos_to_target.z;
-    sp0C.z          = vec_from_pos_to_target.y;
-    sp0C.y          = 0;
+    sp00.x = FX32_ONE;
+    sp00.y = 0;
+    sp00.z = 0;
+    sp0C.x = vec_from_pos_to_target.z;
+    sp0C.z = vec_from_pos_to_target.y;
+    sp0C.y = 0;
     camera->angle.x = CalcAngleBetweenVecs(&sp00, &sp0C);
 
     camera->angle.z = 0;
@@ -256,8 +256,8 @@ void Camera_Init_FromTargetAndPos(const VecFx32 *target, const VecFx32 *pos, u16
     if (!setReference) {
         return;
     }
-    camera->curTarget     = target;
-    camera->lastTarget    = *target;
+    camera->curTarget = target;
+    camera->lastTarget = *target;
     camera->enableOffsetX = TRUE;
     camera->enableOffsetY = TRUE;
     camera->enableOffsetZ = TRUE;
@@ -267,18 +267,18 @@ void Camera_ApplyPerspectiveType(u8 perspectiveType, Camera *camera) {
     if (perspectiveType == CAMERA_PERSPECTIVE_TYPE_PERSPECTIVE) {
         NNS_G3dGlbPerspective(camera->perspective.fovySin, camera->perspective.fovyCos, camera->perspective.aspect, camera->perspective.near, camera->perspective.far);
         camera->perspectiveType = CAMERA_PERSPECTIVE_TYPE_PERSPECTIVE;
-        gG3dDepthBufferingMode  = GX_BUFFERMODE_Z;
+        gG3dDepthBufferingMode = GX_BUFFERMODE_Z;
     } else {
         fx32 y = FX_Mul(FX_Div(camera->perspective.fovySin, camera->perspective.fovyCos), camera->distance);
         fx32 x = FX_Mul(y, camera->perspective.aspect);
         NNS_G3dGlbOrtho(y, -y, -x, x, camera->perspective.near, camera->perspective.far);
         camera->perspectiveType = CAMERA_PERSPECTIVE_TYPE_ORTHOGRAPHIC;
-        gG3dDepthBufferingMode  = GX_BUFFERMODE_Z;
+        gG3dDepthBufferingMode = GX_BUFFERMODE_Z;
     }
 }
 
 void Camera_SetPerspectiveAngle(u16 perspectiveAngle, Camera *camera) {
-    camera->perspectiveAngle    = perspectiveAngle;
+    camera->perspectiveAngle = perspectiveAngle;
     camera->perspective.fovySin = FX_SinIdx(camera->perspectiveAngle);
     camera->perspective.fovyCos = FX_CosIdx(camera->perspectiveAngle);
     Camera_ApplyPerspectiveType(camera->perspectiveType, camera);

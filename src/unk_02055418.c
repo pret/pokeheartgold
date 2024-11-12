@@ -50,7 +50,7 @@ void sub_02055450(FieldSystem *fieldSystem, SysInfo_RTC *sysinfo, RTCDate *date)
 }
 
 void sub_02055478(FieldSystem *fieldSystem, SysInfo_RTC *sysinfo, RTCDate *date, RTCTime *time) {
-    s64 seconds     = RTC_ConvertDateTimeToSecond(date, time);
+    s64 seconds = RTC_ConvertDateTimeToSecond(date, time);
     s64 sys_seconds = RTC_ConvertDateTimeToSecond(&sysinfo->date, &sysinfo->time);
     if (seconds < sys_seconds) {
         sysinfo->date = *date;
@@ -129,7 +129,7 @@ void FieldSystem_GetGameClearTime(FieldSystem *fieldSystem, RTCDate *date, RTCTi
 }
 
 void FieldSystem_SetGameClearTime(FieldSystem *fieldSystem) {
-    SysInfo_RTC *sysinfo           = Save_SysInfo_RTC_Get(fieldSystem->saveData);
+    SysInfo_RTC *sysinfo = Save_SysInfo_RTC_Get(fieldSystem->saveData);
     sysinfo->seconds_at_game_clear = GF_RTC_DateTimeToSec();
 }
 
@@ -157,7 +157,7 @@ void sub_020556B8(FieldSystem *fieldSystem) {
 }
 
 void sub_020556C8(FieldSystem *fieldSystem, UnkStruct_020556FC *unkPtrB) {
-    void *unkB     = fieldSystem->unk_44;
+    void *unkB = fieldSystem->unk_44;
     unkPtrB->unk5c = AllocFromHeap(unkPtrB->heapID, ov01_021F149C(unkB, 31));
     ov01_021F14A8(unkB, 31, unkPtrB->unk5c);
     GF3dRender_InitObjFromHeader(&unkPtrB->unk4, &unkPtrB->unk58, &unkPtrB->unk5c);
@@ -188,7 +188,7 @@ BOOL sub_02055760(FieldSystem *fieldSystem, LocalMapObject *mapObj) {
 
 BOOL sub_02055780(FieldSystem *fieldSystem, LocalMapObject *mapObj) {
     APRICORN_TREE *trees = Save_FieldApricornTrees_Get(fieldSystem->saveData);
-    int idx              = MapObject_GetParam(mapObj, 0);
+    int idx = MapObject_GetParam(mapObj, 0);
     return sub_0202AE38(trees, idx);
 }
 

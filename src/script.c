@@ -3,13 +3,13 @@
 void InitScriptContext(ScriptContext *ctx, const ScrCmdFunc *cmd_table, u32 cmd_count) {
     s32 i = 0;
 
-    ctx->mode       = SCRIPT_MODE_STOPPED;
+    ctx->mode = SCRIPT_MODE_STOPPED;
     ctx->script_ptr = NULL;
     ctx->stackDepth = 0;
-    ctx->id         = 0;
+    ctx->id = 0;
     ctx->native_ptr = NULL;
-    ctx->cmdTable   = cmd_table;
-    ctx->cmd_count  = cmd_count;
+    ctx->cmdTable = cmd_table;
+    ctx->cmd_count = cmd_count;
 
     for (i = 0; i < NELEMS(ctx->data); i++) {
         ctx->data[i] = 0;
@@ -24,17 +24,17 @@ void InitScriptContext(ScriptContext *ctx, const ScrCmdFunc *cmd_table, u32 cmd_
 
 BOOL SetupBytecodeScript(ScriptContext *ctx, const u8 *ptr) {
     ctx->script_ptr = ptr;
-    ctx->mode       = SCRIPT_MODE_BYTECODE;
+    ctx->mode = SCRIPT_MODE_BYTECODE;
     return TRUE;
 }
 
 void SetupNativeScript(ScriptContext *ctx, ScrCmdFunc ptr) {
-    ctx->mode       = SCRIPT_MODE_NATIVE;
+    ctx->mode = SCRIPT_MODE_NATIVE;
     ctx->native_ptr = ptr;
 }
 
 void StopScript(ScriptContext *ctx) {
-    ctx->mode       = SCRIPT_MODE_STOPPED;
+    ctx->mode = SCRIPT_MODE_STOPPED;
     ctx->script_ptr = NULL;
 }
 

@@ -81,21 +81,21 @@ u8 AddTextPrinterParameterized(Window *window, FontID fontId, String *string, u3
     TextPrinterTemplate template;
 
     template.currentChar.wrapped = string;
-    template.window              = window;
-    template.fontId              = fontId;
-    template.x                   = x;
-    template.y                   = y;
-    template.currentX            = x;
-    template.currentY            = y;
-    template.letterSpacing       = sFonts[fontId].letterSpacing;
-    template.lineSpacing         = sFonts[fontId].lineSpacing;
-    template.unk14               = sFonts[fontId].unk;
-    template.fgColor             = sFonts[fontId].fgColor;
-    template.bgColor             = sFonts[fontId].bgColor;
-    template.shadowColor         = sFonts[fontId].shadowColor;
-    template.glyphTable          = 0;
-    template.unk1A               = 0;
-    template.unk1B               = 0xFF;
+    template.window = window;
+    template.fontId = fontId;
+    template.x = x;
+    template.y = y;
+    template.currentX = x;
+    template.currentY = y;
+    template.letterSpacing = sFonts[fontId].letterSpacing;
+    template.lineSpacing = sFonts[fontId].lineSpacing;
+    template.unk14 = sFonts[fontId].unk;
+    template.fgColor = sFonts[fontId].fgColor;
+    template.bgColor = sFonts[fontId].bgColor;
+    template.shadowColor = sFonts[fontId].shadowColor;
+    template.glyphTable = 0;
+    template.unk1A = 0;
+    template.unk1B = 0xFF;
 
     return AddTextPrinter(&template, textSpeed, callback);
 }
@@ -104,21 +104,21 @@ u8 AddTextPrinterParameterizedWithColor(Window *window, FontID fontId, String *s
     TextPrinterTemplate template;
 
     template.currentChar.wrapped = string;
-    template.window              = window;
-    template.fontId              = fontId;
-    template.x                   = x;
-    template.y                   = y;
-    template.currentX            = x;
-    template.currentY            = y;
-    template.letterSpacing       = sFonts[fontId].letterSpacing;
-    template.lineSpacing         = sFonts[fontId].lineSpacing;
-    template.unk14               = sFonts[fontId].unk;
-    template.fgColor             = (color >> 16) & 0xFF;
-    template.shadowColor         = (color >> 8) & 0xFF;
-    template.bgColor             = (color >> 0) & 0xFF;
-    template.glyphTable          = 0;
-    template.unk1A               = 0;
-    template.unk1B               = 0xFF;
+    template.window = window;
+    template.fontId = fontId;
+    template.x = x;
+    template.y = y;
+    template.currentX = x;
+    template.currentY = y;
+    template.letterSpacing = sFonts[fontId].letterSpacing;
+    template.lineSpacing = sFonts[fontId].lineSpacing;
+    template.unk14 = sFonts[fontId].unk;
+    template.fgColor = (color >> 16) & 0xFF;
+    template.shadowColor = (color >> 8) & 0xFF;
+    template.bgColor = (color >> 0) & 0xFF;
+    template.glyphTable = 0;
+    template.unk1A = 0;
+    template.unk1B = 0xFF;
 
     return AddTextPrinter(&template, textSpeed, callback);
 }
@@ -127,21 +127,21 @@ u8 AddTextPrinterParameterizedWithColorAndSpacing(Window *window, int fontId, St
     TextPrinterTemplate template;
 
     template.currentChar.wrapped = string;
-    template.window              = window;
-    template.fontId              = fontId;
-    template.x                   = x;
-    template.y                   = y;
-    template.currentX            = x;
-    template.currentY            = y;
-    template.letterSpacing       = letterSpacing;
-    template.lineSpacing         = lineSpacing;
-    template.unk14               = sFonts[fontId].unk;
-    template.fgColor             = (color >> 16) & 0xFF;
-    template.shadowColor         = (color >> 8) & 0xFF;
-    template.bgColor             = (color >> 0) & 0xFF;
-    template.glyphTable          = 0;
-    template.unk1A               = 0;
-    template.unk1B               = 0xFF;
+    template.window = window;
+    template.fontId = fontId;
+    template.x = x;
+    template.y = y;
+    template.currentX = x;
+    template.currentY = y;
+    template.letterSpacing = letterSpacing;
+    template.lineSpacing = lineSpacing;
+    template.unk14 = sFonts[fontId].unk;
+    template.fgColor = (color >> 16) & 0xFF;
+    template.shadowColor = (color >> 8) & 0xFF;
+    template.bgColor = (color >> 0) & 0xFF;
+    template.glyphTable = 0;
+    template.unk1A = 0;
+    template.unk1B = 0xFF;
 
     return AddTextPrinter(&template, textSpeed, callback);
 }
@@ -151,34 +151,34 @@ static u8 AddTextPrinter(TextPrinterTemplate *template, u32 speed, PrinterCallba
         return 0xFF;
     }
 
-    TextPrinter *printer     = AllocFromHeap(HEAP_ID_DEFAULT, sizeof(TextPrinter));
-    printer->active          = TRUE;
-    printer->state           = 0;
+    TextPrinter *printer = AllocFromHeap(HEAP_ID_DEFAULT, sizeof(TextPrinter));
+    printer->active = TRUE;
+    printer->state = 0;
     printer->textSpeedBottom = speed;
-    printer->delayCounter    = 0;
-    printer->scrollDistance  = 0;
-    printer->unk2D           = 0;
+    printer->delayCounter = 0;
+    printer->scrollDistance = 0;
+    printer->unk2D = 0;
     for (int i = 0; i < 7; i++) {
         printer->subStructFields[i] = 0;
     }
-    printer->template                 = *template;
+    printer->template = *template;
     printer->template.currentChar.raw = String_cstr(printer->template.currentChar.wrapped);
-    printer->callback                 = callback;
-    _021D1F6C                         = 0;
+    printer->callback = callback;
+    _021D1F6C = 0;
 
     sub_020204B8(printer);
 
     if (speed != TEXT_SPEED_NOTRANSFER && speed != TEXT_SPEED_INSTANT) {
         printer->textSpeedBottom--;
         printer->textSpeedTop = 1;
-        printer->id           = CreateTextPrinterSysTask((SysTaskFunc)RunTextPrinter, printer, 1);
+        printer->id = CreateTextPrinterSysTask((SysTaskFunc)RunTextPrinter, printer, 1);
         return printer->id;
     }
 
     u32 i = 0;
 
     printer->textSpeedBottom = 0;
-    printer->textSpeedTop    = 0;
+    printer->textSpeedTop = 0;
 
     GenerateFontHalfRowLookupTable(template->fgColor, template->bgColor, template->shadowColor);
 
@@ -241,8 +241,8 @@ void GenerateFontHalfRowLookupTable(u8 fgColor, u8 bgColor, u8 shadowColor) {
     colors[2] = shadowColor;
     colors[3] = bgColor;
 
-    sBgColor     = bgColor;
-    sFgColor     = fgColor;
+    sBgColor = bgColor;
+    sFgColor = fgColor;
     sShadowColor = shadowColor;
 
     u32 index = 0;
@@ -259,23 +259,23 @@ void GenerateFontHalfRowLookupTable(u8 fgColor, u8 bgColor, u8 shadowColor) {
 
 void DecompressGlyphTile(const u8 *src, u8 *dest) {
     const u16 *src16 = (u16 *)src;
-    u16 *dest16      = (u16 *)dest;
-    dest16[0]        = sFontHalfRowLookupTable[(u32)src16[0] >> 8];
-    dest16[1]        = sFontHalfRowLookupTable[(u32)src16[0] & 0xFF];
-    dest16[2]        = sFontHalfRowLookupTable[(u32)src16[1] >> 8];
-    dest16[3]        = sFontHalfRowLookupTable[(u32)src16[1] & 0xFF];
-    dest16[4]        = sFontHalfRowLookupTable[(u32)src16[2] >> 8];
-    dest16[5]        = sFontHalfRowLookupTable[(u32)src16[2] & 0xFF];
-    dest16[6]        = sFontHalfRowLookupTable[(u32)src16[3] >> 8];
-    dest16[7]        = sFontHalfRowLookupTable[(u32)src16[3] & 0xFF];
-    dest16[8]        = sFontHalfRowLookupTable[(u32)src16[4] >> 8];
-    dest16[9]        = sFontHalfRowLookupTable[(u32)src16[4] & 0xFF];
-    dest16[10]       = sFontHalfRowLookupTable[(u32)src16[5] >> 8];
-    dest16[11]       = sFontHalfRowLookupTable[(u32)src16[5] & 0xFF];
-    dest16[12]       = sFontHalfRowLookupTable[(u32)src16[6] >> 8];
-    dest16[13]       = sFontHalfRowLookupTable[(u32)src16[6] & 0xFF];
-    dest16[14]       = sFontHalfRowLookupTable[(u32)src16[7] >> 8];
-    dest16[15]       = sFontHalfRowLookupTable[(u32)src16[7] & 0xFF];
+    u16 *dest16 = (u16 *)dest;
+    dest16[0] = sFontHalfRowLookupTable[(u32)src16[0] >> 8];
+    dest16[1] = sFontHalfRowLookupTable[(u32)src16[0] & 0xFF];
+    dest16[2] = sFontHalfRowLookupTable[(u32)src16[1] >> 8];
+    dest16[3] = sFontHalfRowLookupTable[(u32)src16[1] & 0xFF];
+    dest16[4] = sFontHalfRowLookupTable[(u32)src16[2] >> 8];
+    dest16[5] = sFontHalfRowLookupTable[(u32)src16[2] & 0xFF];
+    dest16[6] = sFontHalfRowLookupTable[(u32)src16[3] >> 8];
+    dest16[7] = sFontHalfRowLookupTable[(u32)src16[3] & 0xFF];
+    dest16[8] = sFontHalfRowLookupTable[(u32)src16[4] >> 8];
+    dest16[9] = sFontHalfRowLookupTable[(u32)src16[4] & 0xFF];
+    dest16[10] = sFontHalfRowLookupTable[(u32)src16[5] >> 8];
+    dest16[11] = sFontHalfRowLookupTable[(u32)src16[5] & 0xFF];
+    dest16[12] = sFontHalfRowLookupTable[(u32)src16[6] >> 8];
+    dest16[13] = sFontHalfRowLookupTable[(u32)src16[6] & 0xFF];
+    dest16[14] = sFontHalfRowLookupTable[(u32)src16[7] >> 8];
+    dest16[15] = sFontHalfRowLookupTable[(u32)src16[7] & 0xFF];
 }
 
 static void sub_020204B8(TextPrinter *printer) {
@@ -301,7 +301,7 @@ void RenderScreenFocusIndicatorTile(TextPrinter *printer, u32 unusedX, u32 unuse
     }
 
     u16 *startAddr = (void *)printer->unk30 + (fieldNum * (24 * 8 * sizeof(u16)));
-    u16 destX      = (GetWindowWidth(window) - 3) * 8;
+    u16 destX = (GetWindowWidth(window) - 3) * 8;
     BlitBitmapRectToWindow(window, startAddr, 0, 0, 24, 32, destX, 0, 24, 32);
 }
 
