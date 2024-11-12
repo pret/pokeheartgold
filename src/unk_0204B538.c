@@ -35,7 +35,7 @@ static u32 sub_0204BABC(UnkStruct_Fsys_A0 *a0, u16 *a1, u16 frontierTrainerIndex
 static u16 *sub_0204BC7C(u32 frontierTrainerIndex, HeapID heapId);
 static void GetFrontierMon(FrontierMon *mon, u32 frontierMonIndex);
 
-static const u16 _020FBFA4[]    = { ITEM_BRIGHTPOWDER, ITEM_LUM_BERRY, ITEM_LEFTOVERS, ITEM_QUICK_CLAW };
+static const u16 _020FBFA4[] = { ITEM_BRIGHTPOWDER, ITEM_LUM_BERRY, ITEM_LEFTOVERS, ITEM_QUICK_CLAW };
 static const u16 _020FBFAC[][2] = {
     { 0,   99  },
     { 80,  119 },
@@ -127,10 +127,10 @@ MessageFormat *sub_0204B538(SaveData *saveData, u16 numEligiblePokemon, u16 a2, 
     Pokedex *pokedex;
     MessageFormat *messageFormat;
     MsgData *messageData;
-    speciesName   = String_New(14, HEAP_ID_4);
-    unused        = String_New(2, HEAP_ID_4);
-    pokedex       = Save_Pokedex_Get(saveData);
-    messageData   = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0237_bin, HEAP_ID_4);
+    speciesName = String_New(14, HEAP_ID_4);
+    unused = String_New(2, HEAP_ID_4);
+    pokedex = Save_Pokedex_Get(saveData);
+    messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0237_bin, HEAP_ID_4);
     messageFormat = MessageFormat_New_Custom(19, 14, HEAP_ID_4);
     BufferIntegerAsString(messageFormat, 0, numEligiblePokemon, 1, PRINTING_MODE_LEFT_ALIGN, TRUE);
     for (u8 i = 0; i < NUM_BANNED_BATTLE_FRONTIER; i++) {
@@ -158,13 +158,13 @@ u32 sub_0204B5E8(u8 a0) {
 }
 
 u16 sub_0204B610(FieldSystem *fieldSystem, u16 *a1) {
-    u16 unk                      = 0;
+    u16 unk = 0;
     UnkStruct_Fsys_A0 *unkStruct = fieldSystem->unkA0;
-    unkStruct->unk12             = a1[0];
-    unkStruct->unk16             = a1[1];
-    unkStruct->unk18             = a1[2];
-    unkStruct->unk14             = a1[3];
-    unkStruct->unk10_5           = unkStruct->unk12 + 5;
+    unkStruct->unk12 = a1[0];
+    unkStruct->unk16 = a1[1];
+    unkStruct->unk18 = a1[2];
+    unkStruct->unk14 = a1[3];
+    unkStruct->unk10_5 = unkStruct->unk12 + 5;
     if (unkStruct->unk2e[0] == unkStruct->unk16 || unkStruct->unk2e[0] == unkStruct->unk18) {
         unk++;
     }
@@ -189,9 +189,9 @@ BOOL sub_0204B690(FieldSystem *fieldSystem, u16 *a1) {
 
 void sub_0204B6AC(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     a0->unk83e[0] = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(saveData));
-    Party *party  = SaveArray_Party_Get(saveData);
+    Party *party = SaveArray_Party_Get(saveData);
     for (s32 i = 0; i < 2; i++) {
-        Pokemon *mon      = Party_GetMonByIndex(party, a0->unk2a[i]);
+        Pokemon *mon = Party_GetMonByIndex(party, a0->unk2a[i]);
         a0->unk83e[1 + i] = GetMonData(mon, MON_DATA_SPECIES, NULL);
     }
     a0->unk83e[3] = sub_0202D57C(a0->unk74, 3, 0);
@@ -202,7 +202,7 @@ void sub_0204B708(UnkStruct_Fsys_A0 *a0) {
 }
 
 void sub_0204B720(UnkStruct_Fsys_A0 *a0, u32 a1) {
-    a0->unk10_3   = a1;
+    a0->unk10_3 = a1;
     a0->unk83e[0] = a1;
 }
 
@@ -231,11 +231,11 @@ u16 sub_0204B73C(UnkStruct_Fsys_A0 *a0, u8 a1, u8 a2, u32 a3) {
 static u16 *sub_0204B7D0(UnkStruct_0204B7D0 *a0, u32 frontierTrainerIndex, HeapID heapId) {
     MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0027_bin, heapId);
     MI_CpuClear8(a0, sizeof(UnkStruct_0204B7D0));
-    u16 *unk            = sub_0204BC7C(frontierTrainerIndex, heapId);
-    a0->unk00           = frontierTrainerIndex;
-    a0->unk18           = 0xffff;
-    a0->unk1a           = frontierTrainerIndex * 3;
-    a0->unk04           = unk[0];
+    u16 *unk = sub_0204BC7C(frontierTrainerIndex, heapId);
+    a0->unk00 = frontierTrainerIndex;
+    a0->unk18 = 0xffff;
+    a0->unk1a = frontierTrainerIndex * 3;
+    a0->unk04 = unk[0];
     String *trainerName = NewString_ReadMsgData(messageData, frontierTrainerIndex);
     CopyStringToU16Array(trainerName, a0->unk08, NELEMS(a0->unk08));
     String_Delete(trainerName);
@@ -248,9 +248,9 @@ static u32 sub_0204B834(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B470 *a1, u16 front
     FrontierMon frontierMon;
     MI_CpuClear8(a1, sizeof(UnkStruct_0204B470));
     GetFrontierMon(&frontierMon, frontierMonIndex);
-    a1->species    = frontierMon.species;
-    a1->form       = frontierMon.form;
-    a1->item       = a7 ? _020FBFA4[a6] : frontierMon.item;
+    a1->species = frontierMon.species;
+    a1->form = frontierMon.form;
+    a1->item = a7 ? _020FBFA4[a6] : frontierMon.item;
     u32 friendship = FRIENDSHIP_MAX;
     for (i = 0; i < MAX_MON_MOVES; i++) {
         a1->moves[i] = frontierMon.moves[i];
@@ -268,15 +268,15 @@ static u32 sub_0204B834(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B470 *a1, u16 front
         a1->pid = pid;
     } else {
         a1->pid = a4;
-        pid     = a4;
+        pid = a4;
     }
-    a1->hpIv    = iv;
-    a1->atkIv   = iv;
-    a1->defIv   = iv;
-    a1->spdIv   = iv;
+    a1->hpIv = iv;
+    a1->atkIv = iv;
+    a1->defIv = iv;
+    a1->spdIv = iv;
     a1->spAtkIv = iv;
     a1->spDefIv = iv;
-    s32 ev      = 0;
+    s32 ev = 0;
     for (i = 0; i < NUM_STATS; i++) {
         if (frontierMon.evs & MaskOfFlagNo(i)) {
             ev++;
@@ -291,9 +291,9 @@ static u32 sub_0204B834(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B470 *a1, u16 front
             a1->evs[i] = ev;
         }
     }
-    a1->ppUp     = 0;
+    a1->ppUp = 0;
     a1->language = gGameLanguage;
-    u32 ability  = GetMonBaseStat(a1->species, BASE_ABILITY_2);
+    u32 ability = GetMonBaseStat(a1->species, BASE_ABILITY_2);
     if (ability != ABILITY_NONE) {
         if (a1->pid % 2) {
             a1->ability = ability;
@@ -310,7 +310,7 @@ static u32 sub_0204B834(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B470 *a1, u16 front
 
 u32 sub_0204BA04(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B7D0 *a1, u16 frontierTrainerIndex, u32 a3, u16 *a4, u16 *a5, UnkStruct_0204A824_7E8 *a6, HeapID heapId) {
     u16 *unk7 = sub_0204B7D0(a1, frontierTrainerIndex, heapId);
-    u32 unk4  = sub_0204BABC(a0, unk7, frontierTrainerIndex, a1->unk30, a3, a4, a5, a6, heapId);
+    u32 unk4 = sub_0204BABC(a0, unk7, frontierTrainerIndex, a1->unk30, a3, a4, a5, a6, heapId);
     FreeToHeap(unk7);
     return unk4;
 }
@@ -318,7 +318,7 @@ u32 sub_0204BA04(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B7D0 *a1, u16 frontierTrai
 void sub_0204BA50(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B7D0 *a1, u16 frontierTrainerIndex, u32 a3, UnkStruct_0204A824_7E8 *a4, HeapID heapId) {
     u8 iv;
     u16 *unk = sub_0204B7D0(a1, frontierTrainerIndex, heapId);
-    iv       = sub_0204B4D4(frontierTrainerIndex);
+    iv = sub_0204B4D4(frontierTrainerIndex);
     for (s32 i = 0; i < 2; i++) {
         sub_0204B834(a0, &a1->unk30[i], a4->unk04[i], a4->otId, a4->unk08[i], iv, i, a3, heapId);
     }
@@ -338,9 +338,9 @@ static u32 sub_0204BABC(UnkStruct_Fsys_A0 *a0, u16 *a1, u16 frontierTrainerIndex
     FrontierMon unk4c;
     GF_ASSERT(a4 <= 4);
     s32 unk = 0;
-    unk2c   = 0;
+    unk2c = 0;
     while (unk != a4) {
-        u8 index         = sub_0204B510(a0) % a1[1];
+        u8 index = sub_0204B510(a0) % a1[1];
         frontierMonIndex = a1[2 + index];
         GetFrontierMon(&unk4c, frontierMonIndex);
         for (i = 0; i < unk; i++) {
@@ -388,7 +388,7 @@ static u32 sub_0204BABC(UnkStruct_Fsys_A0 *a0, u16 *a1, u16 frontierTrainerIndex
         unk6c[unk] = frontierMonIndex;
         unk++;
     }
-    iv   = sub_0204B4D4(frontierTrainerIndex);
+    iv = sub_0204B4D4(frontierTrainerIndex);
     otId = sub_0204B510(a0) | sub_0204B510(a0) << 16;
     if (unk2c >= 50) {
         unk28 = TRUE;

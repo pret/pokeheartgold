@@ -13,14 +13,14 @@
 #include "sys_vars.h"
 
 static void MapMatrix_MapMatrixData_Load(MAPMATRIXDATA *map_matrix_data, u16 matrix_id, u32 map_no) {
-    map_matrix_data->width  = 0;
+    map_matrix_data->width = 0;
     map_matrix_data->height = 0;
 
     s32 i;
 
     for (i = 0; i < MAP_MATRIX_MAX_SIZE; i++) {
-        map_matrix_data->headers[i]     = 0;
-        map_matrix_data->altitudes[i]   = 0;
+        map_matrix_data->headers[i] = 0;
+        map_matrix_data->altitudes[i] = 0;
         map_matrix_data->maps.models[i] = 0;
     }
 
@@ -29,12 +29,12 @@ static void MapMatrix_MapMatrixData_Load(MAPMATRIXDATA *map_matrix_data, u16 mat
     }
 
     void *buffer = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_fielddata_mapmatrix_map_matrix, matrix_id, HEAP_ID_FIELD);
-    u8 *cursor   = (u8 *)buffer;
+    u8 *cursor = (u8 *)buffer;
 
-    map_matrix_data->width  = *(cursor++);
+    map_matrix_data->width = *(cursor++);
     map_matrix_data->height = *(cursor++);
 
-    u8 has_headers_section   = *(cursor++);
+    u8 has_headers_section = *(cursor++);
     u8 has_altitudes_section = *(cursor++);
 
     u8 name_length = *(cursor++);
@@ -61,8 +61,8 @@ static void MapMatrix_MapMatrixData_Load(MAPMATRIXDATA *map_matrix_data, u16 mat
 
 MAPMATRIX *MapMatrix_New(void) {
     MAPMATRIX *map_matrix = AllocFromHeap(HEAP_ID_FIELD, sizeof(MAPMATRIX));
-    map_matrix->width     = 0;
-    map_matrix->height    = 0;
+    map_matrix->width = 0;
+    map_matrix->height = 0;
     map_matrix->matrix_id = 0;
 
     return map_matrix;
@@ -74,8 +74,8 @@ void MapMatrix_Load(u32 map_no, MAPMATRIX *map_matrix) {
     MapMatrix_MapMatrixData_Load(&map_matrix->data, matrix_id, map_no);
 
     map_matrix->matrix_id = matrix_id;
-    map_matrix->height    = map_matrix->data.height;
-    map_matrix->width     = map_matrix->data.width;
+    map_matrix->height = map_matrix->data.height;
+    map_matrix->width = map_matrix->data.width;
 }
 
 void MapMatrix_Free(MAPMATRIX *map_matrix) {
@@ -98,7 +98,7 @@ u8 MapMatrix_GetHeight(MAPMATRIX *map_matrix) {
 }
 
 u16 MapMatrix_GetMapHeader(MAPMATRIX *map_matrix, s32 x, s32 y) {
-    s32 width  = map_matrix->width;
+    s32 width = map_matrix->width;
     s32 height = map_matrix->height;
 
     GF_ASSERT(x >= 0 && x < width);
@@ -123,7 +123,7 @@ MAPDATA *MapMatrix_MapData_New(HeapID heapId) {
     MAPDATA *map_data = AllocFromHeap(heapId, sizeof(MAPDATA));
 
     void *buffer = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_fielddata_mapmatrix_map_matrix, 0, heapId);
-    u8 *cursor   = (u8 *)buffer;
+    u8 *cursor = (u8 *)buffer;
     cursor += 4;
     u8 name_length = *cursor;
     cursor++;
@@ -147,7 +147,7 @@ u16 GetMapModelNo(u32 map_no, MAPMATRIX *map_matrix) {
 
 void RemoveMahoganyTownAntennaTree(MAPMATRIX *map_matrix) {
     u16 *models = map_matrix->data.maps.models;
-    u8 width    = map_matrix->width;
+    u8 width = map_matrix->width;
 
     if (map_matrix->matrix_id != NARC_map_matrix_map_matrix_0000_EVERYWHERE_bin) {
         return;
@@ -183,7 +183,7 @@ BOOL ShouldUseAlternateLakeOfRage(SaveData *saveData, u32 map_no) {
 
 void SetLakeOfRageWaterLevel(MAPMATRIX *map_matrix, BOOL lower_water_level) {
     u16 *models = map_matrix->data.maps.models;
-    u8 width    = map_matrix->width;
+    u8 width = map_matrix->width;
 
     if (map_matrix->matrix_id != NARC_map_matrix_map_matrix_0000_EVERYWHERE_bin) {
         return;
@@ -208,18 +208,18 @@ void SetLakeOfRageWaterLevel(MAPMATRIX *map_matrix, BOOL lower_water_level) {
 
 void PlaceSafariZoneAreas(MAPMATRIX *map_matrix, SaveData *save) {
     u16 *models = map_matrix->data.maps.models;
-    s32 width   = map_matrix->width;
+    s32 width = map_matrix->width;
 
     if (map_matrix->matrix_id != NARC_map_matrix_map_matrix_0212_D47R0102_bin) { // Safari Zone
         return;
     }
 
-    SafariZone *safari_zone         = Save_SafariZone_Get(save);
+    SafariZone *safari_zone = Save_SafariZone_Get(save);
     SAFARIZONE_AREASET *sz_area_set = SafariZone_GetAreaSet(safari_zone, 3);
 
     for (s32 y = 0; y < SAFARI_ZONE_AREA_SET_ROWS; y++) {
         for (s32 x = 0; x < SAFARI_ZONE_AREA_SET_COLS; x++) {
-            u8 area_no                      = sz_area_set->areas[(y * SAFARI_ZONE_AREA_SET_COLS) + x].area_no;
+            u8 area_no = sz_area_set->areas[(y * SAFARI_ZONE_AREA_SET_COLS) + x].area_no;
             models[width * (y + 1) + x + 1] = 652 + area_no;
         }
     }

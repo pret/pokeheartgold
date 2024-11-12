@@ -58,7 +58,7 @@ void ObjPlttTransfer_Init(int num, HeapID heapId) {
         sObjPlttTransferTasksManager = AllocFromHeap(heapId, sizeof(ObjPlttTransferTasksManager));
         MI_CpuClear32(sObjPlttTransferTasksManager, sizeof(ObjPlttTransferTasksManager));
         sObjPlttTransferTasksManager->numTasks = num;
-        sObjPlttTransferTasksManager->tasks    = AllocFromHeap(heapId, num * sizeof(ObjPlttTransferTask));
+        sObjPlttTransferTasksManager->tasks = AllocFromHeap(heapId, num * sizeof(ObjPlttTransferTask));
         for (int i = 0; i < num; ++i) {
             ObjPlttTransferTask_Init(&sObjPlttTransferTasksManager->tasks[i]);
         }
@@ -86,10 +86,10 @@ static void ObjPlttTransfer_HandleError(void) {
 }
 
 void ObjPlttTransfer_Reset(void) {
-    sObjPlttTransferTasksManager->posMain    = 0;
-    sObjPlttTransferTasksManager->posSub     = 0;
+    sObjPlttTransferTasksManager->posMain = 0;
+    sObjPlttTransferTasksManager->posSub = 0;
     sObjPlttTransferTasksManager->extPosMain = 0;
-    sObjPlttTransferTasksManager->extPosSub  = 0;
+    sObjPlttTransferTasksManager->extPosSub = 0;
     ObjPlttTransfer_GetExtPlttSize();
     ObjPlttTransfer_ReleaseAllBlocks(sObjPlttTransferTasksManager);
 }
@@ -227,9 +227,9 @@ static BOOL ObjPlttTransfer_InitFromTemplate(const ObjPlttTransferTaskTemplate *
         GF_ASSERT(FALSE);
         return FALSE;
     }
-    task->resID    = template->id;
-    task->vram     = template->vram;
-    task->active   = TRUE;
+    task->resID = template->id;
+    task->vram = template->vram;
+    task->active = TRUE;
     task->plttSize = template->plttNum;
     return TRUE;
 }
@@ -249,13 +249,13 @@ static BOOL ObjPlttTransfer_ReserveAndTransfer_HandleExtPltt(const ObjPlttTransf
     if (task->plttData->bExtendedPlt) {
         pPosMain = &sObjPlttTransferTasksManager->extPosMain;
         sizeMain = sObjPlttTransferTasksManager->extSizeMain;
-        pPosSub  = &sObjPlttTransferTasksManager->extPosSub;
-        sizeSub  = sObjPlttTransferTasksManager->extSizeSub;
+        pPosSub = &sObjPlttTransferTasksManager->extPosSub;
+        sizeSub = sObjPlttTransferTasksManager->extSizeSub;
     } else {
         pPosMain = &sObjPlttTransferTasksManager->posMain;
         sizeMain = 0x200;
-        pPosSub  = &sObjPlttTransferTasksManager->posSub;
-        sizeSub  = 0x200;
+        pPosSub = &sObjPlttTransferTasksManager->posSub;
+        sizeSub = 0x200;
     }
     ObjPlttTransferTask_CheckAllocBlocks(task, *pPosMain, *pPosSub, sizeMain, sizeSub);
     ObjPlttTransferTask_PushToVRam_UpdateSzByte(task);
@@ -383,7 +383,7 @@ static u32 ObjPlttTransfer_GetFreePlttLoadAddr(u16 blocks, int num) {
 
 static void ObjPlttTransfer_ReleaseAllBlocks(ObjPlttTransferTasksManager *manager) {
     manager->blocksMain = 0;
-    manager->blocksSub  = 0;
+    manager->blocksSub = 0;
 }
 
 static void ObjPlttTransferTask_AcquireBlocks(ObjPlttTransferTask *task) {

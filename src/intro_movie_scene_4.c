@@ -114,7 +114,7 @@ static void IntroMovie_Scene4_Init(IntroMovieOverlayData *data, IntroMovieScene4
     IntroMovie_Scene4_CreateSprites(data, sceneData);
     sceneData->gf3dVramMan = GF_3DVramMan_Create(HEAP_ID_INTRO_MOVIE, 0, 1, 0, 4, IntroMovie_Scene4_3DVRamManInit);
     sub_02014DA0();
-    sceneData->particleHeap   = AllocFromHeap(HEAP_ID_INTRO_MOVIE, 0x4800);
+    sceneData->particleHeap = AllocFromHeap(HEAP_ID_INTRO_MOVIE, 0x4800);
     sceneData->particleSystem = sub_02014DB4(IntroMovie_Scene4_TexAlloc, IntroMovie_Scene4_PlttAlloc, sceneData->particleHeap, 0x4800, TRUE, HEAP_ID_INTRO_MOVIE);
     Camera_SetPerspectiveClippingPlane(FX32_CONST(1), FX32_CONST(900), sub_02015524(sceneData->particleSystem));
     sub_0201526C(sceneData->particleSystem, sub_02015264(NARC_a_0_5_9, 4, HEAP_ID_INTRO_MOVIE), 0x0A, TRUE);
@@ -124,9 +124,9 @@ static void IntroMovie_Scene4_Init(IntroMovieOverlayData *data, IntroMovieScene4
 }
 
 static BOOL IntroMovie_Scene4_Main(IntroMovieOverlayData *data, IntroMovieScene4Data *sceneData, int totalFrames) {
-    BgConfig *bgConfig               = IntroMovie_GetBgConfig(data);
+    BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     IntroMovieBgLinearAnims *animCnt = IntroMovie_GetBgLinearAnimsController(data);
-    u8 stepTimer                     = IntroMovie_GetSceneStepTimer(data);
+    u8 stepTimer = IntroMovie_GetSceneStepTimer(data);
     switch (IntroMovie_GetSceneStep(data)) {
     case INTRO_SCENE4_FADE_IN:
         BeginNormalPaletteFade(0, 9, 9, RGB_BLACK, 10, 1, HEAP_ID_INTRO_MOVIE);
@@ -401,14 +401,14 @@ static void IntroMovie_Scene4_LoadSpriteGfx(IntroMovieOverlayData *data, IntroMo
     GF_2DGfxResMan **resMen;
 
     IntroMovie_CreateSpriteResourceManagers(data, sIntroMovieScene4SpriteResCounts);
-    resMen                                            = IntroMovie_GetSpriteResourceManagersArray(data);
+    resMen = IntroMovie_GetSpriteResourceManagersArray(data);
     sceneData->spriteResObjs[0][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(resMen[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000082_NCGR_lz, TRUE, 0, NNS_G2D_VRAM_TYPE_2DBOTH, HEAP_ID_INTRO_MOVIE);
     sceneData->spriteResObjs[0][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(resMen[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000081_NCLR, FALSE, 0, NNS_G2D_VRAM_TYPE_2DBOTH, 2, HEAP_ID_INTRO_MOVIE);
     sceneData->spriteResObjs[0][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(resMen[GF_GFX_RES_TYPE_CELL], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000084_NCER_lz, TRUE, 0, GF_GFX_RES_TYPE_CELL, HEAP_ID_INTRO_MOVIE);
     sceneData->spriteResObjs[0][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromNarc(resMen[GF_GFX_RES_TYPE_ANIM], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000083_NANR_lz, TRUE, 0, GF_GFX_RES_TYPE_ANIM, HEAP_ID_INTRO_MOVIE);
 
     for (i = 0; i < 3; ++i) {
-        s32 id                                                = sp18[i];
+        s32 id = sp18[i];
         sceneData->spriteResObjs[i + 1][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(resMen[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, monSpriteChar[i], TRUE, id, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_INTRO_MOVIE);
         sceneData->spriteResObjs[i + 1][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(resMen[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, monSpritePltt[i], FALSE, id, NNS_G2D_VRAM_TYPE_2DMAIN, 1, HEAP_ID_INTRO_MOVIE);
         sceneData->spriteResObjs[i + 1][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(resMen[GF_GFX_RES_TYPE_CELL], NARC_demo_opening_gs_opening, monSpriteCell[i], TRUE, id, GF_GFX_RES_TYPE_CELL, HEAP_ID_INTRO_MOVIE);
@@ -444,24 +444,24 @@ static void IntroMovie_Scene4_CreateSprites(IntroMovieOverlayData *data, IntroMo
     int monSpriteResIds[3] = { 1, 2, 3 };
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(0, data, 0, NNS_G2D_VRAM_TYPE_2DSUB, &template, &header);
-    template.position.x    = FX32_ONE * 128;
-    template.position.y    = FX32_ONE * (0x100 + 96);
+    template.position.x = FX32_ONE * 128;
+    template.position.y = FX32_ONE * (0x100 + 96);
     sceneData->hand1Sprite = Sprite_CreateAffine(&template);
     Sprite_SetAnimActiveFlag(sceneData->hand1Sprite, FALSE);
     Sprite_SetVisibleFlag(sceneData->hand1Sprite, FALSE);
     Sprite_SetAnimCtrlSeq(sceneData->hand1Sprite, 0);
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(0, data, 0, NNS_G2D_VRAM_TYPE_2DMAIN, &template, &header);
-    template.position.x    = FX32_ONE * 128;
-    template.position.y    = FX32_ONE * 96;
+    template.position.x = FX32_ONE * 128;
+    template.position.y = FX32_ONE * 96;
     sceneData->hand2Sprite = Sprite_CreateAffine(&template);
     Sprite_SetAnimActiveFlag(sceneData->hand2Sprite, FALSE);
     Sprite_SetVisibleFlag(sceneData->hand2Sprite, FALSE);
     Sprite_SetAnimCtrlSeq(sceneData->hand2Sprite, 1);
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(0, data, 0, NNS_G2D_VRAM_TYPE_2DMAIN, &template, &header);
-    template.position.x       = FX32_ONE * 128;
-    template.position.y       = FX32_ONE * 96;
+    template.position.x = FX32_ONE * 128;
+    template.position.y = FX32_ONE * 96;
     sceneData->sparklesSprite = Sprite_CreateAffine(&template);
     Sprite_SetAnimActiveFlag(sceneData->sparklesSprite, FALSE);
     Sprite_SetVisibleFlag(sceneData->sparklesSprite, FALSE);
@@ -469,8 +469,8 @@ static void IntroMovie_Scene4_CreateSprites(IntroMovieOverlayData *data, IntroMo
 
     for (u8 i = 0; i < 3; ++i) {
         IntroMovie_BuildSpriteResourcesHeaderAndTemplate(monSpriteResIds[i], data, 0, NNS_G2D_VRAM_TYPE_2DMAIN, &template, &header);
-        template.position.x          = FX32_ONE * 128;
-        template.position.y          = FX32_ONE * 96;
+        template.position.x = FX32_ONE * 128;
+        template.position.y = FX32_ONE * 96;
         sceneData->starterSprites[i] = Sprite_CreateAffine(&template);
         Sprite_SetAnimActiveFlag(sceneData->starterSprites[i], FALSE);
         Sprite_SetVisibleFlag(sceneData->starterSprites[i], FALSE);
@@ -529,7 +529,7 @@ static void IntroMovie_Scene4_3DVRamManInit(void) {
 
 static void IntroMovie_Scene4_FlipScreensAtNextVBlank(IntroMovieScene4Data *sceneData, int whichScreen) {
     sceneData->flipScreensTaskArg = whichScreen;
-    sceneData->flipScreensTask    = SysTask_CreateOnVBlankQueue(Task_IntroMovie_Scene4_FlipScreens, sceneData, 0);
+    sceneData->flipScreensTask = SysTask_CreateOnVBlankQueue(Task_IntroMovie_Scene4_FlipScreens, sceneData, 0);
 }
 
 static void Task_IntroMovie_Scene4_FlipScreens(SysTask *task, void *pVoid) {

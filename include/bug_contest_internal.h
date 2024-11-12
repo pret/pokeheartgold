@@ -43,9 +43,9 @@ typedef struct BugContest {
     u8 lead_mon_idx;                                // Slot number of the Pokemon you battled with
     u8 party_cur_num;                               // Size of the party pre-contest
     u8 day_of_week;                                 // Used to choose NPCs and encounters
-    u8 caught_poke  : 1;                            // If you've caught a Pokemon in the contest
+    u8 caught_poke : 1;                             // If you've caught a Pokemon in the contest
     u8 national_dex : 1;                            // Used to choose NPCs and encounters
-    u8 placement    : 6;                            // 0: First, 1: Second, 2: Third, 3: Consolation
+    u8 placement : 6;                               // 0: First, 1: Second, 2: Third, 3: Consolation
     u16 sport_balls;                                // Set to 20, decremented on use
     u16 prize;                                      // Item ID
     u32 elapsed_time;                               // Used to determine when the contest ends

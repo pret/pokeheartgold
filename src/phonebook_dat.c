@@ -20,7 +20,7 @@ struct PhoneBook *AllocAndReadPhoneBook(HeapID heapId) {
     // This is a waste of space
     // (flen - 4) bytes is allocated twice
     flen = FS_GetLength(&file);
-    ret  = AllocFromHeap(heapId, flen);
+    ret = AllocFromHeap(heapId, flen);
     MI_CpuClear8(ret, flen);
 
     FS_ReadFile(&file, &ret->count, sizeof(ret->count));

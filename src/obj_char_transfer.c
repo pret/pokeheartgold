@@ -94,17 +94,17 @@ void ObjCharTransfer_InitEx(ObjCharTransferTemplate *template, GXOBJVRamModeChar
     if (sObjCharTransferTasksManager == NULL) {
         sObjCharTransferTasksManager = AllocFromHeap(template->heapId, sizeof(ObjCharTransferTasksManager));
         MI_CpuClear32(sObjCharTransferTasksManager, sizeof(ObjCharTransferTasksManager));
-        sObjCharTransferTasksManager->max   = template->maxTasks;
+        sObjCharTransferTasksManager->max = template->maxTasks;
         sObjCharTransferTasksManager->tasks = (ObjCharTransferTask *)AllocFromHeap(template->heapId, sizeof(ObjCharTransferTask) * sObjCharTransferTasksManager->max);
         for (int i = 0; i < template->maxTasks; ++i) {
             ObjCharTransferTask_Init(&sObjCharTransferTasksManager->tasks[i]);
         }
         sObjCharTransferTasksManager->blockSizeMain = ObjCharTransfer_GetBlockSizeFromMode(modeMain);
-        sObjCharTransferTasksManager->blockSizeSub  = ObjCharTransfer_GetBlockSizeFromMode(modeSub);
+        sObjCharTransferTasksManager->blockSizeSub = ObjCharTransfer_GetBlockSizeFromMode(modeSub);
         GX_SetOBJVRamModeChar(modeMain);
         GXS_SetOBJVRamModeChar(modeSub);
         int numBlocksMain = ObjCharTransfer_CalcBlockNumLimit(template->sizeMain, sObjCharTransferTasksManager->blockSizeMain);
-        int numBlocksSub  = ObjCharTransfer_CalcBlockNumLimit(template->sizeSub, sObjCharTransferTasksManager->blockSizeSub);
+        int numBlocksSub = ObjCharTransfer_CalcBlockNumLimit(template->sizeSub, sObjCharTransferTasksManager->blockSizeSub);
         ObjCharTransfer_InitBlocksTransferBuffers(numBlocksMain, numBlocksSub, template->heapId);
     }
 }
@@ -122,7 +122,7 @@ void ObjCharTransfer_Destroy(void) {
 
 void ObjCharTransfer_ClearBuffers(void) {
     sObjCharTransferTasksManager->offsetMain = 0;
-    sObjCharTransferTasksManager->offsetSub  = 0;
+    sObjCharTransferTasksManager->offsetSub = 0;
     ObjCharTransfer_ClearBlockBuf(sObjCharTransferTasksManager->blockBufMain);
     ObjCharTransfer_ClearBlockBuf(sObjCharTransferTasksManager->blockBufSub);
     ObjCharTransfer_GetVramCapacityByBank();
@@ -258,8 +258,8 @@ NNSG2dImageProxy *ObjCharTransfer_ResizeTaskByResID_GetProxyPtr(int resId, u32 s
     task->state = OBJ_CHAR_TRANSFER_TASK_COPYABLE;
     ObjCharTransferTask_UpdateBaseAddrs(task, offsetMain, offsetSub);
     task->needResetBlockTransferFlags = TRUE;
-    task->sizeMain                    = newSizeMain;
-    task->sizeSub                     = newSizeSub;
+    task->sizeMain = newSizeMain;
+    task->sizeSub = newSizeSub;
     ObjCharTransferTask_G2dLoadImageMappingVramTransfer(task);
     ObjCharTransferInternal_ReserveTransferBlocksByVramOffsetAndSize(task->vram, offsetMain, offsetSub, newSizeMain, newSizeSub);
 
@@ -282,7 +282,7 @@ NNSG2dImageProxy *ObjCharTransfer_CopyTransferTaskByProxyPtr(NNSG2dImageProxy *p
     if (task->state != OBJ_CHAR_TRANSFER_TASK_COPYABLE) {
         return NULL;
     }
-    *copiedTask       = *task;
+    *copiedTask = *task;
     copiedTask->state = OBJ_CHAR_TRANSFER_TASK_COPY;
     if (copiedTask->vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
         size = copiedTask->sizeMain;
@@ -293,8 +293,8 @@ NNSG2dImageProxy *ObjCharTransfer_CopyTransferTaskByProxyPtr(NNSG2dImageProxy *p
     ObjCharTransferInternal_GetBlockNumAndFreeSpaceForTransfer(copiedTask->vram, &offsetMain, &offsetSub, size, &newSizeMain, &newSizeSub);
     ObjCharTransferTask_UpdateBaseAddrs(copiedTask, offsetMain, offsetSub);
     copiedTask->needResetBlockTransferFlags = TRUE;
-    copiedTask->sizeMain                    = newSizeMain;
-    copiedTask->sizeSub                     = newSizeSub;
+    copiedTask->sizeMain = newSizeMain;
+    copiedTask->sizeSub = newSizeSub;
     ObjCharTransferTask_G2dLoadImageMappingVramTransfer(copiedTask);
     ObjCharTransferInternal_ReserveTransferBlocksByVramOffsetAndSize(copiedTask->vram, offsetMain, offsetSub, newSizeMain, newSizeSub);
 
@@ -330,8 +330,8 @@ BOOL sub_02021AC8(u32 size, BOOL a1, NNS_G2D_VRAM_TYPE vram, UnkStruct_02021AC8 
         ret = ObjCharTransfer_TryGetDestVramOffsets(size, vram, &offsetMain, &offsetSub);
         if (ret) {
             ObjCharTransfer_ReserveVramSpace(size, vram);
-            a3->vram   = vram;
-            a3->size   = size;
+            a3->vram = vram;
+            a3->size = size;
             a3->offset = vram == NNS_G2D_VRAM_TYPE_2DMAIN ? offsetMain : offsetSub;
             a3->unk_0A = FALSE;
         }
@@ -341,10 +341,10 @@ BOOL sub_02021AC8(u32 size, BOOL a1, NNS_G2D_VRAM_TYPE vram, UnkStruct_02021AC8 
             ObjCharTransferInternal_ReserveTransferBlocksByVramOffsetAndSize(vram, offsetMain, offsetSub, sizeMain, sizeSub);
             a3->vram = vram;
             if (vram == NNS_G2D_VRAM_TYPE_2DMAIN) {
-                a3->size   = sizeMain;
+                a3->size = sizeMain;
                 a3->offset = offsetMain + sObjCharTransferTasksManager->freeSizeMain;
             } else {
-                a3->size   = sizeSub;
+                a3->size = sizeSub;
                 a3->offset = offsetSub + sObjCharTransferTasksManager->freeSizeSub;
             }
             a3->unk_0A = TRUE;
@@ -371,7 +371,7 @@ void sub_02021B5C(UnkStruct_02021AC8 *a0) {
 ObjCharTransferTasksManager *ObjCharTransfer_PopTaskManager(void) {
     GF_ASSERT(sObjCharTransferTasksManager != NULL);
     ObjCharTransferTasksManager *ret = sObjCharTransferTasksManager;
-    sObjCharTransferTasksManager     = NULL;
+    sObjCharTransferTasksManager = NULL;
     return ret;
 }
 
@@ -381,26 +381,26 @@ void ObjCharTransfer_PushTaskManager(ObjCharTransferTasksManager *taskManager) {
 }
 
 static void ObjCharTransferTask_Init(ObjCharTransferTask *task) {
-    task->charData                      = NULL;
-    task->vram                          = NNS_G2D_VRAM_TYPE_NEITHER;
-    task->isTransferred                 = FALSE;
-    task->resId                         = -1;
-    task->baseAddrMain                  = 0;
-    task->baseAddrSub                   = 0;
-    task->state                         = OBJ_CHAR_TRANSFER_TASK_INIT;
+    task->charData = NULL;
+    task->vram = NNS_G2D_VRAM_TYPE_NEITHER;
+    task->isTransferred = FALSE;
+    task->resId = -1;
+    task->baseAddrMain = 0;
+    task->baseAddrSub = 0;
+    task->state = OBJ_CHAR_TRANSFER_TASK_INIT;
     task->shouldUpdateMappingTypeFromHW = FALSE;
     NNS_G2dInitImageProxy(&task->imageProxy);
 }
 
 static BOOL ObjCharTransferTask_InitFromTemplate(const ObjCharTransferTaskTemplate *template, ObjCharTransferTask *task) {
-    task->charData                    = template->charData;
-    task->resId                       = template->id;
-    task->vram                        = template->vram;
-    task->isTransferred               = task->charData->characterFmt >> NNS_G2D_VRAMTRANSFERDATA_FLAG_SHIFT;
-    task->transferFromTail            = template->atEnd;
+    task->charData = template->charData;
+    task->resId = template->id;
+    task->vram = template->vram;
+    task->isTransferred = task->charData->characterFmt >> NNS_G2D_VRAMTRANSFERDATA_FLAG_SHIFT;
+    task->transferFromTail = template->atEnd;
     task->needResetBlockTransferFlags = FALSE;
-    task->sizeMain                    = 0;
-    task->sizeSub                     = 0;
+    task->sizeMain = 0;
+    task->sizeSub = 0;
     return TRUE;
 }
 
@@ -455,8 +455,8 @@ static BOOL ObjCharTransferTask_ReserveFromTail(ObjCharTransferTask *task) {
     }
     ObjCharTransferTask_UpdateBaseAddrs(task, offsetMain, offsetSub);
     task->needResetBlockTransferFlags = TRUE;
-    task->sizeMain                    = sizeMain;
-    task->sizeSub                     = sizeSub;
+    task->sizeMain = sizeMain;
+    task->sizeSub = sizeSub;
     ObjCharTransferTask_G2dLoadImageMapping(task);
     ObjCharTransferInternal_ReserveTransferBlocksByVramOffsetAndSize(task->vram, offsetMain, offsetSub, sizeMain, sizeSub);
     return TRUE;
@@ -490,7 +490,7 @@ static GXOBJVRamModeChar ObjCharTransferTask_SetMappingTypeFromHW(ObjCharTransfe
 
 static void ObjCharTransferTask_SetBaseAddrs(ObjCharTransferTask *task, u32 offsetMain, u32 offsetSub) {
     task->baseAddrMain = offsetMain;
-    task->baseAddrSub  = offsetSub;
+    task->baseAddrSub = offsetSub;
     if (!task->isTransferred) {
         ObjCharTransferTask_G2dLoadImageMapping(task);
     }
@@ -498,9 +498,9 @@ static void ObjCharTransferTask_SetBaseAddrs(ObjCharTransferTask *task, u32 offs
 
 static BOOL ObjCharTransferInternal_GetBlockNumAndFreeSpaceForTransfer(int vram, u32 *blockNumMain, u32 *blockNumSub, u32 size, u32 *freeSpaceMain, u32 *freeSpaceSub) {
     if (vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
-        *freeSpaceMain    = ObjCharTransfer_AlignToBlock(size, sObjCharTransferTasksManager->blockSizeMain, TRUE);
+        *freeSpaceMain = ObjCharTransfer_AlignToBlock(size, sObjCharTransferTasksManager->blockSizeMain, TRUE);
         u32 numBlocksUsed = ObjCharTransfer_CalcBlockNumLimit(*freeSpaceMain, sObjCharTransferTasksManager->blockSizeMain);
-        *blockNumMain     = ObjCharTransfer_FindAvailableTransferBlock(numBlocksUsed, sObjCharTransferTasksManager->blockBufMain);
+        *blockNumMain = ObjCharTransfer_FindAvailableTransferBlock(numBlocksUsed, sObjCharTransferTasksManager->blockBufMain);
         if (*blockNumMain == -1) {
             GF_ASSERT(FALSE);
             return FALSE;
@@ -508,9 +508,9 @@ static BOOL ObjCharTransferInternal_GetBlockNumAndFreeSpaceForTransfer(int vram,
         *blockNumMain = ObjCharTransfer_GetBlockMemOffset(*blockNumMain, sObjCharTransferTasksManager->blockSizeMain);
     }
     if (vram & NNS_G2D_VRAM_TYPE_2DSUB) {
-        *freeSpaceSub     = ObjCharTransfer_AlignToBlock(size, sObjCharTransferTasksManager->blockSizeSub, TRUE);
+        *freeSpaceSub = ObjCharTransfer_AlignToBlock(size, sObjCharTransferTasksManager->blockSizeSub, TRUE);
         u32 numBlocksUsed = ObjCharTransfer_CalcBlockNumLimit(*freeSpaceSub, sObjCharTransferTasksManager->blockSizeSub);
-        *blockNumSub      = ObjCharTransfer_FindAvailableTransferBlock(numBlocksUsed, sObjCharTransferTasksManager->blockBufSub);
+        *blockNumSub = ObjCharTransfer_FindAvailableTransferBlock(numBlocksUsed, sObjCharTransferTasksManager->blockBufSub);
         if (*blockNumSub == -1) {
             GF_ASSERT(FALSE);
             return FALSE;
@@ -531,12 +531,12 @@ static void ObjCharTransferTask_UpdateBaseAddrs(ObjCharTransferTask *task, u32 o
 
 static void ObjCharTransferInternal_ReserveTransferBlocksByVramOffsetAndSize(NNS_G2D_VRAM_TYPE vram, u32 offsetMain, u32 offsetSub, u32 sizeMain, u32 sizeSub) {
     if (vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
-        u32 numBlocks  = ObjCharTransfer_CalcBlockNumLimit(sizeMain, sObjCharTransferTasksManager->blockSizeMain);
+        u32 numBlocks = ObjCharTransfer_CalcBlockNumLimit(sizeMain, sObjCharTransferTasksManager->blockSizeMain);
         u32 blockStart = ObjCharTransfer_CalcBlockNumLimit(offsetMain, sObjCharTransferTasksManager->blockSizeMain);
         ObjCharTransfer_ReserveTransferBlocks(blockStart, numBlocks, sObjCharTransferTasksManager->blockBufMain);
     }
     if (vram & NNS_G2D_VRAM_TYPE_2DSUB) {
-        u32 numBlocks  = ObjCharTransfer_CalcBlockNumLimit(sizeSub, sObjCharTransferTasksManager->blockSizeSub);
+        u32 numBlocks = ObjCharTransfer_CalcBlockNumLimit(sizeSub, sObjCharTransferTasksManager->blockSizeSub);
         u32 blockStart = ObjCharTransfer_CalcBlockNumLimit(offsetSub, sObjCharTransferTasksManager->blockSizeSub);
         ObjCharTransfer_ReserveTransferBlocks(blockStart, numBlocks, sObjCharTransferTasksManager->blockBufSub);
     }
@@ -662,10 +662,10 @@ static void ObjCharTransfer_GetVramCapacityByBank(void) {
         break;
     }
 
-    int sizeToReserve                          = ObjCharTransfer_GetBlockMemOffset(sObjCharTransferTasksManager->numBlocksMain, sObjCharTransferTasksManager->blockSizeMain);
+    int sizeToReserve = ObjCharTransfer_GetBlockMemOffset(sObjCharTransferTasksManager->numBlocksMain, sObjCharTransferTasksManager->blockSizeMain);
     sObjCharTransferTasksManager->freeSizeMain = sObjCharTransferTasksManager->vramCapacityMain - sizeToReserve;
-    sizeToReserve                              = ObjCharTransfer_GetBlockMemOffset(sObjCharTransferTasksManager->numBlocksSub, sObjCharTransferTasksManager->blockSizeSub);
-    sObjCharTransferTasksManager->freeSizeSub  = sObjCharTransferTasksManager->vramCapacitySub - sizeToReserve;
+    sizeToReserve = ObjCharTransfer_GetBlockMemOffset(sObjCharTransferTasksManager->numBlocksSub, sObjCharTransferTasksManager->blockSizeSub);
+    sObjCharTransferTasksManager->freeSizeSub = sObjCharTransferTasksManager->vramCapacitySub - sizeToReserve;
     GF_ASSERT(sObjCharTransferTasksManager->freeSizeMain >= 0 && sObjCharTransferTasksManager->freeSizeSub >= 0);
     GF_ASSERT(sObjCharTransferTasksManager->freeSizeMain >= 0 && sObjCharTransferTasksManager->freeSizeSub >= 0); // they wanted to be doubly sure
 }
@@ -677,7 +677,7 @@ static void ObjCharTransfer_ClearBothScreensBlockBufs(void) {
 
 static void ObjCharTransfer_InitBlocksTransferBuffers(u32 numBlocksMain, u32 numBlocksSub, HeapID heapID) {
     sObjCharTransferTasksManager->numBlocksMain = numBlocksMain;
-    sObjCharTransferTasksManager->numBlocksSub  = numBlocksSub;
+    sObjCharTransferTasksManager->numBlocksSub = numBlocksSub;
     if (sObjCharTransferTasksManager->blockBufMain != NULL) {
         FreeToHeap(sObjCharTransferTasksManager->blockBufMain);
     }
@@ -722,7 +722,7 @@ static void ObjCharTransfer_ClearBlockBuf(u8 *buff) {
 static void ObjCharTransfer_ReserveTransferBlocks(u32 blockStart, u32 numBlocks, u8 *buffer) {
     if (buffer != NULL) {
         u32 blocksMax = ObjCharTransfer_GetBlocksCountFromBufferPtr(buffer);
-        u32 blockEnd  = blockStart + numBlocks;
+        u32 blockEnd = blockStart + numBlocks;
         for (int i = blockStart; i < blockEnd; ++i) {
             if (i >= blocksMax) {
                 break;
@@ -745,7 +745,7 @@ static u32 ObjCharTransfer_FindAvailableTransferBlock(u32 reserveSize, u8 *buffe
             u8 byteIndex;
             ObjCharTransfer_BitPositionToByteAndBitIndexPair(i, &bitIndex, &byteIndex);
             u8 mask = 1 << byteIndex;
-            int j   = 0;
+            int j = 0;
             while ((buffer[bitIndex] & mask) == 0 && j <= reserveSize) {
                 int num = i + j;
                 ObjCharTransfer_BitPositionToByteAndBitIndexPair(num, &bitIndex, &byteIndex);
@@ -780,13 +780,13 @@ static void ObjCharTransfer_ResetBlockTransferFlagsEx(u32 blockStart, u32 blockM
 
 static void ObjCharTransferTask_ResetBlockTransferFlags(ObjCharTransferTask *task) {
     if (task->vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
-        u32 loc      = NNS_G2dGetImageLocation(&task->imageProxy, NNS_G2D_VRAM_TYPE_2DMAIN);
+        u32 loc = NNS_G2dGetImageLocation(&task->imageProxy, NNS_G2D_VRAM_TYPE_2DMAIN);
         u32 blockCur = ObjCharTransfer_CalcBlockNumLimit(loc - sObjCharTransferTasksManager->freeSizeMain, sObjCharTransferTasksManager->blockSizeMain);
         u32 blockMax = ObjCharTransfer_CalcBlockNumLimit(task->sizeMain, sObjCharTransferTasksManager->blockSizeMain);
         ObjCharTransfer_ResetBlockTransferFlagsEx(blockCur, blockMax, sObjCharTransferTasksManager->blockBufMain);
     }
     if (task->vram & NNS_G2D_VRAM_TYPE_2DSUB) {
-        u32 loc      = NNS_G2dGetImageLocation(&task->imageProxy, NNS_G2D_VRAM_TYPE_2DSUB);
+        u32 loc = NNS_G2dGetImageLocation(&task->imageProxy, NNS_G2D_VRAM_TYPE_2DSUB);
         u32 blockCur = ObjCharTransfer_CalcBlockNumLimit(loc - sObjCharTransferTasksManager->freeSizeSub, sObjCharTransferTasksManager->blockSizeSub);
         u32 blockMax = ObjCharTransfer_CalcBlockNumLimit(task->sizeSub, sObjCharTransferTasksManager->blockSizeSub);
         ObjCharTransfer_ResetBlockTransferFlagsEx(blockCur, blockMax, sObjCharTransferTasksManager->blockBufSub);
@@ -862,13 +862,13 @@ static void ObjCharTransfer_ReserveVramSpace(u32 size, NNS_G2D_VRAM_TYPE vram) {
 
 static void ObjCharTransfer_BitPositionToByteAndBitIndexPair(int arrayBitIndex, u32 *byteIndex, u8 *bitIndex) {
     *byteIndex = arrayBitIndex >> 3;
-    *bitIndex  = arrayBitIndex & 7;
+    *bitIndex = arrayBitIndex & 7;
 }
 
 static void ObjCharTransferInternal_BoundsFixOffsetAndSize(u32 baseOffset, u32 curOffset, u32 size, int *correctedOffset, int *correctedSize) {
     *correctedOffset = curOffset - baseOffset;
     if (*correctedOffset < 0) {
-        *correctedSize   = size + *correctedOffset;
+        *correctedSize = size + *correctedOffset;
         *correctedOffset = 0;
     } else {
         *correctedSize = size;

@@ -71,25 +71,25 @@ void StartMapSceneScript(FieldSystem *fieldSystem, u16 script, LocalMapObject *l
 
 void FieldSystem_SetEngagedTrainer(FieldSystem *fieldSystem, LocalMapObject *obj, int a2, int a3, int a4, int trainerId, int encounterType, int idx) {
     ScriptEnvironment *env = TaskManager_GetEnvironment(fieldSystem->taskman);
-    EngagedTrainer *r0     = &env->engagedTrainers[idx];
-    r0->unk0               = a2;
-    r0->unk4               = a3;
-    r0->unk8               = a4;
-    r0->trainerId          = trainerId;
-    r0->encounterType      = encounterType;
-    r0->overworldEvent     = obj;
+    EngagedTrainer *r0 = &env->engagedTrainers[idx];
+    r0->unk0 = a2;
+    r0->unk4 = a3;
+    r0->unk8 = a4;
+    r0->trainerId = trainerId;
+    r0->encounterType = encounterType;
+    r0->overworldEvent = obj;
 }
 
 void QueueScript(TaskManager *taskman, u16 script, LocalMapObject *lastInteracted, void *a3) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
-    ScriptEnvironment *env   = ScriptEnvironment_New();
+    ScriptEnvironment *env = ScriptEnvironment_New();
     SetupScriptEngine(fieldSystem, env, script, lastInteracted, a3);
     TaskManager_Call(taskman, Task_RunScripts, env);
 }
 
 void StartScriptFromMenu(TaskManager *taskman, u16 script, LocalMapObject *lastInteracted) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
-    ScriptEnvironment *env   = ScriptEnvironment_New();
+    ScriptEnvironment *env = ScriptEnvironment_New();
     SetupScriptEngine(fieldSystem, env, script, lastInteracted, NULL);
     TaskManager_Jump(taskman, Task_RunScripts, env);
 }
@@ -99,16 +99,16 @@ BOOL Task_RunScripts(TaskManager *taskman) {
     FieldSystem *fieldSystem;
     ScriptEnvironment *env;
 
-    env         = TaskManager_GetEnvironment(taskman);
+    env = TaskManager_GetEnvironment(taskman);
     fieldSystem = TaskManager_GetFieldSystem(taskman);
 
     switch (env->state) {
     case 0:
-        env->scriptContexts[0]        = CreateScriptContext(fieldSystem, env->activeScriptNumber);
+        env->scriptContexts[0] = CreateScriptContext(fieldSystem, env->activeScriptNumber);
         env->activeScriptContextCount = 1;
-        env->msgfmt                   = MessageFormat_New_Custom(8, 64, HEAP_ID_FIELD);
-        env->stringBuffer0            = String_New(1024, HEAP_ID_FIELD);
-        env->stringBuffer1            = String_New(1024, HEAP_ID_FIELD);
+        env->msgfmt = MessageFormat_New_Custom(8, 64, HEAP_ID_FIELD);
+        env->stringBuffer0 = String_New(1024, HEAP_ID_FIELD);
+        env->stringBuffer1 = String_New(1024, HEAP_ID_FIELD);
         env->state++;
         // fallthrough
     case 1:
@@ -159,11 +159,11 @@ void DestroyScriptContext(ScriptContext *ctx) {
 }
 
 void SetupScriptEngine(FieldSystem *fieldSystem, ScriptEnvironment *env, u16 script, LocalMapObject *lastInteracted, void *a4) {
-    u16 *varLastInteracted  = FieldSysGetAttrAddrInternal(env, SCRIPTENV_SPECIAL_VAR_LAST_INTERACTED);
-    env->facingDirection    = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
-    env->lastInteracted     = lastInteracted;
+    u16 *varLastInteracted = FieldSysGetAttrAddrInternal(env, SCRIPTENV_SPECIAL_VAR_LAST_INTERACTED);
+    env->facingDirection = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
+    env->lastInteracted = lastInteracted;
     env->activeScriptNumber = script;
-    env->unk_34             = a4;
+    env->unk_34 = a4;
     if (lastInteracted != NULL) {
         *varLastInteracted = MapObject_GetID(lastInteracted);
     }
@@ -185,7 +185,7 @@ void SetUpScriptContextForMap(FieldSystem *fieldSystem, ScriptContext *ctx, u16 
     u16 r6;
 
     ctx->fieldSystem = fieldSystem;
-    r6               = LoadScriptsAndMessagesByMapId(fieldSystem, ctx, scriptId);
+    r6 = LoadScriptsAndMessagesByMapId(fieldSystem, ctx, scriptId);
     SetupBytecodeScript(ctx, ctx->mapScripts);
     ScriptRunByIndex(ctx, r6);
     sub_0203FD68(ctx, fieldSystem->taskman);
@@ -211,12 +211,12 @@ u16 LoadScriptsAndMessagesByMapId(FieldSystem *fieldSystem, ScriptContext *ctx, 
 
 void LoadScriptsAndMessagesParameterized(FieldSystem *fieldSystem, ScriptContext *ctx, int scriptBank, u32 msgBank) {
     ctx->mapScripts = AllocAndReadWholeNarcMemberByIdPair(NARC_fielddata_script_scr_seq, scriptBank, HEAP_ID_FIELD);
-    ctx->msgdata    = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msgBank, HEAP_ID_FIELD);
+    ctx->msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msgBank, HEAP_ID_FIELD);
 }
 
 void LoadScriptsAndMessagesForCurrentMap(FieldSystem *fieldSystem, ScriptContext *ctx) {
     ctx->mapScripts = LoadScriptsForCurrentMap(fieldSystem->location->mapId);
-    ctx->msgdata    = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, GetCurrentMapMessageBank(fieldSystem->location->mapId), HEAP_ID_FIELD);
+    ctx->msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, GetCurrentMapMessageBank(fieldSystem->location->mapId), HEAP_ID_FIELD);
 }
 
 void *FieldSysGetAttrAddrInternal(ScriptEnvironment *environment, enum ScriptEnvField field) {
@@ -401,7 +401,7 @@ void ClearTempFieldEventData(FieldSystem *fieldSystem) {
     u16 *vars;
 
     SaveVarsFlags *state = Save_VarsFlags_Get(fieldSystem->saveData);
-    flags                = Save_VarsFlags_GetFlagAddr(state, MAPTEMP_FLAG_BASE);
+    flags = Save_VarsFlags_GetFlagAddr(state, MAPTEMP_FLAG_BASE);
     memset(flags, 0, NUM_MAPTEMP_FLAGS / 8);
     vars = Save_VarsFlags_GetVarAddr(state, TEMP_VAR_BASE);
     memset(vars, 0, NUM_TEMP_VARS * 2);
@@ -411,7 +411,7 @@ void ClearDailyFlags(FieldSystem *fieldSystem) {
     u8 *flags;
 
     SaveVarsFlags *state = Save_VarsFlags_Get(fieldSystem->saveData);
-    flags                = Save_VarsFlags_GetFlagAddr(state, DAILY_FLAG_BASE);
+    flags = Save_VarsFlags_GetFlagAddr(state, DAILY_FLAG_BASE);
     memset(flags, 0, NUM_DAILY_FLAGS / 8);
 }
 
@@ -490,8 +490,8 @@ BOOL GetHiddenItemParams(ScriptEnvironment *env, u16 script) {
     var_8000 = FieldSysGetAttrAddrInternal(env, SCRIPTENV_SPECIAL_VAR_8000);
     var_8001 = FieldSysGetAttrAddrInternal(env, SCRIPTENV_SPECIAL_VAR_8001);
     var_8002 = FieldSysGetAttrAddrInternal(env, SCRIPTENV_SPECIAL_VAR_8002);
-    table    = sHiddenItemParam;
-    idx      = HiddenItemScriptNoToHiddenItemIdx(script);
+    table = sHiddenItemParam;
+    idx = HiddenItemScriptNoToHiddenItemIdx(script);
 
     for (i = 0; i < NELEMS(sHiddenItemParam); i++) {
         if (idx == table[i].index) {
@@ -522,28 +522,28 @@ HiddenItemResponse *AllocAndFetchNearbyHiddenItems(FieldSystem *fieldSystem, Hea
     int top;
     int bottom;
 
-    j       = 0;
+    j = 0;
     num_bgs = Field_GetNumBgEvents(fieldSystem);
     num_bgs++;
     ret = AllocFromHeap(heapId, num_bgs * sizeof(HiddenItemResponse));
     if (num_bgs == 1) {
         ret[0].unk4 = 0xFF;
-        ret[0].x    = -1;
-        ret[0].y    = -1;
+        ret[0].x = -1;
+        ret[0].y = -1;
         return ret;
     }
     bgEvents = Field_GetBgEvents(fieldSystem);
     if (bgEvents == NULL) {
         ret[0].unk4 = 0xFF;
-        ret[0].x    = -1;
-        ret[0].y    = -1;
+        ret[0].x = -1;
+        ret[0].y = -1;
         return ret;
     }
-    x      = GetPlayerXCoord(fieldSystem->playerAvatar);
-    y      = GetPlayerZCoord(fieldSystem->playerAvatar);
-    left   = x - 17;
-    right  = x + 17;
-    top    = y - 17;
+    x = GetPlayerXCoord(fieldSystem->playerAvatar);
+    y = GetPlayerZCoord(fieldSystem->playerAvatar);
+    left = x - 17;
+    right = x + 17;
+    top = y - 17;
     bottom = y + 17;
     if (left < 0) {
         left = 0;
@@ -561,15 +561,15 @@ HiddenItemResponse *AllocAndFetchNearbyHiddenItems(FieldSystem *fieldSystem, Hea
                 && bgEvents[i].z >= top
                 && bgEvents[i].z <= bottom) {
                 ret[j].unk4 = sub_02040578(bgEvents[i].scriptId);
-                ret[j].x    = bgEvents[i].x - x;
-                ret[j].y    = bgEvents[i].z - y;
+                ret[j].x = bgEvents[i].x - x;
+                ret[j].y = bgEvents[i].z - y;
                 j++;
             }
         }
     }
     ret[j].unk4 = 0xFF;
-    ret[j].x    = -1;
-    ret[j].y    = -1;
+    ret[j].x = -1;
+    ret[j].y = -1;
     return ret;
 }
 

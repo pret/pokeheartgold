@@ -100,9 +100,9 @@ BOOL PCStorage_PlaceMonInBoxByIndexPair(PCStorage *storage, u32 boxno, u32 slotn
 void PCStorage_SwapMonsInBoxByIndexPair(PCStorage *storage, u32 boxno, u32 from, u32 to) {
     BoxPokemon temp;
 
-    temp                             = storage->boxes[boxno].mons[from];
+    temp = storage->boxes[boxno].mons[from];
     storage->boxes[boxno].mons[from] = storage->boxes[boxno].mons[to];
-    storage->boxes[boxno].mons[to]   = temp;
+    storage->boxes[boxno].mons[to] = temp;
     PCStorage_SetBoxModified(storage, boxno);
 }
 
@@ -154,7 +154,7 @@ BOOL PCStorage_FindFirstEmptySlot(PCStorage *storage, int *boxno_p, int *slotno_
     do {
         while (j < MONS_PER_BOX) {
             if (!GetBoxMonData(&storage->boxes[i].mons[j], MON_DATA_SPECIES_EXISTS, NULL)) {
-                *boxno_p  = i;
+                *boxno_p = i;
                 *slotno_p = j;
                 return TRUE;
             }

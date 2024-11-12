@@ -213,9 +213,9 @@ static void IntroMovie_Scene3_Show2DGfx(IntroMovieScene3Data *sceneData, BgConfi
 
 static BOOL IntroMovie_Scene3_Main(IntroMovieOverlayData *data, IntroMovieScene3Data *sceneData, int totalFrames) {
     u8 stepTimer;
-    BgConfig *bgConfig                 = IntroMovie_GetBgConfig(data);
+    BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     IntroMovieBgLinearAnims *bgAnimCnt = IntroMovie_GetBgLinearAnimsController(data);
-    stepTimer                          = IntroMovie_GetSceneStepTimer(data);
+    stepTimer = IntroMovie_GetSceneStepTimer(data);
     IntroMovie_Scene3_Animate3DMap(sceneData);
     switch (IntroMovie_GetSceneStep(data)) {
     case INTRO_SCENE3_LOAD_NEWBARK:
@@ -600,20 +600,20 @@ static void IntroMovie_Scene3_UnloadOBJGraphics(IntroMovieOverlayData *data, Int
 static void IntroMovie_Scene3_CreateSprites(IntroMovieOverlayData *data, IntroMovieScene3Data *sceneData) {
     SpriteResourcesHeader header;
     SpriteTemplate template;
-    int unownSpriteYcoords[3]    = { 544, 672, 608 };
+    int unownSpriteYcoords[3] = { 544, 672, 608 };
     int unownSpriteAnimSeqNos[3] = { 1, 2, 3 };
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(2, data, 0, NNS_G2D_VRAM_TYPE_2DSUB, &template, &header);
-    template.position.x               = 128 * FX32_ONE;
-    template.position.y               = 608 * FX32_ONE;
+    template.position.x = 128 * FX32_ONE;
+    template.position.y = 608 * FX32_ONE;
     sceneData->silverSilhouetteSprite = Sprite_CreateAffine(&template);
     Sprite_SetAnimActiveFlag(sceneData->silverSilhouetteSprite, FALSE);
     Sprite_SetVisibleFlag(sceneData->silverSilhouetteSprite, FALSE);
     Sprite_SetAnimCtrlSeq(sceneData->silverSilhouetteSprite, 0);
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(3, data, 0, NNS_G2D_VRAM_TYPE_2DSUB, &template, &header);
-    template.position.x     = 32 * FX32_ONE;
-    template.position.y     = 608 * FX32_ONE;
+    template.position.x = 32 * FX32_ONE;
+    template.position.y = 608 * FX32_ONE;
     sceneData->eusineSprite = Sprite_CreateAffine(&template);
     Sprite_SetAnimActiveFlag(sceneData->eusineSprite, FALSE);
     Sprite_SetVisibleFlag(sceneData->eusineSprite, FALSE);
@@ -621,8 +621,8 @@ static void IntroMovie_Scene3_CreateSprites(IntroMovieOverlayData *data, IntroMo
 
     for (int i = 0; i < 3; ++i) {
         IntroMovie_BuildSpriteResourcesHeaderAndTemplate(3, data, 0, NNS_G2D_VRAM_TYPE_2DSUB, &template, &header);
-        template.position.x        = 128 * FX32_ONE;
-        template.position.y        = unownSpriteYcoords[i] * FX32_ONE;
+        template.position.x = 128 * FX32_ONE;
+        template.position.y = unownSpriteYcoords[i] * FX32_ONE;
         sceneData->unownSprites[i] = Sprite_CreateAffine(&template);
         Sprite_SetAnimActiveFlag(sceneData->unownSprites[i], FALSE);
         Sprite_SetVisibleFlag(sceneData->unownSprites[i], FALSE);
@@ -645,8 +645,8 @@ static void IntroMovie_Scene3_Load3dGfxData(IntroMovieScene3Data *sceneData) {
         NNS_G3dMdlUseGlbEmi(pMdl);
         NNS_G3dMdlUseGlbLightEnableFlag(pMdl);
         for (j = 0; j < 2; ++j) {
-            sceneData->mapRender[i].rawData[j]  = NARC_AllocAndReadWholeMember(narc, sMap3dObjFileIds[i][j], HEAP_ID_INTRO_MOVIE);
-            NNSG3dAnmObj *animObj               = NNS_G3dGetAnmByIdx(sceneData->mapRender[i].rawData[j], 0);
+            sceneData->mapRender[i].rawData[j] = NARC_AllocAndReadWholeMember(narc, sMap3dObjFileIds[i][j], HEAP_ID_INTRO_MOVIE);
+            NNSG3dAnmObj *animObj = NNS_G3dGetAnmByIdx(sceneData->mapRender[i].rawData[j], 0);
             sceneData->mapRender[i].animObjs[j] = NNS_G3dAllocAnmObj(&sceneData->allocator, animObj, pMdl);
             NNS_G3dAnmObjInit(sceneData->mapRender[i].animObjs[j], animObj, pMdl, resTex);
             NNS_G3dRenderObjAddAnmObj(&sceneData->mapRender[i].renderObj, sceneData->mapRender[i].animObjs[j]);
@@ -684,7 +684,7 @@ static void IntroMovie_Scene3_Animate3DMap(IntroMovieScene3Data *sceneData) {
         0,
         FX32_ONE,
     };
-    VecFx32 ones  = { FX32_ONE, FX32_ONE, FX32_ONE };
+    VecFx32 ones = { FX32_ONE, FX32_ONE, FX32_ONE };
     VecFx32 zeros = { 0, 0, 0 };
 
     int whichMap_i = sceneData->whichMap;

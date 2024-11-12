@@ -204,7 +204,7 @@ static BOOL Pokedex_CheckSeenForm_2max(Pokedex *pokedex, u32 species, u8 form) {
         return FALSE;
     }
     flag_p = Pokedex_GetFormOrderAddr(pokedex, species);
-    n      = Pokedex_GetSeenFormNum_2max(pokedex, species);
+    n = Pokedex_GetSeenFormNum_2max(pokedex, species);
     for (i = 0; i < n; i++) {
         flag = CheckDexFlag(flag_p, i + 1);
         if (flag == form) {
@@ -270,7 +270,7 @@ static void Pokedex_SetSeenForm_3max(Pokedex *pokedex, u32 species, u32 state) {
     GF_ASSERT(species == SPECIES_BURMY || species == SPECIES_WORMADAM || species == SPECIES_PICHU);
     if (!Pokedex_CheckSeenForm_3max(pokedex, species, state)) {
         flag_p = Pokedex_GetFormOrderAddr(pokedex, species);
-        n      = Pokedex_CountSeenForms_3max(pokedex, species);
+        n = Pokedex_CountSeenForms_3max(pokedex, species);
         if (n < 3) {
             SetDex2FlagState(flag_p, state, n);
         }
@@ -516,18 +516,18 @@ static BOOL SpeciesIsNotJohtoMythical(u16 species) {
 
 void Save_Pokedex_Init(Pokedex *pokedex) {
     memset(pokedex, 0, sizeof(Pokedex));
-    pokedex->magic       = POKEDEX_MAGIC;
+    pokedex->magic = POKEDEX_MAGIC;
     pokedex->nationalDex = 0;
     memset(pokedex->unownSeenOrder, 0xFF, 28);
     memset(pokedex->unownCaughtOrder, 0xFF, 28);
-    pokedex->shellosFormOrder   = 0xFF;
+    pokedex->shellosFormOrder = 0xFF;
     pokedex->gastrodonFormOrder = 0xFF;
-    pokedex->burmyFormOrder     = 0xFF;
-    pokedex->wormadamFormOrder  = 0xFF;
-    pokedex->rotomFormOrder     = -1;
-    pokedex->shayminFormOrder   = 0xFF;
-    pokedex->giratinaFormOrder  = 0xFF;
-    pokedex->pichuFormOrder     = 0xFF;
+    pokedex->burmyFormOrder = 0xFF;
+    pokedex->wormadamFormOrder = 0xFF;
+    pokedex->rotomFormOrder = -1;
+    pokedex->shayminFormOrder = 0xFF;
+    pokedex->giratinaFormOrder = 0xFF;
+    pokedex->pichuFormOrder = 0xFF;
     Pokedex_InitDeoxysFormOrder(pokedex);
 }
 
@@ -568,7 +568,7 @@ u16 Pokedex_CountJohtoDexOwned(Pokedex *pokedex) {
     u16 i, n;
     ASSERT_POKEDEX(pokedex);
     johto_species = LoadSpeciesToJohtoDexNoLUT();
-    n             = 0;
+    n = 0;
     for (i = 1; i <= NATIONAL_DEX_COUNT; i++) {
         if (Pokedex_CheckMonCaughtFlag(pokedex, i) == TRUE && johto_species[i] != J_SPECIES_NONE) {
             n++;
@@ -583,7 +583,7 @@ u16 Pokedex_CountJohtoDexSeen(Pokedex *pokedex) {
     u16 i, n;
     ASSERT_POKEDEX(pokedex);
     johto_species = LoadSpeciesToJohtoDexNoLUT();
-    n             = 0;
+    n = 0;
     for (i = 1; i <= NATIONAL_DEX_COUNT; i++) {
         if (Pokedex_CheckMonSeenFlag(pokedex, i) == TRUE && johto_species[i] != J_SPECIES_NONE) {
             n++;
@@ -620,7 +620,7 @@ u16 Pokedex_CountJohtoOwned_ExcludeMythical(Pokedex *pokedex) {
     u16 *johto_dex;
 
     johto_dex = LoadSpeciesToJohtoDexNoLUT();
-    n         = 0;
+    n = 0;
     for (i = 1; i <= NATIONAL_DEX_COUNT; i++) {
         if (Pokedex_CheckMonCaughtFlag(pokedex, i) == TRUE && johto_dex[i] != J_SPECIES_NONE && SpeciesIsNotJohtoMythical(i) == TRUE) {
             n++;
@@ -774,9 +774,9 @@ void Pokedex_SetMonSeenFlag(Pokedex *pokedex, Pokemon *mon) {
     u32 gender;
     u8 seenGender;
 
-    species     = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
-    gender      = GetMonGender(mon);
+    gender = GetMonGender(mon);
 
     ASSERT_POKEDEX(pokedex);
     if (!DexSpeciesIsInvalid(species)) {
@@ -803,10 +803,10 @@ void Pokedex_SetMonCaughtFlag(Pokedex *pokedex, Pokemon *mon) {
     u32 gender;
     u32 gender_ct;
 
-    species     = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    language    = GetMonData(mon, MON_DATA_GAME_LANGUAGE, NULL);
+    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    language = GetMonData(mon, MON_DATA_GAME_LANGUAGE, NULL);
     personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
-    gender      = GetMonGender(mon);
+    gender = GetMonGender(mon);
 
     ASSERT_POKEDEX(pokedex);
     if (!DexSpeciesIsInvalid(species)) {

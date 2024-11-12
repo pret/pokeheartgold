@@ -11,8 +11,8 @@ static void ReadFromNarcMemberByPathAndId(void *dest, const char *path, s32 file
     u32 gmif_start = 0;
     u32 chunk_size = 0;
     u32 file_start = 0;
-    u32 file_end   = 0;
-    u16 num_files  = 0;
+    u32 file_end = 0;
+    u16 num_files = 0;
 
     FS_InitFile(&file);
     FS_OpenFile(&file, path);
@@ -49,9 +49,9 @@ static void *AllocAndReadFromNarcMemberByPathAndId(const char *path, s32 file_id
     u32 gmif_start = 0;
     u32 chunk_size = 0;
     u32 file_start = 0;
-    u32 file_end   = 0;
-    u16 num_files  = 0;
-    void *dest     = NULL;
+    u32 file_end = 0;
+    u16 num_files = 0;
+    void *dest = NULL;
 
     FS_InitFile(&file);
     FS_OpenFile(&file, path);
@@ -121,8 +121,8 @@ u32 GetNarcMemberSizeByIdPair(NarcId narc_id, s32 file_idx) {
     u32 btnf_start = 0;
     u32 gmif_start = 0;
     u32 file_start = 0;
-    u32 file_end   = 0;
-    u16 num_files  = 0;
+    u32 file_end = 0;
+    u16 num_files = 0;
 
     FS_InitFile(&file);
     FS_OpenFile(&file, sNarcFileList[narc_id]);

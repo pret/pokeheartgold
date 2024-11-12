@@ -119,16 +119,16 @@ BOOL sub_0204A5B0(u16 numRequired, SaveData *saveData, BOOL checkDuplicateItems)
     u8 numValid;
     u16 species, item, form;
     Party *party = SaveArray_Party_Get(saveData);
-    partyCount   = Party_GetCount(party);
+    partyCount = Party_GetCount(party);
     if (partyCount < numRequired) {
         return FALSE;
     }
     SpeciesAndItem validMons[PARTY_SIZE];
     for (i = 0, numValid = 0; i < partyCount; i++) {
         Pokemon *mon = Party_GetMonByIndex(party, i);
-        species      = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        item         = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
-        form         = GetMonData(mon, MON_DATA_FORM, NULL);
+        species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+        form = GetMonData(mon, MON_DATA_FORM, NULL);
         if (!checkDuplicateItems) {
             item = ITEM_NONE;
         }
@@ -142,7 +142,7 @@ BOOL sub_0204A5B0(u16 numRequired, SaveData *saveData, BOOL checkDuplicateItems)
             continue;
         }
         validMons[numValid].species = species;
-        validMons[numValid].item    = item;
+        validMons[numValid].item = item;
         numValid++;
     }
     if (numValid < numRequired) {
@@ -164,13 +164,13 @@ u32 sub_0204A6A0(u32 a0) {
 }
 
 void sub_0204A6A8(FieldSystem *fieldSystem) {
-    Location *warp  = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->saveData));
-    u32 y           = GetPlayerZCoord(fieldSystem->playerAvatar);
-    u32 x           = GetPlayerXCoord(fieldSystem->playerAvatar);
-    warp->mapId     = fieldSystem->location->mapId;
-    warp->warpId    = -1;
-    warp->x         = x;
-    warp->y         = y;
+    Location *warp = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->saveData));
+    u32 y = GetPlayerZCoord(fieldSystem->playerAvatar);
+    u32 x = GetPlayerXCoord(fieldSystem->playerAvatar);
+    warp->mapId = fieldSystem->location->mapId;
+    warp->warpId = -1;
+    warp->x = x;
+    warp->y = y;
     warp->direction = DIR_NORTH;
     SetFlag966(Save_VarsFlags_Get(fieldSystem->saveData));
 }
@@ -203,9 +203,9 @@ u16 sub_0204A750(SaveData *saveData) {
 }
 
 u32 sub_0204A764(SaveData *saveData) {
-    u32 unk                    = sub_0202D908(saveData);
+    u32 unk = sub_0202D908(saveData);
     FRONTIERDATA *frontierData = Save_FrontierData_Get(saveData);
-    u8 unk4                    = sub_0202D284(unk, 0, 0);
+    u8 unk4 = sub_0202D284(unk, 0, 0);
     if (unk4 == 5) {
         return unk4;
     }
@@ -235,14 +235,14 @@ UnkStruct_Fsys_A0 *sub_0204A824(SaveData *saveData, BOOL resumeFromPrevious, u32
     UnkStruct_Fsys_A0 *unkStruct = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_Fsys_A0));
     MI_CpuClear8(unkStruct, sizeof(UnkStruct_Fsys_A0));
     unkStruct->heapId = HEAP_ID_FIELD;
-    unkStruct->unk70  = sub_0202D908(saveData);
-    unkStruct->unk74  = Save_FrontierData_Get(saveData);
-    unkStruct->unk00  = 0x12345678;
+    unkStruct->unk70 = sub_0202D908(saveData);
+    unkStruct->unk74 = Save_FrontierData_Get(saveData);
+    unkStruct->unk00 = 0x12345678;
     sub_0202D3E4(unkStruct->unk70, 0);
     if (!resumeFromPrevious) {
-        unkStruct->unk0f        = a2;
-        unkStruct->unk0e        = sub_0204A3F4(unkStruct->unk0f);
-        unkStruct->unk0c        = 1;
+        unkStruct->unk0f = a2;
+        unkStruct->unk0e = sub_0204A3F4(unkStruct->unk0f);
+        unkStruct->unk0c = 1;
         unkStruct->curWinStreak = 0;
         for (u16 i = 0; i < 4; i++) {
             unkStruct->unk2a[i] = 0xff;
@@ -254,10 +254,10 @@ UnkStruct_Fsys_A0 *sub_0204A824(SaveData *saveData, BOOL resumeFromPrevious, u32
         u8 unk = unkStruct->unk0f;
         sub_0202D308(unkStruct->unk70, 0, &unk);
     } else {
-        unkStruct->unk0f        = sub_0202D284(unkStruct->unk70, 0, 0);
-        unkStruct->unk0c        = sub_0202D284(unkStruct->unk70, 1, 0);
+        unkStruct->unk0f = sub_0202D284(unkStruct->unk70, 0, 0);
+        unkStruct->unk0c = sub_0202D284(unkStruct->unk70, 1, 0);
         unkStruct->curWinStreak = unkStruct->unk0c - 1;
-        unkStruct->unk0e        = sub_0204A3F4(unkStruct->unk0f);
+        unkStruct->unk0e = sub_0204A3F4(unkStruct->unk0f);
         sub_0202D284(unkStruct->unk70, 5, unkStruct->unk2a);
         sub_0202D284(unkStruct->unk70, 8, unkStruct->unk3e);
         unkStruct->unk08 = sub_0202D284(unkStruct->unk70, 10, 0);
@@ -275,7 +275,7 @@ UnkStruct_Fsys_A0 *sub_0204A824(SaveData *saveData, BOOL resumeFromPrevious, u32
     unkStruct->unk11 = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(saveData));
     if (unkStruct->unk0f != 5) {
         FrontierSave *frontierSaveData = Save_Frontier_GetStatic(saveData);
-        GameStats *gameStats           = Save_GameStats_Get(saveData);
+        GameStats *gameStats = Save_GameStats_Get(saveData);
         u16 unk0;
         if (unkStruct->unk0f == 6) {
             unk0 = Save_VarsFlags_GetVar4052(Save_VarsFlags_Get(saveData));
@@ -339,8 +339,8 @@ u32 sub_0204AB10(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     Party *party = SaveArray_Party_Get(saveData);
     for (u16 i = 0; i < a0->unk0e; i++) {
         Pokemon *mon = Party_GetMonByIndex(party, a0->unk2a[i]);
-        species[i]   = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        items[i]     = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+        species[i] = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        items[i] = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
         if (i == 0) {
             continue;
         }
@@ -430,7 +430,7 @@ static void sub_0204ACA0(UnkStruct_Fsys_A0 *a0, SaveData *saveData, BOOL a2, u16
 }
 
 void sub_0204AD04(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
-    GameStats *gameStats           = Save_GameStats_Get(saveData);
+    GameStats *gameStats = Save_GameStats_Get(saveData);
     FrontierSave *frontierSaveData = Save_Frontier_GetStatic(saveData);
     if (a0->unk0f == 5) {
         return;
@@ -466,9 +466,9 @@ void sub_0204AE20(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     if (a0->unk0f == 5) {
         return;
     }
-    GameStats *gameStats           = Save_GameStats_Get(saveData);
+    GameStats *gameStats = Save_GameStats_Get(saveData);
     FrontierSave *frontierSaveData = Save_Frontier_GetStatic(saveData);
-    u32 unk4                       = a0->unk0f == 6 ? 112 : a0->unk0f * 2;
+    u32 unk4 = a0->unk0f == 6 ? 112 : a0->unk0f * 2;
     if (a0->unk0f == 6) {
         FrontierSave_GetStat(Save_Frontier_GetStatic(saveData), 100, sub_0205C268(100));
     } else {
@@ -666,9 +666,9 @@ u16 sub_0204B258(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
 }
 
 static BOOL sub_0204B2B8(SaveData *saveData, u32 ribbon, UnkStruct_Fsys_A0 *a2) {
-    u8 value     = TRUE;
+    u8 value = TRUE;
     Party *party = SaveArray_Party_Get(saveData);
-    u8 count     = 0;
+    u8 count = 0;
     for (s32 i = 0; i < a2->unk0e; i++) {
         Pokemon *mon = Party_GetMonByIndex(party, a2->unk2a[i]);
         if (GetMonData(mon, ribbon, NULL) == FALSE) {
@@ -696,20 +696,20 @@ static u32 sub_0204B318(UnkStruct_Fsys_A0 *a0) {
 
 static void sub_0204B34C(UnkStruct_0204B470 *a0, Pokemon *mon) {
     a0->species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    a0->form    = GetMonData(mon, MON_DATA_FORM, NULL);
-    a0->item    = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+    a0->form = GetMonData(mon, MON_DATA_FORM, NULL);
+    a0->item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
     for (s32 i = 0; i < MAX_MON_MOVES; i++) {
         a0->moves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
         a0->ppUp |= GetMonData(mon, MON_DATA_MOVE1PPUP + i, NULL) << (i * 2);
     }
     a0->language = GetMonData(mon, MON_DATA_GAME_LANGUAGE, NULL);
-    a0->otId     = GetMonData(mon, MON_DATA_OTID, NULL);
-    a0->pid      = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
-    a0->ivsWord  = GetMonData(mon, MON_DATA_IVS_WORD, NULL);
+    a0->otId = GetMonData(mon, MON_DATA_OTID, NULL);
+    a0->pid = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
+    a0->ivsWord = GetMonData(mon, MON_DATA_IVS_WORD, NULL);
     for (s32 i = 0; i < NUM_STATS; i++) {
         a0->evs[i] = GetMonData(mon, MON_DATA_HP_EV + i, NULL);
     }
-    a0->ability    = GetMonData(mon, MON_DATA_ABILITY, NULL);
+    a0->ability = GetMonData(mon, MON_DATA_ABILITY, NULL);
     a0->friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
     GetMonData(mon, MON_DATA_NICKNAME_FLAT, a0->nickname);
 }

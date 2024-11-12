@@ -76,7 +76,7 @@ Photo *PhotoAlbum_LoadAllInUsePhotos(const PhotoAlbum *photoAlbum, HeapID heapId
     u8 i, j, n;
     Photo *ret;
 
-    n   = PhotoAlbum_GetNumSaved(photoAlbum);
+    n = PhotoAlbum_GetNumSaved(photoAlbum);
     ret = AllocFromHeap(heapId, n * sizeof(Photo));
     MI_CpuClear8(ret, n * sizeof(Photo));
     j = 0;

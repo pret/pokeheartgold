@@ -33,7 +33,7 @@ void Save_SysInfo_InitFromSystem(SysInfo *sys_info) {
     OS_GetMacAddress(sys_info->mac_address);
     OS_GetOwnerInfo(&owner_info);
     sys_info->birth_month = owner_info.birthday.month;
-    sys_info->birth_day   = owner_info.birthday.day;
+    sys_info->birth_day = owner_info.birthday.day;
 }
 
 BOOL Save_SysInfo_MacAddressIsMine(SysInfo *sys_info) {
@@ -82,10 +82,10 @@ void Save_SysInfo_SetField4C(SysInfo *sys_info, void *a1) {
 void Save_SysInfo_RTC_Init(SysInfo_RTC *rtc_info) {
     rtc_info->initialized = TRUE;
     GF_RTC_CopyDateTime(&rtc_info->date, &rtc_info->time);
-    rtc_info->days_since_nitro_epoch    = RTC_ConvertDateToDay(&rtc_info->date);
+    rtc_info->days_since_nitro_epoch = RTC_ConvertDateToDay(&rtc_info->date);
     rtc_info->seconds_since_nitro_epoch = RTC_ConvertDateTimeToSecond(&rtc_info->date, &rtc_info->time);
-    rtc_info->seconds_at_game_clear     = 0;
-    rtc_info->unk34                     = 0;
+    rtc_info->seconds_at_game_clear = 0;
+    rtc_info->unk34 = 0;
 }
 
 BOOL sub_02028E1C(SysInfo_RTC *rtc_info) {

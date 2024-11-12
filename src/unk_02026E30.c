@@ -18,9 +18,9 @@ void Thunk_G3X_Reset(void) {
 }
 
 void RequestSwap3DBuffers(GXSortMode sortMode, GXBufferMode bufferMode) {
-    sGXRequest.sortMode   = sortMode;
+    sGXRequest.sortMode = sortMode;
     sGXRequest.bufferMode = bufferMode;
-    sGXRequest.requested  = TRUE;
+    sGXRequest.requested = TRUE;
 }
 
 void Handle3DBufferSwapRequest(void) {

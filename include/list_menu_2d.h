@@ -10,7 +10,7 @@ struct ListMenu2DTemplate {
     u8 fontId;
     u8 itemsWide;
     u8 itemsHigh;
-    u8 yTop       : 4;
+    u8 yTop : 4;
     u8 cursorType : 2;
     u8 enableWrap : 2;
 };

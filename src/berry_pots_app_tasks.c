@@ -31,12 +31,12 @@ void ov17_0220351C(BerryPotsAppData *data) {
     args->data = data;
     args->unk6 = data->unk80;
     args->unk7 = data->unk81;
-    s8 diff    = data->unk81 - data->unk80;
+    s8 diff = data->unk81 - data->unk80;
     if (diff > 0) {
         args->sign = 1;
     } else {
         args->sign = -1;
-        diff       = -diff;
+        diff = -diff;
     }
 
     args->unk8 = (diff *= 27) / 4;
@@ -83,7 +83,7 @@ void ov17_02203638(BerryPotsAppData *data) {
     SysTaskArgs_ov17_02203674 *args = AllocFromHeap(data->heapId, sizeof(SysTaskArgs_ov17_02203674));
     MI_CpuFill8(args, 0, sizeof(SysTaskArgs_ov17_02203674));
 
-    args->data     = data;
+    args->data = data;
     args->potIndex = data->unk7C;
 
     SysTask_CreateOnMainQueue((SysTaskFunc)ov17_02203674, args, 0);
@@ -178,15 +178,15 @@ void ov17_0220387C(BerryPotsAppData *data) {
         data->unk20[i].unkC = data->unk20[i].growthStage;
         data->unk20[i].unkD = data->unk20[i].soilState;
 
-        data->unk20[i].berryId              = BerryPots_GetPotBerryId(data->berryPots, i);
-        data->unk20[i].growthStage          = BerryPots_GetPotGrowthStage(data->berryPots, i);
-        data->unk20[i].unk2                 = ov16_022015EC(data->berryPots, i);
-        data->unk20[i].moisture             = BerryPots_GetPotMoisture(data->berryPots, i);
-        data->unk20[i].mulch                = BerryPots_GetPotMulch(data->berryPots, i);
+        data->unk20[i].berryId = BerryPots_GetPotBerryId(data->berryPots, i);
+        data->unk20[i].growthStage = BerryPots_GetPotGrowthStage(data->berryPots, i);
+        data->unk20[i].unk2 = ov16_022015EC(data->berryPots, i);
+        data->unk20[i].moisture = BerryPots_GetPotMoisture(data->berryPots, i);
+        data->unk20[i].mulch = BerryPots_GetPotMulch(data->berryPots, i);
         data->unk20[i].quantityOrYieldMaybe = ov16_02201668(data->berryPots, i);
-        data->unk20[i].unk6                 = ov16_022015F8(data->berryPots, i);
-        data->unk20[i].unk8                 = ov16_02201604(data->berryPots, i);
-        data->unk20[i].soilState            = BerryPots_GetSoilState(data->berryPots, i);
+        data->unk20[i].unk6 = ov16_022015F8(data->berryPots, i);
+        data->unk20[i].unk8 = ov16_02201604(data->berryPots, i);
+        data->unk20[i].soilState = BerryPots_GetSoilState(data->berryPots, i);
     }
 }
 
@@ -216,7 +216,7 @@ static void ov17_02203928(BerryPotsAppData *data) {
 
         SysTaskArgs_ov17_022039A0 *args = AllocFromHeap(data->heapId, sizeof(SysTaskArgs_ov17_022039A0));
         MI_CpuFill8(args, 0, sizeof(SysTaskArgs_ov17_022039A0));
-        args->data     = data;
+        args->data = data;
         args->potIndex = i;
         SysTask_CreateOnMainQueue((SysTaskFunc)ov17_022039A0, args, 0);
         data->runningTasks++;
@@ -254,7 +254,7 @@ static void ov17_022039A0(SysTask *task, SysTaskArgs_ov17_022039A0 *args) {
 
 u32 ov17_02203A34(BerryPotsAppData *data) {
     BOOL flag = FALSE;
-    u32 r0    = ov17_02203B68(data, &flag);
+    u32 r0 = ov17_02203B68(data, &flag);
     if (!flag) {
         r0 = ov17_02203AD4(data);
     }
@@ -263,7 +263,7 @@ u32 ov17_02203A34(BerryPotsAppData *data) {
 
 BOOL ov17_02203A54(BerryPotsAppData *data) {
     BOOL flag = FALSE;
-    BOOL ret  = ov17_02203C20(data, &flag);
+    BOOL ret = ov17_02203C20(data, &flag);
     if (!flag) {
         ret = ov17_02203B88(data);
     }
@@ -316,10 +316,10 @@ static u32 ov17_02203AD4(BerryPotsAppData *data) {
 
     if (newKeys & PAD_KEY_LEFT) {
         data->unk7C = (data->unk7C + (MAX_BERRY_POT - 1)) % MAX_BERRY_POT;
-        flag        = TRUE;
+        flag = TRUE;
     } else if (newKeys & PAD_KEY_RIGHT) {
         data->unk7C = (data->unk7C + 1) % MAX_BERRY_POT;
-        flag        = TRUE;
+        flag = TRUE;
     }
 
     if (flag) {
@@ -335,7 +335,7 @@ static u32 ov17_02203B68(BerryPotsAppData *data, BOOL *a1) {
         return 2;
     }
 
-    *a1                  = TRUE;
+    *a1 = TRUE;
     data->fieldMenuState = MENU_INPUT_STATE_TOUCH;
     return ov17_02203A74(data, unk);
 }
@@ -353,10 +353,10 @@ static BOOL ov17_02203B88(BerryPotsAppData *data) {
 
     if (gSystem.newKeys & PAD_KEY_LEFT) {
         data->unk7C = (data->unk7C + (MAX_BERRY_POT - 1)) % MAX_BERRY_POT;
-        unk         = TRUE;
+        unk = TRUE;
     } else if (gSystem.newKeys & PAD_KEY_RIGHT) {
         data->unk7C = (data->unk7C + 1) % MAX_BERRY_POT;
-        unk         = TRUE;
+        unk = TRUE;
     }
 
     if (unk) {
@@ -379,10 +379,10 @@ static BOOL ov17_02203C20(BerryPotsAppData *data, BOOL *a1) {
         return FALSE;
     }
 
-    *a1                  = TRUE;
+    *a1 = TRUE;
     data->fieldMenuState = MENU_INPUT_STATE_TOUCH;
-    data->unk7C          = unk;
-    data->unk81          = data->unk7C;
+    data->unk7C = unk;
+    data->unk81 = data->unk7C;
     Sprite_SetAnimActiveFlag(data->sprites[1], FALSE);
     ov17_022028B8(data);
 
@@ -393,13 +393,13 @@ static int ov17_02203C78(BerryPotsAppData *data) {
     TouchscreenHitbox touchHitbox;
 
     for (int i = 0, xOffsetMaybe = 16; i < MAX_BERRY_POT; xOffsetMaybe += 28, i++) {
-        touchHitbox.rect.left  = xOffsetMaybe;
+        touchHitbox.rect.left = xOffsetMaybe;
         touchHitbox.rect.right = touchHitbox.rect.left + 22;
         if (data->unk20[i].growthStage < BERRY_POT_GROWTH_STAGE_GROWING) {
-            touchHitbox.rect.top    = 88;
+            touchHitbox.rect.top = 88;
             touchHitbox.rect.bottom = touchHitbox.rect.top + 24;
         } else {
-            touchHitbox.rect.top    = 72;
+            touchHitbox.rect.top = 72;
             touchHitbox.rect.bottom = touchHitbox.rect.top + 32;
         }
 

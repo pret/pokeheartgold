@@ -60,7 +60,7 @@ void NitroMain(void) {
     FontID_Alloc(0, HEAP_ID_3);
     FontID_Alloc(1, HEAP_ID_3);
     FontID_Alloc(3, HEAP_ID_3);
-    _02111868.unk_10.unk_00   = -1;
+    _02111868.unk_10.unk_00 = -1;
     _02111868.unk_10.saveData = SaveData_New();
     sub_02005D00();
     InitSoundData(Save_Chatot_Get(_02111868.unk_10.saveData), Save_PlayerData_GetOptionsAddr(_02111868.unk_10.saveData));
@@ -87,7 +87,7 @@ void NitroMain(void) {
             break;
         }
     }
-    gSystem.unk70        = 1;
+    gSystem.unk70 = 1;
     gSystem.frameCounter = 0;
     InitializeMainRNG();
     ScreenBrightnessData_InitAll();
@@ -133,9 +133,9 @@ void NitroMain(void) {
 }
 
 void Main_ResetOverlayManager(void) {
-    _02111868.mainOverlayId             = FS_OVERLAY_ID_NONE;
-    _02111868.overlayManager            = NULL;
-    _02111868.queuedMainOverlayId       = FS_OVERLAY_ID_NONE;
+    _02111868.mainOverlayId = FS_OVERLAY_ID_NONE;
+    _02111868.overlayManager = NULL;
+    _02111868.queuedMainOverlayId = FS_OVERLAY_ID_NONE;
     _02111868.queuedMainOverlayTemplate = NULL;
 }
 
@@ -147,9 +147,9 @@ static void Main_RunOverlayManager(void) {
         if (_02111868.queuedMainOverlayId != FS_OVERLAY_ID_NONE) {
             HandleLoadOverlay(_02111868.queuedMainOverlayId, OVY_LOAD_NORMAL);
         }
-        _02111868.mainOverlayId             = _02111868.queuedMainOverlayId;
-        _02111868.overlayManager            = OverlayManager_New(_02111868.queuedMainOverlayTemplate, &_02111868.unk_10, HEAP_ID_DEFAULT);
-        _02111868.queuedMainOverlayId       = FS_OVERLAY_ID_NONE;
+        _02111868.mainOverlayId = _02111868.queuedMainOverlayId;
+        _02111868.overlayManager = OverlayManager_New(_02111868.queuedMainOverlayTemplate, &_02111868.unk_10, HEAP_ID_DEFAULT);
+        _02111868.queuedMainOverlayId = FS_OVERLAY_ID_NONE;
         _02111868.queuedMainOverlayTemplate = NULL;
     }
     if (OverlayManager_Run(_02111868.overlayManager)) {
@@ -163,7 +163,7 @@ static void Main_RunOverlayManager(void) {
 
 void RegisterMainOverlay(FSOverlayID overlayId, const OVY_MGR_TEMPLATE *template) {
     GF_ASSERT(_02111868.queuedMainOverlayTemplate == NULL);
-    _02111868.queuedMainOverlayId       = overlayId;
+    _02111868.queuedMainOverlayId = overlayId;
     _02111868.queuedMainOverlayTemplate = template;
 }
 
@@ -220,9 +220,9 @@ static void sub_02000FD8(u32 a0, int a1) {
     int r4;
     int r5;
 
-    r4                       = 0;
-    sp4                      = sub_0203993C();
-    r7                       = sub_02039998();
+    r4 = 0;
+    sp4 = sub_0203993C();
+    r7 = sub_02039998();
     gSystem.touchpadReadAuto = FALSE;
     if (a1 == 3) {
         r5 = 3;

@@ -27,48 +27,48 @@ static BOOL Task_ShowPrintedBlackoutMessage(TaskManager *taskManager);
 static void Blackout_PrintMessage(BlackoutScreenEnvironment *environment, s32 msgNo, u8 x, u8 y);
 
 static const struct GraphicsBanks sBlackoutGraphicsBanks = {
-    .bg            = GX_VRAM_BG_128_B,
-    .bgextpltt     = GX_VRAM_BGEXTPLTT_NONE,
-    .subbg         = GX_VRAM_SUB_BG_128_C,
-    .subbgextpltt  = GX_VRAM_SUB_BGEXTPLTT_NONE,
-    .obj           = GX_VRAM_OBJ_64_E,
-    .objextpltt    = GX_VRAM_OBJEXTPLTT_NONE,
-    .subobj        = GX_VRAM_SUB_OBJ_16_I,
+    .bg = GX_VRAM_BG_128_B,
+    .bgextpltt = GX_VRAM_BGEXTPLTT_NONE,
+    .subbg = GX_VRAM_SUB_BG_128_C,
+    .subbgextpltt = GX_VRAM_SUB_BGEXTPLTT_NONE,
+    .obj = GX_VRAM_OBJ_64_E,
+    .objextpltt = GX_VRAM_OBJEXTPLTT_NONE,
+    .subobj = GX_VRAM_SUB_OBJ_16_I,
     .subobjextpltt = GX_VRAM_SUB_OBJEXTPLTT_NONE,
-    .tex           = GX_VRAM_TEX_0_A,
-    .texpltt       = GX_VRAM_TEXPLTT_01_FG,
+    .tex = GX_VRAM_TEX_0_A,
+    .texpltt = GX_VRAM_TEXPLTT_01_FG,
 };
 
 static const struct GraphicsModes sBlackoutGraphicsModes = {
-    .dispMode  = GX_DISPMODE_GRAPHICS,
-    .bgMode    = GX_BGMODE_0,
-    .subMode   = GX_BGMODE_0,
+    .dispMode = GX_DISPMODE_GRAPHICS,
+    .bgMode = GX_BGMODE_0,
+    .subMode = GX_BGMODE_0,
     ._2d3dMode = GX_BG0_AS_2D,
 };
 
 static const BgTemplate sBlackoutBgTemplate = {
-    .x          = 0,
-    .y          = 0,
+    .x = 0,
+    .y = 0,
     .bufferSize = 0x800,
-    .baseTile   = 0,
-    .size       = GF_BG_SCR_SIZE_256x256,
-    .colorMode  = GX_BG_COLORMODE_16,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
     .screenBase = GX_BG_SCRBASE_0xf800,
-    .charBase   = GX_BG_CHARBASE_0x00000,
-    .bgExtPltt  = GX_BG_EXTPLTT_01,
-    .priority   = 1,
-    .areaOver   = GX_BG_AREAOVER_XLU,
-    .dummy      = 0,
-    .mosaic     = FALSE
+    .charBase = GX_BG_CHARBASE_0x00000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 1,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .dummy = 0,
+    .mosaic = FALSE
 };
 
 static const WindowTemplate sBlackoutWindowTemplate = {
-    .bgId     = GF_BG_LYR_MAIN_3,
-    .left     = 4,
-    .top      = 5,
-    .width    = 25,
-    .height   = 15,
-    .palette  = 13,
+    .bgId = GF_BG_LYR_MAIN_3,
+    .left = 4,
+    .top = 5,
+    .width = 25,
+    .height = 15,
+    .palette = 13,
     .baseTile = 0x01
 };
 
@@ -85,16 +85,16 @@ static void Blackout_DrawMessage(FieldSystem *fieldSystem, TaskManager *taskMana
 
     GF_ASSERT(env != NULL);
     memset(env, 0, sizeof(BlackoutScreenEnvironment));
-    env->state       = 0;
+    env->state = 0;
     env->fieldSystem = fieldSystem;
-    env->bgConfig    = BgConfig_Alloc(HEAP_ID_FIELD);
+    env->bgConfig = BgConfig_Alloc(HEAP_ID_FIELD);
     sub_0200FBF4(PM_LCD_TOP, RGB_WHITE); // are RGBs correct here?
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_WHITE);
     sub_0200FBDC(0); // PM_LCD_TOP?
     sub_0200FBDC(1); // PM_LCD_TOP?
     Blackout_InitDisplays(env->bgConfig);
     env->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0203_bin, HEAP_ID_FIELD);
-    env->msgFmt  = MessageFormat_New(HEAP_ID_FIELD);
+    env->msgFmt = MessageFormat_New(HEAP_ID_FIELD);
 
     AddWindow(env->bgConfig, &env->window, &sBlackoutWindowTemplate);
 
@@ -166,7 +166,7 @@ static void Blackout_PrintMessage(BlackoutScreenEnvironment *environment, s32 ms
     StringExpandPlaceholders(environment->msgFmt, finStr, tmpStr);
 
     u32 width = FontID_String_GetWidthMultiline(0, finStr, 0);
-    x         = (environment->window.width * 8 - width);
+    x = (environment->window.width * 8 - width);
     x /= 2;
     x -= 4;
 
@@ -188,7 +188,7 @@ enum {
 
 BOOL Task_Blackout(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    u32 *state               = TaskManager_GetStatePtr(taskManager);
+    u32 *state = TaskManager_GetStatePtr(taskManager);
     LocalFieldData *localFieldData;
     Location deathWarp;
     u16 deathSpawn;
@@ -196,7 +196,7 @@ BOOL Task_Blackout(TaskManager *taskManager) {
     switch (*state) {
     case STATE_BLACKOUT_TASK_INIT:
         localFieldData = Save_LocalFieldData_Get(fieldSystem->saveData);
-        deathSpawn     = LocalFieldData_GetBlackoutSpawn(localFieldData);
+        deathSpawn = LocalFieldData_GetBlackoutSpawn(localFieldData);
         GetDeathWarpData(deathSpawn, &deathWarp);
         GetSpecialSpawnWarpData(deathSpawn, LocalFieldData_GetSpecialSpawnWarpPtr(localFieldData));
         sub_020537A8(taskManager, &deathWarp);

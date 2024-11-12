@@ -150,7 +150,7 @@ void sub_0202F784(SafariZone *safari_zone, IGT *igt) {
 
 u32 sub_0202F798(SafariZone *safari_zone, IGT *igt, s32 a2) {
     u16 minutes = (igt->hours * 60) + igt->minutes;
-    s32 delta   = minutes - safari_zone->unk5FA;
+    s32 delta = minutes - safari_zone->unk5FA;
 
     if (delta >= a2 * 60) {
         return 1;
@@ -165,10 +165,10 @@ u32 sub_0202F798(SafariZone *safari_zone, IGT *igt, s32 a2) {
 
 void SafariZone_SetLinkLeaderFromProfile(SafariZone *safari_zone, PlayerProfile *profile, HeapID heapId) {
     SAFARIZONE_LINKLEADER *link_leader = &safari_zone->link_leader;
-    link_leader->id                    = PlayerProfile_GetTrainerID(profile);
-    link_leader->gender                = PlayerProfile_GetTrainerGender(profile);
-    link_leader->language              = PlayerProfile_GetLanguage(profile);
-    link_leader->version               = PlayerProfile_GetVersion(profile);
+    link_leader->id = PlayerProfile_GetTrainerID(profile);
+    link_leader->gender = PlayerProfile_GetTrainerGender(profile);
+    link_leader->language = PlayerProfile_GetLanguage(profile);
+    link_leader->version = PlayerProfile_GetVersion(profile);
 
     String *name = String_New((PLAYER_NAME_LENGTH + 1) * sizeof(u16), heapId);
     PlayerName_FlatToString(profile, name);
@@ -178,7 +178,7 @@ void SafariZone_SetLinkLeaderFromProfile(SafariZone *safari_zone, PlayerProfile 
     link_leader->linked = TRUE;
 
     link_leader->received_timestamp = GF_RTC_DateTimeToSec();
-    link_leader->rtc_offset         = OS_GetOwnerRtcOffset();
+    link_leader->rtc_offset = OS_GetOwnerRtcOffset();
 }
 
 void SafariZone_GetLinkLeaderToProfile(SafariZone *safari_zone, PlayerProfile *profile) {
@@ -217,8 +217,8 @@ void SafariZone_DeactivateLinkIfExpired(SafariZone *safari_zone) {
 }
 
 void SafariZone_SwapAreasInSet(SAFARIZONE_AREASET *area_set, u32 first, u32 second) {
-    SAFARIZONE_AREA tmp     = area_set->areas[first];
-    area_set->areas[first]  = area_set->areas[second];
+    SAFARIZONE_AREA tmp = area_set->areas[first];
+    area_set->areas[first] = area_set->areas[second];
     area_set->areas[second] = tmp;
 }
 
@@ -282,10 +282,10 @@ void SafariZone_ClearObject(SAFARIZONE_OBJECT *object) {
 void SafariZone_ClearLeader(SAFARIZONE_LINKLEADER *link_leader) {
     MI_CpuClear8(link_leader, sizeof(SAFARIZONE_LINKLEADER));
 
-    link_leader->id       = 0;
-    link_leader->gender   = 0;
+    link_leader->id = 0;
+    link_leader->gender = 0;
     link_leader->language = gGameLanguage;
-    link_leader->version  = gGameVersion;
+    link_leader->version = gGameVersion;
     StringFillEOS(link_leader->name, PLAYER_NAME_LENGTH + 1);
 }
 

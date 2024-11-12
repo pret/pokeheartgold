@@ -41,10 +41,10 @@ void sub_02077894(BagView *bagView, u8 a1) {
 
 void sub_0207789C(BagView *bagView, SaveData *save, u8 a2, BagCursor *cursor, MenuInputStateMgr *menuInputStateMgr) {
     sub_02077894(bagView, a2);
-    bagView->saveData          = save;
+    bagView->saveData = save;
     bagView->menuInputStateMgr = menuInputStateMgr;
-    bagView->cursor            = cursor;
-    bagView->itemId            = ITEM_NONE;
+    bagView->cursor = cursor;
+    bagView->itemId = ITEM_NONE;
 }
 
 void BagView_SetItem(BagView *bagView, ItemSlot *slots, u8 pocketId, u8 position) {
@@ -53,7 +53,7 @@ void BagView_SetItem(BagView *bagView, ItemSlot *slots, u8 pocketId, u8 position
     // However, this variable is unused.
     // This bug was introduced in HGSS.
 #pragma unused(position)
-    bagView->pockets[pocketId].slots    = slots;
+    bagView->pockets[pocketId].slots = slots;
     bagView->pockets[pocketId].pocketId = pocketId;
 }
 
@@ -118,7 +118,7 @@ static u32 GetNumBattlePoints(SaveData *saveData) {
 }
 
 BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, String *dest, u16 itemId, HeapID heapId) {
-    MsgData *msgData             = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0010_bin, heapId);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0010_bin, heapId);
     MessageFormat *messageFormat = MessageFormat_New(heapId);
     String *string;
 
@@ -174,9 +174,9 @@ void GetItemUseErrorMessage(PlayerProfile *playerProfile, String *dest, u16 item
         break;
     default:
         // {PLAYER}! This isn't the time to use that!
-        msgData                      = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0040_bin, heapId);
+        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0040_bin, heapId);
         MessageFormat *messageFormat = MessageFormat_New(heapId);
-        String *src                  = NewString_ReadMsgData(msgData, msg_0040_00037);
+        String *src = NewString_ReadMsgData(msgData, msg_0040_00037);
         BufferPlayersName(messageFormat, 0, playerProfile);
         StringExpandPlaceholders(messageFormat, dest, src);
         String_Delete(src);

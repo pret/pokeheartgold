@@ -18,12 +18,12 @@ typedef struct SPLManager {
     u16 max_emtr_num;
     u16 max_ptcl_num;
     struct {
-        u32 min       : 6;
-        u32 max       : 6;
-        u32 current   : 6;
-        u32 fix       : 6;
+        u32 min : 6;
+        u32 max : 6;
+        u32 current : 6;
+        u32 fix : 6;
         u32 drawOrder : 1;
-        u32 reserved  : 7;
+        u32 reserved : 7;
     } polygonID;
     s32 misc_flag;
     struct {

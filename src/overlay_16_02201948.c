@@ -25,16 +25,16 @@ static const u8 ov16_02201B60[] = {
 };
 
 static const OVY_MGR_TEMPLATE ov16_02201B68 = {
-    .init   = BerryPotsApp_Initialize,
-    .exec   = BerryPotsApp_Run,
-    .exit   = BerryPotsApp_Exit,
+    .init = BerryPotsApp_Initialize,
+    .exec = BerryPotsApp_Run,
+    .exit = BerryPotsApp_Exit,
     .ovy_id = FS_OVERLAY_ID_NONE,
 };
 
 static const OVY_MGR_TEMPLATE ov16_02201B78 = {
-    .init   = Bag_Init,
-    .exec   = Bag_Main,
-    .exit   = Bag_Exit,
+    .init = Bag_Init,
+    .exec = Bag_Main,
+    .exit = Bag_Exit,
     .ovy_id = FS_OVERLAY_ID(OVY_15),
 };
 
@@ -79,7 +79,7 @@ BOOL BerryPots_Init(OVY_MANAGER *manager, int *state) {
     UnkStruct_ov16_0220196C *unk = OverlayManager_CreateAndGetData(manager, sizeof(UnkStruct_ov16_0220196C), HEAP_ID_BERRY_POTS);
     MI_CpuFill8(unk, 0, sizeof(UnkStruct_ov16_0220196C));
     unk->heapId = HEAP_ID_BERRY_POTS;
-    unk->args   = OverlayManager_GetArgs(manager);
+    unk->args = OverlayManager_GetArgs(manager);
     ov16_02201A34(unk);
 
     return TRUE;

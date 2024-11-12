@@ -10,12 +10,12 @@ typedef struct SPLEmitterFlag {
     union {
         u32 all;
         struct {
-            u32 terminate     : 1;
+            u32 terminate : 1;
             u32 stop_generate : 1;
-            u32 stop_calc     : 1;
-            u32 stop_draw     : 1;
-            u32 started       : 1;
-            u32 reserved0     : 27;
+            u32 stop_calc : 1;
+            u32 stop_draw : 1;
+            u32 started : 1;
+            u32 reserved0 : 27;
         };
     };
 } SPLEmitterFlag;
@@ -48,10 +48,10 @@ typedef struct SPLEmitter {
     fx16 chld_tex_s;
     fx16 chld_tex_t;
     struct {
-        u32 gen_intvl  : 8;
-        u32 base_alp   : 8;
+        u32 gen_intvl : 8;
+        u32 base_alp : 8;
         u32 calc_cycle : 3;
-        u32 reserved   : 13;
+        u32 reserved : 13;
     } etc;
     VecFx16 cross_to_axis_1;
     VecFx16 cross_to_axis_2;

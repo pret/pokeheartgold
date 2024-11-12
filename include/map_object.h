@@ -115,39 +115,39 @@ typedef struct UnkLMOCallbackStruct2 {
 } UnkLMOCallbackStruct2;
 
 typedef enum MapObjectFlagBits {
-    MAPOBJECTFLAG_NONE            = 0,
-    MAPOBJECTFLAG_ACTIVE          = (1 << 0),
+    MAPOBJECTFLAG_NONE = 0,
+    MAPOBJECTFLAG_ACTIVE = (1 << 0),
     MAPOBJECTFLAG_SINGLE_MOVEMENT = (1 << 1),
-    MAPOBJECTFLAG_UNK2            = (1 << 2),
-    MAPOBJECTFLAG_UNK3            = (1 << 3),
-    MAPOBJECTFLAG_UNK4            = (1 << 4),
-    MAPOBJECTFLAG_UNK5            = (1 << 5),
+    MAPOBJECTFLAG_UNK2 = (1 << 2),
+    MAPOBJECTFLAG_UNK3 = (1 << 3),
+    MAPOBJECTFLAG_UNK4 = (1 << 4),
+    MAPOBJECTFLAG_UNK5 = (1 << 5),
     MAPOBJECTFLAG_MOVEMENT_PAUSED = (1 << 6),
-    MAPOBJECTFLAG_UNK7            = (1 << 7),
-    MAPOBJECTFLAG_UNK8            = (1 << 8),
-    MAPOBJECTFLAG_VISIBLE         = (1 << 9),
-    MAPOBJECTFLAG_KEEP            = (1 << 10),
-    MAPOBJECTFLAG_UNK11           = (1 << 11),
-    MAPOBJECTFLAG_UNK12           = (1 << 12),
-    MAPOBJECTFLAG_UNK13           = (1 << 13),
-    MAPOBJECTFLAG_UNK14           = (1 << 14),
-    MAPOBJECTFLAG_UNK15           = (1 << 15),
-    MAPOBJECTFLAG_UNK16           = (1 << 16),
-    MAPOBJECTFLAG_UNK17           = (1 << 17),
-    MAPOBJECTFLAG_UNK18           = (1 << 18),
-    MAPOBJECTFLAG_UNK19           = (1 << 19),
-    MAPOBJECTFLAG_UNK20           = (1 << 20),
-    MAPOBJECTFLAG_UNK21           = (1 << 21),
-    MAPOBJECTFLAG_UNK22           = (1 << 22),
-    MAPOBJECTFLAG_IGNORE_HEIGHTS  = (1 << 23),
-    MAPOBJECTFLAG_UNK24           = (1 << 24),
-    MAPOBJECTFLAG_UNK25           = (1 << 25),
-    MAPOBJECTFLAG_UNK26           = (1 << 26),
-    MAPOBJECTFLAG_UNK27           = (1 << 27),
-    MAPOBJECTFLAG_UNK28           = (1 << 28),
-    MAPOBJECTFLAG_UNK29           = (1 << 29),
-    MAPOBJECTFLAG_UNK30           = (1 << 30),
-    MAPOBJECTFLAG_UNK31           = (1 << 31),
+    MAPOBJECTFLAG_UNK7 = (1 << 7),
+    MAPOBJECTFLAG_UNK8 = (1 << 8),
+    MAPOBJECTFLAG_VISIBLE = (1 << 9),
+    MAPOBJECTFLAG_KEEP = (1 << 10),
+    MAPOBJECTFLAG_UNK11 = (1 << 11),
+    MAPOBJECTFLAG_UNK12 = (1 << 12),
+    MAPOBJECTFLAG_UNK13 = (1 << 13),
+    MAPOBJECTFLAG_UNK14 = (1 << 14),
+    MAPOBJECTFLAG_UNK15 = (1 << 15),
+    MAPOBJECTFLAG_UNK16 = (1 << 16),
+    MAPOBJECTFLAG_UNK17 = (1 << 17),
+    MAPOBJECTFLAG_UNK18 = (1 << 18),
+    MAPOBJECTFLAG_UNK19 = (1 << 19),
+    MAPOBJECTFLAG_UNK20 = (1 << 20),
+    MAPOBJECTFLAG_UNK21 = (1 << 21),
+    MAPOBJECTFLAG_UNK22 = (1 << 22),
+    MAPOBJECTFLAG_IGNORE_HEIGHTS = (1 << 23),
+    MAPOBJECTFLAG_UNK24 = (1 << 24),
+    MAPOBJECTFLAG_UNK25 = (1 << 25),
+    MAPOBJECTFLAG_UNK26 = (1 << 26),
+    MAPOBJECTFLAG_UNK27 = (1 << 27),
+    MAPOBJECTFLAG_UNK28 = (1 << 28),
+    MAPOBJECTFLAG_UNK29 = (1 << 29),
+    MAPOBJECTFLAG_UNK30 = (1 << 30),
+    MAPOBJECTFLAG_UNK31 = (1 << 31),
 } MapObjectFlagBits;
 
 // this may be the same as above, I don't know
@@ -172,8 +172,8 @@ typedef struct MapObjectInitArgs {
 typedef struct ObjectEventGraphicsInfo {
     u16 spriteId;
     u16 mapModelId;
-    u16 unk4_0  : 5; // Unknown actual size
-    u16 unk4_5  : 5;
+    u16 unk4_0 : 5; // Unknown actual size
+    u16 unk4_5 : 5;
     u16 unk4_10 : 6; // Unknown actual size
 } ObjectEventGraphicsInfo;
 

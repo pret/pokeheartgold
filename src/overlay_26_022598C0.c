@@ -81,7 +81,7 @@ u16 TryGetRematchTrainerIdByBaseTrainerId(SaveData *saveData, u16 trainer_id) {
         return 0;
     }
 
-    u16 rematch_no         = GetIndexOfFirstUnbeatenRematch(saveData, rematch_set_no);
+    u16 rematch_no = GetIndexOfFirstUnbeatenRematch(saveData, rematch_set_no);
     u32 checked_rematch_no = CheckUnlockedRematchGroup(saveData, rematch_set_no, rematch_no);
     return GetRematchTrainerIdByIndexPair(rematch_set_no, checked_rematch_no);
 }

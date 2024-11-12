@@ -34,98 +34,98 @@ FS_EXTERN_OVERLAY(OVY_36);
 // In Diamond and Pearl, the player pics were animated.
 // Vestiges of that system remain here.
 typedef enum OakSpeechPic {
-    OAK_SPEECH_PIC_NONE  = 0,
-    OAK_SPEECH_PIC_OAK   = 1,
+    OAK_SPEECH_PIC_NONE = 0,
+    OAK_SPEECH_PIC_OAK = 1,
     OAK_SPEECH_PIC_ETHAN = 2,
-    OAK_SPEECH_PIC_LYRA  = 6,
+    OAK_SPEECH_PIC_LYRA = 6,
 } OakSpeechPic;
 
 typedef enum OakSpeechMainState {
-    OAK_SPEECH_MAIN_STATE_START_TUTORIAL_MUSIC                     = 0,
-    OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_TUTORIAL_MENU               = 1,
-    OAK_SPEECH_MAIN_STATE_PRINT_TUTORIAL_MENU_MESSAGES             = 2,
-    OAK_SPEECH_MAIN_STATE_TUTORIAL_MENU_HANDLE_INPUT               = 3,
-    OAK_SPEECH_MAIN_STATE_FADE_OUT_TUTORIAL_MENU                   = 4,
-    OAK_SPEECH_MAIN_STATE_FADE_OUT_TUTORIAL_MENU_BGS               = 5,
-    OAK_SPEECH_MAIN_STATE_WAIT_FADE_OUT_TUTORIAL_MENU_BGS          = 6,
-    OAK_SPEECH_MAIN_STATE_FADE_IN_TUTORIAL_MENU                    = 7,
-    OAK_SPEECH_MAIN_STATE_FADE_IN_CONTROL_INFO                     = 8,
-    OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_CONTROL_INFO                = 9,
-    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_1                           = 11,
-    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_2                           = 12,
-    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_3                           = 13,
-    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_4                           = 14,
-    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_5                           = 15,
-    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_6                           = 16,
-    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_7                           = 17,
-    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_8                           = 18,
-    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_9                           = 19,
-    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_10                          = 20,
-    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_11                          = 21,
-    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_23                          = 22,
-    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_ASK_UNDERSTOOD              = 23,
+    OAK_SPEECH_MAIN_STATE_START_TUTORIAL_MUSIC = 0,
+    OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_TUTORIAL_MENU = 1,
+    OAK_SPEECH_MAIN_STATE_PRINT_TUTORIAL_MENU_MESSAGES = 2,
+    OAK_SPEECH_MAIN_STATE_TUTORIAL_MENU_HANDLE_INPUT = 3,
+    OAK_SPEECH_MAIN_STATE_FADE_OUT_TUTORIAL_MENU = 4,
+    OAK_SPEECH_MAIN_STATE_FADE_OUT_TUTORIAL_MENU_BGS = 5,
+    OAK_SPEECH_MAIN_STATE_WAIT_FADE_OUT_TUTORIAL_MENU_BGS = 6,
+    OAK_SPEECH_MAIN_STATE_FADE_IN_TUTORIAL_MENU = 7,
+    OAK_SPEECH_MAIN_STATE_FADE_IN_CONTROL_INFO = 8,
+    OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_CONTROL_INFO = 9,
+    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_1 = 11,
+    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_2 = 12,
+    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_3 = 13,
+    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_4 = 14,
+    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_5 = 15,
+    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_6 = 16,
+    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_7 = 17,
+    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_8 = 18,
+    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_9 = 19,
+    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_10 = 20,
+    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_11 = 21,
+    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_23 = 22,
+    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_ASK_UNDERSTOOD = 23,
     OAK_SPEECH_MAIN_STATE_CONTROL_INFO_ASK_UNDERSTOOD_HANDLE_YESNO = 24,
-    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_UNDERSTOOD_YES              = 27,
-    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_UNDERSTOOD_YES_WAIT_FADE    = 28,
-    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_UNDERSTOOD_NO               = 29,
-    OAK_SPEECH_MAIN_STATE_FADE_IN_ADVENTURE_INFO                   = 34,
-    OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_ADVENTURE_INFO              = 35,
-    OAK_SPEECH_MAIN_STATE_ADVENTURE_INFO_1                         = 36,
-    OAK_SPEECH_MAIN_STATE_ADVENTURE_INFO_2                         = 37,
-    OAK_SPEECH_MAIN_STATE_ADVENTURE_INFO_3                         = 38,
-    OAK_SPEECH_MAIN_STATE_ADVENTURE_INFO_4                         = 39,
-    OAK_SPEECH_MAIN_STATE_ADVENTURE_INFO_5                         = 40,
-    OAK_SPEECH_MAIN_STATE_ADVENTURE_INFO_6                         = 41,
-    OAK_SPEECH_MAIN_STATE_ADVENTURE_INFO_FADE_OUT                  = 42,
-    OAK_SPEECH_MAIN_STATE_WAIT_FADE_OUT_ADVENTURE_INFO             = 43,
-    OAK_SPEECH_MAIN_STATE_NO_INFO_NEEDED_FADE_IN                   = 44,
-    OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_NO_INFO_NEEDED              = 45,
-    OAK_SPEECH_MAIN_STATE_PRINT_TIME_OF_DAY_MSG                    = 46,
-    OAK_SPEECH_MAIN_STATE_SHOW_OAK                                 = 47,
-    OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_OAK                         = 48,
-    OAK_SPEECH_MAIN_STATE_WELCOME_TO_WORLD                         = 49,
-    OAK_SPEECH_MAIN_STATE_SLIDE_OAK_RIGHT                          = 50,
-    OAK_SPEECH_MAIN_STATE_THIS_WORLD_IS_INHABITED                  = 51,
-    OAK_SPEECH_MAIN_STATE_BALL_OPENING_FLASH                       = 52,
-    OAK_SPEECH_MAIN_STATE_APPEAR_MARILL                            = 53,
-    OAK_SPEECH_MAIN_STATE_MARILL_CRY                               = 54,
-    OAK_SPEECH_MAIN_STATE_WAIT_MARILL_CRY                          = 55,
-    OAK_SPEECH_MAIN_STATE_WE_LIVE_ALONGSIDE                        = 56,
-    OAK_SPEECH_MAIN_STATE_HIDE_MARILL                              = 57,
-    OAK_SPEECH_MAIN_STATE_WAIT_AFTER_HIDE_MARILL                   = 58,
-    OAK_SPEECH_MAIN_STATE_SLIDE_OAK_LEFT                           = 59,
-    OAK_SPEECH_MAIN_STATE_TELL_ME_ABOUT_YOURSELF                   = 60,
-    OAK_SPEECH_MAIN_STATE_ARE_YOU_A_GENDER                         = 61,
-    OAK_SPEECH_MAIN_STATE_WAIT_FADE_OUT_TO_ASK_GENDER              = 62,
-    OAK_SPEECH_MAIN_STATE_SETUP_GENDER_SELECT_MENU                 = 63,
-    OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_GENDER_SELECT_MENU          = 64,
-    OAK_SPEECH_MAIN_STATE_GENDER_SELECT_MENU_HANDLE_INPUT          = 65,
-    OAK_SPEECH_MAIN_STATE_PREPARE_ASK_CONFIRM_GENDER               = 66,
-    OAK_SPEECH_MAIN_STATE_ASK_CONFIRM_GENDER                       = 67,
-    OAK_SPEECH_MAIN_STATE_CONFIRM_GENDER_YESNO_INIT_MENU           = 68,
-    OAK_SPEECH_MAIN_STATE_CONFIRM_GENDER_YESNO_HANDLE_INPUT        = 69,
-    OAK_SPEECH_MAIN_STATE_CONFIRM_GENDER_YESNO_HANDLE_RESULT       = 70,
-    OAK_SPEECH_MAIN_STATE_CONFIRM_GENDER_NO_WAIT_FADE_OUT          = 71,
-    OAK_SPEECH_MAIN_STATE_CONFIRM_GENDER_NO_WAIT_FADE_IN           = 72,
-    OAK_SPEECH_MAIN_STATE_CONFIRM_GENDER_YES                       = 93,
-    OAK_SPEECH_MAIN_STATE_PROMPT_NAME_DELAY_BEFORE                 = 94,
-    OAK_SPEECH_MAIN_STATE_PROMPT_NAME_LAUNCH_NAMING_SCREEN         = 95,
-    OAK_SPEECH_MAIN_STATE_PROMPT_NAME_RESTORE_GRAPHICS_AFTER       = 96,
-    OAK_SPEECH_MAIN_STATE_CONFIRM_NAME_YESNO_INIT_MENU             = 97,
-    OAK_SPEECH_MAIN_STATE_CONFIRM_NAME_YESNO_HANDLE_INPUT          = 98,
-    OAK_SPEECH_MAIN_STATE_CONFIRM_NAME_YESNO_HANDLE_RESULT         = 99,
-    OAK_SPEECH_MAIN_STATE_CONFIRM_NAME_YES                         = 100,
-    OAK_SPEECH_MAIN_STATE_CONFIRM_NAME_YES_WAIT_FADE_OUT           = 101,
-    OAK_SPEECH_MAIN_STATE_CONFIRM_NAME_YES_WAIT_FADE_IN            = 102,
-    OAK_SPEECH_MAIN_STATE_YOUR_ADVENTURE_UNFOLDS                   = 103,
-    OAK_SPEECH_MAIN_STATE_FADE_OUT_FROM_LAST_OAK_MESSAGE           = 110,
-    OAK_SPEECH_MAIN_STATE_WAIT_FADE_OUT_FROM_LAST_OAK_MESSAGE      = 111,
-    OAK_SPEECH_MAIN_STATE_FADE_IN_TO_SHRINK_ANIM                   = 120,
-    OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_TO_SHRINK_ANIM              = 121,
-    OAK_SPEECH_MAIN_STATE_NOP_BEFORE_SHRINK_ANIM                   = 123,
-    OAK_SPEECH_MAIN_STATE_INIT_SHRINK_ANIM_STATE                   = 124,
-    OAK_SPEECH_MAIN_STATE_DELAY_BEFORE_SHRINK_ANIM                 = 125,
-    OAK_SPEECH_MAIN_STATE_RUN_SHRINK_ANIM                          = 126,
+    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_UNDERSTOOD_YES = 27,
+    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_UNDERSTOOD_YES_WAIT_FADE = 28,
+    OAK_SPEECH_MAIN_STATE_CONTROL_INFO_UNDERSTOOD_NO = 29,
+    OAK_SPEECH_MAIN_STATE_FADE_IN_ADVENTURE_INFO = 34,
+    OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_ADVENTURE_INFO = 35,
+    OAK_SPEECH_MAIN_STATE_ADVENTURE_INFO_1 = 36,
+    OAK_SPEECH_MAIN_STATE_ADVENTURE_INFO_2 = 37,
+    OAK_SPEECH_MAIN_STATE_ADVENTURE_INFO_3 = 38,
+    OAK_SPEECH_MAIN_STATE_ADVENTURE_INFO_4 = 39,
+    OAK_SPEECH_MAIN_STATE_ADVENTURE_INFO_5 = 40,
+    OAK_SPEECH_MAIN_STATE_ADVENTURE_INFO_6 = 41,
+    OAK_SPEECH_MAIN_STATE_ADVENTURE_INFO_FADE_OUT = 42,
+    OAK_SPEECH_MAIN_STATE_WAIT_FADE_OUT_ADVENTURE_INFO = 43,
+    OAK_SPEECH_MAIN_STATE_NO_INFO_NEEDED_FADE_IN = 44,
+    OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_NO_INFO_NEEDED = 45,
+    OAK_SPEECH_MAIN_STATE_PRINT_TIME_OF_DAY_MSG = 46,
+    OAK_SPEECH_MAIN_STATE_SHOW_OAK = 47,
+    OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_OAK = 48,
+    OAK_SPEECH_MAIN_STATE_WELCOME_TO_WORLD = 49,
+    OAK_SPEECH_MAIN_STATE_SLIDE_OAK_RIGHT = 50,
+    OAK_SPEECH_MAIN_STATE_THIS_WORLD_IS_INHABITED = 51,
+    OAK_SPEECH_MAIN_STATE_BALL_OPENING_FLASH = 52,
+    OAK_SPEECH_MAIN_STATE_APPEAR_MARILL = 53,
+    OAK_SPEECH_MAIN_STATE_MARILL_CRY = 54,
+    OAK_SPEECH_MAIN_STATE_WAIT_MARILL_CRY = 55,
+    OAK_SPEECH_MAIN_STATE_WE_LIVE_ALONGSIDE = 56,
+    OAK_SPEECH_MAIN_STATE_HIDE_MARILL = 57,
+    OAK_SPEECH_MAIN_STATE_WAIT_AFTER_HIDE_MARILL = 58,
+    OAK_SPEECH_MAIN_STATE_SLIDE_OAK_LEFT = 59,
+    OAK_SPEECH_MAIN_STATE_TELL_ME_ABOUT_YOURSELF = 60,
+    OAK_SPEECH_MAIN_STATE_ARE_YOU_A_GENDER = 61,
+    OAK_SPEECH_MAIN_STATE_WAIT_FADE_OUT_TO_ASK_GENDER = 62,
+    OAK_SPEECH_MAIN_STATE_SETUP_GENDER_SELECT_MENU = 63,
+    OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_GENDER_SELECT_MENU = 64,
+    OAK_SPEECH_MAIN_STATE_GENDER_SELECT_MENU_HANDLE_INPUT = 65,
+    OAK_SPEECH_MAIN_STATE_PREPARE_ASK_CONFIRM_GENDER = 66,
+    OAK_SPEECH_MAIN_STATE_ASK_CONFIRM_GENDER = 67,
+    OAK_SPEECH_MAIN_STATE_CONFIRM_GENDER_YESNO_INIT_MENU = 68,
+    OAK_SPEECH_MAIN_STATE_CONFIRM_GENDER_YESNO_HANDLE_INPUT = 69,
+    OAK_SPEECH_MAIN_STATE_CONFIRM_GENDER_YESNO_HANDLE_RESULT = 70,
+    OAK_SPEECH_MAIN_STATE_CONFIRM_GENDER_NO_WAIT_FADE_OUT = 71,
+    OAK_SPEECH_MAIN_STATE_CONFIRM_GENDER_NO_WAIT_FADE_IN = 72,
+    OAK_SPEECH_MAIN_STATE_CONFIRM_GENDER_YES = 93,
+    OAK_SPEECH_MAIN_STATE_PROMPT_NAME_DELAY_BEFORE = 94,
+    OAK_SPEECH_MAIN_STATE_PROMPT_NAME_LAUNCH_NAMING_SCREEN = 95,
+    OAK_SPEECH_MAIN_STATE_PROMPT_NAME_RESTORE_GRAPHICS_AFTER = 96,
+    OAK_SPEECH_MAIN_STATE_CONFIRM_NAME_YESNO_INIT_MENU = 97,
+    OAK_SPEECH_MAIN_STATE_CONFIRM_NAME_YESNO_HANDLE_INPUT = 98,
+    OAK_SPEECH_MAIN_STATE_CONFIRM_NAME_YESNO_HANDLE_RESULT = 99,
+    OAK_SPEECH_MAIN_STATE_CONFIRM_NAME_YES = 100,
+    OAK_SPEECH_MAIN_STATE_CONFIRM_NAME_YES_WAIT_FADE_OUT = 101,
+    OAK_SPEECH_MAIN_STATE_CONFIRM_NAME_YES_WAIT_FADE_IN = 102,
+    OAK_SPEECH_MAIN_STATE_YOUR_ADVENTURE_UNFOLDS = 103,
+    OAK_SPEECH_MAIN_STATE_FADE_OUT_FROM_LAST_OAK_MESSAGE = 110,
+    OAK_SPEECH_MAIN_STATE_WAIT_FADE_OUT_FROM_LAST_OAK_MESSAGE = 111,
+    OAK_SPEECH_MAIN_STATE_FADE_IN_TO_SHRINK_ANIM = 120,
+    OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_TO_SHRINK_ANIM = 121,
+    OAK_SPEECH_MAIN_STATE_NOP_BEFORE_SHRINK_ANIM = 123,
+    OAK_SPEECH_MAIN_STATE_INIT_SHRINK_ANIM_STATE = 124,
+    OAK_SPEECH_MAIN_STATE_DELAY_BEFORE_SHRINK_ANIM = 125,
+    OAK_SPEECH_MAIN_STATE_RUN_SHRINK_ANIM = 126,
 } OakSpeechMainState;
 
 static void OakSpeech_VBlankCB(void *cbArg);
@@ -181,32 +181,32 @@ static const int ov53_021E84FC[1] = {
 };
 
 static const WindowTemplate ov53_021E8518 = {
-    .bgId     = GF_BG_LYR_SUB_0,
-    .left     = 24,
-    .top      = 20,
-    .width    = 7,
-    .height   = 2,
-    .palette  = 14,
+    .bgId = GF_BG_LYR_SUB_0,
+    .left = 24,
+    .top = 20,
+    .width = 7,
+    .height = 2,
+    .palette = 14,
     .baseTile = 0x0A3,
 };
 
 static const WindowTemplate sWindowTemplate_DialogMsg = {
-    .bgId     = GF_BG_LYR_MAIN_0,
-    .left     = 2,
-    .top      = 19,
-    .width    = 27,
-    .height   = 4,
-    .palette  = 6,
+    .bgId = GF_BG_LYR_MAIN_0,
+    .left = 2,
+    .top = 19,
+    .width = 27,
+    .height = 4,
+    .palette = 6,
     .baseTile = 0x36D,
 };
 
 static const WindowTemplate sFullScreenMsgWindowTemplate_copy2 = {
-    .bgId     = GF_BG_LYR_MAIN_0,
-    .left     = 4,
-    .top      = 0,
-    .width    = 24,
-    .height   = 24,
-    .palette  = 5,
+    .bgId = GF_BG_LYR_MAIN_0,
+    .left = 4,
+    .top = 0,
+    .width = 24,
+    .height = 24,
+    .palette = 5,
     .baseTile = 0x12D,
 };
 
@@ -232,12 +232,12 @@ static const TouchscreenHitbox ov53_021E8510[] = {
 };
 
 static const WindowTemplate sFullScreenMsgWindowTemplate_copy1 = {
-    .bgId     = GF_BG_LYR_MAIN_0,
-    .left     = 4,
-    .top      = 0,
-    .width    = 24,
-    .height   = 24,
-    .palette  = 5,
+    .bgId = GF_BG_LYR_MAIN_0,
+    .left = 4,
+    .top = 0,
+    .width = 24,
+    .height = 24,
+    .palette = 5,
     .baseTile = 0x12D,
 };
 
@@ -349,33 +349,33 @@ static const int sPlayerPicShrinkGfx_Female[6] = {
 };
 
 static const BgTemplate sBgTemplate_Main = {
-    .x          = 0,
-    .y          = 0,
+    .x = 0,
+    .y = 0,
     .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-    .baseTile   = 0,
-    .size       = GF_BG_SCR_SIZE_256x256,
-    .colorMode  = GX_BG_COLORMODE_16,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
     .screenBase = GX_BG_SCRBASE_0x0000,
-    .charBase   = GX_BG_CHARBASE_0x00000,
-    .bgExtPltt  = GX_BG_EXTPLTT_01,
-    .priority   = 1,
-    .areaOver   = GX_BG_AREAOVER_XLU,
-    .mosaic     = 0,
+    .charBase = GX_BG_CHARBASE_0x00000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 1,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .mosaic = 0,
 };
 
 static const BgTemplate sBgTemplate_Sub = {
-    .x          = 0,
-    .y          = 0,
+    .x = 0,
+    .y = 0,
     .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-    .baseTile   = 0,
-    .size       = GF_BG_SCR_SIZE_256x256,
-    .colorMode  = GX_BG_COLORMODE_16,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
     .screenBase = GX_BG_SCRBASE_0x0000,
-    .charBase   = GX_BG_CHARBASE_0x00000,
-    .bgExtPltt  = GX_BG_EXTPLTT_01,
-    .priority   = 0,
-    .areaOver   = GX_BG_AREAOVER_XLU,
-    .mosaic     = 0,
+    .charBase = GX_BG_CHARBASE_0x00000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 0,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .mosaic = 0,
 };
 
 static const int sMultichoiceMenuBgCursorCoords[][3] = {
@@ -547,17 +547,17 @@ BOOL OakSpeech_Init(OVY_MANAGER *ovyMan, int *pState) {
     CreateHeap(HEAP_ID_3, HEAP_ID_OAKS_SPEECH, 0x40000);
     OakSpeechData *data = OverlayManager_CreateAndGetData(ovyMan, sizeof(OakSpeechData), HEAP_ID_OAKS_SPEECH);
     memset(data, 0, sizeof(OakSpeechData));
-    data->heapId                        = HEAP_ID_OAKS_SPEECH;
+    data->heapId = HEAP_ID_OAKS_SPEECH;
     UnkStruct_02111868_sub *mainOvyArgs = OverlayManager_GetArgs(ovyMan);
-    data->saveData                      = mainOvyArgs->saveData;
-    data->options                       = Save_PlayerData_GetOptionsAddr(data->saveData);
-    data->state                         = OAK_SPEECH_MAIN_STATE_START_TUTORIAL_MUSIC;
-    data->unk_010                       = 0;
-    data->overlayManager                = NULL;
-    data->namingScreenArgs_Player       = NamingScreen_CreateArgs(HEAP_ID_OAKS_SPEECH, NAME_SCREEN_PLAYER, 0, PLAYER_NAME_LENGTH, data->options, NULL);
-    data->namingScreenArgs_Rival        = NamingScreen_CreateArgs(HEAP_ID_OAKS_SPEECH, NAME_SCREEN_RIVAL, 0, PLAYER_NAME_LENGTH, data->options, NULL);
-    data->lastChosenGender              = 0;
-    data->frameDelayCounter             = 0;
+    data->saveData = mainOvyArgs->saveData;
+    data->options = Save_PlayerData_GetOptionsAddr(data->saveData);
+    data->state = OAK_SPEECH_MAIN_STATE_START_TUTORIAL_MUSIC;
+    data->unk_010 = 0;
+    data->overlayManager = NULL;
+    data->namingScreenArgs_Player = NamingScreen_CreateArgs(HEAP_ID_OAKS_SPEECH, NAME_SCREEN_PLAYER, 0, PLAYER_NAME_LENGTH, data->options, NULL);
+    data->namingScreenArgs_Rival = NamingScreen_CreateArgs(HEAP_ID_OAKS_SPEECH, NAME_SCREEN_RIVAL, 0, PLAYER_NAME_LENGTH, data->options, NULL);
+    data->lastChosenGender = 0;
+    data->frameDelayCounter = 0;
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
     FontID_Alloc(4, data->heapId);
     return TRUE;
@@ -565,7 +565,7 @@ BOOL OakSpeech_Init(OVY_MANAGER *ovyMan, int *pState) {
 
 BOOL OakSpeech_Main(OVY_MANAGER *ovyMan, int *pState) {
     OakSpeechData *data = OverlayManager_GetData(ovyMan);
-    BOOL ret            = FALSE;
+    BOOL ret = FALSE;
     switch (*pState) {
     case 0:
         sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
@@ -622,7 +622,7 @@ BOOL OakSpeech_Main(OVY_MANAGER *ovyMan, int *pState) {
         if (OverlayManager_Run(data->overlayManager) == TRUE) {
             OverlayManager_Delete(data->overlayManager);
             data->overlayManager = NULL;
-            *pState              = 5;
+            *pState = 5;
         }
         break;
     case 5:
@@ -638,7 +638,7 @@ BOOL OakSpeech_Main(OVY_MANAGER *ovyMan, int *pState) {
 
 BOOL OakSpeech_Exit(OVY_MANAGER *ovyMan, int *pState) {
     OakSpeechData *data = OverlayManager_GetData(ovyMan);
-    HeapID heapId       = data->heapId;
+    HeapID heapId = data->heapId;
     FontID_Release(4);
     PlayerName_StringToFlat(Save_PlayerData_GetProfileAddr(data->saveData), data->namingScreenArgs_Player->nameInputString);
     PlayerProfile_SetTrainerGender(Save_PlayerData_GetProfileAddr(data->saveData), data->namingScreenArgs_Player->playerGenderOrMonSpecies);
@@ -685,22 +685,22 @@ static void OakSpeech_InitBgs(OakSpeechData *data) {
         BgTemplate bgTemplate = sBgTemplate_Main;
 
         bgTemplate.screenBase = GX_BG_SCRBASE_0x7800;
-        bgTemplate.charBase   = GX_BG_CHARBASE_0x18000;
+        bgTemplate.charBase = GX_BG_CHARBASE_0x18000;
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_MAIN_0, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_MAIN_0);
 
         bgTemplate.screenBase = GX_BG_SCRBASE_0x7000;
-        bgTemplate.charBase   = GX_BG_CHARBASE_0x14000;
+        bgTemplate.charBase = GX_BG_CHARBASE_0x14000;
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_MAIN_1, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_MAIN_1);
 
         bgTemplate.screenBase = GX_BG_SCRBASE_0x6800;
-        bgTemplate.charBase   = GX_BG_CHARBASE_0x10000;
+        bgTemplate.charBase = GX_BG_CHARBASE_0x10000;
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_MAIN_2, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_MAIN_2);
 
         bgTemplate.screenBase = GX_BG_SCRBASE_0x6000;
-        bgTemplate.charBase   = GX_BG_CHARBASE_0x0c000;
+        bgTemplate.charBase = GX_BG_CHARBASE_0x0c000;
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_MAIN_3, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_MAIN_3);
 
@@ -713,22 +713,22 @@ static void OakSpeech_InitBgs(OakSpeechData *data) {
         BgTemplate bgTemplate = sBgTemplate_Sub;
 
         bgTemplate.screenBase = GX_BG_SCRBASE_0x7800;
-        bgTemplate.charBase   = GX_BG_CHARBASE_0x18000;
+        bgTemplate.charBase = GX_BG_CHARBASE_0x18000;
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_SUB_0, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_0);
 
         bgTemplate.screenBase = GX_BG_SCRBASE_0x7000;
-        bgTemplate.charBase   = GX_BG_CHARBASE_0x14000;
+        bgTemplate.charBase = GX_BG_CHARBASE_0x14000;
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_SUB_1, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_1);
 
         bgTemplate.screenBase = GX_BG_SCRBASE_0x6800;
-        bgTemplate.charBase   = GX_BG_CHARBASE_0x10000;
+        bgTemplate.charBase = GX_BG_CHARBASE_0x10000;
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_SUB_2, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_2);
 
         bgTemplate.screenBase = GX_BG_SCRBASE_0x6000;
-        bgTemplate.charBase   = GX_BG_CHARBASE_0x0c000;
+        bgTemplate.charBase = GX_BG_CHARBASE_0x0c000;
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_SUB_3, &bgTemplate, GF_BG_TYPE_TEXT);
         BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_3);
 
@@ -772,11 +772,11 @@ static void OakSpeech_CleanupBgs(OakSpeechData *data) {
 static void OakSpeech_InitMsgPrinter(OakSpeechData *data) {
     data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0219_bin, data->heapId);
     ResetAllTextPrinters();
-    data->unk_114                         = sub_020163E0(NULL, PM_LCD_TOP, 6, data->heapId);
-    data->msgFormat                       = MessageFormat_New(data->heapId);
-    data->printDialogMsgState             = 0;
+    data->unk_114 = sub_020163E0(NULL, PM_LCD_TOP, 6, data->heapId);
+    data->msgFormat = MessageFormat_New(data->heapId);
+    data->printDialogMsgState = 0;
     data->printAndFadeFullScreenTextState = 0;
-    data->unk_080                         = 0;
+    data->unk_080 = 0;
 }
 
 static void OakSpeech_CleanupMsgPrinter(OakSpeechData *data) {
@@ -793,35 +793,35 @@ static BOOL OakSpeech_BlendLayer(OakSpeechData *data, int param, BOOL isFadeOut)
     switch (param) {
     default:
     case GF_BG_LYR_MAIN_0:
-        plane  = GX_BLEND_PLANEMASK_BG0;
+        plane = GX_BLEND_PLANEMASK_BG0;
         screen = PM_LCD_TOP;
         break;
     case GF_BG_LYR_MAIN_1:
-        plane  = GX_BLEND_PLANEMASK_BG1;
+        plane = GX_BLEND_PLANEMASK_BG1;
         screen = PM_LCD_TOP;
         break;
     case GF_BG_LYR_MAIN_2:
-        plane  = GX_BLEND_PLANEMASK_BG2;
+        plane = GX_BLEND_PLANEMASK_BG2;
         screen = PM_LCD_TOP;
         break;
     case GF_BG_LYR_SUB_0:
-        plane  = GX_BLEND_PLANEMASK_BG0;
+        plane = GX_BLEND_PLANEMASK_BG0;
         screen = PM_LCD_BOTTOM;
         break;
     case GF_BG_LYR_SUB_1:
-        plane  = GX_BLEND_PLANEMASK_BG1;
+        plane = GX_BLEND_PLANEMASK_BG1;
         screen = PM_LCD_BOTTOM;
         break;
     case GF_BG_LYR_SUB_2:
-        plane  = GX_BLEND_PLANEMASK_BG2;
+        plane = GX_BLEND_PLANEMASK_BG2;
         screen = PM_LCD_BOTTOM;
         break;
     case 101: // GF_BG_LYR_MAIN_OBJ
-        plane  = GX_BLEND_PLANEMASK_OBJ;
+        plane = GX_BLEND_PLANEMASK_OBJ;
         screen = PM_LCD_TOP;
         break;
     case 102: // GF_BG_LYR_SUB_OBJ
-        plane  = GX_BLEND_PLANEMASK_OBJ;
+        plane = GX_BLEND_PLANEMASK_OBJ;
         screen = PM_LCD_BOTTOM;
         break;
     }
@@ -829,8 +829,8 @@ static BOOL OakSpeech_BlendLayer(OakSpeechData *data, int param, BOOL isFadeOut)
     switch (data->layerBlendState) {
     case 0:
         if (!isFadeOut) {
-            data->layerBlendEv1   = 0;
-            data->layerBlendEv2   = 16;
+            data->layerBlendEv1 = 0;
+            data->layerBlendEv2 = 16;
             data->layerBlendState = 1;
             if (screen == 0) {
                 G2_SetBlendAlpha(
@@ -853,8 +853,8 @@ static BOOL OakSpeech_BlendLayer(OakSpeechData *data, int param, BOOL isFadeOut)
                 ToggleBgLayer(param, GF_PLANE_TOGGLE_ON);
             }
         } else {
-            data->layerBlendEv1   = 16;
-            data->layerBlendEv2   = 0;
+            data->layerBlendEv1 = 16;
+            data->layerBlendEv2 = 0;
             data->layerBlendState = 2;
         }
         break;
@@ -910,7 +910,7 @@ static BOOL OakSpeech_BlendLayer(OakSpeechData *data, int param, BOOL isFadeOut)
     case 3:
         G2_BlendNone();
         G2S_BlendNone();
-        ret                   = TRUE;
+        ret = TRUE;
         data->layerBlendState = 0;
         break;
     }
@@ -953,7 +953,7 @@ static BOOL OakSpeech_PrintDialogMsg(OakSpeechData *data, int msgNum, int waitBu
         StringExpandPlaceholders(data->msgFormat, data->string, temp);
         String_Delete(temp);
 
-        data->textPrinter         = AddTextPrinterParameterized(&data->dialogWindow, 1, data->string, 0, 0, Options_GetTextFrameDelay(data->options), NULL);
+        data->textPrinter = AddTextPrinterParameterized(&data->dialogWindow, 1, data->string, 0, 0, Options_GetTextFrameDelay(data->options), NULL);
         data->printDialogMsgState = 1;
         break;
     }
@@ -1000,8 +1000,8 @@ static BOOL OakSpeech_PrintAndFadeFullScreenText(OakSpeechData *data, int msgNum
         }
         switch (kind) {
         case 1:
-            windowTemplate        = sFullScreenMsgWindowTemplate_copy1;
-            windowTemplate.top    = y;
+            windowTemplate = sFullScreenMsgWindowTemplate_copy1;
+            windowTemplate.top = y;
             windowTemplate.height = height;
             AddWindow(data->bgConfig, &data->fullScreenMsgWindow, &windowTemplate);
             FillWindowPixelRect(&data->fullScreenMsgWindow, 0, 0, 0, 0xC0, 0xC0);
@@ -1010,8 +1010,8 @@ static BOOL OakSpeech_PrintAndFadeFullScreenText(OakSpeechData *data, int msgNum
         case 0:
         case 2:
         case 3:
-            windowTemplate        = sFullScreenMsgWindowTemplate_copy2;
-            windowTemplate.top    = y;
+            windowTemplate = sFullScreenMsgWindowTemplate_copy2;
+            windowTemplate.top = y;
             windowTemplate.height = height;
             if (kind == 3) {
                 windowTemplate.left += 4;
@@ -1033,7 +1033,7 @@ static BOOL OakSpeech_PrintAndFadeFullScreenText(OakSpeechData *data, int msgNum
             data->printAndFadeFullScreenTextState = 3;
             if (kind == 2) {
                 data->printAndFadeFullScreenTextState = 4;
-                ret                                   = TRUE;
+                ret = TRUE;
             }
         }
         break;
@@ -1053,7 +1053,7 @@ static BOOL OakSpeech_PrintAndFadeFullScreenText(OakSpeechData *data, int msgNum
         RemoveWindow(&data->fullScreenMsgWindow);
         BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_MAIN_0);
         data->printAndFadeFullScreenTextState = 0;
-        ret                                   = TRUE;
+        ret = TRUE;
         break;
     }
 
@@ -1067,50 +1067,50 @@ static BOOL OakSpeech_PrintAndFadeCenteredFullScreenText(OakSpeechData *data, in
 static const WindowTemplate sMultichoiceMenuButtonWindowTemplates[][3] = {
     {
      {
-            .bgId     = GF_BG_LYR_SUB_0,
-            .left     = 2,
-            .top      = 6,
-            .width    = 13,
-            .height   = 3,
-            .palette  = 14,
+            .bgId = GF_BG_LYR_SUB_0,
+            .left = 2,
+            .top = 6,
+            .width = 13,
+            .height = 3,
+            .palette = 14,
             .baseTile = 0x001,
         },
      {
-            .bgId     = GF_BG_LYR_SUB_0,
-            .left     = 2,
-            .top      = 16,
-            .width    = 13,
-            .height   = 3,
-            .palette  = 14,
+            .bgId = GF_BG_LYR_SUB_0,
+            .left = 2,
+            .top = 16,
+            .width = 13,
+            .height = 3,
+            .palette = 14,
             .baseTile = 0x036,
         },
      },
     {
      {
-            .bgId     = GF_BG_LYR_SUB_0,
-            .left     = 7,
-            .top      = 3,
-            .width    = 18,
-            .height   = 3,
-            .palette  = 14,
+            .bgId = GF_BG_LYR_SUB_0,
+            .left = 7,
+            .top = 3,
+            .width = 18,
+            .height = 3,
+            .palette = 14,
             .baseTile = 0x001,
         },
      {
-            .bgId     = GF_BG_LYR_SUB_0,
-            .left     = 7,
-            .top      = 10,
-            .width    = 18,
-            .height   = 3,
-            .palette  = 14,
+            .bgId = GF_BG_LYR_SUB_0,
+            .left = 7,
+            .top = 10,
+            .width = 18,
+            .height = 3,
+            .palette = 14,
             .baseTile = 0x037,
         },
      {
-            .bgId     = GF_BG_LYR_SUB_0,
-            .left     = 7,
-            .top      = 17,
-            .width    = 18,
-            .height   = 3,
-            .palette  = 14,
+            .bgId = GF_BG_LYR_SUB_0,
+            .left = 7,
+            .top = 17,
+            .width = 18,
+            .height = 3,
+            .palette = 14,
             .baseTile = 0x06D,
         },
      },
@@ -1164,15 +1164,15 @@ static void OakSpeech_LoadButtonTutorialGfx(OakSpeechData *data) {
     GfGfxLoader_LoadCharData(NARC_demo_intro_intro, NARC_intro_intro_00000032_NCGR, data->bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, data->heapId);
     if (gGameVersion == VERSION_HEARTGOLD) {
         plttId_Main = NARC_intro_intro_00000001_NCLR;
-        plttId_Sub  = NARC_intro_intro_00000030_NCLR;
+        plttId_Sub = NARC_intro_intro_00000030_NCLR;
     } else {
         plttId_Main = NARC_intro_intro_00000002_NCLR;
-        plttId_Sub  = NARC_intro_intro_00000031_NCLR;
+        plttId_Sub = NARC_intro_intro_00000031_NCLR;
     }
     GfGfxLoader_GXLoadPal(NARC_demo_intro_intro, plttId_Main, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0x60, data->heapId);
     GfGfxLoader_GXLoadPal(NARC_demo_intro_intro, plttId_Sub, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0, 0xA0, data->heapId);
 
-    plttData_raw                          = GfGfxLoader_GetPlttData(NARC_demo_intro_intro, plttId_Sub, &plttData, data->heapId);
+    plttData_raw = GfGfxLoader_GetPlttData(NARC_demo_intro_intro, plttId_Sub, &plttData, data->heapId);
     data->genderSelectFrameDefaultPalette = ((const u16 *)plttData->pRawData)[12];
     FreeToHeap(plttData_raw);
 
@@ -1249,19 +1249,19 @@ static void ov53_021E6824(OakSpeechData *data, int a1) {
 }
 
 static void OakSpeech_InitMultichoiceMenu(OakSpeechMultichoice *dest, int menuId) {
-    dest->cursorPos      = 0;
-    dest->unk_0          = 0;
-    dest->numOptions     = sMultichoiceMenuParam[menuId][1];
-    dest->pressDelay     = 0;
-    dest->flashDelay     = 0;
+    dest->cursorPos = 0;
+    dest->unk_0 = 0;
+    dest->numOptions = sMultichoiceMenuParam[menuId][1];
+    dest->pressDelay = 0;
+    dest->flashDelay = 0;
     dest->flashFramesPer = 16;
-    dest->inPadMode      = 0;
+    dest->inPadMode = 0;
 }
 
 static void OakSpeech_InitMultichoiceMenuWithFrameFlash(OakSpeechData *data, int menuId) {
-    data->menuData.unk_0          = 0;
-    data->menuData.numOptions     = sMultichoiceMenuParam[menuId][1];
-    data->menuData.flashDelay     = 0;
+    data->menuData.unk_0 = 0;
+    data->menuData.numOptions = sMultichoiceMenuParam[menuId][1];
+    data->menuData.flashDelay = 0;
     data->menuData.flashFramesPer = 16;
     GfGfxLoader_LoadScrnData(NARC_demo_intro_intro, sMultichoiceMenuParam[menuId][0], data->bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, data->heapId);
     GfGfxLoader_LoadCharData(NARC_demo_intro_intro, NARC_intro_intro_00000042_NCGR, data->bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, data->heapId);
@@ -1278,7 +1278,7 @@ static int OakSpeech_MultichoiceMenuHandleInputVertical(OakSpeechData *data, int
         ++data->menuData.pressDelay;
         if (data->menuData.pressDelay > 20) {
             data->menuData.pressDelay = 0;
-            ret                       = data->menuData.cursorPos;
+            ret = data->menuData.cursorPos;
         }
     } else if (gSystem.touchNew) {
         hitbox = TouchscreenHitbox_FindRectAtTouchNew(hitboxes[menuId]);
@@ -1287,7 +1287,7 @@ static int OakSpeech_MultichoiceMenuHandleInputVertical(OakSpeechData *data, int
             ToggleBgLayer(GF_BG_LYR_SUB_1, GF_PLANE_TOGGLE_ON);
             data->menuData.cursorPos = hitbox;
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_SET_Y, sMultichoiceMenuBgCursorCoords[menuId][data->menuData.cursorPos]);
-            data->menuData.pressDelay     = 1;
+            data->menuData.pressDelay = 1;
             data->menuData.flashFramesPer = 2;
             PlaySE(SEQ_SE_DP_SELECT);
         }
@@ -1311,12 +1311,12 @@ static int OakSpeech_MultichoiceMenuHandleInputVertical(OakSpeechData *data, int
             PlaySE(SEQ_SE_DP_SELECT);
         }
     } else if (gSystem.newKeys & PAD_BUTTON_A) {
-        data->menuData.pressDelay     = 1;
+        data->menuData.pressDelay = 1;
         data->menuData.flashFramesPer = 2;
         PlaySE(SEQ_SE_DP_SELECT);
     } else if (gSystem.newKeys & PAD_BUTTON_B) {
-        data->menuData.cursorPos      = data->menuData.numOptions - 1;
-        data->menuData.pressDelay     = 1;
+        data->menuData.cursorPos = data->menuData.numOptions - 1;
+        data->menuData.pressDelay = 1;
         data->menuData.flashFramesPer = 2;
         ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_SET_Y, sMultichoiceMenuBgCursorCoords[menuId][data->menuData.cursorPos]);
         PlaySE(SEQ_SE_DP_SELECT);
@@ -1401,13 +1401,13 @@ static BOOL OakSpeech_GenderSelectHandleInput(OakSpeechData *data) {
     if (gSystem.touchNew) {
         hitbox = TouchscreenHitbox_FindRectAtTouchNew(hitboxes);
         if (hitbox != -1) {
-            data->menuData.cursorPos      = hitbox;
-            data->menuData.pressDelay     = 1;
+            data->menuData.cursorPos = hitbox;
+            data->menuData.pressDelay = 1;
             data->menuData.flashFramesPer = 2;
             OakSpeech_BlinkHighlightedGenderFrame(data, 1);
             PlaySE(SEQ_SE_DP_SELECT);
             data->lastChosenGender = hitbox;
-            ret                    = TRUE;
+            ret = TRUE;
         }
     } else if (!data->menuData.inPadMode) {
         if (gSystem.newKeys & (PAD_BUTTON_A | PAD_KEY_LEFT | PAD_KEY_RIGHT)) {
@@ -1428,12 +1428,12 @@ static BOOL OakSpeech_GenderSelectHandleInput(OakSpeechData *data) {
                 PlaySE(SEQ_SE_DP_SELECT);
             }
         } else if (gSystem.newKeys & PAD_BUTTON_A) {
-            data->menuData.inPadMode      = 0;
-            data->menuData.pressDelay     = 1;
+            data->menuData.inPadMode = 0;
+            data->menuData.pressDelay = 1;
             data->menuData.flashFramesPer = 2;
             OakSpeech_BlinkHighlightedGenderFrame(data, 1);
             PlaySE(SEQ_SE_DP_SELECT);
-            ret                    = TRUE;
+            ret = TRUE;
             data->lastChosenGender = data->menuData.cursorPos;
         }
     }
@@ -1442,7 +1442,7 @@ static BOOL OakSpeech_GenderSelectHandleInput(OakSpeechData *data) {
 }
 
 static void OakSpeech_InitPlayerPicShrinkAnim(OakSpeechData *data) {
-    data->playerPicShrinkAnimStep  = 0;
+    data->playerPicShrinkAnimStep = 0;
     data->playerPicShrinkAnimDelay = 0;
 }
 
@@ -1498,18 +1498,18 @@ static BOOL OakSpeech_TranslateOakPicHorizontally(OakSpeechData *data, int bgId,
     switch (data->oakPicHTranslateState) {
     case 0:
         data->oakPicHTranslateState = 1;
-        data->oakPicHTranslatePos   = sOakPicTranslationParam[direction][0];
+        data->oakPicHTranslatePos = sOakPicTranslationParam[direction][0];
         break;
     case 1:
         data->oakPicHTranslatePos += sOakPicTranslationParam[direction][2];
         if (sOakPicTranslationParam[direction][2] > 0) {
             if (data->oakPicHTranslatePos >= sOakPicTranslationParam[direction][1]) {
-                data->oakPicHTranslatePos   = sOakPicTranslationParam[direction][1];
+                data->oakPicHTranslatePos = sOakPicTranslationParam[direction][1];
                 data->oakPicHTranslateState = 2;
             }
         } else {
             if (data->oakPicHTranslatePos <= sOakPicTranslationParam[direction][1]) {
-                data->oakPicHTranslatePos   = sOakPicTranslationParam[direction][1];
+                data->oakPicHTranslatePos = sOakPicTranslationParam[direction][1];
                 data->oakPicHTranslateState = 2;
             }
         }
@@ -1788,7 +1788,7 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
         break;
     case OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_NO_INFO_NEEDED:
         if (IsPaletteFadeFinished() == TRUE && OakSpeech_WaitFrames(data, 40) == TRUE) {
-            data->state       = OAK_SPEECH_MAIN_STATE_PRINT_TIME_OF_DAY_MSG;
+            data->state = OAK_SPEECH_MAIN_STATE_PRINT_TIME_OF_DAY_MSG;
             data->queuedMsgId = OakSpeech_GetTimeOfDayIntroMsg();
         }
         break;
@@ -1838,7 +1838,7 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
             StartBrightnessTransition(4, 0, 16, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BG0 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_OBJ), SCREEN_MASK_SUB);
             PlaySE(SEQ_SE_DP_BOWA2);
             data->playerPicShrinkAnimStep = 0;
-            data->state                   = OAK_SPEECH_MAIN_STATE_APPEAR_MARILL;
+            data->state = OAK_SPEECH_MAIN_STATE_APPEAR_MARILL;
         }
         break;
     case OAK_SPEECH_MAIN_STATE_APPEAR_MARILL:
@@ -1888,8 +1888,8 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
         break;
     case OAK_SPEECH_MAIN_STATE_TELL_ME_ABOUT_YOURSELF:
         if (OakSpeech_PrintDialogMsg(data, msg_0219_00036, 1) == TRUE) {
-            data->state               = OAK_SPEECH_MAIN_STATE_ARE_YOU_A_GENDER;
-            data->menuData.cursorPos  = 0;
+            data->state = OAK_SPEECH_MAIN_STATE_ARE_YOU_A_GENDER;
+            data->menuData.cursorPos = 0;
             data->menuData.numOptions = 2;
         }
         break;
@@ -1916,12 +1916,12 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
     case OAK_SPEECH_MAIN_STATE_WAIT_FADE_IN_GENDER_SELECT_MENU:
         if (IsPaletteFadeFinished() == TRUE) {
             data->menuData.cursorPos = data->lastChosenGender;
-            data->state              = OAK_SPEECH_MAIN_STATE_GENDER_SELECT_MENU_HANDLE_INPUT;
+            data->state = OAK_SPEECH_MAIN_STATE_GENDER_SELECT_MENU_HANDLE_INPUT;
         }
         break;
     case OAK_SPEECH_MAIN_STATE_GENDER_SELECT_MENU_HANDLE_INPUT:
         if (OakSpeech_GenderSelectHandleInput(data)) {
-            data->state        = OAK_SPEECH_MAIN_STATE_PREPARE_ASK_CONFIRM_GENDER;
+            data->state = OAK_SPEECH_MAIN_STATE_PREPARE_ASK_CONFIRM_GENDER;
             data->playerGender = data->menuData.cursorPos;
         }
         break;
@@ -1947,7 +1947,7 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
         OakSpeech_InitMultichoiceMenu(&data->menuData, 1);
         ov53_021E6824(data, 1);
         OakSpeech_PrintMultichoiceMenu(data, msg_0219_00047, msg_0219_00048, 0, 2);
-        data->state              = OAK_SPEECH_MAIN_STATE_CONFIRM_GENDER_YESNO_HANDLE_INPUT;
+        data->state = OAK_SPEECH_MAIN_STATE_CONFIRM_GENDER_YESNO_HANDLE_INPUT;
         data->menuData.cursorPos = 0;
         break;
 
@@ -2009,8 +2009,8 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
     case OAK_SPEECH_MAIN_STATE_PROMPT_NAME_LAUNCH_NAMING_SCREEN:
         String_SetEmpty(data->namingScreenArgs_Player->nameInputString);
         data->namingScreenArgs_Player->playerGenderOrMonSpecies = data->playerGender;
-        data->overlayManager                                    = OverlayManager_New(&gOverlayTemplate_NamingScreen, data->namingScreenArgs_Player, data->heapId);
-        data->state                                             = OAK_SPEECH_MAIN_STATE_PROMPT_NAME_RESTORE_GRAPHICS_AFTER;
+        data->overlayManager = OverlayManager_New(&gOverlayTemplate_NamingScreen, data->namingScreenArgs_Player, data->heapId);
+        data->state = OAK_SPEECH_MAIN_STATE_PROMPT_NAME_RESTORE_GRAPHICS_AFTER;
         break;
 
     case OAK_SPEECH_MAIN_STATE_PROMPT_NAME_RESTORE_GRAPHICS_AFTER:

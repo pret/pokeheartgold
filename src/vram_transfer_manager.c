@@ -13,8 +13,8 @@ void GF_CreateVramTransferManager(u32 taskMax, HeapID heapId) {
     GF_ASSERT(sVramTransferManager != NULL);
 
     sVramTransferManager->tasks = AllocFromHeap(heapId, taskMax * sizeof(NNSGfdVramTransferTask));
-    sVramTransferManager->nMax  = taskMax;
-    sVramTransferManager->nCur  = 0;
+    sVramTransferManager->nMax = taskMax;
+    sVramTransferManager->nCur = 0;
     NNS_GfdInitVramTransferManager(sVramTransferManager->tasks, sVramTransferManager->nMax);
 }
 

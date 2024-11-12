@@ -10,7 +10,7 @@ void Save_Daycare_Init(Daycare *daycare) {
     memset(daycare, 0, sizeof(Daycare));
     ZeroBoxMonData(&daycare->mons[0].mon);
     ZeroBoxMonData(&daycare->mons[1].mon);
-    daycare->egg_pid    = 0;
+    daycare->egg_pid = 0;
     daycare->egg_cycles = 0;
 }
 
@@ -85,7 +85,7 @@ void DaycareMon_Extras_Init(DaycareMail *mail) {
         mail->nickname[i] = 0;
     }
 
-    mail->ot_name[0]  = EOS;
+    mail->ot_name[0] = EOS;
     mail->nickname[0] = EOS;
 }
 

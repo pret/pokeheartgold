@@ -46,11 +46,11 @@ void Chatot_Decode(s8 *dest, const s8 *data) {
     s8 val2;
 
     for (dest_i = 0, i = 0; i < 1000; i++, dest_i += 2) {
-        val              = (u8)(data[i] & 0xf);
-        val2             = transform(val);
+        val = (u8)(data[i] & 0xf);
+        val2 = transform(val);
         dest[dest_i + 0] = (s8)(val2 << 4);
-        val              = (u8)(data[i] >> 4);
-        val2             = transform(val);
+        val = (u8)(data[i] >> 4);
+        val2 = transform(val);
         dest[dest_i + 1] = (s8)(val2 << 4);
     }
 }
@@ -68,11 +68,11 @@ void Chatot_Encode(SOUND_CHATOT *chatot, const s8 *data) {
     chatot->exists = TRUE;
 
     for (src_i = 0; src_i < 2000; src_i += 2) {
-        val             = data[src_i + 0];
-        val2            = untransform(val);
+        val = data[src_i + 0];
+        val2 = untransform(val);
         chatot->data[i] = (s8)val2;
 
-        val  = data[src_i + 1];
+        val = data[src_i + 1];
         val2 = untransform(val);
         chatot->data[i] |= val2 << 4;
 

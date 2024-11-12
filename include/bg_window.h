@@ -73,14 +73,14 @@ typedef struct Window {
     u8 width;
     u8 height;
     u8 paletteNum;
-    u16 baseTile  : 15;
+    u16 baseTile : 15;
     u16 colorMode : 1;
     void *pixelBuffer;
 } Window;
 
 enum GFScreen {
     SCREEN_MAIN = 0,
-    SCREEN_SUB  = 1,
+    SCREEN_SUB = 1,
 };
 
 enum GFBppMode {
@@ -100,16 +100,16 @@ enum GFPalLoadLocation {
 };
 
 enum GFPalSlotOffset {
-    GF_PAL_SLOT_0_OFFSET  = 0x00,
-    GF_PAL_SLOT_1_OFFSET  = 0x20,
-    GF_PAL_SLOT_2_OFFSET  = 0x40,
-    GF_PAL_SLOT_3_OFFSET  = 0x60,
-    GF_PAL_SLOT_4_OFFSET  = 0x80,
-    GF_PAL_SLOT_5_OFFSET  = 0xA0,
-    GF_PAL_SLOT_6_OFFSET  = 0xC0,
-    GF_PAL_SLOT_7_OFFSET  = 0xE0,
-    GF_PAL_SLOT_8_OFFSET  = 0x100,
-    GF_PAL_SLOT_9_OFFSET  = 0x120,
+    GF_PAL_SLOT_0_OFFSET = 0x00,
+    GF_PAL_SLOT_1_OFFSET = 0x20,
+    GF_PAL_SLOT_2_OFFSET = 0x40,
+    GF_PAL_SLOT_3_OFFSET = 0x60,
+    GF_PAL_SLOT_4_OFFSET = 0x80,
+    GF_PAL_SLOT_5_OFFSET = 0xA0,
+    GF_PAL_SLOT_6_OFFSET = 0xC0,
+    GF_PAL_SLOT_7_OFFSET = 0xE0,
+    GF_PAL_SLOT_8_OFFSET = 0x100,
+    GF_PAL_SLOT_9_OFFSET = 0x120,
     GF_PAL_SLOT_10_OFFSET = 0x140,
     GF_PAL_SLOT_11_OFFSET = 0x160,
     GF_PAL_SLOT_12_OFFSET = 0x180,
@@ -142,17 +142,17 @@ enum GFBgScreenSize {
 };
 
 enum GFBgBufferSize {
-    GF_BG_BUF_SIZE_128x128_4BPP   = 128 * 128 / 32,
-    GF_BG_BUF_SIZE_256x256_4BPP   = 256 * 256 / 32,
-    GF_BG_BUF_SIZE_256x512_4BPP   = 256 * 512 / 32,
-    GF_BG_BUF_SIZE_512x256_4BPP   = 512 * 256 / 32,
-    GF_BG_BUF_SIZE_512x512_4BPP   = 512 * 512 / 32,
+    GF_BG_BUF_SIZE_128x128_4BPP = 128 * 128 / 32,
+    GF_BG_BUF_SIZE_256x256_4BPP = 256 * 256 / 32,
+    GF_BG_BUF_SIZE_256x512_4BPP = 256 * 512 / 32,
+    GF_BG_BUF_SIZE_512x256_4BPP = 512 * 256 / 32,
+    GF_BG_BUF_SIZE_512x512_4BPP = 512 * 512 / 32,
     GF_BG_BUF_SIZE_1024x1024_4BPP = 1024 * 1024 / 32,
-    GF_BG_BUF_SIZE_128x128_8BPP   = 128 * 128 / 64,
-    GF_BG_BUF_SIZE_256x256_8BPP   = 256 * 256 / 64,
-    GF_BG_BUF_SIZE_256x512_8BPP   = 256 * 512 / 64,
-    GF_BG_BUF_SIZE_512x256_8BPP   = 512 * 256 / 64,
-    GF_BG_BUF_SIZE_512x512_8BPP   = 512 * 512 / 64,
+    GF_BG_BUF_SIZE_128x128_8BPP = 128 * 128 / 64,
+    GF_BG_BUF_SIZE_256x256_8BPP = 256 * 256 / 64,
+    GF_BG_BUF_SIZE_256x512_8BPP = 256 * 512 / 64,
+    GF_BG_BUF_SIZE_512x256_8BPP = 512 * 256 / 64,
+    GF_BG_BUF_SIZE_512x512_8BPP = 512 * 512 / 64,
     GF_BG_BUF_SIZE_1024x1024_8BPP = 1024 * 1024 / 64,
 };
 

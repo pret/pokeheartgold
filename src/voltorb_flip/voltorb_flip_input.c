@@ -199,7 +199,7 @@ static int ov122_021E8F6C(Ov122_021E8CFC *a0) {
 }
 
 static int ov122_021E9020(Ov122_021E8CFC *a0) {
-    int var1      = sub_02019F74(a0->unk8);
+    int var1 = sub_02019F74(a0->unk8);
     u32 elementId = sub_02019D18(a0->unk8);
     sub_02019F74(a0->unk8);
 

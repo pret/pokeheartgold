@@ -46,7 +46,7 @@ BOOL ScrCmd_MartBuy(ScriptContext *ctx) {
 
     unused = ScriptGetVar(ctx);
 
-    nitems      = 0;
+    nitems = 0;
     badge_count = 0;
     for (i = 0; i < 16; i++) {
         if (PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData), i) == TRUE) {
@@ -494,11 +494,11 @@ BOOL ScrCmd_834(ScriptContext *ctx) {
     const struct MartItem *r3;
     int i;
 
-    sp0        = ScriptGetVarPointer(ctx);
+    sp0 = ScriptGetVarPointer(ctx);
     pokeathlon = Save_Pokeathlon_Get(ctx->fieldSystem->saveData);
-    r6         = 0;
-    r4         = 0;
-    varsFlags  = Save_VarsFlags_Get(ctx->fieldSystem->saveData);
+    r6 = 0;
+    r4 = 0;
+    varsFlags = Save_VarsFlags_Get(ctx->fieldSystem->saveData);
     GF_RTC_CopyDate(&date);
     if (Pokedex_GetNatDexFlag(Save_Pokedex_Get(ctx->fieldSystem->saveData))) {
         r3 = _0210FA04[date.week + 7];
@@ -529,7 +529,7 @@ BOOL ScrCmd_835(ScriptContext *ctx) {
     int i;
     POKEATHLON_SAV *pokeathlon;
 
-    ret_ptr    = ScriptGetVarPointer(ctx);
+    ret_ptr = ScriptGetVarPointer(ctx);
     pokeathlon = Save_Pokeathlon_Get(ctx->fieldSystem->saveData);
     for (i = 0; i < 27; i++) {
         if (!sub_02031A78(pokeathlon, i)) {

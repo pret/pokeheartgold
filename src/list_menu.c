@@ -11,20 +11,20 @@ static void ListMenuCallSelectionChangedCallback(struct ListMenu *list, u8 onIni
 
 struct ListMenu *ListMenuInit(const struct ListMenuTemplate *template, u16 cursorPos, u16 itemsAbove, HeapID heapId) {
     struct ListMenu *list = AllocFromHeap(heapId, sizeof(struct ListMenu));
-    list->template        = *template;
-    list->cursor          = ListMenuCursorNew(heapId);
-    list->cursorPos       = cursorPos;
-    list->itemsAbove      = itemsAbove;
-    list->unk_30          = 0;
-    list->unk_31          = 0;
-    list->taskId          = 0xFF;
-    list->unk_33          = 0;
-    list->heapId          = (u8)heapId;
-    list->cursorPal       = list->template.cursorPal;
-    list->fillValue       = list->template.fillValue;
+    list->template = *template;
+    list->cursor = ListMenuCursorNew(heapId);
+    list->cursorPos = cursorPos;
+    list->itemsAbove = itemsAbove;
+    list->unk_30 = 0;
+    list->unk_31 = 0;
+    list->taskId = 0xFF;
+    list->unk_33 = 0;
+    list->heapId = (u8)heapId;
+    list->cursorPal = list->template.cursorPal;
+    list->fillValue = list->template.fillValue;
     list->cursorShadowPal = list->template.cursorShadowPal;
-    list->lettersSpacing  = list->template.lettersSpacing;
-    list->fontId          = list->template.fontId;
+    list->lettersSpacing = list->template.lettersSpacing;
+    list->fontId = list->template.fontId;
     list->overrideEnabled = FALSE;
     if (list->template.totalItems < list->template.maxShowed) {
         list->template.maxShowed = list->template.totalItems;
@@ -62,15 +62,15 @@ s32 ListMenu_ProcessInput(struct ListMenu *list) {
         switch (list->template.scrollMultiple) {
         case LIST_NO_MULTIPLE_SCROLL:
         default:
-            leftButton  = FALSE;
+            leftButton = FALSE;
             rightButton = FALSE;
             break;
         case LIST_MULTIPLE_SCROLL_DPAD:
-            leftButton  = (u16)(gSystem.newAndRepeatedKeys & REG_PAD_KEYINPUT_LEFT_MASK);
+            leftButton = (u16)(gSystem.newAndRepeatedKeys & REG_PAD_KEYINPUT_LEFT_MASK);
             rightButton = (u16)(gSystem.newAndRepeatedKeys & REG_PAD_KEYINPUT_RIGHT_MASK);
             break;
         case LIST_MULTIPLE_SCROLL_L_R:
-            leftButton  = (u16)(gSystem.newAndRepeatedKeys & REG_PAD_KEYINPUT_L_MASK);
+            leftButton = (u16)(gSystem.newAndRepeatedKeys & REG_PAD_KEYINPUT_L_MASK);
             rightButton = (u16)(gSystem.newAndRepeatedKeys & REG_PAD_KEYINPUT_R_MASK);
             break;
         }
@@ -109,8 +109,8 @@ void RedrawListMenu(struct ListMenu *list) {
 }
 
 void ListMenuOverrideSetColors(struct ListMenu *list, u8 cursorPal, u8 fillValue, u8 cursorShadowPal) {
-    list->cursorPal       = cursorPal;
-    list->fillValue       = fillValue;
+    list->cursorPal = cursorPal;
+    list->fillValue = fillValue;
     list->cursorShadowPal = cursorShadowPal;
     list->overrideEnabled = TRUE;
 }
@@ -211,8 +211,8 @@ static void ListMenuPrintEntries(struct ListMenu *list, u16 startIndex, u16 yOff
 
 static void ListMenuDrawCursor(struct ListMenu *list) {
     u8 yMultiplier = (u8)(GetFontAttribute((u8)list->template.fontId, 1) + list->template.itemVerticalPadding);
-    u8 x           = list->template.cursor_X;
-    u8 y           = (u8)(list->itemsAbove * yMultiplier + list->template.upText_Y);
+    u8 x = list->template.cursor_X;
+    u8 y = (u8)(list->itemsAbove * yMultiplier + list->template.upText_Y);
     switch (list->template.cursorKind) {
     case 0:
         ListMenuUpdateCursorObj(list->cursor, list->template.window, x, y);
@@ -228,8 +228,8 @@ static void ListMenuErasePrintedCursor(struct ListMenu *list, u16 itemsAbove) {
     switch (list->template.cursorKind) {
     case 0: {
         u8 yMultiplier = (u8)(GetFontAttribute(list->template.fontId, 1) + list->template.itemVerticalPadding);
-        u8 width       = 7;
-        u8 height      = 16;
+        u8 width = 7;
+        u8 height = 16;
         FillWindowPixelRect(list->template.window,
             list->template.fillValue,
             list->template.cursor_X,
@@ -251,7 +251,7 @@ static u8 ListMenuUpdateSelectedRowIndexAndScroll(struct ListMenu *list, u8 movi
     u16 newRow;
 
     itemsAbove = list->itemsAbove;
-    cursorPos  = list->cursorPos;
+    cursorPos = list->cursorPos;
 
     if (!movingDown) {
         if (list->template.maxShowed == 1) {
@@ -278,7 +278,7 @@ static u8 ListMenuUpdateSelectedRowIndexAndScroll(struct ListMenu *list, u8 movi
                 }
             }
             list->itemsAbove = newRow;
-            list->cursorPos  = (u16)(cursorPos - 1);
+            list->cursorPos = (u16)(cursorPos - 1);
         }
     } else {
         if (list->template.maxShowed == 1) {
@@ -305,7 +305,7 @@ static u8 ListMenuUpdateSelectedRowIndexAndScroll(struct ListMenu *list, u8 movi
                 }
             }
             list->itemsAbove = newRow;
-            list->cursorPos  = (u16)(cursorPos + 1);
+            list->cursorPos = (u16)(cursorPos + 1);
         }
     }
     return 2;
@@ -324,8 +324,8 @@ static void ListMenuScroll(struct ListMenu *list, u8 count, u8 movingDown) {
             ScrollWindow(list->template.window, 1, (u8)(count * yMultiplier), (u8)((list->template.fillValue << 4) | list->template.fillValue));
             ListMenuPrintEntries(list, list->cursorPos, 0, count);
 
-            y      = (u16)((list->template.maxShowed * yMultiplier) + list->template.upText_Y);
-            width  = GetWindowWidth(list->template.window);
+            y = (u16)((list->template.maxShowed * yMultiplier) + list->template.upText_Y);
+            width = GetWindowWidth(list->template.window);
             height = GetWindowHeight(list->template.window);
             FillWindowPixelRect(list->template.window,
                 list->template.fillValue,
@@ -354,8 +354,8 @@ static BOOL ListMenuChangeSelection(struct ListMenu *list, u8 updateCursorAndCal
     u16 oldSelectedRow;
     u8 selectionChange, i, cursorCount;
 
-    oldSelectedRow  = list->itemsAbove;
-    cursorCount     = 0;
+    oldSelectedRow = list->itemsAbove;
+    cursorCount = 0;
     selectionChange = 0;
     for (i = 0; i < count; i++) {
         do {

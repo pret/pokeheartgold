@@ -63,7 +63,7 @@ int UnionRoomAvatarIdxToSprite(u32 trainerId, u32 playerGender, u32 choice) {
     int idx;
     int sprite;
 
-    idx    = trainerId % 8;
+    idx = trainerId % 8;
     sprite = sPlayerAvatarIndexChoices[idx][choice];
     return sPlayerAvatarAttributes[sprite + playerGender * 8][0];
 }
@@ -110,8 +110,8 @@ u16 *sub_0205B4A4(HeapID heapId) {
     int i;
 
     pltt_src = GfGfxLoader_GetPlttData(NARC_application_record_record, NARC_record_record_00000011_NCLR, &pPlttData, heapId);
-    ret      = AllocFromHeap(heapId, 0x120 * 2);
-    plttRaw  = pPlttData->pRawData;
+    ret = AllocFromHeap(heapId, 0x120 * 2);
+    plttRaw = pPlttData->pRawData;
     for (i = 0; i < 0x100; i++) {
         ret[i] = plttRaw[i];
     }
