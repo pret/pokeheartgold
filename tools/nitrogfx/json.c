@@ -47,11 +47,13 @@ struct JsonToCellOptions *ParseNCERJson(char *path)
     }
 
     cJSON *labelBool = cJSON_GetObjectItemCaseSensitive(json, "labelEnabled");
+    cJSON *vramTransferBool = cJSON_GetObjectItemCaseSensitive(json, "vramTransferEnabled");
     cJSON *extended = cJSON_GetObjectItemCaseSensitive(json, "extended");
     cJSON *cellCount = cJSON_GetObjectItemCaseSensitive(json, "cellCount");
     cJSON *mappingType = cJSON_GetObjectItemCaseSensitive(json, "mappingType");
 
     options->labelEnabled = GetBool(labelBool);
+    options->vramTransferEnabled = GetBool(vramTransferBool);
     options->extended = GetBool(extended);
     options->cellCount = GetInt(cellCount);
     options->mappingType = GetInt(mappingType);
@@ -73,6 +75,30 @@ struct JsonToCellOptions *ParseNCERJson(char *path)
             char *labelString = GetString(label);
             options->labels[j] = malloc(strlen(labelString) + 1);
             strcpy(options->labels[j], labelString);
+            j++;
+        }
+    }
+
+    if (options->vramTransferEnabled) 
+    {
+        cJSON *vramTransferMaxSize = cJSON_GetObjectItemCaseSensitive(json, "vramTransferMaxSize");
+        options->vramTransferMaxSize = GetInt(vramTransferMaxSize);
+        
+        options->transferData = malloc(sizeof(struct CellVramTransferData *) * options->cellCount);
+
+        cJSON *transfers = cJSON_GetObjectItemCaseSensitive(json, "transferData");
+        cJSON *transfer = NULL;
+
+        int j = 0;
+        cJSON_ArrayForEach(transfer, transfers)
+        {
+            cJSON *vramTransferOffset = cJSON_GetObjectItemCaseSensitive(transfer, "offset");
+            cJSON *vramTransferSize = cJSON_GetObjectItemCaseSensitive(transfer, "size");
+
+            options->transferData[j] = malloc(sizeof(struct CellVramTransferData));
+            options->transferData[j]->sourceDataOffset = GetInt(vramTransferOffset);
+            options->transferData[j]->size = GetInt(vramTransferSize);
+
             j++;
         }
     }
@@ -195,6 +221,7 @@ char *GetNCERJson(struct JsonToCellOptions *options)
 
     cJSON_AddBoolToObject(ncer, "labelEnabled", options->labelEnabled);
     cJSON_AddBoolToObject(ncer, "extended", options->extended);
+    cJSON_AddBoolToObject(ncer, "vramTransferEnabled", options->vramTransferEnabled);
     cJSON_AddNumberToObject(ncer, "cellCount", options->cellCount);
     cJSON_AddNumberToObject(ncer, "mappingType", options->mappingType);
     
@@ -261,6 +288,20 @@ char *GetNCERJson(struct JsonToCellOptions *options)
         cJSON *labels = cJSON_CreateStringArray((const char * const*)options->labels, options->labelCount);
         cJSON_AddItemToObject(ncer, "labels", labels);
         cJSON_AddNumberToObject(ncer, "labelCount", options->labelCount);
+    }
+
+    if (options->vramTransferEnabled) 
+    {
+        cJSON_AddNumberToObject(ncer, "vramTransferMaxSize", options->vramTransferMaxSize);
+        cJSON *transfers = cJSON_AddArrayToObject(ncer, "transferData");
+
+        for (int idx = 0; idx < options->cellCount; idx++)
+        {
+            cJSON *transfer = cJSON_CreateObject();
+            cJSON_AddNumberToObject(transfer, "offset", options->transferData[idx]->sourceDataOffset);
+            cJSON_AddNumberToObject(transfer, "size", options->transferData[idx]->size);
+            cJSON_AddItemToArray(transfers, transfer);
+        }
     }
 
     char *jsonString = cJSON_Print(ncer);
@@ -600,6 +641,14 @@ void FreeNCERCell(struct JsonToCellOptions *options)
         }
         free(options->labels);
     }
+    if (options->vramTransferEnabled)
+    {
+        for (int j = 0; j < options->cellCount; j++)
+        {
+            free(options->transferData[j]);
+        }
+        free(options->transferData);
+    }
     free(options->cells);
     free(options);
 }
@@ -637,4 +686,80 @@ void FreeNANRAnimation(struct JsonToAnimationOptions *options)
     free(options->sequenceData);
     free(options->animationResults);
     free(options);
+}
+
+char *GetNtrFontMetadataJson(struct NtrFontMetadata *metadata)
+{
+    cJSON *json = cJSON_CreateObject();
+
+    cJSON_AddNumberToObject(json, "maxGlyphWidth", metadata->maxWidth);
+    cJSON_AddNumberToObject(json, "maxGlyphHeight", metadata->maxHeight);
+
+    cJSON *glyphWidths = cJSON_AddArrayToObject(json, "glyphWidths");
+    for (int i = 0; i < metadata->numGlyphs; i++)
+    {
+        cJSON *width = cJSON_CreateNumber(metadata->glyphWidthTable[i]);
+        cJSON_AddItemToArray(glyphWidths, width);
+    }
+
+    char *jsonString = cJSON_Print(json);
+    cJSON_Delete(json);
+    return jsonString;
+}
+
+#define TILE_DIMENSION_PIXELS 8
+#define PIXELS_FOR_DIMENSION(dim) ((dim) * TILE_DIMENSION_PIXELS)
+#define TILES_FOR_PIXELS(num) (((num) + TILE_DIMENSION_PIXELS - 1) / TILE_DIMENSION_PIXELS)
+#define PIXELS_PER_BYTE_2BPP 4
+#define NTR_FONT_HEADER_SIZE 16
+
+struct NtrFontMetadata *ParseNtrFontMetadataJson(char *path)
+{
+    int fileLength;
+    unsigned char *jsonString = ReadWholeFile(path, &fileLength);
+
+    cJSON *json = cJSON_Parse((const char *)jsonString);
+    if (json == NULL)
+    {
+        const char *errorPtr = cJSON_GetErrorPtr();
+        FATAL_ERROR("Error in line \"%s\"\n", errorPtr);
+    }
+
+    cJSON *labelMaxGlyphWidth = cJSON_GetObjectItemCaseSensitive(json, "maxGlyphWidth");
+    cJSON *labelMaxGlyphHeight = cJSON_GetObjectItemCaseSensitive(json, "maxGlyphHeight");
+    cJSON *labelGlyphWidths = cJSON_GetObjectItemCaseSensitive(json, "glyphWidths");
+    int numGlyphs = cJSON_GetArraySize(labelGlyphWidths);
+
+    struct NtrFontMetadata *metadata = malloc(sizeof(struct NtrFontMetadata));
+
+    metadata->size = NTR_FONT_HEADER_SIZE;
+    metadata->numGlyphs = numGlyphs;
+    metadata->maxWidth = GetInt(labelMaxGlyphWidth);
+    metadata->maxHeight = GetInt(labelMaxGlyphHeight);
+
+    metadata->glyphWidth = TILES_FOR_PIXELS(metadata->maxWidth);
+    metadata->glyphHeight = TILES_FOR_PIXELS(metadata->maxHeight);
+
+    int glyphBitmapSize = (PIXELS_FOR_DIMENSION(metadata->glyphWidth) * PIXELS_FOR_DIMENSION(metadata->glyphHeight)) / PIXELS_PER_BYTE_2BPP;
+    metadata->widthTableOffset = metadata->size + (metadata->numGlyphs * glyphBitmapSize);
+
+    metadata->glyphWidthTable = malloc(metadata->numGlyphs);
+
+    uint8_t *glyphWidthCursor = metadata->glyphWidthTable;
+    cJSON *glyphWidthIter = NULL;
+    cJSON_ArrayForEach(glyphWidthIter, labelGlyphWidths)
+    {
+        if (!cJSON_IsNumber(glyphWidthIter))
+        {
+            const char *errorPtr = cJSON_GetErrorPtr();
+            FATAL_ERROR("Error in line \"%s\"\n", errorPtr);
+        }
+
+        *glyphWidthCursor = glyphWidthIter->valueint;
+        glyphWidthCursor++;
+    }
+
+    cJSON_Delete(json);
+    free(jsonString);
+    return metadata;
 }
