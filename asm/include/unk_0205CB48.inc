@@ -63,7 +63,7 @@
 .public sub_0205CB2C
 .public sub_0205CB48
 .public sub_0205CBE4
-.public sub_0205CE68
+.public PlayerAvatar_UpdateMovement
 .public sub_0205CF44
 .public sub_0205CF60
 .public sub_0205CFBC

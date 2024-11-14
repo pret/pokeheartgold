@@ -177,7 +177,7 @@ static void ppOverlayManager_RunFrame_DeleteIfFinished(OVY_MANAGER **man) {
 }
 
 static BOOL FieldSystem_Main(FieldSystem *fieldSystem) {
-    sub_0203E15C(fieldSystem);
+    FieldSystem_Control(fieldSystem);
     if (FieldSystem_RunTaskFrame(fieldSystem) == TRUE) {
         if (fieldSystem->unk4) {
             ov01_021F6830(fieldSystem, 0, 0);
@@ -198,19 +198,16 @@ static BOOL FieldSystem_Main(FieldSystem *fieldSystem) {
 }
 
 BOOL sub_0203E13C(FieldSystem *fieldSystem) {
-    if (!fieldSystem->unk0->unk8 && fieldSystem->unk6C && !FieldSystem_TaskIsRunning(fieldSystem)) {
-        return TRUE;
-    }
-    return FALSE;
+    return !fieldSystem->unk0->unk8 && fieldSystem->unk6C && !FieldSystem_TaskIsRunning(fieldSystem);
 }
 
-void sub_0203E15C(FieldSystem *fieldSystem) {
+void FieldSystem_Control(FieldSystem *fieldSystem) {
     Unk_0203E15C unkStruct;
 
     BOOL flag = sub_0203E13C(fieldSystem);
 
     if (flag) {
-        sub_0205CE68(fieldSystem->playerAvatar);
+        PlayerAvatar_UpdateMovement(fieldSystem->playerAvatar);
         ov01_021E6928(&unkStruct, fieldSystem, gSystem.newKeys, gSystem.heldKeys);
     }
 

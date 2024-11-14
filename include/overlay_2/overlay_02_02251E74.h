@@ -19,6 +19,7 @@ BOOL ov02_02252334(FieldSystem *fieldSystem);
 void ov02_022523B4(TaskManager *taskMan);
 BOOL ov02_022523D0(TaskManager *taskMan);
 void FieldSystem_BeginCelebiTimeTravelCutsceneTask(FieldSystem *fieldSystem);
+void FieldSystem_BeginSinjohCutsceneTask(FieldSystem *fieldSystem);
 
 // the following is as of yet not decompiled
 BOOL Task_CelebiTimeTravelCutscene(TaskManager *taskMan);
@@ -53,6 +54,23 @@ typedef struct UnkStruct_02253CE0 {
     u16 unk8;
     u16 unkA;
 } UnkStruct_02253CE0;
+
+typedef struct SinjohCutsceneData {
+    FieldSystem *fieldSystem;
+    u8 unk4[0x30];
+    Field3DModelAnimation animations[4];
+    Field3dObject object84;
+    Field3dObject objectFC;
+    u8 unk174[0x10];
+    Field3DModelAnimation animation184;
+    u8 unk194[0x14];
+    Field3dObject object1AC;
+    u8 unk224;
+    u8 unk225;
+    u8 unk226;
+    u8 unk227;
+} SinjohCutsceneData;
+
 void CelebiCutscene_StartSwirlTask(CelebiTimeTravelCutsceneTaskData *data);
 BOOL ov02_022526EC(CelebiTimeTravelCutsceneTaskData *data);
 void Task_CelebiCutsceneSwirl(SysTask *task, void *data);
@@ -62,10 +80,15 @@ void Task_CelebiCutsceneSwirlEffect(SysTask *task, void *data);
 BOOL CelebiCutscene_IsSwirlFinished(CelebiTimeTravelCutsceneTaskData *data);
 void CelebiCutscene_LoadResources(CelebiTimeTravelCutsceneTaskData *data);
 void CelebiCutscene_UnloadResources(CelebiTimeTravelCutsceneTaskData *data);
+void CelebiCutsceneAnimations_FrameSet(Field3DModelAnimation *animations, u32 frame);
+BOOL CelebiCutsceneAnimations_FrameAdvanceAndCheck(Field3DModelAnimation *animations);
+BOOL Task_SinjohCutscene(TaskManager *taskMan);
 
 // the following functions are static and not decompiled
 void ov01_021F46DC(u32 *a0);
-void ov02_022529C4(Field3DModelAnimation *animations);
-void ov02_022529A0(Field3DModelAnimation *animations, u32 a1);
+BOOL Task_SinjohCutscene(TaskManager *taskMan);
+void SinjohCutscene_FreeResources(SinjohCutsceneData *data);
+void SinjohCutscene_LoadResources(SinjohCutsceneData *data);
+void ov02_02252EA8(Field3DModelAnimation *animation, u32 a1);
 
 #endif // POKEHEARTGOLD_OVERLAY_02_02251E74_H

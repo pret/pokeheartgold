@@ -61,7 +61,7 @@ void sub_0205C6C8(PlayerAvatar *avatar, u32 unkA);
 u32 sub_0205C6CC(PlayerAvatar *avatar);
 void sub_0205C6D0(PlayerAvatar *avatar, u32 unkA);
 u32 sub_0205C6D4(PlayerAvatar *avatar);
-void sub_0205C6D8(PlayerAvatar *avatar, LocalMapObject *obj);
+void PlayerAvatar_SetMapObject(PlayerAvatar *avatar, LocalMapObject *obj);
 LocalMapObject *PlayerAvatar_GetMapObject(PlayerAvatar *avatar);
 LocalMapObject *PlayerAvatar_GetMapObjectConst(PlayerAvatar *avatar);
 void PlayerAvatar_SetState(PlayerAvatar *avatar, int state);

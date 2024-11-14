@@ -198,7 +198,7 @@ void FieldSystem_LaunchApplication(FieldSystem *fieldSystem, const OVY_MGR_TEMPL
 FieldSystem *FieldSystem_New(OVY_MANAGER *man);
 void FieldSystem_Delete(OVY_MANAGER *man);
 BOOL sub_0203E13C(FieldSystem *fieldSystem);
-void sub_0203E15C(FieldSystem *fieldSystem);
+void FieldSystem_Control(FieldSystem *fieldSystem);
 void sub_0203E2F4();
 void sub_0203E30C();
 int sub_0203E324();

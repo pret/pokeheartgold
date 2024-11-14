@@ -74,8 +74,7 @@ BOOL ov02_02250780(FieldSystem *fieldSystem, u8 a1);
 void ov02_022507B4(FieldSystem *fieldSystem, u8 a1);
 void ov02_022508B4(FieldSystem *fieldSystem);
 void ov02_022523B4(TaskManager *taskManager);
-void FieldSystem_BeginCelebiTimeTravelCutsceneTask(FieldSystem *fieldSystem);
-void ov02_022529FC(FieldSystem *fieldSystem);
+
 void ov02_02252EE4(FieldSystem *fieldSystem, u8 a1);
 BOOL ov02_02253134(SaveData *saveData);
 int ov02_0225316C(void);

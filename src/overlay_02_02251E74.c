@@ -651,7 +651,7 @@ BOOL Task_CelebiTimeTravelCutscene(TaskManager *taskMan) {
         }
     }
     if (data->unkF0) {
-        ov02_022529C4(&data->animations[0]);
+        CelebiCutsceneAnimations_FrameAdvanceAndCheck(&data->animations[0]);
     }
     if (data->unkF1) {
         Field3dObject_Draw(&data->object3d);
@@ -751,7 +751,7 @@ void CelebiCutscene_LoadResources(CelebiTimeTravelCutsceneTaskData *data) {
         Field3dObject_AddAnimation(&data->object3d, &data->animations[i]);
     }
     Field3dObject_SetActiveFlag(&data->object3d, 1);
-    ov02_022529A0(&data->animations[0], 0);
+    CelebiCutsceneAnimations_FrameSet(&data->animations[0], 0);
     LocalMapObject *followMonObj = FollowMon_GetMapObject(data->fieldSystem);
     VecFx32 pos;
     MapObject_GetPositionVec(followMonObj, &pos);
@@ -764,4 +764,89 @@ void CelebiCutscene_UnloadResources(CelebiTimeTravelCutsceneTaskData *data) {
         Field3dModelAnimation_Unload(&data->animations[i], &data->alloc);
     }
     Field3dModel_Unload(&data->model);
+}
+
+void CelebiCutsceneAnimations_FrameSet(Field3DModelAnimation *animations, u32 frame) {
+    for (u8 i = 0; i < 3; i++) {
+        Field3dModelAnimation_FrameSet(&animations[i], frame);
+    }
+}
+
+BOOL CelebiCutsceneAnimations_FrameAdvanceAndCheck(Field3DModelAnimation *animations) {
+    u8 i;
+    u8 cnt = 0;
+    for (i = 0; i < 3; i++) {
+        if (Field3dModelAnimation_FrameAdvanceAndCheck(&animations[i], 0x1000) != 0) {
+            cnt++;
+        }
+    }
+
+    return cnt == 3;
+}
+
+void FieldSystem_BeginSinjohCutsceneTask(FieldSystem *fieldSystem) {
+    SinjohCutsceneData *data = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(SinjohCutsceneData));
+    MI_CpuFill8(data, 0, sizeof(SinjohCutsceneData));
+    data->fieldSystem = fieldSystem;
+    TaskManager_Call(fieldSystem->taskman, Task_SinjohCutscene, data);
+}
+
+BOOL Task_SinjohCutscene(TaskManager *taskMan) {
+    int *state               = TaskManager_GetStatePtr(taskMan);
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskMan);
+    SinjohCutsceneData *data = TaskManager_GetEnvironment(taskMan);
+    switch (*state) {
+    case 0:
+        BeginNormalPaletteFade(3, 0, 0, RGB_WHITE, 2, 1, HEAP_ID_4);
+        (*state)++;
+        break;
+    case 1:
+        if (IsPaletteFadeFinished()) {
+            SinjohCutscene_LoadResources(data);
+            BeginNormalPaletteFade(3, 1, 0, RGB_WHITE, 2, 1, HEAP_ID_4);
+            (*state)++;
+        }
+        break;
+    case 2:
+        if (IsPaletteFadeFinished()) {
+            data->unk224 = 1;
+            data->unk227 = 0;
+            Field3dObject_SetActiveFlag(&data->object1AC, 1);
+            (*state)++;
+        }
+        break;
+    case 3:
+        if (++data->unk227 >= 100) {
+            data->unk225 = 1;
+            data->unk227 = 0;
+            (*state)++;
+        }
+        break;
+    case 4:
+        if (++data->unk227 >= 150) {
+            BeginNormalPaletteFade(3, 0, 0, RGB_WHITE, 2, 1, HEAP_ID_4);
+            (*state)++;
+        }
+        break;
+    case 5:
+        if (IsPaletteFadeFinished()) {
+            SinjohCutscene_FreeResources(data);
+            FreeToHeap(data);
+            return TRUE;
+        }
+        break;
+    }
+    if (data->unk224) {
+        ov02_02252EA8(&data->animations[0], 2);
+        ov02_02252EA8(&data->animations[2], 2);
+    }
+    if (data->unk225) {
+        ov02_02252EA8(&data->animation184, 2);
+    }
+    if (data->unk226) {
+        Field3dObject_Draw(&data->object84);
+        Field3dObject_Draw(&data->objectFC);
+        Field3dObject_Draw(&data->object1AC);
+    }
+    return FALSE;
 }

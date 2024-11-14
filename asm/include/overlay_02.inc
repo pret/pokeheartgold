@@ -532,7 +532,7 @@
 .public ov02_02252334
 .public ov02_022523B4
 .public FieldSystem_BeginCelebiTimeTravelCutsceneTask
-.public ov02_022529FC
+.public FieldSystem_BeginSinjohCutsceneTask
 .public ov02_02252EE4
 .public ov02_02253134
 .public ov02_0225316C

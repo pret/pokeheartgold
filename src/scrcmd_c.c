@@ -5333,7 +5333,7 @@ BOOL ScrCmd_814(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_UnownCircle(ScriptContext *ctx) {
-    ov02_022529FC(ctx->fieldSystem);
+    FieldSystem_BeginSinjohCutsceneTask(ctx->fieldSystem);
     return TRUE;
 }
 
