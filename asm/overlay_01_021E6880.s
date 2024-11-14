@@ -105,8 +105,8 @@ ov01_021E6920: ; 0x021E6920
 _021E6924: .word ov01_021F6B64
 	thumb_func_end ov01_021E6920
 
-	thumb_func_start ov01_021E6928
-ov01_021E6928: ; 0x021E6928
+	thumb_func_start FieldInput_Update
+FieldInput_Update: ; 0x021E6928
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r4, r1, #0
@@ -347,10 +347,10 @@ _021E6AE4:
 	strb r0, [r5, #4]
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov01_021E6928
+	thumb_func_end FieldInput_Update
 
-	thumb_func_start ov01_021E6AF4
-ov01_021E6AF4: ; 0x021E6AF4
+	thumb_func_start FieldInput_Process
+FieldInput_Process: ; 0x021E6AF4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldrh r0, [r5]
@@ -680,7 +680,7 @@ _021E6DB6:
 	nop
 _021E6DBC: .word 0x0000FFFF
 _021E6DC0: .word SEQ_SE_DP_WIN_OPEN
-	thumb_func_end ov01_021E6AF4
+	thumb_func_end FieldInput_Process
 
 	thumb_func_start ov01_021E6DC4
 ov01_021E6DC4: ; 0x021E6DC4
@@ -712,8 +712,8 @@ _021E6DF6:
 _021E6DFC: .word 0x0000FFFF
 	thumb_func_end ov01_021E6DC4
 
-	thumb_func_start ov01_021E6E00
-ov01_021E6E00: ; 0x021E6E00
+	thumb_func_start FieldInput_Process_Colosseum
+FieldInput_Process_Colosseum: ; 0x021E6E00
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldrh r0, [r4]
@@ -810,7 +810,7 @@ _021E6ECA:
 	nop
 _021E6ED0: .word std_colosseum_exit
 _021E6ED4: .word SEQ_SE_DP_WIN_OPEN
-	thumb_func_end ov01_021E6E00
+	thumb_func_end FieldInput_Process_Colosseum
 
 	thumb_func_start ov01_021E6ED8
 ov01_021E6ED8: ; 0x021E6ED8
@@ -836,8 +836,8 @@ _021E6EF8:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021E6ED8
 
-	thumb_func_start ov01_021E6EFC
-ov01_021E6EFC: ; 0x021E6EFC
+	thumb_func_start FieldInput_Process_UnionRoom
+FieldInput_Process_UnionRoom: ; 0x021E6EFC
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r5, r1, #0
@@ -932,10 +932,10 @@ _021E6FCC:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E6FD0: .word SEQ_SE_DP_WIN_OPEN
-	thumb_func_end ov01_021E6EFC
+	thumb_func_end FieldInput_Process_UnionRoom
 
-	thumb_func_start ov01_021E6FD4
-ov01_021E6FD4: ; 0x021E6FD4
+	thumb_func_start FieldInput_Process_BattleTower
+FieldInput_Process_BattleTower: ; 0x021E6FD4
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
@@ -1084,7 +1084,7 @@ _021E7106:
 	.balign 4, 0
 _021E710C: .word 0x0000FFFF
 _021E7110: .word SEQ_SE_DP_WIN_OPEN
-	thumb_func_end ov01_021E6FD4
+	thumb_func_end FieldInput_Process_BattleTower
 
 	thumb_func_start ov01_021E7114
 ov01_021E7114: ; 0x021E7114

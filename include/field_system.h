@@ -76,7 +76,7 @@ typedef struct FieldSystemUnk108 {
 struct FieldSystemUnkSub0 {
     OVY_MANAGER *unk0;
     OVY_MANAGER *unk4;
-    BOOL unk8;
+    BOOL isPaused;
     BOOL unkC;
 };
 
@@ -176,12 +176,12 @@ struct FieldSystem {
     u32 judgeStatPosition;
 }; // size: 0x128
 
-typedef struct Unk_0203E15C {
+typedef struct FieldInput {
     u8 unk0[6];
     u16 unk6;
     u16 unk8;
     u16 unkA;
-} Unk_0203E15C;
+} FieldInput;
 
 BOOL Field_Continue_AppInit(OVY_MANAGER *man, int *unused);
 BOOL Field_NewGame_AppInit(OVY_MANAGER *man, int *unused);
@@ -197,7 +197,7 @@ BOOL sub_0203DFA4(FieldSystem *fieldSystem);
 void FieldSystem_LaunchApplication(FieldSystem *fieldSystem, const OVY_MGR_TEMPLATE *template, void *parentWork);
 FieldSystem *FieldSystem_New(OVY_MANAGER *man);
 void FieldSystem_Delete(OVY_MANAGER *man);
-BOOL sub_0203E13C(FieldSystem *fieldSystem);
+BOOL FieldSystem_IsPlayerMovementAllowed(FieldSystem *fieldSystem);
 void FieldSystem_Control(FieldSystem *fieldSystem);
 void sub_0203E2F4();
 void sub_0203E30C();

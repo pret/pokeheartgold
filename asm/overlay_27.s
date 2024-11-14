@@ -425,7 +425,7 @@ ov27_0225A320: ; 0x0225A320
 	bl ov27_0225A89C
 	add r4, r0, #0
 	ldr r0, [r5, #0x10]
-	bl sub_0203E13C
+	bl FieldSystem_IsPlayerMovementAllowed
 	add r6, r0, #0
 	ldr r0, [r5, #0x10]
 	add r0, #0xd2
@@ -745,7 +745,7 @@ ov27_0225A594: ; 0x0225A594
 	pop {r3, r4, r5, r6, r7, pc}
 _0225A5A8:
 	add r0, r4, #0
-	bl sub_0203E13C
+	bl FieldSystem_IsPlayerMovementAllowed
 	cmp r0, #0
 	bne _0225A5E6
 	add r0, r4, #0
@@ -1145,7 +1145,7 @@ ov27_0225A89C: ; 0x0225A89C
 	lsr r0, r0, #0x1a
 	bne _0225A8E0
 	add r0, r4, #0
-	bl sub_0203E13C
+	bl FieldSystem_IsPlayerMovementAllowed
 	cmp r0, #0
 	beq _0225A8E0
 	add r0, r4, #0

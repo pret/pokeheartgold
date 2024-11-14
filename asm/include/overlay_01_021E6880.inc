@@ -158,11 +158,11 @@
 .public ov01_021E5924
 .public ov01_021E5BE4
 .public ov01_021E5C24
-.public ov01_021E6928
-.public ov01_021E6AF4
-.public ov01_021E6E00
-.public ov01_021E6EFC
-.public ov01_021E6FD4
+.public FieldInput_Update
+.public FieldInput_Process
+.public FieldInput_Process_Colosseum
+.public FieldInput_Process_UnionRoom
+.public FieldInput_Process_BattleTower
 .public ov01_021E7F00
 .public ov01_021E7F54
 .public FieldSystem_FacingModelIsHeadbuttTree

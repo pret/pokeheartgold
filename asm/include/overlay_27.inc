@@ -96,7 +96,7 @@
 .public FieldSystem_ShouldDrawStartMenuIcon
 .public FieldSystem_GetFacingObject
 .public sub_0203DF8C
-.public sub_0203E13C
+.public FieldSystem_IsPlayerMovementAllowed
 .public MapSceneScriptCheck
 .public Save_VarsFlags_Get
 .public FieldSystem_TaskIsRunning

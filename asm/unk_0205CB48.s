@@ -14,8 +14,8 @@
 
 	.text
 
-	thumb_func_start sub_0205CB48
-sub_0205CB48: ; 0x0205CB48
+	thumb_func_start PlayerAvatar_MoveControl
+PlayerAvatar_MoveControl: ; 0x0205CB48
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r1, #0
 	mov r1, #0
@@ -86,7 +86,7 @@ _0205CBC4:
 	bl sub_0205CC94
 _0205CBE2:
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0205CB48
+	thumb_func_end PlayerAvatar_MoveControl
 
 	thumb_func_start sub_0205CBE4
 sub_0205CBE4: ; 0x0205CBE4
