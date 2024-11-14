@@ -8,10 +8,10 @@
 .public GF_AssertFail
 .public sub_0205F0A8
 .public MapObject_GetID
-.public sub_0205F254
-.public sub_0205F538
-.public MapObject_GetPositionVec
-.public MapObject_GetFacingVec
+.public MapObject_GetMapID
+.public MapObject_GetPriority
+.public MapObject_CopyPositionVector
+.public MapObject_CopyFacingVector
 .public sub_02068D74
 .public sub_02068D90
 .public sub_02068D98

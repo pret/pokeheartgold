@@ -64,11 +64,11 @@ static const u8 unk_020FC3A4[] = {
 };
 
 BOOL ScrCmd_637(ScriptContext *ctx) {
-    u16 arg0    = ScriptReadHalfword(ctx);
-    u16 arg1    = ScriptGetVar(ctx);
+    u16 arg0 = ScriptReadHalfword(ctx);
+    u16 arg1 = ScriptGetVar(ctx);
     u16 *result = ScriptGetVarPointer(ctx);
     sub_02030CC8(ctx->fieldSystem->saveData);
-    u32 unk0   = sub_02030E08(ctx->fieldSystem->saveData);
+    u32 unk0 = sub_02030E08(ctx->fieldSystem->saveData);
     void *unk1 = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     switch (arg0) {
     case 0:
@@ -125,9 +125,9 @@ static void sub_0204FA14(SaveData *saveData, u32 a1, u8 a2) {
 }
 
 BOOL ScrCmd_638(ScriptContext *ctx) {
-    u16 firstMon  = ScriptGetVar(ctx);
+    u16 firstMon = ScriptGetVar(ctx);
     u16 secondMon = ScriptGetVar(ctx);
-    u16 *result   = ScriptGetVarPointer(ctx);
+    u16 *result = ScriptGetVarPointer(ctx);
     sub_0204FB20(ctx->taskman, firstMon, secondMon, result);
     return TRUE;
 }
@@ -137,7 +137,7 @@ static void sub_0204FB20(TaskManager *taskManager, u16 firstMon, u16 secondMon, 
     memset(unk, 0, sizeof(UnkStruct_0204FB20));
     unk->playerTeam[0] = firstMon;
     unk->playerTeam[1] = secondMon;
-    unk->result        = result;
+    unk->result = result;
     sub_02091574(unk);
     TaskManager_Call(taskManager, sub_0204FB60, unk);
 }
@@ -171,16 +171,16 @@ static BOOL sub_0204FB60(TaskManager *taskManager) {
 
 static void sub_0204FBDC(TaskManager *taskManager, void *a1, BattleCastleChallengeType challengeType) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    UnkStruct_0204FBDC *unk  = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0204FBDC));
+    UnkStruct_0204FBDC *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0204FBDC));
     MI_CpuFill8(unk, 0, sizeof(UnkStruct_0204FBDC));
     unk->challengeType = challengeType;
-    unk->unk0c         = a1;
+    unk->unk0c = a1;
     TaskManager_Call(fieldSystem->taskman, sub_0204FC10, unk);
 }
 
 static BOOL sub_0204FC10(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    UnkStruct_0204FBDC *unk  = TaskManager_GetEnvironment(taskManager);
+    UnkStruct_0204FBDC *unk = TaskManager_GetEnvironment(taskManager);
     switch (unk->state) {
     case 0:
         unk->state = sub_0204FC78(unk, fieldSystem, HEAP_ID_FIELD);
@@ -204,20 +204,20 @@ static BOOL sub_0204FC10(TaskManager *taskManager) {
 static u32 sub_0204FC78(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID unused) {
     PartyMenuArgs *partyMenu = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
     MIi_CpuClearFast(0, (u32 *)partyMenu, sizeof(PartyMenuArgs));
-    partyMenu->party       = SaveArray_Party_Get(fieldSystem->saveData);
-    partyMenu->bag         = Save_Bag_Get(fieldSystem->saveData);
-    partyMenu->mailbox     = Save_Mailbox_Get(fieldSystem->saveData);
-    partyMenu->options     = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
-    partyMenu->unk_25      = 0;
-    partyMenu->context     = PARTY_MENU_CONTEXT_23;
+    partyMenu->party = SaveArray_Party_Get(fieldSystem->saveData);
+    partyMenu->bag = Save_Bag_Get(fieldSystem->saveData);
+    partyMenu->mailbox = Save_Mailbox_Get(fieldSystem->saveData);
+    partyMenu->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
+    partyMenu->unk_25 = 0;
+    partyMenu->context = PARTY_MENU_CONTEXT_23;
     partyMenu->fieldSystem = fieldSystem;
-    partyMenu->partySlot   = a0->partySlot;
+    partyMenu->partySlot = a0->partySlot;
     for (u8 i = 0; i < 3; i++) {
         partyMenu->selectedOrder[i] = a0->selectedOrder[i];
     }
-    partyMenu->maxLevel          = 100;
-    partyMenu->minMonsToSelect   = 3;
-    partyMenu->maxMonsToSelect   = 3;
+    partyMenu->maxLevel = 100;
+    partyMenu->minMonsToSelect = 3;
+    partyMenu->maxMonsToSelect = 3;
     partyMenu->menuInputStatePtr = &(fieldSystem->menuInputState);
     if (a0->challengeType == BATTLE_CASTLE_CHALLENGE_TYPE_MULTI) {
         partyMenu->minMonsToSelect = 2;
@@ -247,20 +247,20 @@ static u32 sub_0204FD50(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
 }
 
 static u32 sub_0204FDA0(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID heapId) {
-    SaveData *saveData      = fieldSystem->saveData;
+    SaveData *saveData = fieldSystem->saveData;
     PokemonSummaryArgs *unk = AllocFromHeapAtEnd(heapId, sizeof(PokemonSummaryArgs));
     MI_CpuFill8(unk, 0, sizeof(PokemonSummaryArgs));
-    unk->options       = Save_PlayerData_GetOptionsAddr(saveData);
-    unk->party         = SaveArray_Party_Get(saveData);
+    unk->options = Save_PlayerData_GetOptionsAddr(saveData);
+    unk->party = SaveArray_Party_Get(saveData);
     unk->natDexEnabled = SaveArray_IsNatDexEnabled(saveData);
-    unk->unk2C         = sub_02088288(saveData);
-    unk->unk11         = 1;
-    unk->partySlot     = a0->partySlot;
-    unk->partyCount    = Party_GetCount(unk->party);
-    unk->moveToLearn   = 0;
-    unk->unk12         = 0;
-    unk->ribbons       = Save_SpecialRibbons_Get(saveData);
-    unk->isFlag982Set  = sub_0208828C(saveData);
+    unk->unk2C = sub_02088288(saveData);
+    unk->unk11 = 1;
+    unk->partySlot = a0->partySlot;
+    unk->partyCount = Party_GetCount(unk->party);
+    unk->moveToLearn = 0;
+    unk->unk12 = 0;
+    unk->ribbons = Save_SpecialRibbons_Get(saveData);
+    unk->isFlag982Set = sub_0208828C(saveData);
     sub_02089D40(unk, unk_020FC3A4);
     sub_0208AD34(unk, Save_PlayerData_GetProfileAddr(saveData));
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PokemonSummary, unk);
@@ -273,7 +273,7 @@ static u32 sub_0204FE30(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
         return 3;
     }
     PokemonSummaryArgs *unk = *(a0->unk0c);
-    a0->partySlot           = unk->partySlot;
+    a0->partySlot = unk->partySlot;
     FreeToHeap(unk);
     *(a0->unk0c) = NULL;
     return 0;

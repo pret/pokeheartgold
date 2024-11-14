@@ -24,53 +24,53 @@
 #include "unk_02037C94.h"
 
 static const GraphicsBanks sErrorMessageBanksConfig = {
-    .bg            = GX_VRAM_BG_256_AB,
-    .bgextpltt     = GX_VRAM_BGEXTPLTT_NONE,
-    .subbg         = GX_VRAM_SUB_BG_NONE,
-    .subbgextpltt  = GX_VRAM_SUB_BGEXTPLTT_NONE,
-    .obj           = GX_VRAM_OBJ_NONE,
-    .objextpltt    = GX_VRAM_OBJEXTPLTT_NONE,
-    .subobj        = GX_VRAM_SUB_OBJ_NONE,
+    .bg = GX_VRAM_BG_256_AB,
+    .bgextpltt = GX_VRAM_BGEXTPLTT_NONE,
+    .subbg = GX_VRAM_SUB_BG_NONE,
+    .subbgextpltt = GX_VRAM_SUB_BGEXTPLTT_NONE,
+    .obj = GX_VRAM_OBJ_NONE,
+    .objextpltt = GX_VRAM_OBJEXTPLTT_NONE,
+    .subobj = GX_VRAM_SUB_OBJ_NONE,
     .subobjextpltt = GX_VRAM_SUB_OBJEXTPLTT_NONE,
-    .tex           = GX_VRAM_TEX_NONE,
-    .texpltt       = GX_VRAM_TEXPLTT_NONE,
+    .tex = GX_VRAM_TEX_NONE,
+    .texpltt = GX_VRAM_TEXPLTT_NONE,
 };
 
 static const struct GraphicsModes sErrorMessageBgModeSet = {
-    .dispMode  = GX_DISPMODE_GRAPHICS,
-    .bgMode    = GX_BGMODE_0,
-    .subMode   = GX_BGMODE_0,
+    .dispMode = GX_DISPMODE_GRAPHICS,
+    .bgMode = GX_BGMODE_0,
+    .subMode = GX_BGMODE_0,
     ._2d3dMode = GX_BG0_AS_2D,
 };
 
 static const BgTemplate sErrorMessageBgTemplate = {
-    .x          = 0,
-    .y          = 0,
+    .x = 0,
+    .y = 0,
     .bufferSize = 0x800,
-    .baseTile   = 0,
-    .size       = GF_BG_SCR_SIZE_256x256,
-    .colorMode  = GX_BG_COLORMODE_16,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
     .screenBase = GX_BG_SCRBASE_0x0000,
-    .charBase   = GX_BG_CHARBASE_0x18000,
-    .bgExtPltt  = GX_BG_EXTPLTT_01,
-    .priority   = 1,
-    .areaOver   = GX_BG_AREAOVER_XLU,
-    .dummy      = 0,
-    .mosaic     = FALSE,
+    .charBase = GX_BG_CHARBASE_0x18000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 1,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .dummy = 0,
+    .mosaic = FALSE,
 };
 
 static const WindowTemplate sErrorMessageWindowTemplate = {
-    .bgId     = GF_BG_LYR_MAIN_0,
-    .left     = 3,
-    .top      = 3,
-    .width    = 26,
-    .height   = 18,
-    .palette  = 1,
+    .bgId = GF_BG_LYR_MAIN_0,
+    .left = 3,
+    .top = 3,
+    .width = 26,
+    .height = 18,
+    .palette = 1,
     .baseTile = 0x23,
 };
 
 static const HEAP_PARAM sErrorMessageHeapParams = {
-    .size  = 0x20000,
+    .size = 0x20000,
     .arena = OS_ARENA_MAIN,
 };
 
@@ -131,7 +131,7 @@ void PrintErrorMessageAndReset(void) {
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB(1, 1, 27));
 
     MsgData *error_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0041_bin, HEAP_ID_DEFAULT);
-    String *error_str      = String_New(384, HEAP_ID_DEFAULT);
+    String *error_str = String_New(384, HEAP_ID_DEFAULT);
 
     ResetAllTextPrinters();
 

@@ -131,8 +131,8 @@ typedef struct AlphPuzzleData {
 } AlphPuzzleData;
 
 typedef struct AlphPuzzleInitTileData {
-    u8 index       : 5;
-    u8 rotation    : 2;
+    u8 index : 5;
+    u8 rotation : 2;
     u8 isImmovable : 1;
 } AlphPuzzleInitTileData;
 
@@ -586,7 +586,7 @@ BOOL AlphPuzzle_Init(OVY_MANAGER *man, int *state) {
         AlphPuzzleData *data = OverlayManager_CreateAndGetData(man, sizeof(AlphPuzzleData), HEAP_ID_ALPH_PUZZLE);
         MI_CpuFill8(data, 0, sizeof(AlphPuzzleData));
         data->heapId = HEAP_ID_ALPH_PUZZLE;
-        data->args   = OverlayManager_GetArgs(man);
+        data->args = OverlayManager_GetArgs(man);
         sub_02004EC4(74, 0, 0);
         AlphPuzzle_InitTextOptionsAndPuzzleIndex(data);
         (*state)++;
@@ -661,10 +661,10 @@ static void AlphPuzzle_ScreenOff(void) {
 
 static void AlphPuzzle_InitTextOptionsAndPuzzleIndex(AlphPuzzleData *data) {
     data->menuInputState = MenuInputStateMgr_GetState(data->args->menuInputStatePtr);
-    Options *options     = Save_PlayerData_GetOptionsAddr(data->args->saveData);
+    Options *options = Save_PlayerData_GetOptionsAddr(data->args->saveData);
     data->textFrameDelay = Options_GetTextFrameDelay(options);
-    data->frame          = Options_GetFrame(options);
-    data->puzzleIndex    = data->args->puzzle;
+    data->frame = Options_GetFrame(options);
+    data->puzzleIndex = data->args->puzzle;
 }
 
 static void AlphPuzzle_Finish(AlphPuzzleData *data) {
@@ -803,11 +803,11 @@ static int AlphPuzzleMainSeq_PickupTile_impl(AlphPuzzleData *data) {
         return ALPH_PUZZLE_STATE_ROTATE_TILE;
     }
     if (data->sceneTimer++ >= 2) {
-        data->sceneTimer      = 0;
+        data->sceneTimer = 0;
         data->tileHoverPixelX = (data->selectedTile->x * 32) + 64;
         data->tileHoverPixelY = (data->selectedTile->y * 32) + 32;
-        data->tileHoverTileX  = data->selectedTile->x;
-        data->tileHoverTileY  = data->selectedTile->y;
+        data->tileHoverTileX = data->selectedTile->x;
+        data->tileHoverTileY = data->selectedTile->y;
         AlphPuzzle_ClearOrSetBgTilesAtCoords(data, data->selectedTile->x, data->selectedTile->y, 3);
         return ALPH_PUZZLE_STATE_HOLDING_TILE;
     }
@@ -947,7 +947,7 @@ static int AlphPuzzleMainSeq_RotateTile_impl(AlphPuzzleData *data) {
         break;
     case 1: {
         u16 rotationOffset = (data->sceneTimer++) * 0x800;
-        u16 rotation       = data->selectedTile->rotation * 0x4000 + rotationOffset;
+        u16 rotation = data->selectedTile->rotation * 0x4000 + rotationOffset;
         Sprite_SetRotation(data->selectedTile->sprite, rotation);
         if (data->sceneTimer >= 8) {
             data->subState++;
@@ -960,7 +960,7 @@ static int AlphPuzzleMainSeq_RotateTile_impl(AlphPuzzleData *data) {
         AlphPuzzle_UpdateSelectedTile(data, -1, FALSE);
 
         data->sceneTimer = 0;
-        data->subState   = 0;
+        data->subState = 0;
 
         if (AlphPuzzle_CheckComplete(data)) {
             return ALPH_PUZZLE_STATE_CLEAR;
@@ -1015,8 +1015,8 @@ static int AlphPuzzleMainSeq_Clear_impl(AlphPuzzleData *data) {
         }
         break;
     default:
-        data->subState     = 0;
-        data->sceneTimer   = 0;
+        data->subState = 0;
+        data->sceneTimer = 0;
         data->puzzleSolved = 1;
         return ALPH_PUZZLE_STATE_FADE_OUT;
     }
@@ -1050,12 +1050,12 @@ static void AlphPuzzle_InitTileData(AlphPuzzleData *data) {
         for (x = 0; x < ALPH_PUZZLE_TILES_WIDE; x++) {
             u32 pos = y * ALPH_PUZZLE_TILES_WIDE + x;
             if ((*puzzle)[pos].index != 0 && (*puzzle)[pos].index <= 16) {
-                tile              = &data->tileGrid[(*puzzle)[pos].index - 1];
-                tile->x           = x;
-                tile->y           = y;
-                tile->rotation    = (*puzzle)[pos].rotation;
+                tile = &data->tileGrid[(*puzzle)[pos].index - 1];
+                tile->x = x;
+                tile->y = y;
+                tile->rotation = (*puzzle)[pos].rotation;
                 tile->isImmovable = (*puzzle)[pos].isImmovable;
-                tile->sprite      = NULL;
+                tile->sprite = NULL;
             }
         }
     }
@@ -1119,7 +1119,7 @@ static void AlphPuzzle_FreeBackgroundBuffers(AlphPuzzleData *data) {
 }
 
 static void AlphPuzzle_LoadBackgroundGraphics(AlphPuzzleData *data) {
-    NARC *narc    = NARC_New(NARC_application_annon_puzzle_gra, data->heapId);
+    NARC *narc = NARC_New(NARC_application_annon_puzzle_gra, data->heapId);
     data->palette = PaletteData_Init(data->heapId);
 
     PaletteData_AllocBuffers(data->palette, PLTTBUF_MAIN_BG, 256, data->heapId);
@@ -1159,9 +1159,9 @@ static void AlphPuzzle_FreeBackgroundGraphics(AlphPuzzleData *data) {
 static void AlphPuzzle_InitText(AlphPuzzleData *data) {
     FontID_Alloc(4, data->heapId);
 
-    data->msgData       = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0002_bin, data->heapId);
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0002_bin, data->heapId);
     data->messageFormat = MessageFormat_New_Custom(6, 16, data->heapId);
-    data->unk30         = String_New(0x80, data->heapId);
+    data->unk30 = String_New(0x80, data->heapId);
 
     data->quitText = NewString_ReadMsgData(data->msgData, msg_0002_00000);
 
@@ -1246,7 +1246,7 @@ static void AlphPuzzle_CreateSprites(AlphPuzzleData *data) {
     Sprite_SetOamMode(data->sprites[ALPH_SPRITE_INDEX_PREV_CURSOR], GX_OAM_MODE_XLU);
     sub_0200E248(data->spriteRenderer, data->spriteGfxHandler, NARC_application_annon_puzzle_gra, data->puzzleIndex + NARC_puzzle_gra_puzzle_gra_00000004_NCGR, 0, 1);
     for (i = 0; i < 16; i++) {
-        u8 index             = i + ALPH_SPRITE_INDEX_TILE_00;
+        u8 index = i + ALPH_SPRITE_INDEX_TILE_00;
         data->sprites[index] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler, &sSpriteTemplates[ALPH_SPRITE_INDEX_TILE_00]);
         Sprite_SetVisibleFlag(data->sprites[index], 1);
         Sprite_SetAnimCtrlSeq(data->sprites[index], i);
@@ -1336,15 +1336,15 @@ static void AlphPuzzle_UpdateHoverGraphicOnBg(AlphPuzzleData *data, u8 x, u8 y) 
 static void AlphPuzzle_Quit_CreateYesNoPrompt(AlphPuzzleData *data) {
     YesNoPromptTemplate unkStruct;
     MI_CpuFill8(&unkStruct, 0, sizeof(YesNoPromptTemplate));
-    unkStruct.bgConfig         = data->bgConfig;
-    unkStruct.tileStart        = 31;
-    unkStruct.plttSlot         = 6;
-    unkStruct.bgId             = 0;
-    unkStruct.x                = 25;
-    unkStruct.y                = 10;
-    unkStruct.ignoreTouchFlag  = data->menuInputState;
+    unkStruct.bgConfig = data->bgConfig;
+    unkStruct.tileStart = 31;
+    unkStruct.plttSlot = 6;
+    unkStruct.bgId = 0;
+    unkStruct.x = 25;
+    unkStruct.y = 10;
+    unkStruct.ignoreTouchFlag = data->menuInputState;
     unkStruct.initialCursorPos = 1;
-    unkStruct.shapeParam       = 0;
+    unkStruct.shapeParam = 0;
     YesNoPrompt_InitFromTemplateWithPalette(data->yesNoPrompt, &unkStruct, data->palette);
 }
 
@@ -1375,9 +1375,9 @@ void AlphPuzzle_SetSpritePosition_HandleRotation(AlphPuzzleTile *tile, s16 x, s1
 
 void AlphPuzzle_PlaceTileInGrid(AlphPuzzleData *data, s16 tileIndex, u8 x, u8 y, u8 rotation) {
     AlphPuzzleTile *tile = &data->tileGrid[tileIndex];
-    tile->x              = x;
-    tile->y              = y;
-    tile->rotation       = rotation;
+    tile->x = x;
+    tile->y = y;
+    tile->rotation = rotation;
     AlphPuzzle_SetSpritePosition_HandleRotation(tile, x * 32 + 48, y * 32 + 16);
     Sprite_SetRotation(tile->sprite, (rotation % 4u) * 0x4000);
 }
@@ -1385,7 +1385,7 @@ void AlphPuzzle_PlaceTileInGrid(AlphPuzzleData *data, s16 tileIndex, u8 x, u8 y,
 static void AlphPuzzle_UpdateSelectedTile(AlphPuzzleData *data, u8 tileIndex, BOOL isSelecting) {
     if (isSelecting) {
         data->selectedTileIndex = tileIndex;
-        data->selectedTile      = &data->tileGrid[data->selectedTileIndex];
+        data->selectedTile = &data->tileGrid[data->selectedTileIndex];
         Sprite_SetDrawPriority(data->selectedTile->sprite, 0);
         Sprite_AddPositionXY(data->selectedTile->sprite, -2, -2);
         Sprite_SetVisibleFlag(data->sprites[ALPH_SPRITE_INDEX_PREV_CURSOR], 1);
@@ -1396,9 +1396,9 @@ static void AlphPuzzle_UpdateSelectedTile(AlphPuzzleData *data, u8 tileIndex, BO
         AlphPuzzle_PlaceTileInGrid(data, data->selectedTileIndex, data->selectedTile->x, data->selectedTile->y, data->selectedTile->rotation);
         Sprite_SetVisibleFlag(data->sprites[ALPH_SPRITE_INDEX_PREV_CURSOR], 0);
         AlphPuzzle_ToggleDropCursorSprite(data, 0);
-        data->tileHoverTileX    = 0;
-        data->tileHoverTileY    = 0;
-        data->selectedTile      = NULL;
+        data->tileHoverTileX = 0;
+        data->tileHoverTileY = 0;
+        data->selectedTile = NULL;
         data->selectedTileIndex = 0;
     }
 }

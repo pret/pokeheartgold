@@ -2,82 +2,82 @@
   "header": "fielddata/script/scr_seq/event_T20R0202.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_T20R0202_000 + 1",
+      "scriptId": "_EV_scr_seq_T20R0202_000 + 1",
       "type": 0,
       "x": 6,
-      "y": 4,
-      "z": 0,
+      "z": 4,
+      "y": 0,
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T20R0202_001 + 1",
+      "scriptId": "_EV_scr_seq_T20R0202_001 + 1",
       "type": 0,
       "x": 8,
-      "y": 4,
-      "z": 0,
+      "z": 4,
+      "y": 0,
       "dir": 4
     }
   ],
   "objects": [
     {
       "id": "obj_T20R0202_storophy",
-      "sprite_id": "SPRITE_STOROPHY",
+      "spriteId": "SPRITE_STOROPHY",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_HIDE_PLAYERS_ROOM_SILVER_TROPHY",
-      "scr": 0,
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_PLAYERS_ROOM_SILVER_TROPHY",
+      "scriptId": 0,
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 8,
-      "y": 10,
-      "z": 0
+      "z": 10,
+      "y": 0
     },
     {
       "id": "obj_T20R0202_gtorophy",
-      "sprite_id": "SPRITE_GTOROPHY",
+      "spriteId": "SPRITE_GTOROPHY",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_HIDE_PLAYERS_ROOM_GOLD_TROPHY",
-      "scr": 0,
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_PLAYERS_ROOM_GOLD_TROPHY",
+      "scriptId": 0,
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 9,
-      "y": 10,
-      "z": 0
+      "z": 10,
+      "y": 0
     },
     {
       "id": "obj_T20R0202_btorophy",
-      "sprite_id": "SPRITE_BTOROPHY",
+      "spriteId": "SPRITE_BTOROPHY",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_HIDE_PLAYERS_ROOM_BRONZE_TROPHY",
-      "scr": 0,
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_PLAYERS_ROOM_BRONZE_TROPHY",
+      "scriptId": 0,
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 7,
-      "y": 10,
-      "z": 0
+      "z": 10,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 3,
-      "y": 4,
+      "z": 4,
       "header": "MAP_T20R0201",
       "anchor": 1,
-      "height": 0
+      "y": 0
     }
   ]
 }

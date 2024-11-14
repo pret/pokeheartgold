@@ -45,11 +45,11 @@ static void Bg_SetAffineScale(Background *bg, enum BgPosAdjustOp op, int value);
 static void ApplyFlipFlagsToTile(BgConfig *bgConfig, u8 flags, u8 *tile);
 
 static const u8 sTilemapWidthByBufferSize[] = {
-    [GF_BG_SCR_SIZE_128x128]   = 0x10,
-    [GF_BG_SCR_SIZE_256x256]   = 0x20,
-    [GF_BG_SCR_SIZE_256x512]   = 0x20,
-    [GF_BG_SCR_SIZE_512x256]   = 0x20,
-    [GF_BG_SCR_SIZE_512x512]   = 0x20,
+    [GF_BG_SCR_SIZE_128x128] = 0x10,
+    [GF_BG_SCR_SIZE_256x256] = 0x20,
+    [GF_BG_SCR_SIZE_256x512] = 0x20,
+    [GF_BG_SCR_SIZE_512x256] = 0x20,
+    [GF_BG_SCR_SIZE_512x512] = 0x20,
     [GF_BG_SCR_SIZE_1024x1024] = 0x20,
 };
 
@@ -94,8 +94,8 @@ static void (*const sClearWindowTilemapFuncs[GF_BG_TYPE_MAX])(Window *window) = 
 BgConfig *BgConfig_Alloc(HeapID heapId) {
     BgConfig *ret = AllocFromHeap(heapId, sizeof(BgConfig));
     memset(ret, 0, sizeof(BgConfig));
-    ret->heapId                  = heapId;
-    ret->scrollScheduled         = 0; // redundant to above memset
+    ret->heapId = heapId;
+    ret->scrollScheduled = 0;         // redundant to above memset
     ret->bufferTransferScheduled = 0; // redundant to above memset
     return ret;
 }
@@ -230,10 +230,10 @@ void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *templat
     }
 
     bgConfig->bgs[bgId].rotation = 0;
-    bgConfig->bgs[bgId].xScale   = FX32_ONE;
-    bgConfig->bgs[bgId].yScale   = FX32_ONE;
-    bgConfig->bgs[bgId].centerX  = 0;
-    bgConfig->bgs[bgId].centerY  = 0;
+    bgConfig->bgs[bgId].xScale = FX32_ONE;
+    bgConfig->bgs[bgId].yScale = FX32_ONE;
+    bgConfig->bgs[bgId].centerX = 0;
+    bgConfig->bgs[bgId].centerY = 0;
 
     if (template->bufferSize != 0) {
         bgConfig->bgs[bgId].tilemapBuffer = AllocFromHeap(bgConfig->heapId, template->bufferSize);
@@ -241,15 +241,15 @@ void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *templat
         MI_CpuClear16(bgConfig->bgs[bgId].tilemapBuffer, template->bufferSize);
 
         bgConfig->bgs[bgId].bufferSize = template->bufferSize;
-        bgConfig->bgs[bgId].baseTile   = template->baseTile;
+        bgConfig->bgs[bgId].baseTile = template->baseTile;
     } else {
         bgConfig->bgs[bgId].tilemapBuffer = NULL;
-        bgConfig->bgs[bgId].bufferSize    = 0;
-        bgConfig->bgs[bgId].baseTile      = 0;
+        bgConfig->bgs[bgId].bufferSize = 0;
+        bgConfig->bgs[bgId].baseTile = 0;
     }
 
-    bgConfig->bgs[bgId].size      = template->size;
-    bgConfig->bgs[bgId].mode      = bgType;
+    bgConfig->bgs[bgId].size = template->size;
+    bgConfig->bgs[bgId].mode = bgType;
     bgConfig->bgs[bgId].colorMode = template->colorMode;
 
     if (bgType == GF_BG_TYPE_TEXT && template->colorMode == GX_BG_COLORMODE_16) {
@@ -277,7 +277,7 @@ void SetBgControlParam(BgConfig *config, u8 bgId, enum GFBgCntSet attr, u8 value
         }
     } else if (attr == GF_BG_CNT_SET_SCREEN_SIZE) {
         config->bgs[bgId].mode = value;
-        screenSize             = TranslateGFBgModePairToGXScreenSize((enum GFBgScreenSize)config->bgs[bgId].size, (enum GFBgType)value);
+        screenSize = TranslateGFBgModePairToGXScreenSize((enum GFBgScreenSize)config->bgs[bgId].size, (enum GFBgType)value);
         if (value == GF_BG_TYPE_TEXT && config->bgs[bgId].colorMode == GX_BG_COLORMODE_16) {
             config->bgs[bgId].tileSize = 0x20;
         } else {
@@ -562,27 +562,27 @@ static u8 TranslateGFBgModePairToGXScreenSize(enum GFBgScreenSize size, enum GFB
 static void GetBgScreenDimensions(u32 screenSize, u8 *widthPtr, u8 *heightPtr) {
     switch (screenSize) {
     case GF_BG_SCR_SIZE_128x128:
-        *widthPtr  = 0x10;
+        *widthPtr = 0x10;
         *heightPtr = 0x10;
         break;
     case GF_BG_SCR_SIZE_256x256:
-        *widthPtr  = 0x20;
+        *widthPtr = 0x20;
         *heightPtr = 0x20;
         break;
     case GF_BG_SCR_SIZE_256x512:
-        *widthPtr  = 0x20;
+        *widthPtr = 0x20;
         *heightPtr = 0x40;
         break;
     case GF_BG_SCR_SIZE_512x256:
-        *widthPtr  = 0x40;
+        *widthPtr = 0x40;
         *heightPtr = 0x20;
         break;
     case GF_BG_SCR_SIZE_512x512:
-        *widthPtr  = 0x40;
+        *widthPtr = 0x40;
         *heightPtr = 0x40;
         break;
     case GF_BG_SCR_SIZE_1024x1024:
-        *widthPtr  = 0x80;
+        *widthPtr = 0x80;
         *heightPtr = 0x80;
         break;
     }
@@ -798,7 +798,7 @@ void BgCopyOrUncompressTilemapBufferRangeToVram(BgConfig *bgConfig, u8 bgId, con
         }
 
         u32 uncompSize = MI_GetUncompressedSize(buffer);
-        void *ptr      = AllocFromHeapAtEnd(bgConfig->heapId, uncompSize);
+        void *ptr = AllocFromHeapAtEnd(bgConfig->heapId, uncompSize);
         CopyOrUncompressTilemapData(buffer, ptr, bufferSize);
         LoadBgVramScr(bgId, ptr, baseTile * 2, uncompSize);
         FreeToHeap(ptr);
@@ -852,7 +852,7 @@ void BG_LoadCharTilesData(BgConfig *bgConfig, u8 bgId, const void *data, u32 siz
 
 static void BG_LoadCharPixelData(BgConfig *bgConfig, u8 bgId, const void *buffer, u32 size, u32 offset) {
     if (size == 0) {
-        u32 uncompressedSize     = MI_GetUncompressedSize(buffer);
+        u32 uncompressedSize = MI_GetUncompressedSize(buffer);
         void *uncompressedBuffer = AllocFromHeapAtEnd(bgConfig->heapId, uncompressedSize);
         CopyOrUncompressTilemapData(buffer, uncompressedBuffer, size);
         LoadBgVramChar(bgId, uncompressedBuffer, offset, uncompressedSize);
@@ -903,9 +903,9 @@ void BG_ClearCharDataRange(u8 bgId, u32 size, u32 offset, HeapID heapId) {
 
 void BG_FillCharDataRange(BgConfig *bgConfig, GFBgLayer bgId, u32 fillValue, u32 ntiles, u32 offset) {
     void *buffer;
-    u32 size  = ntiles * bgConfig->bgs[bgId].tileSize;
+    u32 size = ntiles * bgConfig->bgs[bgId].tileSize;
     u32 value = fillValue;
-    buffer    = AllocFromHeapAtEnd(bgConfig->heapId, size);
+    buffer = AllocFromHeapAtEnd(bgConfig->heapId, size);
 
     if (bgConfig->bgs[bgId].tileSize == TILE_SIZE_4BPP) {
         value = (value << 12) | (value << 8) | (value << 4) | (value << 0);
@@ -991,9 +991,9 @@ static u16 GetTileMapIndexFromCoords(u8 x, u8 y, u8 size, u8 mode) {
 }
 
 static u16 GetSrcTileMapIndexFromCoords(u8 x, u8 y, u8 width, u8 height) {
-    u8 coordType       = 0;
-    u16 tilemapIndex   = 0;
-    s16 adjustedWidth  = width - 32;
+    u8 coordType = 0;
+    u16 tilemapIndex = 0;
+    s16 adjustedWidth = width - 32;
     s16 adjustedHeight = height - 32;
 
     if (x / 32) {
@@ -1225,7 +1225,7 @@ void BgTilemapRectChangePalette(BgConfig *bgConfig, u8 bgId, u8 x, u8 y, u8 widt
             if (j >= screenWidth) {
                 break;
             }
-            u16 pos            = GetTileMapIndexFromCoords(j, i, bgConfig->bgs[bgId].size, bgConfig->bgs[bgId].mode);
+            u16 pos = GetTileMapIndexFromCoords(j, i, bgConfig->bgs[bgId].size, bgConfig->bgs[bgId].mode);
             tilemapBuffer[pos] = (tilemapBuffer[pos] & 0xFFF) | (palette << 12);
         }
     }
@@ -1406,29 +1406,29 @@ void BlitBitmapRect4Bit(const Bitmap *src, const Bitmap *dest, u16 srcX, u16 src
     } else {
         yEnd = height + srcY;
     }
-    multiplierSrcY  = ConvertPixelsToTiles(src->width);
+    multiplierSrcY = ConvertPixelsToTiles(src->width);
     multiplierDestY = ConvertPixelsToTiles(dest->width);
 
     if (colorKey == 0xFFFF) {
         for (loopSrcY = srcY, loopDestY = destY; loopSrcY < yEnd; loopSrcY++, loopDestY++) {
             for (loopSrcX = srcX, loopDestX = destX; loopSrcX < xEnd; loopSrcX++, loopDestX++) {
-                pixelsSrc  = GetPixelAddressFromBlit4bpp(src->pixels, loopSrcX, loopSrcY, multiplierSrcY);
+                pixelsSrc = GetPixelAddressFromBlit4bpp(src->pixels, loopSrcX, loopSrcY, multiplierSrcY);
                 pixelsDest = GetPixelAddressFromBlit4bpp(dest->pixels, loopDestX, loopDestY, multiplierDestY);
 
-                toOrr       = (*pixelsSrc >> ((loopSrcX & 1) * 4)) & 0xF;
-                toShift     = (loopDestX & 1) * 4;
+                toOrr = (*pixelsSrc >> ((loopSrcX & 1) * 4)) & 0xF;
+                toShift = (loopDestX & 1) * 4;
                 *pixelsDest = ((toOrr << toShift) | (*pixelsDest & (0xF0 >> toShift)));
             }
         }
     } else {
         for (loopSrcY = srcY, loopDestY = destY; loopSrcY < yEnd; loopSrcY++, loopDestY++) {
             for (loopSrcX = srcX, loopDestX = destX; loopSrcX < xEnd; loopSrcX++, loopDestX++) {
-                pixelsSrc  = GetPixelAddressFromBlit4bpp(src->pixels, loopSrcX, loopSrcY, multiplierSrcY);
+                pixelsSrc = GetPixelAddressFromBlit4bpp(src->pixels, loopSrcX, loopSrcY, multiplierSrcY);
                 pixelsDest = GetPixelAddressFromBlit4bpp(dest->pixels, loopDestX, loopDestY, multiplierDestY);
 
                 toOrr = (*pixelsSrc >> ((loopSrcX & 1) * 4)) & 0xF;
                 if (toOrr != colorKey) {
-                    toShift     = (loopDestX & 1) * 4;
+                    toShift = (loopDestX & 1) * 4;
                     *pixelsDest = (u8)((toOrr << toShift) | (*pixelsDest & (0xF0 >> toShift)));
                 }
             }
@@ -1453,13 +1453,13 @@ static void BlitBitmapRect8Bit(const Bitmap *src, const Bitmap *dest, u16 srcX, 
     } else {
         yEnd = height + srcY;
     }
-    multiplierSrcY  = ConvertPixelsToTiles(src->width);
+    multiplierSrcY = ConvertPixelsToTiles(src->width);
     multiplierDestY = ConvertPixelsToTiles(dest->width);
 
     if (colorKey == 0xFFFF) {
         for (loopSrcY = srcY, loopDestY = destY; loopSrcY < yEnd; loopSrcY++, loopDestY++) {
             for (loopSrcX = srcX, loopDestX = destX; loopSrcX < xEnd; loopSrcX++, loopDestX++) {
-                pixelsSrc  = GetPixelAddressFromBlit8bpp(src->pixels, loopSrcX, loopSrcY, multiplierSrcY);
+                pixelsSrc = GetPixelAddressFromBlit8bpp(src->pixels, loopSrcX, loopSrcY, multiplierSrcY);
                 pixelsDest = GetPixelAddressFromBlit8bpp(dest->pixels, loopDestX, loopDestY, multiplierDestY);
 
                 *pixelsDest = *pixelsSrc;
@@ -1468,7 +1468,7 @@ static void BlitBitmapRect8Bit(const Bitmap *src, const Bitmap *dest, u16 srcX, 
     } else {
         for (loopSrcY = srcY, loopDestY = destY; loopSrcY < yEnd; loopSrcY++, loopDestY++) {
             for (loopSrcX = srcX, loopDestX = destX; loopSrcX < xEnd; loopSrcX++, loopDestX++) {
-                pixelsSrc  = GetPixelAddressFromBlit8bpp(src->pixels, loopSrcX, loopSrcY, multiplierSrcY);
+                pixelsSrc = GetPixelAddressFromBlit8bpp(src->pixels, loopSrcX, loopSrcY, multiplierSrcY);
                 pixelsDest = GetPixelAddressFromBlit8bpp(dest->pixels, loopDestX, loopDestY, multiplierDestY);
 
                 if (*pixelsSrc != colorKey) {
@@ -1523,7 +1523,7 @@ static void FillBitmapRect8bit(const Bitmap *surface, u16 x, u16 y, u16 width, u
     for (int i = y; i < yEnd; i++) {
         for (int j = x; j < xEnd; j++) {
             u8 *pixels = GetPixelAddressFromBlit8bpp(surface->pixels, j, i, blitWidth);
-            *pixels    = fillValue;
+            *pixels = fillValue;
         }
     }
 }
@@ -1537,16 +1537,16 @@ Window *AllocWindows(HeapID heapId, s32 num) {
 }
 
 void InitWindow(Window *window) {
-    window->bgConfig    = NULL;
-    window->bgId        = GF_BG_LYR_UNALLOC;
+    window->bgConfig = NULL;
+    window->bgId = GF_BG_LYR_UNALLOC;
     window->tilemapLeft = 0;
-    window->tilemapTop  = 0;
-    window->width       = 0;
-    window->height      = 0;
-    window->paletteNum  = 0;
-    window->baseTile    = 0;
+    window->tilemapTop = 0;
+    window->width = 0;
+    window->height = 0;
+    window->paletteNum = 0;
+    window->baseTile = 0;
     window->pixelBuffer = NULL;
-    window->colorMode   = GF_BG_CLR_4BPP;
+    window->colorMode = GF_BG_CLR_4BPP;
 }
 
 BOOL WindowIsInUse(const Window *window) {
@@ -1567,16 +1567,16 @@ void AddWindowParameterized(BgConfig *bgConfig, Window *window, u8 bgId, u8 x, u
     if (buffer == NULL) {
         return;
     }
-    window->bgConfig    = bgConfig;
-    window->bgId        = bgId;
+    window->bgConfig = bgConfig;
+    window->bgId = bgId;
     window->tilemapLeft = x;
-    window->tilemapTop  = y;
-    window->width       = width;
-    window->height      = height;
-    window->paletteNum  = paletteNum;
-    window->baseTile    = baseTile;
+    window->tilemapTop = y;
+    window->width = width;
+    window->height = height;
+    window->paletteNum = paletteNum;
+    window->baseTile = baseTile;
     window->pixelBuffer = buffer;
-    window->colorMode   = bgConfig->bgs[bgId].colorMode == GX_BG_COLORMODE_16 ? GF_BG_CLR_4BPP : GF_BG_CLR_8BPP;
+    window->colorMode = bgConfig->bgs[bgId].colorMode == GX_BG_COLORMODE_16 ? GF_BG_CLR_4BPP : GF_BG_CLR_8BPP;
 }
 
 void AddTextWindowTopLeftCorner(BgConfig *bgConfig, Window *window, u8 width, u8 height, u16 baseTile, u8 paletteNum) {
@@ -1588,12 +1588,12 @@ void AddTextWindowTopLeftCorner(BgConfig *bgConfig, Window *window, u8 width, u8
     memset(ptr, paletteNum, size); // could cause a data protection abort if below is true
 
     if (ptr != NULL) {
-        window->bgConfig    = bgConfig;
-        window->width       = width;
-        window->height      = height;
-        window->baseTile    = baseTile;
+        window->bgConfig = bgConfig;
+        window->width = width;
+        window->height = height;
+        window->baseTile = baseTile;
         window->pixelBuffer = ptr;
-        window->colorMode   = GF_BG_CLR_4BPP;
+        window->colorMode = GF_BG_CLR_4BPP;
     }
 }
 
@@ -1604,14 +1604,14 @@ void AddWindow(BgConfig *bgConfig, Window *window, const WindowTemplate *templat
 void RemoveWindow(Window *window) {
     FreeToHeap(window->pixelBuffer);
 
-    window->bgConfig    = NULL;
-    window->bgId        = GF_BG_LYR_UNALLOC;
+    window->bgConfig = NULL;
+    window->bgId = GF_BG_LYR_UNALLOC;
     window->tilemapLeft = 0;
-    window->tilemapTop  = 0;
-    window->width       = 0;
-    window->height      = 0;
-    window->paletteNum  = 0;
-    window->baseTile    = 0;
+    window->tilemapTop = 0;
+    window->width = 0;
+    window->height = 0;
+    window->paletteNum = 0;
+    window->baseTile = 0;
     window->pixelBuffer = NULL;
 }
 
@@ -1659,8 +1659,8 @@ static void PutWindowTilemap_TextMode(Window *window) {
         return;
     }
 
-    tile          = window->baseTile;
-    tilemapRight  = window->tilemapLeft + window->width;
+    tile = window->baseTile;
+    tilemapRight = window->tilemapLeft + window->width;
     tilemapBottom = window->tilemapTop + window->height;
 
     for (i = window->tilemapTop; i < tilemapBottom; i++) {
@@ -1685,7 +1685,7 @@ static void PutWindowTilemap_AffineMode(Window *window) {
     tilemapWidth = sTilemapWidthByBufferSize[window->bgConfig->bgs[window->bgId].size];
 
     tilemap = window->bgConfig->bgs[window->bgId].tilemapBuffer + window->tilemapTop * tilemapWidth + window->tilemapLeft;
-    tile    = window->baseTile;
+    tile = window->baseTile;
 
     for (i = 0; i < window->height; i++) {
         for (j = 0; j < window->width; j++) {
@@ -1703,8 +1703,8 @@ static void ClearWindowTilemapText(Window *window) {
     if (window->bgConfig->bgs[window->bgId].tilemapBuffer == NULL) {
         return;
     }
-    tilemap       = window->bgConfig->bgs[window->bgId].tilemapBuffer;
-    tilemapRight  = window->tilemapLeft + window->width;
+    tilemap = window->bgConfig->bgs[window->bgId].tilemapBuffer;
+    tilemapRight = window->tilemapLeft + window->width;
     tilemapBottom = window->tilemapTop + window->height;
     for (i = window->tilemapTop; i < tilemapBottom; i++) {
         for (j = window->tilemapLeft; j < tilemapRight; j++) {
@@ -1723,7 +1723,7 @@ static void ClearWindowTilemapAffine(Window *window) {
     }
 
     tilemapWidth = sTilemapWidthByBufferSize[window->bgConfig->bgs[window->bgId].size];
-    tilemap      = window->bgConfig->bgs[window->bgId].tilemapBuffer + window->tilemapTop * tilemapWidth + window->tilemapLeft;
+    tilemap = window->bgConfig->bgs[window->bgId].tilemapBuffer + window->tilemapTop * tilemapWidth + window->tilemapLeft;
     for (i = 0; i < window->height; i++) {
         for (j = 0; j < window->width; j++) {
             tilemap[j] = 0;
@@ -1808,11 +1808,11 @@ void BlitBitmapRect(Window *window, void *src, u16 srcX, u16 srcY, u16 srcWidth,
     Bitmap bmpSrc, bmpDest;
 
     bmpSrc.pixels = src;
-    bmpSrc.width  = srcWidth;
+    bmpSrc.width = srcWidth;
     bmpSrc.height = srcHeight;
 
     bmpDest.pixels = window->pixelBuffer;
-    bmpDest.width  = window->width * 8;
+    bmpDest.width = window->width * 8;
     bmpDest.height = window->height * 8;
 
     if (window->bgConfig->bgs[window->bgId].colorMode == GF_BG_CLR_4BPP) {
@@ -1826,7 +1826,7 @@ void FillWindowPixelRect(Window *window, u8 fillValue, u16 x, u16 y, u16 width, 
     Bitmap bmp;
 
     bmp.pixels = window->pixelBuffer;
-    bmp.width  = window->width * 8;
+    bmp.width = window->width * 8;
     bmp.height = window->height * 8;
 
     if (window->bgConfig->bgs[window->bgId].colorMode == GF_BG_CLR_4BPP) {
@@ -1848,7 +1848,7 @@ void FillWindowPixelRect(Window *window, u8 fillValue, u16 x, u16 y, u16 width, 
                                                                                                                     \
         src = glyphPixels + (srcY / 8 * 64) + (srcX / 8 * 32);                                                      \
         if (srcY == 0) {                                                                                            \
-            destI    = destY + srcY;                                                                                \
+            destI = destY + srcY;                                                                                   \
             tableBit = table & 0xFF;                                                                                \
         } else {                                                                                                    \
             destI = destY + srcY;                                                                                   \
@@ -1863,14 +1863,14 @@ void FillWindowPixelRect(Window *window, u8 fillValue, u16 x, u16 y, u16 width, 
             pixelData = *(u32 *)src;                                                                                \
             tableFlag = (tableBit >> srcI) & 1;                                                                     \
             for (srcJ = 0, destJ = destX + srcX; srcJ < srcWidth; srcJ++, destJ++) {                                \
-                dest  = GetPixelAddressFromBlit4bpp(windowPixels, destJ, destI, destWidth);                         \
+                dest = GetPixelAddressFromBlit4bpp(windowPixels, destJ, destI, destWidth);                          \
                 toOrr = (pixelData >> (srcJ * 4)) & 0xF;                                                            \
                 if (toOrr != 0) {                                                                                   \
-                    bits  = (destJ & 1) * 4;                                                                        \
+                    bits = (destJ & 1) * 4;                                                                         \
                     toOrr = (toOrr << bits) | (*dest & (0xF0 >> bits));                                             \
                     *dest = toOrr;                                                                                  \
                     if (tableFlag) {                                                                                \
-                        dest  = GetPixelAddressFromBlit4bpp(windowPixels, destJ, destI + 1, destWidth);             \
+                        dest = GetPixelAddressFromBlit4bpp(windowPixels, destJ, destI + 1, destWidth);              \
                         *dest = toOrr;                                                                              \
                     }                                                                                               \
                 }                                                                                                   \
@@ -1896,7 +1896,7 @@ void FillWindowPixelRect(Window *window, u8 fillValue, u16 x, u16 y, u16 width, 
                                                                                                                     \
         src = glyphPixels + (srcY / 8 * 128) + (srcX / 8 * 64);                                                     \
         if (srcY == 0) {                                                                                            \
-            destI    = destY + srcY;                                                                                \
+            destI = destY + srcY;                                                                                   \
             tableBit = table & 0xFF;                                                                                \
         } else {                                                                                                    \
             destI = destY + srcY;                                                                                   \
@@ -1911,12 +1911,12 @@ void FillWindowPixelRect(Window *window, u8 fillValue, u16 x, u16 y, u16 width, 
             pixelData = (u8 *)src;                                                                                  \
             tableFlag = (tableBit >> srcI) & 1;                                                                     \
             for (srcJ = 0, destJ = destX + srcX; srcJ < srcWidth; srcJ++, destJ++) {                                \
-                dest  = GetPixelAddressFromBlit8bpp(windowPixels, destJ, destI, destWidth);                         \
+                dest = GetPixelAddressFromBlit8bpp(windowPixels, destJ, destI, destWidth);                          \
                 toOrr = pixelData[srcJ];                                                                            \
                 if (toOrr != 0) {                                                                                   \
                     *dest = toOrr;                                                                                  \
                     if (tableFlag) {                                                                                \
-                        dest  = GetPixelAddressFromBlit8bpp(windowPixels, destJ, destI + 1, destWidth);             \
+                        dest = GetPixelAddressFromBlit8bpp(windowPixels, destJ, destI + 1, destWidth);              \
                         *dest = toOrr;                                                                              \
                     }                                                                                               \
                 }                                                                                                   \
@@ -1937,8 +1937,8 @@ void CopyGlyphToWindow(Window *window, u8 *glyphPixels, u16 srcWidth, u16 srcHei
     u8 glyphSizeParam;
 
     windowPixels = (u8 *)window->pixelBuffer;
-    destWidth    = (u16)(window->width * 8);
-    destHeight   = (u16)(window->height * 8);
+    destWidth = (u16)(window->width * 8);
+    destHeight = (u16)(window->height * 8);
 
     // Don't overflow the window
     if (destWidth - destX < srcWidth) {
@@ -2030,9 +2030,9 @@ static void ScrollWindow4bpp(Window *window, u8 direction, u8 y, u8 fillValue) {
     int i, j;
 
     pixelBuffer = window->pixelBuffer;
-    fillWord    = (fillValue << 24) | (fillValue << 16) | (fillValue << 8) | (fillValue << 0);
-    size        = window->height * window->width * TILE_SIZE_4BPP;
-    width       = window->width;
+    fillWord = (fillValue << 24) | (fillValue << 16) | (fillValue << 8) | (fillValue << 0);
+    size = window->height * window->width * TILE_SIZE_4BPP;
+    width = window->width;
 
     switch (direction) {
     case 0: // up
@@ -2080,9 +2080,9 @@ static void ScrollWindow8bpp(Window *window, u8 direction, u8 y, u8 fillValue) {
     int i, j;
 
     pixelBuffer = window->pixelBuffer;
-    fillWord    = (fillValue << 24) | (fillValue << 16) | (fillValue << 8) | (fillValue << 0);
-    size        = window->height * window->width * TILE_SIZE_8BPP;
-    width       = window->width;
+    fillWord = (fillValue << 24) | (fillValue << 16) | (fillValue << 8) | (fillValue << 0);
+    size = window->height * window->width * TILE_SIZE_8BPP;
+    width = window->width;
 
     switch (direction) {
     case 0: // up
@@ -2179,7 +2179,7 @@ void SetWindowPaletteNum(Window *window, u8 paletteNum) {
 void DoScheduledBgGpuUpdates(BgConfig *bgConfig) {
     BgConfig_HandleScheduledScrolls(bgConfig);
     BgConfig_HandleScheduledBufferTransfers(bgConfig);
-    bgConfig->scrollScheduled         = 0;
+    bgConfig->scrollScheduled = 0;
     bgConfig->bufferTransferScheduled = 0;
 }
 
@@ -2310,16 +2310,16 @@ BOOL DoesPixelAtScreenXYMatchPtrVal(BgConfig *bgConfig, u8 bgId, u8 x, u8 y, u16
     }
 
     tilemapIdx = GetTileMapIndexFromCoords(x >> 3, y >> 3, bgConfig->bgs[bgId].size, bgConfig->bgs[bgId].mode);
-    bgCharPtr  = BgGetCharPtr(bgId);
-    xPixOffs   = x & 7;
-    yPixOffs   = y & 7;
+    bgCharPtr = BgGetCharPtr(bgId);
+    xPixOffs = x & 7;
+    yPixOffs = y & 7;
     if (bgConfig->bgs[bgId].colorMode == GX_BG_COLORMODE_16) {
         u16 *tilemapBuffer = bgConfig->bgs[bgId].tilemapBuffer;
-        u8 *tile           = AllocFromHeapAtEnd(bgConfig->heapId, 0x40);
+        u8 *tile = AllocFromHeapAtEnd(bgConfig->heapId, 0x40);
 
         bgCharPtr += (tilemapBuffer[tilemapIdx] & 0x3FF) * TILE_SIZE_4BPP;
         for (i = 0; i < TILE_SIZE_4BPP; i++) {
-            tile[i * 2]     = bgCharPtr[i] & 0xF;
+            tile[i * 2] = bgCharPtr[i] & 0xF;
             tile[i * 2 + 1] = bgCharPtr[i] >> 4;
         }
         ApplyFlipFlagsToTile(bgConfig, (tilemapBuffer[tilemapIdx] >> 10) & 3, tile);
@@ -2331,7 +2331,7 @@ BOOL DoesPixelAtScreenXYMatchPtrVal(BgConfig *bgConfig, u8 bgId, u8 x, u8 y, u16
     } else {
         if (bgConfig->bgs[bgId].mode != GF_BG_TYPE_AFFINE) {
             u16 *tilemapBuffer = bgConfig->bgs[bgId].tilemapBuffer;
-            u8 *tile           = AllocFromHeapAtEnd(bgConfig->heapId, 0x40);
+            u8 *tile = AllocFromHeapAtEnd(bgConfig->heapId, 0x40);
 
             memcpy(tile, bgCharPtr + (tilemapBuffer[tilemapIdx] & 0x3FF) * TILE_SIZE_8BPP, TILE_SIZE_8BPP);
             ApplyFlipFlagsToTile(bgConfig, (tilemapBuffer[tilemapIdx] >> 10) & 3, tile);

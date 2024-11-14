@@ -24,8 +24,8 @@ SPLEmitter *ov06_0221BA40(HeapID heapId) {
     Camera *pGVar2;
 
     particleHeap = AllocFromHeap(heapId, 0x4800);
-    pPVar1       = sub_02014DB4(ov06_0221BB14, ov06_0221BB30, particleHeap, 0x4800, TRUE, heapId);
-    pGVar2       = sub_02015524(pPVar1);
+    pPVar1 = sub_02014DB4(ov06_0221BB14, ov06_0221BB30, particleHeap, 0x4800, TRUE, heapId);
+    pGVar2 = sub_02015524(pPVar1);
     if (pGVar2 != NULL) {
         Camera_SetPerspectiveClippingPlane(1 * FX32_ONE, 900 * FX32_ONE, pGVar2);
     }

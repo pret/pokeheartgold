@@ -2,180 +2,180 @@
   "header": "fielddata/script/scr_seq/event_D43R0102.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d43r0102_max_revive",
+      "scriptId": "std_hiddenitem_d43r0102_max_revive",
       "type": 2,
       "x": 15,
-      "y": 27,
-      "z": 0,
+      "z": 27,
+      "y": 0,
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d43r0102_pp_up",
+      "scriptId": "std_hiddenitem_d43r0102_pp_up",
       "type": 2,
       "x": 28,
-      "y": 38,
-      "z": 0,
+      "z": 38,
+      "y": 0,
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d43r0102_ultra_ball",
+      "scriptId": "std_hiddenitem_d43r0102_ultra_ball",
       "type": 2,
       "x": 57,
-      "y": 42,
-      "z": 0,
+      "z": 42,
+      "y": 0,
       "dir": 4
     }
   ],
   "objects": [
     {
       "id": "obj_D43R0102_monstarball",
-      "sprite_id": "SPRITE_MONSTARBALL",
+      "spriteId": "SPRITE_MONSTARBALL",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_HIDE_ITEMBALL_D43R0102_TM26",
-      "scr": "std_itemball_d43r0102_tm26",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_ITEMBALL_D43R0102_TM26",
+      "scriptId": "std_itemball_d43r0102_tm26",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 13,
-      "y": 24,
-      "z": 0
+      "z": 24,
+      "y": 0
     },
     {
       "id": "obj_D43R0102_monstarball_2",
-      "sprite_id": "SPRITE_MONSTARBALL",
+      "spriteId": "SPRITE_MONSTARBALL",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_HIDE_ITEMBALL_D43R0102_HP_UP",
-      "scr": "std_itemball_d43r0102_hp_up",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_ITEMBALL_D43R0102_HP_UP",
+      "scriptId": "std_itemball_d43r0102_hp_up",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 31,
-      "y": 36,
-      "z": 0
+      "z": 36,
+      "y": 0
     },
     {
       "id": "obj_D43R0102_monstarball_3",
-      "sprite_id": "SPRITE_MONSTARBALL",
+      "spriteId": "SPRITE_MONSTARBALL",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_HIDE_ITEMBALL_D43R0102_FULL_RESTORE",
-      "scr": "std_itemball_d43r0102_full_restore",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_ITEMBALL_D43R0102_FULL_RESTORE",
+      "scriptId": "std_itemball_d43r0102_full_restore",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 44,
-      "y": 24,
-      "z": 0
+      "z": 24,
+      "y": 0
     },
     {
       "id": "obj_D43R0102_rock",
-      "sprite_id": "SPRITE_ROCK",
+      "spriteId": "SPRITE_ROCK",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "std_field_strength",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "std_field_strength",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 9,
-      "y": 25,
-      "z": 0
+      "z": 25,
+      "y": 0
     },
     {
       "id": "obj_D43R0102_rock_2",
-      "sprite_id": "SPRITE_ROCK",
+      "spriteId": "SPRITE_ROCK",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "std_field_strength",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "std_field_strength",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 50,
-      "y": 28,
-      "z": 0
+      "z": 28,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 7,
-      "y": 31,
+      "z": 31,
       "header": "MAP_D43R0101",
       "anchor": 1,
-      "height": 0
+      "y": 0
     },
     {
       "x": 27,
-      "y": 45,
+      "z": 45,
       "header": "MAP_D43R0103",
       "anchor": 1,
-      "height": 0
+      "y": 0
     },
     {
       "x": 27,
-      "y": 44,
+      "z": 44,
       "header": "MAP_D43R0103",
       "anchor": 1,
-      "height": 0
+      "y": 0
     },
     {
       "x": 51,
-      "y": 39,
+      "z": 39,
       "header": "MAP_D43R0103",
       "anchor": 2,
-      "height": 0
+      "y": 0
     },
     {
       "x": 51,
-      "y": 38,
+      "z": 38,
       "header": "MAP_D43R0103",
       "anchor": 2,
-      "height": 0
+      "y": 0
     },
     {
       "x": 56,
-      "y": 22,
+      "z": 22,
       "header": "MAP_D43R0103",
       "anchor": 3,
-      "height": 0
+      "y": 0
     },
     {
       "x": 56,
-      "y": 21,
+      "z": 21,
       "header": "MAP_D43R0103",
       "anchor": 3,
-      "height": 0
+      "y": 0
     },
     {
       "x": 7,
-      "y": 18,
+      "z": 18,
       "header": "MAP_D43R0103",
       "anchor": 4,
-      "height": 0
+      "y": 0
     },
     {
       "x": 7,
-      "y": 17,
+      "z": 17,
       "header": "MAP_D43R0103",
       "anchor": 4,
-      "height": 0
+      "y": 0
     }
   ]
 }

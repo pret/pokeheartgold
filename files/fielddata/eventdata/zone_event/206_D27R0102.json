@@ -3,60 +3,60 @@
   "objects": [
     {
       "id": "obj_EVERYWHERE_gsgentleman",
-      "sprite_id": "SPRITE_GSGENTLEMAN",
+      "spriteId": "SPRITE_GSGENTLEMAN",
       "movement": 0,
       "type": 1,
-      "flag": "FLAG_NOTHING",
-      "scr": "std_trainer(TRAINER_GENTLEMAN_ALFRED)",
-      "dirn": 3,
-      "eye": 5,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "std_trainer(TRAINER_GENTLEMAN_ALFRED)",
+      "facingDirection": 3,
+      "param0": 5,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 1,
-      "y": 8,
-      "z": 0
+      "z": 8,
+      "y": 0
     },
     {
       "id": "obj_EVERYWHERE_seaman_2",
-      "sprite_id": "SPRITE_SEAMAN_2",
+      "spriteId": "SPRITE_SEAMAN_2",
       "movement": 0,
       "type": 1,
-      "flag": "FLAG_NOTHING",
-      "scr": "std_trainer(TRAINER_SAILOR_HUEY)",
-      "dirn": 2,
-      "eye": 4,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "std_trainer(TRAINER_SAILOR_HUEY)",
+      "facingDirection": 2,
+      "param0": 4,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 15,
-      "y": 13,
-      "z": 0
+      "z": 13,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 5,
-      "y": 3,
+      "z": 3,
       "header": "MAP_D27R0101",
       "anchor": 2,
-      "height": 0
+      "y": 0
     },
     {
       "x": 13,
-      "y": 6,
+      "z": 6,
       "header": "MAP_D27R0104",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 13,
-      "y": 5,
+      "z": 5,
       "header": "MAP_D27R0104",
       "anchor": 0,
-      "height": 0
+      "y": 0
     }
   ]
 }

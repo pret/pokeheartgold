@@ -6,20 +6,20 @@
 
 typedef struct UnkStruct_0204B470 {
     u16 species : 11;
-    u16 form    : 5;
+    u16 form : 5;
     u16 item;
     u16 moves[4];
     u32 otId;
     u32 pid;
     union {
         struct {
-            u32 hpIv    : 5;
-            u32 atkIv   : 5;
-            u32 defIv   : 5;
-            u32 spdIv   : 5;
+            u32 hpIv : 5;
+            u32 atkIv : 5;
+            u32 defIv : 5;
+            u32 spdIv : 5;
             u32 spAtkIv : 5;
             u32 spDefIv : 5;
-            u32 dummy   : 2;
+            u32 dummy : 2;
         };
         u32 ivsWord;
     };

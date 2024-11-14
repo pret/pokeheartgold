@@ -10,12 +10,12 @@
 .public sub_0205F0F8
 .public MapObject_TestFlagsBits
 .public MapObject_GetID
-.public sub_0205F254
+.public MapObject_GetMapID
 .public MapObject_GetSpriteID
 .public MapObject_GetFacingDirection
 .public MapObject_GetCurrentX
-.public MapObject_GetCurrentY
-.public MapObject_GetPosVecYCoord
+.public MapObject_GetCurrentZ
+.public MapObject_GetPositionVectorYCoord
 .public sub_0206121C
 .public sub_02068D90
 .public sub_02068D98

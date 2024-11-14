@@ -3,60 +3,60 @@
   "objects": [
     {
       "id": "obj_D27R0101_middlewoman1_2",
-      "sprite_id": "SPRITE_MIDDLEWOMAN1_2",
+      "spriteId": "SPRITE_MIDDLEWOMAN1_2",
       "movement": 2,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_D27R0101_001 + 1",
-      "dirn": 2,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_D27R0101_001 + 1",
+      "facingDirection": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 9,
-      "y": 12,
-      "z": 0
+      "z": 12,
+      "y": 0
     },
     {
       "id": "obj_D27R0101_seaman_2",
-      "sprite_id": "SPRITE_SEAMAN_2",
+      "spriteId": "SPRITE_SEAMAN_2",
       "movement": 2,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_D27R0101_000 + 1",
-      "dirn": 2,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 3,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_D27R0101_000 + 1",
+      "facingDirection": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 3,
+      "yRange": 0,
       "x": 4,
-      "y": 5,
-      "z": 0
+      "z": 5,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 8,
-      "y": 17,
+      "z": 17,
       "header": "MAP_T26",
       "anchor": 3,
-      "height": 0
+      "y": 0
     },
     {
       "x": 8,
-      "y": 4,
+      "z": 4,
       "header": "MAP_D27R0108",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 2,
-      "y": 3,
+      "z": 3,
       "header": "MAP_D27R0102",
       "anchor": 0,
-      "height": 0
+      "y": 0
     }
   ]
 }

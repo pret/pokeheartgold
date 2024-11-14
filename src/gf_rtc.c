@@ -36,8 +36,8 @@ void GF_InitRTCWork(void) {
     RTC_Init();
     memset(&sRTCWork, 0, sizeof(sRTCWork));
     sRTCWork.getDateTimeSuccess = FALSE;
-    sRTCWork.getDateTimeLock    = FALSE;
-    sRTCWork.getDateTimeSleep   = 0;
+    sRTCWork.getDateTimeLock = FALSE;
+    sRTCWork.getDateTimeSleep = 0;
     GF_RTC_GetDateTime(&sRTCWork);
     GF_RTC_UnfreezeTimeInternal(&sRTCWork);
 }
@@ -50,24 +50,24 @@ void GF_RTC_UpdateOnFrame(void) {
 }
 
 static void GF_RTC_GetDateTime_Callback(RTCResult result, void *arg) {
-    struct GFRtcWork *work     = arg;
+    struct GFRtcWork *work = arg;
     work->getDateTimeErrorCode = result;
     GF_ASSERT(result == RTC_RESULT_SUCCESS);
     work->getDateTimeSuccess = TRUE;
-    work->date               = work->date_async;
-    work->time               = work->time_async;
-    work->getDateTimeLock    = FALSE;
+    work->date = work->date_async;
+    work->time = work->time_async;
+    work->getDateTimeLock = FALSE;
 }
 
 static void GF_RTC_GetDateTime(struct GFRtcWork *work) {
-    work->getDateTimeLock      = TRUE;
+    work->getDateTimeLock = TRUE;
     work->getDateTimeErrorCode = RTC_GetDateTimeAsync(&work->date_async, &work->time_async, GF_RTC_GetDateTime_Callback, work);
     GF_ASSERT(work->getDateTimeErrorCode == RTC_RESULT_SUCCESS);
 }
 
 static void GF_RTC_SetAndFreezeTimeInternal(struct GFRtcWork *work, s32 hour, s32 minute) {
-    work->frozenTimeState   = 3;
-    work->frozenTime.hour   = hour;
+    work->frozenTimeState = 3;
+    work->frozenTime.hour = hour;
     work->frozenTime.minute = minute;
 }
 

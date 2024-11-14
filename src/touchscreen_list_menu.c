@@ -32,7 +32,7 @@ static void TouchscreenListMenu_InvokeCallback(TouchscreenListMenu *menu, int a1
 TouchscreenListMenuSpawner *TouchscreenListMenuSpawner_Create(HeapID heapId, PaletteData *paletteData) {
     TouchscreenListMenuSpawner *ret = AllocFromHeap(heapId, sizeof(TouchscreenListMenuSpawner));
     MI_CpuClear8(ret, sizeof(TouchscreenListMenuSpawner));
-    ret->heapId      = heapId;
+    ret->heapId = heapId;
     ret->charDataRaw = GfGfxLoader_LoadFromNarc(NARC_data_sbox_gra, NARC_sbox_gra_sbox_gra_NCGR, FALSE, heapId, FALSE);
     NNS_G2dGetUnpackedBGCharacterData(ret->charDataRaw, &ret->pCharData);
     ret->plttDataRaw = GfGfxLoader_LoadFromNarc(NARC_data_sbox_gra, NARC_sbox_gra_sbox_gra_NCLR, FALSE, heapId, FALSE);
@@ -56,14 +56,14 @@ static TouchscreenListMenu *TouchscreenListMenu_CreateInternal(TouchscreenListMe
     if (selection < ret->header.numWindows) {
         ret->cursorPos = selection;
     }
-    ret->animActive  = 0;
-    ret->heapId      = spawner->heapId;
-    ret->y           = y;
-    ret->cursorPos   = selection;
-    ret->isTouch     = isTouch;
-    ret->callback    = callback;
+    ret->animActive = 0;
+    ret->heapId = spawner->heapId;
+    ret->y = y;
+    ret->cursorPos = selection;
+    ret->isTouch = isTouch;
+    ret->callback = callback;
     ret->callbackArg = callbackArg;
-    ret->silent      = silent;
+    ret->silent = silent;
     if (width == 0) {
         ret->width = TouchscreenListMenu_GetItemsTextMaxWidth(header->listMenuItems, ret->header.numWindows, 4, ret->header.template.xOffset);
     } else {
@@ -169,10 +169,10 @@ typedef struct TaskData_TouchscreenListMenuGraphicsLoad {
 static void TouchscreenListMenuSpawner_ScheduleLoadGraphicsToVram(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, PaletteData *plttData, HeapID heapId) {
     TaskData_TouchscreenListMenuGraphicsLoad *taskData = AllocFromHeapAtEnd(heapId, sizeof(TaskData_TouchscreenListMenuGraphicsLoad));
     MI_CpuClear8(taskData, sizeof(TaskData_TouchscreenListMenuGraphicsLoad));
-    taskData->pCharData  = spawner->pCharData;
-    taskData->pPlttData  = spawner->pPlttData;
-    taskData->bgConfig   = header->bgConfig;
-    taskData->bgId       = header->template.bgId;
+    taskData->pCharData = spawner->pCharData;
+    taskData->pPlttData = spawner->pPlttData;
+    taskData->bgConfig = header->bgConfig;
+    taskData->bgId = header->template.bgId;
     taskData->charOffset = header->template.charOffset;
     taskData->plttOffset = header->template.plttOffset;
     SysTask_CreateOnVWaitQueue(Task_LoadTouchscreenListMenuGraphicsToVram, taskData, 128);
@@ -223,17 +223,17 @@ static u8 TouchscreenListMenu_GetItemsTextMaxWidth(LISTMENUITEM *listMenuItem, u
 static void TouchscreenListMenu_CreateWindows(TouchscreenListMenu *menu) {
     int i;
     u16 tilesPerWindow;
-    menu->windows             = AllocWindows(menu->heapId, menu->header.numWindows);
+    menu->windows = AllocWindows(menu->heapId, menu->header.numWindows);
     menu->touchscreenHitboxes = AllocFromHeap(menu->heapId, (menu->header.numWindows + 1) * sizeof(TouchscreenHitbox));
     MI_CpuClear8(menu->touchscreenHitboxes, (menu->header.numWindows + 1) * sizeof(TouchscreenHitbox));
     tilesPerWindow = menu->width * 2;
     for (i = 0; i < menu->header.numWindows; ++i) {
         AddWindowParameterized(menu->header.bgConfig, &menu->windows[i], menu->header.template.bgId, menu->x + 1, menu->y + 1 + 3 * i, menu->width, 2, menu->header.template.plttOffset, menu->header.template.baseTile + tilesPerWindow * i);
         FillWindowPixelBuffer(&menu->windows[i], 3);
-        menu->touchscreenHitboxes[i].rect.top    = (menu->y + 1) * 8 + 24 * i;
+        menu->touchscreenHitboxes[i].rect.top = (menu->y + 1) * 8 + 24 * i;
         menu->touchscreenHitboxes[i].rect.bottom = menu->touchscreenHitboxes[i].rect.top + 16;
-        menu->touchscreenHitboxes[i].rect.left   = (menu->x + 1) * 8;
-        menu->touchscreenHitboxes[i].rect.right  = menu->touchscreenHitboxes[i].rect.left + menu->width * 8;
+        menu->touchscreenHitboxes[i].rect.left = (menu->x + 1) * 8;
+        menu->touchscreenHitboxes[i].rect.right = menu->touchscreenHitboxes[i].rect.left + menu->width * 8;
     }
     menu->touchscreenHitboxes[i].rect.top = TOUCHSCREEN_RECTLIST_END;
 }
@@ -353,15 +353,15 @@ static int TouchscreenListMenu_HandleTouchInput(TouchscreenListMenu *menu, BOOL 
         *flagRet = FALSE;
         return -1;
     }
-    *flagRet        = TRUE;
+    *flagRet = TRUE;
     menu->cursorPos = hitbox;
     TouchscreenListMenu_ToggleButtonPalette(menu, hitbox, TRUE);
     TouchscreenListMenu_DrawButtons(menu);
     ScheduleBgTilemapBufferTransfer(menu->header.bgConfig, menu->header.template.bgId);
     menu->animActive = 1;
-    menu->animTimer  = 8;
-    menu->selection  = hitbox;
-    menu->isTouch    = 1;
+    menu->animTimer = 8;
+    menu->selection = hitbox;
+    menu->isTouch = 1;
     TouchscreenListMenu_PlaySE(menu, SEQ_SE_DP_SELECT);
     TouchscreenListMenu_InvokeCallback(menu, 2);
     return -1;
@@ -381,8 +381,8 @@ static int TouchscreenListMenu_HandleKeyInput(TouchscreenListMenu *menu) {
     if (gSystem.newKeys & PAD_BUTTON_A) {
         TouchscreenListMenu_ToggleButtonPalette(menu, menu->cursorPos, TRUE);
         menu->animActive = 1;
-        menu->animTimer  = 8;
-        menu->selection  = menu->cursorPos;
+        menu->animTimer = 8;
+        menu->selection = menu->cursorPos;
         TouchscreenListMenu_PlaySE(menu, SEQ_SE_DP_SELECT);
         TouchscreenListMenu_InvokeCallback(menu, 2);
         return -1;

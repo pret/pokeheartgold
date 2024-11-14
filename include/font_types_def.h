@@ -54,7 +54,7 @@ typedef struct TextPrinter {
     u8 active;
     u8 state;
     u8 textSpeedBottom : 7; // x29
-    u8 textSpeedTop    : 1;
+    u8 textSpeedTop : 1;
     u8 delayCounter;
     u8 scrollDistance;
     u8 id;

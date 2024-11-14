@@ -9,12 +9,12 @@ typedef struct Ov122_021E8CFC {
     void *unk8;
     u8 unkC;
     u8 unkD;
-    u8 unkEx       : 4;
-    u8 unkEy       : 4;
-    u8 memoOpen    : 1;
+    u8 unkEx : 4;
+    u8 unkEy : 4;
+    u8 memoOpen : 1;
     u8 memoFocused : 1;
-    u8 unkFz       : 1;
-    u8 unkFp       : 5;
+    u8 unkFz : 1;
+    u8 unkFp : 5;
 } Ov122_021E8CFC;
 
 typedef void (*Ov122UnkCB)(struct Ov122_021E8CFC *a0, int a1, int a2);

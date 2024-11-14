@@ -63,9 +63,9 @@ static BOOL IntroMovie_Init(OVY_MANAGER *man, int *state) {
 
     IntroMovieOverlayData *data = OverlayManager_CreateAndGetData(man, sizeof(IntroMovieOverlayData), HEAP_ID_INTRO_MOVIE);
     memset(data, 0, sizeof(IntroMovieOverlayData));
-    data->heapID           = HEAP_ID_INTRO_MOVIE;
-    data->introSkipped     = FALSE;
-    data->skipAllowed      = FALSE;
+    data->heapID = HEAP_ID_INTRO_MOVIE;
+    data->introSkipped = FALSE;
+    data->skipAllowed = FALSE;
     gSystem.screensFlipped = TRUE;
     GfGfx_SwapDisplay();
     data->savedLCRngSeed = GetLCRNGSeed();
@@ -80,7 +80,7 @@ static BOOL IntroMovie_Main(OVY_MANAGER *man, int *state) {
     IntroMovieOverlayData *data = OverlayManager_GetData(man);
     if (data->skipAllowed && ((gSystem.newKeys & PAD_BUTTON_A) || (gSystem.newKeys & PAD_BUTTON_START) || gSystem.touchNew)) {
         data->introSkipped = TRUE;
-        gSystem.unk70      = FALSE;
+        gSystem.unk70 = FALSE;
         sub_0200FBF4(PM_LCD_TOP, RGB_WHITE);
         sub_0200FBF4(PM_LCD_BOTTOM, RGB_WHITE);
     }
@@ -94,7 +94,7 @@ static BOOL IntroMovie_Main(OVY_MANAGER *man, int *state) {
     case INTRO_MOVIE_RUN:
         if (sIntroMovieSceneFuncs[data->sceneNumber](data, IntroMovie_GetSceneDataPtr(data))) {
             ++data->sceneNumber;
-            data->sceneStep  = 0;
+            data->sceneStep = 0;
             data->sceneTimer = 0;
             if (data->sceneNumber >= 5) {
                 ++(*state);

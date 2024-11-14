@@ -329,7 +329,7 @@ _021F7522:
 _021F7524:
 	add r0, r5, #0
 	bl MapObject_GetManager
-	bl MapObjectManager_GetFieldSystemPtr
+	bl MapObjectManager_GetFieldSystem
 	str r0, [sp, #0x10]
 	ldr r0, [r0, #0xc]
 	bl SaveArray_Party_Get
@@ -376,7 +376,7 @@ _021F7524:
 	bl MapObject_SetFlagsBits
 	add r0, r5, #0
 	add r1, sp, #0x30
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r5, #0
 	bl MapObject_GetCurrentX
 	add r1, r0, #0
@@ -388,12 +388,12 @@ _021F7524:
 	add r0, r5, #0
 	bl MapObject_SetPreviousX
 	add r0, r5, #0
-	bl MapObject_GetCurrentHeight
+	bl MapObject_GetCurrentY
 	add r1, r0, #0
 	add r0, r5, #0
-	bl MapObject_SetPreviousHeight
+	bl MapObject_SetPreviousY
 	add r0, r5, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	add r1, r0, #0
 	mov r0, #2
 	lsl r2, r1, #0x10
@@ -401,10 +401,10 @@ _021F7524:
 	add r0, r2, r0
 	str r0, [sp, #0x38]
 	add r0, r5, #0
-	bl MapObject_SetPreviousY
+	bl MapObject_SetPreviousZ
 	add r0, r5, #0
 	add r1, sp, #0x30
-	bl MapObject_SetPositionVec
+	bl MapObject_SetPositionVector
 	add r0, r5, #0
 	bl MapObject_ClearHeldMovement
 	ldr r0, [sp, #0x10]
@@ -483,7 +483,7 @@ _021F766C:
 	str r0, [r1, #8]
 	add r0, r5, #0
 	add r1, sp, #0x24
-	bl MapObject_GetFacingVec
+	bl MapObject_CopyFacingVector
 	add r0, r5, #0
 	bl MapObject_GetSpriteID
 	add r0, r5, #0
@@ -498,7 +498,7 @@ _021F766C:
 	ldr r0, [sp, #0x20]
 	str r0, [sp, #0x2c]
 	add r0, r5, #0
-	bl MapObject_SetFacingVec
+	bl MapObject_SetFacingVector
 	add r0, r5, #0
 	bl ov01_02205564
 	cmp r0, #0
@@ -543,7 +543,7 @@ ov01_021F7704: ; 0x021F7704
 	mov r1, #0
 	strb r1, [r0, #0x15]
 	add r0, r4, #0
-	bl MapObject_GetFacingVecPtr
+	bl MapObject_GetFacingVector
 	mov r1, #0
 	str r1, [r0, #4]
 	pop {r4, pc}
@@ -592,7 +592,7 @@ _021F7760:
 	add r1, r7, #0
 	blx r5
 	add r0, r4, #0
-	bl MapObject_GetFacingVecPtr
+	bl MapObject_GetFacingVector
 	mov r1, #2
 	lsl r1, r1, #0xa
 	str r1, [r0, #8]
@@ -1431,7 +1431,7 @@ ov01_021F7DD0: ; 0x021F7DD0
 	bl ov01_021F95A8
 	add r0, r4, #0
 	add r1, sp, #0
-	bl MapObject_SetFacingVec
+	bl MapObject_SetFacingVector
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -1527,7 +1527,7 @@ _021F7EA0:
 	add r1, r7, #0
 	blx r5
 	add r0, r4, #0
-	bl MapObject_GetFacingVecPtr
+	bl MapObject_GetFacingVector
 	mov r1, #2
 	lsl r1, r1, #0xa
 	str r1, [r0, #8]
@@ -2665,7 +2665,7 @@ _021F876E:
 	str r0, [sp, #8]
 	add r0, r5, #0
 	add r1, sp, #0
-	bl MapObject_SetFacingVec
+	bl MapObject_SetFacingVector
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -2852,7 +2852,7 @@ _021F88D4:
 _021F88DA:
 	add r0, r5, #0
 	add r1, sp, #0
-	bl MapObject_SetFacingVec
+	bl MapObject_SetFacingVector
 	add sp, #0xc
 	pop {r4, r5, pc}
 	nop
@@ -2936,7 +2936,7 @@ _021F8990:
 	lsl r1, r1, #0xc
 	bl sub_02023F04
 	add r0, r5, #0
-	bl MapObject_GetFacingVecPtr
+	bl MapObject_GetFacingVector
 	mov r1, #2
 	lsl r1, r1, #0xa
 	str r1, [r0, #8]
@@ -3107,7 +3107,7 @@ _021F8B00:
 	lsl r1, r1, #0xc
 	bl sub_02023F04
 	add r0, r5, #0
-	bl MapObject_GetFacingVecPtr
+	bl MapObject_GetFacingVector
 	mov r1, #2
 	lsl r1, r1, #0xa
 	str r1, [r0, #8]
@@ -3226,7 +3226,7 @@ ov01_021F8BE0: ; 0x021F8BE0
 	lsl r2, r2, #0xa
 	add r2, r3, r2
 	str r2, [sp, #8]
-	bl MapObject_SetFacingVec
+	bl MapObject_SetFacingVector
 	add sp, #0xc
 	pop {pc}
 	thumb_func_end ov01_021F8BE0

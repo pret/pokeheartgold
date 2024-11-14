@@ -47,14 +47,14 @@ SpriteList *SpriteList_Create(SpriteListParam *param) {
     ret->sprites = AllocFromHeap(param->heapId, param->num * sizeof(Sprite));
     GF_ASSERT(ret->sprites != NULL);
     ret->numSprites = param->num;
-    ret->stack      = AllocFromHeap(param->heapId, param->num * sizeof(Sprite *));
+    ret->stack = AllocFromHeap(param->heapId, param->num * sizeof(Sprite *));
     GF_ASSERT(ret->stack != NULL);
     SpriteList_InitStack(ret);
     Sprite_Init(&ret->dummy);
     ret->dummy.prev = &ret->dummy;
     ret->dummy.next = &ret->dummy;
-    ret->renderer   = param->rendererInstance;
-    ret->animBuff   = Sys_AllocAndReadFile(param->heapId, "data/clact_default.NANR");
+    ret->renderer = param->rendererInstance;
+    ret->animBuff = Sys_AllocAndReadFile(param->heapId, "data/clact_default.NANR");
     NNS_G2dGetUnpackedAnimBank(ret->animBuff, &ret->animBank);
     ret->flag = TRUE;
     return ret;
@@ -112,11 +112,11 @@ void SpriteList_RenderAndAnimateSprites(SpriteList *spriteList) {
 }
 
 static void SpriteList_Init(SpriteList *spriteList) {
-    spriteList->sprites      = NULL;
-    spriteList->numSprites   = 0;
-    spriteList->stack        = NULL;
+    spriteList->sprites = NULL;
+    spriteList->numSprites = 0;
+    spriteList->stack = NULL;
     spriteList->stackPointer = 0;
-    spriteList->renderer     = NULL;
+    spriteList->renderer = NULL;
     Sprite_Init(&spriteList->dummy);
     spriteList->flag = FALSE;
 }
@@ -135,29 +135,29 @@ Sprite *Sprite_CreateAffine(const SpriteTemplate *template) {
         return NULL;
     }
 
-    sprite->spriteList   = template->spriteList;
-    sprite->animationNo  = 0;
-    sprite->matrix       = template->position;
-    sprite->scale        = template->scale;
-    sprite->rotation     = template->rotation;
-    sprite->type         = template->whichScreen;
+    sprite->spriteList = template->spriteList;
+    sprite->animationNo = 0;
+    sprite->matrix = template->position;
+    sprite->scale = template->scale;
+    sprite->rotation = template->rotation;
+    sprite->type = template->whichScreen;
     sprite->drawPriority = template->priority;
-    sprite->affine       = 0;
-    sprite->flip         = 0;
-    sprite->mosaic       = FALSE;
-    sprite->mode         = GX_OAM_MODE_NORMAL;
-    sprite->overwrite    = NNS_G2D_RND_OVERWRITE_PRIORITY | NNS_G2D_RND_OVERWRITE_PLTTNO_OFFS;
+    sprite->affine = 0;
+    sprite->flip = 0;
+    sprite->mosaic = FALSE;
+    sprite->mode = GX_OAM_MODE_NORMAL;
+    sprite->overwrite = NNS_G2D_RND_OVERWRITE_PRIORITY | NNS_G2D_RND_OVERWRITE_PLTTNO_OFFS;
     NNS_G2dSetRndCoreAffineOverwriteMode(&template->spriteList->renderer->rendererCore, (NNSG2dRendererAffineTypeOverwiteMode)sprite->affine);
     NNS_G2dSetRndCoreFlipMode(&template->spriteList->renderer->rendererCore, sprite->flip & 1, sprite->flip & 2);
-    sprite->drawFlag   = 1;
+    sprite->drawFlag = 1;
     sprite->animActive = 0;
-    sprite->speed      = FX32_CONST(2);
+    sprite->speed = FX32_CONST(2);
     if (!SpriteList_LoadCellAndAnimForSprite(template->spriteList, template->header, sprite, template->heapId)) {
         Sprite_Delete(sprite);
         return NULL;
     }
     sprite->palOffset = Sprite_GetPaletteVramOffset(&sprite->paletteProxy, sprite->type);
-    sprite->palIndex  = sprite->palOffset;
+    sprite->palIndex = sprite->palOffset;
     SpriteList_InsertSprite(template->spriteList, sprite);
     return sprite;
 }
@@ -166,13 +166,13 @@ Sprite *Sprite_Create(const SimpleSpriteTemplate *simpleTemplate) {
     SpriteTemplate template;
 
     template.spriteList = simpleTemplate->spriteList;
-    template.header     = simpleTemplate->header;
-    template.position   = simpleTemplate->position;
+    template.header = simpleTemplate->header;
+    template.position = simpleTemplate->position;
     SetVecFx32(template.scale, FX32_ONE, FX32_ONE, FX32_ONE);
-    template.rotation    = 0;
-    template.priority    = simpleTemplate->priority;
+    template.rotation = 0;
+    template.priority = simpleTemplate->priority;
     template.whichScreen = simpleTemplate->whichScreen;
-    template.heapId      = simpleTemplate->heapId;
+    template.heapId = simpleTemplate->heapId;
 
     return Sprite_CreateAffine(&template);
 }
@@ -257,7 +257,7 @@ void Sprite_SetAffineOverwriteType(Sprite *sprite, u8 affine) {
 
 void Sprite_SetFlip_AffineOff(Sprite *sprite, u8 flip) {
     GF_ASSERT(sprite != NULL);
-    sprite->flip   = flip;
+    sprite->flip = flip;
     sprite->affine = 0;
 }
 
@@ -296,12 +296,12 @@ void Sprite_SetAnimCtrlSeq(Sprite *sprite, int seq) {
     GF_ASSERT(Sprite_GetNumAnimSeqs(sprite) > seq);
     sprite->animationNo = (u16)seq;
     if (sprite->flag == SPRITE_ANIM_TYPE_CELL || sprite->flag == SPRITE_ANIM_TYPE_CELL_TRANSFER) {
-        SpriteAnimationData *animData         = (SpriteAnimationData *)sprite->animationData;
+        SpriteAnimationData *animData = (SpriteAnimationData *)sprite->animationData;
         const NNSG2dAnimSequenceData *seqData = NNS_G2dGetAnimSequenceByIdx(animData->animBankData, seq);
         NNS_G2dSetCellAnimationSequence(&animData->animation, seqData);
         NNS_G2dStartAnimCtrl(&animData->animation.animCtrl);
     } else {
-        SpriteMultiAnimationData *animData         = (SpriteMultiAnimationData *)sprite->animationData;
+        SpriteMultiAnimationData *animData = (SpriteMultiAnimationData *)sprite->animationData;
         const NNSG2dMultiCellAnimSequence *seqData = NNS_G2dGetAnimSequenceByIdx(animData->multiAnimBankData, seq);
         NNS_G2dSetAnimSequenceToMCAnimation(&animData->animation, seqData);
         NNS_G2dStartAnimCtrl(&animData->animation.animCtrl);
@@ -400,7 +400,7 @@ u8 Sprite_GetPalOffset(Sprite *sprite) {
 
 void Sprite_SetDrawPriority(Sprite *sprite, u32 priority) {
     SpriteList *spriteList = sprite->spriteList;
-    sprite->drawPriority   = priority;
+    sprite->drawPriority = priority;
     Sprite_EjectFromList(sprite);
     SpriteList_InsertSprite(spriteList, sprite);
 }
@@ -482,10 +482,10 @@ static u32 Sprite_GetExAttrByAnimSeqAndFrame(const Sprite *sprite, u32 seq, u32 
 
     if (sprite->flag == SPRITE_ANIM_TYPE_CELL || sprite->flag == SPRITE_ANIM_TYPE_CELL_TRANSFER) {
         SpriteAnimationData *animData = (SpriteAnimationData *)sprite->animationData;
-        animBank                      = animData->animBankData;
+        animBank = animData->animBankData;
     } else {
         SpriteMultiAnimationData *animData = (SpriteMultiAnimationData *)sprite->animationData;
-        animBank                           = animData->multiAnimBankData;
+        animBank = animData->multiAnimBankData;
     }
     userExAnimAttrBank = NNS_G2dGetUserExAnimAttrBank(animBank);
     if (userExAnimAttrBank != NULL) {
@@ -502,7 +502,7 @@ static u32 Sprite_GetExAttrByAnimSeqAndFrame(const Sprite *sprite, u32 seq, u32 
 }
 
 u32 Sprite_GetCurrentAnimFrameExAttr(Sprite *sprite) {
-    u32 animNum   = Sprite_GetAnimationNumber(sprite);
+    u32 animNum = Sprite_GetAnimationNumber(sprite);
     u32 animFrame = Sprite_GetAnimCtrlCurrentFrame(sprite);
     return Sprite_GetExAttrByAnimSeqAndFrame(sprite, animNum, animFrame);
 }
@@ -514,8 +514,8 @@ NNSG2dCellAnimation *Sprite_GetCellAnim(Sprite *sprite) {
 }
 
 static BOOL SpriteList_LoadCellAndAnimForSprite(SpriteList *spriteList, const SpriteResourcesHeader *resHdr, Sprite *sprite, HeapID heapId) {
-    sprite->flag         = SpriteResourcesHeader_GetSpriteAnimType(resHdr);
-    sprite->imageProxy   = *resHdr->imageProxy;
+    sprite->flag = SpriteResourcesHeader_GetSpriteAnimType(resHdr);
+    sprite->imageProxy = *resHdr->imageProxy;
     sprite->paletteProxy = *resHdr->plttProxy;
     Sprite_SetCellBankPtr(resHdr->cellData, sprite);
     if (resHdr->cellAnim != NULL) {
@@ -548,26 +548,26 @@ static SpriteAnimType SpriteResourcesHeader_GetSpriteAnimType(const SpriteResour
 
 static void Sprite_SetCellBankPtr(const NNSG2dCellDataBank *cellData, Sprite *sprite) {
     SpriteAnimationData *animData = (SpriteAnimationData *)sprite->animationData;
-    animData->cellBank            = cellData;
+    animData->cellBank = cellData;
 }
 
 static void Sprite_SetAnimBankPtr(const NNSG2dCellAnimBankData *cellAnim, Sprite *sprite) {
     SpriteAnimationData *animData = (SpriteAnimationData *)sprite->animationData;
-    animData->animBankData        = cellAnim;
+    animData->animBankData = cellAnim;
 }
 
 static void Sprite_SetMultiCellBankPtr(const NNSG2dMultiCellDataBank *mcelData, Sprite *sprite) {
     SpriteMultiAnimationData *animData = (SpriteMultiAnimationData *)sprite->animationData;
-    animData->multiCellBank            = mcelData;
+    animData->multiCellBank = mcelData;
 }
 
 static void Sprite_SetMultiAnimBankPtr(const NNSG2dMultiCellAnimBankData *mcelAnim, Sprite *sprite) {
     SpriteMultiAnimationData *animData = (SpriteMultiAnimationData *)sprite->animationData;
-    animData->multiAnimBankData        = mcelAnim;
+    animData->multiAnimBankData = mcelAnim;
 }
 
 static void Sprite_InitCellAnimation(Sprite *sprite, HeapID heapId) {
-    SpriteAnimationData *animData         = (SpriteAnimationData *)sprite->animationData;
+    SpriteAnimationData *animData = (SpriteAnimationData *)sprite->animationData;
     const NNSG2dAnimSequenceData *animSeq = NNS_G2dGetAnimSequenceByIdx(animData->animBankData, 0);
     NNS_G2dInitCellAnimation(&animData->animation, animSeq, animData->cellBank);
 }
@@ -576,16 +576,16 @@ static void Sprite_InitCellAnimationWithTransfer(const SpriteResourcesHeader *re
     SpriteAnimationDataWithTransfer *animData = (SpriteAnimationDataWithTransfer *)sprite->animationData;
     const NNSG2dCharacterData *charData;
     animData->cellTransferStateHandle = NNS_G2dGetNewCellTransferStateHandle();
-    charData                          = resHdr->charData;
+    charData = resHdr->charData;
     NNS_G2dInitCellAnimationVramTransfered(&animData->animation, NNS_G2dGetAnimSequenceByIdx(animData->animBankData, 0), animData->cellBank, animData->cellTransferStateHandle, -1, NNS_G2dGetImageLocation(&sprite->imageProxy, NNS_G2D_VRAM_TYPE_2DMAIN), NNS_G2dGetImageLocation(&sprite->imageProxy, NNS_G2D_VRAM_TYPE_2DSUB), charData->pRawData, NULL, charData->szByte);
 }
 
 static void Sprite_InitMultiCellAnimation(Sprite *sprite, HeapID heapId) {
-    SpriteMultiAnimationData *animData         = (SpriteMultiAnimationData *)sprite->animationData;
+    SpriteMultiAnimationData *animData = (SpriteMultiAnimationData *)sprite->animationData;
     const NNSG2dMultiCellAnimSequence *animSeq = NNS_G2dGetAnimSequenceByIdx(animData->multiAnimBankData, 0);
-    u16 numNodes                               = NNS_G2dGetMCBankNumNodesRequired(animData->multiCellBank);
-    animData->node                             = AllocFromHeap(heapId, numNodes * sizeof(NNSG2dNode));
-    animData->cellAnim                         = AllocFromHeap(heapId, numNodes * sizeof(NNSG2dCellAnimation));
+    u16 numNodes = NNS_G2dGetMCBankNumNodesRequired(animData->multiCellBank);
+    animData->node = AllocFromHeap(heapId, numNodes * sizeof(NNSG2dNode));
+    animData->cellAnim = AllocFromHeap(heapId, numNodes * sizeof(NNSG2dCellAnimation));
     NNS_G2dInitMCAnimation(&animData->animation, animData->node, animData->cellAnim, numNodes, animData->animBankData, animData->cellBank, animData->multiCellBank);
     NNS_G2dSetAnimSequenceToMCAnimation(&animData->animation, animSeq);
 }
@@ -658,16 +658,16 @@ static void SpriteList_InsertSprite(SpriteList *spriteList, Sprite *sprite) {
     if (spriteList->dummy.next == &spriteList->dummy) {
         spriteList->dummy.next = sprite;
         spriteList->dummy.prev = sprite;
-        sprite->prev           = &spriteList->dummy;
-        sprite->next           = &spriteList->dummy;
+        sprite->prev = &spriteList->dummy;
+        sprite->next = &spriteList->dummy;
         return;
     }
 
     if (spriteList->dummy.prev->drawPriority <= sprite->drawPriority) {
-        sprite->prev                 = spriteList->dummy.prev;
+        sprite->prev = spriteList->dummy.prev;
         spriteList->dummy.prev->next = sprite;
-        sprite->next                 = &spriteList->dummy;
-        spriteList->dummy.prev       = sprite;
+        sprite->next = &spriteList->dummy;
+        spriteList->dummy.prev = sprite;
         return;
     }
 
@@ -675,9 +675,9 @@ static void SpriteList_InsertSprite(SpriteList *spriteList, Sprite *sprite) {
     while (head != &spriteList->dummy) {
         if (head->drawPriority > sprite->drawPriority) {
             head->prev->next = sprite;
-            sprite->prev     = head->prev;
-            head->prev       = sprite;
-            sprite->next     = head;
+            sprite->prev = head->prev;
+            head->prev = sprite;
+            sprite->next = head;
             return;
         }
         head = head->next;

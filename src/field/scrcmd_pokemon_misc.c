@@ -126,12 +126,12 @@ BOOL ScrCmd_648(ScriptContext *ctx) {
     MsgData *msgdata;
     FieldSystem *fieldSystem = ctx->fieldSystem;
 
-    msgfmt        = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
-    u32 unkA      = ScriptGetVar(ctx);
+    msgfmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
+    u32 unkA = ScriptGetVar(ctx);
     u32 fileIndex = ScriptGetVar(ctx);
-    u16 unkC      = ScriptReadHalfword(ctx);
-    u16 unkD      = ScriptReadHalfword(ctx);
-    u16 unkE      = ScriptReadHalfword(ctx);
+    u16 unkC = ScriptReadHalfword(ctx);
+    u16 unkD = ScriptReadHalfword(ctx);
+    u16 unkE = ScriptReadHalfword(ctx);
 
     ctx->data[0] = unkC;
 
@@ -141,7 +141,7 @@ BOOL ScrCmd_648(ScriptContext *ctx) {
 
     window = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_WINDOW);
 
-    cursorPos  = GetVarPointer(fieldSystem, unkD);
+    cursorPos = GetVarPointer(fieldSystem, unkD);
     itemsAbove = GetVarPointer(fieldSystem, unkE);
 
     unkPtr = ov01_02200D9C(fieldSystem, 20, 1, 0, 1, input, *msgfmt, window, msgdata, cursorPos, itemsAbove);
@@ -186,7 +186,7 @@ static BOOL ov01_02200C6C(ScriptContext *ctx) {
 static void *ov01_02200C94(HeapID heapId, s32 fileId, int *unkPtr) {
     u32 size;
     void *data = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_application_zukanlist_zukan_data_zukan_data, fileId, FALSE, heapId, FALSE, &size);
-    *unkPtr    = size / 2;
+    *unkPtr = size / 2;
     return data;
 }
 
@@ -196,28 +196,28 @@ static void ov01_02200CB4(SCR_648_STRUCT *unkPtr, MsgData *msgdata) {
 
 static void ov01_02200CBC(FieldSystem *fieldSystem, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, u16 *input, MessageFormat *msgfmt, Window *window, MsgData *msgdata, u16 *cursorPos, u16 *itemsAbove) {
     int i;
-    unkPtr->msgdata     = msgdata;
-    unkPtr->unk_207     = unkPtr->unk_207 & ~0x2;
-    unkPtr->msgfmt      = msgfmt;
+    unkPtr->msgdata = msgdata;
+    unkPtr->unk_207 = unkPtr->unk_207 & ~0x2;
+    unkPtr->msgfmt = msgfmt;
     unkPtr->fieldSystem = fieldSystem;
-    unkPtr->input       = input;
-    i                   = 0;
-    *unkPtr->input      = 0;
-    unkPtr->cursorPos   = cursorPos;
-    unkPtr->itemsAbove  = itemsAbove;
-    unkPtr->unk_207     = unkPtr->unk_207 & ~1 | a5 & 1;
-    unkPtr->unk_206     = a4;
-    unkPtr->x           = x;
-    unkPtr->y           = y;
-    unkPtr->totalItems  = 0;
-    unkPtr->window_18   = window;
-    unkPtr->unk_204     = 3;
-    unkPtr->unk_6F4     = a4;
+    unkPtr->input = input;
+    i = 0;
+    *unkPtr->input = 0;
+    unkPtr->cursorPos = cursorPos;
+    unkPtr->itemsAbove = itemsAbove;
+    unkPtr->unk_207 = unkPtr->unk_207 & ~1 | a5 & 1;
+    unkPtr->unk_206 = a4;
+    unkPtr->x = x;
+    unkPtr->y = y;
+    unkPtr->totalItems = 0;
+    unkPtr->window_18 = window;
+    unkPtr->unk_204 = 3;
+    unkPtr->unk_6F4 = a4;
 
     for (i = 0; i < 0x78; i++) {
-        unkPtr->items[i].text  = NULL;
+        unkPtr->items[i].text = NULL;
         unkPtr->items[i].value = 0;
-        unkPtr->unk_604[i]     = 0xff;
+        unkPtr->unk_604[i] = 0xff;
     }
 
     for (i = 0; i < 0x78; i++) {
@@ -252,7 +252,7 @@ static void ov01_02200E00(SCR_648_STRUCT *unkPtr) {
     DrawFrameAndWindow1(&unkPtr->window_8, TRUE, 0x3D9, 11);
     ov01_02200F54(unkPtr);
     unkPtr->listMenu_23C = ListMenuInit(&unkPtr->listMenuTemplate, *unkPtr->cursorPos, *unkPtr->itemsAbove, HEAP_ID_4);
-    unkPtr->sysTask      = SysTask_CreateOnMainQueue(ov01_022010CC, unkPtr, 0);
+    unkPtr->sysTask = SysTask_CreateOnMainQueue(ov01_022010CC, unkPtr, 0);
 }
 
 static void ov01_02200EC8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3) {
@@ -271,25 +271,25 @@ static void ov01_02200EC8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3) {
 }
 
 static void ov01_02200F54(SCR_648_STRUCT *unkPtr) {
-    unkPtr->listMenuTemplate.items               = unkPtr->items;
-    unkPtr->listMenuTemplate.moveCursorFunc      = ov01_02201088;
-    unkPtr->listMenuTemplate.itemPrintFunc       = ov01_02201064;
-    unkPtr->listMenuTemplate.window              = &unkPtr->window_8;
-    unkPtr->listMenuTemplate.totalItems          = unkPtr->totalItems;
-    unkPtr->listMenuTemplate.maxShowed           = 8;
-    unkPtr->listMenuTemplate.header_X            = 1;
-    unkPtr->listMenuTemplate.item_X              = 12;
-    unkPtr->listMenuTemplate.cursor_X            = 2;
-    unkPtr->listMenuTemplate.upText_Y            = 1;
-    unkPtr->listMenuTemplate.cursorPal           = 1;
-    unkPtr->listMenuTemplate.fillValue           = 15;
-    unkPtr->listMenuTemplate.cursorShadowPal     = 2;
-    unkPtr->listMenuTemplate.lettersSpacing      = 0;
+    unkPtr->listMenuTemplate.items = unkPtr->items;
+    unkPtr->listMenuTemplate.moveCursorFunc = ov01_02201088;
+    unkPtr->listMenuTemplate.itemPrintFunc = ov01_02201064;
+    unkPtr->listMenuTemplate.window = &unkPtr->window_8;
+    unkPtr->listMenuTemplate.totalItems = unkPtr->totalItems;
+    unkPtr->listMenuTemplate.maxShowed = 8;
+    unkPtr->listMenuTemplate.header_X = 1;
+    unkPtr->listMenuTemplate.item_X = 12;
+    unkPtr->listMenuTemplate.cursor_X = 2;
+    unkPtr->listMenuTemplate.upText_Y = 1;
+    unkPtr->listMenuTemplate.cursorPal = 1;
+    unkPtr->listMenuTemplate.fillValue = 15;
+    unkPtr->listMenuTemplate.cursorShadowPal = 2;
+    unkPtr->listMenuTemplate.lettersSpacing = 0;
     unkPtr->listMenuTemplate.itemVerticalPadding = 0;
-    unkPtr->listMenuTemplate.scrollMultiple      = 1;
-    unkPtr->listMenuTemplate.fontId              = 0;
-    unkPtr->listMenuTemplate.cursorKind          = 0;
-    unkPtr->listMenuTemplate.unk_1C              = (u32)unkPtr;
+    unkPtr->listMenuTemplate.scrollMultiple = 1;
+    unkPtr->listMenuTemplate.fontId = 0;
+    unkPtr->listMenuTemplate.cursorKind = 0;
+    unkPtr->listMenuTemplate.unk_1C = (u32)unkPtr;
 }
 
 static void ov01_02201064(struct ListMenu *listMenu, s32 a1, u8 unused) {
@@ -305,7 +305,7 @@ static void ov01_02201088(struct ListMenu *listMenu, s32 unused1, u8 unused2) {
     SCR_648_STRUCT *unkPtr = (SCR_648_STRUCT *)ListMenuGetTemplateField(listMenu, LISTMENUATTR_UNK_1C);
     ListMenuGetScrollAndRow(listMenu, &cursorPos, &itemsAbove);
     if (unkPtr->cursorPos != 0 && unkPtr->itemsAbove != 0) {
-        *unkPtr->cursorPos  = cursorPos;
+        *unkPtr->cursorPos = cursorPos;
         *unkPtr->itemsAbove = itemsAbove;
     }
 }
@@ -320,7 +320,7 @@ static void ov01_022010CC(SysTask *sysTask, void *work) {
     }
     if (IsPaletteFadeFinished()) {
         input = ListMenu_ProcessInput(unkPtr->listMenu_23C);
-        prev  = unkPtr->unk_6F4;
+        prev = unkPtr->unk_6F4;
         ListMenuGetCurrentItemArrayId(unkPtr->listMenu_23C, &unkPtr->unk_6F4);
         if (prev != unkPtr->unk_6F4) {
             PlaySE(SEQ_SE_DP_SELECT);
@@ -378,20 +378,20 @@ BOOL ScrCmd_StatJudge(ScriptContext *ctx) {
     u8 offset;
     u8 highestIvValue;
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    u32 monIndex             = ScriptGetVar(ctx);
-    u16 *ivTotal             = ScriptGetVarPointer(ctx);
-    u16 *highestIvIndex      = ScriptGetVarPointer(ctx);
-    u16 *highestIv           = ScriptGetVarPointer(ctx);
-    Pokemon *mon             = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), monIndex);
-    ivList[0]                = GetMonData(mon, MON_DATA_HP_IV, 0);
-    ivList[1]                = GetMonData(mon, MON_DATA_ATK_IV, 0);
-    ivList[2]                = GetMonData(mon, MON_DATA_DEF_IV, 0);
-    ivList[3]                = GetMonData(mon, MON_DATA_SPEED_IV, 0);
-    ivList[4]                = GetMonData(mon, MON_DATA_SPATK_IV, 0);
-    ivList[5]                = GetMonData(mon, MON_DATA_SPDEF_IV, 0);
+    u32 monIndex = ScriptGetVar(ctx);
+    u16 *ivTotal = ScriptGetVarPointer(ctx);
+    u16 *highestIvIndex = ScriptGetVarPointer(ctx);
+    u16 *highestIv = ScriptGetVarPointer(ctx);
+    Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), monIndex);
+    ivList[0] = GetMonData(mon, MON_DATA_HP_IV, 0);
+    ivList[1] = GetMonData(mon, MON_DATA_ATK_IV, 0);
+    ivList[2] = GetMonData(mon, MON_DATA_DEF_IV, 0);
+    ivList[3] = GetMonData(mon, MON_DATA_SPEED_IV, 0);
+    ivList[4] = GetMonData(mon, MON_DATA_SPATK_IV, 0);
+    ivList[5] = GetMonData(mon, MON_DATA_SPDEF_IV, 0);
 
     highestIvValue = 0;
-    *ivTotal       = 0;
+    *ivTotal = 0;
 
     for (i = 0; i < 6; ++i) {
         *ivTotal += ivList[i];
@@ -400,19 +400,19 @@ BOOL ScrCmd_StatJudge(ScriptContext *ctx) {
         }
     }
 
-    offset          = fieldSystem->judgeStatPosition;
+    offset = fieldSystem->judgeStatPosition;
     *highestIvIndex = offset;
 
     for (i = 0; i < 6; ++i) {
         if (highestIvValue == ivList[offset]) {
-            *highestIvIndex                = offset;
+            *highestIvIndex = offset;
             fieldSystem->judgeStatPosition = (offset + 1) % 6;
             break;
         }
         offset = (offset + 1) % 6;
     }
 
-    *highestIv      = highestIvValue;
+    *highestIv = highestIvValue;
     *highestIvIndex = sStatJudgeBestStatMsgIdxs[*highestIvIndex];
 
     return FALSE;
@@ -423,16 +423,16 @@ BOOL ScrCmd_CommSanitizeParty(ScriptContext *ctx) {
     u32 species, data;
     u32 heldItems[6];
     Pokemon *mon;
-    int count                = 0;
+    int count = 0;
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    u16 *success             = ScriptGetVarPointer(ctx);
-    Party *party             = SaveArray_Party_Get(fieldSystem->saveData);
-    partyCount               = Party_GetCount(party);
+    u16 *success = ScriptGetVarPointer(ctx);
+    Party *party = SaveArray_Party_Get(fieldSystem->saveData);
+    partyCount = Party_GetCount(party);
 
     *success = FALSE;
 
     for (i = 0; i < partyCount; i++) {
-        mon          = Party_GetMonByIndex(party, i);
+        mon = Party_GetMonByIndex(party, i);
         heldItems[i] = GetMonData(mon, MON_DATA_HELD_ITEM, 0);
         if (heldItems[i] == ITEM_GRISEOUS_ORB) {
             count++;
@@ -454,7 +454,7 @@ BOOL ScrCmd_CommSanitizeParty(ScriptContext *ctx) {
     }
 
     for (i = 0; i < partyCount; i++) {
-        mon  = Party_GetMonByIndex(party, i);
+        mon = Party_GetMonByIndex(party, i);
         form = GetMonData(mon, MON_DATA_FORM, 0);
         if (form > 0) {
             species = GetMonData(mon, MON_DATA_SPECIES, 0);
@@ -476,9 +476,9 @@ BOOL ScrCmd_CommSanitizeParty(ScriptContext *ctx) {
 
 BOOL ScrCmd_SetMonForm(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    u16 index                = ScriptGetVar(ctx);
-    u16 form                 = ScriptGetVar(ctx);
-    Pokemon *mon             = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), index);
+    u16 index = ScriptGetVar(ctx);
+    u16 form = ScriptGetVar(ctx);
+    Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), index);
     SetMonData(mon, MON_DATA_FORM, &form);
     return FALSE;
 }
@@ -489,19 +489,19 @@ BOOL ScrCmd_CountTranformedRotomsInParty(ScriptContext *ctx) {
     Pokemon *mon;
     Party *party;
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    u16 *rotomCount          = ScriptGetVarPointer(ctx);
-    u16 *firstIndex          = ScriptGetVarPointer(ctx);
+    u16 *rotomCount = ScriptGetVarPointer(ctx);
+    u16 *firstIndex = ScriptGetVarPointer(ctx);
 
-    count       = 0;
+    count = 0;
     *firstIndex = 255;
 
-    party      = SaveArray_Party_Get(fieldSystem->saveData);
+    party = SaveArray_Party_Get(fieldSystem->saveData);
     partyCount = Party_GetCount(party);
     for (i = 0; i < partyCount; i++) {
-        mon     = Party_GetMonByIndex(party, i);
+        mon = Party_GetMonByIndex(party, i);
         species = GetMonData(mon, MON_DATA_SPECIES, 0);
-        form    = GetMonData(mon, MON_DATA_FORM, 0);
-        isEgg   = GetMonData(mon, MON_DATA_IS_EGG, 0);
+        form = GetMonData(mon, MON_DATA_FORM, 0);
+        isEgg = GetMonData(mon, MON_DATA_IS_EGG, 0);
         if (species == SPECIES_ROTOM && form && !isEgg) {
             if (*firstIndex == 255) {
                 *firstIndex = i;
@@ -515,10 +515,10 @@ BOOL ScrCmd_CountTranformedRotomsInParty(ScriptContext *ctx) {
 
 BOOL ScrCmd_UpdateRotomForm(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    int rotomIndex           = ScriptGetVar(ctx);
-    int defaultSlot          = ScriptGetVar(ctx);
+    int rotomIndex = ScriptGetVar(ctx);
+    int defaultSlot = ScriptGetVar(ctx);
     ScriptGetVar(ctx); // unsused variable
-    u32 form     = ScriptGetVar(ctx);
+    u32 form = ScriptGetVar(ctx);
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), rotomIndex);
     Mon_UpdateRotomForm(mon, form, defaultSlot);
     Pokedex_SetMonCaughtFlag(Save_Pokedex_Get(fieldSystem->saveData), mon);
@@ -528,9 +528,9 @@ BOOL ScrCmd_UpdateRotomForm(ScriptContext *ctx) {
 BOOL ScrCmd_GetHiddenPowerType(ScriptContext *ctx) {
     s32 power, type;
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    int partyIndex           = ScriptGetVar(ctx);
-    u16 *typePtr             = ScriptGetVarPointer(ctx);
-    Pokemon *mon             = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), partyIndex);
+    int partyIndex = ScriptGetVar(ctx);
+    u16 *typePtr = ScriptGetVarPointer(ctx);
+    Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), partyIndex);
 
     u16 species = GetMonData(mon, MON_DATA_SPECIES, 0);
 
@@ -564,10 +564,10 @@ BOOL ScrCmd_GetHiddenPowerType(ScriptContext *ctx) {
 }
 
 static void GetHiddenPowerPowerType(Pokemon *mon, s32 *power, s32 *type) {
-    int hpIv    = GetMonData(mon, MON_DATA_HP_IV, 0);
-    int atkIv   = GetMonData(mon, MON_DATA_ATK_IV, 0);
-    int defIv   = GetMonData(mon, MON_DATA_DEF_IV, 0);
-    int spdIv   = GetMonData(mon, MON_DATA_SPEED_IV, 0);
+    int hpIv = GetMonData(mon, MON_DATA_HP_IV, 0);
+    int atkIv = GetMonData(mon, MON_DATA_ATK_IV, 0);
+    int defIv = GetMonData(mon, MON_DATA_DEF_IV, 0);
+    int spdIv = GetMonData(mon, MON_DATA_SPEED_IV, 0);
     int spatkIv = GetMonData(mon, MON_DATA_SPATK_IV, 0);
     int spdefIv = GetMonData(mon, MON_DATA_SPDEF_IV, 0);
     if (power) {
@@ -586,11 +586,11 @@ static void GetHiddenPowerPowerType(Pokemon *mon, s32 *power, s32 *type) {
 
 BOOL ScrCmd_SetFavoriteMon(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    Pokemon *mon             = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), 0);
-    SAVE_MISC_DATA *data     = Save_Misc_Get(fieldSystem->saveData);
-    u32 species              = GetMonData(mon, MON_DATA_SPECIES, 0);
-    u32 form                 = GetMonData(mon, MON_DATA_FORM, 0);
-    u32 isEgg                = GetMonData(mon, MON_DATA_IS_EGG, 0);
+    Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), 0);
+    SAVE_MISC_DATA *data = Save_Misc_Get(fieldSystem->saveData);
+    u32 species = GetMonData(mon, MON_DATA_SPECIES, 0);
+    u32 form = GetMonData(mon, MON_DATA_FORM, 0);
+    u32 isEgg = GetMonData(mon, MON_DATA_IS_EGG, 0);
     SaveMisc_SetFavoriteMon(data, species, form, isEgg);
     return FALSE;
 }
@@ -598,23 +598,23 @@ BOOL ScrCmd_SetFavoriteMon(ScriptContext *ctx) {
 BOOL ScrCmd_GetFavoriteMon(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     int sp, form, egg;
-    u16 *species         = ScriptGetVarPointer(ctx);
-    u16 *formPtr         = ScriptGetVarPointer(ctx);
-    u16 *isEgg           = ScriptGetVarPointer(ctx);
+    u16 *species = ScriptGetVarPointer(ctx);
+    u16 *formPtr = ScriptGetVarPointer(ctx);
+    u16 *isEgg = ScriptGetVarPointer(ctx);
     SAVE_MISC_DATA *data = Save_Misc_Get(fieldSystem->saveData);
     SaveMisc_GetFavoriteMon(data, &sp, &form, &egg);
     *species = sp;
     *formPtr = form;
-    *isEgg   = egg;
+    *isEgg = egg;
     return FALSE;
 }
 
 BOOL ScrCmd_GetPartyMonForm(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    u32 index                = ScriptGetVar(ctx);
-    u16 *form                = ScriptGetVarPointer(ctx);
-    Pokemon *mon             = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), index);
-    *form                    = GetMonData(mon, MON_DATA_FORM, 0);
+    u32 index = ScriptGetVar(ctx);
+    u16 *form = ScriptGetVarPointer(ctx);
+    Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), index);
+    *form = GetMonData(mon, MON_DATA_FORM, 0);
     return FALSE;
 }
 
@@ -625,18 +625,18 @@ BOOL ScrCmd_699(ScriptContext *ctx) {
     LocalMapObject *playerObj;
     LocalMapObject *curObj;
     Sprite *sprite;
-    int height;
+    s32 y;
     VecFx32 vec;
 
     unkVar = 0;
 
-    fieldSystem      = ctx->fieldSystem;
+    fieldSystem = ctx->fieldSystem;
     mapObjectManager = fieldSystem->mapObjectManager;
 
     playerObj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
-    MapObject_GetPositionVec(playerObj, &vec);
+    MapObject_CopyPositionVector(playerObj, &vec);
 
-    height = vec.y;
+    y = vec.y;
 
     while (MapObjectManager_GetNextObjectWithFlagFromIndex(mapObjectManager, &curObj, &unkVar, MAPOBJECTFLAG_ACTIVE) == TRUE) {
         if (curObj == playerObj) {
@@ -644,10 +644,10 @@ BOOL ScrCmd_699(ScriptContext *ctx) {
         }
         MapObject_SetFlagsBits(curObj, MAPOBJECTFLAG_UNK13);
         if (MapObject_TestFlagsBits(curObj, MAPOBJECTFLAG_UNK12) == TRUE) {
-            MapObject_GetPositionVec(curObj, &vec);
-            vec.y = height;
-            MapObject_SetPositionVec(curObj, &vec);
-            MapObject_SetCurrentHeight(curObj, (height >> 3) / FX32_ONE);
+            MapObject_CopyPositionVector(curObj, &vec);
+            vec.y = y;
+            MapObject_SetPositionVector(curObj, &vec);
+            MapObject_SetCurrentY(curObj, (y >> 3) / FX32_ONE);
         }
         sprite = ov01_021F72DC(curObj);
         if (sprite) {
@@ -665,7 +665,7 @@ BOOL ScrCmd_700(ScriptContext *ctx) {
     LocalMapObject *playerObj;
     LocalMapObject *curObj;
 
-    fieldSystem      = ctx->fieldSystem;
+    fieldSystem = ctx->fieldSystem;
     mapObjectManager = fieldSystem->mapObjectManager;
 
     playerObj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
@@ -756,7 +756,7 @@ static u32 ov01_02201B2C(u32 unkA) {
 
 // Related to Pokeathlon "Ball Sign"- whatever that is
 BOOL ScrCmd_724(ScriptContext *ctx) {
-    u8 unkVar    = ScriptGetVar(ctx);
+    u8 unkVar = ScriptGetVar(ctx);
     u16 *unkPtrA = ScriptGetVarPointer(ctx);
 
     Pokeathlon_UnkSubStruct_B00 *unkPtrB = sub_0203199C(Save_Pokeathlon_Get(ctx->fieldSystem->saveData));
@@ -803,7 +803,7 @@ BOOL ScrCmd_724(ScriptContext *ctx) {
 BOOL ScrCmd_725(ScriptContext *ctx) {
     s32 val;
 
-    u8 unkA  = ScriptReadByte(ctx);
+    u8 unkA = ScriptReadByte(ctx);
     u32 unkB = ScriptGetVar(ctx);
 
     Pokeathlon_UnkSubStruct_B00 *unkPtr = sub_020319F0(Save_Pokeathlon_Get(ctx->fieldSystem->saveData));
@@ -835,7 +835,7 @@ BOOL ScrCmd_726(ScriptContext *ctx) {
 // Related to Kurt
 BOOL ScrCmd_735(ScriptContext *ctx) {
     u16 *apricornQuantity = ScriptGetVarPointer(ctx);
-    *apricornQuantity     = ApricornBox_GetKurtQuantity(Save_ApricornBox_Get(ctx->fieldSystem->saveData));
+    *apricornQuantity = ApricornBox_GetKurtQuantity(Save_ApricornBox_Get(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
@@ -847,7 +847,7 @@ BOOL ScrCmd_ClearKurtApricorn(ScriptContext *ctx) {
 // Related to Kurt
 BOOL ScrCmd_737(ScriptContext *ctx) {
     u16 *unkPtr = ScriptGetVarPointer(ctx);
-    *unkPtr     = ApricornBox_GetKurtBall(Save_ApricornBox_Get(ctx->fieldSystem->saveData));
+    *unkPtr = ApricornBox_GetKurtBall(Save_ApricornBox_Get(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
@@ -855,8 +855,8 @@ BOOL ScrCmd_737(ScriptContext *ctx) {
 BOOL ScrCmd_GetTotalApricornCount(ScriptContext *ctx) {
     s32 i;
     u32 cnt;
-    u16 *unkPtr                  = ScriptGetVarPointer(ctx);
-    cnt                          = 0;
+    u16 *unkPtr = ScriptGetVarPointer(ctx);
+    cnt = 0;
     SaveApricornBox *apricornBox = Save_ApricornBox_Get(ctx->fieldSystem->saveData);
     for (i = 0; i < 7; i = i + 1) {
         cnt += ApricornBox_CountApricorn(apricornBox, i);
@@ -868,7 +868,7 @@ BOOL ScrCmd_GetTotalApricornCount(ScriptContext *ctx) {
 // Related to Kurt- canceling
 BOOL ScrCmd_739(ScriptContext *ctx) { // todo: rename structs and find out stuff
     ApricornBoxArgs **args = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *args                  = ApricornBox_LaunchApp(ctx->fieldSystem, 2);
+    *args = ApricornBox_LaunchApp(ctx->fieldSystem, 2);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
@@ -876,9 +876,9 @@ BOOL ScrCmd_739(ScriptContext *ctx) { // todo: rename structs and find out stuff
 // Related to aprijuice stand- canceling
 BOOL ScrCmd_740(ScriptContext *ctx) {
     ApricornBoxArgs **args = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    u32 unkVar             = ScriptGetVar(ctx);
-    u16 *unkPtrB           = ScriptGetVarPointer(ctx);
-    *args                  = sub_0203ED80(ctx->fieldSystem, unkVar, unkPtrB);
+    u32 unkVar = ScriptGetVar(ctx);
+    u16 *unkPtrB = ScriptGetVarPointer(ctx);
+    *args = sub_0203ED80(ctx->fieldSystem, unkVar, unkPtrB);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
@@ -896,11 +896,11 @@ BOOL ScrCmd_741(ScriptContext *ctx) {
     String *str;
 
     apricornBox = Save_ApricornBox_Get(ctx->fieldSystem->saveData);
-    msgfmt      = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
-    unkVar      = ScriptGetVar(ctx);
-    unkPtrA     = ScriptGetVarPointer(ctx);
-    price       = ScriptGetVarPointer(ctx);
-    unkPtrC     = ScriptGetVarPointer(ctx);
+    msgfmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
+    unkVar = ScriptGetVar(ctx);
+    unkPtrA = ScriptGetVarPointer(ctx);
+    price = ScriptGetVarPointer(ctx);
+    unkPtrC = ScriptGetVarPointer(ctx);
     GF_RTC_CopyDate(&date);
     *unkPtrA = unkVar + 5;
     if (!sub_02031CEC(apricornBox, *unkPtrA, &unkOut)) {
@@ -973,7 +973,7 @@ static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectManager, u8 unkA
     u32 size;
 
     spriteId = FollowMon_GetSpriteID(species, form, gender) << 1;
-    size     = FollowMon_GetSizeParamBySpecies(species) * 3 + unkA;
+    size = FollowMon_GetSizeParamBySpecies(species) * 3 + unkA;
 
     mapObj = MapObject_CreateWithParams(mapObjectManager, x, y, DIR_SOUTH, size + 0x19f, 0, mapId, 0, 0, spriteId);
 
@@ -983,7 +983,7 @@ static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectManager, u8 unkA
 
     MapObject_SetID(mapObj, unkA + 0xf6);
     MapObject_SetType(mapObj, 0);
-    MapObject_SetFlagID(mapObj, 0);
+    MapObject_SetEventFlag(mapObj, 0);
     MapObject_SetScriptID(mapObj, 0);
     MapObject_SetParam(mapObj, 0, 2);
     sub_02069F0C(mapObj, species, (u8)form, FALSE, spriteId);
@@ -1005,7 +1005,7 @@ BOOL ScrCmd_CheckSeenAllLetterUnown(ScriptContext *ctx) {
     u16 *allUnownSeen;
 
     allUnownSeen = ScriptGetVarPointer(ctx);
-    pokedex      = Save_Pokedex_Get(ctx->fieldSystem->saveData);
+    pokedex = Save_Pokedex_Get(ctx->fieldSystem->saveData);
 
     unownForms = Pokedex_GetSeenFormNum_Unown(pokedex, 1);
     if (unownForms < 26) {
@@ -1040,7 +1040,7 @@ BOOL ScrCmd_GiveTogepiEgg(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
 
     profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
-    party   = SaveArray_Party_Get(fieldSystem->saveData);
+    party = SaveArray_Party_Get(fieldSystem->saveData);
 
     if (Party_GetCount(party) >= 6) {
         return FALSE;
@@ -1079,7 +1079,7 @@ BOOL ScrCmd_GiveTogepiEgg(ScriptContext *ctx) {
 // unused
 BOOL ScrCmd_777(ScriptContext *ctx) {
     u32 partyIndex = ScriptGetVar(ctx);
-    u16 *unkPtr    = ScriptGetVarPointer(ctx);
+    u16 *unkPtr = ScriptGetVarPointer(ctx);
 
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), partyIndex);
 
@@ -1108,7 +1108,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
     fieldSystem = ctx->fieldSystem;
 
     profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
-    party   = SaveArray_Party_Get(fieldSystem->saveData);
+    party = SaveArray_Party_Get(fieldSystem->saveData);
     if (Party_GetCount(party) >= 6) {
         return FALSE;
     }
@@ -1146,7 +1146,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
 
 BOOL ScrCmd_PhotoAlbumIsFull(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    u16 *albumIsFull         = ScriptGetVarPointer(ctx);
+    u16 *albumIsFull = ScriptGetVarPointer(ctx);
 
     *albumIsFull = (PhotoAlbum_GetNumSaved(Save_PhotoAlbum_Get(fieldSystem->saveData)) >= 36);
 
@@ -1154,7 +1154,7 @@ BOOL ScrCmd_PhotoAlbumIsFull(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_RadioMusicIsPlaying(ScriptContext *ctx) {
-    u32 musicSeq   = ScriptGetVar(ctx);
+    u32 musicSeq = ScriptGetVar(ctx);
     u16 *isPlaying = ScriptGetVarPointer(ctx);
 
     *isPlaying = (GetRadioMusicPlayingSeq() == musicSeq);
@@ -1214,8 +1214,8 @@ static u32 SlotLuckiness(SaveData *saveData, u8 machineId, u8 city) {
 }
 
 BOOL ScrCmd_CasinoGame(ScriptContext *ctx) {
-    u8 machineId           = ScriptReadByte(ctx);
-    u8 city                = ScriptReadByte(ctx); // 1 = celadon; 0 = goldenrod
+    u8 machineId = ScriptReadByte(ctx);
+    u8 city = ScriptReadByte(ctx); // 1 = celadon; 0 = goldenrod
     VoltorbFlipArgs **args = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
 
     *args = VoltorbFlip_LaunchApp(ctx->fieldSystem, SlotLuckiness(ctx->fieldSystem->saveData, machineId, city)); // this is messy, very very messy
@@ -1225,7 +1225,7 @@ BOOL ScrCmd_CasinoGame(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_BufferPokeathlonCourseName(ScriptContext *ctx) {
-    u8 fieldNo   = ScriptReadByte(ctx);
+    u8 fieldNo = ScriptReadByte(ctx);
     u32 courseId = ScriptGetVar(ctx);
     BufferPokeathlonCourseName(*(MessageFormat **)FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT), fieldNo, (u8)courseId);
     return FALSE;
@@ -1248,7 +1248,7 @@ BOOL ScrCmd_812(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_GetBuenasPassword(ScriptContext *ctx) {
-    u16 *msgPtr  = ScriptGetVarPointer(ctx);
+    u16 *msgPtr = ScriptGetVarPointer(ctx);
     u16 *unkPtr2 = ScriptGetVarPointer(ctx);
 
     u8 unkVar = Save_VarsFlags_GetBuenasPasswordSet(Save_VarsFlags_Get(ctx->fieldSystem->saveData)) % 30;
@@ -1274,9 +1274,9 @@ static u32 MonGetShinyLeafCount(Pokemon *mon) {
 }
 
 BOOL ScrCmd_GetShinyLeafCount(ScriptContext *ctx) {
-    u32 monIndex        = ScriptGetVar(ctx);
+    u32 monIndex = ScriptGetVar(ctx);
     u16 *shinyLeafCount = ScriptGetVarPointer(ctx);
-    *shinyLeafCount     = MonGetShinyLeafCount(Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), monIndex));
+    *shinyLeafCount = MonGetShinyLeafCount(Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), monIndex));
     return FALSE;
 }
 
@@ -1301,7 +1301,7 @@ BOOL ScrCmd_GetUniqueSealsQuantity(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_GetSealQuantity(ScriptContext *ctx) {
-    u32 sealId        = ScriptGetVar(ctx);
+    u32 sealId = ScriptGetVar(ctx);
     u16 *sealQuantity = ScriptGetVarPointer(ctx);
 
     *sealQuantity = SealCase_CountSealOccurrenceAnywhere(Save_SealCase_Get(ctx->fieldSystem->saveData), sealId);
@@ -1310,7 +1310,7 @@ BOOL ScrCmd_GetSealQuantity(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_GiveOrTakeSeal(ScriptContext *ctx) {
-    u32 sealId   = ScriptGetVar(ctx);
+    u32 sealId = ScriptGetVar(ctx);
     u32 quantity = ScriptGetVar(ctx);
 
     GiveOrTakeSeal(Save_SealCase_Get(ctx->fieldSystem->saveData), sealId, quantity);
@@ -1405,15 +1405,15 @@ BOOL ScrCmd_CheckKyogreGroudonInParty(ScriptContext *ctx) {
 
     u8 kyogreGroudonFlags = 0;
 
-    unkPtr      = ScriptGetVarPointer(ctx);
+    unkPtr = ScriptGetVarPointer(ctx);
     playerParty = SaveArray_Party_Get(ctx->fieldSystem->saveData);
-    partyCount  = Party_GetCount(playerParty);
-    unkVar      = *(ctx->script_ptr);
+    partyCount = Party_GetCount(playerParty);
+    unkVar = *(ctx->script_ptr);
 
     for (c = 0; c < partyCount; c++) {
         Pokemon *mon = Party_GetMonByIndex(playerParty, c);
-        u16 species  = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        u8 gameVer   = GetMonData(mon, MON_DATA_GAME_VERSION, NULL);
+        u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        u8 gameVer = GetMonData(mon, MON_DATA_GAME_VERSION, NULL);
         if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)
             && !GetMonData(mon, MON_DATA_CHECKSUM_FAILED, NULL)
             && !GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL)) {
@@ -1452,7 +1452,7 @@ BOOL ScrCmd_SysSetSleepFlag(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_BugContestAction(ScriptContext *ctx) {
-    u8 unkVar1  = ScriptReadByte(ctx);
+    u8 unkVar1 = ScriptReadByte(ctx);
     u32 weekday = ScriptGetVar(ctx);
 
     FieldSystem *fieldSystem = ctx->fieldSystem;
@@ -1471,7 +1471,7 @@ BOOL ScrCmd_BufferBugContestWinner(ScriptContext *ctx) {
     MessageFormat **msgfmt;
     BugContest *bugContest;
 
-    msgfmt     = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
+    msgfmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     bugContest = FieldSystem_BugContest_Get(ctx->fieldSystem);
 
     BugContest_BufferContestWinnerNames(bugContest, ctx->msgdata, *msgfmt, *ctx->script_ptr++);
@@ -1486,14 +1486,14 @@ BOOL ScrCmd_JudgeBugContest(ScriptContext *ctx) {
     u16 *species;
 
     bugContest = FieldSystem_BugContest_Get(ctx->fieldSystem);
-    placement  = ScriptGetVarPointer(ctx);
-    prize      = ScriptGetVarPointer(ctx);
-    species    = ScriptGetVarPointer(ctx);
+    placement = ScriptGetVarPointer(ctx);
+    prize = ScriptGetVarPointer(ctx);
+    species = ScriptGetVarPointer(ctx);
 
     BugContest_Judge(bugContest);
 
     *placement = bugContest->placement;
-    *prize     = bugContest->prize;
+    *prize = bugContest->prize;
 
     if (bugContest->caught_poke == 0) {
         *species = 0;
@@ -1509,13 +1509,13 @@ BOOL ScrCmd_BufferBugContestMonNick(ScriptContext *ctx) {
     BugContest *bugContest;
     u32 script_index;
 
-    msgfmt     = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
+    msgfmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     bugContest = FieldSystem_BugContest_Get(ctx->fieldSystem);
 
     script_index = ScriptReadByte(ctx);
 
     u16 *monNick = ScriptGetVarPointer(ctx);
-    *monNick     = BugContest_BufferCaughtMonNick(bugContest, *msgfmt, script_index);
+    *monNick = BugContest_BufferCaughtMonNick(bugContest, *msgfmt, script_index);
     return FALSE;
 }
 
@@ -1528,7 +1528,7 @@ BOOL ScrCmd_BugContestGetTimeLeft(ScriptContext *ctx) {
     msgfmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
 
     script_index = ScriptReadByte(ctx);
-    timeLeft     = 1;
+    timeLeft = 1;
 
     bugContest = FieldSystem_BugContest_Get(ctx->fieldSystem);
 
@@ -1543,8 +1543,8 @@ BOOL ScrCmd_BugContestGetTimeLeft(ScriptContext *ctx) {
 
 BOOL ScrCmd_IsBugContestantRegistered(ScriptContext *ctx) {
     BugContest *bugContest = FieldSystem_BugContest_Get(ctx->fieldSystem);
-    u32 id                 = ScriptGetVar(ctx);
-    u16 *ptr               = ScriptGetVarPointer(ctx);
-    *ptr                   = BugContest_ContestantIsRegistered(bugContest, id);
+    u32 id = ScriptGetVar(ctx);
+    u16 *ptr = ScriptGetVarPointer(ctx);
+    *ptr = BugContest_ContestantIsRegistered(bugContest, id);
     return FALSE;
 }

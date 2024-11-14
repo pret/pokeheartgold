@@ -120,7 +120,7 @@ _021FFCBC:
 	bl MapObject_GetID
 	str r0, [r4, #8]
 	ldr r0, [r4, #0x30]
-	bl sub_0205F254
+	bl MapObject_GetMapID
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #0x18]
 	lsl r0, r0, #0x10
@@ -129,7 +129,7 @@ _021FFCBC:
 	lsl r0, r0, #0x10
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x30]
-	bl MapObject_GetPosVecYCoord
+	bl MapObject_GetPositionVectorYCoord
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x24]
 	add r1, sp, #0
@@ -305,7 +305,7 @@ _021FFE50:
 	bl MapObject_GetCurrentX
 	add r4, r0, #0
 	add r0, r7, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	ldr r1, [r5, #0x18]
 	cmp r1, r4
 	bne _021FFE6A

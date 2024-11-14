@@ -112,9 +112,9 @@ static void IntroMovie_Scene2_InitFlyoverGrassBgScrollAnims(IntroMovieOverlayDat
 }
 
 static BOOL IntroMovie_Scene2_Main(IntroMovieOverlayData *data, IntroMovieScene2Data *sceneData, int totalFrames) {
-    BgConfig *bgConfig                 = IntroMovie_GetBgConfig(data);
+    BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     IntroMovieBgLinearAnims *bgAnimCnt = IntroMovie_GetBgLinearAnimsController(data);
-    u8 stepTimer                       = IntroMovie_GetSceneStepTimer(data);
+    u8 stepTimer = IntroMovie_GetSceneStepTimer(data);
     switch (IntroMovie_GetSceneStep(data)) {
     case INTRO_SCENE2_START_FLYIN:
         BeginNormalPaletteFade(0, 1, 1, RGB_WHITE, 3, 1, HEAP_ID_INTRO_MOVIE);
@@ -192,7 +192,7 @@ static void IntroMovie_Scene2_Exit(IntroMovieOverlayData *data, IntroMovieScene2
     IntroMovieBgLinearAnims *bgAnimCnt;
 
     bgAnimCnt = IntroMovie_GetBgLinearAnimsController(data);
-    bgConfig  = IntroMovie_GetBgConfig(data);
+    bgConfig = IntroMovie_GetBgConfig(data);
     Main_SetVBlankIntrCB(NULL, NULL);
     if (sceneData->needFreeGfx) {
         for (u8 i = 0; i < 2; ++i) {
@@ -268,7 +268,7 @@ static void IntroMovie_Scene2_LoadBgGfx(BgConfig *bgConfig) {
 
 static void IntroMovie_Scene2_LoadSpriteGfx(IntroMovieOverlayData *data, IntroMovieScene2Data *sceneData) {
     IntroMovie_CreateSpriteResourceManagers(data, sIntroMovieScene2SpriteResCounts);
-    GF_2DGfxResMan **resMen                          = IntroMovie_GetSpriteResourceManagersArray(data);
+    GF_2DGfxResMan **resMen = IntroMovie_GetSpriteResourceManagersArray(data);
     sceneData->spriteGfxRes[0][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(resMen[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000078_NCGR_lz, TRUE, 0, NNS_G2D_VRAM_TYPE_2DBOTH, HEAP_ID_INTRO_MOVIE);
     sceneData->spriteGfxRes[0][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(resMen[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000077_NCLR, FALSE, 0, NNS_G2D_VRAM_TYPE_2DBOTH, 1, HEAP_ID_INTRO_MOVIE);
     sceneData->spriteGfxRes[0][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(resMen[GF_GFX_RES_TYPE_CELL], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000080_NCER_lz, TRUE, 0, GF_GFX_RES_TYPE_CELL, HEAP_ID_INTRO_MOVIE);
@@ -332,7 +332,7 @@ static void IntroMovie_Scene2_CreateSprites(IntroMovieOverlayData *data, IntroMo
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(1, data, 1, NNS_G2D_VRAM_TYPE_2DMAIN, &spriteTemplate, &spriteHeader);
     spriteTemplate.position.x = 64 * FX32_ONE;
     spriteTemplate.position.y = -96 * FX32_ONE;
-    sceneData->ethanSprite0   = Sprite_CreateAffine(&spriteTemplate);
+    sceneData->ethanSprite0 = Sprite_CreateAffine(&spriteTemplate);
     Sprite_SetAnimActiveFlag(sceneData->ethanSprite0, FALSE);
     Sprite_SetVisibleFlag(sceneData->ethanSprite0, TRUE);
     Sprite_SetAnimCtrlSeq(sceneData->ethanSprite0, 0);
@@ -348,7 +348,7 @@ static void IntroMovie_Scene2_CreateSprites(IntroMovieOverlayData *data, IntroMo
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(1, data, 1, NNS_G2D_VRAM_TYPE_2DMAIN, &spriteTemplate, &spriteHeader);
     spriteTemplate.position.x = 320 * FX32_ONE;
     spriteTemplate.position.y = -96 * FX32_ONE;
-    sceneData->lyraSprite0    = Sprite_CreateAffine(&spriteTemplate);
+    sceneData->lyraSprite0 = Sprite_CreateAffine(&spriteTemplate);
     Sprite_SetAnimActiveFlag(sceneData->lyraSprite0, FALSE);
     Sprite_SetVisibleFlag(sceneData->lyraSprite0, TRUE);
     Sprite_SetAnimCtrlSeq(sceneData->lyraSprite0, 3);
@@ -366,27 +366,27 @@ static void IntroMovie_Scene2_StartSpritePanEffect(IntroMovieScene2Data *sceneDa
     IntroMovieScene2SpritePanController *spritePanEffect;
 
     if (whichSprites == 0) {
-        spritePanEffect          = &sceneData->spritePanCnt[0];
+        spritePanEffect = &sceneData->spritePanCnt[0];
         spritePanEffect->sprite0 = sceneData->ethanSprite0;
         spritePanEffect->sprite1 = sceneData->ethanSprite1;
         spritePanEffect->sprite2 = sceneData->ethanSprite2;
     } else {
-        spritePanEffect          = &sceneData->spritePanCnt[1];
+        spritePanEffect = &sceneData->spritePanCnt[1];
         spritePanEffect->sprite0 = sceneData->lyraSprite0;
         spritePanEffect->sprite1 = sceneData->lyraSprite1;
         spritePanEffect->sprite2 = sceneData->lyraSprite2;
     }
     GF_ASSERT(!spritePanEffect->active);
-    spritePanEffect->active   = TRUE;
+    spritePanEffect->active = TRUE;
     spritePanEffect->duration = duration;
-    spritePanEffect->counter  = 0;
+    spritePanEffect->counter = 0;
     spritePanEffect->finished = 0;
-    VecFx32 *mtx              = Sprite_GetMatrixPtr(spritePanEffect->sprite0);
-    spritePanEffect->xOffset  = mtx->x / FX32_ONE;
-    spritePanEffect->yOffset  = mtx->y / FX32_ONE;
-    spritePanEffect->xSpeed   = xSpeed;
-    spritePanEffect->ySpeed   = ySpeed;
-    spritePanEffect->task     = SysTask_CreateOnMainQueue(ov60_021E8B7C, spritePanEffect, 0);
+    VecFx32 *mtx = Sprite_GetMatrixPtr(spritePanEffect->sprite0);
+    spritePanEffect->xOffset = mtx->x / FX32_ONE;
+    spritePanEffect->yOffset = mtx->y / FX32_ONE;
+    spritePanEffect->xSpeed = xSpeed;
+    spritePanEffect->ySpeed = ySpeed;
+    spritePanEffect->task = SysTask_CreateOnMainQueue(ov60_021E8B7C, spritePanEffect, 0);
 }
 
 static BOOL IntroMovie_Scene2_WaitSpritePanEffect(IntroMovieScene2Data *sceneData, int whichSprites) {
@@ -409,7 +409,7 @@ static BOOL IntroMovie_Scene2_WaitSpritePanEffect(IntroMovieScene2Data *sceneDat
 
 static void ov60_021E8B7C(SysTask *task, void *pVoid) {
     IntroMovieScene2SpritePanController *spritePanCnt = (IntroMovieScene2SpritePanController *)pVoid;
-    VecFx32 sp4                                       = { 0, 0, 0 };
+    VecFx32 sp4 = { 0, 0, 0 };
     ++spritePanCnt->counter;
     int x = spritePanCnt->xSpeed * spritePanCnt->counter / spritePanCnt->duration;
     int y = spritePanCnt->ySpeed * spritePanCnt->counter / spritePanCnt->duration;
@@ -417,9 +417,9 @@ static void ov60_021E8B7C(SysTask *task, void *pVoid) {
     y += spritePanCnt->yOffset;
     if (spritePanCnt->counter >= spritePanCnt->duration) {
         SysTask_Destroy(spritePanCnt->task);
-        spritePanCnt->task     = NULL;
+        spritePanCnt->task = NULL;
         spritePanCnt->finished = TRUE;
-        spritePanCnt->active   = FALSE;
+        spritePanCnt->active = FALSE;
     }
     sp4.x = x * FX32_ONE;
     sp4.y = y * FX32_ONE;

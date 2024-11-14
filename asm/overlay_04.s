@@ -1548,7 +1548,7 @@ _02254A22:
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r1, sp, #0x68
-	bl MapObject_SetPositionVec
+	bl MapObject_SetPositionVector
 	add r0, r5, #0
 	bl FollowMon_IsActive
 	cmp r0, #0
@@ -1578,7 +1578,7 @@ _02254AA6:
 	add r0, r5, #0
 	bl FollowMon_GetMapObject
 	add r1, sp, #0x50
-	bl MapObject_SetPositionVec
+	bl MapObject_SetPositionVector
 	add sp, #0x98
 	pop {r3, r4, r5, r6, r7, pc}
 _02254AE0:
@@ -1590,14 +1590,14 @@ _02254AE0:
 	bl MapObject_SetCurrentX
 	add r0, r7, #0
 	mov r1, #0
-	bl MapObject_SetCurrentHeight
+	bl MapObject_SetCurrentY
 	ldr r1, [r4, #0x28]
 	mov r2, #0x1b
 	ldrh r1, [r1, #2]
 	ldrsb r2, [r4, r2]
 	add r0, r7, #0
 	add r1, r1, r2
-	bl MapObject_SetCurrentY
+	bl MapObject_SetCurrentZ
 	add r0, r7, #0
 	bl sub_02060F78
 	add r0, r7, #0
@@ -1615,7 +1615,7 @@ _02254AE0:
 	bl MapObject_SetCurrentX
 	add r0, r7, #0
 	mov r1, #0
-	bl MapObject_SetCurrentHeight
+	bl MapObject_SetCurrentY
 	ldr r1, [r4, #0x28]
 	add r0, r7, #0
 	ldrh r3, [r1, #2]
@@ -1624,7 +1624,7 @@ _02254AE0:
 	mov r1, #1
 	sub r1, r1, r2
 	add r1, r3, r1
-	bl MapObject_SetCurrentY
+	bl MapObject_SetCurrentZ
 	add r0, r7, #0
 	bl sub_02060F78
 _02254B52:
@@ -1865,7 +1865,7 @@ _02254D38:
 	add r1, r6, #2
 	bl MapObjectManager_GetFirstActiveObjectByID
 	add r1, sp, #8
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	ldr r0, [r5, #0x54]
 	mov r1, #0x80
 	str r0, [sp]
@@ -1990,7 +1990,7 @@ ov04_02254E20: ; 0x02254E20
 	add r1, sp, #0
 	ldr r4, [r0, #0x24]
 	ldr r0, [r4, #0x18]
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	ldr r1, [r4, #0x10]
 	add r5, #0x9c
 	lsl r1, r1, #2
@@ -2145,7 +2145,7 @@ ov04_02254F44: ; 0x02254F44
 	add r7, sp, #0
 _02254F62:
 	ldr r0, [sp]
-	bl MapObject_IsInUse
+	bl MapObject_CheckActive
 	cmp r0, #1
 	bne _02254F7C
 	ldr r0, [sp]
@@ -2155,7 +2155,7 @@ _02254F62:
 	bl NNS_G3dMdlSetMdlFogEnableFlagAll
 _02254F7C:
 	add r0, r7, #0
-	bl sub_0205F1D0
+	bl MapObjectArray_NextObject2
 	add r4, r4, #1
 	cmp r4, r5
 	blt _02254F62
@@ -2316,7 +2316,7 @@ _022550B4:
 	bl GetPlayerXCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	add r2, r0, #0
 	lsl r1, r6, #0x10
 	lsl r2, r2, #0x10
@@ -3857,7 +3857,7 @@ _02255BA6:
 	bl MapObject_GetCurrentX
 	add r5, r0, #0
 	add r0, r6, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetCurrentZ
 	add r2, r0, #0
 	lsl r1, r5, #0x10
 	lsl r2, r2, #0x10
@@ -4132,7 +4132,7 @@ _02255DEA:
 	bl PlayerAvatar_GetMapObject
 	add r1, sp, #0x28
 	add r6, r0, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, sp, #0x28
 	add r1, r4, #0
 	add r1, #0x58
@@ -4140,7 +4140,7 @@ _02255DEA:
 	bl VEC_Add
 	add r0, r6, #0
 	add r1, sp, #0x28
-	bl MapObject_SetPositionVec
+	bl MapObject_SetPositionVector
 	add r0, r4, #0
 	add r0, #0x4f
 	ldrb r0, [r0]
@@ -4187,7 +4187,7 @@ _02255E5E:
 	blo _02255ED6
 	add r0, r6, #0
 	add r1, sp, #0x1c
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	ldr r2, [sp, #0x1c]
 	add r0, r6, #0
 	asr r1, r2, #0xf
@@ -4201,7 +4201,7 @@ _02255E5E:
 	lsr r1, r1, #0x10
 	add r1, r2, r1
 	asr r1, r1, #0x10
-	bl MapObject_SetCurrentY
+	bl MapObject_SetCurrentZ
 	add r0, r6, #0
 	bl sub_02060F78
 	add r0, r7, #0
@@ -4276,7 +4276,7 @@ _02255F1C:
 	bl PlayerAvatar_GetMapObject
 	add r1, sp, #4
 	add r5, r0, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, sp, #4
 	add r1, r4, #0
 	add r1, #0x58
@@ -4284,7 +4284,7 @@ _02255F1C:
 	bl VEC_Add
 	add r0, r5, #0
 	add r1, sp, #4
-	bl MapObject_SetPositionVec
+	bl MapObject_SetPositionVector
 	add r0, r4, #0
 	add r0, #0x4f
 	ldrb r0, [r0]
@@ -5615,7 +5615,7 @@ _02256978:
 	ldr r0, [r0, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r1, sp, #4
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	ldr r0, _02256A44 ; =ov04_0225766C
 	ldr r2, _02256A48 ; =ov04_02257677
 	ldr r0, [r0, r4]
@@ -6153,7 +6153,7 @@ _02256DA2:
 	ldr r0, [r7, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r1, sp, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	ldr r1, [sp]
 	ldr r2, [sp, #4]
 	ldr r3, [sp, #8]

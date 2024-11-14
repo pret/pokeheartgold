@@ -28,12 +28,12 @@
 
 // Not to be confused with `Options`, which is almost exactly the same, save for two members being swapped. SMH
 typedef struct OptionsApp_Options {
-    u16 textSpeed   : 4;
+    u16 textSpeed : 4;
     u16 soundMethod : 2;
     u16 battleScene : 1;
     u16 battleStyle : 1;
-    u16 buttonMode  : 2;
-    u16 frame       : 5;
+    u16 buttonMode : 2;
+    u16 frame : 5;
 } OptionsApp_Options;
 
 typedef struct OptionsApp_MenuEntry {
@@ -59,11 +59,11 @@ typedef struct OptionsApp_Data {
     u32 exitState;
     u32 setupAndFreeState;
     u32 fadeUnused; // unused, game writes 0 here when it's about to start a fade, but never reads from here
-    u32 unk10_0            : 2;
+    u32 unk10_0 : 2;
     u32 currentMenuEntryId : 3;
-    u32 unk10_5            : 16; // unused
-    u32 unk10_21           : 1;
-    u32 unk10_22           : 10; // unused
+    u32 unk10_5 : 16; // unused
+    u32 unk10_21 : 1;
+    u32 unk10_22 : 10; // unused
     BgConfig *bgConfig;
     OptionsApp_Options options;
     Options *playerOptionsUnused; // unused copy of playerOptions
@@ -175,129 +175,129 @@ static const u32 ov54_021E6DA8[15][2] = {
 static const UnkStruct_0200D2B4 ov54_021E6EAC[9] = {
     {
      .resourceSet = 0,
-     .x           = 112,
-     .y           = 24,
-     .z           = 0,
-     .animSeqNo   = 0,
-     .rotation    = 1,
-     .palIndex    = 0,
+     .x = 112,
+     .y = 24,
+     .z = 0,
+     .animSeqNo = 0,
+     .rotation = 1,
+     .palIndex = 0,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18      = 0,
-     .unk_1C      = 0,
-     .unk_20      = 0,
-     .unk_24      = 0,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
      },
     {
      .resourceSet = 0,
-     .x           = 112,
-     .y           = 48,
-     .z           = 0,
-     .animSeqNo   = 0,
-     .rotation    = 1,
-     .palIndex    = 0,
+     .x = 112,
+     .y = 48,
+     .z = 0,
+     .animSeqNo = 0,
+     .rotation = 1,
+     .palIndex = 0,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18      = 0,
-     .unk_1C      = 0,
-     .unk_20      = 0,
-     .unk_24      = 0,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
      },
     {
      .resourceSet = 0,
-     .x           = 112,
-     .y           = 72,
-     .z           = 0,
-     .animSeqNo   = 1,
-     .rotation    = 1,
-     .palIndex    = 0,
+     .x = 112,
+     .y = 72,
+     .z = 0,
+     .animSeqNo = 1,
+     .rotation = 1,
+     .palIndex = 0,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18      = 0,
-     .unk_1C      = 0,
-     .unk_20      = 0,
-     .unk_24      = 0,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
      },
     {
      .resourceSet = 0,
-     .x           = 112,
-     .y           = 96,
-     .z           = 0,
-     .animSeqNo   = 1,
-     .rotation    = 1,
-     .palIndex    = 0,
+     .x = 112,
+     .y = 96,
+     .z = 0,
+     .animSeqNo = 1,
+     .rotation = 1,
+     .palIndex = 0,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18      = 0,
-     .unk_1C      = 0,
-     .unk_20      = 0,
-     .unk_24      = 0,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
      },
     {
      .resourceSet = 0,
-     .x           = 112,
-     .y           = 120,
-     .z           = 0,
-     .animSeqNo   = 1,
-     .rotation    = 1,
-     .palIndex    = 0,
+     .x = 112,
+     .y = 120,
+     .z = 0,
+     .animSeqNo = 1,
+     .rotation = 1,
+     .palIndex = 0,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18      = 0,
-     .unk_1C      = 0,
-     .unk_20      = 0,
-     .unk_24      = 0,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
      },
     {
      .resourceSet = 1,
-     .x           = 115,
-     .y           = 144,
-     .z           = 0,
-     .animSeqNo   = 0,
-     .rotation    = 1,
-     .palIndex    = 0,
+     .x = 115,
+     .y = 144,
+     .z = 0,
+     .animSeqNo = 0,
+     .rotation = 1,
+     .palIndex = 0,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18      = 0,
-     .unk_1C      = 0,
-     .unk_20      = 0,
-     .unk_24      = 0,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
      },
     {
      .resourceSet = 2,
-     .x           = 213,
-     .y           = 144,
-     .z           = 0,
-     .animSeqNo   = 0,
-     .rotation    = 1,
-     .palIndex    = 0,
+     .x = 213,
+     .y = 144,
+     .z = 0,
+     .animSeqNo = 0,
+     .rotation = 1,
+     .palIndex = 0,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18      = 0,
-     .unk_1C      = 0,
-     .unk_20      = 0,
-     .unk_24      = 0,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
      },
     {
      .resourceSet = 3,
-     .x           = 188,
-     .y           = 170,
-     .z           = 0,
-     .animSeqNo   = 0,
-     .rotation    = 1,
-     .palIndex    = 1,
+     .x = 188,
+     .y = 170,
+     .z = 0,
+     .animSeqNo = 0,
+     .rotation = 1,
+     .palIndex = 1,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18      = 0,
-     .unk_1C      = 0,
-     .unk_20      = 0,
-     .unk_24      = 0,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
      },
     {
      .resourceSet = 3,
-     .x           = 116,
-     .y           = 170,
-     .z           = 0,
-     .animSeqNo   = 0,
-     .rotation    = 1,
-     .palIndex    = 1,
+     .x = 116,
+     .y = 170,
+     .z = 0,
+     .animSeqNo = 0,
+     .rotation = 1,
+     .palIndex = 1,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18      = 0,
-     .unk_1C      = 0,
-     .unk_20      = 0,
-     .unk_24      = 0,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
      },
 };
 
@@ -333,19 +333,19 @@ BOOL OptionsMenu_Init(OVY_MANAGER *manager, int *state) {
     OptionsApp_Data *data = OverlayManager_CreateAndGetData(manager, sizeof(OptionsApp_Data), HEAP_ID_OPTIONS_APP);
     memset(data, 0, sizeof(OptionsApp_Data));
 
-    data->options.textSpeed   = Options_GetTextSpeed(args->options);
+    data->options.textSpeed = Options_GetTextSpeed(args->options);
     data->options.battleScene = Options_GetBattleScene(args->options);
     data->options.battleStyle = Options_GetBattleStyle(args->options);
     data->options.soundMethod = Options_GetSoundMethod(args->options);
-    data->options.buttonMode  = Options_GetButtonMode(args->options);
-    data->options.frame       = Options_GetFrame(args->options);
+    data->options.buttonMode = Options_GetButtonMode(args->options);
+    data->options.frame = Options_GetFrame(args->options);
 
-    data->menuInputPtr        = args->menuInputStateMgr;
+    data->menuInputPtr = args->menuInputStateMgr;
     data->playerOptionsUnused = args->options;
-    data->heapId              = HEAP_ID_OPTIONS_APP;
-    data->playerOptions       = args->options;
-    data->menuInputState      = MenuInputStateMgr_GetState(data->menuInputPtr);
-    data->frameNumText        = String_New(40, data->heapId);
+    data->heapId = HEAP_ID_OPTIONS_APP;
+    data->playerOptions = args->options;
+    data->menuInputState = MenuInputStateMgr_GetState(data->menuInputPtr);
+    data->frameNumText = String_New(40, data->heapId);
 
     TextFlags_SetCanABSpeedUpPrint(FALSE);
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
@@ -360,12 +360,12 @@ BOOL OptionsMenu_Exit(OVY_MANAGER *manager, int *state) {
     OptionsApp_Data *data = OverlayManager_GetData(manager);
 
     if (data->unk10_0 == 1) {
-        data->options.textSpeed   = data->menuEntries[MENU_ENTRY_TEXT_SPEED].value;
+        data->options.textSpeed = data->menuEntries[MENU_ENTRY_TEXT_SPEED].value;
         data->options.battleScene = data->menuEntries[MENU_ENTRY_BATTLE_SCENE].value;
         data->options.battleStyle = data->menuEntries[MENU_ENTRY_BATTLE_STYLE].value;
         data->options.soundMethod = data->menuEntries[MENU_ENTRY_SOUND_METHOD].value;
-        data->options.buttonMode  = data->menuEntries[MENU_ENTRY_BUTTON_MODE].value;
-        data->options.frame       = data->menuEntries[MENU_ENTRY_FRAME].value;
+        data->options.buttonMode = data->menuEntries[MENU_ENTRY_BUTTON_MODE].value;
+        data->options.frame = data->menuEntries[MENU_ENTRY_FRAME].value;
 
         Options_SetTextSpeed(data->playerOptions, data->options.textSpeed);
         Options_SetBattleScene(data->playerOptions, data->options.battleScene);
@@ -447,9 +447,9 @@ BOOL OptionsMenu_Main(OVY_MANAGER *manager, int *state) {
 
 static void OptionsApp_SetupGraphicsBanks(void) {
     GraphicsBanks banks = {
-        .bg     = GX_VRAM_BG_128_A,
-        .subbg  = GX_VRAM_SUB_BG_128_C,
-        .obj    = GX_VRAM_OBJ_16_G,
+        .bg = GX_VRAM_BG_128_A,
+        .subbg = GX_VRAM_SUB_BG_128_C,
+        .obj = GX_VRAM_OBJ_16_G,
         .subobj = GX_VRAM_SUB_OBJ_16_I,
     };
     GfGfx_SetBanks(&banks);
@@ -546,85 +546,85 @@ static BOOL ov54_021E5DBC(OptionsApp_Data *data) {
 }
 
 static void OptionsApp_SetupBgConfig(OptionsApp_Data *data) {
-    data->bgConfig      = BgConfig_Alloc(data->heapId);
+    data->bgConfig = BgConfig_Alloc(data->heapId);
     GraphicsModes modes = {
-        .dispMode  = GX_DISPMODE_GRAPHICS,
-        .bgMode    = GX_BGMODE_0,
-        .subMode   = GX_BGMODE_0,
+        .dispMode = GX_DISPMODE_GRAPHICS,
+        .bgMode = GX_BGMODE_0,
+        .subMode = GX_BGMODE_0,
         ._2d3dMode = GX_BG0_AS_2D,
     };
     SetBothScreensModesAndDisable(&modes);
 
     BgTemplate templates[5] = {
         {
-         .x          = 0,
-         .y          = 0,
+         .x = 0,
+         .y = 0,
          .bufferSize = 0x800,
-         .baseTile   = 0,
-         .size       = GF_BG_SCR_SIZE_256x256,
-         .colorMode  = GX_BG_COLORMODE_16,
+         .baseTile = 0,
+         .size = GF_BG_SCR_SIZE_256x256,
+         .colorMode = GX_BG_COLORMODE_16,
          .screenBase = GX_BG_SCRBASE_0xf800,
-         .charBase   = GX_BG_CHARBASE_0x00000,
-         .bgExtPltt  = GX_BG_EXTPLTT_01,
-         .priority   = 0,
-         .areaOver   = GX_BG_AREAOVER_XLU,
-         .mosaic     = FALSE,
+         .charBase = GX_BG_CHARBASE_0x00000,
+         .bgExtPltt = GX_BG_EXTPLTT_01,
+         .priority = 0,
+         .areaOver = GX_BG_AREAOVER_XLU,
+         .mosaic = FALSE,
          },
         {
-         .x          = 0,
-         .y          = 0,
+         .x = 0,
+         .y = 0,
          .bufferSize = 0x800,
-         .baseTile   = 0,
-         .size       = GF_BG_SCR_SIZE_256x256,
-         .colorMode  = GX_BG_COLORMODE_16,
+         .baseTile = 0,
+         .size = GF_BG_SCR_SIZE_256x256,
+         .colorMode = GX_BG_COLORMODE_16,
          .screenBase = GX_BG_SCRBASE_0xf000,
-         .charBase   = GX_BG_CHARBASE_0x04000,
-         .bgExtPltt  = GX_BG_EXTPLTT_01,
-         .priority   = 1,
-         .areaOver   = GX_BG_AREAOVER_XLU,
-         .mosaic     = FALSE,
+         .charBase = GX_BG_CHARBASE_0x04000,
+         .bgExtPltt = GX_BG_EXTPLTT_01,
+         .priority = 1,
+         .areaOver = GX_BG_AREAOVER_XLU,
+         .mosaic = FALSE,
          },
         {
-         .x          = 0,
-         .y          = 0,
+         .x = 0,
+         .y = 0,
          .bufferSize = 0x800,
-         .baseTile   = 0,
-         .size       = GF_BG_SCR_SIZE_256x256,
-         .colorMode  = GX_BG_COLORMODE_16,
+         .baseTile = 0,
+         .size = GF_BG_SCR_SIZE_256x256,
+         .colorMode = GX_BG_COLORMODE_16,
          .screenBase = GX_BG_SCRBASE_0xe800,
-         .charBase   = GX_BG_CHARBASE_0x00000,
-         .bgExtPltt  = GX_BG_EXTPLTT_01,
-         .priority   = 2,
-         .areaOver   = GX_BG_AREAOVER_XLU,
-         .mosaic     = FALSE,
+         .charBase = GX_BG_CHARBASE_0x00000,
+         .bgExtPltt = GX_BG_EXTPLTT_01,
+         .priority = 2,
+         .areaOver = GX_BG_AREAOVER_XLU,
+         .mosaic = FALSE,
          },
         {
-         .x          = 0,
-         .y          = 0,
+         .x = 0,
+         .y = 0,
          .bufferSize = 0x800,
-         .baseTile   = 0,
-         .size       = GF_BG_SCR_SIZE_256x256,
-         .colorMode  = GX_BG_COLORMODE_16,
+         .baseTile = 0,
+         .size = GF_BG_SCR_SIZE_256x256,
+         .colorMode = GX_BG_COLORMODE_16,
          .screenBase = GX_BG_SCRBASE_0xf800,
-         .charBase   = GX_BG_CHARBASE_0x00000,
-         .bgExtPltt  = GX_BG_EXTPLTT_01,
-         .priority   = 1,
-         .areaOver   = GX_BG_AREAOVER_XLU,
-         .mosaic     = FALSE,
+         .charBase = GX_BG_CHARBASE_0x00000,
+         .bgExtPltt = GX_BG_EXTPLTT_01,
+         .priority = 1,
+         .areaOver = GX_BG_AREAOVER_XLU,
+         .mosaic = FALSE,
          },
         {
-         .x          = 0,
-         .y          = 0,
+         .x = 0,
+         .y = 0,
          .bufferSize = 0x800,
-         .baseTile   = 0,
-         .size       = GF_BG_SCR_SIZE_256x256,
-         .colorMode  = GX_BG_COLORMODE_16,
+         .baseTile = 0,
+         .size = GF_BG_SCR_SIZE_256x256,
+         .colorMode = GX_BG_COLORMODE_16,
          .screenBase = GX_BG_SCRBASE_0xf000,
-         .charBase   = GX_BG_CHARBASE_0x08000,
-         .bgExtPltt  = GX_BG_EXTPLTT_01,
-         .priority   = 0,
-         .areaOver   = GX_BG_AREAOVER_XLU,
-         .mosaic     = FALSE,
+         .charBase = GX_BG_CHARBASE_0x08000,
+         .bgExtPltt = GX_BG_EXTPLTT_01,
+         .priority = 0,
+         .areaOver = GX_BG_AREAOVER_XLU,
+         .mosaic = FALSE,
          },
     };
 
@@ -766,17 +766,17 @@ static void OptionsApp_LoadMenuEntriesData(OptionsApp_Data *data) {
         }
     }
 
-    data->menuEntries[MENU_ENTRY_TEXT_SPEED].value   = data->options.textSpeed;
+    data->menuEntries[MENU_ENTRY_TEXT_SPEED].value = data->options.textSpeed;
     data->menuEntries[MENU_ENTRY_BATTLE_SCENE].value = data->options.battleScene;
     data->menuEntries[MENU_ENTRY_BATTLE_STYLE].value = data->options.battleStyle;
     data->menuEntries[MENU_ENTRY_SOUND_METHOD].value = data->options.soundMethod;
-    data->menuEntries[MENU_ENTRY_BUTTON_MODE].value  = data->options.buttonMode;
-    data->menuEntries[MENU_ENTRY_FRAME].value        = data->options.frame;
-    data->menuEntries[MENU_ENTRY_6].value            = 0;
+    data->menuEntries[MENU_ENTRY_BUTTON_MODE].value = data->options.buttonMode;
+    data->menuEntries[MENU_ENTRY_FRAME].value = data->options.frame;
+    data->menuEntries[MENU_ENTRY_6].value = 0;
 }
 
 static void ov54_021E6418(OptionsApp_Data *data, u16 menuEntryId) {
-    u32 selectedColor    = MAKE_TEXT_COLOR(1, 2, 0);
+    u32 selectedColor = MAKE_TEXT_COLOR(1, 2, 0);
     u32 notSelectedColor = MAKE_TEXT_COLOR(15, 2, 0);
     u32 color;
     u16 i;
@@ -934,7 +934,7 @@ static void OptionsApp_HandleInput(OptionsApp_Data *data) {
             break;
 
         default: {
-            data->currentMenuEntryId    = ov54_021E6DA8[hitboxIndex][0];
+            data->currentMenuEntryId = ov54_021E6DA8[hitboxIndex][0];
             OptionsApp_MenuEntry *entry = &data->menuEntries[data->currentMenuEntryId];
 
             u32 value = ov54_021E6DA8[hitboxIndex][1];
@@ -987,25 +987,25 @@ static void OptionsApp_SetupSpriteRenderer(OptionsApp_Data *data) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 
-    data->spriteRenderer   = SpriteRenderer_Create(data->heapId);
+    data->spriteRenderer = SpriteRenderer_Create(data->heapId);
     data->spriteGfxHandler = SpriteRenderer_CreateGfxHandler(data->spriteRenderer);
 
     const OamManagerParam unk1 = {
-        .fromOBJmain    = 0,
-        .numOBJmain     = 128,
+        .fromOBJmain = 0,
+        .numOBJmain = 128,
         .fromAffineMain = 0,
-        .numAffineMain  = 32,
-        .fromOBJsub     = 0,
-        .numOBJsub      = 128,
-        .fromAffineSub  = 0,
-        .numAffineSub   = 32,
+        .numAffineMain = 32,
+        .fromOBJsub = 0,
+        .numOBJsub = 128,
+        .fromAffineSub = 0,
+        .numAffineSub = 32,
     };
     const OamCharTransferParam unk2 = {
-        .maxTasks     = 9,
-        .sizeMain     = 0x400,
-        .sizeSub      = 0x400,
+        .maxTasks = 9,
+        .sizeMain = 0x400,
+        .sizeSub = 0x400,
         .charModeMain = GX_OBJVRAMMODE_CHAR_1D_32K,
-        .charModeSub  = GX_OBJVRAMMODE_CHAR_1D_32K,
+        .charModeSub = GX_OBJVRAMMODE_CHAR_1D_32K,
     };
     SpriteRenderer_CreateOamCharPlttManagers(data->spriteRenderer, &unk1, &unk2, 32);
     SpriteRenderer_CreateSpriteList(data->spriteRenderer, data->spriteGfxHandler, 9);

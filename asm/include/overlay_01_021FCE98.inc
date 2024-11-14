@@ -9,7 +9,7 @@
 .public TaskManager_GetStatePtr
 .public PlayerAvatar_GetState
 .public PlayerAvatar_GetGender
-.public MapObject_GetPositionVec
+.public MapObject_CopyPositionVector
 .public FollowMon_GetMapObject
 .public FollowMon_IsVisible
 .public FieldSystem_UnkSub108_AddMonMood

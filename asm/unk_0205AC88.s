@@ -422,7 +422,7 @@ _0205AF8A:
 	str r0, [sp, #0xc]
 	ldr r0, [sp]
 	ldr r0, [r0, #8]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	ldr r4, [sp]
 	str r0, [sp, #8]
 	add r6, r4, #0
@@ -644,10 +644,10 @@ sub_0205B13C: ; 0x0205B13C
 	bl MapObject_GetInitialX
 	add r7, r0, #0
 	add r0, r4, #0
-	bl MapObject_GetInitialHeight
+	bl MapObject_GetInitialY
 	str r0, [sp, #0xc]
 	add r0, r4, #0
-	bl MapObject_GetInitialY
+	bl MapObject_GetInitialZ
 	add r6, r0, #0
 	ldr r0, [sp, #4]
 	cmp r7, r0
@@ -670,7 +670,7 @@ _0205B16C:
 	add r0, r4, #0
 	add r1, r7, #0
 	add r3, r6, #0
-	bl sub_0205FC2C
+	bl MapObject_SetPositionFromXYZAndDirection
 	add r0, r4, #0
 	mov r1, #1
 	bl MapObject_SetFacingDirectionDirect

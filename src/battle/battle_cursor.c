@@ -23,16 +23,16 @@ void BattleCursor_FreeResources(SpriteGfxHandler *gfxHandler, u32 character, u32
 }
 
 static const UnkTemplate_0200D748 ov12_0226EBA0 = {
-    .x              = 0,
-    .y              = 0,
-    .z              = 0,
-    .animation      = 0,
+    .x = 0,
+    .y = 0,
+    .z = 0,
+    .animation = 0,
     .spritePriority = 0,
-    .pal            = 0,
-    .vram           = NNS_G2D_VRAM_TYPE_2DSUB,
-    .resIdList      = { 0, 0, 0, 0, -1, -1 },
-    .bgPriority     = 0,
-    .vramTransfer   = 0
+    .pal = 0,
+    .vram = NNS_G2D_VRAM_TYPE_2DSUB,
+    .resIdList = { 0, 0, 0, 0, -1, -1 },
+    .bgPriority = 0,
+    .vramTransfer = 0
 };
 
 BattleCursor *BattleCursor_New(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 a7, u32 a8) {
@@ -40,13 +40,13 @@ BattleCursor *BattleCursor_New(SpriteRenderer *renderer, SpriteGfxHandler *gfxHa
     UnkTemplate_0200D748 unkStruct;
     int i;
 
-    unkStruct                = ov12_0226EBA0;
-    unkStruct.resIdList[0]   = character;
-    unkStruct.resIdList[1]   = pal;
-    unkStruct.resIdList[2]   = cell;
-    unkStruct.resIdList[3]   = animation;
+    unkStruct = ov12_0226EBA0;
+    unkStruct.resIdList[0] = character;
+    unkStruct.resIdList[1] = pal;
+    unkStruct.resIdList[2] = cell;
+    unkStruct.resIdList[3] = animation;
     unkStruct.spritePriority = a7;
-    unkStruct.bgPriority     = a8;
+    unkStruct.bgPriority = a8;
 
     cursor = AllocFromHeap(heapId, sizeof(BattleCursor));
     MI_CpuFill8(cursor, 0, sizeof(BattleCursor));

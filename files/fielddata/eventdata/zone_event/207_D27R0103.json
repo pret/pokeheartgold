@@ -3,29 +3,29 @@
   "objects": [
     {
       "id": "obj_D27R0103_monstarball",
-      "sprite_id": "SPRITE_MONSTARBALL",
+      "spriteId": "SPRITE_MONSTARBALL",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_HIDE_ITEMBALL_D27R0103_RARE_CANDY",
-      "scr": "std_itemball_d27r0103_rare_candy",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_ITEMBALL_D27R0103_RARE_CANDY",
+      "scriptId": "std_itemball_d27r0103_rare_candy",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 2,
-      "y": 2,
-      "z": 0
+      "z": 2,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 8,
-      "y": 12,
+      "z": 12,
       "header": "MAP_D27R0104",
       "anchor": 5,
-      "height": 0
+      "y": 0
     }
   ]
 }

@@ -18,7 +18,7 @@ static void getFirstMdlFromSet(NNSG3dResMdl **ppMdl, NNSG3dResFileHeader **ppHea
     }
 
     NNSG3dResMdlSet *mdlSet = NNS_G3dGetMdlSet(*ppHeader);
-    *ppMdl                  = NNS_G3dGetMdlByIdx(mdlSet, 0);
+    *ppMdl = NNS_G3dGetMdlByIdx(mdlSet, 0);
 }
 
 void GF3dRender_InitObjFromHeader(NNSG3dRenderObj *obj, NNSG3dResMdl **p_mdl, NNSG3dResFileHeader **p_header) {
@@ -80,18 +80,18 @@ BOOL GF3dRender_AllocAndLoadTexResources(NNSG3dResTex *tex) {
     u32 texRequiredSize;
     u32 tex4x4RequiredSize;
     u32 plttRequiredSize;
-    BOOL hasTexVram    = TRUE;
+    BOOL hasTexVram = TRUE;
     BOOL hasTex4x4Vram = TRUE;
-    BOOL hasPlttVram   = TRUE;
+    BOOL hasPlttVram = TRUE;
 
     NNSGfdTexKey texKey;
     NNSGfdTexKey tex4x4Key;
     NNSGfdPlttKey plttKey;
 
     if (tex != NULL) {
-        texRequiredSize    = NNS_G3dTexGetRequiredSize(tex);
+        texRequiredSize = NNS_G3dTexGetRequiredSize(tex);
         tex4x4RequiredSize = NNS_G3dTex4x4GetRequiredSize(tex);
-        plttRequiredSize   = NNS_G3dPlttGetRequiredSize(tex);
+        plttRequiredSize = NNS_G3dPlttGetRequiredSize(tex);
 
         if (texRequiredSize != 0) {
             texKey = NNS_GfdAllocTexVram(texRequiredSize, FALSE, 0);

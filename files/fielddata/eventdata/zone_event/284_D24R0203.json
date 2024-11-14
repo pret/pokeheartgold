@@ -2,12 +2,12 @@
   "header": "fielddata/script/scr_seq/event_D24R0203.h",
   "coords": [
     {
-      "scr": "_EV_scr_seq_D24R0203_002 + 1",
+      "scriptId": "_EV_scr_seq_D24R0203_002 + 1",
       "x": 20,
-      "y": 11,
+      "z": 11,
       "w": 1,
       "h": 1,
-      "z": 0,
+      "y": 0,
       "val": 0,
       "var": "VAR_UNK_40CF"
     }

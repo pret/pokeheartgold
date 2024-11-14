@@ -34,9 +34,9 @@ SpriteRenderer *SpriteRenderer_Create(HeapID heapId) {
     if (ret == NULL) {
         return NULL;
     }
-    ret->heapId         = heapId;
+    ret->heapId = heapId;
     ret->numGfxHandlers = 0;
-    ret->hasOamManager  = TRUE;
+    ret->hasOamManager = TRUE;
     return ret;
 }
 
@@ -65,8 +65,8 @@ BOOL SpriteRenderer_CreateOamCharPlttManagers(SpriteRenderer *renderer, const Oa
     ObjCharTransferTemplate transferTemplate;
     transferTemplate.maxTasks = oamTransferParam->maxTasks;
     transferTemplate.sizeMain = oamTransferParam->sizeMain;
-    transferTemplate.sizeSub  = oamTransferParam->sizeSub;
-    transferTemplate.heapId   = renderer->heapId;
+    transferTemplate.sizeSub = oamTransferParam->sizeSub;
+    transferTemplate.heapId = renderer->heapId;
     ObjCharTransfer_InitEx(&transferTemplate, oamTransferParam->charModeMain, oamTransferParam->charModeSub);
     ObjPlttTransfer_Init(numPltts, renderer->heapId);
     NNS_G2dInitOamManagerModule();
@@ -171,24 +171,24 @@ static BOOL sub_0200D124(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler,
         numGfxResTypes = GF_GFX_RES_TYPE_MAX - 2;
     }
     gfxHandler->numGfxResObjectTypes = numGfxResTypes;
-    size                             = GF2DGfxResHeader_sizeof();
-    gfxHandler->_2dGfxResHeader      = AllocFromHeap(renderer->heapId, size * numGfxResTypes);
-    narc                             = NARC_New(NARC_data_resdat, renderer->heapId);
+    size = GF2DGfxResHeader_sizeof();
+    gfxHandler->_2dGfxResHeader = AllocFromHeap(renderer->heapId, size * numGfxResTypes);
+    narc = NARC_New(NARC_data_resdat, renderer->heapId);
 
     for (i = 0; i < numGfxResTypes; ++i) {
         header = GF2DGfxResHeader_GetByIndex(gfxHandler->_2dGfxResHeader, i);
-        data   = GfGfxLoader_LoadFromOpenNarc(narc, fileIdList[i], FALSE, renderer->heapId, TRUE);
+        data = GfGfxLoader_LoadFromOpenNarc(narc, fileIdList[i], FALSE, renderer->heapId, TRUE);
         GF2DGfxResHeader_Init((GF_2DGfxResHeaderNarcList *)data, header, renderer->heapId);
         FreeToHeap(data);
     }
     for (i = 0; i < numGfxResTypes; ++i) {
-        header                      = GF2DGfxResHeader_GetByIndex(gfxHandler->_2dGfxResHeader, i);
-        size                        = GF2dGfxResHeader_GetNumObjects(header);
+        header = GF2DGfxResHeader_GetByIndex(gfxHandler->_2dGfxResHeader, i);
+        size = GF2dGfxResHeader_GetNumObjects(header);
         gfxHandler->_2dGfxResMan[i] = Create2DGfxResObjMan(size, (GfGfxResType)i, renderer->heapId);
     }
     for (i = 0; i < numGfxResTypes; ++i) {
-        header                          = GF2DGfxResHeader_GetByIndex(gfxHandler->_2dGfxResHeader, i);
-        size                            = GF2dGfxResHeader_GetNumObjects(header);
+        header = GF2DGfxResHeader_GetByIndex(gfxHandler->_2dGfxResHeader, i);
+        size = GF2dGfxResHeader_GetNumObjects(header);
         gfxHandler->_2dGfxResObjList[i] = Create2DGfxResObjList(size, renderer->heapId);
         gfxHandler->numGfxResObjects[i] = LoadAll2DGfxResObjsFromHeader(gfxHandler->_2dGfxResMan[i], header, gfxHandler->_2dGfxResObjList[i], renderer->heapId);
     }
@@ -213,7 +213,7 @@ static BOOL sub_0200D124(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler,
         sub_0200AFD8(gfxHandler->_2dGfxResObjList[GF_GFX_RES_TYPE_PLTT]);
         break;
     }
-    data                         = GfGfxLoader_LoadFromOpenNarc(narc, fileIdList[6], FALSE, renderer->heapId, TRUE);
+    data = GfGfxLoader_LoadFromOpenNarc(narc, fileIdList[6], FALSE, renderer->heapId, TRUE);
     gfxHandler->spriteHeaderList = SpriteResourceHeaderList_Create(
         (struct ResdatNarcEntry *)data,
         renderer->heapId,
@@ -245,7 +245,7 @@ static Sprite *MyCreateSprite(SpriteRenderer *renderer, SpriteGfxHandler *gfxHan
     SpriteTemplate template;
 
     template.spriteList = gfxHandler->spriteList;
-    template.header     = &gfxHandler->spriteHeaderList->headers[headerIndex];
+    template.header = &gfxHandler->spriteHeaderList->headers[headerIndex];
 
     template.position.x = FX32_CONST(x);
     template.position.y = FX32_CONST(y);
@@ -254,14 +254,14 @@ static Sprite *MyCreateSprite(SpriteRenderer *renderer, SpriteGfxHandler *gfxHan
     if (whichScreen == NNS_G2D_VRAM_TYPE_2DSUB) {
         template.position.y += FX32_CONST(GX_LCD_SIZE_Y);
     }
-    template.scale.x     = FX32_ONE;
-    template.scale.y     = FX32_ONE;
-    template.scale.z     = FX32_ONE;
-    template.rotation    = 0;
-    template.priority    = priority;
+    template.scale.x = FX32_ONE;
+    template.scale.y = FX32_ONE;
+    template.scale.z = FX32_ONE;
+    template.rotation = 0;
+    template.priority = priority;
     template.whichScreen = whichScreen;
-    template.heapId      = renderer->heapId;
-    ret                  = Sprite_CreateAffine(&template);
+    template.heapId = renderer->heapId;
+    ret = Sprite_CreateAffine(&template);
     if (ret != NULL) {
         Sprite_SetAnimCtrlSeq(ret, animSeqNo);
         switch (a10) {
@@ -420,7 +420,7 @@ static UnkImageStruct *MyLoadResourcesAndCreateSprite(SpriteRenderer *renderer, 
         return NULL;
     }
     ret->spriteResourceHeaderList->headers = AllocFromHeap(renderer->heapId, sizeof(SpriteResourcesHeader));
-    ret->spriteResourcesHeader             = ret->spriteResourceHeaderList->headers;
+    ret->spriteResourcesHeader = ret->spriteResourceHeaderList->headers;
     if (ret->spriteResourceHeaderList->headers == NULL) {
         if (ret->spriteResourceHeaderList != NULL) { // always true
             FreeToHeap(ret->spriteResourceHeaderList);
@@ -459,22 +459,22 @@ static UnkImageStruct *MyLoadResourcesAndCreateSprite(SpriteRenderer *renderer, 
         gfxHandler->_2dGfxResMan[GF_GFX_RES_TYPE_MANM]);
 
     spriteTemplate.spriteList = gfxHandler->spriteList;
-    spriteTemplate.header     = ret->spriteResourcesHeader;
+    spriteTemplate.header = ret->spriteResourcesHeader;
     spriteTemplate.position.x = FX32_CONST(unkTemplate->x);
     spriteTemplate.position.y = FX32_CONST(unkTemplate->y);
     spriteTemplate.position.z = FX32_CONST(unkTemplate->z);
     if (unkTemplate->vram == NNS_G2D_VRAM_TYPE_2DSUB) {
         spriteTemplate.position.y += yOffset;
     }
-    spriteTemplate.scale.x     = FX32_ONE;
-    spriteTemplate.scale.y     = FX32_ONE;
-    spriteTemplate.scale.z     = FX32_ONE;
-    spriteTemplate.rotation    = 0;
-    spriteTemplate.priority    = unkTemplate->spritePriority;
+    spriteTemplate.scale.x = FX32_ONE;
+    spriteTemplate.scale.y = FX32_ONE;
+    spriteTemplate.scale.z = FX32_ONE;
+    spriteTemplate.rotation = 0;
+    spriteTemplate.priority = unkTemplate->spritePriority;
     spriteTemplate.whichScreen = unkTemplate->vram;
-    spriteTemplate.heapId      = renderer->heapId;
-    ret->sprite                = Sprite_CreateAffine(&spriteTemplate);
-    ret->vramTransfer          = unkTemplate->vramTransfer;
+    spriteTemplate.heapId = renderer->heapId;
+    ret->sprite = Sprite_CreateAffine(&spriteTemplate);
+    ret->vramTransfer = unkTemplate->vramTransfer;
     if (ret->sprite != NULL) {
         Sprite_SetAnimCtrlSeq(ret->sprite, unkTemplate->animation);
         if (unkTemplate->pal != 0xFFFF) {
@@ -794,7 +794,7 @@ void UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset(UnkImageStruct *unk,
 
 void Sprite_GetPositionXY(Sprite *sprite, s16 *x, s16 *y) {
     const VecFx32 *pos = Sprite_GetMatrixPtr(sprite);
-    *x                 = pos->x / FX32_ONE;
+    *x = pos->x / FX32_ONE;
     if (Sprite_GetVramType(sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
         *y = (pos->y - GX_LCD_SIZE_Y * FX32_ONE) / FX32_ONE;
     } else {
@@ -808,7 +808,7 @@ void UnkImageStruct_GetSpritePositionXY(UnkImageStruct *unk, s16 *x, s16 *y) {
 
 void Sprite_GetPositionXY_CustomScreenYOffset(Sprite *sprite, s16 *x, s16 *y, fx32 yOffset) {
     const VecFx32 *pos = Sprite_GetMatrixPtr(sprite);
-    *x                 = pos->x / FX32_ONE;
+    *x = pos->x / FX32_ONE;
     if (Sprite_GetVramType(sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
         *y = (pos->y - yOffset) / FX32_ONE;
     } else {
@@ -823,9 +823,9 @@ void UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset(UnkImageStruct *unk,
 void Sprite_AddPositionXY(Sprite *sprite, s16 dx, s16 dy) {
     VecFx32 vec;
     const VecFx32 *pos = Sprite_GetMatrixPtr(sprite);
-    vec.x              = pos->x + dx * FX32_ONE;
-    vec.y              = pos->y + dy * FX32_ONE;
-    vec.z              = pos->z;
+    vec.x = pos->x + dx * FX32_ONE;
+    vec.y = pos->y + dy * FX32_ONE;
+    vec.z = pos->z;
     Sprite_SetMatrix(sprite, &vec);
 }
 
@@ -836,25 +836,25 @@ void UnkImageStruct_AddSpritePositionXY(UnkImageStruct *unk, s16 dx, s16 dy) {
 void UnkImageStruct_AddSpritePrecisePositionXY(UnkImageStruct *unk, fx32 dx, fx32 dy) {
     VecFx32 vec;
     const VecFx32 *pos = Sprite_GetMatrixPtr(unk->sprite);
-    vec.x              = pos->x + dx;
-    vec.y              = pos->y + dy;
-    vec.z              = pos->z;
+    vec.x = pos->x + dx;
+    vec.y = pos->y + dy;
+    vec.z = pos->z;
     Sprite_SetMatrix(unk->sprite, &vec);
 }
 
 void UnkImageStruct_SetSpritePrecisePositionXY_NoBottomScreenCorrection(UnkImageStruct *unk, fx32 x, fx32 y) {
     VecFx32 vec;
     const VecFx32 *pos = Sprite_GetMatrixPtr(unk->sprite);
-    vec.x              = x;
-    vec.y              = y;
-    vec.z              = pos->z;
+    vec.x = x;
+    vec.y = y;
+    vec.z = pos->z;
     Sprite_SetMatrix(unk->sprite, &vec);
 }
 
 void UnkImageStruct_GetSpritePositionXY_NoBottomScreenCorrection(UnkImageStruct *unk, fx32 *x, fx32 *y) {
     const VecFx32 *pos = Sprite_GetMatrixPtr(unk->sprite);
-    *x                 = pos->x;
-    *y                 = pos->y;
+    *x = pos->x;
+    *y = pos->y;
 }
 
 void UnkImageStruct_SetSpritePrecisePositionXY(UnkImageStruct *unk, fx32 x, fx32 y, fx32 yOffset) {
@@ -882,8 +882,8 @@ void sub_0200DF98(UnkImageStruct *unk, u8 a1) {
 
 void sub_0200DFA4(Sprite *sprite, f32 x, f32 y) {
     VecFx32 *scale = Sprite_GetScalePtr(sprite);
-    scale->x       = FX_F32_TO_FX32(x);
-    scale->y       = FX_F32_TO_FX32(y);
+    scale->x = FX_F32_TO_FX32(x);
+    scale->y = FX_F32_TO_FX32(y);
     Sprite_SetScale(sprite, scale);
 }
 
@@ -893,8 +893,8 @@ void sub_0200E024(UnkImageStruct *unk, f32 x, f32 y) {
 
 void sub_0200E030(Sprite *sprite, f32 *x, f32 *y) {
     VecFx32 *scale = Sprite_GetScalePtr(sprite);
-    *x             = FX_FX32_TO_F32(scale->x);
-    *y             = FX_FX32_TO_F32(scale->y);
+    *x = FX_FX32_TO_F32(scale->x);
+    *y = FX_FX32_TO_F32(scale->y);
 }
 
 void sub_0200E060(UnkImageStruct *unk, f32 *x, f32 *y) {

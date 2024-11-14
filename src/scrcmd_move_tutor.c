@@ -97,11 +97,11 @@ static BOOL ov01_0220305C(ScriptContext *ctx);
 
 // get number of pages needed to show learnable moves from move tutor
 BOOL ScrCmd_652(ScriptContext *ctx) {
-    u16 slot              = ScriptGetVar(ctx);
-    u16 moveTutorNpc      = ScriptGetVar(ctx);
-    u16 *result           = ScriptGetVarPointer(ctx);
-    Party *party          = SaveArray_Party_Get(ctx->fieldSystem->saveData);
-    Pokemon *mon          = Party_GetMonByIndex(party, slot);
+    u16 slot = ScriptGetVar(ctx);
+    u16 moveTutorNpc = ScriptGetVar(ctx);
+    u16 *result = ScriptGetVarPointer(ctx);
+    Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
+    Pokemon *mon = Party_GetMonByIndex(party, slot);
     u32 numLearnableMoves = GetLearnableTutorMoves(mon, moveTutorNpc, NULL);
     if (numLearnableMoves == 0) {
         *result = 0;
@@ -115,15 +115,15 @@ BOOL ScrCmd_652(ScriptContext *ctx) {
 
 BOOL ScrCmd_TutorMoveTeachInSlot(ScriptContext *ctx) {
     u16 partySlot = ScriptGetVar(ctx);
-    u16 moveSlot  = ScriptGetVar(ctx);
-    u16 move      = ScriptGetVar(ctx);
-    Party *party  = SaveArray_Party_Get(ctx->fieldSystem->saveData);
+    u16 moveSlot = ScriptGetVar(ctx);
+    u16 move = ScriptGetVar(ctx);
+    Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
     PartyMonSetMoveInSlot(party, partySlot, moveSlot, move);
     return FALSE;
 }
 
 BOOL ScrCmd_TutorMoveGetPrice(ScriptContext *ctx) {
-    u16 move    = ScriptGetVar(ctx);
+    u16 move = ScriptGetVar(ctx);
     u16 *result = ScriptGetVarPointer(ctx);
     for (u32 i = 0; i < NELEMS(sTutorMoves); i++) {
         if (sTutorMoves[i].move == move) {
@@ -138,12 +138,12 @@ BOOL ScrCmd_TutorMoveGetPrice(ScriptContext *ctx) {
 
 // check if mon at given slot can learn from headbutt move tutor
 BOOL ScrCmd_656(ScriptContext *ctx) {
-    u16 slot              = ScriptGetVar(ctx);
-    u16 *result           = ScriptGetVarPointer(ctx);
-    Party *party          = SaveArray_Party_Get(ctx->fieldSystem->saveData);
-    Pokemon *mon          = Party_GetMonByIndex(party, slot);
+    u16 slot = ScriptGetVar(ctx);
+    u16 *result = ScriptGetVarPointer(ctx);
+    Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
+    Pokemon *mon = Party_GetMonByIndex(party, slot);
     u32 numLearnableMoves = GetLearnableTutorMoves(mon, MOVE_TUTOR_NPC_HEADBUTT, NULL);
-    *result               = numLearnableMoves > 0 ? TRUE : FALSE;
+    *result = numLearnableMoves > 0 ? TRUE : FALSE;
     return FALSE;
 }
 
@@ -200,10 +200,10 @@ static u16 GetLearnableTutorMoves(Pokemon *mon, u32 moveTutorNpc, u8 dest[]) {
     for (i = 0; i < MAX_MON_MOVES; i++) {
         currentMoves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
     }
-    u32 species                 = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    u32 form                    = GetMonData(mon, MON_DATA_FORM, NULL);
+    u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    u32 form = GetMonData(mon, MON_DATA_FORM, NULL);
     MoveTutorLearnset *learnset = GetMoveTutorLearnset(HEAP_ID_FIELD, GetMoveTutorLearnsetIndex(species, form));
-    u16 numLearnableMoves       = 0;
+    u16 numLearnableMoves = 0;
     for (j = 0; j < NELEMS(sTutorMoves); j++) {
         // this is equivalent to treating `learnset` as a bitfield of 64 bits
         // and then checking whether bit j is set
@@ -251,19 +251,19 @@ BOOL ScrCmd_MoveTutorChooseMove(ScriptContext *ctx) {
     s32 i;
     s32 numLearnableMoves;
     BOOL showNextButton;
-    FieldSystem *fieldSystem             = ctx->fieldSystem;
+    FieldSystem *fieldSystem = ctx->fieldSystem;
     struct UnkStruct_ov01_021EDC28 **unk = ov01_021F6B20(fieldSystem);
     u16 resultVarId;
     MsgData *messageData;
     u16 showAsTwoColumns;
     MessageFormat **messageFormat = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
-    u16 slot                      = ScriptGetVar(ctx);
-    u16 moveTutorNpc              = ScriptGetVar(ctx);
-    u16 pageNum                   = ScriptGetVar(ctx);
-    resultVarId                   = ScriptReadHalfword(ctx);
-    ctx->data[0]                  = resultVarId;
-    Pokemon *mon                  = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), slot);
-    numLearnableMoves             = GetLearnableTutorMoves(mon, moveTutorNpc, learnableMoves);
+    u16 slot = ScriptGetVar(ctx);
+    u16 moveTutorNpc = ScriptGetVar(ctx);
+    u16 pageNum = ScriptGetVar(ctx);
+    resultVarId = ScriptReadHalfword(ctx);
+    ctx->data[0] = resultVarId;
+    Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), slot);
+    numLearnableMoves = GetLearnableTutorMoves(mon, moveTutorNpc, learnableMoves);
     s32 numMovesToSkip;
     if (numLearnableMoves <= 7) {
         numMovesToSkip = 0;
@@ -281,13 +281,13 @@ BOOL ScrCmd_MoveTutorChooseMove(ScriptContext *ctx) {
         // appropriate value of pageNum is always passed in
         // for all instances where this function is called.
         numLearnableMoves = MAX_TUTOR_MOVES_PER_PAGE;
-        numMovesToSkip    = 0;
+        numMovesToSkip = 0;
     }
-    u16 *result      = GetVarPointer(fieldSystem, resultVarId);
-    Window *window   = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_WINDOW);
-    *unk             = ov01_021EDF78(fieldSystem, 1, 1, 0, 1, result, *messageFormat, window, ctx->msgdata);
-    messageData      = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0750_bin, HEAP_ID_32);
-    String *string   = String_New(0x10, HEAP_ID_32);
+    u16 *result = GetVarPointer(fieldSystem, resultVarId);
+    Window *window = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_WINDOW);
+    *unk = ov01_021EDF78(fieldSystem, 1, 1, 0, 1, result, *messageFormat, window, ctx->msgdata);
+    messageData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0750_bin, HEAP_ID_32);
+    String *string = String_New(0x10, HEAP_ID_32);
     showAsTwoColumns = (numLearnableMoves + showNextButton >= 4) ? 1 : 0;
     for (i = 0; i < numLearnableMoves; i++) {
         ReadMsgDataIntoString(messageData, sTutorMoves[learnableMoves[i + numMovesToSkip]].move, string);
@@ -308,9 +308,9 @@ BOOL ScrCmd_MoveTutorChooseMove(ScriptContext *ctx) {
 }
 
 static BOOL ov01_0220305C(ScriptContext *ctx) {
-    FieldSystem *fieldSystem             = ctx->fieldSystem;
+    FieldSystem *fieldSystem = ctx->fieldSystem;
     struct UnkStruct_ov01_021EDC28 **unk = ov01_021F6B20(fieldSystem);
-    u16 *result                          = GetVarPointer(fieldSystem, ctx->data[0]);
+    u16 *result = GetVarPointer(fieldSystem, ctx->data[0]);
     if (*result == 0xeeee) {
         return FALSE;
     }
@@ -320,16 +320,16 @@ static BOOL ov01_0220305C(ScriptContext *ctx) {
 
 // Unused
 BOOL ScrCmd_742(ScriptContext *ctx) {
-    u16 slot     = ScriptGetVar(ctx);
-    u16 move     = ScriptGetVar(ctx);
-    u16 *result  = ScriptGetVarPointer(ctx);
-    *result      = FALSE;
+    u16 slot = ScriptGetVar(ctx);
+    u16 move = ScriptGetVar(ctx);
+    u16 *result = ScriptGetVarPointer(ctx);
+    *result = FALSE;
     Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
     Pokemon *mon = Party_GetMonByIndex(party, slot);
-    u16 *unk     = AllocFromHeapAtEnd(HEAP_ID_FIELD, 0x2c);
-    u32 species  = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    u32 form     = GetMonData(mon, MON_DATA_FORM, NULL);
-    s32 size     = Species_LoadLearnsetTable(species, form, unk);
+    u16 *unk = AllocFromHeapAtEnd(HEAP_ID_FIELD, 0x2c);
+    u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    u32 form = GetMonData(mon, MON_DATA_FORM, NULL);
+    s32 size = Species_LoadLearnsetTable(species, form, unk);
     for (s32 i = 0; i < size; i++) {
         if (move == unk[i]) {
             *result = TRUE;

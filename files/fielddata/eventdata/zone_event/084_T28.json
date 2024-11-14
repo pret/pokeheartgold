@@ -2,152 +2,152 @@
   "header": "fielddata/script/scr_seq/event_T28.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_T28_006 + 1",
+      "scriptId": "_EV_scr_seq_T28_006 + 1",
       "type": 1,
       "x": 516,
-      "y": 172,
-      "z": 0,
+      "z": 172,
+      "y": 0,
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T28_007 + 1",
+      "scriptId": "_EV_scr_seq_T28_007 + 1",
       "type": 1,
       "x": 526,
-      "y": 174,
-      "z": 0,
+      "z": 174,
+      "y": 0,
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T28_008 + 1",
+      "scriptId": "_EV_scr_seq_T28_008 + 1",
       "type": 1,
       "x": 520,
-      "y": 184,
-      "z": 0,
+      "z": 184,
+      "y": 0,
       "dir": 4
     }
   ],
   "objects": [
     {
       "id": "obj_T28_gsmiddleman1",
-      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "spriteId": "SPRITE_GSMIDDLEMAN1",
       "movement": 15,
       "type": 0,
-      "flag": "FLAG_UNK_205",
-      "scr": "_EV_scr_seq_T28_000 + 1",
-      "dirn": 1,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_UNK_205",
+      "scriptId": "_EV_scr_seq_T28_000 + 1",
+      "facingDirection": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 540,
-      "y": 175,
-      "z": 0
+      "z": 175,
+      "y": 0
     },
     {
       "id": "obj_T28_gsoldman1",
-      "sprite_id": "SPRITE_GSOLDMAN1",
+      "spriteId": "SPRITE_GSOLDMAN1",
       "movement": 5,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T28_002 + 1",
-      "dirn": 2,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 1,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_T28_002 + 1",
+      "facingDirection": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 1,
+      "yRange": 0,
       "x": 523,
-      "y": 175,
-      "z": 0
+      "z": 175,
+      "y": 0
     },
     {
       "id": "obj_T28_gsbigman",
-      "sprite_id": "SPRITE_GSBIGMAN",
+      "spriteId": "SPRITE_GSBIGMAN",
       "movement": 15,
       "type": 0,
-      "flag": "FLAG_UNK_1F9",
-      "scr": "_EV_scr_seq_T28_004 + 1",
-      "dirn": 1,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_UNK_1F9",
+      "scriptId": "_EV_scr_seq_T28_004 + 1",
+      "facingDirection": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 523,
-      "y": 184,
-      "z": 0
+      "z": 184,
+      "y": 0
     },
     {
       "id": "obj_T28_gsgirl1",
-      "sprite_id": "SPRITE_GSGIRL1",
+      "spriteId": "SPRITE_GSGIRL1",
       "movement": 15,
       "type": 0,
-      "flag": "FLAG_HIDE_MAHOGANY_SHOP_SALESWOMAN",
-      "scr": "_EV_scr_seq_T28_003 + 1",
-      "dirn": 1,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_MAHOGANY_SHOP_SALESWOMAN",
+      "scriptId": "_EV_scr_seq_T28_003 + 1",
+      "facingDirection": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 530,
-      "y": 175,
-      "z": 0
+      "z": 175,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 524,
-      "y": 165,
+      "z": 165,
       "header": "MAP_R43R0101",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 525,
-      "y": 165,
+      "z": 165,
       "header": "MAP_R43R0101",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 523,
-      "y": 183,
+      "z": 183,
       "header": "MAP_T28GYM0103",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 534,
-      "y": 183,
+      "z": 183,
       "header": "MAP_T28PC0101",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 537,
-      "y": 174,
+      "z": 174,
       "header": "MAP_T28R0201",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 528,
-      "y": 174,
+      "z": 174,
       "header": "MAP_D35R0101",
       "anchor": 0,
-      "height": 0
+      "y": 0
     }
   ],
   "coords": [
     {
-      "scr": "_EV_scr_seq_T28_001 + 1",
+      "scriptId": "_EV_scr_seq_T28_001 + 1",
       "x": 540,
-      "y": 176,
+      "z": 176,
       "w": 1,
       "h": 2,
-      "z": 0,
+      "y": 0,
       "val": 0,
       "var": "VAR_UNK_407A"
     }

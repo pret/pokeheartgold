@@ -29,7 +29,7 @@ s32 Ascii_StrToL(const s8 *str) {
     s32 length = Ascii_StrLen(str);
     s32 i;
     s32 pow10 = 1;
-    s32 num   = 0;
+    s32 num = 0;
 
     // Traverse from right to left
     for (i = length - 1; i >= 0; i--) {

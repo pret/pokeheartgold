@@ -25,28 +25,28 @@ void BattleFinger_FreeResources(SpriteGfxHandler *gfxHandler, u32 character, u32
 }
 
 static const UnkTemplate_0200D748 ov12_0226EBD4 = {
-    .x              = 0,
-    .y              = 0,
-    .z              = 0,
-    .animation      = 0,
+    .x = 0,
+    .y = 0,
+    .z = 0,
+    .animation = 0,
     .spritePriority = 0,
-    .pal            = 0,
-    .vram           = NNS_G2D_VRAM_TYPE_2DSUB,
-    .resIdList      = { 0, 0, 0, 0, -1, -1 },
-    .bgPriority     = 0,
-    .vramTransfer   = 0
+    .pal = 0,
+    .vram = NNS_G2D_VRAM_TYPE_2DSUB,
+    .resIdList = { 0, 0, 0, 0, -1, -1 },
+    .bgPriority = 0,
+    .vramTransfer = 0
 };
 
 BattleFinger *BattleFinger_New(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 spritePriority, u32 bgPriority) {
     BattleFinger *finger;
     UnkTemplate_0200D748 unkStruct = ov12_0226EBD4;
 
-    unkStruct.resIdList[0]   = character;
-    unkStruct.resIdList[1]   = pal;
-    unkStruct.resIdList[2]   = cell;
-    unkStruct.resIdList[3]   = animation;
+    unkStruct.resIdList[0] = character;
+    unkStruct.resIdList[1] = pal;
+    unkStruct.resIdList[2] = cell;
+    unkStruct.resIdList[3] = animation;
     unkStruct.spritePriority = spritePriority;
-    unkStruct.bgPriority     = bgPriority;
+    unkStruct.bgPriority = bgPriority;
 
     finger = AllocFromHeap(heapId, sizeof(BattleFinger));
     MI_CpuFill8(finger, 0, sizeof(BattleFinger));
@@ -55,7 +55,7 @@ BattleFinger *BattleFinger_New(SpriteRenderer *renderer, SpriteGfxHandler *gfxHa
     UnkImageStruct_SetSpriteVisibleFlag(finger->unk0, 0);
 
     finger->unk14 = 0xC0000;
-    finger->task  = SysTask_CreateOnMainQueue(BattleFinger_Update, finger, 0x3e7);
+    finger->task = SysTask_CreateOnMainQueue(BattleFinger_Update, finger, 0x3e7);
 
     return finger;
 }
@@ -69,8 +69,8 @@ void BattleFinger_Delete(BattleFinger *finger) {
 
 void ov12_0226BCFC(BattleFinger *finger, int x, int y, fx32 a3) {
     ov12_0226BEB8(finger);
-    finger->x     = x;
-    finger->y     = y;
+    finger->x = x;
+    finger->y = y;
     finger->unk14 = a3;
     UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset(finger->unk0, x, y, a3);
     UnkImageStruct_SetSpriteVisibleFlag(finger->unk0, TRUE);
@@ -118,7 +118,7 @@ static void BattleFinger_Update(SysTask *task, void *data) {
             finger->angle -= 18000;
             if (finger->touchRequest == TRUE) {
                 finger->touchAnimationFlag = TRUE;
-                finger->touchRequest       = FALSE;
+                finger->touchRequest = FALSE;
             }
         }
 
@@ -167,8 +167,8 @@ static void BattleFinger_Update(SysTask *task, void *data) {
 }
 
 static void ov12_0226BEB8(BattleFinger *finger) {
-    finger->angle               = 0;
-    finger->touchAnimationFlag  = FALSE;
+    finger->angle = 0;
+    finger->touchAnimationFlag = FALSE;
     finger->touchAnimationState = 0;
     finger->touchAnimationDelay = 0;
 }

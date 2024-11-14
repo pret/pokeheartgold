@@ -20,7 +20,7 @@ struct HeapInfo {
 
 typedef struct MemoryBlock {
     u8 filler_00[12];
-    u32 heapId    : 8;
+    u32 heapId : 8;
     u32 filler_0D : 24;
 } MemoryBlock;
 
@@ -56,14 +56,14 @@ void InitHeapSystem(const HEAP_PARAM *templates, u32 nTemplates, u32 totalNumHea
             + totalNumHeaps,
         4);
     sHeapInfo.parentHeapHandles = sHeapInfo.heapHandles + (unk_size + 1);
-    sHeapInfo.subHeapRawPtrs    = (void **)(sHeapInfo.parentHeapHandles + unk_size);
-    sHeapInfo.numMemBlocks      = (u16 *)(sHeapInfo.subHeapRawPtrs + unk_size);
-    sHeapInfo.heapIdxs          = (u8 *)(sHeapInfo.numMemBlocks + totalNumHeaps);
-    sHeapInfo.totalNumHeaps     = (u16)totalNumHeaps;
-    sHeapInfo.nTemplates        = (u16)nTemplates;
+    sHeapInfo.subHeapRawPtrs = (void **)(sHeapInfo.parentHeapHandles + unk_size);
+    sHeapInfo.numMemBlocks = (u16 *)(sHeapInfo.subHeapRawPtrs + unk_size);
+    sHeapInfo.heapIdxs = (u8 *)(sHeapInfo.numMemBlocks + totalNumHeaps);
+    sHeapInfo.totalNumHeaps = (u16)totalNumHeaps;
+    sHeapInfo.nTemplates = (u16)nTemplates;
 
     sHeapInfo.unallocatedHeapId = (u16)unk_size;
-    sHeapInfo.maxHeaps          = (u16)unk_size;
+    sHeapInfo.maxHeaps = (u16)unk_size;
 
     for (i = 0; i < nTemplates; i++) {
         switch (templates[i].arena) {
@@ -79,7 +79,7 @@ void InitHeapSystem(const HEAP_PARAM *templates, u32 nTemplates, u32 totalNumHea
         if (ptr != NULL) {
 
             sHeapInfo.heapHandles[i] = NNS_FndCreateExpHeap(ptr, templates[i].size);
-            sHeapInfo.heapIdxs[i]    = (u8)i;
+            sHeapInfo.heapIdxs[i] = (u8)i;
         } else {
             GF_ASSERT(0);
         }
@@ -87,7 +87,7 @@ void InitHeapSystem(const HEAP_PARAM *templates, u32 nTemplates, u32 totalNumHea
 
     for (i = nTemplates; i < unk_size + 1; i++) {
         sHeapInfo.heapHandles[i] = NULL;
-        sHeapInfo.heapIdxs[i]    = (u8)sHeapInfo.unallocatedHeapId;
+        sHeapInfo.heapIdxs[i] = (u8)sHeapInfo.unallocatedHeapId;
     }
 
     while (i < totalNumHeaps) {
@@ -136,8 +136,8 @@ static BOOL CreateHeapInternal(HeapID parent, HeapID child, u32 size, s32 alignm
 
                     if (sHeapInfo.heapHandles[i] != NULL) {
                         sHeapInfo.parentHeapHandles[i] = parentHeap;
-                        sHeapInfo.subHeapRawPtrs[i]    = newHeapAddr;
-                        sHeapInfo.heapIdxs[child]      = (u8)i;
+                        sHeapInfo.subHeapRawPtrs[i] = newHeapAddr;
+                        sHeapInfo.heapIdxs[child] = (u8)i;
 
                         return TRUE;
                     } else {
@@ -166,18 +166,18 @@ void DestroyHeap(HeapID heapId) {
     if (handle != NULL) {
         NNS_FndDestroyExpHeap(handle);
 
-        u8 index                    = sHeapInfo.heapIdxs[heapId];
+        u8 index = sHeapInfo.heapIdxs[heapId];
         NNSFndHeapHandle parentHeap = sHeapInfo.parentHeapHandles[index];
-        void *childRaw              = sHeapInfo.subHeapRawPtrs[index];
+        void *childRaw = sHeapInfo.subHeapRawPtrs[index];
         if (parentHeap != NULL && childRaw != NULL) {
             NNS_FndFreeToExpHeap(parentHeap, childRaw);
         } else {
             GF_ASSERT(0);
         }
 
-        sHeapInfo.heapHandles[sHeapInfo.heapIdxs[heapId]]       = NULL;
+        sHeapInfo.heapHandles[sHeapInfo.heapIdxs[heapId]] = NULL;
         sHeapInfo.parentHeapHandles[sHeapInfo.heapIdxs[heapId]] = NULL;
-        sHeapInfo.subHeapRawPtrs[sHeapInfo.heapIdxs[heapId]]    = NULL;
+        sHeapInfo.subHeapRawPtrs[sHeapInfo.heapIdxs[heapId]] = NULL;
 
         sHeapInfo.heapIdxs[heapId] = (u8)sHeapInfo.unallocatedHeapId;
     }
@@ -210,7 +210,7 @@ void *AllocFromHeap(HeapID heapId, u32 size) {
     void *ptr = NULL;
     if (((u32)heapId) < sHeapInfo.totalNumHeaps) {
         u8 index = sHeapInfo.heapIdxs[heapId];
-        ptr      = AllocFromHeapInternal(sHeapInfo.heapHandles[index], size, 4, heapId);
+        ptr = AllocFromHeapInternal(sHeapInfo.heapHandles[index], size, 4, heapId);
     }
     if (ptr != NULL) {
         sHeapInfo.numMemBlocks[heapId]++;
@@ -225,7 +225,7 @@ void *AllocFromHeapAtEnd(HeapID heapId, u32 size) {
     void *ptr = NULL;
     if (((u32)heapId) < sHeapInfo.totalNumHeaps) {
         u8 index = sHeapInfo.heapIdxs[heapId];
-        ptr      = AllocFromHeapInternal(sHeapInfo.heapHandles[index], size, -4, heapId);
+        ptr = AllocFromHeapInternal(sHeapInfo.heapHandles[index], size, -4, heapId);
     }
 
     if (ptr != NULL) {
@@ -242,7 +242,7 @@ void FreeToHeap(void *ptr) {
     HeapID heapId = (HeapID)((MemoryBlock *)ptr)->heapId;
 
     if (((u32)heapId) < sHeapInfo.totalNumHeaps) {
-        u8 index              = sHeapInfo.heapIdxs[heapId];
+        u8 index = sHeapInfo.heapIdxs[heapId];
         NNSFndHeapHandle heap = sHeapInfo.heapHandles[index];
         GF_ASSERT(heap != NULL);
 
@@ -265,7 +265,7 @@ void FreeToHeapExplicit(HeapID heapId, void *ptr) {
     GF_ASSERT(OS_GetProcMode() != OS_PROCMODE_IRQ);
 
     if (((u32)heapId) < sHeapInfo.totalNumHeaps) {
-        u8 index              = sHeapInfo.heapIdxs[heapId];
+        u8 index = sHeapInfo.heapIdxs[heapId];
         NNSFndHeapHandle heap = sHeapInfo.heapHandles[index];
         GF_ASSERT(heap != NULL);
 

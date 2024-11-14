@@ -759,7 +759,7 @@ _02252426:
 	add r0, r4, #0
 	bl FollowMon_GetMapObject
 	add r1, sp, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r4, #0
 	bl FollowMon_IsVisible
 	cmp r0, #0
@@ -1410,7 +1410,7 @@ _02252912:
 	ldr r0, [r0, #8]
 	bl FollowMon_GetMapObject
 	add r1, sp, #0x10
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	ldr r0, [sp, #8]
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0x14]
@@ -1972,7 +1972,7 @@ _02252D5A:
 	ldr r0, [r0]
 	bl FollowMon_GetMapObject
 	add r1, sp, #0x34
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	ldr r4, [sp, #8]
 	mov r5, #0
 	add r4, #0x84
@@ -2396,7 +2396,7 @@ _022530AE:
 	ldr r0, [r7]
 	bl FollowMon_GetMapObject
 	add r1, sp, #0x14
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	add r0, r7, #0
 	ldr r1, [sp, #0x14]
 	ldr r2, [sp, #0x18]
