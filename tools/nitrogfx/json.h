@@ -13,5 +13,7 @@ char *GetNANRJson(struct JsonToAnimationOptions *options);
 void FreeNCERCell(struct JsonToCellOptions *options);
 void FreeNSCRScreen(struct JsonToScreenOptions *options);
 void FreeNANRAnimation(struct JsonToAnimationOptions *options);
+char *GetNtrFontMetadataJson(struct NtrFontMetadata *metadata);
+struct NtrFontMetadata *ParseNtrFontMetadataJson(char *path);
 
 #endif //JSON_H
