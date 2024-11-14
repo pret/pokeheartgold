@@ -51,6 +51,11 @@ struct NtrToPngOptions {
     bool handleEmpty;
 };
 
+struct CellVramTransferData {
+    int sourceDataOffset;
+    int size;
+};
+
 struct Attr0 {
     int YCoordinate;
     bool Rotation;
@@ -100,9 +105,12 @@ struct Cell {
 struct JsonToCellOptions {
     bool labelEnabled;
     bool extended;
+    bool vramTransferEnabled;
     int mappingType;
     int cellCount;
     struct Cell **cells;
+    int vramTransferMaxSize;
+    struct CellVramTransferData **transferData;
     char **labels;
     int labelCount;
 };
@@ -147,6 +155,7 @@ struct AnimationDataT {
 
 struct AnimationResults {
     short resultType;
+    bool padded;
     union {
         short index;
         struct AnimationDataSRT dataSrt;
@@ -164,6 +173,23 @@ struct JsonToAnimationOptions {
     char **labels;
     int labelCount;
     short resultCount;
+};
+
+struct NtrFontOptions {
+    char *metadataFilePath;
+    bool useSubscreenPalette;
+};
+
+struct NtrFontMetadata {
+    uint32_t size;
+    uint32_t widthTableOffset;
+    uint32_t numGlyphs;
+    uint8_t maxWidth;
+    uint8_t maxHeight;
+    uint8_t glyphWidth;
+    uint8_t glyphHeight;
+
+    uint8_t *glyphWidthTable;
 };
 
 #endif // OPTIONS_H

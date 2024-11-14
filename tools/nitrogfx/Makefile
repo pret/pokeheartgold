@@ -19,7 +19,7 @@ all: nitrogfx
 	@:
 
 nitrogfx-debug: $(SRCS) convert_png.h gfx.h global.h jasc_pal.h lz.h rl.h util.h font.h json.h cJSON.h
-	$(CC) $(CFLAGS) -g -DDEBUG $(SRCS) -o $@ $(LDFLAGS) $(LIBS) -fsanitize=address,undefined
+	$(CC) $(CFLAGS) -g -DDEBUG $(SRCS) -o $@ $(LDFLAGS) $(LIBS)
 
 nitrogfx: $(SRCS) convert_png.h gfx.h global.h jasc_pal.h lz.h rl.h util.h font.h json.h cJSON.h
 	$(CC) $(CFLAGS) -O2 $(SRCS) -o $@ $(LDFLAGS) $(LIBS)
