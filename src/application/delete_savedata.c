@@ -288,26 +288,16 @@ static BOOL DeleteSavedataApp_DoMainTask(DeleteSavedataApp_Data *data) {
         data->mainState = MAINSTATE_HANDLE_INPUT;
         break;
     case MAINSTATE_HANDLE_INPUT: {
-        int result = Handle2dMenuInput_DeleteOnFinish(data->yesNoMenu, data->heapId);
-
-        // FIXME: Fakematch
-        if (result == LIST_NO_MULTIPLE_SCROLL) {
-            goto no_multiple_scroll1;
-        } else if (result != LIST_CANCEL) {
-            break;
-        } else {
-            goto cancel1;
-        }
-
-        no_multiple_scroll1: {
+        u32 result = Handle2dMenuInput_DeleteOnFinish(data->yesNoMenu, data->heapId);
+        switch (result) {
+        case LIST_NO_MULTIPLE_SCROLL:
             data->mainState = MAINSTATE_ASK_TO_CONFIRM;
             break;
-        }
-
-        cancel1: {
+        case LIST_CANCEL:
             data->mainState = MAINSTATE_EXIT;
             break;
         }
+        break;
     }
     case MAINSTATE_ASK_TO_CONFIRM:
         if (DeleteSavedataApp_PrintMessage(data, msg_0007_00001, TRUE, 4) != TRUE) {
@@ -318,26 +308,16 @@ static BOOL DeleteSavedataApp_DoMainTask(DeleteSavedataApp_Data *data) {
         data->mainState = MAINSTATE_HANDLE_CONFIRMATION;
         break;
     case MAINSTATE_HANDLE_CONFIRMATION: {
-        int result = Handle2dMenuInput_DeleteOnFinish(data->yesNoMenu, data->heapId);
-
-        // FIXME: Fakematch
-        if (result == LIST_NO_MULTIPLE_SCROLL) {
-            goto no_multiple_scroll2;
-        } else if (result != LIST_CANCEL) {
-            break;
-        } else {
-            goto cancel2;
-        }
-
-        no_multiple_scroll2: {
+        u32 result = Handle2dMenuInput_DeleteOnFinish(data->yesNoMenu, data->heapId);
+        switch (result) {
+        case LIST_NO_MULTIPLE_SCROLL:
             data->mainState = MAINSTATE_PRINT_DELETING_MESSAGE;
             break;
-        }
-
-        cancel2: {
+        case LIST_CANCEL:
             data->mainState = MAINSTATE_EXIT;
             break;
         }
+        break;
     }
     case MAINSTATE_PRINT_DELETING_MESSAGE:
         if (DeleteSavedataApp_PrintMessage(data, msg_0007_00002, TRUE, TEXT_SPEED_INSTANT) != TRUE) {
