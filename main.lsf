@@ -304,7 +304,7 @@ Static main
     Object src/location_gmm_dat.o
     Object src/move_relearner.o
     Object asm/unk_02091880.o
-    Object asm/unk_02091CDC.o
+    Object src/application/delete_savedata.o
     Object asm/unk_020921A4.o
     Object src/save_data_read_error.o
     Object src/save_data_write_error.o

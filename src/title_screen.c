@@ -5,6 +5,7 @@
 #include "constants/sndseq.h"
 #include "constants/species.h"
 
+#include "application/delete_savedata.h"
 #include "demo/title/titledemo.naix"
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0719.h"
@@ -29,7 +30,6 @@
 #include "unk_0200FA24.h"
 #include "unk_02020B8C.h"
 #include "unk_02026E30.h"
-#include "unk_02091CDC.h"
 #include "unk_020921A4.h"
 
 #ifdef HEARTGOLD
