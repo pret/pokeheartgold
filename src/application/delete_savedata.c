@@ -179,30 +179,24 @@ BOOL DeleteSavedataApp_Main(OVY_MANAGER *manager, int *state) {
         *state = STATE_WAIT_FOR_FADE_IN;
         break;
     case STATE_WAIT_FOR_FADE_IN:
-        if (IsPaletteFadeFinished() != TRUE) {
-            break;
+        if (IsPaletteFadeFinished() == TRUE) {
+            *state = STATE_DELETE_SAVE;
         }
-
-        *state = STATE_DELETE_SAVE;
         break;
     case STATE_DELETE_SAVE:
-        if (DeleteSavedataApp_DoMainTask(data) != TRUE) {
-            break;
+        if (DeleteSavedataApp_DoMainTask(data) == TRUE) {
+            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapId);
+            *state = STATE_EXIT;
         }
-
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapId);
-        *state = STATE_EXIT;
         break;
     case STATE_EXIT:
-        if (IsPaletteFadeFinished() != TRUE) {
-            break;
+        if (IsPaletteFadeFinished() == TRUE) {
+            DeleteSavedataApp_FreeTextAndWindow(data);
+            DeleteSavedataApp_FreeBgConfig(data);
+
+            Main_SetVBlankIntrCB(NULL, NULL);
+            ret = TRUE;
         }
-
-        DeleteSavedataApp_FreeTextAndWindow(data);
-        DeleteSavedataApp_FreeBgConfig(data);
-
-        Main_SetVBlankIntrCB(NULL, NULL);
-        ret = TRUE;
         break;
     }
 
@@ -280,12 +274,11 @@ static BOOL DeleteSavedataApp_DoMainTask(DeleteSavedataApp_Data *data) {
 
     switch (data->mainState) {
     case MAINSTATE_ASK_TO_DELETE:
-        if (DeleteSavedataApp_PrintMessage(data, msg_0007_00000, TRUE, 4) != TRUE) {
-            break;
+        // "Delete all saved data?"
+        if (DeleteSavedataApp_PrintMessage(data, msg_0007_00000, TRUE, 4) == TRUE) {
+            data->yesNoMenu = CreateYesNoMenu(data->bgConfig, &sDeleteSave_WindowTemplate2, 0x1D9, 3, 1, data->heapId);
+            data->mainState = MAINSTATE_HANDLE_INPUT;
         }
-
-        data->yesNoMenu = CreateYesNoMenu(data->bgConfig, &sDeleteSave_WindowTemplate2, 0x1D9, 3, 1, data->heapId);
-        data->mainState = MAINSTATE_HANDLE_INPUT;
         break;
     case MAINSTATE_HANDLE_INPUT: {
         u32 result = Handle2dMenuInput_DeleteOnFinish(data->yesNoMenu, data->heapId);
@@ -300,12 +293,11 @@ static BOOL DeleteSavedataApp_DoMainTask(DeleteSavedataApp_Data *data) {
         break;
     }
     case MAINSTATE_ASK_TO_CONFIRM:
-        if (DeleteSavedataApp_PrintMessage(data, msg_0007_00001, TRUE, 4) != TRUE) {
-            break;
+        // "Once data has been deleted, there is no way to recover it. [...]"
+        if (DeleteSavedataApp_PrintMessage(data, msg_0007_00001, TRUE, 4) == TRUE) {
+            data->yesNoMenu = CreateYesNoMenu(data->bgConfig, &sDeleteSave_WindowTemplate2, 0x1D9, 3, 1, data->heapId);
+            data->mainState = MAINSTATE_HANDLE_CONFIRMATION;
         }
-
-        data->yesNoMenu = CreateYesNoMenu(data->bgConfig, &sDeleteSave_WindowTemplate2, 0x1D9, 3, 1, data->heapId);
-        data->mainState = MAINSTATE_HANDLE_CONFIRMATION;
         break;
     case MAINSTATE_HANDLE_CONFIRMATION: {
         u32 result = Handle2dMenuInput_DeleteOnFinish(data->yesNoMenu, data->heapId);
@@ -320,12 +312,11 @@ static BOOL DeleteSavedataApp_DoMainTask(DeleteSavedataApp_Data *data) {
         break;
     }
     case MAINSTATE_PRINT_DELETING_MESSAGE:
-        if (DeleteSavedataApp_PrintMessage(data, msg_0007_00002, TRUE, TEXT_SPEED_INSTANT) != TRUE) {
-            break;
+        // "Deleting all data. Don't turn off the power."
+        if (DeleteSavedataApp_PrintMessage(data, msg_0007_00002, TRUE, TEXT_SPEED_INSTANT) == TRUE) {
+            data->waitingIcon = WaitingIcon_New(&data->window, 0x1E2);
+            data->mainState = MAINSTATE_DELETE_DATA;
         }
-
-        data->waitingIcon = WaitingIcon_New(&data->window, 0x1E2);
-        data->mainState = MAINSTATE_DELETE_DATA;
         break;
     case MAINSTATE_DELETE_DATA:
         Save_DeleteAllData(data->savedata);
