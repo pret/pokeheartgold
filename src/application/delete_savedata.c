@@ -8,6 +8,7 @@
 #include "bg_window.h"
 #include "font.h"
 #include "list_menu_2d.h"
+#include "main.h"
 #include "msgdata.h"
 #include "render_window.h"
 #include "sound_02004A44.h"
@@ -31,12 +32,6 @@ typedef enum DeleteSavedataApp_PrintState {
     PRINTSTATE_WAIT_FOR_PRINTER,
     PRINTSTATE_EXIT,
 } DeleteSavedataApp_PrintState;
-
-// FIXME: Unknown size, this struct may be something we already have
-typedef struct DeleteSavedataApp_Args {
-    u8 unk0[8];
-    SaveData *savedata;
-} DeleteSavedataApp_Args;
 
 typedef struct DeleteSavedataApp_Data {
     HeapID heapId;
@@ -131,8 +126,8 @@ BOOL DeleteSavedataApp_Init(OVY_MANAGER *manager, int *state) {
     memset(data, 0, sizeof(DeleteSavedataApp_Data));
     data->heapId = HEAP_ID_DELETE_SAVEDATA;
     data->mainState = MAINSTATE_ASK_TO_DELETE;
-    DeleteSavedataApp_Args *args = OverlayManager_GetArgs(manager);
-    data->savedata = args->savedata;
+    UnkStruct_02111868_sub *args = OverlayManager_GetArgs(manager);
+    data->savedata = args->saveData;
 
     return TRUE;
 }
