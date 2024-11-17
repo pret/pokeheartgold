@@ -305,7 +305,7 @@ Static main
     Object src/move_relearner.o
     Object asm/unk_02091880.o
     Object src/application/delete_savedata.o
-    Object asm/unk_020921A4.o
+    Object src/application/check_savedata.o
     Object src/save_data_read_error.o
     Object src/save_data_write_error.o
     Object asm/unk_02092B04.o

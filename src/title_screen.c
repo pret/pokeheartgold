@@ -5,6 +5,7 @@
 #include "constants/sndseq.h"
 #include "constants/species.h"
 
+#include "application/check_savedata.h"
 #include "application/delete_savedata.h"
 #include "demo/title/titledemo.naix"
 #include "msgdata/msg.naix"
@@ -30,7 +31,6 @@
 #include "unk_0200FA24.h"
 #include "unk_02020B8C.h"
 #include "unk_02026E30.h"
-#include "unk_020921A4.h"
 
 #ifdef HEARTGOLD
 #define TITLE_SCREEN_SPECIES SPECIES_HO_OH
@@ -245,7 +245,7 @@ static BOOL TitleScreen_Exit(OVY_MANAGER *man, int *state) {
     switch (exitMode) {
     default:
     case TITLESCREEN_EXIT_MENU:
-        RegisterMainOverlay(FS_OVERLAY_ID_NONE, &gApplication_MainMenu);
+        RegisterMainOverlay(FS_OVERLAY_ID_NONE, &gApplication_CheckSave);
         break;
     case TITLESCREEN_EXIT_CLEARSAVE:
         RegisterMainOverlay(FS_OVERLAY_ID_NONE, &gApplication_DeleteSave);
