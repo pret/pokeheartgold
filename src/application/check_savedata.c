@@ -47,7 +47,7 @@ typedef struct CheckSavedataApp_Data {
     MsgData *msgData;
     Window window;
     u32 unk30; // unused
-    SaveData *savedata;
+    SaveData *saveData;
     u32 unk38; // unused
     u32 saveStatusFlags;
 } CheckSavedataApp_Data;
@@ -119,7 +119,7 @@ BOOL CheckSavedataApp_Init(OVY_MANAGER *manager, int *state) {
     data->heapId = HEAP_ID_DELETE_SAVEDATA;
     data->mainState = MAINSTATE_CHECK_SAVE_FLAGS;
     UnkStruct_02111868_sub *args = OverlayManager_GetArgs(manager);
-    data->savedata = args->saveData;
+    data->saveData = args->saveData;
 
     TextFlags_SetCanTouchSpeedUpPrint(TRUE);
 
@@ -245,7 +245,7 @@ static BOOL CheckSavedataApp_DoMainTask(CheckSavedataApp_Data *data) {
 
     switch (data->mainState) {
     case MAINSTATE_CHECK_SAVE_FLAGS:
-        data->saveStatusFlags = Save_GetStatusFlags(data->savedata);
+        data->saveStatusFlags = Save_GetStatusFlags(data->saveData);
         if (data->saveStatusFlags == 0) {
             data->mainState = MAINSTATE_EXIT;
         } else {
