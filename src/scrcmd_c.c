@@ -5338,7 +5338,7 @@ BOOL ScrCmd_UnownCircle(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_817(ScriptContext *ctx) {
-    ov02_02252EE4(ctx->fieldSystem, ScriptReadByte(ctx));
+    FieldSystem_BeginSinjohGetEggCutsceneTask(ctx->fieldSystem, ScriptReadByte(ctx));
     return TRUE;
 }
 

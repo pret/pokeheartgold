@@ -20,6 +20,8 @@ void ov02_022523B4(TaskManager *taskMan);
 BOOL ov02_022523D0(TaskManager *taskMan);
 void FieldSystem_BeginCelebiTimeTravelCutsceneTask(FieldSystem *fieldSystem);
 void FieldSystem_BeginSinjohCutsceneTask(FieldSystem *fieldSystem);
+void FieldSystem_BeginSinjohGetEggCutsceneTask(FieldSystem *fieldSystem, u8 a1);
+BOOL ov02_02253134(SaveData *saveData);
 
 // the following is as of yet not decompiled
 BOOL Task_CelebiTimeTravelCutscene(TaskManager *taskMan);
@@ -57,19 +59,30 @@ typedef struct UnkStruct_02253CE0 {
 
 typedef struct SinjohCutsceneData {
     FieldSystem *fieldSystem;
-    u8 unk4[0x30];
-    Field3DModelAnimation animations[4];
-    Field3dObject object84;
-    Field3dObject objectFC;
-    u8 unk174[0x10];
-    Field3DModelAnimation animation184;
-    u8 unk194[0x14];
+    struct NNSFndAllocator alloc;
+    Field3dModel model[2];
+    Field3DModelAnimation animations[2][2];
+    Field3dObject object84[2];
+    Field3dModel model174;
+    Field3DModelAnimation animation184[2];
     Field3dObject object1AC;
     u8 unk224;
     u8 unk225;
     u8 unk226;
     u8 unk227;
 } SinjohCutsceneData;
+
+typedef struct SinjohGetEggCutsceneData {
+    FieldSystem *fieldSystem;
+    NNSFndAllocator alloc;
+    Field3dModel model;
+    Field3DModelAnimation animations[4];
+    Field3dObject object;
+    u8 unkEC;
+    u8 unkED;
+    u8 unkEE;
+    u8 unkEF;
+} SinjohGetEggCutsceneData;
 
 void CelebiCutscene_StartSwirlTask(CelebiTimeTravelCutsceneTaskData *data);
 BOOL ov02_022526EC(CelebiTimeTravelCutsceneTaskData *data);
@@ -83,12 +96,19 @@ void CelebiCutscene_UnloadResources(CelebiTimeTravelCutsceneTaskData *data);
 void CelebiCutsceneAnimations_FrameSet(Field3DModelAnimation *animations, u32 frame);
 BOOL CelebiCutsceneAnimations_FrameAdvanceAndCheck(Field3DModelAnimation *animations);
 BOOL Task_SinjohCutscene(TaskManager *taskMan);
-
+void SinjohCutscene_LoadResources(SinjohCutsceneData *data);
+void SinjohCutscene_FreeResources(SinjohCutsceneData *data);
+void ov02_02252E80(Field3DModelAnimation *animation, u32 a1, u32 a2);
+BOOL ov02_02252EA8(Field3DModelAnimation *animation, u32 a1);
+BOOL Task_SinjohGetEggCutscene(TaskManager *taskMan);
+u8 ov02_0225316C();
+BOOL ov02_02253188(SaveData *saveData);
+u8 ov02_022531B4(SaveData *saveData);
+BOOL ov02_02253188(SaveData *saveData);
 // the following functions are static and not decompiled
 void ov01_021F46DC(u32 *a0);
 BOOL Task_SinjohCutscene(TaskManager *taskMan);
-void SinjohCutscene_FreeResources(SinjohCutsceneData *data);
-void SinjohCutscene_LoadResources(SinjohCutsceneData *data);
-void ov02_02252EA8(Field3DModelAnimation *animation, u32 a1);
+void SinjohGetEggCutscene_LoadResources(SinjohGetEggCutsceneData *data);
+void SinjohGetEggCutscene_FreeResources(SinjohGetEggCutsceneData *data);
 
 #endif // POKEHEARTGOLD_OVERLAY_02_02251E74_H
