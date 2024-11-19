@@ -8,6 +8,7 @@
 #include "msgdata/msg/msg_0066_D23R0102.h"
 #include "msgdata/msg/msg_0096_D31R0201.h"
 #include "overlay_2/overlay_02_02251E74.h"
+#include "overlay_2/overlay_02_gear_phone.h"
 
 #include "bag.h"
 #include "bug_contest.h"
