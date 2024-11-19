@@ -528,7 +528,6 @@ Overlay OVY_2
     Object src/field/event_cutscene_celebi.o
     Object src/field/event_cutscene_sinjoh.o
     Object src/overlay_02_02251E74.o
-    Object asm/overlay_02_02251E74_s.o
 }
 Overlay OVY_3
 {

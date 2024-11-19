@@ -1,3 +1,4 @@
+#include "demo/legend.naix"
 #include "field/overlay_01_021FB878.h"
 #include "overlay_2/event_cutscene.h"
 
@@ -32,7 +33,7 @@ typedef struct CelebiTimeTravelCutsceneTaskData {
     u16 unkEE;
     u8 unkF0;
     u8 unkF1;
-    u8 unkF2;
+    u8 frameTimer;
     u8 unkF3;
 } CelebiTimeTravelCutsceneTaskData;
 
@@ -62,16 +63,25 @@ void FieldSystem_BeginCelebiTimeTravelCutsceneTask(FieldSystem *fieldSystem) {
     TaskManager_Call(fieldSystem->taskman, Task_CelebiTimeTravelCutscene, ptr);
 }
 
+typedef enum CelebiTimeTravelState {
+    CTT_STATE_BEGIN_PALETTE_FADE,
+    CTT_STATE_LOAD_RESOURCES,
+    CTT_STATE_2,
+    CTT_STATE_SWIRL_EFFECT,
+    CTT_STATE_PALETTE_FADE_2,
+    CTT_STATE_WAIT_UNLOAD_RESOURCES,
+} CelebiTimeTravelState;
+
 static BOOL Task_CelebiTimeTravelCutscene(TaskManager *taskMan) {
     int *state                             = TaskManager_GetStatePtr(taskMan);
     FieldSystem *fieldSystem               = TaskManager_GetFieldSystem(taskMan);
     CelebiTimeTravelCutsceneTaskData *data = TaskManager_GetEnvironment(taskMan);
     switch (*state) {
-    case 0:
+    case CTT_STATE_BEGIN_PALETTE_FADE:
         BeginNormalPaletteFade(3, 0, 0, RGB_WHITE, 4, 1, HEAP_ID_4);
         (*state)++;
         break;
-    case 1:
+    case CTT_STATE_LOAD_RESOURCES:
         if (IsPaletteFadeFinished()) {
             CelebiCutscene_LoadResources(data);
             sub_02069DC8(FollowMon_GetMapObject(data->fieldSystem), 1);
@@ -79,27 +89,27 @@ static BOOL Task_CelebiTimeTravelCutscene(TaskManager *taskMan) {
             (*state)++;
         }
         break;
-    case 2:
+    case CTT_STATE_2:
         if (IsPaletteFadeFinished()) {
             sub_0205F484(FollowMon_GetMapObject(data->fieldSystem));
             data->unkF0 = 1;
             (*state)++;
         }
         break;
-    case 3:
-        if (++data->unkF2 >= 30) {
+    case CTT_STATE_SWIRL_EFFECT:
+        if (++data->frameTimer >= 30) {
             CelebiCutscene_StartSwirlTask(data);
-            data->unkF2 = 0;
+            data->frameTimer = 0;
             (*state)++;
         }
         break;
-    case 4:
-        if (++data->unkF2 >= 80) {
+    case CTT_STATE_PALETTE_FADE_2:
+        if (++data->frameTimer >= 80) {
             BeginNormalPaletteFade(0, 0, 0, RGB_WHITE, 30, 1, HEAP_ID_4);
             (*state)++;
         }
         break;
-    case 5:
+    case CTT_STATE_WAIT_UNLOAD_RESOURCES:
         if (IsPaletteFadeFinished() && ov02_022526EC(data)) {
             CelebiCutscene_UnloadResources(data);
             ov01_021F46DC(&data->unk4);
@@ -190,27 +200,27 @@ static BOOL CelebiCutscene_IsSwirlFinished(CelebiTimeTravelCutsceneTaskData *dat
 }
 
 static void CelebiCutscene_LoadResources(CelebiTimeTravelCutsceneTaskData *data) {
-    const u32 files[3] = { 76, 78, 77 };
+    const u32 files[3] = { NARC_legend_legend_00000076_NSBCA, NARC_legend_legend_00000078_NSBTP, NARC_legend_legend_00000077_NSBTA };
     GF_ExpHeap_FndInitAllocator(&data->alloc, HEAP_ID_4, 32);
-    Field3dModel_LoadFromFilesystem(&data->model, NARC_demo_legend, 75, HEAP_ID_4);
-    for (u8 i = 0; i < 3; i++) {
+    Field3dModel_LoadFromFilesystem(&data->model, NARC_demo_legend, NARC_legend_legend_00000075_NSBMD, HEAP_ID_4);
+    for (u8 i = 0; i < NELEMS(data->animations); i++) {
         Field3dModelAnimation_LoadFromFilesystem(&data->animations[i], &data->model, NARC_demo_legend, files[i], HEAP_ID_4, &data->alloc);
     }
     Field3dObject_InitFromModel(&data->object3d, &data->model);
-    for (u8 i = 0; i < 3; i++) {
+    for (u8 i = 0; i < NELEMS(data->animations); i++) {
         Field3dObject_AddAnimation(&data->object3d, &data->animations[i]);
     }
     Field3dObject_SetActiveFlag(&data->object3d, 1);
     CelebiCutsceneAnimations_FrameSet(&data->animations[0], 0);
     LocalMapObject *followMonObj = FollowMon_GetMapObject(data->fieldSystem);
     VecFx32 pos;
-    MapObject_GetPositionVec(followMonObj, &pos);
+    MapObject_CopyPositionVector(followMonObj, &pos);
     Field3dObject_SetPosEx(&data->object3d, pos.x, pos.y, pos.z);
     data->unkF1 = 1;
 }
 
 static void CelebiCutscene_UnloadResources(CelebiTimeTravelCutsceneTaskData *data) {
-    for (u8 i = 0; i < 3; i++) {
+    for (u8 i = 0; i < NELEMS(data->animations); i++) {
         Field3dModelAnimation_Unload(&data->animations[i], &data->alloc);
     }
     Field3dModel_Unload(&data->model);

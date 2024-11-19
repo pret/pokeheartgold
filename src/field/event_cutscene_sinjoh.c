@@ -1,3 +1,4 @@
+#include "demo/legend.naix"
 #include "field/overlay_01_021FB878.h"
 #include "overlay_2/event_cutscene.h"
 
@@ -16,35 +17,35 @@
 typedef struct SinjohCutsceneData {
     FieldSystem *fieldSystem;
     struct NNSFndAllocator alloc;
-    Field3dModel model[2];
-    Field3DModelAnimation animations[2][2];
-    Field3dObject object84[2];
+    Field3dModel unownModels[2];
+    Field3DModelAnimation unownAnimations[2][2];
+    Field3dObject unownObjects[2];
     Field3dModel model174;
     Field3DModelAnimation animation184[2];
     Field3dObject object1AC;
     u8 unk224;
     u8 unk225;
-    u8 unk226;
+    u8 drawObjectFlag;
     u8 unk227;
 } SinjohCutsceneData;
 
 typedef struct SinjohGetEggCutsceneData {
     FieldSystem *fieldSystem;
     NNSFndAllocator alloc;
-    Field3dModel model;
+    Field3dModel eggModel;
     Field3DModelAnimation animations[4];
     Field3dObject object;
     u8 unkEC;
     u8 unkED;
     u8 unkEE;
-    u8 unkEF;
+    u8 whichLegend;
 } SinjohGetEggCutsceneData;
 
 static BOOL Task_SinjohCutscene(TaskManager *taskMan);
 static void SinjohCutscene_LoadResources(SinjohCutsceneData *data);
 static void SinjohCutscene_FreeResources(SinjohCutsceneData *data);
-static void ov02_02252E80(Field3DModelAnimation *animation, u32 a1, u32 a2);
-static BOOL ov02_02252EA8(Field3DModelAnimation *animation, u32 a1);
+static void sField3DModelAnimation_Array_SetFrame(Field3DModelAnimation *animation, u32 length, u32 frame);
+static BOOL sField3DModelAnimation_Array_FrameAdvanceAndCheck(Field3DModelAnimation *animation, u32 length);
 static BOOL Task_SinjohGetEggCutscene(TaskManager *taskMan);
 static void SinjohGetEggCutscene_LoadResources(SinjohGetEggCutsceneData *data);
 static void SinjohGetEggCutscene_FreeResources(SinjohGetEggCutsceneData *data);
@@ -56,23 +57,32 @@ void FieldSystem_BeginSinjohCutsceneTask(FieldSystem *fieldSystem) {
     TaskManager_Call(fieldSystem->taskman, Task_SinjohCutscene, data);
 }
 
+typedef enum SinjohCutsceneState {
+    SJC_STATE_BEGIN_PALETTE_FADE,
+    SJC_STATE_LOAD_RESOURCES,
+    SJC_STATE_2,
+    SJC_STATE_3,
+    SJC_STATE_4,
+    SJC_STATE_WAIT_FREE_RESOURCES
+} SinjohCutsceneState;
+
 static BOOL Task_SinjohCutscene(TaskManager *taskMan) {
     int *state               = TaskManager_GetStatePtr(taskMan);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskMan);
     SinjohCutsceneData *data = TaskManager_GetEnvironment(taskMan);
     switch (*state) {
-    case 0:
+    case SJC_STATE_BEGIN_PALETTE_FADE:
         BeginNormalPaletteFade(3, 0, 0, RGB_WHITE, 2, 1, HEAP_ID_4);
         (*state)++;
         break;
-    case 1:
+    case SJC_STATE_LOAD_RESOURCES:
         if (IsPaletteFadeFinished()) {
             SinjohCutscene_LoadResources(data);
             BeginNormalPaletteFade(3, 1, 0, RGB_WHITE, 2, 1, HEAP_ID_4);
             (*state)++;
         }
         break;
-    case 2:
+    case SJC_STATE_2:
         if (IsPaletteFadeFinished()) {
             data->unk224 = 1;
             data->unk227 = 0;
@@ -80,20 +90,20 @@ static BOOL Task_SinjohCutscene(TaskManager *taskMan) {
             (*state)++;
         }
         break;
-    case 3:
+    case SJC_STATE_3:
         if (++data->unk227 >= 100) {
             data->unk225 = 1;
             data->unk227 = 0;
             (*state)++;
         }
         break;
-    case 4:
+    case SJC_STATE_4:
         if (++data->unk227 >= 150) {
             BeginNormalPaletteFade(3, 0, 0, RGB_WHITE, 2, 1, HEAP_ID_4);
             (*state)++;
         }
         break;
-    case 5:
+    case SJC_STATE_WAIT_FREE_RESOURCES:
         if (IsPaletteFadeFinished()) {
             SinjohCutscene_FreeResources(data);
             FreeToHeap(data);
@@ -102,133 +112,141 @@ static BOOL Task_SinjohCutscene(TaskManager *taskMan) {
         break;
     }
     if (data->unk224) {
-        ov02_02252EA8(&data->animations[0][0], 2);
-        ov02_02252EA8(&data->animations[1][0], 2);
+        sField3DModelAnimation_Array_FrameAdvanceAndCheck(&data->unownAnimations[0][0], 2);
+        sField3DModelAnimation_Array_FrameAdvanceAndCheck(&data->unownAnimations[1][0], 2);
     }
     if (data->unk225) {
-        ov02_02252EA8(&data->animation184[0], 2);
+        sField3DModelAnimation_Array_FrameAdvanceAndCheck(&data->animation184[0], 2);
     }
-    if (data->unk226) {
-        Field3dObject_Draw(&data->object84[0]);
-        Field3dObject_Draw(&data->object84[1]);
+    if (data->drawObjectFlag) {
+        Field3dObject_Draw(&data->unownObjects[0]);
+        Field3dObject_Draw(&data->unownObjects[1]);
         Field3dObject_Draw(&data->object1AC);
     }
     return FALSE;
 }
 
-static const u32 ov02_02253D14[2][2] = {
-    { 80, 81 },
-    { 83, 84 },
+static const u32 sUnownAnimationFiles[2][2] = {
+    { NARC_legend_legend_00000080_NSBCA, NARC_legend_legend_00000081_NSBTA },
+    { NARC_legend_legend_00000083_NSBCA, NARC_legend_legend_00000084_NSBTA },
 };
 
-static const u32 sSinjohEggModelFiles[3] = { 88, 92, 96 };
+static const u32 sSinjohEggModelFiles[3] = { NARC_legend_legend_00000088_NSBMD, NARC_legend_legend_00000092_NSBMD, NARC_legend_legend_00000096_NSBMD };
 
-static const u32 ov02_02253CF8_1[2] = { 79, 82 };
-static const u32 ov02_02253CF8_0[2] = { 86, 87 };
+static const u32 sUnownModelFiles[2] = { NARC_legend_legend_00000079_NSBMD, NARC_legend_legend_00000082_NSBMD };
+static const u32 ov02_02253CF8_0[2] = { NARC_legend_legend_00000086_NSBCA, NARC_legend_legend_00000087_NSBMA };
 
 static void SinjohCutscene_LoadResources(SinjohCutsceneData *data) {
     u8 i, j;
 
-    u32 unkData[2][2];
-    unkData = ov02_02253D14;
+    u32 unownAnimationFiles[2][2];
+    unownAnimationFiles = sUnownAnimationFiles;
     VecFx32 arceusPos;
     u32 unkData2[2];
-    u32 unkData3[2];
+    u32 unownModelFiles[2];
     unkData2 = ov02_02253CF8_0;
-    unkData3 = ov02_02253CF8_1;
+    unownModelFiles = sUnownModelFiles;
 
     GF_ExpHeap_FndInitAllocator(&data->alloc, HEAP_ID_4, 32);
 
-    for (i = 0; i < 2; i++) {
-        Field3dModel_LoadFromFilesystem(&data->model[i], NARC_demo_legend, unkData3[i], HEAP_ID_4);
+    for (i = 0; i < NELEMS(data->unownObjects); i++) {
+        Field3dModel_LoadFromFilesystem(&data->unownModels[i], NARC_demo_legend, unownModelFiles[i], HEAP_ID_4);
     }
 
     Field3dModel_LoadFromFilesystem(&data->model174, NARC_demo_legend, 85, HEAP_ID_4);
 
-    for (j = 0; j < 2; j++) {
-        for (i = 0; i < 2; i++) {
-            Field3dModelAnimation_LoadFromFilesystem(&data->animations[j][i], &data->model[j], NARC_demo_legend, unkData[j][i], HEAP_ID_4, &data->alloc);
+    for (j = 0; j < NELEMS(data->unownAnimations[0]); j++) {
+        for (i = 0; i < NELEMS(data->unownObjects); i++) {
+            Field3dModelAnimation_LoadFromFilesystem(&data->unownAnimations[j][i], &data->unownModels[j], NARC_demo_legend, unownAnimationFiles[j][i], HEAP_ID_4, &data->alloc);
         }
     }
 
-    for (i = 0; i < 2; i++) {
+    for (i = 0; i < NELEMS(data->animation184); i++) {
         Field3dModelAnimation_LoadFromFilesystem(&data->animation184[i], &data->model174, NARC_demo_legend, unkData2[i], HEAP_ID_4, &data->alloc);
     }
 
-    for (i = 0; i < 2; i++) {
-        Field3dObject_InitFromModel(&data->object84[i], &data->model[i]);
+    for (i = 0; i < NELEMS(data->unownObjects); i++) {
+        Field3dObject_InitFromModel(&data->unownObjects[i], &data->unownModels[i]);
     }
 
     Field3dObject_InitFromModel(&data->object1AC, &data->model174);
 
-    for (j = 0; j < 2; j++) {
-        for (i = 0; i < 2; i++) {
-            Field3dObject_AddAnimation(&data->object84[j], &data->animations[j][i]);
+    for (j = 0; j < NELEMS(data->unownAnimations[0]); j++) {
+        for (i = 0; i < NELEMS(data->unownObjects); i++) {
+            Field3dObject_AddAnimation(&data->unownObjects[j], &data->unownAnimations[j][i]);
         }
     }
 
-    for (i = 0; i < 2; i++) {
+    for (i = 0; i < NELEMS(data->animation184); i++) {
         Field3dObject_AddAnimation(&data->object1AC, &data->animation184[i]);
     }
 
-    for (i = 0; i < 2; i++) {
-        Field3dObject_SetActiveFlag(&data->object84[i], 1);
-        ov02_02252E80(&data->animations[i][0], 2, 0);
+    for (i = 0; i < NELEMS(data->unownObjects); i++) {
+        Field3dObject_SetActiveFlag(&data->unownObjects[i], 1);
+        sField3DModelAnimation_Array_SetFrame(&data->unownAnimations[i][0], NELEMS(data->unownAnimations[i]), 0);
     }
 
     Field3dObject_SetActiveFlag(&data->object1AC, 0);
-    ov02_02252E80(&data->animation184[0], 2, 0);
+    sField3DModelAnimation_Array_SetFrame(&data->animation184[0], NELEMS(data->unownAnimations[i]), 0);
 
-    MapObject_GetPositionVec(FollowMon_GetMapObject(data->fieldSystem), &arceusPos);
+    MapObject_CopyPositionVector(FollowMon_GetMapObject(data->fieldSystem), &arceusPos);
 
-    for (i = 0; i < 2; i++) {
-        Field3dObject_SetPosEx(&data->object84[i], arceusPos.x, arceusPos.y, arceusPos.z);
+    for (i = 0; i < NELEMS(data->unownObjects); i++) {
+        Field3dObject_SetPosEx(&data->unownObjects[i], arceusPos.x, arceusPos.y, arceusPos.z);
     }
 
     Field3dObject_SetPosEx(&data->object1AC, arceusPos.x, arceusPos.y, arceusPos.z);
 
-    data->unk226 = 1;
+    data->drawObjectFlag = 1;
 }
 
 static void SinjohCutscene_FreeResources(SinjohCutsceneData *data) {
-    for (u8 i = 0; i < 2; i++) {
-        for (u8 j = 0; j < 2; j++) {
-            Field3dModelAnimation_Unload(&data->animations[i][j], &data->alloc);
+    for (u8 i = 0; i < NELEMS(data->unownAnimations); i++) {
+        for (u8 j = 0; j < NELEMS(data->unownAnimations[i]); j++) {
+            Field3dModelAnimation_Unload(&data->unownAnimations[i][j], &data->alloc);
         }
-        Field3dModel_Unload(&data->model[i]);
+        Field3dModel_Unload(&data->unownModels[i]);
     }
 
-    for (u8 i = 0; i < 2; i++) {
+    for (u8 i = 0; i < NELEMS(data->animation184); i++) {
         Field3dModelAnimation_Unload(&data->animation184[i], &data->alloc);
     }
 
     Field3dModel_Unload(&data->model174);
 }
 
-static void ov02_02252E80(Field3DModelAnimation *animation, u32 a1, u32 a2) {
-    for (u8 i = 0; i < a1; i++) {
-        Field3dModelAnimation_FrameSet(&animation[i], a2);
+static void sField3DModelAnimation_Array_SetFrame(Field3DModelAnimation *animation, u32 length, u32 frame) {
+    for (u8 i = 0; i < length; i++) {
+        Field3dModelAnimation_FrameSet(&animation[i], frame);
     }
 }
 
-static BOOL ov02_02252EA8(Field3DModelAnimation *animation, u32 a1) {
+static BOOL sField3DModelAnimation_Array_FrameAdvanceAndCheck(Field3DModelAnimation *animation, u32 length) {
     u8 i;
     u8 cnt = 0;
-    for (i = 0; i < a1; i++) {
+    for (i = 0; i < length; i++) {
         if (Field3dModelAnimation_FrameAdvanceAndCheck(&animation[i], (1 << 12))) {
             cnt++;
         }
     }
-    return cnt == a1;
+    return cnt == length;
 }
 
-void FieldSystem_BeginSinjohGetEggCutsceneTask(FieldSystem *fieldSystem, u8 a1) {
+void FieldSystem_BeginSinjohGetEggCutsceneTask(FieldSystem *fieldSystem, u8 whichLegend) {
     SinjohGetEggCutsceneData *data = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(SinjohGetEggCutsceneData));
     MI_CpuFill8(data, 0, sizeof(SinjohGetEggCutsceneData));
     data->fieldSystem = fieldSystem;
-    data->unkEF       = a1;
+    data->whichLegend = whichLegend;
     TaskManager_Call(fieldSystem->taskman, Task_SinjohGetEggCutscene, data);
 }
+
+typedef enum SinjohGetEggCutsceneState {
+    SGEC_STATE_BEGIN_PALETTE_FADE,
+    SGEC_STATE_LOAD_RESOURCES,
+    SGEC_STATE_START_WAIT,
+    SGEC_STATE_WAIT,
+    SGEC_STATE_FREE_RESOURCES
+} SinjohGetEggCutsceneState;
 
 static BOOL Task_SinjohGetEggCutscene(TaskManager *taskMan) {
     int *state                     = TaskManager_GetStatePtr(taskMan);
@@ -236,37 +254,37 @@ static BOOL Task_SinjohGetEggCutscene(TaskManager *taskMan) {
     SinjohGetEggCutsceneData *data = TaskManager_GetEnvironment(taskMan);
 
     switch (*state) {
-    case 0:
+    case SGEC_STATE_BEGIN_PALETTE_FADE:
         BeginNormalPaletteFade(3, 0, 0, RGB_WHITE, 2, 1, HEAP_ID_4);
         (*state)++;
         break;
-    case 1:
+    case SGEC_STATE_LOAD_RESOURCES:
         if (IsPaletteFadeFinished()) {
             SinjohGetEggCutscene_LoadResources(data);
             BeginNormalPaletteFade(3, 1, 0, RGB_WHITE, 2, 1, HEAP_ID_4);
             (*state)++;
         }
         break;
-    case 2:
+    case SGEC_STATE_START_WAIT:
         if (IsPaletteFadeFinished()) {
             data->unkEC = 1;
             data->unkED = 0;
             (*state)++;
         }
         break;
-    case 3:
+    case SGEC_STATE_WAIT:
         if (data->unkED) {
             (*state)++;
         }
         break;
-    case 4:
+    case SGEC_STATE_FREE_RESOURCES:
         SinjohGetEggCutscene_FreeResources(data);
         FreeToHeap(data);
         return TRUE;
     }
 
     if (data->unkEC) {
-        data->unkED = ov02_02252EA8(&data->animations[0], 4);
+        data->unkED = sField3DModelAnimation_Array_FrameAdvanceAndCheck(&data->animations[0], 4);
     }
 
     if (data->unkEE) {
@@ -275,15 +293,15 @@ static BOOL Task_SinjohGetEggCutscene(TaskManager *taskMan) {
     return FALSE;
 }
 
-static const u32 ov02_02253D24[3][4] = {
-    { 100, 90, 91, 89 },
-    { 100, 94, 95, 93 },
-    { 100, 98, 99, 97 },
+static const u32 sSinjohEggAnimationFiles[3][4] = {
+    { NARC_legend_legend_00000100_NSBCA, NARC_legend_legend_00000090_NSBTA, NARC_legend_legend_00000091_NSBMA, NARC_legend_legend_00000089_NSBTP },
+    { NARC_legend_legend_00000100_NSBCA, NARC_legend_legend_00000094_NSBTA, NARC_legend_legend_00000095_NSBMA, NARC_legend_legend_00000093_NSBTP },
+    { NARC_legend_legend_00000100_NSBCA, NARC_legend_legend_00000098_NSBTA, NARC_legend_legend_00000099_NSBMA, NARC_legend_legend_00000097_NSBTP },
 };
 
 static void SinjohGetEggCutscene_LoadResources(SinjohGetEggCutsceneData *data) {
-    u32 animFiles[3][4];
-    animFiles = ov02_02253D24;
+    u32 eggAnimationFiles[3][4];
+    eggAnimationFiles = sSinjohEggAnimationFiles;
 
     u32 modelFiles[3];
     modelFiles = sSinjohEggModelFiles;
@@ -291,22 +309,22 @@ static void SinjohGetEggCutscene_LoadResources(SinjohGetEggCutsceneData *data) {
     VecFx32 arceusPos;
 
     GF_ExpHeap_FndInitAllocator(&data->alloc, HEAP_ID_4, 32);
-    Field3dModel_LoadFromFilesystem(&data->model, NARC_demo_legend, modelFiles[data->unkEF], HEAP_ID_4);
+    Field3dModel_LoadFromFilesystem(&data->eggModel, NARC_demo_legend, modelFiles[data->whichLegend], HEAP_ID_4);
 
-    for (u8 i = 0; i < 4; i++) {
-        Field3dModelAnimation_LoadFromFilesystem(&data->animations[i], &data->model, NARC_demo_legend, animFiles[data->unkEF][i], HEAP_ID_4, &data->alloc);
+    for (u8 i = 0; i < NELEMS(data->animations); i++) {
+        Field3dModelAnimation_LoadFromFilesystem(&data->animations[i], &data->eggModel, NARC_demo_legend, eggAnimationFiles[data->whichLegend][i], HEAP_ID_4, &data->alloc);
     }
 
-    Field3dObject_InitFromModel(&data->object, &data->model);
+    Field3dObject_InitFromModel(&data->object, &data->eggModel);
 
-    for (u8 i = 0; i < 4; i++) {
+    for (u8 i = 0; i < NELEMS(data->animations); i++) {
         Field3dObject_AddAnimation(&data->object, &data->animations[i]);
     }
 
     Field3dObject_SetActiveFlag(&data->object, 1);
-    ov02_02252E80(&data->animations[0], 4, 0);
+    sField3DModelAnimation_Array_SetFrame(&data->animations[0], 4, 0);
 
-    MapObject_GetPositionVec(FollowMon_GetMapObject(data->fieldSystem), &arceusPos);
+    MapObject_CopyPositionVector(FollowMon_GetMapObject(data->fieldSystem), &arceusPos);
 
     Field3dObject_SetPosEx(&data->object, arceusPos.x, arceusPos.y, arceusPos.z);
 
@@ -314,8 +332,8 @@ static void SinjohGetEggCutscene_LoadResources(SinjohGetEggCutsceneData *data) {
 }
 
 static void SinjohGetEggCutscene_FreeResources(SinjohGetEggCutsceneData *data) {
-    for (u8 i = 0; i < 4; i++) {
+    for (u8 i = 0; i < NELEMS(data->animations); i++) {
         Field3dModelAnimation_Unload(&data->animations[i], &data->alloc);
     }
-    Field3dModel_Unload(&data->model);
+    Field3dModel_Unload(&data->eggModel);
 }
