@@ -2,105 +2,105 @@
   "header": "fielddata/script/scr_seq/event_T07R0201.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_T07R0201_004 + 1",
+      "scriptId": "_EV_scr_seq_T07R0201_004 + 1",
       "type": 0,
       "x": 5,
-      "y": 2,
-      "z": 0,
+      "z": 2,
+      "y": 0,
       "dir": 4
     }
   ],
   "objects": [
     {
       "id": "obj_T07R0201_gsoldwoman1",
-      "sprite_id": "SPRITE_GSOLDWOMAN1",
+      "spriteId": "SPRITE_GSOLDWOMAN1",
       "movement": 8,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T07R0201_000 + 1",
-      "dirn": 2,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_T07R0201_000 + 1",
+      "facingDirection": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 13,
-      "y": 4,
-      "z": 0
+      "z": 4,
+      "y": 0
     },
     {
       "id": "obj_T07R0201_tsure_poke_static_meowth",
-      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_MEOWTH",
+      "spriteId": "SPRITE_FOLLOWER_MON_STATIC_MEOWTH",
       "movement": 2,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T07R0201_001 + 1",
-      "dirn": 3,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_T07R0201_001 + 1",
+      "facingDirection": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 11,
-      "y": 6,
-      "z": 0
+      "z": 6,
+      "y": 0
     },
     {
       "id": "obj_T07R0201_tsure_poke_static_clefairy",
-      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_CLEFAIRY",
+      "spriteId": "SPRITE_FOLLOWER_MON_STATIC_CLEFAIRY",
       "movement": 15,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T07R0201_002 + 1",
-      "dirn": 1,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_T07R0201_002 + 1",
+      "facingDirection": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 12,
-      "y": 3,
-      "z": 0
+      "z": 3,
+      "y": 0
     },
     {
       "id": "obj_T07R0201_tsure_poke_static_nidoran_f",
-      "sprite_id": "SPRITE_FOLLOWER_MON_STATIC_NIDORAN_F",
+      "spriteId": "SPRITE_FOLLOWER_MON_STATIC_NIDORAN_F",
       "movement": 3,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T07R0201_003 + 1",
-      "dirn": 1,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 1,
-      "yrange": 1,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_T07R0201_003 + 1",
+      "facingDirection": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 1,
+      "yRange": 1,
       "x": 7,
-      "y": 4,
-      "z": 0
+      "z": 4,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 7,
-      "y": 13,
+      "z": 13,
       "header": "MAP_T07",
       "anchor": 1,
-      "height": 0
+      "y": 0
     },
     {
       "x": 13,
-      "y": 10,
+      "z": 10,
       "header": "MAP_T07R0202",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 3,
-      "y": 2,
+      "z": 2,
       "header": "MAP_T07R0206",
       "anchor": 0,
-      "height": 0
+      "y": 0
     }
   ]
 }

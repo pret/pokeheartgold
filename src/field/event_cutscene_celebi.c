@@ -41,9 +41,6 @@ typedef struct UnkStruct_02253CE0 {
     u32 unk4;
     u16 unk8;
 } UnkStruct_02253CE0;
-// static const u32 sCelebiCutsceneFiles[] = {76, 78, 77};
-// static const VecFx32 sUnkVec = {0, 16, 0};
-// static const UnkStruct_02253CE0 sUnkStructDatas = {0xFFFF0000, 0xB4, 0x500};
 
 static BOOL Task_CelebiTimeTravelCutscene(TaskManager *taskMan);
 static void CelebiCutscene_StartSwirlTask(CelebiTimeTravelCutsceneTaskData *data);

@@ -36,8 +36,8 @@ void ov26_022599D8(FieldSystem *fieldSystem, LocalMapObject *last_talked) {
 
 static LocalMapObject *ov26_02259A24(FieldSystem *fieldSystem, LocalMapObject *a1, BOOL a2) {
     u32 num_events = Field_GetNumObjectEvents(fieldSystem);
-    u16 script     = MapObject_GetScriptID(a1);
-    u32 trainer    = ScriptNumToTrainerNum(script);
+    u16 script = MapObject_GetScriptID(a1);
+    u32 trainer = ScriptNumToTrainerNum(script);
 
     if (!TrainerNumIsDouble(trainer)) {
         return NULL;
@@ -62,7 +62,7 @@ static LocalMapObject *ov26_02259A24(FieldSystem *fieldSystem, LocalMapObject *a
         case 7:
         case 8:
         case 1: {
-            u32 script2  = MapObject_GetScriptID(object);
+            u32 script2 = MapObject_GetScriptID(object);
             u32 trainer2 = ScriptNumToTrainerNum((u16)script2);
             if (script != script2 && (u32)trainer == trainer2) {
                 return object;

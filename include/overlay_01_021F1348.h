@@ -21,8 +21,8 @@ typedef struct {
 typedef struct {
     int unk0;
     BOOL unk4;
-    int unk8;
-    int unkC;
+    u32 localMapObjectId;
+    u32 mapId;
     UnkOv01_021FFFCC_common unk10;
     NNSG3dRenderObj *unk24;
 } UnkOv01_021FFFCD;

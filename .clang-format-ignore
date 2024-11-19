@@ -2,3 +2,4 @@
 **/*.inc
 **/*.json
 lib/
+tools/nitrogfx/

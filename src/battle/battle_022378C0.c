@@ -145,9 +145,9 @@ BOOL Battle_Run(OVY_MANAGER *man, int *state) {
 
         if (evolutionSpecies) {
             CreateHeap(HEAP_ID_3, HEAP_ID_EVOLUTION, 0x30000);
-            mon                      = Party_GetMonByIndex(setup->party[BATTLER_PLAYER], selectedMonIndex);
+            mon = Party_GetMonByIndex(setup->party[BATTLER_PLAYER], selectedMonIndex);
             setup->evolutionTaskData = sub_02075A7C(setup->party[BATTLER_PLAYER], mon, evolutionSpecies, setup->options, setup->unk_164, setup->pokedex, setup->bag, setup->gameStats, evolutionCondition, 3, HEAP_ID_EVOLUTION);
-            *state                   = BSTATE_EVOLUTION_MAIN;
+            *state = BSTATE_EVOLUTION_MAIN;
         } else {
             *state = BSTATE_EXIT;
         }
@@ -206,7 +206,7 @@ void ov12_02237BB8(BattleSystem *bsys) {
 
     ov12_0223BBF0(bsys, 0);
 
-    int size   = sub_02026E9C();
+    int size = sub_02026E9C();
     void *data = GetSubBgPlttAddr();
     MIi_CpuClear16(0, data, size);
 

@@ -151,99 +151,99 @@ typedef struct ViewRankingsCursorPositionParam {
 
 static const ViewRankingsCursorPositionParam sCursorPositionParams[] = {
     {
-     .x    = 128,
-     .y    = 64,
+     .x = 128,
+     .y = 64,
      .anim = 7,
      },
     {
-     .x    = 128,
-     .y    = 80,
+     .x = 128,
+     .y = 80,
      .anim = 7,
      },
     {
-     .x    = 128,
-     .y    = 96,
+     .x = 128,
+     .y = 96,
      .anim = 7,
      },
     {
-     .x    = 128,
-     .y    = 112,
+     .x = 128,
+     .y = 112,
      .anim = 7,
      },
     {
-     .x    = 128,
-     .y    = 128,
+     .x = 128,
+     .y = 128,
      .anim = 7,
      },
     {
-     .x    = 128,
-     .y    = 144,
+     .x = 128,
+     .y = 144,
      .anim = 7,
      },
     {
-     .x    = 224,
-     .y    = 176,
+     .x = 224,
+     .y = 176,
      .anim = 2,
      },
 };
 
 static const RecordPageParam sRecordPageParam_BattleTower[] = {
     {
-     .max       = 9999,
+     .max = 9999,
      .numDigits = 4,
-     .msgId     = msg_0421_00044,
+     .msgId = msg_0421_00044,
      },
     {
-     .max       = 9999,
+     .max = 9999,
      .numDigits = 4,
-     .msgId     = msg_0421_00044,
+     .msgId = msg_0421_00044,
      },
     {
-     .max       = 9999,
+     .max = 9999,
      .numDigits = 4,
-     .msgId     = msg_0421_00044,
+     .msgId = msg_0421_00044,
      },
     {
-     .max       = 9999,
+     .max = 9999,
      .numDigits = 4,
-     .msgId     = msg_0421_00044,
+     .msgId = msg_0421_00044,
      },
     {
-     .max       = 9999,
+     .max = 9999,
      .numDigits = 4,
-     .msgId     = msg_0421_00044,
+     .msgId = msg_0421_00044,
      },
     {
-     .max       = 7,
+     .max = 7,
      .numDigits = 1,
-     .msgId     = msg_0421_00045,
+     .msgId = msg_0421_00045,
      },
 };
 
 static const RecordPageParam sRecordPageParam_Pokemon[] = {
     // mons fainted
     {
-     .max       = 999999,
+     .max = 999999,
      .numDigits = 6,
-     .msgId     = msg_0421_00047,
+     .msgId = msg_0421_00047,
      },
     // mons caught
     {
-     .max       = 999999,
+     .max = 999999,
      .numDigits = 6,
-     .msgId     = msg_0421_00047,
+     .msgId = msg_0421_00047,
      },
     // eggs hatched
     {
-     .max       = 999999,
+     .max = 999999,
      .numDigits = 6,
-     .msgId     = msg_0421_00046,
+     .msgId = msg_0421_00046,
      },
     // fishing landed
     {
-     .max       = 999999,
+     .max = 999999,
      .numDigits = 6,
-     .msgId     = msg_0421_00047,
+     .msgId = msg_0421_00047,
      },
 };
 
@@ -388,7 +388,7 @@ static void ViewRankingsApp_Init_Internal(OVY_MANAGER *man, int *pState) {
     ViewRankings_LoadSpriteGraphics(data, HEAP_ID_RANKINGS_APP);
     ViewRankings_CreateSpriteResourcesHeader(data);
     data->yesNoPrompt = YesNoPrompt_Create(HEAP_ID_RANKINGS_APP);
-    data->frame       = Options_GetFrame(Save_PlayerData_GetOptionsAddr(args->saveData));
+    data->frame = Options_GetFrame(Save_PlayerData_GetOptionsAddr(args->saveData));
     Main_SetVBlankIntrCB(VBlankCB_ViewRankings, data->bgConfig);
     data->mainState = 0;
     ResetAllTextPrinters();
@@ -399,12 +399,12 @@ static void ViewRankingsApp_Init_Internal(OVY_MANAGER *man, int *pState) {
     ViewRankings_CreateSprites(data);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     ViewRankings_CreateTouchscreenHitboxes(data, HEAP_ID_RANKINGS_APP);
-    data->state        = 1;
+    data->state = 1;
     data->saveRankings = Save_Rankings_Get(args->saveData);
-    data->page         = args->page_scroll % 3;
-    data->scope        = args->page_scroll / 3;
-    data->pageLength   = RankingsViewSys_GetNumRecordsPerPage(data->page);
-    data->pageOffset   = RankingsViewSys_GetFirstRecordIndexOnPage(data->page);
+    data->page = args->page_scroll % 3;
+    data->scope = args->page_scroll / 3;
+    data->pageLength = RankingsViewSys_GetNumRecordsPerPage(data->page);
+    data->pageOffset = RankingsViewSys_GetFirstRecordIndexOnPage(data->page);
     ViewRankingsApp_GetRankingsFromSave(data, args->saveData);
     data->recordIdx = args->cursorPos;
     if (data->recordIdx >= data->pageLength) {
@@ -440,7 +440,7 @@ static BOOL ViewRankingsApp_Main_Internal(ViewRankingsAppData *appData) {
         break;
     case VIEW_RANKINGS_APP_STATE_DO_DELETE_RECORD:
         appData->recordToDelete->active = FALSE;
-        appData->state                  = VIEW_RANKINGS_APP_STATE_REDRAW;
+        appData->state = VIEW_RANKINGS_APP_STATE_REDRAW;
         break;
     }
     return FALSE;
@@ -495,16 +495,16 @@ static BOOL ViewRankings_WaitButtonOrTouch(ViewRankingsAppData *appData) {
 
 static void ViewRankings_SetGfxBanks(void) {
     GraphicsBanks graphicsBanks = {
-        .bg            = GX_VRAM_BG_128_A,
-        .bgextpltt     = GX_VRAM_BGEXTPLTT_NONE,
-        .subbg         = GX_VRAM_SUB_BG_128_C,
-        .subbgextpltt  = GX_VRAM_SUB_BGEXTPLTT_NONE,
-        .obj           = GX_VRAM_OBJ_64_E,
-        .objextpltt    = GX_VRAM_OBJEXTPLTT_NONE,
-        .subobj        = GX_VRAM_SUB_OBJ_16_I,
+        .bg = GX_VRAM_BG_128_A,
+        .bgextpltt = GX_VRAM_BGEXTPLTT_NONE,
+        .subbg = GX_VRAM_SUB_BG_128_C,
+        .subbgextpltt = GX_VRAM_SUB_BGEXTPLTT_NONE,
+        .obj = GX_VRAM_OBJ_64_E,
+        .objextpltt = GX_VRAM_OBJEXTPLTT_NONE,
+        .subobj = GX_VRAM_SUB_OBJ_16_I,
         .subobjextpltt = GX_VRAM_SUB_OBJEXTPLTT_NONE,
-        .tex           = GX_VRAM_TEX_0_B,
-        .texpltt       = GX_VRAM_TEXPLTT_01_FG,
+        .tex = GX_VRAM_TEX_0_B,
+        .texpltt = GX_VRAM_TEXPLTT_01_FG,
     };
     GfGfx_SetBanks(&graphicsBanks);
 }
@@ -515,9 +515,9 @@ static void ViewRankings_InitBgLayers(BgConfig *bgConfig) {
 
     {
         GraphicsModes graphicsModes = {
-            .dispMode  = GX_DISPMODE_GRAPHICS,
-            .bgMode    = GX_BGMODE_0,
-            .subMode   = GX_BGMODE_0,
+            .dispMode = GX_DISPMODE_GRAPHICS,
+            .bgMode = GX_BGMODE_0,
+            .subMode = GX_BGMODE_0,
             ._2d3dMode = GX_BG0_AS_2D
         };
         SetBothScreensModesAndDisable(&graphicsModes);
@@ -572,8 +572,8 @@ static void ViewRankings_InitObjCharTransfer(void) {
     ObjCharTransferTemplate template = {
         .maxTasks = 10,
         .sizeMain = 0x10000,
-        .sizeSub  = 0x4000,
-        .heapId   = HEAP_ID_RANKINGS_APP
+        .sizeSub = 0x4000,
+        .heapId = HEAP_ID_RANKINGS_APP
     };
     ObjCharTransfer_Init(&template);
     ObjPlttTransfer_Init(1, HEAP_ID_RANKINGS_APP);
@@ -644,13 +644,13 @@ static void ViewRankings_DestroySprites(ViewRankingsAppData *appData) {
 
 static void setSpriteTemplate(SpriteTemplate *spriteTemplate, ViewRankingsAppData *appData) {
     spriteTemplate->spriteList = appData->spriteList;
-    spriteTemplate->header     = &appData->spriteResourcesHeader;
+    spriteTemplate->header = &appData->spriteResourcesHeader;
     spriteTemplate->position.z = 0;
     SetVecFx32(spriteTemplate->scale, FX32_ONE, FX32_ONE, FX32_ONE);
-    spriteTemplate->rotation    = 0;
-    spriteTemplate->priority    = 0;
+    spriteTemplate->rotation = 0;
+    spriteTemplate->priority = 0;
     spriteTemplate->whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN;
-    spriteTemplate->heapId      = HEAP_ID_RANKINGS_APP;
+    spriteTemplate->heapId = HEAP_ID_RANKINGS_APP;
 }
 
 static void ViewRankings_CreateSprites(ViewRankingsAppData *appData) {
@@ -660,7 +660,7 @@ static void ViewRankings_CreateSprites(ViewRankingsAppData *appData) {
 
     spriteTemplate.position.x = FX32_CONST(224);
     spriteTemplate.position.y = FX32_CONST(176);
-    sprite                    = Sprite_CreateAffine(&spriteTemplate);
+    sprite = Sprite_CreateAffine(&spriteTemplate);
     Sprite_SetAnimActiveFlag(sprite, TRUE);
     Sprite_SetAnimCtrlSeq(sprite, 2);
     Sprite_SetPriority(sprite, 1);
@@ -669,7 +669,7 @@ static void ViewRankings_CreateSprites(ViewRankingsAppData *appData) {
 
     spriteTemplate.position.x = FX32_CONST(16);
     spriteTemplate.position.y = FX32_CONST(96);
-    sprite                    = Sprite_CreateAffine(&spriteTemplate);
+    sprite = Sprite_CreateAffine(&spriteTemplate);
     Sprite_SetAnimActiveFlag(sprite, TRUE);
     Sprite_SetAnimCtrlSeq(sprite, 3);
     Sprite_SetVisibleFlag(sprite, TRUE);
@@ -677,7 +677,7 @@ static void ViewRankings_CreateSprites(ViewRankingsAppData *appData) {
 
     spriteTemplate.position.x = FX32_CONST(240);
     spriteTemplate.position.y = FX32_CONST(96);
-    sprite                    = Sprite_CreateAffine(&spriteTemplate);
+    sprite = Sprite_CreateAffine(&spriteTemplate);
     Sprite_SetAnimActiveFlag(sprite, TRUE);
     Sprite_SetAnimCtrlSeq(sprite, 5);
     Sprite_SetVisibleFlag(sprite, TRUE);
@@ -685,7 +685,7 @@ static void ViewRankings_CreateSprites(ViewRankingsAppData *appData) {
 
     spriteTemplate.position.x = FX32_CONST(224);
     spriteTemplate.position.y = FX32_CONST(176);
-    sprite                    = Sprite_CreateAffine(&spriteTemplate);
+    sprite = Sprite_CreateAffine(&spriteTemplate);
     Sprite_SetAnimActiveFlag(sprite, TRUE);
     Sprite_SetAnimCtrlSeq(sprite, 0);
     Sprite_SetVisibleFlag(sprite, TRUE);
@@ -693,7 +693,7 @@ static void ViewRankings_CreateSprites(ViewRankingsAppData *appData) {
 
     spriteTemplate.position.x = FX32_CONST(64);
     spriteTemplate.position.y = FX32_CONST(176);
-    sprite                    = Sprite_CreateAffine(&spriteTemplate);
+    sprite = Sprite_CreateAffine(&spriteTemplate);
     Sprite_SetAnimActiveFlag(sprite, TRUE);
     Sprite_SetAnimCtrlSeq(sprite, 8);
     Sprite_SetVisibleFlag(sprite, TRUE);
@@ -865,9 +865,9 @@ static void ViewRankings_TrySetCursorPosition(ViewRankingsAppData *appData, int 
 
 static void ViewRankings_DrawCursor(ViewRankingsAppData *appData) {
     VecFx32 pos = {};
-    u8 idx      = appData->cursorPos;
-    pos.x       = sCursorPositionParams[idx].x * FX32_ONE;
-    pos.y       = sCursorPositionParams[idx].y * FX32_ONE;
+    u8 idx = appData->cursorPos;
+    pos.x = sCursorPositionParams[idx].x * FX32_ONE;
+    pos.y = sCursorPositionParams[idx].y * FX32_ONE;
     Sprite_SetMatrix(appData->sprites[VIEW_RANKINGS_APP_SPRITE_CURSOR], &pos);
     Sprite_SetAnimCtrlSeq(appData->sprites[VIEW_RANKINGS_APP_SPRITE_CURSOR], sCursorPositionParams[idx].anim);
 }
@@ -934,35 +934,35 @@ static void ViewRankingsApp_GetRankingsFromSave(ViewRankingsAppData *appData, Sa
     appData->pages[0] = Save_GetPlayerViewRankingPage(saveData, appData->page, HEAP_ID_RANKINGS_APP);
     for (i = 0; i < appData->pageLength; ++i) {
         appData->pages[1 + i] = Save_GetReceivedViewRankingPage(appData->saveRankings, appData->pageOffset + appData->scope * RANKINGS_COUNT + i, HEAP_ID_RANKINGS_APP);
-        cnt                   = 0;
-        inserted              = FALSE;
-        ptr                   = appData->pages[1 + i];
+        cnt = 0;
+        inserted = FALSE;
+        ptr = appData->pages[1 + i];
         if (ptr->count == 0) {
             appData->records[i].entries[0].pageEntry = &appData->pages[0]->entries[i];
-            appData->records[i].entries[0].active    = TRUE;
+            appData->records[i].entries[0].active = TRUE;
             appData->records[i].entries[0].friendIdx = 0xFF;
-            appData->records[i].count                = 1;
+            appData->records[i].count = 1;
         } else {
             for (j = 0; j < ptr->count; ++j) {
                 if (!inserted && appData->pages[0]->entries[i].stat >= ptr->entries[j].stat) {
                     appData->records[i].entries[cnt].pageEntry = &appData->pages[0]->entries[i];
-                    appData->records[i].entries[cnt].active    = TRUE;
+                    appData->records[i].entries[cnt].active = TRUE;
                     appData->records[i].entries[cnt].friendIdx = 0xFF;
                     ++cnt;
                     appData->records[i].entries[cnt].pageEntry = &ptr->entries[j];
-                    appData->records[i].entries[cnt].active    = TRUE;
+                    appData->records[i].entries[cnt].active = TRUE;
                     appData->records[i].entries[cnt].friendIdx = j;
-                    inserted                                   = TRUE;
+                    inserted = TRUE;
                 } else {
                     appData->records[i].entries[cnt].pageEntry = &ptr->entries[j];
-                    appData->records[i].entries[cnt].active    = TRUE;
+                    appData->records[i].entries[cnt].active = TRUE;
                     appData->records[i].entries[cnt].friendIdx = j;
                 }
                 ++cnt;
             }
             if (!inserted) {
                 appData->records[i].entries[cnt].pageEntry = &appData->pages[0]->entries[i];
-                appData->records[i].entries[cnt].active    = TRUE;
+                appData->records[i].entries[cnt].active = TRUE;
                 appData->records[i].entries[cnt].friendIdx = 0xFF;
             }
             appData->records[i].count = ptr->count + 1;
@@ -971,11 +971,11 @@ static void ViewRankingsApp_GetRankingsFromSave(ViewRankingsAppData *appData, Sa
 }
 
 static void ViewRankings_CreateStrings(ViewRankingsAppData *appData) {
-    appData->msgData          = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0421_bin, HEAP_ID_RANKINGS_APP);
-    appData->msgFormat        = MessageFormat_New_Custom(2, 76, HEAP_ID_RANKINGS_APP);
-    appData->formatedStrBuf   = String_New(76, HEAP_ID_RANKINGS_APP);
+    appData->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0421_bin, HEAP_ID_RANKINGS_APP);
+    appData->msgFormat = MessageFormat_New_Custom(2, 76, HEAP_ID_RANKINGS_APP);
+    appData->formatedStrBuf = String_New(76, HEAP_ID_RANKINGS_APP);
     appData->playerNameString = NewString_ReadMsgData(appData->msgData, msg_0421_00043);
-    appData->rankingString    = NewString_ReadMsgData(appData->msgData, msg_0421_00042);
+    appData->rankingString = NewString_ReadMsgData(appData->msgData, msg_0421_00042);
     for (int i = 0; i < VIEW_RANKINGS_MISC_STRING_MAX; ++i) {
         appData->miscStrings[i] = NewString_ReadMsgData(appData->msgData, msg_0421_00044 + i);
     }
@@ -1001,15 +1001,15 @@ static void ViewRankings_PrintRecords(ViewRankingsAppData *appData) {
     int prev;
     int cur;
 
-    pRecord   = &appData->records[appData->recordIdx];
+    pRecord = &appData->records[appData->recordIdx];
     pageParam = &sRecordPageParams[appData->page][appData->recordIdx];
 
     FillWindowPixelBuffer(&appData->windows[VIEW_RANKINGS_APP_WINDOW_RECORDS], 0);
     FillWindowPixelBuffer(&appData->windows[VIEW_RANKINGS_APP_WINDOW_RANKING], 0);
-    ranking             = 1;
-    y                   = 0;
-    prev                = 0;
-    i                   = 0;
+    ranking = 1;
+    y = 0;
+    prev = 0;
+    i = 0;
     appData->numRecords = 0;
     for (; i < pRecord->count; ++i) {
         if (pRecord->entries[i].active != 0) {
@@ -1030,7 +1030,7 @@ static void ViewRankings_PrintRecords(ViewRankingsAppData *appData) {
             AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_RECORDS], 0, appData->formatedStrBuf, 160 - FontID_String_GetWidth(0, appData->formatedStrBuf, 0), 16 * y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 
             appData->recordEntryIdxs[y] = i;
-            prev                        = cur;
+            prev = cur;
             if (++y >= 6) {
                 break;
             }
@@ -1068,7 +1068,7 @@ static void ViewRankings_PrintDeleteXsRecordAreYouSure(ViewRankingsAppData *appD
     String *string;
 
     entryIdx = appData->recordEntryIdxs[appData->cursorPos];
-    page     = &appData->records[appData->recordIdx];
+    page = &appData->records[appData->recordIdx];
     DrawFrameAndWindow2(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE], TRUE, 0x1, 12);
     FillWindowPixelBuffer(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE], 0xFF);
     BufferString(appData->msgFormat, 0, page->entries[entryIdx].pageEntry->playerName, 2, 1, 2);
@@ -1095,8 +1095,8 @@ static void ViewRankings_PrintRecordStatHeaderText(ViewRankingsAppData *appData)
     int msgNo;
 
     FillWindowPixelBuffer(&appData->windows[VIEW_RANKINGS_APP_WINDOW_HEADER], 0);
-    msgNo   = (appData->page == 0 ? msg_0421_00053 : msg_0421_00065) + appData->recordIdx * 2;
-    string  = NewString_ReadMsgData(appData->msgData, msgNo);
+    msgNo = (appData->page == 0 ? msg_0421_00053 : msg_0421_00065) + appData->recordIdx * 2;
+    string = NewString_ReadMsgData(appData->msgData, msgNo);
     string2 = NewString_ReadMsgData(appData->msgData, msgNo + 1);
     AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_HEADER], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_HEADER], 0, string2, 0, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
@@ -1126,12 +1126,12 @@ static void ViewRankings_AskConfirmDeleteRecord(ViewRankingsAppData *appData) {
         PlaySE(SEQ_SE_DP_CUSTOM06);
     } else {
         MI_CpuClear8(&template, sizeof(YesNoPromptTemplate));
-        template.bgConfig  = appData->bgConfig;
-        template.bgId      = GF_BG_LYR_MAIN_0;
+        template.bgConfig = appData->bgConfig;
+        template.bgId = GF_BG_LYR_MAIN_0;
         template.tileStart = 0x08F;
-        template.plttSlot  = 13;
-        template.x         = 25;
-        template.y         = 6;
+        template.plttSlot = 13;
+        template.x = 25;
+        template.y = 6;
         YesNoPrompt_InitFromTemplate(appData->yesNoPrompt, &template);
         ViewRankings_PrintDeleteXsRecordAreYouSure(appData);
         dimAllMainBgsExceptLyr0();

@@ -3,10 +3,10 @@
   "warps": [
     {
       "x": 5,
-      "y": 12,
+      "z": 12,
       "header": "MAP_D22R0101",
       "anchor": 5,
-      "height": 0
+      "y": 0
     }
   ]
 }

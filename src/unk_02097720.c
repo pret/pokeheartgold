@@ -9,14 +9,14 @@ void sub_02097720(TaskManager *taskManager, u16 *unknownPtr) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     UnkStruct_02097720 *data = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(UnkStruct_02097720));
     MI_CpuClear8(data, sizeof(UnkStruct_02097720));
-    data->state     = 0;
+    data->state = 0;
     data->unknown_4 = unknownPtr;
     TaskManager_Call(taskManager, sub_02097754, data);
 }
 
 static BOOL sub_02097754(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    UnkStruct_02097720 *env  = TaskManager_GetEnvironment(taskManager);
+    UnkStruct_02097720 *env = TaskManager_GetEnvironment(taskManager);
 
     switch (env->state) {
     case 0:

@@ -2,12 +2,12 @@
   "header": "fielddata/script/scr_seq/event_T27PC0102.h",
   "coords": [
     {
-      "scr": 0,
+      "scriptId": 0,
       "x": 8,
-      "y": 14,
+      "z": 14,
       "w": 1,
       "h": 1,
-      "z": 0,
+      "y": 0,
       "val": 1,
       "var": "VAR_TEMP_x4001"
     }

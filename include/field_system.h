@@ -212,10 +212,10 @@ extern const OVY_MGR_TEMPLATE gApplication_NewGameFieldsys;
 extern const OVY_MGR_TEMPLATE gApplication_ContinueFieldsys;
 
 static inline void InitLocation(Location *location, int mapId, int warpId, int x, int y, int direction) {
-    location->mapId     = mapId;
-    location->warpId    = warpId;
-    location->x         = x;
-    location->y         = y;
+    location->mapId = mapId;
+    location->warpId = warpId;
+    location->x = x;
+    location->y = y;
     location->direction = direction;
 }
 

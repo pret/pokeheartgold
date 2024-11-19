@@ -23,12 +23,12 @@ void FieldSystem_Init(OVY_MANAGER *man, FieldSystem *fieldSystem) {
     FS_LoadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(OVY_123));
     key += 769 * (!ov123_0225F4A8(ov124_02260D68)); // 769 is prime
     UnkStruct_02111868_sub *args = OverlayManager_GetArgs(man);
-    fieldSystem->saveData        = args->saveData;
-    fieldSystem->taskman         = NULL;
+    fieldSystem->saveData = args->saveData;
+    fieldSystem->taskman = NULL;
     key += 47 * (!ov123_0225F688(ov124_02260D6C)); // 47 is prime
-    fieldSystem->location  = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(fieldSystem->saveData));
+    fieldSystem->location = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(fieldSystem->saveData));
     fieldSystem->mapMatrix = MapMatrix_New();
-    u32 key2               = 929 * ov123_0225F520(ov124_02260D58); // 929 is prime
+    u32 key2 = 929 * ov123_0225F520(ov124_02260D58); // 929 is prime
     Field_AllocateMapEvents(fieldSystem, HEAP_ID_FIELD);
     fieldSystem->bagCursor = BagCursor_New(HEAP_ID_FIELD);
     FS_UnloadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(OVY_123));
@@ -37,9 +37,9 @@ void FieldSystem_Init(OVY_MANAGER *man, FieldSystem *fieldSystem) {
     if ((key + key2) % 2441) {
         ov124_02260D1C(fieldSystem);
     }
-    fieldSystem->unkA8             = sub_02092BB8(HEAP_ID_FIELD);
-    fieldSystem->unk108            = FieldSystem_UnkSub108_Alloc(HEAP_ID_FIELD);
-    fieldSystem->phoneRingManager  = GearPhoneRingManager_New(HEAP_ID_FIELD, fieldSystem);
+    fieldSystem->unkA8 = sub_02092BB8(HEAP_ID_FIELD);
+    fieldSystem->unk108 = FieldSystem_UnkSub108_Alloc(HEAP_ID_FIELD);
+    fieldSystem->phoneRingManager = GearPhoneRingManager_New(HEAP_ID_FIELD, fieldSystem);
     fieldSystem->judgeStatPosition = 0;
     if ((key + key2) % 4073) {
         ov124_02260D1C(fieldSystem);
@@ -48,7 +48,7 @@ void FieldSystem_Init(OVY_MANAGER *man, FieldSystem *fieldSystem) {
 
 // clobbers the heap worse if you have made more progress through the game
 static void ov124_02260D1C(FieldSystem *fieldSystem) {
-    int i         = 0;
+    int i = 0;
     int numBadges = 0;
     for (i = 0; i < 16; ++i) {
         if (PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(fieldSystem->saveData), i) == TRUE) {

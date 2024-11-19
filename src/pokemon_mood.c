@@ -8,20 +8,20 @@
 
 static const s8 sMoodModifiers[] = {
     [MON_MOOD_MODIFIER_LEVEL_UP_IN_BATTLE] = 40,
-    [MON_MOOD_MODIFIER_1]                  = 8,
-    [MON_MOOD_MODIFIER_2]                  = 50,
-    [MON_MOOD_MODIFIER_LEARN_TMHM]         = 40,
-    [MON_MOOD_MODIFIER_4]                  = -80,
-    [MON_MOOD_MODIFIER_SURVIVED_PSN]       = -50,
-    [MON_MOOD_MODIFIER_6]                  = -100,
-    [MON_MOOD_MODIFIER_7]                  = 30,
+    [MON_MOOD_MODIFIER_1] = 8,
+    [MON_MOOD_MODIFIER_2] = 50,
+    [MON_MOOD_MODIFIER_LEARN_TMHM] = 40,
+    [MON_MOOD_MODIFIER_4] = -80,
+    [MON_MOOD_MODIFIER_SURVIVED_PSN] = -50,
+    [MON_MOOD_MODIFIER_6] = -100,
+    [MON_MOOD_MODIFIER_7] = 30,
 };
 
 static void MonAdjustMood(Pokemon *mon, s8 by) {
     s8 mood;
     s32 adjustedMood;
 
-    mood         = GetMonData(mon, MON_DATA_MOOD, NULL);
+    mood = GetMonData(mon, MON_DATA_MOOD, NULL);
     adjustedMood = mood + by;
 
     if (adjustedMood > 127) {

@@ -15,7 +15,7 @@
 #define RIBBON_DESC_SPECIAL_SIZE  1
 
 // if sp == FALSE, id is a gmm id. if sp == TRUE, id points to a special ribbon
-#define RIBBON_DESC(sp, id) ( \
+#define RIBBON_DESC(sp, id) (                                             \
     ((id) << RIBBON_DESC_ID_SHIFT) | ((sp) << RIBBON_DESC_SPECIAL_SHIFT))
 
 struct RibbonData {

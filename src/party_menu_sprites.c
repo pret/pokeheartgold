@@ -355,18 +355,18 @@ void sub_0207EB24(PartyMenu *partyMenu) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     GF_CreateVramTransferManager(32, HEAP_ID_PARTY_MENU);
-    partyMenu->spriteRenderer   = SpriteRenderer_Create(HEAP_ID_PARTY_MENU);
+    partyMenu->spriteRenderer = SpriteRenderer_Create(HEAP_ID_PARTY_MENU);
     partyMenu->spriteGfxHandler = SpriteRenderer_CreateGfxHandler(partyMenu->spriteRenderer);
 
     OamManagerParam oamManagerTemplate = {
-        .fromOBJmain    = 0,
-        .numOBJmain     = 128,
+        .fromOBJmain = 0,
+        .numOBJmain = 128,
         .fromAffineMain = 0,
-        .numAffineMain  = 32,
-        .fromOBJsub     = 4,
-        .numOBJsub      = 124,
-        .fromAffineSub  = 1,
-        .numAffineSub   = 31,
+        .numAffineMain = 32,
+        .fromOBJsub = 4,
+        .numOBJsub = 124,
+        .fromAffineSub = 1,
+        .numAffineSub = 31,
     };
     OamCharTransferParam transferTemplate = {
         35,
@@ -403,23 +403,23 @@ void sub_0207EBE4(PartyMenu *partyMenu, u8 partySlot, u16 x, u16 y, NARC *narc) 
 
     isEgg = GetMonData(mon, MON_DATA_IS_EGG, NULL);
 
-    sp1C.resourceSet                                         = partySlot + 4;
-    sp1C.x                                                   = x;
-    sp1C.y                                                   = y;
-    sp1C.z                                                   = 0;
-    sp1C.animSeqNo                                           = 0;
-    sp1C.rotation                                            = 0;
-    sp1C.palIndex                                            = GetMonIconPaletteEx(partyMenu->monsDrawState[partySlot].species, partyMenu->monsDrawState[partySlot].form, isEgg) + 3;
-    sp1C.whichScreen                                         = NNS_G2D_VRAM_TYPE_2DMAIN;
-    sp1C.unk_18                                              = 0;
-    sp1C.unk_1C                                              = 0;
-    sp1C.unk_20                                              = 0;
-    sp1C.unk_24                                              = 0;
-    partyMenu->monsDrawState[partySlot].iconSprite           = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sp1C);
-    sp1C.whichScreen                                         = NNS_G2D_VRAM_TYPE_2DMAIN;
-    sp1C.palIndex                                            = GetMonIconPaletteEx(partyMenu->monsDrawState[partySlot].species, partyMenu->monsDrawState[partySlot].form, isEgg) + 1;
-    sp1C.x                                                   = x;
-    sp1C.y                                                   = y + 0x100;
+    sp1C.resourceSet = partySlot + 4;
+    sp1C.x = x;
+    sp1C.y = y;
+    sp1C.z = 0;
+    sp1C.animSeqNo = 0;
+    sp1C.rotation = 0;
+    sp1C.palIndex = GetMonIconPaletteEx(partyMenu->monsDrawState[partySlot].species, partyMenu->monsDrawState[partySlot].form, isEgg) + 3;
+    sp1C.whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN;
+    sp1C.unk_18 = 0;
+    sp1C.unk_1C = 0;
+    sp1C.unk_20 = 0;
+    sp1C.unk_24 = 0;
+    partyMenu->monsDrawState[partySlot].iconSprite = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sp1C);
+    sp1C.whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN;
+    sp1C.palIndex = GetMonIconPaletteEx(partyMenu->monsDrawState[partySlot].species, partyMenu->monsDrawState[partySlot].form, isEgg) + 1;
+    sp1C.x = x;
+    sp1C.y = y + 0x100;
     partyMenu->monsDrawState[partySlot].mainScreenIconSprite = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sp1C);
 }
 
@@ -433,12 +433,12 @@ void sub_0207ECE0(PartyMenu *partyMenu, u8 partySlot) {
     void *ncgrFile;
     NNSG2dCharacterData *pCharData;
 
-    mon           = Party_GetMonByIndex(partyMenu->args->party, partySlot);
-    species       = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    form          = GetMonData(mon, MON_DATA_FORM, NULL);
-    narc          = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
+    mon = Party_GetMonByIndex(partyMenu->args->party, partySlot);
+    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    form = GetMonData(mon, MON_DATA_FORM, NULL);
+    narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
     imageLocation = NNS_G2dGetImageLocation(Sprite_GetImageProxy(partyMenu->monsDrawState[partySlot].iconSprite), NNS_G2D_VRAM_TYPE_2DMAIN);
-    ncgrFile      = GfGfxLoader_LoadFromOpenNarc(narc, Pokemon_GetIconNaix(mon), FALSE, HEAP_ID_PARTY_MENU, TRUE);
+    ncgrFile = GfGfxLoader_LoadFromOpenNarc(narc, Pokemon_GetIconNaix(mon), FALSE, HEAP_ID_PARTY_MENU, TRUE);
     if (NNS_G2dGetUnpackedCharacterData(ncgrFile, &pCharData)) {
         DC_FlushRange(pCharData->pRawData, pCharData->szByte);
         GX_LoadOBJ(pCharData->pRawData, imageLocation, pCharData->szByte);
@@ -453,20 +453,20 @@ void sub_0207ECE0(PartyMenu *partyMenu, u8 partySlot) {
 }
 
 void sub_0207EDD4(PartyMenu *partyMenu) {
-    partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR]            = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[0]);
+    partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[0]);
     partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[1]);
-    partyMenu->sprites[PARTY_MENU_SPRITE_ID_8]                 = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[2]);
-    partyMenu->sprites[PARTY_MENU_SPRITE_ID_9]                 = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[3]);
-    partyMenu->sprites[PARTY_MENU_SPRITE_ID_28]                = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[22]);
+    partyMenu->sprites[PARTY_MENU_SPRITE_ID_8] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[2]);
+    partyMenu->sprites[PARTY_MENU_SPRITE_ID_9] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[3]);
+    partyMenu->sprites[PARTY_MENU_SPRITE_ID_28] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[22]);
 
     for (u32 i = 0; i < 6; ++i) {
         partyMenu->sprites[PARTY_MENU_SPRITE_ID_MON1_STATUS + i] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[4 + i]);
-        partyMenu->monsDrawState[i].statusIconX                  = sSpriteTemplates[4 + i].x;
-        partyMenu->monsDrawState[i].statusIconY                  = sSpriteTemplates[4 + i].y;
+        partyMenu->monsDrawState[i].statusIconX = sSpriteTemplates[4 + i].x;
+        partyMenu->monsDrawState[i].statusIconY = sSpriteTemplates[4 + i].y;
         Sprite_SetVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_MON1_STATUS + i], FALSE);
 
         partyMenu->sprites[PARTY_MENU_SPRITE_ID_MON1_HELD_ITEM + i] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[10 + i]);
-        partyMenu->sprites[PARTY_MENU_SPRITE_ID_MON1_CAPSULE + i]   = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[16 + i]);
+        partyMenu->sprites[PARTY_MENU_SPRITE_ID_MON1_CAPSULE + i] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[16 + i]);
     }
     for (u32 i = 0; i < 6; ++i) {
         partyMenu->mainScreenStatusSprites[i] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sSpriteTemplates[23]);
@@ -479,18 +479,18 @@ void sub_0207EDD4(PartyMenu *partyMenu) {
 void sub_0207EF5C(PartyMenu *partyMenu, u8 partySlot, u16 x, u16 y) {
     UnkStruct_0200D2B4 sp0;
 
-    sp0.resourceSet                                           = 0;
-    sp0.x                                                     = x;
-    sp0.y                                                     = y;
-    sp0.z                                                     = 0;
-    sp0.animSeqNo                                             = 0;
-    sp0.palIndex                                              = 0;
-    sp0.unk_18                                                = 0;
-    sp0.unk_1C                                                = 0;
-    sp0.unk_20                                                = 0;
-    sp0.unk_24                                                = 0;
-    sp0.rotation                                              = 1;
-    sp0.whichScreen                                           = NNS_G2D_VRAM_TYPE_2DMAIN;
+    sp0.resourceSet = 0;
+    sp0.x = x;
+    sp0.y = y;
+    sp0.z = 0;
+    sp0.animSeqNo = 0;
+    sp0.palIndex = 0;
+    sp0.unk_18 = 0;
+    sp0.unk_1C = 0;
+    sp0.unk_20 = 0;
+    sp0.unk_24 = 0;
+    sp0.rotation = 1;
+    sp0.whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN;
     partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_BALL] = SpriteRenderer_CreateSprite(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sp0);
 }
 

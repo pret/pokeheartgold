@@ -45,11 +45,11 @@ static void sub_02014050(int x, int y, int width, int height, NNSG2dCharacterDat
     GF_ASSERT(pCharData->W >= x + width);
     GF_ASSERT(pCharData->H >= y + height);
 
-    srcu8        = pCharData->pRawData;
-    dstu8        = dest;
+    srcu8 = pCharData->pRawData;
+    dstu8 = dest;
     srcBlockSize = pCharData->W * 4;
-    srcOffset    = 4 * x + y * srcBlockSize;
-    dstOffset    = 0;
+    srcOffset = 4 * x + y * srcBlockSize;
+    dstOffset = 0;
 
     for (int i = y; i < y + height; ++i) {
         for (int j = x; j < x + width; ++j) {
@@ -110,8 +110,8 @@ void sub_020141C4(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int wi
 
     srcu8 = ppCharData->pRawData;
     UnscanPokepic(srcu8, narcId);
-    dstu8     = dest;
-    srcWidth  = ppCharData->W * 4;
+    dstu8 = dest;
+    srcWidth = ppCharData->W * 4;
     srcOffset = x * 4 + y * srcWidth;
     dstOffset = 0;
 
@@ -140,8 +140,8 @@ static void sub_020142D4(int srcWidth, int srcHeight, int x, int y, int width, i
 
     srcu8 = src;
     dstu8 = dest;
-    xmax  = x + width;
-    ymax  = y + height;
+    xmax = x + width;
+    ymax = y + height;
     for (i = y; i < ymax; ++i) {
         for (j = x; j < xmax; ++j) {
             srcOffset = 32 * j + 32 * i * srcWidth;
@@ -165,7 +165,7 @@ static void sub_02014374(NarcId narcId, s32 fileId, HeapID heapId, int x, int y,
         { 8, 8, 2, 2 },
     };
 
-    int sp18   = 0;
+    int sp18 = 0;
     void *sp14 = sub_02014298(narcId, fileId, heapId, x, y, width, height);
     for (int i = 0; i < 6; ++i) {
         sub_02014350(width, height, &sp1C[i], &sp18, sp14, dest);
@@ -189,7 +189,7 @@ void *sub_0201442C(NarcId narcId, s32 fileId, HeapID heapId) {
 }
 
 void *sub_02014450(NarcId narcId, s32 fileId, HeapID heapId) {
-    void *ret       = AllocFromHeap(heapId, 0x20);
+    void *ret = AllocFromHeap(heapId, 0x20);
     void *pNclrFile = AllocAndReadWholeNarcMemberByIdPair(narcId, fileId, heapId);
     NNSG2dPaletteData *pPlttData;
     GF_ASSERT(NNS_G2dGetUnpackedPaletteData(pNclrFile, &pPlttData) == TRUE);
@@ -208,7 +208,7 @@ void sub_02014494(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int wi
         { 8, 8, 2, 2 },
     };
 
-    int sp28   = 0;
+    int sp28 = 0;
     void *sp24 = sub_02014178(narcId, fileId, heapId, x, y, width, height, pid, isAnimated, whichFacing, species);
     for (int i = 0; i < 6; ++i) {
         sub_02014350(width, height, &sp2C[i], &sp28, sp24, dest);
@@ -238,11 +238,11 @@ void sub_020145B4(const void *texSrc, int texDim, int x, int y, int w, int h, vo
     u8 *dstu8;
     int srcBlockSize;
 
-    srcu8        = texSrc;
-    dstu8        = dest;
+    srcu8 = texSrc;
+    dstu8 = dest;
     srcBlockSize = texDim * 4;
-    srcOffset    = 4 * x + y * srcBlockSize;
-    dstOffset    = 0;
+    srcOffset = 4 * x + y * srcBlockSize;
+    dstOffset = 0;
 
     for (int i = y; i < y + h; ++i) {
         for (int j = x; j < x + w; ++j) {

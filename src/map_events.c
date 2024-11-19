@@ -64,7 +64,7 @@ int Field_GetWarpEventAtXYPos(const FieldSystem *fieldSystem, int x, int y) {
     int i;
 
     for (i = 0; i < fieldSystem->mapEvents->num_warp_events; i++) {
-        if (x == fieldSystem->mapEvents->warp_events[i].x && y == fieldSystem->mapEvents->warp_events[i].y) {
+        if (x == fieldSystem->mapEvents->warp_events[i].x && y == fieldSystem->mapEvents->warp_events[i].z) {
             return i;
         }
     }
@@ -91,12 +91,12 @@ const ObjectEvent *Field_GetObjectEvents(const FieldSystem *fieldSystem) {
 BOOL Field_SetEventDefaultXYPos(FieldSystem *fieldSystem, int id, u16 x, u16 y) {
     int i;
     ObjectEvent *objs = fieldSystem->mapEvents->object_events;
-    u32 num_objs      = fieldSystem->mapEvents->num_object_events;
+    u32 num_objs = fieldSystem->mapEvents->num_object_events;
 
     for (i = 0; i < num_objs; i++) {
         if (objs[i].id == id) {
             objs[i].x = x;
-            objs[i].y = y;
+            objs[i].z = y;
             return TRUE;
         }
     }
@@ -108,11 +108,11 @@ BOOL Field_SetEventDefaultXYPos(FieldSystem *fieldSystem, int id, u16 x, u16 y) 
 BOOL Field_SetEventDefaultDirection(FieldSystem *fieldSystem, int id, u16 dirn) {
     int i;
     ObjectEvent *objs = fieldSystem->mapEvents->object_events;
-    u32 num_objs      = fieldSystem->mapEvents->num_object_events;
+    u32 num_objs = fieldSystem->mapEvents->num_object_events;
 
     for (i = 0; i < num_objs; i++) {
         if (objs[i].id == id) {
-            objs[i].dirn = dirn;
+            objs[i].facingDirection = dirn;
             return TRUE;
         }
     }
@@ -124,7 +124,7 @@ BOOL Field_SetEventDefaultDirection(FieldSystem *fieldSystem, int id, u16 dirn) 
 BOOL Field_SetEventDefaultMovement(FieldSystem *fieldSystem, int id, u16 movement) {
     int i;
     ObjectEvent *objs = fieldSystem->mapEvents->object_events;
-    u32 num_objs      = fieldSystem->mapEvents->num_object_events;
+    u32 num_objs = fieldSystem->mapEvents->num_object_events;
 
     for (i = 0; i < num_objs; i++) {
         if (objs[i].id == id) {
@@ -139,15 +139,15 @@ BOOL Field_SetEventDefaultMovement(FieldSystem *fieldSystem, int id, u16 movemen
 
 BOOL Field_SetWarpXYPos(FieldSystem *fieldSystem, int warpno, u16 x, u16 y) {
     WARP_EVENT *warps = fieldSystem->mapEvents->warp_events;
-    warps[warpno].x   = x;
-    warps[warpno].y   = y;
+    warps[warpno].x = x;
+    warps[warpno].z = y;
     return TRUE;
 }
 
 BOOL Field_SetBgEventXYPos(FieldSystem *fieldSystem, int bgno, u32 x, u32 y) {
     BG_EVENT *bgs = Field_GetBgEvents(fieldSystem);
-    bgs[bgno].x   = x;
-    bgs[bgno].y   = y;
+    bgs[bgno].x = x;
+    bgs[bgno].z = y;
     return TRUE;
 }
 

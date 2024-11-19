@@ -5,14 +5,14 @@
 OVY_MANAGER *OverlayManager_New(const OVY_MGR_TEMPLATE *template, void *args, HeapID heapId) {
     OVY_MANAGER *ret;
 
-    ret             = AllocFromHeap(heapId, sizeof(OVY_MANAGER));
-    ret->template   = *template;
+    ret = AllocFromHeap(heapId, sizeof(OVY_MANAGER));
+    ret->template = *template;
     ret->exec_state = 0;
     ret->proc_state = 0;
-    ret->args       = args;
-    ret->data       = NULL;
-    ret->unk_20     = 0;
-    ret->unk_24     = 0;
+    ret->args = args;
+    ret->data = NULL;
+    ret->unk_20 = 0;
+    ret->unk_24 = 0;
 
     return ret;
 }
@@ -23,7 +23,7 @@ void OverlayManager_Delete(OVY_MANAGER *man) {
 
 void *OverlayManager_CreateAndGetData(OVY_MANAGER *man, u32 size, HeapID heapId) {
     void *data;
-    data      = AllocFromHeap(heapId, size);
+    data = AllocFromHeap(heapId, size);
     man->data = data;
     return data;
 }

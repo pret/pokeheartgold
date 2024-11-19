@@ -4,13 +4,13 @@
 .public sub_02023E50
 .public sub_02023F04
 .public sub_02023F70
-.public sub_0205F09C
+.public MapObject_GetPriorityPlusValue
 .public MapObject_GetID
-.public sub_0205F254
+.public MapObject_GetMapID
 .public MapObject_GetFieldSystem
 .public MapObject_GetCurrentX
-.public MapObject_GetCurrentY
-.public MapObject_GetPositionVec
+.public MapObject_GetCurrentZ
+.public MapObject_CopyPositionVector
 .public sub_020611C8
 .public sub_02068D98
 .public sub_02068DB8

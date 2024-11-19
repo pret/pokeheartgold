@@ -27,16 +27,16 @@ FS_EXTERN_OVERLAY(OVY_124);
 FS_EXTERN_OVERLAY(field);
 
 const OVY_MGR_TEMPLATE gApplication_NewGameFieldsys = {
-    .init   = Field_NewGame_AppInit,
-    .exec   = Field_AppExec,
-    .exit   = Field_AppExit,
+    .init = Field_NewGame_AppInit,
+    .exec = Field_AppExec,
+    .exit = Field_AppExit,
     .ovy_id = FS_OVERLAY_ID_NONE
 };
 
 const OVY_MGR_TEMPLATE gApplication_ContinueFieldsys = {
-    .init   = Field_Continue_AppInit,
-    .exec   = Field_AppExec,
-    .exit   = Field_AppExit,
+    .init = Field_Continue_AppInit,
+    .exec = Field_AppExec,
+    .exit = Field_AppExit,
     .ovy_id = FS_OVERLAY_ID_NONE
 };
 
@@ -51,7 +51,7 @@ static BOOL FieldSystem_Main(FieldSystem *fieldSystem);
 
 BOOL Field_Continue_AppInit(OVY_MANAGER *man, int *unused) {
     FieldSystemInitWork *args = OverlayManager_GetArgs(man);
-    sFieldSysPtr              = FieldSystem_New(man);
+    sFieldSysPtr = FieldSystem_New(man);
 
     if (args->unk4) {
         CallFieldTask_ContinueGame_CommError(sFieldSysPtr);
@@ -93,7 +93,7 @@ void sub_0203DEF0(FieldSystem *fieldSystem) {
 
     HandleLoadOverlay(FS_OVERLAY_ID(field), OVY_LOAD_ASYNC);
 
-    fieldSystem->unk6C      = FALSE;
+    fieldSystem->unk6C = FALSE;
     fieldSystem->unk0->isPaused = FALSE;
     fieldSystem->unk0->unk0 = OverlayManager_New(&ov01_02206378, fieldSystem, HEAP_ID_FIELD);
 }

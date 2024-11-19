@@ -21,10 +21,10 @@
 .public MapObject_SetMovementCommand
 .public MapObject_GetMovementCommand
 .public MapObject_SetMovementStep
-.public MapObject_IncMovementStep
+.public MapObject_IncrementMovementStep
 .public MapObject_GetMovementStep
 .public MapObject_CheckVisible
-.public MapObject_SetFacingVec
+.public MapObject_SetFacingVector
 .public sub_02060F24
 .public sub_02060F78
 .public sub_0206101C

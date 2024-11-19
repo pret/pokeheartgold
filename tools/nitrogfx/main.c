@@ -66,7 +66,7 @@ void ConvertNtrToPng(char *inputPath, char *outputPath, struct NtrToPngOptions *
     struct Image image;
 
     if (options->paletteFilePath != NULL) {
-        ReadNtrPalette(options->paletteFilePath, &image.palette, options->bitDepth, options->palIndex);
+        ReadNtrPalette(options->paletteFilePath, &image.palette, options->bitDepth, options->palIndex, false);
         image.hasPalette = true;
     } else {
         image.hasPalette = false;
@@ -75,9 +75,8 @@ void ConvertNtrToPng(char *inputPath, char *outputPath, struct NtrToPngOptions *
     uint32_t key = ReadNtrImage(inputPath, options->width, 0, options->colsPerChunk, options->rowsPerChunk, &image, !image.hasPalette, options->scanFrontToBack);
 
     if (key) {
-        size_t outputStringSize = strlen(outputPath) + 5;
-        char *string            = malloc(outputStringSize);
-        snprintf(string, outputStringSize, "%s.key", outputPath);
+        char *string = malloc(strlen(outputPath) + 5);
+        sprintf(string, "%s.key", outputPath);
         FILE *fp = fopen(string, "wb");
         if (fp == NULL) {
             FATAL_ERROR("Failed to open key file for writing.\n");
@@ -127,15 +126,14 @@ void ConvertPngToNtr(char *inputPath, char *outputPath, struct PngToNtrOptions *
     fclose(fp);
     struct Image image;
 
-    image.bitDepth = options->bitDepth;
+    image.bitDepth = options->bitDepth == 0 ? 4 : options->bitDepth;
 
     ReadPng(inputPath, &image);
 
     uint32_t key = 0;
     if (options->scanMode) {
-        size_t inputPathSize = strlen(inputPath) + 5;
-        char *string         = malloc(inputPathSize);
-        snprintf(string, inputPathSize, "%s.key", inputPath);
+        char *string = malloc(strlen(inputPath) + 5);
+        sprintf(string, "%s.key", inputPath);
         FILE *fp2 = fopen(string, "rb");
         if (fp2 == NULL) {
             FATAL_ERROR("Failed to open key file for reading.\n");
@@ -148,7 +146,9 @@ void ConvertPngToNtr(char *inputPath, char *outputPath, struct PngToNtrOptions *
         free(string);
     }
 
-    WriteNtrImage(outputPath, options->numTiles, image.bitDepth, options->colsPerChunk, options->rowsPerChunk, &image, !image.hasPalette, options->clobberSize, options->byteOrder, options->version101, options->sopc, options->vramTransfer, options->scanMode, options->mappingType, key, options->wrongSize);
+    options->bitDepth = options->bitDepth == 0 ? image.bitDepth : options->bitDepth;
+
+    WriteNtrImage(outputPath, options->numTiles, options->bitDepth, options->colsPerChunk, options->rowsPerChunk, &image, !image.hasPalette, options->clobberSize, options->byteOrder, options->version101, options->sopc, options->vramTransfer, options->scanMode, options->mappingType, key, options->wrongSize);
 
     FreeImage(&image);
 }
@@ -163,9 +163,9 @@ void HandleGbaToPngCommand(char *inputPath, char *outputPath, int argc, char **a
         options.bitDepth = 4;
     }
     options.hasTransparency = false;
-    options.width           = 1;
-    options.colsPerChunk    = 1;
-    options.rowsPerChunk    = 1;
+    options.width = 1;
+    options.colsPerChunk = 1;
+    options.rowsPerChunk = 1;
 
     for (int i = 3; i < argc; i++) {
         char *option = argv[i];
@@ -238,12 +238,12 @@ void HandleNtrToPngCommand(char *inputPath, char *outputPath, int argc, char **a
     struct NtrToPngOptions options;
     options.paletteFilePath = NULL;
     options.hasTransparency = false;
-    options.width           = 0;
-    options.colsPerChunk    = 1;
-    options.rowsPerChunk    = 1;
-    options.palIndex        = 1;
+    options.width = 0;
+    options.colsPerChunk = 1;
+    options.rowsPerChunk = 1;
+    options.palIndex = 1;
     options.scanFrontToBack = false;
-    options.handleEmpty     = false;
+    options.handleEmpty = false;
 
     for (int i = 3; i < argc; i++) {
         char *option = argv[i];
@@ -339,8 +339,8 @@ void HandlePngToGbaCommand(char *inputPath, char *outputPath, int argc, char **a
         bitDepth = outputFileExtension[0] - '0';
     }
     struct PngToGbaOptions options;
-    options.numTiles     = 0;
-    options.bitDepth     = bitDepth;
+    options.numTiles = 0;
+    options.bitDepth = bitDepth;
     options.colsPerChunk = 1;
     options.rowsPerChunk = 1;
 
@@ -399,19 +399,19 @@ void HandlePngToGbaCommand(char *inputPath, char *outputPath, int argc, char **a
 
 void HandlePngToNtrCommand(char *inputPath, char *outputPath, int argc, char **argv) {
     struct PngToNtrOptions options;
-    options.numTiles     = 0;
-    options.bitDepth     = 4;
+    options.numTiles = 0;
+    options.bitDepth = 0;
     options.colsPerChunk = 1;
     options.rowsPerChunk = 1;
-    options.wrongSize    = false;
-    options.clobberSize  = false;
-    options.byteOrder    = true;
-    options.version101   = false;
-    options.sopc         = false;
-    options.scanMode     = 0;
-    options.handleEmpty  = false;
+    options.wrongSize = false;
+    options.clobberSize = false;
+    options.byteOrder = true;
+    options.version101 = false;
+    options.sopc = false;
+    options.scanMode = 0;
+    options.handleEmpty = false;
     options.vramTransfer = false;
-    options.mappingType  = 0;
+    options.mappingType = 0;
 
     for (int i = 3; i < argc; i++) {
         char *option = argv[i];
@@ -527,12 +527,13 @@ void HandlePngToGbaPaletteCommand(char *inputPath, char *outputPath, int argc UN
 
 void HandlePngToNtrPaletteCommand(char *inputPath, char *outputPath, int argc, char **argv) {
     struct Palette palette;
-    bool ncpr    = false;
-    bool ir      = false;
-    bool nopad   = false;
+    bool ncpr = false;
+    bool ir = false;
+    bool nopad = false;
     int bitdepth = 0;
-    int compNum  = 0;
-    bool pcmp    = false;
+    int compNum = 0;
+    bool pcmp = false;
+    bool inverted = false;
 
     for (int i = 3; i < argc; i++) {
         char *option = argv[i];
@@ -573,13 +574,15 @@ void HandlePngToNtrPaletteCommand(char *inputPath, char *outputPath, int argc, c
             }
         } else if (strcmp(option, "-pcmp") == 0) {
             pcmp = true;
+        } else if (strcmp(option, "-invertsize") == 0) {
+            inverted = true;
         } else {
             FATAL_ERROR("Unrecognized option \"%s\".\n", option);
         }
     }
 
     ReadPngPalette(inputPath, &palette);
-    WriteNtrPalette(outputPath, &palette, ncpr, ir, bitdepth, !nopad, compNum, pcmp);
+    WriteNtrPalette(outputPath, &palette, ncpr, ir, bitdepth, !nopad, compNum, pcmp, inverted);
 }
 
 void HandleGbaToJascPaletteCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED) {
@@ -592,6 +595,7 @@ void HandleGbaToJascPaletteCommand(char *inputPath, char *outputPath, int argc U
 void HandleNtrToJascPaletteCommand(char *inputPath, char *outputPath, int argc, char **argv) {
     struct Palette palette;
     int bitdepth = 0;
+    bool inverted = false;
 
     for (int i = 3; i < argc; i++) {
         char *option = argv[i];
@@ -610,12 +614,14 @@ void HandleNtrToJascPaletteCommand(char *inputPath, char *outputPath, int argc, 
             if (bitdepth != 4 && bitdepth != 8) {
                 FATAL_ERROR("Bitdepth must be 4 or 8.\n");
             }
+        } else if (strcmp(option, "-invertsize") == 0) {
+            inverted = true;
         } else {
             FATAL_ERROR("Unrecognized option \"%s\".\n", option);
         }
     }
 
-    ReadNtrPalette(inputPath, &palette, bitdepth, 0);
+    ReadNtrPalette(inputPath, &palette, bitdepth, 0, inverted);
     WriteJascPalette(outputPath, &palette);
 }
 
@@ -657,12 +663,13 @@ void HandleJascToGbaPaletteCommand(char *inputPath, char *outputPath, int argc, 
 
 void HandleJascToNtrPaletteCommand(char *inputPath, char *outputPath, int argc, char **argv) {
     int numColors = 0;
-    bool ncpr     = false;
-    bool ir       = false;
-    bool nopad    = false;
-    int bitdepth  = 0;
-    int compNum   = 0;
-    bool pcmp     = false;
+    bool ncpr = false;
+    bool ir = false;
+    bool nopad = false;
+    int bitdepth = 0;
+    int compNum = 0;
+    bool pcmp = false;
+    bool inverted = false;
 
     for (int i = 3; i < argc; i++) {
         char *option = argv[i];
@@ -717,6 +724,8 @@ void HandleJascToNtrPaletteCommand(char *inputPath, char *outputPath, int argc, 
             nopad = true;
         } else if (strcmp(option, "-pcmp") == 0) {
             pcmp = true;
+        } else if (strcmp(option, "-invertsize") == 0) {
+            inverted = true;
         } else {
             FATAL_ERROR("Unrecognized option \"%s\".\n", option);
         }
@@ -730,7 +739,7 @@ void HandleJascToNtrPaletteCommand(char *inputPath, char *outputPath, int argc, 
         palette.numColors = numColors;
     }
 
-    WriteNtrPalette(outputPath, &palette, ncpr, ir, bitdepth, !nopad, compNum, pcmp);
+    WriteNtrPalette(outputPath, &palette, ncpr, ir, bitdepth, !nopad, compNum, pcmp, inverted);
 }
 
 void HandleJsonToNtrCellCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED) {
@@ -889,7 +898,8 @@ void HandlePngToFullwidthJapaneseFontCommand(char *inputPath, char *outputPath, 
 
 void HandleLZCompressCommand(char *inputPath, char *outputPath, int argc, char **argv) {
     int overflowSize = 0;
-    int minDistance  = 2; // default, for compatibility with LZ77UnCompVram()
+    int minDistance = 2; // default, for compatibility with LZ77UnCompVram()
+    bool forwardIteration = true;
 
     for (int i = 3; i < argc; i++) {
         char *option = argv[i];
@@ -922,6 +932,8 @@ void HandleLZCompressCommand(char *inputPath, char *outputPath, int argc, char *
             if (minDistance < 1) {
                 FATAL_ERROR("LZ min search distance must be positive.\n");
             }
+        } else if (strcmp(option, "-reverse") == 0) {
+            forwardIteration = false;
         } else {
             FATAL_ERROR("Unrecognized option \"%s\".\n", option);
         }
@@ -937,7 +949,7 @@ void HandleLZCompressCommand(char *inputPath, char *outputPath, int argc, char *
     unsigned char *buffer = ReadWholeFileZeroPadded(inputPath, &fileSize, overflowSize);
 
     int compressedSize;
-    unsigned char *compressedData = LZCompress(buffer, fileSize + overflowSize, &compressedSize, minDistance);
+    unsigned char *compressedData = LZCompress(buffer, fileSize + overflowSize, &compressedSize, minDistance, forwardIteration);
 
     compressedData[1] = (unsigned char)fileSize;
     compressedData[2] = (unsigned char)(fileSize >> 8);
@@ -1044,6 +1056,71 @@ void HandleHuffDecompressCommand(char *inputPath, char *outputPath, int argc UNU
     free(uncompressedData);
 }
 
+void HandleNtrFontToPngCommand(char *inputPath, char *outputPath, int argc, char **argv) {
+    struct NtrFontOptions options;
+    options.metadataFilePath = NULL;
+    options.useSubscreenPalette = false;
+
+    for (int i = 3; i < argc; i++) {
+        char *option = argv[i];
+
+        if (strcmp(option, "-metadata") == 0) {
+            if (i + 1 >= argc) {
+                FATAL_ERROR("No file path following \"-metadata\".\n");
+            }
+
+            options.metadataFilePath = argv[++i];
+        } else if (strcmp(option, "-subscreen") == 0) {
+            options.useSubscreenPalette = true;
+        }
+    }
+
+    if (options.metadataFilePath == NULL) {
+        FATAL_ERROR("No file path given for \"-metadata\".\n");
+    }
+
+    struct Image image;
+    struct NtrFontMetadata metadata;
+    ReadNtrFont(inputPath, &image, &metadata, options.useSubscreenPalette);
+    WritePng(outputPath, &image);
+
+    char *metadataJson = GetNtrFontMetadataJson(&metadata);
+    WriteWholeStringToFile(options.metadataFilePath, metadataJson);
+
+    free(metadata.glyphWidthTable);
+    FreeImage(&image);
+}
+
+void HandlePngToNtrFontCommand(char *inputPath, char *outputPath, int argc, char **argv) {
+    struct NtrFontOptions options;
+    options.metadataFilePath = NULL;
+
+    for (int i = 3; i < argc; i++) {
+        char *option = argv[i];
+
+        if (strcmp(option, "-metadata") == 0) {
+            if (i + 1 >= argc) {
+                FATAL_ERROR("No file path following \"-metadata\".\n");
+            }
+
+            options.metadataFilePath = argv[++i];
+        }
+    }
+
+    if (options.metadataFilePath == NULL) {
+        FATAL_ERROR("No file path given for \"-metadata\".\n");
+    }
+
+    struct NtrFontMetadata *metadata = ParseNtrFontMetadataJson(options.metadataFilePath);
+    struct Image image = { .bitDepth = 2 };
+
+    ReadPng(inputPath, &image);
+    WriteNtrFont(outputPath, &image, metadata);
+
+    FreeNtrFontMetadata(metadata);
+    FreeImage(&image);
+}
+
 int main(int argc, char **argv) {
     if (argc < 3) {
         FATAL_ERROR("Usage: nitrogfx INPUT_PATH OUTPUT_PATH [options...]\n");
@@ -1087,12 +1164,14 @@ int main(int argc, char **argv) {
         { "lz",        NULL,        HandleLZDecompressCommand                },
         { NULL,        "rl",        HandleRLCompressCommand                  },
         { "rl",        NULL,        HandleRLDecompressCommand                },
+        { "NFGR",      "png",       HandleNtrFontToPngCommand                },
+        { "png",       "NFGR",      HandlePngToNtrFontCommand                },
         { NULL,        NULL,        NULL                                     }
     };
 
-    char *inputPath           = argv[1];
-    char *outputPath          = argv[2];
-    char *inputFileExtension  = GetFileExtension(inputPath);
+    char *inputPath = argv[1];
+    char *outputPath = argv[2];
+    char *inputFileExtension = GetFileExtension(inputPath);
     char *outputFileExtension = GetFileExtension(outputPath);
 
     if (inputFileExtension == NULL) {

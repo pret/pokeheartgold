@@ -26,9 +26,9 @@ typedef struct HatchEggTaskData {
 
 FS_EXTERN_OVERLAY(OVY_95);
 static const OVY_MGR_TEMPLATE sApplication_HatchEgg = {
-    .init   = HatchEggApp_Init,
-    .exec   = HatchEggApp_Main,
-    .exit   = HatchEggApp_Exit,
+    .init = HatchEggApp_Init,
+    .exec = HatchEggApp_Main,
+    .exit = HatchEggApp_Exit,
     .ovy_id = FS_OVERLAY_ID(OVY_95),
 };
 
@@ -47,8 +47,8 @@ static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
         break;
     case HATCHEGGTASKSTATE_UPDATE_MON_INFO: {
         FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-        Pokemon *pokemon         = data->unkC.mon;
-        PlayerProfile *profile   = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem));
+        Pokemon *pokemon = data->unkC.mon;
+        PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem));
 
         u32 mapsec = MapHeader_GetMapSec(fieldSystem->location->mapId);
         BOOL isEgg = FALSE;
@@ -69,11 +69,11 @@ static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
     case HATCHEGGTASKSTATE_OPEN_NAMING_SCREEN: {
         FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
 
-        u32 species                       = GetMonData(data->unkC.mon, MON_DATA_SPECIES, NULL);
-        Options *options                  = Save_PlayerData_GetOptionsAddr(FieldSystem_GetSaveData(fieldSystem));
-        data->namingScreenArgs            = NamingScreen_CreateArgs(HEAP_ID_FIELD, NAME_SCREEN_POKEMON, species, POKEMON_NAME_LENGTH, options, NULL);
+        u32 species = GetMonData(data->unkC.mon, MON_DATA_SPECIES, NULL);
+        Options *options = Save_PlayerData_GetOptionsAddr(FieldSystem_GetSaveData(fieldSystem));
+        data->namingScreenArgs = NamingScreen_CreateArgs(HEAP_ID_FIELD, NAME_SCREEN_POKEMON, species, POKEMON_NAME_LENGTH, options, NULL);
         data->namingScreenArgs->monGender = GetMonData(data->unkC.mon, MON_DATA_GENDER, NULL);
-        data->namingScreenArgs->monForm   = GetMonData(data->unkC.mon, MON_DATA_FORM, NULL);
+        data->namingScreenArgs->monForm = GetMonData(data->unkC.mon, MON_DATA_FORM, NULL);
 
         CallApplicationAsTask(taskManager, &gOverlayTemplate_NamingScreen, data->namingScreenArgs);
         data->state++;

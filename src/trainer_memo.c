@@ -76,22 +76,22 @@ static void BoxMon_CopyLevelToMetLevel(BoxPokemon *boxMon);
 static void BoxMon_SetOriginalTrainerData(BoxPokemon *boxMon, PlayerProfile *profile, HeapID heapId);
 
 Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
-    Unk0208E600 *ptr                  = AllocFromHeap(heapId, sizeof(Unk0208E600));
-    ptr->heapId                       = heapId;
-    ptr->msgData                      = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0302_bin, heapId);
-    ptr->msgFmt                       = MessageFormat_New_Custom(9, 32, ptr->heapId);
-    ptr->mon                          = mon;
-    ptr->isMine                       = isMine;
-    ptr->notepad.natureLine           = 0;
-    ptr->notepad.nature               = NULL;
-    ptr->notepad.dateLocationMetLine  = 0;
-    ptr->notepad.dateLocationMet      = NULL;
-    ptr->notepad.characteristicLine   = 0;
-    ptr->notepad.characteristic       = NULL;
+    Unk0208E600 *ptr = AllocFromHeap(heapId, sizeof(Unk0208E600));
+    ptr->heapId = heapId;
+    ptr->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0302_bin, heapId);
+    ptr->msgFmt = MessageFormat_New_Custom(9, 32, ptr->heapId);
+    ptr->mon = mon;
+    ptr->isMine = isMine;
+    ptr->notepad.natureLine = 0;
+    ptr->notepad.nature = NULL;
+    ptr->notepad.dateLocationMetLine = 0;
+    ptr->notepad.dateLocationMet = NULL;
+    ptr->notepad.characteristicLine = 0;
+    ptr->notepad.characteristic = NULL;
     ptr->notepad.flavorPreferenceLine = 0;
-    ptr->notepad.flavorPreference     = NULL;
-    ptr->notepad.eggWatchLine         = 0;
-    ptr->notepad.eggWatch             = NULL;
+    ptr->notepad.flavorPreference = NULL;
+    ptr->notepad.eggWatchLine = 0;
+    ptr->notepad.eggWatch = NULL;
 
     int metCondition = MonMetCondition(ptr->mon, ptr->isMine);
     switch (metCondition) {
@@ -301,7 +301,7 @@ void sub_0208E994(Unk0208E600 *a0) {
 // Returns true if the Pokemon has the proper metadata to trigger the event.
 BOOL MonMetadataMatchesEvent(u8 eventNo, Pokemon *mon, BOOL isMine) {
     u8 metCondition = MonMetCondition(mon, isMine);
-    u8 version      = GetMonData(mon, MON_DATA_GAME_VERSION, NULL);
+    u8 version = GetMonData(mon, MON_DATA_GAME_VERSION, NULL);
 
     if ((metCondition == MET_CONDITION_FATEFUL_ENCOUNTER || metCondition == MET_CONDITION_FATEFUL_ENCOUNTER_TRADED) && (eventNo != EVENT_ARCEUS_HALL_OF_ORIGIN)) {
         return TRUE;
@@ -338,7 +338,7 @@ static void FormatNature(Unk0208E600 *a0) {
 }
 
 static void FormatDateAndLocationMet(Unk0208E600 *a0, int msgNo) {
-    String *str                 = String_New(0x240, a0->heapId);
+    String *str = String_New(0x240, a0->heapId);
     a0->notepad.dateLocationMet = String_New(0x240, a0->heapId);
 
     ReadMsgDataIntoString(a0->msgData, msgNo, str);
@@ -360,7 +360,7 @@ static void FormatDateAndLocationMet(Unk0208E600 *a0, int msgNo) {
 static void FormatDateAndLocation_Migrated(Unk0208E600 *a0, int msgNo) {
     int version;
 
-    String *str                 = String_New(0x120, a0->heapId);
+    String *str = String_New(0x120, a0->heapId);
     a0->notepad.dateLocationMet = String_New(0x120, a0->heapId);
 
     ReadMsgDataIntoString(a0->msgData, msgNo, str);
@@ -408,7 +408,7 @@ static void FormatDateAndLocation_Migrated(Unk0208E600 *a0, int msgNo) {
 }
 
 static void FormatDateAndLocation_Egg(Unk0208E600 *a0, int msgNo, BOOL hatched) {
-    String *str                 = String_New(0x168, a0->heapId);
+    String *str = String_New(0x168, a0->heapId);
     a0->notepad.dateLocationMet = String_New(0x168, a0->heapId);
 
     ReadMsgDataIntoString(a0->msgData, msgNo, str);
@@ -435,12 +435,12 @@ static void FormatCharacteristic(Unk0208E600 *a0) {
 
     a0->notepad.characteristic = String_New(0x48, a0->heapId);
 
-    int hpIv        = GetMonData(a0->mon, MON_DATA_HP_IV, NULL);
-    int atkIv       = GetMonData(a0->mon, MON_DATA_ATK_IV, NULL);
-    int defIv       = GetMonData(a0->mon, MON_DATA_DEF_IV, NULL);
-    int speedIv     = GetMonData(a0->mon, MON_DATA_SPEED_IV, NULL);
-    int spAtkIv     = GetMonData(a0->mon, MON_DATA_SPATK_IV, NULL);
-    int spDefIv     = GetMonData(a0->mon, MON_DATA_SPDEF_IV, NULL);
+    int hpIv = GetMonData(a0->mon, MON_DATA_HP_IV, NULL);
+    int atkIv = GetMonData(a0->mon, MON_DATA_ATK_IV, NULL);
+    int defIv = GetMonData(a0->mon, MON_DATA_DEF_IV, NULL);
+    int speedIv = GetMonData(a0->mon, MON_DATA_SPEED_IV, NULL);
+    int spAtkIv = GetMonData(a0->mon, MON_DATA_SPATK_IV, NULL);
+    int spDefIv = GetMonData(a0->mon, MON_DATA_SPDEF_IV, NULL);
     u32 personality = GetMonData(a0->mon, MON_DATA_PERSONALITY, NULL);
 
     switch (personality % 6) {
@@ -595,7 +595,7 @@ static void FormatCharacteristic(Unk0208E600 *a0) {
 
 static void FormatFlavorPreference(Unk0208E600 *a0) {
     a0->notepad.flavorPreference = String_New(0x48, a0->heapId);
-    int index                    = 0;
+    int index = 0;
     for (int flavor = FLAVOR_START; flavor < FLAVOR_MAX; flavor++) {
         int preference = MonGetFlavorPreference(a0->mon, flavor);
         if (preference == 1) {
@@ -608,7 +608,7 @@ static void FormatFlavorPreference(Unk0208E600 *a0) {
 static void FormatEggWatch(Unk0208E600 *a0) {
     int msgNo;
 
-    int eggCycles        = GetMonData(a0->mon, MON_DATA_FRIENDSHIP, NULL);
+    int eggCycles = GetMonData(a0->mon, MON_DATA_FRIENDSHIP, NULL);
     a0->notepad.eggWatch = String_New(0x120, a0->heapId);
     if (eggCycles <= 5) {
         msgNo = msg_0302_00105;
@@ -794,8 +794,8 @@ void BoxMonSetTrainerMemo(BoxPokemon *boxMon, PlayerProfile *profile, int strat,
 }
 
 static void BoxMon_SetOriginalTrainerData(BoxPokemon *boxMon, PlayerProfile *profile, HeapID heapId) {
-    u32 otId     = PlayerProfile_GetTrainerID(profile);
-    u32 gender   = PlayerProfile_GetTrainerGender(profile);
+    u32 otId = PlayerProfile_GetTrainerID(profile);
+    u32 gender = PlayerProfile_GetTrainerGender(profile);
     String *name = PlayerProfile_GetPlayerName_NewString(profile, heapId);
 
     SetBoxMonData(boxMon, MON_DATA_OTID, &otId);

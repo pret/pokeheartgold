@@ -17,7 +17,7 @@
 .public TaskManager_GetEnvironment
 .public GetMetatileBehaviorAt
 .public GetPlayerXCoord
-.public GetPlayerYCoord
+.public GetPlayerZCoord
 .public G2x_SetBlendAlpha_
 .public memset
 .public _s32_div_f

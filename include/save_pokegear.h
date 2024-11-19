@@ -61,12 +61,12 @@ typedef struct SavePokegear {
     u8 unk_1;
     u8 unk_2;
     u8 unk_3;
-    u32 unk_4_0         : 9;
-    u32 unk_4_9         : 9;
-    u32 unk_4_18        : 7;
+    u32 unk_4_0 : 9;
+    u32 unk_4_9 : 9;
+    u32 unk_4_18 : 7;
     u32 registeredCards : 2;
-    u32 unk_4_27        : 2;
-    u32 unk_4_29        : 3;
+    u32 unk_4_27 : 2;
+    u32 unk_4_29 : 3;
     UnkPokegearSub8List unk_8;
     MomsSavings momsSavings;                        // 4B8
     PhoneContact phoneContacts[NUM_PHONE_CONTACTS]; // 60C

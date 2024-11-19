@@ -5,12 +5,11 @@ LineEnding: LF
 ColumnLimit: 0
 
 AlignAfterOpenBracket: DontAlign
-AlignConsecutiveAssignments:
-  Enabled: true
-AlignConsecutiveBitFields:
-  Enabled: true
+AlignConsecutiveAssignments: None
+AlignConsecutiveBitFields: None
 AlignConsecutiveDeclarations: None
 AlignConsecutiveMacros: Consecutive
+AlignEscapedNewlines: LeftWithLastLine
 AlignTrailingComments: true
 AlignArrayOfStructures: Left
 

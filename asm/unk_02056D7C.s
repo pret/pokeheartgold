@@ -173,7 +173,7 @@ sub_02056E60: ; 0x02056E60
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 _02056E9A:
 	pop {r3, pc}
 	.balign 4, 0
@@ -267,7 +267,7 @@ sub_02056EF4: ; 0x02056EF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	ldr r1, _02056FCC ; =_021D41C4
 	ldr r2, [r1]
 	lsl r1, r4, #3
@@ -305,7 +305,7 @@ sub_02056EF4: ; 0x02056EF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	ldr r1, _02056FCC ; =_021D41C4
 	ldr r2, [r1]
 	lsl r1, r4, #3
@@ -384,7 +384,7 @@ sub_0205701C: ; 0x0205701C
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1527,7 +1527,7 @@ _0205787A:
 	sub r0, r0, r1
 	str r0, [sp, #0x10]
 	ldr r0, [sp, #0x18]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	ldrh r1, [r6, #2]
 	sub r7, r0, r1
 	ldr r0, [sp, #0x18]
@@ -2563,14 +2563,14 @@ _02057FB6:
 	bl MapObject_SetCurrentX
 	ldr r0, [sp, #0xc]
 	add r1, r7, #0
-	bl MapObject_SetCurrentY
+	bl MapObject_SetCurrentZ
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #8]
 	str r0, [sp]
 	ldr r0, [sp, #0xc]
 	mov r2, #0
 	add r3, r7, #0
-	bl sub_0205FC2C
+	bl MapObject_SetPositionFromXYZAndDirection
 _02058010:
 	add r6, r6, #1
 	add r4, r4, #4

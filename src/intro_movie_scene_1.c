@@ -89,9 +89,9 @@ static void IntroMovie_Scene1_Init(IntroMovieOverlayData *data, IntroMovieScene1
 }
 
 static BOOL IntroMovie_Scene1_Main(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData, int totalFrames) {
-    BgConfig *bgConfig                 = IntroMovie_GetBgConfig(data);
+    BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     IntroMovieBgLinearAnims *bgAnimCnt = IntroMovie_GetBgLinearAnimsController(data);
-    u8 timer                           = IntroMovie_GetSceneStepTimer(data);
+    u8 timer = IntroMovie_GetSceneStepTimer(data);
     switch (IntroMovie_GetSceneStep(data)) {
     case INTRO_SCENE1_APPEAR_COPYRIGHT: // Copyright appear
         BgSetPosTextAndCommit(bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_SET_Y, 128);
@@ -313,10 +313,10 @@ static void IntroMovie_Scene1_SetBrightnessAndBgMaskColor(IntroMovieOverlayData 
 static void IntroMovie_Scene1_LoadSpriteGfx(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData) {
     IntroMovie_CreateSpriteResourceManagers(data, sIntroMovieScene1SpriteResCounts);
     GF_2DGfxResMan **ppMgr = IntroMovie_GetSpriteResourceManagersArray(data);
-    sceneData->charResObj  = AddCharResObjFromNarc(ppMgr[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_BIRD_CHARRES, TRUE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_INTRO_MOVIE);
-    sceneData->plttResObj  = AddPlttResObjFromNarc(ppMgr[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_BIRD_PLTTRES, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 2, HEAP_ID_INTRO_MOVIE);
-    sceneData->cellResObj  = AddCellOrAnimResObjFromNarc(ppMgr[GF_GFX_RES_TYPE_CELL], NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_BIRD_CELLRES, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_INTRO_MOVIE);
-    sceneData->animResObj  = AddCellOrAnimResObjFromNarc(ppMgr[GF_GFX_RES_TYPE_ANIM], NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_BIRD_ANIMRES, TRUE, 1, GF_GFX_RES_TYPE_ANIM, HEAP_ID_INTRO_MOVIE);
+    sceneData->charResObj = AddCharResObjFromNarc(ppMgr[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_BIRD_CHARRES, TRUE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_INTRO_MOVIE);
+    sceneData->plttResObj = AddPlttResObjFromNarc(ppMgr[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_BIRD_PLTTRES, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 2, HEAP_ID_INTRO_MOVIE);
+    sceneData->cellResObj = AddCellOrAnimResObjFromNarc(ppMgr[GF_GFX_RES_TYPE_CELL], NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_BIRD_CELLRES, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_INTRO_MOVIE);
+    sceneData->animResObj = AddCellOrAnimResObjFromNarc(ppMgr[GF_GFX_RES_TYPE_ANIM], NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_BIRD_ANIMRES, TRUE, 1, GF_GFX_RES_TYPE_ANIM, HEAP_ID_INTRO_MOVIE);
     sub_0200ACF0(sceneData->charResObj);
     sub_0200AF94(sceneData->plttResObj);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
@@ -337,7 +337,7 @@ static void IntroMovie_Scene1_CreateSprites(IntroMovieOverlayData *data, IntroMo
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(1, data, 1, NNS_G2D_VRAM_TYPE_2DMAIN, &spriteTemplate, &spriteResourcesHeader);
     spriteTemplate.position.x = 128 * FX32_ONE;
     spriteTemplate.position.y = 96 * FX32_ONE;
-    sceneData->sunSprite      = Sprite_CreateAffine(&spriteTemplate);
+    sceneData->sunSprite = Sprite_CreateAffine(&spriteTemplate);
     Sprite_SetAnimActiveFlag(sceneData->sunSprite, FALSE);
     Sprite_SetVisibleFlag(sceneData->sunSprite, FALSE);
     Sprite_SetAnimCtrlSeq(sceneData->sunSprite, 0);
@@ -345,7 +345,7 @@ static void IntroMovie_Scene1_CreateSprites(IntroMovieOverlayData *data, IntroMo
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(1, data, 0, NNS_G2D_VRAM_TYPE_2DMAIN, &spriteTemplate, &spriteResourcesHeader);
     spriteTemplate.position.x = 128 * FX32_ONE;
     spriteTemplate.position.y = 96 * FX32_ONE;
-    sceneData->birdSprite     = Sprite_CreateAffine(&spriteTemplate);
+    sceneData->birdSprite = Sprite_CreateAffine(&spriteTemplate);
     Sprite_SetAnimActiveFlag(sceneData->birdSprite, FALSE);
     Sprite_SetVisibleFlag(sceneData->birdSprite, FALSE);
     Sprite_SetAnimCtrlSeq(sceneData->birdSprite, 1);

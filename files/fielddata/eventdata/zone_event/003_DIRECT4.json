@@ -3,20 +3,20 @@
   "objects": [
     {
       "id": "obj_DIRECT4_pcwoman3",
-      "sprite_id": "SPRITE_PCWOMAN3",
+      "spriteId": "SPRITE_PCWOMAN3",
       "movement": 16,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "std_colosseum_pcwoman3",
-      "dirn": 2,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "std_colosseum_pcwoman3",
+      "facingDirection": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 12,
-      "y": 4,
-      "z": 0
+      "z": 4,
+      "y": 0
     }
   ]
 }

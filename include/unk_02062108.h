@@ -18,5 +18,6 @@ void EventObjectMovementMan_Delete(EventObjectMovementMan *movementMan);
 BOOL MapObject_AreBitsSetForMovementScriptInit(LocalMapObject *obj);
 BOOL MapObject_ClearHeldMovementIfActive(LocalMapObject *obj);
 void MapObject_SetHeldMovement(LocalMapObject *obj, u32 a1);
+BOOL MapObject_IsMovementPaused(LocalMapObject *object);
 
 #endif // POKEHEARTGOLD_UNK_02062108_H

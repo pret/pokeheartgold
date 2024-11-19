@@ -2,88 +2,88 @@
   "header": "fielddata/script/scr_seq/event_T07R0106.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_T07R0106_002 + 1",
+      "scriptId": "_EV_scr_seq_T07R0106_002 + 1",
       "type": 0,
       "x": 7,
-      "y": 2,
-      "z": 0,
+      "z": 2,
+      "y": 0,
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T07R0106_003 + 1",
+      "scriptId": "_EV_scr_seq_T07R0106_003 + 1",
       "type": 0,
       "x": 15,
-      "y": 3,
-      "z": 0,
+      "z": 3,
+      "y": 0,
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T07R0106_003 + 1",
+      "scriptId": "_EV_scr_seq_T07R0106_003 + 1",
       "type": 0,
       "x": 19,
-      "y": 3,
-      "z": 0,
+      "z": 3,
+      "y": 0,
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T07R0106_003 + 1",
+      "scriptId": "_EV_scr_seq_T07R0106_003 + 1",
       "type": 0,
       "x": 20,
-      "y": 3,
-      "z": 0,
+      "z": 3,
+      "y": 0,
       "dir": 0
     }
   ],
   "objects": [
     {
       "id": "obj_T07R0106_gsman1",
-      "sprite_id": "SPRITE_GSMAN1",
+      "spriteId": "SPRITE_GSMAN1",
       "movement": 14,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T07R0106_000 + 1",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_T07R0106_000 + 1",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 16,
-      "y": 4,
-      "z": 0
+      "z": 4,
+      "y": 0
     },
     {
       "id": "obj_T07R0106_gsboy1",
-      "sprite_id": "SPRITE_GSBOY1",
+      "spriteId": "SPRITE_GSBOY1",
       "movement": 3,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T07R0106_001 + 1",
-      "dirn": 3,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 1,
-      "yrange": 1,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_T07R0106_001 + 1",
+      "facingDirection": 3,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 1,
+      "yRange": 1,
       "x": 18,
-      "y": 11,
-      "z": 0
+      "z": 11,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 11,
-      "y": 8,
+      "z": 8,
       "header": "MAP_T07R0105",
       "anchor": 1,
-      "height": 0
+      "y": 0
     },
     {
       "x": 5,
-      "y": 2,
+      "z": 2,
       "header": "MAP_T07R0107",
       "anchor": 0,
-      "height": 0
+      "y": 0
     }
   ]
 }

@@ -403,7 +403,7 @@ _021E5C4A:
 	ldr r1, [r4, #0x20]
 	str r0, [r1, #8]
 	ldr r0, [r4, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	ldr r1, [r4, #0x20]
 	str r0, [r1, #0xc]
 	ldr r0, [r4, #0x40]
@@ -655,7 +655,7 @@ ov01_021E5ED4: ; 0x021E5ED4
 	bl GetPlayerXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	ldr r2, [r5, #0x20]
 	ldr r1, [r2, #8]
 	cmp r4, r1
@@ -687,7 +687,7 @@ ov01_021E5F04: ; 0x021E5F04
 	add r1, r0, r1
 	ldr r0, [r5, #0x40]
 	asr r4, r1, #5
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	asr r1, r0, #4
 	lsr r1, r1, #0x1b
 	add r1, r0, r1

@@ -173,9 +173,9 @@ void Save_VarsFlags_RollLotoId(SaveVarsFlags *state) {
 
 void Save_LCRNGAdvanceLotoID(SaveData *saveData, u16 var) {
 #pragma unused(var)
-    SaveVarsFlags *state          = Save_VarsFlags_Get(saveData);
+    SaveVarsFlags *state = Save_VarsFlags_Get(saveData);
     SAV_FRIEND_GRP *friend_groups = Save_FriendGroup_Get(saveData);
-    u32 rand_id                   = sub_0202C7DC(friend_groups) * 1103515245 + 12345;
+    u32 rand_id = sub_0202C7DC(friend_groups) * 1103515245 + 12345;
 
     Save_VarsFlags_SetLotoId(state, rand_id);
 }
@@ -190,13 +190,13 @@ void Save_VarsFlags_SetVar4041(SaveVarsFlags *state, u16 value) {
 
 void sub_02066D60(SaveData *saveData) {
     SaveVarsFlags *state = Save_VarsFlags_Get(saveData);
-    u32 rand             = LCRandom() % 98;
+    u32 rand = LCRandom() % 98;
 
     Save_VarsFlags_SetVar4041(state, rand + 2);
 }
 
 void sub_02066D80(SaveVarsFlags *state) {
-    u16 var       = GetScriptVar(state, VAR_UNK_4042);
+    u16 var = GetScriptVar(state, VAR_UNK_4042);
     u16 unk_value = 10000;
     if (var < 10000) {
         unk_value = var + 1;
@@ -267,7 +267,7 @@ void Save_VarsFlags_SetVar4057(SaveVarsFlags *state, u16 value) {
 }
 
 void Save_VarsFlags_UpdateBuenasPasswordSet(SaveVarsFlags *state) {
-    u16 set     = GetScriptVar(state, VAR_BUENAS_PASSWORD_SET);
+    u16 set = GetScriptVar(state, VAR_BUENAS_PASSWORD_SET);
     u16 new_set = LCRandom() % 30;
 
     if (set == new_set) {

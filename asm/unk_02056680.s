@@ -33,7 +33,7 @@ _020566A2:
 	bl GetPlayerXCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	add r1, r0, #0
 	ldr r2, [r4, #0x18]
 	add r0, r6, #0
@@ -186,7 +186,7 @@ _020567D8:
 	bl GetPlayerXCoord
 	str r0, [sp]
 	ldr r0, [r5, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	add r1, r0, #0
 	ldr r0, [sp]
 	add r2, r7, #0
@@ -259,7 +259,7 @@ _0205686A:
 	add r1, r1, #1
 	str r1, [r6]
 	add r1, sp, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	mov r0, #2
 	ldr r1, [sp, #4]
 	lsl r0, r0, #0xc
@@ -267,7 +267,7 @@ _0205686A:
 	str r0, [sp, #4]
 	add r0, r7, #0
 	add r1, sp, #0
-	bl MapObject_SetPositionVec
+	bl MapObject_SetPositionVector
 	ldr r0, [r6]
 	cmp r0, #0x10
 	blt _02056932
@@ -391,7 +391,7 @@ _02056986:
 	add r1, r1, #1
 	str r1, [r6]
 	add r1, sp, #0
-	bl MapObject_GetPositionVec
+	bl MapObject_CopyPositionVector
 	mov r0, #2
 	ldr r1, [sp, #4]
 	lsl r0, r0, #0xc
@@ -399,7 +399,7 @@ _02056986:
 	str r0, [sp, #4]
 	add r0, r7, #0
 	add r1, sp, #0
-	bl MapObject_SetPositionVec
+	bl MapObject_SetPositionVector
 	ldr r0, [r6]
 	cmp r0, #0x10
 	blt _02056A4E
@@ -577,7 +577,7 @@ sub_02056AEC: ; 0x02056AEC
 	bl GetPlayerXCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0

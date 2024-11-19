@@ -32,7 +32,7 @@ void WiFiHistory_SetPlayerGlobeInfo(SaveWiFiHistory *wifiHistory, int country, i
     GF_ASSERT(country < SAVE_WIFI_HISTORY_COUNTRY_MAX + 1);
     GF_ASSERT(region < SAVE_WIFI_HISTORY_REGION_MAX);
     wifiHistory->country = country;
-    wifiHistory->region  = region;
+    wifiHistory->region = region;
     WiFiHistory_SetLocationSeenState(wifiHistory, country, region, SAVE_WIFI_HISTORY_STATE_MINE);
     SaveSubstruct_UpdateCRC(SAVE_WIFI_HISTORY);
 }

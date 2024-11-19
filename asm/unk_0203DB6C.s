@@ -35,7 +35,7 @@ _GetCoordsOfFacingTile: ; 0x0203DB78
 	bl GetPlayerXCoord
 	str r0, [r4]
 	ldr r0, [r6, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	str r0, [r5]
 	cmp r7, #3
 	bhi _0203DBCE
@@ -80,10 +80,10 @@ sub_0203DBD4: ; 0x0203DBD4
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	bl PlayerAvatar_GetMapObject
-	bl sub_0205F9D0
+	bl MapObject_GetPositionVectorYCoordUInt
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F9D0
+	bl MapObject_GetPositionVectorYCoordUInt
 	cmp r4, r0
 	bne _0203DBF0
 	mov r0, #1
@@ -150,7 +150,7 @@ _0203DC52:
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	mov r3, #0
-	bl sub_0205FB58
+	bl MapObjectManager_GetFirstObjectWithXAndZ
 	str r0, [r6]
 	add sp, #8
 	pop {r4, r5, r6, pc}
@@ -165,7 +165,7 @@ sub_0203DC64: ; 0x0203DC64
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _0203DC8C
-	bl MapObject_CheckFlag19Is0
+	bl MapObject_CheckFlag19Disabled
 	cmp r0, #1
 	bne _0203DC8C
 	ldr r0, [r5, #0x40]
@@ -406,7 +406,7 @@ sub_0203DE04: ; 0x0203DE04
 	add r6, r0, #0
 	ldr r0, [sp]
 	ldr r0, [r0, #0x40]
-	bl GetPlayerYCoord
+	bl GetPlayerZCoord
 	add r4, r0, #0
 	ldr r0, [sp, #8]
 	mov r7, #0

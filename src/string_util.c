@@ -95,7 +95,7 @@ u16 *ConvertUIntToDecimalString(u16 *dest, u32 num, PrintingMode strconvmode, u3
             dest++;
         } else if (digit != 0 || denom == 1) {
             strconvmode = PRINTING_MODE_LEADING_ZEROS;
-            *dest       = (digit >= 10) ? CHAR_JP_QUESTION_MARK : _digit_strcode[digit];
+            *dest = (digit >= 10) ? CHAR_JP_QUESTION_MARK : _digit_strcode[digit];
             dest++;
         } else if (strconvmode == PRINTING_MODE_RIGHT_ALIGN) {
             *dest = CHAR_JP_SPACE;

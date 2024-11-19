@@ -1,13 +1,13 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public sub_02020DA4
-.public sub_0205F09C
+.public MapObject_GetPriorityPlusValue
 .public sub_0205F0A8
 .public MapObject_GetID
-.public sub_0205F254
+.public MapObject_GetMapID
 .public MapObject_GetFacingDirection
 .public MapObject_GetFieldSystem
-.public MapObject_GetPositionVec
+.public MapObject_CopyPositionVector
 .public sub_0205F9A0
 .public sub_0206121C
 .public sub_02068D74

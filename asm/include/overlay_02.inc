@@ -244,7 +244,7 @@
 .public sub_0205BB04
 .public PlayerAvatar_GetFacingDirection
 .public GetPlayerXCoord
-.public GetPlayerYCoord
+.public GetPlayerZCoord
 .public PlayerAvatar_GetPositionVec
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_GetState
@@ -255,7 +255,7 @@
 .public MapObjectManager_GetFirstActiveObjectByID
 .public MapObjectManager_GetObjectCount
 .public MapObjectManager_GetObjects
-.public sub_0205F1D0
+.public MapObjectArray_NextObject2
 .public MapObject_GetID
 .public MapObject_GetSpriteID
 .public MapObject_SetFacingDirectionDirect
@@ -264,14 +264,14 @@
 .public MapObject_GetManager
 .public sub_0205F484
 .public MapObject_GetFieldSystem
-.public MapObject_IsInUse
+.public MapObject_CheckActive
 .public MapObject_SetVisible
 .public MapObject_PauseMovement
 .public MapObject_UnpauseMovement
 .public MapObject_GetCurrentX
-.public MapObject_GetCurrentY
-.public MapObject_GetPositionVec
-.public MapObject_SetPositionVec
+.public MapObject_GetCurrentZ
+.public MapObject_CopyPositionVector
+.public MapObject_SetPositionVector
 .public GetDeltaXByFacingDirection
 .public GetDeltaYByFacingDirection
 .public MapObject_AreBitsSetForMovementScriptInit

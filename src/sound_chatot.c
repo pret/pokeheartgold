@@ -96,16 +96,16 @@ void sub_02006DB8() {
 BOOL Chatot_StartRecording(void) {
     MICAutoParam st0;
 
-    st0.type   = MIC_SAMPLING_TYPE_SIGNED_8BIT;
+    st0.type = MIC_SAMPLING_TYPE_SIGNED_8BIT;
     st0.buffer = sub_020059D8();
-    st0.size   = 2000;
+    st0.size = 2000;
     if ((st0.size & 0x1f) != 0) {
         st0.size &= ~0x1f;
     }
-    st0.rate          = HW_CPU_CLOCK_ARM7 / 2000;
-    st0.loop_enable   = 0;
+    st0.rate = HW_CPU_CLOCK_ARM7 / 2000;
+    st0.loop_enable = 0;
     st0.full_callback = 0;
-    st0.full_arg      = 0;
+    st0.full_arg = 0;
 
     return GF_MIC_StartAutoSampling(&st0);
 }
@@ -120,7 +120,7 @@ void Chatot_SaveRecording(SOUND_CHATOT *a0) {
 
 void sub_02006E3C(u8 a0) {
     u8 *r0 = GF_SdatGetAttrPtr(31);
-    *r0    = a0;
+    *r0 = a0;
 }
 
 void sub_02006E4C(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3) {

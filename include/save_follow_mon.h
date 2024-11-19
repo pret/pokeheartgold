@@ -5,7 +5,7 @@
 
 typedef struct SaveFollowMon {
     u32 mapNo;
-    s32 unused      : 2;
+    s32 unused : 2;
     s32 inhibitFlag : 1;
 } SaveFollowMon;
 

@@ -55,17 +55,17 @@ static void AdvanceTilePosition(int *tilesSoFar, int *rowsSoFar, int *chunkStart
 }
 
 static void ConvertFromTiles1Bpp(unsigned char *src, unsigned char *dest, int numTiles, int chunksWide, int colsPerChunk, int rowsPerChunk, bool invertColors) {
-    int tilesSoFar  = 0;
-    int rowsSoFar   = 0;
+    int tilesSoFar = 0;
+    int rowsSoFar = 0;
     int chunkStartX = 0;
     int chunkStartY = 0;
-    int pitch       = chunksWide * colsPerChunk;
+    int pitch = chunksWide * colsPerChunk;
 
     for (int i = 0; i < numTiles; i++) {
         for (int j = 0; j < 8; j++) {
-            int idxComponentY             = (chunkStartY * rowsPerChunk + rowsSoFar) * 8 + j;
-            int idxComponentX             = chunkStartX * colsPerChunk + tilesSoFar;
-            unsigned char srcPixelOctet   = *src++;
+            int idxComponentY = (chunkStartY * rowsPerChunk + rowsSoFar) * 8 + j;
+            int idxComponentX = chunkStartX * colsPerChunk + tilesSoFar;
+            unsigned char srcPixelOctet = *src++;
             unsigned char *destPixelOctet = &dest[idxComponentY * pitch + idxComponentX];
 
             for (int k = 0; k < 8; k++) {
@@ -80,24 +80,24 @@ static void ConvertFromTiles1Bpp(unsigned char *src, unsigned char *dest, int nu
 }
 
 static void ConvertFromTiles4Bpp(unsigned char *src, unsigned char *dest, int numTiles, int chunksWide, int colsPerChunk, int rowsPerChunk, bool invertColors) {
-    int tilesSoFar  = 0;
-    int rowsSoFar   = 0;
+    int tilesSoFar = 0;
+    int rowsSoFar = 0;
     int chunkStartX = 0;
     int chunkStartY = 0;
-    int pitch       = (chunksWide * colsPerChunk) * 4;
+    int pitch = (chunksWide * colsPerChunk) * 4;
 
     for (int i = 0; i < numTiles; i++) {
         for (int j = 0; j < 8; j++) {
             int idxComponentY = (chunkStartY * rowsPerChunk + rowsSoFar) * 8 + j;
 
             for (int k = 0; k < 4; k++) {
-                int idxComponentX          = (chunkStartX * colsPerChunk + tilesSoFar) * 4 + k;
+                int idxComponentX = (chunkStartX * colsPerChunk + tilesSoFar) * 4 + k;
                 unsigned char srcPixelPair = *src++;
-                unsigned char leftPixel    = srcPixelPair & 0xF;
-                unsigned char rightPixel   = srcPixelPair >> 4;
+                unsigned char leftPixel = srcPixelPair & 0xF;
+                unsigned char rightPixel = srcPixelPair >> 4;
 
                 if (invertColors) {
-                    leftPixel  = 15 - leftPixel;
+                    leftPixel = 15 - leftPixel;
                     rightPixel = 15 - rightPixel;
                 }
 
@@ -116,10 +116,10 @@ static uint32_t ConvertFromScanned4Bpp(unsigned char *src, unsigned char *dest, 
         for (int i = 0; i < fileSize; i += 2) {
             uint16_t val = src[i] | (src[i + 1] << 8);
             val ^= (encValue & 0xFFFF);
-            src[i]     = val;
+            src[i] = val;
             src[i + 1] = val >> 8;
-            encValue   = encValue * 1103515245;
-            encValue   = encValue + 24691;
+            encValue = encValue * 1103515245;
+            encValue = encValue + 24691;
         }
     } else {
         encValue = (src[fileSize - 1] << 8) | src[fileSize - 2];
@@ -128,17 +128,17 @@ static uint32_t ConvertFromScanned4Bpp(unsigned char *src, unsigned char *dest, 
             val ^= (encValue & 0xFFFF);
             src[i - 1] = (val >> 8);
             src[i - 2] = val;
-            encValue   = encValue * 1103515245;
-            encValue   = encValue + 24691;
+            encValue = encValue * 1103515245;
+            encValue = encValue + 24691;
         }
     }
     for (int i = 0; i < fileSize; i++) {
         unsigned char srcPixelPair = src[i];
-        unsigned char leftPixel    = srcPixelPair & 0xF;
-        unsigned char rightPixel   = srcPixelPair >> 4;
+        unsigned char leftPixel = srcPixelPair & 0xF;
+        unsigned char rightPixel = srcPixelPair >> 4;
 
         if (invertColours) {
-            leftPixel  = 15 - leftPixel;
+            leftPixel = 15 - leftPixel;
             rightPixel = 15 - rightPixel;
         }
 
@@ -148,18 +148,18 @@ static uint32_t ConvertFromScanned4Bpp(unsigned char *src, unsigned char *dest, 
 }
 
 static void ConvertFromTiles8Bpp(unsigned char *src, unsigned char *dest, int numTiles, int chunksWide, int colsPerChunk, int rowsPerChunk, bool invertColors) {
-    int tilesSoFar  = 0;
-    int rowsSoFar   = 0;
+    int tilesSoFar = 0;
+    int rowsSoFar = 0;
     int chunkStartX = 0;
     int chunkStartY = 0;
-    int pitch       = (chunksWide * colsPerChunk) * 8;
+    int pitch = (chunksWide * colsPerChunk) * 8;
 
     for (int i = 0; i < numTiles; i++) {
         for (int j = 0; j < 8; j++) {
             int idxComponentY = (chunkStartY * rowsPerChunk + rowsSoFar) * 8 + j;
 
             for (int k = 0; k < 8; k++) {
-                int idxComponentX      = (chunkStartX * colsPerChunk + tilesSoFar) * 8 + k;
+                int idxComponentX = (chunkStartX * colsPerChunk + tilesSoFar) * 8 + k;
                 unsigned char srcPixel = *src++;
 
                 if (invertColors) {
@@ -181,10 +181,10 @@ static uint32_t ConvertFromScanned8Bpp(unsigned char *src, unsigned char *dest, 
         for (int i = 0; i < fileSize; i += 2) {
             uint16_t val = src[i] | (src[i + 1] << 8);
             val ^= (encValue & 0xFFFF);
-            src[i]     = val;
+            src[i] = val;
             src[i + 1] = val >> 8;
-            encValue   = encValue * 1103515245;
-            encValue   = encValue + 24691;
+            encValue = encValue * 1103515245;
+            encValue = encValue + 24691;
         }
     } else {
         encValue = (src[fileSize - 1] << 8) | src[fileSize - 2];
@@ -193,8 +193,8 @@ static uint32_t ConvertFromScanned8Bpp(unsigned char *src, unsigned char *dest, 
             val ^= (encValue & 0xFFFF);
             src[i - 1] = (val >> 8);
             src[i - 2] = val;
-            encValue   = encValue * 1103515245;
-            encValue   = encValue + 24691;
+            encValue = encValue * 1103515245;
+            encValue = encValue + 24691;
         }
     }
     for (int i = 0; i < fileSize; i++) {
@@ -210,17 +210,17 @@ static uint32_t ConvertFromScanned8Bpp(unsigned char *src, unsigned char *dest, 
 }
 
 static void ConvertToTiles1Bpp(unsigned char *src, unsigned char *dest, int numTiles, int chunksWide, int colsPerChunk, int rowsPerChunk, bool invertColors) {
-    int tilesSoFar  = 0;
-    int rowsSoFar   = 0;
+    int tilesSoFar = 0;
+    int rowsSoFar = 0;
     int chunkStartX = 0;
     int chunkStartY = 0;
-    int pitch       = chunksWide * colsPerChunk;
+    int pitch = chunksWide * colsPerChunk;
 
     for (int i = 0; i < numTiles; i++) {
         for (int j = 0; j < 8; j++) {
-            int idxComponentY             = (chunkStartY * rowsPerChunk + rowsSoFar) * 8 + j;
-            int idxComponentX             = chunkStartX * colsPerChunk + tilesSoFar;
-            unsigned char srcPixelOctet   = src[idxComponentY * pitch + idxComponentX];
+            int idxComponentY = (chunkStartY * rowsPerChunk + rowsSoFar) * 8 + j;
+            int idxComponentX = chunkStartX * colsPerChunk + tilesSoFar;
+            unsigned char srcPixelOctet = src[idxComponentY * pitch + idxComponentX];
             unsigned char *destPixelOctet = dest++;
 
             for (int k = 0; k < 8; k++) {
@@ -235,24 +235,24 @@ static void ConvertToTiles1Bpp(unsigned char *src, unsigned char *dest, int numT
 }
 
 static void ConvertToTiles4Bpp(unsigned char *src, unsigned char *dest, int numTiles, int chunksWide, int colsPerChunk, int rowsPerChunk, bool invertColors) {
-    int tilesSoFar  = 0;
-    int rowsSoFar   = 0;
+    int tilesSoFar = 0;
+    int rowsSoFar = 0;
     int chunkStartX = 0;
     int chunkStartY = 0;
-    int pitch       = (chunksWide * colsPerChunk) * 4;
+    int pitch = (chunksWide * colsPerChunk) * 4;
 
     for (int i = 0; i < numTiles; i++) {
         for (int j = 0; j < 8; j++) {
             int idxComponentY = (chunkStartY * rowsPerChunk + rowsSoFar) * 8 + j;
 
             for (int k = 0; k < 4; k++) {
-                int idxComponentX          = (chunkStartX * colsPerChunk + tilesSoFar) * 4 + k;
+                int idxComponentX = (chunkStartX * colsPerChunk + tilesSoFar) * 4 + k;
                 unsigned char srcPixelPair = src[idxComponentY * pitch + idxComponentX];
-                unsigned char leftPixel    = srcPixelPair >> 4;
-                unsigned char rightPixel   = srcPixelPair & 0xF;
+                unsigned char leftPixel = srcPixelPair >> 4;
+                unsigned char rightPixel = srcPixelPair & 0xF;
 
                 if (invertColors) {
-                    leftPixel  = 15 - leftPixel;
+                    leftPixel = 15 - leftPixel;
                     rightPixel = 15 - rightPixel;
                 }
 
@@ -267,10 +267,10 @@ static void ConvertToTiles4Bpp(unsigned char *src, unsigned char *dest, int numT
 static void ConvertToScanned4Bpp(unsigned char *src, unsigned char *dest, int fileSize, bool invertColours, uint32_t encValue, uint32_t scanMode) {
     for (int i = 0; i < fileSize; i++) {
         unsigned char srcPixelPair = src[i];
-        unsigned char leftPixel    = srcPixelPair & 0xF;
-        unsigned char rightPixel   = srcPixelPair >> 4;
+        unsigned char leftPixel = srcPixelPair & 0xF;
+        unsigned char rightPixel = srcPixelPair >> 4;
         if (invertColours) {
-            leftPixel  = 15 - leftPixel;
+            leftPixel = 15 - leftPixel;
             rightPixel = 15 - rightPixel;
         }
         dest[i] = (leftPixel << 4) | rightPixel;
@@ -279,35 +279,35 @@ static void ConvertToScanned4Bpp(unsigned char *src, unsigned char *dest, int fi
     if (scanMode == 2) { // front to back
         for (int i = fileSize - 1; i > 0; i -= 2) {
             uint16_t val = dest[i - 1] | (dest[i] << 8);
-            encValue     = (encValue - 24691) * 4005161829;
+            encValue = (encValue - 24691) * 4005161829;
             val ^= (encValue & 0xFFFF);
-            dest[i]     = (val >> 8);
+            dest[i] = (val >> 8);
             dest[i - 1] = val;
         }
     } else if (scanMode == 1) {
         for (int i = 1; i < fileSize; i += 2) {
             uint16_t val = (dest[i] << 8) | dest[i - 1];
-            encValue     = (encValue - 24691) * 4005161829;
+            encValue = (encValue - 24691) * 4005161829;
             val ^= (encValue & 0xFFFF);
-            dest[i]     = (val >> 8);
+            dest[i] = (val >> 8);
             dest[i - 1] = val;
         }
     }
 }
 
 static void ConvertToTiles8Bpp(unsigned char *src, unsigned char *dest, int numTiles, int chunksWide, int colsPerChunk, int rowsPerChunk, bool invertColors) {
-    int tilesSoFar  = 0;
-    int rowsSoFar   = 0;
+    int tilesSoFar = 0;
+    int rowsSoFar = 0;
     int chunkStartX = 0;
     int chunkStartY = 0;
-    int pitch       = (chunksWide * colsPerChunk) * 8;
+    int pitch = (chunksWide * colsPerChunk) * 8;
 
     for (int i = 0; i < numTiles; i++) {
         for (int j = 0; j < 8; j++) {
             int idxComponentY = (chunkStartY * rowsPerChunk + rowsSoFar) * 8 + j;
 
             for (int k = 0; k < 8; k++) {
-                int idxComponentX      = (chunkStartX * colsPerChunk + tilesSoFar) * 8 + k;
+                int idxComponentX = (chunkStartX * colsPerChunk + tilesSoFar) * 8 + k;
                 unsigned char srcPixel = src[idxComponentY * pitch + idxComponentX];
 
                 if (invertColors) {
@@ -340,10 +340,10 @@ void ReadImage(char *path, int tilesWide, int bitDepth, int colsPerChunk, int ro
         FATAL_ERROR("The height in tiles (%d) isn't a multiple of the specified rows per chunk (%d)", tilesTall, rowsPerChunk);
     }
 
-    image->width    = tilesWide * 8;
-    image->height   = tilesTall * 8;
+    image->width = tilesWide * 8;
+    image->height = tilesTall * 8;
     image->bitDepth = bitDepth;
-    image->pixels   = calloc(tilesWide * tilesTall, tileSize);
+    image->pixels = calloc(tilesWide * tilesTall, tileSize);
 
     if (image->pixels == NULL) {
         FATAL_ERROR("Failed to allocate memory for pixels.\n");
@@ -392,17 +392,17 @@ uint32_t ReadNtrImage(char *path, int tilesWide, int bitDepth, int colsPerChunk,
 
     int tileSize = bitDepth * 8; // number of bytes per tile
 
-    int tilesWide_in = ReadS16(charHeader, 0xA);
-    if (tilesWide_in < 0 && tilesWide == 0) {
-        tilesWide = 1;
-    } else if (tilesWide == 0) {
-        tilesWide = tilesWide_in;
+    if (tilesWide == 0) {
+        tilesWide = ReadS16(charHeader, 0xA);
+        if (tilesWide < 0) {
+            tilesWide = 1;
+        }
     }
 
     int numTiles = ReadS32(charHeader, 0x18) / (64 / (8 / bitDepth));
 
     int tilesTall = ReadS16(charHeader, 0x8);
-    if (tilesTall < 0 || tilesWide != tilesWide_in) {
+    if (tilesTall < 0) {
         tilesTall = (numTiles + tilesWide - 1) / tilesWide;
     }
 
@@ -414,10 +414,10 @@ uint32_t ReadNtrImage(char *path, int tilesWide, int bitDepth, int colsPerChunk,
         FATAL_ERROR("The height in tiles (%d) isn't a multiple of the specified rows per chunk (%d)", tilesTall, rowsPerChunk);
     }
 
-    image->width    = tilesWide * 8;
-    image->height   = tilesTall * 8;
+    image->width = tilesWide * 8;
+    image->height = tilesTall * 8;
     image->bitDepth = bitDepth;
-    image->pixels   = calloc(tilesWide * tilesTall, tileSize);
+    image->pixels = calloc(tilesWide * tilesTall, tileSize);
 
     if (image->pixels == NULL) {
         FATAL_ERROR("Failed to allocate memory for pixels.\n");
@@ -480,7 +480,7 @@ void WriteImage(char *path, int numTiles, int bitDepth, int colsPerChunk, int ro
         FATAL_ERROR("The specified number of tiles (%d) is greater than the maximum possible value (%d).\n", numTiles, maxNumTiles);
     }
 
-    int bufferSize        = numTiles * tileSize;
+    int bufferSize = numTiles * tileSize;
     unsigned char *buffer = malloc(bufferSize);
 
     if (buffer == NULL) {
@@ -542,7 +542,7 @@ void WriteNtrImage(char *path, int numTiles, int bitDepth, int colsPerChunk, int
         FATAL_ERROR("The specified number of tiles (%d) is greater than the maximum possible value (%d).\n", numTiles, maxNumTiles);
     }
 
-    int bufferSize             = numTiles * tileSize;
+    int bufferSize = numTiles * tileSize;
     unsigned char *pixelBuffer = malloc(bufferSize);
 
     if (pixelBuffer == NULL) {
@@ -587,8 +587,8 @@ void WriteNtrImage(char *path, int numTiles, int bitDepth, int colsPerChunk, int
         charHeader[10] = tilesWide & 0xFF;
         charHeader[11] = (tilesWide >> 8) & 0xFF;
     } else {
-        charHeader[8]  = 0xFF;
-        charHeader[9]  = 0xFF;
+        charHeader[8] = 0xFF;
+        charHeader[9] = 0xFF;
         charHeader[10] = 0xFF;
         charHeader[11] = 0xFF;
 
@@ -673,16 +673,16 @@ void ReadGbaPalette(char *path, struct Palette *palette) {
     palette->numColors = fileSize / 2;
 
     for (int i = 0; i < palette->numColors; i++) {
-        uint16_t paletteEntry    = (data[i * 2 + 1] << 8) | data[i * 2];
-        palette->colors[i].red   = UPCONVERT_BIT_DEPTH(GET_GBA_PAL_RED(paletteEntry));
+        uint16_t paletteEntry = (data[i * 2 + 1] << 8) | data[i * 2];
+        palette->colors[i].red = UPCONVERT_BIT_DEPTH(GET_GBA_PAL_RED(paletteEntry));
         palette->colors[i].green = UPCONVERT_BIT_DEPTH(GET_GBA_PAL_GREEN(paletteEntry));
-        palette->colors[i].blue  = UPCONVERT_BIT_DEPTH(GET_GBA_PAL_BLUE(paletteEntry));
+        palette->colors[i].blue = UPCONVERT_BIT_DEPTH(GET_GBA_PAL_BLUE(paletteEntry));
     }
 
     free(data);
 }
 
-void ReadNtrPalette(char *path, struct Palette *palette, int bitdepth, int palIndex) {
+void ReadNtrPalette(char *path, struct Palette *palette, int bitdepth, int palIndex, bool inverted) {
     int fileSize;
     unsigned char *data = ReadWholeFile(path, &fileSize);
 
@@ -706,6 +706,9 @@ void ReadNtrPalette(char *path, struct Palette *palette, int bitdepth, int palIn
     bitdepth = bitdepth ? bitdepth : palette->bitDepth;
 
     size_t paletteSize = (paletteHeader[0x10]) | (paletteHeader[0x11] << 8) | (paletteHeader[0x12] << 16) | (paletteHeader[0x13] << 24);
+    if (inverted) {
+        paletteSize = 0x200 - paletteSize;
+    }
     if (palIndex == 0) {
         palette->numColors = paletteSize / 2;
     } else {
@@ -717,14 +720,14 @@ void ReadNtrPalette(char *path, struct Palette *palette, int bitdepth, int palIn
 
     for (int i = 0; i < 256; i++) {
         if (i < palette->numColors) {
-            uint16_t paletteEntry    = (paletteData[(32 * palIndex) + i * 2 + 1] << 8) | paletteData[(32 * palIndex) + i * 2];
-            palette->colors[i].red   = UPCONVERT_BIT_DEPTH(GET_GBA_PAL_RED(paletteEntry));
+            uint16_t paletteEntry = (paletteData[(32 * palIndex) + i * 2 + 1] << 8) | paletteData[(32 * palIndex) + i * 2];
+            palette->colors[i].red = UPCONVERT_BIT_DEPTH(GET_GBA_PAL_RED(paletteEntry));
             palette->colors[i].green = UPCONVERT_BIT_DEPTH(GET_GBA_PAL_GREEN(paletteEntry));
-            palette->colors[i].blue  = UPCONVERT_BIT_DEPTH(GET_GBA_PAL_BLUE(paletteEntry));
+            palette->colors[i].blue = UPCONVERT_BIT_DEPTH(GET_GBA_PAL_BLUE(paletteEntry));
         } else {
-            palette->colors[i].red   = 0;
+            palette->colors[i].red = 0;
             palette->colors[i].green = 0;
-            palette->colors[i].blue  = 0;
+            palette->colors[i].blue = 0;
         }
     }
 
@@ -739,9 +742,9 @@ void WriteGbaPalette(char *path, struct Palette *palette) {
     }
 
     for (int i = 0; i < palette->numColors; i++) {
-        unsigned char red   = DOWNCONVERT_BIT_DEPTH(palette->colors[i].red);
+        unsigned char red = DOWNCONVERT_BIT_DEPTH(palette->colors[i].red);
         unsigned char green = DOWNCONVERT_BIT_DEPTH(palette->colors[i].green);
-        unsigned char blue  = DOWNCONVERT_BIT_DEPTH(palette->colors[i].blue);
+        unsigned char blue = DOWNCONVERT_BIT_DEPTH(palette->colors[i].blue);
 
         uint16_t paletteEntry = SET_GBA_PAL(red, green, blue);
 
@@ -752,7 +755,7 @@ void WriteGbaPalette(char *path, struct Palette *palette) {
     fclose(fp);
 }
 
-void WriteNtrPalette(char *path, struct Palette *palette, bool ncpr, bool ir, int bitdepth, bool pad, int compNum, bool pcmp) {
+void WriteNtrPalette(char *path, struct Palette *palette, bool ncpr, bool ir, int bitdepth, bool pad, int compNum, bool pcmp, bool inverted) {
     FILE *fp = fopen(path, "wb");
 
     if (fp == NULL) {
@@ -761,11 +764,11 @@ void WriteNtrPalette(char *path, struct Palette *palette, bool ncpr, bool ir, in
 
     int colourNum = pad ? 256 : palette->numColors;
 
-    uint32_t size    = colourNum * 2; // todo check if there's a better way to detect :/
+    uint32_t size = colourNum * 2; // todo check if there's a better way to detect :/
     uint32_t extSize = size + (ncpr ? 0x10 : 0x18);
 
-    int numSections   = 1;
-    int pcmpColorNum  = 0;
+    int numSections = 1;
+    int pcmpColorNum = 0;
     uint32_t pcmpSize = 0;
     if (pcmp) {
         pcmpColorNum = colourNum / (bitdepth == 4 ? 16 : 256);
@@ -803,10 +806,11 @@ void WriteNtrPalette(char *path, struct Palette *palette, bool ncpr, bool ir, in
     }
 
     // size
-    palHeader[16] = size & 0xFF;
-    palHeader[17] = (size >> 8) & 0xFF;
-    palHeader[18] = (size >> 16) & 0xFF;
-    palHeader[19] = (size >> 24) & 0xFF;
+    int colorSize = inverted ? 0x200 - size : size;
+    palHeader[16] = colorSize & 0xFF;
+    palHeader[17] = (colorSize >> 8) & 0xFF;
+    palHeader[18] = (colorSize >> 16) & 0xFF;
+    palHeader[19] = (colorSize >> 24) & 0xFF;
 
     fwrite(palHeader, 1, 0x18, fp);
 
@@ -814,16 +818,16 @@ void WriteNtrPalette(char *path, struct Palette *palette, bool ncpr, bool ir, in
     // palette data
     for (int i = 0; i < colourNum; i++) {
         if (i < palette->numColors) {
-            unsigned char red   = DOWNCONVERT_BIT_DEPTH(palette->colors[i].red);
+            unsigned char red = DOWNCONVERT_BIT_DEPTH(palette->colors[i].red);
             unsigned char green = DOWNCONVERT_BIT_DEPTH(palette->colors[i].green);
-            unsigned char blue  = DOWNCONVERT_BIT_DEPTH(palette->colors[i].blue);
+            unsigned char blue = DOWNCONVERT_BIT_DEPTH(palette->colors[i].blue);
 
             uint16_t paletteEntry = SET_GBA_PAL(red, green, blue);
 
-            colours[i * 2]     = paletteEntry & 0xFF;
+            colours[i * 2] = paletteEntry & 0xFF;
             colours[i * 2 + 1] = paletteEntry >> 8;
         } else {
-            colours[i * 2]     = 0x00;
+            colours[i * 2] = 0x00;
             colours[i * 2 + 1] = 0x00;
         }
     }
@@ -838,12 +842,12 @@ void WriteNtrPalette(char *path, struct Palette *palette, bool ncpr, bool ir, in
 
     if (pcmp) {
         uint8_t pcmp_header[16] = { 0x50, 0x4D, 0x43, 0x50, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xEF, 0xBE, 0x08, 0x00, 0x00, 0x00 };
-        pcmp_header[4]          = pcmpSize & 0xFF;
-        pcmp_header[5]          = (pcmpSize >> 8) & 0xFF;
-        pcmp_header[6]          = (pcmpSize >> 16) & 0xFF;
-        pcmp_header[7]          = (pcmpSize >> 24) & 0xFF;
-        pcmp_header[8]          = pcmpColorNum & 0xFF;
-        pcmp_header[9]          = (pcmpColorNum >> 8) & 0xFF;
+        pcmp_header[4] = pcmpSize & 0xFF;
+        pcmp_header[5] = (pcmpSize >> 8) & 0xFF;
+        pcmp_header[6] = (pcmpSize >> 16) & 0xFF;
+        pcmp_header[7] = (pcmpSize >> 24) & 0xFF;
+        pcmp_header[8] = pcmpColorNum & 0xFF;
+        pcmp_header[9] = (pcmpColorNum >> 8) & 0xFF;
         fwrite(pcmp_header, 1, 16, fp);
 
         uint8_t *pcmp_data = malloc(2 * pcmpColorNum);
@@ -851,7 +855,7 @@ void WriteNtrPalette(char *path, struct Palette *palette, bool ncpr, bool ir, in
             FATAL_ERROR("failed to alloc pcmp_data\n");
         }
         for (int i = 0; i < pcmpColorNum; ++i) {
-            pcmp_data[i * 2]     = i & 0xFF;
+            pcmp_data[i * 2] = i & 0xFF;
             pcmp_data[i * 2 + 1] = (i >> 8) & 0xFF;
         }
         fwrite(pcmp_data, 1, pcmpColorNum * 2, fp);
@@ -863,7 +867,10 @@ void WriteNtrPalette(char *path, struct Palette *palette, bool ncpr, bool ir, in
 
 void ReadNtrCell_CEBK(unsigned char *restrict data, unsigned int blockOffset, unsigned int blockSize, struct JsonToCellOptions *options) {
     options->cellCount = data[blockOffset + 0x8] | (data[blockOffset + 0x9] << 8);
-    options->extended  = data[blockOffset + 0xA] == 1;
+    options->extended = data[blockOffset + 0xA] == 1;
+
+    int vramTransferOffset = (data[blockOffset + 0x14] | data[blockOffset + 0x15] << 8);
+    options->vramTransferEnabled = vramTransferOffset > 0;
     /*if (!options->extended)
     {
         //in theory not extended should be implemented, however not 100% sure
@@ -873,20 +880,20 @@ void ReadNtrCell_CEBK(unsigned char *restrict data, unsigned int blockOffset, un
     options->mappingType = data[blockOffset + 0x10];
 
     options->cells = malloc(sizeof(struct Cell *) * options->cellCount);
-    int celSize    = options->extended ? 0x10 : 0x8;
+    int celSize = options->extended ? 0x10 : 0x8;
 
     for (int i = 0; i < options->cellCount; i++) {
         int offset = blockOffset + 0x20 + (i * celSize);
-        if (offset + celSize > blockSize) {
-            FATAL_ERROR("corrupted CEBK block");
+        if (offset + celSize > blockOffset + blockSize) {
+            FATAL_ERROR("corrupted CEBK block\n");
         }
-        options->cells[i]                                  = malloc(sizeof(struct Cell));
-        options->cells[i]->oamCount                        = data[offset] | (data[offset + 1] << 8);
-        short cellAttrs                                    = data[offset + 2] | (data[offset + 3] << 8);
-        options->cells[i]->attributes.hFlip                = (cellAttrs >> 8) & 1;
-        options->cells[i]->attributes.vFlip                = (cellAttrs >> 9) & 1;
-        options->cells[i]->attributes.hvFlip               = (cellAttrs >> 10) & 1;
-        options->cells[i]->attributes.boundingRect         = (cellAttrs >> 11) & 1;
+        options->cells[i] = malloc(sizeof(struct Cell));
+        options->cells[i]->oamCount = data[offset] | (data[offset + 1] << 8);
+        short cellAttrs = data[offset + 2] | (data[offset + 3] << 8);
+        options->cells[i]->attributes.hFlip = (cellAttrs >> 8) & 1;
+        options->cells[i]->attributes.vFlip = (cellAttrs >> 9) & 1;
+        options->cells[i]->attributes.hvFlip = (cellAttrs >> 10) & 1;
+        options->cells[i]->attributes.boundingRect = (cellAttrs >> 11) & 1;
         options->cells[i]->attributes.boundingSphereRadius = cellAttrs & 0x3F;
 
         if (options->extended) {
@@ -949,10 +956,27 @@ void ReadNtrCell_CEBK(unsigned char *restrict data, unsigned int blockOffset, un
             offset += 6;
         }
     }
+
+    if (options->vramTransferEnabled) {
+        offset = blockOffset + 0x08 + vramTransferOffset;
+
+        // first 2 dwords are max size and offset, offset *should* always be 0x08 since the transfer data list immediately follows this
+        options->vramTransferMaxSize = data[offset] | (data[offset + 1] << 8) | (data[offset + 2] << 16) | (data[offset + 3] << 24);
+        offset += 0x08;
+
+        // read 1 VRAM transfer data block for each cell (this is an assumption based on the NCERs I looked at)
+        options->transferData = malloc(sizeof(struct CellVramTransferData *) * options->cellCount);
+        for (int idx = 0; idx < options->cellCount; idx++) {
+            options->transferData[idx] = malloc(sizeof(struct CellVramTransferData));
+            options->transferData[idx]->sourceDataOffset = data[offset] | (data[offset + 1] << 8) | (data[offset + 2] << 16) | (data[offset + 3] << 24);
+            options->transferData[idx]->size = data[offset + 4] | (data[offset + 5] << 8) | (data[offset + 6] << 16) | (data[offset + 7] << 24);
+            offset += 8;
+        }
+    }
 }
 
 void ReadNtrCell_LABL(unsigned char *restrict data, unsigned int blockOffset, unsigned int blockSize, struct JsonToCellOptions *options) {
-    int count              = 0;
+    int count = 0;
     unsigned int textStart = blockOffset + 8;
     while (textStart < blockOffset + blockSize) {
         unsigned int labelOffset = data[textStart] | (data[textStart + 1] << 8) | (data[textStart + 2] << 16) | (data[textStart + 3] << 24);
@@ -964,11 +988,11 @@ void ReadNtrCell_LABL(unsigned char *restrict data, unsigned int blockOffset, un
         }
     }
     options->labelCount = count;
-    options->labels     = malloc(sizeof(char *) * count);
+    options->labels = malloc(sizeof(char *) * count);
     for (int i = 0; i < count; ++i) {
         int offset = textStart + (data[blockOffset + 4 * i + 8] | (data[blockOffset + 4 * i + 9] << 8) | (data[blockOffset + 4 * i + 10] << 16) | (data[blockOffset + 4 * i + 11] << 24));
         if (offset > blockOffset + blockSize) {
-            FATAL_ERROR("corrupted LABL block");
+            FATAL_ERROR("corrupted LABL block\n");
         }
         unsigned long slen = strnlen((char *)data + offset, blockSize - offset);
         options->labels[i] = malloc(slen + 1);
@@ -986,7 +1010,7 @@ void ReadNtrCell(char *path, struct JsonToCellOptions *options) {
         FATAL_ERROR("Not a valid NCER cell file.\n");
     }
 
-    options->labelEnabled = data[0xE] != 1;
+    options->labelEnabled = false;
 
     unsigned int blockSize;
     offset = FindNitroDataBlock(data, "KBEC", fileSize, &blockSize);
@@ -997,6 +1021,7 @@ void ReadNtrCell(char *path, struct JsonToCellOptions *options) {
     }
     offset = FindNitroDataBlock(data, "LBAL", fileSize, &blockSize);
     if (offset != -1u) {
+        options->labelEnabled = true;
         ReadNtrCell_LABL(data, offset, blockSize, options);
     }
 
@@ -1010,7 +1035,23 @@ void WriteNtrCell(char *path, struct JsonToCellOptions *options) {
         FATAL_ERROR("Failed to open \"%s\" for writing.\n", path);
     }
 
-    unsigned int totalSize = (options->labelEnabled > 0 ? 0x34 : 0x20) + options->cellCount * (options->extended ? 0x16 : 0xe);
+    int iterNum = (options->extended ? 0x10 : 0x8);
+
+    // KBEC base size: 0x08 per bank, or 0x10 per extended bank
+    unsigned int kbecSize = options->cellCount * (options->extended ? 0x10 : 0x08);
+    // if VRAM transfer is enabled, add 0x08 for the header and 0x08 for each cell
+    if (options->vramTransferEnabled) {
+        kbecSize += 0x08 + (0x08 * options->cellCount);
+    }
+    // add 0x06 for number of OAMs - can be more than 1
+    for (int idx = 0; idx < options->cellCount * iterNum; idx += iterNum) {
+        kbecSize += options->cells[idx / iterNum]->oamCount * 0x06;
+    }
+
+    // KBEC size is padded to be 4-byte aligned
+    kbecSize += kbecSize % 4;
+
+    unsigned int totalSize = (options->labelEnabled > 0 ? 0x34 : 0x20) + kbecSize;
 
     if (options->labelEnabled) {
         for (int j = 0; j < options->labelCount; j++) {
@@ -1030,18 +1071,26 @@ void WriteNtrCell(char *path, struct JsonToCellOptions *options) {
         KBECHeader[10] = 1; // extended
     }
 
-    unsigned int size = options->cellCount * (options->extended ? 0x16 : 0xe);
-
-    KBECHeader[4] = (size + 0x20) & 0xFF; // size
-    KBECHeader[5] = (size + 0x20) >> 8;   // unlikely to be more than 16 bits, but there are 32 allocated, change if necessary
+    KBECHeader[4] = (kbecSize + 0x20) & 0xFF; // size
+    KBECHeader[5] = (kbecSize + 0x20) >> 8;   // unlikely to be more than 16 bits, but there are 32 allocated, change if necessary
 
     KBECHeader[16] = (options->mappingType & 0xFF); // not possible to be more than 8 bits, though 32 are allocated
 
+    // offset to VRAM transfer data within KBEC section (offset from KBEC start + 0x08)
+    if (options->vramTransferEnabled) {
+        unsigned int vramTransferLength = 0x08 + (0x08 * options->cellCount);
+        unsigned int vramTransferOffset = (kbecSize + 0x20) - vramTransferLength - 0x08;
+        KBECHeader[20] = vramTransferOffset & 0xFF;
+        KBECHeader[21] = (vramTransferOffset >> 8) & 0xFF;
+        KBECHeader[22] = (vramTransferOffset >> 16) & 0xFF;
+        KBECHeader[23] = (vramTransferOffset >> 24) & 0xFF;
+    }
+
     fwrite(KBECHeader, 1, 0x20, fp);
 
-    unsigned char *KBECContents = malloc(size);
+    unsigned char *KBECContents = malloc(kbecSize);
 
-    memset(KBECContents, 0, size);
+    memset(KBECContents, 0, kbecSize);
 
     /*if (!options->extended)
     {
@@ -1050,7 +1099,6 @@ void WriteNtrCell(char *path, struct JsonToCellOptions *options) {
     }*/
 
     int i;
-    int iterNum  = (options->extended ? 0x10 : 0x8);
     int totalOam = 0;
     for (i = 0; i < options->cellCount * iterNum; i += iterNum) {
         KBECContents[i] = options->cells[i / iterNum]->oamCount; // number of OAM entries
@@ -1062,8 +1110,8 @@ void WriteNtrCell(char *path, struct JsonToCellOptions *options) {
         KBECContents[i + 4] = (totalOam * 6) & 0xff; // pointer to OAM data
         KBECContents[i + 5] = (totalOam * 6) >> 8;   // unlikely to be more than 16 bits, but there are 32 allocated, change if necessary
         if (options->extended) {
-            KBECContents[i + 8]  = options->cells[i / iterNum]->maxX & 0xff; // maxX
-            KBECContents[i + 9]  = options->cells[i / iterNum]->maxX >> 8;
+            KBECContents[i + 8] = options->cells[i / iterNum]->maxX & 0xff; // maxX
+            KBECContents[i + 9] = options->cells[i / iterNum]->maxX >> 8;
             KBECContents[i + 10] = options->cells[i / iterNum]->maxY & 0xff; // maxY
             KBECContents[i + 11] = options->cells[i / iterNum]->maxY >> 8;
             KBECContents[i + 12] = options->cells[i / iterNum]->minX & 0xff; // minX
@@ -1130,7 +1178,36 @@ void WriteNtrCell(char *path, struct JsonToCellOptions *options) {
         }
     }
 
-    fwrite(KBECContents, 1, size, fp);
+    // VRAM transfer data
+    if (options->vramTransferEnabled) {
+        // max transfer size + fixed offset 0x08
+        KBECContents[offset] = options->vramTransferMaxSize & 0xFF;
+        KBECContents[offset + 1] = (options->vramTransferMaxSize >> 8) & 0xFF;
+        KBECContents[offset + 2] = (options->vramTransferMaxSize >> 16) & 0xFF;
+        KBECContents[offset + 3] = (options->vramTransferMaxSize >> 24) & 0xFF;
+
+        KBECContents[offset + 4] = 0x08;
+
+        offset += 8;
+
+        // write a VRAM transfer block for each cell
+        for (int idx = 0; idx < options->cellCount; idx++) {
+            // offset
+            KBECContents[offset] = options->transferData[idx]->sourceDataOffset & 0xFF;
+            KBECContents[offset + 1] = (options->transferData[idx]->sourceDataOffset >> 8) & 0xFF;
+            KBECContents[offset + 2] = (options->transferData[idx]->sourceDataOffset >> 16) & 0xFF;
+            KBECContents[offset + 3] = (options->transferData[idx]->sourceDataOffset >> 24) & 0xFF;
+
+            // size
+            KBECContents[offset + 4] = options->transferData[idx]->size & 0xFF;
+            KBECContents[offset + 5] = (options->transferData[idx]->size >> 8) & 0xFF;
+            KBECContents[offset + 6] = (options->transferData[idx]->size >> 16) & 0xFF;
+            KBECContents[offset + 7] = (options->transferData[idx]->size >> 24) & 0xFF;
+            offset += 8;
+        }
+    }
+
+    fwrite(KBECContents, 1, kbecSize, fp);
 
     free(KBECContents);
 
@@ -1231,7 +1308,7 @@ void ReadNtrAnimation(char *path, struct JsonToAnimationOptions *options) {
     }
 
     options->sequenceCount = data[0x18] | (data[0x19] << 8);
-    options->frameCount    = data[0x1A] | (data[0x1B] << 8);
+    options->frameCount = data[0x1A] | (data[0x1B] << 8);
 
     options->sequenceData = malloc(sizeof(struct SequenceData *) * options->sequenceCount);
 
@@ -1244,12 +1321,12 @@ void ReadNtrAnimation(char *path, struct JsonToAnimationOptions *options) {
     unsigned int *frameOffsets = malloc(sizeof(unsigned int) * options->sequenceCount);
 
     for (int i = 0; i < options->sequenceCount; i++, offset += 0x10) {
-        options->sequenceData[i]->frameCount       = data[offset] | (data[offset + 1] << 8);
-        options->sequenceData[i]->loopStartFrame   = data[offset + 2] | (data[offset + 3] << 8);
+        options->sequenceData[i]->frameCount = data[offset] | (data[offset + 1] << 8);
+        options->sequenceData[i]->loopStartFrame = data[offset + 2] | (data[offset + 3] << 8);
         options->sequenceData[i]->animationElement = data[offset + 4] | (data[offset + 5] << 8);
-        options->sequenceData[i]->animationType    = data[offset + 6] | (data[offset + 7] << 8);
-        options->sequenceData[i]->playbackMode     = data[offset + 8] | (data[offset + 9] << 8) | (data[offset + 10] << 16) | (data[offset + 11] << 24);
-        frameOffsets[i]                            = data[offset + 12] | (data[offset + 13] << 8) | (data[offset + 14] << 16) | (data[offset + 15] << 24);
+        options->sequenceData[i]->animationType = data[offset + 6] | (data[offset + 7] << 8);
+        options->sequenceData[i]->playbackMode = data[offset + 8] | (data[offset + 9] << 8) | (data[offset + 10] << 16) | (data[offset + 11] << 24);
+        frameOffsets[i] = data[offset + 12] | (data[offset + 13] << 8) | (data[offset + 14] << 16) | (data[offset + 15] << 24);
 
         options->sequenceData[i]->frameData = malloc(sizeof(struct FrameData *) * options->sequenceData[i]->frameCount);
         for (int j = 0; j < options->sequenceData[i]->frameCount; j++) {
@@ -1262,9 +1339,9 @@ void ReadNtrAnimation(char *path, struct JsonToAnimationOptions *options) {
 
     for (int i = 0; i < options->sequenceCount; i++) {
         for (int j = 0; j < options->sequenceData[i]->frameCount; j++) {
-            int frameOffset                                      = offset + frameOffsets[i] + j * 0x8;
+            int frameOffset = offset + frameOffsets[i] + j * 0x8;
             options->sequenceData[i]->frameData[j]->resultOffset = data[frameOffset] | (data[frameOffset + 1] << 8) | (data[frameOffset + 2] << 16) | (data[frameOffset + 3] << 24);
-            options->sequenceData[i]->frameData[j]->frameDelay   = data[frameOffset + 4] | (data[frameOffset + 5] << 8);
+            options->sequenceData[i]->frameData[j]->frameDelay = data[frameOffset + 4] | (data[frameOffset + 5] << 8);
             // 0xBEEF
 
             // the following is messy
@@ -1272,6 +1349,7 @@ void ReadNtrAnimation(char *path, struct JsonToAnimationOptions *options) {
             // check for offset in array
             for (int k = 0; k < options->frameCount; k++) {
                 if (resultOffsets[k] == options->sequenceData[i]->frameData[j]->resultOffset) {
+                    options->sequenceData[i]->frameData[j]->resultId = k;
                     present = true;
                     break;
                 }
@@ -1281,6 +1359,7 @@ void ReadNtrAnimation(char *path, struct JsonToAnimationOptions *options) {
             if (!present) {
                 for (int k = 0; i < options->frameCount; k++) {
                     if (resultOffsets[k] == -1) {
+                        options->sequenceData[i]->frameData[j]->resultId = k;
                         resultOffsets[k] = options->sequenceData[i]->frameData[j]->resultOffset;
                         break;
                     }
@@ -1310,34 +1389,49 @@ void ReadNtrAnimation(char *path, struct JsonToAnimationOptions *options) {
         options->animationResults[i] = malloc(sizeof(struct AnimationResults));
     }
 
-    int resultOffset = 0;
-    for (int i = 0; i < options->resultCount; i++) {
-        if (data[offset + 2] == 0xCC && data[offset + 3] == 0xCC) {
-            options->animationResults[i]->resultType = 0;
-        } else if (data[offset + 2] == 0xEF && data[offset + 3] == 0xBE) {
-            options->animationResults[i]->resultType = 2;
-        } else {
-            options->animationResults[i]->resultType = 1;
+    // store the animationElement of the corresponding sequence as this result's resultType
+    for (int i = 0; i < options->sequenceCount; i++) {
+        for (int j = 0; j < options->sequenceData[i]->frameCount; j++) {
+            options->animationResults[options->sequenceData[i]->frameData[j]->resultId]->resultType = options->sequenceData[i]->animationElement;
         }
+    }
+
+    int resultOffset = 0;
+    int lastSequence = 0;
+    for (int i = 0; i < options->resultCount; i++) {
+        // find the earliest sequence matching this animation result,
+        // and add padding if the sequence changes + the total offset is not 4-byte aligned.
+        bool found = false;
         for (int j = 0; j < options->sequenceCount; j++) {
             for (int k = 0; k < options->sequenceData[j]->frameCount; k++) {
-                if (options->sequenceData[j]->frameData[k]->resultOffset == resultOffset) {
-                    options->sequenceData[j]->frameData[k]->resultId = i;
+                if (options->sequenceData[j]->frameData[k]->resultId == i) {
+                    if (lastSequence != j) {
+                        lastSequence = j;
+                        if (resultOffset % 4 != 0) {
+                            resultOffset += 0x2;
+                            offset += 0x2;
+                        }
+                    }
+                    found = true;
+                    break;
                 }
+            }
+            if (found) {
+                break;
             }
         }
         switch (options->animationResults[i]->resultType) {
         case 0: // index
             options->animationResults[i]->index = data[offset] | (data[offset + 1] << 8);
-            resultOffset += 0x4;
-            offset += 0x4;
+            resultOffset += 0x2;
+            offset += 0x2;
             break;
 
         case 1: // SRT
-            options->animationResults[i]->dataSrt.index     = data[offset] | (data[offset + 1] << 8);
-            options->animationResults[i]->dataSrt.rotation  = data[offset + 2] | (data[offset + 3] << 8);
-            options->animationResults[i]->dataSrt.scaleX    = data[offset + 4] | (data[offset + 5] << 8) | (data[offset + 6] << 16) | (data[offset + 7] << 24);
-            options->animationResults[i]->dataSrt.scaleY    = data[offset + 8] | (data[offset + 9] << 8) | (data[offset + 10] << 16) | (data[offset + 11] << 24);
+            options->animationResults[i]->dataSrt.index = data[offset] | (data[offset + 1] << 8);
+            options->animationResults[i]->dataSrt.rotation = data[offset + 2] | (data[offset + 3] << 8);
+            options->animationResults[i]->dataSrt.scaleX = data[offset + 4] | (data[offset + 5] << 8) | (data[offset + 6] << 16) | (data[offset + 7] << 24);
+            options->animationResults[i]->dataSrt.scaleY = data[offset + 8] | (data[offset + 9] << 8) | (data[offset + 10] << 16) | (data[offset + 11] << 24);
             options->animationResults[i]->dataSrt.positionX = data[offset + 12] | (data[offset + 13] << 8);
             options->animationResults[i]->dataSrt.positionY = data[offset + 14] | (data[offset + 15] << 8);
             resultOffset += 0x10;
@@ -1345,7 +1439,7 @@ void ReadNtrAnimation(char *path, struct JsonToAnimationOptions *options) {
             break;
 
         case 2: // T
-            options->animationResults[i]->dataT.index     = data[offset] | (data[offset + 1] << 8);
+            options->animationResults[i]->dataT.index = data[offset] | (data[offset + 1] << 8);
             options->animationResults[i]->dataT.positionX = data[offset + 4] | (data[offset + 5] << 8);
             options->animationResults[i]->dataT.positionY = data[offset + 6] | (data[offset + 7] << 8);
             resultOffset += 0x8;
@@ -1354,9 +1448,14 @@ void ReadNtrAnimation(char *path, struct JsonToAnimationOptions *options) {
         }
     }
 
+    // add any missed padding from the final frame before processing labels
+    if (offset % 4 != 0) {
+        offset += 2;
+    }
+
     if (options->labelEnabled) {
         options->labelCount = options->sequenceCount; //*should* be the same
-        options->labels     = malloc(sizeof(char *) * options->labelCount);
+        options->labels = malloc(sizeof(char *) * options->labelCount);
         offset += 0x8 + options->labelCount * 0x4; // skip to label data
         for (int i = 0; i < options->labelCount; i++) {
             options->labels[i] = malloc(strlen((char *)data + offset) + 1);
@@ -1377,16 +1476,62 @@ void WriteNtrAnimation(char *path, struct JsonToAnimationOptions *options) {
 
     unsigned int totalSize = 0x20 + options->sequenceCount * 0x10 + options->frameCount * 0x8;
 
-    // todo: check these
     for (int i = 0; i < options->resultCount; i++) {
         if (options->animationResults[i]->resultType == 0) {
-            totalSize += 0x4;
+            totalSize += 0x2;
         } else if (options->animationResults[i]->resultType == 1) {
             totalSize += 0x10;
         } else if (options->animationResults[i]->resultType == 2) {
             totalSize += 0x8;
         }
     }
+
+    // foreach sequence, need to check whether padding is applied for its results
+    // then add 0x02 to totalSize if padding exists.
+    // padding exists if the animation results for that sequence are not 4-byte aligned.
+    // also flag the last result for the sequence with `padded` to save having to redo this same step later.
+    int *usedResults = malloc(sizeof(int) * options->frameCount);
+    memset(usedResults, -1, sizeof(int) * options->frameCount);
+    for (int i = 0; i < options->sequenceCount; i++) {
+        int sequenceLen = 0;
+        int resultIndex = 0;
+        int lastNewResultIndex = -1;
+        for (int j = 0; j < options->sequenceData[i]->frameCount; j++) {
+            // check if the result has already been used
+            bool isUsed = false;
+            for (resultIndex = 0; resultIndex < options->resultCount; resultIndex++) {
+                if (usedResults[resultIndex] == options->sequenceData[i]->frameData[j]->resultId) {
+                    isUsed = true;
+                    break;
+                }
+
+                // if not already used, add it to the list
+                if (usedResults[resultIndex] == -1) {
+                    usedResults[resultIndex] = options->sequenceData[i]->frameData[j]->resultId;
+                    lastNewResultIndex = options->sequenceData[i]->frameData[j]->resultId;
+                    break;
+                }
+            }
+
+            // if not already used, add it to the result size for the sequence
+            if (!isUsed) {
+                if (options->animationResults[resultIndex]->resultType == 0) {
+                    sequenceLen += 0x2;
+                } else if (options->animationResults[resultIndex]->resultType == 1) {
+                    sequenceLen += 0x10;
+                } else if (options->animationResults[resultIndex]->resultType == 2) {
+                    sequenceLen += 0x8;
+                }
+            }
+        }
+        if (sequenceLen % 4 != 0 && lastNewResultIndex != -1) {
+            totalSize += 0x02;
+            // mark the last new animationResult index for the sequence as padded, this saves needing to check this again later
+            options->animationResults[lastNewResultIndex]->padded = true;
+        }
+    }
+
+    free(usedResults);
 
     unsigned int KNBASize = totalSize;
 
@@ -1430,22 +1575,22 @@ void WriteNtrAnimation(char *path, struct JsonToAnimationOptions *options) {
 
     fwrite(KBNAHeader, 1, 0x20, fp);
 
-    int contentsSize            = KNBASize - 0x20;
+    int contentsSize = KNBASize - 0x20;
     unsigned char *KBNAContents = malloc(contentsSize);
 
     int i;
     int framePtrCounter = 0;
     for (i = 0; i < options->sequenceCount * 0x10; i += 0x10) {
-        KBNAContents[i]      = options->sequenceData[i / 0x10]->frameCount & 0xff;
-        KBNAContents[i + 1]  = options->sequenceData[i / 0x10]->frameCount >> 8;
-        KBNAContents[i + 2]  = options->sequenceData[i / 0x10]->loopStartFrame & 0xff;
-        KBNAContents[i + 3]  = options->sequenceData[i / 0x10]->loopStartFrame >> 8;
-        KBNAContents[i + 4]  = options->sequenceData[i / 0x10]->animationElement & 0xff;
-        KBNAContents[i + 5]  = options->sequenceData[i / 0x10]->animationElement >> 8;
-        KBNAContents[i + 6]  = options->sequenceData[i / 0x10]->animationType & 0xff;
-        KBNAContents[i + 7]  = options->sequenceData[i / 0x10]->animationType >> 8;
-        KBNAContents[i + 8]  = options->sequenceData[i / 0x10]->playbackMode & 0xff;
-        KBNAContents[i + 9]  = (options->sequenceData[i / 0x10]->playbackMode >> 8) & 0xff;
+        KBNAContents[i] = options->sequenceData[i / 0x10]->frameCount & 0xff;
+        KBNAContents[i + 1] = options->sequenceData[i / 0x10]->frameCount >> 8;
+        KBNAContents[i + 2] = options->sequenceData[i / 0x10]->loopStartFrame & 0xff;
+        KBNAContents[i + 3] = options->sequenceData[i / 0x10]->loopStartFrame >> 8;
+        KBNAContents[i + 4] = options->sequenceData[i / 0x10]->animationElement & 0xff;
+        KBNAContents[i + 5] = (options->sequenceData[i / 0x10]->animationElement >> 8) & 0xff;
+        KBNAContents[i + 6] = options->sequenceData[i / 0x10]->animationType & 0xff;
+        KBNAContents[i + 7] = (options->sequenceData[i / 0x10]->animationType >> 8) & 0xff;
+        KBNAContents[i + 8] = options->sequenceData[i / 0x10]->playbackMode & 0xff;
+        KBNAContents[i + 9] = (options->sequenceData[i / 0x10]->playbackMode >> 8) & 0xff;
         KBNAContents[i + 10] = (options->sequenceData[i / 0x10]->playbackMode >> 16) & 0xff;
         KBNAContents[i + 11] = options->sequenceData[i / 0x10]->playbackMode >> 24;
         KBNAContents[i + 12] = framePtrCounter & 0xff;
@@ -1462,14 +1607,18 @@ void WriteNtrAnimation(char *path, struct JsonToAnimationOptions *options) {
             int resPtr = 0;
             for (int l = 0; l < options->sequenceData[m]->frameData[k]->resultId; l++) {
                 if (options->animationResults[l]->resultType == 0) {
-                    resPtr += 0x4;
+                    resPtr += 0x2;
                 } else if (options->animationResults[l]->resultType == 1) {
                     resPtr += 0x10;
                 } else if (options->animationResults[l]->resultType == 2) {
                     resPtr += 0x8;
                 }
+
+                if (options->animationResults[l]->padded) {
+                    resPtr += 0x02;
+                }
             }
-            KBNAContents[j + (k * 8)]     = resPtr & 0xff;
+            KBNAContents[j + (k * 8)] = resPtr & 0xff;
             KBNAContents[j + (k * 8) + 1] = (resPtr >> 8) & 0xff;
             KBNAContents[j + (k * 8) + 2] = (resPtr >> 16) & 0xff;
             KBNAContents[j + (k * 8) + 3] = resPtr >> 24;
@@ -1481,29 +1630,26 @@ void WriteNtrAnimation(char *path, struct JsonToAnimationOptions *options) {
         j += options->sequenceData[m]->frameCount * 8;
     }
 
-    // todo: these are extrapolated, need confirming
     int resPtrCounter = j;
     for (int k = 0; k < options->resultCount; k++) {
         switch (options->animationResults[k]->resultType) {
         case 0:
-            KBNAContents[resPtrCounter]     = options->animationResults[k]->index & 0xff;
+            KBNAContents[resPtrCounter] = options->animationResults[k]->index & 0xff;
             KBNAContents[resPtrCounter + 1] = options->animationResults[k]->index >> 8;
-            KBNAContents[resPtrCounter + 2] = 0xCC;
-            KBNAContents[resPtrCounter + 3] = 0xCC;
-            resPtrCounter += 0x4;
+            resPtrCounter += 0x2;
             break;
 
         case 1:
-            KBNAContents[resPtrCounter]      = options->animationResults[k]->dataSrt.index & 0xff;
-            KBNAContents[resPtrCounter + 1]  = options->animationResults[k]->dataSrt.index >> 8;
-            KBNAContents[resPtrCounter + 2]  = options->animationResults[k]->dataSrt.rotation & 0xff;
-            KBNAContents[resPtrCounter + 3]  = options->animationResults[k]->dataSrt.rotation >> 8;
-            KBNAContents[resPtrCounter + 4]  = options->animationResults[k]->dataSrt.scaleX & 0xff;
-            KBNAContents[resPtrCounter + 5]  = (options->animationResults[k]->dataSrt.scaleX >> 8) & 0xff;
-            KBNAContents[resPtrCounter + 6]  = (options->animationResults[k]->dataSrt.scaleX >> 16) & 0xff;
-            KBNAContents[resPtrCounter + 7]  = options->animationResults[k]->dataSrt.scaleX >> 24;
-            KBNAContents[resPtrCounter + 8]  = options->animationResults[k]->dataSrt.scaleY & 0xff;
-            KBNAContents[resPtrCounter + 9]  = (options->animationResults[k]->dataSrt.scaleY >> 8) & 0xff;
+            KBNAContents[resPtrCounter] = options->animationResults[k]->dataSrt.index & 0xff;
+            KBNAContents[resPtrCounter + 1] = options->animationResults[k]->dataSrt.index >> 8;
+            KBNAContents[resPtrCounter + 2] = options->animationResults[k]->dataSrt.rotation & 0xff;
+            KBNAContents[resPtrCounter + 3] = options->animationResults[k]->dataSrt.rotation >> 8;
+            KBNAContents[resPtrCounter + 4] = options->animationResults[k]->dataSrt.scaleX & 0xff;
+            KBNAContents[resPtrCounter + 5] = (options->animationResults[k]->dataSrt.scaleX >> 8) & 0xff;
+            KBNAContents[resPtrCounter + 6] = (options->animationResults[k]->dataSrt.scaleX >> 16) & 0xff;
+            KBNAContents[resPtrCounter + 7] = options->animationResults[k]->dataSrt.scaleX >> 24;
+            KBNAContents[resPtrCounter + 8] = options->animationResults[k]->dataSrt.scaleY & 0xff;
+            KBNAContents[resPtrCounter + 9] = (options->animationResults[k]->dataSrt.scaleY >> 8) & 0xff;
             KBNAContents[resPtrCounter + 10] = (options->animationResults[k]->dataSrt.scaleY >> 16) & 0xff;
             KBNAContents[resPtrCounter + 11] = options->animationResults[k]->dataSrt.scaleY >> 24;
             KBNAContents[resPtrCounter + 12] = options->animationResults[k]->dataSrt.positionX & 0xff;
@@ -1514,7 +1660,7 @@ void WriteNtrAnimation(char *path, struct JsonToAnimationOptions *options) {
             break;
 
         case 2:
-            KBNAContents[resPtrCounter]     = options->animationResults[k]->dataT.index & 0xff;
+            KBNAContents[resPtrCounter] = options->animationResults[k]->dataT.index & 0xff;
             KBNAContents[resPtrCounter + 1] = options->animationResults[k]->dataT.index >> 8;
             KBNAContents[resPtrCounter + 2] = 0xEF;
             KBNAContents[resPtrCounter + 3] = 0xBE;
@@ -1524,6 +1670,13 @@ void WriteNtrAnimation(char *path, struct JsonToAnimationOptions *options) {
             KBNAContents[resPtrCounter + 7] = options->animationResults[k]->dataT.positionY >> 8;
             resPtrCounter += 0x8;
             break;
+        }
+
+        // use the `padded` flag which was stored earlier to inject padding
+        if (options->animationResults[k]->padded) {
+            KBNAContents[resPtrCounter] = 0xCC;
+            KBNAContents[resPtrCounter + 1] = 0xCC;
+            resPtrCounter += 0x2;
         }
     }
 

@@ -7,13 +7,13 @@
 
 enum RoamerDataParam {
     ROAMER_DATA_MET_LOCATION = 1,
-    ROAMER_DATA_IVS          = 2,
-    ROAMER_DATA_PERSONALITY  = 3,
-    ROAMER_DATA_SPECIES      = 4,
-    ROAMER_DATA_HP           = 5,
-    ROAMER_DATA_LEVEL        = 6,
-    ROAMER_DATA_STATUS       = 7,
-    ROAMER_DATA_ACTIVE       = 8,
+    ROAMER_DATA_IVS = 2,
+    ROAMER_DATA_PERSONALITY = 3,
+    ROAMER_DATA_SPECIES = 4,
+    ROAMER_DATA_HP = 5,
+    ROAMER_DATA_LEVEL = 6,
+    ROAMER_DATA_STATUS = 7,
+    ROAMER_DATA_ACTIVE = 8,
 };
 
 typedef struct Roamer { // todo: this appears to be used for swarms as well

@@ -3,53 +3,53 @@
   "objects": [
     {
       "id": "obj_P01R0103_seaman_2",
-      "sprite_id": "SPRITE_SEAMAN_2",
+      "spriteId": "SPRITE_SEAMAN_2",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_P01R0103_000 + 1",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_P01R0103_000 + 1",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 7,
-      "y": 9,
-      "z": 0
+      "z": 9,
+      "y": 0
     },
     {
       "id": "obj_P01R0103_gsman1",
-      "sprite_id": "SPRITE_GSMAN1",
+      "spriteId": "SPRITE_GSMAN1",
       "movement": 16,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_P01R0103_002 + 1",
-      "dirn": 2,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 1,
-      "yrange": 1,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_P01R0103_002 + 1",
+      "facingDirection": 2,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 1,
+      "yRange": 1,
       "x": 12,
-      "y": 5,
-      "z": 0
+      "z": 5,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 7,
-      "y": 2,
+      "z": 2,
       "header": "MAP_T06",
       "anchor": 7,
-      "height": 0
+      "y": 0
     },
     {
       "x": 7,
-      "y": 11,
+      "z": 11,
       "header": "MAP_P01R0104",
       "anchor": 0,
-      "height": 0
+      "y": 0
     }
   ]
 }

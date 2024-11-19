@@ -2,21 +2,21 @@
   "header": "fielddata/script/scr_seq/event_R26R0201.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_R26R0201_000 + 1",
+      "scriptId": "_EV_scr_seq_R26R0201_000 + 1",
       "type": 0,
       "x": 7,
-      "y": 10,
-      "z": 0,
+      "z": 10,
+      "y": 0,
       "dir": 0
     }
   ],
   "warps": [
     {
       "x": 7,
-      "y": 14,
+      "z": 14,
       "header": "MAP_R26",
       "anchor": 1,
-      "height": 0
+      "y": 0
     }
   ]
 }

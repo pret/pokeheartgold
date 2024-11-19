@@ -3,57 +3,57 @@
   "objects": [
     {
       "id": "obj_D17R0107_monstarball",
-      "sprite_id": "SPRITE_MONSTARBALL",
+      "spriteId": "SPRITE_MONSTARBALL",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_HIDE_ITEMBALL_D17R0107_MAX_REVIVE",
-      "scr": "std_itemball_d17r0107_max_revive",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_ITEMBALL_D17R0107_MAX_REVIVE",
+      "scriptId": "std_itemball_d17r0107_max_revive",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 23,
-      "y": 7,
-      "z": 0
+      "z": 7,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 6,
-      "y": 19,
+      "z": 19,
       "header": "MAP_D17R0106",
       "anchor": 1,
-      "height": 0
+      "y": 0
     },
     {
       "x": 15,
-      "y": 26,
+      "z": 26,
       "header": "MAP_D17R0108",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 12,
-      "y": 16,
+      "z": 16,
       "header": "MAP_D17R0109",
       "anchor": 3,
-      "height": 0
+      "y": 0
     },
     {
       "x": 18,
-      "y": 16,
+      "z": 16,
       "header": "MAP_D17R0107",
       "anchor": 4,
-      "height": 0
+      "y": 0
     },
     {
       "x": 9,
-      "y": 10,
+      "z": 10,
       "header": "MAP_D17R0107",
       "anchor": 3,
-      "height": 0
+      "y": 0
     }
   ]
 }

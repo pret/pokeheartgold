@@ -95,22 +95,22 @@ static int DrawRockSmashIdx(FieldSystem *fieldSystem);
 
 void FieldSystem_RockSmashItemCheck(FieldSystem *fieldSystem, int followMonKnowsHm, u16 *itemFound, u16 *item) {
     RockSmashItemCheckWork *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(RockSmashItemCheckWork));
-    env->followMonKnowsHM       = followMonKnowsHm != 0;
-    env->itemFound              = itemFound;
-    env->item                   = item;
-    *env->itemFound             = FALSE;
-    *env->item                  = ITEM_NONE;
+    env->followMonKnowsHM = followMonKnowsHm != 0;
+    env->itemFound = itemFound;
+    env->item = item;
+    *env->itemFound = FALSE;
+    *env->item = ITEM_NONE;
     TaskManager_Call(fieldSystem->taskman, Task_RockSmashItemCheck, env);
 }
 
 static BOOL Task_RockSmashItemCheck(TaskManager *taskman) {
     BattleSetup *setup;
-    FieldSystem *fieldSystem    = TaskManager_GetFieldSystem(taskman);
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     RockSmashItemCheckWork *env = TaskManager_GetEnvironment(taskman);
 
     if (ov02_022470A0(fieldSystem, &setup)) {
         *env->itemFound = FALSE;
-        *env->item      = ITEM_NONE;
+        *env->item = ITEM_NONE;
         FreeToHeap(env);
         FieldSystem_StartForcedWildBattle(fieldSystem, taskman, setup);
         return FALSE;
@@ -122,7 +122,7 @@ static BOOL Task_RockSmashItemCheck(TaskManager *taskman) {
     }
 
     *env->itemFound = FALSE;
-    *env->item      = ITEM_NONE;
+    *env->item = ITEM_NONE;
     FreeToHeap(env);
     return TRUE;
 }
@@ -177,9 +177,9 @@ static BOOL CheckRockSmashItemDrop(FieldSystem *fieldSystem, RockSmashItemCheckW
 static BOOL Task_GetRockSmashItem(TaskManager *taskman) {
     LocalMapObject *obj;
 
-    u32 *state_p                = TaskManager_GetStatePtr(taskman);
+    u32 *state_p = TaskManager_GetStatePtr(taskman);
     RockSmashItemCheckWork *env = TaskManager_GetEnvironment(taskman);
-    FieldSystem *fieldSystem    = TaskManager_GetFieldSystem(taskman);
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
 
     switch (*state_p) {
     case 0:
@@ -218,12 +218,12 @@ static BOOL Task_GetRockSmashItem(TaskManager *taskman) {
         default:
             GF_ASSERT(FALSE);
             *env->itemFound = FALSE;
-            *env->item      = ITEM_NONE;
+            *env->item = ITEM_NONE;
             FreeToHeap(env);
             return TRUE;
         }
         *env->itemFound = TRUE;
-        *env->item      = item;
+        *env->item = item;
         FreeToHeap(env);
         return TRUE;
     }

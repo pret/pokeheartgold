@@ -311,23 +311,23 @@ ov01_021FE3F8: ; 0x021FE3F8
 	sub sp, #0x38
 	add r5, r0, #0
 	add r4, r1, #0
-	bl MapObject_GetPrevX
+	bl MapObject_GetPreviousX
 	str r0, [sp, #0xc]
 	add r0, r5, #0
-	bl MapObject_GetPrevY
+	bl MapObject_GetPreviousZ
 	str r0, [sp, #0x10]
 	add r0, r5, #0
-	bl MapObject_GetPosVecYCoord
+	bl MapObject_GetPositionVectorYCoord
 	add r6, r0, #0
 	add r0, r5, #0
 	bl MapObject_GetFacingDirection
 	str r0, [sp, #0x14]
 	add r0, r5, #0
-	bl MapObject_GetPreviousFacing
+	bl MapObject_GetPreviousFacingDirection
 	str r0, [sp, #0x18]
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0205F09C
+	bl MapObject_GetPriorityPlusValue
 	add r7, r0, #0
 	add r0, r5, #0
 	bl ov01_021F146C

@@ -99,7 +99,7 @@ typedef enum RegisterHallOfFamePicIdx_WholeParty {
     REGHOF_PIC_WHOLE_PLAYER_SHADOW,
     REGHOF_PIC_WHOLE_TWINKLE,
 
-    REGHOF_PIC_WHOLE_MON        = 0,
+    REGHOF_PIC_WHOLE_MON = 0,
     REGHOF_PIC_WHOLE_MON_SHADOW = 6,
 } RegisterHallOfFamePicIdx_WholeParty;
 
@@ -200,13 +200,13 @@ struct RegisterHallOfFameData {
     u16 curMonIndex;
     f32 unk_13058;
     f32 unk_1305C;
-    u32 requestUnsilhouetteFrontpic       : 1;
-    u32 requestUnsilhouetteBackpic        : 1;
+    u32 requestUnsilhouetteFrontpic : 1;
+    u32 requestUnsilhouetteBackpic : 1;
     u32 requestBeginSpotlightsAndConfetti : 1;
-    u32 requestPlayFlashKanseiSfx         : 1;
-    u32 unk_13060_4                       : 1;
-    u32 scrollingPolkadotBackground       : 1;
-    u32 generatingConfetti                : 1;
+    u32 requestPlayFlashKanseiSfx : 1;
+    u32 unk_13060_4 : 1;
+    u32 scrollingPolkadotBackground : 1;
+    u32 generatingConfetti : 1;
     int fadeDuration;
     u16 generateConfettiDelayLength;
     u16 generateConfettiDelayTimer;
@@ -377,21 +377,21 @@ static const GraphicsModes sGraphicsModes_IndivMons = {
 
 static const WindowTemplate sWholePartySceneWindowTemplates[2] = {
     {
-     .bgId     = GF_BG_LYR_MAIN_1,
-     .left     = 0,
-     .top      = 0,
-     .width    = 32,
-     .height   = 2,
-     .palette  = 15,
+     .bgId = GF_BG_LYR_MAIN_1,
+     .left = 0,
+     .top = 0,
+     .width = 32,
+     .height = 2,
+     .palette = 15,
      .baseTile = 0x001,
      },
     {
-     .bgId     = GF_BG_LYR_MAIN_1,
-     .left     = 0,
-     .top      = 22,
-     .width    = 32,
-     .height   = 2,
-     .palette  = 15,
+     .bgId = GF_BG_LYR_MAIN_1,
+     .left = 0,
+     .top = 22,
+     .width = 32,
+     .height = 2,
+     .palette = 15,
      .baseTile = 0x041,
      },
 };
@@ -451,108 +451,108 @@ static const SpriteResourceCountsListUnion sSpriteGfxHandlerCapacities = {
 };
 
 static const BgTemplate sBgTemplate_IndivMons_Main0 = {
-    .x          = 0,
-    .y          = 0,
+    .x = 0,
+    .y = 0,
     .bufferSize = GF_BG_BUF_SIZE_512x512_4BPP,
-    .baseTile   = 0,
-    .size       = GF_BG_SCR_SIZE_512x512,
-    .colorMode  = GX_BG_COLORMODE_16,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_512x512,
+    .colorMode = GX_BG_COLORMODE_16,
     .screenBase = GX_BG_SCRBASE_0xe000,
-    .charBase   = GX_BG_CHARBASE_0x18000,
-    .bgExtPltt  = GX_BG_EXTPLTT_01,
-    .priority   = 0,
-    .areaOver   = GX_BG_AREAOVER_XLU,
-    .mosaic     = FALSE,
+    .charBase = GX_BG_CHARBASE_0x18000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 0,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .mosaic = FALSE,
 };
 
 static const BgTemplate sBgTemplate_IndivMons_Main1 = {
-    .x          = 0,
-    .y          = 0,
+    .x = 0,
+    .y = 0,
     .bufferSize = GF_BG_BUF_SIZE_512x512_4BPP,
-    .baseTile   = 0,
-    .size       = GF_BG_SCR_SIZE_512x512,
-    .colorMode  = GX_BG_COLORMODE_16,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_512x512,
+    .colorMode = GX_BG_COLORMODE_16,
     .screenBase = GX_BG_SCRBASE_0xc000,
-    .charBase   = GX_BG_CHARBASE_0x10000,
-    .bgExtPltt  = GX_BG_EXTPLTT_01,
-    .priority   = 1,
-    .areaOver   = GX_BG_AREAOVER_XLU,
-    .mosaic     = FALSE,
+    .charBase = GX_BG_CHARBASE_0x10000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 1,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .mosaic = FALSE,
 };
 
 static const BgTemplate sBgTemplate_WholePartyScene_Main3 = {
-    .x          = 0,
-    .y          = 0,
+    .x = 0,
+    .y = 0,
     .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-    .baseTile   = 0,
-    .size       = GF_BG_SCR_SIZE_256x256,
-    .colorMode  = GX_BG_COLORMODE_16,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
     .screenBase = GX_BG_SCRBASE_0xe800,
-    .charBase   = GX_BG_CHARBASE_0x10000,
-    .bgExtPltt  = GX_BG_EXTPLTT_01,
-    .priority   = 3,
-    .areaOver   = GX_BG_AREAOVER_XLU,
-    .mosaic     = FALSE,
+    .charBase = GX_BG_CHARBASE_0x10000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 3,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .mosaic = FALSE,
 };
 
 static const BgTemplate sBgTemplate_WholePartyScene_Main1 = {
-    .x          = 0,
-    .y          = 0,
+    .x = 0,
+    .y = 0,
     .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-    .baseTile   = 0,
-    .size       = GF_BG_SCR_SIZE_256x256,
-    .colorMode  = GX_BG_COLORMODE_16,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
     .screenBase = GX_BG_SCRBASE_0xf800,
-    .charBase   = GX_BG_CHARBASE_0x00000,
-    .bgExtPltt  = GX_BG_EXTPLTT_01,
-    .priority   = 0,
-    .areaOver   = GX_BG_AREAOVER_XLU,
-    .mosaic     = FALSE,
+    .charBase = GX_BG_CHARBASE_0x00000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 0,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .mosaic = FALSE,
 };
 
 static const BgTemplate sBgTemplate_WholePartyScene_Main2 = {
-    .x          = 0,
-    .y          = 0,
+    .x = 0,
+    .y = 0,
     .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-    .baseTile   = 0,
-    .size       = GF_BG_SCR_SIZE_256x256,
-    .colorMode  = GX_BG_COLORMODE_16,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
     .screenBase = GX_BG_SCRBASE_0xf000,
-    .charBase   = GX_BG_CHARBASE_0x10000,
-    .bgExtPltt  = GX_BG_EXTPLTT_01,
-    .priority   = 2,
-    .areaOver   = GX_BG_AREAOVER_XLU,
-    .mosaic     = FALSE,
+    .charBase = GX_BG_CHARBASE_0x10000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 2,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .mosaic = FALSE,
 };
 
 static const BgTemplate sBgTemplate_IndivMons_Main3 = {
-    .x          = 0,
-    .y          = 0,
+    .x = 0,
+    .y = 0,
     .bufferSize = GF_BG_BUF_SIZE_512x512_4BPP,
-    .baseTile   = 0,
-    .size       = GF_BG_SCR_SIZE_512x512,
-    .colorMode  = GX_BG_COLORMODE_16,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_512x512,
+    .colorMode = GX_BG_COLORMODE_16,
     .screenBase = GX_BG_SCRBASE_0x8000,
-    .charBase   = GX_BG_CHARBASE_0x10000,
-    .bgExtPltt  = GX_BG_EXTPLTT_01,
-    .priority   = 3,
-    .areaOver   = GX_BG_AREAOVER_XLU,
-    .mosaic     = FALSE,
+    .charBase = GX_BG_CHARBASE_0x10000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 3,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .mosaic = FALSE,
 };
 
 static const BgTemplate sBgTemplate_IndivMons_Main2 = {
-    .x          = 0,
-    .y          = 0,
+    .x = 0,
+    .y = 0,
     .bufferSize = GF_BG_BUF_SIZE_512x512_4BPP,
-    .baseTile   = 0,
-    .size       = GF_BG_SCR_SIZE_512x512,
-    .colorMode  = GX_BG_COLORMODE_16,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_512x512,
+    .colorMode = GX_BG_COLORMODE_16,
     .screenBase = GX_BG_SCRBASE_0xa000,
-    .charBase   = GX_BG_CHARBASE_0x10000,
-    .bgExtPltt  = GX_BG_EXTPLTT_01,
-    .priority   = 2,
-    .areaOver   = GX_BG_AREAOVER_XLU,
-    .mosaic     = FALSE,
+    .charBase = GX_BG_CHARBASE_0x10000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 2,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .mosaic = FALSE,
 };
 
 static const UnkStruct_02014E30 ov63_0221FC38[2] = {
@@ -701,66 +701,66 @@ static const GraphicsBanks sGfxBanks = {
 
 static const WindowTemplate sIndivMonsSceneWindowTemplates[7] = {
     {
-     .bgId     = GF_BG_LYR_MAIN_0,
-     .left     = 0,
-     .top      = 0,
-     .width    = 32,
-     .height   = 2,
-     .palette  = 15,
+     .bgId = GF_BG_LYR_MAIN_0,
+     .left = 0,
+     .top = 0,
+     .width = 32,
+     .height = 2,
+     .palette = 15,
      .baseTile = 0x001,
      },
     {
-     .bgId     = GF_BG_LYR_MAIN_0,
-     .left     = 18,
-     .top      = 3,
-     .width    = 14,
-     .height   = 2,
-     .palette  = 15,
+     .bgId = GF_BG_LYR_MAIN_0,
+     .left = 18,
+     .top = 3,
+     .width = 14,
+     .height = 2,
+     .palette = 15,
      .baseTile = 0x041,
      },
     {
-     .bgId     = GF_BG_LYR_MAIN_0,
-     .left     = 18,
-     .top      = 6,
-     .width    = 14,
-     .height   = 4,
-     .palette  = 15,
+     .bgId = GF_BG_LYR_MAIN_0,
+     .left = 18,
+     .top = 6,
+     .width = 14,
+     .height = 4,
+     .palette = 15,
      .baseTile = 0x05D,
      },
     {
-     .bgId     = GF_BG_LYR_MAIN_0,
-     .left     = 18,
-     .top      = 12,
-     .width    = 14,
-     .height   = 9,
-     .palette  = 15,
+     .bgId = GF_BG_LYR_MAIN_0,
+     .left = 18,
+     .top = 12,
+     .width = 14,
+     .height = 9,
+     .palette = 15,
      .baseTile = 0x095,
      },
     {
-     .bgId     = GF_BG_LYR_MAIN_0,
-     .left     = 0,
-     .top      = 3,
-     .width    = 14,
-     .height   = 2,
-     .palette  = 15,
+     .bgId = GF_BG_LYR_MAIN_0,
+     .left = 0,
+     .top = 3,
+     .width = 14,
+     .height = 2,
+     .palette = 15,
      .baseTile = 0x041,
      },
     {
-     .bgId     = GF_BG_LYR_MAIN_0,
-     .left     = 0,
-     .top      = 6,
-     .width    = 14,
-     .height   = 4,
-     .palette  = 15,
+     .bgId = GF_BG_LYR_MAIN_0,
+     .left = 0,
+     .top = 6,
+     .width = 14,
+     .height = 4,
+     .palette = 15,
      .baseTile = 0x05D,
      },
     {
-     .bgId     = GF_BG_LYR_MAIN_0,
-     .left     = 0,
-     .top      = 12,
-     .width    = 14,
-     .height   = 9,
-     .palette  = 15,
+     .bgId = GF_BG_LYR_MAIN_0,
+     .left = 0,
+     .top = 12,
+     .width = 14,
+     .height = 9,
+     .palette = 15,
      .baseTile = 0x095,
      },
 };
@@ -797,42 +797,42 @@ static const RegHOFSpritePosScaleAnimParam sPicPosScaleAnimParams[27] = {
 
 static const UnkTemplate_0200D748 sPicTemplates[21] = {
     [0] = {
-           .x              = 512,
-           .y              = 480,
-           .z              = 0,
-           .animation      = 0,
+           .x = 512,
+           .y = 480,
+           .z = 0,
+           .animation = 0,
            .spritePriority = 0,
-           .pal            = 0,
-           .vram           = NNS_G2D_VRAM_TYPE_2DMAIN,
-           .resIdList      = {
+           .pal = 0,
+           .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+           .resIdList = {
             [GF_GFX_RES_TYPE_CHAR] = 55512,
             [GF_GFX_RES_TYPE_PLTT] = 55512,
             [GF_GFX_RES_TYPE_CELL] = 55512,
             [GF_GFX_RES_TYPE_ANIM] = 55512,
             [GF_GFX_RES_TYPE_MCEL] = -1,
             [GF_GFX_RES_TYPE_MANM] = -1 },
-           .bgPriority   = 2,
-           .vramTransfer = 0                                                                                                                                                                                                                                                                                                                                                        },
-    [1]  = { .x = 512,             .y = 480, .z = 0, .animation = 0, .spritePriority = 1,  .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55512, [GF_GFX_RES_TYPE_PLTT] = 55513, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 2, .vramTransfer = 0 },
-    [2]  = { .x = 512,             .y = 480, .z = 0, .animation = 0, .spritePriority = 2,  .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55513, [GF_GFX_RES_TYPE_PLTT] = 55514, [GF_GFX_RES_TYPE_CELL] = 55513, [GF_GFX_RES_TYPE_ANIM] = 55513, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 3, .vramTransfer = 0 },
-    [3]  = { .x = 512,             .y = 480, .z = 0, .animation = 0, .spritePriority = 3,  .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55513, [GF_GFX_RES_TYPE_PLTT] = 55515, [GF_GFX_RES_TYPE_CELL] = 55513, [GF_GFX_RES_TYPE_ANIM] = 55513, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 3, .vramTransfer = 0 },
-    [4]  = { .x = 512,             .y = 480, .z = 0, .animation = 0, .spritePriority = 4,  .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55518, [GF_GFX_RES_TYPE_PLTT] = 55518, [GF_GFX_RES_TYPE_CELL] = 55514, [GF_GFX_RES_TYPE_ANIM] = 55514, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 2, .vramTransfer = 0 },
-    [5]  = { .x = 512,             .y = 480, .z = 0, .animation = 0, .spritePriority = 5,  .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55518, [GF_GFX_RES_TYPE_PLTT] = 55519, [GF_GFX_RES_TYPE_CELL] = 55514, [GF_GFX_RES_TYPE_ANIM] = 55514, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 2, .vramTransfer = 0 },
-    [6]  = { .x = 168,             .y = -40, .z = 0, .animation = 0, .spritePriority = 20, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55512, [GF_GFX_RES_TYPE_PLTT] = 55512, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 2, .vramTransfer = 0 },
-    [7]  = { .x = -92,             .y = 88,  .z = 0, .animation = 0, .spritePriority = 21, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55513, [GF_GFX_RES_TYPE_PLTT] = 55513, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 2, .vramTransfer = 0 },
-    [8]  = { .x = 348,             .y = 88,  .z = 0, .animation = 0, .spritePriority = 22, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55514, [GF_GFX_RES_TYPE_PLTT] = 55514, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 2, .vramTransfer = 0 },
-    [9]  = { .x = 88,              .y = -40, .z = 0, .animation = 0, .spritePriority = 23, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55515, [GF_GFX_RES_TYPE_PLTT] = 55515, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 2, .vramTransfer = 0 },
-    [10] = { .x = 336,             .y = 0,   .z = 0, .animation = 0, .spritePriority = 24, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55516, [GF_GFX_RES_TYPE_PLTT] = 55516, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 2, .vramTransfer = 0 },
-    [11] = { .x = -80,             .y = 0,   .z = 0, .animation = 0, .spritePriority = 25, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55517, [GF_GFX_RES_TYPE_PLTT] = 55517, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 2, .vramTransfer = 0 },
-    [12] = { .x = 93,              .y = 110, .z = 0, .animation = 0, .spritePriority = 40, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55512, [GF_GFX_RES_TYPE_PLTT] = 55521, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 3, .vramTransfer = 0 },
-    [13] = { .x = 157,             .y = 110, .z = 0, .animation = 0, .spritePriority = 40, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55513, [GF_GFX_RES_TYPE_PLTT] = 55521, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 3, .vramTransfer = 0 },
-    [14] = { .x = 53,              .y = 96,  .z = 0, .animation = 0, .spritePriority = 40, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55514, [GF_GFX_RES_TYPE_PLTT] = 55521, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 3, .vramTransfer = 0 },
-    [15] = { .x = 197,             .y = 96,  .z = 0, .animation = 0, .spritePriority = 40, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55515, [GF_GFX_RES_TYPE_PLTT] = 55521, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 3, .vramTransfer = 0 },
-    [16] = { .x = 37,              .y = 72,  .z = 0, .animation = 0, .spritePriority = 40, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55516, [GF_GFX_RES_TYPE_PLTT] = 55521, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 3, .vramTransfer = 0 },
-    [17] = { .x = 213,             .y = 72,  .z = 0, .animation = 0, .spritePriority = 40, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55517, [GF_GFX_RES_TYPE_PLTT] = 55521, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 3, .vramTransfer = 0 },
-    [18] = { .x = 128,             .y = 128, .z = 0, .animation = 0, .spritePriority = 10, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55519, [GF_GFX_RES_TYPE_PLTT] = 55520, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 2, .vramTransfer = 0 },
-    [19] = { .x = 125,             .y = 120, .z = 0, .animation = 0, .spritePriority = 40, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55519, [GF_GFX_RES_TYPE_PLTT] = 55521, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 3, .vramTransfer = 0 },
-    [20] = { .x = 0,               .y = 0,   .z = 0, .animation = 0, .spritePriority = 0,  .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55520, [GF_GFX_RES_TYPE_PLTT] = 55522, [GF_GFX_RES_TYPE_CELL] = 55515, [GF_GFX_RES_TYPE_ANIM] = 55515, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 2, .vramTransfer = 0 }
+           .bgPriority = 2,
+           .vramTransfer = 0                                                                                                                                                                                                                                                                                                                                            },
+    [1] = { .x = 512, .y = 480, .z = 0, .animation = 0, .spritePriority = 1,  .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55512, [GF_GFX_RES_TYPE_PLTT] = 55513, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 2, .vramTransfer = 0 },
+    [2] = { .x = 512, .y = 480, .z = 0, .animation = 0, .spritePriority = 2,  .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55513, [GF_GFX_RES_TYPE_PLTT] = 55514, [GF_GFX_RES_TYPE_CELL] = 55513, [GF_GFX_RES_TYPE_ANIM] = 55513, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 3, .vramTransfer = 0 },
+    [3] = { .x = 512, .y = 480, .z = 0, .animation = 0, .spritePriority = 3,  .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55513, [GF_GFX_RES_TYPE_PLTT] = 55515, [GF_GFX_RES_TYPE_CELL] = 55513, [GF_GFX_RES_TYPE_ANIM] = 55513, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 3, .vramTransfer = 0 },
+    [4] = { .x = 512, .y = 480, .z = 0, .animation = 0, .spritePriority = 4,  .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55518, [GF_GFX_RES_TYPE_PLTT] = 55518, [GF_GFX_RES_TYPE_CELL] = 55514, [GF_GFX_RES_TYPE_ANIM] = 55514, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 2, .vramTransfer = 0 },
+    [5] = { .x = 512, .y = 480, .z = 0, .animation = 0, .spritePriority = 5,  .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55518, [GF_GFX_RES_TYPE_PLTT] = 55519, [GF_GFX_RES_TYPE_CELL] = 55514, [GF_GFX_RES_TYPE_ANIM] = 55514, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 2, .vramTransfer = 0 },
+    [6] = { .x = 168, .y = -40, .z = 0, .animation = 0, .spritePriority = 20, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55512, [GF_GFX_RES_TYPE_PLTT] = 55512, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 2, .vramTransfer = 0 },
+    [7] = { .x = -92, .y = 88,  .z = 0, .animation = 0, .spritePriority = 21, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55513, [GF_GFX_RES_TYPE_PLTT] = 55513, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 2, .vramTransfer = 0 },
+    [8] = { .x = 348, .y = 88,  .z = 0, .animation = 0, .spritePriority = 22, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55514, [GF_GFX_RES_TYPE_PLTT] = 55514, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 2, .vramTransfer = 0 },
+    [9] = { .x = 88,  .y = -40, .z = 0, .animation = 0, .spritePriority = 23, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55515, [GF_GFX_RES_TYPE_PLTT] = 55515, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 2, .vramTransfer = 0 },
+    [10] = { .x = 336, .y = 0,   .z = 0, .animation = 0, .spritePriority = 24, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55516, [GF_GFX_RES_TYPE_PLTT] = 55516, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 2, .vramTransfer = 0 },
+    [11] = { .x = -80, .y = 0,   .z = 0, .animation = 0, .spritePriority = 25, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55517, [GF_GFX_RES_TYPE_PLTT] = 55517, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 2, .vramTransfer = 0 },
+    [12] = { .x = 93,  .y = 110, .z = 0, .animation = 0, .spritePriority = 40, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55512, [GF_GFX_RES_TYPE_PLTT] = 55521, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 3, .vramTransfer = 0 },
+    [13] = { .x = 157, .y = 110, .z = 0, .animation = 0, .spritePriority = 40, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55513, [GF_GFX_RES_TYPE_PLTT] = 55521, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 3, .vramTransfer = 0 },
+    [14] = { .x = 53,  .y = 96,  .z = 0, .animation = 0, .spritePriority = 40, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55514, [GF_GFX_RES_TYPE_PLTT] = 55521, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 3, .vramTransfer = 0 },
+    [15] = { .x = 197, .y = 96,  .z = 0, .animation = 0, .spritePriority = 40, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55515, [GF_GFX_RES_TYPE_PLTT] = 55521, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 3, .vramTransfer = 0 },
+    [16] = { .x = 37,  .y = 72,  .z = 0, .animation = 0, .spritePriority = 40, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55516, [GF_GFX_RES_TYPE_PLTT] = 55521, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 3, .vramTransfer = 0 },
+    [17] = { .x = 213, .y = 72,  .z = 0, .animation = 0, .spritePriority = 40, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55517, [GF_GFX_RES_TYPE_PLTT] = 55521, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 3, .vramTransfer = 0 },
+    [18] = { .x = 128, .y = 128, .z = 0, .animation = 0, .spritePriority = 10, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55519, [GF_GFX_RES_TYPE_PLTT] = 55520, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 2, .vramTransfer = 0 },
+    [19] = { .x = 125, .y = 120, .z = 0, .animation = 0, .spritePriority = 40, .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55519, [GF_GFX_RES_TYPE_PLTT] = 55521, [GF_GFX_RES_TYPE_CELL] = 55512, [GF_GFX_RES_TYPE_ANIM] = 55512, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 3, .vramTransfer = 0 },
+    [20] = { .x = 0,   .y = 0,   .z = 0, .animation = 0, .spritePriority = 0,  .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55520, [GF_GFX_RES_TYPE_PLTT] = 55522, [GF_GFX_RES_TYPE_CELL] = 55515, [GF_GFX_RES_TYPE_ANIM] = 55515, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 2, .vramTransfer = 0 }
 };
 
 BOOL RegisterHallOfFame_Init(OVY_MANAGER *man, int *state) {
@@ -846,13 +846,13 @@ BOOL RegisterHallOfFame_Init(OVY_MANAGER *man, int *state) {
     CreateHeap(HEAP_ID_3, HEAP_ID_REGISTER_HALL_OF_FAME, 0x50000);
     RegisterHallOfFameData *data = (RegisterHallOfFameData *)OverlayManager_CreateAndGetData(man, sizeof(RegisterHallOfFameData), HEAP_ID_REGISTER_HALL_OF_FAME);
     MI_CpuFill8(data, 0, sizeof(RegisterHallOfFameData));
-    data->args      = OverlayManager_GetArgs(man);
-    data->msgData   = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0180_bin, HEAP_ID_REGISTER_HALL_OF_FAME);
+    data->args = OverlayManager_GetArgs(man);
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0180_bin, HEAP_ID_REGISTER_HALL_OF_FAME);
     data->msgFormat = MessageFormat_New(HEAP_ID_REGISTER_HALL_OF_FAME);
-    data->strbuf1   = String_New(500, HEAP_ID_REGISTER_HALL_OF_FAME);
-    data->strbuf2   = String_New(500, HEAP_ID_REGISTER_HALL_OF_FAME);
-    data->narcA101  = NARC_New(NARC_a_1_0_1, HEAP_ID_REGISTER_HALL_OF_FAME);
-    data->narcA180  = NARC_New(NARC_a_1_8_0, HEAP_ID_REGISTER_HALL_OF_FAME);
+    data->strbuf1 = String_New(500, HEAP_ID_REGISTER_HALL_OF_FAME);
+    data->strbuf2 = String_New(500, HEAP_ID_REGISTER_HALL_OF_FAME);
+    data->narcA101 = NARC_New(NARC_a_1_0_1, HEAP_ID_REGISTER_HALL_OF_FAME);
+    data->narcA180 = NARC_New(NARC_a_1_8_0, HEAP_ID_REGISTER_HALL_OF_FAME);
     RegisterHallOfFame_GetPartyDetails(data);
     RegisterHallOfFame_SetGfxBanks();
     RegisterHallOfFame_CreateBgConfig(data);
@@ -883,7 +883,7 @@ static RegisterHallOfFameScene (*const sSceneFuncs[8])(RegisterHallOfFameData *d
 
 BOOL RegisterHallOfFame_Main(OVY_MANAGER *man, int *state) {
     RegisterHallOfFameData *data = OverlayManager_GetData(man);
-    data->currentScene           = sSceneFuncs[data->currentScene](data);
+    data->currentScene = sSceneFuncs[data->currentScene](data);
     if (data->currentScene == REGHOF_SCENE_MAX) {
         return TRUE;
     }
@@ -926,11 +926,11 @@ static void RegisterHallOfFame_DestroyBgConfig(RegisterHallOfFameData *data) {
 }
 
 static void RegisterHallOfFame_CreateSpriteGfxHandlers(RegisterHallOfFameData *data) {
-    data->spriteRenderer   = SpriteRenderer_Create(HEAP_ID_REGISTER_HALL_OF_FAME);
+    data->spriteRenderer = SpriteRenderer_Create(HEAP_ID_REGISTER_HALL_OF_FAME);
     data->spriteGfxHandler = SpriteRenderer_CreateGfxHandler(data->spriteRenderer);
 
     {
-        OamManagerParam sp2C      = ov63_0221FCB8;
+        OamManagerParam sp2C = ov63_0221FCB8;
         OamCharTransferParam sp18 = ov63_0221FB30;
         SpriteRenderer_CreateOamCharPlttManagers(data->spriteRenderer, &sp2C, &sp18, 0x20);
     }
@@ -981,9 +981,9 @@ static RegisterHallOfFameScene RegisterHallOfFame_FadeToBlack(RegisterHallOfFame
 }
 
 static BOOL RegisterHallOfFame_SetupSubproc(RegisterHallOfFameData *data, RegisterHallOfFameSubprocCallback callback, RegisterHallOfFameScene nextScene) {
-    data->nextScene       = nextScene;
-    data->subprocTimer    = 0;
-    data->subprocStage    = 0;
+    data->nextScene = nextScene;
+    data->subprocTimer = 0;
+    data->subprocStage = 0;
     data->subprocCallback = callback;
     return TRUE;
 }
@@ -1009,8 +1009,8 @@ static RegisterHallOfFameScene RegisterHallOfFame_IndivMonsInit(RegisterHallOfFa
     RegisterHallOfFame_IndivMonsScene_InitWindows(data);
     RegisterHallOfFames_IndivMons_LoadBgGfx(data);
     data->sceneSubstep = REGHOF_INDIV_SUBSCENE_RESET;
-    data->curMonIndex  = 0;
-    data->vblankTask   = SysTask_CreateOnVBlankQueue(VBlankTask_RegisterHallOfFame_IndividualMonsCongrats, data, 0);
+    data->curMonIndex = 0;
+    data->vblankTask = SysTask_CreateOnVBlankQueue(VBlankTask_RegisterHallOfFame_IndividualMonsCongrats, data, 0);
     return RegisterHallOfFame_FadeFromBlack(data, REGHOF_SCENE_INDIV_MONS_MAIN);
 }
 
@@ -1065,7 +1065,7 @@ static RegisterHallOfFameScene RegisterHallOfFame_IndivMonsExit(RegisterHallOfFa
 }
 
 static RegisterHallOfFameScene RegisterHallOfFame_WholePartyInit(RegisterHallOfFameData *data) {
-    data->curMonIndex  = 0;
+    data->curMonIndex = 0;
     data->sceneSubstep = REGHOF_WHOLE_SUBSCENE_INIT;
     RegisterHallOfFame_WholePartyScene_InitBGs(data);
     RegisterHallOfFame_WholePartyScene_LoadBgGfx(data);
@@ -1250,15 +1250,15 @@ static void RegisterHallOfFame_SetSilhouettePalette(RegisterHallOfFameData *data
 }
 
 static void RegisterHallOfFame_BackupMonPicPalette(RegisterHallOfFameData *data, int monIdx, int picIdx) {
-    u32 dest            = NNS_G2dGetImagePaletteLocation(Sprite_GetPaletteProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
-    u16 *base           = GetMainObjPlttAddr();
+    u32 dest = NNS_G2dGetImagePaletteLocation(Sprite_GetPaletteProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
+    u16 *base = GetMainObjPlttAddr();
     RegisterHofMon *mon = &data->mons[monIdx];
 
     MI_CpuCopy8(base + (dest / 2), mon->plttBak, 0x20);
 }
 
 static void RegisterHallOfFame_RestoreMonPicPalette(RegisterHallOfFameData *data, int monIdx, int picIdx) {
-    u32 dest            = NNS_G2dGetImagePaletteLocation(Sprite_GetPaletteProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
+    u32 dest = NNS_G2dGetImagePaletteLocation(Sprite_GetPaletteProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
     RegisterHofMon *mon = &data->mons[monIdx];
 
     RegisterHallOfFame_ReplaceSpritePltt(mon->plttBak, dest, 0x20);
@@ -1344,21 +1344,21 @@ static void RegisterHallOfFame_IndivMonsScene_SetMon3dSpriteTex(RegisterHallOfFa
     NNSG3dResTex *resTex;
     void *fileData;
     const void *texData;
-    u32 imageLoc        = NNS_G2dGetImageLocation(Sprite_GetImageProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
+    u32 imageLoc = NNS_G2dGetImageLocation(Sprite_GetImageProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
     int spriteSquareDim = hofMon->followPokeParam[1] ? 8 : 4;
-    u32 size            = 32 * spriteSquareDim * spriteSquareDim;
-    int fileno          = RegisterHallOfFame_GetMmodelBySpeciesFormGender(hofMon->species, hofMon->form, hofMon->gender);
-    fileData            = AllocAndReadWholeNarcMemberByIdPair(NARC_data_mmodel_mmodel, fileno, HEAP_ID_REGISTER_HALL_OF_FAME);
-    resTex              = NNS_G3dGetTex(fileData);
-    texData             = NNS_G3dGetTexData(resTex);
-    void *buffer        = AllocFromHeap(HEAP_ID_REGISTER_HALL_OF_FAME, size);
+    u32 size = 32 * spriteSquareDim * spriteSquareDim;
+    int fileno = RegisterHallOfFame_GetMmodelBySpeciesFormGender(hofMon->species, hofMon->form, hofMon->gender);
+    fileData = AllocAndReadWholeNarcMemberByIdPair(NARC_data_mmodel_mmodel, fileno, HEAP_ID_REGISTER_HALL_OF_FAME);
+    resTex = NNS_G3dGetTex(fileData);
+    texData = NNS_G3dGetTexData(resTex);
+    void *buffer = AllocFromHeap(HEAP_ID_REGISTER_HALL_OF_FAME, size);
     for (u8 i = 0; i < 8; ++i) {
         sub_020145B4((const u8 *)texData + size * i, spriteSquareDim, 0, 0, spriteSquareDim, spriteSquareDim, buffer);
         RegisterHallOfFame_ReplaceSpriteChar(buffer, imageLoc + size * i, size);
     }
     FreeToHeap(buffer);
 
-    u32 plttLoc         = NNS_G2dGetImagePaletteLocation(Sprite_GetPaletteProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
+    u32 plttLoc = NNS_G2dGetImagePaletteLocation(Sprite_GetPaletteProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
     const void *loadPos = NNS_G3dGetPlttData(resTex);
     if (MonIsShiny(hofMon->mon) == TRUE) {
         loadPos = (const u8 *)loadPos + 0x20;
@@ -1429,10 +1429,10 @@ static void RegisterHallOfFame_IndivMonsScene_RemoveWindows(RegisterHallOfFameDa
 }
 
 static void RegisterHallOfFame_IndivMonsScene_PrintMonDetailsOnWindow(RegisterHallOfFameData *data, u16 monIdx, int windowIdx) {
-    Window *windows        = &data->windows[windowIdx];
+    Window *windows = &data->windows[windowIdx];
     RegisterHofMon *hofMon = &data->mons[monIdx];
-    Pokemon *mon           = hofMon->mon;
-    BoxPokemon *boxmon     = Mon_GetBoxMon(mon);
+    Pokemon *mon = hofMon->mon;
+    BoxPokemon *boxmon = Mon_GetBoxMon(mon);
 
     FillWindowPixelBuffer(&windows[0], 0);
     ReadMsgDataIntoString(data->msgData, msg_0180_00004, data->strbuf1);
@@ -1730,8 +1730,8 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
             UnkImageStruct_SetSpritePriority(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 3);
             UnkImageStruct_SetSpritePriority(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], 3);
             UnkImageStruct_SetSpritePriority(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], 3);
-            data->unk_13058    = 1.0f;
-            data->unk_1305C    = 1.5f;
+            data->unk_13058 = 1.0f;
+            data->unk_1305C = 1.5f;
             data->subprocTimer = 0;
             ++data->subprocStage;
         } else {
@@ -1926,8 +1926,8 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
             UnkImageStruct_SetSpritePriority(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 3);
             UnkImageStruct_SetSpritePriority(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], 3);
             UnkImageStruct_SetSpritePriority(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], 3);
-            data->unk_13058    = 1.0f;
-            data->unk_1305C    = 1.5f;
+            data->unk_13058 = 1.0f;
+            data->unk_1305C = 1.5f;
             data->subprocTimer = 0;
             ++data->subprocStage;
         } else {
@@ -1996,18 +1996,18 @@ static void RegisterHallOfFame_GetPartyDetails(RegisterHallOfFameData *data) {
 
     for (i = 0; i < Party_GetCount(data->args->party); ++i) {
         pokemon = Party_GetMonByIndex(data->args->party, i);
-        encry   = AcquireMonLock(pokemon);
+        encry = AcquireMonLock(pokemon);
         if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
-            hofMon              = &data->mons[data->numMons];
-            hofMon->mon         = pokemon;
-            hofMon->species     = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+            hofMon = &data->mons[data->numMons];
+            hofMon->mon = pokemon;
+            hofMon->species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
             hofMon->personality = GetMonData(pokemon, MON_DATA_PERSONALITY, NULL);
-            hofMon->form        = GetMonData(pokemon, MON_DATA_FORM, NULL);
-            hofMon->gender      = GetMonData(pokemon, MON_DATA_GENDER, NULL);
-            hofMon->yOffset     = GetMonPicHeightBySpeciesGenderForm(hofMon->species, hofMon->gender, 0, hofMon->form, hofMon->personality) + 8;
+            hofMon->form = GetMonData(pokemon, MON_DATA_FORM, NULL);
+            hofMon->gender = GetMonData(pokemon, MON_DATA_GENDER, NULL);
+            hofMon->yOffset = GetMonPicHeightBySpeciesGenderForm(hofMon->species, hofMon->gender, 0, hofMon->form, hofMon->personality) + 8;
             hofMon->metLocation = GetMonData(pokemon, MON_DATA_MET_LOCATION, NULL);
-            hofMon->level       = GetMonData(pokemon, MON_DATA_LEVEL, NULL);
-            hofMon->partyIndex  = i;
+            hofMon->level = GetMonData(pokemon, MON_DATA_LEVEL, NULL);
+            hofMon->partyIndex = i;
             if (hofMon->species == SPECIES_NIDORAN_F || hofMon->species == SPECIES_NIDORAN_M) {
                 hofMon->printGender = FALSE;
             } else {
@@ -2089,16 +2089,16 @@ static int RegisterHallOfFame_GetMmodelBySpeciesFormGender(int species, u8 form,
 
 static void RegisterHallOfFame_CreateTask_IndivMonAnimAndCry(RegisterHallOfFameData *data, int monIdx, int picIdx, BOOL startCry, int facing) {
     RegisterHofTaskData_IndivMonAnimAndCry *taskData = AllocFromHeap(HEAP_ID_REGISTER_HALL_OF_FAME, sizeof(RegisterHofTaskData_IndivMonAnimAndCry));
-    taskData->hofMon                                 = &data->mons[monIdx];
-    taskData->startCry                               = startCry;
-    taskData->narc                                   = data->narcA180;
-    taskData->imageLocation                          = NNS_G2dGetImageLocation(Sprite_GetImageProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
+    taskData->hofMon = &data->mons[monIdx];
+    taskData->startCry = startCry;
+    taskData->narc = data->narcA180;
+    taskData->imageLocation = NNS_G2dGetImageLocation(Sprite_GetImageProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
     if (facing == MON_PIC_FACING_FRONT) {
-        taskData->charbuf    = taskData->hofMon->frontspriteCharbuf;
+        taskData->charbuf = taskData->hofMon->frontspriteCharbuf;
         taskData->isFrontpic = 1;
         PokepicAnim_Init(&taskData->anim, taskData->hofMon->frontspriteAnim);
     } else {
-        taskData->charbuf    = taskData->hofMon->backspriteCharbuf;
+        taskData->charbuf = taskData->hofMon->backspriteCharbuf;
         taskData->isFrontpic = 0;
         PokepicAnim_Init(&taskData->anim, taskData->hofMon->backspriteAnim);
     }
@@ -2146,7 +2146,7 @@ static BOOL RegisterHallOfFame_WholeMonsSceneSubproc(RegisterHallOfFameData *dat
             UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_WHOLE_TWINKLE], x, y);
             RegisterHallOfFame_StartPicAnimSeq(data, REGHOF_PIC_WHOLE_TWINKLE, 0);
             data->generateConfettiDelayLength = LCRandom() % 255 + 28;
-            data->generateConfettiDelayTimer  = 0;
+            data->generateConfettiDelayTimer = 0;
         } else {
             ++data->generateConfettiDelayTimer;
         }
@@ -2184,11 +2184,11 @@ static BOOL RegisterHallOfFame_WholeMonsSceneSubproc(RegisterHallOfFameData *dat
         }
         break;
     case REGHOF_WHOLE_SUBPROC_REQUEST_FIRST_PHOTO_FLASH:
-        data->fadeDuration                      = 40;
-        data->requestPlayFlashKanseiSfx         = TRUE;
+        data->fadeDuration = 40;
+        data->requestPlayFlashKanseiSfx = TRUE;
         data->requestBeginSpotlightsAndConfetti = TRUE;
-        data->scrollingPolkadotBackground       = TRUE;
-        data->generatingConfetti                = TRUE;
+        data->scrollingPolkadotBackground = TRUE;
+        data->generatingConfetti = TRUE;
         UnkImageStruct_SetSpriteVisibleFlag(data->monPics[REGHOF_PIC_WHOLE_TWINKLE], TRUE);
         ++data->subprocStage;
         break;
@@ -2208,7 +2208,7 @@ static BOOL RegisterHallOfFame_WholeMonsSceneSubproc(RegisterHallOfFameData *dat
     case REGHOF_WHOLE_SUBPROC_WAIT_BUTTON:
         if (IsPaletteFadeFinished() == TRUE) {
             if ((gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B)) || System_GetTouchNew() == TRUE) {
-                data->fadeDuration              = 15;
+                data->fadeDuration = 15;
                 data->requestPlayFlashKanseiSfx = TRUE;
                 ++data->subprocStage;
             }
@@ -2219,7 +2219,7 @@ static BOOL RegisterHallOfFame_WholeMonsSceneSubproc(RegisterHallOfFameData *dat
         if (data->subprocTimer == 30) {
             if (IsPaletteFadeFinished() == TRUE) {
                 data->fadeDuration = 15;
-                data->unk_13060_4  = TRUE;
+                data->unk_13060_4 = TRUE;
                 ++data->subprocStage;
             }
         } else {
@@ -2344,7 +2344,7 @@ static void RegisterHallOfFame_WholePartyScene_CreateSprites(RegisterHallOfFameD
 
     UnkStruct_02070D3C sp2C;
     UnkStruct_02014E30 sp1C = ov63_0221FAF0;
-    NARC *narc              = NARC_New(NARC_a_0_0_8, HEAP_ID_REGISTER_HALL_OF_FAME);
+    NARC *narc = NARC_New(NARC_a_0_0_8, HEAP_ID_REGISTER_HALL_OF_FAME);
     u32 i;
     int tag;
     void *r4;
@@ -2367,7 +2367,7 @@ static void RegisterHallOfFame_WholePartyScene_CreateSprites(RegisterHallOfFameD
     SpriteRenderer_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, data->narcA101, 19, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 55522);
 
     for (i = 0; i < 6; ++i) {
-        data->monPics[REGHOF_PIC_WHOLE_MON + i]        = SpriteRenderer_LoadResourcesAndCreateSprite(data->spriteRenderer, data->spriteGfxHandler, &(sPicTemplates + 6)[i]);
+        data->monPics[REGHOF_PIC_WHOLE_MON + i] = SpriteRenderer_LoadResourcesAndCreateSprite(data->spriteRenderer, data->spriteGfxHandler, &(sPicTemplates + 6)[i]);
         data->monPics[REGHOF_PIC_WHOLE_MON_SHADOW + i] = SpriteRenderer_LoadResourcesAndCreateSprite(data->spriteRenderer, data->spriteGfxHandler, &(sPicTemplates + 6)[i + 6]);
         if (i < data->numMons) {
             RegisterHallOfFame_IndivMonsScene_SetPicGfxAndPltt(data, &data->mons[i], 2, REGHOF_PIC_WHOLE_MON + i);
@@ -2382,7 +2382,7 @@ static void RegisterHallOfFame_WholePartyScene_CreateSprites(RegisterHallOfFameD
         sub_0200E0FC(data->monPics[REGHOF_PIC_WHOLE_MON_SHADOW + i], GX_OAM_MODE_XLU);
         UnkImageStruct_SetSpriteVisibleFlag(data->monPics[REGHOF_PIC_WHOLE_MON_SHADOW + i], FALSE);
     }
-    data->monPics[REGHOF_PIC_WHOLE_PLAYER]        = SpriteRenderer_LoadResourcesAndCreateSprite(data->spriteRenderer, data->spriteGfxHandler, &sPicTemplates[18]);
+    data->monPics[REGHOF_PIC_WHOLE_PLAYER] = SpriteRenderer_LoadResourcesAndCreateSprite(data->spriteRenderer, data->spriteGfxHandler, &sPicTemplates[18]);
     data->monPics[REGHOF_PIC_WHOLE_PLAYER_SHADOW] = SpriteRenderer_LoadResourcesAndCreateSprite(data->spriteRenderer, data->spriteGfxHandler, &sPicTemplates[19]);
     sub_0200DF98(data->monPics[REGHOF_PIC_WHOLE_PLAYER], 1);
     sub_0200DF98(data->monPics[REGHOF_PIC_WHOLE_PLAYER_SHADOW], 1);
@@ -2478,11 +2478,11 @@ static void RegisterHallOfFame_G3Commit(RegisterHallOfFameData *data) {
 
 static SysTask *RegisterHallOfFame_CreateSpotlightController(RegisterHallOfFameData *data) {
     RegisterHofSpotlightTaskData *spotlight = AllocFromHeap(HEAP_ID_REGISTER_HALL_OF_FAME, sizeof(RegisterHofSpotlightTaskData));
-    sSpotlightsActive                       = TRUE;
-    sNumSpotlightTasks                      = 2;
-    spotlight->numSpotlights                = 0;
-    spotlight->endMakeDLTask                = SysTask_CreateOnVBlankQueue(Task_RegisterHallOfFame_Spotlights_EndMakeDL, spotlight, 3);
-    spotlight->parent                       = data;
+    sSpotlightsActive = TRUE;
+    sNumSpotlightTasks = 2;
+    spotlight->numSpotlights = 0;
+    spotlight->endMakeDLTask = SysTask_CreateOnVBlankQueue(Task_RegisterHallOfFame_Spotlights_EndMakeDL, spotlight, 3);
+    spotlight->parent = data;
     return SysTask_CreateOnVBlankQueue(Task_RegisterHallOfFame_Spotlights_BeginMakeDL, spotlight, 1);
 }
 
@@ -2522,13 +2522,13 @@ static void RegisterHallOfFame_AddSpotlight(SysTask *task, int xOffset, fx32 ang
 
 static SysTask *RegisterHallOfFame_CreateSpotlightTaskEx(RegisterHofSpotlightTaskData *spotlight, int xOffset, fx32 angle, int index) {
     RegisterHofSpotlightChildTaskData *child = AllocFromHeap(HEAP_ID_REGISTER_HALL_OF_FAME, sizeof(RegisterHofSpotlightChildTaskData));
-    child->parent                            = spotlight;
-    child->xOffset                           = xOffset;
-    child->color                             = sSpotlightColors[index];
-    child->unused_804                        = 0;
-    child->angle                             = angle;
-    child->speed                             = 2 * sSpotlightSpeeds[index]; // UB warning: can index past end of array
-    child->polygonId                         = index;
+    child->parent = spotlight;
+    child->xOffset = xOffset;
+    child->color = sSpotlightColors[index];
+    child->unused_804 = 0;
+    child->angle = angle;
+    child->speed = 2 * sSpotlightSpeeds[index]; // UB warning: can index past end of array
+    child->polygonId = index;
     SetVec(child->vertices[0], xOffset - 80, FX16_CONST(-1), 0);
     SetVec(child->vertices[1], xOffset + 80, FX16_CONST(-1), 0);
     return SysTask_CreateOnVBlankQueue(Task_RegisterHallOfFame_SpotlightInstance, child, 2);
@@ -2549,7 +2549,7 @@ static void Task_RegisterHallOfFame_SpotlightInstance(SysTask *task, void *taskD
             }
         }
 
-        s32 r6      = child->angle >> FX32_SHIFT;
+        s32 r6 = child->angle >> FX32_SHIFT;
         fx32 cosVal = child->xOffset + FX_Mul(GF_CosDegNoWrap(r6), FX32_CONST(2.5));
         fx32 sinVal = -FX32_ONE + FX_Mul(GF_SinDegNoWrap(r6), FX32_CONST(2.5));
 
@@ -2630,9 +2630,9 @@ static SysTask *RegisterHallOfFame_CreateConfettiTask(RegisterHallOfFameData *da
     }
 
     SetLCRNGSeed(rand);
-    confetti->active               = FALSE;
+    confetti->active = FALSE;
     confetti->requestPushGxCommand = FALSE;
-    confetti->unk_8D20             = FALSE;
+    confetti->unk_8D20 = FALSE;
     G3_MtxMode(GX_MTXMODE_POSITION_VECTOR);
     return SysTask_CreateOnMainQueue(Task_RegisterHallOfFame_Confetti, confetti, 0);
 }
@@ -2647,7 +2647,7 @@ static void RegisterHallOfFame_EndConfetti(SysTask *task) {
 static void RegisterHallOfFame_StartConfetti(SysTask *task) {
     if (task != NULL) {
         RegisterHofConfettiEmitterTaskData *confetti = (RegisterHofConfettiEmitterTaskData *)SysTask_GetData(task);
-        confetti->active                             = TRUE;
+        confetti->active = TRUE;
     }
 }
 

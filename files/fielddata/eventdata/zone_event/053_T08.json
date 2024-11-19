@@ -2,244 +2,244 @@
   "header": "fielddata/script/scr_seq/event_T08.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_T08_004 + 1",
+      "scriptId": "_EV_scr_seq_T08_004 + 1",
       "type": 1,
       "x": 1213,
-      "y": 405,
-      "z": 0,
+      "z": 405,
+      "y": 0,
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T08_005 + 1",
+      "scriptId": "_EV_scr_seq_T08_005 + 1",
       "type": 1,
       "x": 1220,
-      "y": 435,
-      "z": 0,
+      "z": 435,
+      "y": 0,
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T08_003 + 1",
+      "scriptId": "_EV_scr_seq_T08_003 + 1",
       "type": 1,
       "x": 1193,
-      "y": 441,
-      "z": 0,
+      "z": 441,
+      "y": 0,
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T08_009 + 1",
+      "scriptId": "_EV_scr_seq_T08_009 + 1",
       "type": 1,
       "x": 1208,
-      "y": 424,
-      "z": 0,
+      "z": 424,
+      "y": 0,
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_t08_nugget",
+      "scriptId": "std_hiddenitem_t08_nugget",
       "type": 2,
       "x": 1232,
-      "y": 413,
-      "z": 0,
+      "z": 413,
+      "y": 0,
       "dir": 4
     }
   ],
   "objects": [
     {
       "id": "obj_T08_gsmiddleman1",
-      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "spriteId": "SPRITE_GSMIDDLEMAN1",
       "movement": 3,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T08_001 + 1",
-      "dirn": 1,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 2,
-      "yrange": 1,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_T08_001 + 1",
+      "facingDirection": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 2,
+      "yRange": 1,
       "x": 1198,
-      "y": 441,
-      "z": 0
+      "z": 441,
+      "y": 0
     },
     {
       "id": "obj_T08_gswoman1",
-      "sprite_id": "SPRITE_GSWOMAN1",
+      "spriteId": "SPRITE_GSWOMAN1",
       "movement": 3,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T08_002 + 1",
-      "dirn": 1,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 1,
-      "yrange": 1,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_T08_002 + 1",
+      "facingDirection": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 1,
+      "yRange": 1,
       "x": 1213,
-      "y": 426,
-      "z": 0
+      "z": 426,
+      "y": 0
     },
     {
       "id": "obj_T08_gsboy2",
-      "sprite_id": "SPRITE_GSBOY2",
+      "spriteId": "SPRITE_GSBOY2",
       "movement": 3,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T08_000 + 1",
-      "dirn": 1,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 1,
-      "yrange": 1,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_T08_000 + 1",
+      "facingDirection": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 1,
+      "yRange": 1,
       "x": 1212,
-      "y": 413,
-      "z": 0
+      "z": 413,
+      "y": 0
     },
     {
       "id": "obj_T08_tree",
-      "sprite_id": "SPRITE_TREE",
+      "spriteId": "SPRITE_TREE",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_MAPTEMP_010",
-      "scr": "std_field_cut",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_MAPTEMP_010",
+      "scriptId": "std_field_cut",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 1211,
-      "y": 424,
-      "z": 0
+      "z": 424,
+      "y": 0
     },
     {
       "id": "obj_T08_bonguri",
-      "sprite_id": "SPRITE_BONGURI",
+      "spriteId": "SPRITE_BONGURI",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "std_apricorn_tree",
-      "dirn": 0,
-      "eye": 28,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "std_apricorn_tree",
+      "facingDirection": 0,
+      "param0": 28,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 1206,
-      "y": 421,
-      "z": 0
+      "z": 421,
+      "y": 0
     },
     {
       "id": "obj_T08_gsmiddleman1_2",
-      "sprite_id": "SPRITE_GSMIDDLEMAN1",
+      "spriteId": "SPRITE_GSMIDDLEMAN1",
       "movement": 14,
       "type": 0,
-      "flag": "FLAG_HIDE_CAMERON",
-      "scr": "_EV_scr_seq_T08_006 + 1",
-      "dirn": 0,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_HIDE_CAMERON",
+      "scriptId": "_EV_scr_seq_T08_006 + 1",
+      "facingDirection": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 1201,
-      "y": 445,
-      "z": 0
+      "z": 445,
+      "y": 0
     },
     {
       "id": "obj_T08_juggrer",
-      "sprite_id": "SPRITE_JUGGRER",
+      "spriteId": "SPRITE_JUGGRER",
       "movement": 0,
       "type": 0,
-      "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T08_008 + 1",
-      "dirn": 1,
-      "eye": 0,
-      "unk10": 0,
-      "tsure_poke_color": 0,
-      "xrange": 0,
-      "yrange": 0,
+      "eventFlag": "FLAG_NOTHING",
+      "scriptId": "_EV_scr_seq_T08_008 + 1",
+      "facingDirection": 1,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "xRange": 0,
+      "yRange": 0,
       "x": 1220,
-      "y": 411,
-      "z": 0
+      "z": 411,
+      "y": 0
     }
   ],
   "warps": [
     {
       "x": 1241,
-      "y": 422,
+      "z": 422,
       "header": "MAP_R15R0101",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 1241,
-      "y": 423,
+      "z": 423,
       "header": "MAP_R15R0101",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 1203,
-      "y": 445,
+      "z": 445,
       "header": "MAP_W19R0101",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 1204,
-      "y": 445,
+      "z": 445,
       "header": "MAP_W19R0101",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 1197,
-      "y": 416,
+      "z": 416,
       "header": "MAP_T08FS0101",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 1214,
-      "y": 403,
+      "z": 403,
       "header": "MAP_T08R0201",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 1215,
-      "y": 403,
+      "z": 403,
       "header": "MAP_T08R0201",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 1195,
-      "y": 439,
+      "z": 439,
       "header": "MAP_T08GYM0101",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 1200,
-      "y": 439,
+      "z": 439,
       "header": "MAP_T08R0401",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 1209,
-      "y": 439,
+      "z": 439,
       "header": "MAP_T08PC0101",
       "anchor": 0,
-      "height": 0
+      "y": 0
     },
     {
       "x": 1222,
-      "y": 435,
+      "z": 435,
       "header": "MAP_T08R0601",
       "anchor": 0,
-      "height": 0
+      "y": 0
     }
   ]
 }

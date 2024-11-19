@@ -42,7 +42,7 @@
 .public FieldSystem_SyncMapObjectsToSave
 .public PlayerAvatar_GetFacingDirection
 .public GetPlayerXCoord
-.public GetPlayerYCoord
+.public GetPlayerZCoord
 .public Field_SaveStatsPrinter_Print
 .public Field_SaveStatsPrinter_RemoveFromScreen
 .public Field_SaveStatsPrinter_New

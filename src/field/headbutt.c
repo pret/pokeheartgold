@@ -104,22 +104,22 @@ typedef struct TaskData_TryHeadbuttEncounter {
 
 void FieldSystem_TryHeadbuttEncounter(FieldSystem *fieldSystem, u16 *varPointer) {
     TaskData_TryHeadbuttEncounter *didHeadbuttStartBattle = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(didHeadbuttStartBattle));
-    didHeadbuttStartBattle->resultPtr                     = varPointer;
-    *varPointer                                           = FALSE;
+    didHeadbuttStartBattle->resultPtr = varPointer;
+    *varPointer = FALSE;
     TaskManager_Call(fieldSystem->taskman, Task_TryHeadbuttEncounter, didHeadbuttStartBattle);
 }
 
 static BOOL Task_TryHeadbuttEncounter(TaskManager *taskManager) {
     HeadbuttEncounterData *headbuttTable;
-    FieldSystem *fieldSystem                              = TaskManager_GetFieldSystem(taskManager);
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     TaskData_TryHeadbuttEncounter *didHeadbuttStartBattle = TaskManager_GetEnvironment(taskManager);
-    headbuttTable                                         = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_arc_headbutt, fieldSystem->location->mapId, HEAP_ID_FIELD);
+    headbuttTable = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_arc_headbutt, fieldSystem->location->mapId, HEAP_ID_FIELD);
     if (headbuttTable->numRegularTrees != 0 || headbuttTable->numSecretTrees != 0) {
         BattleSetup *setup;
         u32 x;
         u32 y;
         GetCoordsOfFacingTree(fieldSystem, &x, &y);
-        u32 trainerId          = PlayerProfile_GetTrainerID(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
+        u32 trainerId = PlayerProfile_GetTrainerID(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
         enum TreeType treeType = (enum TreeType)Headbutt_GetTreeTypeFromTable(headbuttTable->numRegularTrees, headbuttTable->numSecretTrees, trainerId, x, y, headbuttTable->treeCoords);
         if (treeType == TREETYPE_NONE) {
             FreeToHeap(headbuttTable);
@@ -157,7 +157,7 @@ static s8 Headbutt_GetTreeTypeFromTable(u16 numRegularTrees, u16 numSecretTrees,
     // Not all trees are headbuttable, this is determined by trainer ID
     u16 i;
     u16 numCoordsRegular = numRegularTrees * 6;
-    u16 numCoordsSecret  = numSecretTrees * 6;
+    u16 numCoordsSecret = numSecretTrees * 6;
     for (i = 0; i < numCoordsRegular; i++) {
         if (x == treeCoords[i][0] && y == treeCoords[i][1]) {
             return Headbutt_GetTreeType_Regular(i / 6, numRegularTrees, trainerId);
@@ -173,11 +173,11 @@ static s8 Headbutt_GetTreeTypeFromTable(u16 numRegularTrees, u16 numSecretTrees,
 }
 
 static s8 Headbutt_GetTreeType_Regular(u8 whichTree, u8 numTrees, u32 trainerId) {
-    s8 ret                = TREETYPE_NONE;
+    s8 ret = TREETYPE_NONE;
     u8 trainerIdLastDigit = trainerId % 10;
     if (numTrees >= 5) {
         u8 column = whichTree % 5;
-        ret       = sRareTreeLUT_5Plus[trainerIdLastDigit][column];
+        ret = sRareTreeLUT_5Plus[trainerIdLastDigit][column];
     } else if (numTrees == 4) {
         ret = sRareTreeLUT_4[trainerIdLastDigit][whichTree];
     } else if (numTrees == 3) {
@@ -198,12 +198,12 @@ static void GetCoordsOfFacingTree(FieldSystem *fieldSystem, u32 *x, u32 *y) {
     PlayerAvatar_GetCoordsInFront(fieldSystem->playerAvatar, &inFrontX, &inFrontY);
     if (FollowMon_IsActive(fieldSystem)) {
         LocalMapObject *object = FollowMon_GetMapObject(fieldSystem);
-        u32 followingMonX      = MapObject_GetCurrentX(object);
-        u32 followingMonY      = MapObject_GetCurrentY(object);
-        if (inFrontX == followingMonX && inFrontY == followingMonY) {
-            u8 dir   = MapObject_GetFacingDirection(object);
+        u32 followingMonX = MapObject_GetCurrentX(object);
+        u32 followingMonZ = MapObject_GetCurrentZ(object);
+        if (inFrontX == followingMonX && inFrontY == followingMonZ) {
+            u8 dir = MapObject_GetFacingDirection(object);
             inFrontX = GetDeltaXByFacingDirection(dir) + followingMonX;
-            inFrontY = GetDeltaYByFacingDirection(dir) + followingMonY;
+            inFrontY = GetDeltaYByFacingDirection(dir) + followingMonZ;
         }
     }
     *x = inFrontX;
@@ -216,10 +216,10 @@ static void GetCoordsOfFacingTree(FieldSystem *fieldSystem, u32 *x, u32 *y) {
 
 BOOL ScrCmd_795(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    u8 x                     = ScriptGetVar(ctx);
-    u8 y                     = ScriptGetVar(ctx);
-    Window **moneyBox        = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MONEY_BOX);
-    *moneyBox                = ov01_021EED60(ctx->fieldSystem, x, y);
+    u8 x = ScriptGetVar(ctx);
+    u8 y = ScriptGetVar(ctx);
+    Window **moneyBox = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MONEY_BOX);
+    *moneyBox = ov01_021EED60(ctx->fieldSystem, x, y);
     return FALSE;
 }
 

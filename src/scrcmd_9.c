@@ -41,8 +41,8 @@ static u32 sub_0204A2A8(UnkStruct_Fsys_A0 *unkStruct, u8 a1);
 static const u16 _020FBF70[] = { 141, 145, 142, 143, 144 };
 
 BOOL ScrCmd_410(ScriptContext *ctx) {
-    u16 unk4                = ScriptReadHalfword(ctx);
-    u16 unk6                = ScriptReadHalfword(ctx);
+    u16 unk4 = ScriptReadHalfword(ctx);
+    u16 unk6 = ScriptReadHalfword(ctx);
     ctx->fieldSystem->unkA0 = sub_0204A824(FieldSystem_GetSaveData(ctx->fieldSystem), unk4, unk6);
     return FALSE;
 }
@@ -60,10 +60,10 @@ BOOL ScrCmd_411(ScriptContext *ctx) {
 
 BOOL ScrCmd_412(ScriptContext *ctx) {
     void **unk;
-    u16 id                       = ScriptReadHalfword(ctx);
-    u16 arg                      = ScriptGetVar(ctx);
-    u16 resultVarId              = ScriptReadHalfword(ctx);
-    u16 *result                  = GetVarPointer(ctx->fieldSystem, resultVarId);
+    u16 id = ScriptReadHalfword(ctx);
+    u16 arg = ScriptGetVar(ctx);
+    u16 resultVarId = ScriptReadHalfword(ctx);
+    u16 *result = GetVarPointer(ctx->fieldSystem, resultVarId);
     UnkStruct_Fsys_A0 *unkStruct = ctx->fieldSystem->unkA0;
     switch (id) {
     case 1:
@@ -117,7 +117,7 @@ BOOL ScrCmd_412(ScriptContext *ctx) {
         sub_0204AA58(unkStruct, ctx->taskman, unk);
         return TRUE;
     case 31:
-        unk     = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+        unk = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
         *result = sub_0204AA78(unkStruct, unk, ctx->fieldSystem->saveData);
         break;
     case 32:
@@ -197,33 +197,33 @@ BOOL ScrCmd_412(ScriptContext *ctx) {
 
 BOOL ScrCmd_413(ScriptContext *ctx) {
     UnkStruct_Fsys_A0 *unkStruct = ctx->fieldSystem->unkA0;
-    u16 unk6                     = ScriptGetVar(ctx);
-    u16 unk7                     = ScriptGetVar(ctx);
-    u16 *speciesPtr              = ScriptGetVarPointer(ctx);
-    u16 *movePtr                 = ScriptGetVarPointer(ctx);
-    *speciesPtr                  = unkStruct->unk298[unk6].unk30[unk7].species;
-    *movePtr                     = unkStruct->unk298[unk6].unk30[unk7].moves[0];
+    u16 unk6 = ScriptGetVar(ctx);
+    u16 unk7 = ScriptGetVar(ctx);
+    u16 *speciesPtr = ScriptGetVarPointer(ctx);
+    u16 *movePtr = ScriptGetVarPointer(ctx);
+    *speciesPtr = unkStruct->unk298[unk6].unk30[unk7].species;
+    *movePtr = unkStruct->unk298[unk6].unk30[unk7].moves[0];
     return FALSE;
 }
 
 BOOL ScrCmd_414(ScriptContext *ctx) {
     u16 *unk = ScriptGetVarPointer(ctx);
-    *unk     = sub_020672D8(ctx->fieldSystem->saveData);
+    *unk = sub_020672D8(ctx->fieldSystem->saveData);
     return FALSE;
 }
 
 BOOL ScrCmd_415(ScriptContext *ctx) {
     u16 *unk = ScriptGetVarPointer(ctx);
-    *unk     = sub_02067398(ctx->fieldSystem->saveData);
+    *unk = sub_02067398(ctx->fieldSystem->saveData);
     return FALSE;
 }
 
 BOOL ScrCmd_416(ScriptContext *ctx) {
-    u16 unk7                     = ScriptGetVar(ctx);
-    u16 unk4                     = ScriptGetVar(ctx);
-    u16 *unkPtr                  = ScriptGetVarPointer(ctx);
+    u16 unk7 = ScriptGetVar(ctx);
+    u16 unk4 = ScriptGetVar(ctx);
+    u16 *unkPtr = ScriptGetVarPointer(ctx);
     UnkStruct_Fsys_A0 *unkStruct = ctx->fieldSystem->unkA0;
-    *unkPtr                      = FALSE;
+    *unkPtr = FALSE;
     u32 unk0;
     switch (unk7) {
     case 0:
@@ -256,8 +256,8 @@ BOOL ScrCmd_416(ScriptContext *ctx) {
 
 BOOL ScrCmd_417(ScriptContext *ctx) {
     UnkStruct_Fsys_A0 *unkStruct = ctx->fieldSystem->unkA0;
-    u16 unk6                     = ScriptGetVar(ctx);
-    u16 unk7                     = ScriptReadHalfword(ctx);
+    u16 unk6 = ScriptGetVar(ctx);
+    u16 unk7 = ScriptReadHalfword(ctx);
     if (sub_0205C298(ctx->fieldSystem->saveData) == 1) {
         sub_020672A4(ctx->fieldSystem->taskman, unk6, unk7);
     } else {
@@ -270,11 +270,11 @@ BOOL ScrCmd_417(ScriptContext *ctx) {
 
 static BOOL sub_0204A1E8(ScriptContext *ctx) {
     UnkStruct_Fsys_A0 *unkStruct = ctx->fieldSystem->unkA0;
-    u16 *unkPtr                  = GetVarPointer(ctx->fieldSystem, unkStruct->unk8DA);
-    u32 unk                      = unkStruct->unk8D5 == 1 ? 1 : 2;
+    u16 *unkPtr = GetVarPointer(ctx->fieldSystem, unkStruct->unk8DA);
+    u32 unk = unkStruct->unk8D5 == 1 ? 1 : 2;
     if (unkStruct->unk8D4 == unk) {
         unkStruct->unk8D4 = 0;
-        *unkPtr           = unkStruct->unk8D8;
+        *unkPtr = unkStruct->unk8D8;
         return TRUE;
     } else {
         return FALSE;
@@ -293,7 +293,7 @@ BOOL ScrCmd_418(ScriptContext *ctx) {
 
 BOOL ScrCmd_419(ScriptContext *ctx) {
     u16 *unk = ScriptGetVarPointer(ctx);
-    *unk     = sub_0202D7B8(sub_0202D928(ctx->fieldSystem->saveData));
+    *unk = sub_0202D7B8(sub_0202D928(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
@@ -312,14 +312,14 @@ static u32 sub_0204A2A8(UnkStruct_Fsys_A0 *unkStruct, u8 a1) {
 
 BOOL ScrCmd_554(ScriptContext *ctx) {
     SaveData *saveData = ctx->fieldSystem->saveData;
-    u16 *unk           = ScriptGetVarPointer(ctx);
-    *unk               = FrontierData_BattlePointAction(Save_FrontierData_Get(saveData), 0, 0);
+    u16 *unk = ScriptGetVarPointer(ctx);
+    *unk = FrontierData_BattlePointAction(Save_FrontierData_Get(saveData), 0, 0);
     return FALSE;
 }
 
 BOOL ScrCmd_555(ScriptContext *ctx) {
     SaveData *saveData = ctx->fieldSystem->saveData;
-    u16 unk            = ScriptGetVar(ctx);
+    u16 unk = ScriptGetVar(ctx);
     GameStats_Add(Save_GameStats_Get(ctx->fieldSystem->saveData), GAME_STAT_BATTLE_POINTS, unk);
     FrontierData_BattlePointAction(Save_FrontierData_Get(saveData), unk, 5);
     return FALSE;
@@ -327,7 +327,7 @@ BOOL ScrCmd_555(ScriptContext *ctx) {
 
 BOOL ScrCmd_556(ScriptContext *ctx) {
     SaveData *saveData = ctx->fieldSystem->saveData;
-    u16 unk            = ScriptGetVar(ctx);
+    u16 unk = ScriptGetVar(ctx);
     GameStats_Add(Save_GameStats_Get(ctx->fieldSystem->saveData), GAME_STAT_UNK70, unk);
     FrontierData_BattlePointAction(Save_FrontierData_Get(saveData), unk, 6);
     return FALSE;
@@ -335,8 +335,8 @@ BOOL ScrCmd_556(ScriptContext *ctx) {
 
 BOOL ScrCmd_CheckBattlePoints(ScriptContext *ctx) {
     SaveData *saveData = ctx->fieldSystem->saveData;
-    u16 unk            = ScriptGetVar(ctx);
-    u16 *unkPtr        = ScriptGetVarPointer(ctx);
+    u16 unk = ScriptGetVar(ctx);
+    u16 *unkPtr = ScriptGetVarPointer(ctx);
     if (FrontierData_BattlePointAction(Save_FrontierData_Get(saveData), 0, 0) < unk) {
         *unkPtr = FALSE;
     } else {

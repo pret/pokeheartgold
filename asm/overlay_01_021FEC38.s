@@ -105,7 +105,7 @@ ov01_021FECA0: ; 0x021FECA0
 	add r0, r2, r0
 	str r0, [sp, #0x18]
 	add r0, r5, #0
-	bl MapObject_GetPrevHeight
+	bl MapObject_GetPreviousY
 	lsl r1, r0, #0xf
 	mov r0, #2
 	lsl r0, r0, #0xe
@@ -113,7 +113,7 @@ ov01_021FECA0: ; 0x021FECA0
 	str r0, [sp, #0x14]
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0205F09C
+	bl MapObject_GetPriorityPlusValue
 	add r1, sp, #8
 	str r1, [sp]
 	str r0, [sp, #4]
