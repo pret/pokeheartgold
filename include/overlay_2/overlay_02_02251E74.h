@@ -4,7 +4,7 @@
 #include "field_system.h"
 
 BOOL ov02_02253134(SaveData *saveData);
-u8 ov02_0225316C();
+u8 ov02_0225316C(void);
 BOOL ov02_02253188(SaveData *saveData);
 u8 ov02_022531B4(SaveData *saveData);
 

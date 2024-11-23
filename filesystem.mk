@@ -532,10 +532,8 @@ include graphics_files_rules.mk
 NTR_FILE_EXT := bin NCGR NCLR NCER NSCR NSBMD NSBCA NSBTA
 
 %.narc: NARC_DEPS = $(foreach ext,$(NTR_FILE_EXT),$(wildcard $*/*.$ext))
-%.narc: $(NARC_DEPS)
+%.narc %.naix: $(NARC_DEPS)
 	$(KNARC) -d $* -p $@ -i
-
-%.naix: %.narc ;
 
 .PHONY: filesystem clean-filesystem clean-fs
 files_for_compile: $(FILES_NEEDED_FOR_COMPILE)

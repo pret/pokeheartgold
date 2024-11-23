@@ -25,7 +25,7 @@ BOOL ov02_02253134(SaveData *saveData) {
     return TRUE;
 }
 
-u8 ov02_0225316C() {
+u8 ov02_0225316C(void) {
     u8 rand = LCRandom() % 39;
     return ov02_02253D54[rand];
 }

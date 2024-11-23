@@ -67,7 +67,7 @@ typedef enum SinjohCutsceneState {
 } SinjohCutsceneState;
 
 static BOOL Task_SinjohCutscene(TaskManager *taskMan) {
-    int *state               = TaskManager_GetStatePtr(taskMan);
+    int *state = TaskManager_GetStatePtr(taskMan);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskMan);
     SinjohCutsceneData *data = TaskManager_GetEnvironment(taskMan);
     switch (*state) {
@@ -225,7 +225,7 @@ static BOOL sField3DModelAnimation_Array_FrameAdvanceAndCheck(Field3DModelAnimat
     u8 i;
     u8 cnt = 0;
     for (i = 0; i < length; i++) {
-        if (Field3dModelAnimation_FrameAdvanceAndCheck(&animation[i], (1 << 12))) {
+        if (Field3dModelAnimation_FrameAdvanceAndCheck(&animation[i], 0x1000)) {
             cnt++;
         }
     }
@@ -249,8 +249,8 @@ typedef enum SinjohGetEggCutsceneState {
 } SinjohGetEggCutsceneState;
 
 static BOOL Task_SinjohGetEggCutscene(TaskManager *taskMan) {
-    int *state                     = TaskManager_GetStatePtr(taskMan);
-    FieldSystem *fieldSystem       = TaskManager_GetFieldSystem(taskMan);
+    int *state = TaskManager_GetStatePtr(taskMan);
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskMan);
     SinjohGetEggCutsceneData *data = TaskManager_GetEnvironment(taskMan);
 
     switch (*state) {

@@ -1,3 +1,5 @@
+#include "constants/sprites.h"
+
 #include "overlay_2/event_cutscene.h"
 
 #include "fieldmap.h"
@@ -11,6 +13,13 @@
 #include "unk_0200FA24.h"
 #include "unk_02062108.h"
 #include "unk_020689C8.h"
+
+typedef struct UnkStruct_022523D0 {
+    int unk0;
+    u32 unk4;
+    u32 unk8;
+} UnkStruct_022523D0;
+
 static BOOL ov02_022523D0(TaskManager *taskMan);
 
 BOOL ov02_02252334(FieldSystem *fieldSystem) {
@@ -19,8 +28,8 @@ BOOL ov02_02252334(FieldSystem *fieldSystem) {
     }
     if (FollowMon_IsActive(fieldSystem) && fieldSystem->followMon.species == SPECIES_SHAYMIN) {
         Pokemon *mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(fieldSystem->saveData));
-        u32 species  = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        u32 form     = GetMonData(mon, MON_DATA_FORM, NULL);
+        u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        u32 form = GetMonData(mon, MON_DATA_FORM, NULL);
         GF_ASSERT(species == fieldSystem->followMon.species);
         // yes, this is explicitly checked twice
         if (species != fieldSystem->followMon.species) {
@@ -34,21 +43,15 @@ BOOL ov02_02252334(FieldSystem *fieldSystem) {
 }
 
 void ov02_022523B4(TaskManager *taskMan) {
-    void *data = AllocFromHeapAtEnd(HEAP_ID_FIELD, 12);
+    UnkStruct_022523D0 *data = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(UnkStruct_022523D0));
     TaskManager_Call(taskMan, ov02_022523D0, data);
 }
-
-typedef struct UnkStruct_022523D0 {
-    int unk0;
-    u32 unk4;
-    u32 unk8;
-} UnkStruct_022523D0;
 
 static BOOL ov02_022523D0(TaskManager *taskMan) {
     int *state = TaskManager_GetStatePtr(taskMan);
     VecFx32 pos;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskMan);
-    UnkStruct_022523D0 *env  = TaskManager_GetEnvironment(taskMan);
+    UnkStruct_022523D0 *env = TaskManager_GetEnvironment(taskMan);
     switch (*state) {
     case 0:
         MapObject_UnpauseMovement(FollowMon_GetMapObject(fieldSystem));
@@ -60,10 +63,10 @@ static BOOL ov02_022523D0(TaskManager *taskMan) {
         u32 res;
         if (FollowMon_IsVisible(fieldSystem)) {
             env->unk4 = ov01_022052C4(fieldSystem->unk_44, &pos);
-            res       = 1;
+            res = 1;
         } else {
             env->unk4 = 0;
-            res       = 0;
+            res = 0;
         }
         env->unk8 = res;
         env->unk0 = 0;
@@ -73,16 +76,16 @@ static BOOL ov02_022523D0(TaskManager *taskMan) {
     case 2:
         if (env->unk8 != 0) {
             if (++env->unk0 >= 4) {
-                ov01_021FA930(fieldSystem->followMon.mapObject, 974);
+                ov01_021FA930(fieldSystem->followMon.mapObject, SPRITE_FOLLOWER_MON_SHAYMIN);
                 (*state)++;
             }
             break;
         }
         MapObjectManager *mapObjectMan = MapObject_GetManager(fieldSystem->followMon.mapObject);
-        u32 spriteId                   = MapObject_GetSpriteID(fieldSystem->followMon.mapObject);
+        u32 spriteId = MapObject_GetSpriteID(fieldSystem->followMon.mapObject);
         sub_0205E420(fieldSystem->followMon.mapObject);
         ov01_021FA108(mapObjectMan, spriteId, fieldSystem->followMon.mapObject);
-        sub_0205E38C(fieldSystem->followMon.mapObject, 974);
+        sub_0205E38C(fieldSystem->followMon.mapObject, SPRITE_FOLLOWER_MON_SHAYMIN);
         (*state)++;
         break;
     case 3:

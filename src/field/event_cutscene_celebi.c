@@ -73,8 +73,8 @@ typedef enum CelebiTimeTravelState {
 } CelebiTimeTravelState;
 
 static BOOL Task_CelebiTimeTravelCutscene(TaskManager *taskMan) {
-    int *state                             = TaskManager_GetStatePtr(taskMan);
-    FieldSystem *fieldSystem               = TaskManager_GetFieldSystem(taskMan);
+    int *state = TaskManager_GetStatePtr(taskMan);
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskMan);
     CelebiTimeTravelCutsceneTaskData *data = TaskManager_GetEnvironment(taskMan);
     switch (*state) {
     case CTT_STATE_BEGIN_PALETTE_FADE:
@@ -142,7 +142,7 @@ static void Task_CelebiCutsceneSwirl(SysTask *task, void *_data) {
     switch (data->unkEE) {
     case 0:
         UnkStruct_02253CE0 unk = { 0xFFFF0000, 0xB4, 0x500 };
-        unk.unk8               = Camera_GetPerspectiveAngle(data->fieldSystem->camera);
+        unk.unk8 = Camera_GetPerspectiveAngle(data->fieldSystem->camera);
         CelebiCutscene_InitSwirlData(data, &unk);
         data->unkEE++;
         break;
@@ -156,12 +156,12 @@ static void Task_CelebiCutsceneSwirl(SysTask *task, void *_data) {
 
 static void CelebiCutscene_InitSwirlData(CelebiTimeTravelCutsceneTaskData *data, UnkStruct_02253CE0 *a1) {
     data->isSwirlFinished = FALSE;
-    data->unkE6           = 0;
-    data->unkE0           = a1->unk0;
-    data->unkE4           = data->unk0;
-    data->perspective     = Camera_GetPerspectiveAngle(data->fieldSystem->camera);
-    data->unkEC           = a1->unk8;
-    data->unkE8           = a1->unk4;
+    data->unkE6 = 0;
+    data->unkE0 = a1->unk0;
+    data->unkE4 = data->unk0;
+    data->perspective = Camera_GetPerspectiveAngle(data->fieldSystem->camera);
+    data->unkEC = a1->unk8;
+    data->unkE8 = a1->unk4;
     SysTask_CreateOnMainQueue(Task_CelebiCutsceneSwirlEffect, data, 1);
 }
 
@@ -169,7 +169,7 @@ static BOOL CelebiCutscene_SwirlEffect(CelebiTimeTravelCutsceneTaskData *data) {
     VecFx32 vec;
     MtxFx33 rotMatrix;
     const VecFx32 vec2 = { 0, 0x1000, 0 };
-    Camera *camera     = data->fieldSystem->camera;
+    Camera *camera = data->fieldSystem->camera;
 
     data->unkE6++;
     int e6 = data->unkE6;
