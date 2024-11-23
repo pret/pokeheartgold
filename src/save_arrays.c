@@ -36,8 +36,8 @@
 
 // These macros are temporary. As the respective sources
 // are decompiled, the calls should be phased out.
-#define DECL_CHUNK(prefix)             \
-    extern u32 prefix##_sizeof(void);  \
+#define DECL_CHUNK(prefix)            \
+    extern u32 prefix##_sizeof(void); \
     extern void prefix##_Init(void *);
 #define DECL_CHUNK_EX(sizefn, initfn) \
     extern u32 sizefn(void);          \

@@ -162,7 +162,7 @@ PlayerAvatar *sub_0205C408(MapObjectManager *man, PlayerSaveData *playerSaveData
     MapObject_SetFlagsBits(mapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_KEEP));
     MapObject_ClearFlagsBits(mapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7));
     MapObject_SetFlag29(mapObj, TRUE);
-    sub_0205C6D8(avatar, mapObj);
+    PlayerAvatar_SetMapObject(avatar, mapObj);
     return avatar;
 }
 
@@ -230,7 +230,7 @@ void CreatePlayerAvatarMapObject(PlayerAvatar *avatar, MapObjectManager *man, u3
     MapObject_SetFlagsBits(mapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_KEEP));
     MapObject_ClearFlagsBits(mapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7));
     MapObject_SetFlag29(mapObj, TRUE);
-    sub_0205C6D8(avatar, mapObj);
+    PlayerAvatar_SetMapObject(avatar, mapObj);
 }
 
 LocalMapObject *sub_0205C600(MapObjectManager *man) {
@@ -304,7 +304,7 @@ u32 sub_0205C6D4(PlayerAvatar *avatar) {
     return avatar->unk14;
 }
 
-void sub_0205C6D8(PlayerAvatar *avatar, LocalMapObject *obj) {
+void PlayerAvatar_SetMapObject(PlayerAvatar *avatar, LocalMapObject *obj) {
     avatar->mapObject = obj;
 }
 

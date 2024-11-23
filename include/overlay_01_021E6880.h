@@ -3,11 +3,11 @@
 
 #include "field_system.h"
 
-void ov01_021E6928(Unk_0203E15C *a0, FieldSystem *fieldSystem, u16 newKeys, u16 heldKeys);
-int ov01_021E6AF4(Unk_0203E15C *a0, FieldSystem *fieldSystem);
-BOOL ov01_021E6E00(Unk_0203E15C *a0, FieldSystem *fieldSystem);
-BOOL ov01_021E6EFC(Unk_0203E15C *a0, FieldSystem *fieldSystem);
-BOOL ov01_021E6FD4(Unk_0203E15C *a0, FieldSystem *fieldSystem);
+void FieldInput_Update(FieldInput *a0, FieldSystem *fieldSystem, u16 newKeys, u16 heldKeys);
+int FieldInput_Process(FieldInput *a0, FieldSystem *fieldSystem);
+BOOL FieldInput_Process_Colosseum(FieldInput *a0, FieldSystem *fieldSystem);
+BOOL FieldInput_Process_UnionRoom(FieldInput *a0, FieldSystem *fieldSystem);
+BOOL FieldInput_Process_BattleTower(FieldInput *a0, FieldSystem *fieldSystem);
 void ov01_021E7F00(FieldSystem *fieldSystem, BOOL a1);
 
 #endif

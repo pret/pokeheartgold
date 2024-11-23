@@ -79,19 +79,17 @@ struct JsonToCellOptions *ParseNCERJson(char *path)
         }
     }
 
-    if (options->vramTransferEnabled) 
-    {
+    if (options->vramTransferEnabled) {
         cJSON *vramTransferMaxSize = cJSON_GetObjectItemCaseSensitive(json, "vramTransferMaxSize");
         options->vramTransferMaxSize = GetInt(vramTransferMaxSize);
-        
+
         options->transferData = malloc(sizeof(struct CellVramTransferData *) * options->cellCount);
 
         cJSON *transfers = cJSON_GetObjectItemCaseSensitive(json, "transferData");
         cJSON *transfer = NULL;
 
         int j = 0;
-        cJSON_ArrayForEach(transfer, transfers)
-        {
+        cJSON_ArrayForEach(transfer, transfers) {
             cJSON *vramTransferOffset = cJSON_GetObjectItemCaseSensitive(transfer, "offset");
             cJSON *vramTransferSize = cJSON_GetObjectItemCaseSensitive(transfer, "size");
 
@@ -290,13 +288,11 @@ char *GetNCERJson(struct JsonToCellOptions *options)
         cJSON_AddNumberToObject(ncer, "labelCount", options->labelCount);
     }
 
-    if (options->vramTransferEnabled) 
-    {
+    if (options->vramTransferEnabled) {
         cJSON_AddNumberToObject(ncer, "vramTransferMaxSize", options->vramTransferMaxSize);
         cJSON *transfers = cJSON_AddArrayToObject(ncer, "transferData");
 
-        for (int idx = 0; idx < options->cellCount; idx++)
-        {
+        for (int idx = 0; idx < options->cellCount; idx++) {
             cJSON *transfer = cJSON_CreateObject();
             cJSON_AddNumberToObject(transfer, "offset", options->transferData[idx]->sourceDataOffset);
             cJSON_AddNumberToObject(transfer, "size", options->transferData[idx]->size);
@@ -641,10 +637,8 @@ void FreeNCERCell(struct JsonToCellOptions *options)
         }
         free(options->labels);
     }
-    if (options->vramTransferEnabled)
-    {
-        for (int j = 0; j < options->cellCount; j++)
-        {
+    if (options->vramTransferEnabled) {
+        for (int j = 0; j < options->cellCount; j++) {
             free(options->transferData[j]);
         }
         free(options->transferData);
@@ -688,16 +682,14 @@ void FreeNANRAnimation(struct JsonToAnimationOptions *options)
     free(options);
 }
 
-char *GetNtrFontMetadataJson(struct NtrFontMetadata *metadata)
-{
+char *GetNtrFontMetadataJson(struct NtrFontMetadata *metadata) {
     cJSON *json = cJSON_CreateObject();
 
     cJSON_AddNumberToObject(json, "maxGlyphWidth", metadata->maxWidth);
     cJSON_AddNumberToObject(json, "maxGlyphHeight", metadata->maxHeight);
 
     cJSON *glyphWidths = cJSON_AddArrayToObject(json, "glyphWidths");
-    for (int i = 0; i < metadata->numGlyphs; i++)
-    {
+    for (int i = 0; i < metadata->numGlyphs; i++) {
         cJSON *width = cJSON_CreateNumber(metadata->glyphWidthTable[i]);
         cJSON_AddItemToArray(glyphWidths, width);
     }
@@ -707,20 +699,18 @@ char *GetNtrFontMetadataJson(struct NtrFontMetadata *metadata)
     return jsonString;
 }
 
-#define TILE_DIMENSION_PIXELS 8
+#define TILE_DIMENSION_PIXELS     8
 #define PIXELS_FOR_DIMENSION(dim) ((dim) * TILE_DIMENSION_PIXELS)
-#define TILES_FOR_PIXELS(num) (((num) + TILE_DIMENSION_PIXELS - 1) / TILE_DIMENSION_PIXELS)
-#define PIXELS_PER_BYTE_2BPP 4
-#define NTR_FONT_HEADER_SIZE 16
+#define TILES_FOR_PIXELS(num)     (((num) + TILE_DIMENSION_PIXELS - 1) / TILE_DIMENSION_PIXELS)
+#define PIXELS_PER_BYTE_2BPP      4
+#define NTR_FONT_HEADER_SIZE      16
 
-struct NtrFontMetadata *ParseNtrFontMetadataJson(char *path)
-{
+struct NtrFontMetadata *ParseNtrFontMetadataJson(char *path) {
     int fileLength;
     unsigned char *jsonString = ReadWholeFile(path, &fileLength);
 
     cJSON *json = cJSON_Parse((const char *)jsonString);
-    if (json == NULL)
-    {
+    if (json == NULL) {
         const char *errorPtr = cJSON_GetErrorPtr();
         FATAL_ERROR("Error in line \"%s\"\n", errorPtr);
     }
@@ -747,10 +737,8 @@ struct NtrFontMetadata *ParseNtrFontMetadataJson(char *path)
 
     uint8_t *glyphWidthCursor = metadata->glyphWidthTable;
     cJSON *glyphWidthIter = NULL;
-    cJSON_ArrayForEach(glyphWidthIter, labelGlyphWidths)
-    {
-        if (!cJSON_IsNumber(glyphWidthIter))
-        {
+    cJSON_ArrayForEach(glyphWidthIter, labelGlyphWidths) {
+        if (!cJSON_IsNumber(glyphWidthIter)) {
             const char *errorPtr = cJSON_GetErrorPtr();
             FATAL_ERROR("Error in line \"%s\"\n", errorPtr);
         }

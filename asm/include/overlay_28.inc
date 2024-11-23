@@ -68,7 +68,7 @@
 .public String_Delete
 .public FieldSystem_GetFacingObject
 .public sub_0203DF8C
-.public sub_0203E13C
+.public FieldSystem_IsPlayerMovementAllowed
 .public AllocAndFetchNearbyHiddenItems
 .public FieldSystem_TaskIsRunning
 .public PlayerAvatar_GetMapObject

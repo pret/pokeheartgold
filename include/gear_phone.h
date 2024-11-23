@@ -9,16 +9,16 @@ typedef struct PhoneBookEntry {
     u8 unk2;
     u8 trainerClass;
     u16 trainerId;
-    u16 unk6;
+    u16 mapId;
     u16 gift;
     u8 unkA[5];
     u8 unkF;
     u8 unk10[4];
 } PhoneBookEntry;
 
-struct PhoneBook {
+typedef struct PhoneBook {
     int count;
     struct PhoneBookEntry *entries;
-};
+} PhoneBook;
 
 #endif // POKEHEARTGOLD_GEAR_PHONE_H

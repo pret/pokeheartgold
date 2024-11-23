@@ -894,7 +894,7 @@ ov28_0225DC2C: ; 0x0225DC2C
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x1f
 	beq _0225DC56
-	bl sub_0203E13C
+	bl FieldSystem_IsPlayerMovementAllowed
 	cmp r0, #0
 	beq _0225DC56
 	ldr r2, [r4, #0x18]
@@ -2465,7 +2465,7 @@ ov28_0225E810: ; 0x0225E810
 	mov r4, #4
 	b _0225E890
 _0225E828:
-	bl sub_0203E13C
+	bl FieldSystem_IsPlayerMovementAllowed
 	cmp r0, #0
 	ldr r0, [r5, #0x18]
 	bne _0225E860

@@ -9,6 +9,9 @@
 #include "frontier/frontier.h"
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0202.h"
+#include "overlay_2/event_cutscene.h"
+#include "overlay_2/overlay_02_02251E74.h"
+#include "overlay_2/overlay_02_gear_phone.h"
 
 #include "alph_puzzle.h"
 #include "bg_window.h"
@@ -5322,7 +5325,7 @@ BOOL ScrCmd_806(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_810(ScriptContext *ctx) {
-    ov02_02252534(ctx->fieldSystem);
+    FieldSystem_BeginCelebiTimeTravelCutsceneTask(ctx->fieldSystem);
     return TRUE;
 }
 
@@ -5332,12 +5335,12 @@ BOOL ScrCmd_814(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_UnownCircle(ScriptContext *ctx) {
-    ov02_022529FC(ctx->fieldSystem);
+    FieldSystem_BeginSinjohCutsceneTask(ctx->fieldSystem);
     return TRUE;
 }
 
 BOOL ScrCmd_817(ScriptContext *ctx) {
-    ov02_02252EE4(ctx->fieldSystem, ScriptReadByte(ctx));
+    FieldSystem_BeginSinjohGetEggCutsceneTask(ctx->fieldSystem, ScriptReadByte(ctx));
     return TRUE;
 }
 

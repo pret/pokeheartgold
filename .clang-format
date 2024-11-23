@@ -9,7 +9,7 @@ AlignConsecutiveAssignments: None
 AlignConsecutiveBitFields: None
 AlignConsecutiveDeclarations: None
 AlignConsecutiveMacros: Consecutive
-AlignEscapedNewlines: LeftWithLastLine
+AlignEscapedNewlines: Left
 AlignTrailingComments: true
 AlignArrayOfStructures: Left
 
