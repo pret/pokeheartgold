@@ -33,7 +33,7 @@ static BOOL Task_UseCutInField(TaskManager *taskManager);
 static u32 FieldMove_CheckFly(const FieldMoveCheckData *checkData);
 static void FieldMove_UseFly(FieldMoveUseData *useData, const FieldMoveCheckData *checkData);
 static u32 FieldMove_CheckSurf(const FieldMoveCheckData *checkData);
-static void FieldMoveMenuUse_Surf(FieldMoveUseData *useData, const FieldMoveCheckData *checkData);
+static void FieldMove_UseSurf(FieldMoveUseData *useData, const FieldMoveCheckData *checkData);
 static BOOL Task_UseSurfInField(TaskManager *taskManager);
 static u32 FieldMoveMenuCheck_Strength(const FieldMoveCheckData *checkData);
 static void FieldMoveMenuUse_Strength(FieldMoveUseData *useData, const FieldMoveCheckData *checkData);
@@ -72,7 +72,7 @@ static struct TeleportFieldEnv *sub_020689A4(HeapID heapId, u8 slotno, SaveData 
 static const FieldMoveFuncData sFieldMoveFuncTable[] = {
     { FieldMove_UseCut,            FieldMove_CheckCut            },
     { FieldMove_UseFly,            FieldMove_CheckFly            },
-    { FieldMoveMenuUse_Surf,       FieldMove_CheckSurf           },
+    { FieldMove_UseSurf,           FieldMove_CheckSurf           },
     { FieldMoveMenuUse_Strength,   FieldMoveMenuCheck_Strength   },
     { FieldMoveMenuUse_RockSmash,  FieldMoveMenuCheck_RockSmash  },
     { FieldMoveMenuUse_Waterfall,  FieldMoveMenuCheck_Waterfall  },
@@ -272,21 +272,21 @@ static u32 FieldMove_CheckSurf(const FieldMoveCheckData *checkData) {
     return FIELD_MOVE_RESPONSE_OK;
 }
 
-static void FieldMoveMenuUse_Surf(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
-    StartMenuTaskData *menuEnv = TaskManager_GetEnvironment(useData->taskManager);
-    FieldUseMoveEnvironment *retEnv = FieldMove_CreateUseEnvironment(useData, checkData);
+static void FieldMove_UseSurf(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
+    StartMenuTaskData *startMenu = TaskManager_GetEnvironment(useData->taskManager);
+    FieldUseMoveEnvironment *useMoveEnvironment = FieldMove_CreateUseEnvironment(useData, checkData);
     FieldSystem_LoadFieldOverlay(checkData->fieldSystem);
-    menuEnv->exitTaskFunc = Task_UseSurfInField;
-    menuEnv->exitTaskEnvironment = retEnv;
-    menuEnv->state = 12;
+    startMenu->exitTaskFunc = Task_UseSurfInField;
+    startMenu->exitTaskEnvironment = useMoveEnvironment;
+    startMenu->state = START_MENU_STATE_12;
 }
 
 static BOOL Task_UseSurfInField(TaskManager *taskManager) {
-    FieldUseMoveEnvironment *env = TaskManager_GetEnvironment(taskManager);
+    FieldUseMoveEnvironment *useMoveEnvironment = TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_surf, NULL);
-    FieldMove_SetArgs(fieldSystem, env->useData.partySlot, 0, 0, 0);
-    FieldMove_DeleteUseEnvironment(env);
+    FieldMove_SetArgs(fieldSystem, useMoveEnvironment->useData.partySlot, 0, 0, 0);
+    FieldMove_DeleteUseEnvironment(useMoveEnvironment);
     return FALSE;
 }
 
