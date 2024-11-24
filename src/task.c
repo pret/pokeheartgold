@@ -75,8 +75,8 @@ BOOL FieldSystem_ApplicationIsRunning(FieldSystem *fieldSystem) {
     return sub_0203DF7C(fieldSystem) || sub_0203DFA4(fieldSystem);
 }
 
-void sub_020505C0(FieldSystem *fieldSystem) {
-    sub_0203DEF0(fieldSystem);
+void FieldSystem_LoadFieldOverlay(FieldSystem *fieldSystem) {
+    FieldSystem_LoadFieldOverlayInternal(fieldSystem);
 }
 
 BOOL sub_020505C8(FieldSystem *fieldSystem) {

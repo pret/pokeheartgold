@@ -181,7 +181,7 @@
 .public GF_3DVramMan_InitLinkedListTexVramManager
 .public GF_3DVramMan_InitLinkedListPlttVramManager
 .public Save_SysInfo_RTC_Get
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetTrainerGender

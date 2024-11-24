@@ -2632,7 +2632,7 @@ _02259B02:
 	mov r0, #0
 	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, [r5]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	mov r1, #0xfd
 	lsl r1, r1, #2
 	str r0, [r4, r1]

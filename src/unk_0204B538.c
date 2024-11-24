@@ -188,7 +188,7 @@ BOOL sub_0204B690(FieldSystem *fieldSystem, u16 *a1) {
 }
 
 void sub_0204B6AC(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
-    a0->unk83e[0] = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(saveData));
+    a0->unk83e[0] = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(saveData));
     Party *party = SaveArray_Party_Get(saveData);
     for (s32 i = 0; i < 2; i++) {
         Pokemon *mon = Party_GetMonByIndex(party, a0->unk2a[i]);

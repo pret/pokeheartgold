@@ -272,7 +272,7 @@ UnkStruct_Fsys_A0 *sub_0204A824(SaveData *saveData, BOOL resumeFromPrevious, u32
                 unkStruct->heapId);
         }
     }
-    unkStruct->unk11 = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(saveData));
+    unkStruct->unk11 = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(saveData));
     if (unkStruct->unk0f != 5) {
         FrontierSave *frontierSaveData = Save_Frontier_GetStatic(saveData);
         GameStats *gameStats = Save_GameStats_Get(saveData);

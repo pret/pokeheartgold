@@ -203,7 +203,7 @@
 .public SaveArray_PCStorage_Get
 .public SaveGameNormal
 .public Save_ClearStatusFlags
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetPlayerName_NewString

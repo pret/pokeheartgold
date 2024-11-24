@@ -10,7 +10,7 @@
 .public sub_0205489C
 .public sub_020548C0
 .public sub_020548EC
-.public GetMetatileBehaviorAt
+.public GetMetatileBehavior
 .public sub_02054940
 .public sub_020549A8
 .public sub_020549F4

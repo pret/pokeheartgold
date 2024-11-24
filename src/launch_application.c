@@ -376,7 +376,7 @@ PokemonSummaryArgs *PokemonSummary_CreateArgs(FieldSystem *fieldSystem, HeapID h
     args->isFlag982Set = sub_0208828C(fieldSystem->saveData);
     sub_02089D40(args, _020FA1B0);
 
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(saveData);
+    PlayerProfile *profile = Save_PlayerData_GetProfile(saveData);
     sub_0208AD34(args, profile);
     return args;
 }
@@ -396,7 +396,7 @@ PokemonSummaryArgs *LearnForgetMove_LaunchApp(HeapID heapId, FieldSystem *fieldS
     args->unk2C = 0;
     args->menuInputStatePtr = &fieldSystem->menuInputState;
     sub_02089D40(args, _020FA1A8);
-    sub_0208AD34(args, Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
+    sub_0208AD34(args, Save_PlayerData_GetProfile(fieldSystem->saveData));
     PokemonSummary_LearnForget_LaunchApp(fieldSystem, args);
     return args;
 }
@@ -727,7 +727,7 @@ PokeathlonEventRecordArgs *PokeathlonEventRecord_LaunchApp(FieldSystem *fieldSys
     POKEATHLON_SAV *pokeathlonSave = Save_Pokeathlon_Get(saveData);
     args->unk0 = sub_0203197C(pokeathlonSave);
     args->unk4 = sub_02031984(pokeathlonSave);
-    args->profile = Save_PlayerData_GetProfileAddr(saveData);
+    args->profile = Save_PlayerData_GetProfile(saveData);
     args->unk10 = sub_0203EE54(saveData);
     args->unk8 = sub_02031990(pokeathlonSave);
     PokeathlonEventRecord_LaunchApp_Impl(fieldSystem, args);
@@ -742,7 +742,7 @@ static void PokeathlonUnk_LaunchApp_Impl(FieldSystem *fieldSystem, UnkStruct_020
 UnkStruct_0203EFA0 *PokeathlonUnk_LaunchApp(FieldSystem *fieldSystem) {
     UnkStruct_0203EFA0 *args = AllocFromHeapAtEnd(HEAP_ID_3, sizeof(UnkStruct_0203EFA0));
     SaveData *saveData = FieldSystem_GetSaveData(fieldSystem);
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(saveData);
+    PlayerProfile *profile = Save_PlayerData_GetProfile(saveData);
     args->pokeathlon = Save_Pokeathlon_Get(saveData);
     args->profile = profile;
     PokeathlonUnk_LaunchApp_Impl(fieldSystem, args);
@@ -806,7 +806,7 @@ static UnkStruct_0203F0D0 *sub_0203F0D0(HeapID heapId, SaveData *saveData, int p
     ptr->fashionCase = fashionCase;
     ptr->options = Save_PlayerData_GetOptionsAddr(saveData);
     ptr->gameStats = Save_GameStats_Get(saveData);
-    ptr->profile = Save_PlayerData_GetProfileAddr(saveData);
+    ptr->profile = Save_PlayerData_GetProfile(saveData);
     ptr->unk18 = a3;
     ptr->unk1C = a4;
     return ptr;
@@ -866,7 +866,7 @@ static OVY_MGR_TEMPLATE sOverlayTemplate_WirelessTradeSelectMon = { WirelessTrad
 static const OVY_MGR_TEMPLATE sOverlayTemplate_TradeSequence = { TradeSequence_Init, TradeSequence_Main, TradeSequence_Exit, FS_OVERLAY_ID(OVY_71) };
 
 static void InitWirelessTradeSelectMonArgs(WirelessTradeSelectMonArgs *args, FieldSystem *fieldSystem) {
-    args->profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+    args->profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
     args->party = SaveArray_Party_Get(fieldSystem->saveData);
     args->palPad = SaveArray_Get(fieldSystem->saveData, SAVE_PALPAD);
     args->wifiHistory = Save_WiFiHistory_Get(fieldSystem->saveData);
@@ -1076,7 +1076,7 @@ static void SetName(TaskManager *taskman) {
     NamingScreenData *data = TaskManager_GetEnvironment(taskman);
     switch (data->args->kind) {
     case NAME_SCREEN_PLAYER:
-        PlayerProfile *profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+        PlayerProfile *profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
         Save_Profile_PlayerName_Set(profile, data->args->nameInputFlat);
         break;
     case NAME_SCREEN_RIVAL:
@@ -1180,7 +1180,7 @@ void sub_0203F844(FieldSystem *fieldSystem, u16 a1) {
     args->pokedex = Save_Pokedex_Get(fieldSystem->saveData);
     args->unk14 = sub_0202C6F4(fieldSystem->saveData);
     args->wifiHistory = Save_WiFiHistory_Get(fieldSystem->saveData);
-    args->profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+    args->profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
     args->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     args->gameStats = Save_GameStats_Get(fieldSystem->saveData);
     args->unk38 = sub_02088288(fieldSystem->saveData);
@@ -1258,7 +1258,7 @@ void HatchEggInParty(FieldSystem *fieldSystem) {
 
     data.mon = mon;
     data.options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
-    data.profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+    data.profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
     data.unkC = FieldSystem_GetOverriddenMusicId(fieldSystem, fieldSystem->location->mapId);
     CallTask_HatchEggInParty(fieldSystem->taskman, &data);
 }
@@ -1271,7 +1271,7 @@ VoltorbFlipArgs *VoltorbFlip_LaunchApp(FieldSystem *fieldSystem, u32 luck) {
     args->coins = Save_PlayerData_GetCoinsAddr(saveData);
     args->options = Save_PlayerData_GetOptionsAddr(saveData);
     args->menuInputStatePtr = &fieldSystem->menuInputState;
-    args->profile = Save_PlayerData_GetProfileAddr(saveData);
+    args->profile = Save_PlayerData_GetProfile(saveData);
     args->saveData = fieldSystem->saveData;
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_VoltorbFlip, args);
     return args;
@@ -1350,7 +1350,7 @@ PokemonSummaryArgs *PokemonSummary_LaunchApp(HeapID heapId, FieldSystem *fieldSy
     args->isFlag982Set = sub_0208828C(fieldSystem->saveData);
     sub_02089D40(args, _020FA0B0);
 
-    sub_0208AD34(args, Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
+    sub_0208AD34(args, Save_PlayerData_GetProfile(fieldSystem->saveData));
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PokemonSummary, args);
     return args;
 }

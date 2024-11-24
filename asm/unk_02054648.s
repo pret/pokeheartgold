@@ -427,8 +427,8 @@ _02054912:
 	pop {r3, r4, pc}
 	thumb_func_end sub_020548EC
 
-	thumb_func_start GetMetatileBehaviorAt
-GetMetatileBehaviorAt: ; 0x02054918
+	thumb_func_start GetMetatileBehavior
+GetMetatileBehavior: ; 0x02054918
 	push {r3, r4, lr}
 	sub sp, #4
 	ldr r4, [r0, #0x60]
@@ -450,7 +450,7 @@ _02054938:
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
-	thumb_func_end GetMetatileBehaviorAt
+	thumb_func_end GetMetatileBehavior
 
 	thumb_func_start sub_02054940
 sub_02054940: ; 0x02054940
@@ -545,7 +545,7 @@ _020549C2:
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r7, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 _020549E6:
 	add sp, #8
 	add r0, r6, #0
@@ -599,7 +599,7 @@ _02054A10:
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r7, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 _02054A4C:
 	ldr r0, [sp, #0xc]
 	add sp, #0x10

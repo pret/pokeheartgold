@@ -7,7 +7,7 @@
 #include "constants/items.h"
 #include "constants/std_script.h"
 #include "fielddata/script/scr_seq/event_D24R0204.h"
-#include "constants/party_menu.h"
+#include "constants/field_move_response.h"
 	.include "asm/macros.inc"
 	.include "unk_020658D4.inc"
 	.include "global.inc"
@@ -1615,7 +1615,7 @@ sub_020664D8: ; 0x020664D8
 	ldr r1, [sp, #8]
 	add r0, r4, #0
 	str r2, [sp, #4]
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	add r6, r0, #0
 	lsl r0, r6, #0x18
 	lsr r0, r0, #0x18
@@ -1656,7 +1656,7 @@ _0206652A:
 	ldr r1, [sp, #8]
 	ldr r2, [sp, #4]
 	add r0, r4, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	add r4, r0, #0
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18

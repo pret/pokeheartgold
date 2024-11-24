@@ -484,7 +484,7 @@ _021E5CAE:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r1, r4, #0
 	bl PlayerProfile_Copy
 	pop {r3, r4, r5, r6, r7, pc}
@@ -3693,7 +3693,7 @@ _021E7416:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	str r0, [sp]
 	mov r0, #0x7e
 	lsl r0, r0, #2

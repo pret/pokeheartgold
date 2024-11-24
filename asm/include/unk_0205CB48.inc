@@ -6,7 +6,7 @@
 .public GF_AssertFail
 .public Save_GameStats_Get
 .public GameStats_Inc
-.public GetMetatileBehaviorAt
+.public GetMetatileBehavior
 .public sub_020549F4
 .public MetatileBehavior_IsEncounterGrass
 .public sub_0205B6F4

@@ -19,7 +19,7 @@
 .public GF_AssertFail
 .public String_Delete
 .public CopyStringToU16Array
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public PlayerProfile_GetTrainerGender
 .public PlayerProfile_GetVersion
 .public Save_WiFiHistory_Get

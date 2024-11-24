@@ -86,7 +86,7 @@
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_Delete
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public PlayerProfile_GetTrainerGender
 .public sub_0203769C
 .public sub_02037958

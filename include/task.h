@@ -33,7 +33,7 @@ void TaskManager_Call(TaskManager *taskman, TaskFunc taskFunc, void *env);
 BOOL FieldSystem_RunTaskFrame(FieldSystem *fieldSystem);
 BOOL FieldSystem_TaskIsRunning(FieldSystem *fieldSystem);
 BOOL FieldSystem_ApplicationIsRunning(FieldSystem *fieldSystem);
-void sub_020505C0(FieldSystem *fieldSystem);
+void FieldSystem_LoadFieldOverlay(FieldSystem *fieldSystem);
 BOOL sub_020505C8(FieldSystem *fieldSystem);
 void CallApplicationAsTask(TaskManager *taskManager, const OVY_MGR_TEMPLATE *template, void *work);
 FieldSystem *TaskManager_GetFieldSystem(TaskManager *taskManager);

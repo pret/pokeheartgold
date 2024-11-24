@@ -4,6 +4,7 @@
 #include "constants/maps.h"
 #include "constants/sprites.h"
 #include "constants/std_script.h"
+#include "constants/weather.h"
 
 #include "fielddata/script/scr_seq/event_D24R0204.h"
 
@@ -23,17 +24,15 @@
 #include "unk_02054648.h"
 #include "unk_0205CB48.h"
 
-struct FieldMoveFuncDat {
-    FieldMoveUseFunc use;
-    FieldMoveCheckFunc check;
-};
+static FieldUseMoveEnvironment *FieldMove_CreateUseEnvironment(FieldMoveUseData *useData, const FieldMoveCheckData *checkData);
+static void FieldMove_DeleteUseEnvironment(FieldUseMoveEnvironment *environment);
+static u32 FieldMove_CheckCut(const FieldMoveCheckData *checkData);
 
-static u32 FieldMoveMenuCheck_Cut(const FieldMoveCheckData *checkData);
-static void FieldMoveMenuUse_Cut(FieldMoveUseData *useData, const FieldMoveCheckData *checkData);
+static void FieldMove_UseCut(FieldMoveUseData *useData, const FieldMoveCheckData *checkData);
 static BOOL Task_UseCutInField(TaskManager *taskManager);
-static u32 FieldMoveMenuCheck_Fly(const FieldMoveCheckData *checkData);
-static void FieldMoveMenuUse_Fly(FieldMoveUseData *useData, const FieldMoveCheckData *checkData);
-static u32 FieldMoveMenuCheck_Surf(const FieldMoveCheckData *checkData);
+static u32 FieldMove_CheckFly(const FieldMoveCheckData *checkData);
+static void FieldMove_UseFly(FieldMoveUseData *useData, const FieldMoveCheckData *checkData);
+static u32 FieldMove_CheckSurf(const FieldMoveCheckData *checkData);
 static void FieldMoveMenuUse_Surf(FieldMoveUseData *useData, const FieldMoveCheckData *checkData);
 static BOOL Task_UseSurfInField(TaskManager *taskManager);
 static u32 FieldMoveMenuCheck_Strength(const FieldMoveCheckData *checkData);
@@ -70,10 +69,10 @@ static void FieldMoveMenuUse_Headbutt(FieldMoveUseData *useData, const FieldMove
 static BOOL Task_UseHeadbuttInField(TaskManager *taskManager);
 static struct TeleportFieldEnv *sub_020689A4(HeapID heapId, u8 slotno, SaveData *saveData);
 
-static const struct FieldMoveFuncDat sFieldMoveFuncTable[] = {
-    { FieldMoveMenuUse_Cut,        FieldMoveMenuCheck_Cut        },
-    { FieldMoveMenuUse_Fly,        FieldMoveMenuCheck_Fly        },
-    { FieldMoveMenuUse_Surf,       FieldMoveMenuCheck_Surf       },
+static const FieldMoveFuncData sFieldMoveFuncTable[] = {
+    { FieldMove_UseCut,            FieldMove_CheckCut            },
+    { FieldMove_UseFly,            FieldMove_CheckFly            },
+    { FieldMoveMenuUse_Surf,       FieldMove_CheckSurf           },
     { FieldMoveMenuUse_Strength,   FieldMoveMenuCheck_Strength   },
     { FieldMoveMenuUse_RockSmash,  FieldMoveMenuCheck_RockSmash  },
     { FieldMoveMenuUse_Waterfall,  FieldMoveMenuCheck_Waterfall  },
@@ -87,7 +86,7 @@ static const struct FieldMoveFuncDat sFieldMoveFuncTable[] = {
     { FieldMoveMenuUse_Headbutt,   FieldMoveMenuCheck_Headbutt   },
 };
 
-static inline BOOL MoveUseCheck_SafariOrPalPark(const FieldMoveCheckData *checkData) {
+static inline BOOL FieldMove_CheckSafariOrPalPark(const FieldMoveCheckData *checkData) {
     if (Save_VarsFlags_CheckSafariSysFlag(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE || Save_VarsFlags_CheckPalParkSysFlag(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
         return TRUE;
     } else {
@@ -113,407 +112,399 @@ static inline BOOL MoveUseCheck_FieldContextFlagCheck(const FieldMoveCheckData *
     }
 }
 
-void *PartyMenu_GetFieldMoveFunc(u16 funcType, u16 fieldMoveIdx) {
+void *FieldMove_GetMoveFunc(FieldMoveFuncType funcType, u16 fieldMoveIndex) {
     if (funcType == FIELD_MOVE_FUNC_USE) {
-        return sFieldMoveFuncTable[fieldMoveIdx].use;
+        return sFieldMoveFuncTable[fieldMoveIndex].use;
     } else {
-        return sFieldMoveFuncTable[fieldMoveIdx].check;
+        return sFieldMoveFuncTable[fieldMoveIndex].check;
     }
 }
 
-void FieldSystem_MakeFieldMoveCheckData(FieldSystem *fieldSystem, FieldMoveCheckData *checkData) {
-    LocalMapObject *facingObject;
-    int x, z;
-    u32 standingTile, facingTile;
-
+void FieldMove_InitCheckData(FieldSystem *fieldSystem, FieldMoveCheckData *checkData) {
     checkData->fieldSystem = fieldSystem;
     checkData->mapId = fieldSystem->location->mapId;
     checkData->flag = 0;
 
+    LocalMapObject *facingObject;
+
     FieldSystem_GetFacingObject(fieldSystem, &facingObject);
     checkData->facingObject = facingObject;
+
     if (facingObject != NULL) {
         switch (MapObject_GetSpriteID(facingObject)) {
         case SPRITE_ROCK:
-            checkData->flag |= (1 << FIELD_MOVE_CHECK_ROCK_F);
+            checkData->flag |= FIELD_MOVE_CHECK_ROCK;
             break;
         case SPRITE_BREAKROCK:
-            checkData->flag |= (1 << FIELD_MOVE_CHECK_BREAKROCK_F);
+            checkData->flag |= FIELD_MOVE_CHECK_BREAKROCK;
             break;
         case SPRITE_TREE:
-            checkData->flag |= (1 << FIELD_MOVE_CHECK_TREE_F);
+            checkData->flag |= FIELD_MOVE_CHECK_TREE;
             break;
         }
     }
-    x = GetPlayerXCoord(fieldSystem->playerAvatar);
-    z = GetPlayerZCoord(fieldSystem->playerAvatar);
-    standingTile = GetMetatileBehaviorAt(fieldSystem, x, z);
+
+    s32 x = GetPlayerXCoord(fieldSystem->playerAvatar);
+    s32 z = GetPlayerZCoord(fieldSystem->playerAvatar);
+    u32 standingTile = GetMetatileBehavior(fieldSystem, x, z);
 
     PlayerAvatar_GetCoordsInFront(fieldSystem->playerAvatar, &x, &z);
-    facingTile = GetMetatileBehaviorAt(fieldSystem, x, z);
+    u32 facingTile = GetMetatileBehavior(fieldSystem, x, z);
 
-    if (Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors(fieldSystem->playerAvatar, standingTile, facingTile)) {
-        checkData->flag |= (1 << FIELD_MOVE_CHECK_WATER_F);
+    if (Field_PlayerCanSurfOnTile(fieldSystem->playerAvatar, standingTile, facingTile)) {
+        checkData->flag |= FIELD_MOVE_CHECK_WATER;
     }
     if (MetatileBehavior_IsRockClimbInDirection(facingTile, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar))) {
-        checkData->flag |= (1 << FIELD_MOVE_CHECK_ROCKCLIMB_F);
+        checkData->flag |= FIELD_MOVE_CHECK_ROCKCLIMB;
     }
     if (MetatileBehavior_IsWaterfall(facingTile)) {
-        checkData->flag |= (1 << FIELD_MOVE_CHECK_WATERFALL_F);
+        checkData->flag |= FIELD_MOVE_CHECK_WATERFALL;
     }
     if (MetatileBehavior_IsWhirlpool(facingTile)) {
-        checkData->flag |= (1 << FIELD_MOVE_CHECK_WHIRLPOOL_F);
+        checkData->flag |= FIELD_MOVE_CHECK_WHIRLPOOL;
     }
-    if (LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(fieldSystem->saveData)) == 11) {
-        checkData->flag |= (1 << FIELD_MOVE_CHECK_FLASH_F);
+    if (LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(fieldSystem->saveData)) == WEATHER_FLASH) {
+        checkData->flag |= FIELD_MOVE_CHECK_FLASH;
     }
     if (MetatileBehavior_IsHeadbutt(facingTile) || FieldSystem_FacingModelIsHeadbuttTree(fieldSystem)) {
-        checkData->flag |= (1 << FIELD_MOVE_CHECK_HEADBUTT_F);
+        checkData->flag |= FIELD_MOVE_CHECK_HEADBUTT;
     }
 }
 
-static FieldUseMoveEnv *PartyMenuEnv_create(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
-    FieldUseMoveEnv *ret = AllocFromHeap(HEAP_ID_32, sizeof(FieldUseMoveEnv));
-    ret->magic = 0x19740205;
-    ret->facingObject = checkData->facingObject;
-    ret->useData = *useData;
-    return ret;
+static FieldUseMoveEnvironment *FieldMove_CreateUseEnvironment(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
+    FieldUseMoveEnvironment *environment = AllocFromHeap(HEAP_ID_32, sizeof(FieldUseMoveEnvironment));
+    environment->magic = 0x19740205;
+    environment->facingObject = checkData->facingObject;
+    environment->useData = *useData;
+    return environment;
 }
 
-static void PartyMenuEnv_Delete(FieldUseMoveEnv *env) {
-    GF_ASSERT(env->magic == 0x19740205);
-    FreeToHeap(env);
+static void FieldMove_DeleteUseEnvironment(FieldUseMoveEnvironment *environment) {
+    GF_ASSERT(environment->magic == 0x19740205);
+    FreeToHeap(environment);
 }
 
-static u32 FieldMoveMenuCheck_Cut(const FieldMoveCheckData *checkData) {
+static u32 FieldMove_CheckCut(const FieldMoveCheckData *checkData) {
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
-    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->saveData), BADGE_HIVE)) {
-        return PARTY_MENU_RESPONSE_NEED_BADGE;
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfile(checkData->fieldSystem->saveData), BADGE_HIVE)) {
+        return FIELD_MOVE_RESPONSE_NEED_BADGE;
     }
-    if (MoveUseCheck_FieldContextFlagCheck(checkData, FIELD_MOVE_CHECK_TREE_F)) {
-        return PARTY_MENU_RESPONSE_OK;
+    if (checkData->flag & FIELD_MOVE_CHECK_TREE) {
+        return FIELD_MOVE_RESPONSE_OK;
     }
 
-    return PARTY_MENU_RESPONSE_NOT_HERE;
+    return FIELD_MOVE_RESPONSE_NOT_HERE;
 }
 
-static void FieldMoveMenuUse_Cut(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
+static void FieldMove_UseCut(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
     StartMenuTaskData *startMenu = TaskManager_GetEnvironment(useData->taskManager);
-    FieldUseMoveEnv *useMoveEnv = PartyMenuEnv_create(useData, checkData);
-    sub_020505C0(checkData->fieldSystem);
-    startMenu->atexit_TaskFunc = Task_UseCutInField;
-    startMenu->atexit_TaskEnv = useMoveEnv;
-    startMenu->state = 12;
+    FieldUseMoveEnvironment *useMoveEnvironment = FieldMove_CreateUseEnvironment(useData, checkData);
+    FieldSystem_LoadFieldOverlay(checkData->fieldSystem);
+    startMenu->exitTaskFunc = Task_UseCutInField;
+    startMenu->exitTaskEnvironment = useMoveEnvironment;
+    startMenu->state = START_MENU_STATE_12;
 }
 
 static BOOL Task_UseCutInField(TaskManager *taskManager) {
-    FieldUseMoveEnv *env = TaskManager_GetEnvironment(taskManager);
+    FieldUseMoveEnvironment *environment = TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    StartScriptFromMenu(taskManager, std_menu_cut, env->facingObject);
-    FieldMoveArgsSet(fieldSystem, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_Delete(env);
+    StartScriptFromMenu(taskManager, std_menu_cut, environment->facingObject);
+    FieldMove_SetArgs(fieldSystem, environment->useData.partySlot, 0, 0, 0);
+    FieldMove_DeleteUseEnvironment(environment);
     return FALSE;
 }
 
-static u32 FieldMoveMenuCheck_Fly(const FieldMoveCheckData *checkData) {
+static u32 FieldMove_CheckFly(const FieldMoveCheckData *checkData) {
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
-    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->saveData), BADGE_STORM)) {
-        return PARTY_MENU_RESPONSE_NEED_BADGE;
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfile(checkData->fieldSystem->saveData), BADGE_STORM)) {
+        return FIELD_MOVE_RESPONSE_NEED_BADGE;
     }
-
     if (!MapHeader_IsFlyAllowed(checkData->mapId)) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
-
     if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
-        return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
+        return FIELD_MOVE_RESPONSE_HAVE_FOLLOWER;
     }
-
     if (Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
-        return PARTY_MENU_RESPONSE_NOT_NOW;
+        return FIELD_MOVE_RESPONSE_NOT_NOW;
+    }
+    if (FieldMove_CheckSafariOrPalPark(checkData) == TRUE) {
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
 
-    if (MoveUseCheck_SafariOrPalPark(checkData) == TRUE) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
-    }
-
-    return PARTY_MENU_RESPONSE_OK;
+    return FIELD_MOVE_RESPONSE_OK;
 }
 
-static void FieldMoveMenuUse_Fly(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
+static void FieldMove_UseFly(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(useData->taskManager);
-    StartMenuTaskData *env = TaskManager_GetEnvironment(useData->taskManager);
-    FlyTaskStruct *flyEnv = AllocFromHeap(HEAP_ID_FIELD, sizeof(FlyTaskStruct));
-    flyEnv->partySlot = useData->partySlot;
-    env->atexit_TaskEnv2 = flyEnv;
-    env->atexit_TaskEnv = PokegearTownMap_LaunchApp(fieldSystem, 0);
-    StartMenu_SetChildProcReturnTaskFunc(env, Task_UseFlyInField);
+    StartMenuTaskData *startMenu = TaskManager_GetEnvironment(useData->taskManager);
+    FieldMoveData *fieldMoveData = AllocFromHeap(HEAP_ID_FIELD, sizeof(FieldMoveData));
+    fieldMoveData->partySlot = useData->partySlot;
+    startMenu->exitTaskEnvironment2 = fieldMoveData;
+    startMenu->exitTaskEnvironment = PokegearTownMap_LaunchApp(fieldSystem, 0);
+    StartMenu_SetExitTaskFunc(startMenu, Task_UseFlyInField);
 }
 
-static u32 FieldMoveMenuCheck_Surf(const FieldMoveCheckData *checkData) {
+static u32 FieldMove_CheckSurf(const FieldMoveCheckData *checkData) {
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
-    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->saveData), BADGE_FOG)) {
-        return PARTY_MENU_RESPONSE_NEED_BADGE;
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfile(checkData->fieldSystem->saveData), BADGE_FOG)) {
+        return FIELD_MOVE_RESPONSE_NEED_BADGE;
     }
-
     if (PlayerAvatar_GetState(checkData->fieldSystem->playerAvatar) == PLAYER_STATE_SURFING) {
-        return PARTY_MENU_RESPONSE_ALREADY_SURFING;
+        return FIELD_MOVE_RESPONSE_ALREADY_SURFING;
     }
-
-    if (!MoveUseCheck_FieldContextFlagCheck(checkData, FIELD_MOVE_CHECK_WATER_F)) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+    if (!(checkData->flag & FIELD_MOVE_CHECK_WATER)) {
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
-
     if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
-        return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
+        return FIELD_MOVE_RESPONSE_HAVE_FOLLOWER;
     }
-
     if (Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
-        return PARTY_MENU_RESPONSE_NOT_NOW;
+        return FIELD_MOVE_RESPONSE_NOT_NOW;
     }
 
-    return PARTY_MENU_RESPONSE_OK;
+    return FIELD_MOVE_RESPONSE_OK;
 }
 
 static void FieldMoveMenuUse_Surf(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
     StartMenuTaskData *menuEnv = TaskManager_GetEnvironment(useData->taskManager);
-    FieldUseMoveEnv *retEnv = PartyMenuEnv_create(useData, checkData);
-    sub_020505C0(checkData->fieldSystem);
-    menuEnv->atexit_TaskFunc = Task_UseSurfInField;
-    menuEnv->atexit_TaskEnv = retEnv;
+    FieldUseMoveEnvironment *retEnv = FieldMove_CreateUseEnvironment(useData, checkData);
+    FieldSystem_LoadFieldOverlay(checkData->fieldSystem);
+    menuEnv->exitTaskFunc = Task_UseSurfInField;
+    menuEnv->exitTaskEnvironment = retEnv;
     menuEnv->state = 12;
 }
 
 static BOOL Task_UseSurfInField(TaskManager *taskManager) {
-    FieldUseMoveEnv *env = TaskManager_GetEnvironment(taskManager);
+    FieldUseMoveEnvironment *env = TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_surf, NULL);
-    FieldMoveArgsSet(fieldSystem, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_Delete(env);
+    FieldMove_SetArgs(fieldSystem, env->useData.partySlot, 0, 0, 0);
+    FieldMove_DeleteUseEnvironment(env);
     return FALSE;
 }
 
 static u32 FieldMoveMenuCheck_Strength(const FieldMoveCheckData *checkData) {
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
-    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->saveData), BADGE_PLAIN)) {
-        return PARTY_MENU_RESPONSE_NEED_BADGE;
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfile(checkData->fieldSystem->saveData), BADGE_PLAIN)) {
+        return FIELD_MOVE_RESPONSE_NEED_BADGE;
     }
 
     if (checkData->mapId == MAP_ICE_PATH_B2F) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
 
     if (MoveUseCheck_FieldContextFlagCheck(checkData, FIELD_MOVE_CHECK_ROCK_F)) {
-        return PARTY_MENU_RESPONSE_OK;
+        return FIELD_MOVE_RESPONSE_OK;
     }
-    return PARTY_MENU_RESPONSE_NOT_HERE;
+    return FIELD_MOVE_RESPONSE_NOT_HERE;
 }
 
 static void FieldMoveMenuUse_Strength(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
     StartMenuTaskData *menuEnv = TaskManager_GetEnvironment(useData->taskManager);
-    FieldUseMoveEnv *retEnv = PartyMenuEnv_create(useData, checkData);
-    sub_020505C0(checkData->fieldSystem);
-    menuEnv->atexit_TaskFunc = Task_UseStrengthInField;
-    menuEnv->atexit_TaskEnv = retEnv;
+    FieldUseMoveEnvironment *retEnv = FieldMove_CreateUseEnvironment(useData, checkData);
+    FieldSystem_LoadFieldOverlay(checkData->fieldSystem);
+    menuEnv->exitTaskFunc = Task_UseStrengthInField;
+    menuEnv->exitTaskEnvironment = retEnv;
     menuEnv->state = 12;
 }
 
 static BOOL Task_UseStrengthInField(TaskManager *taskManager) {
-    FieldUseMoveEnv *env = TaskManager_GetEnvironment(taskManager);
+    FieldUseMoveEnvironment *env = TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_strength, env->facingObject);
-    FieldMoveArgsSet(fieldSystem, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_Delete(env);
+    FieldMove_SetArgs(fieldSystem, env->useData.partySlot, 0, 0, 0);
+    FieldMove_DeleteUseEnvironment(env);
     return FALSE;
 }
 
 static u32 FieldMoveMenuCheck_RockSmash(const FieldMoveCheckData *checkData) {
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
-    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->saveData), BADGE_ZEPHYR)) {
-        return PARTY_MENU_RESPONSE_NEED_BADGE;
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfile(checkData->fieldSystem->saveData), BADGE_ZEPHYR)) {
+        return FIELD_MOVE_RESPONSE_NEED_BADGE;
     }
 
     if (MoveUseCheck_FieldContextFlagCheck(checkData, FIELD_MOVE_CHECK_BREAKROCK_F)) {
-        return PARTY_MENU_RESPONSE_OK;
+        return FIELD_MOVE_RESPONSE_OK;
     }
-    return PARTY_MENU_RESPONSE_NOT_HERE;
+    return FIELD_MOVE_RESPONSE_NOT_HERE;
 }
 
 static void FieldMoveMenuUse_RockSmash(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
     StartMenuTaskData *menuEnv = TaskManager_GetEnvironment(useData->taskManager);
-    FieldUseMoveEnv *retEnv = PartyMenuEnv_create(useData, checkData);
-    sub_020505C0(checkData->fieldSystem);
-    menuEnv->atexit_TaskFunc = Task_UseRockSmashInField;
-    menuEnv->atexit_TaskEnv = retEnv;
+    FieldUseMoveEnvironment *retEnv = FieldMove_CreateUseEnvironment(useData, checkData);
+    FieldSystem_LoadFieldOverlay(checkData->fieldSystem);
+    menuEnv->exitTaskFunc = Task_UseRockSmashInField;
+    menuEnv->exitTaskEnvironment = retEnv;
     menuEnv->state = 12;
 }
 
 static BOOL Task_UseRockSmashInField(TaskManager *taskManager) {
-    FieldUseMoveEnv *env = TaskManager_GetEnvironment(taskManager);
+    FieldUseMoveEnvironment *env = TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_rock_smash, env->facingObject);
-    FieldMoveArgsSet(fieldSystem, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_Delete(env);
+    FieldMove_SetArgs(fieldSystem, env->useData.partySlot, 0, 0, 0);
+    FieldMove_DeleteUseEnvironment(env);
     return FALSE;
 }
 
 static u32 FieldMoveMenuCheck_Waterfall(const FieldMoveCheckData *checkData) {
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
     if (PlayerAvatar_GetState(checkData->fieldSystem->playerAvatar) != PLAYER_STATE_SURFING) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
-    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->saveData), BADGE_RISING)) {
-        return PARTY_MENU_RESPONSE_NEED_BADGE;
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfile(checkData->fieldSystem->saveData), BADGE_RISING)) {
+        return FIELD_MOVE_RESPONSE_NEED_BADGE;
     }
 
     if (MoveUseCheck_FieldContextFlagCheck(checkData, FIELD_MOVE_CHECK_WATERFALL_F)) {
-        return PARTY_MENU_RESPONSE_OK;
+        return FIELD_MOVE_RESPONSE_OK;
     }
-    return PARTY_MENU_RESPONSE_NOT_HERE;
+    return FIELD_MOVE_RESPONSE_NOT_HERE;
 }
 
 static void FieldMoveMenuUse_Waterfall(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
     StartMenuTaskData *menuEnv = TaskManager_GetEnvironment(useData->taskManager);
-    FieldUseMoveEnv *retEnv = PartyMenuEnv_create(useData, checkData);
-    sub_020505C0(checkData->fieldSystem);
-    menuEnv->atexit_TaskFunc = Task_UseWaterfallInField;
-    menuEnv->atexit_TaskEnv = retEnv;
+    FieldUseMoveEnvironment *retEnv = FieldMove_CreateUseEnvironment(useData, checkData);
+    FieldSystem_LoadFieldOverlay(checkData->fieldSystem);
+    menuEnv->exitTaskFunc = Task_UseWaterfallInField;
+    menuEnv->exitTaskEnvironment = retEnv;
     menuEnv->state = 12;
 }
 
 static BOOL Task_UseWaterfallInField(TaskManager *taskManager) {
-    FieldUseMoveEnv *env = TaskManager_GetEnvironment(taskManager);
+    FieldUseMoveEnvironment *env = TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_waterfall, NULL);
-    FieldMoveArgsSet(fieldSystem, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_Delete(env);
+    FieldMove_SetArgs(fieldSystem, env->useData.partySlot, 0, 0, 0);
+    FieldMove_DeleteUseEnvironment(env);
     return FALSE;
 }
 
 static u32 FieldMoveMenuCheck_RockClimb(const FieldMoveCheckData *checkData) {
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
-    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->saveData), BADGE_EARTH)) {
-        return PARTY_MENU_RESPONSE_NEED_BADGE;
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfile(checkData->fieldSystem->saveData), BADGE_EARTH)) {
+        return FIELD_MOVE_RESPONSE_NEED_BADGE;
     }
 
     if (!MoveUseCheck_FieldContextFlagCheck(checkData, FIELD_MOVE_CHECK_ROCKCLIMB_F)) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
 
     if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
-        return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
+        return FIELD_MOVE_RESPONSE_HAVE_FOLLOWER;
     }
 
     if (Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
-        return PARTY_MENU_RESPONSE_NOT_NOW;
+        return FIELD_MOVE_RESPONSE_NOT_NOW;
     }
 
-    return PARTY_MENU_RESPONSE_OK;
+    return FIELD_MOVE_RESPONSE_OK;
 }
 
 static void FieldMoveMenuUse_RockClimb(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
     StartMenuTaskData *menuEnv = TaskManager_GetEnvironment(useData->taskManager);
-    FieldUseMoveEnv *retEnv = PartyMenuEnv_create(useData, checkData);
-    sub_020505C0(checkData->fieldSystem);
-    menuEnv->atexit_TaskFunc = Task_UseRockClimbInField;
-    menuEnv->atexit_TaskEnv = retEnv;
+    FieldUseMoveEnvironment *retEnv = FieldMove_CreateUseEnvironment(useData, checkData);
+    FieldSystem_LoadFieldOverlay(checkData->fieldSystem);
+    menuEnv->exitTaskFunc = Task_UseRockClimbInField;
+    menuEnv->exitTaskEnvironment = retEnv;
     menuEnv->state = 12;
 }
 
 static BOOL Task_UseRockClimbInField(TaskManager *taskManager) {
-    FieldUseMoveEnv *env = TaskManager_GetEnvironment(taskManager);
+    FieldUseMoveEnvironment *env = TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_rock_climb, NULL);
-    FieldMoveArgsSet(fieldSystem, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_Delete(env);
+    FieldMove_SetArgs(fieldSystem, env->useData.partySlot, 0, 0, 0);
+    FieldMove_DeleteUseEnvironment(env);
     return FALSE;
 }
 
 static u32 FieldMoveMenuCheck_Flash(const FieldMoveCheckData *checkData) {
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
 
     if (CheckUseFlashInAlphChamber(checkData->fieldSystem)) {
-        return PARTY_MENU_RESPONSE_OK;
+        return FIELD_MOVE_RESPONSE_OK;
     }
 
     if (MoveUseCheck_FieldContextFlagCheck(checkData, FIELD_MOVE_CHECK_FLASH_F)) {
-        return PARTY_MENU_RESPONSE_OK;
+        return FIELD_MOVE_RESPONSE_OK;
     }
 
-    return PARTY_MENU_RESPONSE_NOT_HERE;
+    return FIELD_MOVE_RESPONSE_NOT_HERE;
 }
 
 static void FieldMoveMenuUse_Flash(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
     StartMenuTaskData *menuEnv = TaskManager_GetEnvironment(useData->taskManager);
-    FieldUseMoveEnv *retEnv = PartyMenuEnv_create(useData, checkData);
-    sub_020505C0(checkData->fieldSystem);
-    menuEnv->atexit_TaskFunc = Task_UseFlashInField;
-    menuEnv->atexit_TaskEnv = retEnv;
+    FieldUseMoveEnvironment *retEnv = FieldMove_CreateUseEnvironment(useData, checkData);
+    FieldSystem_LoadFieldOverlay(checkData->fieldSystem);
+    menuEnv->exitTaskFunc = Task_UseFlashInField;
+    menuEnv->exitTaskEnvironment = retEnv;
     menuEnv->state = 12;
 }
 
 static BOOL Task_UseFlashInField(TaskManager *taskManager) {
-    FieldUseMoveEnv *env = TaskManager_GetEnvironment(taskManager);
+    FieldUseMoveEnvironment *env = TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     if (CheckUseFlashInAlphChamber(fieldSystem)) {
         StartScriptFromMenu(taskManager, _EV_scr_seq_D24R0204_002 + 1, NULL);
     } else {
         StartScriptFromMenu(taskManager, std_menu_flash, NULL);
     }
-    FieldMoveArgsSet(fieldSystem, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_Delete(env);
+    FieldMove_SetArgs(fieldSystem, env->useData.partySlot, 0, 0, 0);
+    FieldMove_DeleteUseEnvironment(env);
     return FALSE;
 }
 
 static u32 FieldMoveMenuCheck_Teleport(const FieldMoveCheckData *checkData) {
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
     if (!MapHeader_IsTeleportAllowed(checkData->mapId)) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
 
     if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
-        return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
+        return FIELD_MOVE_RESPONSE_HAVE_FOLLOWER;
     }
 
     if (Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
-        return PARTY_MENU_RESPONSE_NOT_NOW;
+        return FIELD_MOVE_RESPONSE_NOT_NOW;
     }
 
-    if (MoveUseCheck_SafariOrPalPark(checkData) == TRUE) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+    if (FieldMove_CheckSafariOrPalPark(checkData) == TRUE) {
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
 
-    return PARTY_MENU_RESPONSE_OK;
+    return FIELD_MOVE_RESPONSE_OK;
 }
 
 static void FieldMoveMenuUse_Teleport(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(useData->taskManager);
     StartMenuTaskData *menuEnv = TaskManager_GetEnvironment(useData->taskManager);
-    sub_020505C0(fieldSystem);
+    FieldSystem_LoadFieldOverlay(fieldSystem);
     struct TeleportFieldEnv *retEnv = sub_020689A4(HEAP_ID_FIELD, useData->partySlot, fieldSystem->saveData);
-    FlyTaskStruct *retSub = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FlyTaskStruct));
+    FieldMoveData *retSub = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldMoveData));
     retEnv->flySub = retSub;
     retSub->partySlot = useData->partySlot;
-    menuEnv->atexit_TaskFunc = Task_UseTeleportInField;
-    menuEnv->atexit_TaskEnv = retEnv;
+    menuEnv->exitTaskFunc = Task_UseTeleportInField;
+    menuEnv->exitTaskEnvironment = retEnv;
     menuEnv->state = 12;
 }
 
@@ -529,33 +520,33 @@ static BOOL Task_UseTeleportInField(TaskManager *taskManager) {
 
 static u32 FieldMoveMenuCheck_Dig(const FieldMoveCheckData *checkData) {
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
     if (MapHeader_IsCave(checkData->mapId) != TRUE || MapHeader_IsEscapeRopeAllowed(checkData->mapId) != TRUE) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
 
     if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
-        return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
+        return FIELD_MOVE_RESPONSE_HAVE_FOLLOWER;
     }
 
     if (Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
-        return PARTY_MENU_RESPONSE_NOT_NOW;
+        return FIELD_MOVE_RESPONSE_NOT_NOW;
     }
 
-    return PARTY_MENU_RESPONSE_OK;
+    return FIELD_MOVE_RESPONSE_OK;
 }
 
 static void FieldMoveMenuUse_Dig(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(useData->taskManager);
     StartMenuTaskData *menuEnv = TaskManager_GetEnvironment(useData->taskManager);
-    sub_020505C0(fieldSystem);
+    FieldSystem_LoadFieldOverlay(fieldSystem);
     struct TeleportFieldEnv *retEnv = sub_020689A4(HEAP_ID_FIELD, useData->partySlot, fieldSystem->saveData);
-    FlyTaskStruct *retSub = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FlyTaskStruct));
+    FieldMoveData *retSub = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldMoveData));
     retEnv->flySub = retSub;
     retSub->partySlot = useData->partySlot;
-    menuEnv->atexit_TaskFunc = Task_UseDigInField;
-    menuEnv->atexit_TaskEnv = retEnv;
+    menuEnv->exitTaskFunc = Task_UseDigInField;
+    menuEnv->exitTaskEnvironment = retEnv;
     menuEnv->state = 12;
 }
 
@@ -571,121 +562,121 @@ static BOOL Task_UseDigInField(TaskManager *taskManager) {
 
 static u32 FieldMoveMenuCheck_SweetScent(const FieldMoveCheckData *checkData) {
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
 
     if (MoveUseCheck_PalPark(checkData) == TRUE) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
 
-    return PARTY_MENU_RESPONSE_OK;
+    return FIELD_MOVE_RESPONSE_OK;
 }
 
 static void FieldMoveMenuUse_SweetScent(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(useData->taskManager);
     StartMenuTaskData *menuEnv = TaskManager_GetEnvironment(useData->taskManager);
     struct TeleportFieldEnv *retEnv = sub_020689A4(HEAP_ID_FIELD, useData->partySlot, fieldSystem->saveData);
-    FlyTaskStruct *retSub = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FlyTaskStruct));
+    FieldMoveData *retSub = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldMoveData));
     retEnv->flySub = retSub;
     retSub->partySlot = useData->partySlot;
-    sub_020505C0(fieldSystem);
-    menuEnv->atexit_TaskFunc = Task_UseSweetScentInField;
-    menuEnv->atexit_TaskEnv = retEnv;
+    FieldSystem_LoadFieldOverlay(fieldSystem);
+    menuEnv->exitTaskFunc = Task_UseSweetScentInField;
+    menuEnv->exitTaskEnvironment = retEnv;
     menuEnv->state = 12;
 }
 
 static u32 FieldMoveMenuCheck_Chatter(const FieldMoveCheckData *checkData) {
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
 
-    return PARTY_MENU_RESPONSE_OK;
+    return FIELD_MOVE_RESPONSE_OK;
 }
 
 static void FieldMoveMenuUse_Chatter(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(useData->taskManager);
     StartMenuTaskData *menuEnv = TaskManager_GetEnvironment(useData->taskManager);
-    FieldUseMoveEnv *partyEnv = PartyMenuEnv_create(useData, checkData);
-    sub_020505C0(fieldSystem);
-    menuEnv->atexit_TaskFunc = Task_UseChatterInField;
-    menuEnv->atexit_TaskEnv = partyEnv;
+    FieldUseMoveEnvironment *partyEnv = FieldMove_CreateUseEnvironment(useData, checkData);
+    FieldSystem_LoadFieldOverlay(fieldSystem);
+    menuEnv->exitTaskFunc = Task_UseChatterInField;
+    menuEnv->exitTaskEnvironment = partyEnv;
     menuEnv->state = 12;
 }
 
 static BOOL Task_UseChatterInField(TaskManager *taskManager) {
-    FieldUseMoveEnv *env = TaskManager_GetEnvironment(taskManager);
+    FieldUseMoveEnvironment *env = TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_chatter, NULL);
-    FieldMoveArgsSet(fieldSystem, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_Delete(env);
+    FieldMove_SetArgs(fieldSystem, env->useData.partySlot, 0, 0, 0);
+    FieldMove_DeleteUseEnvironment(env);
     return FALSE;
 }
 
 static u32 FieldMoveMenuCheck_Whirlpool(const FieldMoveCheckData *checkData) {
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
 
     if (PlayerAvatar_GetState(checkData->fieldSystem->playerAvatar) != PLAYER_STATE_SURFING) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
 
-    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->saveData), BADGE_GLACIER)) {
-        return PARTY_MENU_RESPONSE_NEED_BADGE;
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfile(checkData->fieldSystem->saveData), BADGE_GLACIER)) {
+        return FIELD_MOVE_RESPONSE_NEED_BADGE;
     }
 
     if (MoveUseCheck_FieldContextFlagCheck(checkData, FIELD_MOVE_CHECK_WHIRLPOOL_F)) {
-        return PARTY_MENU_RESPONSE_OK;
+        return FIELD_MOVE_RESPONSE_OK;
     }
 
-    return PARTY_MENU_RESPONSE_NOT_HERE;
+    return FIELD_MOVE_RESPONSE_NOT_HERE;
 }
 
 static void FieldMoveMenuUse_Whirlpool(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
     StartMenuTaskData *menuEnv = TaskManager_GetEnvironment(useData->taskManager);
-    FieldUseMoveEnv *partyEnv = PartyMenuEnv_create(useData, checkData);
-    sub_020505C0(checkData->fieldSystem);
-    menuEnv->atexit_TaskFunc = Task_UseWhirlpoolInField;
-    menuEnv->atexit_TaskEnv = partyEnv;
+    FieldUseMoveEnvironment *partyEnv = FieldMove_CreateUseEnvironment(useData, checkData);
+    FieldSystem_LoadFieldOverlay(checkData->fieldSystem);
+    menuEnv->exitTaskFunc = Task_UseWhirlpoolInField;
+    menuEnv->exitTaskEnvironment = partyEnv;
     menuEnv->state = 12;
 }
 
 static BOOL Task_UseWhirlpoolInField(TaskManager *taskManager) {
-    FieldUseMoveEnv *env = TaskManager_GetEnvironment(taskManager);
+    FieldUseMoveEnvironment *env = TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_whirlpool, NULL);
-    FieldMoveArgsSet(fieldSystem, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_Delete(env);
+    FieldMove_SetArgs(fieldSystem, env->useData.partySlot, 0, 0, 0);
+    FieldMove_DeleteUseEnvironment(env);
     return FALSE;
 }
 
 static u32 FieldMoveMenuCheck_Headbutt(const FieldMoveCheckData *checkData) {
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
-        return PARTY_MENU_RESPONSE_NOT_HERE;
+        return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
 
     if (MoveUseCheck_FieldContextFlagCheck(checkData, FIELD_MOVE_CHECK_HEADBUTT_F)) {
-        return PARTY_MENU_RESPONSE_OK;
+        return FIELD_MOVE_RESPONSE_OK;
     }
 
-    return PARTY_MENU_RESPONSE_NOT_HERE;
+    return FIELD_MOVE_RESPONSE_NOT_HERE;
 }
 
 static void FieldMoveMenuUse_Headbutt(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
     StartMenuTaskData *menuEnv = TaskManager_GetEnvironment(useData->taskManager);
-    FieldUseMoveEnv *partyEnv = PartyMenuEnv_create(useData, checkData);
-    sub_020505C0(checkData->fieldSystem);
-    menuEnv->atexit_TaskFunc = Task_UseHeadbuttInField;
-    menuEnv->atexit_TaskEnv = partyEnv;
+    FieldUseMoveEnvironment *partyEnv = FieldMove_CreateUseEnvironment(useData, checkData);
+    FieldSystem_LoadFieldOverlay(checkData->fieldSystem);
+    menuEnv->exitTaskFunc = Task_UseHeadbuttInField;
+    menuEnv->exitTaskEnvironment = partyEnv;
     menuEnv->state = 12;
 }
 
 static BOOL Task_UseHeadbuttInField(TaskManager *taskManager) {
-    FieldUseMoveEnv *env = TaskManager_GetEnvironment(taskManager);
+    FieldUseMoveEnvironment *env = TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_headbutt, env->facingObject);
-    FieldMoveArgsSet(fieldSystem, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_Delete(env);
+    FieldMove_SetArgs(fieldSystem, env->useData.partySlot, 0, 0, 0);
+    FieldMove_DeleteUseEnvironment(env);
     return FALSE;
 }
 

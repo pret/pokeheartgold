@@ -49,7 +49,7 @@ BOOL ScrCmd_MartBuy(ScriptContext *ctx) {
     nitems = 0;
     badge_count = 0;
     for (i = 0; i < 16; i++) {
-        if (PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData), i) == TRUE) {
+        if (PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfile(ctx->fieldSystem->saveData), i) == TRUE) {
             badge_count++;
         }
     }

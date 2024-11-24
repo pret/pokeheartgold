@@ -2882,7 +2882,7 @@ ov45_0222B244: ; 0x0222B244
 	bl GF_AssertFail
 _0222B254:
 	ldr r0, [r4]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	ldr r1, _0222B26C ; =0x00000528
 	ldr r1, [r4, r1]
 	bl sub_02078DD8
@@ -3688,7 +3688,7 @@ ov45_0222B8A0: ; 0x0222B8A0
 	str r1, [sp]
 	add r0, r1, #0
 	add r4, r2, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	str r0, [sp, #0x18]
 	ldr r0, [sp]
 	bl SaveArray_Party_Get

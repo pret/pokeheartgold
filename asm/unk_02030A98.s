@@ -1589,7 +1589,7 @@ sub_020314C4: ; 0x020314C4
 	add r6, r1, #0
 	add r5, r0, #0
 	add r0, r6, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r4, r0, #0
 	add r0, r6, #0
 	bl Save_WiFiHistory_Get

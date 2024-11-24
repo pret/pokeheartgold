@@ -104,7 +104,7 @@
 .public Sprite_SetPalIndex
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public SaveData_GSPlayerMisc_Get
 .public sub_0202EDF8

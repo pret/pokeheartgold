@@ -29,7 +29,7 @@
 .public TaskManager_GetEnvironment
 .public TaskManager_GetStatePtr
 .public GetIdxOfFirstAliveMonInParty_CrashIfNone
-.public GetMetatileBehaviorAt
+.public GetMetatileBehavior
 .public PlayerAvatar_GetFacingDirection
 .public GetPlayerXCoord
 .public GetPlayerZCoord

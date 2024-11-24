@@ -162,7 +162,7 @@ static BOOL ShouldTryEncounter(struct PalParkLocal *palpark) {
 }
 
 static enum PalParkEncounterType GetEncounterTypeAt(FieldSystem *fieldSystem, int x, int z) {
-    int behavior = GetMetatileBehaviorAt(fieldSystem, x, z);
+    int behavior = GetMetatileBehavior(fieldSystem, x, z);
     int quadrant = (x < 32 ? 0 : 1);
     quadrant += (z < 32 ? 0 : 2);
     if (MetatileBehavior_IsEncounterGrass(behavior)) {

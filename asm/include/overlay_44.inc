@@ -191,7 +191,7 @@
 .public Save_ClearStatusFlags
 .public Save_PrepareForAsyncWrite
 .public Save_WriteFileAsync
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_New
 .public Save_Profile_PlayerName_Set

@@ -7,7 +7,7 @@
 #include "constants/items.h"
 #include "constants/std_script.h"
 #include "fielddata/script/scr_seq/event_D24R0204.h"
-#include "constants/party_menu.h"
+#include "constants/field_move_response.h"
 	.include "asm/macros.inc"
 	.include "unk_0205CB48.inc"
 	.include "global.inc"
@@ -2099,7 +2099,7 @@ sub_0205DB68: ; 0x0205DB68
 	ldr r0, [sp]
 	add r1, r6, r7
 	add r2, r5, r2
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	cmp r4, #3
 	bhi _0205DBF0
 	add r1, r4, r4
@@ -2163,7 +2163,7 @@ sub_0205DBF4: ; 0x0205DBF4
 	ldr r2, [sp]
 	add r0, r7, #0
 	add r1, r6, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	add r5, r0, #0
 	cmp r4, #3
 	bhi _0205DC74
@@ -2216,7 +2216,7 @@ _0205DC74:
 	add r0, r7, #0
 	add r1, r6, r5
 	add r2, r2, r3
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	bl sub_0205B70C
 	cmp r0, #1
 	bne _0205DC9C
@@ -2256,7 +2256,7 @@ sub_0205DCA0: ; 0x0205DCA0
 	ldr r0, [sp]
 	add r1, r6, r7
 	add r2, r2, r3
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	add r1, r0, #0
 	add r0, r5, #0
 	bl sub_02060E54
@@ -2303,7 +2303,7 @@ sub_0205DCFC: ; 0x0205DCFC
 	ldr r0, [sp]
 	add r1, r6, r7
 	add r2, r2, r3
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0

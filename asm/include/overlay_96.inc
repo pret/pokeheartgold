@@ -283,7 +283,7 @@
 .public String_cstr
 .public Thunk_G3X_Reset
 .public RequestSwap3DBuffers
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_sizeof
 .public PlayerProfile_Copy

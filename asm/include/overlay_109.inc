@@ -109,7 +109,7 @@
 .public String_New
 .public String_Delete
 .public CopyU16ArrayToString
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay
 .public Options_GetFrame

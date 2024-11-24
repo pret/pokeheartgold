@@ -98,7 +98,7 @@
 .public TouchscreenHitbox_FindHitboxAtTouchNew
 .public String_New
 .public String_Delete
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_GetPlayerName_NewString
 .public Pokedex_GetSeenFormByIdx_Unown

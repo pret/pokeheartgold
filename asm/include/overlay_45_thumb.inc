@@ -97,7 +97,7 @@
 .public sub_02026E18
 .public SaveArray_CalcCRC16
 .public Save_SysInfo_RTC_Get
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public PlayerProfile_New
 .public Save_Profile_PlayerName_Set
 .public PlayerName_StringToFlat

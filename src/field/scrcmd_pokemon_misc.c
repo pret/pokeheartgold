@@ -1041,7 +1041,7 @@ BOOL ScrCmd_GiveTogepiEgg(ScriptContext *ctx) {
     Party *party;
     FieldSystem *fieldSystem = ctx->fieldSystem;
 
-    profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+    profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
     party = SaveArray_Party_Get(fieldSystem->saveData);
 
     if (Party_GetCount(party) >= 6) {
@@ -1109,7 +1109,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
 
     fieldSystem = ctx->fieldSystem;
 
-    profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+    profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
     party = SaveArray_Party_Get(fieldSystem->saveData);
     if (Party_GetCount(party) >= 6) {
         return FALSE;

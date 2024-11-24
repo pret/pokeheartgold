@@ -1488,7 +1488,7 @@ BOOL ScrCmd_FacePlayer(ScriptContext *ctx) {
     if (MapObject_GetID(*p_lastInteracted) == obj_partner_poke) {
         if (ov01_022055DC(*p_lastInteracted) && oldDir != rvsDir) {
             ov01_02205604(*p_lastInteracted, &x, &y);
-            metatile = GetMetatileBehaviorAt(fieldSystem, x, y);
+            metatile = GetMetatileBehavior(fieldSystem, x, y);
             if (rvsDir == 2 || rvsDir == 3) {
                 if (MetatileBehavior_IsEncounterGrass(metatile) == TRUE) {
                     ov01_021FF0E4(*p_lastInteracted, 0, x, y, 1);
@@ -2551,7 +2551,7 @@ BOOL ScrCmd_247(ScriptContext *ctx) {
 
 BOOL ScrCmd_GetDexEvalResult(ScriptContext *ctx) {
     Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->saveData);
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData);
+    PlayerProfile *profile = Save_PlayerData_GetProfile(ctx->fieldSystem->saveData);
     u8 kind = ScriptReadByte(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     u16 *p_ret2 = ScriptGetVarPointer(ctx);
@@ -2698,7 +2698,7 @@ BOOL ScrCmd_264(ScriptContext *ctx) {
     LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_LAST_INTERACTED);
     MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u16 r4 = ScriptReadHalfword(ctx);
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfile(FieldSystem_GetSaveData(ctx->fieldSystem));
     SaveEasyChat *easyChat = Save_EasyChat_Get(FieldSystem_GetSaveData(ctx->fieldSystem));
     u16 objId;
 
@@ -2863,7 +2863,7 @@ BOOL ScrCmd_286(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_BufferUnionRoomAvatarChoices(ScriptContext *ctx) {
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfile(FieldSystem_GetSaveData(ctx->fieldSystem));
     MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     BufferUnionRoomAvatarChoicesNames(
         PlayerProfile_GetTrainerID(profile),
@@ -2873,7 +2873,7 @@ BOOL ScrCmd_BufferUnionRoomAvatarChoices(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_UnionRoomAvatarIdxToTrainerClass(ScriptContext *ctx) {
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfile(FieldSystem_GetSaveData(ctx->fieldSystem));
     u16 choice = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = UnionRoomAvatarIdxToSprite(
@@ -2888,7 +2888,7 @@ BOOL ScrCmd_UnionRoomAvatarIdxToTrainerClass(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_UnionRoomAvatarIdxToSprite(ScriptContext *ctx) {
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfile(FieldSystem_GetSaveData(ctx->fieldSystem));
     u16 choice = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = UnionRoomAvatarIdxToSprite(
@@ -2899,7 +2899,7 @@ BOOL ScrCmd_UnionRoomAvatarIdxToSprite(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_289(ScriptContext *ctx) {
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfile(FieldSystem_GetSaveData(ctx->fieldSystem));
     u16 choice = ScriptGetVar(ctx);
     PlayerProfile_SetAvatar(profile, choice);
     return FALSE;
@@ -2918,7 +2918,7 @@ BOOL ScrCmd_SetSpawn(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_GetPlayerGender(ScriptContext *ctx) {
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfile(FieldSystem_GetSaveData(ctx->fieldSystem));
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = PlayerProfile_GetTrainerGender(profile);
     return FALSE;
@@ -3520,7 +3520,7 @@ BOOL ScrCmd_NatDexFlagAction(ScriptContext *ctx) {
     *p_ret = 0;
     if (action == 1) {
         Pokedex_SetNatDexFlag(Save_Pokedex_Get(ctx->fieldSystem->saveData));
-        PlayerProfile_SetNatDexFlag(Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData));
+        PlayerProfile_SetNatDexFlag(Save_PlayerData_GetProfile(ctx->fieldSystem->saveData));
     } else if (action == 2) {
         *p_ret = Pokedex_GetNatDexFlag(Save_Pokedex_Get(ctx->fieldSystem->saveData));
     } else {
@@ -3579,7 +3579,7 @@ BOOL ScrCmd_GetGameVersion(ScriptContext *ctx) {
 
 BOOL ScrCmd_PrimoPasswordCheck1(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfile(FieldSystem_GetSaveData(fieldSystem));
     u16 *p_ret = ScriptGetVarPointer(ctx);
     PCStorage *pcStorage = SaveArray_PCStorage_Get(fieldSystem->saveData);
     u16 a = ScriptGetVar(ctx);
@@ -3601,7 +3601,7 @@ BOOL ScrCmd_PrimoPasswordCheck1(ScriptContext *ctx) {
 
 BOOL ScrCmd_PrimoPasswordCheck2(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfile(FieldSystem_GetSaveData(fieldSystem));
     u16 *p_ret = ScriptGetVarPointer(ctx);
     PCStorage *pcStorage = SaveArray_PCStorage_Get(fieldSystem->saveData);
     u16 a = ScriptGetVar(ctx);
@@ -4388,7 +4388,7 @@ BOOL ScrCmd_FollowerPokeIsEventTrigger(ScriptContext *ctx) {
     if (GetMonData(mon, MON_DATA_IS_EGG, NULL) || GetMonData(mon, MON_DATA_CHECKSUM_FAILED, NULL)) {
         return FALSE;
     }
-    if (!MonMetadataMatchesEvent(event, mon, GetMonData(mon, MON_DATA_OTID, NULL) == PlayerProfile_GetTrainerID(Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData)))) {
+    if (!MonMetadataMatchesEvent(event, mon, GetMonData(mon, MON_DATA_OTID, NULL) == PlayerProfile_GetTrainerID(Save_PlayerData_GetProfile(ctx->fieldSystem->saveData)))) {
         return FALSE;
     }
 
@@ -4470,7 +4470,7 @@ BOOL ScrCmd_FollowMonFacePlayer(ScriptContext *ctx) {
             s32 playerY = MapObject_GetCurrentY(myObject);
             int playerZ = MapObject_GetCurrentZ(myObject);
             int deltaY = GetDeltaYByFacingDirection(facingDirection) * 2;
-            u8 facingTile = GetMetatileBehaviorAt(ctx->fieldSystem, playerX + deltaX, playerZ + deltaY);
+            u8 facingTile = GetMetatileBehavior(ctx->fieldSystem, playerX + deltaX, playerZ + deltaY);
             VecFx32 posVec;
             MapObject_CopyPositionVector(myObject, &posVec);
             if (sub_020549A8(ctx->fieldSystem, &posVec, playerX + deltaX, playerZ + deltaY, 0) || MetatileBehavior_IsSurfableWater(facingTile) || sub_02060BFC(myObject, playerX + deltaX, playerY, playerZ + deltaY)) {
@@ -4590,7 +4590,7 @@ BOOL ScrCmd_Pokeathlon(ScriptContext *ctx) {
 
 BOOL ScrCmd_GetFriendSprite(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    if (PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem))) != PLAYER_GENDER_MALE) {
+    if (PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(FieldSystem_GetSaveData(ctx->fieldSystem))) != PLAYER_GENDER_MALE) {
         *p_ret = SPRITE_HERO;
     } else {
         *p_ret = SPRITE_HEROINE;
@@ -5051,7 +5051,7 @@ BOOL sub_02047908(struct UnkStruct_ov01_021EDC28 *menu, int idx) {
 
 static u32 GetMaxBankTransactionAmount(FieldSystem *fieldSystem, int action) {
     u32 ret;
-    u32 wallet = PlayerProfile_GetMoney(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
+    u32 wallet = PlayerProfile_GetMoney(Save_PlayerData_GetProfile(fieldSystem->saveData));
     u32 bank = MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(fieldSystem->saveData), MOMS_BALANCE_GET, 0);
     switch (action) {
     case 0:
@@ -5101,11 +5101,11 @@ BOOL sub_020479D4(ScriptContext *ctx) {
         SaveData *saveData = ctx->fieldSystem->saveData;
         switch (work->mode) {
         case 0:
-            PlayerProfile_SubMoney(Save_PlayerData_GetProfileAddr(saveData), work->sub->selected);
+            PlayerProfile_SubMoney(Save_PlayerData_GetProfile(saveData), work->sub->selected);
             MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(saveData), MOMS_BALANCE_ADD, work->sub->selected);
             break;
         case 1:
-            PlayerProfile_AddMoney(Save_PlayerData_GetProfileAddr(saveData), work->sub->selected);
+            PlayerProfile_AddMoney(Save_PlayerData_GetProfile(saveData), work->sub->selected);
             MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(saveData), MOMS_BALANCE_SUB, work->sub->selected);
             break;
         default:
@@ -5129,7 +5129,7 @@ BOOL ScrCmd_BankOrWalletIsFull(ScriptContext *ctx) {
             *p_ret = FALSE;
         }
     } else {
-        if (PlayerProfile_GetMoney(Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData)) == MAX_MONEY) {
+        if (PlayerProfile_GetMoney(Save_PlayerData_GetProfile(ctx->fieldSystem->saveData)) == MAX_MONEY) {
             *p_ret = TRUE;
         } else {
             *p_ret = FALSE;

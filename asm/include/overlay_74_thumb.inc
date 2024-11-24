@@ -196,7 +196,7 @@
 .public SaveSubstruct_UpdateCRC
 .public Save_SysInfo_Get
 .public Save_SysInfo_GetMysteryGiftActive
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public Save_PlayerData_GetIGTAddr
 .public PlayerProfile_GetNamePtr

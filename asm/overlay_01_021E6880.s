@@ -1173,7 +1173,7 @@ _021E71B0:
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
 	add r0, r6, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	add r4, r0, #0
 	bl sub_0205BAA0
 	cmp r0, #0
@@ -1271,7 +1271,7 @@ _021E726C:
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
 	add r0, r6, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	bl sub_0205B70C
 	cmp r0, #0
 	beq _021E72B6
@@ -1297,7 +1297,7 @@ _021E72B6:
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
 	add r0, r6, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	add r4, r0, #0
 	bl sub_0205B718
 	cmp r0, #0
@@ -1478,7 +1478,7 @@ GetInteractedMetatileScript: ; 0x021E7418
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	add r7, r0, #0
 	lsl r0, r7, #0x18
 	lsr r0, r0, #0x18
@@ -1589,12 +1589,12 @@ _021E7510:
 	cmp r0, #2
 	beq _021E7570
 	ldr r0, [r5, #0xc]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
 	add r1, r7, #0
 	add r2, r4, #0
-	bl Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors
+	bl Field_PlayerCanSurfOnTile
 	cmp r0, #0
 	beq _021E7550
 	add r0, r6, #0
@@ -1740,7 +1740,7 @@ _021E7672:
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	add r7, r0, #0
 	add r0, r5, #0
 	bl ov01_021E774C
@@ -2358,7 +2358,7 @@ ov01_021E7B38: ; 0x021E7B38
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r4, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	add sp, #8
 	pop {r4, pc}
 	thumb_func_end ov01_021E7B38
@@ -2374,7 +2374,7 @@ ov01_021E7B54: ; 0x021E7B54
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r4, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	add sp, #8
 	pop {r4, pc}
 	thumb_func_end ov01_021E7B54

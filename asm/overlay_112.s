@@ -4204,7 +4204,7 @@ ov112_021E795C: ; 0x021E795C
 	ldr r1, _021E7994 ; =0x0001E434
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x20]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	ldr r1, _021E7998 ; =0x0001E438
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x20]
@@ -4597,7 +4597,7 @@ ov112_021E7CC8: ; 0x021E7CC8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x20]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	mov r1, #0x9a
 	bl PlayerProfile_GetPlayerName_NewString
 	add r4, r0, #0
@@ -6687,7 +6687,7 @@ ov112_021E90FC: ; 0x021E90FC
 	sub sp, #0x10
 	add r5, r0, #0
 	ldr r0, [r1, #0x20]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	mov r1, #0x9a
 	bl PlayerProfile_GetPlayerName_NewString
 	add r4, r0, #0
@@ -22755,7 +22755,7 @@ _021F0FC2:
 	bl Save_Pokewalker_Get
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r4, r0, #0
 	bl PlayerProfile_GetTrainerGender
 	str r0, [r5, #0xc]
@@ -27237,7 +27237,7 @@ ov112_021F3244: ; 0x021F3244
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r0, r5, #0
 	bl SaveArray_Party_Get
 	mov r2, #0x7d
@@ -27385,7 +27385,7 @@ ov112_021F336C: ; 0x021F336C
 	add r6, r1, #0
 	add r5, r0, #0
 	add r0, r6, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r4, r0, #0
 	bl PlayerProfile_GetTrainerID
 	str r0, [r5]

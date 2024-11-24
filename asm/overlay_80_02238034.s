@@ -456,7 +456,7 @@ ov80_02238384: ; 0x02238384
 	sub sp, #8
 	ldr r0, [r0, #4]
 	add r4, r1, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	mov r3, #0
 	add r1, r0, #0
 	str r3, [sp]

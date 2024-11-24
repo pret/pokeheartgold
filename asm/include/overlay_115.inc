@@ -40,7 +40,7 @@
 .public String_Delete
 .public Thunk_G3X_Reset
 .public RequestSwap3DBuffers
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public PlayerProfile_GetTrainerGender
 .public NNS_G2dGetImagePaletteLocation
 .public G2x_SetBlendAlpha_

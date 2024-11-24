@@ -101,7 +101,7 @@
 .public Field_PlayerAvatar_ApplyTransitionFlags
 .public ov01_021F1D94
 .public CallFieldTask_Surf
-.public Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors
+.public Field_PlayerCanSurfOnTile
 .public CallFieldTask_RockClimb
 .public MetatileBehavior_IsRockClimbInDirection
 .public CallFieldTask_Waterfall

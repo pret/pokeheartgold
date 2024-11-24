@@ -133,7 +133,7 @@ void BugContest_BufferContestWinnerNames(BugContest *bugContest, MsgData *msgDat
 
     contestant = &bugContest->contestants[bugContest->ranking[place]];
     if (place == bugContest->placement) {
-        BufferPlayersName(msgFmt, 0, Save_PlayerData_GetProfileAddr(bugContest->saveData));
+        BufferPlayersName(msgFmt, 0, Save_PlayerData_GetProfile(bugContest->saveData));
     } else {
         string = NewString_ReadMsgData(msgData, contestant->id + msg_0246_00078);
         BufferString(msgFmt, 0, string, 2, 1, 2);
