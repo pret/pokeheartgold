@@ -1722,7 +1722,7 @@ _0225AD36:
 _0225AD52:
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0xc]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	bl PlayerProfile_GetTrainerGender
 	add r7, r0, #0
 	ldr r0, [r5, #0x10]
@@ -3458,7 +3458,7 @@ ov27_0225BB6C: ; 0x0225BB6C
 	add r5, r0, #0
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0xc]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r2, r0, #0
 	ldr r0, _0225BC10 ; =0x000004AC
 	mov r1, #0

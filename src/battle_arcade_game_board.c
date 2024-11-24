@@ -812,7 +812,7 @@ static BOOL ov84_0223ECBC(GAME_BOARD_WORK *work, u16 type, u16 a2) {
 static void ov84_0223ED00(GAME_BOARD_WORK *work, u16 type) {
     int i, offset;
 
-    Save_PlayerData_GetProfileAddr(work->saveData);
+    Save_PlayerData_GetProfile(work->saveData);
 
     work->sendBuffer[0] = type;
 

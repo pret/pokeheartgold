@@ -51,7 +51,7 @@ static void ov124_02260D1C(FieldSystem *fieldSystem) {
     int i = 0;
     int numBadges = 0;
     for (i = 0; i < 16; ++i) {
-        if (PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(fieldSystem->saveData), i) == TRUE) {
+        if (PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfile(fieldSystem->saveData), i) == TRUE) {
             ++numBadges;
         }
     }

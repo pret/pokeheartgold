@@ -150,7 +150,7 @@
 .public String_New
 .public String_Delete
 .public Save_SysInfo_RTC_Get
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetTrainerID_VisibleHalf
@@ -225,7 +225,7 @@
 .public GetIdxOfFirstAliveMonInParty_CrashIfNone
 .public sub_02054774
 .public sub_020548C0
-.public GetMetatileBehaviorAt
+.public GetMetatileBehavior
 .public sub_02054C20
 .public sub_02054C90
 .public sub_02054DC8

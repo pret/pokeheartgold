@@ -2219,7 +2219,7 @@ _02246CA0:
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	add r7, r0, #0
 	add r2, sp, #0x18
 	add r0, r5, #0
@@ -2806,7 +2806,7 @@ ov02_02247170: ; 0x02247170
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	add r1, r0, #0
 	add r0, r5, #0
 	add r2, sp, #0x14
@@ -4620,7 +4620,7 @@ ov02_02247F30: ; 0x02247F30
 	cmp r0, #0
 	beq _02247F80
 	ldr r0, [r5, #0xc]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	bl PlayerProfile_GetTrainerID
 	add r3, r0, #0
 	add r0, sp, #0x10
@@ -5611,7 +5611,7 @@ _0224866C:
 	bl Save_Pokedex_Get
 	str r0, [r5, #0x18]
 	ldr r0, [r7, #0xc]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	bl PlayerProfile_GetTrainerID
 	str r0, [r5]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -18445,7 +18445,7 @@ _0224E638:
 ov02_0224E640: ; 0x0224E640
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	bl PlayerProfile_GetTrainerID
 	add r5, r0, #0
 	add r0, r4, #0
@@ -18601,7 +18601,7 @@ ov02_0224E754: ; 0x0224E754
 	bl GetDeltaYByFacingDirection
 	add r6, r5, r0
 	ldr r0, [r4, #0xc]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	bl PlayerProfile_GetTrainerGender
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
@@ -18762,7 +18762,7 @@ _0224E8A4:
 	ldr r2, [sp, #0x3c]
 	add r0, r4, #0
 	add r1, r5, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	str r0, [sp, #0x58]
 	ldr r2, [sp, #0x3c]
 	add r0, r4, #0
@@ -18881,7 +18881,7 @@ _0224E99E:
 	asr r5, r0, #0x10
 	add r0, r4, #0
 	add r1, r5, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	str r0, [sp, #0x20]
 	ldr r2, [sp, #4]
 	add r0, r4, #0
@@ -18979,7 +18979,7 @@ _0224EA6A:
 	ldr r2, [sp, #0x30]
 	add r0, r4, #0
 	add r1, r5, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	str r0, [sp, #0x24]
 	ldr r2, [sp, #0x30]
 	add r0, r4, #0
@@ -19128,7 +19128,7 @@ _0224EB98:
 	asr r5, r0, #0x10
 	add r0, r4, #0
 	add r2, r5, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	str r0, [sp, #0x50]
 	ldr r1, [sp, #4]
 	add r0, r4, #0
@@ -19226,7 +19226,7 @@ _0224EC64:
 	str r0, [sp, #0x2c]
 	ldr r1, [sp, #0x2c]
 	add r0, r4, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	str r0, [sp, #0x20]
 	ldr r1, [sp, #0x2c]
 	add r0, r4, #0
@@ -19351,7 +19351,7 @@ _0224ED70:
 	ldr r1, [sp, #0x28]
 	add r0, r4, #0
 	add r2, r5, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	str r0, [sp, #0x5c]
 	ldr r1, [sp, #0x28]
 	add r0, r4, #0
@@ -20492,7 +20492,7 @@ ov02_0224F5FC: ; 0x0224F5FC
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	mov r1, #0x12
 	strb r0, [r4, #0x12]
 	lsl r1, r1, #4
@@ -21460,7 +21460,7 @@ ov02_0224FCE0: ; 0x0224FCE0
 	tst r0, r6
 	ldr r0, [r5, #0xc]
 	beq _0224FD3E
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -21489,7 +21489,7 @@ _0224FD3E:
 	bl Mon_GetBoxMon
 	str r0, [sp, #4]
 	ldr r0, [r5, #0xc]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -21675,7 +21675,7 @@ _0224FE9E:
 	ldr r1, [sp, #8]
 	ldr r2, [sp, #4]
 	add r0, r6, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	add r5, r0, #0
 	lsl r0, r5, #0x18
 	lsr r0, r0, #0x18
@@ -22443,7 +22443,7 @@ FollowMon_PlaceholdersSet: ; 0x022504A0
 	add r2, r7, #0
 	bl BufferBoxMonSpeciesName
 	ldr r0, [r5, #0xc]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #2

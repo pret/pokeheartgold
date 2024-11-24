@@ -202,7 +202,7 @@ BOOL Certificates_Init(OVY_MANAGER *manager, int *state) {
     data->heapId = HEAP_ID_CERTIFICATES;
     data->savedata = args->saveData;
     data->certificateId = args->certificateId;
-    data->profile = Save_PlayerData_GetProfileAddr(data->savedata);
+    data->profile = Save_PlayerData_GetProfile(data->savedata);
     data->frontPokemon = Party_GetMonByIndex(party, slot);
 
     sub_0200FBF4(0, 0);

@@ -201,12 +201,12 @@ static void MGGive_ManaphyEgg(FieldSystem *fieldSys, MysteryGiftData *unused) {
 static void MGMessageSuccess_ManaphyEgg(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00013;
-    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
+    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfile(gmmState->fieldSys->saveData));
 }
 
 static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
     MysteryGiftPokemonTag *mgData = &FieldSystem_GetDataOfNextMG(fieldSys)->pokemon;
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(fieldSys->saveData);
+    PlayerProfile *profile = Save_PlayerData_GetProfile(fieldSys->saveData);
     SaveVarsFlags *vars_flags = Save_VarsFlags_Get(fieldSys->saveData);
     Pokemon *tmpPokemon = NULL;
     Pokemon *pokemon = &mgData->mon;
@@ -314,7 +314,7 @@ static void MGMessageSuccess_GiveMon(struct GetMysteryGiftGmmState *gmmState, u1
     MysteryGiftPokemonTag *mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->pokemon;
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00007;
-    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
+    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfile(gmmState->fieldSys->saveData));
     BufferBoxMonSpeciesNameWithArticle(gmmState->msgFormat, 1, Mon_GetBoxMon(&mgData->mon));
 }
 
@@ -331,7 +331,7 @@ static void MGMessageSuccess_Egg(struct GetMysteryGiftGmmState *gmmState, u16 *p
     MysteryGiftPokemonTag *mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->pokemon;
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00008;
-    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
+    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfile(gmmState->fieldSys->saveData));
     BufferBoxMonSpeciesName(gmmState->msgFormat, 1, Mon_GetBoxMon(&mgData->mon));
 }
 
@@ -354,7 +354,7 @@ static void MGMessageSuccess_Item(struct GetMysteryGiftGmmState *gmmState, u16 *
     u16 item = FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->item;
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00009;
-    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
+    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfile(gmmState->fieldSys->saveData));
     BufferItemName(gmmState->msgFormat, 1, item);
 }
 
@@ -378,7 +378,7 @@ static void MGMessageSuccess_BattleRules(struct GetMysteryGiftGmmState *gmmState
     LinkBattleRuleset *mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->ruleset;
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00010;
-    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
+    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfile(gmmState->fieldSys->saveData));
     String *rulesetName = LinkBattleRuleset_CreateStringFromName(mgData, HEAP_ID_32);
     BufferString(gmmState->msgFormat, 1, rulesetName, 0, 1, 2);
     String_Delete(rulesetName);
@@ -402,7 +402,7 @@ static void MGMessageSuccess_Decoration(struct GetMysteryGiftGmmState *gmmState,
     int decoration = FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->baseDecoration;
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00011;
-    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
+    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfile(gmmState->fieldSys->saveData));
     BufferDecorationName(gmmState->msgFormat, 1, decoration);
 }
 
@@ -462,7 +462,7 @@ static void MGMessageSuccess_MonDeco(struct GetMysteryGiftGmmState *gmmState, u1
     }
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00012;
-    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
+    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfile(gmmState->fieldSys->saveData));
 }
 
 static void MGMessageFailure_MonDeco(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
@@ -572,7 +572,7 @@ static void MGMessageSuccess_PokewalkerCourse(struct GetMysteryGiftGmmState *gmm
     u8 *mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->pokewalkerCourse;
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00019;
-    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
+    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfile(gmmState->fieldSys->saveData));
     BufferPokewalkerCourseName(gmmState->msgFormat, 1, *mgData);
 }
 
@@ -581,7 +581,7 @@ static void MGMessageFailure_PokewalkerCourse(struct GetMysteryGiftGmmState *gmm
     POKEWALKER *pokeWalker = Save_Pokewalker_Get(gmmState->fieldSys->saveData);
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00026;
-    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
+    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfile(gmmState->fieldSys->saveData));
     BufferPokewalkerCourseName(gmmState->msgFormat, 1, *mgData);
 }
 
@@ -606,7 +606,7 @@ static void MGMessageSuccess_MemorialPhoto(struct GetMysteryGiftGmmState *gmmSta
     Photo *photo = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->photo;
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00018;
-    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
+    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfile(gmmState->fieldSys->saveData));
 }
 
 static void MGMessageFailure_MemorialPhoto(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
@@ -618,5 +618,5 @@ static void MGMessageFailure_MemorialPhoto(struct GetMysteryGiftGmmState *gmmSta
     } else {
         *pMsgNum = msg_0209_00025;
     }
-    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
+    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfile(gmmState->fieldSys->saveData));
 }

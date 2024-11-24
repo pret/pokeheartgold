@@ -181,7 +181,7 @@ SaveRankingsEntry *Save_GetPlayerMixingRankingEntry(SaveData *saveData, HeapID h
     String *name;
     PlayerProfile *profile;
 
-    profile = Save_PlayerData_GetProfileAddr(saveData);
+    profile = Save_PlayerData_GetProfile(saveData);
     ret = AllocFromHeapAtEnd(heapId, RANKINGS_COUNT * sizeof(SaveRankingsEntry));
     MI_CpuClear8(ret, RANKINGS_COUNT * sizeof(SaveRankingsEntry));
     groupId = Save_FriendGroup_GetGroupId(Save_FriendGroup_Get(saveData), 1);
@@ -314,7 +314,7 @@ ViewRankingsPage *Save_GetPlayerViewRankingPage(SaveData *saveData, int page, He
     u32 *tmp;
     PlayerProfile *profile;
 
-    profile = Save_PlayerData_GetProfileAddr(saveData);
+    profile = Save_PlayerData_GetProfile(saveData);
     ret = AllocFromHeap(heapId, sizeof(ViewRankingsPage));
     MI_CpuClear8(ret, sizeof(ViewRankingsPage));
     groupId = Save_FriendGroup_GetGroupId(Save_FriendGroup_Get(saveData), 1);

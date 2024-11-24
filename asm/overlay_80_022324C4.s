@@ -1972,7 +1972,7 @@ _022334AE:
 	bl FrontierSave_GetStat
 	add r6, r0, #0
 	ldr r0, [r5, #4]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r2, r0, #0
 	add r0, r4, #0
 	add r4, #0xa8

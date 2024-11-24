@@ -626,7 +626,7 @@ _021F4B70:
 	mov r0, #0x41
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	bl PlayerProfile_GetTrainerGender
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18

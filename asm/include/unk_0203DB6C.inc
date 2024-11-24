@@ -11,7 +11,7 @@
 .public FieldSystem_VarGet
 .public FieldSystem_FlagCheck
 .public HiddenItemScriptNoToFlagId
-.public GetMetatileBehaviorAt
+.public GetMetatileBehavior
 .public sub_0205B700
 .public PlayerAvatar_GetFacingDirection
 .public GetPlayerXCoord

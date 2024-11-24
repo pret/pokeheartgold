@@ -204,7 +204,7 @@ void Save_CreateRoamerByID(SaveData *saveData, u8 idx) {
     SetRoamerData(roamerStats, ROAMER_DATA_SPECIES, species);
     SetRoamerData(roamerStats, ROAMER_DATA_LEVEL, level);
 
-    profile = Save_PlayerData_GetProfileAddr(saveData);
+    profile = Save_PlayerData_GetProfile(saveData);
     mon = AllocMonZeroed((HeapID)4);
     ZeroMonData(mon);
     CreateMon(mon, species, level, 32, FALSE, 0, OT_ID_PRESET, PlayerProfile_GetTrainerID_VisibleHalf(profile));

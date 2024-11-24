@@ -11,7 +11,7 @@ FrontierMap_Init: ; 0x02238648
 	bl Frontier_GetLaunchParam
 	add r4, r0, #0
 	ldr r0, [r4, #8]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r7, r0, #0
 	mov r0, #0
 	add r4, #0x20

@@ -371,7 +371,7 @@ static BOOL FieldTask_DoViewPhoto(TaskManager *taskManager) {
         sub_0206B880(fieldSystem, photo);
         NNS_G3dGlbSetViewPort(4, 3, 252, 188);
         {
-            u8 profileGender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem)));
+            u8 profileGender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(FieldSystem_GetSaveData(fieldSystem)));
             sub_0206B82C(fieldSystem->playerAvatar, photo->avatarStateBak, profileGender);
         }
         {
@@ -516,7 +516,7 @@ static void setCameraParam(Camera *camera) {
 static void Photo_InitFromArcData(Photo *photo, FieldSystem *fieldSystem, u8 iconId, int mapId, int x, int y, int a6, int a7, u16 a8, u16 subjectObjId) {
     int partySize;
     SaveData *saveData = FieldSystem_GetSaveData(fieldSystem);
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(saveData);
+    PlayerProfile *profile = Save_PlayerData_GetProfile(saveData);
     Party *party = SaveArray_Party_Get(saveData);
     int i;
 
@@ -615,7 +615,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
         takePhoto->state = TAKE_PHOTO_STATE_ADJUST_PLAYER_FACING_VEC;
         break;
     case TAKE_PHOTO_STATE_ADJUST_PLAYER_FACING_VEC:
-        u8 profileGender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem)));
+        u8 profileGender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(FieldSystem_GetSaveData(fieldSystem)));
         sub_0206B82C(fieldSystem->playerAvatar, takePhoto->pPhoto->avatarStateBak, profileGender);
         {
             VecFx32 facingVec;

@@ -262,7 +262,7 @@ static u32 sub_0204FDA0(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID
     unk->ribbons = Save_SpecialRibbons_Get(saveData);
     unk->isFlag982Set = sub_0208828C(saveData);
     sub_02089D40(unk, unk_020FC3A4);
-    sub_0208AD34(unk, Save_PlayerData_GetProfileAddr(saveData));
+    sub_0208AD34(unk, Save_PlayerData_GetProfile(saveData));
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PokemonSummary, unk);
     *(a0->unk0c) = unk;
     return 3;

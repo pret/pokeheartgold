@@ -94,7 +94,7 @@
 .public String_New
 .public String_Delete
 .public String16_FormatInteger
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public Save_PlayerData_GetIGTAddr
 .public PlayerProfile_New

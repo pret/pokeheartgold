@@ -31,7 +31,7 @@ BOOL ScrCmd_BufferPlayersName(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     MessageFormat **msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfile(FieldSystem_GetSaveData(fieldSystem));
 
     BufferPlayersName(*msg_fmt, idx, profile);
 
@@ -204,7 +204,7 @@ BOOL ScrCmd_BufferTrainerClassName(ScriptContext *ctx) {
 BOOL ScrCmd_BufferPlayerUnionAvatarClassName(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     SaveData *saveData = FieldSystem_GetSaveData(fieldSystem);
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(saveData);
+    PlayerProfile *profile = Save_PlayerData_GetProfile(saveData);
     MessageFormat **msg_fmt = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u32 gender = PlayerProfile_GetTrainerGender(profile);

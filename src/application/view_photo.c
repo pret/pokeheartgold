@@ -420,7 +420,7 @@ static BOOL ViewPhotoSysTask_IsButtonAnimPlaying(ViewPhotoSysTaskData *viewPhoto
 }
 
 static void formatPhotoFlavorText(Photo *photo, MessageFormat *msgFormat, String *strBuf, HeapID heapId, SaveData *saveData) {
-    BufferPlayersName(msgFormat, 0, Save_PlayerData_GetProfileAddr(saveData));
+    BufferPlayersName(msgFormat, 0, Save_PlayerData_GetProfile(saveData));
     sub_02068F98(photo->mapId, heapId, strBuf);
     BufferString(msgFormat, 1, strBuf, 2, 0, 2);
     CopyU16ArrayToString(strBuf, photo->leadMonNick);

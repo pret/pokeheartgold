@@ -115,7 +115,7 @@
 .public Save_PrepareForAsyncWrite
 .public Save_WriteFileAsync
 .public Save_WipeExtraChunks
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_GetTrainerGender
 .public PlayerProfile_GetVersion
