@@ -103,7 +103,7 @@ BattleSetup *BattleSetup_New_PalPark(HeapID heapId, int balls) {
 }
 
 BattleSetup *BattleSetup_New_Tutorial(HeapID heapId, FieldSystem *fieldSystem) {
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+    PlayerProfile *profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
     Options *options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     BattleSetup *setup = BattleSetup_New(heapId, BATTLE_TYPE_TUTORIAL);
     setup->saveData = fieldSystem->saveData;
@@ -196,7 +196,7 @@ void sub_02051D18(BattleSetup *setup, FieldSystem *fieldSystem, SaveData *saveDa
     BOOL forceNite;
     BattleBg battle_bg;
 
-    profile = Save_PlayerData_GetProfileAddr(saveData);
+    profile = Save_PlayerData_GetProfile(saveData);
     party = SaveArray_Party_Get(saveData);
     bag = Save_Bag_Get(saveData);
     pokedex = Save_Pokedex_Get(saveData);
@@ -267,7 +267,7 @@ void BattleSetup_InitForFixedLevelFacility(BattleSetup *setup, FieldSystem *fiel
     SOUND_CHATOT *chatot;
     Options *options;
 
-    profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+    profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
     party = SaveArray_Party_Get(fieldSystem->saveData);
     bag = Save_Bag_Get(fieldSystem->saveData);
     pokedex = Save_Pokedex_Get(fieldSystem->saveData);
@@ -315,7 +315,7 @@ void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8
     Options *options;
     void *ruleset;
 
-    profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+    profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
     bag = Save_Bag_Get(fieldSystem->saveData);
     pokedex = Save_Pokedex_Get(fieldSystem->saveData);
     chatot = Save_Chatot_Get(fieldSystem->saveData);
@@ -423,7 +423,7 @@ void sub_0205239C(BattleSetup *setup, FieldSystem *fieldSystem) {
     SaveVarsFlags *vars_flags;
     u16 *balls_ptr;
 
-    profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+    profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
     party = SaveArray_Party_Get(fieldSystem->saveData);
     bag = Save_Bag_Get(fieldSystem->saveData);
     pokedex = Save_Pokedex_Get(fieldSystem->saveData);
@@ -452,7 +452,7 @@ void sub_02052444(BattleSetup *setup, FieldSystem *fieldSystem) {
     Bag *bag;
     Pokedex *pokedex;
 
-    profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+    profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
     party = SaveArray_Party_Get(fieldSystem->saveData);
     bag = Save_Bag_Get(fieldSystem->saveData);
     pokedex = Save_Pokedex_Get(fieldSystem->saveData);
@@ -487,7 +487,7 @@ static const Terrain _020FC4C0[] = {
 };
 
 static Terrain FieldSystem_GetTerrainFromStandingTile(FieldSystem *fieldSystem, BattleBg battleBg) {
-    u8 behavior = GetMetatileBehaviorAt(fieldSystem, fieldSystem->location->x, fieldSystem->location->y);
+    u8 behavior = GetMetatileBehavior(fieldSystem, fieldSystem->location->x, fieldSystem->location->y);
 
     if (sub_0205B828(behavior)) {
         return TERRAIN_ICE;

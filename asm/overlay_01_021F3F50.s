@@ -41,7 +41,7 @@ _021F3F84:
 _021F3F86:
 	str r0, [r5]
 	add r0, r4, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	str r0, [r5, #8]
 	add r0, r4, #0
 	bl Save_PlayerData_GetIGTAddr

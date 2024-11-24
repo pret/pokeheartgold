@@ -114,7 +114,7 @@
 .public Save_SysInfo_Get
 .public Save_SysInfo_GetField4C
 .public Save_SysInfo_SetField4C
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetFrame
 .public sub_0202C08C

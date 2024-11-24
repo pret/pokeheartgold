@@ -16,7 +16,7 @@
 .public GF3dRender_BindModelSet
 .public SysTask_GetData
 .public GF_AssertFail
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public PlayerProfile_GetTrainerGender
 .public Save_SafariZone_Get
 .public sub_0202F620

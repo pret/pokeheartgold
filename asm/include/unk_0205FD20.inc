@@ -3,7 +3,7 @@
 .public sub_0203401C
 .public sub_0203993C
 .public sub_020548EC
-.public GetMetatileBehaviorAt
+.public GetMetatileBehavior
 .public sub_02054940
 .public sub_020549A8
 .public MetatileBehavior_IsEncounterGrass

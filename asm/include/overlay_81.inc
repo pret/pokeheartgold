@@ -162,7 +162,7 @@
 .public Thunk_G3X_Reset
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_GetNamePtr
 .public PlayerName_FlatToString

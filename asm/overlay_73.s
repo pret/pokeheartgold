@@ -4295,7 +4295,7 @@ ov73_021E7AC0: ; 0x021E7AC0
 	add r5, r1, #0
 	add r7, r2, #0
 	str r3, [sp]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp, #4]

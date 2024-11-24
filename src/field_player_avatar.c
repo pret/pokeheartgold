@@ -33,7 +33,7 @@ u8 sub_0205C278(void) {
 }
 
 u8 sub_0205C298(SaveData *saveData) {
-    u8 ver = PlayerProfile_GetVersion(Save_PlayerData_GetProfileAddr(saveData));
+    u8 ver = PlayerProfile_GetVersion(Save_PlayerData_GetProfile(saveData));
     if (ver == 0) {
         return 1;
     }

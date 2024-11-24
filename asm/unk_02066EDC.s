@@ -7,7 +7,7 @@
 #include "constants/items.h"
 #include "constants/std_script.h"
 #include "fielddata/script/scr_seq/event_D24R0204.h"
-#include "constants/party_menu.h"
+#include "constants/field_move_response.h"
 	.include "asm/macros.inc"
 	.include "unk_02066EDC.inc"
 	.include "global.inc"
@@ -202,7 +202,7 @@ sub_02066FEC: ; 0x02066FEC
 	add r0, r4, #0
 	bl sub_02089D40
 	add r0, r5, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0208AD34
@@ -906,7 +906,7 @@ sub_0206759C: ; 0x0206759C
 	bl TrainerCard_GetBadgeShininessArr
 	add r4, r0, #0
 	add r0, r5, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r7, r0, #0
 	ldr r0, [sp]
 	mov r1, #0xa

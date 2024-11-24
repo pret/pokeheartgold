@@ -119,7 +119,7 @@ static BOOL Task_TryHeadbuttEncounter(TaskManager *taskManager) {
         u32 x;
         u32 y;
         GetCoordsOfFacingTree(fieldSystem, &x, &y);
-        u32 trainerId = PlayerProfile_GetTrainerID(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
+        u32 trainerId = PlayerProfile_GetTrainerID(Save_PlayerData_GetProfile(fieldSystem->saveData));
         enum TreeType treeType = (enum TreeType)Headbutt_GetTreeTypeFromTable(headbuttTable->numRegularTrees, headbuttTable->numSecretTrees, trainerId, x, y, headbuttTable->treeCoords);
         if (treeType == TREETYPE_NONE) {
             FreeToHeap(headbuttTable);

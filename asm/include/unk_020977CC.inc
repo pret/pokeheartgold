@@ -9,7 +9,7 @@
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public GF_AssertFail
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public PlayerProfile_GetTrainerGender
 .public sub_0203FC68
 .public TaskManager_Call

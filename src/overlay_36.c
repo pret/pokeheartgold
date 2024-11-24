@@ -188,7 +188,7 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heapId, SaveData *saveDa
     sub_0202C7C0(Save_FriendGroup_Get(saveData), 1, MTRandom());
     sub_020674BC(saveData);
 
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(saveData);
+    PlayerProfile *profile = Save_PlayerData_GetProfile(saveData);
     u32 rand = MTRandom();
 
     if (set_trainer_id) {
@@ -252,7 +252,7 @@ static void NewGame_InitSaveData(HeapID heapId, SaveData *saveData) {
     Save_InitDynamicRegion(saveData);
     Save_SetPositionToPlayerRoom(saveData);
 
-    PlayerProfile_SetMoney(Save_PlayerData_GetProfileAddr(saveData), 3000);
+    PlayerProfile_SetMoney(Save_PlayerData_GetProfile(saveData), 3000);
 
     Save_VarsFlags_SetFishingCompetitionLengthRecord(Save_VarsFlags_Get(saveData), 56150); // 3'6"
 

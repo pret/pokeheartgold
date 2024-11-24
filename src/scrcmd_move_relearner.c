@@ -46,7 +46,7 @@ static void StartMoveRelearner(ScriptContext *ctx, int type, Pokemon *mon, u16 *
     *moveRelearnerPtr = moveRelearner;
 
     moveRelearner->mon = mon;
-    moveRelearner->profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
+    moveRelearner->profile = Save_PlayerData_GetProfile(FieldSystem_GetSaveData(ctx->fieldSystem));
     moveRelearner->options = Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->saveData);
     moveRelearner->eligibleMoves = eligibleMoves;
     moveRelearner->type = type;

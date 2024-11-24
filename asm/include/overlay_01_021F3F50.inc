@@ -28,7 +28,7 @@
 .public GF_AssertFail
 .public String_Delete
 .public SaveGameNormal
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetIGTAddr
 .public PlayerProfile_CountBadges
 .public Pokedex_CountDexOwned

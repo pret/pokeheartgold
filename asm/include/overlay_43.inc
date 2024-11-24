@@ -152,7 +152,7 @@
 .public String_atoi
 .public CopyU16ArrayToString
 .public String_cstr
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_New
 .public Save_Profile_PlayerName_Set

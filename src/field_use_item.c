@@ -154,7 +154,7 @@ void ItemCheckUseData_Init(FieldSystem *fieldSystem, struct ItemCheckUseData *da
 
     x = GetPlayerXCoord(fieldSystem->playerAvatar);
     y = GetPlayerZCoord(fieldSystem->playerAvatar);
-    dat->standingTile = GetMetatileBehaviorAt(fieldSystem, x, y);
+    dat->standingTile = GetMetatileBehavior(fieldSystem, x, y);
 
     switch (PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar)) {
     case DIR_NORTH:
@@ -170,7 +170,7 @@ void ItemCheckUseData_Init(FieldSystem *fieldSystem, struct ItemCheckUseData *da
         x--;
         break;
     }
-    dat->facingTile = GetMetatileBehaviorAt(fieldSystem, x, y);
+    dat->facingTile = GetMetatileBehavior(fieldSystem, x, y);
 
     FieldSystem_GetFacingObject(fieldSystem, &dummy);
     dat->playerAvatar = fieldSystem->playerAvatar;
@@ -191,9 +191,9 @@ static void ExitMenuAndJumpToAlphChamberReaction(struct ItemMenuUseData *data, c
 #pragma unused(dat2)
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
-    sub_020505C0(fieldSystem);
-    env->atexit_TaskFunc = Task_UseItemInAlphChamber;
-    env->atexit_TaskEnv = CreateAlphItemUseWork(scriptNo, data->itemId, 0, 0, 0);
+    FieldSystem_LoadFieldOverlay(fieldSystem);
+    env->exitTaskFunc = Task_UseItemInAlphChamber;
+    env->exitTaskEnvironment = CreateAlphItemUseWork(scriptNo, data->itemId, 0, 0, 0);
     env->state = 12;
 }
 
@@ -240,8 +240,8 @@ static void ItemMenuUseFunc_HealingItem(struct ItemMenuUseData *data, const stru
     usedat->partySlot = data->partySlot;
     usedat->menuInputStatePtr = &fieldSystem->menuInputState;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, usedat);
-    env->atexit_TaskEnv = usedat;
-    StartMenu_SetChildProcReturnTaskFunc(env, Task_StartMenu_HandleReturn_Pokemon);
+    env->exitTaskEnvironment = usedat;
+    StartMenu_SetExitTaskFunc(env, Task_StartMenu_HandleReturn_Pokemon);
 }
 
 static enum ItemUseError ItemCheckUseFunc_Dummy(const struct ItemCheckUseData *data) {
@@ -252,9 +252,9 @@ static void ItemMenuUseFunc_Bicycle(struct ItemMenuUseData *data, const struct I
 #pragma unused(dat2)
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
-    sub_020505C0(fieldSystem);
-    env->atexit_TaskFunc = Task_MountOrDismountBicycle;
-    env->atexit_TaskEnv = NULL;
+    FieldSystem_LoadFieldOverlay(fieldSystem);
+    env->exitTaskFunc = Task_MountOrDismountBicycle;
+    env->exitTaskEnvironment = NULL;
     env->state = 12;
 }
 
@@ -363,8 +363,8 @@ static void ItemMenuUseFunc_TMHM(struct ItemMenuUseData *data, const struct Item
     usedat->moveId = TMHMGetMove(data->itemId);
     usedat->menuInputStatePtr = &fieldSystem->menuInputState;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, usedat);
-    env->atexit_TaskEnv = usedat;
-    StartMenu_SetChildProcReturnTaskFunc(env, Task_StartMenu_HandleReturn_Pokemon);
+    env->exitTaskEnvironment = usedat;
+    StartMenu_SetExitTaskFunc(env, Task_StartMenu_HandleReturn_Pokemon);
 }
 
 static void ItemMenuUseFunc_Mail(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
@@ -372,9 +372,9 @@ static void ItemMenuUseFunc_Mail(struct ItemMenuUseData *data, const struct Item
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
     UseMailArgs *mailWork = UseMail_CreateArgs(fieldSystem, 3, ItemToMailId(data->itemId), HEAP_ID_FIELD);
-    env->atexit_TaskEnv2 = sub_0203D818(data->itemId, 3, 0);
-    env->atexit_TaskEnv = mailWork;
-    StartMenu_SetChildProcReturnTaskFunc(env, Task_ReturnToMenuFromMail);
+    env->exitTaskEnvironment2 = sub_0203D818(data->itemId, 3, 0);
+    env->exitTaskEnvironment = mailWork;
+    StartMenu_SetExitTaskFunc(env, Task_ReturnToMenuFromMail);
 }
 
 static enum ItemUseError ItemCheckUseFunc_Berry(const struct ItemCheckUseData *data) {
@@ -395,8 +395,8 @@ BOOL Leftover_CanPlantBerry(const struct ItemCheckUseData *data) {
 static void ItemMenuUseFunc_PalPad(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
-    env->atexit_TaskEnv = PalPad_LaunchApp(fieldSystem, fieldSystem->saveData, HEAP_ID_FIELD);
-    StartMenu_SetChildProcReturnTaskFunc(env, Task_ReturnToMenuFromAppItem);
+    env->exitTaskEnvironment = PalPad_LaunchApp(fieldSystem, fieldSystem->saveData, HEAP_ID_FIELD);
+    StartMenu_SetExitTaskFunc(env, Task_ReturnToMenuFromAppItem);
 }
 
 static BOOL ItemFieldUseFunc_PalPad(struct ItemFieldUseData *data) {
@@ -413,12 +413,12 @@ static void ItemMenuUseFunc_Honey(struct ItemMenuUseData *data, const struct Ite
     void *honey_work;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
-    sub_020505C0(fieldSystem);
+    FieldSystem_LoadFieldOverlay(fieldSystem);
     size = GetHoneySweetScentWorkSize();
     honey_work = AllocFromHeapAtEnd(HEAP_ID_FIELD, size);
     memset(honey_work, 0, size);
-    env->atexit_TaskFunc = Task_HoneyOrSweetScent;
-    env->atexit_TaskEnv = honey_work;
+    env->exitTaskFunc = Task_HoneyOrSweetScent;
+    env->exitTaskEnvironment = honey_work;
     env->state = 12;
     Bag_TakeItem(Save_Bag_Get(fieldSystem->saveData), data->itemId, 1, HEAP_ID_FIELD);
 }
@@ -426,9 +426,9 @@ static void ItemMenuUseFunc_Honey(struct ItemMenuUseData *data, const struct Ite
 static void ItemMenuUseFunc_OldRod(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
-    sub_020505C0(fieldSystem);
-    env->atexit_TaskFunc = Task_OverworldFish;
-    env->atexit_TaskEnv = CreateFishingRodTaskEnv(fieldSystem, HEAP_ID_FIELD, 0);
+    FieldSystem_LoadFieldOverlay(fieldSystem);
+    env->exitTaskFunc = Task_OverworldFish;
+    env->exitTaskEnvironment = CreateFishingRodTaskEnv(fieldSystem, HEAP_ID_FIELD, 0);
     env->state = 12;
 }
 
@@ -440,9 +440,9 @@ static BOOL ItemFieldUseFunc_OldRod(struct ItemFieldUseData *data) {
 static void ItemMenuUseFunc_GoodRod(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
-    sub_020505C0(fieldSystem);
-    env->atexit_TaskFunc = Task_OverworldFish;
-    env->atexit_TaskEnv = CreateFishingRodTaskEnv(fieldSystem, HEAP_ID_FIELD, 1);
+    FieldSystem_LoadFieldOverlay(fieldSystem);
+    env->exitTaskFunc = Task_OverworldFish;
+    env->exitTaskEnvironment = CreateFishingRodTaskEnv(fieldSystem, HEAP_ID_FIELD, 1);
     env->state = 12;
 }
 
@@ -454,9 +454,9 @@ static BOOL ItemFieldUseFunc_GoodRod(struct ItemFieldUseData *data) {
 static void ItemMenuUseFunc_SuperRod(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
-    sub_020505C0(fieldSystem);
-    env->atexit_TaskFunc = Task_OverworldFish;
-    env->atexit_TaskEnv = CreateFishingRodTaskEnv(fieldSystem, HEAP_ID_FIELD, 2);
+    FieldSystem_LoadFieldOverlay(fieldSystem);
+    env->exitTaskFunc = Task_OverworldFish;
+    env->exitTaskEnvironment = CreateFishingRodTaskEnv(fieldSystem, HEAP_ID_FIELD, 2);
     env->state = 12;
 }
 
@@ -553,8 +553,8 @@ static void ItemMenuUseFunc_EvoStone(struct ItemMenuUseData *data, const struct 
     usedat->fieldSystem = fieldSystem;
     usedat->menuInputStatePtr = &fieldSystem->menuInputState;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, usedat);
-    env->atexit_TaskEnv = usedat;
-    StartMenu_SetChildProcReturnTaskFunc(env, Task_StartMenu_HandleReturn_Pokemon);
+    env->exitTaskEnvironment = usedat;
+    StartMenu_SetExitTaskFunc(env, Task_StartMenu_HandleReturn_Pokemon);
 }
 
 static void ItemMenuUseFunc_EscapeRope(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
@@ -568,9 +568,9 @@ static void ItemMenuUseFunc_EscapeRope(struct ItemMenuUseData *data, const struc
 
     fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     env = TaskManager_GetEnvironment(data->taskManager);
-    sub_020505C0(fieldSystem);
-    env->atexit_TaskFunc = Task_JumpToFieldEscapeRope;
-    env->atexit_TaskEnv = NULL;
+    FieldSystem_LoadFieldOverlay(fieldSystem);
+    env->exitTaskFunc = Task_JumpToFieldEscapeRope;
+    env->exitTaskEnvironment = NULL;
     env->state = 12;
     Bag_TakeItem(Save_Bag_Get(fieldSystem->saveData), data->itemId, 1, HEAP_ID_FIELD);
 }
@@ -599,8 +599,8 @@ static BOOL Task_JumpToFieldEscapeRope(TaskManager *taskManager) {
 static void ItemMenuUseFunc_ApricornBox(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
-    env->atexit_TaskEnv = ApricornBox_LaunchApp(fieldSystem, 1);
-    StartMenu_SetChildProcReturnTaskFunc(env, Task_ReturnToMenuFromAppItem);
+    env->exitTaskEnvironment = ApricornBox_LaunchApp(fieldSystem, 1);
+    StartMenu_SetExitTaskFunc(env, Task_ReturnToMenuFromAppItem);
 }
 
 static BOOL ItemFieldUseFunc_ApricornBox(struct ItemFieldUseData *data) {
@@ -615,8 +615,8 @@ static ApricornBoxArgs *_CreateApricornBoxWork(FieldSystem *fieldSystem) {
 static void ItemMenuUseFunc_BerryPots(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
-    env->atexit_TaskEnv = BerryPots_LaunchApp(fieldSystem);
-    StartMenu_SetChildProcReturnTaskFunc(env, Task_ReturnToMenuFromAppItem);
+    env->exitTaskEnvironment = BerryPots_LaunchApp(fieldSystem);
+    StartMenu_SetExitTaskFunc(env, Task_ReturnToMenuFromAppItem);
 }
 
 static BOOL ItemFieldUseFunc_BerryPots(struct ItemFieldUseData *data) {
@@ -631,8 +631,8 @@ static struct BerryPotsArgs *_BerryPotsArgs_New(FieldSystem *fieldSystem) {
 static void ItemMenuUseFunc_UnownReport(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
-    env->atexit_TaskEnv = UnownReport_LaunchApp(fieldSystem);
-    StartMenu_SetChildProcReturnTaskFunc(env, Task_ReturnToMenuFromAppItem);
+    env->exitTaskEnvironment = UnownReport_LaunchApp(fieldSystem);
+    StartMenu_SetExitTaskFunc(env, Task_ReturnToMenuFromAppItem);
 }
 
 static BOOL ItemFieldUseFunc_UnownReport(struct ItemFieldUseData *data) {
@@ -647,9 +647,9 @@ static UnownReportArgs *_CreateUnownReportWork(FieldSystem *fieldSystem) {
 static void ItemMenuUseFunc_DowsingMchn(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
-    sub_020505C0(fieldSystem);
-    env->atexit_TaskFunc = Task_ActivateDowsingMchnUI;
-    env->atexit_TaskEnv = NULL;
+    FieldSystem_LoadFieldOverlay(fieldSystem);
+    env->exitTaskFunc = Task_ActivateDowsingMchnUI;
+    env->exitTaskEnvironment = NULL;
     env->state = 12;
 }
 
@@ -697,8 +697,8 @@ static BOOL ItemFieldUseFunc_GbSounds(struct ItemFieldUseData *data) {
 static void ItemMenuUseFunc_Gracidea(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
-    env->atexit_TaskEnv = PartyMenu_LaunchApp_Gracidea(fieldSystem, HEAP_ID_FIELD, ITEM_GRACIDEA);
-    StartMenu_SetChildProcReturnTaskFunc(env, Task_StartMenu_HandleReturn_Pokemon);
+    env->exitTaskEnvironment = PartyMenu_LaunchApp_Gracidea(fieldSystem, HEAP_ID_FIELD, ITEM_GRACIDEA);
+    StartMenu_SetExitTaskFunc(env, Task_StartMenu_HandleReturn_Pokemon);
 }
 
 static BOOL ItemFieldUseFunc_Gracidea(struct ItemFieldUseData *data) {
@@ -714,8 +714,8 @@ static void ItemMenuUseFunc_VSRecorder(struct ItemMenuUseData *data, const struc
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
     sub_0203F570(fieldSystem, fieldSystem->saveData);
-    env->atexit_TaskEnv = NULL;
-    StartMenu_SetChildProcReturnTaskFunc(env, Task_ReturnToMenuFromVSRecorder);
+    env->exitTaskEnvironment = NULL;
+    StartMenu_SetExitTaskFunc(env, Task_ReturnToMenuFromVSRecorder);
 }
 
 static BOOL ItemFieldUseFunc_VSRecorder(struct ItemFieldUseData *data) {
@@ -816,7 +816,7 @@ static void RegisteredItem_GoToPrintErrorTask(struct ItemFieldUseData *data, enu
     struct RegisteredKeyItemUseMessagePrintTaskData *env = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct RegisteredKeyItemUseMessagePrintTaskData));
     env->state = 0;
     env->strbuf = String_New(128, HEAP_ID_FIELD);
-    GetItemUseErrorMessage(Save_PlayerData_GetProfileAddr(data->fieldSystem->saveData), env->strbuf, data->itemId, error, HEAP_ID_FIELD);
+    GetItemUseErrorMessage(Save_PlayerData_GetProfile(data->fieldSystem->saveData), env->strbuf, data->itemId, error, HEAP_ID_FIELD);
     FieldSystem_CreateTask(data->fieldSystem, Task_PrintRegisteredKeyItemUseMessage, env);
 }
 
@@ -849,7 +849,7 @@ static BOOL Task_RegisteredItem_GoToApp(TaskManager *taskManager) {
         if (env->work != NULL) {
             FreeToHeap(env->work);
         }
-        sub_020505C0(fieldSystem);
+        FieldSystem_LoadFieldOverlay(fieldSystem);
         env->state = 4;
         break;
     case 4:

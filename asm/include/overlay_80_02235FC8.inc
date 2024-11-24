@@ -4,7 +4,7 @@
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public GF_AssertFail
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public Save_Mailbox_Get
 .public Save_SpecialRibbons_Get

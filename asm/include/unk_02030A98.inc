@@ -16,7 +16,7 @@
 .public Save_CheckExtraChunksExist
 .public SaveArray_CalcCRC16
 .public Save_SysInfo_Get
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetTrainerGender

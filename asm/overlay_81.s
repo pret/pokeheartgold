@@ -5331,7 +5331,7 @@ ov81_022408C4: ; 0x022408C4
 	ldr r0, [r0, r1]
 	str r2, [sp, #0x10]
 	add r6, r3, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r7, r0, #0
 	mov r0, #8
 	mov r1, #0x64
@@ -6043,7 +6043,7 @@ ov81_02240E78: ; 0x02240E78
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r1, r0, #0
 	mov r0, #7
 	lsl r0, r0, #6
@@ -6214,7 +6214,7 @@ ov81_02241008: ; 0x02241008
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r4, r1, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	mov r0, #0x3e
 	lsl r0, r0, #4
 	strh r4, [r5, r0]
