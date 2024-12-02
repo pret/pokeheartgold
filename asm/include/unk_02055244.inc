@@ -16,4 +16,4 @@
 .public CallTask_FadeFromBlack
 .public sub_020553B0
 .public sub_02055408
-.public ov01_021EFAF8
+.public FieldSystem_DrawMapNameAnimation

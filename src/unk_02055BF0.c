@@ -202,11 +202,11 @@ BOOL sub_02055DBC(TaskManager *man) {
                     TIMEOFDAY time = GF_RTC_GetTimeOfDay();
                     MapPreviewGraphic_BeginShowImage(man, index, time, parity); // this should set the specific map icon based on time?
                     env->state++;
-                    ov01_021EFAF8(fieldSystem); //<= this func specifically gets and displays the area's icon and text
+                    FieldSystem_DrawMapNameAnimation(fieldSystem);
                     break;
                 }
             }
-            ov01_021EFAF8(fieldSystem);
+            FieldSystem_DrawMapNameAnimation(fieldSystem);
             env->transitionState = 0;
             TaskManager_Call(man, sMapEnterRoutines[env->transitionNo], env);
             LocalMapObject *followerMon = FollowMon_GetMapObject(fieldSystem);
