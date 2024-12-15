@@ -678,7 +678,7 @@ static BOOL sub_02053A2C(TaskManager *taskManager) {
         GF_SndHandleMoveVolume(0, 128, 15);
         fieldSystem->unkC4 = -1;
         sub_02055110(fieldSystem, fieldSystem->location->mapId, 1);
-        ov01_021EFAF8(fieldSystem);
+        FieldSystem_DrawMapNameAnimation(fieldSystem);
         sub_02053AA0(taskManager);
         (*state_p)++;
         break;
@@ -793,7 +793,7 @@ static BOOL sub_02053C3C(TaskManager *taskManager) {
         (*state_p)++;
         break;
     case 1:
-        ov01_021EFAF8(fieldSystem);
+        FieldSystem_DrawMapNameAnimation(fieldSystem);
         sub_02053C90(taskManager);
         (*state_p)++;
         break;

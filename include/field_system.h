@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_FIELD_SYSTEM_H
 #define POKEHEARTGOLD_FIELD_SYSTEM_H
 
+#include "field/draw_map_name.h"
 #include "field/overlay_01_021E66E4.h"
 
 #include "bag_cursor.h"
@@ -96,7 +97,7 @@ struct FieldSystemUnkSub68 {
 typedef struct FieldSystemUnkSub4 {
     u32 unk0;
     Field3dObjectTaskManager *field3dObjectTaskManager;
-    u32 unk8;
+    FieldDrawMapNameInfo *drawMapNameInfo;
     void *unk_0C; // weather related?
     UnkStruct_ov01_021EB1E8 *unk10;
     u32 unk14;

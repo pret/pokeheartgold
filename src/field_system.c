@@ -7,7 +7,6 @@
 #include "map_events.h"
 #include "math_util.h"
 #include "overlay_01_021E6880.h"
-#include "overlay_01_021EF7A0.h"
 #include "overlay_01_021F1AFC.h"
 #include "overlay_01_021F3D38.h"
 #include "overlay_01_021F6830.h"
@@ -238,14 +237,14 @@ void FieldSystem_Control(FieldSystem *fieldSystem) {
     case 4:
         if (movementAllowed) {
             if (FieldInput_Process_BattleTower(&fieldInput, fieldSystem) == TRUE) {
-                ov01_021EFACC(fieldSystem->unk4->unk8);
+                FieldDrawMapName_Reset(fieldSystem->unk4->drawMapNameInfo);
                 ov01_021F3DFC(fieldSystem, 4);
                 ov01_021F2F24(fieldSystem->playerAvatar);
                 ov01_021F6830(fieldSystem, 0, 1);
                 break;
             }
             if (gSystem.newKeys & PAD_BUTTON_A) {
-                ov01_021EFACC(fieldSystem->unk4->unk8);
+                FieldDrawMapName_Reset(fieldSystem->unk4->drawMapNameInfo);
             }
             movementAllowed = 0;
             if (sub_0203E324()) {
@@ -258,7 +257,7 @@ void FieldSystem_Control(FieldSystem *fieldSystem) {
         if (movementAllowed) {
             u32 newEvent = FieldInput_Process(&fieldInput, fieldSystem);
             if (newEvent) {
-                ov01_021EFACC(fieldSystem->unk4->unk8);
+                FieldDrawMapName_Reset(fieldSystem->unk4->drawMapNameInfo);
                 ov01_021F3DFC(fieldSystem, 4);
                 sub_0205CF44(fieldSystem->playerAvatar);
                 ov01_021F2F24(fieldSystem->playerAvatar);
@@ -268,7 +267,7 @@ void FieldSystem_Control(FieldSystem *fieldSystem) {
                 }
             } else {
                 if (gSystem.newKeys & PAD_BUTTON_A) {
-                    ov01_021EFACC(fieldSystem->unk4->unk8);
+                    FieldDrawMapName_Reset(fieldSystem->unk4->drawMapNameInfo);
                 }
                 u32 flag = 0;
                 if (sub_0203E324()) {

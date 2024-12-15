@@ -233,7 +233,7 @@ _020553E0:
 	str r0, [r4]
 	b _02055404
 _020553EE:
-	bl ov01_021EFAF8
+	bl FieldSystem_DrawMapNameAnimation
 	add r0, r5, #0
 	bl CallTask_FadeFromBlack
 	ldr r0, [r4]
