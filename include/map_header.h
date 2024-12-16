@@ -38,7 +38,7 @@ typedef struct MapHeader {
     u32 unk_14_1D : 1;
     u32 unk_14_1E : 1;
     u32 unk_14_1F : 1;
-} MAP_HEADER;
+} MapHeader;
 
 u8 MapHeader_GetAreaDataBank(u32 map_no);
 u16 MapHeader_GetMoveModelBank(u32 map_no);

@@ -12,7 +12,7 @@
 
 #define _IN_MAP_HEADER_C
 
-static const MAP_HEADER sMapHeaders[] = {
+static const MapHeader sMapHeaders[] = {
     [MAP_EVERYWHERE] = {
                         .wild_encounter_bank = ENCDATA_NA,
                         .area_data_bank = 0,
