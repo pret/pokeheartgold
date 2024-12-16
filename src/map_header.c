@@ -175,9 +175,9 @@ BOOL MapHeader_GetField14_1F(u32 mapId) {
     return sMapHeaders[mapId].unk_14_1F;
 }
 
-u32 MapHeader_GetMapType(u32 mapId) {
+MapType MapHeader_GetMapType(u32 mapId) {
     mapId = MapNumberBoundsCheck(mapId);
-    return sMapHeaders[mapId].mapType;
+    return (MapType)sMapHeaders[mapId].mapType;
 }
 
 u8 MapHeader_GetFollowMode(u32 mapId) {
@@ -197,7 +197,7 @@ BOOL MapHeader_IsOutdoors(u32 mapId) {
         return FALSE;
     }
 
-    return MapHeader_GetMapType(mapId) != 1;
+    return MapHeader_GetMapType(mapId) != MAP_TYPE_CITY_TOWN;
 }
 
 BOOL MapHeader_MapIsOnMainMatrix(u32 mapId) {
@@ -205,15 +205,15 @@ BOOL MapHeader_MapIsOnMainMatrix(u32 mapId) {
 }
 
 BOOL MapHeader_IsCave(u32 mapId) {
-    return MapHeader_GetMapType(mapId) == 3;
+    return MapHeader_GetMapType(mapId) == MAP_TYPE_CAVE;
 }
 
 BOOL sub_0203B58C(u32 mapId) {
-    return MapHeader_GetMapType(mapId) == 4 || MapHeader_GetMapType(mapId) == 5;
+    return MapHeader_GetMapType(mapId) == MAP_TYPE_INTERIOR || MapHeader_GetMapType(mapId) == MAP_TYPE_POKEMON_CENTER;
 }
 
 BOOL sub_0203B5AC(u32 mapId) {
-    return MapHeader_GetMapType(mapId) == 1 || MapHeader_GetMapType(mapId) == 2;
+    return MapHeader_GetMapType(mapId) == MAP_TYPE_CITY_TOWN || MapHeader_GetMapType(mapId) == MAP_TYPE_ROUTE;
 }
 
 BOOL MapHeader_MapIsUnionRoom(u32 mapId) {

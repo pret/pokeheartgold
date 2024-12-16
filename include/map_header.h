@@ -40,6 +40,16 @@ typedef struct MapHeader {
     u32 unk_14_1F : 1;
 } MapHeader;
 
+typedef enum MapType {
+    MAP_TYPE_INVALID,
+    MAP_TYPE_CITY_TOWN,
+    MAP_TYPE_ROUTE,
+    MAP_TYPE_CAVE,
+    MAP_TYPE_INTERIOR,
+    MAP_TYPE_POKEMON_CENTER, // Unused in HG/SS, Pokémon Centers use the Interior type
+    MAP_TYPE_UNDERGROUND,    // Leftover from the Sinnoh games
+} MapType;
+
 u8 MapHeader_GetAreaDataBank(u32 mapId);
 u16 MapHeader_GetMoveModelBank(u32 mapId);
 u16 MapHeader_GetMatrixId(u32 mapId);
@@ -64,7 +74,7 @@ BOOL MapHeader_IsBikeAllowed(u32 mapId);
 BOOL MapHeader_GetField14_1D(u32 mapId);
 BOOL MapHeader_GetField14_1E(u32 mapId);
 BOOL MapHeader_GetField14_1F(u32 mapId);
-u32 MapHeader_GetMapType(u32 mapId);
+MapType MapHeader_GetMapType(u32 mapId);
 u8 MapHeader_GetFollowMode(u32 mapId);
 void MapHeader_GetWorldMapCoords(u32 mapId, s16 *x, s16 *y);
 BOOL MapHeader_IsOutdoors(u32 mapId);
