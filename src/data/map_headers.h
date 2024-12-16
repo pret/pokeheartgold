@@ -10,7 +10,7 @@
 #include "encounter_tables_narc.h"
 #include "map_header.h"
 
-#define _IN_MAP_HEADER_C
+#ifdef _IN_MAP_HEADER_C
 
 static const MapHeader sMapHeaders[] = {
     [MAP_EVERYWHERE] = {
@@ -16214,3 +16214,5 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1F = TRUE,
                         },
 };
+
+#endif
