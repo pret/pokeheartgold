@@ -4,6 +4,7 @@
 #include "global.h"
 
 #include "constants/battle.h"
+#include "constants/pokemon.h"
 
 #define MAP_FOLLOWMODE_PREVENT         0
 #define MAP_FOLLOWMODE_HEIGHT_RESTRICT 1
@@ -86,6 +87,6 @@ BOOL MapHeader_MapIsUnionRoom(u32 mapId);
 BOOL MapHeader_MapIsAmitySquare(u32 mapId);
 BOOL MapHeader_MapIsPokemonCenter(u32 mapId);
 BOOL MapHeader_MapIsPokemonLeagueLobby(u32 mapId);
-u16 MapHeader_GetMapEvolutionMethod(u32 mapId);
+EvoMethod MapHeader_GetMapEvolutionMethod(u32 mapId);
 
 #endif // POKEHEARTGOLD_MAP_HEADER_H

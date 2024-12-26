@@ -239,7 +239,7 @@ BOOL MapHeader_MapIsPokemonLeagueLobby(u32 mapId) {
     return mapId == MAP_T10R0101;
 }
 
-u16 MapHeader_GetMapEvolutionMethod(u32 mapId) {
+EvoMethod MapHeader_GetMapEvolutionMethod(u32 mapId) {
     // Leftover from D/P/Pl.
-    return 0;
+    return EVO_NONE;
 }
