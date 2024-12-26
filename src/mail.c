@@ -110,7 +110,7 @@ void Mail_SetNewMessageDetails(Mail *mail, u8 mailType, u8 mon_no, SaveData *sav
     mail->mail_type = mailType;
 
     party = SaveArray_Party_Get(saveData);
-    profile = Save_PlayerData_GetProfileAddr(saveData);
+    profile = Save_PlayerData_GetProfile(saveData);
 
     CopyU16StringArray(mail->author_name, PlayerProfile_GetNamePtr(profile));
     mail->author_gender = PlayerProfile_GetTrainerGender(profile);

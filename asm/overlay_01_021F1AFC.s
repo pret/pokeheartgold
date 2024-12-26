@@ -760,8 +760,8 @@ _021F20B0:
 	.balign 4, 0
 	thumb_func_end CallFieldTask_Surf
 
-	thumb_func_start Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors
-Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors: ; 0x021F20C0
+	thumb_func_start Field_PlayerCanSurfOnTile
+Field_PlayerCanSurfOnTile: ; 0x021F20C0
 	push {r4, r5, r6, lr}
 	add r4, r2, #0
 	add r5, r1, #0
@@ -804,7 +804,7 @@ _021F2112:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors
+	thumb_func_end Field_PlayerCanSurfOnTile
 
 	thumb_func_start ov01_021F2118
 ov01_021F2118: ; 0x021F2118

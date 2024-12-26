@@ -70,7 +70,7 @@ CallTask_RestoreOverworld: ; 0x020552A4
 	pop {r3, r4, r5, pc}
 _020552BC:
 	add r0, r4, #0
-	bl sub_020505C0
+	bl FieldSystem_LoadFieldOverlay
 	ldr r1, _020552D0 ; =sub_0205528C
 	add r0, r5, #0
 	mov r2, #0

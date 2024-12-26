@@ -104,7 +104,7 @@ _02095E9E:
 	mov r0, #2
 	str r0, [r4]
 	add r0, r5, #0
-	bl sub_020505C0
+	bl FieldSystem_LoadFieldOverlay
 	b _02095EF4
 _02095EB4:
 	add r0, r5, #0

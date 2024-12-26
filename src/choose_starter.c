@@ -54,7 +54,7 @@ static BOOL CreateStarter(TaskManager *taskManager) {
             env->args->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
             for (i = 0; i < (int)NELEMS(species); i++) {
                 Pokemon *mon = &env->args->starters[i];
-                PlayerProfile *profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+                PlayerProfile *profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
                 ZeroMonData(mon);
                 CreateMon(mon, species[i], 5, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
                 sub_020720FC(mon, profile, BALL_POKE, mapsec, 12, HEAP_ID_FIELD);
@@ -83,7 +83,7 @@ static BOOL CreateStarter(TaskManager *taskManager) {
         }
         Pokedex_SetMonCaughtFlag(pokedex, Party_GetMonByIndex(party, 0));
         env->state = 4;
-        sub_020505C0(fieldSystem);
+        FieldSystem_LoadFieldOverlay(fieldSystem);
         break;
     }
     case 4:

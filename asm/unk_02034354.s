@@ -15,7 +15,7 @@ sub_02034354: ; 0x02034354
 	sub sp, #0xc
 	str r0, [sp]
 	str r1, [sp, #4]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	str r0, [sp, #8]
 	ldr r0, _020343E0 ; =_021D4130
 	ldr r0, [r0]
@@ -157,7 +157,7 @@ sub_02034434: ; 0x02034434
 	cmp r0, #0
 	bne _02034470
 	ldr r0, [r1, #8]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 _02034470:
 	ldr r1, _0203451C ; =_021D4130
 	ldr r2, [r1]

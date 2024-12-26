@@ -44,7 +44,7 @@ void ov01_02205790(FieldSystem *fieldSystem, u8 a1);
 void ov01_02205784(LocalMapObject *object);
 BOOL ov01_022057C4(FieldSystem *fieldSystem);
 BOOL ov01_02205D68(FieldSystem *fieldSystem);
-BOOL Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors(PlayerAvatar *fieldPlayerAvatar, int standingTile, int facingTile);
+BOOL Field_PlayerCanSurfOnTile(PlayerAvatar *fieldPlayerAvatar, int standingTile, int facingTile);
 BOOL MetatileBehavior_IsRockClimbInDirection(int facingTile, int facingDirection);
 BOOL FieldSystem_FacingModelIsHeadbuttTree(FieldSystem *fieldSystem);
 BOOL Task_UseSweetScentInField(TaskManager *taskManager);

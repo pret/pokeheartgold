@@ -33,7 +33,7 @@ typedef struct PLAYERDATA {
 
 u32 Save_PlayerData_sizeof(void);
 void Save_PlayerData_Init(PLAYERDATA *player);
-PlayerProfile *Save_PlayerData_GetProfileAddr(SaveData *saveData);
+PlayerProfile *Save_PlayerData_GetProfile(SaveData *saveData);
 Options *Save_PlayerData_GetOptionsAddr(SaveData *saveData);
 u16 *Save_PlayerData_GetCoinsAddr(SaveData *saveData);
 IGT *Save_PlayerData_GetIGTAddr(SaveData *saveData);

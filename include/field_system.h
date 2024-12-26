@@ -188,7 +188,7 @@ BOOL Field_Continue_AppInit(OVY_MANAGER *man, int *unused);
 BOOL Field_NewGame_AppInit(OVY_MANAGER *man, int *unused);
 BOOL Field_AppExec(OVY_MANAGER *man, int *unused);
 BOOL Field_AppExit(OVY_MANAGER *man, int *unused);
-void sub_0203DEF0(FieldSystem *fieldSystem);
+void FieldSystem_LoadFieldOverlayInternal(FieldSystem *fieldSystem);
 void sub_0203DF34(FieldSystem *fieldSystem);
 u8 sub_0203DF3C(FieldSystem *fieldSystem);
 void sub_0203DF64(FieldSystem *fieldSystem, int a1);

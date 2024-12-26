@@ -680,31 +680,31 @@ static void PartyMenuContextMenuAction_FieldMoveCommon(PartyMenu *partyMenu, int
     int response;
     int msgId;
 
-    func = PartyMenu_GetFieldMoveFunc(FIELD_MOVE_FUNC_CHECK, partyMenu->args->selectedAction - PARTY_MENU_ACTION_RETURN_FIELD_MOVE_BEGIN);
+    func = FieldMove_GetMoveFunc(FIELD_MOVE_FUNC_CHECK, partyMenu->args->selectedAction - PARTY_MENU_ACTION_RETURN_FIELD_MOVE_BEGIN);
     if (func != NULL) {
         response = func(partyMenu->args->fieldMoveCheckData);
     } else {
-        response = PARTY_MENU_RESPONSE_NOT_HERE;
+        response = FIELD_MOVE_RESPONSE_NOT_HERE;
     }
     switch (response) {
-    case PARTY_MENU_RESPONSE_OK:
+    case FIELD_MOVE_RESPONSE_OK:
         PartyMenu_DeleteContextMenuAndList(partyMenu);
         PartyMenu_DisableMainScreenBlend_AfterYesNo();
         *pState = PARTY_MENU_STATE_BEGIN_EXIT;
         return;
-    case PARTY_MENU_RESPONSE_NOT_HERE:
+    case FIELD_MOVE_RESPONSE_NOT_HERE:
         msgId = msg_0300_00101;
         break;
-    case PARTY_MENU_RESPONSE_NEED_BADGE:
+    case FIELD_MOVE_RESPONSE_NEED_BADGE:
         msgId = msg_0300_00077;
         break;
-    case PARTY_MENU_RESPONSE_HAVE_FOLLOWER:
+    case FIELD_MOVE_RESPONSE_HAVE_FOLLOWER:
         msgId = msg_0300_00180;
         break;
-    case PARTY_MENU_RESPONSE_ALREADY_SURFING:
+    case FIELD_MOVE_RESPONSE_ALREADY_SURFING:
         msgId = msg_0300_00100;
         break;
-    case PARTY_MENU_RESPONSE_NOT_NOW:
+    case FIELD_MOVE_RESPONSE_NOT_NOW:
         msgId = msg_0300_00181;
         break;
     }

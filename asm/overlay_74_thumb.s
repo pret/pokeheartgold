@@ -3206,7 +3206,7 @@ ov74_MainMenu_AppInit: ; 0x02228920
 	add r0, r0, #4
 	str r1, [r4, r0]
 	ldr r0, [r4, #4]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #4]
 	bl Save_Pokedex_Get
@@ -4246,7 +4246,7 @@ ov74_02229200: ; 0x02229200
 	bl OverlayManager_GetArgs
 	ldr r0, [r0, #8]
 	str r0, [r4, #8]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #8]
 	bl Save_Pokedex_Get
@@ -24551,7 +24551,7 @@ ov74_02233230: ; 0x02233230
 	bl OverlayManager_GetArgs
 	ldr r0, [r0, #8]
 	str r0, [r4, #0x10]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	str r0, [r4, #0x14]
 	ldr r0, [r4, #0x10]
 	bl Save_PlayerData_GetOptionsAddr

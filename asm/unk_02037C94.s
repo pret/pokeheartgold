@@ -67,7 +67,7 @@ _02037CAE:
 	ldr r0, [r0]
 	str r5, [r0, #0x28]
 	add r0, r5, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	ldr r1, _02037D28 ; =_021D4150
 	ldr r2, [r1]
 	str r0, [r2, #0x2c]
@@ -3552,7 +3552,7 @@ sub_020396FC: ; 0x020396FC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	bl sub_02037474
 	cmp r0, #0
 	beq _02039712
@@ -3603,7 +3603,7 @@ sub_0203976C: ; 0x0203976C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	bl sub_02037474
 	cmp r0, #0
 	bne _020397B8

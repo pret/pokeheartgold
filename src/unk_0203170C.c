@@ -80,7 +80,7 @@ static void sub_020317F4(SaveData *saveData, Unk020317F4 *a1) {
     PlayerProfile *profile;
 
     wifiHistory = Save_WiFiHistory_Get(saveData);
-    profile = Save_PlayerData_GetProfileAddr(saveData);
+    profile = Save_PlayerData_GetProfile(saveData);
     ptr2 = sub_02031774(saveData);
 
     MI_CpuClear8(a1, sizeof(Unk020317F4));

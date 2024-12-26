@@ -15,7 +15,7 @@
 .public QueueScript
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnvironment
-.public GetMetatileBehaviorAt
+.public GetMetatileBehavior
 .public GetPlayerXCoord
 .public GetPlayerZCoord
 .public G2x_SetBlendAlpha_

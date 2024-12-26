@@ -94,7 +94,7 @@ static void DaycareMon_CopyFromPartySlot(Party *party, int partyIdx, DaycareMon 
     partyMon = Party_GetMonByIndex(party, partyIdx);
     daycareMail = DaycareMon_GetExtras(daycareMon);
     boxMon = DaycareMon_GetBoxMon(daycareMon);
-    playerNamePtr = PlayerProfile_GetNamePtr(Save_PlayerData_GetProfileAddr(saveData));
+    playerNamePtr = PlayerProfile_GetNamePtr(Save_PlayerData_GetProfile(saveData));
     GetMonData(partyMon, MON_DATA_NICKNAME_FLAT, nickname);
     if (BoxMonIsHoldingMail(Mon_GetBoxMon(partyMon))) {
         GetMonData(partyMon, MON_DATA_MAIL_STRUCT, DaycareMail_GetMailPtr(daycareMail));

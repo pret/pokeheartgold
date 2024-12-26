@@ -550,7 +550,7 @@ ov80_0222A334: ; 0x0222A334
 	sub sp, #0xc
 	add r4, r1, #0
 	add r5, r0, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #7
@@ -558,7 +558,7 @@ ov80_0222A334: ; 0x0222A334
 	bl GetMonData
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	mov r3, #0
 	add r1, r0, #0
 	str r3, [sp]

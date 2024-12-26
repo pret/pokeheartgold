@@ -1772,7 +1772,7 @@ ov113_021E6680: ; 0x021E6680
 	str r0, [r4, #0x58]
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #4]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	ldr r1, [r4]
 	bl PlayerProfile_GetPlayerName_NewString
 	str r0, [r4, #0x5c]

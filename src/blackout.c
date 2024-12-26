@@ -98,7 +98,7 @@ static void Blackout_DrawMessage(FieldSystem *fieldSystem, TaskManager *taskMana
 
     AddWindow(env->bgConfig, &env->window, &sBlackoutWindowTemplate);
 
-    BufferPlayersName(env->msgFmt, 0, Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem)));
+    BufferPlayersName(env->msgFmt, 0, Save_PlayerData_GetProfile(FieldSystem_GetSaveData(fieldSystem)));
     if (fieldSystem->location->mapId == MAP_T20R0201) {
         // {STRVAR_1 3, 0, 0} scurried back home, protecting the exhausted and fainted Pokémon from further harm...
         Blackout_PrintMessage(env, msg_0203_00004, 0, 0);

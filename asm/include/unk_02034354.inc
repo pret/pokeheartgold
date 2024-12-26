@@ -3,7 +3,7 @@
 .public AllocFromHeap
 .public FreeToHeap
 .public GF_AssertFail
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public PlayerProfile_sizeof
 .public PlayerProfile_Copy
 .public PlayerProfile_Init

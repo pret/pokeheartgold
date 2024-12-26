@@ -7,7 +7,7 @@
 #include "constants/items.h"
 #include "constants/std_script.h"
 #include "fielddata/script/scr_seq/event_D24R0204.h"
-#include "constants/party_menu.h"
+#include "constants/field_move_response.h"
 	.include "asm/macros.inc"
 	.include "unk_020689C8.inc"
 	.include "global.inc"

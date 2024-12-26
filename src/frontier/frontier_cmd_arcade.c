@@ -360,7 +360,7 @@ BOOL FrtCmd_ArcadeAction(FrontierContext *ctx) {
             BufferFrontierOpponentName(ctx->frontierSystem->unk44, var0, arcadeCtx->unk74[ov80_022347A8(arcadeCtx, var1)]);
         } else {
             if (BattleArcade_MultiplayerCheck(arcadeCtx->type) == FALSE) {
-                profile = Save_PlayerData_GetProfileAddr(param->saveData);
+                profile = Save_PlayerData_GetProfile(param->saveData);
             } else {
                 profile = sub_02034818(var1);
             }

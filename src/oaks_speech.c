@@ -640,8 +640,8 @@ BOOL OakSpeech_Exit(OVY_MANAGER *ovyMan, int *pState) {
     OakSpeechData *data = OverlayManager_GetData(ovyMan);
     HeapID heapId = data->heapId;
     FontID_Release(4);
-    PlayerName_StringToFlat(Save_PlayerData_GetProfileAddr(data->saveData), data->namingScreenArgs_Player->nameInputString);
-    PlayerProfile_SetTrainerGender(Save_PlayerData_GetProfileAddr(data->saveData), data->namingScreenArgs_Player->playerGenderOrMonSpecies);
+    PlayerName_StringToFlat(Save_PlayerData_GetProfile(data->saveData), data->namingScreenArgs_Player->nameInputString);
+    PlayerProfile_SetTrainerGender(Save_PlayerData_GetProfile(data->saveData), data->namingScreenArgs_Player->playerGenderOrMonSpecies);
     Save_Misc_RivalName_Set(Save_Misc_Get(data->saveData), data->namingScreenArgs_Rival->nameInputString);
     NamingScreen_DeleteArgs(data->namingScreenArgs_Player);
     NamingScreen_DeleteArgs(data->namingScreenArgs_Rival);

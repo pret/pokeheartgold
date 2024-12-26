@@ -1192,7 +1192,7 @@ _0225F964: .word _02260374
 ov115_0225F968: ; 0x0225F968
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	bl PlayerProfile_GetTrainerGender
 	pop {r3, pc}
 	.balign 4, 0

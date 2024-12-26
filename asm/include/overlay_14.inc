@@ -203,7 +203,7 @@
 .public String_New
 .public String_Delete
 .public SaveArray_PCStorage_Get
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetFrame
 .public Save_SpecialRibbons_Get

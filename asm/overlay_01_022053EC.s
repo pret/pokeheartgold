@@ -467,7 +467,7 @@ _02205712:
 _02205716:
 	add r0, r7, #0
 	add r1, r4, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov01_022056C4
 

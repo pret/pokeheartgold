@@ -4746,7 +4746,7 @@ _02240574:
 _0224058C:
 	ldr r0, _0224065C ; =0x0000050C
 	ldr r0, [r5, r0]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r6, r0, #0
 	mov r0, #8
 	mov r1, #0x6b
@@ -5566,7 +5566,7 @@ ov83_02240C6C: ; 0x02240C6C
 	ldr r0, _02240C88 ; =0x0000050C
 	add r4, r1, #0
 	ldr r0, [r5, r0]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r2, r0, #0
 	ldr r0, [r5, #0x24]
 	add r1, r4, #0
@@ -5585,7 +5585,7 @@ ov83_02240C8C: ; 0x02240C8C
 	str r2, [sp, #0x10]
 	ldr r0, [r0, r1]
 	add r6, r3, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r7, r0, #0
 	mov r0, #8
 	mov r1, #0x6b
@@ -6559,7 +6559,7 @@ ov83_022413C4: ; 0x022413C4
 	ldr r0, _02241400 ; =0x0000050C
 	add r4, r1, #0
 	ldr r0, [r6, r0]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	ldr r1, _02241404 ; =0x000007AC
 	strh r4, [r6, r1]
 	bl PlayerProfile_GetTrainerGender
@@ -13196,7 +13196,7 @@ ov83_02244ABC: ; 0x02244ABC
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r4, r1, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r2, r0, #0
 	ldr r0, [r5, #0x24]
 	add r1, r4, #0
@@ -13214,7 +13214,7 @@ ov83_02244AD8: ; 0x02244AD8
 	ldr r0, [r0, r1]
 	str r2, [sp, #0x10]
 	add r5, r3, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r6, r0, #0
 	mov r0, #8
 	mov r1, #0x6b
@@ -14063,7 +14063,7 @@ ov83_02245104: ; 0x02245104
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	add r4, r1, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	ldr r1, _02245144 ; =0x00000564
 	strh r4, [r6, r1]
 	bl PlayerProfile_GetTrainerGender

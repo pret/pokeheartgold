@@ -350,7 +350,7 @@ ov34_0225D7A8: ; 0x0225D7A8
 	ldr r0, [r0]
 	str r0, [r4, #8]
 	ldr r0, [r5, #0xc]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	str r0, [r4, #0x10]
 	mov r0, #2
 	mov r1, #0xa9

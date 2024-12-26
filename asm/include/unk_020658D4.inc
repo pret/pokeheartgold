@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public GF_AssertFail
-.public GetMetatileBehaviorAt
+.public GetMetatileBehavior
 .public MetatileBehavior_IsEncounterGrass
 .public sub_0205B6F4
 .public sub_0205C600

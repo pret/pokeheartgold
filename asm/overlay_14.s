@@ -6548,7 +6548,7 @@ _021E8A06:
 	str r0, [r4, #4]
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0208AD34

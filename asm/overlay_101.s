@@ -12531,7 +12531,7 @@ TownMap_Init: ; 0x021ED7F8
 	str r0, [r1, #0x30]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x24]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	ldr r1, [r4, #0x10]
 	str r0, [r1, #0x34]
 	add r0, r4, #0
@@ -31217,7 +31217,7 @@ RadioShow_PokemonSearchParty_Init: ; 0x021F6710
 	bl Save_VarsFlags_Get
 	add r7, r0, #0
 	ldr r0, [r6, #4]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	str r0, [sp]
 	mov r0, #1
 	strb r0, [r5, #8]

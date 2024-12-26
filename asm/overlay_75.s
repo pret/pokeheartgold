@@ -4927,7 +4927,7 @@ _0224902E:
 	bne _0224906C
 	ldr r0, [r4]
 	ldr r0, [r0, #4]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r2, r0, #0
 	ldr r0, [r4, #0x20]
 	mov r1, #0
