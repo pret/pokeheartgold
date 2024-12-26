@@ -192,7 +192,7 @@ void MapHeader_GetWorldMapCoords(u32 mapId, s16 *x, s16 *y) {
     *y = sMapHeaders[mapId].worldMapY;
 }
 
-BOOL MapHeader_IsOutdoors(u32 mapId) {
+BOOL MapHeader_IsTeleportAllowed(u32 mapId) {
     if (MapHeader_IsFlyAllowed(mapId) == FALSE) {
         return FALSE;
     }

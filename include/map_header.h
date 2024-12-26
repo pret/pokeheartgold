@@ -77,7 +77,7 @@ BOOL MapHeader_GetField14_1F(u32 mapId);
 MapType MapHeader_GetMapType(u32 mapId);
 u8 MapHeader_GetFollowMode(u32 mapId);
 void MapHeader_GetWorldMapCoords(u32 mapId, s16 *x, s16 *y);
-BOOL MapHeader_IsOutdoors(u32 mapId);
+BOOL MapHeader_IsTeleportAllowed(u32 mapId);
 BOOL MapHeader_MapIsOnMainMatrix(u32 mapId);
 BOOL MapHeader_IsCave(u32 mapId);
 BOOL sub_0203B58C(u32 mapId);

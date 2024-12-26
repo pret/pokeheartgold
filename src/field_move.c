@@ -485,7 +485,7 @@ static u32 FieldMoveMenuCheck_Teleport(const FieldMoveCheckData *checkData) {
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
-    if (!MapHeader_IsOutdoors(checkData->mapId)) {
+    if (!MapHeader_IsTeleportAllowed(checkData->mapId)) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
