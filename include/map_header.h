@@ -33,7 +33,7 @@ typedef struct MapHeader {
     u32 followMode : 2;
     u32 battleBg : 5;
     u32 bikeAllowed : 1;
-    u32 unk_14_1A : 1; // unused running flag?
+    u32 runningAllowed_Unused : 1;
     u32 escapeRopeAllowed : 1;
     u32 flyAllowed : 1;
     u32 unk_14_1D : 1;
