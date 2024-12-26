@@ -80,7 +80,7 @@ void MapHeader_GetWorldMapCoords(u32 mapId, s16 *x, s16 *y);
 BOOL MapHeader_IsTeleportAllowed(u32 mapId);
 BOOL MapHeader_MapIsOnMainMatrix(u32 mapId);
 BOOL MapHeader_IsCave(u32 mapId);
-BOOL sub_0203B58C(u32 mapId);
+BOOL MapHeader_IsBuilding(u32 mapId);
 BOOL sub_0203B5AC(u32 mapId);
 BOOL MapHeader_MapIsUnionRoom(u32 mapId);
 BOOL MapHeader_MapIsAmitySquare(u32 mapId);
