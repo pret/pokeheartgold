@@ -212,7 +212,7 @@ BOOL MapHeader_IsBuilding(u32 mapId) {
     return MapHeader_GetMapType(mapId) == MAP_TYPE_INTERIOR || MapHeader_GetMapType(mapId) == MAP_TYPE_POKEMON_CENTER;
 }
 
-BOOL sub_0203B5AC(u32 mapId) {
+BOOL MapHeader_IsOutdoors(u32 mapId) {
     return MapHeader_GetMapType(mapId) == MAP_TYPE_CITY_TOWN || MapHeader_GetMapType(mapId) == MAP_TYPE_ROUTE;
 }
 

@@ -101,7 +101,7 @@ void sub_02055CD8(FieldSystem *fieldSystem, int mapID, int warpID, int x, int y,
         if (MapHeader_IsCave(mapID)) {
             var = 6;
         } else {
-            if (sub_0203B5AC(mapID)) {
+            if (MapHeader_IsOutdoors(mapID)) {
                 var = 5;
             } else if (MapHeader_IsBuilding(mapID)) {
                 var = 6;
@@ -110,7 +110,7 @@ void sub_02055CD8(FieldSystem *fieldSystem, int mapID, int warpID, int x, int y,
             }
         }
     } else {
-        if (sub_0203B5AC(otherID)) {
+        if (MapHeader_IsOutdoors(otherID)) {
             if (MapHeader_IsCave(mapID)) {
                 var = 4;
             } else if (MapHeader_IsBuilding(mapID)) {
@@ -119,7 +119,7 @@ void sub_02055CD8(FieldSystem *fieldSystem, int mapID, int warpID, int x, int y,
                 GF_ASSERT(FALSE);
             }
         } else if (MapHeader_IsBuilding(otherID)) {
-            if (!sub_0203B5AC(mapID)) {
+            if (!MapHeader_IsOutdoors(mapID)) {
                 if (MapHeader_IsBuilding(mapID)) {
                     var = 6;
                 } else if (!MapHeader_IsCave(mapID)) {

@@ -81,7 +81,7 @@ BOOL MapHeader_IsTeleportAllowed(u32 mapId);
 BOOL MapHeader_MapIsOnMainMatrix(u32 mapId);
 BOOL MapHeader_IsCave(u32 mapId);
 BOOL MapHeader_IsBuilding(u32 mapId);
-BOOL sub_0203B5AC(u32 mapId);
+BOOL MapHeader_IsOutdoors(u32 mapId);
 BOOL MapHeader_MapIsUnionRoom(u32 mapId);
 BOOL MapHeader_MapIsAmitySquare(u32 mapId);
 BOOL MapHeader_MapIsPokemonCenter(u32 mapId);
