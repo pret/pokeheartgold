@@ -112,9 +112,9 @@ static const ControllerFunction sPlayerBattleCommands[CONTROLLER_COMMAND_MAX] = 
     [CONTROLLER_COMMAND_POKEMON_INPUT] = BattleControllerPlayer_PokemonInput,
     [CONTROLLER_COMMAND_RUN_INPUT] = BattleControllerPlayer_RunInput,
     [CONTROLLER_COMMAND_SAFARI_THROW_BALL] = BattleControllerPlayer_SafariThrowBall,
-    [CONTROLLER_COMMAND_SAFARI_THROW_MUD] = BattleControllerPlayer_SafariThrowBait,
-    [CONTROLLER_COMMAND_SAFARI_RUN] = BattleControllerPlayer_SafariThrowMud,
-    [CONTROLLER_COMMAND_SAFARI_WATCHING] = BattleControllerPlayer_SafariRun,
+    [CONTROLLER_COMMAND_SAFARI_THROW_BAIT] = BattleControllerPlayer_SafariThrowBait,
+    [CONTROLLER_COMMAND_SAFARI_THROW_MUD] = BattleControllerPlayer_SafariThrowMud,
+    [CONTROLLER_COMMAND_SAFARI_RUN] = BattleControllerPlayer_SafariRun,
     [CONTROLLER_COMMAND_CATCHING_CONSTEST_THROW_BALL] = BattleControllerPlayer_CatchingContestThrowBall,
     [CONTROLLER_COMMAND_RUN_SCRIPT] = BattleControllerPlayer_RunScript,
     [CONTROLLER_COMMAND_23] = ov12_0224C38C,
@@ -348,12 +348,12 @@ static void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, Batt
                     case 2:
                         ctx->unk_0[battlerId] = SSI_STATE_END;
                         ctx->unk_4[battlerId] = SSI_STATE_13;
-                        ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_SAFARI_THROW_MUD;
+                        ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_SAFARI_THROW_BAIT;
                         break;
                     case 3:
                         ctx->unk_0[battlerId] = SSI_STATE_END;
                         ctx->unk_4[battlerId] = SSI_STATE_13;
-                        ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_SAFARI_RUN;
+                        ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_SAFARI_THROW_MUD;
                         break;
                     case 4:
                         ctx->unk_0[battlerId] = SSI_STATE_END;
@@ -363,7 +363,7 @@ static void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, Batt
                     case 5:
                         ctx->unk_0[battlerId] = SSI_STATE_END;
                         ctx->unk_0[battlerId] = SSI_STATE_13;
-                        ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_SAFARI_WATCHING;
+                        ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_SAFARI_RUN;
                         break;
                     }
                 } else {
