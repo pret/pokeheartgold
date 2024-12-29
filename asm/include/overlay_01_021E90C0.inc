@@ -22,7 +22,7 @@
 .public Camera_AdjustPerspectiveAngle
 .public Camera_GetPerspectiveAngle
 .public GF_AssertFail
-.public MapHeader_IsBuilding
+.public MapHeader_IsInBuilding
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnvironment

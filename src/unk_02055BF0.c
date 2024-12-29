@@ -103,7 +103,7 @@ void sub_02055CD8(FieldSystem *fieldSystem, int mapID, int warpID, int x, int y,
         } else {
             if (MapHeader_IsOutdoors(mapID)) {
                 var = 5;
-            } else if (MapHeader_IsBuilding(mapID)) {
+            } else if (MapHeader_IsInBuilding(mapID)) {
                 var = 6;
             } else {
                 GF_ASSERT(FALSE);
@@ -113,14 +113,14 @@ void sub_02055CD8(FieldSystem *fieldSystem, int mapID, int warpID, int x, int y,
         if (MapHeader_IsOutdoors(otherID)) {
             if (MapHeader_IsCave(mapID)) {
                 var = 4;
-            } else if (MapHeader_IsBuilding(mapID)) {
+            } else if (MapHeader_IsInBuilding(mapID)) {
                 var = 6;
             } else {
                 GF_ASSERT(FALSE);
             }
-        } else if (MapHeader_IsBuilding(otherID)) {
+        } else if (MapHeader_IsInBuilding(otherID)) {
             if (!MapHeader_IsOutdoors(mapID)) {
-                if (MapHeader_IsBuilding(mapID)) {
+                if (MapHeader_IsInBuilding(mapID)) {
                     var = 6;
                 } else if (!MapHeader_IsCave(mapID)) {
                     GF_ASSERT(FALSE);

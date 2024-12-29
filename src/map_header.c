@@ -208,7 +208,7 @@ BOOL MapHeader_IsCave(u32 mapId) {
     return MapHeader_GetMapType(mapId) == MAP_TYPE_CAVE;
 }
 
-BOOL MapHeader_IsBuilding(u32 mapId) {
+BOOL MapHeader_IsInBuilding(u32 mapId) {
     return MapHeader_GetMapType(mapId) == MAP_TYPE_INTERIOR || MapHeader_GetMapType(mapId) == MAP_TYPE_POKEMON_CENTER;
 }
 
