@@ -1820,7 +1820,7 @@ static void BattleControllerPlayer_SafariThrowBall(BattleSystem *bsys, BattleCon
     ov12_02263A1C(bsys, ctx, BATTLER_PLAYER);
 }
 
-static void BattleControllerPlayer_SafariThrowMud(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_SafariThrowBait(BattleSystem *bsys, BattleContext *ctx) {
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 227);
     ctx->battlerIdAttacker = 0;
     ctx->battlerIdTarget = 1;
@@ -1840,7 +1840,7 @@ static void BattleControllerPlayer_SafariThrowMud(BattleSystem *bsys, BattleCont
     }
 }
 
-static void BattleControllerPlayer_SafariThrowBait(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_SafariThrowMud(BattleSystem *bsys, BattleContext *ctx) {
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 228);
     ctx->battlerIdAttacker = 0;
     ctx->battlerIdTarget = 1;
