@@ -122,7 +122,7 @@ u8 MapHeader_GetAreaIcon(u32 mapId) {
 
 u8 MapHeader_GetMomCallIntroParam(u32 mapId) {
     mapId = MapNumberBoundsCheck(mapId);
-    return sMapHeaders[mapId].unk_12_C;
+    return sMapHeaders[mapId].momCallIntroParam;
 }
 
 BOOL MapHeader_IsKanto(u32 mapId) {

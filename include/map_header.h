@@ -25,7 +25,7 @@ typedef struct MapHeader {
     u16 eventsBank;       // fielddata/eventdata/zone_event_release.naix
     u16 mapsec : 8;
     u16 areaIcon : 4;
-    u16 unk_12_C : 4;
+    u16 momCallIntroParam : 4;
     u32 isKanto : 1;
     u32 weather : 7;
     u32 mapType : 4;
