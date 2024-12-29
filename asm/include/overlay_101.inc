@@ -239,7 +239,7 @@
 .public MapHeader_HasWildEncounters
 .public MapHeader_GetMapSec
 .public MapHeader_GetMomCallIntroParam
-.public MapHeader_IsKanto
+.public MapHeader_IsInKanto
 .public MapHeader_GetField14_1D
 .public MapHeader_GetField14_1E
 .public MapHeader_GetField14_1F

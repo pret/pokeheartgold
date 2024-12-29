@@ -192,7 +192,7 @@ BOOL ScrCmd_TrainerIsDoubleBattle(ScriptContext *ctx) {
 
 BOOL ScrCmd_EncounterMusic(ScriptContext *ctx) {
     u16 var0 = ScriptGetVar(ctx);
-    BOOL isKanto = MapHeader_IsKanto(ctx->fieldSystem->location->mapId);
+    BOOL isKanto = MapHeader_IsInKanto(ctx->fieldSystem->location->mapId);
     BGM_SaveStateAndPlayNew(Trainer_GetEncounterMusic(var0, isKanto));
     return TRUE;
 }

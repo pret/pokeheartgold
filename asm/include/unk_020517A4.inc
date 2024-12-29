@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public GF_AssertFail
-.public MapHeader_IsKanto
+.public MapHeader_IsInKanto
 .public Save_VarsFlags_Get
 .public BattleSetup_GetWildTransitionEffect
 .public BattleSetup_GetWildBattleMusic
