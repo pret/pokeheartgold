@@ -348,12 +348,12 @@ static void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, Batt
                     case 2:
                         ctx->unk_0[battlerId] = SSI_STATE_END;
                         ctx->unk_4[battlerId] = SSI_STATE_13;
-                        ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_SAFARI_THROW_BAIT;
+                        ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_SAFARI_THROW_MUD;
                         break;
                     case 3:
                         ctx->unk_0[battlerId] = SSI_STATE_END;
                         ctx->unk_4[battlerId] = SSI_STATE_13;
-                        ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_SAFARI_THROW_MUD;
+                        ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_SAFARI_THROW_BAIT;
                         break;
                     case 4:
                         ctx->unk_0[battlerId] = SSI_STATE_END;
