@@ -39,9 +39,9 @@ static void BattleControllerPlayer_ItemInput(BattleSystem *bsys, BattleContext *
 static void BattleControllerPlayer_PokemonInput(BattleSystem *bsys, BattleContext *ctx);
 static void BattleControllerPlayer_RunInput(BattleSystem *bsys, BattleContext *ctx);
 static void BattleControllerPlayer_SafariThrowBall(BattleSystem *bsys, BattleContext *ctx);
+static void BattleControllerPlayer_SafariThrowBait(BattleSystem *bsys, BattleContext *ctx);
 static void BattleControllerPlayer_SafariThrowMud(BattleSystem *bsys, BattleContext *ctx);
 static void BattleControllerPlayer_SafariRun(BattleSystem *bsys, BattleContext *ctx);
-static void BattleControllerPlayer_SafariWatching(BattleSystem *bsys, BattleContext *ctx);
 static void BattleControllerPlayer_CatchingContestThrowBall(BattleSystem *bsys, BattleContext *ctx);
 static u32 TryDisobedience(BattleSystem *bsys, BattleContext *ctx, int *script);
 static BOOL ov12_0224B1FC(BattleSystem *bsys, BattleContext *ctx);
@@ -112,9 +112,9 @@ static const ControllerFunction sPlayerBattleCommands[CONTROLLER_COMMAND_MAX] = 
     [CONTROLLER_COMMAND_POKEMON_INPUT] = BattleControllerPlayer_PokemonInput,
     [CONTROLLER_COMMAND_RUN_INPUT] = BattleControllerPlayer_RunInput,
     [CONTROLLER_COMMAND_SAFARI_THROW_BALL] = BattleControllerPlayer_SafariThrowBall,
-    [CONTROLLER_COMMAND_SAFARI_THROW_MUD] = BattleControllerPlayer_SafariThrowMud,
-    [CONTROLLER_COMMAND_SAFARI_RUN] = BattleControllerPlayer_SafariRun,
-    [CONTROLLER_COMMAND_SAFARI_WATCHING] = BattleControllerPlayer_SafariWatching,
+    [CONTROLLER_COMMAND_SAFARI_THROW_MUD] = BattleControllerPlayer_SafariThrowBait,
+    [CONTROLLER_COMMAND_SAFARI_RUN] = BattleControllerPlayer_SafariThrowMud,
+    [CONTROLLER_COMMAND_SAFARI_WATCHING] = BattleControllerPlayer_SafariRun,
     [CONTROLLER_COMMAND_CATCHING_CONSTEST_THROW_BALL] = BattleControllerPlayer_CatchingContestThrowBall,
     [CONTROLLER_COMMAND_RUN_SCRIPT] = BattleControllerPlayer_RunScript,
     [CONTROLLER_COMMAND_23] = ov12_0224C38C,
@@ -1820,40 +1820,44 @@ static void BattleControllerPlayer_SafariThrowBall(BattleSystem *bsys, BattleCon
     ov12_02263A1C(bsys, ctx, BATTLER_PLAYER);
 }
 
-static void BattleControllerPlayer_SafariThrowMud(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_SafariThrowBait(BattleSystem *bsys, BattleContext *ctx) {
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 227);
     ctx->battlerIdAttacker = 0;
     ctx->battlerIdTarget = 1;
     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
     ctx->commandNext = CONTROLLER_COMMAND_40;
     ctx->tempData = BattleSystem_Random(bsys) % 10;
-    if (ctx->safariRunAttempts > 0) {
-        ctx->safariRunAttempts--;
+    if (ctx->safariFleeStage > 0) {
+        ctx->safariFleeStage--;
     }
+
+    // 90% chance to decrease catch stage
     if (ctx->tempData != 0) {
         ctx->msgTemp = 1;
-        if (ctx->unk_311C > 0) {
-            ctx->unk_311C--;
+        if (ctx->safariCatchStage > 0) {
+            ctx->safariCatchStage--;
         }
     }
 }
 
-static void BattleControllerPlayer_SafariRun(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_SafariThrowMud(BattleSystem *bsys, BattleContext *ctx) {
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 228);
     ctx->battlerIdAttacker = 0;
     ctx->battlerIdTarget = 1;
     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
     ctx->commandNext = CONTROLLER_COMMAND_40;
     ctx->tempData = BattleSystem_Random(bsys) % 10;
-    if (ctx->unk_311C < 12) {
-        ctx->unk_311C++;
+    if (ctx->safariCatchStage < 12) {
+        ctx->safariCatchStage++;
     }
-    if (ctx->tempData != 0 && ctx->safariRunAttempts < 12) {
-        ctx->safariRunAttempts++;
+    
+    // 90% Chance to increase flee stage
+    if (ctx->tempData != 0 && ctx->safariFleeStage < 12) {
+        ctx->safariFleeStage++;
     }
 }
 
-static void BattleControllerPlayer_SafariWatching(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_SafariRun(BattleSystem *bsys, BattleContext *ctx) {
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_SAFARI_ESCAPE);
     ctx->battlerIdAttacker = 0;
     ctx->battlerIdTarget = 1;

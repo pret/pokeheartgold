@@ -419,8 +419,8 @@ typedef struct BattleContext {
     u16 unk_310C[4];
     int flingData;
     int flingScript;
-    u8 unk_311C;
-    u8 safariRunAttempts;
+    u8 safariCatchStage;
+    u8 safariFleeStage;
     u8 runAttempts;
     u8 battleEndFlag;
     u8 magnitude;
