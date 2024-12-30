@@ -2181,7 +2181,7 @@ ov01_021EA1F4: ; 0x021EA1F4
 	ldr r0, [r0, #0x20]
 	add r4, r1, #0
 	ldr r0, [r0]
-	bl sub_0203B58C
+	bl MapHeader_IsInBuilding
 	cmp r0, #0
 	beq _021EA214
 	cmp r4, #0x3f

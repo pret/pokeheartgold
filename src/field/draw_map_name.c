@@ -188,7 +188,7 @@ void FieldDrawMapName_Reset(FieldDrawMapNameInfo *info) {
 }
 
 void FieldSystem_DrawMapNameAnimation(FieldSystem *fieldSystem) {
-    if (MapHeader_GetAreaIcon(fieldSystem->location->mapId) == 0 || sub_0203B58C(fieldSystem->location->mapId)) {
+    if (MapHeader_GetAreaIcon(fieldSystem->location->mapId) == 0 || MapHeader_IsInBuilding(fieldSystem->location->mapId)) {
         return;
     }
 

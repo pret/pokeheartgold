@@ -240,7 +240,7 @@ BattleSetup_GetWildBattleMusic: ; 0x020517FC
 	mov r0, #0x56
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl MapHeader_IsKanto
+	bl MapHeader_IsInKanto
 	cmp r0, #0
 	beq _0205185C
 	ldr r1, _02051860 ; =0x0000045C
