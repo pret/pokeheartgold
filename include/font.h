@@ -19,7 +19,7 @@ BOOL FontID_String_AllCharsValid(FontID fontId, String *str0, String *str1);
 u8 GetFontAttribute(FontID fontId, int attr);
 void LoadFontPal0(enum GFPalLoadLocation location, enum GFPalSlotOffset palSlotOffset, HeapID heapId);
 void LoadFontPal1(enum GFPalLoadLocation location, enum GFPalSlotOffset palSlotOffset, HeapID heapId);
-u32 FontID_String_GetWidthMultiline(FontID fontId, String *string, u32 letterSpacing);
+u32 FontID_String_GetWidthMultiline(u32 fontId, String *string, u32 letterSpacing);
 u32 FontID_String_GetCenterAlignmentX(FontID fontId, String *string, u32 letterSpacing, u32 windowWidth);
 u32 FontID_GetGlyphWidth(FontID fontId, u16 glyph);
 

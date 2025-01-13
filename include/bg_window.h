@@ -277,6 +277,6 @@ void DoScheduledBgGpuUpdates(BgConfig *bgConfig);
 void ScheduleBgTilemapBufferTransfer(BgConfig *bgConfig, u8 bgId);
 void ScheduleSetBgPosText(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustOp op, int value);
 void ScheduleSetBgAffineScale(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustOp op, int value);
-BOOL DoesPixelAtScreenXYMatchPtrVal(BgConfig *bgConfig, u8 bgId, u8 x, u8 y, u16 *src);
+BOOL DoesPixelAtScreenXYMatchPtrVal(BgConfig *bgConfig, u8 bgId, u16 x, u16 y, u16 *src);
 
 #endif // POKEHEARTGOLD_BG_WINDOW_H
