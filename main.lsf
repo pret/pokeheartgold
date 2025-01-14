@@ -920,6 +920,7 @@ Overlay OVY_73
 Overlay OVY_74
 {
     After OVY_38
+    Object src/application/main_menu/main_menu.o
     Object asm/overlay_74_thumb.o
     Object asm/nitrocrypto.o
 }
