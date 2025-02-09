@@ -118,21 +118,21 @@
     {
       "x": 1300,
       "z": 261,
-      "header": "MAP_R06R0201",
+      "header": "MAP_ROUTE_6_SAFFRON_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1301,
       "z": 261,
-      "header": "MAP_R06R0201",
+      "header": "MAP_ROUTE_6_SAFFRON_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1309,
       "z": 265,
-      "header": "MAP_R06R0101",
+      "header": "MAP_ROUTE_6_UNDERGROUND_PATH_GATE",
       "anchor": 0,
       "y": 0
     }

@@ -23,56 +23,56 @@
     {
       "x": 6,
       "z": 12,
-      "header": "MAP_D17R0108",
+      "header": "MAP_BELL_TOWER_8F",
       "anchor": 4,
       "y": 0
     },
     {
       "x": 20,
       "z": 7,
-      "header": "MAP_D17R0108",
+      "header": "MAP_BELL_TOWER_8F",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 18,
       "z": 15,
-      "header": "MAP_D17R0108",
+      "header": "MAP_BELL_TOWER_8F",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 24,
       "z": 15,
-      "header": "MAP_D17R0107",
+      "header": "MAP_BELL_TOWER_7F",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 10,
       "z": 23,
-      "header": "MAP_D17R0108",
+      "header": "MAP_BELL_TOWER_8F",
       "anchor": 5,
       "y": 0
     },
     {
       "x": 14,
       "z": 25,
-      "header": "MAP_D17R0108",
+      "header": "MAP_BELL_TOWER_8F",
       "anchor": 3,
       "y": 0
     },
     {
       "x": 12,
       "z": 17,
-      "header": "MAP_D17R0112",
+      "header": "MAP_BELL_TOWER_10F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 12,
       "z": 16,
-      "header": "MAP_D17R0112",
+      "header": "MAP_BELL_TOWER_10F",
       "anchor": 0,
       "y": 0
     }

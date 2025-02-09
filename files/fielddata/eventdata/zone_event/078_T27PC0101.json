@@ -152,7 +152,7 @@
     {
       "x": 8,
       "z": 19,
-      "header": "MAP_T27",
+      "header": "MAP_ECRUTEAK",
       "anchor": 5,
       "y": 0
     },
@@ -166,7 +166,7 @@
     {
       "x": 14,
       "z": 17,
-      "header": "MAP_T27PC0105",
+      "header": "MAP_ECRUTEAK_POKECENTER_B1F",
       "anchor": 0,
       "y": 0
     }

@@ -23,21 +23,21 @@
     {
       "x": 12,
       "z": 7,
-      "header": "MAP_T07R0205",
+      "header": "MAP_CELADON_CONDOMINIUMS_ROOF_ROOM",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 2,
       "z": 4,
-      "header": "MAP_T07R0206",
+      "header": "MAP_CELADON_CONDOMINIUMS_LEFT_ELEVATOR",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 6,
       "z": 4,
-      "header": "MAP_T07R0207",
+      "header": "MAP_CELADON_CONDOMINIUMS_RIGHT_ELEVATOR",
       "anchor": 0,
       "y": 0
     }

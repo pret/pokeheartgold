@@ -194,21 +194,21 @@
     {
       "x": 5,
       "z": 26,
-      "header": "MAP_R31",
+      "header": "MAP_ROUTE_31",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 26,
       "z": 4,
-      "header": "MAP_D42R0101",
+      "header": "MAP_DARK_CAVE_ROUTE_45_SIDE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 55,
       "z": 56,
-      "header": "MAP_R46",
+      "header": "MAP_ROUTE_46",
       "anchor": 2,
       "y": 0
     }

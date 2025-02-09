@@ -355,21 +355,21 @@
     {
       "x": 1408,
       "z": 305,
-      "header": "MAP_R11R0101",
+      "header": "MAP_ROUTE_19_ROUTE_12_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 1408,
       "z": 306,
-      "header": "MAP_R11R0101",
+      "header": "MAP_ROUTE_19_ROUTE_12_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 1429,
       "z": 318,
-      "header": "MAP_R12R0101",
+      "header": "MAP_ROUTE_12_FISHING_BROTHER_HOUSE",
       "anchor": 0,
       "y": 0
     }

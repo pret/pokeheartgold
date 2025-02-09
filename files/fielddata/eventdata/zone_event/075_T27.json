@@ -233,84 +233,84 @@
     {
       "x": 376,
       "z": 149,
-      "header": "MAP_D18R0101",
+      "header": "MAP_BURNED_TOWER_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 375,
       "z": 173,
-      "header": "MAP_T27R0401",
+      "header": "MAP_ECRUTEAK_SOUTHWEST_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 392,
       "z": 153,
-      "header": "MAP_T27R0201",
+      "header": "MAP_ECRUTEAK_BELL_TOWER_BARRIER_STATION",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 386,
       "z": 183,
-      "header": "MAP_T27R0801",
+      "header": "MAP_ECRUTEAK_DOWSING_MACHINE_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 397,
       "z": 173,
-      "header": "MAP_T27R0501",
+      "header": "MAP_ECRUTEAK_DANCE_THEATER",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 397,
       "z": 183,
-      "header": "MAP_T27PC0101",
+      "header": "MAP_ECRUTEAK_POKECENTER_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 406,
       "z": 173,
-      "header": "MAP_T27FS0101",
+      "header": "MAP_ECRUTEAK_POKEMART",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 376,
       "z": 183,
-      "header": "MAP_T27GYM0101",
+      "header": "MAP_ECRUTEAK_GYM",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 358,
       "z": 166,
-      "header": "MAP_R38R0101",
+      "header": "MAP_ROUTE_38_ECRUTEAK_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 358,
       "z": 167,
-      "header": "MAP_R38R0101",
+      "header": "MAP_ROUTE_38_ECRUTEAK_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 415,
       "z": 175,
-      "header": "MAP_R42R0101",
+      "header": "MAP_ROUTE_42_ECRUTEAK_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 415,
       "z": 176,
-      "header": "MAP_R42R0101",
+      "header": "MAP_ROUTE_42_ECRUTEAK_GATEHOUSE",
       "anchor": 0,
       "y": 0
     }

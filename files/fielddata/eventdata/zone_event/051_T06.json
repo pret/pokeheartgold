@@ -403,56 +403,56 @@
     {
       "x": 1292,
       "z": 294,
-      "header": "MAP_T06R0101",
+      "header": "MAP_VERMILION_FISHING_DUDE_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1297,
       "z": 294,
-      "header": "MAP_T06PC0101",
+      "header": "MAP_VERMILION_POKECENTER_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1293,
       "z": 309,
-      "header": "MAP_T06R0301",
+      "header": "MAP_VERMILION_POKEMON_FAN_CLUB",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1301,
       "z": 309,
-      "header": "MAP_T06R0401",
+      "header": "MAP_VERMILION_CENTRAL_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1310,
       "z": 309,
-      "header": "MAP_T06FS0101",
+      "header": "MAP_VERMILION_POKEMART",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1310,
       "z": 318,
-      "header": "MAP_T06R0601",
+      "header": "MAP_VERMILION_SOUTH_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1295,
       "z": 319,
-      "header": "MAP_T06GYM0101",
+      "header": "MAP_VERMILION_GYM",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1309,
       "z": 340,
-      "header": "MAP_P01R0103",
+      "header": "MAP_SS_AQUA_VERMILION_PORT_INTERIOR",
       "anchor": 0,
       "y": 0
     }

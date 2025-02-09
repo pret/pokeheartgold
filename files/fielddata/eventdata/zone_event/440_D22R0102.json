@@ -269,49 +269,49 @@
     {
       "x": 40,
       "z": 86,
-      "header": "MAP_R35R0201",
+      "header": "MAP_ROUTE_35_NATIONAL_PARK_POKEATHALON_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 41,
       "z": 86,
-      "header": "MAP_R35R0201",
+      "header": "MAP_ROUTE_35_NATIONAL_PARK_POKEATHALON_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 75,
       "z": 39,
-      "header": "MAP_R36R0201",
+      "header": "MAP_ROUTE_36_NATIONAL_PARK_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 75,
       "z": 40,
-      "header": "MAP_R36R0201",
+      "header": "MAP_ROUTE_36_NATIONAL_PARK_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 33,
       "z": 15,
-      "header": "MAP_D22R0201",
+      "header": "MAP_NATIONAL_PARK_UNUSED_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 34,
       "z": 15,
-      "header": "MAP_D22R0201",
+      "header": "MAP_NATIONAL_PARK_UNUSED_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 35,
       "z": 15,
-      "header": "MAP_D22R0201",
+      "header": "MAP_NATIONAL_PARK_UNUSED_GATEHOUSE",
       "anchor": 0,
       "y": 0
     }

@@ -92,84 +92,84 @@
     {
       "x": 34,
       "z": 25,
-      "header": "MAP_D11R0102",
+      "header": "MAP_SEAFOAM_ISLANDS_B1F",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 15,
       "z": 21,
-      "header": "MAP_D11R0102",
+      "header": "MAP_SEAFOAM_ISLANDS_B1F",
       "anchor": 3,
       "y": 0
     },
     {
       "x": 18,
       "z": 12,
-      "header": "MAP_D11R0102",
+      "header": "MAP_SEAFOAM_ISLANDS_B1F",
       "anchor": 4,
       "y": 0
     },
     {
       "x": 9,
       "z": 23,
-      "header": "MAP_D11R0102",
+      "header": "MAP_SEAFOAM_ISLANDS_B1F",
       "anchor": 5,
       "y": 0
     },
     {
       "x": 43,
       "z": 12,
-      "header": "MAP_D11R0104",
+      "header": "MAP_SEAFOAM_ISLANDS_B3F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 42,
       "z": 23,
-      "header": "MAP_D11R0104",
+      "header": "MAP_SEAFOAM_ISLANDS_B3F",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 23,
       "z": 14,
-      "header": "MAP_D11R0104",
+      "header": "MAP_SEAFOAM_ISLANDS_B3F",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 5,
       "z": 24,
-      "header": "MAP_D11R0104",
+      "header": "MAP_SEAFOAM_ISLANDS_B3F",
       "anchor": 3,
       "y": 0
     },
     {
       "x": 34,
       "z": 24,
-      "header": "MAP_D11R0102",
+      "header": "MAP_SEAFOAM_ISLANDS_B1F",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 18,
       "z": 11,
-      "header": "MAP_D11R0102",
+      "header": "MAP_SEAFOAM_ISLANDS_B1F",
       "anchor": 4,
       "y": 0
     },
     {
       "x": 15,
       "z": 20,
-      "header": "MAP_D11R0102",
+      "header": "MAP_SEAFOAM_ISLANDS_B1F",
       "anchor": 3,
       "y": 0
     },
     {
       "x": 9,
       "z": 22,
-      "header": "MAP_D11R0102",
+      "header": "MAP_SEAFOAM_ISLANDS_B1F",
       "anchor": 5,
       "y": 0
     }

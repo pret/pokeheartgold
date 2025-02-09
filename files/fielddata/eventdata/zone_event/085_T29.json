@@ -405,14 +405,14 @@
     {
       "x": 497,
       "z": 42,
-      "header": "MAP_T29R0101",
+      "header": "MAP_LAKE_OF_RAGE_HIDDEN_POWER_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 536,
       "z": 89,
-      "header": "MAP_T29R0201",
+      "header": "MAP_LAKE_OF_RAGE_FISHING_GURU_HOUSE",
       "anchor": 0,
       "y": 0
     }

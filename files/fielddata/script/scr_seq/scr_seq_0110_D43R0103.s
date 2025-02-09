@@ -229,7 +229,7 @@ _02FF:
 	play_se SEQ_SE_GS_RAKKA01
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D43R0102, 0, VAR_TEMP_x4000, VAR_TEMP_x4001, VAR_SPECIAL_RESULT
+	warp MAP_VICTORY_ROAD_2F, 0, VAR_TEMP_x4000, VAR_TEMP_x4001, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

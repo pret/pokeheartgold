@@ -33,28 +33,28 @@
     {
       "x": 1300,
       "z": 189,
-      "header": "MAP_R05R0301",
+      "header": "MAP_ROUTE_5_SAFFRON_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 1301,
       "z": 189,
-      "header": "MAP_R05R0301",
+      "header": "MAP_ROUTE_5_SAFFRON_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 1306,
       "z": 185,
-      "header": "MAP_R05R0201",
+      "header": "MAP_ROUTE_5_UNDERGROUND_PATH_GATE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1297,
       "z": 171,
-      "header": "MAP_R05R0401",
+      "header": "MAP_ROUTE_5_HOUSE",
       "anchor": 0,
       "y": 0
     }

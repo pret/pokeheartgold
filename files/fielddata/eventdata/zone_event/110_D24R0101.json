@@ -250,119 +250,119 @@
     {
       "x": 430,
       "z": 261,
-      "header": "MAP_R36R0101",
+      "header": "MAP_ROUTE_36_RUINS_OF_ALPH_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 431,
       "z": 261,
-      "header": "MAP_R36R0101",
+      "header": "MAP_ROUTE_36_RUINS_OF_ALPH_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 447,
       "z": 293,
-      "header": "MAP_R32R0101",
+      "header": "MAP_ROUTE_32_RUINS_OF_ALPH_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 447,
       "z": 294,
-      "header": "MAP_R32R0101",
+      "header": "MAP_ROUTE_32_RUINS_OF_ALPH_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 436,
       "z": 266,
-      "header": "MAP_D24R0202",
+      "header": "MAP_RUINS_OF_ALPH_NORTHEAST_ENTRANCE_FIRST_ROOM",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 436,
       "z": 309,
-      "header": "MAP_D24R0204",
+      "header": "MAP_RUINS_OF_ALPH_SOUTHEAST_ENTRANCE_FIRST_ROOM",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 425,
       "z": 309,
-      "header": "MAP_D24R0206",
+      "header": "MAP_RUINS_OF_ALPH_SOUTHWEST_ENTRANCE_FIRST_ROOM",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 425,
       "z": 289,
-      "header": "MAP_D24R0208",
+      "header": "MAP_RUINS_OF_ALPH_NORTHWEST_ENTRANCE_FIRST_ROOM",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 430,
       "z": 284,
-      "header": "MAP_D24R0211",
+      "header": "MAP_RUINS_OF_ALPH_HALL_ENTRANCE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 431,
       "z": 284,
-      "header": "MAP_D24R0211",
+      "header": "MAP_RUINS_OF_ALPH_HALL_ENTRANCE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 441,
       "z": 285,
-      "header": "MAP_D24R0102",
+      "header": "MAP_RUINS_OF_ALPH_RESEARCH_CENTER",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 430,
       "z": 284,
-      "header": "MAP_D24R0211",
+      "header": "MAP_RUINS_OF_ALPH_HALL_ENTRANCE",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 431,
       "z": 284,
-      "header": "MAP_D24R0211",
+      "header": "MAP_RUINS_OF_ALPH_HALL_ENTRANCE",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 430,
       "z": 284,
-      "header": "MAP_D24R0217",
+      "header": "MAP_RUINS_OF_ALPH_HALL_ENTRANCE_SINJOH_EVENT",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 431,
       "z": 284,
-      "header": "MAP_D24R0217",
+      "header": "MAP_RUINS_OF_ALPH_HALL_ENTRANCE_SINJOH_EVENT",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 419,
       "z": 308,
-      "header": "MAP_D25R0101",
+      "header": "MAP_UNION_CAVE_1F",
       "anchor": 6,
       "y": 0
     },
     {
       "x": 419,
       "z": 289,
-      "header": "MAP_D25R0101",
+      "header": "MAP_UNION_CAVE_1F",
       "anchor": 7,
       "y": 0
     }

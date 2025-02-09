@@ -118,14 +118,14 @@
     {
       "x": 8,
       "z": 19,
-      "header": "MAP_T04",
+      "header": "MAP_CERULEAN",
       "anchor": 3,
       "y": 0
     },
     {
       "x": 14,
       "z": 17,
-      "header": "MAP_T04PC0102",
+      "header": "MAP_CERULEAN_POKECENTER_B1F",
       "anchor": 0,
       "y": 0
     }

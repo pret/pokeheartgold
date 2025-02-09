@@ -392,7 +392,7 @@ void FieldSystem_IncrementBugContestTimer(FieldSystem *fieldSystem, int duration
 void BugContest_WarpToJudging(TaskManager *taskManager, FieldSystem *fieldSystem) {
     LocalFieldData *localFieldData = Save_LocalFieldData_Get(fieldSystem->saveData);
     Location warp;
-    warp.mapId = MAP_D22R0101; // national park
+    warp.mapId = MAP_NATIONAL_PARK; // national park
     warp.warpId = -1;
     warp.x = 46;
     warp.y = 50;

@@ -177,21 +177,21 @@
     {
       "x": 11,
       "z": 25,
-      "header": "MAP_T10",
+      "header": "MAP_INDIGO_PLATEAU",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 11,
       "z": 7,
-      "header": "MAP_T10R0201",
+      "header": "MAP_POKEMON_LEAGUE_WILL_ROOM",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 20,
       "z": 24,
-      "header": "MAP_T10R0801",
+      "header": "MAP_POKEMON_LEAGUE_ENTRANCE_WIFI_ROOM",
       "anchor": 0,
       "y": 0
     }

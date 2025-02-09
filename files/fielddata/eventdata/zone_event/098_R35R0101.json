@@ -40,14 +40,14 @@
     {
       "x": 5,
       "z": 12,
-      "header": "MAP_T25",
+      "header": "MAP_GOLDENROD",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 5,
       "z": 2,
-      "header": "MAP_R35",
+      "header": "MAP_ROUTE_35",
       "anchor": 0,
       "y": 0
     }

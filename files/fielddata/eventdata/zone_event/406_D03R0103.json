@@ -304,28 +304,28 @@
     {
       "x": 7,
       "z": 17,
-      "header": "MAP_D03R0101",
+      "header": "MAP_CERULEAN_CAVE_1F",
       "anchor": 7,
       "y": 0
     },
     {
       "x": 56,
       "z": 20,
-      "header": "MAP_D03R0101",
+      "header": "MAP_CERULEAN_CAVE_1F",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 56,
       "z": 19,
-      "header": "MAP_D03R0101",
+      "header": "MAP_CERULEAN_CAVE_1F",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 7,
       "z": 16,
-      "header": "MAP_D03R0101",
+      "header": "MAP_CERULEAN_CAVE_1F",
       "anchor": 7,
       "y": 0
     }

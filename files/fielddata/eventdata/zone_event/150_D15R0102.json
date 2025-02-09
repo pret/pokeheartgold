@@ -57,28 +57,28 @@
     {
       "x": 11,
       "z": 14,
-      "header": "MAP_D15R0101",
+      "header": "MAP_SPROUT_TOWER_1F",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 24,
       "z": 9,
-      "header": "MAP_D15R0101",
+      "header": "MAP_SPROUT_TOWER_1F",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 6,
       "z": 16,
-      "header": "MAP_D15R0101",
+      "header": "MAP_SPROUT_TOWER_1F",
       "anchor": 3,
       "y": 0
     },
     {
       "x": 15,
       "z": 27,
-      "header": "MAP_D15R0103",
+      "header": "MAP_SPROUT_TOWER_3F",
       "anchor": 0,
       "y": 0
     }

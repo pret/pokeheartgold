@@ -57,14 +57,14 @@
     {
       "x": 8,
       "z": 11,
-      "header": "MAP_T11",
+      "header": "MAP_SAFFRON",
       "anchor": 7,
       "y": 0
     },
     {
       "x": 8,
       "z": 3,
-      "header": "MAP_T11R0802",
+      "header": "MAP_SAFFRON_COPYCAT_HOUSE_2F",
       "anchor": 0,
       "y": 0
     }

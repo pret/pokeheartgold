@@ -84,42 +84,42 @@
     {
       "x": 1028,
       "z": 138,
-      "header": "MAP_R02R0501",
+      "header": "MAP_ROUTE_2_VIRIDIAN_FOREST_NORTH_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 1029,
       "z": 138,
-      "header": "MAP_R02R0501",
+      "header": "MAP_ROUTE_2_VIRIDIAN_FOREST_NORTH_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 1050,
       "z": 183,
-      "header": "MAP_R02R0301",
+      "header": "MAP_ROUTE_2_SOUTHEAST_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1051,
       "z": 183,
-      "header": "MAP_R02R0301",
+      "header": "MAP_ROUTE_2_SOUTHEAST_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1048,
       "z": 137,
-      "header": "MAP_D01R0101",
+      "header": "MAP_DIGLETT_CAVE",
       "anchor": 7,
       "y": 0
     },
     {
       "x": 1047,
       "z": 155,
-      "header": "MAP_R02R0201",
+      "header": "MAP_ROUTE_2_HOUSE",
       "anchor": 0,
       "y": 0
     }

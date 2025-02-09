@@ -379,28 +379,28 @@
     {
       "x": 454,
       "z": 293,
-      "header": "MAP_R32R0101",
+      "header": "MAP_ROUTE_32_RUINS_OF_ALPH_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 454,
       "z": 294,
-      "header": "MAP_R32R0101",
+      "header": "MAP_ROUTE_32_RUINS_OF_ALPH_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 462,
       "z": 430,
-      "header": "MAP_D25R0101",
+      "header": "MAP_UNION_CAVE_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 468,
       "z": 418,
-      "header": "MAP_R32PC0101",
+      "header": "MAP_ROUTE_32_POKECENTER_1F",
       "anchor": 0,
       "y": 0
     }

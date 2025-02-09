@@ -23,14 +23,14 @@
     {
       "x": 5,
       "z": 12,
-      "header": "MAP_R06",
+      "header": "MAP_ROUTE_6",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 5,
       "z": 2,
-      "header": "MAP_T11",
+      "header": "MAP_SAFFRON",
       "anchor": 0,
       "y": 0
     }

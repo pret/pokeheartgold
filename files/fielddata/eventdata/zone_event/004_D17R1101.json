@@ -65,21 +65,21 @@
     {
       "x": 9,
       "z": 9,
-      "header": "MAP_T27R0202",
+      "header": "MAP_ECRUTEAK_BELL_TOWER_BARRIER_STATION_CORRIDOR",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 9,
       "z": 10,
-      "header": "MAP_T27R0202",
+      "header": "MAP_ECRUTEAK_BELL_TOWER_BARRIER_STATION_CORRIDOR",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 37,
       "z": 16,
-      "header": "MAP_D17R0101",
+      "header": "MAP_BELL_TOWER_1F",
       "anchor": 0,
       "y": 0
     }

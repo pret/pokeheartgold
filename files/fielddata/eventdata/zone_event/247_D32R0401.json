@@ -254,21 +254,21 @@
     {
       "x": 25,
       "z": 9,
-      "header": "MAP_D32",
+      "header": "MAP_BATTLE_FRONTIER",
       "anchor": 13,
       "y": 0
     },
     {
       "x": 25,
       "z": 8,
-      "header": "MAP_D32",
+      "header": "MAP_BATTLE_FRONTIER",
       "anchor": 13,
       "y": 0
     },
     {
       "x": 25,
       "z": 10,
-      "header": "MAP_D32",
+      "header": "MAP_BATTLE_FRONTIER",
       "anchor": 13,
       "y": 0
     }

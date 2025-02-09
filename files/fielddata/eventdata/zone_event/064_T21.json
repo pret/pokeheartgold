@@ -142,35 +142,35 @@
     {
       "x": 564,
       "z": 391,
-      "header": "MAP_T21PC0101",
+      "header": "MAP_CHERRYGROVE_POKECENTER_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 555,
       "z": 391,
-      "header": "MAP_T21FS0101",
+      "header": "MAP_CHERRYGROVE_POKEMART",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 547,
       "z": 399,
-      "header": "MAP_T21R0301",
+      "header": "MAP_CHERRYGROVE_SOUTHWEST_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 558,
       "z": 401,
-      "header": "MAP_T21R0401",
+      "header": "MAP_CHERRYGROVE_GUIDE_GENT_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 567,
       "z": 405,
-      "header": "MAP_T21R0501",
+      "header": "MAP_CHERRYGROVE_SOUTHEAST_HOUSE",
       "anchor": 0,
       "y": 0
     }

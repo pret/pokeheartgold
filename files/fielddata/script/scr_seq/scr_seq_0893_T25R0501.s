@@ -16,7 +16,7 @@
 	scrdef_end
 
 scr_seq_T25R0501_006:
-	scrcmd_582 MAP_T25, 348, 350
+	scrcmd_582 MAP_GOLDENROD, 348, 350
 	goto_if_set FLAG_RESTORED_POWER, _0037
 	end
 

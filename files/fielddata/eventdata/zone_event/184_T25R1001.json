@@ -118,21 +118,21 @@
     {
       "x": 12,
       "z": 11,
-      "header": "MAP_T25",
+      "header": "MAP_GOLDENROD",
       "anchor": 8,
       "y": 0
     },
     {
       "x": 13,
       "z": 7,
-      "header": "MAP_T25R1002",
+      "header": "MAP_GOLDENROD_DEPARTMENT_STORE_2F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 19,
       "z": 2,
-      "header": "MAP_T25R1007",
+      "header": "MAP_GOLDENROD_DEPARTMENT_STORE_ELEVATOR",
       "anchor": 0,
       "y": 0
     }

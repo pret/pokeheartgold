@@ -23,14 +23,14 @@
     {
       "x": 5,
       "z": 10,
-      "header": "MAP_T01",
+      "header": "MAP_PALLET",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 3,
       "z": 3,
-      "header": "MAP_T01R0202",
+      "header": "MAP_PALLET_TOWN_BLUES_HOUSE_2F",
       "anchor": 0,
       "y": 0
     }

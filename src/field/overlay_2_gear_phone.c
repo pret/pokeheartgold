@@ -184,7 +184,7 @@ static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
         if (mapId == phoneBook->entries[ptr[j]].mapId || sub_0202AA44(miscData, var, ptr[j]) || ptr[j] == 8 && (sub_02095FF8(hour) || Save_VarsFlags_IsInRocketTakeover(varsFlags))) {
             continue;
         }
-        if (phoneBook->entries[ptr[j]].mapId != MAP_D22R0101 || !bugContestFlag) {
+        if (phoneBook->entries[ptr[j]].mapId != MAP_NATIONAL_PARK || !bugContestFlag) {
             contact[ret++].id = ptr[j];
         }
     }

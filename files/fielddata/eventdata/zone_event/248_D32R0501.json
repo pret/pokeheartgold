@@ -169,21 +169,21 @@
     {
       "x": 21,
       "z": 9,
-      "header": "MAP_D32",
+      "header": "MAP_BATTLE_FRONTIER",
       "anchor": 15,
       "y": 0
     },
     {
       "x": 21,
       "z": 8,
-      "header": "MAP_D32",
+      "header": "MAP_BATTLE_FRONTIER",
       "anchor": 15,
       "y": 0
     },
     {
       "x": 21,
       "z": 10,
-      "header": "MAP_D32",
+      "header": "MAP_BATTLE_FRONTIER",
       "anchor": 15,
       "y": 0
     }

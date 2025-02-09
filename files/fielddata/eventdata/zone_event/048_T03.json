@@ -251,42 +251,42 @@
     {
       "x": 1048,
       "z": 78,
-      "header": "MAP_T03R0101",
+      "header": "MAP_PEWTER_MUSEUM_OF_SCIENCE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1068,
       "z": 87,
-      "header": "MAP_T03R0201",
+      "header": "MAP_PEWTER_NORTHEAST_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1047,
       "z": 92,
-      "header": "MAP_T03GYM0101",
+      "header": "MAP_PEWTER_GYM",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1060,
       "z": 97,
-      "header": "MAP_T03FS0101",
+      "header": "MAP_PEWTER_POKEMART",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1048,
       "z": 106,
-      "header": "MAP_T03PC0101",
+      "header": "MAP_PEWTER_POKECENTER_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1037,
       "z": 111,
-      "header": "MAP_T03R0601",
+      "header": "MAP_PEWTER_SOUTHWEST_HOUSE",
       "anchor": 0,
       "y": 0
     }

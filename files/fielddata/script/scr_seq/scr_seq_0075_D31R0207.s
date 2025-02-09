@@ -133,7 +133,7 @@ _01A3:
 	setvar VAR_UNK_414B, 3
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D31R0201, 0, 11, 6, DIR_NORTH
+	warp MAP_BATTLE_TOWER, 0, 11, 6, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	end
@@ -148,7 +148,7 @@ scr_seq_D31R0207_009:
 	setvar VAR_UNK_414D, 2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D31R0202, 0, 3, 6, DIR_NORTH
+	warp MAP_BATTLE_TOWER_ELEVATOR, 0, 3, 6, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -372,7 +372,7 @@ _04E5:
 	wait_movement
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D31R0207, 0, 8, 4, DIR_NORTH
+	warp MAP_BATTLE_TOWER_PARTNER_ROOM, 0, 8, 4, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

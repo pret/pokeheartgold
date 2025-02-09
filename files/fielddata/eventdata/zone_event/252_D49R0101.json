@@ -325,21 +325,21 @@
     {
       "x": 23,
       "z": 23,
-      "header": "MAP_D49",
+      "header": "MAP_POKEATHLON_DOME",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 29,
       "z": 4,
-      "header": "MAP_D49R0104",
+      "header": "MAP_POKEATHLON_DOME_INTERIOR_B1F_SOLIDARITY_ROOM",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 16,
       "z": 4,
-      "header": "MAP_D49R0103",
+      "header": "MAP_POKEATHLON_DOME_INTERIOR_2F_ENTRANCE",
       "anchor": 0,
       "y": 0
     }

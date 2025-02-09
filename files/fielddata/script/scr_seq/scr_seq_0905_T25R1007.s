@@ -79,7 +79,7 @@ _00BC:
 _017C:
 	wait 1, VAR_SPECIAL_RESULT
 	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
-	set_dynamic_warp MAP_T25R1001, 2, 19, 3, 1
+	set_dynamic_warp MAP_GOLDENROD_DEPARTMENT_STORE_1F, 2, 19, 3, 1
 	compare VAR_ELEVATOR_LAST_FLOOR, 1
 	goto_if_eq _0881
 	compare VAR_ELEVATOR_LAST_FLOOR, 1
@@ -127,7 +127,7 @@ _0249:
 _025B:
 	wait 1, VAR_SPECIAL_RESULT
 	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
-	set_dynamic_warp MAP_T25R1002, 2, 19, 3, 1
+	set_dynamic_warp MAP_GOLDENROD_DEPARTMENT_STORE_2F, 2, 19, 3, 1
 	compare VAR_ELEVATOR_LAST_FLOOR, 2
 	goto_if_eq _0881
 	compare VAR_ELEVATOR_LAST_FLOOR, 2
@@ -175,7 +175,7 @@ _0328:
 _033A:
 	wait 1, VAR_SPECIAL_RESULT
 	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
-	set_dynamic_warp MAP_T25R1003, 2, 19, 3, 1
+	set_dynamic_warp MAP_GOLDENROD_DEPARTMENT_STORE_3F, 2, 19, 3, 1
 	compare VAR_ELEVATOR_LAST_FLOOR, 3
 	goto_if_eq _0881
 	compare VAR_ELEVATOR_LAST_FLOOR, 3
@@ -223,7 +223,7 @@ _0407:
 _0419:
 	wait 1, VAR_SPECIAL_RESULT
 	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
-	set_dynamic_warp MAP_T25R1004, 2, 19, 3, 1
+	set_dynamic_warp MAP_GOLDENROD_DEPARTMENT_STORE_4F, 2, 19, 3, 1
 	compare VAR_ELEVATOR_LAST_FLOOR, 4
 	goto_if_eq _0881
 	compare VAR_ELEVATOR_LAST_FLOOR, 4
@@ -271,7 +271,7 @@ _04E6:
 _04F8:
 	wait 1, VAR_SPECIAL_RESULT
 	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
-	set_dynamic_warp MAP_T25R1005, 2, 19, 3, 1
+	set_dynamic_warp MAP_GOLDENROD_DEPARTMENT_STORE_5F, 2, 19, 3, 1
 	compare VAR_ELEVATOR_LAST_FLOOR, 5
 	goto_if_eq _0881
 	compare VAR_ELEVATOR_LAST_FLOOR, 5
@@ -319,7 +319,7 @@ _05C5:
 _05D7:
 	wait 1, VAR_SPECIAL_RESULT
 	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
-	set_dynamic_warp MAP_T25R1006, 1, 19, 3, 1
+	set_dynamic_warp MAP_GOLDENROD_DEPARTMENT_STORE_6F, 1, 19, 3, 1
 	compare VAR_ELEVATOR_LAST_FLOOR, 6
 	goto_if_eq _0881
 	compare VAR_ELEVATOR_LAST_FLOOR, 6
@@ -367,7 +367,7 @@ _06A4:
 _06B6:
 	wait 1, VAR_SPECIAL_RESULT
 	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
-	set_dynamic_warp MAP_D37R0103, 1, 19, 3, 1
+	set_dynamic_warp MAP_GOLDENROD_DEPARTMENT_STORE_BASEMENT, 1, 19, 3, 1
 	compare VAR_ELEVATOR_LAST_FLOOR, 0
 	goto_if_eq _0881
 	compare VAR_ELEVATOR_LAST_FLOOR, 0

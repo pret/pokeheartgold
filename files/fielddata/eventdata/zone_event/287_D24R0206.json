@@ -50,14 +50,14 @@
     {
       "x": 6,
       "z": 17,
-      "header": "MAP_D24R0101",
+      "header": "MAP_RUINS_OF_ALPH",
       "anchor": 6,
       "y": 0
     },
     {
       "x": 6,
       "z": 2,
-      "header": "MAP_D24R0215",
+      "header": "MAP_RUINS_OF_ALPH_SOUTHWEST_ENTRANCE_SECOND_ROOM",
       "anchor": 0,
       "y": 0
     }

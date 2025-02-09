@@ -1,7 +1,7 @@
 {
     "photos": [
         {
-            "map": "MAP_T20",
+            "map": "MAP_NEW_BARK",
             "icon": 5,
             "x": 695,
             "y": 399,
@@ -14,7 +14,7 @@
             ]
         },
         {
-            "map": "MAP_T21",
+            "map": "MAP_CHERRYGROVE",
             "icon": 7,
             "x": 562,
             "y": 398,
@@ -27,7 +27,7 @@
             ]
         },
         {
-            "map": "MAP_T07R0104",
+            "map": "MAP_CELADON_DEPARTMENT_STORE_4F",
             "icon": 6,
             "x": 12,
             "y": 5,
@@ -40,7 +40,7 @@
             ]
         },
         {
-            "map": "MAP_D24R0101",
+            "map": "MAP_RUINS_OF_ALPH",
             "icon": 5,
             "x": 435,
             "y": 280,
@@ -53,7 +53,7 @@
             ]
         },
         {
-            "map": "MAP_D24R0211",
+            "map": "MAP_RUINS_OF_ALPH_HALL_ENTRANCE",
             "icon": 4,
             "x": 4,
             "y": 4,
@@ -66,7 +66,7 @@
             ]
         },
         {
-            "map": "MAP_R32",
+            "map": "MAP_ROUTE_32",
             "icon": 9,
             "x": 468,
             "y": 395,
@@ -79,7 +79,7 @@
             ]
         },
         {
-            "map": "MAP_D26R0101",
+            "map": "MAP_SLOWPOKE_WELL_ENTRANCE",
             "icon": 4,
             "x": 16,
             "y": 6,
@@ -92,7 +92,7 @@
             ]
         },
         {
-            "map": "MAP_D22R0101",
+            "map": "MAP_NATIONAL_PARK",
             "icon": 7,
             "x": 58,
             "y": 40,
@@ -105,7 +105,7 @@
             ]
         },
         {
-            "map": "MAP_D36R0101",
+            "map": "MAP_ILEX_FOREST",
             "icon": 8,
             "x": 11,
             "y": 20,
@@ -118,7 +118,7 @@
             ]
         },
         {
-            "map": "MAP_R34",
+            "map": "MAP_ROUTE_34",
             "icon": 5,
             "x": 363,
             "y": 410,
@@ -131,7 +131,7 @@
             ]
         },
         {
-            "map": "MAP_D37R0102",
+            "map": "MAP_GOLDENROD_TUNNEL_B1F",
             "icon": 6,
             "x": 17,
             "y": 6,
@@ -144,7 +144,7 @@
             ]
         },
         {
-            "map": "MAP_R35",
+            "map": "MAP_ROUTE_35",
             "icon": 9,
             "x": 372,
             "y": 303,
@@ -157,7 +157,7 @@
             ]
         },
         {
-            "map": "MAP_R35R0201",
+            "map": "MAP_ROUTE_35_NATIONAL_PARK_POKEATHALON_GATEHOUSE",
             "icon": 6,
             "x": 10,
             "y": 5,
@@ -170,7 +170,7 @@
             ]
         },
         {
-            "map": "MAP_D49",
+            "map": "MAP_POKEATHLON_DOME",
             "icon": 7,
             "x": 19,
             "y": 26,
@@ -183,7 +183,7 @@
             ]
         },
         {
-            "map": "MAP_D49",
+            "map": "MAP_POKEATHLON_DOME",
             "icon": 5,
             "x": 41,
             "y": 25,
@@ -196,7 +196,7 @@
             ]
         },
         {
-            "map": "MAP_T25R1006",
+            "map": "MAP_GOLDENROD_DEPARTMENT_STORE_6F",
             "icon": 6,
             "x": 3,
             "y": 4,
@@ -209,7 +209,7 @@
             ]
         },
         {
-            "map": "MAP_D22R0101",
+            "map": "MAP_NATIONAL_PARK",
             "icon": 9,
             "x": 54,
             "y": 48,
@@ -222,7 +222,7 @@
             ]
         },
         {
-            "map": "MAP_D22R0101",
+            "map": "MAP_NATIONAL_PARK",
             "icon": 7,
             "x": 52,
             "y": 78,
@@ -235,7 +235,7 @@
             ]
         },
         {
-            "map": "MAP_R36",
+            "map": "MAP_ROUTE_36",
             "icon": 8,
             "x": 396,
             "y": 220,
@@ -248,7 +248,7 @@
             ]
         },
         {
-            "map": "MAP_T27",
+            "map": "MAP_ECRUTEAK",
             "icon": 5,
             "x": 390,
             "y": 156,
@@ -261,7 +261,7 @@
             ]
         },
         {
-            "map": "MAP_D17R1101",
+            "map": "MAP_BELLCHIME_TOWER",
             "icon": 8,
             "x": 31,
             "y": 12,
@@ -274,7 +274,7 @@
             ]
         },
         {
-            "map": "MAP_T27R0501",
+            "map": "MAP_ECRUTEAK_DANCE_THEATER",
             "icon": 6,
             "x": 5,
             "y": 6,
@@ -287,7 +287,7 @@
             ]
         },
         {
-            "map": "MAP_D17R0107",
+            "map": "MAP_BELL_TOWER_7F",
             "icon": 6,
             "x": 7,
             "y": 8,
@@ -300,7 +300,7 @@
             ]
         },
         {
-            "map": "MAP_T26",
+            "map": "MAP_OLIVINE",
             "icon": 5,
             "x": 278,
             "y": 253,
@@ -313,7 +313,7 @@
             ]
         },
         {
-            "map": "MAP_T26GYM0101",
+            "map": "MAP_OLIVINE_GYM",
             "icon": 6,
             "x": 5,
             "y": 6,
@@ -326,7 +326,7 @@
             ]
         },
         {
-            "map": "MAP_T26R0701",
+            "map": "MAP_OLIVINE_CAFE",
             "icon": 6,
             "x": 6,
             "y": 4,
@@ -339,7 +339,7 @@
             ]
         },
         {
-            "map": "MAP_P01R0102",
+            "map": "MAP_SS_AQUA_OLIVINE_PORT_EXTERIOR",
             "icon": 1,
             "x": 23,
             "y": 23,
@@ -352,7 +352,7 @@
             ]
         },
         {
-            "map": "MAP_D27R0106",
+            "map": "MAP_OLIVINE_LIGHTHOUSE_5F",
             "icon": 6,
             "x": 2,
             "y": 10,
@@ -365,7 +365,7 @@
             ]
         },
         {
-            "map": "MAP_R39",
+            "map": "MAP_ROUTE_39",
             "icon": 5,
             "x": 262,
             "y": 168,
@@ -378,7 +378,7 @@
             ]
         },
         {
-            "map": "MAP_D32R0102",
+            "map": "MAP_BATTLE_FRONTIER_FRONTIER_ACCESS",
             "icon": 5,
             "x": 13,
             "y": 12,
@@ -391,7 +391,7 @@
             ]
         },
         {
-            "map": "MAP_C11R0101",
+            "map": "MAP_FIGHT_AREA_UNUSED_5",
             "icon": 6,
             "x": 6,
             "y": 8,
@@ -404,7 +404,7 @@
             ]
         },
         {
-            "map": "MAP_D32",
+            "map": "MAP_BATTLE_FRONTIER",
             "icon": 5,
             "x": 70,
             "y": 35,
@@ -417,7 +417,7 @@
             ]
         },
         {
-            "map": "MAP_W40",
+            "map": "MAP_ROUTE_40",
             "icon": 1,
             "x": 240,
             "y": 269,
@@ -430,7 +430,7 @@
             ]
         },
         {
-            "map": "MAP_W41",
+            "map": "MAP_ROUTE_41",
             "icon": 1,
             "x": 206,
             "y": 344,
@@ -443,7 +443,7 @@
             ]
         },
         {
-            "map": "MAP_D40R0102",
+            "map": "MAP_WHIRL_ISLANDS_B1F",
             "icon": 4,
             "x": 73,
             "y": 10,
@@ -456,7 +456,7 @@
             ]
         },
         {
-            "map": "MAP_T24",
+            "map": "MAP_CIANWOOD",
             "icon": 1,
             "x": 185,
             "y": 351,
@@ -469,7 +469,7 @@
             ]
         },
         {
-            "map": "MAP_T24GYM0101",
+            "map": "MAP_CIANWOOD_GYM",
             "icon": 6,
             "x": 12,
             "y": 16,
@@ -482,7 +482,7 @@
             ]
         },
         {
-            "map": "MAP_R48",
+            "map": "MAP_ROUTE_48",
             "icon": 7,
             "x": 101,
             "y": 339,
@@ -495,7 +495,7 @@
             ]
         },
         {
-            "map": "MAP_D47",
+            "map": "MAP_SAFARI_ZONE_GATE",
             "icon": 5,
             "x": 87,
             "y": 296,
@@ -508,7 +508,7 @@
             ]
         },
         {
-            "map": "MAP_D38R0102",
+            "map": "MAP_MOUNT_MORTAR_1F_BACK",
             "icon": 4,
             "x": 25,
             "y": 18,
@@ -521,7 +521,7 @@
             ]
         },
         {
-            "map": "MAP_T28GYM0101",
+            "map": "MAP_MAHOGANY_GYM_LEADER_ROOM",
             "icon": 6,
             "x": 6,
             "y": 5,
@@ -534,7 +534,7 @@
             ]
         },
         {
-            "map": "MAP_T29",
+            "map": "MAP_LAKE_OF_RAGE",
             "icon": 9,
             "x": 526,
             "y": 85,
@@ -547,7 +547,7 @@
             ]
         },
         {
-            "map": "MAP_R44",
+            "map": "MAP_ROUTE_44",
             "icon": 0,
             "x": 562,
             "y": 182,
@@ -560,7 +560,7 @@
             ]
         },
         {
-            "map": "MAP_D39R0101",
+            "map": "MAP_ICE_PATH_1F",
             "icon": 4,
             "x": 38,
             "y": 17,
@@ -573,7 +573,7 @@
             ]
         },
         {
-            "map": "MAP_T30",
+            "map": "MAP_BLACKTHORN",
             "icon": 5,
             "x": 684,
             "y": 171,
@@ -586,7 +586,7 @@
             ]
         },
         {
-            "map": "MAP_T30GYM0101",
+            "map": "MAP_BLACKTHORN_GYM",
             "icon": 4,
             "x": 11,
             "y": 4,
@@ -599,7 +599,7 @@
             ]
         },
         {
-            "map": "MAP_D44R0103",
+            "map": "MAP_DRAGONS_DEN_SHRINE",
             "icon": 6,
             "x": 5,
             "y": 11,
@@ -612,7 +612,7 @@
             ]
         },
         {
-            "map": "MAP_R45",
+            "map": "MAP_ROUTE_45",
             "icon": 7,
             "x": 648,
             "y": 254,
@@ -625,7 +625,7 @@
             ]
         },
         {
-            "map": "MAP_R26",
+            "map": "MAP_ROUTE_26",
             "icon": 8,
             "x": 914,
             "y": 386,
@@ -638,7 +638,7 @@
             ]
         },
         {
-            "map": "MAP_T06GYM0101",
+            "map": "MAP_VERMILION_GYM",
             "icon": 6,
             "x": 5,
             "y": 5,
@@ -651,7 +651,7 @@
             ]
         },
         {
-            "map": "MAP_T06",
+            "map": "MAP_VERMILION",
             "icon": 7,
             "x": 1318,
             "y": 302,
@@ -664,7 +664,7 @@
             ]
         },
         {
-            "map": "MAP_T11GYM0101",
+            "map": "MAP_SAFFRON_GYM",
             "icon": 6,
             "x": 14,
             "y": 13,
@@ -677,7 +677,7 @@
             ]
         },
         {
-            "map": "MAP_T11",
+            "map": "MAP_SAFFRON",
             "icon": 5,
             "x": 1287,
             "y": 211,
@@ -690,7 +690,7 @@
             ]
         },
         {
-            "map": "MAP_T11",
+            "map": "MAP_SAFFRON",
             "icon": 5,
             "x": 1307,
             "y": 232,
@@ -703,7 +703,7 @@
             ]
         },
         {
-            "map": "MAP_T04GYM0101",
+            "map": "MAP_CERULEAN_GYM",
             "icon": 6,
             "x": 14,
             "y": 4,
@@ -716,7 +716,7 @@
             ]
         },
         {
-            "map": "MAP_T04",
+            "map": "MAP_CERULEAN",
             "icon": 9,
             "x": 1325,
             "y": 104,
@@ -729,7 +729,7 @@
             ]
         },
         {
-            "map": "MAP_T07GYM0101",
+            "map": "MAP_CELADON_GYM",
             "icon": 6,
             "x": 6,
             "y": 4,
@@ -742,7 +742,7 @@
             ]
         },
         {
-            "map": "MAP_T07",
+            "map": "MAP_CELADON",
             "icon": 7,
             "x": 1200,
             "y": 252,
@@ -755,7 +755,7 @@
             ]
         },
         {
-            "map": "MAP_T07R0102",
+            "map": "MAP_CELADON_DEPARTMENT_STORE_2F",
             "icon": 6,
             "x": 3,
             "y": 6,
@@ -768,7 +768,7 @@
             ]
         },
         {
-            "map": "MAP_R12",
+            "map": "MAP_ROUTE_12",
             "icon": 1,
             "x": 1427,
             "y": 275,
@@ -781,7 +781,7 @@
             ]
         },
         {
-            "map": "MAP_R14",
+            "map": "MAP_ROUTE_14",
             "icon": 1,
             "x": 1357,
             "y": 387,
@@ -794,7 +794,7 @@
             ]
         },
         {
-            "map": "MAP_T08GYM0101",
+            "map": "MAP_FUCHSIA_GYM",
             "icon": 6,
             "x": 6,
             "y": 15,
@@ -807,7 +807,7 @@
             ]
         },
         {
-            "map": "MAP_T08",
+            "map": "MAP_FUCHSIA",
             "icon": 5,
             "x": 1201,
             "y": 441,
@@ -820,7 +820,7 @@
             ]
         },
         {
-            "map": "MAP_R17",
+            "map": "MAP_ROUTE_17",
             "icon": 5,
             "x": 1142,
             "y": 403,
@@ -833,7 +833,7 @@
             ]
         },
         {
-            "map": "MAP_T03GYM0101",
+            "map": "MAP_PEWTER_GYM",
             "icon": 6,
             "x": 6,
             "y": 5,
@@ -846,7 +846,7 @@
             ]
         },
         {
-            "map": "MAP_T03R0101",
+            "map": "MAP_PEWTER_MUSEUM_OF_SCIENCE",
             "icon": 6,
             "x": 8,
             "y": 4,
@@ -859,7 +859,7 @@
             ]
         },
         {
-            "map": "MAP_T03",
+            "map": "MAP_PEWTER",
             "icon": 5,
             "x": 1047,
             "y": 81,
@@ -872,7 +872,7 @@
             ]
         },
         {
-            "map": "MAP_D46R0101",
+            "map": "MAP_VIRIDIAN_FOREST",
             "icon": 8,
             "x": 26,
             "y": 71,
@@ -885,7 +885,7 @@
             ]
         },
         {
-            "map": "MAP_T02GYM0101",
+            "map": "MAP_VIRIDIAN_GYM",
             "icon": 6,
             "x": 4,
             "y": 5,
@@ -898,7 +898,7 @@
             ]
         },
         {
-            "map": "MAP_T02",
+            "map": "MAP_VIRIDIAN",
             "icon": 5,
             "x": 1037,
             "y": 256,
@@ -911,7 +911,7 @@
             ]
         },
         {
-            "map": "MAP_R22R0101",
+            "map": "MAP_ROUTE_22_POKEMON_LEAGUE_RECEPTION_GATE",
             "icon": 6,
             "x": 10,
             "y": 8,
@@ -924,7 +924,7 @@
             ]
         },
         {
-            "map": "MAP_R22",
+            "map": "MAP_ROUTE_22",
             "icon": 0,
             "x": 952,
             "y": 267,
@@ -937,7 +937,7 @@
             ]
         },
         {
-            "map": "MAP_R01",
+            "map": "MAP_ROUTE_1",
             "icon": 8,
             "x": 1036,
             "y": 316,
@@ -950,7 +950,7 @@
             ]
         },
         {
-            "map": "MAP_T01",
+            "map": "MAP_PALLET",
             "icon": 5,
             "x": 1031,
             "y": 367,
@@ -963,7 +963,7 @@
             ]
         },
         {
-            "map": "MAP_W21",
+            "map": "MAP_ROUTE_21",
             "icon": 1,
             "x": 1043,
             "y": 412,
@@ -976,7 +976,7 @@
             ]
         },
         {
-            "map": "MAP_D11R0102",
+            "map": "MAP_SEAFOAM_ISLANDS_B1F",
             "icon": 4,
             "x": 33,
             "y": 9,
@@ -989,7 +989,7 @@
             ]
         },
         {
-            "map": "MAP_D11R0106",
+            "map": "MAP_SEAFOAM_ISLANDS_CINNABAR_GYM",
             "icon": 4,
             "x": 12,
             "y": 12,
@@ -1002,7 +1002,7 @@
             ]
         },
         {
-            "map": "MAP_T31",
+            "map": "MAP_MOUNT_SILVER",
             "icon": 5,
             "x": 820,
             "y": 267,
@@ -1015,7 +1015,7 @@
             ]
         },
         {
-            "map": "MAP_D41R0101",
+            "map": "MAP_MOUNT_SILVER_CAVE_1F",
             "icon": 4,
             "x": 12,
             "y": 36,
@@ -1028,7 +1028,7 @@
             ]
         },
         {
-            "map": "MAP_T27GYM0101",
+            "map": "MAP_ECRUTEAK_GYM",
             "icon": 4,
             "x": 9,
             "y": 9,
@@ -1041,7 +1041,7 @@
             ]
         },
         {
-            "map": "MAP_R39",
+            "map": "MAP_ROUTE_39",
             "icon": 0,
             "x": 261,
             "y": 188,
@@ -1054,7 +1054,7 @@
             ]
         },
         {
-            "map": "MAP_T07",
+            "map": "MAP_CELADON",
             "icon": 7,
             "x": 1200,
             "y": 252,
@@ -1067,7 +1067,7 @@
             ]
         },
         {
-            "map": "MAP_T07",
+            "map": "MAP_CELADON",
             "icon": 5,
             "x": 1205,
             "y": 239,
@@ -1080,7 +1080,7 @@
             ]
         },
         {
-            "map": "MAP_D44R0102",
+            "map": "MAP_DRAGONS_DEN",
             "icon": 4,
             "x": 27,
             "y": 13,
@@ -1093,7 +1093,7 @@
             ]
         },
         {
-            "map": "MAP_R25",
+            "map": "MAP_ROUTE_25",
             "icon": 0,
             "x": 1420,
             "y": 44,
@@ -1106,7 +1106,7 @@
             ]
         },
         {
-            "map": "MAP_T09",
+            "map": "MAP_CINNABAR_ISLAND",
             "icon": 1,
             "x": 1035,
             "y": 504,
@@ -1119,7 +1119,7 @@
             ]
         },
         {
-            "map": "MAP_D01R0101",
+            "map": "MAP_DIGLETT_CAVE",
             "icon": 4,
             "x": 35,
             "y": 5,
@@ -1132,7 +1132,7 @@
             ]
         },
         {
-            "map": "MAP_D46R0101",
+            "map": "MAP_VIRIDIAN_FOREST",
             "icon": 8,
             "x": 26,
             "y": 71,
@@ -1145,7 +1145,7 @@
             ]
         },
         {
-            "map": "MAP_P01R0102",
+            "map": "MAP_SS_AQUA_OLIVINE_PORT_EXTERIOR",
             "icon": 1,
             "x": 16,
             "y": 22,
@@ -1158,7 +1158,7 @@
             ]
         },
         {
-            "map": "MAP_T26R0701",
+            "map": "MAP_OLIVINE_CAFE",
             "icon": 6,
             "x": 7,
             "y": 5,
@@ -1171,7 +1171,7 @@
             ]
         },
         {
-            "map": "MAP_T01R0301",
+            "map": "MAP_PALLET_TOWN_OAKS_LAB",
             "icon": 6,
             "x": 6,
             "y": 6,
@@ -1184,7 +1184,7 @@
             ]
         },
         {
-            "map": "MAP_R47",
+            "map": "MAP_ROUTE_47",
             "icon": 0,
             "x": 79,
             "y": 371,
@@ -1197,7 +1197,7 @@
             ]
         },
         {
-            "map": "MAP_T09",
+            "map": "MAP_CINNABAR_ISLAND",
             "icon": 1,
             "x": 1034,
             "y": 495,

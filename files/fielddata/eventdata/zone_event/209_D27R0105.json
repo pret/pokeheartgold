@@ -57,28 +57,28 @@
     {
       "x": 10,
       "z": 7,
-      "header": "MAP_D27R0104",
+      "header": "MAP_OLIVINE_LIGHTHOUSE_3F",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 6,
       "z": 7,
-      "header": "MAP_D27R0104",
+      "header": "MAP_OLIVINE_LIGHTHOUSE_3F",
       "anchor": 3,
       "y": 0
     },
     {
       "x": 3,
       "z": 5,
-      "header": "MAP_D27R0106",
+      "header": "MAP_OLIVINE_LIGHTHOUSE_5F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 3,
       "z": 4,
-      "header": "MAP_D27R0106",
+      "header": "MAP_OLIVINE_LIGHTHOUSE_5F",
       "anchor": 0,
       "y": 0
     }

@@ -90,7 +90,7 @@ Mail *NPCTrade_MakeKenyaMail(void) {
 
     mon = AllocMonZeroed(HEAP_ID_FIELD);
     trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, 7, FALSE, HEAP_ID_FIELD, TRUE);
-    _CreateTradeMon(mon, trade_dat, 20, NPC_TRADE_KENYA_SPEAROW, MAP_R35R0101, 7, HEAP_ID_FIELD);
+    _CreateTradeMon(mon, trade_dat, 20, NPC_TRADE_KENYA_SPEAROW, MAP_ROUTE_35_GOLDENROD_GATEHOUSE, 7, HEAP_ID_FIELD);
     name = _GetNpcTradeName(HEAP_ID_FIELD, NPC_TRADE_OT_NUM(NPC_TRADE_KENYA_SPEAROW));
     mailno = ItemToMailId(trade_dat->heldItem);
     mail = CreateKenyaMail(mon, mailno, trade_dat->gender, name, trade_dat->otId);

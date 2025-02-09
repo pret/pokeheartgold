@@ -109,49 +109,49 @@
     {
       "x": 14,
       "z": 34,
-      "header": "MAP_W40R0101",
+      "header": "MAP_ROUTE_40_BATTLE_FRONTIER_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 15,
       "z": 34,
-      "header": "MAP_W40R0101",
+      "header": "MAP_ROUTE_40_BATTLE_FRONTIER_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 14,
       "z": 7,
-      "header": "MAP_D32R0101",
+      "header": "MAP_BATTLE_FRONTIER_FRONTIER_ACCESS_GATEHOUSE",
       "anchor": 4,
       "y": 0
     },
     {
       "x": 15,
       "z": 7,
-      "header": "MAP_D32R0101",
+      "header": "MAP_BATTLE_FRONTIER_FRONTIER_ACCESS_GATEHOUSE",
       "anchor": 4,
       "y": 0
     },
     {
       "x": 8,
       "z": 14,
-      "header": "MAP_D32PC0101",
+      "header": "MAP_FRONTIER_ACCESS_POKECENTER_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 19,
       "z": 14,
-      "header": "MAP_D32FS0101",
+      "header": "MAP_FRONTIER_ACCESS_POKEMART",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 4,
       "z": 23,
-      "header": "MAP_D32R0103",
+      "header": "MAP_FRONTIER_ACCESS_MOVE_TUTOR_HOUSE",
       "anchor": 0,
       "y": 0
     }

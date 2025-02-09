@@ -23,14 +23,14 @@
     {
       "x": 1,
       "z": 7,
-      "header": "MAP_R11",
+      "header": "MAP_ROUTE_11",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 10,
       "z": 7,
-      "header": "MAP_R12",
+      "header": "MAP_ROUTE_12",
       "anchor": 0,
       "y": 0
     }

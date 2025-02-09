@@ -46,7 +46,7 @@ _008C:
 	call _00F4
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_T11R0701, 0, 3, 3, DIR_SOUTH
+	warp MAP_SAFFRON_SILPH_CO_HQ, 0, 3, 3, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -57,7 +57,7 @@ _00C0:
 	call _00F4
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_T11R0702, 0, 7, 3, DIR_SOUTH
+	warp MAP_SAFFRON_SILPH_CO_ROTOM_ROOM, 0, 7, 3, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -146,7 +146,7 @@ _01F0:
 	call _00FE
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_T11R0702, 0, 7, 3, DIR_SOUTH
+	warp MAP_SAFFRON_SILPH_CO_ROTOM_ROOM, 0, 7, 3, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -157,7 +157,7 @@ _0224:
 	call _00FE
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_T11R0701, 0, 3, 3, DIR_SOUTH
+	warp MAP_SAFFRON_SILPH_CO_HQ, 0, 3, 3, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

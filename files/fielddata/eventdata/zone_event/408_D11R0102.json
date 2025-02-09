@@ -169,42 +169,42 @@
     {
       "x": 45,
       "z": 21,
-      "header": "MAP_D11R0101",
+      "header": "MAP_SEAFOAM_ISLANDS_1F",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 2,
       "z": 8,
-      "header": "MAP_D11R0101",
+      "header": "MAP_SEAFOAM_ISLANDS_1F",
       "anchor": 3,
       "y": 0
     },
     {
       "x": 32,
       "z": 22,
-      "header": "MAP_D11R0103",
+      "header": "MAP_SEAFOAM_ISLANDS_B2F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 13,
       "z": 18,
-      "header": "MAP_D11R0103",
+      "header": "MAP_SEAFOAM_ISLANDS_B2F",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 17,
       "z": 9,
-      "header": "MAP_D11R0103",
+      "header": "MAP_SEAFOAM_ISLANDS_B2F",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 7,
       "z": 20,
-      "header": "MAP_D11R0103",
+      "header": "MAP_SEAFOAM_ISLANDS_B2F",
       "anchor": 3,
       "y": 0
     }

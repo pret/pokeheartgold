@@ -64,7 +64,7 @@ scr_seq_R36R0201_002:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D22R0102, 0, 75, 39, DIR_WEST
+	warp MAP_NATIONAL_PARK_BUG_CATCHING_CONTEST, 0, 75, 39, DIR_WEST
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	lock obj_partner_poke
@@ -145,7 +145,7 @@ _01DC:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D22R0102, 0, 75, 39, DIR_WEST
+	warp MAP_NATIONAL_PARK_BUG_CATCHING_CONTEST, 0, 75, 39, DIR_WEST
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	lock obj_partner_poke

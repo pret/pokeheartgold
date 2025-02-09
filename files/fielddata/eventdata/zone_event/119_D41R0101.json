@@ -66,49 +66,49 @@
     {
       "x": 40,
       "z": 61,
-      "header": "MAP_T31",
+      "header": "MAP_MOUNT_SILVER",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 15,
       "z": 12,
-      "header": "MAP_D41R0105",
+      "header": "MAP_MOUNT_SILVER_CAVE_MOLTRES_CHAMBER",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 34,
       "z": 47,
-      "header": "MAP_D41R0104",
+      "header": "MAP_MOUNT_SILVER_CAVE_EXPERT_BELT_CHAMBER",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 51,
       "z": 46,
-      "header": "MAP_D41R0103",
+      "header": "MAP_MOUNT_SILVER_CAVE_LOWER_MOUNTAINSIDE",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 53,
       "z": 41,
-      "header": "MAP_D41R0103",
+      "header": "MAP_MOUNT_SILVER_CAVE_LOWER_MOUNTAINSIDE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 55,
       "z": 24,
-      "header": "MAP_D41R0103",
+      "header": "MAP_MOUNT_SILVER_CAVE_LOWER_MOUNTAINSIDE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 32,
       "z": 9,
-      "header": "MAP_D41R0106",
+      "header": "MAP_MOUNT_SILVER_CAVE_2F",
       "anchor": 0,
       "y": 0
     }

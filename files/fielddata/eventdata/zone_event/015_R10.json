@@ -66,21 +66,21 @@
     {
       "x": 1419,
       "z": 163,
-      "header": "MAP_D05R0101",
+      "header": "MAP_ROCK_TUNNEL_1F",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 1423,
       "z": 184,
-      "header": "MAP_R10R0201",
+      "header": "MAP_ROUTE_10_POWER_PLANT_REPAIRED",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1426,
       "z": 163,
-      "header": "MAP_R10PC0101",
+      "header": "MAP_ROUTE_10_POKECENTER_1F",
       "anchor": 0,
       "y": 0
     }

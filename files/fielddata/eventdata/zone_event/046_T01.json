@@ -91,21 +91,21 @@
     {
       "x": 1033,
       "z": 363,
-      "header": "MAP_T01R0101",
+      "header": "MAP_PALLET_TOWN_REDS_HOUSE_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1044,
       "z": 363,
-      "header": "MAP_T01R0201",
+      "header": "MAP_PALLET_TOWN_BLUES_HOUSE_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1045,
       "z": 373,
-      "header": "MAP_T01R0301",
+      "header": "MAP_PALLET_TOWN_OAKS_LAB",
       "anchor": 0,
       "y": 0
     }

@@ -57,14 +57,14 @@
     {
       "x": 9,
       "z": 11,
-      "header": "MAP_T27",
+      "header": "MAP_ECRUTEAK",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 15,
       "z": 3,
-      "header": "MAP_T27R0202",
+      "header": "MAP_ECRUTEAK_BELL_TOWER_BARRIER_STATION_CORRIDOR",
       "anchor": 0,
       "y": 0
     }

@@ -211,42 +211,42 @@
     {
       "x": 38,
       "z": 14,
-      "header": "MAP_T10",
+      "header": "MAP_INDIGO_PLATEAU",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 25,
       "z": 45,
-      "header": "MAP_D43R0102",
+      "header": "MAP_VICTORY_ROAD_2F",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 49,
       "z": 39,
-      "header": "MAP_D43R0102",
+      "header": "MAP_VICTORY_ROAD_2F",
       "anchor": 3,
       "y": 0
     },
     {
       "x": 54,
       "z": 22,
-      "header": "MAP_D43R0102",
+      "header": "MAP_VICTORY_ROAD_2F",
       "anchor": 5,
       "y": 0
     },
     {
       "x": 5,
       "z": 19,
-      "header": "MAP_D43R0102",
+      "header": "MAP_VICTORY_ROAD_2F",
       "anchor": 7,
       "y": 0
     },
     {
       "x": 38,
       "z": 13,
-      "header": "MAP_T10",
+      "header": "MAP_INDIGO_PLATEAU",
       "anchor": 0,
       "y": 0
     }

@@ -57,14 +57,14 @@
     {
       "x": 1,
       "z": 7,
-      "header": "MAP_T22",
+      "header": "MAP_VIOLET",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 10,
       "z": 7,
-      "header": "MAP_R31",
+      "header": "MAP_ROUTE_31",
       "anchor": 0,
       "y": 0
     }

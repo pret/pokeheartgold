@@ -8,7 +8,7 @@
 #include "save_local_field_data.h"
 
 static const Location sLocation_PlayerRoom = {
-    .mapId = MAP_T20R0202,
+    .mapId = MAP_NEW_BARK_PLAYER_HOUSE_2F,
     .warpId = 0xFFFFFFFF,
     .x = 0x00000006,
     .y = 0x00000006,
@@ -16,7 +16,7 @@ static const Location sLocation_PlayerRoom = {
 };
 
 static const Location sLocation_OutsidePlayerHome = {
-    .mapId = MAP_T20,
+    .mapId = MAP_NEW_BARK,
     .warpId = 0xFFFFFFFF,
     .x = 0x000002B7,
     .y = 0x0000018D,

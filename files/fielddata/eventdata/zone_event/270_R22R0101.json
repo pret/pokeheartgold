@@ -74,28 +74,28 @@
     {
       "x": 11,
       "z": 23,
-      "header": "MAP_R26",
+      "header": "MAP_ROUTE_26",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 11,
       "z": 2,
-      "header": "MAP_D43R0101",
+      "header": "MAP_VICTORY_ROAD_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 21,
       "z": 8,
-      "header": "MAP_R22",
+      "header": "MAP_ROUTE_22",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1,
       "z": 8,
-      "header": "MAP_R28",
+      "header": "MAP_ROUTE_28",
       "anchor": 0,
       "y": 0
     }

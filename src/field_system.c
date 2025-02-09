@@ -212,7 +212,7 @@ void FieldSystem_Control(FieldSystem *fieldSystem) {
 
     int loadType = fieldSystem->unk70;
 
-    if (fieldSystem->location->mapId == MAP_D31R0201) {
+    if (fieldSystem->location->mapId == MAP_BATTLE_TOWER) {
         loadType = 0;
     }
 

@@ -18,7 +18,7 @@ _0021:
 	scrcmd_804 2
 	setflag FLAG_UNK_168
 	setflag FLAG_SYS_FLYPOINT_VERMILION
-	scrcmd_582 MAP_T06, 1309, 340
+	scrcmd_582 MAP_VERMILION, 1309, 340
 	end
 
 scr_seq_P01R0104_002:

@@ -158,14 +158,14 @@
     {
       "x": 7,
       "z": 2,
-      "header": "MAP_D49R0107",
+      "header": "MAP_POKEATHLON_DOME_INTERIOR_B1F_FRIENDSHIP_ROOM",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 3,
       "z": 14,
-      "header": "MAP_D49R0105",
+      "header": "MAP_POKEATHLON_DOME_INTERIOR_B1F_TRUST_ROOM",
       "anchor": 0,
       "y": 0
     }

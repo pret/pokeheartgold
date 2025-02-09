@@ -311,14 +311,14 @@
     {
       "x": 568,
       "z": 294,
-      "header": "MAP_R30R0201",
+      "header": "MAP_ROUTE_30_MR_POKEMON_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 555,
       "z": 355,
-      "header": "MAP_R30R0101",
+      "header": "MAP_ROUTE_30_APRICORN_HOUSE",
       "anchor": 0,
       "y": 0
     }

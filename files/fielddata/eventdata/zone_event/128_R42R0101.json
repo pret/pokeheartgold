@@ -23,14 +23,14 @@
     {
       "x": 1,
       "z": 7,
-      "header": "MAP_T27",
+      "header": "MAP_ECRUTEAK",
       "anchor": 10,
       "y": 0
     },
     {
       "x": 10,
       "z": 7,
-      "header": "MAP_R42",
+      "header": "MAP_ROUTE_42",
       "anchor": 0,
       "y": 0
     }

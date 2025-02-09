@@ -65,7 +65,7 @@ _00B3:
 	npc_msg msg_0507_T07R0207_00003
 	closemsg
 	setvar VAR_ELEVATOR_LAST_FLOOR, 65535
-	set_dynamic_warp MAP_T07R0204, 2, 5, 3, 1
+	set_dynamic_warp MAP_CELADON_CONDOMINIUMS_ROOF, 2, 5, 3, 1
 	setvar VAR_SPECIAL_x8004, 0
 	goto _0129
 
@@ -79,7 +79,7 @@ _00EE:
 	npc_msg msg_0507_T07R0207_00004
 	closemsg
 	setvar VAR_ELEVATOR_LAST_FLOOR, 65535
-	set_dynamic_warp MAP_T07R0202, 1, 5, 3, 1
+	set_dynamic_warp MAP_CELADON_CONDOMINIUMS_2F, 1, 5, 3, 1
 	setvar VAR_SPECIAL_x8004, 1
 	goto _0129
 

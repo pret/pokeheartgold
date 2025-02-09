@@ -109,7 +109,7 @@ _017E:
 	goto_if_eq _01EE
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0205, 0, 5, 24, VAR_SPECIAL_RESULT
+	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL, 0, 5, 24, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _01C0:
@@ -119,7 +119,7 @@ _01C0:
 _01C4:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0218, 0, 5, 24, VAR_SPECIAL_RESULT
+	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT_2, 0, 5, 24, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _01C0
@@ -127,7 +127,7 @@ _01C4:
 _01EE:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0216, 0, 5, 24, VAR_SPECIAL_RESULT
+	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT, 0, 5, 24, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _01C0

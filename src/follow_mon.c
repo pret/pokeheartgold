@@ -1859,17 +1859,17 @@ static void FollowMon_SetObjectShiny(LocalMapObject *mapObject, BOOL enable) {
 
 static BOOL FollowMon_DiglettPermissionCheck(int mapNo) {
     switch (mapNo) {
-    case MAP_D17R0101:
-    case MAP_D17R0102:
-    case MAP_D17R0103:
-    case MAP_D17R0104:
-    case MAP_D17R0105:
-    case MAP_D17R0106:
-    case MAP_D17R0107:
-    case MAP_D17R0108:
-    case MAP_D17R0109:
-    case MAP_D17R0110:
-    case MAP_D17R0112:
+    case MAP_BELL_TOWER_1F:
+    case MAP_BELL_TOWER_2F:
+    case MAP_BELL_TOWER_3F:
+    case MAP_BELL_TOWER_4F:
+    case MAP_BELL_TOWER_5F:
+    case MAP_BELL_TOWER_6F:
+    case MAP_BELL_TOWER_7F:
+    case MAP_BELL_TOWER_8F:
+    case MAP_BELL_TOWER_9F:
+    case MAP_BELL_TOWER_ROOF:
+    case MAP_BELL_TOWER_10F:
         return FALSE;
     default:
         return TRUE;
