@@ -67,14 +67,14 @@
     {
       "x": 11,
       "z": 14,
-      "header": "MAP_T11",
+      "header": "MAP_SAFFRON",
       "anchor": 8,
       "y": 0
     },
     {
       "x": 3,
       "z": 2,
-      "header": "MAP_T11R0703",
+      "header": "MAP_SAFFRON_SILPH_CO_ELEVATOR",
       "anchor": 0,
       "y": 0
     }

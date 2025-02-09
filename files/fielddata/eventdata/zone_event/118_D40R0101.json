@@ -50,70 +50,70 @@
     {
       "x": 37,
       "z": 25,
-      "header": "MAP_W41",
+      "header": "MAP_ROUTE_41",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 51,
       "z": 22,
-      "header": "MAP_D40R0102",
+      "header": "MAP_WHIRL_ISLANDS_B1F",
       "anchor": 5,
       "y": 0
     },
     {
       "x": 56,
       "z": 9,
-      "header": "MAP_D40R0102",
+      "header": "MAP_WHIRL_ISLANDS_B1F",
       "anchor": 7,
       "y": 0
     },
     {
       "x": 11,
       "z": 20,
-      "header": "MAP_W41",
+      "header": "MAP_ROUTE_41",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 8,
       "z": 16,
-      "header": "MAP_D40R0102",
+      "header": "MAP_WHIRL_ISLANDS_B1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 8,
       "z": 54,
-      "header": "MAP_W41",
+      "header": "MAP_ROUTE_41",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 6,
       "z": 49,
-      "header": "MAP_D40R0102",
+      "header": "MAP_WHIRL_ISLANDS_B1F",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 27,
       "z": 49,
-      "header": "MAP_D40R0102",
+      "header": "MAP_WHIRL_ISLANDS_B1F",
       "anchor": 9,
       "y": 0
     },
     {
       "x": 52,
       "z": 49,
-      "header": "MAP_D40R0102",
+      "header": "MAP_WHIRL_ISLANDS_B1F",
       "anchor": 12,
       "y": 0
     },
     {
       "x": 52,
       "z": 59,
-      "header": "MAP_W41",
+      "header": "MAP_ROUTE_41",
       "anchor": 3,
       "y": 0
     }

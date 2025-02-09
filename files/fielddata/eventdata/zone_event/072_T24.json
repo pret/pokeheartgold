@@ -276,56 +276,56 @@
     {
       "x": 172,
       "z": 357,
-      "header": "MAP_T24GYM0101",
+      "header": "MAP_CIANWOOD_GYM",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 187,
       "z": 369,
-      "header": "MAP_T24PC0101",
+      "header": "MAP_CIANWOOD_POKECENTER_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 179,
       "z": 370,
-      "header": "MAP_T24R0501",
+      "header": "MAP_CIANWOOD_PHARMACY",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 170,
       "z": 367,
-      "header": "MAP_T24R0201",
+      "header": "MAP_CIANWOOD_KIRKS_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 181,
       "z": 362,
-      "header": "MAP_T24R0701",
+      "header": "MAP_CIANWOOD_CENTRAL_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 181,
       "z": 354,
-      "header": "MAP_T24R0601",
+      "header": "MAP_CIANWOOD_CAMERONS_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 171,
       "z": 347,
-      "header": "MAP_D48R0101",
+      "header": "MAP_CLIFF_EDGE_GATE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 167,
       "z": 335,
-      "header": "MAP_T24R0801",
+      "header": "MAP_CIANWOOD_NORTH_HOUSE",
       "anchor": 0,
       "y": 0
     }

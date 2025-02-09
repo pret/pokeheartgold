@@ -265,7 +265,7 @@ _02D2:
 _02E4:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_T20, 0, 695, 397, DIR_SOUTH
+	warp MAP_NEW_BARK, 0, 695, 397, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

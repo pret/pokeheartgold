@@ -402,42 +402,42 @@
     {
       "x": 15,
       "z": 80,
-      "header": "MAP_T23R0101",
+      "header": "MAP_AZALEA_ILEX_FOREST_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 15,
       "z": 81,
-      "header": "MAP_T23R0101",
+      "header": "MAP_AZALEA_ILEX_FOREST_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 12,
       "z": 18,
-      "header": "MAP_R34R0201",
+      "header": "MAP_ROUTE_34_ILEX_FOREST_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 13,
       "z": 18,
-      "header": "MAP_R34R0201",
+      "header": "MAP_ROUTE_34_ILEX_FOREST_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 13,
       "z": 17,
-      "header": "MAP_R34R0201",
+      "header": "MAP_ROUTE_34_ILEX_FOREST_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 12,
       "z": 17,
-      "header": "MAP_R34R0201",
+      "header": "MAP_ROUTE_34_ILEX_FOREST_GATEHOUSE",
       "anchor": 1,
       "y": 0
     }

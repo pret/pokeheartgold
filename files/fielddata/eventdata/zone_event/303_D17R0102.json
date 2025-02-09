@@ -4,21 +4,21 @@
     {
       "x": 9,
       "z": 8,
-      "header": "MAP_D17R0101",
+      "header": "MAP_BELL_TOWER_1F",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 15,
       "z": 25,
-      "header": "MAP_D17R0103",
+      "header": "MAP_BELL_TOWER_3F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 15,
       "z": 24,
-      "header": "MAP_D17R0103",
+      "header": "MAP_BELL_TOWER_3F",
       "anchor": 0,
       "y": 0
     }

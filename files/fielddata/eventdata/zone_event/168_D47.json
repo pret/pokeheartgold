@@ -295,21 +295,21 @@
     {
       "x": 88,
       "z": 293,
-      "header": "MAP_D47R0101",
+      "header": "MAP_SAFARI_ZONE_ENTRANCE_INTERIOR",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 89,
       "z": 293,
-      "header": "MAP_D47R0101",
+      "header": "MAP_SAFARI_ZONE_ENTRANCE_INTERIOR",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 82,
       "z": 302,
-      "header": "MAP_D47PC0101",
+      "header": "MAP_SAFARI_ZONE_GATE_POKECENTER_1F",
       "anchor": 0,
       "y": 0
     }

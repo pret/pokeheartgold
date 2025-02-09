@@ -74,14 +74,14 @@
     {
       "x": 6,
       "z": 15,
-      "header": "MAP_T28GYM0103",
+      "header": "MAP_MAHOGANY_GYM_ROOM_1",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 6,
       "z": 2,
-      "header": "MAP_T28GYM0101",
+      "header": "MAP_MAHOGANY_GYM_LEADER_ROOM",
       "anchor": 0,
       "y": 0
     }

@@ -101,21 +101,21 @@
     {
       "x": 14,
       "z": 20,
-      "header": "MAP_T11",
+      "header": "MAP_SAFFRON",
       "anchor": 6,
       "y": 0
     },
     {
       "x": 3,
       "z": 4,
-      "header": "MAP_T11R0603",
+      "header": "MAP_SAFFRON_MAGNET_TRAIN_STATION_2F_EMPTY",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 3,
       "z": 3,
-      "header": "MAP_T11R0603",
+      "header": "MAP_SAFFRON_MAGNET_TRAIN_STATION_2F_EMPTY",
       "anchor": 0,
       "y": 0
     }

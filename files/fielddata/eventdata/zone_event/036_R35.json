@@ -287,28 +287,28 @@
     {
       "x": 358,
       "z": 316,
-      "header": "MAP_R35R0101",
+      "header": "MAP_ROUTE_35_GOLDENROD_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 359,
       "z": 316,
-      "header": "MAP_R35R0101",
+      "header": "MAP_ROUTE_35_GOLDENROD_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 362,
       "z": 266,
-      "header": "MAP_R35R0201",
+      "header": "MAP_ROUTE_35_NATIONAL_PARK_POKEATHALON_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 363,
       "z": 266,
-      "header": "MAP_R35R0201",
+      "header": "MAP_ROUTE_35_NATIONAL_PARK_POKEATHALON_GATEHOUSE",
       "anchor": 0,
       "y": 0
     }

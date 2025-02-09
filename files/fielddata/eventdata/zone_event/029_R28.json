@@ -58,21 +58,21 @@
     {
       "x": 887,
       "z": 266,
-      "header": "MAP_R22R0101",
+      "header": "MAP_ROUTE_22_POKEMON_LEAGUE_RECEPTION_GATE",
       "anchor": 3,
       "y": 0
     },
     {
       "x": 887,
       "z": 267,
-      "header": "MAP_R22R0101",
+      "header": "MAP_ROUTE_22_POKEMON_LEAGUE_RECEPTION_GATE",
       "anchor": 3,
       "y": 0
     },
     {
       "x": 851,
       "z": 263,
-      "header": "MAP_R28R0101",
+      "header": "MAP_ROUTE_28_HOUSE",
       "anchor": 0,
       "y": 0
     }

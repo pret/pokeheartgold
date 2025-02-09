@@ -1309,11 +1309,11 @@ _1078:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_T20R0102, 0, 12, 6, DIR_WEST
+	warp MAP_NEW_BARK_ELMS_LAB_2F, 0, 12, 6, DIR_WEST
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	wait_se SEQ_SE_DP_KAIDAN2
-	scrcmd_582 MAP_T20, 688, 393
+	scrcmd_582 MAP_NEW_BARK, 688, 393
 	setvar VAR_UNK_407C, 1
 	end
 

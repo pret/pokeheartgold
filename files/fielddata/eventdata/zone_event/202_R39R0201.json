@@ -125,14 +125,14 @@
     {
       "x": 7,
       "z": 9,
-      "header": "MAP_R39",
+      "header": "MAP_ROUTE_39",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 19,
       "z": 7,
-      "header": "MAP_R39R0101",
+      "header": "MAP_ROUTE_39_MOOMOO_FARM_HOUSE",
       "anchor": 1,
       "y": 0
     }

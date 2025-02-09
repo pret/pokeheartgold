@@ -92,56 +92,56 @@
     {
       "x": 4,
       "z": 6,
-      "header": "MAP_R11",
+      "header": "MAP_ROUTE_11",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 4,
       "z": 4,
-      "header": "MAP_D01R0101",
+      "header": "MAP_DIGLETT_CAVE",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 34,
       "z": 86,
-      "header": "MAP_D01R0101",
+      "header": "MAP_DIGLETT_CAVE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 34,
       "z": 85,
-      "header": "MAP_D01R0101",
+      "header": "MAP_DIGLETT_CAVE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 10,
       "z": 38,
-      "header": "MAP_D01R0101",
+      "header": "MAP_DIGLETT_CAVE",
       "anchor": 6,
       "y": 0
     },
     {
       "x": 10,
       "z": 37,
-      "header": "MAP_D01R0101",
+      "header": "MAP_DIGLETT_CAVE",
       "anchor": 6,
       "y": 0
     },
     {
       "x": 43,
       "z": 6,
-      "header": "MAP_D01R0101",
+      "header": "MAP_DIGLETT_CAVE",
       "anchor": 4,
       "y": 0
     },
     {
       "x": 37,
       "z": 10,
-      "header": "MAP_R02R0101",
+      "header": "MAP_ROUTE_2_EAST",
       "anchor": 4,
       "y": 0
     }

@@ -103,7 +103,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_UG] = {
+    [MAP_UNDERGROUND] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 0,
                         .moveModelBank = 15,
@@ -133,7 +133,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_DIRECT2] = {
+    [MAP_WIFI_SINGLE_BATTLE_AREA] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -163,7 +163,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_DIRECT4] = {
+    [MAP_WIFI_MULTI_BATTLE_AREA] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -193,7 +193,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_D17R1101] = {
+    [MAP_BELLCHIME_TOWER] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 88,
                         .moveModelBank = 15,
@@ -223,7 +223,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D18R0101] = {
+    [MAP_BURNED_TOWER_1F] = {
                         .wildEncounterBank = ENCDATA_D18R0101,
                         .areaDataBank = 78,
                         .moveModelBank = 15,
@@ -253,7 +253,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D24] = {
+    [MAP_RUINS_OF_ALPH_UNUSED] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 3,
                         .moveModelBank = 15,
@@ -283,7 +283,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R01] = {
+    [MAP_ROUTE_1] = {
                         .wildEncounterBank = ENCDATA_R01,
                         .areaDataBank = 18,
                         .moveModelBank = 15,
@@ -313,7 +313,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R02] = {
+    [MAP_ROUTE_2] = {
                         .wildEncounterBank = ENCDATA_R02,
                         .areaDataBank = 10,
                         .moveModelBank = 15,
@@ -343,7 +343,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R03] = {
+    [MAP_ROUTE_3] = {
                         .wildEncounterBank = ENCDATA_R03,
                         .areaDataBank = 17,
                         .moveModelBank = 15,
@@ -373,7 +373,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R04] = {
+    [MAP_ROUTE_4] = {
                         .wildEncounterBank = ENCDATA_R04,
                         .areaDataBank = 13,
                         .moveModelBank = 15,
@@ -403,7 +403,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R05] = {
+    [MAP_ROUTE_5] = {
                         .wildEncounterBank = ENCDATA_R05,
                         .areaDataBank = 13,
                         .moveModelBank = 15,
@@ -433,7 +433,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R06] = {
+    [MAP_ROUTE_6] = {
                         .wildEncounterBank = ENCDATA_R06,
                         .areaDataBank = 11,
                         .moveModelBank = 15,
@@ -463,7 +463,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R07] = {
+    [MAP_ROUTE_7] = {
                         .wildEncounterBank = ENCDATA_R07,
                         .areaDataBank = 15,
                         .moveModelBank = 15,
@@ -493,7 +493,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R08] = {
+    [MAP_ROUTE_8] = {
                         .wildEncounterBank = ENCDATA_R08,
                         .areaDataBank = 14,
                         .moveModelBank = 15,
@@ -523,7 +523,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R09] = {
+    [MAP_ROUTE_9] = {
                         .wildEncounterBank = ENCDATA_R09,
                         .areaDataBank = 13,
                         .moveModelBank = 15,
@@ -553,7 +553,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R10] = {
+    [MAP_ROUTE_10] = {
                         .wildEncounterBank = ENCDATA_R10,
                         .areaDataBank = 13,
                         .moveModelBank = 15,
@@ -583,7 +583,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R11] = {
+    [MAP_ROUTE_11] = {
                         .wildEncounterBank = ENCDATA_R11,
                         .areaDataBank = 11,
                         .moveModelBank = 15,
@@ -613,7 +613,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R12] = {
+    [MAP_ROUTE_12] = {
                         .wildEncounterBank = ENCDATA_R12,
                         .areaDataBank = 14,
                         .moveModelBank = 15,
@@ -643,7 +643,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R13] = {
+    [MAP_ROUTE_13] = {
                         .wildEncounterBank = ENCDATA_R13,
                         .areaDataBank = 14,
                         .moveModelBank = 15,
@@ -673,7 +673,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R14] = {
+    [MAP_ROUTE_14] = {
                         .wildEncounterBank = ENCDATA_R14,
                         .areaDataBank = 14,
                         .moveModelBank = 15,
@@ -703,7 +703,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R15] = {
+    [MAP_ROUTE_15] = {
                         .wildEncounterBank = ENCDATA_R15,
                         .areaDataBank = 14,
                         .moveModelBank = 15,
@@ -733,7 +733,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R16] = {
+    [MAP_ROUTE_16] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 16,
                         .moveModelBank = 15,
@@ -763,7 +763,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R17] = {
+    [MAP_ROUTE_17] = {
                         .wildEncounterBank = ENCDATA_R17,
                         .areaDataBank = 16,
                         .moveModelBank = 15,
@@ -793,7 +793,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R18] = {
+    [MAP_ROUTE_18] = {
                         .wildEncounterBank = ENCDATA_R18,
                         .areaDataBank = 16,
                         .moveModelBank = 15,
@@ -823,7 +823,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R22] = {
+    [MAP_ROUTE_22] = {
                         .wildEncounterBank = ENCDATA_R22,
                         .areaDataBank = 10,
                         .moveModelBank = 15,
@@ -853,7 +853,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R24] = {
+    [MAP_ROUTE_24] = {
                         .wildEncounterBank = ENCDATA_R24,
                         .areaDataBank = 13,
                         .moveModelBank = 15,
@@ -883,7 +883,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R25] = {
+    [MAP_ROUTE_25] = {
                         .wildEncounterBank = ENCDATA_R25,
                         .areaDataBank = 13,
                         .moveModelBank = 15,
@@ -913,7 +913,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R26] = {
+    [MAP_ROUTE_26] = {
                         .wildEncounterBank = ENCDATA_R26,
                         .areaDataBank = 2,
                         .moveModelBank = 15,
@@ -943,7 +943,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R27] = {
+    [MAP_ROUTE_27] = {
                         .wildEncounterBank = ENCDATA_R27,
                         .areaDataBank = 2,
                         .moveModelBank = 15,
@@ -973,7 +973,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R28] = {
+    [MAP_ROUTE_28] = {
                         .wildEncounterBank = ENCDATA_R28,
                         .areaDataBank = 10,
                         .moveModelBank = 15,
@@ -1003,7 +1003,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R29] = {
+    [MAP_ROUTE_29] = {
                         .wildEncounterBank = ENCDATA_R29,
                         .areaDataBank = 2,
                         .moveModelBank = 15,
@@ -1033,7 +1033,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R30] = {
+    [MAP_ROUTE_30] = {
                         .wildEncounterBank = ENCDATA_R30,
                         .areaDataBank = 2,
                         .moveModelBank = 15,
@@ -1063,7 +1063,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R31] = {
+    [MAP_ROUTE_31] = {
                         .wildEncounterBank = ENCDATA_R31,
                         .areaDataBank = 2,
                         .moveModelBank = 15,
@@ -1093,7 +1093,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R32] = {
+    [MAP_ROUTE_32] = {
                         .wildEncounterBank = ENCDATA_R32,
                         .areaDataBank = 3,
                         .moveModelBank = 15,
@@ -1123,7 +1123,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R33] = {
+    [MAP_ROUTE_33] = {
                         .wildEncounterBank = ENCDATA_R33,
                         .areaDataBank = 4,
                         .moveModelBank = 15,
@@ -1153,7 +1153,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R34] = {
+    [MAP_ROUTE_34] = {
                         .wildEncounterBank = ENCDATA_R34,
                         .areaDataBank = 5,
                         .moveModelBank = 15,
@@ -1183,7 +1183,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R35] = {
+    [MAP_ROUTE_35] = {
                         .wildEncounterBank = ENCDATA_R35,
                         .areaDataBank = 6,
                         .moveModelBank = 15,
@@ -1213,7 +1213,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R36] = {
+    [MAP_ROUTE_36] = {
                         .wildEncounterBank = ENCDATA_R36,
                         .areaDataBank = 6,
                         .moveModelBank = 15,
@@ -1243,7 +1243,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R37] = {
+    [MAP_ROUTE_37] = {
                         .wildEncounterBank = ENCDATA_R37,
                         .areaDataBank = 6,
                         .moveModelBank = 15,
@@ -1273,7 +1273,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R38] = {
+    [MAP_ROUTE_38] = {
                         .wildEncounterBank = ENCDATA_R38,
                         .areaDataBank = 7,
                         .moveModelBank = 15,
@@ -1303,7 +1303,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R39] = {
+    [MAP_ROUTE_39] = {
                         .wildEncounterBank = ENCDATA_R39,
                         .areaDataBank = 7,
                         .moveModelBank = 15,
@@ -1333,7 +1333,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R42] = {
+    [MAP_ROUTE_42] = {
                         .wildEncounterBank = ENCDATA_R42,
                         .areaDataBank = 8,
                         .moveModelBank = 15,
@@ -1363,7 +1363,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R43] = {
+    [MAP_ROUTE_43] = {
                         .wildEncounterBank = ENCDATA_R43,
                         .areaDataBank = 8,
                         .moveModelBank = 15,
@@ -1393,7 +1393,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R44] = {
+    [MAP_ROUTE_44] = {
                         .wildEncounterBank = ENCDATA_R44,
                         .areaDataBank = 8,
                         .moveModelBank = 15,
@@ -1423,7 +1423,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R45] = {
+    [MAP_ROUTE_45] = {
                         .wildEncounterBank = ENCDATA_R45,
                         .areaDataBank = 9,
                         .moveModelBank = 15,
@@ -1453,7 +1453,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R46] = {
+    [MAP_ROUTE_46] = {
                         .wildEncounterBank = ENCDATA_R46,
                         .areaDataBank = 9,
                         .moveModelBank = 15,
@@ -1483,7 +1483,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T01] = {
+    [MAP_PALLET] = {
                         .wildEncounterBank = ENCDATA_T01,
                         .areaDataBank = 18,
                         .moveModelBank = 15,
@@ -1513,7 +1513,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T02] = {
+    [MAP_VIRIDIAN] = {
                         .wildEncounterBank = ENCDATA_T02,
                         .areaDataBank = 10,
                         .moveModelBank = 15,
@@ -1543,7 +1543,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T03] = {
+    [MAP_PEWTER] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 17,
                         .moveModelBank = 15,
@@ -1573,7 +1573,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T04] = {
+    [MAP_CERULEAN] = {
                         .wildEncounterBank = ENCDATA_T04,
                         .areaDataBank = 13,
                         .moveModelBank = 15,
@@ -1603,7 +1603,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T05] = {
+    [MAP_LAVENDER] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 14,
                         .moveModelBank = 15,
@@ -1633,7 +1633,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T06] = {
+    [MAP_VERMILION] = {
                         .wildEncounterBank = ENCDATA_T06,
                         .areaDataBank = 11,
                         .moveModelBank = 15,
@@ -1663,7 +1663,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T07] = {
+    [MAP_CELADON] = {
                         .wildEncounterBank = ENCDATA_T07,
                         .areaDataBank = 15,
                         .moveModelBank = 15,
@@ -1693,7 +1693,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T08] = {
+    [MAP_FUCHSIA] = {
                         .wildEncounterBank = ENCDATA_T08,
                         .areaDataBank = 16,
                         .moveModelBank = 15,
@@ -1723,7 +1723,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T09] = {
+    [MAP_CINNABAR_ISLAND] = {
                         .wildEncounterBank = ENCDATA_T09,
                         .areaDataBank = 18,
                         .moveModelBank = 15,
@@ -1753,7 +1753,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T10] = {
+    [MAP_INDIGO_PLATEAU] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 10,
                         .moveModelBank = 15,
@@ -1783,7 +1783,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T11] = {
+    [MAP_SAFFRON] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 12,
                         .moveModelBank = 15,
@@ -1813,7 +1813,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T20] = {
+    [MAP_NEW_BARK] = {
                         .wildEncounterBank = ENCDATA_T20,
                         .areaDataBank = 2,
                         .moveModelBank = 15,
@@ -1843,7 +1843,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T20R0101] = {
+    [MAP_NEW_BARK_ELMS_LAB_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -1873,7 +1873,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T20R0102] = {
+    [MAP_NEW_BARK_ELMS_LAB_2F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -1903,7 +1903,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T20R0201] = {
+    [MAP_NEW_BARK_PLAYER_HOUSE_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -1933,7 +1933,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T20R0202] = {
+    [MAP_NEW_BARK_PLAYER_HOUSE_2F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -1963,7 +1963,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T20R0301] = {
+    [MAP_NEW_BARK_SOUTHWEST_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -1993,7 +1993,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T20R0401] = {
+    [MAP_NEW_BARK_RIVAL_HOUSE_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -2023,7 +2023,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T21] = {
+    [MAP_CHERRYGROVE] = {
                         .wildEncounterBank = ENCDATA_T21,
                         .areaDataBank = 2,
                         .moveModelBank = 15,
@@ -2053,7 +2053,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T21FS0101] = {
+    [MAP_CHERRYGROVE_POKEMART] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 27,
                         .moveModelBank = 15,
@@ -2083,7 +2083,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T21PC0101] = {
+    [MAP_CHERRYGROVE_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -2113,7 +2113,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T21R0301] = {
+    [MAP_CHERRYGROVE_SOUTHWEST_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -2143,7 +2143,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T21R0401] = {
+    [MAP_CHERRYGROVE_GUIDE_GENT_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -2173,7 +2173,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T21R0501] = {
+    [MAP_CHERRYGROVE_SOUTHEAST_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -2203,7 +2203,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T22] = {
+    [MAP_VIOLET] = {
                         .wildEncounterBank = ENCDATA_T22,
                         .areaDataBank = 3,
                         .moveModelBank = 15,
@@ -2233,7 +2233,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T23] = {
+    [MAP_AZALEA] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 4,
                         .moveModelBank = 15,
@@ -2263,7 +2263,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T24] = {
+    [MAP_CIANWOOD] = {
                         .wildEncounterBank = ENCDATA_T24,
                         .areaDataBank = 7,
                         .moveModelBank = 15,
@@ -2293,7 +2293,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25] = {
+    [MAP_GOLDENROD] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 5,
                         .moveModelBank = 15,
@@ -2323,7 +2323,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T26] = {
+    [MAP_OLIVINE] = {
                         .wildEncounterBank = ENCDATA_T26,
                         .areaDataBank = 7,
                         .moveModelBank = 15,
@@ -2353,7 +2353,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T27] = {
+    [MAP_ECRUTEAK] = {
                         .wildEncounterBank = ENCDATA_T27,
                         .areaDataBank = 6,
                         .moveModelBank = 15,
@@ -2383,7 +2383,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T27FS0101] = {
+    [MAP_ECRUTEAK_POKEMART] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 27,
                         .moveModelBank = 15,
@@ -2413,7 +2413,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T27GYM0101] = {
+    [MAP_ECRUTEAK_GYM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 31,
                         .moveModelBank = 15,
@@ -2443,7 +2443,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T27PC0101] = {
+    [MAP_ECRUTEAK_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -2473,7 +2473,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T27R0101] = {
+    [MAP_ECRUTEAK_UNUSED_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -2503,7 +2503,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T27R0201] = {
+    [MAP_ECRUTEAK_BELL_TOWER_BARRIER_STATION] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 61,
                         .moveModelBank = 15,
@@ -2533,7 +2533,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T27R0801] = {
+    [MAP_ECRUTEAK_DOWSING_MACHINE_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -2563,7 +2563,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T27R0401] = {
+    [MAP_ECRUTEAK_SOUTHWEST_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -2593,7 +2593,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T27R0501] = {
+    [MAP_ECRUTEAK_DANCE_THEATER] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 61,
                         .moveModelBank = 15,
@@ -2623,7 +2623,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T28] = {
+    [MAP_MAHOGANY] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 8,
                         .moveModelBank = 15,
@@ -2653,7 +2653,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T29] = {
+    [MAP_LAKE_OF_RAGE] = {
                         .wildEncounterBank = ENCDATA_T29,
                         .areaDataBank = 8,
                         .moveModelBank = 15,
@@ -2683,7 +2683,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T30] = {
+    [MAP_BLACKTHORN] = {
                         .wildEncounterBank = ENCDATA_T30,
                         .areaDataBank = 9,
                         .moveModelBank = 15,
@@ -2713,7 +2713,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T31] = {
+    [MAP_MOUNT_SILVER] = {
                         .wildEncounterBank = ENCDATA_T31,
                         .areaDataBank = 10,
                         .moveModelBank = 15,
@@ -2743,7 +2743,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_W19] = {
+    [MAP_ROUTE_19] = {
                         .wildEncounterBank = ENCDATA_W19,
                         .areaDataBank = 18,
                         .moveModelBank = 15,
@@ -2773,7 +2773,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_W20] = {
+    [MAP_ROUTE_20] = {
                         .wildEncounterBank = ENCDATA_W20,
                         .areaDataBank = 18,
                         .moveModelBank = 15,
@@ -2803,7 +2803,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_W21] = {
+    [MAP_ROUTE_21] = {
                         .wildEncounterBank = ENCDATA_W21,
                         .areaDataBank = 18,
                         .moveModelBank = 15,
@@ -2833,7 +2833,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_W40] = {
+    [MAP_ROUTE_40] = {
                         .wildEncounterBank = ENCDATA_W40,
                         .areaDataBank = 7,
                         .moveModelBank = 15,
@@ -2863,7 +2863,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_W41] = {
+    [MAP_ROUTE_41] = {
                         .wildEncounterBank = ENCDATA_W41,
                         .areaDataBank = 7,
                         .moveModelBank = 15,
@@ -2893,7 +2893,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D22R0101] = {
+    [MAP_NATIONAL_PARK] = {
                         .wildEncounterBank = ENCDATA_D22R0101,
                         .areaDataBank = 71,
                         .moveModelBank = 15,
@@ -2923,7 +2923,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R31R0101] = {
+    [MAP_ROUTE_31_VIOLET_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -2953,7 +2953,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R32R0101] = {
+    [MAP_ROUTE_32_RUINS_OF_ALPH_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -2983,7 +2983,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D25R0101] = {
+    [MAP_UNION_CAVE_1F] = {
                         .wildEncounterBank = ENCDATA_D25R0101,
                         .areaDataBank = 87,
                         .moveModelBank = 15,
@@ -3013,7 +3013,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T23R0101] = {
+    [MAP_AZALEA_ILEX_FOREST_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -3043,7 +3043,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R35R0101] = {
+    [MAP_ROUTE_35_GOLDENROD_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -3073,7 +3073,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R35R0201] = {
+    [MAP_ROUTE_35_NATIONAL_PARK_POKEATHALON_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -3103,7 +3103,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R36R0101] = {
+    [MAP_ROUTE_36_RUINS_OF_ALPH_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -3133,7 +3133,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R36R0201] = {
+    [MAP_ROUTE_36_NATIONAL_PARK_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -3163,7 +3163,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T27R0601] = {
+    [MAP_ECRUTEAK_UNUSED_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -3193,7 +3193,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D01R0101] = {
+    [MAP_DIGLETT_CAVE] = {
                         .wildEncounterBank = ENCDATA_D01R0101,
                         .areaDataBank = 82,
                         .moveModelBank = 15,
@@ -3223,7 +3223,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D02R0101] = {
+    [MAP_MOUNT_MOON] = {
                         .wildEncounterBank = ENCDATA_D02R0101,
                         .areaDataBank = 70,
                         .moveModelBank = 15,
@@ -3253,7 +3253,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D05R0101] = {
+    [MAP_ROCK_TUNNEL_1F] = {
                         .wildEncounterBank = ENCDATA_D05R0101,
                         .areaDataBank = 83,
                         .moveModelBank = 15,
@@ -3283,7 +3283,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D10R0101] = {
+    [MAP_PAL_PARK] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 75,
                         .moveModelBank = 15,
@@ -3313,7 +3313,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D15R0101] = {
+    [MAP_SPROUT_TOWER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 77,
                         .moveModelBank = 15,
@@ -3343,7 +3343,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D17R0101] = {
+    [MAP_BELL_TOWER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 77,
                         .moveModelBank = 15,
@@ -3373,7 +3373,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D23R0101] = {
+    [MAP_GOLDENROD_RADIO_TOWER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 36,
                         .moveModelBank = 15,
@@ -3403,7 +3403,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D24R0101] = {
+    [MAP_RUINS_OF_ALPH] = {
                         .wildEncounterBank = ENCDATA_D24R0101,
                         .areaDataBank = 20,
                         .moveModelBank = 15,
@@ -3433,7 +3433,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D26R0101] = {
+    [MAP_SLOWPOKE_WELL_ENTRANCE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 84,
                         .moveModelBank = 15,
@@ -3463,7 +3463,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D27R0101] = {
+    [MAP_OLIVINE_LIGHTHOUSE_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 47,
                         .moveModelBank = 15,
@@ -3493,7 +3493,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D35R0101] = {
+    [MAP_MAHOGANY_SOUVENIR_SHOP] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 27,
                         .moveModelBank = 15,
@@ -3523,7 +3523,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D36R0101] = {
+    [MAP_ILEX_FOREST] = {
                         .wildEncounterBank = ENCDATA_D36R0101,
                         .areaDataBank = 74,
                         .moveModelBank = 15,
@@ -3553,7 +3553,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D37R0101] = {
+    [MAP_GOLDENROD_TUNNEL_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 62,
                         .moveModelBank = 15,
@@ -3583,7 +3583,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D38R0101] = {
+    [MAP_MOUNT_MORTAR_1F_ENTRANCE] = {
                         .wildEncounterBank = ENCDATA_D38R0101,
                         .areaDataBank = 79,
                         .moveModelBank = 15,
@@ -3613,7 +3613,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D39R0101] = {
+    [MAP_ICE_PATH_1F] = {
                         .wildEncounterBank = ENCDATA_D39R0101,
                         .areaDataBank = 76,
                         .moveModelBank = 15,
@@ -3643,7 +3643,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D40R0101] = {
+    [MAP_WHIRL_ISLANDS_1F] = {
                         .wildEncounterBank = ENCDATA_D40R0101,
                         .areaDataBank = 85,
                         .moveModelBank = 15,
@@ -3673,7 +3673,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D41R0101] = {
+    [MAP_MOUNT_SILVER_CAVE_1F] = {
                         .wildEncounterBank = ENCDATA_D41R0101,
                         .areaDataBank = 80,
                         .moveModelBank = 15,
@@ -3703,7 +3703,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D42R0101] = {
+    [MAP_DARK_CAVE_ROUTE_45_SIDE] = {
                         .wildEncounterBank = ENCDATA_D42R0101,
                         .areaDataBank = 87,
                         .moveModelBank = 15,
@@ -3733,7 +3733,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D43R0101] = {
+    [MAP_VICTORY_ROAD_1F] = {
                         .wildEncounterBank = ENCDATA_D43R0101,
                         .areaDataBank = 70,
                         .moveModelBank = 15,
@@ -3763,7 +3763,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D44R0101] = {
+    [MAP_DRAGONS_DEN_ENTRANCE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 86,
                         .moveModelBank = 15,
@@ -3793,7 +3793,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D45R0101] = {
+    [MAP_TOHJO_FALLS] = {
                         .wildEncounterBank = ENCDATA_D45R0101,
                         .areaDataBank = 70,
                         .moveModelBank = 15,
@@ -3823,7 +3823,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R30R0101] = {
+    [MAP_ROUTE_30_APRICORN_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -3853,7 +3853,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T27PC0102] = {
+    [MAP_ECRUTEAK_POKECENTER_UNUSED_1] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -3883,7 +3883,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T27PC0103] = {
+    [MAP_ECRUTEAK_POKECENTER_UNUSED_2] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -3913,7 +3913,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T27PC0104] = {
+    [MAP_ECRUTEAK_POKECENTER_UNUSED_3] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -3943,7 +3943,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T27PC0105] = {
+    [MAP_ECRUTEAK_POKECENTER_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -3973,7 +3973,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R42R0101] = {
+    [MAP_ROUTE_42_ECRUTEAK_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -4003,7 +4003,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T28R0201] = {
+    [MAP_MAHOGANY_EAST_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -4033,7 +4033,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R29R0101] = {
+    [MAP_ROUTE_29_ROUTE_46_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -4063,7 +4063,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T22GYM0101] = {
+    [MAP_VIOLET_GYM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 28,
                         .moveModelBank = 15,
@@ -4093,7 +4093,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T23GYM0101] = {
+    [MAP_AZALEA_GYM_ENTRANCE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 29,
                         .moveModelBank = 15,
@@ -4123,7 +4123,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25GYM0101] = {
+    [MAP_GOLDENROD_GYM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 30,
                         .moveModelBank = 15,
@@ -4153,7 +4153,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T26GYM0101] = {
+    [MAP_OLIVINE_GYM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 32,
                         .moveModelBank = 15,
@@ -4183,7 +4183,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T24GYM0101] = {
+    [MAP_CIANWOOD_GYM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 33,
                         .moveModelBank = 15,
@@ -4213,7 +4213,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T28GYM0101] = {
+    [MAP_MAHOGANY_GYM_LEADER_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 34,
                         .moveModelBank = 15,
@@ -4243,7 +4243,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T30GYM0101] = {
+    [MAP_BLACKTHORN_GYM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 35,
                         .moveModelBank = 15,
@@ -4273,7 +4273,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R43R0101] = {
+    [MAP_ROUTE_43_MAHOGANY_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -4303,7 +4303,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R30R0201] = {
+    [MAP_ROUTE_30_MR_POKEMON_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 61,
                         .moveModelBank = 15,
@@ -4333,7 +4333,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T21PC0102] = {
+    [MAP_CHERRYGROVE_POKECENTER_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -4363,7 +4363,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D03R0101] = {
+    [MAP_CERULEAN_CAVE_1F] = {
                         .wildEncounterBank = ENCDATA_D03R0101,
                         .areaDataBank = 73,
                         .moveModelBank = 15,
@@ -4393,7 +4393,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D11R0101] = {
+    [MAP_SEAFOAM_ISLANDS_1F] = {
                         .wildEncounterBank = ENCDATA_D11R0101,
                         .areaDataBank = 70,
                         .moveModelBank = 15,
@@ -4423,7 +4423,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D46R0101] = {
+    [MAP_VIRIDIAN_FOREST] = {
                         .wildEncounterBank = ENCDATA_D46R0101,
                         .areaDataBank = 103,
                         .moveModelBank = 15,
@@ -4453,7 +4453,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R09R0101] = {
+    [MAP_ROUTE_9_UNUSED] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -4483,7 +4483,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T22R0701] = {
+    [MAP_VIOLET_ROUTE_36_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -4513,7 +4513,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D22R0201] = {
+    [MAP_NATIONAL_PARK_UNUSED_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -4543,7 +4543,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R47] = {
+    [MAP_ROUTE_47] = {
                         .wildEncounterBank = ENCDATA_R47,
                         .areaDataBank = 19,
                         .moveModelBank = 15,
@@ -4573,7 +4573,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R48] = {
+    [MAP_ROUTE_48] = {
                         .wildEncounterBank = ENCDATA_R48,
                         .areaDataBank = 19,
                         .moveModelBank = 15,
@@ -4603,7 +4603,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D25R0102] = {
+    [MAP_UNION_CAVE_B1F] = {
                         .wildEncounterBank = ENCDATA_D25R0102,
                         .areaDataBank = 87,
                         .moveModelBank = 15,
@@ -4633,7 +4633,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D25R0103] = {
+    [MAP_UNION_CAVE_B2F] = {
                         .wildEncounterBank = ENCDATA_D25R0103,
                         .areaDataBank = 87,
                         .moveModelBank = 15,
@@ -4663,7 +4663,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D15R0102] = {
+    [MAP_SPROUT_TOWER_2F] = {
                         .wildEncounterBank = ENCDATA_D15R0102,
                         .areaDataBank = 77,
                         .moveModelBank = 15,
@@ -4693,7 +4693,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D15R0103] = {
+    [MAP_SPROUT_TOWER_3F] = {
                         .wildEncounterBank = ENCDATA_D15R0103,
                         .areaDataBank = 77,
                         .moveModelBank = 15,
@@ -4723,7 +4723,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T22FS0101] = {
+    [MAP_VIOLET_POKEMART] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 27,
                         .moveModelBank = 15,
@@ -4753,7 +4753,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T22PC0101] = {
+    [MAP_VIOLET_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -4783,7 +4783,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T22R0301] = {
+    [MAP_VIOLET_POKEMON_SCHOOL] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 61,
                         .moveModelBank = 15,
@@ -4813,7 +4813,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T22R0401] = {
+    [MAP_VIOLET_NORTHWEST_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -4843,7 +4843,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T22R0501] = {
+    [MAP_VIOLET_UNUSED] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -4873,7 +4873,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T22R0601] = {
+    [MAP_VIOLET_BELLSPROUT_ONYX_TRADE_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -4903,7 +4903,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T23R0201] = {
+    [MAP_AZALEA_CHARCOAL_KILN] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 61,
                         .moveModelBank = 15,
@@ -4933,7 +4933,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T23R0501] = {
+    [MAP_AZALEA_KURT_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 61,
                         .moveModelBank = 15,
@@ -4963,7 +4963,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T23FS0101] = {
+    [MAP_AZALEA_POKEMART] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 27,
                         .moveModelBank = 15,
@@ -4993,7 +4993,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T23PC0101] = {
+    [MAP_AZALEA_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -5023,7 +5023,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T22PC0102] = {
+    [MAP_VIOLET_POKECENTER_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -5053,7 +5053,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T23PC0102] = {
+    [MAP_AZALEA_POKECENTER_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -5083,7 +5083,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R32PC0101] = {
+    [MAP_ROUTE_32_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -5113,7 +5113,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R32PC0102] = {
+    [MAP_ROUTE_32_POKECENTER_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -5143,7 +5143,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R34R0201] = {
+    [MAP_ROUTE_34_ILEX_FOREST_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -5173,7 +5173,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R38R0101] = {
+    [MAP_ROUTE_38_ECRUTEAK_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -5203,7 +5203,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D47R0101] = {
+    [MAP_SAFARI_ZONE_ENTRANCE_INTERIOR] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 39,
                         .moveModelBank = 15,
@@ -5233,7 +5233,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D47] = {
+    [MAP_SAFARI_ZONE_GATE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 19,
                         .moveModelBank = 15,
@@ -5263,7 +5263,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T27R0301] = {
+    [MAP_ECRUTEAK_UNUSED_1] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -5293,7 +5293,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D42R0102] = {
+    [MAP_DARK_CAVE_ROUTE_31_SIDE] = {
                         .wildEncounterBank = ENCDATA_D42R0102,
                         .areaDataBank = 87,
                         .moveModelBank = 15,
@@ -5323,7 +5323,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D26R0102] = {
+    [MAP_SLOWPOKE_WELL_B1F] = {
                         .wildEncounterBank = ENCDATA_D26R0102,
                         .areaDataBank = 84,
                         .moveModelBank = 15,
@@ -5353,7 +5353,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D43R0102] = {
+    [MAP_VICTORY_ROAD_2F] = {
                         .wildEncounterBank = ENCDATA_D43R0102,
                         .areaDataBank = 70,
                         .moveModelBank = 15,
@@ -5383,7 +5383,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D43R0103] = {
+    [MAP_VICTORY_ROAD_3F] = {
                         .wildEncounterBank = ENCDATA_D43R0103,
                         .areaDataBank = 70,
                         .moveModelBank = 15,
@@ -5413,7 +5413,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T23GYM0102] = {
+    [MAP_AZALEA_GYM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 29,
                         .moveModelBank = 15,
@@ -5443,7 +5443,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D26R0103] = {
+    [MAP_SLOWPOKE_WELL_B2F] = {
                         .wildEncounterBank = ENCDATA_D26R0103,
                         .areaDataBank = 84,
                         .moveModelBank = 15,
@@ -5473,7 +5473,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R0201] = {
+    [MAP_GOLDENROD_BIKE_SHOP] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 27,
                         .moveModelBank = 15,
@@ -5503,7 +5503,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R1101] = {
+    [MAP_GOLDENROD_GAME_CORNER_JP] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 27,
                         .moveModelBank = 15,
@@ -5533,7 +5533,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R0601] = {
+    [MAP_GOLDENROD_FLOWER_SHOP] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 27,
                         .moveModelBank = 15,
@@ -5563,7 +5563,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25PC0101] = {
+    [MAP_GOLDENROD_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -5593,7 +5593,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D23R0102] = {
+    [MAP_GOLDENROD_RADIO_TOWER_2F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 36,
                         .moveModelBank = 15,
@@ -5623,7 +5623,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D23R0103] = {
+    [MAP_GOLDENROD_RADIO_TOWER_3F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 36,
                         .moveModelBank = 15,
@@ -5653,7 +5653,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D23R0104] = {
+    [MAP_GOLDENROD_RADIO_TOWER_4F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 36,
                         .moveModelBank = 15,
@@ -5683,7 +5683,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D23R0105] = {
+    [MAP_GOLDENROD_RADIO_TOWER_5F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 36,
                         .moveModelBank = 15,
@@ -5713,7 +5713,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D23R0106] = {
+    [MAP_GOLDENROD_RADIO_TOWER_OBSERVATION_DECK] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 36,
                         .moveModelBank = 15,
@@ -5743,7 +5743,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R1001] = {
+    [MAP_GOLDENROD_DEPARTMENT_STORE_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 62,
                         .moveModelBank = 15,
@@ -5773,7 +5773,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R1002] = {
+    [MAP_GOLDENROD_DEPARTMENT_STORE_2F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 62,
                         .moveModelBank = 15,
@@ -5803,7 +5803,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R1003] = {
+    [MAP_GOLDENROD_DEPARTMENT_STORE_3F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 62,
                         .moveModelBank = 15,
@@ -5833,7 +5833,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R1004] = {
+    [MAP_GOLDENROD_DEPARTMENT_STORE_4F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 62,
                         .moveModelBank = 15,
@@ -5863,7 +5863,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R1005] = {
+    [MAP_GOLDENROD_DEPARTMENT_STORE_5F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 62,
                         .moveModelBank = 15,
@@ -5893,7 +5893,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R1006] = {
+    [MAP_GOLDENROD_DEPARTMENT_STORE_6F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 62,
                         .moveModelBank = 15,
@@ -5923,7 +5923,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R0501] = {
+    [MAP_GOLDENROD_MAGNET_TRAIN_STATION_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 48,
                         .moveModelBank = 15,
@@ -5953,7 +5953,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R0502] = {
+    [MAP_GOLDENROD_MAGNET_TRAIN_STATION_2F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 48,
                         .moveModelBank = 15,
@@ -5983,7 +5983,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D37R0102] = {
+    [MAP_GOLDENROD_TUNNEL_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 62,
                         .moveModelBank = 15,
@@ -6013,7 +6013,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D37R0103] = {
+    [MAP_GOLDENROD_DEPARTMENT_STORE_BASEMENT] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 62,
                         .moveModelBank = 15,
@@ -6043,7 +6043,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D37R0104] = {
+    [MAP_GOLDENROD_TUNNEL_B2F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 62,
                         .moveModelBank = 15,
@@ -6073,7 +6073,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D37R0105] = {
+    [MAP_GOLDENROD_TUNNEL_WAREHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 62,
                         .moveModelBank = 15,
@@ -6103,7 +6103,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R0401] = {
+    [MAP_GOLDENROD_BILLS_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -6133,7 +6133,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R0301] = {
+    [MAP_GOLDENROD_FRIENDSHIP_CHECKER_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -6163,7 +6163,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R0801] = {
+    [MAP_GOLDENROD_NORTHEAST_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -6193,7 +6193,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R0901] = {
+    [MAP_GOLDENROD_NAME_RATER_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 42,
                         .moveModelBank = 15,
@@ -6223,7 +6223,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R1201] = {
+    [MAP_GOLDENROD_GLOBAL_TERMINAL_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 45,
                         .moveModelBank = 15,
@@ -6253,7 +6253,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R1301] = {
+    [MAP_GOLDENROD_UNUSED_1] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -6283,7 +6283,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R1302] = {
+    [MAP_GOLDENROD_UNUSED_2] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -6313,7 +6313,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R1303] = {
+    [MAP_GOLDENROD_UNUSED_3] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -6343,7 +6343,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R1304] = {
+    [MAP_GOLDENROD_UNUSED_4] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -6373,7 +6373,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R1305] = {
+    [MAP_GOLDENROD_UNUSED_5] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -6403,7 +6403,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R1306] = {
+    [MAP_GOLDENROD_UNUSED_6] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -6433,7 +6433,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R39R0101] = {
+    [MAP_ROUTE_39_MOOMOO_FARM_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 42,
                         .moveModelBank = 15,
@@ -6463,7 +6463,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R39R0201] = {
+    [MAP_ROUTE_39_MOOMOO_FARM_STABLE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 42,
                         .moveModelBank = 15,
@@ -6493,7 +6493,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T27R0202] = {
+    [MAP_ECRUTEAK_BELL_TOWER_BARRIER_STATION_CORRIDOR] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 61,
                         .moveModelBank = 15,
@@ -6523,7 +6523,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D18R0102] = {
+    [MAP_BURNED_TOWER_B1F] = {
                         .wildEncounterBank = ENCDATA_D18R0102,
                         .areaDataBank = 78,
                         .moveModelBank = 15,
@@ -6553,7 +6553,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D24R0201] = {
+    [MAP_RUINS_OF_ALPH_UNUSED_2] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 2,
                         .moveModelBank = 15,
@@ -6583,7 +6583,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25PC0102] = {
+    [MAP_GOLDENROD_POKECENTER_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -6613,7 +6613,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D27R0102] = {
+    [MAP_OLIVINE_LIGHTHOUSE_2F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 47,
                         .moveModelBank = 15,
@@ -6643,7 +6643,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D27R0103] = {
+    [MAP_OLIVINE_LIGHTHOUSE_EXTERIOR] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 74,
                         .moveModelBank = 15,
@@ -6673,7 +6673,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D27R0104] = {
+    [MAP_OLIVINE_LIGHTHOUSE_3F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 47,
                         .moveModelBank = 15,
@@ -6703,7 +6703,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D27R0105] = {
+    [MAP_OLIVINE_LIGHTHOUSE_4F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 47,
                         .moveModelBank = 15,
@@ -6733,7 +6733,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D27R0106] = {
+    [MAP_OLIVINE_LIGHTHOUSE_5F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 47,
                         .moveModelBank = 15,
@@ -6763,7 +6763,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D27R0107] = {
+    [MAP_OLIVINE_LIGHTHOUSE_LIGHT_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 89,
                         .moveModelBank = 15,
@@ -6793,7 +6793,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T26PC0101] = {
+    [MAP_OLIVINE_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -6823,7 +6823,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T26FS0101] = {
+    [MAP_OLIVINE_POKEMART] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 27,
                         .moveModelBank = 15,
@@ -6853,7 +6853,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T26R0301] = {
+    [MAP_OLIVINE_NORTH_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -6883,7 +6883,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T26R0501] = {
+    [MAP_OLIVINE_NORTHEAST_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -6913,7 +6913,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T26R0601] = {
+    [MAP_OLIVINE_NORTHWEST_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -6943,7 +6943,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T26R0701] = {
+    [MAP_OLIVINE_CAFE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 42,
                         .moveModelBank = 15,
@@ -6973,7 +6973,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T24R0201] = {
+    [MAP_CIANWOOD_KIRKS_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -7003,7 +7003,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T24R0501] = {
+    [MAP_CIANWOOD_PHARMACY] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 27,
                         .moveModelBank = 15,
@@ -7033,7 +7033,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T24R0601] = {
+    [MAP_CIANWOOD_CAMERONS_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -7063,7 +7063,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T24R0701] = {
+    [MAP_CIANWOOD_CENTRAL_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -7093,7 +7093,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T24PC0101] = {
+    [MAP_CIANWOOD_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -7123,7 +7123,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D39R0102] = {
+    [MAP_ICE_PATH_B1F] = {
                         .wildEncounterBank = ENCDATA_D39R0102,
                         .areaDataBank = 76,
                         .moveModelBank = 15,
@@ -7153,7 +7153,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D39R0103] = {
+    [MAP_ICE_PATH_B2F] = {
                         .wildEncounterBank = ENCDATA_D39R0103,
                         .areaDataBank = 76,
                         .moveModelBank = 15,
@@ -7183,7 +7183,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D39R0104] = {
+    [MAP_ICE_PATH_B3F] = {
                         .wildEncounterBank = ENCDATA_D39R0104,
                         .areaDataBank = 76,
                         .moveModelBank = 15,
@@ -7213,7 +7213,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_P01R0101] = {
+    [MAP_SS_AQUA_OLIVINE_PORT_INTERIOR] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -7243,7 +7243,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T24PC0102] = {
+    [MAP_CIANWOOD_POKECENTER_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -7273,7 +7273,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D40R0102] = {
+    [MAP_WHIRL_ISLANDS_B1F] = {
                         .wildEncounterBank = ENCDATA_D40R0102,
                         .areaDataBank = 85,
                         .moveModelBank = 15,
@@ -7303,7 +7303,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D40R0104] = {
+    [MAP_WHIRL_ISLANDS_B2F] = {
                         .wildEncounterBank = ENCDATA_D40R0104,
                         .areaDataBank = 85,
                         .moveModelBank = 15,
@@ -7333,7 +7333,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D40R0107] = {
+    [MAP_WHIRL_ISLANDS_B3F_LUGIA_CAVE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 98,
                         .moveModelBank = 15,
@@ -7363,7 +7363,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_R43R0201] = {
+    [MAP_ROUTE_43_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -7393,7 +7393,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T28PC0101] = {
+    [MAP_MAHOGANY_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -7423,7 +7423,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D35R0102] = {
+    [MAP_TEAM_ROCKET_HEADQUARTERS_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 64,
                         .moveModelBank = 15,
@@ -7453,7 +7453,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D35R0103] = {
+    [MAP_TEAM_ROCKET_HEADQUARTERS_B2F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 64,
                         .moveModelBank = 15,
@@ -7483,7 +7483,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D35R0104] = {
+    [MAP_TEAM_ROCKET_HEADQUARTERS_B3F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 64,
                         .moveModelBank = 15,
@@ -7513,7 +7513,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D38R0102] = {
+    [MAP_MOUNT_MORTAR_1F_BACK] = {
                         .wildEncounterBank = ENCDATA_D38R0102,
                         .areaDataBank = 79,
                         .moveModelBank = 15,
@@ -7543,7 +7543,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D38R0103] = {
+    [MAP_MOUNT_MORTAR_2F] = {
                         .wildEncounterBank = ENCDATA_D38R0103,
                         .areaDataBank = 79,
                         .moveModelBank = 15,
@@ -7573,7 +7573,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D38R0104] = {
+    [MAP_MOUNT_MORTAR_B1F] = {
                         .wildEncounterBank = ENCDATA_D38R0104,
                         .areaDataBank = 79,
                         .moveModelBank = 15,
@@ -7603,7 +7603,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D44R0102] = {
+    [MAP_DRAGONS_DEN] = {
                         .wildEncounterBank = ENCDATA_D44R0102,
                         .areaDataBank = 86,
                         .moveModelBank = 15,
@@ -7633,7 +7633,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_C11] = {
+    [MAP_FIGHT_AREA_UNUSED_1] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 2,
                         .moveModelBank = 15,
@@ -7663,7 +7663,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_C11PC0101] = {
+    [MAP_FIGHT_AREA_UNUSED_2] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 2,
                         .moveModelBank = 15,
@@ -7693,7 +7693,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_C11PC0102] = {
+    [MAP_FIGHT_AREA_UNUSED_3] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 2,
                         .moveModelBank = 15,
@@ -7723,7 +7723,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_C11FS0101] = {
+    [MAP_FIGHT_AREA_UNUSED_4] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 2,
                         .moveModelBank = 15,
@@ -7753,7 +7753,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_C11R0101] = {
+    [MAP_FIGHT_AREA_UNUSED_5] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 2,
                         .moveModelBank = 15,
@@ -7783,7 +7783,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_C11R0201] = {
+    [MAP_FIGHT_AREA_UNUSED_6] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 2,
                         .moveModelBank = 15,
@@ -7813,7 +7813,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_C11R0301] = {
+    [MAP_FIGHT_AREA_UNUSED_7] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 2,
                         .moveModelBank = 15,
@@ -7843,7 +7843,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_C11R0401] = {
+    [MAP_FIGHT_AREA_UNUSED_8] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 2,
                         .moveModelBank = 15,
@@ -7873,7 +7873,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_C11PC0103] = {
+    [MAP_FIGHT_AREA_UNUSED_9] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 2,
                         .moveModelBank = 15,
@@ -7903,7 +7903,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D31] = {
+    [MAP_BATTLE_PARK_UNUSED_1] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 2,
                         .moveModelBank = 15,
@@ -7933,7 +7933,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D31R0101] = {
+    [MAP_BATTLE_PARK_UNUSED_2] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 2,
                         .moveModelBank = 15,
@@ -7963,7 +7963,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D31R0201] = {
+    [MAP_BATTLE_TOWER] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 56,
                         .moveModelBank = 15,
@@ -7993,7 +7993,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D31R0202] = {
+    [MAP_BATTLE_TOWER_ELEVATOR] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 44,
                         .moveModelBank = 15,
@@ -8023,7 +8023,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_D31R0203] = {
+    [MAP_BATTLE_TOWER_UNUSED_1] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 2,
                         .moveModelBank = 15,
@@ -8053,7 +8053,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_D31R0204] = {
+    [MAP_BATTLE_TOWER_UNUSED_2] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 2,
                         .moveModelBank = 15,
@@ -8083,7 +8083,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_D31R0205] = {
+    [MAP_BATTLE_TOWER_UNUSED_3] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 2,
                         .moveModelBank = 15,
@@ -8113,7 +8113,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_D31R0206] = {
+    [MAP_BATTLE_TOWER_UNUSED_4] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 2,
                         .moveModelBank = 15,
@@ -8143,7 +8143,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_D31R0207] = {
+    [MAP_BATTLE_TOWER_PARTNER_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 38,
                         .moveModelBank = 15,
@@ -8173,7 +8173,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D32] = {
+    [MAP_BATTLE_FRONTIER] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 92,
                         .moveModelBank = 15,
@@ -8203,7 +8203,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D32R0101] = {
+    [MAP_BATTLE_FRONTIER_FRONTIER_ACCESS_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 46,
                         .moveModelBank = 15,
@@ -8233,7 +8233,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D32R0201] = {
+    [MAP_BATTLE_FRONTIER_BATTLE_TOWER_UNUSED] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 56,
                         .moveModelBank = 15,
@@ -8263,7 +8263,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D32R0301] = {
+    [MAP_BATTLE_FRONTIER_BATTLE_FACTORY] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 57,
                         .moveModelBank = 15,
@@ -8293,7 +8293,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_D32R0401] = {
+    [MAP_BATTLE_FRONTIER_BATTLE_HALL] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 58,
                         .moveModelBank = 15,
@@ -8323,7 +8323,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_D32R0501] = {
+    [MAP_BATTLE_FRONTIER_BATTLE_CASTLE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 59,
                         .moveModelBank = 15,
@@ -8353,7 +8353,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_D32R0601] = {
+    [MAP_BATTLE_FRONTIER_BATTLE_ARCADE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 60,
                         .moveModelBank = 15,
@@ -8383,7 +8383,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_D48R0101] = {
+    [MAP_CLIFF_EDGE_GATE] = {
                         .wildEncounterBank = ENCDATA_D48R0101,
                         .areaDataBank = 70,
                         .moveModelBank = 15,
@@ -8413,7 +8413,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D49] = {
+    [MAP_POKEATHLON_DOME] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 90,
                         .moveModelBank = 15,
@@ -8443,7 +8443,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D49R0101] = {
+    [MAP_POKEATHLON_DOME_INTERIOR_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 37,
                         .moveModelBank = 15,
@@ -8473,7 +8473,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D49R0102] = {
+    [MAP_POKEATHLON_DOME_INTERIOR_2F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 37,
                         .moveModelBank = 15,
@@ -8503,7 +8503,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D49R0103] = {
+    [MAP_POKEATHLON_DOME_INTERIOR_2F_ENTRANCE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 37,
                         .moveModelBank = 15,
@@ -8533,7 +8533,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D49R0104] = {
+    [MAP_POKEATHLON_DOME_INTERIOR_B1F_SOLIDARITY_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 37,
                         .moveModelBank = 15,
@@ -8563,7 +8563,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D49R0105] = {
+    [MAP_POKEATHLON_DOME_INTERIOR_B1F_TRUST_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 37,
                         .moveModelBank = 15,
@@ -8593,7 +8593,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D49R0106] = {
+    [MAP_POKEATHLON_DOME_INTERIOR_B1F_POTENTIAL_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 37,
                         .moveModelBank = 15,
@@ -8623,7 +8623,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D49R0107] = {
+    [MAP_POKEATHLON_DOME_INTERIOR_B1F_FRIENDSHIP_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 37,
                         .moveModelBank = 15,
@@ -8653,7 +8653,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D44R0103] = {
+    [MAP_DRAGONS_DEN_SHRINE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 42,
                         .moveModelBank = 15,
@@ -8683,7 +8683,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T30R0201] = {
+    [MAP_BLACKTHORN_WEST_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -8713,7 +8713,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T30R0301] = {
+    [MAP_BLACKTHORN_EAST_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -8743,7 +8743,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T30R0601] = {
+    [MAP_BLACKTHORN_MOVE_TUTOR_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -8773,7 +8773,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T30FS0101] = {
+    [MAP_BLACKTHORN_POKEMART] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 27,
                         .moveModelBank = 15,
@@ -8803,7 +8803,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T30PC0101] = {
+    [MAP_BLACKTHORN_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -8833,7 +8833,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T29R0101] = {
+    [MAP_LAKE_OF_RAGE_HIDDEN_POWER_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -8863,7 +8863,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T29R0201] = {
+    [MAP_LAKE_OF_RAGE_FISHING_GURU_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -8893,7 +8893,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R26R0101] = {
+    [MAP_ROUTE_26_NORTH_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -8923,7 +8923,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R26R0201] = {
+    [MAP_ROUTE_26_WEEK_SIBLINGS_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 42,
                         .moveModelBank = 15,
@@ -8953,7 +8953,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D45R0102] = {
+    [MAP_TOHJO_FALLS_HIDDEN_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 70,
                         .moveModelBank = 15,
@@ -8983,7 +8983,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R22R0101] = {
+    [MAP_ROUTE_22_POKEMON_LEAGUE_RECEPTION_GATE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -9013,7 +9013,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T10R0101] = {
+    [MAP_POKEMON_LEAGUE_ENTRANCE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -9043,7 +9043,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T10R0201] = {
+    [MAP_POKEMON_LEAGUE_WILL_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 41,
                         .moveModelBank = 15,
@@ -9073,7 +9073,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T10R0301] = {
+    [MAP_POKEMON_LEAGUE_KOGA_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 41,
                         .moveModelBank = 15,
@@ -9103,7 +9103,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T10R0401] = {
+    [MAP_POKEMON_LEAGUE_BRUNO_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 41,
                         .moveModelBank = 15,
@@ -9133,7 +9133,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T10R0501] = {
+    [MAP_POKEMON_LEAGUE_KAREN_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 41,
                         .moveModelBank = 15,
@@ -9163,7 +9163,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T10R0601] = {
+    [MAP_POKEMON_LEAGUE_LANCE_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 65,
                         .moveModelBank = 15,
@@ -9193,7 +9193,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T10R0701] = {
+    [MAP_POKEMON_LEAGUE_HALL_OF_FAME] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 65,
                         .moveModelBank = 15,
@@ -9223,7 +9223,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_P01R0301] = {
+    [MAP_SS_AQUA_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 42,
                         .moveModelBank = 15,
@@ -9253,7 +9253,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_P01R0302] = {
+    [MAP_SS_AQUA_CAPTAIN_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 42,
                         .moveModelBank = 15,
@@ -9283,7 +9283,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_P01R0303] = {
+    [MAP_SS_AQUA_1F_SOUTHEAST_ROOMS] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 42,
                         .moveModelBank = 15,
@@ -9313,7 +9313,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_P01R0304] = {
+    [MAP_SS_AQUA_1F_SOUTHWEST_ROOMS] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 42,
                         .moveModelBank = 15,
@@ -9343,7 +9343,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_P01R0305] = {
+    [MAP_SS_AQUA_1F_NORTHEAST_ROOMS] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 42,
                         .moveModelBank = 15,
@@ -9373,7 +9373,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D24R0202] = {
+    [MAP_RUINS_OF_ALPH_NORTHEAST_ENTRANCE_FIRST_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 72,
                         .moveModelBank = 15,
@@ -9403,7 +9403,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D24R0203] = {
+    [MAP_RUINS_OF_ALPH_NORTHEAST_HIDDEN_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 72,
                         .moveModelBank = 15,
@@ -9433,7 +9433,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D24R0204] = {
+    [MAP_RUINS_OF_ALPH_SOUTHEAST_ENTRANCE_FIRST_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 72,
                         .moveModelBank = 15,
@@ -9463,7 +9463,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D24R0205] = {
+    [MAP_RUINS_OF_ALPH_UNDERGROUND_HALL] = {
                         .wildEncounterBank = ENCDATA_D24R0205,
                         .areaDataBank = 105,
                         .moveModelBank = 15,
@@ -9493,7 +9493,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D24R0206] = {
+    [MAP_RUINS_OF_ALPH_SOUTHWEST_ENTRANCE_FIRST_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 72,
                         .moveModelBank = 15,
@@ -9523,7 +9523,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D24R0207] = {
+    [MAP_RUINS_OF_ALPH_SOUTHWEST_HIDDEN_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 72,
                         .moveModelBank = 15,
@@ -9553,7 +9553,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D24R0208] = {
+    [MAP_RUINS_OF_ALPH_NORTHWEST_ENTRANCE_FIRST_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 72,
                         .moveModelBank = 15,
@@ -9583,7 +9583,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D24R0209] = {
+    [MAP_RUINS_OF_ALPH_NORTHWEST_HIDDEN_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 72,
                         .moveModelBank = 15,
@@ -9613,7 +9613,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D24R0210] = {
+    [MAP_RUINS_OF_ALPH_SOUTHEAST_HIDDEN_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 72,
                         .moveModelBank = 15,
@@ -9643,7 +9643,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D24R0102] = {
+    [MAP_RUINS_OF_ALPH_RESEARCH_CENTER] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 61,
                         .moveModelBank = 15,
@@ -9673,7 +9673,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R27R0101] = {
+    [MAP_ROUTE_27_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -9703,7 +9703,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D24R0211] = {
+    [MAP_RUINS_OF_ALPH_HALL_ENTRANCE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 105,
                         .moveModelBank = 15,
@@ -9733,7 +9733,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D24R0212] = {
+    [MAP_RUINS_OF_ALPH_NORTHEAST_ENTRANCE_SECOND_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 72,
                         .moveModelBank = 15,
@@ -9763,7 +9763,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D24R0213] = {
+    [MAP_RUINS_OF_ALPH_SOUTHEAST_ENTRANCE_SECOND_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 72,
                         .moveModelBank = 15,
@@ -9793,7 +9793,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D24R0214] = {
+    [MAP_RUINS_OF_ALPH_NORTHWEST_ENTRANCE_SECOND_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 72,
                         .moveModelBank = 15,
@@ -9823,7 +9823,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D24R0215] = {
+    [MAP_RUINS_OF_ALPH_SOUTHWEST_ENTRANCE_SECOND_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 72,
                         .moveModelBank = 15,
@@ -9853,7 +9853,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_P01R0306] = {
+    [MAP_SS_AQUA_1F_NORTHWEST_ROOMS] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 42,
                         .moveModelBank = 15,
@@ -9883,7 +9883,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_P01R0307] = {
+    [MAP_SS_AQUA_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 42,
                         .moveModelBank = 15,
@@ -9913,7 +9913,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_P01R0102] = {
+    [MAP_SS_AQUA_OLIVINE_PORT_EXTERIOR] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 94,
                         .moveModelBank = 15,
@@ -9943,7 +9943,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R34R0101] = {
+    [MAP_ROUTE_34_DAYCARE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 27,
                         .moveModelBank = 15,
@@ -9973,7 +9973,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D17R0102] = {
+    [MAP_BELL_TOWER_2F] = {
                         .wildEncounterBank = ENCDATA_D17R0102,
                         .areaDataBank = 77,
                         .moveModelBank = 15,
@@ -10003,7 +10003,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D17R0103] = {
+    [MAP_BELL_TOWER_3F] = {
                         .wildEncounterBank = ENCDATA_D17R0103,
                         .areaDataBank = 77,
                         .moveModelBank = 15,
@@ -10033,7 +10033,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D17R0104] = {
+    [MAP_BELL_TOWER_4F] = {
                         .wildEncounterBank = ENCDATA_D17R0104,
                         .areaDataBank = 77,
                         .moveModelBank = 15,
@@ -10063,7 +10063,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D17R0105] = {
+    [MAP_BELL_TOWER_5F] = {
                         .wildEncounterBank = ENCDATA_D17R0105,
                         .areaDataBank = 77,
                         .moveModelBank = 15,
@@ -10093,7 +10093,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D17R0106] = {
+    [MAP_BELL_TOWER_6F] = {
                         .wildEncounterBank = ENCDATA_D17R0106,
                         .areaDataBank = 77,
                         .moveModelBank = 15,
@@ -10123,7 +10123,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D17R0107] = {
+    [MAP_BELL_TOWER_7F] = {
                         .wildEncounterBank = ENCDATA_D17R0107,
                         .areaDataBank = 77,
                         .moveModelBank = 15,
@@ -10153,7 +10153,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D17R0108] = {
+    [MAP_BELL_TOWER_8F] = {
                         .wildEncounterBank = ENCDATA_D17R0108,
                         .areaDataBank = 77,
                         .moveModelBank = 15,
@@ -10183,7 +10183,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D17R0109] = {
+    [MAP_BELL_TOWER_9F] = {
                         .wildEncounterBank = ENCDATA_D17R0109,
                         .areaDataBank = 77,
                         .moveModelBank = 15,
@@ -10213,7 +10213,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D17R0110] = {
+    [MAP_BELL_TOWER_ROOF] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 91,
                         .moveModelBank = 15,
@@ -10243,7 +10243,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_D17R0112] = {
+    [MAP_BELL_TOWER_10F] = {
                         .wildEncounterBank = ENCDATA_D17R0112,
                         .areaDataBank = 77,
                         .moveModelBank = 15,
@@ -10273,7 +10273,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D50R0101] = {
+    [MAP_CLIFF_CAVE] = {
                         .wildEncounterBank = ENCDATA_D50R0101,
                         .areaDataBank = 70,
                         .moveModelBank = 15,
@@ -10303,7 +10303,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_SAF01] = {
+    [MAP_SAFARI_ZONE_01] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 75,
                         .moveModelBank = 15,
@@ -10333,7 +10333,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_SAF02] = {
+    [MAP_SAFARI_ZONE_02] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 75,
                         .moveModelBank = 15,
@@ -10363,7 +10363,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_SAF03] = {
+    [MAP_SAFARI_ZONE_03] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 75,
                         .moveModelBank = 15,
@@ -10393,7 +10393,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_SAF04] = {
+    [MAP_SAFARI_ZONE_04] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 75,
                         .moveModelBank = 15,
@@ -10423,7 +10423,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_SAF05] = {
+    [MAP_SAFARI_ZONE_05] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 75,
                         .moveModelBank = 15,
@@ -10453,7 +10453,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_SAF06] = {
+    [MAP_SAFARI_ZONE_06] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 75,
                         .moveModelBank = 15,
@@ -10483,7 +10483,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_SAF07] = {
+    [MAP_SAFARI_ZONE_07] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 75,
                         .moveModelBank = 15,
@@ -10513,7 +10513,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_SAF08] = {
+    [MAP_SAFARI_ZONE_08] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 75,
                         .moveModelBank = 15,
@@ -10543,7 +10543,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_SAF09] = {
+    [MAP_SAFARI_ZONE_09] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 75,
                         .moveModelBank = 15,
@@ -10573,7 +10573,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_SAF10] = {
+    [MAP_SAFARI_ZONE_10] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 75,
                         .moveModelBank = 15,
@@ -10603,7 +10603,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_SAF11] = {
+    [MAP_SAFARI_ZONE_11] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 75,
                         .moveModelBank = 15,
@@ -10633,7 +10633,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_SAF12] = {
+    [MAP_SAFARI_ZONE_12] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 75,
                         .moveModelBank = 15,
@@ -10663,7 +10663,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_SAF13] = {
+    [MAP_SAFARI_ZONE_13] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 75,
                         .moveModelBank = 15,
@@ -10693,7 +10693,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_SAF14] = {
+    [MAP_SAFARI_ZONE_14] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 75,
                         .moveModelBank = 15,
@@ -10723,7 +10723,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_D47R0102] = {
+    [MAP_SAFARI_ZONE_ENTRANCE_EXTERIOR] = {
                         .wildEncounterBank = ENCDATA_D47R0102,
                         .areaDataBank = 75,
                         .moveModelBank = 15,
@@ -10753,7 +10753,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T06PC0101] = {
+    [MAP_VERMILION_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -10783,7 +10783,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T06PC0102] = {
+    [MAP_VERMILION_POKECENTER_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -10813,7 +10813,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T06FS0101] = {
+    [MAP_VERMILION_POKEMART] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 27,
                         .moveModelBank = 15,
@@ -10843,7 +10843,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T06R0101] = {
+    [MAP_VERMILION_FISHING_DUDE_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -10873,7 +10873,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T06R0301] = {
+    [MAP_VERMILION_POKEMON_FAN_CLUB] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 40,
                         .moveModelBank = 15,
@@ -10903,7 +10903,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T06R0401] = {
+    [MAP_VERMILION_CENTRAL_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -10933,7 +10933,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T06R0601] = {
+    [MAP_VERMILION_SOUTH_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -10963,7 +10963,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T06GYM0101] = {
+    [MAP_VERMILION_GYM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 49,
                         .moveModelBank = 15,
@@ -10993,7 +10993,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_W40R0101] = {
+    [MAP_ROUTE_40_BATTLE_FRONTIER_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -11023,7 +11023,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T26PC0102] = {
+    [MAP_OLIVINE_POKECENTER_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -11053,7 +11053,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T28PC0102] = {
+    [MAP_MAHOGANY_POKECENTER_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -11083,7 +11083,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T30PC0102] = {
+    [MAP_BLACKTHORN_POKECENTER_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -11113,7 +11113,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T07R0101] = {
+    [MAP_CELADON_DEPARTMENT_STORE_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 39,
                         .moveModelBank = 15,
@@ -11143,7 +11143,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T07R0102] = {
+    [MAP_CELADON_DEPARTMENT_STORE_2F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 39,
                         .moveModelBank = 15,
@@ -11173,7 +11173,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T07R0103] = {
+    [MAP_CELADON_DEPARTMENT_STORE_3F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 39,
                         .moveModelBank = 15,
@@ -11203,7 +11203,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T07R0104] = {
+    [MAP_CELADON_DEPARTMENT_STORE_4F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 39,
                         .moveModelBank = 15,
@@ -11233,7 +11233,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T07R0105] = {
+    [MAP_CELADON_DEPARTMENT_STORE_5F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 39,
                         .moveModelBank = 15,
@@ -11263,7 +11263,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T07R0106] = {
+    [MAP_CELADON_DEPARTMENT_STORE_ROOF] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 39,
                         .moveModelBank = 15,
@@ -11293,7 +11293,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T07R0201] = {
+    [MAP_CELADON_CONDOMINIUMS_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 39,
                         .moveModelBank = 15,
@@ -11323,7 +11323,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T07R0202] = {
+    [MAP_CELADON_CONDOMINIUMS_2F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 39,
                         .moveModelBank = 15,
@@ -11353,7 +11353,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T07R0203] = {
+    [MAP_CELADON_CONDOMINIUMS_3F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 39,
                         .moveModelBank = 15,
@@ -11383,7 +11383,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T07R0204] = {
+    [MAP_CELADON_CONDOMINIUMS_ROOF] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 95,
                         .moveModelBank = 15,
@@ -11413,7 +11413,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T07R0205] = {
+    [MAP_CELADON_CONDOMINIUMS_ROOF_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 40,
                         .moveModelBank = 15,
@@ -11443,7 +11443,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T07R0401] = {
+    [MAP_CELADON_GAME_CORNER_JP] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 40,
                         .moveModelBank = 15,
@@ -11473,7 +11473,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T07R0501] = {
+    [MAP_CELADON_PRIZE_CORNER] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 40,
                         .moveModelBank = 15,
@@ -11503,7 +11503,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T07R0701] = {
+    [MAP_CELADON_RESTAURANT] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 40,
                         .moveModelBank = 15,
@@ -11533,7 +11533,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T20R0402] = {
+    [MAP_NEW_BARK_RIVAL_HOUSE_2F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -11563,7 +11563,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T24R0801] = {
+    [MAP_CIANWOOD_NORTH_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -11593,7 +11593,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_P01R0103] = {
+    [MAP_SS_AQUA_VERMILION_PORT_INTERIOR] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 39,
                         .moveModelBank = 15,
@@ -11623,7 +11623,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_P01R0104] = {
+    [MAP_SS_AQUA_VERMILION_PORT_EXTERIOR] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 94,
                         .moveModelBank = 15,
@@ -11653,7 +11653,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R10R0101] = {
+    [MAP_ROUTE_10_SOUTH] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 14,
                         .moveModelBank = 15,
@@ -11683,7 +11683,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R06R0201] = {
+    [MAP_ROUTE_6_SAFFRON_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -11713,7 +11713,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R08R0201] = {
+    [MAP_ROUTE_8_SAFFRON_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -11743,7 +11743,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R05R0301] = {
+    [MAP_ROUTE_5_SAFFRON_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -11773,7 +11773,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R15R0101] = {
+    [MAP_ROUTE_15_FUCHSIA_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -11803,7 +11803,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T07PC0101] = {
+    [MAP_CELADON_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -11833,7 +11833,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T07PC0102] = {
+    [MAP_CELADON_POKECENTER_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -11863,7 +11863,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T07GYM0101] = {
+    [MAP_CELADON_GYM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 52,
                         .moveModelBank = 15,
@@ -11893,7 +11893,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T28GYM0102] = {
+    [MAP_MAHOGANY_GYM_ROOM_2] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 34,
                         .moveModelBank = 15,
@@ -11923,7 +11923,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T28GYM0103] = {
+    [MAP_MAHOGANY_GYM_ROOM_1] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 34,
                         .moveModelBank = 15,
@@ -11953,7 +11953,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T11R0101] = {
+    [MAP_SAFFRON_FIGHTING_DOJO] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 40,
                         .moveModelBank = 15,
@@ -11983,7 +11983,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T11R0501] = {
+    [MAP_SAFFRON_MR_PSYCHIC_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -12013,7 +12013,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T11R0601] = {
+    [MAP_SAFFRON_MAGNET_TRAIN_STATION_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 48,
                         .moveModelBank = 15,
@@ -12043,7 +12043,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T11R0602] = {
+    [MAP_SAFFRON_MAGNET_TRAIN_STATION_2F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 48,
                         .moveModelBank = 15,
@@ -12073,7 +12073,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T11R0701] = {
+    [MAP_SAFFRON_SILPH_CO_HQ] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 39,
                         .moveModelBank = 15,
@@ -12103,7 +12103,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T11R0702] = {
+    [MAP_SAFFRON_SILPH_CO_ROTOM_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 39,
                         .moveModelBank = 15,
@@ -12133,7 +12133,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T11R0801] = {
+    [MAP_SAFFRON_COPYCAT_HOUSE_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 39,
                         .moveModelBank = 15,
@@ -12163,7 +12163,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T11R0802] = {
+    [MAP_SAFFRON_COPYCAT_HOUSE_2F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 39,
                         .moveModelBank = 15,
@@ -12193,7 +12193,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T11R0901] = {
+    [MAP_SAFFRON_UNUSED] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 40,
                         .moveModelBank = 15,
@@ -12223,7 +12223,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T11PC0101] = {
+    [MAP_SAFFRON_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -12253,7 +12253,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T11PC0102] = {
+    [MAP_SAFFRON_POKECENTER_2F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -12283,7 +12283,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T11FS0101] = {
+    [MAP_SAFFRON_POKEMART] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 27,
                         .moveModelBank = 15,
@@ -12313,7 +12313,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T11GYM0101] = {
+    [MAP_SAFFRON_GYM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 50,
                         .moveModelBank = 15,
@@ -12343,7 +12343,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D32R0102] = {
+    [MAP_BATTLE_FRONTIER_FRONTIER_ACCESS] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 93,
                         .moveModelBank = 15,
@@ -12373,7 +12373,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R1202] = {
+    [MAP_GOLDENROD_GLOBAL_TERMINAL_2F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 45,
                         .moveModelBank = 15,
@@ -12403,7 +12403,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R1203] = {
+    [MAP_GOLDENROD_GLOBAL_TERMINAL_3F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 45,
                         .moveModelBank = 15,
@@ -12433,7 +12433,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R02R0101] = {
+    [MAP_ROUTE_2_EAST] = {
                         .wildEncounterBank = ENCDATA_R02R0101,
                         .areaDataBank = 17,
                         .moveModelBank = 15,
@@ -12463,7 +12463,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R16R0101] = {
+    [MAP_ROUTE_16_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -12493,7 +12493,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_W20R0101] = {
+    [MAP_ROUTE_20_UNUSED] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 16,
                         .moveModelBank = 15,
@@ -12523,7 +12523,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R02R0201] = {
+    [MAP_ROUTE_2_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -12553,7 +12553,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R02R0301] = {
+    [MAP_ROUTE_2_SOUTHEAST_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -12583,7 +12583,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R02R0401] = {
+    [MAP_ROUTE_2_VIRIDIAN_FOREST_SOUTH_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -12613,7 +12613,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R02R0501] = {
+    [MAP_ROUTE_2_VIRIDIAN_FOREST_NORTH_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -12643,7 +12643,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R16R0201] = {
+    [MAP_ROUTE_16_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -12673,7 +12673,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R16R0301] = {
+    [MAP_ROUTE_16_EAST] = {
                         .wildEncounterBank = ENCDATA_R16R0301,
                         .areaDataBank = 15,
                         .moveModelBank = 15,
@@ -12703,7 +12703,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R18R0101] = {
+    [MAP_ROUTE_18_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -12733,7 +12733,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_W19R0101] = {
+    [MAP_ROUTE_19_FUCHSIA_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -12763,7 +12763,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R11R0101] = {
+    [MAP_ROUTE_19_ROUTE_12_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -12793,7 +12793,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T04FS0101] = {
+    [MAP_CERULEAN_POKEMART] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 27,
                         .moveModelBank = 15,
@@ -12823,7 +12823,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T04GYM0101] = {
+    [MAP_CERULEAN_GYM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 51,
                         .moveModelBank = 15,
@@ -12853,7 +12853,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T04PC0101] = {
+    [MAP_CERULEAN_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -12883,7 +12883,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T04R0101] = {
+    [MAP_CERULEAN_NORTH_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -12913,7 +12913,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T04R0201] = {
+    [MAP_CERULEAN_EAST_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -12943,7 +12943,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T04R0301] = {
+    [MAP_CERULEAN_WEST_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -12973,7 +12973,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T04R0401] = {
+    [MAP_CERULEAN_BIKE_MANIAC_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 27,
                         .moveModelBank = 15,
@@ -13003,7 +13003,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T05FS0101] = {
+    [MAP_LAVENDER_POKEMART] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 27,
                         .moveModelBank = 15,
@@ -13033,7 +13033,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T05PC0101] = {
+    [MAP_LAVENDER_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -13063,7 +13063,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T05R0201] = {
+    [MAP_LAVENDER_VOLUNTEER_POKEMON_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 40,
                         .moveModelBank = 15,
@@ -13093,7 +13093,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T05R0301] = {
+    [MAP_LAVENDER_SOUTHWEST_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -13123,7 +13123,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T05R0401] = {
+    [MAP_LAVENDER_NAME_RATER] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 42,
                         .moveModelBank = 15,
@@ -13153,7 +13153,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T05R0601] = {
+    [MAP_LAVENDER_HOUSE_OF_MEMORIES] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 40,
                         .moveModelBank = 15,
@@ -13183,7 +13183,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T05R0701] = {
+    [MAP_LAVENDER_RADIO_STATION] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 39,
                         .moveModelBank = 15,
@@ -13213,7 +13213,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R25R0101] = {
+    [MAP_ROUTE_25_SEA_COTTAGE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 43,
                         .moveModelBank = 15,
@@ -13243,7 +13243,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R1007] = {
+    [MAP_GOLDENROD_DEPARTMENT_STORE_ELEVATOR] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 44,
                         .moveModelBank = 15,
@@ -13273,7 +13273,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T07R0107] = {
+    [MAP_CELADON_DEPARTMENT_STORE_ELEVATOR] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 44,
                         .moveModelBank = 15,
@@ -13303,7 +13303,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T07R0206] = {
+    [MAP_CELADON_CONDOMINIUMS_LEFT_ELEVATOR] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 44,
                         .moveModelBank = 15,
@@ -13333,7 +13333,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T07R0207] = {
+    [MAP_CELADON_CONDOMINIUMS_RIGHT_ELEVATOR] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 44,
                         .moveModelBank = 15,
@@ -13363,7 +13363,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T11R0703] = {
+    [MAP_SAFFRON_SILPH_CO_ELEVATOR] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 44,
                         .moveModelBank = 15,
@@ -13393,7 +13393,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D27R0108] = {
+    [MAP_OLIVINE_LIGHTHOUSE_ELEVATOR] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 44,
                         .moveModelBank = 15,
@@ -13423,7 +13423,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D23R0107] = {
+    [MAP_GOLDENROD_RADIO_TOWER_ELEVATOR] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 44,
                         .moveModelBank = 15,
@@ -13453,7 +13453,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D02R0102] = {
+    [MAP_MOUNT_MOON_SQUARE_ENTRANCE] = {
                         .wildEncounterBank = ENCDATA_D02R0102,
                         .areaDataBank = 70,
                         .moveModelBank = 15,
@@ -13483,7 +13483,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D02R0103] = {
+    [MAP_MOUNT_MOON_SQUARE] = {
                         .wildEncounterBank = ENCDATA_D02R0103,
                         .areaDataBank = 97,
                         .moveModelBank = 15,
@@ -13513,7 +13513,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D03R0102] = {
+    [MAP_CERULEAN_CAVE_2F] = {
                         .wildEncounterBank = ENCDATA_D03R0102,
                         .areaDataBank = 73,
                         .moveModelBank = 15,
@@ -13543,7 +13543,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D03R0103] = {
+    [MAP_CERULEAN_CAVE_B1F] = {
                         .wildEncounterBank = ENCDATA_D03R0103,
                         .areaDataBank = 73,
                         .moveModelBank = 15,
@@ -13573,7 +13573,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D05R0102] = {
+    [MAP_ROCK_TUNNEL_B1F] = {
                         .wildEncounterBank = ENCDATA_D05R0102,
                         .areaDataBank = 83,
                         .moveModelBank = 15,
@@ -13603,7 +13603,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D11R0102] = {
+    [MAP_SEAFOAM_ISLANDS_B1F] = {
                         .wildEncounterBank = ENCDATA_D11R0102,
                         .areaDataBank = 104,
                         .moveModelBank = 15,
@@ -13633,7 +13633,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D11R0103] = {
+    [MAP_SEAFOAM_ISLANDS_B2F] = {
                         .wildEncounterBank = ENCDATA_D11R0103,
                         .areaDataBank = 104,
                         .moveModelBank = 15,
@@ -13663,7 +13663,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D11R0104] = {
+    [MAP_SEAFOAM_ISLANDS_B3F] = {
                         .wildEncounterBank = ENCDATA_D11R0104,
                         .areaDataBank = 104,
                         .moveModelBank = 15,
@@ -13693,7 +13693,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D11R0105] = {
+    [MAP_SEAFOAM_ISLANDS_B4F] = {
                         .wildEncounterBank = ENCDATA_D11R0105,
                         .areaDataBank = 104,
                         .moveModelBank = 15,
@@ -13723,7 +13723,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D11R0106] = {
+    [MAP_SEAFOAM_ISLANDS_CINNABAR_GYM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 81,
                         .moveModelBank = 15,
@@ -13753,7 +13753,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D11R0107] = {
+    [MAP_SEAFOAM_ISLANDS_UNUSED] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 70,
                         .moveModelBank = 15,
@@ -13783,7 +13783,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D41R0102] = {
+    [MAP_MOUNT_SILVER_CAVE_UPPER_MOUNTAINSIDE] = {
                         .wildEncounterBank = ENCDATA_D41R0102,
                         .areaDataBank = 96,
                         .moveModelBank = 15,
@@ -13813,7 +13813,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D41R0103] = {
+    [MAP_MOUNT_SILVER_CAVE_LOWER_MOUNTAINSIDE] = {
                         .wildEncounterBank = ENCDATA_D41R0103,
                         .areaDataBank = 102,
                         .moveModelBank = 15,
@@ -13843,7 +13843,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D41R0104] = {
+    [MAP_MOUNT_SILVER_CAVE_EXPERT_BELT_CHAMBER] = {
                         .wildEncounterBank = ENCDATA_D41R0104,
                         .areaDataBank = 80,
                         .moveModelBank = 15,
@@ -13873,7 +13873,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D41R0105] = {
+    [MAP_MOUNT_SILVER_CAVE_MOLTRES_CHAMBER] = {
                         .wildEncounterBank = ENCDATA_D41R0105,
                         .areaDataBank = 80,
                         .moveModelBank = 15,
@@ -13903,7 +13903,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D41R0106] = {
+    [MAP_MOUNT_SILVER_CAVE_2F] = {
                         .wildEncounterBank = ENCDATA_D41R0106,
                         .areaDataBank = 80,
                         .moveModelBank = 15,
@@ -13933,7 +13933,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D41R0107] = {
+    [MAP_MOUNT_SILVER_CAVE_3F] = {
                         .wildEncounterBank = ENCDATA_D41R0107,
                         .areaDataBank = 80,
                         .moveModelBank = 15,
@@ -13963,7 +13963,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D41R0108] = {
+    [MAP_MOUNT_SILVER_CAVE_SUMMIT] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 96,
                         .moveModelBank = 15,
@@ -13993,7 +13993,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R10PC0101] = {
+    [MAP_ROUTE_10_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -14023,7 +14023,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R10R0201] = {
+    [MAP_ROUTE_10_POWER_PLANT_REPAIRED] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 44,
                         .moveModelBank = 15,
@@ -14053,7 +14053,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R05R0101] = {
+    [MAP_ROUTE_5_UNUSED] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 44,
                         .moveModelBank = 15,
@@ -14083,7 +14083,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R05R0201] = {
+    [MAP_ROUTE_5_UNDERGROUND_PATH_GATE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 44,
                         .moveModelBank = 15,
@@ -14113,7 +14113,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R06R0101] = {
+    [MAP_ROUTE_6_UNDERGROUND_PATH_GATE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 44,
                         .moveModelBank = 15,
@@ -14143,7 +14143,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T03R0101] = {
+    [MAP_PEWTER_MUSEUM_OF_SCIENCE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 44,
                         .moveModelBank = 15,
@@ -14173,7 +14173,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T03R0201] = {
+    [MAP_PEWTER_NORTHEAST_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -14203,7 +14203,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T03GYM0101] = {
+    [MAP_PEWTER_GYM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 54,
                         .moveModelBank = 15,
@@ -14233,7 +14233,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T03FS0101] = {
+    [MAP_PEWTER_POKEMART] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 27,
                         .moveModelBank = 15,
@@ -14263,7 +14263,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T03PC0101] = {
+    [MAP_PEWTER_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -14293,7 +14293,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T03PC0102] = {
+    [MAP_PEWTER_POKECENTER_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -14323,7 +14323,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T03R0601] = {
+    [MAP_PEWTER_SOUTHWEST_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -14353,7 +14353,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T08FS0101] = {
+    [MAP_FUCHSIA_POKEMART] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 27,
                         .moveModelBank = 15,
@@ -14383,7 +14383,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T08R0201] = {
+    [MAP_FUCHSIA_PAL_PARK_ENTRANCE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 44,
                         .moveModelBank = 15,
@@ -14413,7 +14413,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T08GYM0101] = {
+    [MAP_FUCHSIA_GYM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 53,
                         .moveModelBank = 15,
@@ -14443,7 +14443,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T08R0401] = {
+    [MAP_FUCHSIA_SOUTHWEST_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -14473,7 +14473,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T08PC0101] = {
+    [MAP_FUCHSIA_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -14503,7 +14503,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T08R0601] = {
+    [MAP_FUCHSIA_SAFARI_ZONE_WARDEN_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -14533,7 +14533,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R10PC0102] = {
+    [MAP_ROUTE_10_POKECENTER_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -14563,7 +14563,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T08PC0102] = {
+    [MAP_FUCHSIA_POKECENTER_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -14593,7 +14593,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D40R0106] = {
+    [MAP_WHIRL_ISLANDS_B3F] = {
                         .wildEncounterBank = ENCDATA_D40R0106,
                         .areaDataBank = 98,
                         .moveModelBank = 15,
@@ -14623,7 +14623,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D22R0102] = {
+    [MAP_NATIONAL_PARK_BUG_CATCHING_CONTEST] = {
                         .wildEncounterBank = ENCDATA_D22R0102,
                         .areaDataBank = 71,
                         .moveModelBank = 15,
@@ -14653,7 +14653,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D22R0103] = {
+    [MAP_NATIONAL_PARK_UNUSED] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 71,
                         .moveModelBank = 15,
@@ -14683,7 +14683,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R10R0202] = {
+    [MAP_ROUTE_10_POWER_PLANT_BROKEN] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 44,
                         .moveModelBank = 15,
@@ -14713,7 +14713,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D24R0216] = {
+    [MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT] = {
                         .wildEncounterBank = ENCDATA_D24R0216,
                         .areaDataBank = 105,
                         .moveModelBank = 15,
@@ -14743,7 +14743,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D24R0217] = {
+    [MAP_RUINS_OF_ALPH_HALL_ENTRANCE_SINJOH_EVENT] = {
                         .wildEncounterBank = ENCDATA_D24R0217,
                         .areaDataBank = 105,
                         .moveModelBank = 15,
@@ -14773,7 +14773,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D24R0218] = {
+    [MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT_2] = {
                         .wildEncounterBank = ENCDATA_D24R0218,
                         .areaDataBank = 105,
                         .moveModelBank = 15,
@@ -14803,7 +14803,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R07R0101] = {
+    [MAP_ROUTE_7_SAFFRON_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -14833,7 +14833,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T05PC0102] = {
+    [MAP_LAVENDER_POKECENTER_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -14863,7 +14863,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T04PC0102] = {
+    [MAP_CERULEAN_POKECENTER_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -14893,7 +14893,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T02GYM0101] = {
+    [MAP_VIRIDIAN_GYM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 55,
                         .moveModelBank = 15,
@@ -14923,7 +14923,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T02R0201] = {
+    [MAP_VIRIDIAN_NORTHEAST_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -14953,7 +14953,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T02R0301] = {
+    [MAP_VIRIDIAN_TRAINER_HOUSE_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 43,
                         .moveModelBank = 15,
@@ -14983,7 +14983,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T02R0302] = {
+    [MAP_VIRIDIAN_TRAINER_HOUSE_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 43,
                         .moveModelBank = 15,
@@ -15013,7 +15013,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T02FS0101] = {
+    [MAP_VIRIDIAN_POKEMART] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 27,
                         .moveModelBank = 15,
@@ -15043,7 +15043,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T02PC0101] = {
+    [MAP_VIRIDIAN_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -15073,7 +15073,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T02PC0102] = {
+    [MAP_VIRIDIAN_POKECENTER_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -15103,7 +15103,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T01R0101] = {
+    [MAP_PALLET_TOWN_REDS_HOUSE_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 43,
                         .moveModelBank = 15,
@@ -15133,7 +15133,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T01R0201] = {
+    [MAP_PALLET_TOWN_BLUES_HOUSE_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 43,
                         .moveModelBank = 15,
@@ -15163,7 +15163,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T01R0301] = {
+    [MAP_PALLET_TOWN_OAKS_LAB] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 43,
                         .moveModelBank = 15,
@@ -15193,7 +15193,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T01R0102] = {
+    [MAP_PALLET_TOWN_REDS_HOUSE_2F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 43,
                         .moveModelBank = 15,
@@ -15223,7 +15223,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T01R0202] = {
+    [MAP_PALLET_TOWN_BLUES_HOUSE_2F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 43,
                         .moveModelBank = 15,
@@ -15253,7 +15253,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T09PC0101] = {
+    [MAP_CINNABAR_ISLAND_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -15283,7 +15283,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T09PC0102] = {
+    [MAP_CINNABAR_ISLAND_POKECENTER_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -15313,7 +15313,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R28R0101] = {
+    [MAP_ROUTE_28_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -15343,7 +15343,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R03PC0101] = {
+    [MAP_ROUTE_3_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -15373,7 +15373,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R03PC0102] = {
+    [MAP_ROUTE_3_POKECENTER_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -15403,7 +15403,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D02R0104] = {
+    [MAP_MOUNT_MOON_SQUARE_CLEFAIRY_EVENT] = {
                         .wildEncounterBank = ENCDATA_D02R0104,
                         .areaDataBank = 97,
                         .moveModelBank = 15,
@@ -15433,7 +15433,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T31PC0101] = {
+    [MAP_MOUNT_SILVER_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -15463,7 +15463,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T31PC0102] = {
+    [MAP_MOUNT_SILVER_POKECENTER_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -15493,7 +15493,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_HIROBA] = {
+    [MAP_WIFI_PLAZA_WARP_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 45,
                         .moveModelBank = 15,
@@ -15523,7 +15523,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_R05R0401] = {
+    [MAP_ROUTE_5_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -15553,7 +15553,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D02FS0101] = {
+    [MAP_MOUNT_MOON_SQUARE_SHOP] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 27,
                         .moveModelBank = 15,
@@ -15583,7 +15583,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25R0503] = {
+    [MAP_GOLDENROD_MAGNET_TRAIN_STATION_2F_EMPTY] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 48,
                         .moveModelBank = 15,
@@ -15613,7 +15613,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T11R0603] = {
+    [MAP_SAFFRON_MAGNET_TRAIN_STATION_2F_EMPTY] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 48,
                         .moveModelBank = 15,
@@ -15643,7 +15643,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D51R0101] = {
+    [MAP_SINJOH_RUINS_EXTERIOR] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 100,
                         .moveModelBank = 15,
@@ -15673,7 +15673,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D51R0201] = {
+    [MAP_SINJOH_RUINS_MYSTRI_STAGE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 101,
                         .moveModelBank = 15,
@@ -15703,7 +15703,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_D51R0301] = {
+    [MAP_SINJOH_RUINS_CABIN] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 42,
                         .moveModelBank = 15,
@@ -15733,7 +15733,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D52R0101] = {
+    [MAP_EMBEDDED_TOWER_GROUDON_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 99,
                         .moveModelBank = 15,
@@ -15763,7 +15763,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D52R0102] = {
+    [MAP_EMBEDDED_TOWER_KYOGRE_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 99,
                         .moveModelBank = 15,
@@ -15793,7 +15793,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D52R0103] = {
+    [MAP_EMBEDDED_TOWER_RAYQUAZA_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 99,
                         .moveModelBank = 15,
@@ -15823,7 +15823,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T02R0401] = {
+    [MAP_VIRIDIAN_ROUTE_1_GATEHOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 63,
                         .moveModelBank = 15,
@@ -15853,7 +15853,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D32PC0101] = {
+    [MAP_FRONTIER_ACCESS_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -15883,7 +15883,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D32PC0102] = {
+    [MAP_FRONTIER_ACCESS_POKECENTER_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -15913,7 +15913,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D32FS0101] = {
+    [MAP_FRONTIER_ACCESS_POKEMART] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 27,
                         .moveModelBank = 15,
@@ -15943,7 +15943,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D32R0103] = {
+    [MAP_FRONTIER_ACCESS_MOVE_TUTOR_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -15973,7 +15973,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R05R0202] = {
+    [MAP_ROUTE_5_UNDERGROUND_PATH] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 44,
                         .moveModelBank = 15,
@@ -16003,7 +16003,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R12R0101] = {
+    [MAP_ROUTE_12_FISHING_BROTHER_HOUSE] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 25,
                         .moveModelBank = 15,
@@ -16033,7 +16033,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D47PC0101] = {
+    [MAP_SAFARI_ZONE_GATE_POKECENTER_1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -16063,7 +16063,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_D47PC0102] = {
+    [MAP_SAFARI_ZONE_GATE_POKECENTER_B1F] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,
@@ -16093,7 +16093,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T25SP0101] = {
+    [MAP_GOLDENROD_GAME_CORNER] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 66,
                         .moveModelBank = 15,
@@ -16123,7 +16123,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_T07SP0101] = {
+    [MAP_CELADON_GAME_CORNER] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 66,
                         .moveModelBank = 15,
@@ -16153,7 +16153,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = TRUE,
                         .unk_14_1F = TRUE,
                         },
-    [MAP_R00] = {
+    [MAP_UNUSED] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 4,
                         .moveModelBank = 15,
@@ -16183,7 +16183,7 @@ static const MapHeader sMapHeaders[] = {
                         .unk_14_1E = FALSE,
                         .unk_14_1F = FALSE,
                         },
-    [MAP_T10R0801] = {
+    [MAP_POKEMON_LEAGUE_ENTRANCE_WIFI_ROOM] = {
                         .wildEncounterBank = ENCDATA_NA,
                         .areaDataBank = 26,
                         .moveModelBank = 15,

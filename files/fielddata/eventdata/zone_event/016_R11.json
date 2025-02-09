@@ -202,21 +202,21 @@
     {
       "x": 1401,
       "z": 305,
-      "header": "MAP_R11R0101",
+      "header": "MAP_ROUTE_19_ROUTE_12_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1401,
       "z": 306,
-      "header": "MAP_R11R0101",
+      "header": "MAP_ROUTE_19_ROUTE_12_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1354,
       "z": 302,
-      "header": "MAP_D01R0101",
+      "header": "MAP_DIGLETT_CAVE",
       "anchor": 0,
       "y": 0
     }

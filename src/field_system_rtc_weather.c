@@ -22,7 +22,7 @@ const MonthDay DiamondDustDates[] = {
 u32 FieldSystem_GetWeather_HandleDiamondDust(FieldSystem *fieldSystem, u32 mapId) {
     u8 c;
     u32 weatherType = MapHeader_GetWeatherType(mapId);
-    if (mapId != MAP_D41R0108) {
+    if (mapId != MAP_MOUNT_SILVER_CAVE_SUMMIT) {
         return weatherType;
     }
     SysInfo_RTC *sysinfo_rtc = Save_SysInfo_RTC_Get(fieldSystem->saveData);

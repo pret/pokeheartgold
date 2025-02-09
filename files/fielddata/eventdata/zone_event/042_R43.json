@@ -185,42 +185,42 @@
     {
       "x": 524,
       "z": 156,
-      "header": "MAP_R43R0101",
+      "header": "MAP_ROUTE_43_MAHOGANY_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 525,
       "z": 156,
-      "header": "MAP_R43R0101",
+      "header": "MAP_ROUTE_43_MAHOGANY_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 537,
       "z": 143,
-      "header": "MAP_R43R0201",
+      "header": "MAP_ROUTE_43_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 538,
       "z": 143,
-      "header": "MAP_R43R0201",
+      "header": "MAP_ROUTE_43_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 537,
       "z": 134,
-      "header": "MAP_R43R0201",
+      "header": "MAP_ROUTE_43_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 538,
       "z": 134,
-      "header": "MAP_R43R0201",
+      "header": "MAP_ROUTE_43_GATEHOUSE",
       "anchor": 1,
       "y": 0
     }

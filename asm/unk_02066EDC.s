@@ -883,7 +883,7 @@ _0206756E:
 FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom: ; 0x02067584
 	ldr r0, [r0, #0x20]
 	ldr r1, [r0]
-	ldr r0, _02067598 ; =MAP_D31R0207
+	ldr r0, _02067598 ; =MAP_BATTLE_TOWER_PARTNER_ROOM
 	cmp r1, r0
 	bne _02067592
 	mov r0, #1
@@ -892,7 +892,7 @@ _02067592:
 	mov r0, #0
 	bx lr
 	nop
-_02067598: .word MAP_D31R0207
+_02067598: .word MAP_BATTLE_TOWER_PARTNER_ROOM
 	thumb_func_end FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom
 
 	thumb_func_start sub_0206759C

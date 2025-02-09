@@ -33,21 +33,21 @@
     {
       "x": 6,
       "z": 18,
-      "header": "MAP_T25",
+      "header": "MAP_GOLDENROD",
       "anchor": 9,
       "y": 0
     },
     {
       "x": 3,
       "z": 3,
-      "header": "MAP_T25R0503",
+      "header": "MAP_GOLDENROD_MAGNET_TRAIN_STATION_2F_EMPTY",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 3,
       "z": 4,
-      "header": "MAP_T25R0503",
+      "header": "MAP_GOLDENROD_MAGNET_TRAIN_STATION_2F_EMPTY",
       "anchor": 0,
       "y": 0
     }

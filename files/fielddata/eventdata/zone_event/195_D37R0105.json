@@ -143,14 +143,14 @@
     {
       "x": 3,
       "z": 18,
-      "header": "MAP_D37R0104",
+      "header": "MAP_GOLDENROD_TUNNEL_B2F",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 28,
       "z": 4,
-      "header": "MAP_D37R0103",
+      "header": "MAP_GOLDENROD_DEPARTMENT_STORE_BASEMENT",
       "anchor": 0,
       "y": 0
     }

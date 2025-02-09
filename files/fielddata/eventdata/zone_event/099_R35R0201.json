@@ -184,21 +184,21 @@
     {
       "x": 25,
       "z": 11,
-      "header": "MAP_R35",
+      "header": "MAP_ROUTE_35",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 25,
       "z": 2,
-      "header": "MAP_D22R0101",
+      "header": "MAP_NATIONAL_PARK",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 4,
       "z": 2,
-      "header": "MAP_D49",
+      "header": "MAP_POKEATHLON_DOME",
       "anchor": 0,
       "y": 0
     }

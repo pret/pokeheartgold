@@ -329,28 +329,28 @@
     {
       "x": 51,
       "z": 29,
-      "header": "MAP_D35R0103",
+      "header": "MAP_TEAM_ROCKET_HEADQUARTERS_B2F",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 10,
       "z": 10,
-      "header": "MAP_D35R0103",
+      "header": "MAP_TEAM_ROCKET_HEADQUARTERS_B2F",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 10,
       "z": 4,
-      "header": "MAP_D35R0103",
+      "header": "MAP_TEAM_ROCKET_HEADQUARTERS_B2F",
       "anchor": 3,
       "y": 0
     },
     {
       "x": 51,
       "z": 4,
-      "header": "MAP_D35R0103",
+      "header": "MAP_TEAM_ROCKET_HEADQUARTERS_B2F",
       "anchor": 4,
       "y": 0
     }

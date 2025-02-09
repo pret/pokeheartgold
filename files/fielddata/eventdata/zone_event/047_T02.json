@@ -192,49 +192,49 @@
     {
       "x": 1045,
       "z": 239,
-      "header": "MAP_T02GYM0101",
+      "header": "MAP_VIRIDIAN_GYM",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1034,
       "z": 244,
-      "header": "MAP_T02R0201",
+      "header": "MAP_VIRIDIAN_NORTHEAST_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1036,
       "z": 253,
-      "header": "MAP_T02R0301",
+      "header": "MAP_VIRIDIAN_TRAINER_HOUSE_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1042,
       "z": 253,
-      "header": "MAP_T02FS0101",
+      "header": "MAP_VIRIDIAN_POKEMART",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1032,
       "z": 262,
-      "header": "MAP_T02PC0101",
+      "header": "MAP_VIRIDIAN_POKECENTER_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1036,
       "z": 280,
-      "header": "MAP_T02R0401",
+      "header": "MAP_VIRIDIAN_ROUTE_1_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 1037,
       "z": 280,
-      "header": "MAP_T02R0401",
+      "header": "MAP_VIRIDIAN_ROUTE_1_GATEHOUSE",
       "anchor": 1,
       "y": 0
     }

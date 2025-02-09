@@ -108,49 +108,49 @@
     {
       "x": 1418,
       "z": 234,
-      "header": "MAP_T05PC0101",
+      "header": "MAP_LAVENDER_POKECENTER_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1419,
       "z": 242,
-      "header": "MAP_T05R0201",
+      "header": "MAP_LAVENDER_VOLUNTEER_POKEMON_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1414,
       "z": 249,
-      "header": "MAP_T05R0301",
+      "header": "MAP_LAVENDER_SOUTHWEST_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1419,
       "z": 249,
-      "header": "MAP_T05R0401",
+      "header": "MAP_LAVENDER_NAME_RATER",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1412,
       "z": 234,
-      "header": "MAP_T05FS0101",
+      "header": "MAP_LAVENDER_POKEMART",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1431,
       "z": 246,
-      "header": "MAP_T05R0601",
+      "header": "MAP_LAVENDER_HOUSE_OF_MEMORIES",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1429,
       "z": 234,
-      "header": "MAP_T05R0701",
+      "header": "MAP_LAVENDER_RADIO_STATION",
       "anchor": 0,
       "y": 0
     }

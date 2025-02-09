@@ -74,14 +74,14 @@
     {
       "x": 9,
       "z": 2,
-      "header": "MAP_P01R0301",
+      "header": "MAP_SS_AQUA_1F",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 23,
       "z": 2,
-      "header": "MAP_P01R0301",
+      "header": "MAP_SS_AQUA_1F",
       "anchor": 2,
       "y": 0
     }

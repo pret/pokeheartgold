@@ -72,7 +72,7 @@ _00A4:
 _014F:
 	wait 1, VAR_SPECIAL_RESULT
 	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
-	set_dynamic_warp MAP_T07R0101, 2, 5, 3, 1
+	set_dynamic_warp MAP_CELADON_DEPARTMENT_STORE_1F, 2, 5, 3, 1
 	compare VAR_ELEVATOR_LAST_FLOOR, 0
 	goto_if_eq _06C7
 	compare VAR_ELEVATOR_LAST_FLOOR, 0
@@ -114,7 +114,7 @@ _0203:
 _0215:
 	wait 1, VAR_SPECIAL_RESULT
 	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
-	set_dynamic_warp MAP_T07R0102, 2, 19, 3, 1
+	set_dynamic_warp MAP_CELADON_DEPARTMENT_STORE_2F, 2, 19, 3, 1
 	compare VAR_ELEVATOR_LAST_FLOOR, 1
 	goto_if_eq _06C7
 	compare VAR_ELEVATOR_LAST_FLOOR, 1
@@ -156,7 +156,7 @@ _02C9:
 _02DB:
 	wait 1, VAR_SPECIAL_RESULT
 	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
-	set_dynamic_warp MAP_T07R0103, 2, 19, 3, 1
+	set_dynamic_warp MAP_CELADON_DEPARTMENT_STORE_3F, 2, 19, 3, 1
 	compare VAR_ELEVATOR_LAST_FLOOR, 2
 	goto_if_eq _06C7
 	compare VAR_ELEVATOR_LAST_FLOOR, 2
@@ -198,7 +198,7 @@ _038F:
 _03A1:
 	wait 1, VAR_SPECIAL_RESULT
 	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
-	set_dynamic_warp MAP_T07R0104, 2, 19, 3, 1
+	set_dynamic_warp MAP_CELADON_DEPARTMENT_STORE_4F, 2, 19, 3, 1
 	compare VAR_ELEVATOR_LAST_FLOOR, 3
 	goto_if_eq _06C7
 	compare VAR_ELEVATOR_LAST_FLOOR, 3
@@ -240,7 +240,7 @@ _0455:
 _0467:
 	wait 1, VAR_SPECIAL_RESULT
 	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
-	set_dynamic_warp MAP_T07R0105, 2, 19, 3, 1
+	set_dynamic_warp MAP_CELADON_DEPARTMENT_STORE_5F, 2, 19, 3, 1
 	compare VAR_ELEVATOR_LAST_FLOOR, 4
 	goto_if_eq _06C7
 	compare VAR_ELEVATOR_LAST_FLOOR, 4
@@ -282,7 +282,7 @@ _051B:
 _052D:
 	wait 1, VAR_SPECIAL_RESULT
 	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
-	set_dynamic_warp MAP_T07R0106, 1, 19, 3, 1
+	set_dynamic_warp MAP_CELADON_DEPARTMENT_STORE_ROOF, 1, 19, 3, 1
 	compare VAR_ELEVATOR_LAST_FLOOR, 5
 	goto_if_eq _06C7
 	compare VAR_ELEVATOR_LAST_FLOOR, 5

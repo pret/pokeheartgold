@@ -44,14 +44,14 @@ _0062:
 _0088:
 	npc_msg msg_0095_D27R0108_00000
 	closemsg
-	set_dynamic_warp MAP_D27R0107, 1, 5, 3, 1
+	set_dynamic_warp MAP_OLIVINE_LIGHTHOUSE_LIGHT_ROOM, 1, 5, 3, 1
 	setvar VAR_SPECIAL_x8004, 0
 	goto _00C2
 
 _00A5:
 	npc_msg msg_0095_D27R0108_00001
 	closemsg
-	set_dynamic_warp MAP_D27R0101, 1, 5, 3, 1
+	set_dynamic_warp MAP_OLIVINE_LIGHTHOUSE_1F, 1, 5, 3, 1
 	setvar VAR_SPECIAL_x8004, 1
 	goto _00C2
 

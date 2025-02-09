@@ -241,14 +241,14 @@
     {
       "x": 16,
       "z": 5,
-      "header": "MAP_T25R1201",
+      "header": "MAP_GOLDENROD_GLOBAL_TERMINAL_1F",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 16,
       "z": 15,
-      "header": "MAP_T25R1203",
+      "header": "MAP_GOLDENROD_GLOBAL_TERMINAL_3F",
       "anchor": 1,
       "y": 0
     }

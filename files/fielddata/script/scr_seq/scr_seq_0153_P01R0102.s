@@ -24,7 +24,7 @@ _002D:
 	end
 
 scr_seq_P01R0102_005:
-	scrcmd_582 MAP_T26, 279, 276
+	scrcmd_582 MAP_OLIVINE, 279, 276
 	goto_if_unset FLAG_UNK_189, _0054
 	clearflag FLAG_UNK_189
 	end

@@ -58,14 +58,14 @@
     {
       "x": 811,
       "z": 260,
-      "header": "MAP_D41R0101",
+      "header": "MAP_MOUNT_SILVER_CAVE_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 820,
       "z": 265,
-      "header": "MAP_T31PC0101",
+      "header": "MAP_MOUNT_SILVER_POKECENTER_1F",
       "anchor": 0,
       "y": 0
     }

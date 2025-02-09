@@ -41,42 +41,42 @@
     {
       "x": 4,
       "z": 3,
-      "header": "MAP_R05R0201",
+      "header": "MAP_ROUTE_5_UNDERGROUND_PATH_GATE",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 4,
       "z": 4,
-      "header": "MAP_R05R0201",
+      "header": "MAP_ROUTE_5_UNDERGROUND_PATH_GATE",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 4,
       "z": 5,
-      "header": "MAP_R05R0201",
+      "header": "MAP_ROUTE_5_UNDERGROUND_PATH_GATE",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 4,
       "z": 57,
-      "header": "MAP_R06R0101",
+      "header": "MAP_ROUTE_6_UNDERGROUND_PATH_GATE",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 4,
       "z": 58,
-      "header": "MAP_R06R0101",
+      "header": "MAP_ROUTE_6_UNDERGROUND_PATH_GATE",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 4,
       "z": 56,
-      "header": "MAP_R06R0101",
+      "header": "MAP_ROUTE_6_UNDERGROUND_PATH_GATE",
       "anchor": 2,
       "y": 0
     }

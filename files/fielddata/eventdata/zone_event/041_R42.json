@@ -269,42 +269,42 @@
     {
       "x": 422,
       "z": 175,
-      "header": "MAP_R42R0101",
+      "header": "MAP_ROUTE_42_ECRUTEAK_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 422,
       "z": 176,
-      "header": "MAP_R42R0101",
+      "header": "MAP_ROUTE_42_ECRUTEAK_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 436,
       "z": 171,
-      "header": "MAP_D38R0101",
+      "header": "MAP_MOUNT_MORTAR_1F_ENTRANCE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 464,
       "z": 175,
-      "header": "MAP_D38R0101",
+      "header": "MAP_MOUNT_MORTAR_1F_ENTRANCE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 466,
       "z": 164,
-      "header": "MAP_D38R0101",
+      "header": "MAP_MOUNT_MORTAR_1F_ENTRANCE",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 493,
       "z": 171,
-      "header": "MAP_D38R0101",
+      "header": "MAP_MOUNT_MORTAR_1F_ENTRANCE",
       "anchor": 3,
       "y": 0
     }

@@ -67,28 +67,28 @@
     {
       "x": 1155,
       "z": 426,
-      "header": "MAP_R18R0101",
+      "header": "MAP_ROUTE_18_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1155,
       "z": 427,
-      "header": "MAP_R18R0101",
+      "header": "MAP_ROUTE_18_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1162,
       "z": 426,
-      "header": "MAP_R18R0101",
+      "header": "MAP_ROUTE_18_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 1162,
       "z": 427,
-      "header": "MAP_R18R0101",
+      "header": "MAP_ROUTE_18_GATEHOUSE",
       "anchor": 1,
       "y": 0
     }

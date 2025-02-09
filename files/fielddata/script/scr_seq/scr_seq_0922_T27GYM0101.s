@@ -72,7 +72,7 @@ scr_seq_T27GYM0101_004:
 	setvar VAR_UNK_4079, 1
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_T27, 7, 376, 182, DIR_SOUTH
+	warp MAP_ECRUTEAK, 7, 376, 182, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -161,7 +161,7 @@ scr_seq_T27GYM0101_002:
 	wait_movement
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_T27GYM0101, 0, 16, 49, DIR_NORTH
+	warp MAP_ECRUTEAK_GYM, 0, 16, 49, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

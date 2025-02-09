@@ -114,16 +114,16 @@ static void sub_02052F30(FieldSystem *fieldSystem) {
     BOOL r2 = FALSE;
 
     switch (fieldSystem->location->mapId) {
-    case MAP_D47R0102:
+    case MAP_SAFARI_ZONE_ENTRANCE_EXTERIOR:
         fieldSystem->unk70 = 1;
         return;
-    case MAP_D31R0201:
-    case MAP_D31R0202:
-    case MAP_D31R0203:
-    case MAP_D31R0204:
-    case MAP_D31R0205:
-    case MAP_D31R0206:
-    case MAP_D31R0207:
+    case MAP_BATTLE_TOWER:
+    case MAP_BATTLE_TOWER_ELEVATOR:
+    case MAP_BATTLE_TOWER_UNUSED_1:
+    case MAP_BATTLE_TOWER_UNUSED_2:
+    case MAP_BATTLE_TOWER_UNUSED_3:
+    case MAP_BATTLE_TOWER_UNUSED_4:
+    case MAP_BATTLE_TOWER_PARTNER_ROOM:
         r2 = TRUE;
         break;
     }
@@ -187,7 +187,7 @@ void sub_02053038(FieldSystem *fieldSystem, BOOL isConnection) {
     }
     varsFlags = Save_VarsFlags_Get(fieldSystem->saveData);
     weather = FieldSystem_GetWeather_HandleDiamondDust(fieldSystem, mapId);
-    if (sub_02066C74(varsFlags, 1) && mapId == MAP_T29) {
+    if (sub_02066C74(varsFlags, 1) && mapId == MAP_LAKE_OF_RAGE) {
         weather = 0;
     }
     if (weather == 9 && SysFlagDefogCheck(varsFlags) == TRUE) {

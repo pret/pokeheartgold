@@ -177,14 +177,14 @@
     {
       "x": 42,
       "z": 27,
-      "header": "MAP_D26R0101",
+      "header": "MAP_SLOWPOKE_WELL_ENTRANCE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 27,
       "z": 20,
-      "header": "MAP_D26R0103",
+      "header": "MAP_SLOWPOKE_WELL_B2F",
       "anchor": 0,
       "y": 0
     }

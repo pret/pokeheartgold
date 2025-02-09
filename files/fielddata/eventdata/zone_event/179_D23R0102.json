@@ -202,14 +202,14 @@
     {
       "x": 23,
       "z": 5,
-      "header": "MAP_D23R0101",
+      "header": "MAP_GOLDENROD_RADIO_TOWER_1F",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 3,
       "z": 5,
-      "header": "MAP_D23R0103",
+      "header": "MAP_GOLDENROD_RADIO_TOWER_3F",
       "anchor": 0,
       "y": 0
     }

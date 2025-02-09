@@ -33,14 +33,14 @@
     {
       "x": 20,
       "z": 25,
-      "header": "MAP_D51R0301",
+      "header": "MAP_SINJOH_RUINS_CABIN",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 13,
       "z": 7,
-      "header": "MAP_D51R0201",
+      "header": "MAP_SINJOH_RUINS_MYSTRI_STAGE",
       "anchor": 0,
       "y": 0
     }

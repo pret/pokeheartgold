@@ -33,14 +33,14 @@
     {
       "x": 12,
       "z": 12,
-      "header": "MAP_P01R0103",
+      "header": "MAP_SS_AQUA_VERMILION_PORT_INTERIOR",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 23,
       "z": 17,
-      "header": "MAP_P01R0301",
+      "header": "MAP_SS_AQUA_1F",
       "anchor": 12,
       "y": 0
     }

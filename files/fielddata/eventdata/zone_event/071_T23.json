@@ -302,56 +302,56 @@
     {
       "x": 392,
       "z": 462,
-      "header": "MAP_T23R0101",
+      "header": "MAP_AZALEA_ILEX_FOREST_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 392,
       "z": 463,
-      "header": "MAP_T23R0101",
+      "header": "MAP_AZALEA_ILEX_FOREST_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 405,
       "z": 471,
-      "header": "MAP_T23GYM0101",
+      "header": "MAP_AZALEA_GYM_ENTRANCE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 410,
       "z": 460,
-      "header": "MAP_T23PC0101",
+      "header": "MAP_AZALEA_POKECENTER_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 419,
       "z": 468,
-      "header": "MAP_T23R0201",
+      "header": "MAP_AZALEA_CHARCOAL_KILN",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 419,
       "z": 457,
-      "header": "MAP_T23FS0101",
+      "header": "MAP_AZALEA_POKEMART",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 399,
       "z": 454,
-      "header": "MAP_T23R0501",
+      "header": "MAP_AZALEA_KURT_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 433,
       "z": 454,
-      "header": "MAP_D26R0101",
+      "header": "MAP_SLOWPOKE_WELL_ENTRANCE",
       "anchor": 0,
       "y": 0
     }

@@ -285,14 +285,14 @@
     {
       "x": 265,
       "z": 164,
-      "header": "MAP_R39R0101",
+      "header": "MAP_ROUTE_39_MOOMOO_FARM_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 260,
       "z": 164,
-      "header": "MAP_R39R0201",
+      "header": "MAP_ROUTE_39_MOOMOO_FARM_STABLE",
       "anchor": 0,
       "y": 0
     }

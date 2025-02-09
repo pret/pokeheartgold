@@ -307,7 +307,7 @@ static u32 FieldMoveMenuCheck_Strength(const FieldMoveCheckData *checkData) {
         return PARTY_MENU_RESPONSE_NEED_BADGE;
     }
 
-    if (checkData->mapId == MAP_D39R0103) {
+    if (checkData->mapId == MAP_ICE_PATH_B2F) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 

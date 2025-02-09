@@ -101,21 +101,21 @@
     {
       "x": 11,
       "z": 8,
-      "header": "MAP_T07R0104",
+      "header": "MAP_CELADON_DEPARTMENT_STORE_4F",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 6,
       "z": 8,
-      "header": "MAP_T07R0106",
+      "header": "MAP_CELADON_DEPARTMENT_STORE_ROOF",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 5,
       "z": 2,
-      "header": "MAP_T07R0107",
+      "header": "MAP_CELADON_DEPARTMENT_STORE_ELEVATOR",
       "anchor": 0,
       "y": 0
     }

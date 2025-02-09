@@ -167,77 +167,77 @@
     {
       "x": 1241,
       "z": 422,
-      "header": "MAP_R15R0101",
+      "header": "MAP_ROUTE_15_FUCHSIA_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1241,
       "z": 423,
-      "header": "MAP_R15R0101",
+      "header": "MAP_ROUTE_15_FUCHSIA_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1203,
       "z": 445,
-      "header": "MAP_W19R0101",
+      "header": "MAP_ROUTE_19_FUCHSIA_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1204,
       "z": 445,
-      "header": "MAP_W19R0101",
+      "header": "MAP_ROUTE_19_FUCHSIA_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1197,
       "z": 416,
-      "header": "MAP_T08FS0101",
+      "header": "MAP_FUCHSIA_POKEMART",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1214,
       "z": 403,
-      "header": "MAP_T08R0201",
+      "header": "MAP_FUCHSIA_PAL_PARK_ENTRANCE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1215,
       "z": 403,
-      "header": "MAP_T08R0201",
+      "header": "MAP_FUCHSIA_PAL_PARK_ENTRANCE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1195,
       "z": 439,
-      "header": "MAP_T08GYM0101",
+      "header": "MAP_FUCHSIA_GYM",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1200,
       "z": 439,
-      "header": "MAP_T08R0401",
+      "header": "MAP_FUCHSIA_SOUTHWEST_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1209,
       "z": 439,
-      "header": "MAP_T08PC0101",
+      "header": "MAP_FUCHSIA_POKECENTER_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1222,
       "z": 435,
-      "header": "MAP_T08R0601",
+      "header": "MAP_FUCHSIA_SAFARI_ZONE_WARDEN_HOUSE",
       "anchor": 0,
       "y": 0
     }

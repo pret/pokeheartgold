@@ -277,77 +277,77 @@
     {
       "x": 511,
       "z": 269,
-      "header": "MAP_R31R0101",
+      "header": "MAP_ROUTE_31_VIOLET_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 511,
       "z": 270,
-      "header": "MAP_R31R0101",
+      "header": "MAP_ROUTE_31_VIOLET_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 479,
       "z": 257,
-      "header": "MAP_T22GYM0101",
+      "header": "MAP_VIOLET_GYM",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 454,
       "z": 246,
-      "header": "MAP_T22R0701",
+      "header": "MAP_VIOLET_ROUTE_36_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 454,
       "z": 247,
-      "header": "MAP_T22R0701",
+      "header": "MAP_VIOLET_ROUTE_36_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 487,
       "z": 228,
-      "header": "MAP_D15R0101",
+      "header": "MAP_SPROUT_TOWER_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 495,
       "z": 257,
-      "header": "MAP_T22R0301",
+      "header": "MAP_VIOLET_POKEMON_SCHOOL",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 497,
       "z": 271,
-      "header": "MAP_T22PC0101",
+      "header": "MAP_VIOLET_POKECENTER_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 459,
       "z": 254,
-      "header": "MAP_T22R0401",
+      "header": "MAP_VIOLET_NORTHWEST_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 484,
       "z": 277,
-      "header": "MAP_T22R0601",
+      "header": "MAP_VIOLET_BELLSPROUT_ONYX_TRADE_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 469,
       "z": 257,
-      "header": "MAP_T22FS0101",
+      "header": "MAP_VIOLET_POKEMART",
       "anchor": 0,
       "y": 0
     }

@@ -226,119 +226,119 @@
     {
       "x": 1300,
       "z": 253,
-      "header": "MAP_R06R0201",
+      "header": "MAP_ROUTE_6_SAFFRON_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 1301,
       "z": 253,
-      "header": "MAP_R06R0201",
+      "header": "MAP_ROUTE_6_SAFFRON_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 1337,
       "z": 240,
-      "header": "MAP_R08R0201",
+      "header": "MAP_ROUTE_8_SAFFRON_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1337,
       "z": 241,
-      "header": "MAP_R08R0201",
+      "header": "MAP_ROUTE_8_SAFFRON_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1300,
       "z": 197,
-      "header": "MAP_R05R0301",
+      "header": "MAP_ROUTE_5_SAFFRON_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1301,
       "z": 197,
-      "header": "MAP_R05R0301",
+      "header": "MAP_ROUTE_5_SAFFRON_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1290,
       "z": 208,
-      "header": "MAP_T11R0601",
+      "header": "MAP_SAFFRON_MAGNET_TRAIN_STATION_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1297,
       "z": 218,
-      "header": "MAP_T11R0801",
+      "header": "MAP_SAFFRON_COPYCAT_HOUSE_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1308,
       "z": 229,
-      "header": "MAP_T11R0701",
+      "header": "MAP_SAFFRON_SILPH_CO_HQ",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1309,
       "z": 229,
-      "header": "MAP_T11R0701",
+      "header": "MAP_SAFFRON_SILPH_CO_HQ",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1321,
       "z": 204,
-      "header": "MAP_T11R0101",
+      "header": "MAP_SAFFRON_FIGHTING_DOJO",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1328,
       "z": 204,
-      "header": "MAP_T11GYM0101",
+      "header": "MAP_SAFFRON_GYM",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1318,
       "z": 218,
-      "header": "MAP_T11FS0101",
+      "header": "MAP_SAFFRON_POKEMART",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1294,
       "z": 242,
-      "header": "MAP_T11PC0101",
+      "header": "MAP_SAFFRON_POKECENTER_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1323,
       "z": 242,
-      "header": "MAP_T11R0501",
+      "header": "MAP_SAFFRON_MR_PSYCHIC_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1280,
       "z": 240,
-      "header": "MAP_R07R0101",
+      "header": "MAP_ROUTE_7_SAFFRON_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1280,
       "z": 241,
-      "header": "MAP_R07R0101",
+      "header": "MAP_ROUTE_7_SAFFRON_GATEHOUSE",
       "anchor": 0,
       "y": 0
     }

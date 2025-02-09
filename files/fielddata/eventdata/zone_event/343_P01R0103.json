@@ -40,14 +40,14 @@
     {
       "x": 7,
       "z": 2,
-      "header": "MAP_T06",
+      "header": "MAP_VERMILION",
       "anchor": 7,
       "y": 0
     },
     {
       "x": 7,
       "z": 11,
-      "header": "MAP_P01R0104",
+      "header": "MAP_SS_AQUA_VERMILION_PORT_EXTERIOR",
       "anchor": 0,
       "y": 0
     }
