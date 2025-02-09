@@ -214,9 +214,9 @@ static u32 ov74_02227060(MainMenuAppData *data) {
     return 0;
 }
 
-static u32 GetNthAvailableApp(MainMenuAppData *data, u8 a1) {
+static u32 GetNthAvailableApp(MainMenuAppData *data, u8 n) {
     for (u32 i = 0, apps = 0; i < APPOPTION_COUNT; i++) {
-        if (data->unkEC[i] != 0 && apps++ == a1) {
+        if (data->unkEC[i] != 0 && apps++ == n) {
             return i;
         }
     }
@@ -329,7 +329,7 @@ static BOOL MainMenu_HandleTouchInput(MainMenuAppData *data, int *state, BOOL *v
     if (hitboxNum == 0 && Sprite_GetAnimationNumber(data->upArrowSprite) / 2 != 0) {
         Sprite_SetAnimActiveFlag(data->upArrowSprite, TRUE);
         Sprite_ResetAnimCtrlState(data->upArrowSprite);
-        if (data->currentOption > 3 && data->effectiveScreenY > FX32_CONST(192)) {
+        if (data->currentOption > 3 && data->effectiveScreenY > FX32_CONST(GX_LCD_SIZE_Y)) {
             data->currentOption = GetNthAvailableApp(data, 3);
         } else {
             data->currentOption = GetNthAvailableApp(data, 0);
@@ -758,7 +758,7 @@ static BOOL ov74_0222779C(MainMenuAppData *data) {
     return TRUE;
 }
 
-static void ov74_02227AEC(MainMenuAppData *data) {
+static void HandleScreenScroll(MainMenuAppData *data) {
     if (data->currentScreenY == data->effectiveScreenY) {
         return;
     }
@@ -1395,11 +1395,12 @@ BOOL MainMenuApp_Main(OVY_MANAGER *manager, int *state) {
 
     if (ov74_0222779C(data) == TRUE) {
         ov74_022276AC(data);
-        ov74_02227AEC(data);
+        HandleScreenScroll(data);
         return FALSE;
     }
 
     AdvanceButtonBorderAnimation(data);
+
     if (data->unk1B4 != 0) {
         data->unk1B4--;
     }
@@ -1472,7 +1473,7 @@ BOOL MainMenuApp_Main(OVY_MANAGER *manager, int *state) {
     }
 
     ov74_022276AC(data);
-    ov74_02227AEC(data);
+    HandleScreenScroll(data);
     ov74_022358BC();
     return FALSE;
 }
