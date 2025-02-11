@@ -4,6 +4,7 @@
 
 #include "global.h"
 
+#include "application/main_menu/main_menu.h"
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0229.h"
 
@@ -184,8 +185,6 @@ BOOL CheckSavedataApp_Exit(OVY_MANAGER *manager, int *state) {
     OverlayManager_FreeData(manager);
     DestroyHeap(heapId);
 
-    FS_EXTERN_OVERLAY(OVY_74);
-    extern const OVY_MGR_TEMPLATE gApp_MainMenu;
     RegisterMainOverlay(FS_OVERLAY_ID(OVY_74), &gApp_MainMenu);
 
     return TRUE;

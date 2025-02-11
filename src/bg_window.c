@@ -2298,7 +2298,7 @@ static void Bg_SetAffineScale(Background *bg, enum BgPosAdjustOp op, int value) 
     }
 }
 
-BOOL DoesPixelAtScreenXYMatchPtrVal(BgConfig *bgConfig, u8 bgId, u8 x, u8 y, u16 *src) {
+BOOL DoesPixelAtScreenXYMatchPtrVal(BgConfig *bgConfig, u8 bgId, u16 x, u16 y, u16 *src) {
     u8 *bgCharPtr;
     u16 tilemapIdx;
     u8 xPixOffs;

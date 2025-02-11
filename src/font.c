@@ -179,7 +179,7 @@ void LoadFontPal1(enum GFPalLoadLocation location, enum GFPalSlotOffset palSlotO
     GfGfxLoader_GXLoadPal(NARC_graphic_font, 8, location, palSlotOffset, 0x20, heapId);
 }
 
-u32 FontID_String_GetWidthMultiline(FontID fontId, String *string, u32 letterSpacing) {
+u32 FontID_String_GetWidthMultiline(u32 fontId, String *string, u32 letterSpacing) {
     GF_ASSERT(sFontWork->fontDataMan[fontId] != NULL);
     return GetStringWidthMultiline(sFontWork->fontDataMan[fontId], String_cstr(string), letterSpacing);
 }
