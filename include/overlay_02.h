@@ -9,7 +9,7 @@
 #include "start_menu.h"
 #include "sys_task.h"
 
-struct FieldLongWarpTaskData;
+typedef struct FieldMoveTaskEnvironment FieldMoveTaskEnvironment;
 
 typedef struct SafariDecorationArgs {
     SaveData *saveData;
@@ -41,9 +41,9 @@ typedef struct SafariDecorationArgs {
 SysTask *ov02_0224B418(FieldSystem *fieldSystem, int gender);
 BOOL ov02_0224B43C(SysTask *unk);
 void ov02_0224B448(SysTask *unk);
-struct FieldLongWarpTaskData *CreateFieldEscapeRopeTaskEnv(FieldSystem *fieldSystem, HeapID heapId);
-struct FieldLongWarpTaskData *CreateFieldTeleportTaskEnv(FieldSystem *fieldSystem, Pokemon *mon, u8 slotno, HeapID heapId);
-struct FieldLongWarpTaskData *CreateFieldDigTaskEnv(FieldSystem *fieldSystem, Pokemon *mon, u8 slotno, HeapID heapId);
+struct FieldMoveTaskEnvironment *CreateFieldEscapeRopeTaskEnv(FieldSystem *fieldSystem, HeapID heapId);
+struct FieldMoveTaskEnvironment *FieldMoveTask_CreateTeleportEnvironment(FieldSystem *fieldSystem, Pokemon *mon, u8 slotno, HeapID heapId);
+struct FieldMoveTaskEnvironment *FieldMoveTask_CreateDigEnvironment(FieldSystem *fieldSystem, Pokemon *mon, u8 slotno, HeapID heapId);
 BOOL Task_FieldEscapeRope(TaskManager *taskManager);
 BOOL Task_FieldTeleport(TaskManager *taskManager);
 BOOL Task_FieldDig(TaskManager *taskManager);

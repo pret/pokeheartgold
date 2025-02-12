@@ -13745,8 +13745,8 @@ _0224C358:
 	pop {r4, pc}
 	thumb_func_end ov02_0224C338
 
-	thumb_func_start CreateFieldDigTaskEnv
-CreateFieldDigTaskEnv: ; 0x0224C368
+	thumb_func_start FieldMoveTask_CreateDigEnvironment
+FieldMoveTask_CreateDigEnvironment: ; 0x0224C368
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -13779,7 +13779,7 @@ _0224C3A4:
 _0224C3A8:
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end CreateFieldDigTaskEnv
+	thumb_func_end FieldMoveTask_CreateDigEnvironment
 
 	thumb_func_start Task_FieldDig
 Task_FieldDig: ; 0x0224C3AC
@@ -13958,8 +13958,8 @@ _0224C4EA:
 	pop {r4, pc}
 	thumb_func_end ov02_0224C4D8
 
-	thumb_func_start CreateFieldTeleportTaskEnv
-CreateFieldTeleportTaskEnv: ; 0x0224C500
+	thumb_func_start FieldMoveTask_CreateTeleportEnvironment
+FieldMoveTask_CreateTeleportEnvironment: ; 0x0224C500
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -14002,7 +14002,7 @@ _0224C552:
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end CreateFieldTeleportTaskEnv
+	thumb_func_end FieldMoveTask_CreateTeleportEnvironment
 
 	thumb_func_start Task_FieldTeleport
 Task_FieldTeleport: ; 0x0224C558

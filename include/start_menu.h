@@ -74,10 +74,6 @@ typedef struct UnkStruct_0203D818 {
     u8 kind;
 } UnkStruct_0203D818;
 
-typedef struct FieldMoveData {
-    u32 partySlot;
-} FieldMoveData;
-
 BOOL FieldSystem_MapIsNotMysteryZone(FieldSystem *fieldSystem);
 void sub_0203BC28(FieldSystem *fieldSystem);
 void sub_0203BCDC(FieldSystem *fieldSystem);

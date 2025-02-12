@@ -482,9 +482,9 @@
 .public Task_FieldEscapeRope
 .public ov02_0224C1D8
 .public ov02_0224C1F8
-.public CreateFieldDigTaskEnv
+.public FieldMoveTask_CreateDigEnvironment
 .public Task_FieldDig
-.public CreateFieldTeleportTaskEnv
+.public FieldMoveTask_CreateTeleportEnvironment
 .public Task_FieldTeleport
 .public ov02_0224CD38
 .public ov02_0224CD74

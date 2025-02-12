@@ -11,6 +11,7 @@
 
 #include "bag_view.h"
 #include "field_move.h"
+#include "field_move_environment.h"
 #include "field_system.h"
 #include "field_use_item.h"
 #include "gf_gfx_loader.h"
