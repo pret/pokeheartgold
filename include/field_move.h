@@ -19,7 +19,7 @@ typedef struct FieldMoveCheckData {
     u16 flag;
 } FieldMoveCheckData;
 
-typedef void (*FieldMoveUseFunc)(struct FieldMoveUseData *useData, const struct FieldMoveCheckData *sub);
+typedef void (*FieldMoveUseFunc)(struct FieldMoveUseData *useData, const struct FieldMoveCheckData *checkData);
 typedef u32 (*FieldMoveCheckFunc)(const struct FieldMoveCheckData *checkData);
 
 typedef enum FieldMoveFuncType {
