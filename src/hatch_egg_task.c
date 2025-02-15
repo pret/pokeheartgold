@@ -48,7 +48,7 @@ static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
     case HATCHEGGTASKSTATE_UPDATE_MON_INFO: {
         FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
         Pokemon *pokemon = data->unkC.mon;
-        PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem));
+        PlayerProfile *profile = Save_PlayerData_GetProfile(FieldSystem_GetSaveData(fieldSystem));
 
         u32 mapsec = MapHeader_GetMapSec(fieldSystem->location->mapId);
         BOOL isEgg = FALSE;

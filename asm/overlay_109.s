@@ -3320,7 +3320,7 @@ ov109_021E7248: ; 0x021E7248
 _021E728A:
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0xc]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r2, r0, #0
 	ldr r0, [r5, #0x28]
 	mov r1, #0

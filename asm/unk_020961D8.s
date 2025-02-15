@@ -111,7 +111,7 @@ _020962A2:
 	cmp r0, #0
 	bne _02096314
 	ldr r0, [r4]
-	bl sub_020505C0
+	bl FieldSystem_LoadFieldOverlay
 	mov r0, #2
 	str r0, [r4, #0x18]
 	b _02096314

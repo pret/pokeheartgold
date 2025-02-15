@@ -3170,7 +3170,7 @@ ov44_0222B778: ; 0x0222B778
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	str r1, [sp]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	str r0, [sp, #0x14]
 	mov r0, #0x16
 	lsl r0, r0, #4
@@ -4389,7 +4389,7 @@ ov44_0222C120: ; 0x0222C120
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	mov r1, #0x35
 	add r6, r0, #0
 	bl PlayerProfile_GetPlayerName_NewString

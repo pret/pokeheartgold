@@ -150,7 +150,7 @@
 .public String_New
 .public String_Delete
 .public Save_SysInfo_RTC_Get
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetTrainerID_VisibleHalf
@@ -225,7 +225,7 @@
 .public GetIdxOfFirstAliveMonInParty_CrashIfNone
 .public sub_02054774
 .public sub_020548C0
-.public GetMetatileBehaviorAt
+.public GetMetatileBehavior
 .public sub_02054C20
 .public sub_02054C90
 .public sub_02054DC8
@@ -482,9 +482,9 @@
 .public Task_FieldEscapeRope
 .public ov02_0224C1D8
 .public ov02_0224C1F8
-.public CreateFieldDigTaskEnv
+.public FieldMoveTask_CreateDigEnvironment
 .public Task_FieldDig
-.public CreateFieldTeleportTaskEnv
+.public FieldMoveTask_CreateTeleportEnvironment
 .public Task_FieldTeleport
 .public ov02_0224CD38
 .public ov02_0224CD74

@@ -1369,7 +1369,7 @@ BOOL MainMenuApp_Init(OVY_MANAGER *manager, int *state) {
     data->mysteryGift = Save_MysteryGift_Get(data->saveData);
     data->currentScreenY = 0;
     data->effectiveScreenY = 0;
-    data->profile = Save_PlayerData_GetProfileAddr(data->saveData);
+    data->profile = Save_PlayerData_GetProfile(data->saveData);
     data->pokedex = Save_Pokedex_Get(data->saveData);
     data->igt = Save_PlayerData_GetIGTAddr(data->saveData);
     data->hasPokedex = Pokedex_IsEnabled(data->pokedex);

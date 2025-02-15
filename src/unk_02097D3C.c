@@ -43,7 +43,7 @@ static BOOL Task_ViewRankingsApp(TaskManager *taskManager) {
         }
 
         taskData->state++;
-        sub_020505C0(fieldSystem);
+        FieldSystem_LoadFieldOverlay(fieldSystem);
         break;
     case 3:
         if (sub_020505C8(fieldSystem)) {

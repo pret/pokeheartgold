@@ -37,7 +37,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public LinkBattleRuleset_GetRuleValue
 .public Save_SpecialRibbons_Get
@@ -81,7 +81,7 @@
 .public FieldSystem_CreateTask
 .public FieldSystem_TaskIsRunning
 .public FieldSystem_ApplicationIsRunning
-.public sub_020505C0
+.public FieldSystem_LoadFieldOverlay
 .public sub_020505C8
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnvironment

@@ -170,7 +170,7 @@
 .public String_RadioAddStatic
 .public SaveArray_PCStorage_Get
 .public Save_SysInfo_RTC_Get
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public Save_PlayerData_GetIGTAddr
 .public PlayerProfile_GetTrainerGender

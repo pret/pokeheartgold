@@ -18,7 +18,7 @@ sub_02068FC8: ; 0x02068FC8
 	ldr r5, [sp, #0xbc]
 	bl FieldSystem_GetSaveData
 	str r0, [sp, #0x20]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r7, r0, #0
 	ldr r0, [sp, #0x20]
 	bl Save_GameStats_Get

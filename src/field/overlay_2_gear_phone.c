@@ -137,7 +137,7 @@ static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
     PhoneContact *contact;
 
     SaveVarsFlags *varsFlags = Save_VarsFlags_Get(gearPhone->saveData);
-    Save_PlayerData_GetProfileAddr(gearPhone->saveData);
+    Save_PlayerData_GetProfile(gearPhone->saveData);
     SAVE_MISC_DATA *miscData = Save_Misc_Get(gearPhone->saveData);
     u32 slot = GSPlayerMisc_FindEmptyGearPhonebookSlot(gearPhone->pokegearData);
     contact = GSPlayerMisc_AllocAndCopyPhonebook(gearPhone->pokegearData, HEAP_ID_4);
@@ -217,7 +217,7 @@ asm static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBo
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0x38]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0x38]
 	bl Save_Misc_Get

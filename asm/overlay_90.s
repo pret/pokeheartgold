@@ -150,7 +150,7 @@ _022588E0:
 	cmp r0, r1
 	bne _022588F8
 	ldr r0, [r5]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	pop {r3, r4, r5, pc}
 _022588F8:
 	add r0, r4, #0

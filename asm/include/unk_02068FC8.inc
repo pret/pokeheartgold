@@ -4,7 +4,7 @@
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
 .public FreeToHeap
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetIGTAddr
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetTrainerID_VisibleHalf

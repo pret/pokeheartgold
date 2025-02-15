@@ -1062,7 +1062,7 @@ _0222C550:
 	ldr r0, [r0]
 	bl Frontier_GetLaunchParam
 	ldr r0, [r0, #8]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	bl ov80_0222A7EC
 	add r1, sp, #0xc
 	strh r0, [r1]
@@ -1197,7 +1197,7 @@ _0222C632:
 	ldr r0, [r0]
 	bl Frontier_GetLaunchParam
 	ldr r0, [r0, #8]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	bl ov80_0222A7EC
 	strh r0, [r6]
 	mov r7, #0x1f
@@ -2482,7 +2482,7 @@ FrtCmd_123: ; 0x0222D008
 	str r1, [r5, #0x1c]
 	ldr r0, [r0, #8]
 	ldrb r4, [r2]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r2, r0, #0
 	ldr r0, [r5]
 	add r1, r4, #0
@@ -4202,7 +4202,7 @@ FrtCmd_064: ; 0x0222DD3C
 	ldr r0, [r0]
 	bl Frontier_GetLaunchParam
 	ldr r0, [r0, #8]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
 	bne _0222DD60

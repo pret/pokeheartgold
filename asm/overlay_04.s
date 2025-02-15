@@ -2373,7 +2373,7 @@ _0225510A:
 	blt _022550F0
 	ldr r0, [sp]
 	add r1, r3, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	bl sub_0205BAC4
 	cmp r0, #0
 	beq _0225513A
@@ -3500,7 +3500,7 @@ _02255938:
 	ldr r1, [r4]
 	ldr r2, [r4, #4]
 	add r0, r5, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	bl sub_0205BAC4
 	cmp r0, #0
 	bne _02255952
@@ -3543,7 +3543,7 @@ _02255978:
 	ldr r1, [r5]
 	ldr r2, [r5, #4]
 	add r0, r6, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	bl sub_0205BAC4
 	cmp r0, #0
 	bne _0225599C

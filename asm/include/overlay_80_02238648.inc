@@ -86,7 +86,7 @@
 .public RequestSwap3DBuffers
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Options_GetFrame
 .public sub_0203A880
 .public sub_0203A914

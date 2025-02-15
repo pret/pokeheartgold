@@ -5,7 +5,7 @@
 .public ScheduleBgTilemapBufferTransfer
 .public LCRandom
 .public GF_AssertFail
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public PlayerProfile_Copy
 .public FrontierSave_GetStat
 .public sub_02031108
