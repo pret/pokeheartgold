@@ -1,0 +1,14 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public __destroy_global_chain
+.public raise
+.public exit
+.public OS_TryLockMutex
+.public OSi_ThreadInfo
+.public _021E54A0
+.public _021E54E8
+.public _021E54C4
+.public OS_LockMutex
+.public OS_UnlockMutex
+.public fflush
+.public _ExitProcess

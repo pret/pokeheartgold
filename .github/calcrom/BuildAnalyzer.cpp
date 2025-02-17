@@ -104,7 +104,7 @@ BuildAnalyzer &BuildAnalyzer::operator()() {
     if (analyzed) {
         reset();
     }
-    string pattern = srcbase.string() + "/{src,asm,lib/{src,asm},lib/{NitroSDK,NitroDWC}/{src,asm}}/{,*/,*/*/}*.{c,s,cpp}";
+    string pattern = srcbase.string() + "/{src,asm,lib/{src,asm},lib/{NitroSDK,NitroDWC,MSL_C}/{src,asm}}/{,*/,*/*/}*.{c,s,cpp}";
     for (char const * & fname : Glob(pattern, GLOB_TILDE | GLOB_BRACE | GLOB_NOSORT)) {
         AnalyzeObject(fname);
     }
