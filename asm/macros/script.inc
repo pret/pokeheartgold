@@ -1090,7 +1090,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_186 arg0
+	.macro block_dismounting_bike arg0
 	.short 186
 	.byte \arg0
 	.endm

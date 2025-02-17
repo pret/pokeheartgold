@@ -10,10 +10,10 @@
 	scrdef_end
 
 scr_seq_R17_000:
-	scrcmd_186 1
+	block_dismounting_bike 1
 	end
 
 scr_seq_R17_001:
-	scrcmd_186 1
+	block_dismounting_bike 1
 	end
 	.balign 4, 0
