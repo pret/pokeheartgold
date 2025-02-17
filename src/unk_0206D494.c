@@ -257,14 +257,14 @@ static u32 sub_0206D81C(u32 direction) {
 }
 
 static void sub_0206D850(PlayerAvatar *playerAvatar) {
-    if (sub_0205CA38(playerAvatar) == TRUE) {
+    if (PlayerAvatar_CheckFlag0(playerAvatar) == TRUE) {
         MapObject_ClearFlagsBits(PlayerAvatar_GetMapObject(playerAvatar), (MapObjectFlagBits)(MAPOBJECTFLAG_UNK7 | MAPOBJECTFLAG_UNK8));
-        if (sub_0205CB2C(playerAvatar) == 0) {
+        if (PlayerAvatar_CheckFlag7(playerAvatar) == 0) {
             sub_0205C74C(playerAvatar);
         }
-        sub_0205CA20(playerAvatar, 0);
-        sub_0205CB14(playerAvatar, 0);
-        sub_0205CAD0(playerAvatar, 0);
+        PlayerAvatar_SetFlag0(playerAvatar, 0);
+        PlayerAvatar_SetFlag7(playerAvatar, 0);
+        PlayerAvatar_SetFlag5(playerAvatar, 0);
     }
     return;
 }

@@ -2352,7 +2352,7 @@ BOOL ScrCmd_591(ScriptContext *ctx) {
 
 BOOL ScrCmd_186(ScriptContext *ctx) {
     u8 r1 = ScriptReadByte(ctx);
-    sub_0205CAA4(ctx->fieldSystem->playerAvatar, r1);
+    PlayerAvatar_BlockDismountingBike(ctx->fieldSystem->playerAvatar, r1);
     return FALSE;
 }
 

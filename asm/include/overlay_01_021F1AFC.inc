@@ -45,8 +45,8 @@
 .public sub_0205C78C
 .public sub_0205C790
 .public PlayerAvatar_GetSpriteByStateAndGender
-.public sub_0205CA38
-.public sub_0205CA4C
+.public PlayerAvatar_CheckFlag0
+.public PlayerAvatar_SetFlag1
 .public sub_0205CBE4
 .public sub_0205DA34
 .public sub_0205DE38

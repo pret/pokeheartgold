@@ -776,7 +776,7 @@ _02065E36:
 	b _02065F2A
 _02065EB4:
 	add r0, r7, #0
-	bl sub_0205CB00
+	bl PlayerAvatar_CheckFlag6
 	cmp r0, #0
 	bne _02065EC4
 	add sp, #0x18
