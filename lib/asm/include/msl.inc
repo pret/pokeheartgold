@@ -97,3 +97,4 @@
 .public _ZSt7nothrow
 .public _ZdaPv
 .public _ZnamRKSt9nothrow_t
+.public __exit
