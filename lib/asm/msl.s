@@ -10,16 +10,16 @@
 
 	.bss
 
-	.public _021E54A0
-_021E54A0:
+	.public __cs_id
+__cs_id:
 	.space 0x24
 
-	.public _021E54C4
-_021E54C4:
+	.public __cs_ref
+__cs_ref:
 	.space 0x24
 
-	.public _021E54E8
-_021E54E8:
+	.public __cs
+__cs:
 	.space 0x48
 
 _021E5530:
@@ -57,17 +57,6 @@ __global_destructor_chain: ; 0x021E58E8
 	.text
 
 	; MSL_C_NITRO_Ai_LE.a
-
-	arm_func_start nan
-nan: ; 0x020E4958
-	ldr r0, _020E4968 ; =_021110EC
-	ldr ip, _020E496C ; =_f2d
-	ldr r0, [r0]
-	bx ip
-	.align 2, 0
-_020E4968: .word _021110EC
-_020E496C: .word _f2d
-	arm_func_end nan
 
 	arm_func_start malloc
 malloc: ; 0x020E4970
@@ -309,7 +298,7 @@ fread: ; 0x020E4C24
 	movne r6, #5
 	mov r0, #0x18
 	mul r4, r6, r0
-	ldr r5, _020E4D20 ; =_021E54E8
+	ldr r5, _020E4D20 ; =__cs
 	mov sb, r1
 	add r0, r5, r4
 	mov r8, r2
@@ -317,9 +306,9 @@ fread: ; 0x020E4C24
 	cmp r0, #0
 	bne _020E4C88
 	ldr r0, _020E4D24 ; =OSi_ThreadInfo
-	ldr r2, _020E4D28 ; =_021E54A0
+	ldr r2, _020E4D28 ; =__cs_id
 	ldr r1, [r0, #4]
-	ldr r0, _020E4D2C ; =_021E54C4
+	ldr r0, _020E4D2C ; =__cs_ref
 	ldr r3, [r1, #0x6c]
 	mov r1, #1
 	str r3, [r2, r6, lsl #2]
@@ -327,13 +316,13 @@ fread: ; 0x020E4C24
 	b _020E4CE0
 _020E4C88:
 	ldr r0, _020E4D24 ; =OSi_ThreadInfo
-	ldr r1, _020E4D28 ; =_021E54A0
+	ldr r1, _020E4D28 ; =__cs_id
 	ldr r0, [r0, #4]
 	ldr r1, [r1, r6, lsl #2]
 	ldr r0, [r0, #0x6c]
 	cmp r1, r0
 	bne _020E4CB8
-	ldr r1, _020E4D2C ; =_021E54C4
+	ldr r1, _020E4D2C ; =__cs_ref
 	ldr r0, [r1, r6, lsl #2]
 	add r0, r0, #1
 	str r0, [r1, r6, lsl #2]
@@ -342,9 +331,9 @@ _020E4CB8:
 	add r0, r5, r4
 	bl OS_LockMutex
 	ldr r0, _020E4D24 ; =OSi_ThreadInfo
-	ldr r2, _020E4D28 ; =_021E54A0
+	ldr r2, _020E4D28 ; =__cs_id
 	ldr r1, [r0, #4]
-	ldr r0, _020E4D2C ; =_021E54C4
+	ldr r0, _020E4D2C ; =__cs_ref
 	ldr r3, [r1, #0x6c]
 	mov r1, #1
 	str r3, [r2, r6, lsl #2]
@@ -355,7 +344,7 @@ _020E4CE0:
 	mov r2, r8
 	mov r3, r7
 	bl __fread
-	ldr r1, _020E4D2C ; =_021E54C4
+	ldr r1, _020E4D2C ; =__cs_ref
 	mov r7, r0
 	ldr r0, [r1, r6, lsl #2]
 	subs r0, r0, #1
@@ -368,10 +357,10 @@ _020E4D14:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _020E4D1C: .word _02110FCC
-_020E4D20: .word _021E54E8
+_020E4D20: .word __cs
 _020E4D24: .word OSi_ThreadInfo
-_020E4D28: .word _021E54A0
-_020E4D2C: .word _021E54C4
+_020E4D28: .word __cs_id
+_020E4D2C: .word __cs_ref
 	arm_func_end fread
 
 	arm_func_start __fread
@@ -952,15 +941,15 @@ ftell: ; 0x020E5500
 _020E5538:
 	mov r0, #0x18
 	mul r4, r6, r0
-	ldr r5, _020E560C ; =_021E54E8
+	ldr r5, _020E560C ; =__cs
 	add r0, r5, r4
 	bl OS_TryLockMutex
 	cmp r0, #0
 	bne _020E5578
 	ldr r0, _020E5610 ; =OSi_ThreadInfo
-	ldr r2, _020E5614 ; =_021E54A0
+	ldr r2, _020E5614 ; =__cs_id
 	ldr r1, [r0, #4]
-	ldr r0, _020E5618 ; =_021E54C4
+	ldr r0, _020E5618 ; =__cs_ref
 	ldr r3, [r1, #0x6c]
 	mov r1, #1
 	str r3, [r2, r6, lsl #2]
@@ -968,13 +957,13 @@ _020E5538:
 	b _020E55D0
 _020E5578:
 	ldr r0, _020E5610 ; =OSi_ThreadInfo
-	ldr r1, _020E5614 ; =_021E54A0
+	ldr r1, _020E5614 ; =__cs_id
 	ldr r0, [r0, #4]
 	ldr r1, [r1, r6, lsl #2]
 	ldr r0, [r0, #0x6c]
 	cmp r1, r0
 	bne _020E55A8
-	ldr r1, _020E5618 ; =_021E54C4
+	ldr r1, _020E5618 ; =__cs_ref
 	ldr r0, [r1, r6, lsl #2]
 	add r0, r0, #1
 	str r0, [r1, r6, lsl #2]
@@ -983,9 +972,9 @@ _020E55A8:
 	add r0, r5, r4
 	bl OS_LockMutex
 	ldr r0, _020E5610 ; =OSi_ThreadInfo
-	ldr r2, _020E5614 ; =_021E54A0
+	ldr r2, _020E5614 ; =__cs_id
 	ldr r1, [r0, #4]
-	ldr r0, _020E5618 ; =_021E54C4
+	ldr r0, _020E5618 ; =__cs_ref
 	ldr r3, [r1, #0x6c]
 	mov r1, #1
 	str r3, [r2, r6, lsl #2]
@@ -993,7 +982,7 @@ _020E55A8:
 _020E55D0:
 	mov r0, r7
 	bl _ftell
-	ldr r1, _020E5618 ; =_021E54C4
+	ldr r1, _020E5618 ; =__cs_ref
 	mov r7, r0
 	ldr r0, [r1, r6, lsl #2]
 	subs r0, r0, #1
@@ -1008,10 +997,10 @@ _020E55F8:
 _020E5600: .word _02110FCC
 _020E5604: .word _02111018
 _020E5608: .word _02111064
-_020E560C: .word _021E54E8
+_020E560C: .word __cs
 _020E5610: .word OSi_ThreadInfo
-_020E5614: .word _021E54A0
-_020E5618: .word _021E54C4
+_020E5614: .word __cs_id
+_020E5618: .word __cs_ref
 	arm_func_end ftell
 
 	arm_func_start _fseek
@@ -1171,15 +1160,15 @@ fseek: ; 0x020E5804
 _020E5844:
 	mov r0, #0x18
 	mul r4, r6, r0
-	ldr r5, _020E5920 ; =_021E54E8
+	ldr r5, _020E5920 ; =__cs
 	add r0, r5, r4
 	bl OS_TryLockMutex
 	cmp r0, #0
 	bne _020E5884
 	ldr r0, _020E5924 ; =OSi_ThreadInfo
-	ldr r2, _020E5928 ; =_021E54A0
+	ldr r2, _020E5928 ; =__cs_id
 	ldr r1, [r0, #4]
-	ldr r0, _020E592C ; =_021E54C4
+	ldr r0, _020E592C ; =__cs_ref
 	ldr r3, [r1, #0x6c]
 	mov r1, #1
 	str r3, [r2, r6, lsl #2]
@@ -1187,13 +1176,13 @@ _020E5844:
 	b _020E58DC
 _020E5884:
 	ldr r0, _020E5924 ; =OSi_ThreadInfo
-	ldr r1, _020E5928 ; =_021E54A0
+	ldr r1, _020E5928 ; =__cs_id
 	ldr r0, [r0, #4]
 	ldr r1, [r1, r6, lsl #2]
 	ldr r0, [r0, #0x6c]
 	cmp r1, r0
 	bne _020E58B4
-	ldr r1, _020E592C ; =_021E54C4
+	ldr r1, _020E592C ; =__cs_ref
 	ldr r0, [r1, r6, lsl #2]
 	add r0, r0, #1
 	str r0, [r1, r6, lsl #2]
@@ -1202,9 +1191,9 @@ _020E58B4:
 	add r0, r5, r4
 	bl OS_LockMutex
 	ldr r0, _020E5924 ; =OSi_ThreadInfo
-	ldr r2, _020E5928 ; =_021E54A0
+	ldr r2, _020E5928 ; =__cs_id
 	ldr r1, [r0, #4]
-	ldr r0, _020E592C ; =_021E54C4
+	ldr r0, _020E592C ; =__cs_ref
 	ldr r3, [r1, #0x6c]
 	mov r1, #1
 	str r3, [r2, r6, lsl #2]
@@ -1214,7 +1203,7 @@ _020E58DC:
 	mov r1, r8
 	mov r2, r7
 	bl _fseek
-	ldr r1, _020E592C ; =_021E54C4
+	ldr r1, _020E592C ; =__cs_ref
 	mov r7, r0
 	ldr r0, [r1, r6, lsl #2]
 	subs r0, r0, #1
@@ -1229,10 +1218,10 @@ _020E590C:
 _020E5914: .word _02110FCC
 _020E5918: .word _02111018
 _020E591C: .word _02111064
-_020E5920: .word _021E54E8
+_020E5920: .word __cs
 _020E5924: .word OSi_ThreadInfo
-_020E5928: .word _021E54A0
-_020E592C: .word _021E54C4
+_020E5928: .word __cs_id
+_020E592C: .word __cs_ref
 	arm_func_end fseek
 
 	arm_func_start rewind
@@ -3926,9 +3915,9 @@ printf: ; 0x020E7D70
 	cmp r0, #0
 	bne _020E7DCC
 	ldr r0, _020E7E78 ; =OSi_ThreadInfo
-	ldr r1, _020E7E7C ; =_021E54A0
+	ldr r1, _020E7E7C ; =__cs_id
 	ldr r2, [r0, #4]
-	ldr r0, _020E7E80 ; =_021E54C4
+	ldr r0, _020E7E80 ; =__cs_ref
 	ldr r3, [r2, #0x6c]
 	mov r2, #1
 	str r3, [r1, #0xc]
@@ -3936,13 +3925,13 @@ printf: ; 0x020E7D70
 	b _020E7E24
 _020E7DCC:
 	ldr r0, _020E7E78 ; =OSi_ThreadInfo
-	ldr r1, _020E7E7C ; =_021E54A0
+	ldr r1, _020E7E7C ; =__cs_id
 	ldr r0, [r0, #4]
 	ldr r1, [r1, #0xc]
 	ldr r0, [r0, #0x6c]
 	cmp r1, r0
 	bne _020E7DFC
-	ldr r0, _020E7E80 ; =_021E54C4
+	ldr r0, _020E7E80 ; =__cs_ref
 	ldr r1, [r0, #0xc]
 	add r1, r1, #1
 	str r1, [r0, #0xc]
@@ -3951,9 +3940,9 @@ _020E7DFC:
 	ldr r0, _020E7E74 ; =_021E5530
 	bl OS_LockMutex
 	ldr r0, _020E7E78 ; =OSi_ThreadInfo
-	ldr r1, _020E7E7C ; =_021E54A0
+	ldr r1, _020E7E7C ; =__cs_id
 	ldr r2, [r0, #4]
-	ldr r0, _020E7E80 ; =_021E54C4
+	ldr r0, _020E7E80 ; =__cs_ref
 	ldr r3, [r2, #0x6c]
 	mov r2, #1
 	str r3, [r1, #0xc]
@@ -3966,7 +3955,7 @@ _020E7E24:
 	ldr r1, _020E7E70 ; =_02111018
 	add r3, r3, #4
 	bl __pformatter
-	ldr r1, _020E7E80 ; =_021E54C4
+	ldr r1, _020E7E80 ; =__cs_ref
 	mov r4, r0
 	ldr r0, [r1, #0xc]
 	subs r0, r0, #1
@@ -3983,8 +3972,8 @@ _020E7E60:
 _020E7E70: .word _02111018
 _020E7E74: .word _021E5530
 _020E7E78: .word OSi_ThreadInfo
-_020E7E7C: .word _021E54A0
-_020E7E80: .word _021E54C4
+_020E7E7C: .word __cs_id
+_020E7E80: .word __cs_ref
 _020E7E84: .word __FileWrite
 	arm_func_end printf
 
@@ -5065,7 +5054,7 @@ _020E8CD4:
 	ldr r0, [sp, #0x30]
 	cmp r0, #0
 	beq _020E8CF0
-	ldr r0, _020E934C ; =_021110EC
+	ldr r0, _020E934C ; =__float_nan
 	ldr r0, [r0]
 	bl _f2d
 	b _020E8D3C
@@ -5084,7 +5073,7 @@ _020E8CF0:
 	beq _020E9310
 	mov r0, #1
 	str r0, [sp, #0x30]
-	ldr r0, _020E934C ; =_021110EC
+	ldr r0, _020E934C ; =__float_nan
 	ldr r0, [r0]
 	bl _f2d
 	b _020E8D3C
@@ -5539,7 +5528,7 @@ _020E933C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020E9348: .word _0210E504
-_020E934C: .word _021110EC
+_020E934C: .word __float_nan
 	arm_func_end __sformatter
 
 	arm_func_start __StringRead
@@ -5642,9 +5631,9 @@ _020E9470:
 	cmp r0, #0
 	bne _020E94A4
 	ldr r0, _020E9570 ; =OSi_ThreadInfo
-	ldr r1, _020E9574 ; =_021E54A0
+	ldr r1, _020E9574 ; =__cs_id
 	ldr r2, [r0, #4]
-	ldr r0, _020E9578 ; =_021E54C4
+	ldr r0, _020E9578 ; =__cs_ref
 	ldr r3, [r2, #0x6c]
 	mov r2, #1
 	str r3, [r1, #0x1c]
@@ -5652,13 +5641,13 @@ _020E9470:
 	b _020E94FC
 _020E94A4:
 	ldr r0, _020E9570 ; =OSi_ThreadInfo
-	ldr r1, _020E9574 ; =_021E54A0
+	ldr r1, _020E9574 ; =__cs_id
 	ldr r0, [r0, #4]
 	ldr r1, [r1, #0x1c]
 	ldr r0, [r0, #0x6c]
 	cmp r1, r0
 	bne _020E94D4
-	ldr r0, _020E9578 ; =_021E54C4
+	ldr r0, _020E9578 ; =__cs_ref
 	ldr r1, [r0, #0x1c]
 	add r1, r1, #1
 	str r1, [r0, #0x1c]
@@ -5667,9 +5656,9 @@ _020E94D4:
 	ldr r0, _020E956C ; =_021E5590
 	bl OS_LockMutex
 	ldr r0, _020E9570 ; =OSi_ThreadInfo
-	ldr r1, _020E9574 ; =_021E54A0
+	ldr r1, _020E9574 ; =__cs_id
 	ldr r2, [r0, #4]
-	ldr r0, _020E9578 ; =_021E54C4
+	ldr r0, _020E9578 ; =__cs_ref
 	ldr r3, [r2, #0x6c]
 	mov r2, #1
 	str r3, [r1, #0x1c]
@@ -5681,7 +5670,7 @@ _020E94FC:
 	cmp r4, #1
 	movne r0, #0
 	strne r0, [r1, r2, lsl #2]
-	ldr r0, _020E9578 ; =_021E54C4
+	ldr r0, _020E9578 ; =__cs_ref
 	ldr r1, [r0, #0x1c]
 	subs r1, r1, #1
 	str r1, [r0, #0x1c]
@@ -5710,8 +5699,8 @@ _020E955C:
 	.align 2, 0
 _020E956C: .word _021E5590
 _020E9570: .word OSi_ThreadInfo
-_020E9574: .word _021E54A0
-_020E9578: .word _021E54C4
+_020E9574: .word __cs_id
+_020E9578: .word __cs_ref
 _020E957C: .word _021E58C4
 	arm_func_end raise
 
@@ -10949,7 +10938,7 @@ _020EDC50:
 	add r7, r0, #1
 	orrs r0, r7, r5
 	bne _020EDC88
-	ldr r0, _020EDEB4 ; =_021110EC
+	ldr r0, _020EDEB4 ; =__float_nan
 	ldr r1, _020EDEB8 ; =_021E58C0
 	ldr r0, [r0]
 	mov r2, #0x21
@@ -11104,7 +11093,7 @@ _020EDEA4: .word 0x7FF00000
 _020EDEA8: .word 0x43400000
 _020EDEAC: .word 0xFFFFFC01
 _020EDEB0: .word 0x3FE00000
-_020EDEB4: .word _021110EC
+_020EDEB4: .word __float_nan
 _020EDEB8: .word _021E58C0
 _020EDEBC: .word 0x41E00000
 _020EDEC0: .word 0x3FEFFFFF
@@ -19728,7 +19717,9 @@ _021110B0:
 	.balign 4, 0
 _021110E8:
 	.byte 0x00, 0x00, 0x80, 0x7F
-_021110EC:
+
+	.public __float_nan
+__float_nan:
 	.byte 0xFF, 0xFF, 0xFF, 0x7F
 _021110F0:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF0, 0x7F
@@ -20082,10 +20073,6 @@ _02111848:
 	.word _ZSt9dthandlerv
 	.word _ZSt9duhandlerv
 
-	exception abort, 0x0025, 0x00100000
-	exception exit, 0x004D, 0x00100100
-	exception __exit, 0x0129, 0x00200300
-	exception nan, 0x0019, 0x00000000
 	exception malloc, 0x0019, 0x00100000
 	exception free, 0x0015, 0x00100000
 	exception __flush_line_buffered_output_files, 0x008D, 0x00403F00
