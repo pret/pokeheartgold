@@ -10,24 +10,6 @@
 
 	.bss
 
-	.public __cs_id
-__cs_id:
-	.space 0x24
-
-	.public __cs_ref
-__cs_ref:
-	.space 0x24
-
-	.public __cs
-__cs:
-	.space 0x48
-
-_021E5530:
-	.space 0x60
-
-_021E5590:
-	.space 0x30
-
 _021E55C0:
 	.space 0x100
 
@@ -3910,7 +3892,7 @@ printf: ; 0x020E7D70
 	ldmgeia sp!, {r4, lr}
 	addge sp, sp, #0x10
 	bxge lr
-	ldr r0, _020E7E74 ; =_021E5530
+	ldr r0, _020E7E74 ; =__cs + 0x48
 	bl OS_TryLockMutex
 	cmp r0, #0
 	bne _020E7DCC
@@ -3937,7 +3919,7 @@ _020E7DCC:
 	str r1, [r0, #0xc]
 	b _020E7E24
 _020E7DFC:
-	ldr r0, _020E7E74 ; =_021E5530
+	ldr r0, _020E7E74 ; =__cs + 0x48
 	bl OS_LockMutex
 	ldr r0, _020E7E78 ; =OSi_ThreadInfo
 	ldr r1, _020E7E7C ; =__cs_id
@@ -3961,7 +3943,7 @@ _020E7E24:
 	subs r0, r0, #1
 	str r0, [r1, #0xc]
 	bne _020E7E60
-	ldr r0, _020E7E74 ; =_021E5530
+	ldr r0, _020E7E74 ; =__cs + 0x48
 	bl OS_UnlockMutex
 _020E7E60:
 	mov r0, r4
@@ -3970,7 +3952,7 @@ _020E7E60:
 	bx lr
 	.align 2, 0
 _020E7E70: .word _02111018
-_020E7E74: .word _021E5530
+_020E7E74: .word __cs + 0x48
 _020E7E78: .word OSi_ThreadInfo
 _020E7E7C: .word __cs_id
 _020E7E80: .word __cs_ref
@@ -5626,7 +5608,7 @@ _020E9468:
 	mvn r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _020E9470:
-	ldr r0, _020E956C ; =_021E5590
+	ldr r0, _020E956C ; =__cs + 0xA8
 	bl OS_TryLockMutex
 	cmp r0, #0
 	bne _020E94A4
@@ -5653,7 +5635,7 @@ _020E94A4:
 	str r1, [r0, #0x1c]
 	b _020E94FC
 _020E94D4:
-	ldr r0, _020E956C ; =_021E5590
+	ldr r0, _020E956C ; =__cs + 0xA8
 	bl OS_LockMutex
 	ldr r0, _020E9570 ; =OSi_ThreadInfo
 	ldr r1, _020E9574 ; =__cs_id
@@ -5675,7 +5657,7 @@ _020E94FC:
 	subs r1, r1, #1
 	str r1, [r0, #0x1c]
 	bne _020E9530
-	ldr r0, _020E956C ; =_021E5590
+	ldr r0, _020E956C ; =__cs + 0xA8
 	bl OS_UnlockMutex
 _020E9530:
 	cmp r4, #1
@@ -5697,7 +5679,7 @@ _020E955C:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020E956C: .word _021E5590
+_020E956C: .word __cs + 0xA8
 _020E9570: .word OSi_ThreadInfo
 _020E9574: .word __cs_id
 _020E9578: .word __cs_ref

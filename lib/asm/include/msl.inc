@@ -98,3 +98,6 @@
 .public _ZdaPv
 .public _ZnamRKSt9nothrow_t
 .public __exit
+.public __cs
+.public __cs_id
+.public __cs_ref

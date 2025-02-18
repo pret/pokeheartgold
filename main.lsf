@@ -412,6 +412,7 @@ Static main
     Object lib/NitroSDK/asm/mi_init.o
     Object lib/asm/nitro.o
     Object lib/MSL_C/asm/MSL_ARM_abort_exit.o
+    Object lib/MSL_c/asm/MSL_ARM_critical_regions_NITRO.o
     Object lib/MSL_C/asm/MSL_ARM_math.o
     Object lib/asm/msl.o
 }
