@@ -101,3 +101,5 @@
 .public __cs
 .public __cs_id
 .public __cs_ref
+.public malloc
+.public free

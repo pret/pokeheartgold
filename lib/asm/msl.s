@@ -40,25 +40,6 @@ __global_destructor_chain: ; 0x021E58E8
 
 	; MSL_C_NITRO_Ai_LE.a
 
-	arm_func_start malloc
-malloc: ; 0x020E4970
-	stmdb sp!, {r3, lr}
-	cmp r0, #0
-	moveq r0, #0
-	ldmeqia sp!, {r3, pc}
-	bl __sys_alloc
-	ldmia sp!, {r3, pc}
-	arm_func_end malloc
-
-	arm_func_start free
-free: ; 0x020E4988
-	stmdb sp!, {r3, lr}
-	cmp r0, #0
-	ldmeqia sp!, {r3, pc}
-	bl __sys_free
-	ldmia sp!, {r3, pc}
-	arm_func_end free
-
 	arm_func_start __flush_line_buffered_output_files
 __flush_line_buffered_output_files: ; 0x020E499C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
@@ -20055,8 +20036,6 @@ _02111848:
 	.word _ZSt9dthandlerv
 	.word _ZSt9duhandlerv
 
-	exception malloc, 0x0019, 0x00100000
-	exception free, 0x0015, 0x00100000
 	exception __flush_line_buffered_output_files, 0x008D, 0x00403F00
 	exception __flush_all, 0x0069, 0x00403F00
 	exception __msl_assertion_failed, 0x003D, 0x00200100
