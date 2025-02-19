@@ -31,26 +31,6 @@ __global_destructor_chain: ; 0x021E58E8
 
 	; MSL_C_NITRO_Ai_LE.a
 
-	arm_func_start __msl_assertion_failed
-__msl_assertion_failed: ; 0x020E4A9C
-	stmdb sp!, {r3, r4, lr}
-	sub sp, sp, #4
-	mov r4, r0
-	mov lr, r1
-	mov ip, r2
-	str r3, [sp]
-	ldr r0, _020E4AD4 ; =_021110B0
-	mov r1, r4
-	mov r2, lr
-	mov r3, ip
-	bl printf
-	bl abort
-	add sp, sp, #4
-	ldmia sp!, {r3, r4, pc}
-	.align 2, 0
-_020E4AD4: .word _021110B0
-	arm_func_end __msl_assertion_failed
-
 	arm_func_start __convert_from_newlines
 __convert_from_newlines: ; 0x020E4AD8
 	bx lr
@@ -19544,9 +19524,6 @@ _0210E95C:
 
 	.data
 
-_021110B0:
-	.asciz "Assertion (%s) failed in \"%s\", function \"%s\", line %d\n"
-	.balign 4, 0
 _021110E8:
 	.byte 0x00, 0x00, 0x80, 0x7F
 
