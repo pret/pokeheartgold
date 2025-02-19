@@ -415,6 +415,7 @@ Static main
     Object lib/MSL_c/asm/MSL_ARM_critical_regions_NITRO.o
     Object lib/MSL_C/asm/MSL_ARM_math.o
     Object lib/MSL_C/asm/MSL_Common_alloc.o
+    Object lib/MSL_C/asm/MSL_Common_ansi_files.o
     Object lib/asm/msl.o
 }
 

@@ -10,15 +10,6 @@
 
 	.bss
 
-_021E55C0:
-	.space 0x100
-
-_021E56C0:
-	.space 0x100
-
-_021E57C0:
-	.space 0x100
-
 	.public _021E58C0
 _021E58C0:
 	.space 0x4
@@ -39,83 +30,6 @@ __global_destructor_chain: ; 0x021E58E8
 	.text
 
 	; MSL_C_NITRO_Ai_LE.a
-
-	arm_func_start __flush_line_buffered_output_files
-__flush_line_buffered_output_files: ; 0x020E499C
-	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r0, _020E4A24 ; =_02110FCC
-	mov r4, #0
-	mov r5, #1
-	mov r8, r0
-	mvn sb, #0
-	mov r7, r4
-	mov r6, #0x4c
-_020E49BC:
-	ldr r1, [r0, #4]
-	mov r2, r1, lsl #0x16
-	movs r2, r2, lsr #0x1d
-	beq _020E49FC
-	mov r1, r1, lsl #0x19
-	mov r1, r1, lsr #0x1e
-	tst r1, #1
-	beq _020E49FC
-	ldr r1, [r0, #8]
-	mov r1, r1, lsl #0x1d
-	mov r1, r1, lsr #0x1d
-	cmp r1, #1
-	bne _020E49FC
-	bl fflush
-	cmp r0, #0
-	movne r4, sb
-_020E49FC:
-	cmp r5, #3
-	movge r0, r7
-	bge _020E4A14
-	mul r0, r5, r6
-	add r5, r5, #1
-	add r0, r8, r0
-_020E4A14:
-	cmp r0, #0
-	bne _020E49BC
-	mov r0, r4
-	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	.align 2, 0
-_020E4A24: .word _02110FCC
-	arm_func_end __flush_line_buffered_output_files
-
-	arm_func_start __flush_all
-__flush_all: ; 0x020E4A28
-	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r0, _020E4A8C ; =_02110FCC
-	mov r4, #0
-	mov r5, #1
-	mov r8, r0
-	mvn sb, #0
-	mov r7, r4
-	mov r6, #0x4c
-_020E4A48:
-	ldr r1, [r0, #4]
-	mov r1, r1, lsl #0x16
-	movs r1, r1, lsr #0x1d
-	beq _020E4A64
-	bl fflush
-	cmp r0, #0
-	movne r4, sb
-_020E4A64:
-	cmp r5, #3
-	movge r0, r7
-	bge _020E4A7C
-	mul r0, r5, r6
-	add r5, r5, #1
-	add r0, r8, r0
-_020E4A7C:
-	cmp r0, #0
-	bne _020E4A48
-	mov r0, r4
-	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	.align 2, 0
-_020E4A8C: .word _02110FCC
-	arm_func_end __flush_all
 
 	arm_func_start abs
 abs: ; 0x020E4A90
@@ -253,7 +167,7 @@ _020E4C14:
 	arm_func_start fread
 fread: ; 0x020E4C24
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
-	ldr r4, _020E4D1C ; =_02110FCC
+	ldr r4, _020E4D1C ; =__files
 	mov r7, r3
 	cmp r7, r4
 	moveq r6, #2
@@ -319,7 +233,7 @@ _020E4D14:
 	mov r0, r7
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_020E4D1C: .word _02110FCC
+_020E4D1C: .word __files
 _020E4D20: .word __cs
 _020E4D24: .word OSi_ThreadInfo
 _020E4D28: .word __cs_id
@@ -888,16 +802,16 @@ _020E54FC: .word _021E58C0
 	arm_func_start ftell
 ftell: ; 0x020E5500
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r1, _020E5600 ; =_02110FCC
+	ldr r1, _020E5600 ; =__files
 	mov r7, r0
 	cmp r7, r1
 	moveq r6, #2
 	beq _020E5538
-	ldr r0, _020E5604 ; =_02111018
+	ldr r0, _020E5604 ; =__files + 0x4C
 	cmp r7, r0
 	moveq r6, #3
 	beq _020E5538
-	ldr r0, _020E5608 ; =_02111064
+	ldr r0, _020E5608 ; =__files + 0x98
 	cmp r7, r0
 	moveq r6, #4
 	movne r6, #5
@@ -957,9 +871,9 @@ _020E55F8:
 	mov r0, r7
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_020E5600: .word _02110FCC
-_020E5604: .word _02111018
-_020E5608: .word _02111064
+_020E5600: .word __files
+_020E5604: .word __files + 0x4C
+_020E5608: .word __files + 0x98
 _020E560C: .word __cs
 _020E5610: .word OSi_ThreadInfo
 _020E5614: .word __cs_id
@@ -1105,18 +1019,18 @@ _020E5800: .word _021E58C0
 	arm_func_start fseek
 fseek: ; 0x020E5804
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r3, _020E5914 ; =_02110FCC
+	ldr r3, _020E5914 ; =__files
 	mov sb, r0
 	cmp sb, r3
 	mov r8, r1
 	mov r7, r2
 	moveq r6, #2
 	beq _020E5844
-	ldr r0, _020E5918 ; =_02111018
+	ldr r0, _020E5918 ; =__files + 0x4C
 	cmp sb, r0
 	moveq r6, #3
 	beq _020E5844
-	ldr r0, _020E591C ; =_02111064
+	ldr r0, _020E591C ; =__files + 0x98
 	cmp sb, r0
 	moveq r6, #4
 	movne r6, #5
@@ -1178,9 +1092,9 @@ _020E590C:
 	mov r0, r7
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_020E5914: .word _02110FCC
-_020E5918: .word _02111018
-_020E591C: .word _02111064
+_020E5914: .word __files
+_020E5918: .word __files + 0x4C
+_020E591C: .word __files + 0x98
 _020E5920: .word __cs
 _020E5924: .word OSi_ThreadInfo
 _020E5928: .word __cs_id
@@ -3865,7 +3779,7 @@ __StringWrite: ; 0x020E7D2C
 printf: ; 0x020E7D70
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r4, lr}
-	ldr r0, _020E7E70 ; =_02111018
+	ldr r0, _020E7E70 ; =__files + 0x4C
 	mvn r1, #0
 	bl fwide
 	cmp r0, #0
@@ -3915,7 +3829,7 @@ _020E7E24:
 	bic r3, r0, #3
 	ldr r2, [sp, #8]
 	ldr r0, _020E7E84 ; =__FileWrite
-	ldr r1, _020E7E70 ; =_02111018
+	ldr r1, _020E7E70 ; =__files + 0x4C
 	add r3, r3, #4
 	bl __pformatter
 	ldr r1, _020E7E80 ; =__cs_ref
@@ -3932,7 +3846,7 @@ _020E7E60:
 	add sp, sp, #0x10
 	bx lr
 	.align 2, 0
-_020E7E70: .word _02111018
+_020E7E70: .word __files + 0x4C
 _020E7E74: .word __cs + 0x48
 _020E7E78: .word OSi_ThreadInfo
 _020E7E7C: .word __cs_id
@@ -19637,44 +19551,6 @@ _0210E95C:
 
 	.data
 
-_02110FCC:
-	.byte 0x00, 0x00, 0x00, 0x00
-	.byte 0x24, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.word _021E57C0
-	.byte 0x00, 0x01, 0x00, 0x00
-	.word _021E57C0
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.word __read_console
-	.word __write_console
-	.word __close_console
-	.word 0x00000000
-_02111018:
-	.byte 0x01, 0x00, 0x00, 0x00, 0x28, 0x01, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00
-	.word _021E56C0
-	.byte 0x00, 0x01, 0x00, 0x00
-	.word _021E56C0
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00
-	.word __read_console
-	.word __write_console
-	.word __close_console
-	.word 0x00000000
-_02111064:
-	.byte 0x02, 0x00, 0x00, 0x00, 0x08, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.word _021E55C0
-	.byte 0x00, 0x01, 0x00, 0x00
-	.word _021E55C0
-	.byte 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.word __read_console
-	.word __write_console
-	.word __close_console
-	.word 0x00000000
 _021110B0:
 	.asciz "Assertion (%s) failed in \"%s\", function \"%s\", line %d\n"
 	.balign 4, 0
@@ -20036,8 +19912,6 @@ _02111848:
 	.word _ZSt9dthandlerv
 	.word _ZSt9duhandlerv
 
-	exception __flush_line_buffered_output_files, 0x008D, 0x00403F00
-	exception __flush_all, 0x0069, 0x00403F00
 	exception __msl_assertion_failed, 0x003D, 0x00200100
 	exception __load_buffer, 0x008D, 0x00200700
 	exception __flush_buffer, 0x0089, 0x00200300

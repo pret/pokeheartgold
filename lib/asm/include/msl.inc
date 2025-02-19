@@ -103,3 +103,6 @@
 .public __cs_ref
 .public malloc
 .public free
+.public __files
+.public __flush_line_buffered_output_files
+.public __flush_all
