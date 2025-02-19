@@ -31,13 +31,6 @@ __global_destructor_chain: ; 0x021E58E8
 
 	; MSL_C_NITRO_Ai_LE.a
 
-	arm_func_start abs
-abs: ; 0x020E4A90
-	cmp r0, #0
-	rsblt r0, r0, #0
-	bx lr
-	arm_func_end abs
-
 	arm_func_start __msl_assertion_failed
 __msl_assertion_failed: ; 0x020E4A9C
 	stmdb sp!, {r3, r4, lr}

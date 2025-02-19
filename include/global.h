@@ -1,11 +1,11 @@
 #ifndef POKEHEARTGOLD_GLOBAL_H
 #define POKEHEARTGOLD_GLOBAL_H
 
+#include <MSL.h>
 #include <nitro.h>
 #include <nitro/code16.h>
 #include <nnsys.h>
 #include <stddef.h>
-#include <stdlib.h>
 #include <string.h>
 
 #include "constants/global.h"
