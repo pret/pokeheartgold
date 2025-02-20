@@ -86,9 +86,9 @@
 .public _ddiv
 .public _fp_init
 .public __call_static_initializers
-.public _0210E404
-.public _0210E484
-.public _0210E504
+.public __lower_mapC
+.public __upper_mapC
+.public __msl_digit
 .public OSi_ThreadInfo
 .public errno
 .public __global_destructor_chain

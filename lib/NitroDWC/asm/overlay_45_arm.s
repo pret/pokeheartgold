@@ -14326,11 +14326,11 @@ ov45_0223D7B4: ; 0x0223D7B4
 	bxlt lr
 	cmp r0, #0x80
 	bxge lr
-	ldr r1, _0223D7D0 ; =_0210E404
+	ldr r1, _0223D7D0 ; =__lower_mapC
 	ldrb r0, [r1, r0]
 	bx lr
 	.balign 4, 0
-_0223D7D0: .word _0210E404
+_0223D7D0: .word __lower_mapC
 	arm_func_end ov45_0223D7B4
 
 	arm_func_start ov45_0223D7D4
@@ -25833,7 +25833,7 @@ _0224755C:
 	mov r0, #0
 	cmp r2, #0
 	beq _02247594
-	ldr r1, _022475B4 ; =_0210E404
+	ldr r1, _022475B4 ; =__lower_mapC
 _02247570:
 	cmp r2, #0
 	blt _02247584
@@ -25855,7 +25855,7 @@ _022475A4: .word ov45_0225590C
 _022475A8: .word ov45_02255918
 _022475AC: .word ov45_02255668
 _022475B0: .word ov45_02255928
-_022475B4: .word _0210E404
+_022475B4: .word __lower_mapC
 	arm_func_end ov45_02247518
 
 	arm_func_start ov45_022475B8

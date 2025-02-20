@@ -27933,7 +27933,7 @@ ov00_021FF408: ; 0x021FF408
 	mov r2, r0
 	cmp r3, #0
 	beq _021FF440
-	ldr r1, _021FF448 ; =_0210E404
+	ldr r1, _021FF448 ; =__lower_mapC
 _021FF41C:
 	cmp r3, #0
 	blt _021FF430
@@ -27949,7 +27949,7 @@ _021FF440:
 	mov r0, r2
 	bx lr
 	.balign 4, 0
-_021FF448: .word _0210E404
+_021FF448: .word __lower_mapC
 	arm_func_end ov00_021FF408
 
 	arm_func_start ov00_021FF44C
@@ -35285,7 +35285,7 @@ _022059D8:
 	blt _022059F4
 	cmp r1, #0x80
 	bge _022059F4
-	ldr r0, _02205DF4 ; =_0210E484
+	ldr r0, _02205DF4 ; =__upper_mapC
 	ldrb r1, [r0, r1]
 _022059F4:
 	mov r0, r1, lsl #0x18
@@ -35568,7 +35568,7 @@ _02205DE4: .word ov00_02218C0C
 _02205DE8: .word ov00_02218C18
 _02205DEC: .word ov00_02218DE0
 _02205DF0: .word ov00_02218C24
-_02205DF4: .word _0210E484
+_02205DF4: .word __upper_mapC
 _02205DF8: .word ov00_02218D1C
 _02205DFC: .word ov00_02218D20
 _02205E00: .word ov00_02218D24
@@ -46973,7 +46973,7 @@ _0220F85C:
 	add r3, r5, #1
 	cmp r0, #0
 	beq _0220F8B4
-	ldr r1, _0220F950 ; =_0210E504
+	ldr r1, _0220F950 ; =__msl_digit
 	mov r2, #0
 _0220F874:
 	cmp r0, #0
@@ -47040,7 +47040,7 @@ _0220F928:
 _0220F944: .word ov00_02219CF4
 _0220F948: .word ov00_02219D14
 _0220F94C: .word ov00_02219CD0
-_0220F950: .word _0210E504
+_0220F950: .word __msl_digit
 _0220F954: .word 0x0000FFFF
 	arm_func_end ov00_0220F7D4
 
@@ -50995,7 +50995,7 @@ _02212E0C:
 	mov r1, #0
 	b _02212E24
 _02212E14:
-	ldr r1, _02212E40 ; =_0210E504
+	ldr r1, _02212E40 ; =__msl_digit
 	mov r2, r2, lsl #1
 	ldrh r1, [r1, r2]
 	and r1, r1, #8
@@ -51010,7 +51010,7 @@ _02212E34:
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
 _02212E3C: .word ov00_0221A514
-_02212E40: .word _0210E504
+_02212E40: .word __msl_digit
 	arm_func_end ov00_02212DB4
 
 	arm_func_start ov00_02212E44
@@ -51337,7 +51337,7 @@ ov00_0221321C: ; 0x0221321C
 	mov ip, #0
 	cmp lr, #0
 	beq _0221325C
-	ldr r3, _0221326C ; =_0210E404
+	ldr r3, _0221326C ; =__lower_mapC
 	ldr r2, _02213270 ; =0x9CCF9319
 _02213238:
 	cmp lr, #0
@@ -51356,7 +51356,7 @@ _0221325C:
 	mov r0, r1
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
-_0221326C: .word _0210E404
+_0221326C: .word __lower_mapC
 _02213270: .word 0x9CCF9319
 	arm_func_end ov00_0221321C
 
@@ -52619,7 +52619,7 @@ ov00_022141EC: ; 0x022141EC
 	mov ip, #0
 	cmp lr, #0
 	beq _0221422C
-	ldr r3, _0221423C ; =_0210E404
+	ldr r3, _0221423C ; =__lower_mapC
 	ldr r2, _02214240 ; =0x9CCF9319
 _02214208:
 	cmp lr, #0
@@ -52638,7 +52638,7 @@ _0221422C:
 	mov r0, r1
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
-_0221423C: .word _0210E404
+_0221423C: .word __lower_mapC
 _02214240: .word 0x9CCF9319
 	arm_func_end ov00_022141EC
 

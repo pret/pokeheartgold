@@ -417,7 +417,7 @@ _020E5DDC:
 	ldrsb r3, [ip, #1]!
 	b _020E5E34
 _020E5DE4:
-	ldr r4, _020E6228 ; =_0210E504
+	ldr r4, _020E6228 ; =__msl_digit
 	mov r5, #0
 	mov r0, #0xa
 	b _020E5E08
@@ -474,7 +474,7 @@ _020E5E64:
 	strltb r0, [sp, #2]
 	b _020E5EF8
 _020E5EA8:
-	ldr r2, _020E6228 ; =_0210E504
+	ldr r2, _020E6228 ; =__msl_digit
 	mov r4, #0
 	mov r0, #0xa
 	b _020E5ECC
@@ -732,7 +732,7 @@ _020E6210:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_020E6228: .word _0210E504
+_020E6228: .word __msl_digit
 _020E622C: .word 0x000001FD
 	arm_func_end parse_format__printf
 
@@ -1614,7 +1614,7 @@ _020E6E78:
 	mov r1, #0
 	b _020E6E90
 _020E6E80:
-	ldr r1, _020E74B4 ; =_0210E504
+	ldr r1, _020E74B4 ; =__msl_digit
 	mov r2, r6, lsl #1
 	ldrh r1, [r1, r2]
 	and r1, r1, #0x200
@@ -1662,7 +1662,7 @@ _020E6F24:
 	mov r1, #0
 	b _020E6F3C
 _020E6F2C:
-	ldr r1, _020E74B4 ; =_0210E504
+	ldr r1, _020E74B4 ; =__msl_digit
 	mov r2, r6, lsl #1
 	ldrh r1, [r1, r2]
 	and r1, r1, #0x200
@@ -1709,7 +1709,7 @@ _020E6FCC:
 	mov r1, #0
 	b _020E6FE4
 _020E6FD4:
-	ldr r1, _020E74B4 ; =_0210E504
+	ldr r1, _020E74B4 ; =__msl_digit
 	mov r2, r6, lsl #1
 	ldrh r1, [r1, r2]
 	and r1, r1, #0x200
@@ -1757,7 +1757,7 @@ _020E7078:
 	mov r1, #0
 	b _020E7090
 _020E7080:
-	ldr r1, _020E74B4 ; =_0210E504
+	ldr r1, _020E74B4 ; =__msl_digit
 	mov r2, r6, lsl #1
 	ldrh r1, [r1, r2]
 	and r1, r1, #0x200
@@ -2058,7 +2058,7 @@ _020E749C:
 	bx lr
 	.align 2, 0
 _020E74B0: .word 0x000001FD
-_020E74B4: .word _0210E504
+_020E74B4: .word __msl_digit
 _020E74B8: .word _0211131C
 _020E74BC: .word _02111324
 _020E74C0: .word _0211132C
@@ -3014,7 +3014,7 @@ _020E8190:
 	mov r1, #0
 	b _020E81A8
 _020E8198:
-	ldr r1, _020E85F8 ; =_0210E504
+	ldr r1, _020E85F8 ; =__msl_digit
 	mov r2, r0, lsl #1
 	ldrh r1, [r1, r2]
 	and r1, r1, #8
@@ -3022,7 +3022,7 @@ _020E81A8:
 	cmp r1, #0
 	beq _020E8248
 	mov r1, #0
-	ldr r3, _020E85F8 ; =_0210E504
+	ldr r3, _020E85F8 ; =__msl_digit
 	str r1, [sp, #4]
 	mov r4, r1
 	mov r1, #0xa
@@ -3337,7 +3337,7 @@ _020E85CC:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020E85F4: .word _0210E604
-_020E85F8: .word _0210E504
+_020E85F8: .word __msl_digit
 	arm_func_end parse_format__printf__scanf
 
 	arm_func_start __sformatter
@@ -3371,14 +3371,14 @@ _020E8658:
 	movne r0, #0
 	bne _020E8674
 	mov r1, r5, lsl #1
-	ldr r0, _020E9348 ; =_0210E504
+	ldr r0, _020E9348 ; =__msl_digit
 	ldrh r0, [r0, r1]
 	and r0, r0, #0x100
 _020E8674:
 	cmp r0, #0
 	beq _020E8734
 	mov r2, #0
-	ldr r1, _020E9348 ; =_0210E504
+	ldr r1, _020E9348 ; =__msl_digit
 	mov ip, r2
 	mov r3, #1
 _020E868C:
@@ -3401,7 +3401,7 @@ _020E86AC:
 	ldr r0, [sp, #0x30]
 	cmp r0, #0
 	bne _020E9300
-	ldr r5, _020E9348 ; =_0210E504
+	ldr r5, _020E9348 ; =__msl_digit
 	b _020E86E0
 _020E86DC:
 	add r4, r4, #1
@@ -4030,7 +4030,7 @@ _020E8F50:
 	ldr r0, [sp, #0x30]
 	cmp r0, #0
 	bne _020E9300
-	ldr r5, _020E9348 ; =_0210E504
+	ldr r5, _020E9348 ; =__msl_digit
 	b _020E8F68
 _020E8F64:
 	add r4, r4, #1
@@ -4095,7 +4095,7 @@ _020E902C:
 	mov r0, #0
 	b _020E9044
 _020E9034:
-	ldr r0, _020E9348 ; =_0210E504
+	ldr r0, _020E9348 ; =__msl_digit
 	mov r2, r1, lsl #1
 	ldrh r0, [r0, r2]
 	and r0, r0, #0x100
@@ -4321,7 +4321,7 @@ _020E933C:
 	add sp, sp, #0x88
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020E9348: .word _0210E504
+_020E9348: .word __msl_digit
 _020E934C: .word __float_nan
 	arm_func_end __sformatter
 
@@ -5094,7 +5094,7 @@ _020E9D10:
 	b _020E9D28
 _020E9D18:
 	mov r2, r1, lsl #1
-	ldr r0, _020EAB24 ; =_0210E504
+	ldr r0, _020EAB24 ; =__msl_digit
 	ldrh r0, [r0, r2]
 	and r0, r0, #0x100
 _020E9D28:
@@ -5118,7 +5118,7 @@ _020E9D64:
 	mov r0, r1
 	b _020E9D74
 _020E9D6C:
-	ldr r0, _020EAB28 ; =_0210E484
+	ldr r0, _020EAB28 ; =__upper_mapC
 	ldrb r0, [r0, r1]
 _020E9D74:
 	cmp r0, #0x49
@@ -5186,7 +5186,7 @@ _020E9E30:
 	bne _020E9E30
 	ldrb r2, [r7]
 	add r6, sp, #0x77
-	ldr r7, _020EAB28 ; =_0210E484
+	ldr r7, _020EAB28 ; =__upper_mapC
 	strb r2, [r0]
 	b _020E9E84
 _020E9E64:
@@ -5288,7 +5288,7 @@ _020E9FAC:
 	mov r2, r1
 	b _020E9FBC
 _020E9FB4:
-	ldr r0, _020EAB28 ; =_0210E484
+	ldr r0, _020EAB28 ; =__upper_mapC
 	ldrb r2, [r0, r1]
 _020E9FBC:
 	ldrsb r0, [r7]
@@ -5300,7 +5300,7 @@ _020E9FC8:
 	bhi _020EA0DC
 	cmp r5, #4
 	bne _020EA080
-	ldr r7, _020EAB24 ; =_0210E504
+	ldr r7, _020EAB24 ; =__msl_digit
 	b _020EA008
 _020E9FE4:
 	add r0, sp, #0x56
@@ -5400,7 +5400,7 @@ _020EA11C:
 	b _020EA134
 _020EA124:
 	mov r2, r1, lsl #1
-	ldr r0, _020EAB24 ; =_0210E504
+	ldr r0, _020EAB24 ; =__msl_digit
 	ldrh r0, [r0, r2]
 	and r0, r0, #8
 _020EA134:
@@ -5419,7 +5419,7 @@ _020EA134:
 	blt _020EA178
 	cmp r0, #0x80
 	bge _020EA178
-	ldr r2, _020EAB28 ; =_0210E484
+	ldr r2, _020EAB28 ; =__upper_mapC
 	ldrb r0, [r2, r0]
 _020EA178:
 	cmp r0, #0x58
@@ -5451,7 +5451,7 @@ _020EA1CC:
 	b _020EA1E4
 _020EA1D4:
 	mov r2, r1, lsl #1
-	ldr r0, _020EAB24 ; =_0210E504
+	ldr r0, _020EAB24 ; =__msl_digit
 	ldrh r0, [r0, r2]
 	and r0, r0, #8
 _020EA1E4:
@@ -5498,7 +5498,7 @@ _020EA270:
 	b _020EA288
 _020EA278:
 	mov r2, r1, lsl #1
-	ldr r0, _020EAB24 ; =_0210E504
+	ldr r0, _020EAB24 ; =__msl_digit
 	ldrh r0, [r0, r2]
 	and r0, r0, #8
 _020EA288:
@@ -5516,7 +5516,7 @@ _020EA2A8:
 	b _020EA2C0
 _020EA2B0:
 	mov r2, r1, lsl #1
-	ldr r0, _020EAB24 ; =_0210E504
+	ldr r0, _020EAB24 ; =__msl_digit
 	ldrh r0, [r0, r2]
 	and r0, r0, #8
 _020EA2C0:
@@ -5556,7 +5556,7 @@ _020EA334:
 	mov r0, r1
 	b _020EA344
 _020EA33C:
-	ldr r0, _020EAB28 ; =_0210E484
+	ldr r0, _020EAB28 ; =__upper_mapC
 	ldrb r0, [r0, r1]
 _020EA344:
 	cmp r0, #0x45
@@ -5604,7 +5604,7 @@ _020EA3D4:
 	b _020EA3EC
 _020EA3DC:
 	mov r2, r1, lsl #1
-	ldr r0, _020EAB24 ; =_0210E504
+	ldr r0, _020EAB24 ; =__msl_digit
 	ldrh r0, [r0, r2]
 	and r0, r0, #8
 _020EA3EC:
@@ -5643,7 +5643,7 @@ _020EA45C:
 	b _020EA474
 _020EA464:
 	mov r2, r1, lsl #1
-	ldr r0, _020EAB24 ; =_0210E504
+	ldr r0, _020EAB24 ; =__msl_digit
 	ldrh r0, [r0, r2]
 	and r0, r0, #8
 _020EA474:
@@ -5743,7 +5743,7 @@ _020EA5C0:
 	b _020EA5D8
 _020EA5C8:
 	mov r2, r1, lsl #1
-	ldr r0, _020EAB24 ; =_0210E504
+	ldr r0, _020EAB24 ; =__msl_digit
 	ldrh r0, [r0, r2]
 	and r0, r0, #0x400
 _020EA5D8:
@@ -5775,7 +5775,7 @@ _020EA60C:
 	blt _020EA64C
 	cmp r1, #0x80
 	bge _020EA64C
-	ldr r2, _020EAB28 ; =_0210E484
+	ldr r2, _020EAB28 ; =__upper_mapC
 	ldrb r1, [r2, r1]
 _020EA64C:
 	cmp r1, #0x41
@@ -5818,7 +5818,7 @@ _020EA6D0:
 	b _020EA6E8
 _020EA6D8:
 	mov r2, r1, lsl #1
-	ldr r0, _020EAB24 ; =_0210E504
+	ldr r0, _020EAB24 ; =__msl_digit
 	ldrh r0, [r0, r2]
 	and r0, r0, #0x400
 _020EA6E8:
@@ -5836,7 +5836,7 @@ _020EA6E8:
 	blt _020EA728
 	cmp r1, #0x80
 	bge _020EA728
-	ldr r2, _020EAB28 ; =_0210E484
+	ldr r2, _020EAB28 ; =__upper_mapC
 	ldrb r1, [r2, r1]
 _020EA728:
 	cmp r1, #0x41
@@ -5878,7 +5878,7 @@ _020EA7AC:
 	mov r0, r1
 	b _020EA7BC
 _020EA7B4:
-	ldr r0, _020EAB28 ; =_0210E484
+	ldr r0, _020EAB28 ; =__upper_mapC
 	ldrb r0, [r0, r1]
 _020EA7BC:
 	cmp r0, #0x50
@@ -5922,7 +5922,7 @@ _020EA840:
 	b _020EA858
 _020EA848:
 	mov r2, r1, lsl #1
-	ldr r0, _020EAB24 ; =_0210E504
+	ldr r0, _020EAB24 ; =__msl_digit
 	ldrh r0, [r0, r2]
 	and r0, r0, #8
 _020EA858:
@@ -5961,7 +5961,7 @@ _020EA8C8:
 	b _020EA8E0
 _020EA8D0:
 	mov r2, r1, lsl #1
-	ldr r0, _020EAB24 ; =_0210E504
+	ldr r0, _020EAB24 ; =__msl_digit
 	ldrh r0, [r0, r2]
 	and r0, r0, #8
 _020EA8E0:
@@ -6125,8 +6125,8 @@ _020EAAC4:
 	.align 2, 0
 _020EAB1C: .word _0210E631
 _020EAB20: .word _0210E62C
-_020EAB24: .word _0210E504
-_020EAB28: .word _0210E484
+_020EAB24: .word __msl_digit
+_020EAB28: .word __upper_mapC
 _020EAB2C: .word _021110E8
 _020EAB30: .word 0x00007FFF
 _020EAB34: .word 0x00000E2C
@@ -6448,7 +6448,7 @@ _020EAF90:
 	mov r0, #0
 	b _020EAFA8
 _020EAF98:
-	ldr r0, _020EB258 ; =_0210E504
+	ldr r0, _020EB258 ; =__msl_digit
 	mov r1, r6, lsl #1
 	ldrh r0, [r0, r1]
 	and r0, r0, #0x100
@@ -6543,7 +6543,7 @@ _020EB0DC:
 	mov r0, #0
 	b _020EB0F4
 _020EB0E4:
-	ldr r0, _020EB258 ; =_0210E504
+	ldr r0, _020EB258 ; =__msl_digit
 	mov r1, r6, lsl #1
 	ldrh r0, [r0, r1]
 	and r0, r0, #8
@@ -6567,7 +6567,7 @@ _020EB12C:
 	mov r0, #0
 	b _020EB144
 _020EB134:
-	ldr r0, _020EB258 ; =_0210E504
+	ldr r0, _020EB258 ; =__msl_digit
 	mov r1, r6, lsl #1
 	ldrh r0, [r0, r1]
 	and r0, r0, #1
@@ -6582,7 +6582,7 @@ _020EB15C:
 	mov r0, r6
 	b _020EB16C
 _020EB164:
-	ldr r0, _020EB25C ; =_0210E484
+	ldr r0, _020EB25C ; =__upper_mapC
 	ldrb r0, [r0, r6]
 _020EB16C:
 	sub r0, r0, #0x37
@@ -6598,7 +6598,7 @@ _020EB188:
 	blt _020EB1A0
 	cmp r6, #0x80
 	bge _020EB1A0
-	ldr r0, _020EB25C ; =_0210E484
+	ldr r0, _020EB25C ; =__upper_mapC
 	ldrb r6, [r0, r6]
 _020EB1A0:
 	sub r6, r6, #0x37
@@ -6653,8 +6653,8 @@ _020EB23C:
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020EB258: .word _0210E504
-_020EB25C: .word _0210E484
+_020EB258: .word __msl_digit
+_020EB25C: .word __upper_mapC
 	arm_func_end __strtoul
 
 	arm_func_start __strtoull
@@ -6746,7 +6746,7 @@ _020EB38C:
 	mov r0, #0
 	b _020EB3A4
 _020EB394:
-	ldr r0, _020EB6C4 ; =_0210E504
+	ldr r0, _020EB6C4 ; =__msl_digit
 	mov r1, r8, lsl #1
 	ldrh r0, [r0, r1]
 	and r0, r0, #0x100
@@ -6846,7 +6846,7 @@ _020EB4EC:
 	mov r0, #0
 	b _020EB504
 _020EB4F4:
-	ldr r0, _020EB6C4 ; =_0210E504
+	ldr r0, _020EB6C4 ; =__msl_digit
 	mov r1, r8, lsl #1
 	ldrh r0, [r0, r1]
 	and r0, r0, #8
@@ -6870,7 +6870,7 @@ _020EB53C:
 	mov r0, #0
 	b _020EB554
 _020EB544:
-	ldr r0, _020EB6C4 ; =_0210E504
+	ldr r0, _020EB6C4 ; =__msl_digit
 	mov r1, r8, lsl #1
 	ldrh r0, [r0, r1]
 	and r0, r0, #1
@@ -6885,7 +6885,7 @@ _020EB56C:
 	mov r0, r8
 	b _020EB57C
 _020EB574:
-	ldr r0, _020EB6C8 ; =_0210E484
+	ldr r0, _020EB6C8 ; =__upper_mapC
 	ldrb r0, [r0, r8]
 _020EB57C:
 	sub r0, r0, #0x37
@@ -6901,7 +6901,7 @@ _020EB598:
 	blt _020EB5B0
 	cmp r8, #0x80
 	bge _020EB5B0
-	ldr r0, _020EB6C8 ; =_0210E484
+	ldr r0, _020EB6C8 ; =__upper_mapC
 	ldrb r8, [r0, r8]
 _020EB5B0:
 	sub r8, r8, #0x37
@@ -6979,8 +6979,8 @@ _020EB6A0:
 	add sp, sp, #0x20
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_020EB6C4: .word _0210E504
-_020EB6C8: .word _0210E484
+_020EB6C4: .word __msl_digit
+_020EB6C8: .word __upper_mapC
 	arm_func_end __strtoull
 
 	arm_func_start strtoul
@@ -12498,7 +12498,7 @@ _020F0364: .word OS_FreeToHeap
 	arm_func_start stricmp
 stricmp: ; 0x020F0368
 	stmdb sp!, {r3, lr}
-	ldr r3, _020F03CC ; =_0210E404
+	ldr r3, _020F03CC ; =__lower_mapC
 _020F0370:
 	ldrb r2, [r0], #1
 	cmp r2, #0
@@ -12526,7 +12526,7 @@ _020F03A4:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020F03CC: .word _0210E404
+_020F03CC: .word __lower_mapC
 	arm_func_end stricmp
 
 	arm_func_start strnicmp
@@ -18346,50 +18346,6 @@ _020F4F80: .word sys_exit
 	arm_func_end _ExitProcess
 
 	.rodata
-
-	.public _0210E404
-_0210E404:
-	.byte 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B
-	.byte 0x0C, 0x0D, 0x0E, 0x0F, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B
-	.byte 0x1C, 0x1D, 0x1E, 0x1F, 0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2A, 0x2B
-	.byte 0x2C, 0x2D, 0x2E, 0x2F, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3A, 0x3B
-	.byte 0x3C, 0x3D, 0x3E, 0x3F, 0x40, 0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6A, 0x6B
-	.byte 0x6C, 0x6D, 0x6E, 0x6F, 0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7A, 0x5B
-	.byte 0x5C, 0x5D, 0x5E, 0x5F, 0x60, 0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6A, 0x6B
-	.byte 0x6C, 0x6D, 0x6E, 0x6F, 0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7A, 0x7B
-	.byte 0x7C, 0x7D, 0x7E, 0x7F
-
-	.public _0210E484
-_0210E484:
-	.byte 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B
-	.byte 0x0C, 0x0D, 0x0E, 0x0F, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B
-	.byte 0x1C, 0x1D, 0x1E, 0x1F, 0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2A, 0x2B
-	.byte 0x2C, 0x2D, 0x2E, 0x2F, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3A, 0x3B
-	.byte 0x3C, 0x3D, 0x3E, 0x3F, 0x40, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4A, 0x4B
-	.byte 0x4C, 0x4D, 0x4E, 0x4F, 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5A, 0x5B
-	.byte 0x5C, 0x5D, 0x5E, 0x5F, 0x60, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4A, 0x4B
-	.byte 0x4C, 0x4D, 0x4E, 0x4F, 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5A, 0x7B
-	.byte 0x7C, 0x7D, 0x7E, 0x7F
-
-	.public _0210E504
-_0210E504:
-	.byte 0x04, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x00
-	.byte 0x04, 0x00, 0x04, 0x00, 0x04, 0x00, 0x06, 0x01, 0x04, 0x01, 0x04, 0x01, 0x04, 0x01, 0x04, 0x01
-	.byte 0x04, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x00
-	.byte 0x04, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x00, 0x04, 0x00
-	.byte 0x04, 0x00, 0x04, 0x00, 0x42, 0x01, 0xD0, 0x00, 0xD0, 0x00, 0xD0, 0x00, 0xD0, 0x00, 0xD0, 0x00
-	.byte 0xD0, 0x00, 0xD0, 0x00, 0xD0, 0x00, 0xD0, 0x00, 0xD0, 0x00, 0xD0, 0x00, 0xD0, 0x00, 0xD0, 0x00
-	.byte 0xD0, 0x00, 0xD0, 0x00, 0x58, 0x04, 0x58, 0x04, 0x58, 0x04, 0x58, 0x04, 0x58, 0x04, 0x58, 0x04
-	.byte 0x58, 0x04, 0x58, 0x04, 0x58, 0x04, 0x58, 0x04, 0xD0, 0x00, 0xD0, 0x00, 0xD0, 0x00, 0xD0, 0x00
-	.byte 0xD0, 0x00, 0xD0, 0x00, 0xD0, 0x00, 0x51, 0x06, 0x51, 0x06, 0x51, 0x06, 0x51, 0x06, 0x51, 0x06
-	.byte 0x51, 0x06, 0x51, 0x02, 0x51, 0x02, 0x51, 0x02, 0x51, 0x02, 0x51, 0x02, 0x51, 0x02, 0x51, 0x02
-	.byte 0x51, 0x02, 0x51, 0x02, 0x51, 0x02, 0x51, 0x02, 0x51, 0x02, 0x51, 0x02, 0x51, 0x02, 0x51, 0x02
-	.byte 0x51, 0x02, 0x51, 0x02, 0x51, 0x02, 0x51, 0x02, 0x51, 0x02, 0xD0, 0x00, 0xD0, 0x00, 0xD0, 0x00
-	.byte 0xD0, 0x00, 0xD0, 0x00, 0xD0, 0x00, 0x71, 0x04, 0x71, 0x04, 0x71, 0x04, 0x71, 0x04, 0x71, 0x04
-	.byte 0x71, 0x04, 0x71, 0x00, 0x71, 0x00, 0x71, 0x00, 0x71, 0x00, 0x71, 0x00, 0x71, 0x00, 0x71, 0x00
-	.byte 0x71, 0x00, 0x71, 0x00, 0x71, 0x00, 0x71, 0x00, 0x71, 0x00, 0x71, 0x00, 0x71, 0x00, 0x71, 0x00
-	.byte 0x71, 0x00, 0x71, 0x00, 0x71, 0x00, 0x71, 0x00, 0x71, 0x00, 0xD0, 0x00, 0xD0, 0x00, 0xD0, 0x00
-	.byte 0xD0, 0x00, 0x04, 0x00
 
 _0210E604:
 	.byte 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0x7F, 0x00, 0x00, 0x00, 0x00

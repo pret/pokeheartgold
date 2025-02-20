@@ -419,6 +419,7 @@ Static main
     Object lib/MSL_C/src/arith.o
     Object lib/MSL_C/asm/MSL_Common_assert.o
     Object lib/MSL_C/asm/MSL_Common_buffer_io.o
+    Object lib/MSL_C/asm/MSL_Common_ctype.o
     Object lib/MSL_C/asm/MSL_Common_direct_io.o
     Object lib/MSL_C/asm/MSL_Common_file_io.o
     Object lib/MSL_C/asm/MSL_Common_file_pos.o

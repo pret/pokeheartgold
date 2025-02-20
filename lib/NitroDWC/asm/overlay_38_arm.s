@@ -3845,7 +3845,7 @@ _0221F3F4:
 	mov ip, #0
 	ldr r5, [sp, #8]
 	mov lr, #1
-	ldr r2, _0221F4F8 ; =_0210E504
+	ldr r2, _0221F4F8 ; =__msl_digit
 	mov r3, ip
 	b _0221F438
 _0221F430:
@@ -3905,7 +3905,7 @@ _0221F4E8: .word 0x0000024E
 _0221F4EC: .word ov38_02225C78
 _0221F4F0: .word 0x0000024F
 _0221F4F4: .word ov38_02225C98
-_0221F4F8: .word _0210E504
+_0221F4F8: .word __msl_digit
 	arm_func_end ghiParseStatus
 
 	arm_func_start ov38_0221F4FC
@@ -4404,7 +4404,7 @@ _0221FBC0:
 	cmp r0, #0
 	beq _0221FCE8
 	add r4, r0, #9
-	ldr r1, _0221FE94 ; =_0210E504
+	ldr r1, _0221FE94 ; =__msl_digit
 	mov r2, #0
 	b _0221FBE8
 _0221FBE4:
@@ -4426,7 +4426,7 @@ _0221FC10:
 	cmp r0, #0
 	bne _0221FBE4
 	mov r3, r4
-	ldr r1, _0221FE94 ; =_0210E504
+	ldr r1, _0221FE94 ; =__msl_digit
 	mov r2, #0
 	b _0221FC2C
 _0221FC28:
@@ -4603,7 +4603,7 @@ _0221FE84: .word ov38_02225CCC
 _0221FE88: .word ov38_02225CD4
 _0221FE8C: .word 0x51EB851F
 _0221FE90: .word ov38_02225CD8
-_0221FE94: .word _0210E504
+_0221FE94: .word __msl_digit
 _0221FE98: .word ov38_02225CE4
 _0221FE9C: .word ov38_02225CF4
 _0221FEA0: .word ov38_02224E6C
