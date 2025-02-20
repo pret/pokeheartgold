@@ -30,3 +30,5 @@ __msl_assertion_failed: ; 0x020E4A9C
 	.align 2, 0
 _020E4AD4: .word __local_str__msl_assertion_failed
 	arm_func_end __msl_assertion_failed
+
+	exception __msl_assertion_failed, 0x003D, 0x00200100

@@ -106,3 +106,8 @@
 .public __files
 .public __flush_line_buffered_output_files
 .public __flush_all
+.public __load_buffer
+.public __prep_buffer
+.public  __flush_buffer
+.public __fread
+.public __fwrite
