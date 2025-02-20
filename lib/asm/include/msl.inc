@@ -90,7 +90,7 @@
 .public _0210E484
 .public _0210E504
 .public OSi_ThreadInfo
-.public _021E58C0
+.public errno
 .public __global_destructor_chain
 .public _Z14__ThrowHandlerP12ThrowContext
 .public _ZNSt15__vector_commonILb1EE18throw_length_errorEv
