@@ -500,3 +500,7 @@ _020E52FC:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	arm_func_end __fwrite
+
+	exception fread, 0x010D, 0x00407F00
+	exception __fread, 0x0349, 0x00507F00
+	exception __fwrite, 0x02B1, 0x0060FF00
