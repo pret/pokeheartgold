@@ -10,10 +10,6 @@
 
 	.bss
 
-	.public errno
-errno: ; 0x021E58C0
-	.space 0x4
-
 _021E58C4:
 	.space 0x1C
 
