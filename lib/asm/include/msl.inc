@@ -111,3 +111,6 @@
 .public  __flush_buffer
 .public __fread
 .public __fwrite
+.public __float_nan
+.public __float_huge
+.public __double_huge

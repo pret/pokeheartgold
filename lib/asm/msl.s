@@ -5217,14 +5217,14 @@ _020E9EB4:
 	ldr r0, [sp, #0x28]
 	cmp r0, #0
 	beq _020E9EE4
-	ldr r1, _020EAB2C ; =_021110E8
+	ldr r1, _020EAB2C ; =__float_huge
 	mov r0, #0
 	ldr r1, [r1]
 	bl _fsub
 	bl _f2d
 	b _020E9EF0
 _020E9EE4:
-	ldr r0, _020EAB2C ; =_021110E8
+	ldr r0, _020EAB2C ; =__float_huge
 	ldr r0, [r0]
 	bl _f2d
 _020E9EF0:
@@ -6084,11 +6084,11 @@ _020EAA68:
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	ldr r0, [sp, #0x28]
 	cmp r0, #0
-	ldreq r1, _020EAB3C ; =_021110F0
+	ldreq r1, _020EAB3C ; =__double_huge
 	addeq sp, sp, #0xa8
 	ldmeqia r1, {r0, r1}
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	ldr r1, _020EAB3C ; =_021110F0
+	ldr r1, _020EAB3C ; =__double_huge
 	mov r0, #0
 	ldmia r1, {r2, r3}
 	mov r1, r0
@@ -6123,11 +6123,11 @@ _020EAB1C: .word _0210E631
 _020EAB20: .word _0210E62C
 _020EAB24: .word __msl_digit
 _020EAB28: .word __upper_mapC
-_020EAB2C: .word _021110E8
+_020EAB2C: .word __float_huge
 _020EAB30: .word 0x00007FFF
 _020EAB34: .word 0x00000E2C
 _020EAB38: .word 0x0000018E
-_020EAB3C: .word _021110F0
+_020EAB3C: .word __double_huge
 _020EAB40: .word 0x7FEFFFFF
 _020EAB44:
 	ldr r3, _020EAB40 ; =0x7FEFFFFF
@@ -6138,7 +6138,7 @@ _020EAB44:
 	bls _020EAB70
 	ldr r0, [sp, #0xd0]
 	mov r2, #1
-	ldr r1, _020EAB3C ; =_021110F0
+	ldr r1, _020EAB3C ; =__double_huge
 	str r2, [r0]
 	ldmia r1, {r4, r6}
 _020EAB70:
@@ -11980,7 +11980,7 @@ _020EFC58:
 	mov r5, #0
 	cmp r0, #0
 	ldreq r4, _020F01D4 ; =0x3FF00000
-	ldr r0, _020F01DC ; =_021110E8
+	ldr r0, _020F01DC ; =__float_huge
 	ldrne r4, _020F01D8 ; =0xBFF00000
 	ldr r0, [r0]
 	bl _f2d
@@ -12055,7 +12055,7 @@ _020EFD30:
 	mov r5, #0
 	cmp r0, #0
 	ldreq r4, _020F01D4 ; =0x3FF00000
-	ldr r0, _020F01DC ; =_021110E8
+	ldr r0, _020F01DC ; =__float_huge
 	ldrne r4, _020F01D8 ; =0xBFF00000
 	ldr r0, [r0]
 	bl _f2d
@@ -12358,7 +12358,7 @@ _020F01C4:
 	.align 2, 0
 _020F01D4: .word 0x3FF00000
 _020F01D8: .word 0xBFF00000
-_020F01DC: .word _021110E8
+_020F01DC: .word __float_huge
 _020F01E0: .word 0x7FF00000
 _020F01E4: .word _021114DC
 _020F01E8: .word _021113C8
@@ -18420,14 +18420,6 @@ _0210E95C:
 
 	.data
 
-_021110E8:
-	.byte 0x00, 0x00, 0x80, 0x7F
-
-	.public __float_nan
-__float_nan:
-	.byte 0xFF, 0xFF, 0xFF, 0x7F
-_021110F0:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF0, 0x7F
 _021110F8:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.balign 4, 0
