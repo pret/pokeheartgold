@@ -10,7 +10,7 @@ typedef enum PlayerAvatarFlags {
     AVATAR_FLAG_UNK0 = (1 << 0),
     AVATAR_FLAG_UNK1 = (1 << 1),
     AVATAR_FLAG_UNK2 = (1 << 2),
-    AVATAR_FLAG_DISMOUNTING_BIKE_BLOCKED = (1 << 3), // Blocks the player from getting off their bike (technically, you can use this to prevent them from getting on it, too)
+    AVATAR_FLAG_LOCK_BIKE_STATE = (1 << 3), // Blocks the player from mounting/dismounting their bike (though this was intended to stop dismounting during Cycling Road)
     AVATAR_FLAG_UNK4 = (1 << 4),
     AVATAR_FLAG_UNK5 = (1 << 5),
     AVATAR_FLAG_UNK6 = (1 << 6),
@@ -122,8 +122,8 @@ void PlayerAvatar_SetFlag1(PlayerAvatar *avatar, BOOL set);
 BOOL PlayerAvatar_CheckFlag1(PlayerAvatar *avatar);
 void PlayerAvatar_SetFlag2(PlayerAvatar *avatar, BOOL set);
 BOOL PlayerAvatar_CheckFlag2(PlayerAvatar *avatar);
-void PlayerAvatar_BlockDismountingBike(PlayerAvatar *avatar, BOOL block);
-BOOL PlayerAvatar_IsDismountingBikeBlocked(PlayerAvatar *avatar);
+void PlayerAvatar_SetBikeStateLock(PlayerAvatar *avatar, BOOL lock);
+BOOL PlayerAvatar_IsBikeStateLocked(PlayerAvatar *avatar);
 void PlayerAvatar_SetFlag5(PlayerAvatar *avatar, BOOL set);
 void PlayerAvatar_SetFlag6(PlayerAvatar *avatar);
 void PlayerAvatar_ClearFlag6(PlayerAvatar *avatar);

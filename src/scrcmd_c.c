@@ -2350,9 +2350,9 @@ BOOL ScrCmd_591(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_BlockDismountingBike(ScriptContext *ctx) {
-    u8 block = ScriptReadByte(ctx);
-    PlayerAvatar_BlockDismountingBike(ctx->fieldSystem->playerAvatar, block);
+BOOL ScrCmd_SetBikeStateLock(ScriptContext *ctx) {
+    BOOL lock = ScriptReadByte(ctx);
+    PlayerAvatar_SetBikeStateLock(ctx->fieldSystem->playerAvatar, lock);
     return FALSE;
 }
 

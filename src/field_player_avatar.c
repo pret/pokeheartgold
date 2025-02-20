@@ -674,16 +674,16 @@ BOOL PlayerAvatar_CheckFlag2(PlayerAvatar *avatar) {
     return FALSE;
 }
 
-void PlayerAvatar_BlockDismountingBike(PlayerAvatar *avatar, BOOL block) {
-    if (block == TRUE) {
-        PlayerAvatar_SetFlagsBits(avatar, AVATAR_FLAG_DISMOUNTING_BIKE_BLOCKED);
+void PlayerAvatar_SetBikeStateLock(PlayerAvatar *avatar, BOOL lock) {
+    if (lock == TRUE) {
+        PlayerAvatar_SetFlagsBits(avatar, AVATAR_FLAG_LOCK_BIKE_STATE);
     } else {
-        PlayerAvatar_ClearFlagsBits(avatar, AVATAR_FLAG_DISMOUNTING_BIKE_BLOCKED);
+        PlayerAvatar_ClearFlagsBits(avatar, AVATAR_FLAG_LOCK_BIKE_STATE);
     }
 }
 
-BOOL PlayerAvatar_IsDismountingBikeBlocked(PlayerAvatar *avatar) {
-    if (PlayerAvatar_GetFlagsBitsMask(avatar, AVATAR_FLAG_DISMOUNTING_BIKE_BLOCKED)) {
+BOOL PlayerAvatar_IsBikeStateLocked(PlayerAvatar *avatar) {
+    if (PlayerAvatar_GetFlagsBitsMask(avatar, AVATAR_FLAG_LOCK_BIKE_STATE)) {
         return TRUE;
     }
     return FALSE;

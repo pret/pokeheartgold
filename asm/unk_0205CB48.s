@@ -2793,7 +2793,7 @@ _0205E08A:
 	pop {r3, r4, r5, pc}
 _0205E096:
 	add r0, r5, #0
-	bl PlayerAvatar_IsDismountingBikeBlocked
+	bl PlayerAvatar_IsBikeStateLocked
 	cmp r0, #0
 	bne _0205E0A4
 	mov r0, #0

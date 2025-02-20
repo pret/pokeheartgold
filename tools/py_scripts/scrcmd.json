@@ -1157,7 +1157,7 @@
       ]
     },
     {
-      "name": "block_dismounting_bike",
+      "name": "set_bike_state_lock",
       "args": [
         1
       ]

@@ -54,7 +54,7 @@
 .public PlayerAvatar_CheckFlag1
 .public PlayerAvatar_SetFlag2
 .public PlayerAvatar_CheckFlag2
-.public PlayerAvatar_IsDismountingBikeBlocked
+.public PlayerAvatar_IsBikeStateLocked
 .public PlayerAvatar_SetFlag5
 .public PlayerAvatar_SetFlag6
 .public PlayerAvatar_ClearFlag6

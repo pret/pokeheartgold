@@ -14,7 +14,7 @@ scr_seq_R18_000:
 	end
 
 _0017:
-	block_dismounting_bike 1
+	set_bike_state_lock 1
 	end
 
 scr_seq_R18_001:
