@@ -117,3 +117,4 @@
 .public wcstombs
 .public mbtowc
 .public mbstowcs
+.public memchr

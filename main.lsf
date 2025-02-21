@@ -426,6 +426,7 @@ Static main
     Object lib/MSL_C/asm/MSL_Common_file_pos.o
     Object lib/MSL_C/asm/MSL_Common_float.o
     Object lib/MSL_C/asm/MSL_Common_mbstring.o
+    Object lib/MSL_C/asm/MSL_Common_mem.o
     Object lib/asm/msl.o
 }
 
