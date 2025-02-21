@@ -114,3 +114,6 @@
 .public __float_nan
 .public __float_huge
 .public __double_huge
+.public wcstombs
+.public mbtowc
+.public mbstowcs
