@@ -191,11 +191,11 @@ _021F1C64:
 
 	thumb_func_start ov01_021F1C70
 ov01_021F1C70: ; 0x021F1C70
-	ldr r3, _021F1C78 ; =sub_0205CA4C
+	ldr r3, _021F1C78 ; =PlayerAvatar_SetFlag1
 	mov r1, #1
 	bx r3
 	nop
-_021F1C78: .word sub_0205CA4C
+_021F1C78: .word PlayerAvatar_SetFlag1
 	thumb_func_end ov01_021F1C70
 
 	thumb_func_start ov01_021F1C7C
@@ -356,7 +356,7 @@ ov01_021F1D94: ; 0x021F1D94
 	add r0, r5, #0
 	add r4, r2, #0
 	add r7, r3, #0
-	bl sub_0205CA38
+	bl PlayerAvatar_CheckFlag0
 	cmp r0, #1
 	bne _021F1DBE
 	add r0, r6, #0

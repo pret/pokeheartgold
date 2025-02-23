@@ -162,7 +162,7 @@ sub_0205CC4C: ; 0x0205CC4C
 	add r1, r4, #0
 	bl sub_0205C778
 	add r0, r5, #0
-	bl sub_0205CAF4
+	bl PlayerAvatar_ClearFlag6
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end sub_0205CC4C
@@ -171,7 +171,7 @@ sub_0205CC4C: ; 0x0205CC4C
 sub_0205CC74: ; 0x0205CC74
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205CB00
+	bl PlayerAvatar_CheckFlag6
 	cmp r0, #1
 	bne _0205CC92
 	add r0, r4, #0
@@ -180,7 +180,7 @@ sub_0205CC74: ; 0x0205CC74
 	bne _0205CC92
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205CA4C
+	bl PlayerAvatar_SetFlag1
 _0205CC92:
 	pop {r4, pc}
 	thumb_func_end sub_0205CC74
@@ -634,7 +634,7 @@ sub_0205D01C: ; 0x0205D01C
 	pop {r3, r4, r5, r6, r7, pc}
 _0205D040:
 	add r0, r5, #0
-	bl sub_0205CA64
+	bl PlayerAvatar_CheckFlag1
 	cmp r0, #1
 	bne _0205D04E
 	add r0, r4, #0
@@ -714,7 +714,7 @@ sub_0205D0A8: ; 0x0205D0A8
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0205CA20
+	bl PlayerAvatar_SetFlag0
 	cmp r7, #0
 	beq _0205D10A
 	add r0, r4, #0
@@ -722,7 +722,7 @@ sub_0205D0A8: ; 0x0205D0A8
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0205CA4C
+	bl PlayerAvatar_SetFlag1
 	add r0, r5, #0
 	mov r1, #0
 	bl sub_0205C6C8
@@ -770,10 +770,10 @@ _0205D136:
 	bl sub_0205DA1C
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0205CA4C
+	bl PlayerAvatar_SetFlag1
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0205CA20
+	bl PlayerAvatar_SetFlag0
 	mov r1, #0
 	mvn r1, r1
 	add r0, r5, #0
@@ -839,7 +839,7 @@ _0205D1CE:
 	bl sub_0205C6C8
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205CA78
+	bl PlayerAvatar_SetFlag2
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -849,7 +849,7 @@ _0205D1CE:
 sub_0205D1FC: ; 0x0205D1FC
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205CA38
+	bl PlayerAvatar_CheckFlag0
 	cmp r0, #1
 	bne _0205D23E
 	add r0, r4, #0
@@ -858,7 +858,7 @@ sub_0205D1FC: ; 0x0205D1FC
 	lsl r1, r1, #6
 	bl MapObject_ClearFlagsBits
 	add r0, r4, #0
-	bl sub_0205CB2C
+	bl PlayerAvatar_CheckFlag7
 	cmp r0, #0
 	bne _0205D226
 	add r0, r4, #0
@@ -866,13 +866,13 @@ sub_0205D1FC: ; 0x0205D1FC
 _0205D226:
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205CA20
+	bl PlayerAvatar_SetFlag0
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205CB14
+	bl PlayerAvatar_SetFlag7
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205CAD0
+	bl PlayerAvatar_SetFlag5
 _0205D23E:
 	pop {r4, pc}
 	thumb_func_end sub_0205D1FC
@@ -1310,7 +1310,7 @@ _0205D564:
 	add r0, r6, #0
 	bl sub_0205E048
 	add r0, r6, #0
-	bl sub_0205CAE8
+	bl PlayerAvatar_SetFlag6
 	b _0205D5CE
 _0205D588:
 	cmp r4, #0
@@ -1330,7 +1330,7 @@ _0205D590:
 	add r0, r6, #0
 	bl sub_0205E048
 	add r0, r6, #0
-	bl sub_0205CAE8
+	bl PlayerAvatar_SetFlag6
 	b _0205D5CE
 _0205D5B4:
 	mov r0, #0x1c
@@ -1451,14 +1451,14 @@ sub_0205D684: ; 0x0205D684
 	bl sub_0205C758
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205CA90
+	bl PlayerAvatar_CheckFlag2
 	cmp r0, #0
 	bne _0205D6A8
 	cmp r4, #2
 	blt _0205D6A8
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0205CA78
+	bl PlayerAvatar_SetFlag2
 _0205D6A8:
 	cmp r4, #3
 	bne _0205D6B0
@@ -1484,14 +1484,14 @@ _0205D6C6:
 	add r1, r4, #0
 	bl sub_0205C748
 	add r0, r5, #0
-	bl sub_0205CA90
+	bl PlayerAvatar_CheckFlag2
 	cmp r0, #1
 	bne _0205D6E4
 	cmp r4, #0
 	bne _0205D6E4
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205CA78
+	bl PlayerAvatar_SetFlag2
 _0205D6E4:
 	add r0, r6, #0
 	pop {r4, r5, r6, pc}
@@ -1702,7 +1702,7 @@ sub_0205D83C: ; 0x0205D83C
 	add r0, r5, #0
 	bl sub_0205E048
 	add r0, r5, #0
-	bl sub_0205CAE8
+	bl PlayerAvatar_SetFlag6
 	b _0205D93A
 _0205D86E:
 	mov r0, #0x10
@@ -1717,10 +1717,10 @@ _0205D86E:
 	bl sub_0205D658
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_0205CAE8
+	bl PlayerAvatar_SetFlag6
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0205CA20
+	bl PlayerAvatar_SetFlag0
 	b _0205D93A
 _0205D898:
 	add r0, r6, #0
@@ -1791,7 +1791,7 @@ _0205D91E:
 	add r0, r5, #0
 	bl sub_0205E048
 	add r0, r5, #0
-	bl sub_0205CAE8
+	bl PlayerAvatar_SetFlag6
 _0205D93A:
 	ldr r2, [sp]
 	add r0, r5, #0
@@ -1892,7 +1892,7 @@ _0205D9FE:
 	bne _0205DA0C
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205CA78
+	bl PlayerAvatar_SetFlag2
 _0205DA0C:
 	ldr r2, [sp, #4]
 	add r0, r5, #0
@@ -2793,7 +2793,7 @@ _0205E08A:
 	pop {r3, r4, r5, pc}
 _0205E096:
 	add r0, r5, #0
-	bl sub_0205CABC
+	bl PlayerAvatar_IsBikeStateLocked
 	cmp r0, #0
 	bne _0205E0A4
 	mov r0, #0

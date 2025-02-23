@@ -1157,7 +1157,7 @@
       ]
     },
     {
-      "name": "scrcmd_186",
+      "name": "set_bike_state_lock",
       "args": [
         1
       ]
