@@ -721,7 +721,7 @@ _021E8508:
 	ldr r0, _021E876C ; =ov00_0221A694
 	mov r2, #0
 	ldr r1, [r0, #8]
-	ldr r0, _021E8774 ; =_021E58C0
+	ldr r0, _021E8774 ; =errno
 	str r2, [sp]
 	str r2, [r0]
 	add r0, r1, #0x1000
@@ -729,7 +729,7 @@ _021E8508:
 	ldr r1, _021E8778 ; =ov00_022164C8
 	bl ov00_021EA1CC
 	bl atoi
-	ldr r1, _021E8774 ; =_021E58C0
+	ldr r1, _021E8774 ; =errno
 	ldr r1, [r1]
 	cmp r1, #0x22
 	bne _021E8560
@@ -879,7 +879,7 @@ _021E8764:
 	.balign 4, 0
 _021E876C: .word ov00_0221A694
 _021E8770: .word ov00_022164C0
-_021E8774: .word _021E58C0
+_021E8774: .word errno
 _021E8778: .word ov00_022164C8
 _021E877C: .word 0x00004E85
 _021E8780: .word ov00_022164D4
@@ -3219,7 +3219,7 @@ _021EA7FC:
 	bl ov00_021EA1CC
 	bl atoi
 	mov r6, r0
-	ldr r0, _021EB4FC ; =_021E58C0
+	ldr r0, _021EB4FC ; =errno
 	ldr r0, [r0]
 	cmp r0, #0x22
 	bne _021EA82C
@@ -3711,7 +3711,7 @@ _021EAF10:
 	bl ov00_021EA1CC
 	bl atoi
 	mov r6, r0
-	ldr r0, _021EB4FC ; =_021E58C0
+	ldr r0, _021EB4FC ; =errno
 	ldr r0, [r0]
 	cmp r0, #0x22
 	bne _021EAF4C
@@ -3761,7 +3761,7 @@ _021EAFA0:
 _021EAFD4:
 	add r0, sp, #0x2c
 	bl atoi
-	ldr r1, _021EB4FC ; =_021E58C0
+	ldr r1, _021EB4FC ; =errno
 	ldr r1, [r1]
 	cmp r1, #0x22
 	bne _021EB004
@@ -3926,7 +3926,7 @@ _021EB234:
 	strb r1, [sl, r0]
 	mov r0, sl
 	bl atoi
-	ldr r1, _021EB4FC ; =_021E58C0
+	ldr r1, _021EB4FC ; =errno
 	ldr r1, [r1]
 	cmp r1, #0x22
 	bne _021EB26C
@@ -4116,7 +4116,7 @@ _021EB4EC: .word ov00_022168DC
 _021EB4F0: .word ov00_0221A6D0
 _021EB4F4: .word OSi_ThreadInfo
 _021EB4F8: .word ov00_022169F0
-_021EB4FC: .word _021E58C0
+_021EB4FC: .word errno
 _021EB500: .word 0x0000012E
 _021EB504: .word ov00_02216420
 _021EB508: .word 0x00004E20
@@ -4209,7 +4209,7 @@ ov00_021EB5B0: ; 0x021EB5B0
 	mov r1, r6
 	bl strcpy
 	mov r2, #0
-	ldr r1, _021EB7C0 ; =_021E58C0
+	ldr r1, _021EB7C0 ; =errno
 	add r0, sp, #0xc
 	strb r2, [sp, #7]
 	strb r2, [sp, #0xb]
@@ -4219,7 +4219,7 @@ ov00_021EB5B0: ; 0x021EB5B0
 	strb r2, [sp, #0x19]
 	str r2, [r1]
 	bl atoi
-	ldr r1, _021EB7C0 ; =_021E58C0
+	ldr r1, _021EB7C0 ; =errno
 	str r0, [sp, #0x2c]
 	ldr r1, [r1]
 	cmp r1, #0x22
@@ -4246,12 +4246,12 @@ _021EB6CC:
 	ldr r0, [sp, #0x30]
 	cmp r0, #0xc
 	bhi _021EB7B0
-	ldr r1, _021EB7C0 ; =_021E58C0
+	ldr r1, _021EB7C0 ; =errno
 	mov r2, #0
 	add r0, sp, #5
 	str r2, [r1]
 	bl atoi
-	ldr r1, _021EB7C0 ; =_021E58C0
+	ldr r1, _021EB7C0 ; =errno
 	str r0, [sp, #0x34]
 	ldr r0, [r1]
 	cmp r0, #0x22
@@ -4260,7 +4260,7 @@ _021EB6CC:
 	add r0, sp, #0x11
 	str r2, [r1]
 	bl atoi
-	ldr r1, _021EB7C0 ; =_021E58C0
+	ldr r1, _021EB7C0 ; =errno
 	str r0, [sp, #0x20]
 	ldr r0, [r1]
 	cmp r0, #0x22
@@ -4269,7 +4269,7 @@ _021EB6CC:
 	add r0, sp, #0x14
 	str r2, [r1]
 	bl atoi
-	ldr r1, _021EB7C0 ; =_021E58C0
+	ldr r1, _021EB7C0 ; =errno
 	str r0, [sp, #0x24]
 	ldr r0, [r1]
 	cmp r0, #0x22
@@ -4278,7 +4278,7 @@ _021EB6CC:
 	add r0, sp, #0x17
 	str r2, [r1]
 	bl atoi
-	ldr r1, _021EB7C0 ; =_021E58C0
+	ldr r1, _021EB7C0 ; =errno
 	str r0, [sp, #0x28]
 	ldr r0, [r1]
 	cmp r0, #0x22
@@ -4306,7 +4306,7 @@ _021EB7B0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.balign 4, 0
 _021EB7BC: .word ov00_02216AF0
-_021EB7C0: .word _021E58C0
+_021EB7C0: .word errno
 _021EB7C4: .word ov00_02216AC0
 _021EB7C8: .word ov00_0221A734
 	arm_func_end ov00_021EB5B0
@@ -4646,7 +4646,7 @@ _021EBC40:
 	ldmia sp!, {r3, r4, pc}
 _021EBC6C:
 	bl atoi
-	ldr r1, _021EBDEC ; =_021E58C0
+	ldr r1, _021EBDEC ; =errno
 	mov r2, r0
 	ldr r0, [r1]
 	cmp r0, #0x22
@@ -4684,7 +4684,7 @@ _021EBCC0:
 _021EBCF4:
 	add r0, sp, #0
 	bl atoi
-	ldr r1, _021EBDEC ; =_021E58C0
+	ldr r1, _021EBDEC ; =errno
 	mov r2, r0
 	ldr r0, [r1]
 	cmp r0, #0x22
@@ -4747,7 +4747,7 @@ _021EBDDC: .word ov00_0221A748
 _021EBDE0: .word 0xFFFF9DF3
 _021EBDE4: .word ov00_02216B64
 _021EBDE8: .word ov00_02216B6C
-_021EBDEC: .word _021E58C0
+_021EBDEC: .word errno
 _021EBDF0: .word 0xFFFF9E58
 _021EBDF4: .word ov00_02216B78
 _021EBDF8: .word 0xFFFFA240
@@ -27933,7 +27933,7 @@ ov00_021FF408: ; 0x021FF408
 	mov r2, r0
 	cmp r3, #0
 	beq _021FF440
-	ldr r1, _021FF448 ; =_0210E404
+	ldr r1, _021FF448 ; =__lower_mapC
 _021FF41C:
 	cmp r3, #0
 	blt _021FF430
@@ -27949,7 +27949,7 @@ _021FF440:
 	mov r0, r2
 	bx lr
 	.balign 4, 0
-_021FF448: .word _0210E404
+_021FF448: .word __lower_mapC
 	arm_func_end ov00_021FF408
 
 	arm_func_start ov00_021FF44C
@@ -35285,7 +35285,7 @@ _022059D8:
 	blt _022059F4
 	cmp r1, #0x80
 	bge _022059F4
-	ldr r0, _02205DF4 ; =_0210E484
+	ldr r0, _02205DF4 ; =__upper_mapC
 	ldrb r1, [r0, r1]
 _022059F4:
 	mov r0, r1, lsl #0x18
@@ -35568,7 +35568,7 @@ _02205DE4: .word ov00_02218C0C
 _02205DE8: .word ov00_02218C18
 _02205DEC: .word ov00_02218DE0
 _02205DF0: .word ov00_02218C24
-_02205DF4: .word _0210E484
+_02205DF4: .word __upper_mapC
 _02205DF8: .word ov00_02218D1C
 _02205DFC: .word ov00_02218D20
 _02205E00: .word ov00_02218D24
@@ -46973,7 +46973,7 @@ _0220F85C:
 	add r3, r5, #1
 	cmp r0, #0
 	beq _0220F8B4
-	ldr r1, _0220F950 ; =_0210E504
+	ldr r1, _0220F950 ; =__msl_digit
 	mov r2, #0
 _0220F874:
 	cmp r0, #0
@@ -47040,7 +47040,7 @@ _0220F928:
 _0220F944: .word ov00_02219CF4
 _0220F948: .word ov00_02219D14
 _0220F94C: .word ov00_02219CD0
-_0220F950: .word _0210E504
+_0220F950: .word __msl_digit
 _0220F954: .word 0x0000FFFF
 	arm_func_end ov00_0220F7D4
 
@@ -50995,7 +50995,7 @@ _02212E0C:
 	mov r1, #0
 	b _02212E24
 _02212E14:
-	ldr r1, _02212E40 ; =_0210E504
+	ldr r1, _02212E40 ; =__msl_digit
 	mov r2, r2, lsl #1
 	ldrh r1, [r1, r2]
 	and r1, r1, #8
@@ -51010,7 +51010,7 @@ _02212E34:
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
 _02212E3C: .word ov00_0221A514
-_02212E40: .word _0210E504
+_02212E40: .word __msl_digit
 	arm_func_end ov00_02212DB4
 
 	arm_func_start ov00_02212E44
@@ -51337,7 +51337,7 @@ ov00_0221321C: ; 0x0221321C
 	mov ip, #0
 	cmp lr, #0
 	beq _0221325C
-	ldr r3, _0221326C ; =_0210E404
+	ldr r3, _0221326C ; =__lower_mapC
 	ldr r2, _02213270 ; =0x9CCF9319
 _02213238:
 	cmp lr, #0
@@ -51356,7 +51356,7 @@ _0221325C:
 	mov r0, r1
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
-_0221326C: .word _0210E404
+_0221326C: .word __lower_mapC
 _02213270: .word 0x9CCF9319
 	arm_func_end ov00_0221321C
 
@@ -52619,7 +52619,7 @@ ov00_022141EC: ; 0x022141EC
 	mov ip, #0
 	cmp lr, #0
 	beq _0221422C
-	ldr r3, _0221423C ; =_0210E404
+	ldr r3, _0221423C ; =__lower_mapC
 	ldr r2, _02214240 ; =0x9CCF9319
 _02214208:
 	cmp lr, #0
@@ -52638,7 +52638,7 @@ _0221422C:
 	mov r0, r1
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
-_0221423C: .word _0210E404
+_0221423C: .word __lower_mapC
 _02214240: .word 0x9CCF9319
 	arm_func_end ov00_022141EC
 

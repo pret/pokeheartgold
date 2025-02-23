@@ -160,13 +160,13 @@
 .public _ddiv
 .public _02108FC0
 .public _02108FC8
-.public _0210E404
-.public _0210E484
-.public _0210E504
+.public __lower_mapC
+.public __upper_mapC
+.public __msl_digit
 .public _021D4420
 .public _021D4670
 .public OSi_ThreadInfo
-.public _021E58C0
+.public errno
 .public ov00_021EC0FC
 .public ov00_021EC11C
 .public ov00_021EC210

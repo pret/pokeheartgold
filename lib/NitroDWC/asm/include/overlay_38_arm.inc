@@ -51,7 +51,7 @@
 .public atoi
 .public _ll_udiv
 .public _u32_div_f
-.public _0210E504
+.public __msl_digit
 .public ov00_021EC3A8
 .public ov00_021EC3BC
 .public ov00_021EC3D8

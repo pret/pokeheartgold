@@ -36,7 +36,7 @@
 .public strnicmp
 .public _s32_div_f
 .public _u32_div_f
-.public _0210E404
+.public __lower_mapC
 .public ov00_021EC210
 .public ov00_021EC230
 .public ov00_021EC24C
