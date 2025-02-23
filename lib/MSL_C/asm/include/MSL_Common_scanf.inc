@@ -1,0 +1,10 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public __msl_digit
+.public __strtoull
+.public __strtoul
+.public _f2d
+.public _d2f
+.public mbtowc
+.public __float_nan
+.public __strtold
