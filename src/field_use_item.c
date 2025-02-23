@@ -329,7 +329,7 @@ static enum ItemUseError ItemCheckUseFunc_Bicycle(const struct ItemCheckUseData 
     if (data->haveRocketCostume == TRUE) {
         return ITEMUSEERROR_NOTNOW;
     }
-    if (sub_0205CABC(data->playerAvatar) == TRUE) {
+    if (PlayerAvatar_IsBikeStateLocked(data->playerAvatar) == TRUE) {
         return ITEMUSEERROR_NODISMOUNT;
     }
     if (sub_0205B6F4(data->standingTile) == TRUE || sub_0205B8AC(data->standingTile) == TRUE) {

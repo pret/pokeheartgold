@@ -13,7 +13,7 @@
 .public sub_0205C6D4
 .public PlayerAvatar_GetMapObject
 .public FieldSystem_GetPlayerAvatar
-.public sub_0205CB00
+.public PlayerAvatar_CheckFlag6
 .public MapObjectManager_GetNextObjectWithFlagFromIndex
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits

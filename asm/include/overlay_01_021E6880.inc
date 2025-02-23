@@ -116,7 +116,7 @@
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_GetState
 .public FieldSystem_GetPlayerAvatar
-.public sub_0205CA38
+.public PlayerAvatar_CheckFlag0
 .public PlayerAvatar_CheckRunningShoesLock
 .public sub_0205CF44
 .public sub_0205CF60

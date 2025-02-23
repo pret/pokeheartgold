@@ -6,6 +6,17 @@
 #include "field_types_def.h"
 #include "save.h"
 
+typedef enum PlayerAvatarFlags {
+    AVATAR_FLAG_UNK0 = (1 << 0),
+    AVATAR_FLAG_UNK1 = (1 << 1),
+    AVATAR_FLAG_UNK2 = (1 << 2),
+    AVATAR_FLAG_LOCK_BIKE_STATE = (1 << 3), // Blocks the player from mounting/dismounting their bike (though this was intended to stop dismounting during Cycling Road)
+    AVATAR_FLAG_UNK4 = (1 << 4),
+    AVATAR_FLAG_UNK5 = (1 << 5),
+    AVATAR_FLAG_UNK6 = (1 << 6),
+    AVATAR_FLAG_UNK7 = (1 << 7),
+} PlayerAvatarFlags;
+
 typedef struct PlayerSaveData {
     u16 hasRunningShoes;
     u16 runningShoesLock;
@@ -13,7 +24,7 @@ typedef struct PlayerSaveData {
 } PlayerSaveData;
 
 struct PlayerAvatar {
-    u32 unk0;
+    PlayerAvatarFlags flags;
     u32 transFlag;
     u32 unk8;
     u32 unkc;
@@ -71,9 +82,9 @@ void PlayerAvatar_SetTransitionFlags(PlayerAvatar *avatar, u32 flag);
 u32 PlayerAvatar_GetTransitionFlags(PlayerAvatar *avatar);
 void PlayerAvatar_SetGender(PlayerAvatar *avatar, u32 gender);
 int PlayerAvatar_GetGender(PlayerAvatar *avatar);
-void sub_0205C728(PlayerAvatar *avatar, u32 unkA);
-void sub_0205C730(PlayerAvatar *avatar, u32 unkA);
-u32 sub_0205C73C(PlayerAvatar *avatar, u32 unkA);
+void PlayerAvatar_SetFlagsBits(PlayerAvatar *avatar, PlayerAvatarFlags bits);
+void PlayerAvatar_ClearFlagsBits(PlayerAvatar *avatar, PlayerAvatarFlags bits);
+PlayerAvatarFlags PlayerAvatar_GetFlagsBitsMask(PlayerAvatar *avatar, PlayerAvatarFlags bits);
 u32 sub_0205C744(PlayerAvatar *avatar);
 void sub_0205C748(PlayerAvatar *avatar, u32 unkA);
 void sub_0205C74C(PlayerAvatar *avatar);
@@ -105,20 +116,20 @@ void PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(PlayerAvatar *avatar, B
 u32 PlayerAvatar_GetSpriteByStateAndGender(u32 unkA, BOOL unkB);
 u32 PlayerAvatar_GetTransitionBits(u32 unkA);
 PlayerAvatar *FieldSystem_GetPlayerAvatar(FieldSystem *fieldSystem);
-void sub_0205CA20(PlayerAvatar *avatar, BOOL unkA);
-BOOL sub_0205CA38(PlayerAvatar *avatar);
-void sub_0205CA4C(PlayerAvatar *avatar, BOOL unkA);
-BOOL sub_0205CA64(PlayerAvatar *avatar);
-void sub_0205CA78(PlayerAvatar *avatar, BOOL unkB);
-BOOL sub_0205CA90(PlayerAvatar *avatar);
-void sub_0205CAA4(PlayerAvatar *avatar, u8 unkA);
-BOOL sub_0205CABC(PlayerAvatar *avatar);
-void sub_0205CAD0(PlayerAvatar *avatar, BOOL unkA);
-void sub_0205CAE8(PlayerAvatar *avatar);
-void sub_0205CAF4(PlayerAvatar *avatar);
-BOOL sub_0205CB00(PlayerAvatar *avatar);
-void sub_0205CB14(PlayerAvatar *avatar, BOOL unkA);
-u32 sub_0205CB2C(PlayerAvatar *avatar);
+void PlayerAvatar_SetFlag0(PlayerAvatar *avatar, BOOL set);
+BOOL PlayerAvatar_CheckFlag0(PlayerAvatar *avatar);
+void PlayerAvatar_SetFlag1(PlayerAvatar *avatar, BOOL set);
+BOOL PlayerAvatar_CheckFlag1(PlayerAvatar *avatar);
+void PlayerAvatar_SetFlag2(PlayerAvatar *avatar, BOOL set);
+BOOL PlayerAvatar_CheckFlag2(PlayerAvatar *avatar);
+void PlayerAvatar_SetBikeStateLock(PlayerAvatar *avatar, BOOL lock);
+BOOL PlayerAvatar_IsBikeStateLocked(PlayerAvatar *avatar);
+void PlayerAvatar_SetFlag5(PlayerAvatar *avatar, BOOL set);
+void PlayerAvatar_SetFlag6(PlayerAvatar *avatar);
+void PlayerAvatar_ClearFlag6(PlayerAvatar *avatar);
+BOOL PlayerAvatar_CheckFlag6(PlayerAvatar *avatar);
+void PlayerAvatar_SetFlag7(PlayerAvatar *avatar, BOOL set);
+BOOL PlayerAvatar_CheckFlag7(PlayerAvatar *avatar);
 u16 PlayerAvatar_CheckRunningShoesLock(PlayerAvatar *avatar);
 void PlayerAvatar_SetRunningShoesLock(PlayerAvatar *avatar, u16 lock);
 
