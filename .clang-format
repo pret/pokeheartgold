@@ -1,6 +1,5 @@
 ---
 BasedOnStyle: WebKit
-Language: Cpp
 LineEnding: LF
 ColumnLimit: 0
 

@@ -27,33 +27,6 @@ __global_destructor_chain: ; 0x021E58E8
 
 	; MSL_C_NITRO_Ai_LE.a
 
-	arm_func_start rand
-rand: ; 0x020E80C0
-	ldr r2, _020E80E8 ; =_02111354
-	ldr r0, _020E80EC ; =0x41C64E6D
-	ldr r3, [r2]
-	ldr r1, _020E80F0 ; =0x00007FFF
-	mul r0, r3, r0
-	add r0, r0, #0x39
-	add r0, r0, #0x3000
-	str r0, [r2]
-	and r0, r1, r0, lsr #16
-	bx lr
-	.align 2, 0
-_020E80E8: .word _02111354
-_020E80EC: .word 0x41C64E6D
-_020E80F0: .word 0x00007FFF
-	arm_func_end rand
-
-	arm_func_start srand
-srand: ; 0x020E80F4
-	ldr r1, _020E8100 ; =_02111354
-	str r0, [r1]
-	bx lr
-	.align 2, 0
-_020E8100: .word _02111354
-	arm_func_end srand
-
 	arm_func_start parse_format__printf__scanf
 parse_format__printf__scanf: ; 0x020E8104 static routine
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
@@ -15506,8 +15479,6 @@ _0210E95C:
 
 	.data
 
-_02111354:
-	.byte 0x01, 0x00, 0x00, 0x00
 _02111358:
 	.byte 0x00, 0x00, 0x00, 0x00
 _0211135C:
