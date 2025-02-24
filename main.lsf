@@ -435,6 +435,7 @@ Static main
     Object lib/MSL_C/asm/MSL_Common_signal.o
     Object lib/MSL_C/asm/MSL_Common_string.o
     Object lib/MSL_C/asm/MSL_Common_strtold.o
+    Object lib/MSL_C/asm/MSL_Common_strtoul.o
     Object lib/asm/msl.o
 }
 

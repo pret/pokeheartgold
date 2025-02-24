@@ -3179,7 +3179,7 @@ _0221EA9C:
 	bne _0221EB18
 	add r4, r4, #1
 	mov r0, r4
-	bl atoi
+	bl atol
 	strh r0, [r5, #0x20]
 	ldrh r0, [r5, #0x20]
 	cmp r0, #0
@@ -4542,7 +4542,7 @@ _0221FD84:
 	b _0221FE74
 _0221FDB4:
 	mov r0, r8
-	bl atoi
+	bl atol
 	str r0, [sl, #0x104]
 _0221FDC0:
 	ldr r1, _0221FEA4 ; =ov38_02225D04

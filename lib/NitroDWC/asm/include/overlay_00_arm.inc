@@ -144,7 +144,7 @@
 .public atod
 .public strtoul
 .public strtol
-.public atoi
+.public atol
 .public wcslen
 .public strnicmp
 .public _dadd

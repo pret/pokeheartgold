@@ -42,7 +42,7 @@
 .public atod
 .public strtoul
 .public strtol
-.public atoi
+.public atol
 .public swprintf
 .public wcslen
 .public pow
