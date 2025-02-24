@@ -118,3 +118,4 @@
 .public mbtowc
 .public mbstowcs
 .public memchr
+.public __StringRead

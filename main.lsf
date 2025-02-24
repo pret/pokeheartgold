@@ -430,6 +430,9 @@ Static main
     Object lib/MSL_C/asm/MSL_Common_mem_funcs.o
     Object lib/MSL_C/asm/MSL_Common_printf.o
     Object lib/MSL_C/asm/MSL_Common_qsort.o
+    Object lib/MSL_C/src/rand.o
+    Object lib/MSL_C/asm/MSL_Common_scanf.o
+    Object lib/MSL_C/asm/MSL_Common_signal.o
     Object lib/asm/msl.o
 }
 
