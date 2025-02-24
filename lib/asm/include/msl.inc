@@ -39,7 +39,7 @@
 .public strspn
 .public strtok
 .public strstr
-.public atof
+.public atod
 .public strtoul
 .public strtol
 .public atoi

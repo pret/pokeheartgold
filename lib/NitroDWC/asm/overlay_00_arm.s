@@ -34243,7 +34243,7 @@ _02204A88:
 	streq r0, [sp, #0x1a4]
 	beq _02204B24
 	add r0, sp, #0xec
-	bl atof
+	bl atod
 	bl _d2f
 	str r0, [sp, #0x1a4]
 _02204B24:
@@ -34257,7 +34257,7 @@ _02204B24:
 	streq r0, [sp, #0x1a8]
 	beq _02204B58
 	add r0, sp, #0xec
-	bl atof
+	bl atod
 	bl _d2f
 	str r0, [sp, #0x1a8]
 _02204B58:
@@ -51022,7 +51022,7 @@ ov00_02212E44: ; 0x02212E44
 	bl ov00_02212D48
 	cmp r0, #0
 	beq _02212E6C
-	bl atof
+	bl atod
 	mov r5, r0
 	mov r4, r1
 _02212E6C:

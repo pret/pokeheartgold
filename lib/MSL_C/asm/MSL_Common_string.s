@@ -1,5 +1,5 @@
 	.include "asm/macros.inc"
-	.include "MSL_Common_string.inc"
+#include <nitro/fs/overlay.h>
 	.include "global.inc"
 
 	.data

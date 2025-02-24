@@ -141,7 +141,7 @@
 .public strncmp
 .public strchr
 .public strstr
-.public atof
+.public atod
 .public strtoul
 .public strtol
 .public atoi
