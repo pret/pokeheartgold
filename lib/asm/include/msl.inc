@@ -119,3 +119,4 @@
 .public mbstowcs
 .public memchr
 .public __StringRead
+.public __wctype_mapC
