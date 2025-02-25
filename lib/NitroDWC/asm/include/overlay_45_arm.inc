@@ -32,7 +32,7 @@
 .public strstr
 .public strtoul
 .public strtol
-.public atoi
+.public atol
 .public strnicmp
 .public _s32_div_f
 .public _u32_div_f

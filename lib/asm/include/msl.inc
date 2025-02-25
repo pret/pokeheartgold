@@ -39,10 +39,10 @@
 .public strspn
 .public strtok
 .public strstr
-.public atof
+.public atod
 .public strtoul
 .public strtol
-.public atoi
+.public atol
 .public swprintf
 .public wcslen
 .public pow
@@ -119,3 +119,6 @@
 .public mbstowcs
 .public memchr
 .public __StringRead
+.public __wctype_mapC
+.public wmemchr
+.public wmemcpy

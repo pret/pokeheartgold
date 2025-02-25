@@ -13804,7 +13804,7 @@ _022321C0:
 	blt _022321C0
 _022321DC:
 	add r0, sp, #0
-	bl atoi
+	bl atol
 	cmp r0, r4
 	movge r0, #1
 	movlt r0, #0
@@ -24470,7 +24470,7 @@ _0223AAA4:
 	blt _0223AAA4
 _0223AAC0:
 	mov r0, r6
-	bl atoi
+	bl atol
 	strb r0, [sb, r7]
 	add r7, r7, #1
 	cmp r7, #4
