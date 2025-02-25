@@ -120,3 +120,5 @@
 .public memchr
 .public __StringRead
 .public __wctype_mapC
+.public wmemchr
+.public wmemcpy

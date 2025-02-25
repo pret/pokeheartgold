@@ -24,31 +24,6 @@ __global_destructor_chain: ; 0x021E58E8
 
 	; MSL_C_NITRO_Ai_LE.a
 
-	arm_func_start wmemcpy
-wmemcpy: ; 0x020EB8B4
-	ldr ip, _020EB8C0 ; =memcpy
-	mov r2, r2, lsl #1
-	bx ip
-	.align 2, 0
-_020EB8C0: .word memcpy
-	arm_func_end wmemcpy
-
-	arm_func_start wmemchr
-wmemchr: ; 0x020EB8C4
-	cmp r2, #0
-	beq _020EB8E4
-_020EB8CC:
-	ldrh r3, [r0]
-	cmp r3, r1
-	bxeq lr
-	add r0, r0, #2
-	subs r2, r2, #1
-	bne _020EB8CC
-_020EB8E4:
-	mov r0, #0
-	bx lr
-	arm_func_end wmemchr
-
 	arm_func_start parse_format__wprintf
 parse_format__wprintf: ; 0x020EB8EC
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
@@ -11505,7 +11480,6 @@ _02111848:
 	.word _ZSt9dthandlerv
 	.word _ZSt9duhandlerv
 
-	exception wmemcpy, 0x0011, 0x00000000
 	exception long2str__wprintf, 0x0251, 0x0090FF20
 	exception longlong2str__wprintf, 0x0301, 0x00A0FF20
 	exception double2hex__wprintf, 0x0399, 0x00F07F20
