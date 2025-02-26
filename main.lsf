@@ -443,6 +443,7 @@ Static main
     Object lib/MSL_C/asm/MSL_Common_wstring.o
     Object lib/MSL_C/asm/MSL_DPMath_e_pow.o
     Object lib/MSL_C/asm/MSL_DPMath_s_copysign.o
+    Object lib/MSL_C/asm/MSL_DPMath_s_fabs.o
     Object lib/asm/msl.o
 }
 
