@@ -1,0 +1,15 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public _dadd
+.public _dsub
+.public _ddiv
+.public _dmul
+.public _dsqrt
+.public fabs
+.public _f2d
+.public __float_nan
+.public errno
+.public _dflt
+.public _dgr
+.public _dleq
+.public scalbn

@@ -122,3 +122,4 @@
 .public __wctype_mapC
 .public wmemchr
 .public wmemcpy
+.public __ieee754_pow
