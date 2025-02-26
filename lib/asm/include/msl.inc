@@ -125,3 +125,4 @@
 .public __ieee754_pow
 .public copysign
 .public frexp
+.public ldexp
