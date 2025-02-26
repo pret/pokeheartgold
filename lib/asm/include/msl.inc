@@ -123,3 +123,4 @@
 .public wmemchr
 .public wmemcpy
 .public __ieee754_pow
+.public copysign
