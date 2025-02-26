@@ -439,6 +439,7 @@ Static main
     Object lib/MSL_C/asm/MSL_Common_wchar_io.o
     Object lib/MSL_C/asm/MSL_Common_wctype.o
     Object lib/MSL_C/asm/MSL_Common_wmem.o
+    Object lib/MSL_C/asm/MSL_Common_wprintf.o
     Object lib/asm/msl.o
 }
 
