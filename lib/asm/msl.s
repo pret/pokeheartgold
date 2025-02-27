@@ -24,14 +24,6 @@ __global_destructor_chain: ; 0x021E58E8
 
 	; MSL_C_NITRO_Ai_LE.a
 
-	arm_func_start pow
-pow: ; 0x020EEDCC
-	ldr ip, _020EEDD4 ; =__ieee754_pow
-	bx ip
-	.align 2, 0
-_020EEDD4: .word __ieee754_pow
-	arm_func_end pow
-
 	arm_func_start __must_round
 __must_round: ; 0x020EEDD8
 	add r3, r0, #5
