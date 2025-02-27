@@ -126,3 +126,5 @@
 .public copysign
 .public frexp
 .public ldexp
+.public __sys_alloc
+.public __sys_free
