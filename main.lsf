@@ -450,6 +450,7 @@ Static main
     Object lib/MSL_C/asm/MSL_fp_ansi.o
     Object lib/MSL_C/asm/MSL_math.o
     Object lib/MSL_C/asm/MSL_ARM_pool_alloc_NITRO.o
+    Object lib/MSL_C/asm/MSL_string_extras.o
     Object lib/asm/msl.o
 }
 
