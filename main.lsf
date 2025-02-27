@@ -448,6 +448,7 @@ Static main
     Object lib/MSL_C/asm/MSL_DPMath_s_ldexp.o
     Object lib/MSL_C/asm/MSL_DPMath_w_pow.o
     Object lib/MSL_C/asm/MSL_fp_ansi.o
+    Object lib/MSL_C/asm/MSL_math.o
     Object lib/asm/msl.o
 }
 
