@@ -25,3 +25,6 @@ __sys_free: ; 0x020F0350
 	.align 2, 0
 _020F0364: .word OS_FreeToHeap
 	arm_func_end __sys_free
+
+	exception __sys_alloc, 0x0019, 0x00000000
+	exception __sys_free, 0x0019, 0x00000000

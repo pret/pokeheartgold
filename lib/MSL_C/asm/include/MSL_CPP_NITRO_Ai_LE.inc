@@ -1,0 +1,13 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public _021117F4
+.public _Znwm
+.public _021117E4
+.public _ZdlPv
+.public _ZNKSt9type_infoeqERKS_
+.public _ZdaPv
+.public _Znam
+.public __unexpected
+.public strlen
+.public strcpy
+.public __throw
