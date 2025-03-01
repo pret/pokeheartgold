@@ -39,10 +39,10 @@
 .public strspn
 .public strtok
 .public strstr
-.public atof
+.public atod
 .public strtoul
 .public strtol
-.public atoi
+.public atol
 .public swprintf
 .public wcslen
 .public pow
@@ -119,3 +119,13 @@
 .public mbstowcs
 .public memchr
 .public __StringRead
+.public __wctype_mapC
+.public wmemchr
+.public wmemcpy
+.public __ieee754_pow
+.public copysign
+.public frexp
+.public ldexp
+.public __sys_alloc
+.public __sys_free
+.public _02111504

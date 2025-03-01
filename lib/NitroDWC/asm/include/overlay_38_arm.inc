@@ -48,7 +48,7 @@
 .public strchr
 .public strspn
 .public strstr
-.public atoi
+.public atol
 .public _ll_udiv
 .public _u32_div_f
 .public __msl_digit

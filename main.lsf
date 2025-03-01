@@ -433,6 +433,25 @@ Static main
     Object lib/MSL_C/src/rand.o
     Object lib/MSL_C/asm/MSL_Common_scanf.o
     Object lib/MSL_C/asm/MSL_Common_signal.o
+    Object lib/MSL_C/asm/MSL_Common_string.o
+    Object lib/MSL_C/asm/MSL_Common_strtold.o
+    Object lib/MSL_C/asm/MSL_Common_strtoul.o
+    Object lib/MSL_C/asm/MSL_Common_wchar_io.o
+    Object lib/MSL_C/asm/MSL_Common_wctype.o
+    Object lib/MSL_C/asm/MSL_Common_wmem.o
+    Object lib/MSL_C/asm/MSL_Common_wprintf.o
+    Object lib/MSL_C/asm/MSL_Common_wstring.o
+    Object lib/MSL_C/asm/MSL_DPMath_e_pow.o
+    Object lib/MSL_C/asm/MSL_DPMath_s_copysign.o
+    Object lib/MSL_C/asm/MSL_DPMath_s_fabs.o
+    Object lib/MSL_C/asm/MSL_DPMath_s_frexp.o
+    Object lib/MSL_C/asm/MSL_DPMath_s_ldexp.o
+    Object lib/MSL_C/asm/MSL_DPMath_w_pow.o
+    Object lib/MSL_C/asm/MSL_fp_ansi.o
+    Object lib/MSL_C/asm/MSL_math.o
+    Object lib/MSL_C/asm/MSL_ARM_pool_alloc_NITRO.o
+    Object lib/MSL_C/asm/MSL_string_extras.o
+    Object lib/MSL_C/asm/MSL_CPP_NITRO_Ai_LE.o
     Object lib/asm/msl.o
 }
 
