@@ -812,7 +812,7 @@
 #define FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS                     0x317
 #define FLAG_UNK_318                                              0x318
 #define FLAG_HIDE_SAFARI_ZONE_WORKERS                             0x319
-#define FLAG_UNK_31A                                              0x31A
+#define FLAG_HIDE_VERMILION_GYM_STOPS                             0x31A
 #define FLAG_HIDE_ROUTE_12_SNORLAX                                0x31B
 #define FLAG_UNK_31C                                              0x31C
 #define FLAG_UNK_31D                                              0x31D

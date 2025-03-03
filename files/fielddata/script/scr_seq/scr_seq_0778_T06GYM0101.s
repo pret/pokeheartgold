@@ -34,7 +34,7 @@
 	scrdef_end
 
 scr_seq_T06GYM0101_021:
-	goto_if_set FLAG_UNK_31A, _0079
+	goto_if_set FLAG_HIDE_VERMILION_GYM_STOPS, _0079
 	clearflag FLAG_SYS_SOLVED_LT_SURGE_GYM
 _0079:
 	vermilion_gym_init
@@ -100,7 +100,7 @@ _014A:
 	end
 
 scr_seq_T06GYM0101_022:
-	goto_if_set FLAG_UNK_31A, _0175
+	goto_if_set FLAG_HIDE_VERMILION_GYM_STOPS, _0175
 	make_object_visible obj_T06GYM0101_stop
 	make_object_visible obj_T06GYM0101_stop_2
 	make_object_visible obj_T06GYM0101_stop_3
@@ -291,7 +291,7 @@ scr_seq_T06GYM0101_023:
 	give_badge BADGE_THUNDER
 	addvar VAR_UNK_4135, 1
 	add_special_game_stat SCORE_EVENT_BADGE_GET
-	setflag FLAG_UNK_31A
+	setflag FLAG_HIDE_VERMILION_GYM_STOPS
 	hide_person obj_T06GYM0101_stop
 	hide_person obj_T06GYM0101_stop_2
 	hide_person obj_T06GYM0101_stop_3
