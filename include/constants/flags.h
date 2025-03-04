@@ -806,7 +806,7 @@
 #define FLAG_HIDE_TOHJO_FALLS_FRIEND                              0x311
 #define FLAG_HIDE_PEWTER_CITY_LATIAS                              0x312
 #define FLAG_UNK_313                                              0x313
-#define FLAG_UNK_314                                              0x314
+#define FLAG_HIDE_ROUTE_39_LT_SURGE                               0x314
 #define FLAG_HIDE_COMM_CLUB_RECEPTIONISTS                         0x315
 #define FLAG_HIDE_COMM_CLUB_CLOSED_LADIES                         0x316
 #define FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS                     0x317
