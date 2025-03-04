@@ -774,7 +774,7 @@
 #define FLAG_UNK_2F1                                              0x2F1
 #define FLAG_UNK_2F2                                              0x2F2
 #define FLAG_UNK_2F3                                              0x2F3
-#define FLAG_UNK_2F4                                              0x2F4
+#define FLAG_HIDE_PEWTER_GYM_BROCK                                0x2F4
 #define FLAG_HIDE_SEAFOAM_GYM_BLAINE                              0x2F5
 #define FLAG_HIDE_VIRIDIAN_GYM_BLUE                               0x2F6
 #define FLAG_HIDE_SAFFRON_TRAIN_STATION_LT_SURGE                  0x2F7
