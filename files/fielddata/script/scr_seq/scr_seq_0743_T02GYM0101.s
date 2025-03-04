@@ -62,7 +62,7 @@ scr_seq_T02GYM0101_000:
 	settrainerflag TRAINER_DOUBLE_TEAM_ELAN_AND_IDA
 	setflag FLAG_UNK_97F
 	clearflag FLAG_HIDE_ROUTE_10_ZAPDOS
-	setflag FLAG_UNK_30F
+	setflag FLAG_HIDE_CERULEAN_CITY_MAN_OUTSIDE_CAVE
 	setvar VAR_UNK_4096, 1
 	npc_msg msg_0454_T02GYM0101_00001
 	buffer_players_name 0

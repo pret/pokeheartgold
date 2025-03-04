@@ -801,7 +801,7 @@
 #define FLAG_HIDE_PEWTER_CITY_STEVEN                              0x30C
 #define FLAG_HIDE_PEWTER_CITY_LATIOS                              0x30D
 #define FLAG_HIDE_BURNED_TOWER_STATIC_SUICUNE                     0x30E
-#define FLAG_UNK_30F                                              0x30F
+#define FLAG_HIDE_CERULEAN_CITY_MAN_OUTSIDE_CAVE                  0x30F
 #define FLAG_HIDE_ILEX_FOREST_FRIEND                              0x310
 #define FLAG_HIDE_TOHJO_FALLS_FRIEND                              0x311
 #define FLAG_HIDE_PEWTER_CITY_LATIAS                              0x312
