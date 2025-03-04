@@ -790,7 +790,7 @@
 #define FLAG_HIDE_ROUTE_22_GIOVANNI_RIVAL                         0x301
 #define FLAG_HIDE_ROUTE_22_FRIEND                                 0x302
 #define FLAG_HIDE_TOHJO_FALLS_GIOVANNI                            0x303
-#define FLAG_UNK_304                                              0x304
+#define FLAG_HIDE_ROUTE_47_CHUCK                                  0x304
 #define FLAG_HIDE_CERULEAN_CAVE_MEWTWO                            0x305
 #define FLAG_HIDE_SEAFOAM_ISLAND_ARTICUNO                         0x306
 #define FLAG_HIDE_MT_SILVER_CAVE_MOLTRES                          0x307
