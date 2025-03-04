@@ -781,7 +781,7 @@
 #define FLAG_HIDE_VIRIDIAN_CITY_OLD_MAN_OUTSIDE_GYM_LOCKED        0x2F8
 #define FLAG_HIDE_VIRIDIAN_CITY_OLD_MAN_OUTSIDE_GYM_UNLOCKED      0x2F9
 #define FLAG_HIDE_SAFFRON_CITY_STEVEN                             0x2FA
-#define FLAG_UNK_2FB                                              0x2FB
+#define FLAG_HIDE_SAFFRON_CITY_COPYCAT_HOUSE_CLEFAIRY_DOLL        0x2FB
 #define FLAG_HIDE_VERMILION_FAN_CLUB_LOST_ITEM                    0x2FC
 #define FLAG_HIDE_VERMILION_CITY_STEVEN                           0x2FD
 #define FLAG_HIDE_OAKS_LAB_BULBASAUR_BALL                         0x2FE
