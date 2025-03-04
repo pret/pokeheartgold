@@ -777,7 +777,7 @@
 #define FLAG_UNK_2F4                                              0x2F4
 #define FLAG_UNK_2F5                                              0x2F5
 #define FLAG_UNK_2F6                                              0x2F6
-#define FLAG_UNK_2F7                                              0x2F7
+#define FLAG_HIDE_SAFFRON_TRAIN_STATION_LT_SURGE                  0x2F7
 #define FLAG_HIDE_VIRIDIAN_CITY_OLD_MAN_OUTSIDE_GYM_LOCKED        0x2F8
 #define FLAG_HIDE_VIRIDIAN_CITY_OLD_MAN_OUTSIDE_GYM_UNLOCKED      0x2F9
 #define FLAG_HIDE_SAFFRON_CITY_STEVEN                             0x2FA
