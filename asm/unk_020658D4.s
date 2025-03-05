@@ -532,7 +532,7 @@ sub_02065CD0: ; 0x02065CD0
 	add r5, r0, #0
 	add r4, r1, #0
 	bl MapObject_GetManager
-	bl sub_0205C600
+	bl MapObjectManager_GetFirstActiveObjectWithMovement1
 	cmp r0, #0
 	bne _02065CE8
 	mov r0, #0
