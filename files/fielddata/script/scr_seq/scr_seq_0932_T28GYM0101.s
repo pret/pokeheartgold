@@ -25,38 +25,38 @@ _001B:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 6
 	goto_if_ne _0067
-	setflag FLAG_UNK_2EE
+	setflag FLAG_HIDE_MAHOGANY_GYM_PRYCE
 	goto _00B0
 
 _0067:
 	compare VAR_TEMP_x4000, 7
 	goto_if_ne _007E
-	setflag FLAG_UNK_2EE
+	setflag FLAG_HIDE_MAHOGANY_GYM_PRYCE
 	goto _00B0
 
 _007E:
 	compare VAR_TEMP_x4000, 8
 	goto_if_ne _0095
-	setflag FLAG_UNK_2EE
+	setflag FLAG_HIDE_MAHOGANY_GYM_PRYCE
 	goto _00B0
 
 _0095:
 	compare VAR_TEMP_x4000, 9
 	goto_if_ne _00AC
-	setflag FLAG_UNK_2EE
+	setflag FLAG_HIDE_MAHOGANY_GYM_PRYCE
 	goto _00B0
 
 _00AC:
-	clearflag FLAG_UNK_2EE
+	clearflag FLAG_HIDE_MAHOGANY_GYM_PRYCE
 _00B0:
 	end
 
 _00B2:
-	clearflag FLAG_UNK_2EE
+	clearflag FLAG_HIDE_MAHOGANY_GYM_PRYCE
 	end
 
 _00B8:
-	setflag FLAG_UNK_2EE
+	setflag FLAG_HIDE_MAHOGANY_GYM_PRYCE
 	end
 
 // This script contains a programming mistake where if the

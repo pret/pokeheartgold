@@ -768,7 +768,7 @@
 #define FLAG_UNK_2EB                                              0x2EB
 #define FLAG_UNK_2EC                                              0x2EC
 #define FLAG_UNK_2ED                                              0x2ED
-#define FLAG_UNK_2EE                                              0x2EE
+#define FLAG_HIDE_MAHOGANY_GYM_PRYCE                              0x2EE
 #define FLAG_HIDE_BLACKTHORN_GYM_CLAIR                            0x2EF
 #define FLAG_HIDE_VERMILION_GYM_LT_SURGE                          0x2F0
 #define FLAG_HIDE_SAFFRON_GYM_SABRINA                             0x2F1
