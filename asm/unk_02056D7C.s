@@ -636,7 +636,7 @@ _020571E2:
 	ldrh r2, [r2]
 	ldrsb r3, [r3, r6]
 	ldr r0, [r0, #0x3c]
-	bl PlayerAvatar_CreateWithParamsExtended
+	bl PlayerAvatar_CreateWithParams
 	add r6, r0, #0
 	bne _0205721E
 	bl GF_AssertFail

@@ -19,7 +19,8 @@
 
 static PlayerAvatar *PlayerAvatar_Create(void);
 static void PlayerAvatar_Setup(PlayerAvatar *avatar, u32 state, u32 gender, PlayerSaveData *playerSaveData);
-static void PlayerAvatar_CreateMapObjectWithParams(PlayerAvatar *avatar, MapObjectManager *manager, u32 sprite, u32 direction, s32 x, s32 z);
+static void PlayerAvatar_CreateMapObjectWithParams(PlayerAvatar *avatar, MapObjectManager *manager, u32 sprite, u32 direction, u32 x, s32 z);
+static LocalMapObject *PlayerAvatar_GetActiveMapObjectWithMovement1(MapObjectManager *manager);
 
 u32 sub_0205C268(u32 param0) {
     if (param0 < 100) {
@@ -128,7 +129,7 @@ u8 sub_0205C350(u32 param0) {
     return ret;
 }
 
-PlayerAvatar *PlayerAvatar_CreateWithParamsExtended(MapObjectManager *manager, s32 x, s32 z, u32 direction, u32 state, u32 gender, u32 param6, PlayerSaveData *playerSaveData) {
+PlayerAvatar *PlayerAvatar_CreateWithParams(MapObjectManager *manager, u32 x, s32 z, u32 direction, u32 state, u32 gender, u32 param6, PlayerSaveData *playerSaveData) {
     PlayerAvatar *avatar = PlayerAvatar_Create();
     PlayerAvatar_Setup(avatar, state, gender, playerSaveData);
     u32 sprite;
@@ -154,11 +155,11 @@ PlayerAvatar *PlayerAvatar_CreateWithParamsExtended(MapObjectManager *manager, s
     return avatar;
 }
 
-PlayerAvatar *PlayerAvatar_CreateWithParams(MapObjectManager *manager, PlayerSaveData *playerSaveData, u32 gender) {
+PlayerAvatar *PlayerAvatar_CreateWithActiveMapObject(MapObjectManager *manager, PlayerSaveData *playerSaveData, u32 gender) {
     PlayerAvatar *avatar = PlayerAvatar_Create();
     u32 state = PlayerSaveData_GetState(playerSaveData);
     PlayerAvatar_Setup(avatar, state, gender, playerSaveData);
-    LocalMapObject *mapObject = PlayerAvatar_CreateMapObject(manager);
+    LocalMapObject *mapObject = PlayerAvatar_GetActiveMapObjectWithMovement1(manager);
     MapObject_SetSpriteID(mapObject, PlayerAvatar_GetSpriteByStateAndGender(state, gender));
     MapObject_SetFlagsBits(mapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_KEEP));
     MapObject_ClearFlagsBits(mapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7));
@@ -173,7 +174,7 @@ void sub_0205C46C(PlayerAvatar *avatar) {
     MapObject_GetManager(mapObject);
     ov01_022008B4(avatar);
     if (PlayerAvatar_GetState(avatar) == PLAYER_STATE_SURFING) {
-        s32 x = PlayerAvatar_GetXCoord(avatar);
+        u32 x = PlayerAvatar_GetXCoord(avatar);
         s32 z = PlayerAvatar_GetZCoord(avatar);
         u32 direction = PlayerAvatar_GetFacingDirection(avatar);
         sub_0205C78C(avatar, ov01_021FE7DC(mapObject, x, z, direction, 1));
@@ -210,7 +211,7 @@ static void PlayerAvatar_Setup(PlayerAvatar *avatar, u32 state, u32 gender, Play
     PlayerAvatar_SetFlag1(avatar, TRUE);
 }
 
-static void PlayerAvatar_CreateMapObjectWithParams(PlayerAvatar *avatar, MapObjectManager *manager, u32 sprite, u32 direction, s32 x, s32 z) {
+static void PlayerAvatar_CreateMapObjectWithParams(PlayerAvatar *avatar, MapObjectManager *manager, u32 sprite, u32 direction, u32 x, s32 z) {
     LocalMapObject *mapObject = MapObject_Create(manager, x, z, direction, sprite, 1, 1);
     GF_ASSERT(mapObject != NULL);
     MapObject_SetID(mapObject, 255);
@@ -228,38 +229,36 @@ static void PlayerAvatar_CreateMapObjectWithParams(PlayerAvatar *avatar, MapObje
     PlayerAvatar_SetMapObject(avatar, mapObject);
 }
 
-LocalMapObject *sub_0205C600(MapObjectManager *man) {
-    int y = 0;
-    LocalMapObject *mapObj = 0;
-    while (MapObjectManager_GetNextObjectWithFlagFromIndex(man, &mapObj, &y, MAPOBJECTFLAG_ACTIVE)) {
-        if (MapObject_GetMovement(mapObj) == TRUE) {
+LocalMapObject *MapObjectManager_GetFirstActiveObjectWithMovement1(MapObjectManager *manager) {
+    s32 index = 0;
+    LocalMapObject *mapObject = NULL;
+    while (MapObjectManager_GetNextObjectWithFlagFromIndex(manager, &mapObject, &index, MAPOBJECTFLAG_ACTIVE)) {
+        if (MapObject_GetMovement(mapObject) == 1) {
             break;
         }
     }
-    return mapObj;
+    return mapObject;
 }
 
-LocalMapObject *PlayerAvatar_CreateMapObject(MapObjectManager *man) {
-    LocalMapObject *mapObj = sub_0205C600(man);
-    if (!mapObj) {
-        GF_ASSERT(FALSE);
-    }
-    return mapObj;
+static LocalMapObject *PlayerAvatar_GetActiveMapObjectWithMovement1(MapObjectManager *manager) {
+    LocalMapObject *mapObject = MapObjectManager_GetFirstActiveObjectWithMovement1(manager);
+    GF_ASSERT(mapObject != NULL);
+    return mapObject;
 }
 
-int PlayerAvatar_GetFacingDirection(PlayerAvatar *avatar) {
+u32 PlayerAvatar_GetFacingDirection(PlayerAvatar *avatar) {
     return MapObject_GetFacingDirection(PlayerAvatar_GetMapObject(avatar));
 }
 
-void PlayerAvatar_SetFacingDirection(PlayerAvatar *avatar, int direction) {
+void PlayerAvatar_SetFacingDirection(PlayerAvatar *avatar, u32 direction) {
     MapObject_SetFacingDirection(PlayerAvatar_GetMapObject(avatar), direction);
 }
 
-u32 PlayerAvatar_GetNextFacing(PlayerAvatar *avatar) {
+u32 PlayerAvatar_GetNextFacingDirection(PlayerAvatar *avatar) {
     return MapObject_GetNextFacingDirection(PlayerAvatar_GetMapObject(avatar));
 }
 
-int PlayerAvatar_GetXCoord(PlayerAvatar *avatar) {
+u32 PlayerAvatar_GetXCoord(PlayerAvatar *avatar) {
     return MapObject_GetCurrentX(PlayerAvatar_GetMapObject(avatar));
 }
 

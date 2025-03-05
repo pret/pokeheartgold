@@ -60,7 +60,7 @@ static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTrade
 static BOOL Task_BugContest_PromptSwapPokemon(TaskManager *taskManager);
 
 BOOL sub_0206D494(FieldSystem *fieldSystem) {
-    LocalMapObject *unk1 = sub_0205C600(fieldSystem->mapObjectManager);
+    LocalMapObject *unk1 = MapObjectManager_GetFirstActiveObjectWithMovement1(fieldSystem->mapObjectManager);
     LocalMapObject *unk2 = sub_0206D590(unk1);
     if (unk2) {
         UnkStruct_0206D494 *unkStruct = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(UnkStruct_0206D494));
@@ -82,7 +82,7 @@ static BOOL sub_0206D4E4(TaskManager *taskManager) {
     u32 *state = TaskManager_GetStatePtr(taskManager);
     switch (*state) {
     case 0:
-        if (MapObject_IsMovementPaused(sub_0205C600(fieldSystem->mapObjectManager))) {
+        if (MapObject_IsMovementPaused(MapObjectManager_GetFirstActiveObjectWithMovement1(fieldSystem->mapObjectManager))) {
             PlaySE(SEQ_SE_GS_HYOUKAI_SUBERU);
             (*state)++;
         }

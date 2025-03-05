@@ -222,12 +222,12 @@ static void sub_0205316C(FieldSystem *fieldSystem) {
     if (fieldSystem->unkAC) {
         gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(fieldSystem->saveData));
         playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData));
-        fieldSystem->playerAvatar = PlayerAvatar_CreateWithParamsExtended(fieldSystem->mapObjectManager, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, playerSaveData->state, gender, 2, playerSaveData);
+        fieldSystem->playerAvatar = PlayerAvatar_CreateWithParams(fieldSystem->mapObjectManager, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, playerSaveData->state, gender, 2, playerSaveData);
     } else {
         fieldSystem->mapObjectManager = MapObjectManager_Init(fieldSystem, 64, 5);
         gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(fieldSystem->saveData));
         playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData));
-        fieldSystem->playerAvatar = PlayerAvatar_CreateWithParamsExtended(fieldSystem->mapObjectManager, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, playerSaveData->state, gender, 2, playerSaveData);
+        fieldSystem->playerAvatar = PlayerAvatar_CreateWithParams(fieldSystem->mapObjectManager, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, playerSaveData->state, gender, 2, playerSaveData);
         FollowMon_InitMapObject(fieldSystem->mapObjectManager, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, fieldSystem->location->mapId);
         Field_InitMapObjectsFromZoneEventData(fieldSystem);
         sub_0205F55C(fieldSystem->mapObjectManager);
@@ -253,7 +253,7 @@ static void sub_0205323C(FieldSystem *fieldSystem) {
     FieldSystem_RestoreMapObjectsFromSave(fieldSystem);
     playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData));
     gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(fieldSystem->saveData));
-    fieldSystem->playerAvatar = PlayerAvatar_CreateWithParams(fieldSystem->mapObjectManager, playerSaveData, gender);
+    fieldSystem->playerAvatar = PlayerAvatar_CreateWithActiveMapObject(fieldSystem->mapObjectManager, playerSaveData, gender);
     FollowMon_ChangeMon(fieldSystem->mapObjectManager, fieldSystem->location->mapId);
     sub_0205F55C(fieldSystem->mapObjectManager);
 }

@@ -141,7 +141,7 @@ void FieldMove_InitCheckData(FieldSystem *fieldSystem, FieldMoveCheckData *check
         }
     }
 
-    s32 x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
+    u32 x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
     s32 z = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
     u32 standingTile = GetMetatileBehavior(fieldSystem, x, z);
 

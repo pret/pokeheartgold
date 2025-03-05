@@ -1833,7 +1833,7 @@ sub_0205D978: ; 0x0205D978
 	bl sub_0205D6B4
 	str r0, [sp]
 	add r0, r5, #0
-	bl PlayerAvatar_GetNextFacing
+	bl PlayerAvatar_GetNextFacingDirection
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
@@ -2415,7 +2415,7 @@ sub_0205DDD4: ; 0x0205DDD4
 	pop {r3, r4, r5, r6, r7, pc}
 _0205DDFA:
 	add r0, r6, #0
-	bl PlayerAvatar_GetNextFacing
+	bl PlayerAvatar_GetNextFacingDirection
 	add r7, r0, #0
 	add r0, r6, #0
 	bl sub_0205C76C
