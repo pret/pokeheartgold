@@ -48,55 +48,55 @@ _0079:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 9
 	goto_if_ne _00C7
-	setflag FLAG_UNK_2F0
+	setflag FLAG_HIDE_VERMILION_GYM_LT_SURGE
 	goto _00F9
 
 _00C7:
 	compare VAR_TEMP_x4000, 10
 	goto_if_ne _00DE
-	setflag FLAG_UNK_2F0
+	setflag FLAG_HIDE_VERMILION_GYM_LT_SURGE
 	goto _00F9
 
 _00DE:
 	compare VAR_TEMP_x4000, 11
 	goto_if_ne _00F5
-	setflag FLAG_UNK_2F0
+	setflag FLAG_HIDE_VERMILION_GYM_LT_SURGE
 	goto _00F9
 
 _00F5:
-	clearflag FLAG_UNK_2F0
+	clearflag FLAG_HIDE_VERMILION_GYM_LT_SURGE
 _00F9:
 	end
 
 _00FB:
 	goto_if_set FLAG_TRADE_LT_SURGE_PIKACHU, _010C
-	setflag FLAG_UNK_2F0
+	setflag FLAG_HIDE_VERMILION_GYM_LT_SURGE
 	end
 
 _010C:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 5
 	goto_if_ne _0127
-	setflag FLAG_UNK_2F0
+	setflag FLAG_HIDE_VERMILION_GYM_LT_SURGE
 	goto _0142
 
 _0127:
 	compare VAR_TEMP_x4000, 6
 	goto_if_ne _013E
-	setflag FLAG_UNK_2F0
+	setflag FLAG_HIDE_VERMILION_GYM_LT_SURGE
 	goto _0142
 
 _013E:
-	clearflag FLAG_UNK_2F0
+	clearflag FLAG_HIDE_VERMILION_GYM_LT_SURGE
 _0142:
 	end
 
 _0144:
-	clearflag FLAG_UNK_2F0
+	clearflag FLAG_HIDE_VERMILION_GYM_LT_SURGE
 	end
 
 _014A:
-	setflag FLAG_UNK_2F0
+	setflag FLAG_HIDE_VERMILION_GYM_LT_SURGE
 	end
 
 scr_seq_T06GYM0101_022:

@@ -770,7 +770,7 @@
 #define FLAG_UNK_2ED                                              0x2ED
 #define FLAG_UNK_2EE                                              0x2EE
 #define FLAG_UNK_2EF                                              0x2EF
-#define FLAG_UNK_2F0                                              0x2F0
+#define FLAG_HIDE_VERMILION_GYM_LT_SURGE                          0x2F0
 #define FLAG_HIDE_SAFFRON_GYM_SABRINA                             0x2F1
 #define FLAG_HIDE_CELADON_GYM_ERIKA                               0x2F2
 #define FLAG_HIDE_FUCHSIA_GYM_JANINE                              0x2F3
