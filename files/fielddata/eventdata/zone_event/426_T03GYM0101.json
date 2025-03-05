@@ -41,7 +41,7 @@
       "spriteId": "SPRITE_GSLEADER14",
       "movement": 15,
       "type": 0,
-      "eventFlag": "FLAG_UNK_2F4",
+      "eventFlag": "FLAG_HIDE_PEWTER_GYM_BROCK",
       "scriptId": "_EV_scr_seq_T03GYM0101_000 + 1",
       "facingDirection": 1,
       "param0": 0,

@@ -30,7 +30,7 @@ scr_seq_T23GYM0102_016:
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00CD
 	goto_if_set FLAG_GAME_CLEAR, _006C
-	clearflag FLAG_UNK_2EA
+	clearflag FLAG_HIDE_AZALEA_GYM_BUGSY
 	end
 
 _006C:
@@ -40,7 +40,7 @@ _006C:
 	get_weekday VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 4
 	goto_if_ne _0096
-	setflag FLAG_UNK_2EA
+	setflag FLAG_HIDE_AZALEA_GYM_BUGSY
 	end
 
 _0096:
@@ -51,15 +51,15 @@ _0096:
 	goto_if_eq _00C7
 	compare VAR_TEMP_x4001, 5
 	goto_if_eq _00C7
-	clearflag FLAG_UNK_2EA
+	clearflag FLAG_HIDE_AZALEA_GYM_BUGSY
 	end
 
 _00C7:
-	setflag FLAG_UNK_2EA
+	setflag FLAG_HIDE_AZALEA_GYM_BUGSY
 	end
 
 _00CD:
-	setflag FLAG_UNK_2EA
+	setflag FLAG_HIDE_AZALEA_GYM_BUGSY
 	end
 
 scr_seq_T23GYM0102_001:

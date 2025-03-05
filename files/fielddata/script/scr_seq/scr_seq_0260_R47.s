@@ -50,16 +50,16 @@ _00B2:
 	get_weekday VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 0
 	goto_if_ne _00E0
-	clearflag FLAG_UNK_304
+	clearflag FLAG_HIDE_ROUTE_47_CHUCK
 	goto _00E4
 
 _00E0:
-	setflag FLAG_UNK_304
+	setflag FLAG_HIDE_ROUTE_47_CHUCK
 _00E4:
 	end
 
 _00E6:
-	setflag FLAG_UNK_304
+	setflag FLAG_HIDE_ROUTE_47_CHUCK
 	end
 
 _00EC:

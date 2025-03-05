@@ -175,7 +175,7 @@
       "spriteId": "SPRITE_GSMAN1",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_30F",
+      "eventFlag": "FLAG_HIDE_CERULEAN_CITY_MAN_OUTSIDE_CAVE",
       "scriptId": "_EV_scr_seq_T04_013 + 1",
       "facingDirection": 1,
       "param0": 0,

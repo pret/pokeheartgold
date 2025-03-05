@@ -101,7 +101,7 @@
       "spriteId": "SPRITE_LEADER3",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_313",
+      "eventFlag": "FLAG_HIDE_CELADON_DEPT_STORE_2F_CRASHER_WAKE",
       "scriptId": "_EV_scr_seq_T07R0102_007 + 1",
       "facingDirection": 0,
       "param0": 0,

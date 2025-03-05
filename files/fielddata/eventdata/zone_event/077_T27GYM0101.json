@@ -41,7 +41,7 @@
       "spriteId": "SPRITE_GSLEADER4",
       "movement": 15,
       "type": 1,
-      "eventFlag": "FLAG_UNK_2ED",
+      "eventFlag": "FLAG_HIDE_ECRUTEAK_GYM_MORTY",
       "scriptId": "_EV_scr_seq_T27GYM0101_001 + 1",
       "facingDirection": 1,
       "param0": 0,

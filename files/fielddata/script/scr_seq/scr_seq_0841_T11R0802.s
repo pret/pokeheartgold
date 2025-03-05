@@ -74,7 +74,7 @@ _00BD:
 _00E9:
 	takeitem ITEM_LOST_ITEM, 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0541_T11R0802_00006
-	clearflag FLAG_UNK_2FB
+	clearflag FLAG_HIDE_SAFFRON_CITY_COPYCAT_HOUSE_CLEFAIRY_DOLL
 	show_person obj_T11R0802_mono_pip
 	giveitem_no_check ITEM_PASS, 1
 	npc_msg msg_0541_T11R0802_00008
@@ -312,7 +312,7 @@ scr_seq_T11R0802_002:
 	end
 
 scr_seq_T11R0802_006:
-	goto_if_set FLAG_UNK_2FB, _0431
+	goto_if_set FLAG_HIDE_SAFFRON_CITY_COPYCAT_HOUSE_CLEFAIRY_DOLL, _0431
 	compare VAR_UNK_40FF, 2
 	goto_if_eq _0433
 	simple_npc_msg msg_0541_T11R0802_00016

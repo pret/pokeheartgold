@@ -30,7 +30,7 @@ _005B:
 	get_weekday VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_ne _0076
-	setflag FLAG_UNK_2E9
+	setflag FLAG_HIDE_VIOLET_GYM_FALKNER
 	goto _007C
 
 _0076:
@@ -43,7 +43,7 @@ _007E:
 	get_weekday VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 3
 	goto_if_ne _0099
-	setflag FLAG_UNK_2E9
+	setflag FLAG_HIDE_VIOLET_GYM_FALKNER
 	goto _009F
 
 _0099:
@@ -53,11 +53,11 @@ _009F:
 	end
 
 _00A1:
-	clearflag FLAG_UNK_2E9
+	clearflag FLAG_HIDE_VIOLET_GYM_FALKNER
 	end
 
 _00A7:
-	setflag FLAG_UNK_2E9
+	setflag FLAG_HIDE_VIOLET_GYM_FALKNER
 	end
 
 scr_seq_T22GYM0101_001:

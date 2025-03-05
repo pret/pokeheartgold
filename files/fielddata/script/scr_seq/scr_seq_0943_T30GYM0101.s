@@ -30,29 +30,29 @@ _0044:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 6
 	goto_if_ne _0072
-	setflag FLAG_UNK_2EF
+	setflag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
 	goto _00BB
 
 _0072:
 	compare VAR_TEMP_x4000, 7
 	goto_if_ne _0089
-	setflag FLAG_UNK_2EF
+	setflag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
 	goto _00BB
 
 _0089:
 	compare VAR_TEMP_x4000, 8
 	goto_if_ne _00A0
-	setflag FLAG_UNK_2EF
+	setflag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
 	goto _00BB
 
 _00A0:
 	compare VAR_TEMP_x4000, 9
 	goto_if_ne _00B7
-	setflag FLAG_UNK_2EF
+	setflag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
 	goto _00BB
 
 _00B7:
-	clearflag FLAG_UNK_2EF
+	clearflag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
 _00BB:
 	end
 
@@ -60,28 +60,28 @@ _00BD:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 16
 	goto_if_ne _00D8
-	setflag FLAG_UNK_2EF
+	setflag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
 	goto _010A
 
 _00D8:
 	compare VAR_TEMP_x4000, 17
 	goto_if_ne _00EF
-	setflag FLAG_UNK_2EF
+	setflag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
 	goto _010A
 
 _00EF:
 	compare VAR_TEMP_x4000, 18
 	goto_if_ne _0106
-	setflag FLAG_UNK_2EF
+	setflag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
 	goto _010A
 
 _0106:
-	clearflag FLAG_UNK_2EF
+	clearflag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
 _010A:
 	end
 
 _010C:
-	setflag FLAG_UNK_2EF
+	setflag FLAG_HIDE_BLACKTHORN_GYM_CLAIR
 	end
 
 scr_seq_T30GYM0101_000:

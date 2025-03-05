@@ -262,7 +262,7 @@ scr_seq_T11_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_2FB, _03BE
+	goto_if_set FLAG_HIDE_SAFFRON_CITY_COPYCAT_HOUSE_CLEFAIRY_DOLL, _03BE
 	npc_msg msg_0529_T11_00002
 	wait_button_or_walk_away
 	closemsg

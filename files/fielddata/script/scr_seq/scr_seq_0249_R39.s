@@ -50,13 +50,13 @@ _008B:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 5
 	goto_if_ne _00C4
-	clearflag FLAG_UNK_314
+	clearflag FLAG_HIDE_ROUTE_39_LT_SURGE
 	goto _00E1
 
 _00C4:
 	compare VAR_TEMP_x4000, 6
 	goto_if_ne _00DB
-	clearflag FLAG_UNK_314
+	clearflag FLAG_HIDE_ROUTE_39_LT_SURGE
 	goto _00E1
 
 _00DB:
@@ -66,7 +66,7 @@ _00E1:
 	end
 
 _00E3:
-	setflag FLAG_UNK_314
+	setflag FLAG_HIDE_ROUTE_39_LT_SURGE
 	end
 
 scr_seq_R39_000:
