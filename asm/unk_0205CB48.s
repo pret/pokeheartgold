@@ -2718,14 +2718,14 @@ sub_0205DFFC: ; 0x0205DFFC
 	str r0, [sp]
 	add r6, r2, #0
 	add r7, r3, #0
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r4, r0, #0
 	add r0, r5, #0
 	bl GetDeltaXByFacingDirection
 	add r0, r4, r0
 	str r0, [r6]
 	ldr r0, [sp]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r4, r0, #0
 	add r0, r5, #0
 	bl GetDeltaYByFacingDirection

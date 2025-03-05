@@ -539,8 +539,8 @@ HiddenItemResponse *AllocAndFetchNearbyHiddenItems(FieldSystem *fieldSystem, enu
         ret[0].y = -1;
         return ret;
     }
-    x = GetPlayerXCoord(fieldSystem->playerAvatar);
-    y = GetPlayerZCoord(fieldSystem->playerAvatar);
+    x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
+    y = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
     left = x - 17;
     right = x + 17;
     top = y - 17;

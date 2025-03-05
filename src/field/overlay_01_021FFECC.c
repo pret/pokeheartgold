@@ -1,7 +1,7 @@
 #include "overlay_01_021FFECC.h"
 
-#include "field_player_avatar.h"
 #include "map_object.h"
+#include "player_avatar.h"
 #include "unk_0205FD20.h"
 #include "unk_020658D4.h"
 #include "unk_020689C8.h"

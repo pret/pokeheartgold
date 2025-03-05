@@ -16,8 +16,8 @@
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnvironment
 .public GetMetatileBehavior
-.public GetPlayerXCoord
-.public GetPlayerZCoord
+.public PlayerAvatar_GetXCoord
+.public PlayerAvatar_GetZCoord
 .public G2x_SetBlendAlpha_
 .public memset
 .public _s32_div_f

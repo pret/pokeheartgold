@@ -2313,10 +2313,10 @@ _022550A8:
 	pop {r4, r5, r6, pc}
 _022550B4:
 	ldr r0, [r5, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r2, r0, #0
 	lsl r1, r6, #0x10
 	lsl r2, r2, #0x10

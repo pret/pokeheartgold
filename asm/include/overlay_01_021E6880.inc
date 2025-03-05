@@ -109,8 +109,8 @@
 .public sub_0205BAEC
 .public MetatileBehavior_IsHeadbutt
 .public PlayerAvatar_GetFacingDirection
-.public GetPlayerXCoord
-.public GetPlayerZCoord
+.public PlayerAvatar_GetXCoord
+.public PlayerAvatar_GetZCoord
 .public sub_0205C6CC
 .public sub_0205C6D4
 .public PlayerAvatar_GetMapObject

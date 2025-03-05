@@ -820,10 +820,10 @@ ov01_022059AC: ; 0x022059AC
 	cmp r0, #0
 	bne _02205A02
 	ldr r0, [r5, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetFacingDirection

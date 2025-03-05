@@ -7,7 +7,6 @@
 #include "msgdata/msg.naix"
 
 #include "assert.h"
-#include "field_player_avatar.h"
 #include "field_system.h"
 #include "field_warp_tasks.h"
 #include "fieldmap.h"
@@ -20,6 +19,7 @@
 #include "msgdata.h"
 #include "npc_trade.h"
 #include "overlay_111.h"
+#include "player_avatar.h"
 #include "player_data.h"
 #include "pm_string.h"
 #include "pokemon.h"

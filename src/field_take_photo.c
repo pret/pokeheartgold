@@ -151,8 +151,8 @@ void FieldSystem_TakePhoto(FieldSystem *fieldSystem, u16 photo_id) {
     takePhoto->state = 0;
     takePhoto->positionMonDelayCounter = 0;
     takePhoto->curMon = 0;
-    takePhoto->savedX = GetPlayerXCoord(fieldSystem->playerAvatar);
-    takePhoto->savedY = GetPlayerZCoord(fieldSystem->playerAvatar);
+    takePhoto->savedX = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
+    takePhoto->savedY = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
     takePhoto->savedDirection = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
     takePhoto->savedMapId = fieldSystem->location->mapId;
     if (FollowMon_IsActive(fieldSystem)) {
@@ -172,8 +172,8 @@ void FieldSystem_TakePhoto(FieldSystem *fieldSystem, u16 photo_id) {
 void FieldSystem_ViewSavedPhotos(FieldSystem *fieldSystem) {
     FieldViewPhoto *photo = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(FieldViewPhoto));
     MI_CpuFill8(photo, 0, sizeof(FieldViewPhoto));
-    photo->x = GetPlayerXCoord(fieldSystem->playerAvatar);
-    photo->y = GetPlayerZCoord(fieldSystem->playerAvatar);
+    photo->x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
+    photo->y = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
     photo->savedDirection = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
     photo->savedMapId = fieldSystem->location->mapId;
     photo->photoAlbum = Save_PhotoAlbum_Get(fieldSystem->saveData);

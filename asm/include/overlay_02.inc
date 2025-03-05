@@ -243,8 +243,8 @@
 .public sub_0205BAE4
 .public sub_0205BB04
 .public PlayerAvatar_GetFacingDirection
-.public GetPlayerXCoord
-.public GetPlayerZCoord
+.public PlayerAvatar_GetXCoord
+.public PlayerAvatar_GetZCoord
 .public PlayerAvatar_GetPositionVec
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_GetState

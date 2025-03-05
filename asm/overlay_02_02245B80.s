@@ -2212,10 +2212,10 @@ ov02_02246C8C: ; 0x02246C8C
 	pop {r3, r4, r5, r6, r7, pc}
 _02246CA0:
 	ldr r0, [r5, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -2799,10 +2799,10 @@ ov02_02247170: ; 0x02247170
 	bl Save_VarsFlags_Get
 	add r7, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -15433,10 +15433,10 @@ ov02_0224D044: ; 0x0224D044
 	add r1, sp, #0
 	bl PlayerAvatar_GetPositionVec
 	add r0, r6, #0
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r5, r0, #0
 	add r0, r6, #0
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r4, r0, #0
 	add r0, r6, #0
 	bl PlayerAvatar_GetFacingDirection
@@ -18065,10 +18065,10 @@ ov02_0224E340: ; 0x0224E340
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov02_0224E31C
@@ -18126,10 +18126,10 @@ _0224E3BE:
 	bl PlayerAvatar_GetFacingDirection
 	add r7, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	str r0, [sp, #8]
 	add r0, r7, #0
 	bl GetDeltaXByFacingDirection
@@ -18316,12 +18316,12 @@ _0224E52A:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x10]
 	ldr r0, [r5, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	lsl r0, r0, #0x10
 	asr r0, r0, #0x10
 	str r0, [sp, #0x14]
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	lsl r0, r0, #0x10
 	asr r7, r0, #0x10
 	ldr r0, [r5, #0x40]
@@ -18496,11 +18496,11 @@ ov02_0224E698: ; 0x0224E698
 	lsl r0, r0, #0x18
 	lsr r7, r0, #0x18
 	ldr r0, [r5, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	lsl r0, r0, #0x10
 	asr r6, r0, #0x10
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	lsl r0, r0, #0x10
 	asr r4, r0, #0x10
 	ldr r0, [r5, #0x40]
@@ -18589,13 +18589,13 @@ ov02_0224E754: ; 0x0224E754
 	bl PlayerAvatar_GetFacingDirection
 	add r6, r0, #0
 	ldr r0, [r4, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r5, r0, #0
 	add r0, r6, #0
 	bl GetDeltaXByFacingDirection
 	add r7, r5, r0
 	ldr r0, [r4, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r5, r0, #0
 	add r0, r6, #0
 	bl GetDeltaYByFacingDirection
@@ -20322,10 +20322,10 @@ ov02_0224F4BC: ; 0x0224F4BC
 	strb r0, [r5, #0xf]
 	strb r0, [r5, #0x10]
 	ldr r0, [r4, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	str r0, [sp]
 	ldr r0, [r4, #0x3c]
 	bl MapObjectManager_GetObjectCount

@@ -152,8 +152,8 @@ void ItemCheckUseData_Init(FieldSystem *fieldSystem, struct ItemCheckUseData *da
     dat->haveRocketCostume = Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(fieldSystem->saveData));
     dat->playerState = PlayerAvatar_GetState(fieldSystem->playerAvatar);
 
-    x = GetPlayerXCoord(fieldSystem->playerAvatar);
-    y = GetPlayerZCoord(fieldSystem->playerAvatar);
+    x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
+    y = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
     dat->standingTile = GetMetatileBehavior(fieldSystem, x, y);
 
     switch (PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar)) {

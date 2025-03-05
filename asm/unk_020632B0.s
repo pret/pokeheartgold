@@ -2176,10 +2176,10 @@ sub_020642C4: ; 0x020642C4
 	cmp r0, #1
 	bne _02064332
 	add r0, r4, #0
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r7, r0, #0
 	add r0, r4, #0
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r6, r0, #0
 	add r0, r5, #0
 	bl MapObject_GetFacingDirection
@@ -2220,10 +2220,10 @@ _02064332:
 	cmp r0, #2
 	bne _02064394
 	add r0, r4, #0
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	str r0, [sp, #0x10]
 	add r0, r4, #0
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #0

@@ -21,8 +21,8 @@
 .public sub_02055780
 .public FieldSystem_ApricornTree_TryGetApricorn
 .public PlayerAvatar_GetFacingDirection
-.public GetPlayerXCoord
-.public GetPlayerZCoord
+.public PlayerAvatar_GetXCoord
+.public PlayerAvatar_GetZCoord
 .public PlayerAvatar_GetMapObject
 .public MapObjectManager_GetNextObjectWithFlagFromIndex
 .public MapObject_SetFlagsBits
