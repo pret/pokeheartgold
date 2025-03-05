@@ -621,11 +621,11 @@ ov01_021F4404: ; 0x021F4404
 	mov r2, #0
 	bl ov01_021F6830
 	ldr r0, [r4, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	ldr r1, [r4, #0x20]
 	str r0, [r1, #8]
 	ldr r0, [r4, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	ldr r1, [r4, #0x20]
 	str r0, [r1, #0xc]
 	mov r1, #0

@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_FIELD_PLAYER_AVATAR_H
-#define POKEHEARTGOLD_FIELD_PLAYER_AVATAR_H
+#ifndef POKEHEARTGOLD_PLAYER_AVATAR_H
+#define POKEHEARTGOLD_PLAYER_AVATAR_H
 
 #include "global.h"
 
@@ -20,7 +20,7 @@ typedef enum PlayerAvatarFlags {
 typedef struct PlayerSaveData {
     u16 hasRunningShoes;
     u16 runningShoesLock;
-    u32 unk4;
+    u32 state;
 } PlayerSaveData;
 
 struct PlayerAvatar {
@@ -42,28 +42,25 @@ struct PlayerAvatar {
     u32 unk3c;
 }; // size: 0x40
 
-int sub_0205C268(u32 unkA);
+u32 sub_0205C268(u32 param0);
 u8 sub_0205C278(void);
 u8 sub_0205C298(SaveData *saveData);
-u8 sub_0205C2C0(u32 unkA);
-u8 sub_0205C2E8(u32 unkA);
-u8 sub_0205C310(u32 unkA);
-u8 sub_0205C350(u32 unkA);
-PlayerAvatar *sub_0205C390(MapObjectManager *man, int x, int y, int direction, int a4, int gender, int a6, struct PlayerSaveData *playerSaveData);
-PlayerAvatar *sub_0205C408(MapObjectManager *man, PlayerSaveData *playerSaveData, int gender);
+u8 sub_0205C2C0(u32 param0);
+u8 sub_0205C2E8(u32 param0);
+u8 sub_0205C310(u32 param0);
+u8 sub_0205C350(u32 param0);
+PlayerAvatar *PlayerAvatar_CreateWithParamsExtended(MapObjectManager *manager, s32 x, s32 z, u32 direction, u32 state, u32 gender, u32 param6, PlayerSaveData *playerSaveData);
+PlayerAvatar *PlayerAvatar_CreateWithParams(MapObjectManager *manager, PlayerSaveData *playerSaveData, u32 gender);
 void sub_0205C46C(PlayerAvatar *avatar);
 void PlayerAvatar_FreeToHeap(PlayerAvatar *avatar);
 void PlayerAvatar_DeleteFromMap(PlayerAvatar *avatar);
-PlayerAvatar *sub_0205C4E0();
-void sub_0205C500(PlayerAvatar *avatar, int state, u32 gender, PlayerSaveData *playerSaveData);
-void CreatePlayerAvatarMapObject(PlayerAvatar *avatar, MapObjectManager *man, u32 sprite, u32 direction, u32 x, u32 y);
 LocalMapObject *sub_0205C600(MapObjectManager *man);
-LocalMapObject *sub_0205C640(MapObjectManager *man);
+LocalMapObject *PlayerAvatar_CreateMapObject(MapObjectManager *man);
 int PlayerAvatar_GetFacingDirection(PlayerAvatar *avatar);
 void PlayerAvatar_SetFacingDirection(PlayerAvatar *avatar, int direction);
 u32 PlayerAvatar_GetNextFacing(PlayerAvatar *avatar);
-int GetPlayerXCoord(PlayerAvatar *avatar);
-int GetPlayerZCoord(PlayerAvatar *avatar);
+int PlayerAvatar_GetXCoord(PlayerAvatar *avatar);
+int PlayerAvatar_GetZCoord(PlayerAvatar *avatar);
 int GetPlayerLastXCoord(PlayerAvatar *avatar);
 int GetPlayerLastZCoord(PlayerAvatar *avatar);
 void PlayerAvatar_GetPositionVec(PlayerAvatar *avatar, VecFx32 *vec);
@@ -106,7 +103,7 @@ void sub_0205C7B4(PlayerAvatar *avatar);
 void PlayerSaveData_Init(struct PlayerSaveData *playerSaveData);
 BOOL PlayerSaveData_CheckRunningShoes(struct PlayerSaveData *playerSaveData);
 void PlayerSaveData_SetRunningShoesFlag(struct PlayerSaveData *playerSaveData, BOOL flag);
-int sub_0205C7EC(PlayerSaveData *playerSaveData);
+int PlayerSaveData_GetState(PlayerSaveData *playerSaveData);
 void sub_0205C7F8(PlayerSaveData *playerSaveData, int state);
 void sub_0205C800(PlayerAvatar *avatar, int state);
 void sub_0205C810(PlayerAvatar *avatar, VecFx32 *pos, u32 dir);
@@ -133,4 +130,4 @@ BOOL PlayerAvatar_CheckFlag7(PlayerAvatar *avatar);
 u16 PlayerAvatar_CheckRunningShoesLock(PlayerAvatar *avatar);
 void PlayerAvatar_SetRunningShoesLock(PlayerAvatar *avatar, u16 lock);
 
-#endif // POKEHEARTGOLD_PlayerAvatar_H
+#endif // POKEHEARTGOLD_PLAYER_AVATAR_H

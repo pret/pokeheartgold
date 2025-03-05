@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_UNK_0205CB48_H
 #define POKEHEARTGOLD_UNK_0205CB48_H
 
-#include "field_player_avatar.h"
+#include "player_avatar.h"
 
 void PlayerAvatar_GetCoordsInFront(PlayerAvatar *playerAvatar, int *x, int *z);
 void PlayerAvatar_UpdateMovement(PlayerAvatar *playerAvatar);

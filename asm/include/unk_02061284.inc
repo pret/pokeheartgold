@@ -2,8 +2,8 @@
 #pragma once
 .public LCRandom
 .public GF_AssertFail
-.public GetPlayerXCoord
-.public GetPlayerZCoord
+.public PlayerAvatar_GetXCoord
+.public PlayerAvatar_GetZCoord
 .public PlayerAvatar_GetMapObject
 .public FieldSystem_GetPlayerAvatar
 .public sub_0205DE98

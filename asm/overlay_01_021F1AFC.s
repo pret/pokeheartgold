@@ -943,13 +943,13 @@ _021F221E:
 	b _021F2324
 _021F222A:
 	ldr r0, [r4, #0x20]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r5, r0, #0
 	ldr r0, [r4, #4]
 	bl GetDeltaXByFacingDirection
 	add r6, r0, #0
 	ldr r0, [r4, #0x20]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r7, r0, #0
 	ldr r0, [r4, #4]
 	bl GetDeltaYByFacingDirection
@@ -1602,13 +1602,13 @@ ov01_021F2758: ; 0x021F2758
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x10]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #4]
 	bl GetDeltaXByFacingDirection
 	add r6, r0, #0
 	ldr r0, [r5, #0x10]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r7, r0, #0
 	ldr r0, [r5, #4]
 	bl GetDeltaYByFacingDirection
@@ -2824,13 +2824,13 @@ ov01_021F3094: ; 0x021F3094
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r4, r0, #0
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r6, r0, #0
 	add r0, r5, #0
 	bl GetDeltaXByFacingDirection
 	add r7, r0, #0
 	add r0, r4, #0
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	str r0, [sp]
 	add r0, r5, #0
 	bl GetDeltaYByFacingDirection

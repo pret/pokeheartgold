@@ -492,10 +492,10 @@ _021FC3A8:
 	cmp r0, #0
 	bge _021FC4B2
 	ldr r0, [r5, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0

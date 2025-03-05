@@ -22,7 +22,6 @@
 #include "easy_chat.h"
 #include "encounter.h"
 #include "fashion_case.h"
-#include "field_player_avatar.h"
 #include "field_roamer.h"
 #include "field_system.h"
 #include "field_take_photo.h"
@@ -47,6 +46,7 @@
 #include "overlay_67.h"
 #include "overlay_87.h"
 #include "party_menu.h"
+#include "player_avatar.h"
 #include "pokedex.h"
 #include "pokewalker.h"
 #include "render_text.h"
@@ -1516,8 +1516,8 @@ BOOL ScrCmd_GetPlayerCoords(ScriptContext *ctx) {
     u16 *p_x = ScriptGetVarPointer(ctx);
     u16 *p_y = ScriptGetVarPointer(ctx);
 
-    *p_x = GetPlayerXCoord(fieldSystem->playerAvatar);
-    *p_y = GetPlayerZCoord(fieldSystem->playerAvatar);
+    *p_x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
+    *p_y = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
     return FALSE;
 }
 

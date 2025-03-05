@@ -254,7 +254,7 @@
 .public Save_VarsFlags_ClearFlagInArray
 .public sub_0205BBD0
 .public sub_0205BC78
-.public sub_0205C7EC
+.public PlayerSaveData_GetState
 .public CheckGameClearFlag
 .public Save_VarsFlags_MomsSavingsFlagAction
 .public Save_VarsFlags_MomsSavingsFlagCheck

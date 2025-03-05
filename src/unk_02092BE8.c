@@ -37,8 +37,8 @@ static void sub_02092BE8(FieldSystem *sys, PokegearArgs *ptr, BOOL a2) {
     ptr->saveData = sys->saveData;
     ptr->mapID = PosPtr->mapId;
     if (MapHeader_MapIsOnMainMatrix(ptr->mapID)) {
-        ptr->x = GetPlayerXCoord(sys->playerAvatar);
-        ptr->y = GetPlayerZCoord(sys->playerAvatar);
+        ptr->x = PlayerAvatar_GetXCoord(sys->playerAvatar);
+        ptr->y = PlayerAvatar_GetZCoord(sys->playerAvatar);
         ptr->matrixXCoord = ptr->x / 32;
         ptr->matrixYCoord = ptr->y / 32;
         ptr->mapHeader = ptr->mapID;

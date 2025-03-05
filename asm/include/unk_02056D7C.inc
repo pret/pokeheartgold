@@ -55,13 +55,13 @@
 .public sub_02057F70
 .public sub_02057F80
 .public sub_02057FA4
-.public sub_0205C390
+.public PlayerAvatar_CreateWithParamsExtended
 .public PlayerAvatar_FreeToHeap
 .public PlayerAvatar_DeleteFromMap
 .public PlayerAvatar_GetFacingDirection
 .public PlayerAvatar_SetFacingDirection
-.public GetPlayerXCoord
-.public GetPlayerZCoord
+.public PlayerAvatar_GetXCoord
+.public PlayerAvatar_GetZCoord
 .public sub_0205C6CC
 .public sub_0205C6D4
 .public PlayerAvatar_GetMapObject
