@@ -752,8 +752,8 @@ static BOOL Task_StartMenu_OpenPokedex(TaskManager *taskManager) {
     pokedexArgs->playerProfile = Save_PlayerData_GetProfile(fieldSystem->saveData);
     pokedexArgs->unk_08 = fieldSystem->unkA8;
     pokedexArgs->menuInputStatePtr = &fieldSystem->menuInputState;
-    int x = GetPlayerXCoord(fieldSystem->playerAvatar);
-    int y = GetPlayerZCoord(fieldSystem->playerAvatar);
+    int x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
+    int y = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
     pokedexArgs->mapMatrixId = MapMatrix_GetMapHeader(fieldSystem->mapMatrix, x / 32, y / 32);
     pokedexArgs->mapId = position->mapId;
     if (MapHeader_MapIsOnMainMatrix(pokedexArgs->mapMatrixId)) {

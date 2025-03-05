@@ -6,8 +6,8 @@
 .public sub_0205B6F4
 .public sub_0205C600
 .public PlayerAvatar_GetFacingDirection
-.public GetPlayerXCoord
-.public GetPlayerZCoord
+.public PlayerAvatar_GetXCoord
+.public PlayerAvatar_GetZCoord
 .public GetPlayerLastXCoord
 .public GetPlayerLastZCoord
 .public sub_0205C6D4

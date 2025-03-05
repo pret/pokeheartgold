@@ -7,13 +7,13 @@
 
 #include "fielddata/graphic/preview_graphic/preview_graphic.naix"
 
-#include "field_player_avatar.h"
 #include "follow_mon.h"
 #include "gf_gfx_loader.h"
 #include "gf_rtc.h"
 #include "map_object.h"
 #include "overlay_01.h"
 #include "overlay_01_021F1AFC.h"
+#include "player_avatar.h"
 #include "system.h"
 #include "unk_0200FA24.h"
 #include "unk_02062108.h"

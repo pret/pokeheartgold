@@ -4,7 +4,6 @@
 
 #include "assert.h"
 #include "bag.h"
-#include "field_player_avatar.h"
 #include "fieldmap.h"
 #include "heap.h"
 #include "launch_application.h"
@@ -13,6 +12,7 @@
 #include "overlay_57.h"
 #include "party.h"
 #include "party_menu.h"
+#include "player_avatar.h"
 #include "player_data.h"
 #include "pokemon.h"
 #include "render_text.h"
