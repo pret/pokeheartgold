@@ -763,7 +763,7 @@
 #define FLAG_HIDE_ALPH_OUTSIDE_ARCEUS_EVENT_SUIT                  0x2E6
 #define FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE           0x2E7
 #define FLAG_HIDE_NEW_BARK_FRIEND_2                               0x2E8
-#define FLAG_UNK_2E9                                              0x2E9
+#define FLAG_HIDE_VIOLET_GYM_FALKNER                              0x2E9
 #define FLAG_HIDE_AZALEA_GYM_BUGSY                                0x2EA
 #define FLAG_HIDE_CIANWOOD_GYM_CHUCK                              0x2EB
 #define FLAG_HIDE_GOLDENROD_GYM_WHITNEY                           0x2EC
