@@ -766,7 +766,7 @@
 #define FLAG_UNK_2E9                                              0x2E9
 #define FLAG_UNK_2EA                                              0x2EA
 #define FLAG_UNK_2EB                                              0x2EB
-#define FLAG_UNK_2EC                                              0x2EC
+#define FLAG_HIDE_GOLDENROD_GYM_WHITNEY                           0x2EC
 #define FLAG_HIDE_ECRUTEAK_GYM_MORTY                              0x2ED
 #define FLAG_HIDE_MAHOGANY_GYM_PRYCE                              0x2EE
 #define FLAG_HIDE_BLACKTHORN_GYM_CLAIR                            0x2EF
