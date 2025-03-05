@@ -33,8 +33,8 @@
 .public GetMetatileBehavior
 .public sub_0205BAC4
 .public PlayerAvatar_GetFacingDirection
-.public GetPlayerXCoord
-.public GetPlayerZCoord
+.public PlayerAvatar_GetXCoord
+.public PlayerAvatar_GetZCoord
 .public PlayerAvatar_GetPositionVec
 .public PlayerAvatar_GetPositionVecConst
 .public PlayerAvatar_GetMapObject
