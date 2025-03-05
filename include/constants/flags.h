@@ -773,7 +773,7 @@
 #define FLAG_UNK_2F0                                              0x2F0
 #define FLAG_UNK_2F1                                              0x2F1
 #define FLAG_UNK_2F2                                              0x2F2
-#define FLAG_UNK_2F3                                              0x2F3
+#define FLAG_HIDE_FUCHSIA_GYM_JANINE                              0x2F3
 #define FLAG_HIDE_PEWTER_GYM_BROCK                                0x2F4
 #define FLAG_HIDE_SEAFOAM_GYM_BLAINE                              0x2F5
 #define FLAG_HIDE_VIRIDIAN_GYM_BLUE                               0x2F6

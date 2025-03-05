@@ -42,13 +42,13 @@ _0075:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 16
 	goto_if_ne _0090
-	setflag FLAG_UNK_2F3
+	setflag FLAG_HIDE_FUCHSIA_GYM_JANINE
 	goto _00AD
 
 _0090:
 	compare VAR_TEMP_x4000, 17
 	goto_if_ne _00A7
-	setflag FLAG_UNK_2F3
+	setflag FLAG_HIDE_FUCHSIA_GYM_JANINE
 	goto _00AD
 
 _00A7:
@@ -61,13 +61,13 @@ _00AF:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 18
 	goto_if_ne _00CA
-	setflag FLAG_UNK_2F3
+	setflag FLAG_HIDE_FUCHSIA_GYM_JANINE
 	goto _00E7
 
 _00CA:
 	compare VAR_TEMP_x4000, 19
 	goto_if_ne _00E1
-	setflag FLAG_UNK_2F3
+	setflag FLAG_HIDE_FUCHSIA_GYM_JANINE
 	goto _00E7
 
 _00E1:
@@ -77,11 +77,11 @@ _00E7:
 	end
 
 _00E9:
-	clearflag FLAG_UNK_2F3
+	clearflag FLAG_HIDE_FUCHSIA_GYM_JANINE
 	end
 
 _00EF:
-	setflag FLAG_UNK_2F3
+	setflag FLAG_HIDE_FUCHSIA_GYM_JANINE
 	end
 
 scr_seq_T08GYM0101_008:
