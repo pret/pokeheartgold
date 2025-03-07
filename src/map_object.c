@@ -4,11 +4,11 @@
 
 #include "constants/sprites.h"
 
-#include "field_player_avatar.h"
 #include "fieldmap.h"
 #include "filesystem.h"
 #include "heap.h"
 #include "overlay_01_021F944C.h"
+#include "player_avatar.h"
 #include "sys_task_api.h"
 #include "unk_0205FD20.h"
 

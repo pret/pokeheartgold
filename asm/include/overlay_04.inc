@@ -33,10 +33,10 @@
 .public GetMetatileBehavior
 .public sub_0205BAC4
 .public PlayerAvatar_GetFacingDirection
-.public GetPlayerXCoord
-.public GetPlayerZCoord
-.public PlayerAvatar_GetPositionVec
-.public PlayerAvatar_GetPositionVecConst
+.public PlayerAvatar_GetXCoord
+.public PlayerAvatar_GetZCoord
+.public PlayerAvatar_CopyPositionVector
+.public PlayerAvatar_GetPositionVectorConst
 .public PlayerAvatar_GetMapObject
 .public sub_0205C838
 .public PlayerAvatar_ToggleAutomaticHeightUpdating

@@ -168,12 +168,12 @@ sub_02056E60: ; 0x02056E60
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	ldr r0, _02056E9C ; =_021D41C4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 _02056E9A:
 	pop {r3, pc}
 	.balign 4, 0
@@ -254,7 +254,7 @@ sub_02056EF4: ; 0x02056EF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	ldr r1, _02056FCC ; =_021D41C4
 	ldr r2, [r1]
 	lsl r1, r4, #3
@@ -267,7 +267,7 @@ sub_02056EF4: ; 0x02056EF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	ldr r1, _02056FCC ; =_021D41C4
 	ldr r2, [r1]
 	lsl r1, r4, #3
@@ -293,7 +293,7 @@ sub_02056EF4: ; 0x02056EF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	ldr r1, _02056FCC ; =_021D41C4
 	ldr r2, [r1]
 	lsl r1, r4, #3
@@ -305,7 +305,7 @@ sub_02056EF4: ; 0x02056EF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	ldr r1, _02056FCC ; =_021D41C4
 	ldr r2, [r1]
 	lsl r1, r4, #3
@@ -378,13 +378,13 @@ sub_0205701C: ; 0x0205701C
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r4, r0, #0
 	ldr r0, _02057048 ; =_021D41C4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -469,13 +469,13 @@ sub_020570C8: ; 0x020570C8
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C6CC
+	bl PlayerAvatar_GetUnk10
 	add r4, r0, #0
 	ldr r0, _02057128 ; =_021D41C4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C6D4
+	bl PlayerAvatar_GetUnk14
 	add r5, r0, #0
 	cmp r4, #0
 	bne _02057112
@@ -636,7 +636,7 @@ _020571E2:
 	ldrh r2, [r2]
 	ldrsb r3, [r3, r6]
 	ldr r0, [r0, #0x3c]
-	bl sub_0205C390
+	bl PlayerAvatar_CreateWithParams
 	add r6, r0, #0
 	bne _0205721E
 	bl GF_AssertFail
@@ -1522,12 +1522,12 @@ _02057868:
 	bne _0205787A
 	b _020579FC
 _0205787A:
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	ldrh r1, [r6]
 	sub r0, r0, r1
 	str r0, [sp, #0x10]
 	ldr r0, [sp, #0x18]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	ldrh r1, [r6, #2]
 	sub r7, r0, r1
 	ldr r0, [sp, #0x18]

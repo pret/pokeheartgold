@@ -28,10 +28,10 @@
 .public sub_0205B810
 .public sub_0205B81C
 .public PlayerAvatar_GetFacingDirection
-.public GetPlayerXCoord
-.public GetPlayerZCoord
-.public PlayerAvatar_GetPositionVec
-.public PlayerAvatar_GetPositionVecConst
+.public PlayerAvatar_GetXCoord
+.public PlayerAvatar_GetZCoord
+.public PlayerAvatar_CopyPositionVector
+.public PlayerAvatar_GetPositionVectorConst
 .public PlayerAvatar_GetMapObject
 .public sub_0205C810
 .public PlayerAvatar_ToggleAutomaticHeightUpdating

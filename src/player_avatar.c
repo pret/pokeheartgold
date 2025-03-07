@@ -1,8 +1,8 @@
-#include "field_player_avatar.h"
+#include "player_avatar.h"
 
 #include "global.h"
 
-#include "constants/global.fieldmap.h"
+#include "constants/global_fieldmap.h"
 #include "constants/sprites.h"
 
 #include "assert.h"
@@ -17,8 +17,18 @@
 #include "unk_02035900.h"
 #include "unk_0205FD20.h"
 
-int sub_0205C268(u32 unkA) {
-    if (unkA < 100) {
+static PlayerAvatar *PlayerAvatar_Create(void);
+static void PlayerAvatar_Setup(PlayerAvatar *avatar, s32 state, u32 gender, PlayerSaveData *playerSaveData);
+static void PlayerAvatar_CreateMapObjectWithParams(PlayerAvatar *avatar, MapObjectManager *manager, u32 sprite, u32 direction, u32 x, u32 z);
+static LocalMapObject *PlayerAvatar_GetActiveMapObjectWithMovement1(MapObjectManager *manager);
+static LocalMapObject *PlayerAvatar_GetMapObjectConst(PlayerAvatar *avatar);
+static void PlayerAvatar_SetGender(PlayerAvatar *avatar, u32 gender);
+static void PlayerAvatar_SetFlagsBits(PlayerAvatar *avatar, PlayerAvatarFlags flags);
+static void PlayerAvatar_ClearFlagsBits(PlayerAvatar *avatar, PlayerAvatarFlags flags);
+static PlayerAvatarFlags PlayerAvatar_GetFlagsBitsMask(PlayerAvatar *avatar, PlayerAvatarFlags flags);
+
+u32 sub_0205C268(u32 param0) {
+    if (param0 < 100) {
         return 255;
     }
     return ov00_021E6EBC();
@@ -26,15 +36,12 @@ int sub_0205C268(u32 unkA) {
 
 u8 sub_0205C278(void) {
     PlayerProfile *profile = sub_02034818(sub_0203769C() ^ 1);
-    if (!profile) {
-        GF_ASSERT(FALSE);
-    }
+    GF_ASSERT(profile != NULL);
     return PlayerProfile_GetVersion(profile);
 }
 
 u8 sub_0205C298(SaveData *saveData) {
-    u8 ver = PlayerProfile_GetVersion(Save_PlayerData_GetProfile(saveData));
-    if (ver == 0) {
+    if (PlayerProfile_GetVersion(Save_PlayerData_GetProfile(saveData)) == 0) {
         return 1;
     }
     if (sub_0205C278() == 0) {
@@ -43,8 +50,8 @@ u8 sub_0205C298(SaveData *saveData) {
     return 0;
 }
 
-u8 sub_0205C2C0(u32 unkA) {
-    switch (unkA) {
+u8 sub_0205C2C0(u32 param0) {
+    switch (param0) {
     case 0:
         return 95;
     case 1:
@@ -56,8 +63,8 @@ u8 sub_0205C2C0(u32 unkA) {
     }
 }
 
-u8 sub_0205C2E8(u32 unkA) {
-    switch (unkA) {
+u8 sub_0205C2E8(u32 param0) {
+    switch (param0) {
     case 0:
         return 94;
     case 1:
@@ -69,9 +76,9 @@ u8 sub_0205C2E8(u32 unkA) {
     }
 }
 
-u8 sub_0205C310(u32 unkA) {
+u8 sub_0205C310(u32 param0) {
     u8 ret;
-    switch (unkA) {
+    switch (param0) {
     case 0:
         ret = 1;
         break;
@@ -98,9 +105,9 @@ u8 sub_0205C310(u32 unkA) {
     return ret;
 }
 
-u8 sub_0205C350(u32 unkA) {
+u8 sub_0205C350(u32 param0) {
     u8 ret;
-    switch (unkA) {
+    switch (param0) {
     case 0:
         ret = 0;
         break;
@@ -127,20 +134,20 @@ u8 sub_0205C350(u32 unkA) {
     return ret;
 }
 
-PlayerAvatar *sub_0205C390(MapObjectManager *man, int x, int y, int direction, int state, int gender, int a6, struct PlayerSaveData *playerSaveData) {
-    PlayerAvatar *avatar = sub_0205C4E0();
-    sub_0205C500(avatar, state, gender, playerSaveData);
-    int sprite;
-    if (a6 == 2) {
+PlayerAvatar *PlayerAvatar_CreateWithParams(MapObjectManager *manager, u32 x, u32 z, u32 direction, s32 state, u32 gender, u32 param6, PlayerSaveData *playerSaveData) {
+    PlayerAvatar *avatar = PlayerAvatar_Create();
+    PlayerAvatar_Setup(avatar, state, gender, playerSaveData);
+    u32 sprite;
+    if (param6 == 2) {
         sprite = PlayerAvatar_GetSpriteByStateAndGender(state, gender);
-    } else if (a6 == 0) {
-        if (gender == 0) {
+    } else if (param6 == 0) {
+        if (gender == PLAYER_GENDER_MALE) {
             sprite = SPRITE_PL_BOY01C;
         } else {
             sprite = SPRITE_PL_GIRL01C;
         }
-    } else if (a6 == 1) {
-        if (gender == 0) {
+    } else if (param6 == 1) {
+        if (gender == PLAYER_GENDER_MALE) {
             sprite = SPRITE_HERO_2;
         } else {
             sprite = SPRITE_HEROINE_2;
@@ -149,35 +156,33 @@ PlayerAvatar *sub_0205C390(MapObjectManager *man, int x, int y, int direction, i
         GF_ASSERT(FALSE);
         sprite = PlayerAvatar_GetSpriteByStateAndGender(state, gender);
     }
-    CreatePlayerAvatarMapObject(avatar, man, sprite, direction, x, y);
+    PlayerAvatar_CreateMapObjectWithParams(avatar, manager, sprite, direction, x, z);
     return avatar;
 }
 
-PlayerAvatar *sub_0205C408(MapObjectManager *man, PlayerSaveData *playerSaveData, int gender) {
-    PlayerAvatar *avatar = sub_0205C4E0();
-    int state = sub_0205C7EC(playerSaveData);
-    sub_0205C500(avatar, state, gender, playerSaveData);
-    LocalMapObject *mapObj = sub_0205C640(man);
-    MapObject_SetSpriteID(mapObj, PlayerAvatar_GetSpriteByStateAndGender(state, gender));
-    MapObject_SetFlagsBits(mapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_KEEP));
-    MapObject_ClearFlagsBits(mapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7));
-    MapObject_SetFlag29(mapObj, TRUE);
-    PlayerAvatar_SetMapObject(avatar, mapObj);
+PlayerAvatar *PlayerAvatar_CreateWithActiveMapObject(MapObjectManager *manager, PlayerSaveData *playerSaveData, u32 gender) {
+    PlayerAvatar *avatar = PlayerAvatar_Create();
+    s32 state = PlayerSaveData_GetState(playerSaveData);
+    PlayerAvatar_Setup(avatar, state, gender, playerSaveData);
+    LocalMapObject *mapObject = PlayerAvatar_GetActiveMapObjectWithMovement1(manager);
+    MapObject_SetSpriteID(mapObject, PlayerAvatar_GetSpriteByStateAndGender(state, gender));
+    MapObject_SetFlagsBits(mapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_KEEP));
+    MapObject_ClearFlagsBits(mapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7));
+    MapObject_SetFlag29(mapObject, TRUE);
+    PlayerAvatar_SetMapObject(avatar, mapObject);
     return avatar;
 }
 
 void sub_0205C46C(PlayerAvatar *avatar) {
-    LocalMapObject *mapObj = PlayerAvatar_GetMapObject(avatar);
-    if (!mapObj) {
-        GF_ASSERT(FALSE);
-    }
-    MapObject_GetManager(mapObj);
+    LocalMapObject *mapObject = PlayerAvatar_GetMapObject(avatar);
+    GF_ASSERT(mapObject != NULL);
+    MapObject_GetManager(mapObject);
     ov01_022008B4(avatar);
     if (PlayerAvatar_GetState(avatar) == PLAYER_STATE_SURFING) {
-        int x = GetPlayerXCoord(avatar);
-        int z = GetPlayerZCoord(avatar);
-        int dir = PlayerAvatar_GetFacingDirection(avatar);
-        sub_0205C78C(avatar, ov01_021FE7DC(mapObj, x, z, dir, 1));
+        u32 x = PlayerAvatar_GetXCoord(avatar);
+        u32 z = PlayerAvatar_GetZCoord(avatar);
+        u32 direction = PlayerAvatar_GetFacingDirection(avatar);
+        sub_0205C78C(avatar, ov01_021FE7DC(mapObject, x, z, direction, 1));
     }
 }
 
@@ -190,19 +195,17 @@ void PlayerAvatar_DeleteFromMap(PlayerAvatar *avatar) {
     PlayerAvatar_FreeToHeap(avatar);
 }
 
-PlayerAvatar *sub_0205C4E0() {
+static PlayerAvatar *PlayerAvatar_Create(void) {
     PlayerAvatar *avatar = AllocFromHeap(HEAP_ID_FIELD, sizeof(PlayerAvatar));
-    if (!avatar) {
-        GF_ASSERT(FALSE);
-    }
+    GF_ASSERT(avatar != NULL);
     memset(avatar, 0, sizeof(PlayerAvatar));
     return avatar;
 }
 
-void sub_0205C500(PlayerAvatar *avatar, int state, u32 gender, PlayerSaveData *playerSaveData) {
+static void PlayerAvatar_Setup(PlayerAvatar *avatar, s32 state, u32 gender, PlayerSaveData *playerSaveData) {
     PlayerAvatar_SetPlayerSaveData(avatar, playerSaveData);
-    sub_0205C6C8(avatar, 0);
-    sub_0205C6D0(avatar, 0);
+    PlayerAvatar_SetUnk10(avatar, 0);
+    PlayerAvatar_SetUnk14(avatar, 0);
     PlayerAvatar_SetState(avatar, state);
     PlayerAvatar_SetGender(avatar, gender);
     PlayerAvatar_SetTransitionFlags(avatar, 0);
@@ -213,154 +216,146 @@ void sub_0205C500(PlayerAvatar *avatar, int state, u32 gender, PlayerSaveData *p
     PlayerAvatar_SetFlag1(avatar, TRUE);
 }
 
-void CreatePlayerAvatarMapObject(PlayerAvatar *avatar, MapObjectManager *man, u32 sprite, u32 direction, u32 x, u32 y) {
-    LocalMapObject *mapObj = MapObject_Create(man, x, y, direction, sprite, 1, 1);
-    if (!mapObj) {
-        GF_ASSERT(FALSE);
-    }
-    MapObject_SetID(mapObj, 255);
-    MapObject_SetType(mapObj, 0);
-    MapObject_SetEventFlag(mapObj, 0);
-    MapObject_SetScriptID(mapObj, 0);
-    MapObject_SetParam(mapObj, 0, 0);
-    MapObject_SetParam(mapObj, 0, 1);
-    MapObject_SetParam(mapObj, 0, 2);
-    MapObject_SetXRange(mapObj, -1);
-    MapObject_SetYRange(mapObj, -1);
-    MapObject_SetFlagsBits(mapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_KEEP));
-    MapObject_ClearFlagsBits(mapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7));
-    MapObject_SetFlag29(mapObj, TRUE);
-    PlayerAvatar_SetMapObject(avatar, mapObj);
+static void PlayerAvatar_CreateMapObjectWithParams(PlayerAvatar *avatar, MapObjectManager *manager, u32 sprite, u32 direction, u32 x, u32 z) {
+    LocalMapObject *mapObject = MapObject_Create(manager, x, z, direction, sprite, 1, 1);
+    GF_ASSERT(mapObject != NULL);
+    MapObject_SetID(mapObject, 255);
+    MapObject_SetType(mapObject, 0);
+    MapObject_SetEventFlag(mapObject, 0);
+    MapObject_SetScriptID(mapObject, 0);
+    MapObject_SetParam(mapObject, 0, 0);
+    MapObject_SetParam(mapObject, 0, 1);
+    MapObject_SetParam(mapObject, 0, 2);
+    MapObject_SetXRange(mapObject, -1);
+    MapObject_SetYRange(mapObject, -1);
+    MapObject_SetFlagsBits(mapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_KEEP));
+    MapObject_ClearFlagsBits(mapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7));
+    MapObject_SetFlag29(mapObject, TRUE);
+    PlayerAvatar_SetMapObject(avatar, mapObject);
 }
 
-LocalMapObject *sub_0205C600(MapObjectManager *man) {
-    int y = 0;
-    LocalMapObject *mapObj = 0;
-    while (MapObjectManager_GetNextObjectWithFlagFromIndex(man, &mapObj, &y, MAPOBJECTFLAG_ACTIVE)) {
-        if (MapObject_GetMovement(mapObj) == TRUE) {
+LocalMapObject *MapObjectManager_GetFirstActiveObjectWithMovement1(MapObjectManager *manager) {
+    s32 index = 0;
+    LocalMapObject *mapObject = NULL;
+    while (MapObjectManager_GetNextObjectWithFlagFromIndex(manager, &mapObject, &index, MAPOBJECTFLAG_ACTIVE)) {
+        if (MapObject_GetMovement(mapObject) == 1) {
             break;
         }
     }
-    return mapObj;
+    return mapObject;
 }
 
-LocalMapObject *sub_0205C640(MapObjectManager *man) {
-    LocalMapObject *mapObj = sub_0205C600(man);
-    if (!mapObj) {
-        GF_ASSERT(FALSE);
-    }
-    return mapObj;
+static LocalMapObject *PlayerAvatar_GetActiveMapObjectWithMovement1(MapObjectManager *manager) {
+    LocalMapObject *mapObject = MapObjectManager_GetFirstActiveObjectWithMovement1(manager);
+    GF_ASSERT(mapObject != NULL);
+    return mapObject;
 }
 
-int PlayerAvatar_GetFacingDirection(PlayerAvatar *avatar) {
+u32 PlayerAvatar_GetFacingDirection(PlayerAvatar *avatar) {
     return MapObject_GetFacingDirection(PlayerAvatar_GetMapObject(avatar));
 }
 
-void PlayerAvatar_SetFacingDirection(PlayerAvatar *avatar, int direction) {
+void PlayerAvatar_SetFacingDirection(PlayerAvatar *avatar, u32 direction) {
     MapObject_SetFacingDirection(PlayerAvatar_GetMapObject(avatar), direction);
 }
 
-u32 PlayerAvatar_GetNextFacing(PlayerAvatar *avatar) {
+u32 PlayerAvatar_GetNextFacingDirection(PlayerAvatar *avatar) {
     return MapObject_GetNextFacingDirection(PlayerAvatar_GetMapObject(avatar));
 }
 
-int GetPlayerXCoord(PlayerAvatar *avatar) {
+u32 PlayerAvatar_GetXCoord(PlayerAvatar *avatar) {
     return MapObject_GetCurrentX(PlayerAvatar_GetMapObject(avatar));
 }
 
-int GetPlayerZCoord(PlayerAvatar *avatar) {
+u32 PlayerAvatar_GetZCoord(PlayerAvatar *avatar) {
     return MapObject_GetCurrentZ(PlayerAvatar_GetMapObject(avatar));
 }
 
-int GetPlayerLastXCoord(PlayerAvatar *avatar) {
+u32 PlayerAvatar_GetPreviousXCoord(PlayerAvatar *avatar) {
     return MapObject_GetPreviousX(PlayerAvatar_GetMapObject(avatar));
 }
 
-int GetPlayerLastZCoord(PlayerAvatar *avatar) {
+u32 PlayerAvatar_GetPreviousZCoord(PlayerAvatar *avatar) {
     return MapObject_GetPreviousZ(PlayerAvatar_GetMapObject(avatar));
 }
 
-void PlayerAvatar_GetPositionVec(PlayerAvatar *avatar, VecFx32 *vec) {
-    MapObject_CopyPositionVector(PlayerAvatar_GetMapObject(avatar), vec);
+void PlayerAvatar_CopyPositionVector(PlayerAvatar *avatar, VecFx32 *vector) {
+    MapObject_CopyPositionVector(PlayerAvatar_GetMapObject(avatar), vector);
 }
 
-VecFx32 *PlayerAvatar_GetPositionVecConst(PlayerAvatar *avatar) {
+VecFx32 *PlayerAvatar_GetPositionVectorConst(PlayerAvatar *avatar) {
     return MapObject_GetPositionVector(PlayerAvatar_GetMapObjectConst(avatar));
 }
 
-void sub_0205C6C8(PlayerAvatar *avatar, u32 unkA) {
-    avatar->unk10 = unkA;
+void PlayerAvatar_SetUnk10(PlayerAvatar *avatar, u32 param1) {
+    avatar->unk10 = param1;
 }
 
-u32 sub_0205C6CC(PlayerAvatar *avatar) {
+u32 PlayerAvatar_GetUnk10(PlayerAvatar *avatar) {
     return avatar->unk10;
 }
 
-void sub_0205C6D0(PlayerAvatar *avatar, u32 unkA) {
-    avatar->unk14 = unkA;
+void PlayerAvatar_SetUnk14(PlayerAvatar *avatar, u32 param1) {
+    avatar->unk14 = param1;
 }
 
-u32 sub_0205C6D4(PlayerAvatar *avatar) {
+u32 PlayerAvatar_GetUnk14(PlayerAvatar *avatar) {
     return avatar->unk14;
 }
 
-void PlayerAvatar_SetMapObject(PlayerAvatar *avatar, LocalMapObject *obj) {
-    avatar->mapObject = obj;
+void PlayerAvatar_SetMapObject(PlayerAvatar *avatar, LocalMapObject *mapObject) {
+    avatar->mapObject = mapObject;
 }
 
 LocalMapObject *PlayerAvatar_GetMapObject(PlayerAvatar *avatar) {
     return avatar->mapObject;
 }
 
-LocalMapObject *PlayerAvatar_GetMapObjectConst(PlayerAvatar *avatar) {
+static LocalMapObject *PlayerAvatar_GetMapObjectConst(PlayerAvatar *avatar) {
     return avatar->mapObject;
 }
 
-void PlayerAvatar_SetState(PlayerAvatar *avatar, int state) {
-    if (state >= PLAYER_STATE_UNK_SP) {
-        GF_ASSERT(FALSE);
-    }
+void PlayerAvatar_SetState(PlayerAvatar *avatar, s32 state) {
+    GF_ASSERT(state < PLAYER_STATE_UNK_SP);
     avatar->state = state;
     sub_0205C800(avatar, state);
 }
 
-int PlayerAvatar_GetState(PlayerAvatar *avatar) {
-    if (!avatar) {
-        GF_ASSERT(FALSE);
-    }
+s32 PlayerAvatar_GetState(PlayerAvatar *avatar) {
+    GF_ASSERT(avatar != NULL);
     return avatar->state;
 }
 
-void PlayerAvatar_OrrTransitionFlags(PlayerAvatar *avatar, u32 flag) {
-    avatar->transFlag = avatar->transFlag | flag;
+void PlayerAvatar_SetTransitionFlagsBits(PlayerAvatar *avatar, u32 flags) {
+    avatar->transitionFlags |= flags;
 }
 
-void PlayerAvatar_SetTransitionFlags(PlayerAvatar *avatar, u32 flag) {
-    avatar->transFlag = flag;
+void PlayerAvatar_SetTransitionFlags(PlayerAvatar *avatar, u32 flags) {
+    avatar->transitionFlags = flags;
 }
 
 u32 PlayerAvatar_GetTransitionFlags(PlayerAvatar *avatar) {
-    return avatar->transFlag;
+    return avatar->transitionFlags;
 }
 
-void PlayerAvatar_SetGender(PlayerAvatar *avatar, u32 gender) {
+static void PlayerAvatar_SetGender(PlayerAvatar *avatar, u32 gender) {
     avatar->gender = gender;
 }
 
-int PlayerAvatar_GetGender(PlayerAvatar *avatar) {
+u32 PlayerAvatar_GetGender(PlayerAvatar *avatar) {
     return avatar->gender;
 }
 
-void PlayerAvatar_SetFlagsBits(PlayerAvatar *avatar, PlayerAvatarFlags bits) {
-    avatar->flags = (PlayerAvatarFlags)(avatar->flags | bits);
+static void PlayerAvatar_SetFlagsBits(PlayerAvatar *avatar, PlayerAvatarFlags flags) {
+    avatar->flags |= flags;
 }
 
-void PlayerAvatar_ClearFlagsBits(PlayerAvatar *avatar, PlayerAvatarFlags bits) {
-    avatar->flags = (PlayerAvatarFlags)(avatar->flags & ~bits);
+static void PlayerAvatar_ClearFlagsBits(PlayerAvatar *avatar, PlayerAvatarFlags flags) {
+    avatar->flags &= ~flags;
 }
 
-PlayerAvatarFlags PlayerAvatar_GetFlagsBitsMask(PlayerAvatar *avatar, PlayerAvatarFlags bits) {
-    return (PlayerAvatarFlags)(avatar->flags & bits);
+static PlayerAvatarFlags PlayerAvatar_GetFlagsBitsMask(PlayerAvatar *avatar, PlayerAvatarFlags flags) {
+    return (PlayerAvatarFlags)(avatar->flags & flags);
 }
 
 u32 sub_0205C744(PlayerAvatar *avatar) {
@@ -445,7 +440,7 @@ void sub_0205C7B4(PlayerAvatar *avatar) {
 void PlayerSaveData_Init(struct PlayerSaveData *playerSaveData) {
     playerSaveData->hasRunningShoes = 0;
     playerSaveData->runningShoesLock = 0;
-    playerSaveData->unk4 = 0;
+    playerSaveData->state = 0;
 }
 
 BOOL PlayerSaveData_CheckRunningShoes(struct PlayerSaveData *playerSaveData) {
@@ -465,18 +460,18 @@ void PlayerSaveData_SetRunningShoesFlag(struct PlayerSaveData *playerSaveData, B
     }
 }
 
-int sub_0205C7EC(PlayerSaveData *playerSaveData) {
+int PlayerSaveData_GetState(PlayerSaveData *playerSaveData) {
     if (!playerSaveData) {
         return 0;
     }
-    return playerSaveData->unk4;
+    return playerSaveData->state;
 }
 
 void sub_0205C7F8(PlayerSaveData *playerSaveData, int state) {
     if (!playerSaveData) {
         return;
     }
-    playerSaveData->unk4 = state;
+    playerSaveData->state = state;
 }
 
 void sub_0205C800(PlayerAvatar *avatar, int state) {
@@ -485,8 +480,8 @@ void sub_0205C800(PlayerAvatar *avatar, int state) {
 
 void sub_0205C810(PlayerAvatar *avatar, VecFx32 *pos, u32 dir) {
     LocalMapObject_SetPositionFromVectorAndDirection(PlayerAvatar_GetMapObject(avatar), pos, dir);
-    sub_0205C6C8(avatar, 0);
-    sub_0205C6D0(avatar, 0);
+    PlayerAvatar_SetUnk10(avatar, 0);
+    PlayerAvatar_SetUnk14(avatar, 0);
 }
 
 void sub_0205C838(PlayerAvatar *avatar, int unkA) {
@@ -516,7 +511,7 @@ void PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(PlayerAvatar *avatar, B
     }
 }
 
-u32 PlayerAvatar_GetSpriteByStateAndGender(u32 state, int gender) {
+u32 PlayerAvatar_GetSpriteByStateAndGender(s32 state, int gender) {
     if (!gender) {
         switch (state) {
         case PLAYER_STATE_WALKING:

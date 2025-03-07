@@ -1803,10 +1803,10 @@ _02061EE2:
 	pop {r3, r4, r5, r6, r7, pc}
 _02061EFE:
 	add r0, r6, #0
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r4, r0, #0
 	add r0, r6, #0
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #0
@@ -1894,10 +1894,10 @@ _02061F92:
 	bl MapObject_GetFieldSystem
 	bl FieldSystem_GetPlayerAvatar
 	str r0, [sp, #0xc]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	str r0, [sp, #0x10]
 	ldr r0, [sp, #0xc]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	ldr r2, [sp, #8]
 	ldr r1, [sp, #0x10]
 	cmp r2, r1
