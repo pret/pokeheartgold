@@ -125,10 +125,10 @@ FieldInput_Update: ; 0x021E6928
 	lsr r6, r0, #0x10
 _021E694E:
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6D4
+	bl PlayerAvatar_GetUnk14
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6CC
+	bl PlayerAvatar_GetUnk10
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x40]
 	bl PlayerAvatar_GetFacingDirection
