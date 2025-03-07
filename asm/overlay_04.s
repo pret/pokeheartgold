@@ -111,7 +111,7 @@ ov04_02253ED4: ; 0x02253ED4
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
 	add r1, sp, #0
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	mov r0, #2
 	ldr r1, [sp, #4]
 	lsl r0, r0, #0x10
@@ -290,7 +290,7 @@ _02254026:
 _02254060:
 	ldr r0, [r4, #0x40]
 	add r1, sp, #0
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	mov r0, #1
 	ldr r1, [sp, #4]
 	lsl r0, r0, #0x10
@@ -388,7 +388,7 @@ _022540F6:
 _02254130:
 	ldr r0, [r4, #0x40]
 	add r1, sp, #0
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	mov r0, #1
 	ldr r1, [sp, #4]
 	lsl r0, r0, #0x10
@@ -1392,7 +1392,7 @@ _0225494A:
 	mov r0, #0
 	str r0, [r4, #0x1c]
 	ldr r0, [r5, #0x40]
-	bl PlayerAvatar_GetPositionVecConst
+	bl PlayerAvatar_GetPositionVectorConst
 	ldr r1, [r5, #0x2c]
 	bl ov01_021F62E8
 _0225495E:

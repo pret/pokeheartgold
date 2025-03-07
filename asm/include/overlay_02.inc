@@ -245,7 +245,7 @@
 .public PlayerAvatar_GetFacingDirection
 .public PlayerAvatar_GetXCoord
 .public PlayerAvatar_GetZCoord
-.public PlayerAvatar_GetPositionVec
+.public PlayerAvatar_CopyPositionVector
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_GetState
 .public PlayerAvatar_GetGender

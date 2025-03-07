@@ -469,13 +469,13 @@ sub_020570C8: ; 0x020570C8
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C6CC
+	bl PlayerAvatar_GetUnk10
 	add r4, r0, #0
 	ldr r0, _02057128 ; =_021D41C4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C6D4
+	bl PlayerAvatar_GetUnk14
 	add r5, r0, #0
 	cmp r4, #0
 	bne _02057112

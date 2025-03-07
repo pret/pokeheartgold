@@ -8,9 +8,9 @@
 .public PlayerAvatar_GetFacingDirection
 .public PlayerAvatar_GetXCoord
 .public PlayerAvatar_GetZCoord
-.public GetPlayerLastXCoord
-.public GetPlayerLastZCoord
-.public sub_0205C6D4
+.public PlayerAvatar_GetPreviousXCoord
+.public PlayerAvatar_GetPreviousZCoord
+.public PlayerAvatar_GetUnk14
 .public PlayerAvatar_GetMapObject
 .public FieldSystem_GetPlayerAvatar
 .public PlayerAvatar_CheckFlag6

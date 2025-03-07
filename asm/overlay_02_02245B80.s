@@ -740,7 +740,7 @@ _02246116:
 	ldr r0, [r4, #4]
 	add r1, sp, #0
 	ldr r0, [r0, #0x40]
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	ldr r0, [r4, #8]
 	ldr r1, [sp]
 	ldr r2, [sp, #4]
@@ -860,7 +860,7 @@ _02246204:
 	ldr r0, [r4, #4]
 	add r1, sp, #0
 	ldr r0, [r0, #0x40]
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	ldr r0, [r4, #8]
 	ldr r1, [sp]
 	ldr r2, [sp, #4]
@@ -15431,7 +15431,7 @@ ov02_0224D044: ; 0x0224D044
 	add r7, r1, #0
 	add r6, r0, #0
 	add r1, sp, #0
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	add r0, r6, #0
 	bl PlayerAvatar_GetXCoord
 	add r5, r0, #0
@@ -15487,7 +15487,7 @@ ov02_0224D0AC: ; 0x0224D0AC
 	sub sp, #0xc
 	add r4, r1, #0
 	add r1, sp, #0
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	ldr r1, [sp]
 	ldr r2, [sp, #4]
 	ldr r3, [sp, #8]
@@ -16333,7 +16333,7 @@ ov02_0224D698: ; 0x0224D698
 _0224D6B0:
 	add r0, r6, #0
 	add r1, sp, #0
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	ldr r2, [sp, #4]
 	ldr r3, [sp, #8]
 	ldr r1, [sp]
@@ -16473,7 +16473,7 @@ ov02_0224D7B0: ; 0x0224D7B0
 	ldr r0, [r4, r0]
 	add r1, sp, #0
 	ldr r0, [r0, #0x40]
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	mov r1, #0xcf
 	lsl r1, r1, #4
 	ldr r2, [sp]
@@ -16640,7 +16640,7 @@ _0224D8D8:
 	add r1, #0x10
 	ldr r0, [r0, #0x40]
 	add r1, r5, r1
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	ldr r0, _0224D910 ; =0x00000D0C
 	mov r1, #0
 	str r1, [r5, r0]
@@ -17502,7 +17502,7 @@ ov02_0224DF1C: ; 0x0224DF1C
 	ldr r0, [r4, r1]
 	add r1, sp, #0xc
 	ldr r0, [r0, #0x40]
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	ldr r0, _0224E004 ; =0x00000E9A
 	ldrh r1, [r4, r0]
 	cmp r1, #0
@@ -18166,7 +18166,7 @@ _0224E40E:
 _0224E414:
 	ldr r0, [r5, #0x40]
 	add r1, sp, #0x10
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	add r0, sp, #0xc
 	str r0, [sp]
 	ldr r1, [sp, #0x14]
@@ -18326,7 +18326,7 @@ _0224E52A:
 	asr r7, r0, #0x10
 	ldr r0, [r5, #0x40]
 	add r1, sp, #0x20
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	ldr r0, [sp, #0x14]
 	add r1, r7, #0
 	bl ov02_0224E31C
@@ -18505,7 +18505,7 @@ ov02_0224E698: ; 0x0224E698
 	asr r4, r0, #0x10
 	ldr r0, [r5, #0x40]
 	add r1, sp, #0x14
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	ldr r0, [r5, #0xc]
 	bl Save_SafariZone_Get
 	mov r1, #0

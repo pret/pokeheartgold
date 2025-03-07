@@ -2303,7 +2303,7 @@ BOOL ScrCmd_183(ScriptContext *ctx) {
     void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
     u16 partyIdx = ScriptGetVar(ctx);
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), partyIdx);
-    int playerGender = PlayerAvatar_GetGender(ctx->fieldSystem->playerAvatar);
+    u32 playerGender = PlayerAvatar_GetGender(ctx->fieldSystem->playerAvatar);
     *p_work = ov02_02249458(ctx->fieldSystem, 0, mon, playerGender);
     SetupNativeScript(ctx, sub_0204378C);
     return TRUE;
@@ -2364,7 +2364,7 @@ BOOL ScrCmd_GetPlayerState(ScriptContext *ctx) {
 
 BOOL ScrCmd_SetAvatarBits(ScriptContext *ctx) {
     u16 flags = ScriptReadHalfword(ctx);
-    PlayerAvatar_OrrTransitionFlags(ctx->fieldSystem->playerAvatar, flags);
+    PlayerAvatar_SetTransitionFlagsBits(ctx->fieldSystem->playerAvatar, flags);
     return TRUE;
 }
 
