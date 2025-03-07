@@ -37,7 +37,7 @@
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_SetState
 .public PlayerAvatar_GetState
-.public PlayerAvatar_OrrTransitionFlags
+.public PlayerAvatar_SetTransitionFlagsBits
 .public PlayerAvatar_SetTransitionFlags
 .public PlayerAvatar_GetTransitionFlags
 .public PlayerAvatar_GetGender

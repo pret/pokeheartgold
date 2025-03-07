@@ -1472,7 +1472,7 @@ _021E6566:
 	bl sub_0205F568
 _021E656A:
 	ldr r0, [r5, #0x40]
-	bl PlayerAvatar_GetPositionVecConst
+	bl PlayerAvatar_GetPositionVectorConst
 	ldr r1, [r5, #0x2c]
 	bl ov01_021F62E8
 	add sp, #0x14
@@ -1499,7 +1499,7 @@ ov01_021E6580: ; 0x021E6580
 	bl LocalFieldData_GetCameraType
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
-	bl PlayerAvatar_GetPositionVecConst
+	bl PlayerAvatar_GetPositionVectorConst
 	add r1, r4, #0
 	add r2, r5, #0
 	mov r3, #1

@@ -502,7 +502,7 @@ sub_02056A54: ; 0x02056A54
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
 	add r1, sp, #0x28
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	cmp r5, #3
 	bne _02056AA2
 	mov r0, #1
@@ -531,11 +531,11 @@ _02056AAC:
 	add r2, r5, #0
 	bl sub_0205C810
 	ldr r0, [r4, #0x40]
-	bl PlayerAvatar_GetPositionVecConst
+	bl PlayerAvatar_GetPositionVectorConst
 	ldr r1, [r4, #0x24]
 	bl Camera_SetLookAtTargetAndRecalcPos
 	ldr r0, [r4, #0x40]
-	bl PlayerAvatar_GetPositionVecConst
+	bl PlayerAvatar_GetPositionVectorConst
 	ldr r1, [r4, #0x24]
 	bl Camera_SetFixedTarget
 	ldr r1, [r4, #0x24]
@@ -572,7 +572,7 @@ sub_02056AEC: ; 0x02056AEC
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
 	add r1, sp, #0x28
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetXCoord
 	add r6, r0, #0
@@ -618,11 +618,11 @@ _02056B70:
 	add r2, r4, #0
 	bl sub_0205C810
 	ldr r0, [r5, #0x40]
-	bl PlayerAvatar_GetPositionVecConst
+	bl PlayerAvatar_GetPositionVectorConst
 	ldr r1, [r5, #0x24]
 	bl Camera_SetLookAtTargetAndRecalcPos
 	ldr r0, [r5, #0x40]
-	bl PlayerAvatar_GetPositionVecConst
+	bl PlayerAvatar_GetPositionVectorConst
 	ldr r1, [r5, #0x24]
 	bl Camera_SetFixedTarget
 	ldr r1, [r5, #0x24]
@@ -669,7 +669,7 @@ sub_02056BC8: ; 0x02056BC8
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
 	add r1, sp, #0x24
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	ldr r0, [r4, #0x40]
 	mov r1, #0
 	bl PlayerAvatar_ToggleAutomaticHeightUpdating
@@ -683,11 +683,11 @@ sub_02056BC8: ; 0x02056BC8
 	mov r2, #0
 	bl sub_0205C810
 	ldr r0, [r4, #0x40]
-	bl PlayerAvatar_GetPositionVecConst
+	bl PlayerAvatar_GetPositionVectorConst
 	ldr r1, [r4, #0x24]
 	bl Camera_SetLookAtTargetAndRecalcPos
 	ldr r0, [r4, #0x40]
-	bl PlayerAvatar_GetPositionVecConst
+	bl PlayerAvatar_GetPositionVectorConst
 	ldr r1, [r4, #0x24]
 	bl Camera_SetFixedTarget
 	ldr r1, [r4, #0x24]
@@ -735,7 +735,7 @@ sub_02056C64: ; 0x02056C64
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
 	add r1, sp, #0x24
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	ldr r0, [r4, #0x40]
 	mov r1, #0
 	bl PlayerAvatar_ToggleAutomaticHeightUpdating
@@ -749,11 +749,11 @@ sub_02056C64: ; 0x02056C64
 	mov r2, #0
 	bl sub_0205C810
 	ldr r0, [r4, #0x40]
-	bl PlayerAvatar_GetPositionVecConst
+	bl PlayerAvatar_GetPositionVectorConst
 	ldr r1, [r4, #0x24]
 	bl Camera_SetLookAtTargetAndRecalcPos
 	ldr r0, [r4, #0x40]
-	bl PlayerAvatar_GetPositionVecConst
+	bl PlayerAvatar_GetPositionVectorConst
 	ldr r1, [r4, #0x24]
 	bl Camera_SetFixedTarget
 	ldr r1, [r4, #0x24]
