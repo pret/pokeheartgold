@@ -1945,7 +1945,7 @@ _021EC032:
 	bl Sprite_CreateAffine
 	str r0, [r5, #0x4c]
 	add r1, r7, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r5, #0x4c]
 	cmp r0, #0
 	bne _021EC04C
@@ -2213,7 +2213,7 @@ _021EC22A:
 _021EC234:
 	ldr r0, [r4, #4]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021EC1F4
@@ -2279,7 +2279,7 @@ ov01_021EC29C: ; 0x021EC29C
 	str r1, [r0, #0x38]
 	ldr r0, [r4, #4]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r0, r4, #0
 	bl ov01_021EC1E4
 	add r0, r4, #0
@@ -3555,7 +3555,7 @@ _021ECBC6:
 	lsl r1, r5, #0x10
 	ldr r0, [r6, #4]
 	lsr r1, r1, #0x10
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 	add r0, r7, #0
 	mov r1, #0x14
 	bl _u32_div_f
@@ -3671,7 +3671,7 @@ _021ECCC8:
 	str r0, [r5]
 	ldr r0, [r6, #4]
 	mov r1, #3
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 _021ECCD8:
 	add r4, r4, #1
 	cmp r4, #2
@@ -4072,7 +4072,7 @@ _021ECFBE:
 	lsl r1, r7, #0x10
 	ldr r0, [r4, #4]
 	lsr r1, r1, #0x10
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 	add r0, r7, #1
 	neg r1, r0
 	str r1, [r5, #0x10]
@@ -4600,7 +4600,7 @@ _021ED42E:
 	ldr r0, [r4, #4]
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 	ldr r0, [sp, #0xc]
 	add r1, r0, #1
 	ldr r0, [sp, #4]

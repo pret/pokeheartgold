@@ -60,7 +60,7 @@ typedef struct GAME_BOARD_SUB_3C4 {
 
 typedef struct GAME_BOARD_SUB_3E8 {
     void *spriteList;
-    GF_G2dRenderer render;
+    G2dRenderer render;
     void *resourceMan[4];
     void *resourceObj[11][4];
 } GAME_BOARD_SUB_3E8;

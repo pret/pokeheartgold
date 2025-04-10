@@ -4004,11 +4004,11 @@ ov82_0223FC9C: ; 0x0223FC9C
 
 	thumb_func_start ov82_0223FCB0
 ov82_0223FCB0: ; 0x0223FCB0
-	ldr r3, _0223FCB8 ; =Sprite_SetVisibleFlag
+	ldr r3, _0223FCB8 ; =Sprite_SetDrawFlag
 	ldr r0, [r0, #0x10]
 	bx r3
 	nop
-_0223FCB8: .word Sprite_SetVisibleFlag
+_0223FCB8: .word Sprite_SetDrawFlag
 	thumb_func_end ov82_0223FCB0
 
 	thumb_func_start ov82_0223FCBC

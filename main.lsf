@@ -37,7 +37,7 @@ Static main
     Object src/message_format.o
     Object src/message_printer.o
     Object src/unk_0200CE7C.o
-    Object src/unk_0200CF18.o
+    Object src/sprite_system.o
     Object src/sys_task_api.o
     Object asm/render_window.o
     Object asm/unk_0200FA24.o

@@ -29,7 +29,7 @@ ov12_0226BBC4: ; 0x0226BBC4
 	add r0, r7, #0
 	add r2, r5, #0
 	add r3, r4, #0
-	bl sub_0200D68C
+	bl SpriteSystem_LoadPaletteBufferFromOpenNarc
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #2
@@ -39,7 +39,7 @@ ov12_0226BBC4: ; 0x0226BBC4
 	str r0, [sp, #8]
 	add r0, r5, #0
 	add r2, r6, #0
-	bl SpriteRenderer_LoadCharResObjFromOpenNarc
+	bl SpriteSystem_LoadCharResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [sp, #0x38]
@@ -48,7 +48,7 @@ ov12_0226BBC4: ; 0x0226BBC4
 	add r0, r5, #0
 	add r2, r6, #0
 	mov r3, #2
-	bl SpriteRenderer_LoadCellResObjFromOpenNarc
+	bl SpriteSystem_LoadCellResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [sp, #0x3c]
@@ -57,7 +57,7 @@ ov12_0226BBC4: ; 0x0226BBC4
 	add r0, r5, #0
 	add r2, r6, #0
 	mov r3, #3
-	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
+	bl SpriteSystem_LoadAnimResObjFromOpenNarc
 	add r0, r6, #0
 	bl NARC_Delete
 	add sp, #0x18
@@ -70,16 +70,16 @@ ov12_0226BC40: ; 0x0226BC40
 	add r5, r0, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl SpriteGfxHandler_UnloadCharObjById
+	bl SpriteManager_UnloadCharObjById
 	add r0, r5, #0
 	add r1, r4, #0
-	bl SpriteGfxHandler_UnloadPlttObjById
+	bl SpriteManager_UnloadPlttObjById
 	add r0, r5, #0
 	add r1, r6, #0
-	bl SpriteGfxHandler_UnloadCellObjById
+	bl SpriteManager_UnloadCellObjById
 	ldr r1, [sp, #0x10]
 	add r0, r5, #0
-	bl SpriteGfxHandler_UnloadAnimObjById
+	bl SpriteManager_UnloadAnimObjById
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov12_0226BC40
@@ -122,10 +122,10 @@ _0226BC78:
 	ldr r1, [sp]
 	add r0, r7, #0
 	add r2, sp, #4
-	bl SpriteRenderer_LoadResourcesAndCreateSprite
+	bl SpriteSystem_NewSprite
 	mov r1, #0
 	str r0, [r4]
-	bl UnkImageStruct_SetSpriteVisibleFlag
+	bl ManagedSprite_SetDrawFlag
 	mov r0, #3
 	lsl r0, r0, #0x12
 	str r0, [r4, #0x14]
@@ -148,7 +148,7 @@ ov12_0226BCE4: ; 0x0226BCE4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl UnkImageStruct_Delete
+	bl Sprite_DeleteAndFreeResources
 	ldr r0, [r4, #4]
 	bl SysTask_Destroy
 	add r0, r4, #0
@@ -173,10 +173,10 @@ ov12_0226BCFC: ; 0x0226BCFC
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	add r3, r6, #0
-	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
+	bl ManagedSprite_SetPositionXYWithSubscreenOffset
 	ldr r0, [r5]
 	mov r1, #1
-	bl UnkImageStruct_SetSpriteVisibleFlag
+	bl ManagedSprite_SetDrawFlag
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov12_0226BCFC
@@ -196,7 +196,7 @@ ov12_0226BD38: ; 0x0226BD38
 	add r4, r0, #0
 	ldr r0, [r4]
 	mov r1, #0
-	bl UnkImageStruct_SetSpriteVisibleFlag
+	bl ManagedSprite_SetDrawFlag
 	add r0, r4, #0
 	bl ov12_0226BEB8
 	pop {r4, pc}
@@ -237,7 +237,7 @@ _0226BD62:
 	strb r0, [r4, #0x1a]
 _0226BD78:
 	ldr r0, [r4]
-	bl UnkImageStruct_GetSpriteVisibleFlag
+	bl ManagedSprite_GetDrawFlag
 	cmp r0, #0
 	bne _0226BD84
 	b _0226BEB0
@@ -303,7 +303,7 @@ _0226BDB2:
 	ldr r0, [r4]
 	ldr r3, [r4, #0x14]
 	asr r2, r2, #0x10
-	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
+	bl ManagedSprite_SetPositionXYWithSubscreenOffset
 _0226BE06:
 	ldrb r0, [r4, #0x1c]
 	cmp r0, #1
@@ -345,7 +345,7 @@ _0226BE3E:
 	ldr r3, [r4, #0x14]
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
-	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
+	bl ManagedSprite_SetPositionXYWithSubscreenOffset
 	mov r0, #1
 	strb r0, [r4, #0x1b]
 	ldrb r0, [r4, #0x1d]
@@ -368,7 +368,7 @@ _0226BE60:
 	ldr r3, [r4, #0x14]
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
-	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
+	bl ManagedSprite_SetPositionXYWithSubscreenOffset
 	mov r0, #0
 	strb r0, [r4, #0x1e]
 	ldrb r0, [r4, #0x1d]
@@ -391,7 +391,7 @@ _0226BE8E:
 	strb r0, [r4, #0x1d]
 _0226BEAA:
 	ldr r0, [r4]
-	bl UnkImageStruct_TickSpriteAnimation1Frame
+	bl ManagedSprite_TickFrame
 _0226BEB0:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

@@ -1402,7 +1402,7 @@ static void *BattleArcadeObj_Delete(BATTLE_ARCADE_OBJECT *obj) {
 }
 
 static void BattleArcadeObj_SetVisible(BATTLE_ARCADE_OBJECT *obj, int flag) {
-    Sprite_SetVisibleFlag(obj->sprite, flag);
+    Sprite_SetDrawFlag(obj->sprite, flag);
 }
 
 static void BattleArcadeObj_SetPos(BATTLE_ARCADE_OBJECT *obj, u16 x, u16 y) {

@@ -2260,7 +2260,7 @@ _0200F564:
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl UnkImageStruct_Delete
+	bl Sprite_DeleteAndFreeResources
 	add r0, r4, #0
 	bl ov01_021E86F4
 	add r0, r5, #0
@@ -2279,7 +2279,7 @@ _0200F594:
 	sub r0, #0xb
 	ldr r0, [r4, r0]
 	ldr r0, [r0]
-	bl Sprite_GetAnimCtrlCurrentFrame
+	bl Sprite_GetAnimationFrame
 	cmp r0, #6
 	bne _0200F5A8
 	ldr r0, _0200F5C0 ; =0x0000016F
@@ -2292,7 +2292,7 @@ _0200F5A8:
 	mov r1, #1
 	ldr r0, [r0]
 	lsl r1, r1, #0xc
-	bl Sprite_TickAnimCtrlFrame
+	bl Sprite_UpdateAnim
 	ldr r0, [r4]
 	bl SpriteList_RenderAndAnimateSprites
 	pop {r3, r4, r5, pc}
@@ -2543,7 +2543,7 @@ sub_0200F748: ; 0x0200F748
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	ldr r1, _0200F828 ; =0x00015CD5
-	bl Get2DGfxResObjById
+	bl SpriteResourceCollection_Find
 	bl sub_0200AF00
 	mov r1, #1
 	str r0, [sp, #4]
@@ -2570,9 +2570,9 @@ sub_0200F748: ; 0x0200F748
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r1, _0200F828 ; =0x00015CD5
-	bl Get2DGfxResObjById
+	bl SpriteResourceCollection_Find
 	ldr r1, [sp, #4]
-	bl GF_PlttResObj_GetPlttProxy
+	bl SpriteTransfer_GetPaletteProxy
 	mov r1, #1
 	bl NNS_G2dGetImagePaletteLocation
 	add r5, r0, #0

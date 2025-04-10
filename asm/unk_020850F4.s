@@ -297,11 +297,11 @@ _02085294:
 	ldr r0, [r4, r1]
 	add r1, r1, #4
 	ldr r1, [r4, r1]
-	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
+	bl SpriteSystem_FreeResourcesAndManager
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl SpriteRenderer_Delete
+	bl SpriteSystem_Free
 	mov r0, #3
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]
@@ -572,7 +572,7 @@ sub_020855CC: ; 0x020855CC
 	push {r4, lr}
 	add r4, r0, #0
 	bl GF_RunVramTransferTasks
-	bl thunk_OamManager_ApplyAndResetBuffers
+	bl SpriteSystem_TransferOam
 	mov r0, #0xbf
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

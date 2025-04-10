@@ -1210,7 +1210,7 @@ _02246DF6:
 	ldr r0, [r6, #0x18]
 	cmp r0, #0
 	beq _02246E0C
-	bl UnkImageStruct_Delete
+	bl Sprite_DeleteAndFreeResources
 	str r7, [r6, #0x18]
 _02246E0C:
 	ldr r0, [r4]
@@ -3817,7 +3817,7 @@ ov12_02248228: ; 0x02248228
 	add r0, r6, #0
 	add r1, r4, #0
 	add r3, #0xf8
-	bl SpriteRenderer_LoadCharResObjFromNarcId
+	bl SpriteSystem_LoadCharResObj
 	mov r0, #8
 	str r0, [sp]
 	mov r0, #0x52
@@ -3833,7 +3833,7 @@ ov12_02248228: ; 0x02248228
 	str r0, [sp, #0x14]
 	add r0, r7, #0
 	add r3, r4, #0
-	bl sub_0200D644
+	bl SpriteSystem_LoadPaletteBuffer
 	mov r0, #1
 	str r0, [sp]
 	ldr r0, _022484B0 ; =0x00004E2D
@@ -3843,7 +3843,7 @@ ov12_02248228: ; 0x02248228
 	add r0, r6, #0
 	add r1, r4, #0
 	add r3, #0xf9
-	bl SpriteRenderer_LoadCellResObjFromNarcId
+	bl SpriteSystem_LoadCellResObj
 	mov r0, #1
 	str r0, [sp]
 	ldr r0, _022484B0 ; =0x00004E2D
@@ -3853,13 +3853,13 @@ ov12_02248228: ; 0x02248228
 	add r0, r6, #0
 	add r1, r4, #0
 	add r3, #0xfa
-	bl SpriteRenderer_LoadAnimResObjFromNarcId
+	bl SpriteSystem_LoadAnimResObj
 	ldr r2, _022484B4 ; =ov12_0226C428
 	add r0, r6, #0
 	add r1, r4, #0
-	bl SpriteRenderer_LoadResourcesAndCreateSprite
+	bl SpriteSystem_NewSprite
 	str r0, [r5, #0xc]
-	bl UnkImageStruct_TickSpriteAnimation1Frame
+	bl ManagedSprite_TickFrame
 	ldr r0, [sp, #0x18]
 	bl Pokemon_GetIconNaix
 	add r3, r0, #0
@@ -3872,7 +3872,7 @@ ov12_02248228: ; 0x02248228
 	str r0, [sp, #8]
 	add r0, r6, #0
 	mov r2, #0x14
-	bl sub_0200E188
+	bl SpriteSystem_LoadCharResObjAtEndWithHardwareMappingType
 	bl sub_02074490
 	mov r1, #0x14
 	str r1, [sp]
@@ -3889,7 +3889,7 @@ ov12_02248228: ; 0x02248228
 	add r0, r7, #0
 	add r2, r6, #0
 	add r3, r4, #0
-	bl sub_0200D644
+	bl SpriteSystem_LoadPaletteBuffer
 	bl sub_0207449C
 	add r3, r0, #0
 	mov r0, #0
@@ -3899,7 +3899,7 @@ ov12_02248228: ; 0x02248228
 	str r0, [sp, #4]
 	add r0, r6, #0
 	mov r2, #0x14
-	bl SpriteRenderer_LoadCellResObjFromNarcId
+	bl SpriteSystem_LoadCellResObj
 	bl sub_020744A8
 	add r3, r0, #0
 	mov r0, #0
@@ -3909,11 +3909,11 @@ ov12_02248228: ; 0x02248228
 	str r0, [sp, #4]
 	add r0, r6, #0
 	mov r2, #0x14
-	bl SpriteRenderer_LoadAnimResObjFromNarcId
+	bl SpriteSystem_LoadAnimResObj
 	ldr r2, _022484C4 ; =ov12_0226C45C
 	add r0, r6, #0
 	add r1, r4, #0
-	bl SpriteRenderer_LoadResourcesAndCreateSprite
+	bl SpriteSystem_NewSprite
 	str r0, [r5, #0x10]
 	ldr r0, [sp, #0x18]
 	bl Pokemon_GetIconPalette
@@ -3922,7 +3922,7 @@ ov12_02248228: ; 0x02248228
 	ldr r0, [r0]
 	bl Sprite_SetPalOffsetRespectVramOffset
 	ldr r0, [r5, #0x10]
-	bl UnkImageStruct_TickSpriteAnimation1Frame
+	bl ManagedSprite_TickFrame
 	mov r0, #1
 	mov r1, #5
 	bl sub_02013534
@@ -4021,11 +4021,11 @@ _022483C6:
 	add r0, sp, #0x68
 	str r0, [sp, #0x30]
 	add r0, r4, #0
-	bl sub_0200E2B0
+	bl SpriteManager_GetSpriteList
 	str r0, [sp, #0x34]
 	ldr r1, _022484AC ; =0x00004E30
 	add r0, r4, #0
-	bl GfGfxHandler_GetPlttProxy
+	bl SpriteManager_FindPlttResourceProxy
 	mov r1, #0
 	str r0, [sp, #0x38]
 	ldr r0, [sp, #0x60]
@@ -4080,9 +4080,9 @@ ov12_022484D4: ; 0x022484D4
 	bl BattleSystem_GetGfxHandler
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl UnkImageStruct_Delete
+	bl Sprite_DeleteAndFreeResources
 	ldr r0, [r5, #0x10]
-	bl UnkImageStruct_Delete
+	bl Sprite_DeleteAndFreeResources
 	ldr r0, [r5, #0x14]
 	bl sub_02013660
 	add r0, r5, #0
@@ -4090,28 +4090,28 @@ ov12_022484D4: ; 0x022484D4
 	bl sub_02021B5C
 	ldr r1, _02248540 ; =0x00004E35
 	add r0, r4, #0
-	bl SpriteGfxHandler_UnloadCharObjById
+	bl SpriteManager_UnloadCharObjById
 	ldr r1, _02248544 ; =0x00004E30
 	add r0, r4, #0
-	bl SpriteGfxHandler_UnloadPlttObjById
+	bl SpriteManager_UnloadPlttObjById
 	ldr r1, _02248548 ; =0x00004E2D
 	add r0, r4, #0
-	bl SpriteGfxHandler_UnloadCellObjById
+	bl SpriteManager_UnloadCellObjById
 	ldr r1, _02248548 ; =0x00004E2D
 	add r0, r4, #0
-	bl SpriteGfxHandler_UnloadAnimObjById
+	bl SpriteManager_UnloadAnimObjById
 	ldr r1, _0224854C ; =0x00004E36
 	add r0, r4, #0
-	bl SpriteGfxHandler_UnloadCharObjById
+	bl SpriteManager_UnloadCharObjById
 	ldr r1, _02248550 ; =0x00004E31
 	add r0, r4, #0
-	bl SpriteGfxHandler_UnloadPlttObjById
+	bl SpriteManager_UnloadPlttObjById
 	ldr r1, _02248554 ; =0x00004E2E
 	add r0, r4, #0
-	bl SpriteGfxHandler_UnloadCellObjById
+	bl SpriteManager_UnloadCellObjById
 	ldr r1, _02248554 ; =0x00004E2E
 	add r0, r4, #0
-	bl SpriteGfxHandler_UnloadAnimObjById
+	bl SpriteManager_UnloadAnimObjById
 	ldr r0, [r5, #0x50]
 	bl sub_020135AC
 	pop {r3, r4, r5, pc}

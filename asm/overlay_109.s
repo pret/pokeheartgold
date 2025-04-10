@@ -123,7 +123,7 @@ _021E59E0:
 _021E59E4:
 	add r5, #0x94
 	ldr r0, [r5]
-	bl SpriteGfxHandler_RenderAndAnimateSprites
+	bl SpriteSystem_DrawSprites
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end PhotoAlbum_Main
@@ -2040,7 +2040,7 @@ ov109_021E685C: ; 0x021E685C
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _021E686C
-	bl thunk_OamManager_ApplyAndResetBuffers
+	bl SpriteSystem_TransferOam
 _021E686C:
 	add r0, r4, #0
 	bl ov109_021E6898
@@ -2724,7 +2724,7 @@ ov109_021E6DE4: ; 0x021E6DE4
 	mov r0, #0x20
 	bl GF_CreateVramTransferManager
 	ldr r0, [r4]
-	bl SpriteRenderer_Create
+	bl SpriteSystem_Alloc
 	add r1, r4, #0
 	add r1, #0x90
 	str r0, [r1]
@@ -2734,7 +2734,7 @@ ov109_021E6DE4: ; 0x021E6DE4
 	ldr r1, _021E6E58 ; =ov109_021E79D0
 	ldr r2, _021E6E5C ; =ov109_021E78C8
 	mov r3, #3
-	bl SpriteRenderer_CreateOamCharPlttManagers
+	bl SpriteSystem_Init
 	ldr r0, [r4]
 	bl sub_0200B2E0
 	ldr r0, [r4]
@@ -2742,7 +2742,7 @@ ov109_021E6DE4: ; 0x021E6DE4
 	add r0, r4, #0
 	add r0, #0x90
 	ldr r0, [r0]
-	bl SpriteRenderer_CreateGfxHandler
+	bl SpriteManager_New
 	add r1, r4, #0
 	add r1, #0x94
 	str r0, [r1]
@@ -2753,7 +2753,7 @@ ov109_021E6DE4: ; 0x021E6DE4
 	ldr r0, [r0]
 	ldr r1, [r1]
 	mov r2, #5
-	bl SpriteRenderer_CreateSpriteList
+	bl SpriteSystem_InitSprites
 	mov r0, #1
 	str r0, [sp]
 	add r0, r4, #0
@@ -2781,7 +2781,7 @@ ov109_021E6E64: ; 0x021E6E64
 	add r1, #0x94
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl SpriteRenderer_RemoveGfxHandler
+	bl SpriteSystem_DestroySpriteManager
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0x94
@@ -2789,7 +2789,7 @@ ov109_021E6E64: ; 0x021E6E64
 	add r0, r4, #0
 	add r0, #0x90
 	ldr r0, [r0]
-	bl SpriteRenderer_Delete
+	bl SpriteSystem_Free
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0x90
@@ -2851,7 +2851,7 @@ _021E6EEE:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	add r2, r4, #0
-	bl SpriteRenderer_CreateSprite
+	bl SpriteSystem_CreateSpriteFromResourceHeader
 	add r1, r5, #0
 	add r1, #0x98
 	str r0, [r1]
@@ -2859,7 +2859,7 @@ _021E6EEE:
 	add r0, #0x98
 	ldr r0, [r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r0, r5, #0
 	add r0, #0x98
 	mov r1, #1
@@ -2880,7 +2880,7 @@ _021E6EEE:
 	add r0, #0x9c
 	ldr r0, [r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r0, r6, #0
 	add r0, #0xa8
 	ldr r0, [r0]
@@ -3558,7 +3558,7 @@ ov109_021E7474: ; 0x021E7474
 	ldr r0, [r0]
 	add r1, r3, #0
 	add r6, r2, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	cmp r6, #3
 	bne _021E749C
 	add r0, r5, #0
@@ -3567,7 +3567,7 @@ ov109_021E7474: ; 0x021E7474
 	mov r1, #1
 	mov r7, #0xc0
 	mov r4, #0xa0
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 	b _021E74C4
 _021E749C:
 	mov r0, #0x30
@@ -3588,7 +3588,7 @@ _021E749C:
 	add r0, #0x98
 	ldr r0, [r0]
 	mov r1, #0
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 _021E74C4:
 	add r5, #0x98
 	ldr r0, [r5]
@@ -3637,7 +3637,7 @@ _021E74EE:
 	add r5, #0x9c
 	ldr r0, [r5]
 	add r1, r4, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov109_021E74D4
 
@@ -4033,7 +4033,7 @@ ov109_021E7810: ; 0x021E7810
 	ldr r0, [r4]
 	add r0, #0xa8
 	ldr r0, [r0]
-	bl Sprite_IsCellAnimationRunning
+	bl Sprite_IsAnimated
 	cmp r0, #0
 	bne _021E784C
 	ldr r0, [r4]

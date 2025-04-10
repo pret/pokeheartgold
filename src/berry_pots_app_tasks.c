@@ -48,7 +48,7 @@ void ov17_0220351C(BerryPotsAppData *data) {
 static void ov17_022035A4(SysTask *task, SysTaskArgs_ov17_0220351C *args) {
     BerryPotsAppData *data = args->data;
 
-    Sprite_AddPositionXY(data->sprites[2], args->sign * 4, 0);
+    Sprite_OffsetPositionXY(data->sprites[2], args->sign * 4, 0);
     s16 x, y;
     Sprite_GetPositionXY(data->sprites[2], &x, &y);
 
@@ -74,7 +74,7 @@ typedef struct SysTaskArgs_ov17_02203674 {
     u8 state;
     u8 framesOnScreen;
     u8 potIndex;
-    UnkImageStruct *berrySprite;
+    ManagedSprite *berrySprite;
 } SysTaskArgs_ov17_02203674;
 
 static void ov17_02203674(SysTask *, SysTaskArgs_ov17_02203674 *);
@@ -99,13 +99,13 @@ static void ov17_02203674(SysTask *task, SysTaskArgs_ov17_02203674 *args) {
         args->state++;
         break;
     case 1:
-        UnkImageStruct_AddSpritePositionXY(args->berrySprite, 2, -2);
+        ManagedSprite_OffsetPositionXY(args->berrySprite, 2, -2);
         if (args->framesOnScreen++ >= 8) {
             args->state++;
         }
         break;
     case 2:
-        UnkImageStruct_Delete(args->berrySprite);
+        Sprite_DeleteAndFreeResources(args->berrySprite);
 
         data->runningTasks--;
         FreeToHeap(args);
@@ -204,9 +204,9 @@ static void ov17_02203928(BerryPotsAppData *data) {
         BerryPotsAppData_UnkSub20 *sub = &data->unk20[i];
 
         if (sub->soilState != sub->unkD) {
-            Sprite_SetAnimCtrlCurrentFrame(data->sprites[3 + i], sub->soilState);
+            Sprite_SetAnimationFrame(data->sprites[3 + i], sub->soilState);
             if (sub->growthStage == BERRY_POT_GROWTH_STAGE_PLANTED) {
-                Sprite_SetAnimCtrlCurrentFrame(sub->soilSpriteMaybe, sub->soilState);
+                Sprite_SetAnimationFrame(sub->soilSpriteMaybe, sub->soilState);
             }
         }
 
@@ -228,7 +228,7 @@ static void ov17_022039A0(SysTask *task, SysTaskArgs_ov17_022039A0 *args) {
 
     switch (args->state) {
     case 0:
-        Sprite_SetVisibleFlag(data->sprites[7 + args->potIndex], TRUE);
+        Sprite_SetDrawFlag(data->sprites[7 + args->potIndex], TRUE);
         PlaySE(SEQ_SE_PL_EFF05);
         args->state++;
         break;
@@ -241,7 +241,7 @@ static void ov17_022039A0(SysTask *task, SysTaskArgs_ov17_022039A0 *args) {
         }
 
         if (args->unk5 >= 30) {
-            Sprite_SetVisibleFlag(data->sprites[7 + args->potIndex], FALSE);
+            Sprite_SetDrawFlag(data->sprites[7 + args->potIndex], FALSE);
 
             data->runningTasks--;
             FreeToHeap(args);

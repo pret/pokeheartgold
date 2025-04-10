@@ -11,7 +11,7 @@
 #include "options.h"
 #include "player_data.h"
 #include "touchscreen_list_menu.h"
-#include "unk_0200CF18.h"
+#include "sprite_system.h"
 
 typedef struct Ov122_021E70B8 {
     BgConfig *bgConfig;
@@ -43,9 +43,9 @@ typedef struct VoltorbFlipAppWork {
     LISTMENUITEM *menuItems[2];
     void *unk13C;
     String *string;
-    SpriteRenderer *spriteRenderer;
-    SpriteGfxHandler *spriteGfxHandler;
-    UnkImageStruct *unk14C[0xd];
+    SpriteSystem *spriteRenderer;
+    SpriteManager *spriteGfxHandler;
+    ManagedSprite *unk14C[0xd];
     MsgData *msgData;
     MessageFormat *msgFmt;
     u16 unk188[10][8];

@@ -85,7 +85,7 @@ _0225F0A2:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #6
@@ -221,7 +221,7 @@ _0225F136:
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0xf2
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -425,7 +425,7 @@ _0225F358:
 	mov r0, #0x17
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _0225F394:
 	mov r1, #0x86
 	mov r2, #0xaa
@@ -452,7 +452,7 @@ _0225F394:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	add r1, sp, #0x34
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	mov r1, #0xce
 	lsl r1, r1, #2
 	mov r0, #0x17
@@ -461,7 +461,7 @@ _0225F394:
 	lsl r1, r1, #0x10
 	ldr r0, [r5, r0]
 	lsr r1, r1, #0x10
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 _0225F3E4:
 	ldr r0, [sp, #0x2c]
 	add r5, r5, #4
@@ -707,7 +707,7 @@ _0225F560:
 	bl ov01_021F0718
 	str r0, [r4]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4]
 	mov r1, #1
 	bl Sprite_SetOamMode
@@ -1010,7 +1010,7 @@ _0225F820:
 	bl G2x_SetBlendAlpha_
 	ldr r0, [r4]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x6d
 	mov r1, #0
 	lsl r0, r0, #2

@@ -18097,7 +18097,7 @@ ov83_02247264: ; 0x02247264
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r6, r2, #0
-	bl Get2DGfxResObjById
+	bl SpriteResourceCollection_Find
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #1
@@ -18127,7 +18127,7 @@ ov83_022472A0: ; 0x022472A0
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	add r6, r2, #0
-	bl Get2DGfxResObjById
+	bl SpriteResourceCollection_Find
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #2
@@ -18465,11 +18465,11 @@ _0224754A:
 
 	thumb_func_start ov83_0224755C
 ov83_0224755C: ; 0x0224755C
-	ldr r3, _02247564 ; =Sprite_SetVisibleFlag
+	ldr r3, _02247564 ; =Sprite_SetDrawFlag
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_02247564: .word Sprite_SetVisibleFlag
+_02247564: .word Sprite_SetDrawFlag
 	thumb_func_end ov83_0224755C
 
 	thumb_func_start ov83_02247568
@@ -18537,7 +18537,7 @@ ov83_022475D4: ; 0x022475D4
 	ldr r0, [r5, #4]
 	add r4, r1, #0
 	mov r1, #0
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 	ldr r0, [r5, #4]
 	add r1, r4, #0
 	bl Sprite_SetAnimCtrlSeq
@@ -18582,11 +18582,11 @@ ov83_0224760C: ; 0x0224760C
 
 	thumb_func_start ov83_02247624
 ov83_02247624: ; 0x02247624
-	ldr r3, _0224762C ; =Sprite_IsCellAnimationRunning
+	ldr r3, _0224762C ; =Sprite_IsAnimated
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_0224762C: .word Sprite_IsCellAnimationRunning
+_0224762C: .word Sprite_IsAnimated
 	thumb_func_end ov83_02247624
 
 	thumb_func_start ov83_02247630

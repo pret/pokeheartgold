@@ -128,11 +128,11 @@
 .public SpriteList_RenderAndAnimateSprites
 .public Sprite_CreateAffine
 .public Sprite_SetMatrix
-.public Sprite_SetVisibleFlag
+.public Sprite_SetDrawFlag
 .public Sprite_SetAnimActiveFlag
-.public Sprite_SetFlip_AffineOff
+.public Sprite_SetFlipMode
 .public Sprite_SetAnimCtrlSeq
-.public Sprite_SetPalIndex
+.public Sprite_SetPaletteOverride
 .public Sprite_SetPalOffset
 .public Sprite_SetDrawPriority
 .public Sprite_SetOamMode

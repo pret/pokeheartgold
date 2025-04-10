@@ -901,7 +901,7 @@ _021E62DE:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _021E62EA
-	bl SpriteGfxHandler_RenderAndAnimateSprites
+	bl SpriteSystem_DrawSprites
 _021E62EA:
 	ldr r0, [r4, #0x30]
 	bl PaletteData_GetSelectedBuffersBitmask
@@ -915,7 +915,7 @@ _021E62FA:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _021E6306
-	bl SpriteGfxHandler_RenderAndAnimateSprites
+	bl SpriteSystem_DrawSprites
 _021E6306:
 	ldrb r1, [r4, #0xc]
 	add r0, r4, #0
@@ -949,7 +949,7 @@ _021E6334:
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _021E634A
-	bl SpriteGfxHandler_RenderAndAnimateSprites
+	bl SpriteSystem_DrawSprites
 _021E634A:
 	add sp, #0xc
 	mov r0, #0
@@ -1018,7 +1018,7 @@ _021E63CE:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _021E63DC
-	bl thunk_OamManager_ApplyAndResetBuffers
+	bl SpriteSystem_TransferOam
 _021E63DC:
 	bl NNS_GfdDoVramTransfer
 	ldr r0, [r4, #0x18]
@@ -1971,14 +1971,14 @@ _021E6BC6:
 	mov r0, #0x20
 	bl GF_CreateVramTransferManager
 	ldr r0, [r5]
-	bl SpriteRenderer_Create
+	bl SpriteSystem_Alloc
 	add r1, r5, #0
 	add r1, #0xb0
 	str r0, [r1]
 	add r0, r5, #0
 	add r0, #0xb0
 	ldr r0, [r0]
-	bl SpriteRenderer_CreateGfxHandler
+	bl SpriteManager_New
 	add r1, r5, #0
 	add r1, #0xb4
 	add r2, sp, #0x40
@@ -2015,7 +2015,7 @@ _021E6BC6:
 	add r1, r3, #0
 	ldr r0, [r0]
 	mov r3, #0x20
-	bl SpriteRenderer_CreateOamCharPlttManagers
+	bl SpriteSystem_Init
 	add r0, r5, #0
 	add r1, r5, #0
 	add r0, #0xb0
@@ -2023,7 +2023,7 @@ _021E6BC6:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	mov r2, #3
-	bl SpriteRenderer_CreateSpriteList
+	bl SpriteSystem_InitSprites
 	add r0, r5, #0
 	add r1, r5, #0
 	add r0, #0xb0
@@ -2031,7 +2031,7 @@ _021E6BC6:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	add r2, sp, #0x14
-	bl SpriteRenderer_Init2DGfxResManagersFromCountsArray
+	bl SpriteSystem_InitManagerWithCapacities
 	ldr r0, [r5]
 	bl sub_0200B2E0
 	bl sub_02074490
@@ -2050,7 +2050,7 @@ _021E6BC6:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	mov r2, #0x14
-	bl SpriteRenderer_LoadPlttResObjFromNarcId
+	bl SpriteSystem_LoadPlttResObj
 	bl sub_02074494
 	add r3, r0, #0
 	mov r0, #0
@@ -2063,7 +2063,7 @@ _021E6BC6:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	mov r2, #0x14
-	bl SpriteRenderer_LoadCellResObjFromNarcId
+	bl SpriteSystem_LoadCellResObj
 	bl sub_020744A0
 	add r3, r0, #0
 	mov r0, #0
@@ -2076,7 +2076,7 @@ _021E6BC6:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	mov r2, #0x14
-	bl SpriteRenderer_LoadAnimResObjFromNarcId
+	bl SpriteSystem_LoadAnimResObj
 	mov r6, #0
 	add r4, r6, #0
 	str r6, [sp, #0x10]
@@ -2103,7 +2103,7 @@ _021E6CC4:
 	ldr r1, [r1]
 	mov r2, #0x14
 	lsr r3, r3, #0x14
-	bl sub_0200E128
+	bl SpriteSystem_LoadCharResObjWithHardwareMappingType
 	add r0, sp, #0x60
 	mov r1, #0
 	mov r2, #0x34
@@ -2146,7 +2146,7 @@ _021E6CC4:
 	add r1, #0xb4
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl SpriteRenderer_LoadResourcesAndCreateSprite
+	bl SpriteSystem_NewSprite
 	add r1, r7, #0
 	add r1, #0xb8
 	str r0, [r1]
@@ -2161,7 +2161,7 @@ _021E6CC4:
 	add r0, #0xb8
 	ldr r0, [r0]
 	mov r1, #0
-	bl UnkImageStruct_SetSpriteVisibleFlag
+	bl ManagedSprite_SetDrawFlag
 _021E6D6C:
 	ldr r0, [sp, #0x10]
 	add r6, r6, #1
@@ -2196,7 +2196,7 @@ _021E6D9E:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _021E6DAC
-	bl UnkImageStruct_Delete
+	bl Sprite_DeleteAndFreeResources
 _021E6DAC:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -2208,10 +2208,10 @@ _021E6DAC:
 	add r1, #0xb4
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
+	bl SpriteSystem_FreeResourcesAndManager
 	add r6, #0xb0
 	ldr r0, [r6]
-	bl SpriteRenderer_Delete
+	bl SpriteSystem_Free
 	bl GF_DestroyVramTransferManager
 _021E6DD0:
 	pop {r4, r5, r6, pc}

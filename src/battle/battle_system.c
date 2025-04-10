@@ -107,11 +107,11 @@ u32 *ov12_0223A8DC(BattleSystem *bsys) {
     return bsys->unk8C;
 }
 
-SpriteRenderer *BattleSystem_GetSpriteRenderer(BattleSystem *bsys) {
+SpriteSystem *BattleSystem_GetSpriteRenderer(BattleSystem *bsys) {
     return bsys->spriteRenderer;
 }
 
-SpriteGfxHandler *BattleSystem_GetGfxHandler(BattleSystem *bsys) {
+SpriteManager *BattleSystem_GetGfxHandler(BattleSystem *bsys) {
     return bsys->gfxHandler;
 }
 

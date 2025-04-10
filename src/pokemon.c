@@ -22,7 +22,7 @@
 #include "sprite.h"
 #include "trainer_data.h"
 #include "trainer_memo.h"
-#include "unk_0200CF18.h"
+#include "sprite_system.h"
 #include "unk_02016EDC.h"
 #include "unk_02078834.h"
 
@@ -2683,9 +2683,9 @@ static const int _020FF50C[] = {
     0, 1, 1, 2, 0, 3
 };
 
-struct UnkImageStruct *sub_02070C24(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, PaletteData *plttData, int x, int y, int trainerClass, int battlerPosition, BOOL isLink, int resTag, HeapID heapId) {
+struct ManagedSprite *sub_02070C24(SpriteSystem *renderer, SpriteManager *gfxHandler, PaletteData *plttData, int x, int y, int trainerClass, int battlerPosition, BOOL isLink, int resTag, HeapID heapId) {
     struct UnkTemplate_0200D748 spriteResourcesTemplate;
-    struct UnkImageStruct *object;
+    struct ManagedSprite *object;
     NARC *narc;
     struct UnkStruct_02070D3C fileIDs;
     int plttNum;
@@ -2696,10 +2696,10 @@ struct UnkImageStruct *sub_02070C24(SpriteRenderer *renderer, SpriteGfxHandler *
         plttNum = 2;
     }
     narc = NARC_New(fileIDs.narcId, heapId);
-    SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, fileIDs.ncgr_id, FALSE, NNS_G2D_VRAM_TYPE_2DMAIN, resTag + 0x4E2F);
-    sub_0200D68C(plttData, PLTTBUF_MAIN_OBJ, renderer, gfxHandler, narc, fileIDs.nclr_id, FALSE, plttNum, NNS_G2D_VRAM_TYPE_2DMAIN, resTag + 0x4E2A);
-    SpriteRenderer_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, fileIDs.ncer_id, FALSE, resTag + 0x4E27);
-    SpriteRenderer_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc, fileIDs.nanr_id, FALSE, resTag + 0x4E27);
+    SpriteSystem_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, fileIDs.ncgr_id, FALSE, NNS_G2D_VRAM_TYPE_2DMAIN, resTag + 0x4E2F);
+    SpriteSystem_LoadPaletteBufferFromOpenNarc(plttData, PLTTBUF_MAIN_OBJ, renderer, gfxHandler, narc, fileIDs.nclr_id, FALSE, plttNum, NNS_G2D_VRAM_TYPE_2DMAIN, resTag + 0x4E2A);
+    SpriteSystem_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, fileIDs.ncer_id, FALSE, resTag + 0x4E27);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc, fileIDs.nanr_id, FALSE, resTag + 0x4E27);
     NARC_Delete(narc);
     spriteResourcesTemplate = _020FF588;
     spriteResourcesTemplate.resIdList[GF_GFX_RES_TYPE_CHAR] = resTag + 0x4E2F;
@@ -2707,11 +2707,11 @@ struct UnkImageStruct *sub_02070C24(SpriteRenderer *renderer, SpriteGfxHandler *
     spriteResourcesTemplate.resIdList[GF_GFX_RES_TYPE_CELL] = resTag + 0x4E27;
     spriteResourcesTemplate.resIdList[GF_GFX_RES_TYPE_ANIM] = resTag + 0x4E27;
     spriteResourcesTemplate.spritePriority = _020FF50C[resTag];
-    object = SpriteRenderer_LoadResourcesAndCreateSprite(renderer, gfxHandler, &spriteResourcesTemplate);
+    object = SpriteSystem_NewSprite(renderer, gfxHandler, &spriteResourcesTemplate);
     Sprite_SetPalOffsetRespectVramOffset(object->sprite, 0);
-    UnkImageStruct_SetSpritePositionXY(object, x, y);
-    UnkImageStruct_TickSpriteAnimation1Frame(object);
-    UnkImageStruct_SetSpriteAnimActiveFlag(object, 1);
+    ManagedSprite_SetPositionXY(object, x, y);
+    ManagedSprite_TickFrame(object);
+    ManagedSprite_SetAnimateFlag(object, 1);
     return object;
 }
 

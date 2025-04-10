@@ -4920,7 +4920,7 @@ _021E7F38:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #3
-	bl Get2DGfxResObjById
+	bl SpriteResourceCollection_Find
 	add r6, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -4999,11 +4999,11 @@ ov87_021E7FC0: ; 0x021E7FC0
 
 	thumb_func_start ov87_021E7FD4
 ov87_021E7FD4: ; 0x021E7FD4
-	ldr r3, _021E7FDC ; =Sprite_SetVisibleFlag
+	ldr r3, _021E7FDC ; =Sprite_SetDrawFlag
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_021E7FDC: .word Sprite_SetVisibleFlag
+_021E7FDC: .word Sprite_SetDrawFlag
 	thumb_func_end ov87_021E7FD4
 
 	thumb_func_start ov87_021E7FE0
@@ -5138,11 +5138,11 @@ _021E80B0: .word Sprite_SetMosaic
 
 	thumb_func_start ov87_021E80B4
 ov87_021E80B4: ; 0x021E80B4
-	ldr r3, _021E80BC ; =Sprite_IsCellAnimationRunning
+	ldr r3, _021E80BC ; =Sprite_IsAnimated
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_021E80BC: .word Sprite_IsCellAnimationRunning
+_021E80BC: .word Sprite_IsAnimated
 	thumb_func_end ov87_021E80B4
 
 	thumb_func_start ov87_021E80C0

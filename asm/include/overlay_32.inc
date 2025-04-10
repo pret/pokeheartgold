@@ -61,7 +61,7 @@
 .public Sprite_Delete
 .public Sprite_SetMatrix
 .public Sprite_SetAnimCtrlSeq
-.public Sprite_TickAnimCtrlFrame
+.public Sprite_UpdateAnim
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public String_New
 .public String_Delete

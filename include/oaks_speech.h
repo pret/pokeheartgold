@@ -6,7 +6,7 @@
 #include "options.h"
 #include "overlay_manager.h"
 #include "save.h"
-#include "unk_0200CF18.h"
+#include "sprite_system.h"
 
 BOOL OakSpeech_Init(OVY_MANAGER *ovyMan, int *pState);
 BOOL OakSpeech_Main(OVY_MANAGER *ovyMan, int *pState);

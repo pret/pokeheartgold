@@ -902,7 +902,7 @@ _02258E7A:
 	bl Sprite_Create
 	mov r1, #0
 	str r0, [r5, #0x14]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4]
 	ldr r2, _02258F44 ; =ov47_02259E40
 	add r1, r5, #0
@@ -1257,7 +1257,7 @@ ov47_022591F8: ; 0x022591F8
 	add r4, r0, #0
 	ldr r0, [r4, #0x14]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r2, [r4, #0x10]
 	mov r1, #0xc
 	ldr r3, _02259218 ; =ov47_02259E78

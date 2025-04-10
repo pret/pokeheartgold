@@ -24,7 +24,7 @@
 #include "sys_task_api.h"
 #include "trainer_data.h"
 #include "unk_0200CE7C.h"
-#include "unk_0200CF18.h"
+#include "sprite_system.h"
 
 typedef struct BattleMessage {
     u8 unk0;
@@ -442,8 +442,8 @@ typedef struct BattleHpBar {
     struct {
         u8 script;
     };
-    UnkImageStruct *boxObj;
-    UnkImageStruct *arrowObj;
+    ManagedSprite *boxObj;
+    ManagedSprite *arrowObj;
     BattleSystem *bsys;
     SysTask *unk10;
     Window unk14;
@@ -496,7 +496,7 @@ typedef struct OpponentData {
 } OpponentData;
 
 typedef struct UnkBattleSystemSub17C {
-    UnkImageStruct *unk0;
+    ManagedSprite *unk0;
     BattleSystem *bsys;
     u8 unk8;
     u8 unk9;
@@ -543,8 +543,8 @@ struct BattleSystem {
     SOUND_CHATOT *chatotVoice[4];
     u32 *unk88;
     u32 *unk8C;
-    SpriteRenderer *spriteRenderer;
-    SpriteGfxHandler *gfxHandler;
+    SpriteSystem *spriteRenderer;
+    SpriteManager *gfxHandler;
     u32 *unk98;
     u32 *unk9C;
     u16 trainerId[4];

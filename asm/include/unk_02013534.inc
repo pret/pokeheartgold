@@ -31,10 +31,10 @@
 .public Sprite_Create
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Sprite_SetVisibleFlag
+.public Sprite_SetDrawFlag
 .public Sprite_GetMatrixPtr
 .public Sprite_SetPriority
-.public Sprite_SetPalIndex
+.public Sprite_SetPaletteOverride
 .public Sprite_SetPalIndexRespectVramOffset
 .public Sprite_SetPalOffset
 .public Sprite_SetPalOffsetRespectVramOffset

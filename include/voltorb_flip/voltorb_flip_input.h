@@ -1,11 +1,11 @@
 #ifndef POKEHEARTGOLD_VOLTORB_FLIP_INPUT_H
 #define POKEHEARTGOLD_VOLTORB_FLIP_INPUT_H
 
-#include "unk_0200CF18.h"
+#include "sprite_system.h"
 
 typedef struct Ov122_021E8CFC {
-    struct UnkImageStruct *unk0;
-    struct UnkImageStruct *unk4;
+    struct ManagedSprite *unk0;
+    struct ManagedSprite *unk4;
     void *unk8;
     u8 unkC;
     u8 unkD;
@@ -19,7 +19,7 @@ typedef struct Ov122_021E8CFC {
 
 typedef void (*Ov122UnkCB)(struct Ov122_021E8CFC *a0, int a1, int a2);
 
-Ov122_021E8CFC *ov122_021E8CFC(HeapID, struct UnkImageStruct *, struct UnkImageStruct *);
+Ov122_021E8CFC *ov122_021E8CFC(HeapID, struct ManagedSprite *, struct ManagedSprite *);
 void ov122_021E8D58(Ov122_021E8CFC *);
 int ov122_021E8D74(Ov122_021E8CFC *);
 void ov122_021E8D8C(Ov122_021E8CFC *, int);

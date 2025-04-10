@@ -726,14 +726,14 @@ _0225DAD6:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	b _0225DAF6
 _0225DAEA:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _0225DAF6:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -803,7 +803,7 @@ ov29_0225DB7C: ; 0x0225DB7C
 _0225DB8A:
 	ldr r0, [r5, r6]
 	add r1, r7, #0
-	bl Sprite_TickAnimCtrlFrame
+	bl Sprite_UpdateAnim
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0xb

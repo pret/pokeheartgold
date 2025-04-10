@@ -99,7 +99,7 @@ _0225F0B8:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x6e
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -160,17 +160,17 @@ _0225F154:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x6e
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #2
-	bl Sprite_SetAffineOverwriteType
+	bl Sprite_SetAffineOverwriteMode
 	mov r0, #0x6e
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, sp, #0x54
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #2
@@ -204,7 +204,7 @@ _0225F1B6:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, sp, #0x54
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #2
@@ -215,7 +215,7 @@ _0225F1B6:
 	lsl r1, r1, #0x10
 	ldr r0, [r4, r0]
 	lsr r1, r1, #0x10
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 	mov r1, #0x6f
 	lsl r1, r1, #2
 	ldr r0, [r4, r1]
@@ -224,7 +224,7 @@ _0225F1B6:
 	sub r1, r2, r1
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 	ldr r0, [sp, #0x1c]
 	cmp r0, #1
 	beq _0225F1F6
@@ -288,12 +288,12 @@ _0225F1FE:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 	ldr r0, [r7]
 	add r0, r0, #1
 	str r0, [r7]
@@ -499,12 +499,12 @@ _0225F40E:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #2
-	bl Sprite_SetAffineOverwriteType
+	bl Sprite_SetAffineOverwriteMode
 	add r7, r7, #1
 	add r5, r5, #4
 	cmp r7, #2
@@ -550,12 +550,12 @@ _0225F482:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r2, #2
 	ldr r1, [r4]
 	lsl r2, r2, #0x12
@@ -653,7 +653,7 @@ _0225F510:
 	lsl r1, r1, #0x10
 	ldr r0, [r4, r0]
 	lsr r1, r1, #0x10
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 	ldr r1, [r4, #0x14]
 	mov r0, #0x1a
 	lsl r0, r0, #4
@@ -661,7 +661,7 @@ _0225F510:
 	lsl r1, r1, #0x10
 	ldr r0, [r4, r0]
 	lsr r1, r1, #0x10
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 	cmp r5, #1
 	bne _0225F64E
 	ldr r0, [r6]
@@ -863,7 +863,7 @@ _0225F710:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #7
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
@@ -951,12 +951,12 @@ _0225F7E2:
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #7
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	mov r1, #2
-	bl Sprite_SetAffineOverwriteType
+	bl Sprite_SetAffineOverwriteMode
 	mov r0, #7
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
@@ -1002,25 +1002,25 @@ _0225F824:
 	lsl r1, r1, #0x10
 	ldr r0, [r4, r0]
 	lsr r1, r1, #0x10
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 	mov r0, #0x71
 	lsl r0, r0, #2
 	lsl r1, r5, #0x10
 	ldr r0, [r4, r0]
 	lsr r1, r1, #0x10
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 	b _0225F886
 _0225F86E:
 	mov r0, #7
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 	mov r0, #0x71
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 _0225F886:
 	cmp r6, #1
 	beq _0225F88C
@@ -1072,7 +1072,7 @@ _0225F8DE:
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	ldr r1, [sp, #0x20]
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #2
@@ -1130,7 +1130,7 @@ _0225F95A:
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	ldr r1, [sp, #0x24]
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #2
@@ -1316,12 +1316,12 @@ _0225FACC:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x17
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #2
-	bl Sprite_SetAffineOverwriteType
+	bl Sprite_SetAffineOverwriteMode
 	mov r0, #4
 	bl ov01_021F0768
 	mov r1, #0x7d
@@ -1515,7 +1515,7 @@ _0225FC00:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r1, #1
 	lsl r0, r1, #9
 	str r1, [r4, r0]
@@ -1589,7 +1589,7 @@ _0225FCAE:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r1, #0x81
 	mov r0, #1
 	lsl r1, r1, #2
@@ -1666,7 +1666,7 @@ _0225FD5E:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x82
 	mov r1, #1
 	lsl r0, r0, #2
@@ -1830,7 +1830,7 @@ _0225FF1A:
 	lsl r1, r1, #0x10
 	ldr r0, [r5, r0]
 	lsr r1, r1, #0x10
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 	mov r0, #0x17
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -1961,7 +1961,7 @@ _0225FFC8:
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x10
 	mov r1, #1
 	bl GfGfx_EngineATogglePlanes
@@ -2005,7 +2005,7 @@ _0226007C:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0xc
 	str r0, [sp]
 	add r0, r4, #0
@@ -2084,7 +2084,7 @@ _022600F2:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, sp, #0x2c
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	add r0, r4, #0
 	add r0, #0x48
 	bl ov01_021EFE44
@@ -2094,14 +2094,14 @@ _022600F2:
 	lsl r1, r1, #0x10
 	ldr r0, [r4, r0]
 	lsr r1, r1, #0x10
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 	cmp r6, #1
 	bne _02260238
 	mov r0, #0x73
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -2296,7 +2296,7 @@ _022602EA:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #3
@@ -2414,7 +2414,7 @@ _022603D2:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x6e
 	lsl r0, r0, #2
 	ldr r2, _022605FC ; =0x0000FFFF
@@ -2426,7 +2426,7 @@ _022603D2:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #2
-	bl Sprite_SetAffineOverwriteType
+	bl Sprite_SetAffineOverwriteMode
 	mov r1, #0x7d
 	mov r3, #1
 	lsl r1, r1, #2
@@ -2470,7 +2470,7 @@ _0226043C:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x73
 	lsl r0, r0, #2
 	ldr r2, _02260600 ; =0xFFFF0001
@@ -2482,7 +2482,7 @@ _0226043C:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #2
-	bl Sprite_SetAffineOverwriteType
+	bl Sprite_SetAffineOverwriteMode
 	mov r1, #0x7e
 	mov r0, #1
 	lsl r1, r1, #2
@@ -2527,7 +2527,7 @@ _022604B8:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x1e
 	lsl r0, r0, #4
 	ldr r2, _022605FC ; =0x0000FFFF
@@ -2539,7 +2539,7 @@ _022604B8:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #2
-	bl Sprite_SetAffineOverwriteType
+	bl Sprite_SetAffineOverwriteMode
 	mov r0, #0x7f
 	mov r1, #1
 	lsl r0, r0, #2
@@ -2574,7 +2574,7 @@ _0226054A:
 _02260552:
 	ldr r0, [r5, r7]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #3
@@ -2768,7 +2768,7 @@ _022606C2:
 	lsl r1, r1, #0x10
 	ldr r0, [r5, r0]
 	lsr r1, r1, #0x10
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 _02260704:
 	ldr r0, [sp, #0x20]
 	add r5, r5, #4

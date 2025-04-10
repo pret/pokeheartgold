@@ -96,9 +96,9 @@ typedef struct BerryPotsAppData {
     u8 unkF4[8];
     Window windows[3];
     void *unk12C;
-    SpriteRenderer *spriteRenderer;
-    SpriteGfxHandler *spriteGfxHandler1;
-    SpriteGfxHandler *spriteGfxHandler2;
+    SpriteSystem *spriteRenderer;
+    SpriteManager *spriteGfxHandler1;
+    SpriteManager *spriteGfxHandler2;
     u8 unk13C[40];
     Sprite *sprites[11];
     NARC *itemIconNarc;
@@ -110,7 +110,7 @@ typedef struct BerryPotsAppData {
 void ov17_022028B8(BerryPotsAppData *data);
 void ov17_02202850(BerryPotsAppData *data, u32 seqNo);
 void ov17_02202B58(BerryPotsAppData *data, u8 index);
-UnkImageStruct *ov17_022034C8(BerryPotsAppData *data, s16 x, s16 y, u8 unused);
+ManagedSprite *ov17_022034C8(BerryPotsAppData *data, s16 x, s16 y, u8 unused);
 void ov17_02202A84(BerryPotsAppData *data, int index);
 void ov17_0220351C(BerryPotsAppData *data);
 void ov17_02203638(BerryPotsAppData *data);

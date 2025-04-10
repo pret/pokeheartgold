@@ -6,7 +6,7 @@
 
 typedef struct UnkStruct_ov01_021E7FDC {
     SpriteList *spriteList;
-    GF_G2dRenderer renderer;
+    G2dRenderer renderer;
     SpriteResourceHeaderList *spriteResourceHeaderList;
     GF_2DGfxResMan *spriteResManagers[GF_GFX_RES_TYPE_MAX];
     GF_2DGfxResObjList *spriteResObjLists[GF_GFX_RES_TYPE_MAX];
