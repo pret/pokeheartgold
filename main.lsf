@@ -1131,7 +1131,6 @@ Overlay OVY_100
     Object src/overlay_100_021E5900.o
     Object asm/overlay_100.o
     Object src/application/pokegear/phone.o
-    Object asm/overlay_100_phone.o
     Object asm/overlay_100_021E6914.o
 }
 Overlay OVY_101
