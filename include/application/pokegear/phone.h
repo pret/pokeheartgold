@@ -12,8 +12,8 @@ typedef struct PokegearPhoneApp {
     u8 unk_006;                   // 0x006
     u8 unk_007;                   // 0x007
     u8 unk_008;                   // 0x008
-    int unk_00C;                  // 0x00C
-    int unk_010;                  // 0x010
+    MenuInputState unk_00C;       // 0x00C
+    MenuInputState unk_010;       // 0x010
     u8 filler_014[0xC];           // 0x014
     PokegearArgs *args;           // 0x020
     SaveData *saveData;           // 0x024
