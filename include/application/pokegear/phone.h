@@ -27,13 +27,6 @@ typedef struct PokegearPhoneApp_UnkSub07C {
     PokegearPhoneApp_UnkSub07C_Sub8 *unk_08;
 } PokegearPhoneApp_UnkSub07C;
 
-typedef struct PokegearPhoneApp_UnkSub0C8 {
-    u16 unk_00;
-    u16 unk_02;
-    u8 filler_04[8];
-    u8 unk_0C[0];
-} PokegearPhoneApp_UnkSub0C8;
-
 typedef struct PokegearPhoneApp PokegearPhoneApp;
 struct PokegearPhoneApp {
     HeapID heapId;                               // 0x000
@@ -42,9 +35,11 @@ struct PokegearPhoneApp {
     u8 unk_006;                                  // 0x006
     u8 unk_007;                                  // 0x007
     u8 unk_008;                                  // 0x008
+    u8 unk_009;                                  // 0x009
     MenuInputState unk_00C;                      // 0x00C
     MenuInputState unk_010;                      // 0x010
-    u8 filler_014[0x8];                          // 0x014
+    u8 filler_014[0x4];                          // 0x014
+    int unk_018;                                 // 0x018
     int unk_01C;                                 // 0x01C
     PokegearArgs *args;                          // 0x020
     SaveData *saveData;                          // 0x024
@@ -72,19 +67,26 @@ struct PokegearPhoneApp {
     u8 filler_098[0x10];                         // 0x098
     UnkImageStruct *unk_0A8;                     // 0x0A8
     UnkImageStruct *unk_0AC[4];                  // 0x0AC
-    u8 filler_0BC[12];                           // 0x0BC
-    PokegearPhoneApp_UnkSub0C8 *unk_0C8;         // 0x0C8
+    u8 filler_0BC[8];                            // 0x0BC
+    u16 *unk_0C4;                                // 0x0C4
+    NNSG2dScreenData *unk_0C8;                   // 0x0C8
 }; // size: 0xCC
 
 int ov100_021E5C50(u16 a0, u16 a1);
+BOOL ov100_021E5D3C(PokegearPhoneApp *phoneApp, int a1);
+u8 ov100_021E5DC8(PokegearPhoneApp *phoneApp);
 int ov100_021E5C80(PokegearPhoneApp *phoneApp);
 BOOL ov100_021E5900(PokegearPhoneApp *phoneApp);
 int ov100_021E5924(PokegearPhoneApp *phoneApp);
 BOOL ov100_021E5BB0(PokegearPhoneApp *phoneApp, BOOL a1);
 BOOL ov100_021E5DDC(PokegearPhoneApp *phoneApp);
 BOOL ov100_021E5E88(PokegearPhoneApp *phoneApp);
+void ov100_021E5EB4(PokegearPhoneApp *phoneApp, int a1);
+void ov100_021E5FDC(void);
 BOOL ov100_021E6408(OVY_MANAGER **ppOvyMan);
 void ov100_021E69E8(PokegearPhoneApp *phoneApp);
 void ov100_021E6AB0(void *a0);
+void ov100_021E7128(PokegearPhoneApp_UnkSub07C *a0, int a1, int a2);
+void ov100_021E73AC(PokegearPhoneApp_UnkSub07C *a0, int a1);
 
 #endif // GUARD_POKEHEARTGOLD_APPLICATION_POKEGEAR_PHONE_H
