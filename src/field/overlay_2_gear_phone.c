@@ -94,7 +94,7 @@ u8 ov02_02251EE8(GearPhoneRingManager *gearPhone, u8 *a1) {
 BOOL ov02_02251F20(GearPhoneRingManager *gearPhone) {
     Location *position = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(gearPhone->saveData));
 
-    if (MapHeader_GetField14_1E(position->mapId) == 0) {
+    if (!MapHeader_GetField14_1E(position->mapId)) {
         return FALSE;
     }
 

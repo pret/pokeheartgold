@@ -183,12 +183,12 @@ int Phone_MainStep_01(PokegearPhoneApp *phoneApp) {
 
 int Phone_MainStep_06(PokegearPhoneApp *phoneApp) {
     static const OVY_MGR_TEMPLATE ov100_021E762C = { ov101_021E7740, ov101_021E779C, ov101_021E7834, FS_OVERLAY_ID(OVY_101) };
-    phoneApp->unk_070 = OverlayManager_New(&ov100_021E762C, phoneApp, phoneApp->heapId);
+    phoneApp->childApplication = OverlayManager_New(&ov100_021E762C, phoneApp, phoneApp->heapId);
     return 7;
 }
 
 int Phone_MainStep_07(PokegearPhoneApp *phoneApp) {
-    if (!ov100_021E6408(&phoneApp->unk_070)) {
+    if (!ov100_021E6408(&phoneApp->childApplication)) {
         return 7;
     }
 
@@ -228,12 +228,12 @@ int Phone_MainStep_08(PokegearPhoneApp *phoneApp) {
     phoneApp->easyChatArgs = EasyChat_CreateArgs(0, 0, phoneApp->args->saveData, phoneApp->args->menuInputStatePtr, phoneApp->heapId);
     phoneApp->unk_056 = EC_WORD_NULL;
     sub_02090D14(phoneApp->easyChatArgs, phoneApp->unk_056);
-    phoneApp->unk_070 = OverlayManager_New(&ov100_021E761C, phoneApp->easyChatArgs, phoneApp->heapId);
+    phoneApp->childApplication = OverlayManager_New(&ov100_021E761C, phoneApp->easyChatArgs, phoneApp->heapId);
     return 9;
 }
 
 int Phone_MainStep_09(PokegearPhoneApp *phoneApp) {
-    if (!ov100_021E6408(&phoneApp->unk_070)) {
+    if (!ov100_021E6408(&phoneApp->childApplication)) {
         return 9;
     }
 
@@ -249,12 +249,12 @@ int Phone_MainStep_09(PokegearPhoneApp *phoneApp) {
 
 int Phone_MainStep_02(PokegearPhoneApp *phoneApp) {
     static const OVY_MGR_TEMPLATE ov100_021E760C = { ov101_021EE8E8, ov101_021EE924, ov101_021EE9A4, FS_OVERLAY_ID(OVY_101) };
-    phoneApp->unk_070 = OverlayManager_New(&ov100_021E760C, phoneApp, phoneApp->heapId);
+    phoneApp->childApplication = OverlayManager_New(&ov100_021E760C, phoneApp, phoneApp->heapId);
     return 3;
 }
 
 int Phone_MainStep_03(PokegearPhoneApp *phoneApp) {
-    if (!ov100_021E6408(&phoneApp->unk_070)) {
+    if (!ov100_021E6408(&phoneApp->childApplication)) {
         return 3;
     }
 
@@ -279,13 +279,13 @@ int Phone_MainStep_03(PokegearPhoneApp *phoneApp) {
 }
 
 int Phone_MainStep_10(PokegearPhoneApp *phoneApp) {
-    static const OVY_MGR_TEMPLATE ov100_021E75FC = { ov101_021EF848, ov101_021EF890, ov101_021EF940, FS_OVERLAY_ID(OVY_101) };
-    phoneApp->unk_070 = OverlayManager_New(&ov100_021E75FC, phoneApp, phoneApp->heapId);
+    static const OVY_MGR_TEMPLATE ov100_021E75FC = { PhoneCall_Init, PhoneCall_Main, Phonecall_Exit, FS_OVERLAY_ID(OVY_101) };
+    phoneApp->childApplication = OverlayManager_New(&ov100_021E75FC, phoneApp, phoneApp->heapId);
     return 11;
 }
 
 int Phone_MainStep_11(PokegearPhoneApp *phoneApp) {
-    if (!ov100_021E6408(&phoneApp->unk_070)) {
+    if (!ov100_021E6408(&phoneApp->childApplication)) {
         return 11;
     }
 
@@ -311,12 +311,12 @@ int Phone_MainStep_11(PokegearPhoneApp *phoneApp) {
 
 int Phone_MainStep_04(PokegearPhoneApp *phoneApp) {
     static const OVY_MGR_TEMPLATE ov100_021E763C = { ov101_021F4480, ov101_021F44BC, ov101_021F452C, FS_OVERLAY_ID(OVY_101) };
-    phoneApp->unk_070 = OverlayManager_New(&ov100_021E763C, phoneApp, phoneApp->heapId);
+    phoneApp->childApplication = OverlayManager_New(&ov100_021E763C, phoneApp, phoneApp->heapId);
     return 5;
 }
 
 int Phone_MainStep_05(PokegearPhoneApp *phoneApp) {
-    if (!ov100_021E6408(&phoneApp->unk_070)) {
+    if (!ov100_021E6408(&phoneApp->childApplication)) {
         return 5;
     }
 

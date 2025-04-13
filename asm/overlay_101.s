@@ -16538,8 +16538,8 @@ _021EF844: .word 0x00000941
 
 	// File boundary?
 
-	thumb_func_start ov101_021EF848
-ov101_021EF848: ; 0x021EF848
+	thumb_func_start PhoneCall_Init
+PhoneCall_Init: ; 0x021EF848
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl OverlayManager_GetArgs
@@ -16570,10 +16570,10 @@ ov101_021EF848: ; 0x021EF848
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov101_021EF848
+	thumb_func_end PhoneCall_Init
 
-	thumb_func_start ov101_021EF890
-ov101_021EF890: ; 0x021EF890
+	thumb_func_start PhoneCall_Main
+PhoneCall_Main: ; 0x021EF890
 	push {r4, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -16664,10 +16664,10 @@ _021EF938:
 _021EF93C:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ov101_021EF890
+	thumb_func_end PhoneCall_Main
 
-	thumb_func_start ov101_021EF940
-ov101_021EF940: ; 0x021EF940
+	thumb_func_start Phonecall_Exit
+Phonecall_Exit: ; 0x021EF940
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -16686,7 +16686,7 @@ ov101_021EF940: ; 0x021EF940
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov101_021EF940
+	thumb_func_end Phonecall_Exit
 
 	thumb_func_start ov101_021EF96C
 ov101_021EF96C: ; 0x021EF96C
@@ -17573,7 +17573,7 @@ ov101_021EFFC8: ; 0x021EFFC8
 	ldrb r1, [r1]
 	ldrb r3, [r3]
 	ldr r0, [r0]
-	bl ov101_021F1F64
+	bl PhoneCall_CheckMapPermissionAndGetTimeOfDay
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0
@@ -17592,14 +17592,14 @@ _021F0004:
 	add r0, #0xc4
 	ldrb r1, [r1]
 	ldr r0, [r0]
-	bl ov101_021F1F64
+	bl PhoneCall_CheckMapPermissionAndGetTimeOfDay
 	add r4, r0, #0
 _021F001A:
 	cmp r4, #0
 	beq _021F0026
 	add r5, #0xc4
 	ldr r0, [r5]
-	bl ov101_021F1FF4
+	bl PhoneCall_GetCallScriptId
 _021F0026:
 	mov r0, #1
 	bl TextFlags_SetCanTouchSpeedUpPrint
@@ -21673,8 +21673,8 @@ _021F1F60:
 	pop {r4, pc}
 	thumb_func_end PhoneContact_GetClass
 
-	thumb_func_start ov101_021F1F64
-ov101_021F1F64: ; 0x021F1F64
+	thumb_func_start PhoneCall_CheckMapPermissionAndGetTimeOfDay
+PhoneCall_CheckMapPermissionAndGetTimeOfDay: ; 0x021F1F64
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r4, r5, #0
@@ -21744,10 +21744,10 @@ _021F1FB2:
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov101_021F1F64
+	thumb_func_end PhoneCall_CheckMapPermissionAndGetTimeOfDay
 
-	thumb_func_start ov101_021F1FF4
-ov101_021F1FF4: ; 0x021F1FF4
+	thumb_func_start PhoneCall_GetCallScriptId
+PhoneCall_GetCallScriptId: ; 0x021F1FF4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
@@ -21884,15 +21884,15 @@ _021F20F8:
 	bhi _021F210A
 	ldrh r1, [r4, #0x1e]
 	mov r0, #6
-	ldr r2, _021F210C ; =ov101_021F8B7C
+	ldr r2, _021F210C ; =sPhoneCallScriptDef
 	mul r0, r1
 	add r0, r2, r0
 	str r0, [r4, #0x14]
 _021F210A:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021F210C: .word ov101_021F8B7C
-	thumb_func_end ov101_021F1FF4
+_021F210C: .word sPhoneCallScriptDef
+	thumb_func_end PhoneCall_GetCallScriptId
 
 	thumb_func_start ov101_021F2110
 ov101_021F2110: ; 0x021F2110
@@ -22214,12 +22214,12 @@ ov101_021F2344: ; 0x021F2344
 	thumb_func_start ov101_021F2374
 ov101_021F2374: ; 0x021F2374
 	mov r1, #6
-	ldr r2, _021F2380 ; =ov101_021F8B7C
+	ldr r2, _021F2380 ; =sPhoneCallScriptDef
 	mul r1, r0
 	add r0, r2, r1
 	bx lr
 	nop
-_021F2380: .word ov101_021F8B7C
+_021F2380: .word sPhoneCallScriptDef
 	thumb_func_end ov101_021F2374
 
 	thumb_func_start ov101_021F2384
@@ -26896,7 +26896,7 @@ _021F465C:
 	cmp r0, #0
 	beq _021F4690
 	ldr r0, [r4, #0xc]
-	mov r1, #0x46
+	mov r1, #FLAG_RESTORED_POWER>>2
 	ldr r0, [r0, #0x2c]
 	lsl r1, r1, #2
 	bl Save_VarsFlags_CheckFlagInArray
@@ -26906,7 +26906,7 @@ _021F465C:
 	pop {r3, r4, r5, pc}
 _021F467A:
 	ldr r0, [r4, #0xc]
-	ldr r1, _021F46C4 ; =0x0000011F
+	ldr r1, _021F46C4 ; =FLAG_GOT_EXPN_CARD
 	ldr r0, [r0, #0x2c]
 	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
@@ -26942,7 +26942,7 @@ _021F46BE:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_021F46C4: .word 0x0000011F
+_021F46C4: .word FLAG_GOT_EXPN_CARD
 	thumb_func_end ov101_021F4634
 
 	thumb_func_start ov101_021F46C8
@@ -33499,7 +33499,7 @@ ov101_021F8B60: ; 0x021F8B60
 	// x01: u8 Female player GMM
 	// x02: u16 ???
 	// x04: u16 ???
-ov101_021F8B7C: ; 0x021F8B7C
+sPhoneCallScriptDef: ; 0x021F8B7C
 	// 0
 	.byte 0x00, 0x00
 	.short 0x0000

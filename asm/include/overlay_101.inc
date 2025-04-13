@@ -336,9 +336,9 @@
 .public ov101_021EE8E8
 .public ov101_021EE924
 .public ov101_021EE9A4
-.public ov101_021EF848
-.public ov101_021EF890
-.public ov101_021EF940
+.public PhoneCall_Init
+.public PhoneCall_Main
+.public Phonecall_Exit
 .public ov101_021F4480
 .public ov101_021F44BC
 .public ov101_021F452C
