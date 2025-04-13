@@ -1,7 +1,6 @@
 #include "application/pokegear/phone.h"
 
 #include "mail_misc.h"
-#include "overlay_100.h"
 #include "overlay_101.h"
 #include "overlay_102.h"
 #include "sound_02004A44.h"
@@ -12,6 +11,7 @@
 FS_EXTERN_OVERLAY(OVY_101);
 FS_EXTERN_OVERLAY(OVY_102);
 
+BOOL ov100_021E6408(OVY_MANAGER **ppOvyMan);
 void ov100_021E65F4(void *cb_args);
 int Phone_MainStep_00(PokegearPhoneApp *phoneApp);
 int Phone_MainStep_01(PokegearPhoneApp *phoneApp);
@@ -25,6 +25,16 @@ int Phone_MainStep_10(PokegearPhoneApp *phoneApp);
 int Phone_MainStep_11(PokegearPhoneApp *phoneApp);
 int Phone_MainStep_04(PokegearPhoneApp *phoneApp);
 int Phone_MainStep_05(PokegearPhoneApp *phoneApp);
+
+BOOL ov100_021E6408(OVY_MANAGER **ppOvyMan) {
+    if (*ppOvyMan != NULL && OverlayManager_Run(*ppOvyMan)) {
+        OverlayManager_Delete(*ppOvyMan);
+        *ppOvyMan = NULL;
+        return TRUE;
+    }
+
+    return FALSE;
+}
 
 BOOL Phone_Init(OVY_MANAGER *man, int *state) {
     PokegearArgs *args = OverlayManager_GetArgs(man);
@@ -139,7 +149,7 @@ void ov100_021E65F4(void *cb_args) {
         PaletteData_PushTransparentBuffers(phoneApp->plttData);
     }
 
-    if (phoneApp->unk_08C != 0) {
+    if (phoneApp->unk_08C != NULL) {
         if (phoneApp->unk_094 != NULL) {
             ov100_021E5BB0(phoneApp, 0);
             ov100_021E6AB0(phoneApp->unk_094);

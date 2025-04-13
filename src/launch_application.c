@@ -4,6 +4,7 @@
 
 #include "constants/flags.h"
 
+#include "application/pokegear/phone.h"
 #include "application/view_rankings.h"
 #include "battle/battle_022378C0.h"
 
@@ -22,7 +23,6 @@
 #include "mail_misc.h"
 #include "naming_screen.h"
 #include "overlay_02.h"
-#include "overlay_100.h"
 #include "overlay_101.h"
 #include "overlay_102.h"
 #include "overlay_103.h"
