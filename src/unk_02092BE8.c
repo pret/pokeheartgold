@@ -303,7 +303,7 @@ BOOL sub_020930C4(FieldSystem *sys) {
     if (var > 9) {
         var = 9; // unreachable
     }
-    if (!Save_VarsFlags_CheckFlagInArray(state, var + FLAG_UNK_988)) {
+    if (!Save_VarsFlags_CheckFlagInArray(state, var + FLAG_SYS_OAK_ACKNOWLEDGED_NATIONAL_DEX_COMPLETION)) {
         sub_02092E14(FieldSystem_GetGearPhoneRingManager(sys), 4, FALSE);
         return TRUE;
     }
