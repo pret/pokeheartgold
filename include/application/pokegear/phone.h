@@ -65,17 +65,22 @@ struct PokegearPhoneApp {
     BgConfig *bgConfig;                          // 0x074
     PaletteData *plttData;                       // 0x078
     PokegearPhoneApp_UnkSub07C *unk_07C;         // 0x07C
-    u8 filler_080[0xC];                          // 0x080
+    RTCTime unk_080;                             // 0x080
     int unk_08C;                                 // 0x08C
     int unk_090;                                 // 0x090
     void *unk_094;                               // 0x094
-    u8 filler_098[0x30];                         // 0x098
+    u8 filler_098[0x10];                         // 0x098
+    UnkImageStruct *unk_0A8;                     // 0x0A8
+    UnkImageStruct *unk_0AC[4];                  // 0x0AC
+    u8 filler_0BC[12];                           // 0x0BC
     PokegearPhoneApp_UnkSub0C8 *unk_0C8;         // 0x0C8
 }; // size: 0xCC
 
+int ov100_021E5C50(u16 a0, u16 a1);
+int ov100_021E5C80(PokegearPhoneApp *phoneApp);
 BOOL ov100_021E5900(PokegearPhoneApp *phoneApp);
 int ov100_021E5924(PokegearPhoneApp *phoneApp);
-void ov100_021E5BB0(PokegearPhoneApp *phoneApp, int a1);
+BOOL ov100_021E5BB0(PokegearPhoneApp *phoneApp, BOOL a1);
 BOOL ov100_021E5DDC(PokegearPhoneApp *phoneApp);
 BOOL ov100_021E5E88(PokegearPhoneApp *phoneApp);
 BOOL ov100_021E6408(OVY_MANAGER **ppOvyMan);

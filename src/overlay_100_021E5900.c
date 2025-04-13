@@ -6,11 +6,11 @@
 #include "touch_hitbox_controller.h"
 #include "unk_02005D10.h"
 
-void ov100_021E5B4C(PokegearPhoneApp *phoneApp, u8 selection, u8 a2);
 int ov100_021E59CC(PokegearPhoneApp *phoneApp);
+void ov100_021E5A88(PokegearPhoneApp *phoneApp);
+BOOL ov100_021E5B4C(PokegearPhoneApp *phoneApp, u8 selection, u8 a2);
 void ov100_021E7128(PokegearPhoneApp_UnkSub07C *a0, int a1, int a2);
 void ov100_021E73AC(PokegearPhoneApp_UnkSub07C *a0, int a1);
-void ov100_021E5A88(PokegearPhoneApp *phoneApp);
 
 extern const TouchscreenHitbox ov100_021E74C4[5];
 
@@ -88,4 +88,58 @@ void ov100_021E5A88(PokegearPhoneApp *phoneApp) {
         CopyToBgTilemapRect(phoneApp->bgConfig, GF_BG_LYR_MAIN_0, 7, 20, 6, 4, phoneApp->unk_0C8->unk_0C, 0, 8, phoneApp->unk_0C8->unk_00 / 8, phoneApp->unk_0C8->unk_02 / 8);
     }
     ScheduleBgTilemapBufferTransfer(phoneApp->bgConfig, GF_BG_LYR_MAIN_0);
+}
+
+BOOL ov100_021E5B4C(PokegearPhoneApp *phoneApp, u8 selection, u8 a2) {
+    u8 r2;
+    ov100_021E5A88(phoneApp);
+    if (selection == 4) {
+        r2 = 26;
+    } else {
+        r2 = selection * 6 + 1;
+    }
+    CopyToBgTilemapRect(phoneApp->bgConfig, GF_BG_LYR_MAIN_0, r2, 20, 6, 4, phoneApp->unk_0C8->unk_0C, r2, a2 * 4, phoneApp->unk_0C8->unk_00 / 8, phoneApp->unk_0C8->unk_02 / 8);
+    ScheduleBgTilemapBufferTransfer(phoneApp->bgConfig, GF_BG_LYR_MAIN_0);
+    return FALSE;
+}
+
+BOOL ov100_021E5BB0(PokegearPhoneApp *phoneApp, BOOL a1) {
+    RTCDate date;
+    RTCTime time;
+    u8 sp0[4];
+
+    GF_RTC_CopyDateTime(&date, &time);
+    if (a1 == 0 && phoneApp->unk_080.second == time.second) {
+        return FALSE;
+    }
+
+    sp0[0] = time.hour / 10;
+    sp0[1] = time.hour % 10;
+    sp0[2] = time.minute / 10;
+    sp0[3] = time.minute % 10;
+    for (u8 i = 0; i < 4; i++) {
+        UnkImageStruct_SetSpriteAnimCtrlCurrentFrame(phoneApp->unk_0AC[i], sp0[i]);
+    }
+    UnkImageStruct_SetSpriteAnimCtrlCurrentFrame(phoneApp->unk_0A8, date.week);
+    phoneApp->unk_080 = time;
+    phoneApp->unk_007 = 0;
+    return TRUE;
+}
+
+int ov100_021E5C50(u16 a0, u16 a1) {
+    if (a0 > 21) {
+        if (a0 == 25 && a1 == 8) {
+            return 2;
+        } else if ((a0 == 28 && a1 == 6) || (a0 == 28 && a1 > 8 && a1 < 13)) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    return 2;
+}
+
+int ov100_021E5C80(PokegearPhoneApp *phoneApp) {
+    return ov100_021E5C50(phoneApp->args->x / 32, phoneApp->args->y / 32);
 }
