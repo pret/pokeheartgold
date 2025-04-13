@@ -33,7 +33,7 @@ typedef struct PokegearPhoneApp_UnkSub07C {
 } PokegearPhoneApp_UnkSub07C;
 
 typedef struct PokegearPhoneApp_UnkSub094 {
-    HeapID *heapId;
+    HeapID heapId;
     int unk_004;
     u16 unk_008;
     u16 unk_00A;
@@ -41,6 +41,7 @@ typedef struct PokegearPhoneApp_UnkSub094 {
     u16 unk_00E;
     SpriteList *unk_010;
     GF_G2dRenderer unk_014;
+    u8 filler_13C[4];
     GF_2DGfxResMan *unk_140[4];
     GF_2DGfxResObjList *unk_150[4];
 } PokegearPhoneApp_UnkSub094; // size: 0x160
@@ -107,9 +108,9 @@ void ov100_021E6914(PokegearPhoneApp *phoneApp);
 void ov100_021E6950(PokegearPhoneApp *phoneApp);
 void ov100_021E69E8(PokegearPhoneApp *phoneApp);
 
-PokegearPhoneApp_UnkSub094 *ov100_021E69F8(HeapID, u16 a1, u16 a2, u16 a3, u16 a4, u16 a5);
+PokegearPhoneApp_UnkSub094 *ov100_021E69F8(HeapID heapId, u16 a1, u16 a2, u16 a3, u16 a4, int a5);
 void ov100_021E6A3C(PokegearPhoneApp_UnkSub094 *a0);
-void ov100_021E6AB0(void *a0);
+void ov100_021E6AB0(PokegearPhoneApp_UnkSub094 *a0);
 UnkImageStruct *ov100_021E6AC0(PokegearPhoneApp_UnkSub094 *a0, int a1, int a2, int a3, int a4, int a5, u8 a6, u8 a7, int a8);
 void ov100_021E6C44(UnkImageStruct *a0);
 
