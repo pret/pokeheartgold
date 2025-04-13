@@ -68,16 +68,16 @@ static void sub_02092BE8(FieldSystem *sys, PokegearArgs *ptr, BOOL a2) {
         return;
     }
     if (sub_02092E08(phoneRingMgr)) {
-        ptr->unk04 = ov02_02251EE8(phoneRingMgr, &Unk_struct.unk04);
-        if (ptr->unk04 >= 75) {
+        ptr->callerId = ov02_02251EE8(phoneRingMgr, &Unk_struct.unk04[0]);
+        if (ptr->callerId >= NUM_PHONE_CONTACTS) {
             ptr->kind = 0;
         } else {
-            ptr->unk06 = Unk_struct.unk08;
-            ptr->unk05 = Unk_struct.unk07;
+            ptr->unk06 = Unk_struct.unk04[4]; // message num?
+            ptr->unk05 = Unk_struct.unk04[3]; // call type?
             if (ptr->unk05 == 3) {
-                sub_0202F050(SaveData_GetMomsSavingsAddr(sys->saveData), Unk_struct.unk06);
+                sub_0202F050(SaveData_GetMomsSavingsAddr(sys->saveData), Unk_struct.unk04[2]);
             } else if (ptr->unk05 == 0) {
-                sub_0202AB18(Save_Misc_Get(sys->saveData), Unk_struct.unk04, Unk_struct.unk05, ptr->unk04);
+                sub_0202AB18(Save_Misc_Get(sys->saveData), Unk_struct.unk04[0], Unk_struct.unk04[1], ptr->callerId);
             }
             gearRingingManagerReset(phoneRingMgr);
             ptr->kind = 1;
@@ -223,7 +223,7 @@ static void gearRingingManagerReset(GearPhoneRingManager *ptr) {
     ptr->unk_var0_0 = FALSE;
     ptr->unk_var0_1 = FALSE;
     ptr->unk_var0_3 = FALSE;
-    ptr->unk_var2 = 0xff;
+    ptr->callerId = 0xff;
     ptr->unk_var3 = 0;
     ptr->unk_var4 = 0;
     ptr->unk_var7 = 0;
@@ -315,7 +315,7 @@ BOOL sub_02093134(FieldSystem *sys, Pokemon *mon) {
         return FALSE;
     }
     sub_02092E14(FieldSystem_GetGearPhoneRingManager(sys), 0, 1);
-    Save_VarsFlags_SetFlagInArray(Save_VarsFlags_Get(sys->saveData), FLAG_UNK_983);
+    Save_VarsFlags_SetFlagInArray(Save_VarsFlags_Get(sys->saveData), FLAG_SYS_HATCHED_TOGEPI_EGG);
     return TRUE;
 }
 

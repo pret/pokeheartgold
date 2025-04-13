@@ -1,3 +1,4 @@
+#include "constants/maps.h"
 #include "constants/sndseq.h"
 
 #include "overlay_2/overlay_02_gear_phone.h"
@@ -46,10 +47,10 @@ static void ov02_022522AC(GearPhoneRingManager *gearPhone, BOOL a1);
 
 String *GetPhoneBookEntryName(GearPhoneRingManager *gearPhone, HeapID heapId) {
     String *str;
-    if (!gearPhone->unk_var0_0 || gearPhone->unk_var2 >= 75) {
+    if (!gearPhone->unk_var0_0 || gearPhone->callerId >= NUM_PHONE_CONTACTS) {
         str = String_New(8, heapId);
     } else {
-        int phoneMsg = GetPhoneMessageGmm(gearPhone->unk_var2);
+        int phoneMsg = GetPhoneMessageGmm(gearPhone->callerId);
         MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, phoneMsg, heapId);
         str = NewString_ReadMsgData(msgData, 0);
         DestroyMsgData(msgData);
@@ -57,14 +58,16 @@ String *GetPhoneBookEntryName(GearPhoneRingManager *gearPhone, HeapID heapId) {
     return str;
 }
 
-void ov02_02251EB8(GearPhoneRingManager *gearPhone, u8 a1, u8 a2, u8 a3, u8 a4, u8 a5) {
-    if (a1 >= 75) {
-        gearPhone->unk_var2 = 0xFF;
+void ov02_02251EB8(GearPhoneRingManager *gearPhone, u8 callerId, u8 a2, u8 a3, u8 a4, u8 a5) {
+    // a4 set to 2 when passed from script
+    // a5 related to message id? when passed from script
+    if (callerId >= NUM_PHONE_CONTACTS) {
+        gearPhone->callerId = 0xFF;
         gearPhone->unk_arr5[0] = 0xFF;
         gearPhone->unk_arr5[1] = 0;
         GF_ASSERT(FALSE);
     } else {
-        gearPhone->unk_var2 = a1;
+        gearPhone->callerId = callerId;
         gearPhone->unk_arr5[0] = a2;
         gearPhone->unk_arr5[1] = a3;
     }
@@ -75,17 +78,17 @@ void ov02_02251EB8(GearPhoneRingManager *gearPhone, u8 a1, u8 a2, u8 a3, u8 a4, 
 
 u8 ov02_02251EE8(GearPhoneRingManager *gearPhone, u8 *a1) {
     MI_CpuFill8(a1, 0, 5);
-    if (gearPhone->unk_var2 >= 75) {
+    if (gearPhone->callerId >= NUM_PHONE_CONTACTS) {
         GF_ASSERT(FALSE);
         a1[0] = 0xFF;
         return 0xFF;
     }
     a1[0] = gearPhone->unk_arr5[0];
     a1[1] = gearPhone->unk_arr5[1];
-    a1[3] = gearPhone->unk_var3;
-    a1[4] = gearPhone->unk_var4;
+    a1[3] = gearPhone->unk_var3; // 2 = scripted?
+    a1[4] = gearPhone->unk_var4; // message ID?
     a1[2] = gearPhone->unk_var7;
-    return gearPhone->unk_var2;
+    return gearPhone->callerId;
 }
 
 BOOL ov02_02251F20(GearPhoneRingManager *gearPhone) {
@@ -181,7 +184,7 @@ static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
     }
 
     for (u8 j = 0; j < index; j++) {
-        if (mapId == phoneBook->entries[ptr[j]].mapId || sub_0202AA44(miscData, var, ptr[j]) || ptr[j] == 8 && (sub_02095FF8(hour) || Save_VarsFlags_IsInRocketTakeover(varsFlags))) {
+        if (mapId == phoneBook->entries[ptr[j]].mapId || sub_0202AA44(miscData, var, ptr[j]) || (ptr[j] == 8 && (sub_02095FF8(hour) || Save_VarsFlags_IsInRocketTakeover(varsFlags)))) {
             continue;
         }
         if (phoneBook->entries[ptr[j]].mapId != MAP_NATIONAL_PARK || !bugContestFlag) {

@@ -116,7 +116,7 @@
 // Story flags
 
 #define FLAG_NURSE_NOTICED_CARD                         0x64
-#define FLAG_UNK_065                                    0x65
+#define FLAG_WAS_TOLD_ABOUT_POKERUS                     0x65
 #define FLAG_UNK_066                                    0x66
 #define FLAG_UNK_067                                    0x67
 #define FLAG_UNK_068                                    0x68
@@ -127,7 +127,7 @@
 #define FLAG_GOT_APRICORN_BOX                           0x6D
 #define FLAG_GOT_TM05_FROM_ROUTE_32_MAN                 0x6E
 #define FLAG_UNK_06F                                    0x6F
-#define FLAG_UNK_070                                    0x70
+#define FLAG_GOT_EGG_FROM_ELMS_ASSISTANT                0x70
 #define FLAG_TRADE_VIOLET_CITY_BELLSPROUT_ONIX          0x71
 #define FLAG_UNK_072                                    0x72
 #define FLAG_GOT_TM51_FROM_FALKNER                      0x73
@@ -136,7 +136,7 @@
 #define FLAG_UNK_076                                    0x76
 #define FLAG_UNK_077                                    0x77
 #define FLAG_UNK_078                                    0x78
-#define FLAG_UNK_079                                    0x79
+#define FLAG_GAVE_RIVAL_NAME_TO_OFFICER                 0x79
 #define FLAG_GOT_KINGS_ROCK_FROM_SLOWPOKE_WELL_MAN      0x7A
 #define FLAG_BEAT_AZALEA_ROCKETS                        0x7B
 #define FLAG_UNK_07C                                    0x7C
@@ -174,7 +174,7 @@
 #define FLAG_GOT_POKEGEAR                               0x9C
 #define FLAG_UNK_09D                                    0x9D
 #define FLAG_UNK_09E                                    0x9E
-#define FLAG_UNK_09F                                    0x9F
+#define FLAG_GOT_PICK_UP_EGG_CALL_FROM_ELM              0x9F
 #define FLAG_UNK_0A0                                    0xA0
 #define FLAG_UNK_0A1                                    0xA1
 #define FLAG_GOT_HM03                                   0xA2
@@ -257,7 +257,7 @@
 #define FLAG_UNK_0EF                                    0xEF
 #define FLAG_UNK_0F0                                    0xF0
 #define FLAG_UNK_0F1                                    0xF1
-#define FLAG_UNK_0F2                                    0xF2
+#define FLAG_GOT_SS_TICKET_FROM_ELM                     0xF2
 #define FLAG_GOT_MYSTIC_WATER_FROM_CHERRYGROVE_CITY_MAN 0xF3
 #define FLAG_UNK_0F4                                    0xF4
 #define FLAG_UNK_0F5                                    0xF5
@@ -1737,7 +1737,7 @@
 #define FLAG_UNK_980                               0x980
 #define FLAG_SYS_CIANWOOD_WATERFALL_DISABLE        0x981
 #define FLAG_UNK_982                               0x982
-#define FLAG_UNK_983                               0x983
+#define FLAG_SYS_HATCHED_TOGEPI_EGG                0x983
 #define FLAG_UNK_984                               0x984
 #define FLAG_UNK_985                               0x985
 #define FLAG_SYS_MOMS_SAVINGS                      0x986

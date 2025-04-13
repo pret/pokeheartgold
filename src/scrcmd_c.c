@@ -4648,13 +4648,13 @@ BOOL ScrCmd_CheckRegisteredPhoneNumber(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_SetPhoneCall(ScriptContext *ctx) {
-    u16 r4 = ScriptGetVar(ctx);
+    u16 callerId = ScriptGetVar(ctx);
     u16 r6 = ScriptGetVar(ctx);
     u16 r7 = ScriptGetVar(ctx);
     void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); // PhoneCallAppData
     sub_02092DF4(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
     ctx->fieldSystem->unkD2_7 = TRUE;
-    ov02_02251EB8(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem), r4, 0xFF, 0, r6, r7);
+    ov02_02251EB8(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem), callerId, 0xFF, 0, r6, r7);
     return TRUE;
 }
 

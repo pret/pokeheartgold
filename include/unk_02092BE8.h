@@ -14,7 +14,7 @@ typedef struct PokegearArgs {
     u8 kind;        // 0x00
     u8 unk01;       // One of the variables inside FieldSystem with offset 0x110 (currently unk_10C[1];)
     u16 mapMusicID; // 0x02 (surf-overriden)
-    u8 unk04;       // related to unk_var2 from UnkFieldSystemSub_114
+    u8 callerId;    // related to unk_var2 from UnkFieldSystemSub_114
     u8 unk05;
     u8 unk06;
     u8 playerGender; // 0x07
@@ -35,11 +35,7 @@ typedef struct PokegearArgs {
 typedef struct UnkPokegearstruct_14 {
     s16 y;
     s16 x;
-    u8 unk04;
-    u8 unk05;
-    u8 unk06;
-    u8 unk07;
-    u8 unk08;
+    u8 unk04[5];
     u8 padding_09[3];
 } Unk_PokegearSTRUCT_14;
 
