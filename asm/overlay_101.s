@@ -610,7 +610,7 @@ ov101_021E7BB4: ; 0x021E7BB4
 	ldrb r1, [r0, #6]
 	cmp r1, #1
 	bne _021E7BDE
-	bl ov100_021E59CC
+	bl PokegearApp_HandleKeyInput_SwitchApps
 	b _021E7BE4
 _021E7BDE:
 	add r0, r4, #0
@@ -8074,7 +8074,7 @@ ov101_021EB5DC: ; 0x021EB5DC
 	lsr r1, r1, #0x1f
 	bne _021EB5F6
 	ldr r0, [r5, #0x10]
-	bl ov100_021E5924
+	bl PokegearApp_HandleTouchInput_SwitchApps
 _021EB5F6:
 	mov r1, #0
 	mvn r1, r1
@@ -13175,7 +13175,7 @@ _021EDD68:
 	b _021EDD94
 _021EDD7A:
 	bl ov101_021EE670
-	ldr r0, _021EDDA8 ; =ov100_021E65F4
+	ldr r0, _021EDDA8 ; =PokegearApp_VBlankCB
 	ldr r1, [r4, #0x10]
 	bl Main_SetVBlankIntrCB
 	ldr r1, _021EDDAC ; =ov101_021E9270
@@ -13194,7 +13194,7 @@ _021EDD94:
 	nop
 _021EDDA0: .word 0xFFFFE0FF
 _021EDDA4: .word 0x04001000
-_021EDDA8: .word ov100_021E65F4
+_021EDDA8: .word PokegearApp_VBlankCB
 _021EDDAC: .word ov101_021E9270
 	thumb_func_end ov101_021EDCE0
 
@@ -14760,7 +14760,7 @@ ov101_021EEA70: ; 0x021EEA70
 	ldrb r1, [r0, #6]
 	cmp r1, #1
 	bne _021EEA94
-	bl ov100_021E59CC
+	bl PokegearApp_HandleKeyInput_SwitchApps
 	b _021EEA9A
 _021EEA94:
 	add r0, r4, #0
@@ -16485,7 +16485,7 @@ ov101_021EF7D4: ; 0x021EF7D4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl ov100_021E5924
+	bl PokegearApp_HandleTouchInput_SwitchApps
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -16825,7 +16825,7 @@ _021EFA64:
 	ldrb r1, [r0, #6]
 	cmp r1, #1
 	bne _021EFA72
-	bl ov100_021E59CC
+	bl PokegearApp_HandleKeyInput_SwitchApps
 	b _021EFA78
 _021EFA72:
 	add r0, r4, #0
@@ -19137,7 +19137,7 @@ ov101_021F0C4C: ; 0x021F0C4C
 	cmp r0, #0
 	bne _021F0C6C
 	ldr r0, [r5, #0xc]
-	bl ov100_021E5924
+	bl PokegearApp_HandleTouchInput_SwitchApps
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -26986,7 +26986,7 @@ ov101_021F46EC: ; 0x021F46EC
 	ldrb r1, [r0, #6]
 	cmp r1, #1
 	bne _021F4716
-	bl ov100_021E59CC
+	bl PokegearApp_HandleKeyInput_SwitchApps
 	b _021F471C
 _021F4716:
 	add r0, r4, #0
@@ -28836,7 +28836,7 @@ ov101_021F5524: ; 0x021F5524
 	pop {r3, r4, r5, r6, pc}
 _021F553C:
 	ldr r0, [r5, #0xc]
-	bl ov100_021E5924
+	bl PokegearApp_HandleTouchInput_SwitchApps
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1

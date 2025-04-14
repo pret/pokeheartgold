@@ -11,11 +11,11 @@ typedef enum PokegearAppId {
     GEAR_APP_RADIO,
     GEAR_APP_MAP,
     GEAR_APP_PHONE,
-    GEAR_APP_FLY,
+    GEAR_APP_CANCEL,
 } PokegearAppId;
 
 typedef struct PokegearApp_UnkSub07C_Sub4_Sub4 {
-    u16 unk_00;
+    u16 appId;
     u8 unk_02;
     u8 unk_03;
     u8 unk_04;
@@ -116,7 +116,7 @@ struct PokegearAppData {
     OVY_MANAGER *childApplication;              // 0x070
     BgConfig *bgConfig;                         // 0x074
     PaletteData *plttData;                      // 0x078
-    PokegearApp_UnkSub07C *unk_07C;             // 0x07C
+    PokegearApp_UnkSub07C *appSwitchCursor;     // 0x07C
     RTCTime unk_080;                            // 0x080
     SpriteRenderer *gfxRenderer;                // 0x08C
     SpriteGfxHandler *gfxHandler;               // 0x090
@@ -127,12 +127,14 @@ struct PokegearAppData {
 }; // size: 0xCC
 
 int ov100_021E5C50(u16 a0, u16 a1);
-BOOL ov100_021E5D3C(PokegearAppData *pokegearApp, int a1);
-u8 ov100_021E5DC8(PokegearAppData *pokegearApp);
 int ov100_021E5C80(PokegearAppData *pokegearApp);
 BOOL ov100_021E5900(PokegearAppData *pokegearApp);
-int ov100_021E5924(PokegearAppData *pokegearApp);
+int PokegearApp_HandleTouchInput_SwitchApps(PokegearAppData *pokegearApp);
+int PokegearApp_HandleKeyInput_SwitchApps(PokegearAppData *pokegearApp);
 BOOL ov100_021E5BB0(PokegearAppData *pokegearApp, BOOL a1);
+void ov100_021E5CA4(PokegearAppData *pokegearApp);
+BOOL ov100_021E5D3C(PokegearAppData *pokegearApp, int a1);
+u8 ov100_021E5DC8(PokegearAppData *pokegearApp);
 BOOL ov100_021E5DDC(PokegearAppData *pokegearApp);
 BOOL ov100_021E5E88(PokegearAppData *pokegearApp);
 void ov100_021E5EB4(PokegearAppData *pokegearApp, int a1);

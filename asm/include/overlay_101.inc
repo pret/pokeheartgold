@@ -297,8 +297,8 @@
 .public _u32_div_f
 .public gSystem
 .public ov100_021E5900
-.public ov100_021E5924
-.public ov100_021E59CC
+.public PokegearApp_HandleTouchInput_SwitchApps
+.public PokegearApp_HandleKeyInput_SwitchApps
 .public ov100_021E5C50
 .public ov100_021E5C80
 .public ov100_021E5CA4
@@ -306,7 +306,7 @@
 .public ov100_021E5DC8
 .public ov100_021E5EB4
 .public ov100_021E5FDC
-.public ov100_021E65F4
+.public PokegearApp_VBlankCB
 .public ov100_021E6914
 .public ov100_021E6950
 .public ov100_021E6978

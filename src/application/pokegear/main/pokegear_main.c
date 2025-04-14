@@ -1,5 +1,6 @@
-#include "application/pokegear/pokegear_internal.h"
 #include "application/pokegear/pokegear_main.h"
+
+#include "application/pokegear/pokegear_internal.h"
 
 #include "mail_misc.h"
 #include "overlay_101.h"
@@ -186,7 +187,7 @@ static PokegearAppMainState Pokegear_MainStep_Setup(PokegearAppData *pokegearApp
 
     switch (pokegearApp->app) {
     case GEAR_APP_MAP:
-    case GEAR_APP_FLY:
+    case GEAR_APP_CANCEL:
         return POKEGEAR_APP_MAIN_STATE_LAUNCH_MAP;
     case GEAR_APP_RADIO:
         return POKEGEAR_APP_MAIN_STATE_LAUNCH_RADIO;
@@ -225,7 +226,7 @@ static PokegearAppMainState Pokegear_MainStep_RunMap(PokegearAppData *pokegearAp
         pokegearApp->app = GEAR_APP_MAP;
         return POKEGEAR_APP_MAIN_STATE_LAUNCH_MAP;
     case 6:
-        pokegearApp->app = GEAR_APP_FLY;
+        pokegearApp->app = GEAR_APP_CANCEL;
         return POKEGEAR_APP_MAIN_STATE_LAUNCH_DEBUG;
     case 0:
         pokegearApp->app = GEAR_APP_CONFIGURE;
@@ -269,7 +270,7 @@ static PokegearAppMainState Pokegear_MainStep_RunDebug(PokegearAppData *pokegear
 
     EasyChat_FreeArgs(pokegearApp->easyChatArgs);
     pokegearApp->unk_038 = 1;
-    pokegearApp->app = GEAR_APP_FLY;
+    pokegearApp->app = GEAR_APP_CANCEL;
     return POKEGEAR_APP_MAIN_STATE_SETUP;
 }
 

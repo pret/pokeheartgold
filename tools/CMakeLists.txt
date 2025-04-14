@@ -8,8 +8,12 @@ list(REMOVE_ITEM TOOLDIRS ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt ${CMAKE_CUR
 foreach(TOOLDIR IN LISTS TOOLDIRS)
     file(RELATIVE_PATH tool ${CMAKE_CURRENT_SOURCE_DIR}/ ${TOOLDIR})
     file(GLOB srcs ${TOOLDIR}/*.c ${TOOLDIR}/*.cpp)
-    add_executable(${tool} ${srcs})
-    target_compile_features(${tool} PRIVATE c_std_11 cxx_std_17)
+
+    list(LENGTH srcs nsrcs)
+    if(NOT ${nsrcs} EQUAL 0)
+        add_executable(${tool} ${srcs})
+        target_compile_features(${tool} PRIVATE c_std_11 cxx_std_17)
+    endif()
 endforeach()
 
 target_include_directories(jsonproc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/jsonproc)
