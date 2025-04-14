@@ -111,7 +111,7 @@ void ov100_021E69E8(PokegearPhoneApp *phoneApp);
 PokegearPhoneApp_UnkSub094 *ov100_021E69F8(HeapID heapId, u16 a1, u16 a2, u16 a3, u16 a4, int a5);
 void ov100_021E6A3C(PokegearPhoneApp_UnkSub094 *a0);
 void ov100_021E6AB0(PokegearPhoneApp_UnkSub094 *a0);
-UnkImageStruct *ov100_021E6AC0(PokegearPhoneApp_UnkSub094 *a0, int a1, int a2, int a3, int a4, int a5, u8 a6, u8 a7, int a8);
+UnkImageStruct *ov100_021E6AC0(PokegearPhoneApp_UnkSub094 *a0, u8 a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, u8 a7, int a8);
 void ov100_021E6C44(UnkImageStruct *a0);
 
 PokegearPhoneApp_UnkSub07C *ov100_021E6F88(int a0, HeapID heapId);

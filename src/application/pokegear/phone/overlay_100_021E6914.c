@@ -1,5 +1,6 @@
 #include "application/pokegear/phone.h"
 
+#include "math_util.h"
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "vram_transfer_manager.h"
@@ -17,6 +18,7 @@ void ov100_021E6CF4(PokegearPhoneApp_UnkSub094 *a0);
 void ov100_021E6A58(PokegearPhoneApp_UnkSub094 *a0, int a1);
 
 extern const u8 ov100_021E764C[];
+extern const u8 ov100_021E770C[];
 extern const UnkStruct_ov100_021E76BC ov100_021E76BC[];
 void ov100_021E6C4C(PokegearPhoneApp_UnkSub094 *a0, u16 a1);
 
@@ -85,12 +87,12 @@ void ov100_021E6A3C(PokegearPhoneApp_UnkSub094 *a0) {
 void ov100_021E6A58(PokegearPhoneApp_UnkSub094 *a0, int a1) {
     GF_2DGfxResObj *obj;
 
-    obj = a0->unk_150[0]->obj[0];
-    ReplaceCharResObjFromNarc(a0->unk_140[0], obj, NARC_a_1_4_3, a1 + 6, FALSE, a0->heapId);
+    obj = a0->unk_150[GF_GFX_RES_TYPE_CHAR]->obj[0];
+    ReplaceCharResObjFromNarc(a0->unk_140[GF_GFX_RES_TYPE_CHAR], obj, NARC_a_1_4_3, a1 + 6, FALSE, a0->heapId);
     sub_0200AE8C(obj);
 
-    obj = a0->unk_150[1]->obj[0];
-    ReplacePlttResObjFromNarc(a0->unk_140[1], obj, NARC_a_1_4_3, a1, FALSE, a0->heapId);
+    obj = a0->unk_150[GF_GFX_RES_TYPE_PLTT]->obj[0];
+    ReplacePlttResObjFromNarc(a0->unk_140[GF_GFX_RES_TYPE_PLTT], obj, NARC_a_1_4_3, a1, FALSE, a0->heapId);
     sub_0200B084(obj);
 }
 
@@ -98,4 +100,45 @@ void ov100_021E6AB0(PokegearPhoneApp_UnkSub094 *a0) {
     if (a0->unk_010 != NULL) {
         SpriteList_RenderAndAnimateSprites(a0->unk_010);
     }
+}
+
+UnkImageStruct *ov100_021E6AC0(PokegearPhoneApp_UnkSub094 *a0, u8 x, u8 y, u8 z, u8 a4, u8 a5, u8 a6, u8 a7, int a8) {
+    NNS_G2D_VRAM_TYPE r6;
+    UnkImageStruct *ret;
+    SpriteTemplate sp34;
+
+    ret = AllocFromHeap(a0->heapId, sizeof(UnkImageStruct));
+    MI_CpuClear8(ret, sizeof(UnkImageStruct));
+    ret->spriteResourceHeaderList = AllocFromHeap(a0->heapId, sizeof(SpriteResourceHeaderList));
+    ret->spriteResourceHeaderList->headers = AllocFromHeap(a0->heapId, sizeof(SpriteResourcesHeader));
+    // ret->spriteResourceHeaderList->num = 1;
+    ret->spriteResourcesHeader = ret->spriteResourceHeaderList->headers;
+    r6 = a8 == 0 ? NNS_G2D_VRAM_TYPE_2DMAIN : NNS_G2D_VRAM_TYPE_2DSUB;
+    CreateSpriteResourcesHeader(ret->spriteResourcesHeader, 0xE000, 0xE000, 0xE000, 0xE000, -1, -1, 0, a4, a0->unk_140[GF_GFX_RES_TYPE_CHAR], a0->unk_140[GF_GFX_RES_TYPE_PLTT], a0->unk_140[GF_GFX_RES_TYPE_CELL], a0->unk_140[GF_GFX_RES_TYPE_ANIM], NULL, NULL);
+
+    sp34.spriteList = a0->unk_010;
+    sp34.header = ret->spriteResourcesHeader;
+    SetVecFx32(sp34.position, FX32_CONST(x), FX32_CONST(y), FX32_CONST(z));
+    if (r6 == NNS_G2D_VRAM_TYPE_2DSUB) {
+        sp34.position.y += FX32_CONST(192);
+    }
+    SetVecFx32(sp34.scale, FX32_ONE, FX32_ONE, FX32_ONE);
+    sp34.rotation = 0;
+    sp34.priority = a5;
+    sp34.whichScreen = r6;
+    sp34.heapId = a0->heapId;
+    ret->sprite = Sprite_CreateAffine(&sp34);
+    GF_2DGfxResObj *obj = a0->unk_150[GF_GFX_RES_TYPE_PLTT]->obj[0];
+    if (ret->sprite != NULL) {
+        int r5 = a7;
+        Sprite_SetAnimCtrlSeq(ret->sprite, r5);
+        Sprite_SetPalIndex(ret->sprite, ov100_021E770C[r5] + GF_PlttResObj_GetVramSlotNum(obj, r6));
+    } else {
+        GF_ASSERT(FALSE);
+    }
+    return ret;
+}
+
+void ov100_021E6C44(UnkImageStruct *a0) {
+    UnkImageStruct_Delete(a0);
 }
