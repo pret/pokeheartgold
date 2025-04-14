@@ -27,7 +27,7 @@ MomsSavings *SaveData_GetMomsSavingsAddr(SaveData *saveData) {
 
 static void InitGSPlayerMiscInternal(SavePokegear *pokegear) {
     MI_CpuClear8(pokegear, sizeof(SavePokegear));
-    pokegear->unk_0 = 3;
+    pokegear->lastUsedApp = 3;
     pokegear->unk_4_18 = 0;
     pokegear->unk_1 = 0;
     pokegear->unk_3 = 128;
@@ -46,12 +46,12 @@ UnkPokegearSub8List *sub_0202EDF4(SavePokegear *pokegear) {
     return &pokegear->unk_8;
 }
 
-u8 sub_0202EDF8(SavePokegear *pokegear) {
-    return pokegear->unk_0;
+u8 SavePokegear_GetLastUsedApp(SavePokegear *pokegear) {
+    return pokegear->lastUsedApp;
 }
 
-void sub_0202EDFC(SavePokegear *pokegear, u8 a1) {
-    pokegear->unk_0 = a1;
+void SavePokegear_SetLastUsedApp(SavePokegear *pokegear, u8 app) {
+    pokegear->lastUsedApp = app;
 }
 
 void Pokegear_RegisterCard(SavePokegear *pokegear, int card) {

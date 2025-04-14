@@ -57,7 +57,7 @@ struct UnkStruct_0202F3DC {
 };
 
 typedef struct SavePokegear {
-    u8 unk_0;
+    u8 lastUsedApp;
     u8 unk_1;
     u8 unk_2;
     u8 unk_3;
@@ -77,8 +77,8 @@ SavePokegear *SaveData_GSPlayerMisc_Get(SaveData *saveData);
 MomsSavings *SaveData_GetMomsSavingsAddr(SaveData *saveData);
 void SaveData_GSPlayerMisc_Init(SavePokegear *pokegear);
 UnkPokegearSub8List *sub_0202EDF4(SavePokegear *pokegear);
-u8 sub_0202EDF8(SavePokegear *pokegear);
-void sub_0202EDFC(SavePokegear *pokegear, u8 a1);
+u8 SavePokegear_GetLastUsedApp(SavePokegear *pokegear);
+void SavePokegear_SetLastUsedApp(SavePokegear *pokegear, u8 a1);
 void Pokegear_RegisterCard(SavePokegear *pokegear, int card);
 u8 Pokegear_GetRegisteredCardsArray(SavePokegear *pokegear);
 void sub_0202EE58(SavePokegear *pokegear, u8 a1);

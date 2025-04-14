@@ -10,22 +10,20 @@
 #include "unk_020210A0.h"
 #include "unk_0208805C.h"
 
-int ov100_021E59CC(PokegearPhoneApp *phoneApp);
-void ov100_021E5A88(PokegearPhoneApp *phoneApp);
-BOOL ov100_021E5B4C(PokegearPhoneApp *phoneApp, u8 selection, u8 a2);
-void ov100_021E5CA4(PokegearPhoneApp *phoneApp);
-void ov100_021E5FFC(PokegearPhoneApp *phoneApp);
-void ov100_021E6094(PokegearPhoneApp *phoneApp);
-void ov100_021E60C4(PokegearPhoneApp *phoneApp);
-void ov100_021E6134(PokegearPhoneApp *phoneApp);
-void ov100_021E616C(PokegearPhoneApp *phoneApp);
-void ov100_021E6338(PokegearPhoneApp *phoneApp);
-void ov100_021E6374(PokegearPhoneApp *phoneApp);
-void ov100_021E63F4(PokegearPhoneApp *phoneApp);
+int ov100_021E59CC(PokegearAppData *pokegearApp);
+void ov100_021E5A88(PokegearAppData *pokegearApp);
+BOOL ov100_021E5B4C(PokegearAppData *pokegearApp, u8 selection, u8 a2);
+void ov100_021E5CA4(PokegearAppData *pokegearApp);
+void ov100_021E5FFC(PokegearAppData *pokegearApp);
+void ov100_021E6094(PokegearAppData *pokegearApp);
+void ov100_021E60C4(PokegearAppData *pokegearApp);
+void ov100_021E6134(PokegearAppData *pokegearApp);
+void ov100_021E616C(PokegearAppData *pokegearApp);
+void ov100_021E6338(PokegearAppData *pokegearApp);
+void ov100_021E6374(PokegearAppData *pokegearApp);
+void ov100_021E63F4(PokegearAppData *pokegearApp);
 
-extern void ov100_021E65F4(void *cb_args);
-
-static const TouchscreenHitbox ov100_021E74C4[] = {
+static const TouchscreenHitbox sTouchscreenButtonHitboxes[] = {
     { .rect = { 0xA0, 0xC0, 0x08, 0x38 } },
     { .rect = { 0xA0, 0xC0, 0x38, 0x68 } },
     { .rect = { 0xA0, 0xC0, 0x68, 0x98 } },
@@ -41,102 +39,102 @@ static const u8 ov100_021E74B4[][4] = {
     { 0x00, 0x01, 0x02, 0x03 },
 };
 
-BOOL ov100_021E5900(PokegearPhoneApp *phoneApp) {
-    phoneApp->unk_010 = phoneApp->unk_00C;
+BOOL ov100_021E5900(PokegearAppData *pokegearApp) {
+    pokegearApp->unk_010 = pokegearApp->unk_00C;
     if (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B | PAD_KEY_RIGHT | PAD_KEY_LEFT | PAD_KEY_UP | PAD_KEY_DOWN | PAD_BUTTON_X | PAD_BUTTON_Y)) {
-        phoneApp->unk_00C = MENU_INPUT_STATE_BUTTONS;
+        pokegearApp->unk_00C = MENU_INPUT_STATE_BUTTONS;
         return TRUE;
     } else {
         return FALSE;
     }
 }
 
-int ov100_021E5924(PokegearPhoneApp *phoneApp) {
-    int result = TouchscreenHitbox_FindRectAtTouchNew(ov100_021E74C4);
+int ov100_021E5924(PokegearAppData *pokegearApp) {
+    int result = TouchscreenHitbox_FindRectAtTouchNew(sTouchscreenButtonHitboxes);
     if (result == -1) {
         return -1;
     }
     u16 val = 0;
-    if (DoesPixelAtScreenXYMatchPtrVal(phoneApp->bgConfig, GF_BG_LYR_MAIN_0, gSystem.touchX, gSystem.touchY, &val) == 1) {
+    if (DoesPixelAtScreenXYMatchPtrVal(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0, gSystem.touchX, gSystem.touchY, &val) == 1) {
         return -1;
     }
-    if (result == phoneApp->unk_004) {
+    if (result == pokegearApp->app) {
         return -1;
     }
-    if ((result == 1 && !(phoneApp->unk_005_0 & 2)) || (result == 2 && !(phoneApp->unk_005_0 & 1))) {
+    if ((result == 1 && !(pokegearApp->registeredCards & 2)) || (result == 2 && !(pokegearApp->registeredCards & 1))) {
         return -1;
     }
-    ov100_021E5B4C(phoneApp, result, 1);
+    ov100_021E5B4C(pokegearApp, result, 1);
     PlaySE(result != 4 ? SEQ_SE_GS_GEARAPPLICHANGE : SEQ_SE_GS_GEARCANCEL);
-    phoneApp->unk_006 = 0;
-    phoneApp->unk_00C = MENU_INPUT_STATE_TOUCH;
+    pokegearApp->unk_006 = 0;
+    pokegearApp->unk_00C = MENU_INPUT_STATE_TOUCH;
     return result;
 }
 
-int ov100_021E59CC(PokegearPhoneApp *phoneApp) {
+int ov100_021E59CC(PokegearAppData *pokegearApp) {
     if (gSystem.newKeys & PAD_BUTTON_B) {
         PlaySE(SEQ_SE_GS_GEARCANCEL);
         return 4;
     }
     if (gSystem.newKeys & PAD_BUTTON_A) {
-        PokegearPhoneApp_UnkSub07C_Sub4_Sub4 *r4 = &phoneApp->unk_07C->unk_08->unk_04[phoneApp->unk_07C->unk_08->unk_01];
-        ov100_021E7128(phoneApp->unk_07C, 0, FALSE);
-        phoneApp->unk_006 = 0;
+        PokegearApp_UnkSub07C_Sub4_Sub4 *r4 = &pokegearApp->unk_07C->unk_08->unk_04[pokegearApp->unk_07C->unk_08->unk_01];
+        ov100_021E7128(pokegearApp->unk_07C, 0, FALSE);
+        pokegearApp->unk_006 = 0;
         PlaySE(r4->unk_00 != 4 ? SEQ_SE_GS_GEARAPPLICHANGE : SEQ_SE_GS_GEARCANCEL);
-        if (r4->unk_00 == phoneApp->unk_004) {
-            if (phoneApp->unk_05C != NULL) {
-                phoneApp->unk_05C(phoneApp->unk_064);
+        if (r4->unk_00 == pokegearApp->app) {
+            if (pokegearApp->unk_05C != NULL) {
+                pokegearApp->unk_05C(pokegearApp->unk_064);
             }
             return -1;
         }
-        ov100_021E5B4C(phoneApp, r4->unk_00, 1);
+        ov100_021E5B4C(pokegearApp, r4->unk_00, 1);
         return r4->unk_00;
     }
     if (gSystem.newKeys & PAD_KEY_LEFT) {
         PlaySE(SEQ_SE_GS_GEARCURSOR);
-        ov100_021E73AC(phoneApp->unk_07C, 0);
+        ov100_021E73AC(pokegearApp->unk_07C, 0);
         return -1;
     }
     if (gSystem.newKeys & PAD_KEY_RIGHT) {
         PlaySE(SEQ_SE_GS_GEARCURSOR);
-        ov100_021E73AC(phoneApp->unk_07C, 1);
+        ov100_021E73AC(pokegearApp->unk_07C, 1);
         return -1;
     }
     return -1;
 }
 
-void ov100_021E5A88(PokegearPhoneApp *phoneApp) {
-    u8 r4 = phoneApp->unk_005_0;
-    CopyToBgTilemapRect(phoneApp->bgConfig, GF_BG_LYR_MAIN_0, 0, 20, 32, 4, phoneApp->unk_0C8->rawData, 0, 0, phoneApp->unk_0C8->screenWidth / 8, phoneApp->unk_0C8->screenHeight / 8);
+void ov100_021E5A88(PokegearAppData *pokegearApp) {
+    u8 r4 = pokegearApp->registeredCards;
+    CopyToBgTilemapRect(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0, 0, 20, 32, 4, pokegearApp->unk_0C8->rawData, 0, 0, pokegearApp->unk_0C8->screenWidth / 8, pokegearApp->unk_0C8->screenHeight / 8);
     if (!(r4 & 1)) {
-        CopyToBgTilemapRect(phoneApp->bgConfig, GF_BG_LYR_MAIN_0, 13, 20, 6, 4, phoneApp->unk_0C8->rawData, 0, 8, phoneApp->unk_0C8->screenWidth / 8, phoneApp->unk_0C8->screenHeight / 8);
+        CopyToBgTilemapRect(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0, 13, 20, 6, 4, pokegearApp->unk_0C8->rawData, 0, 8, pokegearApp->unk_0C8->screenWidth / 8, pokegearApp->unk_0C8->screenHeight / 8);
     }
     if (!(r4 & 2)) {
-        CopyToBgTilemapRect(phoneApp->bgConfig, GF_BG_LYR_MAIN_0, 7, 20, 6, 4, phoneApp->unk_0C8->rawData, 0, 8, phoneApp->unk_0C8->screenWidth / 8, phoneApp->unk_0C8->screenHeight / 8);
+        CopyToBgTilemapRect(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0, 7, 20, 6, 4, pokegearApp->unk_0C8->rawData, 0, 8, pokegearApp->unk_0C8->screenWidth / 8, pokegearApp->unk_0C8->screenHeight / 8);
     }
-    ScheduleBgTilemapBufferTransfer(phoneApp->bgConfig, GF_BG_LYR_MAIN_0);
+    ScheduleBgTilemapBufferTransfer(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0);
 }
 
-BOOL ov100_021E5B4C(PokegearPhoneApp *phoneApp, u8 selection, u8 a2) {
+BOOL ov100_021E5B4C(PokegearAppData *pokegearApp, u8 selection, u8 a2) {
     u8 r2;
-    ov100_021E5A88(phoneApp);
+    ov100_021E5A88(pokegearApp);
     if (selection == 4) {
         r2 = 26;
     } else {
         r2 = selection * 6 + 1;
     }
-    CopyToBgTilemapRect(phoneApp->bgConfig, GF_BG_LYR_MAIN_0, r2, 20, 6, 4, phoneApp->unk_0C8->rawData, r2, a2 * 4, phoneApp->unk_0C8->screenWidth / 8, phoneApp->unk_0C8->screenHeight / 8);
-    ScheduleBgTilemapBufferTransfer(phoneApp->bgConfig, GF_BG_LYR_MAIN_0);
+    CopyToBgTilemapRect(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0, r2, 20, 6, 4, pokegearApp->unk_0C8->rawData, r2, a2 * 4, pokegearApp->unk_0C8->screenWidth / 8, pokegearApp->unk_0C8->screenHeight / 8);
+    ScheduleBgTilemapBufferTransfer(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0);
     return FALSE;
 }
 
-BOOL ov100_021E5BB0(PokegearPhoneApp *phoneApp, BOOL a1) {
+BOOL ov100_021E5BB0(PokegearAppData *pokegearApp, BOOL a1) {
     RTCDate date;
     RTCTime time;
     u8 sp0[4];
 
     GF_RTC_CopyDateTime(&date, &time);
-    if (a1 == 0 && phoneApp->unk_080.second == time.second) {
+    if (a1 == 0 && pokegearApp->unk_080.second == time.second) {
         return FALSE;
     }
 
@@ -145,11 +143,11 @@ BOOL ov100_021E5BB0(PokegearPhoneApp *phoneApp, BOOL a1) {
     sp0[2] = time.minute / 10;
     sp0[3] = time.minute % 10;
     for (u8 i = 0; i < 4; i++) {
-        UnkImageStruct_SetSpriteAnimCtrlCurrentFrame(phoneApp->unk_098[i + 5].unk_image_struct, sp0[i]);
+        UnkImageStruct_SetSpriteAnimCtrlCurrentFrame(pokegearApp->unk_098[i + 5].unk_image_struct, sp0[i]);
     }
-    UnkImageStruct_SetSpriteAnimCtrlCurrentFrame(phoneApp->unk_098[4].unk_image_struct, date.week);
-    phoneApp->unk_080 = time;
-    phoneApp->unk_007 = 0;
+    UnkImageStruct_SetSpriteAnimCtrlCurrentFrame(pokegearApp->unk_098[4].unk_image_struct, date.week);
+    pokegearApp->unk_080 = time;
+    pokegearApp->unk_007 = 0;
     return TRUE;
 }
 
@@ -167,51 +165,51 @@ int ov100_021E5C50(u16 a0, u16 a1) {
     return 2;
 }
 
-int ov100_021E5C80(PokegearPhoneApp *phoneApp) {
-    return ov100_021E5C50(phoneApp->args->x / 32, phoneApp->args->y / 32);
+int ov100_021E5C80(PokegearAppData *pokegearApp) {
+    return ov100_021E5C50(pokegearApp->args->x / 32, pokegearApp->args->y / 32);
 }
 
-void ov100_021E5CA4(PokegearPhoneApp *phoneApp) {
-    BG_LoadBlankPltt(GF_BG_LYR_MAIN_3, 0x1C0, 0, phoneApp->heapId);
-    BG_LoadBlankPltt(GF_BG_LYR_SUB_3, 0x180, 0, phoneApp->heapId);
+void ov100_021E5CA4(PokegearAppData *pokegearApp) {
+    BG_LoadBlankPltt(GF_BG_LYR_MAIN_3, 0x1C0, 0, pokegearApp->heapId);
+    BG_LoadBlankPltt(GF_BG_LYR_SUB_3, 0x180, 0, pokegearApp->heapId);
     for (int i = 0; i < 3; ++i) {
-        BgClearTilemapBufferAndCommit(phoneApp->bgConfig, i + 1);
-        BG_ClearCharDataRange(i + 1, 0x40, 0, phoneApp->heapId);
-        BgCommitTilemapBufferToVram(phoneApp->bgConfig, i + 1);
-        FreeBgTilemapBuffer(phoneApp->bgConfig, i + 1);
-        BgClearTilemapBufferAndCommit(phoneApp->bgConfig, i + 5);
-        BG_ClearCharDataRange(i + 5, 0x40, 0, phoneApp->heapId);
-        BgCommitTilemapBufferToVram(phoneApp->bgConfig, i + 5);
-        FreeBgTilemapBuffer(phoneApp->bgConfig, i + 5);
+        BgClearTilemapBufferAndCommit(pokegearApp->bgConfig, i + 1);
+        BG_ClearCharDataRange(i + 1, 0x40, 0, pokegearApp->heapId);
+        BgCommitTilemapBufferToVram(pokegearApp->bgConfig, i + 1);
+        FreeBgTilemapBuffer(pokegearApp->bgConfig, i + 1);
+        BgClearTilemapBufferAndCommit(pokegearApp->bgConfig, i + 5);
+        BG_ClearCharDataRange(i + 5, 0x40, 0, pokegearApp->heapId);
+        BgCommitTilemapBufferToVram(pokegearApp->bgConfig, i + 5);
+        FreeBgTilemapBuffer(pokegearApp->bgConfig, i + 5);
     }
 }
 
-BOOL ov100_021E5D3C(PokegearPhoneApp *phoneApp, int a1) {
-    if (phoneApp->unk_009 > 16) {
+BOOL ov100_021E5D3C(PokegearAppData *pokegearApp, int a1) {
+    if (pokegearApp->unk_009 > 16) {
         return TRUE;
     }
     if (a1 == 0) {
-        PaletteData_BlendPalette(phoneApp->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 16 - phoneApp->unk_009, RGB_BLACK);
-        PaletteData_BlendPalette(phoneApp->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 16 - phoneApp->unk_009, RGB_BLACK);
+        PaletteData_BlendPalette(pokegearApp->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 16 - pokegearApp->unk_009, RGB_BLACK);
+        PaletteData_BlendPalette(pokegearApp->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 16 - pokegearApp->unk_009, RGB_BLACK);
     } else {
-        PaletteData_BlendPalette(phoneApp->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, phoneApp->unk_009, RGB_BLACK);
-        PaletteData_BlendPalette(phoneApp->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, phoneApp->unk_009, RGB_BLACK);
+        PaletteData_BlendPalette(pokegearApp->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, pokegearApp->unk_009, RGB_BLACK);
+        PaletteData_BlendPalette(pokegearApp->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, pokegearApp->unk_009, RGB_BLACK);
     }
-    if (phoneApp->unk_009 >= 16) {
-        phoneApp->unk_009 += 2;
+    if (pokegearApp->unk_009 >= 16) {
+        pokegearApp->unk_009 += 2;
         return TRUE;
     } else {
-        phoneApp->unk_009 += 2;
+        pokegearApp->unk_009 += 2;
         return FALSE;
     }
 }
 
-u8 ov100_021E5DC8(PokegearPhoneApp *phoneApp) {
-    return ov100_021E74B4[phoneApp->unk_005_0][phoneApp->unk_004];
+u8 ov100_021E5DC8(PokegearAppData *pokegearApp) {
+    return ov100_021E74B4[pokegearApp->registeredCards][pokegearApp->app];
 }
 
-BOOL ov100_021E5DDC(PokegearPhoneApp *phoneApp) {
-    switch (phoneApp->unk_018) {
+BOOL ov100_021E5DDC(PokegearAppData *pokegearApp) {
+    switch (pokegearApp->unk_018) {
     case 0:
         Main_SetVBlankIntrCB(NULL, NULL);
         HBlankInterruptDisable();
@@ -227,52 +225,52 @@ BOOL ov100_021E5DDC(PokegearPhoneApp *phoneApp) {
         sub_02021148(2);
         break;
     case 1:
-        ov100_021E5FFC(phoneApp);
-        ov100_021E60C4(phoneApp);
+        ov100_021E5FFC(pokegearApp);
+        ov100_021E60C4(pokegearApp);
         break;
     case 2:
-        ov100_021E616C(phoneApp);
-        ov100_021E6374(phoneApp);
+        ov100_021E616C(pokegearApp);
+        ov100_021E6374(pokegearApp);
         break;
     case 3:
-        Main_SetVBlankIntrCB(ov100_021E65F4, phoneApp);
-        phoneApp->unk_018 = 0;
+        Main_SetVBlankIntrCB(ov100_021E65F4, pokegearApp);
+        pokegearApp->unk_018 = 0;
         return TRUE;
     }
-    ++phoneApp->unk_018;
+    ++pokegearApp->unk_018;
     return FALSE;
 }
 
-BOOL ov100_021E5E88(PokegearPhoneApp *phoneApp) {
+BOOL ov100_021E5E88(PokegearAppData *pokegearApp) {
     sub_02021238();
-    Main_SetVBlankIntrCB(NULL, phoneApp);
-    ov100_021E63F4(phoneApp);
-    ov100_021E6338(phoneApp);
-    ov100_021E6134(phoneApp);
-    ov100_021E6094(phoneApp);
+    Main_SetVBlankIntrCB(NULL, pokegearApp);
+    ov100_021E63F4(pokegearApp);
+    ov100_021E6338(pokegearApp);
+    ov100_021E6134(pokegearApp);
+    ov100_021E6094(pokegearApp);
     return TRUE;
 }
 
-void ov100_021E5EB4(PokegearPhoneApp *phoneApp, int a1) {
-    NARC *narc = NARC_New(NARC_a_1_4_3, phoneApp->heapId);
-    sub_0208820C(phoneApp->bgConfig, phoneApp->heapId, narc, NARC_a_1_4_3, a1 + 48, GF_BG_LYR_MAIN_0, 0, 0, 0);
-    sub_0208820C(phoneApp->bgConfig, phoneApp->heapId, narc, NARC_a_1_4_3, a1 + 36, GF_BG_LYR_SUB_0, 0, 0, 0);
-    PaletteData_LoadFromOpenNarc(phoneApp->plttData, narc, a1 + 30, phoneApp->heapId, PLTTBUF_MAIN_BG, 0x40, 0xE0, 0xE0);
-    PaletteData_LoadFromOpenNarc(phoneApp->plttData, narc, a1 + 24, phoneApp->heapId, PLTTBUF_SUB_BG, 0x80, 0xC0, 0xC0);
-    PaletteData_LoadFromOpenNarc(phoneApp->plttData, narc, a1, phoneApp->heapId, PLTTBUF_MAIN_OBJ, 0x80, 0, 0);
-    PaletteData_LoadFromOpenNarc(phoneApp->plttData, narc, a1, phoneApp->heapId, PLTTBUF_SUB_OBJ, 0x80, 0, 0);
+void ov100_021E5EB4(PokegearAppData *pokegearApp, int a1) {
+    NARC *narc = NARC_New(NARC_a_1_4_3, pokegearApp->heapId);
+    sub_0208820C(pokegearApp->bgConfig, pokegearApp->heapId, narc, NARC_a_1_4_3, a1 + 48, GF_BG_LYR_MAIN_0, 0, 0, 0);
+    sub_0208820C(pokegearApp->bgConfig, pokegearApp->heapId, narc, NARC_a_1_4_3, a1 + 36, GF_BG_LYR_SUB_0, 0, 0, 0);
+    PaletteData_LoadFromOpenNarc(pokegearApp->plttData, narc, a1 + 30, pokegearApp->heapId, PLTTBUF_MAIN_BG, 0x40, 0xE0, 0xE0);
+    PaletteData_LoadFromOpenNarc(pokegearApp->plttData, narc, a1 + 24, pokegearApp->heapId, PLTTBUF_SUB_BG, 0x80, 0xC0, 0xC0);
+    PaletteData_LoadFromOpenNarc(pokegearApp->plttData, narc, a1, pokegearApp->heapId, PLTTBUF_MAIN_OBJ, 0x80, 0, 0);
+    PaletteData_LoadFromOpenNarc(pokegearApp->plttData, narc, a1, pokegearApp->heapId, PLTTBUF_SUB_OBJ, 0x80, 0, 0);
 
-    NARC_ReadWholeMember(narc, a1 + 54, phoneApp->unk_0C4);
-    NNS_G2dGetUnpackedScreenData(phoneApp->unk_0C4, &phoneApp->unk_0C8);
-    if (phoneApp->unk_004 == 4) {
-        ov100_021E5B4C(phoneApp, 2, 1);
+    NARC_ReadWholeMember(narc, a1 + 54, pokegearApp->unk_0C4);
+    NNS_G2dGetUnpackedScreenData(pokegearApp->unk_0C4, &pokegearApp->unk_0C8);
+    if (pokegearApp->app == 4) {
+        ov100_021E5B4C(pokegearApp, 2, 1);
     } else {
-        ov100_021E5B4C(phoneApp, phoneApp->unk_004, 1);
+        ov100_021E5B4C(pokegearApp, pokegearApp->app, 1);
     }
-    sub_0208820C(phoneApp->bgConfig, phoneApp->heapId, narc, NARC_a_1_4_3, a1 + 42, GF_BG_LYR_SUB_0, 1, 0, 0);
+    sub_0208820C(pokegearApp->bgConfig, pokegearApp->heapId, narc, NARC_a_1_4_3, a1 + 42, GF_BG_LYR_SUB_0, 1, 0, 0);
     NARC_Delete(narc);
-    ScheduleBgTilemapBufferTransfer(phoneApp->bgConfig, GF_BG_LYR_MAIN_0);
-    ScheduleBgTilemapBufferTransfer(phoneApp->bgConfig, GF_BG_LYR_SUB_0);
+    ScheduleBgTilemapBufferTransfer(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0);
+    ScheduleBgTilemapBufferTransfer(pokegearApp->bgConfig, GF_BG_LYR_SUB_0);
 }
 
 void ov100_021E5FDC(void) {
@@ -291,9 +289,9 @@ void ov100_021E5FDC(void) {
     GfGfx_SetBanks(&sp0);
 }
 
-void ov100_021E5FFC(PokegearPhoneApp *phoneApp) {
+void ov100_021E5FFC(PokegearAppData *pokegearApp) {
     ov100_021E5FDC();
-    phoneApp->bgConfig = BgConfig_Alloc(phoneApp->heapId);
+    pokegearApp->bgConfig = BgConfig_Alloc(pokegearApp->heapId);
     GX_SetDispSelect(GX_DISP_SELECT_SUB_MAIN);
     {
         GraphicsModes modes = {
@@ -339,9 +337,9 @@ void ov100_021E5FFC(PokegearPhoneApp *phoneApp) {
              },
         };
         for (int i = 0; i < 2; ++i) {
-            InitBgFromTemplate(phoneApp->bgConfig, i * 4, &bgTemplates[i], GF_BG_TYPE_TEXT);
-            BgClearTilemapBufferAndCommit(phoneApp->bgConfig, i * 4);
-            BG_ClearCharDataRange(i * 4, 0x20, 0, phoneApp->heapId);
+            InitBgFromTemplate(pokegearApp->bgConfig, i * 4, &bgTemplates[i], GF_BG_TYPE_TEXT);
+            BgClearTilemapBufferAndCommit(pokegearApp->bgConfig, i * 4);
+            BG_ClearCharDataRange(i * 4, 0x20, 0, pokegearApp->heapId);
         }
     }
 
@@ -349,77 +347,77 @@ void ov100_021E5FFC(PokegearPhoneApp *phoneApp) {
     ToggleBgLayer(GF_BG_LYR_SUB_0, FALSE);
 }
 
-void ov100_021E6094(PokegearPhoneApp *phoneApp) {
-    FreeBgTilemapBuffer(phoneApp->bgConfig, GF_BG_LYR_SUB_0);
-    FreeBgTilemapBuffer(phoneApp->bgConfig, GF_BG_LYR_MAIN_0);
-    FreeToHeap(phoneApp->bgConfig);
+void ov100_021E6094(PokegearAppData *pokegearApp) {
+    FreeBgTilemapBuffer(pokegearApp->bgConfig, GF_BG_LYR_SUB_0);
+    FreeBgTilemapBuffer(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0);
+    FreeToHeap(pokegearApp->bgConfig);
     GX_SetDispSelect(GX_DISP_SELECT_SUB_MAIN);
 }
 
-void ov100_021E60C4(PokegearPhoneApp *phoneApp) {
-    NARC *narc = NARC_New(NARC_a_1_4_3, phoneApp->heapId);
-    phoneApp->plttData = PaletteData_Init(phoneApp->heapId);
-    PaletteData_AllocBuffers(phoneApp->plttData, PLTTBUF_MAIN_BG, 0x200, phoneApp->heapId);
-    PaletteData_AllocBuffers(phoneApp->plttData, PLTTBUF_MAIN_OBJ, 0x200, phoneApp->heapId);
-    PaletteData_AllocBuffers(phoneApp->plttData, PLTTBUF_SUB_BG, 0x200, phoneApp->heapId);
-    PaletteData_AllocBuffers(phoneApp->plttData, PLTTBUF_SUB_OBJ, 0x200, phoneApp->heapId);
-    phoneApp->unk_0C4 = AllocFromHeap(phoneApp->heapId, GetNarcMemberSizeByIdPair(NARC_a_1_4_3, 54));
-    ov100_021E5EB4(phoneApp, phoneApp->unk_008);
+void ov100_021E60C4(PokegearAppData *pokegearApp) {
+    NARC *narc = NARC_New(NARC_a_1_4_3, pokegearApp->heapId);
+    pokegearApp->plttData = PaletteData_Init(pokegearApp->heapId);
+    PaletteData_AllocBuffers(pokegearApp->plttData, PLTTBUF_MAIN_BG, 0x200, pokegearApp->heapId);
+    PaletteData_AllocBuffers(pokegearApp->plttData, PLTTBUF_MAIN_OBJ, 0x200, pokegearApp->heapId);
+    PaletteData_AllocBuffers(pokegearApp->plttData, PLTTBUF_SUB_BG, 0x200, pokegearApp->heapId);
+    PaletteData_AllocBuffers(pokegearApp->plttData, PLTTBUF_SUB_OBJ, 0x200, pokegearApp->heapId);
+    pokegearApp->unk_0C4 = AllocFromHeap(pokegearApp->heapId, GetNarcMemberSizeByIdPair(NARC_a_1_4_3, 54));
+    ov100_021E5EB4(pokegearApp, pokegearApp->unk_008);
     NARC_Delete(narc); // was never actually used
 }
 
-void ov100_021E6134(PokegearPhoneApp *phoneApp) {
-    FreeToHeap(phoneApp->unk_0C4);
-    PaletteData_FreeBuffers(phoneApp->plttData, PLTTBUF_SUB_OBJ);
-    PaletteData_FreeBuffers(phoneApp->plttData, PLTTBUF_SUB_BG);
-    PaletteData_FreeBuffers(phoneApp->plttData, PLTTBUF_MAIN_OBJ);
-    PaletteData_FreeBuffers(phoneApp->plttData, PLTTBUF_MAIN_BG);
-    PaletteData_Free(phoneApp->plttData);
-    phoneApp->plttData = NULL;
+void ov100_021E6134(PokegearAppData *pokegearApp) {
+    FreeToHeap(pokegearApp->unk_0C4);
+    PaletteData_FreeBuffers(pokegearApp->plttData, PLTTBUF_SUB_OBJ);
+    PaletteData_FreeBuffers(pokegearApp->plttData, PLTTBUF_SUB_BG);
+    PaletteData_FreeBuffers(pokegearApp->plttData, PLTTBUF_MAIN_OBJ);
+    PaletteData_FreeBuffers(pokegearApp->plttData, PLTTBUF_MAIN_BG);
+    PaletteData_Free(pokegearApp->plttData);
+    pokegearApp->plttData = NULL;
 }
 
-void ov100_021E616C(PokegearPhoneApp *phoneApp) {
-    ov100_021E6914(phoneApp);
-    phoneApp->unk_094 = ov100_021E69F8(phoneApp->heapId, 11, 1, phoneApp->unk_008, 3, 2);
+void ov100_021E616C(PokegearAppData *pokegearApp) {
+    ov100_021E6914(pokegearApp);
+    pokegearApp->unk_094 = ov100_021E69F8(pokegearApp->heapId, 11, 1, pokegearApp->unk_008, 3, 2);
     for (int i = 0; i < 4; ++i) {
-        phoneApp->unk_098[i].unk_image_struct = ov100_021E6AC0(phoneApp->unk_094, 0x40, 0x40, 0, 0, 0, i, i + 4, 0);
+        pokegearApp->unk_098[i].unk_image_struct = ov100_021E6AC0(pokegearApp->unk_094, 0x40, 0x40, 0, 0, 0, i, i + 4, 0);
     }
-    phoneApp->unk_098[4].unk_image_struct = ov100_021E6AC0(phoneApp->unk_094, 0xAD, 0x30, 0, 0, 0, 4, 2, 1);
-    phoneApp->unk_098[5].unk_image_struct = ov100_021E6AC0(phoneApp->unk_094, 0x46, 0x2E, 0, 0, 0, 5, 0, 1);
-    phoneApp->unk_098[6].unk_image_struct = ov100_021E6AC0(phoneApp->unk_094, 0x56, 0x2E, 0, 0, 0, 6, 0, 1);
-    phoneApp->unk_098[7].unk_image_struct = ov100_021E6AC0(phoneApp->unk_094, 0x6E, 0x2E, 0, 0, 0, 7, 0, 1);
-    phoneApp->unk_098[8].unk_image_struct = ov100_021E6AC0(phoneApp->unk_094, 0x7E, 0x2E, 0, 0, 0, 8, 0, 1);
-    phoneApp->unk_098[9].unk_image_struct = ov100_021E6AC0(phoneApp->unk_094, 0x62, 0x2E, 0, 0, 0, 9, 1, 1);
-    phoneApp->unk_098[10].unk_image_struct = ov100_021E6AC0(phoneApp->unk_094, 0xC5, 0x30, 0, 0, 0, 10, 3, 1);
-    ov100_021E5BB0(phoneApp, TRUE);
+    pokegearApp->unk_098[4].unk_image_struct = ov100_021E6AC0(pokegearApp->unk_094, 0xAD, 0x30, 0, 0, 0, 4, 2, 1);
+    pokegearApp->unk_098[5].unk_image_struct = ov100_021E6AC0(pokegearApp->unk_094, 0x46, 0x2E, 0, 0, 0, 5, 0, 1);
+    pokegearApp->unk_098[6].unk_image_struct = ov100_021E6AC0(pokegearApp->unk_094, 0x56, 0x2E, 0, 0, 0, 6, 0, 1);
+    pokegearApp->unk_098[7].unk_image_struct = ov100_021E6AC0(pokegearApp->unk_094, 0x6E, 0x2E, 0, 0, 0, 7, 0, 1);
+    pokegearApp->unk_098[8].unk_image_struct = ov100_021E6AC0(pokegearApp->unk_094, 0x7E, 0x2E, 0, 0, 0, 8, 0, 1);
+    pokegearApp->unk_098[9].unk_image_struct = ov100_021E6AC0(pokegearApp->unk_094, 0x62, 0x2E, 0, 0, 0, 9, 1, 1);
+    pokegearApp->unk_098[10].unk_image_struct = ov100_021E6AC0(pokegearApp->unk_094, 0xC5, 0x30, 0, 0, 0, 10, 3, 1);
+    ov100_021E5BB0(pokegearApp, TRUE);
 
-    UnkImageStruct_SetSpriteAnimActiveFlag(phoneApp->unk_098[9].unk_image_struct, TRUE);
-    if (!MapHeader_GetField14_1D(phoneApp->args->mapID)) {
-        UnkImageStruct_SetSpriteAnimCtrlCurrentFrame(phoneApp->unk_098[10].unk_image_struct, 1);
+    UnkImageStruct_SetSpriteAnimActiveFlag(pokegearApp->unk_098[9].unk_image_struct, TRUE);
+    if (!MapHeader_GetField14_1D(pokegearApp->args->mapID)) {
+        UnkImageStruct_SetSpriteAnimCtrlCurrentFrame(pokegearApp->unk_098[10].unk_image_struct, 1);
     }
 
     for (int i = 0; i <= 3; ++i) {
-        UnkImageStruct_SetSpriteVisibleFlag(phoneApp->unk_098[i].unk_image_struct, FALSE);
-        UnkImageStruct_SetSpriteAnimActiveFlag(phoneApp->unk_098[i].unk_image_struct, TRUE);
+        UnkImageStruct_SetSpriteVisibleFlag(pokegearApp->unk_098[i].unk_image_struct, FALSE);
+        UnkImageStruct_SetSpriteAnimActiveFlag(pokegearApp->unk_098[i].unk_image_struct, TRUE);
     }
 
     for (int i = 4; i < 11; ++i) {
-        UnkImageStruct_SetSpriteVisibleFlag(phoneApp->unk_098[i].unk_image_struct, TRUE);
+        UnkImageStruct_SetSpriteVisibleFlag(pokegearApp->unk_098[i].unk_image_struct, TRUE);
     }
 }
 
-void ov100_021E6338(PokegearPhoneApp *phoneApp) {
+void ov100_021E6338(PokegearAppData *pokegearApp) {
     for (int i = 0; i < 11; ++i) {
-        UnkImageStruct_SetSpriteVisibleFlag(phoneApp->unk_098[i].unk_image_struct, FALSE);
-        ov100_021E6C44(phoneApp->unk_098[i].unk_image_struct);
+        UnkImageStruct_SetSpriteVisibleFlag(pokegearApp->unk_098[i].unk_image_struct, FALSE);
+        ov100_021E6C44(pokegearApp->unk_098[i].unk_image_struct);
     }
-    ov100_021E6A3C(phoneApp->unk_094);
-    ov100_021E6950(phoneApp);
+    ov100_021E6A3C(pokegearApp->unk_094);
+    ov100_021E6950(pokegearApp);
 }
 
-void ov100_021E6374(PokegearPhoneApp *phoneApp) {
+void ov100_021E6374(PokegearAppData *pokegearApp) {
     // This data has to be scoped to the function in order to match
-    static const PokegearPhoneApp_UnkSub07C_Sub4_Sub4 ov100_021E74DC[] = {
+    static const PokegearApp_UnkSub07C_Sub4_Sub4 ov100_021E74DC[] = {
         {
          0,
          0x02,
@@ -461,7 +459,7 @@ void ov100_021E6374(PokegearPhoneApp *phoneApp) {
          },
     };
 
-    static const PokegearPhoneApp_UnkSub07C_Sub4_Sub4 ov100_021E7528[] = {
+    static const PokegearApp_UnkSub07C_Sub4_Sub4 ov100_021E7528[] = {
         {
          0,
          0x03,
@@ -516,7 +514,7 @@ void ov100_021E6374(PokegearPhoneApp *phoneApp) {
          },
     };
 
-    static const PokegearPhoneApp_UnkSub07C_Sub4_Sub4 ov100_021E7558[] = {
+    static const PokegearApp_UnkSub07C_Sub4_Sub4 ov100_021E7558[] = {
         {
          0,
          0x03,
@@ -571,7 +569,7 @@ void ov100_021E6374(PokegearPhoneApp *phoneApp) {
          },
     };
 
-    static const PokegearPhoneApp_UnkSub07C_Sub4_Sub4 ov100_021E75C0[] = {
+    static const PokegearApp_UnkSub07C_Sub4_Sub4 ov100_021E75C0[] = {
         {
          0,
          0x04,
@@ -639,7 +637,7 @@ void ov100_021E6374(PokegearPhoneApp *phoneApp) {
          },
     };
 
-    static const PokegearPhoneApp_UnkSub07C_Sub4_Sub4 *ov100_021E7720[] = {
+    static const PokegearApp_UnkSub07C_Sub4_Sub4 *ov100_021E7720[] = {
         ov100_021E74DC,
         ov100_021E7528,
         ov100_021E7558,
@@ -653,16 +651,16 @@ void ov100_021E6374(PokegearPhoneApp *phoneApp) {
         NELEMS(ov100_021E75C0),
     };
 
-    phoneApp->unk_07C = ov100_021E6F88(4, phoneApp->heapId);
-    ov100_021E7014(phoneApp->unk_07C, ov100_021E7720[phoneApp->unk_005_0], ov100_021E74A0[phoneApp->unk_005_0], 0, 1, phoneApp->heapId, phoneApp->unk_098[0], phoneApp->unk_098[1], phoneApp->unk_098[2], phoneApp->unk_098[3]);
-    if (phoneApp->unk_004 == 4) {
-        ov100_021E72F8(phoneApp->unk_07C, 0, 2);
+    pokegearApp->unk_07C = ov100_021E6F88(4, pokegearApp->heapId);
+    ov100_021E7014(pokegearApp->unk_07C, ov100_021E7720[pokegearApp->registeredCards], ov100_021E74A0[pokegearApp->registeredCards], 0, 1, pokegearApp->heapId, pokegearApp->unk_098[0], pokegearApp->unk_098[1], pokegearApp->unk_098[2], pokegearApp->unk_098[3]);
+    if (pokegearApp->app == 4) {
+        ov100_021E72F8(pokegearApp->unk_07C, 0, 2);
     } else {
-        ov100_021E72F8(phoneApp->unk_07C, 0, ov100_021E5DC8(phoneApp));
+        ov100_021E72F8(pokegearApp->unk_07C, 0, ov100_021E5DC8(pokegearApp));
     }
 }
 
-void ov100_021E63F4(PokegearPhoneApp *phoneApp) {
-    ov100_021E70A4(phoneApp->unk_07C, 0);
-    ov100_021E6FBC(phoneApp->unk_07C);
+void ov100_021E63F4(PokegearAppData *pokegearApp) {
+    ov100_021E70A4(pokegearApp->unk_07C, 0);
+    ov100_021E6FBC(pokegearApp->unk_07C);
 }

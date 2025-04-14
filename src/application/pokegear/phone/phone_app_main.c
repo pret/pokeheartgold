@@ -11,22 +11,38 @@
 FS_EXTERN_OVERLAY(OVY_101);
 FS_EXTERN_OVERLAY(OVY_102);
 
-BOOL ov100_021E6408(OVY_MANAGER **ppOvyMan);
-void ov100_021E65F4(void *cb_args);
-int Phone_MainStep_00(PokegearPhoneApp *phoneApp);
-int Phone_MainStep_01(PokegearPhoneApp *phoneApp);
-int Phone_MainStep_06(PokegearPhoneApp *phoneApp);
-int Phone_MainStep_07(PokegearPhoneApp *phoneApp);
-int Phone_MainStep_08(PokegearPhoneApp *phoneApp);
-int Phone_MainStep_09(PokegearPhoneApp *phoneApp);
-int Phone_MainStep_02(PokegearPhoneApp *phoneApp);
-int Phone_MainStep_03(PokegearPhoneApp *phoneApp);
-int Phone_MainStep_10(PokegearPhoneApp *phoneApp);
-int Phone_MainStep_11(PokegearPhoneApp *phoneApp);
-int Phone_MainStep_04(PokegearPhoneApp *phoneApp);
-int Phone_MainStep_05(PokegearPhoneApp *phoneApp);
+typedef enum PokegearAppMainState {
+    POKEGEAR_APP_MAIN_STATE_SETUP,
+    POKEGEAR_APP_MAIN_STATE_TEARDOWN,
+    POKEGEAR_APP_MAIN_STATE_LAUNCH_CONFIGURE,
+    POKEGEAR_APP_MAIN_STATE_RUN_CONFIGUREPOKEGEAR_APP_MAIN_STATE_LAUNCH_CONFIGURE,
+    POKEGEAR_APP_MAIN_STATE_LAUNCH_RADIO,
+    POKEGEAR_APP_MAIN_STATE_RUN_RADIO,
+    POKEGEAR_APP_MAIN_STATE_LAUNCH_MAP,
+    POKEGEAR_APP_MAIN_STATE_RUN_MAP,
+    POKEGEAR_APP_MAIN_STATE_LAUNCH_DEBUG,
+    POKEGEAR_APP_MAIN_STATE_RUN_DEBUG,
+    POKEGEAR_APP_MAIN_STATE_LAUNCH_PHONE,
+    POKEGEAR_APP_MAIN_STATE_RUN_PHONE,
+    POKEGEAR_APP_MAIN_STATE_QUIT,
+} PokegearAppMainState;
 
-BOOL ov100_021E6408(OVY_MANAGER **ppOvyMan) {
+static BOOL ov100_021E6408(OVY_MANAGER **ppOvyMan);
+void ov100_021E65F4(void *cb_args);
+static PokegearAppMainState Pokegear_MainStep_Setup(PokegearAppData *pokegearApp);
+static PokegearAppMainState Pokegear_MainStep_Teardown(PokegearAppData *pokegearApp);
+static PokegearAppMainState Pokegear_MainStep_LaunchMap(PokegearAppData *pokegearApp);
+static PokegearAppMainState Pokegear_MainStep_RunMap(PokegearAppData *pokegearApp);
+static PokegearAppMainState Pokegear_MainStep_LaunchDebug(PokegearAppData *pokegearApp);
+static PokegearAppMainState Pokegear_MainStep_RunDebug(PokegearAppData *pokegearApp);
+static PokegearAppMainState Pokegear_MainStep_LaunchConfigure(PokegearAppData *pokegearApp);
+static PokegearAppMainState Pokegear_MainStep_RunConfigure(PokegearAppData *pokegearApp);
+static PokegearAppMainState Pokegear_MainStep_LaunchPhone(PokegearAppData *pokegearApp);
+static PokegearAppMainState Pokegear_MainStep_RunPhone(PokegearAppData *pokegearApp);
+static PokegearAppMainState Pokegear_MainStep_LaunchRadio(PokegearAppData *pokegearApp);
+static PokegearAppMainState Pokegear_MainStep_RunRadio(PokegearAppData *pokegearApp);
+
+static BOOL ov100_021E6408(OVY_MANAGER **ppOvyMan) {
     if (*ppOvyMan != NULL && OverlayManager_Run(*ppOvyMan)) {
         OverlayManager_Delete(*ppOvyMan);
         *ppOvyMan = NULL;
@@ -36,97 +52,97 @@ BOOL ov100_021E6408(OVY_MANAGER **ppOvyMan) {
     return FALSE;
 }
 
-BOOL Phone_Init(OVY_MANAGER *man, int *state) {
+BOOL Pokegear_Init(OVY_MANAGER *man, int *state) {
     PokegearArgs *args = OverlayManager_GetArgs(man);
     sub_0200616C(0);
     CreateHeap(HEAP_ID_3, HEAP_ID_90, 0x32000);
-    PokegearPhoneApp *phoneApp = OverlayManager_CreateAndGetData(man, sizeof(PokegearPhoneApp), HEAP_ID_90);
-    memset(phoneApp, 0, sizeof(PokegearPhoneApp));
-    phoneApp->args = args;
-    phoneApp->heapId = HEAP_ID_90;
-    phoneApp->saveData = phoneApp->args->saveData;
-    phoneApp->savePokegear = SaveData_GSPlayerMisc_Get(phoneApp->args->saveData);
-    phoneApp->saveVarsFlags = Save_VarsFlags_Get(phoneApp->args->saveData);
-    phoneApp->options = Save_PlayerData_GetOptionsAddr(phoneApp->args->saveData);
-    phoneApp->profile = Save_PlayerData_GetProfile(phoneApp->args->saveData);
-    phoneApp->unk_005_0 = Pokegear_GetRegisteredCardsArray(phoneApp->savePokegear);
-    phoneApp->unk_00C = MenuInputStateMgr_GetState(phoneApp->args->menuInputStatePtr);
-    phoneApp->unk_008 = sub_0202EE7C(phoneApp->savePokegear);
-    switch (phoneApp->args->kind) {
-    case 1:
-        phoneApp->unk_004 = 3;
+    PokegearAppData *pokegearApp = OverlayManager_CreateAndGetData(man, sizeof(PokegearAppData), HEAP_ID_90);
+    memset(pokegearApp, 0, sizeof(PokegearAppData));
+    pokegearApp->args = args;
+    pokegearApp->heapId = HEAP_ID_90;
+    pokegearApp->saveData = pokegearApp->args->saveData;
+    pokegearApp->savePokegear = SaveData_GSPlayerMisc_Get(pokegearApp->args->saveData);
+    pokegearApp->saveVarsFlags = Save_VarsFlags_Get(pokegearApp->args->saveData);
+    pokegearApp->options = Save_PlayerData_GetOptionsAddr(pokegearApp->args->saveData);
+    pokegearApp->profile = Save_PlayerData_GetProfile(pokegearApp->args->saveData);
+    pokegearApp->registeredCards = Pokegear_GetRegisteredCardsArray(pokegearApp->savePokegear);
+    pokegearApp->unk_00C = MenuInputStateMgr_GetState(pokegearApp->args->menuInputStatePtr);
+    pokegearApp->unk_008 = sub_0202EE7C(pokegearApp->savePokegear);
+    switch (pokegearApp->args->kind) {
+    case 1: // scripted phone call
+        pokegearApp->app = GEAR_APP_PHONE;
         break;
-    case 0:
+    case 0: // normal menu open
     default:
-        phoneApp->unk_004 = sub_0202EDF8(phoneApp->savePokegear);
-        if (phoneApp->unk_004 == 2) {
-            if (!(phoneApp->unk_005_0 & 1)) {
-                phoneApp->unk_004 = 0;
+        pokegearApp->app = SavePokegear_GetLastUsedApp(pokegearApp->savePokegear);
+        if (pokegearApp->app == GEAR_APP_MAP) {
+            if (!(pokegearApp->registeredCards & 1)) {
+                pokegearApp->app = GEAR_APP_CONFIGURE;
             }
-        } else if (phoneApp->unk_004 == 1) {
-            if (!(phoneApp->unk_005_0 & 2)) {
-                phoneApp->unk_004 = 0;
+        } else if (pokegearApp->app == GEAR_APP_RADIO) {
+            if (!(pokegearApp->registeredCards & 2)) {
+                pokegearApp->app = GEAR_APP_CONFIGURE;
             }
         }
         break;
     }
-    phoneApp->unk_038 = 0;
-    phoneApp->unk_056 = EC_WORD_NULL;
-    phoneApp->unk_006 = 1;
+    pokegearApp->unk_038 = 0;
+    pokegearApp->unk_056 = EC_WORD_NULL;
+    pokegearApp->unk_006 = 1;
     sub_02004EC4(0x37, 0, 0);
     return TRUE;
 }
 
-BOOL Phone_Main(OVY_MANAGER *man, int *state) {
-    PokegearPhoneApp *phoneApp = OverlayManager_GetData(man);
+BOOL Pokegear_Main(OVY_MANAGER *man, int *state) {
+    PokegearAppData *pokegearApp = OverlayManager_GetData(man);
     switch (*state) {
-    case 0:
-        *state = Phone_MainStep_00(phoneApp);
+    case POKEGEAR_APP_MAIN_STATE_SETUP:
+        *state = Pokegear_MainStep_Setup(pokegearApp);
         break;
-    case 1:
-        *state = Phone_MainStep_01(phoneApp);
+    case POKEGEAR_APP_MAIN_STATE_TEARDOWN:
+        *state = Pokegear_MainStep_Teardown(pokegearApp);
         break;
-    case 2:
-        *state = Phone_MainStep_02(phoneApp);
+    case POKEGEAR_APP_MAIN_STATE_LAUNCH_CONFIGURE:
+        *state = Pokegear_MainStep_LaunchConfigure(pokegearApp);
         break;
-    case 3:
-        *state = Phone_MainStep_03(phoneApp);
+    case POKEGEAR_APP_MAIN_STATE_RUN_CONFIGUREPOKEGEAR_APP_MAIN_STATE_LAUNCH_CONFIGURE:
+        *state = Pokegear_MainStep_RunConfigure(pokegearApp);
         break;
-    case 4:
-        *state = Phone_MainStep_04(phoneApp);
+    case POKEGEAR_APP_MAIN_STATE_LAUNCH_RADIO:
+        *state = Pokegear_MainStep_LaunchRadio(pokegearApp);
         break;
-    case 5:
-        *state = Phone_MainStep_05(phoneApp);
+    case POKEGEAR_APP_MAIN_STATE_RUN_RADIO:
+        *state = Pokegear_MainStep_RunRadio(pokegearApp);
         break;
-    case 6:
-        *state = Phone_MainStep_06(phoneApp);
+    case POKEGEAR_APP_MAIN_STATE_LAUNCH_MAP:
+        *state = Pokegear_MainStep_LaunchMap(pokegearApp);
         break;
-    case 7:
-        *state = Phone_MainStep_07(phoneApp);
+    case POKEGEAR_APP_MAIN_STATE_RUN_MAP:
+        *state = Pokegear_MainStep_RunMap(pokegearApp);
         break;
-    case 8:
-        *state = Phone_MainStep_08(phoneApp);
+    case POKEGEAR_APP_MAIN_STATE_LAUNCH_DEBUG:
+        *state = Pokegear_MainStep_LaunchDebug(pokegearApp);
         break;
-    case 9:
-        *state = Phone_MainStep_09(phoneApp);
+    case POKEGEAR_APP_MAIN_STATE_RUN_DEBUG:
+        *state = Pokegear_MainStep_RunDebug(pokegearApp);
         break;
-    case 10:
-        *state = Phone_MainStep_10(phoneApp);
+    case POKEGEAR_APP_MAIN_STATE_LAUNCH_PHONE:
+        *state = Pokegear_MainStep_LaunchPhone(pokegearApp);
         break;
-    case 11:
-        *state = Phone_MainStep_11(phoneApp);
+    case POKEGEAR_APP_MAIN_STATE_RUN_PHONE:
+        *state = Pokegear_MainStep_RunPhone(pokegearApp);
         break;
-    case 12:
+    case POKEGEAR_APP_MAIN_STATE_QUIT:
         return TRUE;
     }
     return FALSE;
 }
 
-BOOL Phone_Exit(OVY_MANAGER *man, int *state) {
-    PokegearPhoneApp *phoneApp = OverlayManager_GetData(man);
-    sub_0202EDFC(phoneApp->savePokegear, phoneApp->unk_004);
-    MenuInputStateMgr_SetState(phoneApp->args->menuInputStatePtr, phoneApp->unk_00C);
-    HeapID heapId = phoneApp->heapId;
+BOOL Pokegear_Exit(OVY_MANAGER *man, int *state) {
+    PokegearAppData *pokegearApp = OverlayManager_GetData(man);
+    SavePokegear_SetLastUsedApp(pokegearApp->savePokegear, pokegearApp->app);
+    MenuInputStateMgr_SetState(pokegearApp->args->menuInputStatePtr, pokegearApp->unk_00C);
+    HeapID heapId = pokegearApp->heapId;
     OverlayManager_FreeData(man);
     sub_02004B10();
     sub_0203E354();
@@ -139,213 +155,213 @@ BOOL Phone_Exit(OVY_MANAGER *man, int *state) {
 // -----------------------------
 
 void ov100_021E65F4(void *cb_args) {
-    PokegearPhoneApp *phoneApp = (PokegearPhoneApp *)cb_args;
+    PokegearAppData *pokegearApp = (PokegearAppData *)cb_args;
 
-    if (phoneApp->unk_058 != NULL) {
-        phoneApp->unk_058(phoneApp, phoneApp->unk_064);
+    if (pokegearApp->unk_058 != NULL) {
+        pokegearApp->unk_058(pokegearApp, pokegearApp->unk_064);
     }
 
-    if (phoneApp->plttData != NULL) {
-        PaletteData_PushTransparentBuffers(phoneApp->plttData);
+    if (pokegearApp->plttData != NULL) {
+        PaletteData_PushTransparentBuffers(pokegearApp->plttData);
     }
 
-    if (phoneApp->unk_08C != NULL) {
-        if (phoneApp->unk_094 != NULL) {
-            ov100_021E5BB0(phoneApp, 0);
-            ov100_021E6AB0(phoneApp->unk_094);
+    if (pokegearApp->gfxRenderer != NULL) {
+        if (pokegearApp->unk_094 != NULL) {
+            ov100_021E5BB0(pokegearApp, 0);
+            ov100_021E6AB0(pokegearApp->unk_094);
         }
-        ov100_021E69E8(phoneApp);
+        ov100_021E69E8(pokegearApp);
         thunk_OamManager_ApplyAndResetBuffers();
     }
 
     GF_RunVramTransferTasks();
-    DoScheduledBgGpuUpdates(phoneApp->bgConfig);
+    DoScheduledBgGpuUpdates(pokegearApp->bgConfig);
     OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
-int Phone_MainStep_00(PokegearPhoneApp *phoneApp) {
-    if (!ov100_021E5DDC(phoneApp)) {
-        return 0;
+static PokegearAppMainState Pokegear_MainStep_Setup(PokegearAppData *pokegearApp) {
+    if (!ov100_021E5DDC(pokegearApp)) {
+        return POKEGEAR_APP_MAIN_STATE_SETUP;
     }
 
-    switch (phoneApp->unk_004) {
-    case 2:
-    case 4:
-        return 6;
-    case 1:
-        return 4;
-    case 3:
-        return 10;
-    case 0:
-        return 2;
+    switch (pokegearApp->app) {
+    case GEAR_APP_MAP:
+    case GEAR_APP_FLY:
+        return POKEGEAR_APP_MAIN_STATE_LAUNCH_MAP;
+    case GEAR_APP_RADIO:
+        return POKEGEAR_APP_MAIN_STATE_LAUNCH_RADIO;
+    case GEAR_APP_PHONE:
+        return POKEGEAR_APP_MAIN_STATE_LAUNCH_PHONE;
+    case GEAR_APP_CONFIGURE:
+        return POKEGEAR_APP_MAIN_STATE_LAUNCH_CONFIGURE;
     }
 
-    return 2;
+    return POKEGEAR_APP_MAIN_STATE_LAUNCH_CONFIGURE;
 }
 
-int Phone_MainStep_01(PokegearPhoneApp *phoneApp) {
-    if (ov100_021E5E88(phoneApp)) {
-        return 12;
+static PokegearAppMainState Pokegear_MainStep_Teardown(PokegearAppData *pokegearApp) {
+    if (ov100_021E5E88(pokegearApp)) {
+        return POKEGEAR_APP_MAIN_STATE_QUIT;
     }
 
-    return 1;
+    return POKEGEAR_APP_MAIN_STATE_TEARDOWN;
 }
 
-int Phone_MainStep_06(PokegearPhoneApp *phoneApp) {
-    static const OVY_MGR_TEMPLATE ov100_021E762C = { ov101_021E7740, ov101_021E779C, ov101_021E7834, FS_OVERLAY_ID(OVY_101) };
-    phoneApp->childApplication = OverlayManager_New(&ov100_021E762C, phoneApp, phoneApp->heapId);
-    return 7;
+static PokegearAppMainState Pokegear_MainStep_LaunchMap(PokegearAppData *pokegearApp) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_GearMap = { ov101_021E7740, ov101_021E779C, ov101_021E7834, FS_OVERLAY_ID(OVY_101) };
+    pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_GearMap, pokegearApp, pokegearApp->heapId);
+    return POKEGEAR_APP_MAIN_STATE_RUN_MAP;
 }
 
-int Phone_MainStep_07(PokegearPhoneApp *phoneApp) {
-    if (!ov100_021E6408(&phoneApp->childApplication)) {
-        return 7;
+static PokegearAppMainState Pokegear_MainStep_RunMap(PokegearAppData *pokegearApp) {
+    if (!ov100_021E6408(&pokegearApp->childApplication)) {
+        return POKEGEAR_APP_MAIN_STATE_RUN_MAP;
     }
 
-    int outcome = phoneApp->unk_01C;
-    phoneApp->unk_01C = 0;
+    int outcome = pokegearApp->unk_01C;
+    pokegearApp->unk_01C = 0;
     switch (outcome) {
     case 2:
-        phoneApp->unk_004 = 2;
-        return 6;
+        pokegearApp->app = GEAR_APP_MAP;
+        return POKEGEAR_APP_MAIN_STATE_LAUNCH_MAP;
     case 6:
-        phoneApp->unk_004 = 4;
-        return 8;
+        pokegearApp->app = GEAR_APP_FLY;
+        return POKEGEAR_APP_MAIN_STATE_LAUNCH_DEBUG;
     case 0:
-        phoneApp->unk_004 = 0;
-        DoScheduledBgGpuUpdates(phoneApp->bgConfig);
-        return 2;
+        pokegearApp->app = GEAR_APP_CONFIGURE;
+        DoScheduledBgGpuUpdates(pokegearApp->bgConfig);
+        return POKEGEAR_APP_MAIN_STATE_LAUNCH_CONFIGURE;
     case 1:
-        phoneApp->unk_004 = 1;
-        DoScheduledBgGpuUpdates(phoneApp->bgConfig);
-        return 4;
+        pokegearApp->app = GEAR_APP_RADIO;
+        DoScheduledBgGpuUpdates(pokegearApp->bgConfig);
+        return POKEGEAR_APP_MAIN_STATE_LAUNCH_RADIO;
     case 3:
-        phoneApp->unk_004 = 3;
-        DoScheduledBgGpuUpdates(phoneApp->bgConfig);
-        return 10;
+        pokegearApp->app = GEAR_APP_PHONE;
+        DoScheduledBgGpuUpdates(pokegearApp->bgConfig);
+        return POKEGEAR_APP_MAIN_STATE_LAUNCH_PHONE;
     default:
-        return 1;
+        return POKEGEAR_APP_MAIN_STATE_TEARDOWN;
     }
 }
 
-int Phone_MainStep_08(PokegearPhoneApp *phoneApp) {
-    static const OVY_MGR_TEMPLATE ov100_021E761C = { EasyChat_Init, EasyChat_Main, EasyChat_Exit, FS_OVERLAY_ID(OVY_102) };
+static PokegearAppMainState Pokegear_MainStep_LaunchDebug(PokegearAppData *pokegearApp) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_EasyChat = { EasyChat_Init, EasyChat_Main, EasyChat_Exit, FS_OVERLAY_ID(OVY_102) };
 
-    if (!ov100_021E5E88(phoneApp)) {
-        return 8;
+    if (!ov100_021E5E88(pokegearApp)) {
+        return POKEGEAR_APP_MAIN_STATE_LAUNCH_DEBUG;
     }
 
-    phoneApp->easyChatArgs = EasyChat_CreateArgs(0, 0, phoneApp->args->saveData, phoneApp->args->menuInputStatePtr, phoneApp->heapId);
-    phoneApp->unk_056 = EC_WORD_NULL;
-    sub_02090D14(phoneApp->easyChatArgs, phoneApp->unk_056);
-    phoneApp->childApplication = OverlayManager_New(&ov100_021E761C, phoneApp->easyChatArgs, phoneApp->heapId);
-    return 9;
+    pokegearApp->easyChatArgs = EasyChat_CreateArgs(0, 0, pokegearApp->args->saveData, pokegearApp->args->menuInputStatePtr, pokegearApp->heapId);
+    pokegearApp->unk_056 = EC_WORD_NULL;
+    sub_02090D14(pokegearApp->easyChatArgs, pokegearApp->unk_056);
+    pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_EasyChat, pokegearApp->easyChatArgs, pokegearApp->heapId);
+    return POKEGEAR_APP_MAIN_STATE_RUN_DEBUG;
 }
 
-int Phone_MainStep_09(PokegearPhoneApp *phoneApp) {
-    if (!ov100_021E6408(&phoneApp->childApplication)) {
-        return 9;
+static PokegearAppMainState Pokegear_MainStep_RunDebug(PokegearAppData *pokegearApp) {
+    if (!ov100_021E6408(&pokegearApp->childApplication)) {
+        return POKEGEAR_APP_MAIN_STATE_RUN_DEBUG;
     }
 
-    if (!sub_02090D48(phoneApp->easyChatArgs)) {
-        phoneApp->unk_056 = sub_02090D50(phoneApp->easyChatArgs);
+    if (!sub_02090D48(pokegearApp->easyChatArgs)) {
+        pokegearApp->unk_056 = sub_02090D50(pokegearApp->easyChatArgs);
     }
 
-    EasyChat_FreeArgs(phoneApp->easyChatArgs);
-    phoneApp->unk_038 = 1;
-    phoneApp->unk_004 = 4;
-    return 0;
+    EasyChat_FreeArgs(pokegearApp->easyChatArgs);
+    pokegearApp->unk_038 = 1;
+    pokegearApp->app = GEAR_APP_FLY;
+    return POKEGEAR_APP_MAIN_STATE_SETUP;
 }
 
-int Phone_MainStep_02(PokegearPhoneApp *phoneApp) {
-    static const OVY_MGR_TEMPLATE ov100_021E760C = { ov101_021EE8E8, ov101_021EE924, ov101_021EE9A4, FS_OVERLAY_ID(OVY_101) };
-    phoneApp->childApplication = OverlayManager_New(&ov100_021E760C, phoneApp, phoneApp->heapId);
-    return 3;
+static PokegearAppMainState Pokegear_MainStep_LaunchConfigure(PokegearAppData *pokegearApp) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_GearConfigure = { ov101_021EE8E8, ov101_021EE924, ov101_021EE9A4, FS_OVERLAY_ID(OVY_101) };
+    pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_GearConfigure, pokegearApp, pokegearApp->heapId);
+    return POKEGEAR_APP_MAIN_STATE_RUN_CONFIGUREPOKEGEAR_APP_MAIN_STATE_LAUNCH_CONFIGURE;
 }
 
-int Phone_MainStep_03(PokegearPhoneApp *phoneApp) {
-    if (!ov100_021E6408(&phoneApp->childApplication)) {
-        return 3;
+static PokegearAppMainState Pokegear_MainStep_RunConfigure(PokegearAppData *pokegearApp) {
+    if (!ov100_021E6408(&pokegearApp->childApplication)) {
+        return POKEGEAR_APP_MAIN_STATE_RUN_CONFIGUREPOKEGEAR_APP_MAIN_STATE_LAUNCH_CONFIGURE;
     }
 
-    int outcome = phoneApp->unk_01C;
-    phoneApp->unk_01C = 0;
+    int outcome = pokegearApp->unk_01C;
+    pokegearApp->unk_01C = 0;
     switch (outcome) {
     case 2:
-        phoneApp->unk_004 = 2;
-        DoScheduledBgGpuUpdates(phoneApp->bgConfig);
-        return 6;
+        pokegearApp->app = GEAR_APP_MAP;
+        DoScheduledBgGpuUpdates(pokegearApp->bgConfig);
+        return POKEGEAR_APP_MAIN_STATE_LAUNCH_MAP;
     case 1:
-        phoneApp->unk_004 = 1;
-        DoScheduledBgGpuUpdates(phoneApp->bgConfig);
-        return 4;
+        pokegearApp->app = GEAR_APP_RADIO;
+        DoScheduledBgGpuUpdates(pokegearApp->bgConfig);
+        return POKEGEAR_APP_MAIN_STATE_LAUNCH_RADIO;
     case 3:
-        phoneApp->unk_004 = 3;
-        DoScheduledBgGpuUpdates(phoneApp->bgConfig);
-        return 10;
+        pokegearApp->app = GEAR_APP_PHONE;
+        DoScheduledBgGpuUpdates(pokegearApp->bgConfig);
+        return POKEGEAR_APP_MAIN_STATE_LAUNCH_PHONE;
     default:
-        return 1;
+        return POKEGEAR_APP_MAIN_STATE_TEARDOWN;
     }
 }
 
-int Phone_MainStep_10(PokegearPhoneApp *phoneApp) {
-    static const OVY_MGR_TEMPLATE ov100_021E75FC = { PhoneCall_Init, PhoneCall_Main, Phonecall_Exit, FS_OVERLAY_ID(OVY_101) };
-    phoneApp->childApplication = OverlayManager_New(&ov100_021E75FC, phoneApp, phoneApp->heapId);
-    return 11;
+static PokegearAppMainState Pokegear_MainStep_LaunchPhone(PokegearAppData *pokegearApp) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_GearPhone = { PhoneCall_Init, PhoneCall_Main, Phonecall_Exit, FS_OVERLAY_ID(OVY_101) };
+    pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_GearPhone, pokegearApp, pokegearApp->heapId);
+    return POKEGEAR_APP_MAIN_STATE_RUN_PHONE;
 }
 
-int Phone_MainStep_11(PokegearPhoneApp *phoneApp) {
-    if (!ov100_021E6408(&phoneApp->childApplication)) {
-        return 11;
+static PokegearAppMainState Pokegear_MainStep_RunPhone(PokegearAppData *pokegearApp) {
+    if (!ov100_021E6408(&pokegearApp->childApplication)) {
+        return POKEGEAR_APP_MAIN_STATE_RUN_PHONE;
     }
 
-    int outcome = phoneApp->unk_01C;
-    phoneApp->unk_01C = 0;
+    int outcome = pokegearApp->unk_01C;
+    pokegearApp->unk_01C = 0;
     switch (outcome) {
     case 2:
-        phoneApp->unk_004 = 2;
-        DoScheduledBgGpuUpdates(phoneApp->bgConfig);
-        return 6;
+        pokegearApp->app = GEAR_APP_MAP;
+        DoScheduledBgGpuUpdates(pokegearApp->bgConfig);
+        return POKEGEAR_APP_MAIN_STATE_LAUNCH_MAP;
     case 0:
-        phoneApp->unk_004 = 0;
-        DoScheduledBgGpuUpdates(phoneApp->bgConfig);
-        return 2;
+        pokegearApp->app = GEAR_APP_CONFIGURE;
+        DoScheduledBgGpuUpdates(pokegearApp->bgConfig);
+        return POKEGEAR_APP_MAIN_STATE_LAUNCH_CONFIGURE;
     case 1:
-        phoneApp->unk_004 = 1;
-        DoScheduledBgGpuUpdates(phoneApp->bgConfig);
-        return 4;
+        pokegearApp->app = GEAR_APP_RADIO;
+        DoScheduledBgGpuUpdates(pokegearApp->bgConfig);
+        return POKEGEAR_APP_MAIN_STATE_LAUNCH_RADIO;
     default:
-        return 1;
+        return POKEGEAR_APP_MAIN_STATE_TEARDOWN;
     }
 }
 
-int Phone_MainStep_04(PokegearPhoneApp *phoneApp) {
-    static const OVY_MGR_TEMPLATE ov100_021E763C = { ov101_021F4480, ov101_021F44BC, ov101_021F452C, FS_OVERLAY_ID(OVY_101) };
-    phoneApp->childApplication = OverlayManager_New(&ov100_021E763C, phoneApp, phoneApp->heapId);
-    return 5;
+static PokegearAppMainState Pokegear_MainStep_LaunchRadio(PokegearAppData *pokegearApp) {
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_GearRadio = { ov101_021F4480, ov101_021F44BC, ov101_021F452C, FS_OVERLAY_ID(OVY_101) };
+    pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_GearRadio, pokegearApp, pokegearApp->heapId);
+    return POKEGEAR_APP_MAIN_STATE_RUN_RADIO;
 }
 
-int Phone_MainStep_05(PokegearPhoneApp *phoneApp) {
-    if (!ov100_021E6408(&phoneApp->childApplication)) {
-        return 5;
+static PokegearAppMainState Pokegear_MainStep_RunRadio(PokegearAppData *pokegearApp) {
+    if (!ov100_021E6408(&pokegearApp->childApplication)) {
+        return POKEGEAR_APP_MAIN_STATE_RUN_RADIO;
     }
 
-    int outcome = phoneApp->unk_01C;
-    phoneApp->unk_01C = 0;
+    int outcome = pokegearApp->unk_01C;
+    pokegearApp->unk_01C = 0;
     switch (outcome) {
     case 2:
-        phoneApp->unk_004 = 2;
-        DoScheduledBgGpuUpdates(phoneApp->bgConfig);
-        return 6;
+        pokegearApp->app = GEAR_APP_MAP;
+        DoScheduledBgGpuUpdates(pokegearApp->bgConfig);
+        return POKEGEAR_APP_MAIN_STATE_LAUNCH_MAP;
     case 0:
-        phoneApp->unk_004 = 0;
-        DoScheduledBgGpuUpdates(phoneApp->bgConfig);
-        return 2;
+        pokegearApp->app = GEAR_APP_CONFIGURE;
+        DoScheduledBgGpuUpdates(pokegearApp->bgConfig);
+        return POKEGEAR_APP_MAIN_STATE_LAUNCH_CONFIGURE;
     case 3:
-        phoneApp->unk_004 = 3;
-        DoScheduledBgGpuUpdates(phoneApp->bgConfig);
-        return 10;
+        pokegearApp->app = GEAR_APP_PHONE;
+        DoScheduledBgGpuUpdates(pokegearApp->bgConfig);
+        return POKEGEAR_APP_MAIN_STATE_LAUNCH_PHONE;
     default:
-        return 1;
+        return POKEGEAR_APP_MAIN_STATE_TEARDOWN;
     }
 }

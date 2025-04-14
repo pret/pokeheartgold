@@ -498,8 +498,8 @@ void EasyChat_LaunchApp(FieldSystem *fieldSystem, EasyChatArgs *args) {
 }
 
 static void PokegearPhone_LaunchApp_Impl(FieldSystem *fieldSystem, PokegearArgs *args) {
-    static const OVY_MGR_TEMPLATE sOverlayTemplate_Phone = { Phone_Init, Phone_Main, Phone_Exit, FS_OVERLAY_ID(OVY_100) };
-    OVY_MGR_TEMPLATE template = sOverlayTemplate_Phone;
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_Pokegear = { Pokegear_Init, Pokegear_Main, Pokegear_Exit, FS_OVERLAY_ID(OVY_100) };
+    OVY_MGR_TEMPLATE template = sOverlayTemplate_Pokegear;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
 
