@@ -18,6 +18,10 @@ void ov100_021E6A58(PokegearPhoneApp_UnkSub094 *a0, int a1);
 void ov100_021E6C4C(PokegearPhoneApp_UnkSub094 *a0, u16 a1);
 void ov100_021E6CF4(PokegearPhoneApp_UnkSub094 *a0);
 void ov100_021E6D34(PokegearPhoneApp_UnkSub094 *a0, u16 a1);
+u16 ov100_021E70FC(PokegearPhoneApp_UnkSub07C *a0);
+void ov100_021E71B4(PokegearPhoneApp_UnkSub07C *a0, u16 a1);
+void ov100_021E7368(PokegearPhoneApp_UnkSub07C *a0, u8 a1);
+u8 ov100_021E73D4(PokegearPhoneApp_UnkSub07C *a0, u16 a1, u8 a2);
 
 extern const u8 ov100_021E764C[];
 extern const u8 ov100_021E770C[];
@@ -62,6 +66,8 @@ void ov100_021E69E8(PokegearPhoneApp *phoneApp) {
         SpriteGfxHandler_RenderAndAnimateSprites(phoneApp->unk_090);
     }
 }
+
+// functions for PokegearPhoneApp_UnkSub094
 
 PokegearPhoneApp_UnkSub094 *ov100_021E69F8(HeapID heapId, u16 a1, u16 a2, u16 a3, u16 a4, int a5) {
     PokegearPhoneApp_UnkSub094 *ret = AllocFromHeap(heapId, sizeof(PokegearPhoneApp_UnkSub094));
@@ -201,6 +207,8 @@ void ov100_021E6D34(PokegearPhoneApp_UnkSub094 *a0, u16 a1) {
     sub_0200B00C(objList->obj[0]);
 }
 
+// functions for UnkStruct_ov100_021E6E20
+
 UnkStruct_ov100_021E6E20 *ov100_021E6E20(int a1, HeapID heapId) {
     UnkStruct_ov100_021E6E20 *ret = (UnkStruct_ov100_021E6E20 *)AllocFromHeap(heapId, sizeof(UnkStruct_ov100_021E6E20));
     MI_CpuClear8(ret, sizeof(UnkStruct_ov100_021E6E20));
@@ -259,4 +267,249 @@ void ov100_021E6F34(UnkStruct_ov100_021E6E20 *a0, u8 a1) {
     }
     MI_CpuClear8(a0->unk_08 + a1, r7 * sizeof(UnkStruct_ov100_021E6E20_Sub8));
     a0->unk_02 -= r7;
+}
+
+// functions for PokegearPhoneApp_UnkSub07C
+
+PokegearPhoneApp_UnkSub07C *ov100_021E6F88(int a1, HeapID heapId) {
+    PokegearPhoneApp_UnkSub07C *ret = (PokegearPhoneApp_UnkSub07C *)AllocFromHeap(heapId, sizeof(PokegearPhoneApp_UnkSub07C));
+    MI_CpuClear8(ret, sizeof(PokegearPhoneApp_UnkSub07C));
+    ret->unk_00 = a1;
+    ret->unk_04 = AllocFromHeap(heapId, a1 * sizeof(PokegearPhoneApp_UnkSub07C_Sub4));
+    MI_CpuClear8(ret->unk_04, a1 * sizeof(PokegearPhoneApp_UnkSub07C_Sub4));
+    return ret;
+}
+
+void ov100_021E6FBC(PokegearPhoneApp_UnkSub07C *a0) {
+    for (int i = 0; i < a0->unk_00; ++i) {
+        if (a0->unk_04[i].unk_00_0 && a0->unk_04[i].unk_04 != NULL) {
+            ov100_021E70A4(a0, i);
+        }
+    }
+    MI_CpuClear8(a0->unk_04, a0->unk_00 * sizeof(PokegearPhoneApp_UnkSub07C_Sub4));
+    FreeToHeap(a0->unk_04);
+    MI_CpuClear8(a0, sizeof(PokegearPhoneApp_UnkSub07C));
+    FreeToHeap(a0);
+}
+
+u16 ov100_021E7014(PokegearPhoneApp_UnkSub07C *a0, const PokegearPhoneApp_UnkSub07C_Sub4_Sub4 *a1, u8 a2, u8 a3, BOOL a4, HeapID heapId, SpriteOrUnkImageStruct a6, SpriteOrUnkImageStruct a7, SpriteOrUnkImageStruct a8, SpriteOrUnkImageStruct a9) {
+    u16 r6 = ov100_021E70FC(a0);
+    if (r6 == 0xFFFF) {
+        return 0xFFFF;
+    }
+
+    PokegearPhoneApp_UnkSub07C_Sub4 *r4 = &a0->unk_04[r6];
+    r4->unk_00_0 = TRUE;
+    r4->unk_00_2 = TRUE;
+    r4->unk_02 = a2;
+    r4->unk_03 = r4->unk_02 - 1;
+    r4->unk_04 = AllocFromHeap(heapId, r4->unk_02 * sizeof(PokegearPhoneApp_UnkSub07C_Sub4_Sub4));
+    MI_CpuCopy8(a1, r4->unk_04, r4->unk_02 * sizeof(PokegearPhoneApp_UnkSub07C_Sub4_Sub4));
+    if (a3 >= r4->unk_02) {
+        r4->unk_01 = 0;
+    } else {
+        r4->unk_01 = a3;
+    }
+    r4->unk_00_1 = a4;
+    r4->unk_10[0] = a6;
+    r4->unk_10[1] = a7;
+    r4->unk_10[2] = a8;
+    r4->unk_10[3] = a9;
+    return r6;
+}
+
+BOOL ov100_021E70A4(PokegearPhoneApp_UnkSub07C *a0, u16 a1) {
+    if (a1 >= a0->unk_00 || !a0->unk_04[a1].unk_00_0) {
+        return FALSE;
+    }
+    if (a0->unk_02 == a1) {
+        a0->unk_02 = 0xFFFF;
+        a0->unk_08 = NULL;
+    }
+    MI_CpuClear8(a0->unk_04[a1].unk_04, a0->unk_04[a1].unk_02 * sizeof(PokegearPhoneApp_UnkSub07C_Sub4_Sub4));
+    FreeToHeap(a0->unk_04[a1].unk_04);
+    MI_CpuClear8(&a0->unk_04[a1], sizeof(PokegearPhoneApp_UnkSub07C_Sub4));
+    return FALSE;
+}
+
+u16 ov100_021E70FC(PokegearPhoneApp_UnkSub07C *a0) {
+    for (u16 i = 0; i < a0->unk_00; ++i) {
+        if (!a0->unk_04[i].unk_00_0) {
+            return i;
+        }
+    }
+
+    return 0xFFFF;
+}
+
+u16 ov100_021E7128(PokegearPhoneApp_UnkSub07C *a0, u16 a1, BOOL a2) {
+    PokegearPhoneApp_UnkSub07C_Sub4 *r4;
+    if (a1 == 0xFFFF) {
+        r4 = a0->unk_08;
+    } else if (a1 >= a0->unk_00 || (r4 = &a0->unk_04[a1], !r4->unk_00_0)) {
+        return 0xFFFF;
+    }
+    if (!r4->unk_00_1) {
+        thunk_Set2dSpriteVisibleFlag(r4->unk_10[0].sprite, a2);
+        if (r4->unk_00_2 == TRUE) {
+            thunk_Set2dSpriteVisibleFlag(r4->unk_10[1].sprite, a2);
+            thunk_Set2dSpriteVisibleFlag(r4->unk_10[2].sprite, a2);
+            thunk_Set2dSpriteVisibleFlag(r4->unk_10[3].sprite, a2);
+        }
+    } else {
+        UnkImageStruct_SetSpriteVisibleFlag(r4->unk_10[0].unk_image_struct, a2);
+        if (r4->unk_00_2 == TRUE) {
+            UnkImageStruct_SetSpriteVisibleFlag(r4->unk_10[1].unk_image_struct, a2);
+            UnkImageStruct_SetSpriteVisibleFlag(r4->unk_10[2].unk_image_struct, a2);
+            UnkImageStruct_SetSpriteVisibleFlag(r4->unk_10[3].unk_image_struct, a2);
+        }
+    }
+    return a1;
+}
+
+void ov100_021E71B4(PokegearPhoneApp_UnkSub07C *a0, u16 a1) {
+    PokegearPhoneApp_UnkSub07C_Sub4 *r4;
+    if (a1 == 0xFFFF) {
+        r4 = a0->unk_08;
+    } else if (a1 >= a0->unk_00) {
+        return;
+    } else {
+        r4 = &a0->unk_04[a1];
+    }
+
+    PokegearPhoneApp_UnkSub07C_Sub4_Sub4 *r5 = &r4->unk_04[r4->unk_01];
+    if (!r4->unk_00_1) {
+        if (!r4->unk_00_2) {
+            Sprite_SetPositionXY(r4->unk_10[0].sprite, r5->unk_06, r5->unk_07);
+        } else {
+            Sprite_SetPositionXY(r4->unk_10[0].sprite, r5->unk_06 + r5->unk_08, r5->unk_07 + r5->unk_0A);
+            Sprite_SetPositionXY(r4->unk_10[1].sprite, r5->unk_06 + r5->unk_08, r5->unk_07 + r5->unk_0B);
+            Sprite_SetPositionXY(r4->unk_10[2].sprite, r5->unk_06 + r5->unk_09, r5->unk_07 + r5->unk_0A);
+            Sprite_SetPositionXY(r4->unk_10[3].sprite, r5->unk_06 + r5->unk_09, r5->unk_07 + r5->unk_0B);
+        }
+    } else {
+        if (!r4->unk_00_2) {
+            UnkImageStruct_SetSpritePositionXY(r4->unk_10[0].unk_image_struct, r5->unk_06, r5->unk_07);
+        } else {
+            UnkImageStruct_SetSpritePositionXY(r4->unk_10[0].unk_image_struct, r5->unk_06 + r5->unk_08, r5->unk_07 + r5->unk_0A);
+            UnkImageStruct_SetSpritePositionXY(r4->unk_10[1].unk_image_struct, r5->unk_06 + r5->unk_08, r5->unk_07 + r5->unk_0B);
+            UnkImageStruct_SetSpritePositionXY(r4->unk_10[2].unk_image_struct, r5->unk_06 + r5->unk_09, r5->unk_07 + r5->unk_0A);
+            UnkImageStruct_SetSpritePositionXY(r4->unk_10[3].unk_image_struct, r5->unk_06 + r5->unk_09, r5->unk_07 + r5->unk_0B);
+        }
+    }
+}
+
+u16 ov100_021E72F8(PokegearPhoneApp_UnkSub07C *a0, u16 a1, u8 a2) {
+    if (a1 >= a0->unk_00) {
+        return 0xFFFF;
+    }
+    a0->unk_08 = &a0->unk_04[a1];
+    a0->unk_02 = a1;
+    if (a2 != 0xFF) {
+        if (a2 >= a0->unk_04[a1].unk_02) {
+            a0->unk_04[a1].unk_01 = 0;
+        } else {
+            a0->unk_04[a1].unk_01 = a2;
+        }
+    }
+    ov100_021E71B4(a0, 0xFFFF);
+    return a1;
+}
+
+u8 ov100_021E7334(PokegearPhoneApp_UnkSub07C *a0) {
+    return a0->unk_08->unk_01;
+}
+
+u8 ov100_021E733C(PokegearPhoneApp_UnkSub07C *a0, u16 a1) {
+    if (a1 == 0xFFFF) {
+        return a0->unk_08->unk_01;
+    } else if (a1 >= a0->unk_00 || !a0->unk_04[a1].unk_00_0) {
+        return 0;
+    } else {
+        return a0->unk_04[a1].unk_01;
+    }
+}
+
+void ov100_021E7368(PokegearPhoneApp_UnkSub07C *a0, u8 a1) {
+    if (a0->unk_08 != NULL) {
+        PokegearPhoneApp_UnkSub07C_Sub4_Sub4 *r2 = &a0->unk_08->unk_04[a0->unk_08->unk_01];
+        u8 r2_2;
+        switch (a1) {
+        case 1:
+            r2_2 = r2->unk_03;
+            break;
+        case 2:
+            r2_2 = r2->unk_04;
+            break;
+        case 3:
+            r2_2 = r2->unk_05;
+            break;
+        case 0:
+        default:
+            r2_2 = r2->unk_02;
+            break;
+        }
+        if (r2_2 <= a0->unk_08->unk_03) {
+            a0->unk_08->unk_01 = r2_2;
+        }
+    }
+}
+
+u8 ov100_021E73AC(PokegearPhoneApp_UnkSub07C *a0, u8 a1) {
+    ov100_021E7368(a0, a1);
+    ov100_021E71B4(a0, 0xFFFF);
+    return a0->unk_08->unk_01;
+}
+
+u8 ov100_021E73C8(PokegearPhoneApp_UnkSub07C *a0, u8 a1) {
+    return ov100_021E73D4(a0, a0->unk_02, a1);
+}
+
+u8 ov100_021E73D4(PokegearPhoneApp_UnkSub07C *a0, u16 a1, u8 a2) {
+    PokegearPhoneApp_UnkSub07C_Sub4 *r4;
+    if (a1 == 0xFFFF) {
+        r4 = a0->unk_08;
+        a1 = a0->unk_02;
+    } else if (a1 >= a0->unk_00 || (r4 = &a0->unk_04[a1], !r4->unk_00_0)) {
+        return 0;
+    }
+    if (r4->unk_03 < a2) {
+        r4->unk_01 = 0;
+    } else {
+        r4->unk_01 = a2;
+    }
+    ov100_021E71B4(a0, a1);
+    return r4->unk_01;
+}
+
+void ov100_021E7414(PokegearPhoneApp_UnkSub07C *a0, u16 a1, BOOL a2) {
+    if (a1 == 0xFFFF) {
+        a1 = a0->unk_02;
+    }
+    if (a1 < a0->unk_00) {
+        PokegearPhoneApp_UnkSub07C_Sub4 *r4 = &a0->unk_04[a1];
+        if (r4->unk_00_0) {
+            if (!r4->unk_00_1) {
+                if (!r4->unk_00_2) {
+                    Sprite_ResetAnimCtrlState(r4->unk_10[0].sprite);
+                    thunk_Set2dSpriteAnimActiveFlag(r4->unk_10[0].sprite, a2);
+                } else {
+                    for (int i = 0; i < 4; ++i) {
+                        Sprite_ResetAnimCtrlState(r4->unk_10[i].sprite);
+                        thunk_Set2dSpriteAnimActiveFlag(r4->unk_10[i].sprite, a2);
+                    }
+                }
+            } else {
+                if (!r4->unk_00_2) {
+                    UnkImageStruct_ResetSpriteAnimCtrlState(r4->unk_10[0].unk_image_struct);
+                    UnkImageStruct_SetSpriteAnimActiveFlag(r4->unk_10[0].unk_image_struct, a2);
+                } else {
+                    for (int i = 0; i < 4; ++i) {
+                        UnkImageStruct_ResetSpriteAnimCtrlState(r4->unk_10[i].unk_image_struct);
+                        UnkImageStruct_SetSpriteAnimActiveFlag(r4->unk_10[i].unk_image_struct, a2);
+                    }
+                }
+            }
+        }
+    }
 }

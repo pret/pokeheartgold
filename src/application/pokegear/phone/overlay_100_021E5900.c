@@ -79,8 +79,8 @@ int ov100_021E59CC(PokegearPhoneApp *phoneApp) {
         return 4;
     }
     if (gSystem.newKeys & PAD_BUTTON_A) {
-        PokegearPhoneApp_UnkSub07C_Sub8_Sub4 *r4 = &phoneApp->unk_07C->unk_08->unk_04[phoneApp->unk_07C->unk_08->unk_01];
-        ov100_021E7128(phoneApp->unk_07C, 0, 0);
+        PokegearPhoneApp_UnkSub07C_Sub4_Sub4 *r4 = &phoneApp->unk_07C->unk_08->unk_04[phoneApp->unk_07C->unk_08->unk_01];
+        ov100_021E7128(phoneApp->unk_07C, 0, FALSE);
         phoneApp->unk_006 = 0;
         PlaySE(r4->unk_00 != 4 ? SEQ_SE_GS_GEARAPPLICHANGE : SEQ_SE_GS_GEARCANCEL);
         if (r4->unk_00 == phoneApp->unk_004) {
@@ -145,9 +145,9 @@ BOOL ov100_021E5BB0(PokegearPhoneApp *phoneApp, BOOL a1) {
     sp0[2] = time.minute / 10;
     sp0[3] = time.minute % 10;
     for (u8 i = 0; i < 4; i++) {
-        UnkImageStruct_SetSpriteAnimCtrlCurrentFrame(phoneApp->unk_098[i + 5], sp0[i]);
+        UnkImageStruct_SetSpriteAnimCtrlCurrentFrame(phoneApp->unk_098[i + 5].unk_image_struct, sp0[i]);
     }
-    UnkImageStruct_SetSpriteAnimCtrlCurrentFrame(phoneApp->unk_098[4], date.week);
+    UnkImageStruct_SetSpriteAnimCtrlCurrentFrame(phoneApp->unk_098[4].unk_image_struct, date.week);
     phoneApp->unk_080 = time;
     phoneApp->unk_007 = 0;
     return TRUE;
@@ -382,36 +382,36 @@ void ov100_021E616C(PokegearPhoneApp *phoneApp) {
     ov100_021E6914(phoneApp);
     phoneApp->unk_094 = ov100_021E69F8(phoneApp->heapId, 11, 1, phoneApp->unk_008, 3, 2);
     for (int i = 0; i < 4; ++i) {
-        phoneApp->unk_098[i] = ov100_021E6AC0(phoneApp->unk_094, 0x40, 0x40, 0, 0, 0, i, i + 4, 0);
+        phoneApp->unk_098[i].unk_image_struct = ov100_021E6AC0(phoneApp->unk_094, 0x40, 0x40, 0, 0, 0, i, i + 4, 0);
     }
-    phoneApp->unk_098[4] = ov100_021E6AC0(phoneApp->unk_094, 0xAD, 0x30, 0, 0, 0, 4, 2, 1);
-    phoneApp->unk_098[5] = ov100_021E6AC0(phoneApp->unk_094, 0x46, 0x2E, 0, 0, 0, 5, 0, 1);
-    phoneApp->unk_098[6] = ov100_021E6AC0(phoneApp->unk_094, 0x56, 0x2E, 0, 0, 0, 6, 0, 1);
-    phoneApp->unk_098[7] = ov100_021E6AC0(phoneApp->unk_094, 0x6E, 0x2E, 0, 0, 0, 7, 0, 1);
-    phoneApp->unk_098[8] = ov100_021E6AC0(phoneApp->unk_094, 0x7E, 0x2E, 0, 0, 0, 8, 0, 1);
-    phoneApp->unk_098[9] = ov100_021E6AC0(phoneApp->unk_094, 0x62, 0x2E, 0, 0, 0, 9, 1, 1);
-    phoneApp->unk_098[10] = ov100_021E6AC0(phoneApp->unk_094, 0xC5, 0x30, 0, 0, 0, 10, 3, 1);
+    phoneApp->unk_098[4].unk_image_struct = ov100_021E6AC0(phoneApp->unk_094, 0xAD, 0x30, 0, 0, 0, 4, 2, 1);
+    phoneApp->unk_098[5].unk_image_struct = ov100_021E6AC0(phoneApp->unk_094, 0x46, 0x2E, 0, 0, 0, 5, 0, 1);
+    phoneApp->unk_098[6].unk_image_struct = ov100_021E6AC0(phoneApp->unk_094, 0x56, 0x2E, 0, 0, 0, 6, 0, 1);
+    phoneApp->unk_098[7].unk_image_struct = ov100_021E6AC0(phoneApp->unk_094, 0x6E, 0x2E, 0, 0, 0, 7, 0, 1);
+    phoneApp->unk_098[8].unk_image_struct = ov100_021E6AC0(phoneApp->unk_094, 0x7E, 0x2E, 0, 0, 0, 8, 0, 1);
+    phoneApp->unk_098[9].unk_image_struct = ov100_021E6AC0(phoneApp->unk_094, 0x62, 0x2E, 0, 0, 0, 9, 1, 1);
+    phoneApp->unk_098[10].unk_image_struct = ov100_021E6AC0(phoneApp->unk_094, 0xC5, 0x30, 0, 0, 0, 10, 3, 1);
     ov100_021E5BB0(phoneApp, TRUE);
 
-    UnkImageStruct_SetSpriteAnimActiveFlag(phoneApp->unk_098[9], TRUE);
+    UnkImageStruct_SetSpriteAnimActiveFlag(phoneApp->unk_098[9].unk_image_struct, TRUE);
     if (!MapHeader_GetField14_1D(phoneApp->args->mapID)) {
-        UnkImageStruct_SetSpriteAnimCtrlCurrentFrame(phoneApp->unk_098[10], 1);
+        UnkImageStruct_SetSpriteAnimCtrlCurrentFrame(phoneApp->unk_098[10].unk_image_struct, 1);
     }
 
     for (int i = 0; i <= 3; ++i) {
-        UnkImageStruct_SetSpriteVisibleFlag(phoneApp->unk_098[i], FALSE);
-        UnkImageStruct_SetSpriteAnimActiveFlag(phoneApp->unk_098[i], TRUE);
+        UnkImageStruct_SetSpriteVisibleFlag(phoneApp->unk_098[i].unk_image_struct, FALSE);
+        UnkImageStruct_SetSpriteAnimActiveFlag(phoneApp->unk_098[i].unk_image_struct, TRUE);
     }
 
     for (int i = 4; i < 11; ++i) {
-        UnkImageStruct_SetSpriteVisibleFlag(phoneApp->unk_098[i], TRUE);
+        UnkImageStruct_SetSpriteVisibleFlag(phoneApp->unk_098[i].unk_image_struct, TRUE);
     }
 }
 
 void ov100_021E6338(PokegearPhoneApp *phoneApp) {
     for (int i = 0; i < 11; ++i) {
-        UnkImageStruct_SetSpriteVisibleFlag(phoneApp->unk_098[i], FALSE);
-        ov100_021E6C44(phoneApp->unk_098[i]);
+        UnkImageStruct_SetSpriteVisibleFlag(phoneApp->unk_098[i].unk_image_struct, FALSE);
+        ov100_021E6C44(phoneApp->unk_098[i].unk_image_struct);
     }
     ov100_021E6A3C(phoneApp->unk_094);
     ov100_021E6950(phoneApp);
@@ -419,7 +419,7 @@ void ov100_021E6338(PokegearPhoneApp *phoneApp) {
 
 void ov100_021E6374(PokegearPhoneApp *phoneApp) {
     // This data has to be scoped to the function in order to match
-    static const PokegearPhoneApp_UnkSub07C_Sub8_Sub4 ov100_021E74DC[] = {
+    static const PokegearPhoneApp_UnkSub07C_Sub4_Sub4 ov100_021E74DC[] = {
         {
          0,
          0x02,
@@ -461,7 +461,7 @@ void ov100_021E6374(PokegearPhoneApp *phoneApp) {
          },
     };
 
-    static const PokegearPhoneApp_UnkSub07C_Sub8_Sub4 ov100_021E7528[] = {
+    static const PokegearPhoneApp_UnkSub07C_Sub4_Sub4 ov100_021E7528[] = {
         {
          0,
          0x03,
@@ -516,7 +516,7 @@ void ov100_021E6374(PokegearPhoneApp *phoneApp) {
          },
     };
 
-    static const PokegearPhoneApp_UnkSub07C_Sub8_Sub4 ov100_021E7558[] = {
+    static const PokegearPhoneApp_UnkSub07C_Sub4_Sub4 ov100_021E7558[] = {
         {
          0,
          0x03,
@@ -571,7 +571,7 @@ void ov100_021E6374(PokegearPhoneApp *phoneApp) {
          },
     };
 
-    static const PokegearPhoneApp_UnkSub07C_Sub8_Sub4 ov100_021E75C0[] = {
+    static const PokegearPhoneApp_UnkSub07C_Sub4_Sub4 ov100_021E75C0[] = {
         {
          0,
          0x04,
@@ -639,7 +639,7 @@ void ov100_021E6374(PokegearPhoneApp *phoneApp) {
          },
     };
 
-    static const PokegearPhoneApp_UnkSub07C_Sub8_Sub4 *ov100_021E7720[] = {
+    static const PokegearPhoneApp_UnkSub07C_Sub4_Sub4 *ov100_021E7720[] = {
         ov100_021E74DC,
         ov100_021E7528,
         ov100_021E7558,
