@@ -24,16 +24,43 @@ void ov100_021E7368(PokegearPhoneApp_UnkSub07C *a0, u8 a1);
 u8 ov100_021E73D4(PokegearPhoneApp_UnkSub07C *a0, u16 a1, u8 a2);
 
 extern const u8 ov100_021E764C[];
-extern const u8 ov100_021E770C[];
-extern const UnkStruct_ov100_021E76BC ov100_021E76BC[];
 
-// -ipo file shenanigans
-#define ov100_021E76BC_ipo ((const UnkStruct_ov100_021E76BC *)(ov100_021E764C + 0x70))
+static const OamManagerParam ov100_021E769C = {
+    .fromOBJmain = 0x00,
+    .numOBJmain = 0x80,
+    .fromAffineMain = 0x00,
+    .numAffineMain = 0x20,
+    .fromOBJsub = 0x00,
+    .numOBJsub = 0x80,
+    .fromAffineSub = 0x00,
+    .numAffineSub = 0x20,
+};
+
+static const OamCharTransferParam ov100_021E7688 = {
+    .maxTasks = 0x00000040,
+    .sizeMain = 0x00010000,
+    .sizeSub = 0x00004000,
+    .charModeMain = GX_OBJVRAMMODE_CHAR_1D_32K,
+    .charModeSub = GX_OBJVRAMMODE_CHAR_1D_32K,
+};
+
+static const u16 ov100_021E767A[] = { 0x0022, 0x0023, 0x0021, 0x0020, 0xFFFF, 0xFFFF, 0x0050 };
+static const u16 ov100_021E7650[] = { 0x002A, 0x002B, 0x0029, 0x0028, 0xFFFF, 0xFFFF, 0x0052 };
+static const u16 ov100_021E765E[] = { 0x002E, 0x002F, 0x002D, 0x002C, 0xFFFF, 0xFFFF, 0x0053 };
+static const u16 ov100_021E766C[] = { 0x0026, 0x0027, 0x0025, 0x0024, 0xFFFF, 0xFFFF, 0x0051 };
+
+static const UnkStruct_ov100_021E76BC ov100_021E76BC[] = {
+    { 0x80, &ov100_021E769C, &ov100_021E7688, ov100_021E7650 },
+    { 0x80, &ov100_021E769C, &ov100_021E7688, ov100_021E766C },
+    { 0xC0, &ov100_021E769C, &ov100_021E7688, ov100_021E767A },
+    { 0x80, &ov100_021E769C, &ov100_021E7688, ov100_021E765E },
+    { 0x80, &ov100_021E769C, &ov100_021E7688, ov100_021E767A },
+};
 
 void ov100_021E6914(PokegearPhoneApp *phoneApp) {
     GF_CreateVramTransferManager(32, phoneApp->heapId);
     phoneApp->unk_08C = SpriteRenderer_Create(phoneApp->heapId);
-    SpriteRenderer_CreateOamCharPlttManagers(phoneApp->unk_08C, ov100_021E76BC_ipo[0].unk_4, ov100_021E76BC_ipo[0].unk_8, 0x20);
+    SpriteRenderer_CreateOamCharPlttManagers(phoneApp->unk_08C, ov100_021E76BC[0].unk_4, ov100_021E76BC[0].unk_8, 0x20);
     sub_0200B2E0(phoneApp->heapId);
     sub_0200B2E8(phoneApp->heapId);
 }
@@ -114,6 +141,8 @@ UnkImageStruct *ov100_021E6AC0(PokegearPhoneApp_UnkSub094 *a0, u8 x, u8 y, u8 z,
     UnkImageStruct *ret;
     SpriteTemplate sp34;
 
+    static const u8 ov100_021E770C[] = { 2, 2, 2, 3, 1, 1, 1, 1 };
+
     ret = AllocFromHeap(a0->heapId, sizeof(UnkImageStruct));
     MI_CpuClear8(ret, sizeof(UnkImageStruct));
     ret->spriteResourceHeaderList = AllocFromHeap(a0->heapId, sizeof(SpriteResourceHeaderList));
@@ -151,9 +180,8 @@ void ov100_021E6C44(UnkImageStruct *a0) {
 }
 
 void ov100_021E6C4C(PokegearPhoneApp_UnkSub094 *a0, u16 a1) {
-    extern const u8 ov100_021E764C[4];
-    u8 spC[4];
-    ARRAY_ASSIGN(spC, ov100_021E764C);
+    u8 spC[4] = { 1, 1, 1, 1 };
+
     a0->unk_010 = G2dRenderer_Init(a0->unk_00C, &a0->unk_014, a0->heapId);
     spC[1] = a0->unk_00A;
     for (u32 i = 0; i < 4; ++i) {
