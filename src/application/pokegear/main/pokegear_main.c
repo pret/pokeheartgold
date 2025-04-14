@@ -209,7 +209,7 @@ static PokegearAppMainState Pokegear_MainStep_Teardown(PokegearAppData *pokegear
 }
 
 static PokegearAppMainState Pokegear_MainStep_LaunchMap(PokegearAppData *pokegearApp) {
-    static const OVY_MGR_TEMPLATE sOverlayTemplate_GearMap = { ov101_021E7740, ov101_021E779C, ov101_021E7834, FS_OVERLAY_ID(OVY_101) };
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_GearMap = { PokegearMap_Init, PokegearMap_Main, PokegearMap_Exit, FS_OVERLAY_ID(OVY_101) };
     pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_GearMap, pokegearApp, pokegearApp->heapId);
     return POKEGEAR_APP_MAIN_STATE_RUN_MAP;
 }
@@ -275,7 +275,7 @@ static PokegearAppMainState Pokegear_MainStep_RunDebug(PokegearAppData *pokegear
 }
 
 static PokegearAppMainState Pokegear_MainStep_LaunchConfigure(PokegearAppData *pokegearApp) {
-    static const OVY_MGR_TEMPLATE sOverlayTemplate_GearConfigure = { ov101_021EE8E8, ov101_021EE924, ov101_021EE9A4, FS_OVERLAY_ID(OVY_101) };
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_GearConfigure = { PokegearConfigure_Init, PokegearConfigure_Main, PokegearConfigure_Exit, FS_OVERLAY_ID(OVY_101) };
     pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_GearConfigure, pokegearApp, pokegearApp->heapId);
     return POKEGEAR_APP_MAIN_STATE_RUN_CONFIGUREPOKEGEAR_APP_MAIN_STATE_LAUNCH_CONFIGURE;
 }
@@ -306,7 +306,7 @@ static PokegearAppMainState Pokegear_MainStep_RunConfigure(PokegearAppData *poke
 }
 
 static PokegearAppMainState Pokegear_MainStep_LaunchPhone(PokegearAppData *pokegearApp) {
-    static const OVY_MGR_TEMPLATE sOverlayTemplate_GearPhone = { PhoneCall_Init, PhoneCall_Main, Phonecall_Exit, FS_OVERLAY_ID(OVY_101) };
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_GearPhone = { PokegearPhone_Init, PokegearPhone_Main, PokegearPhone_Exit, FS_OVERLAY_ID(OVY_101) };
     pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_GearPhone, pokegearApp, pokegearApp->heapId);
     return POKEGEAR_APP_MAIN_STATE_RUN_PHONE;
 }
@@ -337,7 +337,7 @@ static PokegearAppMainState Pokegear_MainStep_RunPhone(PokegearAppData *pokegear
 }
 
 static PokegearAppMainState Pokegear_MainStep_LaunchRadio(PokegearAppData *pokegearApp) {
-    static const OVY_MGR_TEMPLATE sOverlayTemplate_GearRadio = { ov101_021F4480, ov101_021F44BC, ov101_021F452C, FS_OVERLAY_ID(OVY_101) };
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_GearRadio = { PokegearRadio_Init, PokegearRadio_Main, PokegearRadio_Exit, FS_OVERLAY_ID(OVY_101) };
     pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_GearRadio, pokegearApp, pokegearApp->heapId);
     return POKEGEAR_APP_MAIN_STATE_RUN_RADIO;
 }

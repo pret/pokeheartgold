@@ -1135,7 +1135,11 @@ Overlay OVY_100
 Overlay OVY_101
 {
     After OVY_100
-    Object asm/overlay_101.o
+    Object asm/pokegear_app_map.o
+    Object asm/pokegear_app_configure.o
+    Object asm/pokegear_app_phone.o
+    Object asm/pokegear_app_radio.o
+    Object asm/pokegear_app_data.o
 }
 Overlay OVY_102
 {
