@@ -6,7 +6,7 @@
       "spriteId": "SPRITE_GSLEADER7",
       "movement": 15,
       "type": 0,
-      "eventFlag": "FLAG_UNK_2EE",
+      "eventFlag": "FLAG_HIDE_MAHOGANY_GYM_PRYCE",
       "scriptId": "_EV_scr_seq_T28GYM0101_000 + 1",
       "facingDirection": 1,
       "param0": 0,

@@ -28,19 +28,19 @@ _0053:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 12
 	goto_if_ne _006E
-	setflag FLAG_UNK_2F4
+	setflag FLAG_HIDE_PEWTER_GYM_BROCK
 	goto _00A2
 
 _006E:
 	compare VAR_TEMP_x4000, 13
 	goto_if_ne _0085
-	setflag FLAG_UNK_2F4
+	setflag FLAG_HIDE_PEWTER_GYM_BROCK
 	goto _00A2
 
 _0085:
 	compare VAR_TEMP_x4000, 14
 	goto_if_ne _009C
-	setflag FLAG_UNK_2F4
+	setflag FLAG_HIDE_PEWTER_GYM_BROCK
 	goto _00A2
 
 _009C:
@@ -53,19 +53,19 @@ _00A4:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 17
 	goto_if_ne _00BF
-	setflag FLAG_UNK_2F4
+	setflag FLAG_HIDE_PEWTER_GYM_BROCK
 	goto _00F3
 
 _00BF:
 	compare VAR_TEMP_x4000, 18
 	goto_if_ne _00D6
-	setflag FLAG_UNK_2F4
+	setflag FLAG_HIDE_PEWTER_GYM_BROCK
 	goto _00F3
 
 _00D6:
 	compare VAR_TEMP_x4000, 19
 	goto_if_ne _00ED
-	setflag FLAG_UNK_2F4
+	setflag FLAG_HIDE_PEWTER_GYM_BROCK
 	goto _00F3
 
 _00ED:
@@ -75,11 +75,11 @@ _00F3:
 	end
 
 _00F5:
-	clearflag FLAG_UNK_2F4
+	clearflag FLAG_HIDE_PEWTER_GYM_BROCK
 	end
 
 _00FB:
-	setflag FLAG_UNK_2F4
+	setflag FLAG_HIDE_PEWTER_GYM_BROCK
 	end
 
 scr_seq_T03GYM0101_000:

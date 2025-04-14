@@ -58,7 +58,7 @@
       "spriteId": "SPRITE_GSLEADER13",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_2F3",
+      "eventFlag": "FLAG_HIDE_FUCHSIA_GYM_JANINE",
       "scriptId": "_EV_scr_seq_T08GYM0101_001 + 1",
       "facingDirection": 1,
       "param0": 0,
