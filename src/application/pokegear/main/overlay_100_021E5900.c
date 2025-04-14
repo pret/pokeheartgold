@@ -1,6 +1,6 @@
 #include "global.h"
 
-#include "application/pokegear/phone.h"
+#include "application/pokegear/pokegear_internal.h"
 
 #include "map_header.h"
 #include "system.h"
@@ -233,7 +233,7 @@ BOOL ov100_021E5DDC(PokegearAppData *pokegearApp) {
         ov100_021E6374(pokegearApp);
         break;
     case 3:
-        Main_SetVBlankIntrCB(ov100_021E65F4, pokegearApp);
+        Main_SetVBlankIntrCB(PokegearApp_VBlankCB, pokegearApp);
         pokegearApp->unk_018 = 0;
         return TRUE;
     }

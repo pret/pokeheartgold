@@ -1,4 +1,5 @@
-#include "application/pokegear/phone.h"
+#include "application/pokegear/pokegear_internal.h"
+#include "application/pokegear/pokegear_main.h"
 
 #include "mail_misc.h"
 #include "overlay_101.h"
@@ -27,8 +28,7 @@ typedef enum PokegearAppMainState {
     POKEGEAR_APP_MAIN_STATE_QUIT,
 } PokegearAppMainState;
 
-static BOOL ov100_021E6408(OVY_MANAGER **ppOvyMan);
-void ov100_021E65F4(void *cb_args);
+static BOOL PokegearApp_RunSubapp(OVY_MANAGER **ppOvyMan);
 static PokegearAppMainState Pokegear_MainStep_Setup(PokegearAppData *pokegearApp);
 static PokegearAppMainState Pokegear_MainStep_Teardown(PokegearAppData *pokegearApp);
 static PokegearAppMainState Pokegear_MainStep_LaunchMap(PokegearAppData *pokegearApp);
@@ -42,7 +42,7 @@ static PokegearAppMainState Pokegear_MainStep_RunPhone(PokegearAppData *pokegear
 static PokegearAppMainState Pokegear_MainStep_LaunchRadio(PokegearAppData *pokegearApp);
 static PokegearAppMainState Pokegear_MainStep_RunRadio(PokegearAppData *pokegearApp);
 
-static BOOL ov100_021E6408(OVY_MANAGER **ppOvyMan) {
+static BOOL PokegearApp_RunSubapp(OVY_MANAGER **ppOvyMan) {
     if (*ppOvyMan != NULL && OverlayManager_Run(*ppOvyMan)) {
         OverlayManager_Delete(*ppOvyMan);
         *ppOvyMan = NULL;
@@ -154,7 +154,7 @@ BOOL Pokegear_Exit(OVY_MANAGER *man, int *state) {
 // Local functions
 // -----------------------------
 
-void ov100_021E65F4(void *cb_args) {
+void PokegearApp_VBlankCB(void *cb_args) {
     PokegearAppData *pokegearApp = (PokegearAppData *)cb_args;
 
     if (pokegearApp->unk_058 != NULL) {
@@ -214,7 +214,7 @@ static PokegearAppMainState Pokegear_MainStep_LaunchMap(PokegearAppData *pokegea
 }
 
 static PokegearAppMainState Pokegear_MainStep_RunMap(PokegearAppData *pokegearApp) {
-    if (!ov100_021E6408(&pokegearApp->childApplication)) {
+    if (!PokegearApp_RunSubapp(&pokegearApp->childApplication)) {
         return POKEGEAR_APP_MAIN_STATE_RUN_MAP;
     }
 
@@ -259,7 +259,7 @@ static PokegearAppMainState Pokegear_MainStep_LaunchDebug(PokegearAppData *pokeg
 }
 
 static PokegearAppMainState Pokegear_MainStep_RunDebug(PokegearAppData *pokegearApp) {
-    if (!ov100_021E6408(&pokegearApp->childApplication)) {
+    if (!PokegearApp_RunSubapp(&pokegearApp->childApplication)) {
         return POKEGEAR_APP_MAIN_STATE_RUN_DEBUG;
     }
 
@@ -280,7 +280,7 @@ static PokegearAppMainState Pokegear_MainStep_LaunchConfigure(PokegearAppData *p
 }
 
 static PokegearAppMainState Pokegear_MainStep_RunConfigure(PokegearAppData *pokegearApp) {
-    if (!ov100_021E6408(&pokegearApp->childApplication)) {
+    if (!PokegearApp_RunSubapp(&pokegearApp->childApplication)) {
         return POKEGEAR_APP_MAIN_STATE_RUN_CONFIGUREPOKEGEAR_APP_MAIN_STATE_LAUNCH_CONFIGURE;
     }
 
@@ -311,7 +311,7 @@ static PokegearAppMainState Pokegear_MainStep_LaunchPhone(PokegearAppData *pokeg
 }
 
 static PokegearAppMainState Pokegear_MainStep_RunPhone(PokegearAppData *pokegearApp) {
-    if (!ov100_021E6408(&pokegearApp->childApplication)) {
+    if (!PokegearApp_RunSubapp(&pokegearApp->childApplication)) {
         return POKEGEAR_APP_MAIN_STATE_RUN_PHONE;
     }
 
@@ -342,7 +342,7 @@ static PokegearAppMainState Pokegear_MainStep_LaunchRadio(PokegearAppData *pokeg
 }
 
 static PokegearAppMainState Pokegear_MainStep_RunRadio(PokegearAppData *pokegearApp) {
-    if (!ov100_021E6408(&pokegearApp->childApplication)) {
+    if (!PokegearApp_RunSubapp(&pokegearApp->childApplication)) {
         return POKEGEAR_APP_MAIN_STATE_RUN_RADIO;
     }
 

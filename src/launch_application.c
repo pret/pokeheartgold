@@ -4,7 +4,7 @@
 
 #include "constants/flags.h"
 
-#include "application/pokegear/phone.h"
+#include "application/pokegear/pokegear_main.h"
 #include "application/view_rankings.h"
 #include "battle/battle_022378C0.h"
 

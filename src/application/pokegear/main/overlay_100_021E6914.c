@@ -1,4 +1,4 @@
-#include "application/pokegear/phone.h"
+#include "application/pokegear/pokegear_internal.h"
 
 #include "math_util.h"
 #include "unk_0200ACF0.h"
