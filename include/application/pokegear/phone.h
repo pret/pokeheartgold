@@ -32,6 +32,24 @@ typedef struct PokegearPhoneApp_UnkSub07C {
     PokegearPhoneApp_UnkSub07C_Sub8 *unk_08;
 } PokegearPhoneApp_UnkSub07C;
 
+typedef struct UnkStruct_ov100_021E6E20_Sub8 {
+    u8 unk_00;
+    u8 unk_01;
+    u16 unk_02;
+    s16 unk_04;
+    s16 unk_06;
+    u8 filler_08[0x18];
+    Sprite *unk_20;
+    u8 filler_24[0x4];
+} UnkStruct_ov100_021E6E20_Sub8;
+
+typedef struct UnkStruct_ov100_021E6E20 {
+    u16 unk_00;
+    u16 unk_02;
+    u8 *unk_04; // char buffer?
+    UnkStruct_ov100_021E6E20_Sub8 *unk_08;
+} UnkStruct_ov100_021E6E20;
+
 typedef struct PokegearPhoneApp_UnkSub094 {
     HeapID heapId;
     int unk_004;
@@ -113,6 +131,13 @@ void ov100_021E6A3C(PokegearPhoneApp_UnkSub094 *a0);
 void ov100_021E6AB0(PokegearPhoneApp_UnkSub094 *a0);
 UnkImageStruct *ov100_021E6AC0(PokegearPhoneApp_UnkSub094 *a0, u8 a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, u8 a7, int a8);
 void ov100_021E6C44(UnkImageStruct *a0);
+
+UnkStruct_ov100_021E6E20 *ov100_021E6E20(int a1, HeapID heapId);
+void ov100_021E6E58(UnkStruct_ov100_021E6E20 *a0);
+void ov100_021E6E84(UnkStruct_ov100_021E6E20 *a0);
+u16 ov100_021E6EC4(UnkStruct_ov100_021E6E20 *a0, Sprite *a1);
+void ov100_021E6EF4(UnkStruct_ov100_021E6E20 *a0);
+void ov100_021E6F34(UnkStruct_ov100_021E6E20 *a0, u8 a1);
 
 PokegearPhoneApp_UnkSub07C *ov100_021E6F88(int a0, HeapID heapId);
 void ov100_021E6FBC(PokegearPhoneApp_UnkSub07C *a0);

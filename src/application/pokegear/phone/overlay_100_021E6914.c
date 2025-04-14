@@ -200,3 +200,63 @@ void ov100_021E6D34(PokegearPhoneApp_UnkSub094 *a0, u16 a1) {
     GF_ASSERT(objList->obj[0] != NULL);
     sub_0200B00C(objList->obj[0]);
 }
+
+UnkStruct_ov100_021E6E20 *ov100_021E6E20(int a1, HeapID heapId) {
+    UnkStruct_ov100_021E6E20 *ret = (UnkStruct_ov100_021E6E20 *)AllocFromHeap(heapId, sizeof(UnkStruct_ov100_021E6E20));
+    MI_CpuClear8(ret, sizeof(UnkStruct_ov100_021E6E20));
+    ret->unk_00 = a1;
+    ret->unk_08 = AllocFromHeap(heapId, a1 * sizeof(UnkStruct_ov100_021E6E20_Sub8));
+    MI_CpuClear8(ret->unk_08, a1 * sizeof(UnkStruct_ov100_021E6E20_Sub8));
+    return ret;
+}
+
+void ov100_021E6E58(UnkStruct_ov100_021E6E20 *a0) {
+    MI_CpuClear8(a0->unk_08, a0->unk_00 * sizeof(UnkStruct_ov100_021E6E20_Sub8));
+    FreeToHeap(a0->unk_08);
+    MI_CpuClear8(a0, sizeof(UnkStruct_ov100_021E6E20));
+    FreeToHeap(a0);
+}
+
+void ov100_021E6E84(UnkStruct_ov100_021E6E20 *a0) {
+    for (u16 i = 0; i < a0->unk_02; ++i) {
+        if (a0->unk_08[i].unk_00 != 0 && a0->unk_08[i].unk_02 == 0) {
+            Sprite_SetPositionXY(a0->unk_08[i].unk_20, a0->unk_08[i].unk_04, a0->unk_08[i].unk_06);
+        }
+    }
+}
+
+u16 ov100_021E6EC4(UnkStruct_ov100_021E6E20 *a0, Sprite *a1) {
+    if (a0->unk_02 >= a0->unk_00) {
+        return 0xFFFF;
+    }
+
+    UnkStruct_ov100_021E6E20_Sub8 *ptr = &a0->unk_08[a0->unk_02];
+    ptr->unk_20 = a1;
+    ptr->unk_00 = 1;
+    ptr->unk_01 = 1;
+    return a0->unk_02++;
+}
+
+void ov100_021E6EF4(UnkStruct_ov100_021E6E20 *a0) {
+    for (u16 i = 0; i < a0->unk_02; ++i) {
+        if (a0->unk_08[i].unk_20 != NULL) {
+            thunk_Sprite_Delete(a0->unk_08[i].unk_20);
+        }
+    }
+    MI_CpuClear8(a0->unk_08, a0->unk_02 * sizeof(UnkStruct_ov100_021E6E20_Sub8));
+    a0->unk_02 = 0;
+}
+
+void ov100_021E6F34(UnkStruct_ov100_021E6E20 *a0, u8 a1) {
+    u16 i;
+    u16 r7;
+
+    r7 = a0->unk_02 - a1;
+    for (i = a1; i < a0->unk_02; ++i) {
+        if (a0->unk_08[i].unk_20 != NULL) {
+            thunk_Sprite_Delete(a0->unk_08[i].unk_20);
+        }
+    }
+    MI_CpuClear8(a0->unk_08 + a1, r7 * sizeof(UnkStruct_ov100_021E6E20_Sub8));
+    a0->unk_02 -= r7;
+}
