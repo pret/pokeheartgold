@@ -82,7 +82,7 @@ int PokegearApp_HandleKeyInput_SwitchApps(PokegearAppData *pokegearApp) {
         return GEAR_APP_CANCEL;
     }
     if (gSystem.newKeys & PAD_BUTTON_A) {
-        PokegearApp_UnkSub07C_Sub4_Sub4 *r4 = &pokegearApp->appSwitchCursor->unk_08->unk_04[pokegearApp->appSwitchCursor->unk_08->unk_01];
+        PokegearAppSwitchButtonSpec *r4 = &pokegearApp->appSwitchCursor->unk_08->buttonSpec[pokegearApp->appSwitchCursor->unk_08->unk_01];
         ov100_021E7128(pokegearApp->appSwitchCursor, 0, FALSE);
         pokegearApp->unk_006 = 0;
         PlaySE(r4->appId != GEAR_APP_CANCEL ? SEQ_SE_GS_GEARAPPLICHANGE : SEQ_SE_GS_GEARCANCEL);
@@ -109,12 +109,12 @@ int PokegearApp_HandleKeyInput_SwitchApps(PokegearAppData *pokegearApp) {
 }
 
 static void ov100_021E5A88(PokegearAppData *pokegearApp) {
-    u8 r4 = pokegearApp->registeredCards;
+    u8 registeredCards = pokegearApp->registeredCards;
     CopyToBgTilemapRect(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0, 0, 20, 32, 4, pokegearApp->unk_0C8->rawData, 0, 0, pokegearApp->unk_0C8->screenWidth / 8, pokegearApp->unk_0C8->screenHeight / 8);
-    if (!(r4 & 1)) {
+    if (!(registeredCards & 1)) {
         CopyToBgTilemapRect(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0, 13, 20, 6, 4, pokegearApp->unk_0C8->rawData, 0, 8, pokegearApp->unk_0C8->screenWidth / 8, pokegearApp->unk_0C8->screenHeight / 8);
     }
-    if (!(r4 & 2)) {
+    if (!(registeredCards & 2)) {
         CopyToBgTilemapRect(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0, 7, 20, 6, 4, pokegearApp->unk_0C8->rawData, 0, 8, pokegearApp->unk_0C8->screenWidth / 8, pokegearApp->unk_0C8->screenHeight / 8);
     }
     ScheduleBgTilemapBufferTransfer(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0);
@@ -156,11 +156,11 @@ BOOL ov100_021E5BB0(PokegearAppData *pokegearApp, BOOL a1) {
     return TRUE;
 }
 
-int ov100_021E5C50(u16 a0, u16 a1) {
-    if (a0 > 21) {
-        if (a0 == 25 && a1 == 8) {
+int ov100_021E5C50(u16 x, u16 y) {
+    if (x > 21) {
+        if (x == 25 && y == 8) {
             return 2;
-        } else if ((a0 == 28 && a1 == 6) || (a0 == 28 && a1 > 8 && a1 < 13)) {
+        } else if ((x == 28 && y == 6) || (x == 28 && y > 8 && y < 13)) {
             return 1;
         } else {
             return 0;
@@ -422,242 +422,242 @@ static void ov100_021E6338(PokegearAppData *pokegearApp) {
 
 static void ov100_021E6374(PokegearAppData *pokegearApp) {
     // This data has to be scoped to the function in order to match
-    static const PokegearApp_UnkSub07C_Sub4_Sub4 ov100_021E74DC[] = {
+    static const PokegearAppSwitchButtonSpec sAppButtonSpec_NoCards[] = {
         {
-         0,
+         GEAR_APP_CONFIGURE,
          0x02,
          0x01,
          0xFF,
          0xFF,
          0x20,
          0xB0,
-         0xF0,
+         -0x10,
          0x10,
-         0xF6,
+         -0x0A,
          0x0A,
          },
         {
-         3,
+         GEAR_APP_PHONE,
          0x00,
          0x02,
          0xFF,
          0xFF,
          0xB0,
          0xB0,
-         0xF0,
+         -0x10,
          0x10,
-         0xF6,
+         -0x0A,
          0x0A,
          },
         {
-         4,
+         GEAR_APP_CANCEL,
          0x01,
          0x00,
          0xFF,
          0xFF,
          0xE6,
          0xB0,
-         0xF0,
+         -0x10,
          0x10,
-         0xF6,
+         -0x0A,
          0x0A,
          },
     };
 
-    static const PokegearApp_UnkSub07C_Sub4_Sub4 ov100_021E7528[] = {
+    static const PokegearAppSwitchButtonSpec sAppButtonSpec_MapOnly[] = {
         {
-         0,
+         GEAR_APP_CONFIGURE,
          0x03,
          0x01,
          0xFF,
          0xFF,
          0x20,
          0xB0,
-         0xF0,
+         -0x10,
          0x10,
-         0xF6,
+         -0x0A,
          0x0A,
          },
         {
-         2,
+         GEAR_APP_MAP,
          0x00,
          0x02,
          0xFF,
          0xFF,
          0x80,
          0xB0,
-         0xF0,
+         -0x10,
          0x10,
-         0xF6,
+         -0x0A,
          0x0A,
          },
         {
-         3,
+         GEAR_APP_PHONE,
          0x01,
          0x03,
          0xFF,
          0xFF,
          0xB0,
          0xB0,
-         0xF0,
+         -0x10,
          0x10,
-         0xF6,
+         -0x0A,
          0x0A,
          },
         {
-         4,
+         GEAR_APP_CANCEL,
          0x02,
          0x00,
          0xFF,
          0xFF,
          0xE6,
          0xB0,
-         0xF0,
+         -0x10,
          0x10,
-         0xF6,
+         -0x0A,
          0x0A,
          },
     };
 
-    static const PokegearApp_UnkSub07C_Sub4_Sub4 ov100_021E7558[] = {
+    static const PokegearAppSwitchButtonSpec sAppButtonSpec_RadioOnly[] = {
         {
-         0,
+         GEAR_APP_CONFIGURE,
          0x03,
          0x01,
          0xFF,
          0xFF,
          0x20,
          0xB0,
-         0xF0,
+         -0x10,
          0x10,
-         0xF6,
+         -0x0A,
          0x0A,
          },
         {
-         1,
+         GEAR_APP_RADIO,
          0x00,
          0x02,
          0xFF,
          0xFF,
          0x50,
          0xB0,
-         0xF0,
+         -0x10,
          0x10,
-         0xF6,
+         -0x0A,
          0x0A,
          },
         {
-         3,
+         GEAR_APP_PHONE,
          0x01,
          0x03,
          0xFF,
          0xFF,
          0xB0,
          0xB0,
-         0xF0,
+         -0x10,
          0x10,
-         0xF6,
+         -0x0A,
          0x0A,
          },
         {
-         4,
+         GEAR_APP_CANCEL,
          0x02,
          0x00,
          0xFF,
          0xFF,
          0xE6,
          0xB0,
-         0xF0,
+         -0x10,
          0x10,
-         0xF6,
+         -0x0A,
          0x0A,
          },
     };
 
-    static const PokegearApp_UnkSub07C_Sub4_Sub4 ov100_021E75C0[] = {
+    static const PokegearAppSwitchButtonSpec sAppButtonSpec_BothCards[] = {
         {
-         0,
+         GEAR_APP_CONFIGURE,
          0x04,
          0x01,
          0xFF,
          0xFF,
          0x20,
          0xB0,
-         0xF0,
+         -0x10,
          0x10,
-         0xF6,
+         -0x0A,
          0x0A,
          },
         {
-         1,
+         GEAR_APP_RADIO,
          0x00,
          0x02,
          0xFF,
          0xFF,
          0x50,
          0xB0,
-         0xF0,
+         -0x10,
          0x10,
-         0xF6,
+         -0x0A,
          0x0A,
          },
         {
-         2,
+         GEAR_APP_MAP,
          0x01,
          0x03,
          0xFF,
          0xFF,
          0x80,
          0xB0,
-         0xF0,
+         -0x10,
          0x10,
-         0xF6,
+         -0x0A,
          0x0A,
          },
         {
-         3,
+         GEAR_APP_PHONE,
          0x02,
          0x04,
          0xFF,
          0xFF,
          0xB0,
          0xB0,
-         0xF0,
+         -0x10,
          0x10,
-         0xF6,
+         -0x0A,
          0x0A,
          },
         {
-         4,
+         GEAR_APP_CANCEL,
          0x03,
          0x00,
          0xFF,
          0xFF,
          0xE6,
          0xB0,
-         0xF0,
+         -0x10,
          0x10,
-         0xF6,
+         -0x0A,
          0x0A,
          },
     };
 
-    static const PokegearApp_UnkSub07C_Sub4_Sub4 *ov100_021E7720[] = {
-        ov100_021E74DC,
-        ov100_021E7528,
-        ov100_021E7558,
-        ov100_021E75C0,
+    static const PokegearAppSwitchButtonSpec *ov100_021E7720[] = {
+        sAppButtonSpec_NoCards,
+        sAppButtonSpec_MapOnly,
+        sAppButtonSpec_RadioOnly,
+        sAppButtonSpec_BothCards,
     };
 
     static const u8 ov100_021E74A0[] = {
-        NELEMS(ov100_021E74DC),
-        NELEMS(ov100_021E7528),
-        NELEMS(ov100_021E7558),
-        NELEMS(ov100_021E75C0),
+        NELEMS(sAppButtonSpec_NoCards),
+        NELEMS(sAppButtonSpec_MapOnly),
+        NELEMS(sAppButtonSpec_RadioOnly),
+        NELEMS(sAppButtonSpec_BothCards),
     };
 
     pokegearApp->appSwitchCursor = ov100_021E6F88(4, pokegearApp->heapId);
-    ov100_021E7014(pokegearApp->appSwitchCursor, ov100_021E7720[pokegearApp->registeredCards], ov100_021E74A0[pokegearApp->registeredCards], 0, 1, pokegearApp->heapId, pokegearApp->unk_098[0], pokegearApp->unk_098[1], pokegearApp->unk_098[2], pokegearApp->unk_098[3]);
+    ov100_021E7014(pokegearApp->appSwitchCursor, ov100_021E7720[pokegearApp->registeredCards], ov100_021E74A0[pokegearApp->registeredCards], 0, TRUE, pokegearApp->heapId, pokegearApp->unk_098[0], pokegearApp->unk_098[1], pokegearApp->unk_098[2], pokegearApp->unk_098[3]);
     if (pokegearApp->app == 4) {
         ov100_021E72F8(pokegearApp->appSwitchCursor, 0, 2);
     } else {

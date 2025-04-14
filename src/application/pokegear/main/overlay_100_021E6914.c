@@ -299,46 +299,46 @@ void ov100_021E6F34(UnkStruct_ov100_021E6E20 *a0, u8 a1) {
 
 // functions for PokegearApp_UnkSub07C
 
-PokegearApp_UnkSub07C *ov100_021E6F88(int a1, HeapID heapId) {
+PokegearApp_UnkSub07C *ov100_021E6F88(int count, HeapID heapId) {
     PokegearApp_UnkSub07C *ret = (PokegearApp_UnkSub07C *)AllocFromHeap(heapId, sizeof(PokegearApp_UnkSub07C));
     MI_CpuClear8(ret, sizeof(PokegearApp_UnkSub07C));
-    ret->unk_00 = a1;
-    ret->unk_04 = AllocFromHeap(heapId, a1 * sizeof(PokegearApp_UnkSub07C_Sub4));
-    MI_CpuClear8(ret->unk_04, a1 * sizeof(PokegearApp_UnkSub07C_Sub4));
+    ret->count = count;
+    ret->buttonSpecs = AllocFromHeap(heapId, count * sizeof(PokegearApp_UnkSub07C_Sub4));
+    MI_CpuClear8(ret->buttonSpecs, count * sizeof(PokegearApp_UnkSub07C_Sub4));
     return ret;
 }
 
 void ov100_021E6FBC(PokegearApp_UnkSub07C *a0) {
-    for (int i = 0; i < a0->unk_00; ++i) {
-        if (a0->unk_04[i].unk_00_0 && a0->unk_04[i].unk_04 != NULL) {
+    for (int i = 0; i < a0->count; ++i) {
+        if (a0->buttonSpecs[i].buttonsAreActive && a0->buttonSpecs[i].buttonSpec != NULL) {
             ov100_021E70A4(a0, i);
         }
     }
-    MI_CpuClear8(a0->unk_04, a0->unk_00 * sizeof(PokegearApp_UnkSub07C_Sub4));
-    FreeToHeap(a0->unk_04);
+    MI_CpuClear8(a0->buttonSpecs, a0->count * sizeof(PokegearApp_UnkSub07C_Sub4));
+    FreeToHeap(a0->buttonSpecs);
     MI_CpuClear8(a0, sizeof(PokegearApp_UnkSub07C));
     FreeToHeap(a0);
 }
 
-u16 ov100_021E7014(PokegearApp_UnkSub07C *a0, const PokegearApp_UnkSub07C_Sub4_Sub4 *a1, u8 a2, u8 a3, BOOL a4, HeapID heapId, SpriteOrUnkImageStruct a6, SpriteOrUnkImageStruct a7, SpriteOrUnkImageStruct a8, SpriteOrUnkImageStruct a9) {
+u16 ov100_021E7014(PokegearApp_UnkSub07C *a0, const PokegearAppSwitchButtonSpec *a1, u8 a2, u8 a3, BOOL a4, HeapID heapId, PokegearSpriteUnion a6, PokegearSpriteUnion a7, PokegearSpriteUnion a8, PokegearSpriteUnion a9) {
     u16 r6 = ov100_021E70FC(a0);
     if (r6 == 0xFFFF) {
         return 0xFFFF;
     }
 
-    PokegearApp_UnkSub07C_Sub4 *r4 = &a0->unk_04[r6];
-    r4->unk_00_0 = TRUE;
-    r4->unk_00_2 = TRUE;
+    PokegearApp_UnkSub07C_Sub4 *r4 = &a0->buttonSpecs[r6];
+    r4->buttonsAreActive = TRUE;
+    r4->buttonsAre4Tiles = TRUE;
     r4->unk_02 = a2;
     r4->unk_03 = r4->unk_02 - 1;
-    r4->unk_04 = AllocFromHeap(heapId, r4->unk_02 * sizeof(PokegearApp_UnkSub07C_Sub4_Sub4));
-    MI_CpuCopy8(a1, r4->unk_04, r4->unk_02 * sizeof(PokegearApp_UnkSub07C_Sub4_Sub4));
+    r4->buttonSpec = AllocFromHeap(heapId, r4->unk_02 * sizeof(PokegearAppSwitchButtonSpec));
+    MI_CpuCopy8(a1, r4->buttonSpec, r4->unk_02 * sizeof(PokegearAppSwitchButtonSpec));
     if (a3 >= r4->unk_02) {
         r4->unk_01 = 0;
     } else {
         r4->unk_01 = a3;
     }
-    r4->unk_00_1 = a4;
+    r4->buttonsAreUnkImageStruct = a4;
     r4->unk_10[0] = a6;
     r4->unk_10[1] = a7;
     r4->unk_10[2] = a8;
@@ -347,22 +347,22 @@ u16 ov100_021E7014(PokegearApp_UnkSub07C *a0, const PokegearApp_UnkSub07C_Sub4_S
 }
 
 BOOL ov100_021E70A4(PokegearApp_UnkSub07C *a0, u16 a1) {
-    if (a1 >= a0->unk_00 || !a0->unk_04[a1].unk_00_0) {
+    if (a1 >= a0->count || !a0->buttonSpecs[a1].buttonsAreActive) {
         return FALSE;
     }
     if (a0->unk_02 == a1) {
         a0->unk_02 = 0xFFFF;
         a0->unk_08 = NULL;
     }
-    MI_CpuClear8(a0->unk_04[a1].unk_04, a0->unk_04[a1].unk_02 * sizeof(PokegearApp_UnkSub07C_Sub4_Sub4));
-    FreeToHeap(a0->unk_04[a1].unk_04);
-    MI_CpuClear8(&a0->unk_04[a1], sizeof(PokegearApp_UnkSub07C_Sub4));
+    MI_CpuClear8(a0->buttonSpecs[a1].buttonSpec, a0->buttonSpecs[a1].unk_02 * sizeof(PokegearAppSwitchButtonSpec));
+    FreeToHeap(a0->buttonSpecs[a1].buttonSpec);
+    MI_CpuClear8(&a0->buttonSpecs[a1], sizeof(PokegearApp_UnkSub07C_Sub4));
     return FALSE;
 }
 
 u16 ov100_021E70FC(PokegearApp_UnkSub07C *a0) {
-    for (u16 i = 0; i < a0->unk_00; ++i) {
-        if (!a0->unk_04[i].unk_00_0) {
+    for (u16 i = 0; i < a0->count; ++i) {
+        if (!a0->buttonSpecs[i].buttonsAreActive) {
             return i;
         }
     }
@@ -374,19 +374,19 @@ u16 ov100_021E7128(PokegearApp_UnkSub07C *a0, u16 a1, BOOL a2) {
     PokegearApp_UnkSub07C_Sub4 *r4;
     if (a1 == 0xFFFF) {
         r4 = a0->unk_08;
-    } else if (a1 >= a0->unk_00 || (r4 = &a0->unk_04[a1], !r4->unk_00_0)) {
+    } else if (a1 >= a0->count || (r4 = &a0->buttonSpecs[a1], !r4->buttonsAreActive)) {
         return 0xFFFF;
     }
-    if (!r4->unk_00_1) {
+    if (!r4->buttonsAreUnkImageStruct) {
         thunk_Set2dSpriteVisibleFlag(r4->unk_10[0].sprite, a2);
-        if (r4->unk_00_2 == TRUE) {
+        if (r4->buttonsAre4Tiles == TRUE) {
             thunk_Set2dSpriteVisibleFlag(r4->unk_10[1].sprite, a2);
             thunk_Set2dSpriteVisibleFlag(r4->unk_10[2].sprite, a2);
             thunk_Set2dSpriteVisibleFlag(r4->unk_10[3].sprite, a2);
         }
     } else {
         UnkImageStruct_SetSpriteVisibleFlag(r4->unk_10[0].unk_image_struct, a2);
-        if (r4->unk_00_2 == TRUE) {
+        if (r4->buttonsAre4Tiles == TRUE) {
             UnkImageStruct_SetSpriteVisibleFlag(r4->unk_10[1].unk_image_struct, a2);
             UnkImageStruct_SetSpriteVisibleFlag(r4->unk_10[2].unk_image_struct, a2);
             UnkImageStruct_SetSpriteVisibleFlag(r4->unk_10[3].unk_image_struct, a2);
@@ -399,45 +399,45 @@ void ov100_021E71B4(PokegearApp_UnkSub07C *a0, u16 a1) {
     PokegearApp_UnkSub07C_Sub4 *r4;
     if (a1 == 0xFFFF) {
         r4 = a0->unk_08;
-    } else if (a1 >= a0->unk_00) {
+    } else if (a1 >= a0->count) {
         return;
     } else {
-        r4 = &a0->unk_04[a1];
+        r4 = &a0->buttonSpecs[a1];
     }
 
-    PokegearApp_UnkSub07C_Sub4_Sub4 *r5 = &r4->unk_04[r4->unk_01];
-    if (!r4->unk_00_1) {
-        if (!r4->unk_00_2) {
-            Sprite_SetPositionXY(r4->unk_10[0].sprite, r5->unk_06, r5->unk_07);
+    PokegearAppSwitchButtonSpec *spec = &r4->buttonSpec[r4->unk_01];
+    if (!r4->buttonsAreUnkImageStruct) {
+        if (!r4->buttonsAre4Tiles) {
+            Sprite_SetPositionXY(r4->unk_10[0].sprite, spec->x, spec->y);
         } else {
-            Sprite_SetPositionXY(r4->unk_10[0].sprite, r5->unk_06 + r5->unk_08, r5->unk_07 + r5->unk_0A);
-            Sprite_SetPositionXY(r4->unk_10[1].sprite, r5->unk_06 + r5->unk_08, r5->unk_07 + r5->unk_0B);
-            Sprite_SetPositionXY(r4->unk_10[2].sprite, r5->unk_06 + r5->unk_09, r5->unk_07 + r5->unk_0A);
-            Sprite_SetPositionXY(r4->unk_10[3].sprite, r5->unk_06 + r5->unk_09, r5->unk_07 + r5->unk_0B);
+            Sprite_SetPositionXY(r4->unk_10[0].sprite, spec->x + spec->leftOffset, spec->y + spec->topOffset);
+            Sprite_SetPositionXY(r4->unk_10[1].sprite, spec->x + spec->leftOffset, spec->y + spec->bottomOffset);
+            Sprite_SetPositionXY(r4->unk_10[2].sprite, spec->x + spec->rightOffset, spec->y + spec->topOffset);
+            Sprite_SetPositionXY(r4->unk_10[3].sprite, spec->x + spec->rightOffset, spec->y + spec->bottomOffset);
         }
     } else {
-        if (!r4->unk_00_2) {
-            UnkImageStruct_SetSpritePositionXY(r4->unk_10[0].unk_image_struct, r5->unk_06, r5->unk_07);
+        if (!r4->buttonsAre4Tiles) {
+            UnkImageStruct_SetSpritePositionXY(r4->unk_10[0].unk_image_struct, spec->x, spec->y);
         } else {
-            UnkImageStruct_SetSpritePositionXY(r4->unk_10[0].unk_image_struct, r5->unk_06 + r5->unk_08, r5->unk_07 + r5->unk_0A);
-            UnkImageStruct_SetSpritePositionXY(r4->unk_10[1].unk_image_struct, r5->unk_06 + r5->unk_08, r5->unk_07 + r5->unk_0B);
-            UnkImageStruct_SetSpritePositionXY(r4->unk_10[2].unk_image_struct, r5->unk_06 + r5->unk_09, r5->unk_07 + r5->unk_0A);
-            UnkImageStruct_SetSpritePositionXY(r4->unk_10[3].unk_image_struct, r5->unk_06 + r5->unk_09, r5->unk_07 + r5->unk_0B);
+            UnkImageStruct_SetSpritePositionXY(r4->unk_10[0].unk_image_struct, spec->x + spec->leftOffset, spec->y + spec->topOffset);
+            UnkImageStruct_SetSpritePositionXY(r4->unk_10[1].unk_image_struct, spec->x + spec->leftOffset, spec->y + spec->bottomOffset);
+            UnkImageStruct_SetSpritePositionXY(r4->unk_10[2].unk_image_struct, spec->x + spec->rightOffset, spec->y + spec->topOffset);
+            UnkImageStruct_SetSpritePositionXY(r4->unk_10[3].unk_image_struct, spec->x + spec->rightOffset, spec->y + spec->bottomOffset);
         }
     }
 }
 
 u16 ov100_021E72F8(PokegearApp_UnkSub07C *a0, u16 a1, u8 a2) {
-    if (a1 >= a0->unk_00) {
+    if (a1 >= a0->count) {
         return 0xFFFF;
     }
-    a0->unk_08 = &a0->unk_04[a1];
+    a0->unk_08 = &a0->buttonSpecs[a1];
     a0->unk_02 = a1;
     if (a2 != 0xFF) {
-        if (a2 >= a0->unk_04[a1].unk_02) {
-            a0->unk_04[a1].unk_01 = 0;
+        if (a2 >= a0->buttonSpecs[a1].unk_02) {
+            a0->buttonSpecs[a1].unk_01 = 0;
         } else {
-            a0->unk_04[a1].unk_01 = a2;
+            a0->buttonSpecs[a1].unk_01 = a2;
         }
     }
     ov100_021E71B4(a0, 0xFFFF);
@@ -451,30 +451,30 @@ u8 ov100_021E7334(PokegearApp_UnkSub07C *a0) {
 u8 ov100_021E733C(PokegearApp_UnkSub07C *a0, u16 a1) {
     if (a1 == 0xFFFF) {
         return a0->unk_08->unk_01;
-    } else if (a1 >= a0->unk_00 || !a0->unk_04[a1].unk_00_0) {
+    } else if (a1 >= a0->count || !a0->buttonSpecs[a1].buttonsAreActive) {
         return 0;
     } else {
-        return a0->unk_04[a1].unk_01;
+        return a0->buttonSpecs[a1].unk_01;
     }
 }
 
 void ov100_021E7368(PokegearApp_UnkSub07C *a0, u8 a1) {
     if (a0->unk_08 != NULL) {
-        PokegearApp_UnkSub07C_Sub4_Sub4 *r2 = &a0->unk_08->unk_04[a0->unk_08->unk_01];
+        PokegearAppSwitchButtonSpec *spec = &a0->unk_08->buttonSpec[a0->unk_08->unk_01];
         u8 r2_2;
         switch (a1) {
         case 1:
-            r2_2 = r2->unk_03;
+            r2_2 = spec->buttonRight;
             break;
         case 2:
-            r2_2 = r2->unk_04;
+            r2_2 = spec->buttonUp;
             break;
         case 3:
-            r2_2 = r2->unk_05;
+            r2_2 = spec->buttonDown;
             break;
         case 0:
         default:
-            r2_2 = r2->unk_02;
+            r2_2 = spec->buttonLeft;
             break;
         }
         if (r2_2 <= a0->unk_08->unk_03) {
@@ -498,7 +498,7 @@ u8 ov100_021E73D4(PokegearApp_UnkSub07C *a0, u16 a1, u8 a2) {
     if (a1 == 0xFFFF) {
         r4 = a0->unk_08;
         a1 = a0->unk_02;
-    } else if (a1 >= a0->unk_00 || (r4 = &a0->unk_04[a1], !r4->unk_00_0)) {
+    } else if (a1 >= a0->count || (r4 = &a0->buttonSpecs[a1], !r4->buttonsAreActive)) {
         return 0;
     }
     if (r4->unk_03 < a2) {
@@ -514,11 +514,11 @@ void ov100_021E7414(PokegearApp_UnkSub07C *a0, u16 a1, BOOL a2) {
     if (a1 == 0xFFFF) {
         a1 = a0->unk_02;
     }
-    if (a1 < a0->unk_00) {
-        PokegearApp_UnkSub07C_Sub4 *r4 = &a0->unk_04[a1];
-        if (r4->unk_00_0) {
-            if (!r4->unk_00_1) {
-                if (!r4->unk_00_2) {
+    if (a1 < a0->count) {
+        PokegearApp_UnkSub07C_Sub4 *r4 = &a0->buttonSpecs[a1];
+        if (r4->buttonsAreActive) {
+            if (!r4->buttonsAreUnkImageStruct) {
+                if (!r4->buttonsAre4Tiles) {
                     Sprite_ResetAnimCtrlState(r4->unk_10[0].sprite);
                     thunk_Set2dSpriteAnimActiveFlag(r4->unk_10[0].sprite, a2);
                 } else {
@@ -528,7 +528,7 @@ void ov100_021E7414(PokegearApp_UnkSub07C *a0, u16 a1, BOOL a2) {
                     }
                 }
             } else {
-                if (!r4->unk_00_2) {
+                if (!r4->buttonsAre4Tiles) {
                     UnkImageStruct_ResetSpriteAnimCtrlState(r4->unk_10[0].unk_image_struct);
                     UnkImageStruct_SetSpriteAnimActiveFlag(r4->unk_10[0].unk_image_struct, a2);
                 } else {
