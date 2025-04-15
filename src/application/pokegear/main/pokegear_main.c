@@ -56,11 +56,11 @@ static BOOL PokegearApp_RunSubapp(OVY_MANAGER **ppOvyMan) {
 BOOL Pokegear_Init(OVY_MANAGER *man, int *state) {
     PokegearArgs *args = OverlayManager_GetArgs(man);
     sub_0200616C(0);
-    CreateHeap(HEAP_ID_3, HEAP_ID_90, 0x32000);
-    PokegearAppData *pokegearApp = OverlayManager_CreateAndGetData(man, sizeof(PokegearAppData), HEAP_ID_90);
+    CreateHeap(HEAP_ID_3, HEAP_ID_POKEGEAR, 0x32000);
+    PokegearAppData *pokegearApp = OverlayManager_CreateAndGetData(man, sizeof(PokegearAppData), HEAP_ID_POKEGEAR);
     memset(pokegearApp, 0, sizeof(PokegearAppData));
     pokegearApp->args = args;
-    pokegearApp->heapId = HEAP_ID_90;
+    pokegearApp->heapId = HEAP_ID_POKEGEAR;
     pokegearApp->saveData = pokegearApp->args->saveData;
     pokegearApp->savePokegear = SaveData_GSPlayerMisc_Get(pokegearApp->args->saveData);
     pokegearApp->saveVarsFlags = Save_VarsFlags_Get(pokegearApp->args->saveData);

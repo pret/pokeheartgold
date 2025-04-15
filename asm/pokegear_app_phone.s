@@ -15,156 +15,6 @@
 
 	.text
 
-	thumb_func_start PokegearPhone_Init
-PokegearPhone_Init: ; 0x021EF848
-	push {r3, r4, r5, lr}
-	add r4, r0, #0
-	bl OverlayManager_GetArgs
-	add r5, r0, #0
-	mov r0, #3
-	mov r1, #0x5b
-	lsl r2, r0, #0x10
-	bl CreateHeap
-	mov r1, #0x51
-	add r0, r4, #0
-	lsl r1, r1, #4
-	mov r2, #0x5b
-	bl OverlayManager_CreateAndGetData
-	mov r2, #0x51
-	add r4, r0, #0
-	mov r1, #0
-	lsl r2, r2, #4
-	bl memset
-	mov r1, #0
-	str r5, [r4, #0xc]
-	mov r0, #0x5b
-	str r0, [r4]
-	mov r0, #0x37
-	add r2, r1, #0
-	bl sub_02004EC4
-	add r0, r4, #0
-	bl ov101_021EF96C
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end PokegearPhone_Init
-
-	thumb_func_start PokegearPhone_Main
-PokegearPhone_Main: ; 0x021EF890
-	push {r4, lr}
-	add r4, r1, #0
-	bl OverlayManager_GetData
-	ldr r1, [r4]
-	cmp r1, #0xe
-	bhi _021EF93C
-	add r1, r1, r1
-	add r1, pc
-	ldrh r1, [r1, #6]
-	lsl r1, r1, #0x10
-	asr r1, r1, #0x10
-	add pc, r1
-_021EF8AA: ; jump table
-	.short _021EF8C8 - _021EF8AA - 2 ; case 0
-	.short _021EF8D0 - _021EF8AA - 2 ; case 1
-	.short _021EF8D8 - _021EF8AA - 2 ; case 2
-	.short _021EF900 - _021EF8AA - 2 ; case 3
-	.short _021EF910 - _021EF8AA - 2 ; case 4
-	.short _021EF8F8 - _021EF8AA - 2 ; case 5
-	.short _021EF908 - _021EF8AA - 2 ; case 6
-	.short _021EF8E0 - _021EF8AA - 2 ; case 7
-	.short _021EF8E8 - _021EF8AA - 2 ; case 8
-	.short _021EF8F0 - _021EF8AA - 2 ; case 9
-	.short _021EF918 - _021EF8AA - 2 ; case 10
-	.short _021EF920 - _021EF8AA - 2 ; case 11
-	.short _021EF928 - _021EF8AA - 2 ; case 12
-	.short _021EF930 - _021EF8AA - 2 ; case 13
-	.short _021EF938 - _021EF8AA - 2 ; case 14
-_021EF8C8:
-	bl ov101_021EFA24
-	str r0, [r4]
-	b _021EF93C
-_021EF8D0:
-	bl ov101_021EFA48
-	str r0, [r4]
-	b _021EF93C
-_021EF8D8:
-	bl ov101_021EFAA4
-	str r0, [r4]
-	b _021EF93C
-_021EF8E0:
-	bl ov101_021EFAB8
-	str r0, [r4]
-	b _021EF93C
-_021EF8E8:
-	bl ov101_021EFAC0
-	str r0, [r4]
-	b _021EF93C
-_021EF8F0:
-	bl ov101_021EFAC8
-	str r0, [r4]
-	b _021EF93C
-_021EF8F8:
-	bl ov101_021EFAD0
-	str r0, [r4]
-	b _021EF93C
-_021EF900:
-	bl ov101_021EFADC
-	str r0, [r4]
-	b _021EF93C
-_021EF908:
-	bl ov101_021EFAE8
-	str r0, [r4]
-	b _021EF93C
-_021EF910:
-	bl ov101_021EFB08
-	str r0, [r4]
-	b _021EF93C
-_021EF918:
-	bl ov101_021EFB4C
-	str r0, [r4]
-	b _021EF93C
-_021EF920:
-	bl ov101_021EFB70
-	str r0, [r4]
-	b _021EF93C
-_021EF928:
-	bl ov101_021EFBD0
-	str r0, [r4]
-	b _021EF93C
-_021EF930:
-	bl ov101_021EFC58
-	str r0, [r4]
-	b _021EF93C
-_021EF938:
-	mov r0, #1
-	pop {r4, pc}
-_021EF93C:
-	mov r0, #0
-	pop {r4, pc}
-	thumb_func_end PokegearPhone_Main
-
-	thumb_func_start PokegearPhone_Exit
-PokegearPhone_Exit: ; 0x021EF940
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	bl OverlayManager_GetData
-	add r4, r0, #0
-	bl ov101_021EFA04
-	ldr r2, [r4, #0xc]
-	mov r0, #0x80
-	ldrb r1, [r2, #5]
-	orr r0, r1
-	strb r0, [r2, #5]
-	ldr r4, [r4]
-	add r0, r5, #0
-	bl OverlayManager_FreeData
-	add r0, r4, #0
-	bl DestroyHeap
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end PokegearPhone_Exit
-
 	thumb_func_start ov101_021EF96C
 ov101_021EF96C: ; 0x021EF96C
 	push {r4, lr}
@@ -10207,12 +10057,16 @@ ov101_021F867C: ; 0x021F867C
 	.word ov101_021F4064
 	.word ov101_021F41B8
 
+    ; file boundary?
+
 sPhoneCallData_ProfElm_MapScripts: ; 0x021F86BC
 	.byte 0x00, 0x02  // H-hello? {STRVAR_1 3, 0, 0}?\rIt’s a disaster!\nUh, um, it’s just terrible!\rWhat should I do?\nIt... Oh, no...\rPlease get back here now!
 	.byte 0x00, 0x03  // Hello, {STRVAR_1 3, 0, 0}?\nWe’ve discovered something!\rThe details are...well, I can’t really\nsay anything, but we want you to carry\fthat Egg!\rMy assistant is at the Poké Mart in\nViolet City. Could you go meet him and\fpick up that Egg?
 	.byte 0x00, 0x04  // {STRVAR_1 3, 0, 0}, how are things going?\rI called because something weird is\nhappening with the radio broadcasts.\rThey were talking about Team Rocket.\r{STRVAR_1 3, 0, 0}, do you know anything\nabout it?\rMaybe Team Rocket has returned.\nNo, that just can’t be true.\rSorry to bug you. Take care!
 	.byte 0x00, 0x05  // Hello, {STRVAR_1 3, 0, 0}?\nHow’s it going?\rI’ve gotten hold of something neat.\nSwing by my Lab and pick it up!\rSee you later!
 	.byte 0x00, 0x06  // Hello, {STRVAR_1 3, 0, 0}?\rI have something here for you.\nCould you swing by my Lab?\rSee you later!
+
+    ; file boundary?
 
 	.balign 4, 0
 ov101_021F86C8: ; 0x021F86C8
