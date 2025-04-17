@@ -2,13 +2,16 @@
 
 #include "application/pokegear/pokegear_internal.h"
 
+#include "brightness.h"
 #include "overlay_101.h"
 #include "render_text.h"
 #include "sound_02004A44.h"
+#include "unk_0200FA24.h"
 
 typedef struct PokegearPhoneAppData {
     HeapID heapId;             // 0x000
-    u8 filler_004[0x8];        // 0x004
+    int unk_004;               // 0x004
+    u8 filler_008[0x4];        // 0x004
     PokegearAppData *pokegear; // 0x00C
     u8 unk_010;                // 0x010
     u8 unk_011;                // 0x011
@@ -48,6 +51,7 @@ BOOL ov101_021EFD7C(PokegearPhoneAppData *phoneApp);
 int ov101_021EFDB4(PokegearPhoneAppData *phoneApp);
 int ov101_021EFE1C(PokegearPhoneAppData *phoneApp);
 int ov101_021EFEC8(PokegearPhoneAppData *phoneApp);
+BOOL ov101_021EFF14(PokegearPhoneAppData *phoneApp);
 void ov101_021EFFBC(PokegearPhoneAppData *phoneApp);
 void ov101_021EFFC8(PokegearPhoneAppData *phoneApp);
 void ov101_021F003C(PokegearPhoneAppData *phoneApp);
@@ -253,4 +257,62 @@ int ov101_021EFB08(PokegearPhoneAppData *phoneApp) {
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
     ov101_021F0B84(phoneApp);
     return 1;
+}
+
+int ov101_021EFB4C(PokegearPhoneAppData *phoneApp) {
+    if (ov101_021EFF14(phoneApp)) {
+        phoneApp->unk_004 = 0;
+        if (phoneApp->unk_0CB) {
+            return 3;
+        } else {
+            return 1;
+        }
+    } else {
+        return 10;
+    }
+}
+
+int ov101_021EFB70(PokegearPhoneAppData *phoneApp) {
+    switch (phoneApp->unk_004) {
+    case 0:
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, phoneApp->heapId);
+        ++phoneApp->unk_004;
+        break;
+    case 1:
+        if (!IsPaletteFadeFinished()) {
+            break;
+        }
+        for (int i = 0; i < 8; ++i) {
+            ToggleBgLayer(i, FALSE);
+        }
+        phoneApp->unk_004 = 0;
+        return 2;
+    }
+    return 11;
+}
+
+int ov101_021EFBD0(PokegearPhoneAppData *phoneApp) {
+    switch (phoneApp->unk_004) {
+    case 0:
+        PaletteData_SetAutoTransparent(phoneApp->pokegear->plttData, TRUE);
+        SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG3), NNS_G2D_VRAM_TYPE_2DMAIN);
+        for (int i = 0; i < 3; ++i) {
+            ToggleBgLayer(i + 1, TRUE);
+            ToggleBgLayer(i + 5, TRUE);
+        }
+        phoneApp->pokegear->unk_009 = 0;
+        ++phoneApp->unk_004;
+        break;
+    case 1:
+        if (ov100_021E5D3C(phoneApp->pokegear, 0)) {
+            ++phoneApp->unk_004;
+        }
+        break;
+    case 2:
+        PaletteData_SetAutoTransparent(phoneApp->pokegear->plttData, FALSE);
+        phoneApp->pokegear->unk_009 = 0;
+        phoneApp->unk_004 = 0;
+        return 1;
+    }
+    return 12;
 }
