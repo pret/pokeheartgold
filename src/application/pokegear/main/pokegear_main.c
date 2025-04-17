@@ -159,7 +159,7 @@ void PokegearApp_VBlankCB(void *cb_args) {
     PokegearAppData *pokegearApp = (PokegearAppData *)cb_args;
 
     if (pokegearApp->unk_058 != NULL) {
-        pokegearApp->unk_058(pokegearApp, pokegearApp->unk_064);
+        pokegearApp->unk_058(pokegearApp, pokegearApp->childAppdata);
     }
 
     if (pokegearApp->plttData != NULL) {

@@ -88,7 +88,7 @@ int PokegearApp_HandleKeyInput_SwitchApps(PokegearAppData *pokegearApp) {
         PlaySE(r4->appId != GEAR_APP_CANCEL ? SEQ_SE_GS_GEARAPPLICHANGE : SEQ_SE_GS_GEARCANCEL);
         if (r4->appId == pokegearApp->app) {
             if (pokegearApp->unk_05C != NULL) {
-                pokegearApp->unk_05C(pokegearApp->unk_064);
+                pokegearApp->unk_05C(pokegearApp->childAppdata);
             }
             return -1;
         }
