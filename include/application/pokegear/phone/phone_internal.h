@@ -45,7 +45,8 @@ typedef struct PokegearPhoneAppData {
     PokegearPhoneApp_Sub0E0 unk_0E0;  // 0x0E0
     u8 filler_4DC[0x28];              // 0x4DC
     TouchscreenListMenu *unk_504;     // 0x504
-    u8 filler_508[0x8];               // 0x508
+    void *unk_508;                    // 0x508
+    NNSG2dScreenData *unk_50C;        // 0x50C
 } PokegearPhoneAppData;               // size: 0x510
 
 BOOL ov101_021EFD20(PokegearPhoneAppData *phoneApp);
