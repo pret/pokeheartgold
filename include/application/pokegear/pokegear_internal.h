@@ -145,6 +145,8 @@ void PokegearApp_VBlankCB(void *cb_args);
 
 void ov100_021E6914(PokegearAppData *pokegearApp);
 void ov100_021E6950(PokegearAppData *pokegearApp);
+void ov100_021E6978(PokegearAppData *pokegearApp, int a1);
+void ov100_021E69C8(PokegearAppData *pokegearApp);
 void ov100_021E69E8(PokegearAppData *pokegearApp);
 
 PokegearApp_UnkSub094 *ov100_021E69F8(HeapID heapId, u16 a1, u16 a2, u16 a3, u16 a4, int a5);

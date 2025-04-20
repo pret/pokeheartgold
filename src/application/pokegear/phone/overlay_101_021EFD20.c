@@ -5,7 +5,9 @@
 #include "unk_02005D10.h"
 #include "unk_0200FA24.h"
 
-extern const TouchscreenHitbox ov101_021F8400;
+const TouchscreenHitbox ov101_021F8400 = {
+    .rect = { 0x88, 0xb8, 0x08, 0xf8 }
+};
 
 BOOL ov101_021EFD20(PokegearPhoneAppData *phoneApp) {
     switch (phoneApp->unk_008) {
@@ -136,7 +138,7 @@ BOOL ov101_021EFF14(PokegearPhoneAppData *phoneApp) {
 }
 
 BOOL ov101_021EFFBC(PokegearPhoneAppData *phoneApp) {
-    ov101_021F0464(phoneApp, 1);
+    ov101_021F0464(phoneApp, TRUE);
     return TRUE;
 }
 
@@ -165,7 +167,7 @@ BOOL ov101_021F003C(PokegearPhoneAppData *phoneApp) {
     CopyWindowToVram(&phoneApp->unk_048[1]);
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
     TextFlags_UnsetFastForwardTouchButtonHitbox();
-    ov101_021F0464(phoneApp, 0);
+    ov101_021F0464(phoneApp, FALSE);
     ov101_021F0B84(phoneApp);
     return TRUE;
 }

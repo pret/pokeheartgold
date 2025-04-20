@@ -12,8 +12,6 @@ typedef struct UnkStruct_ov100_021E76BC {
     const u16 *resIdList;
 } UnkStruct_ov100_021E76BC;
 
-void ov100_021E6978(PokegearAppData *pokegearApp, int a1);
-void ov100_021E69C8(PokegearAppData *pokegearApp);
 void ov100_021E6A58(PokegearApp_UnkSub094 *a0, int a1);
 void ov100_021E6C4C(PokegearApp_UnkSub094 *a0, u16 a1);
 void ov100_021E6CF4(PokegearApp_UnkSub094 *a0);
