@@ -113,7 +113,7 @@ struct PokegearAppData {
     void *unk_060;                              // 0x060
     void *childAppdata;                         // 0x064
     u8 filler_068[0x4];                         // 0x068
-    EasyChatArgs *easyChatArgs;                 // 0x06C;
+    EasyChatArgs *easyChatArgs;                 // 0x06C
     OVY_MANAGER *childApplication;              // 0x070
     BgConfig *bgConfig;                         // 0x074
     PaletteData *plttData;                      // 0x078

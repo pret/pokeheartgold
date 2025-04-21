@@ -10,14 +10,6 @@
 #include "text.h"
 #include "unk_0208805C.h"
 
-typedef struct UnkStruct_ov101_021F8404 {
-    u8 unk_0_0 : 3;
-    u8 unk_0_3 : 5;
-    u8 unk_1;
-    u8 unk_2;
-    u8 unk_3;
-} UnkStruct_ov101_021F8404;
-
 static const WindowTemplate ov101_021F8420[] = {
     {
      .bgId = GF_BG_LYR_SUB_2,
@@ -174,51 +166,58 @@ static const UnkStruct_0200D2B4 ov101_021F84E8[] = {
 
 const UnkStruct_ov101_021F8404 ov101_021F8404[] = {
     {
-     3,
+     // Call; Sort; Quit
+        3,
      16,
-     0x00,
+     msg_0271_00000,
      0x0D,
      0x09,
      },
     {
-     5,
+     // Title; Alphabet; Location; Move; Quit
+        5,
      16,
-     0x03,
+     msg_0271_00003,
      0x0D,
      0x03,
      },
     {
-     2,
+     // Save some money; Don't save money
+        2,
      22,
-     0x08,
+     msg_0271_00008,
      0x07,
      0x0B,
      },
     {
-     2,
+     // Evaluate Pokédex; Quit
+        2,
      22,
-     0x0A,
+     msg_0271_00010,
      0x07,
      0x0B,
      },
     {
-     3,
+     // Evaluate Johto Pokédex; Evaluate National Pokédex; Quit
+        3,
      22,
-     0x0C,
+     msg_0271_00012,
      0x07,
      0x09,
      },
     {
-     2,
+     // Evaluate National Pokédex; Quit
+        2,
      22,
-     0x0F,
+     msg_0271_00015,
      0x07,
      0x0B,
      },
     {
-     2,
+     // Yes; No
+        2,
      16,
-     0x12,
+     msg_0271_00018,
      0x0D,
      0x0B,
      },
@@ -375,7 +374,7 @@ void ov101_021F0388(PokegearPhoneAppData *phoneApp) {
 }
 
 void ov101_021F0464(PokegearPhoneAppData *phoneApp, BOOL a1) {
-    Sprite_SetVisibleFlag(phoneApp->unk_0BC, a1);
+    Sprite_SetVisibleFlag(phoneApp->unk_088[13], a1);
     FillWindowPixelBuffer(&phoneApp->unk_048[0], 0);
     FillWindowPixelBuffer(&phoneApp->unk_048[1], 0);
     if (a1) {
@@ -440,7 +439,7 @@ void ov101_021F0694(PokegearPhoneAppData *phoneApp) {
     MI_CpuClear8(&sp00, sizeof(PokegearPhoneApp_Sub0C4Template));
     sp00.unk_00 = phoneApp->heapId;
     sp00.unk_04 = &phoneApp->pokegear->unk_00C;
-    sp00.unk_08 = phoneApp->unk_0BC;
+    sp00.unk_08 = phoneApp->unk_088[13];
     sp00.unk_0C = phoneApp;
     sp00.unk_10 = phoneApp->pokegear->bgConfig;
     sp00.unk_14 = &phoneApp->unk_048[0];
@@ -489,8 +488,14 @@ void ov101_021F075C(PokegearPhoneAppData *phoneApp) {
         Sprite_SetPositionXY(phoneApp->unk_088[i], 12, (int)(i * 24) - 128);
     }
 
-    phoneApp->unk_0BC = SpriteRenderer_CreateSprite(phoneApp->pokegear->gfxRenderer, phoneApp->pokegear->gfxHandler, &ov101_021F84E8[7]);
-    thunk_Sprite_SetPriority(phoneApp->unk_0BC, 0);
-    Sprite_SetVisibleFlag(phoneApp->unk_0BC, FALSE);
-    Sprite_SetAnimActiveFlag(phoneApp->unk_0BC, FALSE);
+    phoneApp->unk_088[13] = SpriteRenderer_CreateSprite(phoneApp->pokegear->gfxRenderer, phoneApp->pokegear->gfxHandler, &ov101_021F84E8[7]);
+    thunk_Sprite_SetPriority(phoneApp->unk_088[13], 0);
+    Sprite_SetVisibleFlag(phoneApp->unk_088[13], FALSE);
+    Sprite_SetAnimActiveFlag(phoneApp->unk_088[13], FALSE);
+}
+
+void ov101_021F0864(PokegearPhoneAppData *phoneApp) {
+    for (int i = 0; i < 14; ++i) {
+        thunk_Sprite_Delete(phoneApp->unk_088[i]);
+    }
 }
