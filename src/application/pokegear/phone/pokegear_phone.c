@@ -105,8 +105,8 @@ void ov101_021EF96C(PokegearPhoneAppData *phoneApp) {
     phoneApp->pokegear->childAppdata = phoneApp;
     phoneApp->pokegear->unk_05C = ov101_021F0944;
     phoneApp->unk_011 = sub_0202EE7C(phoneApp->pokegear->savePokegear);
-    phoneApp->unk_0D0 = GSPlayerMisc_AllocAndCopyPhonebook(phoneApp->pokegear->savePokegear, phoneApp->heapId);
-    phoneApp->unk_0CD = GSPlayerMisc_FindEmptyGearPhonebookSlot(phoneApp->pokegear->savePokegear);
+    phoneApp->saveContacts = GSPlayerMisc_AllocAndCopyPhonebook(phoneApp->pokegear->savePokegear, phoneApp->heapId);
+    phoneApp->numContacts = GSPlayerMisc_FindEmptyGearPhonebookSlot(phoneApp->pokegear->savePokegear);
     ov101_021F0D6C(phoneApp);
     if (phoneApp->pokegear->args->kind == 1) {
         phoneApp->unk_0CB = 1;
@@ -124,7 +124,7 @@ void ov101_021EF96C(PokegearPhoneAppData *phoneApp) {
 
 void ov101_021EFA04(PokegearPhoneAppData *phoneApp) {
     ov101_021F0D90(phoneApp);
-    FreeToHeap(phoneApp->unk_0D0);
+    FreeToHeap(phoneApp->saveContacts);
     phoneApp->pokegear->unk_05C = NULL;
     phoneApp->pokegear->unk_060 = NULL;
 }
