@@ -72,7 +72,39 @@ typedef struct PokegearPhoneApp_Sub0C4Template {
 } PokegearPhoneApp_Sub0C4Template;
 
 typedef struct PokegearPhoneApp_Sub0C4 {
-} PokegearPhoneApp_Sub0C4;
+    HeapID heapId;
+    PokegearPhoneAppData *unk_04;
+    BgConfig *unk_08;
+    Window *unk_0C;
+    Window *unk_10;
+    u8 filler_14[4];
+    PaletteData *unk_18;
+    SaveData *unk_1C;
+    MomsSavings *unk_20;
+    PlayerProfile *unk_24;
+    SaveVarsFlags *unk_28;
+    SysInfo_RTC *unk_2C;
+    u16 unk_30;
+    u16 unk_32;
+    u8 unk_34;
+    u8 unk_35;
+    u8 unk_36;
+    u8 filler_37[0xD];
+    MsgData *unk_44;
+    MsgData *unk_48;
+    u8 filler_4C[4];
+    MessageFormat *unk_50;
+    String *unk_54;
+    String *unk_58;
+    String *unk_5C;
+    String *unk_60;
+    String *unk_64;
+    String *unk_68[3];
+    String *unk_74[3];
+    PhoneBook *unk_80;
+    PhoneBookEntry *unk_84;
+    u8 filler_88[0x54];
+} PokegearPhoneApp_Sub0C4; // size: 0xDC
 
 struct PokegearPhoneAppData {
     HeapID heapId;                            // 0x000

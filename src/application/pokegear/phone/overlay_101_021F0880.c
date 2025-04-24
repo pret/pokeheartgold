@@ -268,3 +268,21 @@ void ov101_021F0E0C(PokegearPhoneAppData *phoneApp, PokegearPhoneApp_Sub0D8 *a1,
         } while (r4 != phoneApp->contactListHead);
     }
 }
+
+void ov101_021F0EB0(PokegearPhoneAppData *phoneApp, u8 a1) {
+    PhoneBookEntry *r2 = phoneApp->unk_0C4->unk_84;
+    for (int i = 0; i < phoneApp->numContacts - 1; ++i) {
+        for (int j = phoneApp->numContacts - 1; j > i; --j) {
+            if (r2[phoneApp->saveContacts[j].id].unk10[a1] < r2[phoneApp->saveContacts[i].id].unk10[a1]) {
+                u8 tmp = phoneApp->saveContacts[i].id;
+                phoneApp->saveContacts[i].id = phoneApp->saveContacts[j].id;
+                phoneApp->saveContacts[j].id = tmp;
+            }
+        }
+    }
+    ov101_021F1840(phoneApp);
+    ov101_021F11B0(phoneApp);
+    phoneApp->unk_0E0.unk_001 = 0;
+    phoneApp->unk_0E0.unk_003 = phoneApp->unk_0E0.unk_001;
+    ov101_021F11E0(phoneApp, &phoneApp->unk_0E0, phoneApp->unk_0E0.unk_003, phoneApp->unk_0E0.unk_001);
+}
