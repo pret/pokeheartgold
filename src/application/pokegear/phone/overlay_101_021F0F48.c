@@ -5,16 +5,18 @@
 #include "text.h"
 #include "unk_02005D10.h"
 
+void ov101_021F1830(PokegearPhoneApp_Sub0D8 *a0);
 void ov101_021F18E0(PokegearPhoneApp_Sub0E0_Sub00C *a0);
 void ov101_021F18E8(PokegearPhoneApp_Sub0E0 *a0, u8 a1, BOOL a2, BOOL a3);
 void ov101_021F19E4(PokegearPhoneApp_Sub0E0 *a0);
 u8 ov101_021F1A10(PokegearPhoneApp_Sub0E0 *a0, u8 a1);
-void ov101_021F1A40(PokegearPhoneApp_Sub0E0 *a0, u8 a1, u8 a2, u8 a3, u8 a4);
+void ov101_021F1A40(PokegearPhoneApp_Sub0E0 *a0, u8 a1, u8 a2, u8 a3, BOOL a4);
 void ov101_021F1B48(PokegearPhoneApp_Sub0E0 *a0);
-void ov101_021F1B94(PokegearPhoneApp_Sub0E0 *a0, int a1);
-void ov101_021F1C98(PokegearPhoneApp_Sub0E0 *a0, int a1);
+BOOL ov101_021F1B94(PokegearPhoneApp_Sub0E0 *a0, u8 a1);
+BOOL ov101_021F1C34(PokegearPhoneApp_Sub0E0 *a0);
+BOOL ov101_021F1C98(PokegearPhoneApp_Sub0E0 *a0, u8 a1);
+BOOL ov101_021F1CE8(PokegearPhoneApp_Sub0E0 *a0);
 void ov101_021F1D44(PokegearPhoneApp_Sub0E0 *a0);
-void ov101_021F1830(PokegearPhoneApp_Sub0D8 *a0);
 
 extern const TouchscreenHitbox ov101_021F8634[];
 extern const TouchscreenHitbox ov101_021F8658[];
@@ -481,5 +483,117 @@ u8 ov101_021F1A10(PokegearPhoneApp_Sub0E0 *a0, u8 a1) {
         return 1 - (a1 % 2);
     } else {
         return a1 % 2;
+    }
+}
+
+void ov101_021F1A40(PokegearPhoneApp_Sub0E0 *a0, u8 a1, u8 a2, u8 a3, BOOL a4) {
+    u8 r2;
+    u8 y;
+    PokegearPhoneApp_Sub0E0_Sub394 *r6;
+    PokegearPhoneApp_Sub0E0_Sub00C *r4;
+
+    r4 = &a0->unk_00C[a2];
+    r2 = ov101_021F1A10(a0, a1);
+    r6 = &a0->unk_394[r2];
+    ov101_021F18E8(a0, a1, r2, FALSE);
+    y = a1 * 24;
+    if (a3 != 0 || a2 == a0->unk_002) {
+        AddTextPrinterParameterizedWithColor(a0->unk_390, 4, PhoneContact_GetName(a0->unk_3FC, r4->unk_8), 16, y + 2, TEXT_SPEED_NOTRANSFER, r6->unk_14, NULL);
+        AddTextPrinterParameterizedWithColor(a0->unk_390, 0, PhoneContact_GetClass(a0->unk_3FC, r4->unk_8), 94, y + 2, TEXT_SPEED_NOTRANSFER, r6->unk_18, NULL);
+    } else {
+        AddTextPrinterParameterizedWithColor(a0->unk_390, 4, PhoneContact_GetName(a0->unk_3FC, r4->unk_8), 16, y + 2, TEXT_SPEED_NOTRANSFER, r6->unk_0C, NULL);
+        AddTextPrinterParameterizedWithColor(a0->unk_390, 0, PhoneContact_GetClass(a0->unk_3FC, r4->unk_8), 94, y + 2, TEXT_SPEED_NOTRANSFER, r6->unk_10, NULL);
+    }
+    if (a4) {
+        CopyWindowToVram(a0->unk_390);
+    }
+}
+
+void ov101_021F1B48(PokegearPhoneApp_Sub0E0 *a0) {
+    if (a0->unk_003 != 0) {
+        Sprite_SetVisibleFlag(a0->unk_3CC[0], TRUE);
+    } else {
+        Sprite_SetVisibleFlag(a0->unk_3CC[0], FALSE);
+    }
+    if (a0->unk_003 + 6 < a0->unk_000) {
+        Sprite_SetVisibleFlag(a0->unk_3CC[1], TRUE);
+    } else {
+        Sprite_SetVisibleFlag(a0->unk_3CC[1], FALSE);
+    }
+}
+
+BOOL ov101_021F1B94(PokegearPhoneApp_Sub0E0 *a0, u8 a1) {
+    if (a1) {
+        if (a0->unk_003 < 1) {
+            return FALSE;
+        }
+        --a0->unk_003;
+        ov101_021F1A40(a0, 0, a0->unk_003, 0, TRUE);
+        --a0->unk_004;
+    } else {
+        if (a0->unk_004 >= a0->unk_000 - 1) {
+            return FALSE;
+        }
+        ++a0->unk_004;
+        ov101_021F1A40(a0, 7, a0->unk_004, 0, TRUE);
+        ++a0->unk_003;
+    }
+    a0->unk_007_3 = 0;
+    a0->unk_007_1 = a1;
+    a0->unk_007_0 = TRUE;
+    *a0->unk_404 = 1;
+    a0->unk_006_0 ^= 1;
+    ov101_021F1B48(a0);
+    return TRUE;
+}
+
+BOOL ov101_021F1C34(PokegearPhoneApp_Sub0E0 *a0) {
+    if (a0->unk_007_1) {
+        ScrollWindow(a0->unk_390, 1, 8, 0);
+    } else {
+        ScrollWindow(a0->unk_390, 0, 8, 0);
+    }
+    CopyWindowToVram(a0->unk_390);
+    if (a0->unk_007_3++ >= 2) {
+        a0->unk_007_3 = 0;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+BOOL ov101_021F1C98(PokegearPhoneApp_Sub0E0 *a0, u8 a1) {
+    a0->unk_008_4 = 0;
+    a0->unk_007_2 = 1;
+    a0->unk_007_1 = a1;
+    a0->unk_007_0 = 1;
+    *a0->unk_404 = 1;
+    if (!ov101_021F1B94(a0, a1)) {
+        a0->unk_008_7 = 1;
+    }
+    return FALSE;
+}
+
+BOOL ov101_021F1CE8(PokegearPhoneApp_Sub0E0 *a0) {
+    if (!ov101_021F1C34(a0)) {
+        return FALSE;
+    }
+    if (a0->unk_008_7 || a0->unk_008_4++ >= 5 || !ov101_021F1B94(a0, a0->unk_007_1)) {
+        a0->unk_008_4 = 0;
+        a0->unk_007_2 = 0;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+void ov101_021F1D44(PokegearPhoneApp_Sub0E0 *a0) {
+    BOOL r0;
+    if (a0->unk_007_2) {
+        r0 = ov101_021F1CE8(a0);
+    } else {
+        r0 = ov101_021F1C34(a0);
+    }
+    if (r0) {
+        *a0->unk_404 = 0;
+        a0->unk_007_0 = 0;
     }
 }

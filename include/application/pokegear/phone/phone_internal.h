@@ -117,7 +117,9 @@ typedef struct PokegearPhoneApp_Sub0E0 {
     u8 unk_007_1 : 1;                                           // 0x007
     u8 unk_007_2 : 1;                                           // 0x007
     u8 unk_007_3 : 5;                                           // 0x007
-    u8 filler_008[4];                                           // 0x008
+    u8 unk_008_0 : 4;                                           // 0x008
+    u8 unk_008_4 : 3;                                           // 0x008
+    u8 unk_008_7 : 1;                                           // 0x008
     PokegearPhoneApp_Sub0E0_Sub00C unk_00C[NUM_PHONE_CONTACTS]; // 0x00C
     Window *unk_390;                                            // 0x390
     PokegearPhoneApp_Sub0E0_Sub394 unk_394[2];                  // 0x394
@@ -230,6 +232,7 @@ PokegearPhoneApp_Sub0C4 *ov101_021F1D74(const PokegearPhoneApp_Sub0C4Template *t
 void ov101_021F1E80(PokegearPhoneApp_Sub0C4 *a0);
 
 String *PhoneContact_GetName(PokegearPhoneApp_Sub0C4 *a0, int a1);
+String *PhoneContact_GetClass(PokegearPhoneApp_Sub0C4 *a0, int a1);
 BOOL PhoneCall_CheckMapPermissionAndGetTimeOfDay(PokegearPhoneApp_Sub0C4 *a0, int a1, int a2, int a3, int a4);
 void PhoneCall_GetCallScriptId(PokegearPhoneApp_Sub0C4 *a0);
 
