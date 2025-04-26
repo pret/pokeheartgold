@@ -3,11 +3,15 @@
 #include "application/pokegear/phone/phone_internal.h"
 
 #include "text.h"
+#include "unk_02005D10.h"
 
 void ov101_021F18E0(PokegearPhoneApp_Sub0E0_Sub00C *a0);
 void ov101_021F19E4(PokegearPhoneApp_Sub0E0 *a0);
 void ov101_021F1A40(PokegearPhoneApp_Sub0E0 *a0, u8 a1, u8 a2, u8 a3, u8 a4);
 void ov101_021F1B48(PokegearPhoneApp_Sub0E0 *a0);
+void ov101_021F1B94(PokegearPhoneApp_Sub0E0 *a0, int a1);
+void ov101_021F1C98(PokegearPhoneApp_Sub0E0 *a0, int a1);
+void ov101_021F1D44(PokegearPhoneApp_Sub0E0 *a0);
 
 void ov101_021F0F48(PokegearPhoneAppData *phoneApp) {
     int i;
@@ -181,4 +185,76 @@ void ov101_021F13C8(PokegearPhoneApp_Sub0E0 *a0, int a1) {
         a0->unk_006_1 = 1;
         ov101_021F1364(a0, a0->unk_001, 1);
     }
+}
+
+int ov101_021F1408(PokegearPhoneApp_Sub0E0 *a0) {
+    // u8 r6;
+    u8 r4;
+
+    if (a0->unk_007_0) {
+        ov101_021F1D44(a0);
+        return -1;
+    }
+    if (a0->unk_007_3 != 0) {
+        --a0->unk_007_3;
+        return -1;
+    }
+    // r6 = a0->unk_003;
+    r4 = a0->unk_003 + a0->unk_001;
+    if (gSystem.newKeys & PAD_BUTTON_A) {
+        a0->unk_002 = r4;
+        ov101_021F1A40(a0, a0->unk_001 + 1, a0->unk_002, 1, 1);
+        PlaySE(SEQ_SE_GS_GEARDECIDE);
+        return a0->unk_002;
+    }
+    if (gSystem.newKeys & PAD_BUTTON_B) {}
+    if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
+        if (r4 == 0) { // no wraparound
+            return -1;
+        }
+        PlaySE(SEQ_SE_GS_GEARCURSOR);
+        if (a0->unk_001 == 0) {
+            if (r4 != 0) {
+                ov101_021F1B94(a0, 1);
+            }
+            return -1;
+        } else {
+            --a0->unk_001;
+            ov101_021F1290(a0, a0->unk_001, 1);
+            a0->unk_007_3 = 2;
+            return -1;
+        }
+    }
+    if (gSystem.newAndRepeatedKeys & PAD_KEY_DOWN) {
+        if (r4 >= a0->unk_000 - 1) { // no wraparound
+            return -1;
+        }
+        PlaySE(SEQ_SE_GS_GEARCURSOR);
+        if (a0->unk_001 == 5) {
+            if (r4 < a0->unk_000 - 1) {
+                ov101_021F1B94(a0, 0);
+            }
+            return -1;
+        } else {
+            ++a0->unk_001;
+            ov101_021F1290(a0, a0->unk_001, 1);
+            a0->unk_007_3 = 2;
+            return -1;
+        }
+    }
+    if (gSystem.newKeys & PAD_KEY_LEFT) {
+        if (a0->unk_003 != 0) {
+            PlaySE(SEQ_SE_GS_GEARCURSOR);
+            ov101_021F1C98(a0, 1);
+        }
+        return -1;
+    }
+    if (gSystem.newKeys & PAD_KEY_RIGHT) {
+        if (a0->unk_003 + 6 < a0->unk_000) {
+            PlaySE(SEQ_SE_GS_GEARCURSOR);
+            ov101_021F1C98(a0, 0);
+        }
+        return -1;
+    }
+    return -1;
 }

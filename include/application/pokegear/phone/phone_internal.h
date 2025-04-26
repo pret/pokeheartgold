@@ -94,7 +94,11 @@ typedef struct PokegearPhoneApp_Sub0E0 {
     u8 unk_005;                                                 // 0x005
     u8 unk_006_0 : 1;                                           // 0x006
     u8 unk_006_1 : 7;                                           // 0x006
-    u8 filler_007[5];                                           // 0x007
+    u8 unk_007_0 : 1;                                           // 0x007
+    u8 unk_007_1 : 1;                                           // 0x007
+    u8 unk_007_2 : 1;                                           // 0x007
+    u8 unk_007_3 : 5;                                           // 0x007
+    u8 filler_008[4];                                           // 0x008
     PokegearPhoneApp_Sub0E0_Sub00C unk_00C[NUM_PHONE_CONTACTS]; // 0x00C
     Window *unk_390;                                            // 0x390
     u8 unk_394;                                                 // 0x394
