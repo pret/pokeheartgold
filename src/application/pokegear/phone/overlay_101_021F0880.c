@@ -213,7 +213,7 @@ BOOL ov101_021F0CE4(PokegearPhoneAppData *phoneApp) {
 }
 
 void ov101_021F0D6C(PokegearPhoneAppData *phoneApp) {
-    phoneApp->unk_0D4 = AllocFromHeap(phoneApp->heapId, phoneApp->numContacts * sizeof(PokegearPhoneApp_Sub0D4));
+    phoneApp->unk_0D4 = AllocFromHeap(phoneApp->heapId, phoneApp->numContacts * sizeof(PokegearPhoneApp_Sub0D8));
     ov101_021F1840(phoneApp);
 }
 
@@ -228,7 +228,7 @@ void ov101_021F0D90(PokegearPhoneAppData *phoneApp) {
         ptr = ptr->next;
     }
     GSPlayerMisc_SetPhonebookFromBuffer(phoneApp->pokegear->savePokegear, phoneApp->saveContacts, phoneApp->numContacts);
-    MI_CpuClear8(phoneApp->unk_0D4, phoneApp->numContacts * sizeof(PokegearPhoneApp_Sub0D4));
+    MI_CpuClear8(phoneApp->unk_0D4, phoneApp->numContacts * sizeof(PokegearPhoneApp_Sub0D8));
     FreeToHeap(phoneApp->unk_0D4);
 }
 

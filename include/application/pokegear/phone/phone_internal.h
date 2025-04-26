@@ -85,6 +85,25 @@ typedef struct PokegearPhoneApp_Sub0C4 {
     u8 filler_88[0x54];           // 0x88
 } PokegearPhoneApp_Sub0C4;        // size: 0xDC
 
+typedef struct PokegearPhoneApp_Sub0E0_Sub394 {
+    u8 unk_00;
+    u8 unk_01;
+    u8 unk_02;
+    u8 unk_03;
+    u8 unk_04;
+    u8 unk_05;
+    u8 unk_06;
+    u8 unk_07;
+    u8 unk_08;
+    u8 unk_09;
+    u8 unk_0A;
+    u8 unk_0B;
+    u32 unk_0C;
+    u32 unk_10;
+    u32 unk_14;
+    u32 unk_18;
+} PokegearPhoneApp_Sub0E0_Sub394;
+
 typedef struct PokegearPhoneApp_Sub0E0 {
     u8 unk_000;                                                 // 0x000
     u8 unk_001;                                                 // 0x001
@@ -101,38 +120,7 @@ typedef struct PokegearPhoneApp_Sub0E0 {
     u8 filler_008[4];                                           // 0x008
     PokegearPhoneApp_Sub0E0_Sub00C unk_00C[NUM_PHONE_CONTACTS]; // 0x00C
     Window *unk_390;                                            // 0x390
-    u8 unk_394;                                                 // 0x394
-    u8 unk_395;                                                 // 0x395
-    u8 unk_396;                                                 // 0x396
-    u8 unk_397;                                                 // 0x397
-    u8 unk_398;                                                 // 0x398
-    u8 unk_399;                                                 // 0x399
-    u8 unk_39A;                                                 // 0x39A
-    u8 unk_39B;                                                 // 0x39B
-    u8 unk_39C;                                                 // 0x39C
-    u8 unk_39D;                                                 // 0x39D
-    u8 unk_39E;                                                 // 0x39E
-    u8 unk_39F;                                                 // 0x39F
-    u32 unk_3A0;                                                // 0x3A0
-    u32 unk_3A4;                                                // 0x3A4
-    u32 unk_3A8;                                                // 0x3A8
-    u32 unk_3AC;                                                // 0x3AC
-    u8 unk_3B0;                                                 // 0x3B0
-    u8 unk_3B1;                                                 // 0x3B1
-    u8 unk_3B2;                                                 // 0x3B2
-    u8 unk_3B3;                                                 // 0x3B3
-    u8 unk_3B4;                                                 // 0x3B4
-    u8 unk_3B5;                                                 // 0x3B5
-    u8 unk_3B6;                                                 // 0x3B6
-    u8 unk_3B7;                                                 // 0x3B7
-    u8 unk_3B8;                                                 // 0x3B8
-    u8 unk_3B9;                                                 // 0x3B9
-    u8 unk_3BA;                                                 // 0x3BA
-    u8 unk_3BB;                                                 // 0x3BB
-    u32 unk_3BC;                                                // 0x3BC
-    u32 unk_3C0;                                                // 0x3C0
-    u32 unk_3C4;                                                // 0x3C4
-    u32 unk_3C8;                                                // 0x3C8
+    PokegearPhoneApp_Sub0E0_Sub394 unk_394[2];                  // 0x394
     Sprite *unk_3CC[2];                                         // 0x3CC
     Sprite *unk_3D4[6];                                         // 0x3D4
     Sprite *unk_3EC[4];                                         // 0x3EC
@@ -140,13 +128,6 @@ typedef struct PokegearPhoneApp_Sub0E0 {
     MenuInputState *unk_400;                                    // 0x400
     u8 *unk_404;                                                // 0x404
 } PokegearPhoneApp_Sub0E0;                                      // size 0x408
-
-typedef struct PokegearPhoneApp_Sub0D4 {
-    u8 unk_00;  // 0x00
-    u8 unk_01;  // 0x01
-    int unk_04; // 0x04
-    int unk_08; // 0x08
-} PokegearPhoneApp_Sub0D4;
 
 struct PokegearPhoneAppData {
     HeapID heapId;                            // 0x000
@@ -174,7 +155,7 @@ struct PokegearPhoneAppData {
     u8 numContacts;                           // 0x0CD
     u8 filler_0CE[2];                         // 0x0CE
     PhoneContact *saveContacts;               // 0x0D0
-    PokegearPhoneApp_Sub0D4 *unk_0D4;         // 0x0D4
+    PokegearPhoneApp_Sub0D8 *unk_0D4;         // 0x0D4
     PokegearPhoneApp_Sub0D8 *contactListHead; // 0x0D8
     PokegearPhoneApp_Sub0D8 *contactListTail; // 0x0DC
     PokegearPhoneApp_Sub0E0 unk_0E0;          // 0x0E0
