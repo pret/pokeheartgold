@@ -5,7 +5,33 @@
 #include "msgdata/msg/msg_0271.h"
 
 #include "map_header.h"
+#include "math_util.h"
 #include "phonebook_dat.h"
+#include "render_text.h"
+#include "text.h"
+
+void ov101_021F2110(PokegearPhoneApp_Sub0C4 *a0);
+void ov101_021F217C(PokegearPhoneApp_Sub0C4 *a0);
+void PhoneCallMessagePrint(PokegearPhoneApp_Sub0C4 *a0, MsgData *msgData, u8 *a2);
+void PhoneCallMessagePrint_Gendered(PokegearPhoneApp_Sub0C4 *a0, MsgData *msgData, u8 msgIdIfEthan, u8 msgIdIfLyra);
+void PhoneCallMessagePrint_Ungendered(PokegearPhoneApp_Sub0C4 *a0, MsgData *msgData, u8 msgId);
+BOOL ov101_021F2220(PokegearPhoneApp_Sub0C4 *a0);
+void ov101_021F2248(PokegearPhoneApp_Sub0C4 *a0, const PhoneCallScriptDef *a1);
+u16 ov101_021F2B80(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+u16 PhoneCall_GetCallScriptId_Mother(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+u16 PhoneCall_GetCallScriptId_ProfElm(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+u16 PhoneCall_GetCallScriptId_ProfOak(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+u16 ov101_021F342C(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+u16 ov101_021F3518(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+u16 ov101_021F3530(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+u16 ov101_021F35C4(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+u16 ov101_021F36F4(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+u16 ov101_021F388C(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+u16 ov101_021F3AA4(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+u16 ov101_021F3C8C(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+u16 ov101_021F3EA8(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+u16 ov101_021F410C(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+u16 ov101_021F4274(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
 
 PokegearPhoneApp_Sub0C4 *ov101_021F1D74(const PokegearPhoneApp_Sub0C4Template *template) {
     PokegearPhoneApp_Sub0C4 *ret = AllocFromHeap(template->unk_00, sizeof(PokegearPhoneApp_Sub0C4));
@@ -119,4 +145,142 @@ BOOL PhoneCall_CheckMapPermissionAndGetTimeOfDay(PokegearPhoneApp_Sub0C4 *a0, u8
     r4->unk_20 = 0;
     r4->unk_1E = 0;
     return TRUE;
+}
+
+void PhoneCall_GetCallScriptId(PokegearPhoneApp_Sub0C4 *a0) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+
+    FillWindowPixelBuffer(a0->unk_0C, 0);
+    ScheduleWindowCopyToVram(a0->unk_0C);
+
+    switch (r4->unk_10->unk1) {
+    case 0:
+        r4->unk_1E = ov101_021F2B80(a0, r4);
+        break;
+    case 1:
+        r4->unk_1E = PhoneCall_GetCallScriptId_Mother(a0, r4);
+        break;
+    case 2:
+        r4->unk_1E = PhoneCall_GetCallScriptId_ProfElm(a0, r4);
+        break;
+    case 3:
+        r4->unk_1E = PhoneCall_GetCallScriptId_ProfOak(a0, r4);
+        break;
+    case 5:
+        r4->unk_1E = ov101_021F3518(a0, r4);
+        break;
+    case 7:
+        r4->unk_1E = ov101_021F35C4(a0, r4);
+        break;
+    case 9:
+        r4->unk_1E = ov101_021F388C(a0, r4);
+        break;
+    case 8:
+        r4->unk_1E = ov101_021F36F4(a0, r4);
+        break;
+    case 10:
+        r4->unk_1E = ov101_021F3AA4(a0, r4);
+        break;
+    case 11:
+        r4->unk_1E = ov101_021F3C8C(a0, r4);
+        break;
+    case 4:
+        r4->unk_1E = ov101_021F342C(a0, r4);
+        break;
+    case 12:
+        r4->unk_1E = ov101_021F3EA8(a0, r4);
+        break;
+    case 6:
+        r4->unk_1E = ov101_021F3530(a0, r4);
+        break;
+    case 13:
+        r4->unk_1E = ov101_021F410C(a0, r4);
+        break;
+    case 14:
+        r4->unk_1E = ov101_021F4274(a0, r4);
+        break;
+    case 15:
+    default:
+        r4->unk_20 = 0;
+        r4->unk_1E = 0;
+        break;
+    }
+    if (r4->unk_20 <= 2) {
+        r4->unk_14 = &sPhoneCallScriptDef[r4->unk_1E];
+    }
+}
+
+void ov101_021F2110(PokegearPhoneApp_Sub0C4 *a0) {
+    a0->unk_4C = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, GetPhoneMessageGmm(a0->unk_88.unk_18), a0->heapId);
+    BufferPlayersName(a0->unk_50, 0, a0->unk_24);
+    BufferString(a0->unk_50, 1, PhoneContact_GetName(a0, a0->unk_88.unk_18), 2, 1, 2);
+    BufferLandmarkName(a0->unk_50, 2, MapHeader_GetMapSec(a0->unk_30));
+    BufferLandmarkName(a0->unk_50, 3, MapHeader_GetMapSec(a0->unk_88.unk_10->mapId));
+}
+
+void ov101_021F217C(PokegearPhoneApp_Sub0C4 *a0) {
+    if (TouchscreenHitbox_TouchNewIsIn(&ov101_021F8400)) {
+        Sprite_SetAnimActiveFlag(a0->unk_40, TRUE);
+        Sprite_ResetAnimCtrlState(a0->unk_40);
+    }
+}
+
+void PhoneCallMessagePrint(PokegearPhoneApp_Sub0C4 *a0, MsgData *msgData, u8 *a2) {
+    ReadMsgDataIntoString(msgData, a2[a0->unk_36], a0->unk_64);
+    StringExpandPlaceholders(a0->unk_50, a0->unk_54, a0->unk_64);
+    FillWindowPixelBuffer(a0->unk_0C, 0);
+    a0->unk_35 = AddTextPrinterParameterizedWithColor(a0->unk_0C, 0, a0->unk_54, 0, 0, a0->unk_34, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+}
+
+void PhoneCallMessagePrint_Gendered(PokegearPhoneApp_Sub0C4 *a0, MsgData *msgData, u8 msgIdIfEthan, u8 msgIdIfLyra) {
+    a0->unk_37[0] = msgIdIfEthan;
+    a0->unk_37[1] = msgIdIfLyra;
+    PhoneCallMessagePrint(a0, msgData, a0->unk_37);
+}
+
+void PhoneCallMessagePrint_Ungendered(PokegearPhoneApp_Sub0C4 *a0, MsgData *msgData, u8 msgId) {
+    a0->unk_37[0] = msgId;
+    a0->unk_37[1] = msgId;
+    PhoneCallMessagePrint(a0, msgData, a0->unk_37);
+}
+
+BOOL ov101_021F2220(PokegearPhoneApp_Sub0C4 *a0) {
+    ov101_021F217C(a0);
+    if (TextPrinterCheckActive(a0->unk_35)) {
+        return FALSE;
+    }
+    a0->unk_88.unk_22 = TextFlags_GetIsTouchSpeedingUpPrint();
+    return TRUE;
+}
+
+void ov101_021F2248(PokegearPhoneApp_Sub0C4 *a0, const PhoneCallScriptDef *a1) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r6 = &a0->unk_88;
+    u16 r2;
+
+    switch (a1->unk_2_0) {
+    case 3:
+        PhoneRematches_SetSeeking(a0->unk_20, r6->unk_18, TRUE);
+        break;
+    case 4:
+        r2 = a1->unk_4;
+        if (r2 == 149) {
+            r2 = (MTRandom() % 10) + 149;
+        } else if (r2 == 4) {
+            r2 = (MTRandom() % 3) + 2;
+        }
+        PhoneRematches_GiftItemIdSet(a0->unk_20, r6->unk_18, r2);
+        break;
+    case 1:
+    case 2:
+        if (a1->unk_2_4) {
+            Save_VarsFlags_SetFlagInArray(a0->unk_28, a1->unk_4);
+        } else {
+            Save_VarsFlags_ClearFlagInArray(a0->unk_28, a1->unk_4);
+        }
+        break;
+    case 5:
+        ReadMsgDataIntoString(a0->unk_4C, a1->unk_4 + (LCRandom() % a1->unk_2_4), a0->unk_54);
+        BufferString(a0->unk_50, 4, a0->unk_54, 2, 1, 2);
+        break;
+    }
 }

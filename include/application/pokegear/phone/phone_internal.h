@@ -51,23 +51,23 @@ typedef struct PokegearPhoneApp_Sub0C4Template {
 } PokegearPhoneApp_Sub0C4Template;
 
 typedef struct PokegearPhoneApp_Sub0C4_Sub88 {
-    int unk_00;                  // 0x00
-    u8 filler_04[12];            // 0x04
-    PhoneBookEntry *unk_10;      // 0x10
-    u8 filler_14[4];             // 0x14
-    u8 unk_18;                   // 0x18
-    u8 unk_19;                   // 0x19
-    u8 unk_1A;                   // 0x1a
-    u16 unk_1C;                  // 0x1c
-    u16 unk_1E;                  // 0x1e
-    u16 unk_20;                  // 0x20
-    u8 unk_22;                   // 0x22
-    u8 unk_23;                   // 0x23
-    u8 filler_24[4];             // 0x24
-    RTCDate unk_28;              // 0x28
-    RTCTime unk_38;              // 0x38
-    u8 filler_44[0x10];          // 0x44
-} PokegearPhoneApp_Sub0C4_Sub88; // size: 0x54
+    int unk_00;                       // 0x00
+    u8 filler_04[12];                 // 0x04
+    PhoneBookEntry *unk_10;           // 0x10
+    const PhoneCallScriptDef *unk_14; // 0x14
+    u8 unk_18;                        // 0x18
+    u8 unk_19;                        // 0x19
+    u8 unk_1A;                        // 0x1a
+    u16 unk_1C;                       // 0x1c
+    u16 unk_1E;                       // 0x1e
+    u16 unk_20;                       // 0x20
+    u8 unk_22;                        // 0x22
+    u8 unk_23;                        // 0x23
+    u8 filler_24[4];                  // 0x24
+    RTCDate unk_28;                   // 0x28
+    RTCTime unk_38;                   // 0x38
+    u8 filler_44[0x10];               // 0x44
+} PokegearPhoneApp_Sub0C4_Sub88;      // size: 0x54
 
 typedef struct PokegearPhoneApp_Sub0C4 {
     HeapID heapId;
@@ -87,12 +87,12 @@ typedef struct PokegearPhoneApp_Sub0C4 {
     u8 unk_34;                            // 0x34
     u8 unk_35;                            // 0x35
     u8 unk_36;                            // 0x36
-    u8 filler_37[0x5];                    // 0x37
+    u8 unk_37[2];                         // 0x37
     MenuInputState *unk_3C;               // 0x3C
     Sprite *unk_40;                       // 0x40
     MsgData *unk_44;                      // 0x44
     MsgData *unk_48;                      // 0x48
-    u8 filler_4C[4];                      // 0x4C
+    MsgData *unk_4C;                      // 0x4C
     MessageFormat *unk_50;                // 0x50
     String *unk_54;                       // 0x54
     String *unk_58;                       // 0x58

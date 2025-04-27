@@ -67,8 +67,16 @@ ov101_021F8B60: ; 0x021F8B60
 	// It is unclear why GameFreak designed it this way
 	// x00: u8 Male player GMM
 	// x01: u8 Female player GMM
-	// x02: u16 ???
-	// x04: u16 ???
+	// x02: u16
+	//    bits 0-3: kind
+	//    bits 4-15: param0
+	// x04: u16 param1
+	//        0: nil
+	//        1: flag action: param0=1 set param0=1 clear, param1=flagId
+	//        2: same as 1
+	//        3: rematch
+	//        4: gift item, param1=itemSetId
+	//        5: random word, param0=numChoices, param1=baseMsgId
     .global sPhoneCallScriptDef
 sPhoneCallScriptDef: ; 0x021F8B7C
 	// 0

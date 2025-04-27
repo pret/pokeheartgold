@@ -127,6 +127,14 @@ struct PokegearAppData {
     NNSG2dScreenData *unk_0C8;                  // 0x0C8
 }; // size: 0xCC
 
+typedef struct PhoneCallScriptDef {
+    u8 messageIfEthan;
+    u8 messageIfLyra;
+    u16 unk_2_0 : 4;
+    u16 unk_2_4 : 12;
+    u16 unk_4;
+} PhoneCallScriptDef;
+
 int ov100_021E5C50(u16 a0, u16 a1);
 int ov100_021E5C80(PokegearAppData *pokegearApp);
 BOOL ov100_021E5900(PokegearAppData *pokegearApp);
@@ -173,5 +181,7 @@ u8 ov100_021E733C(PokegearApp_UnkSub07C *a0, u16 a1);
 u8 ov100_021E73AC(PokegearApp_UnkSub07C *a0, u8 a1);
 u8 ov100_021E73C8(PokegearApp_UnkSub07C *a0, u8 a1);
 void ov100_021E7414(PokegearApp_UnkSub07C *a0, u16 a1, BOOL a2);
+
+extern const PhoneCallScriptDef sPhoneCallScriptDef[];
 
 #endif // GUARD_POKEHEARTGOLD_APPLICATION_POKEGEAR_POKEGEAR_INTERNAL_H
