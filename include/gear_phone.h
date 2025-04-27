@@ -4,16 +4,18 @@
 #include "heap.h"
 
 typedef struct PhoneBookEntry {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 trainerClass;
-    u16 trainerId;
-    u16 mapId;
-    u16 gift;
-    u8 unkA[5];
-    u8 unkF;
-    u8 unk10[4];
+    u8 unk0;         // 0x00
+    u8 unk1;         // 0x01
+    u8 unk2;         // 0x02
+    u8 trainerClass; // 0x03
+    u16 trainerId;   // 0x04
+    u16 mapId;       // 0x06
+    u16 gift;        // 0x08
+    u8 unkA[2];      // 0x0A
+    u8 unkC;         // 0x0C
+    u8 unkD[2];      // 0x0D
+    u8 unkF;         // 0x0F
+    u8 unk10[4];     // 0x10
 } PhoneBookEntry;
 
 typedef struct PhoneBook {

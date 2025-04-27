@@ -1,6 +1,8 @@
 #ifndef GUARD_POKEHEARTGOLD_APPLICATION_POKEGEAR_PHONE_PHONE_INTERNAL_H
 #define GUARD_POKEHEARTGOLD_APPLICATION_POKEGEAR_PHONE_PHONE_INTERNAL_H
 
+#include "constants/phone_scripts.h"
+
 #include "application/pokegear/pokegear_internal.h"
 
 #include "sav_system_info.h"
@@ -52,7 +54,7 @@ typedef struct PokegearPhoneApp_Sub0C4Template {
 
 typedef struct PokegearPhoneApp_Sub0C4_Sub88 {
     int unk_00;                       // 0x00
-    u8 filler_04[4];                  // 0x04
+    int unk_04;                       // 0x04
     int unk_08;                       // 0x08
     u8 filler_0c[4];                  // 0x0C
     PhoneBookEntry *unk_10;           // 0x10
@@ -68,11 +70,15 @@ typedef struct PokegearPhoneApp_Sub0C4_Sub88 {
     u16 unk_24;                       // 0x24
     RTCDate unk_28;                   // 0x28
     RTCTime unk_38;                   // 0x38
-    u8 filler_44[0x10];               // 0x44
+    u32 unk_44;                       // 0x44
+    u8 filler_48[0x5];                // 0x48
+    u8 unk_4D_0 : 1;                  // 0x4D
+    u8 unk_4D_1 : 1;                  // 0x4D
+    u8 filler_4E[6];                  // 0x4E
 } PokegearPhoneApp_Sub0C4_Sub88;      // size: 0x54
 
 typedef struct PokegearPhoneApp_Sub0C4 {
-    HeapID heapId;
+    HeapID heapId;                        // 0x00
     PokegearPhoneAppData *unk_04;         // 0x04
     BgConfig *unk_08;                     // 0x08
     Window *unk_0C;                       // 0x0C
@@ -257,8 +263,75 @@ String *PhoneContact_GetName(PokegearPhoneApp_Sub0C4 *a0, u8 a1);
 String *PhoneContact_GetClass(PokegearPhoneApp_Sub0C4 *a0, u8 a1);
 BOOL PhoneCall_CheckMapPermissionAndGetTimeOfDay(PokegearPhoneApp_Sub0C4 *a0, u8 a1, u8 a2, u8 a3, u8 a4);
 void PhoneCall_GetCallScriptId(PokegearPhoneApp_Sub0C4 *a0);
+BOOL ov101_021F26F8(PokegearPhoneApp_Sub0C4 *a0);
 
-BOOL ov101_021F26F8(void *a0);
+void ov101_021F2110(PokegearPhoneApp_Sub0C4 *a0);
+void ov101_021F217C(PokegearPhoneApp_Sub0C4 *a0);
+void PhoneCallMessagePrint(PokegearPhoneApp_Sub0C4 *a0, MsgData *msgData, const u8 *a2);
+void PhoneCallMessagePrint_Gendered(PokegearPhoneApp_Sub0C4 *a0, MsgData *msgData, u8 msgIdIfEthan, u8 msgIdIfLyra);
+void PhoneCallMessagePrint_Ungendered(PokegearPhoneApp_Sub0C4 *a0, MsgData *msgData, u8 msgId);
+BOOL ov101_021F2220(PokegearPhoneApp_Sub0C4 *a0);
+void ov101_021F2248(PokegearPhoneApp_Sub0C4 *a0, const PhoneCallScriptDef *a1);
+void ov101_021F2308(PokegearPhoneApp_Sub0C4 *a0, int a1);
+int ov101_021F2338(PokegearPhoneApp_Sub0C4 *a0);
+void ov101_021F2344(PokegearPhoneApp_Sub0C4 *a0);
+const PhoneCallScriptDef *ov101_021F2374(int a0);
+void ov101_021F2384(PokegearPhoneApp_Sub0C4 *a0, int a1);
+BOOL ov101_021F23F0(PokegearPhoneApp_Sub0C4 *a0);
+void ov101_021F243C(PokegearPhoneApp_Sub0C4 *a0, u8 a1, u8 a2);
+BOOL ov101_021F2494(PokegearPhoneApp_Sub0C4 *a0);
+BOOL ov101_021F2510(PokegearPhoneApp_Sub0C4 *a0);
+BOOL ov101_021F2598(PokegearPhoneApp_Sub0C4 *a0);
+BOOL ov101_021F2614(PokegearPhoneApp_Sub0C4 *a0);
+BOOL ov101_021F2680(PokegearPhoneApp_Sub0C4 *a0);
+
+u16 PhoneCall_GetCallScriptId_Mother(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+BOOL GearPhoneCall_Mom(PokegearPhoneApp_Sub0C4 *a0);
+
+u16 PhoneCall_GetCallScriptId_ProfElm(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+u16 ov101_021F2B80(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+u16 ov101_021F2BC0(PokegearPhoneApp_Sub0C4 *a0, const u8 *a1, int a2);
+BOOL ov101_021F2C78(int a0);
+BOOL ov101_021F2CAC(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+BOOL ov101_021F2CB8(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+BOOL ov101_021F2D10(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+BOOL ov101_021F2D48(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+BOOL ov101_021F2D90(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+BOOL ov101_021F2DC8(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+BOOL ov101_021F2DE8(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+BOOL ov101_021F2E04(u16 a0, u8 a1, u8 a2);
+BOOL ov101_021F2E74(u16 a0, HeapID a1);
+
+BOOL ov101_021F2F50(PokegearPhoneApp_Sub0C4 *a0);
+
+BOOL ov101_021F2FFC(PokegearPhoneApp_Sub0C4 *a0);
+
+u16 PhoneCall_GetCallScriptId_ProfOak(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+BOOL ov101_021F313C(PokegearPhoneApp_Sub0C4 *a0);
+
+u16 ov101_021F342C(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+BOOL ov101_021F3448(PokegearPhoneApp_Sub0C4 *a0);
+u16 ov101_021F3518(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+u16 ov101_021F3530(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+u16 ov101_021F35C4(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+BOOL ov101_021F35EC(PokegearPhoneApp_Sub0C4 *a0);
+u16 ov101_021F36F4(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+BOOL ov101_021F3798(PokegearPhoneApp_Sub0C4 *a0);
+u16 ov101_021F388C(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+BOOL ov101_021F38FC(PokegearPhoneApp_Sub0C4 *a0);
+u16 ov101_021F3AA4(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+BOOL ov101_021F3B20(PokegearPhoneApp_Sub0C4 *a0);
+BOOL ov101_021F3BA0(PokegearPhoneApp_Sub0C4 *a0);
+u16 ov101_021F3C8C(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+BOOL ov101_021F3CC0(PokegearPhoneApp_Sub0C4 *a0);
+u8 ov101_021F3D34(PokegearPhoneApp_Sub0C4 *a0);
+BOOL ov101_021F3DC8(PokegearPhoneApp_Sub0C4 *a0);
+u16 ov101_021F3EA8(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+BOOL ov101_021F3F10(PokegearPhoneApp_Sub0C4 *a0);
+BOOL ov101_021F4064(PokegearPhoneApp_Sub0C4 *a0);
+u16 ov101_021F410C(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+BOOL ov101_021F41B8(PokegearPhoneApp_Sub0C4 *a0);
+u16 ov101_021F4274(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
 
 extern const TouchscreenHitbox ov101_021F8400;
 extern const UnkStruct_ov101_021F8404 ov101_021F8404[];

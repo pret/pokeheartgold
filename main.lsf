@@ -1143,6 +1143,7 @@ Overlay OVY_101
     Object src/application/pokegear/phone/overlay_101_021F0880.o
     Object src/application/pokegear/phone/overlay_101_021F0F48.o
     Object src/application/pokegear/phone/overlay_101_021F1D74.o
+    Object src/application/pokegear/phone/phone_scripts_mom.o
     Object asm/pokegear_app_phone.o
     Object asm/pokegear_app_radio.o
     Object asm/pokegear_app_data.o

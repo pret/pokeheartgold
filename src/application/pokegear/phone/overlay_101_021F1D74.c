@@ -11,38 +11,24 @@
 #include "text.h"
 #include "unk_02005D10.h"
 
-void ov101_021F2110(PokegearPhoneApp_Sub0C4 *a0);
-void ov101_021F217C(PokegearPhoneApp_Sub0C4 *a0);
-void PhoneCallMessagePrint(PokegearPhoneApp_Sub0C4 *a0, MsgData *msgData, u8 *a2);
-void PhoneCallMessagePrint_Gendered(PokegearPhoneApp_Sub0C4 *a0, MsgData *msgData, u8 msgIdIfEthan, u8 msgIdIfLyra);
-void PhoneCallMessagePrint_Ungendered(PokegearPhoneApp_Sub0C4 *a0, MsgData *msgData, u8 msgId);
-BOOL ov101_021F2220(PokegearPhoneApp_Sub0C4 *a0);
-void ov101_021F2248(PokegearPhoneApp_Sub0C4 *a0, const PhoneCallScriptDef *a1);
-void ov101_021F2308(PokegearPhoneApp_Sub0C4 *a0, int a1);
-int ov101_021F2338(PokegearPhoneApp_Sub0C4 *a0);
-void ov101_021F2344(PokegearPhoneApp_Sub0C4 *a0);
-const PhoneCallScriptDef *ov101_021F2374(int a0);
-void ov101_021F2384(PokegearPhoneApp_Sub0C4 *a0, int a1);
-BOOL ov101_021F23F0(PokegearPhoneApp_Sub0C4 *a0);
-void ov101_021F243C(PokegearPhoneApp_Sub0C4 *a0, u8 a1, u8 a2);
-BOOL ov101_021F2494(PokegearPhoneApp_Sub0C4 *a0);
-BOOL ov101_021F2510(PokegearPhoneApp_Sub0C4 *a0);
-BOOL ov101_021F2598(PokegearPhoneApp_Sub0C4 *a0);
-u16 ov101_021F2B80(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-u16 PhoneCall_GetCallScriptId_Mother(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-u16 PhoneCall_GetCallScriptId_ProfElm(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-u16 PhoneCall_GetCallScriptId_ProfOak(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-u16 ov101_021F342C(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-u16 ov101_021F3518(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-u16 ov101_021F3530(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-u16 ov101_021F35C4(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-u16 ov101_021F36F4(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-u16 ov101_021F388C(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-u16 ov101_021F3AA4(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-u16 ov101_021F3C8C(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-u16 ov101_021F3EA8(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-u16 ov101_021F410C(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-u16 ov101_021F4274(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+static BOOL (*const ov101_021F867C[])(PokegearPhoneApp_Sub0C4 *) = {
+    ov101_021F2680,
+    ov101_021F2F50,
+    ov101_021F2FFC,
+    ov101_021F35EC,
+    GearPhoneCall_Mom,
+    ov101_021F313C,
+    ov101_021F38FC,
+    ov101_021F3798,
+    ov101_021F3B20,
+    ov101_021F3BA0,
+    ov101_021F3CC0,
+    ov101_021F3DC8,
+    ov101_021F3448,
+    ov101_021F3F10,
+    ov101_021F4064,
+    ov101_021F41B8,
+};
 
 PokegearPhoneApp_Sub0C4 *ov101_021F1D74(const PokegearPhoneApp_Sub0C4Template *template) {
     PokegearPhoneApp_Sub0C4 *ret = AllocFromHeap(template->unk_00, sizeof(PokegearPhoneApp_Sub0C4));
@@ -236,7 +222,7 @@ void ov101_021F217C(PokegearPhoneApp_Sub0C4 *a0) {
     }
 }
 
-void PhoneCallMessagePrint(PokegearPhoneApp_Sub0C4 *a0, MsgData *msgData, u8 *a2) {
+void PhoneCallMessagePrint(PokegearPhoneApp_Sub0C4 *a0, MsgData *msgData, const u8 *a2) {
     ReadMsgDataIntoString(msgData, a2[a0->unk_36], a0->unk_64);
     StringExpandPlaceholders(a0->unk_50, a0->unk_54, a0->unk_64);
     FillWindowPixelBuffer(a0->unk_0C, 0);
@@ -443,5 +429,113 @@ BOOL ov101_021F2598(PokegearPhoneApp_Sub0C4 *a0) {
     }
 
     ++r4->unk_08;
+    return FALSE;
+}
+
+BOOL ov101_021F2614(PokegearPhoneApp_Sub0C4 *a0) {
+    u16 r3;
+    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+
+    ov101_021F217C(a0);
+    switch (r4->unk_08) {
+    case 0:
+        r3 = r4->unk_23 * 2 + r4->unk_19 * 6;
+        PhoneCallMessagePrint_Gendered(a0, a0->unk_48, ov101_021F962C[r4->unk_10->unkC][r3], ov101_021F962C[r4->unk_10->unkC][r3 + 1]);
+        break;
+    case 1:
+        if (!ov101_021F2220(a0)) {
+            return FALSE;
+        }
+        r4->unk_08 = 0;
+        return TRUE;
+    }
+
+    ++r4->unk_08;
+    return FALSE;
+}
+
+BOOL ov101_021F2680(PokegearPhoneApp_Sub0C4 *a0) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+    const PhoneCallScriptDef *r6 = r4->unk_14;
+
+    switch (r4->unk_04) {
+    case 0:
+        ov101_021F2110(a0);
+        ov101_021F2248(a0, r6);
+        if (r4->unk_10->unkC == 0xFF) {
+            ++r4->unk_04;
+        }
+        break;
+    case 1:
+        if (!ov101_021F2614(a0)) {
+            return FALSE;
+        }
+        break;
+    case 2:
+        PhoneCallMessagePrint(a0, a0->unk_4C, r6->msgIds);
+        break;
+    case 3:
+        if (!ov101_021F2220(a0)) {
+            return FALSE;
+        }
+        DestroyMsgData(a0->unk_4C);
+        return TRUE;
+    }
+
+    ++r4->unk_04;
+    return FALSE;
+}
+
+BOOL ov101_021F26F8(PokegearPhoneApp_Sub0C4 *a0) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+
+    switch (r4->unk_00) {
+    case 0:
+        if (!ov101_021F2494(a0)) {
+            return FALSE;
+        }
+        break;
+    case 1:
+        if (!ov101_021F867C[r4->unk_20](a0)) {
+            return FALSE;
+        }
+        *a0->unk_3C = (MenuInputState)r4->unk_22;
+        break;
+    case 2:
+        if (!ov101_021F23F0(a0)) {
+            return FALSE;
+        }
+        break;
+    case 3:
+        if (!ov101_021F2510(a0)) {
+            return FALSE;
+        }
+        r4->unk_00 = 0;
+        return TRUE;
+    case 255:
+        if (!ov101_021F2598(a0)) {
+            return FALSE;
+        }
+        break;
+    case 256:
+        if (!ov101_021F2510(a0)) {
+            return FALSE;
+        }
+        PhoneCallMessagePrint_Ungendered(a0, a0->unk_44, 37);
+        break;
+    case 257:
+        if (!ov101_021F2220(a0)) {
+            return FALSE;
+        }
+        break;
+    case 258:
+        if (!ov101_021F23F0(a0)) {
+            return FALSE;
+        }
+        r4->unk_00 = 0;
+        return TRUE;
+    }
+
+    ++r4->unk_00;
     return FALSE;
 }
