@@ -9,6 +9,7 @@
 #include "phonebook_dat.h"
 #include "render_text.h"
 #include "text.h"
+#include "unk_02005D10.h"
 
 void ov101_021F2110(PokegearPhoneApp_Sub0C4 *a0);
 void ov101_021F217C(PokegearPhoneApp_Sub0C4 *a0);
@@ -17,6 +18,16 @@ void PhoneCallMessagePrint_Gendered(PokegearPhoneApp_Sub0C4 *a0, MsgData *msgDat
 void PhoneCallMessagePrint_Ungendered(PokegearPhoneApp_Sub0C4 *a0, MsgData *msgData, u8 msgId);
 BOOL ov101_021F2220(PokegearPhoneApp_Sub0C4 *a0);
 void ov101_021F2248(PokegearPhoneApp_Sub0C4 *a0, const PhoneCallScriptDef *a1);
+void ov101_021F2308(PokegearPhoneApp_Sub0C4 *a0, int a1);
+int ov101_021F2338(PokegearPhoneApp_Sub0C4 *a0);
+void ov101_021F2344(PokegearPhoneApp_Sub0C4 *a0);
+const PhoneCallScriptDef *ov101_021F2374(int a0);
+void ov101_021F2384(PokegearPhoneApp_Sub0C4 *a0, int a1);
+BOOL ov101_021F23F0(PokegearPhoneApp_Sub0C4 *a0);
+void ov101_021F243C(PokegearPhoneApp_Sub0C4 *a0, u8 a1, u8 a2);
+BOOL ov101_021F2494(PokegearPhoneApp_Sub0C4 *a0);
+BOOL ov101_021F2510(PokegearPhoneApp_Sub0C4 *a0);
+BOOL ov101_021F2598(PokegearPhoneApp_Sub0C4 *a0);
 u16 ov101_021F2B80(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
 u16 PhoneCall_GetCallScriptId_Mother(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
 u16 PhoneCall_GetCallScriptId_ProfElm(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
@@ -283,4 +294,154 @@ void ov101_021F2248(PokegearPhoneApp_Sub0C4 *a0, const PhoneCallScriptDef *a1) {
         BufferString(a0->unk_50, 4, a0->unk_54, 2, 1, 2);
         break;
     }
+}
+
+void ov101_021F2308(PokegearPhoneApp_Sub0C4 *a0, int a1) {
+    ov101_021F0ACC(a0->unk_04, 2, 1);
+    a0->unk_14 = ov101_021F09B0(a0->unk_04, 0, a1);
+    Sprite_SetVisibleFlag(a0->unk_40, FALSE);
+    ov101_021F2384(a0, 1);
+}
+
+int ov101_021F2338(PokegearPhoneApp_Sub0C4 *a0) {
+    return TouchscreenListMenu_HandleInput(a0->unk_14);
+}
+
+void ov101_021F2344(PokegearPhoneApp_Sub0C4 *a0) {
+    *a0->unk_3C = (MenuInputState)TouchscreenListMenu_WasLastInputTouch(a0->unk_14);
+    TouchscreenListMenu_Destroy(a0->unk_14);
+    ov101_021F0ACC(a0->unk_04, 0, 0);
+    Sprite_SetVisibleFlag(a0->unk_40, TRUE);
+    ov101_021F2384(a0, 0);
+}
+
+const PhoneCallScriptDef *ov101_021F2374(int a0) {
+    return &sPhoneCallScriptDef[a0];
+}
+
+void ov101_021F2384(PokegearPhoneApp_Sub0C4 *a0, int a1) {
+    if (a1) {
+        PaletteData_BlendPalette(a0->unk_18, PLTTBUF_MAIN_BG, 0x10, 0x10, 0, RGB_BLACK);
+        PaletteData_BlendPalette(a0->unk_18, PLTTBUF_MAIN_BG, 0xA0, 0x10, 0, RGB_BLACK);
+    } else {
+        PaletteData_BlendPalette(a0->unk_18, PLTTBUF_MAIN_BG, 0x10, 0x10, 8, RGB_BLACK);
+        PaletteData_BlendPalette(a0->unk_18, PLTTBUF_MAIN_BG, 0xA0, 0x10, 8, RGB_BLACK);
+    }
+    PaletteData_SetAutoTransparent(a0->unk_18, TRUE);
+    PaletteData_PushTransparentBuffers(a0->unk_18);
+    PaletteData_SetAutoTransparent(a0->unk_18, FALSE);
+}
+
+BOOL ov101_021F23F0(PokegearPhoneApp_Sub0C4 *a0) {
+    ov101_021F217C(a0);
+    if (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B)) {
+        PlaySE(SEQ_SE_DP_SELECT);
+        a0->unk_88.unk_22 = MENU_INPUT_STATE_BUTTONS;
+        return TRUE;
+    }
+
+    if (TouchscreenHitbox_TouchNewIsIn(&ov101_021F8400)) {
+        PlaySE(SEQ_SE_DP_SELECT);
+        a0->unk_88.unk_22 = MENU_INPUT_STATE_TOUCH;
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+void ov101_021F243C(PokegearPhoneApp_Sub0C4 *a0, u8 a1, u8 a2) {
+    if (a2 == 0) {
+        FillWindowPixelBuffer(a0->unk_0C, 0);
+    }
+    if (a1 == 0) {
+        AddTextPrinterParameterizedWithColor(a0->unk_0C, 0, a0->unk_68[a2], 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    } else {
+        AddTextPrinterParameterizedWithColor(a0->unk_0C, 0, a0->unk_74[a2], 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    }
+}
+
+BOOL ov101_021F2494(PokegearPhoneApp_Sub0C4 *a0) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+    ov101_021F217C(a0);
+    switch (r4->unk_08) {
+    case 0:
+        PlaySE(SEQ_SE_GS_PHONE0);
+        ov101_021F243C(a0, 0, r4->unk_08);
+        break;
+    case 1:
+        if (IsSEPlaying(SEQ_SE_GS_PHONE0)) {
+            return FALSE;
+        }
+        PlaySE(SEQ_SE_GS_PHONE0);
+        ov101_021F243C(a0, 0, r4->unk_08);
+        break;
+    case 2:
+        if (IsSEPlaying(SEQ_SE_GS_PHONE0)) {
+            return FALSE;
+        }
+        r4->unk_08 = 0;
+        return TRUE;
+    }
+
+    ++r4->unk_08;
+    return FALSE;
+}
+
+BOOL ov101_021F2510(PokegearPhoneApp_Sub0C4 *a0) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+    ov101_021F217C(a0);
+    switch (r4->unk_08) {
+    case 0:
+        PlaySE(SEQ_SE_GS_PHONE_OFF);
+        ov101_021F243C(a0, 1, r4->unk_08);
+        r4->unk_24 = 0;
+        break;
+    case 1:
+    case 2:
+        if (r4->unk_24++ < 10) {
+            return FALSE;
+        }
+        r4->unk_24 = 0;
+        ov101_021F243C(a0, 1, r4->unk_08);
+        break;
+    case 3:
+        if (r4->unk_24++ < 10) {
+            return FALSE;
+        }
+        r4->unk_24 = 0;
+        r4->unk_08 = 0;
+        return TRUE;
+    }
+
+    ++r4->unk_08;
+    return FALSE;
+}
+
+BOOL ov101_021F2598(PokegearPhoneApp_Sub0C4 *a0) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+    ov101_021F217C(a0);
+    switch (r4->unk_08) {
+    case 0:
+        ov101_021F243C(a0, 0, r4->unk_08);
+        r4->unk_24 = 0;
+        break;
+    case 1:
+    case 2:
+        if (r4->unk_24++ < 10) {
+            return FALSE;
+        }
+        r4->unk_24 = 0;
+        ov101_021F243C(a0, 0, r4->unk_08);
+        break;
+    case 3:
+        if (r4->unk_24++ < 10) {
+            return FALSE;
+        }
+        r4->unk_24 = 0;
+        r4->unk_08 = 0;
+        return TRUE;
+    }
+
+    ++r4->unk_08;
+    return FALSE;
 }

@@ -52,7 +52,9 @@ typedef struct PokegearPhoneApp_Sub0C4Template {
 
 typedef struct PokegearPhoneApp_Sub0C4_Sub88 {
     int unk_00;                       // 0x00
-    u8 filler_04[12];                 // 0x04
+    u8 filler_04[4];                  // 0x04
+    int unk_08;                       // 0x08
+    u8 filler_0c[4];                  // 0x0C
     PhoneBookEntry *unk_10;           // 0x10
     const PhoneCallScriptDef *unk_14; // 0x14
     u8 unk_18;                        // 0x18
@@ -63,7 +65,7 @@ typedef struct PokegearPhoneApp_Sub0C4_Sub88 {
     u16 unk_20;                       // 0x20
     u8 unk_22;                        // 0x22
     u8 unk_23;                        // 0x23
-    u8 filler_24[4];                  // 0x24
+    u16 unk_24;                       // 0x24
     RTCDate unk_28;                   // 0x28
     RTCTime unk_38;                   // 0x38
     u8 filler_44[0x10];               // 0x44
@@ -75,7 +77,7 @@ typedef struct PokegearPhoneApp_Sub0C4 {
     BgConfig *unk_08;                     // 0x08
     Window *unk_0C;                       // 0x0C
     Window *unk_10;                       // 0x10
-    u8 filler_14[4];                      // 0x14
+    TouchscreenListMenu *unk_14;          // 0x14
     PaletteData *unk_18;                  // 0x18
     SaveData *unk_1C;                     // 0x1C
     MomsSavings *unk_20;                  // 0x20
