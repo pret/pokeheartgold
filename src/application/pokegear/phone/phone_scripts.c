@@ -6,6 +6,8 @@
 #include "msgdata/msg/msg_0664.h"
 #include "msgdata/msg/msg_0716.h"
 
+#include "encounter.h"
+#include "map_events.h"
 #include "map_header.h"
 #include "math_util.h"
 #include "sys_flags.h"
@@ -356,4 +358,188 @@ BOOL ov101_021F2DE8(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C 
         return ov101_021F2C78(a1->unk_1);
     }
     return FALSE;
+}
+
+u16 ov101_021F2E04(u16 a0, u8 a1, u8 a2) {
+    ENC_DATA encounters;
+    u16 *r4;
+
+    if (!MapHeader_HasWildEncounters(a0)) {
+        return SPECIES_RATTATA;
+    }
+    WildEncounters_ReadFromNarc(&encounters, a0);
+    if (a1 == TRAINERCLASS_FISHERMAN) {
+        if (a2 == TIMEOFDAY_WILD_NITE) {
+            encounters.goodRodSlots[3].species = encounters.swarmSpecies[2];
+        }
+        return encounters.goodRodSlots[LCRandom() % 5].species;
+    } else {
+        switch (a2) {
+        case TIMEOFDAY_WILD_DAY:
+            r4 = encounters.landSlots.species_day;
+            break;
+        case TIMEOFDAY_WILD_NITE:
+            r4 = encounters.landSlots.species_nite;
+            break;
+        case 0:
+        default:
+            r4 = encounters.landSlots.species_morn;
+            break;
+        }
+        return r4[LCRandom() % 12];
+    }
+}
+
+u16 ov101_021F2E74(u16 a0, HeapID a1) {
+    int i;
+    Trainer trdata;
+    TRPOKE *trpoke;
+    u16 teamSpecies[PARTY_SIZE];
+
+    TrainerData_ReadTrData(a0, &trdata);
+    trpoke = AllocFromHeap(a1, sizeof(TRPOKE) * PARTY_SIZE);
+    MI_CpuClear8(trpoke, sizeof(TRPOKE) * PARTY_SIZE);
+    TrainerData_ReadTrPoke(a0, trpoke);
+    switch (trdata.data.trainerType) {
+    case 0: {
+        TRPOKE_NOITEM_DFLTMOVES *trpoke_ = &trpoke->species;
+        for (i = 0; i < trdata.data.npoke; ++i) {
+            teamSpecies[i] = trpoke_[i].species;
+        }
+        break;
+    }
+    case 1: {
+        TRPOKE_NOITEM_CUSTMOVES *trpoke_ = &trpoke->species_moves;
+        for (i = 0; i < trdata.data.npoke; ++i) {
+            teamSpecies[i] = trpoke_[i].species;
+        }
+        break;
+    }
+    case 2: {
+        TRPOKE_ITEM_DFLTMOVES *trpoke_ = &trpoke->species_item;
+        for (i = 0; i < trdata.data.npoke; ++i) {
+            teamSpecies[i] = trpoke_[i].species;
+        }
+        break;
+    }
+    case 3: {
+        TRPOKE_ITEM_CUSTMOVES *trpoke_ = &trpoke->species_item_moves;
+        for (i = 0; i < trdata.data.npoke; ++i) {
+            teamSpecies[i] = trpoke_[i].species;
+        }
+        break;
+    }
+    default:
+        FreeToHeap(trpoke);
+        return SPECIES_RATTATA;
+    }
+    FreeToHeap(trpoke);
+    return teamSpecies[LCRandom() % trdata.data.npoke];
+}
+
+BOOL ov101_021F2F50(PokegearPhoneApp_Sub0C4 *a0) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+    const PhoneCallScriptDef *scriptDef;
+
+    switch (r4->unk_04) {
+    case 0:
+        ov101_021F2110(a0);
+        ov101_021F2248(a0, ov101_021F2374(r4->unk_1E));
+        BufferSpeciesName(a0->unk_50, 10, ov101_021F2E74(r4->unk_10->trainerId, a0->heapId));
+        BufferSpeciesName(a0->unk_50, 11, ov101_021F2E04(r4->unk_10->mapId, r4->unk_10->trainerClass, r4->unk_23));
+        if (r4->unk_10->unkC == 255) {
+            ++r4->unk_04;
+        }
+        break;
+    case 1:
+        if (!ov101_021F2614(a0)) {
+            return FALSE;
+        }
+        break;
+    case 2:
+        scriptDef = ov101_021F2374(r4->unk_1E);
+        PhoneCallMessagePrint_Gendered(a0, a0->unk_4C, scriptDef->msgIds[0], scriptDef->msgIds[1]);
+        break;
+    default:
+        if (!ov101_021F2220(a0)) {
+            return FALSE;
+        }
+        DestroyMsgData(a0->unk_4C);
+        return TRUE;
+    }
+
+    ++r4->unk_04;
+    return FALSE;
+}
+
+BOOL ov101_021F2FFC(PokegearPhoneApp_Sub0C4 *a0) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+    u8 r5;
+    const PhoneCallScriptDef *scriptDef;
+
+    switch (r4->unk_04) {
+    case 0:
+        ov101_021F2110(a0);
+        ov101_021F2248(a0, ov101_021F2374(r4->unk_1E));
+        if (r4->unk_10->unkC == 255) {
+            ++r4->unk_04;
+        }
+        break;
+    case 1:
+        if (!ov101_021F2614(a0)) {
+            return FALSE;
+        }
+        break;
+    case 2:
+        r5 = LCRandom() % 11;
+        scriptDef = ov101_021F2374(r4->unk_1E);
+        if (scriptDef->msgIds[0] == scriptDef->msgIds[1]) {
+            PhoneCallMessagePrint_Ungendered(a0, a0->unk_4C, scriptDef->msgIds[0] + r5);
+        } else {
+            r5 *= 2;
+            PhoneCallMessagePrint_Gendered(a0, a0->unk_4C, scriptDef->msgIds[0] + r5, scriptDef->msgIds[1] + r5 + 1);
+        }
+        break;
+    default:
+        if (!ov101_021F2220(a0)) {
+            return FALSE;
+        }
+        DestroyMsgData(a0->unk_4C);
+        return TRUE;
+    }
+
+    ++r4->unk_04;
+    return FALSE;
+}
+
+u16 PhoneCall_GetCallScriptId_ProfOak(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1) {
+    Pokedex *pokedex;
+    u16 dexCountParam;
+
+    a1->unk_20 = 0;
+    pokedex = Save_Pokedex_Get(a0->unk_1C);
+    if (a1->unk_1A == 2) {
+        a1->unk_20 = 0;
+        return PHONE_SCRIPT_082;
+    }
+    if (a1->unk_19 != 0) {
+        dexCountParam = Pokedex_CountNationalDexOwned(pokedex) / 50;
+        if (dexCountParam == 0) {
+            dexCountParam = 1;
+        } else if (dexCountParam > 9) {
+            dexCountParam = 9;
+        }
+        return PHONE_SCRIPT_068 + dexCountParam;
+    }
+    if (a1->unk_10->mapId == a0->unk_30) {
+        return PHONE_SCRIPT_068;
+    }
+    if (Save_VarsFlags_CheckFlagInArray(a0->unk_28, FLAG_SYS_OAK_ACKNOWLEDGED_NATIONAL_DEX_COMPLETION)) {
+        return PHONE_SCRIPT_081;
+    }
+    if (!Pokedex_GetNatDexFlag(pokedex) && Save_VarsFlags_CheckFlagInArray(a0->unk_28, FLAG_SYS_OAK_ACKNOWLEDGED_JOHTO_DEX_COMPLETION)) {
+        return PHONE_SCRIPT_080;
+    }
+    a1->unk_20 = 5;
+    return PHONE_SCRIPT_000;
 }

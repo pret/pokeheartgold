@@ -297,16 +297,12 @@ u16 PhoneCall_GetCallScriptId_ProfElm(PokegearPhoneApp_Sub0C4 *a0, PokegearPhone
 u16 ov101_021F2B80(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
 u16 ov101_021F2BC0(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1, int a2);
 BOOL ov101_021F2C78(int a0);
-BOOL ov101_021F2E04(u16 a0, u8 a1, u8 a2);
-BOOL ov101_021F2E74(u16 a0, HeapID a1);
-
+u16 ov101_021F2E04(u16 a0, u8 a1, u8 a2);
+u16 ov101_021F2E74(u16 a0, HeapID a1);
 BOOL ov101_021F2F50(PokegearPhoneApp_Sub0C4 *a0);
-
 BOOL ov101_021F2FFC(PokegearPhoneApp_Sub0C4 *a0);
-
 u16 PhoneCall_GetCallScriptId_ProfOak(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
 BOOL ov101_021F313C(PokegearPhoneApp_Sub0C4 *a0);
-
 u16 ov101_021F342C(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
 BOOL ov101_021F3448(PokegearPhoneApp_Sub0C4 *a0);
 u16 ov101_021F3518(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
