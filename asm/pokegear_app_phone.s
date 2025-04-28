@@ -39,41 +39,6 @@
 	.extern ov101_021F2614
 	.extern ov101_021F2680
 
-	thumb_func_start ov101_021F2B80
-ov101_021F2B80: ; 0x021F2B80
-	push {r3, r4, r5, lr}
-	mov r2, #0
-	strh r2, [r1, #0x20]
-	ldrb r2, [r1, #0x18]
-	ldr r3, _021F2BBC ; =ov101_021F968C
-	lsl r4, r2, #4
-	mov r2, #6
-	mul r2, r4
-	ldrb r4, [r1, #0x19]
-	cmp r4, #0
-	beq _021F2BA2
-	add r1, r3, r2
-	add r1, #0x30
-	mov r2, #8
-	bl ov101_021F2BC0
-	pop {r3, r4, r5, pc}
-_021F2BA2:
-	ldr r5, [r1, #0x10]
-	ldrh r1, [r0, #0x30]
-	ldrh r4, [r5, #6]
-	cmp r4, r1
-	bne _021F2BB0
-	ldrh r0, [r5, #0xa]
-	pop {r3, r4, r5, pc}
-_021F2BB0:
-	add r1, r3, r2
-	mov r2, #8
-	bl ov101_021F2BC0
-	pop {r3, r4, r5, pc}
-	nop
-_021F2BBC: .word ov101_021F968C
-	thumb_func_end ov101_021F2B80
-
 	thumb_func_start ov101_021F2BC0
 ov101_021F2BC0: ; 0x021F2BC0
 	push {r3, r4, r5, r6, r7, lr}

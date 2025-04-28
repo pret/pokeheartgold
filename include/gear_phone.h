@@ -11,7 +11,7 @@ typedef struct PhoneBookEntry {
     u16 trainerId;   // 0x04
     u16 mapId;       // 0x06
     u16 gift;        // 0x08
-    u8 unkA[2];      // 0x0A
+    u16 unkA;        // 0x0A
     u8 unkC;         // 0x0C
     u8 unkD[2];      // 0x0D
     u8 unkF;         // 0x0F

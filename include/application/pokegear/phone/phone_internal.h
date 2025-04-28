@@ -17,6 +17,10 @@ typedef struct UnkStruct_ov101_021F8404 {
     u8 unk_3;       // 0x3
 } UnkStruct_ov101_021F8404;
 
+typedef struct UnkStruct_ov101_021F968C {
+    u8 filler_00[6];
+} UnkStruct_ov101_021F968C;
+
 typedef struct PokegearPhoneAppData PokegearPhoneAppData;
 
 typedef struct PokegearPhoneApp_Sub0D8 PokegearPhoneApp_Sub0D8;
@@ -284,13 +288,11 @@ BOOL ov101_021F2510(PokegearPhoneApp_Sub0C4 *a0);
 BOOL ov101_021F2598(PokegearPhoneApp_Sub0C4 *a0);
 BOOL ov101_021F2614(PokegearPhoneApp_Sub0C4 *a0);
 BOOL ov101_021F2680(PokegearPhoneApp_Sub0C4 *a0);
-
 u16 PhoneCall_GetCallScriptId_Mother(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
 BOOL GearPhoneCall_Mom(PokegearPhoneApp_Sub0C4 *a0);
-
 u16 PhoneCall_GetCallScriptId_ProfElm(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
 u16 ov101_021F2B80(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-u16 ov101_021F2BC0(PokegearPhoneApp_Sub0C4 *a0, const u8 *a1, int a2);
+u16 ov101_021F2BC0(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1, int a2);
 BOOL ov101_021F2C78(int a0);
 BOOL ov101_021F2CAC(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
 BOOL ov101_021F2CB8(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
@@ -335,5 +337,6 @@ u16 ov101_021F4274(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a
 
 extern const TouchscreenHitbox ov101_021F8400;
 extern const UnkStruct_ov101_021F8404 ov101_021F8404[];
+extern const UnkStruct_ov101_021F968C ov101_021F968C[];
 
 #endif // GUARD_POKEHEARTGOLD_APPLICATION_POKEGEAR_PHONE_PHONE_INTERNAL_H
