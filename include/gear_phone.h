@@ -13,7 +13,8 @@ typedef struct PhoneBookEntry {
     u16 gift;        // 0x08
     u16 unkA;        // 0x0A
     u8 unkC;         // 0x0C
-    u8 unkD[2];      // 0x0D
+    u8 unkD;         // 0x0D
+    u8 unkE;         // 0xE
     u8 unkF;         // 0x0F
     u8 unk10[4];     // 0x10
 } PhoneBookEntry;

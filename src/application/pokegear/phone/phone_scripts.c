@@ -1,5 +1,7 @@
 #include "global.h"
 
+#include "constants/maps.h"
+
 #include "application/pokegear/phone/phone_internal.h"
 #include "msgdata/msg/msg_0664.h"
 #include "msgdata/msg/msg_0716.h"
@@ -11,6 +13,13 @@
 
 u16 MomCallGetIntroMsgByLocation(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
 int MomCallGetSaveMoneyPromptMsg(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+BOOL ov101_021F2CAC(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1);
+BOOL ov101_021F2CB8(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1);
+BOOL ov101_021F2D10(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1);
+BOOL ov101_021F2D48(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1);
+BOOL ov101_021F2D90(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1);
+BOOL ov101_021F2DC8(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1);
+BOOL ov101_021F2DE8(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1);
 
 u16 PhoneCall_GetCallScriptId_Mother(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1) {
     a1->unk_20 = 0;
@@ -219,4 +228,132 @@ u16 ov101_021F2B80(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a
     } else {
         return ov101_021F2BC0(a0, &r2[0], 8);
     }
+}
+
+u16 ov101_021F2BC0(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1, int a2) {
+    int i;
+    BOOL r0;
+    PokegearPhoneApp_Sub0C4_Sub88 *sp0 = &a0->unk_88;
+    const UnkStruct_ov101_021F968C *r4 = a1;
+
+    for (i = 0; i < a2; ++i) {
+        if (r4->unk_0 == 255 || r4->unk_0 == 0) {
+            break;
+        }
+        switch (r4->unk_0) {
+        case 2:
+            r0 = ov101_021F2CB8(a0, r4);
+            break;
+        case 7:
+            r0 = ov101_021F2D48(a0, r4);
+            break;
+        case 8:
+            r0 = ov101_021F2D90(a0, r4);
+            break;
+        case 3:
+            r0 = ov101_021F2D10(a0, r4);
+            break;
+        case 4:
+            r0 = ov101_021F2DC8(a0, r4);
+            break;
+        case 5:
+            r0 = ov101_021F2DE8(a0, r4);
+            break;
+        default:
+            r0 = ov101_021F2CAC(a0, r4);
+            break;
+        }
+        if (r0) {
+            sp0->unk_20 = r4->unk_2;
+            return r4->unk_4;
+        }
+        a1 = r4++;
+    }
+    if (a1->unk_0 == 255 || a1->unk_0 == 0) {
+        sp0->unk_20 = 0;
+        return PHONE_SCRIPT_000;
+    }
+
+    sp0->unk_20 = a1->unk_2;
+    return a1->unk_4;
+}
+
+BOOL ov101_021F2C78(int a0) {
+    int r2 = MTRandom() ^ MTRandom();
+    u16 r0 = (u16)r2;
+    r0 ^= (r2 >> 8);
+    r0 %= 100;
+    return r0 <= a0;
+}
+
+BOOL ov101_021F2CAC(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1) {
+    return ov101_021F2C78(a1->unk_1);
+}
+
+BOOL ov101_021F2CB8(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r6 = &a0->unk_88;
+
+    if (PhoneRematches_IsSeeking(a0->unk_20, r6->unk_18)) {
+        return FALSE;
+    }
+    if (PhoneRematches_GiftItemIdGet(a0->unk_20, r6->unk_18)) {
+        return FALSE;
+    }
+    if (!Save_VarsFlags_CheckFlagInArray(a0->unk_28, FLAG_BEAT_RADIO_TOWER_ROCKETS) && a1->unk_2 == 0 && ov101_021F2374(a1->unk_4)->unk_2_0 == 3) {
+        return FALSE;
+    }
+    return ov101_021F2C78(a1->unk_1);
+}
+
+BOOL ov101_021F2D10(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+
+    if (!Save_VarsFlags_CheckFlagInArray(a0->unk_28, FLAG_BEAT_RADIO_TOWER_ROCKETS)) {
+        return FALSE;
+    }
+    if (r4->unk_28.week != r4->unk_10->unkD || r4->unk_23 != r4->unk_10->unkE) {
+        return FALSE;
+    }
+    return ov101_021F2C78(a1->unk_1);
+}
+
+BOOL ov101_021F2D48(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+
+    if (!Save_VarsFlags_CheckFlagInArray(a0->unk_28, FLAG_BEAT_RADIO_TOWER_ROCKETS)) {
+        return FALSE;
+    }
+    if (r4->unk_10->mapId == MAP_NATIONAL_PARK && Save_VarsFlags_CheckBugContestFlag(a0->unk_28)) {
+        return FALSE;
+    }
+    if (!PhoneRematches_IsSeeking(a0->unk_20, r4->unk_18)) {
+        return FALSE;
+    }
+    return ov101_021F2C78(a1->unk_1);
+}
+
+BOOL ov101_021F2D90(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+
+    if (r4->unk_10->mapId == MAP_NATIONAL_PARK && Save_VarsFlags_CheckBugContestFlag(a0->unk_28)) {
+        return FALSE;
+    }
+    if (!PhoneRematches_GiftItemIdGet(a0->unk_20, r4->unk_18)) {
+        return FALSE;
+    }
+    return ov101_021F2C78(a1->unk_1);
+}
+
+BOOL ov101_021F2DC8(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1) {
+    if (a0->unk_88.unk_28.week == RTC_WEEK_TUESDAY || a0->unk_88.unk_28.week == RTC_WEEK_THURSDAY || a0->unk_88.unk_28.week == RTC_WEEK_SATURDAY) {
+        return ov101_021F2C78(a1->unk_1);
+    }
+    return FALSE;
+}
+
+BOOL ov101_021F2DE8(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1) {
+    if (Save_VarsFlags_IsInRocketTakeover(a0->unk_28)) {
+        return ov101_021F2C78(a1->unk_1);
+    }
+    return FALSE;
 }

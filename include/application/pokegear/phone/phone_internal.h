@@ -18,7 +18,10 @@ typedef struct UnkStruct_ov101_021F8404 {
 } UnkStruct_ov101_021F8404;
 
 typedef struct UnkStruct_ov101_021F968C {
-    u8 filler_00[6];
+    u8 unk_0;
+    u8 unk_1;
+    u16 unk_2;
+    u16 unk_4;
 } UnkStruct_ov101_021F968C;
 
 typedef struct PokegearPhoneAppData PokegearPhoneAppData;
@@ -294,13 +297,6 @@ u16 PhoneCall_GetCallScriptId_ProfElm(PokegearPhoneApp_Sub0C4 *a0, PokegearPhone
 u16 ov101_021F2B80(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
 u16 ov101_021F2BC0(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1, int a2);
 BOOL ov101_021F2C78(int a0);
-BOOL ov101_021F2CAC(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-BOOL ov101_021F2CB8(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-BOOL ov101_021F2D10(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-BOOL ov101_021F2D48(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-BOOL ov101_021F2D90(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-BOOL ov101_021F2DC8(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-BOOL ov101_021F2DE8(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
 BOOL ov101_021F2E04(u16 a0, u8 a1, u8 a2);
 BOOL ov101_021F2E74(u16 a0, HeapID a1);
 
