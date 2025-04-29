@@ -41,9 +41,9 @@
 .public PlayerAvatar_SetTransitionFlags
 .public PlayerAvatar_GetTransitionFlags
 .public PlayerAvatar_GetGender
-.public sub_0205C74C
-.public sub_0205C78C
-.public sub_0205C790
+.public PlayerAvatar_ClearUnk24ClearFlag2
+.public PlayerAvatar_SetUnk34
+.public PlayerAvatar_GetUnk34
 .public PlayerAvatar_GetSpriteByStateAndGender
 .public PlayerAvatar_CheckFlag0
 .public PlayerAvatar_SetFlag1

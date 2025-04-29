@@ -26,6 +26,8 @@ static void PlayerAvatar_SetGender(PlayerAvatar *avatar, u32 gender);
 static void PlayerAvatar_SetFlagsBits(PlayerAvatar *avatar, PlayerAvatarFlags flags);
 static void PlayerAvatar_ClearFlagsBits(PlayerAvatar *avatar, PlayerAvatarFlags flags);
 static PlayerAvatarFlags PlayerAvatar_GetFlagsBitsMask(PlayerAvatar *avatar, PlayerAvatarFlags flags);
+static void PlayerAvatar_SetUnk28(PlayerAvatar *avatar, s32 param1);
+static void PlayerAvatar_SetUnk2C(PlayerAvatar *avatar, s32 param1);
 
 u32 sub_0205C268(u32 param0) {
     if (param0 < 100) {
@@ -182,7 +184,7 @@ void sub_0205C46C(PlayerAvatar *avatar) {
         u32 x = PlayerAvatar_GetXCoord(avatar);
         u32 z = PlayerAvatar_GetZCoord(avatar);
         u32 direction = PlayerAvatar_GetFacingDirection(avatar);
-        sub_0205C78C(avatar, ov01_021FE7DC(mapObject, x, z, direction, 1));
+        PlayerAvatar_SetUnk34(avatar, ov01_021FE7DC(mapObject, x, z, direction, 1));
     }
 }
 
@@ -209,9 +211,9 @@ static void PlayerAvatar_Setup(PlayerAvatar *avatar, s32 state, u32 gender, Play
     PlayerAvatar_SetState(avatar, state);
     PlayerAvatar_SetGender(avatar, gender);
     PlayerAvatar_SetTransitionFlags(avatar, 0);
-    sub_0205C74C(avatar);
-    sub_0205C768(avatar, -1);
-    sub_0205C770(avatar, -1);
+    PlayerAvatar_ClearUnk24ClearFlag2(avatar);
+    PlayerAvatar_SetUnk28(avatar, -1);
+    PlayerAvatar_SetUnk2C(avatar, -1);
     sub_0205C79C(avatar, 255);
     PlayerAvatar_SetFlag1(avatar, TRUE);
 }
@@ -358,54 +360,54 @@ static PlayerAvatarFlags PlayerAvatar_GetFlagsBitsMask(PlayerAvatar *avatar, Pla
     return (PlayerAvatarFlags)(avatar->flags & flags);
 }
 
-u32 sub_0205C744(PlayerAvatar *avatar) {
+s32 PlayerAvatar_GetUnk24(PlayerAvatar *avatar) {
     return avatar->unk24;
 }
 
-void sub_0205C748(PlayerAvatar *avatar, u32 unkA) {
-    avatar->unk24 = unkA;
+void PlayerAvatar_SetUnk24(PlayerAvatar *avatar, s32 param1) {
+    avatar->unk24 = param1;
 }
 
-void sub_0205C74C(PlayerAvatar *avatar) {
+void PlayerAvatar_ClearUnk24ClearFlag2(PlayerAvatar *avatar) {
     avatar->unk24 = 0;
     PlayerAvatar_SetFlag2(avatar, FALSE);
 }
 
-int sub_0205C758(PlayerAvatar *avatar, int unkB, int unkC) {
-    int var = avatar->unk24 + unkB;
+s32 PlayerAvatar_Unk24AddWithCeiling(PlayerAvatar *avatar, s32 param1, s32 param2) {
+    s32 var = avatar->unk24 + param1;
     avatar->unk24 = var;
-    if (var > unkC) {
-        avatar->unk24 = unkC;
+    if (var > param2) {
+        avatar->unk24 = param2;
     }
     return avatar->unk24;
 }
 
-void sub_0205C768(PlayerAvatar *avatar, int unkA) {
-    avatar->unk28 = unkA;
+static void PlayerAvatar_SetUnk28(PlayerAvatar *avatar, s32 param1) {
+    avatar->unk28 = param1;
 }
 
-int sub_0205C76C(PlayerAvatar *avatar) {
+s32 PlayerAvatar_GetUnk28(PlayerAvatar *avatar) {
     return avatar->unk28;
 }
 
-void sub_0205C770(PlayerAvatar *avatar, int unkA) {
-    avatar->unk2c = unkA;
+static void PlayerAvatar_SetUnk2C(PlayerAvatar *avatar, s32 param1) {
+    avatar->unk2C = param1;
 }
 
-int sub_0205C774(PlayerAvatar *avatar) {
-    return avatar->unk2c;
+s32 PlayerAvatar_GetUnk2C(PlayerAvatar *avatar) {
+    return avatar->unk2C;
 }
 
-void sub_0205C778(PlayerAvatar *avatar, int unkB, int unkC) {
-    sub_0205C768(avatar, unkB);
-    sub_0205C770(avatar, unkC);
+void PlayerAvatar_SetUnk28Unk2C(PlayerAvatar *avatar, s32 unk28, s32 unk2C) {
+    PlayerAvatar_SetUnk28(avatar, unk28);
+    PlayerAvatar_SetUnk2C(avatar, unk2C);
 }
 
-void sub_0205C78C(PlayerAvatar *avatar, u32 unkA) {
-    avatar->unk34 = unkA;
+void PlayerAvatar_SetUnk34(PlayerAvatar *avatar, u32 param1) {
+    avatar->unk34 = param1;
 }
 
-u32 sub_0205C790(PlayerAvatar *avatar) {
+u32 PlayerAvatar_GetUnk34(PlayerAvatar *avatar) {
     return avatar->unk34;
 }
 

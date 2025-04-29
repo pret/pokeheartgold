@@ -66,16 +66,16 @@ ov01_021F1B38: ; 0x021F1B38
 	mov r1, #0
 	bl PlayerAvatar_SetState
 	add r0, r4, #0
-	bl sub_0205C74C
+	bl PlayerAvatar_ClearUnk24ClearFlag2
 	add r0, r4, #0
-	bl sub_0205C790
+	bl PlayerAvatar_GetUnk34
 	cmp r0, #0
 	beq _021F1B6C
 	bl ov01_021F1640
 _021F1B6C:
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205C78C
+	bl PlayerAvatar_SetUnk34
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021F1B38
@@ -95,16 +95,16 @@ ov01_021F1B78: ; 0x021F1B78
 	mov r1, #1
 	bl PlayerAvatar_SetState
 	add r0, r4, #0
-	bl sub_0205C74C
+	bl PlayerAvatar_ClearUnk24ClearFlag2
 	add r0, r4, #0
-	bl sub_0205C790
+	bl PlayerAvatar_GetUnk34
 	cmp r0, #0
 	beq _021F1BAC
 	bl ov01_021F1640
 _021F1BAC:
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205C78C
+	bl PlayerAvatar_SetUnk34
 	ldr r0, _021F1BBC ; =SEQ_SE_DP_JITENSYA
 	bl PlaySE
 	pop {r4, pc}
@@ -128,16 +128,16 @@ ov01_021F1BC0: ; 0x021F1BC0
 	mov r1, #2
 	bl PlayerAvatar_SetState
 	add r0, r5, #0
-	bl sub_0205C74C
+	bl PlayerAvatar_ClearUnk24ClearFlag2
 	add r0, r5, #0
-	bl sub_0205C790
+	bl PlayerAvatar_GetUnk34
 	cmp r0, #0
 	beq _021F1BF6
 	bl ov01_021F1640
 _021F1BF6:
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205C78C
+	bl PlayerAvatar_SetUnk34
 	add r0, r5, #0
 	bl PlayerAvatar_GetFacingDirection
 	add r4, r0, #0
@@ -154,7 +154,7 @@ _021F1BF6:
 	bl ov01_021FE7DC
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0205C78C
+	bl PlayerAvatar_SetUnk34
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -175,16 +175,16 @@ ov01_021F1C30: ; 0x021F1C30
 	mov r1, #3
 	bl PlayerAvatar_SetState
 	add r0, r4, #0
-	bl sub_0205C74C
+	bl PlayerAvatar_ClearUnk24ClearFlag2
 	add r0, r4, #0
-	bl sub_0205C790
+	bl PlayerAvatar_GetUnk34
 	cmp r0, #0
 	beq _021F1C64
 	bl ov01_021F1640
 _021F1C64:
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205C78C
+	bl PlayerAvatar_SetUnk34
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021F1C30
@@ -964,7 +964,7 @@ _021F222A:
 	str r0, [r4, #0x28]
 	ldr r0, [r4, #0x20]
 	ldr r1, [r4, #0x28]
-	bl sub_0205C78C
+	bl PlayerAvatar_SetUnk34
 	ldr r0, [r4, #0x20]
 	mov r1, #2
 	bl PlayerAvatar_SetState
@@ -1111,7 +1111,7 @@ ov01_021F2378: ; 0x021F2378
 	bl PlayerAvatar_GetMapObject
 	str r0, [r4, #0x10]
 	add r0, r7, #0
-	bl sub_0205C790
+	bl PlayerAvatar_GetUnk34
 	str r0, [r4, #0x14]
 	cmp r0, #0
 	bne _021F23A6
@@ -1178,7 +1178,7 @@ _021F2412:
 	bl ov01_021F1640
 	ldr r0, [r4, #0xc]
 	mov r1, #0
-	bl sub_0205C78C
+	bl PlayerAvatar_SetUnk34
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	bl PlayerAvatar_SetState
