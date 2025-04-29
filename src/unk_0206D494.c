@@ -260,7 +260,7 @@ static void sub_0206D850(PlayerAvatar *playerAvatar) {
     if (PlayerAvatar_CheckFlag0(playerAvatar) == TRUE) {
         MapObject_ClearFlagsBits(PlayerAvatar_GetMapObject(playerAvatar), (MapObjectFlagBits)(MAPOBJECTFLAG_UNK7 | MAPOBJECTFLAG_UNK8));
         if (PlayerAvatar_CheckFlag7(playerAvatar) == 0) {
-            sub_0205C74C(playerAvatar);
+            PlayerAvatar_ClearUnk24ClearFlag2(playerAvatar);
         }
         PlayerAvatar_SetFlag0(playerAvatar, 0);
         PlayerAvatar_SetFlag7(playerAvatar, 0);

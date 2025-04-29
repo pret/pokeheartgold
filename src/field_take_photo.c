@@ -828,11 +828,11 @@ static void sub_0206B82C(PlayerAvatar *playerAvatar, u8 state, u8 gender) {
     sub_0205E420(mapObject);
     ov01_021FA108(mapObjectManager, gfxId, mapObject);
     sub_0205E38C(mapObject, spriteId);
-    int r0 = sub_0205C790(playerAvatar);
+    int r0 = PlayerAvatar_GetUnk34(playerAvatar);
     if (r0 != 0) {
         ov01_021F1640(r0);
     }
-    sub_0205C78C(playerAvatar, 0);
+    PlayerAvatar_SetUnk34(playerAvatar, 0);
 }
 
 static void sub_0206B880(FieldSystem *fieldSystem, Photo *photo) {
