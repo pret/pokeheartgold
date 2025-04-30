@@ -4,6 +4,7 @@
 
 #include "application/pokegear/phone/phone_internal.h"
 #include "msgdata/msg/msg_0664.h"
+#include "msgdata/msg/msg_0666.h"
 #include "msgdata/msg/msg_0716.h"
 
 #include "encounter.h"
@@ -12,6 +13,8 @@
 #include "math_util.h"
 #include "sys_flags.h"
 #include "sys_vars.h"
+#include "unk_02005D10.h"
+#include "unk_0205BB1C.h"
 
 u16 MomCallGetIntroMsgByLocation(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
 int MomCallGetSaveMoneyPromptMsg(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
@@ -542,4 +545,123 @@ u16 PhoneCall_GetCallScriptId_ProfOak(PokegearPhoneApp_Sub0C4 *a0, PokegearPhone
     }
     a1->unk_20 = 5;
     return PHONE_SCRIPT_000;
+}
+
+BOOL ov101_021F313C(PokegearPhoneApp_Sub0C4 *a0) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+    Pokedex *pokedex;
+    int r6;
+    u16 r7;
+    u16 r6_2;
+    u16 sp8;
+    BOOL r6_3;
+
+    switch (r4->unk_04) {
+    case 0:
+        ov101_021F2110(a0);
+        pokedex = Save_Pokedex_Get(a0->unk_1C);
+        r4->unk_4D_0 = Pokedex_GetNatDexFlag(pokedex);
+        r4->unk_4D_1 = Pokedex_JohtoDexIsComplete(pokedex);
+        r4->unk_4D_2 = Pokedex_NationalDexIsComplete(pokedex);
+        r4->unk_50 = pokedex;
+        PhoneCallMessagePrint_Gendered(a0, a0->unk_4C, msg_0666_00013, msg_0666_00014);
+        break;
+    case 1:
+        if (!ov101_021F2220(a0)) {
+            return FALSE;
+        }
+        PhoneCallMessagePrint_Ungendered(a0, a0->unk_4C, msg_0666_00015);
+        break;
+    case 2:
+        if (!ov101_021F2220(a0)) {
+            return FALSE;
+        }
+        if (r4->unk_4D_0) {
+            if (Save_VarsFlags_CheckFlagInArray(a0->unk_28, FLAG_SYS_OAK_ACKNOWLEDGED_JOHTO_DEX_COMPLETION)) {
+                r4->unk_4A = 2;
+            } else {
+                r4->unk_4A = 1;
+            }
+        } else {
+            r4->unk_4A = 0;
+        }
+        ov101_021F2308(a0, msg_0666_00003 + r4->unk_4A);
+        break;
+    case 3:
+        r6 = ov101_021F2338(a0);
+        if (r6 == -1) {
+            return FALSE;
+        }
+        ov101_021F2344(a0);
+        if (r6 == 0) {
+            if (r4->unk_4A == 2) {
+                r4->unk_4D_3 = TRUE;
+            } else {
+                r4->unk_4D_3 = FALSE;
+            }
+        } else if (r6 == 1 && r4->unk_4A == 1) {
+            r4->unk_4D_3 = TRUE;
+        } else {
+            PhoneCallMessagePrint_Ungendered(a0, a0->unk_4C, msg_0666_00021);
+            r4->unk_04 = 255;
+            return FALSE;
+        }
+        if (!r4->unk_4D_3) {
+            r7 = Pokedex_CountJohtoDexSeen(r4->unk_50);
+            r6_2 = Pokedex_CountJohtoDexOwned(r4->unk_50);
+        } else {
+            r7 = Pokedex_CountNationalDexSeen(r4->unk_50);
+            r6_2 = Pokedex_CountNationalDexOwned(r4->unk_50);
+        }
+        BufferIntegerAsString(a0->unk_50, 5, r7, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        BufferIntegerAsString(a0->unk_50, 6, r6_2, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        PhoneCallMessagePrint_Ungendered(a0, a0->unk_4C, msg_0666_00020);
+        break;
+    case 4:
+        if (!ov101_021F2220(a0)) {
+            return FALSE;
+        }
+        r6_3 = FALSE;
+        if (!r4->unk_4D_3) {
+            r7 = sub_0205BBD0(Pokedex_CountJohtoOwned_ExcludeMythical(r4->unk_50), a0->unk_36, &sp8);
+            if (r4->unk_4D_1) {
+                Save_VarsFlags_SetFlagInArray(a0->unk_28, FLAG_SYS_OAK_ACKNOWLEDGED_JOHTO_DEX_COMPLETION);
+                r6_3 = TRUE;
+            }
+        } else {
+            r7 = sub_0205BC78(Pokedex_CountNationalOwned_ExcludeMythical(r4->unk_50), a0->unk_36, &sp8);
+            if (r4->unk_4D_2) {
+                Save_VarsFlags_SetFlagInArray(a0->unk_28, FLAG_SYS_OAK_ACKNOWLEDGED_NATIONAL_DEX_COMPLETION);
+                r6_3 = TRUE;
+            }
+        }
+        PlayFanfare(sp8);
+        PhoneCallMessagePrint_Ungendered(a0, a0->unk_4C, r7);
+        if (r6_3) {
+            r4->unk_04 = 255;
+            return FALSE;
+        }
+        break;
+    case 5:
+        if (!ov101_021F2220(a0)) {
+            return FALSE;
+        }
+        if (IsFanfarePlaying()) {
+            return FALSE;
+        }
+        PhoneCallMessagePrint_Ungendered(a0, a0->unk_4C, msg_0666_00021);
+        break;
+    default:
+        if (!ov101_021F2220(a0)) {
+            return FALSE;
+        }
+        if (r4->unk_04 == 255 && IsFanfarePlaying()) {
+            return FALSE;
+        }
+        DestroyMsgData(a0->unk_4C);
+        return TRUE;
+    }
+
+    ++r4->unk_04;
+    return FALSE;
 }

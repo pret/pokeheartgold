@@ -282,7 +282,7 @@ void ov101_021F2248(PokegearPhoneApp_Sub0C4 *a0, const PhoneCallScriptDef *a1) {
     }
 }
 
-void ov101_021F2308(PokegearPhoneApp_Sub0C4 *a0, int a1) {
+void ov101_021F2308(PokegearPhoneApp_Sub0C4 *a0, u8 a1) {
     ov101_021F0ACC(a0->unk_04, 2, 1);
     a0->unk_14 = ov101_021F09B0(a0->unk_04, 0, a1);
     Sprite_SetVisibleFlag(a0->unk_40, FALSE);

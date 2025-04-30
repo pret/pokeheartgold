@@ -78,10 +78,14 @@ typedef struct PokegearPhoneApp_Sub0C4_Sub88 {
     RTCDate unk_28;                   // 0x28
     RTCTime unk_38;                   // 0x38
     u32 unk_44;                       // 0x44
-    u8 filler_48[0x5];                // 0x48
+    u8 filler_48[2];                  // 0x48
+    u8 unk_4A;                        // 0x4A
+    u8 filler_4B[2];                  // 0x4B
     u8 unk_4D_0 : 1;                  // 0x4D
     u8 unk_4D_1 : 1;                  // 0x4D
-    u8 filler_4E[6];                  // 0x4E
+    u8 unk_4D_2 : 1;                  // 0x4D
+    u8 unk_4D_3 : 1;                  // 0x4D
+    Pokedex *unk_50;                  // 0x50
 } PokegearPhoneApp_Sub0C4_Sub88;      // size: 0x54
 
 typedef struct PokegearPhoneApp_Sub0C4 {
@@ -279,7 +283,7 @@ void PhoneCallMessagePrint_Gendered(PokegearPhoneApp_Sub0C4 *a0, MsgData *msgDat
 void PhoneCallMessagePrint_Ungendered(PokegearPhoneApp_Sub0C4 *a0, MsgData *msgData, u8 msgId);
 BOOL ov101_021F2220(PokegearPhoneApp_Sub0C4 *a0);
 void ov101_021F2248(PokegearPhoneApp_Sub0C4 *a0, const PhoneCallScriptDef *a1);
-void ov101_021F2308(PokegearPhoneApp_Sub0C4 *a0, int a1);
+void ov101_021F2308(PokegearPhoneApp_Sub0C4 *a0, u8 a1);
 int ov101_021F2338(PokegearPhoneApp_Sub0C4 *a0);
 void ov101_021F2344(PokegearPhoneApp_Sub0C4 *a0);
 const PhoneCallScriptDef *ov101_021F2374(int a0);

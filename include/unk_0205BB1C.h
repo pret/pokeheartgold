@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_UNK_0205BB1C_H
 #define POKEHEARTGOLD_UNK_0205BB1C_H
 
+#include "field_types_def.h"
 #include "save.h"
 
 u16 Save_GetPartyLead(SaveData *saveData);
