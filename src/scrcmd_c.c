@@ -2557,9 +2557,9 @@ BOOL ScrCmd_GetDexEvalResult(ScriptContext *ctx) {
     u16 *p_ret2 = ScriptGetVarPointer(ctx);
 
     if (kind == 0) {
-        *p_ret = sub_0205BBD0(Pokedex_CountJohtoOwned_ExcludeMythical(pokedex), PlayerProfile_GetTrainerGender(profile), p_ret2);
+        *p_ret = GetOakJohtoDexRating(Pokedex_CountJohtoOwned_ExcludeMythical(pokedex), PlayerProfile_GetTrainerGender(profile), p_ret2);
     } else {
-        *p_ret = sub_0205BC78(Pokedex_CountNationalOwned_ExcludeMythical(pokedex), PlayerProfile_GetTrainerGender(profile), p_ret2);
+        *p_ret = GetOakNationalDexRating(Pokedex_CountNationalOwned_ExcludeMythical(pokedex), PlayerProfile_GetTrainerGender(profile), p_ret2);
     }
     return FALSE;
 }

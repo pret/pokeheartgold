@@ -252,8 +252,8 @@
 .public Save_VarsFlags_CheckFlagInArray
 .public Save_VarsFlags_SetFlagInArray
 .public Save_VarsFlags_ClearFlagInArray
-.public sub_0205BBD0
-.public sub_0205BC78
+.public GetOakJohtoDexRating
+.public GetOakNationalDexRating
 .public sub_0205C7EC
 .public CheckGameClearFlag
 .public Save_VarsFlags_MomsSavingsFlagAction

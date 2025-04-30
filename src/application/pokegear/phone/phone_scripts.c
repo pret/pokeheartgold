@@ -623,13 +623,13 @@ BOOL ov101_021F313C(PokegearPhoneApp_Sub0C4 *a0) {
         }
         r6_3 = FALSE;
         if (!r4->unk_4D_3) {
-            r7 = sub_0205BBD0(Pokedex_CountJohtoOwned_ExcludeMythical(r4->unk_50), a0->unk_36, &sp8);
+            r7 = GetOakJohtoDexRating(Pokedex_CountJohtoOwned_ExcludeMythical(r4->unk_50), a0->unk_36, &sp8);
             if (r4->unk_4D_1) {
                 Save_VarsFlags_SetFlagInArray(a0->unk_28, FLAG_SYS_OAK_ACKNOWLEDGED_JOHTO_DEX_COMPLETION);
                 r6_3 = TRUE;
             }
         } else {
-            r7 = sub_0205BC78(Pokedex_CountNationalOwned_ExcludeMythical(r4->unk_50), a0->unk_36, &sp8);
+            r7 = GetOakNationalDexRating(Pokedex_CountNationalOwned_ExcludeMythical(r4->unk_50), a0->unk_36, &sp8);
             if (r4->unk_4D_2) {
                 Save_VarsFlags_SetFlagInArray(a0->unk_28, FLAG_SYS_OAK_ACKNOWLEDGED_NATIONAL_DEX_COMPLETION);
                 r6_3 = TRUE;

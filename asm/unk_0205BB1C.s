@@ -1,4 +1,6 @@
 #include "constants/species.h"
+#include "constants/sndseq.h"
+#include "msgdata/msg/msg_0666.h"
 	.include "asm/macros.inc"
 	.include "unk_0205BB1C.inc"
 	.include "global.inc"
@@ -107,139 +109,139 @@ _0205BBCA:
 	.balign 4, 0
 	thumb_func_end ItemIsTMOrHM
 
-	thumb_func_start sub_0205BBD0
-sub_0205BBD0: ; 0x0205BBD0
-	ldr r3, _0205BC74 ; =0x000004AA
+	thumb_func_start GetOakJohtoDexRating
+GetOakJohtoDexRating: ; 0x0205BBD0
+	ldr r3, _0205BC74 ; =SEQ_ME_HYOUKA1
 	cmp r0, #9
 	strh r3, [r2]
 	bhi _0205BBDC
-	mov r0, #0x1c
+	mov r0, #msg_0666_00028
 	bx lr
 _0205BBDC:
 	cmp r0, #0x13
 	bhi _0205BBE4
-	mov r0, #0x1d
+	mov r0, #msg_0666_00029
 	bx lr
 _0205BBE4:
 	cmp r0, #0x22
 	bhi _0205BBEC
-	mov r0, #0x1e
+	mov r0, #msg_0666_00030
 	bx lr
 _0205BBEC:
 	cmp r0, #0x31
 	bhi _0205BBF4
-	mov r0, #0x1f
+	mov r0, #msg_0666_00031
 	bx lr
 _0205BBF4:
 	cmp r0, #0x40
 	bhi _0205BBFC
-	mov r0, #0x20
+	mov r0, #msg_0666_00032
 	bx lr
 _0205BBFC:
 	cmp r0, #0x4f
 	bhi _0205BC04
-	mov r0, #0x21
+	mov r0, #msg_0666_00033
 	bx lr
 _0205BC04:
 	cmp r0, #0x5e
 	bhi _0205BC0C
-	mov r0, #0x22
+	mov r0, #msg_0666_00034
 	bx lr
 _0205BC0C:
 	cmp r0, #0x6d
 	bhi _0205BC14
-	mov r0, #0x23
+	mov r0, #msg_0666_00035
 	bx lr
 _0205BC14:
 	cmp r0, #0x7c
 	bhi _0205BC1C
-	mov r0, #0x24
+	mov r0, #msg_0666_00036
 	bx lr
 _0205BC1C:
 	cmp r0, #0x8b
 	bhi _0205BC24
-	mov r0, #0x25
+	mov r0, #msg_0666_00037
 	bx lr
 _0205BC24:
 	cmp r0, #0x9a
 	bhi _0205BC2C
-	mov r0, #0x26
+	mov r0, #msg_0666_00038
 	bx lr
 _0205BC2C:
 	cmp r0, #0xa9
 	bhi _0205BC34
-	mov r0, #0x27
+	mov r0, #msg_0666_00039
 	bx lr
 _0205BC34:
 	cmp r0, #0xb8
 	bhi _0205BC3C
-	mov r0, #0x28
+	mov r0, #msg_0666_00040
 	bx lr
 _0205BC3C:
 	cmp r0, #0xc7
 	bhi _0205BC44
-	mov r0, #0x29
+	mov r0, #msg_0666_00041
 	bx lr
 _0205BC44:
 	cmp r0, #0xd6
 	bhi _0205BC4C
-	mov r0, #0x2a
+	mov r0, #msg_0666_00042
 	bx lr
 _0205BC4C:
 	cmp r0, #0xe5
 	bhi _0205BC54
-	mov r0, #0x2b
+	mov r0, #msg_0666_00043
 	bx lr
 _0205BC54:
 	cmp r0, #0xf4
 	bhi _0205BC5C
-	mov r0, #0x2c
+	mov r0, #msg_0666_00044
 	bx lr
 _0205BC5C:
 	cmp r0, #0xfd
 	bhi _0205BC64
-	mov r0, #0x2d
+	mov r0, #msg_0666_00045
 	bx lr
 _0205BC64:
-	add r0, r3, #5
+	add r0, r3, #SEQ_ME_HYOUKA6 - SEQ_ME_HYOUKA1
 	strh r0, [r2]
 	cmp r1, #0
 	beq _0205BC70
-	mov r0, #0x17
+	mov r0, #msg_0666_00023
 	bx lr
 _0205BC70:
-	mov r0, #0x16
+	mov r0, #msg_0666_00022
 	bx lr
 	.balign 4, 0
-_0205BC74: .word 0x000004AA
-	thumb_func_end sub_0205BBD0
+_0205BC74: .word SEQ_ME_HYOUKA1
+	thumb_func_end GetOakJohtoDexRating
 
-	thumb_func_start sub_0205BC78
-sub_0205BC78: ; 0x0205BC78
+	thumb_func_start GetOakNationalDexRating
+GetOakNationalDexRating: ; 0x0205BC78
 	push {r4, r5}
-	ldr r4, _0205BD1C ; =0x000004AA
+	ldr r4, _0205BD1C ; =SEQ_ME_HYOUKA1
 	cmp r0, #0x64
 	strh r4, [r2]
 	bhi _0205BC88
-	mov r0, #0x2e
+	mov r0, #msg_0666_00046
 	pop {r4, r5}
 	bx lr
 _0205BC88:
 	cmp r0, #0x96
 	bhi _0205BC92
-	mov r0, #0x2f
+	mov r0, #msg_0666_00047
 	pop {r4, r5}
 	bx lr
 _0205BC92:
 	cmp r0, #0xc8
 	bhi _0205BC9C
-	mov r0, #0x30
+	mov r0, #msg_0666_00048
 	pop {r4, r5}
 	bx lr
 _0205BC9C:
 	cmp r0, #0xfa
 	bhi _0205BCA6
-	mov r0, #0x31
+	mov r0, #msg_0666_00049
 	pop {r4, r5}
 	bx lr
 _0205BCA6:
@@ -247,7 +249,7 @@ _0205BCA6:
 	lsl r3, r3, #2
 	cmp r0, r3
 	bhi _0205BCB4
-	mov r0, #0x32
+	mov r0, #msg_0666_00050
 	pop {r4, r5}
 	bx lr
 _0205BCB4:
@@ -255,7 +257,7 @@ _0205BCB4:
 	add r5, #0x32
 	cmp r0, r5
 	bhi _0205BCC2
-	mov r0, #0x33
+	mov r0, #msg_0666_00051
 	pop {r4, r5}
 	bx lr
 _0205BCC2:
@@ -263,7 +265,7 @@ _0205BCC2:
 	add r5, #0x64
 	cmp r0, r5
 	bhi _0205BCD0
-	mov r0, #0x34
+	mov r0, #msg_0666_00052
 	pop {r4, r5}
 	bx lr
 _0205BCD0:
@@ -271,7 +273,7 @@ _0205BCD0:
 	add r5, #0x87
 	cmp r0, r5
 	bhi _0205BCDE
-	mov r0, #0x35
+	mov r0, #msg_0666_00053
 	pop {r4, r5}
 	bx lr
 _0205BCDE:
@@ -279,7 +281,7 @@ _0205BCDE:
 	add r5, #0xa5
 	cmp r0, r5
 	bhi _0205BCEC
-	mov r0, #0x36
+	mov r0, #msg_0666_00054
 	pop {r4, r5}
 	bx lr
 _0205BCEC:
@@ -287,31 +289,31 @@ _0205BCEC:
 	add r5, #0xaf
 	cmp r0, r5
 	bhi _0205BCFA
-	mov r0, #0x37
+	mov r0, #msg_0666_00055
 	pop {r4, r5}
 	bx lr
 _0205BCFA:
 	add r3, #0xb7
 	cmp r0, r3
 	bhi _0205BD06
-	mov r0, #0x38
+	mov r0, #msg_0666_00056
 	pop {r4, r5}
 	bx lr
 _0205BD06:
-	add r0, r4, #5
+	add r0, r4, #SEQ_ME_HYOUKA6 - SEQ_ME_HYOUKA1
 	strh r0, [r2]
 	cmp r1, #0
 	beq _0205BD14
-	mov r0, #0x19
+	mov r0, #msg_0666_00025
 	pop {r4, r5}
 	bx lr
 _0205BD14:
-	mov r0, #0x18
+	mov r0, #msg_0666_00024
 	pop {r4, r5}
 	bx lr
 	nop
-_0205BD1C: .word 0x000004AA
-	thumb_func_end sub_0205BC78
+_0205BD1C: .word SEQ_ME_HYOUKA1
+	thumb_func_end GetOakNationalDexRating
 
 	thumb_func_start Save_GetPartyLead
 Save_GetPartyLead: ; 0x0205BD20
