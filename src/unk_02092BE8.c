@@ -227,7 +227,7 @@ static void gearRingingManagerReset(GearPhoneRingManager *ptr) {
     ptr->unk_var3 = 0;
     ptr->unk_var4 = 0;
     ptr->unk_var7 = 0;
-    ptr->entry.unk0 = 0xff;
+    ptr->entry.id = 0xff;
     ptr->unk_var12 = 50;
 }
 

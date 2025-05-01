@@ -4678,10 +4678,10 @@ BOOL ScrCmd_GetPhoneContactMsgIds(ScriptContext *ctx) {
     u16 *sp0 = ScriptGetVarPointer(ctx);
     u16 *p_ret_msg = ScriptGetVarPointer(ctx);
     PhoneBookEntry *entry = sub_02092E10(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
-    *sp0 = GetPhoneMessageGmm(entry->unk0);
+    *sp0 = GetPhoneMessageGmm(entry->id);
     u16 r5, p_ret_gmm;
 
-    if (entry->unk0 == 0xFF) {
+    if (entry->id == 0xFF) {
         *p_ret_msg = 0;
         return TRUE;
     }
@@ -4722,8 +4722,8 @@ BOOL ScrCmd_GetPhoneContactGiftItem(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     PhoneBookEntry *entry = sub_02092E10(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
     MomsSavings *momsSavings = SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData);
-    *p_ret = PhoneRematches_GiftItemIdGet(momsSavings, entry->unk0);
-    PhoneRematches_GiftItemIdSet(momsSavings, entry->unk0, ITEM_NONE);
+    *p_ret = PhoneRematches_GiftItemIdGet(momsSavings, entry->id);
+    PhoneRematches_GiftItemIdSet(momsSavings, entry->id, ITEM_NONE);
     return FALSE;
 }
 

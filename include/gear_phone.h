@@ -4,8 +4,8 @@
 #include "heap.h"
 
 typedef struct PhoneBookEntry {
-    u8 unk0;         // 0x00
-    u8 unk1;         // 0x01
+    u8 id;           // 0x00
+    u8 type;         // 0x01
     u8 unk2;         // 0x02
     u8 trainerClass; // 0x03
     u16 trainerId;   // 0x04
@@ -16,7 +16,7 @@ typedef struct PhoneBookEntry {
     u8 unkD;         // 0x0D
     u8 unkE;         // 0xE
     u8 unkF;         // 0x0F
-    u8 unk10[4];     // 0x10
+    u8 sortParam[4]; // 0x10
 } PhoneBookEntry;
 
 typedef struct PhoneBook {

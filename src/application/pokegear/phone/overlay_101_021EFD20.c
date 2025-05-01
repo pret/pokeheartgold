@@ -146,11 +146,11 @@ BOOL ov101_021EFFC8(PokegearPhoneAppData *phoneApp) {
     BOOL r4;
 
     if (phoneApp->unk_0CB) {
-        r4 = PhoneCall_CheckMapPermissionAndGetTimeOfDay(phoneApp->unk_0C4, phoneApp->unk_0C8, phoneApp->unk_0CB, phoneApp->unk_0C9, phoneApp->unk_0CA);
+        r4 = PhoneCall_CheckMapPermissionAndGetTimeOfDay(phoneApp->unk_0C4, phoneApp->callerID, phoneApp->unk_0CB, phoneApp->unk_0C9, phoneApp->unk_0CA);
         phoneApp->unk_0CB = 0;
         phoneApp->pokegear->args->kind = 0;
     } else {
-        r4 = PhoneCall_CheckMapPermissionAndGetTimeOfDay(phoneApp->unk_0C4, phoneApp->unk_0C8, phoneApp->unk_0CB, 0, 0);
+        r4 = PhoneCall_CheckMapPermissionAndGetTimeOfDay(phoneApp->unk_0C4, phoneApp->callerID, phoneApp->unk_0CB, 0, 0);
     }
     if (r4) {
         PhoneCall_GetCallScriptId(phoneApp->unk_0C4);

@@ -382,7 +382,7 @@ void ov101_021F0464(PokegearPhoneAppData *phoneApp, BOOL a1) {
         PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0xE0, 0x20, 8, RGB_BLACK);
         PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0x60, 0x20, 8, RGB_BLACK);
         PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0, 0x40, 8, RGB_BLACK);
-        AddTextPrinterParameterizedWithColor(&phoneApp->unk_048[1], 0, PhoneContact_GetName(phoneApp->unk_0C4, phoneApp->unk_0C8), 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&phoneApp->unk_048[1], 0, PhoneContact_GetName(phoneApp->unk_0C4, phoneApp->callerID), 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     } else {
         PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 0, RGB_BLACK);
         PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0xE0, 0x20, 0, RGB_BLACK);
@@ -437,22 +437,22 @@ void ov101_021F0658(PokegearPhoneAppData *phoneApp) {
 void ov101_021F0694(PokegearPhoneAppData *phoneApp) {
     PokegearPhoneApp_Sub0C4Template sp00;
     MI_CpuClear8(&sp00, sizeof(PokegearPhoneApp_Sub0C4Template));
-    sp00.unk_00 = phoneApp->heapId;
-    sp00.unk_04 = &phoneApp->pokegear->unk_00C;
-    sp00.unk_08 = phoneApp->unk_088[13];
-    sp00.unk_0C = phoneApp;
-    sp00.unk_10 = phoneApp->pokegear->bgConfig;
-    sp00.unk_14 = &phoneApp->unk_048[0];
-    sp00.unk_18 = &phoneApp->unk_048[1];
-    sp00.unk_1C = phoneApp->pokegear->plttData;
-    sp00.unk_38 = phoneApp->unk_044;
-    sp00.unk_34 = phoneApp->pokegear->args->mapID;
-    sp00.unk_36 = phoneApp->pokegear->args->mapHeader;
-    sp00.unk_20 = phoneApp->pokegear->saveData;
-    sp00.unk_24 = SaveData_GetMomsSavingsAddr(phoneApp->pokegear->saveData);
-    sp00.unk_28 = phoneApp->pokegear->profile;
-    sp00.unk_2C = phoneApp->pokegear->saveVarsFlags;
-    sp00.unk_30 = Save_SysInfo_RTC_Get(phoneApp->pokegear->saveData);
+    sp00.heapId = phoneApp->heapId;
+    sp00.menuInputStatePtr = &phoneApp->pokegear->unk_00C;
+    sp00.sprite = phoneApp->unk_088[13];
+    sp00.phoneApp = phoneApp;
+    sp00.bgConfig = phoneApp->pokegear->bgConfig;
+    sp00.window1 = &phoneApp->unk_048[0];
+    sp00.window2 = &phoneApp->unk_048[1];
+    sp00.plttData = phoneApp->pokegear->plttData;
+    sp00.textSpeed = phoneApp->unk_044;
+    sp00.playerMapSec = phoneApp->pokegear->args->mapID;
+    sp00.playerMapID = phoneApp->pokegear->args->mapHeader;
+    sp00.saveData = phoneApp->pokegear->saveData;
+    sp00.momsSavings = SaveData_GetMomsSavingsAddr(phoneApp->pokegear->saveData);
+    sp00.playerProfile = phoneApp->pokegear->profile;
+    sp00.saveVarsFlags = phoneApp->pokegear->saveVarsFlags;
+    sp00.rtc = Save_SysInfo_RTC_Get(phoneApp->pokegear->saveData);
     phoneApp->unk_0C4 = ov101_021F1D74(&sp00);
 }
 

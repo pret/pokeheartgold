@@ -161,7 +161,7 @@ static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
         u8 id = contact[i].id;
         if (phoneBook->entries[id].unkF == var) {
             // doesn't match with a switch statement
-            if (phoneBook->entries[id].unk1 == 0 || phoneBook->entries[id].unk1 == 12 || phoneBook->entries[id].unk1 == 11 || phoneBook->entries[id].unk1 == 10 || phoneBook->entries[id].unk1 == 14) {
+            if (phoneBook->entries[id].type == 0 || phoneBook->entries[id].type == 12 || phoneBook->entries[id].type == 11 || phoneBook->entries[id].type == 10 || phoneBook->entries[id].type == 14) {
                 ptr[index++] = id;
             }
         }
@@ -465,7 +465,7 @@ static u8 ov02_02252218(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u
             continue;
         }
         PhoneBookEntry *entry = &phoneBook->entries[ov02_02253C84[i].unk0];
-        if (entry->unk0 == 6) {
+        if (entry->id == 6) {
             if (GSPlayerMisc_IsGearNumberRegistered(gearPhone->pokegearData, 6) != 0xFF) {
                 // had to do this to match
                 goto LABEL;

@@ -110,13 +110,13 @@ void ov101_021EF96C(PokegearPhoneAppData *phoneApp) {
     ov101_021F0D6C(phoneApp);
     if (phoneApp->pokegear->args->kind == 1) {
         phoneApp->unk_0CB = 1;
-        phoneApp->unk_0C8 = phoneApp->pokegear->args->callerId;
+        phoneApp->callerID = phoneApp->pokegear->args->callerId;
         phoneApp->unk_0C9 = phoneApp->pokegear->args->unk05;
         phoneApp->unk_0CA = phoneApp->pokegear->args->unk06;
         phoneApp->pokegear->unk_006 = 0;
     } else {
         phoneApp->unk_0CB = 0;
-        phoneApp->unk_0C8 = 0;
+        phoneApp->callerID = 0;
         phoneApp->unk_0C9 = 0;
         phoneApp->unk_0CA = 0;
     }

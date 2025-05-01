@@ -143,7 +143,7 @@ int ov101_021F0BA0(PokegearPhoneAppData *phoneApp) {
 
     int r0 = ov101_021F1408(&phoneApp->unk_0E0);
     if (r0 >= 0) {
-        phoneApp->unk_0C8 = phoneApp->unk_0E0.unk_00C[r0].unk_8;
+        phoneApp->callerID = phoneApp->unk_0E0.unk_00C[r0].unk_8;
         PlaySE(SEQ_SE_GS_GEARDECIDE);
         ov101_021F1338(&phoneApp->unk_0E0, 0);
         ov101_021F09B0(phoneApp, ov101_021F1804(&phoneApp->unk_0E0), 0);
@@ -172,7 +172,7 @@ int ov101_021F0C4C(PokegearPhoneAppData *phoneApp) {
         if (result == 0) {
             return -1;
         } else {
-            phoneApp->unk_0C8 = phoneApp->unk_0E0.unk_00C[result - 1].unk_8;
+            phoneApp->callerID = phoneApp->unk_0E0.unk_00C[result - 1].unk_8;
             PlaySE(SEQ_SE_GS_GEARDECIDE);
             ov101_021F1338(&phoneApp->unk_0E0, 0);
             ov101_021F09B0(phoneApp, ov101_021F1804(&phoneApp->unk_0E0), 0);
@@ -270,10 +270,10 @@ void ov101_021F0E0C(PokegearPhoneAppData *phoneApp, PokegearPhoneApp_Sub0D8 *a1,
 }
 
 void ov101_021F0EB0(PokegearPhoneAppData *phoneApp, u8 a1) {
-    PhoneBookEntry *r2 = phoneApp->unk_0C4->unk_84;
+    PhoneBookEntry *r2 = phoneApp->unk_0C4->phoneEntries;
     for (int i = 0; i < phoneApp->numContacts - 1; ++i) {
         for (int j = phoneApp->numContacts - 1; j > i; --j) {
-            if (r2[phoneApp->saveContacts[j].id].unk10[a1] < r2[phoneApp->saveContacts[i].id].unk10[a1]) {
+            if (r2[phoneApp->saveContacts[j].id].sortParam[a1] < r2[phoneApp->saveContacts[i].id].sortParam[a1]) {
                 u8 tmp = phoneApp->saveContacts[i].id;
                 phoneApp->saveContacts[i].id = phoneApp->saveContacts[j].id;
                 phoneApp->saveContacts[j].id = tmp;

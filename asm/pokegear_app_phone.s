@@ -42,25 +42,6 @@
 	.extern ov101_021F2E04
 	.extern ov101_021F2E74
 
-	thumb_func_start ov101_021F342C
-ov101_021F342C: ; 0x021F342C
-	mov r3, #0
-	strh r3, [r1, #0x20]
-	ldr r2, [r1, #0x10]
-	ldrh r0, [r0, #0x30]
-	ldrh r2, [r2, #6]
-	cmp r2, r0
-	bne _021F343E
-	mov r0, #0x53
-	bx lr
-_021F343E:
-	mov r0, #0xc
-	strh r0, [r1, #0x20]
-	add r0, r3, #0
-	bx lr
-	.balign 4, 0
-	thumb_func_end ov101_021F342C
-
 	thumb_func_start ov101_021F3448
 ov101_021F3448: ; 0x021F3448
 	push {r3, r4, r5, r6, r7, lr}
