@@ -3,12 +3,85 @@
 #include "constants/maps.h"
 
 #include "application/pokegear/phone/phone_internal.h"
+#include "msgdata/msg/msg_0641.h"
+#include "msgdata/msg/msg_0642.h"
 #include "msgdata/msg/msg_0643.h"
+#include "msgdata/msg/msg_0644.h"
+#include "msgdata/msg/msg_0645.h"
+#include "msgdata/msg/msg_0646.h"
+#include "msgdata/msg/msg_0647.h"
+#include "msgdata/msg/msg_0648.h"
+#include "msgdata/msg/msg_0649.h"
+#include "msgdata/msg/msg_0650.h"
+#include "msgdata/msg/msg_0651.h"
+#include "msgdata/msg/msg_0652.h"
+#include "msgdata/msg/msg_0653.h"
+#include "msgdata/msg/msg_0654.h"
+#include "msgdata/msg/msg_0655.h"
+#include "msgdata/msg/msg_0656.h"
+#include "msgdata/msg/msg_0657.h"
+#include "msgdata/msg/msg_0658.h"
+#include "msgdata/msg/msg_0659.h"
+#include "msgdata/msg/msg_0660.h"
+#include "msgdata/msg/msg_0661.h"
+#include "msgdata/msg/msg_0662.h"
+#include "msgdata/msg/msg_0663.h"
 #include "msgdata/msg/msg_0664.h"
 #include "msgdata/msg/msg_0665.h"
 #include "msgdata/msg/msg_0666.h"
+#include "msgdata/msg/msg_0667.h"
+#include "msgdata/msg/msg_0669.h"
+#include "msgdata/msg/msg_0670.h"
+#include "msgdata/msg/msg_0671.h"
+#include "msgdata/msg/msg_0672.h"
+#include "msgdata/msg/msg_0673.h"
+#include "msgdata/msg/msg_0674.h"
+#include "msgdata/msg/msg_0675.h"
+#include "msgdata/msg/msg_0676.h"
+#include "msgdata/msg/msg_0677.h"
+#include "msgdata/msg/msg_0678.h"
+#include "msgdata/msg/msg_0679.h"
+#include "msgdata/msg/msg_0680.h"
+#include "msgdata/msg/msg_0681.h"
+#include "msgdata/msg/msg_0682.h"
+#include "msgdata/msg/msg_0683.h"
+#include "msgdata/msg/msg_0684.h"
+#include "msgdata/msg/msg_0685.h"
+#include "msgdata/msg/msg_0686.h"
+#include "msgdata/msg/msg_0687.h"
+#include "msgdata/msg/msg_0688.h"
+#include "msgdata/msg/msg_0689.h"
+#include "msgdata/msg/msg_0690.h"
+#include "msgdata/msg/msg_0691.h"
+#include "msgdata/msg/msg_0692.h"
+#include "msgdata/msg/msg_0693.h"
+#include "msgdata/msg/msg_0694.h"
+#include "msgdata/msg/msg_0695.h"
+#include "msgdata/msg/msg_0696.h"
+#include "msgdata/msg/msg_0697.h"
+#include "msgdata/msg/msg_0698.h"
+#include "msgdata/msg/msg_0699.h"
+#include "msgdata/msg/msg_0700.h"
+#include "msgdata/msg/msg_0701.h"
+#include "msgdata/msg/msg_0702.h"
+#include "msgdata/msg/msg_0703.h"
+#include "msgdata/msg/msg_0704.h"
+#include "msgdata/msg/msg_0705.h"
+#include "msgdata/msg/msg_0706.h"
+#include "msgdata/msg/msg_0707.h"
+#include "msgdata/msg/msg_0708.h"
+#include "msgdata/msg/msg_0709.h"
+#include "msgdata/msg/msg_0710.h"
+#include "msgdata/msg/msg_0711.h"
+#include "msgdata/msg/msg_0712.h"
+#include "msgdata/msg/msg_0713.h"
+#include "msgdata/msg/msg_0714.h"
+#include "msgdata/msg/msg_0715.h"
+#include "msgdata/msg/msg_0716.h"
 
+#include "daycare.h"
 #include "encounter.h"
+#include "get_egg.h"
 #include "map_events.h"
 #include "map_header.h"
 #include "math_util.h"
@@ -565,7 +638,7 @@ BOOL GearPhoneCall_ProfOak(PokegearPhoneApp_Sub0C4 *a0) {
         r4->flag0 = Pokedex_GetNatDexFlag(pokedex);
         r4->flag1 = Pokedex_JohtoDexIsComplete(pokedex);
         r4->flag2 = Pokedex_NationalDexIsComplete(pokedex);
-        r4->pokedex = pokedex;
+        r4->miscPtr.pokedex = pokedex;
         PhoneCallMessagePrint_Gendered(a0, a0->msgData_PhoneContact, msg_0666_00013, msg_0666_00014);
         break;
     case 1:
@@ -609,11 +682,11 @@ BOOL GearPhoneCall_ProfOak(PokegearPhoneApp_Sub0C4 *a0) {
             return FALSE;
         }
         if (!r4->flag3) {
-            r7 = Pokedex_CountJohtoDexSeen(r4->pokedex);
-            r6_2 = Pokedex_CountJohtoDexOwned(r4->pokedex);
+            r7 = Pokedex_CountJohtoDexSeen(r4->miscPtr.pokedex);
+            r6_2 = Pokedex_CountJohtoDexOwned(r4->miscPtr.pokedex);
         } else {
-            r7 = Pokedex_CountNationalDexSeen(r4->pokedex);
-            r6_2 = Pokedex_CountNationalDexOwned(r4->pokedex);
+            r7 = Pokedex_CountNationalDexSeen(r4->miscPtr.pokedex);
+            r6_2 = Pokedex_CountNationalDexOwned(r4->miscPtr.pokedex);
         }
         BufferIntegerAsString(a0->msgFormat, 5, r7, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
         BufferIntegerAsString(a0->msgFormat, 6, r6_2, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
@@ -625,13 +698,13 @@ BOOL GearPhoneCall_ProfOak(PokegearPhoneApp_Sub0C4 *a0) {
         }
         r6_3 = FALSE;
         if (!r4->flag3) {
-            r7 = GetOakJohtoDexRating(Pokedex_CountJohtoOwned_ExcludeMythical(r4->pokedex), a0->playerGender, &dexFanfare);
+            r7 = GetOakJohtoDexRating(Pokedex_CountJohtoOwned_ExcludeMythical(r4->miscPtr.pokedex), a0->playerGender, &dexFanfare);
             if (r4->flag1) {
                 Save_VarsFlags_SetFlagInArray(a0->saveVarsFlags, FLAG_SYS_OAK_ACKNOWLEDGED_JOHTO_DEX_COMPLETION);
                 r6_3 = TRUE;
             }
         } else {
-            r7 = GetOakNationalDexRating(Pokedex_CountNationalOwned_ExcludeMythical(r4->pokedex), a0->playerGender, &dexFanfare);
+            r7 = GetOakNationalDexRating(Pokedex_CountNationalOwned_ExcludeMythical(r4->miscPtr.pokedex), a0->playerGender, &dexFanfare);
             if (r4->flag2) {
                 Save_VarsFlags_SetFlagInArray(a0->saveVarsFlags, FLAG_SYS_OAK_ACKNOWLEDGED_NATIONAL_DEX_COMPLETION);
                 r6_3 = TRUE;
@@ -821,5 +894,188 @@ BOOL GearPhoneCall_Bill(PokegearPhoneApp_Sub0C4 *a0) {
     }
 
     ++r5->unk_04;
+    return FALSE;
+}
+
+u16 PhoneCall_GetScriptId_DayCareMan(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1) {
+    int i;
+    Daycare *daycare;
+    DaycareMon *mon;
+
+    a1->scriptType = 0;
+    if (a1->unk_19) {
+        if (Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_UNK_992)) {
+            return PHONE_SCRIPT_096;
+        } else {
+            return PHONE_SCRIPT_095;
+        }
+    }
+
+    daycare = Save_Daycare_Get(a0->saveData);
+    a1->miscPtr.daycare = daycare;
+    a1->unk_4A = 0;
+    for (i = 0; i < 2; ++i) {
+        mon = Save_Daycare_GetMonX(daycare, i);
+        if (GetBoxMonData(DaycareMon_GetBoxMon(mon), MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
+            BufferBoxMonNickname(a0->msgFormat, 10 + i, DaycareMon_GetBoxMon(mon));
+            ++a1->unk_4A;
+        }
+    }
+    if (a1->unk_4A == 2) {
+        a1->unk_48 = Save_Daycare_CalcCompatibility(daycare);
+    }
+    a1->scriptType = 7;
+    return PHONE_SCRIPT_000;
+}
+
+BOOL GearPhoneCall_DayCareMan(PokegearPhoneApp_Sub0C4 *a0) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+
+    switch (r4->unk_04) {
+    case 0:
+        ov101_021F2110(a0);
+        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0661_00002);
+        break;
+    case 1:
+        if (!ov101_021F2220(a0)) {
+            return FALSE;
+        }
+        if (Save_Daycare_HasEgg(r4->miscPtr.daycare)) {
+            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0661_00003);
+            r4->unk_04 = 255;
+        } else if (r4->unk_4A == 0) {
+            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0661_00004);
+            r4->unk_04 = 3;
+        } else if (r4->unk_4A == 1) {
+            r4->unk_04 = 3;
+            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0661_00005);
+        } else {
+            r4->unk_04 = 2;
+            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0661_00006);
+        }
+        return FALSE;
+    case 2:
+        if (!ov101_021F2220(a0)) {
+            return FALSE;
+        }
+        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0661_00007 + r4->unk_48);
+        break;
+    case 3:
+        if (!ov101_021F2220(a0)) {
+            return FALSE;
+        }
+        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0661_00011);
+        break;
+    default:
+        if (!ov101_021F2220(a0)) {
+            return FALSE;
+        }
+        DestroyMsgData(a0->msgData_PhoneContact);
+        return TRUE;
+    }
+
+    ++r4->unk_04;
+    return FALSE;
+}
+
+u16 PhoneCall_GetScriptId_DayCareLady(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1) {
+    int i;
+    Daycare *daycare;
+    DaycareMon *mon;
+
+    a1->scriptType = 0;
+    if (a1->phoneBookEntry->mapId == a0->playerMapSec) {
+        return PHONE_SCRIPT_097;
+    }
+
+    daycare = Save_Daycare_Get(a0->saveData);
+    a1->miscPtr.daycare = daycare;
+    a1->unk_4A = 0;
+    for (i = 0; i < 2; ++i) {
+        mon = Save_Daycare_GetMonX(daycare, i);
+        if (GetBoxMonData(DaycareMon_GetBoxMon(mon), MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
+            ++a1->unk_4A;
+            a1->unk_4B[i] = DaycareMon_CalcLevelGrowth(mon);
+        } else {
+            a1->unk_4B[i] = 0;
+        }
+    }
+    a1->scriptType = 6;
+    return PHONE_SCRIPT_000;
+}
+
+BOOL GearPhoneCall_DayCareLady(PokegearPhoneApp_Sub0C4 *a0) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+    int r6;
+
+    switch (r4->unk_04) {
+    case 0:
+        ov101_021F2110(a0);
+        PhoneCallMessagePrint_Gendered(a0, a0->msgData_PhoneContact, msg_0660_00003, msg_0660_00004);
+        break;
+    case 1:
+        if (!ov101_021F2220(a0)) {
+            return FALSE;
+        }
+        if (r4->unk_4A == 0) {
+            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0660_00010);
+            r4->unk_04 = 255;
+            return FALSE;
+        } else {
+            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0660_00005);
+        }
+        break;
+    case 2:
+        if (!ov101_021F2220(a0)) {
+            return FALSE;
+        }
+        if (r4->unk_4B[0] != 0) {
+            r6 = 0;
+            if (r4->unk_4B[1] == 0) {
+                r4->unk_04 = 4;
+            } else {
+                r4->unk_04 = 3;
+            }
+        } else {
+            if (r4->unk_4B[1] != 0) {
+                r6 = 1;
+                r4->unk_04 = 4;
+            } else {
+                PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0660_00009);
+                r4->unk_04 = 255;
+                return FALSE;
+            }
+        }
+        BufferBoxMonNickname(a0->msgFormat, 10, DaycareMon_GetBoxMon(Save_Daycare_GetMonX(r4->miscPtr.daycare, r6)));
+        BufferIntegerAsString(a0->msgFormat, 11, r4->unk_4B[r6], 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0660_00006);
+        return FALSE;
+    case 3:
+        if (!ov101_021F2220(a0)) {
+            return FALSE;
+        }
+        BufferBoxMonNickname(a0->msgFormat, 10, DaycareMon_GetBoxMon(Save_Daycare_GetMonX(r4->miscPtr.daycare, 1)));
+        BufferIntegerAsString(a0->msgFormat, 11, r4->unk_4B[1], 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0660_00006);
+        break;
+    case 4:
+        if (!ov101_021F2220(a0)) {
+            return FALSE;
+        }
+        if (r4->unk_4A == 1) {
+            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0660_00008);
+        } else {
+            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0660_00009);
+        }
+        break;
+    default:
+        if (!ov101_021F2220(a0)) {
+            return FALSE;
+        }
+        DestroyMsgData(a0->msgData_PhoneContact);
+        return TRUE;
+    }
+
+    ++r4->unk_04;
     return FALSE;
 }

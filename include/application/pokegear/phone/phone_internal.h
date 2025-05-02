@@ -5,6 +5,7 @@
 
 #include "application/pokegear/pokegear_internal.h"
 
+#include "daycare.h"
 #include "sav_system_info.h"
 #include "sprite.h"
 #include "touchscreen_list_menu.h"
@@ -78,15 +79,18 @@ typedef struct PokegearPhoneApp_Sub0C4_Sub88 {
     RTCDate date;                        // 0x28
     RTCTime time;                        // 0x38
     u32 unk_44;                          // 0x44
-    u8 filler_48[2];                     // 0x48
+    u16 unk_48;                          // 0x48
     u8 unk_4A;                           // 0x4A
-    u8 filler_4B[2];                     // 0x4B
+    u8 unk_4B[2];                        // 0x4B
     u8 flag0 : 1;                        // 0x4D
     u8 flag1 : 1;                        // 0x4D
     u8 flag2 : 1;                        // 0x4D
     u8 flag3 : 1;                        // 0x4D
-    Pokedex *pokedex;                    // 0x50
-} PokegearPhoneApp_Sub0C4_Sub88;         // size: 0x54
+    union {
+        Pokedex *pokedex;
+        Daycare *daycare;
+    } miscPtr;                   // 0x50
+} PokegearPhoneApp_Sub0C4_Sub88; // size: 0x54
 
 typedef struct PokegearPhoneApp_Sub0C4 {
     HeapID heapId;                        // 0x00
@@ -314,21 +318,21 @@ u16 PhoneCall_GetScriptId_Kenji(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Su
 u16 PhoneCall_GetScriptId_Bill(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
 BOOL GearPhoneCall_Bill(PokegearPhoneApp_Sub0C4 *a0);
 u16 PhoneCall_GetScriptId_DayCareMan(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-BOOL ov101_021F3798(PokegearPhoneApp_Sub0C4 *a0);
+BOOL GearPhoneCall_DayCareMan(PokegearPhoneApp_Sub0C4 *a0);
 u16 PhoneCall_GetScriptId_DayCareLady(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-BOOL ov101_021F38FC(PokegearPhoneApp_Sub0C4 *a0);
+BOOL GearPhoneCall_DayCareLady(PokegearPhoneApp_Sub0C4 *a0);
 u16 PhoneCall_GetScriptId_Buena(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-BOOL ov101_021F3B20(PokegearPhoneApp_Sub0C4 *a0);
-BOOL ov101_021F3BA0(PokegearPhoneApp_Sub0C4 *a0);
+BOOL GearPhoneCall_Buena(PokegearPhoneApp_Sub0C4 *a0);
+BOOL GearPhoneCall_Buena2(PokegearPhoneApp_Sub0C4 *a0);
 u16 PhoneCall_GetScriptId_EthanLyra(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-BOOL ov101_021F3CC0(PokegearPhoneApp_Sub0C4 *a0);
+BOOL GearPhoneCall_EthanLyra(PokegearPhoneApp_Sub0C4 *a0);
 u8 ov101_021F3D34(PokegearPhoneApp_Sub0C4 *a0);
-BOOL ov101_021F3DC8(PokegearPhoneApp_Sub0C4 *a0);
+BOOL GearPhoneCall_EthanLyra2(PokegearPhoneApp_Sub0C4 *a0);
 u16 PhoneCall_GetScriptId_GymLeader(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-BOOL ov101_021F3F10(PokegearPhoneApp_Sub0C4 *a0);
-BOOL ov101_021F4064(PokegearPhoneApp_Sub0C4 *a0);
+BOOL GearPhoneCall_GymLeader(PokegearPhoneApp_Sub0C4 *a0);
+BOOL GearPhoneCall_GymLeader2(PokegearPhoneApp_Sub0C4 *a0);
 u16 PhoneCall_GetScriptId_Baoba(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-BOOL ov101_021F41B8(PokegearPhoneApp_Sub0C4 *a0);
+BOOL GearPhoneCall_Baoba(PokegearPhoneApp_Sub0C4 *a0);
 u16 PhoneCall_GetScriptId_Irwin(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
 
 extern const TouchscreenHitbox ov101_021F8400;
