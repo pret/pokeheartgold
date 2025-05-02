@@ -1,7 +1,7 @@
 {
     "pmtel_book": [
         {
-            "id": 0,
+            "id": "PHONE_CONTACT_MOTHER",
             "type": 1,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_PHONE_MOM",
@@ -21,7 +21,7 @@
             ]
         },
         {
-            "id": 1,
+            "id": "PHONE_CONTACT_PROF__ELM",
             "type": 2,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_PHONE_POKEMON_PROFESSOR",
@@ -41,7 +41,7 @@
             ]
         },
         {
-            "id": 2,
+            "id": "PHONE_CONTACT_PROF__OAK",
             "type": 3,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_PHONE_POKEMON_PROFESSOR",
@@ -61,7 +61,7 @@
             ]
         },
         {
-            "id": 3,
+            "id": "PHONE_CONTACT_ETHAN",
             "type": 11,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_PHONE_CHILDHOOD_FRIEND",
@@ -81,7 +81,7 @@
             ]
         },
         {
-            "id": 4,
+            "id": "PHONE_CONTACT_LYRA",
             "type": 11,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_PHONE_CHILDHOOD_FRIEND",
@@ -101,7 +101,7 @@
             ]
         },
         {
-            "id": 5,
+            "id": "PHONE_CONTACT_KURT",
             "type": 4,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_PHONE_POKE_BALL_CREATOR",
@@ -121,7 +121,7 @@
             ]
         },
         {
-            "id": 6,
+            "id": "PHONE_CONTACT_DAY_C_MAN",
             "type": 8,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_PHONE_DAY_CARE",
@@ -141,7 +141,7 @@
             ]
         },
         {
-            "id": 7,
+            "id": "PHONE_CONTACT_DAY_C_LADY",
             "type": 9,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_PHONE_DAY_CARE",
@@ -161,7 +161,7 @@
             ]
         },
         {
-            "id": 8,
+            "id": "PHONE_CONTACT_BUENA",
             "type": 10,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_PHONE_RADIO_PERSONALITY",
@@ -181,7 +181,7 @@
             ]
         },
         {
-            "id": 9,
+            "id": "PHONE_CONTACT_BILL",
             "type": 7,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_PHONE_POKE_MANIAC",
@@ -201,7 +201,7 @@
             ]
         },
         {
-            "id": 10,
+            "id": "PHONE_CONTACT_JOEY",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_YOUNGSTER",
@@ -221,7 +221,7 @@
             ]
         },
         {
-            "id": 11,
+            "id": "PHONE_CONTACT_RALPH",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_FISHERMAN",
@@ -241,7 +241,7 @@
             ]
         },
         {
-            "id": 12,
+            "id": "PHONE_CONTACT_LIZ",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_PICNICKER",
@@ -261,7 +261,7 @@
             ]
         },
         {
-            "id": 13,
+            "id": "PHONE_CONTACT_WADE",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_BUG_CATCHER",
@@ -281,7 +281,7 @@
             ]
         },
         {
-            "id": 14,
+            "id": "PHONE_CONTACT_ANTHONY",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_HIKER",
@@ -301,7 +301,7 @@
             ]
         },
         {
-            "id": 15,
+            "id": "PHONE_CONTACT_BIKE_SHOP",
             "type": 5,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_PHONE_RADIO_PERSONALITY",
@@ -321,7 +321,7 @@
             ]
         },
         {
-            "id": 16,
+            "id": "PHONE_CONTACT_KENJI",
             "type": 6,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_BLACK_BELT",
@@ -341,7 +341,7 @@
             ]
         },
         {
-            "id": 17,
+            "id": "PHONE_CONTACT_WHITNEY",
             "type": 12,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_LEADER_WHITNEY",
@@ -361,7 +361,7 @@
             ]
         },
         {
-            "id": 18,
+            "id": "PHONE_CONTACT_FALKNER",
             "type": 12,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_LEADER_FALKNER",
@@ -381,7 +381,7 @@
             ]
         },
         {
-            "id": 19,
+            "id": "PHONE_CONTACT_JACK",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_SCHOOL_KID_M",
@@ -401,7 +401,7 @@
             ]
         },
         {
-            "id": 20,
+            "id": "PHONE_CONTACT_CHAD",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_SCHOOL_KID_M",
@@ -421,7 +421,7 @@
             ]
         },
         {
-            "id": 21,
+            "id": "PHONE_CONTACT_BRENT",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_POKE_MANIAC",
@@ -441,7 +441,7 @@
             ]
         },
         {
-            "id": 22,
+            "id": "PHONE_CONTACT_TODD",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_CAMPER",
@@ -461,7 +461,7 @@
             ]
         },
         {
-            "id": 23,
+            "id": "PHONE_CONTACT_ARNIE",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_BUG_CATCHER",
@@ -481,7 +481,7 @@
             ]
         },
         {
-            "id": 24,
+            "id": "PHONE_CONTACT_BAOBA",
             "type": 13,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_PHONE_SAFARI_WARDEN",
@@ -501,7 +501,7 @@
             ]
         },
         {
-            "id": 25,
+            "id": "PHONE_CONTACT_IRWIN",
             "type": 14,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_JUGGLER",
@@ -521,7 +521,7 @@
             ]
         },
         {
-            "id": 26,
+            "id": "PHONE_CONTACT_JANINE",
             "type": 12,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_LEADER_JANINE",
@@ -541,7 +541,7 @@
             ]
         },
         {
-            "id": 27,
+            "id": "PHONE_CONTACT_CLAIR",
             "type": 12,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_LEADER_CLAIR",
@@ -561,7 +561,7 @@
             ]
         },
         {
-            "id": 28,
+            "id": "PHONE_CONTACT_ERIKA",
             "type": 12,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_LEADER_ERIKA",
@@ -581,7 +581,7 @@
             ]
         },
         {
-            "id": 29,
+            "id": "PHONE_CONTACT_MISTY",
             "type": 12,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_LEADER_MISTY",
@@ -601,7 +601,7 @@
             ]
         },
         {
-            "id": 30,
+            "id": "PHONE_CONTACT_BLAINE",
             "type": 12,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_LEADER_BLAINE",
@@ -621,7 +621,7 @@
             ]
         },
         {
-            "id": 31,
+            "id": "PHONE_CONTACT_BLUE",
             "type": 12,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_LEADER_BLUE",
@@ -641,7 +641,7 @@
             ]
         },
         {
-            "id": 32,
+            "id": "PHONE_CONTACT_CHUCK",
             "type": 12,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_LEADER_CHUCK",
@@ -661,7 +661,7 @@
             ]
         },
         {
-            "id": 33,
+            "id": "PHONE_CONTACT_BROCK",
             "type": 12,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_LEADER_BROCK",
@@ -681,7 +681,7 @@
             ]
         },
         {
-            "id": 34,
+            "id": "PHONE_CONTACT_BUGSY",
             "type": 12,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_LEADER_BUGSY",
@@ -701,7 +701,7 @@
             ]
         },
         {
-            "id": 35,
+            "id": "PHONE_CONTACT_SABRINA",
             "type": 12,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_LEADER_SABRINA",
@@ -721,7 +721,7 @@
             ]
         },
         {
-            "id": 36,
+            "id": "PHONE_CONTACT_LT__SURGE",
             "type": 12,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_LEADER_LT_SURGE",
@@ -741,7 +741,7 @@
             ]
         },
         {
-            "id": 37,
+            "id": "PHONE_CONTACT_MORTY",
             "type": 12,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_LEADER_MORTY",
@@ -761,7 +761,7 @@
             ]
         },
         {
-            "id": 38,
+            "id": "PHONE_CONTACT_JASMINE",
             "type": 12,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_LEADER_JASMINE",
@@ -781,7 +781,7 @@
             ]
         },
         {
-            "id": 39,
+            "id": "PHONE_CONTACT_PRYCE",
             "type": 12,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_LEADER_PRYCE",
@@ -801,7 +801,7 @@
             ]
         },
         {
-            "id": 40,
+            "id": "PHONE_CONTACT_HUEY",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_SAILOR",
@@ -821,7 +821,7 @@
             ]
         },
         {
-            "id": 41,
+            "id": "PHONE_CONTACT_GAVEN",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_ACE_TRAINER_M",
@@ -841,7 +841,7 @@
             ]
         },
         {
-            "id": 42,
+            "id": "PHONE_CONTACT_JAMIE",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_ACE_TRAINER_F",
@@ -861,7 +861,7 @@
             ]
         },
         {
-            "id": 43,
+            "id": "PHONE_CONTACT_REENA",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_ACE_TRAINER_F",
@@ -881,7 +881,7 @@
             ]
         },
         {
-            "id": 44,
+            "id": "PHONE_CONTACT_VANCE",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_BIRD_KEEPER_GS",
@@ -901,7 +901,7 @@
             ]
         },
         {
-            "id": 45,
+            "id": "PHONE_CONTACT_PARRY",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_HIKER",
@@ -921,7 +921,7 @@
             ]
         },
         {
-            "id": 46,
+            "id": "PHONE_CONTACT_ERIN",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_PICNICKER",
@@ -941,7 +941,7 @@
             ]
         },
         {
-            "id": 47,
+            "id": "PHONE_CONTACT_BEVERLY",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_POKEFAN",
@@ -961,7 +961,7 @@
             ]
         },
         {
-            "id": 48,
+            "id": "PHONE_CONTACT_JOSE",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_BIRD_KEEPER_GS",
@@ -981,7 +981,7 @@
             ]
         },
         {
-            "id": 49,
+            "id": "PHONE_CONTACT_GINA",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_PICNICKER",
@@ -1001,7 +1001,7 @@
             ]
         },
         {
-            "id": 50,
+            "id": "PHONE_CONTACT_ALAN",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_SCHOOL_KID_M",
@@ -1021,7 +1021,7 @@
             ]
         },
         {
-            "id": 51,
+            "id": "PHONE_CONTACT_DANA",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_LASS",
@@ -1041,7 +1041,7 @@
             ]
         },
         {
-            "id": 52,
+            "id": "PHONE_CONTACT_DEREK",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_POKEFAN_M",
@@ -1061,7 +1061,7 @@
             ]
         },
         {
-            "id": 53,
+            "id": "PHONE_CONTACT_TULLY",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_FISHERMAN",
@@ -1081,7 +1081,7 @@
             ]
         },
         {
-            "id": 54,
+            "id": "PHONE_CONTACT_TIFFANY",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_PICNICKER",
@@ -1101,7 +1101,7 @@
             ]
         },
         {
-            "id": 55,
+            "id": "PHONE_CONTACT_WILTON",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_FISHERMAN",
@@ -1121,7 +1121,7 @@
             ]
         },
         {
-            "id": 56,
+            "id": "PHONE_CONTACT_KRISE",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_LASS",
@@ -1141,7 +1141,7 @@
             ]
         },
         {
-            "id": 57,
+            "id": "PHONE_CONTACT_IAN",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_YOUNGSTER",
@@ -1161,7 +1161,7 @@
             ]
         },
         {
-            "id": 58,
+            "id": "PHONE_CONTACT_WALT",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_FIREBREATHER",
@@ -1181,7 +1181,7 @@
             ]
         },
         {
-            "id": 59,
+            "id": "PHONE_CONTACT_ALFRED",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_GENTLEMAN",
@@ -1201,7 +1201,7 @@
             ]
         },
         {
-            "id": 60,
+            "id": "PHONE_CONTACT_DOUG",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_BUG_CATCHER",
@@ -1221,7 +1221,7 @@
             ]
         },
         {
-            "id": 61,
+            "id": "PHONE_CONTACT_ROB",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_BUG_CATCHER",
@@ -1241,7 +1241,7 @@
             ]
         },
         {
-            "id": 62,
+            "id": "PHONE_CONTACT_KYLE",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_FISHERMAN",
@@ -1261,7 +1261,7 @@
             ]
         },
         {
-            "id": 63,
+            "id": "PHONE_CONTACT_KYLER",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_FISHERMAN",
@@ -1281,7 +1281,7 @@
             ]
         },
         {
-            "id": 64,
+            "id": "PHONE_CONTACT_TIM_AND_SUE",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_YOUNG_COUPLE",
@@ -1301,7 +1301,7 @@
             ]
         },
         {
-            "id": 65,
+            "id": "PHONE_CONTACT_KENNY",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_HIKER",
@@ -1321,7 +1321,7 @@
             ]
         },
         {
-            "id": 66,
+            "id": "PHONE_CONTACT_TANNER",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_CAMPER",
@@ -1341,7 +1341,7 @@
             ]
         },
         {
-            "id": 67,
+            "id": "PHONE_CONTACT_JOSH",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_BIRD_KEEPER_GS",
@@ -1361,7 +1361,7 @@
             ]
         },
         {
-            "id": 68,
+            "id": "PHONE_CONTACT_TORIN",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_SCHOOL_KID_M",
@@ -1381,7 +1381,7 @@
             ]
         },
         {
-            "id": 69,
+            "id": "PHONE_CONTACT_HILLARY",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_TEACHER",
@@ -1401,7 +1401,7 @@
             ]
         },
         {
-            "id": 70,
+            "id": "PHONE_CONTACT_BILLY",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_SCHOOL_KID_M",
@@ -1421,7 +1421,7 @@
             ]
         },
         {
-            "id": 71,
+            "id": "PHONE_CONTACT_KAY_AND_TIA",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_TWINS",
@@ -1441,7 +1441,7 @@
             ]
         },
         {
-            "id": 72,
+            "id": "PHONE_CONTACT_REESE",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_BIKER",
@@ -1461,7 +1461,7 @@
             ]
         },
         {
-            "id": 73,
+            "id": "PHONE_CONTACT_AIDEN",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_BIKER",
@@ -1481,7 +1481,7 @@
             ]
         },
         {
-            "id": 74,
+            "id": "PHONE_CONTACT_ERNEST",
             "type": 0,
             "unk2": 0,
             "trainerClass": "TRAINERCLASS_BIKER",

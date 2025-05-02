@@ -2028,7 +2028,7 @@
 
 #define FLAG_DAILY_GOT_HAIRCUT            0xAA0
 #define FLAG_UNK_AA1                      0xAA1
-#define FLAG_UNK_AA2                      0xAA2
+#define FLAG_DAILY_KURT_MAKING_BALLS      0xAA2
 #define FLAG_DAILY_BUENAS_PASSWORD        0xAA3
 #define FLAG_UNK_AA4                      0xAA4
 #define FLAG_UNK_AA5                      0xAA5

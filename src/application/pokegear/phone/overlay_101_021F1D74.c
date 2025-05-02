@@ -15,16 +15,16 @@ static BOOL (*const ov101_021F867C[])(PokegearPhoneApp_Sub0C4 *) = {
     ov101_021F2680,
     ov101_021F2F50,
     ov101_021F2FFC,
-    ov101_021F35EC,
+    GearPhoneCall_Bill,
     GearPhoneCall_Mom,
-    ov101_021F313C,
+    GearPhoneCall_ProfOak,
     ov101_021F38FC,
     ov101_021F3798,
     ov101_021F3B20,
     ov101_021F3BA0,
     ov101_021F3CC0,
     ov101_021F3DC8,
-    ov101_021F3448,
+    GearPhoneCall_Kurt,
     ov101_021F3F10,
     ov101_021F4064,
     ov101_021F41B8,
@@ -139,8 +139,8 @@ BOOL PhoneCall_CheckMapPermissionAndGetTimeOfDay(PokegearPhoneApp_Sub0C4 *a0, u8
     r4->unk_00 = r4->unk_19;
     GF_RTC_CopyDateTime(&r4->date, &r4->time);
     r4->timeOfDay = GF_RTC_GetTimeOfDayWildParamByHour(r4->time.hour);
-    r4->unk_20 = 0;
-    r4->unk_1E = 0;
+    r4->scriptType = 0;
+    r4->scriptID = 0;
     return TRUE;
 }
 
@@ -152,58 +152,58 @@ void PhoneCall_GetCallScriptId(PokegearPhoneApp_Sub0C4 *a0) {
 
     switch (r4->phoneBookEntry->type) {
     case 0:
-        r4->unk_1E = ov101_021F2B80(a0, r4);
+        r4->scriptID = PhoneCall_GetScriptId_Generic(a0, r4);
         break;
     case 1:
-        r4->unk_1E = PhoneCall_GetCallScriptId_Mother(a0, r4);
+        r4->scriptID = PhoneCall_GetCallScriptId_Mother(a0, r4);
         break;
     case 2:
-        r4->unk_1E = PhoneCall_GetCallScriptId_ProfElm(a0, r4);
+        r4->scriptID = PhoneCall_GetCallScriptId_ProfElm(a0, r4);
         break;
     case 3:
-        r4->unk_1E = PhoneCall_GetCallScriptId_ProfOak(a0, r4);
+        r4->scriptID = PhoneCall_GetCallScriptId_ProfOak(a0, r4);
         break;
     case 5:
-        r4->unk_1E = ov101_021F3518(a0, r4);
+        r4->scriptID = PhoneCall_GetScriptId_BikeShop(a0, r4);
         break;
     case 7:
-        r4->unk_1E = ov101_021F35C4(a0, r4);
+        r4->scriptID = PhoneCall_GetScriptId_Bill(a0, r4);
         break;
     case 9:
-        r4->unk_1E = ov101_021F388C(a0, r4);
+        r4->scriptID = PhoneCall_GetScriptId_DayCareLady(a0, r4);
         break;
     case 8:
-        r4->unk_1E = ov101_021F36F4(a0, r4);
+        r4->scriptID = PhoneCall_GetScriptId_DayCareMan(a0, r4);
         break;
     case 10:
-        r4->unk_1E = ov101_021F3AA4(a0, r4);
+        r4->scriptID = PhoneCall_GetScriptId_Buena(a0, r4);
         break;
     case 11:
-        r4->unk_1E = ov101_021F3C8C(a0, r4);
+        r4->scriptID = PhoneCall_GetScriptId_EthanLyra(a0, r4);
         break;
     case 4:
-        r4->unk_1E = ov101_021F342C(a0, r4);
+        r4->scriptID = PhoneCall_GetScriptId_Kurt(a0, r4);
         break;
     case 12:
-        r4->unk_1E = ov101_021F3EA8(a0, r4);
+        r4->scriptID = PhoneCall_GetScriptId_GymLeader(a0, r4);
         break;
     case 6:
-        r4->unk_1E = ov101_021F3530(a0, r4);
+        r4->scriptID = PhoneCall_GetScriptId_Kenji(a0, r4);
         break;
     case 13:
-        r4->unk_1E = ov101_021F410C(a0, r4);
+        r4->scriptID = PhoneCall_GetScriptId_Baoba(a0, r4);
         break;
     case 14:
-        r4->unk_1E = ov101_021F4274(a0, r4);
+        r4->scriptID = PhoneCall_GetScriptId_Irwin(a0, r4);
         break;
     case 15:
     default:
-        r4->unk_20 = 0;
-        r4->unk_1E = 0;
+        r4->scriptType = 0;
+        r4->scriptID = 0;
         break;
     }
-    if (r4->unk_20 <= 2) {
-        r4->scriptDef = &sPhoneCallScriptDef[r4->unk_1E];
+    if (r4->scriptType <= 2) {
+        r4->scriptDef = &sPhoneCallScriptDef[r4->scriptID];
     }
 }
 
@@ -496,7 +496,7 @@ BOOL ov101_021F26F8(PokegearPhoneApp_Sub0C4 *a0) {
         }
         break;
     case 1:
-        if (!ov101_021F867C[r4->unk_20](a0)) {
+        if (!ov101_021F867C[r4->scriptType](a0)) {
             return FALSE;
         }
         *a0->menuInputStatePtr = (MenuInputState)r4->unk_22;

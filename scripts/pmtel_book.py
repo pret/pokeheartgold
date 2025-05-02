@@ -29,6 +29,7 @@ def parse_c_header(filename: str, prefix="", as_list=False):
 trainer_classes = parse_c_header("include/constants/trainer_class.h", "TRAINERCLASS_")
 trainer_ids = parse_c_header("include/constants/trainers.h", "TRAINER_")
 map_ids = parse_c_header("include/constants/maps.h", "MAP_")
+phone_contacts = parse_c_header("include/constants/phone_contacts.h", "MAP_")
 
 PMTelBook = struct.Struct("<BBBBHHHHBBBBBBBB")
 keys = (
@@ -61,6 +62,7 @@ with open("files/tel/pmtel_book.dat", "rb") as infile:
                 d[key] = [next(it) for _ in range(array_keys[key])]
             else:
                 d[key] = next(it)
+        d["id"] = phone_contacts[d["id"]]
         d["trainerClass"] = trainer_classes[d["trainerClass"]]
         d["trainerId"] = trainer_ids[d["trainerId"]]
         d["mapId"] = map_ids[d["mapId"]]

@@ -42,362 +42,8 @@
 	.extern ov101_021F2E04
 	.extern ov101_021F2E74
 
-	thumb_func_start ov101_021F3448
-ov101_021F3448: ; 0x021F3448
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	add r5, r0, #0
-	add r4, r5, #0
-	add r4, #0x88
-	ldr r1, [r4, #4]
-	cmp r1, #0
-	beq _021F345E
-	cmp r1, #1
-	beq _021F3486
-	b _021F34E8
-_021F345E:
-	bl ov101_021F2110
-	ldr r0, [r5, #0x28]
-	ldr r1, _021F3510 ; =0x00000127
-	bl Save_VarsFlags_CheckFlagInArray
-	cmp r0, #0
-	beq _021F347A
-	ldr r1, [r5, #0x4c]
-	add r0, r5, #0
-	mov r2, #6
-	bl PhoneCallMessagePrint_Ungendered
-	b _021F3502
-_021F347A:
-	ldr r1, [r5, #0x4c]
-	add r0, r5, #0
-	mov r2, #2
-	bl PhoneCallMessagePrint_Ungendered
-	b _021F3502
-_021F3486:
-	bl ov101_021F2220
-	cmp r0, #0
-	bne _021F3494
-	add sp, #8
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_021F3494:
-	ldr r0, [r5, #0x1c]
-	bl Save_ApricornBox_Get
-	add r6, r0, #0
-	bl ApricornBox_GetKurtQuantity
-	add r7, r0, #0
-	bne _021F34A8
-	mov r2, #5
-	b _021F34DE
-_021F34A8:
-	ldr r0, [r5, #0x28]
-	ldr r1, _021F3514 ; =0x00000AA2
-	bl Save_VarsFlags_CheckFlagInArray
-	cmp r0, #0
-	beq _021F34B8
-	mov r2, #4
-	b _021F34DE
-_021F34B8:
-	add r0, r6, #0
-	bl ApricornBox_GetKurtBall
-	add r2, r0, #0
-	ldr r0, [r5, #0x50]
-	mov r1, #0xa
-	bl BufferItemName
-	mov r0, #0
-	str r0, [sp]
-	mov r0, #1
-	str r0, [sp, #4]
-	ldr r0, [r5, #0x50]
-	mov r1, #0xb
-	add r2, r7, #0
-	mov r3, #2
-	bl BufferIntegerAsString
-	mov r2, #3
-_021F34DE:
-	ldr r1, [r5, #0x4c]
-	add r0, r5, #0
-	bl PhoneCallMessagePrint_Ungendered
-	b _021F3502
-_021F34E8:
-	bl ov101_021F2220
-	cmp r0, #0
-	bne _021F34F6
-	add sp, #8
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_021F34F6:
-	ldr r0, [r5, #0x4c]
-	bl DestroyMsgData
-	add sp, #8
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-_021F3502:
-	ldr r0, [r4, #4]
-	add r0, r0, #1
-	str r0, [r4, #4]
-	mov r0, #0
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_021F3510: .word 0x00000127
-_021F3514: .word 0x00000AA2
-	thumb_func_end ov101_021F3448
-
-	thumb_func_start ov101_021F3518
-ov101_021F3518: ; 0x021F3518
-	mov r2, #0
-	strh r2, [r1, #0x20]
-	ldr r1, [r1, #0x10]
-	ldrh r0, [r0, #0x30]
-	ldrh r1, [r1, #6]
-	cmp r1, r0
-	bne _021F352A
-	mov r0, #0x54
-	bx lr
-_021F352A:
-	mov r0, #0x55
-	bx lr
-	.balign 4, 0
-	thumb_func_end ov101_021F3518
-
-	thumb_func_start ov101_021F3530
-ov101_021F3530: ; 0x021F3530
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	mov r0, #0
-	strh r0, [r4, #0x20]
-	ldr r0, [r4, #0x10]
-	ldrh r1, [r0, #6]
-	ldrh r0, [r5, #0x30]
-	cmp r1, r0
-	bne _021F3548
-	mov r0, #0x56
-	pop {r4, r5, r6, pc}
-_021F3548:
-	ldr r0, [r5, #0x20]
-	bl sub_0202F284
-	add r1, r4, #0
-	add r1, #0x4a
-	strb r0, [r1]
-	add r0, r4, #0
-	add r0, #0x4a
-	ldrb r0, [r0]
-	cmp r0, #1
-	bls _021F3562
-	mov r0, #0x57
-	pop {r4, r5, r6, pc}
-_021F3562:
-	bne _021F3568
-	mov r0, #0x58
-	pop {r4, r5, r6, pc}
-_021F3568:
-	ldr r0, [r5, #0x20]
-	bl sub_0202F274
-	lsl r0, r0, #0x18
-	lsr r6, r0, #0x18
-	beq _021F3584
-	ldr r0, [r5, #0x20]
-	mov r1, #0x10
-	bl PhoneRematches_IsSeeking
-	cmp r0, #0
-	bne _021F3584
-	mov r0, #0x57
-	pop {r4, r5, r6, pc}
-_021F3584:
-	ldr r0, [r4, #0x38]
-	bl GF_RTC_GetTimeOfDayByHour
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	add r0, #0xfe
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	cmp r0, #1
-	bhi _021F359C
-	mov r0, #0x5b
-	pop {r4, r5, r6, pc}
-_021F359C:
-	cmp r6, #0
-	bne _021F35B2
-	ldr r0, [r5, #0x20]
-	mov r1, #1
-	bl sub_0202F254
-	ldr r0, [r5, #0x20]
-	mov r1, #0x10
-	mov r2, #1
-	bl PhoneRematches_SetSeeking
-_021F35B2:
-	add r4, #0x23
-	ldrb r0, [r4]
-	cmp r0, #1
-	bne _021F35BE
-	mov r0, #0x5a
-	pop {r4, r5, r6, pc}
-_021F35BE:
-	mov r0, #0x59
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end ov101_021F3530
-
-	thumb_func_start ov101_021F35C4
-ov101_021F35C4: ; 0x021F35C4
-	ldrb r2, [r1, #0x19]
-	cmp r2, #0
-	beq _021F35D2
-	mov r0, #0
-	strh r0, [r1, #0x20]
-	mov r0, #0x5d
-	bx lr
-_021F35D2:
-	ldr r2, [r1, #0x10]
-	ldrh r0, [r0, #0x30]
-	ldrh r2, [r2, #6]
-	cmp r2, r0
-	bne _021F35E4
-	mov r0, #0
-	strh r0, [r1, #0x20]
-	mov r0, #0x5c
-	bx lr
-_021F35E4:
-	mov r0, #3
-	strh r0, [r1, #0x20]
-	mov r0, #0
-	bx lr
-	thumb_func_end ov101_021F35C4
-
-	thumb_func_start ov101_021F35EC
-ov101_021F35EC: ; 0x021F35EC
-	push {r4, r5, r6, lr}
-	sub sp, #8
-	add r4, r0, #0
-	add r5, r4, #0
-	add r5, #0x88
-	ldr r1, [r5, #4]
-	cmp r1, #4
-	bhi _021F36E6
-	add r1, r1, r1
-	add r1, pc
-	ldrh r1, [r1, #6]
-	lsl r1, r1, #0x10
-	asr r1, r1, #0x10
-	add pc, r1
-_021F3608: ; jump table
-	.short _021F3612 - _021F3608 - 2 ; case 0
-	.short _021F3618 - _021F3608 - 2 ; case 1
-	.short _021F3634 - _021F3608 - 2 ; case 2
-	.short _021F36B2 - _021F3608 - 2 ; case 3
-	.short _021F36CC - _021F3608 - 2 ; case 4
-_021F3612:
-	bl ov101_021F2110
-	b _021F36E6
-_021F3618:
-	bl ov101_021F2614
-	cmp r0, #0
-	bne _021F3626
-	add sp, #8
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_021F3626:
-	ldr r1, [r4, #0x4c]
-	add r0, r4, #0
-	mov r2, #3
-	mov r3, #4
-	bl PhoneCallMessagePrint_Gendered
-	b _021F36E6
-_021F3634:
-	bl ov101_021F2220
-	cmp r0, #0
-	bne _021F3642
-	add sp, #8
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_021F3642:
-	ldr r0, [r4, #0x1c]
-	bl SaveArray_PCStorage_Get
-	add r6, r0, #0
-	bl PCStorage_GetActiveBox
-	add r1, r0, #0
-	ldr r2, [r4, #0x54]
-	add r0, r6, #0
-	bl PCStorage_GetBoxName
-	mov r0, #1
-	str r0, [sp]
-	mov r3, #2
-	str r3, [sp, #4]
-	ldr r0, [r4, #0x50]
-	ldr r2, [r4, #0x54]
-	mov r1, #0xa
-	bl BufferString
-	add r0, r6, #0
-	bl PCStorage_CountEmptySpotsInAllBoxes
-	add r6, r0, #0
-	mov r0, #0
-	str r0, [sp]
-	mov r0, #1
-	str r0, [sp, #4]
-	ldr r0, [r4, #0x50]
-	mov r1, #0xb
-	add r2, r6, #0
-	mov r3, #3
-	bl BufferIntegerAsString
-	cmp r6, #0
-	bne _021F3696
-	ldr r1, [r4, #0x4c]
-	add r0, r4, #0
-	mov r2, #9
-	bl PhoneCallMessagePrint_Ungendered
-	b _021F36E6
-_021F3696:
-	bl LCRandom
-	mov r1, #3
-	bl _s32_div_f
-	add r2, r1, #0
-	add r2, r2, #5
-	lsl r2, r2, #0x18
-	ldr r1, [r4, #0x4c]
-	add r0, r4, #0
-	lsr r2, r2, #0x18
-	bl PhoneCallMessagePrint_Ungendered
-	b _021F36E6
-_021F36B2:
-	bl ov101_021F2220
-	cmp r0, #0
-	bne _021F36C0
-	add sp, #8
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_021F36C0:
-	ldr r1, [r4, #0x4c]
-	add r0, r4, #0
-	mov r2, #8
-	bl PhoneCallMessagePrint_Ungendered
-	b _021F36E6
-_021F36CC:
-	bl ov101_021F2220
-	cmp r0, #0
-	bne _021F36DA
-	add sp, #8
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_021F36DA:
-	ldr r0, [r4, #0x4c]
-	bl DestroyMsgData
-	add sp, #8
-	mov r0, #1
-	pop {r4, r5, r6, pc}
-_021F36E6:
-	ldr r0, [r5, #4]
-	add r0, r0, #1
-	str r0, [r5, #4]
-	mov r0, #0
-	add sp, #8
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end ov101_021F35EC
-
-	thumb_func_start ov101_021F36F4
-ov101_021F36F4: ; 0x021F36F4
+	thumb_func_start PhoneCall_GetScriptId_DayCareMan
+PhoneCall_GetScriptId_DayCareMan: ; 0x021F36F4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	str r1, [sp]
@@ -476,7 +122,7 @@ _021F3786:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021F3794: .word 0x00000992
-	thumb_func_end ov101_021F36F4
+	thumb_func_end PhoneCall_GetScriptId_DayCareMan
 
 	thumb_func_start ov101_021F3798
 ov101_021F3798: ; 0x021F3798
@@ -605,8 +251,8 @@ _021F3882:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov101_021F3798
 
-	thumb_func_start ov101_021F388C
-ov101_021F388C: ; 0x021F388C
+	thumb_func_start PhoneCall_GetScriptId_DayCareLady
+PhoneCall_GetScriptId_DayCareLady: ; 0x021F388C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	mov r1, #0
@@ -662,7 +308,7 @@ _021F38EA:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov101_021F388C
+	thumb_func_end PhoneCall_GetScriptId_DayCareLady
 
 	thumb_func_start ov101_021F38FC
 ov101_021F38FC: ; 0x021F38FC
@@ -877,8 +523,8 @@ _021F3A96:
 	.balign 4, 0
 	thumb_func_end ov101_021F38FC
 
-	thumb_func_start ov101_021F3AA4
-ov101_021F3AA4: ; 0x021F3AA4
+	thumb_func_start PhoneCall_GetScriptId_Buena
+PhoneCall_GetScriptId_Buena: ; 0x021F3AA4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -942,7 +588,7 @@ _021F3B16:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov101_021F3AA4
+	thumb_func_end PhoneCall_GetScriptId_Buena
 
 	thumb_func_start ov101_021F3B20
 ov101_021F3B20: ; 0x021F3B20
@@ -1136,8 +782,8 @@ _021F3C88:
 	pop {r4, pc}
 	thumb_func_end ov101_021F3C60
 
-	thumb_func_start ov101_021F3C8C
-ov101_021F3C8C: ; 0x021F3C8C
+	thumb_func_start PhoneCall_GetScriptId_EthanLyra
+PhoneCall_GetScriptId_EthanLyra: ; 0x021F3C8C
 	ldrb r2, [r1, #0x19]
 	cmp r2, #0
 	beq _021F3C9A
@@ -1166,7 +812,7 @@ _021F3CB4:
 	bx lr
 	.balign 4, 0
 _021F3CBC: .word ov101_021F86C8
-	thumb_func_end ov101_021F3C8C
+	thumb_func_end PhoneCall_GetScriptId_EthanLyra
 
 	thumb_func_start ov101_021F3CC0
 ov101_021F3CC0: ; 0x021F3CC0
@@ -1419,8 +1065,8 @@ _021F3E88:
 _021F3EA4: .word ov101_021F86CC
 	thumb_func_end ov101_021F3E74
 
-	thumb_func_start ov101_021F3EA8
-ov101_021F3EA8: ; 0x021F3EA8
+	thumb_func_start PhoneCall_GetScriptId_GymLeader
+PhoneCall_GetScriptId_GymLeader: ; 0x021F3EA8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x24]
@@ -1475,7 +1121,7 @@ _021F3F08:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov101_021F3EA8
+	thumb_func_end PhoneCall_GetScriptId_GymLeader
 
 	thumb_func_start ov101_021F3F10
 ov101_021F3F10: ; 0x021F3F10
@@ -1742,8 +1388,8 @@ _021F4106:
 	.balign 4, 0
 	thumb_func_end ov101_021F40E8
 
-	thumb_func_start ov101_021F410C
-ov101_021F410C: ; 0x021F410C
+	thumb_func_start PhoneCall_GetScriptId_Baoba
+PhoneCall_GetScriptId_Baoba: ; 0x021F410C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -1833,7 +1479,7 @@ _021F41A8:
 	lsr r0, r0, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov101_021F410C
+	thumb_func_end PhoneCall_GetScriptId_Baoba
 
 	thumb_func_start ov101_021F41B8
 ov101_021F41B8: ; 0x021F41B8
@@ -1932,8 +1578,8 @@ _021F4264:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov101_021F41B8
 
-	thumb_func_start ov101_021F4274
-ov101_021F4274: ; 0x021F4274
+	thumb_func_start PhoneCall_GetScriptId_Irwin
+PhoneCall_GetScriptId_Irwin: ; 0x021F4274
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r7, r1, #0
@@ -1989,7 +1635,7 @@ _021F42DE:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021F42E0: .word 0x0000FFFF
-	thumb_func_end ov101_021F4274
+	thumb_func_end PhoneCall_GetScriptId_Irwin
 
 	thumb_func_start ov101_021F42E4
 ov101_021F42E4: ; 0x021F42E4
