@@ -1,5 +1,6 @@
 #include "global.h"
 
+#include "constants/badge.h"
 #include "constants/maps.h"
 
 #include "application/pokegear/phone/phone_internal.h"
@@ -86,6 +87,7 @@
 #include "map_header.h"
 #include "math_util.h"
 #include "phonebook_dat.h"
+#include "safari_zone.h"
 #include "sys_flags.h"
 #include "sys_vars.h"
 #include "unk_02005D10.h"
@@ -104,6 +106,7 @@ BOOL ov101_021F2DE8(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C 
 u8 ov101_021F3C60(u8 hour);
 u16 ov101_021F3E74(u16 mapId);
 BOOL ov101_021F40E8(PokegearPhoneApp_Sub0C4 *a0, u8 callerID);
+u16 ov101_021F42E4(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1, u8 badgeCount, u8 hasPlainBadge);
 
 // static const u16 ov101_021F86C8[] = {
 //     PHONE_SCRIPT_102,
@@ -1456,4 +1459,173 @@ BOOL ov101_021F40E8(PokegearPhoneApp_Sub0C4 *a0, u8 callerID) {
         }
     }
     return r4 < 5;
+}
+
+u16 PhoneCall_GetScriptId_Baoba(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1) {
+    SafariZone *safariZone;
+
+    a1->scriptType = 0;
+    if (a1->unk_1A == 2) {
+        return PHONE_SCRIPT_141;
+    }
+    if (a1->unk_19) {
+        safariZone = Save_SafariZone_Get(a0->saveData);
+        switch (a1->unk_1C) {
+        case PHONE_SCRIPT_000:
+            a1->scriptType = 15;
+            return PHONE_SCRIPT_000;
+        case PHONE_SCRIPT_142:
+            Save_VarsFlags_SetVar4057(a0->saveVarsFlags, 4);
+            return a1->unk_1C;
+        case PHONE_SCRIPT_143:
+        case PHONE_SCRIPT_144:
+            sub_0202F730(safariZone, 1);
+            sub_0202F784(safariZone, Save_PlayerData_GetIGTAddr(a0->saveData));
+            break;
+        case PHONE_SCRIPT_145:
+        case PHONE_SCRIPT_146:
+            sub_0202F730(safariZone, 4);
+            break;
+        default:
+            a1->unk_1C = PHONE_SCRIPT_154;
+            return a1->unk_1C;
+        }
+        Save_VarsFlags_SetVar4057(a0->saveVarsFlags, 7);
+        return a1->unk_1C;
+    }
+    if (a1->phoneBookEntry->mapId == a0->playerMapSec) {
+        return PHONE_SCRIPT_140;
+    }
+    return Save_VarsFlags_GetVar4057(a0->saveVarsFlags) + PHONE_SCRIPT_147;
+}
+
+BOOL GearPhoneCall_Baoba(PokegearPhoneApp_Sub0C4 *a0) {
+    PokegearPhoneApp_Sub0C4_Sub88 *sp0 = &a0->unk_88;
+    u8 sp4;
+    u8 *r6;
+    u8 r4;
+
+    switch (sp0->unk_04) {
+    case 0:
+        PhoneCall_InitMsgDataAndBufferNames(a0);
+        r6 = sub_0202F340(a0->momsSavings, &sp4, a0->heapId);
+        if (sp4 == 0) {
+            PhoneCallMessagePrint_Gendered(a0, a0->msgData_PhoneContact, msg_0667_00038, msg_0667_00039);
+        } else if (sp4 >= 6) {
+            PhoneCallMessagePrint_Gendered(a0, a0->msgData_PhoneContact, msg_0667_00024, msg_0667_00025);
+        } else {
+            for (r4 = 0; r4 < sp4; ++r4) {
+                BufferSafariZoneAreaName(a0->msgFormat, 10 + r4, r6[r4]);
+            }
+            sp4 = 2 * (sp4 - 1);
+            PhoneCallMessagePrint_Gendered(a0, a0->msgData_PhoneContact, msg_0667_00014 + sp4, msg_0667_00015 + sp4);
+        }
+        FreeToHeap(r6);
+        break;
+    default:
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+            return FALSE;
+        }
+        DestroyMsgData(a0->msgData_PhoneContact);
+        return TRUE;
+    }
+
+    ++sp0->unk_04;
+    return FALSE;
+}
+
+u16 PhoneCall_GetScriptId_Irwin(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1) {
+    u8 badgeCount;
+    u8 hasPlainBadge;
+    u16 scriptID;
+
+    a1->scriptType = 0;
+    if (!a1->unk_19) {
+        if (Save_VarsFlags_IsInRocketTakeover(a0->saveVarsFlags)) {
+            return PHONE_SCRIPT_156;
+        } else {
+            return PHONE_SCRIPT_172 + (LCRandom() % 3);
+        }
+    }
+    badgeCount = PlayerProfile_CountBadges(a0->playerProfile);
+    hasPlainBadge = PlayerProfile_TestBadgeFlag(a0->playerProfile, BADGE_PLAIN);
+    scriptID = ov101_021F42E4(a0, a1, badgeCount, hasPlainBadge);
+    if (scriptID != 0xFFFF) {
+        return scriptID;
+    } else if (!hasPlainBadge) {
+        return PHONE_SCRIPT_169;
+    } else if (badgeCount < 16) {
+        return PHONE_SCRIPT_170;
+    } else {
+        return PHONE_SCRIPT_171;
+    }
+}
+
+u16 ov101_021F42E4(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1, u8 badgeCount, u8 hasPlainBadge) {
+    if (!Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_UNK_998)) {
+        return 0xFFFF;
+    }
+    Save_VarsFlags_ClearFlagInArray(a0->saveVarsFlags, FLAG_UNK_998);
+    if (badgeCount >= 16) {
+        if (!Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_UNK_9A4)) {
+            Save_VarsFlags_SetFlagInArray(a0->saveVarsFlags, FLAG_UNK_9A4);
+            return PHONE_SCRIPT_168;
+        } else {
+            return 0xFFFF;
+        }
+    } else if (PlayerProfile_TestBadgeFlag(a0->playerProfile, BADGE_MARSH)) {
+        if (!Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_UNK_9A3)) {
+            Save_VarsFlags_SetFlagInArray(a0->saveVarsFlags, FLAG_UNK_9A3);
+            return PHONE_SCRIPT_167;
+        } else {
+            return 0xFFFF;
+        }
+    } else if (Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_SNORLAX_MEET)) {
+        if (!Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_UNK_9A2)) {
+            Save_VarsFlags_SetFlagInArray(a0->saveVarsFlags, FLAG_UNK_9A2);
+            return PHONE_SCRIPT_166;
+        } else {
+            return 0xFFFF;
+        }
+    } else if (Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_UNK_087)) {
+        if (!Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_UNK_9A1)) {
+            Save_VarsFlags_SetFlagInArray(a0->saveVarsFlags, FLAG_UNK_9A1);
+            return PHONE_SCRIPT_165;
+        } else {
+            return 0xFFFF;
+        }
+    } else if (Save_VarsFlags_FlypointFlagAction(a0->saveVarsFlags, FLAG_ACTION_CHECK, FLAG_SYS_FLYPOINT_VERMILION - FLAG_SYS_FLYPOINT_PALLET)) {
+        return PHONE_SCRIPT_164;
+    } else if (CheckGameClearFlag(a0->saveVarsFlags)) {
+        if (!Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_UNK_9A5)) {
+            Save_VarsFlags_SetFlagInArray(a0->saveVarsFlags, FLAG_UNK_9A5);
+            return PHONE_SCRIPT_163;
+        } else {
+            return 0xFFFF;
+        }
+    } else if (PlayerProfile_TestBadgeFlag(a0->playerProfile, BADGE_RISING)) {
+        return PHONE_SCRIPT_162;
+    } else if (Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_BEAT_RADIO_TOWER_ROCKETS)) {
+        return PHONE_SCRIPT_161;
+    } else if (Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_RED_GYARADOS_MEET)) {
+        if (!Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_UNK_9A0)) {
+            Save_VarsFlags_SetFlagInArray(a0->saveVarsFlags, FLAG_UNK_9A0);
+            return PHONE_SCRIPT_160;
+        } else {
+            return 0xFFFF;
+        }
+    } else if (Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_UNK_96A)) {
+        if (!Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_UNK_99F)) {
+            Save_VarsFlags_SetFlagInArray(a0->saveVarsFlags, FLAG_UNK_99F);
+            return PHONE_SCRIPT_159;
+        } else {
+            return 0xFFFF;
+        }
+    } else if (PlayerProfile_TestBadgeFlag(a0->playerProfile, BADGE_FOG)) {
+        return PHONE_SCRIPT_158;
+    } else if (hasPlainBadge) {
+        return PHONE_SCRIPT_157;
+    } else {
+        return 0xFFFF;
+    }
 }
