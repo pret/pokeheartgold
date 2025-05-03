@@ -3,6 +3,7 @@
 #include "constants/maps.h"
 #include "constants/items.h"
 #include "constants/phone_contacts.h"
+#include "constants/phone_scripts.h"
 #include "constants/flags.h"
 #include "msgdata/msg/msg_0271.h"
 #include "msgdata/msg/msg_0416.h"
@@ -15,897 +16,14 @@
 
 	.text
 
-	.extern ov101_021F8400
-	.extern ov101_021F09B0
-	.extern ov101_021F0ACC
-	.extern ov101_021F2110
-	.extern ov101_021F217C
-	.extern PhoneCallMessagePrint
+	.extern PhoneCall_InitMsgDataAndBufferNames
 	.extern PhoneCallMessagePrint_Gendered
 	.extern PhoneCallMessagePrint_Ungendered
-	.extern ov101_021F2220
-	.extern ov101_021F2248
-	.extern ov101_021F2308
-	.extern ov101_021F2384
-	.extern ov101_021F2338
-	.extern ov101_021F2344
-	.extern ov101_021F2374
-	.extern ov101_021F2384
-	.extern ov101_021F23F0
-	.extern ov101_021F243C
-	.extern ov101_021F2494
-	.extern ov101_021F2510
-	.extern ov101_021F2598
-	.extern ov101_021F2614
-	.extern ov101_021F2680
-	.extern ov101_021F2C78
-	.extern ov101_021F2E04
-	.extern ov101_021F2E74
-
-	thumb_func_start PhoneCall_GetScriptId_Buena
-PhoneCall_GetScriptId_Buena: ; 0x021F3AA4
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	mov r0, #0
-	strh r0, [r4, #0x20]
-	ldr r0, [r5, #0x28]
-	bl CheckGameClearFlag
-	add r1, r4, #0
-	add r1, #0x4d
-	ldrb r1, [r1]
-	mov r2, #1
-	lsl r0, r0, #0x18
-	bic r1, r2
-	lsr r2, r0, #0x18
-	mov r0, #1
-	and r0, r2
-	orr r1, r0
-	add r0, r4, #0
-	add r0, #0x4d
-	strb r1, [r0]
-	ldr r0, [r4, #0x38]
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	bl ov101_021F3C60
-	add r1, r4, #0
-	add r1, #0x4a
-	strb r0, [r1]
-	ldr r0, [r5, #0x28]
-	bl Save_VarsFlags_IsInRocketTakeover
-	cmp r0, #0
-	beq _021F3AEC
-	mov r0, #0x63
-	pop {r3, r4, r5, pc}
-_021F3AEC:
-	ldrb r0, [r4, #0x19]
-	cmp r0, #0
-	beq _021F3AFA
-	mov r0, #9
-	strh r0, [r4, #0x20]
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-_021F3AFA:
-	add r0, r4, #0
-	add r0, #0x4a
-	ldrb r0, [r0]
-	cmp r0, #3
-	bne _021F3B08
-	mov r0, #0x64
-	pop {r3, r4, r5, pc}
-_021F3B08:
-	ldr r0, [r4, #0x10]
-	ldrh r1, [r0, #6]
-	ldrh r0, [r5, #0x30]
-	cmp r1, r0
-	bne _021F3B16
-	mov r0, #0x62
-	pop {r3, r4, r5, pc}
-_021F3B16:
-	mov r0, #8
-	strh r0, [r4, #0x20]
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end PhoneCall_GetScriptId_Buena
-
-	thumb_func_start GearPhoneCall_Buena
-GearPhoneCall_Buena: ; 0x021F3B20
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r4, r5, #0
-	add r4, #0x88
-	ldr r1, [r4, #4]
-	cmp r1, #0
-	beq _021F3B34
-	cmp r1, #1
-	beq _021F3B56
-	b _021F3B7E
-_021F3B34:
-	bl ov101_021F2110
-	add r0, r4, #0
-	add r0, #0x23
-	ldrb r0, [r0]
-	ldr r1, [r5, #0x4c]
-	lsl r3, r0, #1
-	add r2, r3, #3
-	add r3, r3, #4
-	lsl r2, r2, #0x18
-	lsl r3, r3, #0x18
-	add r0, r5, #0
-	lsr r2, r2, #0x18
-	lsr r3, r3, #0x18
-	bl PhoneCallMessagePrint_Gendered
-	b _021F3B94
-_021F3B56:
-	bl ov101_021F2220
-	cmp r0, #0
-	bne _021F3B62
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-_021F3B62:
-	bl LCRandom
-	mov r1, #3
-	bl _s32_div_f
-	add r2, r1, #0
-	add r2, #0xa
-	lsl r2, r2, #0x18
-	ldr r1, [r5, #0x4c]
-	add r0, r5, #0
-	lsr r2, r2, #0x18
-	bl PhoneCallMessagePrint_Ungendered
-	b _021F3B94
-_021F3B7E:
-	bl ov101_021F2220
-	cmp r0, #0
-	bne _021F3B8A
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-_021F3B8A:
-	ldr r0, [r5, #0x4c]
-	bl DestroyMsgData
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-_021F3B94:
-	ldr r0, [r4, #4]
-	add r0, r0, #1
-	str r0, [r4, #4]
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end GearPhoneCall_Buena
-
-	thumb_func_start GearPhoneCall_Buena2
-GearPhoneCall_Buena2: ; 0x021F3BA0
-	push {r4, r5, r6, lr}
-	add r6, r0, #0
-	add r4, r6, #0
-	add r4, #0x88
-	ldr r1, [r4, #4]
-	cmp r1, #0
-	beq _021F3BB4
-	cmp r1, #1
-	beq _021F3BD8
-	b _021F3C3E
-_021F3BB4:
-	bl ov101_021F2110
-	add r0, r4, #0
-	add r0, #0x23
-	ldrb r0, [r0]
-	ldr r1, [r6, #0x4c]
-	lsl r3, r0, #1
-	add r2, r3, #0
-	add r2, #0xf
-	add r3, #0x10
-	lsl r2, r2, #0x18
-	lsl r3, r3, #0x18
-	add r0, r6, #0
-	lsr r2, r2, #0x18
-	lsr r3, r3, #0x18
-	bl PhoneCallMessagePrint_Gendered
-	b _021F3C54
-_021F3BD8:
-	bl ov101_021F2220
-	cmp r0, #0
-	bne _021F3BE4
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_021F3BE4:
-	add r0, r4, #0
-	add r0, #0x4a
-	ldrb r0, [r0]
-	cmp r0, #3
-	bne _021F3BFA
-	ldr r1, [r6, #0x4c]
-	add r0, r6, #0
-	mov r2, #0x24
-	bl PhoneCallMessagePrint_Ungendered
-	b _021F3C54
-_021F3BFA:
-	add r0, r4, #0
-	add r0, #0x4d
-	ldrb r0, [r0]
-	lsl r0, r0, #0x1f
-	lsr r1, r0, #0x1f
-	lsl r0, r1, #1
-	add r0, r1, r0
-	add r0, #0xb
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-	bl LCRandom
-	add r1, r5, #0
-	bl _s32_div_f
-	lsl r0, r1, #0x18
-	lsr r2, r0, #0x18
-	cmp r2, #0xd
-	bne _021F3C2E
-	ldr r1, [r6, #0x4c]
-	add r0, r6, #0
-	mov r2, #0x22
-	mov r3, #0x23
-	bl PhoneCallMessagePrint_Gendered
-	b _021F3C54
-_021F3C2E:
-	add r2, #0x15
-	lsl r2, r2, #0x18
-	ldr r1, [r6, #0x4c]
-	add r0, r6, #0
-	lsr r2, r2, #0x18
-	bl PhoneCallMessagePrint_Ungendered
-	b _021F3C54
-_021F3C3E:
-	bl ov101_021F2220
-	cmp r0, #0
-	bne _021F3C4A
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_021F3C4A:
-	ldr r0, [r6, #0x4c]
-	bl DestroyMsgData
-	mov r0, #1
-	pop {r4, r5, r6, pc}
-_021F3C54:
-	ldr r0, [r4, #4]
-	add r0, r0, #1
-	str r0, [r4, #4]
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end GearPhoneCall_Buena2
-
-	thumb_func_start ov101_021F3C60
-ov101_021F3C60: ; 0x021F3C60
-	push {r4, lr}
-	add r4, r0, #0
-	bl sub_02095FF8
-	cmp r0, #0
-	beq _021F3C70
-	mov r0, #3
-	pop {r4, pc}
-_021F3C70:
-	cmp r4, #3
-	bls _021F3C7C
-	cmp r4, #0xa
-	bhs _021F3C7C
-	mov r0, #0
-	pop {r4, pc}
-_021F3C7C:
-	cmp r4, #9
-	bls _021F3C88
-	cmp r4, #0x14
-	bhs _021F3C88
-	mov r0, #1
-	pop {r4, pc}
-_021F3C88:
-	mov r0, #2
-	pop {r4, pc}
-	thumb_func_end ov101_021F3C60
-
-	thumb_func_start PhoneCall_GetScriptId_EthanLyra
-PhoneCall_GetScriptId_EthanLyra: ; 0x021F3C8C
-	ldrb r2, [r1, #0x19]
-	cmp r2, #0
-	beq _021F3C9A
-	mov r0, #0xb
-	strh r0, [r1, #0x20]
-	mov r0, #0
-	bx lr
-_021F3C9A:
-	ldr r2, [r1, #0x10]
-	ldrh r3, [r2, #6]
-	ldrh r2, [r0, #0x30]
-	cmp r3, r2
-	bne _021F3CB4
-	mov r2, #0
-	strh r2, [r1, #0x20]
-	add r0, #0x36
-	ldrb r0, [r0]
-	lsl r1, r0, #1
-	ldr r0, _021F3CBC ; =ov101_021F86C8
-	ldrh r0, [r0, r1]
-	bx lr
-_021F3CB4:
-	mov r0, #0xa
-	strh r0, [r1, #0x20]
-	mov r0, #0
-	bx lr
-	.balign 4, 0
-_021F3CBC: .word ov101_021F86C8
-	thumb_func_end PhoneCall_GetScriptId_EthanLyra
-
-	thumb_func_start GearPhoneCall_EthanLyra
-GearPhoneCall_EthanLyra: ; 0x021F3CC0
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r4, r5, #0
-	add r4, #0x88
-	ldr r1, [r4, #4]
-	cmp r1, #0
-	beq _021F3CD8
-	cmp r1, #1
-	beq _021F3CDE
-	cmp r1, #2
-	beq _021F3CF2
-	b _021F3D14
-_021F3CD8:
-	bl ov101_021F2110
-	b _021F3D2A
-_021F3CDE:
-	add r2, r4, #0
-	add r2, #0x23
-	ldrb r2, [r2]
-	ldr r1, [r5, #0x4c]
-	add r2, r2, #4
-	lsl r2, r2, #0x18
-	lsr r2, r2, #0x18
-	bl PhoneCallMessagePrint_Ungendered
-	b _021F3D2A
-_021F3CF2:
-	bl ov101_021F2220
-	cmp r0, #0
-	bne _021F3CFE
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-_021F3CFE:
-	ldrh r0, [r5, #0x32]
-	bl ov101_021F3E74
-	add r2, r0, #0
-	lsl r2, r2, #0x18
-	ldr r1, [r5, #0x4c]
-	add r0, r5, #0
-	lsr r2, r2, #0x18
-	bl PhoneCallMessagePrint_Ungendered
-	b _021F3D2A
-_021F3D14:
-	bl ov101_021F2220
-	cmp r0, #0
-	bne _021F3D20
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-_021F3D20:
-	ldr r0, [r5, #0x4c]
-	bl DestroyMsgData
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-_021F3D2A:
-	ldr r0, [r4, #4]
-	add r0, r0, #1
-	str r0, [r4, #4]
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-	thumb_func_end GearPhoneCall_EthanLyra
-
-	thumb_func_start ov101_021F3D34
-ov101_021F3D34: ; 0x021F3D34
-	push {r3, r4, r5, r6, lr}
-	sub sp, #4
-	add r5, r0, #0
-	ldr r0, [r5, #0x1c]
-	mov r4, #0
-	bl SaveData_GSPlayerMisc_Get
-	bl sub_0202EE70
-	add r6, r0, #0
-	mov r1, #1
-	add r0, sp, #0
-	strb r1, [r0]
-	ldr r0, [r5, #0x28]
-	mov r1, #2
-	mov r2, #0x19
-	bl Save_VarsFlags_FlypointFlagAction
-	cmp r0, #0
-	beq _021F3D62
-	mov r1, #1
-	add r0, sp, #0
-	strb r1, [r0, #1]
-_021F3D62:
-	cmp r6, #0
-	beq _021F3D6C
-	mov r1, #1
-	add r0, sp, #0
-	strb r1, [r0, #2]
-_021F3D6C:
-	cmp r6, #1
-	bls _021F3D76
-	mov r1, #1
-	add r0, sp, #0
-	strb r1, [r0, #3]
-_021F3D76:
-	ldr r0, [r5]
-	mov r1, #0x49
-	bl AllocFromHeapAtEnd
-	mov r1, #0
-	mov r2, #0x49
-	add r5, r0, #0
-	bl MI_CpuFill8
-	ldr r3, _021F3DC4 ; =ov101_021F8760
-	mov r1, #0
-	add r0, sp, #0
-_021F3D8E:
-	ldrb r2, [r3]
-	ldrb r2, [r0, r2]
-	cmp r2, #0
-	beq _021F3DA0
-	add r2, r4, #0
-	add r4, r4, #1
-	lsl r4, r4, #0x18
-	lsr r4, r4, #0x18
-	strb r1, [r5, r2]
-_021F3DA0:
-	add r1, r1, #1
-	add r3, r3, #1
-	cmp r1, #0x49
-	blt _021F3D8E
-	bl LCRandom
-	add r1, r4, #0
-	bl _s32_div_f
-	ldrb r4, [r5, r1]
-	add r0, r5, #0
-	bl FreeToHeap
-	add r4, #0x56
-	lsl r0, r4, #0x18
-	lsr r0, r0, #0x18
-	add sp, #4
-	pop {r3, r4, r5, r6, pc}
-	.balign 4, 0
-_021F3DC4: .word ov101_021F8760
-	thumb_func_end ov101_021F3D34
-
-	thumb_func_start GearPhoneCall_EthanLyra2
-GearPhoneCall_EthanLyra2: ; 0x021F3DC8
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r4, r5, #0
-	add r4, #0x88
-	ldr r1, [r4, #4]
-	cmp r1, #0
-	beq _021F3DE0
-	cmp r1, #1
-	beq _021F3DE6
-	cmp r1, #2
-	beq _021F3DFA
-	b _021F3E54
-_021F3DE0:
-	bl ov101_021F2110
-	b _021F3E6A
-_021F3DE6:
-	add r2, r4, #0
-	add r2, #0x23
-	ldrb r2, [r2]
-	ldr r1, [r5, #0x4c]
-	add r2, r2, #7
-	lsl r2, r2, #0x18
-	lsr r2, r2, #0x18
-	bl PhoneCallMessagePrint_Ungendered
-	b _021F3E6A
-_021F3DFA:
-	bl ov101_021F2220
-	cmp r0, #0
-	bne _021F3E06
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-_021F3E06:
-	bl LCRandom
-	mov r1, #0xfa
-	lsl r1, r1, #2
-	bl _s32_div_f
-	mov r0, #0x7d
-	lsl r0, r0, #2
-	cmp r1, r0
-	bge _021F3E42
-	bl LCRandom
-	mov r1, #0xe1
-	lsl r1, r1, #2
-	bl _s32_div_f
-	add r0, r1, #0
-	mov r1, #0x4b
-	lsl r1, r1, #2
-	bl _s32_div_f
-	add r2, r0, #0
-	add r2, #0xa
-	lsl r2, r2, #0x18
-	ldr r1, [r5, #0x4c]
-	add r0, r5, #0
-	lsr r2, r2, #0x18
-	bl PhoneCallMessagePrint_Ungendered
-	b _021F3E6A
-_021F3E42:
-	add r0, r5, #0
-	bl ov101_021F3D34
-	add r2, r0, #0
-	ldr r1, [r5, #0x4c]
-	add r0, r5, #0
-	bl PhoneCallMessagePrint_Ungendered
-	b _021F3E6A
-_021F3E54:
-	bl ov101_021F2220
-	cmp r0, #0
-	bne _021F3E60
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-_021F3E60:
-	ldr r0, [r5, #0x4c]
-	bl DestroyMsgData
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-_021F3E6A:
-	ldr r0, [r4, #4]
-	add r0, r0, #1
-	str r0, [r4, #4]
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-	thumb_func_end GearPhoneCall_EthanLyra2
-
-	thumb_func_start ov101_021F3E74
-ov101_021F3E74: ; 0x021F3E74
-	push {r3, lr}
-	ldr r3, _021F3EA4 ; =ov101_021F86CC
-	mov r2, #0
-_021F3E7A:
-	ldrh r1, [r3]
-	cmp r0, r1
-	bne _021F3E88
-	add r2, #0xd
-	lsl r0, r2, #0x10
-	lsr r0, r0, #0x10
-	pop {r3, pc}
-_021F3E88:
-	add r2, r2, #1
-	add r3, r3, #2
-	cmp r2, #0x49
-	blt _021F3E7A
-	bl LCRandom
-	mov r1, #3
-	bl _s32_div_f
-	add r1, #0xa
-	lsl r0, r1, #0x10
-	lsr r0, r0, #0x10
-	pop {r3, pc}
-	nop
-_021F3EA4: .word ov101_021F86CC
-	thumb_func_end ov101_021F3E74
-
-	thumb_func_start PhoneCall_GetScriptId_GymLeader
-PhoneCall_GetScriptId_GymLeader: ; 0x021F3EA8
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	ldr r0, [r5, #0x24]
-	add r4, r1, #0
-	bl PlayerProfile_CountBadges
-	cmp r0, #0x10
-	blt _021F3EC8
-	add r0, r4, #0
-	add r0, #0x4d
-	ldrb r1, [r0]
-	mov r0, #1
-	bic r1, r0
-	mov r0, #1
-	orr r1, r0
-	b _021F3ED2
-_021F3EC8:
-	add r0, r4, #0
-	add r0, #0x4d
-	ldrb r1, [r0]
-	mov r0, #1
-	bic r1, r0
-_021F3ED2:
-	add r0, r4, #0
-	add r0, #0x4d
-	strb r1, [r0]
-	ldrb r1, [r4, #0x18]
-	ldr r0, [r5, #0x20]
-	bl PhoneRematches_IsSeeking
-	add r1, r4, #0
-	add r1, #0x4d
-	ldrb r2, [r1]
-	lsl r0, r0, #0x18
-	mov r1, #2
-	lsr r0, r0, #0x18
-	bic r2, r1
-	lsl r0, r0, #0x1f
-	lsr r0, r0, #0x1e
-	add r1, r2, #0
-	orr r1, r0
-	add r0, r4, #0
-	add r0, #0x4d
-	strb r1, [r0]
-	ldrb r0, [r4, #0x19]
-	cmp r0, #0
-	beq _021F3F06
-	mov r0, #0xe
-	b _021F3F08
-_021F3F06:
-	mov r0, #0xd
-_021F3F08:
-	strh r0, [r4, #0x20]
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end PhoneCall_GetScriptId_GymLeader
-
-	thumb_func_start GearPhoneCall_GymLeader
-GearPhoneCall_GymLeader: ; 0x021F3F10
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	add r4, r5, #0
-	add r4, #0x88
-	ldr r1, [r4, #4]
-	cmp r1, #3
-	bls _021F3F20
-	b _021F4042
-_021F3F20:
-	add r1, r1, r1
-	add r1, pc
-	ldrh r1, [r1, #6]
-	lsl r1, r1, #0x10
-	asr r1, r1, #0x10
-	add pc, r1
-_021F3F2C: ; jump table
-	.short _021F3F34 - _021F3F2C - 2 ; case 0
-	.short _021F3F60 - _021F3F2C - 2 ; case 1
-	.short _021F3FD6 - _021F3F2C - 2 ; case 2
-	.short _021F3FEC - _021F3F2C - 2 ; case 3
-_021F3F34:
-	bl ov101_021F2110
-	ldr r0, [r4, #0x10]
-	ldrh r1, [r0, #6]
-	ldrh r0, [r5, #0x30]
-	cmp r1, r0
-	bne _021F3F54
-	mov r0, #0xff
-	str r0, [r4, #4]
-	ldr r1, [r5, #0x4c]
-	add r0, r5, #0
-	mov r2, #1
-	bl PhoneCallMessagePrint_Ungendered
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_021F3F54:
-	ldr r1, [r5, #0x4c]
-	add r0, r5, #0
-	mov r2, #2
-	bl PhoneCallMessagePrint_Ungendered
-	b _021F405A
-_021F3F60:
-	bl ov101_021F2220
-	cmp r0, #0
-	bne _021F3F6C
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_021F3F6C:
-	add r0, r4, #0
-	add r0, #0x4d
-	ldrb r0, [r0]
-	lsl r1, r0, #0x1f
-	lsr r1, r1, #0x1f
-	bne _021F3F8A
-	ldr r1, [r5, #0x4c]
-	add r0, r5, #0
-	mov r2, #3
-	bl PhoneCallMessagePrint_Ungendered
-	mov r0, #0xff
-	str r0, [r4, #4]
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_021F3F8A:
-	lsl r0, r0, #0x1e
-	lsr r0, r0, #0x1f
-	beq _021F3FA2
-	ldr r1, [r5, #0x4c]
-	add r0, r5, #0
-	mov r2, #9
-	bl PhoneCallMessagePrint_Ungendered
-	mov r0, #0xff
-	str r0, [r4, #4]
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_021F3FA2:
-	ldr r2, [r4, #0x10]
-	ldr r1, [r4, #0x34]
-	ldrb r0, [r2, #0xd]
-	cmp r1, r0
-	bne _021F3FB8
-	add r0, r4, #0
-	add r0, #0x23
-	ldrb r1, [r0]
-	ldrb r0, [r2, #0xe]
-	cmp r1, r0
-	beq _021F3FCA
-_021F3FB8:
-	ldr r1, [r5, #0x4c]
-	add r0, r5, #0
-	mov r2, #4
-	bl PhoneCallMessagePrint_Ungendered
-	mov r0, #0xff
-	str r0, [r4, #4]
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_021F3FCA:
-	ldr r1, [r5, #0x4c]
-	add r0, r5, #0
-	mov r2, #5
-	bl PhoneCallMessagePrint_Ungendered
-	b _021F405A
-_021F3FD6:
-	bl ov101_021F2220
-	cmp r0, #0
-	bne _021F3FE2
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_021F3FE2:
-	add r0, r5, #0
-	mov r1, #6
-	bl ov101_021F2308
-	b _021F405A
-_021F3FEC:
-	bl ov101_021F2338
-	add r6, r0, #0
-	mov r0, #0
-	mvn r0, r0
-	cmp r6, r0
-	bne _021F3FFE
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_021F3FFE:
-	add r0, r5, #0
-	bl ov101_021F2344
-	cmp r6, #0
-	beq _021F4014
-	ldr r1, [r5, #0x4c]
-	add r0, r5, #0
-	mov r2, #7
-	bl PhoneCallMessagePrint_Ungendered
-	b _021F405A
-_021F4014:
-	ldrb r1, [r4, #0x18]
-	add r0, r5, #0
-	bl ov101_021F40E8
-	cmp r0, #0
-	beq _021F4036
-	ldr r1, [r5, #0x4c]
-	add r0, r5, #0
-	mov r2, #6
-	bl PhoneCallMessagePrint_Ungendered
-	ldrb r1, [r4, #0x18]
-	ldr r0, [r5, #0x20]
-	mov r2, #1
-	bl PhoneRematches_SetSeeking
-	b _021F405A
-_021F4036:
-	ldr r1, [r5, #0x4c]
-	add r0, r5, #0
-	mov r2, #8
-	bl PhoneCallMessagePrint_Ungendered
-	b _021F405A
-_021F4042:
-	add r0, r5, #0
-	bl ov101_021F2220
-	cmp r0, #0
-	bne _021F4050
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_021F4050:
-	ldr r0, [r5, #0x4c]
-	bl DestroyMsgData
-	mov r0, #1
-	pop {r4, r5, r6, pc}
-_021F405A:
-	ldr r0, [r4, #4]
-	add r0, r0, #1
-	str r0, [r4, #4]
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-	thumb_func_end GearPhoneCall_GymLeader
-
-	thumb_func_start GearPhoneCall_GymLeader2
-GearPhoneCall_GymLeader2: ; 0x021F4064
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r4, r5, #0
-	add r4, #0x88
-	ldr r1, [r4, #4]
-	cmp r1, #0
-	beq _021F4078
-	cmp r1, #1
-	beq _021F4088
-	b _021F40C8
-_021F4078:
-	bl ov101_021F2110
-	ldr r1, [r5, #0x4c]
-	add r0, r5, #0
-	mov r2, #0xa
-	bl PhoneCallMessagePrint_Ungendered
-	b _021F40DE
-_021F4088:
-	bl ov101_021F2220
-	cmp r0, #0
-	bne _021F4094
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-_021F4094:
-	add r0, r4, #0
-	add r0, #0x4d
-	ldrb r0, [r0]
-	lsl r0, r0, #0x1e
-	lsr r0, r0, #0x1f
-	beq _021F40AC
-	ldr r1, [r5, #0x4c]
-	add r0, r5, #0
-	mov r2, #0xb
-	bl PhoneCallMessagePrint_Ungendered
-	b _021F40DE
-_021F40AC:
-	bl LCRandom
-	mov r1, #3
-	bl _s32_div_f
-	add r2, r1, #0
-	add r2, #0xc
-	lsl r2, r2, #0x18
-	ldr r1, [r5, #0x4c]
-	add r0, r5, #0
-	lsr r2, r2, #0x18
-	bl PhoneCallMessagePrint_Ungendered
-	b _021F40DE
-_021F40C8:
-	bl ov101_021F2220
-	cmp r0, #0
-	bne _021F40D4
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-_021F40D4:
-	ldr r0, [r5, #0x4c]
-	bl DestroyMsgData
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-_021F40DE:
-	ldr r0, [r4, #4]
-	add r0, r0, #1
-	str r0, [r4, #4]
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-	thumb_func_end GearPhoneCall_GymLeader2
-
-	thumb_func_start ov101_021F40E8
-ov101_021F40E8: ; 0x021F40E8
-	push {r4, lr}
-	mov r4, #0
-	cmp r1, #0x12
-	beq _021F40FE
-	ldr r0, [r0, #0x20]
-	mov r1, #0x12
-	bl PhoneRematches_IsSeeking
-	cmp r0, #0
-	beq _021F40FE
-	add r4, r4, #1
-_021F40FE:
-	cmp r4, #5
-	bge _021F4106
-	mov r0, #1
-	pop {r4, pc}
-_021F4106:
-	mov r0, #0
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end ov101_021F40E8
+	.extern PhoneCall_IsMessageDonePrinting
+	.extern PhoneCall_TouchscreenListMenu_Create
+	.extern PhoneCall_TouchscreenListMenu_HandleInput
+	.extern PhoneCall_TouchscreenListMenu_Destroy
+	.extern ov101_021F3D34
 
 	thumb_func_start PhoneCall_GetScriptId_Baoba
 PhoneCall_GetScriptId_Baoba: ; 0x021F410C
@@ -1012,7 +130,7 @@ GearPhoneCall_Baoba: ; 0x021F41B8
 	ldr r1, [r1, #4]
 	cmp r1, #0
 	bne _021F424A
-	bl ov101_021F2110
+	bl PhoneCall_InitMsgDataAndBufferNames
 	ldr r0, [r5, #0x20]
 	ldr r2, [r5]
 	add r1, sp, #4
@@ -1074,7 +192,7 @@ _021F4242:
 	bl FreeToHeap
 	b _021F4264
 _021F424A:
-	bl ov101_021F2220
+	bl PhoneCall_IsMessageDonePrinting
 	cmp r0, #0
 	bne _021F4258
 	add sp, #8
@@ -1354,28 +472,93 @@ _021F447C: .word 0x0000099F
 
     .rodata
 
-    ; file boundary?
-
 	.balign 4, 0
+	.global ov101_021F86C8
 ov101_021F86C8: ; 0x021F86C8
-	.short 0x0066  // PHONE_SCRIPT_102
-	.short 0x0065  // PHONE_SCRIPT_101
+	.short PHONE_SCRIPT_102
+	.short PHONE_SCRIPT_101
 
+	.global ov101_021F86CC
 ov101_021F86CC: ; 0x021F86CC
-	.short 0x0009, 0x000A
-	.short 0x000B, 0x000C, 0x000D, 0x000E, 0x000F, 0x0010, 0x0011, 0x0012
-	.short 0x0013, 0x0014, 0x0015, 0x0016, 0x0017, 0x0018, 0x0019, 0x001A
-	.short 0x005B, 0x005C, 0x005D, 0x001B, 0x001C, 0x001D, 0x001E, 0x001F
-	.short 0x0020, 0x0021, 0x0022, 0x0023, 0x0024, 0x0025, 0x0026, 0x0027
-	.short 0x0028, 0x0029, 0x002A, 0x002B, 0x005E, 0x005F, 0x002C, 0x002D
-	.short 0x002E, 0x002F, 0x0030, 0x0097, 0x0098, 0x0031, 0x0032, 0x0033
-	.short 0x0034, 0x0035, 0x0036, 0x0037, 0x0038, 0x0039, 0x003A, 0x003B
-	.short 0x003C, 0x0043, 0x0049, 0x004A, 0x004B, 0x004C, 0x004D, 0x004E
-	.short 0x0057, 0x0058, 0x0059, 0x005A, 0x0060, 0x0071, 0x00AE, 0x0000
+	.short MAP_ROUTE_1
+	.short MAP_ROUTE_2
+	.short MAP_ROUTE_3
+	.short MAP_ROUTE_4
+	.short MAP_ROUTE_5
+	.short MAP_ROUTE_6
+	.short MAP_ROUTE_7
+	.short MAP_ROUTE_8
+	.short MAP_ROUTE_9
+	.short MAP_ROUTE_10
+	.short MAP_ROUTE_11
+	.short MAP_ROUTE_12
+	.short MAP_ROUTE_13
+	.short MAP_ROUTE_14
+	.short MAP_ROUTE_15
+	.short MAP_ROUTE_16
+	.short MAP_ROUTE_17
+	.short MAP_ROUTE_18
+	.short MAP_ROUTE_19
+	.short MAP_ROUTE_20
+	.short MAP_ROUTE_21
+	.short MAP_ROUTE_22
+	.short MAP_ROUTE_24
+	.short MAP_ROUTE_25
+	.short MAP_ROUTE_26
+	.short MAP_ROUTE_27
+	.short MAP_ROUTE_28
+	.short MAP_ROUTE_29
+	.short MAP_ROUTE_30
+	.short MAP_ROUTE_31
+	.short MAP_ROUTE_32
+	.short MAP_ROUTE_33
+	.short MAP_ROUTE_34
+	.short MAP_ROUTE_35
+	.short MAP_ROUTE_36
+	.short MAP_ROUTE_37
+	.short MAP_ROUTE_38
+	.short MAP_ROUTE_39
+	.short MAP_ROUTE_40
+	.short MAP_ROUTE_41
+	.short MAP_ROUTE_42
+	.short MAP_ROUTE_43
+	.short MAP_ROUTE_44
+	.short MAP_ROUTE_45
+	.short MAP_ROUTE_46
+	.short MAP_ROUTE_47
+	.short MAP_ROUTE_48
+	.short MAP_PALLET
+	.short MAP_VIRIDIAN
+	.short MAP_PEWTER
+	.short MAP_CERULEAN
+	.short MAP_LAVENDER
+	.short MAP_VERMILION
+	.short MAP_CELADON
+	.short MAP_FUCHSIA
+	.short MAP_CINNABAR_ISLAND
+	.short MAP_INDIGO_PLATEAU
+	.short MAP_SAFFRON
+	.short MAP_NEW_BARK
+	.short MAP_CHERRYGROVE
+	.short MAP_VIOLET
+	.short MAP_AZALEA
+	.short MAP_CIANWOOD
+	.short MAP_GOLDENROD
+	.short MAP_OLIVINE
+	.short MAP_ECRUTEAK
+	.short MAP_MAHOGANY
+	.short MAP_LAKE_OF_RAGE
+	.short MAP_BLACKTHORN
+	.short MAP_MOUNT_SILVER
+	.short MAP_NATIONAL_PARK
+	.short MAP_RUINS_OF_ALPH
+	.short MAP_SAFARI_ZONE_GATE
 
+	.global ov101_021F8760
+	.balign 4, 0
 ov101_021F8760: ; 0x021F8760
-	.byte 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03
-	.byte 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x02, 0x02, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x01, 0x03
-	.byte 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x02, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01
+	.byte 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3
+	.byte 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 3, 0, 0, 0, 0, 0
+	.byte 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3
+	.byte 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 0, 0, 0, 0, 0, 0
+	.byte 0, 0, 0, 0, 0, 0, 0, 0, 1

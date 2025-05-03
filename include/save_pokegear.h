@@ -65,7 +65,11 @@ typedef struct SavePokegear {
     u32 unk_4_9 : 9;
     u32 unk_4_18 : 7;
     u32 registeredCards : 2;
-    u32 unk_4_27 : 2;
+    // mapUnlockLevel
+    // 0: only Johto
+    // 1: add Routes 26-28, Victory Road, and Indigo Plateau
+    // 2: the rest of Kanto
+    u32 mapUnlockLevel : 2;
     u32 unk_4_29 : 3;
     UnkPokegearSub8List unk_8;
     MomsSavings momsSavings;                        // 4B8
@@ -78,11 +82,11 @@ MomsSavings *SaveData_GetMomsSavingsAddr(SaveData *saveData);
 void SaveData_GSPlayerMisc_Init(SavePokegear *pokegear);
 UnkPokegearSub8List *sub_0202EDF4(SavePokegear *pokegear);
 u8 SavePokegear_GetLastUsedApp(SavePokegear *pokegear);
-void SavePokegear_SetLastUsedApp(SavePokegear *pokegear, u8 a1);
+void SavePokegear_SetLastUsedApp(SavePokegear *pokegear, u8 appID);
 void Pokegear_RegisterCard(SavePokegear *pokegear, int card);
 u8 Pokegear_GetRegisteredCardsArray(SavePokegear *pokegear);
-void sub_0202EE58(SavePokegear *pokegear, u8 a1);
-u8 sub_0202EE70(SavePokegear *pokegear);
+void Pokegear_SetMapUnlockLevel(SavePokegear *pokegear, u8 mapUnlockMenu);
+u8 Pokegear_GetMapUnlockLevel(SavePokegear *pokegear);
 u32 sub_0202EE7C(SavePokegear *pokegear);
 void sub_0202EE84(SavePokegear *pokegear, u32 a1);
 u16 sub_0202EE98(SavePokegear *pokegear);

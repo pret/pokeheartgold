@@ -29,7 +29,25 @@ def parse_c_header(filename: str, prefix="", as_list=False):
 trainer_classes = parse_c_header("include/constants/trainer_class.h", "TRAINERCLASS_")
 trainer_ids = parse_c_header("include/constants/trainers.h", "TRAINER_")
 map_ids = parse_c_header("include/constants/maps.h", "MAP_")
-phone_contacts = parse_c_header("include/constants/phone_contacts.h", "MAP_")
+phone_contacts = parse_c_header("include/constants/phone_contacts.h", "PHONE_CONTACT_")
+phone_scripts = parse_c_header("include/constants/phone_scripts.h", "PHONE_SCRIPT_")
+items = parse_c_header("include/constants/items.h", "ITEM_")
+weekday = [
+    "RTC_WEEK_SUNDAY",
+    "RTC_WEEK_MONDAY",
+    "RTC_WEEK_TUESDAY",
+    "RTC_WEEK_WEDNESDAY",
+    "RTC_WEEK_THURSDAY",
+    "RTC_WEEK_FRIDAY",
+    "RTC_WEEK_SATURDAY",
+    "RTC_WEEK_MAX",
+]
+time_of_day = [
+    "TIMEOFDAY_WILD_MORN",
+    "TIMEOFDAY_WILD_DAY",
+    "TIMEOFDAY_WILD_NITE",
+    "TIMEOFDAY_WILD_MAX",
+]
 
 PMTelBook = struct.Struct("<BBBBHHHHBBBBBBBB")
 keys = (
@@ -40,10 +58,10 @@ keys = (
     "trainerId",
     "mapId",
     "gift",
-    "unkA",
+    "phoneScriptIfLocal",
     "unkC",
-    "unkD",
-    "unkE",
+    "rematchWeekday",
+    "rematchTimeOfDay",
     "unkF",
     "sortParam",
 )
@@ -66,6 +84,10 @@ with open("files/tel/pmtel_book.dat", "rb") as infile:
         d["trainerClass"] = trainer_classes[d["trainerClass"]]
         d["trainerId"] = trainer_ids[d["trainerId"]]
         d["mapId"] = map_ids[d["mapId"]]
+        d["gift"] = items[d["gift"]]
+        d["rematchWeekday"] = weekday[d["rematchWeekday"]]
+        d["rematchTimeOfDay"] = time_of_day[d["rematchTimeOfDay"]]
+        d["phoneScriptIfLocal"] = phone_scripts[d["phoneScriptIfLocal"]]
         arr.append(d)
 with open("files/tel/pmtel_book.json", "w") as ofp:
     json.dump({"pmtel_book": arr}, ofp, indent=4)

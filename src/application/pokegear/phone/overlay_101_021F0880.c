@@ -66,7 +66,7 @@ void ov101_021F0990(PokegearPhoneAppData *phoneApp) {
     ov101_021F11E0(phoneApp, &phoneApp->unk_0E0, 0, 0);
 }
 
-TouchscreenListMenu *ov101_021F09B0(PokegearPhoneAppData *phoneApp, int a1, int a2) {
+TouchscreenListMenu *PokegearPhoneApp_TouchscreenListMenu_Create(PokegearPhoneAppData *phoneApp, int a1, int a2) {
     TouchscreenListMenuHeader sp18;
 
     phoneApp->unk_0CC = a1;
@@ -146,7 +146,7 @@ int ov101_021F0BA0(PokegearPhoneAppData *phoneApp) {
         phoneApp->callerID = phoneApp->unk_0E0.unk_00C[r0].unk_8;
         PlaySE(SEQ_SE_GS_GEARDECIDE);
         ov101_021F1338(&phoneApp->unk_0E0, 0);
-        ov101_021F09B0(phoneApp, ov101_021F1804(&phoneApp->unk_0E0), 0);
+        PokegearPhoneApp_TouchscreenListMenu_Create(phoneApp, ov101_021F1804(&phoneApp->unk_0E0), 0);
         ov101_021F0ACC(phoneApp, 0, 1);
         return 8;
     }
@@ -175,7 +175,7 @@ int ov101_021F0C4C(PokegearPhoneAppData *phoneApp) {
             phoneApp->callerID = phoneApp->unk_0E0.unk_00C[result - 1].unk_8;
             PlaySE(SEQ_SE_GS_GEARDECIDE);
             ov101_021F1338(&phoneApp->unk_0E0, 0);
-            ov101_021F09B0(phoneApp, ov101_021F1804(&phoneApp->unk_0E0), 0);
+            PokegearPhoneApp_TouchscreenListMenu_Create(phoneApp, ov101_021F1804(&phoneApp->unk_0E0), 0);
             ov101_021F0ACC(phoneApp, 0, 1);
             phoneApp->pokegear->unk_00C = MENU_INPUT_STATE_TOUCH;
             return 8;

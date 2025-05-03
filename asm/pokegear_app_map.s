@@ -343,7 +343,7 @@ _021E799A:
 	strb r2, [r5, r1]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x28]
-	bl sub_0202EE70
+	bl Pokegear_GetMapUnlockLevel
 	mov r2, #0x4e
 	lsl r2, r2, #2
 	lsl r0, r0, #0x1e
@@ -12692,7 +12692,7 @@ ov101_021ED980: ; 0x021ED980
 	strb r2, [r4, r1]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x28]
-	bl sub_0202EE70
+	bl Pokegear_GetMapUnlockLevel
 	mov r2, #0x4e
 	lsl r2, r2, #2
 	lsl r0, r0, #0x1e

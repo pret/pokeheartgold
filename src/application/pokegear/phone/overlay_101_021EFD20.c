@@ -49,7 +49,7 @@ int ov101_021EFDB4(PokegearPhoneAppData *phoneApp) {
         phoneApp->pokegear->unk_00C = (MenuInputState)TouchscreenListMenu_WasLastInputTouch(phoneApp->unk_504);
         TouchscreenListMenu_Destroy(phoneApp->unk_504);
         if (input == 1) {
-            ov101_021F09B0(phoneApp, ov101_021F1804(&phoneApp->unk_0E0), 1);
+            PokegearPhoneApp_TouchscreenListMenu_Create(phoneApp, ov101_021F1804(&phoneApp->unk_0E0), 1);
             return 8;
         } else {
             ov101_021F0ACC(phoneApp, 0, 0);

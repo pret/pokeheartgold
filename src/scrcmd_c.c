@@ -4617,7 +4617,7 @@ BOOL ScrCmd_RegisterPokegearCard(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_804(ScriptContext *ctx) {
-    sub_0202EE58(SaveData_GSPlayerMisc_Get(ctx->fieldSystem->saveData), ScriptReadByte(ctx));
+    Pokegear_SetMapUnlockLevel(SaveData_GSPlayerMisc_Get(ctx->fieldSystem->saveData), ScriptReadByte(ctx));
     return FALSE;
 }
 

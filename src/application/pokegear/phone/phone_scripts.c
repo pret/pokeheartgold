@@ -85,6 +85,7 @@
 #include "map_events.h"
 #include "map_header.h"
 #include "math_util.h"
+#include "phonebook_dat.h"
 #include "sys_flags.h"
 #include "sys_vars.h"
 #include "unk_02005D10.h"
@@ -100,6 +101,18 @@ BOOL ov101_021F2D48(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C 
 BOOL ov101_021F2D90(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1);
 BOOL ov101_021F2DC8(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1);
 BOOL ov101_021F2DE8(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1);
+u8 ov101_021F3C60(u8 hour);
+u16 ov101_021F3E74(u16 mapId);
+BOOL ov101_021F40E8(PokegearPhoneApp_Sub0C4 *a0, u8 callerID);
+
+// static const u16 ov101_021F86C8[] = {
+//     PHONE_SCRIPT_102,
+//     PHONE_SCRIPT_101,
+// };
+
+extern const u16 ov101_021F86C8[];
+extern const u8 ov101_021F8760[];
+extern const u16 ov101_021F86CC[];
 
 u16 PhoneCall_GetCallScriptId_Mother(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1) {
     a1->scriptType = 0;
@@ -136,7 +149,7 @@ BOOL GearPhoneCall_Mom(PokegearPhoneApp_Sub0C4 *a0) {
 
     switch (r4->unk_04) {
     case 0:
-        ov101_021F2110(a0);
+        PhoneCall_InitMsgDataAndBufferNames(a0);
         r4->unk_44 = MomSavingsBalanceAction(a0->momsSavings, MOMS_BALANCE_GET, 0);
         BufferIntegerAsString(a0->msgFormat, 10, r4->unk_44, 6, PRINTING_MODE_LEFT_ALIGN, TRUE);
         r4->flag0 = Save_VarsFlags_MomsSavingsFlagCheck(a0->saveVarsFlags);
@@ -148,7 +161,7 @@ BOOL GearPhoneCall_Mom(PokegearPhoneApp_Sub0C4 *a0) {
         PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, MomCallGetIntroMsgByLocation(a0, r4));
         break;
     case 1:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         if (r4->flag1) {
@@ -161,17 +174,17 @@ BOOL GearPhoneCall_Mom(PokegearPhoneApp_Sub0C4 *a0) {
         PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, MomCallGetSaveMoneyPromptMsg(a0, r4));
         break;
     case 3:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
-        ov101_021F2308(a0, 2);
+        PhoneCall_TouchscreenListMenu_Create(a0, 2);
         break;
     case 4:
-        r6 = ov101_021F2338(a0);
+        r6 = PhoneCall_TouchscreenListMenu_HandleInput(a0);
         if (r6 == -1) {
             return FALSE;
         }
-        ov101_021F2344(a0);
+        PhoneCall_TouchscreenListMenu_Destroy(a0);
         if (r6 == 0) {
             r4->flag1 = TRUE;
             PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0664_00025);
@@ -182,7 +195,7 @@ BOOL GearPhoneCall_Mom(PokegearPhoneApp_Sub0C4 *a0) {
         Save_VarsFlags_MomsSavingsFlagAction(a0->saveVarsFlags, r4->flag1);
         break;
     default:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         DestroyMsgData(a0->msgData_PhoneContact);
@@ -304,7 +317,7 @@ u16 PhoneCall_GetScriptId_Generic(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_
     if (a1->unk_19) {
         return ov101_021F2BC0(a0, &r2[8], 8);
     } else if (a1->phoneBookEntry->mapId == a0->playerMapSec) {
-        return a1->phoneBookEntry->unkA;
+        return a1->phoneBookEntry->phoneScriptIfLocal;
     } else {
         return ov101_021F2BC0(a0, &r2[0], 8);
     }
@@ -391,7 +404,7 @@ BOOL ov101_021F2D10(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C 
     if (!Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_BEAT_RADIO_TOWER_ROCKETS)) {
         return FALSE;
     }
-    if (r4->date.week != r4->phoneBookEntry->unkD || r4->timeOfDay != r4->phoneBookEntry->unkE) {
+    if (r4->date.week != r4->phoneBookEntry->rematchWeekday || r4->timeOfDay != r4->phoneBookEntry->rematchTimeOfDay) {
         return FALSE;
     }
     return ov101_021F2C78(a1->unk_1);
@@ -521,7 +534,7 @@ BOOL ov101_021F2F50(PokegearPhoneApp_Sub0C4 *a0) {
 
     switch (r4->unk_04) {
     case 0:
-        ov101_021F2110(a0);
+        PhoneCall_InitMsgDataAndBufferNames(a0);
         ov101_021F2248(a0, ov101_021F2374(r4->scriptID));
         BufferSpeciesName(a0->msgFormat, 10, ov101_021F2E74(r4->phoneBookEntry->trainerId, a0->heapId));
         BufferSpeciesName(a0->msgFormat, 11, ov101_021F2E04(r4->phoneBookEntry->mapId, r4->phoneBookEntry->trainerClass, r4->timeOfDay));
@@ -539,7 +552,7 @@ BOOL ov101_021F2F50(PokegearPhoneApp_Sub0C4 *a0) {
         PhoneCallMessagePrint_Gendered(a0, a0->msgData_PhoneContact, scriptDef->msgIds[0], scriptDef->msgIds[1]);
         break;
     default:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         DestroyMsgData(a0->msgData_PhoneContact);
@@ -557,7 +570,7 @@ BOOL ov101_021F2FFC(PokegearPhoneApp_Sub0C4 *a0) {
 
     switch (r4->unk_04) {
     case 0:
-        ov101_021F2110(a0);
+        PhoneCall_InitMsgDataAndBufferNames(a0);
         ov101_021F2248(a0, ov101_021F2374(r4->scriptID));
         if (r4->phoneBookEntry->unkC == 255) {
             ++r4->unk_04;
@@ -579,7 +592,7 @@ BOOL ov101_021F2FFC(PokegearPhoneApp_Sub0C4 *a0) {
         }
         break;
     default:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         DestroyMsgData(a0->msgData_PhoneContact);
@@ -633,7 +646,7 @@ BOOL GearPhoneCall_ProfOak(PokegearPhoneApp_Sub0C4 *a0) {
 
     switch (r4->unk_04) {
     case 0:
-        ov101_021F2110(a0);
+        PhoneCall_InitMsgDataAndBufferNames(a0);
         pokedex = Save_Pokedex_Get(a0->saveData);
         r4->flag0 = Pokedex_GetNatDexFlag(pokedex);
         r4->flag1 = Pokedex_JohtoDexIsComplete(pokedex);
@@ -642,13 +655,13 @@ BOOL GearPhoneCall_ProfOak(PokegearPhoneApp_Sub0C4 *a0) {
         PhoneCallMessagePrint_Gendered(a0, a0->msgData_PhoneContact, msg_0666_00013, msg_0666_00014);
         break;
     case 1:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0666_00015);
         break;
     case 2:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         if (r4->flag0) {
@@ -660,14 +673,14 @@ BOOL GearPhoneCall_ProfOak(PokegearPhoneApp_Sub0C4 *a0) {
         } else {
             r4->unk_4A = 0;
         }
-        ov101_021F2308(a0, msg_0666_00003 + r4->unk_4A);
+        PhoneCall_TouchscreenListMenu_Create(a0, msg_0666_00003 + r4->unk_4A);
         break;
     case 3:
-        r6 = ov101_021F2338(a0);
+        r6 = PhoneCall_TouchscreenListMenu_HandleInput(a0);
         if (r6 == -1) {
             return FALSE;
         }
-        ov101_021F2344(a0);
+        PhoneCall_TouchscreenListMenu_Destroy(a0);
         if (r6 == 0) {
             if (r4->unk_4A == 2) {
                 r4->flag3 = TRUE;
@@ -693,7 +706,7 @@ BOOL GearPhoneCall_ProfOak(PokegearPhoneApp_Sub0C4 *a0) {
         PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0666_00020);
         break;
     case 4:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         r6_3 = FALSE;
@@ -718,7 +731,7 @@ BOOL GearPhoneCall_ProfOak(PokegearPhoneApp_Sub0C4 *a0) {
         }
         break;
     case 5:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         if (IsFanfarePlaying()) {
@@ -727,7 +740,7 @@ BOOL GearPhoneCall_ProfOak(PokegearPhoneApp_Sub0C4 *a0) {
         PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0666_00021);
         break;
     default:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         if (r4->unk_04 == 255 && IsFanfarePlaying()) {
@@ -759,7 +772,7 @@ BOOL GearPhoneCall_Kurt(PokegearPhoneApp_Sub0C4 *a0) {
 
     switch (r4->unk_04) {
     case 0:
-        ov101_021F2110(a0);
+        PhoneCall_InitMsgDataAndBufferNames(a0);
         if (Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_UNK_127)) {
             PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0643_00006);
         } else {
@@ -767,7 +780,7 @@ BOOL GearPhoneCall_Kurt(PokegearPhoneApp_Sub0C4 *a0) {
         }
         break;
     case 1:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         apricornBox = Save_ApricornBox_Get(a0->saveData);
@@ -784,7 +797,7 @@ BOOL GearPhoneCall_Kurt(PokegearPhoneApp_Sub0C4 *a0) {
         PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msgId);
         break;
     default:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         DestroyMsgData(a0->msgData_PhoneContact);
@@ -856,7 +869,7 @@ BOOL GearPhoneCall_Bill(PokegearPhoneApp_Sub0C4 *a0) {
 
     switch (r5->unk_04) {
     case 0:
-        ov101_021F2110(a0);
+        PhoneCall_InitMsgDataAndBufferNames(a0);
         break;
     case 1:
         if (!ov101_021F2614(a0)) {
@@ -865,7 +878,7 @@ BOOL GearPhoneCall_Bill(PokegearPhoneApp_Sub0C4 *a0) {
         PhoneCallMessagePrint_Gendered(a0, a0->msgData_PhoneContact, msg_0665_00003, msg_0665_00004);
         break;
     case 2:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         pcStorage = SaveArray_PCStorage_Get(a0->saveData);
@@ -880,13 +893,13 @@ BOOL GearPhoneCall_Bill(PokegearPhoneApp_Sub0C4 *a0) {
         }
         break;
     case 3:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0665_00008);
         break;
     case 4:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         DestroyMsgData(a0->msgData_PhoneContact);
@@ -933,11 +946,11 @@ BOOL GearPhoneCall_DayCareMan(PokegearPhoneApp_Sub0C4 *a0) {
 
     switch (r4->unk_04) {
     case 0:
-        ov101_021F2110(a0);
+        PhoneCall_InitMsgDataAndBufferNames(a0);
         PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0661_00002);
         break;
     case 1:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         if (Save_Daycare_HasEgg(r4->miscPtr.daycare)) {
@@ -955,19 +968,19 @@ BOOL GearPhoneCall_DayCareMan(PokegearPhoneApp_Sub0C4 *a0) {
         }
         return FALSE;
     case 2:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0661_00007 + r4->unk_48);
         break;
     case 3:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0661_00011);
         break;
     default:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         DestroyMsgData(a0->msgData_PhoneContact);
@@ -1010,11 +1023,11 @@ BOOL GearPhoneCall_DayCareLady(PokegearPhoneApp_Sub0C4 *a0) {
 
     switch (r4->unk_04) {
     case 0:
-        ov101_021F2110(a0);
+        PhoneCall_InitMsgDataAndBufferNames(a0);
         PhoneCallMessagePrint_Gendered(a0, a0->msgData_PhoneContact, msg_0660_00003, msg_0660_00004);
         break;
     case 1:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         if (r4->unk_4A == 0) {
@@ -1026,7 +1039,7 @@ BOOL GearPhoneCall_DayCareLady(PokegearPhoneApp_Sub0C4 *a0) {
         }
         break;
     case 2:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         if (r4->unk_4B[0] != 0) {
@@ -1051,7 +1064,7 @@ BOOL GearPhoneCall_DayCareLady(PokegearPhoneApp_Sub0C4 *a0) {
         PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0660_00006);
         return FALSE;
     case 3:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         BufferBoxMonNickname(a0->msgFormat, 10, DaycareMon_GetBoxMon(Save_Daycare_GetMonX(r4->miscPtr.daycare, 1)));
@@ -1059,7 +1072,7 @@ BOOL GearPhoneCall_DayCareLady(PokegearPhoneApp_Sub0C4 *a0) {
         PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0660_00006);
         break;
     case 4:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         if (r4->unk_4A == 1) {
@@ -1069,7 +1082,7 @@ BOOL GearPhoneCall_DayCareLady(PokegearPhoneApp_Sub0C4 *a0) {
         }
         break;
     default:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         DestroyMsgData(a0->msgData_PhoneContact);
@@ -1078,4 +1091,369 @@ BOOL GearPhoneCall_DayCareLady(PokegearPhoneApp_Sub0C4 *a0) {
 
     ++r4->unk_04;
     return FALSE;
+}
+
+u16 PhoneCall_GetScriptId_Buena(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1) {
+    a1->scriptType = 0;
+    a1->flag0 = CheckGameClearFlag(a0->saveVarsFlags);
+    a1->unk_4A = ov101_021F3C60(a1->time.hour);
+    if (Save_VarsFlags_IsInRocketTakeover(a0->saveVarsFlags)) {
+        return PHONE_SCRIPT_099;
+    }
+    if (a1->unk_19) {
+        a1->scriptType = 9;
+        return PHONE_SCRIPT_000;
+    }
+    if (a1->unk_4A == 3) {
+        return PHONE_SCRIPT_100;
+    }
+    if (a1->phoneBookEntry->mapId == a0->playerMapSec) {
+        return PHONE_SCRIPT_098;
+    }
+    a1->scriptType = 8;
+    return PHONE_SCRIPT_000;
+}
+
+BOOL GearPhoneCall_Buena(PokegearPhoneApp_Sub0C4 *a0) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+
+    switch (r4->unk_04) {
+    case 0:
+        PhoneCall_InitMsgDataAndBufferNames(a0);
+        PhoneCallMessagePrint_Gendered(a0, a0->msgData_PhoneContact, r4->timeOfDay * 2 + msg_0641_00003, r4->timeOfDay * 2 + msg_0641_00004);
+        break;
+    case 1:
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+            return FALSE;
+        }
+        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0641_00010 + (LCRandom() % 3));
+        break;
+    default:
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+            return FALSE;
+        }
+        DestroyMsgData(a0->msgData_PhoneContact);
+        return TRUE;
+    }
+
+    ++r4->unk_04;
+    return FALSE;
+}
+
+BOOL GearPhoneCall_Buena2(PokegearPhoneApp_Sub0C4 *a0) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+    u8 r5;
+    u8 r2;
+
+    switch (r4->unk_04) {
+    case 0:
+        PhoneCall_InitMsgDataAndBufferNames(a0);
+        PhoneCallMessagePrint_Gendered(a0, a0->msgData_PhoneContact, r4->timeOfDay * 2 + msg_0641_00015, r4->timeOfDay * 2 + msg_0641_00016);
+        break;
+    case 1:
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+            return FALSE;
+        }
+        if (r4->unk_4A == 3) {
+            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0641_00036);
+        } else {
+            r5 = 11 + r4->flag0 * 3;
+            r2 = LCRandom() % r5;
+            if (r2 == 13) {
+                PhoneCallMessagePrint_Gendered(a0, a0->msgData_PhoneContact, msg_0641_00034, msg_0641_00035);
+            } else {
+                PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0641_00021 + r2);
+            }
+        }
+        break;
+    default:
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+            return FALSE;
+        }
+        DestroyMsgData(a0->msgData_PhoneContact);
+        return TRUE;
+    }
+
+    ++r4->unk_04;
+    return FALSE;
+}
+
+u8 ov101_021F3C60(u8 hour) {
+    // Different messages at different times of day
+
+    // hour % 3 == 2, so 2, 5, 8, 11 AM/PM
+    if (sub_02095FF8(hour)) {
+        return 3;
+    }
+    if (hour > 3 && hour < 10) {
+        return 0;
+    }
+    if (hour > 9 && hour < 20) {
+        return 1;
+    }
+    return 2;
+}
+
+u16 PhoneCall_GetScriptId_EthanLyra(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1) {
+    if (a1->unk_19) {
+        a1->scriptType = 11;
+        return PHONE_SCRIPT_000;
+    }
+    if (a1->phoneBookEntry->mapId == a0->playerMapSec) {
+        a1->scriptType = 0;
+        return ov101_021F86C8[a0->playerGender];
+    }
+    a1->scriptType = 10;
+    return PHONE_SCRIPT_000;
+}
+
+BOOL GearPhoneCall_EthanLyra(PokegearPhoneApp_Sub0C4 *a0) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+
+    switch (r4->unk_04) {
+    case 0:
+        PhoneCall_InitMsgDataAndBufferNames(a0);
+        break;
+    case 1:
+        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0662_00004 + r4->timeOfDay);
+        break;
+    case 2:
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+            return FALSE;
+        }
+        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, ov101_021F3E74(a0->playerMapID));
+        break;
+    default:
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+            return FALSE;
+        }
+        DestroyMsgData(a0->msgData_PhoneContact);
+        return TRUE;
+    }
+
+    ++r4->unk_04;
+    return FALSE;
+}
+
+u8 ov101_021F3D34(PokegearPhoneApp_Sub0C4 *a0) {
+    int i;
+    u8 r4;
+    u8 *r5;
+    u8 r6;
+    u8 sp0[4];
+
+    r4 = 0;
+    r6 = Pokegear_GetMapUnlockLevel(SaveData_GSPlayerMisc_Get(a0->saveData));
+    sp0[0] = 1;
+    if (Save_VarsFlags_FlypointFlagAction(a0->saveVarsFlags, FLAG_ACTION_CHECK, FLAG_UNK_9C9 - FLAG_SYS_FLYPOINT_PALLET)) {
+        sp0[1] = 1; // 2D 2E 48
+    } // UB: else, sp0[1] is undefined
+    if (r6) {
+        sp0[2] = 1; // 19 1A 39
+    } // UB: else, sp0[2] is undefined
+    if (r6 > 1) {
+        sp0[3] = 1; // 00-17 1A 2F-37 39
+    } // UB: else, sp0[3] is undefined
+
+    r5 = AllocFromHeapAtEnd(a0->heapId, 73);
+    MI_CpuClear8(r5, 73);
+    for (i = 0; i < 73; ++i) {
+        if (sp0[ov101_021F8760[i]]) {
+            r5[r4++] = i;
+        }
+    }
+    r4 = r5[LCRandom() % r4];
+    FreeToHeap(r5);
+    return r4 + msg_0662_00086;
+}
+
+BOOL GearPhoneCall_EthanLyra2(PokegearPhoneApp_Sub0C4 *a0) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+
+    switch (r4->unk_04) {
+    case 0:
+        PhoneCall_InitMsgDataAndBufferNames(a0);
+        break;
+    case 1:
+        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0662_00007 + r4->timeOfDay);
+        break;
+    case 2:
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+            return FALSE;
+        }
+        if ((LCRandom() % 1000) < 500) {
+            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0662_00010 + ((LCRandom() % 900) / 300));
+        } else {
+            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, ov101_021F3D34(a0));
+        }
+        break;
+    default:
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+            return FALSE;
+        }
+        DestroyMsgData(a0->msgData_PhoneContact);
+        return TRUE;
+    }
+
+    ++r4->unk_04;
+    return FALSE;
+}
+
+u16 ov101_021F3E74(u16 mapId) {
+    int i;
+
+    for (i = 0; i < 73; ++i) {
+        if (mapId == ov101_021F86CC[i]) {
+            return msg_0662_00013 + i;
+        }
+    }
+    return msg_0662_00010 + (LCRandom() % 3);
+}
+
+u16 PhoneCall_GetScriptId_GymLeader(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1) {
+    if (PlayerProfile_CountBadges(a0->playerProfile) >= 16) {
+        a1->flag0 = TRUE;
+    } else {
+        a1->flag0 = FALSE;
+    }
+    a1->flag1 = PhoneRematches_IsSeeking(a0->momsSavings, a1->callerID);
+    if (a1->unk_19) {
+        a1->scriptType = 14;
+    } else {
+        a1->scriptType = 13;
+    }
+    return PHONE_SCRIPT_000;
+}
+
+BOOL GearPhoneCall_GymLeader(PokegearPhoneApp_Sub0C4 *a0) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+    int r6;
+
+    switch (r4->unk_04) {
+    case 0:
+        PhoneCall_InitMsgDataAndBufferNames(a0);
+
+        if (r4->phoneBookEntry->mapId == a0->playerMapSec) {
+            r4->unk_04 = 255;
+            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00001);
+            return FALSE;
+        }
+        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00002);
+        break;
+    case 1:
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+            return FALSE;
+        }
+        if (!r4->flag0) {
+            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00003);
+            r4->unk_04 = 255;
+            return FALSE;
+        }
+        if (r4->flag1) {
+            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00009);
+            r4->unk_04 = 255;
+            return FALSE;
+        }
+        if (r4->date.week != r4->phoneBookEntry->rematchWeekday || r4->timeOfDay != r4->phoneBookEntry->rematchTimeOfDay) {
+            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00004);
+            r4->unk_04 = 255;
+            return FALSE;
+        }
+        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00005);
+        break;
+    case 2:
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+            return FALSE;
+        }
+        PhoneCall_TouchscreenListMenu_Create(a0, 6);
+        break;
+    case 3:
+        r6 = PhoneCall_TouchscreenListMenu_HandleInput(a0);
+        if (r6 == -1) {
+            return FALSE;
+        }
+        PhoneCall_TouchscreenListMenu_Destroy(a0);
+        if (r6) { // said no
+            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00007);
+        } else if (ov101_021F40E8(a0, r4->callerID)) {
+            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00006);
+            PhoneRematches_SetSeeking(a0->momsSavings, r4->callerID, TRUE);
+        } else {
+            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00008);
+        }
+        break;
+    default:
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+            return FALSE;
+        }
+        DestroyMsgData(a0->msgData_PhoneContact);
+        return TRUE;
+    }
+
+    ++r4->unk_04;
+    return FALSE;
+}
+
+BOOL GearPhoneCall_GymLeader2(PokegearPhoneApp_Sub0C4 *a0) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+
+    switch (r4->unk_04) {
+    case 0:
+        PhoneCall_InitMsgDataAndBufferNames(a0);
+        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00010);
+        break;
+    case 1:
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+            return FALSE;
+        }
+        if (r4->flag1) {
+            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00011);
+        } else {
+            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00012 + (LCRandom() % 3));
+        }
+        break;
+    default:
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+            return FALSE;
+        }
+        DestroyMsgData(a0->msgData_PhoneContact);
+        return TRUE;
+    }
+
+    ++r4->unk_04;
+    return FALSE;
+}
+
+// It's possible this function was intended to check whether the dojo is full.
+// However, it stops after a single iteration.
+BOOL ov101_021F40E8(PokegearPhoneApp_Sub0C4 *a0, u8 callerID) {
+    int i;
+    int r4;
+
+    static const u8 sGymLeaderContacts[] = {
+        PHONE_CONTACT_FALKNER,
+        PHONE_CONTACT_BUGSY,
+        PHONE_CONTACT_WHITNEY,
+        PHONE_CONTACT_MORTY,
+        PHONE_CONTACT_CHUCK,
+        PHONE_CONTACT_JASMINE,
+        PHONE_CONTACT_PRYCE,
+        PHONE_CONTACT_CLAIR,
+        PHONE_CONTACT_BROCK,
+        PHONE_CONTACT_MISTY,
+        PHONE_CONTACT_LT__SURGE,
+        PHONE_CONTACT_ERIKA,
+        PHONE_CONTACT_JANINE,
+        PHONE_CONTACT_SABRINA,
+        PHONE_CONTACT_BLAINE,
+        PHONE_CONTACT_BLUE,
+    };
+
+    r4 = 0;
+    for (i = 0; i < 1; ++i) {
+        if (callerID != sGymLeaderContacts[i] && PhoneRematches_IsSeeking(a0->momsSavings, sGymLeaderContacts[i])) {
+            ++r4;
+        }
+    }
+    return r4 < 5;
 }

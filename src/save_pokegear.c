@@ -33,7 +33,7 @@ static void InitGSPlayerMiscInternal(SavePokegear *pokegear) {
     pokegear->unk_3 = 128;
     pokegear->unk_2 = pokegear->unk_3;
     pokegear->registeredCards = 0;
-    pokegear->unk_4_27 = 0;
+    pokegear->mapUnlockLevel = 0;
     GSPlayerMisc_PhonebookInit(pokegear);
     MomsSavingsInit(&pokegear->momsSavings);
 }
@@ -72,14 +72,14 @@ u8 Pokegear_GetRegisteredCardsArray(SavePokegear *pokegear) {
     return pokegear->registeredCards;
 }
 
-void sub_0202EE58(SavePokegear *pokegear, u8 a1) {
-    if (a1 < 3) {
-        pokegear->unk_4_27 = a1;
+void Pokegear_SetMapUnlockLevel(SavePokegear *pokegear, u8 mapUnlockLevel) {
+    if (mapUnlockLevel < 3) {
+        pokegear->mapUnlockLevel = mapUnlockLevel;
     }
 }
 
-u8 sub_0202EE70(SavePokegear *pokegear) {
-    return pokegear->unk_4_27;
+u8 Pokegear_GetMapUnlockLevel(SavePokegear *pokegear) {
+    return pokegear->mapUnlockLevel;
 }
 
 u32 sub_0202EE7C(SavePokegear *pokegear) {

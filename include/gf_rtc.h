@@ -17,6 +17,7 @@ typedef enum TimeOfDayWildParam {
     TIMEOFDAY_WILD_MORN,
     TIMEOFDAY_WILD_DAY,
     TIMEOFDAY_WILD_NITE,
+    TIMEOFDAY_WILD_MAX,
 } TimeOfDayWildParam;
 
 struct GF_RTC_DateTime {

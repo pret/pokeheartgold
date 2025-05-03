@@ -201,7 +201,7 @@
 .public SaveData_GSPlayerMisc_Get
 .public SaveData_GetMomsSavingsAddr
 .public sub_0202EDF4
-.public sub_0202EE70
+.public Pokegear_GetMapUnlockLevel
 .public sub_0202EE7C
 .public sub_0202EE84
 .public sub_0202EE98

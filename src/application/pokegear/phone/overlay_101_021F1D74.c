@@ -207,7 +207,7 @@ void PhoneCall_GetCallScriptId(PokegearPhoneApp_Sub0C4 *a0) {
     }
 }
 
-void ov101_021F2110(PokegearPhoneApp_Sub0C4 *a0) {
+void PhoneCall_InitMsgDataAndBufferNames(PokegearPhoneApp_Sub0C4 *a0) {
     a0->msgData_PhoneContact = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, GetPhoneMessageGmm(a0->unk_88.callerID), a0->heapId);
     BufferPlayersName(a0->msgFormat, 0, a0->playerProfile);
     BufferString(a0->msgFormat, 1, PhoneContact_GetName(a0, a0->unk_88.callerID), 2, 1, 2);
@@ -215,7 +215,7 @@ void ov101_021F2110(PokegearPhoneApp_Sub0C4 *a0) {
     BufferLandmarkName(a0->msgFormat, 3, MapHeader_GetMapSec(a0->unk_88.phoneBookEntry->mapId));
 }
 
-void ov101_021F217C(PokegearPhoneApp_Sub0C4 *a0) {
+void PhoneCall_AnimateFastForwardButtonOnTouch(PokegearPhoneApp_Sub0C4 *a0) {
     if (TouchscreenHitbox_TouchNewIsIn(&ov101_021F8400)) {
         Sprite_SetAnimActiveFlag(a0->sprite, TRUE);
         Sprite_ResetAnimCtrlState(a0->sprite);
@@ -241,8 +241,8 @@ void PhoneCallMessagePrint_Ungendered(PokegearPhoneApp_Sub0C4 *a0, MsgData *msgD
     PhoneCallMessagePrint(a0, msgData, a0->msgIDs);
 }
 
-BOOL ov101_021F2220(PokegearPhoneApp_Sub0C4 *a0) {
-    ov101_021F217C(a0);
+BOOL PhoneCall_IsMessageDonePrinting(PokegearPhoneApp_Sub0C4 *a0) {
+    PhoneCall_AnimateFastForwardButtonOnTouch(a0);
     if (TextPrinterCheckActive(a0->textPrinter)) {
         return FALSE;
     }
@@ -282,18 +282,18 @@ void ov101_021F2248(PokegearPhoneApp_Sub0C4 *a0, const PhoneCallScriptDef *a1) {
     }
 }
 
-void ov101_021F2308(PokegearPhoneApp_Sub0C4 *a0, u8 a1) {
+void PhoneCall_TouchscreenListMenu_Create(PokegearPhoneApp_Sub0C4 *a0, u8 a1) {
     ov101_021F0ACC(a0->phoneApp, 2, 1);
-    a0->unk_14 = ov101_021F09B0(a0->phoneApp, 0, a1);
+    a0->unk_14 = PokegearPhoneApp_TouchscreenListMenu_Create(a0->phoneApp, 0, a1);
     Sprite_SetVisibleFlag(a0->sprite, FALSE);
     ov101_021F2384(a0, 1);
 }
 
-int ov101_021F2338(PokegearPhoneApp_Sub0C4 *a0) {
+int PhoneCall_TouchscreenListMenu_HandleInput(PokegearPhoneApp_Sub0C4 *a0) {
     return TouchscreenListMenu_HandleInput(a0->unk_14);
 }
 
-void ov101_021F2344(PokegearPhoneApp_Sub0C4 *a0) {
+void PhoneCall_TouchscreenListMenu_Destroy(PokegearPhoneApp_Sub0C4 *a0) {
     *a0->menuInputStatePtr = (MenuInputState)TouchscreenListMenu_WasLastInputTouch(a0->unk_14);
     TouchscreenListMenu_Destroy(a0->unk_14);
     ov101_021F0ACC(a0->phoneApp, 0, 0);
@@ -319,7 +319,7 @@ void ov101_021F2384(PokegearPhoneApp_Sub0C4 *a0, int a1) {
 }
 
 BOOL ov101_021F23F0(PokegearPhoneApp_Sub0C4 *a0) {
-    ov101_021F217C(a0);
+    PhoneCall_AnimateFastForwardButtonOnTouch(a0);
     if (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B)) {
         PlaySE(SEQ_SE_DP_SELECT);
         a0->unk_88.unk_22 = MENU_INPUT_STATE_BUTTONS;
@@ -348,7 +348,7 @@ void ov101_021F243C(PokegearPhoneApp_Sub0C4 *a0, u8 a1, u8 a2) {
 
 BOOL ov101_021F2494(PokegearPhoneApp_Sub0C4 *a0) {
     PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
-    ov101_021F217C(a0);
+    PhoneCall_AnimateFastForwardButtonOnTouch(a0);
     switch (r4->unk_08) {
     case 0:
         PlaySE(SEQ_SE_GS_PHONE0);
@@ -375,7 +375,7 @@ BOOL ov101_021F2494(PokegearPhoneApp_Sub0C4 *a0) {
 
 BOOL ov101_021F2510(PokegearPhoneApp_Sub0C4 *a0) {
     PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
-    ov101_021F217C(a0);
+    PhoneCall_AnimateFastForwardButtonOnTouch(a0);
     switch (r4->unk_08) {
     case 0:
         PlaySE(SEQ_SE_GS_PHONE_OFF);
@@ -405,7 +405,7 @@ BOOL ov101_021F2510(PokegearPhoneApp_Sub0C4 *a0) {
 
 BOOL ov101_021F2598(PokegearPhoneApp_Sub0C4 *a0) {
     PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
-    ov101_021F217C(a0);
+    PhoneCall_AnimateFastForwardButtonOnTouch(a0);
     switch (r4->unk_08) {
     case 0:
         ov101_021F243C(a0, 0, r4->unk_08);
@@ -436,14 +436,14 @@ BOOL ov101_021F2614(PokegearPhoneApp_Sub0C4 *a0) {
     u16 r3;
     PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
 
-    ov101_021F217C(a0);
+    PhoneCall_AnimateFastForwardButtonOnTouch(a0);
     switch (r4->unk_08) {
     case 0:
         r3 = r4->timeOfDay * 2 + r4->unk_19 * 6;
         PhoneCallMessagePrint_Gendered(a0, a0->msgData_0640, ov101_021F962C[r4->phoneBookEntry->unkC][r3], ov101_021F962C[r4->phoneBookEntry->unkC][r3 + 1]);
         break;
     case 1:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         r4->unk_08 = 0;
@@ -460,7 +460,7 @@ BOOL ov101_021F2680(PokegearPhoneApp_Sub0C4 *a0) {
 
     switch (r4->unk_04) {
     case 0:
-        ov101_021F2110(a0);
+        PhoneCall_InitMsgDataAndBufferNames(a0);
         ov101_021F2248(a0, r6);
         if (r4->phoneBookEntry->unkC == 0xFF) {
             ++r4->unk_04;
@@ -475,7 +475,7 @@ BOOL ov101_021F2680(PokegearPhoneApp_Sub0C4 *a0) {
         PhoneCallMessagePrint(a0, a0->msgData_PhoneContact, r6->msgIds);
         break;
     case 3:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         DestroyMsgData(a0->msgData_PhoneContact);
@@ -524,7 +524,7 @@ BOOL ov101_021F26F8(PokegearPhoneApp_Sub0C4 *a0) {
         PhoneCallMessagePrint_Ungendered(a0, a0->msgData_0271, 37);
         break;
     case 257:
-        if (!ov101_021F2220(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
         break;

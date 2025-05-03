@@ -3,7 +3,24 @@
 #include "constants/phone_contacts.h"
 #include "constants/trainer_class.h"
 #include "constants/trainers.h"
+#include "constants/items.h"
+#include "constants/phone_scripts.h"
 #include "constants/maps.h"
+
+// can't include the headers for these because they have C features
+#define RTC_WEEK_SUNDAY      0
+#define RTC_WEEK_MONDAY      1
+#define RTC_WEEK_TUESDAY     2
+#define RTC_WEEK_WEDNESDAY   3
+#define RTC_WEEK_THURSDAY    4
+#define RTC_WEEK_FRIDAY      5
+#define RTC_WEEK_SATURDAY    6
+#define RTC_WEEK_MAX         7
+
+#define TIMEOFDAY_WILD_MORN  0
+#define TIMEOFDAY_WILD_DAY   1
+#define TIMEOFDAY_WILD_NITE  2
+#define TIMEOFDAY_WILD_MAX   3
 
     .section .data
 
@@ -19,10 +36,10 @@ gPhoneBookEntries:
     .short {{ entry.trainerId }}
     .short {{ entry.mapId }}
     .short {{ entry.gift }}
-    .short {{ entry.unkA }}
+    .short {{ entry.phoneScriptIfLocal }}
     .byte {{ entry.unkC }}
-    .byte {{ entry.unkD }}
-    .byte {{ entry.unkE }}
+    .byte {{ entry.rematchWeekday }}
+    .byte {{ entry.rematchTimeOfDay }}
     .byte {{ entry.unkF }}
     .byte {{ entry.sortParam.0 }}
     .byte {{ entry.sortParam.1 }}
