@@ -1,0 +1,209 @@
+#include "global.h"
+
+#include "constants/maps.h"
+
+#include "application/pokegear/phone/phone_internal.h"
+#include "msgdata/msg/msg_0662.h"
+
+#include "math_util.h"
+#include "sys_flags.h"
+
+u16 ov101_021F3E74(u16 mapId);
+
+u16 PhoneCall_GetScriptId_EthanLyra(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1) {
+    ALIGN(4)
+    static const u16 ov101_021F86C8[] = {
+        PHONE_SCRIPT_102,
+        PHONE_SCRIPT_101,
+    };
+
+    if (a1->unk_19) {
+        a1->scriptType = 11;
+        return PHONE_SCRIPT_000;
+    }
+    if (a1->phoneBookEntry->mapId == a0->playerMapSec) {
+        a1->scriptType = 0;
+        return ov101_021F86C8[a0->playerGender];
+    }
+    a1->scriptType = 10;
+    return PHONE_SCRIPT_000;
+}
+
+BOOL GearPhoneCall_EthanLyra(PokegearPhoneApp_Sub0C4 *a0) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+
+    switch (r4->unk_04) {
+    case 0:
+        PhoneCall_InitMsgDataAndBufferNames(a0);
+        break;
+    case 1:
+        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0662_00004 + r4->timeOfDay);
+        break;
+    case 2:
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+            return FALSE;
+        }
+        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, ov101_021F3E74(a0->playerMapID));
+        break;
+    default:
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+            return FALSE;
+        }
+        DestroyMsgData(a0->msgData_PhoneContact);
+        return TRUE;
+    }
+
+    ++r4->unk_04;
+    return FALSE;
+}
+
+u8 ov101_021F3D34(PokegearPhoneApp_Sub0C4 *a0) {
+    int i;
+    u8 r4;
+    u8 *r5;
+    u8 r6;
+    u8 sp0[4];
+
+    r4 = 0;
+    r6 = Pokegear_GetMapUnlockLevel(SaveData_GSPlayerMisc_Get(a0->saveData));
+    sp0[0] = 1;
+    if (Save_VarsFlags_FlypointFlagAction(a0->saveVarsFlags, FLAG_ACTION_CHECK, FLAG_UNK_9C9 - FLAG_SYS_FLYPOINT_PALLET)) {
+        sp0[1] = 1; // 2D 2E 48
+    } // UB: else, sp0[1] is undefined
+    if (r6) {
+        sp0[2] = 1; // 19 1A 39
+    } // UB: else, sp0[2] is undefined
+    if (r6 > 1) {
+        sp0[3] = 1; // 00-17 1A 2F-37 39
+    } // UB: else, sp0[3] is undefined
+
+    r5 = AllocFromHeapAtEnd(a0->heapId, 73);
+    MI_CpuClear8(r5, 73);
+    for (i = 0; i < 73; ++i) {
+        if (sp0[ov101_021F8760[i]]) {
+            r5[r4++] = i;
+        }
+    }
+    r4 = r5[LCRandom() % r4];
+    FreeToHeap(r5);
+    return r4 + msg_0662_00086;
+}
+
+BOOL GearPhoneCall_EthanLyra2(PokegearPhoneApp_Sub0C4 *a0) {
+    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+
+    switch (r4->unk_04) {
+    case 0:
+        PhoneCall_InitMsgDataAndBufferNames(a0);
+        break;
+    case 1:
+        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0662_00007 + r4->timeOfDay);
+        break;
+    case 2:
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+            return FALSE;
+        }
+        if ((LCRandom() % 1000) < 500) {
+            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0662_00010 + ((LCRandom() % 900) / 300));
+        } else {
+            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, ov101_021F3D34(a0));
+        }
+        break;
+    default:
+        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+            return FALSE;
+        }
+        DestroyMsgData(a0->msgData_PhoneContact);
+        return TRUE;
+    }
+
+    ++r4->unk_04;
+    return FALSE;
+}
+
+u16 ov101_021F3E74(u16 mapId) {
+    int i;
+
+    static const u16 ov101_021F86CC[] = {
+        MAP_ROUTE_1,
+        MAP_ROUTE_2,
+        MAP_ROUTE_3,
+        MAP_ROUTE_4,
+        MAP_ROUTE_5,
+        MAP_ROUTE_6,
+        MAP_ROUTE_7,
+        MAP_ROUTE_8,
+        MAP_ROUTE_9,
+        MAP_ROUTE_10,
+        MAP_ROUTE_11,
+        MAP_ROUTE_12,
+        MAP_ROUTE_13,
+        MAP_ROUTE_14,
+        MAP_ROUTE_15,
+        MAP_ROUTE_16,
+        MAP_ROUTE_17,
+        MAP_ROUTE_18,
+        MAP_ROUTE_19,
+        MAP_ROUTE_20,
+        MAP_ROUTE_21,
+        MAP_ROUTE_22,
+        MAP_ROUTE_24,
+        MAP_ROUTE_25,
+        MAP_ROUTE_26,
+        MAP_ROUTE_27,
+        MAP_ROUTE_28,
+        MAP_ROUTE_29,
+        MAP_ROUTE_30,
+        MAP_ROUTE_31,
+        MAP_ROUTE_32,
+        MAP_ROUTE_33,
+        MAP_ROUTE_34,
+        MAP_ROUTE_35,
+        MAP_ROUTE_36,
+        MAP_ROUTE_37,
+        MAP_ROUTE_38,
+        MAP_ROUTE_39,
+        MAP_ROUTE_40,
+        MAP_ROUTE_41,
+        MAP_ROUTE_42,
+        MAP_ROUTE_43,
+        MAP_ROUTE_44,
+        MAP_ROUTE_45,
+        MAP_ROUTE_46,
+        MAP_ROUTE_47,
+        MAP_ROUTE_48,
+        MAP_PALLET,
+        MAP_VIRIDIAN,
+        MAP_PEWTER,
+        MAP_CERULEAN,
+        MAP_LAVENDER,
+        MAP_VERMILION,
+        MAP_CELADON,
+        MAP_FUCHSIA,
+        MAP_CINNABAR_ISLAND,
+        MAP_INDIGO_PLATEAU,
+        MAP_SAFFRON,
+        MAP_NEW_BARK,
+        MAP_CHERRYGROVE,
+        MAP_VIOLET,
+        MAP_AZALEA,
+        MAP_CIANWOOD,
+        MAP_GOLDENROD,
+        MAP_OLIVINE,
+        MAP_ECRUTEAK,
+        MAP_MAHOGANY,
+        MAP_LAKE_OF_RAGE,
+        MAP_BLACKTHORN,
+        MAP_MOUNT_SILVER,
+        MAP_NATIONAL_PARK,
+        MAP_RUINS_OF_ALPH,
+        MAP_SAFARI_ZONE_GATE,
+    };
+
+    for (i = 0; i < 73; ++i) {
+        if (mapId == ov101_021F86CC[i]) {
+            return msg_0662_00013 + i;
+        }
+    }
+    return msg_0662_00010 + (LCRandom() % 3);
+}

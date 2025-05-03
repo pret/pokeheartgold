@@ -16,7 +16,7 @@ static BOOL (*const ov101_021F867C[])(PokegearPhoneApp_Sub0C4 *) = {
     ov101_021F2F50,
     ov101_021F2FFC,
     GearPhoneCall_Bill,
-    GearPhoneCall_Mom,
+    GearPhoneCall_Mother,
     GearPhoneCall_ProfOak,
     GearPhoneCall_DayCareLady,
     GearPhoneCall_DayCareMan,
@@ -155,13 +155,13 @@ void PhoneCall_GetCallScriptId(PokegearPhoneApp_Sub0C4 *a0) {
         r4->scriptID = PhoneCall_GetScriptId_Generic(a0, r4);
         break;
     case 1:
-        r4->scriptID = PhoneCall_GetCallScriptId_Mother(a0, r4);
+        r4->scriptID = PhoneCall_GetScriptId_Mother(a0, r4);
         break;
     case 2:
-        r4->scriptID = PhoneCall_GetCallScriptId_ProfElm(a0, r4);
+        r4->scriptID = PhoneCall_GetScriptId_ProfElm(a0, r4);
         break;
     case 3:
-        r4->scriptID = PhoneCall_GetCallScriptId_ProfOak(a0, r4);
+        r4->scriptID = PhoneCall_GetScriptId_ProfOak(a0, r4);
         break;
     case 5:
         r4->scriptID = PhoneCall_GetScriptId_BikeShop(a0, r4);

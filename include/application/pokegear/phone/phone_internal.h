@@ -299,9 +299,9 @@ BOOL ov101_021F2510(PokegearPhoneApp_Sub0C4 *a0);
 BOOL ov101_021F2598(PokegearPhoneApp_Sub0C4 *a0);
 BOOL ov101_021F2614(PokegearPhoneApp_Sub0C4 *a0);
 BOOL ov101_021F2680(PokegearPhoneApp_Sub0C4 *a0);
-u16 PhoneCall_GetCallScriptId_Mother(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-BOOL GearPhoneCall_Mom(PokegearPhoneApp_Sub0C4 *a0);
-u16 PhoneCall_GetCallScriptId_ProfElm(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+u16 PhoneCall_GetScriptId_Mother(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+BOOL GearPhoneCall_Mother(PokegearPhoneApp_Sub0C4 *a0);
+u16 PhoneCall_GetScriptId_ProfElm(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
 u16 PhoneCall_GetScriptId_Generic(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
 u16 ov101_021F2BC0(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1, int a2);
 BOOL ov101_021F2C78(int a0);
@@ -309,7 +309,7 @@ u16 ov101_021F2E04(u16 a0, u8 a1, u8 a2);
 u16 ov101_021F2E74(u16 a0, HeapID a1);
 BOOL ov101_021F2F50(PokegearPhoneApp_Sub0C4 *a0);
 BOOL ov101_021F2FFC(PokegearPhoneApp_Sub0C4 *a0);
-u16 PhoneCall_GetCallScriptId_ProfOak(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+u16 PhoneCall_GetScriptId_ProfOak(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
 BOOL GearPhoneCall_ProfOak(PokegearPhoneApp_Sub0C4 *a0);
 u16 PhoneCall_GetScriptId_Kurt(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
 BOOL GearPhoneCall_Kurt(PokegearPhoneApp_Sub0C4 *a0);
@@ -338,5 +338,6 @@ u16 PhoneCall_GetScriptId_Irwin(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Su
 extern const TouchscreenHitbox ov101_021F8400;
 extern const UnkStruct_ov101_021F8404 ov101_021F8404[];
 extern const UnkStruct_ov101_021F968C ov101_021F968C[];
+extern const u8 ov101_021F8760[];
 
 #endif // GUARD_POKEHEARTGOLD_APPLICATION_POKEGEAR_PHONE_PHONE_INTERNAL_H
