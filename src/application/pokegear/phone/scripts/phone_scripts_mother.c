@@ -38,66 +38,66 @@ u16 PhoneCall_GetScriptId_Mother(PokegearPhoneCallContext *a0, PokegearPhoneCall
     return PHONE_SCRIPT_NONE;
 }
 
-BOOL GearPhoneCall_Mother(PokegearPhoneCallContext *a0) {
-    PokegearPhoneCallState *r4 = &a0->state;
+BOOL GearPhoneCall_Mother(PokegearPhoneCallContext *ctx) {
+    PokegearPhoneCallState *state = &ctx->state;
     int r6;
 
-    switch (r4->unk_04) {
+    switch (state->state1) {
     case 0:
-        PhoneCall_InitMsgDataAndBufferNames(a0);
-        r4->momsSavingsBalance = MomSavingsBalanceAction(a0->momsSavings, MOMS_BALANCE_GET, 0);
-        BufferIntegerAsString(a0->msgFormat, 10, r4->momsSavingsBalance, 6, PRINTING_MODE_LEFT_ALIGN, TRUE);
-        r4->flag0 = Save_VarsFlags_MomsSavingsFlagCheck(a0->saveVarsFlags);
-        r4->flag1 = MomsSavings_GiftQueueFull(a0->momsSavings);
-        if (r4->unk_1A == 2) {
-            r4->unk_04 = 2;
+        PhoneCall_InitMsgDataAndBufferNames(ctx);
+        state->momsSavingsBalance = MomSavingsBalanceAction(ctx->momsSavings, MOMS_BALANCE_GET, 0);
+        BufferIntegerAsString(ctx->msgFormat, 10, state->momsSavingsBalance, 6, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        state->flag0 = Save_VarsFlags_MomsSavingsFlagCheck(ctx->saveVarsFlags);
+        state->flag1 = MomsSavings_GiftQueueFull(ctx->momsSavings);
+        if (state->unk_1A == 2) {
+            state->state1 = 2;
             return FALSE;
         }
-        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, MomCallGetIntroMsgByLocation(a0, r4));
+        PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, MomCallGetIntroMsgByLocation(ctx, state));
         break;
     case 1:
-        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        if (r4->flag1) {
-            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0664_00021);
-            r4->unk_04 = 255;
+        if (state->flag1) {
+            PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0664_00021);
+            state->state1 = 255;
             return FALSE;
         }
         break;
     case 2:
-        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, MomCallGetSaveMoneyPromptMsg(a0, r4));
+        PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, MomCallGetSaveMoneyPromptMsg(ctx, state));
         break;
     case 3:
-        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        PhoneCall_TouchscreenListMenu_Create(a0, 2);
+        PhoneCall_TouchscreenListMenu_Create(ctx, 2);
         break;
     case 4:
-        r6 = PhoneCall_TouchscreenListMenu_HandleInput(a0);
+        r6 = PhoneCall_TouchscreenListMenu_HandleInput(ctx);
         if (r6 == -1) {
             return FALSE;
         }
-        PhoneCall_TouchscreenListMenu_Destroy(a0);
+        PhoneCall_TouchscreenListMenu_Destroy(ctx);
         if (r6 == 0) {
-            r4->flag1 = TRUE;
-            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0664_00025);
+            state->flag1 = TRUE;
+            PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0664_00025);
         } else {
-            r4->flag1 = FALSE;
-            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0664_00026);
+            state->flag1 = FALSE;
+            PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0664_00026);
         }
-        Save_VarsFlags_MomsSavingsFlagAction(a0->saveVarsFlags, r4->flag1);
+        Save_VarsFlags_MomsSavingsFlagAction(ctx->saveVarsFlags, state->flag1);
         break;
     default:
-        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        DestroyMsgData(a0->msgData_PhoneContact);
+        DestroyMsgData(ctx->msgData_PhoneContact);
         return TRUE;
     }
 
-    ++r4->unk_04;
+    ++state->state1;
     return FALSE;
 }
 

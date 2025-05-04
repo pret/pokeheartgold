@@ -62,9 +62,9 @@ typedef struct PokegearPhoneCallContextParam {
 
 typedef struct PokegearPhoneCallState {
     int state0;                          // 0x00
-    int unk_04;                          // 0x04
-    int unk_08;                          // 0x08
-    u8 filler_0C[4];                     // 0x0C
+    int state1;                          // 0x04
+    int state2;                          // 0x08
+    int state3;                          // 0x0C
     PhoneBookEntry *phoneBookEntry;      // 0x10
     const PhoneCallScriptDef *scriptDef; // 0x14
     u8 callerID;                         // 0x18
@@ -75,7 +75,7 @@ typedef struct PokegearPhoneCallState {
     u16 scriptType;                      // 0x20
     u8 menuInputState;                   // 0x22
     u8 timeOfDay;                        // 0x23
-    u16 unk_24;                          // 0x24
+    u16 hangupToneTimer;                 // 0x24
     RTCDate date;                        // 0x28
     RTCTime time;                        // 0x38
     u32 momsSavingsBalance;              // 0x44

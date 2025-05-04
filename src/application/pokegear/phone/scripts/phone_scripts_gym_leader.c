@@ -26,12 +26,12 @@ BOOL GearPhoneCall_GymLeader(PokegearPhoneCallContext *a0) {
     PokegearPhoneCallState *r4 = &a0->state;
     int r6;
 
-    switch (r4->unk_04) {
+    switch (r4->state1) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(a0);
 
         if (r4->phoneBookEntry->mapId == a0->playerMapSec) {
-            r4->unk_04 = 255;
+            r4->state1 = 255;
             PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00001);
             return FALSE;
         }
@@ -43,17 +43,17 @@ BOOL GearPhoneCall_GymLeader(PokegearPhoneCallContext *a0) {
         }
         if (!r4->flag0) {
             PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00003);
-            r4->unk_04 = 255;
+            r4->state1 = 255;
             return FALSE;
         }
         if (r4->flag1) {
             PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00009);
-            r4->unk_04 = 255;
+            r4->state1 = 255;
             return FALSE;
         }
         if (r4->date.week != r4->phoneBookEntry->rematchWeekday || r4->timeOfDay != r4->phoneBookEntry->rematchTimeOfDay) {
             PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00004);
-            r4->unk_04 = 255;
+            r4->state1 = 255;
             return FALSE;
         }
         PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00005);
@@ -87,14 +87,14 @@ BOOL GearPhoneCall_GymLeader(PokegearPhoneCallContext *a0) {
         return TRUE;
     }
 
-    ++r4->unk_04;
+    ++r4->state1;
     return FALSE;
 }
 
 BOOL GearPhoneCall_GymLeader2(PokegearPhoneCallContext *a0) {
     PokegearPhoneCallState *r4 = &a0->state;
 
-    switch (r4->unk_04) {
+    switch (r4->state1) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(a0);
         PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00010);
@@ -117,7 +117,7 @@ BOOL GearPhoneCall_GymLeader2(PokegearPhoneCallContext *a0) {
         return TRUE;
     }
 
-    ++r4->unk_04;
+    ++r4->state1;
     return FALSE;
 }
 

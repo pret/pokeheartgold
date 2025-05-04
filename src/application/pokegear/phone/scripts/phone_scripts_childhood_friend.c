@@ -10,50 +10,50 @@
 
 u16 ov101_021F3E74(u16 mapId);
 
-u16 PhoneCall_GetScriptId_EthanLyra(PokegearPhoneCallContext *a0, PokegearPhoneCallState *a1) {
+u16 PhoneCall_GetScriptId_EthanLyra(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
     ALIGN(4)
     static const u16 ov101_021F86C8[] = {
         PHONE_SCRIPT_102,
         PHONE_SCRIPT_101,
     };
 
-    if (a1->isIncomingCall) {
-        a1->scriptType = 11;
+    if (state->isIncomingCall) {
+        state->scriptType = 11;
         return PHONE_SCRIPT_NONE;
     }
-    if (a1->phoneBookEntry->mapId == a0->playerMapSec) {
-        a1->scriptType = 0;
-        return ov101_021F86C8[a0->playerGender];
+    if (state->phoneBookEntry->mapId == ctx->playerMapSec) {
+        state->scriptType = 0;
+        return ov101_021F86C8[ctx->playerGender];
     }
-    a1->scriptType = 10;
+    state->scriptType = 10;
     return PHONE_SCRIPT_NONE;
 }
 
-BOOL GearPhoneCall_EthanLyra(PokegearPhoneCallContext *a0) {
-    PokegearPhoneCallState *r4 = &a0->state;
+BOOL GearPhoneCall_EthanLyra(PokegearPhoneCallContext *ctx) {
+    PokegearPhoneCallState *state = &ctx->state;
 
-    switch (r4->unk_04) {
+    switch (state->state1) {
     case 0:
-        PhoneCall_InitMsgDataAndBufferNames(a0);
+        PhoneCall_InitMsgDataAndBufferNames(ctx);
         break;
     case 1:
-        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0662_00004 + r4->timeOfDay);
+        PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0662_00004 + state->timeOfDay);
         break;
     case 2:
-        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, ov101_021F3E74(a0->playerMapID));
+        PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, ov101_021F3E74(ctx->playerMapID));
         break;
     default:
-        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        DestroyMsgData(a0->msgData_PhoneContact);
+        DestroyMsgData(ctx->msgData_PhoneContact);
         return TRUE;
     }
 
-    ++r4->unk_04;
+    ++state->state1;
     return FALSE;
 }
 
@@ -89,35 +89,35 @@ u8 ov101_021F3D34(PokegearPhoneCallContext *a0) {
     return r4 + msg_0662_00086;
 }
 
-BOOL GearPhoneCall_EthanLyra2(PokegearPhoneCallContext *a0) {
-    PokegearPhoneCallState *r4 = &a0->state;
+BOOL GearPhoneCall_EthanLyra2(PokegearPhoneCallContext *ctx) {
+    PokegearPhoneCallState *state = &ctx->state;
 
-    switch (r4->unk_04) {
+    switch (state->state1) {
     case 0:
-        PhoneCall_InitMsgDataAndBufferNames(a0);
+        PhoneCall_InitMsgDataAndBufferNames(ctx);
         break;
     case 1:
-        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0662_00007 + r4->timeOfDay);
+        PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0662_00007 + state->timeOfDay);
         break;
     case 2:
-        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
         if ((LCRandom() % 1000) < 500) {
-            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0662_00010 + ((LCRandom() % 900) / 300));
+            PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0662_00010 + ((LCRandom() % 900) / 300));
         } else {
-            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, ov101_021F3D34(a0));
+            PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, ov101_021F3D34(ctx));
         }
         break;
     default:
-        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        DestroyMsgData(a0->msgData_PhoneContact);
+        DestroyMsgData(ctx->msgData_PhoneContact);
         return TRUE;
     }
 
-    ++r4->unk_04;
+    ++state->state1;
     return FALSE;
 }
 

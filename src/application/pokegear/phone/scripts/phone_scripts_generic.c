@@ -240,14 +240,14 @@ BOOL ov101_021F2F50(PokegearPhoneCallContext *a0) {
     PokegearPhoneCallState *r4 = &a0->state;
     const PhoneCallScriptDef *scriptDef;
 
-    switch (r4->unk_04) {
+    switch (r4->state1) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(a0);
         ov101_021F2248(a0, PhoneCall_GetScriptDefPtrByID(r4->scriptID));
         BufferSpeciesName(a0->msgFormat, 10, ov101_021F2E74(r4->phoneBookEntry->trainerId, a0->heapId));
         BufferSpeciesName(a0->msgFormat, 11, ov101_021F2E04(r4->phoneBookEntry->mapId, r4->phoneBookEntry->trainerClass, r4->timeOfDay));
         if (r4->phoneBookEntry->unkC == 255) {
-            ++r4->unk_04;
+            ++r4->state1;
         }
         break;
     case 1:
@@ -267,7 +267,7 @@ BOOL ov101_021F2F50(PokegearPhoneCallContext *a0) {
         return TRUE;
     }
 
-    ++r4->unk_04;
+    ++r4->state1;
     return FALSE;
 }
 
@@ -276,12 +276,12 @@ BOOL ov101_021F2FFC(PokegearPhoneCallContext *a0) {
     u8 r5;
     const PhoneCallScriptDef *scriptDef;
 
-    switch (r4->unk_04) {
+    switch (r4->state1) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(a0);
         ov101_021F2248(a0, PhoneCall_GetScriptDefPtrByID(r4->scriptID));
         if (r4->phoneBookEntry->unkC == 255) {
-            ++r4->unk_04;
+            ++r4->state1;
         }
         break;
     case 1:
@@ -307,6 +307,6 @@ BOOL ov101_021F2FFC(PokegearPhoneCallContext *a0) {
         return TRUE;
     }
 
-    ++r4->unk_04;
+    ++r4->state1;
     return FALSE;
 }

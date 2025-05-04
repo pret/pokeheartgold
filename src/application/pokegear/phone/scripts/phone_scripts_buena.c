@@ -10,88 +10,88 @@
 
 u8 ov101_021F3C60(u8 hour);
 
-u16 PhoneCall_GetScriptId_Buena(PokegearPhoneCallContext *a0, PokegearPhoneCallState *a1) {
-    a1->scriptType = 0;
-    a1->flag0 = CheckGameClearFlag(a0->saveVarsFlags);
-    a1->sharedU8var = ov101_021F3C60(a1->time.hour);
-    if (Save_VarsFlags_IsInRocketTakeover(a0->saveVarsFlags)) {
+u16 PhoneCall_GetScriptId_Buena(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
+    state->scriptType = 0;
+    state->flag0 = CheckGameClearFlag(ctx->saveVarsFlags);
+    state->sharedU8var = ov101_021F3C60(state->time.hour);
+    if (Save_VarsFlags_IsInRocketTakeover(ctx->saveVarsFlags)) {
         return PHONE_SCRIPT_099;
     }
-    if (a1->isIncomingCall) {
-        a1->scriptType = 9;
+    if (state->isIncomingCall) {
+        state->scriptType = 9;
         return PHONE_SCRIPT_NONE;
     }
-    if (a1->sharedU8var == 3) {
+    if (state->sharedU8var == 3) {
         return PHONE_SCRIPT_100;
     }
-    if (a1->phoneBookEntry->mapId == a0->playerMapSec) {
+    if (state->phoneBookEntry->mapId == ctx->playerMapSec) {
         return PHONE_SCRIPT_098;
     }
-    a1->scriptType = 8;
+    state->scriptType = 8;
     return PHONE_SCRIPT_NONE;
 }
 
-BOOL GearPhoneCall_Buena(PokegearPhoneCallContext *a0) {
-    PokegearPhoneCallState *r4 = &a0->state;
+BOOL GearPhoneCall_Buena(PokegearPhoneCallContext *ctx) {
+    PokegearPhoneCallState *state = &ctx->state;
 
-    switch (r4->unk_04) {
+    switch (state->state1) {
     case 0:
-        PhoneCall_InitMsgDataAndBufferNames(a0);
-        PhoneCallMessagePrint_Gendered(a0, a0->msgData_PhoneContact, r4->timeOfDay * 2 + msg_0641_00003, r4->timeOfDay * 2 + msg_0641_00004);
+        PhoneCall_InitMsgDataAndBufferNames(ctx);
+        PhoneCallMessagePrint_Gendered(ctx, ctx->msgData_PhoneContact, state->timeOfDay * 2 + msg_0641_00003, state->timeOfDay * 2 + msg_0641_00004);
         break;
     case 1:
-        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0641_00010 + (LCRandom() % 3));
+        PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0641_00010 + (LCRandom() % 3));
         break;
     default:
-        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        DestroyMsgData(a0->msgData_PhoneContact);
+        DestroyMsgData(ctx->msgData_PhoneContact);
         return TRUE;
     }
 
-    ++r4->unk_04;
+    ++state->state1;
     return FALSE;
 }
 
-BOOL GearPhoneCall_Buena2(PokegearPhoneCallContext *a0) {
-    PokegearPhoneCallState *r4 = &a0->state;
+BOOL GearPhoneCall_Buena2(PokegearPhoneCallContext *ctx) {
+    PokegearPhoneCallState *state = &ctx->state;
     u8 r5;
     u8 r2;
 
-    switch (r4->unk_04) {
+    switch (state->state1) {
     case 0:
-        PhoneCall_InitMsgDataAndBufferNames(a0);
-        PhoneCallMessagePrint_Gendered(a0, a0->msgData_PhoneContact, r4->timeOfDay * 2 + msg_0641_00015, r4->timeOfDay * 2 + msg_0641_00016);
+        PhoneCall_InitMsgDataAndBufferNames(ctx);
+        PhoneCallMessagePrint_Gendered(ctx, ctx->msgData_PhoneContact, state->timeOfDay * 2 + msg_0641_00015, state->timeOfDay * 2 + msg_0641_00016);
         break;
     case 1:
-        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        if (r4->sharedU8var == 3) {
-            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0641_00036);
+        if (state->sharedU8var == 3) {
+            PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0641_00036);
         } else {
-            r5 = 11 + r4->flag0 * 3;
+            r5 = 11 + state->flag0 * 3;
             r2 = LCRandom() % r5;
             if (r2 == 13) {
-                PhoneCallMessagePrint_Gendered(a0, a0->msgData_PhoneContact, msg_0641_00034, msg_0641_00035);
+                PhoneCallMessagePrint_Gendered(ctx, ctx->msgData_PhoneContact, msg_0641_00034, msg_0641_00035);
             } else {
-                PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0641_00021 + r2);
+                PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0641_00021 + r2);
             }
         }
         break;
     default:
-        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        DestroyMsgData(a0->msgData_PhoneContact);
+        DestroyMsgData(ctx->msgData_PhoneContact);
         return TRUE;
     }
 
-    ++r4->unk_04;
+    ++state->state1;
     return FALSE;
 }
 

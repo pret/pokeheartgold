@@ -50,7 +50,7 @@ BOOL GearPhoneCall_Baoba(PokegearPhoneCallContext *a0) {
     u8 *r6;
     u8 r4;
 
-    switch (sp0->unk_04) {
+    switch (sp0->state1) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(a0);
         r6 = sub_0202F340(a0->momsSavings, &sp4, a0->heapId);
@@ -75,6 +75,6 @@ BOOL GearPhoneCall_Baoba(PokegearPhoneCallContext *a0) {
         return TRUE;
     }
 
-    ++sp0->unk_04;
+    ++sp0->state1;
     return FALSE;
 }

@@ -5,104 +5,104 @@
 
 #include "get_egg.h"
 
-u16 PhoneCall_GetScriptId_DayCareLady(PokegearPhoneCallContext *a0, PokegearPhoneCallState *a1) {
+u16 PhoneCall_GetScriptId_DayCareLady(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
     int i;
     Daycare *daycare;
     DaycareMon *mon;
 
-    a1->scriptType = 0;
-    if (a1->phoneBookEntry->mapId == a0->playerMapSec) {
+    state->scriptType = 0;
+    if (state->phoneBookEntry->mapId == ctx->playerMapSec) {
         return PHONE_SCRIPT_097;
     }
 
-    daycare = Save_Daycare_Get(a0->saveData);
-    a1->miscPtr.daycare = daycare;
-    a1->sharedU8var = 0;
+    daycare = Save_Daycare_Get(ctx->saveData);
+    state->miscPtr.daycare = daycare;
+    state->sharedU8var = 0;
     for (i = 0; i < 2; ++i) {
         mon = Save_Daycare_GetMonX(daycare, i);
         if (GetBoxMonData(DaycareMon_GetBoxMon(mon), MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
-            ++a1->sharedU8var;
-            a1->daycareMonsLevelGrowth[i] = DaycareMon_CalcLevelGrowth(mon);
+            ++state->sharedU8var;
+            state->daycareMonsLevelGrowth[i] = DaycareMon_CalcLevelGrowth(mon);
         } else {
-            a1->daycareMonsLevelGrowth[i] = 0;
+            state->daycareMonsLevelGrowth[i] = 0;
         }
     }
-    a1->scriptType = 6;
+    state->scriptType = 6;
     return PHONE_SCRIPT_NONE;
 }
 
-BOOL GearPhoneCall_DayCareLady(PokegearPhoneCallContext *a0) {
-    PokegearPhoneCallState *r4 = &a0->state;
+BOOL GearPhoneCall_DayCareLady(PokegearPhoneCallContext *ctx) {
+    PokegearPhoneCallState *state = &ctx->state;
     int r6;
 
-    switch (r4->unk_04) {
+    switch (state->state1) {
     case 0:
-        PhoneCall_InitMsgDataAndBufferNames(a0);
-        PhoneCallMessagePrint_Gendered(a0, a0->msgData_PhoneContact, msg_0660_00003, msg_0660_00004);
+        PhoneCall_InitMsgDataAndBufferNames(ctx);
+        PhoneCallMessagePrint_Gendered(ctx, ctx->msgData_PhoneContact, msg_0660_00003, msg_0660_00004);
         break;
     case 1:
-        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        if (r4->sharedU8var == 0) {
-            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0660_00010);
-            r4->unk_04 = 255;
+        if (state->sharedU8var == 0) {
+            PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0660_00010);
+            state->state1 = 255;
             return FALSE;
         } else {
-            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0660_00005);
+            PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0660_00005);
         }
         break;
     case 2:
-        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        if (r4->daycareMonsLevelGrowth[0] != 0) {
+        if (state->daycareMonsLevelGrowth[0] != 0) {
             r6 = 0;
-            if (r4->daycareMonsLevelGrowth[1] == 0) {
-                r4->unk_04 = 4;
+            if (state->daycareMonsLevelGrowth[1] == 0) {
+                state->state1 = 4;
             } else {
-                r4->unk_04 = 3;
+                state->state1 = 3;
             }
         } else {
-            if (r4->daycareMonsLevelGrowth[1] != 0) {
+            if (state->daycareMonsLevelGrowth[1] != 0) {
                 r6 = 1;
-                r4->unk_04 = 4;
+                state->state1 = 4;
             } else {
-                PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0660_00009);
-                r4->unk_04 = 255;
+                PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0660_00009);
+                state->state1 = 255;
                 return FALSE;
             }
         }
-        BufferBoxMonNickname(a0->msgFormat, 10, DaycareMon_GetBoxMon(Save_Daycare_GetMonX(r4->miscPtr.daycare, r6)));
-        BufferIntegerAsString(a0->msgFormat, 11, r4->daycareMonsLevelGrowth[r6], 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
-        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0660_00006);
+        BufferBoxMonNickname(ctx->msgFormat, 10, DaycareMon_GetBoxMon(Save_Daycare_GetMonX(state->miscPtr.daycare, r6)));
+        BufferIntegerAsString(ctx->msgFormat, 11, state->daycareMonsLevelGrowth[r6], 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0660_00006);
         return FALSE;
     case 3:
-        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        BufferBoxMonNickname(a0->msgFormat, 10, DaycareMon_GetBoxMon(Save_Daycare_GetMonX(r4->miscPtr.daycare, 1)));
-        BufferIntegerAsString(a0->msgFormat, 11, r4->daycareMonsLevelGrowth[1], 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
-        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0660_00006);
+        BufferBoxMonNickname(ctx->msgFormat, 10, DaycareMon_GetBoxMon(Save_Daycare_GetMonX(state->miscPtr.daycare, 1)));
+        BufferIntegerAsString(ctx->msgFormat, 11, state->daycareMonsLevelGrowth[1], 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0660_00006);
         break;
     case 4:
-        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        if (r4->sharedU8var == 1) {
-            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0660_00008);
+        if (state->sharedU8var == 1) {
+            PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0660_00008);
         } else {
-            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0660_00009);
+            PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0660_00009);
         }
         break;
     default:
-        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        DestroyMsgData(a0->msgData_PhoneContact);
+        DestroyMsgData(ctx->msgData_PhoneContact);
         return TRUE;
     }
 
-    ++r4->unk_04;
+    ++state->state1;
     return FALSE;
 }
