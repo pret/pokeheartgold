@@ -14,7 +14,7 @@ u16 PhoneCall_GetScriptId_Mother(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_S
     if (a1->unk_1A == 2) {
         Save_VarsFlags_SetFlagInArray(a0->saveVarsFlags, FLAG_TALKED_TO_MOM_AFTER_NAMING_RIVAL);
         a1->scriptType = 4;
-        return PHONE_SCRIPT_000;
+        return PHONE_SCRIPT_NONE;
     }
 
     if (a1->phoneBookEntry->mapId == a0->playerMapSec) {
@@ -35,7 +35,7 @@ u16 PhoneCall_GetScriptId_Mother(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_S
     }
 
     a1->scriptType = 4;
-    return PHONE_SCRIPT_000;
+    return PHONE_SCRIPT_NONE;
 }
 
 BOOL GearPhoneCall_Mother(PokegearPhoneApp_Sub0C4 *a0) {

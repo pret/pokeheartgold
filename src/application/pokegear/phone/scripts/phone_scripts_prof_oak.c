@@ -35,7 +35,7 @@ u16 PhoneCall_GetScriptId_ProfOak(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_
         return PHONE_SCRIPT_080;
     }
     a1->scriptType = 5;
-    return PHONE_SCRIPT_000;
+    return PHONE_SCRIPT_NONE;
 }
 
 BOOL GearPhoneCall_ProfOak(PokegearPhoneApp_Sub0C4 *a0) {

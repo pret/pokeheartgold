@@ -19,14 +19,14 @@ u16 PhoneCall_GetScriptId_EthanLyra(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneAp
 
     if (a1->unk_19) {
         a1->scriptType = 11;
-        return PHONE_SCRIPT_000;
+        return PHONE_SCRIPT_NONE;
     }
     if (a1->phoneBookEntry->mapId == a0->playerMapSec) {
         a1->scriptType = 0;
         return ov101_021F86C8[a0->playerGender];
     }
     a1->scriptType = 10;
-    return PHONE_SCRIPT_000;
+    return PHONE_SCRIPT_NONE;
 }
 
 BOOL GearPhoneCall_EthanLyra(PokegearPhoneApp_Sub0C4 *a0) {

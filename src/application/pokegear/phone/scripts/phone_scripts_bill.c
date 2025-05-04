@@ -16,7 +16,7 @@ u16 PhoneCall_GetScriptId_Bill(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub
         return PHONE_SCRIPT_092;
     }
     a1->scriptType = 3;
-    return PHONE_SCRIPT_000;
+    return PHONE_SCRIPT_NONE;
 }
 
 BOOL GearPhoneCall_Bill(PokegearPhoneApp_Sub0C4 *a0) {

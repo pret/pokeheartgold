@@ -33,7 +33,7 @@ u16 PhoneCall_GetScriptId_DayCareMan(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneA
         a1->unk_48 = Save_Daycare_CalcCompatibility(daycare);
     }
     a1->scriptType = 7;
-    return PHONE_SCRIPT_000;
+    return PHONE_SCRIPT_NONE;
 }
 
 BOOL GearPhoneCall_DayCareMan(PokegearPhoneApp_Sub0C4 *a0) {

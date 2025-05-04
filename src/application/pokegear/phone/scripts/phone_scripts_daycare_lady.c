@@ -28,7 +28,7 @@ u16 PhoneCall_GetScriptId_DayCareLady(PokegearPhoneApp_Sub0C4 *a0, PokegearPhone
         }
     }
     a1->scriptType = 6;
-    return PHONE_SCRIPT_000;
+    return PHONE_SCRIPT_NONE;
 }
 
 BOOL GearPhoneCall_DayCareLady(PokegearPhoneApp_Sub0C4 *a0) {

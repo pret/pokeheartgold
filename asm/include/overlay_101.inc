@@ -349,6 +349,6 @@
 .public ov101_021F8B3C
 .public ov101_021F8B4C
 .public ov101_021F8B60
-.public sPhoneCallScriptDef
+.public gPhoneCallScriptDef
 .public ov101_021F962C
 .public ov101_021F968C

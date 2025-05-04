@@ -19,7 +19,7 @@ u16 PhoneCall_GetScriptId_GymLeader(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneAp
     } else {
         a1->scriptType = 13;
     }
-    return PHONE_SCRIPT_000;
+    return PHONE_SCRIPT_NONE;
 }
 
 BOOL GearPhoneCall_GymLeader(PokegearPhoneApp_Sub0C4 *a0) {

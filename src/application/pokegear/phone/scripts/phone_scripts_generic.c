@@ -38,10 +38,10 @@ u16 ov101_021F2BC0(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *
     const UnkStruct_ov101_021F968C *r4 = a1;
 
     for (i = 0; i < a2; ++i) {
-        if (r4->unk_0 == 255 || r4->unk_0 == 0) {
+        if (r4->type == 255 || r4->type == 0) {
             break;
         }
-        switch (r4->unk_0) {
+        switch (r4->type) {
         case 2:
             r0 = ov101_021F2CB8(a0, r4);
             break;
@@ -65,30 +65,30 @@ u16 ov101_021F2BC0(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *
             break;
         }
         if (r0) {
-            sp0->scriptType = r4->unk_2;
-            return r4->unk_4;
+            sp0->scriptType = r4->scriptType;
+            return r4->scriptID;
         }
         a1 = r4++;
     }
-    if (a1->unk_0 == 255 || a1->unk_0 == 0) {
+    if (a1->type == 255 || a1->type == 0) {
         sp0->scriptType = 0;
-        return PHONE_SCRIPT_000;
+        return PHONE_SCRIPT_NONE;
     }
 
-    sp0->scriptType = a1->unk_2;
-    return a1->unk_4;
+    sp0->scriptType = a1->scriptType;
+    return a1->scriptID;
 }
 
-BOOL ov101_021F2C78(int a0) {
-    int r2 = MTRandom() ^ MTRandom();
-    u16 r0 = (u16)r2;
-    r0 ^= (r2 >> 8);
-    r0 %= 100;
-    return r0 <= a0;
+BOOL ov101_021F2C78(int chance) {
+    int rnd = MTRandom() ^ MTRandom();
+    u16 rnd_xor_rem = (u16)rnd;
+    rnd_xor_rem ^= (rnd >> 8);
+    rnd_xor_rem %= 100;
+    return rnd_xor_rem <= chance;
 }
 
 BOOL ov101_021F2CAC(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1) {
-    return ov101_021F2C78(a1->unk_1);
+    return ov101_021F2C78(a1->chance);
 }
 
 BOOL ov101_021F2CB8(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1) {
@@ -100,10 +100,10 @@ BOOL ov101_021F2CB8(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C 
     if (PhoneRematches_GiftItemIdGet(a0->momsSavings, r6->callerID)) {
         return FALSE;
     }
-    if (!Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_BEAT_RADIO_TOWER_ROCKETS) && a1->unk_2 == 0 && ov101_021F2374(a1->unk_4)->unk_2_0 == 3) {
+    if (!Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_BEAT_RADIO_TOWER_ROCKETS) && a1->scriptType == 0 && ov101_021F2374(a1->scriptID)->kind == 3) {
         return FALSE;
     }
-    return ov101_021F2C78(a1->unk_1);
+    return ov101_021F2C78(a1->chance);
 }
 
 BOOL ov101_021F2D10(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1) {
@@ -115,7 +115,7 @@ BOOL ov101_021F2D10(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C 
     if (r4->date.week != r4->phoneBookEntry->rematchWeekday || r4->timeOfDay != r4->phoneBookEntry->rematchTimeOfDay) {
         return FALSE;
     }
-    return ov101_021F2C78(a1->unk_1);
+    return ov101_021F2C78(a1->chance);
 }
 
 BOOL ov101_021F2D48(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1) {
@@ -130,7 +130,7 @@ BOOL ov101_021F2D48(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C 
     if (!PhoneRematches_IsSeeking(a0->momsSavings, r4->callerID)) {
         return FALSE;
     }
-    return ov101_021F2C78(a1->unk_1);
+    return ov101_021F2C78(a1->chance);
 }
 
 BOOL ov101_021F2D90(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1) {
@@ -142,19 +142,19 @@ BOOL ov101_021F2D90(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C 
     if (!PhoneRematches_GiftItemIdGet(a0->momsSavings, r4->callerID)) {
         return FALSE;
     }
-    return ov101_021F2C78(a1->unk_1);
+    return ov101_021F2C78(a1->chance);
 }
 
 BOOL ov101_021F2DC8(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1) {
     if (a0->unk_88.date.week == RTC_WEEK_TUESDAY || a0->unk_88.date.week == RTC_WEEK_THURSDAY || a0->unk_88.date.week == RTC_WEEK_SATURDAY) {
-        return ov101_021F2C78(a1->unk_1);
+        return ov101_021F2C78(a1->chance);
     }
     return FALSE;
 }
 
 BOOL ov101_021F2DE8(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1) {
     if (Save_VarsFlags_IsInRocketTakeover(a0->saveVarsFlags)) {
-        return ov101_021F2C78(a1->unk_1);
+        return ov101_021F2C78(a1->chance);
     }
     return FALSE;
 }

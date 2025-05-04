@@ -1160,7 +1160,8 @@ Overlay OVY_101
     Object src/application/pokegear/phone/scripts/phone_scripts_juggler_irwin.o
     Object src/application/pokegear/phone/extra_ethan_lyra_data.o
     Object asm/pokegear_app_radio.o
-    Object asm/pokegear_app_data.o
+    Object src/application/pokegear/phone/phone_script_defs.o
+    Object src/application/pokegear/phone/phone_generic_headers.o
 }
 Overlay OVY_102
 {

@@ -19,10 +19,10 @@ typedef struct UnkStruct_ov101_021F8404 {
 } UnkStruct_ov101_021F8404;
 
 typedef struct UnkStruct_ov101_021F968C {
-    u8 unk_0;
-    u8 unk_1;
-    u16 unk_2;
-    u16 unk_4;
+    u8 type;
+    u8 chance;
+    u16 scriptType;
+    u16 scriptID;
 } UnkStruct_ov101_021F968C;
 
 typedef struct PokegearPhoneAppData PokegearPhoneAppData;
@@ -339,5 +339,8 @@ extern const TouchscreenHitbox ov101_021F8400;
 extern const UnkStruct_ov101_021F8404 ov101_021F8404[];
 extern const UnkStruct_ov101_021F968C ov101_021F968C[];
 extern const u8 ov101_021F8760[];
+
+extern const PhoneCallScriptDef gPhoneCallScriptDef[];
+extern const u8 ov101_021F962C[][12];
 
 #endif // GUARD_POKEHEARTGOLD_APPLICATION_POKEGEAR_PHONE_PHONE_INTERNAL_H

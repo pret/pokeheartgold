@@ -203,7 +203,7 @@ void PhoneCall_GetCallScriptId(PokegearPhoneApp_Sub0C4 *a0) {
         break;
     }
     if (r4->scriptType <= 2) {
-        r4->scriptDef = &sPhoneCallScriptDef[r4->scriptID];
+        r4->scriptDef = &gPhoneCallScriptDef[r4->scriptID];
     }
 }
 
@@ -254,12 +254,12 @@ void ov101_021F2248(PokegearPhoneApp_Sub0C4 *a0, const PhoneCallScriptDef *a1) {
     PokegearPhoneApp_Sub0C4_Sub88 *r6 = &a0->unk_88;
     u16 r2;
 
-    switch (a1->unk_2_0) {
+    switch (a1->kind) {
     case 3:
         PhoneRematches_SetSeeking(a0->momsSavings, r6->callerID, TRUE);
         break;
     case 4:
-        r2 = a1->unk_4;
+        r2 = a1->param1;
         if (r2 == 149) {
             r2 = (MTRandom() % 10) + 149;
         } else if (r2 == 4) {
@@ -269,14 +269,14 @@ void ov101_021F2248(PokegearPhoneApp_Sub0C4 *a0, const PhoneCallScriptDef *a1) {
         break;
     case 1:
     case 2:
-        if (a1->unk_2_4) {
-            Save_VarsFlags_SetFlagInArray(a0->saveVarsFlags, a1->unk_4);
+        if (a1->param0) {
+            Save_VarsFlags_SetFlagInArray(a0->saveVarsFlags, a1->param1);
         } else {
-            Save_VarsFlags_ClearFlagInArray(a0->saveVarsFlags, a1->unk_4);
+            Save_VarsFlags_ClearFlagInArray(a0->saveVarsFlags, a1->param1);
         }
         break;
     case 5:
-        ReadMsgDataIntoString(a0->msgData_PhoneContact, a1->unk_4 + (LCRandom() % a1->unk_2_4), a0->msgExpansionBuff);
+        ReadMsgDataIntoString(a0->msgData_PhoneContact, a1->param1 + (LCRandom() % a1->param0), a0->msgExpansionBuff);
         BufferString(a0->msgFormat, 4, a0->msgExpansionBuff, 2, 1, 2);
         break;
     }
@@ -302,7 +302,7 @@ void PhoneCall_TouchscreenListMenu_Destroy(PokegearPhoneApp_Sub0C4 *a0) {
 }
 
 const PhoneCallScriptDef *ov101_021F2374(int a0) {
-    return &sPhoneCallScriptDef[a0];
+    return &gPhoneCallScriptDef[a0];
 }
 
 void ov101_021F2384(PokegearPhoneApp_Sub0C4 *a0, int a1) {

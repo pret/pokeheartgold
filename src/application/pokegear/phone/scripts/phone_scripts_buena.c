@@ -19,7 +19,7 @@ u16 PhoneCall_GetScriptId_Buena(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Su
     }
     if (a1->unk_19) {
         a1->scriptType = 9;
-        return PHONE_SCRIPT_000;
+        return PHONE_SCRIPT_NONE;
     }
     if (a1->unk_4A == 3) {
         return PHONE_SCRIPT_100;
@@ -28,7 +28,7 @@ u16 PhoneCall_GetScriptId_Buena(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Su
         return PHONE_SCRIPT_098;
     }
     a1->scriptType = 8;
-    return PHONE_SCRIPT_000;
+    return PHONE_SCRIPT_NONE;
 }
 
 BOOL GearPhoneCall_Buena(PokegearPhoneApp_Sub0C4 *a0) {

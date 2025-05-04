@@ -11,7 +11,7 @@ u16 PhoneCall_GetScriptId_Kurt(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub
         return PHONE_SCRIPT_083;
     } else {
         a1->scriptType = 12;
-        return PHONE_SCRIPT_000;
+        return PHONE_SCRIPT_NONE;
     }
 }
 

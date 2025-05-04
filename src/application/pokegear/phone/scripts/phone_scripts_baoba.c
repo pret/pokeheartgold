@@ -16,9 +16,9 @@ u16 PhoneCall_GetScriptId_Baoba(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Su
     if (a1->unk_19) {
         safariZone = Save_SafariZone_Get(a0->saveData);
         switch (a1->unk_1C) {
-        case PHONE_SCRIPT_000:
+        case PHONE_SCRIPT_NONE:
             a1->scriptType = 15;
-            return PHONE_SCRIPT_000;
+            return PHONE_SCRIPT_NONE;
         case PHONE_SCRIPT_142:
             Save_VarsFlags_SetVar4057(a0->saveVarsFlags, 4);
             return a1->unk_1C;
