@@ -5,7 +5,7 @@
 
 #include "unk_02031B0C.h"
 
-u16 PhoneCall_GetScriptId_Kurt(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1) {
+u16 PhoneCall_GetScriptId_Kurt(PokegearPhoneCallContext *a0, PokegearPhoneCallState *a1) {
     a1->scriptType = 0;
     if (a1->phoneBookEntry->mapId == a0->playerMapSec) {
         return PHONE_SCRIPT_083;
@@ -15,8 +15,8 @@ u16 PhoneCall_GetScriptId_Kurt(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub
     }
 }
 
-BOOL GearPhoneCall_Kurt(PokegearPhoneApp_Sub0C4 *a0) {
-    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+BOOL GearPhoneCall_Kurt(PokegearPhoneCallContext *a0) {
+    PokegearPhoneCallState *r4 = &a0->state;
     SaveApricornBox *apricornBox;
     u32 kurtQuantity;
     u8 msgId;

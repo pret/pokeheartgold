@@ -5,7 +5,7 @@
 
 #include "get_egg.h"
 
-u16 PhoneCall_GetScriptId_DayCareMan(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1) {
+u16 PhoneCall_GetScriptId_DayCareMan(PokegearPhoneCallContext *a0, PokegearPhoneCallState *a1) {
     int i;
     Daycare *daycare;
     DaycareMon *mon;
@@ -21,23 +21,23 @@ u16 PhoneCall_GetScriptId_DayCareMan(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneA
 
     daycare = Save_Daycare_Get(a0->saveData);
     a1->miscPtr.daycare = daycare;
-    a1->unk_4A = 0;
+    a1->sharedU8var = 0;
     for (i = 0; i < 2; ++i) {
         mon = Save_Daycare_GetMonX(daycare, i);
         if (GetBoxMonData(DaycareMon_GetBoxMon(mon), MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
             BufferBoxMonNickname(a0->msgFormat, 10 + i, DaycareMon_GetBoxMon(mon));
-            ++a1->unk_4A;
+            ++a1->sharedU8var;
         }
     }
-    if (a1->unk_4A == 2) {
-        a1->unk_48 = Save_Daycare_CalcCompatibility(daycare);
+    if (a1->sharedU8var == 2) {
+        a1->breedingCompatibility = Save_Daycare_CalcCompatibility(daycare);
     }
     a1->scriptType = 7;
     return PHONE_SCRIPT_NONE;
 }
 
-BOOL GearPhoneCall_DayCareMan(PokegearPhoneApp_Sub0C4 *a0) {
-    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+BOOL GearPhoneCall_DayCareMan(PokegearPhoneCallContext *a0) {
+    PokegearPhoneCallState *r4 = &a0->state;
 
     switch (r4->unk_04) {
     case 0:
@@ -51,10 +51,10 @@ BOOL GearPhoneCall_DayCareMan(PokegearPhoneApp_Sub0C4 *a0) {
         if (Save_Daycare_HasEgg(r4->miscPtr.daycare)) {
             PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0661_00003);
             r4->unk_04 = 255;
-        } else if (r4->unk_4A == 0) {
+        } else if (r4->sharedU8var == 0) {
             PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0661_00004);
             r4->unk_04 = 3;
-        } else if (r4->unk_4A == 1) {
+        } else if (r4->sharedU8var == 1) {
             r4->unk_04 = 3;
             PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0661_00005);
         } else {
@@ -66,7 +66,7 @@ BOOL GearPhoneCall_DayCareMan(PokegearPhoneApp_Sub0C4 *a0) {
         if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
-        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0661_00007 + r4->unk_48);
+        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0661_00007 + r4->breedingCompatibility);
         break;
     case 3:
         if (!PhoneCall_IsMessageDonePrinting(a0)) {

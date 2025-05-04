@@ -435,8 +435,8 @@ void ov101_021F0658(PokegearPhoneAppData *phoneApp) {
 }
 
 void ov101_021F0694(PokegearPhoneAppData *phoneApp) {
-    PokegearPhoneApp_Sub0C4Template sp00;
-    MI_CpuClear8(&sp00, sizeof(PokegearPhoneApp_Sub0C4Template));
+    PokegearPhoneCallContextParam sp00;
+    MI_CpuClear8(&sp00, sizeof(PokegearPhoneCallContextParam));
     sp00.heapId = phoneApp->heapId;
     sp00.menuInputStatePtr = &phoneApp->pokegear->unk_00C;
     sp00.sprite = phoneApp->unk_088[13];
@@ -453,11 +453,11 @@ void ov101_021F0694(PokegearPhoneAppData *phoneApp) {
     sp00.playerProfile = phoneApp->pokegear->profile;
     sp00.saveVarsFlags = phoneApp->pokegear->saveVarsFlags;
     sp00.rtc = Save_SysInfo_RTC_Get(phoneApp->pokegear->saveData);
-    phoneApp->unk_0C4 = ov101_021F1D74(&sp00);
+    phoneApp->unk_0C4 = PhoneCall_CreateContext(&sp00);
 }
 
 void ov101_021F0720(PokegearPhoneAppData *phoneApp) {
-    ov101_021F1E80(phoneApp->unk_0C4);
+    PhoneCall_DestroyContext(phoneApp->unk_0C4);
 }
 
 void ov101_021F072C(PokegearPhoneAppData *phoneApp) {

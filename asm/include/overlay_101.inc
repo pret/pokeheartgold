@@ -217,10 +217,10 @@
 .public PhoneRematches_GiftItemIdSet
 .public PhoneRematches_GiftItemIdGet
 .public MomSavingsBalanceAction
-.public sub_0202F240
-.public sub_0202F254
-.public sub_0202F274
-.public sub_0202F284
+.public MomsSavings_GiftQueueFull
+.public SavePokegear_SetKenjiActiveState
+.public SavePokegear_GetKenjiActiveState
+.public SavePokegear_GetKenjiWaitDays
 .public sub_0202F340
 .public sub_0202F3DC
 .public sub_0202F400

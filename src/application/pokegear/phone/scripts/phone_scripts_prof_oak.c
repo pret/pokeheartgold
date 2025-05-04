@@ -6,7 +6,7 @@
 #include "unk_02005D10.h"
 #include "unk_0205BB1C.h"
 
-u16 PhoneCall_GetScriptId_ProfOak(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1) {
+u16 PhoneCall_GetScriptId_ProfOak(PokegearPhoneCallContext *a0, PokegearPhoneCallState *a1) {
     Pokedex *pokedex;
     u16 dexCountParam;
 
@@ -38,8 +38,8 @@ u16 PhoneCall_GetScriptId_ProfOak(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_
     return PHONE_SCRIPT_NONE;
 }
 
-BOOL GearPhoneCall_ProfOak(PokegearPhoneApp_Sub0C4 *a0) {
-    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+BOOL GearPhoneCall_ProfOak(PokegearPhoneCallContext *a0) {
+    PokegearPhoneCallState *r4 = &a0->state;
     Pokedex *pokedex;
     int r6;
     u16 r7;
@@ -69,14 +69,14 @@ BOOL GearPhoneCall_ProfOak(PokegearPhoneApp_Sub0C4 *a0) {
         }
         if (r4->flag0) {
             if (Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_SYS_OAK_ACKNOWLEDGED_JOHTO_DEX_COMPLETION)) {
-                r4->unk_4A = 2;
+                r4->sharedU8var = 2;
             } else {
-                r4->unk_4A = 1;
+                r4->sharedU8var = 1;
             }
         } else {
-            r4->unk_4A = 0;
+            r4->sharedU8var = 0;
         }
-        PhoneCall_TouchscreenListMenu_Create(a0, msg_0666_00003 + r4->unk_4A);
+        PhoneCall_TouchscreenListMenu_Create(a0, msg_0666_00003 + r4->sharedU8var);
         break;
     case 3:
         r6 = PhoneCall_TouchscreenListMenu_HandleInput(a0);
@@ -85,12 +85,12 @@ BOOL GearPhoneCall_ProfOak(PokegearPhoneApp_Sub0C4 *a0) {
         }
         PhoneCall_TouchscreenListMenu_Destroy(a0);
         if (r6 == 0) {
-            if (r4->unk_4A == 2) {
+            if (r4->sharedU8var == 2) {
                 r4->flag3 = TRUE;
             } else {
                 r4->flag3 = FALSE;
             }
-        } else if (r6 == 1 && r4->unk_4A == 1) {
+        } else if (r6 == 1 && r4->sharedU8var == 1) {
             r4->flag3 = TRUE;
         } else {
             PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0666_00021);

@@ -10,7 +10,7 @@
 
 u16 ov101_021F3E74(u16 mapId);
 
-u16 PhoneCall_GetScriptId_EthanLyra(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1) {
+u16 PhoneCall_GetScriptId_EthanLyra(PokegearPhoneCallContext *a0, PokegearPhoneCallState *a1) {
     ALIGN(4)
     static const u16 ov101_021F86C8[] = {
         PHONE_SCRIPT_102,
@@ -29,8 +29,8 @@ u16 PhoneCall_GetScriptId_EthanLyra(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneAp
     return PHONE_SCRIPT_NONE;
 }
 
-BOOL GearPhoneCall_EthanLyra(PokegearPhoneApp_Sub0C4 *a0) {
-    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+BOOL GearPhoneCall_EthanLyra(PokegearPhoneCallContext *a0) {
+    PokegearPhoneCallState *r4 = &a0->state;
 
     switch (r4->unk_04) {
     case 0:
@@ -57,7 +57,7 @@ BOOL GearPhoneCall_EthanLyra(PokegearPhoneApp_Sub0C4 *a0) {
     return FALSE;
 }
 
-u8 ov101_021F3D34(PokegearPhoneApp_Sub0C4 *a0) {
+u8 ov101_021F3D34(PokegearPhoneCallContext *a0) {
     int i;
     u8 r4;
     u8 *r5;
@@ -89,8 +89,8 @@ u8 ov101_021F3D34(PokegearPhoneApp_Sub0C4 *a0) {
     return r4 + msg_0662_00086;
 }
 
-BOOL GearPhoneCall_EthanLyra2(PokegearPhoneApp_Sub0C4 *a0) {
-    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+BOOL GearPhoneCall_EthanLyra2(PokegearPhoneCallContext *a0) {
+    PokegearPhoneCallState *r4 = &a0->state;
 
     switch (r4->unk_04) {
     case 0:

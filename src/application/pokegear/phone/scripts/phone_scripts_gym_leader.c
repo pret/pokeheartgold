@@ -5,9 +5,9 @@
 
 #include "math_util.h"
 
-BOOL ov101_021F40E8(PokegearPhoneApp_Sub0C4 *a0, u8 callerID);
+BOOL ov101_021F40E8(PokegearPhoneCallContext *a0, u8 callerID);
 
-u16 PhoneCall_GetScriptId_GymLeader(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1) {
+u16 PhoneCall_GetScriptId_GymLeader(PokegearPhoneCallContext *a0, PokegearPhoneCallState *a1) {
     if (PlayerProfile_CountBadges(a0->playerProfile) >= 16) {
         a1->flag0 = TRUE;
     } else {
@@ -22,8 +22,8 @@ u16 PhoneCall_GetScriptId_GymLeader(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneAp
     return PHONE_SCRIPT_NONE;
 }
 
-BOOL GearPhoneCall_GymLeader(PokegearPhoneApp_Sub0C4 *a0) {
-    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+BOOL GearPhoneCall_GymLeader(PokegearPhoneCallContext *a0) {
+    PokegearPhoneCallState *r4 = &a0->state;
     int r6;
 
     switch (r4->unk_04) {
@@ -91,8 +91,8 @@ BOOL GearPhoneCall_GymLeader(PokegearPhoneApp_Sub0C4 *a0) {
     return FALSE;
 }
 
-BOOL GearPhoneCall_GymLeader2(PokegearPhoneApp_Sub0C4 *a0) {
-    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+BOOL GearPhoneCall_GymLeader2(PokegearPhoneCallContext *a0) {
+    PokegearPhoneCallState *r4 = &a0->state;
 
     switch (r4->unk_04) {
     case 0:
@@ -123,7 +123,7 @@ BOOL GearPhoneCall_GymLeader2(PokegearPhoneApp_Sub0C4 *a0) {
 
 // It's possible this function was intended to check whether the dojo is full.
 // However, it stops after a single iteration.
-BOOL ov101_021F40E8(PokegearPhoneApp_Sub0C4 *a0, u8 callerID) {
+BOOL ov101_021F40E8(PokegearPhoneCallContext *a0, u8 callerID) {
     int i;
     int r4;
 

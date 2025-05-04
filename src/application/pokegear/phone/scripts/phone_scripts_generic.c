@@ -9,15 +9,15 @@
 #include "sys_flags.h"
 #include "sys_vars.h"
 
-BOOL ov101_021F2CAC(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1);
-BOOL ov101_021F2CB8(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1);
-BOOL ov101_021F2D10(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1);
-BOOL ov101_021F2D48(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1);
-BOOL ov101_021F2D90(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1);
-BOOL ov101_021F2DC8(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1);
-BOOL ov101_021F2DE8(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1);
+BOOL ov101_021F2CAC(PokegearPhoneCallContext *a0, const UnkStruct_ov101_021F968C *a1);
+BOOL ov101_021F2CB8(PokegearPhoneCallContext *a0, const UnkStruct_ov101_021F968C *a1);
+BOOL ov101_021F2D10(PokegearPhoneCallContext *a0, const UnkStruct_ov101_021F968C *a1);
+BOOL ov101_021F2D48(PokegearPhoneCallContext *a0, const UnkStruct_ov101_021F968C *a1);
+BOOL ov101_021F2D90(PokegearPhoneCallContext *a0, const UnkStruct_ov101_021F968C *a1);
+BOOL ov101_021F2DC8(PokegearPhoneCallContext *a0, const UnkStruct_ov101_021F968C *a1);
+BOOL ov101_021F2DE8(PokegearPhoneCallContext *a0, const UnkStruct_ov101_021F968C *a1);
 
-u16 PhoneCall_GetScriptId_Generic(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1) {
+u16 PhoneCall_GetScriptId_Generic(PokegearPhoneCallContext *a0, PokegearPhoneCallState *a1) {
     const UnkStruct_ov101_021F968C *r2;
 
     a1->scriptType = 0;
@@ -31,10 +31,10 @@ u16 PhoneCall_GetScriptId_Generic(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_
     }
 }
 
-u16 ov101_021F2BC0(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1, int a2) {
+u16 ov101_021F2BC0(PokegearPhoneCallContext *a0, const UnkStruct_ov101_021F968C *a1, int a2) {
     int i;
     BOOL r0;
-    PokegearPhoneApp_Sub0C4_Sub88 *sp0 = &a0->unk_88;
+    PokegearPhoneCallState *sp0 = &a0->state;
     const UnkStruct_ov101_021F968C *r4 = a1;
 
     for (i = 0; i < a2; ++i) {
@@ -87,12 +87,12 @@ BOOL ov101_021F2C78(int chance) {
     return rnd_xor_rem <= chance;
 }
 
-BOOL ov101_021F2CAC(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1) {
+BOOL ov101_021F2CAC(PokegearPhoneCallContext *a0, const UnkStruct_ov101_021F968C *a1) {
     return ov101_021F2C78(a1->chance);
 }
 
-BOOL ov101_021F2CB8(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1) {
-    PokegearPhoneApp_Sub0C4_Sub88 *r6 = &a0->unk_88;
+BOOL ov101_021F2CB8(PokegearPhoneCallContext *a0, const UnkStruct_ov101_021F968C *a1) {
+    PokegearPhoneCallState *r6 = &a0->state;
 
     if (PhoneRematches_IsSeeking(a0->momsSavings, r6->callerID)) {
         return FALSE;
@@ -100,14 +100,14 @@ BOOL ov101_021F2CB8(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C 
     if (PhoneRematches_GiftItemIdGet(a0->momsSavings, r6->callerID)) {
         return FALSE;
     }
-    if (!Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_BEAT_RADIO_TOWER_ROCKETS) && a1->scriptType == 0 && ov101_021F2374(a1->scriptID)->kind == 3) {
+    if (!Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_BEAT_RADIO_TOWER_ROCKETS) && a1->scriptType == 0 && PhoneCall_GetScriptDefPtrByID(a1->scriptID)->kind == 3) {
         return FALSE;
     }
     return ov101_021F2C78(a1->chance);
 }
 
-BOOL ov101_021F2D10(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1) {
-    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+BOOL ov101_021F2D10(PokegearPhoneCallContext *a0, const UnkStruct_ov101_021F968C *a1) {
+    PokegearPhoneCallState *r4 = &a0->state;
 
     if (!Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_BEAT_RADIO_TOWER_ROCKETS)) {
         return FALSE;
@@ -118,8 +118,8 @@ BOOL ov101_021F2D10(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C 
     return ov101_021F2C78(a1->chance);
 }
 
-BOOL ov101_021F2D48(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1) {
-    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+BOOL ov101_021F2D48(PokegearPhoneCallContext *a0, const UnkStruct_ov101_021F968C *a1) {
+    PokegearPhoneCallState *r4 = &a0->state;
 
     if (!Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_BEAT_RADIO_TOWER_ROCKETS)) {
         return FALSE;
@@ -133,8 +133,8 @@ BOOL ov101_021F2D48(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C 
     return ov101_021F2C78(a1->chance);
 }
 
-BOOL ov101_021F2D90(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1) {
-    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+BOOL ov101_021F2D90(PokegearPhoneCallContext *a0, const UnkStruct_ov101_021F968C *a1) {
+    PokegearPhoneCallState *r4 = &a0->state;
 
     if (r4->phoneBookEntry->mapId == MAP_NATIONAL_PARK && Save_VarsFlags_CheckBugContestFlag(a0->saveVarsFlags)) {
         return FALSE;
@@ -145,14 +145,14 @@ BOOL ov101_021F2D90(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C 
     return ov101_021F2C78(a1->chance);
 }
 
-BOOL ov101_021F2DC8(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1) {
-    if (a0->unk_88.date.week == RTC_WEEK_TUESDAY || a0->unk_88.date.week == RTC_WEEK_THURSDAY || a0->unk_88.date.week == RTC_WEEK_SATURDAY) {
+BOOL ov101_021F2DC8(PokegearPhoneCallContext *a0, const UnkStruct_ov101_021F968C *a1) {
+    if (a0->state.date.week == RTC_WEEK_TUESDAY || a0->state.date.week == RTC_WEEK_THURSDAY || a0->state.date.week == RTC_WEEK_SATURDAY) {
         return ov101_021F2C78(a1->chance);
     }
     return FALSE;
 }
 
-BOOL ov101_021F2DE8(PokegearPhoneApp_Sub0C4 *a0, const UnkStruct_ov101_021F968C *a1) {
+BOOL ov101_021F2DE8(PokegearPhoneCallContext *a0, const UnkStruct_ov101_021F968C *a1) {
     if (Save_VarsFlags_IsInRocketTakeover(a0->saveVarsFlags)) {
         return ov101_021F2C78(a1->chance);
     }
@@ -236,14 +236,14 @@ u16 ov101_021F2E74(u16 a0, HeapID a1) {
     return teamSpecies[LCRandom() % trdata.data.npoke];
 }
 
-BOOL ov101_021F2F50(PokegearPhoneApp_Sub0C4 *a0) {
-    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+BOOL ov101_021F2F50(PokegearPhoneCallContext *a0) {
+    PokegearPhoneCallState *r4 = &a0->state;
     const PhoneCallScriptDef *scriptDef;
 
     switch (r4->unk_04) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(a0);
-        ov101_021F2248(a0, ov101_021F2374(r4->scriptID));
+        ov101_021F2248(a0, PhoneCall_GetScriptDefPtrByID(r4->scriptID));
         BufferSpeciesName(a0->msgFormat, 10, ov101_021F2E74(r4->phoneBookEntry->trainerId, a0->heapId));
         BufferSpeciesName(a0->msgFormat, 11, ov101_021F2E04(r4->phoneBookEntry->mapId, r4->phoneBookEntry->trainerClass, r4->timeOfDay));
         if (r4->phoneBookEntry->unkC == 255) {
@@ -251,12 +251,12 @@ BOOL ov101_021F2F50(PokegearPhoneApp_Sub0C4 *a0) {
         }
         break;
     case 1:
-        if (!ov101_021F2614(a0)) {
+        if (!PhoneCall_PrintGreeting(a0)) {
             return FALSE;
         }
         break;
     case 2:
-        scriptDef = ov101_021F2374(r4->scriptID);
+        scriptDef = PhoneCall_GetScriptDefPtrByID(r4->scriptID);
         PhoneCallMessagePrint_Gendered(a0, a0->msgData_PhoneContact, scriptDef->msgIds[0], scriptDef->msgIds[1]);
         break;
     default:
@@ -271,27 +271,27 @@ BOOL ov101_021F2F50(PokegearPhoneApp_Sub0C4 *a0) {
     return FALSE;
 }
 
-BOOL ov101_021F2FFC(PokegearPhoneApp_Sub0C4 *a0) {
-    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+BOOL ov101_021F2FFC(PokegearPhoneCallContext *a0) {
+    PokegearPhoneCallState *r4 = &a0->state;
     u8 r5;
     const PhoneCallScriptDef *scriptDef;
 
     switch (r4->unk_04) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(a0);
-        ov101_021F2248(a0, ov101_021F2374(r4->scriptID));
+        ov101_021F2248(a0, PhoneCall_GetScriptDefPtrByID(r4->scriptID));
         if (r4->phoneBookEntry->unkC == 255) {
             ++r4->unk_04;
         }
         break;
     case 1:
-        if (!ov101_021F2614(a0)) {
+        if (!PhoneCall_PrintGreeting(a0)) {
             return FALSE;
         }
         break;
     case 2:
         r5 = LCRandom() % 11;
-        scriptDef = ov101_021F2374(r4->scriptID);
+        scriptDef = PhoneCall_GetScriptDefPtrByID(r4->scriptID);
         if (scriptDef->msgIds[0] == scriptDef->msgIds[1]) {
             PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, scriptDef->msgIds[0] + r5);
         } else {

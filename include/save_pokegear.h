@@ -26,13 +26,13 @@ typedef struct PhoneRematch {
 
 typedef struct MomsSavings {
     PhoneRematch rematches[NUM_PHONE_CONTACTS];
-    u16 unk_12C[5][2];
+    u16 momGiftQueue[5][2];
     u32 bankBalance; // 140
     u16 unk_144;
-    u8 unk_146_0 : 7;
-    u8 unk_146_7 : 1;
-    u8 unk_147;
-    u8 unk_148[6];
+    u8 kenjiWaitDays : 7;
+    u8 kenjiActive : 1;
+    u8 numSafariAreas;
+    u8 safariAreas[6];
     u8 unk_14E[2];
     u8 filler_150[4];
 } MomsSavings; // size=0x154
@@ -109,13 +109,13 @@ u16 PhoneRematches_GiftItemIdGet(MomsSavings *momsSavings, u8 idx);
 u32 MomSavingsBalanceAction(MomsSavings *momsSavings, int action, u32 operand);
 void sub_0202F198(MomsSavings *momsSavings, u8 idx);
 BOOL sub_0202F1B4(MomsSavings *momsSavings, u8 idx);
-void sub_0202F1C4(MomsSavings *momsSavings, u16 a1, u16 a2);
-void sub_0202F1F4(MomsSavings *momsSavings);
-u16 sub_0202F224(MomsSavings *momsSavings, u8 a1, u16 *a2);
-BOOL sub_0202F240(MomsSavings *momsSavings);
-void sub_0202F254(MomsSavings *momsSavings, BOOL a1);
-BOOL sub_0202F274(MomsSavings *momsSavings);
-int sub_0202F284(MomsSavings *momsSavings);
+void MomsSavings_GiftQueuePut(MomsSavings *momsSavings, u16 a1, u16 a2);
+void MomsSavings_GiftQueuePop(MomsSavings *momsSavings);
+u16 MomsSavings_GetGiftAtIndex(MomsSavings *momsSavings, u8 a1, u16 *a2);
+BOOL MomsSavings_GiftQueueFull(MomsSavings *momsSavings);
+void SavePokegear_SetKenjiActiveState(MomsSavings *momsSavings, BOOL a1);
+BOOL SavePokegear_GetKenjiActiveState(MomsSavings *momsSavings);
+int SavePokegear_GetKenjiWaitDays(MomsSavings *momsSavings);
 void sub_0202F294(MomsSavings *momsSavings, int a1);
 void sub_0202F300(MomsSavings *momsSavings, u8 *a1, u8 a2);
 u8 *sub_0202F340(MomsSavings *momsSavings, u8 *a1, HeapID heapId);

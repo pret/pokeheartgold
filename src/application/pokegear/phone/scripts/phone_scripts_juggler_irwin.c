@@ -8,9 +8,9 @@
 #include "sys_flags.h"
 #include "sys_vars.h"
 
-u16 ov101_021F42E4(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1, u8 badgeCount, u8 hasPlainBadge);
+u16 ov101_021F42E4(PokegearPhoneCallContext *a0, PokegearPhoneCallState *a1, u8 badgeCount, u8 hasPlainBadge);
 
-u16 PhoneCall_GetScriptId_Irwin(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1) {
+u16 PhoneCall_GetScriptId_Irwin(PokegearPhoneCallContext *a0, PokegearPhoneCallState *a1) {
     u8 badgeCount;
     u8 hasPlainBadge;
     u16 scriptID;
@@ -37,7 +37,7 @@ u16 PhoneCall_GetScriptId_Irwin(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Su
     }
 }
 
-u16 ov101_021F42E4(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1, u8 badgeCount, u8 hasPlainBadge) {
+u16 ov101_021F42E4(PokegearPhoneCallContext *a0, PokegearPhoneCallState *a1, u8 badgeCount, u8 hasPlainBadge) {
     if (!Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_UNK_998)) {
         return 0xFFFF;
     }

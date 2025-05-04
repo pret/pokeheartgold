@@ -191,7 +191,7 @@ static void MomsSavingsInit(MomsSavings *momsSavings) {
     for (i = 0; i < NUM_PHONE_CONTACTS; i++) {
         sub_0202EFC4(&momsSavings->rematches[i]);
     }
-    momsSavings->unk_146_0 = 7;
+    momsSavings->kenjiWaitDays = 7;
 }
 
 void sub_0202F01C(MomsSavings *momsSavings, u8 idx) {
@@ -305,83 +305,83 @@ BOOL sub_0202F1B4(MomsSavings *momsSavings, u8 idx) {
     return (momsSavings->unk_144 >> idx) & 1;
 }
 
-void sub_0202F1C4(MomsSavings *momsSavings, u16 a1, u16 a2) {
+void MomsSavings_GiftQueuePut(MomsSavings *momsSavings, u16 itemID, u16 quantity) {
     int i;
 
     for (i = 0; i < 5; i++) {
-        if (momsSavings->unk_12C[i][1] == 0) {
-            momsSavings->unk_12C[i][0] = a1;
-            momsSavings->unk_12C[i][1] = a2;
+        if (momsSavings->momGiftQueue[i][1] == 0) {
+            momsSavings->momGiftQueue[i][0] = itemID;
+            momsSavings->momGiftQueue[i][1] = quantity;
             break;
         }
     }
 }
 
-void sub_0202F1F4(MomsSavings *momsSavings) {
+void MomsSavings_GiftQueuePop(MomsSavings *momsSavings) {
     int i;
     for (i = 0; i < 4; i++) {
-        momsSavings->unk_12C[i][0] = momsSavings->unk_12C[i + 1][0];
-        momsSavings->unk_12C[i][1] = momsSavings->unk_12C[i + 1][1];
+        momsSavings->momGiftQueue[i][0] = momsSavings->momGiftQueue[i + 1][0];
+        momsSavings->momGiftQueue[i][1] = momsSavings->momGiftQueue[i + 1][1];
     }
-    momsSavings->unk_12C[4][0] = 0;
-    momsSavings->unk_12C[4][1] = 0;
+    momsSavings->momGiftQueue[4][0] = 0;
+    momsSavings->momGiftQueue[4][1] = 0;
 }
 
-u16 sub_0202F224(MomsSavings *momsSavings, u8 a1, u16 *a2) {
-    if (a1 >= 5) {
-        *a2 = 0;
+u16 MomsSavings_GetGiftAtIndex(MomsSavings *momsSavings, u8 idx, u16 *pItemID) {
+    if (idx >= 5) {
+        *pItemID = 0;
         return 0;
     } else {
-        *a2 = momsSavings->unk_12C[a1][0];
-        return momsSavings->unk_12C[a1][1];
+        *pItemID = momsSavings->momGiftQueue[idx][0];
+        return momsSavings->momGiftQueue[idx][1];
     }
 }
 
-BOOL sub_0202F240(MomsSavings *momsSavings) {
-    return momsSavings->unk_12C[4][1] != 0;
+BOOL MomsSavings_GiftQueueFull(MomsSavings *momsSavings) {
+    return momsSavings->momGiftQueue[4][1] != 0;
 }
 
-void sub_0202F254(MomsSavings *momsSavings, BOOL a1) {
-    momsSavings->unk_146_7 = a1;
+void SavePokegear_SetKenjiActiveState(MomsSavings *momsSavings, BOOL state) {
+    momsSavings->kenjiActive = state;
 }
 
-BOOL sub_0202F274(MomsSavings *momsSavings) {
-    return momsSavings->unk_146_7;
+BOOL SavePokegear_GetKenjiActiveState(MomsSavings *momsSavings) {
+    return momsSavings->kenjiActive;
 }
 
-int sub_0202F284(MomsSavings *momsSavings) {
-    return momsSavings->unk_146_0;
+int SavePokegear_GetKenjiWaitDays(MomsSavings *momsSavings) {
+    return momsSavings->kenjiWaitDays;
 }
 
-void sub_0202F294(MomsSavings *momsSavings, int a1) {
-    momsSavings->unk_146_7 = FALSE;
+void sub_0202F294(MomsSavings *momsSavings, int days) {
+    momsSavings->kenjiActive = FALSE;
     PhoneRematches_GiftItemIdSet(momsSavings, PHONE_CONTACT_KENJI, ITEM_NONE);
     PhoneRematches_SetSeeking(momsSavings, PHONE_CONTACT_KENJI, FALSE);
 
-    if (a1 > 0 && momsSavings->unk_146_0 >= a1) {
-        momsSavings->unk_146_0 -= a1;
+    if (days > 0 && momsSavings->kenjiWaitDays >= days) {
+        momsSavings->kenjiWaitDays -= days;
     } else {
-        momsSavings->unk_146_0 = (LCRandom() % 6) + 1;
+        momsSavings->kenjiWaitDays = (LCRandom() % 6) + 1;
     }
 }
 
 void sub_0202F300(MomsSavings *momsSavings, u8 *a1, u8 a2) {
-    MI_CpuClear8(momsSavings->unk_148, 6);
+    MI_CpuClear8(momsSavings->safariAreas, 6);
     if (a1 == NULL) {
-        momsSavings->unk_147 = 0;
+        momsSavings->numSafariAreas = 0;
     } else {
         if (a2 >= 6) {
             a2 = 6;
         }
-        MI_CpuCopy8(a1, momsSavings->unk_148, a2);
-        momsSavings->unk_147 = a2;
+        MI_CpuCopy8(a1, momsSavings->safariAreas, a2);
+        momsSavings->numSafariAreas = a2;
     }
 }
 
 u8 *sub_0202F340(MomsSavings *momsSavings, u8 *a1, HeapID heapId) {
-    u8 *ret = AllocFromHeap(heapId, momsSavings->unk_147);
-    MI_CpuCopy8(momsSavings->unk_148, ret, momsSavings->unk_147);
-    *a1 = momsSavings->unk_147;
+    u8 *ret = AllocFromHeap(heapId, momsSavings->numSafariAreas);
+    MI_CpuCopy8(momsSavings->safariAreas, ret, momsSavings->numSafariAreas);
+    *a1 = momsSavings->numSafariAreas;
     return ret;
 }
 

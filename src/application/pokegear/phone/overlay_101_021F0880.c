@@ -213,13 +213,13 @@ BOOL ov101_021F0CE4(PokegearPhoneAppData *phoneApp) {
 }
 
 void ov101_021F0D6C(PokegearPhoneAppData *phoneApp) {
-    phoneApp->unk_0D4 = AllocFromHeap(phoneApp->heapId, phoneApp->numContacts * sizeof(PokegearPhoneApp_Sub0D8));
+    phoneApp->unk_0D4 = AllocFromHeap(phoneApp->heapId, phoneApp->numContacts * sizeof(PhoneContactListNode));
     ov101_021F1840(phoneApp);
 }
 
 void ov101_021F0D90(PokegearPhoneAppData *phoneApp) {
     u8 i = 0;
-    PokegearPhoneApp_Sub0D8 *ptr;
+    PhoneContactListNode *ptr;
 
     phoneApp->saveContacts[i++].id = phoneApp->contactListHead->contact.id;
     ptr = phoneApp->contactListHead->next;
@@ -228,13 +228,13 @@ void ov101_021F0D90(PokegearPhoneAppData *phoneApp) {
         ptr = ptr->next;
     }
     GSPlayerMisc_SetPhonebookFromBuffer(phoneApp->pokegear->savePokegear, phoneApp->saveContacts, phoneApp->numContacts);
-    MI_CpuClear8(phoneApp->unk_0D4, phoneApp->numContacts * sizeof(PokegearPhoneApp_Sub0D8));
+    MI_CpuClear8(phoneApp->unk_0D4, phoneApp->numContacts * sizeof(PhoneContactListNode));
     FreeToHeap(phoneApp->unk_0D4);
 }
 
-void ov101_021F0E0C(PokegearPhoneAppData *phoneApp, PokegearPhoneApp_Sub0D8 *a1, u8 a2) {
+void ov101_021F0E0C(PokegearPhoneAppData *phoneApp, PhoneContactListNode *a1, u8 a2) {
     int i = 0;
-    PokegearPhoneApp_Sub0D8 *r4;
+    PhoneContactListNode *r4;
 
     a1->prev->next = a1->next;
     a1->next->prev = a1->prev;

@@ -5,7 +5,7 @@
 #include "text.h"
 #include "unk_02005D10.h"
 
-void ov101_021F1830(PokegearPhoneApp_Sub0D8 *a0);
+void ov101_021F1830(PhoneContactListNode *a0);
 void ov101_021F18E0(PokegearPhoneApp_Sub0E0_Sub00C *a0);
 void ov101_021F18E8(PokegearPhoneApp_Sub0E0 *a0, u8 a1, BOOL a2, BOOL a3);
 void ov101_021F19E4(PokegearPhoneApp_Sub0E0 *a0);
@@ -52,7 +52,7 @@ void ov101_021F0F48(PokegearPhoneAppData *phoneApp) {
     }
     r4->unk_000 = phoneApp->numContacts;
     r4->unk_390 = &phoneApp->unk_048[2];
-    r4->unk_3FC = phoneApp->unk_0C4;
+    r4->callContext = phoneApp->unk_0C4;
     r4->unk_006_0 = 0;
     r4->unk_400 = &phoneApp->pokegear->unk_00C;
     r4->unk_404 = &phoneApp->unk_010;
@@ -103,7 +103,7 @@ void ov101_021F0F48(PokegearPhoneAppData *phoneApp) {
 
 void ov101_021F11B0(PokegearPhoneAppData *phoneApp) {
     int i;
-    PokegearPhoneApp_Sub0D8 *node;
+    PhoneContactListNode *node;
     PokegearPhoneApp_Sub0E0 *r3;
 
     r3 = &phoneApp->unk_0E0;
@@ -432,7 +432,7 @@ void ov101_021F1808(PokegearPhoneApp_Sub0E0 *a0) {
     }
 }
 
-void ov101_021F1830(PokegearPhoneApp_Sub0D8 *a0) {
+void ov101_021F1830(PhoneContactListNode *a0) {
     a0->unk_00 = 0;
     a0->contact.id = 255;
     a0->next = NULL;
@@ -441,7 +441,7 @@ void ov101_021F1830(PokegearPhoneApp_Sub0D8 *a0) {
 
 void ov101_021F1840(PokegearPhoneAppData *phoneApp) {
     int i;
-    PokegearPhoneApp_Sub0D8 *r4;
+    PhoneContactListNode *r4;
 
     phoneApp->contactListTail = NULL;
     phoneApp->contactListHead = phoneApp->contactListTail;
@@ -519,11 +519,11 @@ void ov101_021F1A40(PokegearPhoneApp_Sub0E0 *a0, u8 a1, u8 a2, u8 a3, BOOL a4) {
     ov101_021F18E8(a0, a1, r2, FALSE);
     y = a1 * 24;
     if (a3 != 0 || a2 == a0->unk_002) {
-        AddTextPrinterParameterizedWithColor(a0->unk_390, 4, PhoneContact_GetName(a0->unk_3FC, r4->unk_8), 16, y + 2, TEXT_SPEED_NOTRANSFER, r6->unk_14, NULL);
-        AddTextPrinterParameterizedWithColor(a0->unk_390, 0, PhoneContact_GetClass(a0->unk_3FC, r4->unk_8), 94, y + 2, TEXT_SPEED_NOTRANSFER, r6->unk_18, NULL);
+        AddTextPrinterParameterizedWithColor(a0->unk_390, 4, PhoneContact_GetName(a0->callContext, r4->unk_8), 16, y + 2, TEXT_SPEED_NOTRANSFER, r6->unk_14, NULL);
+        AddTextPrinterParameterizedWithColor(a0->unk_390, 0, PhoneContact_GetClass(a0->callContext, r4->unk_8), 94, y + 2, TEXT_SPEED_NOTRANSFER, r6->unk_18, NULL);
     } else {
-        AddTextPrinterParameterizedWithColor(a0->unk_390, 4, PhoneContact_GetName(a0->unk_3FC, r4->unk_8), 16, y + 2, TEXT_SPEED_NOTRANSFER, r6->unk_0C, NULL);
-        AddTextPrinterParameterizedWithColor(a0->unk_390, 0, PhoneContact_GetClass(a0->unk_3FC, r4->unk_8), 94, y + 2, TEXT_SPEED_NOTRANSFER, r6->unk_10, NULL);
+        AddTextPrinterParameterizedWithColor(a0->unk_390, 4, PhoneContact_GetName(a0->callContext, r4->unk_8), 16, y + 2, TEXT_SPEED_NOTRANSFER, r6->unk_0C, NULL);
+        AddTextPrinterParameterizedWithColor(a0->unk_390, 0, PhoneContact_GetClass(a0->callContext, r4->unk_8), 94, y + 2, TEXT_SPEED_NOTRANSFER, r6->unk_10, NULL);
     }
     if (a4) {
         CopyWindowToVram(a0->unk_390);

@@ -10,10 +10,10 @@
 
 u8 ov101_021F3C60(u8 hour);
 
-u16 PhoneCall_GetScriptId_Buena(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1) {
+u16 PhoneCall_GetScriptId_Buena(PokegearPhoneCallContext *a0, PokegearPhoneCallState *a1) {
     a1->scriptType = 0;
     a1->flag0 = CheckGameClearFlag(a0->saveVarsFlags);
-    a1->unk_4A = ov101_021F3C60(a1->time.hour);
+    a1->sharedU8var = ov101_021F3C60(a1->time.hour);
     if (Save_VarsFlags_IsInRocketTakeover(a0->saveVarsFlags)) {
         return PHONE_SCRIPT_099;
     }
@@ -21,7 +21,7 @@ u16 PhoneCall_GetScriptId_Buena(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Su
         a1->scriptType = 9;
         return PHONE_SCRIPT_NONE;
     }
-    if (a1->unk_4A == 3) {
+    if (a1->sharedU8var == 3) {
         return PHONE_SCRIPT_100;
     }
     if (a1->phoneBookEntry->mapId == a0->playerMapSec) {
@@ -31,8 +31,8 @@ u16 PhoneCall_GetScriptId_Buena(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Su
     return PHONE_SCRIPT_NONE;
 }
 
-BOOL GearPhoneCall_Buena(PokegearPhoneApp_Sub0C4 *a0) {
-    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+BOOL GearPhoneCall_Buena(PokegearPhoneCallContext *a0) {
+    PokegearPhoneCallState *r4 = &a0->state;
 
     switch (r4->unk_04) {
     case 0:
@@ -57,8 +57,8 @@ BOOL GearPhoneCall_Buena(PokegearPhoneApp_Sub0C4 *a0) {
     return FALSE;
 }
 
-BOOL GearPhoneCall_Buena2(PokegearPhoneApp_Sub0C4 *a0) {
-    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+BOOL GearPhoneCall_Buena2(PokegearPhoneCallContext *a0) {
+    PokegearPhoneCallState *r4 = &a0->state;
     u8 r5;
     u8 r2;
 
@@ -71,7 +71,7 @@ BOOL GearPhoneCall_Buena2(PokegearPhoneApp_Sub0C4 *a0) {
         if (!PhoneCall_IsMessageDonePrinting(a0)) {
             return FALSE;
         }
-        if (r4->unk_4A == 3) {
+        if (r4->sharedU8var == 3) {
             PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0641_00036);
         } else {
             r5 = 11 + r4->flag0 * 3;

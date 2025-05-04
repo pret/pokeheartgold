@@ -6,10 +6,10 @@
 #include "map_header.h"
 #include "sys_flags.h"
 
-u16 MomCallGetIntroMsgByLocation(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
-int MomCallGetSaveMoneyPromptMsg(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1);
+u16 MomCallGetIntroMsgByLocation(PokegearPhoneCallContext *a0, PokegearPhoneCallState *a1);
+int MomCallGetSaveMoneyPromptMsg(PokegearPhoneCallContext *a0, PokegearPhoneCallState *a1);
 
-u16 PhoneCall_GetScriptId_Mother(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1) {
+u16 PhoneCall_GetScriptId_Mother(PokegearPhoneCallContext *a0, PokegearPhoneCallState *a1) {
     a1->scriptType = 0;
     if (a1->unk_1A == 2) {
         Save_VarsFlags_SetFlagInArray(a0->saveVarsFlags, FLAG_TALKED_TO_MOM_AFTER_NAMING_RIVAL);
@@ -38,17 +38,17 @@ u16 PhoneCall_GetScriptId_Mother(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_S
     return PHONE_SCRIPT_NONE;
 }
 
-BOOL GearPhoneCall_Mother(PokegearPhoneApp_Sub0C4 *a0) {
-    PokegearPhoneApp_Sub0C4_Sub88 *r4 = &a0->unk_88;
+BOOL GearPhoneCall_Mother(PokegearPhoneCallContext *a0) {
+    PokegearPhoneCallState *r4 = &a0->state;
     int r6;
 
     switch (r4->unk_04) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(a0);
-        r4->unk_44 = MomSavingsBalanceAction(a0->momsSavings, MOMS_BALANCE_GET, 0);
-        BufferIntegerAsString(a0->msgFormat, 10, r4->unk_44, 6, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        r4->momsSavingsBalance = MomSavingsBalanceAction(a0->momsSavings, MOMS_BALANCE_GET, 0);
+        BufferIntegerAsString(a0->msgFormat, 10, r4->momsSavingsBalance, 6, PRINTING_MODE_LEFT_ALIGN, TRUE);
         r4->flag0 = Save_VarsFlags_MomsSavingsFlagCheck(a0->saveVarsFlags);
-        r4->flag1 = sub_0202F240(a0->momsSavings);
+        r4->flag1 = MomsSavings_GiftQueueFull(a0->momsSavings);
         if (r4->unk_1A == 2) {
             r4->unk_04 = 2;
             return FALSE;
@@ -101,22 +101,22 @@ BOOL GearPhoneCall_Mother(PokegearPhoneApp_Sub0C4 *a0) {
     return FALSE;
 }
 
-u16 MomCallGetIntroMsgByLocation(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1) {
+u16 MomCallGetIntroMsgByLocation(PokegearPhoneCallContext *a0, PokegearPhoneCallState *a1) {
     return msg_0664_00007 + MapHeader_GetMomCallIntroParam(a0->playerMapSec);
 }
 
-int MomCallGetSaveMoneyPromptMsg(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1) {
+int MomCallGetSaveMoneyPromptMsg(PokegearPhoneCallContext *a0, PokegearPhoneCallState *a1) {
     if (a1->unk_1A == 2) {
         return msg_0664_00022;
     }
     if (a1->flag0) {
-        if (a1->unk_44 != 0) {
+        if (a1->momsSavingsBalance != 0) {
             return msg_0664_00023;
         } else {
             return msg_0664_00027;
         }
     } else {
-        if (a1->unk_44 != 0) {
+        if (a1->momsSavingsBalance != 0) {
             return msg_0664_00024;
         } else {
             return msg_0664_00028;
