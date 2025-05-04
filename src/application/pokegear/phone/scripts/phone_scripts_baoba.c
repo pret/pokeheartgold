@@ -13,15 +13,15 @@ u16 PhoneCall_GetScriptId_Baoba(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Su
     if (a1->unk_1A == 2) {
         return PHONE_SCRIPT_141;
     }
-    if (a1->unk_19) {
+    if (a1->isIncomingCall) {
         safariZone = Save_SafariZone_Get(a0->saveData);
-        switch (a1->unk_1C) {
+        switch (a1->predefinedScriptID) {
         case PHONE_SCRIPT_NONE:
             a1->scriptType = 15;
             return PHONE_SCRIPT_NONE;
         case PHONE_SCRIPT_142:
             Save_VarsFlags_SetVar4057(a0->saveVarsFlags, 4);
-            return a1->unk_1C;
+            return a1->predefinedScriptID;
         case PHONE_SCRIPT_143:
         case PHONE_SCRIPT_144:
             sub_0202F730(safariZone, 1);
@@ -32,11 +32,11 @@ u16 PhoneCall_GetScriptId_Baoba(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Su
             sub_0202F730(safariZone, 4);
             break;
         default:
-            a1->unk_1C = PHONE_SCRIPT_154;
-            return a1->unk_1C;
+            a1->predefinedScriptID = PHONE_SCRIPT_154;
+            return a1->predefinedScriptID;
         }
         Save_VarsFlags_SetVar4057(a0->saveVarsFlags, 7);
-        return a1->unk_1C;
+        return a1->predefinedScriptID;
     }
     if (a1->phoneBookEntry->mapId == a0->playerMapSec) {
         return PHONE_SCRIPT_140;

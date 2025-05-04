@@ -17,7 +17,7 @@ u16 PhoneCall_GetScriptId_EthanLyra(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneAp
         PHONE_SCRIPT_101,
     };
 
-    if (a1->unk_19) {
+    if (a1->isIncomingCall) {
         a1->scriptType = 11;
         return PHONE_SCRIPT_NONE;
     }

@@ -68,9 +68,9 @@ typedef struct PokegearPhoneApp_Sub0C4_Sub88 {
     PhoneBookEntry *phoneBookEntry;      // 0x10
     const PhoneCallScriptDef *scriptDef; // 0x14
     u8 callerID;                         // 0x18
-    u8 unk_19;                           // 0x19
+    u8 isIncomingCall;                   // 0x19
     u8 unk_1A;                           // 0x1a
-    u16 unk_1C;                          // 0x1c
+    u16 predefinedScriptID;              // 0x1c
     u16 scriptID;                        // 0x1e
     u16 scriptType;                      // 0x20
     u8 unk_22;                           // 0x22

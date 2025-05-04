@@ -16,7 +16,7 @@ u16 PhoneCall_GetScriptId_ProfOak(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_
         a1->scriptType = 0;
         return PHONE_SCRIPT_082;
     }
-    if (a1->unk_19 != 0) {
+    if (a1->isIncomingCall != 0) {
         dexCountParam = Pokedex_CountNationalDexOwned(pokedex) / 50;
         if (dexCountParam == 0) {
             dexCountParam = 1;

@@ -25,12 +25,12 @@ u16 PhoneCall_GetScriptId_ProfElm(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_
     u8 gotEverstone;
 
     if (a1->unk_1A == 2) {
-        a1->scriptType = sPhoneCallData_ProfElm_MapScripts[a1->unk_1C][0];
-        return sPhoneCallData_ProfElm_MapScripts[a1->unk_1C][1];
+        a1->scriptType = sPhoneCallData_ProfElm_MapScripts[a1->predefinedScriptID][0];
+        return sPhoneCallData_ProfElm_MapScripts[a1->predefinedScriptID][1];
     }
-    if (a1->unk_19) {
+    if (a1->isIncomingCall) {
         a1->scriptType = 0;
-        return a1->unk_1C;
+        return a1->predefinedScriptID;
     }
     a1->scriptType = 0;
     badgeCount = PlayerProfile_CountBadges(a0->playerProfile);

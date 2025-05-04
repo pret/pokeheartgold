@@ -14,7 +14,7 @@ u16 PhoneCall_GetScriptId_GymLeader(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneAp
         a1->flag0 = FALSE;
     }
     a1->flag1 = PhoneRematches_IsSeeking(a0->momsSavings, a1->callerID);
-    if (a1->unk_19) {
+    if (a1->isIncomingCall) {
         a1->scriptType = 14;
     } else {
         a1->scriptType = 13;

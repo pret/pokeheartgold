@@ -133,10 +133,10 @@ BOOL PhoneCall_CheckMapPermissionAndGetTimeOfDay(PokegearPhoneApp_Sub0C4 *a0, u8
 
     r4->callerID = callerId;
     r4->phoneBookEntry = &a0->phoneEntries[callerId];
-    r4->unk_19 = a2;
+    r4->isIncomingCall = a2;
     r4->unk_1A = a3;
-    r4->unk_1C = a4;
-    r4->unk_00 = r4->unk_19;
+    r4->predefinedScriptID = a4;
+    r4->unk_00 = r4->isIncomingCall;
     GF_RTC_CopyDateTime(&r4->date, &r4->time);
     r4->timeOfDay = GF_RTC_GetTimeOfDayWildParamByHour(r4->time.hour);
     r4->scriptType = 0;
@@ -439,7 +439,7 @@ BOOL ov101_021F2614(PokegearPhoneApp_Sub0C4 *a0) {
     PhoneCall_AnimateFastForwardButtonOnTouch(a0);
     switch (r4->unk_08) {
     case 0:
-        r3 = r4->timeOfDay * 2 + r4->unk_19 * 6;
+        r3 = r4->timeOfDay * 2 + r4->isIncomingCall * 6;
         PhoneCallMessagePrint_Gendered(a0, a0->msgData_0640, ov101_021F962C[r4->phoneBookEntry->unkC][r3], ov101_021F962C[r4->phoneBookEntry->unkC][r3 + 1]);
         break;
     case 1:

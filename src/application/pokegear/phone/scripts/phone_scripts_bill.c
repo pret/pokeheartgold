@@ -7,7 +7,7 @@
 #include "save_arrays.h"
 
 u16 PhoneCall_GetScriptId_Bill(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Sub0C4_Sub88 *a1) {
-    if (a1->unk_19 != 0) {
+    if (a1->isIncomingCall != 0) {
         a1->scriptType = 0;
         return PHONE_SCRIPT_093;
     }

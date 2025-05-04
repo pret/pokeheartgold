@@ -16,7 +16,7 @@ u16 PhoneCall_GetScriptId_Irwin(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Su
     u16 scriptID;
 
     a1->scriptType = 0;
-    if (!a1->unk_19) {
+    if (!a1->isIncomingCall) {
         if (Save_VarsFlags_IsInRocketTakeover(a0->saveVarsFlags)) {
             return PHONE_SCRIPT_156;
         } else {

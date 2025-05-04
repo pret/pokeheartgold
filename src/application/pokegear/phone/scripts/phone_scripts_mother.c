@@ -21,9 +21,9 @@ u16 PhoneCall_GetScriptId_Mother(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_S
         return PHONE_SCRIPT_023;
     }
 
-    if (a1->unk_19 != 0) {
+    if (a1->isIncomingCall != 0) {
         a1->scriptType = 0;
-        return a1->unk_1C;
+        return a1->predefinedScriptID;
     }
 
     if (!Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_GAVE_RIVAL_NAME_TO_OFFICER)) {

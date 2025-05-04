@@ -22,7 +22,7 @@ u16 PhoneCall_GetScriptId_Generic(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_
 
     a1->scriptType = 0;
     r2 = &ov101_021F968C[a1->callerID * 16];
-    if (a1->unk_19) {
+    if (a1->isIncomingCall) {
         return ov101_021F2BC0(a0, &r2[8], 8);
     } else if (a1->phoneBookEntry->mapId == a0->playerMapSec) {
         return a1->phoneBookEntry->phoneScriptIfLocal;

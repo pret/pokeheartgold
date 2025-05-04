@@ -11,7 +11,7 @@ u16 PhoneCall_GetScriptId_DayCareMan(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneA
     DaycareMon *mon;
 
     a1->scriptType = 0;
-    if (a1->unk_19) {
+    if (a1->isIncomingCall) {
         if (Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_UNK_992)) {
             return PHONE_SCRIPT_096;
         } else {

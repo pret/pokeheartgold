@@ -17,7 +17,7 @@ u16 PhoneCall_GetScriptId_Buena(PokegearPhoneApp_Sub0C4 *a0, PokegearPhoneApp_Su
     if (Save_VarsFlags_IsInRocketTakeover(a0->saveVarsFlags)) {
         return PHONE_SCRIPT_099;
     }
-    if (a1->unk_19) {
+    if (a1->isIncomingCall) {
         a1->scriptType = 9;
         return PHONE_SCRIPT_NONE;
     }
