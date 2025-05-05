@@ -5,127 +5,127 @@
 
 #include "math_util.h"
 
-BOOL ov101_021F40E8(PokegearPhoneCallContext *a0, u8 callerID);
+static BOOL isDojoFull(PokegearPhoneCallContext *ctx, u8 callerID);
 
-u16 PhoneCall_GetScriptId_GymLeader(PokegearPhoneCallContext *a0, PokegearPhoneCallState *a1) {
-    if (PlayerProfile_CountBadges(a0->playerProfile) >= 16) {
-        a1->flag0 = TRUE;
+u16 PhoneCall_GetScriptId_GymLeader(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
+    if (PlayerProfile_CountBadges(ctx->playerProfile) >= 16) {
+        state->flag0 = TRUE;
     } else {
-        a1->flag0 = FALSE;
+        state->flag0 = FALSE;
     }
-    a1->flag1 = PhoneRematches_IsSeeking(a0->momsSavings, a1->callerID);
-    if (a1->isIncomingCall) {
-        a1->scriptType = 14;
+    state->flag1 = PhoneRematches_IsSeeking(ctx->momsSavings, state->callerID);
+    if (state->isIncomingCall) {
+        state->scriptType = 14;
     } else {
-        a1->scriptType = 13;
+        state->scriptType = 13;
     }
     return PHONE_SCRIPT_NONE;
 }
 
-BOOL GearPhoneCall_GymLeader(PokegearPhoneCallContext *a0) {
-    PokegearPhoneCallState *r4 = &a0->state;
-    int r6;
+BOOL GearPhoneCall_GymLeader(PokegearPhoneCallContext *ctx) {
+    PokegearPhoneCallState *state = &ctx->state;
+    int yesNoResponse;
 
-    switch (r4->state1) {
+    switch (state->state1) {
     case 0:
-        PhoneCall_InitMsgDataAndBufferNames(a0);
+        PhoneCall_InitMsgDataAndBufferNames(ctx);
 
-        if (r4->phoneBookEntry->mapId == a0->playerMapSec) {
-            r4->state1 = 255;
-            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00001);
+        if (state->phoneBookEntry->mapId == ctx->playerMapSec) {
+            state->state1 = 255;
+            PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0644_00001);
             return FALSE;
         }
-        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00002);
+        PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0644_00002);
         break;
     case 1:
-        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        if (!r4->flag0) {
-            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00003);
-            r4->state1 = 255;
+        if (!state->flag0) {
+            PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0644_00003);
+            state->state1 = 255;
             return FALSE;
         }
-        if (r4->flag1) {
-            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00009);
-            r4->state1 = 255;
+        if (state->flag1) {
+            PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0644_00009);
+            state->state1 = 255;
             return FALSE;
         }
-        if (r4->date.week != r4->phoneBookEntry->rematchWeekday || r4->timeOfDay != r4->phoneBookEntry->rematchTimeOfDay) {
-            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00004);
-            r4->state1 = 255;
+        if (state->date.week != state->phoneBookEntry->rematchWeekday || state->timeOfDay != state->phoneBookEntry->rematchTimeOfDay) {
+            PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0644_00004);
+            state->state1 = 255;
             return FALSE;
         }
-        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00005);
+        PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0644_00005);
         break;
     case 2:
-        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        PhoneCall_TouchscreenListMenu_Create(a0, 6);
+        PhoneCall_TouchscreenListMenu_Create(ctx, 6);
         break;
     case 3:
-        r6 = PhoneCall_TouchscreenListMenu_HandleInput(a0);
-        if (r6 == -1) {
+        yesNoResponse = PhoneCall_TouchscreenListMenu_HandleInput(ctx);
+        if (yesNoResponse == -1) {
             return FALSE;
         }
-        PhoneCall_TouchscreenListMenu_Destroy(a0);
-        if (r6) { // said no
-            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00007);
-        } else if (ov101_021F40E8(a0, r4->callerID)) {
-            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00006);
-            PhoneRematches_SetSeeking(a0->momsSavings, r4->callerID, TRUE);
+        PhoneCall_TouchscreenListMenu_Destroy(ctx);
+        if (yesNoResponse) { // said no
+            PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0644_00007);
+        } else if (isDojoFull(ctx, state->callerID)) {
+            PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0644_00006);
+            PhoneRematches_SetSeeking(ctx->momsSavings, state->callerID, TRUE);
         } else {
-            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00008);
+            PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0644_00008);
         }
         break;
     default:
-        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        DestroyMsgData(a0->msgData_PhoneContact);
+        DestroyMsgData(ctx->msgData_PhoneContact);
         return TRUE;
     }
 
-    ++r4->state1;
+    ++state->state1;
     return FALSE;
 }
 
-BOOL GearPhoneCall_GymLeader2(PokegearPhoneCallContext *a0) {
-    PokegearPhoneCallState *r4 = &a0->state;
+BOOL GearPhoneCall_GymLeader2(PokegearPhoneCallContext *ctx) {
+    PokegearPhoneCallState *state = &ctx->state;
 
-    switch (r4->state1) {
+    switch (state->state1) {
     case 0:
-        PhoneCall_InitMsgDataAndBufferNames(a0);
-        PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00010);
+        PhoneCall_InitMsgDataAndBufferNames(ctx);
+        PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0644_00010);
         break;
     case 1:
-        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        if (r4->flag1) {
-            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00011);
+        if (state->flag1) {
+            PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0644_00011);
         } else {
-            PhoneCallMessagePrint_Ungendered(a0, a0->msgData_PhoneContact, msg_0644_00012 + (LCRandom() % 3));
+            PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0644_00012 + (LCRandom() % 3));
         }
         break;
     default:
-        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        DestroyMsgData(a0->msgData_PhoneContact);
+        DestroyMsgData(ctx->msgData_PhoneContact);
         return TRUE;
     }
 
-    ++r4->state1;
+    ++state->state1;
     return FALSE;
 }
 
 // It's possible this function was intended to check whether the dojo is full.
 // However, it stops after a single iteration.
-BOOL ov101_021F40E8(PokegearPhoneCallContext *a0, u8 callerID) {
+static BOOL isDojoFull(PokegearPhoneCallContext *ctx, u8 callerID) {
     int i;
-    int r4;
+    int count;
 
     static const u8 sGymLeaderContacts[] = {
         PHONE_CONTACT_FALKNER,
@@ -146,11 +146,11 @@ BOOL ov101_021F40E8(PokegearPhoneCallContext *a0, u8 callerID) {
         PHONE_CONTACT_BLUE,
     };
 
-    r4 = 0;
+    count = 0;
     for (i = 0; i < 1; ++i) {
-        if (callerID != sGymLeaderContacts[i] && PhoneRematches_IsSeeking(a0->momsSavings, sGymLeaderContacts[i])) {
-            ++r4;
+        if (callerID != sGymLeaderContacts[i] && PhoneRematches_IsSeeking(ctx->momsSavings, sGymLeaderContacts[i])) {
+            ++count;
         }
     }
-    return r4 < 5;
+    return count < 5;
 }

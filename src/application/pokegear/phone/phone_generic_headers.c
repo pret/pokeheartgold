@@ -3,6 +3,13 @@
 #include "application/pokegear/phone/phone_internal.h"
 #include "msgdata/msg/msg_0640.h"
 
+#define PHONE_GENERIC_TERM {       \
+    .type = 0,                     \
+    .chance = 100,                 \
+    .scriptType = 0,               \
+    .scriptID = PHONE_SCRIPT_NONE, \
+}
+
 #define PHONE_GENERIC_NULL {       \
     .type = 255,                   \
     .chance = 0,                   \
@@ -28,14 +35,9 @@ const u8 ov101_021F962C[][12] = {
     { msg_0640_00060, msg_0640_00061, msg_0640_00062, msg_0640_00063, msg_0640_00064, msg_0640_00065, msg_0640_00066, msg_0640_00067, msg_0640_00068, msg_0640_00069, msg_0640_00070, msg_0640_00071 },
 };
 
-const UnkStruct_ov101_021F968C ov101_021F968C[] = {
+const PhoneScriptGenericHeader ov101_021F968C[] = {
     // PHONE_CONTACT_MOTHER/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -45,12 +47,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_MOTHER/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -60,12 +57,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_PROF__ELM/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -75,12 +67,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_PROF__ELM/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -90,12 +77,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_PROF__OAK/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -105,12 +87,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_PROF__OAK/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -120,12 +97,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_ETHAN/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -135,12 +107,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_ETHAN/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -150,12 +117,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_LYRA/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -165,12 +127,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_LYRA/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -180,12 +137,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_KURT/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -195,12 +147,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_KURT/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -210,12 +157,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_DAY_C_MAN/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -225,12 +167,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_DAY_C_MAN/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -240,12 +177,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_DAY_C_LADY/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -255,12 +187,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_DAY_C_LADY/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -270,12 +197,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_BUENA/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -285,12 +207,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_BUENA/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -300,12 +217,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_BILL/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -315,12 +227,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_BILL/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -625,12 +532,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_BIKE_SHOP/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -640,12 +542,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_BIKE_SHOP/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -655,12 +552,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_KENJI/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -670,12 +562,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_KENJI/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -685,12 +572,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_WHITNEY/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -700,12 +582,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_WHITNEY/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -715,12 +592,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_FALKNER/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -730,12 +602,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_FALKNER/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -980,12 +847,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_BAOBA/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -995,12 +857,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_BAOBA/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1010,12 +867,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_IRWIN/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1040,12 +892,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_JANINE/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1055,12 +902,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_JANINE/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1070,12 +912,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_CLAIR/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1085,12 +922,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_CLAIR/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1100,12 +932,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_ERIKA/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1115,12 +942,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_ERIKA/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1130,12 +952,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_MISTY/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1145,12 +962,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_MISTY/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1160,12 +972,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_BLAINE/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1175,12 +982,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_BLAINE/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1190,12 +992,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_BLUE/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1205,12 +1002,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_BLUE/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1220,12 +1012,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_CHUCK/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1235,12 +1022,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_CHUCK/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1250,12 +1032,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_BROCK/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1265,12 +1042,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_BROCK/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1280,12 +1052,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_BUGSY/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1295,12 +1062,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_BUGSY/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1310,12 +1072,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_SABRINA/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1325,12 +1082,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_SABRINA/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1340,12 +1092,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_LT__SURGE/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1355,12 +1102,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_LT__SURGE/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1370,12 +1112,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_MORTY/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1385,12 +1122,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_MORTY/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1400,12 +1132,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_JASMINE/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1415,12 +1142,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_JASMINE/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1430,12 +1152,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_PRYCE/1
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
@@ -1445,12 +1162,7 @@ const UnkStruct_ov101_021F968C ov101_021F968C[] = {
     PHONE_GENERIC_NULL,
 
     // PHONE_CONTACT_PRYCE/2
-    {
-     .type = 0,
-     .chance = 100,
-     .scriptType = 0,
-     .scriptID = PHONE_SCRIPT_NONE,
-     },
+    PHONE_GENERIC_TERM,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,
     PHONE_GENERIC_NULL,

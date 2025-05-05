@@ -87,8 +87,8 @@
 //    bits 4-15: param0
 // x04: u16 param1
 //        0: nil
-//        1: flag action: param0=1 set param0=1 clear, param1=flagId
-//        2: same as 1
+//        1: unused
+//        2: flag action: param0=1:set, param0=0:clear; param1=flagId
 //        3: rematch
 //        4: gift item, param1=itemSetId
 //        5: random word, param0=numChoices, param1=baseMsgId

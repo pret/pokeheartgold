@@ -15,8 +15,8 @@
 
 static BOOL (*const sPhoneCallHandlers[])(PokegearPhoneCallContext *) = {
     ov101_021F2680,
-    ov101_021F2F50,
-    ov101_021F2FFC,
+    GearPhoneCall_Generic,
+    GearPhoneCall_Generic2,
     GearPhoneCall_Bill,
     GearPhoneCall_Mother,
     GearPhoneCall_ProfOak,
@@ -252,34 +252,34 @@ BOOL PhoneCall_IsMessageDonePrinting(PokegearPhoneCallContext *a0) {
     return TRUE;
 }
 
-void ov101_021F2248(PokegearPhoneCallContext *a0, const PhoneCallScriptDef *a1) {
-    PokegearPhoneCallState *r6 = &a0->state;
+void PhoneCall_ApplyGenericNPCcallSideEffect(PokegearPhoneCallContext *ctx, const PhoneCallScriptDef *scriptDef) {
+    PokegearPhoneCallState *state = &ctx->state;
     u16 itemId;
 
-    switch (a1->kind) {
+    switch (scriptDef->kind) {
     case 3:
-        PhoneRematches_SetSeeking(a0->momsSavings, r6->callerID, TRUE);
+        PhoneRematches_SetSeeking(ctx->momsSavings, state->callerID, TRUE);
         break;
     case 4:
-        itemId = a1->param1;
+        itemId = scriptDef->param1;
         if (itemId == ITEM_CHERI_BERRY) {
             itemId = (MTRandom() % 10) + ITEM_CHERI_BERRY;
         } else if (itemId == ITEM_POKE_BALL) {
             itemId = (MTRandom() % 3) + ITEM_ULTRA_BALL;
         }
-        PhoneRematches_GiftItemIdSet(a0->momsSavings, r6->callerID, itemId);
+        PhoneRematches_GiftItemIdSet(ctx->momsSavings, state->callerID, itemId);
         break;
     case 1:
     case 2:
-        if (a1->param0) {
-            Save_VarsFlags_SetFlagInArray(a0->saveVarsFlags, a1->param1);
+        if (scriptDef->param0) {
+            Save_VarsFlags_SetFlagInArray(ctx->saveVarsFlags, scriptDef->param1);
         } else {
-            Save_VarsFlags_ClearFlagInArray(a0->saveVarsFlags, a1->param1);
+            Save_VarsFlags_ClearFlagInArray(ctx->saveVarsFlags, scriptDef->param1);
         }
         break;
     case 5:
-        ReadMsgDataIntoString(a0->msgData_PhoneContact, a1->param1 + (LCRandom() % a1->param0), a0->msgExpansionBuff);
-        BufferString(a0->msgFormat, 4, a0->msgExpansionBuff, 2, 1, 2);
+        ReadMsgDataIntoString(ctx->msgData_PhoneContact, scriptDef->param1 + (LCRandom() % scriptDef->param0), ctx->msgExpansionBuff);
+        BufferString(ctx->msgFormat, 4, ctx->msgExpansionBuff, 2, 1, 2);
         break;
     }
 }
@@ -463,7 +463,7 @@ BOOL ov101_021F2680(PokegearPhoneCallContext *a0) {
     switch (r4->state1) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(a0);
-        ov101_021F2248(a0, r6);
+        PhoneCall_ApplyGenericNPCcallSideEffect(a0, r6);
         if (r4->phoneBookEntry->unkC == 0xFF) {
             ++r4->state1;
         }

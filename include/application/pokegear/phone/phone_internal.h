@@ -23,7 +23,7 @@ typedef struct UnkStruct_ov101_021F968C {
     u8 chance;
     u16 scriptType;
     u16 scriptID;
-} UnkStruct_ov101_021F968C;
+} PhoneScriptGenericHeader;
 
 typedef struct PokegearPhoneAppData PokegearPhoneAppData;
 
@@ -286,7 +286,7 @@ void PhoneCallMessagePrint(PokegearPhoneCallContext *ctx, MsgData *msgData, cons
 void PhoneCallMessagePrint_Gendered(PokegearPhoneCallContext *ctx, MsgData *msgData, u8 msgIdIfEthan, u8 msgIdIfLyra);
 void PhoneCallMessagePrint_Ungendered(PokegearPhoneCallContext *ctx, MsgData *msgData, u8 msgId);
 BOOL PhoneCall_IsMessageDonePrinting(PokegearPhoneCallContext *ctx);
-void ov101_021F2248(PokegearPhoneCallContext *ctx, const PhoneCallScriptDef *a1);
+void PhoneCall_ApplyGenericNPCcallSideEffect(PokegearPhoneCallContext *ctx, const PhoneCallScriptDef *a1);
 void PhoneCall_TouchscreenListMenu_Create(PokegearPhoneCallContext *ctx, u8 a1);
 int PhoneCall_TouchscreenListMenu_HandleInput(PokegearPhoneCallContext *ctx);
 void PhoneCall_TouchscreenListMenu_Destroy(PokegearPhoneCallContext *ctx);
@@ -303,12 +303,8 @@ u16 PhoneCall_GetScriptId_Mother(PokegearPhoneCallContext *ctx, PokegearPhoneCal
 BOOL GearPhoneCall_Mother(PokegearPhoneCallContext *ctx);
 u16 PhoneCall_GetScriptId_ProfElm(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state);
 u16 PhoneCall_GetScriptId_Generic(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state);
-u16 ov101_021F2BC0(PokegearPhoneCallContext *ctx, const UnkStruct_ov101_021F968C *a1, int a2);
-BOOL ov101_021F2C78(int a0);
-u16 ov101_021F2E04(u16 a0, u8 a1, u8 a2);
-u16 ov101_021F2E74(u16 a0, HeapID heapID);
-BOOL ov101_021F2F50(PokegearPhoneCallContext *ctx);
-BOOL ov101_021F2FFC(PokegearPhoneCallContext *ctx);
+BOOL GearPhoneCall_Generic(PokegearPhoneCallContext *ctx);
+BOOL GearPhoneCall_Generic2(PokegearPhoneCallContext *ctx);
 u16 PhoneCall_GetScriptId_ProfOak(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state);
 BOOL GearPhoneCall_ProfOak(PokegearPhoneCallContext *ctx);
 u16 PhoneCall_GetScriptId_Kurt(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state);
@@ -337,7 +333,7 @@ u16 PhoneCall_GetScriptId_Irwin(PokegearPhoneCallContext *ctx, PokegearPhoneCall
 
 extern const TouchscreenHitbox ov101_021F8400;
 extern const UnkStruct_ov101_021F8404 ov101_021F8404[];
-extern const UnkStruct_ov101_021F968C ov101_021F968C[];
+extern const PhoneScriptGenericHeader ov101_021F968C[];
 extern const u8 ov101_021F8760[];
 
 extern const PhoneCallScriptDef gPhoneCallScriptDef[];
