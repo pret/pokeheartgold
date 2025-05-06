@@ -6,16 +6,16 @@
 #include "math_util.h"
 #include "save_arrays.h"
 
-u16 PhoneCall_GetScriptId_Bill(PokegearPhoneCallContext *a0, PokegearPhoneCallState *a1) {
-    if (a1->isIncomingCall != 0) {
-        a1->scriptType = 0;
+u16 PhoneCall_GetScriptId_Bill(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
+    if (state->isIncomingCall != 0) {
+        state->scriptType = 0;
         return PHONE_SCRIPT_093;
     }
-    if (a1->phoneBookEntry->mapId == a0->playerMapSec) {
-        a1->scriptType = 0;
+    if (state->phoneBookEntry->mapId == ctx->playerMapSec) {
+        state->scriptType = 0;
         return PHONE_SCRIPT_092;
     }
-    a1->scriptType = 3;
+    state->scriptType = 3;
     return PHONE_SCRIPT_NONE;
 }
 

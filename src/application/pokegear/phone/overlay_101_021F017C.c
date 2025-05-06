@@ -165,61 +165,61 @@ static const UnkStruct_0200D2B4 ov101_021F84E8[] = {
 };
 
 const UnkStruct_ov101_021F8404 ov101_021F8404[] = {
+    // Call; Sort; Quit
     {
-     // Call; Sort; Quit
-        3,
-     16,
-     msg_0271_00000,
-     0x0D,
-     0x09,
+     .nItems = 3,
+     .width = 16,
+     .baseMsg = msg_0271_00000,
+     .x = 13,
+     .y = 9,
      },
+    // Title; Alphabet; Location; Move; Quit
     {
-     // Title; Alphabet; Location; Move; Quit
-        5,
-     16,
-     msg_0271_00003,
-     0x0D,
-     0x03,
+     .nItems = 5,
+     .width = 16,
+     .baseMsg = msg_0271_00003,
+     .x = 13,
+     .y = 3,
      },
+    // Save some money; Don't save money
     {
-     // Save some money; Don't save money
-        2,
-     22,
-     msg_0271_00008,
-     0x07,
-     0x0B,
+     .nItems = 2,
+     .width = 22,
+     .baseMsg = msg_0271_00008,
+     .x = 7,
+     .y = 11,
      },
+    // Evaluate Pokédex; Quit
     {
-     // Evaluate Pokédex; Quit
-        2,
-     22,
-     msg_0271_00010,
-     0x07,
-     0x0B,
+     .nItems = 2,
+     .width = 22,
+     .baseMsg = msg_0271_00010,
+     .x = 7,
+     .y = 11,
      },
+    // Evaluate Johto Pokédex; Evaluate National Pokédex; Quit
     {
-     // Evaluate Johto Pokédex; Evaluate National Pokédex; Quit
-        3,
-     22,
-     msg_0271_00012,
-     0x07,
-     0x09,
+     .nItems = 3,
+     .width = 22,
+     .baseMsg = msg_0271_00012,
+     .x = 7,
+     .y = 9,
      },
+    // Evaluate National Pokédex; Quit
     {
-     // Evaluate National Pokédex; Quit
-        2,
-     22,
-     msg_0271_00015,
-     0x07,
-     0x0B,
+     .nItems = 2,
+     .width = 22,
+     .baseMsg = msg_0271_00015,
+     .x = 7,
+     .y = 11,
      },
+    // Yes; No
     {
-     // Yes; No
-        2,
-     16,
-     msg_0271_00018,
-     0x0D,
-     0x0B,
+     .nItems = 2,
+     .width = 16,
+     .baseMsg = msg_0271_00018,
+     .x = 13,
+     .y = 11,
      },
 };
 

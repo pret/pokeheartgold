@@ -33,7 +33,7 @@ u16 PhoneCall_GetScriptId_DayCareLady(PokegearPhoneCallContext *ctx, PokegearPho
 
 BOOL GearPhoneCall_DayCareLady(PokegearPhoneCallContext *ctx) {
     PokegearPhoneCallState *state = &ctx->state;
-    int r6;
+    int monIdx;
 
     switch (state->state1) {
     case 0:
@@ -57,7 +57,7 @@ BOOL GearPhoneCall_DayCareLady(PokegearPhoneCallContext *ctx) {
             return FALSE;
         }
         if (state->daycareMonsLevelGrowth[0] != 0) {
-            r6 = 0;
+            monIdx = 0;
             if (state->daycareMonsLevelGrowth[1] == 0) {
                 state->state1 = 4;
             } else {
@@ -65,7 +65,7 @@ BOOL GearPhoneCall_DayCareLady(PokegearPhoneCallContext *ctx) {
             }
         } else {
             if (state->daycareMonsLevelGrowth[1] != 0) {
-                r6 = 1;
+                monIdx = 1;
                 state->state1 = 4;
             } else {
                 PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0660_00009);
@@ -73,8 +73,8 @@ BOOL GearPhoneCall_DayCareLady(PokegearPhoneCallContext *ctx) {
                 return FALSE;
             }
         }
-        BufferBoxMonNickname(ctx->msgFormat, 10, DaycareMon_GetBoxMon(Save_Daycare_GetMonX(state->miscPtr.daycare, r6)));
-        BufferIntegerAsString(ctx->msgFormat, 11, state->daycareMonsLevelGrowth[r6], 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        BufferBoxMonNickname(ctx->msgFormat, 10, DaycareMon_GetBoxMon(Save_Daycare_GetMonX(state->miscPtr.daycare, monIdx)));
+        BufferIntegerAsString(ctx->msgFormat, 11, state->daycareMonsLevelGrowth[monIdx], 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
         PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0660_00006);
         return FALSE;
     case 3:

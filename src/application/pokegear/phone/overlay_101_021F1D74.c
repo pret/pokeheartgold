@@ -27,8 +27,8 @@ static BOOL (*const sPhoneCallHandlers[])(PokegearPhoneCallContext *) = {
     GearPhoneCall_EthanLyra,
     GearPhoneCall_EthanLyra2,
     GearPhoneCall_Kurt,
-    GearPhoneCall_GymLeader,
-    GearPhoneCall_GymLeader2,
+    GearPhoneCall_GymLeader_Outgoing,
+    GearPhoneCall_GymLeader_Incoming,
     GearPhoneCall_Baoba,
 };
 
@@ -442,7 +442,7 @@ BOOL PhoneCall_PrintGreeting(PokegearPhoneCallContext *ctx) {
     switch (state->state2) {
     case 0:
         idx = state->timeOfDay * 2 + state->isIncomingCall * 6;
-        PhoneCallMessagePrint_Gendered(ctx, ctx->msgData_0640, ov101_021F962C[state->phoneBookEntry->unkC][idx], ov101_021F962C[state->phoneBookEntry->unkC][idx + 1]);
+        PhoneCallMessagePrint_Gendered(ctx, ctx->msgData_0640, sGreetingMsgIDs[state->phoneBookEntry->unkC][idx], sGreetingMsgIDs[state->phoneBookEntry->unkC][idx + 1]);
         break;
     case 1:
         if (!PhoneCall_IsMessageDonePrinting(ctx)) {

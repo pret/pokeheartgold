@@ -22,7 +22,7 @@ u16 PhoneCall_GetScriptId_GymLeader(PokegearPhoneCallContext *ctx, PokegearPhone
     return PHONE_SCRIPT_NONE;
 }
 
-BOOL GearPhoneCall_GymLeader(PokegearPhoneCallContext *ctx) {
+BOOL GearPhoneCall_GymLeader_Outgoing(PokegearPhoneCallContext *ctx) {
     PokegearPhoneCallState *state = &ctx->state;
     int yesNoResponse;
 
@@ -91,7 +91,7 @@ BOOL GearPhoneCall_GymLeader(PokegearPhoneCallContext *ctx) {
     return FALSE;
 }
 
-BOOL GearPhoneCall_GymLeader2(PokegearPhoneCallContext *ctx) {
+BOOL GearPhoneCall_GymLeader_Incoming(PokegearPhoneCallContext *ctx) {
     PokegearPhoneCallState *state = &ctx->state;
 
     switch (state->state1) {

@@ -11,11 +11,11 @@
 #include "touchscreen_list_menu.h"
 
 typedef struct UnkStruct_ov101_021F8404 {
-    u8 unk_0_0 : 3; // 0x0
-    u8 unk_0_3 : 5; //
-    u8 unk_1;       // 0x1
-    u8 unk_2;       // 0x2
-    u8 unk_3;       // 0x3
+    u8 nItems : 3; // 0x0
+    u8 width : 5;  //
+    u8 baseMsg;    // 0x1
+    u8 x;          // 0x2
+    u8 y;          // 0x3
 } UnkStruct_ov101_021F8404;
 
 typedef struct UnkStruct_ov101_021F968C {
@@ -325,8 +325,8 @@ BOOL GearPhoneCall_EthanLyra(PokegearPhoneCallContext *ctx);
 u8 ov101_021F3D34(PokegearPhoneCallContext *ctx);
 BOOL GearPhoneCall_EthanLyra2(PokegearPhoneCallContext *ctx);
 u16 PhoneCall_GetScriptId_GymLeader(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state);
-BOOL GearPhoneCall_GymLeader(PokegearPhoneCallContext *ctx);
-BOOL GearPhoneCall_GymLeader2(PokegearPhoneCallContext *ctx);
+BOOL GearPhoneCall_GymLeader_Outgoing(PokegearPhoneCallContext *ctx);
+BOOL GearPhoneCall_GymLeader_Incoming(PokegearPhoneCallContext *ctx);
 u16 PhoneCall_GetScriptId_Baoba(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state);
 BOOL GearPhoneCall_Baoba(PokegearPhoneCallContext *ctx);
 u16 PhoneCall_GetScriptId_Irwin(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state);
@@ -337,6 +337,6 @@ extern const PhoneScriptGenericHeader ov101_021F968C[];
 extern const u8 ov101_021F8760[];
 
 extern const PhoneCallScriptDef gPhoneCallScriptDef[];
-extern const u8 ov101_021F962C[][12];
+extern const u8 sGreetingMsgIDs[][12];
 
 #endif // GUARD_POKEHEARTGOLD_APPLICATION_POKEGEAR_PHONE_PHONE_INTERNAL_H

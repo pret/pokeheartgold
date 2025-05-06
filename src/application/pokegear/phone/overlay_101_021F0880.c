@@ -17,9 +17,9 @@ void ov101_021F0880(PokegearPhoneAppData *phoneApp) {
 
     for (i = 0; i < 7; ++i) {
         r5 = &ov101_021F8404[i];
-        phoneApp->unk_4E8[i] = ListMenuItems_New(r5->unk_0_0, phoneApp->heapId);
-        for (j = 0; j < r5->unk_0_0; ++j) {
-            ListMenuItems_AppendFromMsgData(phoneApp->unk_4E8[i], phoneApp->unk_014, r5->unk_1 + j, j);
+        phoneApp->unk_4E8[i] = ListMenuItems_New(r5->nItems, phoneApp->heapId);
+        for (j = 0; j < r5->nItems; ++j) {
+            ListMenuItems_AppendFromMsgData(phoneApp->unk_4E8[i], phoneApp->unk_014, r5->baseMsg + j, j);
         }
     }
 }
@@ -85,11 +85,11 @@ TouchscreenListMenu *PokegearPhoneApp_TouchscreenListMenu_Create(PokegearPhoneAp
     };
     sp18.listMenuItems = phoneApp->unk_4E8[a2];
     sp18.bgConfig = phoneApp->pokegear->bgConfig;
-    sp18.numWindows = ov101_021F8404[a2].unk_0_0;
+    sp18.numWindows = ov101_021F8404[a2].nItems;
     if (a2 == 1) {
-        phoneApp->unk_504 = TouchscreenListMenu_CreateWithCallback(phoneApp->unk_0C0, &sp18, phoneApp->pokegear->unk_00C, ov101_021F8404[a2].unk_2, ov101_021F8404[a2].unk_3, ov101_021F8404[a2].unk_0_3, 0, ov101_021F0A94, phoneApp, TRUE);
+        phoneApp->unk_504 = TouchscreenListMenu_CreateWithCallback(phoneApp->unk_0C0, &sp18, phoneApp->pokegear->unk_00C, ov101_021F8404[a2].x, ov101_021F8404[a2].y, ov101_021F8404[a2].width, 0, ov101_021F0A94, phoneApp, TRUE);
     } else {
-        phoneApp->unk_504 = TouchscreenListMenu_CreateWithCallback(phoneApp->unk_0C0, &sp18, phoneApp->pokegear->unk_00C, ov101_021F8404[a2].unk_2, ov101_021F8404[a2].unk_3, ov101_021F8404[a2].unk_0_3, 0, ov101_021F0AB8, phoneApp, TRUE);
+        phoneApp->unk_504 = TouchscreenListMenu_CreateWithCallback(phoneApp->unk_0C0, &sp18, phoneApp->pokegear->unk_00C, ov101_021F8404[a2].x, ov101_021F8404[a2].y, ov101_021F8404[a2].width, 0, ov101_021F0AB8, phoneApp, TRUE);
     }
     return phoneApp->unk_504;
 }

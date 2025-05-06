@@ -19,39 +19,39 @@ static const u8 sPhoneCallData_ProfElm_MapScripts[][2] = {
     { 0, PHONE_SCRIPT_006 },
 };
 
-u16 PhoneCall_GetScriptId_ProfElm(PokegearPhoneCallContext *a0, PokegearPhoneCallState *a1) {
+u16 PhoneCall_GetScriptId_ProfElm(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
     u8 badgeCount;
     u8 hatchedEgg;
     u8 gotEverstone;
 
-    if (a1->unk_1A == 2) {
-        a1->scriptType = sPhoneCallData_ProfElm_MapScripts[a1->predefinedScriptID][0];
-        return sPhoneCallData_ProfElm_MapScripts[a1->predefinedScriptID][1];
+    if (state->unk_1A == 2) {
+        state->scriptType = sPhoneCallData_ProfElm_MapScripts[state->predefinedScriptID][0];
+        return sPhoneCallData_ProfElm_MapScripts[state->predefinedScriptID][1];
     }
-    if (a1->isIncomingCall) {
-        a1->scriptType = 0;
-        return a1->predefinedScriptID;
+    if (state->isIncomingCall) {
+        state->scriptType = 0;
+        return state->predefinedScriptID;
     }
-    a1->scriptType = 0;
-    badgeCount = PlayerProfile_CountBadges(a0->playerProfile);
+    state->scriptType = 0;
+    badgeCount = PlayerProfile_CountBadges(ctx->playerProfile);
 
-    if (a1->phoneBookEntry->mapId == a0->playerMapSec) {
+    if (state->phoneBookEntry->mapId == ctx->playerMapSec) {
         return PHONE_SCRIPT_001;
     }
-    if (!Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_GOT_ELMS_PANIC_CALL)) {
+    if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_GOT_ELMS_PANIC_CALL)) {
         return PHONE_SCRIPT_008;
     }
-    if (!Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_GAVE_RIVAL_NAME_TO_OFFICER)) {
+    if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_GAVE_RIVAL_NAME_TO_OFFICER)) {
         return PHONE_SCRIPT_009;
     }
-    if (!Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_GOT_PICK_UP_EGG_CALL_FROM_ELM)) {
+    if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_GOT_PICK_UP_EGG_CALL_FROM_ELM)) {
         return PHONE_SCRIPT_010;
     }
-    if (!Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_GOT_EGG_FROM_ELMS_ASSISTANT)) {
+    if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_GOT_EGG_FROM_ELMS_ASSISTANT)) {
         return PHONE_SCRIPT_011;
     }
-    hatchedEgg = Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_SYS_HATCHED_TOGEPI_EGG);
-    gotEverstone = Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_GOT_EVERSTONE_FROM_ELM);
+    hatchedEgg = Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_SYS_HATCHED_TOGEPI_EGG);
+    gotEverstone = Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_GOT_EVERSTONE_FROM_ELM);
     if (badgeCount < 7) {
         if (!hatchedEgg) {
             return PHONE_SCRIPT_012;
@@ -61,16 +61,16 @@ u16 PhoneCall_GetScriptId_ProfElm(PokegearPhoneCallContext *a0, PokegearPhoneCal
             return PHONE_SCRIPT_013;
         }
     }
-    if (Save_VarsFlags_IsInRocketTakeover(a0->saveVarsFlags)) {
+    if (Save_VarsFlags_IsInRocketTakeover(ctx->saveVarsFlags)) {
         return PHONE_SCRIPT_016;
     }
     if (badgeCount < 8) {
         return PHONE_SCRIPT_017;
     }
-    if (!CheckGameClearFlag(a0->saveVarsFlags)) {
+    if (!CheckGameClearFlag(ctx->saveVarsFlags)) {
         return PHONE_SCRIPT_018;
     }
-    if (!Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_GOT_SS_TICKET_FROM_ELM)) {
+    if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_GOT_SS_TICKET_FROM_ELM)) {
         return PHONE_SCRIPT_019;
     }
     if (!gotEverstone) {
@@ -80,7 +80,7 @@ u16 PhoneCall_GetScriptId_ProfElm(PokegearPhoneCallContext *a0, PokegearPhoneCal
             return PHONE_SCRIPT_012;
         }
     }
-    if (Save_VarsFlags_CheckFlagInArray(a0->saveVarsFlags, FLAG_WAS_TOLD_ABOUT_POKERUS)) {
+    if (Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_WAS_TOLD_ABOUT_POKERUS)) {
         return PHONE_SCRIPT_020 + (LCRandom() % 3);
     }
     return PHONE_SCRIPT_020 + (LCRandom() % 2);

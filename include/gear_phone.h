@@ -3,6 +3,11 @@
 
 #include "heap.h"
 
+#define CONTACTS_SORT_TITLE    0
+#define CONTACTS_SORT_ALPHABET 1
+#define CONTACTS_SORT_LOCATION 2
+#define CONTACTS_SORT_MOVE     3
+
 typedef struct PhoneBookEntry {
     u8 id;                  // 0x00
     u8 type;                // 0x01
